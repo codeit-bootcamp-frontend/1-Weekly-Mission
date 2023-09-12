@@ -1,0 +1,194 @@
+* {
+	margin: 0;
+}
+html {
+	width: 100%;
+}
+a {
+	text-decoration: none;
+}
+body {
+	display: flex;
+	height: 100vh;
+	margin: 0 auto;
+	background-color: #f0f6ff;
+	justify-content: center;
+	align-items: center;
+}
+
+main {
+	display: flex;
+	padding: 14.875rem 0rem 15.75rem 0rem;
+	flex: 0 1 25rem;
+}
+@media (max-width: 26.875rem) {
+	main {
+		height: 100vh;
+		padding: 7.5rem 2rem 14.5rem 2.0625rem;
+		flex: 0 0 24.375rem;
+	}
+}
+
+.main-wrap {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.875rem;
+}
+.sign-up-main {
+	padding-bottom: 7.25rem;
+}
+
+.logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.125rem;
+}
+
+.logo img {
+	width: 13.1614rem;
+	height: 2.375rem;
+}
+
+.logo p {
+	color: var(--black, #000);
+	/* Linkbrary/body1-regular */
+	font-family: Pretendard;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.5rem; /* 150% */
+}
+
+.logo p a {
+	color: var(--linkbrary-primary-color, #6d6afe);
+	text-decoration: underline; /* Linkbrary/body 1-semibold */
+	font-family: Pretendard;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+.input-box-wrap {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	gap: 1.5rem;
+	align-items: center;
+}
+
+.input-box {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.input-box label {
+	color: var(--black, #000);
+	font-family: Pretendard;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.input-box input {
+	height: 3.875rem;
+	padding: 1.125rem 0.9375rem;
+	border: 0.0625rem solid #ccd5e3;
+	background: var(--linkbrary-white, #fff);
+	border-radius: 0.5rem;
+}
+
+.input-box input:focus {
+	border-color: var(--linkbrary-primary-color, #6d6afe);
+}
+
+.input-box input#user-password,
+.input-box input#user-password-check {
+	background-image: url("../images/password-eye.svg");
+	background-repeat: no-repeat;
+	background-size: 1rem 1rem;
+	background-position: calc(100% - 1.125rem) center;
+}
+
+.input-box.password-check-box {
+	gap: 0;
+}
+
+.input-box.password-check-box label {
+	margin-bottom: 0.75rem;
+}
+.input-box.password-check-box input {
+	margin-bottom: 0.375rem;
+}
+.input-box.password-check-box p {
+	color: var(--linkbrary-red, #ff5b56);
+	font-family: Pretendard;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+main button {
+	width: 100%;
+	height: 3.375rem;
+}
+
+.social-login-box {
+	display: flex;
+	width: 100%;
+	padding: 0.75rem 1.5rem;
+	border: 0.0625rem solid var(--linkbrary-gray-20, #ccd5e3);
+	background: var(--linkbrary-gray-10, #e7effb);
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 400;
+	font-family: Pretendard;
+	margin-top: 0.125rem;
+}
+
+.social-login-icons {
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.social-login-button {
+	display: inline-block;
+	position: relative;
+	width: 2.625rem;
+	height: 2.625rem;
+}
+
+.social-login-button img {
+	width: 100%;
+	height: 100%;
+}
+
+.social-login-button .icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-size: cover;
+}
+
+.icon-google {
+	width: 1.375rem;
+	height: 1.375rem;
+	background-image: url("../images/google-icon.png");
+}
+.icon-kakao {
+	width: 1.625rem;
+	height: 1.5rem;
+	background-image: url("../images/kakao-icon.svg");
+}
