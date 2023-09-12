@@ -1,0 +1,28 @@
+.gnb {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: var(--linkbrary-bg);
+}
+
+.gnb__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 192rem;
+    margin: 0 auto;
+    padding: 2rem 20rem;
+}
+
+.gnb__logo {
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+
+.gnb__signin {
+    flex-shrink: 0;
+    width: 12.8rem;
+    margin-left: 5px;
+}
