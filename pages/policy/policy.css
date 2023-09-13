@@ -1,0 +1,20 @@
+* {
+  box-sizing:border-box;
+  margin:0;
+}
+
+html {
+  font-family: Pretendard, Arial;
+  word-break: keep-all;
+  font-size: 10px;
+  
+}
+
+body {
+  font-size:25rem;
+  margin:0;
+  background:#F0F6FF;
+  font-family: Pretendard;
+  font-style: normal;
+  color: #000000;
+}

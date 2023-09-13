@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>signin</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'>
+  <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+  <main>
+
+    <div class="login_container">
+      <div class="login_header">
+        <a class="site-logo" href="/pages/main/main.html">
+        <img src="/assets/logo/linkbrary_logo_big.svg">
+        </a>    
+        <div class="login_header_message">
+          <span>회원이 아니신가요?</span> 
+          <a href="/pages/signup/signup.html">
+          회원가입 하기
+          </a>
+        </div>
+      </div>
+
+      <div class="login_input_content">
+        <form>
+          <label for="e-mail">이메일</label>
+          <input id="e-mail" name="e-mail">
+        </form>
+        <form>
+          <label for="password">비밀번호</label>
+          <input id="password" name="password" type="password">
+        </form>
+        <img class="eye_off_mark" src="/assets/images/eye_off_mark.svg">
+      </div>
+
+      <button>로그인</button>
+
+      <div class="sns_login">
+        <div>소셜 로그인</div>
+        <div class="icon_link">
+          <a href="https://www.google.com">
+            <img class="icon_google" src="/assets/icon/google.svg">
+          </a>
+          <a href="https://www.kakaocorp.com/page/">
+          <img class="icon_kakaotalk" src="/assets/icon/kakaotalk.svg">
+          </a>
+        </div>
+      </div>          
+    </div>
+
+  </main>
+</body>
+</html>
