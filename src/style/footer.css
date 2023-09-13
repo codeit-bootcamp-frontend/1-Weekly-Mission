@@ -1,0 +1,42 @@
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 16rem;
+  padding-top: 3.2rem;
+
+  background-color: #111322;
+  font-family: Arial;
+}
+
+.footerWrapper {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 192rem;
+  height: fit-content;
+  padding: 0 10.4rem;
+}
+
+.footerLogo {
+  font-size: 1.6rem;
+  color: #676767;
+}
+
+.footerLinkToPage {
+  display: flex;
+  column-gap: 3rem;
+  padding-right: 1.8rem;
+}
+
+.footerLink {
+  font-size: 1.6rem;
+  color: #cfcfcf;
+}
+
+.footerSocialIcon {
+  display: flex;
+  column-gap: 1.2rem;
+  height: 2rem;
+}
