@@ -12,14 +12,14 @@ a {
     text-decoration: none;
 }
 
-.header {
+header {
     width: 100%;
     background-color: #F0F6FF;
     padding: 20px 200px;
     position: relative;
 }
 
-.header-box {
+nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -37,7 +37,7 @@ a {
     text-align: center;
 }
 
-.main {
+main {
     position: relative;
     width: 100%;
 }
@@ -49,32 +49,32 @@ a {
     overflow: hidden;
 }
 
-.top-content-box {
+.top-content .box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
     align-items: center;
     margin: 0 auto;
-    max-width: 1000px;
+    width: 1000px;
 }
 
-.top-content-top {
+.top-content .top {
     text-align: center;
     font-size: 64px;
     font-weight: 700;
     line-height: 80px;
-    min-width: 480px;
+    word-break: keep-all;
 } 
 
-.top-content-top span {
+.top-content .top span {
     background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 }
 
-.top-content-middle {
+.top-content .middle {
     width: 350px;
     padding: 16px 20px;
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
@@ -85,10 +85,9 @@ a {
     font-weight: 600;
 }
 
-.top-content-bottom {
+.top-content .bottom {
     width: 100%;
     height: 590px;
-    min-width: 1000px;
     border-radius: 25px;
     background-image: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%), url(./images/middle1.png);
     background-position: center;
@@ -137,10 +136,15 @@ a {
     overflow: hidden;
 }
 
-.content1{
+.bottom-content {
+    margin: 70px auto;
+}
+
+.bottom-content section {
     background-color: #ffffff;
     width: 100%;
-    padding: 120px 0px 50px;
+    padding: 50px 0;
+    margin: 0 auto;
 }
 
 .content1 span{
@@ -184,12 +188,6 @@ a {
     z-index: 1;
 }
 
-.content2{
-    background-color: #ffffff;
-    width: 100%;
-    padding: 50px 0px;
-}
-
 .content2 span {
     background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
 }
@@ -200,12 +198,6 @@ a {
     position: absolute;
     top: 114px;
     left: 68px;
-}
-
-.content3{
-    background-color: #ffffff;
-    width: 100%;
-    padding: 50px 0px;
 }
 
 .content3 span {
@@ -228,12 +220,6 @@ a {
     overflow: hidden;
 }
 
-.content4{
-    background-color: #ffffff;
-    width: 100%;
-    padding: 50px 0px 170px;
-}
-
 .content4 span {
     background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
 }
@@ -252,7 +238,7 @@ a {
     -webkit-text-fill-color: transparent;
 }
 
-.footer {
+footer {
     background-color: #111322;
     padding: 32px 0 64px;
     width: 100%;
@@ -265,20 +251,20 @@ a {
     margin: 0 104px;
 }
 
-.footer-left {
+.copyight {
     color: #676767;
 }
 
-.footer-middle{
+.faq{
     display: flex;
     gap: 30px;
 }
 
-.footer-middle a{
+.faq a{
     color: #CFCFCF; 
 }
 
-.footer-right {
+.sns {
     display: flex;
     gap: 12px ;
 }
