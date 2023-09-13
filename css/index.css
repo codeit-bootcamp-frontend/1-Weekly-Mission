@@ -1,0 +1,198 @@
+*{
+    box-sizing: content-box;
+}
+html{
+    font-size: 62.5%;
+    /*10px*/
+}
+body{
+    background-color: #F0F6FF;
+    margin: 0;
+}
+
+header {
+    /* display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center; */
+    padding: 20px 100px;
+    /* gap: 8px;
+    align-self: stretch; */
+
+}
+
+.header-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+button.login{
+    display: flex;
+    width:8.8rem;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background:linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+    color: #F5F5F5;
+    border: none;
+    font-family: Pretendard;    
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    
+}
+
+.card_head{
+    display: flex;  
+    /* width: 1920px; */
+    padding: 70px 360px 0px 360px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+}
+.card_head h1{
+    margin: 0;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 7rem;
+    margin: 0;
+}
+.card_head span{
+    background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}   
+
+button.addlink{
+    color: #F5F5F5;
+    background:linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+    padding: 16px 20px;
+    width: 31rem;
+    border: none;
+    border-radius: 8px;
+    font-family: Pretendard;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+}
+
+.card_head img{
+    width: 111.8rem;
+    height: 67rem;
+    margin : 0;
+    flex-shrink: 0;
+    border-radius: 25px;
+    background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%);
+    /* box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08); */
+    border: none;
+}
+
+.cards{
+    background-color: #ffffff;
+    display: flex;
+    /* padding: 120px 461px 50px 461px; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+}
+
+.cards h2{
+    font-family: Pretendard;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+
+.cards p{
+    color: #6B6B6B;
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 150%;
+}
+.cards img{
+    width: 55rem;
+    height: 45rem;
+    border-radius: 15px;
+    border: none;
+    margin-left: 150px;
+    
+}
+.card{
+    margin: 50px auto 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.cards img:nth-child(2n+1){
+    margin-right: 150px;
+    margin-left: 0;
+}
+.span_link{
+    background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.span_manage{
+    background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.span_share{
+    background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+.span_search{
+    background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+footer{
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 32px 20px;
+}
+footer .since_codeit{
+    color: #676767;
+    text-align: center;
+    font-family: Arial;
+    font-size: 1.6rem;
+    font-weight: 400;
+
+}
+.extra_sites a{
+    text-decoration: none;
+    color: #CFCFCF;
+    font-family: Arial;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+.extra_sites a:not(:last-child){
+    margin-right: 13px;
+}
+footer .icons{
+    display: flex;
+    gap: 12px;
+}
+button:hover{
+    cursor: pointer;
+}
