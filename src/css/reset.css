@@ -1,4 +1,15 @@
 :root {
+  /* palette */
+  --primary: #6d6afe;
+  --red: #ff5b56;
+  --black: #111322;
+  --white: #fff;
+  --gray-lightest: #f0f6ff; /* 가장 밝은 회색 */
+  --gray-light: #e7effb; /* 밝은 회색 */
+  --gray-medium: #ccd5e3; /* 중간 회색 */
+  --gray-dark: #9fa6b2; /* 어두운 회색 */
+  --gray-darkest: #3e3e43; /* 가장 어두운 회색 */
+
   /* background color */
   --linkbrary-bg: #f0f6ff;
   --gra-purpleblue-to-skyblue: linear-gradient(
@@ -11,7 +22,7 @@
     #fe578f -9.84%,
     #68e8f9 107.18%
   );
-  --linkbrary-primary-color: #6d6afe;
+  --linkbrary-primary-color: var(--primary);
   --the-julge-black: #111322;
 
   /* font color */
