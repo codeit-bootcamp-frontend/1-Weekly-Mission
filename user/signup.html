@@ -4,44 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../normalize.css">
+    <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-    <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="auth.css">
 
     <title>Sign up</title>
 </head>
 
 <body>
-    <main class="sign-up-main">
-        <div class="main-wrap">
-            <div class="logo">
-                <a href="../"><img src="../images/logo.svg" alt="Linkbrary 로고"></a>
-                <p>이미 회원이신가요? <a href="./signin.html">로그인 하기</a></p>
+    <main class="auth-main auth-main--sign-up">
+        <div class="auth-main__wrap">
+            <div class="auth-main__logo">
+                <a href="../"><img class="auth-main__logo-img" src="../images/logo.svg" alt="Linkbrary"></a>
+                <p>이미 회원이신가요? <a class="auth-main__link" href="./signin.html">로그인 하기</a></p>
             </div>
 
-            <div class="input-box-wrap">
-                <div class="input-box">
-                    <label for="user-email">이메일</label>
-                    <input type="email" id="user-email">
+            <div class="auth-main__input-wrap">
+                <div class="auth-main__input-box">
+                    <label for="user-email" class="auth-main__label">이메일</label>
+                    <input type="email" id="user-email" class="auth-main__input">
                 </div>
-                <div class="input-box">
-                    <label for="user-password">비밀번호</label>
-                    <input type="password" id="user-password">
+                <div class="auth-main__input-box">
+                    <label for="user-password" class="auth-main__label">비밀번호</label>
+                    <input type="password" id="user-password" class="auth-main__input auth-main__input--password">
                 </div>
-                <div class="input-box password-check-box">
-                    <label for="user-password-check">비밀번호 확인</label>
-                    <input type="password" id="user-password-check">
-                    <p>비밀번호가 다릅니다</p>
+                <div class="auth-main__input-box auth-main__input-box--password-check">
+                    <label for="user-password-check" class="auth-main__label auth-main__label--password-check">비밀번호 확인</label>
+                    <input type="password" id="user-password-check" class="auth-main__input auth-main__input--password">
+                    <p class="auth-main__password-warning">비밀번호가 다릅니다</p>
                 </div>
-
             </div>
-            <button href="user/signin.html" class="button button-blue">회원가입</button>
-            <div class="social-login-box">
-                <p>다른 방식으로 가입하기</p>
-                <div class="social-login-icons">
-                    <a href="https://www.google.com/" class="social-login-button facebook"><img src="../images/google.svg" alt="구글 회원가입"><span class="icon icon-google"></span></a>
-                    <a href="https://www.kakaocorp.com/page/" class="social-login-button kakao"><img src="../images/facebook.svg" alt="카카오 회원가입"><span class="icon icon-kakao"></span></a>
 
+            <button class="button auth-main__button">회원가입</button>
+
+            <div class="auth-main__social-wrap">
+                <p class="auth-main__social-text">다른 방식으로 가입하기</p>
+                <div class="auth-main__social-icons">
+                    <a href="https://www.google.com/" class="auth-main__social-button"><img class="auth-main__social-button-img" src="../images/google.svg" alt="구글 회원가입"><span class="auth-main__social-button-icon auth-main__social-button-icon--google"></span></a>
+                    <a href="https://www.kakaocorp.com/page/" class="auth-main__social-button"><img class="auth-main__social-button-img" src="../images/facebook.svg" alt="카카오 회원가입"><span class="auth-main__social-button-icon auth-main__social-button-icon--kakao"></span></a>
                 </div>
             </div>
         </div>

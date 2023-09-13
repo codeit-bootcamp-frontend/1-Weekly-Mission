@@ -4,47 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../normalize.css">
+    <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-    <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="auth.css">
 
     <title>Sign in</title>
 </head>
 
 <body>
-    <main>
-        <div class="main-wrap">
-
-            <div class="logo">
-
-                <a href="../"><img src="../images/logo.svg" alt="Linkbrary 로고"></a>
-                <p>회원이 아니신가요? <a href="./signup.html">회원 가입하기</a></p>
+    <main class="auth-main">
+        <div class="auth-main__wrap">
+            <div class="auth-main__logo">
+                <a href="../"><img class="auth-main__logo-img" src="../images/logo.svg" alt="Linkbrary"></a>
+                <p>회원이 아니신가요? <a class="auth-main__link" href="./signup.html">회원 가입하기</a></p>
             </div>
 
-            <div class="input-box-wrap">
-                <div class="input-box">
-                    <label for="user-email">이메일</label>
-                    <input type="email" id="user-email">
+            <div class="auth-main__input-wrap">
+                <div class="auth-main__input-box">
+                    <label for="user-email" class="auth-main__label">이메일</label>
+                    <input type="email" id="user-email" class="auth-main__input">
                 </div>
-                <div class="input-box">
-                    <label for="user-password">비밀번호</label>
-                    <input type="password" id="user-password">
-                </div>
-
-            </div>
-            <button href="user/signin.html" class="button button-blue">로그인</button>
-            <div class="social-login-box">
-                <p>소셜 로그인</p>
-                <div class="social-login-icons">
-                    <a href="https://www.google.com/" class="social-login-button facebook"><img src="../images/google.svg" alt="구글 로그인"><span class="icon icon-google"></span></a>
-                    <a href="https://www.kakaocorp.com/page/" class="social-login-button kakao"><img src="../images/facebook.svg" alt="카카오 로그인"><span class="icon icon-kakao"></span></a>
-
+                <div class="auth-main__input-box">
+                    <label for="user-password" class="auth-main__label">비밀번호</label>
+                    <input type="password" id="user-password" class="auth-main__input auth-main__input--password">
                 </div>
             </div>
 
+            <button class="button auth-main__button">로그인</button>
+
+            <div class="auth-main__social-wrap">
+                <p class="auth-main__social-text">소셜 로그인</p>
+                <div class="auth-main__social-icons">
+                    <a href="https://www.google.com/" class="auth-main__social-button"><img class="auth-main__social-button-img" src="../images/google.svg" alt="구글 로그인"><span class="auth-main__social-button-icon auth-main__social-button-icon--google"></span></a>
+                    <a href="https://www.kakaocorp.com/page/" class="auth-main__social-button"><img class="auth-main__social-button-img" src="../images/facebook.svg" alt="카카오 로그인"><span class="auth-main__social-button-icon auth-main__social-button-icon--kakao"></span></a>
+                </div>
+            </div>
+
+        </div>
     </main>
-    </div>
-
 </body>
 
 </html>

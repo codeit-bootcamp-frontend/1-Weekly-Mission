@@ -10,35 +10,6 @@
 	--linkbrary-gray-100: #373740;
 }
 
-/* 버튼 */
-.button {
-	display: flex;
-	width: 8rem;
-	padding: 1rem 1.25rem;
-	border: 0;
-	background: var(
-		--gra-purpleblue-to-skyblue,
-		linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
-	);
-	color: var(--grey-light, #f5f5f5);
-	cursor: pointer;
-	justify-content: center;
-	align-items: center;
-	gap: 0.625rem;
-	border-radius: 0.5rem;
-	font-family: Pretendard;
-	font-size: 1.125rem;
-	font-weight: 600;
-}
-.button--large {
-	width: 21.875rem;
-}
-
-/* 태블릿 & 모바일에서만 보이는 br태그 */
-.tablet-mobile-br {
-	display: none;
-}
-
 /* 헤더 */
 .header {
 	display: flex;
@@ -47,6 +18,8 @@
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
+	position: fixed;
+	z-index: 1;
 }
 .header__center {
 	display: flex;
@@ -259,7 +232,6 @@
 	background-position: top 45% left 46.1%;
 	background-repeat: no-repeat;
 }
-
 .section__image--3 {
 	position: absolute;
 	top: 21.5%;
@@ -337,9 +309,6 @@
 
 /* 태블릿 */
 @media (max-width: 74.9375rem) {
-	.tablet-mobile-br {
-		display: block;
-	}
 	/* 헤더 */
 	.header__center {
 		padding: 1.25rem 0;
