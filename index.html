@@ -4,153 +4,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="style.css">
     <title>Linkbrary</title>
 </head>
 
 <body>
-    <!-- 헤더 시작 -->
-    <header>
-        <div class="header-left-padding">
-
+    <header class="header">
+        <div class="header__side">
         </div>
-        <div class="header-wrap">
-            <a href="./"><img class="logo" src="images/logo.svg" alt="Linkbrary 로고"></a>
-            <a href="user/signin.html" class="button button-blue login-button">로그인</a>
+        <div class="header__center">
+            <a href="./"><img class="header__logo" src="images/logo.svg" alt="Linkbrary"></a>
+            <a href="user/signin.html" class="header__button button">로그인</a>
         </div>
-        <div class="header-right-padding">
-
+        <div class="header__side">
         </div>
-
     </header>
-    <!-- 헤더 끝 -->
 
-    <!-- 인트로 시작 -->
-    <section class="intro">
-        <div class="intro-wrap">
-            <h1 class="intro-title"><span>세상의 모든 정보</span>를<br> 쉽게 저장하고<br class="tablet-mobile-br"> 관리해 보세요</h1>
-            <a href="user/signup.html" class="button button-blue button-large">링크 추가하기</a>
-            <div class="intro-image-wrap">
-                <div class="intro-image">
-                    <img src="images/content-image.png" alt="인트로 이미지">
+    <section class="section section--intro">
+        <div class="section--intro__wrap">
+            <h1 class="section--intro__title">
+                <span class="title__highlight">세상의 모든 정보</span>를<br> 쉽게 저장하고<br class="tablet-mobile-br"> 관리해 보세요
+            </h1>
+            <a href="user/signup.html" class="section--intro__button button button--large">링크 추가하기</a>
+            <div class="section--intro__image-wrap">
+                <div class="section--intro__image">
                 </div>
             </div>
         </div>
     </section>
-    <!-- 인트로 끝 -->
 
-    <!-- 섹션 1 시작 -->
-    <section class="section left section-first">
-        <div class="section-wrap">
-            <div class="section-description-wrap">
-                <div class="section-description">
-                    <h2><span class="contents-1-gradient">원하는 링크</span>를<br>
-                        저장하세요</h2>
+    <section class="section section--first">
+        <div class="section__wrap">
+            <article class="section__description-wrap">
+                <h2 class="section__description-title">
+                    <span class="section__description-title-highlight--1">원하는 링크</span>를<br>저장하세요
+                </h2>
+                <p class="section__description-text">
+                    나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>
+                    사고 싶은 옷, 기억하고 싶은 모든 것을<br>
+                    한 공간에 저장하세요.
+                </p>
+            </article>
+            <div class="section__card-wrap">
+                <div class="card card--thumbnail1"></div>
+                <div class="card card--thumbnail2">
+                    <img class="card__down-btn-icon" src="images/Group 20.svg" alt="다운로드 버튼">
                 </div>
-                <div class="description">
-                    <p>나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>
-                        사고 싶은 옷, 기억하고 싶은 모든 것을<br>
-                        한 공간에 저장하세요.</p>
-                </div>
-            </div>
-            <div class="contents-1-card-wrap">
-                <div class="card"><img src="images/Card 1.png"></div>
-                <div class="card-2-container">
-                    <img id="down-btn-icon" src="images/Group 20.svg">
-                    <div class="card card-border"><img src="images/Card.png"></div>
-                </div>
-                <div class="card"><img src="images/Card-1.png"></div>
+                <div class="card card--thumbnail3"></div>
             </div>
         </div>
     </section>
-    <!-- 섹션 1 끝 -->
 
-    <!-- 섹션 2 시작 -->
-    <section class="section right">
-        <div class="section-wrap">
-            <div class="section-image-wrap">
-                <img src="images/디스크립션 없는 팝업 1.png" alt="폴더 이름 변경하기">
+    <section class="section">
+        <div class="section__wrap">
+            <div class="section__image-wrap">
+                <img class="section__image" src="images/디스크립션 없는 팝업 1.png" alt="폴더 이름 변경하기">
             </div>
-            <div class="section-description-wrap">
-                <div class="section-description">
-                    <h2>링크를 폴더로<br>
-                        <span class="contents-2-gradient">관리</span>하세요
-                    </h2>
-                </div>
-                <div class="section-description">
-                    <p>나만의 폴더를 무제한으로 만들고<br>
-                        다양하게 활용할 수 있습니다.</p>
-                </div>
+            <article class="section__description-wrap">
+                <h2 class="section__description-title">
+                    링크를 폴더로<br><span class="section__description-title-highlight--2">관리</span>하세요
+                </h2>
+                <p class="section__description-text">
+                    나만의 폴더를 무제한으로 만들고<br>
+                    다양하게 활용할 수 있습니다.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section__wrap">
+            <article class="section__description-wrap">
+                <h2 class="section__description-title">
+                    저장한 링크를<br><span class="section__description-title-highlight--3">공유</span>해 보세요.
+                </h2>
+                <p class="section__description-text">
+                    여러 링크를 폴더에 담고 공유할 수 있습니다. <br>
+                    가족, 친구, 동료들에게 쉽고 빠르게 링크를<br>
+                    공유해 보세요.
+                </p>
+            </article>
+            <div class="section__image-wrap section__image-wrap--bg-img">
+                <img class="section__image section__image--3" src="images/폴더 공유하기 팝업 1.png" alt="폴더 공유하기">
             </div>
         </div>
     </section>
-    <!-- 섹션 2 끝 -->
 
-    <!-- 섹션 3 시작 -->
-    <section class="section left">
-        <div class="section-wrap">
-            <div class="section-description-wrap">
-                <div class="section-description">
-                    <h2>저장한 링크를<br>
-                        <span class="contents-3-gradient">공유</span>해 보세요.
-                    </h2>
-                </div>
-                <div class="section-description">
-                    <p>여러 링크를 폴더에 담고 공유할 수 있습니다. <br>
-                        가족, 친구, 동료들에게 쉽고 빠르게 링크를<br>
-                        공유해 보세요.</p>
-                </div>
+    <section class="section section--last">
+        <div class="section__wrap">
+            <div class="section__image-wrap section__image-wrap--4">
+                <div class="section__image section__image--4"></div>
             </div>
-            <div class="contents-3-image-wrap">
-                <div class="contents-3-bg-image-div">
-                    <img src="images/폴더 공유하기 팝업 1.png" alt="폴더 공유하기">
-                </div>
-            </div>
+            <article class="section__description-wrap">
+                <h2 class="section__description-title">
+                    저장한 링크를<br> <span class="section__description-title-highlight--4">검색</span>해 보세요
+                </h2>
+                <p class="section__description-text">
+                    중요한 정보들을 검색으로 쉽게 찾아보세요.
+                </p>
+            </article>
         </div>
     </section>
-    <!-- 섹션 3 끝 -->
 
-    <!-- 섹션 4 시작 -->
-    <section class="section right section-last">
-        <div class="section-wrap">
-            <div class="section-image-wrap contents-4-image-wrap">
-                <div class="contents-4-bg-image-div">
-                    <img src="images/스크린샷 2023-03-17 오후 3.22 1.png" alt="링크 검색하기">
-                </div>
-            </div>
-            <div class="section-description-wrap">
-                <div class="section-description">
-                    <h2>저장한 링크를<br>
-                        <span class="contents-4-gradient">검색</span>해 보세요
-                    </h2>
-                </div>
-                <div class="section-description">
-                    <p>나만의 폴더를 무제한으로 만들고<br>
-                        다양하게 활용할 수 있습니다.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 섹션 4 끝 -->
-
-    <!-- 푸터 시작 -->
-    <footer>
-        <span class="company">
+    <footer class="footer">
+        <span class="footer__company">
             ©codeit - 2023
         </span>
-        <div class="footer-links">
-            <a href="support/privacy.html">Privacy Policy</a>
-            <a href="support/faq.html">FAQ</a>
+        <div class="footer__link-wrap">
+            <a class="footer__link" href="support/privacy.html">Privacy Policy</a>
+            <a class="footer__link" href="support/faq.html">FAQ</a>
         </div>
-        <div class="footer-social-links">
+        <div class="footer__social-link-wrap">
             <a href="https://facebook.com" target="_blank"><img src="images/akar-icons_facebook-fill.svg" alt="페이스북 바로가기"></a>
             <a href="https://twitter.com" target="_blank"><img src="images/akar-icons_twitter-fill.svg" alt="트위터 바로가기"></a>
             <a href="https://youtube.com" target="_blank"><img src="images/akar-icons_youtube-fill.svg" alt="유튜브 바로가기"></a>
             <a href="https://instagram.com" target="_blank"><img src="images/ant-design_instagram-filled.svg" alt="인스타그램 바로가기"></a>
         </div>
     </footer>
-    <!-- 푸터 끝 -->
 </body>
 
 </html>
