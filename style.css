@@ -14,6 +14,7 @@ a {
     --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     --linkbrary-primary-color: #6D6AFE;
     --the-julge-black: #111322;
+    --fandom-k-gra-blue-to-pink: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%)
 }
 
 
@@ -335,7 +336,7 @@ header .login-link {
 }
 
 .link-search-section .description span {
-    background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
+    background: var(--fandom-k-gra-blue-to-pink);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
