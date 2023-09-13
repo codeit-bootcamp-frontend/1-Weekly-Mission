@@ -1,0 +1,217 @@
+/* Global */
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-black: #111322;
+  --color-purple: #6d6afe;
+  --color-red: #ff5b56;
+  --color-light-gray: #f0f6ff;
+  --color-blue: #6ae3fe;
+  --color-gray: #6b6b6b;
+
+  /* App Colors */
+  --color-primary: var(--color-purple);
+  --color-primary-varient: var(--color-light-gray);
+  --color-text: var(--color-gray);
+
+  /* Button Gradient */
+  --gra-purpleblue-to-skyblue: linear-gradient(
+    91deg,
+    var(--color-primary) 0.12%,
+    var(--color-blue) 101.84%
+  );
+
+  /* Font Size */
+  --font-small: 1.2rem; /* 18px */
+  --font-medium: 3rem; /* 48px */
+  --font-large: 4rem; /* 64px */
+
+  /* Font Weight */
+  --font-semibold: 600;
+}
+
+/* Common */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+}
+
+.max-container {
+  max-width: 1920px;
+  margin: auto;
+}
+
+/* Header */
+.header {
+  width: 100%;
+  background-color: var(--color-primary-varient);
+}
+
+.header__container {
+  padding: 1.25rem 12.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  cursor: pointer;
+}
+
+.header__login__btn {
+  padding: 1rem 1.25rem;
+  width: 128px;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--color-white);
+  font-size: var(--font-small);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  padding: 70px 360px 0px 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+  align-items: center;
+  background-color: var(--color-primary-varient);
+}
+
+.hero__title {
+  margin: 0;
+  font-size: var(--font-large);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.title__gradient {
+  background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero__link__btn {
+  width: 350px;
+  padding: 1rem 1.25rem;
+  background: var(--gra-purpleblue-to-skyblue);
+  border-radius: 0.5rem;
+  border: none;
+  color: var(--color-white);
+  font-size: var(--font-small);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+.hero__image {
+  width: 1200px;
+  height: 590px;
+}
+
+/* Contents */
+.contents {
+  padding: 120px 461px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 157px;
+}
+
+.content:nth-child(even) .content__info {
+  order: 1;
+}
+
+.content__info {
+  width: 291px;
+}
+
+.content__info__title {
+  font-size: var(--font-medium);
+}
+
+.info__description {
+  color: var(--color-text);
+  line-height: 1.5rem;
+}
+
+/* Content Text Gradient */
+.content__gradient__link {
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.content__gradient__create {
+  background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.content__gradient__share {
+  background: linear-gradient(
+    99deg,
+    #6d7ccd 19.76%,
+    rgba(82, 136, 133, 0.22) 52.69%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.content__gradient__search {
+  background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Footer */
+.contact {
+  height: 160px;
+  background-color: var(--color-black);
+}
+
+.contact__container {
+  padding: 2rem 6.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact__rights {
+  color: #676767;
+  white-space: nowrap;
+}
+
+.contact__policy {
+  display: flex;
+  gap: 30px;
+  white-space: nowrap;
+}
+
+.contact__policy--text {
+  color: #cfcfcf;
+  text-decoration: none;
+}
+
+.contact__links {
+  display: flex;
+  gap: 12px;
+}
