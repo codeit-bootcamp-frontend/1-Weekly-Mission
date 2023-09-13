@@ -34,17 +34,24 @@ main {
 }
 
 .signup_header {
-  width: 21.05834rem;
+  width: 21.1rem;
   height: 7.8rem;
 }
 .site-logo {
-  height: 3.8rem;
-  margin-bottom: 1.6rem;
+  display:flex;
+  justify-content: center;
 }
+
+.site-logo img{
+  width:21.0583rem;
+  height:3.8rem;
+}
+
+
 
 .signup_header_message{
   display:flex;
-  justify-content: space-between;
+  justify-content:center;
   gap: 0.8rem;
   height: 2.4rem;
   margin-top:1.6rem;
