@@ -1,0 +1,17 @@
+@use "../abstracts" as *;
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.6rem 2rem;
+    border-radius: 0.8rem;
+    background: $linkbrary-grad;
+
+    &__link {
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: $grey-light;
+    }
+}
