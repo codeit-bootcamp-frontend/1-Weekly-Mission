@@ -2,6 +2,18 @@
   box-sizing: border-box;
 }
 
+:root{
+  --primary_color:#6D6AFE;
+  --red_color: #FF5B56;
+  --black_color:#111322;
+  --white_color:#FFFFFF;
+  --gray_color_1:#3E3E43;
+  --gray_color_2:#9FA6B2;
+  --gray_color_3:#CCD5E3;
+  --gray_color_4:#E7EFFB;
+  --gray_color_5:#F0F6FF;
+}
+
 html {
   font-family: Pretendard, Arial;
   word-break: keep-all;
@@ -19,7 +31,7 @@ header{
   display:flex;
   justify-content: center;
   align-items: center;
-  background:#F0F6FF;
+  background: var(--gray_color_5);
   position:sticky;
   top:0;
   z-index:1;
@@ -33,7 +45,7 @@ header{
   display:flex;
   justify-content: space-between;
   align-items: center;
-  background: #F0F6FF;
+  background: var(--gray_color_5);
 }
 
 .site_logo {
@@ -49,7 +61,7 @@ header{
   align-items: center;
   gap: 1rem;
   border-radius: 8px;
-  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--primary_color) 0.12%, #6AE3FE 101.84%));
   color: var(--grey-light, #F5F5F5);
   font-family: Pretendard;
   font-size: 1.8rem;
@@ -83,7 +95,7 @@ main {
   margin: 7rem 36rem 0;
   width: 120rem;
   height: 88.3rem;
-  background: #F0F6FF;;
+  background: var(--gray_color_5);
 }
 
 .intro_title {
@@ -111,7 +123,7 @@ main {
 .image_box {
   width: 120rem;
   height: 59rem;
-  background:#F0F6FF;;
+  background:var(--gray_color_5);;
   position: relative;
   overflow: hidden;
 }
@@ -120,7 +132,7 @@ main {
   width: 111.8rem;
   height: 65.9rem;
   border-radius: 25px;
-  background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%);
+  background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, var(--gray_color_5) 94.76%);
   position: absolute;
   top: 5rem;
   right: 4.1rem;
@@ -139,7 +151,7 @@ main {
 .main_section {
   width: 99.8rem;
   height: 45rem;
-  background:#FFFFFF;
+  background: var(--white_color);
   margin-bottom: 10rem;
   display:flex;
   justify-content:space-between;
@@ -218,7 +230,7 @@ footer {
 
 .footer-container{
   height: 160px;
-  background:#111132;
+  background: var(--black_color);
   display:flex;
   justify-content: center;
 
