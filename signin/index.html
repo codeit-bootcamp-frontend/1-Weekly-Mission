@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="../src/css/reset.css" />
+    <link rel="stylesheet" href="../src/css/signin.css" />
+    <title>LinkBrary - 로그인</title>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-contents">
+        <div class="login-header">
+          <a class="login-header__logo" href="/">
+            <img src="../src/images/signin-logo.svg" />
+          </a>
+          <div class="login-header__description">
+            <h3 class="description__title">회원이 아니신가요?</h3>
+            <a class="description__signup-link" href="../signup/index.html"
+              >회원 가입하기</a
+            >
+          </div>
+        </div>
+        <form class="login-form">
+          <div class="login-form__items">
+            <label for="email" class="login-form__items__label">이메일</label>
+            <input
+              id="email"
+              class="login-form__items__input"
+              placeholder="이메일을 입력해주세요."
+            />
+          </div>
+          <div class="login-form__items">
+            <label for="password" class="login-form__items__label"
+              >비밀번호</label
+            >
+            <div class="items__container">
+              <input
+                id="password"
+                class="login-form__items__input"
+                type="password"
+                placeholder="비밀번호를 입력해주세요."
+              />
+              <img
+                class="login-form__items__eye-off"
+                src="../src/images/eye-off.svg"
+              />
+            </div>
+          </div>
+        </form>
+        <button class="login-form__button">로그인</button>
+      </div>
+      <div class="login-social">
+        소셜 로그인
+        <div class="login-social__icons">
+          <a href="https://www.google.com/" class="login-social__icons__btn"
+            ><img src="../src/images/google.svg" alt="Google"
+          /></a>
+          <a
+            href="https://www.kakaocorp.com/page/"
+            class="login-social__icons__btn"
+            ><img src="../src/images/kakaotalk.svg" alt="KakaoTalk"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
