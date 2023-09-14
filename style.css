@@ -13,6 +13,8 @@ body {
 
 header {
   background-color: var(--bg-color);
+  position: fixed;
+  width: 100%;
 }
 
 h1 {
@@ -35,6 +37,7 @@ h1 {
 
 main {
   margin-bottom: 120px;
+  padding-top: 94px;
 }
 
 .btn {
@@ -165,4 +168,8 @@ footer {
 .footer-sns {
   display: flex;
   gap: 12px;
+}
+
+.prefix-page{
+  background-color: var(--bg-color);
 }
