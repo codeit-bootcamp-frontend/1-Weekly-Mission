@@ -69,6 +69,7 @@ html {
 	padding: 1.6rem 2rem; /* 16px 20px */
 	border-radius: 0.8rem; /* 8px */
 	background: var(--linkbrary--gra--purpleblue);
+	font-size: 1.8rem; /* 18px */
 	color: var(--linkbrary--color--white);
 }
 
@@ -110,6 +111,7 @@ html {
 	padding: 1.6rem 2rem; /* 16px 20px */
 	border-radius: 0.8rem; /* 8px */
 	background: var(--linkbrary--gra--purpleblue);
+	font-size: 1.8rem; /* 18px */
 	color: var(--linkbrary--color--white);
 	text-align: center;
 }
@@ -255,17 +257,19 @@ html {
 	display: flex;
 	justify-content: space-between;
 	max-width: 192rem; /* 1920px */
-	height: 2rem; /* 20px */
+	height: 16rem; /* 160px */
 	padding: 3.2rem 10.4rem 10.8rem; /* 32px 104px 108px */
 }
 
 .copyright {
+	font-size: 1.6rem; /* 16px */
 	color: rgba(103, 103, 103, 1);
 }
 
 .footer__menu-wrapper {
 	display: flex;
 	gap: 3rem; /* 30px */
+	font-size: 1.6rem; /* 16px */
 }
 
 .footer__menu-wrapper a {
