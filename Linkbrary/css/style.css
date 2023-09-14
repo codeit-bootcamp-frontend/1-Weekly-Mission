@@ -38,6 +38,8 @@
 
 /* Header */
 .header {
+  position: fixed;
+  top: 0;
   width: 100%;
   background-color: var(--color-primary-varient);
 }
@@ -72,7 +74,7 @@
 }
 
 .hero__title {
-  padding-top: 70px;
+  padding-top: 160px;
   margin: 0;
   font-size: var(--font-large);
   text-align: center;
