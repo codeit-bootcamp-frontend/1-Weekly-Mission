@@ -263,16 +263,18 @@ html {
 	color: rgba(103, 103, 103, 1);
 }
 
+.footer__menu-wrapper {
+	display: flex;
+	gap: 3rem; /* 30px */
+}
+
 .footer__menu-wrapper a {
 	color: rgba(207, 207, 207, 1);
 }
 
-.footer__menu-wrapper a:first-child {
-	margin-right: 3rem; /* 30px */
-}
-
-.footer__sns-wrapper a:not(:last-child) {
-	margin-right: 1.2rem; /* 12px */
+.footer__sns-wrapper {
+	display: flex;
+	gap: 1.2rem; /* 12px */
 }
 
 /* TABLET */
