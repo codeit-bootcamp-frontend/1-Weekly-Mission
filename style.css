@@ -33,13 +33,17 @@ a {
 
 
 header {
-    width: 100%;
+    width: 100vw;
     display: flex;
     padding: 20px 200px;
     justify-content: space-between;
     gap: 8px;
     align-self: stretch;
+    position: fixed;
+    top: 0;
     background: var(--gray-zircon-);
+    z-index: 1;
+    
 }
 
 header .login-link {
@@ -415,11 +419,8 @@ footer {
 .sign-box {
     background: var(--gray-zircon);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 238px 0 252px 0;
-
+    justify-content: center;
+    height: 100vh;
 
     /* 기본 폰트*/
     font-family: Pretendard;
@@ -430,15 +431,17 @@ footer {
     
 }
 
-.sign-box .container {
+.sign-box .container  {
     width: 400px;
-    height: 394px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 238px auto 252px;
+    gap: 30px;
 }
 .sign-box .login-box {
     display: flex;
+    height: 394px;
     flex-direction: column;
     gap: 30px;
     width: 100%;
@@ -449,7 +452,6 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-;
 }
 
 .sign-box .head img {
@@ -565,3 +567,10 @@ footer {
 
 
 /* sign-up page*/
+
+.sign-box.sign-up .container {
+    width: 400px;
+    height: 530px;
+    margin: 238px auto 116px;
+
+}
