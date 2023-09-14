@@ -1,0 +1,21 @@
+:root {
+	--LINKBRARY--COLOR--PRIMARY: #6d6afe;
+	--LINKBRARY--COLOR--RED: #ff5b56;
+	--LINKBRARY--COLOR--BLACK: #111322;
+	--LINKBRARY--COLOR--WHITE: #ffffff;
+	--LINKBRARY--COLOR--GRAY1: #3e3e43;
+	--LINKBRARY--COLOR--GRAY2: #9fa6b2;
+	--LINKBRARY--COLOR--GRAY3: #ccd5e3;
+	--LINKBRARY--COLOR--GRAY4: #e7effb;
+	--LINKBRARY--COLOR--GRAY5: #f0f6ff;
+	--LINKBRARY--GRA--PURPLEBLUE: linear-gradient(
+		91deg,
+		#6d6afe 0.12%,
+		#6ae3fe 101.84%
+	);
+	--LINKBRARY--GRA--PURPLEPINK: linear-gradient(
+		91deg,
+		#6d6afe 17.28%,
+		#ff9f9f 74.98%
+	);
+}
