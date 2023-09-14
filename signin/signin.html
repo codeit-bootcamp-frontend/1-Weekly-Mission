@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linkbrary</title>
-    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/style/reset.css" />
     <link rel="stylesheet" href="/style/variables.css" />
+    <link rel="stylesheet" href="/signin/signin.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -16,6 +17,7 @@
   <body>
     <article class="signin-container">
       <main class="signin-box">
+        <div class="input-wrapper">
         <section class="signin-header">
           <a href="/">
             <img
@@ -26,7 +28,7 @@
           </a>
           <div class="signin-header-text">
             <p class="signin-header-subtext">회원이 아니신가요?</p>
-            <a href="/signup">회원 가입하기</a>
+            <a href="/signup/signup.html">회원 가입하기</a>
           </div>
         </section>
         <section class="signin-input-wrapper">
@@ -42,24 +44,25 @@
               <div class="password-input">
               <input class="signin-input" id="password" autocomplete="off">
               <div>
-                <img src="assets/common/eye-off.svg" alt="eye-off-ic" class="eye-off-ic"/>  
+                <img src="/assets/common/eye-off.svg" alt="eye-off-ic" class="eye-off-ic"/>  
               </div>
             </div>
             </label>
           </div>
         </section>
         <button class="signin-btn">로그인</button>
+      </div>
         <section class="signin-social">
           <span class="signin-social-title">소셜 로그인</span>
           <a href="https://google.com">
           <div class="signin-social-icons">
             <div class="google-ic-background">
-              <img src="/assets/signin/ic/google.png" alt="google-ic" />
+              <img src="/assets/common/google.png" alt="google-ic" />
             </div>
           </a>
           <a href="https://kakao.com">
             <div class="kakao-ic-background">
-              <img src="/assets/signin/ic/kakaoicon.svg" alt="kakao-ic"/>
+              <img src="/assets/common/kakaoicon.svg" alt="kakao-ic"/>
             </div>
           </a>
           </div>
