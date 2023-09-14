@@ -14,66 +14,75 @@
     <title>LinkBrary - 회원가입</title>
   </head>
   <body>
-    <body>
-      <div class="signup-container">
-        <div class="signup-contents">
-          <div class="signup-header">
-            <a class="signup-header__logo" href="/">
-              <img src="../src/images/signin-logo.svg" />
-            </a>
-            <div class="signup-header__description">
-              <h3 class="description__title">이미 회원이신가요?</h3>
-              <a class="description__signup-link" href="../signin/index.html"
-                >로그인 하기</a
-              >
-            </div>
+    <div class="signup-container">
+      <!-- 헤더 영역 -->
+      <header>
+        <div class="signup-header">
+          <a class="signup-header__logo" href="/">
+            <img src="../src/images/signin-logo.svg" />
+          </a>
+          <div class="signup-header__description">
+            <h3 class="description__title">이미 회원이신가요?</h3>
+            <a class="description__signup-link" href="../signin/"
+              >로그인 하기</a
+            >
           </div>
-          <form class="signup-form">
-            <div class="signup-form__items">
-              <label for="email" class="signup-form__items__label">이메일</label>
+        </div>
+      </header>
+
+      <!-- 메인 영역 -->
+      <main>
+        <form class="signup-form">
+          <div class="signup-form__contents">
+            <div class="signup-form__contents__items">
+              <label for="email" class="signup-form__contents__items__label"
+                >이메일</label
+              >
               <input
                 id="email"
-                class="signup-form__items__input"
+                class="signup-form__contents__items__input"
                 placeholder="이메일을 입력해주세요."
               />
             </div>
-            <div class="signup-form__items">
-              <label for="password" class="signup-form__items__label"
+            <div class="signup-form__contents__items">
+              <label for="password" class="signup-form__contents__items__label"
                 >비밀번호</label
               >
               <div class="items__container">
                 <input
                   id="password"
-                  class="signup-form__items__input"
+                  class="signup-form__contents__items__input"
                   type="password"
                   placeholder="비밀번호를 입력해주세요."
                 />
                 <img
-                  class="signup-form__items__eye-off"
+                  class="signup-form__contents__items--eye-off"
                   src="../src/images/eye-off.svg"
                 />
               </div>
             </div>
-            <div class="signup-form__items">
-              <label for="password-check" class="signup-form__items__label"
+            <div class="signup-form__contents__items">
+              <label for="password" class="signup-form__contents__items__label"
                 >비밀번호 확인</label
               >
               <div class="items__container">
                 <input
-                  id="password-check"
-                  class="signup-form__items__input"
+                  id="password"
+                  class="signup-form__contents__items__input"
                   type="password"
                   placeholder="비밀번호를 다시 입력해주세요."
                 />
                 <img
-                  class="signup-form__items__eye-off"
+                  class="signup-form__contents__items--eye-off"
                   src="../src/images/eye-off.svg"
                 />
               </div>
             </div>
-          </form>
+          </div>
           <button class="signup-form__button">회원가입</button>
-        </div>
+        </form>
+
+        <!-- 소셜 가입 -->
         <div class="signup-social">
           다른 방식으로 가입하기
           <div class="signup-social__icons">
@@ -87,6 +96,7 @@
             /></a>
           </div>
         </div>
-      </div>
+      </main>
+    </div>
   </body>
 </html>
