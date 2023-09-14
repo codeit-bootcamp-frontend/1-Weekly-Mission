@@ -1,8 +1,11 @@
 header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--linkbrary-bg);
+  z-index: 1;
 }
 
 .header__container {
