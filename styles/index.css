@@ -50,7 +50,7 @@ html {
 
 /* HEADER */
 .header {
-	background-color: var(--LINKBRARY--COLOR--GRAY5);
+	background-color: var(--linkbrary--color--gray5);
 
 	position: sticky;
 	top: 0;
@@ -77,16 +77,16 @@ html {
 
 	border-radius: 0.5rem; /* 8px */
 
-	background: var(--LINKBRARY--GRA--PURPLEBLUE);
+	background: var(--linkbrary--gra--purpleblue);
 
-	color: var(--LINKBRARY--COLOR--WHITE);
+	color: var(--linkbrary--color--white);
 }
 
 /* MAIN */
 #main {
 	padding-top: 4.375rem; /* 70px */
 
-	background-color: var(--LINKBRARY--COLOR--GRAY5);
+	background-color: var(--linkbrary--color--gray5);
 
 	overflow: hidden;
 
@@ -104,7 +104,7 @@ html {
 .main__title--gradient {
 	background: linear-gradient(
 		91deg,
-		var(--LINKBRARY--COLOR--PRIMARY) 17.28%,
+		var(--linkbrary--color--primary) 17.28%,
 		#ff9f9f 74.98%
 	);
 	background-clip: text;
@@ -125,11 +125,11 @@ html {
 	padding: 1rem 1.25rem; /* 16px 20px */
 	border-radius: 0.5rem; /* 8px */
 
-	background: var(--LINKBRARY--GRA--PURPLEBLUE);
+	background: var(--linkbrary--gra--purpleblue);
 
 	position: relative;
 
-	color: var(--LINKBRARY--COLOR--WHITE);
+	color: var(--linkbrary--color--white);
 	text-align: center;
 }
 
@@ -149,7 +149,7 @@ html {
 	background: linear-gradient(
 		180deg,
 		rgba(196, 196, 196, 0) 67.68%,
-		var(--LINKBRARY--COLOR--GRAY5) 125.4%
+		var(--linkbrary--color--gray5) 125.4%
 	);
 
 	position: absolute;
@@ -179,7 +179,7 @@ html {
 .save__img-container {
 	padding: 6.375rem 0 6.8125rem 0; /* 102px 0 109px 0 */
 
-	background: var(--LINKBRARY--COLOR--GRAY5);
+	background: var(--linkbrary--color--gray5);
 
 	display: flex;
 	justify-content: center;
@@ -207,7 +207,7 @@ html {
 }
 
 .manage__img-wrapper {
-	background: var(--LINKBRARY--COLOR--GRAY5);
+	background: var(--linkbrary--color--gray5);
 
 	display: flex;
 	align-items: center;
@@ -261,7 +261,7 @@ html {
 .search__img-wrapper {
 	padding: 3.4375rem 0 0 3.75rem; /* 55px 0 0 60px */
 
-	background: var(--LINKBRARY--COLOR--GRAY5);
+	background: var(--linkbrary--color--gray5);
 }
 
 .search__img-wrapper img {
@@ -280,7 +280,7 @@ html {
 
 /* FOOTER */
 .footer {
-	background-color: var(--LINKBRARY--COLOR--BLACK);
+	background-color: var(--linkbrary--color--black);
 }
 
 .footer__wrapper {
