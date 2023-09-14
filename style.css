@@ -420,7 +420,7 @@ footer {
     background: var(--gray-zircon);
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 1020px; /* 반응형 변경예정 */
 
     /* 기본 폰트*/
     font-family: Pretendard;
@@ -573,4 +573,12 @@ footer {
     height: 530px;
     margin: 238px auto 116px;
 
+}
+
+.sign-box.sign-up .login-box {
+    height: 100%;
+}
+
+.sign-box.sign-up .container {
+    gap: 0;
 }
