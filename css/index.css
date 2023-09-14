@@ -9,16 +9,16 @@ body{
     margin: 0;
     background-color: #F0F6FF;
 }
+main{
+    margin-top: 40px;
+}
 
 header {
-    /* display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center; */
+    top: 0;
     padding: 20px 100px;
-    /* gap: 8px;
-    align-self: stretch; */
-
+    position: fixed;
+    width: 85%;
+    background-color: #F0F6FF;
 }
 
 .header-title{
@@ -26,6 +26,8 @@ header {
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
+
+    
 }
 button.login{
     display: flex;
