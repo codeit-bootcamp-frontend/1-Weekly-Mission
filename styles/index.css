@@ -1,15 +1,3 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
-
-/* GLOBAL FONT */
-* {
-	font-family: Pretendard;
-}
-
-/* HTML */
-html {
-	font-size: 62.5%;
-}
-
 /* GLOBAL SECTION */
 .section {
 	display: grid;
