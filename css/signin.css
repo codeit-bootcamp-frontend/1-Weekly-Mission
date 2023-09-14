@@ -12,15 +12,15 @@
     --linkbrary-gray-100: #373740;
 }
 html{
-    font-size: 62.5%;
     height: 100%;
+    font-size: 62.5%;
     /*10px*/
 }
 
 body{
+    display: flex;
     background-color:var(--linkbrary-bg) ;
     min-height: 100%;
-    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -50,8 +50,8 @@ header{
     height: 4rem;;
 }
 header p{
-    font-weight: 400;
     margin: 0;
+    font-weight: 400;
 }
 .header__signup-link{
     margin-left: 8px;
@@ -59,8 +59,8 @@ header p{
 }
 
 .form__signin{
-    width: 40rem;
     display: flex;
+    width: 40rem;
     flex-direction: column;
     justify-content: center;
     align-items: left;
@@ -71,31 +71,31 @@ header p{
 .form__signin input{
     margin: 12px 0 24px;
     padding: 18px 15px;
-    border-radius: 8px;
     border: 1px solid var(--linkbrary-gray-20);
+    border-radius: 8px;
 }
 .form__signin input:focus{
     border: var(--linkbrary-primary-color);
 }
 .btn-signin{
     padding: 16px 20px;
-    border-radius: 8px;
-    background : var(--gra-purpleblue-to-skyblue);
     border:none;
+    background : var(--gra-purpleblue-to-skyblue);
     color: var(--grey-light);
+    border-radius: 8px;
     font-size: 1.8rem;
 }
 
 .social-signin{
     display: flex;
+    padding: 12px 24px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    background: var(--linkbrary-gray-10, #E7EFFB);
+    color: var(--linkbrary-gray-100, #373740);
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
-    background: var(--linkbrary-gray-10, #E7EFFB);
     margin-top: 30px;
-    padding: 12px 24px;
-    color: var(--linkbrary-gray-100, #373740);
     font-size: 1.4rem;
     font-weight: 400;
 
@@ -113,10 +113,10 @@ header p{
 }
 
 .password-eye{
-    width:1.6rem;
-    height: 1.6rem;
     position: relative;
-    fill: white;
     top: -6rem;
     left: 36.5rem;
+    width:1.6rem;
+    height: 1.6rem;
+    fill: white;
 }
