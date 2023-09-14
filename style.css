@@ -6,7 +6,6 @@
 
 a {
     cursor: pointer;
-
 }
 
 :root {
@@ -17,6 +16,7 @@ a {
     --gray-botticelli: #ccd5e3;
     --gray-chateau: #9fa6b2;
     --gray-ship-gray: #3e3e43;
+    --gray-tuna: #373740;
 
      /* gradient */
     --fandom-k-gra-blue-to-pink: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
@@ -407,3 +407,161 @@ footer {
     margin-left: 10px;
 
 }
+
+/* sign-in page */
+
+
+
+.sign-box {
+    background: var(--gray-zircon);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 238px 0 252px 0;
+
+
+    /* 기본 폰트*/
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    
+}
+
+.sign-box .container {
+    width: 400px;
+    height: 394px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sign-box .login-box {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.sign-box .head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+;
+}
+
+.sign-box .head img {
+    width: 210.583px;
+    height: 38px;
+}
+
+.ask-sign {
+    color: var(--black);
+    display: flex;
+    gap: 10px;
+}
+
+.ask-sign a {
+    color: var(--primary);
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.ask-sign .underline {
+    height: 1px;
+    display: flex;
+    flex-direction: column-reverse;
+    background: var(--primary);
+}
+
+.sign-box .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    color: var(--black);
+    font-size: 14px;
+    line-height: normal;
+}
+
+.psw-box{
+    position: relative;
+}
+
+.psw-box img {
+    position: absolute;
+    right: 5%;
+    top: 55%;
+}
+.sign-box .input-box input{
+    width: 100%;
+    margin-top: 12px;
+    padding: 18px 15px;
+    border: 1px solid var(--gray-botticelli);
+    border-radius: 8px;
+}
+
+
+.sign-box .input-box input:focus{
+    outline: none;
+    border: 1px solid var(--primary);
+}
+
+.sign-link {
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue);
+    width: 100%;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+
+    color: var(--gray-wild-sand);
+    text-decoration: none;
+}
+
+.social-sign {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    width: 100%;
+    background: var(--gray-selago);
+    border-radius: 8px;
+    border: 1px solid var(--gray-botticelli);
+
+    color: var(--gray-tuna);
+    font-size: 14px;
+    line-height: normal;
+}
+
+.social-link{
+    display: flex;
+    gap: 16px;
+
+}
+
+.google-link,
+.kakao-link {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+
+.google-link .google-icon,
+.kakao-link .kakao-icon { 
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    inset: 0;
+    margin: 25%;
+}
+
+
+/* sign-up page*/
