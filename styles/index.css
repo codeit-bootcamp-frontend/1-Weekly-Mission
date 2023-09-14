@@ -117,7 +117,7 @@ html {
 .main__img-container {
 	position: relative;
 	width: fit-content;
-	height: 59; /* 590px */
+	height: 59rem; /* 590px */
 	margin: 0 auto;
 }
 
