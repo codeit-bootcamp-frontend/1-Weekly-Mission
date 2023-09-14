@@ -10,11 +10,25 @@ a {
 }
 
 :root {
-    --linkbrary-bg: #F0F6FF;
+    /* gray */
+    --gray-wild-sand: #F5F5F5;
+    --gray-zircon: #F0F6FF;
+    --gray-selago: #e7effb;
+    --gray-botticelli: #ccd5e3;
+    --gray-chateau: #9fa6b2;
+    --gray-ship-gray: #3e3e43;
+
+     /* gradient */
+    --fandom-k-gra-blue-to-pink: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
     --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-    --linkbrary-primary-color: #6D6AFE;
-    --the-julge-black: #111322;
-    --fandom-k-gra-blue-to-pink: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%)
+
+    --primary: #6D6AFE;
+
+    --black: #111322;
+
+    --white: #ffffff;
+
+    --red: #ff5b56;
 }
 
 
@@ -25,7 +39,7 @@ header {
     justify-content: space-between;
     gap: 8px;
     align-self: stretch;
-    background: var(--linkbrary-bg);
+    background: var(--gray-zircon-);
 }
 
 header .login-link {
@@ -39,7 +53,7 @@ header .login-link {
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue);
     
-    color: var(--grey-light, #F5F5F5);
+    color: var(--gray-wild-sand);
     font-family: 'Pretendard';
     font-size: 18px;
     font-style: normal;
@@ -60,7 +74,7 @@ header .login-link {
     background: var(--gra-purpleblue-to-skyblue);
     text-decoration: none;
 
-    color: var(--grey-light, #F5F5F5);
+    color: var(--gray-wild-sand);
     font-family: 'Pretendard';
     font-size: 18px;
     font-style: normal;
@@ -205,7 +219,7 @@ header .login-link {
     overflow: hidden;
     
     border-radius: 11px;
-    border: 2px solid var(--linkbrary-primary-color); 
+    border: 2px solid var(--primary); 
 }
 
 .card-border .select-card {
@@ -358,7 +372,7 @@ footer {
     align-self: stretch;
     margin-top: 120px;
 
-    background: var(--the-julge-black);
+    background: var(--black);
 }
 
 .copyright{
