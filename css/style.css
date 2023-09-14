@@ -1,3 +1,7 @@
+html, body {
+    font-size: 61.5%;
+}
+
 /******** header ********/
 header {
     display: flex;
@@ -11,8 +15,9 @@ nav {
     display: flex;
     position: fixed;
     width: 100%;
+    max-width: 192rem;
     height: 9.4rem;
-    padding: 0px 20rem;
+    padding: 0px 200px;
     justify-content: space-between;
     align-items: center;
     z-index: 1;
@@ -24,7 +29,7 @@ nav {
     background: linear-gradient(90deg, var(--primary), #6AE3FE);
     color: var(--white);
     text-align: center;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 600;
     border-radius: 8px;
 }
@@ -40,7 +45,7 @@ nav {
 
 .content.title {
     color: #000;
-    font-size: 48px;
+    font-size: 4.8rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -49,7 +54,7 @@ nav {
 
 .content {
     color: #6B6B6B;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 500;
     line-height: 150%;
@@ -59,7 +64,7 @@ nav {
 /******** section1 ********/
 .background-section {
     display: flex;
-    padding-top: 12rem;
+    padding-top: 164px;
     flex-direction: column;
     align-items: center;
     background-color: var(--grayF0);
@@ -67,7 +72,7 @@ nav {
 
 .background-section .background-content {
     text-align: center;
-    font-size: 64px;
+    font-size: 6.4rem;
     font-weight: 700;
 }
 
