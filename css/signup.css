@@ -1,0 +1,121 @@
+*{
+    box-sizing: content-box;
+}
+/* 심화 : color 변수로 지정하기 */
+:root{
+    --linkbrary-bg : #f0f6ff;
+    --linkbrary-primary-color :#6D6AFE;
+    --gra-purpleblue-to-skyblue:linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+    --grey-light: #F5F5F5;
+    --linkbrary-gray-20: #CCD5E3;
+    --linkbrary-gray-10: #E7EFFB;
+    --linkbrary-gray-100: #373740;
+}
+html{
+    font-size: 62.5%;
+    height: 100%;
+    /*10px*/
+}
+
+body{
+    background-color:var(--linkbrary-bg) ;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F6FF;
+    gap: 30px;
+    font-size: 16px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.header__logo-img{
+    width: 210px;
+    height: 40px;;
+}
+header p{
+    font-weight: 400;
+    margin: 0;
+}
+.header__signin-link{
+    margin-left: 8px;
+    font-weight: 600;
+}
+
+.form__signup{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+.form__signup label{
+    font-size: 14px;
+}
+.form__signup input{
+    margin: 12px 0 24px;
+    padding: 18px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20);
+}
+.form__signup input:focus{
+    border: var(--linkbrary-primary-color);
+}
+.btn-signup{
+    padding: 16px 20px;
+    border-radius: 8px;
+    background : var(--gra-purpleblue-to-skyblue);
+    border:none;
+    color: var(--grey-light);
+    font-size: 18px;
+}
+
+.social-signup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    background: var(--linkbrary-gray-10, #E7EFFB);
+    margin-top: 30px;
+    padding: 12px 24px;
+    color: var(--linkbrary-gray-100, #373740);
+    font-size: 14px;
+    font-weight: 400;
+
+}
+
+.social-signup-icons{
+    display: flex;
+    gap: 16px;
+
+}
+
+.social-signup-icons img{
+    width: 44px;
+    height: 44px;
+}
+
+.password-eye{
+    width:16px;
+    height: 16px;
+    position: relative;
+    fill: white;
+    top: -60px;
+    left: 365px;
+}
