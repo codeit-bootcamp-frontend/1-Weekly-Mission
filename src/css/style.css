@@ -45,6 +45,11 @@ header {
   overflow: hidden;
 }
 
+.hero__heading {
+  width: 44.25rem;
+  height: 10rem;
+}
+
 .hero__heading h1 {
   text-align: center;
   font-size: 4rem;
@@ -69,7 +74,7 @@ header {
   gap: 0.625rem;
   background: var(--gra-purpleblue-to-skyblue);
   border-radius: 0.5rem;
-  margin: 2.5rem auto;
+  margin: 2.5rem 0 2.5rem;
   text-decoration: none;
   color: var(--grey-light);
   font-size: 1.125rem;
