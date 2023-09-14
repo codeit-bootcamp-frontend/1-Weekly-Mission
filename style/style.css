@@ -27,6 +27,9 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 20px;
+  z-index: 100;
   margin: 20px 200px;
 }
 
