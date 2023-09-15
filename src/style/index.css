@@ -1,0 +1,32 @@
+.introHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  row-gap: 4rem;
+  padding-top: 7rem;
+}
+
+.introContent {
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 8rem;
+
+  @media (max-width: 480px) {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+
+.introImg {
+  width: 120rem;
+  height: 59rem;
+}
+
+.introHighlight {
+  background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
