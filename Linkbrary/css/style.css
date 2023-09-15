@@ -69,6 +69,8 @@
 .hero__image {
   width: 1200px;
   height: 590px;
+  display: block;
+  margin: auto;
 }
 
 /* Contents */
@@ -94,6 +96,7 @@
 
 .content__info__title {
   font-size: var(--font-medium);
+  white-space: nowrap;
 }
 
 .info__description {
