@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head> <!-- All Page Setup goes here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+
+  <!--CUSTOM CSS-->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/signin.css">
+
+<!-- FONT -->
+  <!-- Pretendard -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"/>
+</head> <!-- Page Setup ends here -->
+
+<body> <!-- All Page Content goes here -->
+  <header> 
+    <!--begin header-->
+    <a href="/"><img id="logo" src="./assets/img/logo.svg" alt="Linkbrary logo" width=210.58 height=38></a>
+    회원이 아니신가요?
+    <a class="link--signup" href="/signup.html">회원 가입하기</a>
+  </header> <!--end header-->
+  <main>
+    <!--begin main-->
+    <div class="signin">
+      <span class="signin__label">이메일</span>
+      <input class="signin__input signin__input--email">
+      <span class="signin__label">비밀번호</span>
+      <div class="signin__pw">
+        <input class="signin__input signin__input--pw" type="password">
+        <img class="input__eye" src="assets/img/eyeOff.svg" alt="password eye off">
+      </div>
+      <button class="signin__btn" type="submit">로그인</button>
+    </div>
+    <div class="signin--social">
+      소셜 로그인
+      <ul class="signin--social-icon">
+        <li><a href="https://www.google.com/"><img src="./assets/img/googleCircle.svg" alt="Google signin icon" width="42" height="42"></a></li>
+        <li><a href="https://www.kakaocorp.com/page/"><img src="./assets/img/kakaotalkCircle.svg" alt="Kakaotalk signin icon" width="42" height="42"></a></li>
+      </ul>
+    </div>
+  </main> <!--end main-->
+    
+</body> <!-- Page Content ends here -->
+</html>
