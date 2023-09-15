@@ -13,3 +13,29 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
+
+fieldset {
+	border: 0;
+	padding: 0;
+}
+
+input {
+	border: none;
+	outline: none;
+	margin: 0;
+}
+
+button {
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
