@@ -23,6 +23,7 @@ body{
     min-height: 100%;
     flex-direction: column;
     justify-content: center;
+    margin: 0;
 }
 .wrap{
     display: flex;
