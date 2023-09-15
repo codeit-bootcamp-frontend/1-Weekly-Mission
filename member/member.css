@@ -1,0 +1,125 @@
+:root {
+    --primary-color: #6D6AFE;
+    --red-color: #FF5B56;
+    --black-color: #111322;
+    --white-color: #FFFFFF;
+    --gray-one-color: #3E3E43;
+    --gray-two-color: #9FA6B2;
+    --gray-three-color: #CCD5E3;
+    --gray-four-color: #E7EFFB;
+    --gray-five-color: #F0F6FF;
+
+    --gradient-member-button: linear-gradient(91deg, var(--primary-color) 0.12%, #6AE3FE 101.84%);
+    --button-text: #F5F5F5;
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Pretendard", "Arial";
+}
+
+body {
+    background-color: var(--gray-five-color);
+}
+
+.member-frame {
+    width: 25rem;
+    height: 30.75rem;
+    margin: 14.875rem 32.5rem  15.75rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.member-frame-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.875rem;
+}
+
+.member-frame-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.member-frame-mid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.member-confirm {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 150%;
+}
+
+.input-email, .input-password {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+label {
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+input {
+    display: flex;
+    width: 25rem;
+    padding: 1.125rem 0.9375rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: var(--white-color);
+    border: 1px solid var(--gray-three-color);
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid var(--primary-color);
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    gap: 0.625rem;
+
+    width: 25rem;
+    
+    border: none;
+    border-radius: 8px;
+    background: var(--gradient-member-button);
+
+    color: var(--button-text);
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.member-social-login-frame {
+    display: flex;
+    width: 25rem;
+    padding: 0.75rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.member-social-login-frame > p {
+    font-size: 0.875rem;
+    font-weight: 400;
+}
