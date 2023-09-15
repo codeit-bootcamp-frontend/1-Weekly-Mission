@@ -10,11 +10,10 @@
     <title>Linkbrary : 로그인</title>
 </head>
 <body>
-    <main>
+    <main class="sign">
         <div id="sign_head">
-            <div>
-                <h1><a href="/" title="logo"><img src="/images/logo.png" alt="Linkbrary의 로고" /></a></h1>
-            </div>
+            <h1><a href="/" title="logo"><img src="/images/logo.png" alt="Linkbrary의 로고" /></a></h1>
+
             <div>
                 <p>회원이 아니신가요?</p>
                 <a href="/signup.html" title="">회원 가입하기</a>
@@ -22,12 +21,16 @@
         </div>
 
         <form>
-            <label for="">이메일</label>
-            <input id="" name="" type="">
-            
-            <label for="">비밀번호</label>
-            <input id="" name="" type="">
+            <label>이메일
+                <input name="email" type="email">
+            </label>
 
+            <label class="eyes_on_input">비밀번호
+                <input name="password" type="password">
+                <span>👁️</span>
+            </label>
+            
+            
             <button class="buttonGradiant">로그인</button>
         </form>
 
