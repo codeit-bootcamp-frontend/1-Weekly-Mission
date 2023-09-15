@@ -123,3 +123,9 @@ input:focus {
     font-size: 0.875rem;
     font-weight: 400;
 }
+
+.password-hide {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.1rem;
+}
