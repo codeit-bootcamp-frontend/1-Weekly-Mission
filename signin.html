@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signin</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/sign.css" />
+  </head>
+  <body>
+    <section>
+      <div class="box">
+        <div class="header">
+          <a href="/"
+            ><img src="assets/logo.svg" alt="홈화면으로 연결되는 로고이미지"
+          /></a>
+          <p class="to-signup">
+            회원이 아니신가요? <a href="/signup.html">회원 가입하기</a>
+          </p>
+        </div>
+        <form class="form">
+          <label class="margin-top-25">
+            이메일
+            <input type="email" name="" />
+          </label>
+          <label class="margin-top-10 pw">
+            비밀번호
+            <input id="input-pw" type="password" name="" />
+            <img
+              id="pw-show"
+              src="assets/sign-eye-off.svg"
+              alt="가려진 비밀번호 보여주기"
+            />
+          </label>
+          <button class="margin-top-10">로그인</button>
+        </form>
+        <div class="sns margin-top-10">
+          <p>소셜 로그인</p>
+          <div>
+            <a href="https://www.google.com" target="_blank">
+              <img src="assets/sign-google.svg" alt="구글 계정으로 로그인" />
+            </a>
+            <a href="https://www.kakaocorp.com/page/" target="_blank">
+              <img src="assets/sign-kako.svg" alt="카카오 계정으로 로그인" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/sign.js"></script>
+  </body>
+</html>
