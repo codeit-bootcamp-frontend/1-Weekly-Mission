@@ -4,7 +4,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 238px 0px 116px 0px;
-  gap: 2rem;
   background-color: var(--linkbrary-bg);
 }
 
@@ -38,7 +37,7 @@ body {
   line-height: 1.5rem;
 }
 
-.description__signup-link {
+.description__signin-link {
   border-bottom: 1px solid;
   color: var(--linkbrary-primary-color);
   font-size: 1rem;

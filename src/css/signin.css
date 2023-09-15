@@ -4,7 +4,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 238px 0px 116px 0px;
-  gap: 2rem;
   background-color: var(--linkbrary-bg);
 }
 
