@@ -2,11 +2,21 @@ body {
     background-color: #F0F6FF;
 }
 
-main.sign {
+main {
     width: 40rem;
     margin: 23.8rem auto 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.sign {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 #sign_head {
@@ -46,6 +56,8 @@ form {
 	gap: 2.4rem;
 }
 
+form button {width: 100%;}
+
 label {
 	width: 100%;
 	display: flex;
@@ -75,8 +87,34 @@ input:focus {
 }
 
 .eyes_on_input span {
+    width: 1.6rem;
+    height: 1.6rem;
     position: absolute;
+    bottom: 2.5rem;
+    right: 2rem;
 }
 
 
-form button {width: 100%;}
+#social_login {
+    width: 100%;
+    font-size: 1.4rem;
+    border-radius: 8px;
+    border: 1px solid var(--gray3);
+    padding: 1.2rem 2.4rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#social_login > div {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.6rem;
+    
+}
+
+#social_login a {
+    width: 4.2rem;
+    height: 4.2rem;
+}

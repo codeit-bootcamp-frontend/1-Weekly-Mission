@@ -10,33 +10,38 @@
     <title>Linkbrary : 로그인</title>
 </head>
 <body>
-    <main class="sign">
-        <div id="sign_head">
-            <h1><a href="/" title="logo"><img src="/images/logo.png" alt="Linkbrary의 로고" /></a></h1>
+    <main>
+        <div class="sign">
+            <div id="sign_head">
+                <h1><a href="/" title="logo"><img src="/images/logo.png" alt="Linkbrary의 로고" /></a></h1>
 
-            <div>
-                <p>회원이 아니신가요?</p>
-                <a href="/signup.html" title="">회원 가입하기</a>
+                <div>
+                    <p>회원이 아니신가요?</p>
+                    <a href="/signup.html" title="">회원 가입하기</a>
+                </div>
             </div>
+
+            <form>
+                <label>이메일
+                    <input name="email" type="email">
+                </label>
+
+                <label class="eyes_on_input">비밀번호
+                    <input name="password" type="password">
+                    <span id="eyes_on_password">👁️</span>
+                </label>
+                
+                
+                <button class="buttonGradiant">로그인</button>
+            </form>
         </div>
 
-        <form>
-            <label>이메일
-                <input name="email" type="email">
-            </label>
-
-            <label class="eyes_on_input">비밀번호
-                <input name="password" type="password">
-                <span>👁️</span>
-            </label>
-            
-            
-            <button class="buttonGradiant">로그인</button>
-        </form>
-
         <div id="social_login">
-            <p></p>
-            <div></div>
+            <p>소셜 로그인</p>
+            <div>
+                <a href="https://www.google.com/" target="_blank" title="google login"><img src="/images/sign_google.png" alt="구글 로그인 아이콘" /></a>
+                <a href="https://www.kakaocorp.com/page/" target="_blank" title="kakaotalk login"><img src="/images/sign_kakao.png" alt="카카오톡 로그인 아이콘" /></a>
+            </div>
         </div>
     </main>
 </body>
