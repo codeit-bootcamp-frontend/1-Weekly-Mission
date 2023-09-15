@@ -1,14 +1,15 @@
 /*------------header------------*/
-header {
-  background: #F0F6FF;
-  margin-bottom: 120px;
-}
-
 .top {
   display: flex;
-  padding: 20px 200px;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 20px 200px;
+  background: #F0F6FF;
 }
 
 .top img {
@@ -20,7 +21,7 @@ header {
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
   padding: 16px 20px;
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 4.5rem;
   font-weight: 600;
   color: #fff;
   text-align: center;
@@ -35,22 +36,23 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  margin: 70px auto;
+  margin: 100px auto;
+  background: #F0F6FF;
 }
 
 .title h1 {
   text-align: center;
-  font-size: 4rem;
+  font-size: 16rem;
   font-weight: 700;
   line-height: 80px;
 }
 
-h1 span {
+.main-centence span {
   background-image: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 4rem;
+  font-size: 16rem;
 }
 
 .title a {
@@ -73,7 +75,7 @@ h1 span {
 
 /*------------main------------*/
 
-section {
+.part {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,6 +101,7 @@ section {
   align-items: center;
   overflow: hidden;
   position: relative;
+  background-color: #F0F6FF;
 }
 
 #download {
@@ -108,11 +111,11 @@ section {
 }
 
 .part-imgbox#management {
-  background-color: #F0F6FF;
-  padding: 114px 68px 66px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 114px 68px 66px;
+  background-color: #F0F6FF;
 }
 
 .part-imgbox#management img {
@@ -154,18 +157,18 @@ section {
 }
 
 .part h2 {
-  font-size: 3rem;
+  font-size: 12rem;
   font-weight: 700;
 }
 
 .part p {
   color: #6B6B6B;
-  font-size: 1rem;
+  font-size: 4rem;
   font-weight: 500;
 }
 
 .part span {
-  font-size: 3rem;
+  font-size: 12rem;
 }
 
 .part.save span {
@@ -197,7 +200,7 @@ section {
 }
 
 /*------------footer------------*/
-footer {
+,main-footer {
   background-color: #000;
   display: flex;
   align-items: center;
@@ -205,15 +208,15 @@ footer {
   padding: 32px 104px 64px;
 }
 
-footer p {
+.main-footer p {
   color: #676767;
   text-align: center;
-  font-size: 1rem;
+  font-size: 14rem;
   font-weight: 400;
 }
 
-footer a {
-  font-size: 1rem;
+.main footer a {
+  font-size: 4rem;
   font-weight: 400;
   color: #CFCFCF;
 }
@@ -227,4 +230,124 @@ footer a {
   display: inline-block;
   width: 20px;
   height: 20px;
+}
+
+
+/*------------sign------------*/
+.background {
+  margin: 238px auto;
+  background-color: #F0F6FF;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+.middle-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;  
+  color: #000;
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid #CCD5E3;
+  background-color: #FFF;
+  color: #373740;
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.input:focus {
+  outline: 1px solid #6D6AFE;
+}
+
+.signtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.signtitle p {
+  color: #000;
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.signtitle a {
+  text-decoration: underline;
+  color: #6D6AFE;
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.sign-button {
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  color: #F5F5F5;
+  font-size: 4.5rem;
+  font-weight: 600;
+}
+
+.SNS-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid #CCD5E3;
+  background-color: #E7EFFB;
+}
+
+.SNS-login p {
+  color: #373740;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.SNS-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.SNS-login a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-repeat: no-repeat;
+  background-position: center 
+}
+
+.google {
+  background-image: url(public/icons/google_background.png);
+}
+
+.kakao {
+  background-image: url(public/icons/kakao_background.png);
 }

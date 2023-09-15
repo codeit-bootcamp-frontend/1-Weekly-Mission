@@ -4,20 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>로그인</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <form>   
-    <div>
-      <label for="signup-email">이메일</label>  
-      <input id="signup-email" name="email" type="email">
+<body class="background">
+  <div class="frame">
+    <div class="middle-frame">
+      <header class="signtitle">
+        <a href="index.html"><img alt="링크브러리 로고 이미지" src="public/images/Linkbrary-logo.png" width="210.583px" height="38px"></a>
+        <p>회원이 아니신가요? <a href="signup.html">회원 가입하기</a></p>
+      </header>
+
+      <form class="form">
+        <label class="label">이메일
+          <input class="input" name="useremail" type="email">
+        </label>
+
+        <label class="label">비밀번호
+          <input class="input" name="password" type="password">
+        </label>
+
+        <button class="sign-button" type="submit">
+          로그인
+        </button>
+      </form>
     </div>
-    <div>
-      <label for="signup-password">비밀번호</label>
-      <input id="signup-password" name="password" type="password">
+
+    <div class="SNS-login">
+      <p>소셜로그인</p>
+      <div class="SNS-icons">
+        <a class="google" href="https://www.google.com/">
+          <img src="public/icons/google_icon.png" width="22px" height="22px">
+        </a>
+        <a class="kakao" href="https://www.kakaocorp.com/page/">
+          <img src="public/icons/kakao_icon.png" width="26px" height="24px">
+        </a>
+      </div>
     </div>
-    <button type="submit">
-      로그인
-    </button>
-  </form>
+  </div>
 </body>
 </html>
