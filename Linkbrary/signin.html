@@ -8,68 +8,70 @@
     <link rel="stylesheet" href="css/sign_form.css" />
   </head>
   <body>
-    <main class="form-container">
-      <h1 class="form-container__title">
-        <a href="index.html">
-          <img
-            class="form-container__logo"
-            src="images/logo.svg"
-            alt="logo-icon"
-          />
-        </a>
-      </h1>
-      <div class="form-container__description">
-        <span>회원이 아니신가요?</span>
-        <div>
-          <a href="signup.html" class="form-container__link--sign"
-            >회원 가입하기</a
-          >
-          <div class="form-container__link__underline"></div>
+    <div class="container">
+      <main class="form-container">
+        <h1 class="form-container__title">
+          <a href="index.html">
+            <img
+              class="form-container__logo"
+              src="images/logo.svg"
+              alt="logo-icon"
+            />
+          </a>
+        </h1>
+        <div class="form-container__description">
+          <span>회원이 아니신가요?</span>
+          <div>
+            <a href="signup.html" class="form-container__link--sign"
+              >회원 가입하기</a
+            >
+            <div class="form-container__link__underline"></div>
+          </div>
         </div>
-      </div>
-      <form class="form">
-        <label class="form__title">이메일</label>
-        <input
-          class="form__input"
-          placeholder="이메일을 입력해주세요."
-          type="text"
-        />
-        <label class="form__title">비밀번호</label>
-        <div>
+        <form class="form">
+          <label class="form__title">이메일</label>
           <input
             class="form__input"
-            placeholder="비밀번호를 입력해주세요."
-            type="password"
+            placeholder="이메일을 입력해주세요."
+            type="text"
           />
-          <img
-            class="form__input--selected"
-            src="images/eye-off.svg"
-            alt="비밀번호 숨기기 기능"
-          />
-        </div>
-        <a>
-          <button class="form__button">로그인</button>
-        </a>
-      </form>
-      <div class="form-container__oauth">
-        <span class="oauth__title">소셜 로그인</span>
-        <div class="oauth__links">
-          <a
-            href="https://www.google.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="images/sns/google-icon.svg" alt="구글로그인" />
+          <label class="form__title">비밀번호</label>
+          <div>
+            <input
+              class="form__input"
+              placeholder="비밀번호를 입력해주세요."
+              type="password"
+            />
+            <img
+              class="form__input--selected"
+              src="images/eye-off.svg"
+              alt="비밀번호 숨기기 기능"
+            />
+          </div>
+          <a>
+            <button class="form__button">로그인</button>
           </a>
-          <a
-            href="https://www.kakaocorp.com/page/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="images/sns/kakao-icon.svg" alt="카카오로그인" />
-          </a>
+        </form>
+        <div class="form-container__oauth">
+          <span class="oauth__title">소셜 로그인</span>
+          <div class="oauth__links">
+            <a
+              href="https://www.google.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/sns/google-icon.svg" alt="구글로그인" />
+            </a>
+            <a
+              href="https://www.kakaocorp.com/page/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="images/sns/kakao-icon.svg" alt="카카오로그인" />
+            </a>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </body>
 </html>
