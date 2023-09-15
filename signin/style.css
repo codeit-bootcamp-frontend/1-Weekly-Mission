@@ -16,9 +16,65 @@ body {
     align-items: center;
 }
   
-a {
+/* a {
     color: inherit;
     text-decoration: none;
-}
+} */
   
 /* 메인 css 코드 */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1440px;
+    padding: 238px 0px 252px 0px;
+
+    flex-direction: column;
+    gap: 32px;
+}
+
+.contents_01 {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    
+    flex-direction: column;
+    gap: 30px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.title_logo {
+    width: 210.583px;
+    height: 38px;
+}
+
+.title > p {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    color: var(--black, #000);
+
+    /* Linkbrary/body1-regular */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+}
+
+.to_signup {
+    color: var(--linkbrary-primary-color, #6D6AFE);
+
+    /* Linkbrary/body 1-semibold */
+    font-weight: 600;
+    line-height: normal;
+}
+
