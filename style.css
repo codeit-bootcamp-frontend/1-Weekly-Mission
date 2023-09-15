@@ -6,6 +6,7 @@
 
 a {
     cursor: pointer;
+    text-decoration: none;
 }
 
 :root {
@@ -63,7 +64,6 @@ header .login-link {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    text-decoration: none;
 }
 
 .add-link {
@@ -76,7 +76,6 @@ header .login-link {
 
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue);
-    text-decoration: none;
 
     color: var(--gray-wild-sand);
     font-family: 'Pretendard';
@@ -403,8 +402,6 @@ footer {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-
-    text-decoration: none;
 }
 
 .sns_icons img{
@@ -469,7 +466,6 @@ footer {
     color: var(--primary);
     font-weight: 600;
     line-height: normal;
-    text-decoration: none;
 }
 
 .ask-sign .underline {
@@ -521,9 +517,7 @@ footer {
     justify-content: center;
     align-items: center;
     margin-bottom: 32px;
-
     color: var(--gray-wild-sand);
-    text-decoration: none;
 }
 
 .social-sign {
