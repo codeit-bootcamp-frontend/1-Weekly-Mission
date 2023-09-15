@@ -3,6 +3,7 @@
 	--linkbrary--color--red: #ff5b56;
 	--linkbrary--color--black: #111322;
 	--linkbrary--color--white: #ffffff;
+	--linkbrary--color--gray0: #373740;
 	--linkbrary--color--gray1: #3e3e43;
 	--linkbrary--color--gray2: #9fa6b2;
 	--linkbrary--color--gray3: #ccd5e3;
@@ -18,4 +19,6 @@
 		#6d6afe 17.28%,
 		#ff9f9f 74.98%
 	);
+	--google--color: #d3d4dd;
+	--kakao--color: #f5e14b;
 }
