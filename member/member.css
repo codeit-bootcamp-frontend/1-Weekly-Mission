@@ -112,11 +112,19 @@ input:focus {
 }
 
 .member-social-login-frame {
+    margin-top: 32px;
+    
     display: flex;
     width: 25rem;
     padding: 0.75rem 1.5rem;
     justify-content: space-between;
     align-items: center;
+
+    border-radius: 8px;
+    border: 1px solid var(--gray-three-color);
+    background: var(var(--gray-four-color));
+    
+    
 }
 
 .member-social-login-frame > p {
