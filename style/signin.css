@@ -118,3 +118,15 @@ main{
   border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
   background: var(--linkbrary-gray-10, #E7EFFB);
 }
+
+.social-login span{
+  color: var(--linkbrary-gray-100, #373740);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.social-login .icons{
+  display: flex;
+  gap : 16px;
+}
