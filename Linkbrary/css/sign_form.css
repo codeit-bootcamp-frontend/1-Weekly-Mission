@@ -26,12 +26,7 @@
   gap: 0.5rem;
 }
 
-.form-container__link--signup {
-  color: var(--color-primary);
-  font-weight: var(--font-semibold);
-}
-
-.form-container__link--signin {
+.form-container__link--sign {
   color: var(--color-primary);
   font-weight: var(--font-semibold);
 }
