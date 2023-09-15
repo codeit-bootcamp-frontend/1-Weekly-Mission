@@ -200,7 +200,7 @@
 }
 
 /*------------footer------------*/
-,main-footer {
+.main_footer {
   background-color: #000;
   display: flex;
   align-items: center;
@@ -208,20 +208,20 @@
   padding: 32px 104px 64px;
 }
 
-.main-footer p {
+.main_footer p {
   color: #676767;
   text-align: center;
-  font-size: 14rem;
+  font-size: 4rem;
   font-weight: 400;
 }
 
-.main footer a {
+.main_footer a {
   font-size: 4rem;
   font-weight: 400;
   color: #CFCFCF;
 }
 
-.footer-links {
+.main_footer-links {
   display: flex;
   gap: 30px;
 }
@@ -341,7 +341,7 @@
   width: 42px;
   height: 42px;
   background-repeat: no-repeat;
-  background-position: center 
+  background-position: center;
 }
 
 .google {
