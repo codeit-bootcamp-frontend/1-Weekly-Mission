@@ -10,6 +10,11 @@ body{
     font-family: Pretendard;
 }
 
+a:hover,
+button:hover{
+    cursor: pointer;
+}
+
 .container{
     width : 400px;
     margin : 238px auto;
@@ -68,6 +73,12 @@ form{
     border-radius: 8px;
     border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
     background: var(--linkbrary-white, #FFF);
+}
+
+.input_email::placeholder{
+    color: var(--linkbrary-gray-100, #373740);
+    font-family: Pretendard;
+    font-size: 16px;
 }
 
 .button_login{
