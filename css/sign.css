@@ -24,7 +24,12 @@ section {
 }
 
 .header img {
-  width: 100%;
+  width: 16rem;
+}
+
+.to-sign {
+  display: flex;
+  justify-content: space-between;
 }
 
 .header a {
@@ -71,7 +76,7 @@ input:focus {
   position: relative;
 }
 
-#pw-show {
+.pw-show {
   position: absolute;
   right: 1.5rem;
   top: 3.2rem;

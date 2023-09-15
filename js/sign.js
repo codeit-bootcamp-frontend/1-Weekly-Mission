@@ -1,16 +1,20 @@
-const $eye = document.getElementById("pw-show");
-$eye.addEventListener("click", showpw);
+const $eye = document.getElementsByClassName("pw-show");
+for (let i = 0; i < $eye.length; i++) {
+  $eye[i].addEventListener("click", (event) => {
+    showpw(event, i);
+  });
+}
 
-function showpw(event) {
+function showpw(event, i) {
   event.preventDefault();
-  const $input = document.getElementById("input-pw");
+  const $input = event.target.previousSibling.previousSibling;
   $input.classList.toggle("active");
   if ($input.classList.contains("active")) {
-    $eye.setAttribute("src", "assets/sign-eye-on.svg");
+    $eye[i].setAttribute("src", "assets/sign-eye-on.svg");
     $input.setAttribute("type", "text");
   } else {
-    $eye.setAttribute("src", "assets/sign-eye-off.svg");
+    $eye[i].setAttribute("src", "assets/sign-eye-off.svg");
     $input.setAttribute("type", "password");
   }
-  $input.setAttribute("autofocus", "on");
+  $input.focus();
 }
