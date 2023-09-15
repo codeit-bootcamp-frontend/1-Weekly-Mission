@@ -45,7 +45,7 @@
     &__img {
         width: 111.8rem;
         height: 70.7rem;
-        background-image: url("/images/main-screen.png");
+        background-image: url("/public/images/main-screen.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -127,7 +127,7 @@
         border-radius: 1.5rem;
 
         &--bg {
-            background-image: url("/images/main-screen.png");
+            background-image: url("/public/images/main-screen.png");
             background-size: cover;
             background-position: center;
         }
