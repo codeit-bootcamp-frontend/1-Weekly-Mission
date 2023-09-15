@@ -1,12 +1,12 @@
+body {
+    background-color: #F0F6FF;
+}
+
 main.sign {
     width: 40rem;
     margin: 23.8rem auto 0;
     display: flex;
     flex-direction: column;
-}
-
-body {
-    background-color: #F0F6FF;
 }
 
 #sign_head {
@@ -70,6 +70,13 @@ input:focus {
 	border-color: var(--primary);
 }
 
-.eyes_on_input
+.eyes_on_input {
+    position: relative;
+}
+
+.eyes_on_input span {
+    position: absolute;
+}
+
 
 form button {width: 100%;}

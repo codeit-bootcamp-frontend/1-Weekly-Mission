@@ -55,11 +55,13 @@ header {
 } */
 
 header {
+    position: fixed;
+    top:0;
     max-width: 192rem;
     width: 100%;
     margin: 0 auto;
     padding: 2.0rem 20.0rem;
-    background-color: #F0F6FF;
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,7 +95,7 @@ header > a {
     max-width: 192.0rem;
     width: 100%;
     margin: 0 auto;
-    padding: 7.0rem 0 0 0;
+    padding: 17.0rem 0 0 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
