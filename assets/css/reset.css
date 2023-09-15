@@ -1,0 +1,27 @@
+
+
+:root {
+  /* color */
+  --linkbrary-bg: #F0F6FF;
+	--grey-light: #F5F5F5;
+  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%)
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #000;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: #fff;
+  font-size: 1rem;
+  font-family: 'Pretendard', sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
