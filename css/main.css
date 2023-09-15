@@ -89,6 +89,15 @@ a {
   gap: 1.2rem;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F0F6FF;
+}
+
 .button {
   display: flex;
   justify-content: center;
@@ -96,8 +105,6 @@ a {
   padding: 1.6rem 2rem;
   border-radius: 0.8rem;
   background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-}
-.button__link {
   font-size: 1.8rem;
   font-weight: 600;
   text-decoration: none;
@@ -161,7 +168,7 @@ a {
   background: linear-gradient(180deg, rgba(196, 196, 196, 0) 67.68%, #F0F6FF 94.76%);
 }
 
-.container {
+.section-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -187,19 +194,19 @@ a {
   font-weight: 700;
   letter-spacing: -0.03rem;
 }
-.container :first-child .section__title--color {
+.section-container :first-child .section__title--color {
   background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
 }
-.container :nth-child(2) .section__title--color {
+.section-container :nth-child(2) .section__title--color {
   background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
 }
-.container :nth-child(3) .section__title--color {
+.section-container :nth-child(3) .section__title--color {
   background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
 }
-.container :nth-child(4) .section__title--color {
+.section-container :nth-child(4) .section__title--color {
   background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
 }
-.container .section .section__title--color {
+.section-container .section .section__title--color {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -277,4 +284,100 @@ a {
   height: 58.4rem;
   border-radius: 1.5rem;
   box-shadow: 0 0.4rem 2.5rem 0 rgba(0, 0, 0, 0.08);
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+.login__logo img {
+  width: 21rem;
+}
+.login__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+.login__redirect {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.login__redirect-link {
+  font-weight: 600;
+  line-height: normal;
+  color: #6D6AFE;
+}
+.login__social {
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #CCD5E3;
+  border-radius: 8px;
+  background-color: #E7EFFB;
+}
+.login__social-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #373740;
+}
+.login__social-logos {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.login__social-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+}
+.login__social-logo--google {
+  border: 1px solid #CCD5E3;
+  background-color: #FFF;
+}
+.login__social-logo--google img {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.login__social-logo--kakaotalk {
+  background-color: #F5E14B;
+}
+.login__social-logo--kakaotalk img {
+  width: 2.6rem;
+  height: 2.4rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+}
+.form__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.form__input {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.form__input-text {
+  font-size: 14px;
+  font-weight: 400;
+}
+.form__input-box {
+  width: 400px;
+  padding: 18px 15px;
+  border: 1px solid #6D6AFE;
+  border-radius: 8px;
 }/*# sourceMappingURL=main.css.map */
