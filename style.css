@@ -1,4 +1,17 @@
-* {
+:root {
+    --primary-color: #6D6AFE;
+    --red-color: #FF5B56;
+    --black-color: #111322;
+    --white-color: #FFFFFF;
+    --gray-one-color: #3E3E43;
+    --gray-two-color: #9FA6B2;
+    --gray-three-color: #CCD5E3;
+    --gray-four-color: #E7EFFB;
+    --gray-five-color: #F0F6FF;
+}
+
+
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -12,7 +25,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 12.5rem;
-    background: #F0F6FF;
+    background: var(--gray-five-color);
 }
 
 .nav-button {
@@ -28,7 +41,7 @@ main {
     align-items: center;
     flex-direction: column;
 
-    background: #F0F6FF;
+    background: var(--gray-five-color);
 }
 
 .main-detail {
@@ -53,7 +66,7 @@ main {
 }
 
 .text-rainbow-first {
-    background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+    background: linear-gradient(91deg, var(--primary-color) 17.28%, #FF9F9F 74.98%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -100,7 +113,7 @@ section {
     padding: 3.125rem 28.8125rem;
     justify-content: center;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: var(--white-color);
     width: 100%;
 }
 
@@ -137,7 +150,7 @@ section {
     width: 34.375rem;
     height: 28.125rem;
     border-radius: 15px;
-    background: #F0F6FF;
+    background: var(--gray-five-color);
     flex-grow: 1;
 }
 
@@ -162,7 +175,7 @@ section {
 .purple-border {
     position: absolute;
     border-radius: 11px;
-    border: 2px solid var(--linkbrary-primary-color, #6D6AFE);
+    border: 2px solid var(--linkbrary-primary-color, var(--primary-color));
     top: 0.86rem;
     left: 1.0625rem;
     width: 15.25rem;
@@ -248,7 +261,7 @@ footer {
 }
 
 .footer-frame {
-    background-color: #111322;
+    background-color: var(--black-color);
     padding: 32px 104px 64px;
     display: flex;
     height: 160px;
@@ -299,7 +312,7 @@ footer {
     align-items: center;
     padding: 16px 20px;
     border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--primary-color) 0.12%, #6AE3FE 101.84%));
     color: #f5f5f5;
     font-family: "Pretendard";
     font-size: 1.125rem;
