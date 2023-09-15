@@ -38,7 +38,7 @@ body {
 }
 
 .description__signin-link {
-  border-bottom: 1px solid;
+  border-bottom: 0.0625rem solid;
   color: var(--linkbrary-primary-color);
   font-size: 1rem;
   font-weight: 600;
@@ -116,7 +116,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 25rem;
-  margin-top: 32px;
+  margin-top: 2rem;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   border: 0.0625rem solid var(--linkbrary-gray-20);
