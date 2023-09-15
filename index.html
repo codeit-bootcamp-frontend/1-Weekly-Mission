@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linkbrary</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="top">
+      <a href="index.html"><img alt="링크브러리 로고 이미지" src="public/images/Linkbrary-logo.png"></a>
+      <a class="button" href="signin.html">로그인</a>
+    </div>
+    <div class="title">
+      <h1><span>세상의 모든 정보</span>를<br>쉽게 저장하고 관리해 보세요</h1>
+      <a class="link_add button" href="signup.html">링크 추가하기</a>
+      <div id="title-img">
+        <img alt="링크추가하기 사이트 이미지" src="https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4">
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="part save">
+      <div class="content">
+        <h2><span>원하는 링크</span>를<br>저장하세요</h2>
+        <p>나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>사고 싶은 옷, 기억하고 싶은 모든 것을<br>한 공간에 저장하세요.</p>
+      </div>
+      <div id="save" class="part-imgbox">
+        <img alt="블러 포토카드" src="https://s3-alpha-sig.figma.com/img/5d7a/e078/d62625bce050db18b8273c4485fa0c59?Expires=1694995200&Signature=F~iywG7mb4mnIqVyH79v20rnn68kTkHw8iVH0UqHPZCGZZuZaPAW-vPVcl0ko-NLbKYhsZHuYAlZRt2cGZ2mz9tZxxzLS3HbKko2l6r6Iv4VVFfHu9Lh4quXth5CvBpp8xbBU-BU2kT9m0Zp0sr62fKgk01072YC8-RHlFrkMI7WELLQYSylXNUhguZ9T6THkp6xXD6Gan9ddRexZcO-my~9pZ8kstqWQAOEGau7dfLpEa2RUnIujDLV18QbWnIhJ3zGzI1fBv-mH3kWgoIRkQz095KpHWYVVdLwqpxyAUeCnJLMzkKfY2P8MGcIvDF55jEKpcNYduuLwGpsS5-6yw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" width="244px" height="239px">
+        <img alt="강아지 포토카드" src="https://s3-alpha-sig.figma.com/img/45cf/22af/33756c4b525abb91a345d685466b507a?Expires=1694995200&Signature=Od2I1oAbs4Zs09GJJcKl9iY0mkdGc9VKghzxeOHl0ybVpukjfSMauYwaNBpN6SaYvxzjc9caCJDoJTzKLsvzSyubXc6KDJwJdNkHJCwl6gwhF7RGEslY54PpKs4cJUEl3n0Zr9Nb6i59v9lgfAxniAZV-N5uXTFcXTGzkHpJPgtz~vbNrX1ZDEpPZ9GJrt5Sbrq7bqVyPcb8kzfRzLndIpyyIXQz7Tms-nNA5~dwzYodTSxJBLMwp2bIDN0llpNChKIeOwNj7szPXrEUcgpFpHAoTq6l~KIHkIfUgXCnXiwd4QBCxazFBITjLKmphemxTTnTSE~OMHiNWEKBb8tfWw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" width="244px" height="239px">
+        <img alt="모델하우스 포토카드" src="https://s3-alpha-sig.figma.com/img/fa28/e69e/1263c25d5d1a2dbbe3ce207a55221297?Expires=1694995200&Signature=botCGaIbJaBtYTiBUI1kxwI2ZPYYkEGbi3eGeHBHem4Ffm0fRJ9ifyOen6xWEdTDiPA0Z-l76i8y-Un7POCtMFl46ReOBwlblCn5QEb3fFZxJ-IEzn1ABqGMkMefuyrkiDBBnc65Im3PEBttF8mCqpftZFO1UA33gi9Rzh4NT7AG49kPgqs8xs7p8je3aOr5CRICYnv21~al8u0txy9ZZQwQg~K3R-zeNDhDvq8B0WmjtkEKGTl~zT9kvtL9gxddODEteJVtB1lWsVcPFoE6LseO83qDL4RzvKKJM3eAx0EfMiUiHKOIe~O9iqRHiAzpo1ABDUj6g9~0kBNh2GmllA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" width="244px" height="239px">
+        <img id="download" alt="다운로드 아이콘" src="public/icons/down.png" width="46px" height="46px;">
+      </div> 
+    </section>
+    <section class="part management">
+      <div id="management" class="part-imgbox">
+        <img alt="폴더 이름 변경하기 이미지" src="https://s3-alpha-sig.figma.com/img/169f/c357/d8b9be5bafee36b14292379248107bfd?Expires=1694995200&Signature=j-GBqcfzULv3bQvWsu9f3m9H35RmwfxYHTpSPPpiZGhhkWEgD3KneX7xu9N0X2WgJ6YGapJ6LCe9rhvE8p1dCWo14qAIeurB~AFu2DsE4DZbiuyrIcU3xSwq~I~UzXZDMwJAnS3j~rB7hvjzyYxm9SZGvMPX1eEomUoXO81Z~XAQM4AzZT9T9mVKJiGJq6TuNfs2YRU36e0dn1GJB1tuS9ZuXYMvpXUKz2Wc7hlnJSIjgMWPMyq9nNmvsNQIYVcRLJ9hHTjJwUdo2plz4vPwSMAU~uBbZyYcJrKQlmdMnz6BuatRK4nRePc03ZUrAtvd39itOI~gKvdtyg9NbC22OA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4">
+      </div>
+      <div class="content">
+        <h2>링크를 폴더로<br><span>관리</span>하세요</h2>
+        <p>나만의 폴더를 무제한으로 만들고<br>다양하게 활용할 수 있습니다.</p>
+      </div>
+    </section>
+    <section class="part sharing">
+      <div class="content">
+        <h2>저장한 링크를<br><span>공유</span>해보세요</h2>
+        <p>여러 링크를 폴더에 담고 공유할 수<br>있습니다. 가족, 친구, 동료들에게 쉽고<br>빠르게 링크를 공유해 보세요.</p>
+      </div>
+      <div id="sharing" class="part-imgbox">
+        <p>
+          <img alt="폴더 공유하기 이미지" src="https://s3-alpha-sig.figma.com/img/acc1/c137/e4c7c24a1de11d2c66e956a2f5e51b60?Expires=1694995200&Signature=VXGv-RmC5M5h4OgVipw5k-iaOs4lAaLsiS7K4Zh1EQX5ThkE~FFKG91LgLv8jxvcpSnJws92WlgyeRnLDakLmndr0wsqCJnj4A7Kd71eNtLDfn-DP4jbMmfLIUc5ZBsQk5m3IyjZ5rtQ8XtOEYxmAydvMMH886RBipPZs6QqMHCP5zoa5fMwIZThXRCFbHLMAmhB4To2mV3nBJS6XCg8Gbe2bvzdR~UzVsZxf8vtDEP-5ViRb0rMuWkGDAgg2VXGJ3GpLjCc4aplbN0PQ4RHAeqvop4oh9KCZB1QD6GKqmxBXJWFEPFbfC4GCynbqbAdZCjcLp6IZA0I2~JIokMNEQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4">
+        </p>
+      </div>
+    </section>
+    <section  class="part search">
+      <div id="search" class="part-imgbox">
+        <img alt="코드잇으로 검색한 결과 화면 이미지" src="https://s3-alpha-sig.figma.com/img/7a0c/dfbc/968f67f18c20cfb14b1e2e3ad8a3f125?Expires=1694995200&Signature=c6c1OIwshyFslCvYbA86PZsqG9LNBQjwgJ05d5lm6gND4r84PFiC0AmcNDZ4VAcnpLT70goJPEA4rDDIn8KBhwJssY5iC8T9KVuOxdgubqu95yA41t~G1kp9EyOE8uFAGxL2b0na947GlmXThlKziL4Hi~ECb00RXIyaw9kt7LST8ohsFRkcX0zK4KYb-JK04IfbLpkAvAfzlj76RBgHYba8KMByucAW80m4zvAyUT3WAopfxhEeM~PxY5YKKhU5nNqqyrwB5K6ZCSk32u21fgnI-~vNfHyrSVPsT1QVmbGmEt6hPUg45rCoHUqQePYQ7X3RO6H2LG0RPu0BPpSBnQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" width="619px" height="584px">
+      </div>
+      <div class="content"> 
+        <h2>저장한 링크를<br><span>검색</span>해 보세요</h2>
+        <p>중요한 정보들을 검색으로 쉽게<br>찾아보세요.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>ⓒcodeit - 2023</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+     <div>
+      <a class="SNS-button" href="https://www.facebook.com/" target="_blank"><img alt="페이스북 아이콘" src="public/icons/facebook.png"></a>
+      <a class="SNS-button" href="https://twitter.com/" target="_blank"><img alt="트위터 아이콘" src="public/icons/twitter.png"></a>
+      <a class="SNS-button" href="https://www.youtube.com/" target="_blank"><img alt="유튜브 아이콘" src="public/icons/youtube.png"></a>
+      <a class="SNS-button" href="https://www.instagram.com/" target="_blank"><img alt="인스타그램 아이콘" src="public/icons/instagram.png"></a>
+    </div>
+  </footer>
+</body>
+</html>
