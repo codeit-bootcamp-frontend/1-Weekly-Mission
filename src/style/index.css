@@ -12,11 +12,6 @@
   font-size: 6.4rem;
   font-weight: 700;
   line-height: 8rem;
-
-  @media (max-width: 480px) {
-    font-size: 4rem;
-    line-height: 4rem;
-  }
 }
 
 .introImg {
