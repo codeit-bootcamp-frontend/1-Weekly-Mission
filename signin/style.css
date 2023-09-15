@@ -116,6 +116,7 @@ input {
 }
 
 input:focus {
+    outline: none;
     border: 1px solid var(--linkbrary-gray-20, #6D6AFE);
 }
 
@@ -141,3 +142,31 @@ input:focus {
     cursor: pointer;
 }
 
+.contents_02 {
+    display: flex;
+    width: 400px;
+    padding: 12px 24px;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    background: var(--linkbrary-gray-10, #E7EFFB);
+}
+
+.contents_02 > p {
+    color: var(--linkbrary-gray-100, #373740);
+
+    /* Linkbrary/body2-regular */
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.images {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
