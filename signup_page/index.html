@@ -3,39 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signin</title>
-    <link rel = "stylesheet" href = "style.css">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "/signin_page/style.css">
 </head>
 <body>
     <div class = "container">
-        <!-- Logo & Signup -->
         <header>
-            <a href = "/main_page/index.html">
+            <a href = "/main_page">
                 <img class = "icon_logo" src = "/main_page/logo.svg">
             </a>
             <p>
-                <span>회원이 아니신가요?</span>
-                <a href = "/signup_page/">회원 가입하기</a>
+                <span>이미 회원이신가요?</span>
+                <a href = "/signin_page">로그인 하기</a>
             </p>
         </header>
-        <!-- Login input & button -->
-        <main> <!-- main으로 한번 더 묶는 게 맞나 .. -->
+        <main>
             <form>
                 <label class = "main_box">
                     이메일
-                    <input class = "input_box" name = "signin_email" type = "email" placeholder = "codeit@codeit.com">
+                    <input class = "input_box" name = "signup_email" type = "email" placeholder = "codeit@codeit.com">
                 </label>
                 <label class = "main_box">
                     비밀번호
-                    <input class = "input_box" name = "signin_pw" type = "password" placeholder = "●●●●●●●●">
-                    <img class = "icon_eye" src = "eye-off.svg">
+                    <input class = "input_box" name = "signup_pw" type = "password" placeholder = "linkbrary2023">
+                    <img class = "icon_eye" src = "eye-on.svg">
                 </label>
-                <button class = "button_login">로그인</button>
+                <label class = "main_box">
+                    비밀번호 확인
+                    <input class = "input_box" name = "signup_pw_check" type = "password" placeholder = "linkbrary20245">
+                    <img class = "icon_eye" src = "eye-on.svg">
+                </label>
+                <button class = "button_signup">회원가입</button>
             </form>
         </main>
-        <!-- Social Login -->
         <footer>
-            <p>소셜 로그인</p>
+            <p>다른 방식으로 가입하기</p>
             <div class = "social_icon_box">
                 <div class = "social_icon_google">
                     <a href = "https://www.google.com/">
@@ -44,7 +46,7 @@
                 </div>
                 <div class = "social_icon_kakao" >
                     <a href = "https://www.kakaocorp.com/page/">
-                        <img class = "kakao" src = "kakaotalk.svg">
+                        <img class = "kakao" src = "/signin_page/kakaotalk.svg">
                     </a>
                 </div>
             </div>

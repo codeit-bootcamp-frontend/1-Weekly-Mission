@@ -17,7 +17,7 @@ button:hover{
 
 .container{
     width : 400px;
-    margin : 200px auto;
+    margin : 180px auto 0;
     display : flex;
     flex-direction: column;
     align-items: center;
@@ -59,8 +59,7 @@ form{
     gap : 24px;
 }
 
-.main_email,
-.main_pw{
+.main_box{
     display : flex;
     flex-direction: column;
     gap : 12px;
@@ -74,15 +73,14 @@ form{
     right : 20px;
 }
 
-.input_email,
-.input_pw{
+.input_box{
     padding : 18px 15px;
     border-radius: 8px;
     border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
     background: var(--linkbrary-white, #FFF);
 }
 
-.input_email::placeholder{
+.input_box::placeholder{
     color: var(--linkbrary-gray-100, #373740);
     font-family: Pretendard;
     font-size: 16px;
@@ -92,7 +90,9 @@ input:focus{
     outline: 1px solid var(--linkbrary-primary-color, #6D6AFE);
 }
 
-.button_login{
+.button_login,
+.button_signup{
+    margin : 30px 0;
     padding : 16px 20px;
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
