@@ -11,38 +11,41 @@
       <main class="login">
         <div class="login__header">
           <div class="login__logo">
-            <a href="/"><img src="/public/logos/linkbrary.svg" /></a>
+            <a href="/"><img src="/public/icons/linkbrary.svg" /></a>
             <h1 class="blind">링크브러리 로그인</h1>
           </div>
           <div class="login__redirect">
             <span>회원이 아니신가요?</span>
-            <a href="/signup.html" class="login__redirect-link"
-              >회원 가입하기</a
-            >
+            <a href="/signup.html" class="login__redirect-link">
+              회원 가입하기
+            </a>
           </div>
         </div>
 
         <form class="form">
           <div class="form__inputs">
             <div class="form__input">
-              <label for="form__email" class="form__input-text">이메일</label>
-              <input
-                type="email"
-                placeholder="codeit@codeit.com"
-                id="form__email"
-                class="form__input-box form__email"
-              />
+              <label class="form__input-text"
+                >이메일 <br />
+                <input
+                  type="email"
+                  placeholder="codeit@codeit.com"
+                  class="form__input-box form__email"
+                />
+              </label>
             </div>
             <div class="form__input">
-              <label for="form__password" class="form__input-text"
-                >비밀번호
+              <label class="form__input-text">
+                비밀번호 <br />
+                <input
+                  type="password"
+                  placeholder="• • • • • • • •"
+                  class="form__input-box form__password"
+                />
+                <a class="form__password-show"
+                  ><img src="/public/icons/eye-off.svg"
+                /></a>
               </label>
-              <input
-                type="password"
-                placeholder="• • • • • • • •"
-                id="form__password"
-                class="form__input-box form__password"
-              />
             </div>
           </div>
           <input type="submit" value="로그인" class="button" />
@@ -57,13 +60,13 @@
               href="https://google.com"
               class="login__social-logo login__social-logo--google"
             >
-              <img src="/public/logos/google.png" />
+              <img src="/public/icons/google.png" />
             </a>
             <a
               href="https://www.kakaocorp.com/page/"
               class="login__social-logo login__social-logo--kakaotalk"
             >
-              <img src="/public/logos/kakotalk.svg" />
+              <img src="/public/icons/kakotalk.svg" />
             </a>
           </div>
         </div>
