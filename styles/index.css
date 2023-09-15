@@ -63,8 +63,8 @@ header {
     padding: 2.0rem 20.0rem;
     backdrop-filter: blur(5px);
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 header > h1 {
