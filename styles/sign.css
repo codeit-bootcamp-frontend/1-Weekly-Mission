@@ -58,17 +58,17 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0 1.5rem;
-	background: var(--linkbrary-white, #fff);
 	width: 40rem;
 	height: 6rem;
+	padding: 0 1.5rem;
 	border: 0.1rem solid var(--linkbrary--color--gray3);
 	border-radius: 0.8rem;
+	background: var(--linkbrary-white, #fff);
 	color: var(--linkbrary--color--gray0);
 }
 
 .sign__input:focus {
-	border: 1px solid var(--linkbrary--color--primary);
+	border: 0.1rem solid var(--linkbrary--color--primary);
 }
 
 .sign__input-password {
@@ -77,7 +77,7 @@ body {
 
 .sign__input-password button {
 	position: absolute;
-	right: 15px;
+	right: 1.5rem;
 	bottom: 50%;
 	transform: translateY(50%);
 }
@@ -105,7 +105,7 @@ body {
 	display: flex;
 	align-items: center;
 	height: 6.6rem;
-	padding: 0 24px;
+	padding: 0 2.4rem;
 	border: 1px solid var(--linkbrary--color--gray3);
 	border-radius: 0.8rem;
 	background: var(--linkbrary--color--gray4);
@@ -113,7 +113,7 @@ body {
 
 .social-sign__title {
 	flex: 1;
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 400;
 	color: var(--linkbrary--color--gray0);
 }
@@ -133,17 +133,17 @@ body {
 }
 
 .social-sign__button--google {
-	border: 1px solid var(--google--color);
+	border: 0.1rem solid var(--google--color);
 	border-radius: 50%;
 }
 
 .social-sign__button--kakao {
-	background-color: var(--kakao--color);
 	border-radius: 50%;
+	background-color: var(--kakao--color);
 }
 .social-sign__button--kakao img {
 	position: relative;
-	top: 1px;
+	top: 0.1rem;
 }
 
 /* SIGNIN */
