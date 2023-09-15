@@ -9,6 +9,12 @@ body {
   --btn-color: #F5F5F5;
   --description-color: #6B6B6B;
   --black: #111322;
+  --primary: #6D6AFE;
+  --white: #FFFFFF;
+  --gray10: #E7EFFB;
+  --gray20: #CCD5E3;
+  --gray60: #9FA6B2;
+  --gray100: #3E3E43;
 }
 
 header {
@@ -31,7 +37,7 @@ h1 {
   margin: 0 auto;
 }
 
-.signin-btn {
+.landing-signin-btn {
   width: 128px;
 }
 
@@ -72,7 +78,7 @@ main {
   font-weight: 700;
 }
 
-.prefix-bg-title {
+.text-gradient {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -115,19 +121,19 @@ main {
   height: 450px;
 }
 
-.content-1 {
+.text-gradient-type1 {
   background-image: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);;
 }
 
-.content-2 {
+.text-gradient-type2 {
   background-image: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
 }
 
-.content-3 {
+.text-gradient-type3 {
   background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
 }
 
-.content-4 {
+.text-gradient-type4 {
   background-image: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
 }
 
@@ -171,5 +177,87 @@ footer {
 }
 
 .prefix-page{
+  padding-top: 10vw;
+  height: 100vh;
   background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+}
+
+.sign-link-box a {
+  color: var(--primary);
+}
+
+.input-box, .signin-btn{
+  display: flex;
+  width: 400px;
+}
+
+.input-box {
+  padding: 18px 15px;
+  background-color: var(--white);
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--gray20);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.input-box:focus-within {
+  border: 1px solid var(--primary);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-logo {
+  width: 210.583px;
+  height: 38px;
+  margin-bottom: 16px;
+}
+
+.sign-form {
+  margin: 30px 0 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-form input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.sign-form label {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.sign-btn {
+  border: none;
+  margin-top: 6px;
+}
+
+.social-sign-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  padding: 12px 24px;
+  border: 1px solid var(--gray20);
+  background-color: var(--gray10);
+  border-radius: 8px;
+}
+
+.social-sign-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-sign-icons img{
+  width: 42px;
+  height: 42px;
 }
