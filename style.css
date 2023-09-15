@@ -11,13 +11,9 @@ body {
     margin: 0;
     padding: 0;
 
-    /* width: 1920px; */
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    /* width: 100%; */
 }
 
 a{
@@ -37,7 +33,6 @@ a{
 
 .frame1 {
     width: 100%;
-    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,10 +44,8 @@ a{
     height: 1.5rem; /* 24px */
 }
 
-.login {
+.button {
     display: flex;
-    width: 8rem; /* 128px */
-    padding: 1rem 1.25rem; /* 16px 20px */
     justify-content: center;
     align-items: center;
     gap: 0.625rem; /* 10px */
@@ -60,12 +53,17 @@ a{
     border-radius: 0.5rem; 
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
 
-    color: var(--grey-light, #F5F5F5);
+    color: #F5F5F5;
     font-family: Pretendard;
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+.login {
+    width: 8rem; /* 128px */
+    padding: 1rem 1.25rem; /* 16px 20px */
 }
 
 main {
@@ -98,6 +96,8 @@ main {
     line-height: 5rem; /* 125% 80px */
 
     color: #000;
+
+    min-width: 708px;
 }
 
 .content1_title > span {
@@ -108,43 +108,13 @@ main {
 }
 
 .add_link {
-    display: flex;
     width: 21.875rem; /* 350px */
-    padding: 2rem 1.25rem; /* 16px 20px */
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-
-    border-radius: 0.5rem;
-    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-
-    color: #F5F5F5;
-    font-family: Pretendard;
-    font-size: 1.125rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.big_image {
-    width: 75rem; /* 1200px */
-    height: 36.875rem; /* 590px */
-
-    display: flex;
-    justify-content: center;
-
-    overflow: hidden;
+    padding: 1rem 1.25rem; /* 16px 20px */
 }
 
 .content1_image {
-    width: 69.875rem; /* 1118px */
-    height: 41.188rem; /* 659px */
-    flex-shrink: 0;
-
-    border-radius: 1.563rem; /* 25px */
-    background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%);
-    box-shadow: 0 0.25rem 1.563rem 0 rgba(0, 0, 0, 0.08);
-    /* 0px 4px 25px 0px */
+    width: 75rem;
+    height: 36.875rem;
 }
 
 .contents {
