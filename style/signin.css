@@ -89,6 +89,21 @@ main{
   background: var(--linkbrary-white, #FFF);
 }
 
+.inputFrame .inputbox .password{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.inputFrame .inputbox .password img{
+  position: absolute;
+  top : 18px;
+  right: 15px;
+
+  
+}
+
 .inputFrame .inputbox:focus{
   border-color: #6D6AFE;
 }
