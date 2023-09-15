@@ -90,6 +90,8 @@ form {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+
+    position: relative;
 }
 
 label {
@@ -118,6 +120,14 @@ input {
 input:focus {
     outline: none;
     border: 1px solid var(--linkbrary-gray-20, #6D6AFE);
+}
+
+.eye-off {
+    position: absolute;
+    right: 15px;
+    top: 50px;
+
+    cursor: pointer;
 }
 
 .login_button {

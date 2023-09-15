@@ -90,6 +90,8 @@ form {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+    
+    position: relative;
 }
 
 label {
@@ -102,6 +104,13 @@ label {
     font-weight: 400;
     line-height: normal;
 }
+
+/* .password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+} */
 
 input {
     display: flex;
@@ -118,6 +127,14 @@ input {
 input:focus {
     outline: none;
     border: 1px solid var(--linkbrary-gray-20, #6D6AFE);
+}
+
+.eye-off {
+    position: absolute;
+    right: 15px;
+    top: 50px;
+
+    cursor: pointer;
 }
 
 .signup_button {
