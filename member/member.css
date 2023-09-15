@@ -23,6 +23,8 @@
 
 body {
     background-color: var(--gray-five-color);
+    display: flex;
+    justify-content: center;
 }
 
 .member-frame {
@@ -136,4 +138,8 @@ input:focus {
     position: absolute;
     top: 1.2rem;
     right: 1.1rem;
+}
+
+.cursor-pointer:hover {
+    cursor: pointer;
 }

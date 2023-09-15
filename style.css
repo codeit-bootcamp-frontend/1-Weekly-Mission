@@ -8,6 +8,8 @@
     --gray-three-color: #CCD5E3;
     --gray-four-color: #E7EFFB;
     --gray-five-color: #F0F6FF;
+
+    --gradient-text-rainbow-first: linear-gradient(91deg, var(--primary-color) 17.28%, #FF9F9F 74.98%);
 }
 
 
