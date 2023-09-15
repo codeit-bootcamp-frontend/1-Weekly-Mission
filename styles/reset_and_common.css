@@ -53,8 +53,19 @@ html, body, button, input, h1, h2 {
 }
 
 
+.flexRow {
+    display:flex;
+    flex-direction: row;
+}
 
+.flexColumn {
+    display:flex;
+    flex-direction: column;
+}
 
-
+.flexCenter {
+    justify-content: center;
+    align-items: center;
+}
 
 
