@@ -81,3 +81,60 @@ form{
     font-size: 18px;
     font-weight: 600;
 }
+
+footer{
+    width : 100%;
+    padding : 12px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    background: var(--linkbrary-gray-10, #E7EFFB);
+
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p{
+    color: var(--linkbrary-gray-100, #373740);
+    font-size: 14px;
+}
+
+.social_icon_box{
+    display : flex;
+    gap : 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.social_icon_kakao{
+    width : 42px;
+    height : 42px;
+    position : relative;
+    background-image: url("kakaotalk_bg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.kakao{
+    position : absolute;
+    top : 10px;
+    left : 8.5px;
+}
+
+.social_icon_google{
+    width : 42px;
+    height : 42px;
+    position : relative;
+    background-image: url("google_bg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.google{
+    width : 22px;
+    position : absolute;
+    top : 10px;
+    left : 10px;
+}
