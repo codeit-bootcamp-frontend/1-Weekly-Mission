@@ -1,0 +1,153 @@
+body {
+	background-color: var(--linkbrary--color--gray5);
+}
+
+/* GLOBAL */
+.sign__container {
+	width: 40rem;
+	margin: 23.8rem auto 0 auto;
+}
+
+.sign__legend-wrapper {
+	text-align: center;
+}
+
+.sign__logo {
+	display: inline-block;
+	width: 21rem;
+	height: 3.8rem;
+	margin-bottom: 1.6rem;
+}
+
+.sign__wrapper {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.8rem;
+}
+
+.sign__link-text {
+	color: var(--linkbrary--color--black);
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+.sign__link {
+	border-bottom: 0.1rem solid var(--linkbrary--color--primary);
+	color: var(--linkbrary--color--primary);
+	font-size: 1.6rem;
+	font-weight: 600;
+	line-height: 1.8rem;
+}
+
+.sign__input-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+	margin-bottom: 3rem;
+}
+
+.sign__input-title {
+	margin-bottom: 1.2rem;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: var(--linkbrary--color--black);
+}
+
+.sign__input {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 1.5rem;
+	background: var(--linkbrary-white, #fff);
+	width: 40rem;
+	height: 6rem;
+	border: 0.1rem solid var(--linkbrary--color--gray3);
+	border-radius: 0.8rem;
+	color: var(--linkbrary--color--gray0);
+}
+
+.sign__input:focus {
+	border: 1px solid var(--linkbrary--color--primary);
+}
+
+.sign__input-password {
+	position: relative;
+}
+
+.sign__input-password button {
+	position: absolute;
+	right: 15px;
+	bottom: 50%;
+	transform: translateY(50%);
+}
+
+.sign__input-password--noshow button {
+	display: none;
+}
+
+.sign__button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	width: 40rem;
+	height: 5.4rem;
+	margin-bottom: 3.2rem;
+	border-radius: 8px;
+	background: var(--linkbrary--gra--purpleblue);
+	font-size: 1.8rem;
+	font-weight: 600;
+	color: var(--linkbrary--color--white);
+}
+
+.social-sign__wrapper {
+	display: flex;
+	align-items: center;
+	height: 6.6rem;
+	padding: 0 24px;
+	border: 1px solid var(--linkbrary--color--gray3);
+	border-radius: 0.8rem;
+	background: var(--linkbrary--color--gray4);
+}
+
+.social-sign__title {
+	flex: 1;
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--linkbrary--color--gray0);
+}
+
+.social-sign__button-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+}
+
+.social-sign__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 4.2rem;
+	height: 4.2rem;
+}
+
+.social-sign__button--google {
+	border: 1px solid var(--google--color);
+	border-radius: 50%;
+}
+
+.social-sign__button--kakao {
+	background-color: var(--kakao--color);
+	border-radius: 50%;
+}
+.social-sign__button--kakao img {
+	position: relative;
+	top: 1px;
+}
+
+/* SIGNIN */
+#signin__container {
+}
+
+/* SIGNUP */
