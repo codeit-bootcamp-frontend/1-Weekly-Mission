@@ -1,7 +1,6 @@
 section {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: var(--Gray1);
@@ -11,8 +10,8 @@ section {
 .box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  padding-top: 8rem;
 }
 
 .header {
