@@ -3,15 +3,12 @@
 
     - 로그인 버튼, 링크 추가하기, privacy policy, FAQ는 존재하지 않는 링크를 걸어두었습니다.
 
-    - 화면 너비가 1920px 이상이면 내부 요소들 간 동일한 간격을 유지하면서 가운데 정렬 
-    -> width를 1920px로 고정시키면 header/footer에 있는 요소들의 간격이 화면 너비에 따라 좁아지지 않고
-    margin : 0 auto;로 둬도 width 를 100%으로 두었기 때문에 전혀 상관이 없어 어떻게 구현을 해야할지 모르겠습니다.
-
     - 심화 요구 사항
     -> 브라우저의 font-size를 어떻게 가져와서 이에 대한 상대적인 값으로 두어야 할 지 모르겠습니다. rem을 사용하는 것인가요?
 */
 
-@import "reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
+@import "/reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 *{
     box-sizing : border-box;
@@ -109,7 +106,7 @@ header a{ /* login button */
     width : 708px;
     text-align: center;
     font-family: Pretendard;
-    font-size: 54px;
+    font-size: 64px;
     font-style: normal;
     font-weight: 700;
     line-height: 80px; /* 125% */
