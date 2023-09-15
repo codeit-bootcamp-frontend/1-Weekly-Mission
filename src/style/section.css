@@ -18,15 +18,15 @@ section {
 .sectionInWrapper {
   display: flex;
   align-items: center;
-  gap: 157px;
+  gap: 9.813rem;
 }
 
 .sectionContentWrapper {
   display: flex;
-  width: 291px;
+  width: 18.18rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .sectionTitle {
