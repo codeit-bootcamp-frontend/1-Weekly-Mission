@@ -1,0 +1,361 @@
+/*
+    [ README ]
+
+    - 로그인 버튼, 링크 추가하기, privacy policy, FAQ는 존재하지 않는 링크를 걸어두었습니다.
+
+    - 화면 너비가 1920px 이상이면 내부 요소들 간 동일한 간격을 유지하면서 가운데 정렬 
+    -> width를 1920px로 고정시키면 header/footer에 있는 요소들의 간격이 화면 너비에 따라 좁아지지 않고
+    margin : 0 auto;로 둬도 width 를 100%으로 두었기 때문에 전혀 상관이 없어 어떻게 구현을 해야할지 모르겠습니다.
+
+    - 심화 요구 사항
+    -> 브라우저의 font-size를 어떻게 가져와서 이에 대한 상대적인 값으로 두어야 할 지 모르겠습니다. rem을 사용하는 것인가요?
+*/
+
+@import "reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
+
+*{
+    box-sizing : border-box;
+}
+
+html{
+    color : black;
+    margin : 0 auto;
+}
+
+.bg_header_main{
+    /* 1920px 이상이 되면 파란색 배경만 늘어나도록 이 class 배경 따로 설정 */
+    width : 100%;
+    background: var(--linkbrary-bg, #F0F6FF);
+}
+
+.bg_footer{
+    width : 100%;
+    background: var(--the-julge-black, #111322);
+}
+
+a :hover{
+    cursor: pointer;
+}
+
+header{
+    width : 100%;
+    max-width : 1920px; /* 너비가 1920px 이상이면 요소들이 더이상 넓어지지 않도록*/
+    display: flex;
+    padding : 20px 200px;
+    margin : 0 auto ;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    background: var(--linkbrary-bg, #F0F6FF);
+
+    position : fixed;
+    top : 0px;
+    z-index : 1;
+}
+
+header div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+header .btn,
+.main_content a{ /* click button */
+    display: flex;
+    padding : 16px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+
+    /* text */
+    color: var(--grey-light, #F5F5F5);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+}
+
+header a{ /* login button */
+    width : 128px;
+}
+
+.main_content a { /* add_link button */
+    width : 350px;
+}
+
+.main_content{
+    display: flex;
+    width: 100%;
+    max-width : 1920px;
+    margin : 0 auto;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+
+    background: #F0F6FF;
+    overflow : hidden;
+}
+
+.main_text{
+    padding-top : 170px;
+    width : 708px;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px; /* 125% */
+    color : #000;
+}
+
+.main_grd {
+    background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.img_box{
+    margin : 50px 41px 0px;
+    width : 100%;
+    max-width : 1118px;
+    height : 590px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    background-color : white;
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+}
+
+.site_img{
+    width : 100%;
+    height : 659px;
+    flex-shrink: 0;
+    border-radius : 25px;
+    background-image: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%)
+    ,url('https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4');
+    background-repeat : no-repeat;
+    background-position : center;
+    background-size : contain;
+}
+
+.save_content,
+.folder_content,
+.share_content,
+.search_content{
+    width : 100%;
+    max-width : 998px;
+    margin : 0 auto;
+    display: flex;
+    padding : 50px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.save_text,
+.folder_text,
+.share_text,
+.search_text{
+    display: flex;
+    width: 291px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    font-family: Pretendard;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.3px;
+}
+
+.detail{
+    color: #6B6B6B;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+}
+
+.save_grd{
+    background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} 
+
+.save_cards{
+    width: 55%;
+    max-width : 550px;
+    height: 450px;
+    border-radius: 15px;
+    background: #F0F6FF;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardbox{
+    display: inline-flex;
+    align-items: center;
+    gap: -12px;
+}
+
+.cardbox .card{
+    width: 244px;
+    height: 239px;
+    flex-shrink: 0;
+    border-radius: 11px;
+}
+
+.card_center{
+    position : relative;
+    width: 244px;
+    height: 239px;
+    border-radius: 11px;
+    border: 2px solid var(--linkbrary-primary-color, #6D6AFE);
+}
+
+.card_center .card{
+    width : 100%;
+    height : 100%;
+}
+
+.down_icon{
+    position : absolute;
+    bottom : -15px;
+    right : -15px;
+}
+
+.folder_grd{
+    background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.folder_img{
+    display: flex;
+    width: 55%;
+    max-width : 550px;
+    padding: 114px 68px 66px 68px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background: #F0F6FF;
+}
+
+.folder_img img{
+    width : 100%;
+    height : 100%;
+}
+
+.share_grd{
+    background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.share_img{
+    width: 55%;
+    max-width : 550px;
+    flex-shrink: 0;
+    padding : 121px 77px;
+    
+    border-radius: 25px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+    background-position : center;
+    background-size : cover;
+    background-repeat : no-repeat;
+
+}
+
+.share_img img{
+    width :100%;
+}
+
+.search_grd{
+    background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.search_img{
+    width: 55%;
+    max-width : 550px;
+    height: 450px;
+    border-radius: 15px;
+    background: #F0F6FF;
+    padding-top : 55px;
+    padding-left : 60px;
+
+    overflow : hidden;
+}
+
+.search_img img{
+    width: 550px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+}
+
+footer{
+    display: flex;
+    width : 100%;
+    max-width : 1920px;
+    height: 160px;
+    margin : 0 auto;
+    padding: 32px 104px 64px 104px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+footer a{
+    text-decoration: none;
+    color: #CFCFCF;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.ppf{
+    display : flex;
+    gap : 30px;
+}
+
+.link_icon{
+    display : flex;
+    gap : 12px;
+}
+
+.sources{
+    color: #676767;
+    text-align: center;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
