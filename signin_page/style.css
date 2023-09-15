@@ -7,11 +7,12 @@
 
 body{
     background: var(--linkbrary-bg, #F0F6FF);
+    font-family: Pretendard;
 }
 
 .container{
     width : 400px;
-    margin : 0 auto;
+    margin : 238px auto;
 
     display : flex;
     flex-direction: column;
@@ -25,7 +26,6 @@ header{
     align-items: center;
     gap : 16px;
 
-    font-family: Pretendard;
     font-size: 16px;
 }
 
@@ -42,4 +42,42 @@ header span{
 header a{
     color: var(--linkbrary-primary-color, #6D6AFE);
     font-weight : 600;
+}
+
+main{
+    width : 100%;
+}
+
+form{
+    font-size : 14px;
+    display : flex;
+    flex-direction: column;
+    gap : 24px;
+}
+
+.main_email,
+.main_pw{
+    display : flex;
+    flex-direction: column;
+    gap : 12px;
+}
+
+.input_email,
+.input_pw{
+    padding : 18px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    background: var(--linkbrary-white, #FFF);
+}
+
+.button_login{
+    padding : 16px 20px;
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    border : none;
+
+    color: var(--grey-light, #F5F5F5);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-weight: 600;
 }

@@ -16,11 +16,19 @@
             </p>
         </header>
 
-        <body>
-            이메일
-            비밀번호
-            로그인
-        </body>
+        <main> <!-- main으로 한번 더 묶는 게 맞나 .. -->
+            <form>
+                <label class = "main_email">
+                    이메일
+                    <input class = "input_email" name = "signin_email" type = "email">
+                </label>
+                <label class = "main_pw">
+                    비밀번호
+                    <input class = "input_pw" name = "signin_pw" type = "password">
+                </label>
+                <button class = "button_login">로그인</button>
+            </form>
+        </main>
 
         <footer>
             소셜 로그인
