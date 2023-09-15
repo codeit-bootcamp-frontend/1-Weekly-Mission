@@ -39,12 +39,12 @@ a {
 }
 .gnb__logo {
   flex-shrink: 0;
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 .gnb__signin {
   flex-shrink: 0;
   width: 12.8rem;
-  margin-left: 5px;
+  margin-left: 0.5rem;
 }
 
 .footer {
@@ -277,4 +277,4 @@ a {
   height: 58.4rem;
   border-radius: 1.5rem;
   box-shadow: 0 0.4rem 2.5rem 0 rgba(0, 0, 0, 0.08);
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=main.css.map */
