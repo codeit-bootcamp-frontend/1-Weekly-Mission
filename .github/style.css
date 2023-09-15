@@ -390,3 +390,25 @@ body {
   width: 20px;
   height: 20px;
 }
+/*******************************/
+/*signin*/
+.contsignin {
+  display: flex;
+  width: 1440px;
+  padding: 238px 0px 252px 0px;
+  justify-content: center;
+  align-items: center;
+}
+.contdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.contdiv1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
