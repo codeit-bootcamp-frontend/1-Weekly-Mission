@@ -46,9 +46,7 @@ header .login {
   color: var(--grey-light, #F5F5F5);
   font-family: Pretendard;
   font-size: 1.125rem;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   display: flex;
   width: 8rem;
   padding: 1rem 1.25rem;
@@ -76,7 +74,6 @@ main .intro h1 {
   text-align: center;
   font-family: Pretendard;
   font-size: 4rem;
-  font-style: normal;
   font-weight: 700;
   line-height: 80px;
 
@@ -102,9 +99,7 @@ main .intro .addlink {
   color: var(--grey-light, #F5F5F5);
   font-family: Pretendard;
   font-size: 1.125rem;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   border: none;
   text-decoration-line: none;
 
@@ -150,9 +145,7 @@ main .content {
 .frame .texts h2 {
   font-family: Pretendard;
   font-size: 3rem;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -0.3px;
 
 }
@@ -192,7 +185,6 @@ main .content {
   color: #6B6B6B;
   font-family: Pretendard;
   font-size: 1rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 150%;
   /* 24px */
@@ -235,9 +227,7 @@ footer .frame .footer_element {
   align-self: stretch;
   font-family: Arial;
   font-size: 1rem;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
 
 footer .frame .footer_element .codeit_2023 {
