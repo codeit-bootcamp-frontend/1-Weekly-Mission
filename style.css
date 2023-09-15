@@ -29,6 +29,10 @@ a{
     align-self: stretch;
 
     background: #F0F6FF;
+
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .frame1 {
