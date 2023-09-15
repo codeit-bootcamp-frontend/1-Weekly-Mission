@@ -9,7 +9,6 @@
 
 body {
   background: var(--linkbrary-bg);
-  margin: auto;
 }
 
 a {
@@ -23,21 +22,28 @@ input:focus {
 
 /* nav */
 
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 93.5px;
+}
+
 .gnb {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 20px;
+  width: 100%;
+  position: fixed;
+  top: 0px;
   z-index: 100;
-  margin: 20px 200px;
+  padding: 20px 200px;
 }
 
 .login-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-self: stretch;
   gap: 8px;
   width: 128px;
   cursor: pointer;
