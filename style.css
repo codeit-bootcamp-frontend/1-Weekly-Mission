@@ -20,6 +20,9 @@
 /* Header */
 
 header {
+    position: sticky;
+    z-index: 2;
+    top: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -180,6 +183,7 @@ section {
     left: 1.0625rem;
     width: 15.25rem;
     height: 14.9725rem;
+    z-index: 0;
 }
 
 .download-image {
