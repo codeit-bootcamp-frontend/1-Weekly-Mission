@@ -29,12 +29,12 @@ header {
   height: 38px;
 }
 
-.signup-recommendation {
+.signin-recommendation {
   font-size: 16px;
   line-height: 24px;
 }
 
-.signup-button {
+.signin-button {
   color: var(--linkbrary-primary-color, #6D6AFE);
   font-weight: 600;
   line-height: normal;
@@ -77,7 +77,7 @@ input:focus { /* 적용 안됨 확인 필요 */
   border: 1px solid var(--linkbrary-primary-color, #6D6AFE);
 }
 
-.signin-button {
+.signup-button {
   display: flex;
   justify-content: center;
   align-items: center;
