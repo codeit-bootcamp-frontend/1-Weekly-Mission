@@ -59,8 +59,7 @@ form input:focus {
 
 form .password-off {
   position: relative;
-  left: 23rem;
-  top: -2.25rem;
+
 }
 
 form .login {
