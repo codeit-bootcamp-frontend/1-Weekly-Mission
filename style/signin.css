@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #6d6afe;
+}
+
+.wrapper {
+  padding: 238px 0 252px;
+
+  background-color: #f0f6ff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.header_logo {
+  width: 210px;
+}
+
+.header_signup {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+
+  display: flex;
+  flex-direction: row;
+}
+
+.main {
+  margin: 30px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input_type {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  margin-bottom: 12px;
+}
+
+.input_content {
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+
+  border-radius: 8px;
+  border: 1px solid #D3D4DD;
+}
+
+.input_content:focus {
+  outline: 1px solid #6d6afe;
+}
+
+.signin {
+  width: 400px;
+
+  color: #f5f5f5;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 600;
+
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  padding: 16px 20px;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+}
+
+.social_login {
+  width: 400px;
+
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background-color: #e7effb;
+
+  padding: 12px 24px;
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social_login a {
+  text-decoration: none;
+}
+
+.social_icons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.google {
+  width: 42px;
+  height: 42px;
+
+  padding-top: 3px;
+
+  background-color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  border: 1px solid #d3d4dd;
+}
+
+.kakao {
+  width: 42px;
+  height: 42px;
+
+  padding-top: 3px;
+
+  background-color: #f5e14b;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+}

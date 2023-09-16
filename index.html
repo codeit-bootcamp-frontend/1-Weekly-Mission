@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linkbrary</title>
-    <link href="./style.css" rel="stylesheet" />
+    <link href="./style/index.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -12,90 +12,88 @@
     />
   </head>
   <body>
-    <div class="wrapper">
-      <div class="header">
-        <a href="#">
-          <img src="./image/logo.svg" alt="logo" />
+    <div class="header">
+      <a href="#">
+        <img src="./image/logo.svg" alt="logo" />
+      </a>
+      <button class="header_button" onclick="location.href='signin.html'">
+        로그인
+      </button>
+    </div>
+    <div class="banner">
+      <p class="banner_info">
+        <span>세상의 모든 정보</span>를<br />쉽게 저장하고 관리해 보세요
+      </p>
+      <button class="banner_button" onclick="location.href='signup.html'">
+        링크 추가하기
+      </button>
+      <img src="./image/site.png" alt="example" />
+    </div>
+    <div class="content">
+      <div class="content-box">
+        <div class="article">
+          <p class="title"><span>원하는 링크</span>를<br />저장하세요</p>
+          <p class="description">
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
+            사고 싶은 옷, 기억하고 싶은 모든 것을<br />
+            한 공간에 저장하세요.
+          </p>
+        </div>
+        <img src="./image/content1.png" alt="content1" class="image" />
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-box">
+        <img src="./image/content2.png" alt="content2" class="image" />
+        <div class="article">
+          <p class="title">링크를 폴더로<br /><span>관리</span>하세요</p>
+          <p class="description">
+            나만의 폴더를 무제한으로 만들고<br />다양하게 활용할 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-box">
+        <div class="article">
+          <p class="title">저장한 링크를<br /><span>공유</span>해 보세요.</p>
+          <p class="description">
+            여러 링크를 폴더에 담고 공유할 수 있습니다.<br />가족, 친구,
+            동료들에게 쉽고 빠르게 링크를<br />
+            공유해 보세요.
+          </p>
+        </div>
+        <img src="./image/content3.png" alt="content3" class="image" />
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-box">
+        <img src="./image/content4.png" alt="content4" class="image" />
+        <div class="article">
+          <p class="title">저장한 링크를<br /><span>검색</span>해 보세요</p>
+          <p class="description">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p class="footer_codeit">©codeit - 2023</p>
+      <div class="footer_info">
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./faq.html">FAQ</a>
+      </div>
+      <div class="icons">
+        <a href="https://www.facebook.com/?locale=ko_KR" target="_blank">
+          <img src="./image/facebookIcon.svg" alt="icon" class="icon" />
         </a>
-        <button class="header_button" onclick="location.href='signin.html'">
-          로그인
-        </button>
-      </div>
-      <div class="banner">
-        <p class="banner_info">
-          <span>세상의 모든 정보</span>를<br />쉽게 저장하고 관리해 보세요
-        </p>
-        <button class="banner_button" onclick="location.href='signup.html'">
-          링크 추가하기
-        </button>
-        <img src="./image/site.png" alt="example" />
-      </div>
-      <div class="content">
-        <div class="content-box">
-          <div class="article">
-            <p class="title"><span>원하는 링크</span>를<br />저장하세요</p>
-            <p class="description">
-              나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
-              사고 싶은 옷, 기억하고 싶은 모든 것을<br />
-              한 공간에 저장하세요.
-            </p>
-          </div>
-          <img src="./image/content1.png" alt="content1" class="image" />
-        </div>
-      </div>
-      <div class="content">
-        <div class="content-box">
-          <img src="./image/content2.png" alt="content2" class="image" />
-          <div class="article">
-            <p class="title">링크를 폴더로<br /><span>관리</span>하세요</p>
-            <p class="description">
-              나만의 폴더를 무제한으로 만들고<br />다양하게 활용할 수 있습니다.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <div class="content-box">
-          <div class="article">
-            <p class="title">저장한 링크를<br /><span>공유</span>해 보세요.</p>
-            <p class="description">
-              여러 링크를 폴더에 담고 공유할 수 있습니다.<br />가족, 친구,
-              동료들에게 쉽고 빠르게 링크를<br />
-              공유해 보세요.
-            </p>
-          </div>
-          <img src="./image/content3.png" alt="content3" class="image" />
-        </div>
-      </div>
-      <div class="content">
-        <div class="content-box">
-          <img src="./image/content4.png" alt="content4" class="image" />
-          <div class="article">
-            <p class="title">저장한 링크를<br /><span>검색</span>해 보세요</p>
-            <p class="description">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
-          </div>
-        </div>
-      </div>
-      <div class="footer">
-        <p class="footer_codeit">©codeit - 2023</p>
-        <div class="footer_info">
-          <a href="./privacy.html">Privacy Policy</a>
-          <a href="./faq.html">FAQ</a>
-        </div>
-        <div class="icons">
-          <a href="https://www.facebook.com/?locale=ko_KR" target="_blank">
-            <img src="./image/facebookIcon.svg" alt="icon" class="icon" />
-          </a>
-          <a href="https://twitter.com/?lang=ko" target="_blank">
-            <img src="./image/twitterIcon.svg" alt="icon" class="icon" />
-          </a>
-          <a href="https://www.instagram.com/" target="_blank">
-            <img src="./image/instagramIcon.svg" alt="icon" class="icon" />
-          </a>
-          <a href="https://www.youtube.com/" target="_blank">
-            <img src="./image/youtubeIcon.svg" alt="icon" class="icon" />
-          </a>
-        </div>
+        <a href="https://twitter.com/?lang=ko" target="_blank">
+          <img src="./image/twitterIcon.svg" alt="icon" class="icon" />
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
+          <img src="./image/instagramIcon.svg" alt="icon" class="icon" />
+        </a>
+        <a href="https://www.youtube.com/" target="_blank">
+          <img src="./image/youtubeIcon.svg" alt="icon" class="icon" />
+        </a>
       </div>
     </div>
   </body>
