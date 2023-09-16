@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./signup.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4fad5bb7ce.js" crossorigin="anonymous"></script>
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'rta2yro',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
+  <title>Likbrary_Signup</title>
+</head>
+<body>
+  <div class="outer_wrapper">
+    <div class="inner_wrapper">
+      <div class="header">
+        <a href="index.html"><img src="./images/logo.png" alt="logo"></a>
+        <h6>
+          이미 회원이신가요? <a id="login" href="signin.html">로그인 하기</a>
+        </h6>
+      </div>
+      <form>
+        <div class="input_wrapper">
+          <label class="label">이메일</label>
+          <input class="input_box" type="email" name="email">
+        </div>
+        <div class="input_wrapper">
+          <label class="label">비밀번호</label>
+          <div class="input_container">
+            <a href="#"><img class="eye_icon" src="./images/eye-on.png"></a>
+            <input class="input_box" type="password" name="password">
+          </div>
+        </div>
+        <div class="input_wrapper">
+          <label class="label">비밀번호 확인</label>
+          <div class="input_container">
+            <a href="#"><img class="eye_icon" src="./images/eye-on.png"></a>
+            <input class="input_box" type="password" name="password_check">
+          </div>
+          <span class="verification">비밀번호가 다릅니다</span>
+        </div>
+      </form>
+      <div class="footer">
+        <a id="submit" href="#">회원가입</a>
+        <div class="social_login">
+          <span>다른 방식으로 가입하기</span>
+          <div class="auth">
+            <a href="https://www.google.com/"><img src="./images/google_icon.png"></a>
+            <a href="https://www.kakaocorp.com/page/"><img src="./images/kakao_icon.png"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
