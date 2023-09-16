@@ -122,4 +122,5 @@ input:focus {
   position: absolute;
   right: 0px;
   bottom: 18px;
+  cursor: pointer;
 }
