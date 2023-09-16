@@ -9,6 +9,7 @@ main {
     background: #F0F6FF;
 }
 
+/* sign 상단 타이틀 */
 .sign-container {
     display: flex;
     flex-direction: column;
@@ -41,6 +42,7 @@ main {
     line-height: 24px; /* 150% */
 }
 
+/* 회원가입 링크 */
 .signup-link-container {
     display: flex;
     flex-direction: column;
@@ -55,6 +57,7 @@ main {
     line-height: normal;
 }
 
+/* sign 입력란 */
 .sign-form-container {
     display: flex;
     flex-direction: column;
@@ -94,4 +97,21 @@ main {
     position: absolute;
     right: 15px;
     top: 48px;
+}
+
+.btn {
+    display: flex;
+    width: 400px;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+    color: #F5F5F5;
+    font-family: Pretendard, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
