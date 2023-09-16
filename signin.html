@@ -12,29 +12,40 @@
         <link rel="stylesheet" href="style_sign.css">
     </head>
 
-    <body>        
-        <a href="index.html">
-            <img src="images/logo.svg" alt="링크브러리 로고">
-        </a>
-        <div>
-            회원이 아니신가요? 
-            <a href="signup.html">회원 가입하기</a>
-        </div>
+    <body>      
+        
+        <main>  
+            <section class="title-section">
+                <a href="index.html">
+                    <img src="images/logo.svg" class = "img-logo" alt="링크브러리 로고">
+                </a>
+                <div class ="question-label">
+                    회원이 아니신가요? 
+                    <a href="signup.html" class="link-to-signup">회원 가입하기</a>
+                </div>
+            </section>
 
-        <form>
-            <div>
-                이메일
-                <input id="email" name="email" type="email">
-                비밀번호
-                <input id="password" name="password" type="password">
+            <section class="submit-section">
+                <form>
+                    <label for="email">
+                        이메일
+                    </label>
+                    <input id="email" name="email" type="email">
+                     
+                    <label for="password">
+                        비밀번호
+                    </label>
+                    <input id="password" name="password" type="password">
 
-                <button>로그인</button>
-            </div>
-        </form>
+                    <button>로그인</button>
+                    
+                </form>
+            </section>
 
-        <div>
-            소셜 로그인
-            
-        </div>
+            <section class ="social-login-section">
+                소셜 로그인
+                
+            </section>
+        </main>
     </body>
 </html>

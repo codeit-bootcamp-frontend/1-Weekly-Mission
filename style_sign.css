@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    /* 1rem = 10px로 고정하기. */
+    word-break: keep-all;
+    font-size: 10px;
+    font-family: 'Noto Sans Korean', 'Poppins', 'sans-serif';
+  }
+  body{
+    background-color: #F0F6FF;
+    margin:0;
+  }
+
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+  a:visited, a:link{
+    color: #6D6AFE;
+  }
+  
+  /* title section 설정하기 */
+  .title-section{
+    padding-top: 24rem;
+  }
+  .img-logo{
+    width: 25rem;
+  }
+  .question-label{
+    font-weight: 400;
+    font-size: 1.6rem;
+  }
+  .question-label .link-to-signup{
+    font-weight: 600;
+  }
+  
+  /* submit section 설정하기 */
+  
