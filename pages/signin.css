@@ -1,3 +1,8 @@
+body{
+  padding-top: 23.8rem;
+  padding-bottom: 25.2rem;
+}
+
 .body1-regular {
   display: flex;
   flex-direction: column;
@@ -5,7 +10,7 @@
   gap: 3rem;
   margin-bottom: 3.2rem;
   color: var(--black, #000);
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px; /* 150% */
 }
@@ -36,4 +41,38 @@
 
 .body1-regular .head .move-to-signup a:hover{
   text-decoration: underline;
+}
+
+.email input, .password input {
+  display: flex;
+  width: 40rem;
+  padding: 1.8rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--primary, #6D6AFE);
+  background: var(--white, #FFF);
+}
+
+.email .text, .email .text {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.login-button {
+  display: flex;
+  width: 40rem;
+  padding: 1.6rem 2.0rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.8rem;
+  background: var(--linkbrary-gradation);
+  cursor: pointer;
+}
+
+.login-button .text{
+  color: var(--grey-light, #F5F5F5);
+  font-size: 1.8rem;
+  font-weight: 600;
 }
