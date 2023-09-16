@@ -229,7 +229,7 @@ main {
     flex-shrink: 0;
     align-self: stretch;
 
-    color: var(--linkbrary-black, #000);
+    background-color: var(--linkbrary-black, #000);
 }
 
 .footer_text {
