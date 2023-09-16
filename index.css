@@ -30,7 +30,7 @@ a:hover{
   text-decoration: underline;
 }
 
-header {
+nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +41,7 @@ header {
   top: 0;
 }
 
-header div {
+nav div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,7 +55,7 @@ header div {
   cursor: pointer
 }
 
-header .button{
+nav .button{
   width: 12.8rem;
   margin: 0;
 }
