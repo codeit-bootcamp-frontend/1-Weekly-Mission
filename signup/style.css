@@ -1,3 +1,18 @@
+/* 색상 코드 */
+:root {
+    --primary-color: #6d6afe;
+    --linkbrary-red: #ff5b56;
+    --linkbrary-black: #111322;
+    --linkbrary-white: #ffffff;
+
+    --linkbrary-gray-1: #3E3E43;
+    --linkbrary-gray-2: #9FA6B2;
+    --linkbrary-gray-3: #CCD5E3;
+    --linkbrary-gray-4: #E7EFFB;
+
+    --background-color: #F0F6FF;
+}
+
 /* 초기화 css 코드 */
 * {
     box-sizing: border-box;
@@ -9,7 +24,7 @@
 html,
 body {
     font-size: 62.5%;
-    background-color: #F0F6FF;
+    background-color: var(--background-color, #F0F6FF);
 
     display: flex;
     justify-content: center;
@@ -55,7 +70,7 @@ main {
     align-items: flex-start;
     gap: 0.8rem;
 
-    color: var(--black, #000);
+    color: var(--linkbrary-black, #000);
 
     /* Linkbrary/body1-regular */
     font-family: Pretendard;
@@ -90,7 +105,7 @@ form {
 }
 
 label {
-    color: var(--black, #000);
+    color: var(--linkbrary-black, #000);
 
     /* Linkbrary/body2-regular */
     font-family: Pretendard;
@@ -108,13 +123,13 @@ input {
     align-items: center;
 
     border-radius: 0.8rem;
-    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    border: 1px solid var(--linkbrary-gray-3, #CCD5E3);
     background: var(--linkbrary-white, #FFF);
 }
 
 input:focus {
     outline: none;
-    border: 1px solid var(--linkbrary-gray-20, #6D6AFE);
+    border: 1px solid var(--primary-color, #6D6AFE);
 }
 
 .eye-off {
@@ -135,9 +150,9 @@ input:focus {
 
     border-radius: 0.8rem;
     border: 0;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
 
-    color: var(--grey-light, #F5F5F5);
+    color: var(--linkbrary-gray-4, #F5F5F5);
     font-family: Pretendard;
     font-size: 1.8rem;
     font-style: normal;
@@ -155,12 +170,12 @@ input:focus {
     align-items: center;
 
     border-radius: 0.8rem;
-    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
-    background: var(--linkbrary-gray-10, #E7EFFB);
+    border: 1px solid var(--linkbrary-gray-3, #CCD5E3);
+    background: var(--linkbrary-gray-4, #E7EFFB);
 }
 
 .contents_02 > p {
-    color: var(--linkbrary-gray-100, #373740);
+    color: var(--linkbrary-gray-1, #373740);
 
     /* Linkbrary/body2-regular */
     font-family: Pretendard;

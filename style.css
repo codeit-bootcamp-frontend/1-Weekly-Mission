@@ -1,3 +1,18 @@
+/* 색상 코드 */
+:root {
+    --primary-color: #6d6afe;
+    --linkbrary-red: #ff5b56;
+    --linkbrary-black: #111322;
+    --linkbrary-white: #ffffff;
+
+    --linkbrary-gray-1: #3E3E43;
+    --linkbrary-gray-2: #9FA6B2;
+    --linkbrary-gray-3: #CCD5E3;
+    --linkbrary-gray-4: #E7EFFB;
+
+    --background-color: #F0F6FF;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -28,7 +43,7 @@ a{
     gap: 0.5rem;  /* 8px */
     align-self: stretch;
 
-    background: #F0F6FF;
+    background-color: var(--background-color, #F0F6FF);
 
     position: sticky;
     top: 0;
@@ -86,7 +101,7 @@ main {
     align-items: center;
     gap: 2.5rem; /* 40px */
 
-    background: #F0F6FF;
+    background-color: var(--background-color, #F0F6FF);
 
     align-self: stretch;
 }
@@ -99,7 +114,7 @@ main {
     font-weight: 700;
     line-height: 5rem; /* 125% 80px */
 
-    color: #000;
+    color: var(--linkbrary-black, #000);
 
     min-width: 708px;
 }
@@ -214,7 +229,7 @@ main {
     flex-shrink: 0;
     align-self: stretch;
 
-    background: #111322;
+    color: var(--linkbrary-black, #000);
 }
 
 .footer_text {
