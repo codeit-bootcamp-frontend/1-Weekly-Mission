@@ -77,6 +77,12 @@ input:focus { /* 적용 안됨 확인 필요 */
   border: 1px solid var(--linkbrary-primary-color, #6D6AFE);
 }
 
+.eye-off {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
 .signup-button {
   display: flex;
   justify-content: center;
