@@ -7,6 +7,7 @@ main {
     justify-content: center;
     align-items: center;
     background: #F0F6FF;
+    font-family: Pretendard, sans-serif;
 }
 
 /* sign 상단 타이틀 */
@@ -35,7 +36,6 @@ main {
     gap: 8px;
     color: #000;
     /* Linkbrary/body1-regular */
-    font-family: Pretendard, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -109,9 +109,67 @@ main {
     border-radius: 8px;
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     color: #F5F5F5;
-    font-family: Pretendard, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+.social-login {
+    display: flex;
+    margin-top: 2px;
+    width: 400px;
+    padding: 12px 24px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #CCD5E3;
+    background: #E7EFFB;
+}
+
+.social-login-title {
+    color: #373740;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.social-icon {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.social-icon-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icon-background.google {
+    background: url("images/google-background.svg") no-repeat center;
+    background-size: cover;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+
+.social-icon-background.google img {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.social-icon-background.kakao {
+    background: url("images/kakao-background.svg") no-repeat center;
+    background-size: cover;
+    width: 42px;
+    height: 42px;
+}
+
+.social-icon-background.kakao img {
+    width: 26px;
+    height: 24px;
+    flex-shrink: 0;
 }
