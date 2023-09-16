@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head> <!-- All Page Setup goes here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+
+  <!--CUSTOM CSS-->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/signup.css">
+
+<!-- FONT -->
+  <!-- Pretendard -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"/>
+</head> <!-- Page Setup ends here -->
+
+<body> <!-- All Page Content goes here -->
+  <header> 
+    <!--begin header-->
+    <a href="/"><img id="logo" src="./assets/img/logo.svg" alt="Linkbrary logo" width=210.58 height=38></a>
+    이미 회원이신가요?
+    <a class="link--signin" href="/signin.html">로그인 하기</a>
+  </header> <!--end header-->
+  <main>
+    <!--begin main-->
+    <div class="signup__wrap">
+      <div class="signup__email__wrap">
+        <label class="signup__label">이메일</label>
+        <div class="signup__input__wrap">
+          <input class="input__row input--email" type="text">
+        </div>
+      </div>
+      <div class="signup__pw__wrap">
+        <label class="signup__label">비밀번호</label>
+        <div class="signup__input__wrap">
+          <input class="input__row input--pw" type="text"> <!--type="password"-->
+          <img class="input__eye" src="assets/img/eyeOn.svg" alt="password eye on">
+        </div>
+      </div>
+      <div class="signup__pw__wrap--confirm">
+        <label class="signup__label">비밀번호 확인</label>
+        <div class="signup__input__wrap">
+          <input class="input__row input--pw" type="text"> <!--type="password"-->
+          <img class="input__eye" src="assets/img/eyeOn.svg" alt="password eye on">
+        </div>
+      </div>
+       <button class="signup__btn" type="submit">회원가입</button>
+    </div>
+    <div class="signup--social">
+      다른 방식으로 가입하기
+      <ul class="signup--social-icon">
+        <li><a href="https://www.google.com/"><img src="./assets/img/googleCircle.svg" alt="sign-up with Google" width="42" height="42"></a></li>
+        <li><a href="https://www.kakaocorp.com/page/"><img src="./assets/img/kakaotalkCircle.svg" alt="sign-up with Kakaotalk" width="42" height="42"></a></li>
+      </ul>
+    </div>
+  </main> <!--end main-->
+    
+</body> <!-- Page Content ends here -->
+</html>

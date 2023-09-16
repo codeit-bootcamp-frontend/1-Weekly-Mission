@@ -1,0 +1,120 @@
+body{
+    width: 25rem;
+    margin: auto;
+    background: var(--linkbrary-bg);
+  }
+  
+  /*----------Header---------*/
+  
+  header{
+    margin-top: 14.88rem;
+    text-align: center;
+  }
+  
+  #logo{
+    display: block;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .link--signin{
+    margin-left: 0.5rem;
+    font-weight: 600;
+    color: var(--linkbrary-primary);
+    text-decoration: underline;
+    text-underline-offset: 3.6px;
+  }
+  
+  /*----------Main---------*/
+  
+  main{
+    display:flex;
+    flex-direction: column;
+    padding-top: 1.88rem;
+  }
+  
+  .signup__label{
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding-bottom: 0.75rem;
+  }
+  
+  .signup__input__wrap{
+    display:flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .signup__pw__wrap,
+  .signup__pw__wrap--confirm{
+    margin-top: 1.5rem;
+  }
+  
+  .input__row{
+    display: block;
+    width: 100%;
+    padding: 1.12rem 0.94rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--linkbrary-gray-20);
+    color: var(--linkbrary-gray-100);
+    font-weight: 400;
+    line-height: 1.5rem;
+  }
+  
+  input:focus{
+    outline: 1px solid var(--linkbrary-primary);
+  }
+  
+  /* .input--pw{
+    letter-spacing: 0.375rem;
+  } */
+  
+  .input__eye{
+    position: absolute;
+    right: 0.94rem;
+  }
+  
+  .signup__btn{
+    width: 25rem;
+    margin: 1.88rem 0 2rem;
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    border:0;
+    background: var(--gra-purpleblue-to-skyblue);
+    color: var(--grey-light);
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  
+  button:hover{
+    cursor: pointer;
+  }
+  
+  .signup--social{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 25rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--linkbrary-gray-20);
+    background: var(--linkbrary-gray-10);
+    color: var(--linkbrary-gray-100);
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+  
+  .signup--social-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+  }
+  
+  .signup--social-icon img{
+    vertical-align: bottom;
+  }
