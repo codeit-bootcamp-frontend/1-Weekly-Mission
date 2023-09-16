@@ -141,7 +141,7 @@ footer {
 
 footer .footer-white-space {
   height: 7.5rem; /* 120px */
-  background-color: white;
+  background-color: var(--linkbrary-white);
 }
 
 footer .footer-black-space {
