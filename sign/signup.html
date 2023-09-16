@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 <head>
   <meta charset="UTF-8">
-  <title>로그인 페이지</title>
+  <title>회원가입 페이지</title>
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="sign-style.css">
 </head>
@@ -15,10 +15,10 @@
           <img class="logo" src="/images/logo.svg" alt="Linkbrary logo">
         </a>
         <h3>
-          회원이 아니신가요?
+          이미 회원이신가요?
           <span class="sign-link-container">
-            <a class="sign-link" href="/sign/signup.html">회원 가입하기</a>
-          </span>
+              <a class="sign-link" href="signin.html">로그인 하기</a>
+            </span>
         </h3>
       </div>
       <div class="sign-form-container">
@@ -33,12 +33,19 @@
             <img class="eye-off" src="images/eye-off.svg" alt="eye-off">
           </div>
         </form>
+        <form class="sign-password-form">
+          <label for="signin-password-repeat">비밀번호 확인</label>
+          <input id="signin-password-repeat" name="password" type="password">
+          <div class="eye-off-icon">
+            <img class="eye-off" src="images/eye-off.svg" alt="eye-off">
+          </div>
+        </form>
       </div>
       <a href="#">
-        <div class="btn login">로그인</div>
+        <div class="btn login">회원가입</div>
       </a>
       <div class="social-login">
-        <h3 class="social-login-title">소셜 로그인</h3>
+        <h3 class="social-login-title">다른 방식으로 가입하기</h3>
         <div class="social-icon">
           <a class="social-icon-link" href="https://www.google.com">
             <div class="social-icon-background google">
