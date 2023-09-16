@@ -23,7 +23,7 @@ section {
 
 .sectionContentWrapper {
   display: flex;
-  width: 18.18rem;
+  width: 291px;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.625rem;
