@@ -115,6 +115,7 @@ main {
     line-height: normal;
 }
 
+/* 소셜 로그인 */
 .social-login {
     display: flex;
     margin-top: 2px;
