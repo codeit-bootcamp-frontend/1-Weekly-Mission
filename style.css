@@ -9,6 +9,9 @@ body {
 
 header {
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   padding: 20px 200px;
   width: 100%;
   flex-direction: column;
