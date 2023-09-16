@@ -1,0 +1,129 @@
+html,
+body {
+  background: var(--linkbrary-bg);
+}
+
+.authHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  gap: 2rem;
+}
+
+.introWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.divisionMember {
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.5rem;
+}
+
+.signupLink {
+  color: var(--linkbrary-primary-color);
+  font-weight: 600;
+}
+
+.signupLinkBr {
+  height: 1px;
+  background-color: var(--linkbrary-primary-color);
+  border: 0;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+label {
+  font-size: 0.87rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+.authInput {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25rem;
+  padding: 1.2rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-white);
+}
+
+.authInput:focus {
+  border-radius: 0.5rem;
+  border: 1px solid blue;
+  background: var(--linkbrary-white);
+}
+
+.loginLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27rem;
+  padding: 1.2rem 0.9rem;
+  border-radius: 0.8rem;
+  color: #f5f5f5;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+}
+
+.socialWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  width: 27rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-gray-10);
+}
+
+.socialIconWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.googleLogo {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.kakaoLogo {
+  width: 3.5rem;
+  height: 3.5rem;
+}

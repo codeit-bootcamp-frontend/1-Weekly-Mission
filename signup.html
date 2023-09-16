@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style/reset.css" type="text/css" />
+    <link rel="stylesheet" href="./src/style/variables.css" type="text/css" />
+    <link rel="stylesheet" href="./src/style/auth.css" type="text/css" />
+    <title>Linkbrary</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="authHeader">
+        <a href="/">
+          <img src="src/assets/images/logo.png" alt="logo_img" />
+        </a>
+        <div class="introWrapper">
+          <span class="divisionMember">이미 회원이신가요?</span>
+          <div>
+            <a href="/signin.html" class="signupLink">로그인 하기</a>
+            <hr class="signupLinkBr" />
+          </div>
+        </div>
+      </header>
+      <div class="inputWrapper">
+        <div class="inputForm">
+          <label>이메일</label>
+          <input
+            class="authInput"
+            type="email"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="inputForm">
+          <label>비밀번호</label>
+          <input
+            class="authInput"
+            type="password"
+            placeholder="Enter your password"
+          />
+        </div>
+        <div class="inputForm">
+          <label>비밀번호 확인</label>
+          <input
+            class="authInput"
+            type="password"
+            placeholder="Enter your password again"
+          />
+        </div>
+      </div>
+      <a href="./signin.html" class="loginLink">회원가입</a>
+      <div class="socialWrapper">
+        <span>다른 방식으로 가입하기</span>
+        <div class="socialIconWrapper">
+          <a href="https://www.google.com/">
+            <img
+              src="src/assets/images/google.png"
+              alt="google_logo"
+              class="googleLogo"
+            />
+          </a>
+          <a href="https://www.kakaocorp.com/page/">
+            <img
+              src="src/assets/images/kakao.png"
+              alt="kakao_logo"
+              class="kakaoLogo"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
