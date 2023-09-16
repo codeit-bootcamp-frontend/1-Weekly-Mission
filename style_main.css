@@ -14,6 +14,8 @@
   }
   a{
     text-decoration: none;
+  }
+  button{
     cursor: pointer;
   }
 
@@ -36,6 +38,7 @@
     justify-content: center;
     align-items: center;
     padding: 1.6rem 2rem;
+    border: none;
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
   }
