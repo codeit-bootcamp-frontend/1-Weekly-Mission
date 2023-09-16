@@ -123,19 +123,7 @@ label {
   height: 3.5rem;
 }
 
-.kakaoLogoWrapper {
-  position: relative;
-}
-
-.kakaoLogoBg {
+.kakaoLogo {
   width: 3.5rem;
   height: 3.5rem;
-}
-
-.kakaoLogo {
-  position: absolute;
-  width: 1.9rem;
-  height: 1.9rem;
-  top: 8.8px;
-  left: 8.4px;
 }
