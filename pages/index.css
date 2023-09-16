@@ -67,7 +67,7 @@ nav .button{
   justify-content: flex-end;
   align-items: center;
   gap: 4rem;
-  background: var(--linkbrary-bg);
+  background: var(--gray-five);
   margin-bottom: 12rem;
 }
 
@@ -156,7 +156,7 @@ h4{
 }
 
 .content img{
-  width: 55.0rem;
+  flex-basis: 55.0rem;
   height: 45.0rem;
   float: right;
 }
