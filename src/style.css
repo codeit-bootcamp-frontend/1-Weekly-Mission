@@ -1,4 +1,5 @@
 header {
+  margin-top: 9.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,13 +8,16 @@ header {
 }
 
 nav {
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 192rem;
+  /* max-width: 192rem; */
   height: 9.4rem;
   padding: 0 20rem;
+  background-color: #edf7ff;
 }
 
 .hero-header {
