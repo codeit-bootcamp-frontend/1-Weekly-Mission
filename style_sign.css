@@ -12,18 +12,22 @@
     background-color: #F0F6FF;
     margin:0;
   }
-
+  a:visited, a:link{
+    color: #6D6AFE;
+  }
+  button{
+    cursor: pointer;
+  }
   main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
   }
-  a:visited, a:link{
-    color: #6D6AFE;
+  .spacing{
+    margin:0;
+    padding-top: 3rem;
   }
-  
   /* title section 설정하기 */
   .title-section{
     padding-top: 24rem;
@@ -40,4 +44,42 @@
   }
   
   /* submit section 설정하기 */
-  
+  label{
+    font-weight: 400;
+    font-size: 1.4rem;
+  }
+  input{
+    width: 40rem;
+    height: 6rem;
+    border: 1px solid #CCD5E3;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+  }
+  input:focus{
+    outline:none !important;
+    border: 2px solid #6D6AFE;
+  }
+  .form-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .link-button{
+    margin-top:3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  }
+  .link-button .a-label{
+    color: var(--grey-light, #F5F5F5);
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  /* social login section 설정하기 */
