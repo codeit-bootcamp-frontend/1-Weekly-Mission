@@ -60,6 +60,7 @@ form {
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
+  position: relative;
 }
 
 input {
@@ -81,6 +82,9 @@ input:focus { /* 적용 안됨 확인 필요 */
   width: 16px;
   height: 16px;
   fill: #fff;
+  position: absolute;
+  right: 15px;
+  bottom: 18px;
 }
 
 .signup-button {
