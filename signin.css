@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #f0f6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  cursor: pointer;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 628px;
+  gap: 30px;
+}
+.linkbrary-text {
+  width: 210.58px;
+  height: 38px;
+}
+#email-input,
+#password-input {
+  width: 400px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  padding: 18px 15px;
+}
+#email-input:focus,
+#password-input:focus {
+  border-color: #6d6afe;
+  outline: none; /* 검정색 없애기 */
+}
+input {
+  margin-top: 0.5rem;
+}
+.password,
+.password-check {
+  position: relative;
+}
+
+.eyes-off {
+  position: absolute;
+  top: 50px;
+  right: 18px;
+}
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 54px;
+  background: linear-gradient(90deg, #6d6afe, #6ae3fe);
+  color: #fff;
+  border-radius: 8px;
+  padding: 18px 20px;
+  gap: 10px;
+}
+.sns-login {
+  width: 400px;
+  height: 66px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border: 1px solid #ccd5e3;
+}
+.sns-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.icon {
+  width: 42px;
+  height: 42px;
+}
