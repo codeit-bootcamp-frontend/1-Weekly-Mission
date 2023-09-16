@@ -1,0 +1,142 @@
+:root {
+  /* color */
+  --primary-color: #6d6afe;
+  --red-color: #ff5b56;
+  --black-color: #111322;
+  --white-color: #ffffff;
+  --gray100-color: #3e3e43;
+  --gray80-color: #9fa6b2;
+  --gray60-color: #ccd5e3;
+  --gray40-color: #e7effb;
+  --gray20-color: #f0f6ff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "pretendard", sans-serif;
+}
+
+body {
+  background: var(--gray20-color);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 238px auto 0;
+}
+
+.logo {
+  width: 210.583px;
+  height: 38px;
+  margin-bottom: 16px;
+}
+
+.signin-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  line-height: normal;
+}
+
+.signup-part {
+  width: 400px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  color: var(--black-color);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+input {
+  display: flex;
+  margin: 12px 0;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--gray60-color);
+  background: var(--white-color);
+}
+
+input:focus {
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  background: var(--white-color);
+}
+
+.password-eye-off {
+  position: relative;
+}
+
+#password,
+#password-verify {
+  width: 400px;
+}
+
+.eye-off {
+  position: absolute;
+  margin: -46px 369px;
+}
+
+#signup-button {
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  margin: 18px 0 32px;
+  padding: 16px 20px;
+  color: #f5f5f5;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.social-signup {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--gray60-color);
+  background: var(--gray40-color);
+}
+
+.social-signup-text {
+  color: var(--gray100-color);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.social-signup-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.google-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-color: var(--white-color);
+  border: 1px solid var(--gray60-color);
+  border-radius: 50%;
+}
+
+.kakao-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-color: #f5e14b;
+  border-radius: 50%;
+}
