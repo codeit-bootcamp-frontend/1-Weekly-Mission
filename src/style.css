@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 200px;
+}
+
+.header__logo {    
+    width: 8.3125rem;
+    height: 1.5rem;
+}
+
+.header__login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.25rem;
+    width: 8rem;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    font-family: Pretendard;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--grey-light, #F5F5F5);
+    text-decoration-line: none;
+    border-radius: 0.5rem;    
+}
