@@ -423,7 +423,7 @@ body {
   gap: 16px;
 }
 .clink {
-  width: 240px;
+  width: 210px;
 }
 .contdiv11span {
   color: #000;
@@ -456,6 +456,7 @@ body {
   font-weight: 400;
 }
 .contdiv21inp {
+  position: relative;
   display: flex;
   width: 400px;
   padding: 18px 15px;
@@ -468,6 +469,14 @@ body {
 .contdiv21inp:focus {
   border: 1px solid #6d6afe;
   outline: none;
+}
+.inp {
+  position: relative;
+}
+.inpeye {
+  position: absolute;
+  top: 18px;
+  right: 15px;
 }
 .contdiv22 {
   display: flex;
