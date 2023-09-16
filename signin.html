@@ -23,14 +23,20 @@
   </header> <!--end header-->
   <main>
     <!--begin main-->
-    <div class="signin">
-      <span class="signin__label">이메일</span>
-      <input class="signin__input signin__input--email">
-      <span class="signin__label">비밀번호</span>
-      <div class="signin__pw">
-        <input class="signin__input signin__input--pw" type="password">
-        <img class="input__eye" src="assets/img/eyeOff.svg" alt="password eye off">
+    <div class="signin__wrap">
+      <div class="signin__email__wrap">
+        <label class="signin__label">이메일</label>
+        <div class="signin__input">
+          <input class="input__row input--email">
+        </div>
       </div>
+      <div class="signin__pw__wrap">
+        <label class="signin__label">비밀번호</label>
+        <div class="signin__input">
+          <input class="input__row input--pw" type="password">
+          <img class="input__eye" src="assets/img/eyeOff.svg" alt="password eye off">
+        </div>
+      </div> 
       <button class="signin__btn" type="submit">로그인</button>
     </div>
     <div class="signin--social">

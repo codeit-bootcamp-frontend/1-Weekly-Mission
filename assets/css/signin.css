@@ -3,6 +3,9 @@ body{
   margin: auto;
   background: var(--linkbrary-bg);
 }
+
+/*----------Header---------*/
+
 header{
   margin-top: 14.88rem;
   text-align: center;
@@ -22,24 +25,34 @@ header{
   text-underline-offset: 3.6px;
 }
 
+/*----------Main---------*/
+
 main{
   display:flex;
   flex-direction: column;
-}
-
-.signin {
-  margin: 1.88rem 0 2rem;
+  padding-top: 1.88rem;
 }
 
 .signin__label{
+  display: inline-block;
   font-size: 0.875rem;
   font-weight: 400;
+  padding-bottom: 0.75rem;
 }
 
-.signin__input{
+.signin__input__wrap{
+  display:flex;
+  align-items: center;
+  position: relative;
+}
+
+.signin__pw__wrap{
+  margin-top: 1.5rem;
+}
+
+.input__row{
   display: block;
   width: 100%;
-  margin: 0.75rem 0 1.5rem;
   padding: 1.12rem 0.94rem;
   border-radius: 0.5rem;
   border: 1px solid var(--linkbrary-gray-20);
@@ -52,26 +65,18 @@ input:focus{
   outline: 1px solid var(--linkbrary-primary);
 }
 
-.signin__pw{
-  display:flex;
-  align-items: center;
-  position: relative;
-}
-
-.signin__input--pw{
+.input--pw{
   letter-spacing: 0.375rem;
 }
 
 .input__eye{
   position: absolute;
   right: 0.94rem;
-  margin: 0.75rem 0 1.5rem;
-  padding: 1.12rem 0;
 }
 
 .signin__btn{
   width: 25rem;
-  margin-top: 0.38rem;
+  margin: 1.88rem 0 2rem;
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
   border:0;
