@@ -1,4 +1,4 @@
-  p,
+p,
 label {
   font-size: 14px;
 }
@@ -80,7 +80,7 @@ input:focus-visible {
 }
 
 input:focus {
-  border: 1px solid var(--primary);
+  border-color: var(--primary);
 }
 
 .eye-off {
