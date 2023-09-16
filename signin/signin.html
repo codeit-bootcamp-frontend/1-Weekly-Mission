@@ -3,14 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>로그인 페이지</title>
-  <style>
-    body {
-      font-size: 56px;
-    }
-  </style>
+  <link rel="stylesheet" href="../reset.css">
+  <link rel="stylesheet" href="login-style.css">
 </head>
 <body>
-  <h3>로그인 페이지입니다.</h3>
-  <a href="../index.html">홈 버튼</a>
+
+  <main>
+    <div class="sign-container">
+      <div class="sign-title">
+        <div class="sign-logo"></div>
+        <h3>
+          회원이 아니신가요? 
+          <span>
+            <a href="/signup/signup.html">회원 가입하기</a>
+          </span>
+        </h3>
+      </div>
+      <form>
+        <label for="signin-email">이메일</label>
+        <input id="signin-email" name="email" type="email">
+      </form>
+      <form>
+        <div class="password-container">
+          <label for="signin-password">비밀번호</label>
+          <input id="signin-password" name="password" type="password">
+          <i class="eye-off"></i>
+        </div>
+      </form>
+      <a href="#">
+        <div class="btn login">로그인</div>
+      </a>
+      <div class="social-login">
+        소셜 로그인
+        <a href="https://www.google.com">
+          <div class="icon google"></div>
+        </a>
+        <a href="https://www.kakaocorp.com/page/">
+          <div class="icon kakao"></div>
+        </a>
+      </div>
+    </div>
+  </main>
+
 </body>
 </html>
