@@ -1,0 +1,162 @@
+@import "/reset.css";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+*{
+    box-sizing : border-box;
+}
+
+body{
+    background: var(--linkbrary-bg, #F0F6FF);
+    font-family: Pretendard;
+}
+
+a:hover,
+button:hover{
+    cursor: pointer;
+}
+
+.container{
+    width : 400px;
+    margin : 180px auto 0;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 30px;
+}
+
+header{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 16px;
+
+    font-size: 16px;
+}
+
+.icon_logo{
+    width: 210.583px;
+    height: 38px;
+}
+
+header span{
+    color: var(--black, #000);
+    font-weight : 400;
+}
+
+header a{
+    color: var(--linkbrary-primary-color, #6D6AFE);
+    font-weight : 600;
+}
+
+main{
+    width : 100%;
+}
+
+form{
+    font-size : 14px;
+    display : flex;
+    flex-direction: column;
+    gap : 24px;
+}
+
+.main_box{
+    display : flex;
+    flex-direction: column;
+    gap : 12px;
+
+    position : relative;
+}
+
+.icon_eye{
+    position : absolute;
+    bottom : 18px;
+    right : 20px;
+}
+
+.input_box{
+    padding : 18px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    background: var(--linkbrary-white, #FFF);
+}
+
+.input_box::placeholder{
+    color: var(--linkbrary-gray-100, #373740);
+    font-family: Pretendard;
+    font-size: 16px;
+}
+
+input:focus{
+    outline: 1px solid var(--linkbrary-primary-color, #6D6AFE);
+}
+
+.button_login,
+.button_signup{
+    margin : 30px 0;
+    padding : 16px 20px;
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    border : none;
+
+    color: var(--grey-light, #F5F5F5);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+footer{
+    width : 100%;
+    padding : 12px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    background: var(--linkbrary-gray-10, #E7EFFB);
+
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p{
+    color: var(--linkbrary-gray-100, #373740);
+    font-size: 14px;
+}
+
+.social_icon_box{
+    display : flex;
+    gap : 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.social_icon_kakao{
+    width : 42px;
+    height : 42px;
+    position : relative;
+    background-image: url("kakaotalk_bg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.kakao{
+    position : absolute;
+    top : 10px;
+    left : 8.5px;
+}
+
+.social_icon_google{
+    width : 42px;
+    height : 42px;
+    position : relative;
+    background-image: url("google_bg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.google{
+    width : 22px;
+    position : absolute;
+    top : 10px;
+    left : 10px;
+}
