@@ -72,11 +72,14 @@ input {
   align-items: center;
   border-radius: 8px;
   border: 1px solid var(--gray20);
-  background: var(-white);
+  background: var(--white);
+}
+
+input:focus-visible {
+  outline: none;
 }
 
 input:focus {
-  /* 적용 안됨 확인 필요 */
   border: 1px solid var(--primary);
 }
 
