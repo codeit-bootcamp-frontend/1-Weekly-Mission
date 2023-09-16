@@ -1,25 +1,10 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Pretendard', 'Arial';
-}
-
 header {
   height: 5.875rem; /* 94px */
   padding: 1.25rem 12.5rem; /* 20px 200px */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #F0F6FF;
+  background-color: var(--linkbrary-bg);
 }
 
 header .header-logo {
@@ -35,7 +20,7 @@ a.sign {
   display: block;
   text-align: center;
   padding: 1rem 1.25rem; /* 16px 20px */
-  background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  background: var(--gra-purpleblue-to-skyblue);
   border-radius: 8px;
   font-size: 1.125rem; /* 18px */
   font-weight: 600;
@@ -54,7 +39,7 @@ main .banner-container {
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
-  background-color: #F0F6FF;
+  background-color: var(--linkbrary-bg);
 }
 
 .banner-container h1 {

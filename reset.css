@@ -1,0 +1,28 @@
+:root {
+  --linkbrary-primary: #6d6afe;
+  --linkbrary-red: #ff5b56;
+  --linkbrary-black: #111322;
+  --linkbrary-gray-strong: #3e3e43;
+  --linkbrary-gray-weak: #9fa6b2;
+  --linkbrary-bg: #F0F6FF;
+  --gra-purpleblue-to-skyblue: linear-gradient(
+    91deg,
+    #6d6afe 0.12%,
+    #6ae3fe 101.84%
+  );
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Pretendard', 'Arial';
+}
