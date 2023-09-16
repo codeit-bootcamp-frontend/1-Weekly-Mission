@@ -1,7 +1,3 @@
-html, body {
-    font-size: 61.5%;
-}
-
 /******** header ********/
 header {
     display: flex;
@@ -92,7 +88,7 @@ nav {
     text-align: center;
     top: 270px;
     left: 785px;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 600;
     line-height: 21.6px;
     border-radius: 8px;
@@ -315,10 +311,9 @@ footer .footer.background {
     align-items: flex-start;
     gap: 24px;
     font-family: Arial;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0em;
 }
 
 .option {
@@ -327,10 +322,9 @@ footer .footer.background {
     color: #cfcfcf;
     text-align: left;
     font-family: Arial;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0em;
     gap: 30px;
 }
 
