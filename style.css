@@ -1,4 +1,6 @@
 header {
+  position: sticky;
+  top: 0;
   height: 5.875rem; /* 94px */
   padding: 1.25rem 12.5rem; /* 20px 200px */
   display: flex;
