@@ -89,7 +89,7 @@ main .intro h1 span {
 
 main .intro .addlink {
   display: flex;
-  width: 21.875;
+  width: 21.875rem;
   padding: 1rem 1.25rem;
   justify-content: center;
   align-items: center;
