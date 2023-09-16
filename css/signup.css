@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #000;
+  --linkbrary-primary-color: #6d6afe;
+  --linkbrary-white: #fff;
+  --gra-purpleblue-to-skyblue: linear-gradient(
+    91deg,
+    #6d6afe 0.12%,
+    #6ae3fe 101.84%
+  );
+  --gray-light: #f5f5f5;
+  --linkbrary-bg: #f0f6ff;
+  --linkbrary-gray-100: #373740;
+  --linkbrary-gray-10: #e7effb;
+  --linkbrary-gray-20: ##ccd5e3;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  background: var(--linkbrary-bg);
+}
+
+#logo-image {
+  width: 210px;
+}
+
+.container-signin {
+  padding: 250px 0;
+  text-align: center;
+}
+
+.redirection-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.redirection-text > p {
+  display: inline-block;
+  color: var(--black);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.redirection-text > a {
+  display: inline-block;
+}
+
+/* form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  /* width: 500px; */
+  width: 100%;
+  text-align: start;
+}
+
+label input {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  background: var(--linkbrary-white);
+}
+
+.password-label {
+  position: relative;
+}
+
+#eye-on-image-one {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
+
+#eye-on-image-two {
+  position: absolute;
+  top: 585px;
+  right: 600px;
+}
+/* input요소에 focus-in일때 테두리 색상은 파랑색 */
+input:focus {
+  outline: none;
+  border: 5px solid var(--linkbrary-primary-color);
+}
+
+#registor-button {
+  margin-top: 20px;
+  width: 100%;
+  height: 70px;
+  border: none;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--gray-light);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.social-login {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-end-end-radius: 8px;
+  background: var(--linkbrary-gray-10);
+}
+
+.social-login p {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.social-login #google {
+  margin-right: 10px;
+}

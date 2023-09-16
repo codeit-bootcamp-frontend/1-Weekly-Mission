@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="../css/signup.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container-signin">
+      <a href="/index.html">
+        <img id="logo-image" src="../images/sign/logo.svg" />
+      </a>
+      <div class="redirection-text">
+        <p>이미회원이신가요?</p>
+        <a href="./signin.html">로그인하기</a>
+      </div>
+
+      <form method="post" action="#">
+        <label for="email"
+          >이메일 <input id="email" name="email" type="email"
+        /></label>
+        <label for="password" class="password-label"
+          >비밀번호<input id="password" name="password" type="password" />
+          <img id="eye-on-image-one" src="../images/sign/eye-on.svg"
+        /></label>
+        <label for="password"
+          >비밀번호확인<input
+            id="re-password"
+            name="password"
+            type="password"
+            class="password-label"
+          />
+          <img id="eye-on-image-two" src="../images/sign/eye-on.svg" />
+        </label>
+        <button id="registor-button">회원가입</button>
+        <div class="social-login">
+          <p>다른방식으로 가입하기</p>
+          <div class="social-login-images">
+            <a href="https://www.google.com/" target="_blank"
+              ><img id="google" src="../images/sign/google.png" alt="" /></a
+            ><a
+              href="https://www.kakaocorp.com/page/service/service/KakaoTalk"
+              target="_blank"
+              ><img id="kakao" src="../images/sign/kakao.png" alt=""
+            /></a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
