@@ -60,6 +60,34 @@ a {
   margin-bottom: 12px;
 }
 
+.password {
+  background-image: url(../image/eye-on.svg);
+  background-position: 13px center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid #ccc;
+
+  padding: 5px 5px;
+  text-indent: 30px;
+
+  width: 120px;
+}
+
+.input_wrapper {
+  position: relative;
+}
+
+ .eyes {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 15px;
+  margin: auto 2px;
+  height: 30px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
 .input_content {
   display: flex;
   width: 400px;
@@ -74,7 +102,7 @@ a {
   line-height: 24px; /* 150% */
 
   border-radius: 8px;
-  border: 1px solid #D3D4DD;
+  border: 1px solid #d3d4dd;
 }
 
 .input_content:focus {
