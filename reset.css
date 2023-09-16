@@ -26,3 +26,8 @@ h6 {
   color: #222;
   font-weight: normal;
 }
+
+/* 박스 사이즈 초기화 */
+* {
+  box-sizing: border-box;
+}
