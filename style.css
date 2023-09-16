@@ -24,7 +24,7 @@ header {
   box-sizing: border-box;
   max-width: 192rem;
 }
-.contentContaienr {
+.contentContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -157,7 +157,7 @@ footer {
   align-items: center;
   box-sizing: border-box;
 }
-footer > .contentContaienr {
+footer > .contentContainer {
   height: 6.4rem;
   align-items: flex-start;
   max-width: 171.2rem;
