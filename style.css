@@ -261,6 +261,7 @@
 
 .label {
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 12px;  
   color: #000;
@@ -282,6 +283,19 @@
 
 .input:focus {
   outline: 1px solid #6D6AFE;
+}
+
+.eye-button {
+  position: absolute;
+  right: 15px;
+  bottom: 18px;
+  width: 16px;
+  height: 16px;
+  background-image: url(public/icons/eye-off.png);
+}
+
+.eye-button:active {
+  background-image: url(public/icons/eye-on.png);
 }
 
 .signtitle {
