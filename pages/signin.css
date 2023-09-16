@@ -1,3 +1,39 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
-@import url(all.css);
+.body1-regular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 3.2rem;
+  color: var(--black, #000);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
 
+.body1-regular .head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.body1-regular #logo {
+  width: 210.583px;
+  height: 38px;
+}
+
+.body1-regular .head .move-to-signup {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 1.6rem;
+}
+
+.body1-regular .head .move-to-signup a{
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.body1-regular .head .move-to-signup a:hover{
+  text-decoration: underline;
+}
