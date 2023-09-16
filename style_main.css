@@ -1,0 +1,245 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    /* 1rem = 10px로 고정하기. */
+    word-break: keep-all;
+    font-size: 10px;
+    font-family: 'Noto Sans Korean', 'Poppins', 'sans-serif';
+  }
+  body{
+    background-color: #F0F6FF;
+    margin:0;
+  }
+  a{
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  main{
+    display: flex;
+    flex-direction: column;
+    flex-grow:0;
+  }
+
+  /* header css 작성 */
+  header{
+    padding: 2rem 20rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .link-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.6rem 2rem;
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  }
+  .link-button .a-label{
+    color: var(--grey-light, #F5F5F5);
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 0 1rem;    
+  }
+
+
+  /* section 1 css코드 */
+  .main-section{
+    padding: 7rem 36rem 0 36rem;
+    display: flex;
+    flex-direction: column;
+    gap:4rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main-section .section-title{
+    text-align: center;
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 8rem;
+    min-width: 77rem;
+  }
+  .main-section .section-title .gradient-text{
+    background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .signup-button{
+    width:35rem;
+  }
+  .main-section .sample-web{
+    position: relative;
+    top: 5rem;
+    z-index: -1;
+  }
+
+  /* .section 2. cards list */
+  /* card 요소 공통 부분들 */
+  .cards{
+    background-color: #ffffff;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 12rem 0;
+    gap: 5rem;
+    align-items: center;
+    margin: 0;
+  }
+  .cards .card{
+    display: grid;
+    height:40rem;
+  }
+  .card.right{
+    grid-template-columns: 35rem 15rem 60rem;
+  }
+  .card.left{
+    grid-template-columns: 60rem 15rem 35rem;
+
+  }
+  .card .card-article{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .card .card-title{
+    color: #000;
+    font-size: 4.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.03rem;
+  }
+  .card-content{
+    color: #6B6B6B;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.4rem;
+  }
+  .card .images{
+    border-radius: 15px;
+    background: #F0F6FF;
+    display: flex;
+    flex-wrap: nowrap;
+    padding:0;
+    gap:1rem;
+    align-items: center;
+    flex-grow: 2;
+  }
+
+  /* 1번 카드 css 코드 */
+  .card .images.list{
+    justify-content: space-between;
+  }
+  .images .sample-img{
+    position: relative;
+    margin:0;
+    padding:0;
+  }
+  .sample-img .down-button{
+    position: absolute;
+    bottom:1rem;
+    right:1rem;
+  }
+  .card-title .color-link{
+    background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 2번 카드 css 코드 */
+  .images.center-align{
+    justify-content: center;
+  }
+  .images .pop-img{
+    width: 70%;
+  }
+  .card-title .color-manage{
+    background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 3번 카드 css 코드 */
+  .card-title .color-share{
+    background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .images.black-filter{
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+  }
+  .sharepop-img{
+    z-index: 3;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+  }
+  .images .sample-web{
+    height: 100%;
+    opacity: 50%;
+  }
+  
+  /* 4번 카드 css 코드 */
+  .card-title .color-search{
+    background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .images.edge{
+    position: relative;
+    overflow: hidden;
+  }
+  .images .screenshot{
+    position: absolute;
+    bottom:-3rem;
+    right:0;
+  }
+
+/* footer css 작성 */
+footer{
+  background: var(--the-julge-black, #111322);
+  padding:3rem 10.4rem 9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.footer.logo{
+  color: #676767;
+  text-align: center;
+}
+.footer.link{
+  display: flex;
+  gap:1rem;
+  justify-content: center;
+  align-items: center;
+}
+.footer.link a{
+  color: #CFCFCF;
+}
+.footer.sns{
+  display: flex;
+  gap: 1.2rem;
+  justify-content: space-between;
+  align-items: center;
+}
