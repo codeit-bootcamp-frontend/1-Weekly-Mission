@@ -1,6 +1,4 @@
 header {
-  position: fixed;
-  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +7,9 @@ header {
 }
 
 nav {
+  position: fixed;
+  top: 0;
+  background-color: #edf7ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
