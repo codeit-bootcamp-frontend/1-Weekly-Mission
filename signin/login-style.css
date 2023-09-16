@@ -13,7 +13,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 30px;
 }
 
 .sign-title {
@@ -53,4 +53,45 @@ main {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+.sign-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.sign-form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.sign-form-container input {
+    width: 400px;
+    padding: 18px 15px;
+    border-radius: 8px;
+    border: 1px solid #6D6AFE;
+    background: #FFF;
+}
+
+.sign-form-container input:focus {
+    border: 1px solid #6D7CCD;
+}
+
+.sign-password-form {
+    position: relative;
+}
+
+.eye-off-icon {
+    position: absolute;
+    right: 15px;
+    top: 48px;
 }
