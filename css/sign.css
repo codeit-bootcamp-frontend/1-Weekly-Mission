@@ -16,7 +16,7 @@ section {
 
 .header {
   display: flex;
-  flex-direction: column;
+  justify-self: center;
   row-gap: 0.6rem;
   font-size: 1.2rem;
   color: var(--Black);
