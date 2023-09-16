@@ -67,7 +67,7 @@ input:focus {
   font-size: 1.4rem;
 }
 
-.login-button {
+.button {
   display: flex;
   width: 40rem;
   padding: 1.6rem 2.0rem;
@@ -79,10 +79,14 @@ input:focus {
   cursor: pointer;
 }
 
-.login-button .text{
+.button .text{
   color: var(--gray-light, #F5F5F5);
   font-size: 1.8rem;
   font-weight: 600;
+}
+
+.button .text:hover{
+  text-decoration: underline;
 }
 
 
@@ -107,4 +111,15 @@ input:focus {
 .icon {
   width: 42px;
   height: 42px;
+}
+
+.try-to-add-icon-in-input-tag{
+  position: relative;
+}
+
+.eye-off{
+  padding-right: 15px;
+  position: absolute;
+  right: 0px;
+  bottom: 18px;
 }

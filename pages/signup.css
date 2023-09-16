@@ -1,6 +1,11 @@
 body{
   padding-top: 23.8rem;
-  padding-bottom: 11.6rem;
+  padding-bottom: 25.2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
 }
 
 .body1-regular {
@@ -8,9 +13,8 @@ body{
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  margin-bottom: 3.2rem;
   color: var(--black, #000);
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px; /* 150% */
 }
@@ -41,4 +45,80 @@ body{
 
 .body1-regular .head .move-to-signin a:hover{
   text-decoration: underline;
+}
+
+input {
+  display: flex;
+  width: 40rem;
+  padding: 1.8rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--gray-three, #CCD5E3);
+  background: var(--white, #FFF);
+  margin-top: 1.2rem;
+}
+
+input:focus {
+  outline: 0.1rem solid var(--primary, #6D6AFE) !important;
+}
+
+.email .text, .password .text, .password-again .text, .body2-social .text {
+  font-size: 1.4rem;
+}
+
+.button {
+  display: flex;
+  width: 40rem;
+  padding: 1.6rem 2.0rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.8rem;
+  background: var(--linkbrary-gradation);
+  cursor: pointer;
+}
+
+.button .text{
+  color: var(--gray-light, #F5F5F5);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.button .text:hover{
+  text-decoration: underline;
+}
+
+.body2-social {
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 8px;
+  border: 1px solid var(--gray-three, #CCD5E3);
+  background: var(--gray-four, #E7EFFB);
+}
+
+.body2-social .social-login-icons {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+}
+
+.try-to-add-icon-in-input-tag{
+  position: relative;
+}
+
+.eye-off{
+  padding-right: 15px;
+  position: absolute;
+  right: 0px;
+  bottom: 18px;
 }
