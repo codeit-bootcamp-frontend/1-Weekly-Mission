@@ -8,12 +8,16 @@
 }
 
 header nav {
+  position: fixed;
   display: flex;
+  padding: 0px;
+  width: 100%;
+  height: 54px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px;
-  height: 54px;
+  left: 0;
+  top: 0;
 }
 
 body {
@@ -48,7 +52,8 @@ main {
 
 .logo a {
   font-size: 30px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin: 30px;
   width: 133px;
   height: 24px;
   color: #6d6afe;
@@ -58,6 +63,7 @@ main {
 
 .login {
   padding: 16px 20px;
+  margin: 30px;
   height: 54px;
 }
 main {

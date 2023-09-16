@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>signin</title>
-    <link rel="stylesheet" href="../assets/css/signup.css" />
+    <link rel="stylesheet" href="../assets/css/signin.css" />
   </head>
   <body>
     <div class="signin_container">
@@ -14,8 +14,10 @@
             ><img src="/src/assets/img/logo.svg" /></a
         ></span>
         <div class="logo_signup">
-          이미 회원이신가요?
-          <span class="signup_link"><a href="signin.html">로그인 하기</a></span>
+          회원이 아니신가요?
+          <span class="signup_link"
+            ><a href="signup.html">회원 가입하기</a></span
+          >
         </div>
       </div>
       <form class="sign_form">
@@ -29,15 +31,11 @@
             <input class="pwd_input" type="password" />
           </li>
           <li>
-            <label for="pwd_check">비밀번호 확인</label>
-            <input class="pwd_check" type="password" />
-          </li>
-          <li>
-            <button class="sign_btn" type="submit">회원가입</button>
+            <button class="sign_btn" type="submit">로그인</button>
           </li>
           <li>
             <span class="signin_other">
-              <span>다른 방식으로 가입하기</span>
+              <span>소셜 로그인</span>
               <div class="signin_other_icon">
                 <button
                   class="google_icon"
