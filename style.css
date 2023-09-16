@@ -9,21 +9,16 @@
   width: 100%;
   z-index: 1;
   padding: 20px 200px;
-  background: #F0F6FF;
-}
-
-.top img {
-  width: 133px;
-  height: 24px;
+  background-color: var(--LB-bg);
 }
 
 .button {
-  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
   padding: 16px 20px;
   border-radius: 8px;
   font-size: 4.5rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--LB-white);
   text-align: center;
 }
 
@@ -37,7 +32,7 @@
   align-items: center;
   gap: 40px;
   margin: 100px auto;
-  background: #F0F6FF;
+  background-color: var(--LB-bg);
 }
 
 .title h1 {
@@ -48,7 +43,7 @@
 }
 
 .main-centence span {
-  background-image: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  background-image: linear-gradient(91deg, var(--primary) 17.28%, #FF9F9F 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -101,7 +96,7 @@
   align-items: center;
   overflow: hidden;
   position: relative;
-  background-color: #F0F6FF;
+  background-color: var(--LB-bg);
 }
 
 #download {
@@ -115,7 +110,7 @@
   justify-content: center;
   align-items: center;
   padding: 114px 68px 66px;
-  background-color: #F0F6FF;
+  background-color: var(--LB-bg);
 }
 
 .part-imgbox#management img {
@@ -145,7 +140,7 @@
 }
 
 .part-imgbox#search {
-  background-color: #F0F6FF;
+  background-color: var(--LB-bg);
   overflow: hidden;
 }
 
@@ -193,7 +188,7 @@
 }
 
 .part.search span {
-  background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
+  background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -201,7 +196,7 @@
 
 /*------------footer------------*/
 .main_footer {
-  background-color: #000;
+  background-color: var(--LB-black);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -236,7 +231,7 @@
 /*------------sign------------*/
 .background {
   margin: 238px auto;
-  background-color: #F0F6FF;
+  background-color: var(--LB-bg);
 }
 
 .frame {
@@ -264,7 +259,7 @@
   position: relative;
   flex-direction: column;
   gap: 12px;  
-  color: #000;
+  color: black;
   font-size: 3.5rem;
   font-weight: 400;
 }
@@ -274,15 +269,15 @@
   width: 100%;
   padding: 18px 15px;
   border-radius: 8px;
-  border: 1px solid #CCD5E3;
-  background-color: #FFF;
-  color: #373740;
+  border: 1px solid var(--LB-gray-20);
+  background-color: var(--LB-white);
+  color: var(--LB-gray-100);
   font-size: 4rem;
   font-weight: 400;
 }
 
 .input:focus {
-  outline: 1px solid #6D6AFE;
+  outline: 1px solid var(--primary);
 }
 
 .eye-button {
@@ -306,14 +301,14 @@
 }
 
 .signtitle p {
-  color: #000;
+  color: black;
   font-size: 4rem;
   font-weight: 400;
 }
 
 .signtitle a {
   text-decoration: underline;
-  color: #6D6AFE;
+  color: var(--primary);
   font-size: 4rem;
   font-weight: 400;
 }
@@ -321,7 +316,7 @@
 .sign-button {
   padding: 16px 20px;
   border-radius: 8px;
-  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
   color: #F5F5F5;
   font-size: 4.5rem;
   font-weight: 600;
@@ -333,12 +328,12 @@
   align-items: center;
   padding: 12px 24px;
   border-radius: 8px;
-  border: 1px solid #CCD5E3;
-  background-color: #E7EFFB;
+  border: 1px solid var(--LB-gray-20);
+  background-color: var(--LB-gray-10);
 }
 
 .SNS-login p {
-  color: #373740;
+  color: var(--LB-gray-100);
   font-size: 14px;
   font-weight: 400;
 }
