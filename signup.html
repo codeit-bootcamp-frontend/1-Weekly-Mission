@@ -1,0 +1,77 @@
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body class="vsc-initialized flex-center">
+    <main>
+        <!--== START of MAIN-SECTION ==-->
+        <section>
+            <!-- starting form -->
+            <form class="signup-form">
+                <div class="container-main flex-center">
+                    <!-- main logo section -->
+                    <a href ="./">
+                        <img id="icon-logo" src="assets/logo.svg">
+                    </a>
+                    <div class="div-intent-signup">
+                        <h4 class="txt1 default-font">
+                            이미 회원이신가요?
+                        </h4>
+                        <a class="intent-signup default-font" href="./signin.html">
+                            로그인 하기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- sign-up input form -->
+                <div class="container-input">
+                    <!-- input: email -->
+                    <div class="div-input">
+                        <label class="label-signin" for="email">
+                            이메일
+                        </label>
+                        <input class="input email default-font flex-center" name="email">
+                    </div>
+                    <!-- input: password -->
+                    <div class="div-input">
+                        <label class="label-signin" for="password">
+                            비밀번호
+                        </label>
+                        <input class="input password default-font flex-center" name="password" type="password">
+                    </div>
+                    <!-- input: check-password -->
+                    <div class="div-input">
+                        <label class="label-signin" for="check-password">
+                            비밀번호 확인
+                        </label>
+                        <input class="input check-password default-font flex-center" name="check-password" type="password">
+                    </div>
+                </div>
+                 <!-- sign-up button -->
+                <a class ="btn-signup flex-center default-font" href="#">
+                    회원가입
+                </a>
+            </form>
+        
+            <!-- social sign-up -->
+            <div class="container-social-login flex-center">
+                <h4 class="txt-social-login default-font">다른 방식으로 가입하기</h4>
+                <div id="content">
+                    <a href="https://www.google.com/">
+                        <img class="btn-social-login" src="assets/icon-background-google.svg">
+                        <img class="btn-google" src="https://s3-alpha-sig.figma.com/img/a92e/9426/c3a9be9cb365010056fa7aa9cc9f05a2?Expires=1694995200&Signature=ckf8YKq2M6PWww23k-RR~Zl4LXBzlaSzMBSABPGaeoeDvDBiE6-bOAVlt3XCkg5gDo8dGAkqcwauNf-Q4A8QcZlZPE9HBeRCyPsqNjDkyWW4qIICfjAIVrGIvmnD~GIdQNY37KiPe6LGxlsE-C5FJLHwR9UNxTPAyf9-aoxMI1SRVC-dkYQr98HFszmx5r9XIYyc6aZ0q~8ZpzzpZC3KlKZWSJ43SSDkVjBnirm84Q7wtrwfZA-0PL1wkZ4vubJD54iOpdzx8teCNogoQ34WsrjbvAxRi9P0YhehnFV5YXvSJjNtR8NWIQ4~nfcbYNafB7h9Zy5f7oNa7clzGbDd3w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" >
+                    </a>
+                    <a href="https://www.kakaocorp.com/page/">
+                        <img class="btn-social-login" src="assets/icon-background-kakao.svg">
+                        <img class="btn-kakao" src="assets/icon-kakao.svg" style="width: 26px; height: 24px;flex-shrink: 0">
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!--== END of MAIN-SECTION ==-->
+    </main>
+</script>
+</body></html>
