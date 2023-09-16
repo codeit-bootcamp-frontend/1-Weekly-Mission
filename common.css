@@ -1,36 +1,118 @@
-/* 버튼 */
+:root {
+	--linkbrary-primary-color: #6d6afe;
+	--linkbrary-red: #ff5b56;
+	--the-julge-black: #111322;
+	--linkbrary-zircon: #f0f6ff;
+	--linkbrary-white: #ffffff;
+	--linkbrary-gray-10: #e7effb;
+	--linkbrary-gray-20: #ccd5e3;
+	--linkbrary-gray-60: #9fa6b2;
+	--linkbrary-gray-100: #373740;
+}
+
+/* 버튼 기본 스타일 */
 .button {
 	display: flex;
-	width: 8rem;
-	padding: 1rem 1.25rem;
+	justify-content: center;
+	align-items: center;
+	gap: 0.625rem;
 	border: 0;
+	border-radius: 0.5rem;
+	font-family: Pretendard;
+	font-weight: 600;
+	color: var(--grey-light, #f5f5f5);
+	cursor: pointer;
+	width: 8rem;
+	height: 3.375rem;
+	padding: 1rem 1.25rem;
 	background: var(
 		--gra-purpleblue-to-skyblue,
 		linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
 	);
-	color: var(--grey-light, #f5f5f5);
-	cursor: pointer;
-	justify-content: center;
-	align-items: center;
-	gap: 0.625rem;
-	border-radius: 0.5rem;
-	font-family: Pretendard;
 	font-size: 1.125rem;
-	font-weight: 600;
 }
+@media (max-width: 47.9375rem) {
+	.button {
+		width: 5rem;
+		height: 2.3125rem;
+		padding: 0.625rem 1rem;
+		font-size: 0.875rem;
+	}
+}
+
+/* 버튼 변형 스타일 */
 .button--large {
 	width: 21.875rem;
 }
-
-/* 태블릿 & 모바일에서만 보이는 br태그 */
-.tablet-mobile-br {
-	display: none;
+@media (max-width: 47.9375rem) {
+	.button--large {
+		width: 12.5rem;
+	}
 }
 
-/* 태블릿 */
+/* 텍스트 gradient */
+.gradient-mediumslateblue-monalisa {
+	background: linear-gradient(
+		91deg,
+		var(--linkbrary-primary-color, #6d6afe) 17.28%,
+		#ff9f9f 102.98%
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.gradient-geraldine-anakiwa {
+	background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.gradient-malibu-grandis {
+	background: linear-gradient(277deg, #6fbaff -7.78%, #ffd88b 93.66%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.gradient-moodyblue-smaltblue {
+	background: linear-gradient(
+		99deg,
+		#6d7ccd 25.76%,
+		rgba(82, 136, 133, 0.22) 135.69%
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.gradient-brinkpink-skyblue {
+	background: linear-gradient(271deg, #fe578f -185.84%, #68e8f9 107.18%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* 화면 크기별 br 태그*/
+.mobile-br,
+.tablet-br {
+	display: none;
+}
+.pc-br {
+	display: block;
+}
 @media (max-width: 74.9375rem) {
-	/* 태블릿 & 모바일에서만 보이는 br태그 */
-	.tablet-mobile-br {
+	.pc-br,
+	.mobile-br {
+		display: none;
+	}
+	.tablet-br {
+		display: block;
+	}
+}
+@media (max-width: 47.9375rem) {
+	.pc-br,
+	.tablet-br {
+		display: none;
+	}
+	.mobile-br {
 		display: block;
 	}
 }

@@ -13,42 +13,42 @@
     <title>Sign up</title>
 </head>
 
-<body>
-    <main class="auth-main auth-main--sign-up">
-        <div class="auth-main__wrap">
-            <div class="auth-main__logo">
-                <a href="../"><img class="auth-main__logo-img" src="../images/logo.svg" alt="Linkbrary"></a>
-                <p>이미 회원이신가요? <a class="auth-main__link" href="./signin.html">로그인 하기</a></p>
+<body class="auth">
+    <div class="auth__layout auth__layout--sign-up">
+        <div class="auth__inner">
+            <header class="auth__header">
+                <a class="auth__logo-link" href="../"><img class="auth__logo-image" src="../images/logo.svg" alt="Linkbrary"></a>
+                <p class="auth__header-text">이미 회원이신가요? <a class="auth__header-link" href="./signin.html">로그인 하기</a></p>
+            </header>
+
+            <div class="form auth__form">
+                <div class="form__field">
+                    <label for="user-email" class="form__label">이메일</label>
+                    <input type="email" id="user-email" class="form__input">
+                </div>
+                <div class="form__field">
+                    <label for="user-password" class="form__label">비밀번호</label>
+                    <input type="password" id="user-password" class="form__input form__input--password">
+                </div>
+                <div class="form__field form__field--password-check">
+                    <label for="user-password-check" class="form__label form__label--password-check">비밀번호 확인</label>
+                    <input type="password" id="user-password-check" class="form__input form__input--password">
+                    <p class="form__password-warning">비밀번호가 다릅니다</p>
+                </div>
             </div>
 
-            <div class="auth-main__input-wrap">
-                <div class="auth-main__input-box">
-                    <label for="user-email" class="auth-main__label">이메일</label>
-                    <input type="email" id="user-email" class="auth-main__input">
-                </div>
-                <div class="auth-main__input-box">
-                    <label for="user-password" class="auth-main__label">비밀번호</label>
-                    <input type="password" id="user-password" class="auth-main__input auth-main__input--password">
-                </div>
-                <div class="auth-main__input-box auth-main__input-box--password-check">
-                    <label for="user-password-check" class="auth-main__label auth-main__label--password-check">비밀번호 확인</label>
-                    <input type="password" id="user-password-check" class="auth-main__input auth-main__input--password">
-                    <p class="auth-main__password-warning">비밀번호가 다릅니다</p>
-                </div>
-            </div>
+            <button class="button auth__button">회원가입</button>
 
-            <button class="button auth-main__button">회원가입</button>
-
-            <div class="auth-main__social-wrap">
-                <p class="auth-main__social-text">다른 방식으로 가입하기</p>
-                <div class="auth-main__social-icons">
-                    <a href="https://www.google.com/" class="auth-main__social-button"><img class="auth-main__social-button-img" src="../images/google.svg" alt="구글 회원가입"><span class="auth-main__social-button-icon auth-main__social-button-icon--google"></span></a>
-                    <a href="https://www.kakaocorp.com/page/" class="auth-main__social-button"><img class="auth-main__social-button-img" src="../images/facebook.svg" alt="카카오 회원가입"><span class="auth-main__social-button-icon auth-main__social-button-icon--kakao"></span></a>
+            <footer class="auth__footer">
+                <p class="auth__social-text">다른 방식으로 가입하기</p>
+                <div class="auth__social">
+                    <a href="https://www.google.com/" class="auth__social-link"><img class="auth__social-icon" src="../images/google-login-icon.png" alt="구글로 가입하기"></a>
+                    <a href="https://www.kakaocorp.com/page/" class="auth__social-link"><img class="auth__social-icon" src="../images/kakao-login-icon.png" alt="카카오로 가입하기"></a>
                 </div>
-            </div>
+            </footer>
         </div>
+    </div>
 
-    </main>
 </body>
 
 </html>

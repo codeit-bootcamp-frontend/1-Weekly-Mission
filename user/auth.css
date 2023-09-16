@@ -1,77 +1,74 @@
-body {
+.auth {
+	background-color: var(--linkbrary-bg, #f0f6ff);
 	display: flex;
-	height: 100vh;
-	margin: 0 auto;
-	background-color: #f0f6ff;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	padding: 0 2rem;
 }
-/* 로그인 & 회원가입 공통 */
-.auth-main {
-	display: flex;
-	padding: 14.875rem 0rem 15.75rem 0rem;
+.auth__layout {
+	padding: 14.875rem 0 15.75rem;
 	flex: 0 1 25rem;
 }
-.auth-main__wrap {
-	display: flex;
+.auth__layout--sign-up {
+	padding-bottom: 7.25rem;
+}
+.auth__inner {
 	width: 100%;
-	flex-direction: column;
-	justify-content: center;
+	display: flex;
 	align-items: center;
+	flex-direction: column;
 	gap: 1.875rem;
 }
-.auth-main__logo {
+
+/* 헤더 */
+.auth__header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 1.125rem;
-	color: var(--black, #000);
-	font-family: Pretendard;
-	font-size: 1rem;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.5rem;
 }
-.main__top {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1.125rem;
-	color: var(--black, #000);
-	/* Linkbrary/body1-regular */
-	font-family: Pretendard;
-	font-size: 1rem;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.5rem; /* 150% */
-}
-.auth-main__logo-img {
+.auth__logo-link {
 	width: 13.1614rem;
 	height: 2.375rem;
 }
-.auth-main__link {
+.auth__logo-image {
+	width: 100%;
+	height: 100%;
+}
+.auth__header-text {
+	color: var(--black, #000);
+	font-family: Pretendard;
+
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5rem;
+}
+.auth__header-link {
 	color: var(--linkbrary-primary-color, #6d6afe);
-	text-decoration: underline; /* Linkbrary/body 1-semibold */
+	text-decoration: underline;
 	font-family: Pretendard;
 	font-size: 1rem;
-	font-style: normal;
 	font-weight: 600;
 	line-height: normal;
+	font-style: normal;
 }
-.auth-main__input-wrap {
+
+/* 입력폼 */
+.auth__form {
 	display: flex;
 	width: 100%;
 	flex-direction: column;
 	gap: 1.5rem;
 	align-items: center;
 }
-.auth-main__input-box {
+.form__field {
 	display: flex;
 	width: 100%;
 	flex-direction: column;
 	gap: 0.75rem;
 }
-.auth-main__label {
+.form__label {
 	color: var(--black, #000);
 	font-family: Pretendard;
 	font-size: 0.875rem;
@@ -79,45 +76,48 @@ body {
 	font-weight: 400;
 	line-height: normal;
 }
-.auth-main__input {
+.form__input {
 	height: 3.875rem;
 	padding: 1.125rem 0.9375rem;
-	border: 0.0625rem solid #ccd5e3;
+	border: 0.0625rem solid var(--linkbrary-gray-20, #ccd5e3);
 	background: var(--linkbrary-white, #fff);
 	border-radius: 0.5rem;
 }
-.input-box:focus {
-	border-color: var(--linkbrary-primary-color, #6d6afe);
+.form__input:focus {
+	outline-color: var(--linkbrary-primary-color, #6d6afe);
 }
-.auth-main__input--password {
-	background-image: url("../images/password-eye.svg");
+.form__input--password {
+	background-image: url("../images/eye-off.svg");
 	background-repeat: no-repeat;
 	background-size: 1rem 1rem;
 	background-position: calc(100% - 1.125rem) center;
 }
-.auth-main__input-box--password-check {
+.form__field--password-check {
 	gap: 0;
 }
-.auth-main__label--password-check {
+.form__label--password-check {
 	margin-bottom: 0.75rem;
 }
-.password-check-box input {
-	margin-bottom: 0.375rem;
-}
-.auth-main__password-warning {
+.form__password-warning {
 	color: var(--linkbrary-red, #ff5b56);
 	font-family: Pretendard;
 	font-size: 0.875rem;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	margin-top: 0.375rem;
+	padding-top: 0.375rem;
 }
-.auth-main__button {
+
+/* 버튼 */
+.auth__button {
 	width: 100%;
+	padding: 1rem 1.25rem;
 	height: 3.375rem;
+	font-size: 1.125rem;
 }
-.auth-main__social-wrap {
+
+/* 푸터 */
+.auth__footer {
 	display: flex;
 	width: 100%;
 	padding: 0.75rem 1.5rem;
@@ -131,50 +131,26 @@ body {
 	font-family: Pretendard;
 	margin-top: 0.125rem;
 }
-.auth-main__social-icons {
+.auth__social-text {
+	color: var(--linkbrary-gray-100, #373740);
+	font-family: Pretendard;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.auth__social {
 	display: flex;
 	align-items: flex-start;
 	gap: 1rem;
 }
-.auth-main__social-button {
-	display: inline-block;
-	position: relative;
+.auth__social-link {
 	width: 2.625rem;
 	height: 2.625rem;
 }
-.auth-main__social-button-img {
+.auth__social-icon {
+	display: inline-block;
+	position: relative;
 	width: 100%;
 	height: 100%;
-}
-.auth-main__social-button-icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-size: cover;
-}
-.auth-main__social-button-icon--google {
-	width: 1.375rem;
-	height: 1.375rem;
-	background-image: url("../images/google-icon.png");
-}
-.auth-main__social-button-icon--kakao {
-	width: 1.625rem;
-	height: 1.5rem;
-	background-image: url("../images/kakao-icon.svg");
-}
-
-/* 회원가입 */
-.auth-main--sign-up {
-	padding-bottom: 7.25rem;
-}
-
-/* 모바일(430px기준) */
-@media (max-width: 26.875rem) {
-	.auth-main {
-		max-width: 400px;
-		height: 100vh;
-		padding: 7.5rem 2rem 14.5rem 2.0625rem;
-		flex: 1 0 17.5rem;
-	}
 }
