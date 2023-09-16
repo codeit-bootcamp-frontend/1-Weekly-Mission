@@ -11,12 +11,12 @@
 * {
 	margin: 0;
 	box-sizing: border-box;
+	padding: 0;
 }
 
 html {
 	line-height: 1.15; /* 1 */
 	-webkit-text-size-adjust: 100%; /* 2 */
-	width: 100%;
 }
 
 /* Sections
@@ -45,7 +45,7 @@ main {
 
 h1 {
 	font-size: 2em;
-	margin: 0.67em 0;
+	margin: 0;
 }
 
 /* Grouping content
@@ -228,7 +228,7 @@ button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-	outline: 0.0625rem dotted ButtonText;
+	outline: 0.1rem dotted ButtonText;
 }
 
 /**
@@ -298,7 +298,7 @@ textarea {
 
 [type="search"] {
 	-webkit-appearance: textfield; /* 1 */
-	outline-offset: -0.125rem; /* 2 */
+	outline-offset: -0.2rem; /* 2 */
 }
 
 /**

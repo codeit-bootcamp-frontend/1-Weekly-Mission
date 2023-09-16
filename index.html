@@ -4,6 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- og 태그 시작 -->
+    <meta name="title" content="Linkbrary" />
+    <meta name="description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://64fc24f000d9d536028e1200--friendly-halva-11b91a.netlify.app/" />
+    <meta property="og:title" content="Linkbrary" />
+    <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta property="og:image" content="images/image-for-meta-tag-test.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://64fc24f000d9d536028e1200--friendly-halva-11b91a.netlify.app/" />
+    <meta property="twitter:title" content="Linkbrary" />
+    <meta property="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta property="twitter:image" content="images/image-for-meta-tag-test.jpg" />
+
+    <!-- og 태그  끝-->
+
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
@@ -13,115 +33,92 @@
 
 <body>
     <header class="header">
-        <div class="header__side">
-        </div>
-        <div class="header__center">
-            <a href="./"><img class="header__logo" src="images/logo.svg" alt="Linkbrary"></a>
+        <div class="header__inner">
+            <a href="./" class="header__logo-link"><img class="header__logo" src="images/logo.svg" alt="Linkbrary"></a>
             <a href="user/signin.html" class="header__button button">로그인</a>
-        </div>
-        <div class="header__side">
         </div>
     </header>
 
-    <section class="section section--intro">
-        <div class="section--intro__wrap">
-            <h1 class="section--intro__title">
-                <span class="title__highlight">세상의 모든 정보</span>를<br> 쉽게 저장하고<br class="tablet-mobile-br"> 관리해 보세요
+
+    <section class="background-skyblue">
+        <div class="intro">
+            <h1 class="intro__title">
+                <span class="gradient-mediumslateblue-monalisa">세상의 모든 정보</span>를<br> 쉽게 저장하고<br class="tablet-br mobile-br"> 관리해 보세요
             </h1>
-            <a href="user/signup.html" class="section--intro__button button button--large">링크 추가하기</a>
-            <div class="section--intro__image-wrap">
-                <div class="section--intro__image">
-                </div>
-            </div>
+            <a href="user/signup.html" class="intro__button button button--large">링크 추가하기</a>
+            <img class="intro__image" src="images/hero.png" alt="Linkbrary 홈페이지 메인화면 예시 이미지">
         </div>
     </section>
-
-    <section class="section section--first">
-        <div class="section__wrap">
-            <article class="section__description-wrap">
-                <h2 class="section__description-title">
-                    <span class="section__description-title-highlight--1">원하는 링크</span>를<br>저장하세요
+    <section class="background-white">
+        <article class="article article--first">
+            <div class="article__text">
+                <h2 class="article__title">
+                    <span class="gradient-geraldine-anakiwa">원하는 링크</span>를<br class="pc-br tablet-br"> 저장하세요
                 </h2>
-                <p class="section__description-text">
-                    나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>
-                    사고 싶은 옷, 기억하고 싶은 모든 것을<br>
+                <p class="article__description">
+                    나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br class="pc-br tablet-br">
+                    사고 싶은 옷, 기억하고 싶은 모든 것을<br class="pc-br tablet-br">
                     한 공간에 저장하세요.
                 </p>
-            </article>
-            <div class="section__card-wrap">
-                <div class="card card--thumbnail1"></div>
-                <div class="card card--thumbnail2">
-                    <img class="card__down-btn-icon" src="images/Group 20.svg" alt="다운로드 버튼">
-                </div>
-                <div class="card card--thumbnail3"></div>
             </div>
-        </div>
-    </section>
+            <img class="article__image" src="images/image1.png" alt="링크 저장 예시 이미지">
+        </article>
 
-    <section class="section">
-        <div class="section__wrap">
-            <div class="section__image-wrap">
-                <img class="section__image" src="images/디스크립션 없는 팝업 1.png" alt="폴더 이름 변경하기">
-            </div>
-            <article class="section__description-wrap">
-                <h2 class="section__description-title">
-                    링크를 폴더로<br><span class="section__description-title-highlight--2">관리</span>하세요
+        <article class="article article--even">
+            <img class="article__image" src="images/image2.png" alt="폴더 관리 예시 이미지">
+            <div class="article__text">
+                <h2 class="article__title">
+                    링크를 폴더로<br class="pc-br tablet-br"> <span class="gradient-malibu-grandis">관리</span>하세요
                 </h2>
-                <p class="section__description-text">
-                    나만의 폴더를 무제한으로 만들고<br>
+                <p class="article__description">
+                    나만의 폴더를 무제한으로 만들고<br class="pc-br tablet-br">
                     다양하게 활용할 수 있습니다.
                 </p>
-            </article>
-        </div>
-    </section>
+            </div>
+        </article>
 
-    <section class="section">
-        <div class="section__wrap">
-            <article class="section__description-wrap">
-                <h2 class="section__description-title">
-                    저장한 링크를<br><span class="section__description-title-highlight--3">공유</span>해 보세요.
+        <article class="article">
+            <div class="article__text">
+                <h2 class="article__title">
+                    저장한 링크를<br class="pc-br tablet-br"> <span class="gradient-moodyblue-smaltblue">공유</span>해 보세요
                 </h2>
-                <p class="section__description-text">
-                    여러 링크를 폴더에 담고 공유할 수 있습니다. <br>
-                    가족, 친구, 동료들에게 쉽고 빠르게 링크를<br>
+                <p class="article__description">
+                    여러 링크를 폴더에 담고 공유할 수<br class="tablet-br"> 있습니다. <br class="pc-br">
+                    가족, 친구, 동료들에게 쉽고<br class="tablet-br"> 빠르게 링크를<br class="pc-br">
                     공유해 보세요.
                 </p>
-            </article>
-            <div class="section__image-wrap section__image-wrap--bg-img">
-                <img class="section__image section__image--3" src="images/폴더 공유하기 팝업 1.png" alt="폴더 공유하기">
             </div>
-        </div>
-    </section>
+            <img class="article__image" src="images/image3.png" alt="링크 공유 예시 이미지">
+        </article>
 
-    <section class="section section--last">
-        <div class="section__wrap">
-            <div class="section__image-wrap section__image-wrap--4">
-                <div class="section__image section__image--4"></div>
-            </div>
-            <article class="section__description-wrap">
-                <h2 class="section__description-title">
-                    저장한 링크를<br> <span class="section__description-title-highlight--4">검색</span>해 보세요
+        <article class="article article--even article--last">
+            <img class="article__image" src="images/image4.png" alt="링크 검색 예시 이미지">
+            <div class="article__text">
+                <h2 class="article__title">
+                    저장한 링크를<br class="pc-br tablet-br"> <span class="gradient-brinkpink-skyblue ">검색</span>해 보세요
                 </h2>
-                <p class="section__description-text">
-                    중요한 정보들을 검색으로 쉽게 찾아보세요.
+                <p class="article__description">
+                    중요한 정보들을 검색으로 쉽게 <br class="tablet-br">찾아보세요.
                 </p>
-            </article>
-        </div>
+            </div>
+        </article>
     </section>
 
     <footer class="footer">
         <span class="footer__company">
             ©codeit - 2023
         </span>
-        <div class="footer__link-wrap">
-            <a class="footer__link" href="support/privacy.html">Privacy Policy</a>
-            <a class="footer__link" href="support/faq.html">FAQ</a>
+
+        <div class="footer__support">
+            <a class="footer__support-link" href="support/privacy.html">Privacy Policy</a>
+            <a class="footer__support-link" href="support/faq.html">FAQ</a>
         </div>
-        <div class="footer__social-link-wrap">
-            <a href="https://facebook.com" target="_blank"><img src="images/akar-icons_facebook-fill.svg" alt="페이스북 바로가기"></a>
-            <a href="https://twitter.com" target="_blank"><img src="images/akar-icons_twitter-fill.svg" alt="트위터 바로가기"></a>
-            <a href="https://youtube.com" target="_blank"><img src="images/akar-icons_youtube-fill.svg" alt="유튜브 바로가기"></a>
-            <a href="https://instagram.com" target="_blank"><img src="images/ant-design_instagram-filled.svg" alt="인스타그램 바로가기"></a>
+
+        <div class="footer__social">
+            <a class="footer__social-link" href="https://facebook.com" target="_blank"><img class="footer__social-icon" src="images/facebook.svg" alt="페이스북"></a>
+            <a class="footer__social-link" href="https://twitter.com" target="_blank"><img class="footer__social-icon" src="images/twitter.svg" alt="트위터"></a>
+            <a class="footer__social-link" href="https://youtube.com" target="_blank"><img class="footer__social-icon" src="images/youtube.svg" alt="유튜브"></a>
+            <a class="footer__social-link" href="https://instagram.com" target="_blank"><img class="footer__social-icon" src="images/instagram.svg" alt="인스타그램"></a>
         </div>
     </footer>
 </body>
