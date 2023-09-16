@@ -81,6 +81,7 @@ header,
   border-radius: 25px;
   background: url("images/image25.png") no-repeat center;
   background-size: cover;
+  background-position-y: 0;
   width: 1118px;
   height: 659px;
   box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.08);
