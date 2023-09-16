@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style/reset.css" type="text/css" />
+    <link rel="stylesheet" href="./src/style/variables.css" type="text/css" />
+    <link rel="stylesheet" href="./src/style/auth.css" type="text/css" />
+    <title>Linkbrary</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="authHeader">
+        <a href="/">
+          <img src="src/assets/images/logo.png" alt="logo_img" />
+        </a>
+        <div class="introWrapper">
+          <span class="divisionMember">회원이 아니신가요?</span>
+          <div>
+            <a href="/signup.html" class="signupLink">회원 가입하기</a>
+            <hr class="signupLinkBr" />
+          </div>
+        </div>
+      </header>
+      <div class="inputWrapper">
+        <div class="inputForm">
+          <label>이메일</label>
+          <input class="authInput" type="text" placeholder="Enter your email" />
+        </div>
+        <div class="inputForm">
+          <label>비밀번호</label>
+          <input
+            class="authInput"
+            type="password"
+            placeholder="Enter your password"
+          />
+        </div>
+      </div>
+      <a href="./signin.html" class="loginLink">로그인</a>
+      <div class="socialWrapper">
+        <span>소셜로그인</span>
+        <div class="socialIconWrapper">
+          <a href="https://www.google.com/">
+            <img
+              src="src/assets/images/auth/google.png"
+              alt="google_logo"
+              class="googleLogo"
+            />
+          </a>
+          <div class="kakaoLogoWrapper">
+            <a href="https://www.kakaocorp.com/page/">
+              <img
+                src="src/assets/images/auth/kakaoBg.png"
+                alt="kakao_logo"
+                class="kakaoLogoBg"
+              />
+              <img
+                src="src/assets/images/auth/kakao.png"
+                alt="kakao_logo"
+                class="kakaoLogo"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
