@@ -27,11 +27,16 @@
 
   /* header css 작성 */
   header{
+    background-color: #F0F6FF;
     padding: 2rem 20rem;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
   }
   .link-button{
     display: flex;
