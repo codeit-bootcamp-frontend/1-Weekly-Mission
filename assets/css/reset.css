@@ -17,6 +17,8 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
 }
 
 body {
@@ -24,8 +26,6 @@ body {
   color: #000;
   font-size: 1rem;
   font-family: 'Pretendard', sans-serif;
-  text-decoration: none;
-  list-style: none;
 }
 
 a {
