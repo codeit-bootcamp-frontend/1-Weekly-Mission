@@ -10,6 +10,7 @@
 
 html, body {
     font-size: 62.5%;
+    background: var(--linkbrary-bg, #F0F6FF);
 }
 
 .root {
@@ -19,20 +20,15 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 0;
     height: 100vh;
-}
-
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.6rem;
 }
 
 .main-link {
     width: 21.0583rem;
     height: 3.8rem;
+    margin-bottom: 1.6rem;
 }
 
 .signin {
@@ -49,4 +45,55 @@ header {
 .signin-link {
     font-size: 1.6rem;
     font-weight: 600;
+    color: var(--linkbrary-primary-color, #6D6AFE);
 }
+
+.input-box {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.input-box:nth-child(1) {
+    margin-top: 3rem;
+}
+
+.input-box:nth-last-child(1) {
+    margin-top: 2.4rem;
+}
+
+.text-box {
+    display: flex;
+    width: 40rem;
+    padding: 1.8rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-primary-color, #6D6AFE);
+    background: var(--linkbrary-white, #FFF);
+}
+
+.eye-image {
+    position: absolute;
+    top: 4.8rem;
+    left: 37rem;
+}
+
+.login-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40rem;
+    padding: 1.6rem 2rem;
+    margin-top: 3rem;
+    gap: 1rem;
+    color: var(--grey-light, #F5F5F5);
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+}
+

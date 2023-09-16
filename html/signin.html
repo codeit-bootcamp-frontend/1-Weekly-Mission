@@ -21,24 +21,29 @@
                 <a href="/signin" class="signin-link">회원 가입하기</a>
             </div>
         </header>
-        <main> 메인 안에 div 클래스 똑같게하기
-            <div>
-                <div>
-                    이메일
+        <main>
+            <div class="input-container">
+                <div class="input-box">
+                    <div>
+                        이메일
+                    </div>
+                    <form>
+                        <input type="text" placeholder="codeit@codeit.com" class="text-box">
+                    </form>
                 </div>
-                <div>
-                    textbox
+                <div class="input-box">
+                    <div>
+                        비밀번호
+                    </div>
+                    <form>
+                        <input type="password" placeholder="************" class="text-box">
+                        <div class="eye-image">
+                            <img src="/assets/png/eye-off.png" alt="click to see password">
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div>
-                <div>
-                    비밀번호
-                </div>
-                <div>
-                    textbox
-                </div>
-            </div>
-            <button>로그인</button>
+            <a href="/signin" class="login-btn">로그인</a>
         </main>
         <footer>
             <div>
