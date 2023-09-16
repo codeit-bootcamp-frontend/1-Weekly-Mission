@@ -5,7 +5,12 @@
 body {
   margin: 0;
 }
-
+:root {
+  --maincolor: #6d6afe;
+  --mainbackcolor: #f0f6ff;
+  --mainwhitefont: #f5f5f5;
+  --black: #000;
+}
 .header {
   display: flex;
   padding: 20px 200px;
@@ -13,7 +18,7 @@ body {
   align-items: center;
   gap: 8px;
   align-self: stretch;
-  background: #f0f6ff;
+  background: var(--mainbackcolor);
 }
 
 .navv {
@@ -24,7 +29,7 @@ body {
 }
 
 .login {
-  color: #f5f5f5;
+  color: var(--mainwhitefont);
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
@@ -37,7 +42,7 @@ body {
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  background: linear-gradient(91deg, var(--maincolor) 0.12%, #6ae3fe 101.84%);
   text-decoration: none;
 }
 
@@ -49,7 +54,7 @@ body {
   gap: 40px;
   align-items: center;
   align-self: stretch;
-  background: #f0f6ff;
+  background: var(--mainbackcolor);
 }
 .c1div {
   display: flex;
@@ -62,7 +67,7 @@ body {
   font-size: 3.4vw;
   font-weight: 700;
   line-height: 80px; /* 125% */
-  color: #000000;
+  color: var(--black);
   margin-top: 0;
 }
 
@@ -82,13 +87,13 @@ body {
   background: linear-gradient(
     180deg,
     rgba(196, 196, 196, 0) 67.68%,
-    #f0f6ff 94.76%
+    var(--mainbackcolor) 94.76%
   );
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 }
 
 .world {
-  background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+  background: linear-gradient(91deg, var(--maincolor) 17.28%, #ff9f9f 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -105,9 +110,9 @@ body {
   border-radius: 8px;
   background: var(
     --gra-purpleblue-to-skyblue,
-    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+    linear-gradient(91deg, var(--maincolor) 0.12%, #6ae3fe 101.84%)
   );
-  color: var(--grey-light, #f5f5f5);
+  color: var(--mainwhitefont);
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
@@ -169,7 +174,7 @@ body {
 }
 
 .c2div11 {
-  color: #000;
+  color: var(--black);
   font-family: Pretendard;
   font-size: 2.2vw;
   font-style: normal;
@@ -210,7 +215,7 @@ body {
   width: 550px;
   height: 450px;
   border-radius: 0.72vw;
-  background: #f0f6ff;
+  background: var(--mainbackcolor);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -233,7 +238,7 @@ body {
 .c3imgs {
   border-radius: 14px;
   padding: 114px 68px 66px;
-  background: #f0f6ff;
+  background: var(--mainbackcolor);
 }
 .c3img {
   width: 414px;
@@ -316,7 +321,7 @@ body {
   border-radius: 14px;
   padding-left: 60px;
   padding-top: 55px;
-  background: #f0f6ff;
+  background: var(--mainbackcolor);
   overflow: hidden;
 }
 
@@ -328,7 +333,7 @@ body {
   align-items: center;
   flex-shrink: 0;
   align-self: stretch;
-  background: var(--the-julge-black, #111322);
+  background: #111322;
 }
 
 .footerdiv {
@@ -401,7 +406,7 @@ body {
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  background: #f0f6ff;
+  background: var(--mainbackcolor);
 }
 .contdiv {
   display: flex;
@@ -426,14 +431,14 @@ body {
   width: 210px;
 }
 .contdiv11span {
-  color: #000;
+  color: var(--black);
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
 }
 .contdiv11a {
-  color: #6d6afe;
+  color: var(--maincolor);
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 600;
@@ -450,7 +455,7 @@ body {
   gap: 12px;
 }
 .contdiv21div {
-  color: #000;
+  color: var(--black);
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
@@ -467,7 +472,7 @@ body {
   background: #fff;
 }
 .contdiv21inp:focus {
-  border: 1px solid #6d6afe;
+  border: 1px solid var(--maincolor);
   outline: none;
 }
 .inp {
@@ -491,8 +496,8 @@ body {
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
-  color: #f5f5f5;
+  background: linear-gradient(91deg, var(--maincolor) 0.12%, #6ae3fe 101.84%);
+  color: var(--mainwhitefont);
   font-family: Pretendard;
   font-size: 18px;
 
