@@ -1,0 +1,135 @@
+p, label {
+  font-size: 14px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 238px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  width: 210.583px;
+  height: 38px;
+}
+
+.signup-recommendation {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.signup-button {
+  color: var(--linkbrary-primary-color, #6D6AFE);
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.input-area-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+input {
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+  background: var(--linkbrary-white, #FFF);
+}
+
+input:focus { /* 적용 안됨 확인 필요 */
+  border: 1px solid var(--linkbrary-primary-color, #6D6AFE);
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  padding: 16px 20px;
+  cursor: pointer;
+  background-image: linear-gradient(135deg, #6d6afe 0%, #6ae3fe 100%);
+  border: none;
+  border-radius: 8px;
+  color: #f5f5f5;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+footer {
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+  background: var(--linkbrary-gray-10, #E7EFFB);
+}
+
+.sns {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+}
+
+.sns-logo-container {
+  width: 42px;
+  height: 42px;
+}
+
+.sns-logo {
+  display: flex;
+  width: 22px;
+  height: 22px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.google {
+  top: 10px;
+  left: 10px;
+}
+
+.kakaotalk {
+  top: 10px;
+  right: 10px;
+}
