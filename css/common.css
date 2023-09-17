@@ -16,6 +16,12 @@
 html {
   font-size: 62.5%;
 }
+body {
+  font-family: Pretendard;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 a {
   text-decoration: none;
 }
