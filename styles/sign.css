@@ -35,7 +35,7 @@ body {
   width: 400px;
 }
 
-.box-style {
+.box-round {
   display: flex;
   align-items: center;
   border-radius: 8px;
