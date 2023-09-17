@@ -29,6 +29,7 @@
     margin:0;
     padding-top: 2rem;
   }
+
   /* title section 설정하기 */
   .img-logo{
     width: 25rem;
@@ -62,6 +63,20 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
+  }
+  .form-div>div{
+    display: flex;
+    flex-direction: column;
+  }
+  .form-password{
+    position: relative;
+  }
+  .form-password .eye-button{
+    position: absolute;
+    right:3rem;
+    bottom: 2rem;
+    border:none;
+    background-color: transparent;
   }
   .link-button{
     margin-top:2rem;
