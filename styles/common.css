@@ -28,7 +28,7 @@ h2 {
 
 }
 
-.buttonGradiant {
+.button-gradiant {
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     display: block;
     color: #F5F5F5;
@@ -39,24 +39,24 @@ h2 {
     text-align: center;
 }
 
-.textGradiant {
+.text-gradiant {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 
-.flexRow {
+.flex_row {
     display: flex;
     flex-direction: row;
 }
 
-.flexColumn {
+.flex_column {
     display: flex;
     flex-direction: column;
 }
 
-.flexCenter {
+.flex_center {
     justify-content: center;
     align-items: center;
 }
