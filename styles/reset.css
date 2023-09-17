@@ -1,71 +1,53 @@
-*{margin:0;padding:0;font:inherit;color:inherit;}
-*, :after, :before {box-sizing:border-box;flex-shrink:0;}
-:root {-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%;cursor:default;line-height:1.5;overflow-wrap:break-word;-moz-tab-size:4;tab-size:4}
-html, body {height:100%;}
-img, picture, video, canvas, svg {display: block;max-width:100%;}
-button {background:none;border:0;cursor:pointer;}
-a {text-decoration:none}
-table {border-collapse:collapse;border-spacing:0}
-
-
-/* common styles */
-
-html {
-    font-size: 62.5%;
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
 }
 
-html, body, button, input, h1, h2 {
-    font-family: Pretendard;
-    line-height: normal;
-    font-style: normal;
-    font-weight: 400;
-    word-break: keep-all;
+*,
+:after,
+:before {
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 :root {
-	--primary: #6D6AFE;
-	--red: #FF5B56;
-	--black: #111322;
-	--white: #ffffff;
-	--gray5: #3E3E43;
-	--gray4: #9FA6B2;
-	--gray3: #CCD5E3;
-	--gray2: #E7EFFB;
-	--gray1: #F0F6FF;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    cursor: default;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    -moz-tab-size: 4;
+    tab-size: 4
+}
 
-  }
+html,
+body {
+    height: 100%;
+}
 
-  .buttonGradiant {
-    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+img,
+picture,
+video,
+canvas,
+svg {
     display: block;
-    color: #F5F5F5;
-    border-radius: 0.8rem;
-    padding: 1.6rem 2.0rem;
-    font-size: 1.8rem;
-    font-weight: 600;
-    text-align: center;
+    max-width: 100%;
 }
 
-.textGradiant {
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+button {
+    background: none;
+    border: 0;
+    cursor: pointer;
 }
 
-
-.flexRow {
-    display:flex;
-    flex-direction: row;
+a {
+    text-decoration: none
 }
 
-.flexColumn {
-    display:flex;
-    flex-direction: column;
+table {
+    border-collapse: collapse;
+    border-spacing: 0
 }
-
-.flexCenter {
-    justify-content: center;
-    align-items: center;
-}
-
-
