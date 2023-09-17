@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 15rem auto 5rem;
+    margin: 20vh auto 5rem;
   }
   .spacing{
     margin:0;
@@ -32,7 +32,8 @@
 
   /* title section 설정하기 */
   .img-logo{
-    width: 25rem;
+    min-width: 15rem;
+    width: 20vw;
   }
   .question-label{
     font-weight: 400;
