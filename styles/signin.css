@@ -17,7 +17,6 @@ html, body {
 .root {
     width: 100%;
     padding: 23.8rem 0 25.2rem 0;
-    /* width: 1920px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,9 +26,14 @@ html, body {
 }
 
 .main-link {
-    width: 21.0583rem;
-    height: 3.8rem;
+    display: flex;
+    justify-content: center;
     margin-bottom: 1.6rem;
+}
+
+.main-img {
+    width: 24rem;
+    height: 3.8rem;
 }
 
 .signin {
