@@ -133,6 +133,7 @@ form {
 .button:hover {
   cursor: pointer;
   text-decoration: underline;
+  outline: 1px solid var(--linkbrary-primary-color);
 }
 
 .bottom-frame {
