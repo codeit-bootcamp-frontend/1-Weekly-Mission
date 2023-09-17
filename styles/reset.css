@@ -46,3 +46,15 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+:root {
+	--black: #111322;
+	--white: #FFF;
+	--blue: #6D6AFE;
+	--red: #FF5B56;
+	--gray-100: #3E3E43;
+	--gray-50: #9FA6B2;
+	--gray-40: #CCD5E3;
+	--gray-20: #E7EFFB;
+	--gray-10: #F0F6FF;
+}

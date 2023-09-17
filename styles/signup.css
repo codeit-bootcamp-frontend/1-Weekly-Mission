@@ -10,8 +10,8 @@
 
 html, body {
     font-size: 62.5%;
-    background: var(--linkbrary-bg, #F0F6FF);
-    color: var(--black, #000);
+    background: var(--linkbrary-gray-10);
+    color: var(--black);
 }
 
 .root {
@@ -50,7 +50,7 @@ html, body {
 .signin-link {
     font-size: 1.6rem;
     font-weight: 600;
-    color: var(--linkbrary-primary-color, #6D6AFE);
+    color: var(--blue);
 }
 
 .input-container {
@@ -73,12 +73,12 @@ html, body {
     width: 40rem;
     padding: 1.8rem 1.5rem;
     border-radius: 8px;
-    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
-    background: var(--linkbrary-white, #FFF);
+    border: 1px solid var(--gray-40);
+    background: var(--white);
 }
 
 .text-box:focus {
-    outline: 1px solid var(--linkbrary-primary-color, #6D6AFE);
+    outline: 1px solid var(--blue);
 }
 
 .eye-image {
@@ -110,8 +110,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
-    background: var(--linkbrary-gray-10, #E7EFFB);
+    border: 1px solid var(--gray-40);
+    background: var(--gray-20);
 }
 
 .footer-text {
