@@ -11,4 +11,59 @@
     <link rel="stylesheet" href="./src/reset.css" />
     <link rel="stylesheet" href="./src/member.css" />
   </head>
+  <body>
+    <div class="member-frame">
+      <div class="top-frame">
+        <div class="top-frame-inner">
+          <img class="logo" src="images/logo.svg" alt="Logo" />
+          <div class="help">
+            <p class="help-ask">이미 회원이신가요?</p>
+            <a class="help-link" href="./signin.html">로그인 하기</a>
+          </div>
+        </div>
+
+        <form action="">
+          <div class="form-inner-frame">
+            <label for="email">이메일</label>
+            <div class="inner-input">
+              <input type="email" id="email" name="email" />
+            </div>
+          </div>
+
+          <div class="form-inner-frame">
+            <label for="password">비밀번호</label>
+            <div class="inner-input">
+              <input type="password" id="password" name="password" />
+              <img src="images/eye-off.png" alt="비밀번호 숨기기 이미지" />
+            </div>
+          </div>
+
+          <div class="form-inner-frame">
+            <label for="password-confirm">비밀번호 확인</label>
+            <div class="inner-input">
+              <input
+                type="password"
+                id="password-confirm"
+                name="password-confirm"
+              />
+              <img src="images/eye-off.png" alt="비밀번호 숨기기 이미지" />
+            </div>
+          </div>
+
+          <button class="button" type="submit">회원가입</button>
+        </form>
+      </div>
+      <div class="bottom-frame">
+        <p>다른 방식으로 가입하기</p>
+        <div class="social-logo-frame">
+          <a href="https://google.com/"
+            ><img src="images/google.png" alt="Google Image"
+          /></a>
+          <a href="https://kakaocorp.com/page/"
+            ><img src="images/kakao.png" alt="Kakao Image"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

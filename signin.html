@@ -11,4 +11,47 @@
     <link rel="stylesheet" href="./src/reset.css" />
     <link rel="stylesheet" href="./src/member.css" />
   </head>
+  <body>
+    <div class="member-frame">
+      <div class="top-frame">
+        <div class="top-frame-inner">
+          <img class="logo" src="images/logo.svg" alt="Logo" />
+          <div class="help">
+            <p class="help-ask">회원이 아니신가요?</p>
+            <a class="help-link" href="./signup.html">회원가입하기</a>
+          </div>
+        </div>
+
+        <form action="">
+          <div class="form-inner-frame">
+            <label for="email">이메일</label>
+            <div class="inner-input">
+              <input type="email" id="email" name="email" />
+            </div>
+          </div>
+
+          <div class="form-inner-frame">
+            <label for="password">비밀번호</label>
+            <div class="inner-input">
+              <input type="password" id="password" name="password" />
+              <img src="images/eye-off.png" alt="비밀번호 숨기기 이미지" />
+            </div>
+          </div>
+
+          <button class="button" type="submit">로그인</button>
+        </form>
+      </div>
+      <div class="bottom-frame">
+        <p>소셜 로그인</p>
+        <div class="social-logo-frame">
+          <a href="https://google.com/"
+            ><img src="images/google.png" alt="Google Image"
+          /></a>
+          <a href="https://kakaocorp.com/page/"
+            ><img src="images/kakao.png" alt="Kakao Image"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
