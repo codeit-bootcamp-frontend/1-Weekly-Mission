@@ -1,0 +1,48 @@
+@use "../abstracts" as *;
+
+.footer {
+    width: 100%;
+    background-color: $the-julge-black;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 192rem;
+        margin: 0 auto;
+        padding: 3.2rem 10.4rem 6.4rem;
+    }
+
+    &__copyright {
+        flex-shrink: 0;
+        font-family: Arial;
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: #676767;
+    }
+
+    &__extra-page {
+        display: flex;
+        justify-content: center;
+        flex-shrink: 0;
+        gap: 3rem;
+        margin: 0 20px;
+    }
+
+    &__link {
+        font-family: Arial;
+        font-size: 1.6rem;
+        font-weight: 400;
+        text-decoration: none;
+        color: #CFCFCF;
+    }
+
+    &__sns {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-shrink: 0;
+        gap: 1.2rem;
+    }
+}

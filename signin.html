@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkbrary</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <main class="login">
+        <div class="login__header">
+          <div class="login__logo">
+            <a href="/"
+              ><img src="/public/icons/linkbrary.svg" alt="링크브러리 로고"
+            /></a>
+            <h1 class="blind">링크브러리 로그인</h1>
+          </div>
+          <div class="login__redirect">
+            <span>회원이 아니신가요?</span>
+            <a href="/signup.html" class="login__redirect-link">
+              회원 가입하기
+            </a>
+          </div>
+        </div>
+
+        <form class="form">
+          <div class="form__inputs">
+            <div class="form__input">
+              <label class="form__input-text"
+                >이메일 <br />
+                <input
+                  type="email"
+                  placeholder="codeit@codeit.com"
+                  class="form__input-box form__email"
+                />
+              </label>
+            </div>
+            <div class="form__input">
+              <label class="form__input-text">
+                비밀번호 <br />
+                <input
+                  type="password"
+                  placeholder="• • • • • • • •"
+                  class="form__input-box form__password"
+                />
+                <a class="form__password-show"
+                  ><img src="/public/icons/eye-off.svg" alt="비밀번호 표시"
+                /></a>
+              </label>
+            </div>
+          </div>
+          <input type="submit" value="로그인" class="button" />
+        </form>
+
+        <div class="login__social">
+          <div class="login__social-text">
+            <span>소셜 로그인</span>
+          </div>
+          <div class="login__social-logos">
+            <a
+              href="https://google.com"
+              class="login__social-logo login__social-logo--google"
+            >
+              <img src="/public/icons/google.png" alt="구글 로고" />
+            </a>
+            <a
+              href="https://www.kakaocorp.com/page/"
+              class="login__social-logo login__social-logo--kakaotalk"
+            >
+              <img src="/public/icons/kakotalk.svg" alt="카카오톡 로고" />
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
