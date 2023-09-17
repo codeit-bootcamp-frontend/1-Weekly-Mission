@@ -8,18 +8,22 @@ html {
     font-size: 62.5%;
   }
 
-body {}
-
 :root {
     --linkbrary-bg: #F0F6FF;
     --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     --grey-light: #F5F5F5;
     --fandom-k-gra-blue-to-pink: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
     --the-julge-black: #111322;
+    --Primary: #6D6AFE;
+    --Red: #FF5B56;
+    --Black-and-White: #111322 #FFFFFF;
+    --Gray: #3E3E43 #9FA6B2 #CCD5E3 #E7EFFB #F0F6FF;
 }
 
 
 header {
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -230,3 +234,4 @@ footer {
 .footer__container-right {
     gap: 0.75rem;
 }
+
