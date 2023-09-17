@@ -43,6 +43,12 @@
   }
 
   /* title section 설정하기 */
+  .title-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .img-logo{
     min-width: 15rem;
     width: 20vw;
