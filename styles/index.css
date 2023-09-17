@@ -42,7 +42,7 @@
     width: 55rem;
     height: 45rem;
     border-radius: 1.5rem;
-    background-color:#F0F6FF;
+    background-color: #F0F6FF;
 }
 
 /*
@@ -56,7 +56,7 @@ header {
 
 header {
     position: fixed;
-    top:0;
+    top: 0;
     max-width: 192rem;
     width: 100%;
     margin: 0 auto;
@@ -80,6 +80,7 @@ header > a {
 #hero_sec {
     background-color: #F0F6FF;
 }
+
 /*
 #hero_sec > div {
     width: 192.0rem;
@@ -138,7 +139,7 @@ header > a {
     width: 100%;
     height: 53.9rem;
     margin: 0 auto;
-    border-radius:  2.5rem 2.5rem 0 0;
+    border-radius: 2.5rem 2.5rem 0 0;
     background-image: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 124.76%), url("/images/hero_sec.png");
     background-position: top center;
     background-repeat: no-repeat;
@@ -186,7 +187,6 @@ footer #copyright {
     color: #676767;
     font-size: 1.6rem;
 }
-
 
 footer #privacy_and_faq {
     color: #CFCFCF;
