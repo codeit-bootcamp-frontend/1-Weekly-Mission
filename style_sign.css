@@ -23,15 +23,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 15rem auto 5rem;
   }
   .spacing{
     margin:0;
-    padding-top: 3rem;
+    padding-top: 2rem;
   }
   /* title section 설정하기 */
-  .title-section{
-    padding-top: 24rem;
-  }
   .img-logo{
     width: 25rem;
   }
@@ -66,7 +64,7 @@
     gap: 1rem;
   }
   .link-button{
-    margin-top:3rem;
+    margin-top:2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,3 +81,25 @@
   }
 
   /* social login section 설정하기 */
+  .social-section{
+    background-color: #E7EFFB;
+    border: 1px solid #CCD5E3;
+    border-radius: 8px;
+    width: 40rem;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+  }
+
+  .social-section label{
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #373740;
+  }
+
+  .social-section .img-group{
+    display:flex;
+    gap:1rem;
+  }
