@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkbrary</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/user.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img
+          src="assets/main/logo.png"
+          alt="logoImg"
+          height="38"
+          class="logoImg"
+        />
+      </a>
+      <div class="userContainer">
+        <div class="userTitle">이미 회원이신가요?</div>
+        <a class="moveToPage" href="login.html">로그인 하기</a>
+      </div>
+    </header>
+
+    <section class="inputBoxContainer">
+      <form>
+        <div class="inputContainer" id="emailInputContainer">
+          <label for="emailInput">이메일</label>
+          <input type="email" name="emailInput" />
+        </div>
+        <div class="inputContainer" id="pwInputContainer">
+          <label for="pwInput">비밀번호</label>
+          <div class="inputBox">
+            <input type="password" name="pwInput" />
+            <img
+              src="/assets/user/img_eyeOff.png"
+              id="eyeOffImg"
+              alt="eyeOffImg"
+              width="16"
+              height="16"
+            />
+          </div>
+        </div>
+        <div class="inputContainer" id="pwConfirmInputContainer">
+          <label for="pwConfirmInput">비밀번호 확인</label>
+          <div class="inputBox">
+            <input type="password" name="pwConfirmInput" />
+            <img
+              src="/assets/user/img_eyeOff.png"
+              id="eyeOffImg"
+              alt="eyeOffImg"
+              width="16"
+              height="16"
+            />
+          </div>
+        </div>
+        <button type="submit" class="loginBtn">회원가입</button>
+      </form>
+    </section>
+
+    <section class="socialBoxContainer" id="socialSignUp">
+      <div class="boxTitle">다른 방식으로 가입하기</div>
+      <div class="iconContainer">
+        <a href="https://www.google.com/" target="_blank">
+          <img
+            class="socialIcon"
+            src="/assets/user/img_google.png"
+            alt="googleIcon"
+          />
+        </a>
+        <a href="https://www.kakaocorp.com/page/" target="_blank">
+          <img
+            class="socialIcon"
+            src="/assets/user/img_kakao.png"
+            alt="kakaoIcon"
+          />
+        </a>
+      </div>
+    </section>
+  </body>
+</html>
