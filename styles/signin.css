@@ -76,8 +76,12 @@ html, body {
     width: 40rem;
     padding: 1.8rem 1.5rem;
     border-radius: 8px;
-    border: 1px solid var(--linkbrary-primary-color, #6D6AFE);
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
     background: var(--linkbrary-white, #FFF);
+}
+
+.text-box:focus {
+    outline: 1px solid var(--linkbrary-primary-color, #6D6AFE);
 }
 
 .eye-image {
