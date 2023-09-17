@@ -58,11 +58,8 @@ a {
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
 
   color: #f5f5f5;
-  font-family: Pretendard;
   font-size: 1.125rem;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
 }
 
 .login {
@@ -93,9 +90,7 @@ main {
 
 .content1_title {
   text-align: center;
-  font-family: Pretendard;
   font-size: 4rem; /* 64px */
-  font-style: normal;
   font-weight: 700;
   line-height: 5rem; /* 125% 80px */
 
@@ -104,7 +99,7 @@ main {
   min-width: 708px;
 }
 
-.content1_title > span {
+.content1_title > title {
   background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -141,11 +136,8 @@ main {
 }
 
 .content_title {
-  font-family: Pretendard;
   font-size: 3rem; /* 291px */
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -0.3px;
 
   color: #000;
@@ -160,9 +152,7 @@ main {
 
 .content_paragraph {
   color: #6b6b6b;
-  font-family: Pretendard;
   font-size: 1rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 24px */
 }
@@ -233,9 +223,7 @@ main {
   text-align: center;
   font-family: Arial;
   font-size: 1rem;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
 
 .footer_middle {
@@ -249,9 +237,7 @@ main {
   color: #cfcfcf;
   font-family: Arial;
   font-size: 1rem;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
 
 .footer_right {
