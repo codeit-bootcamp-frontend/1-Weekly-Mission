@@ -13,20 +13,20 @@ header > a {
   cursor: pointer;
 }
 
-header > .signupContainer {
+header > .userContainer {
   display: flex;
   margin-top: 1.6rem;
   gap: 0.8rem;
 }
 
-#signupTitle {
+.userContainer > .userTitle {
   color: #000;
   font-size: 16px;
   font-weight: 400;
   line-height: 2.4rem;
 }
 
-#moveToSignup {
+.userContainer > .moveToPage {
   color: var(--primary);
   font-size: 1.6rem;
   font-weight: 600;
