@@ -72,6 +72,16 @@ header > .userContainer {
   outline: none;
 }
 
+.inputBox {
+  position: relative;
+}
+
+#eyeOffImg {
+  position: absolute;
+  top: 25%;
+  right: 1.5rem;
+}
+
 .inputBoxContainer .loginBtn {
   box-sizing: border-box;
   padding: 1.6rem 2rem;
