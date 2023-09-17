@@ -63,7 +63,7 @@ input:focus {
   outline: 0.1rem solid var(--primary, #6D6AFE) !important;
 }
 
-.email .text, .password .text, .body2-social .text {
+.email-and-password .text, .body2-social .text {
   font-size: 1.4rem;
 }
 
