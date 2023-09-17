@@ -14,12 +14,20 @@
   </head>
   <body>
     <header>
-      <img src="assets/main/logo.png" alt="logoImg" height="38" />
+      <a href="index.html">
+        <img
+          src="assets/main/logo.png"
+          alt="logoImg"
+          height="38"
+          class="logoImg"
+        />
+      </a>
       <div class="signupContainer">
         <div id="signupTitle">회원이 아닌신가요?</div>
-        <a id="moveToSignup">회원 가입하기</a>
+        <a id="moveToSignup" href="signup.html">회원 가입하기</a>
       </div>
     </header>
+
     <section class="inputBoxContainer">
       <form>
         <div class="inputContainer" id="emailInputContainer">
@@ -30,14 +38,27 @@
           <label for="pwInput">비밀번호</label>
           <input type="password" name="pwInput" />
         </div>
-        <button type="submit">로그인</button>
+        <button type="submit" class="loginBtn">로그인</button>
       </form>
     </section>
+
     <section class="socialBoxContainer">
       <div class="boxTitle">소셜 로그인</div>
       <div class="iconContainer">
-        <img src="/assets/user/img_google.png" alt="googleIcon" />
-        <img src="/assets/user/img_kakao.png" alt="kakaoIcon" />
+        <a href="https://www.google.com/" target="_blank">
+          <img
+            class="socialIcon"
+            src="/assets/user/img_google.png"
+            alt="googleIcon"
+          />
+        </a>
+        <a href="https://www.kakaocorp.com/page/" target="_blank">
+          <img
+            class="socialIcon"
+            src="/assets/user/img_kakao.png"
+            alt="kakaoIcon"
+          />
+        </a>
       </div>
     </section>
   </body>
