@@ -98,6 +98,14 @@ header > .userContainer {
   align-items: center;
 }
 
+#socialLogin {
+  margin-bottom: 25.2rem;
+}
+
+#socialSignUp {
+  margin-bottom: 11.6rem;
+}
+
 .socialBoxContainer > .boxTitle {
   color: var(--gray100);
   font-size: 14px;
