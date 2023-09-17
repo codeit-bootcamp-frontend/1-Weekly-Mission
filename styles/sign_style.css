@@ -1,0 +1,131 @@
+.background {
+  margin: 238px auto;
+  background-color: var(--LB-bg);
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+.middle-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.label {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 12px;  
+  color: black;
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--LB-gray-20);
+  background-color: var(--LB-white);
+  color: var(--LB-gray-100);
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.input:focus {
+  outline: 1px solid var(--primary);
+}
+
+.eye-button {
+  position: absolute;
+  right: 15px;
+  bottom: 18px;
+  width: 16px;
+  height: 16px;
+  background-image: url(../public/icons/eye-off.png);
+}
+
+.eye-button:active {
+  background-image: url(../public/icons/eye-on.png);
+}
+
+.signtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.signtitle p {
+  color: black;
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.signtitle a {
+  text-decoration: underline;
+  color: var(--primary);
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.sign-button {
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
+  color: #F5F5F5;
+  font-size: 4.5rem;
+  font-weight: 600;
+}
+
+.SNS-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--LB-gray-20);
+  background-color: var(--LB-gray-10);
+}
+
+.SNS-login p {
+  color: var(--LB-gray-100);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.SNS-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.SNS-login a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.google {
+  background-image: url(../public/icons/google_background.png);
+}
+
+.kakao {
+  background-image: url(../public/icons/kakao_background.png);
+}
