@@ -9,19 +9,23 @@
   --gray10: #e7effb;
   --background: #f0f6ff;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
+
 html {
   font-size: 62.5%;
 }
+
 body {
   font-family: Pretendard;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 a {
   text-decoration: none;
 }
