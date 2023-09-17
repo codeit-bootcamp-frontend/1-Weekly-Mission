@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 4px;
+}
+
+html {
+  font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+  --primary: #6D6AFE;
+  --LB-red: #FF5B56;
+  --LB-black: #111322;
+  --LB-white: #FFFFFF;
+  --LB-gray-100: #373740;
+  --LB-gray-60: #9FA6B2;
+  --LB-gray-20: #CCD5E3;
+  --LB-gray-10: #E7EFFB;
+  --LB-bg: #F0F6FF;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
