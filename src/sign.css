@@ -1,0 +1,176 @@
+body {
+    background-color: var(--background-color);
+}
+
+/* wrap */
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 14.875rem;
+}
+
+
+/* content */
+.content {
+    width: 25rem;
+    margin: 0 auto;
+}
+
+/* signin.css*/
+
+/* top */
+
+.top {
+    gap: 1rem;
+    width: 13.625rem;
+    margin: 0 auto;
+}
+
+
+
+.top img {
+    width: 13.125rem;
+    height: 2.375rem;
+    margin: 0 auto 1rem;
+    display: block;
+}
+
+
+
+.top_link {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+
+}
+
+.top_link a {
+    color: var(--color-primary);
+}
+
+/* input */
+
+.input_wrap {
+    margin: 1.875rem 0;
+}
+
+.input_email {
+    margin-bottom: 1.5rem;
+}
+
+.input_title {
+    margin-bottom: .75rem;
+}
+
+.input_write {
+    width: 100%;
+    padding: 1.125rem .9375rem;
+    border-radius: .5rem;
+    border: 1px solid var(--radius-color);
+}
+
+.input_write:focus {
+    border: 1px solid var(--color-primary);
+    outline: none;
+}
+
+.input_password {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input_eye {
+    position: absolute;
+    bottom: 1.125rem;
+    right: 1.1875rem;
+}
+
+
+
+/* login_button */
+.button_login {
+    width: 100%;
+    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+    padding: 1rem 1.25rem;
+    border-radius: .5rem;
+    text-align: center;
+    color: var(--color-white);
+    cursor: pointer;
+    margin-bottom: 2rem;
+    border: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+/* SNS_login */
+.sns_login {
+    border: 1px solid var(--radius-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
+    background-color: var(--auth-bg-color);
+}
+
+.sns_list {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sns_list li {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+.sns_google {
+    border: 1px solid black;
+    background-color: var(--color-white);
+    border: 1px solid var(--auth-google-radius);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+
+.sns_kakao {
+    border: 1px solid black;
+    background-color: var(--auth-kakao-bg);
+    border: 1px solid var(--auth-google-radius);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+
+}
+
+.sns_icon {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    inset: 10px;
+    cursor: pointer;
+}
+
+/* signup.css*/
+
+.join_top_link {
+
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.join_top_link a {
+    color: var(--color-primary);
+}
+
+.input_password_check {
+    position: relative;
+}

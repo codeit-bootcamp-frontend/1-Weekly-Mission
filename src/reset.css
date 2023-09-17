@@ -1,0 +1,21 @@
+:root {
+    --background-color: #F0F6FF;
+    --radius-color: #CCD5E3;
+    --auth-bg-color: #E7EFFB;
+    --auth-google-radius: #D3D4DD;
+    --auth-kakao-bg: #F5E14B;
+
+
+    --color-black: #111322;
+    --color-white: #FFFFFF;
+    --color-red: #FF5B56;
+    --color-primary: #6D6AFE;
+    --color-dark-gray: #3E3E43;
+    --color-gray: #9FA6B2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Pretendard";
+}
