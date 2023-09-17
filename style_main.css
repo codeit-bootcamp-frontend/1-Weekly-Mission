@@ -2,6 +2,18 @@
     box-sizing: border-box;
   }
   
+  :root {
+    --Primary: #6D6AFE;
+    --Red: #FF5B56;
+    --Black: #111322;
+    --White: #FFFFFF;
+    --Gray5:#3E3E43;
+    --Gray4:#9FA6B2;
+    --Gray3:#CCD5E3;
+    --Gray2:#E7EFFB;
+    --Gray1:#F0F6FF;
+  }
+  
   html {
     /* 1rem = 10px로 고정하기. */
     word-break: keep-all;
@@ -9,7 +21,7 @@
     font-family: 'Noto Sans Korean', 'Poppins', 'sans-serif';
   }
   body{
-    background-color: #F0F6FF;
+    background-color: var(--Gray1);
     margin:0;
   }
   a{
@@ -27,7 +39,7 @@
 
   /* header css 작성 */
   header{
-    background-color: #F0F6FF;
+    background-color: var(--Gray1);
     padding: 2rem 20rem;
     display: flex;
     flex-wrap: nowrap;
@@ -45,7 +57,7 @@
     padding: 1.6rem 2rem;
     border: none;
     border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--Primary) 0.12%, #6AE3FE 101.84%));
   }
   .link-button .a-label{
     color: var(--grey-light, #F5F5F5);
@@ -75,7 +87,7 @@
     min-width: 77rem;
   }
   .main-section .section-title .gradient-text{
-    background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+    background: linear-gradient(91deg, var(--Primary) 17.28%, #FF9F9F 74.98%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -92,7 +104,7 @@
   /* .section 2. cards list */
   /* card 요소 공통 부분들 */
   .cards{
-    background-color: #ffffff;
+    background-color: var(--White);
     display:flex;
     flex-direction: column;
     justify-content: space-around;
@@ -134,7 +146,7 @@
   }
   .card .images{
     border-radius: 15px;
-    background: #F0F6FF;
+    background: var(--Gray1);
     display: flex;
     flex-wrap: nowrap;
     padding:0;
@@ -221,7 +233,7 @@
 
 /* footer css 작성 */
 footer{
-  background: var(--the-julge-black, #111322);
+  background: var(--the-julge-black, var(--Black));
   padding:3rem 10.4rem 9rem;
   display: flex;
   justify-content: space-between;
