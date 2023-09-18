@@ -3,29 +3,29 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="styles/reset.css" />
-		<link rel="stylesheet" href="styles/global.css" />
-		<link rel="stylesheet" href="styles/variables.css" />
-		<link rel="stylesheet" href="styles/sign.css" />
+		<link rel="stylesheet" href="/styles/reset.css" />
+		<link rel="stylesheet" href="/styles/global.css" />
+		<link rel="stylesheet" href="/styles/variables.css" />
+		<link rel="stylesheet" href="/styles/sign.css" />
 		<title>Linkbrary</title>
 	</head>
 	<body>
-		<article id="signup__container" class="sign__container">
+		<article id="signin__container" class="sign__container">
 			<!-- FORM -->
 			<form>
 				<fieldset>
 					<legend class="sign__legend-wrapper">
-						<a href="/" class="sign__logo">
+						<a href="./main.html" class="sign__logo">
 							<img
-								src="public/icons/logo.svg"
+								src="/public/icons/logo.svg"
 								width="210"
 								height="38"
 								alt="링크브러리 로고"
 							/>
 						</a>
 						<div class="sign__wrapper">
-							<span class="sign__link-text">이미 회원이신가요?</span>
-							<a href="/signin.html" class="sign__link">로그인 하기</a>
+							<span class="sign__link-text">회원이 아니신가요?</span>
+							<a href="./signup.html" class="sign__link">회원 가입하기</a>
 						</div>
 					</legend>
 					<ul class="sign__input-wrapper">
@@ -42,22 +42,7 @@
 									<input class="sign__input" type="password" />
 									<button>
 										<img
-											src="public/icons/password.svg"
-											width="16px"
-											height="16px"
-										/>
-									</button>
-								</div>
-							</label>
-						</li>
-						<li>
-							<label>
-								<p class="sign__input-title">비밀번호 확인</p>
-								<div class="sign__input-password sign__input-password--noshow">
-									<input class="sign__input" type="password" />
-									<button>
-										<img
-											src="public/icons/password.svg"
+											src="/public/icons/password.svg"
 											width="16px"
 											height="16px"
 										/>
@@ -66,13 +51,13 @@
 							</label>
 						</li>
 					</ul>
-					<button type="submit" class="sign__button">회원가입</button>
+					<button type="submit" class="sign__button">로그인</button>
 				</fieldset>
 			</form>
 
 			<!-- SOCIAL -->
 			<section class="social-sign__wrapper">
-				<p class="social-sign__title">다른 방식으로 가입하기</p>
+				<p class="social-sign__title">소셜 로그인</p>
 				<ul class="social-sign__button-wrapper">
 					<li>
 						<a
@@ -80,7 +65,7 @@
 							class="social-sign__button social-sign__button--google"
 						>
 							<img
-								src="public/icons/google.svg"
+								src="/public/icons/google.svg"
 								width="22"
 								height="22"
 								alt="구글 로그인 아이콘"
@@ -93,7 +78,7 @@
 							class="social-sign__button social-sign__button--kakao"
 						>
 							<img
-								src="public/icons/kakao.svg"
+								src="/public/icons/kakao.svg"
 								width="26"
 								height="24"
 								alt="카카오 로그인 아이콘"
