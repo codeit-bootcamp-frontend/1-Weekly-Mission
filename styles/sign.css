@@ -82,7 +82,7 @@ body {
 	transform: translateY(50%);
 }
 
-.sign__input-password--noshow button {
+.sign__input-password--invisible button {
 	display: none;
 }
 
