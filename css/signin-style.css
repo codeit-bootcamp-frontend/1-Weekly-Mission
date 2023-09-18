@@ -1,0 +1,145 @@
+@import url(./reset.css);
+
+body {
+    background: var(--linkbrary-bg);
+}
+
+#login {
+    height: 100vh;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 238px 0 116px;
+}
+
+.login-form h1 {
+    text-align: center;
+}
+.login-form h1 a {
+    text-decoration: none;
+    display:inline-block;
+    width: 210.583px;
+    height: 38px;
+}
+
+.login-form h1 img {
+    width: 100%;
+}
+
+.join-link {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:16px;
+}
+
+.join-link h3 {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin-right: 8px;
+}
+
+.join-link a {
+    color:  var(--linkbrary-primary-color);
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: 600;
+}
+form {
+    margin: 30px 0 32px;
+}
+form .input-box:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box label {
+    margin-bottom: 12px;
+    color: #000;
+    /* Linkbrary/body2-regular */
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.input-box .inner-icon {
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 18px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20);
+    background:  var(--linkbrary-white);
+}
+.input-box input:focus {
+    outline-color: var(--linkbrary-primary-color);
+  }
+
+.fa-solid {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    transform: translate(-50%, -50%);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 16px 20px; 
+    border-radius: 8px;
+    background: linear-gradient(91deg, var(--linkbrary-primary-color) 0.12%, #6AE3FE 101.84%);
+    color: #F5F5F5;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-weight: 600;
+    border: 0;
+    cursor: pointer;
+}
+
+
+.login-form-social {
+    display: flex;
+    max-width: 100%;
+    padding: 12px 24px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid  var(--linkbrary-gray-20);
+    background: var(--linkbrary-gray-10);
+    gap: 16px;
+}
+
+.login-form-social h3 {
+    flex-grow:2;
+    color: var(--linkbrary-gray-100);
+    /* Linkbrary/body2-regular */
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+}
+.login-form-social a {
+    width: 42px;
+    height:42px;
+}
+
+
+.login-form-social img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
