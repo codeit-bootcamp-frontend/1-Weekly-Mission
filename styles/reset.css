@@ -3,7 +3,6 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-size: 4px;
 }
 
 :root {
@@ -20,6 +19,7 @@
 
 html {
   font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+  font-size: 62.5%;
 }
 
 a {

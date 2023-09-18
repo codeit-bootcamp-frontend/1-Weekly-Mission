@@ -29,7 +29,7 @@
   flex-direction: column;
   gap: 12px;  
   color: black;
-  font-size: 3.5rem;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
@@ -41,7 +41,7 @@
   border: 1px solid var(--LB-gray-20);
   background-color: var(--LB-white);
   color: var(--LB-gray-100);
-  font-size: 4rem;
+  font-size: 1.6rem;
   font-weight: 400;
 }
 
@@ -71,14 +71,14 @@
 
 .signtitle p {
   color: black;
-  font-size: 4rem;
+  font-size: 1.6rem;
   font-weight: 400;
 }
 
 .signtitle a {
   text-decoration: underline;
   color: var(--primary);
-  font-size: 4rem;
+  font-size: 1.6rem;
   font-weight: 400;
 }
 
@@ -87,7 +87,7 @@
   border-radius: 8px;
   background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
   color: #F5F5F5;
-  font-size: 4.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
 }
 

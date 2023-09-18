@@ -16,7 +16,7 @@
   background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
   padding: 16px 20px;
   border-radius: 8px;
-  font-size: 4.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--LB-white);
   text-align: center;
@@ -37,7 +37,7 @@
 
 .title h1 {
   text-align: center;
-  font-size: 16rem;
+  font-size: 6.4rem;
   font-weight: 700;
   line-height: 80px;
 }
@@ -47,7 +47,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 16rem;
+  font-size: 6.4rem;
 }
 
 .title a {
@@ -152,18 +152,18 @@
 }
 
 .part h2 {
-  font-size: 12rem;
+  font-size: 4.8rem;
   font-weight: 700;
 }
 
 .part p {
   color: #6B6B6B;
-  font-size: 4rem;
+  font-size: 1.6rem;
   font-weight: 500;
 }
 
 .part span {
-  font-size: 12rem;
+  font-size: 4.8rem;
 }
 
 .part.save span {
@@ -206,12 +206,12 @@
 .main_footer p {
   color: #676767;
   text-align: center;
-  font-size: 4rem;
+  font-size: 1.6rem;
   font-weight: 400;
 }
 
 .main_footer a {
-  font-size: 4rem;
+  font-size: 1.6rem;
   font-weight: 400;
   color: #CFCFCF;
 }
