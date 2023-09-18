@@ -69,7 +69,7 @@
   gap: 16px;
 }
 
-.signtitle p {
+.signtitle span {
   color: black;
   font-size: 1.6rem;
   font-weight: 400;
