@@ -1,32 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-:root{
-  --primary_color:#6D6AFE;
-  --red_color: #FF5B56;
-  --black_color:#111322;
-  --white_color:#FFFFFF;
-  --gray_color_1:#3E3E43;
-  --gray_color_2:#9FA6B2;
-  --gray_color_3:#CCD5E3;
-  --gray_color_4:#E7EFFB;
-  --gray_color_5:#F0F6FF;
-}
-
-html {
-  font-family: Pretendard, Arial;
-  word-break: keep-all;
-  font-size: 10px;
-  font-family: Pretendard;
-  font-style: normal;    
-}
-
-body {
-  font-size:1rem;
-  margin:0;
-}
-
 header{
   display:flex;
   justify-content: center;
