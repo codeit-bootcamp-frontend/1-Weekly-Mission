@@ -1,18 +1,18 @@
 * {
-  box-sizing:border-box;
-  margin:0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 :root{
-  --primary_color:#6D6AFE;
+  --primary_color: #6D6AFE;
   --red_color: #FF5B56;
-  --black_color:#111322;
-  --white_color:#FFFFFF;
-  --gray_color_1:#3E3E43;
-  --gray_color_2:#9FA6B2;
-  --gray_color_3:#CCD5E3;
-  --gray_color_4:#E7EFFB;
-  --gray_color_5:#F0F6FF;
+  --black_color: #111322;
+  --white_color: #FFFFFF;
+  --gray_color_1: #3E3E43;
+  --gray_color_2: #9FA6B2;
+  --gray_color_3: #CCD5E3;
+  --gray_color_4: #E7EFFB;
+  --gray_color_5: #F0F6FF;
 }
 
 html {
