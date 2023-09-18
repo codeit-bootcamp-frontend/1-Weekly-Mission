@@ -6,16 +6,16 @@
 		<link rel="stylesheet" href="/styles/reset.css" />
 		<link rel="stylesheet" href="/styles/global.css" />
 		<link rel="stylesheet" href="/styles/variables.css" />
-		<link rel="stylesheet" href="/styles/sign.css" />
+		<link rel="stylesheet" href="/styles/auth.css" />
 		<title>Linkbrary</title>
 	</head>
 	<body>
-		<article id="signin__container" class="sign__container">
+		<article id="signin__container" class="auth__container">
 			<!-- FORM -->
 			<form>
 				<fieldset>
-					<legend class="sign__legend-wrapper">
-						<a href="./main.html" class="sign__logo">
+					<legend class="auth__legend-wrapper">
+						<a href="./main.html" class="auth__logo">
 							<img
 								src="/public/icons/logo.svg"
 								width="210"
@@ -23,20 +23,20 @@
 								alt="링크브러리 로고"
 							/>
 						</a>
-						<div class="sign__wrapper">
-							<span class="sign__link-text">회원이 아니신가요?</span>
-							<a href="./signup.html" class="sign__link">회원 가입하기</a>
+						<div class="auth__wrapper">
+							<span class="auth__link-text">회원이 아니신가요?</span>
+							<a href="./signup.html" class="auth__link">회원 가입하기</a>
 						</div>
 					</legend>
-					<div class="sign__input-wrapper">
+					<div class="auth__input-wrapper">
 						<label>
-							<p class="sign__input-title">이메일</p>
-							<input class="sign__input" type="email" required />
+							<p class="auth__input-title">이메일</p>
+							<input class="auth__input" type="email" required />
 						</label>
 						<label>
-							<p class="sign__input-title">비밀번호</p>
-							<div class="sign__input-password">
-								<input class="sign__input" type="password" required />
+							<p class="auth__input-title">비밀번호</p>
+							<div class="auth__input-password">
+								<input class="auth__input" type="password" required />
 								<button type="button">
 									<img
 										src="/public/icons/password.svg"
@@ -47,18 +47,18 @@
 							</div>
 						</label>
 					</div>
-					<button type="submit" class="sign__button">로그인</button>
+					<button type="submit" class="auth__button">로그인</button>
 				</fieldset>
 			</form>
 
 			<!-- SOCIAL -->
-			<section class="social-sign__wrapper">
-				<p class="social-sign__title">소셜 로그인</p>
-				<ul class="social-sign__button-wrapper">
+			<section class="social-auth__wrapper">
+				<p class="social-auth__title">소셜 로그인</p>
+				<ul class="social-auth__button-wrapper">
 					<li>
 						<a
 							href="https://www.google.com/"
-							class="social-sign__button social-sign__button--google"
+							class="social-auth__button social-auth__button--google"
 						>
 							<img
 								src="/public/icons/google.svg"
@@ -71,7 +71,7 @@
 					<li>
 						<a
 							href="https://www.kakaocorp.com/page/"
-							class="social-sign__button social-sign__button--kakao"
+							class="social-auth__button social-auth__button--kakao"
 						>
 							<img
 								src="/public/icons/kakao.svg"
