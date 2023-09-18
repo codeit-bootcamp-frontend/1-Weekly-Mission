@@ -311,6 +311,7 @@ a:hover {
   .description_image{
     width: 38.5rem;
     height: 31.5rem;
+  }
 }
 
 @media (max-width:768px) {
