@@ -1,3 +1,4 @@
+
 body {
   background: var(--gray_color_5);
 }
@@ -7,7 +8,7 @@ main {
   justify-content: center;
 }
 
-.signin_container {
+.container {
   width: 40rem;
   height: 49.2rem;
   margin: 23.8rem 0 25.2rem; 
@@ -16,15 +17,15 @@ main {
   align-items: center;
 }
 
-.signin_header {  
-  width: 21.8rem;
-  height: 7.8rem;  
+.header {  
+  height:7.8rem;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem
+
 }
 
-.site-logo {
-  display:flex;
-  justify-content: center;
-}
 
 .site-logo img {
   width:21.05834rem;
@@ -32,19 +33,18 @@ main {
 }
 
 
-.signin_header_message{
+.header_message{
   display:flex;
   justify-content: center;
   gap: 0.8rem;
   width: 21.8rem;
   height: 2.4rem;
-  margin-top:1.6rem;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 2.4rem;
 }
 
-.signin_header_message a {
+.header_message a {
   font-size: 1.6rem;
   font-weight: 600;
   line-height: normal;
@@ -53,24 +53,29 @@ main {
 
 
 
-.signin_input_content {
+.input_container {
   width: 100%;
   margin: 3rem 0;
   display:flex;
   flex-direction: column;
-  gap:2.4rem;
   position: relative;
+}
+
+.input_container form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem
 }
 
 
 
-.signin_input_content label {
+.input_container label {
   display:block;
   margin-bottom:1.2rem;
   font-size:1.4rem;
 }
 
-.signin_input_content input{
+.input_container input{
   display:block;
   width:100%;
   height: 6rem;
@@ -85,7 +90,7 @@ main {
   line-height: 2.4rem;
 }
 
-.signin_input_content input:focus {
+.input_container input:focus {
   border-color: blue;
   outline: none;
 }
@@ -112,7 +117,7 @@ button {
 
 
 
-.eye_off_mark{
+.input_container img {
   width: 1.6rem;
   height: 1.6rem;
   position: absolute;
@@ -120,7 +125,7 @@ button {
   bottom: 2.1rem;
 }
 
-.sns_signin {
+.sns_link_container {
   display: flex;
   width: 40rem;
   height: 6.6rem;

@@ -6,19 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'>
   <link rel="stylesheet" href="/common.css">
-  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="/Signcommon.css">
 </head>
 <body>
   <main>
 
-    <div class="signup_container">
-      <div class="signup_header">        
+    <div class="container">
+      <div class="header">        
         <div class="site-logo">
           <a href="/index.html">
           <img src="/assets/logo/linkbrary_logo_big.svg" alt="링크브러리 로고 링크(랜딩페이지 이동)">
           </a>
         </div>  
-        <div class="signup_header_message">
+        <div class="header_message">
           <span>이미 회원이신가요?</span> 
           <a href="/pages/signin/signin.html">
           로그인 하기
@@ -26,27 +26,31 @@
         </div>
       </div>
 
-      <div class="signup_input_content">
-        <form>
+      <div class="input_container">
+        <form class="input_content">
+          <div>
           <label for="e-mail">이메일</label>
           <input id="e-mail" name="e-mail" type="email">
-        </form>
-        <form>
+          </div>
+        
+          <div>
           <label for="password">비밀번호</label>
           <input id="password" name="password" type="password">
-        </form>
-        <form>
+          </div>
+          
+          <div id="password_repeat_box">
           <label for="password_repeat">비밀번호 확인</label>
           <input id="password_repeat" name="password_repeat" type="password">
+          </div>
         </form> 
-        <img class="eye_on_mark_password" src="/assets/images/eye_on_mark.svg">    
-        <img class="eye_on_mark_password_repeat" src="/assets/images/eye_on_mark.svg">    
 
+        <img id="eye_on_mark_password" src="/assets/images/eye_on_mark.svg">    
+        <img id="eye_on_mark_password_repeat" src="/assets/images/eye_on_mark.svg"> 
       </div>
 
       <button>회원가입</button>
 
-      <div class="sns_signup">
+      <div class="sns_link_container">
         <div>다른 방식으로 가입하기</div>
         <div class="icon_link">
           <a href="https://www.google.com">

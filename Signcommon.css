@@ -1,4 +1,3 @@
-
 body {
   background: var(--gray_color_5);
 }
@@ -8,69 +7,73 @@ main {
   justify-content: center;
 }
 
-.signup_container {
+.container {
   width: 40rem;
-  height: 62.8rem;
-  margin: 23.8rem 0 11.6rem; 
+  margin-top: 23.8rem; 
   display:flex;
   flex-direction: column;
   align-items: center;
 }
 
-.signup_header {
-  width: 21.1rem;
-  height: 7.8rem;
+.header {  
+  height:7.8rem;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem
+
 }
-.site-logo {
+
+
+.site-logo img {
+  width:21.05834rem;
+  height: 3.8rem;
+}
+
+
+.header_message{
   display:flex;
   justify-content: center;
-}
-
-.site-logo img{
-  width:21.0583rem;
-  height:3.8rem;
-}
-
-
-
-.signup_header_message{
-  display:flex;
-  justify-content:center;
   gap: 0.8rem;
+  width: 21.8rem;
   height: 2.4rem;
-  margin-top:1.6rem;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 2.4rem;
 }
 
-.signup_header_message a {
+.header_message a {
   font-size: 1.6rem;
   font-weight: 600;
   line-height: normal;
-  color: var(--linkbrary-primary-color, var(--primary_color));
+  color: var(--primary_color)
 }
 
 
 
-.signup_input_content {
+.input_container {
   width: 100%;
   margin: 3rem 0;
   display:flex;
   flex-direction: column;
-  gap:2.4rem;
   position: relative;
+}
+
+.input_container .input_content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem
 }
 
 
 
-.signup_input_content label {
+.input_container label {
   display:block;
   margin-bottom:1.2rem;
   font-size:1.4rem;
 }
 
-.signup_input_content input{
+.input_container input{
   display:block;
   width:100%;
   height: 6rem;
@@ -80,39 +83,20 @@ main {
   align-items: center;
   border-radius: 8px;
   border: 1px solid gray;
-  background: var(--linkbrary-white, var(--white_color));
+  background: var(--white_color);
   font-size: 1.6rem;
   line-height: 2.4rem;
 }
 
-.signup_input_content #password_repeat {
+.input_container #password_repeat_box {
   margin-bottom: 2.3rem;
 }
 
-.signup_input_content input:focus {
+.input_container input:focus {
   border-color: blue;
   outline: none;
 }
 
-.signup_input_content img {
-  width: 1.6rem;
-  height: 1.6rem;
-}
-
-.eye_on_mark_password,.eye_on_mark_password_repeat {
-  width: 1.6rem;
-  height: 1.6rem;
-  position: absolute;
-  right: 1.5rem;
-}
-
-.eye_on_mark_password {
-  bottom: 4.5rem;
-}
-
-.eye_on_mark_password_repeat{
-  bottom: 15.9rem;
-}
 
 
 button {
@@ -130,20 +114,31 @@ button {
   border-color: var(--gray_color_5);
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--white_color);
+  color:var(--white_color);
 }
 
 
 
-.eye_on_mark{
+.input_container img {
   width: 1.6rem;
   height: 1.6rem;
-  position: absolute;
   right: 1.5rem;
+  position: absolute;
+}
+
+.input_container > #eye_off_mark {
   bottom: 2.1rem;
 }
 
-.sns_signup {
+.input_container > #eye_on_mark_password {
+  bottom: 4.5rem;
+}
+
+.input_container > #eye_on_mark_password_repeat {
+  bottom: 15.9rem;
+}
+
+.sns_link_container {
   display: flex;
   width: 40rem;
   height: 6.6rem;
@@ -153,7 +148,7 @@ button {
   margin-top: 3.2rem;
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-20, var(--gray_color_3));
-  background: var(--linkbrary-gray-10, var(--gray_color_4));
+  background: var(--linkbrary-gray-10,var(--gray_color_4));
   font-size: 1.4rem;
 }
 
@@ -168,5 +163,3 @@ button {
   width: 4.2rem;
   height: 4.2rem;
 }
-
-
