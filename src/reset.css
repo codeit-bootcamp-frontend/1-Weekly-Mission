@@ -1,0 +1,29 @@
+/* user agent stylesheet 초기화 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Pretendard";
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:root {
+  --primary: #6d6afe;
+  --red: #ff5b56;
+  --black: #111322;
+  --white: #ffffff;
+  --gray100: #3e3e43;
+  --gray60: #9fa6b2;
+  --gray20: #ccd5e3;
+  --gray10: #e7effb;
+  --gray0: #f0f6ff;
+}

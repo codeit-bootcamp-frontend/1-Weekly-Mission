@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>회원가입</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="./src/reset.css" />
+    <link rel="stylesheet" href="./src/signup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <a href="../index.html">
+          <img class="logo" src="./images/logo.svg" alt="홈으로 연결된 Linkbrary 로고" />
+        </a>
+        <p class="signin-recommendation">
+          이미 회원이신가요?
+          <a class="signin-button" href="signin.html">로그인 하기</a>
+        </p>
+      </header>
+      <form>
+        <div class="input-area-container">
+          <div class="input-area">
+            <label for="email">이메일</label>
+            <input id="email" name="email" />
+          </div>
+          <div class="input-area">
+            <label for="password">비밀번호</label>
+            <input id="password" name="password" type="password" />
+            <img class="eye-off" src="./images/eye-off.svg" alt="비밀번호 표시 여부 아이콘" />
+          </div>
+          <div class="input-area">
+            <label for="password">비밀번호 확인</label>
+            <input id="password" name="password" type="password" />
+            <img class="eye-off" src="./images/eye-off.svg" alt="비밀번호 표시 여부 아이콘" />
+          </div>
+        </div>
+        <button type="submit" class="signup-button">회원가입</button>
+      </form>
+    </main>
+    <footer>
+      <p>다른 방식으로 가입하기</p>
+      <div class="sns">
+        <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+          <img class="sns-logo-container" src="../images/sns/white-icon.svg" alt="google 로고 컨테이너" />
+          <img class="sns-logo google" src="../images/sns/google.png" alt="google 홈페이지로 연결된 google 로고" />
+        </a>
+        <a href="https://www.kakaocorp.com/page/" target="_blank" rel="noopener noreferrer">
+          <img class="sns-logo-container" src="../images/sns/yellow-icon.svg" alt="kakaotalk 로고 컨테이너" />
+          <img class="sns-logo kakaotalk" src="../images/sns/kakaotalk.svg" alt="kakaotalk 홈페이지로 연결된 kakaotalp 로고" />
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
