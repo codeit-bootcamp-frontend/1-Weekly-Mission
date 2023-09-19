@@ -105,7 +105,7 @@ form {
   flex: 1 0 0;
 }
 
-.button {
+.member-form-btn {
   margin-top: 3rem;
   display: flex;
   width: 40rem;
@@ -130,7 +130,7 @@ form {
   line-height: normal;
 }
 
-.button:hover {
+.member-form-btn:hover {
   cursor: pointer;
   text-decoration: underline;
   outline: 1px solid var(--linkbrary-primary-color);
