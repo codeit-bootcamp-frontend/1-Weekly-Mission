@@ -112,3 +112,41 @@
 #search_your_link .text--gradiant {
     background-image: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
 }
+
+.footer {
+    padding-top: 12.0rem;
+    font-family: Arial;
+    text-align: center;
+}
+
+.footer__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 16.0rem;
+    padding: 3.2rem 10.4rem 6.4rem 10.4rem;
+    background: #111322;
+}
+
+.footer__copyright {
+    color: #676767;
+    font-size: 1.6rem;
+}
+
+.footer__privacy {
+    color: #CFCFCF;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+}
+
+.footer__privacy a {
+    display: block;
+    width: 10.0rem;
+}
+
+.footer__social_media {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+}
