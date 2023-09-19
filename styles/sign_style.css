@@ -1,33 +1,33 @@
 .background {
-  margin: 238px auto;
+  margin: 23.8rem auto;
   background-color: var(--LB-bg);
 }
 
 .frame {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 40rem;
   margin: 0 auto;
-  gap: 32px;
+  gap: 3.2rem;
 }
 
 .middle-frame {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 3rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2.4rem;
 }
 
 .label {
   display: flex;
   position: relative;
   flex-direction: column;
-  gap: 12px;  
+  gap: 1.2rem;  
   color: black;
   font-size: 1.4rem;
   font-weight: 400;
@@ -36,9 +36,9 @@
 .input {
   display: block;
   width: 100%;
-  padding: 18px 15px;
-  border-radius: 8px;
-  border: 1px solid var(--LB-gray-20);
+  padding: 1.8rem 1.5rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--LB-gray-20);
   background-color: var(--LB-white);
   color: var(--LB-gray-100);
   font-size: 1.6rem;
@@ -46,15 +46,15 @@
 }
 
 .input:focus {
-  outline: 1px solid var(--primary);
+  outline: 0.1rem solid var(--primary);
 }
 
 .eye-button {
   position: absolute;
-  right: 15px;
-  bottom: 18px;
-  width: 16px;
-  height: 16px;
+  right: 1.5rem;
+  bottom: 1.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
   background-image: url(../public/icons/eye-off.png);
 }
 
@@ -66,7 +66,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1.6rem;
+}
+
+.logo-img {
+  width: 21rem;
+  height: 3.8rem;
 }
 
 .header-logo .ask {
@@ -83,8 +88,8 @@
 }
 
 .sign-button {
-  padding: 16px 20px;
-  border-radius: 8px;
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
   background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
   color: #F5F5F5;
   font-size: 1.8rem;
@@ -95,21 +100,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: 1px solid var(--LB-gray-20);
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--LB-gray-20);
   background-color: var(--LB-gray-10);
 }
 
 .sns-title {
   color: var(--LB-gray-100);
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
 .sns-links {
   display: flex;
-  gap: 16px;
+  gap: 1.6rem;
   list-style: none;
 }
 
@@ -117,8 +122,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 42px;
-  height: 42px;
+  width: 4.2rem;
+  height: 4.2rem;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -127,6 +132,16 @@
   background-image: url(../public/icons/google_background.png);
 }
 
+.google-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
 .kakao {
   background-image: url(../public/icons/kakao_background.png);
+}
+
+.kakao-icon {
+  width: 2.6rem;
+  height: 2.4rem;
 }
