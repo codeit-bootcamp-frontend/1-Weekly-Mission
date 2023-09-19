@@ -1,0 +1,9 @@
+html {
+    background-color: #F0F6FF;
+}
+
+body {
+    width: 40rem;
+    margin: 23.8rem auto 0;
+    gap: 32px;
+}
