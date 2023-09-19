@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: Pretendard;
+  font-style: normal;
+}
+
+body {
+  background: #F0F6FF;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 14.9rem 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#guide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  font-size: 1rem;
+}
+
+#guide img {
+  width: 210.583px;
+  height: 38px;
+}
+
+#guide p {
+  color: #000;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+#guide a {
+  color: #6D6AFE;
+  font-weight: 600;
+}
+
+#input-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1.88rem 0;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 25rem;
+
+  font-weight: 400px;
+  position: relative;
+}
+
+.form-content label {
+  font-size: 0.875rem;
+}
+
+.form-content input {
+  width: 25rem;
+  padding: 1.125rem 0.9375rem;
+  border-radius: 0.5rem;
+  border: 1px solid #CCD5E3;
+  background: #FFF;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.form-content input:focus {
+  outline: 1px;
+  border-color: #6D6AFE;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 3.1rem;
+  right: 0.94rem;
+}
+
+#input-form button {
+  width: 25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  border: 0;
+  background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  color: #F5F5F5;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+#social-login {
+  display: flex;
+  width: 25rem;
+  padding: 0.75rem 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid #CCD5E3;
+  background: #E7EFFB;
+  gap: auto;
+}
+
+#social-login div {
+  display: flex;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.background-img {
+  width: 2.625rem;
+  height: 2.625rem;
+
+  position: relative;
+}
+
+.logo-img {
+  z-index: 2;
+  width: 1.375rem;
+  height: 1.375rem;
+
+  position: absolute;
+  top: 0.63rem;
+  left: 0.59rem
+}
