@@ -13,7 +13,7 @@
 }
 
 .hero_sec {
-    background-color: #F0F6FF;
+    background-color: var(--gray1);
 }
 
 .hero_sec__container {
@@ -89,7 +89,7 @@
     width: 55rem;
     height: 45rem;
     border-radius: 1.5rem;
-    background-color: #F0F6FF;
+    background-color: var(--gray1);
 }
 
 #manage_your_link,
@@ -125,7 +125,7 @@
     justify-content: space-between;
     height: 16.0rem;
     padding: 3.2rem 10.4rem 6.4rem 10.4rem;
-    background: #111322;
+    background: var(--black);
 }
 
 .footer__copyright {

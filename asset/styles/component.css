@@ -72,3 +72,13 @@ h2 {
 .btn--width-full {
     width: 100%;
 }
+
+.text--link {
+    color: var(--primary);
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border-bottom: 0.1rem solid var(--primary);
+}
