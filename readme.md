@@ -1,4 +1,4 @@
-# 3주차 Weekly Mission
+# 3주차 Weekly Mission 입니다.
 
 
 
