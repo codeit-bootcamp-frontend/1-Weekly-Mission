@@ -9,19 +9,16 @@
 }
 
 :root { 
-  --linkbrary-white: #FFF;
-  --linkbrary-primary-color: #6D6AFE;
-  --red: #FF5B56;
-  --black: #111322;
-  --linkbrary-gray-10: #E7EFFB;
-  --linkbrary-gray-20: #CCD5E3;
-  --linkbrary-gray-30: #F0F6FF;
-  --linkbrary-gray-60: #9FA6B2;
-  --linkbrary-gray-80: #3E3E43;
-  --linkbrary-gray-100: #373740;
-  --grey-light: #F5F5F5;
-  --linkbrary-bg: #F0F6FF;
-  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-  --the-julge-black: #111322;
-  --fandom-k-gra-blue-to-pink: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
+  --color-primary: #6D6AFE;
+  --color-red: #FF5B56;
+  --color-white: #FFF;
+  --color-black: #111322;
+  --color-gray-10: #F0F6FF;
+  --color-gray-20: #E7EFFB;
+  --color-gray-30: #CCD5E3;
+  --color-gray-40: #9FA6B2;
+  --color-gray-50: #3E3E43;
+  --color-bg: #F0F6FF;
+  --color-cta-bg: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  --color-cta-font: #F5F5F5;
 }
