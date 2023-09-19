@@ -14,13 +14,17 @@ header nav {
 }
 
 body {
-  background-color: #f0f6ff;
+  background-color: var(--font_white);
 }
 main {
   width: 100%;
 }
 .btn {
-  background: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  background: linear-gradient(
+    90.99deg,
+    var(--main_color) 0.12%,
+    #6ae3fe 101.84%
+  );
   border-radius: 8px;
   display: flex;
   flex-direction: row;
@@ -49,7 +53,7 @@ main {
   margin: 30px;
   width: 133px;
   height: 24px;
-  color: #6d6afe;
+  color: var(--main_color);
   font-weight: bold;
   text-decoration: none;
 }
@@ -71,7 +75,11 @@ main {
 }
 
 .gradationFont {
-  background: linear-gradient(91.26deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+  background: linear-gradient(
+    91.26deg,
+    var(--main_color) 17.28%,
+    #ff9f9f 74.98%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -124,7 +132,7 @@ main {
 .card_img {
   width: 550px;
   height: 450px;
-  background: #f0f6ff;
+  background: var(--font_white);
   border-radius: 15px;
   flex-grow: 0;
 }

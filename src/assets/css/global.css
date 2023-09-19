@@ -7,3 +7,10 @@
     format("woff");
   font-style: normal;
 }
+
+:root {
+  --main_color: #6d6afe;
+
+  --font_white: #f0f6ff;
+  --font_black: #000000;
+}
