@@ -153,7 +153,7 @@ span {
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0.40);
   position: relative;
-  background-image: url('images/page_2.png');
+  background-image: url('../images/page_2.png');
   background-blend-mode: multiply;
   background-position: center;
   background-size: 160%;
