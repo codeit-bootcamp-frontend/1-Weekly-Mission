@@ -62,20 +62,20 @@
   background-image: url(../public/icons/eye-on.png);
 }
 
-.signtitle {
+.header-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
-.signtitle span {
+.header-logo .ask {
   color: black;
   font-size: 1.6rem;
   font-weight: 400;
 }
 
-.signtitle a {
+.header-logo .sign-link {
   text-decoration: underline;
   color: var(--primary);
   font-size: 1.6rem;
@@ -91,7 +91,7 @@
   font-weight: 600;
 }
 
-.SNS-login {
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -101,18 +101,18 @@
   background-color: var(--LB-gray-10);
 }
 
-.SNS-login p {
+.sns-title {
   color: var(--LB-gray-100);
   font-size: 14px;
   font-weight: 400;
 }
 
-.SNS-icons {
+.sns-links {
   display: flex;
   gap: 16px;
 }
 
-.SNS-login a {
+.footer .link {
   display: flex;
   justify-content: center;
   align-items: center;

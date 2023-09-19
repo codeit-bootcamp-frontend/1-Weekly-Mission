@@ -31,14 +31,14 @@
   background-color: var(--LB-bg);
 }
 
-.banner .content {
+.slogan {
   text-align: center;
   font-size: 6.4rem;
   font-weight: 700;
   line-height: 80px;
 }
 
-.banner .content .gradient {
+.slogan-gradient {
   background-image: linear-gradient(91deg, var(--primary) 17.28%, #FF9F9F 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -56,7 +56,7 @@
   overflow: hidden;
 }
 
-.banner .imgframe .img {
+.banner-img {
   position: relative;
   top: 150px;
   border-radius: 25px;
@@ -131,19 +131,19 @@
   overflow: hidden;
 }
 
-.search.imgframe .img {
+.search-img {
   position: relative;
   top: 60px;
   left: 60px;
   border-radius: 15px;
 }
 
-.section .h2 {
+.section .title {
   font-size: 4.8rem;
   font-weight: 700;
 }
 
-.section .p {
+.section .description {
   color: #6B6B6B;
   font-size: 1.6rem;
   font-weight: 500;
@@ -197,18 +197,18 @@
   font-weight: 400;
 }
 
-.footer .links .link {
+.footer .link-frame .link {
   font-size: 1.6rem;
   font-weight: 400;
   color: #CFCFCF;
 }
 
-.footer .links {
+.footer .link-frame {
   display: flex;
   gap: 30px;
 }
 
-.socialframe {
+.social-frame {
   display: flex;
   gap: 12px;
 }
