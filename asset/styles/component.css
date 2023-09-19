@@ -76,7 +76,7 @@ h2 {
 .text--link {
     color: var(--primary);
     font-family: Pretendard;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
