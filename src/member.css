@@ -164,3 +164,9 @@ form {
 .social-logo-frame > a:hover {
   cursor: pointer;
 }
+
+.password-hide-btn {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
