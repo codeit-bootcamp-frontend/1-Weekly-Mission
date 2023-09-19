@@ -1,14 +1,22 @@
+@import 'reset.css';
+
+body {
+  font-family: Pretendard;
+}
+
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  font-family: Pretendard;
 }
 
 a {
-  color: #6d6afe;
+  color: var(--Primary-color);
 }
 
-.wrapper {
+button {
+  cursor: pointer;
+}
+
+.page-container {
   padding: 238px 0 252px;
 
   background-color: #f0f6ff;
@@ -16,7 +24,6 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .header {
@@ -27,12 +34,11 @@ a {
   gap: 16px;
 }
 
-.header_logo {
+.header-logo {
   width: 210px;
 }
 
-.header_signup {
-  font-family: Pretendard;
+.header-signup {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -50,8 +56,7 @@ a {
   gap: 24px;
 }
 
-.input_type {
-  font-family: Pretendard;
+.input-type {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -73,11 +78,11 @@ a {
   width: 120px;
 }
 
-.input_wrapper {
+.input-wrapper {
   position: relative;
 }
 
- .eyes {
+.eyes {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -88,14 +93,13 @@ a {
   cursor: pointer;
 }
 
-.input_content {
+.input-content {
   display: flex;
   width: 400px;
   padding: 18px 15px;
   justify-content: center;
   align-items: center;
 
-  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -105,7 +109,7 @@ a {
   border: 1px solid #d3d4dd;
 }
 
-.input_content:focus {
+.input-content:focus {
   outline: 1px solid #6d6afe;
 }
 
@@ -113,7 +117,6 @@ a {
   width: 400px;
 
   color: #f5f5f5;
-  font-family: Pretendard;
   font-size: 18px;
   font-weight: 600;
 
@@ -124,10 +127,9 @@ a {
   border-radius: 8px;
 }
 
-.social_login {
+.social-login {
   width: 400px;
 
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -146,11 +148,11 @@ a {
   align-items: center;
 }
 
-.social_login a {
+.social-login a {
   text-decoration: none;
 }
 
-.social_icons {
+.social-icons {
   display: flex;
   flex-direction: row;
   gap: 16px;
