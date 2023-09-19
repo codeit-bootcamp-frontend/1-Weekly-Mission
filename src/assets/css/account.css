@@ -115,6 +115,10 @@ body {
   border-color: transparent;
   margin-left: 15px;
 }
+.signin_other_icon button img {
+  display: block;
+  margin: auto;
+}
 
 .google_icon {
   background-color: #ffffff;
