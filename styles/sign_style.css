@@ -110,6 +110,7 @@
 .sns-links {
   display: flex;
   gap: 16px;
+  list-style: none;
 }
 
 .footer .link {
