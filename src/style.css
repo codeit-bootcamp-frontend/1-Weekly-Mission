@@ -1,20 +1,30 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: #edf7ff;
+    background-color: var(--sky-blue);
 }
+
 
 nav {
     display: flex;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 192rem;
     height: 9.4rem;
     padding: 0 20rem;
+    background-color: var(--sky-blue);
 }
+
 
 .hero-header {
     display: flex;
@@ -22,6 +32,7 @@ nav {
     align-items: center;
     row-gap: 4rem;
     padding-top: 7rem;
+    margin-top: 94px;
 }
 
 .cta {
@@ -30,9 +41,9 @@ nav {
     align-items: center;
     height: 5.4rem;
     cursor: pointer;
-    background-image: linear-gradient(135deg, #6d6afe 0%, #6ae3fe 100%);
+    background-image: linear-gradient(135deg, var(--purple-blue) 0%, var(--medium-cyan-blue) 100%);
     border-radius: 0.8rem;
-    color: #f5f5f5;
+    color: var(--white-smoke);
     font-size: 1.8rem;
     font-weight: 600;
 }
@@ -45,6 +56,7 @@ nav {
     width: 35rem;
 }
 
+
 .slogan {
     text-align: center;
     font-size: 6.4rem;
@@ -53,7 +65,7 @@ nav {
 }
 
 .slogan-gradient {
-    background-image: linear-gradient(119deg, #6d6afe 0%, #ff9f9f 100%);
+    background-image: linear-gradient(119deg, var(--purple-blue) 0%, var(--salmon-red) 100%);
 }
 
 .background-clip-text {
@@ -109,26 +121,26 @@ section:nth-of-type(even) {
 }
 
 .title-save-gradient {
-    background-image: linear-gradient(117deg, #fe8a8a 2.29%, #a4ceff 100%);
+    background-image: linear-gradient(117deg, var(--soft-red) 2.29%, var(--cyan-blue) 100%);
 }
 
 .title-manage-gradient {
-    background-image: linear-gradient(304deg, #6fbaff 0%, #ffd88b 100%);
+    background-image: linear-gradient(304deg, var(--light-cyan-blue) 0%, var(--yellow-brown) 100%);
 }
 
 .title-share-gradient {
-    background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
+    background-image: linear-gradient(133deg, var(--dark-blue) 0%, var(--light-blue) 100%);
 }
 
 .title-search-gradient {
-    background-image: linear-gradient(310deg, #fe578f 0%, #68e8f9 100%);
+    background-image: linear-gradient(310deg, var(--medium-pink) 0%, var(--aqua-cyan-blue) 100%);
 }
 
 .description {
     grid-area: description;
     font-size: 1.6rem;
     font-weight: 500;
-    color: #6b6b6b;
+    color: var(--temple-gray);
     line-height: 150%;
 }
 
@@ -144,7 +156,7 @@ footer {
     width: 100%;
     height: 16rem;
     padding-top: 3.2rem;
-    background-color: #111322;
+    background-color: var(--blue-black);
 }
 
 .footer-box {
@@ -157,7 +169,7 @@ footer {
 }
 
 .copyright {
-    color: #676767;
+    color: var(--granite-gray);
     font-family: Arial;
     font-size: 1.6rem;
 }
@@ -169,7 +181,7 @@ footer {
 }
 
 .footer-link {
-    color: #cfcfcf;
+    color: var(--light-gray);
     font-family: Arial;
     font-size: 1.6rem;
 }

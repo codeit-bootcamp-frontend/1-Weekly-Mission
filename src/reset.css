@@ -1,4 +1,157 @@
 /* user agent stylesheet 초기화 */
+:root {
+    --pale-blue: #F0F6FF;
+    --sky-blue: #edf7ff;
+    --white-smoke: #f5f5f5;
+    --purple-blue: #6d6afe;
+    --salmon-red: #ff9f9f;
+    --soft-red: #fe8a8a;
+    --cyan-blue: #a4ceff;
+    --medium-cyan-blue: #6ae3fe;
+    --light-cyan-blue: #6fbaff;
+    --aqua-cyan-blue: #68e8f9;
+    --cyan-blue-gray: #CCD5E3;
+    --light-cyan-blue-gray: #E7EFFB;
+    --yellow-brown: #ffd88b;
+    --dark-blue: #2945c7;
+    --light-blue: #dbe1f8;
+    --medium-pink: #fe578f;
+    --temple-gray: #6b6b6b;
+    --blue-black: #111322;
+    --granite-gray: #676767;
+    --light-gray: #cfcfcf;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
 
 * {
     box-sizing: border-box;
