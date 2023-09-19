@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --Primary: #6D6AFE;
+    --Red: #FF5B56;
+    --Black: #111322;
+    --White: #FFFFFF;
+    --Gray5:#3E3E43;
+    --Gray4:#9FA6B2;
+    --Gray3:#CCD5E3;
+    --Gray2:#E7EFFB;
+    --Gray1:#F0F6FF;
+  }
+
+  html {
+    /* 1rem = 10px로 고정하기. */
+    word-break: keep-all;
+    font-size: 10px;
+    font-family: 'Noto Sans Korean', 'Poppins', 'sans-serif';
+  }
+  body{
+    background-color: var(--Gray1);
+    margin:0;
+  }
+  a:visited, a:link{
+    color: var(--Primary);
+  }
+  button{
+    cursor: pointer;
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20vh auto 5rem;
+  }
+  .spacing{
+    margin:0;
+    padding-top: 2rem;
+  }
+
+  /* title section 설정하기 */
+  .title-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .img-logo{
+    min-width: 15rem;
+    width: 20vw;
+  }
+  .question-label{
+    font-weight: 400;
+    font-size: 1.6rem;
+  }
+  .question-label .link-to-sign{
+    font-weight: 600;
+  }
+  
+  /* submit section 설정하기 */
+  label{
+    font-weight: 400;
+    font-size: 1.4rem;
+  }
+  input{
+    width: 40rem;
+    height: 6rem;
+    border: 1px solid var(--Gray3);
+    border-radius: 8px;
+    padding: 1rem 2rem;
+  }
+  input:focus{
+    outline:none !important;
+    border: 2px solid var(--Primary);
+  }
+  .form-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .form-div>div{
+    display: flex;
+    flex-direction: column;
+  }
+  .form-password, .form-password-repeat{
+    position: relative;
+  }
+  .form-password .eye-button, .form-password-repeat .eye-button{
+    position: absolute;
+    right:3rem;
+    bottom: 2rem;
+    border:none;
+    background-color: transparent;
+  }
+  .link-button{
+    margin-top:2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--Primary) 0.12%, #6AE3FE 101.84%));
+  }
+  .link-button .a-label{
+    color: var(--grey-light, #F5F5F5);
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  /* social login section 설정하기 */
+  .social-section{
+    background-color: var(--Gray2);
+    border: 1px solid var(--Gray3);
+    border-radius: 8px;
+    width: 40rem;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+  }
+
+  .social-section label{
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #373740;
+  }
+
+  .social-section .img-group{
+    display:flex;
+    gap:1rem;
+  }
