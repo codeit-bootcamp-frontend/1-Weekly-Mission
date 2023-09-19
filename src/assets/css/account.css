@@ -87,6 +87,17 @@ body {
   font-weight: 600;
 }
 
+.pwd_box {
+  position: relative;
+}
+
+.eyes_togle {
+  position: absolute;
+  top: 40%;
+  right: 4%;
+  cursor: pointer;
+}
+
 .signin_other {
   box-sizing: border-box;
 
