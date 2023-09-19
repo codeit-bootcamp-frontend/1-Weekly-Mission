@@ -8,86 +8,60 @@
 	--linkbrary-gray-20: #ccd5e3;
 	--linkbrary-gray-60: #9fa6b2;
 	--linkbrary-gray-100: #373740;
+	--button-grey-light: #f5f5f5;
+	--button-bg-purpleblue-to-skyblue: linear-gradient(
+		91deg,
+		#6d6afe 0.12%,
+		#6ae3fe 101.84%
+	);
+}
+
+html,
+body {
+	min-height: 100%;
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
+}
+
+html {
+	font-size: 62.5%; /* 10px */
 }
 
 /* 버튼 기본 스타일 */
 .button {
 	display: flex;
+	width: 12.8rem;
+	height: 5.4rem;
+	padding: 1.6rem 2rem;
+	border: 0;
+	background: var(--button-bg-purpleblue-to-skyblue);
+	color: var(--button-grey-light);
 	justify-content: center;
 	align-items: center;
-	gap: 0.625rem;
-	border: 0;
-	border-radius: 0.5rem;
+	gap: 1rem;
+	border-radius: 0.8rem;
 	font-family: Pretendard;
 	font-weight: 600;
-	color: var(--grey-light, #f5f5f5);
 	cursor: pointer;
-	width: 8rem;
-	height: 3.375rem;
-	padding: 1rem 1.25rem;
-	background: var(
-		--gra-purpleblue-to-skyblue,
-		linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
-	);
-	font-size: 1.125rem;
+	font-size: 1.8rem;
 }
-@media (max-width: 47.9375rem) {
+@media (max-width: 76.7rem) {
 	.button {
-		width: 5rem;
-		height: 2.3125rem;
-		padding: 0.625rem 1rem;
-		font-size: 0.875rem;
+		width: 8rem;
+		height: 3.7rem;
+		padding: 1rem 1.6rem;
+		font-size: 1.4rem;
 	}
 }
 
 /* 버튼 변형 스타일 */
 .button--large {
-	width: 21.875rem;
+	width: 35rem;
 }
-@media (max-width: 47.9375rem) {
+@media (max-width: 76.7rem) {
 	.button--large {
-		width: 12.5rem;
+		width: 20rem;
 	}
-}
-
-/* 텍스트 gradient */
-.gradient-mediumslateblue-monalisa {
-	background: linear-gradient(
-		91deg,
-		var(--linkbrary-primary-color, #6d6afe) 17.28%,
-		#ff9f9f 102.98%
-	);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-.gradient-geraldine-anakiwa {
-	background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-.gradient-malibu-grandis {
-	background: linear-gradient(277deg, #6fbaff -7.78%, #ffd88b 93.66%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-.gradient-moodyblue-smaltblue {
-	background: linear-gradient(
-		99deg,
-		#6d7ccd 25.76%,
-		rgba(82, 136, 133, 0.22) 135.69%
-	);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-.gradient-brinkpink-skyblue {
-	background: linear-gradient(271deg, #fe578f -185.84%, #68e8f9 107.18%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 }
 
 /* 화면 크기별 br 태그*/
@@ -98,7 +72,7 @@
 .pc-br {
 	display: block;
 }
-@media (max-width: 74.9375rem) {
+@media (max-width: 119.9rem) {
 	.pc-br,
 	.mobile-br {
 		display: none;
@@ -107,7 +81,7 @@
 		display: block;
 	}
 }
-@media (max-width: 47.9375rem) {
+@media (max-width: 76.7rem) {
 	.pc-br,
 	.tablet-br {
 		display: none;
