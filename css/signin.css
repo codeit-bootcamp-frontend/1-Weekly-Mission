@@ -18,6 +18,11 @@
   --linkbrary-gray-20: ##ccd5e3;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   width: 100%;
@@ -29,7 +34,13 @@ body {
 }
 
 .container-signin {
-  padding: 250px 0;
+  height: 80%;
+  border: 5px solid black;
+  /* padding: 250px 0;
+  text-align: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
 }
 
