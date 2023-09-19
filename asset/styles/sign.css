@@ -98,6 +98,25 @@ body {
     display: flex;
     width: 100%;
     padding: 1.2rem 1.4rem;
+    margin-top: 3.2rem;
     justify-content: space-between;
     align-items: center;
+    border-radius: 0.8rem;
+    border: 0.1rem solid var(--gray3);
+    background: var(--gray2);
+}
+
+.footer--title {
+    color: var(--gray5);
+    font-size: 1.4rem;
+}
+
+.footer--icon {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.6rem;
+}
+
+.footer--icon a {
+    width: 4.2rem;
 }
