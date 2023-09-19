@@ -23,6 +23,12 @@ header {
   width: 100%;
 }
 
+@media (min-width: 375px) and (max-width: 767px){
+
+}
+
+
+
 h1 {
   margin: 0;
 }
@@ -84,11 +90,6 @@ main {
   -webkit-text-fill-color: transparent;
 }
 
-.hero-title span {
-  background-image: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-}
-
-
 .hero-link-btn {
   width: 350px;
 }
@@ -98,7 +99,7 @@ main {
   width: 998px;
   margin: 0 auto;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 50px 0;
   gap: 157px;
 }
@@ -122,18 +123,22 @@ main {
 }
 
 .text-gradient-type1 {
-  background-image: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);;
+  background-image: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
 }
 
 .text-gradient-type2 {
-  background-image: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+  background-image: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);;
 }
 
 .text-gradient-type3 {
-  background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
+  background-image: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
 }
 
 .text-gradient-type4 {
+  background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
+}
+
+.text-gradient-type5 {
   background-image: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
 }
 
@@ -174,4 +179,100 @@ footer {
 .footer-sns {
   display: flex;
   gap: 12px;
+}
+
+@media (max-width: 1199px) {
+  .header-box {
+    max-width: 799px;
+    padding: 0 32px;
+  }
+  
+  .hero {
+    margin-bottom: 20px;
+    padding-top: 39px;
+  }
+
+  .hero-image {
+    width: 698px;
+    height: 343px;
+  }
+
+  .exclude-pc {
+    display: block;
+  }
+
+  .content {
+    gap: 51px;
+    width: auto;
+  }
+
+  .landing-imgs{
+    width: 385px;
+    height: 315px;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  main {
+    padding-top: 63px;
+  }
+
+  .header-box {
+    height: 63px;
+  }
+
+  .hero {
+    padding: 0 32px;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .btn {
+    height: 37px;
+    font-size: 14px;
+  }
+
+  .landing-signin-btn {
+    width: 80px;
+  }
+
+  .hero-link-btn {
+    width: 200px;
+  }
+
+  .hero-image, .landing-imgs {
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    padding: 40px 32px;
+    gap: 21px;
+    align-items: start;
+  }
+
+  .content-type1 {
+    flex-direction: column;
+  }
+
+  .content-type2 {
+    flex-direction: column-reverse;
+  }
+  
+  .content-title {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .only-mobile {
+    display: inline;
+  }
 }
