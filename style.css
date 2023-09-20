@@ -29,7 +29,7 @@
   padding: 16px 20px;
   border-radius: 8px;
   border-style: none;
-  color: var(--grey-light);
+  color: var(--color-gray-10);
   font-size: 18px;
   font-weight: 600;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
@@ -55,7 +55,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--grey-light);
+  color: var(--color-gray-10);
   border-style: none;
   margin: 40px 0;
   cursor: pointer;

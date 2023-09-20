@@ -49,7 +49,7 @@
 
 .signup-header-text a {
   text-decoration: underline;
-  color: var(--linkbrary-primary-color);
+  color: var(--color-primary);
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -85,8 +85,8 @@
   align-items: center;
   position: relative;
   border-radius: 8px;
-  border: 1px solid var(--linkbrary-gray-20);
-  background: var(--linkbrary-white);
+  border: 1px solid var(--color-gray-30);
+  background: var(--color-white);
 }
 
 .signup-btn {
@@ -96,7 +96,7 @@
   border-radius: 8px;
   border-style: none;
   background: var(--gra-purpleblue-to-skyblue);
-  color: var(--grey-light);
+  color: var(--color-gray-10);
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -110,12 +110,12 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 8px;
-  border: 1px solid var(--linkbrary-gray-20);
-  background: var(--linkbrary-gray-10);
+  border: 1px solid var(--color-gray-30);
+  background: var(--color-gray-20);
 }
 
 .signup-social-title {
-  color: var(--linkbrary-gray-100);
+  color: var(--color-gray-100);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -137,7 +137,7 @@
   flex-shrink: 0;
   border: 1px solid #d3d4dd;
   border-radius: 100%;
-  background-color: --linkbrary-white;
+  background-color: var(--color-white);
 }
 
 .kakao-ic-background {

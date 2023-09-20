@@ -8,7 +8,7 @@
 }
 
 body {
-  background: var(--linkbrary-bg);
+  background: var(--backgroundcolor-skyblue-10);
 }
 
 a {
@@ -17,7 +17,7 @@ a {
 }
 
 input:focus {
-  border-color: var(--linkbrary-primary-color);
+  border-color: var(--color-primary);
 }
 
 /* reset */
