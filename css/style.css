@@ -47,27 +47,27 @@ header {
 .login {
   width: 128px;
 }
-.hero {
+.banner {
   padding: 70px 360px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.hero p {
+.banner p {
   min-width: 708px;
   font-size: 4rem;
   font-weight: 700;
   line-height: 125%;
   text-align: center;
 }
-.hero p .hero-gradient {
+.banner p .banner-gradient {
   background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.hero .cta {
+.banner .cta {
   width: 350px;
   margin: 40px 0;
 }
