@@ -160,11 +160,29 @@
         width: 65rem;
         height: 31.3rem;
     }
+
+    .service_explain {
+        padding-top: 8rem;
+        gap: 5.1rem;
+    }
+
+    .service_explain__container {
+        width: 26.2rem;
+    }
+
+    .service_explain__img {
+        width: 38.5rem;
+        height: 31.5rem;
+    }
 }
     
 @media (max-width: 767px) and (min-width: 375px) {
     .header {
         padding: 1.3rem 3.2rem;
+    }
+
+    .hero_sec__container {
+        padding-top: 9rem;
     }
 
     .hero_sec__title {
@@ -175,6 +193,48 @@
     .hero_sec__img {
         width: 30.2rem;
         height: 14.6rem;
+    }
+
+    .service_explain {
+        flex-direction: column;
+        padding: 4rem 3.3rem 4.2rem;
+        gap: 2.4rem;
+    }
+
+    .service_explain__container {
+        width: 100%;
+    }
+
+    .service_explain__title {
+        font-size: 2.4rem;
+    }
+
+    .service_explain__subtitle {
+        font-size: 1.5rem;
+    }
+
+    .service_explain__img {
+        width: 100%;
+        height: auto;
+    }
+
+    #manage_your_link,
+    #search_your_link {
+    flex-direction: column;
+    }
+
+    .footer {
+        padding-top: 4rem;
+    }
+
+    .footer__container {
+        position: relative;
+        padding: 3.2rem 3.2rem 6.4rem;
+    }
+
+    .footer__copyright {
+        position: absolute;
+        bottom: 3.2rem;
     }
 }
 
