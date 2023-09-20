@@ -15,7 +15,7 @@ p {
 span {
   background: linear-gradient(
     91deg,
-    var(--Primary-color) 17.28%,
+    var(--primary-color) 17.28%,
     #ff9f9f 74.98%
   );
   -webkit-background-clip: text;
@@ -54,7 +54,7 @@ button {
 
   background: linear-gradient(
     91deg,
-    var(--Primary-color) 0.12%,
+    var(--primary-color) 0.12%,
     #6ae3fe 101.84%
   );
   padding: 16px 20px;
@@ -81,7 +81,7 @@ button {
 }
 
 .banner-button {
-  width: 350px;`
+  width: 350px;
 
   color: #f5f5f5;
   font-size: 18px;
@@ -89,7 +89,7 @@ button {
 
   background: linear-gradient(
     91deg,
-    var(--Primary-color) 0.12%,
+    var(--primary-color) 0.12%,
     #6ae3fe 101.84%
   );
   padding: 16px 20px;
