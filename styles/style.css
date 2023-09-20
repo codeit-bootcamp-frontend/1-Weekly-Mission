@@ -155,6 +155,7 @@ footer {
   align-items: flex-start;
   max-width: 1920px;
   margin: 0 auto;
+  position: relative;
 }
 
 .footer-trademark {
@@ -217,6 +218,7 @@ footer {
 
   main {
     padding-top: 63px;
+    margin-bottom: 40px;
   }
 
   .header-box {
@@ -274,5 +276,14 @@ footer {
 
   .only-mobile {
     display: inline;
+  }
+
+  .footer-box {
+    padding: 32px 32px 64px 32px;
+  }
+
+  .footer-trademark {
+    position: absolute;
+    bottom: 32px;
   }
 }
