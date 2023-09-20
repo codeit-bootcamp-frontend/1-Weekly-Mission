@@ -55,6 +55,7 @@ header {
   align-items: center;
 }
 .hero p {
+  min-width: 708px;
   font-size: 4rem;
   font-weight: 700;
   line-height: 125%;
@@ -80,7 +81,7 @@ header {
   gap: 157px;
 }
 .title-wrap {
-  width: 291px;
+  min-width: 291px;
 }
 .title {
   font-size: 3rem;
