@@ -1,4 +1,4 @@
-const section_title_wrap = document.querySelector('.section-title-wrap h2');
+/* const section_title_wrap = document.querySelector('.section-title-wrap h2');
 const section_article_introduce_third_p = document.querySelector('.section-article-introduce-third p');
 const section_article_introduce_fourth_p = document.querySelector('.section-article-introduce-fourth p');
 
@@ -19,4 +19,4 @@ window.addEventListener('resize',function(e) {
         공유해 보세요.';
         section_article_introduce_fourth_p.innerHTML = '중요한 정보들을 검색으로 쉽게 찾아보세요';
     }
-})  
+})   */

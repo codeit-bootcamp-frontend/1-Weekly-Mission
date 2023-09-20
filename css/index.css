@@ -1,5 +1,6 @@
 @import url(./reset.css);
 @import url(./root.css);
+@import url(./valiable.css);
 
 html {
     font-size:62.5%; /* 16px기준 62.5%= 10px; */
@@ -307,19 +308,14 @@ footer {
 
 
 @media screen and (max-width: 1200px) {
-   /*  .section-title-wrap {
-        font-size: 0.8rem
-    }
-    .section-article-wrap {
-        font-size:0.3rem;
-    } */
     .section-title-wrap .section-title-add-link {
         width: 650px;
         height: 383px;
-        margin-top: 69px;
+        margin-top: 29px;
     }
     .section-article-wrap {
         max-width: 69.8rem;
+        padding: 8rem 0 17rem;
     }
 
     .section-article-introduce .section-article-bg {

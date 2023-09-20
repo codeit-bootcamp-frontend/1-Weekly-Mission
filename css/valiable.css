@@ -1,0 +1,12 @@
+.tablet-br {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .tablet-br {
+        display: block;
+    }
+    .pc-br {
+        display:none;
+    }
+}
