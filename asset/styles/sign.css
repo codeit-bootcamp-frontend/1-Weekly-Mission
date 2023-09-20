@@ -37,7 +37,7 @@ body {
     gap: 2.4rem;
 }
 
-.form--container {
+.form__container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -45,12 +45,12 @@ body {
     width: 100%;
 }
 
-.form--label {
+.form__label {
     color: #000;
     font-size: 1.4rem;
 }
 
-.form--input {
+.form__input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,20 +61,20 @@ body {
     background: var(--white);
 }
 
-.form--input:focus-within {
+.form__input:focus-within {
     border: 0.1rem solid var(--primary)
 }
 
-.input--container {
+.input__container {
     border: none;
     flex: 1;
 }
 
-.input--container:focus {
+.input__container:focus {
     outline: none;
 }
 
-.input--eyes {
+.input__eyes {
     width: 1.6rem;
     height: 1.6rem;
     background-position: center;
@@ -82,15 +82,15 @@ body {
     background-size: cover;
 }
 
-.input--eyes__off {
+.input__eyes--off {
     background-image: url('/asset/images/eye-off.svg');
 }
 
-.input--eyes__on {
+.input__eyes--on {
     background-image: url('/asset/images/eye-on.svg');
 }
 
-.form--btn {
+.form__btn {
     margin-top: 0.6rem;
 }
 
@@ -106,17 +106,17 @@ body {
     background: var(--gray2);
 }
 
-.footer--title {
+.footer__title {
     color: var(--gray5);
     font-size: 1.4rem;
 }
 
-.footer--icon {
+.footer__icon {
     display: flex;
     align-items: flex-start;
     gap: 1.6rem;
 }
 
-.footer--icon a {
+.footer__icon a {
     width: 4.2rem;
 }
