@@ -70,10 +70,10 @@ body {
 
 .container_1 .content {
   display: flex;
-  width: 1920px;
-  padding: 164px 360px 0px 360px;
+  padding-top: 164px;
+  background: #f0f6ff;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 40px;
 }
@@ -170,7 +170,7 @@ body {
 
 .container_2 {
   display: flex;
-  padding: 120px 461px 50px 461px;
+  padding-top: 120px;
   justify-content: center;
   align-items: center;
 }
@@ -289,7 +289,7 @@ body {
 
 .container_3 {
   display: flex;
-  padding: 50px 461px;
+  padding-top: 50px;
   justify-content: center;
   align-items: center;
 }
@@ -361,7 +361,7 @@ body {
 
 .container_4 {
   display: flex;
-  padding: 50px 461px;
+  padding-top: 50px;
   justify-content: center;
   align-items: center;
 }
@@ -462,7 +462,7 @@ body {
 
 .container_5 {
   display: flex;
-  padding: 50px 461px;
+  padding-top: 50px;
   justify-content: center;
   align-items: center;
 }
