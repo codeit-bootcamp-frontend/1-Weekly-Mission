@@ -20,14 +20,9 @@ body {
 header {
   background-color: var(--bg-color);
   position: fixed;
+  z-index: 1;
   width: 100%;
 }
-
-@media (min-width: 375px) and (max-width: 767px){
-
-}
-
-
 
 h1 {
   margin: 0;
@@ -253,9 +248,10 @@ footer {
   }
 
   .content {
-    padding: 40px 32px;
+    padding: 40px 32px 92px;
     gap: 21px;
     align-items: start;
+    position: relative;
   }
 
   .content-type1 {
@@ -272,6 +268,9 @@ footer {
 
   .description {
     font-size: 15px;
+    position: absolute;
+    height: 36px;
+    bottom: 40px;
   }
 
   .only-mobile {
