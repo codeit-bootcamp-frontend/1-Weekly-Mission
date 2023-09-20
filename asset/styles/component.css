@@ -96,10 +96,13 @@ h2 {
     .btn {
         padding: 10px 16px;
         font-size: 1.4rem;
-        
     }
 
     .btn--width-128 {
         width: 80px;
+    }
+
+    .btn--width-350 {
+        width: 200px;
     }
 }

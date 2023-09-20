@@ -40,8 +40,7 @@
 
 .hero_sec__img {
     flex-shrink: 0;
-    max-width: 111.8rem;
-    width: 100%;
+    width: 111.8rem;
     height: 53.9rem;
     margin: 0 auto;
     border-radius: 2.5rem 2.5rem 0 0;
@@ -150,20 +149,32 @@
     gap: 1.2rem;
 }
 
-
-
 @media (max-width: 1199px) and (min-width: 768px) {
     .header {
         padding: 2.0rem 3.2rem;
         margin: 0 auto;
         max-width: 86.4rem;
+    }
 
+    .hero_sec__img {
+        width: 65rem;
+        height: 31.3rem;
     }
 }
     
 @media (max-width: 767px) and (min-width: 375px) {
     .header {
         padding: 1.3rem 3.2rem;
+    }
+
+    .hero_sec__title {
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+    }
+
+    .hero_sec__img {
+        width: 30.2rem;
+        height: 14.6rem;
     }
 }
 
