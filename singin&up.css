@@ -1,0 +1,124 @@
+
+/* sign-in page */
+.sign-box {
+  background: var(--gray-zircon);
+}
+
+.sign-box .container  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 238px 0 252px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.sign-box .head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sign-box .head img {
+  height: 38px;
+}
+
+.ask-sign {
+  color: var(--black);
+  display: flex;
+  gap: 10px;
+  line-height: 24px;
+}
+
+.ask-sign a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.sign-box .input-box {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: var(--black);
+  font-size: 14px;
+}
+
+.psw-box{
+  position: relative;
+}
+
+.psw-box img {
+  position: absolute;
+  right: 5%;
+  top: 60%;
+}
+
+.sign-box .input-box input{
+  width: 100%;
+  margin-top: 12px;
+  padding: 18px 15px;
+  border: 1px solid var(--gray-botticelli);
+  border-radius: 8px;
+}
+
+.sign-box .input-box input:focus{
+  outline: none;
+  border: 1px solid var(--primary);
+}
+
+.sign-link {
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center;
+  color: var(--gray-wild-sand);
+  margin: 6px 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.social-sign {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: var(--gray-selago);
+  border-radius: 8px;
+  border: 1px solid var(--gray-botticelli);
+  color: var(--gray-tuna);
+  font-size: 14px;
+}
+
+.social-link{
+  display: flex;
+  gap: 16px;
+}
+
+.google-link,
+.kakao-link {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.google-link .google-icon,
+.kakao-link .kakao-icon { 
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  inset: 0;
+  margin: 25%;
+}
+
+/* sign-up page*/
+
+.sign-box.sign-up .container {
+  padding: 238px 0 116px;
+}

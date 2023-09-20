@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Pretendard;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+:root {
+  /* gray */
+  --gray-wild-sand: #F5F5F5;
+  --gray-zircon: #F0F6FF;
+  --gray-selago: #e7effb;
+  --gray-botticelli: #ccd5e3;
+  --gray-chateau: #9fa6b2;
+  --gray-ship-gray: #3e3e43;
+  --gray-tuna: #373740;
+
+   /* gradient */
+  --fandom-k-gra-blue-to-pink: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
+  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+
+  --primary: #6D6AFE;
+  --black: #111322;
+  --white: #ffffff;
+  --red: #ff5b56;
+}
