@@ -122,12 +122,6 @@
   line-height: normal;
 }
 
-.signup-social-icons {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
 .google-ic-background {
   display: flex;
   align-items: center;
@@ -153,6 +147,10 @@
 
 .password-input {
   position: relative;
+}
+
+.eye-off-ic-container {
+  height: 15px;
 }
 
 .eye-off-ic {
