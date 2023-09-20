@@ -1,0 +1,33 @@
+:root {
+    /* color */
+    --linkbrary-primary: #6D6AFE;
+    --linkbrary-red:#FF5B56;
+    --linkbrary-black: #11322;
+    --linkbrary-white: #FFFFFF;
+    --linkbrary-gray-100: #373740;
+    --linkbrary-gray-60: #9FA6B2;
+    --linkbrary-gray-20: #CCD5E3;
+    --linkbrary-gray-10: #E7EFFB;
+    --linkbrary-bg: #F0F6FF;
+    --grey-light: #F5F5F5;
+    --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  }
+
+*{
+  box-sizing:border-box;
+  text-decoration: none;
+  line-height: normal;
+}
+
+html {
+  font-family: 'Pretendard', sans-serif;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+a, button {
+  cursor: pointer;
+}
