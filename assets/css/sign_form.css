@@ -2,8 +2,12 @@ body{
   width: 25rem;
   margin: auto;
   background: var(--linkbrary-bg);
-}
+  }
 
+button:hover{
+  cursor: pointer;
+}
+  
 /*----------Main---------*/
 main{
   display:flex;
@@ -14,16 +18,17 @@ main{
 
 #logo{
   display: block;
-  margin-top: 14.88rem;
-  margin-bottom: 1rem;
+  margin: 14.88rem 0 1rem;
 }
 
-.link-signup__wrap{
+.link-signup__wrap,
+.link-signin__wrap{
   display: inline-block;
   margin-bottom: 1.88rem;
 }
 
-.link-signup{
+.link-signup,
+.link-signin{
   margin-left: 0.5rem;
   font-weight: 600;
   color: var(--linkbrary-primary);
@@ -31,21 +36,24 @@ main{
   text-underline-offset: 3.6px;
 }
 
-
-.signin__label{
+.signin__label,
+.signup__label{
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 400;
   padding-bottom: 0.75rem;
 }
 
-.signin__input__wrap{
+.signin__input__wrap,
+.signup__input__wrap{
   display:flex;
   align-items: center;
   position: relative;
 }
 
-.signin__pw__wrap{
+.signin__pw__wrap,
+.signup__pw__wrap,
+.signup__pw__wrap--confirm{
   margin-top: 1.5rem;
 }
 
@@ -64,16 +72,17 @@ input:focus{
   outline: 1px solid var(--linkbrary-primary);
 }
 
-.input--pw{
+/* .input--pw{
   letter-spacing: 0.375rem;
-}
+} */
 
 .input__eye{
   position: absolute;
   right: 0.94rem;
 }
 
-.signin__btn{
+.signin__btn,
+.signup__btn{
   width: 25rem;
   margin: 1.88rem 0 2rem;
   padding: 1rem 1.25rem;
@@ -85,11 +94,8 @@ input:focus{
   font-weight: 600;
 }
 
-button:hover{
-  cursor: pointer;
-}
-
-.signin--social{
+.signin--social,
+.signup--social{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -104,7 +110,8 @@ button:hover{
   font-weight: 400;
 }
 
-.signin--social-icon{
+.signin--social-icon,
+.signup--social-icon{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -113,6 +120,7 @@ button:hover{
   list-style: none;
 }
 
-.signin--social-icon img{
+.signin--social-icon img,
+.signup--social-icon img{
   vertical-align: bottom;
 }
