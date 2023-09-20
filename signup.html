@@ -4,51 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/common.css">
-    <link rel="stylesheet" href="/styles/sign.css">
-    <link rel="stylesheet" href="/pretendard/pretendard.css">
+    <link rel="stylesheet" href="/asset/styles/reset.css">
+    <link rel="stylesheet" href="/asset/styles/component.css">
+    <link rel="stylesheet" href="/asset/styles/sign.css">
+    <link rel="stylesheet" href="/asset/pretendard/pretendard.css">
     <title>Linkbrary : 회원가입</title>
 </head>
-<body>
-    <main class="flexColumn flexCenter">
-        <div class="sign flexColumn">
-            <div id="sign_head" class="flexColumn flexCenter">
-                <h1><a href="/" title="logo"><img src="/images/logo.png" alt="Linkbrary의 로고" /></a></h1>
 
-                <div class="flexRow">
-                    <p>이미 회원이신가요?</p>
-                    <a href="/signin.html" title="signin">로그인 하기</a>
+<body>
+    <header class="header">
+        <h1 class="logo logo--large"><a href="/" title="Linkbrary의 로고"></a></h1>
+
+        <div class="header__subtitle">
+            <p>이미 회원이신가요?</p>
+            <a class="text--link" href="/signin.html" title="signin">로그인 하기</a>
+        </div>
+    </header>
+
+    <main class="main">
+        <form class="form">
+            <div class="form__container">
+                <label class="form__label" for="signinEmail">이메일</label>
+                <div class="form__input">
+                    <input class="input__container" id="signinEmail" name="email" type="email">
                 </div>
             </div>
 
-            <form class="flexColumn" id="signupForm">
-                <label>이메일
-                    <input name="email" type="email">
-                </label>
-
-                <label class="eyes_on_input">비밀번호
-                    <input name="password" type="password">
-                    <span id="eyes_on_password"><img src="/images/eyes-on.svg" alt=""></span>
-                </label>
-
-                <label class="eyes_on_input">비밀번호 확인
-                    <input name="password" type="password">
-                    <span id="eyes_on_password"><img src="/images/eyes-on.svg" alt=""></span>
-                </label>
-
-                <button class="buttonGradiant">회원가입</button>
-            </form>
-        </div>
-
-
-        <div id="social_login" class="flexRow flexCenter">
-            <p>다른 방식으로 가입하기</p>
-            <div class="flexRow flexCenter">
-                <a href="https://www.google.com/" target="_blank"><img src="/images/sign_google.png" alt="구글 로그인 아이콘" /></a>
-                <a href="https://www.kakaocorp.com/page/" target="_blank"><img src="/images/sign_kakao.png" alt="카카오톡 로그인 아이콘" /></a>
+            <div class="form__container">
+                <label class="form__label" for="signinPassword">비밀번호</label>
+                <div class="form__input">
+                    <input class="input__container" id="signinPassword" name="password" type="password">
+                    <button class="input__eyes input__eyes--off" type="button"></button>
+                </div>
             </div>
-        </div>
+
+            <div class="form__container">
+                <label class="form__label" for="signinPasswordCheck">비밀번호 확인</label>
+                <div class="form__input">
+                    <input class="input__container" id="signinPasswordCheck" name="password" type="password">
+                    <button class="input__eyes input__eyes--off" type="button"></button>
+                </div>
+            </div>
+
+            <button class="form__btn btn btn--width-full">로그인</button>
+        </form>
     </main>
+
+    <footer class="footer">
+        <p class="footer__title">다른 방식으로 가입하기</p>
+        <div class="footer__icon">
+            <a href="https://www.google.com/" target="_blank"><img src="/asset/images/sign_google.png" alt="구글 로그인 아이콘" /></a>
+            <a href="https://www.kakaocorp.com/page/" target="_blank"><img src="/asset/images/sign_kakao.png" alt="카카오톡 로그인 아이콘" /></a>
+        </div>
+    </footer>
 </body>
 </html>

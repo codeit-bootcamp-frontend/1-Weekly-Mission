@@ -4,86 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/common.css">
-    <link rel="stylesheet" href="/styles/index.css">
-    <link rel="stylesheet" href="/pretendard/pretendard.css">
+    <link rel="stylesheet" href="/asset/styles/reset.css">
+    <link rel="stylesheet" href="/asset/styles/component.css">
+    <link rel="stylesheet" href="/asset/styles/index.css">
+    <link rel="stylesheet" href="/asset/pretendard/pretendard.css">
     <title>Linkbrary</title>
 </head>
 
 <body>
-    <header>
-        <h1><a href="/" title="logo"><img src="/images/logo.png" alt="Linkbrary의 로고" /></a></h1>
-        <a class="buttonGradiant" href="/signin.html" title="signin">로그인</a>
+    <header class="header">
+        <h1 class="logo logo--regular"><a href="/" title="Linkbrary의 로고"></a></h1>
+        <a class="btn btn--width-128" href="/signin.html" title="signin">로그인</a>
     </header>
 
     <main>
-        <section id="hero_sec">
-            <div>
-                <h2><span class="textGradiant">세상의 모든 정보</span>를<br />
+        <section class="hero_sec">
+            <div class="hero_sec__container">
+                <h2 class="hero_sec__title"><span class="text--gradiant">세상의 모든 정보</span>를<br />
                     쉽게 저장하고 관리해 보세요</h2>
 
-                <a class="buttonGradiant" href="/signup.html" title="signup">링크 추가하기</a>
+                <a class="btn btn--width-350" href="/signup.html" title="signup">링크 추가하기</a>
 
-                <div id="mainpage_screenshot"></div>
+                <div class="hero_sec__img"></div>
             </div>
         </section>
 
-        <section class="image_and_explain" id="save_your_link">
-            <div>
-                <h2><span class="textGradiant">원하는 링크</span>를 저장하세요</h2>
-
-                <p>나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고 싶은 모든 것을 한 공간에 저장하세요.</p>
+        <section class="service_explain" id="save_your_link">
+            <div class="service_explain__container">
+                <h2 class="service_explain__title"><span class="text--gradiant">원하는 링크</span>를 저장하세요</h2>
+                <p class="service_explain__subtitle">나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고 싶은 모든 것을 한 공간에 저장하세요.</p>
             </div>
 
-            <div><img src="/images/save_your_link.png" alt="" /></div>
+            <div class="service_explain__img"><img src="/asset/images/save_your_link.png" alt="" /></div>
         </section>
 
-        <section class="image_and_explain" id="manage_your_link">
-            <div>
-                <h2>링크를 폴더로 <span class="textGradiant">관리</span>하세요</h2>
-
-                <p>나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.</p>
+        <section class="service_explain" id="manage_your_link">
+            <div class="service_explain__container">
+                <h2 class="service_explain__title">링크를 폴더로 <span class="text--gradiant">관리</span>하세요</h2>
+                <p class="service_explain__subtitle">나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.</p>
             </div>
 
-            <div><img src="/images/manage_your_link.png" alt="" /></div>
+            <div class="service_explain__img"><img src="/asset/images/manage_your_link.png" alt="" /></div>
         </section>
 
-        <section class="image_and_explain" id="share_your_link">
-            <div>
-                <h2>저장한 링크를 <span class="textGradiant">공유</span>해 보세요.</h2>
-                <p>여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.</p>
+        <section class="service_explain" id="share_your_link">
+            <div class="service_explain__container">
+                <h2 class="service_explain__title">저장한 링크를 <span class="text--gradiant">공유</span>해 보세요.</h2>
+                <p class="service_explain__subtitle">여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.</p>
             </div>
 
-            <div><img src="/images/share_your_link.png" alt="" /></div>
+            <div class="service_explain__img"><img src="/asset/images/share_your_link.png" alt="" /></div>
         </section>
 
-        <section class="image_and_explain" id="search_your_link">
-            <div>
-                <h2>저장한 링크를 <span class="textGradiant">검색</span>해 보세요.</h2>
-                <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+        <section class="service_explain" id="search_your_link">
+            <div class="service_explain__container">
+                <h2 class="service_explain__title">저장한 링크를 <span class="text--gradiant">검색</span>해 보세요.</h2>
+                <p class="service_explain__subtitle">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
             </div>
 
-            <div><img src="/images/search_your_link.png" alt="" />
+            <div class="service_explain__img"><img src="/asset/images/search_your_link.png" alt="" />
         </section>
     </main>
 
-    <footer>
-        <div>
-            <div id="copyright"><a href="https://www.codeit.kr/" title="codeit">©codeit - 2023</a></div>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__copyright"><a href="https://www.codeit.kr/" title="codeit">©codeit - 2023</a></div>
 
-            <div id="privacy_and_faq">
-                <div><a href="/privacy.html" title="rivacy Polic">Privacy Policy</a></div>
-                <div><a href="/faq.html" title="FAQ">FAQ</a></div>
+            <div class="footer__privacy">
+                <a href="/privacy.html" title="rivacy Polic">Privacy Policy</a>
+                <a href="/faq.html" title="FAQ">FAQ</a>
             </div>
 
-            <div id="social_media">
-                <a href="https://ko-kr.facebook.com" target="_blank" title="facebook"><img src="/images/icon-facebook.svg" alt="페이스북 아이콘" /></a>
-                <a href="https://twitter.com" target="_blank" title="twitter"><img src="/images/icon-twitter.svg" alt="트위터 아이콘" /></a>
-                <a href="https://www.instagram.com" target="_blank" title="instagram"><img src="/images/icon-youtube.png" alt="유튜브 아이콘" /></a>
-                <a href="https://www.youtube.com" target="_blank" title="youtube"><img src="/images/icon-instagram.svg" alt="인스타그램 아이콘" /></a>
+            <div class="footer__social_media">
+                <a href="https://ko-kr.facebook.com" target="_blank" title="facebook"><img src="/asset/images/icon-facebook.svg" alt="페이스북 아이콘" /></a>
+                <a href="https://twitter.com" target="_blank" title="twitter"><img src="/asset/images/icon-twitter.svg" alt="트위터 아이콘" /></a>
+                <a href="https://www.instagram.com" target="_blank" title="instagram"><img src="/asset/images/icon-youtube.png" alt="유튜브 아이콘" /></a>
+                <a href="https://www.youtube.com" target="_blank" title="youtube"><img src="/asset/images/icon-instagram.svg" alt="인스타그램 아이콘" /></a>
             </div>
-        </div>
         </div>
     </footer>
 </body>
