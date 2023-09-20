@@ -1,7 +1,8 @@
 .header {
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     padding: 2.0rem 20.0rem;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -148,3 +149,24 @@
     justify-content: center;
     gap: 1.2rem;
 }
+
+
+
+@media (max-width: 1199px) and (min-width: 768px) {
+    .header {
+        padding: 2.0rem 3.2rem;
+        margin: 0 auto;
+        max-width: 86.4rem;
+
+    }
+}
+    
+@media (max-width: 767px) and (min-width: 375px) {
+    .header {
+        padding: 1.3rem 3.2rem;
+    }
+}
+
+
+
+
