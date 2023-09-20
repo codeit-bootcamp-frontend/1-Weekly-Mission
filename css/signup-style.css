@@ -107,14 +107,24 @@ form .input-box:not(:last-child) {
     cursor: pointer;
 }
 
-.input-box .check-text {
+/* .input-box .check-text {
     margin-top: 6px;
     color: var(--linkbrary-red);
     font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
     display: none;
-}
+} */
+
+/* .input-box::after {
+    content:"비밀번호를 다시 입력해주세요";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    display: none;
+} */
 
 .join-form-social {
     display: flex;
