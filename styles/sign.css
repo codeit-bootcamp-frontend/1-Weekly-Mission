@@ -17,7 +17,7 @@ body {
 }
 
 .wrap {
-  padding-top: 15vh;
+  padding: 15vh 32px 0;
   height: 100vh;
   background-color: var(--bg-color);
   display: flex;
