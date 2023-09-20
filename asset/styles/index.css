@@ -1,9 +1,7 @@
 .header {
     position: fixed;
     top: 0;
-    max-width: 192rem;
     width: 100%;
-    margin: 0 auto;
     padding: 2.0rem 20.0rem;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);

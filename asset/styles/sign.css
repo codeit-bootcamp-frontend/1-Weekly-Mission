@@ -62,7 +62,7 @@ body {
 }
 
 .form__input:focus-within {
-    border: 0.1rem solid var(--primary)
+    border: 0.1rem solid var(--primary);
 }
 
 .input__container {
