@@ -1,10 +1,3 @@
-body {
-  color: var(--black);
-  font-family: Pretendard;
-  font-style: normal;
-  margin: 0;
-}
-
 .button {
   padding: 1.6rem 2rem;
   justify-content: center;
@@ -17,13 +10,13 @@ body {
   border-radius: 8px;
   background: var(--linkbrary-gradation);
   display: flex;
-  cursor: pointer
+  cursor: pointer;
 }
 
-a{
+a {
   text-decoration: none;
 }
-a:hover{
+a:hover {
   text-decoration: underline;
 }
 
@@ -49,15 +42,15 @@ nav div {
 #logo {
   width: 13.3rem;
   height: 2.4rem;
-  cursor: pointer
+  cursor: pointer;
 }
 
-nav .button{
+nav .button {
   width: 12.8rem;
   margin: 0;
 }
 
-.preview{
+.preview {
   display: flex;
   padding: 7rem 36rem 0 36rem;
   flex-direction: column;
@@ -68,39 +61,40 @@ nav .button{
   margin-bottom: 12rem;
 }
 
-.title{
+.title {
   text-align: center;
   font-size: 6.4rem;
   font-weight: 700;
   line-height: 8rem; /* 125% */
   margin: 0;
 }
-.title .highlight{
+
+.title .highlight {
   background: var(--gra-blue-to-pink);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.preview .button{
+.preview .button {
   width: 35rem;
   margin: 0;
 }
 
-.preview img{
+.preview img {
   width: 120rem;
   height: 59rem;
 }
 
 .content {
   display: flex;
-  padding: 5rem 46.1rem ;
+  padding: 5rem 46.1rem;
   justify-content: center;
   align-items: center;
-  gap: 0 15.7rem
+  gap: 0 15.7rem;
 }
 
-.content h2{
+.content h2 {
   font-size: 4.8rem;
   font-weight: 700;
   line-height: normal;
@@ -109,40 +103,43 @@ nav .button{
   width: 29.1rem;
 }
 
-#gra-pink-to-skyblue{
+#gra-pink-to-skyblue {
   background: var(--gra-pink-to-skyblue);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-#gra-skyblue-to-yellow{
+
+#gra-skyblue-to-yellow {
   background: var(--gra-skyblue-to-yellow);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-#gra-blue-to-darkgreen{
+
+#gra-blue-to-darkgreen {
   background: var(--gra-blue-to-darkgreen);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-#gra-hotpink-to-skyblue{
+
+#gra-hotpink-to-skyblue {
   background: var(--gra-hotpink-to-skyblue);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-} 
+}
 
-h4{
-  color: #6B6B6B;
+h4 {
+  color: #6b6b6b;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 150%; /* 24px */
-  margin: 0px
+  margin: 0px;
 }
 
-.content .text{
+.content .text {
   display: flex;
   width: 29.1rem;
   flex-direction: column;
@@ -151,25 +148,25 @@ h4{
   margin: 0;
 }
 
-.content img{
-  flex-basis: 55.0rem;
-  height: 45.0rem;
+.content img {
+  flex-basis: 55rem;
+  height: 45rem;
   float: right;
 }
 
-
-footer{
-  margin-top: 12.0rem;
+footer {
+  margin-top: 12rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 16.0rem;
+  height: 16rem;
   width: 100%;
   padding: 3.2rem 10.4rem 6.4rem 10.4rem;
   flex-shrink: 0;
   background: var(--black);
 }
-div.footer{
+
+div.footer {
   display: flex;
   flex: 0 1 1920px;
   justify-content: space-between;
@@ -177,13 +174,13 @@ div.footer{
   align-self: stretch;
 }
 
-footer{
+footer {
   font-family: Arial;
   font-size: 1.6rem;
   font-weight: 400;
 }
 
-footer #codeit{
+footer #codeit {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -192,18 +189,18 @@ footer #codeit{
   text-align: center;
 }
 
-footer .info{
+footer .info {
   display: flex;
   width: 18.1111rem;
   align-items: flex-start;
-  gap: 3.0rem;
+  gap: 3rem;
 }
 
-footer .info a{
-  color: #CFCFCF;
+footer .info a {
+  color: #cfcfcf;
 }
 
-footer .website{
+footer .website {
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
