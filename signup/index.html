@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="../src/css/reset.css" />
+    <link rel="stylesheet" href="../src/css/sign-page.css" />
+    <title>LinkBrary - 회원가입</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="container">
+        <!-- 헤더 영역 -->
+        <header>
+          <div class="header">
+            <a class="header__logo" href="/">
+              <img
+                src="../src/images/signin-logo.svg"
+                alt="LinkBrary 로고 이미지"
+              />
+            </a>
+            <div class="header__description">
+              <h3 class="description__title">이미 회원이신가요?</h3>
+              <a class="description__link" href="../signin/">로그인 하기</a>
+            </div>
+          </div>
+        </header>
+
+        <!-- 메인 영역 -->
+        <main>
+          <form class="form">
+            <div class="form__contents">
+              <div class="form__contents__items">
+                <label for="email" class="form__contents__items__label"
+                  >이메일</label
+                >
+                <input
+                  id="email"
+                  class="form__contents__items__input"
+                  placeholder="이메일을 입력해주세요."
+                />
+              </div>
+              <div class="form__contents__items">
+                <label for="password" class="form__contents__items__label"
+                  >비밀번호</label
+                >
+                <div class="form__contents__items__container">
+                  <input
+                    id="password"
+                    class="form__contents__items__input"
+                    type="password"
+                    placeholder="비밀번호를 입력해주세요."
+                  />
+                  <img
+                    class="form__contents__items--eye-off"
+                    src="../src/images/eye-off.svg"
+                    alt="패스워드 숨기기 이미지"
+                  />
+                </div>
+              </div>
+              <div class="form__contents__items">
+                <label for="re-password" class="form__contents__items__label"
+                  >비밀번호 확인</label
+                >
+                <div class="form__contents__items__container">
+                  <input
+                    id="re-password"
+                    class="form__contents__items__input"
+                    type="password"
+                    placeholder="비밀번호를 다시 입력해주세요."
+                  />
+                  <img
+                    class="form__contents__items--eye-off"
+                    src="../src/images/eye-off.svg"
+                    alt="패스워드 숨기기 이미지"
+                  />
+                </div>
+              </div>
+            </div>
+            <button class="form__button">회원가입</button>
+          </form>
+
+          <!-- 소셜 가입 -->
+          <div class="social">
+            다른 방식으로 가입하기
+            <div class="social__icons">
+              <a href="https://www.google.com/" class="social__icons__btn"
+                ><img src="../src/images/google.svg" alt="Google"
+              /></a>
+              <a
+                href="https://www.kakaocorp.com/page/"
+                class="social__icons__btn"
+                ><img src="../src/images/kakaotalk.svg" alt="KakaoTalk"
+              /></a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

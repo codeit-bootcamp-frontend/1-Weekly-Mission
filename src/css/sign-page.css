@@ -1,0 +1,136 @@
+body {
+  background-color: var(--linkbrary-bg);
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 238px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__logo > img {
+  width: 13.1614rem;
+  height: 1.9375rem;
+}
+
+.header__description {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.description__title {
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.description__link {
+  border-bottom: 0.0625rem solid;
+  color: var(--linkbrary-primary-color);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+  margin-top: 1.875rem;
+}
+
+.form__contents {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form__contents__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form__contents__items__label {
+  color: var(--black);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.form__contents__items__input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25rem;
+  padding: 1.125rem 0.9375rem;
+  border-radius: 0.5rem;
+  background: var(--linkbrary-white);
+  border: 0.0625rem solid var(--gray-medium);
+  color: var(--linkbrary-gray-100);
+  line-height: 1.5rem; /* 150% */
+}
+
+.form__contents__items__input:focus {
+  border: 0.0625rem solid var(--linkbrary-primary-color);
+}
+
+.form__contents__items__container {
+  position: relative;
+}
+
+.form__contents__items--eye-off {
+  position: absolute;
+  top: 50%;
+  right: 0.9375rem;
+  transform: translateY(-50%);
+}
+
+.form__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  width: 25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--grey-light);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 25rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-gray-10);
+}
+
+.social h2 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--linkbrary-gray-100);
+}
+
+.social__icons {
+  display: flex;
+  gap: 1rem;
+}
