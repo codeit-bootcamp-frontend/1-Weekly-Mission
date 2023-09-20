@@ -104,7 +104,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15.7em;
+    gap: 15.7rem;
     
 }
 
@@ -114,13 +114,15 @@ main {
 
 
 .section-article-introduce-first, 
-.section-article-introduce-second, .section-article-introduce-third, .text4 {
+    .section-article-introduce-second, 
+    .section-article-introduce-third,
+    .section-article-introduce-fourth{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     flex-shrink: 0;
-    width: 29.1em;
+    width: 29.1rem;
 }
 
 .section-article-introduce-first h3 {
@@ -192,7 +194,7 @@ main {
 
 .section-article-introduce-third h3 {
     color: #000;
-    font-size: 4.8em;
+    font-size: 4.8rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -208,13 +210,11 @@ main {
 
 .section-article-introduce-third p {
     color: #6B6B6B;
-    font-size: 1.6em;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 24px */
 }
-
-
 
 
 .section-article-introduce-fourth h3 {
@@ -318,18 +318,23 @@ footer {
         height: 383px;
         margin-top: 69px;
     }
+    .section-article-wrap {
+        max-width: 69.8rem;
+    }
 
     .section-article-introduce .section-article-bg {
         width: 385px;
         height: 315px;
     }
 
-    
+    .section-article .section-article-introduce {
+        gap: 5.1rem;
+    }
 
-    .section-article-introduce-first,
-    .section-article-introduce-second,
-    .section-article-introduce-third, 
+    .section-article-introduce-first, 
+    .section-article-introduce-second, 
+    .section-article-introduce-third,
     .section-article-introduce-fourth {
-        font-size: 1.250rem;
+        width: 26.2rem;
     }
 } 
