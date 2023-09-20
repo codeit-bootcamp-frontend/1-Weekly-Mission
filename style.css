@@ -16,7 +16,7 @@
   top: 0px;
   z-index: 100;
   padding: 20px 200px;
-  background-color: var(--backgroundcolor-skyblue-30);
+  background-color: var(--backgroundcolor-skyblue-10);
 }
 
 .login-btn {
