@@ -5,7 +5,13 @@
   margin: 0;
 }
 
+<<<<<<< HEAD:index.css
 header{
+=======
+
+
+header {
+>>>>>>> cdd1017 (fix: px→rem단위로 변경):styles/Linkbrary.css
   background-color: rgba(240, 246, 255, 1);
   display:flex;
   flex-direction: column;
@@ -18,11 +24,15 @@ nav{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD:index.css
   padding: 20px;
   left: 200px;
   right: 200px;
   width: 100%;
   max-width: 1920px;
+=======
+  padding: 1.25rem 12.5rem;
+>>>>>>> cdd1017 (fix: px→rem단위로 변경):styles/Linkbrary.css
 }
 
 section{
@@ -33,19 +43,38 @@ section{
   justify-content: center;
   display:flex;
   flex-direction:column;
+<<<<<<< HEAD:index.css
   align-items: center;  이렇게는 왜 안되는걸까요?...ㅠㅠ */ 
+=======
+  align-items: center;
+}
+
+section img {
+  width: 34.375rem;
+  height: 28.125rem;
+>>>>>>> cdd1017 (fix: px→rem단위로 변경):styles/Linkbrary.css
 }
 
 .gradient-link {
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD:index.css
   border-radius: 8px;
   padding: 16px 20px;
   background-image: linear-gradient(90deg, rgba(109, 106, 254, 1), rgba(106, 227, 254, 1));
+=======
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  background-image: linear-gradient(
+    90deg,
+    rgba(109, 106, 254, 1),
+    rgba(106, 227, 254, 1)
+  );
+>>>>>>> cdd1017 (fix: px→rem단위로 변경):styles/Linkbrary.css
   cursor: pointer;
-  font-size: 18px;
-  line-height: 21.6px;
+  font-size: 1.125rem;
+  line-height: 1.35rem;
   font-weight: 600;
 }
 
@@ -55,15 +84,16 @@ a{
 }
 
 .gradient-link.signin {
-  width: 128px;
+  width: 8rem;
 }
 
 .gradient-link.signup {
-  width: 350px;
-  gap: 10px;
-  margin: 20px 0;
+  width: 21.875rem;
+  gap: 0.625rem;
+  margin: 1.25rem 0;
 }
 
+<<<<<<< HEAD:index.css
 .head-title{
   color:rgba(0, 0, 0, 1);
   font-size: 64px;
@@ -73,6 +103,15 @@ a{
   /* position: relative;
   top: 100px;  이거는 왜 안되나요?ㅠㅠ */
   padding: 70px 0 0 0;
+=======
+.head-title {
+  color: rgba(0, 0, 0, 1);
+  font-size: 4rem;
+  line-height: 5rem;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 10.625rem;
+>>>>>>> cdd1017 (fix: px→rem단위로 변경):styles/Linkbrary.css
 }
 
 .head-title-gradient {
@@ -81,18 +120,26 @@ a{
   color: transparent;
   } 
 
+<<<<<<< HEAD:index.css
 .hero-image{
     width: 1200px;
     height: 590px;
     text-align:center;
  }
+=======
+.hero-image {
+  width: 75rem;
+  height: 36.875rem;
+  text-align: center;
+}
+>>>>>>> cdd1017 (fix: px→rem단위로 변경):styles/Linkbrary.css
 
 .link{
   display: flex;
   flex-direction: row;
-  margin: 50px 460px;
-  width: 998px;
-  height: 450px;
+  margin: 3.125rem 28.75rem;
+  width: 62.375rem;
+  height: 28.125rem;
 }
 
 .text-container-left{
@@ -100,7 +147,7 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-right: 157px;
+  margin-right: 9.8125rem;
 }
 
 .text-container-right{
@@ -108,12 +155,17 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-left: 157px;
+  margin-left: 9.8125rem;
 }
 
+<<<<<<< HEAD:index.css
 
 .main-text{
   font-size: 48px;
+=======
+.main-text {
+  font-size: 3rem;
+>>>>>>> cdd1017 (fix: px→rem단위로 변경):styles/Linkbrary.css
   font-weight: 700;
 }
 
@@ -148,7 +200,7 @@ a{
 p{
   color: #6B6B6B;
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 150%;
 }
@@ -158,10 +210,10 @@ footer{
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  height: 160px;
+  height: 10rem;
   background: var(--the-julge-black, #111322);
-  margin-top: 120px;
-  padding: 32px 104px 64px;
+  margin-top: 7.5rem;
+  padding: 2rem 6.5rem 4rem;
 }
 
 .footer-section{
@@ -175,16 +227,16 @@ footer{
 .copyright{
   color: #676767;
   font-family: Arial;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
 }
 
 .explain{
   color: #CFCFCF;
   font-family: Arial;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 1.875rem;
 }
