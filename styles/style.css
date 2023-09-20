@@ -241,3 +241,37 @@ a {
   column-gap: 1.2rem;
   height: 2rem;
 }
+
+@media (min-width: 1200px) {
+  .change-line {
+    display: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  nav{
+    padding: 0 3.2rem;
+  }
+
+  .header-main-img {
+    width: 698px;
+    height: 343px;
+  }
+
+  .section-container-img {
+    width: 385px;
+    height: 315px;
+  }
+}
+
+@media (max-width: 767px) {
+  nav{
+    padding: 0 3.2rem;
+  }
+
+  .header-main-img{
+    width: 30.2792rem;
+    height: 17.8712rem;
+    flex-shrink: 0;
+  }
+}
