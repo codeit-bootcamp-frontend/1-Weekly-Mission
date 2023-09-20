@@ -1,4 +1,5 @@
-@import url(./reset.css);
+@import url(../reset.css);
+@import url(../root.css);
 
 body {
     background:var(--linkbrary-bg);
@@ -39,7 +40,6 @@ body {
 
 .login-link h3 {
     color: #000;
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px; /* 150% */
@@ -48,7 +48,6 @@ body {
 
 .login-link a {
     color:  var(--linkbrary-primary-color);
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: 600;
 }
@@ -67,8 +66,6 @@ form .input-box:not(:last-child) {
 .input-box label {
     margin-bottom: 12px;
     color: #000;
-    /* Linkbrary/body2-regular */
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
 }
@@ -100,7 +97,6 @@ form .input-box:not(:last-child) {
     border-radius: 8px;
     background: linear-gradient(91deg, var(--linkbrary-primary-color) 0.12%, #6AE3FE 101.84%);
     color: #F5F5F5;
-    font-family: Pretendard;
     font-size: 18px;
     font-weight: 600;
     border: 0;
@@ -110,7 +106,6 @@ form .input-box:not(:last-child) {
 /* .input-box .check-text {
     margin-top: 6px;
     color: var(--linkbrary-red);
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
     display: none;
@@ -120,7 +115,6 @@ form .input-box:not(:last-child) {
     content:"비밀번호를 다시 입력해주세요";
     margin-top: 6px;
     color: var(--linkbrary-red);
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
     display: none;
@@ -141,8 +135,6 @@ form .input-box:not(:last-child) {
 .join-form-social h3 {
     flex-grow:2;
     color: var(--linkbrary-gray-100);
-    /* Linkbrary/body2-regular */
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
 }
