@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/style/reset.css" />
     <link rel="stylesheet" href="/style/variables.css" />
-    <link rel="stylesheet" href="/signin/signin.css" />
+    <link rel="stylesheet" href="/signup/signup.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -15,34 +15,45 @@
     />
   </head>
   <body>
-    <article class="signin-container">
-      <main class="signin-box">
+    <article class="signup-container">
+      <main class="signup-box">
         <div class="input-wrapper">
-        <section class="signin-header">
+        <section class="signup-header">
           <a href="/">
             <img
-              class="signin-logo"
+              class="signup-logo"
               src="/assets/common/logo.svg"
               alt="linkbrary-logo"
             />
           </a>
-          <div class="signin-header-text">
-            <p class="signin-header-subtext">회원이 아니신가요?</p>
-            <a href="/signup/signup.html">회원 가입하기</a>
+          <div class="signup-header-text">
+            <p class="signup-header-subtext">이미 회원이신가요?</p>
+            <a href="/signin">로그인하기</a>
           </div>
         </section>
-        <section class="signin-input-wrapper">
-          <div class="signin-input-container">
-            <p class="signin-input-name">이메일</p>
+        <section class="signup-input-wrapper">
+          <div class="signup-input-container">
+            <p class="signup-input-name">이메일</p>
             <label for="email">
-              <input class="signin-input" id="email" autocomplete="off"/>
+              <input class="signup-input" id="email" autocomplete="off"/>
             </label>
           </div>
-          <div class="signin-input-container">
-            <p class="signin-input-name">비밀번호</p>
+          <div class="signup-input-container">
+            <p class="signup-input-name">비밀번호</p>
             <label for="password">
               <div class="password-input">
-              <input class="signin-input" id="password" autocomplete="off">
+              <input class="signup-input" id="password" autocomplete="off">
+              <div>
+                <img src="/assets/common/eye-off.svg" alt="eye-off-ic" class="eye-off-ic"/>  
+              </div>
+            </div>
+            </label>
+          </div>
+          <div class="signup-input-container">
+            <p class="signup-input-name">비밀번호 확인</p>
+            <label for="password-confirm">
+              <div class="password-input">
+              <input class="signup-input" id="password-confirm" autocomplete="off">
               <div>
                 <img src="/assets/common/eye-off.svg" alt="eye-off-ic" class="eye-off-ic"/>  
               </div>
@@ -50,12 +61,12 @@
             </label>
           </div>
         </section>
-        <button class="signin-btn">로그인</button>
+        <button class="signup-btn">회원가입</button>
       </div>
-        <section class="signin-social">
-          <span class="signin-social-title">소셜 로그인</span>
+        <section class="signup-social">
+          <span class="signup-social-title">다른 방식으로 가입하기</span>
           <a href="https://google.com">
-          <div class="signin-social-icons">
+          <div class="signup-social-icons">
             <div class="google-ic-background">
               <img src="/assets/common/google.png" alt="google-ic" />
             </div>
