@@ -141,7 +141,7 @@ body {
       rgba(196, 196, 196, 0) 67.68%,
       #f0f6ff 94.76%
     ),
-    url("/assets/index/imgs/img.png");
+    url("assets/img.png");
 
   background-size: 1118px 706.956px;
 }
@@ -249,7 +249,7 @@ body {
   height: 274.441px;
   position: relative;
   left: -12px;
-  background: url("/assets/index/imgs/card2.png");
+  background: url("assets/card2.png");
   background-size: 279px 274.441px;
 }
 
@@ -425,7 +425,7 @@ body {
   top: -63px;
   left: -178px;
 
-  background: url("/assets/index/imgs/img.png"), lightgray 50% / cover no-repeat;
+  background: url("assets/img.png"), lightgray 50% / cover no-repeat;
   background-size: 934px 591px;
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 }
