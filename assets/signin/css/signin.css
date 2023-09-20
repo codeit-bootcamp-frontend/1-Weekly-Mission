@@ -44,7 +44,7 @@ body,
 }
 
 body {
-  padding: 238px 0px 252px 0px;
+  padding: 238px 0px 0px 0px;
   width: 1440px;
   background: var(--linkbrary-bg);
 }
