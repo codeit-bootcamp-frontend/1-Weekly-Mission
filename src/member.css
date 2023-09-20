@@ -173,7 +173,7 @@ form {
   cursor: pointer;
 }
 
-@media screen and (max-width: 575px){
+@media screen and (max-width: 767px){
   .member-form-btn {
     width: 32.5rem;
     transition-duration: 0.5s;
