@@ -24,6 +24,8 @@ header {
 }
 
 nav {
+    position: fixed;
+    background: var(--linkbrary-bg, #F0F6FF);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,6 +56,7 @@ nav {
 }
 
 .header-main {
+    margin-top: 9.4rem;
     display: flex;
     flex-direction: column;
     row-gap: 4rem;
