@@ -1,175 +1,175 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Pretendard;
-    font-size: 1.4rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 html, body {
-    font-size: 62.5%;
-    background: var(--linkbrary-gray-10);
-    color: var(--black);
+  font-size: 62.5%;
+  background: var(--linkbrary-gray-10);
+  color: var(--black);
 }
 
 .root {
-    width: 100%;
-    padding: 23.8rem 0 25.2rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 0;
-    height: 100vh;
+  width: 100%;
+  padding: 23.8rem 0 25.2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  height: 100vh;
 }
 
 .main-link {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.6rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.6rem;
 }
 
 .main-img {
-    width: 24rem;
-    height: 3.8rem;
+  width: 24rem;
+  height: 3.8rem;
 }
 
 .signin {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
 }
 
 .signin-ask {
-    font-size: 1.6rem;
-    line-height: 2.4rem; /* 150% */
+  font-size: 1.6rem;
+  line-height: 2.4rem; /* 150% */
 }
 
 .signin-link {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--blue);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--blue);
 }
 
 .input-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.2rem;
-    margin: 2.4rem 0 2.4rem 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin: 2.4rem 0 2.4rem 0;
 }
 
 .input-container {
-    margin: 3rem 0 3rem 0;
+  margin: 3rem 0 3rem 0;
 }
 
 .text-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40rem;
-    padding: 1.8rem 1.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--gray-40);
-    background: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40rem;
+  padding: 1.8rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-40);
+  background: var(--white);
 }
 
 .text-box:focus {
-    outline: 1px solid var(--blue);
+  outline: 1px solid var(--blue);
 }
 
 .eye-image {
-    position: absolute;
-    top: 4.8rem;
-    left: 37rem;
+  position: absolute;
+  top: 4.8rem;
+  left: 37rem;
 }
 
 .login-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40rem;
-    padding: 1.6rem 2rem;
-    gap: 1rem;
-    color: var(--grey-light, #F5F5F5);
-    text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: 600;
-    border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40rem;
+  padding: 1.6rem 2rem;
+  gap: 1rem;
+  color: var(--grey-light, #F5F5F5);
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
 }
 
 footer {
-    display: flex;
-    width: 40rem;
-    padding: 1.2rem 2.4rem;
-    margin-top: 3.2rem;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px;
-    border: 1px solid var(--gray-40);
-    background: var(--gray-20);
+  display: flex;
+  width: 40rem;
+  padding: 1.2rem 2.4rem;
+  margin-top: 3.2rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--gray-40);
+  background: var(--gray-20);
 }
 
 .footer-text {
-    color: var(--linkbrary-gray-100, #373740);
-    font-family: Pretendard;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: var(--linkbrary-gray-100, #373740);
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .icon {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
 }
 
 .google {
-    position: relative;
-    width: 4.2rem;
-    height: 4.2rem;
-    background-color: var(--white);
-    border-radius: 50%;
+  position: relative;
+  width: 4.2rem;
+  height: 4.2rem;
+  background-color: var(--white);
+  border-radius: 50%;
 }
 
 .google-icon {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-    left: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
 }
 
 .kakao {
-    position: relative;
-    width: 4.2rem;
-    height: 4.2rem;
-    flex-shrink: 0;
-    background-color: #F5E14B;
-    border-radius: 50%;
+  position: relative;
+  width: 4.2rem;
+  height: 4.2rem;
+  flex-shrink: 0;
+  background-color: #F5E14B;
+  border-radius: 50%;
 }
 
 .kakao-icon {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-    left: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
 }
