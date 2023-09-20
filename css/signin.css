@@ -96,10 +96,11 @@ input:focus {
     gap: 12px;
 }
 
-.input.password::after{
+.password-input::after,
+.password-check-input::after{
     content: url("../icon/eye-off.svg");
     position: absolute;
-    bottom: 15px;
+    bottom: 18px;
     right: 15px;
 }
 
@@ -109,7 +110,7 @@ input:focus {
     margin-top: 30px;
     padding: 16px 20px;
     border: none;
-    background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
+    background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
     color: #fff;
     border-radius: 8px;
     font-size: 1.8rem;
@@ -138,4 +139,28 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Tablet Size */
+@media (max-width: 1199px) {
+  main {
+    padding: 20rem 40rem;
+  }
+}
+
+/* Mobile Size */
+@media (max-width: 767px) {
+  main {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 12rem 3.2rem 23rem;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .social.login {
+    width: 100%;
+  }
 }

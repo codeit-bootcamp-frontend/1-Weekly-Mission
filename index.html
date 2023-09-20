@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="https://week3-yoonhyuk.netlify.app/"> 
+    <meta property="og:title" content="Linkbrary">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/social_profile.png">
+    <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
@@ -11,113 +16,120 @@
 <body>
     <header>
         <!-- nav -->
-        <nav>
+        <nav class="nav">
             <a href="/"><img class="linkbrary" src="icon/logo.svg"></a>
-            <a class="login btn" href="signin.html">로그인</a>
+            <a class="login" href="pages/signin.html">로그인</a>
         </nav>
-        <div class="background-section">
-            <div class="background-content">
-                <span class="main title">세상의 모든 정보</span>를<br>
-                쉽게 저장하고 관리해 보세요
-            </div>
-            <a class="linkadd btn" href="signup.html ">링크 추가하기</a>
-            <div class="img cover">
-                <div class="img main"><div class="dim"></div></div>
-            </div>
+        <!-- intro-section -->
+        <div class="intro-section">
+          <h1 class="intro-content">
+              <span class="intro-title">세상의 모든 정보</span>를
+              <br/>
+              쉽게 저장하고 관리해 보세요
+          </h1>
+          <a class="addlink" href="pages/signup.html">링크 추가하기</a>
+          <img class="intro-img" src="images/intro.png" alt="인트로 이미지">
         </div>
     </header>
     <main>
         <!-- section1 -->
-        <section class="section">
-            <div class="text">
-                <div class="content title"><span class="wantlink">원하는 링크</span>를 저장하세요</div>
-                <div class="content">
-                    나중에 읽고 싶은글, 다시 보고 싶은 영상,<br>
-                    사고 싶은 옷, 기억하고 싶은 것을<br>
+        <section class="wantlink-section">
+          <div class="sectionArea left">
+            <div class="content">
+                <h2 class="content-title">
+                  <span class="wantlink">원하는 링크</span>를
+                  <br/>
+                  저장하세요
+                </h2>
+                <div class="text">
+                    나중에 읽고 싶은글, 다시 보고 싶은 영상,
+                    사고 싶은 옷, 기억하고 싶은 것을
                     한 공간에 저장하세요
                 </div>
             </div>
-            <div class="images">
-                <img src="images/img2-1.png" alt="그라데이션 이미지">
-                <img src="images/img2-2.png" alt="강아지 이미지">
-                <img src="images/img2-3.png" alt="가구 이미지">
-                <div class="img frame">
-                    <img class="img down" src="/icon/down.svg" alt="이미지 다운로드">
-                </div>
-            </div>
+            <img class="content-img" src="images/wantlink.png" alt="원하는 링크 이미지">
+          </div>
         </section>
         <!-- section2 -->
-        <section class="section">
-            <div class="folder name">
-                <div class="folder name back">
-                    <img src="images/img3.png" alt="폴더 이름 변경하기 사진">
-                </div>
-            </div>
-            <div class="text">
-                <div class="content title">링크를 폴더로
-                    <span class="manage">관리</span>하세요
-                </div>
-                <div class="content">
-                    나만의 폴더를 무제한으로 만들고<br>
+        <section class="linkfolder-section">
+          <div class="sectionArea right">
+            <img class="content-img" src="images/linkfolder.png" alt="링크 폴더 이미지">
+            <div class="content">
+                <h2 class="content-title">링크를 폴더로
+                  <br/>
+                  <span class="manage">관리</span>하세요
+                </h2>
+                <div class="text">
+                    나만의 폴더를 무제한으로 만들고<br/>
                     다양하게 활용할 수 있습니다.
                 </div>
             </div>
+          </div>
         </section>
         <!-- section3 -->
-        <section class="section">
-            <div class="text">
-                <div class="content title">저장한 링크를
-                    <span class="share">공유</span>해보세요
-                </div>
-                <div class="content">
-                    여러 링크를 폴더에 담고 공유할 수 있습니다.<br>
-                    가족, 친구, 동료들에게 쉽고 빠르게 링크를<br>
+        <section class="linkshare-section">
+          <div class="sectionArea left">
+            <div class="content">
+                <h2 class="content-title">저장한 링크를
+                  <br/>
+                  <span class="share">공유</span>해보세요
+                </h2>
+                <div class="text">
+                    여러 링크를 폴더에 담고 공유할 수 있습니다.
+                    가족, 친구, 동료들에게 쉽고 빠르게 링크를
                     공유해 보세요.
                 </div>
             </div>
-            <div class="savelink img">
-                <div class="dim">
-                    <img class="popup" src="images/img4.png" alt="폴더 공유하기 사진">
-                </div>
-            </div>
+            <img class="content-img" src="images/linkshare.png" alt="">
+          </div>
         </section>
         <!-- section4 -->
-        <section class="section">
-            <div class="search img">
-                <img src="images/img5.png" alt="저장한 링크를 검색 사진">
+        <section class="searchimg-section">
+          <div class="sectionArea right">
+            <div class="search-img">
+                <img class="content-img" src="images/serachimg.png" alt="저장한 링크를 검색 사진">
                 <div class="dim"></div>
             </div>
-            <div class="text">
-                <div class="content title">저장한 링크를
-                    <span class="search text">검색</span>해보세요
-                </div>
-                <div class="content">중요한 정보들을 검색으로 쉽게 찾아보세요.</div>
+            <div class="content">
+                <h2 class="content-title">저장한 링크를
+                  <br/>
+                  <span class="search">검색</span>해보세요
+                </h2>
+                <div class="text">중요한 정보들을 검색으로 쉽게 찾아보세요.</div>
             </div>
+          </div>
         </section>
     </main>
     <!-- footer -->
     <footer>
-        <div class="footer background">
-            <div class="footer content">
-                <div class="name">©codeit - 2023</div>
-                <div class="option">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="faq.html">FAQ</a>
-                </div>
-                <div class="social">
-                    <a href="" target="_blank">
-                        <img src="/icon/facebook.svg" alt="페이스북 아이콘">
-                    </a>
-                    <a href="" target="_blank">
-                        <img src="/icon/twitter.svg" alt="트위터 아이콘">
-                    </a>
-                    <a href="" target="_blank">
-                        <img src="/icon/youtube.svg" alt="유튜브 아이콘">
-                    </a>
-                    <a href="" target="_blank">
-                        <img src="/icon/instagram.svg" alt="인스타그램 아이콘">
-                    </a>
-                </div>
+        <div class="footer-background">
+            <div class="footer-content">
+              <div class="name">©codeit - 2023</div>
+              <div class="option">
+                  <a href="pages/privacy.html">Privacy Policy</a>
+                  <a href="pages/faq.html">FAQ</a>
+              </div>
+              <div class="mobile-only">
+                <div class="mobile-name">©codeit - 2023</div>
+                <div class="mobile-option">
+                  <a href="pages/privacy.html">Privacy Policy</a>
+                  <a href="pages/faq.html">FAQ</a>
+              </div>
+              </div>
+              <div class="social">
+                  <a href="" target="_blank">
+                      <img src="icon/facebook.svg" alt="페이스북 아이콘">
+                  </a>
+                  <a href="" target="_blank">
+                      <img src="icon/twitter.svg" alt="트위터 아이콘">
+                  </a>
+                  <a href="" target="_blank">
+                      <img src="icon/youtube.svg" alt="유튜브 아이콘">
+                  </a>
+                  <a href="" target="_blank">
+                      <img src="icon/instagram.svg" alt="인스타그램 아이콘">
+                  </a>
+              </div>
             </div>
         </div>
     </footer>
