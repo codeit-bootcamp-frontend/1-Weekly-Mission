@@ -2,7 +2,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Pretendard;
-    font-size: 1.4rem;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -16,7 +16,7 @@ html, body {
 
 .root {
     width: 100%;
-    padding: 23.8rem 0 11.6rem 0;
+    padding: 238px 0 116px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,33 +28,33 @@ html, body {
 .main-link {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.6rem;
+    margin-bottom: 16px;
 }
 
 .main-img {
-    width: 24rem;
-    height: 3.8rem;
+    width: 240px;
+    height: 38px;
 }
 
 .signin {
     display: flex;
     align-items: flex-start;
-    gap: 0.8rem;
+    gap: 8px;
 }
 
 .signin-ask {
-    font-size: 1.6rem;
-    line-height: 2.4rem; /* 150% */
+    font-size: 16px;
+    line-height: 24px; /* 150% */
 }
 
 .signin-link {
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 600;
     color: var(--blue);
 }
 
 .input-container {
-    margin: 3rem 0 3rem 0;
+    margin: 30px 0 30px 0;
 }
 
 .input-box {
@@ -62,16 +62,16 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.2rem;
-    margin: 2.4rem 0 2.4rem 0;
+    gap: 12px;
+    margin: 24px 0 24px 0;
 }
 
 .text-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40rem;
-    padding: 1.8rem 1.5rem;
+    width: 400px;
+    padding: 18px 15px;
     border-radius: 8px;
     border: 1px solid var(--gray-40);
     background: var(--white);
@@ -83,20 +83,20 @@ html, body {
 
 .eye-image {
     position: absolute;
-    top: 4.8rem;
-    left: 37rem;
+    top: 48px;
+    left: 370px;
 }
 
 .login-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40rem;
-    padding: 1.6rem 2rem;
-    gap: 1rem;
+    width: 400px;
+    padding: 16px 20px;
+    gap: 10px;
     color: var(--grey-light, #F5F5F5);
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 18px;
     font-weight: 600;
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
@@ -104,9 +104,9 @@ html, body {
 
 footer {
     display: flex;
-    width: 40rem;
-    padding: 1.2rem 2.4rem;
-    margin-top: 3.2rem;
+    width: 400px;
+    padding: 12px 24px;
+    margin-top: 32px;
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
@@ -126,23 +126,23 @@ footer {
 .icon {
     display: flex;
     align-items: flex-start;
-    gap: 1.6rem;
+    gap: 16px;
 }
 
 .google {
   position: relative;
-  width: 4.2rem;
-  height: 4.2rem;
+  width: 42px;
+  height: 42px;
   background-color: var(--white);
   border-radius: 50%;
 }
 
 .google-icon {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,8 +153,8 @@ footer {
 
 .kakao {
   position: relative;
-  width: 4.2rem;
-  height: 4.2rem;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
   background-color: #F5E14B;
   border-radius: 50%;
@@ -162,10 +162,10 @@ footer {
 
 .kakao-icon {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
