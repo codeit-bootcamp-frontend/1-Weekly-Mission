@@ -40,6 +40,10 @@ header {
   background: var(--color-bg);
   z-index: 100;
 }
+.logo {
+  width: 133px;
+  height: 24px;
+}
 .login {
   width: 128px;
 }

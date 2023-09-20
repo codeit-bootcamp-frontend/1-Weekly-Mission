@@ -42,6 +42,8 @@ input:focus {
   align-items: center;
 }
 .container .logo {
+  width: 210px;
+  height: 38px;
   margin-bottom: 16px;
 }
 .container p {
