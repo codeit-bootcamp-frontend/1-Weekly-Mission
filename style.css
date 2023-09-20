@@ -197,7 +197,7 @@ font-family: Pretendard;
   flex: 1 0 auto;
 }
 
-.policy_wrapper > a:visited {
+.policy_wrapper > a:visited, .policy-wrapper > a {
   color: #cfcfcf;
 }
 
