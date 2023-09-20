@@ -1,0 +1,167 @@
+@import url(common.css);
+
+body {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400; 
+  line-height: normal;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Header */
+header {
+  background: var(--color-bg);
+  padding-top: 95px;
+}
+.gnb {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg);
+  z-index: 100;
+}
+.logo {
+  width: 133px;
+  height: 24px;
+}
+.login {
+  width: 128px;
+}
+.banner {
+  padding: 70px 360px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.banner p {
+  min-width: 708px;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 125%;
+  text-align: center;
+}
+.banner p .banner-gradient {
+  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.banner .cta {
+  width: 350px;
+  margin: 40px 0;
+}
+
+/* Contents */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 461px;
+  gap: 157px;
+}
+.title-wrap {
+  min-width: 291px;
+}
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+.description {
+  color: #6B6B6B;
+  font-weight: 500;
+  line-height: 150%;
+}
+.content-img {
+  width: 550px;
+  height: 450px;
+}
+
+/* Content-01 */
+.content-01 {
+  padding-top: 120px;
+}
+.content-01 .title .title-1-gradient {
+  background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Content-02 */
+.content-02 .title .title-2-gradient {
+  background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Content-03 */
+.content-03 .title .title-3-gradient {
+  background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Content-04 */
+.content-04 .title .title-4-gradient {
+  background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* footer */
+footer {
+  width: 100%;
+  height: 280px;
+  position: relative;
+}
+footer .footer-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  padding: 32px 104px 64px;
+  background: var(--color-black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .copyright {
+  color: #676767;
+  font-family: Arial;
+}
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+footer .footer-links a {
+  color: #CFCFCF;
+  font-family: Arial;
+}
+.sns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.sns a {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
