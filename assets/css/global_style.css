@@ -16,6 +16,7 @@
 *{
   box-sizing:border-box;
   text-decoration: none;
+  line-height: normal;
 }
 
 html {
