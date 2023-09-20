@@ -43,7 +43,7 @@ h1 {
 }
 
 main {
-  margin-bottom: 120px;
+  margin-bottom: 70px;
   padding-top: 94px;
 }
 
@@ -90,31 +90,51 @@ main {
 }
 
 .content {
-  display: flex;
-  width: 998px;
-  margin: 0 auto;
-  align-items: center;
+  display: grid;
   justify-content: center;
+  grid-template-columns: 291px 550px;
+  row-gap: 10px;
+  column-gap: 157px;
+  width: 100%;
   padding: 50px 0;
-  gap: 157px;
+}
+
+.content-type1 {
+  grid-template: 
+    ". image"
+    "title image"
+    "description image"
+    ". image"
+  ;
+}
+
+.content-type2 {
+  grid-template: 
+    "image ."
+    "image title"
+    "image description"
+    "image ."
+  ;
 }
 
 .content-title {
   font-size: 48px;
   font-weight: 700;
   letter-spacing: -0.3px;
-  margin-bottom: 10px;
+  grid-area: title;
 }
 
 .description {
   color: var(--description-color);
   font-weight: 500;
+  grid-area: description;
 }
 
 .landing-imgs {
   border-radius: 15px;
   width: 550px;
   height: 450px;
+  grid-area: image;
 }
 
 .text-gradient-type1 {
@@ -137,13 +157,13 @@ main {
   background-image: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
 }
 
-footer {
+.footer {
   background-color: var(--black);
 }
 
 .footer-box {
-  height: 160px;
   display: flex;
+  height: 160px;
   padding: 32px 104px 64px;
   justify-content: space-between;
   font-family: Arial;
@@ -198,7 +218,7 @@ footer {
   }
 
   .content {
-    gap: 51px;
+    column-gap: 51px;
     width: auto;
   }
 
@@ -248,29 +268,22 @@ footer {
   }
 
   .content {
-    padding: 40px 32px 92px;
-    gap: 21px;
-    align-items: start;
-    position: relative;
-  }
-
-  .content-type1 {
-    flex-direction: column;
-  }
-
-  .content-type2 {
-    flex-direction: column-reverse;
+    padding: 40px 32px;
+    row-gap: 16px;
+    grid-template: 
+      "title"
+      "image"
+      "description"
+    ;
   }
   
   .content-title {
     font-size: 24px;
+    margin-bottom: 4px;
   }
 
   .description {
     font-size: 15px;
-    position: absolute;
-    height: 36px;
-    bottom: 40px;
   }
 
   .only-mobile {
@@ -278,11 +291,23 @@ footer {
   }
 
   .footer-box {
-    padding: 32px 32px 64px 32px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 32px;
   }
 
-  .footer-trademark {
-    position: absolute;
-    bottom: 32px;
+  .footer-trademark{
+    display: flex;
+    height: 70%;
+    width: 50%;
+    order: 1;
+    align-items: flex-end;
   }
+
+  .footer-sns {
+    order: 2;
+    width: 50%;
+    justify-content: flex-end;
+  }
+
 }
