@@ -8,9 +8,6 @@ a {
 
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .header {
@@ -61,11 +58,6 @@ body {
   line-height: normal;
   border: none;
   cursor: pointer;
-}
-
-.container_1 {
-  width: 100%;
-  background: #f0f6ff;
 }
 
 .container_1 .content {
