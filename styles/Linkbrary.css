@@ -8,9 +8,7 @@
   margin: 0;
 }
 
-html{
-  font-size: 16px;
-}
+
 
 header {
   background-color: rgba(240, 246, 255, 1);
@@ -28,7 +26,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 200px;
+  padding: 1.25rem 12.5rem;
 }
 
 section {
@@ -40,24 +38,24 @@ section {
 }
 
 section img {
-  width: 550px;
-  height: 450px;
+  width: 34.375rem;
+  height: 28.125rem;
 }
 
 .gradient-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  padding: 16px 20px;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
   background-image: linear-gradient(
     90deg,
     rgba(109, 106, 254, 1),
     rgba(106, 227, 254, 1)
   );
   cursor: pointer;
-  font-size: 18px;
-  line-height: 21.6px;
+  font-size: 1.125rem;
+  line-height: 1.35rem;
   font-weight: 600;
 }
 
@@ -67,22 +65,22 @@ a {
 }
 
 .gradient-link.signin {
-  width: 128px;
+  width: 8rem;
 }
 
 .gradient-link.signup {
-  width: 350px;
-  gap: 10px;
-  margin: 20px 0;
+  width: 21.875rem;
+  gap: 0.625rem;
+  margin: 1.25rem 0;
 }
 
 .head-title {
   color: rgba(0, 0, 0, 1);
-  font-size: 64px;
-  line-height: 80px;
+  font-size: 4rem;
+  line-height: 5rem;
   text-align: center;
   font-weight: 700;
-  margin-top: 170px;
+  margin-top: 10.625rem;
 }
 
 .head-title-gradient {
@@ -92,17 +90,17 @@ a {
 }
 
 .hero-image {
-  width: 1200px;
-  height: 590px;
+  width: 75rem;
+  height: 36.875rem;
   text-align: center;
 }
 
 .link {
   display: flex;
   flex-direction: row;
-  margin: 50px 460px;
-  width: 998px;
-  height: 450px;
+  margin: 3.125rem 28.75rem;
+  width: 62.375rem;
+  height: 28.125rem;
 }
 
 .text-container-left {
@@ -110,7 +108,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-right: 157px;
+  margin-right: 9.8125rem;
 }
 
 .text-container-right {
@@ -118,11 +116,11 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-left: 157px;
+  margin-left: 9.8125rem;
 }
 
 .main-text {
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: 700;
 }
 
@@ -162,7 +160,7 @@ a {
 p {
   color: #6b6b6b;
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 150%;
 }
@@ -172,10 +170,10 @@ footer {
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  height: 160px;
+  height: 10rem;
   background: var(--the-julge-black, #111322);
-  margin-top: 120px;
-  padding: 32px 104px 64px;
+  margin-top: 7.5rem;
+  padding: 2rem 6.5rem 4rem;
 }
 
 .footer-section {
@@ -188,16 +186,16 @@ footer {
 .copyright {
   color: #676767;
   font-family: Arial;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
 }
 
 .explain {
   color: #cfcfcf;
   font-family: Arial;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 1.875rem;
 }

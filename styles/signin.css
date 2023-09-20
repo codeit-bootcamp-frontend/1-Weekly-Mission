@@ -22,21 +22,21 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px;
-  height: 530px;
-  margin: 238px 0 116px 0;
+  width: 25rem;
+  height: 33.125rem;
+  margin: 14.875rem 0 7.25rem 0;
 }
 
 header {
   /* width: 100%;  필요하다고 생각했는데.... 필요 없는 걸까요..?*/
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .title-logo{
-  width: 210.583px;
-  height: 38px;
+  width: 13.1614rem;
+  height: 2.375rem;
 }
 
 .title-logo img {
@@ -44,7 +44,7 @@ header {
 }
 
 .title-subtext {
-  margin-top: 16px;
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -52,50 +52,50 @@ label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   position: relative;
 }
 
 button {
-  margin-top: 30px;
+  margin-top: 1.875rem;
   display: flex;
-  width: 400px;
-  padding: 16px 20px;
+  width: 25rem;
+  padding: 1rem 1.25rem;
   justify-content: center;
   align-items: center;
   color: #fff;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   border-color: transparent;
   background-image: linear-gradient(
     90deg,
     rgba(109, 106, 254, 1),
     rgba(106, 227, 254, 1)
   ); 
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
 }
 
 input {
   display: flex;
-  width: 400px;
-  padding: 18px 15px;
+  width: 25rem;
+  padding: 1.125rem 0.9375rem;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  border: 1px solid #ccd5e3;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid #ccd5e3;
   background: #fff;
-  margin: 12px 0 24px 0;
+  margin: 0.75rem 0 1.5rem 0;
 }
 
 input:focus-visible {
-  outline: 2px solid #6D6AFE;
-  border-radius: 3px;
+  outline: 0.125rem solid #6D6AFE;
+  border-radius: 0.1875rem;
 }
 
 .input-eye-off{
   position: absolute;
-  top: 48px;
-  right: 15px;
+  top: 3rem;
+  right: 0.9375rem;
   display:flex;
   flex-direction: row;
   justify-content: center;
@@ -103,15 +103,15 @@ input:focus-visible {
 }
 
 .another-signup {
-  margin-top: 32px;
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: 1px solid #ccd5e3;
+  width: 25rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid #ccd5e3;
   background-color: #e7effb;
 }
 
@@ -120,7 +120,7 @@ input:focus-visible {
   flex-direction: row;
   justify-content: flex-end;
   background-color: #e7effb;
-  gap:16px;
+  gap:1rem;
     /* 위에 설정한 background-color가 아니라 *{} 안에 있는 배경 컬러가 적용되는 것 같습니다..왜죱..  */
 }
 
