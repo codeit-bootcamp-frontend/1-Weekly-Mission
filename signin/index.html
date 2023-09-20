@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkbrary</title>
+    <link rel="stylesheet" href="/style/global.css" />
+    <link rel="stylesheet" href="/signin/signin.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+  </head>
+  <body>
+    <article class="signin-container">
+      <main class="signin-box">
+        <div class="input-wrapper">
+          <section class="signin-header">
+            <a href="/">
+              <img
+                class="signin-logo"
+                src="/assets/common/logo.svg"
+                alt="linkbrary-logo"
+              />
+            </a>
+            <div class="signin-header-text">
+              <p class="signin-header-subtext">회원이 아니신가요?</p>
+              <a href="/signup">회원 가입하기</a>
+            </div>
+          </section>
+          <section class="signin-input-wrapper">
+            <div class="signin-input-container">
+              <p class="signin-input-name">이메일</p>
+              <label for="email">
+                <input class="signin-input" id="email" autocomplete="off" />
+              </label>
+            </div>
+            <div class="signin-input-container">
+              <p class="signin-input-name">비밀번호</p>
+              <label for="password">
+                <div class="password-input">
+                  <input
+                    class="signin-input"
+                    id="password"
+                    autocomplete="off"
+                  />
+                  <button class="eye-off-btn" type="button">
+                    <img
+                      src="/assets/common/eye-off.svg"
+                      alt="eye-off-ic"
+                      class="eye-off-ic"
+                    />
+                  </button>
+                </div>
+              </label>
+            </div>
+          </section>
+          <button class="signin-btn">로그인</button>
+        </div>
+        <section class="signin-social">
+          <span class="signin-social-title">소셜 로그인</span>
+          <div class="signin-social-icons">
+            <a href="https://google.com">
+              <div class="google-ic-background">
+                <img src="/assets/common/google.png" alt="google-ic" />
+              </div>
+            </a>
+            <a href="https://www.kakaocorp.com/page/">
+              <div class="kakao-ic-background">
+                <img src="/assets/common/kakaoicon.svg" alt="kakao-ic" />
+              </div>
+            </a>
+          </div>
+        </section>
+      </main>
+    </article>
+  </body>
+</html>

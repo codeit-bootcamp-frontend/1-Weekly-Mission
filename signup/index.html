@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkbrary</title>
+    <link rel="stylesheet" href="/style/global.css" />
+    <link rel="stylesheet" href="/signup/signup.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+  </head>
+  <body>
+    <article class="signup-container">
+      <main class="signup-box">
+        <div class="input-wrapper">
+          <section class="signup-header">
+            <a href="/">
+              <img
+                class="signup-logo"
+                src="/assets/common/logo.svg"
+                alt="linkbrary-logo"
+              />
+            </a>
+            <div class="signup-header-text">
+              <p class="signup-header-subtext">이미 회원이신가요?</p>
+              <a href="/signin">로그인하기</a>
+            </div>
+          </section>
+          <section class="signup-input-wrapper">
+            <div class="signup-input-container">
+              <p class="signup-input-name">이메일</p>
+              <label for="email">
+                <input class="signup-input" id="email" autocomplete="off" />
+              </label>
+            </div>
+            <div class="signup-input-container">
+              <p class="signup-input-name">비밀번호</p>
+              <label for="password">
+                <div class="password-input">
+                  <input
+                    class="signup-input"
+                    id="password"
+                    autocomplete="off"
+                  />
+                  <button class="eye-off-btn" type="button">
+                    <img
+                      src="/assets/common/eye-off.svg"
+                      alt="eye-off-ic"
+                      class="eye-off-ic"
+                    />
+                  </button>
+                </div>
+              </label>
+            </div>
+            <div class="signup-input-container">
+              <p class="signup-input-name">비밀번호 확인</p>
+              <label for="password-confirm">
+                <div class="password-input">
+                  <input
+                    class="signup-input"
+                    id="password-confirm"
+                    autocomplete="off"
+                  />
+                  <button class="eye-off-btn" type="button">
+                    <img
+                      src="/assets/common/eye-off.svg"
+                      alt="eye-off-ic"
+                      class="eye-off-ic"
+                    />
+                  </button>
+                </div>
+              </label>
+            </div>
+          </section>
+          <button class="signup-btn">회원가입</button>
+        </div>
+        <section class="signup-social">
+          <span class="signup-social-title">다른 방식으로 가입하기</span>
+          <div class="signin-social-icons">
+            <a href="https://google.com">
+              <div class="google-ic-background">
+                <img src="/assets/common/google.png" alt="google-ic" />
+              </div>
+            </a>
+            <a href="https://www.kakaocorp.com/page/">
+              <div class="kakao-ic-background">
+                <img src="/assets/common/kakaoicon.svg" alt="kakao-ic" />
+              </div>
+            </a>
+          </div>
+        </section>
+      </main>
+    </article>
+  </body>
+</html>
