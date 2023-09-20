@@ -38,6 +38,7 @@ input:focus {
   top: 0px;
   z-index: 100;
   padding: 20px 200px;
+  background-color: var(--backgroundcolor-skyblue-30);
 }
 
 .login-btn {
