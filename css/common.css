@@ -22,3 +22,15 @@
   --color-cta-bg: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
   --color-cta-font: #F5F5F5;
 }
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-font);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
