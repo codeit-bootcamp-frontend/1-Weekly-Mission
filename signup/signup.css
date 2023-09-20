@@ -149,12 +149,12 @@
   position: relative;
 }
 
-.eye-off-ic-container {
-  height: 15px;
-}
-
-.eye-off-ic {
+.eye-off-btn {
   position: absolute;
-  top: 35%;
-  right: 15px;
+  bottom: 20px;
+  right: 24px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-white);
+  border: none;
 }
