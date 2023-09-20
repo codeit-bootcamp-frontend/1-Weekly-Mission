@@ -82,27 +82,3 @@ h2 {
     line-height: normal;
     border-bottom: 0.1rem solid var(--primary);
 }
-
-@media (max-width: 1199px) and (min-width: 768px) {
-    
-}
-    
-@media (max-width: 767px) and (min-width: 375px) {
-    .logo--regular {
-        width: 8.9rem;
-        height: 1.6rem;
-    }
-
-    .btn {
-        padding: 10px 16px;
-        font-size: 1.4rem;
-    }
-
-    .btn--width-128 {
-        width: 80px;
-    }
-
-    .btn--width-350 {
-        width: 200px;
-    }
-}
