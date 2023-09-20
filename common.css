@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --Primary-color: #6D6AFE;
+    --Red-color: #FF5B56;
+    --Black-color: #111322;
+    --White-color: #ffffff;
+    --Gray100-color: #3e3e43;
+    --Gray80-color: #9fa6b2;
+    --Gray60-color: #ccd5e3;
+    --Gray40-color: #e7effb;
+    --Gray20-color: #f0f6ff;
+}
+
+body {
+    font-family: Pretendard;
+}
+
+a {
+    text-decoration: none;
+}
