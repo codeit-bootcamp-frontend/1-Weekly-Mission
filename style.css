@@ -97,13 +97,19 @@ header .login-link {
 }
   
 .content .description {
-    width: 291px;
+    min-width: 291px;
 }
 
-.content h2 {
+.content .description h2 {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 10px;
+}
+
+.content .description p {
+    color: #6B6B6B;
+    font-weight: 500;
+    line-height: 150%;
 }
 
 .wanted-link-section h2 span {
@@ -113,16 +119,7 @@ header .login-link {
     -webkit-text-fill-color: transparent;
 }
 
-.content .description p {
-    color: #6B6B6B;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 150%;
-}
-
 .wanted-link-cards {
-    width: 550px;
-    height: 450px; 
     border-radius: 15px;
     background: #F0F6FF;
     position: relative;
@@ -178,8 +175,6 @@ header .login-link {
 }
 
 .popup_folder_name_change-box {
-    width: 550px;
-    height: 450px;
     padding: 114px 68px 66px 68px;
     border-radius: 15px;
     background: #F0F6FF;
@@ -239,7 +234,6 @@ header .login-link {
 }
 
 .codeit_search_image {
-    width: 619px;
     height: 584px;
     flex-shrink: 0;
     border-radius: 15px;
@@ -273,7 +267,6 @@ footer {
     color: #676767;
     text-align: center;
 }
-
 .footer-link {
     display: flex;
     gap: 30px;
