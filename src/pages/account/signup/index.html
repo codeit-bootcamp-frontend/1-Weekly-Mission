@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signin</title>
+    <link rel="stylesheet" href="../account.css" />
+  </head>
+  <body>
+    <div class="signin_container">
+      <div class="signin_header">
+        <span class="logo"
+          ><a href="/"><img src="/src/assets/img/logo.svg" /></a
+        ></span>
+        <div class="logo_signup">
+          이미 회원이신가요?
+          <span class="signup_link"><a href="../signin">로그인 하기</a></span>
+        </div>
+      </div>
+      <form class="sign_form">
+        <ul>
+          <li>
+            <label for="email_input">이메일</label>
+            <input class="email_input" type="email" />
+          </li>
+          <li>
+            <label for="pwd_input">비밀번호</label>
+            <div class="pwd_box">
+              <input class="pwd_input" type="password" />
+              <img class="eyes_toggle" src="/src/assets/img/close_eyes.png" />
+            </div>
+          </li>
+          <li>
+            <label for="pwd_input">비밀번호</label>
+            <div class="pwd_box">
+              <input class="pwd_check" type="password" />
+              <img class="eyes_toggle" src="/src/assets/img/close_eyes.png" />
+            </div>
+          </li>
+          <li>
+            <button class="sign_btn" type="submit">회원가입</button>
+          </li>
+          <li>
+            <span class="signin_other">
+              <span>다른 방식으로 가입하기</span>
+              <div class="signin_other_icon">
+                <button
+                  class="google_icon"
+                  onclick="window.open('https://www.google.com/')"
+                  type="button"
+                >
+                  <img src="/src/assets/img/google.png" />
+                </button>
+                <button
+                  class="kakao_icon"
+                  onclick="window.open('https://www.kakaocorp.com/')"
+                  type="button"
+                >
+                  <img src="/src/assets/img/kakao.png" />
+                </button>
+              </div>
+            </span>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </body>
+</html>
