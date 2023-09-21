@@ -273,7 +273,7 @@
 }
 
 /* TABLET */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1199px) {
 	.section {
 		gap: 1rem 5.1rem;
 	}
@@ -289,7 +289,9 @@
 	}
 
 	.header__nav {
+		width: 76.8rem;
 		padding: 0 3.2rem;
+		margin: 0 auto;
 	}
 
 	#main {
@@ -341,7 +343,7 @@
 }
 
 /* MOBILE */
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 767px) {
 	.section {
 		display: flex;
 		flex-direction: column;
