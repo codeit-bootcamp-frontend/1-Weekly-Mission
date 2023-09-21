@@ -5,6 +5,10 @@
     box-sizing : border-box;
 }
 
+html{
+    font-size : 62.5%;
+}
+
 body{
     background: var(--linkbrary-bg, #F0F6FF);
     font-family: Pretendard;
@@ -30,7 +34,7 @@ header{
     align-items: center;
     gap : 16px;
 
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 .icon_logo{
@@ -53,7 +57,7 @@ main{
 }
 
 form{
-    font-size : 14px;
+    font-size : 1.4rem;
     display : flex;
     flex-direction: column;
     gap : 24px;
@@ -83,7 +87,7 @@ form{
 .input_box::placeholder{
     color: var(--linkbrary-gray-100, #373740);
     font-family: Pretendard;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 input:focus{
@@ -100,7 +104,7 @@ input:focus{
 
     color: var(--grey-light, #F5F5F5);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 600;
 }
 
@@ -118,7 +122,7 @@ footer{
 
 footer p{
     color: var(--linkbrary-gray-100, #373740);
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 .social_icon_box{
