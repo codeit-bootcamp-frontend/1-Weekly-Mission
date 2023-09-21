@@ -53,8 +53,7 @@
 }
 
 .service_explain {
-    max-width: 192rem;
-    width: 100%;
+    width: 99.8rem;
     margin: 0 auto;
     padding: 12.0rem 0 5.0rem 0;
     display: grid;
@@ -62,7 +61,7 @@
     gap: 1rem 15.7rem;
 }
 
-.service_explain:nth-of-type(odd) {
+.service_explain--odd {
     grid-template:
       ". img"
       "t img"
@@ -71,7 +70,7 @@
       /29.1rem 55rem;
   }
   
-.service_explain:nth-of-type(even) {
+.service_explain--even {
     grid-template:
       "img ."
       "img t"
@@ -164,7 +163,7 @@
 }
 
 @media (max-width: 1199px) and (min-width: 768px) {
-    .header {
+    .nav {
         padding: 2.0rem 3.2rem;
         margin: 0 auto;
         max-width: 86.4rem;
@@ -176,13 +175,28 @@
     }
 
     .service_explain {
+        width: 69.8rem;
         padding-top: 8rem;
-        gap: 5.1rem;
+        gap: 1rem 5.1rem;
     }
 
-    .service_explain__container {
-        width: 26.2rem;
-    }
+    .service_explain--odd {
+        grid-template:
+          ". img"
+          "t img"
+          "s img"
+          ". img"
+          /26.2rem 38.5rem;
+      }
+      
+    .service_explain--even {
+        grid-template:
+          "img ."
+          "img t"
+          "img s"
+          "img ."
+          /38.5rem 26.2rem;
+      }
 
     .service_explain__img {
         width: 38.5rem;
@@ -209,7 +223,7 @@
         width: 200px;
     }
 
-    .header {
+    .nav {
         padding: 1.3rem 3.2rem;
     }
 
@@ -226,16 +240,19 @@
         width: 30.2rem;
         height: 14.6rem;
     }
-
-    .service_explain {
-        flex-direction: column;
-        padding: 4rem 3.3rem 4.2rem;
-        gap: 2.4rem;
-    }
-
-    .service_explain__container {
+    
+    .service_explain--odd,
+    .service_explain--even {
         width: 100%;
-    }
+        margin: 0;
+        padding: 4rem 3.2rem 3.6rem;
+        grid-template:
+          "t"
+          "img"
+          "img"
+          "s";
+          gap: 2rem;
+      }
 
     .service_explain__title {
         font-size: 2.4rem;
