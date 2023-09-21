@@ -27,22 +27,19 @@ a :hover{
 
 header{
     width : 100%;
-    max-width : 1920px; /* 너비가 1920px 이상이면 요소들이 더이상 넓어지지 않도록*/
     display: flex;
     padding : 20px 200px;
-    margin : 0 auto;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    align-self: stretch;
     background: var(--linkbrary-bg, #F0F6FF);
-
     position : fixed;
     top : 0px;
+    left : 0px;
+    right : 0px;
     z-index : 1;
 }
 
 header div{
+    width : 100%;
+    max-width : 1920px; /* 너비가 1920px 이상이면 요소들이 더이상 넓어지지 않도록*/
     display: flex;
     justify-content: space-between;
     align-items: center;
