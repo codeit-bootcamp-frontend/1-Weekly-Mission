@@ -49,8 +49,8 @@ header p{
     border: 0.1rem solid var(--linkbrary-gray-20);
     border-radius: 0.8rem;
 }
-.form__sign input:focus{
-    border: var(--linkbrary-primary-color);
+.form__sign input:focus-visible{
+    outline-color: var(--linkbrary-primary-color);
 }
 .btn-sign{
     padding: 1.6rem 2rem;
