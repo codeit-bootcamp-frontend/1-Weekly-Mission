@@ -141,7 +141,7 @@ button {
 .form__input-box:focus {
   outline-color: #6D6AFE;
 }
-.form__password-show {
+.form__password-toggle {
   position: absolute;
   top: 4.7rem;
   right: 1.5rem;
