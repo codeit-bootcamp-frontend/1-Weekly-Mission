@@ -158,6 +158,7 @@ header a{ /* login button */
 }
 
 .contents_detail{
+    /* 컨텐츠 세부 설명 */
     color: #6B6B6B;
     font-family: Pretendard;
     font-size: 16px;
@@ -165,13 +166,6 @@ header a{ /* login button */
     font-weight: 500;
     line-height: 150%; /* 24px */
 }
-
-.save_grd{
-    background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-} 
 
 .contents_img{
     /* 각 컨텐츠의 그림이 들어가는 하늘색 박스 */
@@ -183,36 +177,45 @@ header a{ /* login button */
     overflow : hidden;
 }
 
+/* contents-02 : save */
+.save_grd{
+    background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} 
+
 .contents_img.save{
     display : flex;
     justify-content: center;
     align-items: center;
+    gap : 12px;
 }
 
-.cardbox{
-    display: inline-flex;
-    align-items: center;
-    gap: -12px;
-}
-
-.cardbox .card{
+.card{
     width: 244px;
     height: 239px;
     flex-shrink: 0;
     border-radius: 11px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.card_center{
+.card.left{
+    background-image: url('/assets/images/card1.png');
+}
+
+.card.center{
+    background-image: url('/assets/images/card2.png');
     position : relative;
-    width: 244px;
-    height: 239px;
     border-radius: 11px;
     border: 2px solid var(--linkbrary-primary-color, #6D6AFE);
 }
 
-.card_center .card{
-    width : 100%;
-    height : 100%;
+.card.right{
+    background-image: url('/assets/images/card3.png');
 }
 
 .down_icon{
@@ -221,6 +224,7 @@ header a{ /* login button */
     right : -15px;
 }
 
+/* contents-03 : folder */
 .folder_grd{
     background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
     background-clip: text;
@@ -235,10 +239,13 @@ header a{ /* login button */
     align-items: center;
 }
 
-.folder img{
+.folder img,
+.share img{
+    /* folder, share 컨텐츠 - 팝업 이미지 */
     width : 100%;
 }
 
+/* contents-04 : share */
 .share_grd{
     background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
     background-clip: text;
@@ -248,20 +255,14 @@ header a{ /* login button */
 
 .contents_img.share{
     padding : 121px 77px;
-    
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
     background-position : center;
     background-size : cover;
     background-repeat : no-repeat;
-
 }
 
-.share img{
-    width :100%;
-}
-
+/* contents-05 : search */
 .search_grd{
     background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
     background-clip: text;
