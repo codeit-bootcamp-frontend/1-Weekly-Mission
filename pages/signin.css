@@ -62,8 +62,7 @@ input:focus {
   outline: 0.1rem solid var(--primary, #6d6afe) !important;
 }
 
-.signin-field .text,
-.social-login .text {
+.signin-field .text, .social-login .text {
   font-size: 1.4rem;
 }
 
@@ -121,4 +120,40 @@ input:focus {
   right: 0px;
   bottom: 18px;
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding: 12rem 3.2rem 23.2rem 3.2rem;
+    gap: 3.2rem;
+  }
+
+  .regular-login {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(29rem, 40rem);
+    justify-content: center;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .signin-field {
+    width: 100%;
+  }
+
+  .social-login {
+    width: 100%;
+  }
+
+  .mobile-grid {
+    display: grid;
+    grid-template-columns: minmax(29rem, 40rem);
+    justify-content: center;
+  }
 }

@@ -122,3 +122,39 @@ input:focus {
   bottom: 18px;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  body {
+    padding: 12rem 3.2rem 23.2rem 3.2rem;
+    gap: 3.2rem;
+  }
+
+  .regular-login {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(29rem, 40rem);
+    justify-content: center;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .signup-field {
+    width: 100%;
+  }
+
+  .social-login {
+    width: 100%;
+  }
+
+  .mobile-grid {
+    display: grid;
+    grid-template-columns: minmax(29rem, 40rem);
+    justify-content: center;
+  }
+}

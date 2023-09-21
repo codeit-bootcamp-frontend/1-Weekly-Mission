@@ -221,7 +221,6 @@ footer .website {
 }
 
 @media (max-width: 1199px) {
-  
   br.pc {
     display: none;
   }
@@ -261,7 +260,6 @@ footer .website {
 }
 
 @media (max-width: 767px) {
-
   br.tablet {
     display: none;
   }
@@ -290,7 +288,6 @@ footer .website {
     line-height: 4.2rem;
     width: auto;
     height: 12.6rem;
-
   }
 
   .preview {
@@ -355,5 +352,4 @@ footer .website {
     bottom: 3.2rem;
     left: 3.2rem;
   }
-
 }
