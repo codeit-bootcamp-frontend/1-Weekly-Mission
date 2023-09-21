@@ -20,7 +20,9 @@
         gap : 24px;
     }
     .main_text{
-        padding-top : 100px;
+        display : flex;
+        flex-direction: column;
+        padding-top : 70px;
         width : 236px;
         font-size : 3.2rem;
         line-height : 4.2rem;
