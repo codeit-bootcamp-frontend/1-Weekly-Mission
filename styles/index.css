@@ -130,6 +130,11 @@ main {
   grid-area: description;
 }
 
+.content-title, .description {
+  width: 280px;
+  word-break: keep-all;
+}
+
 .landing-imgs {
   border-radius: 15px;
   width: 550px;
@@ -208,6 +213,11 @@ main {
     padding-top: 39px;
   }
 
+  .hero-title {
+    width: 500px;
+    word-break: keep-all;
+  }
+
   .hero-image {
     width: 698px;
     height: 343px;
@@ -247,6 +257,7 @@ main {
 
   .hero-title {
     font-size: 32px;
+    width: 240px;
   }
 
   .btn {
@@ -284,6 +295,7 @@ main {
 
   .description {
     font-size: 15px;
+    width: 100%;
   }
 
   .only-mobile {
