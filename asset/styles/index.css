@@ -57,23 +57,35 @@
     width: 100%;
     margin: 0 auto;
     padding: 12.0rem 0 5.0rem 0;
-    display: flex;
-    align-items: center;
+    display: grid;
     justify-content: center;
-    gap: 15.7rem;
+    gap: 1rem 15.7rem;
 }
 
-.service_explain__container {
-    width: 29.1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.0rem;
-}
+.service_explain:nth-of-type(odd) {
+    grid-template:
+      ". img"
+      "t img"
+      "s img"
+      ". img"
+      /29.1rem 55rem;
+  }
+  
+.service_explain:nth-of-type(even) {
+    grid-template:
+      "img ."
+      "img t"
+      "img s"
+      "img ."
+      /55rem 29.1rem;
+  }
+  
 
 .service_explain__title {
     font-size: 4.8rem;
     font-weight: 700;
     letter-spacing: -0.03rem;
+    grid-area: t;
 }
 
 .service_explain__subtitle {
@@ -81,6 +93,7 @@
     font-size: 1.6rem;
     font-weight: 500;
     line-height: 150%;
+    grid-area: s;
 }
 
 .service_explain__img {
@@ -88,6 +101,7 @@
     height: 45rem;
     border-radius: 1.5rem;
     background-color: var(--gray1);
+    grid-area: img;
 }
 
 #manage_your_link,
