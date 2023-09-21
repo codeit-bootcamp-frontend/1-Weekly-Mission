@@ -354,4 +354,34 @@ a {
   .mobile {
     display: block;
   }
+
+  .footer-container{
+    display: grid;
+    grid-template:
+      repeat(2, 1fr) /
+      repeat(2, 1fr);
+    grid-template-areas:
+      "center right"
+      "left .";
+    height: auto;
+    gap: 6rem 0;
+    padding: 1rem 5rem 8rem 5rem;
+  }
+
+  .footer-left{
+    grid-area: left;
+  }
+
+  .footer-center{
+    display: flex;
+    justify-content: space-between;
+    grid-area: center;
+    padding: 0;
+  }
+
+  .footer-right{
+    display: flex;
+    justify-content: flex-end;
+    grid-area: right;
+  }
 }
