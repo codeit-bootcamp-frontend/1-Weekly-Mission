@@ -69,6 +69,7 @@ section {
 input:focus {
   border: 0.15rem solid var(--Primary);
   outline: none;
+  margin-bottom: -0.15rem;
 }
 
 .pw {

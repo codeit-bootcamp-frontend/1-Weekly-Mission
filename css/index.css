@@ -1,0 +1,229 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  background-color: var(--Gray1-80);
+}
+.header__contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 20rem;
+  width: 100%;
+  height: 9.4rem;
+  max-width: 192rem;
+}
+.header__logo {
+  width: 13.3rem;
+  height: 2.4rem;
+}
+
+
+.sign {
+  display: inline-block;
+  padding: 1.6rem 2rem;
+  height: 5.4rem;
+  border-radius: 0.8rem;
+  background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--White);
+}
+.sign--smallsize {
+  width: 12.8rem;
+}
+.sign--largesize {
+  width: 35rem;
+}
+
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.main__section {
+  gap: 4rem;
+  padding: 7rem 0 0;
+}
+.main__section--background-color-blue {
+  background-color: var(--Gray1);
+}
+
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content--gap50 {
+  gap: 5rem;
+}
+.content--gap160 {
+  gap: 16rem;
+}
+.content--margin-bottom50 {
+  margin: 0 0 5rem;
+}
+.content--flex-column {
+  flex-direction: column;
+}
+
+
+.content__text {
+  text-align: center;
+  font-weight: 700;
+}
+.content__text--flex-column {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 1rem;
+}
+.content__text--largesize {
+  font-size: 6.4rem;
+}
+.content__text--mediumsize {
+  font-size: 4.8rem;
+}
+.content__text--smallsize {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 150%;
+}
+.content__text--gradient-color1 {
+  background: linear-gradient(90deg, #6d6afe, #ff9f9f);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.content__text--gradient-color2 {
+  background: linear-gradient(90deg, #fe8a8a, #a4ceff);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.content__text--gradient-color3 {
+  background: linear-gradient(270deg, #6fbaff, #ffd88b);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.content__text--gradient-color4 {
+  background: linear-gradient(270deg, #fe578f, #68e8f9);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+
+.content__imgbox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.content__imgbox--largesize {
+  width: 120rem;
+  height: 60rem;
+}
+.content__imgbox--smallsize {
+  width: 55rem;
+  height: 45rem;
+  background-color: var(--Gray1);
+  border-radius: 1.5rem;
+}
+.content__imgbox--bgimg1 {
+  position: relative;
+  background: url(../assets/sectionfirst-img.png);
+  background-position: center;
+  background-size: 170%;
+  background-repeat: no-repeat;
+}
+
+
+.content__img--mediumsize {
+  width: 62rem;
+  height: 58rem;
+}
+.content__img--smallsize {
+  width: 40rem;
+}
+.content__img--inline-flex {
+  display: inline-flex;
+  align-items: center;
+}
+.content__img--absolute {
+  position: absolute;
+  top: 5rem;
+  width: 90%;
+  border-radius: 2.5rem;
+  box-shadow: 0rem 0.4rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
+}
+.content__img--absolute2 {
+  position: absolute;
+  top: 5.5rem;
+  left: 6rem;
+}
+.content__img--gradient {
+  top: 5rem;
+  width: 90%;
+  height: 90%;
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.05) );
+}
+.content__img--background-color {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.content__img--z-index {
+  position: absolute;
+  z-index: 2;
+}
+
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28rem;
+  height: 28rem;
+}
+.card__img {
+  width: 100%;
+}
+
+
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 12rem;
+  background: var(--Black);
+}
+.footer__contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 10rem 6rem;
+  width: 100%;
+  max-width: 192rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.footer__content {
+  display: flex;
+  gap: 2rem;
+  color: var(--Gray5);
+}
+
+.footer__link--color {
+  color: var(--White);
+}
+
+.footer__sns {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+}

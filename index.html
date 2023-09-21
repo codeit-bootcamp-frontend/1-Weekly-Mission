@@ -11,58 +11,59 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
     />
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/landing.css" />
+    <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
     <header class="header">
-      <nav class="header-content">
-        <a class="header-logo" href="/">
+      <nav class="header__contents">
+        <a class="header__logo" href="/">
           <img src="assets/logo.svg" alt="홈화면으로 연결되는 로고이미지" />
         </a>
-        <a class="signin" href="/signin.html">로그인</a>
+        <a class="sign sign--smallsize" href="/signin.html">로그인</a>
       </nav>
     </header>
     <main class="main">
-      <section class="section-first">
-        <div class="first-content">
-          <h1>
-            <span>세상의 모든 정보</span>를<br />쉽게 저장하고 관리해 보세요
+      <section class="main__section main__section--background-color-blue content--margin-bottom50">
+        <div class="content content--flex-column content--gap50">
+          <h1 class="content__text content__text--largesize">
+            <span class="content__text--gradient-color1">세상의 모든 정보</span>를<br>쉽게 저장하고 관리해 보세요
           </h1>
-          <a class="signup" href="/signup.html">링크 추가하기</a>
-          <div class="first-img-container">
+          <a class="sign sign--largesize sign--margin50" href="/signup.html">링크 추가하기</a>
+          <div class="content__imgbox content__imgbox--largesize">
+            <div class="content__img--gradient content__img--z-index"></div>
             <img
-              class="first-img"
+              class="content__img--absolute"
               src="assets/sectionfirst-img.png"
               alt="링크검색기능 예시이미지"
             />
           </div>
         </div>
       </section>
-      <section class="section-second">
-        <div class="second-content">
-          <div class="second-text">
-            <h2><span>원하는 링크</span>를<br />저장하세요</h2>
-            <p>
+      <section class="main__section">
+        <div class="content content--gap160 content--margin-bottom50">
+          <div class="content__text content__text--flex-column">
+            <h2 class="content__text--mediumsize"><span class="content__text--gradient-color2">원하는 링크</span>를<br />저장하세요</h2>
+            <p class="content__text--smallsize">
               나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />사고 싶은 옷,
               기억하고 싶은 모든 것을<br />한 공간에 저장하세요.
             </p>
           </div>
-          <div class="second-img-container">
-            <div class="second-img">
+          <div class="content__imgbox content__imgbox--smallsize">
+            <div class="content__img--inline-flex">
               <div class="card">
-                <img
+                <img class="card__img"
                   src="assets/sectionsecond-card (1).png"
                   alt="저장된 링크 예시 이미지1"
                 />
               </div>
               <div class="card">
-                <img
+                <img class="card__img"
                   src="assets/sectionsecond-card (2).png"
                   alt="저장된 링크 예시 이미지2"
                 />
               </div>
               <div class="card">
-                <img
+                <img class="card__img"
                   src="assets/sectionsecond-card (3).png"
                   alt="저장된 링크 예시 이미지3"
                 />
@@ -71,75 +72,74 @@
           </div>
         </div>
       </section>
-      <section class="section-third">
-        <div class="third-content">
-          <div class="third-img">
-            <img
+      <section class="main__section">
+        <div class="content content--gap160 content--margin-bottom50">
+          <div class="content__imgbox content__imgbox--smallsize">
+            <img class="content__img--smallsize"
               src="assets/sectionthird-edit.png"
               alt="링크를 저장할 폴더 예시이미지"
             />
           </div>
-          <div class="third-text">
-            <h2>링크를 폴더로<br /><span>관리</span>하세요</h2>
-            <p>
+          <div class="content__text content__text--flex-column">
+            <h2 class="content__text--mediumsize">링크를 폴더로<br /><span class="content__text--gradient-color2">관리</span>하세요</h2>
+            <p class="content__text--smallsize">
               나만의 폴더를 무제한으로 만들고<br />
               다양하게 활용할 수 있습니다.
             </p>
           </div>
         </div>
       </section>
-      <section class="section-forth">
-        <div class="forth-content">
-          <div class="forth-text">
-            <h2>저장한 링크를<br /><span>공유</span>해 보세요.</h2>
-            <p>
+      <section class="main__section">
+        <div class="content content--gap160 content--margin-bottom50">
+          <div class="content__text content__text--flex-column">
+            <h2 class="content__text--mediumsize">저장한 링크를<br /><span class="content__text--gradient-color3">공유</span>해 보세요</h2>
+            <p class="content__text--smallsize">
               여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
               가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />공유해 보세요.
             </p>
           </div>
-          <div class="forth-img">
-            <div>
-              <img
+          <div class="content__imgbox content__imgbox--smallsize content__imgbox--bgimg1">
+            <div class="content__img--background-color"></div>  
+            <img class="content__img--smallsize content__img--z-index"
                 src="assets/sectionforth-share.png"
                 alt="폴더를 공유할 수 있는 기능 예시이미지"
               />
-            </div>
           </div>
         </div>
       </section>
-      <section class="section-fifth">
-        <div class="fifth-content">
-          <div class="fifth-img">
-            <img
+      <section class="main__section">
+        <div class="content content--gap160 content--margin-bottom50">
+          <div class="content__imgbox content__imgbox--smallsize">
+            <img class="content__img--mediumsize content__img--absolute2"
               src="assets/sectionfifth-img.png"
               alt="링크를 검색할 수 있는 기능 예시이미지"
             />
           </div>
-          <div class="fifth-text">
-            <h2>저장한 링크를<br /><span>검색</span>해 보세요</h2>
-            <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+          <div class="content__text content__text--flex-column">
+            <h2 class="content__text--mediumsize">저장한 링크를<br /><span class="content__text--gradient-color4">검색</span>해 보세요</h2>
+            <p class="content__text--smallsize">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
           </div>
         </div>
       </section>
     </main>
     <footer class="footer">
-      <div class="footer-content">
-        <div>©codeit - 2023</div>
-        <div>
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/faq">FAQ</a>
+      <div class="footer__contents">
+        <div class="footer__content">©codeit - 2023</div>
+        <div class="footer__content">
+          <a class="footer__link--color" href="/privacy">Privacy Policy</a>
+          <a class="footer__link--color" href="/faq">FAQ</a>
         </div>
-        <div>
-          <a class="sns" target="_blank" href="https://www.facebook.com">
+        <div class="footer__content">
+          <a class="footer__sns" target="_blank" href="https://www.facebook.com">
             <img src="assets/facebook.svg" alt="페이스북 페이지로 연결" />
           </a>
-          <a class="sns" target="_blank" href="https://twitter.com">
+          <a class="footer__sns" target="_blank" href="https://twitter.com">
             <img src="assets/twitter.svg" alt="트위터 페이지로 연결" />
           </a>
-          <a class="sns" target="_blank" href="https://www.youtube.com">
+          <a class="footer__sns" target="_blank" href="https://www.youtube.com">
             <img src="assets/youtube.svg" alt="유튜브 페이지로 연결" />
           </a>
-          <a class="sns" target="_blank" href="https://www.instargram.com">
+          <a class="footer__sns" target="_blank" href="https://www.instargram.com">
             <img src="assets/instagram.svg" alt="인스타그램 페이지로 연결"
           /></a>
         </div>
