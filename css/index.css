@@ -9,14 +9,11 @@ body{
     margin: 0;
     background-color: #F0F6FF;
 }
-main{
-    margin-top: 4rem;
-}
 
 header {
     display: flex;
     justify-content: center;
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     background-color: #F0F6FF;
