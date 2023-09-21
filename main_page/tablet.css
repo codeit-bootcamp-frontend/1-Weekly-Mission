@@ -43,8 +43,14 @@
         width: 385px;
         height: 315px;
     }
-    .contents_box.save,
-    .contents_box.share{
+    .contents_img.folder{
+        padding-top : 80px;
+    }
+    .contents_img.share{
+        padding-top : 90px;
+    }
+    .save,
+    .share{
         grid-template-columns : 262px 31px 385px;
         grid-template-areas: 
         ". . img"
@@ -53,8 +59,8 @@
         ". . img"
         ;
     }
-    .contents_box.folder,
-    .contents_box.search{
+    .folder,
+    .search{
         grid-template-columns : 385px 31px 262px;
         grid-template-areas: 
         "img . ."

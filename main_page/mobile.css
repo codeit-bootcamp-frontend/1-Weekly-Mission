@@ -31,8 +31,31 @@
         width : 200px;
     }
     .img_box{
+        width : 100%;
         margin : 20px 32px 0px;
         height : 200px;
         background-size: cover;
+    }
+    /* contents */
+    .contents_box{
+        padding : 40px 32px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas :
+        "text"
+        "img"
+        "detail"
+        ;
+        gap : 20px;
+    }
+    .contents_text{
+        font-size : 2.4rem;
+    }
+    .contents_detail{
+        font-size : 1.5rem;
+        width : 100%;
+    }
+    .contents_img{
+        width : 100%;
     }
 }
