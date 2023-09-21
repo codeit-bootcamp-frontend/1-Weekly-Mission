@@ -11,25 +11,18 @@ body {
 }
 
 header {
-  display: flex;
-  padding: 20px 200px;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  align-self: stretch;
   background: var(--linkbrary-bg, #f0f6ff);
   position: fixed;
-  width: 100%;
-  height: 94px;
-  top: 0;
   z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* 가로 방향 가운데 정렬 */
 }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
+  justify-content: space-between; /*가로 정렬*/
+  align-items: center; /*세로 정렬*/
 }
 
 .logo {
@@ -605,4 +598,31 @@ header {
 .footer .footer-content .section .section_3 .icon {
   width: 20px;
   height: 20px;
+}
+
+/* mobile */
+
+@media (min-width: 375px) {
+  .header-content {
+    width: 100%;
+    margin: 20px 32px;
+  }
+}
+
+/* Tablet */
+
+@media (min-width: 863px) and (max-width: 1199px) {
+  .header-content {
+    width: 799px;
+    margin: 20px auto;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1200px) {
+  .header-content {
+    width: 100%;
+    margin: 20px 200px;
+  }
 }
