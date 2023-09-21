@@ -161,7 +161,7 @@
 	right: 0;
 	height: 4.6rem;
 	width: 4.6rem;
-	background: url("public/icons/link.svg") no-repeat 0px 0px;
+	background: url("/public/icons/link.svg") no-repeat 0px 0px;
 	content: "";
 }
 
@@ -197,7 +197,7 @@
 	border-radius: 2.5rem;
 	box-shadow: 0rem 0.4rem 2.5rem 0rem rgba(0, 0, 0, 0.08); /* 0 4px 25px 0 */
 	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-		url("public/images/main-img.png") no-repeat center/93.6rem; /* 936px */
+		url("/public/images/main-img.png") no-repeat center/93.6rem; /* 936px */
 }
 
 .share__title--gradient {
