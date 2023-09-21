@@ -23,44 +23,40 @@ body {
 	min-height: -webkit-fill-available;
 }
 
-html {
-	font-size: 62.5%; /* 10px */
-}
-
 /* 버튼 기본 스타일 */
 .button {
 	display: flex;
-	width: 12.8rem;
-	height: 5.4rem;
-	padding: 1.6rem 2rem;
+	width: 8rem;
+	height: 3.375rem;
+	padding: 1rem 1.25rem;
 	border: 0;
 	background: var(--button-bg-purpleblue-to-skyblue);
 	color: var(--button-grey-light);
 	justify-content: center;
 	align-items: center;
-	gap: 1rem;
-	border-radius: 0.8rem;
+	gap: 0.625rem;
+	border-radius: 0.5rem;
 	font-family: Pretendard;
 	font-weight: 600;
 	cursor: pointer;
-	font-size: 1.8rem;
+	font-size: 1.125rem;
 }
-@media (max-width: 76.7rem) {
+@media (max-width: 47.9375rem) {
 	.button {
-		width: 8rem;
-		height: 3.7rem;
-		padding: 1rem 1.6rem;
-		font-size: 1.4rem;
+		width: 5rem;
+		height: 2.3125rem;
+		padding: 0.625rem 1rem;
+		font-size: 0.875rem;
 	}
 }
 
 /* 버튼 변형 스타일 */
 .button--large {
-	width: 35rem;
+	width: 21.875rem;
 }
-@media (max-width: 76.7rem) {
+@media (max-width: 47.9375rem) {
 	.button--large {
-		width: 20rem;
+		width: 12.5rem;
 	}
 }
 
@@ -72,7 +68,7 @@ html {
 .pc-br {
 	display: block;
 }
-@media (max-width: 119.9rem) {
+@media (max-width: 74.9375rem) {
 	.pc-br,
 	.mobile-br {
 		display: none;
@@ -81,7 +77,7 @@ html {
 		display: block;
 	}
 }
-@media (max-width: 76.7rem) {
+@media (max-width: 47.9375rem) {
 	.pc-br,
 	.tablet-br {
 		display: none;

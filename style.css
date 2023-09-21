@@ -3,62 +3,62 @@
 	display: flex;
 	position: sticky;
 	top: 0;
-	padding: 2rem 0;
+	padding: 1.25rem 0;
 	background: var(--linkbrary-zircon);
 	justify-content: center;
 	align-items: center;
-	gap: 0.8rem;
+	gap: 0.5rem;
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.header {
-		padding: 1.3rem 0;
+		padding: 0.8125rem 0;
 	}
 }
 .header__inner {
 	display: flex;
-	max-width: 152rem;
-	flex: 1 0 79.9rem;
+	max-width: 95rem;
+	flex: 1 0 49.9375rem;
 	justify-content: space-between;
 	align-items: center;
 }
-@media (max-width: 119.9rem) {
+@media (max-width: 74.9375rem) {
 	.header__inner {
-		max-width: calc(100% - 6.4rem);
-		flex: 1 0 79.9rem;
+		max-width: calc(100% - 4rem);
+		flex: 1 0 49.9375rem;
 	}
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.header__inner {
-		flex: 1 0 32.6rem;
+		flex: 1 0 20.375rem;
 	}
 }
 .header::before,
 .header::after {
 	content: "";
 	flex-grow: 1;
-	max-width: 20rem;
+	max-width: 12.5rem;
 }
-@media screen and (max-width: 119.9rem) {
+@media screen and (max-width: 74.9375rem) {
 	.header::before,
 	.header::after {
-		flex: 1 0 3.2rem;
+		flex: 1 0 2rem;
 		max-width: none;
 	}
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.header::before,
 	.header::after {
 		display: none;
 	}
 }
 .header__logo {
-	width: 13.3rem;
-	height: 2.4rem;
+	width: 8.3125rem;
+	height: 1.5rem;
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.header__logo {
-		width: 8.8rem;
-		height: 1.6rem;
+		width: 5.5rem;
+		height: 1rem;
 	}
 }
 
@@ -102,20 +102,20 @@
 }
 .intro {
 	display: flex;
-	padding: 7rem 0 0;
+	padding: 4.375rem 0 0;
 	flex-direction: column;
 	align-items: center;
-	gap: 4rem;
+	gap: 2.5rem;
 }
-@media screen and (max-width: 119.9rem) {
+@media screen and (max-width: 74.9375rem) {
 	.intro {
-		padding: 3.9rem 25rem 0rem;
+		padding: 2.4375rem 15.625rem 0rem;
 	}
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.intro {
-		padding: 2.8rem 3.2rem 0;
-		gap: 2.4rem;
+		padding: 1.75rem 2rem 0;
+		gap: 1.5rem;
 	}
 }
 
@@ -124,76 +124,76 @@
 	text-align: center;
 	white-space: nowrap;
 	font-family: Pretendard;
-	font-size: 6.4rem;
+	font-size: 4rem;
 	font-weight: 700;
-	line-height: 8rem; /* 125% */
+	line-height: 5rem; /* 125% */
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.intro__title {
-		font-size: 3.2rem;
-		line-height: 4.2rem;
+		font-size: 2rem;
+		line-height: 2.625rem;
 	}
 }
 
 .intro__image {
-	width: 120rem;
-	height: 59rem;
+	width: 75rem;
+	height: 36.875rem;
 }
-@media screen and (max-width: 119.9rem) {
+@media screen and (max-width: 74.9375rem) {
 	.intro__image {
-		width: 69.8rem;
-		height: 34.3rem;
+		width: 43.625rem;
+		height: 21.4375rem;
 		flex-shrink: 0;
 	}
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.intro__image {
 		width: 100%;
-		flex: 1 0 16rem;
+		flex: 1 0 10rem;
 	}
 }
 
 .background-white {
-	padding: 7rem 0 12rem;
+	padding: 4.375rem 0 7.5rem;
 	background-color: var(--linkbrary-white);
 }
-@media screen and (max-width: 119.9rem) {
+@media screen and (max-width: 74.9375rem) {
 	.background-white {
-		padding: 3rem 0 12rem;
+		padding: 1.875rem 0 7.5rem;
 	}
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.background-white {
-		padding: 4rem 0 4rem;
+		padding: 2.5rem 0 2.5rem;
 	}
 }
 
 .article {
 	display: grid;
 	margin: 0 auto;
-	padding: 5rem 0;
-	gap: 15.7rem;
-	grid-template-columns: 29.1rem 55rem;
+	padding: 3.125rem 0;
+	gap: 9.8125rem;
+	grid-template-columns: 18.1875rem 34.375rem;
 	justify-content: center;
 	align-items: center;
-	max-width: 192rem;
+	max-width: 120rem;
 }
-@media screen and (max-width: 119.9rem) {
+@media screen and (max-width: 74.9375rem) {
 	.article {
-		padding: 5rem 25rem 5rem;
-		gap: 5.1rem;
-		grid-template-columns: 26.2rem 38.5rem;
+		padding: 3.125rem 15.625rem 3.125rem;
+		gap: 3.1875rem;
+		grid-template-columns: 16.375rem 24.0625rem;
 	}
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.article {
 		display: grid;
-		padding: 4rem 3.2rem;
+		padding: 2.5rem 2rem;
 		grid-template-areas:
 			"article__title"
 			"article__image"
 			"article__description";
-		gap: 1.6rem;
+		gap: 1rem;
 		justify-content: center;
 		grid-template-columns: none;
 	}
@@ -201,30 +201,30 @@
 
 /* 짝수 아티클은 이미지 <-> 글 순서 변경 */
 .article--even {
-	grid-template-columns: 55rem 29.1rem;
+	grid-template-columns: 34.375rem 18.1875rem;
 }
-@media screen and (max-width: 119.9rem) {
+@media screen and (max-width: 74.9375rem) {
 	.article--even {
-		grid-template-columns: 38.5rem 26.2rem;
+		grid-template-columns: 24.0625rem 16.375rem;
 	}
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.article--even {
 		grid-template-columns: none;
 	}
 }
 .article__image {
-	width: 55rem;
-	height: 45rem;
+	width: 100%;
+	height: 28.125rem;
 }
 
-@media screen and (max-width: 119.9rem) {
+@media screen and (max-width: 74.9375rem) {
 	.article__image {
-		width: 38.5rem;
-		height: 31.5rem;
+		width: 24.0625rem;
+		height: 19.6875rem;
 	}
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.article__image {
 		width: 100%;
 		height: auto;
@@ -236,9 +236,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 1rem;
+	gap: 0.625rem;
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.article__text {
 		display: contents;
 	}
@@ -246,15 +246,15 @@
 
 .article__title {
 	color: #000;
-	letter-spacing: -0.0299rem;
+	letter-spacing: -0.0187rem;
 	font-family: Pretendard;
-	font-size: 4.8rem;
+	font-size: 3rem;
 	font-weight: 700;
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.article__title {
-		padding-bottom: 0.4rem;
-		font-size: 2.4rem;
+		padding-bottom: 0.25rem;
+		font-size: 1.5rem;
 		grid-area: article__title;
 	}
 }
@@ -262,13 +262,13 @@
 .article__description {
 	color: #6b6b6b;
 	font-family: Pretendard;
-	font-size: 1.6rem;
+	font-size: 1rem;
 	font-weight: 500;
-	line-height: 150%; /* 2.4rem */
+	line-height: 150%; /* 1.5rem */
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.article__description {
-		font-size: 1.5rem;
+		font-size: 0.9375rem;
 		word-break: keep-all;
 		grid-area: article__description;
 	}
@@ -277,20 +277,20 @@
 /* 푸터 */
 .footer {
 	display: flex;
-	padding: 3.2rem 10.4rem 6.4rem;
+	padding: 2rem 6.5rem 4rem;
 	background: var(--the-julge-black);
 	justify-content: space-between;
 	align-items: flex-start;
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.footer {
 		display: grid;
-		height: 16rem;
-		padding: 3.2rem 3.2rem;
+		height: 10rem;
+		padding: 2rem 2rem;
 		grid-template-areas:
 			"footer__support footer__social"
 			"footer__company .";
-		row-gap: 6rem;
+		row-gap: 3.75rem;
 	}
 }
 
@@ -298,11 +298,11 @@
 	color: #676767;
 	text-align: center;
 	font-family: Arial;
-	font-size: 1.6rem;
+	font-size: 1rem;
 	font-weight: 400;
-	min-width: 10.5rem;
+	min-width: 6.5625rem;
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.footer__company {
 		text-align: left;
 		grid-area: footer__company;
@@ -312,9 +312,9 @@
 .footer__support {
 	display: flex;
 	align-items: flex-start;
-	gap: 3rem;
+	gap: 1.875rem;
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.footer__support {
 		grid-area: footer__support;
 	}
@@ -324,15 +324,15 @@
 	color: #cfcfcf;
 	font-family: Arial;
 	font-weight: 400;
-	font-size: 1.6rem;
+	font-size: 1rem;
 }
 .footer__social {
 	display: flex;
 	align-items: flex-start;
-	gap: 1.2rem;
-	min-width: 11.6rem;
+	gap: 0.75rem;
+	min-width: 7.25rem;
 }
-@media screen and (max-width: 76.7rem) {
+@media screen and (max-width: 47.9375rem) {
 	.footer__social {
 		grid-area: footer__social;
 	}
