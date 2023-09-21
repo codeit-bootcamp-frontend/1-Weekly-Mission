@@ -39,14 +39,14 @@ button.login{
     align-items: center;
     gap: 4rem;
 }
-.card_head h1{
+.card_head__title{
     text-align: center;
     font-family: Pretendard;
     font-size: 5rem;
     font-weight: 700;
     line-height: 7rem;
 }
-.card_head span{
+.card_head--highlight{
     background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -64,7 +64,7 @@ button.addlink{
     font-weight: 600;
 }
 
-.card_head img{
+.card_head__img{
     width: 111.8rem;
     height: 67rem;
     margin : 0;
@@ -85,7 +85,7 @@ button.addlink{
     padding-top: 7rem;
 }
 
-.cards h2{
+.card__title{
     margin: 0;
     font-family: Pretendard;
     font-size: 4.8rem;
@@ -93,14 +93,14 @@ button.addlink{
     line-height: normal;
 }
 
-.cards p{
+.card__description{
     color: #6B6B6B;
     font-family: Pretendard;
     font-size: 1.6rem;
     font-weight: 500;
     line-height: 150%;
 }
-.cards img{
+.card__img{
     width: 55rem;
     height: 45rem;
     border: none;
@@ -159,7 +159,7 @@ footer .since_codeit{
     display: flex;
     gap: 1.3rem;
 }
-.extra_sites a{
+.extra_sites__link{
     color: #CFCFCF;
     text-decoration: none;
     font-family: Arial;
