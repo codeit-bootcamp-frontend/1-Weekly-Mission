@@ -289,7 +289,7 @@ main {
   .only-mobile {
     display: inline;
   }
-
+  
   .footer-box {
     flex-direction: column;
     flex-wrap: wrap;
@@ -309,5 +309,4 @@ main {
     width: 50%;
     justify-content: flex-end;
   }
-
 }
