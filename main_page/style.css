@@ -30,6 +30,7 @@ header{
     display: flex;
     padding : 20px 200px;
     background: var(--linkbrary-bg, #F0F6FF);
+    justify-content: center;
     position : fixed;
     top : 0px;
     left : 0px;
