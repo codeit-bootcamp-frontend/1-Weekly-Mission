@@ -1,6 +1,6 @@
 .auth {
 	display: flex;
-	padding: 14.875rem 2rem 0;
+	padding: 14.875rem 2rem;
 	background-color: var(--linkbrary-zircon);
 	justify-content: center;
 }
