@@ -1,3 +1,11 @@
+br.tablet {
+  display: none;
+}
+
+br.mobile {
+  display: none;
+}
+
 .button {
   padding: 1.6rem 2rem;
   justify-content: center;
@@ -24,14 +32,13 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-self: stretch;
   padding: 2rem 20rem;
   background: var(--gray-five);
   position: sticky;
   top: 0;
 }
 
-nav div {
+nav .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,9 +74,11 @@ nav .button {
   font-weight: 700;
   line-height: 8rem; /* 125% */
   margin: 0;
+  width: 70.8rem;
+  height: 16rem;
 }
 
-.title .highlight {
+.title .gra-blue-to-pink {
   background: var(--gra-blue-to-pink);
   background-clip: text;
   -webkit-background-clip: text;
@@ -204,4 +213,43 @@ footer .website {
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
+}
+
+@media (max-width: 1199px) {
+  br.pc {
+    display: none;
+  }
+  
+  br.tablet {
+    display: inline;
+  }
+
+  .title {
+    width: 47.2rem;
+    height: 24rem;
+  }
+
+  .preview {
+    padding: 3.9rem 25rem 0 25.1rem;
+    margin-bottom: 8rem;
+  }
+  
+  .preview img {
+    width: 69.8rem;
+    height: 34.3rem;
+  }
+
+  .content {
+    padding: 5rem 25rem 5rem 25.1rem;
+    gap: 0 5.1rem;
+  }
+
+  .content img {
+    width: 38.5rem;
+    height: 31.5rem;
+  }
+
+  .content .text {
+    width: 26.2rem;
+  }
 }
