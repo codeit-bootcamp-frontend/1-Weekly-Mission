@@ -118,8 +118,6 @@ header {
 }
 
 .container_1 .img {
-  width: 1118px;
-  height: 706.956px;
   flex-shrink: 0;
   border-radius: 25px;
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
@@ -135,8 +133,6 @@ header {
       #f0f6ff 94.76%
     ),
     url("assets/img.png");
-
-  background-size: 1118px 706.956px;
 }
 
 .container_1 .img .gradation {
@@ -618,11 +614,35 @@ header {
   }
 }
 
+@media (min-width: 768px) {
+  .container_1 .img-section {
+    width: 698px;
+    height: 343px;
+  }
+
+  .container_1 .img {
+    width: 650.303px;
+    height: 410.993px;
+    background-size: 650.303px 410.993px;
+  }
+}
+
 /* Desktop */
 
 @media (min-width: 1200px) {
   .header-content {
     width: 100%;
     margin: 20px 200px;
+  }
+
+  .container_1 .img-section {
+    width: 1200px;
+    height: 590px;
+  }
+
+  .container_1 .img {
+    width: 1118px;
+    height: 706.956px;
+    background-size: 1118px 706.956px;
   }
 }
