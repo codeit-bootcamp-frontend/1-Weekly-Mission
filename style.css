@@ -213,7 +213,14 @@ a {
   gap: 12px;
 }
 
-@media (max-width: 1000px) {
+/* 반응형 Tablet 사이즈 */
+@media (max-width: 1199px) {
+  nav {
+    padding: 40px 32px;
+  }
+}
+
+@media (max-width: 767px) {
 
   nav {
     padding: 10px 0.5rem;
