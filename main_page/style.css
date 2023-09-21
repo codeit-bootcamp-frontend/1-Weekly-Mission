@@ -1,6 +1,5 @@
-@import "/reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
+@import "../assets/reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
 *{
     box-sizing : border-box;
 }
