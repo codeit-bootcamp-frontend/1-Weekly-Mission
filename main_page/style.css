@@ -128,19 +128,36 @@ header a{ /* login button */
     width : 100%;
     max-width : 998px;
     margin : 0 auto;
-    display: flex;
     padding : 50px 10px;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-rows : repeat(4, 1fr);
+    gap : 10px;
+}
+
+.contents_box.save,
+.contents_box.share{
+    grid-template-columns : 30% 15% 55%;
+    grid-template-areas: 
+    ". . img"
+    "text . img"
+    "detail . img"
+    ". . img"
+    ;
+}
+
+.contents_box.folder,
+.contents_box.search{
+    grid-template-columns : 55% 15% 30%;
+    grid-template-areas: 
+    "img . ."
+    "img . text"
+    "img . detail"
+    "img . ."
+    ;
 }
 
 .contents_text{
-    display: flex;
-    width: 291px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-
+    grid-area : text;
     font-family: Pretendard;
     font-size: 4.8rem;
     font-style: normal;
@@ -151,6 +168,7 @@ header a{ /* login button */
 
 .contents_detail{
     /* 컨텐츠 세부 설명 */
+    grid-area : detail;
     color: #6B6B6B;
     font-family: Pretendard;
     font-size: 1.6rem;
@@ -161,7 +179,7 @@ header a{ /* login button */
 
 .contents_img{
     /* 각 컨텐츠의 그림이 들어가는 하늘색 박스 */
-    width : 55%;
+    grid-area : img;
     max-width : 550px;
     height : 450px;
     border-radius : 15px;
