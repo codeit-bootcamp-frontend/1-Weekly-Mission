@@ -175,6 +175,8 @@ header a{ /* login button */
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 24px */
+    word-break: keep-all;
+    width : 277px;
 }
 
 .contents_img{
