@@ -11,14 +11,16 @@
       <main class="auth">
         <div class="auth__header">
           <div class="auth__logo">
-            <a href="/"
+            <a href="/pages/main.html"
               ><img src="/public/icons/linkbrary.svg" alt="링크브러리 로고"
             /></a>
-            <h1 class="a11y">링크브러리 회원가입</h1>
+            <h1 class="a11y">링크브러리 로그인</h1>
           </div>
           <div class="auth__redirect">
-            <span>이미 회원이신가요?</span>
-            <a href="/signin.html" class="auth__redirect-link">로그인 하기</a>
+            <span>회원이 아니신가요?</span>
+            <a href="/pages/signup.html" class="auth__redirect-link">
+              회원 가입하기
+            </a>
           </div>
         </div>
 
@@ -26,7 +28,7 @@
           <div class="form__inputs">
             <div class="form__input">
               <label class="form__input-text"
-                >이메일<br />
+                >이메일 <br />
                 <input
                   type="email"
                   placeholder="codeit@codeit.com"
@@ -36,20 +38,7 @@
             </div>
             <div class="form__input">
               <label class="form__input-text">
-                비밀번호<br />
-                <input
-                  type="password"
-                  placeholder="• • • • • • • •"
-                  class="form__input-box form__password"
-                />
-                <a class="form__password-show"
-                  ><img src="/public/icons/eye-off.svg" alt="비밀번호 표시"
-                /></a>
-              </label>
-            </div>
-            <div class="form__input">
-              <label class="form__input-text">
-                비밀번호 확인<br />
+                비밀번호 <br />
                 <input
                   type="password"
                   placeholder="• • • • • • • •"
@@ -61,12 +50,12 @@
               </label>
             </div>
           </div>
-          <input type="submit" value="회원가입" class="button" />
+          <input type="submit" value="로그인" class="button" />
         </form>
 
         <div class="auth__social">
           <div class="auth__social-text">
-            <span>다른 방식으로 가입하기</span>
+            <span>소셜 로그인</span>
           </div>
           <div class="auth__social-logos">
             <a
