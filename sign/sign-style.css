@@ -70,6 +70,13 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 24px;
+}
+
+.sign-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
     color: #000;
     font-size: 14px;
@@ -90,7 +97,7 @@ main {
     border: 1px solid #6D7CCD;
 }
 
-.sign-password-form {
+.sign-input.password {
     position: relative;
 }
 
