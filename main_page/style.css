@@ -48,8 +48,7 @@ header div{
     align-self: stretch;
 }
 
-header .btn,
-.main_content a{ /* click button */
+.blue_btn{ /* click button */
     display: flex;
     padding : 16px 20px;
     justify-content: center;
@@ -133,10 +132,7 @@ header a{ /* login button */
     background-size : contain;
 }
 
-.save_content,
-.folder_content,
-.share_content,
-.search_content{
+.contents_box{
     width : 100%;
     max-width : 998px;
     margin : 0 auto;
@@ -146,10 +142,7 @@ header a{ /* login button */
     align-items: center;
 }
 
-.save_text,
-.folder_text,
-.share_text,
-.search_text{
+.contents_text{
     display: flex;
     width: 291px;
     flex-direction: column;
@@ -164,7 +157,7 @@ header a{ /* login button */
     letter-spacing: -0.3px;
 }
 
-.detail{
+.contents_detail{
     color: #6B6B6B;
     font-family: Pretendard;
     font-size: 16px;
@@ -180,16 +173,17 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 } 
 
-.save_cards{
-    width: 55%;
+.contents_img{
+    /* 각 컨텐츠의 그림이 들어가는 하늘색 박스 */
+    width : 55%;
     max-width : 550px;
-    height: 450px;
-    border-radius: 15px;
+    height : 450px;
+    border-radius : 15px;
     background: #F0F6FF;
+    overflow : hidden;
+}
 
-    white-space: nowrap;
-    overflow: hidden;
-
+.contents_img.save{
     display : flex;
     justify-content: center;
     align-items: center;
@@ -234,20 +228,15 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 }
 
-.folder_img{
+.contents_img.folder{
     display: flex;
-    width: 55%;
-    max-width : 550px;
     padding: 114px 68px 66px 68px;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
-    background: #F0F6FF;
 }
 
-.folder_img img{
+.folder img{
     width : 100%;
-    height : 100%;
 }
 
 .share_grd{
@@ -257,13 +246,9 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 }
 
-.share_img{
-    width: 55%;
-    max-width : 550px;
-    flex-shrink: 0;
+.contents_img.share{
     padding : 121px 77px;
     
-    border-radius: 25px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
@@ -273,7 +258,7 @@ header a{ /* login button */
 
 }
 
-.share_img img{
+.share img{
     width :100%;
 }
 
@@ -284,19 +269,12 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 }
 
-.search_img{
-    width: 55%;
-    max-width : 550px;
-    height: 450px;
-    border-radius: 15px;
-    background: #F0F6FF;
+.contents_img.search{
     padding-top : 55px;
     padding-left : 60px;
-
-    overflow : hidden;
 }
 
-.search_img img{
+.search img{
     width: 550px;
     flex-shrink: 0;
     border-radius: 15px;
