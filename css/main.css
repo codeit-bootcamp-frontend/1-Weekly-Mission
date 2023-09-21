@@ -64,11 +64,6 @@ button {
   margin-left: 0.5rem;
 }
 
-@media screen and (max-width: 1199px) {
-  .gnb__inner {
-    padding: 2rem 3.2rem;
-  }
-}
 .footer {
   width: 100%;
   background-color: #111322;
@@ -184,6 +179,7 @@ button {
   font-size: 6.4rem;
   font-weight: 700;
   line-height: 1.25;
+  word-break: keep-all;
 }
 .main-section__title--grad {
   background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
@@ -338,6 +334,23 @@ button {
   box-shadow: 0 0.4rem 2.5rem 0 rgba(0, 0, 0, 0.08);
 }
 
+@media screen and (max-width: 1199px) {
+  .main-section__title {
+    width: 47.5rem;
+  }
+  .main-section__frame {
+    width: 65rem;
+    height: 33rem;
+  }
+  .main-section__img {
+    width: 65rem;
+    height: 38.3rem;
+  }
+  .main-section__dim {
+    width: 65rem;
+    height: 37rem;
+  }
+}
 .auth {
   display: flex;
   flex-direction: column;
