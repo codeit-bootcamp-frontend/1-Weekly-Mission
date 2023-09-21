@@ -1,7 +1,3 @@
-header {
-  background: #f0f6ff;
-}
-
 nav {
   display: flex;
   position: fixed;
@@ -25,6 +21,7 @@ nav {
 .intro-section {
   display: flex;
   padding: 16.4rem 36rem 0;
+  background: #f0f6ff;
   flex-direction: column;
   align-items: center;
   gap: 4rem;
@@ -170,6 +167,7 @@ footer {
   gap: 12px;
 }
 
+.mobile,
 .mobile-only {
   display: none;
 }
@@ -177,8 +175,7 @@ footer {
 /* Tablet Size */
 @media (max-width: 1199px) {
   .nav {
-    padding-left: 20rem;
-    padding-right: 20rem;
+    display: flex;
   }
 
   .intro-section {
@@ -291,7 +288,8 @@ footer {
    }
 
    .name,
-   .option {
+   .option,
+   .text {
     display: none;
    }
 
@@ -299,5 +297,23 @@ footer {
     display: flex;
     flex-direction: column-reverse;
     gap: 6rem;
+   }
+
+   .mobile {
+    display: flex;
+    font-size: 1.5rem;
+    word-break: break-all;
+   }
+
+   .sectionArea.right {
+    flex-direction: column;
+   }
+
+   .sectionArea.right>:nth-child(1) {
+    order: 2;
+   }
+
+   .sectionArea.right>:nth-child(2) {
+    order: 3;
    }
 }

@@ -119,7 +119,7 @@ input:focus {
 /* social login */
 .social.border {
     display: flex;
-    padding: 12px 24px;
+    padding: 1.2rem 2.4rem;
     border: 1px solid var(--grayCC);
     justify-content:space-between;
     align-items: center;
@@ -151,9 +151,9 @@ input:focus {
 /* Mobile Size */
 @media (max-width: 767px) {
   main {
-    max-width: 400px;
+    max-width: 40rem;
     margin: 0 auto;
-    padding: 12rem 3.2rem 23rem;
+    padding: 12rem 3.2rem;
   }
 
   .header {
