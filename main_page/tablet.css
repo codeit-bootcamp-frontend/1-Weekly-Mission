@@ -34,4 +34,39 @@
         width: 650.303px;
         height: 350px;
     }
+    /* contents */
+    .contents_box{
+        max-width : 698px;
+        grid-template-rows : 0.5fr 1fr 1fr 0.5fr;
+    }
+    .contents_img{
+        width: 385px;
+        height: 315px;
+    }
+    .contents_box.save,
+    .contents_box.share{
+        grid-template-columns : 262px 31px 385px;
+        grid-template-areas: 
+        ". . img"
+        "text . img"
+        "detail . img"
+        ". . img"
+        ;
+    }
+    .contents_box.folder,
+    .contents_box.search{
+        grid-template-columns : 385px 31px 262px;
+        grid-template-areas: 
+        "img . ."
+        "img . text"
+        "img . detail"
+        "img . ."
+        ;
+    }
+    .contents_detail{
+        width : 260px;
+    }
+    .search img{
+        width : 420px;
+    }
 }
