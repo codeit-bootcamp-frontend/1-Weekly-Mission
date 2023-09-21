@@ -1,5 +1,5 @@
 body{
-    margin-top: 10%;
+    margin-top: 8%;
 }
 .wrap{
     display: flex;
@@ -22,37 +22,37 @@ header{
 
 .header__logo-img{
     width: 21rem;
-    height: 4rem;
+    height: 4rem;;
 }
 header p{
     margin: 0;
     font-weight: 400;
 }
-.header__signin-link{
+.header__sign-link{
     margin-left: 0.8rem;
     font-weight: 600;
 }
 
-.form__signup{
+.form__sign{
     display: flex;
     width: 40rem;
     flex-direction: column;
     justify-content: center;
     align-items: left;
 }
-.form__signup label{
+.form__sign label{
     font-size: 1.4rem;
 }
-.form__signup input{
+.form__sign input{
     margin: 1.2rem 0 2.4rem;
     padding: 1.8rem 1.5rem;
     border: 0.1rem solid var(--linkbrary-gray-20);
     border-radius: 0.8rem;
 }
-.form__signup input:focus{
+.form__sign input:focus{
     border: var(--linkbrary-primary-color);
 }
-.btn-signup{
+.btn-sign{
     padding: 1.6rem 2rem;
     border:none;
     background : var(--gra-purpleblue-to-skyblue);
@@ -61,7 +61,7 @@ header p{
     font-size: 1.8rem;
 }
 
-.social-signup{
+.social-sign{
     display: flex;
     padding: 1.2rem 2.4rem;
     border: 0.1rem solid var(--linkbrary-gray-20, #CCD5E3);
@@ -76,13 +76,13 @@ header p{
 
 }
 
-.social-signup-icons{
+.social-sign-icons{
     display: flex;
     gap: 1.6rem;
 
 }
 
-.social-signup-icons img{
+.social-sign-icons img{
     width: 4.4rem;
     height: 4.4rem;
 }
