@@ -314,7 +314,6 @@ a {
   .section-container-img {
     width: 100%;
     height: auto;
-    order: 1;
   }
 
   .section-container-text {
