@@ -20,7 +20,7 @@
         font-weight: 700;
         line-height: 1.25;
 
-        &--color {
+        &--grad {
             background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
             @include text-linear-grad;
         }
@@ -89,21 +89,21 @@
         font-weight: 700;
         letter-spacing: -0.03rem;
 
-        .section-container :first-child &--color {
+        .section-container :first-child &--grad {
             background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
         }
 
-        .section-container :nth-child(2) &--color {
+        .section-container :nth-child(2) &--grad {
             background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
         }
-        .section-container :nth-child(3) &--color {
+        .section-container :nth-child(3) &--grad {
             background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
         }
-        .section-container :nth-child(4) &--color {
+        .section-container :nth-child(4) &--grad {
             background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
         }
 
-        .section-container .section &--color {
+        .section-container .section &--grad {
             @include text-linear-grad;
         }
     }
