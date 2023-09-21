@@ -136,7 +136,7 @@ header a{ /* login button */
 
 .contents_box.save,
 .contents_box.share{
-    grid-template-columns : 30% 15% 55%;
+    grid-template-columns : 30% 10% 55%;
     grid-template-areas: 
     ". . img"
     "text . img"
@@ -147,7 +147,7 @@ header a{ /* login button */
 
 .contents_box.folder,
 .contents_box.search{
-    grid-template-columns : 55% 15% 30%;
+    grid-template-columns : 55% 10% 30%;
     grid-template-areas: 
     "img . ."
     "img . text"
