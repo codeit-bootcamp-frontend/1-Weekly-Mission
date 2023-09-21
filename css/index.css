@@ -7,16 +7,20 @@ html {
 }
 
 header {
-    display: flex;
-    padding: 20px 200px;
-    align-items: center;
-    justify-content: space-between;
     background-color: #F0F6FF;
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 2;
+}
+header .inner {
+    display: flex;
+    margin: 0 auto;
+    padding: 20px 200px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header a {
@@ -272,8 +276,9 @@ footer {
 
 
 @media screen and (max-width: 1200px) {
-    header {
-        padding: 20px 200px
+    header .inner {
+        max-width: 800px;
+        padding: 20px 0px;
     }
     .section-title-wrap .section-title-add-link {
         width: 650px;
@@ -303,7 +308,7 @@ footer {
 } 
 
 @media screen and (max-width: 767px) {
-    header {
+    header .inner {
         padding: 13px 32px;
     }
     header a {
