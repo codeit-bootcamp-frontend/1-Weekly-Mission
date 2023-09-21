@@ -325,48 +325,6 @@ header {
   margin: 0;
 }
 
-.container_4 .content .img-section {
-  width: 550px;
-  height: 450px;
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.container_4 .content .img-section .img_1 {
-  width: 934px;
-  height: 591px;
-  flex-shrink: 0;
-  position: relative;
-  top: -63px;
-  left: -178px;
-
-  background: url("assets/img.png"), lightgray 50% / cover no-repeat;
-  background-size: 934px 591px;
-  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
-}
-
-.container_4 .content .img-section .opacity {
-  width: 570px;
-  height: 469px;
-  flex-shrink: 0;
-  position: absolute;
-  left: 168px;
-  top: 53px;
-
-  background: rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
-}
-
-.container_4 .content .img-section .opacity .img_2 {
-  width: 416px;
-  height: 271px;
-  flex-shrink: 0;
-  position: relative;
-
-  top: 121px;
-  left: 77px;
-}
-
 .container_5 {
   display: flex;
   padding-top: 50px;
@@ -565,6 +523,13 @@ header {
     background: url("assets/content3.png");
     background-size: 385px 315px;
   }
+
+  .container_4 .img-section {
+    width: 385px;
+    height: 315px;
+    background: url("assets/content4.png");
+    background-size: 385px 315px;
+  }
 }
 
 /* Desktop */
@@ -666,5 +631,49 @@ header {
     flex-shrink: 0;
     background: url("assets/img2.png");
     background-size: 414px 270px;
+  }
+
+  .container_4 .content .img-section {
+    width: 550px;
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container_4 .content .img-section .img_1 {
+    width: 934px;
+    height: 591px;
+    flex-shrink: 0;
+    position: relative;
+    top: -63px;
+    left: -178px;
+
+    background: url("assets/img.png"), lightgray 50% / cover no-repeat;
+    background-size: 934px 591px;
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .container_4 .content .img-section .opacity {
+    width: 570px;
+    height: 469px;
+    flex-shrink: 0;
+    position: absolute;
+    left: 168px;
+    top: 53px;
+
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .container_4 .content .img-section .opacity .img_2 {
+    width: 416px;
+    height: 271px;
+    flex-shrink: 0;
+    position: relative;
+    background: url("assets/img6.png");
+    background-size: 416px 271px;
+
+    top: 121px;
+    left: 77px;
   }
 }
