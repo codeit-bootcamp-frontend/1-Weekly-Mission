@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../nomalize.css" />
+    <link rel="stylesheet" href="../css/signin.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container-signin">
+      <a href="/index.html">
+        <img id="logo-image" src="../images/sign/logo.svg" />
+      </a>
+      <div class="redirection-text">
+        <p>회원이 아니신가요?</p>
+        <a href="./signup.html">회원가입하기</a>
+      </div>
+
+      <form method="post" action="#">
+        <label for="email"
+          >이메일 <input id="email" name="email" type="email"
+        /></label>
+        <label for="password" id="password-label"
+          >비밀번호<input id="password" name="pass" type="password" />
+          <img id="eye-on" src="../images/sign/eye-on.svg" />
+        </label>
+        <button id="login-button">로그인</button>
+        <div class="social-login">
+          <p>소셜로그인</p>
+          <div class="social-login-images">
+            <a href="https://www.google.com/" target="_blank"
+              ><img id="google" src="../images/sign/google.png" alt="" /></a
+            ><a
+              href="https://www.kakaocorp.com/page/service/service/KakaoTalk"
+              target="_blank"
+              ><img id="kakao" src="../images/sign/kakao.png" alt=""
+            /></a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

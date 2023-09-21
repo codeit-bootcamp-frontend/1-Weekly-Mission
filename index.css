@@ -1,0 +1,272 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --grey-light: #f5f5f5;
+  /* 91degrees,  Color at 0.12% along the gradient: #6d6afe, Color at 101.84% along the gradient: #6ae3fe */
+  --gra-purpleblue-to-skyblue: linear-gradient(
+    91deg,
+    #6d6afe 0.12%,
+    #6ae3fe 101.84%
+  );
+
+  --linkbrary-primary-color: #6d6afe;
+  --fandom-k-gra-blue-to-pink: linear-gradient(
+    271deg,
+    #fe578f -9.84%,
+    #68e8f9 107.18%
+  );
+  --the-julge-black: #111322;
+}
+
+body {
+  margin: 0;
+}
+
+/* header {
+  background-color: #edf7ff;
+} */
+
+nav {
+  background-color: #edf7ff;
+  position: sticky;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* 1rem은 16px 브라우저의 기본 font 16px이기떄문 */
+  padding: 0 5rem;
+  height: 9.4rem;
+  /* width: 100% */
+}
+
+/* 정답지에서는 .cta랑 같은거 */
+button {
+  color: var(--grey-light);
+  background: var(--gra-purpleblue-to-skyblue);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* 로그인버튼 */
+button#login-button {
+  width: 10rem;
+  height: 3rem;
+}
+
+.header-content {
+  /* width: 1920px;
+  padding: 70px 360px 0px 360px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background: #f0f6ff;
+  padding-top: 0.5rem;
+}
+
+.header-content h1 {
+  text-align: center;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 80px;
+  color: #000;
+}
+
+span#emphasize {
+  background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+button#link-add-button {
+  font-weight: 500;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 50px;
+}
+
+/* 공통 */
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  /* 아래가 적용이 안되는 이유는? */
+  /* column-gap: 1rem; */
+}
+
+.text-container .title {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -8px;
+  margin-bottom: 0;
+}
+
+.text-container .emphasize {
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+}
+.text-container .description {
+  color: #6b6b6b;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -1px;
+}
+
+.image-container {
+  background: #f0f6ff;
+  border-radius: 15px;
+  width: 550px;
+  height: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 12rem;
+}
+
+/* section2 */
+#section2-image1 {
+  width: 100%;
+}
+
+.contents-two .text-container .emphasize {
+  background-image: linear-gradient(117deg, #fe8a8a 2.29%, #a4ceff 100%);
+}
+
+/* 섹션3 */
+
+#section3-image1 {
+  width: 100%;
+}
+
+.contents-three .text-container .emphasize {
+  background-image: linear-gradient(304deg, #6fbaff 0%, #ffd88b 100%);
+}
+
+/* section04 */
+
+#section4-image1 {
+  width: 100%;
+}
+
+.contents-four .text-container .emphasize {
+  background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
+}
+/* section5 */
+
+#section5-image1 {
+  width: 100%;
+}
+
+.contents-five .text-container .emphasize {
+  background-image: linear-gradient(304deg, #6fbaff 0%, #ffd88b 100%);
+}
+/* footer섹션! */
+a {
+  text-decoration: none;
+}
+.policy {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 8rem;
+
+  align-items: center;
+
+  align-self: stretch;
+  background: var(--the-julge-black);
+}
+
+.policy .texts-icons-container {
+  height: 10rem;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  align-items: center;
+
+  align-self: stretch;
+  padding-top: 0px;
+  padding: 32px 104px 64px 104px;
+}
+
+.policy #codeit-title {
+  color: #676767;
+  text-align: center;
+  font-family: Arial;
+  font-size: 16px;
+
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 0px;
+}
+
+.policy .policy-text {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  gap: 30px;
+}
+
+.policy .policy-text p {
+  color: #cfcfcf;
+  font-family: Arial;
+  font-size: 16px;
+
+  font-weight: 400;
+
+  margin-top: 0px;
+}
+
+.policy .icons a {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.policy .icons a:last-of-type {
+  margin-right: 0;
+}
+
+.policy .icons img {
+  width: 20px;
+  height: 20px;
+}
+
+/* media types */
+
+@media screen and (min-width: 1920px) {
+  body {
+    width: 100%;
+    background-color: #f0f6ff;
+  }
+}
+
+/* PC 사이즈에서 기기의 width가 1920px 보다 작아질 때, */
+@media all and (max-width: 1919px) {
+  nav {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  .texts-icons-container {
+    margin-left: 104px;
+    margin-right: 104px;
+  }
+}
