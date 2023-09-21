@@ -1,3 +1,5 @@
+@import "reset.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,7 +23,7 @@ body {
   align-items: center;
 }
 
-.header {
+header {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -89,7 +91,7 @@ form {
   color: #FF5B56;
 }
 
-.footer {
+footer {
   width: 100%;
   display: flex;
   flex-direction: column;
