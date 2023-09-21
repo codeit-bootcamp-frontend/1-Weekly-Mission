@@ -1,7 +1,7 @@
 .sign {
     width: 100%;
     height: 100%;
-    background-color: var(--Gray20-color);
+    background-color: var(--gray20-color);
     padding: 238px 0px;
     display: flex;
     flex-direction: column;
@@ -22,11 +22,10 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    color: var(--Black-color);
+    color: var(--black-color);
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    letter-spacing: 0;
 }
 
 .content .title .text {
@@ -37,7 +36,7 @@
 }
 
 .content .title a {
-    color: var(--Primary-color);
+    color: var(--primary-color);
     text-decoration: underline;
     font-weight: 600;
 }
@@ -54,7 +53,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    color: var(--Black-color);
+    color: var(--black-color);
     font-size: 14px;
     font-weight: 400;
 }
@@ -63,12 +62,12 @@
     width: 400px;
     padding: 18px 15px;
     border-radius: 8px;
-    border: 1px solid var(--Gray60-color);
+    border: 1px solid var(--gray60-color);
 }
 
 .content .input input:focus {
     outline: none;
-    border: 1px solid var(--Primary-color); 
+    border: 1px solid var(--primary-color); 
 }
 
 .content .login {
@@ -99,8 +98,8 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    border: 1px solid var(--Gray60-color);
-    background: var(--Gray40-color);
+    border: 1px solid var(--gray60-color);
+    background: var(--gray40-color);
 }
 
 .sign .sns .title {
@@ -126,11 +125,11 @@
     margin: auto;
 }
 
-.sign .input .box .cheak {
+.sign .input .box .check {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    color : var(--Red-color);
+    color : var(--red-color);
     font-size: 14px;
     font-weight: 400;
 }
@@ -139,7 +138,7 @@
     padding: 238px 0 105px;
 }
 
-#worng {
-    border: 1px solid var(--Red-color);
+#wrong {
+    border: 1px solid var(--red-color);
     border-radius: 8px;
 }
