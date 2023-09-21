@@ -8,6 +8,7 @@
 .section__title {
 	align-self: end;
 	grid-row: 1 / 2;
+	width: 29.1rem;
 	font-size: 4.8rem;
 	font-weight: 700;
 	letter-spacing: -0.03rem;
@@ -17,10 +18,12 @@
 .section__description {
 	align-self: start;
 	grid-row: 2 / 3;
+	width: 29.1rem;
 	font-size: 1.6rem;
 	font-weight: 500;
 	line-height: 1.5;
 	color: #6b6b6b;
+	word-break: keep-all;
 }
 
 .section__img-wrapper {
@@ -276,6 +279,11 @@
 		gap: 1rem 5.1rem;
 	}
 
+	.section__title,
+	.section__description {
+		width: 26.2rem;
+	}
+
 	.section__img-wrapper {
 		width: 38.4rem;
 	}
@@ -309,10 +317,6 @@
 	.section__description {
 		align-self: unset;
 		order: 3;
-	}
-
-	.section__description br {
-		display: none;
 	}
 
 	.section__img-wrapper {
