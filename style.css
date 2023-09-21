@@ -66,15 +66,10 @@ header {
 .container_1 .text {
   margin: 0;
   font-family: Pretendard;
-  font-family: Pretendard;
-  font-size: 64px;
   font-size: 64px;
   font-style: normal;
-  font-style: normal;
   font-weight: 700;
-  font-weight: 700;
-  line-height: 80px;
-  line-height: 80px;
+  line-height: 125%;
 
   color: #000;
   text-align: center;
