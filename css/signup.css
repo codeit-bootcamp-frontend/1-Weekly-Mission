@@ -1,7 +1,6 @@
-*{
-    box-sizing: content-box;
+body{
+    margin-top: 10%;
 }
-
 .wrap{
     display: flex;
     flex-direction: column;
