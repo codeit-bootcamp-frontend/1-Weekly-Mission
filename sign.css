@@ -24,6 +24,10 @@
   --linkbrary-gray-100: #373740;
 }
 
+body {
+  margin: 0;
+}
+
 body,
 main,
 .login-form,
@@ -44,7 +48,7 @@ body,
 }
 
 body {
-  padding: 238px 0px 0px 0px;
+  padding-top: 238px;
   background: var(--linkbrary-bg);
 }
 
@@ -142,7 +146,7 @@ header {
 .input-box,
 #loginBtn,
 .social-login {
-  width: 400px;
+  width: 100%;
   border-radius: 8px;
 }
 
@@ -220,4 +224,43 @@ header {
   left: 8px;
   width: 26px;
   height: 24px;
+}
+
+/* mobile */
+
+@media (min-width: 375px) and (max-width: 464px) {
+  body {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  main,
+  .login-form,
+  .login-input,
+  .input-box,
+  #loginBtn,
+  .social-login,
+  .login-button,
+  .input {
+    width: 100%;
+  }
+}
+
+/* Tablet */
+
+@media (min-width: 465px) {
+  .input-box,
+  #loginBtn,
+  .social-login {
+    width: 400px;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1200px) {
+  .input-box,
+  #loginBtn,
+  .social-login {
+    width: 400px;
+  }
 }
