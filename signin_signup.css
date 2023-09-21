@@ -63,7 +63,7 @@ form {
 .input_box {
   width: 100%;
   padding: 18px 15px;
-  margin: 12px 0 6px;
+  margin: 12px 0 0;
   border: 1px solid #CCD5E3;
   border-radius: 8px;
 }
@@ -90,6 +90,7 @@ form {
   font-size: 14px;
   font-weight: 400;
   color: #FF5B56;
+  margin-top: .375rem;
 }
 
 footer {
@@ -127,4 +128,19 @@ footer {
   width: 100px;
   display: flex;
   gap: 15px;
+}
+
+
+@media (max-width: 767px){
+  
+  .inner_wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 }
