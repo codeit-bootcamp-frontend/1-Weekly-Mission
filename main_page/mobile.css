@@ -58,4 +58,21 @@
     .contents_img{
         width : 100%;
     }
+    footer{
+        padding : 32px 32px;
+    }
+    .ppf{
+        grid-area : p;
+    }
+    .resources{
+        grid-area : r;
+    }
+    .footer_mobile{
+        display : grid;
+        grid-template-rows: 1fr 1fr;
+        gap : 60px;
+        grid-template-areas: 
+        "p"
+        "r";
+    }
 }
