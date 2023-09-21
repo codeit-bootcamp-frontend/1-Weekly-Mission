@@ -116,7 +116,6 @@ button.addlink{
     height: 45rem;
     border: none;
     border-radius: 1.5rem;
-    margin-left: 15rem;
     
 }
 .card{
@@ -124,31 +123,29 @@ button.addlink{
     margin: 5rem auto 5rem;
     justify-content: space-between;
     align-items: center;
+    gap: 15rem;
     
 }
-.cards img:nth-child(2n+1){
-    margin-right: 15rem;
-    margin-left: 0;
-}
-.span_link{
+
+.highlight--link{
     background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.span_manage{
+.highlight--manage{
     background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.span_share{
+.highlight--share{
     background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     }
-.span_search{
+.highlight--search{
     background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
     background-clip: text;
     -webkit-background-clip: text;
@@ -169,6 +166,10 @@ footer .since_codeit{
     font-weight: 400;
 
 }
+.extra_sites{
+    display: flex;
+    gap: 1.3rem;
+}
 .extra_sites a{
     color: #CFCFCF;
     text-decoration: none;
@@ -176,9 +177,7 @@ footer .since_codeit{
     font-size: 1.6rem;
     font-weight: 400;
 }
-.extra_sites a:not(:last-child){
-    margin-right: 1.3rem;
-}
+
 footer .icons{
     display: flex;
     gap: 1.2rem;
