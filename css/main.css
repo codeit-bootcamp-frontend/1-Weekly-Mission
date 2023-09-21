@@ -283,12 +283,6 @@ button {
   background-size: cover;
   background-position: center;
 }
-.section__frame--search {
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-top: 5.5rem;
-  padding-left: 6rem;
-}
 .section__imgs {
   display: flex;
   justify-content: center;
@@ -330,6 +324,9 @@ button {
   height: 27.1rem;
 }
 .section__search-img {
+  position: absolute;
+  top: 5.5rem;
+  left: 6rem;
   width: 61.9rem;
   height: 58.4rem;
   border-radius: 1.5rem;
