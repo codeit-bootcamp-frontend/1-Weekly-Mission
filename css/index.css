@@ -45,19 +45,15 @@ button.login{
 .card_head{
     display: flex;  
     /* width: 1920px; */
-    padding: 7rem 36rem 0rem 36rem;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     gap: 4rem;
 }
 .card_head h1{
-    margin: 0;
-    margin: 0;
     text-align: center;
     font-family: Pretendard;
     font-size: 5rem;
-    font-style: normal;
     font-weight: 700;
     line-height: 7rem;
 }
@@ -76,10 +72,7 @@ button.addlink{
     border-radius: 0.8rem;
     font-family: Pretendard;
     font-size: 1.8rem;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
-
 }
 
 .card_head img{
