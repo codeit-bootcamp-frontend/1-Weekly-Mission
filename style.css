@@ -571,7 +571,7 @@ header {
   .container_2 .img-section {
     width: 385px;
     height: 315px;
-    background: url("assets/tablet-content2-img.png");
+    background: url("assets/content2.png");
     background-size: 385px 315px;
   }
 }
