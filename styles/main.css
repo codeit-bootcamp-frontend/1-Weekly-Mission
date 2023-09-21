@@ -279,6 +279,13 @@
 	.section__img-wrapper {
 		width: 38.4rem;
 	}
+	.save__img-container {
+		align-items: center;
+	}
+	.save__img-container > img,
+	.save__img--icon > img {
+		width: 20rem;
+	}
 }
 
 /* MOBILE */
