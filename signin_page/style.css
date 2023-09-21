@@ -12,6 +12,8 @@ html{
 body{
     background: var(--linkbrary-bg, #F0F6FF);
     font-family: Pretendard;
+    display : flex;
+    justify-content: center;
 }
 
 a:hover,
@@ -21,7 +23,7 @@ button:hover{
 
 .container{
     width : 400px;
-    margin : 180px auto 0;
+    margin-top : 180px;
     display : flex;
     flex-direction: column;
     align-items: center;
@@ -163,4 +165,12 @@ footer p{
     position : absolute;
     top : 10px;
     left : 10px;
+}
+
+@media (max-width : 767px){
+    .container{
+        width : 100%;
+        max-width : 400px;
+        margin : 180px 32px;
+    }
 }
