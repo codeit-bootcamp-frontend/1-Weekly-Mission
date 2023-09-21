@@ -488,30 +488,30 @@ header {
     background-size: 650.303px 410.993px;
   }
 
-  .container_2 .img-section {
+  .container_2 .img-section,
+  .container_3 .img-section,
+  .container_3 .img-section,
+  .container_4 .img-section {
     width: 385px;
     height: 315px;
+  }
+
+  .container_2 .img-section {
     background: url("assets/content2.png");
     background-size: 385px 315px;
   }
 
   .container_3 .img-section {
-    width: 385px;
-    height: 315px;
     background: url("assets/content3.png");
     background-size: 385px 315px;
   }
 
   .container_4 .img-section {
-    width: 385px;
-    height: 315px;
     background: url("assets/content4.png");
     background-size: 385px 315px;
   }
 
   .container_5 .img-section {
-    width: 385px;
-    height: 315px;
     background: url("assets/content5.png");
     background-size: 385px 315px;
   }
