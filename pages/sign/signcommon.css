@@ -54,7 +54,7 @@ main {
 .input_container {
   width: 100%;
   margin: 3rem 0;
-  display:flex;
+  display: flex;
   flex-direction: column;
   position: relative;
 }

@@ -361,8 +361,8 @@ a:hover {
     width: 100%;
     height: auto;
     margin-bottom:8rem;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: left;
   }
@@ -381,7 +381,7 @@ a:hover {
   .description_text {
     width: 100%;
     font-size: 1.5rem;
-    order:2;
+    order: 2;
   }
   
   
@@ -398,12 +398,12 @@ a:hover {
 
   .footer-content {    
     margin: 32px 32px 64px;   
-    position:relative;
+    position: relative;
   }
   
   .footer-copyright {
-    position:absolute;
-    left:0;
+    position: absolute;
+    left: 0;
     top: 7.8rem;
   }
   
