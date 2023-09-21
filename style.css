@@ -1,7 +1,7 @@
 @import url(reset.css);
 @import url(common.css);
 
-header {
+  header {
     width: 100%;
     display: flex;
     padding: 20px 200px;
@@ -19,7 +19,6 @@ header .login-link {
     padding: 16px 20px;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
     gap: 10px;
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue);
@@ -67,10 +66,9 @@ header .login-link {
     -webkit-text-fill-color: transparent;
 }
 
-.main-image-box {
+.main-image-box{
     min-width: 1200px;
     height: 590px;
-    flex-shrink: 0;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
     background-image: 
     linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%),
@@ -78,7 +76,13 @@ header .login-link {
     background-position: center;
     background-size: 100%; 
     border-radius:25px;
-    margin: 50px 41px -119px; 
+    margin: 50px 41px -119px;
+}
+
+.main-image-box img {
+  min-width: 1200px;
+  height: 590px;
+  object-fit: cover;
 }
 
 .sections {
@@ -141,7 +145,7 @@ header .login-link {
 }
 
 .cards-frame div:first-of-type {
-    width: 244px;
+    min-width: 244px;
     height: 239px;
     border-radius: 11px;
     position: relative;
@@ -185,7 +189,6 @@ header .login-link {
 
 .popup_folder_name_change {
     width: 414px;
-    height: 270px;
 }
 
 .link-share-section {
@@ -206,13 +209,13 @@ header .login-link {
 }
 
 .inner-image{
-    width: 934px;
+    min-width: 934px;
     height: 591px;
     z-index: -1;
 }
 
 .popup_folder_share {
-    width: 416px;
+    min-width: 416px;
     height: 271px;
     position: absolute;
     inset: 121px 77px 77px 77px;
@@ -228,7 +231,7 @@ header .login-link {
 }
 
 .codeit_search_image-box {
-    width: 550px;
+    min-width: 550px;
     height: 450px;
     border-radius: 15px;
     background: #F0F6FF;
@@ -237,7 +240,7 @@ header .login-link {
 }
 
 .codeit_search_image {
-    height: 584px;
+    height: 130%;
     flex-shrink: 0;
     border-radius: 15px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 48.72%, #000 128.17%);
@@ -282,3 +285,91 @@ footer {
 .sns_icons img{
     margin-left: 10px;
 }
+
+/*tablet size*/
+
+@media (max-width: 1199px) {
+  header {
+    padding: 20px 32px;
+}
+
+.main-image-box {
+  /* margin: 30px 24px -69px;  */
+  min-width: 698px;
+  background-image: url(images/main_image_tablet.png);
+  object-fit: cover;
+}
+
+.main-section {
+padding: 150px 250px 0;
+}
+
+.sections {
+  padding: 50px 250px;
+}
+
+.content {
+  gap: 51px;
+}
+
+.wanted-link-cards img{
+  width: 229px;
+}
+
+.cards-frame div:first-of-type {
+  min-width: 200px;
+  height: 190px;
+  border-radius: 11px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 11px;
+  border: 2px solid var(--primary); 
+}
+
+.wanted-link-cards .save-link {
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+  position: absolute;
+  top: 272px;
+  left: 285px;
+}
+
+.popup_folder_name_change-box {
+  padding: 114px 68px 66px 68px;
+  border-radius: 15px;
+  background: #F0F6FF;
+}
+
+.popup_folder_name_change {
+  width: 300px;
+}
+
+.inner-image-box {  
+  width: 570px;
+  height: 469px;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.40);
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.inner-image{
+  min-width: 934px;
+  height: 591px;
+  z-index: -1;
+}
+
+.popup_folder_share {
+  min-width: 416px;
+  height: 271px;
+  position: absolute;
+  inset: 121px 77px 77px 77px;
+}
+
+
+} 
