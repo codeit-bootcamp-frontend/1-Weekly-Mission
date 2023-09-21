@@ -64,6 +64,11 @@ button {
   margin-left: 0.5rem;
 }
 
+@media screen and (max-width: 1199px) {
+  .gnb__inner {
+    padding: 2rem 3.2rem;
+  }
+}
 .footer {
   width: 100%;
   background-color: #111322;
