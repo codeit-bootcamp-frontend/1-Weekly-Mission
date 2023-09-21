@@ -453,6 +453,12 @@ header {
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
+  content {
+    display: flex;
+    gap: 51px;
+    align-items: center;
+  }
+
   .container_1 .img-section {
     width: 698px;
     height: 343px;
