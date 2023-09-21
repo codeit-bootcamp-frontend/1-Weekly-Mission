@@ -1,6 +1,7 @@
 /* mobile : 375 ~ 767px */
 @media (max-width : 767px){
     header{
+        width : 100%;
         padding : 13px 32px;
     }
     .linkbrary_logo{
@@ -8,7 +9,28 @@
     }
     .blue_btn{
         padding : 10px 16px;
-        width : 80px;
         font-size : 1.4rem;
+        width : 80px;
+    }
+
+    /* main contents */
+    .main_content{
+        width : 100%;
+        padding : 28px 32px 0px; 
+        gap : 24px;
+    }
+    .main_text{
+        padding-top : 100px;
+        width : 236px;
+        font-size : 3.2rem;
+        line-height : 4.2rem;
+    }
+    .main_content a{
+        width : 200px;
+    }
+    .img_box{
+        margin : 20px 32px 0px;
+        height : 200px;
+        background-size: cover;
     }
 }
