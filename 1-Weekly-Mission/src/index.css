@@ -44,7 +44,7 @@
   gap: 1rem;
 
   border-radius: 0.8rem;
-  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  background-image: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
 
   color: #f5f5f5;
   font-size: 1.8rem;
@@ -89,11 +89,14 @@ main {
   min-width: 708px;
 }
 
-.main_title > span {
-  background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+.main_title_gradient {
+  background-image: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+}
+
+.background_clip_text {
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .title_br_small {
@@ -111,40 +114,63 @@ main {
 }
 
 .contents {
-  display: flex;
-  padding: 12rem 46.1rem 5rem 46.1rem;
+  display: grid;
   justify-content: center;
-  align-items: center;
-
-  gap: 15.7rem;
-
-  align-self: stretch;
-}
-
-.content_container {
-  display: flex;
-  width: 29.1rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+  column-gap: 15.7rem;
+  row-gap: 1rem;
+  width: 100%;
+  height: 55rem;
+  padding: 5rem 0;
 }
 
 .content_title {
+  grid-area: title;
   font-size: 4.8rem;
   font-weight: 700;
-  letter-spacing: -0.3px;
-
-  color: #000;
+  line-height: 5.8rem;
+  letter-spacing: -0.03rem;
 }
 
-.content1_title {
-  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+section:nth-of-type(odd) {
+  grid-template:
+    ". image"
+    "title image"
+    "paragraph image"
+    ". image"
+    /291px 55rem;
+}
+
+section:nth-of-type(even) {
+  grid-template:
+    "image ."
+    "image title"
+    "image paragraph"
+    "image ."
+    /550px 29.1rem;
+}
+
+.title1_gradient {
+  background-image: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+}
+
+.title2_gradient {
+  background-image: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+}
+
+.title3_gradient {
+  background-image: linear-gradient(
+    99deg,
+    #6d7ccd 19.76%,
+    rgba(82, 136, 133, 0.22) 52.69%
+  );
+}
+
+.title4_gradient {
+  background-image: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
 }
 
 .content_paragraph {
+  grid-area: paragraph;
   color: #6b6b6b;
   font-size: 1.6rem;
   font-weight: 500;
@@ -152,36 +178,12 @@ main {
 }
 
 .content_image {
+  grid-area: image;
   width: 55rem;
   height: 45rem;
 }
 
-.content2_title {
-  background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.content3_title {
-  background: linear-gradient(
-    99deg,
-    #6d7ccd 19.76%,
-    rgba(82, 136, 133, 0.22) 52.69%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.content4_title {
-  background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.footer {
+footer {
   display: flex;
   height: 28rem;
   padding-top: 12rem;
