@@ -135,7 +135,6 @@ header {
   gap: 10px;
   align-items: flex-start;
   flex-direction: column;
-  width: 291px;
 }
 
 .text_1 {
@@ -336,6 +335,42 @@ header {
 
     .text-section .text_2 {
       font-size: 15px;
+    }
+
+    .container_2,
+    .container_3,
+    .container_4,
+    .container_5 {
+      padding: 40px 32px;
+    }
+
+    .img-section {
+      width: 100%;
+      padding-bottom: 81.84%;
+    }
+
+    .container_2 .img-section {
+      background: url("assets/content2.png");
+      background-size: 100% 100%;
+    }
+
+    .container_3 .img-section {
+      background: url("assets/content3.png");
+      background-size: 100% 100%;
+    }
+
+    .container_4 .img-section {
+      background: url("assets/content4.png");
+      background-size: 100% 100%;
+    }
+
+    .container_5 .img-section {
+      background: url("assets/content5.png");
+      background-size: 100% 100%;
+    }
+
+    .content {
+      width: 100%;
     }
   }
 }
