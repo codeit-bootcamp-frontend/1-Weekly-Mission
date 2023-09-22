@@ -25,10 +25,10 @@ header{
 }
 
 header nav{
-    padding: 1.25rem 12.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1.25rem 12.5rem 2rem;
     position: fixed;
     top:0;
     z-index: 1;
@@ -193,4 +193,20 @@ footer span{
     display: flex;
     gap: 0.75rem;
     color: #fff;
+}
+
+/* 반응형 */
+/* 화면 너비 1200 이하에서는 상단 nav 좌우여백 고정 */
+@media(max-width: 1200px){
+    header nav{
+        min-width: 1200px;
+    }
+    .nav-logo{
+        position:sticky;
+        left: 32px;
+    }
+    .nav-login{
+        position:sticky;
+        right: 32px;
+    }
 }
