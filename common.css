@@ -34,7 +34,6 @@ body {
 	color: var(--button-grey-light);
 	justify-content: center;
 	align-items: center;
-	gap: 0.625rem;
 	border-radius: 0.5rem;
 	font-family: Pretendard;
 	font-weight: 600;
