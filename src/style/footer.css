@@ -5,24 +5,34 @@ footer {
   height: 16rem;
   padding-top: 3.2rem;
   background-color: #111322;
-  font-family: Arial;
 }
 
 .footerWrapper {
-  display: flex;
+  display: grid;
+  grid-template: "footerLogo footerLinkToPage footerSocialIcon";
   justify-content: space-between;
   width: 100%;
   max-width: 192rem;
   height: fit-content;
   padding: 0 10.4rem;
+
+  @media screen and (max-width: 767px) and (min-width: 375px) {
+    grid-template:
+      "footerLinkToPage footerSocialIcon"
+      "footerLogo .";
+    padding: 0 2rem;
+    gap: 5rem;
+  }
 }
 
 .footerLogo {
+  grid-area: footerLogo;
   font-size: 1.6rem;
   color: #676767;
 }
 
 .footerLinkToPage {
+  grid-area: footerLinkToPage;
   display: flex;
   column-gap: 3rem;
   padding-right: 1.8rem;
@@ -34,6 +44,7 @@ footer {
 }
 
 .footerSocialIcon {
+  grid-area: footerSocialIcon;
   display: flex;
   column-gap: 1.2rem;
   height: 2rem;
