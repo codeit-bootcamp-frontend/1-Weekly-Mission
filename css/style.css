@@ -165,3 +165,10 @@ footer .footer-links a {
   height: 20px;
   display: inline-block;
 }
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .gnb {
+    padding: 20px 32px;
+  }
+}
