@@ -236,7 +236,7 @@ footer {
   flex: 1 0 auto;
 }
 
-.policy_wrapper > a:visited, .policy-wrapper > a {
+.policy-wrapper > a {
   color: #cfcfcf;
 }
 
@@ -311,6 +311,7 @@ a {
 }
 
 /* 반응형 mobile 사이즈 */
+/* 왜 모바일에서 레이아웃이 깨지는지 모르겠습니다. */
 @media (max-width: 767px) {
 
   nav {
