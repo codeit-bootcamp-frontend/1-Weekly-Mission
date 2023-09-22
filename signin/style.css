@@ -3,19 +3,14 @@ body {
   background-color: var(--linkbrary-bg);
 }
 
-main {
+header {
   margin: 0 auto;
   width: 25rem;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1.8rem;
 }
 
 header .header-logo-image {
@@ -30,6 +25,14 @@ header .header-text {
 
 a.signup {
   color: var(--linkbrary-primary);
+}
+
+main {
+  margin: 0 auto;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
 }
 
 form {
