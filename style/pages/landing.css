@@ -266,5 +266,39 @@ footer .frame .footer_container .sns_icons img {
 
 
 @media (max-width: 767px) {
+  header, main .intro, .content.flex-center{
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
   
+  main .intro .intro-img, .content .frame,.content .frame .texts{
+    width: 100%;
+    height: 100%;
+  }
+
+  .content .frame .content-img {
+    width: 100%;
+  }
+
+  .content .frame {
+    flex-direction: column;
+
+  }
+
+
+  
+  .content .frame .texts h2{
+    order : 1;
+ 
+  }
+  .content .frame .content-img{
+    order : 2;
+    
+  }
+
+  .content .frame .texts .para{
+    order :3;
+    
+  }
 }
