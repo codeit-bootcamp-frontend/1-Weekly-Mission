@@ -6,6 +6,10 @@ br.mobile {
   display: none;
 }
 
+br.pc {
+  display: inline;
+}
+
 .button {
   padding: 1.6rem 2rem;
   justify-content: center;
@@ -229,6 +233,15 @@ footer .website {
     display: inline;
   }
 
+  nav {
+    padding: 2rem 3.2rem;
+  }
+
+  div.header {
+    width: 74.9rem;
+    flex: 0 1 74.9rem;
+  }
+
   .title {
     width: 47.2rem;
     height: 24rem;
@@ -271,6 +284,11 @@ footer .website {
   nav {
     padding: 1.3rem 3.2rem;
     top: 0;
+  }
+
+  #logo {
+    height: 1.6rem;
+    width: auto;
   }
 
   .button {
@@ -322,12 +340,12 @@ footer .website {
   }
 
   .content h2 {
-    font-size: 2.4em;
+    font-size: 2.4rem;
     width: 100%;
   }
 
   .content h4 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     width: 100%;
   }
 
