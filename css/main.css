@@ -287,6 +287,7 @@ a, button {
   align-items: center;
 }
 .main-section__title {
+  width: 72rem;
   text-align: center;
   font-size: 6.4rem;
   font-weight: 700;
@@ -628,7 +629,7 @@ a, button {
   border-radius: 50%;
 }
 .auth__social-logo--google {
-  border: 1px solid #CCD5E3;
+  border: 0.1rem solid #CCD5E3;
   background-color: #FFF;
 }
 .auth__social-logo--google img {
