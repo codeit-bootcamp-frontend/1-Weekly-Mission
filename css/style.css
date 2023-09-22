@@ -43,7 +43,7 @@ header {
   align-items: center;
 }
 .banner p {
-  min-width: 708px;
+  /* min-width: 708px; */
   font-size: 4rem;
   font-weight: 700;
   line-height: 125%;
@@ -185,5 +185,40 @@ footer .footer-links a {
   .content-img {
     width: 385px;
     height: 315px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  /* Header */
+  .gnb {
+    padding: 13px 32px;
+  }
+  .logo {
+    width: 88px;
+    height: 16px;
+  }
+  .login {
+    width: 80px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  .banner {
+    padding: 28px 32px 0;
+  }
+  .banner p {
+    width: 236px;
+    font-size: 32px;
+    line-height: 130%;
+  }
+  .banner-img {
+    width: 303px;
+    height: 179px;
+  }
+  .banner .cta {
+    width: 200px;
+    padding: 10px 16px;
+    font-size: 14px;
+    margin: 24px 0;
   }
 }
