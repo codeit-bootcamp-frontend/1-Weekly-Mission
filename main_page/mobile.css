@@ -80,6 +80,14 @@
     /* footer */
     footer{
         padding : 32px 32px;
+        display : grid;
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-rows: 1.5fr 1fr;
+        grid-template-areas: 
+        "p icon"
+        "r .";
+        row-gap : 60px;
+        column-gap: 30px;;
     }
     .ppf{
         grid-area : p;
@@ -87,12 +95,8 @@
     .resources{
         grid-area : r;
     }
-    .footer_mobile{
-        display : grid;
-        grid-template-rows: 1fr 1fr;
-        gap : 60px;
-        grid-template-areas: 
-        "p"
-        "r";
+    .link_icon{
+        grid-area : icon;
+        justify-content: flex-end;
     }
 }
