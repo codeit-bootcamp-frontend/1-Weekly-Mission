@@ -73,10 +73,6 @@ form input{
     outline: none;
 }
 
-
-
-
-
 .btn{
     width: 100%;
     padding: 1.6rem 2rem;
@@ -105,8 +101,8 @@ form input{
 .sns-icons{
     display: flex;
     gap:1.6rem;
-
 }
+
 .sns-icons img{
     width: 4.2rem;
 }
