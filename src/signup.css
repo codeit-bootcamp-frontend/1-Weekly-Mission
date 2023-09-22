@@ -9,7 +9,7 @@ html {
   }
 
 
-body{
+body{        
     background: var(--linkbrary-bg);
 }
 
@@ -24,7 +24,7 @@ body{
     display: flex;
     gap: 1.875rem;
     align-items: center;
-    flex-direction: column;    
+    flex-direction: column;
 }
 
 .login__container-header{
@@ -45,7 +45,7 @@ body{
     color: var(--black, #000);
 }
 
-.login__text-signup {
+.login__text-signin {
     /* Linkbrary/body 1-semibold */
     font-family: Pretendard;
     font-size: 1rem;
@@ -119,7 +119,7 @@ body{
     padding: 0.75rem 1.5rem;
     border: 1px solid var(--linkbrary-gray-20);
     width: 40rem;
-    background: var(--linkbrary-gray-10);
+    background: var(--linkbrary-gray-10);    
     font-size: 0.875rem;
     font-weight: 400;
     color: var(--linkbrary-gray-100);
@@ -128,9 +128,11 @@ body{
 
 /*아이콘 크기 조절 필요*/
 .sotial_icons{
-    gap: 1rem;    
+    gap: 1rem;   
+    
 }
 
 .sotial_icons a {
     text-decoration: none;
 }
+

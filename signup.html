@@ -3,9 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="src/reset.css">
+    <link rel="stylesheet" href="src/common.css">
+    <link rel="stylesheet" href="src/signup.css">
     <title>Linkbrary</title>
 </head>
 <body>
-    
+    <main class="login-wrap">
+        <div class="login__container">
+            <div class="login__container-header">
+                <a class="login__logo" href="/"><img src="images/logo.svg"></a>
+                <p class="login__text">
+                    회원이 아니신가요? <a class="login__text-signin" href="/signin.html">로그인 하기</a>
+                </p>
+            </div>
+            <div class="login__container-main">
+                <div class="login__input-box">
+                    <label for="email"  class="login__label">
+                        이메일
+                    </label>
+                    <div class="login__input">
+                        <input id="email" class="input">
+                    </div>
+                </div>
+                <div class="login__input-box">
+                    <label for="password" class="login__label">
+                        비밀번호
+                    </label>
+                    <div class="login__input">
+                        <input id="password" name="password" type="password" class="input">
+                        <div>
+                            <img class="login__input-img" src="images/signin-eye-off.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="login__input-box">
+                    <label for="password" class="login__label">
+                        비밀번호 확인
+                    </label>
+                    <div class="login__input">
+                        <input id="password" name="password" type="password" class="input">
+                        <div>
+                            <img class="login__input-img" src="images/signin-eye-off.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="login__container-button" href="/">
+                회원가입
+            </a>
+            <div class="login__container_sotial">
+                다른 방식으로 가입하기                          
+                <div class="sotial_icons">
+                    <a href="https://www.google.com/">
+                        <img src="images/signin-google.png">
+                    </a>
+                    <a href="https://www.kakaocorp.com/page/">
+                        <img  src="images/signin-talk.png">
+                    </a>
+                </div>                  
+            </div> 
+        </div>              
+    </main>
 </body>
 </html>

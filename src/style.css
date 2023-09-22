@@ -8,18 +8,6 @@ html {
     font-size: 62.5%;
   }
 
-:root {
-    --linkbrary-bg: #F0F6FF;
-    --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-    --grey-light: #F5F5F5;
-    --fandom-k-gra-blue-to-pink: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
-    --the-julge-black: #111322;
-    --Primary: #6D6AFE;
-    --Red: #FF5B56;
-    --Black-and-White: #111322 #FFFFFF;
-    --Gray: #3E3E43 #9FA6B2 #CCD5E3 #E7EFFB #F0F6FF;
-}
-
 
 header {
     position: sticky;
@@ -27,7 +15,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 200px;
+    padding: 2rem 20rem;
     background-color: var(--linkbrary-bg);
 }
 
@@ -60,7 +48,7 @@ header {
     align-items: center;
     justify-content: flex-end;
     flex-direction: column;
-    padding: 4.375rem 22.5rem 0rem 22.5rem;
+    padding: 4.375rem 2rem 0rem 2rem;
     background-color: var(--linkbrary-bg);
 }
 
@@ -102,13 +90,11 @@ header {
 .intro__img {
     width: 69.875rem;
     height: 41.1875rem;
-    flex-shrink: 0;
     border-radius: 1.5625rem;
-    background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%);
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 }
 
-.content {
+.contents {
     display: flex;
     flex-direction: column;
     padding: 7.5rem 28.8125rem;
@@ -117,7 +103,7 @@ header {
     gap: 6.24rem;
 }
 
-.content__container {
+.contents__container {
     display: flex;
     align-items: center;
     gap: 9.8125rem;
