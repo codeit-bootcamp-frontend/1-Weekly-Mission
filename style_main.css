@@ -37,7 +37,7 @@
     padding: 1.6rem 2rem;
     border: none;
     border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--color-primary) 0.12%, #6AE3FE 101.84%));
+    background: var(--gra-purpleblue-to-skyblue);
   }
   .link-button .a-label{
     color: var(--grey-light);
