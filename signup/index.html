@@ -22,12 +22,16 @@
         <input id="email" name="email" type="email" />
       </label>
       <label for="password">비밀번호
-        <input id="password" name="password" type="password" />
-        <img class="password-on" src="../assets/landing/eye-on.svg" alt="비밀번호 보이기" />
+        <div class="password-wrapper">
+          <input id="password" name="password" type="password" />
+          <img class="password-visible" src="../assets/landing/eye-on.svg" alt="비밀번호 보이기" />
+        </div>
       </label>
       <label for="doublecheck-pw">비밀번호 확인
-        <input id="doublecheck-pw" name="doublecheck-pw" type="password" />
-        <img class="password-on" src="../assets/landing/eye-on.svg" alt="비밀번호 보이기" />
+        <div class="password-wrapper">
+          <input id="doublecheck-pw" name="doublecheck-pw" type="password" />
+          <img class="password-visible" src="../assets/landing/eye-on.svg" alt="비밀번호 보이기" />
+        </div>
       </label>
       <button class="signup">회원가입</button>
     </form>

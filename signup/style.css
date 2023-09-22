@@ -46,10 +46,6 @@ form label {
   font-weight: 400;
 }
 
-form label:nth-of-type(3) {
-  margin-top: -1.1rem;
-}
-
 form input {
   width: 100%;
   height: 3.75rem;
@@ -64,15 +60,19 @@ form input:focus {
   border: 1px solid var(--linkbrary-primary);
 }
 
-form .password-on {
+form .password-wrapper {
   position: relative;
-  left: 23rem;
-  top: -2.25rem;
+}
+
+form .password-visible {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
 }
 
 form .signup {
   padding: 1rem 1.25rem;
-  margin-top: -1rem;
   align-items: center;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue);
