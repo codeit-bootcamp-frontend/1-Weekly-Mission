@@ -129,11 +129,12 @@
 
   /* 부트스트랩 small 기준 */
   @media(max-width: 768px){    
-    main{
+    main.container{
       padding: 0 3.2rem;
     }
-    .container *{
-      min-width: 40rem;
+    .container section, form input{
+      max-width: 40rem;
+      min-width: 26rem;
       width: 100%;
     }
   }
