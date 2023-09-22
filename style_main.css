@@ -1,25 +1,5 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  :root {
-    --Primary: #6D6AFE;
-    --Red: #FF5B56;
-    --Black: #111322;
-    --White: #FFFFFF;
-    --Gray5:#3E3E43;
-    --Gray4:#9FA6B2;
-    --Gray3:#CCD5E3;
-    --Gray2:#E7EFFB;
-    --Gray1:#F0F6FF;
-  }
-  
-  html {
-    /* 1rem = 10px로 고정하기. */
-    word-break: keep-all;
-    font-size: 10px;
-    font-family: 'Noto Sans Korean', 'Poppins', 'sans-serif';
-  }
+@import "reset.css";
+
   body{
     background-color: var(--Gray1);
     margin:0;
