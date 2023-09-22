@@ -23,11 +23,21 @@
     }
 
     &__logo {
+        @include mobile {
+            &-img {
+                width: 8.8rem;
+            }
+        }
+
         flex-shrink: 0;
         margin-right: 0.5rem;
     }
 
     &__signin {
+        @include mobile {
+            width: 8rem;
+        }
+
         flex-shrink: 0;
         width: 12.8rem;
         margin-left: 0.5rem;

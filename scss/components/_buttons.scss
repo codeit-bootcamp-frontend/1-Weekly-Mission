@@ -1,6 +1,10 @@
 @use "../utils" as *;
 
 .button {
+    @include mobile {
+        padding: 1rem 1.6rem;
+        font-size: 1.4rem;
+    }
     cursor: pointer;
     display: flex;
     justify-content: center;

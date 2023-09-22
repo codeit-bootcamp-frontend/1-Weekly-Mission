@@ -115,10 +115,20 @@ a, button {
   flex-shrink: 0;
   margin-right: 0.5rem;
 }
+@media screen and (max-width: 767px) {
+  .gnb__logo-img {
+    width: 8.8rem;
+  }
+}
 .gnb__signin {
   flex-shrink: 0;
   width: 12.8rem;
   margin-left: 0.5rem;
+}
+@media screen and (max-width: 767px) {
+  .gnb__signin {
+    width: 8rem;
+  }
 }
 
 .footer {
@@ -215,6 +225,12 @@ a, button {
   font-size: 1.8rem;
   font-weight: 600;
   color: #F5F5F5;
+}
+@media screen and (max-width: 767px) {
+  .button {
+    padding: 1rem 1.6rem;
+    font-size: 1.4rem;
+  }
 }
 
 .main-section {
