@@ -15,7 +15,6 @@
     }
 
     &__copyright {
-        flex-shrink: 0;
         font-family: Arial;
         font-size: 1.6rem;
         font-weight: 400;
@@ -25,7 +24,6 @@
     &__extra-page {
         display: flex;
         justify-content: center;
-        flex-shrink: 0;
         gap: 3rem;
         margin: 0 20px;
     }
@@ -42,7 +40,6 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        flex-shrink: 0;
         gap: 1.2rem;
     }
 }

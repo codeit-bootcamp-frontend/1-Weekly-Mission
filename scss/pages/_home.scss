@@ -1,11 +1,19 @@
 @use "../utils" as *;
 
 .main-section {
+    @include tablet {
+        padding-top: 3.9rem;
+    }
+
+    @include mobile {
+        padding-top: 2.8rem;
+    }
+
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 7rem;
+    padding: 7rem 3.2rem 0rem;
     background-color: $linkbrary-bg;
 
     &__inner {
@@ -17,6 +25,11 @@
     &__title {
         @include tablet {
             width: 47.5rem;
+        }
+
+        @include mobile {
+            width: 23.8rem;
+            font-size: 3.2rem;
         }
 
         text-align: center;
@@ -31,6 +44,11 @@
     }
 
     &__signup {
+        @include mobile {
+            width: 20rem;
+            margin: 2.4rem;
+        }
+
         width: 35rem;
         margin: 4rem;
     }
@@ -39,13 +57,20 @@
         @include tablet {
             width: 65rem;
             height: 33rem;
+            padding: 2.9rem 2.4rem;
+        }
+
+        @include mobile {
+            width: 32.5rem;
+            height: 16rem;
+            padding: 1.4rem 1.1rem;
         }
 
         overflow: hidden;
         display: flex;
         justify-content: center;
         position: relative;
-        width: 111.8rem;
+        width: 120rem;
         height: 59rem;
         padding: 5rem 4.1rem 0;
         background-color: transparent;
@@ -55,6 +80,11 @@
         @include tablet {
             width: 65rem;
             height: 38.3rem;
+        }
+
+        @include mobile {
+            width: 30.2rem;
+            height: 19.5rem;
         }
 
         width: 111.8rem;
@@ -72,6 +102,11 @@
             width: 65rem;
             height: 37rem;
         }
+
+        @include mobile {
+            width: 30.2rem;
+            height: 18rem;
+        }
         
         position: absolute;
         top: 0;
@@ -85,6 +120,11 @@
     @include tablet {
         padding-top: 8rem;
     }
+
+    @include mobile {
+        gap: 8rem;
+        padding: 4rem 3.2rem 8rem;
+    }
     
     display: flex;
     flex-direction: column;
@@ -97,52 +137,63 @@
 
 .section {
     @include tablet {
-        gap: 5.1rem;
-
-        .section-container :nth-child(odd){
+        .section-container .section-odd & {
             grid-template-columns: 26.2rem 38.5rem;
         }
-        .section-container :nth-child(even){
+        .section-container .section-even & {
             grid-template-columns: 38.5rem 26.2rem;
+        }
+    }
+    
+    @include mobile {
+        .section-container .section & {
+            grid-template-columns: 1fr;
+            grid-template-rows: 2.9rem 26.6rem 4.6rem;
         }
     }
 
     display: grid;
-    gap: 15.7rem;
 
-    .section-container :nth-child(odd){
+    .section-odd & {
         grid-template-columns: 29.1rem 55rem;
+        grid-template-rows: repeat(4, 1fr);
     }
-    .section-container :nth-child(even){
+    .section-even & {
         grid-template-columns: 55rem 29.1rem;
+        grid-template-rows: repeat(4, 1fr);
     }
 
-    &__text {
+    &__title {
         @include tablet {
             width: 26.2rem;
         }
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1rem;
-        flex-shrink: 0;
-        width: 29.1rem;
-
-        .section-container :nth-child(odd) & {
+        @include mobile {
+            font-size: 2.4rem;
             grid-column: 1;
-            grid-row: 1;
-        }
-        .section-container :nth-child(even) & {
-            grid-column: 2;
-            grid-row: 1;
-        }
-    }
+            grid-row: 2;
 
-    &__title {
+            .section-container .section & {
+                grid-column: 1;
+                grid-row: 1;
+            }
+        }
+
+        width: 29.1rem;
+        margin-bottom: 1rem;
         font-size: 4.8rem;
         font-weight: 700;
+        line-height: normal;
         letter-spacing: -0.03rem;
+
+        .section-odd & {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .section-even & {
+            grid-column: 2;
+            grid-row: 2;
+        }
 
         .section-container :first-child &--grad {
             background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
@@ -163,6 +214,34 @@
     }
 
     &__desc {
+        @include tablet {
+            width: 26.2rem;
+        }
+
+        @include mobile {
+            grid-column: 1;
+            grid-row: 3;
+            width: 100%;
+            margin-top: 2rem;
+            margin-bottom: 1.6rem;
+            font-size: 1.5rem;
+            
+            .section-container .section & {
+                grid-column: 1;
+                grid-row: 3;
+            }
+        }
+
+        .section-odd & {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        .section-even & {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        width: 29.1rem;
         color: #6B6B6B;
         font-size: 1.6rem;
         font-weight: 500;
@@ -173,6 +252,26 @@
         @include tablet {
             width: 38.4rem;
             height: 31.5rem;
+
+            .section-container .section-odd & {
+                margin-left: 5.1rem;
+                margin-right: 0;
+            }
+            .section-container .section-even & {
+                margin-left: 0;
+                margin-right: 5.1rem;
+            }
+        }
+
+        @include mobile {
+            width: 100%;
+            height: auto;
+
+            .section-container .section & {
+                grid-column: 1;
+                grid-row: 2;
+                margin: 0;
+            }
         }
 
         overflow: hidden;
@@ -183,13 +282,17 @@
         width: 55rem;
         height: 45rem;
 
-        .section-container :nth-child(odd) & {
+        .section-odd & {
             grid-column: 2;
-            grid-row: 1;
+            grid-row: 1/5;
+            margin-left: 15.7rem;
+            margin-right: 0;
         }
-        .section-container :nth-child(even) & {
+        .section-even & {
             grid-column: 1;
-            grid-row: 1;
+            grid-row: 1/5;
+            margin-left: 0;
+            margin-right: 15.7rem;
         }
     }
 

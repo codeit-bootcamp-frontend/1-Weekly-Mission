@@ -10,7 +10,13 @@
     &__inner {
         @include tablet {
             max-width: 80rem;
-            padding: 2rem 3.2rem;
+            padding-left: 3.2rem;
+            padding-right: 3.2rem;
+        }
+
+        @include mobile {
+            padding-top: 1.3rem;
+            padding-bottom: 1.3rem;
         }
 
         display: flex;
@@ -29,7 +35,6 @@
             }
         }
 
-        flex-shrink: 0;
         margin-right: 0.5rem;
     }
 
@@ -38,7 +43,6 @@
             width: 8rem;
         }
 
-        flex-shrink: 0;
         width: 12.8rem;
         margin-left: 0.5rem;
     }
