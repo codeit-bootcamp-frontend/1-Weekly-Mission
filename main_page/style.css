@@ -265,7 +265,7 @@ header a{ /* login button */
 
 .contents_img.share{
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+    url("/assets/images/image\ 25.png");
     background-position : center;
     background-size : cover;
     background-repeat : no-repeat;
