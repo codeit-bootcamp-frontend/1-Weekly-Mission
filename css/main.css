@@ -228,7 +228,8 @@ a, button {
   font-weight: 400;
 }
 .form__input-box {
-  width: 40rem;
+  width: 100%;
+  height: auto;
   margin-top: 1.2rem;
   padding: 1.8rem 1.5rem;
   border: 0.1rem solid #CCD5E3;
@@ -568,6 +569,10 @@ a, button {
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+  width: 100%;
+  max-width: 40rem;
+  height: auto;
+  padding: 0 3.2rem;
 }
 .auth__logo img {
   width: 21rem;
@@ -577,6 +582,7 @@ a, button {
   flex-direction: column;
   align-items: center;
   gap: 1.6rem;
+  width: 100%;
 }
 .auth__redirect {
   font-size: 1.6rem;
@@ -589,9 +595,13 @@ a, button {
   text-decoration: underline;
   color: #6D6AFE;
 }
+.auth .button {
+  padding: 1.6rem 2rem;
+  font-size: 1.8rem;
+}
 .auth__social {
   display: flex;
-  width: 40rem;
+  width: 100%;
   padding: 1.2rem 2.4rem;
   justify-content: space-between;
   align-items: center;

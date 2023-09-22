@@ -20,7 +20,8 @@
         }
 
         &-box {
-            width: 40rem;
+            width: 100%;
+            height: auto;
             margin-top: 1.2rem;
             padding: 1.8rem 1.5rem;
             border: 0.1rem solid $linkbrary-gray-20;
