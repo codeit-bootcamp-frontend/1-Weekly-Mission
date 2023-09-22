@@ -1,7 +1,7 @@
 @import "reset.css";
 
   body{
-    background-color: var(--Gray1);
+    background-color: var(--color-gray1);
     margin:0;
   }
   a{
@@ -19,7 +19,7 @@
 
   /* header css 작성 */
   header{
-    background-color: var(--Gray1);
+    background-color: var(--color-gray1);
     padding: 2rem 20rem;
     display: flex;
     flex-wrap: nowrap;
@@ -37,7 +37,7 @@
     padding: 1.6rem 2rem;
     border: none;
     border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--Primary) 0.12%, #6AE3FE 101.84%));
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--color-primary) 0.12%, #6AE3FE 101.84%));
   }
   .link-button .a-label{
     color: var(--grey-light, #F5F5F5);
@@ -67,7 +67,7 @@
     min-width: 77rem;
   }
   .main-section .section-title .gradient-text{
-    background: linear-gradient(91deg, var(--Primary) 17.28%, #FF9F9F 74.98%);
+    background: linear-gradient(91deg, var(--color-primary) 17.28%, #FF9F9F 74.98%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -84,7 +84,7 @@
   /* .section 2. cards list */
   /* card 요소 공통 부분들 */
   .cards{
-    background-color: var(--White);
+    background-color: var(--color-white);
     display:flex;
     flex-direction: column;
     justify-content: space-around;
@@ -126,7 +126,7 @@
   }
   .card .images{
     border-radius: 15px;
-    background: var(--Gray1);
+    background: var(--color-gray1);
     display: flex;
     flex-wrap: nowrap;
     padding:0;
@@ -213,7 +213,7 @@
 
 /* footer css 작성 */
 footer{
-  background: var(--the-julge-black, var(--Black));
+  background: var(--the-julge-black, var(--color-black));
   padding:3rem 10.4rem 9rem;
   display: flex;
   justify-content: space-between;
