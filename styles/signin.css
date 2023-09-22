@@ -1,0 +1,131 @@
+ @import "./reset.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: rgba(240, 246, 255, 1);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F0F6FF;
+  font-family: "Pretendard";
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25rem;
+  height: 33.125rem;
+  margin: 14.875rem 0 7.25rem 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.875rem;
+}
+
+.title-logo{
+  width: 13.1614rem;
+  height: 2.375rem;
+}
+
+.title-logo img {
+  width: 100%
+}
+
+.title-subtext {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 0.5rem;
+}
+
+button {
+  margin-top: 1.875rem;
+  display: flex;
+  width: 25rem;
+  padding: 1rem 1.25rem;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 0.5rem;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    rgba(109, 106, 254, 1),
+    rgba(106, 227, 254, 1)
+  ); 
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor : pointer;
+}
+
+input {
+  display: flex;
+  width: 25rem;
+  padding: 1.125rem 0.9375rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid #ccd5e3;
+  background: #fff;
+}
+
+input:focus {
+  outline: none;
+  border: 0.125rem solid #6D6AFE;
+  border-radius: 0.5rem; 
+}
+
+.helper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+  position: relative;
+  margin: 0.75rem 0 1.5rem 0;
+}
+
+.input-eye-off{
+  position: absolute;
+  right: 0.9375rem;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.another-signup {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 25rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid #ccd5e3;
+  background-color: #e7effb;
+}
+
+.another-signup-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #e7effb;
+  gap:1rem;
+}
+
+.another-signup-text {
+  background-color: #e7effb;
+}
