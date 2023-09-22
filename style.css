@@ -60,9 +60,7 @@ header {
 }
 
 .container_1 .content {
-  gap: 40px;
   flex-direction: column;
-  padding-top: 164px;
   background: #f0f6ff;
 }
 
@@ -318,6 +316,7 @@ header {
 
     .container_1 .content {
       padding-top: 91px;
+      gap: 24px;
     }
 
     .container_1 .img-section {
@@ -438,6 +437,11 @@ header {
     width: 262px;
   }
 
+  .container_1 .content {
+    padding-top: 129px;
+    gap: 40px;
+  }
+
   .container_1 .img-section {
     width: 698px;
     height: 343px;
@@ -497,6 +501,11 @@ header {
   .header-content {
     margin: 20px 200px;
     width: 100%;
+  }
+
+  .container_1 .content {
+    padding-top: 164px;
+    gap: 40px;
   }
 
   .container_1 .img-section {
