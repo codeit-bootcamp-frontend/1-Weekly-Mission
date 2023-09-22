@@ -377,7 +377,8 @@
 	.section__img-wrapper {
 		align-self: center;
 		order: 2;
-		width: 100%;
+		width: calc(100vw - 6.4rem);
+		height: calc(81vw - 6.4rem);
 		margin-bottom: 1.6rem;
 	}
 
@@ -418,6 +419,27 @@
 
 	.main__img-container img {
 		width: 30.2rem;
+	}
+
+	.save__img-container > img,
+	.save__img--icon > img {
+		width: 48vw;
+	}
+
+	.manage__img-wrapper img {
+		width: 100%;
+	}
+
+	.share__img-container img {
+		width: 74%;
+	}
+
+	.search__img-wrapper {
+		padding: 12vw 0 0 14vw;
+	}
+
+	.search__img-wrapper img {
+		width: 74vw;
 	}
 
 	.footer__wrapper {
