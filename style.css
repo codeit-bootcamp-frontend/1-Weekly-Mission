@@ -117,45 +117,63 @@ a:hover {
 section {
   background-color: #ffffff;
   width: 100%;
-  padding: 5.2vmin 0 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .wrapper_outer {
   width: 998px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 157px;
-  padding: 50px 0;
+  height: 450px;
+  margin: 50px auto;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(2,1fr);
+  grid-template-areas: 
+  "title_area inner_image"
+  "subtitle_area inner_image";
+  gap: 10px 157px;
+}
+
+.wrapper_outer.top {
+  margin-top: 120px;
+}
+
+.wrapper_outer.reverse {
+  grid-template-areas: 
+  "inner_image title_area"
+  "inner_image subtitle_area";
 }
 
 
-.text_wrapper  {
+/* .text_wrapper  {
   display: flex;
   width: 18.1875rem;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-}
+} */
 
-.text_wrapper > h2 {
+.title {
   width: 259px;
   font-size: 48px;
   text-wrap: balance;
   font-weight: 700;
   letter-spacing: -0.3px;
   line-height: normal;
+  align-self: end;
+  grid-area: title_area;
 }
 
-.text_wrapper > p {
+.subtitle {
   width: 257px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5em;
   color: #6b6b6b;
+  grid-area: subtitle_area;
+}
+
+.inner_image {
+  grid-area: inner_image;
 }
 
 #keyword_store {
@@ -256,29 +274,39 @@ a {
   #main_image {
     width: 100%;
     flex-shrink: 0;
-    border-radius: 25px;
     padding : 29px 23px 0;
   }
 
 
-
+/* 이미지 크기 및 텍스트 크기를 어떻게 해야 자동적으로 늘어났다 줄게 할 수 있는지 모르겠습니다. ㅠㅠ */
   .wrapper_outer {
+    margin: 50px auto;
+    gap: 10px 51px;
     width: 698px;
-    margin: 0 auto;
-    gap: 51px;
+    height: 315px;
+    justify-content: center;
+    grid-template-columns: 262px 384px;
+    grid-template-rows: auto;
+  }
+
+  .wrapper_outer.reverse {
+    grid-template-columns: 384px 262px;
+    grid-template-rows: auto;
   }
 
   .inner_image {
-    width: 384px;
-    height: auto;
+    height: 315px;
+    width: auto;
+
   }
   
-  .text_wrapper > h2 {
+  .title {
     width: 262px;
   }
   
-  .text_wrapper > p {
+  .subtitle {
     width: 262px;
+    align-self: start;
   }
 }
 
@@ -337,26 +365,36 @@ a {
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
   }
 
+  section {
+    padding: 0px 32px;
+  }
+
   .wrapper_outer {
     width: 100%;
-    margin: 0 auto;
+
+    margin:0 auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 5vmin;
-    padding: 40px 32px 36px;
-  }
-  .wrapper_outer.manage, .wrapper_outer.search {
-    flex-direction: column-reverse;
+    align-items: center;
+
+    padding:40px 0 36px;
   }
 
-  .wrapper_outer.search{
-    padding-bottom: 80.9px;
+  .wrapper_outer.top {
+    margin-top: 0;
   }
 
-  img, .text_wrapper {
-    padding: 0 4vw;
-  }
+  /* .wrapper_outer.reverse {
+    grid-template-columns: none;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-areas:
+    "title_area"
+    "inner_image"
+    "subtitle_area";
+
+  } */
+
+
 
   /* .main_bg_image {
     width: 100%;
@@ -370,36 +408,25 @@ a {
     padding: 0;
   }
 
-  .text_wrapper {
-    width: 100%;
 
-  }
 
   .inner_image {
     width: 100%;
-    flex-shrink: 0;
-    padding: 0 4vw;
-    transition-duration: 1s;
+    height: auto;
   }
 
-  .text_wrapper > h2 {
+  .title {
     font-size: 1.5rem;
     width: 100%;
   }
 
-  .text_wrapper > p {
+  .subtitle {
     font-size: .9375rem;
     width: 100%;
-  }
-
-  .header_texts > h1 {
-    font-size: 8vmin;
+    order: 3;
   }
 
 
-  .top_header_left {
-    min-width: 50px;
-  }
 
   footer {
     margin: 40px 0 0;
