@@ -72,11 +72,6 @@ main{
   width: 100%;
 }
 
-/* input{
-  width: 100%;
-  padding: 1.8rem 1.5rem;
-} */
-
 input {
   display: flex;
   justify-content: center;
@@ -113,6 +108,7 @@ input:focus {
   font-weight: 600;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  border: 0;
 }
 
 footer {
