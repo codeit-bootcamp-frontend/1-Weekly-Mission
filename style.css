@@ -75,9 +75,8 @@ header .login-link {
     url(images/main_image.png);
     background-size: cover; 
     border-radius:25px;
-    margin: 50px 41px -119px;
+    margin: 50px 41px -119px; 
 }
-
 
 .sections {
     display: flex;
@@ -280,7 +279,7 @@ footer {
     margin-left: 10px;
 }
 
-/* tablet size */
+/*tablet size*/
 
 @media (max-width: 1199px) {
   header {
@@ -472,4 +471,4 @@ footer {
     align-items: flex-start;
     gap: 60px;
   }
-} 
+}
