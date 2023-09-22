@@ -16,7 +16,17 @@ header {
     width: 100%;
     max-width: 192rem;
     padding: 2rem 10rem;
+
 }
+/* @media(max-width : 1199px){
+    .header-title{
+       
+        min-width: 1136px;
+        
+    }
+}
+*/
+
 button.login{
     width:8.8rem;
     padding: 1.6rem 2rem;
@@ -74,6 +84,12 @@ button.addlink{
     flex-shrink: 0;
     border-radius: 2.5rem;
 }
+@media(max-width:1199px){
+    .card_head__img{
+        width: 650px;
+        height: 380px;
+    }
+}
 
 .cards{
     display: flex;
@@ -84,6 +100,8 @@ button.addlink{
     align-items: center;
     padding-top: 7rem;
 }
+
+
 
 .card__title{
     margin: 0;
@@ -107,6 +125,12 @@ button.addlink{
     border-radius: 1.5rem;
     
 }
+@media(max-width:1199px){
+    .card__img{
+        width: 385px;
+        height: 315px;
+    }
+}
 .card{
     display: flex;
     margin: 5rem auto 5rem;
@@ -114,6 +138,11 @@ button.addlink{
     align-items: center;
     gap: 15rem;
     
+}
+@media(max-width:1199px){
+    .card{
+        gap:5.1rem
+    }
 }
 
 .highlight--link{
@@ -173,4 +202,22 @@ footer .icons{
 }
 button:hover{
     cursor: pointer;
+}
+/* mobile */
+@media(max-width:767px){
+
+}
+/* tablet */
+@media(max-width : 1199px){
+    
+    .card_head__title{
+        color: red;
+    }
+}
+
+@media(max-width : 767px){
+    
+    .card_head__title{
+        color: blue;
+    }
 }
