@@ -401,27 +401,40 @@ a {
   }
 
   footer {
-    padding: 32px 0 64px;
+    margin: 40px 0 0;
+    padding: 2rem 0 2rem;
   }
   
   .wrapper_footer {
     width: 100%;
-    padding: 0 3vmin;
+    padding: 0 3rem;
     margin: 0 auto;
-    display: flex;
+    display: grid;
     justify-content: space-between;
+    grid-template: 
+    repeat(2, 1fr)/
+    repeat(2, 1fr);
+    grid-template-areas: 
+    "a b"
+    "c .";
+    gap:60px 0;
+
   }
   
   .copyright {
-    font-size: 1vmin;
+    font-size: 1rem;
+    grid-area: c;
   }
   
   .policy_wrapper {
-    font-size: 1.5vmin;
-    gap: 2vmin;
+    font-size: 1rem;
+    gap: 32px;
+    grid-area: a;
   }
   
   .icons {
-    gap: 2vmin;
+    gap: .75rem;
+    grid-area: b;
+    justify-content: flex-end;
   }
 }
