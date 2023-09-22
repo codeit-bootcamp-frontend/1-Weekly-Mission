@@ -168,6 +168,7 @@ header {
   font-weight: 500;
   line-height: 150%; /* 24px */
   color: #6b6b6b;
+  word-break: keep-all;
 }
 
 .container_3 {
@@ -298,11 +299,26 @@ header {
 
 @media (min-width: 375px) {
   .header-content {
-    margin: 20px 32px;
+    margin: 13px 32px;
     width: 100%;
   }
 
   @media (max-width: 767px) {
+    .loginBtn {
+      width: 80px;
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    .logo {
+      width: 88.667px;
+      height: 16px;
+    }
+
+    .container_1 .content {
+      padding-top: 91px;
+    }
+
     .container_1 .img-section {
       display: flex;
       justify-content: center; /* 수직으로 가운데 정렬 */
