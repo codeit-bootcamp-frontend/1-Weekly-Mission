@@ -3,6 +3,9 @@
   body{
     background-color: var(--color-gray1);
     margin:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
   a:visited, a:link{
     color: var(--color-primary);
@@ -10,18 +13,18 @@
   button{
     cursor: pointer;
   }
-  main{
+
+  .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20vh auto 5rem;
+    margin: 20rem auto 5rem;
   }
   .spacing{
     margin:0;
     padding-top: 2rem;
   }
-
   /* title section 설정하기 */
   .title-section{
     display: flex;
@@ -84,14 +87,13 @@
 
   .link-button{
     margin-top:2rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue);
-  }
-  .link-button .a-label{
     color: var(--grey-light);
     font-size: 1.8rem;
     font-style: normal;
@@ -123,4 +125,15 @@
     gap:1rem;
     justify-content: center;
     align-items: center;
+  }
+
+  /* 부트스트랩 small 기준 */
+  @media(max-width: 768px){    
+    main{
+      padding: 0 3.2rem;
+    }
+    .container *{
+      min-width: 40rem;
+      width: 100%;
+    }
   }
