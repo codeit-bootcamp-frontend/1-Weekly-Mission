@@ -19,7 +19,7 @@ header {
   align-items: center;
   gap: 0.5rem;
   align-self: stretch;
-  background-color: var(--linkbrary-bg, #F0F6FF);
+  background-color: var(--linkbrary-bg);
   position: sticky;
   top: 0;
 }
@@ -43,7 +43,7 @@ footer .frame .footer_element .sns_icons img {
 
 header .login {
   border: none;
-  color: var(--grey-light, #F5F5F5);
+  color: var(--grey-light);
   font-family: Pretendard;
   font-size: 1.125rem;
   font-weight: 600;
@@ -54,7 +54,7 @@ header .login {
   align-items: center;
   gap: 0.625rem;
   border-radius: 8px;
-  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+  background: var(--gra-purpleblue-to-skyblue);
   text-decoration-line: none;
 }
 
@@ -95,8 +95,8 @@ main .intro .addlink {
   align-items: center;
   gap: 0.625rem;
   border-radius: 8px;
-  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
-  color: var(--grey-light, #F5F5F5);
+  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--grey-light);
   font-family: Pretendard;
   font-size: 1.125rem;
   font-weight: 600;
@@ -172,7 +172,7 @@ main .content {
 
 
 .frame .texts.sky_blur {
-  background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
+  background: var(--fandom-k-gra-blue-to-pink);
   background-clip: text;
   -webkit-background-clip: text;
 }
@@ -216,7 +216,7 @@ footer .frame {
   align-items: center;
   flex-shrink: 0;
   align-self: stretch;
-  background: var(--the-julge-black, #111322);
+  background: var(--the-julge-black);
 }
 
 
