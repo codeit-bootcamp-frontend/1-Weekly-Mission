@@ -2,8 +2,17 @@
 @import url(common.css);
 
 /* sign-in page */
-.sign-box {
+
+body {
+  min-height: 100%;
   background: var(--gray-zircon);
+}
+
+.sign-box {
+  /* background: var(--gray-zircon); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sign-box .container  {
@@ -119,8 +128,21 @@
   margin: 25%;
 }
 
-/* sign-up page*/
+/* sign-up page */
 
 .sign-box.sign-up .container {
   padding: 238px 0 116px;
+}
+
+/* mobile size */
+
+@media (max-width: 767px) {
+  .sign-box .input-box {
+    max-width: 400px;
+    padding: 0 32px;
+}
+
+.sign-box.sign-up .container {
+  padding: 35% 0;
+}
 }
