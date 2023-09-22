@@ -94,19 +94,18 @@
     margin: 0;
   }
   .cards .card{
-    display: grid;
+    display: flex;
     height:40rem;
   }
-  .card.right{
-    grid-template-columns: 35rem 15rem 60rem;
-  }
-  .card.left{
-    grid-template-columns: 60rem 15rem 35rem;
+  .card .spacing{
+    margin: 0;
+    padding: 7.5rem;
   }
   .card .card-article{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 35rem;
   }
   .card .card-title{
     color: #000;
@@ -122,6 +121,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 2.4rem;
+    padding: 1rem;
   }
   .card .images{
     border-radius: 15px;
