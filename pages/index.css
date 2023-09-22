@@ -33,6 +33,7 @@ a:hover {
 }
 
 nav {
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -311,7 +312,7 @@ footer .website {
   .preview {
     padding: 2.8rem 3.2rem;
     gap: 2.4rem;
-    margin-bottom: 0;
+    margin-bottom: 4rem;
   }
 
   .preview .button {
@@ -325,8 +326,9 @@ footer .website {
   }
 
   .content {
-    padding: 4rem 3.2rem;
-    gap: 2.4rem;
+    position: relative;
+    padding: 4rem 3.2rem 8rem 3.2rem;
+    gap: 1.6rem;
     flex-direction: column;
   }
 
@@ -337,22 +339,26 @@ footer .website {
   .content .text {
     gap: 1rem;
     width: 100%;
+    order: 2;
   }
 
   .content h2 {
+    position: absolute;
     font-size: 2.4rem;
     width: 100%;
+    top: 0;
   }
 
   .content h4 {
     font-size: 1.5rem;
-    width: 100%;
+    width: 10
   }
 
   .content img {
     width: 100%;
     height: auto;
     flex-basis: auto;
+    order: 1;
   }
 
   footer {
