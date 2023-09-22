@@ -389,6 +389,12 @@ header {
     .img-section {
       order: 1;
     }
+
+    .linkAddBtn {
+      width: 200px;
+      padding: 10px 16px;
+      font-size: 14px;
+    }
   }
 }
 
