@@ -1,4 +1,4 @@
- @import "./reset.css" 
+ @import "./reset.css" ;
 
 * {
   box-sizing: border-box;
@@ -33,9 +33,13 @@ section {
   align-items: center;
 }
 
-section img {
+.wrapper {
   width: 34.375rem;
   height: 28.125rem;
+}
+
+section img {
+  width: 100%;
 }
 
 .gradient-link {
@@ -44,7 +48,7 @@ section img {
   align-items: center;
   border-radius: 0.5rem;
   padding: 1rem 1.25rem;
-  background-image: linear-gradient(
+  background: linear-gradient(
     90deg,
     rgba(109, 106, 254, 1),
     rgba(106, 227, 254, 1)
@@ -80,7 +84,7 @@ a {
 }
 
 .head-title-gradient {
-  background-image: linear-gradient(119deg, #6d6afe 0%, #ff9f9f 100%);
+  background: linear-gradient(119deg, #6d6afe 0%, #ff9f9f 100%);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -121,21 +125,21 @@ a {
 }
 
 .main-text .section-gradient-1 {
-  background-image: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .main-text .section-gradient-2 {
-  background-image: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+  background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .main-text .section-gradient-3 {
-  background-image: linear-gradient(
+  background: linear-gradient(
     99deg,
     #6d7ccd 19.76%,
     rgba(82, 136, 133, 0.22) 52.69%
@@ -146,7 +150,7 @@ a {
 }
 
 .main-text .section-gradient-4 {
-  background-image: 
+  background: 
     linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -167,7 +171,7 @@ footer {
   justify-content: center;
   width: 100%;
   height: 10rem;
-  background: var(--the-julge-black, #111322);
+  background: #111322;
   margin-top: 7.5rem;
   padding: 2rem 6.5rem 4rem;
 }

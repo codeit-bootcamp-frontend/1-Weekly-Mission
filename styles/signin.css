@@ -1,4 +1,4 @@
- @import "./reset.css"
+ @import "./reset.css";
 
 * {
   box-sizing: border-box;
@@ -48,7 +48,6 @@ label {
   flex-direction: column;
   align-items: flex-start;
   border-radius: 0.5rem;
-  position: relative;
 }
 
 button {
@@ -60,8 +59,8 @@ button {
   align-items: center;
   color: #fff;
   border-radius: 0.5rem;
-  border-color: transparent;
-  background-image: linear-gradient(
+  border: none;
+  background: linear-gradient(
     90deg,
     rgba(109, 106, 254, 1),
     rgba(106, 227, 254, 1)
@@ -80,17 +79,25 @@ input {
   border-radius: 0.5rem;
   border: 0.0625rem solid #ccd5e3;
   background: #fff;
-  margin: 0.75rem 0 1.5rem 0;
 }
 
-input:focus-visible {
-  outline: 0.125rem solid #6D6AFE;
-  border-radius: 0.1875rem;
+input:focus {
+  outline: none;
+  border: 0.125rem solid #6D6AFE;
+  border-radius: 0.5rem; 
+}
+
+.helper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+  position: relative;
+  margin: 0.75rem 0 1.5rem 0;
 }
 
 .input-eye-off{
   position: absolute;
-  top: 3rem;
   right: 0.9375rem;
   display:flex;
   flex-direction: row;
