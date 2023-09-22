@@ -327,6 +327,10 @@ header {
       height: 107%;
     }
 
+    .text-section {
+      width: 100%;
+    }
+
     .container_1 .text {
       font-size: 32px;
       line-height: 131.25%; /* 131.25% */
@@ -412,6 +416,10 @@ header {
     gap: 51px;
   }
 
+  .text-section {
+    width: 262px;
+  }
+
   .container_1 .img-section {
     width: 698px;
     height: 343px;
@@ -490,6 +498,10 @@ header {
 
   .content {
     gap: 157px;
+  }
+
+  .text-section {
+    width: 291px;
   }
 
   .container_2 .content .img-section {
