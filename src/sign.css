@@ -30,12 +30,12 @@ header {
   height: 3.8rem;
 }
 
-.signup-recommendation {
+.recommendation {
   font-size: 1.6rem;
   line-height: 2.4rem;
 }
 
-.signup-button {
+.recommendation-link {
   color: var(--primary);
   font-weight: 600;
   line-height: normal;
@@ -92,7 +92,7 @@ input:focus {
   bottom: 1.8rem;
 }
 
-.signin-button {
+.submit-button {
   display: flex;
   justify-content: center;
   align-items: center;
