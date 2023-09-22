@@ -136,6 +136,9 @@
   }
 
   /* 1번 카드 css 코드 */
+  .card-img{
+    width: 55rem;
+  }
   .card .images.list{
     justify-content: space-between;
   }
