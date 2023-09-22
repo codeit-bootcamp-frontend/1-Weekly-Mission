@@ -1,12 +1,17 @@
 .auth {
 	display: flex;
-	padding: 14.875rem 2rem;
+	padding: 14.875rem 2rem 7.25rem;
 	background-color: var(--linkbrary-zircon);
 	justify-content: center;
 }
+@media screen and (max-width: 74.9375rem) {
+	.auth {
+		padding: 12.5rem 2rem 11.0625rem;
+	}
+}
 @media screen and (max-width: 47.9375rem) {
 	.auth {
-		padding: 7.5rem 2rem;
+		padding: 7.5rem 2rem 7.4375rem;
 	}
 }
 /* 아이폰 se */
