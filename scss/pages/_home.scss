@@ -15,6 +15,12 @@
     }
 
     &__title {
+        @include tablet {
+            & {
+                width: 47.5rem;
+            }
+        }
+
         text-align: center;
         font-size: 6.4rem;
         font-weight: 700;
@@ -33,6 +39,13 @@
     }
 
     &__frame {
+        @include tablet {
+            & {
+                width: 65rem;
+                height: 33rem;
+            }
+        }
+
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -44,6 +57,13 @@
     }
 
     &__img {
+        @include tablet {
+            & {
+                width: 65rem;
+                height: 38.3rem;
+            }
+        }
+
         width: 111.8rem;
         height: 70.7rem;
         background-image: url("/public/images/main-screen.png");
@@ -55,6 +75,13 @@
     }
 
     &__dim {
+        @include tablet {
+            & {
+                width: 65rem;
+                height: 37rem;
+            }
+        }
+        
         position: absolute;
         top: 0;
         width: 111.8rem;
@@ -129,32 +156,4 @@
     &__img {
         width: 100%;
     }
-}
-
-@media screen and (max-width: 1199px) {
-    .main-section {
-        &__title {
-            width: 47.5rem;
-        }
-
-        &__frame {
-            width: 65rem;
-            height: 33rem;
-        }
-
-        &__img {
-            width: 65rem;
-            height: 38.3rem;
-        }
-
-        &__dim {
-            width: 65rem;
-            height: 37rem;
-        }
-    }
-    
-}
-
-@media screen and (max-width: 767px) {
-
 }

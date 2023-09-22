@@ -8,6 +8,13 @@
     background-color: $linkbrary-bg;
 
     &__inner {
+        @include tablet {
+            & {
+                max-width: 80rem;
+                padding: 2rem 3.2rem;
+            }
+        }
+
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -27,15 +34,4 @@
         width: 12.8rem;
         margin-left: 0.5rem;
     }
-}
-
-@media screen and (max-width: 1199px) {
-    .gnb__inner {
-        max-width: 80rem;
-        padding: 2rem 3.2rem;
-    }
-}
-
-@media screen and (max-width: 767px) {
-
 }
