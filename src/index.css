@@ -66,8 +66,8 @@ nav {
 }
 
 .hero-image {
-  width: 120rem;
-  height: 59rem;
+  width: 1200px;
+  height: 590px;
 }
 
 article {
@@ -91,7 +91,7 @@ section:nth-of-type(odd) {
     "title image"
     "description image"
     ". image"
-    /291px 55rem;
+    /291px 550px;
 }
 
 section:nth-of-type(even) {
@@ -100,7 +100,7 @@ section:nth-of-type(even) {
     "image title"
     "image description"
     "image ."
-    /550px 29.1rem;
+    /550px 291px;
 }
 
 .title {
@@ -134,8 +134,8 @@ section:nth-of-type(even) {
 
 .content-image {
   grid-area: image;
-  width: 55rem;
-  height: 45rem;
+  width: 550px;
+  height: 450px;
 }
 
 footer {
@@ -181,8 +181,62 @@ footer {
 }
 
 @media screen and (max-width: 1199px) {
+  br {
+    display: none;
+  }
+
   nav {
     padding: 0 3.2rem;
+  }
+
+  .hero-header {
+    padding-top: 3.9rem;
+    padding-left: 25rem;
+    padding-right: 25rem;
+  }
+
+  .hero-image {
+    width: 698px;
+    height: 343px;
+  }
+
+  .slogan { 
+    margin: 0 113px;
+  }
+
+  article {
+    padding-top: 3rem;
+    padding-bottom: 12rem;
+  }
+
+  section {
+    height: 41.5rem;
+    column-gap: 5.1rem;
+    place-items: center;
+  }
+
+  section:nth-of-type(odd) {
+    grid-template:
+      ". image"
+      "title image"
+      "description image"
+      ". image"
+      /262px 385px;
+  }
+  
+  section:nth-of-type(even) {
+    grid-template:
+      "image ."
+      "image title"
+      "image description"
+      "image ."
+      /385px 262px;
+  }
+  
+  .content-image {
+    grid-area: image;
+    width: 385px;
+    height: 315px;
   }
 }
 
