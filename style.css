@@ -53,11 +53,14 @@ header {
   border-radius: 8px;
 }
 
-.container_1 .content {
+.content {
   display: flex;
-  gap: 40px;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+.container_1 .content {
+  gap: 40px;
   flex-direction: column;
   padding-top: 164px;
   background: #f0f6ff;
@@ -369,8 +372,14 @@ header {
       background-size: 100% 100%;
     }
 
-    .content {
+    .container_2 .content,
+    .container_3 .content,
+    .container_4 .content,
+    .container_5 .content {
       width: 100%;
+      gap: 24px;
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 }
@@ -386,9 +395,7 @@ header {
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .content {
-    display: flex;
     gap: 51px;
-    align-items: center;
   }
 
   .container_1 .img-section {
@@ -468,9 +475,7 @@ header {
   }
 
   .content {
-    display: flex;
     gap: 157px;
-    align-items: center;
   }
 
   .container_2 .content .img-section {
