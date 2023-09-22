@@ -313,4 +313,24 @@ footer {
   footer {
     margin-top: 4rem;
   }
+
+  .footer-box {
+    display: grid;
+    grid-template:
+      "links sns"
+      "copyright .";
+    grid-row-gap: 6rem;
+  }
+
+  .copyright {
+    grid-area: copyright;
+  }
+  
+  .footer-links {
+    grid-area: links;
+  }
+  
+  .sns {
+    grid-area: sns;
+  }
 }
