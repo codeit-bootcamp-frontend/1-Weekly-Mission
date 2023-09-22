@@ -124,6 +124,9 @@
     height:40rem;
     border: none;
   }
+  .card.card-reverse{
+    flex-direction: row-reverse;
+  }
   .card .spacing{
     margin: 0;
     padding: 7.5rem;
