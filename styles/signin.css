@@ -1,11 +1,6 @@
-
-/* @import "/styles/reset.css" */
-/* 원래css reset을 하지 않고 페이지를 만들고 있었는데요, 이후 @import로 reset.css를 불러왔더니
-요소들이 폼 밖으로 삐져나가고, *로 적용한 속성들이 적용이 안되는 것 같아요..(현재는 적용이 되지 않도록 주석처리함)
-ㅠㅠ어떻게 해야하나요...? */
+ @import "./reset.css"
 
 * {
-  font-family: "Pretendard";
   box-sizing: border-box;
   margin: 0;
   background-color: rgba(240, 246, 255, 1);
@@ -16,6 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #F0F6FF;
+  font-family: "Pretendard";
 }
 
 form {
@@ -28,7 +24,6 @@ form {
 }
 
 header {
-  /* width: 100%;  필요하다고 생각했는데.... 필요 없는 걸까요..?*/
   display: flex;
   flex-direction: column;
   margin-bottom: 1.875rem;
@@ -73,6 +68,7 @@ button {
   ); 
   font-size: 1.125rem;
   font-weight: 600;
+  cursor : pointer;
 }
 
 input {
@@ -121,10 +117,8 @@ input:focus-visible {
   justify-content: flex-end;
   background-color: #e7effb;
   gap:1rem;
-    /* 위에 설정한 background-color가 아니라 *{} 안에 있는 배경 컬러가 적용되는 것 같습니다..왜죱..  */
 }
 
 .another-signup-text {
   background-color: #e7effb;
-    /* 이것도..설정한 background-color가 아니라 *{} 안에 있는 배경 컬러가 적용되는 것 같습니다..왜죱...  */
 }

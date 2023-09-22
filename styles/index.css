@@ -1,21 +1,18 @@
-/* @import "/styles/reset.css" 
-이걸 추가하였더니 전체 테두리에 마진이 생기고, 아래 *{} 이부분은 적용이 안되는 것 같아요 ㅠㅠ
-(현재는 적용되지 않도록 주석처리함) 왜 그런건가요.. ??   */
+ @import "./reset.css" 
 
 * {
-  font-family: "Pretendard";
   box-sizing: border-box;
-  margin: 0;
 }
 
-
+body{
+  font-family: "Pretendard";
+}
 
 header {
   background-color: rgba(240, 246, 255, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 
 nav {
@@ -30,7 +27,6 @@ nav {
 }
 
 section {
-  width: 100%;
   justify-content: center;
   display:flex;
   flex-direction:column;
@@ -179,7 +175,7 @@ footer {
 .footer-section {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /*space-between 속성값을 추가했는데 왜 로고 오른쪽 여백이 있을까요? ㅠㅠ 양쪽으로 정렬되는 것 아닌가요?? nav와 똑같이 했는데 왜 안될까요ㅠㅠ  */
+  justify-content: space-between;
   width: 100%;
 }
 
