@@ -1,9 +1,6 @@
 
 body{
-  display: flex;
   padding: 238px 0px 252px 0px;
-  justify-content: center;
-  align-items: center;
   background: var(--linkbrary-bg);
 
 }
@@ -78,11 +75,9 @@ main{
 
 
 .inputFrame .inputbox #email, #password{
-  display: flex;
+ 
   width: 400px;
   padding: 18px 15px;
-  justify-content: center;
-  align-items: center;
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-20);
   background: var(--linkbrary-white);
@@ -108,10 +103,7 @@ main{
 }
 
 .inputFrame .loginbutton{
-  display: flex;
   padding: 16px 20px;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue);
