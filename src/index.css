@@ -283,14 +283,15 @@ footer {
   section {
     padding: 4rem 3.2rem;
     height: auto;
+    row-gap: 0;
   }
 
   section:nth-of-type(odd),
   section:nth-of-type(even) {
     grid-template:
       "title"
-      "description"
-      "image";
+      "image"
+      "description";
     padding-left: 3.2rem;
     padding-right: 3.2rem;
   }
@@ -298,11 +299,13 @@ footer {
   .title {
     font-size: 2.4rem;
     line-height: 2.9rem;
+    margin-bottom: 2rem;
   }
   
   .description {
     font-size: 1.5rem;
     line-height: 150%;
+    margin-top: 1.6rem;
   }
 
   .content-image {
