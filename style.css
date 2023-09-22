@@ -3,15 +3,58 @@ Tablet: 768px 이상 ~ 1199px 이하
 Mobile: 375px 이상 ~ 767 px 이하 
 375px 미만 사이즈의 디자인은 고려하지 않음 */
 
-header {
-  position: sticky;
-  top: 0;
-  height: 5.875rem; /* 94px */
-  padding: 1.25rem 12.5rem; /* 20px 200px */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--linkbrary-bg);
+@media (min-width: 1200px) {
+  header {
+    position: sticky;
+    top: 0;
+    height: 5.875rem; /* 94px */
+    padding: 1.25rem 2rem; /* 20px 32px */
+    background-color: var(--linkbrary-bg);
+  }
+
+  header .header-nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  header {
+    position: sticky;
+    top: 0;
+    height: 5.875rem; /* 94px */
+    padding: 1.25rem 0; /* 20px 0 */
+    display: flex;
+    justify-content: center;
+    background-color: var(--linkbrary-bg);
+  }
+
+  header .header-nav-wrapper {
+    width: 110vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  header {
+    position: sticky;
+    top: 0;
+    height: 5.875rem; /* 94px */
+    padding: 1.25rem 2rem; /* 20px 32px */
+    display: flex;
+    justify-content: center;
+    background-color: var(--linkbrary-bg);
+  }
+
+  header .header-nav-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 header .header-logo {
