@@ -3,6 +3,7 @@ body {
 }
 
 /* AUTH GLOBAL */
+/* PC */
 .h1__page-title--hidden {
 	font-size: 0;
 	width: 1px;
@@ -22,6 +23,7 @@ body {
 }
 
 .auth__legend-wrapper {
+	margin-bottom: 3rem;
 	text-align: center;
 }
 
