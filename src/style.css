@@ -193,6 +193,12 @@ footer {
     padding: 0 6.5rem;
 }
 
+.footer__container-left-mobile{
+    display: flex;    
+    flex: 1 1 auto;
+    justify-content: space-between;
+}
+
 .footer__container-left {
     color: #676767;
     text-align: center;
@@ -221,7 +227,10 @@ footer {
 }
 
 .footer__container-right {
+    display: flex;
     gap: 0.75rem;
+    flex: 1 1 auto;
+    justify-content: flex-end;
 }
 
 /*타블렛 사이즈*/
@@ -258,4 +267,30 @@ footer {
         height: 19.6875rem;         
         background: #F0F6FF;
     }
+    .footer__container-left-mobile{
+        display: flex;    
+        flex: 1 1 auto;
+        justify-content: space-between;
+    }
+}
+
+/*모바일 사이즈*/
+@media (max-width: 767px){
+    .contents__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 9.8125rem;
+    }
+
+    .footer__container-left-mobile{
+        display: flex;
+        flex-direction: column-reverse;  
+        gap: 3.75rem;      
+    }
+
+    .footer__container-left {       
+        text-align: start;        
+    }
+
 }
