@@ -87,7 +87,7 @@
     background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--color-primary) 0.12%, #6AE3FE 101.84%));
   }
   .link-button .a-label{
-    color: var(--grey-light, #F5F5F5);
+    color: var(--grey-light);
     font-size: 1.8rem;
     font-style: normal;
     font-weight: 600;
