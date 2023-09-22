@@ -1,3 +1,9 @@
+@media screen (37.5rem <= width <= 76.7rem) {
+  
+}
+
+
+
 .margin-top-25 {
   margin-top: 2.5rem;
 }
@@ -91,6 +97,7 @@
   height: 1.6rem;
   padding: 0;
   background-color: #FFF;
+  border: 0;
 }
 
 
