@@ -138,21 +138,15 @@ header {
   width: 291px;
 }
 
-.container_2 .content .text-section .text_1 {
+.text_1 {
   margin: 0;
   font-family: Pretendard;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-size: 48px;
-  font-style: normal;
   font-style: normal;
   font-weight: 700;
-  font-weight: 700;
   line-height: normal;
-  line-height: normal;
+  font-size: 48px;
 
   color: #000;
-  letter-spacing: -0.3px;
   letter-spacing: -0.3px;
 }
 
@@ -193,17 +187,6 @@ header {
   width: 291px;
 }
 
-.container_3 .content .text-section .text_1 {
-  margin: 0;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  color: #000;
-  letter-spacing: -0.3px;
-}
-
 .container_3 .content .text-section span {
   background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
   background-clip: text;
@@ -241,17 +224,6 @@ header {
   align-items: flex-start;
   flex-direction: column;
   width: 291px;
-}
-
-.container_4 .content .text-section .text_1 {
-  margin: 0;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  color: #000;
-  letter-spacing: -0.3px;
 }
 
 .container_4 .content .text-section span {
@@ -294,17 +266,6 @@ header {
   align-items: flex-start;
   flex-direction: column;
   width: 291px;
-}
-
-.container_5 .content .text-section .text_1 {
-  margin: 0;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  color: #000;
-  letter-spacing: -0.3px;
 }
 
 .container_5 .content .text-section span {
@@ -439,6 +400,15 @@ header {
     .container_1 .img .gradation {
       width: calc(100% - 22px);
       height: 107%;
+    }
+
+    .container_1 .text {
+      font-size: 32px;
+      line-height: 131.25%; /* 131.25% */
+    }
+
+    .text_1 {
+      font-size: 24px;
     }
   }
 }
