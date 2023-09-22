@@ -60,15 +60,19 @@ form input:focus {
   border: 1px solid var(--linkbrary-primary);
 }
 
-form .password-off {
+form .password-wrapper {
   position: relative;
-  left: 23rem;
-  top: -2.25rem;
+}
+
+form .password-invisible {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-40%);
 }
 
 form .login {
   padding: 1rem 1.25rem;
-  margin-top: -1rem;
   align-items: center;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue);
