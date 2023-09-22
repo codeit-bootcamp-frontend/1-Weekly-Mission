@@ -143,11 +143,21 @@ a, button {
 .footer__inner {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
+  height: 16rem;
   max-width: 192rem;
   margin: 0 auto;
   padding: 3.2rem 10.4rem 6.4rem;
+}
+@media screen and (max-width: 767px) {
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 18rem 11.6rem;
+    grid-template-rows: 1.8rem 1.8rem;
+    row-gap: 6rem;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
 }
 .footer__copyright {
   font-family: Arial;
@@ -155,11 +165,23 @@ a, button {
   font-weight: 400;
   color: #676767;
 }
+@media screen and (max-width: 767px) {
+  .footer__copyright {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
 .footer__extra-page {
   display: flex;
   justify-content: center;
   gap: 3rem;
-  margin: 0 20px;
+}
+@media screen and (max-width: 767px) {
+  .footer__extra-page {
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: flex-start;
+  }
 }
 .footer__link {
   font-family: Arial;
@@ -171,8 +193,13 @@ a, button {
 .footer__sns {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   gap: 1.2rem;
+}
+@media screen and (max-width: 767px) {
+  .footer__sns {
+    grid-column: 2;
+    grid-row: 1;
+  }
 }
 
 .container {
