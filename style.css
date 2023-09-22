@@ -189,6 +189,7 @@ section {
 }
 
 footer {
+  height: 160px;
   background-color: #111322;
   padding: 32px 0 64px;
   margin-top: 120px;
@@ -281,7 +282,7 @@ a {
   }
 }
 
-/* 모바일 반응형 */
+/* 반응형 mobile 사이즈 */
 @media (max-width: 767px) {
 
   nav {
@@ -415,26 +416,26 @@ a {
     repeat(2, 1fr)/
     repeat(2, 1fr);
     grid-template-areas: 
-    "a b"
-    "c .";
+    "privacy icons"
+    "copyright .";
     gap:60px 0;
 
   }
   
   .copyright {
     font-size: 1rem;
-    grid-area: c;
+    grid-area: copyright;
   }
   
   .policy_wrapper {
     font-size: 1rem;
     gap: 32px;
-    grid-area: a;
+    grid-area: privacy;
   }
   
   .icons {
     gap: .75rem;
-    grid-area: b;
+    grid-area: icons;
     justify-content: flex-end;
   }
 }
