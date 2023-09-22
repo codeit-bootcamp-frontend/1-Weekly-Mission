@@ -73,6 +73,7 @@ header {
   font-style: normal;
   font-weight: 700;
   line-height: 125%;
+  word-break: keep-all;
 
   color: #000;
   text-align: center;
@@ -350,6 +351,7 @@ header {
     .container_1 .text {
       font-size: 32px;
       line-height: 131.25%; /* 131.25% */
+      width: 250px;
     }
 
     .text_1 {
@@ -439,6 +441,10 @@ header {
   .container_1 .img-section {
     width: 698px;
     height: 343px;
+  }
+
+  .container_1 .text {
+    width: 500px;
   }
 
   .container_1 .img {
