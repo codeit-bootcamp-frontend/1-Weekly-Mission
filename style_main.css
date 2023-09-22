@@ -134,24 +134,11 @@
     align-items: center;
     flex-grow: 2;
   }
-
-  /* 1번 카드 css 코드 */
   .card-img{
     width: 55rem;
   }
-  .card .images.list{
-    justify-content: space-between;
-  }
-  .images .sample-img{
-    position: relative;
-    margin:0;
-    padding:0;
-  }
-  .sample-img .down-button{
-    position: absolute;
-    bottom:1rem;
-    right:1rem;
-  }
+
+  /* 1번 카드 css 코드 */
   .card-title .color-link{
     background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
     background-clip: text;
@@ -160,12 +147,6 @@
   }
 
   /* 2번 카드 css 코드 */
-  .images.center-align{
-    justify-content: center;
-  }
-  .images .pop-img{
-    width: 70%;
-  }
   .card-title .color-manage{
     background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
     background-clip: text;
@@ -180,22 +161,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .images.black-filter{
-    position: relative;
-    overflow: hidden;
-    background-color: #000;
-  }
-  .sharepop-img{
-    z-index: 3;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-  }
-  .images .sample-web{
-    height: 100%;
-    opacity: 50%;
-  }
   
   /* 4번 카드 css 코드 */
   .card-title .color-search{
@@ -203,15 +168,6 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-  .images.edge{
-    position: relative;
-    overflow: hidden;
-  }
-  .images .screenshot{
-    position: absolute;
-    bottom:-3rem;
-    right:0;
   }
 
 /* footer css 작성 */
