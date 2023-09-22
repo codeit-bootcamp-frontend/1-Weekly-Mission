@@ -125,11 +125,13 @@ header {
   border-radius: 8px;
 }
 
-.container_2 {
+.container_2,
+.container_3,
+.container_4,
+.container_5 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 120px;
 }
 
 .text-section {
@@ -466,6 +468,17 @@ header {
     height: 383.114px;
   }
 
+  .container_2 {
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+
+  .container_3,
+  .container_4,
+  .container_5 {
+    padding: 50px 0px;
+  }
+
   .container_2 .img-section,
   .container_3 .img-section,
   .container_4 .img-section,
@@ -534,6 +547,17 @@ header {
 
   .text-section {
     width: 291px;
+  }
+
+  .container_2 {
+    padding-top: 120px;
+    padding-bottom: 50px;
+  }
+
+  .container_3,
+  .container_4,
+  .container_5 {
+    padding: 50px 0px;
   }
 
   .container_2 .content .img-section {
