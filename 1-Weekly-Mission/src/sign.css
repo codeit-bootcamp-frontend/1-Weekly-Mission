@@ -10,7 +10,7 @@ body {
 
   /* width: 144rem; */
   /* width: 100%; */
-  padding: 23.8rem 0 25.2rem 0;
+  padding-top: 23.8rem;
 
   background-color: var(--background-color);
 }
@@ -173,4 +173,26 @@ input:focus {
   align-items: center;
   width: 4.2rem;
   height: 4.2rem;
+}
+
+/* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다. */
+@media (max-width: 1199px) {
+  body {
+    padding-top: 20rem;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile 사이즈에서 좌우 여백 32px 제외하고 내부 요소들이 너비를 모두 차지합니다. */
+  body {
+    padding: 12rem 3.2rem;
+    width: 100%;
+  }
+
+  /* Mobile 사이즈에서 내부 요소들의 너비는 기기의 너비가 커지는 만큼 커지지만
+  400px을 넘지 않습니다. */
+  .sign_box {
+    width: 100%;
+    max-width: 40rem;
+  }
 }
