@@ -190,13 +190,13 @@
 
   .section {
     gap: 5rem;
+  }
 
   .section-img {
     width: 38.5rem;
     height: 31.5rem;
   }
 }
-
 
 /*------------mobile------------*/
 @media (max-width: 767px) {
