@@ -102,7 +102,7 @@ main{
   border-color: #6D6AFE;
 }
 
-.inputFrame .loginbutton{
+.inputFrame .login-button{
   padding: 16px 20px;
   gap: 10px;
   border-radius: 8px;
