@@ -16,16 +16,13 @@
 
     &__title {
         @include tablet {
-            & {
-                width: 47.5rem;
-            }
+            width: 47.5rem;
         }
 
         text-align: center;
         font-size: 6.4rem;
         font-weight: 700;
         line-height: 1.25;
-        word-break: keep-all;
 
         &--grad {
             background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
@@ -40,10 +37,8 @@
 
     &__frame {
         @include tablet {
-            & {
-                width: 65rem;
-                height: 33rem;
-            }
+            width: 65rem;
+            height: 33rem;
         }
 
         overflow: hidden;
@@ -58,10 +53,8 @@
 
     &__img {
         @include tablet {
-            & {
-                width: 65rem;
-                height: 38.3rem;
-            }
+            width: 65rem;
+            height: 38.3rem;
         }
 
         width: 111.8rem;
@@ -76,10 +69,8 @@
 
     &__dim {
         @include tablet {
-            & {
-                width: 65rem;
-                height: 37rem;
-            }
+            width: 65rem;
+            height: 37rem;
         }
         
         position: absolute;
@@ -91,6 +82,10 @@
 }
 
 .section-container {
+    @include tablet {
+        padding-top: 8rem;
+    }
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,15 +96,47 @@
 }
 
 .section {
-    display: flex;
-    align-items: center;
+    @include tablet {
+        gap: 5.1rem;
+
+        .section-container :nth-child(odd){
+            grid-template-columns: 26.2rem 38.5rem;
+        }
+        .section-container :nth-child(even){
+            grid-template-columns: 38.5rem 26.2rem;
+        }
+    }
+
+    display: grid;
     gap: 15.7rem;
 
+    .section-container :nth-child(odd){
+        grid-template-columns: 29.1rem 55rem;
+    }
+    .section-container :nth-child(even){
+        grid-template-columns: 55rem 29.1rem;
+    }
+
     &__text {
+        @include tablet {
+            width: 26.2rem;
+        }
+
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 1rem;
         flex-shrink: 0;
+        width: 29.1rem;
+
+        .section-container :nth-child(odd) & {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .section-container :nth-child(even) & {
+            grid-column: 2;
+            grid-row: 1;
+        }
     }
 
     &__title {
@@ -120,7 +147,6 @@
         .section-container :first-child &--grad {
             background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
         }
-
         .section-container :nth-child(2) &--grad {
             background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
         }
@@ -144,6 +170,11 @@
     }
 
     &__frame {
+        @include tablet {
+            width: 38.4rem;
+            height: 31.5rem;
+        }
+
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -151,6 +182,15 @@
         position: relative;
         width: 55rem;
         height: 45rem;
+
+        .section-container :nth-child(odd) & {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .section-container :nth-child(even) & {
+            grid-column: 1;
+            grid-row: 1;
+        }
     }
 
     &__img {

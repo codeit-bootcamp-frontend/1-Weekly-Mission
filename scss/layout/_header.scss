@@ -9,10 +9,8 @@
 
     &__inner {
         @include tablet {
-            & {
-                max-width: 80rem;
-                padding: 2rem 3.2rem;
-            }
+            max-width: 80rem;
+            padding: 2rem 3.2rem;
         }
 
         display: flex;

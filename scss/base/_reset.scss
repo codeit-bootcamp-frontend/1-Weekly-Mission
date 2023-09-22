@@ -62,6 +62,7 @@ textarea,
 th {
 	color: $resetBase_baseColor;
     font-family: Pretendard, $resetBase_baseFontFamily;
+	word-break: keep-all;
 }
 
 body {
@@ -76,3 +77,4 @@ html {
 a, button {
     cursor: pointer;
 }
+
