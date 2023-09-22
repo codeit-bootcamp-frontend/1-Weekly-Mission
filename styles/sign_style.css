@@ -145,3 +145,18 @@
   width: 2.6rem;
   height: 2.4rem;
 }
+
+/*------------tablet------------*/
+@media (max-width: 1199px) {
+  .background {
+    margin-top: 20rem;
+  }
+
+/*------------mobile------------*/
+@media (max-width: 767px) {
+  .background {
+    margin-top: 12rem;
+    padding-right: 3.2rem;
+    padding-left: 3.2rem;
+  }
+}

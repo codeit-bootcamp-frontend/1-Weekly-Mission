@@ -1,15 +1,18 @@
 /*------------header------------*/
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1;
-  padding: 2.0rem 20rem;
   background-color: var(--LB-bg);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 20rem;
 }
 
 .logo-img {
@@ -20,7 +23,7 @@
 .button {
   background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
   padding: 1.6rem 2.0rem;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--LB-white);
@@ -32,12 +35,16 @@
 }
 
 .banner {
+  padding-top: 7rem;
+  background-color: var(--LB-bg);
+}
+
+.banner-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4rem;
-  margin: 10rem auto;
-  background-color: var(--LB-bg);
+  margin: 5rem auto;
 }
 
 .slogan {
@@ -52,30 +59,19 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 6.4rem;
 }
 
 .banner .button{
   width: 35rem;
-  z-index: 1
-}
-
-.banner .imgframe {
-  margin-top: -13rem;
-  overflow: hidden;
 }
 
 .banner-img {
-  position: relative;
-  top: 15rem;
   width: 111.8rem;
-  height: 65.9rem;
-  border-radius: 2.5rem;
-  box-shadow: 0.4rem 0.4rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
+  height: 59rem;
+  border-radius: 25px;
 }
 
 /*------------main------------*/
-
 .section {
   display: flex;
   align-items: center;
@@ -90,83 +86,10 @@
   gap: 1rem;
 }
 
-.section .imgframe {
+.section-img {
   width: 55rem;
   height: 45rem;
-  border-radius: 1.5rem;
-}
-
-.save.imgframe {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  background-color: var(--LB-bg);
-}
-
-.photo-card {
-  width: 24.4rem;
-  height: 23.9rem;
-}
-
-.save.imgframe .download {
-  position: absolute;
-  bottom: 11rem;
-  right: 16rem; 
-  width: 4.6rem;
-  height: 4.6rem;
-}
-
-.management.imgframe {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 11.4rem 6.8rem 6.6rem;
-  background-color: var(--LB-bg);
-}
-
-.management-img {
-  width: 41.4rem;
-  height: 27rem;
-}
-
-.sharing.imgframe {
-  background-image: url(../public/images/banner-image.png);
-  background-position: center;
-  background-size: 93.4rem 59.1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-
-.sharing.imgframe .shadow {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  inset: 0;
-  padding: 12.1rem 7.7rem 7.7rem;
-}
-
-.sharing-img {
-  width: 41.6rem;
-  height: 27.1rem;
-
-}
-
-.search.imgframe {
-  background-color: var(--LB-bg);
-  overflow: hidden;
-}
-
-.search-img {
-  position: relative;
-  top: 6rem;
-  left: 6rem;
-  width: 61.9rem;
-  height: 58.4rem;
-  border-radius: 1.5rem;
+  border-radius: 15px;
 }
 
 .section .title {
@@ -178,10 +101,6 @@
   color: #6B6B6B;
   font-size: 1.6rem;
   font-weight: 500;
-}
-
-.section .gradient {
-  font-size: 4.8rem;
 }
 
 .save.gradient {
@@ -249,4 +168,104 @@
   display: inline-block;
   width: 2rem;
   height: 2rem;
+}
+
+/*------------tablet------------*/
+@media (max-width: 1199px) {
+  .nav,
+  .footer {
+    padding-right: 3.2rem;
+    padding-left: 3.2rem;
+  }
+
+  .nav-container {
+    margin: 1rem auto;
+    max-width: 79rem;
+  }
+
+  .banner-img {
+    width: 65rem;
+    height: 34.3rem;
+  }
+
+  .section {
+    gap: 5rem;
+
+  .section-img {
+    width: 38.5rem;
+    height: 31.5rem;
+  }
+}
+
+
+/*------------mobile------------*/
+@media (max-width: 767px) {
+  .banner-container,
+  .section {
+    margin-right: 32px;
+    margin-left: 32px;
+  }
+
+  .banner-container,
+  .section {
+    gap: 2.4rem;
+  }
+  
+  .banner-img,
+  .section .section-img,
+  .content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .button {
+    padding: 1rem 1.6rem;
+    font-size: 1.4rem;
+  }
+
+  .nav .button {
+    width: 8rem;
+  }
+
+  .banner .button {
+    width: 20rem;
+  }
+
+  .slogan {
+    font-size: 3.2rem;
+    line-height: 4.2rem;
+  }
+
+  .section {
+    flex-direction: column;
+    margin-top: 4rem;
+    margin-bottom: 8rem;
+  }
+
+  .section.reverse {
+    flex-direction: column-reverse;
+  }
+
+  .section .title {
+    font-size: 2.4rem;
+  }
+
+  .section .description {
+    font-size: 1.5rem;
+  }
+
+  .section .title br,
+  .section .description br {
+    display: none;
+    word-break: keep-all
+  }
+
+  .footer {
+    position: relative;
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 2.5rem;
+  }
 }
