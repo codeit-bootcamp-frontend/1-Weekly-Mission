@@ -98,6 +98,10 @@ main {
   color: transparent;
 }
 
+.title_br_middle {
+  display: none;
+}
+
 .title_br_small {
   display: none;
 }
@@ -252,8 +256,12 @@ footer {
     display: none;
   }
 
-  .title_br_small {
+  .title_br_middle {
     display: block;
+  }
+
+  .title_br_small {
+    display: none;
   }
 
   .main_image {
@@ -326,6 +334,18 @@ footer {
     height: 12.6rem;
   }
 
+  .title_br_large {
+    display: none;
+  }
+
+  .title_br_middle {
+    display: none;
+  }
+
+  .title_br_small {
+    display: block;
+  }
+
   .add_link {
     width: 20rem;
   }
@@ -335,24 +355,40 @@ footer {
     height: 16rem;
   }
 
-  .contents {
+  main {
+    width: 100%;
     padding: 4rem 3.2rem;
+  }
 
+  .contents {
     flex-direction: column;
-    gap: 2.4rem;
+    gap: 1.8rem;
+
+    height: 100%;
+  }
+
+  section.contents {
+    grid-template:
+      "title"
+      "image"
+      "paragraph";
   }
 
   .content_title {
     font-size: 2.4rem;
+    line-height: normal;
   }
 
   .content_title > br {
     display: none;
   }
 
+  /* Mobile 사이즈의 이미지는 좌우 여백 32px을 제외하고
+  이미지 영역이 꽉 찰 수 있도록 해주세요
+  (이때 가로가 커지는 비율에 맞춰 세로도 커지면 됩니다.) */
   .content_image {
-    width: 32.5rem;
-    height: 26.6rem;
+    width: 100%;
+    height: 100%;
   }
 
   /* Mobile 사이즈 너비가 커지면, “Privacy Policy”, “FAQ”, “codeit-2023”이 있는 영역과 
