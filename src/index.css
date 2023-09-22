@@ -201,7 +201,7 @@ footer {
   }
 
   .slogan { 
-    margin: 0 113px;
+    margin: 0 11.3rem;
   }
 
   article {
@@ -212,7 +212,6 @@ footer {
   section {
     height: 41.5rem;
     column-gap: 5.1rem;
-    place-items: center;
   }
 
   section:nth-of-type(odd) {
@@ -241,5 +240,77 @@ footer {
 }
 
 @media screen and (max-width: 767px) {
+  .hero-header {
+    row-gap: 2.4rem;
+    padding-top: 2.8rem;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+    margin-top: 6.3rem;
+  }
 
+  .hero-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .slogan { 
+    margin: 0 4.45rem;
+  }
+
+  .cta {
+    height: 3.7rem;
+    font-size: 1.4rem;
+  }
+
+  .cta-short {
+    width: 8rem;
+  }
+
+  .cta-long {
+    width: 20rem;
+  }
+
+  .slogan {
+    font-size: 3.2rem;
+    line-height: 4.2rem;
+    /* margin-inline: 0; */
+  }
+
+  article {
+    padding: 0;
+  }
+
+  section {
+    padding: 4rem 3.2rem;
+    height: auto;
+  }
+
+  section:nth-of-type(odd),
+  section:nth-of-type(even) {
+    grid-template:
+      "title"
+      "description"
+      "image";
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+
+  .title {
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+  }
+  
+  .description {
+    font-size: 1.5rem;
+    line-height: 150%;
+  }
+
+  .content-image {
+    width: 100%;
+    height: auto;
+  }
+
+  footer {
+    margin-top: 4rem;
+  }
 }
