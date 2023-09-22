@@ -3,17 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../nomalize.css" />
+    <link rel="stylesheet" href="../css/nomalize.css" />
+    <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/signin.css" />
     <title>Document</title>
   </head>
   <body>
     <div class="container-signin">
       <a href="/index.html">
-        <img id="logo-image" src="../images/sign/logo.svg" />
+        <img class="logo-image" src="../images/sign/logo.svg" />
       </a>
       <div class="redirection-text">
-        <p>회원이 아니신가요?</p>
+        회원이 아니신가요?
         <a href="./signup.html">회원가입하기</a>
       </div>
 
@@ -22,8 +23,11 @@
           >이메일 <input id="email" name="email" type="email"
         /></label>
         <label for="password" id="password-label"
-          >비밀번호<input id="password" name="pass" type="password" />
-          <img id="eye-on" src="../images/sign/eye-on.svg" />
+          >비밀번호
+          <div class="password-container">
+            <input id="password" name="pass" type="password" />
+            <img class="eye-on-image" src="../images/sign/eye-on.svg" />
+          </div>
         </label>
         <button id="login-button">로그인</button>
         <div class="social-login">
