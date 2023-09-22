@@ -1,8 +1,12 @@
-nav {
-  display: flex;
+header {
   position: fixed;
   width: 100%;
+}
+
+.nav {
+  display: flex;
   padding: 2rem 20rem;
+  margin: 0 auto;
   justify-content: space-between;
   align-items: center;
 }
@@ -59,13 +63,13 @@ nav {
 
 .section {
   display: grid;
+  width: 100%;
+  height: 55rem;
+  padding: 5rem 0;
   justify-content: center;
   align-items: center;
   column-gap: 15.7rem;
   row-gap: 1rem;
-  width: 100%;
-  height: 55rem;
-  padding: 5rem 0;
 }
 
 .section:nth-of-type(odd) {
@@ -95,8 +99,8 @@ nav {
 }
 
 .text {
-  grid-area: text;
   color: #6b6b6b;
+  grid-area: text;
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 500;
@@ -104,9 +108,9 @@ nav {
 }
 
 .image {
-  grid-area: img;
   width: 55rem;
   height: 45rem;
+  grid-area: img;
   flex-shrink: 0;
 }
 
@@ -166,16 +170,14 @@ footer {
   align-items: flex-start;
 }
 
-.name,
-.mobile-name {
+.name {
   color: #676767;
   align-items: flex-start;
   gap: 2.4rem;
   font-size: 1.6rem;
 }
 
-.option,
-.mobile-option {
+.option {
   display: flex;
   color: #cfcfcf;
   font-size: 1.6rem;
@@ -187,15 +189,13 @@ footer {
   gap: 12px;
 }
 
-.mobile,
-.mobile-only {
-  display: none;
-}
 
 /* Tablet Size */
 @media (max-width: 1199px) {
   .nav {
-    display: flex;
+    width: 77.9rem;
+    padding: 2rem 3.2rem;
+    margin: 0 auto;
   }
 
   .intro-section {
@@ -259,8 +259,7 @@ footer {
   }
 
   .nav {
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+    width: 100%;
    }
 
    .linkbrary {
@@ -297,8 +296,8 @@ footer {
     display: grid;
     width: 100%;
     height: auto;
-    row-gap: 2rem;
     padding: 4rem 3.2rem;
+    row-gap: 2rem;
    }
 
    .section:nth-of-type(odd) {
@@ -339,15 +338,23 @@ footer {
     padding: 3.2rem 3.2rem 6.4rem 3.2rem;
    }
 
-   .name,
-   .option {
-    display: none;
+   .footer-content {
+    flex-wrap: wrap;
+    row-gap: 6rem;
    }
 
-   .mobile-only {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 6rem;
+   .name {
+    order: 3;
+   }
+
+   .option {
+    flex-basis: 50%;
+    gap: 2.5rem
+   }
+
+   .social {
+    flex-basis: 50%;
+    justify-content: end;
    }
 
 }
