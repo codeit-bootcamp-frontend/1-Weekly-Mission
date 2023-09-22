@@ -173,7 +173,7 @@ button {
 @media (max-width: 768px) {
   .container {
     margin: 12rem 3.2rem auto;
-    width:100%;
+    width: 100%;
     }
 
   button, .input_container, .sns_link_container {
