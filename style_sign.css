@@ -1,11 +1,11 @@
 @import "reset.css";
 
   body{
-    background-color: var(--Gray1);
+    background-color: var(--color-gray1);
     margin:0;
   }
   a:visited, a:link{
-    color: var(--Primary);
+    color: var(--color-primary);
   }
   button{
     cursor: pointer;
@@ -49,13 +49,13 @@
   input{
     width: 40rem;
     height: 6rem;
-    border: 1px solid var(--Gray3);
+    border: 1px solid var(--color-gray3);
     border-radius: 8px;
     padding: 1rem 2rem;
   }
   input:focus{
     outline:none !important;
-    border: 2px solid var(--Primary);
+    border: 2px solid var(--color-primary);
   }
   .form-div{
     display: flex;
@@ -84,7 +84,7 @@
     align-items: center;
     border: none;
     border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--Primary) 0.12%, #6AE3FE 101.84%));
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--color-primary) 0.12%, #6AE3FE 101.84%));
   }
   .link-button .a-label{
     color: var(--grey-light, #F5F5F5);
@@ -96,8 +96,8 @@
 
   /* social login section 설정하기 */
   .social-section{
-    background-color: var(--Gray2);
-    border: 1px solid var(--Gray3);
+    background-color: var(--color-gray2);
+    border: 1px solid var(--color-gray3);
     border-radius: 8px;
     width: 40rem;
     height: 6rem;
