@@ -1,13 +1,5 @@
-* {
-  box-sizing: border-box;
-}
-
 a {
   text-decoration: none;
-}
-
-body {
-  margin: 0;
 }
 
 header {
@@ -16,7 +8,7 @@ header {
   position: fixed;
   z-index: 1;
   width: 100%;
-  background: var(--linkbrary-bg, #f0f6ff);
+  background: var(--color-bg);
 }
 
 .header-content {
@@ -39,24 +31,21 @@ header {
   padding: 16px 20px;
   border: none;
   width: 128px;
-  background: var(
-    --gra-purpleblue-to-skyblue,
-    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
-  );
-  font-family: Pretendard;
+  background: var(--gra-purpleblue-to-skyblue);
+  font-family: "Pretendard";
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  color: var(--grey-light, #f5f5f5);
+  color: var(--color-grey-light);
   cursor: pointer;
   border-radius: 8px;
 }
 
 .content {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .container_1 .content {
@@ -66,15 +55,15 @@ header {
 
 .container_1 .text {
   margin: 0;
-  font-family: Pretendard;
+  font-family: "Pretendard";
   font-size: 64px;
   font-style: normal;
   font-weight: 700;
   line-height: 125%;
-  word-break: keep-all;
 
   color: #000;
   text-align: center;
+  word-break: keep-all;
 }
 
 .container_1 .img-section {
@@ -109,17 +98,14 @@ header {
   padding: 16px 20px;
   border: none;
   width: 350px;
-  background: var(
-    --gra-purpleblue-to-skyblue,
-    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
-  );
+  background: var(--gra-purpleblue-to-skyblue);
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
 
-  color: var(--grey-light, #f5f5f5);
+  color: var(--color-grey-light);
   cursor: pointer;
 
   border-radius: 8px;
@@ -143,11 +129,11 @@ header {
 
 .text_1 {
   margin: 0;
-  font-family: Pretendard;
+  font-family: "Pretendard";
+  font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  font-size: 48px;
 
   color: #000;
   letter-spacing: -0.3px;
@@ -163,7 +149,7 @@ header {
 .text-section .text_2 {
   align-self: stretch;
   margin: 0;
-  font-family: Pretendard;
+  font-family: "Pretendard";
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -212,10 +198,7 @@ header {
 }
 
 .container_5 .content .text-section span {
-  background: var(
-    --fandom-k-gra-blue-to-pink,
-    linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%)
-  );
+  background: var(--gra-blue-to-pink);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -240,7 +223,7 @@ header {
   flex-direction: column;
   padding: 32px 104px 64px 104px;
   height: 160px;
-  background: var(--the-julge-black, #111322);
+  background: var(--color-black-10);
 }
 
 .footer .footer-content .section {
@@ -306,8 +289,8 @@ header {
 
   @media (max-width: 767px) {
     .loginBtn {
-      width: 80px;
       padding: 10px 16px;
+      width: 80px;
       font-size: 14px;
     }
 
@@ -317,8 +300,8 @@ header {
     }
 
     .container_1 .content {
-      padding-top: 91px;
       gap: 24px;
+      padding-top: 91px;
     }
 
     .container_1 .img-section {
@@ -350,9 +333,9 @@ header {
     }
 
     .container_1 .text {
+      width: 250px;
       font-size: 32px;
       line-height: 131.25%; /* 131.25% */
-      width: 250px;
     }
 
     .text_1 {
@@ -371,8 +354,8 @@ header {
     }
 
     .img-section {
-      width: 100%;
       padding-bottom: 81.84%;
+      width: 100%;
     }
 
     .container_2 .img-section {
@@ -399,10 +382,10 @@ header {
     .container_3 .content,
     .container_4 .content,
     .container_5 .content {
-      width: 100%;
       gap: 24px;
-      flex-direction: column;
       align-items: flex-start;
+      flex-direction: column;
+      width: 100%;
     }
 
     .text-section {
@@ -414,8 +397,8 @@ header {
     }
 
     .linkAddBtn {
-      width: 200px;
       padding: 10px 16px;
+      width: 200px;
       font-size: 14px;
     }
   }
@@ -440,8 +423,8 @@ header {
   }
 
   .container_1 .content {
-    padding-top: 129px;
     gap: 40px;
+    padding-top: 129px;
   }
 
   .container_1 .img-section {
@@ -517,8 +500,8 @@ header {
   }
 
   .container_1 .content {
-    padding-top: 164px;
     gap: 40px;
+    padding-top: 164px;
   }
 
   .container_1 .img-section {
@@ -596,7 +579,7 @@ header {
 
   .container_2 .content .img-section .img-wrapper .img2 .border {
     flex-shrink: 0;
-    border: 2px solid var(--linkbrary-primary-color, #6d6afe);
+    border: 2px solid var(--color-primary);
     position: absolute;
     top: 13.75px;
     left: 17px;
