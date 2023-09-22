@@ -236,7 +236,8 @@ footer {
   flex: 1 0 auto;
 }
 
-.policy-wrapper > a {
+
+.policy_text {
   color: #cfcfcf;
 }
 
