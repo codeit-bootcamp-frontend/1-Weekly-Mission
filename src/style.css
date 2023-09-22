@@ -100,7 +100,7 @@ header {
 .contents {
     display: flex;
     flex-direction: column;
-    padding: 7.5rem 28.8125rem;
+    padding: 7.5rem 27rem;
     justify-content: center;
     align-items: center;
     gap: 6.24rem;
@@ -108,16 +108,21 @@ header {
 
 .contents__container {
     display: flex;
+    width: 100%;
     align-items: center;
+    justify-content: center;
     gap: 9.8125rem;
 }
 
+
+
 .container__article{
     display: flex;
-    width: 20rem;
+    width: 16.5rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.625rem;
+    flex-shrink: 0;
 }
 
 .container__article-title {
@@ -167,11 +172,30 @@ header {
     line-height: 150%; /* 1.5rem */
 }
 
-.container__img {
+.container__img{
     width: 34.375rem;
-    height: 28.125rem;  
+    height: 28.125rem;
     border-radius: 0.9375rem;
     background: #F0F6FF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#first_container .container__img{
+    background-image: url(/images/image1.png);
+}
+
+#second_container .container__img{
+    background-image: url(/images/image2.png);
+}
+
+#third_container .container__img{
+    background-image: url(/images/image3.png);
+}
+
+#fourth_container .container__img{
+    background-image: url(/images/image4.png);
 }
 
 footer {
@@ -262,10 +286,21 @@ footer {
         box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
     }
 
+    .contents__container {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+
     .container__img {
         width: 24.0625rem;
         height: 19.6875rem;         
         background: #F0F6FF;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
     .footer__container-left-mobile{
         display: flex;    
@@ -276,11 +311,54 @@ footer {
 
 /*모바일 사이즈*/
 @media (max-width: 767px){
-    .contents__container {
+
+    .contents {
         display: flex;
         flex-direction: column;
+        padding: 7.5rem 3.2rem;
+        justify-content: center;
         align-items: center;
-        gap: 9.8125rem;
+        gap: 4rem;
+    }
+
+    .contents__container {        
+        display: flex;
+        width: 100%;
+        
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;         
+    }   
+
+    .contents :nth-child(2n){
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .container__article{
+        width: 100%;
+    }
+
+    .container__article-title{
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .container__img-wrap {
+        position: relative;
+		width: 100%;
+		height: 0;
+		overflow: hidden;
+		padding-bottom: 100%;
+    }
+    
+    .container__img { 
+        position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
     }
 
     .footer__container-left-mobile{
