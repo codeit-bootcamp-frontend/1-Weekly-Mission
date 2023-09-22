@@ -158,20 +158,22 @@
 }
 
 .contact__container {
+  height: 100%;
   padding: 2rem 6.5rem;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1920px;
+  margin: auto;
 }
 
 .contact__rights {
   color: #676767;
-  white-space: nowrap;
 }
 
 .contact__policy {
   display: flex;
+  justify-content: center;
   gap: 30px;
-  white-space: nowrap;
 }
 
 .contact__policy--text {
@@ -181,6 +183,7 @@
 
 .contact__links {
   display: flex;
+  justify-content: flex-end;
   gap: 12px;
 }
 
