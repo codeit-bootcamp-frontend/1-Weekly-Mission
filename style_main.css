@@ -20,10 +20,10 @@
   /* header css 작성 */
   header{
     background-color: var(--color-gray1);
-    padding: 2rem 20rem;
+    padding: 2rem 0;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     position: sticky;
     top: 0;
@@ -47,7 +47,32 @@
     line-height: normal;
     padding: 0 1rem;    
   }
+  header .spacing{
+    width: 20rem;
+  }
+  header .spacing-center{
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
 
+  @media(max-width: 1199px){
+    header .spacing{
+      min-width: 3.2rem;
+    }
+    header .spacing-center{
+      min-width: 50rem;
+    }
+  }
+  @media(max-width: 768px){
+    header .spacing{
+      width: 3.2rem;
+    }
+    header .spacing-center{
+      min-width: 3rem;
+    }
+  }
+
+  
 
   /* section 1 css코드 */
   .main-section{
