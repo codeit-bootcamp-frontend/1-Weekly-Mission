@@ -11,12 +11,15 @@ html {
 
 header {
     position: sticky;
-    top: 0;
+    top: 0;        
+    padding: 2rem 20rem;
+    background-color: var(--linkbrary-bg);
+}
+
+.header__container{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 20rem;
-    background-color: var(--linkbrary-bg);
 }
 
 .header__logo {    
@@ -221,3 +224,38 @@ footer {
     gap: 0.75rem;
 }
 
+/*타블렛 사이즈*/
+@media (max-width: 1199px){
+    /*좌우 여백을 32px까지 자연스럽게 줄이는 방법을 모르겠습니다.*/
+    header {
+        position: sticky;
+        top: 0;                   
+        padding: 2rem 3.2rem;
+        background-color: var(--linkbrary-bg);
+    }
+
+    .header__container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .intro__title-underline{
+        display: inline-block;
+        width: 25rem;
+    }
+
+    .intro__img {
+        width: 40.64394rem;
+        height: 23.94463rem;
+        flex-shrink: 0;
+        border-radius: 1.5625rem;
+        box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+    }
+
+    .container__img {
+        width: 24.0625rem;
+        height: 19.6875rem;         
+        background: #F0F6FF;
+    }
+}

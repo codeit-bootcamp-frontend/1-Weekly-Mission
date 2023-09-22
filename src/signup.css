@@ -56,7 +56,7 @@ body{
 
 .login__container-main{
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     flex-direction: column;
 }
 
@@ -83,10 +83,14 @@ body{
     align-items: center;
     justify-content: center;
     padding: 1.125rem 0.9375rem;
-    border: 1px solid var(--linkbrary-primary-color);
+    border: 1px solid var(--linkbrary-gray-20);
     width: 40rem;
     background: var(--linkbrary-white, #FFF);
     border-radius: 0.5rem;
+}
+/*포커스 해도 정해진 색상으로 변경이 안됨*/
+.input:focus {    
+    border: 1px solid var(--linkbrary-gray-20);
 }
 
 .login__input-img{
@@ -126,7 +130,6 @@ body{
     border-radius: 0.5rem;
 }
 
-/*아이콘 크기 조절 필요*/
 .sotial_icons{
     gap: 1rem;   
     
