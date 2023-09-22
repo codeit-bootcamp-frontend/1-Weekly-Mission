@@ -120,7 +120,9 @@
   }
   .cards .card{
     display: flex;
+    flex-direction: row;
     height:40rem;
+    border: none;
   }
   .card .spacing{
     margin: 0;
@@ -161,7 +163,31 @@
   .card-img{
     width: 55rem;
   }
-
+  @media(max-width:767px){
+    .main-section{
+      padding: 0 3.2rem;
+    }
+    .main-section img{
+      width: 100%;
+    }
+    .cards{
+      gap: 5rem;
+    }
+    .cards .card{
+      flex-direction: column;
+      padding: 3.2rem;
+      height: auto;
+    }
+    .card img{
+      width: 100%;
+    }
+    .card .card-article{
+      width: 100%;
+    }
+    .card .card-title{
+      white-space: nowrap;
+    }
+  }
   /* 1번 카드 css 코드 */
   .card-title .color-link{
     background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
