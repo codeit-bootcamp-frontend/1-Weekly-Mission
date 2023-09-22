@@ -15,14 +15,18 @@ html, body {
 }
 
 .root {
-  width: 100%;
-  padding: 23.8rem 0 11.6rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0;
   height: 100vh;
+}
+
+header {
+  width: 100%;
+}
+
+.login{
+  width: 100%;
+  padding: 23.8rem 3.2rem 25.2rem 3.2rem;
+  margin: 0 auto;
+  max-width: 46.4rem;
 }
 
 .main-link {
@@ -53,8 +57,8 @@ html, body {
   color: var(--blue);
 }
 
-.input-container {
-  margin: 3rem 0 3rem 0;
+main{
+  width: 100%;
 }
 
 .input-box {
@@ -64,20 +68,21 @@ html, body {
   align-items: flex-start;
   gap: 1.2rem;
   margin: 2.4rem 0 2.4rem 0;
+  width: 100%;
 }
 
-.text-box {
+input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40rem;
+  width: 100%;
   padding: 1.8rem 1.5rem;
   border-radius: 8px;
   border: 1px solid var(--gray-40);
   background: var(--white);
 }
 
-.text-box:focus {
+input:focus {
   outline: 1px solid var(--blue);
 }
 
@@ -87,13 +92,32 @@ html, body {
   left: 37rem;
 }
 
-.login-btn {
+input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40rem;
+  width: 100%;
+  padding: 1.8rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-40);
+  background: var(--white);
+}
+
+.input-password{
+  width: 100%;
+  position: relative;
+}
+
+.eye-image {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translate(-50%, -50%);
+}
+
+.login-btn {
+  width: 100%;
   padding: 1.6rem 2rem;
-  gap: 1rem;
   color: var(--grey-light, #F5F5F5);
   text-decoration: none;
   font-size: 1.8rem;

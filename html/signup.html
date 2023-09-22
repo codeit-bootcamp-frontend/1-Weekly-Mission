@@ -10,51 +10,52 @@
     </head>
     <body>
         <div class="root">
+          <div class="login">
             <header>
-                <div class="main-link">
-                    <a href="http://127.0.0.1:5500/html/index.html"><img src="/assets/png/signin-page-logo.png" alt="Linkbrary logo" class="main-img"></a>
-                </div>
-                <div class="signin">
-                    <div class="signin-ask">
-                        이미 회원이신가요?
-                    </div>
-                    <a href="signin.html" class="signin-link">로그인 하기</a>
-                </div>
+              <div class="main-link">
+                  <a href="http://127.0.0.1:5500/html/index.html"><img src="/assets/png/signin-page-logo.png" alt="Linkbrary logo" class="main-img"></a>
+              </div>
+              <div class="signin">
+                  <div class="signin-ask">
+                      이미 회원이신가요?
+                  </div>
+                  <a href="signin.html" class="signin-link">로그인 하기</a>
+              </div>
             </header>
             <main>
-                <div class="input-container">
-                    <div class="input-box">
-                        <div>
-                            이메일
-                        </div>
-                        <form>
-                            <input type="text" placeholder="이메일을 입력해주세요" class="text-box">
-                        </form>
-                    </div>
-                    <div class="input-box">
-                        <div>
-                            비밀번호
-                        </div>
-                        <form>
-                            <input type="password" placeholder="비밀번호를 입력해주세요" class="text-box">
-                            <div class="eye-image">
-                                <img src="/assets/png/eye-off.png" alt="click to see password">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="input-box">
-                        <div>
-                            비밀번호 확인
-                        </div>
-                        <form>
-                            <input type="password" placeholder="비밀번호를 한번 더 입력해주세요" class="text-box">
-                            <div class="eye-image">
-                                <img src="/assets/png/eye-off.png" alt="click to see password">
-                            </div>
-                        </form>
-                    </div>
+              <form>
+                <div class="input-box">
+                  <label for="id-label">
+                      이메일
+                  </label>
+                  <input type="text" placeholder="이메일을 입력해주세요" id="id-label" name="idLabel">
                 </div>
-                <a href="signup.html" class="login-btn">회원가입</a>
+                <div class="input-box">
+                  <label for="password-label">
+                      비밀번호
+                  </label>
+                  <div class="input-password">
+                    <input type="password" placeholder="비밀번호를 입력해주세요" id="password-label" name="passwordLabel">
+                    <div class="eye-image">
+                        <img src="/assets/png/eye-off.png" alt="click to see password">
+                    </div>
+                  </div>
+                </div>
+                <div class="input-box">
+                  <label for="identify-label">
+                      비밀번호 확인
+                  </label>
+                  <div class="input-password">
+                    <input type="password" placeholder="비밀번호를 한번 더 입력해주세요" id="identify-label" name="identifyLabel">
+                    <div class="eye-image">
+                        <img src="/assets/png/eye-off.png" alt="click to see password">
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="login-btn">
+                  회원가입
+                </button>
+              </form>
             </main>
             <footer>
                 <div class="footer-text">
@@ -75,6 +76,7 @@
                     </div>
                 </div>
             </footer>
+          </div>
         </div>
     </body>
 </html>
