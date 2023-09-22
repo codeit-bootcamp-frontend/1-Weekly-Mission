@@ -14,40 +14,45 @@
     <link rel="stylesheet" href="css/sign.css" />
   </head>
   <body>
-    <section>
-      <div class="box">
-        <div class="header">
-          <a href="/"
-            ><img src="assets/logo.svg" alt="홈화면으로 연결되는 로고이미지"
-          /></a>
-          <p class="to-sign">
+    <section class="login">
+      <div class="login__contents">
+        <div class="login__header">
+          <a class="login__logo" href="/"
+            ><img class="login__logo-img" src="assets/logo.svg" alt="선택하면 홈화면으로 연결됩니다"
+          />
+          </a>
+          <p class="login__hearder-text">
             회원이 아니신가요? <a href="/signup.html">회원 가입하기</a>
           </p>
         </div>
         <form class="form">
-          <label class="margin-top-25">
+          <label class="form__email margin-top-25">
             이메일
-            <input type="email" name="" />
+            <input class="form__input" type="email" name="email" />
           </label>
-          <label class="margin-top-10 pw">
+          <label class="form__password margin-top-10">
             비밀번호
-            <input type="password" name="" />
-            <img
-              class="pw-show"
-              src="assets/sign-eye-off.svg"
-              alt="가려진 비밀번호 보여주기"
-            />
+            <div class="form__input">
+              <input class="form__input-none" type="password" name="password" />
+              <button class="form__input-btn" type="button">            
+                <img
+                class="form__pw-reveal-click"
+                src="assets/sign-eye-off.svg"
+                alt="가려진 비밀번호 보여주기"
+              />
+              </button>
+            </div>
           </label>
-          <button class="margin-top-10">로그인</button>
+          <button class="form__submit margin-top-25">로그인</button>
         </form>
-        <div class="sns margin-top-10">
+        <div class="form__sns margin-top-10">
           <p>소셜 로그인</p>
           <div>
             <a href="https://www.google.com" target="_blank">
-              <img src="assets/sign-google.svg" alt="구글 계정으로 로그인" />
+              <img class="form__sns-img" src="assets/sign-google.svg" alt="구글 계정으로 로그인" />
             </a>
             <a href="https://www.kakaocorp.com/page/" target="_blank">
-              <img src="assets/sign-kako.svg" alt="카카오 계정으로 로그인" />
+              <img class="form__sns-img" src="assets/sign-kako.svg" alt="카카오 계정으로 로그인" />
             </a>
           </div>
         </div>

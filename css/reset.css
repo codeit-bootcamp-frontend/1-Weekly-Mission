@@ -16,6 +16,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
 :root {
   --Primary: hsl(241, 99%, 71%);
   --Red: hsl(2, 100%, 67%);
