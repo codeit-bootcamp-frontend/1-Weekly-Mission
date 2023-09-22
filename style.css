@@ -59,7 +59,7 @@ header .login-link {
     line-height: 80px;
 }
 
-.main-description h1 span {
+.main-description .text-gradient {
     background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -68,21 +68,14 @@ header .login-link {
 
 .main-image-box{
     min-width: 1200px;
-    height: 590px;
+    min-height: 700px;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
     background-image: 
     linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%),
     url(images/main_image.png);
-    background-position: center;
-    background-size: 100%; 
+    background-size: cover; 
     border-radius:25px;
     margin: 50px 41px -119px;
-}
-
-.main-image-box img {
-  min-width: 1200px;
-  height: 590px;
-  object-fit: cover;
 }
 
 .sections {
@@ -141,7 +134,11 @@ header .login-link {
 }
 
 .wanted-link-cards img{
-    width: 279px;
+  max-width: 279px;
+}
+
+.toggle-img {
+  display: none;
 }
 
 .cards-frame div:first-of-type {
@@ -196,8 +193,8 @@ header .login-link {
 }
 
 .inner-image-box {  
-    width: 570px;
-    height: 469px;
+    max-width: 570px;
+    max-height: 469px;
     border-radius: 25px;
     background: rgba(0, 0, 0, 0.40);
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
@@ -215,8 +212,7 @@ header .login-link {
 }
 
 .popup_folder_share {
-    min-width: 416px;
-    height: 271px;
+    max-height: 271px;
     position: absolute;
     inset: 121px 77px 77px 77px;
 }
@@ -294,14 +290,20 @@ footer {
 }
 
 .main-image-box {
-  /* margin: 30px 24px -69px;  */
+  min-height: 384px;
   min-width: 698px;
-  background-image: url(images/main_image_tablet.png);
   object-fit: cover;
+  margin: 5% auto -7%;
+  background-position: left top;
+}
+
+.main-description .text-wrap {
+  display: block;
 }
 
 .main-section {
-padding: 150px 250px 0;
+padding: 150px 0 0 0;
+margin-bottom: 30px;
 }
 
 .sections {
@@ -312,18 +314,17 @@ padding: 150px 250px 0;
   gap: 51px;
 }
 
-.wanted-link-cards img{
-  width: 229px;
+.content .toggle-img {
+  max-width: 385px;
+  max-height: 315px;
+  display: block;
 }
 
-.cards-frame div:first-of-type {
-  min-width: 200px;
-  height: 190px;
-  border-radius: 11px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 11px;
-  border: 2px solid var(--primary); 
+.cards-frame,
+.popup_folder_name_change-box,
+.inner-image-box,
+.codeit_search_image-box {
+  display: none;
 }
 
 .wanted-link-cards .save-link {
@@ -342,20 +343,12 @@ padding: 150px 250px 0;
 }
 
 .popup_folder_name_change {
-  width: 300px;
+  max-width: 300px;
 }
 
 .inner-image-box {  
-  width: 570px;
-  height: 469px;
-  border-radius: 25px;
-  background: rgba(0, 0, 0, 0.40);
-  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
+  max-width: 470px;
+  max-height: 469px;
 }
 
 .inner-image{
@@ -365,10 +358,8 @@ padding: 150px 250px 0;
 }
 
 .popup_folder_share {
-  min-width: 416px;
-  height: 271px;
   position: absolute;
-  inset: 121px 77px 77px 77px;
+  inset: 121px 30px 30px 30px;
 }
 
 
