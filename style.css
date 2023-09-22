@@ -57,11 +57,11 @@ header .login-link {
     font-size: 64px;
     font-weight: 700;
     line-height: 80px;
+    word-break: break-all;
 }
 
 .main-description .text-gradient {
     background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -77,6 +77,7 @@ header .login-link {
     border-radius:25px;
     margin: 50px 41px -119px;
 }
+
 
 .sections {
     display: flex;
@@ -114,7 +115,6 @@ header .login-link {
 
 .wanted-link-section h2 span {
     background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -171,10 +171,8 @@ header .login-link {
 
 .folder-management-section .description span {
     background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 48px;
     font-weight: 700;
 }
 
@@ -219,10 +217,8 @@ header .login-link {
 
 .link-share-section .description span {
     background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 48px;
     font-weight: 700;
 }
 
@@ -247,10 +243,8 @@ header .login-link {
 
 .link-search-section .description span {
     background: var(--fandom-k-gra-blue-to-pink);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 48px;
     font-weight: 700;
 }
 
@@ -263,6 +257,10 @@ footer {
     align-items: center;
     margin-top: 120px;
     background: var(--black);
+}
+
+.footer-box {
+  display: contents;
 }
 
 .copyright{
@@ -282,85 +280,196 @@ footer {
     margin-left: 10px;
 }
 
-/*tablet size*/
+/* tablet size */
 
 @media (max-width: 1199px) {
   header {
     padding: 20px 32px;
+  }
+
+  .main-image-box {
+    min-width: 698px;
+    min-height: 384px;
+    margin: 5% auto -7%;
+  }
+
+  .main-description .text-wrap {
+    display: block;
+  }
+
+  .main-section {
+  padding: 150px 0 0 0;
+  margin-bottom: 30px;
+  }
+
+  .sections {
+    padding: 50px 250px;
+  }
+
+  .content {
+    gap: 51px;
+  }
+
+  .content .toggle-img {
+    max-width: 385px;
+    max-height: 315px;
+    display: block;
+  }
+
+  .cards-frame,
+  .popup_folder_name_change-box,
+  .inner-image-box,
+  .codeit_search_image-box {
+    display: none;
+  }
+
+  .wanted-link-cards .save-link {
+    width: 33px;
+    height: 33px;
+    flex-shrink: 0;
+    position: absolute;
+    top: 272px;
+    left: 285px;
+  }
+
+  .popup_folder_name_change-box {
+    padding: 114px 68px 66px 68px;
+    border-radius: 15px;
+    background: #F0F6FF;
+  }
+
+  .popup_folder_name_change {
+    max-width: 300px;
+  }
+
+  .inner-image-box {  
+    max-width: 470px;
+    max-height: 469px;
+  }
+
+  .inner-image{
+    min-width: 934px;
+    height: 591px;
+    z-index: -1;
+  }
+
+  .popup_folder_share {
+    position: absolute;
+    inset: 121px 30px 30px 30px;
+  }
+} 
+
+/* mobile size*/
+
+@media (max-width: 767px) {
+
+  header {
+    padding: 13px 32px;
+    max-height: 63px;
+    top: 0;
+  }
+
+  header .logo {
+    max-height: 16px; 
+  }
+
+  header .login-link {
+    max-width: 80px;
+    padding: 10px 16px;
+    font-size: 14px;
+    word-break: keep-all;
+  }
+
+  .main-section {
+    padding-top: 85px;
+  }
+
+  .main-description h1{
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .add-link {
+    width: 200px;
+    padding: 16px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 24px auto;
 }
 
-.main-image-box {
-  min-height: 384px;
-  min-width: 698px;
-  object-fit: cover;
-  margin: 5% auto -7%;
-  background-position: left top;
-}
+  .main-image-box {
+    min-width: 303px;
+    min-height: 179px;
+  }
 
-.main-description .text-wrap {
-  display: block;
-}
+  .content {
+    flex-flow: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
 
-.main-section {
-padding: 150px 0 0 0;
-margin-bottom: 30px;
-}
+  .content .description h2 {
+    font-size: 24px;
+  }
 
-.sections {
-  padding: 50px 250px;
-}
+  .content .description h2 br {
+    display: none;
+  }
 
-.content {
-  gap: 51px;
-}
+  .content .description p {
+    font-size: 15px;
+    max-width: 325px;
+  }
 
-.content .toggle-img {
-  max-width: 385px;
-  max-height: 315px;
-  display: block;
-}
+  .content .description p br {
+    display: none;
+    word-break: keep-all;
+  }
 
-.cards-frame,
-.popup_folder_name_change-box,
-.inner-image-box,
-.codeit_search_image-box {
-  display: none;
-}
+  .content .popup_folder_name_change-box,
+  .content .codeit_search_image-box {
+    order: 1;
+  }
 
-.wanted-link-cards .save-link {
-  width: 33px;
-  height: 33px;
-  flex-shrink: 0;
-  position: absolute;
-  top: 272px;
-  left: 285px;
-}
+  .content .toggle-img {
+    max-width: 325px;
+    max-height: 266px;
+    order: 2;
+  }
 
-.popup_folder_name_change-box {
-  padding: 114px 68px 66px 68px;
-  border-radius: 15px;
-  background: #F0F6FF;
-}
+  .sections {
+    padding: 40px 32px;
+  }
 
-.popup_folder_name_change {
-  max-width: 300px;
-}
+  .wanted-link-section {
+    padding-top: 0;
+  }
 
-.inner-image-box {  
-  max-width: 470px;
-  max-height: 469px;
-}
+  footer {
+    display: flex;
+    flex-direction: row;
+    height: 160px;
+    padding: 32px 32px 64px;
+    align-items: flex-start;
+    margin-top: 40px;
+  }
 
-.inner-image{
-  min-width: 934px;
-  height: 591px;
-  z-index: -1;
-}
+  footer .copyright {
+    order: 2;
+  }
 
-.popup_folder_share {
-  position: absolute;
-  inset: 121px 30px 30px 30px;
-}
+  footer .footer-link {
+    order: 1;
+  }
 
+  footer .sns_icons {
+    order: 3;
+  }
 
+  .footer-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 60px;
+  }
 } 
