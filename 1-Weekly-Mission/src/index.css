@@ -2,28 +2,29 @@
 @import "./common.css";
 
 /* 1200px이상인 경우 최소 좌우 여백 32px씩 유지하면서 두 개 사이 간격이 가까워지도록 */
-.gnb {
+body {
   display: flex;
-  padding: 2rem 3.2rem;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
-
-  background: #f0f6ff;
-
-  position: sticky;
-  top: 0;
-  left: 0;
-
-  max-width: 1920px;
 }
 
-.gnb_frame {
+nav {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
   width: 100%;
+  background-color: #edf7ff;
+  padding: 2rem 3.2rem;
+}
+
+.gnb {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* align-self: stretch; */
+  width: 100%;
+
+  max-width: 192rem;
 }
 
 .logo_button {
@@ -50,7 +51,7 @@
   font-size: 1.8rem;
   font-weight: 600;
 
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
 
 .login {
@@ -59,9 +60,8 @@
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-top: 7rem;
+  padding-bottom: 12rem;
 }
 
 .main_header {
@@ -184,67 +184,50 @@ section:nth-of-type(even) {
 
 footer {
   display: flex;
-  height: 28rem;
-  padding-top: 12rem;
-  flex-direction: column;
-  align-items: center;
-  align-self: stretch;
-
-  border-radius: 3rem;
-  box-shadow: 0 0 1.6rem 0 rgba(0, 0, 0, 0.02);
+  justify-content: center;
+  width: 100%;
+  height: 16rem;
+  padding-top: 3.2rem;
+  background-color: #111322;
 }
 
 .footer_content {
   display: flex;
-  height: 16rem;
-  padding: 3.2rem 10.4rem 6.4rem 10.4rem;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  align-self: stretch;
-
-  background: #111322;
-}
-
-.footer_text {
-  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  align-self: stretch;
+  width: 100%;
+  max-width: 192rem;
+  height: fit-content;
+  padding: 0 10.4rem;
 }
 
 .footer_codeit {
   color: #676767;
-  text-align: center;
   font-family: Arial;
   font-size: 1.6rem;
-  font-weight: 400;
-}
-
-.footer_pf {
-  display: flex;
-  width: 18.1111rem;
-  align-items: flex-start;
-  gap: 3rem;
-}
-
-.footer_pf > a {
-  color: #cfcfcf;
-  font-family: Arial;
-  font-size: 1.6rem;
-  font-weight: 400;
 }
 
 .footer_links {
   display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
+  column-gap: 3rem;
+  padding-right: 1.8rem;
+}
+
+.footer_links > a {
+  color: #cfcfcf;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.footer_sns {
+  display: flex;
+  column-gap: 1.2rem;
+  height: 2rem;
 }
 
 @media (max-width: 1199px) {
   /* 1199px이하로 작아지게 될 경우 “Linkbrary” 로고와 “로그인” 버튼 사이의 간격은 변하지 않게
   고정값으로 유지하되 좌우 여백은 줄어들어도되고 */
-  .gnb_frame {
+  .gnb {
     max-width: 76.8rem;
     margin: 0 auto;
   }
@@ -270,6 +253,14 @@ footer {
   .main_image {
     width: 69.8rem;
     height: 34.3rem;
+  }
+
+  main {
+    padding-top: 3rem;
+  }
+
+  .contents {
+    column-gap: 5.1rem;
   }
 }
 
