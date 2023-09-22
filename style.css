@@ -333,6 +333,10 @@ header {
     .text_1 {
       font-size: 24px;
     }
+
+    .text-section .text_2 {
+      font-size: 15px;
+    }
   }
 }
 
