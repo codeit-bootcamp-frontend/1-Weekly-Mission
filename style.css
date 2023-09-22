@@ -483,6 +483,7 @@ header {
   }
 
   .container_1 .img {
+    position: relative;
     top: 50px;
     left: 41px;
     width: 1118px;
