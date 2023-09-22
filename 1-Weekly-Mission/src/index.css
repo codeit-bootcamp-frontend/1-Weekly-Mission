@@ -64,16 +64,18 @@ main {
   padding-bottom: 12rem;
 }
 
+header {
+  padding: 7rem 36rem 0 36rem;
+  background: #f0f6ff;
+  width: 100%;
+}
+
 .main_header {
   display: flex;
-  padding: 7rem 36rem 0 36rem;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   gap: 4rem;
-
-  background: #f0f6ff;
-
   align-self: stretch;
 }
 
@@ -229,15 +231,15 @@ footer {
   height: 2rem;
 }
 
-@media (max-width: 1199px) {
-  /* 1199px이하로 작아지게 될 경우 “Linkbrary” 로고와 “로그인” 버튼 사이의 간격은 변하지 않게
+/* 1199px이하로 작아지게 될 경우 “Linkbrary” 로고와 “로그인” 버튼 사이의 간격은 변하지 않게
   고정값으로 유지하되 좌우 여백은 줄어들어도되고 */
+@media (max-width: 1199px) {
   .gnb {
     max-width: 76.8rem;
     margin: 0 auto;
   }
 
-  .main_header {
+  header {
     padding: 3.9rem 25rem 0 25rem;
   }
 
@@ -297,8 +299,11 @@ footer {
   }
 }
 
+/* Mobile 사이즈의 이미지는 좌우 여백 32px을 제외하고
+  이미지 영역이 꽉 찰 수 있도록 해주세요
+  (이때 가로가 커지는 비율에 맞춰 세로도 커지면 됩니다.) */
 @media (max-width: 767px) and (min-width: 375px) {
-  .gnb {
+  nav {
     padding: 1.3rem 3.2rem;
   }
 
@@ -316,7 +321,8 @@ footer {
     padding: 1rem 1.6rem;
   }
 
-  .main_header {
+  header {
+    padding: 2.8rem 3.2rem 0 3.2rem;
     gap: 2.4rem;
   }
 
@@ -346,8 +352,8 @@ footer {
   }
 
   .main_image {
-    width: 32.5rem;
-    height: 16rem;
+    width: 100%;
+    height: 100%;
   }
 
   main {
@@ -378,9 +384,6 @@ footer {
     display: none;
   }
 
-  /* Mobile 사이즈의 이미지는 좌우 여백 32px을 제외하고
-  이미지 영역이 꽉 찰 수 있도록 해주세요
-  (이때 가로가 커지는 비율에 맞춰 세로도 커지면 됩니다.) */
   .content_image {
     width: 100%;
     height: 100%;
