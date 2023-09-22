@@ -154,11 +154,6 @@ header {
   background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
   background-clip: text;
   -webkit-background-clip: text;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   -webkit-text-fill-color: transparent;
 }
 
@@ -191,12 +186,6 @@ header {
   background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
   background-clip: text;
   -webkit-background-clip: text;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.3px;
   -webkit-text-fill-color: transparent;
 }
 
@@ -234,11 +223,6 @@ header {
   );
   background-clip: text;
   -webkit-background-clip: text;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   -webkit-text-fill-color: transparent;
 }
 
@@ -275,11 +259,6 @@ header {
   );
   background-clip: text;
   -webkit-background-clip: text;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   -webkit-text-fill-color: transparent;
 }
 
