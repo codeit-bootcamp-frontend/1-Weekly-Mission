@@ -130,7 +130,7 @@ header {
   padding-top: 120px;
 }
 
-.container_2 .content .text-section {
+.text-section {
   display: flex;
   gap: 10px;
   align-items: flex-start;
@@ -157,7 +157,8 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
-.container_2 .content .text-section .text_2 {
+.text-section .text_2 {
+  align-self: stretch;
   margin: 0;
   font-family: Pretendard;
   font-size: 16px;
@@ -174,14 +175,6 @@ header {
   padding-top: 50px;
 }
 
-.container_3 .content .text-section {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  flex-direction: column;
-  width: 291px;
-}
-
 .container_3 .content .text-section span {
   background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
   background-clip: text;
@@ -189,30 +182,11 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
-.container_3 .content .text-section .text_2 {
-  align-self: stretch;
-  margin: 0;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 24px */
-  color: #6b6b6b;
-}
-
 .container_4 {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 50px;
-}
-
-.container_4 .content .text-section {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  flex-direction: column;
-  width: 291px;
 }
 
 .container_4 .content .text-section span {
@@ -226,30 +200,11 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
-.container_4 .content .text-section .text_2 {
-  align-self: stretch;
-  margin: 0;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 24px */
-  color: #6b6b6b;
-}
-
 .container_5 {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 50px;
-}
-
-.container_5 .content .text-section {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  flex-direction: column;
-  width: 291px;
 }
 
 .container_5 .content .text-section span {
@@ -260,17 +215,6 @@ header {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.container_5 .content .text-section .text_2 {
-  align-self: stretch;
-  margin: 0;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 24px */
-  color: #6b6b6b;
 }
 
 .footer {
