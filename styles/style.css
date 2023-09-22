@@ -257,7 +257,8 @@ a {
 
 @media (max-width: 1199px) {
   nav{
-    padding: 0 3.2rem;
+    padding: 0;
+    max-width: 767px;
   }
 
   .header-main-img {
