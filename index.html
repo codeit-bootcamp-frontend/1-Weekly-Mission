@@ -13,26 +13,28 @@
     />
   </head>
   <body>
+    <nav class="gnb">
+      <a href="/">
+        <img
+          src="/assets/common/logo.svg"
+          alt="nav-title-logo"
+          class="gnb-logo"
+        />
+      </a>
+      <a href="/signin">
+        <button class="login-btn">로그인</button>
+      </a>
+    </nav>
     <header class="header">
-      <nav class="gnb">
-        <a href="/">
-          <img src="/assets/common/logo.svg" alt="nav-title-logo" />
-        </a>
-        <a href="/signin">
-          <button class="login-btn">로그인</button>
-        </a>
-      </nav>
-    </header>
-    <main>
       <section class="content1">
         <div class="content1-textbox">
           <p>
             <span>세상의 모든 정보</span>를<br />쉽게 저장하고 관리해 보세요
           </p>
-          <a href="/signup">
-            <button class="addlink-btn">링크 추가하기</button>
-          </a>
         </div>
+        <a href="/signup">
+          <button class="addlink-btn">링크 추가하기</button>
+        </a>
         <div class="content1-image-container">
           <img
             class="content1-image"
@@ -41,29 +43,22 @@
           />
         </div>
       </section>
+    </header>
+    <main>
       <section class="content2">
         <div class="content2-container">
           <div class="content2-textbox">
             <div class="content2-textbox-accent">
-              <p><span>원하는 링크</span>를<br />저장하세요</p>
+              <p><span>원하는 링크</span>를 저장하세요</p>
             </div>
             <p class="content2-textbox-normal">
-              나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />사고 싶은 옷,
-              기억하고 싶은 모든 것을<br />한 공간에 저장하세요.
+              나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
+              싶은 모든 것을 한 공간에 저장하세요.
             </p>
           </div>
           <div class="content2-imagebox">
             <div class="content2-image-container">
-              <img src="/assets/landing/card1.png" alt="link-item-image" />
-              <div class="content2-image-card2">
-                <img src="/assets/landing/card2.png" alt="link-item-image" />
-                <img
-                  src="/assets/landing/downloadBtn.svg"
-                  alt="link-item-downloadButton"
-                  class="download-btn"
-                />
-              </div>
-              <img src="/assets/landing/card3.png" alt="link-item-image" />
+              <img src="/assets/landing/content2Img.png" alt="content2-Img" />
             </div>
           </div>
         </div>
@@ -78,11 +73,10 @@
           </div>
           <div class="content3-textbox">
             <div class="content3-textbox-accent">
-              <p>링크를 폴더로</p>
-              <p><span>관리</span>하세요</p>
+              <p>링크를 폴더로 <span>관리</span> 하세요</p>
             </div>
             <p class="content3-textbox-normal">
-              나만의 폴더를 무제한으로 만들고<br />다양하게 활용할 수 있습니다.
+              나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
             </p>
           </div>
         </div>
@@ -91,7 +85,7 @@
         <div class="content4-container">
           <div class="content4-textbox">
             <div class="content4-textbox-accent">
-              <p>저장한 링크를<br /><span>공유</span>해 보세요.</p>
+              <p>저장한 링크를 <span>공유</span>해 보세요.</p>
             </div>
             <p class="content4-textbox-normal">
               여러 링크를 폴더에 담고 공유할 수 있습니다.<br />가족, 친구,
@@ -100,7 +94,10 @@
           </div>
           <div class="content4-imagebox">
             <div class="content4-image-container">
-              <img src="/assets/landing/popup.png" />
+              <img
+                src="/assets/landing/linkShareImg.png"
+                alt="link-share-img"
+              />
             </div>
           </div>
         </div>
@@ -116,7 +113,7 @@
           </div>
           <div class="content5-textbox">
             <div class="content5-textbox-accent">
-              <p>저장한 링크를<br /><span>검색</span>해 보세요</p>
+              <p>저장한 링크를 <span>검색</span>해 보세요</p>
             </div>
             <div class="content5-textbox-normal">
               <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
@@ -128,12 +125,12 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-items">
-          <div class="footer-copyrights">&copy;codeit - 2023</div>
-          <div class="footer-policy">
-            <a href="/privacy">
+          <span class="footer-copyrights">&copy;codeit - 2023</span>
+          <div class="footer-privacy-policy">
+            <a class="footer-policy" href="/privacy">
               <p>Privacy Policy</p>
             </a>
-            <a href="/faq">
+            <a class="footer-faq" href="/faq">
               <p>FAQ</p>
             </a>
           </div>

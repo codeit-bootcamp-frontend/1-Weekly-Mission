@@ -7,10 +7,6 @@
   font-size: 16px;
 }
 
-body {
-  background: var(--backgroundcolor-skyblue-10);
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -162,4 +158,12 @@ table {
   --color-gray-100: #373740;
   --backgroundcolor-skyblue-10: #f0f6ff;
   --backgroundcolor-skyblue-30: #ebf3ff;
+}
+
+/* mobile */
+
+@media screen and (min-width: 375px) {
+  main {
+    margin: 0px 32px;
+  }
 }
