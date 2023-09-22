@@ -62,7 +62,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* align-self: stretch; */
 }
 
 .main_header {
@@ -271,17 +270,6 @@ footer {
   .main_image {
     width: 69.8rem;
     height: 34.3rem;
-  }
-
-  .contents {
-    padding: 8rem 25rem 5rem 25rem;
-
-    gap: 5.1rem;
-  }
-
-  .content_image {
-    width: 38.5rem;
-    height: 31.5rem;
   }
 }
 
