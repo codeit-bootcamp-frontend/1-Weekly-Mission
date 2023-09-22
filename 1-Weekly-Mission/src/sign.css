@@ -1,12 +1,11 @@
 /* css codes for signin, signup */
 @import "./common.css";
 
-main {
+body {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 1440px;
   padding: 238px 0px 252px 0px;
 
   flex-direction: column;
