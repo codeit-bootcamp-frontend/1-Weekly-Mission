@@ -80,28 +80,42 @@
 
 .content {
   padding: 50px 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   justify-content: center;
   align-items: center;
-  gap: 157px;
-}
-
-.content:nth-child(even) .content__info {
-  order: 1;
-}
-
-.content__info {
-  width: 291px;
+  row-gap: 12px;
+  column-gap: 157px;
+  width: 998px;
+  height: 550px;
+  margin: auto;
 }
 
 .content__info__title {
+  grid-row: 2 / 3;
+  margin: 0;
   font-size: var(--font-medium);
   white-space: nowrap;
 }
 
-.info__description {
+.content:nth-child(even) .content__info__title {
+  grid-column: 2 / 3;
+}
+
+.content__info__description {
+  grid-row: 3 /4;
+  margin: 0;
   color: var(--color-text);
   line-height: 1.5rem;
+}
+
+.content:nth-child(even) .content__info__description {
+  grid-column: 2 / 3;
+}
+
+.content__image {
+  grid-row: span 4;
 }
 
 /* Content Text Gradient */
