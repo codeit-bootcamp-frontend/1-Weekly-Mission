@@ -1,4 +1,4 @@
-@use "../utils" as *;
+@use "variables" as *;
 
 @mixin text-linear-grad {
     -webkit-background-clip: text;

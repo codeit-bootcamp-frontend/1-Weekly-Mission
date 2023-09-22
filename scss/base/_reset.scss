@@ -1,22 +1,78 @@
+$resetBase_baseBackground: #fff !default;
+$resetBase_baseColor: #000 !default;
+$resetBase_baseFontFamily: sans-serif !default;
+
+// -- reset --
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+a,
+abbr,
+body,
+button,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+iframe,
+img,
+label,
+legend,
+li,
+ol,
+p,
+td,
+th,
+ul {
+	border: 0;
+	font-size: 100%;
+	font-weight: normal;
+	list-style: none;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	text-decoration: none;
+	vertical-align: baseline;
+}
+
+a,
+abbr {
+	font-weight: inherit;
+}
+
+input,
+select,
+textarea {
+	font-size: 100%;
+	margin: 0;
+}
+
+// -- base --
+body,
+button,
+input,
+select,
+td,
+textarea,
+th {
+	color: $resetBase_baseColor;
+    font-family: Pretendard, $resetBase_baseFontFamily;
+}
+
+body {
+	background: $resetBase_baseBackground;
+	line-height: 1;
 }
 
 html {
     font-size: 62.5%;
 }
 
-body {
-    font-family: Pretendard, sans-serif;
-}
-
 a, button {
     cursor: pointer;
-}
-
-button {
-    background-color: #FFFFFF;
 }
