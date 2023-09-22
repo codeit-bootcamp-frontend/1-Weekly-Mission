@@ -81,7 +81,6 @@ header {
 
 .container_1 .img {
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
-  position: relative;
   border-radius: 25px;
 }
 
@@ -416,6 +415,32 @@ header {
     margin: 20px 32px;
     width: 100%;
   }
+
+  @media (max-width: 767px) {
+    .container_1 .img-section {
+      display: flex;
+      justify-content: center; /* 수직으로 가운데 정렬 */
+      padding-bottom: 50%;
+      position: relative;
+      width: calc(100% - 64px);
+      height: 0;
+    }
+
+    .container_1 .img {
+      box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
+      position: absolute;
+      top: 13.56px;
+      width: calc(100% - 22.2px);
+      height: 113%;
+      background: url("assets/img.png");
+      background-size: 100% 113%;
+    }
+
+    .container_1 .img .gradation {
+      width: calc(100% - 22px);
+      height: 107%;
+    }
+  }
 }
 
 /* Tablet */
@@ -440,6 +465,7 @@ header {
   }
 
   .container_1 .img {
+    position: relative;
     top: 29.07px;
     left: 23.85px;
     width: 650.303px;
@@ -496,10 +522,10 @@ header {
   }
 
   .container_1 .img {
-    width: 1118px;
-    height: 706.956px;
     top: 50px;
     left: 41px;
+    width: 1118px;
+    height: 706.956px;
     background: url("assets/img.png");
     background-size: 1118px 706.956px;
   }
@@ -591,6 +617,7 @@ header {
 
   .container_3 .content .img-section .img {
     flex-shrink: 0;
+    position: relative;
     width: 414px;
     height: 270px;
     background: url("assets/img2.png");
