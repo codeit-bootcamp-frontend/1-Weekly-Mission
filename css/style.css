@@ -171,9 +171,16 @@ footer .footer-links a {
   .gnb {
     padding: 20px 32px;
   }
+  .banner {
+    padding: 39px 250px 0;
+  }
   .banner-img {
     width: 698px;
     height: 343px;
+  }
+  .content {
+    padding: 80px 250px 50px;
+    gap: 51px;
   }
   .content-img {
     width: 385px;
