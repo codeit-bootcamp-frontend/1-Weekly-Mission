@@ -54,7 +54,7 @@ main{
 .inputFrame{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   
 }
 
@@ -67,7 +67,6 @@ main{
 .inputFrame .inputbox{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 12px;
   color: var(--black);
   font-family: Pretendard;
@@ -138,4 +137,26 @@ main{
 .social-login .icons{
   display: flex;
   gap : 16px;
+}
+
+@media (max-width: 767px) {
+  main {
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+    
+ 
+  }
+
+  main > *, main .inputFrame form, .inputFrame .inputbox #email, .inputFrame .inputbox #password, .social-login{
+    width: 100%;
+    /* max-width: 400px; */
+  }
+
+
+
+
+
+  
+
 }
