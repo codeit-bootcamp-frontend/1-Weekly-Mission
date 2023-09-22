@@ -13,7 +13,7 @@ header {
   margin-bottom: 1.8rem;
 }
 
-header .header-logo-image {
+header .header-logo-img {
   width: 13.125rem;
   height: 2.375rem;
 }
@@ -71,7 +71,7 @@ form .password-visible {
   transform: translateY(-40%);
 }
 
-form .signup {
+form .signup-btn {
   padding: 1rem 1.25rem;
   align-items: center;
   border-radius: 8px;
