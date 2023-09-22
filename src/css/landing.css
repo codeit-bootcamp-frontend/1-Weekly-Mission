@@ -47,7 +47,7 @@ a.header__logo img {
 
 .hero__heading {
   width: 70.8rem;
-  height: 160px;
+  height: 16rem;
 }
 
 .hero__heading h1 {
@@ -99,7 +99,7 @@ li {
   justify-content: center;
   column-gap: 15.7rem;
   row-gap: 1rem;
-  padding: 50px 0;
+  padding: 5rem 0;
 }
 
 li:nth-of-type(odd) {
@@ -108,7 +108,7 @@ li:nth-of-type(odd) {
     "title image"
     "description image"
     ". image"
-    /291px 55rem;
+    /29.1rem 55rem;
 }
 
 li:nth-of-type(even) {
@@ -117,11 +117,7 @@ li:nth-of-type(even) {
     "image title"
     "image description"
     "image ."
-    /550px 29.1rem;
-}
-
-.content--right {
-  flex-direction: row-reverse;
+    /55rem 29.1rem;
 }
 
 .content__image {
@@ -263,7 +259,7 @@ footer {
   }
 
   .hero {
-    padding: 2.8rem 20px 0 3.3rem;
+    padding: 2.8rem 2rem 0 3.3rem;
     height: 100%;
     gap: 2.4rem;
   }
@@ -303,7 +299,7 @@ footer {
   }
 
   li {
-    padding: 40px 32px;
+    padding: 4rem 3.2rem;
     row-gap: 1.6rem;
     align-items: center;
   }
