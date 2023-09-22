@@ -182,11 +182,12 @@ header a{ /* login button */
 .contents_img{
     /* 각 컨텐츠의 그림이 들어가는 하늘색 박스 */
     grid-area : img;
-    max-width : 550px;
+    width : 550px;
     height : 450px;
     border-radius : 15px;
     background: #F0F6FF;
     overflow : hidden;
+    position : relative;
 }
 
 /* contents-02 : save */
@@ -197,11 +198,13 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 } 
 
-.contents_img.save{
+.card_box{
     display : flex;
     justify-content: center;
     align-items: center;
     gap : 12px;
+    position : absolute;
+    inset : 0;
 }
 
 .card{
@@ -209,7 +212,6 @@ header a{ /* login button */
     height: 239px;
     flex-shrink: 0;
     border-radius: 11px;
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -244,17 +246,13 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 }
 
-.contents_img.folder{
-    display: flex;
-    padding: 114px 68px 66px 68px;
-    justify-content: center;
-    align-items: center;
-}
-
 .folder img,
 .share img{
     /* folder, share 컨텐츠 - 팝업 이미지 */
-    width : 100%;
+    width : 414px;
+    position : absolute;
+    top : 114px;
+    left : 68px;
 }
 
 /* contents-04 : share */
@@ -266,7 +264,6 @@ header a{ /* login button */
 }
 
 .contents_img.share{
-    padding : 121px 77px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
     background-position : center;
@@ -282,14 +279,11 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 }
 
-.contents_img.search{
-    padding-top : 55px;
-    padding-left : 60px;
-}
-
 .search img{
+    position : absolute;
+    top : 55px;
+    left : 60px;
     width: 550px;
-    flex-shrink: 0;
     border-radius: 15px;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 }

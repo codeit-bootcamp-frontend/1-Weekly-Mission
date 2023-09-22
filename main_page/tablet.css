@@ -43,12 +43,6 @@
         width: 385px;
         height: 315px;
     }
-    .contents_img.folder{
-        padding-top : 80px;
-    }
-    .contents_img.share{
-        padding-top : 90px;
-    }
     .save,
     .share{
         grid-template-columns : 262px 31px 385px;
@@ -71,6 +65,12 @@
     }
     .contents_detail{
         width : 260px;
+    }
+    .folder img,
+    .share img{
+        width : 300px;
+        top : 70px;
+        left : 45px;
     }
     .search img{
         width : 420px;
