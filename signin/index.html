@@ -32,28 +32,24 @@
           <section class="signin-input-wrapper">
             <div class="signin-input-container">
               <p class="signin-input-name">이메일</p>
-              <label for="email">
-                <input class="signin-input" id="email" autocomplete="off" />
-              </label>
+              <input class="signin-input" name="email" autocomplete="off" />
             </div>
             <div class="signin-input-container">
               <p class="signin-input-name">비밀번호</p>
-              <label for="password">
-                <div class="password-input">
-                  <input
-                    class="signin-input"
-                    id="password"
-                    autocomplete="off"
+              <div class="password-input">
+                <input
+                  class="signin-input"
+                  name="password"
+                  autocomplete="off"
+                />
+                <button class="eye-off-btn" type="button">
+                  <img
+                    src="/assets/common/eye-off.svg"
+                    alt="eye-off-ic"
+                    class="eye-off-ic"
                   />
-                  <button class="eye-off-btn" type="button">
-                    <img
-                      src="/assets/common/eye-off.svg"
-                      alt="eye-off-ic"
-                      class="eye-off-ic"
-                    />
-                  </button>
-                </div>
-              </label>
+                </button>
+              </div>
             </div>
           </section>
           <button class="signin-btn">로그인</button>
