@@ -56,6 +56,12 @@ button.login{
     font-weight: 700;
     line-height: 7rem;
 }
+/* pc사이즈 줄바꿈 없앰 */
+@media(min-width:1200px){
+    .card_head__title--break{
+        display: none;
+    }
+}
 .card_head--highlight{
     background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
     -webkit-background-clip: text;
@@ -86,8 +92,8 @@ button.addlink{
 }
 @media(max-width:1199px){
     .card_head__img{
-        width: 650px;
-        height: 380px;
+        width: 65rem;
+        height: 38rem;
     }
 }
 
