@@ -2,11 +2,12 @@ html {
     background-color: #F0F6FF;
 }
 
-body {
-    max-width: 40rem;
+.main {
+    max-width: 46.4rem;
     width: 100%;
-    margin: 23.8rem auto 0;
+    padding: 0 3.2rem;
     display: flex;
+    margin: 23.8rem auto 0;
     flex-direction: column;
     align-items: center;
 }
@@ -25,7 +26,7 @@ body {
     align-items: flex-start;
 }
 
-.main {
+.sign {
     width: 100%;
     margin-top: 3rem
 }
@@ -93,6 +94,7 @@ body {
 
 .form__btn {
     margin-top: 0.6rem;
+    width: 100%;
 }
 
 .footer {
@@ -122,15 +124,14 @@ body {
     width: 4.2rem;
 }
 
-@media (max-width: 1199px) and (min-width: 768px) {
-    body {
+@media (max-width: 1191px) {
+    .main {
         margin-top: 20rem;
     }
 }
 
-@media (max-width: 767px) and (min-width: 375px) {
-    body {
+@media (max-width: 767px) {
+    .main {
         margin-top: 12rem;
-        width: 85%;
     }
 }
