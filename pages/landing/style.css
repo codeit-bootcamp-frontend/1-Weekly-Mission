@@ -14,6 +14,7 @@ body {
     min-height: 100%;
 }
 
+
 /* header */
 header{
     background-color: #F0F6FF;
@@ -52,6 +53,7 @@ a{
     text-decoration: none;
 }
 
+
 /* hero-header*/
 .hero-header{
     background-color: #f0f6ff;
@@ -71,7 +73,7 @@ a{
     font-weight: 700;
     line-height: 8rem;
     margin: 0;
-    padding: 0 32px;
+    padding: 0 3.2rem;
 
 }
 
@@ -120,6 +122,7 @@ section:nth-of-type(even) {
 section:first-child{
     padding-top: 7.5rem;
 }
+
 section:last-child{
     padding-bottom: 12rem;
 }
@@ -131,7 +134,6 @@ section p {
     margin: 0;
     font-style: normal;
 }
-
 
 section h2{
     font-size: 4.8rem;
@@ -222,6 +224,7 @@ footer span{
     color: #fff;
 }
 
+
 /* 반응형 */
 /* 화면 너비 1200 이하에서는 상단 nav 좌우여백 고정 */
 @media(max-width: 1200px){
@@ -230,11 +233,11 @@ footer span{
     }
     .nav-logo{
         position:sticky;
-        left: 32px;
+        left: 3.2rem;
     }
     .nav-login{
         position:sticky;
-        right: 32px;
+        right: 3.2rem;
     }
 }
 
@@ -245,7 +248,7 @@ footer span{
     .hero-header img{
         width: 100%;
         height: auto;
-        padding: 0 32px;
+        padding: 0 3.2rem;
     }
 
     .hero-header h1{
@@ -257,7 +260,7 @@ footer span{
     section{
         display: flex;
         flex-direction: column;
-        padding: 0 32px 80px;
+        padding: 0 3.2rem 8rem;
         align-items: flex-start;
         gap: 1.6rem;
     }
@@ -295,27 +298,16 @@ footer span{
     .footer-container{
         flex-wrap: wrap;
         gap: 15%;
-        padding-right: 32px;
-        padding-left: 32px;
+        padding-right: 3.2rem;
+        padding-left: 3.2rem;
     }
 }
 
-/* footer 스타일 */
+
+/* footer 요소 위치 변경 */
 @media(max-width: 572px){
     .footer-container span{
         order: 2;
-        padding-top: 60px;
+        padding-top: 6rem;
     }
-}
-
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1200px){
-    /*이미지 고정값 사용?*/
-
-}
-
-/* PC */
-@media (min-width: 1200px){
-    /*이미지 고정값 사용?*/
-
 }
