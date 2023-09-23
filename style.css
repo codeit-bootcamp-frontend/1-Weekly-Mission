@@ -174,22 +174,8 @@ header,
   background: #f0f6ff;
 }
 
-.card-container {
-  position: relative;
-}
-
-.card-container.first {
-  left: 12px;
-}
-
-.card-container.third {
-  right: 12px;
-}
-
-.group-icon {
-  position: absolute;
-  left: 227px;
-  bottom: 4.68px;
+.content-image-container.first {
+  background: url("images/contents01.png") lightgray 50% / cover no-repeat;
 }
 
 .card-description {
@@ -399,7 +385,6 @@ footer {
   .content-image-container {
     width: 325px;
     height: 265.909px;
-    background: url("images/card-mobile.png") lightgray 50% / cover no-repeat;
   }
 
   .card-container {
