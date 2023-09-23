@@ -179,7 +179,7 @@ button.addlink{
 @media(max-width:767px){
     .card__description{
         grid-area : card__description;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         word-break: keep-all;
     }
 }
@@ -267,6 +267,7 @@ footer{
     justify-content: space-around;
     align-items: center;
 }
+
 footer .since_codeit{
     color: #676767;
     text-align: center;
