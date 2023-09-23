@@ -18,14 +18,12 @@ header {
     padding: 2rem 10rem;
 
 }
-/* @media(max-width : 1199px){
+@media(max-width : 1199px){
     .header-title{
-       
-        min-width: 1136px;
-        
+       padding: 2rem 3.2rem;
     }
 }
-*/
+
 @media(max-width:767px){
     .header-title{
         padding: 1.3rem 3.2rem;
