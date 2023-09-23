@@ -421,6 +421,7 @@ a {
   footer {
     margin: 40px 0 0;
     padding: 2rem 0 2rem;
+    height: auto;
   }
   
   .wrapper_footer {
@@ -445,6 +446,7 @@ a {
   }
   
   .policy_wrapper {
+    align-items: center;
     font-size: 1rem;
     gap: 30px;
     grid-area: privacy;
