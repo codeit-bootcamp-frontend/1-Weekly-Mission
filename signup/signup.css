@@ -3,14 +3,16 @@
 .input-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
   gap: 30px;
 }
 
 .signup-container {
   display: flex;
-  padding: 238px 0px 252px 0px;
   justify-content: center;
   align-items: center;
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -18,7 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1440px;
+  width: 400px;
   gap: 32px;
 }
 
@@ -59,7 +61,8 @@
 .signup-input-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
   gap: 24px;
 }
 
@@ -67,6 +70,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
   gap: 12px;
 }
 
@@ -79,7 +83,7 @@
 
 .signup-input {
   display: flex;
-  width: 400px;
+  width: 100%;
   padding: 18px 15px;
   justify-content: center;
   align-items: center;
@@ -90,7 +94,7 @@
 }
 
 .signup-btn {
-  width: 400px;
+  width: 100%;
   padding: 16px 20px;
   gap: 10px;
   border-radius: 8px;
@@ -105,7 +109,7 @@
 
 .signup-social {
   display: flex;
-  width: 400px;
+  width: 100%;
   padding: 12px 24px;
   justify-content: space-between;
   align-items: center;
@@ -153,6 +157,7 @@
 
 .password-input {
   position: relative;
+  width: 100%;
 }
 
 .eye-off-btn {
@@ -163,4 +168,16 @@
   height: 16px;
   background-color: var(--color-white);
   border: none;
+}
+
+/* mobile */
+
+@media (min-width: 375px) {
+  body {
+    padding: 120px 32px;
+  }
+
+  .signin-container {
+    width: 100%;
+  }
 }
