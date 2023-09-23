@@ -1,6 +1,7 @@
 @import url(common.css);
 
 body {
+  width: 100w;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,4 +89,14 @@ input:focus {
   width: 42px;
   height: 42px;
   display: inline-block;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  body {
+    padding: 120px 0 232px;
+  }
+  .container {
+    margin: auto 32px;
+  }
 }
