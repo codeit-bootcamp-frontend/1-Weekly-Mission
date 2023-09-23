@@ -54,13 +54,17 @@ header p{
     flex-direction: column;
     justify-content: center;
     align-items: left;
+    gap: 2.4rem;
 }
-
+.form__wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
 .form__sign label{
     font-size: 1.4rem;
 }
 .form__sign input{
-    margin: 1.2rem 0 2.4rem;
     padding: 1.8rem 1.5rem;
     border: 0.1rem solid var(--linkbrary-gray-20);
     border-radius: 0.8rem;
@@ -103,11 +107,19 @@ header p{
     height: 4.4rem;
 }
 
-.password-eye{
+.form__input-wrapper{
     position: relative;
-    top: -6rem;
-    left: 36.5rem;
-    width:1.6rem;
-    height: 1.6rem;
+    display: flex;
+    flex-direction: column;
+}
+.form__input-wrapper input{
+    padding-right: 1.6rem;
+} 
+
+.password-eye{
+    position: absolute; 
+    bottom:50%;
+    transform: translateY(50%);
+    right: 1.6rem;
     fill: white;
 }
