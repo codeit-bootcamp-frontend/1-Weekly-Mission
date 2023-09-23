@@ -389,7 +389,7 @@ a {
     gap: 0;
   }
 
-  /* border-radius 처리하면 윗 부분은 안 깎이고 애꿎은 아래만 둥글게 깎이는데 어떻게 하면 좋을까요? */
+  /* border-radius: 25; 처리하면 윗 부분은 안 깎이고 애꿎은 아래만 둥글게 깎이는데 어떻게 하면 좋을까요? */
   #main_image {
     width: 100%;
     flex-shrink: 0;
@@ -399,8 +399,6 @@ a {
   .inner_image {
     width: 100%;
     height: auto;
-    /* display: block;
-    object-fit: contain; */
     grid-area: inner_image;
   }
 
