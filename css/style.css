@@ -167,7 +167,8 @@ footer .footer-links a {
 }
 
 /* Tablet */
-@media (max-width: 1199px) {
+@media (min-width: 768px) and 
+(max-width: 1199px) {
   .gnb {
     padding: 20px 32px;
   }
