@@ -1,12 +1,12 @@
 @import "globalStyle.css";
 
 html {
-  font-size: 10px; /* 1rem = 10px / 1.2rem = 12px / 1.4rem = 14px */
+  font-size: 10px;
+  /* 1rem = 10px / 1.2rem = 12px / 1.4rem = 14px */
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
   font-family: "Pretendard";
 }
 
@@ -27,22 +27,21 @@ button {
 }
 
 .font-big {
-  font-size: 48px;
+  font-size: 4.8rem;
   font-weight: 700;
-  line-height: 57.6px;
+  line-height: 5.76rem;
 }
 .font-desc {
-  font-size: 16px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 2.4rem;
   color: #6b6b6b;
   letter-spacing: 0;
   line-height: 2.4rem;
 }
 
 .desc-img {
-  width: 550px;
-  height: 450px;
+  width: 55rem;
+  height: 45rem;
   border-radius: 15px;
 }
 
@@ -71,7 +70,7 @@ button {
 header {
   position: fixed;
   width: 100%;
-  height: 54px;
+  height: 5.4rem;
   background-color: #f0f6ff;
   display: flex;
   align-items: center;
@@ -85,22 +84,21 @@ header {
 }
 
 header img {
-  width: 133px;
-  height: 24px;
+  width: 13.3rem;
+  height: 2.4rem;
 }
 
 .login-button {
-  width: 128px;
-  height: 54px;
+  width: 12.8rem;
+  height: 5.4rem;
   border-radius: 8px;
   background: linear-gradient(90deg, #6d6afe, #6ae3fe);
-  padding: 16px 20px;
+  padding: 1.6rem 2rem;
   border: none;
 }
 
 .main-page-example {
   width: 100%;
-  height: 953px;
   margin-top: 54px;
   display: flex;
   align-items: center;
@@ -112,14 +110,14 @@ header img {
 }
 
 .link-add-button {
-  width: 350px;
-  height: 54px;
+  width: 35rem;
+  height: 5.4rem;
   border-radius: 8px;
   border: none;
-  padding: 16px 20px;
-  font-size: 18px;
+  padding: 1.6rem 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  line-height: 21.6px;
+  line-height: 2.16rem;
   color: white;
   background: linear-gradient(90deg, #6d6afe, #6ae3fe);
 }
@@ -136,8 +134,8 @@ header img {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 157px;
-  margin: 50px auto;
+  gap: 15.7rem;
+  margin: 5rem auto;
 }
 
 .left-text-right-image > main-container {
@@ -149,17 +147,17 @@ header img {
 .left-text-right-image main-container-sub {
   display: flex;
   flex-direction: column;
-  margin-right: 157px;
+  margin-right: 15.7rem;
 }
 
 .left-image-right-text {
   width: 100%;
-  height: 550px;
+  height: 55rem;
   background-color: #fff;
   display: flex;
   justify-content: center;
-  gap: 157px;
-  padding: 50px;
+  gap: 15.7rem;
+  padding: 5rem;
 }
 
 save-description {
@@ -170,11 +168,11 @@ save-description {
 
 .manage-description {
   width: 100%;
-  height: 550px;
+  height: 55rem;
   background-color: #fff;
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding: 5rem;
 }
 
 .manage-main-container-sub {
@@ -184,20 +182,20 @@ save-description {
 
 .search-description {
   width: 100%;
-  height: 550px;
+  height: 55rem;
   background-color: #fff;
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding: 5rem;
 }
 .footer {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 160px;
+  height: 16rem;
   background-color: #000;
-  margin-top: 120px;
-  padding: 32px 0 110px;
+  margin-top: 12rem;
+  padding: 3.2rem 0 11rem;
 }
 .footer-container {
   display: flex;
@@ -214,7 +212,7 @@ save-description {
 .footer_link {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 3rem;
 }
 .sns-icons {
   display: flex;
