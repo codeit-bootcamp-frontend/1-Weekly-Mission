@@ -16,7 +16,7 @@ footer {
   height: fit-content;
   padding: 0 10.4rem;
 
-  @media screen and (max-width: 767px) and (min-width: 375px) {
+  @media (max-width: 767px) and (min-width: 375px) {
     grid-template:
       "footerLinkToPage footerSocialIcon"
       "footerLogo .";
