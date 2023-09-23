@@ -35,9 +35,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* 1rem은 16px 브라우저의 기본 font 16px이기떄문 */
   height: 9.4rem;
-  /*  “Linkbrary” 로고의 왼쪽 여백 `200px` “로그인" 버튼의 오른쪽 여백 `200px`이 유지 */
   padding: 0 20rem;
   width: 100%;
 }
@@ -114,7 +112,6 @@ span#emphasize {
 
 .text-container .emphasize {
   background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
-  /* 아래것을 해야 배경색이 아니라 글씨에다가 색이 칠해진다 */
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -130,10 +127,8 @@ span#emphasize {
 .image-container {
   background: #f0f6ff;
   border-radius: 15px;
-  /* width: 100%; */
-  /* 얘를 설정안해주면은 이미지가 너무 커진다.. */
+
   width: 55rem;
-  /* image-container */
 
   display: flex;
   flex-direction: row;
@@ -147,7 +142,7 @@ section.contents {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /* card와 text 컨테이너 영역을 157px로 해준다 */
+
   column-gap: 15.7rem;
 }
 
@@ -310,6 +305,12 @@ a {
     position: absolute;
     bottom: -2.2rem;
     width: 100%;
+  }
+  /* odd영역 */
+
+  section.contents:nth-child(odd) .image-container {
+    margin-bottom: 3rem;
+    border: 5px solid red;
   }
 
   /* even영역 */
