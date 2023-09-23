@@ -11,6 +11,12 @@ body{
     font-size: 1.6rem;
 
 }
+/* mobile */
+@media(max-width:767px){
+    .wrap{
+        padding: 3.2rem;
+    }
+}
 
 header{
     display: flex;
@@ -32,14 +38,24 @@ header p{
     margin-left: 0.8rem;
     font-weight: 600;
 }
-
+.container{
+    width: 40rem;
+}
+/* mobile */
+@media(max-width:767px){
+    .container{
+        max-width: 40rem;
+        width: 100%;
+        padding:3.2rem ;
+    }
+}
 .form__sign{
     display: flex;
-    width: 40rem;
     flex-direction: column;
     justify-content: center;
     align-items: left;
 }
+
 .form__sign label{
     font-size: 1.4rem;
 }
