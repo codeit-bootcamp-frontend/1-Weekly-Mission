@@ -66,6 +66,21 @@ header,
   gap: 40px;
 }
 
+.title {
+  text-align: center;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 125%;
+}
+
+.title-highlight {
+  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .headline-image-container {
   position: relative;
   display: flex;
@@ -86,21 +101,6 @@ header,
   width: 1118px;
   height: 659px;
   box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.08);
-}
-
-.title {
-  text-align: center;
-  font-size: 64px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 125%;
-}
-
-.title-highlight {
-  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .btn.link {
