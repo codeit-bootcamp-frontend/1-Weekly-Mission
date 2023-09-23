@@ -313,6 +313,7 @@ footer .website {
     padding: 2.8rem 3.2rem;
     gap: 2.4rem;
     margin-bottom: 4rem;
+    width: 100%;
   }
 
   .preview .button {
@@ -345,7 +346,6 @@ footer .website {
   .content h2 {
     position: absolute;
     font-size: 2.4rem;
-    width: 100%;
     top: 0;
   }
 

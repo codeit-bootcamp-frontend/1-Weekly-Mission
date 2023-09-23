@@ -59,7 +59,8 @@ input {
 }
 
 input:focus {
-  outline: 0.1rem solid var(--primary, #6d6afe) !important;
+  border: 0.1rem solid var(--primary, #6d6afe);
+  outline: none;
 }
 
 .signin-field .text, .social-login .text {
