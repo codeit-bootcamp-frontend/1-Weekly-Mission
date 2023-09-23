@@ -62,10 +62,9 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 4rem;
+  font-size: 64px;
   font-weight: 700;
   line-height: 5rem;
-  width: 708px;
   word-break: keep-all;
 }
 
@@ -153,25 +152,6 @@
   justify-content: center;
   background-color: var(--backgroundcolor-skyblue-10);
   border-radius: 15px;
-}
-
-.content2-image-card2 {
-  position: relative;
-}
-
-.content2-imagebox img {
-  width: 244px;
-  height: 239px;
-  flex-shrink: 0;
-}
-
-.content2-imagebox .download-btn {
-  width: 46px;
-  height: 46px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  cursor: pointer;
 }
 
 /* content3 */
@@ -305,7 +285,7 @@
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 }
 
-.content4-image-container > img {
+.content4-image {
   width: 26rem;
   height: 16.9375rem;
   flex-shrink: 0;
@@ -440,7 +420,7 @@
 
   .header {
     width: 100%;
-    margin-bottom: 93.5px;
+    margin-bottom: 40px;
   }
 
   .gnb {
@@ -472,6 +452,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    margin: 0px 32px;
     gap: 24px;
   }
 
@@ -495,10 +476,10 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top: 28px;
     font-size: 32px;
     font-weight: 700;
     line-height: 42px;
-    width: 250px;
     word-break: keep-all;
   }
 
@@ -833,5 +814,103 @@
 
   .footer-icons {
     grid-column: 3 / 3;
+  }
+}
+
+/* tablet */
+
+@media screen and (max-width: 1199px) {
+  .gnb-logo {
+    width: 133px;
+    height: 24px;
+  }
+
+  .login-btn {
+    width: 128px;
+  }
+
+  .content1-textbox {
+    font-size: 64px;
+    line-height: 80px;
+    margin-top: 40px;
+    word-break: keep-all;
+    width: 500px;
+  }
+
+  .content1-image-container {
+    width: 650.303px;
+    height: 383.114px;
+    flex-shrink: 0;
+  }
+
+  .content1-image {
+    width: 650.303px;
+    height: 383.114px;
+    flex-shrink: 0;
+  }
+
+  .addlink-btn {
+    width: 350px;
+  }
+
+  .content2-container {
+    gap: 51px;
+    margin: 80px 0px 50px;
+  }
+
+  .content2-imagebox {
+    width: 385px;
+    height: 315px;
+  }
+
+  .content2-image {
+    width: 100%;
+  }
+
+  .content2-image-container {
+    width: 385px;
+    height: 315px;
+  }
+
+  .content3-container {
+    gap: 51px;
+    margin: 50px 0px;
+  }
+
+  .content3-imagebox {
+    width: 385px;
+    height: 315px;
+  }
+
+  .change-folder-name-image {
+    width: 100%;
+  }
+
+  .content4-container {
+    gap: 51px;
+    margin: 50px 0px;
+  }
+
+  .content4-imagebox {
+    width: 385px;
+    height: 315px;
+  }
+
+  .content4-image {
+    width: 100%;
+  }
+
+  .content5-container {
+    gap: 51px;
+  }
+
+  .content5-image-box {
+    width: 385px;
+    height: 315px;
+  }
+
+  .content5-image {
+    width: 385px;
+    height: 315px;
   }
 }
