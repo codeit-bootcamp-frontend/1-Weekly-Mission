@@ -62,7 +62,7 @@ main .intro {
 }
 
 main .intro h1 {
-  width: 600px;
+  width: 700px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -72,6 +72,10 @@ main .intro h1 {
   line-height: 80px;
 }
 
+main .intro h1 .second-line > *{
+  display: inline;
+
+}
 main .intro h1 span {
   background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
   background-clip: text;
@@ -294,6 +298,11 @@ footer .frame .footer_container .sns_icons img {
     width: 698px;
     height: 343px;
   }
+
+  main .intro h1 .second-line > *{
+    display: block;
+  
+  }
 }
 
 
@@ -304,7 +313,10 @@ footer .frame .footer_container .sns_icons img {
     padding-right: 32px;
   }
   
-
+  main .intro h1 .second-line > *{
+    display: block;
+  
+  }
   .content.flex-center{
     padding-top : 40px;
     padding-bottom: 40px;
