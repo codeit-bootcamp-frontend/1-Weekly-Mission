@@ -102,12 +102,12 @@ section:nth-child(even){
     flex-direction: row-reverse;
 }
 
-.section-text{
+section{
     display: flex;
     flex-direction: column;
 }
 
-.section-text h2{
+section h2{
     font-size: 3rem;
     font-style: normal;
     font-weight: 700;
@@ -116,7 +116,7 @@ section:nth-child(even){
     margin: 0;
 }
 
-.section-text p{
+section p{
     color: #6B6B6B;
     font-size: 1rem;
     font-style: normal;
@@ -145,8 +145,8 @@ section img{
     background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
 }
 
-.section-text span,
-.hero-header h1 span{
+section .font-gradation,
+.hero-header .font-gradation{
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -204,7 +204,7 @@ footer span{
     .nav-logo{
         position:sticky;
         left: 32px;
-    }
+    }경
     .nav-login{
         position:sticky;
         right: 32px;
@@ -221,18 +221,23 @@ footer span{
 
     section{
         flex-direction: column !important;
-        padding: 0 32px 40px;
+        padding: 0 32px 80px;
         align-items: flex-start;
-        gap: 2.4rem;
+        gap: 1.6rem;
+    }
+
+    section.save{
+        padding-top: 4rem;
     }
 
     section img{
         width: 100%;
     }
 
-    .section-text p{
+    section p{
         font-size: 1.5rem;
         margin-top: 1rem;
+        order: 2;
     }
 
     /* br태그의 줄바꿈 기능 제거 */
