@@ -14,10 +14,11 @@ body {
   --gray20: #CCD5E3;
   --gray60: #9FA6B2;
   --gray100: #3E3E43;
+  margin: 0;
 }
 
 .wrap {
-  padding-top: 15vh;
+  padding: 15vh 32px 0;
   height: 100vh;
   background-color: var(--bg-color);
   display: flex;
@@ -108,8 +109,8 @@ body {
   height: 42px;
 }
 
-/* eye가 btton 태그일 시 적용 */
-/* .eye {
+.eye {
   border: none;
   background-color: var(--white);
-} */
+  cursor: pointer;
+}
