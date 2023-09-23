@@ -228,6 +228,10 @@ header,
   -webkit-text-fill-color: transparent;
 }
 
+.content-image-container.fourth {
+  background: url("/images/contents04.png") lightgray 50% / cover no-repeat;
+}
+
 footer {
   display: flex;
   height: 280px;
@@ -391,5 +395,9 @@ footer {
 
   .content-title-highlight-third {
     font-size: 24px;
+  }
+
+  .content-image-container.fourth {
+    order: 1;
   }
 }
