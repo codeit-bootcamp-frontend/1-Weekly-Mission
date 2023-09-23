@@ -192,10 +192,6 @@ footer .company {
 
 /* Tablet width: 1199px height: 2820px*/
 @media (max-width: 1199px) {
-  header nav {
-    background-color: red;
-  }
-
   .logo,
   .login {
     margin: auto 32px;
@@ -208,6 +204,7 @@ footer .company {
 
 /* Mobile width: 390px height 2460px*/
 @media (max-width: 767px) {
+  /* test color */
   header nav {
     background-color: blue;
   }
