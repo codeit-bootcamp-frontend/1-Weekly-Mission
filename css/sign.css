@@ -12,7 +12,7 @@ body{
 
 }
 /* mobile */
-@media(max-width:767px){
+@media(max-width:76.7rem){
     .wrap{
         padding: 3.2rem;
     }
@@ -42,11 +42,11 @@ header p{
     width: 40rem;
 }
 /* mobile */
-@media(max-width:767px){
+@media(max-width:76.7rem){
     .container{
-        max-width: 40rem;
         width: 100%;
         padding:3.2rem ;
+        max-width: 40rem;
     }
 }
 .form__sign{
@@ -108,8 +108,8 @@ header p{
 }
 
 .form__input-wrapper{
-    position: relative;
     display: flex;
+    position: relative;
     flex-direction: column;
 }
 .form__input-wrapper input{
@@ -117,9 +117,9 @@ header p{
 } 
 
 .password-eye{
-    position: absolute; 
+    position: absolute;
+    right: 1.6rem; 
     bottom:50%;
     transform: translateY(50%);
-    right: 1.6rem;
     fill: white;
 }
