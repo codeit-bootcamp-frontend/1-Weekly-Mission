@@ -33,8 +33,15 @@ header {
 }
 
 .logo{
-    width: 8.8rem;
-    height: 1.6rem;
+    width: 13.3rem;
+    height: 2.4rem;
+}
+/* mobile */
+@media(max-width:767px){
+    .logo{
+        width: 8.8rem;
+        height: 1.6rem;
+    }
 }
 button.login{
     width:8.8rem;
@@ -75,7 +82,7 @@ button.login{
 .card_head__title{
     text-align: center;
     font-family: Pretendard;
-    font-size: 5rem;
+    font-size: 6.4rem;
     font-weight: 700;
     line-height: 7rem;
 }
