@@ -201,7 +201,7 @@ a {
   /* width를 지정안해도 되긴하는데, 그만큼의 contesnts가 작기떄문에 눈에 잘 안 보이는것일뿐 */
   /* justify-content: space-between;
   align-items: center;  */
-  border: 5px solid blue;
+
   display: grid;
   justify-content: stretch;
   align-items: center;
