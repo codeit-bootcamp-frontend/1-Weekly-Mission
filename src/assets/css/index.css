@@ -12,7 +12,6 @@ header nav {
   left: 0;
   top: 0;
   z-index: 1;
-  background-color: var();
 }
 
 body {
@@ -51,7 +50,6 @@ main {
 
 .logo a {
   font-size: 30px;
-  /* margin: 0 auto; */
   margin: 30px;
   width: 133px;
   height: 24px;
@@ -163,10 +161,6 @@ footer ul li {
 }
 
 .company span {
-  /* font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px; */
   line-height: 51px;
   text-align: center;
   color: #676767;
