@@ -26,6 +26,11 @@ header {
     }
 }
 */
+@media(max-width:767px){
+    .header-title{
+        padding: 1.3rem 3.2rem;
+    }
+}
 
 .logo{
     width: 8.8rem;
