@@ -62,7 +62,7 @@ main .intro {
 }
 
 main .intro h1 {
-  width: 700px;
+  width: 44rem;
   display: flex;
   flex-direction: column;
   text-align: center;
