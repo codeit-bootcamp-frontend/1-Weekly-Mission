@@ -188,6 +188,11 @@ footer {
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1199px) {
+  .slogan {
+    width: 47.2rem;
+    word-break: keep-all;
+  }
+
   /* Images */
   .hero-image {
     width: 65rem;
@@ -230,10 +235,20 @@ footer {
 
 /* Mobile */
 @media screen and (max-width: 767px) {
+  .nav-logo {
+    width: 8.9rem;
+  }
+
   .slogan {
     font-size: 3.2rem;
     line-height: 4.2rem;
     word-break: keep-all;
+    width: 23.6rem;
+  }
+
+  .hero-header {
+    row-gap: 2.4rem;
+    padding-top: 0;
   }
 
   .cta {
@@ -255,15 +270,20 @@ footer {
     height: 26.5909rem;
   }
 
+  article {
+    padding-top: 0;
+  }
+
   section {
     column-gap: 2.4rem;
-    row-gap: 1rem;
+    row-gap: 1.6rem;
     height: 45.7rem;
     padding: 4rem 0;
   }
 
   .title {
     font-size: 2.4rem;
+    line-height: normal;
   }
   .description {
     font-size: 1.5rem;
@@ -273,7 +293,6 @@ footer {
     grid-template:
       "title"
       "image"
-      "image"
       "description"
       /32.5rem;
   }
@@ -281,7 +300,6 @@ footer {
   section:nth-of-type(even) {
     grid-template:
       "title"
-      "image"
       "image"
       "description"
       /32.5rem;
@@ -312,5 +330,4 @@ footer {
   .sns {
     grid-area: sns;
   }
-
 }
