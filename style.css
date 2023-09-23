@@ -337,6 +337,8 @@ footer {
   .title {
     font-size: 32px;
     line-height: 131.25%;
+    width: 80%;
+    word-break: keep-all;
   }
 
   .btn.link {
