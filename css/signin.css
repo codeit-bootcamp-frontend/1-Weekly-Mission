@@ -96,6 +96,7 @@ input:focus {
 @media (max-width: 767px) {
   body {
     padding: 120px 0 232px;
+    height: 100%;
   }
   .container {
     margin: auto 32px;
