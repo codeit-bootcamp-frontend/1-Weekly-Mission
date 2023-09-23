@@ -11,14 +11,18 @@ nav {
   position: fixed;
   top: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  /* max-width: 192rem; */
-
   height: 9.4rem;
-  padding: 0 20rem;
   background-color: var(--linkbrary-bg);
+}
+
+.nav-box {
+  width: 152rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .hero-header {
@@ -93,7 +97,7 @@ section:nth-of-type(odd) {
     "title image"
     "description image"
     ". image"
-    /291px 55rem;
+    /29.1rem 55rem;
 }
 
 section:nth-of-type(even) {
@@ -102,7 +106,7 @@ section:nth-of-type(even) {
     "image title"
     "image description"
     "image ."
-    /550px 29.1rem;
+    /55rem 29.1rem;
 }
 
 .title {
@@ -180,4 +184,50 @@ footer {
   display: flex;
   column-gap: 1.2rem;
   height: 2rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* Images */
+  .hero-image {
+    width: 65rem;
+    height: 38.3rem;
+  }
+  .content-image {
+    width: 38.5rem;
+    height: 31.5rem;
+  }
+
+  article {
+    padding-top: 3rem;
+  }
+
+  section {
+    column-gap: 5.1rem;
+    row-gap: 1rem;
+    height: 41.5rem;
+    padding: 5rem 0;
+  }
+
+  section:nth-of-type(odd) {
+    grid-template:
+      ". image"
+      "title image"
+      "description image"
+      ". image"
+      /26.2rem 38.5rem;
+  }
+  
+  section:nth-of-type(even) {
+    grid-template:
+      "image ."
+      "image title"
+      "image description"
+      "image ."
+      /38.5rem 26.2rem;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
 }
