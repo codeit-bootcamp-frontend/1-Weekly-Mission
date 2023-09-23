@@ -150,7 +150,7 @@ main{
 
   main > *, main .inputFrame form, .inputFrame .inputbox #email, .inputFrame .inputbox #password, .social-login{
     width: 100%;
-    /* max-width: 400px; */
+    max-width: 400px;
   }
 
 
