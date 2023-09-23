@@ -309,8 +309,7 @@ a {
   /* odd영역 */
 
   section.contents:nth-child(odd) .image-container {
-    margin-bottom: 3rem;
-    border: 5px solid red;
+    margin-bottom: 2.5rem;
   }
 
   /* even영역 */
