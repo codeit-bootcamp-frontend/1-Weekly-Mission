@@ -270,15 +270,16 @@ footer{
 
 footer .since_codeit{
     color: #676767;
-    text-align: center;
     font-family: Arial;
     font-size: 1.6rem;
     font-weight: 400;
+    grid-area: since_codeit;
 
 }
 .extra_sites{
     display: flex;
     gap: 1.3rem;
+    grid-area: extra_sites;
 }
 .extra_sites__link{
     color: #CFCFCF;
@@ -291,14 +292,12 @@ footer .since_codeit{
 footer .icons{
     display: flex;
     gap: 1.2rem;
+    grid-area: footer_icons;
 }
 button:hover{
     cursor: pointer;
 }
-/* mobile */
-@media(max-width:767px){
 
-}
 /* pc */
 @media(min-width : 1200px){
     .not-pc-br{
@@ -317,6 +316,13 @@ button:hover{
     
     .card_head__title{
         color: blue;
+    }
+    footer{
+        display: grid;
+        grid-template-areas: 
+            "extra_sites footer_icons"
+            "since_codeit .";
+        gap: 3rem;
     }
     .not-mobile-br{
         display: none;
