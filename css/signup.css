@@ -89,3 +89,14 @@ label {
   height: 42px;
   display: inline-block;
 }
+
+/* Mobile */
+@media (max-width: 767px) {
+  body {
+    padding: 120px 0 119px;
+    height: 100%;
+  }
+  .container {
+    margin: auto 32px;
+  }
+}
