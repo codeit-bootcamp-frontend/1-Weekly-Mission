@@ -106,6 +106,10 @@ input:focus {
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   /* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다. */
+  body {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
 }
 
 /* mobile */
@@ -119,10 +123,7 @@ input:focus {
 
   /* 내부 요소들의 너비는 기기의 너비가 커지는 만큼 커지지만 400px을 넘지 않습니다 400px을 넘지 않습니다  */
   form {
-    /* 질문+++++++++++++++++++++++++++++++++++++++++++++++ */
-    /* width:100%를 지우면은 body에서 준 좌우 여백 3.2rem이 적용이 안된다  */
     width: 100%;
     max-width: 400px;
-    border: 5px solid black;
   }
 }

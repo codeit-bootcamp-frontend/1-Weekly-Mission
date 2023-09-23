@@ -25,7 +25,6 @@ html {
 
 body {
   margin: 0;
-  /* 아래처럼 하면은 딱 section만큼의  넓이를 가진다*/
 }
 nav {
   background-color: #edf7ff;
@@ -43,11 +42,6 @@ nav {
   width: 100%;
 }
 
-/* 없애주면은 linkbrary와 로그인 사이의 버튼이겹치쥬*/
-/* nav a:first-of-type {
-  margin-right: 5rem;
-} */
-/* 정답지에서는 .cta랑 같은거 */
 button {
   color: var(--grey-light);
   background: var(--gra-purpleblue-to-skyblue);
@@ -182,7 +176,7 @@ section.contents {
 }
 
 .contents-four .text-container .emphasize {
-  background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
+  background-image: linear-gradient(133deg, #2945c7 0%, #76777a 100%);
 }
 /* section5 */
 
@@ -199,66 +193,69 @@ a {
 }
 
 .footer {
+  /* border: 5px solid blue;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 10.4rem;
   background: var(--the-julge-black);
-  height: 16rem;
-  /* 애가  */
-  column-gap: 1rem;
+  /*   justify-content가 flex-item들의 width를 지정하니까 먹힌다. 뚜렷이 보인다. */
+  /* width를 지정안해도 되긴하는데, 그만큼의 contesnts가 작기떄문에 눈에 잘 안 보이는것일뿐 */
+  /* justify-content: space-between;
+  align-items: center;  */
+  border: 5px solid blue;
+  display: grid;
+  justify-content: stretch;
+  align-items: center;
+  background: var(--the-julge-black);
+  grid-template-columns: repeat(10, 1fr);
+  /* grid-template-rows: 1fr 1fr; */
 }
 
 .codeit-title {
   color: #676767;
   font-size: 1.6rem;
   font-weight: 400;
-  min-width: 12rem;
+  grid-column: 2 /4;
+  justify-self: center;
+  font-size: 2rem;
 }
 
 .policy-text {
-  display: flex;
-  flex-direction: row;
-  column-gap: 3rem;
-  min-width: 17rem;
+  grid-column: 5/7;
+  justify-self: center;
 }
 
-.policy-text p {
+.policy-text a {
   color: #cfcfcf;
-  font-family: Arial;
-  font-size: 16px;
+  font-size: 2rem;
   font-weight: 400;
 }
 
+.policy-text a:first-child {
+  margin-right: 3rem;
+}
+
 .icons {
-  display: flex;
-  flex-direction: row;
-  column-gap: 2.5rem;
+  grid-column: span 3 / -1;
+  justify-self: center;
+  font-size: 2rem;
+}
+
+.icons a:not(:last-child) {
+  margin-right: 1.5rem;
 }
 
 /* media types */
 
 /* PC */
 @media screen and (min-width: 1200px) {
-  /* PC, Tablet 사이즈의 이미지 크기는 고정값을 사용하세요. */
 }
 
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  /* 
-
-   ""
-   “로그인” 버튼 사이의 간격은 유지하고 좌우 여백이 줄어듭니다.      
-   
-   */
-  nav {
-    padding-right: 3.2rem;
-    padding-left: 3.2rem;
+  .policy-text {
+    grid-column: 5/8;
+    justify-self: center;
   }
-
-  /* PC, Tablet 사이즈의 이미지 크기는 고정값을 사용하세요. */
 }
 
 /* mobile */
@@ -318,5 +315,23 @@ a {
   /* even영역 */
   section.contents:nth-child(even) .image-container {
     order: 2;
+  }
+
+  .footer {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .codeit-title {
+    order: 3;
+    justify-self: stretch;
+  }
+  .policy-text {
+    grid-column: 2/7;
+    justify-self: start;
+  }
+
+  .icons {
+    grid-column: 7/-1;
   }
 }
