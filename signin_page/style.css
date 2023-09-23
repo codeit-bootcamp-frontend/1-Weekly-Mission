@@ -5,9 +5,15 @@
     box-sizing : border-box;
 }
 
+html{
+    font-size : 62.5%;
+}
+
 body{
     background: var(--linkbrary-bg, #F0F6FF);
     font-family: Pretendard;
+    display : flex;
+    justify-content: center;
 }
 
 a:hover,
@@ -17,7 +23,7 @@ button:hover{
 
 .container{
     width : 400px;
-    margin : 180px auto 0;
+    margin-top : 180px;
     display : flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +36,7 @@ header{
     align-items: center;
     gap : 16px;
 
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 .icon_logo{
@@ -53,7 +59,7 @@ main{
 }
 
 form{
-    font-size : 14px;
+    font-size : 1.4rem;
     display : flex;
     flex-direction: column;
     gap : 24px;
@@ -83,7 +89,7 @@ form{
 .input_box::placeholder{
     color: var(--linkbrary-gray-100, #373740);
     font-family: Pretendard;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 input:focus{
@@ -100,7 +106,7 @@ input:focus{
 
     color: var(--grey-light, #F5F5F5);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 600;
 }
 
@@ -118,7 +124,7 @@ footer{
 
 footer p{
     color: var(--linkbrary-gray-100, #373740);
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 .social_icon_box{
@@ -132,7 +138,7 @@ footer p{
     width : 42px;
     height : 42px;
     position : relative;
-    background-image: url("kakaotalk_bg.svg");
+    background-image: url("../assets/images/kakaotalk_bg.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -148,7 +154,7 @@ footer p{
     width : 42px;
     height : 42px;
     position : relative;
-    background-image: url("google_bg.svg");
+    background-image: url("../assets/images/google_bg.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -159,4 +165,12 @@ footer p{
     position : absolute;
     top : 10px;
     left : 10px;
+}
+
+@media (max-width : 767px){
+    .container{
+        width : 100%;
+        max-width : 400px;
+        margin : 180px 32px;
+    }
 }

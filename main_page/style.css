@@ -1,6 +1,5 @@
-@import "/reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
+@import "../assets/reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
 *{
     box-sizing : border-box;
 }
@@ -8,6 +7,7 @@
 html{
     color : black;
     margin : 0 auto;
+    font-size : 62.5%; /* 크롬 기준 10px */
 }
 
 .bg_header_main{
@@ -27,30 +27,27 @@ a :hover{
 
 header{
     width : 100%;
-    max-width : 1920px; /* 너비가 1920px 이상이면 요소들이 더이상 넓어지지 않도록*/
     display: flex;
     padding : 20px 200px;
-    margin : 0 auto ;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    align-self: stretch;
     background: var(--linkbrary-bg, #F0F6FF);
-
+    justify-content: center;
     position : fixed;
     top : 0px;
+    left : 0px;
+    right : 0px;
     z-index : 1;
 }
 
 header div{
+    width : 100%;
+    max-width : 1920px; /* 너비가 1920px 이상이면 요소들이 더이상 넓어지지 않도록*/
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
 }
 
-header .btn,
-.main_content a{ /* click button */
+.blue_btn{ /* click button */
     display: flex;
     padding : 16px 20px;
     justify-content: center;
@@ -63,7 +60,7 @@ header .btn,
     /* text */
     color: var(--grey-light, #F5F5F5);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 1.8rem; /*18px*/
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -97,10 +94,10 @@ header a{ /* login button */
     width : 708px;
     text-align: center;
     font-family: Pretendard;
-    font-size: 64px;
+    font-size: 6.4rem; /*64px*/
     font-style: normal;
     font-weight: 700;
-    line-height: 80px; /* 125% */
+    line-height: 125%; /* 125% */
     color : #000;
 }
 
@@ -120,60 +117,80 @@ header a{ /* login button */
     border-top-left-radius: 25px;
     background-color : white;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
-}
-
-.site_img{
-    width : 100%;
-    height : 659px;
-    flex-shrink: 0;
-    border-radius : 25px;
     background-image: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%)
-    ,url('https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4');
+    ,url('/assets/images/main.png');
     background-repeat : no-repeat;
-    background-position : center;
-    background-size : contain;
+    background-position : top;
+    background-size : cover;
 }
 
-.save_content,
-.folder_content,
-.share_content,
-.search_content{
+.contents_box{
     width : 100%;
     max-width : 998px;
     margin : 0 auto;
-    display: flex;
     padding : 50px 10px;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-rows : repeat(4, 1fr);
+    gap : 10px;
 }
 
-.save_text,
-.folder_text,
-.share_text,
-.search_text{
-    display: flex;
-    width: 291px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+.save,
+.share{
+    grid-template-columns : 30% 10% 55%;
+    grid-template-areas: 
+    ". . img"
+    "text . img"
+    "detail . img"
+    ". . img"
+    ;
+}
 
+.folder,
+.search{
+    grid-template-columns : 55% 10% 30%;
+    grid-template-areas: 
+    "img . ."
+    "img . text"
+    "img . detail"
+    "img . ."
+    ;
+}
+
+.contents_text{
+    grid-area : text;
     font-family: Pretendard;
-    font-size: 48px;
+    font-size: 4.8rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.3px;
 }
 
-.detail{
+.contents_detail{
+    /* 컨텐츠 세부 설명 */
+    grid-area : detail;
     color: #6B6B6B;
     font-family: Pretendard;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 24px */
+    word-break: keep-all;
+    width : 277px;
 }
 
+.contents_img{
+    /* 각 컨텐츠의 그림이 들어가는 하늘색 박스 */
+    grid-area : img;
+    width : 550px;
+    height : 450px;
+    border-radius : 15px;
+    background: #F0F6FF;
+    overflow : hidden;
+    position : relative;
+}
+
+/* contents-02 : save */
 .save_grd{
     background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
     background-clip: text;
@@ -181,45 +198,38 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 } 
 
-.save_cards{
-    width: 55%;
-    max-width : 550px;
-    height: 450px;
-    border-radius: 15px;
-    background: #F0F6FF;
-
-    white-space: nowrap;
-    overflow: hidden;
-
+.card_box{
     display : flex;
     justify-content: center;
     align-items: center;
+    gap : 12px;
+    position : absolute;
+    inset : 0;
 }
 
-.cardbox{
-    display: inline-flex;
-    align-items: center;
-    gap: -12px;
-}
-
-.cardbox .card{
+.card{
     width: 244px;
     height: 239px;
     flex-shrink: 0;
     border-radius: 11px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.card_center{
+.card.left{
+    background-image: url('/assets/images/card1.png');
+}
+
+.card.center{
+    background-image: url('/assets/images/card2.png');
     position : relative;
-    width: 244px;
-    height: 239px;
     border-radius: 11px;
     border: 2px solid var(--linkbrary-primary-color, #6D6AFE);
 }
 
-.card_center .card{
-    width : 100%;
-    height : 100%;
+.card.right{
+    background-image: url('/assets/images/card3.png');
 }
 
 .down_icon{
@@ -228,6 +238,7 @@ header a{ /* login button */
     right : -15px;
 }
 
+/* contents-03 : folder */
 .folder_grd{
     background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
     background-clip: text;
@@ -235,22 +246,16 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 }
 
-.folder_img{
-    display: flex;
-    width: 55%;
-    max-width : 550px;
-    padding: 114px 68px 66px 68px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    background: #F0F6FF;
+.folder img,
+.share img{
+    /* folder, share 컨텐츠 - 팝업 이미지 */
+    width : 414px;
+    position : absolute;
+    top : 114px;
+    left : 68px;
 }
 
-.folder_img img{
-    width : 100%;
-    height : 100%;
-}
-
+/* contents-04 : share */
 .share_grd{
     background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
     background-clip: text;
@@ -258,26 +263,15 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 }
 
-.share_img{
-    width: 55%;
-    max-width : 550px;
-    flex-shrink: 0;
-    padding : 121px 77px;
-    
-    border-radius: 25px;
+.contents_img.share{
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+    url("/assets/images/image\ 25.png");
     background-position : center;
     background-size : cover;
     background-repeat : no-repeat;
-
 }
 
-.share_img img{
-    width :100%;
-}
-
+/* contents-05 : search */
 .search_grd{
     background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
     background-clip: text;
@@ -285,21 +279,11 @@ header a{ /* login button */
     -webkit-text-fill-color: transparent;
 }
 
-.search_img{
-    width: 55%;
-    max-width : 550px;
-    height: 450px;
-    border-radius: 15px;
-    background: #F0F6FF;
-    padding-top : 55px;
-    padding-left : 60px;
-
-    overflow : hidden;
-}
-
-.search_img img{
+.search img{
+    position : absolute;
+    top : 55px;
+    left : 60px;
     width: 550px;
-    flex-shrink: 0;
     border-radius: 15px;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 }
@@ -321,7 +305,7 @@ footer a{
     text-decoration: none;
     color: #CFCFCF;
     font-family: Arial;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -339,9 +323,8 @@ footer a{
 
 .sources{
     color: #676767;
-    text-align: center;
     font-family: Arial;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;

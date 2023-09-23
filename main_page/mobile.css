@@ -1,0 +1,102 @@
+/* mobile : 375 ~ 767px */
+@media (max-width : 767px){
+    header{
+        width : 100%;
+        padding : 13px 32px;
+    }
+    .linkbrary_logo{
+        height : 18px;
+    }
+    .blue_btn{
+        padding : 10px 16px;
+        font-size : 1.4rem;
+        width : 80px;
+    }
+
+    /* main contents */
+    .main_content{
+        width : 100%;
+        padding : 28px 32px 0px; 
+        gap : 24px;
+    }
+    .main_text{
+        display : flex;
+        flex-direction: column;
+        padding-top : 70px;
+        width : 236px;
+        font-size : 3.2rem;
+        line-height : 4.2rem;
+    }
+    .main_content a{
+        width : 200px;
+    }
+    .img_box{
+        width : 100%;
+        margin : 20px 32px 0px;
+        height : 200px;
+        background-size: cover;
+    }
+    /* contents */
+    .contents_box{
+        padding : 40px 32px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas :
+        "text"
+        "img"
+        "detail"
+        ;
+        gap : 20px;
+    }
+    .contents_text{
+        font-size : 2.4rem;
+    }
+    .contents_detail{
+        font-size : 1.5rem;
+        width : 100%;
+    }
+    .contents_img{
+        width : 100%;
+        height : 0;
+        padding-bottom: 80%;
+    }
+    .card{
+        width: 50%;
+        height: 0;
+        padding-top : 50%;
+    }
+    .folder img,
+    .share img{
+        width : 70%;
+        top : 50%;
+        left : 50%;
+        transform: translate(-50%, -50%);
+    }
+    .search img{
+        width : 100%;
+        top : 20%;
+        left : 20%;
+    }
+    /* footer */
+    footer{
+        padding : 32px 32px;
+        display : grid;
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-rows: 1.5fr 1fr;
+        grid-template-areas: 
+        "p icon"
+        "r .";
+        row-gap : 60px;
+        column-gap: 30px;;
+    }
+    .ppf{
+        grid-area : p;
+    }
+    .resources{
+        grid-area : r;
+    }
+    .link_icon{
+        grid-area : icon;
+        justify-content: flex-end;
+    }
+}
