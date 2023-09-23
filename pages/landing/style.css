@@ -41,6 +41,11 @@ header nav{
     max-width: 192rem;
 }
 
+.nav-logo img{
+    width: 13rem;
+    height: 2.4rem;
+}
+
 a{
     display: flex;
     align-items: center;
@@ -61,11 +66,12 @@ a{
 }
 
 .hero-header h1{
-    font-size: 4rem;
+    font-size: 6.4rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 5rem;
+    line-height: 8rem;
     margin: 0;
+    padding: 0 32px;
 
 }
 
@@ -74,59 +80,80 @@ a{
 }
 
 .btn-add-link{
-    width: 21.875rem;
+    width: 35rem;
     margin: 2.5rem;
 }
 
 .hero-header img{
-    width: 69.875rem;
-    height: 41.2rem;
+    width: 111.8rem;
+    height: 65.9rem;
 }
 
 
 /* section */
 section {
-    display: flex;
+    display: grid;
     padding: 3.12rem 10rem;
-    gap: 9.81rem;
+    row-gap: 1rem;
+    column-gap: 10%;
     background-color: #fff;
     justify-content: center;
-    align-items: center;
 }
 
-section.save{
+section:nth-of-type(odd) {
+    grid-template:
+    ". image"
+    "title image"
+    "description image"
+    ". image"
+    ;
+}
+
+section:nth-of-type(even) {
+    grid-template:
+    "image ."
+    "image title"
+    "image description"
+    "image ."
+}
+
+section:first-child{
     padding-top: 7.5rem;
 }
-
-section:nth-child(even){
-    flex-direction: row-reverse;
+section:last-child{
+    padding-bottom: 12rem;
 }
 
-section{
-    display: flex;
-    flex-direction: column;
+section h2,
+section p {
+    word-break:initial;
+    min-width: 15rem;
+    margin: 0;
+    font-style: normal;
 }
+
 
 section h2{
-    font-size: 3rem;
-    font-style: normal;
+    font-size: 4.8rem;
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.01875rem;
-    margin: 0;
+    grid-area: title;
 }
 
 section p{
     color: #6B6B6B;
-    font-size: 1rem;
-    font-style: normal;
+    font-size: 1.6rem;
     font-weight: 500;
-    margin: 0;
+    grid-area: description;
 }
 
+
 section img{
-    width: 34.375rem;
+    width: 55rem;
+    grid-area: image;
 }
+
 
 /* section span 그라데이션 배경색 */
 .save span{
@@ -213,14 +240,23 @@ footer span{
 
 /* Mobile */
 @media (max-width: 768px){
+
+    /* header */
     .hero-header img{
         width: 100%;
         height: auto;
         padding: 0 32px;
     }
 
+    .hero-header h1{
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+    }
+
+    /* section */
     section{
-        flex-direction: column !important;
+        display: flex;
+        flex-direction: column;
         padding: 0 32px 80px;
         align-items: flex-start;
         gap: 1.6rem;
@@ -234,8 +270,11 @@ footer span{
         width: 100%;
     }
 
+    section h2{
+        font-size: 2.4rem;
+    }
+
     section p{
-        font-size: 1.5rem;
         margin-top: 1rem;
         order: 2;
     }
@@ -248,7 +287,7 @@ footer span{
     }
 
     /* 버튼 스타일 */
-    .btn-add-link{
+    .btn{
         font-size: 1.4rem;
     }
 
