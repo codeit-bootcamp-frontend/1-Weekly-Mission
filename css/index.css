@@ -99,20 +99,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.6rem;
     font-weight: 400;
-  }
-  .footer__content {
-    display: flex;
     color: var(--Gray5);
-  }
-
-  .footer__link--color {
-    color: var(--White);
-  }
-
-  .footer__sns {
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
   }
 
   .text--display {
@@ -174,11 +161,15 @@
     justify-self: end;
     grid-area: sns;
   }
+  .color--gray3 {
+    color: var(--Gray3);
+  }
 }
 
 @media screen and (min-width: 768px) {
   .nav {
-    padding: 2rem 20rem;
+    grid-template-columns: calc(50vw - 40rem) 1fr 1fr calc(50vw - 40rem);
+    grid-template-areas: ". logo sign .";
   }
   .logo {
     width: 13rem;
@@ -247,16 +238,12 @@
 
   .grid--info {
     justify-self: center;
-    color: var(--Gray1);
-  }
-
-  .color--gray3 {
-    color: var(--Gray3);
   }
 }
 
 @media screen and (min-width: 1200px) {
   .nav {
+    padding: 2rem 20rem;
     grid-template-columns: calc(50vw - 96rem) 1fr 1fr calc(50vw - 96rem);
     grid-template-areas: ". logo sign .";
   }
