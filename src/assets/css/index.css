@@ -246,4 +246,14 @@ footer .company {
   .none_Mobile {
     display: none;
   }
+  footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 0;
+  }
+  footer .company {
+    grid-row: 3;
+    grid-column: 1;
+  }
 }
