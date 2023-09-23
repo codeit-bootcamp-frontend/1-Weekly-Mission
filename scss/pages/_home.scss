@@ -24,11 +24,11 @@
 
     &__title {
         @include tablet {
-            width: 47.5rem;
+            width: 48.5rem;
         }
 
         @include mobile {
-            width: 23.8rem;
+            width: 24.8rem;
             font-size: 3.2rem;
         }
 
@@ -170,9 +170,8 @@
         }
 
         @include mobile {
+            width: 30rem;
             font-size: 2.4rem;
-            grid-column: 1;
-            grid-row: 2;
 
             .section-container .section & {
                 grid-column: 1;
