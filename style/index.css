@@ -170,3 +170,18 @@ button {
   align-items: center;
   gap: 12px;
 }
+
+@media (max-width: 1199px) {
+  .header {
+    padding: 1.25rem 2rem;
+    margin: 0 auto;
+    width: 864px;
+
+    /* background-color: var(--most-light-gray); */
+  }
+
+  .image {
+    width: 385px;
+    height: 315px;
+  }
+}
