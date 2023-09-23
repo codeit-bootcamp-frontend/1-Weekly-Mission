@@ -662,7 +662,6 @@ main {
 /*signin*/
 .contsignin {
   display: flex;
-
   padding: 238px 0 252px;
   justify-content: center;
   align-items: center;
@@ -676,12 +675,19 @@ main {
   justify-content: center;
   gap: 32px;
 }
+@media (max-width: 767px) {
+  .contdiv {
+    padding: 0 32px;
+  }
+}
+
 .contdivup {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
 }
+
 .contdiv1 {
   display: flex;
   flex-direction: column;
@@ -691,6 +697,7 @@ main {
 .clink {
   width: 210px;
 }
+
 .contdiv11span {
   color: var(--blackColor);
   font-family: Pretendard;
@@ -732,6 +739,11 @@ main {
   border: 1px solid #ccd5e3;
   background: #fff;
 }
+@media (max-width: 767px) {
+  .contdiv21inp {
+    width: max(52.2vw, 277px);
+  }
+}
 .contdiv21inp:focus {
   border: 1px solid var(--mainColor);
   outline: none;
@@ -749,6 +761,11 @@ main {
   flex-direction: column;
   gap: 12px;
 }
+@media (max-width: 767px) {
+  .contdiv22 {
+    width: max(52.2vw, 277px);
+  }
+}
 .contdiv3div {
   display: flex;
   width: 400px;
@@ -764,6 +781,11 @@ main {
 
   font-weight: 600;
 }
+@media (max-width: 767px) {
+  .contdiv3div {
+    width: max(52.2vw, 277px);
+  }
+}
 .contdivdown {
   display: flex;
   width: 400px;
@@ -773,6 +795,11 @@ main {
   border-radius: 8px;
   border: 1px solid #ccd5e3;
   background: #e7effb;
+}
+@media (max-width: 767px) {
+  .contdivdown {
+    width: max(52.2vw, 277px);
+  }
 }
 .contdivdown1 {
   color: #373740;
