@@ -1,10 +1,15 @@
+@import "globalStyle.css";
+
+html {
+  font-size: 10px; /* 1rem = 10px / 1.2rem = 12px / 1.4rem = 14px */
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   width: 100vw;
-  height: 2000px;
   margin: 0;
   font-size: 16px;
   font-weight: 400;
@@ -18,6 +23,7 @@ a {
 button {
   cursor: pointer;
 }
+
 .font-big {
   font-size: 48px;
   font-weight: 700;
@@ -30,6 +36,12 @@ button {
   color: #6b6b6b;
   letter-spacing: 0;
   line-height: 2.4rem;
+}
+
+.desc-img {
+  width: 550px;
+  height: 450px;
+  border-radius: 15px;
 }
 
 #text-gradiant-1 {
@@ -68,6 +80,11 @@ header {
   top: 0;
   left: 0;
   opacity: 0.8;
+}
+
+header img {
+  width: 133px;
+  height: 24px;
 }
 
 .login-button {
@@ -150,11 +167,12 @@ save-description {
 }
 
 .manage-description {
+  width: 100%;
+  height: 550px;
+  background-color: #fff;
   display: flex;
   justify-content: center;
-  width: 1920px;
-  height: 550px;
-  margin: 0 auto 50px;
+  padding: 50px;
 }
 
 .manage-main-container-sub {
