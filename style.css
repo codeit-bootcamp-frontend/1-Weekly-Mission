@@ -161,6 +161,7 @@ header,
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 24px */
+  word-break: keep-all;
 }
 
 .content-image-container {
@@ -211,15 +212,8 @@ header,
   line-height: normal;
 }
 
-.content-image-container.share {
-  position: relative;
-  flex-shrink: 0;
-  border-radius: 25px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(images/image25.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 175%;
-  box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.08);
+.content-image-container.third {
+  background: url("/images/contents03.png") lightgray 50% / cover no-repeat;
 }
 
 .codeit-screenshot-image {
@@ -392,6 +386,10 @@ footer {
   }
 
   .content-title-highlight-second {
+    font-size: 24px;
+  }
+
+  .content-title-highlight-third {
     font-size: 24px;
   }
 }
