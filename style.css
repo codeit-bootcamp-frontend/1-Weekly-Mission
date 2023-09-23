@@ -287,6 +287,10 @@ footer {
     padding: 13px 32px;
   }
 
+  br {
+    display: none;
+  }
+
   .logo {
     width: 88.667px;
     height: 16px;
@@ -430,10 +434,14 @@ footer {
     padding: 20px 32px;
   }
 
+  br {
+    display: none;
+  }
+
   /* 헤드라인 */
   .headline {
     display: flex;
-    padding: 39px 250px 251px;
+    padding: 39px 250px 0;
   }
 
   .headline-image-container {
