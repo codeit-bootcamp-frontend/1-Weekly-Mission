@@ -1,0 +1,42 @@
+.tablet-hidden {
+    display: none;
+}
+.tablet-mobile-hidden {
+    display: none;
+}
+.mobile-hidden {
+    display: none;
+}
+
+
+@media (max-width: 1200px) {
+    .tablet-mobile-hidden {
+        display: block;
+    }
+    .tablet-hidden {
+        display: block;
+    }
+    .pc-hidden {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .tablet-hidden {
+        display: none;
+    }
+    .pc-hidden {
+        display:none;
+    }
+    
+    
+}
+
+@media (max-width: 390px) {
+    .pc-tablet-hidden {
+        display: none;
+    }
+    .mobile-hidden {
+        display: block;
+    }
+}
