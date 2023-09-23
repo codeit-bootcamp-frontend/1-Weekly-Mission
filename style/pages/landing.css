@@ -343,7 +343,7 @@ footer .frame .footer_container .sns_icons img {
     display: grid;
     grid-template-rows: 0.2fr 1fr 0.2fr ;
     grid-auto-rows: 1fr;
-    gap : 20px
+    gap : 30px
 
   } 
 
