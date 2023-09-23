@@ -165,14 +165,23 @@ main {
 }
 
 .content22 {
-  display: flex;
-  justify-content: space-between;
-  gap: 157px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'div1 img'
+    'div2 img';
 }
 @media (max-width: 767px) {
   .content22 {
+    margin-bottom: 0;
     display: grid;
-    gap: 24px;
+    grid-template-columns: none;
+    gap: 12px;
+    padding: 0 32px;
+    grid-template-areas:
+      'div1'
+      'img'
+      'div2';
   }
 }
 
@@ -186,14 +195,25 @@ main {
 }
 
 .content33 {
-  display: flex;
-  justify-content: space-between;
-  gap: 157px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: right;
+  grid-template-areas:
+    'img div1'
+    'img div2';
 }
 @media (max-width: 767px) {
   .content33 {
+    margin-bottom: 0;
     display: grid;
-    gap: 24px;
+    grid-template-columns: none;
+    gap: 12px;
+    padding: 0 32px;
+    text-align: left;
+    grid-template-areas:
+      'div1'
+      'img'
+      'div2';
   }
 }
 
@@ -240,7 +260,18 @@ main {
   font-size: max(2.2vw, 29px);
   font-weight: 700;
   letter-spacing: -0.3px;
-  padding: 0;
+  padding-top: 150px;
+  grid-area: div1;
+}
+@media (max-width: 767px) {
+  .c2div11 {
+    padding: 0;
+    margin: 0;
+    width: 90vw;
+  }
+  .c2div11 br {
+    display: none !important;
+  }
 }
 
 .c2div11span1 {
@@ -256,17 +287,27 @@ main {
   -webkit-text-fill-color: transparent;
   font-family: Pretendard;
   font-size: max(2.2vw, 29px);
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 }
 
 .c2div12 {
+  position: relative;
   color: #6b6b6b;
   font-family: Pretendard;
-  font-size: mas(0.72vw, 15px);
+  font-size: max(0.72vw, 15px);
   font-weight: 500;
   line-height: 150%; /* 24px */
+  grid-area: div2;
+  margin-bottom: 50px;
+}
+@media (max-width: 767px) {
+  .c2div12 {
+    margin-top: 0px;
+    grid-row: 3;
+  }
+  .c2div12 br {
+    display: none !important;
+  }
 }
 
 .c2imgs {
@@ -280,11 +321,13 @@ main {
   justify-content: center;
   gap: -12px;
   overflow: hidden;
+  grid-area: img;
 }
 @media (max-width: 767px) {
   .c2imgs {
     width: 90vw;
     height: 60vw;
+    gap: 0;
   }
 }
 
@@ -310,14 +353,55 @@ main {
     height: 7vw;
   }
 }
+.c3div11 {
+  color: var(--blackColor);
+  font-family: Pretendard;
+  font-size: max(2.2vw, 29px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  padding: 0;
+  grid-area: div1;
+  padding-top: 150px;
+}
+@media (max-width: 767px) {
+  .c3div11 {
+    padding: 0;
+    width: 90vw;
+  }
+  .c3div11 br {
+    display: none !important;
+  }
+}
+.c3div12 {
+  color: #6b6b6b;
+  font-family: Pretendard;
+  font-size: max(0.72vw, 15px);
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  grid-area: div2;
 
+  margin-bottom: 50px;
+}
+@media (max-width: 767px) {
+  .c3div12 {
+    margin-top: 0;
+    margin-bottom: 0;
+    grid-row: 3;
+  }
+  .c3div12 br {
+    display: none !important;
+  }
+}
 .c3imgs {
+  width: 550px;
+  height: 450px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 14px;
   padding: 114px 68px 66px;
   background: var(--mainBackColor);
+  grid-area: img;
 }
 @media (max-width: 767px) {
   .c3imgs {
@@ -366,7 +450,43 @@ main {
   font-weight: 700;
   line-height: normal;
 }
-
+.c4div11 {
+  color: var(--blackColor);
+  font-family: Pretendard;
+  font-size: max(2.2vw, 29px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  padding-top: 150px;
+  grid-area: div1;
+}
+@media (max-width: 767px) {
+  .c4div11 {
+    padding: 0;
+    margin: 0;
+    width: 90vw;
+  }
+  .c4div11 br {
+    display: none !important;
+  }
+}
+.c4div12 {
+  color: #6b6b6b;
+  font-family: Pretendard;
+  font-size: max(0.72vw, 15px);
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  grid-area: div2;
+  margin-bottom: 50px;
+}
+@media (max-width: 767px) {
+  .c4div12 {
+    margin-top: 0px;
+    grid-row: 3;
+  }
+  .c4div12 br {
+    display: none !important;
+  }
+}
 .c4imgs {
   display: inline-flex;
   align-items: center;
@@ -379,6 +499,7 @@ main {
     url('img/image\ 25.png');
   background-position: center;
   background-size: cover;
+  grid-area: img;
 }
 @media (max-width: 767px) {
   .c4imgs {
@@ -430,6 +551,7 @@ main {
   padding-top: 55px;
   background: var(--mainBackColor);
   overflow: hidden;
+  grid-area: img;
 }
 @media (max-width: 767px) {
   .c5imgs {

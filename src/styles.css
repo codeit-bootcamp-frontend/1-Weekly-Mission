@@ -1,0 +1,10 @@
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.div1 {
+  grid-area: 1;
+}
+.div2 {
+  grid-area: 2;
+}
