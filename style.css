@@ -175,8 +175,14 @@ header,
   background: #f0f6ff;
 }
 
-.content-image-container.first {
-  background: url("images/contents01.png") lightgray 50% / cover no-repeat;
+.content-image-container {
+  width: 100%;
+  height: auto;
+}
+
+.content-image {
+  width: 100%;
+  height: auto;
 }
 
 .card-description {
@@ -332,14 +338,14 @@ footer {
   }
 
   .headline-image-container {
-    width: 325px;
-    height: 160px;
+    width: 100%;
+    height: 17vh;
   }
 
   .headline-image {
     position: absolute;
     top: 10px;
-    width: 302.792px;
+    width: 100%;
     height: 178.712px;
     flex-shrink: 0;
   }
@@ -378,11 +384,6 @@ footer {
 
   .content-description-detail {
     font-size: 15px;
-  }
-
-  .content-image-container {
-    width: 325px;
-    height: 265.909px;
   }
 
   .content-image-container.second {
