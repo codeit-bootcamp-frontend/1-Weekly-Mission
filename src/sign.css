@@ -126,3 +126,10 @@ input:focus {
   width: 4.2rem;
   height: 4.2rem;
 }
+
+@media screen and (max-width: 767px) {
+  .sign-box {
+    max-width: 40rem;
+    width:calc(100% - 6.4rem);
+  }
+}
