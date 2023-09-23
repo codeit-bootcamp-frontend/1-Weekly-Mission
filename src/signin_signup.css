@@ -64,7 +64,6 @@ input:focus {
   position: relative;
 }
 
-
 .eye-off {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -131,4 +130,10 @@ input:focus {
   height: 42px;
   background-color: #f5e14b;
   border-radius: 50%;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 120px 32px;
+  }
 }
