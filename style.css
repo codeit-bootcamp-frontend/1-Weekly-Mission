@@ -122,7 +122,7 @@ section {
   height: 450px;
   margin: 50px auto;
   display: grid;
-  grid-template: repeat(2, 1fr) / repeat(2,1fr);
+  grid-template: repeat(2, auto) / repeat(2,1fr);
   grid-template-areas: 
   "title_area inner_image"
   "subtitle_area inner_image";
@@ -272,7 +272,6 @@ a {
     gap: 10px 51px;
     width: 698px;
     height: 315px;
-    justify-content: center;
     grid-template-columns: 262px 384px;
     grid-template-rows: auto;
   }
@@ -379,6 +378,8 @@ a {
   }
 
   .wrapper_outer.reverse {
+    width: 100%;
+    height: auto;
     grid-template-columns: none;
     grid-template-rows: repeat(3,auto);
     grid-template-areas:
