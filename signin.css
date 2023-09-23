@@ -6,6 +6,8 @@ html {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  font-family: "Pretendard";
 }
 body {
   width: 100vw;
@@ -62,7 +64,7 @@ input {
 
 .eyes-off {
   position: absolute;
-  top: 50px;
+  top: 45px;
   right: 18px;
 }
 .login-button {
