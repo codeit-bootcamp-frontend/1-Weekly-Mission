@@ -82,7 +82,6 @@
   padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* grid-template-rows: repeat(4, 1fr); */
   justify-content: center;
   align-items: center;
   row-gap: 12px;
@@ -96,7 +95,6 @@
   grid-row: 2 / 3;
   margin: 0;
   font-size: var(--font-medium);
-  /* white-space: nowrap; */
 }
 
 .content:nth-child(even) .content__info__title {
