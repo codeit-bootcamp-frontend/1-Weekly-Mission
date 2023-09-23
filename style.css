@@ -360,4 +360,43 @@ footer .footer-link {
     grid-row: 2 / 3;
     grid-column: 1 / 2;
   }
+
+  footer .footer-white-space {
+    height: 1rem; /* 16px */
+  }
+  
+  footer .footer-black-space {
+    height: 10rem;
+    padding: 2rem 2rem 4rem;
+    position: relative;
+  }
+  
+  footer .footer-logo {
+    color: #676767;
+    width: 10rem;
+    position: absolute;
+    left: 2rem;
+    bottom: 2rem;
+  }
+  
+  footer .footer-nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+  
+  footer .footer-nav a{
+    display: inline-block;
+    text-decoration: none;
+    color: #CFCFCF;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  
+  footer .footer-link {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.625rem;
+    flex-grow: 1;
+  }
 }
