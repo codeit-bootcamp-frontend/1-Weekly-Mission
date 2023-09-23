@@ -398,7 +398,7 @@
 
 /* mobile */
 
-@media (max-width: 767px) {
+@media (min-width: 375px) and (max-width: 767px) {
   /* nav */
 
   .header {
@@ -439,15 +439,12 @@
     gap: 24px;
   }
 
-  .addlink-btn {
+  .content1 .addlink-btn {
     background: var(--gra-purpleblue-to-skyblue);
     border-radius: 8px;
     width: 200px;
     padding: 10px 16px;
     gap: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: var(--color-gray-10);
     border-style: none;
     cursor: pointer;
@@ -460,10 +457,13 @@
     align-items: center;
     text-align: center;
     margin-top: 28px;
+    word-break: keep-all;
+  }
+
+  .content1-textbox {
     font-size: 32px;
     font-weight: 700;
     line-height: 42px;
-    word-break: keep-all;
   }
 
   .content1-textbox span {
@@ -538,6 +538,11 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .content2-image-container {
+    width: 100%;
+    height: 100%;
   }
 
   .content2-image {
@@ -792,7 +797,7 @@
 
 /* tablet */
 
-@media screen and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .gnb-logo {
     width: 133px;
     height: 24px;
@@ -802,23 +807,26 @@
     width: 128px;
   }
 
-  .content1-textbox {
+  .content1-slogan {
     font-size: 64px;
     line-height: 80px;
+  }
+
+  .content1-textbox {
     margin-top: 40px;
     word-break: keep-all;
     width: 500px;
   }
 
   .content1-image-container {
-    width: 650.303px;
-    height: 383.114px;
-    flex-shrink: 0;
+    width: 698px;
+    height: 343px;
   }
 
   .content1-image {
-    width: 650.303px;
-    height: 383.114px;
+    width: 650px;
+    height: 411px;
+    margin: 29px 24px -50px 24px;
     flex-shrink: 0;
   }
 
@@ -828,7 +836,7 @@
 
   .content2-container {
     gap: 51px;
-    margin: 80px 0px 50px;
+    margin: 50px 0px;
   }
 
   .content2-image {

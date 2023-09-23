@@ -162,7 +162,7 @@ table {
 
 /* mobile */
 
-@media screen and (min-width: 375px) {
+@media (min-width: 375px) and (max-width: 767px) {
   main {
     margin: 0px 32px;
   }
