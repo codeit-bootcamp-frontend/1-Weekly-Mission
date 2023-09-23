@@ -17,15 +17,14 @@ header {
   background: linear-gradient(90deg, var(--primary), #6ae3fe);
   color: var(--white);
   text-align: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   font-size: 1.8rem;
-  line-height: 21.6px;
 }
 
 .intro-section {
   display: flex;
   padding: 16.4rem 36rem 0;
-  background: #f0f6ff;
+  background: var(--grayF0);
   flex-direction: column;
   align-items: center;
   gap: 4rem;
@@ -51,7 +50,7 @@ header {
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%));
   color: var(--white);
   text-align: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   font-size: 1.8rem;
   font-weight: 600;
 }
@@ -94,15 +93,12 @@ header {
   grid-area: title;
   font-size: 4.8rem;
   font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.3px;
 }
 
 .text {
   color: #6b6b6b;
   grid-area: text;
   font-size: 1.6rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 150%;
 }
@@ -113,8 +109,6 @@ header {
   grid-area: img;
   flex-shrink: 0;
 }
-
-
 
 .content {
   display: flex;
@@ -158,10 +152,10 @@ footer {
 
 .footer-background {
   display: flex;
-  height: 160px;
+  height: 16rem;
   padding: 3.2rem 10.4rem 6.4rem 10.4rem;
   flex-direction: column;
-  background-color: #111322;
+  background-color: var(--black);
 }
 
 .footer-content {
@@ -186,7 +180,7 @@ footer {
 
 .social {
   display: flex;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
 
@@ -356,5 +350,4 @@ footer {
     flex-basis: 50%;
     justify-content: end;
    }
-
 }
