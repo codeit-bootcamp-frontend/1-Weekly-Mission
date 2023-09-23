@@ -185,7 +185,7 @@ header,
 }
 
 .content-image-container.second {
-  padding: 114px 68px 66px 68px;
+  background: url("images/contents02.png") lightgray 50% / cover no-repeat;
 }
 
 .content-title-highlight-second {
@@ -387,7 +387,11 @@ footer {
     height: 265.909px;
   }
 
-  .card-container {
-    visibility: hidden;
+  .content-image-container.second {
+    order: 1;
+  }
+
+  .content-title-highlight-second {
+    font-size: 24px;
   }
 }
