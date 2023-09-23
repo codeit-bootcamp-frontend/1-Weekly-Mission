@@ -239,9 +239,34 @@ footer span{
     }
 }
 
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1199px){
+    /* header */
+    .hero-header h1{
+        /*font-size: 3.2rem;*/
+        /*line-height: 4.2rem;*/
+        max-width: 55rem;
+    }
+
+    .hero-header img{
+        width: 80%;
+        height: auto;
+    }
+
+
+    /* section */
+    section{
+        column-gap: 5rem;
+    }
+경
+    section img{
+        width: 38.5rem;
+        height: 31.5rem;
+    }
+}
+
 /* Mobile */
 @media (max-width: 768px){
-
     /* header */
     .hero-header img{
         width: 100%;
@@ -252,6 +277,7 @@ footer span{
     .hero-header h1{
         font-size: 3.2rem;
         line-height: 4.2rem;
+        max-width: 32rem;
     }
 
     /* section */
@@ -290,6 +316,14 @@ footer span{
     /* 버튼 스타일 */
     .btn{
         font-size: 1.4rem;
+    }
+
+    .btn-login{
+        width: 8rem;
+    }
+
+    .btn-add-link{
+        width: 20rem;
     }
 
     /* footer 스타일 */
