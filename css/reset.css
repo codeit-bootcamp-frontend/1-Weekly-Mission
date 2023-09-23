@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
-=======
->>>>>>> part1-남민섭-week2
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,10 +15,6 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-<<<<<<< HEAD
-	font: inherit;
-=======
->>>>>>> part1-남민섭-week2
 	
 }
 /* HTML5 display-role reset for older browsers */
@@ -52,25 +43,8 @@ table {
 
 * {
 	box-sizing: border-box;
-<<<<<<< HEAD
-}
-
-:root {
-	/* color */
-	--linkbrary-primary-color: #6d6afe;
-	--linkbrary-red: #ff5b56;
-	--the-julge-black: #111322;
-	--linkbrary-white: #ffffff;
-	--linkbrary-gray-100: #373740;
-	--linkbrary-gray-60: #9FA6B2;
-	--linkbrary-gray-20:#CCD5E3;
-	--linkbrary-gray-10: #E7EFFB;
-	--linkbrary-bg: #F0F6FF;
-}
-=======
 	font-family: Pretendard, sans-serif;
 }
 
 
->>>>>>> part1-남민섭-week2
 
