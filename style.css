@@ -45,7 +45,6 @@ main {
     gap: 40px;
     align-items: center;
     margin: 0 auto;
-    width: 1000px;
 }
 
 .top-content .title {
@@ -73,7 +72,7 @@ main {
     border-radius: 25px;
     background-image: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%), url(./images/middle1.png);
     background-position: center;
-    background-size: 100%;
+    background-size: 1000px;
     background-repeat: no-repeat;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
     position: relative;
@@ -87,6 +86,7 @@ main {
     position: relative;
     max-width: 1000px;
     margin: 0px auto;
+    gap: 20px;
 }
 
 .text {
@@ -109,8 +109,8 @@ main {
 }
 
 .img-box {
-    min-width: 550px;
-    min-height: 450px;
+    width: 550px;
+    height: 450px;
     border-radius: 15px;
     background: #F0F6FF;
     position: relative;
@@ -118,11 +118,12 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .img {
-    max-width: 414px;
-    max-height: 270px;
+    width: 80%;
+    height: 60%;
 }
 
 .bottom-content {
@@ -177,7 +178,7 @@ main {
     background-image: linear-gradient(rgba(0,0,0,0.5) , rgba(0,0,0,0.5) ), url(./images/middle3.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 160%;
+    background-size: 900px;
     overflow: hidden;
 }
 
@@ -186,11 +187,12 @@ main {
 }
 
 .content4 .img {
-    max-width: 619px;
-    max-height: 684px;
+    width: 120%;
+    height: 120%;
     position: absolute;
     top: 55px;
     left: 60px;
+    border-radius: 15px;
 }
 
 .title span{
@@ -228,4 +230,66 @@ footer {
 .sns {
     display: flex;
     gap: 12px ;
+}
+
+/* mobile */
+@media  (max-width:767px) {
+    .top-content {
+        padding: 70px 32px 0px;
+    }
+
+    header {
+        padding: 20px 32px;
+    }
+    
+    .img-box {
+        width: 330px;
+        height: 290px;
+    }
+
+    .bottom-content {
+        padding: 0px 32px;
+    }
+
+    .box {
+        flex-direction: column;
+    }
+
+    .text {
+        order: -1;
+    }
+
+    .footer-box {
+        margin: 0 32px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .sns {
+        order: -1;
+    }
+
+    .faq {
+        order: -2;
+    }
+}
+
+/* tablet */
+@media (min-width:768px) and (max-width:1199px) {
+    .top-content {
+        padding: 70px 32px 0px;
+    }
+
+    header {
+        padding: 20px 32px;
+    }
+
+    .img-box {
+        width: 440px;
+        height: 370px;
+    }
+
+    .bottom-content {
+        padding: 0px 32px;
+    }
 }
