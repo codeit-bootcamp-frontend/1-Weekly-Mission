@@ -81,6 +81,15 @@ header,
   -webkit-text-fill-color: transparent;
 }
 
+.btn.link {
+  display: flex;
+  width: 350px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 .headline-image-container {
   position: relative;
   display: flex;
@@ -101,15 +110,6 @@ header,
   width: 1118px;
   height: 659px;
   box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.08);
-}
-
-.btn.link {
-  display: flex;
-  width: 350px;
-  padding: 16px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
 }
 
 .content-section {
@@ -339,7 +339,10 @@ footer {
     line-height: 131.25%;
   }
 
-
+  .btn.link {
+    width: 200px;
+    padding: 10px 16px;
+  }
 
   .headline-image-container {
 
