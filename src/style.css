@@ -173,7 +173,6 @@ main {
   .content22 {
     display: grid;
     gap: 24px;
-    place-items: center;
   }
 }
 
@@ -195,8 +194,6 @@ main {
   .content33 {
     display: grid;
     gap: 24px;
-    place-items: center;
-    text-align: center;
   }
 }
 
@@ -219,9 +216,7 @@ main {
 }
 @media (max-width: 767px) {
   .c2div1 {
-    align-items: center;
     width: 90vw;
-    text-align: center;
   }
 }
 
@@ -300,13 +295,20 @@ main {
 @media (max-width: 767px) {
   .c2img {
     width: 40vw;
+    height: 40vw;
   }
 }
 
 .c2img_down {
   position: absolute;
   bottom: 20%;
-  right: 28%;
+  right: 26%;
+}
+@media (max-width: 767px) {
+  .c2img_down {
+    width: 7vw;
+    height: 7vw;
+  }
 }
 
 .c3imgs {
@@ -449,16 +451,28 @@ main {
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
-  align-self: stretch;
+
   background: #111322;
+}
+@media (max-width: 767px) {
+  .footertop {
+    display: grid;
+    padding: 32px;
+  }
 }
 
 .footerdiv {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  align-self: stretch;
   align-items: center;
+  align-self: stretch;
+}
+@media (max-width: 767px) {
+  .footerdiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px 30px;
+  }
 }
 
 .codeit {
@@ -466,14 +480,22 @@ main {
   text-align: center;
   font-family: Arial;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
+}
+@media (max-width: 767px) {
+  .codeit {
+    text-align: left;
+  }
 }
 
 .footermiddle {
-  display: flex;
   gap: 30px;
+}
+@media (max-width: 767px) {
+  .footermiddle {
+    grid-row: 1;
+    grid-column: 1;
+  }
 }
 
 .footera {
@@ -481,27 +503,21 @@ main {
   color: #cfcfcf;
   font-family: Arial;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
 
 .privacy {
   color: #cfcfcf;
   font-family: Arial;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
 
 .faq {
   color: #cfcfcf;
   font-family: Arial;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
 
 .logodiv {
@@ -509,7 +525,13 @@ main {
   align-items: flex-start;
   gap: 12px;
 }
-
+@media (max-width: 767px) {
+  .logodiv {
+    grid-row: 1;
+    grid-column: 2;
+    justify-content: right;
+  }
+}
 .logo {
   width: 20px;
   height: 20px;
