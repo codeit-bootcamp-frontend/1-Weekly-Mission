@@ -107,3 +107,17 @@ form input{
     width: 4.2rem;
 }
 
+
+/* Mobile */
+@media (max-width: 768px){
+    main{
+        width: 100%;
+        padding: 3.2rem;
+        max-width: 40rem;
+        min-width: 30rem;
+    }
+
+    form input{
+        width: 100%;
+    }
+}
