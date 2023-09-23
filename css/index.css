@@ -175,11 +175,12 @@ button.addlink{
     line-height: 150%;
 }
 
-/* tablet */
+/* mobile*/
 @media(max-width:767px){
     .card__description{
         grid-area : card__description;
         font-size: 1.4rem;
+        word-break: keep-all;
     }
 }
 .card__img{
