@@ -1,4 +1,4 @@
-/*------------header------------*/
+/*-------header-------*/
 .nav {
   position: fixed;
   top: 0;
@@ -71,7 +71,7 @@
   border-radius: 25px;
 }
 
-/*------------main------------*/
+/*-------main-------*/
 .section {
   display: flex;
   align-items: center;
@@ -131,7 +131,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/*------------footer------------*/
+/*-------footer-------*/
 .footer {
   background-color: var(--LB-black);
   display: flex;
