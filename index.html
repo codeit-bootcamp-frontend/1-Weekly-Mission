@@ -22,17 +22,13 @@
     <link rel="stylesheet" href="./src/style/section.css" type="text/css" />
   </head>
   <body>
+    <nav>
+      <a href="/">
+        <img src="src/assets/images/nav/logo.png" alt="logo" class="navLogo" />
+      </a>
+      <a class="loginLink" href="/signin.html">로그인</a>
+    </nav>
     <header>
-      <nav>
-        <a href="/">
-          <img
-            src="src/assets/images/nav/logo.png"
-            alt="logo"
-            class="navLogo"
-          />
-        </a>
-        <a class="loginLink" href="/signin.html">로그인</a>
-      </nav>
       <div class="introHeader">
         <span class="introContent">
           <span class="introHighlight">세상의 모든 정보</span>를
@@ -50,93 +46,76 @@
       </div>
     </header>
     <main>
-      <section class="sectionWrapper">
-        <div class="sectionInWrapper">
-          <div class="sectionContentWrapper">
-            <span class="sectionTitle">
-              <span class="linkHighlight">원하는 링크</span>를
-              <br />
-              저장하세요
-            </span>
-            <p class="sectionSummary">
-              나중에 읽고 싶은 글, 다시 보고 싶은 영상,
-              <br />
-              사고 싶은 옷, 기억하고 싶은 모든 것을
-              <br />
-              한 공간에 저장하세요.
-            </p>
-          </div>
-          <img
-            src="src/assets/images/section/saveCards.png"
-            alt="link_save_img"
-            class="sectionImg"
-          />
-        </div>
+      <section>
+        <span class="sectionTitle">
+          <span class="linkHighlight">원하는 링크</span>를
+          <br />
+          저장하세요
+        </span>
+        <p class="sectionSummary">
+          나중에 읽고 싶은 글, 다시 보고 싶은 영상,
+          <br />
+          사고 싶은 옷, 기억하고 싶은 모든 것을
+          <br />
+          한 공간에 저장하세요.
+        </p>
+        <img
+          src="src/assets/images/section/saveCards.png"
+          alt="link_save_img"
+          class="sectionImg"
+        />
+      </section>
+      <section>
+        <img
+          src="src/assets/images/section/manage.png"
+          alt="folder_name_modify_img"
+          class="sectionImg"
+        />
+        <span class="sectionTitle">
+          링크를 폴더로
+          <span class="manageHighlight">관리</span>하세요
+        </span>
+        <p class="sectionSummary">
+          나만의 폴더를 무제한으로 만들고
+          <br />
+          다양하게 활용할 수 있습니다.
+        </p>
       </section>
 
-      <section class="sectionWrapper">
-        <div class="sectionInWrapper">
-          <img
-            src="src/assets/images/section/manage.png"
-            alt="folder_name_modify_img"
-            class="sectionImg"
-          />
-          <div class="sectionContentWrapper">
-            <span class="sectionTitle">
-              링크를 폴더로
-              <span class="manageHighlight">관리</span>하세요
-            </span>
-            <p class="sectionSummary">
-              나만의 폴더를 무제한으로 만들고
-              <br />
-              다양하게 활용할 수 있습니다.
-            </p>
-          </div>
-        </div>
+      <section>
+        <span class="sectionTitle">
+          저장한 링크를
+          <br />
+          <span class="shareHighlight">공유</span>해 보세요.
+        </span>
+        <p class="sectionSummary">
+          여러 링크를 폴더에 담고 공유할 수 있습니다.
+          <br />
+          가족, 친구, 동료들에게 쉽고 빠르게 링크를
+          <br />
+          공유해 보세요.
+        </p>
+        <img
+          src="src/assets/images/section/socialShare.png"
+          alt="social_media_share_img"
+          class="sectionImg"
+        />
       </section>
 
-      <section class="sectionWrapper">
-        <div class="sectionInWrapper">
-          <div class="sectionContentWrapper">
-            <span class="sectionTitle">
-              저장한 링크를
-              <br />
-              <span class="shareHighlight">공유</span>해 보세요.
-            </span>
-            <p class="sectionSummary">
-              여러 링크를 폴더에 담고 공유할 수 있습니다.
-              <br />
-              가족, 친구, 동료들에게 쉽고 빠르게 링크를
-              <br />
-              공유해 보세요.
-            </p>
-          </div>
-          <img
-            src="src/assets/images/section/socialShare.png"
-            alt="social_media_share_img"
-            class="sectionImg"
-          />
-        </div>
-      </section>
-
-      <section class="sectionWrapper">
-        <div class="sectionInWrapper">
-          <img
-            src="src/assets/images/section/search.png"
-            alt="search_img"
-            class="sectionImg"
-          />
-          <div class="sectionContentWrapper">
-            <span class="sectionTitle">
-              저장한 링크를
-              <br />
-              <span class="searchHighlight">검색</span>해 보세요
-            </span>
-            <p class="sectionSummary">
-              중요한 정보들을 검색으로 쉽게 찾아보세요.
-            </p>
-          </div>
-        </div>
+      <section>
+        <img
+          src="src/assets/images/section/search.png"
+          alt="search_img"
+          class="sectionImg"
+        />
+        <span class="sectionTitle">
+          저장한 링크를
+          <br />
+          <span class="searchHighlight">검색</span>해 보세요
+        </span>
+        <p class="sectionSummary">
+          중요한 정보들을 검색으로 쉽게 찾아보세요.
+        </p>
       </section>
     </main>
 
@@ -151,28 +130,16 @@
         </div>
         <div class="footerSocialIcon">
           <a href="https://www.facebook.com/?locale=ko_KR">
-            <img
-              src="/src/assets/images/facebook.svg"
-              alt="facebookLogo"
-            />
+            <img src="/src/assets/images/facebook.svg" alt="facebookLogo" />
           </a>
           <a href="https://www.twitter.com/">
-            <img
-              src="/src/assets/images/twitter.svg"
-              alt="twitterLogo"
-            />
+            <img src="/src/assets/images/twitter.svg" alt="twitterLogo" />
           </a>
           <a href="https://www.youtube.com/">
-            <img
-              src="/src/assets/images/youtube.svg"
-              alt="youtubeLogo"
-            />
+            <img src="/src/assets/images/youtube.svg" alt="youtubeLogo" />
           </a>
           <a hre="https://www.instagram.com/">
-            <img
-              src="/src/assets/images/instagram.svg"
-              alt="instagramLogo"
-            />
+            <img src="/src/assets/images/instagram.svg" alt="instagramLogo" />
           </a>
         </div>
       </div>

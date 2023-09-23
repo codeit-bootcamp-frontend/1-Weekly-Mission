@@ -3,8 +3,13 @@
   flex-direction: column;
   align-items: center;
   row-gap: 4rem;
-  margin-top: 16.35rem;
+  margin-top: 7rem;
   background-color: #edf7ff;
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    padding: 0 5rem;
+    width: 100%;
+  }
 }
 
 .introContent {
@@ -12,11 +17,16 @@
   font-size: 6.4rem;
   font-weight: 700;
   line-height: 8rem;
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    font-size: 5rem;
+    line-height: 6rem;
+  }
 }
 
 .introImg {
-  width: 120rem;
-  height: 59rem;
+  max-width: 100%;
+  height: auto;
 }
 
 .introHighlight {

@@ -1,52 +1,129 @@
-section {
+main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 7rem 0 12rem 0;
+}
+
+section {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15.7rem;
+  row-gap: 1rem;
   width: 100%;
   height: 55rem;
   margin: 3.125rem 0;
+  padding: 2.5rem 0;
+
+  @media (max-width: 1199px) and (min-width: 768px) {
+    max-width: 78rem;
+    max-height: 40rem;
+    margin: 8rem 0;
+  }
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    min-height: 42rem;
+    height: auto;
+    padding: 0 2rem;
+  }
 }
 
-.sectionWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 7.5rem 29rem 3.1rem 29rem;
+section:nth-of-type(odd) {
+  grid-template:
+    ". sectionImg"
+    "sectionTitle sectionImg"
+    "sectionSummary sectionImg"
+    ". sectionImg"
+    /291px 55rem;
+
+  @media (max-width: 1199px) and (min-width: 768px) {
+    grid-template:
+      ". sectionImg"
+      "sectionTitle sectionImg"
+      "sectionSummary sectionImg"
+      ". sectionImg";
+  }
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    grid-template:
+      "sectionTitle sectionTitle"
+      "sectionImg sectionImg"
+      "sectionImg sectionImg"
+      "sectionSummary sectionSummary";
+  }
 }
 
-.sectionInWrapper {
-  display: flex;
-  align-items: center;
-  gap: 9.813rem;
-}
+section:nth-of-type(even) {
+  grid-template:
+    "sectionImg ."
+    "sectionImg sectionTitle"
+    "sectionImg sectionSummary"
+    "sectionImg ."
+    /550px 29.1rem;
 
-.sectionContentWrapper {
-  display: flex;
-  width: 291px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.625rem;
+  @media (max-width: 1199px) and (min-width: 768px) {
+    grid-template:
+      "sectionImg ."
+      "sectionImg sectionTitle"
+      "sectionImg sectionSummary"
+      "sectionImg .";
+  }
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    grid-template:
+      "sectionTitle sectionTitle"
+      "sectionImg sectionImg"
+      "sectionImg sectionImg"
+      "sectionSummary sectionSummary";
+  }
 }
 
 .sectionTitle {
+  grid-area: sectionTitle;
   font-size: 4.8rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.3px;
+
+  @media (max-width: 1199px) and (min-width: 768px) {
+    font-size: 4rem;
+  }
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    font-size: 3.5rem;
+  }
+}
+
+br {
+  @media (max-width: 767px) and (min-width: 375px) {
+    display: none;
+  }
 }
 
 .sectionSummary {
+  grid-area: sectionSummary;
   font-size: 1.6rem;
   font-weight: 500;
   color: #6b6b6b;
   line-height: 150%;
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    font-size: 1.4rem;
+  }
 }
 
-.sectionImg {
+.sectionImgWrapper {
+  display: block;
   width: 55rem;
   height: 45rem;
+}
+.sectionImg {
+  grid-area: sectionImg;
+  max-width: 100%;
+  height: auto;
 }
 
 .linkHighlight {
