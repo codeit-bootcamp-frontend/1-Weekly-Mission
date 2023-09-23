@@ -182,3 +182,48 @@ main {
     height: 24px;
     flex-shrink: 0;
 }
+
+/* 모바일 */
+@media (min-width: 375px) and (max-width: 767px) {
+    /* main */
+    main {
+        padding: 198px 32px 232px 33px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .sign-form-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .sign-form-container form {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .sign-form-container input {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .sign-link-btn {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .social-login {
+        width: 100%;
+        max-width: 400px;
+    }
+}
