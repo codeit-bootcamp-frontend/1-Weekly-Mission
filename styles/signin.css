@@ -137,21 +137,15 @@ input:focus {
 
 /* 모바일 사양 */
 @media (min-width: 375px) and (max-width: 767px){
-
-  body {
-    padding: 0 32px; 
-  }
   
   form {
     max-width: 400px;
     width: 100%;
-    margin: 120px 32px 0 ; 
+    margin: 120px 32px 0 ;  
   }
-
-  .form-helper{
-    width:100%; 
-    margin:120px 32px 0;
-  }
+  /* 모바일 사이즈에서 좌우로 여백 32px를 두고 내부 요소들이 모바일 사이즈에 맞게 함께 줄어들어야 할 것 같은데
+  개발자도구에서 확인하면 좌우여백 32px은 있지만 폼 안에 있는 요소들이 여백 밖으로 삐져나오고,
+  요소들 크기가 줄어들지도 않습니다..ㅠㅠ ..  */
 
 
 }
