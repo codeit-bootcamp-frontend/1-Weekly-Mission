@@ -345,6 +345,15 @@ footer {
   }
 
   .headline-image-container {
+    width: 325px;
+    height: 160px;
+  }
 
+  .headline-image {
+    position: absolute;
+    top: 10px;
+    width: 302.792px;
+    height: 178.712px;
+    flex-shrink: 0;
   }
 }
