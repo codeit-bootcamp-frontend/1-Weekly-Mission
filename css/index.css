@@ -275,4 +275,7 @@ button:hover{
     .card_head__title{
         color: blue;
     }
+    .not-mobile-br{
+        display: none;
+    }
 }
