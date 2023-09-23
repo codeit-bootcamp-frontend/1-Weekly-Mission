@@ -277,7 +277,7 @@ footer {
 
 @media screen and (max-width: 1200px) {
     header .inner {
-        max-width: 800px;
+        max-width: 767px;
         padding: 20px 0px;
     }
     .section-title-wrap .section-title-add-link {
