@@ -14,103 +14,116 @@
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
-    <header class="header">
-      <nav class="header__contents">
-        <a class="header__logo" href="/">
-          <img src="assets/logo.svg" alt="홈화면으로 연결되는 로고이미지" />
-        </a>
-        <a class="sign sign--smallsize" href="/signin.html">로그인</a>
-      </nav>
+    <nav class="nav">
+      <a class="grid--logo" href="/">
+        <img
+          class="logo"
+          src="assets/logo.svg"
+          alt="링크브러리 홈화면으로 이동"
+        />
+      </a>
+      <a
+        class="sign sign--smallsize grid--sign"
+        href="/signin.html"
+        alt="로그인 하기"
+        >로그인</a
+      >
+    </nav>
+    <header class="section section--grid-header section--background-color-blue">
+      <h1 class="section__head-title grid--title">
+        <span class="text--gradient-color1">세상의 모든 정보</span>를<br />
+        <span>쉽게 저장하고</span>
+        <span class="text--display"> 관리해 보세요</span>
+      </h1>
+      <a class="sign sign--largesize grid--sign" href="/signup.html"
+        >링크 추가하기</a
+      >
+      <img
+        class="section__img grid--img"
+        src="assets/_img.svg"
+        alt="링크검색기능 예시이미지"
+      />
     </header>
-    <main class="main">
-      <section class="main__section main__section--background-color-blue content--margin-bottom50">
-        <div class="content content--grid content--flex-column content--gap50">
-          <h1 class="content__text content__text--largesize">
-            <span class="content__text--gradient-color1">세상의 모든 정보</span >를<span class="content__text--block">쉽게 저장하고 <span class="content__text--block-in768">관리해 보세요</span></span>
-          </h1>
-          <a class="sign sign--largesize sign--margin50" href="/signup.html">링크 추가하기</a>
-          <img
-              class="content__img content__img--largesize"
-              src="assets/_img.svg"
-              alt="링크검색기능 예시이미지"
-           />
-        </div>
-      </section>
-      <section class="main__section">
-        <div class="content content--grid">
-          <div class="content__text content__text--flex-column">
-            <div class="content__text-box">            
-              <h2 class="content__text--mediumsize"><span class="content__text--gradient-color2">원하는 링크</span>를 저장하세요</span></h2>
-              <p class="content__text--smallsize">
-                나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷,
-                기억하고 싶은 모든 것을 한 공간에 저장하세요.
-              </p>
-            </div>
-          </div>
-          <img class="content__img content__img--smallsize" src="assets/_img1.svg" alt="">
-        </div>
-      </section>
-      <section class="main__section">
-        <div class="content content--grid">
-          <img class="content__img content__img--smallsize" src="assets/_img2.svg" alt="">
-          <div class="content__text content__text--flex-column">
-            <div class="content__text-box">
-              <h2 class="content__text--mediumsize">링크를 폴더로 <span class="content__text--gradient-color2">관리</span>하세요</h2>
-              <p class="content__text--smallsize">
-                나만의 폴더를 무제한으로 만들고 
-                다양하게 활용할 수 있습니다.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="main__section">
-        <div class="content content--grid">
-          <div class="content__text content__text--flex-column">
-            <div class="content__text-box">
-              <h2 class="content__text--mediumsize">저장한 링크를 <span class="content__text--gradient-color3">공유</span>해 보세요</h2>
-              <p class="content__text--smallsize">
-                여러 링크를 폴더에 담고 공유할 수 있습니다. 
-                가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.
-              </p>
-            </div>
-          </div>
-          <img class="content__img content__img--smallsize" src="assets/_img3.svg" alt="">
-        </div>
-      </section>
-      <section class="main__section">
-        <div class="content content--grid">
-          <img class="content__img content__img--smallsize" src="assets/_img4.svg" alt="">
-          <div class="content__text content__text--flex-column">
-            <div class="content__text-box">
-              <h2 class="content__text--mediumsize">저장한 링크를 <span class="content__text--gradient-color4">검색</span>해 보세요</h2>
-              <p class="content__text--smallsize">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+    <section class="section section--grid-main">
+      <h2 class="section__title grid--title">
+        <span class="text--gradient-color2">원하는 링크</span>를 저장하세요
+      </h2>
+      <p class="section__text grid--text">
+        나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고 싶은
+        모든 것을 한 공간에 저장하세요.
+      </p>
+      <img
+        class="section__img img--smallsize grid--img"
+        src="assets/_img1.svg"
+        alt=""
+      />
+    </section>
+    <section class="section section--grid-main section--grid-reverse">
+      <img
+        class="section__img img--smallsize grid--img grid--img-reverse"
+        src="assets/_img2.svg"
+        alt=""
+      />
+      <h2 class="section__title grid--title">
+        링크를 폴더로
+        <span class="text--gradient-color3">관리</span>하세요
+      </h2>
+      <p class="section__text grid--text">
+        나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
+      </p>
+    </section>
+    <section class="section section--grid-main">
+      <h2 class="section__title grid--title">
+        저장한 링크를
+        <span class="text--gradient-color4">공유</span>해 보세요
+      </h2>
+      <p class="section__text grid--text">
+        여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고
+        빠르게 링크를 공유해 보세요.
+      </p>
+      <img
+        class="section__img img--smallsize grid--img"
+        src="assets/_img3.svg"
+        alt=""
+      />
+    </section>
+    <section class="section section--grid-main section--grid-reverse">
+      <img
+        class="section__img img--smallsize grid--img grid--img-reverse"
+        src="assets/_img4.svg"
+        alt=""
+      />
+      <h2 class="section__title grid--title">
+        저장한 링크를
+        <span class="text--gradient-color5">검색</span>해 보세요
+      </h2>
+      <p class="section__text grid--text">
+        중요한 정보들을 검색으로 쉽게 찾아보세요.
+      </p>
+    </section>
     <footer class="footer">
-      <div class="footer__contents">
-        <div class="footer__content">©codeit - 2023</div>
-        <div class="footer__content">
-          <a class="footer__link--color" href="/privacy">Privacy Policy</a>
-          <a class="footer__link--color" href="/faq">FAQ</a>
-        </div>
-        <div class="footer__content">
-          <a class="footer__sns" target="_blank" href="https://www.facebook.com">
-            <img src="assets/facebook.svg" alt="페이스북 페이지로 연결" />
-          </a>
-          <a class="footer__sns" target="_blank" href="https://twitter.com">
-            <img src="assets/twitter.svg" alt="트위터 페이지로 연결" />
-          </a>
-          <a class="footer__sns" target="_blank" href="https://www.youtube.com">
-            <img src="assets/youtube.svg" alt="유튜브 페이지로 연결" />
-          </a>
-          <a class="footer__sns" target="_blank" href="https://www.instargram.com">
-            <img src="assets/instagram.svg" alt="인스타그램 페이지로 연결"
-          /></a>
-        </div>
+      <div class="footer__content grid--copy">©codeit - 2023</div>
+      <div class="footer__content grid--info gap30">
+        <a class="color--gray3" href="/privacy">Privacy Policy</a>
+        <a class="color--gray3"" href="/faq">FAQ</a>
+      </div>
+      <div class="footer__content grid--sns gap10">
+        <a class="footer__sns" target="_blank" href="https://www.facebook.com">
+          <img src="assets/facebook.svg" alt="페이스북 페이지로 연결" />
+        </a>
+        <a class="footer__sns" target="_blank" href="https://twitter.com">
+          <img src="assets/twitter.svg" alt="트위터 페이지로 연결" />
+        </a>
+        <a class="footer__sns" target="_blank" href="https://www.youtube.com">
+          <img src="assets/youtube.svg" alt="유튜브 페이지로 연결" />
+        </a>
+        <a
+          class="footer__sns"
+          target="_blank"
+          href="https://www.instargram.com"
+        >
+          <img src="assets/instagram.svg" alt="인스타그램 페이지로 연결"
+        /></a>
       </div>
     </footer>
   </body>
