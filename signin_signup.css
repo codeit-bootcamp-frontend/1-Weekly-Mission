@@ -143,4 +143,8 @@ footer {
     align-items: center;
     gap: 1rem;
   }
+
+  .outer_wrapper {
+    margin: 121px 0 232px;
+  }
 }
