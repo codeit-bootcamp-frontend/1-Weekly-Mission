@@ -181,6 +181,9 @@
       padding: 3.2rem;
       height: auto;
     }
+    .card .spacing{
+      padding: 0 3.2rem 3rem;
+    }
     .card img{
       width: 100%;
     }
