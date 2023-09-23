@@ -49,6 +49,12 @@ button.login{
     align-items: center;
     gap: 4rem;
 }
+/* mobile */
+@media(max-width : 767px){
+    .card_head{
+        padding:0 3.2rem;
+    }
+}
 .card_head__title{
     text-align: center;
     font-family: Pretendard;
@@ -96,7 +102,12 @@ button.addlink{
         height: 38rem;
     }
 }
-
+@media(max-width:767px){
+    .card_head__img{
+        width: 100%;
+        height: 100%;
+    }
+}
 .cards{
     display: flex;
     background-color: #ffffff;
@@ -105,9 +116,16 @@ button.addlink{
     justify-content: center;
     align-items: center;
     padding-top: 7rem;
+    gap: 10rem;
 }
 
-
+/* mobile */
+@media(max-width : 767px){
+    .cards{
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+    }
+}
 
 .card__title{
     margin: 0;
@@ -136,15 +154,24 @@ button.addlink{
     /* mobile */
     grid-area: card__img;
 }
+/* tablet */
 @media(max-width:1199px){
     .card__img{
         width: 385px;
         height: 315px;
     }
 }
+
+/* mobile */
+@media(max-width:767px){
+    .card__img{
+        width: 100%;
+        height: 100%;
+    }
+}
 .card{
     display: flex;
-    margin: 5rem auto 5rem;
+    /* margin: 5rem auto 5rem; */
     justify-content: space-between;
     align-items: center;
     gap: 15rem;
