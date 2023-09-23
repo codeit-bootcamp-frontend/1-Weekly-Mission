@@ -3,11 +3,19 @@ body {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 238px auto 0;
+  height: 100vh;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 464px;
+  padding: 238px 32px;
+}
+
+.signup-intro,
+.signin-intro {
+  text-align: center;
 }
 
 .logo {
@@ -23,11 +31,6 @@ main {
   line-height: normal;
 }
 
-.signup-part,
-.signin-part {
-  width: 400px;
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -40,6 +43,7 @@ form {
 }
 
 input {
+  width: 100%;
   display: flex;
   margin: 12px 0;
   padding: 18px 15px;
@@ -60,14 +64,12 @@ input:focus {
   position: relative;
 }
 
-#password,
-#password-verify {
-  width: 400px;
-}
 
 .eye-off {
   position: absolute;
-  margin: -46px 369px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  right: 2%;
 }
 
 #signup-button,
@@ -129,29 +131,4 @@ input:focus {
   height: 42px;
   background-color: #f5e14b;
   border-radius: 50%;
-}
-
-@media (max-width: 767px){
-  main {
-    max-width: 326px;
-    margin: 120px auto 0;
-  }
-
-  .signin-intro,
-  .signup-part,
-  .signin-intro,
-  .signin-part {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  #password,
-  #password-verify {
-    width: 100%;
-  }
-
-  .eye-off {
-    position: absolute;
-    margin: -46px 305px;
-}
 }
