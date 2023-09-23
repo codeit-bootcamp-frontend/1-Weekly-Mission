@@ -7,9 +7,7 @@ body {
     background: var(--linkbrary-bg, #F0F6FF);
     
 }
-header, form, button, .login-as-sns {
-    width: 400px;
-}
+
 
 header {
     display: flex;
@@ -17,7 +15,6 @@ header {
     justify-content: center;
     align-items: center;
     gap: 16px;
-    width: 100%;
     margin-bottom: 30px;
 
 }

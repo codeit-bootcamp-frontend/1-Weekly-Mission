@@ -1,0 +1,22 @@
+@media (max-width: 1200px) {
+
+   body { 
+
+    padding: 200px 399px 290px 400px;
+
+
+}
+}
+
+
+@media (max-width: 767px) {
+    body {
+        
+        padding: 120px 32px 232px 33px;
+
+}
+    header, form, button, .login-as-sns {
+    max-width: 400px;
+}
+
+}
