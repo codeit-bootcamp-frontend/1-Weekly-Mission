@@ -371,7 +371,6 @@ a {
     "inner_image"
     "subtitle";
     padding:40px 0 36px;
-    border: 1px solid green;
     margin: 0;
   }
 
@@ -447,7 +446,7 @@ a {
   
   .policy_wrapper {
     font-size: 1rem;
-    gap: 32px;
+    gap: 30px;
     grid-area: privacy;
   }
   
@@ -455,5 +454,9 @@ a {
     gap: .75rem;
     grid-area: icons;
     justify-content: flex-end;
+  }
+
+  .policy_text {
+    font-size: 1rem;
   }
 }
