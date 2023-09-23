@@ -59,7 +59,7 @@ th {
   word-break: keep-all;
 }
 
-body {
+body, button {
   background: #fff;
   line-height: 1;
 }
@@ -568,6 +568,7 @@ a, button {
 .auth {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 3rem;
   width: 100%;
