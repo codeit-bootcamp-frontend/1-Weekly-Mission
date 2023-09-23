@@ -142,7 +142,9 @@ body {
     padding: 0 32px;
 }
 
-.sign-box.sign-up .container {
-  padding: 35% 0;
-}
+  .sign-box .container,
+  .sign-box.sign-up .container{
+    padding: 25% 0;
+  }
+
 }
