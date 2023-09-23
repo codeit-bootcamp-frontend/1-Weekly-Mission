@@ -16,6 +16,13 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  padding: unset;
+  background-color: unset;
+  cursor: pointer;
+}
+
 :root {
   --primary: #6d6afe;
   --red: #ff5b56;
