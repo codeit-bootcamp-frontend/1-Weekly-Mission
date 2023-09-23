@@ -19,6 +19,11 @@ html {
     gap: 1.6rem;
 }
 
+.header__logo {
+    width: 21rem;
+    height: 3.8rem;
+}
+
 .header__subtitle {
     gap: 0.8rem;
     font-size: 1.6rem;

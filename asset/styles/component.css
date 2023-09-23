@@ -40,11 +40,6 @@ h2 {
     background-size: cover;
 }
 
-.logo--large {
-    width: 21rem;
-    height: 3.8rem;
-}
-
 .btn {
     background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
     display: block;
