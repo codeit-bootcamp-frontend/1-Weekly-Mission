@@ -176,8 +176,8 @@ footer {
 .footer__container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   max-width: 192rem;
+  width: 100%;
   padding: 0 10.4rem;
 }
 
@@ -189,8 +189,8 @@ footer {
 
 .footer__links {
   display: flex;
-  column-gap: 3rem;
   padding-right: 1.8rem;
+  column-gap: 3rem;
 }
 
 .footer__link {
@@ -299,9 +299,9 @@ footer {
   }
 
   li {
+    align-items: center;
     padding: 4rem 3.2rem;
     row-gap: 1.6rem;
-    align-items: center;
   }
 
   li:nth-of-type(odd),
