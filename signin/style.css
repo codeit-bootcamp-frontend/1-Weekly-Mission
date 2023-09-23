@@ -110,3 +110,20 @@ footer .social-logo {
   width: 2.625rem;
   height: 2.625rem;
 }
+
+/* Mobile: 375px 이상 ~ 767 px 이하 */
+/* 375px 미만 사이즈의 디자인은 고려하지 않음 */
+@media (min-width: 375px) and (max-width: 767px) {
+  body {
+    padding: 5rem 2rem 0;
+  }
+  
+  header {
+    width: 100%;
+  }
+  
+  main {
+    width: 100%;
+    max-width: 400px;
+  }
+}
