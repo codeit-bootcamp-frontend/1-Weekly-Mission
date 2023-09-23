@@ -106,3 +106,22 @@
   display: flex;
   gap: 1rem;
 }
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+  .form-container {
+    width: 100%;
+    max-width: 464px;
+    min-width: 389px;
+  }
+
+  .form {
+    width: 100%;
+    min-width: 325px;
+  }
+
+  .form-container__oauth {
+    width: 100%;
+    min-width: 325px;
+  }
+}
