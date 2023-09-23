@@ -385,6 +385,7 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
+    width: 100%;
   }
 
   .content-title {
