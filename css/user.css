@@ -2,6 +2,12 @@ body {
   background: var(--background);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
 header {
   margin-top: 23.8rem;
   display: flex;
@@ -136,9 +142,14 @@ header > .userContainer {
 @media (max-width: 767px) {
   body {
     width: 100vw;
-    padding: 0 3.2rem;
-    box-sizing: border-box;
   }
+
+  main {
+    width: 100%;
+    padding: 0 3.2rem;
+    align-items: center;
+  }
+
   header {
     margin-top: 12rem;
   }
