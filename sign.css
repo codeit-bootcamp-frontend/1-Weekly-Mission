@@ -32,7 +32,7 @@ main {
 
 #guide img {
   width: 210.583px;
-  height: 38px;
+  object-fit: cover;
 }
 
 #guide p {

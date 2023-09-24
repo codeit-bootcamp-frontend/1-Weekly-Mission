@@ -3,4 +3,8 @@
   body {
     padding: 0 32px;
   }
+
+  #guide img {
+    width: 250px;
+  }
 }
