@@ -140,10 +140,6 @@ header > .userContainer {
 }
 
 @media (max-width: 767px) {
-  body {
-    width: 100vw;
-  }
-
   main {
     width: 100%;
     padding: 0 3.2rem;
