@@ -1,0 +1,14 @@
+/* mobile */
+@media (max-width: 767px) {
+
+}
+
+
+/* tablet */
+@media (max-width: 1199px) {
+  header {
+    padding: 20px 32px;
+    width: 800px;
+  }
+  
+}
