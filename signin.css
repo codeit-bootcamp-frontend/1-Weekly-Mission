@@ -101,7 +101,7 @@ body{
 }
 
 /* -- sign-in btn -- */
- .btn-signin{
+.btn-signin{
     width: 400px;
     padding: 16px 20px;
     gap: 10px;
@@ -148,4 +148,24 @@ body{
     margin-top:10px;
     margin-left:-33px;
     z-index: 2;
+}
+
+@media (max-width:465px) {
+
+    .input{
+        width:100%;
+    }
+    section{
+        margin:auto 30;
+    }
+
+    .btn-signin{
+        width:100%;
+    }
+    .container-social-login{
+        width:100%;
+    }
+    main{
+        width:100%;
+    }
 }

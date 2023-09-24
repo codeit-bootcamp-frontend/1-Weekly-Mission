@@ -1,22 +1,27 @@
-<html lang="ko">
-<head>
+<html lang="ko"><head>
     <meta charset="UTF-8">
     <title>Linkbrary</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="index.css">
+    <meta content="Linkbrary" property="og:title">
+    <meta content="website" property="og:type">
+    <meta content="Linkbrary.com" property="og:site_name">
+    <meta content="/" property="og:url">
+    <meta content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" property="og:description">
+    <meta content="assets/landing/_img@3x.png" property="og:image">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css?_cacheOverride=1695490263251"><link rel="stylesheet" href="http://127.0.0.1:5500/index.css?_cacheOverride=1695490263251">
 </head>
 
-<body class="vsc-initialized" data-new-gr-c-s-check-loaded="9.63.0" data-gr-ext-installed="">
+<body class="vsc-initialized">
     <!--== START of HEADER ==-->
-    <header>
-        <div class="header-content">
+    <header class="header flex--column-center">
+        <div class="header__content flex--row">
             <a href="./" style="cursor:pointer">
-                <img src="assets/logo.svg" alt="logo image">
+                <img class="header__logo_img" src="assets/logo.svg" alt="logo image">
             </a>
             <form>
-                <a class="header-login-btn" href="./signin.html">
+                <a class="header__login_btn btn--gradient-blue-to-mint flex--row font--normal" href="./signin.html">
                     로그인
                 </a>
             </form>
@@ -24,238 +29,126 @@
     </header>
     <!-- == END of HEADER == -->
 
-    <!--== START of MAIN-PAGE ==-->
-    <section class="main-page">
-        <h2>
-            <span>세상의 모든 정보</span>를<br> 
-            쉽게 저장하고 관리해 보세요
+    <!--== START of HERO-SECTION ==-->
+    <section class="hero flex--column-center">
+        <div class="hero__content flex--column-center">
+        <h2 class="hero__txt font--normal">
+            <span class="no_break_line--mobile"><span class="gradient--blue-to-red">세상의 모든 정보</span>를<br></span>
+            <span class="no_break_line--mobile">쉽게 저장하고</span> <span class="no_break_line--mobile">관리해 보세요</span>
         </h2>
-        <a class="btn-add-link" href="./signup.html">
+        <a class="hero__btn btn--gradient-blue-to-mint flex--row" href="./signup.html">
             링크 추가하기
         </a>
-        <div class="main-image" >
-                <img src="https://s3-alpha-sig.figma.com/img/2080/5edd/4edb32d644767d750d576d9e6c790df2?Expires=1694995200&amp;Signature=madOQQqul2jhtIHAW020fW5SBk16k5w1TBDIyzw6Of9OguYhDPl~F5aArIdx6u3JcFfTIv0~AnK4aO~7slJK2Q6JoyoFmFxUdfs34nDz6uaZEeDGti47-EVtNVdCoojP0uHMv9F~HQHvkDTJHy8ZfXKHxij8N~vXXV3OLu6AHttPAMPxMZG8UQy-nevNE16E877B7JOlymil-OuFxBPOqR1BNi5X6AcR-BqnMm44ZBvQt1juu7GiknzdTVdt-6zw0vZKxSDIQO6glWUG9MpIy1NQKbGfpNJK9xFJNkjElDI19JvGNlH1jCzPNXxgqpk-zLOce594VPA1DNLKVGP8zw__&amp;Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                alt="main page image">
+    </div>
+        <div class="hero__img_container flex--row">
+            <img class="hero__img" src="./assets/landing/_img@3x.png" alt="main page image">
         </div>
     </section>
 
     <!-- card sections -->
-    <section class="main-card-section">
-        <section id="section1" class="section-cards">
-            <div class="content">
-                <div class="txt-content">
-                    <h2>
-                        <span class="gradient type1">원하는 링크</span>를<br>
-                        저장하세요
-                    </h2>
-                    <p>
-                        나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>
-                        사고 싶은 옷, 기억하고 싶은 모든 것을<br>
-                        한 공간에 저장하세요.
-                    </p>
-                </div>
+    <section class="cards">
+        <section id="section1" class="cards__section cards__section--adjust-padding-top">
+            <div class="cards__title_container">
+                <h2 class="cards__title font--normal">
+                    <span class="gradient gradient--red-to-blue">원하는 링크</span>를
+                    저장하세요
+                </h2>
             </div>
-            <div class="imgs-content">
-                    <img class="card-image" src="assets/landing/_img1.png" alt="linkbrary explaination image"> 
+            <div class="cards__explain_container">
+                <p class="cards__explain font--normal">
+                    나중에 읽고 싶은 글, 다시 보고 싶은 영상,
+                    사고 싶은 옷, 기억하고 싶은 모든 것을
+                    한 공간에 저장하세요.
+                </p>
             </div>
-        </section>
-        <section id="section2" class="section-cards">
-            <div class="content">
-                <div class="txt-content">
-                    <h2>
-                        링크를 폴더로<br>
-                        <span class="gradient type2">관리</span>하세요
-                    </h2>
-                    <p>
-                        나만의 폴더를 무제한으로 만들고<br> 
-                        다양하게 활용할 수 있습니다.
-                    </p>
-                </div>
-            </div>
-            <div class="imgs-content">
-                <img class="card-image" src="assets/landing/img2.png" alt="linkbrary explaination image">  
+            <div class="cards__img_container">
+                    <img class="cards__img" src="assets/landing/_img1.png" alt="linkbrary explaination image"> 
             </div>
         </section>
-        <section id="section3" class="section-cards">
-            <div class="content">
-                <div class="txt-content">
-                    <h2>
-                        저장한 링크를<br>
-                        <span class="gradient type3">공유</span>해 보세요
-                    </h2>
-                    <p>
-                        여러 링크를 폴더에 담고 공유할 수 있습니다.<br> 
-                        가족, 친구, 동료들에게 쉽고 빠르게 링크를<br> 
+
+        <section id="section2" class="cards__section cards__section--row-reverse">
+            <div class="cards__title_container txt_container--row-reverse">
+                <h2 class="cards__title font--normal">
+                    링크를 폴더로
+                    <span class="gradient gradient--yellow-to-blue">관리</span>하세요
+                </h2>
+            </div>
+            <div class="cards__explain_container txt_container--row-reverse">
+                <p class="cards__explain font--normal">
+                    나만의 폴더를 무제한으로 만들고
+                    다양하게 활용할 수 있습니다.
+                </p>
+            </div>
+            <div class="cards__img_container img_container--row-reverse">
+                <img class="cards__img" src="assets/landing/img2.png" alt="linkbrary explaination image">  
+            </div>
+        </section>
+
+        <section id="section3" class="cards__section">
+            <div class="cards__title_container">
+                <h2 class="cards__title font--normal">
+                    저장한 링크를
+                    <span class="gradient gradient--blue-to-green">공유</span>해 보세요
+                </h2>
+            </div>
+            <div class="cards__explain_container">
+                    <p class="cards__explain font--normal">
+                        여러 링크를 폴더에 담고 공유할 수 있습니다.
+                        가족, 친구, 동료들에게 쉽고 빠르게 링크를
                         공유해 보세요.
                     </p>
-                </div>
             </div>
-            <div class="imgs-content">
-                <img class="card-image" src="assets/landing/img3.png"  alt="linkbrary explaination image">  
+            <div class="cards__img_container">
+                <img class="cards__img" src="assets/landing/img3.png" alt="linkbrary explaination image">  
             </div>
         </section>
-        <section id="section4" class="section-cards">
-            <div class="content">
-                <div class="txt-content">
-                    <h2>
-                        저장한 링크를<br>
-                        <span class="gradient type4">검색</span>해 보세요
-                    </h2>
-                    <p>
+
+        <section id="section4" class="cards__section cards__section--row-reverse">
+            <div class="cards__title_container txt_container--row-reverse">
+                <h2 class="cards__title font--normal">
+                    저장한 링크를
+                    <span class="gradient gradient--blue-to-pink">검색</span>해 보세요
+                </h2>
+            </div>
+            <div class="cards__explain_container txt_container--row-reverse">
+                    <p class="cards__explain font--normal">
                         중요한 정보들을 검색으로 쉽게 찾아보세요.
                     </p>
-                </div>
             </div>
-            <div class="imgs-content">
-                <img class="card-image" src="assets/landing/_img4.png" alt="linkbrary explaination image">  
+            <div class="cards__img_container img_container--row-reverse">
+                <img class="cards__img" src="assets/landing/_img4.png" alt="linkbrary explaination image">  
             </div>
         </section>
     </section>
-    <!--== END of MAIN-PAGE ==-->
+    <!--== END of HERO-SECTION ==-->
     
     <!--== START of FOOTER ==-->
-    <footer>
-        <div id="footer-container">
-            <h5 id="copyright">
+    <footer class="footer flex--column-center">
+        <div class="footer__container">
+            <h5 class="footer__copyright footer__txt font--normal no" id="copyright">
                 ©codeit - 2023
             </h5>
-            <div id="label-container">
-                <a class="footer-label" id="label_privacy-policy" href="./privacy.html">Privacy Policy</a>
-                <a class="footer-label" id="label_faq" href="./faq.html">FAQ</a>
+            <div class="footer__privacy_and_faq_container flex--row">
+                <a class="footer__privacy footer__txt font--normal" href="./privacy.html">Privacy Policy</a>
+                <a class="footer__faq  footer__txt font--normal" href="./faq.html">FAQ</a>
             </div>
-            <div id="sns-container">
+            <div class="footer__sns flex--row">
                 <a href="https://www.facebook.com" target="_blank">
-                    <img class="sns-icons" src="assets/icon-facebook.svg" alt="facebook icon">
+                    <img class="footer__sns_icon" src="assets/icon-facebook.svg" alt="facebook icon">
                 </a>
                 <a href="https://www.twitter.com" target="_blank">
-                    <img class="sns-icons" src="assets/icon-twitter.svg" alt="twitter icon">
+                    <img class="footer__sns_icon" src="assets/icon-twitter.svg" alt="twitter icon">
                 </a>
                 <a href="https://www.youtube.com" target="_blank">
-                    <img class="sns-icons" src="assets/icon-youtube.svg" alt="youtube icon">
+                    <img class="footer__sns_icon" src="assets/icon-youtube.svg" alt="youtube icon">
                 </a>
                 <a href="https://www.instagram.com" target="_blank">
-                    <img class="sns-icons" src="assets/icon-instagram.svg" alt="instagram icon">
+                    <img class="footer__sns_icon" src="assets/icon-instagram.svg" alt="instagram icon">
                 </a>
             </div>
         </div>
     </footer>
     <!--== END of FOOTER ==-->
 
-
-<!-- Code injected by live-server -->
-<script>
-    // <![CDATA[  <-- For SVG support
-    if ('WebSocket' in window) {
-        (function () {
-            function refreshCSS() {
-                var sheets = [].slice.call(document.getElementsByTagName("link"));
-                var head = document.getElementsByTagName("head")[0];
-                for (var i = 0; i < sheets.length; ++i) {
-                    var elem = sheets[i];
-                    var parent = elem.parentElement || head;
-                    parent.removeChild(elem);
-                    var rel = elem.rel;
-                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                    }
-                    parent.appendChild(elem);
-                }
-            }
-            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-            var address = protocol + window.location.host + window.location.pathname + '/ws';
-            var socket = new WebSocket(address);
-            socket.onmessage = function (msg) {
-                if (msg.data == 'reload') window.location.reload();
-                else if (msg.data == 'refreshcss') refreshCSS();
-            };
-            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                console.log('Live reload enabled.');
-                sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-            }
-        })();
-    }
-    else {
-        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-    }
-    // ]]>
-</script>
-<!-- Code injected by live-server -->
-<script>
-    // <![CDATA[  <-- For SVG support
-    if ('WebSocket' in window) {
-        (function () {
-            function refreshCSS() {
-                var sheets = [].slice.call(document.getElementsByTagName("link"));
-                var head = document.getElementsByTagName("head")[0];
-                for (var i = 0; i < sheets.length; ++i) {
-                    var elem = sheets[i];
-                    var parent = elem.parentElement || head;
-                    parent.removeChild(elem);
-                    var rel = elem.rel;
-                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                    }
-                    parent.appendChild(elem);
-                }
-            }
-            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-            var address = protocol + window.location.host + window.location.pathname + '/ws';
-            var socket = new WebSocket(address);
-            socket.onmessage = function (msg) {
-                if (msg.data == 'reload') window.location.reload();
-                else if (msg.data == 'refreshcss') refreshCSS();
-            };
-            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                console.log('Live reload enabled.');
-                sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-            }
-        })();
-    }
-    else {
-        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-    }
-    // ]]>
-</script>
-<!-- Code injected by live-server -->
-<script>
-    // <![CDATA[  <-- For SVG support
-    if ('WebSocket' in window) {
-        (function () {
-            function refreshCSS() {
-                var sheets = [].slice.call(document.getElementsByTagName("link"));
-                var head = document.getElementsByTagName("head")[0];
-                for (var i = 0; i < sheets.length; ++i) {
-                    var elem = sheets[i];
-                    var parent = elem.parentElement || head;
-                    parent.removeChild(elem);
-                    var rel = elem.rel;
-                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                    }
-                    parent.appendChild(elem);
-                }
-            }
-            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-            var address = protocol + window.location.host + window.location.pathname + '/ws';
-            var socket = new WebSocket(address);
-            socket.onmessage = function (msg) {
-                if (msg.data == 'reload') window.location.reload();
-                else if (msg.data == 'refreshcss') refreshCSS();
-            };
-            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                console.log('Live reload enabled.');
-                sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-            }
-        })();
-    }
-    else {
-        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-    }
-    // ]]>
-    </script>
-<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 </body>
 </html>
