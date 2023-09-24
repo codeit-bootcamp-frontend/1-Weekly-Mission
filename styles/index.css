@@ -8,6 +8,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;;
   font-family: "Pretendard";
 }
 
@@ -17,6 +18,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-self: center;
 }
 
 nav {
@@ -27,7 +29,6 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content:center;
-  
 }
 
 .nav-container{
@@ -40,6 +41,19 @@ nav {
   padding: 1.25rem 12.5rem;
 }
 
+.nav-container img{
+  width: 128px;
+}
+
+.head-container{
+  width: 100%;
+  background-color: rgba(240, 246, 255, 1);
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;;
+}
+
 section {
   justify-content: center;
   display:flex;
@@ -47,6 +61,7 @@ section {
   align-items: center;
   margin: 0 auto;
   max-width: 998px;
+  width:100%;
 }
 
 .wrapper {
@@ -184,6 +199,7 @@ p {
   font-size: 1rem;
   font-weight: 500;
   line-height: 150%;
+  word-break: keep-all;
 }
 
 footer {
@@ -220,3 +236,44 @@ footer {
   flex-direction: row;
   gap: 1.875rem;
 }
+
+/* 태블릿 사양  */
+@media (max-width: 1199px){
+
+  header{
+    margin-bottom: 30px;
+  }
+
+  .nav-container{
+    padding: 20px 32px;
+    max-width: 799px;
+  }
+  .head-container{
+    max-width: 698px;
+  }
+
+  section{
+    max-width: 698px;
+  }
+  .wrapper {
+    width: 385px;
+    height: 315px;
+  }
+
+  .text-container{
+    width: 262px;
+    gap: 10px;
+  }
+
+  .hero-image{
+    width: 650.303px;
+    height: 350px;
+  }
+
+  .link {
+    max-width: 698px;
+    column-gap: 51px;
+  }
+
+/* 모바일 사양
+@media (min-width: 375px) and (max-width: 767px) */
