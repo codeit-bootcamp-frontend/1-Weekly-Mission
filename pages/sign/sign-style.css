@@ -157,7 +157,7 @@ main {
 }
 
 .social-icon-background.google {
-    background: url("images/google-background.svg") no-repeat center;
+    background: url("google-background.svg") no-repeat center;
     background-size: cover;
     width: 42px;
     height: 42px;
@@ -171,7 +171,7 @@ main {
 }
 
 .social-icon-background.kakao {
-    background: url("images/kakao-background.svg") no-repeat center;
+    background: url("kakao-background.svg") no-repeat center;
     background-size: cover;
     width: 42px;
     height: 42px;
