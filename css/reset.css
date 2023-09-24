@@ -12,22 +12,21 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
 :root {
-  --Primary: hsl(241, 99%, 71%);
-  --Red: hsl(2, 100%, 67%);
-  --Black: hsl(233, 33%, 10%);
-  --White: hsl(0, 0%, 100%);
+  --Primary: #6d6afe;
+  --Red: #ff5b56;
+  --Black: #111322;
+  --White: #fff;
 
   --base-Gray1: 216, 100%, 97%;
   --Gray1: hsl(var(--base-Gray1));
   --Gray1-80: hsla(var(--base-Gray1), 80%);
 
-  --Gray2: hsl(216, 71%, 95%);
-  --Gray3: hsl(217, 29%, 85%);
-  --Gray4: hsl(218, 11%, 66%);
-  --Gray5: hsl(240, 4%, 25%);
+  --Gray2: #e7effb;
+  --Gray3: #ccd5e3;
+  --Gray4: #9fa6b2;
+  --Gray5: #3e3e43;
 }

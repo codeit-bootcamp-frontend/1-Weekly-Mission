@@ -1,20 +1,34 @@
-const $eye = document.getElementsByClassName("pw-show");
-for (let i = 0; i < $eye.length; i++) {
-  $eye[i].addEventListener("click", (event) => {
+const $eyes = document.getElementsByClassName("form__pw-reveal-click");
+const $input = document.querySelectorAll("input");
+for (let i = 0; i < $eyes.length; i++) {
+  $eyes[i].addEventListener("click", (event) => {
     showpw(event, i);
   });
+  $eyes[i].addEventListener("keypress", (event) => {
+    if (event.key === "Enter" || event.key === "Space") {
+      showpw(event, i);
+    }
+  });
+}
+for (let i = 0; i < $input.length; i++) {
+  $input[i].addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  })
 }
 
 function showpw(event, i) {
   event.preventDefault();
-  const $input = event.target.previousSibling.previousSibling;
+  const $input = event.currentTarget.parentNode.previousSibling.previousSibling;
   $input.classList.toggle("active");
   if ($input.classList.contains("active")) {
-    $eye[i].setAttribute("src", "assets/sign-eye-on.svg");
+    $eyes[i].setAttribute("src", "assets/sign-eye-on.svg");
     $input.setAttribute("type", "text");
   } else {
-    $eye[i].setAttribute("src", "assets/sign-eye-off.svg");
+    $eyes[i].setAttribute("src", "assets/sign-eye-off.svg");
     $input.setAttribute("type", "password");
   }
   $input.focus();
 }
+

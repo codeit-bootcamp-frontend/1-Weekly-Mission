@@ -1,109 +1,154 @@
-section {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--Gray1);
-  color: var(--Black);
+@media screen and (min-width: 0px) {
+  .login {
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr;
+    grid-template-areas:
+      "logo logo"
+      "form form"
+      "sns sns";
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--Gray1);
+    color: var(--Black);
+    padding: 12rem 3.2rem 24rem;
+  }
+
+  .login__img {
+    width: 22rem;
+    height: auto;
+  }
+
+  .login__text {
+    margin-top: 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+  }
+
+  .login__link {
+    margin-left: 1rem;
+    color: var(--Primary);
+    font-weight: 700;
+  }
+  .login__link:hover {
+    color: var(--Gray5);
+    text-decoration: underline;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 40rem;
+    font-size: 1.4rem;
+  }
+
+  .form__password {
+    position: relative;
+  }
+  .form__password:focus-within,
+  .form__email:focus-within {
+    color: var(--Primary);
+    font-weight: 700;
+  }
+
+  .form__input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.2rem;
+    width: 100%;
+    max-width: 40rem;
+    padding: 1.8rem 1.5rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid var(--Gray4);
+    background-color: #fff;
+    font-size: 1.6rem;
+  }
+  .form__input:focus-within {
+    outline: 0.15rem solid var(--Primary);
+  }
+
+  .form__input-none {
+    border: 0;
+    outline: none;
+  }
+  .form__input-btn {
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0;
+    background-color: #fff;
+    border: 0;
+  }
+
+  .form__pw-reveal {
+    position: absolute;
+    right: 1.5rem;
+    top: 3.1rem;
+    width: 1.3rem;
+  }
+  .form__pw-reveal-click {
+    width: 100%;
+    height: 100%;
+  }
+
+  .form__submit {
+    max-width: 40rem;
+    padding: 1.6rem 2rem;
+    background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
+    border-radius: 0.8rem;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--White);
+  }
+  .form__sns {
+    max-width: 40rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2.4rem;
+    width: 100%;
+    background-color: var(--Gray2);
+    border: 0.1rem solid var(--Gray3);
+    border-radius: 0.8rem;
+    font-size: 1.4rem;
+  }
+  .form__sns-img {
+    width: 4.2rem;
+    margin-left: 1rem;
+  }
+
+  .margin-top30 {
+    margin-top: 3rem;
+  }
+  .margin-top25 {
+    margin-top: 2.5rem;
+  }
+
+  .grid--logo {
+    grid-area: logo;
+    width: fit-content;
+    place-self: end center;
+  }
+  .grid--form {
+    grid-area: form;
+    place-self: center center;
+  }
+  .grid--sns {
+    grid-area: sns;
+    place-self: start center;
+  }
 }
 
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 8rem;
+@media screen and (min-width: 768px) {
+  .login {
+    padding: 20rem 0rem 29rem;
+  }
 }
-
-.header {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.6rem;
-  font-size: 1.2rem;
-  color: var(--Black);
-}
-
-.header img {
-  width: 16rem;
-}
-
-.to-sign {
-  display: flex;
-  justify-content: space-between;
-}
-
-.header a {
-  color: var(--Primary);
-  font-weight: 700;
-}
-
-.header a:hover {
-  color: var(--Gray5);
-  font-weight: 700;
-  text-decoration: underline;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 25rem;
-  font-size: 1.1rem;
-}
-
-.margin-top-25 {
-  margin-top: 2.5rem;
-}
-
-.margin-top-10 {
-  margin-top: 1.5rem;
-}
-
-.form input {
-  display: block;
-  width: 100%;
-  padding: 1rem 1rem;
-  margin-top: 0.7rem;
-  border-radius: 0.8rem;
-  border: 0.1rem solid var(--Gray4);
-}
-
-input:focus {
-  border: 0.15rem solid var(--Primary);
-  outline: none;
-}
-
-.pw {
-  position: relative;
-}
-
-.pw-show {
-  position: absolute;
-  right: 1.5rem;
-  top: 3.2rem;
-  width: 1.3rem;
-}
-
-.form button {
-  padding: 0.8rem;
-  background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
-  border-radius: 0.8rem;
-  border: none;
-  text-decoration: none;
-  text-align: center;
-  color: var(--White);
-}
-
-.sns {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  width: 100%;
-  background-color: var(--Gray2);
-  border: 0.1rem solid var(--Gray3);
-  border-radius: 0.8rem;
-}
-
-.sns img {
-  width: 2.5rem;
-  margin-left: 1rem;
+@media screen and (min-width: 1200px) {
+  .login {
+    padding: 25rem 0 25rem;
+  }
 }
