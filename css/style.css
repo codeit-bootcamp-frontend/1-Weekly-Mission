@@ -249,4 +249,20 @@ footer .footer-links a {
   .content-04 {
     flex-direction: column-reverse;
   }
+  .footer-box > div {
+    border: 1px solid red;
+  }
+  .footer-box {
+    padding: 0 32px;
+    flex-wrap: wrap-reverse;
+  }
+  .copyright {
+    order: 3;
+  }
+  .footer-links {
+    order: 1;
+  }
+  .sns {
+    order: 2;
+  }
 }
