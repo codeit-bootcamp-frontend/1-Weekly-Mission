@@ -42,12 +42,6 @@ header {
   border-radius: 8px;
 }
 
-.content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .container_1 .content {
   flex-direction: column;
   background: #f0f6ff;
@@ -292,6 +286,17 @@ header {
       height: 16px;
     }
 
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container_1 .content {
+      flex-direction: column;
+      background: #f0f6ff;
+    }
+
     .container_1 .text {
       font-size: 32px;
       width: 260px;
@@ -408,17 +413,19 @@ header {
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  .content {
-    gap: 51px;
-  }
-
   .text-section {
     width: 262px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
   }
 
   .container_1 .content {
     gap: 40px;
     padding-top: 129px;
+    align-items: center;
   }
 
   .container_1 .img-section {
@@ -443,6 +450,27 @@ header {
   .container_1 .img .gradation {
     width: 650.303px;
     height: 383.114px;
+  }
+
+  section .content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 315px;
+    justify-content: center;
+  }
+
+  .text-title,
+  .text-content {
+    width: 262px;
+  }
+
+  .img-section.odd {
+    margin-left: 51px;
+  }
+
+  .img-section.even {
+    margin-right: 51px;
   }
 
   .container_2 {
@@ -494,8 +522,19 @@ header {
   }
 
   .container_1 .content {
+    display: flex;
+    justify-content: center;
     gap: 40px;
     padding-top: 164px;
+    align-items: center;
+  }
+
+  section .content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 450px;
+    justify-content: center;
   }
 
   .container_1 .img-section {
@@ -518,14 +557,6 @@ header {
     height: 659px;
   }
 
-  .content {
-    gap: 157px;
-  }
-
-  .text-section {
-    width: 291px;
-  }
-
   .container_2 {
     padding-top: 120px;
     padding-bottom: 50px;
@@ -535,6 +566,19 @@ header {
   .container_4,
   .container_5 {
     padding: 50px 0px;
+  }
+
+  .text-title,
+  .text-content {
+    width: 291px;
+  }
+
+  .img-section.odd {
+    margin-left: 157px;
+  }
+
+  .img-section.even {
+    margin-right: 157px;
   }
 
   .container_2 .content .img-section {
