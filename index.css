@@ -241,10 +241,6 @@ a {
 
 /* media types */
 
-/* PC */
-@media screen and (min-width: 1200px) {
-}
-
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .policy-text {
@@ -252,9 +248,7 @@ a {
     justify-self: center;
   }
 }
-
 /* mobile */
-
 @media screen and (min-width: 375px) and (max-width: 767px) {
   /* Mobile 사이즈의 이미지는 좌우 여백 32px을 제외하고 이미지 영역이 꽉 찰 수 있도록 해주세요.
   (이때 가로가 커지는 비율에 맞춰 세로도 커지면 됩니다.) */
@@ -307,7 +301,6 @@ a {
     width: 100%;
   }
   /* odd영역 */
-
   section.contents:nth-child(odd) .image-container {
     margin-bottom: 2.5rem;
   }
