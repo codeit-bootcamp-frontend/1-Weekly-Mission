@@ -79,7 +79,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
   padding: 2rem 20rem;
   position: fixed;
   top: 0;
@@ -288,4 +287,69 @@ save-description {
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
+  header {
+    padding: 1.8rem 3.2rem;
+  }
+
+  .container {
+    margin: 0 auto;
+  }
+
+  section,
+  .footer {
+    padding: 0 3.2rem;
+  }
+
+  .main-page-example p {
+    font-size: 4.5rem;
+    line-height: 6rem;
+    font-weight: 700;
+    margin-top: 2.8rem;
+  }
+
+  .link-add-button {
+    padding: 1rem 1.6rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .main-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-text-right-image,
+  .left-image-right-text {
+    flex-direction: column;
+    justify-content: none;
+    align-items: center;
+    gap: 2rem;
+    height: auto;
+    padding: 0;
+  }
+
+  /* 문단을 모바일 화면 가운데로 몰고 싶은데 안 들어가요... */
+  .font-big,
+  .font-desc {
+    text-align: center;
+  }
+
+  .font-desc {
+    font-size: 1.5rem;
+  }
+
+  .manage-description,
+  .search-description,
+  .save-description,
+  .share-description {
+    padding: 4rem 3.2rem;
+  }
+
+  .left-text-right-image br,
+  .left-image-right-text br {
+    display: none !important;
+  }
+
+  .left-image-right-text .main-container-sub {
+    order: -1;
+  }
 }
