@@ -15,6 +15,7 @@ body {
 }
 
 form {
+  width:400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,8 +141,8 @@ input:focus {
   
   form {
     max-width: 400px;
+    margin: 120px 32px 0 32px;
     width: 100%;
-    margin: 120px 32px 0 32px;;  
   }
   /* 모바일 사이즈에서 좌우로 여백 32px를 두고 내부 요소들이 모바일 사이즈에 맞게 함께 줄어들어야 할 것 같은데
   개발자도구에서 확인하면 좌우여백 32px은 있지만 폼 안에 있는 요소들이 여백 밖으로 삐져나오고,

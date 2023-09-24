@@ -252,8 +252,19 @@ footer {
     max-width: 698px;
   }
 
+  .head-title{
+    display: flex;
+    flex-direction: column;
+  }
+
   section{
     max-width: 698px;
+    /* margin: 0 32px;
+    padding: 0 32px;
+    
+    <Mobile 사이즈에서 좌우 여백 32px 제외하고 내부 요소들이 너비를 모두 차지합니다.>
+    이 요구사항에 대한 코드였는데요,
+    마진값은 적용이 안되는 것 같고, 패딩을 넣었더니 한쪽으로 쏠리게 됩니다 ㅜㅜ... */
   }
   .wrapper {
     width: 385px;
