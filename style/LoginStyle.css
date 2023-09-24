@@ -140,3 +140,9 @@ button{
     height: 394px;
     margin-bottom: 116px;
 }
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .Container{
+    padding: 20px 32px;
+  }
+}

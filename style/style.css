@@ -19,6 +19,7 @@
   }
   
   body {
+    width:100%;
     margin: 0;
     background-color: var(white);
   }
@@ -29,6 +30,7 @@
 
   /*헤더스타일*/
   .header{
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-color: var(--gray5);
@@ -61,11 +63,13 @@
   }
 
   .header-content{
+    width: 100%;
     padding:70px 360px 0 360px;
-    margin-top: 98px;
+    margin: 98px auto 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 40px;
   }
 
@@ -89,7 +93,9 @@
 }
 
   .header-pic{
-    width: 100%;
+    width: 650.303px;
+    height: 383.114px;
+    flex-shrink: 0;
     padding:50px 41px 0px 41px;
   }
 
@@ -99,13 +105,19 @@
 
   /*content2,4 스타일*/
   .content{
-    padding: 120px 400px 50px 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+ 
   }
-
+/* padding: 120 400 50 400 */
   .content2-grid{
-    width:998px;
+    padding-top:80px 250px 50px 251px;
+    margin: 0 auto;
+    width:100%;
     display: grid;
     grid-template: 450px/200px 380px;
+    justify-content: center;
     gap:157px;
   }
 
@@ -121,6 +133,7 @@
     flex-direction: column;
     justify-content: center;
     position:relative;
+    object-fit: cover;
   }
 
   .content-detail{
@@ -141,9 +154,11 @@
 
    /*content3,5 스타일*/
   .content3-grid{
-    width:998px;
+    padding-top:80px 250px 50px 251px;
+    width:100%;
     display: grid;
     grid-template: 450px/380px 200px;
+    justify-content: center;
     gap:157px;
   }
 
@@ -200,3 +215,126 @@
     display: flex;
     gap:12px;
  }
+
+ .Content-title-big{
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height:  125%;
+ }
+
+ .Content-title-small{
+  font-family: Pretendard;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.3px;
+ }
+
+ .focus1{
+  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ }
+
+ .focus2{
+  background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ }
+
+ .focus3{
+  background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ }
+
+ .focus4{
+  background: linear-gradient(181deg, #6D7CCD 53.86%, rgba(82, 136, 133, 0.22) 99.4%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ }
+
+ .focus5{
+  background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ }
+
+ @media screen and (min-width: 768px) and (max-width: 1199px) {
+  .header-title{
+    padding: 20px 32px;
+  }
+  .header-content{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .header-title{
+    padding: 20px 32px;
+  }
+
+  .header-content{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .content{
+    padding:40px 32px;
+  }
+  .content2-grid{
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+  }
+
+  .content3-grid{
+    display: flex;
+    gap:24px;
+    flex-direction: column;
+  }
+
+  /* content2-right 또는 content3-left이 두 번째로 표시되도록 설정 */
+  .content2-right,
+  .content3-left {
+      order: 2;
+  }
+
+  /* content-detail이 마지막으로 표시되도록 설정 */
+  .content-detail {
+      order: 3;
+  }
+
+  .Content-title{
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 131.25%;
+   } 
+  
+   .Content-title-small{
+    align-self: stretch;
+    font-family: Pretendard;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.3px;
+   }
+
+   .footer{
+    gap:30px;
+   }
+}
