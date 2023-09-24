@@ -110,21 +110,22 @@
 }
 
 .content2-container {
-  display: flex;
+  display: grid;
+  grid-template:
+    ". image"
+    "title image"
+    "discription image"
+    ". image";
   align-items: center;
-  gap: 157px;
+  column-gap: 157px;
+  row-gap: 10px;
   margin: 120px 0px 50px;
 }
 
-.content2-textbox {
-  gap: 0.625rem;
-  width: 18.1875rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 .content2-textbox-accent {
+  width: 260px;
+  grid-area: title;
+  align-items: start;
   font-size: 48px;
   font-weight: 700;
   line-height: normal;
@@ -132,6 +133,8 @@
 }
 
 .content2-textbox-normal {
+  grid-area: discription;
+  width: 260px;
   color: #6b6b6b;
   font-size: 16px;
   font-weight: 500;
@@ -145,15 +148,8 @@
   -webkit-text-fill-color: transparent;
 }
 
-.content2-image-container {
-  width: 550px;
-  height: 450px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--backgroundcolor-skyblue-10);
-  border-radius: 15px;
+.content2-imagebox {
+  grid-area: image;
 }
 
 .content2-image {
@@ -171,37 +167,31 @@
 }
 
 .content3-container {
-  display: flex;
+  display: grid;
+  grid-template:
+    "image ."
+    "image title"
+    "image discription"
+    "image .";
   align-items: center;
-  gap: 157px;
+  column-gap: 157px;
+  row-gap: 10px;
   margin: 50px 0px;
 }
 
 .content3-imagebox {
-  display: flex;
-  width: 34.375rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  background-color: var(--backgroundcolor-skyblue-10);
+  grid-area: image;
 }
 
 .change-folder-name-image {
-  width: 26rem;
-  height: 16.9375rem;
+  width: 550px;
+  height: 450px;
   flex-shrink: 0;
 }
 
-.content3-textbox {
-  display: flex;
-  width: 18.1875rem;
-  flex-direction: column;
-  align-items: start;
-  gap: 10px;
-}
-
 .content3-textbox-accent {
-  font-family: Pretendard;
+  grid-area: title;
+  width: 270px;
   font-size: 3rem;
   font-style: normal;
   font-weight: 700;
@@ -210,6 +200,8 @@
 }
 
 .content3-textbox-normal {
+  grid-area: discription;
+  width: 270px;
   color: #6b6b6b;
   font-family: Pretendard;
   font-size: 16px;
@@ -234,17 +226,10 @@
   background: var(--color-white);
 }
 
-.content4-textbox {
-  display: flex;
-  width: 18.1875rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-}
-
 .content4-textbox-accent {
+  grid-area: title;
+  width: 273px;
   color: #000;
-  font-family: Pretendard;
   font-size: 3rem;
   font-style: normal;
   font-weight: 700;
@@ -268,6 +253,7 @@
 }
 
 .content4-textbox-normal {
+  grid-area: discription;
   color: #6b6b6b;
   font-size: 1rem;
   font-style: normal;
@@ -276,10 +262,20 @@
 }
 
 .content4-container {
-  display: flex;
+  display: grid;
+  grid-template:
+    ". image"
+    "title image"
+    "discription image"
+    ". image";
   align-items: center;
-  gap: 157px;
+  column-gap: 157px;
+  row-gap: 10px;
   margin: 50px 0px;
+}
+
+.content4-imagebox {
+  grid-area: image;
 }
 
 .content4-image {
@@ -298,21 +294,21 @@
 }
 
 .content5-container {
-  display: flex;
+  display: grid;
+  grid-template:
+    "image ."
+    "image title"
+    "image discription"
+    "image .";
   align-items: center;
-  gap: 157px;
+  column-gap: 157px;
+  row-gap: 10px;
   margin: 50px 0px;
 }
 
-.content5-textbox {
-  display: flex;
-  width: 18.1875rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-}
-
 .content5-textbox-accent {
+  grid-area: title;
+  width: 270px;
   color: #000;
   font-size: 3rem;
   font-weight: 700;
@@ -329,6 +325,8 @@
 }
 
 .content5-textbox-normal {
+  grid-area: discription;
+  width: 270px;
   color: #6b6b6b;
   font-size: 1rem;
   font-weight: 500;
@@ -336,6 +334,7 @@
 }
 
 .content5-image {
+  grid-area: image;
   width: 619px;
   height: 584px;
   flex-shrink: 0;
@@ -490,32 +489,21 @@
 
   /* content2 */
 
-  .content2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: --color-white;
-  }
-
   .content2-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template:
+      "title"
+      "image"
+      "discription";
     align-items: center;
     justify-content: center;
     gap: 24px;
     margin: 40px 0px;
   }
 
-  .content2-textbox {
-    gap: 0.625rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .content2-textbox-accent {
+    grid-area: title;
+    width: 100%;
     font-size: 24px;
     font-weight: 700;
     line-height: normal;
@@ -524,6 +512,8 @@
   }
 
   .content2-textbox-normal {
+    grid-area: discription;
+    width: 100%;
     color: #6b6b6b;
     font-size: 15px;
     font-weight: 500;
@@ -539,6 +529,7 @@
   }
 
   .content2-image-container {
+    grid-area: image;
     width: 100%;
     height: 100%;
   }
@@ -556,8 +547,11 @@
   }
 
   .content3-container {
-    display: flex;
-    flex-direction: column-reverse;
+    display: grid;
+    grid-template:
+      "title"
+      "image"
+      "discription";
     align-items: center;
     width: 100%;
     gap: 24px;
@@ -565,27 +559,17 @@
   }
 
   .content3-imagebox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    background-color: var(--backgroundcolor-skyblue-10);
+    grid-area: image;
   }
 
   .change-folder-name-image {
+    width: 100%;
+    height: 100%px;
     flex-shrink: 0;
   }
 
-  .content3-textbox {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: start;
-    gap: 10px;
-  }
-
   .content3-textbox-accent {
-    font-family: Pretendard;
+    grid-area: title;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -594,8 +578,8 @@
   }
 
   .content3-textbox-normal {
+    grid-area: discription;
     color: #6b6b6b;
-    font-family: Pretendard;
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
@@ -611,25 +595,22 @@
 
   /* content4 */
 
-  .content4 {
-    display: flex;
-    justify-content: center;
+  .content4-container {
+    display: grid;
+    grid-template:
+      "title"
+      "image"
+      "discription";
     align-items: center;
+    justify-content: center;
     width: 100%;
-    background: var(--color-white);
-  }
-
-  .content4-textbox {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    gap: 24px;
+    margin: 40px 0px;
   }
 
   .content4-textbox-accent {
+    grid-area: title;
     color: #000;
-    font-family: Pretendard;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -653,6 +634,7 @@
   }
 
   .content4-textbox-normal {
+    grid-area: discription;
     color: #6b6b6b;
     font-size: 15px;
     font-style: normal;
@@ -660,59 +642,31 @@
     line-height: 150%;
   }
 
-  .content4-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 24px;
-    margin: 40px 0px;
-  }
-
   .content4-imagebox {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+    grid-area: image;
   }
 
   .content4-image {
-    width: 325px;
-    height: 266px;
+    width: 100%;
+    height: 100%;
   }
 
   /* content5 */
 
-  .content5 {
-    display: flex;
+  .content5-container {
+    display: grid;
+    grid-template:
+      "title"
+      "image"
+      "discription";
     justify-content: center;
     align-items: center;
-    background: var(--color-white);
-    width: 100%;
-  }
-
-  .content5-container {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
     gap: 24px;
-    width: 100%;
     margin: 40px 0px;
   }
 
-  .content5-textbox {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
   .content5-textbox-accent {
+    grid-area: title;
     color: #000;
     font-size: 24px;
     font-weight: 700;
@@ -729,6 +683,7 @@
   }
 
   .content5-textbox-normal {
+    grid-area: discription;
     color: #6b6b6b;
     font-size: 15px;
     font-weight: 500;
@@ -736,23 +691,12 @@
   }
 
   .content5-image-box {
-    overflow: hidden;
-    background: var(--backgroundcolor-skyblue-10);
-    width: 100%;
-    height: 100%;
+    grid-area: image;
   }
 
   .content5-image {
-    flex-shrink: 0;
-    border-radius: 15px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0) 48.72%,
-      #000 128.17%
-    );
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
   }
 
   /* footer */
@@ -833,7 +777,7 @@
   }
 
   .content2-container {
-    gap: 51px;
+    column-gap: 51px;
     margin: 50px 0px;
   }
 
@@ -848,7 +792,7 @@
   }
 
   .content3-container {
-    gap: 51px;
+    column-gap: 51px;
     margin: 50px 0px;
   }
 
@@ -858,7 +802,7 @@
   }
 
   .content4-container {
-    gap: 51px;
+    column-gap: 51px;
     margin: 50px 0px;
   }
 
@@ -868,7 +812,7 @@
   }
 
   .content5-container {
-    gap: 51px;
+    column-gap: 51px;
   }
 
   .content5-image-box {
