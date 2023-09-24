@@ -18,7 +18,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-self: center;
+  justify-content: center;
 }
 
 nav {
@@ -123,7 +123,6 @@ a {
 
 .hero-image {
   width: 75rem;
-  height: 36.875rem;
   text-align: center;
 }
 
@@ -225,6 +224,7 @@ footer {
   font-family: Arial;
   font-size: 1rem;
   font-weight: 400;
+  grid-area: copyright;
 }
 
 .explain {
@@ -235,6 +235,11 @@ footer {
   display: flex;
   flex-direction: row;
   gap: 1.875rem;
+  grid-area: explain;
+}
+
+.sns-logo{
+  grid-area: sns-logo;
 }
 
 /* 태블릿 사양  */
@@ -248,6 +253,7 @@ footer {
     padding: 20px 32px;
     max-width: 799px;
   }
+
   .head-container{
     max-width: 698px;
   }
@@ -261,11 +267,12 @@ footer {
     max-width: 698px;
     /* margin: 0 32px;
     padding: 0 32px;
-    
+
     <Mobile 사이즈에서 좌우 여백 32px 제외하고 내부 요소들이 너비를 모두 차지합니다.>
     이 요구사항에 대한 코드였는데요,
     마진값은 적용이 안되는 것 같고, 패딩을 넣었더니 한쪽으로 쏠리게 됩니다 ㅜㅜ... */
   }
+
   .wrapper {
     width: 385px;
     height: 315px;
@@ -278,13 +285,118 @@ footer {
 
   .hero-image{
     width: 650.303px;
-    height: 350px;
   }
 
   .link {
     max-width: 698px;
     column-gap: 51px;
   }
+}
 
-/* 모바일 사양
-@media (min-width: 375px) and (max-width: 767px) */
+/* 모바일 사양 */
+@media (max-width: 767px) {
+
+  header{
+    margin-bottom:0;
+  }
+
+  .nav-container {
+    padding: 13px 32px;
+  }
+
+  .nav-container img{
+    width: 88.667px;
+    height: 16px;
+  }
+
+  .head-title{
+    font-size:32px;
+    font-weight: 700;
+    line-height: 42px;
+    margin-top: 90px;
+  }
+  
+  .gradient-link{
+    font-size: 14px;
+  }
+
+  .gradient-link.signin{
+    width:80px;
+    padding: 10px 16px;
+  }
+
+  .gradient-link.signup{
+    width: 200px;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  .hero-image{
+    width:100%;
+    padding: 0 32px;
+  }
+
+  .link.save, .link.share, .link.admin, .link.search{
+    grid-template-areas:
+    "text-container" 
+    "image";
+  }
+  
+  /* 바로 위에 있는 태그는
+  section .link{
+    grid-template-areas:
+    "image"
+    "text-container" ;
+  }
+  이렇게 적용하려고 했는데 적용이 안 되더라고요... 우선순위? 때문인가요..?!  */
+
+  .link{
+    padding: 40px 32px;
+    gap: 24px;
+    width: 390px;
+  /* width: 390px; 이 속성을 적용하지 않으면
+  모바일 화면크기를 키웠을 때 이미지가 다른 요소들의 영역을 침범하면서 함께 커지고,
+  width: 390px; 이 속성을 적용하면
+  모바일 화면 크기를 키워도 이미지가 커지거나 작아지지 않습니다 ㅜㅜ .. 어떻게 해야 하나욥...  */
+  }
+  
+  .text-container{
+    width: 100%;
+  }
+
+  .main-text{
+    font-size: 24px;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    width:100%;
+  }
+
+  p{
+    font-size: 15px;
+  }
+
+  .wrapper{
+    /* width: 325px;
+    height: 265.909px;
+    이렇게 했더니 크기가 고정이 되어서 아래 속성으로 변경했는데요,
+    이미지가 영역에 맞게 커지거나 작아졌으면 하는데 여전히 이미지 크기가 고정이 되어있습니다..*/
+    width: 100%;
+
+  }
+
+  footer{
+    margin-top: 40px;
+    padding: 32px;
+  }
+  
+  .footer-section{
+    display: grid;
+    grid-template-areas:
+    "explain sns-logo"
+    "copyright .";
+    row-gap:60px;
+    justify-content: space-around;
+    /* 어떻게 정렬 해야할 지 모르겠어서 개발자도구에서 이것저것 클릭해보다가
+    justify-content: space-around; 이걸 발견했는데요..! 이렇게 해도 되나요!? 다른 방법이 있는지 궁금합니다! */
+  }
+}
