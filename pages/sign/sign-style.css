@@ -157,7 +157,7 @@ main {
 }
 
 .social-icon-background.google {
-    background: url("google-background.svg") no-repeat center;
+    background: url("images/google-background.svg") no-repeat center;
     background-size: cover;
     width: 42px;
     height: 42px;
@@ -171,7 +171,7 @@ main {
 }
 
 .social-icon-background.kakao {
-    background: url("kakao-background.svg") no-repeat center;
+    background: url("images/kakao-background.svg") no-repeat center;
     background-size: cover;
     width: 42px;
     height: 42px;
@@ -208,6 +208,11 @@ main {
     }
 
     .sign-form-container input {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .sign-input {
         width: 100%;
         max-width: 400px;
     }
