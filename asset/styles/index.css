@@ -1,15 +1,23 @@
-.header {
+.nav {
     position: fixed;
     top: 0;
-    max-width: 192rem;
-    width: 100%;
-    margin: 0 auto;
+    left: 0;
+    right: 0;
     padding: 2.0rem 20.0rem;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.nav__logo {
+    width: 13.3rem;
+    height: 2.4rem;
+}
+
+.nav__btn {
+    width: 12.8rem;
 }
 
 .hero_sec {
@@ -35,14 +43,17 @@
     line-height: 8.0rem;
 }
 
+.hero_sec__btn {
+    width: 35rem;
+}
+
 .hero_sec__title .text--gradiant {
     background-image: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
 }
 
 .hero_sec__img {
     flex-shrink: 0;
-    max-width: 111.8rem;
-    width: 100%;
+    width: 111.8rem;
     height: 53.9rem;
     margin: 0 auto;
     border-radius: 2.5rem 2.5rem 0 0;
@@ -55,27 +66,38 @@
 }
 
 .service_explain {
-    max-width: 192rem;
-    width: 100%;
+    width: 99.8rem;
     margin: 0 auto;
     padding: 12.0rem 0 5.0rem 0;
-    display: flex;
-    align-items: center;
+    display: grid;
     justify-content: center;
-    gap: 15.7rem;
+    gap: 1rem 15.7rem;
 }
 
-.service_explain__container {
-    width: 29.1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.0rem;
-}
+.service_explain--odd {
+    grid-template:
+      ". img"
+      "t img"
+      "s img"
+      ". img"
+      /29.1rem 55rem;
+  }
+  
+.service_explain--even {
+    grid-template:
+      "img ."
+      "img t"
+      "img s"
+      "img ."
+      /55rem 29.1rem;
+  }
+  
 
 .service_explain__title {
     font-size: 4.8rem;
     font-weight: 700;
-    letter-spacing: -0.3rem;
+    letter-spacing: -0.03rem;
+    grid-area: t;
 }
 
 .service_explain__subtitle {
@@ -83,6 +105,7 @@
     font-size: 1.6rem;
     font-weight: 500;
     line-height: 150%;
+    grid-area: s;
 }
 
 .service_explain__img {
@@ -90,6 +113,7 @@
     height: 45rem;
     border-radius: 1.5rem;
     background-color: var(--gray1);
+    grid-area: img;
 }
 
 #manage_your_link,
@@ -121,7 +145,10 @@
 
 .footer__container {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template:
+    "copy priv social"
+    / auto auto auto;
     justify-content: space-between;
     height: 16.0rem;
     padding: 3.2rem 10.4rem 6.4rem 10.4rem;
@@ -131,6 +158,7 @@
 .footer__copyright {
     color: #676767;
     font-size: 1.6rem;
+    grid-area: copy;
 }
 
 .footer__privacy {
@@ -138,6 +166,7 @@
     font-size: 1.6rem;
     display: flex;
     justify-content: center;
+    grid-area: priv;
 }
 
 .footer__privacy a {
@@ -149,4 +178,123 @@
     display: flex;
     justify-content: center;
     gap: 1.2rem;
+    grid-area: social;
+}
+
+@media (max-width: 1199px) {
+    .nav {
+        padding: 2.0rem 3.2rem;
+        margin: 0 auto;
+        max-width: 86.4rem;
+    }
+
+    .hero_sec__img {
+        width: 65rem;
+        height: 31.3rem;
+    }
+
+    .service_explain {
+        width: 69.8rem;
+        padding-top: 8rem;
+        gap: 1rem 5.1rem;
+    }
+
+    .service_explain--odd {
+        grid-template-columns: 26.2rem 38.5rem;
+      }
+      
+    .service_explain--even {
+        grid-template-columns: 38.5rem 26.2rem;
+      }
+
+    .service_explain__img {
+        width: 38.5rem;
+        height: 31.5rem;
+    }
+}
+    
+@media (max-width: 767px) {
+    .nav__logo {
+        width: 8.9rem;
+        height: 1.6rem;
+    }
+
+    .btn {
+        padding: 1rem 1.6rem;
+        font-size: 1.4rem;
+    }
+
+    .nav {
+        padding: 1.3rem 3.2rem;
+    }
+
+    .nav__btn {
+        width: 8rem;
+    }
+
+    .hero_sec__container {
+        padding-top: 9rem;
+    }
+
+    .hero_sec__title {
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+    }
+
+    .hero_sec__btn {
+        width: 20rem;
+    }
+
+    .hero_sec__img {
+        width: 30.2rem;
+        height: 14.6rem;
+    }
+    
+    .service_explain--odd,
+    .service_explain--even {
+        width: 100%;
+        margin: 0;
+        padding: 4rem 3.2rem 3.6rem;
+        grid-template:
+          "t"
+          "img"
+          "img"
+          "s";
+          gap: 2rem;
+      }
+
+    .service_explain__title {
+        font-size: 2.4rem;
+    }
+
+    .service_explain__subtitle {
+        font-size: 1.5rem;
+    }
+
+    .service_explain__img {
+        width: 100%;
+        height: auto;
+    }
+
+    #manage_your_link,
+    #search_your_link {
+    flex-direction: column;
+    }
+
+    .footer {
+        padding-top: 4rem;
+    }
+
+    .footer__container {
+        grid-template:
+        "priv social"
+        "copy .";
+        justify-content: space-between;
+        padding: 3.2rem;
+    }
+
+    .footer__copyright {
+        justify-self: start;
+        align-self: end;
+    }
 }
