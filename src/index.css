@@ -322,6 +322,7 @@ footer {
       "links sns"
       "copyright .";
     grid-row-gap: 6rem;
+    padding: 0 3.2rem;
   }
 
   .copyright {
