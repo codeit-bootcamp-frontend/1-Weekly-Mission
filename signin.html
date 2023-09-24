@@ -3,9 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="signin.css">
+    <link rel="stylesheet" href="assets/css/signin.css">
 </head>
-<body class="vsc-initialized flex-center">
+<body class="flex-center">
     <main>
 		<!--== START of MAIN-SECTION ==-->
         <section>
@@ -14,7 +14,7 @@
                 <div class="container-main flex-center">
 					<!-- main logo section -->
 					<a href ="./">
-                    	<img id="icon-logo" src="assets/logo.svg">
+                    	<img id="icon-logo" src="assets/image/logo.svg">
 					</a> 
                     <div class="div-intent-signup">
                         <h4 class="txt1 default-font">
@@ -33,20 +33,20 @@
                         <label class="label-signin" for="email">
                             이메일
                         </label>
-                        <input class="input email default-font flex-center" name="email">
-                    </div>
+                        <input id="email" class="input email default-font flex-center" name="email" type="email">
+                    </div> 
 					 <!-- input: password -->
                     <div class="div-input">
                         <label class="label-signin" for="password">
                             비밀번호
                         </label>
-                        <input class="input password default-font flex-center" name="password" type="password">
+                        <input id="password" class="input password default-font flex-center" name="password" type="password">
                     </div>
                 </div>
 				 <!-- sign-in button -->
-                <a class ="btn-signin flex-center default-font" href="#">
+                <button class ="btn-signin flex-center default-font" href="#">
                     로그인
-                </a>
+                </button>
             </form>
         
 			<!-- social sign-in -->
@@ -54,12 +54,12 @@
                 <h4 class="txt-social-login default-font">소셜 로그인</h4>
                 <div id="content">
                     <a href="https://www.google.com/">
-                        <img class="btn-social-login"src="assets/icon-background-google.svg">
+                        <img class="btn-social-login"src="assets/image/icon-background-google.svg">
                         <img class="btn-google" src="https://s3-alpha-sig.figma.com/img/a92e/9426/c3a9be9cb365010056fa7aa9cc9f05a2?Expires=1694995200&Signature=ckf8YKq2M6PWww23k-RR~Zl4LXBzlaSzMBSABPGaeoeDvDBiE6-bOAVlt3XCkg5gDo8dGAkqcwauNf-Q4A8QcZlZPE9HBeRCyPsqNjDkyWW4qIICfjAIVrGIvmnD~GIdQNY37KiPe6LGxlsE-C5FJLHwR9UNxTPAyf9-aoxMI1SRVC-dkYQr98HFszmx5r9XIYyc6aZ0q~8ZpzzpZC3KlKZWSJ43SSDkVjBnirm84Q7wtrwfZA-0PL1wkZ4vubJD54iOpdzx8teCNogoQ34WsrjbvAxRi9P0YhehnFV5YXvSJjNtR8NWIQ4~nfcbYNafB7h9Zy5f7oNa7clzGbDd3w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" >
                     </a>
                     <a href="https://www.kakaocorp.com/page/">
-                        <img class="btn-social-login" src="assets/icon-background-kakao.svg">
-                        <img class="btn-kakao" src="assets/icon-kakao.svg" style="width: 26px; height: 24px;flex-shrink: 0">
+                        <img class="btn-social-login" src="assets/image/icon-background-kakao.svg">
+                        <img class="btn-kakao" src="assets/image/icon-kakao.svg" style="width: 26px; height: 24px;flex-shrink: 0">
                     </a>
                 </div>
             </div>

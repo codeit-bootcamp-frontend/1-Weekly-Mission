@@ -3,9 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="assets/css/signup.css">
 </head>
-<body class="vsc-initialized flex-center">
+<body class="flex-center">
     <main>
         <!--== START of MAIN-SECTION ==-->
         <section class="main__container">
@@ -14,7 +14,7 @@
                 <div class="container-main flex-center">
                     <!-- main logo section -->
                     <a href ="./">
-                        <img id="icon-logo" src="assets/logo.svg">
+                        <img id="icon-logo" src="assets/image/logo.svg">
                     </a>
                     <div class="div-intent-signup">
                         <h4 class="txt1 default-font">
@@ -33,27 +33,27 @@
                         <label class="label-signin" for="email">
                             이메일
                         </label>
-                        <input class="input email default-font flex-center" name="email">
+                        <input id="email" class="input email default-font flex-center" name="email" type="email">
                     </div>
                     <!-- input: password -->
                     <div class="div-input">
                         <label class="label-signin" for="password">
                             비밀번호
                         </label>
-                        <input class="input password default-font flex-center" name="password" type="password">
+                        <input id = "password" class="input password default-font flex-center" name="password" type="password">
                     </div>
                     <!-- input: check-password -->
                     <div class="div-input">
                         <label class="label-signin" for="check-password">
                             비밀번호 확인
                         </label>
-                        <input class="input check-password default-font flex-center" name="check-password" type="password">
+                        <input id="check-password" class="input check-password default-font flex-center" name="check-password" type="password">
                     </div>
                 </div>
                  <!-- sign-up button -->
-                <a class ="btn-signup flex-center default-font" href="#">
+                <button class ="btn-signup flex-center default-font" href="#">
                     회원가입
-                </a>
+                </button>
             </form>
         
             <!-- social sign-up -->
@@ -61,12 +61,12 @@
                 <h4 class="txt-social-login default-font">다른 방식으로 가입하기</h4>
                 <div id="content">
                     <a href="https://www.google.com/">
-                        <img class="btn-social-login" src="assets/icon-background-google.svg">
+                        <img class="btn-social-login" src="assets/image/icon-background-google.svg">
                         <img class="btn-google" src="https://s3-alpha-sig.figma.com/img/a92e/9426/c3a9be9cb365010056fa7aa9cc9f05a2?Expires=1696204800&Signature=Jg2awu1Jn82YPhissAdPhItTICC0C3gb-zfe8nozbGgToygGasbBZCfpJbFmAQOOMROp91VJySP-kVE0ix0D1HF2dj4JUMbi6fyXLXQCANzaZ7nebXgLDPWtnNuJrg6ifuN34Kpw43TttpBClCQsrrgkO0lMd7047nYj5cF9eDS7~NacJNMngHtXNKcK59w80teFdmmPtmac5XfSpIMLpq7F6z9b9oSxNVrIF1-a-L9F1sLINV8S3nSClM6t6EHu6AyYjRG3HW5cn2GHcmu0MGEL-QtR0L~rEAjTUmlhgWfRxsgKpZa8cddamuAZwuLwcARlciaoOP3uDrXezeRyYw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" >
                     </a>
                     <a href="https://www.kakaocorp.com/page/">
-                        <img class="btn-social-login" src="assets/icon-background-kakao.svg">
-                        <img class="btn-kakao" src="assets/icon-kakao.svg" style="width: 26px; height: 24px;flex-shrink: 0">
+                        <img class="btn-social-login" src="assets/image/icon-background-kakao.svg">
+                        <img class="btn-kakao" src="assets/image/icon-kakao.svg" style="width: 26px; height: 24px;flex-shrink: 0">
                     </a>
                 </div>
             </div>

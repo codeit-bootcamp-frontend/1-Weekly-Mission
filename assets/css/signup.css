@@ -1,9 +1,12 @@
-
 /* -- default setting -- */
 * {
     box-sizing:border-box;
     margin:0;
     padding:0;
+    font-family:Pretendard;
+}
+
+body {
     font-family:Pretendard;
 }
 
@@ -25,59 +28,59 @@
     text-decoration: none;
 }
 
-.flex-center{
+.flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-body{
+body {
     width: 100%;
     height: 100%;
     padding: 238px 0px 252px 0px;
 }
 
 /* -- main -- */
-.container-main{
+.container-main {
     flex-direction: column;
     gap:16px;
 }
 
-#icon-logo{
+#icon-logo {
     width: 210.583px;
     height: 38px;
 }
 
-.div-intent-signup{
+.div-intent-signup {
     display: flex;
     gap:8px;
 }
 
-.txt1{
+.txt1 {
     color: var(--color-black);
     line-height: 24px; /* 150% */    
 }
 
-.intent-signup{
+.intent-signup {
     color: var(--color-primary);
     font-weight: 600;
     text-decoration: underline;
 }
 
 /* -- sign-up form -- */
-.signup-form{
+.signup-form {
     display: flex;
     flex-direction: column;
     gap:30px;
 }
 
-.div-input{
+.div-input {
     display: flex;
     flex-direction:column;
     gap:12px;
 }
 
-.input{
+.input {
     width: 400px;
     padding: 18px 15px;
     border-radius: 8px;
@@ -87,22 +90,22 @@ body{
     line-height: 24px; /* 150% */
 }
 
-.input:focus{
+.input:focus {
     border: 1px solid var(--color-primary);
     background: var(--color-white);
 }
 
-.input:focus-visible{
+.input:focus-visible {
     outline: none;
 }
 
-.email, .password{
+.email, .password {
     margin-bottom:24px;
 }
 
 
 /* -- sign-up btn -- */
-.btn-signup{
+.btn-signup {
     width: 400px;
     padding: 16px 20px;
     gap: 10px;
@@ -111,11 +114,12 @@ body{
     font-weight: 600;
     margin-bottom:32px;
     border-radius: 8px;
+    border: none;
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
 }
     
 /* -- social login -- */
-.container-social-login{
+.container-social-login {
     width: 400px;
     padding: 12px 24px;
     justify-content: space-between;
@@ -124,25 +128,25 @@ body{
     background: var(--color-gray-4);
 }
 
-.txt-social-login{
+.txt-social-login {
     color: var(--color-gray-2);
     font-size: 14px;
 }
 
-#content{
+#content {
     display: flex;
     align-items: flex-start;
     gap: 16px;   
 }
 
-.btn-social-login{
+.btn-social-login {
     width: 42px;
     height: 42px;
     flex-shrink: 0;
     position:relative;
 }
 
-.btn-google, .btn-kakao{
+.btn-google, .btn-kakao {
     width: 22px;
     height: 22px;
     position:absolute;
@@ -151,22 +155,22 @@ body{
     z-index: 2;
 }
 
-@media (max-width:465px) {
+@media (max-width:465px)  {
 
-    .input{
+    .input {
         width:100%;
     }
-    .main__container{
+    .main__container {
         margin:auto 30;
     }
 
-    .btn-signup{
+    .btn-signup {
         width:100%;
     }
-    .container-social-login{
+    .container-social-login {
         width:100%;
     }
-    main{
+    main {
         width:100%;
     }
 }
