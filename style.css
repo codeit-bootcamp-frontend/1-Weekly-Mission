@@ -1,3 +1,5 @@
+@import "reset.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,13 +7,15 @@
 
 body {
   font-family:"pretendard","Arial", sans-serif;
-  background-color: #F0F6FF;
   word-break: keep-all;
   word-wrap: break;
 }
 
+.main {
+  background-color: #F0F6FF;
+}
 
-.top_header {
+nav {
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
@@ -44,38 +48,50 @@ body {
   font-weight: 400;
 }
 
-.header_container {
+header {
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding-top: 124px;
+  padding-top: 164px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-
-.header_texts > h1 {
-  font-size: 64px;
-  font-weight: 700;
   text-align: center;
 }
 
-.header_texts .accent  {
+
+.header_wrapper > h1 {
+  width: 708px;
+  font-size: 64px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 80px;
+}
+
+.header_wrapper .accent  {
   background-image: linear-gradient(91deg, rgba(109, 106, 254, 1), rgba(255, 159, 159, 1));
   background-clip:text;
   -webkit-background-clip:text;
   color: transparent;
 }
 
-#main_image {
-  height: auto;
-  padding: 0 20%;
-
+.main_bg_image {
+  background-image: url(./images/_img.png.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 1200px;
+  height: 500px;
 }
 
+#main_image {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  display: block;
+}
 
-.header_texts > a {
+.header_wrapper > a {
   width: 350px;
   text-align: center;
   padding: 16px 20px;
@@ -94,48 +110,57 @@ a:hover {
   cursor: pointer;
 }
 
-.section {
+section {
   background-color: #ffffff;
   width: 100%;
-  padding: 5.2vmin 0 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .wrapper_outer {
   width: 998px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 51px;
-  padding: 50px 0;
+  height: 450px;
+  margin: 50px auto;
+  display: grid;
+  grid-template: repeat(2, auto) / repeat(2,1fr);
+  grid-template-areas: 
+  "title_area inner_image"
+  "subtitle_area inner_image";
+  gap: 10px 157px;
 }
 
-
-.wrapper_outer.search{
-  padding-bottom: 170px;
+.wrapper_outer.top {
+  margin-top: 120px;
 }
 
-.text_wrapper  {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+.wrapper_outer.reverse {
+  grid-template-areas: 
+  "inner_image title_area"
+  "inner_image subtitle_area";
 }
 
-.text_wrapper > h2 {
+.title {
+  width: 259px;
   font-size: 48px;
   text-wrap: balance;
   font-weight: 700;
   letter-spacing: -0.3px;
+  line-height: normal;
+  align-self: end;
+  grid-area: title_area;
 }
 
-.text_wrapper > p {
+.subtitle {
+  width: 257px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5em;
   color: #6b6b6b;
+  grid-area: subtitle_area;
+}
+
+.inner_image {
+  grid-area: inner_image;
 }
 
 #keyword_store {
@@ -143,7 +168,7 @@ a:hover {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-font-family: Pretendard;
+  font-family: Pretendard;
 }
 
 #keyword_manage {
@@ -168,10 +193,11 @@ font-family: Pretendard;
   -webkit-text-fill-color: transparent;
 }
 
-.footer {
+footer {
+  height: 160px;
   background-color: #111322;
   padding: 32px 0 64px;
-  /* margin-top: 170px; */
+  margin-top: 120px;
 }
 
 .wrapper_footer {
@@ -185,19 +211,20 @@ font-family: Pretendard;
 
 .copyright {
   color: #676767;
-  font-size: 16px;
+  font-size: 1rem;
   flex: 1 0 auto;
 }
 
 .policy_wrapper {
-  font-size: 16px;
+  font-size: 1rem;
   color: #cfcfcf;
   display: flex;
   gap: 30px;
   flex: 1 0 auto;
 }
 
-.policy_wrapper > a:visited {
+
+.policy_text {
   color: #cfcfcf;
 }
 
@@ -211,104 +238,228 @@ a {
   gap: 12px;
 }
 
-@media (max-width: 1000px) {
+/* 반응형 Tablet 사이즈 */
+@media (max-width: 1199px) {
+  nav {
+    padding: 40px 32px;
+  }
 
-  .wrapper_outer {
-    width: 100%;
+  header {
+    max-width: 698px;
     margin: 0 auto;
+    padding-top: 124px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 5vmin;
-    padding: 40px 0 42.9px;
-  }
-  .wrapper_outer.manage, .wrapper_outer.search {
-    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
   }
 
-  .wrapper_outer.search{
-    padding-bottom: 80.9px;
-  }
-
-  img, .text_wrapper {
-    padding: 0 4vw;
+  .main_bg_image {
+    width: 698px;
+    height: 343px;
   }
 
   #main_image {
     width: 100%;
     flex-shrink: 0;
-    padding: 0 4vw;
+    padding : 29px 23px 0;
   }
 
-  .text_wrapper {
-    padding: 0 4vw;
-    transition-duration: 0.05s;
+
+/* 이미지 크기 및 텍스트 크기를 어떻게 해야 자동적으로 늘어났다 줄게 할 수 있는지 모르겠습니다. ㅠㅠ */
+  .wrapper_outer {
+    margin: 50px auto;
+    gap: 10px 51px;
+    width: 698px;
+    height: 315px;
+    grid-template-columns: 262px 384px;
+    grid-template-rows: auto;
+  }
+
+  .wrapper_outer.reverse {
+    grid-template-columns: 384px 262px;
+    grid-template-rows: auto;
+  }
+
+  .inner_image {
+    height: 315px;
+    width: auto;
+
+  }
+  
+  .title {
+    width: 262px;
+  }
+  
+  .subtitle {
+    width: 262px;
+    align-self: start;
+  }
+}
+
+/* 반응형 mobile 사이즈 */
+@media (max-width: 767px) {
+
+  nav {
+    padding: 13px 32px;
+    height: 64px;
+    position: fixed;
+  }
+
+  .top_header_left {
+    min-width: 100px;
+    flex: 1 0 0;
+  }
+
+
+  .top_header_left > a {
+    height: 16px;
+  }
+  
+  #logo {
+    padding: 0;
+    height: 16px;
+  }
+  
+  .top_header_right > #login_button {
+    padding: 10px 16px;
+    font-weight: 400;
+    font-size: 0.875rem;
+  }
+
+
+  header {
+    margin: 0 auto;
+    padding: 91px 2rem 0;
+    width: 100%;
+  }
+
+  .header_wrapper > h1 {
+    width: 236px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 42px;
+  }
+  
+  .header_wrapper > a {
+    width: 200px;
+    padding: 10px 16px;
+    margin: 24px auto;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: 0;
+    border-radius: 8px;
+    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  }
+
+  section {
+    padding: 0px 32px;
+  }
+
+  .wrapper_outer {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 0;
+    grid-template-columns: none;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: 
+    "title"
+    "inner_image"
+    "subtitle";
+    padding:40px 0 36px;
+    margin: 0;
+  }
+
+  .wrapper_outer.top {
+    margin-top: 0;
+  }
+
+  .wrapper_outer.reverse {
+    width: 100%;
+    height: auto;
+    grid-template-columns: none;
+    grid-template-rows: repeat(3,auto);
+    grid-template-areas:
+    "title"
+    "inner_image"
+    "subtitle";
+    gap: 0;
+  }
+
+  /* border-radius: 25; 처리하면 윗 부분은 안 깎이고 애꿎은 아래만 둥글게 깎이는데 어떻게 하면 좋을까요? */
+  #main_image {
+    width: 100%;
+    flex-shrink: 0;
+    padding: 0;
   }
 
   .inner_image {
     width: 100%;
-    flex-shrink: 0;
-    padding: 0 4vw;
-    transition-duration: 1s;
+    height: auto;
+    grid-area: inner_image;
   }
 
-  .text_wrapper > h2 {
-    font-size: 5vmin;
+  .title {
+    font-size: 1.5rem;
+    width: 100%;
+    grid-area: title;
+    margin-bottom: 0.625rem;
   }
 
-  .text_wrapper > p {
-    font-size: 3vmin;
+  .subtitle {
+    font-size: .9375rem;
+    width: 100%;
+    order: 3;
+    grid-area: subtitle;
+    margin-top: 1.5rem;
   }
 
-  .header_texts > h1 {
-    font-size: 8vmin;
-  }
 
-  .top_header {
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px 3vw;
-  }
 
-  #logo {
-    height: 5vw;
-  }
-
-  .header_texts > a {
-    font-size: 3vmin;
-    width: 70%;
-  }
-  
-  .top_header_right > a {
-    font-size: 3vmin;
-  }
-
-  .top_header_left {
-    min-width: 50px;
-  }
-
-  .footer {
-    padding: 32px 0 64px;
+  footer {
+    margin: 40px 0 0;
+    padding: 2rem 0 2rem;
+    height: auto;
   }
   
   .wrapper_footer {
     width: 100%;
-    padding: 0 3vmin;
+    padding: 0 3rem;
     margin: 0 auto;
-    display: flex;
+    display: grid;
     justify-content: space-between;
+    grid-template: 
+    repeat(2, 1fr)/
+    repeat(2, 1fr);
+    grid-template-areas: 
+    "privacy icons"
+    "copyright .";
+    gap:60px 0;
+
   }
   
   .copyright {
-    font-size: 1vmin;
+    font-size: 1rem;
+    grid-area: copyright;
   }
   
   .policy_wrapper {
-    font-size: 1.5vmin;
-    gap: 2vmin;
+    align-items: center;
+    font-size: 1rem;
+    gap: 30px;
+    grid-area: privacy;
   }
   
   .icons {
-    gap: 2vmin;
+    gap: .75rem;
+    grid-area: icons;
+    justify-content: flex-end;
+  }
+
+  .policy_text {
+    font-size: 1rem;
   }
 }

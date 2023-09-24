@@ -1,3 +1,5 @@
+@import "reset.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,18 +21,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 
-.header {
+header {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.header > h6 {
-  font-size: 16px;
+header > h6 {
+  font-size: 1rem;
   font-weight: 400;
   line-height: 24px;
+  text-align: center;
 }
 
 #login {
@@ -53,14 +57,14 @@ form {
 }
 
 .label {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
 }
 
 .input_box {
   width: 100%;
   padding: 18px 15px;
-  margin: 12px 0 6px;
+  margin: 12px 0 0;
   border: 1px solid #CCD5E3;
   border-radius: 8px;
 }
@@ -87,9 +91,10 @@ form {
   font-size: 14px;
   font-weight: 400;
   color: #FF5B56;
+  margin-top: .375rem;
 }
 
-.footer {
+footer {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -124,4 +129,24 @@ form {
   width: 100px;
   display: flex;
   gap: 15px;
+}
+
+
+@media (max-width: 767px){
+  
+  .inner_wrapper {
+    width: auto !important; /*override the width below*/
+    width: 100%;
+    max-width: 400px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .outer_wrapper {
+    margin: 121px 0 232px;
+  }
 }
