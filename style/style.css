@@ -75,7 +75,6 @@
 
   .LinkButton{
     color: var(--grey-light, #F5F5F5);
-  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -138,7 +137,6 @@
 
   .content-detail{
     color: #6B6B6B;
-    font-family: Pretendard;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -218,7 +216,6 @@
 
  .Content-title-big{
   text-align: center;
-  font-family: Pretendard;
   font-size: 64px;
   font-style: normal;
   font-weight: 700;
@@ -317,7 +314,6 @@
 
   .Content-title{
     text-align: center;
-    font-family: Pretendard;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -326,7 +322,6 @@
   
    .Content-title-small{
     align-self: stretch;
-    font-family: Pretendard;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
