@@ -76,8 +76,11 @@ label {
   border-radius: 0.5rem;
   border: 1px solid var(--linkbrary-gray-20);
   background: var(--linkbrary-white);
-}
 
+  @media (max-width: 767px) and (min-width: 375px) {
+    width: 380px;
+  }
+}
 .authInput:focus {
   border-radius: 0.5rem;
   border: 1px solid blue;
@@ -98,6 +101,10 @@ label {
     --gra-purpleblue-to-skyblue,
     linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
   );
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    width: 400px;
+  }
 }
 
 .socialWrapper {
@@ -110,6 +117,10 @@ label {
   border-radius: 0.5rem;
   border: 1px solid var(--linkbrary-gray-20);
   background: var(--linkbrary-gray-10);
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    width: 400px;
+  }
 }
 
 .socialIconWrapper {

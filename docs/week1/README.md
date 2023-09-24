@@ -1,6 +1,6 @@
 ## 1주차 위클리 미션
 
-https://seulheeweek1.netlify.app
+https://seullinkbrary.netlify.app/
 
 `기본 체크리스트`
 
