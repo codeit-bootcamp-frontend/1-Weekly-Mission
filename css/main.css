@@ -278,7 +278,7 @@ footer > .contentContainer {
   }
 
   section {
-    width: 100vw;
+    width: 100%;
     flex-direction: column;
     box-sizing: border-box;
   }
@@ -358,11 +358,17 @@ footer > .contentContainer {
 
   footer .contentContainer {
     height: 9.6rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   #leftItem {
+    text-align: start;
     order: 3;
     align-self: flex-end;
+  }
+
+  #snsItemContainer {
+    justify-content: flex-end;
   }
 }
