@@ -10,13 +10,12 @@
 
 html, body {
   font-size: 62.5%;
-  background: var(--linkbrary-gray-10);
+  background: var(--linkbrary-bg, #F0F6FF);
   color: var(--black);
 }
 
 .root {
   height: 100vh;
-  background: var(--linkbrary-bg, #F0F6FF);
 }
 
 header {
@@ -198,4 +197,16 @@ align-items: center;
 flex-shrink: 0;
 width: 22px;
 height: 22px;
+}
+
+@media (max-width: 1199px) {
+  .login{
+    padding: 20rem 3.2rem 17rem 3.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .login{
+    padding: 12rem 3.2rem 12rem 3.2rem;
+  }
 }
