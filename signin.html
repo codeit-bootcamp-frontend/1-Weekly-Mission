@@ -13,44 +13,44 @@
   </head>
   <body>
     <form>
-      <header>
-        <a href="index.html" class="title-logo"
-          ><img src="images/logo.svg"
-        /></a>
-        <div class="title-subtext">
-          이미 회원이신가요? <a href="signup.html">로그인하기</a>
+        <header>
+          <a href="index.html" class="title-logo"
+            ><img src="images/logo.svg"
+          /></a>
+          <div class="title-subtext">
+            이미 회원이신가요? <a href="signup.html">로그인하기</a>
+          </div>
+        </header>
+        <label for="sign-up"
+          >이메일<br>
+          <input id="sign-up" type="email" />
+        </label>
+        <label for="password"
+          >비밀번호<br>
+          <div class="helper">
+            <input id="password" type="password" />
+            <div class="input-eye-off"><img src="./images/signin/eye-off.svg"/></div>
+          </div>
+        </label>
+        <label for="password-re"
+          >비밀번호 확인<br>
+          <div class="helper">
+            <input id="password-re" type="password" />
+            <div class="input-eye-off"><img src="./images/signin/eye-off.svg"/></div>
+          </div>
+        </label>
+        <button onclick="location.href='./signin.html'">회원가입</button> 
+        <div class="another-signup">
+          <div class="another-signup-text">다른 방식으로 가입하기</div>
+          <div class="another-signup-logo">
+            <a href="https://www.google.com/" target="_blank">
+              <img src="./images/signin/Component 2.png"  alt="google-logo" />
+            </a>
+            <a href="https://www.kakaocorp.com/page/" target="_blank">
+              <img src="./images/signin/Component 3.png"  alt="kakao-logo" />
+            </a>
+          </div>
         </div>
-      </header>
-      <label for="sign-up"
-        >이메일<br>
-        <input id="sign-up" type="email" />
-      </label>
-      <label for="password"
-        >비밀번호<br>
-        <div class="helper">
-          <input id="password" type="password" />
-          <div class="input-eye-off"><img src="./images/signin/eye-off.svg"/></div>
-        </div>
-      </label>
-      <label for="password-re"
-        >비밀번호 확인<br>
-        <div class="helper">
-          <input id="password-re" type="password" />
-          <div class="input-eye-off"><img src="./images/signin/eye-off.svg"/></div>
-        </div>
-      </label>
-      <button onclick="location.href='./signin.html'">회원가입</button> 
-      <div class="another-signup">
-        <div class="another-signup-text">다른 방식으로 가입하기</div>
-        <div class="another-signup-logo">
-          <a href="https://www.google.com/" target="_blank">
-            <img src="./images/signin/Component 2.png"  alt="google-logo" />
-          </a>
-          <a href="https://www.kakaocorp.com/page/" target="_blank">
-            <img src="./images/signin/Component 3.png"  alt="kakao-logo" />
-          </a>
-        </div>
-      </div>
     </form>
   </body>
 </html>

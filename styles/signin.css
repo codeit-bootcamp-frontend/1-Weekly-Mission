@@ -15,11 +15,10 @@ body {
 }
 
 form {
+  width:400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 25rem;
-  height: 33.125rem;
   margin: 14.875rem 0 7.25rem 0;
 }
 
@@ -27,6 +26,8 @@ header {
   display: flex;
   flex-direction: column;
   margin-bottom: 1.875rem;
+  align-items: center;;
+  width:100%;
 }
 
 .title-logo{
@@ -48,6 +49,7 @@ label {
   flex-direction: column;
   align-items: flex-start;
   border-radius: 0.5rem;
+  width:100%;
 }
 
 button {
@@ -72,13 +74,13 @@ button {
 
 input {
   display: flex;
-  width: 25rem;
   padding: 1.125rem 0.9375rem;
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
   border: 0.0625rem solid #ccd5e3;
   background: #fff;
+  width:100%;
 }
 
 input:focus {
@@ -94,6 +96,7 @@ input:focus {
   align-items:center;
   position: relative;
   margin: 0.75rem 0 1.5rem 0;
+  width: 100%;
 }
 
 .input-eye-off{
@@ -102,7 +105,6 @@ input:focus {
   display:flex;
   flex-direction: row;
   justify-content: center;
-
 }
 
 .another-signup {
@@ -128,4 +130,23 @@ input:focus {
 
 .another-signup-text {
   background-color: #e7effb;
+}
+
+/* 태블릿 사양 */
+/* @media (min-width: 768px) and (max-width: 1199px){
+} */
+
+/* 모바일 사양 */
+@media (min-width: 375px) and (max-width: 767px){
+  
+  form {
+    max-width: 400px;
+    margin: 120px 32px 0 32px;
+    width: 100%;
+  }
+  /* 모바일 사이즈에서 좌우로 여백 32px를 두고 내부 요소들이 모바일 사이즈에 맞게 함께 줄어들어야 할 것 같은데
+  개발자도구에서 확인하면 좌우여백 32px은 있지만 폼 안에 있는 요소들이 여백 밖으로 삐져나오고,
+  요소들 크기가 줄어들지도 않습니다..ㅠㅠ ..  */
+
+
 }
