@@ -43,13 +43,18 @@ footer {
   padding:1.2rem 2.4rem;
 }
 
-label {
+.label-div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.label-col {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-span {
+label {
   padding-bottom: 1.2rem;
   font-size: 1.4rem;
   font-style: normal;
@@ -137,9 +142,16 @@ button {
   right: 2rem;
 }
 
-.eyeimg1 {
+.eyeimg2 {
   position: absolute;
-  bottom: 15rem;
+  bottom: 4rem;
   right: 2rem;
 }
 
+span {
+  padding-bottom: 1.2rem;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
