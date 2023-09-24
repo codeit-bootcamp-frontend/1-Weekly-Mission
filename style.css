@@ -5,11 +5,12 @@
 }
 
 body {
-  background: #F0F6FF;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  background: #F0F6FF;
 }
 
 button {
@@ -23,11 +24,19 @@ button {
   font-weight: 600;
 }
 
+.new-line {
+  display: block;
+}
+
 header {
-  background: #F0F6FF;
   position: sticky;
   top: 0;
   z-index: 2;
+  width: 100%;
+  background: #F0F6FF;
+}
+
+.header-container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -47,30 +56,37 @@ header {
   text-decoration: none;
 }
 
+main {
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
 #overview {
   display: flex;
-  width: 1200px;
-  margin: 70px auto 0px;
+  padding: 39px 0 0;
   flex-direction: column;
   align-items: center;
   gap: 40px;
   text-align: center;
-  
-  overflow: hidden;
-}
-
-#overview p {
-  color: #000;
   font-size: 64px;
   font-weight: 700;
   line-height: 80px;
+
+  overflow: hidden;
+  background: #F0F6FF;
 }
 
-#overview span {
+#overview-content {
+  color: #000;
+}
+
+#overview-division {
+  display: flex;
+  gap: 25px;
+}
+
+#overview .highlight {
   text-align: center;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 80px; /* 125% */
 
   background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
   background-clip: text; 
@@ -87,13 +103,15 @@ header {
   gap: 10px;
 }
 
-#overview img {
+#overview-img {
   position: relative;
   top: 50px;
+  z-index: 0;
+}
 
+#overview img {
   display: flex;
-  width: 1118px;
-  height: 659px;
+  width: 1200px;
   flex-shrink: 0;
 
   border-radius: 25px;
@@ -101,18 +119,20 @@ header {
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 }
 
-#content-save {
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding: 50px 0;
   display: flex;
-  padding: 120px 0 50px;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
   gap: 157px;
 }
 
 .text-content {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .image-content {
@@ -126,6 +146,10 @@ header {
   align-items: center;
 }
 
+#content-save {
+  padding-top: 80px;
+}
+
 #content-save img {
   width: 244px;
   height: 239px;
@@ -133,7 +157,7 @@ header {
   border-radius: 11px;
 }
 
-#content-save span {
+#content-save .highlight {
   background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -144,7 +168,6 @@ header {
   font-size: 48px;
   font-weight: 700;
   letter-spacing: -0.3px;
-  background-color: #FFFFFF;
 }
 
 .sub-title {
@@ -152,16 +175,6 @@ header {
   font-size: 16px;
   font-weight: 500;
   line-height: 150%; /* 24px */
-  background-color: #FFFFFF;
-}
-
-#content-manage {
-  display: flex;
-  padding: 50px;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  gap: 157px;
 }
 
 #content-manage img {
@@ -170,7 +183,7 @@ header {
   flex-shrink: 0;
 }
 
-#content-manage span {
+#content-manage .highlight {
   background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -179,15 +192,9 @@ header {
 
 #content-sharing {
   position: relative;
-  display: flex;
-  padding: 50px;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  gap: 157px;
 }
 
-#content-sharing span {
+#content-sharing .highlight {
   background: linear-gradient(99deg, #6D7CCD 29.76%, rgba(82, 136, 133, 0.22) 52.69%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -196,37 +203,19 @@ header {
 
 #content-sharing .text-content {
   z-index: 0;
-  background-color: #FFFFFF;
 }
 
 #content-sharing .image-content {
   z-index: 0;
-  background-color: #FFFFFF;
   position: relative;
   width: 570px;
   height: 469px;
 }
 
-#content-sharing-img1 {
-  z-index: -1;
-  position: absolute;
-  top: -63px;
-  left: -178px;
-  bottom: -78px;
-  right: -206px;
-  width: 934px;
-  height: 591px;
-  flex-shrink: 0;
-}
-
-#content-sharing-img2 {
+#content-sharing-img {
   z-index: 1;
-  position: absolute;
-  top: 127px;
-  left: 77px;
-  width: 416px;
-  height: 271px;
-  flex-shrink: 0;
+  width: 385px;
+  object-fit: cover;
   background: rgba(0, 0, 0, 0);
 }
 
@@ -242,37 +231,26 @@ header {
 }
 
 #content-search {
-  display: flex;
-  padding: 50px;
-  justify-content: center;
-  align-items: center;
-  gap: 157px;
-  background-color: #FFFFFF;
+  padding-bottom: 120px;
   position: relative;
 }
 
 #content-search .image-content {
   position: relative;
-  width: 550px;
-  height: 450px;
+  width: 385px;
+  height: 315px;
   border-radius: 15px;
   background: #F0F6FF;
   overflow: hidden;
 }
 
 #content-search-img {
-  position: absolute;
-  top: 55px;
-  left: 60px;
-  width: 619px;
-  height: 584px;
-  flex-shrink: 0;
   border-radius: 15px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 48.72%, #000 128.17%);
-  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+  width: 385px;
+  height: 315px;
 }
 
-#contents-05 span {
+#content-search .highlight {
   background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -90.84%, #68E8F9 107.18%));
   background-clip: text;
   -webkit-background-clip: text;
@@ -280,9 +258,7 @@ header {
 }
 
 footer {
-  padding-top: 120px;
-  background: #FFFFFF;
-  
+  width: 100%;
   text-align: center;
   font-family: Arial;
   font-size: 16px;
@@ -291,19 +267,20 @@ footer {
 
 #container {
   background: var(--the-julge-black, #111322);
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    'c i l';
   height: 160px;
   padding: 32px 104px 64px;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
-  align-self: stretch;
 }
 
-#footer-copylight {
+#footer-copyright {
   color: #676767;
   background: var(--the-julge-black, #111322);
+  grid-area: c;
 }
 
 #footer-information {
@@ -311,6 +288,7 @@ footer {
   display: flex;
   justify-content: flex-start;
   gap: 30px;
+  grid-row: i;
 }
 
 #footer-information p {
@@ -319,6 +297,7 @@ footer {
 }
 
 #footer-link {
+  grid-area: l;
   display: flex;
   gap: 12px;
   background: var(--the-julge-black, #111322);
