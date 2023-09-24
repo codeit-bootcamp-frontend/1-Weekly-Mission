@@ -3,8 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   background: #F0F6FF;
-  font-family: Pretendard;
-  font-style: normal;
 }
 
 header {
@@ -44,7 +42,6 @@ header button {
   color: var(--grey-light, #F5F5F5);
   font-size: 18px;
   font-weight: 600;
-  line-height: normal;
 }
 
 #overview {
@@ -93,7 +90,6 @@ header button {
   color: var(--grey-light, #F5F5F5);
   font-size: 18px;
   font-weight: 600;
-  line-height: normal;
 }
 
 #overview img {
@@ -151,16 +147,13 @@ header button {
 .title {
   font-size: 48px;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -0.3px;
   background-color: #FFFFFF;
 }
 
-.subtitle {
+.sub-title {
   color: #6B6B6B;
-  font-family: Pretendard;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 24px */
   background-color: #FFFFFF;
@@ -297,10 +290,7 @@ footer {
   text-align: center;
   font-family: Arial;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  
+  font-weight: 400;  
 }
 
 #container {
@@ -315,24 +305,24 @@ footer {
   align-self: stretch;
 }
 
-#footer1 {
+#footer-copylight {
   color: #676767;
   background: var(--the-julge-black, #111322);
 }
 
-#footer2 {
+#footer-information {
   background: var(--the-julge-black, #111322);
   display: flex;
   justify-content: flex-start;
   gap: 30px;
 }
 
-#footer2 p {
+#footer-information p {
   color: #CFCFCF;
   background: var(--the-julge-black, #111322);
 }
 
-#footer3 {
+#footer-link {
   display: flex;
   gap: 12px;
   background: var(--the-julge-black, #111322);
@@ -342,5 +332,8 @@ footer {
   width: 20px;
   height: 20px;
   background: var(--the-julge-black, #111322);
-  
+}
+
+.signup-button {
+  text-decoration: none;
 }
