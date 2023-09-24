@@ -190,7 +190,8 @@ footer .footer-links a {
 }
 
 /* Mobile */
-@media (max-width: 767px) {
+@media (min-width: 375px) and 
+(max-width: 767px) {
   /* Header */
   .gnb {
     padding: 13px 32px;
