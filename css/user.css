@@ -146,6 +146,7 @@ header > .userContainer {
   .inputBoxContainer {
     margin: 3rem auto 3.2rem;
     width: 100%;
+    max-width: 40rem;
     box-sizing: border-box;
   }
 
@@ -161,6 +162,7 @@ header > .userContainer {
 
   .inputBoxContainer .loginBtn {
     width: 100%;
+    max-width: 40rem;
   }
 
   #socialLogin {
