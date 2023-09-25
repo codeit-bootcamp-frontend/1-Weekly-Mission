@@ -97,6 +97,15 @@ html {
     background-image: url('/asset/images/eye-on.svg');
 }
 
+.null_error_message {
+    font-size: 1.4rem;
+    color: var(--error)
+}
+
+.null_error_border {
+    border: 0.1rem solid var(--error);
+}
+
 .sign_form__btn {
     margin-top: 0.6rem;
     width: 100%;
