@@ -1,16 +1,16 @@
 body {
-    background-color: var(--grayF0);
+  background-color: var(--grayF0);
 }
 
 main {
-    display: flex;
-    padding: 238px 0px 252px 0px;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  padding: 238px 0px 252px 0px;
+  flex-direction: column;
+  align-items: center;
 }
 
 section {
-    width: 400px;
+  width: 400px;
 }
 
 form {
@@ -23,25 +23,25 @@ label {
 }
 
 input {
-    position: relative;
-    width: 100%;
-    padding: 18px 15px;
-    border: 1px solid gray;
-    margin-top: 12px;
-    border-radius: 8px;
-    font-size: 1.6rem;
+  position: relative;
+  width: 100%;
+  padding: 18px 15px;
+  border: 1px solid gray;
+  margin-top: 12px;
+  border-radius: 8px;
+  font-size: 1.6rem;
 }
 
 input:focus {
-    border: 1px solid var(--primary);
+  border: 1px solid var(--primary);
 }
 
 /* title */
 .title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .logo img {
@@ -50,13 +50,13 @@ input:focus {
 }
 
 .title .text {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .title .link {
-    color: var(--primary);
-    text-decoration: underline;
+  color: var(--primary);
+  text-decoration: underline;
 }
 
 .signin.text,
@@ -66,12 +66,12 @@ input:focus {
 
 /* input */
 .login.input {
-    width: 100%;
-    margin: 30px 0 32px 0;
+  width: 100%;
+  margin: 30px 0 32px 0;
 }
 
 .email {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 .email-input {
@@ -82,63 +82,63 @@ input:focus {
 }
 
 .password {
-    margin-top: 24px;
-    font-size: 1.4rem;
+  margin-top: 24px;
+  font-size: 1.4rem;
 }
 
 .password-input,
 .password-check-input {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    justify-content: flex-end;
-    margin-top: 24px;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: flex-end;
+  margin-top: 24px;
+  gap: 12px;
 }
 
 .password-input::after,
-.password-check-input::after{
-    content: url("../icon/eye-off.svg");
-    position: absolute;
-    bottom: 18px;
-    right: 15px;
+.password-check-input::after {
+  content: url("../icon/eye-off.svg");
+  position: absolute;
+  bottom: 18px;
+  right: 15px;
 }
 
 /* login */
 .login.button {
-    width: 100%;
-    margin-top: 30px;
-    padding: 16px 20px;
-    border: none;
-    background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
-    color: #fff;
-    border-radius: 8px;
-    font-size: 1.8rem;
+  width: 100%;
+  margin-top: 30px;
+  padding: 16px 20px;
+  border: none;
+  background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.8rem;
 }
 
 /* social login */
 .social.border {
-    display: flex;
-    padding: 1.2rem 2.4rem;
-    border: 1px solid var(--grayCC);
-    justify-content:space-between;
-    align-items: center;
-    border-radius: 8px;
+  display: flex;
+  padding: 1.2rem 2.4rem;
+  border: 1px solid var(--grayCC);
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
 }
 
-.social.text{
+.social.text {
   font-size: 1.4rem;
 }
 
 .social.button {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Tablet Size */
