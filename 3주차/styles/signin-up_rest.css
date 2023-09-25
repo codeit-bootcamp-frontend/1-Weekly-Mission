@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Pretendard-Regular', 'Pretendard', 'Noto Sans KR', 'sans-serif';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;                  /*크기보다 넘쳐도 다 보여주기*/
+  background: transparent;            /*기본 투명*/
+  color: inherit;                     /*어디로 부터 상속을 받는 건가요?  reset파일의 *로부터 상속되는건가요?*/
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;    /*appearance 속성들*/ /*웹 화면에 부드럽게 표현됨.*/
+  -moz-osx-font-smoothing: inherit;                       /*firefox 브라우저에서 적용하기 위함*/
+}
