@@ -3,6 +3,7 @@ body {
   width: 100%;
 }
 
+/* 헤더 */
 header {
   display: flex;
   position: sticky;
@@ -53,6 +54,7 @@ header,
   background: #f0f6ff;
 }
 
+/* 헤드라인 */
 .headline {
   display: flex;
   overflow: hidden;
@@ -62,6 +64,31 @@ header,
   justify-content: flex-end;
   align-items: center;
   gap: 40px;
+}
+
+.title {
+  text-align: center;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 125%;
+  word-break: keep-all;
+}
+
+.title-highlight {
+  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn.link {
+  display: flex;
+  width: 350px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .headline-image-container {
@@ -86,30 +113,7 @@ header,
   box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.08);
 }
 
-.title {
-  text-align: center;
-  font-size: 64px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 125%;
-}
-
-.title-highlight {
-  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.btn.link {
-  display: flex;
-  width: 350px;
-  padding: 16px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
+/* 콘텐츠 */
 .content-section {
   display: flex;
   justify-content: center;
@@ -158,6 +162,7 @@ header,
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 24px */
+  word-break: keep-all;
 }
 
 .content-image-container {
@@ -171,32 +176,9 @@ header,
   background: #f0f6ff;
 }
 
-.card-container {
-  position: relative;
-}
-
-.card-container.first {
-  left: 12px;
-}
-
-.card-container.third {
-  right: 12px;
-}
-
-.group-icon {
-  position: absolute;
-  left: 227px;
-  bottom: 4.68px;
-}
-
-.card-description {
-  width: 414px;
-  height: 270px;
-  flex-shrink: 0;
-}
-
-.content-image-container.second {
-  padding: 114px 68px 66px 68px;
+.content-image-container img {
+  width: 100%;
+  height: auto;
 }
 
 .content-title-highlight-second {
@@ -211,6 +193,10 @@ header,
   letter-spacing: -0.3px;
 }
 
+.content-description.second {
+  order: 1;
+}
+
 .content-title-highlight-third {
   background: linear-gradient(124deg, #6D7CCD 32.76%, rgba(82, 136, 133, 0.22) 55.69%);
   background-clip: text;
@@ -222,27 +208,14 @@ header,
   line-height: normal;
 }
 
-.content-image-container.share {
-  position: relative;
-  flex-shrink: 0;
-  border-radius: 25px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(images/image25.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 175%;
-  box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.08);
-}
-
-.codeit-screenshot-image {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
 .content-title-highlight-fourth {
   background: linear-gradient(271deg, #FE578F 4%, #68E8F9 31%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.content-description.fourth {
+  order: 1;
 }
 
 footer {
@@ -305,4 +278,211 @@ footer {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+}
+
+/* 모바일 */
+@media (min-width: 375px) and (max-width: 767px) {
+  /* 헤더 */
+  header {
+    padding: 13px 32px;
+  }
+
+  br {
+    display: none;
+  }
+
+  .logo {
+    width: 88.667px;
+    height: 16px;
+  }
+
+  .btn {
+    width: 80px;
+    padding: 10px 16px;
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  /* 헤드라인 */
+  .headline {
+    padding: 28px 32px 0;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 131.25%;
+    width: 80%;
+    word-break: keep-all;
+  }
+
+  .btn.link {
+    width: 200px;
+    padding: 10px 16px;
+  }
+
+  .headline-image-container {
+    width: 100%;
+    height: 17vh;
+  }
+
+  .headline-image {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    height: 178px;
+    flex-shrink: 0;
+  }
+
+  /* 콘텐츠 */
+  .content-section {
+    padding: 40px 32px 42px 33px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-section.top {
+    padding-top: 40px;
+    padding-bottom: 36px;
+  }
+
+  .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .content-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    width: 100%;
+  }
+
+  .content-image-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .content .content-title {
+    font-size: 24px;
+  }
+
+  .content-description-detail {
+    font-size: 15px;
+  }
+
+  .content-title-highlight-second {
+    font-size: 24px;
+  }
+
+  .content-description.second {
+    order: 0;
+  }
+
+
+  .content-title-highlight-third {
+    font-size: 24px;
+  }
+
+  .content-description.fourth {
+    order: 0;
+  }
+
+  /* footer */
+  footer {
+    padding-top: 40px;
+    height: 100%;
+  }
+
+  .footer-block {
+    display: flex;
+    height: 160px;
+    padding: 32px 32px 64px 32px;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  .footer-links {
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    flex-wrap: wrap;
+  }
+
+  .company-info {
+    order: 1;
+    margin-top: 60px;
+  }
+
+  .privacy-faq-link {
+    width: 181px;
+    align-items: flex-start;
+    gap: 30px;
+  }
+}
+
+/* 테블릿 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* 헤더 */
+  header {
+    padding: 20px 32px;
+  }
+
+  br {
+    display: none;
+  }
+
+  /* 헤드라인 */
+  .headline {
+    display: flex;
+    padding: 39px 250px 0;
+  }
+
+  .headline-image-container {
+    width: 698px;
+    height: 343px;
+  }
+
+  .headline-image {
+    width: 650px;
+    height: 383px;
+  }
+
+  /* 콘텐츠 */
+  .content-section {
+    display: flex;
+    padding: 80px 250px 50px 251px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-section-top {
+    padding-top: 80px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 51px;
+  }
+
+  .content-description {
+    display: flex;
+    width: 262px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .content-image-container {
+    width: 385px;
+    height: 315px;
+  }
 }

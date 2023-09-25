@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>회원가입 페이지</title>
-  <link rel="stylesheet" href="../reset.css">
+  <link rel="stylesheet" href="../../reset.css">
   <link rel="stylesheet" href="sign-style.css">
 </head>
 <body>
@@ -11,7 +12,7 @@
   <main>
     <div class="sign-container">
       <div class="sign-title">
-        <a href="../index.html">
+        <a href="../../index.html">
           <img class="logo" src="/images/logo.svg" alt="Linkbrary logo">
         </a>
         <h3>
@@ -23,29 +24,31 @@
       </div>
       <div class="sign-form-container">
         <form>
-          <label for="signin-email">이메일</label>
-          <input id="signin-email" name="email" type="email">
-        </form>
-        <form class="sign-password-form">
-          <label for="signin-password">비밀번호</label>
-          <input id="signin-password" name="password" type="password">
-          <div class="eye-off-icon">
-            <img class="eye-off" src="images/eye-off.svg" alt="eye-off">
+          <div class="sign-input">
+            <label for="signin-email">이메일</label>
+            <input id="signin-email" name="email" type="email">
           </div>
-        </form>
-        <form class="sign-password-form">
-          <label for="signin-password-repeat">비밀번호 확인</label>
-          <input id="signin-password-repeat" name="password" type="password">
-          <div class="eye-off-icon">
-            <img class="eye-off" src="images/eye-off.svg" alt="eye-off">
+          <div class="sign-input password">
+            <label for="signin-password">비밀번호</label>
+            <input id="signin-password" name="password" type="password">
+            <div class="eye-off-icon">
+              <img class="eye-off" src="images/eye-off.svg" alt="eye-off">
+            </div>
+          </div>
+          <div class="sign-input password">
+            <label for="signin-password-repeat">비밀번호 확인</label>
+            <input id="signin-password-repeat" name="password" type="password">
+            <div class="eye-off-icon">
+              <img class="eye-off" src="images/eye-off.svg" alt="eye-off">
+            </div>
           </div>
         </form>
       </div>
-      <a href="#">
+      <a class="sign-link-btn" href="#">
         <div class="btn login">회원가입</div>
       </a>
       <div class="social-login">
-        <h3 class="social-login-title">다른 방식으로 가입하기</h3>
+        <h4 class="social-login-title">다른 방식으로 가입하기</h4>
         <div class="social-icon">
           <a class="social-icon-link" href="https://www.google.com">
             <div class="social-icon-background google">
