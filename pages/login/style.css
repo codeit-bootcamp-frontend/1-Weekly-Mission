@@ -10,10 +10,10 @@ body{
     height: 100%;
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
     align-items: center;
     margin-top: 23.8rem;
 }
+
 
 /* header */
 .header-logo img{
@@ -73,16 +73,13 @@ form input{
     outline: none;
 }
 
-
-
-
-
 .btn{
     width: 100%;
     padding: 1.6rem 2rem;
     font-size: 1.8rem;
     font-weight: 600;
 }
+
 
 /* sns */
 .sns{
@@ -105,9 +102,23 @@ form input{
 .sns-icons{
     display: flex;
     gap:1.6rem;
-
 }
+
 .sns-icons img{
     width: 4.2rem;
 }
 
+/* 반응형 */
+/* Mobile */
+@media (max-width: 768px){
+    main{
+        width: 100%;
+        padding: 3.2rem;
+        max-width: 40rem;
+        min-width: 30rem;
+    }
+
+    form input{
+        width: 100%;
+    }
+}
