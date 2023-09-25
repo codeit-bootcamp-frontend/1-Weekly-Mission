@@ -3,11 +3,10 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-size: 4px;
+  word-break: keep-all;
 }
 
-html {
-  font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+:root {
   --primary: #6D6AFE;
   --LB-red: #FF5B56;
   --LB-black: #111322;
@@ -17,6 +16,11 @@ html {
   --LB-gray-20: #CCD5E3;
   --LB-gray-10: #E7EFFB;
   --LB-bg: #F0F6FF;
+}
+
+html {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 62.5%;
 }
 
 a {

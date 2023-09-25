@@ -1,0 +1,163 @@
+.background {
+  margin: 23.8rem auto;
+  background-color: var(--LB-bg);
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+  margin: 0 auto;
+  gap: 3.2rem;
+}
+
+.middle-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.label {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 1.2rem;  
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 1.8rem 1.5rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--LB-gray-20);
+  background-color: var(--LB-white);
+  color: var(--LB-gray-100);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.input:focus {
+  outline: 0.1rem solid var(--primary);
+}
+
+.eye-button {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-image: url(../public/icons/eye-off.png);
+}
+
+.eye-button:active {
+  background-image: url(../public/icons/eye-on.png);
+}
+
+.header-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.logo-img {
+  width: 21rem;
+  height: 3.8rem;
+}
+
+.header-logo .ask {
+  color: black;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.header-logo .sign-link {
+  text-decoration: underline;
+  color: var(--primary);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.sign-button {
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
+  color: #F5F5F5;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--LB-gray-20);
+  background-color: var(--LB-gray-10);
+}
+
+.sns-title {
+  color: var(--LB-gray-100);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.sns-links {
+  display: flex;
+  gap: 1.6rem;
+  list-style: none;
+}
+
+.footer .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.google {
+  background-image: url(../public/icons/google_background.png);
+}
+
+.google-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.kakao {
+  background-image: url(../public/icons/kakao_background.png);
+}
+
+.kakao-icon {
+  width: 2.6rem;
+  height: 2.4rem;
+}
+
+/*------------tablet------------*/
+@media (max-width: 1199px) {
+  .background {
+    margin-top: 20rem;
+  }
+}
+
+/*------------mobile------------*/
+@media (max-width: 767px) {
+  .background {
+    margin-top: 12rem;
+    padding-right: 3.2rem;
+    padding-left: 3.2rem;
+  }
+}
