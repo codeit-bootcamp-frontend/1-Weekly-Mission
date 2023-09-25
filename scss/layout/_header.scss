@@ -1,4 +1,4 @@
-@use "../abstracts" as *;
+@use "../utils" as *;
 
 .gnb {
     position: sticky;
@@ -8,6 +8,17 @@
     background-color: $linkbrary-bg;
 
     &__inner {
+        @include tablet {
+            max-width: 80rem;
+            padding-left: 3.2rem;
+            padding-right: 3.2rem;
+        }
+
+        @include mobile {
+            padding-top: 1.3rem;
+            padding-bottom: 1.3rem;
+        }
+
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -18,12 +29,20 @@
     }
 
     &__logo {
-        flex-shrink: 0;
+        @include mobile {
+            &-img {
+                width: 8.8rem;
+            }
+        }
+
         margin-right: 0.5rem;
     }
 
     &__signin {
-        flex-shrink: 0;
+        @include mobile {
+            width: 8rem;
+        }
+
         width: 12.8rem;
         margin-left: 0.5rem;
     }
