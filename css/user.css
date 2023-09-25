@@ -2,6 +2,12 @@ body {
   background: var(--background);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
 header {
   margin-top: 23.8rem;
   display: flex;
@@ -118,7 +124,7 @@ header > .userContainer {
 
 .socialBoxContainer > .boxTitle {
   color: var(--gray100);
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
@@ -131,4 +137,47 @@ header > .userContainer {
   width: 4.2rem;
   height: 4.2rem;
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  main {
+    width: 100%;
+    padding: 0 3.2rem;
+    align-items: center;
+  }
+
+  header {
+    margin-top: 12rem;
+  }
+
+  .inputBoxContainer {
+    margin: 3rem auto 3.2rem;
+    width: 100%;
+    max-width: 40rem;
+    box-sizing: border-box;
+  }
+
+  .inputContainer {
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  .inputBoxContainer .inputContainer input {
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  .inputBoxContainer .loginBtn {
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  #socialLogin {
+    margin-bottom: 23.2rem;
+  }
+
+  .socialBoxContainer {
+    width: 100%;
+    max-width: 40rem;
+  }
 }

@@ -60,6 +60,7 @@ section {
   display: flex;
   width: 99.8rem;
   justify-content: space-between;
+  padding-top: 7rem;
 }
 
 #topSection {
@@ -81,12 +82,20 @@ section {
   margin-bottom: 12rem;
 }
 
+.contentSection > .sectionSubTitleMobile {
+  display: none;
+}
+
 #mainTitle {
   color: #000;
   font-size: 6.4rem;
   font-weight: 700;
   line-height: 8rem;
   text-align: center;
+}
+
+#noDisplayInPcBr {
+  display: none;
 }
 
 #mainTitle > span {
@@ -204,4 +213,162 @@ footer > .contentContainer {
 
 #snsItemContainer img {
   cursor: pointer;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  main {
+    padding-top: 3rem;
+  }
+
+  section {
+    width: 69.8rem;
+  }
+
+  section img {
+    width: 38.5rem;
+    height: 31.5rem;
+  }
+
+  #topSection {
+    padding-top: 3.9rem;
+  }
+
+  #noDisplayInPcBr {
+    display: block;
+  }
+
+  #topSection img {
+    width: 69.8rem;
+    height: 34.3rem;
+  }
+
+  .sectionTitleContainer {
+    width: 26.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 1.3rem 3.2rem;
+    width: 100vw;
+  }
+
+  header img {
+    width: 8.8rem;
+    height: 1.6rem;
+  }
+
+  .defaultBtn {
+    padding: 1rem 1.6rem;
+    color: #f5f5f5;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+  }
+
+  #loginBtn {
+    width: 8rem;
+  }
+
+  #noDisplayInPcBr {
+    display: block;
+  }
+
+  main {
+    padding-top: 0;
+  }
+
+  section {
+    width: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .contentSection {
+    padding: 4rem 3.2rem;
+  }
+
+  section img {
+    width: 100%;
+    height: fit-content;
+  }
+
+  #topSection {
+    margin-top: 6.3rem;
+    padding: 2.8rem 3.2rem 0;
+    gap: 2.4rem;
+  }
+
+  #mainTitle {
+    font-size: 3.2rem;
+    line-height: 4.2rem;
+  }
+
+  #topSection img {
+    width: 100%;
+    height: fit-content;
+  }
+
+  #addBtn {
+    width: 20rem;
+  }
+
+  .contentSection > .sectionSubTitleMobile {
+    display: block;
+    font-size: 1.5rem;
+    width: 100%;
+    color: #6b6b6b;
+    font-weight: 500;
+    line-height: 2.3rem;
+    margin-top: 1.6rem;
+  }
+
+  .sectionTitleContainer {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .sectionTitleContainer br {
+    display: none;
+  }
+
+  .sectionTitleContainer .sectionTitle {
+    font-size: 2.4rem;
+  }
+
+  .sectionTitleContainer span {
+    font-size: 2.4rem;
+  }
+
+  .sectionTitleContainer .sectionSubTitle {
+    display: none;
+  }
+
+  #secondSection,
+  #fourthSection {
+    flex-direction: column-reverse;
+  }
+
+  #fourthSection {
+    margin-bottom: 4rem;
+  }
+
+  footer {
+    padding: 3.2rem;
+  }
+
+  footer .contentContainer {
+    height: 9.6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #leftItem {
+    text-align: start;
+    order: 3;
+    align-self: flex-end;
+  }
+
+  #snsItemContainer {
+    justify-content: flex-end;
+  }
 }
