@@ -39,7 +39,6 @@ a.header__logo img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
   padding: 7rem 36rem 0rem 36rem;
   gap: 4rem;
 }
