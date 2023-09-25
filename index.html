@@ -3,10 +3,43 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="styles/reset.css" />
-		<link rel="stylesheet" href="styles/global.css" />
-		<link rel="stylesheet" href="styles/variables.css" />
-		<link rel="stylesheet" href="styles/index.css" />
+
+		<!-- 오픈 그래프 _ 페이스북, 네이버 블로그, 카카오톡, 슬랙, 디스코드 -->
+		<meta property="og:image" content="https://postimg.cc/nXYPp8p8" />
+		<meta property="og:site_name" content="Linkbrary" />
+		<meta property="og:title" content="Linkbrary" />
+		<meta
+			property="og:description"
+			content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+		/>
+		<meta
+			property="og:url"
+			content="https://codeit-week-mission-linkbrary.netlify.app/"
+		/>
+		<meta property="og:locale" content="kr_KR" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image:width" content="1024" />
+		<meta property="og:image:height" content="768" />
+
+		<!-- 오픈 그래프 _ 트위터 -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Linkrary" />
+		<meta
+			name="twitter:description"
+			content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+		/>
+		<meta name="twitter:image" content="https://postimg.cc/nXYPp8p8" />
+		<meta
+			name="twitter:domain"
+			content="https://codeit-week-mission-linkbrary.netlify.app/"
+		/>
+		<meta name="twitter:site" content="@HaydenDevK" />
+		<meta name="twitter:creator" content="@HaydenDevK" />
+
+		<link rel="stylesheet" href="/styles/reset.css" />
+		<link rel="stylesheet" href="/styles/global.css" />
+		<link rel="stylesheet" href="/styles/variables.css" />
+		<link rel="stylesheet" href="/styles/index.css" />
 		<title>Linkbrary</title>
 	</head>
 	<body>
@@ -15,14 +48,14 @@
 			<nav class="header__nav" role="navigation">
 				<a class="header__logo" href="/#main">
 					<img
-						src="public/icons/logo.svg"
+						src="/public/icons/logo.svg"
 						alt="링크브러리 로고 이미지"
 						aria-label="링크브러리 로고"
 						width="133"
 					/>
 				</a>
 
-				<a class="header__login" href="signin.html">로그인</a>
+				<a class="header__login" href="/pages/signin.html">로그인</a>
 			</nav>
 		</header>
 
@@ -34,18 +67,18 @@
 			</h1>
 
 			<div class="main__link-container">
-				<a href="signup.html" class="main__link">링크 추가하기</a>
+				<a href="/pages/signup.html" class="main__link">링크 추가하기</a>
 			</div>
 			<div class="main__img-container">
-				<img src="public/images/main-img.png" alt="메인 이미지" width="1118" />
+				<img src="/public/images/main-img.png" alt="메인 이미지" width="1118" />
 			</div>
 		</main>
 
 		<!-- SAVE -->
 		<section class="section save__container">
 			<h2 class="section__title">
-				<span class="section__title save__title--gradient">원하는 링크</span>를
-				<br />
+				<span class="section__title save__title--gradient">원하는 링크</span
+				>를<br />
 				저장하세요
 			</h2>
 			<p class="section__description">
@@ -55,19 +88,19 @@
 			</p>
 			<div class="section__img-wrapper save__img-container">
 				<img
-					src="public/images/save-img-1.png"
+					src="/public/images/save-img-1.png"
 					alt="링크 저장 예시 이미지1"
 					width="244"
 				/>
 				<div class="save__img--icon">
 					<img
-						src="public/images/save-img-2.png"
+						src="/public/images/save-img-2.png"
 						alt="링크 저장 예시 이미지2"
 						width="244"
 					/>
 				</div>
 				<img
-					src="public/images/save-img-3.png"
+					src="/public/images/save-img-3.png"
 					alt="링크 저장 예시 이미지3"
 					width="244"
 				/>
@@ -78,7 +111,7 @@
 		<section class="section manage__container">
 			<div class="section__img-wrapper manage__img-wrapper">
 				<img
-					src="public/images/manage-img.png"
+					src="/public/images/manage-img.png"
 					alt="공유하기 기능 이미지"
 					width="414"
 				/>
@@ -100,13 +133,12 @@
 				<span class="section__title share__title--gradient">공유</span>해 보세요
 			</h2>
 			<p class="section__description">
-				여러 링크를 폴더에 담고 공유할 수<br />
-				있습니다. 가족, 친구, 동료들에게 쉽고<br />
+				여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고
 				빠르게 링크를 공유해 보세요.
 			</p>
-			<div class="section__img-wrapper share__img-wrapper">
+			<div class="section__img-wrapper share__img-container">
 				<img
-					src="public/images/share-img.png"
+					src="/public/images/share-img.png"
 					alt="공유하기 기능 이미지"
 					width="416"
 				/>
@@ -117,7 +149,7 @@
 		<section class="section search__container">
 			<div class="section__img-wrapper search__img-wrapper">
 				<img
-					src="public/images/search-img.png"
+					src="/public/images/search-img.png"
 					alt="검색 예시 이미지"
 					width="619"
 				/>
@@ -136,37 +168,53 @@
 			<div class="footer__wrapper">
 				<p class="copyright">©codeit - 2023</p>
 				<nav class="footer__menu-wrapper">
-					<a href="/privacy.html">Privacy Policy</a>
-					<a href="/faq.html">FAQ</a>
+					<a href="/pages/privacy.html">Privacy Policy</a>
+					<a href="/pages/faq.html">FAQ</a>
 				</nav>
 				<nav class="footer__sns-wrapper">
-					<a href="https://www.facebook.com/" target="_blank">
+					<a
+						href="https://www.facebook.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<img
-							src="public/icons/facebook.svg"
+							src="/public/icons/facebook.svg"
 							alt="페이스북 아이콘"
 							width="20"
 							height="20"
 						/>
 					</a>
-					<a href="https://twitter.com/" target="_blank">
+					<a
+						href="https://twitter.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<img
-							src="public/icons/twitter.svg"
+							src="/public/icons/twitter.svg"
 							alt="트위터 아이콘"
 							width="20"
 							height="20"
 						/>
 					</a>
-					<a href="https://www.youtube.com/" target="_blank">
+					<a
+						href="https://www.youtube.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<img
-							src="public/icons/youtube.svg"
+							src="/public/icons/youtube.svg"
 							alt="유튜브 아이콘"
 							width="20"
 							height="20"
 						/>
 					</a>
-					<a href="https://www.instagram.com/" target="_blank">
+					<a
+						href="https://www.instagram.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<img
-							src="public/icons/instagram.svg"
+							src="/public/icons/instagram.svg"
 							alt="인스타그램 아이콘"
 							width="20"
 							height="20"

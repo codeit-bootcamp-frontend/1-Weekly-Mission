@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/styles/reset.css" />
+		<link rel="stylesheet" href="/styles/global.css" />
+		<link rel="stylesheet" href="/styles/variables.css" />
+		<link rel="stylesheet" href="/styles/auth.css" />
+		<title>Linkbrary</title>
+	</head>
+	<body>
+		<!-- H1 (hidden) -->
+		<h1 class="h1__page-title--hidden">Linkbrary SignUp Page</h1>
+
+		<article id="signup__container" class="auth__container">
+			<!-- FORM -->
+			<form>
+				<fieldset>
+					<legend class="auth__legend-wrapper">
+						<a href="/pages/main.html" class="auth__logo">
+							<img
+								src="/public/icons/logo.svg"
+								width="210"
+								height="38"
+								alt="링크브러리 로고"
+							/>
+						</a>
+						<div class="auth__wrapper">
+							<span class="auth__link-text">이미 회원이신가요?</span>
+							<a href="/pages/signin.html" class="auth__link">로그인 하기</a>
+						</div>
+					</legend>
+					<div class="auth__input-wrapper">
+						<label>
+							<p class="auth__input-title">이메일</p>
+							<input class="auth__input" type="email" required />
+						</label>
+						<label>
+							<p class="auth__input-title">비밀번호</p>
+							<div class="auth__input-password">
+								<input class="auth__input" type="password" required />
+								<button type="button">
+									<img
+										src="/public/icons/password.svg"
+										width="16px"
+										height="16px"
+									/>
+								</button>
+							</div>
+						</label>
+						<label>
+							<p class="auth__input-title">비밀번호 확인</p>
+							<div class="auth__input-password">
+								<input class="auth__input" type="password" required />
+								<button type="button">
+									<img
+										src="/public/icons/password.svg"
+										width="16px"
+										height="16px"
+									/>
+								</button>
+							</div>
+						</label>
+					</div>
+					<button type="submit" class="auth__button">회원가입</button>
+				</fieldset>
+			</form>
+
+			<!-- SOCIAL -->
+			<section class="social-auth__wrapper">
+				<p class="social-auth__title">다른 방식으로 가입하기</p>
+				<ul class="social-auth__button-wrapper">
+					<li>
+						<a
+							href="https://www.google.com/"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="social-auth__button social-auth__button--google"
+						>
+							<img
+								src="/public/icons/google.svg"
+								width="22"
+								height="22"
+								alt="구글 로그인 아이콘"
+							/>
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://www.kakaocorp.com/page/"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="social-auth__button social-auth__button--kakao"
+						>
+							<img
+								src="/public/icons/kakao.svg"
+								width="26"
+								height="24"
+								alt="카카오 로그인 아이콘"
+							/>
+						</a>
+					</li>
+				</ul>
+			</section>
+		</article>
+	</body>
+</html>
