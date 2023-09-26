@@ -354,8 +354,6 @@
 
 	.footer__wrapper {
 		flex-wrap: wrap;
-		gap: 6rem 0;
-		height: auto;
 		padding: 3.2rem;
 	}
 
@@ -364,12 +362,13 @@
 		align-self: flex-end;
 	}
 
-	.footer__menu-wrapper {
+	.footer__menu-wrapper,
+	.footer__sns-wrapper {
 		flex-basis: 50%;
+		height: fit-content;
 	}
 
 	.footer__sns-wrapper {
-		flex-basis: 50%;
 		justify-content: end;
 	}
 }
