@@ -108,4 +108,10 @@
   .sns {
     grid-area: sns;
   }
+
+  /* 로그인, 회원가입 */
+  .sign-box {
+    width: calc(100% - 6.4rem);
+    max-width: 40rem;
+  }
 }
