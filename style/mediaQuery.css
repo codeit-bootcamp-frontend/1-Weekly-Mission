@@ -60,4 +60,52 @@
   .hero-image {
     width: 53.8rem;
   }
+
+  article {
+  }
+
+  section {
+    height: auto;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    row-gap: 1.6rem;
+    padding: 4rem 2rem;
+    white-space: wrap;
+  }
+
+  section:nth-child(odd),
+  section:nth-child(even) {
+    grid-template-areas:
+      "title"
+      "image"
+      "description";
+  }
+
+  .description {
+    font-size: 2.3rem;
+    line-height: 150%;
+    word-break: keep-all;
+  }
+
+  .footer-box {
+    display: grid;
+    grid-template-areas:
+      "privacy . sns"
+      ". . ."
+      "copyright . .";
+    padding: 2rem 5rem;
+  }
+
+  .copyright {
+    grid-area: copyright;
+  }
+
+  .footer-links {
+    grid-area: privacy;
+  }
+
+  .sns {
+    grid-area: sns;
+  }
 }
