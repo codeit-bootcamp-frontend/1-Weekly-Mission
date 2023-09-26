@@ -17,7 +17,7 @@
 
   <!--SNS PREVIEW-->
     <!-- Facebook -->
-    <meta property="og:image" content="./assets/img/bostonPublicLibrary.jpg">
+    <meta property="og:image" content="./assets/img/bostonPublicLibrary.webp">
     <meta property="og:title" content="Linkbrary">
     <meta
         property="og:description"
@@ -26,15 +26,15 @@
     <meta property="og:url" content="https://linkbrarymsy.netlify.app">
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="./assets/img/bostonPublicLibrary.jpg">
+    <meta name="twitter:card" content="thumbnail">
+    <meta name="twitter:image" content="./assets/img/bostonPublicLibrary.webp">
     <meta
         name="twitter:title"
         content="Linkbrary"
     >
     <meta
         name="twitter:description"
-        content="상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+        content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
 >
 
 
@@ -46,19 +46,21 @@
     <div class="header__container">
       <!--begin .header__container-->
       <a href="/">
-        <img id="logo" src="./assets/img/logo.svg" alt="logo">
+        <img class="logo" src="./assets/img/logo.svg" alt="logo">
       </a>
-      <a class="btn btn--signin" href="/signin.html">로그인</a>
+      <a class="cta cta--signin" href="/signin.html">로그인</a>
     </div> <!--end .header__container-->
   </header> <!--end header-->
 
   <div class="hero">
     <!--begin .hero-->
     <h1 class="hero__slogan">
-        <span class="hero__slogan--grad1">세상의 모든 정보</span>를<br>
-        쉽게 저장하고 <br class="break-t">관리해 보세요
+        <div class="hero__slogan__container">
+          <span class="hero__slogan--grad1">세상의 모든 정보</span>를<br>
+          쉽게 저장하고 관리해 보세요
+        </div>
     </h1>
-    <a class="btn btn--addLink" href="/signup.html">링크 추가하기</a>
+    <a class="cta cta--addLink" href="/signup.html">링크 추가하기</a>
     <img class="hero__img" src="./assets/img/heroImg.png" alt="hero image">
   </div> <!--end .hero-->
 

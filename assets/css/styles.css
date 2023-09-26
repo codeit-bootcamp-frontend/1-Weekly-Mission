@@ -24,11 +24,11 @@ header{
   margin: auto;
 }
 
-#logo{
+.logo{
   width: 8.3125rem;
 }
 
-.btn{
+.cta{
   display:block;
   text-align: center;
   padding: 1rem 1.25rem;
@@ -39,7 +39,7 @@ header{
   font-weight: 600;
 }
 
-.btn--signin{
+.cta--signin{
   width: 8rem;
   flex-shrink:0;
 }
@@ -53,19 +53,20 @@ header{
   background-color: var(--linkbrary-bg);
 }
 
+.hero__slogan__container{
+  margin: auto;
+}
+
 .hero__slogan {
   font-size: 4rem;
   font-weight: 700;
   line-height: 5rem;
 }
 
-.break-t {
-  display: none;
-}
-
 .hero__img{
+  display: block;
   max-width: 75rem;
-  margin:auto;
+  margin: auto;
 }
 
 .hero__slogan--grad1 {
@@ -74,7 +75,7 @@ header{
   -webkit-background-clip: text;
 }
 
-.btn--addLink{
+.cta--addLink{
   max-width: 21.875rem;
   margin: 2.5rem auto;
 }
@@ -222,8 +223,12 @@ footer{
     padding: 20px 32px;
   }
 
-  .break-t{
-    display:inline;
+  .hero__slogan__container{
+    width: 29.5rem;
+  }
+
+  .hero__slogan{
+    word-break: keep-all;
   }
 
   .hero__img{
@@ -247,20 +252,22 @@ footer{
   .header__container{
     padding: 0.8125rem  2rem;
   }
+
   .hero{
     padding: 1.75rem 2rem 0;
   }
 
+  .hero__slogan__container{
+    width: 14.75rem;
+  }
+
   .hero__slogan{
     font-size: 2rem;
-    line-height: 2.625rem;
+    line-height: 131.25%;
+    word-break: keep-all;
   }
 
-  .break-t{
-    display:inline;
-  }
-
-  .btn--addLink{
+  .cta--addLink{
     width: 12.5rem;
     padding: 0.62rem 1rem;
     font-size: 14px;
