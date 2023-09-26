@@ -1,42 +1,31 @@
-const $eyes = document.querySelectorAll(".eye");
+const $eyes = document.querySelectorAll(".form__input-btn");
 const $inputs = document.querySelectorAll(".form__input");
 const [$errEm, $errPw, $errPwCh] = document.querySelectorAll(".form__err")
-const [$labelEm, $labelPw, $labelPwCh] = document.querySelectorAll(".form__label")
+const [$labelEm, $labelPw, $labelPwCh] = document.querySelectorAll(".form__label");
+const $submit = document.querySelector(".form__submit");
 // RFC 5322 방식을 이용한 이메일 형식 정규표현식
 const regEx = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
-
 // 기본 : 빈 입력값, 입력값 형태 확인, /folder로 이동하기
 for (let i = 0; i < $inputs.length; i++) {
-  $inputs[i].addEventListener("keypress", preventEnter)
   $inputs[i].addEventListener("focusout", certify)
   $inputs[i].addEventListener("focusin", certify)
-}
-
-function preventEnter(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-  }
 }
 
 function certify({ currentTarget, type }) {
   // focusout 메시지 띄우기
   if (type === "focusout") {
-    const val = currentTarget.value;
-    insertErr(val, currentTarget);
+    insertErr(currentTarget);
     return;
   }
   // focusin 메시지 지우기
   if (currentTarget.classList.contains("err-input")) {
-    const type = currentTarget.type;
-    const $err = type === 'email' ? $errEm : $errPw;
-    const $label = type === 'email' ? $labelEm : $labelPw;
-    $err.textContent = '';
-    $label.classList.toggle("err");
-    currentTarget.classList.toggle("err-input");
+    resetErr(currentTarget);
+    return;
   }
 }
 
-function insertErr(val, currentTarget) {
+function insertErr(currentTarget) {
+  const val = currentTarget.value;
   const type = currentTarget.type;
   const $err = type === 'email' ? $errEm : $errPw;
   const $label = type === 'email' ? $labelEm : $labelPw;
@@ -55,31 +44,54 @@ function insertErr(val, currentTarget) {
   }
 }
 
-// 값을 확인하고 맞으면 /folder로 이동
-function checkValue() {
+function resetErr(currentTarget) {
+  const type = currentTarget.type;
+  const $err = type === 'email' ? $errEm : $errPw;
+  const $label = type === 'email' ? $labelEm : $labelPw;
+  $err.textContent = '';
+  $label.classList.toggle("err");
+  currentTarget.classList.toggle("err-input");
+}
 
+// 값을 확인하고 맞으면 /folder로 이동
+$submit.addEventListener("click", checkValue);
+
+function checkValue(event) {
+  const emCheck = $inputs[0].value === 'test@codeit.com'
+  const pwCheck = $inputs[1].value === 'codeit101';
+  if (emCheck && pwCheck) {
+    alert("확인");
+    location.href = "/index.html"
+  } else {
+    event.preventDefault();
+  }
 }
 
 // 심화 : 비밀번호 숨기기 기능
-for (let i = 0; i < $eyes.length; i++) {
-  $eyes[i].addEventListener("click", (event) => {
-    showpw(event, i);
-  });
-  $eyes[i].addEventListener("keypress", (event) => {
-    if (event.key === "Enter" || event.key === "Space") {
-      showpw(event, i);
-    }
-  });
+$eyes.forEach((el) => {
+  el.addEventListener("click", eyeEvent);
+  el.addEventListener("keypress", eyeEvent);
+})
+
+function eyeEvent(event) {
+  const type = event.type;
+  const key = event.key;
+  if (type === "click" || key === "Enter" || key === " ") {
+    showpw(event);
+    return;
+  }
 }
-function showpw(event, i) {
+
+function showpw(event) {
   event.preventDefault();
-  const $pw = document.querySelectorAll(".password")[i];
+  const $eye = event.currentTarget
+  const $pw = document.querySelector(".password");
   $pw.classList.toggle("active");
   if ($pw.classList.contains("active")) {
-    $eyes[i].setAttribute("src", "assets/sign-eye-on.svg");
+    $eye.setAttribute("src", "assets/sign-eye-on.svg");
     $pw.setAttribute("type", "text");
   } else {
-    $eyes[i].setAttribute("src", "assets/sign-eye-off.svg");
+    $eye.setAttribute("src", "assets/sign-eye-off.svg");
     $pw.setAttribute("type", "password");
   }
   $pw.focus();
