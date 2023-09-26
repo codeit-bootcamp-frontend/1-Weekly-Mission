@@ -44,7 +44,7 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
-.addlink {
+.add-link {
   width: 35rem;
   padding: 1.6rem 2rem;
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%));
@@ -95,7 +95,7 @@ header {
   font-weight: 700;
 }
 
-.text {
+.description {
   color: #6b6b6b;
   grid-area: text;
   font-size: 1.6rem;
@@ -239,7 +239,7 @@ footer {
     height: 31.5rem;
   }
 
-  .text {
+  .description {
     word-break: keep-all;
   }
 }
@@ -275,7 +275,7 @@ footer {
     line-height: 4.2rem;
   }
 
-  .addlink {
+  .add-link {
     width: 24rem;
     padding: 1rem 1.6rem;
   }
@@ -312,7 +312,7 @@ footer {
     font-size: 2.4rem;
   }
 
-  .text {
+  .description {
     font-size: 1.5rem;
     word-wrap: break;
   }

@@ -4,18 +4,13 @@ body {
 
 main {
   display: flex;
-  padding: 238px 0px 252px 0px;
+  padding: 23.8rem 0px 25.2rem 0px;
   flex-direction: column;
   align-items: center;
 }
 
 section {
-  width: 400px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
+  width: 40rem;
 }
 
 label {
@@ -25,9 +20,9 @@ label {
 input {
   position: relative;
   width: 100%;
-  padding: 18px 15px;
+  padding: 1.8rem 1.5rem;
   border: 1px solid gray;
-  margin-top: 12px;
+  margin-top: 1.2rem;
   border-radius: 8px;
   font-size: 1.6rem;
 }
@@ -45,8 +40,8 @@ input:focus {
 }
 
 .logo img {
-  width: 210.583px;
-  height: 38px;
+  width: 21rem;
+  height: 3.8rem;
 }
 
 .title .text {
@@ -67,7 +62,7 @@ input:focus {
 /* input */
 .singin-form {
   width: 100%;
-  margin: 30px 0 32px 0;
+  margin: 3rem 0 3rem 0;
 }
 
 .email {
@@ -82,7 +77,7 @@ input:focus {
 }
 
 .password {
-  margin-top: 24px;
+  margin-top: 2.4rem;
   font-size: 1.4rem;
 }
 
@@ -92,7 +87,7 @@ input:focus {
   flex-direction: column;
   position: relative;
   justify-content: flex-end;
-  margin-top: 24px;
+  margin-top: 2.4rem;
   gap: 12px;
 }
 
@@ -108,7 +103,7 @@ input:focus {
 .login.button {
   width: 100%;
   margin-top: 30px;
-  padding: 16px 20px;
+  padding: 1.6rem 2rem;
   border: none;
   background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
   color: #fff;
