@@ -1,0 +1,10 @@
+/* mobile */
+@media (max-width: 767px) {
+  body {
+    padding: 0 32px;
+  }
+
+  #guide img {
+    width: 250px;
+  }
+}
