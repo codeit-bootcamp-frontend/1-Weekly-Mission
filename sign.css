@@ -76,7 +76,7 @@ header {
 
 .signup-link a {
   font-weight: 600;
-  line-height: normal;
+  line-height: 150%;
   color: var(--color-primary);
   text-decoration: none;
 }
