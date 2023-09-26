@@ -8,14 +8,14 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
-    <link rel="stylesheet" href="./src/sign.css" />
+    <link rel="stylesheet" href="/style/signin.css" />
   </head>
   <body>
     <header>
-      <a class="logo-link" href="index.html">
+      <a class="logo-link" href="/index.html">
         <img
           class="header-logo"
-          src="./images/logo.svg"
+          src="/assets/logo.svg"
           alt="홈으로 연결된 Linkbrary 로고"
         />
       </a>
@@ -30,13 +30,17 @@
         <div class="sign-inputs">
           <div class="sign-input-box">
             <label class="sign-input-label">이메일</label>
-            <input class="sign-input" />
+            <input class="sign-input" placeholder="이메일을 입력해주세요" />
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input class="sign-input" type="password" />
+            <input
+              class="sign-input"
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+            />
             <button class="eye-button" type="button">
-              <img src="./images/eye-off.svg" />
+              <img src="/assets/eye-off.svg" />
             </button>
           </div>
         </div>
@@ -46,10 +50,10 @@
         <span class="sns-text">소셜 로그인</span>
         <div class="sns-links">
           <a class="sns-link google-link" href="https://www.google.com/">
-            <img src="./images/google.png" />
+            <img src="/assets/google.png" />
           </a>
           <a class="sns-link kakao-link" href="https://www.kakaocorp.com/page/">
-            <img src="./images/kakao.svg" />
+            <img src="/assets/kakao.svg" />
           </a>
         </div>
       </div>
