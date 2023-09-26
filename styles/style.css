@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   z-index: 1;
-  background-color: var(--LB-bg);
+  background-color: var(--bg);
 }
 
 .nav-container {
@@ -26,7 +26,7 @@
   border-radius: 8px;
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--LB-white);
+  color: var(--white);
   text-align: center;
 }
 
@@ -36,7 +36,7 @@
 
 .banner {
   padding-top: 7rem;
-  background-color: var(--LB-bg);
+  background-color: var(--bg);
 }
 
 .banner-container {
@@ -133,7 +133,7 @@
 
 /*-------footer-------*/
 .footer {
-  background-color: var(--LB-black);
+  background-color: var(--black);
   display: flex;
   align-items: center;
   justify-content: space-between;

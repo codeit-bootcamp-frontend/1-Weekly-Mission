@@ -8,14 +8,14 @@
 
 :root {
   --primary: #6D6AFE;
-  --LB-red: #FF5B56;
-  --LB-black: #111322;
-  --LB-white: #FFFFFF;
-  --LB-gray-100: #373740;
-  --LB-gray-60: #9FA6B2;
-  --LB-gray-20: #CCD5E3;
-  --LB-gray-10: #E7EFFB;
-  --LB-bg: #F0F6FF;
+  --red: #FF5B56;
+  --black: #111322;
+  --white: #FFFFFF;
+  --gray-100: #373740;
+  --gray-60: #9FA6B2;
+  --gray-20: #CCD5E3;
+  --gray-10: #E7EFFB;
+  --bg: #F0F6FF;
 }
 
 html {

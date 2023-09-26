@@ -1,6 +1,6 @@
 .background {
   margin: 23.8rem auto;
-  background-color: var(--LB-bg);
+  background-color: var(--bg);
 }
 
 .frame {
@@ -38,9 +38,9 @@
   width: 100%;
   padding: 1.8rem 1.5rem;
   border-radius: 0.8rem;
-  border: 0.1rem solid var(--LB-gray-20);
-  background-color: var(--LB-white);
-  color: var(--LB-gray-100);
+  border: 0.1rem solid var(--gray-20);
+  background-color: var(--white);
+  color: var(--gray-100);
   font-size: 1.6rem;
   font-weight: 400;
 }
@@ -102,12 +102,12 @@
   align-items: center;
   padding: 1.2rem 2.4rem;
   border-radius: 0.8rem;
-  border: 0.1rem solid var(--LB-gray-20);
-  background-color: var(--LB-gray-10);
+  border: 0.1rem solid var(--gray-20);
+  background-color: var(--gray-10);
 }
 
 .sns-title {
-  color: var(--LB-gray-100);
+  color: var(--gray-100);
   font-size: 1.4rem;
   font-weight: 400;
 }
