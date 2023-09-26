@@ -442,10 +442,6 @@ footer {
   }
 
   .section-container .content {
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-start; */
-
     grid-template-areas:
     'title'
     'image'
