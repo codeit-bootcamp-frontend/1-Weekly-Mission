@@ -443,10 +443,15 @@ footer {
     margin: 10px 41px -34px;
   }
 
-  .content {
-    display: flex;
+  .section-container .content {
+    /* display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start; */
+
+    grid-template-areas:
+    'title'
+    'image'
+    'description';
     gap: 16px;
     margin: 2.4rem 2rem;
   }
