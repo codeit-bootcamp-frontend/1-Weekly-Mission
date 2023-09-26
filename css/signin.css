@@ -70,7 +70,8 @@ input:focus {
 }
 
 /* input */
-.singin-form {
+.signin-form,
+.signup-form {
   width: 100%;
   margin: 3rem 0 3rem 0;
 }
@@ -155,4 +156,14 @@ input:focus {
   .social.login {
     width: 100%;
   }
+}
+
+/* js용 스타일 */
+.error {
+  border-color: var(--red);
+}
+
+.error-msg {
+  color: var(--red);
+  font-size: 1.4rem;
 }
