@@ -57,7 +57,6 @@ header .login-link {
     font-size: 64px;
     font-weight: 700;
     line-height: 80px;
-    word-break: break-all;
 }
 
 .main-description .text-gradient {
@@ -67,7 +66,7 @@ header .login-link {
     -webkit-text-fill-color: transparent;
 }
 
-.main-image-box{
+.main-image-box {
     min-width: 1200px;
     min-height: 700px;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
@@ -134,13 +133,13 @@ header .login-link {
     margin: 88px -131px 87.1px -132px;
 }
 
-.wanted-link-cards img{
+.wanted-link-cards img {
   max-width: 279px;
 }
 
-.toggle-img {
+/* .toggle-img {
   display: none;
-}
+} */
 
 .cards-frame div:first-of-type {
     min-width: 244px;
@@ -148,7 +147,6 @@ header .login-link {
     border-radius: 11px;
     position: relative;
     overflow: hidden;
-    border-radius: 11px;
     border: 2px solid var(--primary); 
 }
 
@@ -156,7 +154,6 @@ header .login-link {
     position: absolute;
     top: -15px;
     left: -18px;
-    flex-shrink: 0;
 }
 
 .wanted-link-cards .save-link {
@@ -205,9 +202,8 @@ header .login-link {
     position: relative;
 }
 
-.inner-image{
+.inner-image {
     min-width: 934px;
-    height: 591px;
     z-index: -1;
 }
 
@@ -273,20 +269,20 @@ footer {
 }
 .footer-link {
     display: flex;
-    gap: 30px;
+    gap: 2.5rem;
 }
 
-.footer-link a{
+.footer-link a {
     color: #CFCFCF;
 }
 
-.sns_icons img{
+.sns_icons img {
     margin-left: 10px;
 }
 
 /*tablet size*/
 
-@media (max-width: 1199px) {
+@media (min-width:768px) and (max-width: 1199px) {
   header {
     padding: 20px 32px;
   }
@@ -314,55 +310,74 @@ footer {
     gap: 51px;
   }
 
-  .content .toggle-img {
+  /* .content .toggle-img {
     max-width: 385px;
     max-height: 315px;
     display: block;
-  }
+  } */
 
-  .cards-frame,
+  /* .cards-frame,
   .popup_folder_name_change-box,
   .inner-image-box,
   .codeit_search_image-box {
     display: none;
+  } */
+
+  .wanted-link-cards img {
+    max-width: 220px;
+  }
+
+  .cards-frame {
+    gap: 12px;
+    margin: 65px -150px 68px -150px;
+}
+
+  .cards-frame .select-card {
+    position: absolute;
+    top: -15px;
+    left: -18px;
+  }
+
+  .cards-frame div:first-of-type {
+    min-width: 187px;
+    height: 187px;
   }
 
   .wanted-link-cards .save-link {
-    width: 33px;
-    height: 33px;
-    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    top: 272px;
-    left: 285px;
+    top: 250px;
+    left: 250px;
   }
 
   .popup_folder_name_change-box {
-    padding: 114px 68px 66px 68px;
-    border-radius: 15px;
-    background: #F0F6FF;
+    padding: 80px 44px 50px 45px;
   }
 
   .popup_folder_name_change {
     max-width: 300px;
   }
 
-  .inner-image-box {  
-    max-width: 470px;
-    max-height: 469px;
+  .inner-image-box {
+    max-width: 385px;
+    max-height: 330px;
   }
 
-  .inner-image{
-    min-width: 934px;
-    height: 591px;
-    z-index: -1;
+  .inner-image {
+    min-width: 630px;
   }
 
   .popup_folder_share {
-    position: absolute;
-    inset: 121px 30px 30px 30px;
+    inset: 50px 10px 10px 10px;
+    padding: 10%;
   }
-} 
 
+  .codeit_search_image-box {
+    min-width: 400px;
+    height: 320px;
+  } 
+}
 /* mobile size*/
 
 @media (max-width: 767px) {
@@ -388,9 +403,12 @@ footer {
     padding-top: 85px;
   }
 
-  .main-description h1{
+  .main-description h1 {
     font-size: 32px;
     line-height: 42px;
+    word-break: keep-all;
+    display: inline-block;
+    min-width: 250px;
   }
 
   .add-link {
@@ -399,15 +417,16 @@ footer {
     font-size: 14px;
     font-weight: 600;
     margin: 24px auto;
-}
+  }
 
   .main-image-box {
     min-width: 303px;
     min-height: 179px;
+    margin: 10px 41px -34px;
   }
 
   .content {
-    flex-flow: column;
+    flex-direction: column;
     align-items: flex-start;
     gap: 24px;
   }
@@ -423,11 +442,11 @@ footer {
   .content .description p {
     font-size: 15px;
     max-width: 325px;
+    word-break: keep-all;
   }
 
   .content .description p br {
     display: none;
-    word-break: keep-all;
   }
 
   .content .popup_folder_name_change-box,
@@ -435,11 +454,11 @@ footer {
     order: 1;
   }
 
-  .content .toggle-img {
+  /* .content .toggle-img {
     max-width: 325px;
     max-height: 266px;
     order: 2;
-  }
+  } */
 
   .sections {
     padding: 40px 32px;
