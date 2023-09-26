@@ -16,7 +16,7 @@ main{
   align-items: center;
 }
 
-#logo{
+.logo{
   display: block;
   margin: 14.88rem 0 1rem;
 }
@@ -135,7 +135,7 @@ input:focus{
 
 /*----------Tablet---------*/
 @media screen and (max-width: 1199px) {
-  #logo {
+  .logo {
     margin-top: 12.5rem;
   }
 }
@@ -148,7 +148,7 @@ input:focus{
     padding: 0 32px;
   }
   
-  #logo {
+  .logo {
     margin-top: 7.5rem;
   }
 }
