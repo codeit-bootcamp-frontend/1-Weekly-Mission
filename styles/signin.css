@@ -49,13 +49,14 @@ label {
   flex-direction: column;
   align-items: flex-start;
   border-radius: 0.5rem;
-  width:100%;
+  max-width: 400px;
+  width: 100%;
 }
 
 button {
   margin-top: 1.875rem;
   display: flex;
-  width: 25rem;
+  width: 100%;
   padding: 1rem 1.25rem;
   justify-content: center;
   align-items: center;
@@ -113,7 +114,7 @@ input:focus {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 25rem;
+  width: 100%;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   border: 0.0625rem solid #ccd5e3;
