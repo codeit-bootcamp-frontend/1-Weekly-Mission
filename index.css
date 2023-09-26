@@ -293,6 +293,7 @@ save-description {
 
   .container {
     margin: 0 auto;
+    width: 100%;
   }
 
   section,
@@ -327,14 +328,23 @@ save-description {
     padding: 0;
   }
 
-  /* 문단을 모바일 화면 가운데로 몰고 싶은데 안 들어가요... */
-  .font-big,
-  .font-desc {
-    text-align: center;
+  .main-container-sub {
+    width: 29.1rem;
+    margin: 0 3.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 40rem;
+  }
+
+  .font-big {
+    font-size: 4rem;
+    flex-grow: 1;
   }
 
   .font-desc {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
   }
 
   .manage-description,
@@ -344,12 +354,24 @@ save-description {
     padding: 4rem 3.2rem;
   }
 
-  .left-text-right-image br,
-  .left-image-right-text br {
+  .left-text-right-image .font-big br,
+  .left-image-right-text .font-big br {
     display: none !important;
   }
 
   .left-image-right-text .main-container-sub {
     order: -1;
   }
+
+  /* .footer {
+  }
+
+  .footer:nth-child(1) {
+  }
+
+  .footer:nth-child(2) {
+  }
+
+  .footer:nth-child(3) {
+  } */
 }
