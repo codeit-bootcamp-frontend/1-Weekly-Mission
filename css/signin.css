@@ -7,6 +7,16 @@ main {
   padding: 23.8rem 0px 25.2rem 0px;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 1199px) {
+    padding: 20rem 40rem;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 12rem 3.2rem;
+  }
 }
 
 section {
@@ -136,21 +146,8 @@ input:focus {
   align-items: center;
 }
 
-/* Tablet Size */
-@media (max-width: 1199px) {
-  main {
-    padding: 20rem 40rem;
-  }
-}
-
 /* Mobile Size */
 @media (max-width: 767px) {
-  main {
-    max-width: 40rem;
-    margin: 0 auto;
-    padding: 12rem 3.2rem;
-  }
-
   .header {
     width: 100%;
   }
