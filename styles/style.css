@@ -282,6 +282,7 @@
 .sns-frame {
   display: flex;
   grid-area: sns-frame;
+  height: 2rem;
   gap: 1.2rem;
   list-style: none;
 }
