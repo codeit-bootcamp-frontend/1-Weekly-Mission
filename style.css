@@ -277,10 +277,6 @@ footer {
   background: var(--black);
 }
 
-.footer-box {
-  display: contents;
-}
-
 .copyright{
   color: #676767;
   text-align: center;
