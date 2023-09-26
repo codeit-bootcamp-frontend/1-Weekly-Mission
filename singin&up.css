@@ -134,7 +134,8 @@ body {
 
 /* mobile size */
 
-@media (min-width:768px) and (max-width: 1199px) {
+@media (max-width:768px) {
+  
   .sign-box .input-box {
     max-width: 400px;
     padding: 0 32px;
