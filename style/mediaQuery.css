@@ -29,4 +29,35 @@
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
+  /* 레이아웃 조정
+
+  섹션 그리드 순서 변경하거나 플렉스 박스 order 조정 
+
+  풋터 그리드 */
+  body {
+    width: 100vw;
+  }
+
+  br {
+    display: none !important;
+  }
+
+  nav {
+    padding: 1.3rem 3.2rem;
+  }
+
+  .slogan {
+    /* 단어 기준으로 줄바꿈 */
+    word-break: keep-all;
+  }
+
+  .hero-header {
+    padding: 2.8rem 3.2rem 0;
+    width: 88%;
+    gap: 3.4rem;
+  }
+
+  .hero-image {
+    width: 53.8rem;
+  }
 }
