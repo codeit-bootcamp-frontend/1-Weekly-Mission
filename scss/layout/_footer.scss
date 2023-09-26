@@ -1,68 +1,68 @@
 @use "../utils" as *;
 
 .footer {
+  width: 100%;
+  background-color: $the-julge-black;
+
+  &__inner {
+    @include mobile {
+      display: grid;
+      grid-template-columns: 18rem 11.6rem;
+      grid-template-rows: 1.8rem 1.8rem;
+      row-gap: 6rem;
+      padding-left: 3.2rem;
+      padding-right: 3.2rem;
+    }
+
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    background-color: $the-julge-black;
+    height: 16rem;
+    max-width: 192rem;
+    margin: 0 auto;
+    padding: 3.2rem 10.4rem 6.4rem;
+  }
 
-    &__inner {
-        @include mobile {
-            display: grid;
-            grid-template-columns: 18rem 11.6rem;
-            grid-template-rows: 1.8rem 1.8rem;
-            row-gap: 6rem;
-            padding-left: 3.2rem;
-            padding-right: 3.2rem;
-        }
-
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        height: 16rem;
-        max-width: 192rem;
-        margin: 0 auto;
-        padding: 3.2rem 10.4rem 6.4rem;
+  &__copyright {
+    @include mobile {
+      grid-column: 1;
+      grid-row: 2;
     }
 
-    &__copyright {
-        @include mobile {
-            grid-column: 1;
-            grid-row: 2;
-        }
+    font-family: Arial;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #676767;
+  }
 
-        font-family: Arial;
-        font-size: 1.6rem;
-        font-weight: 400;
-        color: #676767;
+  &__extra-page {
+    @include mobile {
+      grid-column: 1;
+      grid-row: 1;
+      justify-content: flex-start;
     }
 
-    &__extra-page {
-        @include mobile {
-            grid-column: 1;
-            grid-row: 1;
-            justify-content: flex-start;
-        }
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
 
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
+  &__link {
+    font-family: Arial;
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: #cfcfcf;
+  }
+
+  &__sns {
+    @include mobile {
+      grid-column: 2;
+      grid-row: 1;
     }
 
-    &__link {
-        font-family: Arial;
-        font-size: 1.6rem;
-        font-weight: 400;
-        text-decoration: none;
-        color: #CFCFCF;
-    }
-
-    &__sns {
-        @include mobile {
-            grid-column: 2;
-            grid-row: 1;
-        }
-
-        display: flex;
-        justify-content: flex-end;
-        gap: 1.2rem;
-    }
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2rem;
+  }
 }

@@ -59,7 +59,8 @@ th {
   word-break: keep-all;
 }
 
-body, button {
+body,
+button {
   background: #fff;
   line-height: 1;
 }
@@ -68,7 +69,8 @@ html {
   font-size: 62.5%;
 }
 
-a, button {
+a,
+button {
   cursor: pointer;
 }
 
@@ -188,7 +190,7 @@ a, button {
   font-size: 1.6rem;
   font-weight: 400;
   text-decoration: none;
-  color: #CFCFCF;
+  color: #cfcfcf;
 }
 .footer__sns {
   display: flex;
@@ -305,7 +307,7 @@ a, button {
   }
 }
 .main-section__title--grad {
-  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -371,7 +373,7 @@ a, button {
   top: 0;
   width: 111.8rem;
   height: 65.9rem;
-  background: linear-gradient(180deg, rgba(196, 196, 196, 0) 67.68%, #F0F6FF 94.76%);
+  background: linear-gradient(180deg, rgba(196, 196, 196, 0) 67.68%, #f0f6ff 94.76%);
 }
 @media screen and (max-width: 1199px) {
   .main-section__dim {
@@ -464,16 +466,16 @@ a, button {
   grid-row: 2;
 }
 .section-container :first-child .section__title--grad {
-  background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
 }
 .section-container :nth-child(2) .section__title--grad {
-  background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+  background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
 }
 .section-container :nth-child(3) .section__title--grad {
-  background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+  background: linear-gradient(99deg, #6d7ccd 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
 }
 .section-container :nth-child(4) .section__title--grad {
-  background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
+  background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
 }
 .section-container .section .section__title--grad {
   -webkit-background-clip: text;
@@ -482,7 +484,7 @@ a, button {
 }
 .section__desc {
   width: 29.1rem;
-  color: #6B6B6B;
+  color: #6b6b6b;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5;
@@ -637,7 +639,7 @@ a, button {
   height: 2.2rem;
 }
 .auth__social-logo--kakaotalk {
-  background-color: #F5E14B;
+  background-color: #f5e14b;
 }
 .auth__social-logo--kakaotalk img {
   width: 2.6rem;
