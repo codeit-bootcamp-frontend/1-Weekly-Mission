@@ -27,9 +27,12 @@ nav {
 }
 
 span {
-    display: block;
+    display: inline;
 }
 
+.hero-header-colorful .background-clip-text {
+    display: inline;
+}
 
 a.nav-log img {
     width: 13.3rem;
@@ -310,6 +313,14 @@ footer {
 
     .sns-links {
         grid-area: sns;
+    }
+
+    span {
+        display: block;
+    }
+
+    span .inline {
+        display: inline;
     }
 }
 

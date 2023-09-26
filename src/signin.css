@@ -9,6 +9,18 @@ body {
     font-size: 1.4rem;
 }
 
+.eyes-on-off {
+    display: inline;
+    position: relative;
+    display: inline;
+}
+
+.eyes-off {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+}
+
 .sign-in-container {
     display: flex;
     flex-direction: column;
@@ -115,9 +127,7 @@ input:focus {
 .password-box {
     width: 100%;
     padding-right: 40px;
-    background-image: url("../images/eye-off.svg");
-    background-repeat: no-repeat;
-    background-position: right;
+
 }
 
 .badges {
