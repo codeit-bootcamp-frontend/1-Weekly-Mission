@@ -5,15 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Linkbrary 회원가입</title>
-  <link rel="stylesheet" href="../style/signin-up_style.css">
-  <link rel="stylesheet" href="../style/signin-up_rest.css">
+  <link rel="stylesheet" href="../style/signStyle.css">
+  <link rel="stylesheet" href="../style/signReset.css">
 </head>
 <body>
   <div class="container">
     <div class="inner-container">
       <div class="main">
         <div class="title">
-          <a href="/"><img class="logo-image" src="../images/logo.svg" alt="Linkbrary로고"></a>
+          <a href="/"><img class="logo-image" src="../icons/icon.svg" alt="Linkbrary로고"></a>
           <div class="logo-description">
             <span>회원이 아니신가요?</span>
             <a href="./signin.html">로그인 하기</a>
@@ -26,17 +26,13 @@
           </div>
           <div class="password-form"> 
             <label for="password-form">비밀번호</label>
-            <div class="password-input">
-              <input id="password-form" class="password content" name="password" type="password" placeholder="linkbrary20245" required>
-              <button class="eye-button"><img src="../images/eye-off.svg" alt="비밀번호 표시"></button>
-            </div>
+            <input id="password-form" class="password content" name="password" type="password" placeholder="・ ・ ・ ・ ・ ・ ・" required>
+            <button class="eye-button"><img src="../images/eye-off.svg" alt="비밀번호 표시"></button>
           </div>
           <div class="password-form"> 
-            <label for="password-check">비밀번호 확인</label>
-            <div class="password-input">
-              <input id="password-check" class="password content" name="password" type="password" placeholder="linkbrary20245" required>
-              <button class="eye-button"><img src="../images/eye-off.svg" alt="비밀번호 표시"></button>
-            </div>
+            <label for="re-password-form">비밀번호</label>
+            <input id="re-password-form" class="password content" name="password" type="password" placeholder="・ ・ ・ ・ ・ ・ ・" required>
+            <button class="eye-button"><img src="../images/eye-off.svg" alt="비밀번호 표시"></button>
           </div>
         </form>  
         <button class="login-button">회원가입</button> 

@@ -59,38 +59,43 @@ form {
   gap: 24px;
 }
 
-
-.email-form > label, .password-input > label {
+.email-form > label, .password-form > label {
   font-size: 14px;
   line-height: normal;
   color: #000;
-}
-
-.email-form > input, .password-input {
-  display: block;
-  padding: 18px 15px;
-  margin-top: 12px;
-  color: #373740;
-  border-radius: 8px;
-  border: 1px solid #ccd5e3;
-  background:#fff;
-  position: relative;
-}
-.content {
-  border: none;
-  width: 100%;
-  display: flex;
 }
 
 input:focus {
   border-color: #6d6afe;
 }
 
+.email-form > input, .password-form > input{
+  padding: 18px 15px;
+  margin-top: 12px;
+  color: #373740;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background:#fff;
+}
+
+.content {
+  border: none;
+  width: 100%;
+  display: flex;
+}
+
+.password-form {
+  position: relative;
+}
+
 .eye-button {
   position: absolute;
-  top: 20px;
-  right: 15px;
+  top : 3.5rem;
+  right: 1rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
+
 
 .login-button {
   display: flex;
@@ -152,5 +157,11 @@ input:focus {
     margin-top : 120px;
     padding-left: 33px;
     padding-right: 32px;
+  }
+  .inner-container {
+    width : 325px;
+  }
+  .login-button {
+    width: 325px;
   }
 }
