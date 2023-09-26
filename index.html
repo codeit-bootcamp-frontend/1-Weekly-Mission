@@ -3,15 +3,20 @@
     <title>Linkbrary</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Linkbrary" property="og:title">
-    <meta content="website" property="og:type">
-    <meta content="Linkbrary.com" property="og:site_name">
-    <meta content="/" property="og:url">
-    <meta content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" property="og:description">
-    <meta content="assets/image/_img@3x.png" property="og:image">
+    <meta property="og:title" content="Linkbrary">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Linkbrary.com">
+    <meta property="og:url" content="/">
+    <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
+    <meta property="og:image" content="/assets/image/_img@3x.png">
+    <meta name="twitter:title" content="Linkbrary">
+    <meta name="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
+    <meta name="twitter:image" content="/assets/image/_img@3x.png">
+    <link rel="stylesheet" href="/assets/fonts/pretendard/pretendard.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css?_cacheOverride=1695490263251"> -->
     
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css?_cacheOverride=1695490263251">
-    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 
 <body>
@@ -19,10 +24,10 @@
     <header class="header flex--column-center">
         <div class="header__content flex--row">
             <a href="./" style="cursor:pointer">
-                <img class="header__logo_img" src="assets/image/logo.svg" alt="logo image">
+                <img class="header__logo_img" src="/assets/image/logo.svg" alt="logo image">
             </a>
             <form>
-                <a class="header__login_btn btn--gradient-blue-to-mint flex--row font--normal" href="./signin.html">
+                <a class="header__login_btn btn--gradient-blue-to-mint flex--center font--normal" href="./signin.html">
                     로그인
                 </a>
             </form>
@@ -34,7 +39,7 @@
     <section class="hero flex--column-center">
         <div class="hero__content flex--column-center">
         <h2 class="hero__txt font--normal">
-            <span class="no_break_line--mobile"><span class="gradient--blue-to-red">세상의 모든 정보</span>를<br></span>
+            <span class="no_break_line--mobile"><span class="gradient gradient--blue-to-red">세상의 모든 정보</span>를<br></span>
             <span class="no_break_line--mobile">쉽게 저장하고</span> <span class="no_break_line--mobile">관리해 보세요</span>
         </h2>
         <a class="hero__btn btn--gradient-blue-to-mint flex--row" href="./signup.html">
@@ -42,13 +47,13 @@
         </a>
     </div>
         <div class="hero__img_container flex--row">
-            <img class="hero__img" src="./assets/image/_img@3x.png" alt="main page image">
+            <img class="hero__img" src="/assets/image/_img@3x.png" alt="main page image">
         </div>
     </section>
 
     <!-- card sections -->
     <section class="cards">
-        <section id="section1" class="cards__section cards__section--adjust-padding-top">
+        <section id="section1" class="cards__section flex--center cards-padding--top">
             <div class="cards__title_container">
                 <h2 class="cards__title font--normal">
                     <span class="gradient gradient--red-to-blue">원하는 링크</span>를
@@ -63,11 +68,11 @@
                 </p>
             </div>
             <div class="cards__img_container">
-                    <img class="cards__img" src="assets/image/_img1.png" alt="linkbrary explaination image"> 
+                    <img class="cards__img" src="/assets/image/_img1.png" alt="linkbrary explaination image"> 
             </div>
         </section>
 
-        <section id="section2" class="cards__section cards__section--row-reverse">
+        <section id="section2" class="cards__section cards__section--row-reverse flex--center">
             <div class="cards__title_container txt_container--row-reverse">
                 <h2 class="cards__title font--normal">
                     링크를 폴더로
@@ -81,11 +86,11 @@
                 </p>
             </div>
             <div class="cards__img_container img_container--row-reverse">
-                <img class="cards__img" src="assets/image/img2.png" alt="linkbrary explaination image">  
+                <img class="cards__img" src="/assets/image/img2.png" alt="linkbrary explaination image">  
             </div>
         </section>
 
-        <section id="section3" class="cards__section">
+        <section id="section3" class="cards__section flex--center">
             <div class="cards__title_container">
                 <h2 class="cards__title font--normal">
                     저장한 링크를
@@ -100,11 +105,11 @@
                     </p>
             </div>
             <div class="cards__img_container">
-                <img class="cards__img" src="assets/image/img3.png" alt="linkbrary explaination image">  
+                <img class="cards__img" src="/assets/image/img3.png" alt="linkbrary explaination image">  
             </div>
         </section>
 
-        <section id="section4" class="cards__section cards__section--row-reverse">
+        <section id="section4" class="cards__section cards__section--row-reverse flex--center">
             <div class="cards__title_container txt_container--row-reverse">
                 <h2 class="cards__title font--normal">
                     저장한 링크를
@@ -117,7 +122,7 @@
                     </p>
             </div>
             <div class="cards__img_container img_container--row-reverse">
-                <img class="cards__img" src="assets/image/_img4.png" alt="linkbrary explaination image">  
+                <img class="cards__img" src="/assets/image/_img4.png" alt="linkbrary explaination image">  
             </div>
         </section>
     </section>
@@ -135,16 +140,16 @@
             </div>
             <div class="footer__sns flex--row">
                 <a href="https://www.facebook.com" target="_blank">
-                    <img class="footer__sns_icon" src="assets/image/icon-facebook.svg" alt="facebook icon">
+                    <img class="footer__sns_icon" src="/assets/image/icon-facebook.svg" alt="facebook icon">
                 </a>
                 <a href="https://www.twitter.com" target="_blank">
-                    <img class="footer__sns_icon" src="assets/image/icon-twitter.svg" alt="twitter icon">
+                    <img class="footer__sns_icon" src="/assets/image/icon-twitter.svg" alt="twitter icon">
                 </a>
                 <a href="https://www.youtube.com" target="_blank">
-                    <img class="footer__sns_icon" src="assets/image/icon-youtube.svg" alt="youtube icon">
+                    <img class="footer__sns_icon" src="/assets/image/icon-youtube.svg" alt="youtube icon">
                 </a>
                 <a href="https://www.instagram.com" target="_blank">
-                    <img class="footer__sns_icon" src="assets/image/icon-instagram.svg" alt="instagram icon">
+                    <img class="footer__sns_icon" src="/assets/image/icon-instagram.svg" alt="instagram icon">
                 </a>
             </div>
         </div>

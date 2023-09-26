@@ -2,71 +2,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    <link rel="stylesheet" href="assets/css/signup.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/fonts/pretendard/pretendard.css">
+    <link rel="stylesheet" href="/assets/css/signform.css">
 </head>
-<body class="flex-center">
-    <main>
+<body class="flex--center">
+    <main class="main">
         <!--== START of MAIN-SECTION ==-->
-        <section class="main__container">
+        <section class="container">
             <!-- starting form -->
-            <form class="signup-form">
-                <div class="container-main flex-center">
+            <form class="form">
+                <div class="contents flex--center">
                     <!-- main logo section -->
                     <a href ="./">
-                        <img id="icon-logo" src="assets/image/logo.svg">
+                        <img class="img--logo" src="/assets/image/logo.svg">
                     </a>
-                    <div class="div-intent-signup">
-                        <h4 class="txt1 default-font">
+                    <div class="contents__txt">
+                        <h4 class="txt--isMember font--normal">
                             이미 회원이신가요?
                         </h4>
-                        <a class="intent-signup default-font" href="./signin.html">
+                        <a class="txt--intent font--normal" href="./signin.html">
                             로그인 하기
                         </a>
                     </div>
                 </div>
 
                 <!-- sign-up input form -->
-                <div class="container-input">
+                <div class="form__content">
                     <!-- input: email -->
-                    <div class="div-input">
-                        <label class="label-signin" for="email">
+                    <div class="form__input__wrap">
+                        <label class="txt--inputLabel" for="email">
                             이메일
                         </label>
-                        <input id="email" class="input email default-font flex-center" name="email" type="email">
+                        <input id="email" class="input email font--normal flex--center margin--bottom-24" name="email" type="email">
                     </div>
                     <!-- input: password -->
-                    <div class="div-input">
-                        <label class="label-signin" for="password">
+                    <div class="form__input__wrap">
+                        <label class="txt--inputLabel" for="password">
                             비밀번호
                         </label>
-                        <input id = "password" class="input password default-font flex-center" name="password" type="password">
+                        <input id = "password" class="input password font--normal flex--center margin--bottom-24" name="password" type="password">
                     </div>
                     <!-- input: check-password -->
-                    <div class="div-input">
-                        <label class="label-signin" for="check-password">
+                    <div class="form__input__wrap">
+                        <label class="txt--inputLabel" for="check-password">
                             비밀번호 확인
                         </label>
-                        <input id="check-password" class="input check-password default-font flex-center" name="check-password" type="password">
+                        <input id="check-password" class="input check-password font--normal flex-cente " name="check-password" type="password">
                     </div>
                 </div>
                  <!-- sign-up button -->
-                <button class ="btn-signup flex-center default-font" href="#">
+                <button class ="form__input_button btn--gradient-blue-to-mint flex--center font--normal" onclick="location.href='#'">
                     회원가입
                 </button>
             </form>
         
             <!-- social sign-up -->
-            <div class="container-social-login flex-center">
-                <h4 class="txt-social-login default-font">다른 방식으로 가입하기</h4>
-                <div id="content">
+            <div class="social_login flex--center">
+                <h4 class="social_login__txt font--normal">다른 방식으로 가입하기</h4>
+                <div class="social_login__contents">
                     <a href="https://www.google.com/">
-                        <img class="btn-social-login" src="assets/image/icon-background-google.svg">
-                        <img class="btn-google" src="https://s3-alpha-sig.figma.com/img/a92e/9426/c3a9be9cb365010056fa7aa9cc9f05a2?Expires=1696204800&Signature=Jg2awu1Jn82YPhissAdPhItTICC0C3gb-zfe8nozbGgToygGasbBZCfpJbFmAQOOMROp91VJySP-kVE0ix0D1HF2dj4JUMbi6fyXLXQCANzaZ7nebXgLDPWtnNuJrg6ifuN34Kpw43TttpBClCQsrrgkO0lMd7047nYj5cF9eDS7~NacJNMngHtXNKcK59w80teFdmmPtmac5XfSpIMLpq7F6z9b9oSxNVrIF1-a-L9F1sLINV8S3nSClM6t6EHu6AyYjRG3HW5cn2GHcmu0MGEL-QtR0L~rEAjTUmlhgWfRxsgKpZa8cddamuAZwuLwcARlciaoOP3uDrXezeRyYw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" >
+                        <img class="btn--circle-background" src="/assets/image/icon-background-google.svg">
+                        <img class="img--google" src="/assets/image/google.png">
                     </a>
                     <a href="https://www.kakaocorp.com/page/">
-                        <img class="btn-social-login" src="assets/image/icon-background-kakao.svg">
-                        <img class="btn-kakao" src="assets/image/icon-kakao.svg" style="width: 26px; height: 24px;flex-shrink: 0">
+                        <img class="btn--circle-background" src="/assets/image/icon-background-kakao.svg">
+                        <img class="img--kakao" src="/assets/image/icon-kakao.svg">
                     </a>
                 </div>
             </div>
