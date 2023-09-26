@@ -27,11 +27,11 @@
     color: var(--White);
   }
 
-  .sign--smallsize {
+  .sign--sm {
     justify-self: end;
     width: 8rem;
   }
-  .sign--largesize {
+  .sign--lg {
     width: 20rem;
   }
 
@@ -178,10 +178,10 @@
     padding: 1.2rem 1.6rem;
     font-size: 1.8rem;
   }
-  .sign--smallsize {
+  .sign--sm {
     width: 11rem;
   }
-  .sign--largesize {
+  .sign--lg {
     padding: 2rem 1.6rem;
     width: 35rem;
   }
@@ -217,7 +217,7 @@
   .section__img {
     width: 75rem;
   }
-  .img--smallsize {
+  .img--sm {
     justify-self: end;
     width: 38.5rem;
     height: 31.5rem;
@@ -261,7 +261,7 @@
   .section__img {
     width: 120rem;
   }
-  .img--smallsize {
+  .img--sm {
     width: 55rem;
     height: 45rem;
   }
