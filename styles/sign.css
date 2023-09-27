@@ -56,7 +56,8 @@
 }
 
 .form--input:focus {
-  border: 0.1rem solid var(--red);
+  outline: none;
+  border: 0.1rem solid var(--primary);
 }
 
 .form--eye-button {
