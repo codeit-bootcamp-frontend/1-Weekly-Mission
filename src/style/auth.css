@@ -1,6 +1,6 @@
 html,
 body {
-  background: var(--linkbrary-bg);
+  background: var(--bg);
 }
 
 .authHeader {
@@ -36,13 +36,13 @@ body {
 }
 
 .signupLink {
-  color: var(--linkbrary-primary-color);
+  color: var(--primary);
   font-weight: 600;
 }
 
 .signupLinkBr {
   height: 1px;
-  background-color: var(--linkbrary-primary-color);
+  background-color: var(--primary);
   border: 0;
 }
 
@@ -74,8 +74,8 @@ label {
   width: 25rem;
   padding: 1.2rem 0.9rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--linkbrary-gray-20);
-  background: var(--linkbrary-white);
+  border: 1px solid var(--gray-20);
+  background: var(--white);
 
   @media (max-width: 767px) and (min-width: 375px) {
     width: 380px;
@@ -84,7 +84,7 @@ label {
 .authInput:focus {
   border-radius: 0.5rem;
   border: 1px solid blue;
-  background: var(--linkbrary-white);
+  background: var(--white);
 }
 
 .loginLink {
@@ -115,8 +115,8 @@ label {
   padding: 0.75rem 1.5rem;
   width: 27rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--linkbrary-gray-20);
-  background: var(--linkbrary-gray-10);
+  border: 1px solid var(--gray-20);
+  background: var(--gray-10);
 
   @media (max-width: 767px) and (min-width: 375px) {
     width: 400px;

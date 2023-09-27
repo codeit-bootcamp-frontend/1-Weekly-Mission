@@ -1,8 +1,9 @@
 :root {
-  --linkbrary-bg: #f0f6ff;
-  --linkbrary-primary-color: #6d6afe;
-  --linkbrary-gray-10: #e7effb;
-  --linkbrary-gray-20: #ccd5e3;
-  --linkbrary-white: #fff;
+  --bg: #f0f6ff;
+  --primary: #6d6afe;
+  --gray-10: #e7effb;
+  --gray-20: #ccd5e3;
+  --white: #ffffff;
+  --black: #000000;
   --error: #ff5b56;
 }
