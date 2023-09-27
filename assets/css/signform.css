@@ -1,83 +1,48 @@
-
-/* -- default setting -- */
-* {
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Pretendard;
-}
-
-:root {
-    --color-primary:#6D6AFE;
-    --color-white:#FFF;
-    --color-black:#000;
-    --color-gray-1:#CCD5E3;
-    --color-gray-2:#373740;
-    --color-gray-3:#F5F5F5;
-    --color-gray-4:#E7EFFB;
-}
-
-.default-font {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-decoration: none;
-}
-
-.flex-center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 body {
-    width: 100%;
-    height: 100%;
     padding: 238px 0px 252px 0px;
 }
 
 /* -- main -- */
-.container-main{
+.contents {
     flex-direction: column;
     gap:16px;
 }
 
-#icon-logo{
+.img--logo {
     width: 210.583px;
     height: 38px;
 }
 
-.div-intent-signup{
+.contents__txt {
     display: flex;
     gap:8px;
 }
 
-.txt1{
+.txt--isMember {
     color: var(--color-black);
     line-height: 24px; /* 150% */    
 }
 
-.intent-signup{
+.txt--intent {
     color: var(--color-primary);
     font-weight: 600;
     text-decoration: underline;
 }
 
-/* -- sign-up form -- */
-.signup-form{
+/* -- sign-in form -- */
+.form {
     display: flex;
     flex-direction: column;
     gap:30px;
 }
 
-.div-input{
+.form__input__wrap {
     display: flex;
     flex-direction:column;
     gap:12px;
 }
 
-.input{
+.input {
     width: 400px;
     padding: 18px 15px;
     border-radius: 8px;
@@ -87,35 +52,28 @@ body {
     line-height: 24px; /* 150% */
 }
 
-.input:focus{
+.input:focus {
     border: 1px solid var(--color-primary);
     background: var(--color-white);
 }
 
-.input:focus-visible{
+.input:focus-visible {
     outline: none;
 }
 
-.email, .password{
+.margin--bottom-24 {
     margin-bottom:24px;
 }
 
-
-/* -- sign-up btn -- */
-.btn-signup{
+/* -- sign-in btn -- */
+.form__input_button {
     width: 400px;
-    padding: 16px 20px;
-    gap: 10px;
     color: var(--color-gray-3);
-    font-size: 18px;
-    font-weight: 600;
     margin-bottom:32px;
-    border-radius: 8px;
-    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
 }
     
 /* -- social login -- */
-.container-social-login{
+.social_login {
     width: 400px;
     padding: 12px 24px;
     justify-content: space-between;
@@ -124,29 +82,54 @@ body {
     background: var(--color-gray-4);
 }
 
-.txt-social-login{
+.social_login__txt {
     color: var(--color-gray-2);
     font-size: 14px;
 }
 
-#content{
+.social_login__contents {
     display: flex;
     align-items: flex-start;
     gap: 16px;   
 }
 
-.btn-social-login{
+.btn--circle-background {
     width: 42px;
     height: 42px;
     flex-shrink: 0;
     position:relative;
 }
 
-.btn-google, .btn-kakao{
+.img--google, .img--kakao {
     width: 22px;
     height: 22px;
     position:absolute;
     margin-top:10px;
     margin-left:-33px;
     z-index: 2;
+}
+
+.img--kakao {
+    width: 26px; 
+    height: 24px;
+}
+
+@media (max-width:465px)  {
+
+    .input {
+        width:100%;
+    }
+    .main{
+        margin:auto 30px;
+    }
+
+    .btn--signin {
+        width:100%;
+    }
+    .social_login {
+        width:100%;
+    }
+    .container{
+        width:100%;
+    }
 }
