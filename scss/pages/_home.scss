@@ -55,69 +55,22 @@
   }
 
   &__frame {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    position: relative;
     width: 120rem;
     height: 59rem;
-    padding: 5rem 4.1rem 0;
-    background-color: transparent;
 
     @include tablet {
       width: 65rem;
       height: 33rem;
-      padding: 2.9rem 2.4rem;
     }
 
     @include mobile {
-      width: 32.5rem;
-      height: 16rem;
-      padding: 1.4rem 1.1rem;
+      width: 100%;
+      height: auto;
     }
   }
 
   &__img {
-    width: 111.8rem;
-    height: 70.7rem;
-    background-image: url("/public/images/main-screen.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0 0.4rem 2.5rem 0 rgba(#000, 0.08);
-    border-radius: 2.5rem;
-
-    @include tablet {
-      width: 65rem;
-      height: 38.3rem;
-    }
-
-    @include mobile {
-      width: 30.2rem;
-      height: 19.5rem;
-    }
-  }
-
-  &__dim {
-    position: absolute;
-    top: 0;
-    width: 111.8rem;
-    height: 65.9rem;
-    background: linear-gradient(
-      180deg,
-      rgba(196, 196, 196, 0) 67.68%,
-      #f0f6ff 94.76%
-    );
-
-    @include tablet {
-      width: 65rem;
-      height: 37rem;
-    }
-
-    @include mobile {
-      width: 30.2rem;
-      height: 18rem;
-    }
+    width: 100%;
   }
 }
 
@@ -241,11 +194,6 @@
   }
 
   &__frame {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     width: 55rem;
     height: 45rem;
 
@@ -266,11 +214,12 @@
     @include mobile {
       margin-top: 2rem;
       margin-bottom: 1.6rem;
+      width: 100%;
+      height: auto;
+
       .section-container .section & {
         grid-column: 1;
         grid-row: 2;
-        width: 100%;
-        height: auto;
       }
     }
   }
