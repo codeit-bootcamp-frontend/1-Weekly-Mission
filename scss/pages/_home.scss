@@ -1,6 +1,13 @@
 @use "../utils" as *;
 
 .main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 7rem 3.2rem 0rem;
+  background-color: $linkbrary-bg;
+
   @include tablet {
     padding-top: 3.9rem;
   }
@@ -9,13 +16,6 @@
     padding-top: 2.8rem;
   }
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 7rem 3.2rem 0rem;
-  background-color: $linkbrary-bg;
-
   &__inner {
     display: flex;
     flex-direction: column;
@@ -23,15 +23,6 @@
   }
 
   &__title {
-    @include tablet {
-      width: 48.5rem;
-    }
-
-    @include mobile {
-      width: 26rem;
-      font-size: 3.2rem;
-    }
-
     width: 72rem;
     text-align: center;
     font-size: 6.4rem;
@@ -42,19 +33,37 @@
       background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
       @include text-linear-grad;
     }
+
+    @include tablet {
+      width: 48.5rem;
+    }
+
+    @include mobile {
+      width: 26rem;
+      font-size: 3.2rem;
+    }
   }
 
   &__signup {
+    width: 35rem;
+    margin: 4rem;
+
     @include mobile {
       width: 20rem;
       margin: 2.4rem;
     }
-
-    width: 35rem;
-    margin: 4rem;
   }
 
   &__frame {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 120rem;
+    height: 59rem;
+    padding: 5rem 4.1rem 0;
+    background-color: transparent;
+
     @include tablet {
       width: 65rem;
       height: 33rem;
@@ -66,18 +75,18 @@
       height: 16rem;
       padding: 1.4rem 1.1rem;
     }
-
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    width: 120rem;
-    height: 59rem;
-    padding: 5rem 4.1rem 0;
-    background-color: transparent;
   }
 
   &__img {
+    width: 111.8rem;
+    height: 70.7rem;
+    background-image: url("/public/images/main-screen.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0.4rem 2.5rem 0 rgba(#000, 0.08);
+    border-radius: 2.5rem;
+
     @include tablet {
       width: 65rem;
       height: 38.3rem;
@@ -87,28 +96,9 @@
       width: 30.2rem;
       height: 19.5rem;
     }
-
-    width: 111.8rem;
-    height: 70.7rem;
-    background-image: url("/public/images/main-screen.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0 0.4rem 2.5rem 0 rgba(#000, 0.08);
-    border-radius: 2.5rem;
   }
 
   &__dim {
-    @include tablet {
-      width: 65rem;
-      height: 37rem;
-    }
-
-    @include mobile {
-      width: 30.2rem;
-      height: 18rem;
-    }
-
     position: absolute;
     top: 0;
     width: 111.8rem;
@@ -118,10 +108,28 @@
       rgba(196, 196, 196, 0) 67.68%,
       #f0f6ff 94.76%
     );
+
+    @include tablet {
+      width: 65rem;
+      height: 37rem;
+    }
+
+    @include mobile {
+      width: 30.2rem;
+      height: 18rem;
+    }
   }
 }
 
 .section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rem;
+  width: 100%;
+  padding-top: 12rem;
+  padding-bottom: 17rem;
+
   @include tablet {
     padding-top: 8rem;
   }
@@ -130,17 +138,20 @@
     gap: 8rem;
     padding: 4rem 3.2rem 8rem;
   }
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10rem;
-  width: 100%;
-  padding-top: 12rem;
-  padding-bottom: 17rem;
 }
 
 .section {
+  display: grid;
+
+  .section-odd & {
+    grid-template-columns: 29.1rem 55rem;
+    grid-template-rows: repeat(4, 1fr);
+  }
+  .section-even & {
+    grid-template-columns: 55rem 29.1rem;
+    grid-template-rows: repeat(4, 1fr);
+  }
+
   @include tablet {
     .section-container .section-odd & {
       grid-template-columns: 26.2rem 38.5rem;
@@ -157,47 +168,13 @@
     }
   }
 
-  display: grid;
-
-  .section-odd & {
-    grid-template-columns: 29.1rem 55rem;
-    grid-template-rows: repeat(4, 1fr);
-  }
-  .section-even & {
-    grid-template-columns: 55rem 29.1rem;
-    grid-template-rows: repeat(4, 1fr);
-  }
-
   &__title {
-    @include tablet {
-      width: 26.2rem;
-    }
-
-    @include mobile {
-      width: 30rem;
-      font-size: 2.4rem;
-
-      .section-container .section & {
-        grid-column: 1;
-        grid-row: 1;
-      }
-    }
-
     width: 29.1rem;
     margin-bottom: 1rem;
     font-size: 4.8rem;
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.03rem;
-
-    .section-odd & {
-      grid-column: 1;
-      grid-row: 2;
-    }
-    .section-even & {
-      grid-column: 2;
-      grid-row: 2;
-    }
 
     .section-container :first-child &--grad {
       background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
@@ -215,13 +192,50 @@
     .section-container :nth-child(4) &--grad {
       background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
     }
-
     .section-container .section &--grad {
       @include text-linear-grad;
+    }
+
+    .section-odd & {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .section-even & {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    @include tablet {
+      width: 26.2rem;
+    }
+
+    @include mobile {
+      width: 30rem;
+      font-size: 2.4rem;
+
+      .section-container .section & {
+        grid-column: 1;
+        grid-row: 1;
+      }
     }
   }
 
   &__desc {
+    width: 29.1rem;
+    color: #6b6b6b;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.5;
+
+    .section-odd & {
+      grid-column: 1;
+      grid-row: 3;
+    }
+    .section-even & {
+      grid-column: 2;
+      grid-row: 3;
+    }
+
     @include tablet {
       width: 26.2rem;
     }
@@ -239,24 +253,30 @@
         grid-row: 3;
       }
     }
-
-    .section-odd & {
-      grid-column: 1;
-      grid-row: 3;
-    }
-    .section-even & {
-      grid-column: 2;
-      grid-row: 3;
-    }
-
-    width: 29.1rem;
-    color: #6b6b6b;
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: 1.5;
   }
 
   &__frame {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 55rem;
+    height: 45rem;
+
+    .section-odd & {
+      grid-column: 2;
+      grid-row: 1/5;
+      margin-left: 15.7rem;
+      margin-right: 0;
+    }
+    .section-even & {
+      grid-column: 1;
+      grid-row: 1/5;
+      margin-left: 0;
+      margin-right: 15.7rem;
+    }
+
     @include tablet {
       width: 38.4rem;
       height: 31.5rem;
@@ -280,27 +300,6 @@
         grid-row: 2;
         margin: 0;
       }
-    }
-
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 55rem;
-    height: 45rem;
-
-    .section-odd & {
-      grid-column: 2;
-      grid-row: 1/5;
-      margin-left: 15.7rem;
-      margin-right: 0;
-    }
-    .section-even & {
-      grid-column: 1;
-      grid-row: 1/5;
-      margin-left: 0;
-      margin-right: 15.7rem;
     }
   }
 
