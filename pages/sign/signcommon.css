@@ -123,7 +123,7 @@ button {
   position:relative;
 }
 
-.contain_mark > .eye_mark {
+.contain_mark > .eye_mark_container {
   width: 1.6rem;
   height: 1.6rem;
   right: 1.5rem;

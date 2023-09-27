@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'>
   <link rel="stylesheet" href="/common.css">
   <link rel="stylesheet" href="signcommon.css">
+  <link rel="stylesheet" href="signCommonJs.css">
 </head>
 <body>
   <main>
@@ -32,17 +33,17 @@
           <div class="email_input_box">
             <label for="email_input">이메일</label>
             <input id="email_input" name="e-mail" type="email">
-            <div id="email_input_check_message"></div>
+            <div id="email_check"></div>
           </div>
           
           <div class= "password_input_box contain_mark">
             <label for="password_input">비밀번호</label> 
             <input id="password_input" name="password" type="password">
-            <div id="password_input_check_message"></div>
-            <div class="eye_mark"><img src="/assets/images/eye_off_mark.svg"></div>
+            <div id="password_check"></div>
+            <div class="eye_mark_container"><img class= eye_mark src="/assets/images/eye_off_mark.svg"></div>
           </div>
 
-          <button id="submit_button" type="button"><a href="https://naver.com"></a>로그인</button>
+          <button id="submit_button" type="button"></href=>로그인</button>
 
         </form>
       </div>
@@ -60,7 +61,7 @@
         </div>
       </div>          
     </div>
-    <script src="/pages/sign/signin.js"></script>
+    <script src="/pages/sign/signup.js"></script>
   </main>
 </body>
 </html>
