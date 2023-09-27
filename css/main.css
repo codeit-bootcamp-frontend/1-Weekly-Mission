@@ -411,47 +411,43 @@ button {
 
 .section {
   display: grid;
-}
-.section-odd .section {
-  grid-template-columns: 29.1rem 55rem;
-  grid-template-rows: repeat(4, 1fr);
-}
-.section-even .section {
-  grid-template-columns: 55rem 29.1rem;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  -moz-column-gap: 15.7rem;
+       column-gap: 15.7rem;
+  row-gap: 1rem;
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  .section-container .section-odd .section {
-    grid-template-columns: 26.2rem 38.5rem;
-  }
-  .section-container .section-even .section {
-    grid-template-columns: 38.5rem 26.2rem;
+  .section {
+    -moz-column-gap: 5.1rem;
+         column-gap: 5.1rem;
   }
 }
 @media screen and (max-width: 767px) {
-  .section-container .section .section {
-    grid-template-columns: 1fr;
-    grid-template-rows: 2.9rem 26.6rem 4.6rem;
+  .section {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    row-gap: 0;
   }
 }
 .section__title {
+  align-self: flex-end;
   width: 29.1rem;
-  margin-bottom: 1rem;
   font-size: 4.8rem;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.03rem;
 }
-.section-container :first-child .section__title--grad {
+.section:first-child .section__title--grad {
   background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
 }
-.section-container :nth-child(2) .section__title--grad {
+.section:nth-child(2) .section__title--grad {
   background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
 }
-.section-container :nth-child(3) .section__title--grad {
+.section:nth-child(3) .section__title--grad {
   background: linear-gradient(99deg, #6d7ccd 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
 }
-.section-container :nth-child(4) .section__title--grad {
+.section:nth-child(4) .section__title--grad {
   background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
 }
 .section-container .section .section__title--grad {
@@ -459,13 +455,13 @@ button {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.section-odd .section__title {
+.section:nth-child(odd) .section__title {
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 1;
 }
-.section-even .section__title {
+.section:nth-child(even) .section__title {
   grid-column: 2;
-  grid-row: 2;
+  grid-row: 1;
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .section__title {
@@ -483,19 +479,19 @@ button {
   }
 }
 .section__desc {
-  width: 29.1rem;
+  width: 27.8rem;
   color: #6b6b6b;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5;
 }
-.section-odd .section__desc {
+.section:nth-child(odd) .section__desc {
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 2;
 }
-.section-even .section__desc {
+.section:nth-child(even) .section__desc {
   grid-column: 2;
-  grid-row: 3;
+  grid-row: 2;
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .section__desc {
@@ -504,11 +500,7 @@ button {
 }
 @media screen and (max-width: 767px) {
   .section__desc {
-    grid-column: 1;
-    grid-row: 3;
     width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 1.6rem;
     font-size: 1.5rem;
   }
   .section-container .section .section__desc {
@@ -525,41 +517,30 @@ button {
   width: 55rem;
   height: 45rem;
 }
-.section-odd .section__frame {
+.section:nth-child(odd) .section__frame {
   grid-column: 2;
-  grid-row: 1/5;
-  margin-left: 15.7rem;
-  margin-right: 0;
+  grid-row: 1/3;
 }
-.section-even .section__frame {
+.section:nth-child(even) .section__frame {
   grid-column: 1;
-  grid-row: 1/5;
-  margin-left: 0;
-  margin-right: 15.7rem;
+  grid-row: 1/3;
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .section__frame {
     width: 38.4rem;
     height: 31.5rem;
   }
-  .section-container .section-odd .section__frame {
-    margin-left: 5.1rem;
-    margin-right: 0;
-  }
-  .section-container .section-even .section__frame {
-    margin-left: 0;
-    margin-right: 5.1rem;
-  }
 }
 @media screen and (max-width: 767px) {
   .section__frame {
-    width: 100%;
-    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 1.6rem;
   }
   .section-container .section .section__frame {
     grid-column: 1;
     grid-row: 2;
-    margin: 0;
+    width: 100%;
+    height: auto;
   }
 }
 .section__img {
