@@ -63,10 +63,12 @@ header {
 /* Contents */
 .content {
   display: grid;
-  grid-template-columns: repeat(2, minmax(291px, auto));
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: 
+  "title img"
+  "desc img";
+  grid-auto-columns: minmax(291px, auto);
   gap: 10px 157px;
-  padding: 50px;
+  padding: 50px 0;
   justify-content: center;
   align-items: center;
 }
@@ -74,23 +76,20 @@ header {
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: -0.3px;
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+  grid-area: title;
   align-self: end;
 }
 .description {
   color: #6B6B6B;
   font-weight: 500;
   line-height: 150%;
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  grid-area: desc;
   align-self: start;
 }
 .content-img {
   width: 550px;
   height: 450px;
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-area: img;
 }
 
 /* Content-01 */
@@ -173,7 +172,7 @@ footer .footer-links a {
 }
 
 /* Tablet */
-/* @media (min-width: 768px) and 
+@media (min-width: 768px) and 
 (max-width: 1199px) {
   .gnb {
     padding: 20px 32px;
@@ -193,12 +192,12 @@ footer .footer-links a {
     width: 385px;
     height: 315px;
   }
-} */
+}
 
 /* Mobile */
 @media (min-width: 375px) and 
 (max-width: 767px) {
-  /* .gnb {
+  .gnb {
     padding: 13px 32px;
   }
   .logo {
@@ -227,16 +226,20 @@ footer .footer-links a {
     padding: 10px 16px;
     font-size: 14px;
     margin: 24px 0;
-  } */
+  }
   
   /* Contents */
-  /* .content {
-    flex-direction: column;
+  .content {
+    grid-template-areas: 
+    "title"
+    "img"
+    "desc";
+    gap: 20px;
     padding: 40px 32px;
-    gap: 24px;
   }
   .title {
     font-size: 24px;
+    grid-area: title;
   }
   .title br {
     display: inline-block;
@@ -245,14 +248,12 @@ footer .footer-links a {
   }
   .description {
     font-size: 15px;
+    grid-area: desc;
   }
   .content-img {
     width: 325px;
     height: 266px;
-  }
-  .content-02,
-  .content-04 {
-    flex-direction: column-reverse;
+    grid-area: img;
   }
   .footer-box {
     padding: 0 32px;
@@ -266,5 +267,5 @@ footer .footer-links a {
   }
   .sns {
     order: 2;
-  } */
+  }
 }
