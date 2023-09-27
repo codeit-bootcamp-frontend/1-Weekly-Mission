@@ -70,11 +70,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding:70px 360px 0 360px;
+    margin-top: 98px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 40px;
   }
 
   .LinkButton{
     color: var(--grey-light, #F5F5F5);
+  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -95,6 +101,7 @@
     width: 650.303px;
     height: 383.114px;
     flex-shrink: 0;
+    width: 100%;
     padding:50px 41px 0px 41px;
   }
 
@@ -117,6 +124,13 @@
     display: grid;
     grid-template: 450px/200px 380px;
     justify-content: center;
+    padding: 120px 400px 50px 400px;
+  }
+
+  .content2-grid{
+    width:998px;
+    display: grid;
+    grid-template: 450px/200px 380px;
     gap:157px;
   }
 
@@ -137,6 +151,7 @@
 
   .content-detail{
     color: #6B6B6B;
+    font-family: Pretendard;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -157,6 +172,9 @@
     display: grid;
     grid-template: 450px/380px 200px;
     justify-content: center;
+    width:998px;
+    display: grid;
+    grid-template: 450px/380px 200px;
     gap:157px;
   }
 
@@ -333,3 +351,4 @@
     gap:30px;
    }
 }
+ }
