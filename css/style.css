@@ -197,6 +197,9 @@ footer .footer-links a {
 /* Mobile */
 @media (min-width: 375px) and 
 (max-width: 767px) {
+  br {
+    display: none;
+  }
   .gnb {
     padding: 13px 32px;
   }
@@ -216,6 +219,7 @@ footer .footer-links a {
     width: 236px;
     font-size: 32px;
     line-height: 130%;
+    word-break: keep-all;
   }
   .banner-img {
     width: 303px;
@@ -236,17 +240,14 @@ footer .footer-links a {
     "desc";
     gap: 20px;
     padding: 40px 32px;
+    word-break: keep-all;
   }
   .title {
     font-size: 24px;
     grid-area: title;
   }
-  .title br {
-    display: inline-block;
-    content: '';
-    padding: 0 2px;
-  }
   .description {
+    width: 325px;
     font-size: 15px;
     grid-area: desc;
   }
