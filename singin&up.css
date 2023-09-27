@@ -2,11 +2,18 @@
 @import url(common.css);
 
 /* sign-in page */
-.sign-box {
+
+body {
   background: var(--gray-zircon);
 }
 
-.sign-box .container  {
+.sign-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-box .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,7 +57,7 @@
   font-size: 14px;
 }
 
-.psw-box{
+.psw-box {
   position: relative;
 }
 
@@ -60,7 +67,7 @@
   top: 60%;
 }
 
-.sign-box .input-box input{
+.sign-box .input-box input {
   width: 100%;
   margin-top: 12px;
   padding: 18px 15px;
@@ -68,7 +75,7 @@
   border-radius: 8px;
 }
 
-.sign-box .input-box input:focus{
+.sign-box .input-box input:focus {
   outline: none;
   border: 1px solid var(--primary);
 }
@@ -97,7 +104,7 @@
   font-size: 14px;
 }
 
-.social-link{
+.social-link {
   display: flex;
   gap: 16px;
 }
@@ -119,8 +126,24 @@
   margin: 25%;
 }
 
-/* sign-up page*/
+/* sign-up page */
 
 .sign-box.sign-up .container {
   padding: 238px 0 116px;
+}
+
+/* mobile size */
+
+@media (max-width:768px) {
+  
+  .sign-box .input-box {
+    max-width: 400px;
+    padding: 0 32px;
+}
+
+  .sign-box .container,
+  .sign-box.sign-up .container{
+    padding: 25% 0;
+  }
+
 }
