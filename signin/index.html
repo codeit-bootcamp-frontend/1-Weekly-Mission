@@ -43,22 +43,32 @@
                 class="items__input"
                 placeholder="이메일을 입력해주세요."
               />
+              <div id="email-error" class="error-message"></div>
             </div>
 
             <div class="items sign-password">
               <label for="password" class="items__label">비밀번호</label>
-              <input
-                id="password"
-                class="items__input"
-                type="password"
-                placeholder="비밀번호를 입력해주세요."
-              />
-              <button class="items__eye-button" type="button">
-                <img
-                  src="../src/images/eye-off.svg"
-                  alt="패스워드 숨기기 이미지"
+              <div class="password__container">
+                <input
+                  id="password"
+                  class="items__input"
+                  type="password"
+                  placeholder="비밀번호를 입력해주세요."
                 />
-              </button>
+                <button class="items__eye-button" type="button">
+                  <img
+                    class="eye-button"
+                    src="../src/images/eye-off.svg"
+                    alt="패스워드 숨기기 이미지"
+                  />
+                  <img
+                    class="eye-button"
+                    src="../src/images/eye-on.svg"
+                    alt="패스워드 숨기기 이미지"
+                  />
+                </button>
+              </div>
+              <div id="password-error" class="error-message"></div>
             </div>
           </div>
           <button class="cta" type="submit">로그인</button>
@@ -78,5 +88,6 @@
         </div>
       </main>
     </div>
+    <script src="../src/js/signin.js"></script>
   </body>
 </html>
