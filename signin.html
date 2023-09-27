@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Linkbrary</title>
+    <link rel="stylesheet" href="src/reset.css" />
+    <link rel="stylesheet" href="src/common/variable.css" />
+    <link rel="stylesheet" href="src/signin_signup.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+      <div class="signin-intro">
+        <div>
+          <a class="logo" href="index.html">
+            <img class="logo" src="img/logo.png" />
+          </a>
+        </div>
+        <div>
+          <span>회원이 아니신가요?</span>
+          <a class="signup-link" href="signup.html">회원 가입하기</a>
+        </div>
+      </div>
+      
+      <div class="signin-part">
+        <form>
+          <label for="email">이메일</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+            required
+          />
+          <label for="password">비밀번호</label>
+          <div class="password-eye-off">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              required
+            />
+            <img class="eye-off" src="img/eye-off.svg" />
+          </div>
+          <button id="login-button" type="submit">로그인</button>
+        </form>
+        <div class="social-login">
+          <span class="social-login-text">소셜 로그인</span>
+          <div class="social-login-buttons">
+            <a class="google-button" href="https://www.google.com/">
+              <img class="social-button-logo" src="img/google.svg" />
+            </a>
+            <a class="kakao-button" href="https://www.kakaocorp.com/page/">
+              <img class="social-button-logo" src="img/kakao.svg" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>
