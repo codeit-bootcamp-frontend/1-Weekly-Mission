@@ -44,6 +44,8 @@ header {
   align-items: center;
 }
 .banner p {
+  width: 708px;
+  height: 160px;
   font-size: 4rem;
   font-weight: 700;
   line-height: 125%;
@@ -197,9 +199,6 @@ footer .footer-links a {
 /* Mobile */
 @media (min-width: 375px) and 
 (max-width: 767px) {
-  br {
-    display: none;
-  }
   .gnb {
     padding: 13px 32px;
   }
@@ -217,8 +216,9 @@ footer .footer-links a {
   }
   .banner p {
     width: 236px;
+    height: auto;
     font-size: 32px;
-    line-height: 130%;
+    line-height: 42px;
     word-break: keep-all;
   }
   .banner-img {
@@ -241,6 +241,9 @@ footer .footer-links a {
     gap: 20px;
     padding: 40px 32px;
     word-break: keep-all;
+  }
+  .content br {
+    display: none;
   }
   .title {
     font-size: 24px;
