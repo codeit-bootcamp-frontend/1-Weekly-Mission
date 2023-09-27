@@ -80,11 +80,67 @@ form .input-box:not(:last-child) {
     border: 1px solid var(--linkbrary-gray-20);
     background:  var(--linkbrary-white);
 }
+
 .input-box input:focus {
     outline-color: var(--linkbrary-primary-color);
   }
 
+
+.password-box.empty input,
+.password-box.empty input, 
+.password-box.wrong input {
+    border: 1px solid var(--linkbrary-red);
+}
+.email-box.empty input,
+.email-box.error input,
+.email-box.wrong input {
+    border: 1px solid var(--linkbrary-red);
+}
+
+  
+.email-box.empty::after {
+    content:"이메일을 입력해주세요.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.email-box.error::after {
+    content:"올바른 이메일 주소가 아닙니다.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.email-box.wrong::after {
+    content:"이메일을 확인해주세요.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.password-box.empty::after {
+    content:"비밀번호를 입력해주세요.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.password-box.wrong::after {
+    content:"비밀번호를 확인해주세요.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .fa-solid {
+    width:20px;
+    height:auto;
     position: absolute;
     top: 50%;
     right: 1%;
