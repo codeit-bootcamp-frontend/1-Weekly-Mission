@@ -1,120 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- twitter 제외 부분 -->
+    <meta property="og:title" content="Linkbrary" />
+    <meta property="og:url" content="https://week3-naeun-kim.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
+    />
+    <meta
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <meta property="og:site_name" content="Linkbrary" />
+
+    <!-- twitter 부분 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
+    />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta
+      name="twitter:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <meta
+      name="twitter:domain"
+      content="https://week3-naeun-kim.netlify.app/"
+    />
+
     <title>Linkbrary</title>
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./src/index.css" />
   </head>
   <body>
-    <header class="gnb">
-      <div class="frame1">
+    <nav>
+      <div class="gnb">
         <a href="index.html" class="logo_button">
           <img src="./image/logo.svg" class="logo" />
         </a>
-        <a href="signin/index.html" class="button login"> 로그인 </a>
+        <a href="signin.html" class="button login"> 로그인 </a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="main_header">
+        <h1 class="main_title">
+          <span class="main_title_gradient background_clip_text"
+            >세상의 모든 정보</span
+          >를<br class="title_br_large" />
+          쉽게 저장하고 <br class="title_br_middle title_br_small" />관리해
+          보세요
+        </h1>
+        <a href="signup.html" class="button add_link"> 링크 추가하기 </a>
+        <img src="./image/hero.png" class="main_image" />
       </div>
     </header>
-    <main>
-      <section class="main_header">
-        <div class="main_title">
-          <span>세상의 모든 정보</span>를<br />
-          쉽게 저장하고 관리해 보세요
-        </div>
-        <a href="signup/index.html" class="button add_link"> 링크 추가하기 </a>
-        <img src="./image/hero.png" class="content1_image" />
-      </section>
 
+    <main>
       <section class="contents">
-        <section class="container">
-          <div class="content_container">
-            <div class="content_title">
-              <span class="content2_title">원하는 링크</span>를<br />
-              저장하세요
-            </div>
-            <p class="content_paragraph">
-              나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
-              사고 싶은 옷, 기억하고 싶은 모든 것을<br />
-              한 공간에 저장하세요.
-            </p>
-          </div>
-        </section>
+        <h2 class="content_title">
+          <span class="title1_gradient background_clip_text">원하는 링크</span
+          >를<br />
+          저장하세요
+        </h2>
+        <p class="content_paragraph">
+          나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br class="title_br_large" />
+          사고 싶은 옷, <br class="title_br_small" />기억하고 싶은 모든 것을<br
+            class="title_br_large"
+          />
+          한 공간에 저장하세요.
+        </p>
+
         <img src="image/image1.png" class="content_image" />
       </section>
 
       <section class="contents">
         <img src="image/image2.png" class="content_image" />
-        <section class="container">
-          <div class="content_container">
-            <div class="content_title">
-              링크를 폴더로<br />
-              <span class="content3_title">관리</span>하세요
-            </div>
-            <p class="content_paragraph">
-              나만의 폴더를 무제한으로 만들고<br />
-              다양하게 활용할 수 있습니다.
-            </p>
-          </div>
-        </section>
+
+        <h2 class="content_title">
+          링크를 폴더로<br />
+          <span class="title2_gradient background_clip_text">관리</span>하세요
+        </h2>
+        <p class="content_paragraph">
+          나만의 폴더를 무제한으로 만들고<br class="title_br_large" />
+          다양하게 활용할 수 <br class="title_br_small" />있습니다.
+        </p>
       </section>
 
       <section class="contents">
-        <section class="container">
-          <div class="content_container">
-            <div class="content_title">
-              저장한 링크를<br />
-              <span class="content4_title">공유</span>해 보세요.
-            </div>
-            <p class="content_paragraph">
-              여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
-              가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />
-              공유해 보세요.
-            </p>
-          </div>
-        </section>
+        <h2 class="content_title">
+          저장한 링크를<br />
+          <span class="title3_gradient background_clip_text">공유</span>해
+          보세요
+        </h2>
+        <p class="content_paragraph">
+          여러 링크를 폴더에 담고 공유할 수
+          <br class="title_br_middle" />있습니다.<br class="title_br_large" />
+          가족, <br class="title_br_small" />친구, 동료들에게 쉽고
+          <br class="title_br_middle" />빠르게 링크를<br
+            class="title_br_large"
+          />
+          공유해 보세요.
+        </p>
+
         <img src="image/image3.png" class="content_image" />
       </section>
 
       <section class="contents">
         <img src="image/image4.png" class="content_image" />
-        <section class="container">
-          <div class="content_container">
-            <div class="content_title">
-              저장한 링크를<br />
-              <span class="content5_title">검색</span>해 보세요
-            </div>
-            <p class="content_paragraph">
-              중요한 정보들을 검색으로 쉽게 찾아보세요.
-            </p>
-          </div>
-        </section>
+
+        <h2 class="content_title">
+          저장한 링크를<br />
+          <span class="title4_gradient background_clip_text">검색</span>해
+          보세요
+        </h2>
+        <p class="content_paragraph">
+          중요한 정보들을 검색으로 쉽게
+          <br class="title_br_middle" />찾아보세요.
+        </p>
       </section>
     </main>
-    <footer class="footer">
-      <section class="footer_content">
-        <div class="footer_text">
-          <div class="footer_codeit">©codeit - 2023</div>
-          <section class="footer_pf">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="faq.html">FAQ</a>
-          </section>
-          <section class="footer_links">
-            <a href="https://facebook.com"
-              ><img src="./image/facebook.svg"
-            /></a>
-            <a href="https://twitter.com"><img src="./image/twitter.svg" /></a>
-            <a href="https://youtube.com"><img src="./image/youtube.svg" /></a>
-            <a href="https://instagram.com"
-              ><img src="./image/instagram.svg"
-            /></a>
-          </section>
+
+    <footer>
+      <div class="footer_content">
+        <span class="footer_codeit">©codeit - 2023</span>
+        <div class="footer_links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="faq.html">FAQ</a>
         </div>
-      </section>
+        <div class="footer_sns">
+          <a href="https://facebook.com"><img src="image/facebook.svg" /></a>
+          <a href="https://twitter.com"><img src="image/twitter.svg" /></a>
+          <a href="https://youtube.com"><img src="image/youtube.svg" /></a>
+          <a href="https://instagram.com"><img src="image/instagram.svg" /></a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

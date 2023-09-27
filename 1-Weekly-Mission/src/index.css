@@ -1,0 +1,410 @@
+/* css codes for index.html */
+@import "./common.css";
+
+/* 1200px이상인 경우 최소 좌우 여백 32px씩 유지하면서 두 개 사이 간격이 가까워지도록 */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #edf7ff;
+  padding: 2rem 3.2rem;
+}
+
+.gnb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  max-width: 192rem;
+}
+
+.logo_button {
+  flex: 1;
+
+  margin-right: 2rem;
+}
+
+.logo {
+  width: 13.3rem;
+  height: 2.4rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  border-radius: 0.8rem;
+  background-image: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+
+  color: #f5f5f5;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.login {
+  width: 12.8rem;
+  padding: 1.6rem 2rem;
+}
+
+main {
+  padding-top: 7rem;
+  padding-bottom: 12rem;
+}
+
+header {
+  padding: 7rem 36rem 0 36rem;
+  background: #f0f6ff;
+  width: 100%;
+}
+
+.main_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4rem;
+  align-self: stretch;
+}
+
+.main_title {
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 8rem;
+
+  color: #000;
+
+  min-width: 708px;
+}
+
+.main_title_gradient {
+  background-image: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+}
+
+.background_clip_text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.title_br_middle {
+  display: none;
+}
+
+.title_br_small {
+  display: none;
+}
+
+.add_link {
+  width: 35rem;
+  padding: 1.6rem 2rem;
+}
+
+.main_image {
+  width: 120rem;
+  height: 59rem;
+}
+
+.contents {
+  display: grid;
+  justify-content: center;
+  column-gap: 15.7rem;
+  row-gap: 1rem;
+  width: 100%;
+  height: 55rem;
+  padding: 5rem 0;
+}
+
+.content_title {
+  grid-area: title;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 5.8rem;
+  letter-spacing: -0.03rem;
+
+  align-self: center;
+}
+
+section:nth-of-type(odd) {
+  grid-template:
+    ". image"
+    "title image"
+    "paragraph image"
+    ". image"
+    /29.1rem 55rem;
+}
+
+section:nth-of-type(even) {
+  grid-template:
+    "image ."
+    "image title"
+    "image paragraph"
+    "image ."
+    /55rem 29.1rem;
+}
+
+.title1_gradient {
+  background-image: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+}
+
+.title2_gradient {
+  background-image: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+}
+
+.title3_gradient {
+  background-image: linear-gradient(
+    99deg,
+    #6d7ccd 19.76%,
+    rgba(82, 136, 133, 0.22) 52.69%
+  );
+}
+
+.title4_gradient {
+  background-image: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
+}
+
+.content_paragraph {
+  grid-area: paragraph;
+  color: #6b6b6b;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 150%;
+
+  align-self: center;
+}
+
+.content_image {
+  grid-area: image;
+  width: 55rem;
+  height: 45rem;
+
+  align-self: center;
+}
+
+footer {
+  background-color: #111322;
+  width: 100%;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 192rem;
+  height: 16rem;
+  padding: 3.2rem 10.4rem;
+}
+
+.footer_codeit {
+  color: #676767;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.footer_links {
+  display: flex;
+  column-gap: 3rem;
+}
+
+.footer_links > a {
+  color: #cfcfcf;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.footer_sns {
+  display: flex;
+  column-gap: 1.2rem;
+  height: 2rem;
+}
+
+/* 1199px이하로 작아지게 될 경우 “Linkbrary” 로고와 “로그인” 버튼 사이의 간격은 변하지 않게
+  고정값으로 유지하되 좌우 여백은 줄어들어도되고 */
+@media (max-width: 1199px) {
+  .gnb {
+    max-width: 76.8rem;
+    margin: 0 auto;
+  }
+
+  header {
+    padding: 3.9rem 25rem 0 25rem;
+  }
+
+  .main_title {
+    min-width: 47.2rem;
+    max-width: 47.2rem;
+    height: 24rem;
+  }
+
+  .title_br_large {
+    display: none;
+  }
+
+  .title_br_middle {
+    display: block;
+  }
+
+  .title_br_small {
+    display: none;
+  }
+
+  .main_image {
+    width: 69.8rem;
+    height: 34.3rem;
+  }
+
+  main {
+    padding-top: 3rem;
+  }
+
+  .contents {
+    column-gap: 5.1rem;
+    height: 41.5rem;
+  }
+
+  section:nth-of-type(odd) {
+    grid-template:
+      ". image"
+      "title image"
+      "paragraph image"
+      ". image"
+      /26.2rem 38.5rem;
+  }
+
+  section:nth-of-type(even) {
+    grid-template:
+      "image ."
+      "image title"
+      "image paragraph"
+      "image ."
+      /38.5rem 26.2rem;
+  }
+
+  .content_image {
+    width: 38.5rem;
+    height: 31.5rem;
+  }
+}
+
+/* Mobile 사이즈의 이미지는 좌우 여백 32px을 제외하고
+  이미지 영역이 꽉 찰 수 있도록 해주세요
+  (이때 가로가 커지는 비율에 맞춰 세로도 커지면 됩니다.) */
+@media (max-width: 767px) and (min-width: 375px) {
+  nav {
+    padding: 1.3rem 3.2rem;
+  }
+
+  .logo {
+    width: 8.8667rem;
+    height: 1.6rem;
+  }
+
+  .login {
+    width: 8rem;
+  }
+
+  .button {
+    font-size: 1.4rem;
+    padding: 1rem 1.6rem;
+  }
+
+  header {
+    padding: 2.8rem 3.2rem 0 3.2rem;
+    gap: 2.4rem;
+  }
+
+  .main_title {
+    font-size: 3.2rem;
+    line-height: 4.2rem;
+
+    min-width: 23.6rem;
+    max-width: 23.6rem;
+    height: 12.6rem;
+  }
+
+  .title_br_large {
+    display: none;
+  }
+
+  .title_br_middle {
+    display: none;
+  }
+
+  .title_br_small {
+    display: block;
+  }
+
+  .add_link {
+    width: 20rem;
+  }
+
+  .main_image {
+    width: 100%;
+    height: 100%;
+  }
+
+  main {
+    width: 100%;
+    padding: 4rem 3.2rem;
+  }
+
+  .contents {
+    flex-direction: column;
+    gap: 1.8rem;
+
+    height: 100%;
+  }
+
+  section.contents {
+    grid-template:
+      "title"
+      "image"
+      "paragraph";
+  }
+
+  .content_title {
+    font-size: 2.4rem;
+    line-height: normal;
+  }
+
+  .content_title > br {
+    display: none;
+  }
+
+  .content_image {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mobile 사이즈 너비가 커지면, “Privacy Policy”, “FAQ”, “codeit-2023”이 있는 영역과 
+  SNS 아이콘들이 있는 영역의 간격이 커지도록 하세요. */
+  .footer_content {
+    flex-wrap: wrap;
+    gap: 6rem 0;
+    height: auto;
+    padding: 3.2rem;
+  }
+
+  .footer_codeit {
+    order: 1;
+  }
+
+  .footer_links {
+    flex-basis: 50%;
+  }
+
+  .footer_sns {
+    flex-basis: 50%;
+    justify-content: end;
+  }
+}
