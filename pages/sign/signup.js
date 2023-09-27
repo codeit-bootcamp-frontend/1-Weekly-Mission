@@ -1,2 +1,2 @@
-import * as signCommon from "signCommon.js";
+import * as signCommon from "/signCommon.js";
 
