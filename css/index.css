@@ -254,6 +254,12 @@
       ". title img ."
       ". text  img .";
   }
+  .section--grid-reverse {
+    grid-template: auto auto / calc(50vw - 50rem) 1fr 30rem calc(50vw - 50rem);
+    grid-template-areas:
+      ". img title ."
+      ". img text .";
+  }
 
   .text--display {
     display: inline;

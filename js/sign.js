@@ -7,8 +7,8 @@ const $submit = document.querySelector(".form__submit");
 const regEx = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
 // 기본 : 빈 입력값, 입력값 형태 확인, /folder로 이동하기
 for (let i = 0; i < $inputs.length; i++) {
-  $inputs[i].addEventListener("focusout", certify)
-  $inputs[i].addEventListener("focusin", certify)
+  $inputs[i].addEventListener("focusout", certify);
+  $inputs[i].addEventListener("focusin", certify);
 }
 
 function certify({ currentTarget, type }) {
@@ -57,13 +57,17 @@ function resetErr(currentTarget) {
 $submit.addEventListener("click", checkValue);
 
 function checkValue(event) {
-  const emCheck = $inputs[0].value === 'test@codeit.com'
-  const pwCheck = $inputs[1].value === 'codeit101';
+  event.preventDefault();
+  const emVal = $inputs[0].value;
+  const pwVal = $inputs[1].value;
+  const emCheck = emVal === 'test@codeit.com';
+  const pwCheck = pwVal === 'codeit101';
+  // 일치하면 이동, 값이 불일치하면 값 제거;
   if (emCheck && pwCheck) {
-    alert("확인");
-    location.href = "/index.html"
-  } else {
-    event.preventDefault();
+    location.href = "./folder.html"
+  } else if (emVal && pwVal) {
+    $inputs[0].value = "";
+    $inputs[1].value = "";
   }
 }
 
