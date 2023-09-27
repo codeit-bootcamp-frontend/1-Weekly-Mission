@@ -417,14 +417,13 @@ header {
 
 /* Tablet */
 
-@media (min-width: 863px) and (max-width: 1199px) {
-  .header-content {
-    margin: 20px auto;
-    width: 799px;
-  }
-}
-
 @media (min-width: 768px) and (max-width: 1199px) {
+  .header-content {
+    margin: 20px 0;
+    padding: 0px 32px;
+    width: 864px;
+  }
+
   .text-section {
     width: 262px;
   }
