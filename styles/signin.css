@@ -16,16 +16,16 @@ body {
 }
 
 form {
-  width:400px;
+  width:40rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 238px 0 116px 0;
+  margin: 23.8rem 0 11.6rem 0;
 
   @media (min-width: 375px) and (max-width: 767px){
-    max-width: 400px;
-    margin-top: 120px;
-    padding: 0 32px;
+    max-width: 40rem;
+    margin-top: 12rem;
+    padding: 0 3.2rem;
     width: 100%;
   }
 }
@@ -33,14 +33,14 @@ form {
 header {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
   align-items: center;;
   width:100%;
 }
 
 .title-logo{
-  width: 210.5824px;
-  height: 38px;
+  width: 21.05824rem;
+  height: 3.8rem;
 }
 
 .title-logo img {
@@ -48,7 +48,7 @@ header {
 }
 
 .title-subtext {
-  margin-top: 16px;
+  margin-top: 1.6rem;
   text-align: center;
 }
 
@@ -56,46 +56,46 @@ label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 8px;
-  max-width: 400px;
+  border-radius: 0.8rem;
+  max-width: 40rem;
   width: 100%;
 }
 
 button {
-  margin-top: 30px;
+  margin-top: 3rem;
   display: flex;
   width: 100%;
-  padding: 16px 20px;
+  padding: 1.6rem 2rem;
   justify-content: center;
   align-items: center;
   color: #fff;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: none;
   background: linear-gradient(
     90deg,
     rgba(109, 106, 254, 1),
     rgba(106, 227, 254, 1)
   ); 
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 600;
   cursor : pointer;
 }
 
 input {
   display: flex;
-  padding: 18px 15px;
+  padding: 1.8rem 1.5rem;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  border: 1px solid #ccd5e3;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #ccd5e3;
   background: #fff;
   width:100%;
 }
 
 input:focus {
   outline: none;
-  border: 2px solid #6D6AFE;
-  border-radius: 8px; 
+  border: 0.2rem solid #6D6AFE;
+  border-radius: 0.8rem; 
 }
 
 .helper{
@@ -104,27 +104,27 @@ input:focus {
   justify-content: center;
   align-items:center;
   position: relative;
-  margin: 12px 0 24px 0;
+  margin: 1.2rem 0 2.4rem 0;
   width: 100%;
 }
 
 .input-eye-off{
   position: absolute;
-  right: 15px;
+  right: 1.5rem;
   display:flex;
   flex-direction: row;
   justify-content: center;
 }
 
 .another-signup {
-  margin-top: 32px;
+  margin-top: 3.2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.8rem;
   border: 1px solid #ccd5e3;
   background-color: #e7effb;
 }
@@ -134,7 +134,7 @@ input:focus {
   flex-direction: row;
   justify-content: flex-end;
   background-color: #e7effb;
-  gap:16px;
+  gap:1.6rem;
 }
 
 .another-signup-text {
