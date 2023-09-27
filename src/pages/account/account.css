@@ -21,7 +21,8 @@ body {
   gap: 32px;
 
   position: absolute;
-  width: 400px;
+  max-width: 400px;
+  min-width: 375px;
 }
 
 .logo {
@@ -54,7 +55,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 18px 15px;
+  padding: 18px 0px;
   width: 400px;
   height: 25px;
   background: #ffffff;
@@ -140,4 +141,17 @@ body {
 }
 .kakao_icon {
   background-color: #f7e600;
+}
+
+/* Mobile width: 390px height 2460px*/
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .sign_form {
+    width: 100%;
+    padding: 0px 2rem;
+    max-width: 39vh;
+  }
+
+  .sign_form input {
+    width: 100%;
+  }
 }
