@@ -1,103 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/pages/landing.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <meta property="og:title" content="Linkbrary" />
+    <meta property="og:url" content="https://youdame.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <meta
+      property="og:image"
+      content="https://youdame.netlify.app/images/landing/img1.png"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style/reset.css">
-  <link rel="stylesheet" href="style/landing.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linkbrary</title>
-</head>
+    <title>Linkbrary</title>
+  </head>
 
-<body>
-
-  <header>
-    <div class=starter>
-      <a href="/">
-        <img src="images/landing/logo.png">
-      </a>
-      <a class="login" href='signin.html'>로그인</a>
-    </div>
-  </header>
-
-
-  <main>
-    <div class="intro">
-      <h1><span>세상의 모든 정보</span>를<br> 쉽게 저장하고 관리해보세요</h1>
-
-      <a class="addlink" href='signup.html'>링크 추가하기</a>
-      <img src="images/landing/img1.png">
-
-    </div>
-
-    <div class="content">
-      <div class="frame">
-        <div class="texts pink_blur">
-          <h2><span>원하는 링크</span>를<br>저장하세요</h2>
-          <div class="para">나중에 읽고 싶은 글, 다시 보고 싶은 영상,
-            사고 싶은 옷, 기억하고 싶은 모든 것을
-            한 공간에 저장하세요.</div>
-        </div>
-        <img src="images/landing/img2.png">
+  <body>
+    <header>
+      <div class="starter">
+        <a class="logo" href="/">
+          <img src="images/landing/logo.png" />
+        </a>
+        <a class="login flex-center" href="signin.html">로그인</a>
       </div>
+    </header>
 
-    </div>
-
-    <div class="content">
-      <div class="frame">
-        <img src="images/landing/img3.png">
-        <div class="texts beige_blur">
-          <h2>링크를 폴더로<br><span>관리</span>하세요</h2>
-          <div class="para">나만의 폴더를 무제한으로 만들고
-            다양하게 활용할 수 있습니다.
+    <main>
+      <div class="intro">
+        <h1>
+          <div class="first-line">
+            <div><span>세상의 모든 정보</span>를</div>
           </div>
+          <div class="second-line">
+            <div>쉽게 저장하고</div>
+            <div>관리해보세요</div>
+          </div>
+        </h1>
+
+        <a class="addlink flex-center" href="signup.html">링크 추가하기</a>
+        <img class="intro-img" src="images/landing/img1.png" />
+      </div>
+
+      <div class="content flex-center first-content">
+        <div class="frame">
+          <div class="texts pink_blur">
+            <h2><span>원하는 링크</span>를 저장하세요</h2>
+          </div>
+          <div class="para">
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
+            싶은 모든 것을 한 공간에 저장하세요.
+          </div>
+
+          <img class="content-img" src="images/landing/img2.png" />
         </div>
       </div>
-    </div>
 
+      <div class="content flex-center">
+        <div class="frame">
+          <img class="content-img reloc-img" src="images/landing/img3.png" />
+          <div class="texts beige_blur reloc-texts">
+            <h2>링크를 폴더로 <span>관리</span>하세요</h2>
+          </div>
 
-    <div class="content">
-      <div class="frame">
-        <div class="texts blue_blur">
-          <h2>저장한 링크를<br><span>공유</span>해 보세요</h2>
-          <div class="para">여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고 빠르게 링크를
-            공유해 보세요.</div>
-        </div>
-        <img src="images/landing/img7.png">
-      </div>
-    </div>
-
-    <div class="content">
-      <div class="frame">
-        <img src="images/landing/img6.png">
-        <div class="texts sky_blur">
-          <h2>저장한 링크를<br><span>검색</span>해 보세요</h2>
-          <div class="para">중요한 정보들을 검색으로 쉽게 찾아보세요.</div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <div class="frame">
-        <div class="footer_element">
-          <div class="codeit_2023">code-it - 2023</div>
-          <div class="extra_info"><a href="privacy.html"><span>Privacy Policy</span></a> <a
-              href="faq.html"><span>FAQ</span></a></div>
-          <div class="sns_icons">
-            <a href="https://www.facebook.com"><img src="images/landing/facebook.png"></a>
-            <a href="https://twitter.com"><img src="images/landing/twitter.png"></a>
-            <a href="https://www.youtube.com"><img src="images/landing/youtube.png"></a>
-            <a href="https://www.instagram.com"><img src="images/landing/instagram.png"></a>
+          <div class="para reloc-para">
+            나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
           </div>
         </div>
       </div>
 
-    </footer>
+      <div class="content flex-center">
+        <div class="frame">
+          <div class="texts blue_blur">
+            <h2>저장한 링크를 <span>공유</span>해 보세요</h2>
+          </div>
+          <div class="para">
+            여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
+            쉽고 빠르게 링크를 공유해 보세요.
+          </div>
 
-    </div>
-  </main>
+          <img class="content-img" src="images/landing/img7.png" />
+        </div>
+      </div>
 
+      <div class="content flex-center">
+        <div class="frame">
+          <img class="content-img reloc-img" src="images/landing/img6.png" />
+          <div class="texts sky_blur reloc-texts">
+            <h2>저장한 링크를 <span>검색</span>해 보세요</h2>
+          </div>
+          <div class="para reloc-para">
+            중요한 정보들을 검색으로 쉽게 찾아보세요.
+          </div>
+        </div>
+      </div>
 
-</body>
-
+      <footer>
+        <div class="frame">
+          <div class="footer_container">
+            <div class="codeit_2023">code-it - 2023</div>
+            <div class="extra_info">
+              <a href="privacy.html"><span>Privacy Policy</span></a>
+              <a href="faq.html"><span>FAQ</span></a>
+            </div>
+            <div class="sns_icons">
+              <a href="https://www.facebook.com"
+                ><img src="images/landing/facebook.png"
+              /></a>
+              <a href="https://twitter.com"
+                ><img src="images/landing/twitter.png"
+              /></a>
+              <a href="https://www.youtube.com"
+                ><img src="images/landing/youtube.png"
+              /></a>
+              <a href="https://www.instagram.com"
+                ><img src="images/landing/instagram.png"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>

@@ -1,20 +1,9 @@
-:root{
-  --linkbrary-bg: #F0F6FF;
-  --linkbrary-primary-color : #6D6AFE;
-  --black : #000;
-  --linkbrary-gray-20 : #CCD5E3;
-  --linkbrary-white : #FFF;
-  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-  --grey-light : #F5F5F5;
-  --linkbrary-gray-10 : #E7EFFB;
-  --linkbrary-gray-100 : #373740;
+* {
+  box-sizing: border-box;
 }
 
 body{
-  display: flex;
   padding: 238px 0px 252px 0px;
-  justify-content: center;
-  align-items: center;
   background: var(--linkbrary-bg);
 
 }
@@ -65,7 +54,7 @@ main{
 .inputFrame{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   
 }
 
@@ -78,7 +67,6 @@ main{
 .inputFrame .inputbox{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 12px;
   color: var(--black);
   font-family: Pretendard;
@@ -89,11 +77,9 @@ main{
 
 
 .inputFrame .inputbox #email, #password{
-  display: flex;
+ 
   width: 400px;
   padding: 18px 15px;
-  justify-content: center;
-  align-items: center;
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-20);
   background: var(--linkbrary-white);
@@ -118,11 +104,8 @@ main{
   border-color: #6D6AFE;
 }
 
-.inputFrame .loginbutton{
-  display: flex;
+.inputFrame .login-button{
   padding: 16px 20px;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue);
@@ -154,4 +137,26 @@ main{
 .social-login .icons{
   display: flex;
   gap : 16px;
+}
+
+@media (max-width: 767px) {
+  main {
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+    
+ 
+  }
+
+  main > *, main .inputFrame form, .inputFrame .inputbox #email, .inputFrame .inputbox #password, .social-login{
+    width: 100%;
+    max-width: 400px;
+  }
+
+
+
+
+
+  
+
 }

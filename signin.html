@@ -1,57 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/pages/signin.css" />
+    <title>Linkbrary</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel=stylesheet href="style/reset.css">
-  <link rel=stylesheet href="style/signin.css">
-  <title>Linkbrary</title>
-</head>
-
-
-
-<body>
-  <main>
-    <div class="logo-and-signup">
-      <div class="logo">
-        <a href="/">
-          <img src="images/signin/logo.svg">
-        </a>
-      </div>
-      <span>회원이 아니신가요? <a href="signup.html">회원 가입하기</a></span>
-    </div>
-
-    <div class="inputFrame">
-      <form>
-        <div class="inputbox">
-          <label for="email">이메일</label>
-          <input id="email" name="email" type="email">
+  <body class="flex-center">
+    <main>
+      <div class="logo-and-signup">
+        <div class="logo">
+          <a href="/">
+            <img src="images/signin/logo.svg" />
+          </a>
         </div>
-        <div class="inputbox">
-          <label for="password">비밀번호</label>
-          <div class="password">
-            <input id="password" name="password" type="password">
-            <img src="images/signin/eye-off.svg">
+        <span>회원이 아니신가요? <a href="signup.html">회원 가입하기</a></span>
+      </div>
+
+      <div class="inputFrame">
+        <form>
+          <div class="inputbox">
+            <label for="email">이메일</label>
+            <input id="email" class="flex-center" name="email" type="email" />
           </div>
-        </div>
+          <div class="inputbox">
+            <label for="password">비밀번호</label>
+            <div class="password">
+              <input id="password" class="flex-center" name="password" type="password" />
+              <img src="images/signin/eye-off.svg" />
+            </div>
+          </div>
 
-        <button class="loginbutton">로그인</button>
-      </form>
-    </div>
-
-    <div class="social-login">
-      <span>소셜 로그인</span>
-      <div class="icons">
-        <a href="https://www.google.com/">
-          <img src="images/signin/google.png">
-        </a>
-        <a href="https://www.kakaocorp.com/page/">
-          <img src="images/signin/kakaotalk.png">
-        </a>
+          <button class="login-button flex-center">로그인</button>
+        </form>
       </div>
-    </div>
-  </main>
-</body>
 
+      <div class="social-login">
+        <span>소셜 로그인</span>
+        <div class="icons">
+          <a href="https://www.google.com/">
+            <img src="images/signin/google.png" />
+          </a>
+          <a href="https://www.kakaocorp.com/page/">
+            <img src="images/signin/kakaotalk.png" />
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
