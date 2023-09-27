@@ -46,8 +46,8 @@
 .addlink-btn {
   background: var(--gra-purpleblue-to-skyblue);
   border-radius: 8px;
-  width: 21.875rem;
-  padding: 1rem 1.25rem;
+  width: 350px;
+  padding: 16px 20px;
   gap: 10px;
   display: flex;
   justify-content: center;
@@ -192,7 +192,7 @@
 .content3-textbox-accent {
   grid-area: title;
   width: 270px;
-  font-size: 3rem;
+  font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -230,7 +230,7 @@
   grid-area: title;
   width: 273px;
   color: #000;
-  font-size: 3rem;
+  font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -246,7 +246,6 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 3rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -255,7 +254,9 @@
 .content4-textbox-normal {
   grid-area: description;
   color: #6b6b6b;
-  font-size: 1rem;
+  width: 270px;
+  word-break: keep-all;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
@@ -310,7 +311,7 @@
   grid-area: title;
   width: 270px;
   color: #000;
-  font-size: 3rem;
+  font-size: 48px;
   font-weight: 700;
   letter-spacing: -0.3px;
   line-height: normal;
@@ -406,20 +407,11 @@
   /* nav */
 
   .header {
-    width: 100%;
     margin-bottom: 40px;
   }
 
   .gnb {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: sticky;
-    top: 0px;
-    z-index: 100;
     padding: 13px 32px;
-    background-color: var(--backgroundcolor-skyblue-10);
   }
 
   .gnb-logo {
@@ -435,59 +427,31 @@
   /* content1 */
 
   .content1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: 0px 32px;
     gap: 24px;
   }
 
   .addlink-btn {
-    background: var(--gra-purpleblue-to-skyblue);
-    border-radius: 8px;
     width: 200px;
     padding: 10px 16px;
-    gap: 10px;
-    color: var(--color-gray-10);
-    border-style: none;
-    cursor: pointer;
     margin: 0px;
   }
 
   .content1-textbox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
     margin-top: 28px;
-    word-break: keep-all;
     font-size: 32px;
-    font-weight: 700;
     line-height: 42px;
     width: 240px;
   }
 
-  .content1-textbox span {
-    background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   .content1-image-container {
-    display: flex;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
-    border-radius: 25px;
   }
 
   .content1-image {
     width: 100%;
     height: 100%;
-    flex-shrink: 0;
     margin: 14px 11px -32px;
   }
 
@@ -509,8 +473,6 @@
     grid-area: title;
     width: 100%;
     font-size: 24px;
-    font-weight: 700;
-    line-height: normal;
     letter-spacing: -0.3px;
     word-break: keep-all;
   }
@@ -520,16 +482,7 @@
     width: 100%;
     color: #6b6b6b;
     font-size: 15px;
-    font-weight: 500;
-    line-height: 150%;
     word-break: keep-all;
-  }
-
-  .content2-textbox-accent span {
-    background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   .content2-image-container {
@@ -545,10 +498,6 @@
   }
 
   /* content3 */
-
-  .content3 {
-    background-color: var(--color-white);
-  }
 
   .content3-container {
     display: grid;
@@ -568,33 +517,22 @@
 
   .change-folder-name-image {
     width: 100%;
-    height: 100%px;
+    height: 100%;
     flex-shrink: 0;
   }
 
   .content3-textbox-accent {
     grid-area: title;
+    width: 100%;
     font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
     letter-spacing: -0.3px;
   }
 
   .content3-textbox-normal {
     grid-area: description;
-    color: #6b6b6b;
+    width: 100%;
     font-size: 15px;
     font-style: normal;
-    font-weight: 500;
-    line-height: 150%;
-  }
-
-  .content3-textbox-accent span {
-    background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   /* content4 */
@@ -614,36 +552,14 @@
 
   .content4-textbox-accent {
     grid-area: title;
-    color: #000;
+    width: 100%;
     font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.3px;
-  }
-
-  .content4-textbox-accent span {
-    background: linear-gradient(
-      99deg,
-      #6d7ccd 19.76%,
-      rgba(82, 136, 133, 0.22) 52.69%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
   }
 
   .content4-textbox-normal {
     grid-area: description;
-    color: #6b6b6b;
+    width: 100%;
     font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%;
   }
 
   .content4-imagebox {
@@ -671,27 +587,14 @@
 
   .content5-textbox-accent {
     grid-area: title;
-    color: #000;
+    width: 100%;
     font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    line-height: normal;
-  }
-
-  .content5-textbox-accent span {
-    background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
   }
 
   .content5-textbox-normal {
     grid-area: description;
-    color: #6b6b6b;
+    width: 100%;
     font-size: 15px;
-    font-weight: 500;
-    line-height: 150%;
   }
 
   .content5-image-box {
