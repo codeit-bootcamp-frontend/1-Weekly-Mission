@@ -193,7 +193,7 @@ footer .company {
     margin: auto 32px;
   }
   .card_img {
-    max-width: 80%;
+    max-width: 380px;
     height: auto;
   }
 }
