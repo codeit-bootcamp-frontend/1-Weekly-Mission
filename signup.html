@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Linkbrary signup</title>
+        <link href="./styles/reset.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+        <link href="./styles/signin.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="root">
+          <div class="login">
+            <header>
+              <div class="main-link">
+                  <a href="/"><img src="./assets/png/signin-page-logo.png" alt="Linkbrary logo" class="main-img"></a>
+              </div>
+              <div class="signin">
+                  <div class="signin-ask">
+                      이미 회원이신가요?
+                  </div>
+                  <a href="./signin.html" class="signin-link">로그인 하기</a>
+              </div>
+            </header>
+            <main>
+              <form>
+                <div class="input-box">
+                  <label for="id-label">
+                      이메일
+                  </label>
+                  <input type="text" placeholder="이메일을 입력해주세요" id="id-label" name="idLabel">
+                </div>
+                <div class="input-box">
+                  <label for="password-label">
+                      비밀번호
+                  </label>
+                  <div class="input-password">
+                    <input type="password" placeholder="비밀번호를 입력해주세요" id="password-label" name="passwordLabel">
+                    <div class="eye-image">
+                        <img src="./assets/png/eye-off.png" alt="click to see password">
+                    </div>
+                  </div>
+                </div>
+                <div class="input-box">
+                  <label for="identify-label">
+                      비밀번호 확인
+                  </label>
+                  <div class="input-password">
+                    <input type="password" placeholder="비밀번호를 한번 더 입력해주세요" id="identify-label" name="identifyLabel">
+                    <div class="eye-image">
+                        <img src="./assets/png/eye-off.png" alt="click to see password">
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="login-btn">
+                  회원가입
+                </button>
+              </form>
+            </main>
+            <footer>
+                <div class="footer-text">
+                    다른 방식으로 가입하기
+                </div>
+                <div class="icon">
+                    <div class="google">
+                        <a href="https://www.google.com/" target="_blank">
+                            <img src="./assets/png/google.png" alt="google-icon" class="google-icon">
+                        </a>
+                    </div>
+                    <div class="kakao">
+                        <a href="https://www.kakaocorp.com/page/" target="_blank">
+                            <img src="./assets/png/kakao.png" alt="kakao-icon" class="kakao-icon">
+                        </a>
+                    </div>
+                </div>
+            </footer>
+          </div>
+        </div>
+    </body>
+</html>
