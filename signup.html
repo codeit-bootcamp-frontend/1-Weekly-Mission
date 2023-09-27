@@ -29,39 +29,48 @@
         </p>
       </div>
       <form class="form grid--form">
-        <label class="form__email margin-top30">
+        <label class="form__label margin-top30">
           이메일
           <input class="form__input" type="email" name="email" />
+          <p class="form__err"></p>
         </label>
-        <label class="form__password margin-top25">
+        <label class="form__label">
           비밀번호
-          <div class="form__input">
-            <input class="form__input-none" type="password" name="password" />
-            <button class="form__input-btn" type="button">
-              <img
-                class="form__pw-reveal"
-                src="assets/sign-eye-off.svg"
-                alt="가려진 비밀번호 보여주기"
-              />
-            </button>
-          </div>
+          <input class="form__input password" type="password" name="password" />
+          <button
+            class="form__input-btn form__input-btn--absolute"
+            type="button"
+          >
+            <img
+              class="eye"
+              src="assets/sign-eye-off.svg"
+              alt="가려진 비밀번호 보여주기"
+            />
+          </button>
+          <p class="form__err"></p>
         </label>
-        <label class="form__password margin-top25">
+        <label class="form__label">
           비밀번호 확인
-          <div class="form__input">
-            <input class="form__input-none" type="password" name="password" />
-            <button class="form__input-btn" type="button">
-              <img
-                class="form__pw-reveal"
-                src="assets/sign-eye-off.svg"
-                alt="가려진 비밀번호 보여주기"
-              />
-            </button>
-          </div>
+          <input
+            class="form__input password"
+            type="password"
+            name="password-check"
+          />
+          <button
+            class="form__input-btn form__input-btn--absolute"
+            type="button"
+          >
+            <img
+              class="eye"
+              src="assets/sign-eye-off.svg"
+              alt="가려진 비밀번호 보여주기"
+            />
+          </button>
+          <p class="form__err"></p>
         </label>
         <button class="form__submit margin-top30">로그인</button>
       </form>
-      <div class="form__sns grid--sns margin-top25">
+      <div class="form__sns grid--sns margin-top30">
         <p>소셜 계정으로 가입하기</p>
         <div>
           <a href="https://www.google.com" target="_blank">
