@@ -3,11 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <title>Linkbrary</title>
+    <!-- 페이스북용 메타 데이터 -->
+    <meta property="og:image" content="https://health.chosun.com/site/data/img_dir/2023/07/17/2023071701753_0.jpg" />
+    <meta property="og:title" content="Linkbrary" />
+    <meta
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <!--배포 시 주소 작성하기-->
+    <meta property="og:url" content="" />
+
+    <!-- 트위터용 메타 데이터 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://health.chosun.com/site/data/img_dir/2023/07/17/2023071701753_0.jpg" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta
+      name="twitter:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="global.css" />
   </head>
   <body>
     <!--헤더-->
-    <div class="header">
+    <header>
       <div class="header-content">
         <a href="/">
           <img class="logo" src="assets/logo.svg" alt="logo" />
@@ -16,13 +36,12 @@
           <button class="loginBtn">로그인</button>
         </a>
       </div>
-    </div>
+    </header>
     <main>
       <div class="container_1">
         <div class="content">
           <p class="text">
-            <span>세상의 모든 정보</span>를<br />
-            쉽게 저장하고 관리해 보세요
+            <span>세상의 모든 정보</span>를 </br> 쉽게 저장하고 관리해 보세요
           </p>
           <a href="signup">
             <button class="linkAddBtn">링크 추가하기</button>
@@ -34,54 +53,46 @@
           </div>
         </div>
       </div>
+      <section>
       <div class="container_2">
         <div class="content">
-          <div class="text-section">
-            <p class="text_1"><span>원하는 링크</span>를 저장하세요</p>
-            <p class="text_2">
-              나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
-              사고 싶은 옷, 기억하고 싶은 모든 것을<br />
-              한 공간에 저장하세요.
-            </p>
-          </div>
-          <div class="img-section">
+          <p class="text-title"><span>원하는 링크</span>를 저장하세요</p>
+          <p class="text-content">나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
+            싶은 모든 것을 한 공간에 저장하세요.</p>
+          <div class="img-section odd">
             <div class="img-wrapper">
-              <img class="img1" src="assets/card1.png" />
-              <div class="img2" src="assets/card2.png">
+              <div class="img1"></div>
+              <div class="img2">
                 <div class="border"></div>
               </div>
-              <img class="img3" src="assets/card3.png" />
+              <div class="img3"></div>
             </div>
-            <img class="img4" src="assets/img7.png" />
+            <div class="img4"></div>
           </div>
         </div>
       </div>
       <div class="container_3">
         <div class="content">
-          <div class="img-section">
-            <img class="img" src="assets/img2.png" />
+          <div class="img-section even">
+            <div class="img"></div>
           </div>
-          <div class="text-section">
-            <p class="text_1">링크를 폴더로<span>관리</span>하세요</p>
-            <p class="text_2">
-              나만의 폴더를 무제한으로 만들고<br />다양하게 활용할 수 있습니다.
-            </p>
-          </div>
+          <p class="text-title">링크를 폴더로 <span>관리</span>하세요</p>
+          <p class="text-content">
+            나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
+          </p>
         </div>
       </div>
       <div class="container_4">
         <div class="content">
-          <div class="text-section">
-            <p class="text_1">저장한 링크를<span>공유</span>해보세요.</p>
-            <p class="text_2">
-              여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
-              가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />공유해 보세요.
-            </p>
-          </div>
-          <div class="img-section">
+          <p class="text-title">저장한 링크를 <span>공유</span>해보세요.</p>
+          <p class="text-content">
+            여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
+            쉽고 빠르게 링크를 공유해 보세요.
+          </p>
+          <div class="img-section odd">
             <div class="img_1">
               <div class="opacity">
-                <img class="img_2" src="assets/img6.png" />
+                <div class="img_2"></div>
               </div>
             </div>
           </div>
@@ -89,15 +100,14 @@
       </div>
       <div class="container_5">
         <div class="content">
-          <div class="img-section">
-            <img class="img" src="assets/img5.png" />
+          <div class="img-section even">
+            <div class="img"></div>
           </div>
-          <div class="text-section">
-            <p class="text_1">저장한 링크를<span>검색</span>해 보세요</p>
-            <p class="text_2">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
-          </div>
+          <p class="text-title">저장한 링크를 <span>검색</span>해 보세요</p>
+          <p class="text-content">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
         </div>
       </div>
+    </section>
     </main>
     <div class="footer">
       <div class="footer-content">
