@@ -24,12 +24,19 @@
         <form class="login-input">
           <section class="input">
             <label class="input-text" for="username">이메일</label>
-            <input class="input-box" name="username" />
+            <input id="username" class="input-box" name="username" />
+            <p class="error-message" id="emailError"></p>
           </section>
           <section class="input">
             <label class="input-text" for="password">비밀번호</label>
-            <input class="input-box" name="password" type="password" />
+            <input
+              id="password"
+              class="input-box"
+              name="password"
+              type="password"
+            />
             <img class="eye-off" src="/assets/eye-off.svg" />
+            <p class="error-message" id="passwordError"></p>
           </section>
         </form>
         <section class="login-button">
@@ -50,5 +57,6 @@
         </section>
       </section>
     </main>
+    <script src="signin.js"></script>
   </body>
 </html>
