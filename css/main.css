@@ -302,7 +302,7 @@ button {
 }
 @media screen and (max-width: 767px) {
   .main-section__title {
-    width: 24.8rem;
+    width: 26rem;
     font-size: 3.2rem;
   }
 }
