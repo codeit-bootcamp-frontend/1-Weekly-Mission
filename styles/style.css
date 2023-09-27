@@ -13,7 +13,7 @@
   }
 }
 
-.nav-container {
+.nav--container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,12 +25,12 @@
   }
 }
 
-.logo-img {
+.logo--img {
   width: 13.3rem;
   height: 2.4rem;
 }
 
-.button {
+.button__style {
   background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
   padding: 1.6rem 2.0rem;
   border-radius: 8px;
@@ -45,7 +45,7 @@
   }
 }
 
-.nav .button {
+.nav--button {
   width: 12.8rem;
 
   @media (max-width: 767px) {
@@ -58,7 +58,7 @@
   background-color: var(--bg);
 }
 
-.banner-container {
+.banner--container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +72,7 @@
   }
 }
 
-.slogan {
+.banner--slogan {
   text-align: center;
   font-size: 6.4rem;
   font-weight: 700;
@@ -84,14 +84,14 @@
   }
 }
 
-.slogan-gradient {
+.banner--slogan__gradient {
   background-image: linear-gradient(91deg, var(--primary) 17.28%, #ff9f9f 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.banner .button{
+.banner--button{
   width: 35rem;
 
   @media (max-width: 767px) {
@@ -99,7 +99,7 @@
   }
 }
 
-.banner-img {
+.banner--img {
   width: 111.8rem;
   height: 59rem;
   border-radius: 25px;
@@ -163,7 +163,7 @@
     }
 }
 
-.section-img {
+.section--img {
   grid-area: section-img;
   width: 55rem;
   height: 45rem;
@@ -180,7 +180,7 @@
   }
 }
 
-.section .title {
+.section--title {
   grid-area: title;
   font-size: 4.8rem;
   font-weight: 700;
@@ -190,7 +190,7 @@
   }
 }
 
-.section .description {
+.section--description {
   grid-area: description;
   color: #6b6b6b;
   font-size: 1.6rem;
@@ -201,36 +201,36 @@
   }
 }
 
-.section .title br,
-.section .description br {
+.section--title br,
+.section--description br {
   @media (max-width: 767px) {
     display: none;
     word-break: keep-all
   }
 }
 
-.save.gradient {
+.save__gradient {
   background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.management.gradient {
+.management__gradient {
   background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.sharing.gradient {
+.sharing__gradient {
   background: linear-gradient(99deg, #6d7ccd 19.76%, rgba(82, 136, 133, 0.22) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.search.gradient {
+.search__gradient {
   background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -259,7 +259,7 @@
   }
 }
 
-.footer .copyright {
+.footer--copyright {
   grid-area: copyright;
   color: #676767;
   text-align: center;
@@ -267,19 +267,19 @@
   font-weight: 400;
 }
 
-.footer .link-frame .link {
+.footer--link {
   font-size: 1.6rem;
   font-weight: 400;
   color: #cfcfcf;
 }
 
-.footer .link-frame {
+.footer--links {
   display: flex;
   grid-area: link-frame;
   gap: 3rem;
 }
 
-.sns-frame {
+.footer--sns-buttons {
   display: flex;
   grid-area: sns-frame;
   height: 2rem;
@@ -287,7 +287,7 @@
   list-style: none;
 }
 
-.sns-button {
+.footer--sns-button {
   display: inline-block;
   width: 2rem;
   height: 2rem;
