@@ -3,22 +3,17 @@ body {
   background-color: var(--linkbrary-bg);
 }
 
-main {
+header {
   margin: 0 auto;
   width: 25rem;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1.8rem;
 }
 
-header .header-logo-image {
+header .header-logo-img {
   width: 13.125rem;
   height: 2.375rem;
 }
@@ -30,6 +25,14 @@ header .header-text {
 
 a.signup {
   color: var(--linkbrary-primary);
+}
+
+main {
+  margin: 0 auto;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
 }
 
 form {
@@ -57,15 +60,19 @@ form input:focus {
   border: 1px solid var(--linkbrary-primary);
 }
 
-form .password-off {
+form .password-wrapper {
   position: relative;
-  left: 23rem;
-  top: -2.25rem;
 }
 
-form .login {
+form .password-invisible {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-40%);
+}
+
+form .login-btn {
   padding: 1rem 1.25rem;
-  margin-top: -1rem;
   align-items: center;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue);
@@ -102,4 +109,21 @@ footer .social-logo-container {
 footer .social-logo {
   width: 2.625rem;
   height: 2.625rem;
+}
+
+/* Mobile: 375px 이상 ~ 767 px 이하 */
+/* 375px 미만 사이즈의 디자인은 고려하지 않음 */
+@media (min-width: 375px) and (max-width: 767px) {
+  body {
+    padding: 5rem 2rem 0;
+  }
+  
+  header {
+    width: 100%;
+  }
+  
+  main {
+    width: 100%;
+    max-width: 400px;
+  }
 }

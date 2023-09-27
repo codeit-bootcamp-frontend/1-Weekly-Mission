@@ -1,0 +1,16 @@
+:root {
+  --linkbrary-primary: #6d6afe;
+  --linkbrary-red: #ff5b56;
+  --linkbrary-black: #111322;
+  --linkbrary-white: #fff;
+  --linkbrary-gray-platinum: #3e3e43;
+  --linkbrary-gray-gold: #9fa6b2;
+  --linkbrary-gray-silver: #ccd5e3;
+  --linkbrary-gray-bronze: #e7effb;
+  --linkbrary-bg: #F0F6FF;
+  --gra-purpleblue-to-skyblue: linear-gradient(
+    91deg,
+    #6d6afe 0.12%,
+    #6ae3fe 101.84%
+  );
+}
