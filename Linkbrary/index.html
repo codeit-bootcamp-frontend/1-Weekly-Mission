@@ -6,6 +6,18 @@
     <title>Linkbrary</title>
     <meta name="description" content="Library for all links" />
     <meta name="author" content="Park-Sohyun" />
+    <!-- OG (Open Graph Data) -->
+    <meta property="og:title" content="Linkbrary" />
+    <meta
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sh-linkbrary.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://sh-linkbrary.netlify.app/images/og.webp"
+    />
     <!-- CSS -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -15,8 +27,8 @@
     <header class="header">
       <div class="header__container max-container">
         <!-- Logo -->
-        <a href="/" class="header__logo">
-          <img src="./images/logo.svg" alt="logo-image" />
+        <a href="/">
+          <img src="./images/logo.svg" alt="logo-image" class="header__logo" />
         </a>
         <!-- Login -->
         <nav>
@@ -31,7 +43,7 @@
       <!-- Hero -->
       <section class="hero">
         <h1 class="hero__title">
-          <span class="title__gradient">세상의 모든 정보</span><span>를</span>
+          <span class="title__gradient">세상의 모든 정보</span>를
           <br />
           쉽게 저장하고 관리해 보세요
         </h1>
@@ -48,18 +60,14 @@
       <section>
         <ul class="contents">
           <li class="content">
-            <div class="content__info">
-              <h2 class="content__info__title">
-                <span class="content__gradient__link">원하는 링크</span
-                ><span>를</span>
-                <br />
-                저장하세요
-              </h2>
-              <p class="info__description">
-                나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
-                싶은 모든 것을 한 공간에 저장하세요.
-              </p>
-            </div>
+            <h2 class="content__info__title">
+              <span class="content__gradient__link">원하는 링크</span>를
+              저장하세요
+            </h2>
+            <p class="content__info__description">
+              나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
+              싶은 모든 것을 한 공간에 저장하세요.
+            </p>
             <img
               class="content__image"
               src="images/content_1.svg"
@@ -67,17 +75,13 @@
             />
           </li>
           <li class="content">
-            <div class="content__info">
-              <h2 class="content__info__title">
-                링크를 폴더로
-                <br />
-                <span class="content__gradient__create">관리</span
-                ><span>하세요</span>
-              </h2>
-              <p class="info__description">
-                나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
-              </p>
-            </div>
+            <h2 class="content__info__title">
+              링크를 폴더로
+              <span class="content__gradient__create">관리</span>하세요
+            </h2>
+            <p class="content__info__description">
+              나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
+            </p>
             <img
               class="content__image"
               src="images/content_2.svg"
@@ -85,18 +89,14 @@
             />
           </li>
           <li class="content">
-            <div class="content__info">
-              <h2 class="content__info__title">
-                저장한 링크를
-                <br />
-                <span class="content__gradient__share">공유</span
-                ><span>해 보세요</span>
-              </h2>
-              <p class="info__description">
-                여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구,
-                동료들에게 쉽고 빠르게 링크를 공유해 보세요.
-              </p>
-            </div>
+            <h2 class="content__info__title">
+              저장한 링크를
+              <span class="content__gradient__share">공유</span>해 보세요
+            </h2>
+            <p class="content__info__description">
+              여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
+              쉽고 빠르게 링크를 공유해 보세요.
+            </p>
             <img
               class="content__image"
               src="images/content_3.svg"
@@ -104,17 +104,13 @@
             />
           </li>
           <li class="content">
-            <div class="content__info">
-              <h2 class="content__info__title">
-                저장한 링크를
-                <br />
-                <span class="content__gradient__search">검색</span
-                ><span>해 보세요</span>
-              </h2>
-              <p class="info__description">
-                중요한 정보들을 검색으로 쉽게 찾아보세요.
-              </p>
-            </div>
+            <h2 class="content__info__title">
+              저장한 링크를
+              <span class="content__gradient__search">검색</span>해 보세요
+            </h2>
+            <p class="content__info__description">
+              중요한 정보들을 검색으로 쉽게 찾아보세요.
+            </p>
             <img
               class="content__image"
               src="images/content_4.svg"
@@ -126,7 +122,7 @@
     </main>
     <!-- Footer -->
     <footer class="contact">
-      <div class="contact__container max-container">
+      <div class="contact__container">
         <div class="contact__rights">©codeit - 2023</div>
         <div class="contact__policy">
           <a href="/privacy" class="contact__policy--text">Privacy Policy</a>
