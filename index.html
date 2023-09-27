@@ -3,6 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
+    />
+    <meta property="og:title" content="Linkbrary" />
+    <meta
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <meta
+      property="og:url"
+      content="https://famous-khapse-e98fd0.netlify.app/"
+    />
+    <meta
+      name="twitter:url"
+      content="https://famous-khapse-e98fd0.netlify.app/"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta
+      name="description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <meta
+      name="image"
+      content="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80"
+    />
     <title>Linkbrary</title>
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/style/global.css" />
@@ -13,26 +40,28 @@
     />
   </head>
   <body>
+    <nav class="gnb">
+      <a href="/">
+        <img
+          src="/assets/common/logo.svg"
+          alt="nav-title-logo"
+          class="gnb-logo"
+        />
+      </a>
+      <a href="/signin">
+        <button class="login-btn">로그인</button>
+      </a>
+    </nav>
     <header class="header">
-      <nav class="gnb">
-        <a href="/">
-          <img src="/assets/common/logo.svg" alt="nav-title-logo" />
-        </a>
-        <a href="/signin">
-          <button class="login-btn">로그인</button>
-        </a>
-      </nav>
-    </header>
-    <main>
       <section class="content1">
         <div class="content1-textbox">
-          <p>
+          <h1 class="content1-slogan">
             <span>세상의 모든 정보</span>를<br />쉽게 저장하고 관리해 보세요
-          </p>
-          <a href="/signup">
-            <button class="addlink-btn">링크 추가하기</button>
-          </a>
+          </h1>
         </div>
+        <a href="/signup">
+          <button class="addlink-btn">링크 추가하기</button>
+        </a>
         <div class="content1-image-container">
           <img
             class="content1-image"
@@ -41,86 +70,87 @@
           />
         </div>
       </section>
-      <section class="content2">
+    </header>
+    <main>
+      <section>
         <div class="content2-container">
-          <div class="content2-textbox">
-            <div class="content2-textbox-accent">
-              <p><span>원하는 링크</span>를<br />저장하세요</p>
-            </div>
-            <p class="content2-textbox-normal">
-              나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />사고 싶은 옷,
-              기억하고 싶은 모든 것을<br />한 공간에 저장하세요.
+          <div class="content-text-title">
+            <p>
+              <span class="content2-text-title-accent">원하는 링크</span>를
+              저장하세요
             </p>
           </div>
-          <div class="content2-imagebox">
-            <div class="content2-image-container">
-              <img src="/assets/landing/card1.png" alt="link-item-image" />
-              <div class="content2-image-card2">
-                <img src="/assets/landing/card2.png" alt="link-item-image" />
-                <img
-                  src="/assets/landing/downloadBtn.svg"
-                  alt="link-item-downloadButton"
-                  class="download-btn"
-                />
-              </div>
-              <img src="/assets/landing/card3.png" alt="link-item-image" />
-            </div>
+          <p class="content-text-normal">
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
+            싶은 모든 것을 한 공간에 저장하세요.
+          </p>
+          <div class="content-imagebox">
+            <img
+              class="content-image"
+              src="/assets/landing/content2Img.png"
+              alt="content2-Img"
+            />
           </div>
         </div>
       </section>
-      <section class="content3">
+      <section>
         <div class="content3-container">
-          <div class="content3-imagebox">
+          <div class="content-imagebox">
             <img
-              class="change-folder-name-image"
+              class="content-image"
               src="/assets/landing/changeFolderName.png"
             />
           </div>
-          <div class="content3-textbox">
-            <div class="content3-textbox-accent">
-              <p>링크를 폴더로</p>
-              <p><span>관리</span>하세요</p>
-            </div>
-            <p class="content3-textbox-normal">
-              나만의 폴더를 무제한으로 만들고<br />다양하게 활용할 수 있습니다.
+          <div class="content-text-title">
+            <p>
+              링크를 폴더로
+              <span class="content3-text-title-accent">관리</span>
+              하세요
             </p>
           </div>
+          <p class="content-text-normal">
+            나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
+          </p>
         </div>
       </section>
-      <section class="content4">
+      <section>
         <div class="content4-container">
-          <div class="content4-textbox">
-            <div class="content4-textbox-accent">
-              <p>저장한 링크를<br /><span>공유</span>해 보세요.</p>
-            </div>
-            <p class="content4-textbox-normal">
-              여러 링크를 폴더에 담고 공유할 수 있습니다.<br />가족, 친구,
-              동료들에게 쉽고 빠르게 링크를<br />공유해 보세요.
+          <div class="content-text-title">
+            <p>
+              저장한 링크를
+              <span class="content4-text-title-accent">공유</span>해 보세요.
             </p>
           </div>
-          <div class="content4-imagebox">
-            <div class="content4-image-container">
-              <img src="/assets/landing/popup.png" />
-            </div>
+          <p class="content-text-normal">
+            여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
+            쉽고 빠르게 링크를 공유해 보세요.
+          </p>
+          <div class="content-imagebox">
+            <img
+              class="content-image"
+              src="/assets/landing/linkShareImg.png"
+              alt="link-share-img"
+            />
           </div>
         </div>
       </section>
-      <section class="content5">
+      <section>
         <div class="content5-container">
-          <div class="content5-image-box">
+          <div class="content-imagebox">
             <img
-              class="content5-image"
+              class="content-image"
               src="/assets/landing/content5Img.png"
               alt="content5-image"
             />
           </div>
-          <div class="content5-textbox">
-            <div class="content5-textbox-accent">
-              <p>저장한 링크를<br /><span>검색</span>해 보세요</p>
-            </div>
-            <div class="content5-textbox-normal">
-              <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
-            </div>
+          <div class="content-text-title">
+            <p>
+              저장한 링크를
+              <span class="content5-text-title-accent">검색</span>해 보세요
+            </p>
+          </div>
+          <div class="content-text-normal">
+            <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
           </div>
         </div>
       </section>
@@ -128,12 +158,12 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-items">
-          <div class="footer-copyrights">&copy;codeit - 2023</div>
-          <div class="footer-policy">
-            <a href="/privacy">
+          <span class="footer-copyrights">&copy;codeit - 2023</span>
+          <div class="footer-privacy-policy">
+            <a class="footer-policy" href="/privacy">
               <p>Privacy Policy</p>
             </a>
-            <a href="/faq">
+            <a class="footer-faq" href="/faq">
               <p>FAQ</p>
             </a>
           </div>
