@@ -65,17 +65,25 @@ function passwordErrorMsgDel() {
 }
 
 /**
+ * 로그인 페이지 함수
+ * @returns folder.html 이동
+ */
+function loginPage() {
+  return (location.href = "../pages/folder.html");
+}
+
+/**
  * 로그인 함수
  * @param {event} event
  */
 function login(event) {
   event.preventDefault();
-  let link = "../pages/folder.html";
+
   const testEmail = "test@codeit.com";
   const testPassword = "codeit101";
 
   if (email.value === testEmail && password.value === testPassword) {
-    window.location.replace(link);
+    loginPage();
   } else if (email.value !== testEmail || password.value !== testPassword) {
     email.classList.add("error");
     emailError.classList.add("error-msg");
