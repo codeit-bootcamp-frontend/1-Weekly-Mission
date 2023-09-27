@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
+
+    <meta property="og:url" content="https://weekly-codeit-one.netlify.app">
+    <meta property="og:title" content="Linkbrary">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/cat.png">
+    <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
+
     <title>Linkbrary</title>
     <link
       rel="stylesheet"
@@ -15,12 +22,14 @@
   <body>
     <header>
       <nav>
-        <a href="index.html">
-          <img src="./images/logo.svg" alt="홈으로 연결된 Linkbrary 로고" />
-        </a>
-        <a class="cta cta-short" href="signin.html">
-          <span>로그인</span>
-        </a>
+        <div class="nav-box">
+          <a href="index.html">
+            <img class="nav-logo" src="./images/logo.svg" alt="홈으로 연결된 Linkbrary 로고" />
+          </a>
+          <a class="cta cta-short" href="signin.html">
+            <span>로그인</span>
+          </a>
+        </div>
       </nav>
       <div class="hero-header">
         <h1 class="slogan">
@@ -45,14 +54,11 @@
         <h2 class="title">
           <span class="title-1-gradient background-clip-text"> 원하는 링크</span
           >를
-          <br />
           저장하세요
         </h2>
         <p class="description">
           나중에 읽고 싶은 글, 다시 보고 싶은 영상,
-          <br />
           사고 싶은 옷, 기억하고 싶은 모든 것을
-          <br />
           한 공간에 저장하세요.
         </p>
         <img
@@ -64,12 +70,10 @@
       <section>
         <h2 class="title">
           링크를 폴더로
-          <br />
           <span class="title-2-gradient background-clip-text">관리</span>하세요
         </h2>
         <p class="description">
           나만의 폴더를 무제한으로 만들고
-          <br />
           다양하게 활용할 수 있습니다.
         </p>
         <img
@@ -81,15 +85,12 @@
       <section>
         <h2 class="title">
           저장한 링크를
-          <br />
           <span class="title-3-gradient background-clip-text">공유</span>해
           보세요
         </h2>
         <p class="description">
           여러 링크를 폴더에 담고 공유할 수 있습니다.
-          <br />
           가족, 친구, 동료들에게 쉽고 빠르게 링크를
-          <br />
           공유해 보세요.
         </p>
         <img
@@ -101,7 +102,6 @@
       <section>
         <h2 class="title">
           저장한 링크를
-          <br />
           <span class="title-4-gradient background-clip-text">검색</span>해
           보세요
         </h2>
@@ -146,7 +146,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
+            <img 
               src="./images/youtube.svg"
               alt="youtube 홈페이지로 연결된 youtube 로고"
             />

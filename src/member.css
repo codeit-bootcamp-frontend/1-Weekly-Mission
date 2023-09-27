@@ -128,6 +128,7 @@ form {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  transition-duration: 0.5s;
 }
 
 .member-form-btn:hover {
@@ -145,6 +146,7 @@ form {
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-20);
   background: var(--linkbrary-gray-10);
+  transition-duration: 0.5s;
 }
 
 .bottom-frame > p {
@@ -169,4 +171,19 @@ form {
   border: 0;
   background-color: transparent;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px){
+  .member-form-btn {
+    width: 32.5rem;
+    transition-duration: 0.5s;
+  }
+  .bottom-frame {
+    width: 32.5rem;
+    transition-duration: 0.5s;
+  }
+  .inner-input {
+    width: 32.5rem;
+    transition-duration: 0.5s;
+  }
 }
