@@ -50,6 +50,7 @@ header {
 .title-subtext {
   margin-top: 1.6rem;
   text-align: center;
+  font-size: 1.6rem;
 }
 
 label {
@@ -59,6 +60,8 @@ label {
   border-radius: 0.8rem;
   max-width: 40rem;
   width: 100%;
+  font-size: 1.6rem;
+  margin: 1.2rem 0;
 }
 
 button {
@@ -79,6 +82,11 @@ button {
   font-size: 1.8rem;
   font-weight: 600;
   cursor : pointer;
+}
+
+.input-container{
+  width: 100%;
+  margin-top: 1.2rem;
 }
 
 input {
@@ -104,7 +112,6 @@ input:focus {
   justify-content: center;
   align-items:center;
   position: relative;
-  margin: 1.2rem 0 2.4rem 0;
   width: 100%;
 }
 
@@ -139,4 +146,5 @@ input:focus {
 
 .another-signup-text {
   background-color: #e7effb;
+  font-size: 1.4rem;
 }
