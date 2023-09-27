@@ -53,7 +53,7 @@ main {
 
 .input_container {
   width: 100%;
-  margin: 3rem 0;
+  margin: 3rem 0 3.2rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -88,6 +88,7 @@ main {
   line-height: 2.4rem;
 }
 
+
 .input_container #password_repeat_box {
   margin-bottom: 2.3rem;
 }
@@ -100,7 +101,6 @@ main {
 
 
 button {
-  display:block;
   display: flex;
   width: 100%;
   height: 5.4rem;
@@ -108,6 +108,7 @@ button {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-top: .6rem;
   border-radius: 8px;
   border: none;
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--primary_color) 0.12%, #6AE3FE 101.84%));
@@ -118,25 +119,19 @@ button {
 }
 
 
+.contain_mark {
+  position:relative;
+}
 
-.input_container img {
+.contain_mark > .eye_mark {
   width: 1.6rem;
   height: 1.6rem;
   right: 1.5rem;
   position: absolute;
+  top: 5rem;
 }
 
-.input_container > #eye_off_mark {
-  bottom: 2.1rem;
-}
 
-.input_container > #eye_on_mark_password {
-  bottom: 4.5rem;
-}
-
-.input_container > #eye_on_mark_password_repeat {
-  bottom: 15.9rem;
-}
 
 .sns_link_container {
   display: flex;
@@ -145,7 +140,6 @@ button {
   padding: 1.2rem 2.4rem;
   justify-content: space-between;
   align-items: center;
-  margin-top: 3.2rem;
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-20, var(--gray_color_3));
   background: var(--linkbrary-gray-10,var(--gray_color_4));
@@ -163,6 +157,7 @@ button {
   width: 4.2rem;
   height: 4.2rem;
 }
+
 
 @media (max-width: 1200px) {
   .container {
