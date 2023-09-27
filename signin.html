@@ -18,16 +18,17 @@
 <body> <!-- All Page Content goes here -->
   <main>
     <!--begin main-->
-    <a href="/"><img id="logo" src="./assets/img/logo.svg" alt="Linkbrary logo" width=210.58 height=38></a>
+    <a href="/"><img class="logo" src="./assets/img/logo.svg" alt="Linkbrary logo" width=210.58 height=38></a>
+    
     <div class="link-signup__wrap">
       회원이 아니신가요?
-      <a class="link-signup" href="/signup.html">회원 가입하기</a>
+      <span><a class="link-signup" href="/signup.html">회원 가입하기</a></span>
     </div>
 
     <div class="signin__wrap">
       <div class="signin__email__wrap">
         <label class="signin__label">이메일</label>
-        <div class="signin__input">
+        <div class="signin__input__wrap">
           <input class="input__row input--email">
         </div>
       </div>
@@ -40,6 +41,7 @@
       </div> 
       <button class="signin__btn" type="submit">로그인</button>
     </div>
+    
     <div class="signin--social">
       소셜 로그인
       <ul class="signin--social-icon">
@@ -47,6 +49,7 @@
         <li><a href="https://www.kakaocorp.com/page/"><img src="./assets/img/kakaotalkCircle.svg" alt="Kakaotalk signin icon" width="42" height="42"></a></li>
       </ul>
     </div>
+ 
   </main> <!--end main-->
     
 </body> <!-- Page Content ends here -->

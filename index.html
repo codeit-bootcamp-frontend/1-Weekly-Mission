@@ -14,7 +14,31 @@
   <!-- FONT -->
     <!-- Pretendard -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
-</head> <!-- Page Setup ends here -->
+
+  <!--SNS PREVIEW-->
+    <!-- Facebook -->
+    <meta property="og:image" content="./assets/img/bostonPublicLibrary.webp">
+    <meta property="og:title" content="Linkbrary">
+    <meta
+        property="og:description"
+        content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    >
+    <meta property="og:url" content="https://linkbrarymsy.netlify.app">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="thumbnail">
+    <meta name="twitter:image" content="./assets/img/bostonPublicLibrary.webp">
+    <meta
+        name="twitter:title"
+        content="Linkbrary"
+    >
+    <meta
+        name="twitter:description"
+        content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+>
+
+
+  </head> <!-- Page Setup ends here -->
 
 <body> <!-- All Page Content goes here -->
   <header>
@@ -22,20 +46,22 @@
     <div class="header__container">
       <!--begin .header__container-->
       <a href="/">
-        <img id="logo" src="./assets/img/logo.svg" alt="logo">
+        <img class="logo" src="./assets/img/logo.svg" alt="logo">
       </a>
-      <a class="btn btn--signin" href="/signin.html">로그인</a>
+      <a class="cta cta--signin" href="/signin.html">로그인</a>
     </div> <!--end .header__container-->
   </header> <!--end header-->
 
   <div class="hero">
     <!--begin .hero-->
     <h1 class="hero__slogan">
-        <span class="hero__slogan--grad1">세상의 모든 정보</span>를<br>
-        쉽게 저장하고 관리해 보세요
+        <div class="hero__slogan__container">
+          <span class="hero__slogan--grad1">세상의 모든 정보</span>를<br>
+          쉽게 저장하고 관리해 보세요
+        </div>
     </h1>
-    <a class="btn btn--addLink" href="/signup.html">링크 추가하기</a>
-    <img class="hero__img" src="./assets/img/heroImg.png" alt="hero image" width="1200" height="590">
+    <a class="cta cta--addLink" href="/signup.html">링크 추가하기</a>
+    <img class="hero__img" src="./assets/img/heroImg.png" alt="hero image">
   </div> <!--end .hero-->
 
   <main>
@@ -43,12 +69,12 @@
     <div class="main__container"> <!--begin .main__container-->
       <section>
         <h2 class="main__title">
-        <span class="main__title--grad1">원하는 링크</span>를<br>
+        <span class="main__title--grad1">원하는 링크</span>를<br class="break-p">
         저장하세요
         </h2>
         <p class="main__description"> 
-        나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>
-        사고 싶은 옷, 기억하고 싶은 모든 것을<br>
+        나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br class="break-p">
+        사고 싶은 옷, 기억하고 싶은 모든 것을<br class="break-p">
         한 공간에 저장하세요.
         </p>
         <img class="main__img" src="./assets/img/linkSave.png">
@@ -56,22 +82,22 @@
       <section>
         <img class="main__img" src="./assets/img/linkFolder.png">
         <h2 class="main__title">
-        링크를 폴더로<br>
+        링크를 폴더로<br class="break-p">
         <span class="main__title--grad2">관리</span>하세요
         </h2>
         <p class="main__description">
-        나만의 폴더를 무제한으로 만들고<br>
+        나만의 폴더를 무제한으로 만들고<br class="break-p">
         다양하게 활용할 수 있습니다.
         </p>
       </section>
       <section>
         <h2 class="main__title">
-        저장한 링크를<br>
+        저장한 링크를<br class="break-p">
         <span class="main__title--grad3">공유</span>해 보세요
         </h2>
         <p class="main__description">
-        여러 링크를 폴더에 담고 공유할 수 있습니다.<br>
-        가족, 친구, 동료들에게 쉽고 빠르게 링크를<br>
+        여러 링크를 폴더에 담고 공유할 수 있습니다.<br class="break-p">
+        가족, 친구, 동료들에게 쉽고 빠르게 링크를<br class="break-p">
         공유해 보세요.
         </p>
         <img class="main__img" src="./assets/img/linkShare.png">
@@ -79,7 +105,7 @@
       <section>
         <img class="main__img" src="./assets/img/linkSearch.png">
         <h2 class="main__title">
-        저장한 링크를<br>
+        저장한 링크를<br class="break-p">
         <span class="main__title--grad4">검색</span>해 보세요
         </h2>
         <p class="main__description">

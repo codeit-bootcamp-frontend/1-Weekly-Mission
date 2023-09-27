@@ -24,11 +24,11 @@ header{
   margin: auto;
 }
 
-#logo{
+.logo{
   width: 8.3125rem;
 }
 
-.btn{
+.cta{
   display:block;
   text-align: center;
   padding: 1rem 1.25rem;
@@ -39,7 +39,7 @@ header{
   font-weight: 600;
 }
 
-.btn--signin{
+.cta--signin{
   width: 8rem;
   flex-shrink:0;
 }
@@ -53,8 +53,8 @@ header{
   background-color: var(--linkbrary-bg);
 }
 
-.hero__img{
-  vertical-align: bottom;
+.hero__slogan__container{
+  margin: auto;
 }
 
 .hero__slogan {
@@ -63,14 +63,20 @@ header{
   line-height: 5rem;
 }
 
+.hero__img{
+  display: block;
+  max-width: 75rem;
+  margin: auto;
+}
+
 .hero__slogan--grad1 {
   background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
   color: transparent;
   -webkit-background-clip: text;
 }
 
-.btn--addLink{
-  width: 21.875rem;
+.cta--addLink{
+  max-width: 21.875rem;
   margin: 2.5rem auto;
 }
 
@@ -88,8 +94,9 @@ main{
 
 section{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   row-gap: 0.625rem;
   column-gap: 9.81rem;
   padding:3.12rem 0;
@@ -112,6 +119,7 @@ section:nth-child(even){
 .main__title{
   grid-area: title;
   align-self: end;
+  width: auto;
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: -0.01875rem;
@@ -127,8 +135,8 @@ section:nth-child(even){
 
 .main__img{
   grid-area: image;
-  width:34.375rem;
-  height: 28.125rem;
+  max-width:34.375rem;
+  max-height: 28.125rem;
 }
 
 .main__title--grad1{
@@ -197,4 +205,142 @@ footer{
   gap: 0.75rem;
   width: 7.25rem;
   height: 1.25rem;
+}
+
+/*----------Tablet---------*/
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .header__container{
+    max-width: 50rem;
+    padding: 20px 32px;
+  }
+
+  .hero{
+    padding-top: 2.44rem;
+  }
+
+  .header__container{
+    max-width: 50rem;
+    padding: 20px 32px;
+  }
+
+  .hero__slogan__container{
+    width: 29.5rem;
+  }
+
+  .hero__slogan{
+    word-break: keep-all;
+  }
+
+  .hero__img{
+    max-width: 43.625rem;
+    max-height: 21.4375rem;
+  }
+
+  section{
+    width: auto%;
+    column-gap: 3.19rem;
+  }
+
+  .main__img{
+  max-width: 24.0625rem;
+  max-height: 19.6875rem;
+  }
+}
+
+/*----------Mobile---------*/
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .header__container{
+    padding: 0.8125rem  2rem;
+  }
+
+  .hero{
+    padding: 1.75rem 2rem 0;
+  }
+
+  .hero__slogan__container{
+    width: 14.75rem;
+  }
+
+  .hero__slogan{
+    font-size: 2rem;
+    line-height: 131.25%;
+    word-break: keep-all;
+  }
+
+  .cta--addLink{
+    width: 12.5rem;
+    padding: 0.62rem 1rem;
+    font-size: 14px;
+  }
+
+  .hero__img{
+    width: 100%;
+    height: 100%;
+  }
+
+  section{
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    padding: 2.5rem 2rem;
+    white-space: wrap;
+  } 
+
+  section:nth-child(odd),
+  section:nth-child(even){
+    grid-template-areas: 
+    "title"
+    "image"
+    "description";
+  }
+
+  .break-p{
+    display:none;
+  }
+
+  .main__title{
+    align-self: stretch;
+    font-size: 1.5rem;
+  }
+
+  .main__description{
+    font-size: 1rem;
+    line-height: 150%;
+    word-break: keep-all;
+  }
+
+  .main__img{
+    max-width:none;
+    max-height:none;
+    width: 100%;
+    height: 100%;
+  }
+
+  footer{
+    margin-top: 2.5rem;
+  }
+
+  .footer__container{
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    padding: 2rem;
+  }
+
+  .footer__links{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .sns{
+    grid-column: 3 / 4;
+    grid-row: 1 / 2 ;
+  }
+  
+  .copyright{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+
 }

@@ -1,6 +1,6 @@
 body{
-  width: 25rem;
-  margin: auto;
+  display: flex;
+  justify-content: center;
   background: var(--linkbrary-bg);
   }
 
@@ -11,16 +11,17 @@ button:hover{
 /*----------Main---------*/
 main{
   display:flex;
+  width: 25rem;
   flex-direction: column;
   align-items: center;
-  padding-top: 1.88rem;
 }
 
-#logo{
+.logo{
   display: block;
   margin: 14.88rem 0 1rem;
 }
 
+/*--회원이 아니신가요?--*/
 .link-signup__wrap,
 .link-signin__wrap{
   display: inline-block;
@@ -34,6 +35,12 @@ main{
   color: var(--linkbrary-primary);
   text-decoration: underline;
   text-underline-offset: 3.6px;
+}
+
+/*--일반 로그인--*/
+.signin__wrap,
+.signup__wrap{
+  width: 100%; 
 }
 
 .signin__label,
@@ -83,7 +90,7 @@ input:focus{
 
 .signin__btn,
 .signup__btn{
-  width: 25rem;
+  width: 100%;
   margin: 1.88rem 0 2rem;
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
@@ -94,13 +101,14 @@ input:focus{
   font-weight: 600;
 }
 
+/*--소셜 로그인--*/
 .signin--social,
 .signup--social{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 25rem;
+  width: 100%;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   border: 1px solid var(--linkbrary-gray-20);
@@ -123,4 +131,24 @@ input:focus{
 .signin--social-icon img,
 .signup--social-icon img{
   vertical-align: bottom;
+}
+
+/*----------Tablet---------*/
+@media screen and (max-width: 1199px) {
+  .logo {
+    margin-top: 12.5rem;
+  }
+}
+
+/*----------Mobile---------*/
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  main{
+    width: 100vw;
+    max-width: 400px;
+    padding: 0 32px;
+  }
+  
+  .logo {
+    margin-top: 7.5rem;
+  }
 }
