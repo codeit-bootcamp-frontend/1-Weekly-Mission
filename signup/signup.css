@@ -1,5 +1,9 @@
 /* signup-page */
 
+body {
+  background-color: var(--backgroundcolor-skyblue-10);
+}
+
 .input-wrapper {
   display: flex;
   flex-direction: column;

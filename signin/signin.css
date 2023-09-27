@@ -1,5 +1,9 @@
 /* signin-page */
 
+body {
+  background-color: var(--backgroundcolor-skyblue-10);
+}
+
 .signin-container {
   display: flex;
   justify-content: center;
