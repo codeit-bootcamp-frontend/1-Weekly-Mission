@@ -2,31 +2,22 @@ a {
   text-decoration: none;
 }
 
-div {
-  white-space: nowrap;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: #edf7ff;
-  text-align: center;
-}
 
 nav {
   width: 100%;
+  position: sticky;
+  top: 0;
+
+}
+
+
+.nav_content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 120rem;
-
   padding: 1.25rem 12.5rem;
-  position: sticky;
+  max-width: 120rem;
   background-color: #edf7ff;
-  top: 0;
-  left: 0;
 }
 
 .cta {
@@ -43,23 +34,35 @@ nav {
   width: 8rem;
 }
 
+.link_button {
+  margin: 40px auto;
+  text-align: center;
+  padding: 16px 20px;
+}
+
 .cta_long {
+  display: inline-block;
   width: 21.875rem;
 }
 
-.hero-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 4.375rem;
-  gap: 2.5rem;
+header {
+  width: 100%;
+
+}
+
+.hero {
+  padding: 70px 360px 0;
+  max-width: 120rem;
+  background-color: #edf7ff;
 }
 
 .slogan {
-  text-align: center;
-  font-size: 4rem;
-  font-weight: 700;
 
+  text-align: center;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 80px;
 }
 
 .slogan-gradient {
@@ -69,49 +72,73 @@ nav {
   color: transparent;
 }
 
-.hero-image {
-  width: 75rem;
-  border-radius: 1.5625rem;
+.slogan-bottom {
+  margin: 0 auto;
+}
 
+
+.hero-image {
+  width: 100%;
+  border-radius: 1.5625rem;
 }
 
 article {
   width: 100%;
-  margin: 7.5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6.25rem;
+  max-width: 1920px;
+  padding-top: 70px;
+  padding-bottom: 120px;
 }
 
 section {
-  width: 100%;
-  display: flex;
+  padding: 50px 0;
+  display: grid;
   justify-content: center;
-  align-items: center;
-  gap: 9.8125rem;
+  column-gap: 9.8125rem;
+  row-gap: 10px;
+  width: 100%;
+}
+
+section:nth-of-type(odd) {
+  grid-template:
+    ". image"
+    "title image"
+    "description image"
+    ". image"
+    /291px 550px;
+}
+
+section:nth-of-type(even) {
+  grid-template:
+    "image ."
+    "image title"
+    "image description"
+    "image ."
+    /550px 291px;
 }
 
 .title {
-  font-size: 3rem;
+  grid-area: title;
+  font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-bottom: .625rem;
+  letter-spacing: -0.3px;
 }
 
 .description {
-  color: #6B6B6B;
-  letter-spacing: -0.125rem;
-  font-size: 1rem;
+  grid-area: description;
+  color: #6b6b6b;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
+  /* 24px */
 }
 
 .content-image {
-  width: 34.375rem;
-  height: 28.125rem;
+  grid-area: image;
+  width: 550px;
+  height: 450px;
 }
 
 .background-clip-text {
@@ -119,6 +146,8 @@ section {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+
 
 .title-1-gradient {
   background-image: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
@@ -139,6 +168,7 @@ section {
 /* footer */
 .footer {
   background: #111322;
+  width: 100%;
 }
 
 .footer-content {
@@ -199,4 +229,86 @@ footer ul li {
 
 footer ul li:last-child {
   margin-right: 0;
+}
+
+
+/*----------Tablet---------*/
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+
+  .nav_content {
+    min-width: 1199px;
+
+  }
+
+  .hero {
+    padding: 1.25rem 12.5rem;
+    min-width: 1199px;
+
+  }
+
+  .slogan-bottom {
+    width: 400px;
+  }
+
+  article {
+    min-width: 1199px;
+  }
+
+  section {
+    column-gap: 51px;
+  }
+
+  footer {
+    min-width: 1199px;
+  }
+
+}
+
+/* --------Mobile-------- */
+@media only screen and (min-width: 375px) and (max-width: 767px) {
+  .nav_content {
+    padding: 13px 32px;
+    min-width: 766px;
+  }
+
+  .hero {
+    padding: 13px 32px;
+    min-width: 766px;
+
+  }
+
+  .slogan-bottom {
+    width: 400px;
+  }
+
+  section:nth-of-type(odd) {
+    grid-template:
+      "."
+      "title"
+      "image"
+      "description"
+
+  }
+
+  section:nth-of-type(even) {
+    grid-template:
+      "."
+      "title"
+      "image"
+      "description"
+  }
+
+  article {
+    min-width: 766px;
+  }
+
+
+  footer {
+    min-width: 766px;
+  }
+
+  .content-image {
+    grid-area: image;
+    width: 100%;
+  }
 }

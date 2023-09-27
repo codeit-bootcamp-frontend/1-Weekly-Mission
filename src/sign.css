@@ -174,3 +174,30 @@ body {
 .input_password_check {
   position: relative;
 }
+
+
+/*----------Tablet---------*/
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+}
+
+/* --------Mobile-------- */
+@media only screen and (min-width: 375px) and (max-width: 767px) {
+
+  .wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+  }
+
+  .content {
+    width: 100%;
+  }
+}
