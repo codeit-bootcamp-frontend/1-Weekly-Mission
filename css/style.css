@@ -247,13 +247,12 @@ footer .footer-links a {
     grid-area: title;
   }
   .description {
-    width: 325px;
     font-size: 15px;
     grid-area: desc;
   }
   .content-img {
-    width: 325px;
-    height: 266px;
+    width: 100%;
+    height: 100%;
     grid-area: img;
   }
   .footer-box {
