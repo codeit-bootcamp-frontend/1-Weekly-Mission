@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="sign.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
@@ -10,61 +11,61 @@
 </head>
 <body>
     <main class="sign" id="up">
-        <article class="content">
-            <section class="title">
+        <section class="content">
+            <div class="title">
                 <img src="/images/icon/signin-logo.png">
-                <section class="text">
+                <div class="text">
                     이미 회원이신가요? <a href="signin.html">로그인 하기</a>
-                </section>
-            </section>
-            <section class="input">
-                <section class="box">
+                </div>
+            </div>
+            <div class="input">
+                <div class="box">
                     이메일
                     <input id="email" type="email" autocomplete="on">
-                </section>
-                <section class="box">
+                </div>
+                <div class="box">
                     비밀번호
-                    <section class="input-box">
+                    <div class="input-box">
                         <input id="password" type="password" autocomplete="on">
                         <img src="/images/icon/signin-eye-off.png">
-                    </section>
-                </section>
-                <section class="box">
+                    </div>
+                </div>
+                <div class="box">
                     비밀번호 확인
-                    <section class="cheak">
-                        <section class="input-box" id="worng">
+                    <div class="check">
+                        <div class="input-box" id="wrong">
                             <input id="password" type="password" autocomplete="on">
                             <img src="/images/icon/signin-eye-off.png">
-                        </section>
+                        </div>
                         비밀번호가 다릅니다
-                    </section>
-                </section>
-            </section> 
+                    </div>
+                </div>
+            </div> 
             <a href="\">
-                <section class="login">
+                <div class="login">
                     회원가입 
-                </section>
+                </div>
             </a>
-        </article>
-        <article class="sns">
-            <section class="title">
+        </section>
+        <section class="sns">
+            <div class="title">
                 다른 방식으로 가입하기
-            </section>
-            <section class="logo">
+            </div>
+            <div class="logo">
                 <a href="https://www.google.com/">
-                    <section class="box">
+                    <div class="box">
                         <img src="/images/icon/signin-google-bg.png">
                         <img src="/images/icon/signin-google.png" class="in-logo">
-                    </section>
+                    </div>
                 </a>
                 <a href="https://www.kakaocorp.com/page/">
-                    <section class="box">
+                    <div class="box">
                         <img src="/images/icon/signin-kakao.bg.png">
                         <img src="/images/icon/signin-kakao.png" class="in-logo">
-                    </section>
+                    </div>
                 </a>
-            </section>
-        </article>
+            </div>
+        </section>
     </main> 
 </body>
 </html>
