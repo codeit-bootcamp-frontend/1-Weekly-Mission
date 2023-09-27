@@ -15,6 +15,7 @@ a {
 header {
   background: var(--color-bg);
   padding-top: 95px;
+  width: 100%;
 }
 .gnb {
   position: fixed;
