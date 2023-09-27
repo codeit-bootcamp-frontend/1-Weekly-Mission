@@ -12,7 +12,6 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
 }
 
 .header {
@@ -49,6 +48,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  margin-top: 3rem;
 }
 
 .form__contents {
@@ -138,7 +138,7 @@ body {
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .wrap {
-    padding: 200px 32px 0;
+    padding: 20rem 3.2rem 0;
   }
 
   .container {
@@ -150,7 +150,7 @@ body {
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
   .wrap {
-    padding: 120px 32px 0 32px;
+    padding: 12rem 3.2rem 0 3.2rem;
   }
 
   .container {
