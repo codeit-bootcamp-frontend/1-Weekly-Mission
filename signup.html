@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/signup-style.css">
+    <link rel="stylesheet" href="./css/page/signup.css">
     <title>회원가입</title>
 </head>
 <body>
@@ -21,26 +21,26 @@
             <form>
                 <div class="input-box email-box">
                     <label for="email">이메일</label>
-                    <input id="email" name="email" type="text" placeholder="이메일">
-                    <div class="check-text">유효한 이메일이 아닙니다</div>
+                    <input id="email" name="email" type="text" placeholder="이메일" required>
+                    <!-- <div class="check-text">유효한 이메일이 아닙니다</div> -->
                 </div>
                 <div class="input-box password-box">
                     <label for="password">비밀번호</label>
                     <div class="inner-icon">
-                        <input id="password" name="password" type="password" placeholder="비밀번호">
+                        <input id="password" name="password" type="password" placeholder="비밀번호" required>
                         <!-- <i class="fa-solid fa-eye"></i> -->
                         <i class="fa-solid fa-eye-slash"></i>
                     </div>
-                    <div class="check-text">특수문자를 포함한 8~11자 입력해주세요</div>
+                    <!-- <div class="check-text">특수문자를 포함한 8~11자 입력해주세요</div> -->
                 </div>
                 <div class="input-box password-check-box">
                     <label for="password-check">비밀번호 확인</label>
                     <div class="inner-icon">
-                        <input id="password-check" name="passwordCh" type="password" placeholder="비밀번호 확인">
+                        <input id="password-check" name="passwordCh" type="password" placeholder="비밀번호 확인" required>
                         <!-- <i class="fa-solid fa-eye"></i> -->
                         <i class="fa-solid fa-eye-slash"></i>
                     </div>
-                    <div class="check-text">비밀번호가 다릅니다</div>
+                    <!-- <div class="check-text">비밀번호가 다릅니다</div> -->
                 </div>
                 <button class="join-btn" type="submit">회원가입</button>
             </form>

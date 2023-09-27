@@ -1,4 +1,5 @@
-@import url(./reset.css);
+@import url(../reset.css);
+@import url(../root.css);
 
 body {
     background:var(--linkbrary-bg);
@@ -11,9 +12,9 @@ body {
 
 .join-form {
     width: 100%;
-    max-width: 400px;
+    max-width: 460px;
     margin: 0 auto;
-    padding: 238px 0 116px;
+    padding: 238px 30px 116px;
 }
 
 .join-form h1 {
@@ -39,7 +40,6 @@ body {
 
 .login-link h3 {
     color: #000;
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px; /* 150% */
@@ -48,7 +48,6 @@ body {
 
 .login-link a {
     color:  var(--linkbrary-primary-color);
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: 600;
 }
@@ -67,8 +66,6 @@ form .input-box:not(:last-child) {
 .input-box label {
     margin-bottom: 12px;
     color: #000;
-    /* Linkbrary/body2-regular */
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
 }
@@ -100,21 +97,36 @@ form .input-box:not(:last-child) {
     border-radius: 8px;
     background: linear-gradient(91deg, var(--linkbrary-primary-color) 0.12%, #6AE3FE 101.84%);
     color: #F5F5F5;
-    font-family: Pretendard;
     font-size: 18px;
     font-weight: 600;
     border: 0;
     cursor: pointer;
 }
 
-.input-box .check-text {
+.email-box::after {
+    content:"이메일이 맞지 않습니다";
     margin-top: 6px;
     color: var(--linkbrary-red);
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
-    display: none;
+    /* display: none; */
 }
+.password-box::after {
+    content:"특수문자가 포함된 8~11자 입력해주세요";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+   /*  display: none; */
+}
+.password-check-box::after {
+    content:"비밀번호가 일치하지 않습니다";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+    /* display: none; */
+} 
 
 .join-form-social {
     display: flex;
@@ -131,8 +143,6 @@ form .input-box:not(:last-child) {
 .join-form-social h3 {
     flex-grow:2;
     color: var(--linkbrary-gray-100);
-    /* Linkbrary/body2-regular */
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
 }

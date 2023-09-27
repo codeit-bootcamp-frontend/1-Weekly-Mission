@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/signin-style.css">
+    <link rel="stylesheet" href="./css/page/signin.css">
     <title>로그인</title>
 </head>
 <body>
@@ -21,12 +21,12 @@
             <form>
                 <div class="input-box email-box">
                     <label for="email">이메일</label>
-                    <input id="email" name="email" type="text" placeholder="이메일">
+                    <input id="email" name="email" type="text" placeholder="이메일" required>
                 </div>
                 <div class="input-box password-box">
                     <label for="password">비밀번호</label>
                     <div class="inner-icon">
-                        <input id="password" name="password" type="password" placeholder="비밀번호">
+                        <input id="password" name="password" type="password" placeholder="비밀번호" required>
                         <!-- <i class="fa-solid fa-eye"></i> -->
                         <i class="fa-solid fa-eye-slash"></i>
                     </div>
@@ -46,5 +46,7 @@
     </div>
      <!-- 아이콘 스크립트 -->
      <script src="https://kit.fontawesome.com/94f46b7060.js" crossorigin="anonymous"></script>
+     <script src="./javascript/member/signin.js"></script>
+     <script src="./javascript/member/password.js"></script>
 </body>
 </html>

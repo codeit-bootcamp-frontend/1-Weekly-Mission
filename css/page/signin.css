@@ -1,4 +1,5 @@
-@import url(./reset.css);
+@import url(../reset.css);
+@import url(../root.css);
 
 body {
     background: var(--linkbrary-bg);
@@ -10,9 +11,9 @@ body {
 
 .login-form {
     width: 100%;
-    max-width: 400px;
+    max-width: 460px;
     margin: 0 auto;
-    padding: 238px 0 116px;
+    padding: 238px 30px 116px;
 }
 
 .login-form h1 {
@@ -38,7 +39,6 @@ body {
 
 .join-link h3 {
     color: #000;
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px; /* 150% */
@@ -47,7 +47,6 @@ body {
 
 .join-link a {
     color:  var(--linkbrary-primary-color);
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: 600;
 }
@@ -66,8 +65,6 @@ form .input-box:not(:last-child) {
 .input-box label {
     margin-bottom: 12px;
     color: #000;
-    /* Linkbrary/body2-regular */
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
 }
@@ -83,11 +80,67 @@ form .input-box:not(:last-child) {
     border: 1px solid var(--linkbrary-gray-20);
     background:  var(--linkbrary-white);
 }
+
 .input-box input:focus {
     outline-color: var(--linkbrary-primary-color);
   }
 
+
+.password-box.empty input,
+.password-box.empty input, 
+.password-box.wrong input {
+    border: 1px solid var(--linkbrary-red);
+}
+.email-box.empty input,
+.email-box.error input,
+.email-box.wrong input {
+    border: 1px solid var(--linkbrary-red);
+}
+
+  
+.email-box.empty::after {
+    content:"이메일을 입력해주세요.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.email-box.error::after {
+    content:"올바른 이메일 주소가 아닙니다.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.email-box.wrong::after {
+    content:"이메일을 확인해주세요.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.password-box.empty::after {
+    content:"비밀번호를 입력해주세요.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.password-box.wrong::after {
+    content:"비밀번호를 확인해주세요.";
+    margin-top: 6px;
+    color: var(--linkbrary-red);
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .fa-solid {
+    width:20px;
+    height:auto;
     position: absolute;
     top: 50%;
     right: 1%;
@@ -100,7 +153,6 @@ form .input-box:not(:last-child) {
     border-radius: 8px;
     background: linear-gradient(91deg, var(--linkbrary-primary-color) 0.12%, #6AE3FE 101.84%);
     color: #F5F5F5;
-    font-family: Pretendard;
     font-size: 18px;
     font-weight: 600;
     border: 0;
@@ -123,8 +175,6 @@ form .input-box:not(:last-child) {
 .login-form-social h3 {
     flex-grow:2;
     color: var(--linkbrary-gray-100);
-    /* Linkbrary/body2-regular */
-    font-family: Pretendard;
     font-size: 14px;
     font-weight: 400;
 }
