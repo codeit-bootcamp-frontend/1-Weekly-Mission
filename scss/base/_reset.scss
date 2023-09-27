@@ -1,8 +1,5 @@
-$resetBase_baseBackground: #fff !default;
-$resetBase_baseColor: #000 !default;
-$resetBase_baseFontFamily: sans-serif !default;
+@use "../utils" as *;
 
-// -- reset --
 * {
   box-sizing: border-box;
 }
@@ -60,14 +57,14 @@ select,
 td,
 textarea,
 th {
-  color: $resetBase_baseColor;
-  font-family: Pretendard, $resetBase_baseFontFamily;
+  color: $reset-base-color;
+  font-family: Pretendard, $reset-base-font-family;
   word-break: keep-all;
 }
 
 body,
 button {
-  background: $resetBase_baseBackground;
+  background: $reset-base-background;
   line-height: 1;
 }
 

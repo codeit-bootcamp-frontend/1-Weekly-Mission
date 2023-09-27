@@ -96,7 +96,7 @@ button {
   top: 0;
   z-index: 1;
   width: 100%;
-  background-color: #F0F6FF;
+  background-color: #f0f6ff;
 }
 .gnb__inner {
   display: flex;
@@ -210,7 +210,7 @@ button {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #F0F6FF;
+  background-color: #f0f6ff;
 }
 
 .form {
@@ -234,11 +234,11 @@ button {
   height: auto;
   margin-top: 1.2rem;
   padding: 1.8rem 1.5rem;
-  border: 0.1rem solid #CCD5E3;
+  border: 0.1rem solid #ccd5e3;
   border-radius: 0.8rem;
 }
 .form__input-box:focus {
-  outline-color: #6D6AFE;
+  outline-color: #6d6afe;
 }
 .form__password-toggle {
   position: absolute;
@@ -253,10 +253,10 @@ button {
   align-items: center;
   padding: 1.6rem 2rem;
   border-radius: 0.8rem;
-  background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
   font-size: 1.8rem;
   font-weight: 600;
-  color: #F5F5F5;
+  color: #f5f5f5;
 }
 @media screen and (max-width: 767px) {
   .button {
@@ -271,7 +271,7 @@ button {
   align-items: center;
   width: 100%;
   padding: 7rem 3.2rem 0rem;
-  background-color: #F0F6FF;
+  background-color: #f0f6ff;
 }
 @media screen and (max-width: 1199px) {
   .main-section {
@@ -596,7 +596,7 @@ button {
   font-weight: 600;
   line-height: normal;
   text-decoration: underline;
-  color: #6D6AFE;
+  color: #6d6afe;
 }
 .auth .button {
   padding: 1.6rem 2rem;
@@ -608,9 +608,9 @@ button {
   padding: 1.2rem 2.4rem;
   justify-content: space-between;
   align-items: center;
-  border: 0.1rem solid #CCD5E3;
+  border: 0.1rem solid #ccd5e3;
   border-radius: 0.8rem;
-  background-color: #E7EFFB;
+  background-color: #e7effb;
 }
 .auth__social-text {
   font-size: 1.4rem;
@@ -631,8 +631,8 @@ button {
   border-radius: 50%;
 }
 .auth__social-logo--google {
-  border: 0.1rem solid #CCD5E3;
-  background-color: #FFF;
+  border: 0.1rem solid #ccd5e3;
+  background-color: #fff;
 }
 .auth__social-logo--google img {
   width: 2.2rem;
