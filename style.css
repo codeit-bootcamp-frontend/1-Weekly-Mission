@@ -387,7 +387,11 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  color: #cfcfcf;
+  color: var(--color-white);
+}
+
+.footer-faq {
+  color: var(--color-white);
 }
 
 .footer-icons {
