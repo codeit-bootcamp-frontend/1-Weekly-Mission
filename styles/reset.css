@@ -14,15 +14,15 @@
 }
 
 :root {
-  --primary: #6D6AFE;
-  --red: #FF5B56;
+  --primary: #6d6afe;
+  --red: #ff5b56;
   --black: #111322;
-  --white: #FFFFFF;
+  --white: #ffffff;
   --gray-100: #373740;
-  --gray-60: #9FA6B2;
-  --gray-20: #CCD5E3;
-  --gray-10: #E7EFFB;
-  --bg: #F0F6FF;
+  --gray-60: #9fa6b2;
+  --gray-20: #ccd5e3;
+  --gray-10: #e7effb;
+  --bg: #f0f6ff;
 }
 
 html {

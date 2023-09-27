@@ -31,7 +31,7 @@
 }
 
 .button {
-  background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
+  background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
   padding: 1.6rem 2.0rem;
   border-radius: 8px;
   font-size: 1.8rem;
@@ -85,7 +85,7 @@
 }
 
 .slogan-gradient {
-  background-image: linear-gradient(91deg, var(--primary) 17.28%, #FF9F9F 74.98%);
+  background-image: linear-gradient(91deg, var(--primary) 17.28%, #ff9f9f 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -192,7 +192,7 @@
 
 .section .description {
   grid-area: description;
-  color: #6B6B6B;
+  color: #6b6b6b;
   font-size: 1.6rem;
   font-weight: 500;
 
@@ -210,28 +210,28 @@
 }
 
 .save.gradient {
-  background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .management.gradient {
-  background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+  background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .sharing.gradient {
-  background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 100%);
+  background: linear-gradient(99deg, #6d7ccd 19.76%, rgba(82, 136, 133, 0.22) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .search.gradient {
-  background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
+  background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -270,7 +270,7 @@
 .footer .link-frame .link {
   font-size: 1.6rem;
   font-weight: 400;
-  color: #CFCFCF;
+  color: #cfcfcf;
 }
 
 .footer .link-frame {
