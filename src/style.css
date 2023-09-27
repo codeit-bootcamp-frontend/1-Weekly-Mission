@@ -88,7 +88,7 @@ section {
   column-gap: 15.7rem;
   row-gap: 1rem;
   width: 100%;
-  height: 55rem;
+  height: 100%;
   padding: 50px 0;
 }
 
@@ -141,8 +141,8 @@ section:nth-of-type(even) {
 
 .content-image {
   grid-area: image;
-  width: 55rem;
-  height: 45rem;
+  object-fit: cover;
+  width: 100%;
 }
 
 footer {
@@ -207,10 +207,6 @@ footer {
   .hero-image {
     width: 65rem;
     height: 38.3rem;
-  }
-  .content-image {
-    width: 38.5rem;
-    height: 31.5rem;
   }
 
   article {
@@ -291,10 +287,6 @@ footer {
     height: 17.8712rem;
     flex-shrink: 0;
   }
-  .content-image {
-    width: 32.5rem;
-    height: 26.5909rem;
-  }
 
   article {
     padding-top: 0;
@@ -303,8 +295,8 @@ footer {
   section {
     column-gap: 2.4rem;
     row-gap: 1.6rem;
-    height: 45.7rem;
-    padding: 4rem 0;
+    padding: 4rem 3.2rem;
+    height: 100%;
   }
 
   .title {
@@ -320,7 +312,7 @@ footer {
       "title"
       "image"
       "description"
-      /32.5rem;
+      / 1fr;
   }
   
   section:nth-of-type(even) {
@@ -328,7 +320,7 @@ footer {
       "title"
       "image"
       "description"
-      /32.5rem;
+      / 1fr;
   }
 
   footer {
