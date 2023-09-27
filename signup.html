@@ -23,13 +23,17 @@
       </header>
       <label for="sign-up"
         >이메일<br>
-        <input id="sign-up" type="email" />
+        <div class="input-container">
+          <input id="sign-up" type="email" />
+        </div>
       </label>
       <label for="password"
         >비밀번호<br>
-        <div class="helper">
-          <input id="password" type="password" />
-          <div class="input-eye-off"><img src="./images/signin/eye-off.svg"/></div>
+        <div class="input-container">
+          <div class="helper">
+            <input id="password" type="password" />
+            <div class="input-eye-off"><img src="./images/signin/eye-off.svg"/></div>
+          </div>
         </div>
       </label>
       <button onclick="location.href='./index.html'">로그인</button> 
