@@ -19,30 +19,45 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+      margin-bottom: 30px;
+    }
+
+  @media (max-width: 767px) {
+      margin-bottom: 0;
+    }
 }
 
 nav {
+  max-width: 1920px;
   position: fixed;
+  display: flex;
   top: 0;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:center;
-}
-
-.nav-container{
-  max-width: 1920px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  align-items:center;
+  justify-content:space-between;
   padding: 1.25rem 12.5rem;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+    padding: 20px 32px;
+    max-width: 799px;
+  }
+
+  @media (max-width: 767px) {
+      padding: 13px 32px;
+    }
 }
 
-.nav-container img{
+nav img{
   width: 128px;
+
+  @media (max-width: 767px){
+    width: 88.667px;
+    height: 16px;
+  }
 }
 
 .head-container{
@@ -51,7 +66,11 @@ nav {
   display:flex;
   flex-direction:column;
   justify-content: center;
-  align-items: center;;
+  align-items: center;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+    max-width: 698px;
+  }
 }
 
 section {
@@ -62,15 +81,33 @@ section {
   margin: 0 auto;
   max-width: 998px;
   width:100%;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+     max-width: 698px;
+   }
 }
 
 .image-wrapper {
   width: 34.375rem;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+    width: 385px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+  
 }
 
 section img {
   width: 100%;
   grid-area: image;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+     width: 100%;
+  }
+  
 }
 
 .gradient-link {
@@ -88,6 +125,10 @@ section img {
   font-size: 1.125rem;
   line-height: 1.35rem;
   font-weight: 600;
+
+  @media (max-width: 767px) {
+   font-size: 14px;
+   }
 }
 
 a {
@@ -97,12 +138,23 @@ a {
 
 .gradient-link.signin {
   width: 8rem;
+
+  @media (max-width: 767px) {
+    width:80px;
+    padding: 10px 16px;
+  }
 }
 
 .gradient-link.signup {
   width: 21.875rem;
   gap: 0.625rem;
   margin: 1.25rem 0;
+
+  @media (max-width: 767px) {
+    width: 200px;
+    padding: 10px 16px;
+    gap: 10px;
+  }  
 }
 
 .head-title {
@@ -112,6 +164,17 @@ a {
   text-align: center;
   font-weight: 700;
   margin-top: 10.625rem;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 767px) {
+    font-size:32px;
+    font-weight: 700;
+    line-height: 42px;
+    margin-top: 90px;
+    }
 }
 
 .head-title-gradient {
@@ -123,6 +186,15 @@ a {
 .hero-image {
   width: 75rem;
   text-align: center;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+    width: 650.303px;
+   }
+
+  @media (max-width: 767px) {
+    width:100%;
+    padding: 0 32px;
+    }
 }
 
 .link {
@@ -133,16 +205,38 @@ a {
   width: 100%;
   padding: 50px 0;
 
+  @media (min-width: 768px) and (max-width: 1199px){
+   max-width: 698px;
+   column-gap: 51px;
+   }
+
+  @media (max-width: 767px) {
+    padding: 40px 32px;
+    gap: 24px;
+    max-width: 100%;
+  }
 }
 
 .link.save, .link.share{
   grid-template:
   "text-container image" ;
+
+  @media (max-width: 767px) {
+    grid-template-areas:
+    "text-container" 
+    "image";
+  }
 }
 
 .link.admin, .link.search{
   grid-template:
   "image text-container" ;
+
+  @media (max-width: 767px) {
+    grid-template-areas:
+    "text-container" 
+    "image";
+  }
 }
 
 .text-container {
@@ -151,11 +245,27 @@ a {
   justify-content: center;
   align-items: flex-start;
   grid-area: text-container;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+    width: 262px;
+    gap: 10px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 }
 
 .main-text {
   font-size: 3rem;
   font-weight: 700;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    width:100%;
+  }
 }
 
 .main-text .section-gradient-1 {
@@ -189,6 +299,12 @@ a {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media (min-width: 768px) and (max-width: 1199px){
+   font-size: 48px;
+   font-weight: 700;
+   letter-spacing: -0.3px;
+  }
 }
 
 p {
@@ -198,24 +314,32 @@ p {
   font-weight: 500;
   line-height: 150%;
   word-break: keep-all;
+
+  @media (max-width: 767px) {
+    font-size: 15px;
+  }
 }
 
 footer {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   width: 100%;
   height: 10rem;
   background: #111322;
   margin-top: 7.5rem;
   padding: 2rem 6.5rem 4rem;
-}
-
-.footer-section {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+
+  @media (max-width: 767px) {
+    margin-top: 40px;
+    padding: 32px;
+    display: grid;
+    grid-template-areas:
+    "explain sns-logo"
+    "copyright .";
+    row-gap:60px;
+    justify-content: space-around;
+  }
 }
 
 .copyright {
@@ -239,148 +363,4 @@ footer {
 
 .sns-logo{
   grid-area: sns-logo;
-}
-
-/* 태블릿 사양  */
-@media (max-width: 1199px){
-
-  header{
-    margin-bottom: 30px;
-  }
-
-  .nav-container{
-    padding: 20px 32px;
-    max-width: 799px;
-  }
-
-  .head-container{
-    max-width: 698px;
-  }
-
-  .head-title{
-    display: flex;
-    flex-direction: column;
-  }
-
-  section{
-    max-width: 698px;
-    /* margin: 0 32px;
-    padding: 0 32px;
-
-    <Mobile 사이즈에서 좌우 여백 32px 제외하고 내부 요소들이 너비를 모두 차지합니다.>
-    이 요구사항에 대한 코드였는데요,
-    마진값은 적용이 안되는 것 같고, 패딩을 넣었더니 한쪽으로 쏠리게 됩니다 ㅜㅜ... */
-  }
-
-  section img {
-    width: 100%;
-  }
-
-  .image-wrapper {
-    width: 385px;
-  }
-
-  .text-container{
-    width: 262px;
-    gap: 10px;
-  }
-
-  .hero-image{
-    width: 650.303px;
-  }
-
-  .link {
-    max-width: 698px;
-    column-gap: 51px;
-  }
-}
-
-/* 모바일 사양 */
-@media (max-width: 767px) {
-
-  header{
-    margin-bottom:0;
-  }
-
-  .nav-container {
-    padding: 13px 32px;
-  }
-
-  .nav-container img{
-    width: 88.667px;
-    height: 16px;
-  }
-
-  .head-title{
-    font-size:32px;
-    font-weight: 700;
-    line-height: 42px;
-    margin-top: 90px;
-  }
-  
-  .gradient-link{
-    font-size: 14px;
-  }
-
-  .gradient-link.signin{
-    width:80px;
-    padding: 10px 16px;
-  }
-
-  .gradient-link.signup{
-    width: 200px;
-    padding: 10px 16px;
-    gap: 10px;
-  }
-
-  .hero-image{
-    width:100%;
-    padding: 0 32px;
-  }
-
-  .link.save, .link.share, .link.admin, .link.search{
-    grid-template-areas:
-    "text-container" 
-    "image";
-  }
-
-  .link{
-    padding: 40px 32px;
-    gap: 24px;
-    max-width: 100%;
-  }
-  
-  .text-container{
-    width: 100%;
-  }
-
-  .main-text{
-    font-size: 24px;
-    line-height: normal;
-    letter-spacing: -0.3px;
-    width:100%;
-  }
-
-  p{
-    font-size: 15px;
-  }
-
-  .image-wrapper{
-    width: 100%;
-
-  }
-
-  footer{
-    margin-top: 40px;
-    padding: 32px;
-  }
-  
-  .footer-section{
-    display: grid;
-    grid-template-areas:
-    "explain sns-logo"
-    "copyright .";
-    row-gap:60px;
-    justify-content: space-around;
-  }
 }
