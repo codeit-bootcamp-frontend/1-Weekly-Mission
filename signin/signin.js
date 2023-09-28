@@ -1,5 +1,8 @@
 const emailInput = document.querySelector("#username");
+const passwordInput = document.querySelector("#password");
+
 const emailErrorText = document.querySelector("#emailError");
+const passwordErrorText = document.querySelector("#passwordError");
 
 emailInput.addEventListener("blur", function () {
   const email = emailInput.value;
@@ -12,5 +15,16 @@ emailInput.addEventListener("blur", function () {
   } else {
     emailErrorText.textContent = "";
     emailErrorText.style.visibility = "hidden"; // 에러 메시지 숨김
+  }
+});
+
+passwordInput.addEventListener("blur", function () {
+  const password = passwordInput.value;
+  if (!password) {
+    passwordErrorText.textContent = "비밀번호를 입력해주세요.";
+    passwordErrorText.style.visibility = "visible"; // 에러 메시지 표시
+  } else {
+    passwordErrorText.textContent = "";
+    passwordErrorText.style.visibility = "hidden"; // 에러 메시지 숨김
   }
 });
