@@ -28,3 +28,7 @@ passwordInput.addEventListener("blur", function () {
     passwordErrorText.style.visibility = "hidden"; // 에러 메시지 숨김
   }
 });
+
+function isValidEmail(email) {
+  return /\S+@\S+\.\S+/.test(email);
+}
