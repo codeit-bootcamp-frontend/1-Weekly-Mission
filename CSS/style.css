@@ -265,7 +265,6 @@ a {
     padding: 29px 23px 0;
   }
 
-/* 이미지 크기 및 텍스트 크기를 어떻게 해야 자동적으로 늘어났다 줄게 할 수 있는지 모르겠습니다. ㅠㅠ */
   .feature_wrapper_outer {
     margin: 50px auto;
     gap: 10px 51px;
@@ -418,8 +417,6 @@ a {
     grid-area: subtitle;
     margin-top: 24px;
   }
-
-
 
   footer {
     margin: 40px 0 0;

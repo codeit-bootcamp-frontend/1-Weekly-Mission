@@ -17,27 +17,31 @@
   <title>Linkbrary</title>
  </head>
  <body>
-  <header>
-    <nav>
-      <div class="nav_wrapper_left">
-        <a href="/"><img id="logo" src="./images/Linkbrary.png" alt="logo_Linkbrary"></a>
+    <!-- 헤더영역 -->
+    <header>
+      <nav>
+        <div class="nav_wrapper_left">
+          <a href="/"><img id="logo" src="./images/Linkbrary.png" alt="logo_Linkbrary"></a>
+        </div>
+        <div class="nav_wrapper_right">
+          <a id="login_button" href="signin.html">로그인</a>
+        </div>
+      </nav>
+      <div class="keyvisual">
+        <div class="keyvisual_container">
+          <h1>
+            <span class="accent">세상의 모든 정보</span>를<br>
+            쉽게 저장하고 관리해보세요
+          </h1>
+          <a href="signup.html">링크 추가하기</a>
+          <!-- 반응형 모바일 사이즈용 키비쥬얼 이미지 -->
+          <img class="keyvisual_image_mobile" src="./images/keyvisual_mobile.png">
+        </div>
+        <!-- 반응형 PC / Tablet 사이즈용 키비쥬얼 이미지 -->
+        <div class="keyvisual_bg_img"></div>
       </div>
-      <div class="nav_wrapper_right">
-        <a id="login_button" href="signin.html">로그인</a>
-      </div>
-    </nav>
-    <div class="keyvisual">
-      <div class="keyvisual_container">
-        <h1>
-          <span class="accent">세상의 모든 정보</span>를<br>
-          쉽게 저장하고 관리해보세요
-        </h1>
-        <a href="signup.html">링크 추가하기</a>
-        <img class="keyvisual_image_mobile" src="./images/keyvisual_mobile.png">
-      </div>
-      <div class="keyvisual_bg_img"></div>
-    </div>
-  </header>
+    </header>
+    <!-- 사이트 메인영역 -->
     <main class="group_feature">
       <section>
         <div class="feature_wrapper_outer top">
@@ -93,6 +97,7 @@
         </div>
       </section>
     </main>
+    <!-- 푸터 영역 -->
     <footer>
       <div class="footer_wrapper">
         <span class="footer_copyright">©codeit - 2023</span>
@@ -108,6 +113,7 @@
         </div>
       </div>
     </footer>
+    <!-- 아이콘 import 사이트 : fontawesome -->
     <script src="https://kit.fontawesome.com/4fad5bb7ce.js" crossorigin="anonymous"></script>
  </body>
  </html>
