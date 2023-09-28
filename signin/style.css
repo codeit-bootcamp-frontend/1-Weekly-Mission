@@ -134,37 +134,20 @@ footer p{
     align-items: center;
 }
 
-.social_icon_kakao{
+.social_icon{
     width : 42px;
     height : 42px;
-    position : relative;
-    background-image: url("/assets/images/kakaotalk_bg.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .kakao{
-    position : absolute;
-    top : 10px;
-    left : 8.5px;
-}
-
-.social_icon_google{
-    width : 42px;
-    height : 42px;
-    position : relative;
-    background-image: url("/assets/images/google_bg.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    background-image: url("/assets/images/kakaotalk.svg");
 }
 
 .google{
-    width : 22px;
-    position : absolute;
-    top : 10px;
-    left : 10px;
+    background-image: url("/assets/images/google.svg");
 }
 
 @media (max-width : 767px){
