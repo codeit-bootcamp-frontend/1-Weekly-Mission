@@ -163,7 +163,7 @@ main {
   grid-area: subtitle_area;
 }
 
-.inner_image {
+.feature_image {
   grid-area: inner_image;
 }
 
@@ -279,7 +279,7 @@ a {
     grid-template-rows: auto;
   }
 
-  .inner_image {
+  .feature_image {
     height: 315px;
     width: auto;
 
@@ -398,7 +398,7 @@ a {
     display: none;
   }
 
-  .inner_image {
+  .feature_image {
     width: 100%;
     height: auto;
     grid-area: inner_image;
