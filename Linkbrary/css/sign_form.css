@@ -86,6 +86,12 @@
   cursor: pointer;
 }
 
+.form__errorMessage {
+  margin: 0;
+  color: var(--color-red);
+  font-size: 0.875rem;
+}
+
 .form-container__oauth {
   width: 400px;
   padding: 1rem 2rem;
