@@ -20,7 +20,7 @@ br.pc {
   font-weight: 600;
   line-height: normal;
   border-radius: 0.8rem;
-  background: var(--linkbrary-gradation);
+  background: var(--gra-blue-to-skyBlue);
   display: flex;
   cursor: pointer;
 }
@@ -83,7 +83,7 @@ nav .button {
   height: 16rem;
 }
 
-.title .gra-blue-to-pink {
+.title #gra-blue-to-pink {
   background: var(--gra-blue-to-pink);
   background-clip: text;
   -webkit-background-clip: text;
@@ -121,33 +121,29 @@ nav .button {
   width: 29.1rem;
 }
 
-#gra-pink-to-skyblue {
-  background: var(--gra-pink-to-skyblue);
+.text-gradation {
   background-clip: text;
   -webkit-background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
 }
 
-#gra-skyblue-to-yellow {
-  background: var(--gra-skyblue-to-yellow);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+#gra-pink-to-skyBlue {
+  background-image: var(--gra-pink-to-skyBlue);
 }
 
-#gra-blue-to-darkgreen {
-  background: var(--gra-blue-to-darkgreen);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+#gra-skyBlue-to-yellow {
+  background-image: var(--gra-skyBlue-to-yellow);
 }
 
-#gra-hotpink-to-skyblue {
-  background: var(--gra-hotpink-to-skyblue);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+#gra-blue-to-darkGreen {
+  background-image: var(--gra-blue-to-darkGreen);
 }
+
+#gra-hotpink-to-skyBlue {
+  background-image: var(--gra-hotpink-to-skyBlue);
+}
+
 
 h4 {
   color: #6b6b6b;
