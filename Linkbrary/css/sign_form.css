@@ -66,6 +66,10 @@
   }
 }
 
+.error {
+  border-color: var(--color-red);
+}
+
 .form__input--selected {
   position: relative;
   top: 5px;

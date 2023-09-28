@@ -1,4 +1,8 @@
-const input = document.querySelector(".form__input");
+"use strict";
+
+const USER_EMAIL = "test@codeit.com";
+const USER_PASSWORD = "codeit101";
+
 const form = document.querySelector(".form");
 
 const email = document.getElementById("email");
@@ -34,10 +38,10 @@ const regExp = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/i;
 const emailValidation = (value) => {
   if (!regExp.test(value)) {
     emailError.textContent = "올바른 이메일 주소가 아닙니다.";
-    email.style.borderColor = "var(--color-red)";
+    email.classList.add("error");
   } else {
     emailError.textContent = "";
-    email.style.borderColor = "var(--color-gray-20)";
+    email.classList.remove("error");
   }
 };
 
@@ -45,7 +49,7 @@ const emailValidation = (value) => {
 const checkEmailValue = () => {
   if (!email.value) {
     emailError.textContent = "이메일을 입력해주세요";
-    email.style.borderColor = "var(--color-red)";
+    email.classList.add("error");
   } else {
     emailValidation(email.value);
   }
@@ -54,7 +58,10 @@ const checkEmailValue = () => {
 const checkPasswordValue = () => {
   if (!password.value) {
     passwordError.textContent = "비밀번호를 입력해주세요";
-    password.style.borderColor = "var(--color-red)";
+    password.classList.add("error");
+  } else {
+    passwordError.textContent = "";
+    password.classList.remove("error");
   }
 };
 
@@ -67,16 +74,15 @@ const onClickSubmit = (e) => {
     checkPasswordValue();
     return;
   }
-  if (email.value === "test@codeit.com" && password.value === "codeit101") {
+  if (email.value === USER_EMAIL && password.value === USER_PASSWORD) {
     form.submit();
   } else {
     // 이외의 로그인 시도의 경우, 이메일 input, 비밀번호 input 아래에 해당 에러 메세지
     emailError.textContent = "이메일을 확인해주세요";
-    email.style.borderColor = "var(--color-red)";
+    email.classList.add("error");
     passwordError.textContent = "비밀번호를 확인해주세요";
-    password.style.borderColor = "var(--color-red)";
+    password.classList.add("error");
   }
-  // console.log(e);
 };
 
 email.addEventListener("focusout", checkEmailValue);
