@@ -26,3 +26,10 @@ button {
   background-color: unset;
   cursor: pointer;
 }
+
+h1,
+h2,
+p,
+section {
+  word-break: keep-all;
+}
