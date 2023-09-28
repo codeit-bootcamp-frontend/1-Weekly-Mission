@@ -1,4 +1,4 @@
-@import "/reset.css";
+@import "/assets/reset.css";
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 *{
@@ -138,7 +138,7 @@ footer p{
     width : 42px;
     height : 42px;
     position : relative;
-    background-image: url("../assets/images/kakaotalk_bg.svg");
+    background-image: url("/assets/images/kakaotalk_bg.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -154,7 +154,7 @@ footer p{
     width : 42px;
     height : 42px;
     position : relative;
-    background-image: url("../assets/images/google_bg.svg");
+    background-image: url("/assets/images/google_bg.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
