@@ -15,7 +15,7 @@ body {
   font-family:"pretendard","Arial", sans-serif;
 }
 
-.main {
+header {
   background-color: #F0F6FF;
 }
 
@@ -34,7 +34,7 @@ nav {
   z-index: 1;
 }
 
-.top_header_left {
+.nav_wrapper_left {
   flex: 1 0 0;
   min-width: 200px;
 }
@@ -43,7 +43,7 @@ nav {
   height: 24px;
 }
 
-.top_header_right > #login_button {
+.nav_wrapper_right > #login_button {
   padding: 16px 40px;
   border-radius: 8px;
   color: #ffffff;
@@ -53,7 +53,7 @@ nav {
   font-size: 1.8rem
 }
 
-header {
+.keyvisual {
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
@@ -65,7 +65,7 @@ header {
 }
 
 
-.header_wrapper > h1 {
+.keyvisual_container > h1 {
   width: 708px;
   font-size: 6.4rem;
   font-weight: 700;
@@ -74,7 +74,7 @@ header {
   line-height: 80px;
 }
 
-.header_wrapper .accent  {
+.keyvisual_container .accent  {
   background-image: linear-gradient(91deg, rgba(109, 106, 254, 1), rgba(255, 159, 159, 1));
   background-clip:text;
   -webkit-background-clip:text;
@@ -96,7 +96,7 @@ header {
   display: block;
 }
 
-.header_wrapper > a {
+.keyvisual_container > a {
   width: 350px;
   text-align: center;
   padding: 16px 20px;
@@ -115,14 +115,14 @@ a:hover {
   cursor: pointer;
 }
 
-section {
+main {
   background-color: #ffffff;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.wrapper_outer {
+.feature_wrapper_outer {
   width: 998px;
   height: 450px;
   margin: 50px auto;
@@ -134,17 +134,17 @@ section {
   gap: 10px 157px;
 }
 
-.wrapper_outer.top {
+.feature_wrapper_outer.top {
   margin-top: 120px;
 }
 
-.wrapper_outer.reverse {
+.feature_wrapper_outer.reverse {
   grid-template-areas: 
   "inner_image title_area"
   "inner_image subtitle_area";
 }
 
-.title {
+.feature_title {
   width: 259px;
   font-size: 4.8rem;
   text-wrap: balance;
@@ -155,7 +155,7 @@ section {
   grid-area: title_area;
 }
 
-.subtitle {
+.feature_subtitle {
   width: 257px;
   font-size: 1.6rem;
   font-weight: 500;
@@ -205,7 +205,7 @@ footer {
   margin-top: 120px;
 }
 
-.wrapper_footer {
+.footer_wrapper {
   width: 100%;
   max-width: 1920px;
   padding: 0 104px;
@@ -214,13 +214,13 @@ footer {
   justify-content: space-between;
 }
 
-.copyright {
+.footer_copyright {
   color: #676767;
   font-size: 1.6rem;
   flex: 1 0 auto;
 }
 
-.policy_wrapper {
+.footer_direct_link_wrapper {
   font-size: 1.6rem;
   color: #cfcfcf;
   display: flex;
@@ -229,7 +229,7 @@ footer {
 }
 
 
-.policy_text {
+.direct_link {
   color: #cfcfcf;
 }
 
@@ -237,7 +237,7 @@ a {
   text-decoration: none;
 }
 
-.icons {
+.footer_icons {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -250,7 +250,7 @@ a {
     padding: 40px 32px;
   }
 
-  header {
+  .keyvisual {
     max-width: 698px;
     margin: 0 auto;
     padding-top: 124px;
@@ -273,7 +273,7 @@ a {
 
 
 /* 이미지 크기 및 텍스트 크기를 어떻게 해야 자동적으로 늘어났다 줄게 할 수 있는지 모르겠습니다. ㅠㅠ */
-  .wrapper_outer {
+  .feature_wrapper_outer {
     margin: 50px auto;
     gap: 10px 51px;
     width: 698px;
@@ -282,7 +282,7 @@ a {
     grid-template-rows: auto;
   }
 
-  .wrapper_outer.reverse {
+  .feature_wrapper_outer.reverse {
     grid-template-columns: 384px 262px;
     grid-template-rows: auto;
   }
@@ -293,11 +293,11 @@ a {
 
   }
   
-  .title {
+  .feature_title {
     width: 262px;
   }
   
-  .subtitle {
+  .feature_subtitle {
     width: 262px;
     align-self: start;
   }
@@ -312,13 +312,13 @@ a {
     position: fixed;
   }
 
-  .top_header_left {
+  .nav_wrapper_left {
     min-width: 100px;
     flex: 1 0 0;
   }
 
 
-  .top_header_left > a {
+  .nav_wrapper_left > a {
     height: 16px;
   }
   
@@ -327,27 +327,27 @@ a {
     height: 16px;
   }
   
-  .top_header_right > #login_button {
+  .nav_wrapper_right > #login_button {
     padding: 10px 16px;
     font-weight: 400;
     font-size: 1.4rem;
   }
 
 
-  header {
+  .keyvisual {
     margin: 0 auto;
     padding: 91px 2rem 0;
     width: 100%;
   }
 
-  .header_wrapper > h1 {
+  .keyvisual_container > h1 {
     width: 236px;
     font-size: 3.2rem;
     font-weight: 700;
     line-height: 42px;
   }
   
-  .header_wrapper > a {
+  .keyvisual_container > a {
     width: 200px;
     padding: 10px 16px;
     margin: 24px auto;
@@ -360,11 +360,11 @@ a {
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
   }
 
-  section {
+  main {
     padding: 0px 32px;
   }
 
-  .wrapper_outer {
+  .feature_wrapper_outer {
     width: 100%;
     height: auto;
     display: grid;
@@ -379,11 +379,11 @@ a {
     margin: 0;
   }
 
-  .wrapper_outer.top {
+  .feature_wrapper_outer.top {
     margin-top: 0;
   }
 
-  .wrapper_outer.reverse {
+  .feature_wrapper_outer.reverse {
     width: 100%;
     height: auto;
     grid-template-columns: none;
@@ -408,14 +408,14 @@ a {
     grid-area: inner_image;
   }
 
-  .title {
+  .feature_title {
     font-size: 2.4rem;
     width: 100%;
     grid-area: title;
     margin-bottom: 10px;
   }
 
-  .subtitle {
+  .feature_subtitle {
     font-size: 1.5rem;
     width: 100%;
     grid-area: subtitle;
@@ -430,7 +430,7 @@ a {
     height: auto;
   }
   
-  .wrapper_footer {
+  .footer_wrapper {
     width: 100%;
     padding: 0 48px;
     margin: 0 auto;
@@ -446,25 +446,25 @@ a {
 
   }
   
-  .copyright {
+  .footer_copyright {
     font-size: 1.6rem;
     grid-area: copyright;
   }
   
-  .policy_wrapper {
+  .footer_direct_link_wrapper {
     align-items: center;
     font-size: 1.6rem;
     gap: 30px;
     grid-area: privacy;
   }
   
-  .icons {
+  .footer_icons {
     gap: 12px;
     grid-area: icons;
     justify-content: flex-end;
   }
 
-  .policy_text {
+  .direct_link {
     font-size: 1.6rem;
   }
 }
