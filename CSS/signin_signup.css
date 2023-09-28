@@ -5,9 +5,13 @@
   margin: 0;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-color: #F0F6FF;
-  font-family:"pretendard","Arial", sans-serif;
+  font-family: "Pretendard", "Arial", sans-serif;
 }
 
 .outer_wrapper {
@@ -31,7 +35,7 @@ header {
 }
 
 header > h6 {
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px;
   text-align: center;
@@ -57,7 +61,7 @@ form {
 }
 
 .label {
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
@@ -88,7 +92,7 @@ form {
 
 
 .verification {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
   color: #FF5B56;
   margin-top: .375rem;
@@ -110,6 +114,7 @@ footer {
   border-radius: 8px;
   color: #ffffff;
   text-decoration: none;
+  font-size: 1.8rem;
 }
 
 .social_login {
@@ -123,6 +128,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   color: #373746;
+  font-size: 1.4rem;
 }
 
 .auth {
