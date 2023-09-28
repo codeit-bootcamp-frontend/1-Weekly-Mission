@@ -81,19 +81,18 @@ nav {
   color: transparent;
 }
 
-.main_bg_image {
-  background-image: url(./images/_img.png.png);
-  background-size: cover;
+.keyvisual_bg_img {
+  background-image: url(/Images/keyvisual_image.png);
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   width: 1200px;
   height: 500px;
+  padding: 29px 23px 0;
 }
 
-#main_image {
-  width: 100%;
-  height: auto;
-  flex-shrink: 0;
-  display: block;
+.keyvisual_image_mobile {
+  display: none;
 }
 
 .keyvisual_container > a {
@@ -260,17 +259,11 @@ a {
     text-align: center;
   }
 
-  .main_bg_image {
+  .keyvisual_bg_img {
     width: 698px;
     height: 343px;
+    padding: 29px 23px 0;
   }
-
-  #main_image {
-    width: 100%;
-    flex-shrink: 0;
-    padding : 29px 23px 0;
-  }
-
 
 /* 이미지 크기 및 텍스트 크기를 어떻게 해야 자동적으로 늘어났다 줄게 할 수 있는지 모르겠습니다. ㅠㅠ */
   .feature_wrapper_outer {
@@ -336,7 +329,7 @@ a {
 
   .keyvisual {
     margin: 0 auto;
-    padding: 91px 2rem 0;
+    padding: 91px 32px 0;
     width: 100%;
   }
 
@@ -395,11 +388,15 @@ a {
     gap: 0;
   }
 
-  /* border-radius: 25; 처리하면 윗 부분은 안 깎이고 애꿎은 아래만 둥글게 깎이는데 어떻게 하면 좋을까요? */
-  #main_image {
+  .keyvisual_image_mobile {
     width: 100%;
     flex-shrink: 0;
     padding: 0;
+    display: block;
+  }
+
+  .keyvisual_bg_img {
+    display: none;
   }
 
   .inner_image {
