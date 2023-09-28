@@ -11,7 +11,7 @@
   --linkbrary-bg: #f0f6ff;
   --linkbrary-gray-100: #373740;
   --linkbrary-gray-10: #e7effb;
-  --linkbrary-gray-20: ##ccd5e3;
+  --linkbrary-gray-20: #ccd5e3;
 }
 
 * {
@@ -60,9 +60,11 @@ label input {
   width: 100%;
   height: 50px;
   border-radius: 8px;
-  background: var(--linkbrary-white);
 }
-
+input:focus {
+  outline: none;
+  border: 5px solid var(--linkbrary-primary);
+}
 .password-container {
   position: relative;
 }
@@ -71,11 +73,6 @@ label input {
   position: absolute;
   bottom: 15px;
   right: 18px;
-}
-
-input:focus {
-  outline: none;
-  border: 5px solid var(--linkbrary-primary-color);
 }
 
 .social-login {
@@ -99,9 +96,6 @@ input:focus {
 }
 
 /* PC */
-@media screen and (min-width: 1200px) {
-  /* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다. */
-}
 
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
