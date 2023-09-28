@@ -91,11 +91,16 @@ form {
 }
 
 
-.verification {
+.error_message {
   font-size: 1.4rem;
   font-weight: 400;
   color: #FF5B56;
   margin-top: .375rem;
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 footer {
@@ -115,6 +120,9 @@ footer {
   color: #ffffff;
   text-decoration: none;
   font-size: 1.8rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
 }
 
 .social_login {
