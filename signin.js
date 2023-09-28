@@ -3,64 +3,63 @@ const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const pattern = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
 
+const pEmail = document.createElement("p");
+const pPassword = document.createElement("p");
 
 function emailValidChk(email) {
   if (pattern.test(email) === false) { return false; }
   else { return true; }
 }
 
-
 function showErrorMessage(e) {
-  const inputbox = e.target.parentElement;
-  const p = document.createElement("p");
+  const inputBox = e.target.parentElement;
+  // Create a new <p> element for each error message
+  let errorMessage = '';
 
   switch (e.target.id) {
-
     case "email":
       if (e.target.value === "") {
-        p.textContent = "이메일을 입력해주세요.";
+        errorMessage = "이메일을 입력해주세요.";
       } else if (!emailValidChk(email.value)) {
-        p.textContent = "올바른 이메일 주소가 아닙니다.";
+        errorMessage = "올바른 이메일 주소가 아닙니다.";
       }
+      pEmail.textContent = errorMessage;
+      pEmail.classList.add("error");
+      inputBox.append(pEmail);
       break;
 
     case "password":
       if (e.target.value === "") {
-        p.textContent = "비밀번호를 입력해주세요.";
+        errorMessage = "비밀번호를 입력해주세요.";
       }
+      pPassword.textContent = errorMessage;
+      pPassword.classList.add("error");
+      inputBox.append(pPassword);
       break;
-
 
     default:
       return;
   }
 
-  if (p.textContent) {
-    p.classList.add("error");
-    inputbox.append(p);
-  }
+
+  
 }
 
-
-function userAuthentication(e){
+function userAuthentication(e) {
   const inputEmail = document.querySelector(".email");
   const inputPassword = document.querySelector(".password");
 
-  
-  if (email.value === "test@codeit.com" && password.value === "codeit101"){
+  if (email.value === "test@codeit.com" && password.value === "codeit101") {
     window.location.href = "/folder";
   } else {
-    p1.textContent = "이메일을 확인해주세요.";
-    p2.textContent = "비밀번호를 확인해주세요.";
-    p1.classList.add("error");
-    p2.classList.add("error");
-    inputEmail.append(p1);
-    inputPassword.append(p2);
-
+    pEmail.textContent = "이메일을 확인해주세요.";
+    pPassword.textContent = "비밀번호를 확인해주세요.";
+    pEmail.classList.add("error");
+    pPassword.classList.add("error");
+    inputEmail.append(pEmail);
+    inputPassword.append(pPassword);
   }
-
 }
 
 inputFrame.addEventListener("focusout", showErrorMessage);
-
 password.addEventListener("change", userAuthentication);
