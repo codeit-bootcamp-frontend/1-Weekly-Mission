@@ -5,6 +5,8 @@ const loginBtn = document.querySelector("#loginBtn");
 const emailErrorText = document.querySelector("#emailError");
 const passwordErrorText = document.querySelector("#passwordError");
 
+const toggleVisibility = document.querySelector("#toggleVisibility");
+
 emailInput.addEventListener("blur", function () {
   const email = emailInput.value;
   if (!email) {
@@ -56,6 +58,18 @@ loginBtn.addEventListener("click", function () {
     passwordErrorText.textContent = "비밀번호를 확인해주세요.";
     passwordErrorText.style.visibility = "visible"; // 에러 메시지 표시
     passwordInput.classList.add("error"); // 에러 발생 시 .error 클래스 추가
+  }
+});
+
+toggleVisibility.addEventListener("click", function () {
+  if (passwordInput.type === "password") {
+    // 현재 비밀번호 타입이 'password'인 경우
+    passwordInput.type = "text"; // 타입을 'text'로 변경하여 비밀번호를 표시
+    toggleVisibility.src = "/assets/eye-on.svg"; // 이미지 변경
+  } else {
+    // 현재 비밀번호 타입이 'text'인 경우
+    passwordInput.type = "password"; // 타입을 다시 'password'로 변경하여 숨김
+    toggleVisibility.src = "/assets/eye-off.svg"; // 이미지 변경
   }
 });
 
