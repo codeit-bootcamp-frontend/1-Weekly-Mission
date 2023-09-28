@@ -43,9 +43,7 @@ body {
 form {
   display: flex;
   flex-direction: column;
-
   width: 50rem;
-
   row-gap: 3.2rem;
 }
 
@@ -60,6 +58,7 @@ label input {
   width: 100%;
   height: 50px;
   border-radius: 8px;
+  border: 5px solid var(--linkbrary-gray-20);
 }
 input:focus {
   outline: none;
