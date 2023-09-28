@@ -28,17 +28,19 @@
         <div class="sign-inputs">
           <div class="sign-input-box">
             <label class="sign-input-label">이메일</label>
-            <input class="sign-input" />
+            <input class="sign-input" id="emailInput" placeholder = '내용 입력'/>
+            <div id="emailError" class="error-message"></div>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input class="sign-input" type="password" />
+            <input class="sign-input" id="passwordInput" type="password" />
+            <div id="passwordError" class="error-message"></div>
             <button class="eye-button" type="button">
               <img src="./images/eye-off.png" id="eyeImg"/>
             </button>
           </div>
         </div>
-        <button class="cta" type="submit">로그인</button>
+        <button class="cta" id="loginButton" type="submit">로그인</button>
       </form>
       <div class="sns-box">
         <span class="sns-text">소셜 로그인</span>
