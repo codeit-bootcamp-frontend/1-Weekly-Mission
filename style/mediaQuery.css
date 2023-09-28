@@ -1,0 +1,117 @@
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  nav {
+    padding: 2rem 3.2rem;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .gnb {
+    width: calc(100% - 6.4rem);
+    /* 최소 좌우 여백 계산 */
+  }
+
+  article {
+    padding: 8rem 10rem;
+  }
+
+  section {
+    column-gap: 5.1rem;
+    height: 31.5rem;
+    margin: 10rem 0;
+  }
+
+  .content-image {
+    width: 38.5rem;
+    height: 31.5rem;
+  }
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  /* 레이아웃 조정
+
+  섹션 그리드 순서 변경하거나 플렉스 박스 order 조정 
+
+  풋터 그리드 */
+  body {
+    width: 100vw;
+  }
+
+  br {
+    display: none !important;
+  }
+
+  nav {
+    padding: 1.3rem 3.2rem;
+  }
+
+  .slogan {
+    /* 단어 기준으로 줄바꿈 */
+    word-break: keep-all;
+  }
+
+  .hero-header {
+    padding: 2.8rem 3.2rem 0;
+    width: 88%;
+    gap: 3.4rem;
+  }
+
+  .hero-image {
+    width: 53.8rem;
+  }
+
+  article {
+  }
+
+  section {
+    height: auto;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    row-gap: 1.6rem;
+    padding: 4rem 2rem;
+    white-space: wrap;
+  }
+
+  section:nth-child(odd),
+  section:nth-child(even) {
+    grid-template-areas:
+      "title"
+      "image"
+      "description";
+  }
+
+  .description {
+    font-size: 2.3rem;
+    line-height: 150%;
+    word-break: keep-all;
+  }
+
+  .footer-box {
+    display: grid;
+    grid-template-areas:
+      "privacy . sns"
+      ". . ."
+      "copyright . .";
+    padding: 2rem 5rem;
+  }
+
+  .copyright {
+    grid-area: copyright;
+  }
+
+  .footer-links {
+    grid-area: privacy;
+  }
+
+  .sns {
+    grid-area: sns;
+  }
+
+  /* 로그인, 회원가입 */
+  .sign-box {
+    width: calc(100% - 6.4rem);
+    max-width: 40rem;
+  }
+}
