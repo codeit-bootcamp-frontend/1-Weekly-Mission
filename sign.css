@@ -113,6 +113,11 @@ header {
   outline: 1px solid var(--color-primary);
 }
 
+.input-box.error {
+  outline: none; /* 포커스 스타일을 무효화 */
+  border: 1px solid var(--color-red); /* 에러 발생 시 빨간 테두리 */
+}
+
 .error-message {
   visibility: hidden;
   color: var(--color-red);
