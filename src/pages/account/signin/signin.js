@@ -3,12 +3,16 @@ import * as account from "../account.js";
 const inputEmail = document.querySelector(".email_input");
 const inputPwd = document.querySelector(".pwd_input");
 const $form = document.querySelector(".sign_form");
+const eyesToggle = document.querySelector(".eyes_toggle");
 
 inputEmail.addEventListener("focusout", (e) => {
   account.validationForm(e);
 });
 inputPwd.addEventListener("focusout", (e) => {
   account.validationForm(e);
+});
+eyesToggle.addEventListener("click", (e) => {
+  account.eyesToggleEvent(e);
 });
 
 $form.addEventListener("submit", (e) => {

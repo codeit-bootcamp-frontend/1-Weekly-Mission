@@ -85,5 +85,28 @@ function setErrorMsg(nodeInfo, errType) {
 
   return result;
 }
+/***
+ * password eyesToggleEvent
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+function eyesToggleEvent(e) {
+  let target = e.target;
+  let prevSibling = target.previousElementSibling; //이전 형제 요소
+  console.log(prevSibling);
+  if (prevSibling.getAttribute("type") === "password") {
+    console.log("password type to text");
+    prevSibling.setAttribute("type", "text");
+    target.setAttribute("src", "/src/assets/img/open_eyes.png");
+  } else {
+    console.log("text type to password");
+    prevSibling.setAttribute("type", "password");
+    target.setAttribute("src", "/src/assets/img/close_eyes.png");
+  }
+}
 
-export { validationForm };
+export { validationForm, eyesToggleEvent };

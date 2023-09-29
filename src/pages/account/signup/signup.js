@@ -2,8 +2,8 @@ import * as account from "../account.js";
 
 const inputEmail = document.querySelector(".email_input");
 const inputPwd = document.querySelector(".pwd_input");
-//회원가입 페이지
 const inputPwdCheck = document.querySelector(".pwd_check");
+const eyesToggle = document.querySelectorAll(".eyes_toggle");
 
 inputEmail.addEventListener("focusout", (e) => {
   account.validationForm(e);
@@ -13,4 +13,10 @@ inputPwd.addEventListener("focusout", (e) => {
 });
 inputPwdCheck.addEventListener("focusout", (e) => {
   account.validationForm(e);
+});
+
+eyesToggle.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    account.eyesToggleEvent(e);
+  });
 });
