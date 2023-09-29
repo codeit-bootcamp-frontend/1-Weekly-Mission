@@ -14,6 +14,7 @@
   <body>
     <div class="all">
       <div class="container">
+        <!--content1-->
         <div class="content1">
           <div class="content1_div1">
             <a href="./">
@@ -32,17 +33,27 @@
             <div class="content1_div2_div1">
               <div class="content1_div2_div1_div">이메일</div>
               <input type="email" class="content1_div2_div1_input" />
+              <span class="content1_div2_div1_span" style="display: none"
+                >이메일을 입력해주세요</span
+              >
+              <span class="content1_div2_div1_span2" style="display: none"
+                >올바른 이메일 주소가 아닙니다.</span
+              >
             </div>
             <div class="content1_div2_div2">
               <div class="content1_div2_div1_div">비밀번호</div>
               <div class="content1_div2_div2_div-input">
-                <input type="password" class="content1_div2_div1_input" />
+                <input type="password" class="content1_div2_div2_input" />
+                <span class="content1_div2_div2_span" style="display: none"
+                  >비밀번호를 입력해주세요</span
+                >
                 <img
                   src="./img/eye-off.svg"
                   alt="eyeoff"
                   width="16px"
                   class="content1_div2_div2_img"
                 />
+                <span style="display: none"></span>
               </div>
             </div>
           </div>
@@ -50,6 +61,7 @@
             <div class="content1_div3_div">로그인</div>
           </div>
         </div>
+        <!--content2-->
         <div class="content2">
           <div class="content2_div1">소셜로그인</div>
           <div class="content2_div2">
@@ -67,5 +79,6 @@
         </div>
       </div>
     </div>
+    <script src="sign.js"></script>
   </body>
 </html>

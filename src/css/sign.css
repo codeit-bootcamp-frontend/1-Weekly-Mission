@@ -12,6 +12,7 @@ body {
   --mainBackColor: #f0f6ff;
   --mainWhiteFont: #f5f5f5;
   --blackColor: #000;
+  --errorRed: #ff5b56;
 }
 
 .all {
@@ -106,10 +107,22 @@ body {
     width: max(52.2vw, 277px);
   }
 }
-
 .content1_div2_div1_input:focus {
   border: 1px solid var(--mainColor);
   outline: none;
+}
+
+.content1_div2_div1_span {
+  color: var(--errorRed);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+.content1_div2_div1_span2 {
+  color: var(--errorRed);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .content1_div2_div2 {
@@ -123,6 +136,26 @@ body {
   }
 }
 
+.content1_div2_div2_input {
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background: #fff;
+}
+@media (max-width: 767px) {
+  .content1_div2_div2_input {
+    width: max(52.2vw, 277px);
+  }
+}
+
+.content1_div2_div2_input:focus {
+  border: 1px solid var(--mainColor);
+  outline: none;
+}
 .content1_div2_div2_div-input {
   position: relative;
 }
@@ -130,6 +163,16 @@ body {
   position: absolute;
   top: 18px;
   right: 15px;
+}
+.content1_div2_div2_img:hover {
+  cursor: pointer;
+}
+.content1_div2_div2_span {
+  color: var(--errorRed);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 12px;
 }
 
 .content1_div3_div {
