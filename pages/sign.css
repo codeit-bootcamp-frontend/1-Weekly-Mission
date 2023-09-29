@@ -123,6 +123,14 @@ input:focus {
   cursor: pointer;
 }
 
+.error-msg {
+  font-size: 1.4rem;
+  color: var(--red);
+  font-weight: 400;
+  position: relative;
+  left: 1rem;
+}
+
 @media (max-width: 767px) {
   body {
     padding: 12rem 3.2rem 23.2rem 3.2rem;

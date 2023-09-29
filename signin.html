@@ -21,16 +21,18 @@
     </section>
     <section class="sign-field">
       <p class="text">이메일</p>
-      <input name="email" type="email" required autocomplete="email" placeholder="이메일을 입력하세요.">
+      <input class="email" name="email" type="email" required autocomplete="email" placeholder="이메일을 입력하세요.">
+      <div class="email error-msg"></div>
     </section>
     <section class="sign-field">
       <p class="text">비밀번호</p>
       <div class="input-container">
-        <input name="password" type="password" required placeholder="비밀번호를 입력하세요.">
+        <input class="password" name="password" type="password" required placeholder="비밀번호를 입력하세요.">
         <img src="assets/components/eye-off.svg" class="eye-off" alt="비밀번호 숨기기 아이콘">
       </div>
+      <div class="password error-msg"></div>
     </section>
-    <section class="button">
+    <section class="login button">
       <p class="text">로그인</p>
     </section>
   </div>
@@ -47,5 +49,6 @@
       </section>
     </div>
   </div>
+  <script src="js/signIn.js"></script>
 </body>
 </html>

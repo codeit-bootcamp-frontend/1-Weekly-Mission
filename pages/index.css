@@ -144,7 +144,6 @@ nav .button {
   background-image: var(--gra-hotpink-to-skyBlue);
 }
 
-
 h4 {
   color: #6b6b6b;
   font-size: 1.6rem;
@@ -364,7 +363,7 @@ footer .website {
 
   div.footer {
     flex: 0 1 192rem;
-    align-items: flex-start
+    align-items: flex-start;
   }
 
   footer #codeit{
