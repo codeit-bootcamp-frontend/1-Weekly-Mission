@@ -3,6 +3,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const emailLabel = document.querySelector(".email-label");
 const passwordLabel = document.querySelector(".password-label");
+const loginButton = document.getElementById("login-button");
 
 function showMessage(inputText) {
   return `${inputText}을 입력해주세요`;
@@ -22,14 +23,23 @@ function IsEmpty(input, inputLabel) {
 
 // 유효한 이메일이 아닐때 handling
 function IsValidEmail(input, inputLabel, message) {
-  const re = /^[a-z0-9]+@[a-z]+\.[a-z]{3,5}/;
+  const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
   const texts = input.value.trim();
-
   if (!re.test(texts) && texts.length) {
     const errorMsgs = inputLabel.querySelector("small");
     errorMsgs.innerText = message;
   }
 }
+
+// console.log(window.location.href); http://127.0.0.1:5500/pages/signin.html
+
+function isCodeItLogin(email, password) {
+  return (
+    email.value.trim() === "test@codeit.com" &&
+    password.value.trim() === "codeit101"
+  );
+}
+//  test@codeit.com, 비code밀번호: codeit101 으로 로그인 시도한경우
 
 email.addEventListener("focusout", function (event) {
   event.preventDefault();
@@ -40,4 +50,13 @@ email.addEventListener("focusout", function (event) {
 password.addEventListener("focusout", function (event) {
   event.preventDefault();
   IsEmpty(password, passwordLabel);
+});
+
+loginButton.addEventListener("click", function (event) {
+  // 얘 안해주면은 이동 X
+  //
+  event.preventDefault();
+  if (isCodeItLogin(email, password)) {
+    window.location = "http://127.0.0.1:5500/folder.html";
+  }
 });
