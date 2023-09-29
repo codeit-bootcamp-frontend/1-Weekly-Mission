@@ -69,7 +69,9 @@ form{
     display : flex;
     flex-direction: column;
     gap : 12px;
+}
 
+.pw_wrapper{
     position : relative;
 }
 
@@ -80,6 +82,7 @@ form{
 }
 
 .input_box{
+    width : 100%;
     padding : 18px 15px;
     border-radius: 8px;
     border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
@@ -98,7 +101,7 @@ input:focus{
 
 .button_login,
 .button_signup{
-    margin : 30px 0;
+    /* margin : 30px 0; */
     padding : 16px 20px;
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
@@ -148,6 +151,14 @@ footer p{
 
 .google{
     background-image: url("/assets/images/google.svg");
+}
+
+.error{
+    color : red;
+}
+
+.error_box{
+    outline: 1px solid red;
 }
 
 @media (max-width : 767px){
