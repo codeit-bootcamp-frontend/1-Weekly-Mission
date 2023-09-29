@@ -3,6 +3,10 @@ const inputEmail = document.querySelector(".email_input");
 const inputPwd = document.querySelector(".pwd_input");
 const inputPwdCheck = document.querySelector(".pwd_check");
 
+// 정규 표현삭
+const expEmail =
+  "/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i";
+
 function validationForm(e) {
   let node = e.target;
   let nodeInfo = {
@@ -10,17 +14,28 @@ function validationForm(e) {
     className: node.className,
     value: node.value,
   };
+  /** 기존 에러 이벤트 초기화 */
+  if (node.classList.contains("errorInput")) {
+    node.classList.remove("errorInput");
+  }
+  if (
+    node.nextElementSibling !== null &&
+    node.nextElementSibling.className === "error_msg"
+  ) {
+    node.nextElementSibling.remove("error_msg");
+  }
+
   let msg = "";
   //value check
   if (nodeInfo.value === "") {
     msg = "입력해주세요.";
-    let errMsg = setErrorMsg(nodeInfo, msg);
-    let toggleGb = node.classList.toggle("errorInput"); //error class 추가 및 삭제
-    let errTag = nodeUtils.createNode("span", "error_msg", errMsg);
-    toggleGb ? node.after(errTag) : node.nextElementSibling.remove();
+    let errMsg = setErrorMsg(nodeInfo, msg); //error 메세지 생성
+    let errTag = nodeUtils.createNode("span", "error_msg", errMsg); //tag 생성
+    node.classList.toggle("errorInput"); //error class 추가 및 삭제
+    node.after(errTag);
+    // toggleGb ? node.after(errTag) : node.nextElementSibling.remove();
   } else {
     //정규표현식 체크
-    node.nextElementSibling.remove();
   }
 }
 
