@@ -21,7 +21,7 @@ function displayError(inputBox, errorMessage, p) {
   inputBox.append(p);
 }
 
-function clearErrors(e, p){
+function clearErrors(e){
   e.target.parentElement.lastElementChild.textContent = "";
   
 }
@@ -53,6 +53,7 @@ function showErrorMessage(e) {
 }
 
 function userAuthentication(e) {
+  // console.log(e.type);
   const inputEmail = document.querySelector(".email");
   const inputPassword = document.querySelector(".password");
   
@@ -67,6 +68,7 @@ function userAuthentication(e) {
 
 
 function eyeOnOff(e){
+  e.stopPropagation();
   const eyeOn = "http://127.0.0.1:5500/images/signin/eye-on.png";
   const eyeOff = "http://127.0.0.1:5500/images/signin/eye-off.svg"
   if (e.target.src === eyeOn) {
@@ -84,5 +86,6 @@ function eyeOnOff(e){
 inputFrame.addEventListener("focusout", showErrorMessage);
 inputFrame.addEventListener("focusin", clearErrors);
 
-loginButton.addEventListener("click", userAuthentication);
+password.addEventListener("change", userAuthentication);
+// loginButton.addEventListener("click", userAuthentication);
 eyeImage.addEventListener("click", eyeOnOff);
