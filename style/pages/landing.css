@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre {
+  word-break: keep-all;
+}
+
 body {
   margin: 0 auto;
 }
@@ -287,7 +291,7 @@ footer .frame .footer_container .sns_icons img {
   }
 
   main .content {
-    padding: 7.5rem 20rem 3.125rem 20rem;
+    padding: 7.5rem 23rem 3.125rem 23rem;
   }
 
   main .intro .intro-img {
