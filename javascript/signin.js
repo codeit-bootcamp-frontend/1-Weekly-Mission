@@ -1,5 +1,5 @@
-const emailInput = document.querySelector('#email');
-const passwordInput = document.querySelector('#password');
+const emailInput = document.querySelector('.email');
+const passwordInput = document.querySelector('.password');
 const form = document.querySelector('form');
 const eyeButton = document.querySelector('.eye-button');
 const eyeIcon = document.querySelectorAll('.eye-icon');
