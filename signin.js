@@ -15,36 +15,36 @@ function emailValidChk(email) {
   return pattern.test(email);
 }
 
-function displayError(inputBox, errorMessage, p) {  
+function displayError(inputBox, errorMessage, p) {
   p.textContent = errorMessage;
   p.classList.add("error");
   inputBox.append(p);
 }
 
-function clearErrors(e){
+function clearErrors(e) {
   e.target.parentElement.lastElementChild.textContent = "";
-  
+
 }
 function showErrorMessage(e) {
   const inputBox = e.target.parentElement;
 
-  
-  
+
+
   switch (e.target.id) {
-    
+
     case "email":
       if (e.target.value === "") {
         displayError(inputBox, "이메일을 입력해주세요.", pEmail);
       } else if (!emailValidChk(email.value)) {
         displayError(inputBox, "올바른 이메일 주소가 아닙니다.", pEmail);
-      } 
+      }
 
       break;
 
     case "password":
       if (e.target.value === "") {
-        displayError(inputBox, "비밀번호를 입력해주세요.",pPassword);
-      } 
+        displayError(inputBox, "비밀번호를 입력해주세요.", pPassword);
+      }
       break;
 
     default:
@@ -53,26 +53,30 @@ function showErrorMessage(e) {
 }
 
 function userAuthentication(e) {
-  // console.log(e.type);
+
   const inputEmail = document.querySelector(".email");
   const inputPassword = document.querySelector(".password");
-  
-  if (email.value == "test@codeit.com" && password.value == "codeit101") {
-    window.location.href = "/folder";
-  } else {
-    displayError(inputEmail, "이메일을 확인해주세요.", pEmail);
-    displayError(inputPassword, "비밀번호를 확인해주세요.", pPassword);
+
+
+  if (e.key === "Enter" || e.type === "click") {
+    e.preventDefault();
+    if (email.value == "test@codeit.com" && password.value == "codeit101") {
+      window.location.href = "/folder";
+    } else {
+      displayError(inputEmail, "이메일을 확인해주세요.", pEmail);
+      displayError(inputPassword, "비밀번호를 확인해주세요.", pPassword);
+    }
   }
 }
 
 
 
-function eyeOnOff(e){
+function eyeOnOff(e) {
   e.stopPropagation();
   const eyeOn = "http://127.0.0.1:5500/images/signin/eye-on.png";
   const eyeOff = "http://127.0.0.1:5500/images/signin/eye-off.svg"
   if (e.target.src === eyeOn) {
-    e.target.src = eyeOff ;
+    e.target.src = eyeOff;
     password.type = "password";
   } else if (e.target.src === eyeOff) {
     e.target.src = eyeOn;
@@ -86,6 +90,7 @@ function eyeOnOff(e){
 inputFrame.addEventListener("focusout", showErrorMessage);
 inputFrame.addEventListener("focusin", clearErrors);
 
-password.addEventListener("change", userAuthentication);
-// loginButton.addEventListener("click", userAuthentication);
+password.addEventListener("keypress", userAuthentication);
+loginButton.addEventListener("click", userAuthentication);
+
 eyeImage.addEventListener("click", eyeOnOff);
