@@ -30,9 +30,19 @@ function enterReset(event){
     }
 }
 
+let emailType = /[0-9a-zA-Z]*@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/i;
+function checkEmail(event){ //이메일 형식에 맞지 않는 경우
+    if(event.target.value === '') return; //아무것도 입력 안 된 경우는 pass
+    if(!emailType.test(event.target.value)){
+        errorEmail.textContent = "올바른 이메일 주소가 아닙니다.";
+        inputEmail.classList.add('error_box');
+    }
+}
+
 //이메일
 inputEmail.addEventListener('focusout', enterError);
 inputEmail.addEventListener('input', enterReset);
+inputEmail.addEventListener('focusout', checkEmail);
 
 //비밀번호
 inputPw.addEventListener('focusout', enterError);
