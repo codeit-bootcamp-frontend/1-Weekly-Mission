@@ -4,6 +4,7 @@ const password = document.getElementById("password");
 const emailLabel = document.querySelector(".email-label");
 const passwordLabel = document.querySelector(".password-label");
 const loginButton = document.getElementById("login-button");
+const eyeIcon = document.querySelector(".eye-on-image");
 
 function showMessage(inputText) {
   return `${inputText}을 입력해주세요`;
@@ -31,15 +32,28 @@ function IsValidEmail(input, inputLabel, message) {
   }
 }
 
-// console.log(window.location.href); http://127.0.0.1:5500/pages/signin.html
-
+// test@codeit.com, 비code밀번호: codeit101 으로 로그인 시도한경우
 function isCodeItLogin(email, password) {
   return (
     email.value.trim() === "test@codeit.com" &&
     password.value.trim() === "codeit101"
   );
 }
-//  test@codeit.com, 비code밀번호: codeit101 으로 로그인 시도한경우
+
+// 눈모양
+// https://medium.com/@miguelznunez/html-css-javascript-how-to-show-hide-password-using-the-eye-icon-27f033bf84ad
+// https://codepen.io/kimpetersend1/pen/abzWEGK
+function isPasswordVisible() {
+  if (eyeIcon.classList.contains("fa-eye")) {
+    eyeIcon.classList.remove("fa-eye");
+    eyeIcon.classList.add("fa-eye-slash");
+    password.type = "password";
+  } else if (eyeIcon.classList.contains("fa-eye-slash")) {
+    eyeIcon.classList.remove("fa-eye-slash");
+    eyeIcon.classList.add("fa-eye");
+    password.type = "text";
+  }
+}
 
 email.addEventListener("focusout", function (event) {
   event.preventDefault();
@@ -53,10 +67,10 @@ password.addEventListener("focusout", function (event) {
 });
 
 loginButton.addEventListener("click", function (event) {
-  // 얘 안해주면은 이동 X
-  //
   event.preventDefault();
   if (isCodeItLogin(email, password)) {
     window.location = "http://127.0.0.1:5500/folder.html";
   }
 });
+
+eyeIcon.addEventListener("click", isPasswordVisible);
