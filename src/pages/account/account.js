@@ -7,9 +7,9 @@ const expEmail =
  *유효성 검사 함수
  *
  *
- *
- *
- *
+ *1.Null check
+ *2.타입에 맞게 양식을 제대로 작성했는지 정규표현식 검사
+ *3.조건에 맞지 않을 시 에러 메시지 생성
  *
  */
 function validationForm(e) {
@@ -88,7 +88,7 @@ function setErrorMsg(nodeInfo, errType) {
 /***
  * password eyesToggleEvent
  *
- *
+ * 패스워드 타입 변경 이벤트 함수
  *
  *
  *
