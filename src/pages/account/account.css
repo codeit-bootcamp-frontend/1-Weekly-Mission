@@ -55,7 +55,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 18px 0px;
+  padding: 18px 18px;
   width: 400px;
   height: 25px;
   background: #ffffff;
