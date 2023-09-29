@@ -19,14 +19,15 @@
       <form>
         <div class="input_wrapper email">
           <label class="label">이메일</label>
-          <input class="input_box" type="email" name="email">
+          <input class="input_box" type="email" name="email" placeholder="이메일을 입력해주세요.">
           <span class="error_message" id="error_email"></span>
         </div>
         <div class="input_wrapper password">
           <label class="label">비밀번호</label>
           <div class="input_container">
-            <a href="#"><img class="eye_icon" src="./images/eye-on.png"></a>
-            <input class="input_box" type="password" name="password">
+            <a href="#"><img class="eye_icon" id="eye_on" src="./images/eye-on.png"></a>
+            <a href="#"><img class="eye_icon show" id="eye_off" src="./images/eye-off.png"></a>
+            <input class="input_box" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
             <span class="error_message" id="error_password"></span>
           </div>
         </div>

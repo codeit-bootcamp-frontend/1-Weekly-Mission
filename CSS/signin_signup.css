@@ -28,6 +28,7 @@ body {
   gap: 1rem;
 }
 
+
 header {
   display: flex;
   flex-direction: column;
@@ -50,8 +51,15 @@ form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 30px 0;
-  gap: 24px;
+  padding: 30px 0 32px;
+}
+
+.input_wrapper.email {
+  margin-bottom: 24px;
+}
+
+.input_wrapper.password {
+  margin-bottom: 30px;
 }
 
 .input_wrapper {
@@ -78,11 +86,17 @@ form {
   outline-width: 0;
 }
 
+.red_border:hover, .red_border:focus {
+  border: 1px solid #FF5B56;
+  outline-width: 0;
+}
+
 .eye_icon {
   position: absolute;
-  right: 2px;
-  top: 10px;
-  padding: 35px 10px;
+  right: 4px;
+  top: 33px;
+  padding: 10px 10px;
+  display: none;
 }
 
 .icon {
