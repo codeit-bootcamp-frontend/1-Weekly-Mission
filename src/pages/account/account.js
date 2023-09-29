@@ -1,13 +1,17 @@
 import * as nodeUtils from "../../utils/nodeUtils.js";
-const inputEmail = document.querySelector(".email_input");
-const inputPwd = document.querySelector(".pwd_input");
-const inputPwdCheck = document.querySelector(".pwd_check");
-
-// 정규 표현삭
+// 정규 표현식
 const expEmail =
   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-//유효성 검사 함수
+/***
+ *유효성 검사 함수
+ * errType
+ *    1 : value 없음
+ *    2 : 유효성 검사 실패
+ *
+ *
+ *
+ */
 function validationForm(e) {
   let node = e.target;
   let nodeInfo = {
@@ -82,22 +86,4 @@ function setErrorMsg(nodeInfo, errType) {
   return result;
 }
 
-inputEmail.addEventListener("focusout", (e) => {
-  validationForm(e);
-});
-inputPwd.addEventListener("focusout", (e) => {
-  validationForm(e);
-});
-inputPwdCheck.addEventListener("focusout", (e) => {
-  validationForm(e);
-});
-
-/**
- "이메일을 입력해주세요."
-"비밀번호를 입력해주세요."
-
-“이메일을 확인해주세요.”,
- “비밀번호를 확인해주세요.”
-
-올바른 이메일 주소가 아닙니다.
- */
+export { validationForm };
