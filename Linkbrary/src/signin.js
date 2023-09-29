@@ -11,27 +11,6 @@ const password = document.getElementById("password");
 const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 
-const eyeIcon = document.querySelector(".form__input--selected");
-let isSelected = true;
-
-// 1-1. 비밀번호 가리기 기능 - selected 상태를 변경하는 로직
-const onClickHiddenPassword = () => {
-  isSelected = !isSelected;
-
-  // 1-2. 비밀번호 가리기 기능 - selected 상태에 따라 type과 src를 변경하는 로직
-  changePasswordType();
-};
-
-function changePasswordType() {
-  if (isSelected) {
-    password.setAttribute("type", "password");
-    eyeIcon.setAttribute("src", "images/eye-off.svg");
-  } else {
-    password.setAttribute("type", "text");
-    eyeIcon.setAttribute("src", "images/eye-on.svg");
-  }
-}
-
 // 이메일 input에서 focus out할 때, 이메일 형식에 맞지 않는 값이 있는 경우 에러메세지
 const regExp = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/i;
 
@@ -87,5 +66,4 @@ const onClickSubmit = (e) => {
 
 email.addEventListener("focusout", checkEmailValue);
 password.addEventListener("focusout", checkPasswordValue);
-eyeIcon.addEventListener("click", onClickHiddenPassword);
 form.addEventListener("submit", onClickSubmit);
