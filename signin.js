@@ -60,7 +60,7 @@ function userAuthentication(e) {
 
   if (e.key === "Enter" || e.type === "click") {
     e.preventDefault();
-    if (email.value == "test@codeit.com" && password.value == "codeit101") {
+    if (email.value === "test@codeit.com" && password.value === "codeit101") {
       window.location.href = "/folder";
     } else {
       displayError(inputEmail, "이메일을 확인해주세요.", pEmail);
@@ -73,12 +73,12 @@ function userAuthentication(e) {
 
 function eyeOnOff(e) {
   e.stopPropagation();
-  const eyeOn = "http://127.0.0.1:5500/images/signin/eye-on.png";
-  const eyeOff = "http://127.0.0.1:5500/images/signin/eye-off.svg"
-  if (e.target.src === eyeOn) {
+  const eyeOn = "images/signin/eye-on.png";
+  const eyeOff = "images/signin/eye-off.svg"
+  if (e.target.src.includes("eye-on")) {
     e.target.src = eyeOff;
     password.type = "password";
-  } else if (e.target.src === eyeOff) {
+  } else if (e.target.src.includes("eye-off")) {
     e.target.src = eyeOn;
     password.type = "text";
   }
