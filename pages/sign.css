@@ -131,6 +131,12 @@ input:focus {
   left: 1rem;
 }
 
+@media (max-width: 1199px) {
+  body {
+    padding: 20rem 40rem 29rem;
+  }
+}
+
 @media (max-width: 767px) {
   body {
     padding: 12rem 3.2rem 23.2rem 3.2rem;
