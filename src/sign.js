@@ -3,6 +3,14 @@ const emailInput1 = document.querySelector('.content1_div2_div1_input');
 const emailInput2 = document.querySelector('.content1_div2_div2_input');
 const eye = document.querySelector('.content1_div2_div2_img');
 const login = document.querySelector('.content1_div3_div');
+const emailCheck =
+  emailInput1.parentElement.children[
+    emailInput1.parentElement.children.length - 2
+  ];
+const passwordCheck =
+  emailInput2.parentElement.children[
+    emailInput2.parentElement.children.length - 2
+  ];
 
 //입력 안했을때 경고
 function errorMsg(e) {
@@ -14,8 +22,12 @@ function errorMsg(e) {
     emailSpan.style.display = 'block';
     emailInput.style.border = '1px solid red';
     emailSpan2.style.display = 'none';
+    emailCheck.style.display = 'none';
+    passwordCheck.style.display = 'none';
   } else {
     emailSpan.style.display = 'none';
+    emailCheck.style.display = 'none';
+    passwordCheck.style.display = 'none';
     emailInput.style.border = '1px solid #ccd5e3';
     if (e.target == emailInput1 && verify(newMsg) !== true) {
       emailSpan2.style.display = 'block';
@@ -51,7 +63,7 @@ function verify(text) {
 //아이디 test@codeit.com
 //비번 codeit101
 function loginCheck(e) {
-  console.log(emailInput1.value, emailInput2.value);
+  console.log(emailInput1.parentElement.lastElementChild);
 
   if (
     emailInput1.value === 'test@codeit.com' &&
@@ -60,6 +72,13 @@ function loginCheck(e) {
     console.log('hello');
     location.replace('./folder.html');
   } else {
+    emailInput1.nextElementSibling.style.display = 'none'; //이메일 입력
+    emailInput1.parentElement.lastElementChild.style.display = 'none'; //올바른 이메일 입력
+    emailInput2.nextElementSibling.style.display = 'none'; //비밀번호 입력
+    emailCheck.style.display = 'block';
+    emailInput1.style.border = '1px solid red';
+    passwordCheck.style.display = 'block';
+    emailInput2.style.border = '1px solid red';
   }
 }
 
