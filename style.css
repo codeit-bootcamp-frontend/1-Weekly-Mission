@@ -1,4 +1,4 @@
-@import url(common.css);
+@import url(/style/common.css);
 
 body {
   font-size: 16px;
@@ -250,16 +250,13 @@ footer .footer-links a {
   }
   .title {
     font-size: 24px;
-    grid-area: title;
   }
   .description {
     font-size: 15px;
-    grid-area: desc;
   }
   .content-img {
     width: 100%;
     height: 100%;
-    grid-area: img;
   }
 
   /* footer */

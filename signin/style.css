@@ -1,10 +1,10 @@
-@import url(common.css);
+@import url(/style/common.css);
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 238px 0px 116px;
+  padding: 238px 0px 252px;
   height: 100vh;
   background: var(--color-bg);
   font-size: 16px;
@@ -25,7 +25,6 @@ input:focus {
 }
 
 .container {
-  min-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,14 +39,14 @@ input:focus {
   font-weight: 400;
   line-height: 150%;
 }
-.container .sign-in {
+.container .sign-up {
   color: var(--color-primary);
   font-weight: 600;
 }
 .input-box {
   margin: 30px 0;
 }
-label {
+.input-box label {
   display: block;
   font-size: 0.875rem;
   color: var(--color-black);
@@ -56,7 +55,7 @@ label {
 .input-password {
   background: var(--color-white) url(images/eye-off.svg) no-repeat center right 15px;
 }
-.input-box input:not(.input-password2) {
+.input-box input[type='email'] {
   margin-bottom: 24px;
 }
 .btn-login {
@@ -94,7 +93,7 @@ label {
 /* Mobile */
 @media (max-width: 767px) {
   body {
-    padding: 120px 0 119px;
+    padding: 120px 0 232px;
     height: 100%;
   }
   .container {
