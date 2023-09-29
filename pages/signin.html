@@ -19,13 +19,15 @@
       <main>
         <form class="form">
           <label class="form--label">이메일
-            <input class="form--input" name="email" type="email" required>
+            <input id="email-input" class="form--input" name="email" type="email" required>
+            <p id="email-error" class="error__style"></p>
           </label>
           <label class="form--label">비밀번호
-            <input class="form--input" name="password" type="password" required>
+            <input id="password-input" class="form--input" name="password" type="password" required>
             <button class="form--eye-button" type="button"></button>
+            <p id="password-error" class="error__style"></p>
           </label>
-          <button class="form--sign-button" type="submit">
+          <button id="login-button" class="form--sign-button" type="button">
             로그인
           </button>
         </form>
@@ -47,5 +49,6 @@
       </ul>
     </footer>
   </div>
+  <script src="../js/signin.js"></script>
 </body>
 </html>

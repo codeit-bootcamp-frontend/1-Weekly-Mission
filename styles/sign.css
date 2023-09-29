@@ -63,13 +63,13 @@
 .form--eye-button {
   position: absolute;
   right: 1.5rem;
-  bottom: 1.8rem;
+  top: 5rem;
   width: 1.6rem;
   height: 1.6rem;
   background-image: url(../public/icons/eye-off.png);
 }
 
-.form--eye-button:active {
+.form--eye-button.on {
   background-image: url(../public/icons/eye-on.png);
 }
 
@@ -159,4 +159,16 @@
 .kakao--icon {
   width: 2.6rem;
   height: 2.4rem;
+}
+
+.error__style {
+  margin-top: 0.6rem;
+  color: var(--red);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.form--input.error {
+  outline: none;
+  border: 0.1rem solid var(--red);
 }
