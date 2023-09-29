@@ -2,6 +2,7 @@ const emailDiv = document.querySelector('.content1_div2_div1');
 const emailInput1 = document.querySelector('.content1_div2_div1_input');
 const emailInput2 = document.querySelector('.content1_div2_div2_input');
 const eye = document.querySelector('.content1_div2_div2_img');
+const login = document.querySelector('.content1_div3_div');
 
 //입력 안했을때 경고
 function errorMsg(e) {
@@ -46,6 +47,23 @@ function verify(text) {
   return emailVal.match(regExp) != null ? true : false;
 }
 
+//아이디 비번 일치
+//아이디 test@codeit.com
+//비번 codeit101
+function loginCheck(e) {
+  console.log(emailInput1.value, emailInput2.value);
+
+  if (
+    emailInput1.value === 'test@codeit.com' &&
+    emailInput2.value === 'codeit101'
+  ) {
+    console.log('hello');
+    location.replace('./folder.html');
+  } else {
+  }
+}
+
 emailInput1.addEventListener('focusout', errorMsg);
 emailInput2.addEventListener('focusout', errorMsg);
 eye.addEventListener('click', viewPassword);
+login.addEventListener('click', loginCheck);
