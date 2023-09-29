@@ -100,6 +100,14 @@ input:focus {
   right: 3.1rem;
 }
 
+.on {
+  display: inline;
+}
+
+.off {
+  display: none;
+}
+
 .submit-button {
   display: flex;
   justify-content: center;

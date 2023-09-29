@@ -1,6 +1,8 @@
 const emailInput = document.querySelector('#email');
 const passwordInput = document.querySelector('#password');
 const form = document.querySelector('form');
+const eyeButton = document.querySelector('.eye-button');
+const eyeIcon = document.querySelectorAll('.eye-icon');
 
 function emailError(e) {
   const correctMailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -32,7 +34,7 @@ function loginTry(e) {
   const correctPassword = 'codeit101';
 
   if (emailInput.value === correctMail && passwordInput.value === correctPassword) {
-    location.assign('/folder');
+    location.assign('/folder'); // 확인 필요
   } else {
     e.preventDefault();
     emailInput.classList.add('incorrect-input');
@@ -40,8 +42,21 @@ function loginTry(e) {
     passwordInput.classList.add('incorrect-input');
     passwordInput.nextElementSibling.textContent = '비밀번호를 확인해주세요.';
   }
-} 
+}
+
+function eyeToggle() {
+  if (!eyeIcon[0].classList.contains('off')) { // 비밀번호 표시 off인 경우
+    passwordInput.removeAttribute('type');
+  } else { // 비밀번호 표시 on인 경우
+    passwordInput.setAttribute('type', 'password');
+  }
+
+  for (let icon of eyeIcon) {
+    icon.classList.toggle('off');
+  }
+}
 
 emailInput.addEventListener('focusout', emailError);
 passwordInput.addEventListener('focusout', passwordError);
 form.addEventListener('submit', loginTry);
+eyeButton.addEventListener('click', eyeToggle);
