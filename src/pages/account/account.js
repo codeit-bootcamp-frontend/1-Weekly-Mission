@@ -5,9 +5,9 @@ const expEmail =
 
 /***
  *유효성 검사 함수
- * errType
- *    1 : value 없음
- *    2 : 유효성 검사 실패
+ *
+ *
+ *
  *
  *
  *
