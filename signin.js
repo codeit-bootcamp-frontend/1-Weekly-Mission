@@ -1,9 +1,13 @@
 const inputFrame = document.querySelector(".inputFrame");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
+const eyeImage = document.querySelector(".eye-Image");
+const loginButton = document.querySelector(".login-button");
+
+
 const pattern = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
 
-const loginButton = document.querySelector(".login-button");
+
 const pEmail = document.createElement("p");
 const pPassword = document.createElement("p");
 
@@ -51,16 +55,34 @@ function showErrorMessage(e) {
 function userAuthentication(e) {
   const inputEmail = document.querySelector(".email");
   const inputPassword = document.querySelector(".password");
-  console.log(e.type);
+  
   if (email.value == "test@codeit.com" && password.value == "codeit101") {
     window.location.href = "/folder";
   } else {
-    // e.preventDefault();
     displayError(inputEmail, "이메일을 확인해주세요.", pEmail);
     displayError(inputPassword, "비밀번호를 확인해주세요.", pPassword);
   }
 }
 
+
+
+function eyeOnOff(e){
+  const eyeOn = "http://127.0.0.1:5500/images/signin/eye-on.png";
+  const eyeOff = "http://127.0.0.1:5500/images/signin/eye-off.svg"
+  if (e.target.src === eyeOn) {
+    e.target.src = eyeOff ;
+    password.type = "password";
+  } else if (e.target.src === eyeOff) {
+    e.target.src = eyeOn;
+    password.type = "text";
+  }
+
+}
+
+
+
 inputFrame.addEventListener("focusout", showErrorMessage);
 inputFrame.addEventListener("focusin", clearErrors);
+
 loginButton.addEventListener("click", userAuthentication);
+eyeImage.addEventListener("click", eyeOnOff);
