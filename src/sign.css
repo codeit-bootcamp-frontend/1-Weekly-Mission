@@ -96,12 +96,8 @@ input:focus {
   position: absolute;
   width: 1.6rem;
   height: 1.6rem;
-  top: 5.2rem;
+  top: 5.1rem;
   right: 3.1rem;
-}
-
-.on {
-  display: inline;
 }
 
 .off {
