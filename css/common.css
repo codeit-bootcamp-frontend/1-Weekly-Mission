@@ -70,7 +70,13 @@ input:focus {
 
 .eye-on-image {
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
+  right: 18px;
+}
+
+.re-eye-on-image {
+  position: absolute;
+  bottom: 20px;
   right: 18px;
 }
 
@@ -94,8 +100,6 @@ input:focus {
   margin-right: 10px;
 }
 
-/* PC */
-
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   /* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다. */
@@ -106,7 +110,6 @@ input:focus {
 }
 
 /* mobile */
-
 @media screen and (min-width: 375px) and (max-width: 767px) {
   body {
     /*  좌우 여백 32px 제외 */

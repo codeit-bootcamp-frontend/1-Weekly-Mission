@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="../css/nomalize.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/signup.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  />
     <title>Document</title>
   </head>
   <body>
@@ -18,28 +22,32 @@
         <a href="./signin.html">로그인하기</a>
       </div>
 
-      <form method="post" action="#">
-        <label for="email"
+      <form method="post">
+        <label for="email" class="email-label"
           >이메일 <input id="email" name="email" type="email"
-        /></label>
+        />
+        <small></small>
+      </label>
         <label for="password" class="password-label"
           >비밀번호
           <div class="password-container">
             <input id="password" name="password" type="password" />
-            <img class="eye-on-image" src="../images/sign/eye-on.svg" />
-          </div>
+            <span class="eye-on-image fa-solid fa-eye-slash" >
+          </div> 
+          <small></small>
         </label>
-        <label for="password"
+        <label for="password" class="re-password-label"
           >비밀번호확인
           <div class="re-password-container">
             <input
               id="re-password"
               name="password"
               type="password"
-              class="password-label"
+          
             />
-            <img class="eye-on-image" src="../images/sign/eye-on.svg" />
+            <span class="re-eye-on-image fa-solid fa-eye-slash" >
           </div>
+          <small></small>
         </label>
         <button id="registor-button">회원가입</button>
         <div class="social-login">
@@ -55,6 +63,7 @@
           </div>
         </div>
       </form>
-    </div>
+    </div> 
+    <script src="../signup.js"></script>
   </body>
 </html>

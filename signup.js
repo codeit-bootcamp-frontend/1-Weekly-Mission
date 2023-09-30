@@ -1,11 +1,12 @@
 const form = document.querySelector("form");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
+const rePassword = document.getElementById("re-password");
 const emailLabel = document.querySelector(".email-label");
 const passwordLabel = document.querySelector(".password-label");
-const loginButton = document.getElementById("login-button");
+const repasswordLabel = document.querySelector(".re-password-label");
 const eyeIcon = document.querySelector(".eye-on-image");
-
+const ReEyeIcon = document.querySelector(".re-eye-on-image");
 function showMessage(inputText) {
   return `${inputText}을 입력해주세요`;
 }
@@ -43,17 +44,6 @@ function isCodeItLogin(email, password) {
 // 눈모양
 // https://medium.com/@miguelznunez/html-css-javascript-how-to-show-hide-password-using-the-eye-icon-27f033bf84ad
 // https://codepen.io/kimpetersend1/pen/abzWEGK
-function isPasswordVisible() {
-  if (eyeIcon.classList.contains("fa-eye")) {
-    eyeIcon.classList.remove("fa-eye");
-    eyeIcon.classList.add("fa-eye-slash");
-    password.type = "password";
-  } else if (eyeIcon.classList.contains("fa-eye-slash")) {
-    eyeIcon.classList.remove("fa-eye-slash");
-    eyeIcon.classList.add("fa-eye");
-    password.type = "text";
-  }
-}
 
 email.addEventListener("focusout", function (event) {
   event.preventDefault();
@@ -66,11 +56,34 @@ password.addEventListener("focusout", function (event) {
   IsEmpty(password, passwordLabel);
 });
 
-loginButton.addEventListener("click", function (event) {
+rePassword.addEventListener("focusout", function (event) {
   event.preventDefault();
-  if (isCodeItLogin(email, password)) {
-    window.location = "http://127.0.0.1:5500/folder.html";
-  }
+  IsEmpty(rePassword, repasswordLabel);
 });
 
+function isPasswordVisible() {
+  if (eyeIcon.classList.contains("fa-eye")) {
+    eyeIcon.classList.remove("fa-eye");
+    eyeIcon.classList.add("fa-eye-slash");
+    password.type = "password";
+  } else if (eyeIcon.classList.contains("fa-eye-slash")) {
+    eyeIcon.classList.remove("fa-eye-slash");
+    eyeIcon.classList.add("fa-eye");
+    password.type = "text";
+  }
+}
+
+function isPasswordVisible2() {
+  if (ReEyeIcon.classList.contains("fa-eye")) {
+    ReEyeIcon.classList.remove("fa-eye");
+    ReEyeIcon.classList.add("fa-eye-slash");
+    rePassword.type = "password";
+  } else if (ReEyeIcon.classList.contains("fa-eye-slash")) {
+    ReEyeIcon.classList.remove("fa-eye-slash");
+    ReEyeIcon.classList.add("fa-eye");
+    rePassword.type = "text";
+  }
+}
+
 eyeIcon.addEventListener("click", isPasswordVisible);
+ReEyeIcon.addEventListener("click", isPasswordVisible2);

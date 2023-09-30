@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="../css/nomalize.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/signin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -16,18 +20,19 @@
       <div class="redirection-text">
         회원이 아니신가요?
         <a href="./signup.html">회원가입하기</a>
-      </div>
-
-      <form method="post" action="#">
-        <label for="email"
-          >이메일 <input id="email" name="email" type="email"
-        /></label>
-        <label for="password" id="password-label"
+      </div> 
+      <form method="post">
+        <label for="email" class="email-label"
+          >이메일<input id="email" name="email" type="email" />
+          <small></small>
+        </label>
+        <label for="password" class="password-label"
           >비밀번호
           <div class="password-container">
-            <input id="password" name="pass" type="password" />
-            <img class="eye-on-image" src="../images/sign/eye-on.svg" />
+            <input id="password" name="password" type="password" />           
+            <span class="eye-on-image fa-solid fa-eye-slash" >
           </div>
+          <small></small>
         </label>
         <button id="login-button">로그인</button>
         <div class="social-login">
@@ -43,6 +48,7 @@
           </div>
         </div>
       </form>
-    </div>
+    </div>    
+    <script src="../signin.js"></script>      
   </body>
 </html>
