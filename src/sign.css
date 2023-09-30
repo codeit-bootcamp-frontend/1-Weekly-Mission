@@ -57,7 +57,6 @@ form {
 .input-area {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
   position: relative;
 }
 
@@ -67,11 +66,22 @@ form {
 }
 
 input {
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
   padding: 1.8rem 4.6rem 1.8rem 1.5rem;
   border-radius: 0.8rem;
   border: 0.1rem solid var(--gray20);
   font-size: 1.6rem;
   line-height: 150%;
+}
+
+.alert-message {
+  color: var(--red);
+  font-size: 1.4rem;
+}
+
+.incorrect-input {
+  border-color: var(--red);
 }
 
 input:focus-visible {
@@ -86,8 +96,12 @@ input:focus {
   position: absolute;
   width: 1.6rem;
   height: 1.6rem;
+  top: 5.1rem;
   right: 3.1rem;
-  bottom: 2.2rem;
+}
+
+.off {
+  display: none;
 }
 
 .submit-button {
