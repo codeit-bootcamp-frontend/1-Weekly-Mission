@@ -4,33 +4,33 @@ const form = document.querySelector('form');
 const eyeButton = document.querySelector('.eye-button');
 const eyeIcon = document.querySelectorAll('.eye-icon');
 
-function addErrorClass(element, errorMessage) {
-  element.classList.add('incorrect-input');
-  element.nextElementSibling.textContent = errorMessage;
-}
-
-function removeErrorClass(element) {
-  element.classList.remove('incorrect-input');
-  element.nextElementSibling.textContent = '';
+function editErrorStatus(element, message='') {
+  if (message) {
+    element.classList.add('incorrect-input');
+    element.nextElementSibling.textContent = message;
+  } else {
+    element.classList.remove('incorrect-input');
+    element.nextElementSibling.textContent = message;
+  }
 }
 
 function checkEmailInput(e) {
   const correctMailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!e.target.value) {
-    addErrorClass(e.target, '이메일을 입력해주세요.');
+    editErrorStatus(e.target, '이메일을 입력해주세요.');
   } else if (!correctMailForm.test(e.target.value)) {
-    addErrorClass(e.target, '올바른 이메일 주소가 아닙니다.');
+    editErrorStatus(e.target, '올바른 이메일 주소가 아닙니다.');
   } else {
-    removeErrorClass(e.target);
+    editErrorStatus(e.target);
   }
 }
 
 function checkPasswordInput(e) {
   if (!e.target.value) {
-    addErrorClass(e.target, '비밀번호를 입력해주세요.');
+    editErrorStatus(e.target, '비밀번호를 입력해주세요.');
   } else {
-    removeErrorClass(e.target);
+    editErrorStatus(e.target);
   }
 }
 
@@ -42,8 +42,8 @@ function trySignIn(e) {
     location.href = '/html/folder.html';
   } else {
     e.preventDefault();
-    addErrorClass(emailInput, '이메일을 확인해주세요.');
-    addErrorClass(passwordInput, '비밀번호를 확인해주세요.');
+    editErrorStatus(emailInput, '이메일을 확인해주세요.');
+    editErrorStatus(passwordInput, '비밀번호를 확인해주세요.');
   }
 }
 
