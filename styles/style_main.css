@@ -96,33 +96,26 @@ nav {
 }
 .cards .card {
   display: grid;
-  gap: 0 15rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 27.5rem 27.5rem;
+  gap: 2rem;
+  align-items: center;
+  grid-template-rows: 10rem 1fr 8rem;
   grid-template-areas:
-    "title img"
-    "article img";
+    "title"
+    "img"
+    "article";
 }
 .card-article {
   grid-area: article;
-  width: 35rem;
   color: #6b6b6b;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.4rem;
-}
-.cards .card:nth-child(even) {
-  grid-template-areas:
-    "img title"
-    "img article";
 }
 .card .card-title {
   grid-area: title;
   color: #000;
   font-size: 4.8rem;
   letter-spacing: -0.03rem;
-  position: relative;
-  top: 5rem;
 }
 .card .card-img {
   grid-area: img;
@@ -245,10 +238,33 @@ footer {
   }
   .cards {
     padding: 8rem 25rem;
-    gap: 10rem;
+    gap: 8rem;
   }
   .card .card-img {
     width: 38.5rem;
+  }
+  .cards .card {
+    display: grid;
+    gap: 0 8rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 27.5rem 27.5rem;
+    grid-template-areas:
+      "title img"
+      "article img";
+  }
+  .cards .card:nth-child(even) {
+    grid-template-areas:
+      "img title"
+      "img article";
+  }
+  .card .card-title {
+    position: relative;
+    top: 7rem;
+  }
+  .card .card-article {
+    position: relative;
+    top: -3rem;
+    width: 35rem;
   }
 }
 /* 1200px 이상 컴퓨터에서는
@@ -274,9 +290,19 @@ footer {
     width: 112rem;
   }
   .cards {
+    gap: 10rem;
     padding: 10rem 46rem;
   }
   .card .card-img {
     width: 55rem;
+  }
+  .cards .card {
+    gap: 0 15rem;
+  }
+  .card .card-title {
+    top: 5rem;
+  }
+  .card .card-article {
+    top: -1rem;
   }
 }
