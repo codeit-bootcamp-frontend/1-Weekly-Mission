@@ -1,4 +1,6 @@
-@use "../utils" as *;
+$reset-base-background: #fff !default;
+$reset-base-color: #000 !default;
+$reset-base-font-family: sans-serif !default;
 
 * {
   box-sizing: border-box;
