@@ -24,6 +24,7 @@ a:link {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 3rem;
 }
 .img-logo {
   min-width: 15rem;
@@ -39,7 +40,12 @@ a:link {
 }
 
 /* submit section 설정하기 */
-label {
+form {
+  margin: 3rem;
+}
+.submit-section label {
+  display: block;
+  margin-bottom: 1rem;
   font-weight: 400;
   font-size: 1.4rem;
 }
@@ -58,7 +64,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 3rem;
 }
 .form-div > div {
   display: flex;
