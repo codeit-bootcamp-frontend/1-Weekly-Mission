@@ -100,7 +100,7 @@ nav {
   height: 40rem;
   border: none;
 }
-.card.card-reverse {
+.cards .card:nth-child(even) {
   flex-direction: row-reverse;
 }
 .card .spacing {
