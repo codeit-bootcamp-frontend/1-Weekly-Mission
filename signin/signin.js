@@ -1,8 +1,10 @@
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
+const pwWrapper = document.querySelector(".password-wrapper");
 const signinBtn = document.querySelector(".signin-btn");
 const emailEmptyMsg = document.createElement("span");
 const emailInvalidMsg = document.createElement("span");
+const pwEmptyMsg = document.createElement("span");
 
 let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
@@ -29,6 +31,17 @@ function inputInvalidEmailHandler(e) {
   }
 }
 
+function pwInputEmptyHandler(e) {
+  if (!e.target.value) {
+    pwEmptyMsg.textContent = "비밀번호를 입력해주세요.";
+    pwEmptyMsg.classList.add("input-error-msg");
+    pwWrapper.after(pwEmptyMsg);
+    pwInput.classList.add("input-error");
+  } else {
+    pwInput.classList.remove();
+  }
+}
+
 function signinHandler() {
   if (emailInput.value === "test@codeit.com" && pwInput.value === "codeit101") {
     location.href = "/folder";
@@ -37,4 +50,6 @@ function signinHandler() {
 
 emailInput.addEventListener("focusout", inputEmptyValueHandler);
 emailInput.addEventListener("focusout", inputInvalidEmailHandler);
+pwInput.addEventListener("focusout", pwInputEmptyHandler);
 signinBtn.addEventListener("click", signinHandler);
+// input 다음에 after 쓰면 안됨
