@@ -4,32 +4,37 @@ const form = document.querySelector('form');
 const eyeButton = document.querySelector('.eye-button');
 const eyeIcon = document.querySelectorAll('.eye-icon');
 
-function emailError(e) {
+function addErrorClass(element, errorMessage) {
+  element.classList.add('incorrect-input');
+  element.nextElementSibling.textContent = errorMessage;
+}
+
+function removeErrorClass(element) {
+  element.classList.remove('incorrect-input');
+  element.nextElementSibling.textContent = '';
+}
+
+function checkEmailInput(e) {
   const correctMailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!e.target.value) {
-    e.target.classList.add('incorrect-input');
-    e.target.nextElementSibling.textContent = '이메일을 입력해주세요.';
+    addErrorClass(e.target, '이메일을 입력해주세요.');
   } else if (!correctMailForm.test(e.target.value)) {
-    e.target.classList.add('incorrect-input');
-    e.target.nextElementSibling.textContent = '올바른 이메일 주소가 아닙니다.';
+    addErrorClass(e.target, '올바른 이메일 주소가 아닙니다.');
   } else {
-    e.target.classList.remove('incorrect-input');
-    e.target.nextElementSibling.textContent = '';
+    removeErrorClass(e.target);
   }
 }
 
-function passwordError(e) {
+function checkPasswordInput(e) {
   if (!e.target.value) {
-    e.target.classList.add('incorrect-input');
-    e.target.nextElementSibling.textContent = '비밀번호를 입력해주세요.';
+    addErrorClass(e.target, '비밀번호를 입력해주세요.');
   } else {
-    e.target.classList.remove('incorrect-input');
-    e.target.nextElementSibling.textContent = '';
+    removeErrorClass(e.target);
   }
 }
 
-function loginTry(e) {
+function trySignIn(e) {
   const correctMail = 'test@codeit.com';
   const correctPassword = 'codeit101';
 
@@ -37,18 +42,16 @@ function loginTry(e) {
     location.assign('/folder'); // 확인 필요
   } else {
     e.preventDefault();
-    emailInput.classList.add('incorrect-input');
-    emailInput.nextElementSibling.textContent = '이메일을 확인해주세요.';
-    passwordInput.classList.add('incorrect-input');
-    passwordInput.nextElementSibling.textContent = '비밀번호를 확인해주세요.';
+    addErrorClass(emailInput, '이메일을 확인해주세요.')
+    addErrorClass(passwordInput, '비밀번호를 확인해주세요.')
   }
 }
 
-function eyeToggle() {
+function toggleEyeButton() {
   if (!eyeIcon[0].classList.contains('off')) { // 비밀번호 표시 off인 경우
-    passwordInput.removeAttribute('type');
+    passwordInput.removeAttribute('type'); // {type:"password"} 속성 제거
   } else { // 비밀번호 표시 on인 경우
-    passwordInput.setAttribute('type', 'password');
+    passwordInput.setAttribute('type', 'password'); // {type: "password"} 속성 추가
   }
 
   for (let icon of eyeIcon) {
@@ -56,7 +59,7 @@ function eyeToggle() {
   }
 }
 
-emailInput.addEventListener('focusout', emailError);
-passwordInput.addEventListener('focusout', passwordError);
-form.addEventListener('submit', loginTry);
-eyeButton.addEventListener('click', eyeToggle);
+emailInput.addEventListener('focusout', checkEmailInput);
+passwordInput.addEventListener('focusout', checkPasswordInput);
+form.addEventListener('submit', trySignIn);
+eyeButton.addEventListener('click', toggleEyeButton);
