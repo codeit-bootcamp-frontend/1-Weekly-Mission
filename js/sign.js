@@ -52,7 +52,7 @@ signinBtn.addEventListener("click", function (e) {
   }
 });
 
-email.addEventListener("blur", function () {
+email.addEventListener("focusout", function () {
   if (!email.value) {
     appearErrorEmail();
     emailError.textContent = "이메일을 입력해주세요.";
@@ -73,7 +73,7 @@ function isValidEmail(email) {
   }
 }
 
-password.addEventListener("blur", function () {
+password.addEventListener("focusout", function () {
   if (!password.value) {
     appearErrorPassword();
     passwordError.textContent = "비밀번호를 입력해주세요.";
