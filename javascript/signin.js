@@ -4,6 +4,10 @@ const form = document.querySelector('form');
 const eyeButton = document.querySelector('.eye-button');
 const eyeIcon = document.querySelectorAll('.eye-icon');
 
+const correctMailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const correctMail = 'test@codeit.com';
+const correctPassword = 'codeit101';
+
 function editErrorStatus(element, message='') {
   if (message) {
     element.classList.add('incorrect-input');
@@ -15,8 +19,6 @@ function editErrorStatus(element, message='') {
 }
 
 function checkEmailInput(e) {
-  const correctMailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   if (!e.target.value) {
     editErrorStatus(e.target, '이메일을 입력해주세요.');
   } else if (!correctMailForm.test(e.target.value)) {
@@ -35,9 +37,6 @@ function checkPasswordInput(e) {
 }
 
 function trySignIn(e) {
-  const correctMail = 'test@codeit.com';
-  const correctPassword = 'codeit101';
-
   if (emailInput.value === correctMail && passwordInput.value === correctPassword) {
     location.href = '/html/folder.html';
   } else {
