@@ -250,10 +250,11 @@ footer {
 
 /* 768px 이상 1199px 이하 타블렛에서는 
  * nav 좌우 padding이 최소 3.2rem이며 gnb div의 크기가 최대 80rem이었다가 nav 태그의 크기가 86.4rem보다 작아지면 gnb의 로고와 버튼 사이 간격을 줄인다.
+ * 
  * header의 title padding, font size, line height, width를 조절한다.
  * headedr의 img 크기를 65rem으로 고정한다.
  *
- * 
+ * footer의 padding을 조절한다.
 */
 @media (min-width: 768px) {
   .gnb {
@@ -277,10 +278,11 @@ footer {
 }
 /* 1200px 이상 컴퓨터에서는
  * 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다.
+ * 
  * header의 title padding, width를 조절하고 나머지 속성은 타블렛 조건에서 물려받는다.
  * headedr의 img 크기를 112rem으로 고정한다.
  *
- *
+ * 
  */
 @media (min-width: 1200px) {
   nav {
