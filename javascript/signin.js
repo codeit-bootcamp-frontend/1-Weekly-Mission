@@ -39,11 +39,11 @@ function trySignIn(e) {
   const correctPassword = 'codeit101';
 
   if (emailInput.value === correctMail && passwordInput.value === correctPassword) {
-    location.href('/html/folder.html');
+    location.href = '/html/folder.html';
   } else {
     e.preventDefault();
-    addErrorClass(emailInput, '이메일을 확인해주세요.')
-    addErrorClass(passwordInput, '비밀번호를 확인해주세요.')
+    addErrorClass(emailInput, '이메일을 확인해주세요.');
+    addErrorClass(passwordInput, '비밀번호를 확인해주세요.');
   }
 }
 
