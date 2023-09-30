@@ -49,3 +49,13 @@ function isValidEmail(email) {
     return true;
   }
 }
+
+password.addEventListener("blur", function () {
+  if (!password.value) {
+    passwordError.classList.add("error-appear");
+  } else if (!isValidEmail(email.value)) {
+    passwordError.classList.add("error-appear");
+  } else {
+    passwordError.classList.remove("error-appear");
+  }
+});
