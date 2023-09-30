@@ -53,9 +53,8 @@ function toggleEyeButton() {
     passwordInput.setAttribute('type', 'password'); // {type: "password"} 속성 추가
   }
 
-  for (let icon of eyeIcon) {
-    icon.classList.toggle('off');
-  }
+  eyeIcon[0].classList.toggle('off');
+  eyeIcon[1].classList.toggle('off');
 }
 
 emailInput.addEventListener('focusout', checkEmailInput);
