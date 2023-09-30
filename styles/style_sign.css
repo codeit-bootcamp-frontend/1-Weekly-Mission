@@ -10,21 +10,21 @@ a:visited,
 a:link {
   color: var(--color-primary);
 }
-
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20rem auto 5rem;
+  padding: 0 3.2rem;
 }
+
 /* title section 설정하기 */
 .title-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3rem;
 }
 .img-logo {
   min-width: 15rem;
@@ -40,8 +40,9 @@ a:link {
 }
 
 /* submit section 설정하기 */
-form {
-  margin: 3rem;
+.submit-section {
+  width: 100%;
+  max-width: 40rem;
 }
 .submit-section label {
   display: block;
@@ -49,8 +50,11 @@ form {
   font-weight: 400;
   font-size: 1.4rem;
 }
+form {
+  width: 100%;
+  margin: 3rem 0;
+}
 input {
-  width: 40rem;
   height: 6rem;
   border: 1px solid var(--color-gray3);
   border-radius: 8px;
@@ -102,20 +106,20 @@ input:focus {
   background-color: var(--color-gray2);
   border: 1px solid var(--color-gray3);
   border-radius: 8px;
-  width: 40rem;
+  width: 100%;
+  max-width: 40rem;
   height: 6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
 }
-
 .social-section label {
   font-size: 1.4rem;
   font-weight: 400;
   color: #373740;
+  border: none;
 }
-
 .social-section .img-group {
   display: flex;
   gap: 1rem;
@@ -123,14 +127,9 @@ input:focus {
   align-items: center;
 }
 
-@media (max-width: 768px) {
-  main.container {
-    padding: 0 3.2rem;
-  }
-  .container section,
-  form input {
-    max-width: 40rem;
-    min-width: 26rem;
-    width: 100%;
+@media (min-width: 768px) {
+  .submit-section,
+  .social-section {
+    width: 40rem;
   }
 }
