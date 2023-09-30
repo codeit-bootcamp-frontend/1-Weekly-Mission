@@ -72,3 +72,20 @@ const handleInputError = (e) => {
 for (let line of sign_input) {
     line.addEventListener("focusout", handleInputError)
 }
+
+
+// 버튼 눌렀을 때 맞으면 로그인 아니면 에러 뱉기
+const loginButtonNode = document.querySelector(".sign_form__btn");
+
+const validateLoginInput = () => sign_input[0].value === "test@codeit.com" && sign_input[1].value === "codeit101";
+
+const handleLoginButton = (e) => {
+    if (validateLoginInput) {
+        e.preventDefault()
+        location.href = "/folder.html"
+    } else {
+
+    }
+}
+
+loginButtonNode.addEventListener("click", handleLoginButton)
