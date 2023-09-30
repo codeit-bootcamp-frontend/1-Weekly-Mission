@@ -111,6 +111,7 @@ input:focus{
     font-family: Pretendard;
     font-size: 1.8rem;
     font-weight: 600;
+    text-decoration: none;
 }
 
 footer{
