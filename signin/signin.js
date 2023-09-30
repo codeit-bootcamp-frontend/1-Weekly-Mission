@@ -43,7 +43,25 @@ function pwInputEmptyHandler(e) {
   }
 }
 
-function signinHandler() {
+function clickSigninBtnHandler() {
+  if (emailInput.value !== "test@codeit.com") {
+    emailEmptyMsg.textContent = "이메일을 확인해주세요.";
+    emailEmptyMsg.classList.add("input-error-msg");
+    emailInput.classList.add("input-error");
+    emailInput.after(emailEmptyMsg);
+  } else {
+    emailEmptyMsg.remove();
+  }
+
+  if (pwInput.value !== "codeit101") {
+    pwEmptyMsg.textContent = "비밀번호를 확인해주세요.";
+    pwEmptyMsg.classList.add("input-error-msg");
+    pwWrapper.after(pwEmptyMsg);
+    pwInput.classList.add("input-error");
+  } else {
+    pwEmptyMsg.remove();
+  }
+
   if (emailInput.value === "test@codeit.com" && pwInput.value === "codeit101") {
     location.href = "/folder";
   }
@@ -52,4 +70,4 @@ function signinHandler() {
 emailInput.addEventListener("focusout", inputEmptyValueHandler);
 emailInput.addEventListener("focusout", inputInvalidEmailHandler);
 pwInput.addEventListener("focusout", pwInputEmptyHandler);
-signinBtn.addEventListener("click", signinHandler);
+signinBtn.addEventListener("click", clickSigninBtnHandler);
