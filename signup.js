@@ -24,16 +24,16 @@ function IsEmpty(input, inputLabel) {
 }
 
 // 유효한 이메일이 아닐때 handling
-function IsValidEmail(input, inputLabel, message) {
+function IsValidEmail(input, inputLabel) {
   const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
   const texts = input.value.trim();
   if (!re.test(texts) && texts.length) {
     const errorMsgs = inputLabel.querySelector("small");
-    errorMsgs.innerText = message;
+    errorMsgs.innerText = "유효하지않은이메일입니다";
   }
 }
 
-// test@codeit.com, 비code밀번호: codeit101 으로 로그인 시도한경우
+// test@codeit.com,codeit101 으로 로그인 시도한경우
 function isCodeItLogin(email, password) {
   return (
     email.value.trim() === "test@codeit.com" &&
@@ -76,7 +76,7 @@ function isPasswordMatch(password, rePassword, repasswordLabel) {
 email.addEventListener("focusout", function (event) {
   event.preventDefault();
   IsEmpty(email, emailLabel);
-  IsValidEmail(email, emailLabel, "유효하지않은이메일입니다");
+  IsValidEmail(email, emailLabel);
 });
 
 password.addEventListener("focusout", function (event) {
