@@ -43,9 +43,7 @@ nav {
 .link-button .a-label {
   color: var(--grey-light);
   font-size: 1.8rem;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   padding: 0 1rem;
 }
 
@@ -61,7 +59,6 @@ nav {
 .main-header .header-title {
   text-align: center;
   font-size: 3rem;
-  font-weight: 700;
   line-height: 4rem;
   white-space: nowrap;
 }
@@ -119,15 +116,11 @@ nav {
 .card .card-title {
   color: #000;
   font-size: 4.8rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   letter-spacing: -0.03rem;
 }
 .card-content {
   color: #6b6b6b;
   font-size: 1.6rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 2.4rem;
   padding: 1rem;
@@ -235,9 +228,7 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   font-size: 1.6rem;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 }
 .footer.spacing-link-logo,
 .footer.spacing-sns-link {

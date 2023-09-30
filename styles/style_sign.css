@@ -95,7 +95,6 @@ input:focus {
   background: var(--gra-purpleblue-to-skyblue);
   color: var(--grey-light);
   font-size: 1.8rem;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
