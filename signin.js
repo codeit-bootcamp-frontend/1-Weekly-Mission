@@ -54,9 +54,8 @@ function showErrorMessage(e) {
 
 function userAuthentication(e) {
 
-  const inputEmail = document.querySelector(".email");
-  const inputPassword = document.querySelector(".password");
-
+  const inputEmail = email.parentElement;
+  const inputPassword = password.parentElement.parentElement;
 
   if (e.key === "Enter" || e.type === "click") {
     e.preventDefault();
