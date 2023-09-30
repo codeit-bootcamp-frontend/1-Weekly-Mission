@@ -282,16 +282,27 @@ button {
   height: auto;
   margin-top: 1.2rem;
   padding: 1.8rem 1.5rem;
+  outline: none;
   border: 0.1rem solid #ccd5e3;
   border-radius: 0.8rem;
 }
 .form__input-box:focus {
-  outline-color: #6d6afe;
+  border-color: #6d6afe;
+}
+.form__input-box__error {
+  border-color: #ff5b56;
 }
 .form__password-toggle {
   position: absolute;
   top: 4.6rem;
   right: 1.5rem;
+}
+
+.error-msg {
+  margin-top: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #ff5b56;
 }
 
 .button {
