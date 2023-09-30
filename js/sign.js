@@ -59,3 +59,13 @@ password.addEventListener("blur", function () {
     passwordError.classList.remove("error-appear");
   }
 });
+
+eyeBtn.addEventListener("click", function () {
+  if (password.type === "password") {
+    password.type = "text";
+    eyeBtn.src = "./images/eye_unslashed.svg";
+  } else {
+    password.type = "password";
+    eyeBtn.src = "./images/eye_slashed.svg";
+  }
+});
