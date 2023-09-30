@@ -1,6 +1,16 @@
 .background {
   margin: 23.8rem auto;
-  background-color: var(--LB-bg);
+  background-color: var(--bg);
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    margin-top: 20rem;
+  }
+
+  @media (max-width: 767px) {
+    margin-top: 12rem;
+    padding-right: 3.2rem;
+    padding-left: 3.2rem;
+  }
 }
 
 .frame {
@@ -23,7 +33,7 @@
   gap: 2.4rem;
 }
 
-.label {
+.form--label {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -33,61 +43,66 @@
   font-weight: 400;
 }
 
-.input {
+.form--input {
   display: block;
   width: 100%;
   padding: 1.8rem 1.5rem;
   border-radius: 0.8rem;
-  border: 0.1rem solid var(--LB-gray-20);
-  background-color: var(--LB-white);
-  color: var(--LB-gray-100);
+  border: 0.1rem solid var(--gray-20);
+  background-color: var(--white);
+  color: var(--gray-100);
   font-size: 1.6rem;
   font-weight: 400;
 }
 
-.input:focus {
-  outline: 0.1rem solid var(--primary);
+.form--input:focus {
+  outline: none;
+  border: 0.1rem solid var(--primary);
 }
 
-.eye-button {
+.form--eye-button {
   position: absolute;
   right: 1.5rem;
-  bottom: 1.8rem;
+  top: 5rem;
   width: 1.6rem;
   height: 1.6rem;
   background-image: url(../public/icons/eye-off.png);
 }
 
-.eye-button:active {
+.form--eye-button.on {
   background-image: url(../public/icons/eye-on.png);
 }
 
-.header-logo {
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.6rem;
 }
 
-.logo-img {
+.logo {
+  height: 3.8rem;
+}
+
+.logo--img {
   width: 21rem;
   height: 3.8rem;
 }
 
-.header-logo .ask {
+.header--text {
   color: black;
   font-size: 1.6rem;
   font-weight: 400;
 }
 
-.header-logo .sign-link {
+.header--link {
   text-decoration: underline;
   color: var(--primary);
   font-size: 1.6rem;
   font-weight: 400;
 }
 
-.sign-button {
+.form--sign-button {
   padding: 1.6rem 2rem;
   border-radius: 0.8rem;
   background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
@@ -102,23 +117,23 @@
   align-items: center;
   padding: 1.2rem 2.4rem;
   border-radius: 0.8rem;
-  border: 0.1rem solid var(--LB-gray-20);
-  background-color: var(--LB-gray-10);
+  border: 0.1rem solid var(--gray-20);
+  background-color: var(--gray-10);
 }
 
-.sns-title {
-  color: var(--LB-gray-100);
+.footer--description {
+  color: var(--gray-100);
   font-size: 1.4rem;
   font-weight: 400;
 }
 
-.sns-links {
+.footer--sns-links {
   display: flex;
   gap: 1.6rem;
   list-style: none;
 }
 
-.footer .link {
+.footer--sns-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +147,7 @@
   background-image: url(../public/icons/google_background.png);
 }
 
-.google-icon {
+.google--icon {
   width: 2.2rem;
   height: 2.2rem;
 }
@@ -141,23 +156,19 @@
   background-image: url(../public/icons/kakao_background.png);
 }
 
-.kakao-icon {
+.kakao--icon {
   width: 2.6rem;
   height: 2.4rem;
 }
 
-/*------------tablet------------*/
-@media (max-width: 1199px) {
-  .background {
-    margin-top: 20rem;
-  }
+.error__style {
+  margin-top: 0.6rem;
+  color: var(--red);
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
-/*------------mobile------------*/
-@media (max-width: 767px) {
-  .background {
-    margin-top: 12rem;
-    padding-right: 3.2rem;
-    padding-left: 3.2rem;
-  }
+.form--input.error {
+  outline: none;
+  border: 0.1rem solid var(--red);
 }

@@ -5,47 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>로그인</title>
   <link rel="stylesheet" href="../styles/reset.css">
-  <link rel="stylesheet" href="../styles/sign_style.css">
+  <link rel="stylesheet" href="../styles/sign.css">
 </head>
 <body class="background">
   <div class="frame">
     <div class="middle-frame">
-      <header class="header-logo">
-        <a href="../index.html" class="logo-link"><img class="logo-img" alt="링크브러리 로고 이미지" src="../public/images/Linkbrary-logo.png"></a>
+      <header class="header">
+        <a href="../index.html" class="logo"><img class="logo--img" alt="링크브러리 로고 이미지" src="../public/images/Linkbrary-logo.png"></a>
         <div>
-          <span class="ask">회원이 아니신가요?</span> <a href="signup.html" class="sign-link">회원 가입하기</a>
+          <span class="header--text">회원이 아니신가요?</span> <a href="signup.html" class="header--link">회원 가입하기</a>
         </div>
       </header>
       <main>
         <form class="form">
-          <label class="label">이메일
-            <input class="input" name="email" type="email">
+          <label class="form--label">이메일
+            <input id="email-input" class="form--input" name="email" type="email" required>
+            <p id="email-error" class="error__style"></p>
           </label>
-          <label class="label">비밀번호
-            <input class="input" name="password" type="password">
-            <button class="eye-button" type="button"></button>
+          <label class="form--label">비밀번호
+            <input id="password-input" class="form--input" name="password" type="password" required>
+            <button class="form--eye-button" type="button"></button>
+            <p id="password-error" class="error__style"></p>
           </label>
-          <button class="sign-button" type="submit">
+          <button id="login-button" class="form--sign-button" type="button">
             로그인
           </button>
         </form>
       </main>
     </div>
     <footer class="footer">
-      <p class="sns-title">소셜로그인</p>
-      <ul class="sns-links">
+      <p class="footer--description">소셜로그인</p>
+      <ul class="footer--sns-links">
         <li>
-          <a class="google link" href="https://www.google.com/">
-            <img class="google-icon" src="../public/icons/google_icon.png">
+          <a class="footer--sns-link google" href="https://www.google.com/">
+            <img class="google--icon" src="../public/icons/google_icon.png">
           </a>
         </li>
         <li>
-          <a class="kakao link" href="https://www.kakaocorp.com/page/">
-            <img class="kakao-icon" src="../public/icons/kakao_icon.png">
+          <a class="footer--sns-link kakao" href="https://www.kakaocorp.com/page/">
+            <img class="kakao--icon" src="../public/icons/kakao_icon.png">
           </a>
         </li>
       </ul>
     </footer>
   </div>
+  <script src="../js/signin.js"></script>
 </body>
 </html>
