@@ -7,33 +7,46 @@ const eyeBtn = document.querySelector(".eye-slashed");
 const emailError = document.querySelector(".email-message");
 const passwordError = document.querySelector(".password-message");
 
+function appearErrorEmail() {
+  emailError.classList.add("error-appear");
+  email.classList.add("error-border");
+}
+function disappearErrorEmail() {
+  emailError.classList.remove("error-appear");
+  email.classList.remove("error-border");
+}
+function appearErrorPassword() {
+  passwordError.classList.add("error-appear");
+  password.classList.add("error-border");
+}
+function disappearErrorPassword() {
+  passwordError.classList.remove("error-appear");
+  password.classList.remove("error-border");
+}
+
 signinBtn.addEventListener("click", function (e) {
   e.preventDefault();
   if (email.value == "test@codeit.com" && password.value == "codeit101") {
     location.href = "./folder.html";
-    emailError.classList.remove("error-appear");
-    passwordError.classList.remove("error-appear");
+    disappearErrorEmail();
+    disappearErrorPassword();
   } else if (
     email.value !== "test@codeit.com" &&
     password.value == "codeit101"
   ) {
-    emailError.classList.add("error-appear");
-    email.classList.add("error-border");
+    appearErrorEmail();
+    disappearErrorPassword();
     emailError.textContent = "이메일을 확인해주세요.";
-    passwordError.classList.remove("error-appear");
   } else if (
     email.value == "test@codeit.com" &&
     password.value !== "codeit101"
   ) {
-    emailError.classList.remove("error-appear");
-    passwordError.classList.add("error-appear");
-    password.classList.add("error-border");
+    disappearErrorEmail();
+    appearErrorPassword();
     passwordError.textContent = "비밀번호를 확인해주세요.";
   } else {
-    emailError.classList.add("error-appear");
-    passwordError.classList.add("error-appear");
-    email.classList.add("error-border");
-    password.classList.add("error-border");
+    appearErrorEmail();
+    appearErrorPassword();
     emailError.textContent = "이메일을 확인해주세요.";
     passwordError.textContent = "비밀번호를 확인해주세요.";
   }
@@ -41,16 +54,13 @@ signinBtn.addEventListener("click", function (e) {
 
 email.addEventListener("blur", function () {
   if (!email.value) {
-    emailError.classList.add("error-appear");
-    email.classList.add("error-border");
+    appearErrorEmail();
     emailError.textContent = "이메일을 입력해주세요.";
   } else if (!isValidEmail(email.value)) {
-    emailError.classList.add("error-appear");
-    email.classList.add("error-border");
-
+    appearErrorEmail();
     emailError.textContent = "올바른 이메일 주소가 아닙니다.";
   } else {
-    emailError.classList.remove("error-appear");
+    disappearErrorEmail();
   }
 });
 
@@ -65,12 +75,10 @@ function isValidEmail(email) {
 
 password.addEventListener("blur", function () {
   if (!password.value) {
-    passwordError.classList.add("error-appear");
-    password.classList.add("error-border");
-
+    appearErrorPassword();
     passwordError.textContent = "비밀번호를 입력해주세요.";
   } else {
-    passwordError.classList.remove("error-appear");
+    disappearErrorPassword();
   }
 });
 
