@@ -14,7 +14,6 @@ function showMessage(inputText) {
 function IsEmpty(input, inputLabel) {
   const errorMsgs = inputLabel.querySelector("small");
   if (input.value.trim().length === 0 && errorMsgs.innerText.length === 0) {
-    // inpuLabel.textContent는 공백을 포함하기 떄문에 공백포함해서 나와서 이상함
     let errorMessage = showMessage(inputLabel.innerText);
     errorMsgs.innerText = errorMessage;
   } else if (input.value.trim().length !== 0) {
@@ -41,9 +40,7 @@ function isCodeItLogin(email, password) {
   );
 }
 
-// 눈모양
-// https://medium.com/@miguelznunez/html-css-javascript-how-to-show-hide-password-using-the-eye-icon-27f033bf84ad
-// https://codepen.io/kimpetersend1/pen/abzWEGK
+// 비밀번호 눈emoji클릭한경우
 function isPasswordVisible() {
   if (eyeIcon.classList.contains("fa-eye")) {
     eyeIcon.classList.remove("fa-eye");

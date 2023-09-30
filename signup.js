@@ -41,26 +41,7 @@ function isCodeItLogin(email, password) {
   );
 }
 
-// 눈모양
-// https://medium.com/@miguelznunez/html-css-javascript-how-to-show-hide-password-using-the-eye-icon-27f033bf84ad
-// https://codepen.io/kimpetersend1/pen/abzWEGK
-
-email.addEventListener("focusout", function (event) {
-  event.preventDefault();
-  IsEmpty(email, emailLabel);
-  IsValidEmail(email, emailLabel, "유효하지않은이메일입니다");
-});
-
-password.addEventListener("focusout", function (event) {
-  event.preventDefault();
-  IsEmpty(password, passwordLabel);
-});
-
-rePassword.addEventListener("focusout", function (event) {
-  event.preventDefault();
-  IsEmpty(rePassword, repasswordLabel);
-});
-
+// 비밀번호 눈emoji클릭한경우
 function isPasswordVisible() {
   if (eyeIcon.classList.contains("fa-eye")) {
     eyeIcon.classList.remove("fa-eye");
@@ -84,6 +65,32 @@ function isPasswordVisible2() {
     rePassword.type = "text";
   }
 }
+
+function isPasswordMatch(password, rePassword, repasswordLabel) {
+  if (password.value.trim() !== rePassword.value.trim()) {
+    const errorMsgs = repasswordLabel.querySelector("small");
+    errorMsgs.innerText = "비밀번호가맞지않습니다";
+  }
+}
+
+email.addEventListener("focusout", function (event) {
+  event.preventDefault();
+  IsEmpty(email, emailLabel);
+  IsValidEmail(email, emailLabel, "유효하지않은이메일입니다");
+});
+
+password.addEventListener("focusout", function (event) {
+  event.preventDefault();
+  IsEmpty(password, passwordLabel);
+});
+
+rePassword.addEventListener("focusout", function (event) {
+  event.preventDefault();
+  IsEmpty(rePassword, repasswordLabel);
+  if (password.value.length && rePassword.value.length) {
+    isPasswordMatch(password, rePassword, repasswordLabel);
+  }
+});
 
 eyeIcon.addEventListener("click", isPasswordVisible);
 ReEyeIcon.addEventListener("click", isPasswordVisible2);
