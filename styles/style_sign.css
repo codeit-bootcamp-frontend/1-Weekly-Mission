@@ -127,6 +127,14 @@ input:focus {
   align-items: center;
 }
 
+.error-message {
+  display: none;
+}
+.error-appear {
+  display: inline;
+  position: fixed;
+  color: var(--color-red);
+}
 @media (min-width: 768px) {
   .submit-section,
   .social-section {
