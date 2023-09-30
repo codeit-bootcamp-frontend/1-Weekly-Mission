@@ -1,5 +1,12 @@
 * {
   box-sizing: border-box;
+  font-family: "Pretendard";
+}
+
+html {
+  word-break: keep-all;
+  font-size: 62.5%;
+  font-family: "Noto Sans Korean", "Poppins", "sans-serif";
 }
 
 :root {
@@ -18,10 +25,4 @@
     var(--color-primary) 0.12%,
     #6ae3fe 101.84%
   );
-}
-
-html {
-  word-break: keep-all;
-  font-size: 62.5%;
-  font-family: "Noto Sans Korean", "Poppins", "sans-serif";
 }
