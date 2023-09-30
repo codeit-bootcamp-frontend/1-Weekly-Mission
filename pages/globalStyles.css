@@ -17,14 +17,13 @@ html {
   --gray-three: #CCD5E3;
   --gray-four: #E7EFFB;
   --gray-five: #F0F6FF;
-  --linkbrary-gradation: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
   --gray-light: #F5F5F5;
- 
+  --gra-blue-to-skyBlue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
   --gra-blue-to-pink: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-  --gra-pink-to-skyblue: linear-gradient(96deg, #FE8A8A, #A4CEFF);
-  --gra-skyblue-to-yellow: linear-gradient(277deg, #6FBAFF, #FFD88B);
-  --gra-blue-to-darkgreen: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
-  --gra-hotpink-to-skyblue: linear-gradient(271deg, #FE578F, #68E8F9);
+  --gra-pink-to-skyBlue: linear-gradient(96deg, #FE8A8A, #A4CEFF);
+  --gra-skyBlue-to-yellow: linear-gradient(277deg, #6FBAFF, #FFD88B);
+  --gra-blue-to-darkGreen: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+  --gra-hotpink-to-skyBlue: linear-gradient(271deg, #FE578F, #68E8F9);
 }
 
 body {

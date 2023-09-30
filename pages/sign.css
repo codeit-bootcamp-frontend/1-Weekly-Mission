@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  color: var(--black, #000);
+  color: var(--black);
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px; /* 150% */
@@ -30,19 +30,19 @@ body {
   height: 38px;
 }
 
-.regular-login .head .move-to-signin {
+.regular-login .head .move-to-sign {
   display: flex;
   align-items: flex-start;
   gap: 8px;
   font-size: 1.6rem;
 }
 
-.regular-login .head .move-to-signin a {
+.regular-login .head .move-to-sign a {
   color: var(--primary);
   text-decoration: none;
 }
 
-.regular-login .head .move-to-signin a:hover {
+.regular-login .head .move-to-sign a:hover {
   text-decoration: underline;
 }
 
@@ -53,17 +53,17 @@ input {
   justify-content: center;
   align-items: center;
   border-radius: 0.8rem;
-  border: 0.1rem solid var(--gray-three, #ccd5e3);
-  background: var(--white, #fff);
+  border: 0.1rem solid var(--gray-three);
+  background: var(--white);
   margin-top: 1.2rem;
 }
 
 input:focus {
-  outline: 0.1rem solid var(--primary, #6d6afe) !important;
+  border: 0.1rem solid var(--primary);
+  outline: none;
 }
 
-.signup-field .text,
-.social-login .text {
+.sign-field .text, .social-login .text {
   font-size: 1.4rem;
 }
 
@@ -75,12 +75,12 @@ input:focus {
   align-items: center;
   gap: 1rem;
   border-radius: 0.8rem;
-  background: var(--linkbrary-gradation);
+  background: var(--gra-blue-to-skyBlue);
   cursor: pointer;
 }
 
 .button .text {
-  color: var(--gray-light, #f5f5f5);
+  color: var(--gray-light);
   font-size: 1.8rem;
   font-weight: 600;
 }
@@ -96,8 +96,8 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   border-radius: 8px;
-  border: 1px solid var(--gray-three, #ccd5e3);
-  background: var(--gray-four, #e7effb);
+  border: 1px solid var(--gray-three);
+  background: var(--gray-four);
 }
 
 .social-login .social-login-icons {
@@ -123,6 +123,20 @@ input:focus {
   cursor: pointer;
 }
 
+.error-msg {
+  font-size: 1.4rem;
+  color: var(--red);
+  font-weight: 400;
+  position: relative;
+  left: 1rem;
+}
+
+@media (max-width: 1199px) {
+  body {
+    padding: 20rem 40rem 29rem;
+  }
+}
+
 @media (max-width: 767px) {
   body {
     padding: 12rem 3.2rem 23.2rem 3.2rem;
@@ -144,7 +158,7 @@ input:focus {
     width: 100%;
   }
 
-  .signup-field {
+  .sign-field {
     width: 100%;
   }
 

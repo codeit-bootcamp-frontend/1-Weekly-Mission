@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="pages/globalStyles.css" rel="stylesheet">
-  <link href="pages/signin.css" rel="stylesheet">
+  <link href="pages/sign.css" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css">
   <title>Linkbrary</title>
 </head>
@@ -14,23 +14,25 @@
       <a href="index.html">
         <img src="assets/logo/logo.svg" id="logo" alt="홈페이지 로고: 클릭 시 메인화면으로 이동">
       </a>
-      <div class="move-to-signup">
+      <div class="move-to-sign">
         <p>회원이 아니신가요?</p>
-        <a href="signup.html">회원가입하기</a>
+        <a href="signUp.html">회원가입하기</a>
       </div>
     </section>
-    <section class="signin-field">
+    <section class="sign-field">
       <p class="text">이메일</p>
-      <input name="email" type="email" required autocomplete="email" placeholder="이메일을 입력하세요.">
+      <input class="email" name="email" type="email" required autocomplete="email" placeholder="이메일을 입력하세요.">
+      <div class="email error-msg"></div>
     </section>
-    <section class="signin-field">
+    <section class="sign-field">
       <p class="text">비밀번호</p>
       <div class="input-container">
-        <input name="password" type="password" required placeholder="비밀번호를 입력하세요.">
+        <input class="password" name="password" type="password" required placeholder="비밀번호를 입력하세요.">
         <img src="assets/components/eye-off.svg" class="eye-off" alt="비밀번호 숨기기 아이콘">
       </div>
+      <div class="password error-msg"></div>
     </section>
-    <section class="button">
+    <section class="login button">
       <p class="text">로그인</p>
     </section>
   </div>
@@ -47,5 +49,6 @@
       </section>
     </div>
   </div>
+  <script src="js/signIn.js"></script>
 </body>
 </html>
