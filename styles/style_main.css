@@ -3,7 +3,6 @@
 body {
   background-color: var(--color-gray1);
 }
-
 main {
   display: flex;
   flex-direction: column;
@@ -13,10 +12,10 @@ main {
 /* header css 작성 */
 nav {
   background-color: var(--color-gray1);
-  padding: 2rem 0;
+  padding: 2rem 20rem;
   display: flex;
   flex-wrap: nowrap;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
@@ -40,29 +39,10 @@ nav {
   line-height: normal;
   padding: 0 1rem;
 }
-nav .spacing {
-  width: 20rem;
-}
-nav .spacing-center {
-  flex-grow: 1;
-  flex-shrink: 0;
-}
 
 @media (max-width: 1199px) {
-  nav .spacing {
-    min-width: 3.2rem;
-  }
-  nav .spacing-center {
-    min-width: 50rem;
-  }
 }
 @media (max-width: 768px) {
-  nav .spacing {
-    width: 3.2rem;
-  }
-  nav .spacing-center {
-    min-width: 3rem;
-  }
 }
 
 /* section 1 css코드 */
