@@ -48,7 +48,7 @@ const pwdError = (bool, verify) => {
         noPwd.remove()
         noPwd = undefined
         inputs[1].classList.remove("inner-input-error")
-    }
+    } else noPwd.textContent = "비밀번호를 입력해주세요."
 }
 
 // 이메일 이벤트 함수
@@ -84,7 +84,25 @@ loginForm.addEventListener("submit", e => {
     // else pwdError(false, noPwd)
 
     if (email.value === TESTEMAIL && password.value === TESTPWD) location.href = "./folder.html"
-    
+    else {
+
+        // 로그인 시도
+        if (noEmail === undefined){
+            noEmail = document.createElement("p")
+            noEmail.classList.add("inner-input-error-message")
+            email.parentNode.parentNode.append(noEmail)
+            inputs[0].classList.add("inner-input-error")
+        }
+        noEmail.textContent = "이메일을 확인해주세요."
+
+        if (noPwd === undefined){
+            noPwd = document.createElement("p")
+            noPwd.classList.add("inner-input-error-message")
+            password.parentNode.parentNode.append(noPwd)
+            inputs[1].classList.add("inner-input-error")
+        }
+        noPwd.textContent = "비밀번호를 확인해주세요."
+    }
 
 })
 
