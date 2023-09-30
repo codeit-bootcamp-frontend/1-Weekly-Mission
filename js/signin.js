@@ -4,7 +4,7 @@ const form = document.querySelector('form');
 const eyeButton = document.querySelector('.eye-button');
 const eyeIcon = document.querySelectorAll('.eye-icon');
 
-const correctMailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const correctMailForm = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const correctMail = 'test@codeit.com';
 const correctPassword = 'codeit101';
 
