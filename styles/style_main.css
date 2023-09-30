@@ -82,15 +82,15 @@ nav {
   width: 100%;
 }
 
-/* .section 2. cards list */
+/* .section. cards list */
 /* card 요소 공통 부분들 */
 .cards {
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 12rem 0 20rem;
-  gap: 15rem;
+  padding: 4rem 3.2rem;
+  gap: 4rem;
   align-items: center;
   margin: 0;
 }
@@ -257,6 +257,8 @@ footer {
  * header의 title padding, font size, line height, width를 조절한다.
  * headedr의 img 크기를 65rem으로 고정한다.
  *
+ * section의 cards 간의 여백과 간격을 수정 
+ *
  * footer의 padding을 조절한다.
 */
 @media (min-width: 768px) {
@@ -281,6 +283,10 @@ footer {
   .footer.logo {
     position: static;
   }
+  .cards {
+    padding: 8rem 25rem;
+    gap: 10rem;
+  }
 }
 /* 1200px 이상 컴퓨터에서는
  * 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다.
@@ -288,7 +294,7 @@ footer {
  * header의 title padding, width를 조절하고 나머지 속성은 타블렛 조건에서 물려받는다.
  * headedr의 img 크기를 112rem으로 고정한다.
  *
- * 
+ * section의 cards 간의 여백과 간격을 수정
  */
 @media (min-width: 1200px) {
   nav {
@@ -302,5 +308,9 @@ footer {
   }
   .main-header .sample-web {
     width: 112rem;
+  }
+  .cards {
+    padding: 10rem 46rem;
+    gap: 10rem;
   }
 }
