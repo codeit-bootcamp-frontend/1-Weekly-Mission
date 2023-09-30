@@ -2,6 +2,7 @@ const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
 const pwWrapper = document.querySelector(".password-wrapper");
 const signinBtn = document.querySelector(".signin-btn");
+const eyeBtn = document.querySelector(".eye-off-btn");
 const emailEmptyMsg = document.createElement("span");
 const emailInvalidMsg = document.createElement("span");
 const pwEmptyMsg = document.createElement("span");
@@ -67,7 +68,14 @@ function clickSigninBtnHandler() {
   }
 }
 
+function clickEyeBtnHandler() {
+  pwInput.getAttribute("type") === "password"
+    ? pwInput.setAttribute("type", "text")
+    : pwInput.setAttribute("type", "password");
+}
+
 emailInput.addEventListener("focusout", inputEmptyValueHandler);
 emailInput.addEventListener("focusout", inputInvalidEmailHandler);
 pwInput.addEventListener("focusout", pwInputEmptyHandler);
 signinBtn.addEventListener("click", clickSigninBtnHandler);
+eyeBtn.addEventListener("click", clickEyeBtnHandler);
