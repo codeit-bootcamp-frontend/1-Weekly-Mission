@@ -79,6 +79,7 @@ form{
     position : absolute;
     bottom : 18px;
     right : 20px;
+    cursor : pointer;
 }
 
 .input_box{
@@ -92,7 +93,7 @@ form{
 .input_box::placeholder{
     color: var(--linkbrary-gray-100, #373740);
     font-family: Pretendard;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 
 input:focus{

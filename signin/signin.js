@@ -56,6 +56,21 @@ function checkLogin(event){
     }
 }
 
+const eyeIcon = document.querySelector('.icon_eye');
+let eye_on = 0;
+function clickEye(event){
+    if(!eye_on){ //off -> on
+        eye_on = 1;
+        eyeIcon.setAttribute('src', '/assets/images/eye-on.svg'); //눈 아이콘 사진 변경
+        inputPw.setAttribute('type', '');
+    }
+    else{ //on -> off
+        eye_on = 0;
+        eyeIcon.setAttribute('src', '/assets/images/eye-off.svg');
+        inputPw.setAttribute('type', 'password');
+    }
+}
+
 //이메일
 inputEmail.addEventListener('focusout', enterError);
 inputEmail.addEventListener('input', enterReset);
@@ -67,3 +82,6 @@ inputPw.addEventListener('input', enterReset);
 
 //로그인 버튼
 form.addEventListener('submit', checkLogin);
+
+//눈 아이콘
+eyeIcon.addEventListener('click', clickEye);
