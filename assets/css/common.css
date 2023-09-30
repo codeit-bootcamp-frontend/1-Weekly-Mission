@@ -7,6 +7,7 @@
 
 body {
     font-family:Pretendard;
+    background-color: var(--color-background-lightblue);
     overflow-x: hidden;
     -ms-overflow-style: none;
     width: 100%;
@@ -31,8 +32,10 @@ a,button{
     --color-gray-3:#F5F5F5;
     --color-gray-4:#E7EFFB;
     --color-gray-5:#6B6B6B;
+    --color-red:#ff5b56;
     --color-footer-darkblue: #111322;
     --color-footer-gray: #676767;
+
 
     --gradient-blue-to-mint: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     --gradient-blue-to-red: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
@@ -72,6 +75,15 @@ a,button{
 }
 
 /* -- common elements design -- */
+.error--inputText{
+    border-color: var(--color-red) !important;
+}
+
+.error--text{
+    color: var(--color-red);
+    font-size: 14px;
+    margin-top:-4px;
+}
 
 .btn--gradient-blue-to-mint {
     padding: 16px 20px;
