@@ -1,11 +1,55 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <title>SignIn</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SignIn</title>
+  <link rel="stylesheet" href="/styles/reset.css" />
+  <link rel="stylesheet" href="/styles/style.css" />
+  <link rel="stylesheet" href="/styles/signinup.css" />
+  <link rel="stylesheet" href="/styles/color.css" />
+  <script src="eye.js"></script>
 </head>
 <body>
+  <main>
+    <header>
+      <h1>
+        <a href="/" rel="noopener noreferrer">
+          <img class="logo" src="/asset/images/logo.svg" alt="링크브러리 로고">
+        </a>
+      </h1>
+      <div class="cta">
+        <div class="plain">회원이 아니신가요?</div>
+        <a class="link plain" href="/signup.html">회원가입하기</a>
+      </div>
+    </header>
   
+    <form class="signin">
+      <div class="email">
+        <label for="email">이메일</label>
+        <input id="email" class="plain gray" name="email" type="email">
+      </div>
+      <div class="pw">
+        <label for="pw">비밀번호</label>
+        <input id="pw" class="plain gray" name="pw" type="password">
+        <img id="pw-eye" src="/asset/images/eye-off.svg" onclick="pwToggle()">
+      </div>
+      <button class="gradation">로그인</button>
+    </form>
+  
+    <footer>
+      <div class="plain small gray">소셜 로그인</div>
+      <div class="sns">
+        <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+          <img src="/asset/images/google.png" alt="구글 로고">
+        </a>
+        <a href='https://www.kakaocorp.com/page/' target="_blank" rel="noopener noreferrer">
+          <img src="/asset/images/kakaotalk.png" alt="카카오톡 로고">
+        </a>
+      </div>
+    </footer>
+  </main>
+
+
 </body>
 </html>
