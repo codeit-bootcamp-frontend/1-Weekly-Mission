@@ -1,5 +1,6 @@
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
+const signinBtn = document.querySelector(".signin-btn");
 const emailEmptyMsg = document.createElement("span");
 const emailInvalidMsg = document.createElement("span");
 
@@ -28,5 +29,12 @@ function inputInvalidEmailHandler(e) {
   }
 }
 
+function signinHandler() {
+  if (emailInput.value === "test@codeit.com" && pwInput.value === "codeit101") {
+    location.href = "/folder";
+  }
+}
+
 emailInput.addEventListener("focusout", inputEmptyValueHandler);
 emailInput.addEventListener("focusout", inputInvalidEmailHandler);
+signinBtn.addEventListener("click", signinHandler);
