@@ -3,7 +3,6 @@
 body {
   background-color: var(--color-gray1);
 }
-
 main {
   display: flex;
   flex-direction: column;
@@ -62,8 +61,8 @@ nav {
   }
 }
 
-/* section 1 css코드 */
-.main-section {
+/* header css코드 */
+.main-header {
   padding: 7rem 36rem 0 36rem;
   display: flex;
   flex-direction: column;
@@ -71,7 +70,7 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
-.main-section .section-title {
+.main-header .header-title {
   text-align: center;
   font-size: 6rem;
   font-style: normal;
@@ -79,7 +78,7 @@ nav {
   line-height: 8rem;
   min-width: 77rem;
 }
-.main-section .section-title .gradient-text {
+.main-header .header-title .gradient-text {
   background: linear-gradient(
     91deg,
     var(--color-primary) 17.28%,
@@ -89,10 +88,10 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.signup-button {
+.main-header .signup-button {
   width: 35rem;
 }
-.main-section .sample-web {
+.main-header .sample-web {
   position: relative;
   top: 5rem;
   z-index: -1;
