@@ -27,7 +27,10 @@ function printErrorMsg(error, type, target) {
 }
 
 function removeErrorMsg(target) {
-  if (target.nextElementSibling) {
+  if (
+    target.nextElementSibling &&
+    target.nextElementSibling.classList.contains("error-msg")
+  ) {
     target.nextElementSibling.remove();
   }
 }
@@ -75,3 +78,20 @@ for (let input of formInputs) {
 }
 
 formSubmit.addEventListener("click", auth);
+
+// 비밂번호 표시
+const togglePasswordButton = document.querySelector(".form__password-toggle");
+const togglePasswordImg = document.querySelector(".form__password-toggle img");
+
+function togglePasswordVisibility(event) {
+  event.preventDefault();
+  if (formPassword.type === "password") {
+    formPassword.type = "text";
+    togglePasswordImg.src = "/public/icons/eye-on.svg";
+  } else {
+    formPassword.type = "password";
+    togglePasswordImg.src = "/public/icons/eye-off.svg";
+  }
+}
+
+togglePasswordButton.addEventListener("click", togglePasswordVisibility);
