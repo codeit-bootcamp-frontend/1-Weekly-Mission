@@ -68,6 +68,14 @@ form .password-wrapper {
   position: relative;
 }
 
+form .password-invisible {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-100%);
+  cursor: pointer;
+}
+
 footer {
   padding: 12px 24px;
   margin-top: -0.5rem;

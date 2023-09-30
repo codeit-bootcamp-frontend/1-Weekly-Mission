@@ -1,11 +1,3 @@
-form .password-invisible {
-  position: absolute;
-  top: 50%;
-  right: 1.5rem;
-  transform: translateY(-100%);
-  cursor: pointer;
-}
-
 form .login-btn {
   padding: 1rem 1.25rem;
   align-items: center;
