@@ -126,6 +126,10 @@ input:focus {
   justify-content: center;
   align-items: center;
 }
+
+.error-border {
+  border: solid 1px var(--color-red);
+}
 .error-message {
   margin-top: 1rem;
   color: var(--color-red);

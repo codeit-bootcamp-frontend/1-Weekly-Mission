@@ -18,6 +18,7 @@ signinBtn.addEventListener("click", function (e) {
     password.value == "codeit101"
   ) {
     emailError.classList.add("error-appear");
+    email.classList.add("error-border");
     emailError.textContent = "이메일을 확인해주세요.";
     passwordError.classList.remove("error-appear");
   } else if (
@@ -26,10 +27,13 @@ signinBtn.addEventListener("click", function (e) {
   ) {
     emailError.classList.remove("error-appear");
     passwordError.classList.add("error-appear");
+    password.classList.add("error-border");
     passwordError.textContent = "비밀번호를 확인해주세요.";
   } else {
     emailError.classList.add("error-appear");
     passwordError.classList.add("error-appear");
+    email.classList.add("error-border");
+    password.classList.add("error-border");
     emailError.textContent = "이메일을 확인해주세요.";
     passwordError.textContent = "비밀번호를 확인해주세요.";
   }
@@ -38,9 +42,12 @@ signinBtn.addEventListener("click", function (e) {
 email.addEventListener("blur", function () {
   if (!email.value) {
     emailError.classList.add("error-appear");
+    email.classList.add("error-border");
     emailError.textContent = "이메일을 입력해주세요.";
   } else if (!isValidEmail(email.value)) {
     emailError.classList.add("error-appear");
+    email.classList.add("error-border");
+
     emailError.textContent = "올바른 이메일 주소가 아닙니다.";
   } else {
     emailError.classList.remove("error-appear");
@@ -59,6 +66,8 @@ function isValidEmail(email) {
 password.addEventListener("blur", function () {
   if (!password.value) {
     passwordError.classList.add("error-appear");
+    password.classList.add("error-border");
+
     passwordError.textContent = "비밀번호를 입력해주세요.";
   } else {
     passwordError.classList.remove("error-appear");
