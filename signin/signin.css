@@ -84,7 +84,7 @@ body {
   line-height: normal;
 }
 
-.signin-input {
+.email-input {
   display: flex;
   width: 100%;
   padding: 18px 15px;
@@ -159,9 +159,22 @@ body {
   background-color: #f5e14b;
 }
 
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .password-input {
   position: relative;
   width: 100%;
+  display: flex;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-30);
+  background: var(--color-white);
 }
 
 .eye-off-btn {
@@ -172,6 +185,18 @@ body {
   height: 16px;
   background-color: var(--color-white);
   border: none;
+}
+
+.input-error {
+  width: 100%;
+  padding: 18px 15px;
+  border: 1px solid var(--color-red-10);
+  border-radius: 8px;
+}
+
+.input-error-msg {
+  color: var(--color-red-10);
+  font-size: 14px;
 }
 
 /* mobile */
