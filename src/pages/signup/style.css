@@ -68,7 +68,7 @@ form .password-visible {
   position: absolute;
   top: 50%;
   right: 1.5rem;
-  transform: translateY(-40%);
+  transform: translateY(-60%);
 }
 
 form .signup-btn {
