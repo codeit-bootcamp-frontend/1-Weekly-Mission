@@ -4,7 +4,7 @@ const sign_form = document.querySelectorAll("[type=button]");
 const togglePasswordVisibility = (e) => {
     e.target.classList.toggle("input__eyes--on");
 
-    if (e.target.classList.contains("input__eyes--on")) {
+    if (!e.target.classList.contains("input__eyes--on")) {
         e.target.previousElementSibling.type = "password"
     } else {
         e.target.previousElementSibling.type = "";
