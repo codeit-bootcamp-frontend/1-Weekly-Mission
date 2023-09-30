@@ -69,9 +69,13 @@ function clickSigninBtnHandler() {
 }
 
 function clickEyeBtnHandler() {
-  pwInput.getAttribute("type") === "password"
-    ? pwInput.setAttribute("type", "text")
-    : pwInput.setAttribute("type", "password");
+  if (pwInput.getAttribute("type") === "password") {
+    pwInput.setAttribute("type", "text");
+    eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-on.svg");
+  } else {
+    pwInput.setAttribute("type", "password");
+    eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-off.svg");
+  }
 }
 
 emailInput.addEventListener("focusout", inputEmptyValueHandler);
