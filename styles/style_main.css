@@ -48,35 +48,22 @@ nav {
   line-height: normal;
   padding: 0 1rem;
 }
-/* 1200px 이상 컴퓨터에서는 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다. */
-@media (min-width: 1200px) {
-  nav {
-    padding: 2rem 20rem;
-  }
-}
-/* 768px 이상 1199px 이하 타블렛에서는 좌우 padding이 최소 3.2rem이며 gnb div의 크기가 최대 80rem이었다가 nav 태그의 크기가 86.4rem보다 작아지면 gnb의 로고와 버튼 사이 간격을 줄인다.*/
-@media (min-width: 768px) {
-  .gnb {
-    max-width: 80rem;
-  }
-}
 
 /* header css코드 */
 .main-header {
-  padding: 7rem 36rem 0 36rem;
+  padding: 3rem 3.2rem 0 3.2rem;
+  gap: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
   justify-content: space-between;
   align-items: center;
 }
 .main-header .header-title {
   text-align: center;
-  font-size: 6rem;
-  font-style: normal;
+  font-size: 3rem;
   font-weight: 700;
-  line-height: 8rem;
-  min-width: 77rem;
+  line-height: 4rem;
+  white-space: nowrap;
 }
 .main-header .header-title .gradient-text {
   background: linear-gradient(
@@ -278,6 +265,35 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
+
+/* 768px 이상 1199px 이하 타블렛에서는 좌우 padding이 최소 3.2rem이며 gnb div의 크기가 최대 80rem이었다가 nav 태그의 크기가 86.4rem보다 작아지면 gnb의 로고와 버튼 사이 간격을 줄인다.*/
+@media (min-width: 768px) {
+  .gnb {
+    max-width: 80rem;
+  }
+  .main-header {
+    padding: 4rem 25rem 0 25rem;
+    gap: 4rem;
+  }
+  .main-header .header-title {
+    font-size: 6rem;
+    width: 47rem;
+    line-height: 8rem;
+  }
+}
+/* 1200px 이상 컴퓨터에서는 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다. */
+@media (min-width: 1200px) {
+  nav {
+    padding: 2rem 20rem;
+  }
+  .main-header {
+    padding: 7rem 36rem 0 36rem;
+  }
+  .main-header .header-title {
+    width: 77rem;
+  }
+}
+
 @media (max-width: 767px) {
   footer {
     padding: 3rem 3.2rem 0;
