@@ -19,11 +19,11 @@ const checking_email_input = (event) => {
   if (!event.target.value) {
     // input에 아무런 입력이 없는 경우
     $email_error_msg.textContent = '이메일을 입력해주세요.';
-    $email.classList.toggle('error_border');
+    $email.classList.add('error_border');
   } else if (event.target.value.indexOf('@') === -1 || event.target.value.slice(event.target.value.indexOf('@') + 1).indexOf('.') === -1 || repExp_Korean.test(event.target.value)) {
     // '@'가 없거나 '@'뒤에 '.'이 없거나 한글이 포함된 경우
     $email_error_msg.textContent = '올바른 이메일 주소가 아닙니다.'
-    $email.classList.toggle('error_border');
+    $email.classList.add('error_border');
   } else {
     $email_error_msg.textContent = '';
   }
@@ -33,7 +33,7 @@ const checking_password_input = (event) => {
   if (!event.target.value) {
     // input에 아무런 입력이 없는 경우
     $password_error_msg.textContent = '비밀번호를 입력해주세요.';
-    $password.classList.toggle('error_border');
+    $password.classList.add('error_border');
   } else {
     $password_error_msg.textContent = '';
   }
@@ -47,8 +47,8 @@ const admin_login = (event) => {
   } else {
     $email_error_msg.textContent = '이메일을 확인해주세요.';
     $password_error_msg.textContent = '비밀번호를 확인해주세요.';
-    $email.classList.toggle('error_border');
-    $password.classList.toggle('error_border');
+    $email.classList.add('error_border');
+    $password.classList.add('error_border');
   }
 }
 
