@@ -91,7 +91,7 @@ form{
 }
 
 .input_box::placeholder{
-    color: var(--linkbrary-gray-100, #373740);
+    color: #9FA6B2;
     font-family: Pretendard;
     font-size: 1.2rem;
 }

@@ -63,11 +63,13 @@ function clickEye(event){
         eye_on = 1;
         eyeIcon.setAttribute('src', '/assets/images/eye-on.svg'); //눈 아이콘 사진 변경
         inputPw.setAttribute('type', '');
+        inputPw.setAttribute('placeholder', 'password');
     }
     else{ //on -> off
         eye_on = 0;
         eyeIcon.setAttribute('src', '/assets/images/eye-off.svg');
         inputPw.setAttribute('type', 'password');
+        inputPw.setAttribute('placeholder', '●●●●●●●●');
     }
 }
 
