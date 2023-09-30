@@ -272,7 +272,7 @@ button {
   flex-direction: column;
   gap: 2.4rem;
 }
-.form__input-text {
+.form__input {
   position: relative;
   font-size: 1.4rem;
   font-weight: 400;
@@ -290,7 +290,7 @@ button {
 }
 .form__password-toggle {
   position: absolute;
-  top: 4.7rem;
+  top: 4.6rem;
   right: 1.5rem;
 }
 

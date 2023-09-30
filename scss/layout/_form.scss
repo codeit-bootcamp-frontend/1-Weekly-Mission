@@ -13,11 +13,9 @@
   }
 
   &__input {
-    &-text {
-      position: relative;
-      font-size: 1.4rem;
-      font-weight: 400;
-    }
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: 400;
 
     &-box {
       width: 100%;
@@ -35,7 +33,7 @@
 
   &__password-toggle {
     position: absolute;
-    top: 4.7rem;
+    top: 4.6rem;
     right: 1.5rem;
   }
 }
