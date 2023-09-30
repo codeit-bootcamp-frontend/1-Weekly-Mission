@@ -38,7 +38,8 @@ function pwInputEmptyHandler(e) {
     pwWrapper.after(pwEmptyMsg);
     pwInput.classList.add("input-error");
   } else {
-    pwInput.classList.remove();
+    pwEmptyMsg.remove();
+    pwInput.classList.remove("input-error");
   }
 }
 
@@ -52,4 +53,3 @@ emailInput.addEventListener("focusout", inputEmptyValueHandler);
 emailInput.addEventListener("focusout", inputInvalidEmailHandler);
 pwInput.addEventListener("focusout", pwInputEmptyHandler);
 signinBtn.addEventListener("click", signinHandler);
-// input 다음에 after 쓰면 안됨
