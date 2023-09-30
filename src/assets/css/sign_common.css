@@ -96,6 +96,26 @@ footer .social-logo {
   height: 2.625rem;
 }
 
+.error_border {
+  border: 1px solid var(--linkbrary-red);
+}
+
+.email_error_msg {
+  height: 0.75rem;
+  color: red;
+  font-size: 0.5rem;
+  margin-top: -0.7rem;
+  padding-left: 0.5rem;
+}
+
+.password_error_msg {
+  height: 0.75rem;
+  color: red;
+  font-size: 0.5rem;
+  margin-top: 0.1rem;
+  padding-left: 0.5rem;
+}
+
 /* Mobile: 375px 이상 ~ 767 px 이하 */
 /* 375px 미만 사이즈의 디자인은 고려하지 않음 */
 @media (min-width: 375px) and (max-width: 767px) {

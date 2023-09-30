@@ -3,6 +3,7 @@ form .password-visible {
   top: 50%;
   right: 1.5rem;
   transform: translateY(-60%);
+  cursor: pointer;
 }
 
 form .signup-btn {
