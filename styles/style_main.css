@@ -2,13 +2,6 @@
 
 body {
   background-color: var(--color-gray1);
-  margin: 0;
-}
-a {
-  text-decoration: none;
-}
-button {
-  cursor: pointer;
 }
 
 main {
