@@ -16,3 +16,11 @@ form .login-btn {
   border: none;
   cursor: pointer;
 }
+
+.error_msg {
+  height: 0.75rem;
+  color: red;
+  font-size: 0.5rem;
+  margin-top: -0.7rem;
+  padding-left: 0.5rem;
+}

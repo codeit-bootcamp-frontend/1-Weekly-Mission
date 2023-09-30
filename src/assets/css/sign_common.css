@@ -1,4 +1,4 @@
-body {
+  body {
   padding-top: 5rem; 
   background-color: var(--linkbrary-bg);
 }
@@ -44,6 +44,10 @@ form {
 form label {
   font-size: 0.875rem;
   font-weight: 400;
+}
+
+form label:nth-of-type(2) {
+  margin-top: -0.3rem;
 }
 
 form input {
