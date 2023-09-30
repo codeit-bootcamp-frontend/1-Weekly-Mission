@@ -8,12 +8,16 @@ const $submitBtn = document.querySelector('#submit');
 let flag = true;
 
 function verificationEmail (){ 
-  if ( $inputEmail.value.length === 0){
+  const $emailValue = $inputEmail.value;
+  const $emailAtIdx = $emailValue.indexOf('@', 1);
+  const $emailDotLastIdx = $emailValue.lastIndexOf('.');
+  const $emailAtLastIdx = $emailValue.lastIndexOf('@');
+  if ( $emailValue.length === 0){
     spanErrorEmail.textContent = "이메일을 입력해주세요.";
     spanErrorEmail.classList.add('show');
     spanErrorEmail.previousElementSibling.classList.add('red_border');
     flag = false;
-  } else if ($inputEmail.value.indexOf('@', 1) <= 0 || $inputEmail.value.lastIndexOf('.') === $inputEmail.value.length -1 ||$inputEmail.value.lastIndexOf('.') < 0 || $inputEmail.value.lastIndexOf('.') < $inputEmail.value.lastIndexOf('@')) {
+  } else if ($emailAtIdx <= 0 || $emailDotLastIdx === $emailValue.length -1 || $emailDotLastIdx < $emailAtLastIdx) {
     spanErrorEmail.textContent = "올바른 이메일 주소가 아닙니다.";
     spanErrorEmail.classList.add('show');
     spanErrorEmail.previousElementSibling.classList.add('red_border');
@@ -61,6 +65,9 @@ function submitVerification (e){
     spanErrorPassword.textContent = "비밀번호를 확인해주세요.";
     spanErrorEmail.classList.add('show');
     spanErrorPassword.classList.add('show');
+    spanErrorEmail.previousElementSibling.classList.add('red_border');
+    spanErrorPassword.previousElementSibling.classList.add('red_border');
+    
   }
 }
 

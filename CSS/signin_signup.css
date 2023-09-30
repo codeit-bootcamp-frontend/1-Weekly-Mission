@@ -86,7 +86,7 @@ form {
   outline-width: 0;
 }
 
-.red_border:hover, .red_border:focus {
+.red_border,.red_border:hover, .red_border:focus {
   border: 1px solid #FF5B56;
   outline-width: 0;
 }
@@ -97,6 +97,7 @@ form {
   top: 33px;
   padding: 10px 10px;
   display: none;
+  cursor: pointer;
 }
 
 .icon {
