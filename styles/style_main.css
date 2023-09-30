@@ -82,6 +82,7 @@ nav {
   position: relative;
   top: 5rem;
   z-index: -1;
+  width: 100%;
 }
 
 /* .section 2. cards list */
@@ -280,6 +281,9 @@ footer {
     width: 47rem;
     line-height: 8rem;
   }
+  .main-header .sample-web {
+    width: 65rem;
+  }
 }
 /* 1200px 이상 컴퓨터에서는 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다. */
 @media (min-width: 1200px) {
@@ -291,6 +295,9 @@ footer {
   }
   .main-header .header-title {
     width: 77rem;
+  }
+  .main-header .sample-web {
+    width: 112rem;
   }
 }
 
