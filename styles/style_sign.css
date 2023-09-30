@@ -82,7 +82,7 @@ input:focus {
 .form-password-repeat .eye-button {
   position: absolute;
   right: 3rem;
-  bottom: 2rem;
+  bottom: 3rem;
   border: none;
   background-color: transparent;
 }
@@ -126,15 +126,16 @@ input:focus {
   justify-content: center;
   align-items: center;
 }
-
 .error-message {
-  display: none;
+  margin-top: 1rem;
+  color: var(--color-red);
+  height: 0;
+  visibility: hidden;
 }
 .error-appear {
-  display: inline;
-  position: fixed;
-  color: var(--color-red);
+  visibility: visible;
 }
+
 @media (min-width: 768px) {
   .submit-section,
   .social-section {
