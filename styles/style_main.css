@@ -219,24 +219,14 @@ nav {
 /* footer css 작성 */
 footer {
   background: var(--the-julge-black, var(--color-black));
-  padding: 3rem 10.4rem 0;
+  padding: 3rem 3rem 6rem;
 }
 .content {
-  height: 13rem;
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   font-size: 1.6rem;
   font-weight: 400;
-}
-.footer.spacing-link-logo,
-.footer.spacing-sns-link {
-  flex-shrink: 0;
-  flex-grow: 1;
-}
-.footer.spacing-pp-fq {
-  width: 3rem;
 }
 .footer.logo {
   color: #676767;
@@ -281,6 +271,9 @@ footer {
   .main-header .sample-web {
     width: 65rem;
   }
+  footer {
+    padding: 3rem 10rem 10rem;
+  }
 }
 /* 1200px 이상 컴퓨터에서는
  * 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다.
@@ -305,9 +298,6 @@ footer {
 }
 
 @media (max-width: 767px) {
-  footer {
-    padding: 3rem 3.2rem 0;
-  }
   .content {
     flex-wrap: wrap;
     min-width: 37.5rem;
@@ -316,13 +306,5 @@ footer {
     display: block;
     width: 100%;
     text-align: left;
-  }
-  .footer.spacing-link-logo {
-    display: none;
-  }
-  .footer.spacing-sns-link,
-  .footer.spacing-pp-fq {
-    flex-shrink: 0;
-    flex-grow: 1;
   }
 }
