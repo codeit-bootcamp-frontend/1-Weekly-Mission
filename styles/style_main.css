@@ -96,16 +96,12 @@ nav {
 }
 .cards .card {
   display: flex;
-  flex-direction: row;
-  height: 40rem;
-  border: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15rem;
 }
 .cards .card:nth-child(even) {
   flex-direction: row-reverse;
-}
-.card .spacing {
-  margin: 0;
-  padding: 7.5rem;
 }
 .card .card-article {
   display: flex;
@@ -125,7 +121,7 @@ nav {
   line-height: 2.4rem;
   padding: 1rem;
 }
-.card .images {
+.card .card-img {
   border-radius: 15px;
   background: var(--color-gray1);
   display: flex;
@@ -133,48 +129,7 @@ nav {
   padding: 0;
   gap: 1rem;
   align-items: center;
-  flex-grow: 2;
-}
-.card-img-tablet {
   width: 55rem;
-}
-.card-img-mobile {
-  display: none;
-}
-@media (max-width: 767px) {
-  .main-section {
-    padding: 0 3.2rem;
-  }
-  .main-section img {
-    width: 100%;
-  }
-  .cards {
-    gap: 5rem;
-  }
-  .cards .card {
-    flex-direction: column;
-    padding: 3.2rem;
-    height: auto;
-  }
-  .card .spacing {
-    padding: 0 3.2rem 3rem;
-  }
-  .card img {
-    width: 100%;
-  }
-  .card .card-article {
-    width: 100%;
-  }
-  .card .card-title {
-    white-space: nowrap;
-  }
-  .card .card-img-tablet {
-    display: none;
-  }
-  .card .card-img-mobile {
-    display: block;
-    margin: 2rem 0;
-  }
 }
 
 /* 1번 카드 css 코드 */
@@ -311,6 +266,5 @@ footer {
   }
   .cards {
     padding: 10rem 46rem;
-    gap: 10rem;
   }
 }
