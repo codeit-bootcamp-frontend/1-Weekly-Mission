@@ -89,12 +89,12 @@ const errorMessageLogin = {
 const validateLoginInput = () => sign_input[0].value === "test@codeit.com" && sign_input[1].value === "codeit101";
 
 const handleLoginButton = (e) => {
+    e.preventDefault();
+
     if (validateLoginInput === true) {
-        e.preventDefault();
         location.href = "/folder.html";
     } else {
         for (let line of sign_input) {
-            e.preventDefault();
 
             const errorMessageNode = renderErrorMessageNode();
 
