@@ -3,6 +3,7 @@
 body {
   background-color: var(--color-gray1);
 }
+
 main {
   display: flex;
   flex-direction: column;
@@ -13,14 +14,18 @@ main {
 nav {
   background-color: var(--color-gray1);
   padding: 2rem 20rem;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
   position: sticky;
   top: 0;
   left: 0;
   z-index: 10;
+}
+.gnb {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 .link-button {
   display: flex;
