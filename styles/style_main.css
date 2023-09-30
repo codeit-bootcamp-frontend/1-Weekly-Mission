@@ -110,12 +110,14 @@ nav {
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.4rem;
+  min-width: 29rem;
 }
 .card .card-title {
   grid-area: title;
   color: #000;
   font-size: 4.8rem;
   letter-spacing: -0.03rem;
+  min-width: 29rem;
 }
 .card .card-img {
   grid-area: img;
