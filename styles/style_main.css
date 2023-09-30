@@ -95,32 +95,37 @@ nav {
   margin: 0;
 }
 .cards .card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15rem;
+  display: grid;
+  gap: 0 15rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 27.5rem 27.5rem;
+  grid-template-areas:
+    "title img"
+    "article img";
 }
-.cards .card:nth-child(even) {
-  flex-direction: row-reverse;
-}
-.card .card-article {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.card-article {
+  grid-area: article;
   width: 35rem;
-}
-.card .card-title {
-  color: #000;
-  font-size: 4.8rem;
-  letter-spacing: -0.03rem;
-}
-.card-content {
   color: #6b6b6b;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.4rem;
 }
+.cards .card:nth-child(even) {
+  grid-template-areas:
+    "img title"
+    "img article";
+}
+.card .card-title {
+  grid-area: title;
+  color: #000;
+  font-size: 4.8rem;
+  letter-spacing: -0.03rem;
+  position: relative;
+  top: 5rem;
+}
 .card .card-img {
+  grid-area: img;
   border-radius: 15px;
   background: var(--color-gray1);
   display: flex;
