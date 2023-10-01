@@ -39,11 +39,9 @@ function noneWarningStyle(input) {
 function emailValidation() {
   const standard = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-  if (standard.test(emailInput.value)) {
-    noneWarningStyle(emailInput)
-  } else {
-    warningStyle(emailInput, '올바른 이메일 주소가 아닙니다.')
-  }
+  standard.test(emailInput.value)
+    ? noneWarningStyle(emailInput)
+    : warningStyle(emailInput, '올바른 이메일 주소가 아닙니다.')
 }
 
 // 이메일 값이 없을 경우
@@ -55,22 +53,18 @@ function emailCheck() {
 
 // 비밀번호 값이 없을 경우
 function passwordCheck() {
-  if (passwordInput.value.length === 0) {
-    warningStyle(passwordInput, '비밀번호를 입력해주세요.')
-  }
+  passwordInput.value.length === 0
+    ? warningStyle(passwordInput, '비밀번호를 입력해주세요.')
+    : noneWarningStyle(passwordInput)
 }
 
 // 정해진 이메일과 패스워드
 function loginCheck() {
-  if (
-    emailInput.value === VERIFIED_EMAIL &&
-    passwordInput.value === VERIFIED_PASSWORD
-  ) {
-    location.href = '/folder.html'
-  } else {
-    warningStyle(emailInput, '이메일을 확인해주세요.')
-    warningStyle(passwordInput, '비밀번호를 확인해주세요.')
-  }
+  emailInput.value === VERIFIED_EMAIL &&
+  passwordInput.value === VERIFIED_PASSWORD
+    ? (location.href = '/folder.html')
+    : warningStyle(emailInput, '이메일을 확인해주세요.')
+  warningStyle(passwordInput, '비밀번호를 확인해주세요.')
 }
 
 emailInput.addEventListener('focusout', emailValidation)
