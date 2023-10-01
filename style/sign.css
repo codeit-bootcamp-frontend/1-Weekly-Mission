@@ -5,8 +5,8 @@ body {
 }
 
 .container {
-  margin-top: 238px;
-  margin-bottom: 116px;
+  margin-top: 23.8rem;
+  margin-bottom: 11.6rme;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,16 +15,17 @@ body {
 .inner-container {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 3.2rem;
   margin: 0;
-  width: 400px;
+  width: 40rem;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 3rem;
   margin: 0;
+  height: fit-content;
 }
 
 .footer {
@@ -34,18 +35,18 @@ body {
   border-radius: 8px;
   border: 1px solid #ccd5e3;
   background:  #e7effb;
-  padding: 12px 24px;
+  padding: 1.2rem 2.4rem;
 }
 
 .title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1.6rem;
 }
 
 .logo-image {
-  width: 210px;
+  width: 21rem;
 }
 
 .logo-description > a {
@@ -56,11 +57,13 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2.4rem;
 }
 
-.email-form > label, .password-form > label {
-  font-size: 14px;
+.email-form > label, 
+.password-form > label
+.re-password-form > label {
+  font-size: 1.4rem;
   line-height: normal;
   color: #000;
 }
@@ -69,13 +72,26 @@ input:focus {
   border-color: #6d6afe;
 }
 
-.email-form > input, .password-form > input{
-  padding: 18px 15px;
-  margin-top: 12px;
+.email-form > input, 
+.password-form > input,
+.re-password-form > input {
+  padding: 1.8rem 1.5rem;
+  margin-top: 1.2rem;
   color: #373740;
   border-radius: 8px;
   border: 1px solid #ccd5e3;
   background:#fff;
+}
+
+.inputSpan {
+  color: #FF5B56;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.InputEvent{
+  margin-bottom : 0.6rem;
+  border: 1px solid #FF5B56 !important;
 }
 
 .content {
@@ -84,26 +100,26 @@ input:focus {
   display: flex;
 }
 
-.password-form {
+.password-form,
+.re-password-form {
   position: relative;
 }
 
 .eye-button {
   position: absolute;
-  top : 3.5rem;
+  top : 4.5rem;
   right: 1rem;
   width: 1.6rem;
   height: 1.6rem;
 }
 
-
 .login-button {
   display: flex;
-  width: 400px;
-  padding: 16px 20px;
+  width: 40rem;
+  padding: 1.6rem 2rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
   border-radius: 8px;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
   color: #f5f5f5;
@@ -111,7 +127,7 @@ input:focus {
 
 .social-icon {
   display: flex;
-  gap: 16px;
+  gap: 1.6rem;
   background-color: #e7effb;
 }
 
@@ -121,8 +137,8 @@ input:focus {
 
 .icon-circle{
   border-radius: 50%;
-  width: 42px;
-  height: 42px;
+  width: 4.2rem;
+  height: 4.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,7 +153,7 @@ input:focus {
 }
 
 .icon {
-  width: 22px;
+  width: 2.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,21 +163,21 @@ input:focus {
 /* 태블릿 화면에 적용 */
 @media(max-width:1199px){
   .container{
-    margin-top : 200px;
+    margin-top : 20rem;
   }
 }
 
 /* 모바일 화면에 적용 */
 @media(max-width:767px){
   .container{
-    margin-top : 120px;
-    padding-left: 33px;
-    padding-right: 32px;
+    margin-top : 12rem;
+    padding-left: 3.3rem;
+    padding-right: 3.2rem;
   }
   .inner-container {
-    width : 325px;
+    width : 32.5rem;
   }
   .login-button {
-    width: 325px;
+    width: 32.5rem;
   }
 }
