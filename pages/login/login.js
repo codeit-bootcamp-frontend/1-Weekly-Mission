@@ -19,6 +19,7 @@ for(const eye of eyes){
     eye.addEventListener('click', function(e){
         e.target.classList.toggle('open');
 
+        // 이미지의 alt와 input의 type 변경. 이미지의 src는 style.css에서 변경함.
         if(e.target.classList.contains('open')){
             e.target.setAttribute('alt','비밀번호 안보이게하기(현재 보임)');
             e.target.parentElement.querySelector('input').setAttribute('type','text');
