@@ -3,52 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- sns 미리보기 -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://stellar-gecko-8bf6ce.netlify.app/" />
+    <meta property="og:title" content="Linkbrary" />
+    <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta property="og:image" content="img/meta.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://stellar-gecko-8bf6ce.netlify.app/" />
+    <meta property="twitter:title" content="Linkbrary" />
+    <meta property="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta property="twitter:image" content="img/meta.png" />
+
     <title>Linkbrary</title>
     <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
     <header>
         <div class="header-title">
-            <a href="/"><img src="/img/logo.png" alt="로고"></a>
+            <a href="/"><img class="logo" src="/img/logo.png" alt="로고"></a>
             <button class="login" onclick="window.location.href=('/html/signin.html')">로그인</button>
         </div>
     </header>
     <main>
         <div class="card_head">
-            <h1><span>세상의 모든 정보</span>를<br>쉽게 저장하고 관리해 보세요</h1>
+            <h1 class="card_head__title"><span class="card_head--highlight">세상의 모든 정보</span>를<br>쉽게 저장하고<br class="not-pc-br"> 관리해 보세요</h1>
             <button class="addlink" onclick="window.location.href=('/html/signup.html')">링크 추가하기</button>
-            <img src="/img/img25.png" alt="메인페이지">
+            <img class="card_head__img" src="/img/img25.png" alt="메인페이지">
         </div>
         <div class="cards">
             <div class="card">
                 <div class="description">
-                    <h2><span class="span_link">원하는 링크</span>를<br>저장하세요</h2>
-                    <p>나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>사고 싶은 옷, 기억하고 싶은 모든 것을<br>
+                    <h2 class="card__title"><span class="highlight--link">원하는 링크</span>를 <br class="not-mobile-br">저장하세요</h2>
+                    <p class="card__description">나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br class="not-mobile-br"> 사고 싶은 옷, 기억하고 싶은 모든 것을 <br class="not-mobile-br">
                     한 공간에 저장하세요.</p>
                 </div>
-                <img src="/img/img1.png" alt="link img">
+                <img class="card__img" src="/img/img1.png" alt="link img">
             </div>
             <div class="card">
-                <img src="/img/img2.png" alt="link img2">
+                <img class="card__img" src="/img/img2.png" alt="link img2">
                 <div class="description">
-                    <h2>링크를 폴더로<br><span class="span_manage">관리</span>하세요</h2>
-                    <p>나만의 폴더를 무제한으로 만들고<br> 다양하게 활용할 수 있습니다.</p>
+                    <h2 class="card__title">링크를 폴더로 <br class="not-mobile-br"><span class="highlight--manage">관리</span>하세요</h2>
+                    <p class="card__description">나만의 폴더를 무제한으로 만들고<br class="not-mobile-br"> 다양하게 활용할 수 있습니다.</p>
                 </div>
             </div>
             <div class="card">
                 <div class="description">
-                    <h2>저장한 링크를<br><span class="span_share">공유</span>해보세요</h2>
-                    <p>여러 링크를 폴더에 담고 공유할 수 있습니다.<br> 가족, 친구, 동료들에게 쉽고 빠르게 링크를<br> 
-                        공유해 보세요.</p>
+                    <h2 class="card__title">저장한 링크를 <br class="not-mobile-br"><span class="highlight--share">공유</span>해보세요</h2>
+                    <p class="card__description">여러 링크를 폴더에 담고 공유할 수 있습니다.<br class="not-mobile-br"> 가족, 친구, 동료들에게 쉽고 빠르게 링크를<br class="not-mobile-br"> 공유해 보세요.</p>
                 </div>
-                <img src="/img/img3.png" alt="link img3">
+                <img class="card__img" src="/img/img3.png" alt="link img3">
             </div>
             <div class="card">
-                <img src="/img/img4.png" alt="link img4">
+                <img class="card__img" src="/img/img4.png" alt="link img4">
                 <div class="description">
-                    <h2>저장한 링크를<br><span class="span_search">검색</span>해 보세요</h2>
-                    <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+                    <h2 class="card__title">저장한 링크를 <br class="not-mobile-br"><span class="highlight--search">검색</span>해 보세요</h2>
+                    <p class="card__description">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
                 </div>
             </div>
         </div>
@@ -58,33 +73,22 @@
             ©codeit - 2023
         </div>
         <div class="extra_sites">
-            <a href="/html/privacy.html">Privacy Policy</a>
-            <a href="/html/faq.html">FAQ</a>
+            <a class="extra_sites__link" href="/html/privacy.html">Privacy Policy</a>
+            <a class="extra_sites__link" href="/html/faq.html">FAQ</a>
         </div>
         <div class="icons"> 
-            <a href="https://ko-kr.facebook.com/" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M1 9.90279C1 14.3773 4.24975 18.098 8.5 18.8525V12.3523H6.25V9.85254H8.5V7.85229C8.5 5.60229 9.94975 4.35279 12.0002 4.35279C12.6497 4.35279 13.3503 4.45254 13.9998 4.55229V6.85254H12.85C11.7498 6.85254 11.5 7.40229 11.5 8.10279V9.85254H13.9L13.5002 12.3523H11.5V18.8525C15.7502 18.098 19 14.378 19 9.90279C19 4.92504 14.95 0.852539 10 0.852539C5.05 0.852539 1 4.92504 1 9.90279Z" fill="white"/>
-            </svg></a>
-            <a href="https://twitter.com/" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M19.7029 4.11366C19.0071 4.42199 18.2596 4.63033 17.4737 4.72449C18.2846 4.23932 18.8912 3.47572 19.1804 2.57616C18.4186 3.02865 17.5849 3.34716 16.7154 3.51783C16.1307 2.89355 15.3563 2.47977 14.5124 2.34072C13.6684 2.20168 12.8022 2.34515 12.0481 2.74887C11.2941 3.15259 10.6944 3.79396 10.3422 4.57341C9.99003 5.35287 9.90503 6.22679 10.1004 7.05949C8.55682 6.98199 7.04677 6.58079 5.66827 5.88192C4.28977 5.18305 3.07362 4.20213 2.09875 3.00283C1.76542 3.57783 1.57375 4.24449 1.57375 4.95449C1.57338 5.59366 1.73078 6.22303 2.03198 6.78677C2.33319 7.35051 2.76888 7.83119 3.30042 8.18616C2.68398 8.16655 2.08114 7.99998 1.54208 7.70033V7.75033C1.54202 8.64678 1.85211 9.51564 2.41974 10.2095C2.98736 10.9033 3.77756 11.3794 4.65625 11.557C4.0844 11.7118 3.48486 11.7346 2.90292 11.6237C3.15083 12.395 3.63375 13.0695 4.28406 13.5528C4.93437 14.036 5.71951 14.3038 6.52958 14.3187C5.15444 15.3982 3.45616 15.9837 1.70792 15.9812C1.39823 15.9812 1.08881 15.9632 0.78125 15.927C2.55581 17.068 4.62153 17.6735 6.73125 17.6712C13.8729 17.6712 17.7771 11.7562 17.7771 6.62616C17.7771 6.45949 17.7729 6.29116 17.7654 6.12449C18.5248 5.57531 19.1803 4.89524 19.7013 4.11616L19.7029 4.11366Z" fill="white"/>
-            </svg></a>
-            <a href="https://www.youtube.com/" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <g clip-path="url(#clip0_800_647)">
-                  <path d="M19.5829 5.4224C19.4696 5.01843 19.249 4.65269 18.9445 4.36407C18.6314 4.06657 18.2477 3.85376 17.8295 3.74573C16.2645 3.33323 9.99454 3.33323 9.99454 3.33323C7.38065 3.30349 4.7674 3.4343 2.16954 3.7249C1.75136 3.84091 1.36834 4.05847 1.05454 4.35823C0.746204 4.6549 0.522871 5.02073 0.406204 5.42157C0.125949 6.93135 -0.0102189 8.46435 -0.000462243 9.9999C-0.0104622 11.5341 0.125371 13.0666 0.406204 14.5782C0.520371 14.9774 0.742871 15.3416 1.05204 15.6357C1.3612 15.9299 1.7462 16.1424 2.16954 16.2549C3.75537 16.6666 9.99454 16.6666 9.99454 16.6666C12.6118 16.6963 15.2283 16.5655 17.8295 16.2749C18.2477 16.1669 18.6314 15.9541 18.9445 15.6566C19.2489 15.368 19.4693 15.0022 19.582 14.5982C19.8696 13.089 20.0094 11.5554 19.9995 10.0191C20.0212 8.47624 19.8815 6.93537 19.5829 5.42157V5.4224ZM8.0012 12.8532V7.1474L13.2179 10.0007L8.0012 12.8532Z" fill="white"/>
-                </g>
-                <defs>
-                  <clipPath id="clip0_800_647">
-                    <rect width="20" height="20" fill="white"/>
-                  </clipPath>
-                </defs>
-            </svg></a>
-            <a href="https://www.instagram.com/" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M9.49787 7.518C7.93707 7.518 6.66333 8.79173 6.66333 10.3525C6.66333 11.9133 7.93707 13.1871 9.49787 13.1871C11.0587 13.1871 12.3324 11.9133 12.3324 10.3525C12.3324 8.79173 11.0587 7.518 9.49787 7.518ZM17.9994 10.3525C17.9994 9.17875 18.01 8.01558 17.9441 6.84392C17.8782 5.483 17.5677 4.27518 16.5725 3.28001C15.5752 2.28271 14.3695 1.97438 13.0086 1.90846C11.8348 1.84254 10.6717 1.85317 9.5 1.85317C8.32621 1.85317 7.16305 1.84254 5.99138 1.90846C4.63046 1.97438 3.42264 2.28484 2.42747 3.28001C1.43017 4.27731 1.12184 5.483 1.05592 6.84392C0.99 8.01771 1.00063 9.18087 1.00063 10.3525C1.00063 11.5242 0.99 12.6895 1.05592 13.8612C1.12184 15.2221 1.4323 16.4299 2.42747 17.4251C3.42477 18.4224 4.63046 18.7307 5.99138 18.7966C7.16517 18.8625 8.32833 18.8519 9.5 18.8519C10.6738 18.8519 11.837 18.8625 13.0086 18.7966C14.3695 18.7307 15.5774 18.4202 16.5725 17.4251C17.5698 16.4278 17.8782 15.2221 17.9441 13.8612C18.0121 12.6895 17.9994 11.5263 17.9994 10.3525ZM9.49787 14.7139C7.08437 14.7139 5.13655 12.766 5.13655 10.3525C5.13655 7.93903 7.08437 5.99122 9.49787 5.99122C11.9114 5.99122 13.8592 7.93903 13.8592 10.3525C13.8592 12.766 11.9114 14.7139 9.49787 14.7139ZM14.0378 6.83116C13.4743 6.83116 13.0193 6.3761 13.0193 5.8126C13.0193 5.24909 13.4743 4.79403 14.0378 4.79403C14.6013 4.79403 15.0564 5.24909 15.0564 5.8126C15.0565 5.9464 15.0303 6.07893 14.9792 6.20258C14.9281 6.32624 14.853 6.43859 14.7584 6.5332C14.6638 6.62782 14.5515 6.70284 14.4278 6.75397C14.3041 6.8051 14.1716 6.83133 14.0378 6.83116Z" fill="white"/>
-            </svg></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/facebook.svg" alt="facebook 홈페이지로 연결된 facebook 로고" />
+              </a>
+              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/twitter.svg" alt="twitter 홈페이지로 연결된 twitter 로고" />
+              </a>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/youtube.svg" alt="youtube 홈페이지로 연결된 youtube 로고" />
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/instagram.svg" alt="instagram 홈페이지로 연결된 instagram 로고" />
+              </a>
         </div>
     </footer>
     <script src="/script/index.js"></script>

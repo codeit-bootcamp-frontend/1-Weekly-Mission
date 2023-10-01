@@ -1,28 +1,5 @@
-*{
-    box-sizing: content-box;
-}
-/* 심화 : color 변수로 지정하기 */
-:root{
-    --linkbrary-bg : #f0f6ff;
-    --linkbrary-primary-color :#6D6AFE;
-    --gra-purpleblue-to-skyblue:linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-    --grey-light: #F5F5F5;
-    --linkbrary-gray-20: #CCD5E3;
-    --linkbrary-gray-10: #E7EFFB;
-    --linkbrary-gray-100: #373740;
-}
-html{
-    height: 100%;
-    font-size: 62.5%;
-    /*10px*/
-}
-
 body{
-    display: flex;
-    background-color:var(--linkbrary-bg) ;
-    min-height: 100%;
-    flex-direction: column;
-    margin-top : 10%;
+    margin-top: 8%;
 }
 .wrap{
     display: flex;
@@ -33,6 +10,12 @@ body{
     gap: 3rem;
     font-size: 1.6rem;
 
+}
+/* mobile */
+@media(max-width:76.7rem){
+    .wrap{
+        padding: 3.2rem;
+    }
 }
 
 header{
@@ -45,37 +28,51 @@ header{
 
 .header__logo-img{
     width: 21rem;
-    height: 4rem;
+    height: 4rem;;
 }
 header p{
     margin: 0;
     font-weight: 400;
 }
-.header__signin-link{
+.header__sign-link{
     margin-left: 0.8rem;
     font-weight: 600;
 }
-
-.form__signup{
-    display: flex;
+.container{
     width: 40rem;
+}
+/* mobile */
+@media(max-width:76.7rem){
+    .container{
+        width: 100%;
+        padding:3.2rem ;
+        max-width: 40rem;
+    }
+}
+.form__sign{
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
+    gap: 2.4rem;
 }
-.form__signup label{
+.form__wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.form__sign label{
     font-size: 1.4rem;
 }
-.form__signup input{
-    margin: 1.2rem 0 2.4rem;
+.form__sign input{
     padding: 1.8rem 1.5rem;
     border: 0.1rem solid var(--linkbrary-gray-20);
     border-radius: 0.8rem;
 }
-.form__signup input:focus{
-    border: var(--linkbrary-primary-color);
+.form__sign input:focus-visible{
+    outline-color: var(--linkbrary-primary-color);
 }
-.btn-signup{
+.btn-sign{
     padding: 1.6rem 2rem;
     border:none;
     background : var(--gra-purpleblue-to-skyblue);
@@ -84,7 +81,7 @@ header p{
     font-size: 1.8rem;
 }
 
-.social-signup{
+.social-sign{
     display: flex;
     padding: 1.2rem 2.4rem;
     border: 0.1rem solid var(--linkbrary-gray-20, #CCD5E3);
@@ -99,22 +96,30 @@ header p{
 
 }
 
-.social-signup-icons{
+.social-sign-icons{
     display: flex;
     gap: 1.6rem;
 
 }
 
-.social-signup-icons img{
+.social-sign-icons img{
     width: 4.4rem;
     height: 4.4rem;
 }
 
-.password-eye{
+.form__input-wrapper{
+    display: flex;
     position: relative;
-    top: -6rem;
-    left: 36.5rem;
-    width:1.6rem;
-    height: 1.6rem;
+    flex-direction: column;
+}
+.form__input-wrapper input{
+    padding-right: 1.6rem;
+} 
+
+.password-eye{
+    position: absolute;
+    right: 1.6rem; 
+    bottom:50%;
+    transform: translateY(50%);
     fill: white;
 }

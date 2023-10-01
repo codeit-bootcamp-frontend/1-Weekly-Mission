@@ -1,0 +1,25 @@
+*{
+    box-sizing: content-box;
+}
+/* 심화 : color 변수로 지정하기 */
+:root{
+    --linkbrary-bg : #f0f6ff;
+    --linkbrary-primary-color :#6D6AFE;
+    --gra-purpleblue-to-skyblue:linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+    --grey-light: #F5F5F5;
+    --linkbrary-gray-20: #CCD5E3;
+    --linkbrary-gray-10: #E7EFFB;
+    --linkbrary-gray-100: #373740;
+}
+html{
+    height: 100%;
+    font-size: 62.5%;
+    /*10px*/
+}
+
+body{
+    display: flex;
+    background-color:var(--linkbrary-bg) ;
+    min-height: 100%;
+    flex-direction: column;
+}
