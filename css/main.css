@@ -279,7 +279,6 @@ button {
 }
 .form__input-box {
   width: 100%;
-  height: auto;
   margin-top: 1.2rem;
   padding: 1.8rem 1.5rem;
   outline: none;
@@ -562,8 +561,7 @@ button {
   align-items: center;
   gap: 3rem;
   width: 100%;
-  max-width: 40rem;
-  height: auto;
+  max-width: 46.4rem;
   padding: 0 3.2rem;
 }
 .auth__logo img {
@@ -582,6 +580,7 @@ button {
   line-height: 1.5;
 }
 .auth__redirect-link {
+  font-size: 1.6rem;
   font-weight: 600;
   line-height: normal;
   text-decoration: underline;
