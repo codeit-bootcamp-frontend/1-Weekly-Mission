@@ -1,24 +1,27 @@
 .auth {
-	background-color: var(--linkbrary-bg, #f0f6ff);
 	display: flex;
-	align-items: center;
+	padding: 14.875rem 2rem 7.25rem;
+	background-color: var(--linkbrary-zircon);
 	justify-content: center;
-	height: 100vh;
-	padding: 0 2rem;
 }
-.auth__layout {
-	padding: 14.875rem 0 15.75rem;
-	flex: 0 1 25rem;
+@media screen and (max-width: 74.9375rem) {
+	.auth {
+		padding: 12.5rem 2rem 11.0625rem;
+	}
 }
-.auth__layout--sign-up {
-	padding-bottom: 7.25rem;
+@media screen and (max-width: 47.9375rem) {
+	.auth {
+		padding: 7.5rem 2rem 7.4375rem;
+	}
 }
+/* 아이폰 se */
+/* @media screen and (max-width: 23.4375rem) {.auth {padding: 1rem 2rem; } }*/
+
 .auth__inner {
-	width: 100%;
 	display: flex;
-	align-items: center;
 	flex-direction: column;
 	gap: 1.875rem;
+	flex: 0 1 25rem;
 }
 
 /* 헤더 */
@@ -29,23 +32,20 @@
 	gap: 1.125rem;
 }
 .auth__logo-link {
-	width: 13.1614rem;
 	height: 2.375rem;
 }
 .auth__logo-image {
-	width: 100%;
 	height: 100%;
 }
 .auth__header-text {
-	color: var(--black, #000);
+	color: #000;
 	font-family: Pretendard;
-
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5rem;
 }
 .auth__header-link {
-	color: var(--linkbrary-primary-color, #6d6afe);
+	color: var(--linkbrary-primary-color);
 	text-decoration: underline;
 	font-family: Pretendard;
 	font-size: 1rem;
@@ -60,43 +60,49 @@
 	width: 100%;
 	flex-direction: column;
 	gap: 1.5rem;
-	align-items: center;
 }
 .form__field {
 	display: flex;
-	width: 100%;
 	flex-direction: column;
 	gap: 0.75rem;
 }
+.form__field--password-check {
+	gap: 0;
+}
 .form__label {
-	color: var(--black, #000);
+	color: #000;
 	font-family: Pretendard;
 	font-size: 0.875rem;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
 }
+.form__label--password-check {
+	margin-bottom: 0.75rem;
+}
+.form__field-inner {
+	position: relative;
+}
 .form__input {
+	width: 100%;
 	height: 3.875rem;
 	padding: 1.125rem 0.9375rem;
-	border: 0.0625rem solid var(--linkbrary-gray-20, #ccd5e3);
-	background: var(--linkbrary-white, #fff);
+	border: 0.0625rem solid var(--linkbrary-gray-20);
+	background: var(--linkbrary-white);
 	border-radius: 0.5rem;
 }
 .form__input:focus {
-	outline-color: var(--linkbrary-primary-color, #6d6afe);
+	outline-color: var(--linkbrary-primary-color);
+}
+.form__eye-icon {
+	position: absolute;
+	right: 0.9375rem;
+	bottom: 50%;
+	transform: translateY(50%);
+	cursor: pointer;
 }
 .form__input--password {
-	background-image: url("../images/eye-off.svg");
-	background-repeat: no-repeat;
-	background-size: 1rem 1rem;
-	background-position: calc(100% - 1.125rem) center;
-}
-.form__field--password-check {
-	gap: 0;
-}
-.form__label--password-check {
-	margin-bottom: 0.75rem;
+	padding-right: 2.125rem;
 }
 .form__password-warning {
 	color: var(--linkbrary-red, #ff5b56);
@@ -105,43 +111,45 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	padding-top: 0.375rem;
+	margin-top: 0.375rem;
 }
 
 /* 버튼 */
 .auth__button {
 	width: 100%;
-	padding: 1rem 1.25rem;
 	height: 3.375rem;
+	padding: 1rem 1.25rem;
 	font-size: 1.125rem;
 }
 
 /* 푸터 */
 .auth__footer {
 	display: flex;
-	width: 100%;
+	flex-direction: column;
+	gap: 2rem;
+}
+.auth__social {
+	display: flex;
 	padding: 0.75rem 1.5rem;
-	border: 0.0625rem solid var(--linkbrary-gray-20, #ccd5e3);
-	background: var(--linkbrary-gray-10, #e7effb);
+	border: 0.0625rem solid var(--linkbrary-gray-20);
+	background: var(--linkbrary-gray-10);
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 0.5rem;
 	font-size: 0.875rem;
 	font-weight: 400;
 	font-family: Pretendard;
-	margin-top: 0.125rem;
 }
 .auth__social-text {
-	color: var(--linkbrary-gray-100, #373740);
+	color: var(--linkbrary-gray-100);
 	font-family: Pretendard;
 	font-size: 0.875rem;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
 }
-.auth__social {
+.auth__social__inner {
 	display: flex;
-	align-items: flex-start;
 	gap: 1rem;
 }
 .auth__social-link {
@@ -152,5 +160,4 @@
 	display: inline-block;
 	position: relative;
 	width: 100%;
-	height: 100%;
 }

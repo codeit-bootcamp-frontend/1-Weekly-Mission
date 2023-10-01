@@ -4,7 +4,7 @@
 	position: sticky;
 	top: 0;
 	padding: 1.25rem 0;
-	background: var(--linkbrary-zircon, #f0f6ff);
+	background: var(--linkbrary-zircon);
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
@@ -38,7 +38,7 @@
 	flex-grow: 1;
 	max-width: 12.5rem;
 }
-@media (max-width: 74.9375rem) {
+@media screen and (max-width: 74.9375rem) {
 	.header::before,
 	.header::after {
 		flex: 1 0 2rem;
@@ -62,38 +62,73 @@
 	}
 }
 
+/* 텍스트 gradient */
+.highlight {
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.highlight--intro {
+	background-image: linear-gradient(
+		91deg,
+		var(--linkbrary-primary-color) 17.28%,
+		#ff9f9f 102.98%
+	);
+}
+.highlight--first {
+	background-image: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+}
+.highlight--second {
+	background-image: linear-gradient(277deg, #6fbaff -7.78%, #ffd88b 93.66%);
+}
+.highlight--third {
+	background-image: linear-gradient(
+		99deg,
+		#6d7ccd 25.76%,
+		rgba(82, 136, 133, 0.22) 135.69%
+	);
+}
+.highlight--fourth {
+	background-image: linear-gradient(
+		271deg,
+		#fe578f -185.84%,
+		#68e8f9 107.18%
+	);
+}
+
 /* 인트로 */
 .background-skyblue {
-	background-color: var(--linkbrary-zircon, #f0f6ff);
+	background-color: var(--linkbrary-zircon);
 }
 .intro {
 	display: flex;
-	padding: 4.375rem 22.5rem 0rem;
+	padding: 4.375rem 0 0;
 	flex-direction: column;
 	align-items: center;
 	gap: 2.5rem;
 }
-@media (max-width: 74.9375rem) {
+@media screen and (max-width: 74.9375rem) {
 	.intro {
 		padding: 2.4375rem 15.625rem 0rem;
 	}
 }
-@media (max-width: 47.9375rem) {
+@media screen and (max-width: 47.9375rem) {
 	.intro {
 		padding: 1.75rem 2rem 0;
 		gap: 1.5rem;
 	}
 }
+
 .intro__title {
-	white-space: nowrap;
 	color: #000;
 	text-align: center;
+	white-space: nowrap;
 	font-family: Pretendard;
 	font-size: 4rem;
 	font-weight: 700;
 	line-height: 5rem; /* 125% */
 }
-@media (max-width: 47.9375rem) {
+@media screen and (max-width: 47.9375rem) {
 	.intro__title {
 		font-size: 2rem;
 		line-height: 2.625rem;
@@ -102,35 +137,44 @@
 
 .intro__image {
 	width: 75rem;
-	height: 36.875rem;
 }
-@media (max-width: 74.9375rem) {
+@media screen and (max-width: 74.9375rem) {
 	.intro__image {
 		width: 43.625rem;
-		height: 21.4375rem;
-		flex-shrink: 0;
 	}
 }
-@media (max-width: 47.9375rem) {
+@media screen and (max-width: 47.9375rem) {
 	.intro__image {
 		width: 100%;
 		flex: 1 0 10rem;
 	}
 }
+
 .background-white {
-	background-color: var(--linkbrary-white, #f0f6ff);
+	padding: 4.375rem 0 7.5rem;
+	background-color: var(--linkbrary-white);
 }
+@media screen and (max-width: 74.9375rem) {
+	.background-white {
+		padding: 1.875rem 0 7.5rem;
+	}
+}
+@media screen and (max-width: 47.9375rem) {
+	.background-white {
+		padding: 2.5rem 0 2.5rem;
+	}
+}
+
 .article {
 	display: grid;
-	padding: 3.125rem 28.8125rem;
+	margin: 0 auto;
+	padding: 3.125rem 0;
 	gap: 9.8125rem;
 	grid-template-columns: 18.1875rem 34.375rem;
 	justify-content: center;
 	align-items: center;
-	max-width: 120rem;
-	margin: 0 auto;
 }
-@media (max-width: 74.9375rem) {
+@media screen and (max-width: 74.9375rem) {
 	.article {
 		padding: 3.125rem 15.625rem 3.125rem;
 		gap: 3.1875rem;
@@ -139,8 +183,8 @@
 }
 @media screen and (max-width: 47.9375rem) {
 	.article {
-		padding: 2.5rem 2rem;
 		display: grid;
+		padding: 2.5rem 2rem;
 		grid-template-areas:
 			"article__title"
 			"article__image"
@@ -155,7 +199,7 @@
 .article--even {
 	grid-template-columns: 34.375rem 18.1875rem;
 }
-@media (max-width: 74.9375rem) {
+@media screen and (max-width: 74.9375rem) {
 	.article--even {
 		grid-template-columns: 24.0625rem 16.375rem;
 	}
@@ -166,26 +210,18 @@
 	}
 }
 .article__image {
-	width: 34.375rem;
-	height: 28.125rem;
+	width: 100%;
 }
-@media (max-width: 74.9375rem) {
-	.article__image {
-		width: 24.0625rem;
-		height: 19.6875rem;
-	}
-}
+
 @media screen and (max-width: 47.9375rem) {
 	.article__image {
-		width: 100%;
-		height: auto;
 		grid-area: article__image;
 	}
 }
+
 .article__text {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
 	gap: 0.625rem;
 }
 @media screen and (max-width: 47.9375rem) {
@@ -193,6 +229,7 @@
 		display: contents;
 	}
 }
+
 .article__title {
 	color: #000;
 	letter-spacing: -0.0187rem;
@@ -207,6 +244,7 @@
 		grid-area: article__title;
 	}
 }
+
 .article__description {
 	color: #6b6b6b;
 	font-family: Pretendard;
@@ -222,55 +260,25 @@
 	}
 }
 
-/* 첫번째 아티클 */
-.article--first {
-	padding-top: 7.5rem;
-}
-@media (max-width: 74.9375rem) {
-	.article--first {
-		padding-top: 5rem;
-	}
-}
-@media (max-width: 47.9375rem) {
-	.article--first {
-		padding-bottom: 2.5rem;
-	}
-}
-
-/* 마지막 아티클 */
-.article--last {
-	padding-bottom: 10.625rem;
-}
-@media (max-width: 74.9375rem) {
-	.article--last {
-		padding-bottom: 13.75rem;
-	}
-}
-@media (max-width: 47.9375rem) {
-	.article--last {
-		padding-bottom: 5rem;
-	}
-}
-
 /* 푸터 */
 .footer {
 	display: flex;
 	padding: 2rem 6.5rem 4rem;
-	background: var(--the-julge-black, #111322);
+	background: var(--the-julge-black);
 	justify-content: space-between;
-	align-items: flex-start;
 }
-@media (max-width: 47.9375rem) {
+@media screen and (max-width: 47.9375rem) {
 	.footer {
 		display: grid;
+		height: 10rem;
 		padding: 2rem 2rem;
 		grid-template-areas:
 			"footer__support footer__social"
 			"footer__company .";
 		row-gap: 3.75rem;
-		height: 10rem;
 	}
 }
+
 .footer__company {
 	color: #676767;
 	text-align: center;
@@ -279,22 +287,23 @@
 	font-weight: 400;
 	min-width: 6.5625rem;
 }
-@media (max-width: 47.9375rem) {
+@media screen and (max-width: 47.9375rem) {
 	.footer__company {
 		text-align: left;
 		grid-area: footer__company;
 	}
 }
+
 .footer__support {
 	display: flex;
-	align-items: flex-start;
 	gap: 1.875rem;
 }
-@media (max-width: 47.9375rem) {
+@media screen and (max-width: 47.9375rem) {
 	.footer__support {
 		grid-area: footer__support;
 	}
 }
+
 .footer__support-link {
 	color: #cfcfcf;
 	font-family: Arial;
@@ -303,11 +312,10 @@
 }
 .footer__social {
 	display: flex;
-	align-items: flex-start;
 	gap: 0.75rem;
 	min-width: 7.25rem;
 }
-@media (max-width: 47.9375rem) {
+@media screen and (max-width: 47.9375rem) {
 	.footer__social {
 		grid-area: footer__social;
 	}

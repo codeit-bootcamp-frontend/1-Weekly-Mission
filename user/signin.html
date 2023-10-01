@@ -14,35 +14,40 @@
 </head>
 
 <body class="auth">
-    <div class="auth__layout">
-        <div class="auth__inner">
-            <header class="auth__header">
-                <a class="auth__logo-link" href="../"><img class="auth__logo-image" src="../images/logo.svg" alt="Linkbrary"></a>
-                <p class="auth__header-text">회원이 아니신가요? <a class="auth__header-link" href="./signup.html">회원 가입하기</a></p>
-            </header>
+    <div class="auth__inner">
+        <header class="auth__header">
+            <a class="auth__logo-link" href="../"><img class="auth__logo-image" src="../images/logo.svg" alt="Linkbrary"></a>
+            <p class="auth__header-text">회원이 아니신가요? <a class="auth__header-link" href="./signup.html">회원 가입하기</a></p>
+        </header>
 
-            <form class="form auth__form">
-                <div class="form__field">
-                    <label for="user-email" class="form__label">이메일</label>
-                    <input type="email" id="user-email" class="form__input">
+        <form class="form auth__form">
+            <div class="form__field">
+                <label for="user-email" class="form__label">이메일</label>
+                <div class="form__field-inner">
+                    <input type="email" name="email" id="user-email" class="form__input">
                 </div>
-                <div class="form__field">
-                    <label for="user-password" class="form__label">비밀번호</label>
-                    <input type="password" id="user-password" class="form__input form__input--password">
+            </div>
+            <div class="form__field">
+                <label for="user-password" class="form__label">비밀번호</label>
+                <div class="form__field-inner">
+                    <input type="password" name="password" id="user-password" class="form__input form__input--password">
+                    <img src="../images/eye-off.svg" class="form__eye-icon" alt="비밀번호 보기">
                 </div>
-            </form>
 
+            </div>
+        </form>
+
+        <footer class="auth__footer">
             <button class="button auth__button">로그인</button>
-
-            <footer class="auth__footer">
+            <div class="auth__social">
                 <p class="auth__social-text">소셜 로그인</p>
-                <div class="auth__social">
+                <div class="auth__social__inner">
                     <a href="https://www.google.com/" class="auth__social-link"><img class="auth__social-icon" src="../images/google-login-icon.png" alt="구글로 로그인"></a>
                     <a href="https://www.kakaocorp.com/page/" class="auth__social-link"><img class="auth__social-icon" src="../images/kakao-login-icon.png" alt="카카오로 로그인"></a>
                 </div>
-            </footer>
+            </div>
+        </footer>
 
-        </div>
     </div>
 </body>
 
