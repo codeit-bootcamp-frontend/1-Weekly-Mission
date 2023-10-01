@@ -5,13 +5,17 @@
   margin: 0;
 }
 
-body {
-  font-family:"pretendard","Arial", sans-serif;
-  word-break: keep-all;
-  word-wrap: break;
+html {
+  font-size: 62.5%;
 }
 
-.main {
+body {
+  word-break: keep-all;
+  word-wrap: break;
+  font-family:"pretendard","Arial", sans-serif;
+}
+
+header {
   background-color: #F0F6FF;
 }
 
@@ -30,7 +34,7 @@ nav {
   z-index: 1;
 }
 
-.top_header_left {
+.nav_wrapper_left {
   flex: 1 0 0;
   min-width: 200px;
 }
@@ -39,16 +43,17 @@ nav {
   height: 24px;
 }
 
-.top_header_right > #login_button {
+.nav_wrapper_right > #login_button {
   padding: 16px 40px;
   border-radius: 8px;
   color: #ffffff;
   text-decoration: none;
   background-image: linear-gradient(45deg, rgba(109, 106, 254, 1), rgba(106, 227, 254, 1));
   font-weight: 400;
+  font-size: 1.8rem
 }
 
-header {
+.keyvisual {
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
@@ -60,44 +65,43 @@ header {
 }
 
 
-.header_wrapper > h1 {
+.keyvisual_container > h1 {
   width: 708px;
-  font-size: 64px;
+  font-size: 6.4rem;
   font-weight: 700;
   text-align: center;
   margin: 0 auto;
   line-height: 80px;
 }
 
-.header_wrapper .accent  {
+.keyvisual_container .accent  {
   background-image: linear-gradient(91deg, rgba(109, 106, 254, 1), rgba(255, 159, 159, 1));
   background-clip:text;
   -webkit-background-clip:text;
   color: transparent;
 }
 
-.main_bg_image {
-  background-image: url(./images/_img.png.png);
-  background-size: cover;
+.keyvisual_bg_img {
+  background-image: url(/Images/keyvisual_image.png);
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   width: 1200px;
   height: 500px;
+  padding: 29px 23px 0;
 }
 
-#main_image {
-  width: 100%;
-  height: auto;
-  flex-shrink: 0;
-  display: block;
+.keyvisual_image_mobile {
+  display: none;
 }
 
-.header_wrapper > a {
+.keyvisual_container > a {
   width: 350px;
   text-align: center;
   padding: 16px 20px;
   margin: 40px auto;
   display: block;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 400;
   color: #ffffff;
   text-decoration: 0;
@@ -110,14 +114,14 @@ a:hover {
   cursor: pointer;
 }
 
-section {
+main {
   background-color: #ffffff;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.wrapper_outer {
+.feature_wrapper_outer {
   width: 998px;
   height: 450px;
   margin: 50px auto;
@@ -129,19 +133,19 @@ section {
   gap: 10px 157px;
 }
 
-.wrapper_outer.top {
+.feature_wrapper_outer.top {
   margin-top: 120px;
 }
 
-.wrapper_outer.reverse {
+.feature_wrapper_outer.reverse {
   grid-template-areas: 
   "inner_image title_area"
   "inner_image subtitle_area";
 }
 
-.title {
+.feature_title {
   width: 259px;
-  font-size: 48px;
+  font-size: 4.8rem;
   text-wrap: balance;
   font-weight: 700;
   letter-spacing: -0.3px;
@@ -150,16 +154,16 @@ section {
   grid-area: title_area;
 }
 
-.subtitle {
+.feature_subtitle {
   width: 257px;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5em;
   color: #6b6b6b;
   grid-area: subtitle_area;
 }
 
-.inner_image {
+.feature_image {
   grid-area: inner_image;
 }
 
@@ -200,7 +204,7 @@ footer {
   margin-top: 120px;
 }
 
-.wrapper_footer {
+.footer_wrapper {
   width: 100%;
   max-width: 1920px;
   padding: 0 104px;
@@ -209,14 +213,14 @@ footer {
   justify-content: space-between;
 }
 
-.copyright {
+.footer_copyright {
   color: #676767;
-  font-size: 1rem;
+  font-size: 1.6rem;
   flex: 1 0 auto;
 }
 
-.policy_wrapper {
-  font-size: 1rem;
+.footer_direct_link_wrapper {
+  font-size: 1.6rem;
   color: #cfcfcf;
   display: flex;
   gap: 30px;
@@ -224,7 +228,7 @@ footer {
 }
 
 
-.policy_text {
+.direct_link {
   color: #cfcfcf;
 }
 
@@ -232,10 +236,11 @@ a {
   text-decoration: none;
 }
 
-.icons {
+.footer_icons {
   display: flex;
   align-items: center;
   gap: 12px;
+  font-size: 2rem;
 }
 
 /* 반응형 Tablet 사이즈 */
@@ -244,7 +249,7 @@ a {
     padding: 40px 32px;
   }
 
-  header {
+  .keyvisual {
     max-width: 698px;
     margin: 0 auto;
     padding-top: 124px;
@@ -254,20 +259,13 @@ a {
     text-align: center;
   }
 
-  .main_bg_image {
+  .keyvisual_bg_img {
     width: 698px;
     height: 343px;
+    padding: 29px 23px 0;
   }
 
-  #main_image {
-    width: 100%;
-    flex-shrink: 0;
-    padding : 29px 23px 0;
-  }
-
-
-/* 이미지 크기 및 텍스트 크기를 어떻게 해야 자동적으로 늘어났다 줄게 할 수 있는지 모르겠습니다. ㅠㅠ */
-  .wrapper_outer {
+  .feature_wrapper_outer {
     margin: 50px auto;
     gap: 10px 51px;
     width: 698px;
@@ -276,22 +274,22 @@ a {
     grid-template-rows: auto;
   }
 
-  .wrapper_outer.reverse {
+  .feature_wrapper_outer.reverse {
     grid-template-columns: 384px 262px;
     grid-template-rows: auto;
   }
 
-  .inner_image {
+  .feature_image {
     height: 315px;
     width: auto;
 
   }
   
-  .title {
+  .feature_title {
     width: 262px;
   }
   
-  .subtitle {
+  .feature_subtitle {
     width: 262px;
     align-self: start;
   }
@@ -306,13 +304,13 @@ a {
     position: fixed;
   }
 
-  .top_header_left {
+  .nav_wrapper_left {
     min-width: 100px;
     flex: 1 0 0;
   }
 
 
-  .top_header_left > a {
+  .nav_wrapper_left > a {
     height: 16px;
   }
   
@@ -321,32 +319,32 @@ a {
     height: 16px;
   }
   
-  .top_header_right > #login_button {
+  .nav_wrapper_right > #login_button {
     padding: 10px 16px;
     font-weight: 400;
-    font-size: 0.875rem;
+    font-size: 1.4rem;
   }
 
 
-  header {
+  .keyvisual {
     margin: 0 auto;
-    padding: 91px 2rem 0;
+    padding: 91px 32px 0;
     width: 100%;
   }
 
-  .header_wrapper > h1 {
+  .keyvisual_container > h1 {
     width: 236px;
-    font-size: 2rem;
+    font-size: 3.2rem;
     font-weight: 700;
     line-height: 42px;
   }
   
-  .header_wrapper > a {
+  .keyvisual_container > a {
     width: 200px;
     padding: 10px 16px;
     margin: 24px auto;
     display: block;
-    font-size: 0.875rem;
+    font-size: 1.4rem;
     font-weight: 400;
     color: #ffffff;
     text-decoration: 0;
@@ -354,11 +352,11 @@ a {
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
   }
 
-  section {
+  main {
     padding: 0px 32px;
   }
 
-  .wrapper_outer {
+  .feature_wrapper_outer {
     width: 100%;
     height: auto;
     display: grid;
@@ -373,11 +371,11 @@ a {
     margin: 0;
   }
 
-  .wrapper_outer.top {
+  .feature_wrapper_outer.top {
     margin-top: 0;
   }
 
-  .wrapper_outer.reverse {
+  .feature_wrapper_outer.reverse {
     width: 100%;
     height: auto;
     grid-template-columns: none;
@@ -389,45 +387,46 @@ a {
     gap: 0;
   }
 
-  /* border-radius: 25; 처리하면 윗 부분은 안 깎이고 애꿎은 아래만 둥글게 깎이는데 어떻게 하면 좋을까요? */
-  #main_image {
+  .keyvisual_image_mobile {
     width: 100%;
     flex-shrink: 0;
     padding: 0;
+    display: block;
   }
 
-  .inner_image {
+  .keyvisual_bg_img {
+    display: none;
+  }
+
+  .feature_image {
     width: 100%;
     height: auto;
     grid-area: inner_image;
   }
 
-  .title {
-    font-size: 1.5rem;
+  .feature_title {
+    font-size: 2.4rem;
     width: 100%;
     grid-area: title;
-    margin-bottom: 0.625rem;
+    margin-bottom: 10px;
   }
 
-  .subtitle {
-    font-size: .9375rem;
+  .feature_subtitle {
+    font-size: 1.5rem;
     width: 100%;
-    order: 3;
     grid-area: subtitle;
-    margin-top: 1.5rem;
+    margin-top: 24px;
   }
-
-
 
   footer {
     margin: 40px 0 0;
-    padding: 2rem 0 2rem;
+    padding: 32px 0 32px;
     height: auto;
   }
   
-  .wrapper_footer {
+  .footer_wrapper {
     width: 100%;
-    padding: 0 3rem;
+    padding: 0 48px;
     margin: 0 auto;
     display: grid;
     justify-content: space-between;
@@ -441,25 +440,25 @@ a {
 
   }
   
-  .copyright {
-    font-size: 1rem;
+  .footer_copyright {
+    font-size: 1.6rem;
     grid-area: copyright;
   }
   
-  .policy_wrapper {
+  .footer_direct_link_wrapper {
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.6rem;
     gap: 30px;
     grid-area: privacy;
   }
   
-  .icons {
-    gap: .75rem;
+  .footer_icons {
+    gap: 12px;
     grid-area: icons;
     justify-content: flex-end;
   }
 
-  .policy_text {
-    font-size: 1rem;
+  .direct_link {
+    font-size: 1.6rem;
   }
 }

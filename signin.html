@@ -4,19 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Likbrary_SignIn</title>
-  <link href="./signin_signup.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/4fad5bb7ce.js" crossorigin="anonymous"></script>
-  <script>
-    (function(d) {
-      var config = {
-        kitId: 'rta2yro',
-        scriptTimeout: 3000,
-        async: true
-      },
-      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-    })(document);
-  </script>
-  
+  <link href="./CSS/signin_signup.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'>
 </head>
 <body>
   <div class="outer_wrapper">
@@ -28,20 +17,23 @@
         </h6>
       </header>
       <form>
-        <div class="input_wrapper">
+        <div class="input_wrapper email">
           <label class="label">이메일</label>
-          <input class="input_box" type="email" name="email">
+          <input class="input_box" type="email" name="email" placeholder="이메일을 입력해주세요.">
+          <span class="error_message" id="error_email"></span>
         </div>
-        <div class="input_wrapper">
+        <div class="input_wrapper password">
           <label class="label">비밀번호</label>
           <div class="input_container">
-            <a href="#"><img class="eye_icon" src="./images/eye-on.png"></a>
-            <input class="input_box" type="password" name="password">
+            <img class="eye_icon" id="eye_on" src="./images/eye-on.png">
+            <img class="eye_icon show" id="eye_off" src="./images/eye-off.png">
+            <input class="input_box" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
+            <span class="error_message" id="error_password"></span>
           </div>
         </div>
+        <button id="submit">로그인</button>
       </form>
       <footer>
-        <a id="submit" href="#">로그인</a>
         <div class="social_login">
           <span>소셜 로그인</span>
           <div class="auth">
@@ -52,5 +44,7 @@
       </footer>
     </div>
   </div>
+  <script src="/JS/signin.js"></script>
+  <script src="https://kit.fontawesome.com/4fad5bb7ce.js" crossorigin="anonymous"></script>
 </body>
 </html>

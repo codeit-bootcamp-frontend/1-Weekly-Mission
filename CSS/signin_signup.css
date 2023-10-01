@@ -1,14 +1,17 @@
+@import "reset.css";
+
 * {
   box-sizing: border-box;
   margin: 0;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-color: #F0F6FF;
-  font-family:"pretendard","Arial", sans-serif;
-  image-rendering: -webkit-optimize-contrast;
-  translate: translateZ(0);
-  backface-visibility: hidden;
+  font-family: "Pretendard", "Arial", sans-serif;
 }
 
 .outer_wrapper {
@@ -22,24 +25,21 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 
-.header {
+
+header {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 16px;
 }
 
-.header > h6 {
-  font-size: 16px;
+header > h6 {
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px;
-}
-
-.header img {
- width: 210px;
- -webkit-perspective: 1;
+  text-align: center;
 }
 
 #login {
@@ -51,8 +51,15 @@ form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 30px 0;
-  gap: 24px;
+  padding: 30px 0 32px;
+}
+
+.input_wrapper.email {
+  margin-bottom: 24px;
+}
+
+.input_wrapper.password {
+  margin-bottom: 30px;
 }
 
 .input_wrapper {
@@ -62,14 +69,14 @@ form {
 }
 
 .label {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
 .input_box {
   width: 100%;
   padding: 18px 15px;
-  margin: 12px 0 6px;
+  margin: 12px 0 0;
   border: 1px solid #CCD5E3;
   border-radius: 8px;
 }
@@ -79,11 +86,18 @@ form {
   outline-width: 0;
 }
 
+.red_border,.red_border:hover, .red_border:focus {
+  border: 1px solid #FF5B56;
+  outline-width: 0;
+}
+
 .eye_icon {
   position: absolute;
-  right: 2px;
-  top: 10px;
-  padding: 35px 10px;
+  right: 4px;
+  top: 33px;
+  padding: 10px 10px;
+  display: none;
+  cursor: pointer;
 }
 
 .icon {
@@ -92,13 +106,19 @@ form {
 }
 
 
-.verification {
-  font-size: 14px;
+.error_message {
+  font-size: 1.4rem;
   font-weight: 400;
   color: #FF5B56;
+  margin-top: .375rem;
+  display: none;
 }
 
-.footer {
+.show {
+  display: block;
+}
+
+footer {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -114,6 +134,10 @@ form {
   border-radius: 8px;
   color: #ffffff;
   text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
 }
 
 .social_login {
@@ -127,10 +151,31 @@ form {
   align-items: center;
   justify-content: space-between;
   color: #373746;
+  font-size: 1.4rem;
 }
 
 .auth {
   width: 100px;
   display: flex;
   gap: 15px;
+}
+
+
+@media (max-width: 767px){
+  
+  .inner_wrapper {
+    width: auto !important; /*override the width below*/
+    width: 100%;
+    max-width: 400px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .outer_wrapper {
+    margin: 121px 0 232px;
+  }
 }
