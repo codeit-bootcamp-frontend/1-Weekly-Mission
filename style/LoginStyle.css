@@ -12,6 +12,7 @@
     background: var(--linkbrary-bg, #F0F6FF);
   }
 
+
   /* 에러 메시지 스타일 */
 .error-message {
   display: none;
