@@ -3,7 +3,6 @@ const formEmail = document.querySelector("#form__email");
 const formPassword = document.querySelector("#form__password");
 const formSubmit = document.querySelector(".form__submit");
 
-// error 종류에 따라 메시지 추가
 const errorMsgs = {
   emptyInput: {
     email: "이메일을 입력해주세요.",
@@ -36,7 +35,6 @@ function removeErrorMsg(target) {
   }
 }
 
-// input에 값이 존재하는지 확인
 function checkEmptyInput(event) {
   if (!event.target.value) {
     event.target.classList.add("form__input-box__error");
@@ -47,7 +45,6 @@ function checkEmptyInput(event) {
   }
 }
 
-// input 양식에 맞게 값을 입력했는지 확인
 function validateInput(event) {
   if (event.target.type == "email" && event.target.value) {
     const emailTest =
@@ -58,7 +55,6 @@ function validateInput(event) {
   }
 }
 
-// 로그인 시도 확인
 const account = {
   "test@codeit.com": "codeit101",
 };
@@ -80,7 +76,6 @@ for (let input of formInputs) {
 
 formSubmit.addEventListener("click", auth);
 
-// 비밂번호 표시
 const togglePasswordButton = document.querySelector(".form__password-toggle");
 const togglePasswordImg = document.querySelector(".form__password-toggle img");
 
