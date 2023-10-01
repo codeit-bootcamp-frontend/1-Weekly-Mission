@@ -72,19 +72,17 @@ body {
 	border: 0.1rem solid var(--linkbrary--color--primary);
 }
 
-.auth__input-password {
+.auth__wrapper-password,
+.auth__wrapper-password--confirm {
 	position: relative;
 }
 
-.auth__input-password button {
+.auth__wrapper-password button,
+.auth__wrapper-password--confirm button {
 	position: absolute;
 	right: 1.5rem;
 	bottom: 50%;
 	transform: translateY(50%);
-}
-
-.auth__input-password--invisible button {
-	display: none;
 }
 
 .auth__button {

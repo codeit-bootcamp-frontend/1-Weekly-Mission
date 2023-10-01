@@ -38,13 +38,19 @@
 						</label>
 						<label>
 							<p class="auth__input-title">비밀번호</p>
-							<div class="auth__input-password">
-								<input class="auth__input" type="password" required />
-								<button type="button">
+							<div class="auth__wrapper-password">
+								<input
+									class="auth__input auth__input-password"
+									type="password"
+									required
+								/>
+								<button class="auth__toggle-password" type="button">
 									<img
+										class="auth__icon-password"
 										src="/public/icons/password-invisible.svg"
 										width="16px"
 										height="16px"
+										alt="비밀번호 숨김 아이콘"
 									/>
 								</button>
 							</div>
@@ -91,5 +97,7 @@
 				</ul>
 			</section>
 		</article>
+
+		<script src="/utils/auth.js" defer></script>
 	</body>
 </html>
