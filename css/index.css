@@ -268,6 +268,16 @@ footer{
     justify-content: space-around;
     align-items: center;
 }
+@media(max-width : 76.7rem){
+
+    footer{
+        display: grid;
+        grid-template-areas: 
+            "extra_sites footer_icons"
+            "since_codeit .";
+        gap: 3rem;
+    }
+}
 
 footer .since_codeit{
     color: #676767;
@@ -307,14 +317,6 @@ button:hover{
 }
 
 @media(max-width : 76.7rem){
-
-    footer{
-        display: grid;
-        grid-template-areas: 
-            "extra_sites footer_icons"
-            "since_codeit .";
-        gap: 3rem;
-    }
     .not-mobile-br{
         display: none;
     }
