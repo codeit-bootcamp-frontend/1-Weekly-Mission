@@ -10,7 +10,7 @@ const eyeBtn = document.querySelector('.eye-off');
 let reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
 function idEmpty(e) {
-  if(!e.target.value){
+  if(e.target.value.length === 0){
     idErrorMsg.textContent = '이메일을 입력해주세요.';
     idErrorMsg.classList.add('input-error-msg');
     idInput.after(idErrorMsg);
@@ -33,7 +33,7 @@ function idInvalid(e) {
 }
 
 function pwEmpty(e) {
-  if(!e.target.value){
+  if(e.target.value.length === 0){
     pwErrorMsg.textContent = '비밀번호를 입력해주세요.';
     pwErrorMsg.classList.add('input-error-msg');
     inputBox.after(pwErrorMsg);
