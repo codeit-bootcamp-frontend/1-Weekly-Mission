@@ -18,6 +18,7 @@ function IsEmpty(input, inputLabel) {
     // inpuLabel.textContent는 공백을 포함하기 떄문에 공백포함해서 나와서 이상함
     let errorMessage = showMessage(inputLabel.innerText);
     errorMsgs.innerText = errorMessage;
+    errorMsgs.style.color = "red";
   } else if (input.value.trim().length !== 0) {
     errorMsgs.innerText = "";
   }
@@ -30,6 +31,7 @@ function IsValidEmail(input, inputLabel) {
   if (!re.test(texts) && texts.length) {
     const errorMsgs = inputLabel.querySelector("small");
     errorMsgs.innerText = "유효하지않은이메일입니다";
+    errorMsgs.style.color = "red";
   }
 }
 
@@ -70,6 +72,7 @@ function isPasswordMatch(password, rePassword, repasswordLabel) {
   if (password.value.trim() !== rePassword.value.trim()) {
     const errorMsgs = repasswordLabel.querySelector("small");
     errorMsgs.innerText = "비밀번호가맞지않습니다";
+    errorMsgs.style.color = "red";
   }
 }
 

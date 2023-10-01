@@ -16,6 +16,7 @@ function IsEmpty(input, inputLabel) {
   if (input.value.trim().length === 0 && errorMsgs.innerText.length === 0) {
     let errorMessage = showMessage(inputLabel.innerText);
     errorMsgs.innerText = errorMessage;
+    errorMsgs.style.color = "red";
   } else if (input.value.trim().length !== 0) {
     errorMsgs.innerText = "";
   }
@@ -28,7 +29,8 @@ function IsValidEmail(input, inputLabel) {
   const texts = input.value.trim();
   if (!re.test(texts) && texts.length) {
     const errorMsgs = inputLabel.querySelector("small");
-    errorMsgs.innerText = "유효한 이메일이 아닙니다";
+    errorMsgs.innerText = "유효하지않은이메일입니다";
+    errorMsgs.style.color = "red";
   }
 }
 
@@ -56,10 +58,7 @@ function isPasswordVisible() {
 email.addEventListener("focusout", function (event) {
   event.preventDefault();
   IsEmpty(email, emailLabel);
-  if (!IsValidEmail(email)) {
-    const errorMsgs = emailLabel.querySelector("small");
-    errorMsgs.innerText = "유효하지않은이메일입니다";
-  }
+  IsValidEmail(email, emailLabel);
 });
 
 password.addEventListener("focusout", function (event) {
