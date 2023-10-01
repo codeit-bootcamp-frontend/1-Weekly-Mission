@@ -35,8 +35,8 @@ function noneWarningStyle(input) {
   warningContent.innerText = ''
 }
 
-// 이메일
-function emailCheck() {
+// 이메일 유효성 검사
+function emailValidation() {
   const standard = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   if (standard.test(emailInput.value)) {
@@ -44,14 +44,16 @@ function emailCheck() {
   } else {
     warningStyle(emailInput, '올바른 이메일 주소가 아닙니다.')
   }
+}
 
-  // 값이 없을 경우
+// 이메일 값이 없을 경우
+function emailCheck() {
   if (emailInput.value.length === 0) {
     warningStyle(emailInput, '이메일을 입력해주세요.')
   }
 }
 
-// 비밀번호
+// 비밀번호 값이 없을 경우
 function passwordCheck() {
   if (passwordInput.value.length === 0) {
     warningStyle(passwordInput, '비밀번호를 입력해주세요.')
@@ -71,5 +73,6 @@ function loginCheck() {
   }
 }
 
+emailInput.addEventListener('focusout', emailValidation)
 emailInput.addEventListener('focusout', emailCheck)
 passwordInput.addEventListener('focusout', passwordCheck)
