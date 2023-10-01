@@ -1,40 +1,54 @@
-<!-- TODO:
-    - webp로 압축하고 줄어든 Byte 확인
-    - br 빼기
--->
-
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <title>Linkbrary</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkbrary</title>
+    <meta name="description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
+
+    <!-- 페이스북, 카카오톡, 디스코드 공유 미리보기 -->
+    <meta property="og:url" content="/">
+    <meta property="og:title" content="Linkbrary">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/asset/images/logo.svg">
+    <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
+
+    <!-- 트위터 공유 미리보기 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="/asset/images/logo.svg">
+    <meta name="twitter:title" content="Linkbrary">
+    <meta name="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
+    
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/asset/fonts/pretendard.css" />
+    <link rel="stylesheet" href="/styles/color.css" />
   </head>
 
   <body>
     <!-- HEADER : LOGO, SIGN-IN -->
     <header>
       <nav class="gnb">
-        <h1>
-          <a href="/">
-            <img src="/asset/images/logo.svg" alt="Linkbrary 로고" />
+        <div class="container">
+          <h1>
+            <a id="home" href="/">
+              <img src="/asset/images/logo.svg" alt="Linkbrary 로고" />
+            </a>
+          </h1>
+          <a id="signin" class="gradation button-short" href="signin.html">
+            <span>로그인</span>
           </a>
-        </h1>
-        <a class="gradation button-short" href="signin.html">
-          <span>로그인</span>
-        </a>
+        </div>
       </nav>
     </header>
 
     <!-- MAIN : MAIN IMAGE, SLOGAN -->
     <main>
-      <div class="main-box">
+      <div class="container">
         <h1 class="slogan">
-          <span class="slogan-gradation background-clip-text"> 세상의 모든 정보</span>를<br/>쉽게 저장하고 관리해 보세요
+          <span class="slogan-gradation background-clip-text"> 세상의 모든 정보</span>를<br/>쉽게 저장하고<br/>관리해 보세요
         </h1>
-        <a class="gradation button-long" href="signup.html">
+        <a id="addLink" class="gradation button-long" href="/">
           <span>링크 추가하기</span>
         </a>
         <img src="/asset/images/hero.png" class="hero-image" alt="Linkbrary 메인 서비스 소개" />
@@ -46,10 +60,10 @@
       <!-- Section1 : Link Saving -->
       <section>
         <h2 class="title">
-          <span class="title-1-gradient background-clip-text"> 원하는 링크</span>를<br />저장하세요
+          <span class="title-1-gradient background-clip-text"> 원하는 링크</span>를<br class="br-mobile"/>저장하세요
         </h2>
         <p class="description">
-          나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />사고 싶은 옷, 기억하고 싶은 모든 것을<br />한 공간에 저장하세요.
+          나중에 읽고 싶은 글, 다시 보고 싶은 영상, <br class="br-mobile"/>사고 싶은 옷, 기억하고 싶은 모든 것을 <br class="br-mobile"/>한 공간에 저장하세요.
         </p>
         <img src="/asset/images/image1.png" class="content-image" alt="링크를 저장하는 기능을 소개하는 이미지" />
       </section>
@@ -57,10 +71,10 @@
       <!-- Section2 : Link Folder -->
       <section>
         <h2 class="title">
-          링크를 폴더로<br /><span class="title-2-gradient background-clip-text">관리</span>하세요
+          링크를 폴더로<br class="br-mobile"/><span class="title-2-gradient background-clip-text">관리</span>하세요
         </h2>
         <p class="description">
-          나만의 폴더를 무제한으로 만들고<br />다양하게 활용할 수 있습니다.
+          나만의 폴더를 무제한으로 만들고 <br class="br-mobile"/>다양하게 활용할 수 있습니다.
         </p>
         <img src="/asset/images/image2.png" class="content-image" alt="링크들을 폴더로 관리하는 기능을 소개하는 이미지" />
       </section>
@@ -68,10 +82,10 @@
       <!-- Section3 : Link Sharing -->
       <section>
         <h2 class="title">
-          저장한 링크를<br /><span class="title-3-gradient background-clip-text">공유</span>해 보세요
+          저장한 링크를<br class="br-mobile"/><span class="title-3-gradient background-clip-text">공유</span>해 보세요
         </h2>
         <p class="description">
-          여러 링크를 폴더에 담고 공유할 수 있습니다.<br />가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />공유해 보세요.
+          여러 링크를 폴더에 담고 공유할 수 있습니다.<br class="br-mobile"/>가족, 친구, 동료들에게 쉽고 빠르게 링크를 <br class="br-mobile"/>공유해 보세요.
         </p>
         <img src="/asset/images/image3.png" class="content-image" alt="폴더공유 기능을 소개하는 이미지" />
       </section>
@@ -79,7 +93,7 @@
       <!-- Section4 : Link Searching -->
       <section>
         <h2 class="title">
-          저장한 링크를<br /><span class="title-4-gradient background-clip-text">검색</span>해 보세요
+          저장한 링크를<br class="br-mobile"/><span class="title-4-gradient background-clip-text">검색</span>해 보세요
         </h2>
         <p class="description">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
         <img src="/asset/images/image4.png" class="content-image" alt="링크검색 기능을 소개하는 이미지" />
@@ -88,11 +102,11 @@
 
     <!-- FOOTER : FAQ, POLICY, SNS LINKS -->
     <footer>
-      <div class="footer-box">
+      <div class="container">
         <span class="copyright">©codeit - 2023</span>
         <div class="footer-links">
-          <a class="footer-link" href="/privacy.html">Privacy Policy</a>
-          <a class="footer-link" href="/faq.html">FAQ</a>
+          <a id="privacy" class="footer-link" href="/privacy.html">Privacy Policy</a>
+          <a id="faq" class="footer-link" href="/faq.html">FAQ</a>
         </div>
         <div class="sns">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
