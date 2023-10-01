@@ -1,49 +1,49 @@
 @use "../utils" as *;
 
 .gnb {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: $linkbrary-bg;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    background-color: $linkbrary-bg;
+    max-width: 192rem;
+    margin: 0 auto;
+    padding: 2rem 20rem;
 
-    &__inner {
-        @include tablet {
-            max-width: 80rem;
-            padding-left: 3.2rem;
-            padding-right: 3.2rem;
-        }
-
-        @include mobile {
-            padding-top: 1.3rem;
-            padding-bottom: 1.3rem;
-        }
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        max-width: 192rem;
-        margin: 0 auto;
-        padding: 2rem 20rem;
+    @include tablet {
+      max-width: 80rem;
+      padding-left: 3.2rem;
+      padding-right: 3.2rem;
     }
 
-    &__logo {
-        @include mobile {
-            &-img {
-                width: 8.8rem;
-            }
-        }
+    @include mobile {
+      max-width: 80rem;
+      padding: 1.3rem 3.2rem;
+    }
+  }
 
-        margin-right: 0.5rem;
+  &__logo {
+    @include mobile {
+      &-img {
+        width: 8.8rem;
+      }
     }
 
-    &__signin {
-        @include mobile {
-            width: 8rem;
-        }
+    margin-right: 0.5rem;
+  }
 
-        width: 12.8rem;
-        margin-left: 0.5rem;
+  &__signin {
+    @include mobile {
+      width: 8rem;
     }
+
+    width: 12.8rem;
+    margin-left: 0.5rem;
+  }
 }

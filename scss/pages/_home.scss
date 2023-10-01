@@ -1,302 +1,230 @@
 @use "../utils" as *;
 
 .main-section {
-    @include tablet {
-        padding-top: 3.9rem;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 7rem 3.2rem 0rem;
+  background-color: $linkbrary-bg;
 
-    @include mobile {
-        padding-top: 2.8rem;
-    }
+  @include tablet {
+    padding-top: 3.9rem;
+  }
 
+  @include mobile {
+    padding-top: 2.8rem;
+  }
+
+  &__inner {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  &__title {
+    width: 72rem;
+    text-align: center;
+    font-size: 6.4rem;
+    font-weight: 700;
+    line-height: 1.25;
+
+    &--grad {
+      background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+      @include text-linear-grad;
+    }
+
+    @include tablet {
+      width: 48.5rem;
+    }
+
+    @include mobile {
+      width: 26rem;
+      font-size: 3.2rem;
+    }
+  }
+
+  &__signup {
+    width: 35rem;
+    margin: 4rem;
+
+    @include mobile {
+      width: 20rem;
+      margin: 2.4rem;
+    }
+  }
+
+  &__frame {
+    width: 120rem;
+    height: 59rem;
+
+    @include tablet {
+      width: 65rem;
+      height: 33rem;
+    }
+
+    @include mobile {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__img {
     width: 100%;
-    padding: 7rem 3.2rem 0rem;
-    background-color: $linkbrary-bg;
-
-    &__inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    &__title {
-        @include tablet {
-            width: 48.5rem;
-        }
-
-        @include mobile {
-            width: 24.8rem;
-            font-size: 3.2rem;
-        }
-
-        width: 72rem;
-        text-align: center;
-        font-size: 6.4rem;
-        font-weight: 700;
-        line-height: 1.25;
-
-        &--grad {
-            background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-            @include text-linear-grad;
-        }
-    }
-
-    &__signup {
-        @include mobile {
-            width: 20rem;
-            margin: 2.4rem;
-        }
-
-        width: 35rem;
-        margin: 4rem;
-    }
-
-    &__frame {
-        @include tablet {
-            width: 65rem;
-            height: 33rem;
-            padding: 2.9rem 2.4rem;
-        }
-
-        @include mobile {
-            width: 32.5rem;
-            height: 16rem;
-            padding: 1.4rem 1.1rem;
-        }
-
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        position: relative;
-        width: 120rem;
-        height: 59rem;
-        padding: 5rem 4.1rem 0;
-        background-color: transparent;
-    }
-
-    &__img {
-        @include tablet {
-            width: 65rem;
-            height: 38.3rem;
-        }
-
-        @include mobile {
-            width: 30.2rem;
-            height: 19.5rem;
-        }
-
-        width: 111.8rem;
-        height: 70.7rem;
-        background-image: url("/public/images/main-screen.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        box-shadow: 0 0.4rem 2.5rem 0 rgba(#000, 0.08);
-        border-radius: 2.5rem;
-    }
-
-    &__dim {
-        @include tablet {
-            width: 65rem;
-            height: 37rem;
-        }
-
-        @include mobile {
-            width: 30.2rem;
-            height: 18rem;
-        }
-        
-        position: absolute;
-        top: 0;
-        width: 111.8rem;
-        height: 65.9rem;
-        background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%);
-    }
+  }
 }
 
 .section-container {
-    @include tablet {
-        padding-top: 8rem;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rem;
+  width: 100%;
+  padding-top: 12rem;
+  padding-bottom: 17rem;
 
-    @include mobile {
-        gap: 8rem;
-        padding: 4rem 3.2rem 8rem;
-    }
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10rem;
-    width: 100%;
-    padding-top: 12rem;
-    padding-bottom: 17rem;
+  @include tablet {
+    padding-top: 8rem;
+  }
+
+  @include mobile {
+    gap: 8rem;
+    padding: 4rem 3.2rem 8rem;
+  }
 }
 
 .section {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  column-gap: 15.7rem;
+  row-gap: 1rem;
+
+  @include tablet {
+    column-gap: 5.1rem;
+  }
+
+  @include mobile {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    row-gap: 0;
+  }
+
+  &__title {
+    align-self: flex-end;
+    width: 29.1rem;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.03rem;
+
+    .section:first-child &--grad {
+      background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+    }
+    .section:nth-child(2) &--grad {
+      background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+    }
+    .section:nth-child(3) &--grad {
+      background: linear-gradient(
+        99deg,
+        #6d7ccd 19.76%,
+        rgba(82, 136, 133, 0.22) 52.69%
+      );
+    }
+    .section:nth-child(4) &--grad {
+      background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
+    }
+    .section-container .section &--grad {
+      @include text-linear-grad;
+    }
+
+    .section:nth-child(odd) & {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .section:nth-child(even) & {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
     @include tablet {
-        .section-container .section-odd & {
-            grid-template-columns: 26.2rem 38.5rem;
-        }
-        .section-container .section-even & {
-            grid-template-columns: 38.5rem 26.2rem;
-        }
+      width: 26.2rem;
     }
-    
+
     @include mobile {
-        .section-container .section & {
-            grid-template-columns: 1fr;
-            grid-template-rows: 2.9rem 26.6rem 4.6rem;
-        }
+      width: 30rem;
+      font-size: 2.4rem;
+
+      .section-container .section & {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+  }
+
+  &__desc {
+    width: 27.8rem;
+    color: #6b6b6b;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.5;
+
+    .section:nth-child(odd) & {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .section:nth-child(even) & {
+      grid-column: 2;
+      grid-row: 2;
     }
 
-    display: grid;
-
-    .section-odd & {
-        grid-template-columns: 29.1rem 55rem;
-        grid-template-rows: repeat(4, 1fr);
-    }
-    .section-even & {
-        grid-template-columns: 55rem 29.1rem;
-        grid-template-rows: repeat(4, 1fr);
+    @include tablet {
+      width: 26.2rem;
     }
 
-    &__title {
-        @include tablet {
-            width: 26.2rem;
-        }
+    @include mobile {
+      width: 100%;
+      font-size: 1.5rem;
 
-        @include mobile {
-            width: 30rem;
-            font-size: 2.4rem;
+      .section-container .section & {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+  }
 
-            .section-container .section & {
-                grid-column: 1;
-                grid-row: 1;
-            }
-        }
+  &__frame {
+    width: 55rem;
+    height: 45rem;
 
-        width: 29.1rem;
-        margin-bottom: 1rem;
-        font-size: 4.8rem;
-        font-weight: 700;
-        line-height: normal;
-        letter-spacing: -0.03rem;
-
-        .section-odd & {
-            grid-column: 1;
-            grid-row: 2;
-        }
-        .section-even & {
-            grid-column: 2;
-            grid-row: 2;
-        }
-
-        .section-container :first-child &--grad {
-            background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
-        }
-        .section-container :nth-child(2) &--grad {
-            background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
-        }
-        .section-container :nth-child(3) &--grad {
-            background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
-        }
-        .section-container :nth-child(4) &--grad {
-            background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
-        }
-
-        .section-container .section &--grad {
-            @include text-linear-grad;
-        }
+    .section:nth-child(odd) & {
+      grid-column: 2;
+      grid-row: 1/3;
+    }
+    .section:nth-child(even) & {
+      grid-column: 1;
+      grid-row: 1/3;
     }
 
-    &__desc {
-        @include tablet {
-            width: 26.2rem;
-        }
-
-        @include mobile {
-            grid-column: 1;
-            grid-row: 3;
-            width: 100%;
-            margin-top: 2rem;
-            margin-bottom: 1.6rem;
-            font-size: 1.5rem;
-            
-            .section-container .section & {
-                grid-column: 1;
-                grid-row: 3;
-            }
-        }
-
-        .section-odd & {
-            grid-column: 1;
-            grid-row: 3;
-        }
-        .section-even & {
-            grid-column: 2;
-            grid-row: 3;
-        }
-
-        width: 29.1rem;
-        color: #6B6B6B;
-        font-size: 1.6rem;
-        font-weight: 500;
-        line-height: 1.5;
+    @include tablet {
+      width: 38.4rem;
+      height: 31.5rem;
     }
 
-    &__frame {
-        @include tablet {
-            width: 38.4rem;
-            height: 31.5rem;
+    @include mobile {
+      margin-top: 2rem;
+      margin-bottom: 1.6rem;
+      width: 100%;
+      height: auto;
 
-            .section-container .section-odd & {
-                margin-left: 5.1rem;
-                margin-right: 0;
-            }
-            .section-container .section-even & {
-                margin-left: 0;
-                margin-right: 5.1rem;
-            }
-        }
-
-        @include mobile {
-            width: 100%;
-            height: auto;
-
-            .section-container .section & {
-                grid-column: 1;
-                grid-row: 2;
-                margin: 0;
-            }
-        }
-
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        width: 55rem;
-        height: 45rem;
-
-        .section-odd & {
-            grid-column: 2;
-            grid-row: 1/5;
-            margin-left: 15.7rem;
-            margin-right: 0;
-        }
-        .section-even & {
-            grid-column: 1;
-            grid-row: 1/5;
-            margin-left: 0;
-            margin-right: 15.7rem;
-        }
+      .section-container .section & {
+        grid-column: 1;
+        grid-row: 2;
+      }
     }
+  }
 
-    &__img {
-        width: 100%;
-    }
+  &__img {
+    width: 100%;
+  }
 }

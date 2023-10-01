@@ -1,10 +1,9 @@
-$resetBase_baseBackground: #fff !default;
-$resetBase_baseColor: #000 !default;
-$resetBase_baseFontFamily: sans-serif !default;
+$reset-base-background: #fff !default;
+$reset-base-color: #000 !default;
+$reset-base-font-family: sans-serif !default;
 
-// -- reset --
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a,
@@ -29,27 +28,27 @@ p,
 td,
 th,
 ul {
-	border: 0;
-	font-size: 100%;
-	font-weight: normal;
-	list-style: none;
-	margin: 0;
-	outline: 0;
-	padding: 0;
-	text-decoration: none;
-	vertical-align: baseline;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  list-style: none;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-decoration: none;
+  vertical-align: baseline;
 }
 
 a,
 abbr {
-	font-weight: inherit;
+  font-weight: inherit;
 }
 
 input,
 select,
 textarea {
-	font-size: 100%;
-	margin: 0;
+  font-size: 100%;
+  margin: 0;
 }
 
 // -- base --
@@ -60,21 +59,22 @@ select,
 td,
 textarea,
 th {
-	color: $resetBase_baseColor;
-    font-family: Pretendard, $resetBase_baseFontFamily;
-	word-break: keep-all;
+  color: $reset-base-color;
+  font-family: Pretendard, $reset-base-font-family;
+  word-break: keep-all;
 }
 
-body, button {
-	background: $resetBase_baseBackground;
-	line-height: 1;
+body,
+button {
+  background: $reset-base-background;
+  line-height: 1;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
-a, button {
-    cursor: pointer;
+a,
+button {
+  cursor: pointer;
 }
-

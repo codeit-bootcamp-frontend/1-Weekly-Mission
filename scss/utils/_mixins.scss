@@ -1,19 +1,19 @@
 @use "variables" as *;
 
 @mixin text-linear-grad {
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-@mixin mobile {
-    @media screen and (max-width: $breakpoint-mobile) {
-        @content;
-    }
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @mixin tablet {
-    @media screen and (max-width: $breakpoint-tablet) {
-        @content;
-    }
+  @media screen and (min-width: ($breakpoint-mobile + 1)) and (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: $breakpoint-mobile) {
+    @content;
+  }
 }

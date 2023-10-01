@@ -27,30 +27,28 @@
         <form class="form">
           <div class="form__inputs">
             <div class="form__input">
-              <label class="form__input-text"
-                >이메일 <br />
-                <input
-                  type="email"
-                  placeholder="codeit@codeit.com"
-                  class="form__input-box"
-                />
-              </label>
+              <label for="form__email" class="form__input-text">이메일</label>
+              <input
+                type="email"
+                placeholder="codeit@codeit.com"
+                id="form__email"
+                class="form__input-box"
+              />
             </div>
             <div class="form__input">
-              <label class="form__input-text">
-                비밀번호 <br />
-                <input
-                  type="password"
-                  placeholder="• • • • • • • •"
-                  class="form__input-box"
-                />
-                <button class="form__password-toggle">
-                  <img src="/public/icons/eye-off.svg" alt="비밀번호 표시" />
-                </button>
-              </label>
+              <label class="form__input-text">비밀번호</label>
+              <input
+                type="password"
+                placeholder="• • • • • • • •"
+                id="form__password"
+                class="form__input-box"
+              />
+              <button class="form__password-toggle">
+                <img src="/public/icons/eye-off.svg" alt="비밀번호 표시" />
+              </button>
             </div>
           </div>
-          <button type="submit" class="button">로그인</button>
+          <button type="submit" class="form__submit button">로그인</button>
         </form>
 
         <div class="auth__social">
@@ -76,5 +74,6 @@
         </div>
       </main>
     </div>
+    <script src="/js/script.js"></script>
   </body>
 </html>
