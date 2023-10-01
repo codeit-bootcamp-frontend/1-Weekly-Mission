@@ -34,7 +34,12 @@
 					<div class="auth__input-wrapper">
 						<label>
 							<p class="auth__input-title">이메일</p>
-							<input class="auth__input" type="email" required />
+							<input
+								class="auth__input auth__input-email"
+								type="email"
+								required
+							/>
+							<p class="auth__email-hint"></p>
 						</label>
 						<label>
 							<p class="auth__input-title">비밀번호</p>
@@ -54,9 +59,12 @@
 									/>
 								</button>
 							</div>
+							<p class="auth__password-hint"></p>
 						</label>
 					</div>
-					<button type="submit" class="auth__button">로그인</button>
+					<button type="submit" class="auth__button signin__buton">
+						로그인
+					</button>
 				</fieldset>
 			</form>
 
