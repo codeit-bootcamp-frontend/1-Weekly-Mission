@@ -3,6 +3,7 @@ const emailRegex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 const emailInput = document.querySelector('#signin-email');
 const passwordInput = document.querySelector('#signin-password');
 const submitButton = document.querySelector('.btn.login');
+const eyeButton = document.querySelector('.eye-off');
 
 const emailTypeErrorMessage = document.createElement("p");
 const passwordTypeErrorMessage = document.createElement("p");
@@ -72,6 +73,17 @@ function login(e) {
     passwordInput.after(passwordTypeErrorMessage);
 }
 
+function toggleEyeButton(e) {
+    if (passwordInput.getAttribute("type") === "password") {
+        passwordInput.setAttribute("type", "text");
+        eyeButton.setAttribute("src", "images/eye-on.svg");
+    } else {
+        passwordInput.setAttribute("type", "password");
+        eyeButton.setAttribute("src", "images/eye-off.svg");
+    }
+}
+
 emailInput.addEventListener("focusout", validateEmailType);
 passwordInput.addEventListener("focusout", validatePassword);
 submitButton.addEventListener("click", login);
+eyeButton.addEventListener("click", toggleEyeButton);

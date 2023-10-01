@@ -121,6 +121,7 @@ main {
     position: absolute;
     right: 15px;
     top: 48px;
+    cursor: pointer;
 }
 
 .btn {
