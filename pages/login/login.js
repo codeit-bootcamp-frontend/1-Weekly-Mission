@@ -58,6 +58,13 @@ function validate(e){
             printMessage(id, 'validation');
             result = false;
         }
+    }else if(id === 'password-check'){
+        // 비밀번호가 일치하는지 체크
+        const password = document.querySelector('#password');
+        if(value !== password.value){
+            printMessage(id, 'coincidence');
+            result = false;
+        }
     }
 
     if(!result){
@@ -77,6 +84,9 @@ function printMessage(id, type){
             case 'password':
                 message = "비밀번호를 입력해주세요.";
                 break;
+            case 'password-check':
+                message = "비밀번호를 한 번 더 입력해주세요.";
+                break;
         }
     }else if(type === 'validation'){
         switch(id){
@@ -93,6 +103,12 @@ function printMessage(id, type){
                 message = "비밀번호를 확인해주세요.";
                 break;
         }
+    }else if(type === 'coincidence'){
+        switch(id){
+            case 'password-check':
+                message = "비밀번호가 다릅니다.";
+                break;
+        }
     }
 
     messageDelivery(id, message);
@@ -107,7 +123,7 @@ function messageDelivery(id, message){
         return;
     }
 
-    // id로 메세지를 넣을 곳을 찾는다.
+    // id로 메세지를 넣을 곳 탐색
     const p = document.createElement('p');
 
     p.textContent = message;
