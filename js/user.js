@@ -57,8 +57,8 @@ loginBtn.addEventListener("click", function () {
 eyeImgBtn.addEventListener("click", function () {
   pwInput.classList.toggle("on");
   if (pwInput.classList[0] === "on") {
-    changePwShow("text", "./assets/user/img_eyeOn.png");
+    changePwShow("text", "../assets/user/img_eyeOn.png");
   } else {
-    changePwShow("password", "./assets/user/img_eyeOff.png");
+    changePwShow("password", "../assets/user/img_eyeOff.png");
   }
 });
