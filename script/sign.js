@@ -3,6 +3,7 @@ const $pwdErrorMessage = document.querySelector('.pwd_error_message');
 const $email = document.querySelector('.email_input');
 const $pwd = document.querySelector('.pwd_input');
 const $signBtn = document.querySelector('.btn-sign');
+const $pwdEye = document.querySelector('.password-eye');
 
 let emailValid = false;
 let pwdValid = false;
@@ -26,7 +27,6 @@ function emailErrorMessage(e){
 }
 
 function pwdErrorMessage(e){
-    console.log(e)
     if(e.target.value === ""){
         $pwdErrorMessage.textContent = "비밀번호를 입력해주세요."
         $pwdErrorMessage.style.display ="block";
@@ -54,3 +54,17 @@ function signinValidCheck(e){
     }
 }
 $signBtn.addEventListener('click',signinValidCheck);
+
+let eyeOn = false;
+function pwdEyeOnOff(e){
+    eyeOn = !eyeOn;
+    if(eyeOn){
+        e.target.src = "/img/eye-on.svg";
+        $pwd.type ="text";
+    }
+    else{
+        e.target.src = "/img/eye-off.svg";
+        $pwd.type ="password";
+    }
+}
+$pwdEye.addEventListener('click',pwdEyeOnOff);
