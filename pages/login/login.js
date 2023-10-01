@@ -1,9 +1,21 @@
-const form = document.querySelector('#signin-form');
-const loginButton = document.querySelector('#login-button');
+const form = document.querySelector('#form');
+const signinButton = document.querySelector('#signin-button');
+const signupButton = document.querySelector('#signup-button');
 
 form.addEventListener('focusout', validate);
 form.addEventListener('keydown', resetValidation);
-loginButton.addEventListener('click', login);
+
+if(signinButton){
+    signinButton.addEventListener('click', login);
+}
+
+if(signupButton){
+    signupButton.addEventListener('click', signup);
+}
+
+function signup(){
+    alert("회원가입");
+}
 
 function login(){
     // 에러 여부 확인 후 로그인
