@@ -4,7 +4,7 @@ const email = document.querySelector('#signin-email');
 const password = document.querySelector('#signin-password');
 
 const emailTypeErrorMessage = document.createElement("p");
-
+const passwordTypeErrorMessage = document.createElement("p");
 
 function validateEmailType(e) {
     e.preventDefault();
@@ -27,15 +27,25 @@ function validateEmailType(e) {
     }
 
     if (emailRegex.test(input)) {
+        email.classList.remove("error-input");
         emailTypeErrorMessage.remove();
     }
 }
 
 function validatePassword(e) {
+    e.preventDefault();
+
     const input = e.target.value.trim();
-    if (input.length === 0) {
-        console.log("비밀번호를 확인해주세요.");
+    if (!input) {
+        passwordTypeErrorMessage.textContent = "비밀번호를 확인해주세요.";
+        password.classList.add("error-input");
+        passwordTypeErrorMessage.classList.add("password-type-error");
+        password.after(passwordTypeErrorMessage);
+        return;
     }
+
+    password.classList.remove("error-input");
+    passwordTypeErrorMessage.remove();
 }
 
 email.addEventListener("focusout", validateEmailType);
