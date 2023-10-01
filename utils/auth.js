@@ -22,12 +22,12 @@ passwordToggle.addEventListener("click", () => {
 
 	if (passwordInput.type === "password") {
 		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.visible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.invisible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.invisible.imageAlt;
-	} else {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.invisible.inputType;
 		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.visible.imageSrc;
 		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.visible.imageAlt;
+	} else {
+		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.invisible.inputType;
+		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.invisible.imageSrc;
+		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.invisible.imageAlt;
 	}
 });
 
