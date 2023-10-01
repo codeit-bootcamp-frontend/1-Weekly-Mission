@@ -15,6 +15,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+}
+
 :root {
   --Primary: #6d6afe;
   --Red: #ff5b56;
