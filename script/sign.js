@@ -2,6 +2,7 @@ const $emailErrorMessage = document.querySelector('.email_error_message');
 const $pwdErrorMessage = document.querySelector('.pwd_error_message');
 const $email = document.querySelector('.email_input');
 const $pwd = document.querySelector('.pwd_input');
+const $signBtn = document.querySelector('.btn-sign');
 
 let emailValid = false;
 let pwdValid = false;
@@ -39,3 +40,17 @@ function pwdErrorMessage(e){
 }
 $email.addEventListener("focusout",emailErrorMessage);
 $pwd.addEventListener("focusout",pwdErrorMessage);
+
+function signinValidCheck(e){
+    if(!emailValid){
+        $emailErrorMessage.textContent = "이메일을 확인해주세요."
+        $emailErrorMessage.style.display ="block";
+        e.preventDefault();
+    }
+    if(!pwdValid){
+        $pwdErrorMessage.textContent = "비밀번호를 확인해주세요."
+        $pwdErrorMessage.style.display ="block";
+        e.preventDefault();
+    }
+}
+$signBtn.addEventListener('click',signinValidCheck);
