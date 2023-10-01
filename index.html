@@ -3,36 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/reset.css">
-    <link rel="stylesheet" href="src/style.css">
+    <meta property="og:title" content="Linkbrary" key="title" />
+    <meta
+      name="description"
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+      key="description"
+    />
+    <meta
+      property="og:image"
+      content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
+      key="image"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@linkbrary" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta name="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta
+      name="twitter:image"
+      content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
+    />
+    <link 
+        rel="stylesheet" 
+        type="text/css" 
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="src/global.css">
+    <link rel="stylesheet" href="src/landing.css">
     <title>Linkbrary</title>
 </head>
 <body>
-    <header>
-        <a class="header__logo" href="/">
-            <img src="images/logo.svg">
-        </a>
-        <a class="header__login" href="/signin.html">로그인</a>
-    </header>
+    <nav>
+        <div class="gnb__side"></div>
+        <div class="gnb">
+            <a class="gnb__logo" href="/">
+                <img src="images/logo.svg" alt="로고_홈_이동">
+            </a>
+            <a class="cta cta--short" href="/signin.html">
+                <span>로그인</span>
+            </a>
+        </div>
+        <div class="gnb__side"></div>
+    </nav>
     <main>
         <section class="intro">
             <article class="intro__title">
                 <h1>
                     <span class="intro__title-color">세상의 모든 정보</span>를<br>
-                    쉽게 저장하고 관리해 보세요
+                    <span class="intro__title-underline">쉽게 저장하고 관리해 보세요</span>
                 </h1>                
             </article>
-            <a class="intro__add-link" href="/signup.html">
+            <a class="cta cta--long" href="/">
                 링크 추가하기
             </a>
             <img class="intro__img" src="/images/hero.png">
         </section>
-        <section class="content">
-            <div class="content__container">
+        <section class="contents">
+            <div id="first_container" class="contents__container">
                 <article class="container__article">
                     <h1 class="container__article-title">
-                        <span class="container__article-title-color-1">원하는 링크</span>를<br>
-                        저장하세요
+                        <span class="container__article-title-color-1">원하는 링크</span>를<br>저장하세요
                     </h1>
                     <p class="container__article-content">
                         나중에 읽고 싶은 글, 다시 보고 싶은 영상,
@@ -40,10 +69,12 @@
                         한 공간에 저장하세요.
                     </p>
                 </article>
-                <img class="container__img" src="/images/image1.png">
+                <div class="container__img-wrap">
+                    <div class="container__img"></div>
+                </div>
             </div>
-            <div class="content__container">
-                <img class="container__img" src="/images/image2.png">
+            <div id="second_container" class="contents__container">
+                <div class="container__img-wrap"><div class="container__img"></div></div>
                 <article class="container__article">
                     <h1 class="container__article-title">
                         링크를 폴더로<br>
@@ -55,7 +86,7 @@
                     </p>
                 </article>                
             </div>
-            <div class="content__container">
+            <div id="third_container" class="contents__container">
                 <article class="container__article">
                     <h1 class="container__article-title">
                         저장한 링크를
@@ -66,10 +97,10 @@
                         가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.
                     </p>
                 </article>
-                <img class="container__img" src="/images/image3.png">
+                <div class="container__img-wrap"><div class="container__img"></div></div>
             </div>
-            <div class="content__container">
-                <img class="container__img" src="/images/image4.png">
+            <div id="fourth_container" class="contents__container">
+                <div class="container__img-wrap"><div class="container__img"></div></div>
                 <article class="container__article">
                     <h1 class="container__article-title">
                         저장한 링크를<br>
@@ -84,10 +115,12 @@
     </main>
     <footer>
         <div class="footer__container">
-            <div class="footer__container-left">©codeit - 2023</div>
-            <div class="footer__container-center">
-                <a href="/privacy.html">Privacy Policy</a>
-                <a href="/faq.html">FAQ</a>
+            <div class="footer__container-left-mobile"> 
+                <div class="footer__container-left">©codeit - 2023</div>
+                <div class="footer__container-center">
+                    <a href="/privacy.html">Privacy Policy</a>
+                    <a href="/faq.html">FAQ</a>
+                </div>
             </div>
             <div class="footer__container-right">
                 <a href="https://www.facebook.com/"><img src="images/facebook.svg"></a>
