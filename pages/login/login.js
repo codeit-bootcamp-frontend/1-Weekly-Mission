@@ -1,7 +1,29 @@
-const form = document.getElementById('signin-form');
+const form = document.querySelector('#signin-form');
+const loginButton = document.querySelector('#login-button');
 
 form.addEventListener('focusout', validate);
 form.addEventListener('keydown', resetValidation);
+loginButton.addEventListener('click', login);
+
+function login(){
+    // 에러 여부 확인 후 로그인
+    const error = document.querySelectorAll('.error');
+    if(error.length === 0){
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
+
+        if(email.value === 'test@codeit.com' && password.value === 'codeit101'){
+            location.href = "/pages/folder";
+
+        }else{
+            // 에러메세지 출력
+            printMessage(email.id, 'login');
+            printMessage(password.id, 'login');
+            email.classList.add('error');
+            password.classList.add('error');
+        }
+    }
+}
 
 function validate(e){
     // 값의 유효성을 체크 후 문제가 있다면 printMessage 함수 호출
@@ -48,6 +70,15 @@ function printMessage(id, type){
         switch(id){
             case 'email':
                 message = "올바른 이메일 주소가 아닙니다.";
+                break;
+        }
+    }else if(type === 'login'){
+        switch(id){
+            case 'email':
+                message = "이메일을 확인해주세요.";
+                break;
+            case 'password':
+                message = "비밀번호를 확인해주세요.";
                 break;
         }
     }
