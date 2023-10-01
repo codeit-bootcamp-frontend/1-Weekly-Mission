@@ -97,7 +97,7 @@ input:focus {
 
 .eye_off {
   position: absolute;
-  bottom: 2.2rem;
+  top: 5.2rem;
   right: 1.5rem;
   width: 1.6rem;
   height: 1.6rem;
@@ -170,4 +170,15 @@ input:focus {
     width: 100%;
     max-width: 40rem;
   }
+}
+
+.error_border {
+  outline: none;
+  border-color: var(--linkbrary-red);
+}
+
+.email_error,
+.password_error {
+  color: var(--linkbrary-red);
+  font-size: 14px;
 }
