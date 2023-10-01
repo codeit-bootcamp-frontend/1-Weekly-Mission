@@ -86,33 +86,23 @@ input:focus {
   outline: 1px solid var(--blue);
 }
 
-.eye-image {
-  position: absolute;
-  top: 4.8rem;
-  left: 37rem;
+.input-error-msg{
+  color: var(--red);
+  font-size: 1.4rem;
 }
 
-input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 1.8rem 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--gray-40);
-  background: var(--white);
+.eye-off {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-white);
+  border: none;
 }
 
 .input-password{
   width: 100%;
   position: relative;
-}
-
-.eye-image {
-  position: absolute;
-  top: 50%;
-  right: 1%;
-  transform: translate(-50%, -50%);
 }
 
 .login-btn {
