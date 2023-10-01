@@ -1,6 +1,7 @@
 const form = document.getElementById('signin-form');
 
 form.addEventListener('focusout', validate);
+form.addEventListener('keydown', resetValidation);
 
 function validate(e){
     // 값의 유효성을 체크 후 문제가 있다면 printMessage 함수 호출
@@ -68,4 +69,14 @@ function messageDelivery(id, message){
 
     p.textContent = message;
     document.getElementById(id).parentElement.append(p);
+}
+
+function resetValidation(e){
+    if(e.target.classList.contains('error')){
+        e.target.classList.remove('error');
+
+        if(e.target.parentElement.querySelector('p')){
+            e.target.parentElement.querySelector('p').remove();
+        }
+    }
 }
