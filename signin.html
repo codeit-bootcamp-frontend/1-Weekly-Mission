@@ -27,15 +27,17 @@
                 <!-- 이메일  -->
                 <div class="InputForm">
                     <label>이메일</label>
-                    <input type="email" placeholder="이메일을 입력하세요.">
+                    <input type="email" id="email" placeholder="이메일을 입력하세요.">
+                    <div class="error-message" id="email-error">이메일을 입력해주세요.</div>
                 </div>
                 <!-- 비밀번호  -->
                 <div class="InputForm">
                     <label>비밀번호</label>
                     <div class="Input">
-                        <input type="password" placeholder="비밀번호를 입력하세요.">
-                        <img src="assets/img/eye-off.svg">
+                        <input type="password" id="password" placeholder="비밀번호를 입력하세요.">
+                        <img id="password-toggle" src="assets/img/eye-off.svg">
                     </div>
+                    <div class="error-message" id="password-error">비밀번호를 입력해주세요.</div>
                 </div>
                 <!-- 로그인 버튼  -->
                 <div class="LoginButton">
@@ -55,8 +57,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
+    <script type="text/javascript" src="login.js"></script>
 </body>
 </html>

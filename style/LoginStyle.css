@@ -12,6 +12,14 @@
     background: var(--linkbrary-bg, #F0F6FF);
   }
 
+  /* 에러 메시지 스타일 */
+.error-message {
+  display: none;
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
   .Container{
     width: 400px;
     height: 100%;
