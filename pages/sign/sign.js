@@ -1,7 +1,8 @@
 const emailRegex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
-const email = document.querySelector('#signin-email');
-const password = document.querySelector('#signin-password');
+const emailInput = document.querySelector('#signin-email');
+const passwordInput = document.querySelector('#signin-password');
+const submitButton = document.querySelector('.btn.login');
 
 const emailTypeErrorMessage = document.createElement("p");
 const passwordTypeErrorMessage = document.createElement("p");
@@ -12,22 +13,22 @@ function validateEmailType(e) {
     const input = e.target.value.trim();
     if (!input) {
         emailTypeErrorMessage.textContent = "이메일을 입력해주세요.";
-        email.classList.add("error-input");
+        emailInput.classList.add("error-input");
         emailTypeErrorMessage.classList.add("email-type-error");
-        email.after(emailTypeErrorMessage);
+        emailInput.after(emailTypeErrorMessage);
         return;
     }
 
     if (!emailRegex.test(input)) {
         emailTypeErrorMessage.textContent = "올바른 이메일 주소가 아닙니다.";
-        email.classList.add("error-input");
+        emailInput.classList.add("error-input");
         emailTypeErrorMessage.classList.add("email-type-error");
-        email.after(emailTypeErrorMessage);
+        emailInput.after(emailTypeErrorMessage);
         return;
     }
 
     if (emailRegex.test(input)) {
-        email.classList.remove("error-input");
+        emailInput.classList.remove("error-input");
         emailTypeErrorMessage.remove();
     }
 }
@@ -38,15 +39,39 @@ function validatePassword(e) {
     const input = e.target.value.trim();
     if (!input) {
         passwordTypeErrorMessage.textContent = "비밀번호를 확인해주세요.";
-        password.classList.add("error-input");
+        passwordInput.classList.add("error-input");
         passwordTypeErrorMessage.classList.add("password-type-error");
-        password.after(passwordTypeErrorMessage);
+        passwordInput.after(passwordTypeErrorMessage);
         return;
     }
 
-    password.classList.remove("error-input");
+    passwordInput.classList.remove("error-input");
     passwordTypeErrorMessage.remove();
 }
 
-email.addEventListener("focusout", validateEmailType);
-password.addEventListener("focusout", validatePassword);
+function login(e) {
+    e.preventDefault();
+    console.log(e);
+
+    const email = emailInput.value;
+    const password = passwordInput.value;
+
+    if (email === "test@codeit.com" && password === "codeit101") {
+        location.href = "/folder.html";
+        return;
+    }
+
+    emailTypeErrorMessage.textContent = "이메일을 확인해주세요.";
+    emailInput.classList.add("error-input");
+    emailTypeErrorMessage.classList.add("email-type-error");
+    emailInput.after(emailTypeErrorMessage);
+
+    passwordTypeErrorMessage.textContent = "비밀번호를 확인해주세요.";
+    passwordInput.classList.add("error-input");
+    passwordTypeErrorMessage.classList.add("password-type-error");
+    passwordInput.after(passwordTypeErrorMessage);
+}
+
+emailInput.addEventListener("focusout", validateEmailType);
+passwordInput.addEventListener("focusout", validatePassword);
+submitButton.addEventListener("click", login);
