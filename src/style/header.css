@@ -23,7 +23,7 @@ header {
 }
 
 .logo {
-  color: #6d6afe;
+  color: var(--primary);
 }
 
 .loginLink {

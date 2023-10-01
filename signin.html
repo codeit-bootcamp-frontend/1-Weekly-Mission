@@ -22,21 +22,24 @@
           </div>
         </div>
       </header>
+      <form class="form">
       <div class="inputWrapper">
         <div class="inputForm">
           <label>이메일</label>
-          <input class="authInput" type="email" placeholder="Enter your email" />
+          <input class="authInput emailInput" type="email" placeholder="Enter your email" />
+          <span></span>
         </div>
         <div class="inputForm">
           <label>비밀번호</label>
           <input
-            class="authInput"
+            class="authInput passwordInput"
             type="password"
             placeholder="Enter your password"
           />
+          <span></span>
         </div>
       </div>
-      <a href="/" class="loginLink">로그인</a>
+      <button type="submit" class="loginLink">로그인</button>
       <div class="socialWrapper">
         <span>소셜로그인</span>
         <div class="socialIconWrapper">
@@ -56,7 +59,9 @@
             </a>
         </div>
         </div>
+      </form>
       </div>
     </div>
+    <script src="src/js/auth.js"></script>
   </body>
 </html>
