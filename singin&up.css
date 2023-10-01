@@ -67,12 +67,21 @@ body {
   top: 60%;
 }
 
+.psw-box img.psw-wrong {
+  top: 47%
+}
+
 .sign-box .input-box input {
   width: 100%;
   margin-top: 12px;
   padding: 18px 15px;
   border: 1px solid var(--gray-botticelli);
   border-radius: 8px;
+}
+
+.sign-box .input-box p {
+  padding-top: 6px;
+  color: var(--red);
 }
 
 .sign-box .input-box input:focus {
