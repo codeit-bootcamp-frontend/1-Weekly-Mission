@@ -54,6 +54,16 @@ form input{
     color: #373740;
 }
 
+.form-item input.error{
+    border-color:var(--red);
+    margin-bottom: .6rem;
+}
+
+.form-item p{
+    color: var(--red);
+    font-size: 1.4rem;
+}
+
 .form-item{
     position: relative;
 }
