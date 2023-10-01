@@ -115,7 +115,7 @@ header p{
     flex-direction: column;
 }
 .form__input-wrapper input{
-    padding-right: 1.6rem;
+    padding-right: 4rem;
 } 
 
 .password-eye{
