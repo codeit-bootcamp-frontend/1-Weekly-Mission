@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,target-densitydpi=medium-dpi"
     />
-    <meta property="og:image" content="./img/alpaca.png" />
+    <meta property="og:image" content="https://i.ibb.co/znXHKZN/alpaca.png" />
     <meta property="og:title" content="Linkbrary" />
     <meta
       property="og:description"
@@ -20,12 +20,13 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="all">
+      <!--header-->
       <header class="header">
-        <nav class="navv">
+        <nav class="header__nav">
           <a href="./">
             <img
               src="./img/linkbrary.svg"
@@ -34,116 +35,151 @@
               height="24px"
             />
           </a>
-          <a href="./signin.html" class="login">로그인</a>
+          <a href="./signin.html" class="header__nav_a">로그인</a>
         </nav>
-        <!--content1-->
-        <div class="content1">
-          <div class="c1div">
-            <h1 class="c1h1">
-              <span class="world">세상의 모든 정보</span>를<br />
+        <!--header__content-->
+        <div class="header__content">
+          <div class="header__content_div1">
+            <h1 class="header__content_div1_h1">
+              <span class="header__content_div1_h1_span">세상의 모든 정보</span
+              >를<br />
               쉽게 저장하고 관리해 보세요
             </h1>
           </div>
-          <a href="/signup.html" class="link_plus">링크 추가하기</a>
-          <div class="img25div">
-            <img src="./img/image 25.png" alt="본문1 사진" class="img25" />
+          <a href="/signup.html" class="header__content_a">링크 추가하기</a>
+          <div class="header__content_div2">
+            <img
+              src="./img/image 25.png"
+              alt="본문1 사진"
+              class="header__content_div2_img"
+            />
           </div>
         </div>
       </header>
       <main>
-        <!--content2-->
-        <div class="content2">
-          <div class="content22">
-            <div class="c2div11">
-              <span class="c2div11span1">원하는</span>
-              <span class="c2div11span2">링크</span>를<br />
-              저장하세요
+        <!--main__content1-->
+        <div class="main__content1">
+          <div class="main__content1_container">
+            <div class="main__content1_div1">
+              <div>
+                <span class="main__content1_div1_span1">원하는</span>
+                <span class="main__content1_div1_span2">링크</span>를<br />
+                저장하세요
+              </div>
             </div>
-            <div class="c2div12">
+            <div class="main__content1_div2">
               나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
               사고 싶은 옷, 기억하고 싶은 모든 것을<br />
               한 공간에 저장하세요.
             </div>
 
-            <div class="c2imgs">
-              <img src="img/card.png" alt="card첫번째" class="c2img" />
+            <div class="main__content1_div3">
+              <img
+                src="img/card.png"
+                alt="card첫번째"
+                class="main__content1_div3_img"
+              />
               <img
                 src="img/card1.png"
                 alt="card두번째"
-                class="c2img middle"
+                class="main__content1_div3_img middle"
                 style="position: relative"
               />
               <div>
-                <img src="img/Group 20.svg" alt="" class="c2img_down" />
+                <img
+                  src="img/Group 20.svg"
+                  alt=""
+                  class="main__content1_div3_img-down"
+                />
               </div>
 
-              <img src="img/card2.png" alt="card세번째" class="c2img" />
+              <img
+                src="img/card2.png"
+                alt="card세번째"
+                class="main__content1_div3_img"
+              />
             </div>
           </div>
         </div>
-        <!--content3-->
-        <div class="content3">
-          <div class="content33">
-            <div class="c3imgs">
-              <img src="img/folder_name.png" alt="폴더이름변경" class="c3img" />
+        <!--main__content2-->
+        <div class="main__content2">
+          <div class="main__content2_container">
+            <div class="main__content2_div1">
+              <img
+                src="img/folder_name.png"
+                alt="폴더이름변경"
+                class="main__content2_div1_img"
+              />
             </div>
 
-            <div class="c3div11">
-              링크를 폴더로<br />
-              <span class="manage">관리</span>하세요
+            <div class="main__content2_div2">
+              <div>
+                링크를 폴더로<br />
+                <span class="main__content2_div2_span">관리</span>하세요
+              </div>
             </div>
-            <div class="c3div12">
+            <div class="main__content2_div3">
               나만의 폴더를 무제한으로 만들고 <br />
               다양하게 활용할 수 있습니다.
             </div>
           </div>
         </div>
-        <!--content4-->
-        <div class="content4">
-          <div class="content22">
-            <div class="c4div11">
-              저장한 링크를<br />
-              <span class="share">공유</span>해 보세요
+        <!--main__content3-->
+        <div class="main__content3">
+          <div class="main__content1_container">
+            <div class="main__content3_div1">
+              <div>
+                저장한 링크를<br />
+                <span class="main__content3_div1_span">공유</span>해 보세요
+              </div>
             </div>
-            <div class="c4div12">
+            <div class="main__content3_div2">
               여러링크를 폴더에 담고 공유할수있습니다.<br />
               가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />
               공유해 보세요.
             </div>
-
-            <div class="c4imgs">
-              <div class="c4img1">
+            <div class="main__content3_div3">
+              <div class="main__content3_div3_div">
                 <img
                   src="img/folder_share.png"
                   alt="card두번째"
-                  class="c4img"
+                  class="main__content3_div3_div_img"
                 />
               </div>
             </div>
           </div>
         </div>
-        <!--content5-->
-        <div class="content5">
-          <div class="content33">
-            <div class="c5imgs">
-              <img src="img/screenshot.png" alt="" class="c5img" />
+        <!--main__content4-->
+        <div class="main__content4">
+          <div class="main__content2_container">
+            <div class="main__content4_div1">
+              <img
+                src="img/screenshot.png"
+                alt=""
+                class="main__content4_div1_img"
+              />
             </div>
-            <div class="c3div11">
-              저장한 링크를<br />
-              <span class="search">검색</span>해 보세요
+            <div class="main__content2_div2">
+              <div>
+                저장한 링크를<br />
+                <span class="main__content4_div2_span">검색</span>해 보세요
+              </div>
             </div>
-            <div class="c3div12">중요한 정보들을 검색으로 쉽게 찾아보세요.</div>
+            <div class="main__content2_div3">
+              중요한 정보들을 검색으로 쉽게 찾아보세요.
+            </div>
           </div>
         </div>
       </main>
-      <footer class="footertop">
-        <div class="footerdiv">
-          <div class="codeit">©codeit - 2023</div>
-          <div class="footermiddle">
-            <a href="privacy.html" class="footera">Privacy Policy</a>
-            <a href="faq.html" class="footera">FAQ</a>
+      <!--footer-->
+      <footer class="footer">
+        <div class="footer__container">
+          <div class="footer_div1">©codeit - 2023</div>
+          <div class="footer_div2">
+            <a href="privacy.html" class="footer_div2_a">Privacy Policy</a>
+            <a href="faq.html" class="footer_div2_a">FAQ</a>
           </div>
-          <div class="logodiv">
+          <div class="footer_div3">
             <a href="https://www.facebook.com/" target="_blank"
               ><img src="img/facebook.svg" alt="페북"
             /></a>

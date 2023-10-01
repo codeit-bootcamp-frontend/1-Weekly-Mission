@@ -1,0 +1,231 @@
+@import 'reset.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+:root {
+  --mainColor: #6d6afe;
+  --mainBackColor: #f0f6ff;
+  --mainWhiteFont: #f5f5f5;
+  --blackColor: #000;
+  --errorRed: #ff5b56;
+}
+
+.all {
+  display: flex;
+  padding: 238px 0 252px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  background: var(--mainBackColor);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+@media (max-width: 767px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
+/***************************************content1****************************************/
+.content1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.content1_div1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.content1_div1_img {
+  width: 210px;
+}
+
+.content1_div1_span {
+  color: var(--blackColor);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.content1_div1_a {
+  color: var(--mainColor);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  text-underline-position: under;
+}
+
+.content1_div2 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content1_div2_div1 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.content1_div2_div1_div {
+  color: var(--blackColor);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.content1_div2_div1_input {
+  position: relative;
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background: #fff;
+}
+@media (max-width: 767px) {
+  .content1_div2_div1_input {
+    width: max(52.2vw, 277px);
+  }
+}
+.content1_div2_div1_input:focus {
+  border: 1px solid var(--mainColor);
+  outline: none;
+}
+
+.content1_div2_div1_span,
+.content1_div2_div1_span2,
+.content1_div2_div1_span3 {
+  color: var(--errorRed);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.content1_div2_div2 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+@media (max-width: 767px) {
+  .content1_div2_div2 {
+    width: max(52.2vw, 277px);
+  }
+}
+
+.content1_div2_div2_input {
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background: #fff;
+}
+@media (max-width: 767px) {
+  .content1_div2_div2_input {
+    width: max(52.2vw, 277px);
+  }
+}
+
+.content1_div2_div2_input:focus {
+  border: 1px solid var(--mainColor);
+  outline: none;
+}
+.content1_div2_div2_div-input {
+  position: relative;
+}
+.content1_div2_div2_img {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+.content1_div2_div2_img:hover {
+  cursor: pointer;
+}
+.content1_div2_div2_span,
+.content1_div2_div2_span2 {
+  color: var(--errorRed);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 12px;
+}
+
+.content1_div3_div {
+  display: flex;
+  width: 400px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: linear-gradient(91deg, var(--mainColor) 0.12%, #6ae3fe 101.84%);
+  color: var(--mainWhiteFont);
+  font-family: Pretendard;
+  font-size: 18px;
+
+  font-weight: 600;
+}
+@media (max-width: 767px) {
+  .content1_div3_div {
+    width: max(52.2vw, 277px);
+  }
+}
+
+/***************************************content2****************************************/
+.content2 {
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background: #e7effb;
+}
+@media (max-width: 767px) {
+  .content2 {
+    width: max(52.2vw, 277px);
+  }
+}
+
+.content2_div1 {
+  color: #373740;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.content2_div2 {
+  display: flex;
+  gap: 16px;
+}
+
+.content2_div2_div1 {
+  transform: translate(0%, 5%);
+}
+
+.content2_div2_div2 {
+  transform: translate(0%, 7%);
+}
