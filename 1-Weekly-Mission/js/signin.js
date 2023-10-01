@@ -3,6 +3,7 @@
 const emailBox = document.querySelector("#email");
 const passwordBox = document.querySelector("#password");
 const submitButton = document.querySelector(".sign_button");
+const eyeButton = document.querySelector(".eye_off");
 
 // 이메일 에러메시지 생성
 const emailErrorMsg = document.createElement("p");
@@ -44,5 +45,32 @@ passwordBox.addEventListener("blur", function (e) {
   } else {
     passwordBox.classList.remove("error_border");
     passwordErrorMsg.textContent = "";
+  }
+});
+
+// 이메일: test@codeit.com, 비밀번호: codeit101 으로 로그인 시도할 경우
+submitButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (
+    emailBox.value === "test@codeit.com" &&
+    passwordBox.value === "codeit101"
+  ) {
+    location.href = "./folder.html";
+  } else {
+    emailErrorMsg.textContent = "이메일을 확인해주세요.";
+    emailBox.classList.add("error_border");
+    passwordErrorMsg.textContent = "비밀번호를 확인해주세요.";
+    passwordBox.classList.add("error_border");
+  }
+});
+
+// 눈모양 버튼 클릭 시 구현
+eyeButton.addEventListener("click", function (e) {
+  if (passwordBox.getAttribute("type") === "password") {
+    passwordBox.setAttribute("type", "text");
+    eyeButton.firstElementChild.setAttribute("src", "./image/eye-on.svg");
+  } else {
+    passwordBox.setAttribute("type", "password");
+    eyeButton.firstElementChild.setAttribute("src", "./image/eye-off.svg");
   }
 });
