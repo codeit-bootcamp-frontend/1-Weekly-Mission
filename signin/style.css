@@ -56,13 +56,21 @@ input:focus {
   background: var(--color-white) url(images/eye-off.svg) no-repeat center right 15px;
 }
 .input-box input[type='email'] {
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
 }
 .btn-login {
   width: 400px;
   border: none;
   margin-bottom: 32px;
 }
+.hide {
+  display: none;
+}
+.error-message {
+  font-size: 14px;
+  color: var(--color-red);
+}
+
 
 .social-login {
   width: 400px;

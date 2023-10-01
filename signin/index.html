@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +12,11 @@
     <p>회원이 아니신가요? <a class="sign-up" href="/signup/index.html">회원가입하기</a></p>
     <div class="input-box">
       <label for="email">이메일</label>
-      <input id="email" type="email">
-      <label id="password" for="password">비밀번호</label>
-      <input class="input-password" type="password">
+      <input type="email" id="email">
+      <div class="error-message email hide">이메일을 입력해주세요</div>
+      <label for="password">비밀번호</label>
+      <input id="password" type="password">
+      <div class="error-message password hide">비밀번호을 입력해주세요</div>
     </div>
     <button class="btn-login cta">로그인</button>
     <div class="social-login">
@@ -29,5 +31,6 @@
       </div>
     </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
