@@ -11,10 +11,13 @@ $password_error_msg.classList.add('password_error_msg');
 $email.after($email_error_msg);
 $password.after($password_error_msg);
 
+// toggle_pw_visibility() 에서 쓰임
 let toggle_pw = 0;
 
 const checking_email_input = (event) => {
   const repExp_Korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;  // 한글 정규표현식
+  // 이메일 정규식
+  // let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
   event.preventDefault();
   if (!event.target.value) {
     // input에 아무런 입력이 없는 경우
