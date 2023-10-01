@@ -80,6 +80,7 @@ header p{
     color: var(--grey-light);
     border-radius: 0.8rem;
     font-size: 1.8rem;
+    cursor: pointer;
 }
 
 .social-sign{
@@ -123,6 +124,7 @@ header p{
     bottom:50%;
     transform: translateY(50%);
     fill: white;
+    cursor: pointer;
 }
 .email_error_message,.pwd_error_message{
     display: none;
