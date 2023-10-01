@@ -1,4 +1,4 @@
-@import "/reset.css";
+@import "/assets/reset.css";
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 *{
@@ -23,7 +23,7 @@ button:hover{
 
 .container{
     width : 400px;
-    margin-top : 180px;
+    margin-top : 80px;
     display : flex;
     flex-direction: column;
     align-items: center;
@@ -69,7 +69,9 @@ form{
     display : flex;
     flex-direction: column;
     gap : 12px;
+}
 
+.pw_wrapper{
     position : relative;
 }
 
@@ -77,9 +79,11 @@ form{
     position : absolute;
     bottom : 18px;
     right : 20px;
+    cursor : pointer;
 }
 
 .input_box{
+    width : 100%;
     padding : 18px 15px;
     border-radius: 8px;
     border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
@@ -87,9 +91,9 @@ form{
 }
 
 .input_box::placeholder{
-    color: var(--linkbrary-gray-100, #373740);
+    color: #9FA6B2;
     font-family: Pretendard;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 
 input:focus{
@@ -98,7 +102,7 @@ input:focus{
 
 .button_login,
 .button_signup{
-    margin : 30px 0;
+    /* margin : 30px 0; */
     padding : 16px 20px;
     border-radius: 8px;
     background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
@@ -108,6 +112,7 @@ input:focus{
     font-family: Pretendard;
     font-size: 1.8rem;
     font-weight: 600;
+    text-decoration: none;
 }
 
 footer{
@@ -134,43 +139,34 @@ footer p{
     align-items: center;
 }
 
-.social_icon_kakao{
+.social_icon{
     width : 42px;
     height : 42px;
-    position : relative;
-    background-image: url("../assets/images/kakaotalk_bg.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .kakao{
-    position : absolute;
-    top : 10px;
-    left : 8.5px;
-}
-
-.social_icon_google{
-    width : 42px;
-    height : 42px;
-    position : relative;
-    background-image: url("../assets/images/google_bg.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    background-image: url("/assets/images/kakaotalk.svg");
 }
 
 .google{
-    width : 22px;
-    position : absolute;
-    top : 10px;
-    left : 10px;
+    background-image: url("/assets/images/google.svg");
+}
+
+.error{
+    color : red;
+}
+
+.error_box{
+    outline: 1px solid red;
 }
 
 @media (max-width : 767px){
     .container{
         width : 100%;
         max-width : 400px;
-        margin : 180px 32px;
+        margin : 80px 32px;
     }
 }

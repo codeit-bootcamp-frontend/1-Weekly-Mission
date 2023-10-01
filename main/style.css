@@ -1,4 +1,4 @@
-@import "../assets/reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
+@import "/assets/reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 *{
     box-sizing : border-box;
@@ -91,7 +91,6 @@ header a{ /* login button */
 
 .main_text{
     padding-top : 170px;
-    width : 708px;
     text-align: center;
     font-family: Pretendard;
     font-size: 6.4rem; /*64px*/
@@ -265,9 +264,9 @@ header a{ /* login button */
 
 .contents_img.share{
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("/assets/images/image\ 25.png");
+    url("/assets/images/main.png");
     background-position : center;
-    background-size : cover;
+    background-size : 160%;
     background-repeat : no-repeat;
 }
 
@@ -329,4 +328,3 @@ footer a{
     font-weight: 400;
     line-height: normal;
 }
-
