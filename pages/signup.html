@@ -3,17 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="../css/nomalize.css" />
+    <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/signup.css" />
     <title>Document</title>
   </head>
   <body>
-    <div class="container-signin">
+    <div class="container-signup">
       <a href="/index.html">
-        <img id="logo-image" src="../images/sign/logo.svg" />
+        <img class="logo-image" src="../images/sign/logo.svg" />
       </a>
       <div class="redirection-text">
-        <p>이미회원이신가요?</p>
+        이미회원이신가요?
         <a href="./signin.html">로그인하기</a>
       </div>
 
@@ -22,17 +23,23 @@
           >이메일 <input id="email" name="email" type="email"
         /></label>
         <label for="password" class="password-label"
-          >비밀번호<input id="password" name="password" type="password" />
-          <img id="eye-on-image-one" src="../images/sign/eye-on.svg"
-        /></label>
+          >비밀번호
+          <div class="password-container">
+            <input id="password" name="password" type="password" />
+            <img class="eye-on-image" src="../images/sign/eye-on.svg" />
+          </div>
+        </label>
         <label for="password"
-          >비밀번호확인<input
-            id="re-password"
-            name="password"
-            type="password"
-            class="password-label"
-          />
-          <img id="eye-on-image-two" src="../images/sign/eye-on.svg" />
+          >비밀번호확인
+          <div class="re-password-container">
+            <input
+              id="re-password"
+              name="password"
+              type="password"
+              class="password-label"
+            />
+            <img class="eye-on-image" src="../images/sign/eye-on.svg" />
+          </div>
         </label>
         <button id="registor-button">회원가입</button>
         <div class="social-login">

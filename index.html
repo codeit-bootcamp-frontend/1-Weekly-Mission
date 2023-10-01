@@ -3,17 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="/nomalize.css" />
     <link rel="stylesheet" href="/index.css" />
     <title>Linkbrary</title>
+    <!-- 페이스북 -->
+    <meta property="og:title" content="Linkbrary" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://yunaaa-firstweb.netlify.app/images/index/section1/image1.png"
+    />
+    <meta
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <meta property="og:url" content="https://yunaaa-firstweb.netlify.app" />
+    <meta property="og:type" content="website" />
+    <!-- 트위터 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://yunaaa-firstweb.netlify.app" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta name="twitter:site" content="@yunajoey" />
+    <meta
+      name="twitter:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
   </head>
   <body>
     <nav>
       <a href="/index.html">
-        <img src="./images/index/logo.svg" alt="" />
+        <img class="home-logo" src="./images/index/logo.svg" alt="" />
       </a>
       <a href="./pages/signin.html"
-        ><button id="login-button" type="button">로그인</button></a
+        ><button class="login-button" type="button">로그인</button></a
       >
     </nav>
     <div class="header-content">
@@ -21,18 +44,17 @@
         <span id="emphasize">세상의모든정보</span
         >를<br />쉽게저장하고관리해보세요
       </h1>
-
       <a href="./pages/signup.html"
-        ><button id="link-add-button">링크추가하기</button></a
+        ><button class="link-add-button">링크추가하기</button></a
       >
-      <img id="section1-image1" src="./images/index/section1/image1.png" />
+      <img class="header-image" src="./images/index/section1/image1.png" />
     </div>
 
     <div class="container">
       <section class="contents">
         <div class="text-container">
           <p class="title">
-            <span class="emphasize">원하는 링크</span>를<br />저장하세요
+            <span class="emphasize">원하는 링크</span>를 <br />저장하세요
           </p>
           <p class="description">
             나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
@@ -59,12 +81,11 @@
           </p>
         </div>
       </section>
-
-      <div class="contents">
+      <section class="contents">
         <div class="text-container">
           <p class="title">
-            저장한링크를<br />
-            <span class="emphasize">공유</span>해보세요
+            저장한 링크를<br />
+            <span class="emphasize">공유 </span>해 보세요
           </p>
           <p class="description">
             여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
@@ -74,9 +95,9 @@
         <div class="image-container">
           <img id="section4-image1" src="./images/index/section4/image1.png" />
         </div>
-      </div>
+      </section>
 
-      <div class="contents">
+      <section class="contents">
         <div class="image-container">
           <img
             id="section5-image1"
@@ -91,31 +112,27 @@
           </p>
           <p class="description">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
         </div>
-      </div>
+      </section>
     </div>
     <!-- footer -->
     <footer>
-      <div class="policy">
-        <!-- <div class="frame"> -->
-        <div class="texts-icons-container">
-          <p id="codeit-title">©codeit - 2023</p>
-          <div class="policy-text">
-            <a href="./pages/privacy.html"><p>Privacy Policy</p></a>
-            <a href="./pages/faq.html"><p>FAQ</p></a>
-          </div>
-          <div class="icons">
-            <a href="https://www.facebook.com" target="_blank"
-              ><img src="./images/index/footer/facebook.svg" alt="facebook"
-            /></a>
-            <a href="https://www.twitter.com" target="_blank"
-              ><img src="./images/index/footer/twitter.svg" alt="twitter" /></a
-            ><a href="https://www.youtube.com" target="_blank"
-              ><img src="./images/index/footer/youtube.svg" alt="youtube" /></a
-            ><a href="https://www.instagram.com" target="_blank"
-              ><img src="./images/index/footer/instagram.svg" alt="instagram"
-            /></a>
-          </div>
-          <!-- </div> -->
+      <div class="footer">
+        <p class="codeit-title">©codeit - 2023</p>
+        <div class="policy-text">
+          <a href="./pages/privacy.html">Privacy Policy</a>
+          <a href="./pages/faq.html">FAQ</a>
+        </div>
+        <div class="icons">
+          <a href="https://www.facebook.com" target="_blank"
+            ><img src="./images/index/footer/facebook.svg" alt="facebook"
+          /></a>
+          <a href="https://www.twitter.com" target="_blank"
+            ><img src="./images/index/footer/twitter.svg" alt="twitter" /></a
+          ><a href="https://www.youtube.com" target="_blank"
+            ><img src="./images/index/footer/youtube.svg" alt="youtube" /></a
+          ><a href="https://www.instagram.com" target="_blank"
+            ><img src="./images/index/footer/instagram.svg" alt="instagram"
+          /></a>
         </div>
       </div>
     </footer>

@@ -1,10 +1,6 @@
-* {
-  box-sizing: border-box;
-}
-
 :root {
   --black: #000;
-  --linkbrary-primary-color: #6d6afe;
+  --linkbrary-primary: #6d6afe;
   --linkbrary-white: #fff;
   --gra-purpleblue-to-skyblue: linear-gradient(
     91deg,
@@ -18,53 +14,42 @@
   --linkbrary-gray-20: ##ccd5e3;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  width: 100%;
-  background: var(--linkbrary-bg);
+}
+html {
+  /* 10px = 1rem; */
+  font-size: 62.5%;
 }
 
-.logo-image {
-  width: 210px;
+body {
+  padding-top: 24rem;
+  background: var(--linkbrary-bg);
 }
 
 .redirection-text {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+  column-gap: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
-.redirection-text > p {
-  display: inline-block;
-  color: var(--black);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 900;
-}
-
-.redirection-text > a {
-  display: inline-block;
+.redirection-text a {
+  color: var(--Linkbrary-primary);
 }
 
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 25px;
-  width: 500px;
-  margin: 0 auto;
+
+  width: 50rem;
+
+  row-gap: 3.2rem;
 }
 
 label {
-  display: block;
-  /* width: 500px; */
   width: 100%;
   text-align: start;
 }
@@ -111,4 +96,34 @@ input:focus {
 
 .social-login #google {
   margin-right: 10px;
+}
+
+/* PC */
+@media screen and (min-width: 1200px) {
+  /* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다. */
+}
+
+/* tablet */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  /* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다. */
+  body {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+}
+
+/* mobile */
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  body {
+    /*  좌우 여백 32px 제외 */
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+
+  /* 내부 요소들의 너비는 기기의 너비가 커지는 만큼 커지지만 400px을 넘지 않습니다 400px을 넘지 않습니다  */
+  form {
+    width: 100%;
+    max-width: 400px;
+  }
 }
