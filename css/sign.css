@@ -71,6 +71,7 @@ header p{
 }
 .form__sign input:focus-visible{
     outline-color: var(--linkbrary-primary-color);
+
 }
 .btn-sign{
     padding: 1.6rem 2rem;
@@ -123,7 +124,7 @@ header p{
     transform: translateY(50%);
     fill: white;
 }
-.email_error_message{
+.email_error_message,.pwd_error_message{
     display: none;
     color: red;
 }

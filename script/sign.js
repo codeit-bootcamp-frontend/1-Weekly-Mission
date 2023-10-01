@@ -1,5 +1,10 @@
 const $emailErrorMessage = document.querySelector('.email_error_message');
+const $pwdErrorMessage = document.querySelector('.pwd_error_message');
 const $email = document.querySelector('.email_input');
+const $pwd = document.querySelector('.pwd_input');
+
+let emailValid = false;
+let pwdValid = false;
 
 function emailErrorMessage(e){
     if(e.target.value === ""){
@@ -15,7 +20,22 @@ function emailErrorMessage(e){
    else{
     $emailErrorMessage.style.display ="none";
     $email.classList.remove("border-red");
+    emailValid = true;
    }
 }
 
+function pwdErrorMessage(e){
+    console.log(e)
+    if(e.target.value === ""){
+        $pwdErrorMessage.textContent = "비밀번호를 입력해주세요."
+        $pwdErrorMessage.style.display ="block";
+        $pwd.classList.add('border-red');
+    }
+    else{
+        $pwdErrorMessage.style.display ="none";
+        $pwd.classList.remove("border-red");
+        pwdValid = true;
+    }
+}
 $email.addEventListener("focusout",emailErrorMessage);
+$pwd.addEventListener("focusout",pwdErrorMessage);
