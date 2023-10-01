@@ -74,6 +74,10 @@ form input{
     top: 50%;
 }
 
+.eye.open{
+    content: url(../../images/eye-on.svg);
+}
+
 .form-item:not(:first-child){
     margin-top: 2.4rem;
 }

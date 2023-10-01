@@ -1,6 +1,7 @@
 const form = document.querySelector('#form');
 const signinButton = document.querySelector('#signin-button');
 const signupButton = document.querySelector('#signup-button');
+const eyes = document.querySelectorAll('.eye');
 
 form.addEventListener('focusout', validate);
 form.addEventListener('keydown', resetValidation);
@@ -11,6 +12,20 @@ if(signinButton){
 
 if(signupButton){
     signupButton.addEventListener('click', signup);
+}
+
+for(const eye of eyes){
+    eye.addEventListener('click', function(e){
+        e.target.classList.toggle('open');
+
+        if(e.target.classList.contains('open')){
+            e.target.setAttribute('alt','비밀번호 안보이게하기(현재 보임)');
+            e.target.parentElement.querySelector('input').setAttribute('type','text');
+        }else{
+            e.target.setAttribute('alt','비밀번호 보이게하기(현재 보이지 않음)');
+            e.target.parentElement.querySelector('input').setAttribute('type','password');
+        }
+    })
 }
 
 function signup(){
