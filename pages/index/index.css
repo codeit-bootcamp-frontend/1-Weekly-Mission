@@ -182,7 +182,7 @@ main {
   line-height: 150%; 
 }
 
-.description_image{
+.description_image {
   width: 55rem;
   height: 45rem;
 }
@@ -194,12 +194,11 @@ footer {
 
 
 
-.footer-container{
+.footer-container {
   height: 160px;
   background: var(--black_color);
   display: flex;
   justify-content: center;
-
 }
 
 .footer-content {
@@ -320,11 +319,13 @@ a:hover {
     height: 3.7rem;
     margin: 1.3rem 3.2rem;
   }
+
   .intro_section {
     margin: 2.8rem 3.2rem 0 ;
     width: 32.5rem;
     height: 37.11rem;
   }
+
   .intro_title {
     width: 23.6rem;
     height: 12.6rem;   
@@ -361,7 +362,6 @@ a:hover {
     width: 100%;
     height: auto;
     margin-bottom:8rem;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
@@ -406,7 +406,6 @@ a:hover {
     left: 0;
     top: 7.8rem;
   }
-  
 }
 
 
