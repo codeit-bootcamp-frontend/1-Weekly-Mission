@@ -5,6 +5,7 @@ const emailErrorMsg = document.querySelector("#emailErrorMsg");
 const pwInput = document.querySelector("#pwInput");
 const pwErrorMsg = document.querySelector("#pwErrorMsg");
 const loginBtn = document.querySelector(".loginBtn");
+const eyeImgBtn = document.querySelector("#eyeOffImg");
 
 function showError(input, errorMsg, msg) {
   input.classList.add("error");
@@ -31,6 +32,11 @@ function checkInput(type, input, errorMsg) {
   }
 }
 
+function changePwShow(type, src) {
+  pwInput.type = type;
+  eyeImgBtn.src = src;
+}
+
 emailInput.addEventListener("focusout", function () {
   checkInput("email", emailInput, emailErrorMsg);
 });
@@ -45,5 +51,14 @@ loginBtn.addEventListener("click", function () {
   } else {
     showError(pwInput, pwErrorMsg, "비밀번호를 확인해주세요");
     showError(emailInput, emailErrorMsg, "이메일을 확인해주세요");
+  }
+});
+
+eyeImgBtn.addEventListener("click", function () {
+  pwInput.classList.toggle("on");
+  if (pwInput.classList[0] === "on") {
+    changePwShow("text", "./assets/user/img_eyeOn.png");
+  } else {
+    changePwShow("password", "./assets/user/img_eyeOff.png");
   }
 });
