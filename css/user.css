@@ -82,6 +82,25 @@ header > .userContainer {
   position: relative;
 }
 
+.inputBoxContainer .inputContainer .error {
+  border: 1px solid var(--red);
+  background: var(--white);
+  margin-bottom: 0;
+}
+
+.inputBoxContainer .inputContainer .errorMessage {
+  color: var(--red);
+  font-size: 1.4rem;
+  font-weight: 400;
+  display: none;
+  margin-top: -0.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.inputBoxContainer .inputContainer #pwErrorMsg {
+  margin-top: 0.6rem;
+}
+
 #eyeOffImg {
   position: absolute;
   top: 25%;

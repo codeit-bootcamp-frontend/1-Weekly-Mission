@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/user.css" />
+    <script defer src="/user.js"></script>
   </head>
   <body>
     <header>
@@ -33,12 +34,15 @@
         <form>
           <div class="inputContainer" id="emailInputContainer">
             <label for="emailInput">이메일</label>
-            <input type="email" name="emailInput" />
+            <input type="email" id="emailInput" />
+            <div class="errorMessage" id="emailErrorMsg">
+              이메일을 입력해주세요.
+            </div>
           </div>
           <div class="inputContainer" id="pwInputContainer">
             <label for="pwInput">비밀번호</label>
             <div class="inputBox">
-              <input type="password" name="pwInput" />
+              <input type="password" id="pwInput" />
               <img
                 src="/assets/user/img_eyeOff.png"
                 id="eyeOffImg"
@@ -46,9 +50,12 @@
                 width="16"
                 height="16"
               />
+              <div class="errorMessage" id="pwErrorMsg">
+                비밀번호를 입력해주세요.
+              </div>
             </div>
           </div>
-          <button type="submit" class="loginBtn">로그인</button>
+          <button type="button" class="loginBtn">로그인</button>
         </form>
       </section>
 
