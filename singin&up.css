@@ -89,6 +89,10 @@ body {
   border: 1px solid var(--primary);
 }
 
+.sign-box .input-box .input-wrong {
+  border: 1px solid var(--red);
+}
+
 .sign-link {
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue);
