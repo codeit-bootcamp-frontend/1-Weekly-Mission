@@ -33,12 +33,14 @@ function emailCheck () {
     else {
         email.className = 'normal';
     }
+    paddingFix();
 }
 
 function emailRemove () {
     if (emailBox.lastElementChild.classList.contains(`wrong-text`)) {
         emailBox.lastElementChild.remove();
     }
+    paddingFix();
 }
 
 function passwordCheck () {
@@ -52,12 +54,14 @@ function passwordCheck () {
     else {
         password.className = 'normal';
     }
+    paddingFix();
 }
 
 function passwordRemove () {
     if (passwordBox.lastElementChild.classList.contains(`wrong-text`)) {
         passwordBox.lastElementChild.remove();
     }
+    paddingFix();
 }
 
 function loginCheck () {
@@ -81,6 +85,20 @@ function loginCheck () {
     }
     else if (email.classList.contains('normal') && password.classList.contains('normal')){
         login.setAttribute('href','/folder.html');
+    }
+    paddingFix();
+}
+
+function paddingFix () {
+    const sign = document.querySelector('.sign');
+    if (passwordBox.lastElementChild.classList.contains(`wrong-text`) && emailBox.lastElementChild.classList.contains(`wrong-text`)){
+        sign.style.padding = '16.6rem 0'
+    }
+    else if (passwordBox.lastElementChild.classList.contains(`wrong-text`) || emailBox.lastElementChild.classList.contains(`wrong-text`)) {
+        sign.style.padding = '17.4rem 0'
+    }
+    else {
+        sign.removeAttribute('style')
     }
 }
 
