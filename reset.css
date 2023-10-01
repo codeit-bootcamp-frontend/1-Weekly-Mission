@@ -27,6 +27,13 @@ h6 {
   font-weight: normal;
 }
 
+/* html, body font 사이즈 초기화 */
+html,
+body {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
 /* 박스 사이즈 초기화 */
 * {
   box-sizing: border-box;
@@ -45,6 +52,5 @@ h6 {
 
 footer {
   --footer-bg-color: #111322;
-  --footer-font-color: #676767;
-  --footer-link-color: #CFCFCF;
+  --footer-font-family: Arial;
 }
