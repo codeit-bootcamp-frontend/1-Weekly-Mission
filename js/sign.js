@@ -76,8 +76,10 @@ function checkValue(event) {
     if (emCheck && pwCheck) {
       location.href = "./folder.html"
     } else if (emVal && pwVal) {
-      $inputs[0].value = "";
-      $inputs[1].value = "";
+      $errEm.textContent = "이메일을 확인해주세요."
+      $errPw.textContent = "비밀번호를 확인해주세요."
+      $labelEm.classList.add("err")
+      $labelPw.classList.add("err")
     }
     // 회원가입 페이지에서 비밀번호 === 비밀번호확인
   } else if (emCheck && pwVal === pwChVal) {
