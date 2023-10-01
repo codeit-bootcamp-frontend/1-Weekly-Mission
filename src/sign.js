@@ -21,19 +21,19 @@ function errorMsg(e) {
   if (!newMsg) {
     emailSpan.style.display = 'block';
     emailInput.style.border = '1px solid red';
-    emailSpan2.style.display = 'none';
-    emailCheck.style.display = 'none';
-    passwordCheck.style.display = 'none';
+    emailSpan2.style.display = 'none'; //이메일 형식
+    emailCheck.style.display = 'none'; //이메일 확인
+    passwordCheck.style.display = 'none'; //비밀번호 확인
   } else {
-    emailSpan.style.display = 'none';
-    emailCheck.style.display = 'none';
-    passwordCheck.style.display = 'none';
+    emailSpan.style.display = 'none'; //이메일 입력
+    emailCheck.style.display = 'none'; //이메일 확인
+    passwordCheck.style.display = 'none'; //비밀번호 확인
     emailInput.style.border = '1px solid #ccd5e3';
     if (e.target == emailInput1 && verify(newMsg) !== true) {
-      emailSpan2.style.display = 'block';
+      emailSpan2.style.display = 'block'; //이메일 형식
       emailInput.style.border = '1px solid red';
     } else {
-      emailSpan2.style.display = 'none';
+      emailSpan2.style.display = 'none'; //이메일 형식
       emailInput.style.border = '1px solid #ccd5e3';
     }
   }
@@ -63,8 +63,6 @@ function verify(text) {
 //아이디 test@codeit.com
 //비번 codeit101
 function loginCheck(e) {
-  console.log(emailInput1.parentElement.lastElementChild);
-
   if (
     emailInput1.value === 'test@codeit.com' &&
     emailInput2.value === 'codeit101'
