@@ -64,7 +64,7 @@ header p{
 .form__sign label{
     font-size: 1.4rem;
 }
-.form__sign input{
+.email_input,.pwd_input,.check_pwd_input{
     padding: 1.8rem 1.5rem;
     border: 0.1rem solid var(--linkbrary-gray-20);
     border-radius: 0.8rem;
@@ -122,4 +122,11 @@ header p{
     bottom:50%;
     transform: translateY(50%);
     fill: white;
+}
+.email_error_message{
+    display: none;
+    color: red;
+}
+.border-red{
+    border-color: red;
 }
