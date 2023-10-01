@@ -76,6 +76,10 @@
     font-weight: 600;
 }
 
+.login-box {
+    cursor: pointer;
+}
+
 .content .box .input-box {
     position: relative;
 }
@@ -144,6 +148,10 @@
 .normal {
     border-radius: 8px;
     border: 1px solid var(--gray60-color);
+}
+
+.icon-eye {
+    cursor: pointer;
 }
 
 @media (max-width:767px) {

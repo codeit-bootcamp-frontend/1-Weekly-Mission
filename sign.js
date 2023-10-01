@@ -2,7 +2,7 @@ const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const emailBox = email.parentElement;
 const passwordBox = password.parentElement.parentElement;
-const login = document.querySelector('.login').parentElement;
+const login = document.querySelector('.login-box');
 
 function emailValueChecker () {
     const includeAt = email.value.indexOf('@');
@@ -22,10 +22,6 @@ function emailValueChecker () {
 
 function emailCheck () {
     const emailValue = emailValueChecker();
-
-    if (emailBox.lastElementChild.classList.contains(`wrong-text`)) {
-        emailBox.lastElementChild.remove();
-    }
     
     if (emailValue){
         email.className = 'wrong';
@@ -39,11 +35,13 @@ function emailCheck () {
     }
 }
 
-function passwordCheck () {
-    if (passwordBox.lastElementChild.classList.contains(`wrong-text`)) {
-        passwordBox.lastElementChild.remove();
+function emailRemove () {
+    if (emailBox.lastElementChild.classList.contains(`wrong-text`)) {
+        emailBox.lastElementChild.remove();
     }
+}
 
+function passwordCheck () {
     if (password.value === ''){
         password.className = 'wrong';
         const alertWord = document.createElement('div');
@@ -56,12 +54,16 @@ function passwordCheck () {
     }
 }
 
+function passwordRemove () {
+    if (passwordBox.lastElementChild.classList.contains(`wrong-text`)) {
+        passwordBox.lastElementChild.remove();
+    }
+}
+
 function loginCheck () {
     if (email.value === '' || password.value === '') {
         if (email.value === '') {
-            if (emailBox.lastElementChild.classList.contains(`wrong-text`)) {
-                emailBox.lastElementChild.remove();
-            }
+            emailRemove();
             email.className = 'wrong';
             const alertEmail = document.createElement('div');
             alertEmail.textContent = `이메일을 확인해주세요`;
@@ -69,9 +71,7 @@ function loginCheck () {
             emailBox.append(alertEmail);
         }
         if (password.value === '') {
-            if (passwordBox.lastElementChild.classList.contains(`wrong-text`)) {
-                passwordBox.lastElementChild.remove();
-            }
+            passwordRemove();
             password.className = 'wrong';
             const alertPassword = document.createElement('div');
             alertPassword.textContent = `비밀번호를 확인해주세요`;
@@ -80,10 +80,31 @@ function loginCheck () {
         }
     }
     else if (email.classList.contains('normal') && password.classList.contains('normal')){
-        login.setAttribute('href','/folder');
+        login.setAttribute('href','/folder.html');
     }
 }
 
 email.addEventListener('focusout', emailCheck);
+email.addEventListener('focusin', emailRemove);
 password.addEventListener('focusout', passwordCheck);
+password.addEventListener('focusin', passwordRemove)
 login.addEventListener('click', loginCheck);
+
+const eye = document.querySelector('.icon-eye');
+
+function eyeOnOff () {
+    if (eye.classList.contains('off')) {
+        eye.setAttribute('src', 'images/icon/signup-input-active-eye-on.png');
+        eye.classList.remove('off');
+        eye.classList.add('on');
+        password.setAttribute('type','text')
+    }
+    else if (eye.classList.contains('on')) {
+        eye.setAttribute('src', 'images/icon/signin-eye-off.png');
+        eye.classList.remove('on');
+        eye.classList.add('off');
+        password.setAttribute('type','password')
+    }    
+}
+
+eye.addEventListener('click',eyeOnOff);
