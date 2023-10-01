@@ -14,9 +14,9 @@ function idEmpty(e) {
     idErrorMsg.textContent = '이메일을 입력해주세요.';
     idErrorMsg.classList.add('input-error-msg');
     idInput.after(idErrorMsg);
-    idInput.style.borderColor = '#FF5B56';
+    idInput.style.borderColor = 'var(--red)';
     }else{
-      idInput.style.borderColor = '#CCD5E3';
+      idInput.style.borderColor = 'var(--gray-40)';
       idErrorMsg.remove();
     }
 }
@@ -26,7 +26,7 @@ function idInvalid(e) {
     idInvalidMsg.textContent = '올바른 이메일 주소가 아닙니다.';
     idInvalidMsg.classList.add('input-error-msg');
     idInput.after(idInvalidMsg);
-    idInput.style.borderColor = '#FF5B56';
+    idInput.style.borderColor = 'var(--red)';
   }else{
     idInvalidMsg.remove();
   }
@@ -37,9 +37,9 @@ function pwEmpty(e) {
     pwErrorMsg.textContent = '비밀번호를 입력해주세요.';
     pwErrorMsg.classList.add('input-error-msg');
     inputBox.after(pwErrorMsg);
-    pwInput.style.borderColor = '#FF5B56';
+    pwInput.style.borderColor = 'var(--red)';
     }else{
-      pwInput.style.borderColor = '#CCD5E3';
+      pwInput.style.borderColor = 'var(--gray-40)';
       pwErrorMsg.remove();
     }
 }
@@ -49,7 +49,7 @@ function clickSigninBtn(e){
     idErrorMsg.textContent = '이메일을 확인해주세요.';
     idErrorMsg.classList.add('input-error-msg');
     idInput.after(idErrorMsg);
-    idInput.style.borderColor = '#FF5B56';
+    idInput.style.borderColor = 'var(--red)';
   }else{
     idErrorMsg.remove();
   }
@@ -58,7 +58,7 @@ function clickSigninBtn(e){
     pwErrorMsg.textContent = '비밀번호를 확인해주세요.';
     pwErrorMsg.classList.add('input-error-msg');
     inputBox.after(pwErrorMsg);
-    pwInput.style.borderColor = '#FF5B56';
+    pwInput.style.borderColor = 'var(--red)';
     }else{
       pwErrorMsg.remove();
   }
