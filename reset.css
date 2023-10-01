@@ -3,6 +3,7 @@ body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset, legend, 
 th, td, tr, textarea, button, form {
   margin: 0;
   padding: 0;
+  border: 0;
 }
 
 /* 불릿 기호 초기화 */
