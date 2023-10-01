@@ -9,6 +9,7 @@ let emailValid = false;
 let pwdValid = false;
 
 function emailErrorMessage(e){
+    emailValid = false;
     if(e.target.value === ""){
         $emailErrorMessage.textContent = "이메일을 입력해주세요."
         $emailErrorMessage.style.display ="block";
@@ -27,6 +28,7 @@ function emailErrorMessage(e){
 }
 
 function pwdErrorMessage(e){
+    pwdValid=false;
     if(e.target.value === ""){
         $pwdErrorMessage.textContent = "비밀번호를 입력해주세요."
         $pwdErrorMessage.style.display ="block";
