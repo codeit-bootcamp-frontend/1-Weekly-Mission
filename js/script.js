@@ -1,6 +1,6 @@
 const formInputs = document.querySelectorAll(".form__input-box");
-const formEmail = document.querySelector("#form__email");
-const formPassword = document.querySelector("#form__password");
+const formEmail = document.querySelector("#form-email");
+const formPassword = document.querySelector("#form-password");
 const formSubmit = document.querySelector(".form__submit");
 
 const errorMsgs = {
