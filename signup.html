@@ -26,15 +26,17 @@
         <div class="input-container">
           <input id="sign-up" type="email" />
         </div>
+        <div class="email-error-message">이메일을 입력해주세요.</div>
       </label>
       <label for="password"
         >비밀번호<br>
         <div class="input-container">
           <div class="helper">
             <input id="password" type="password" />
-            <div class="input-eye-off"><img src="./images/signin/eye-off.svg"/></div>
+            <div class="input-eye-off" onclick="toggleImage()"><img src="./images/signin/eye-off.svg"/></div>
           </div>
         </div>
+        <div class="password-error-message">비밀번호를 입력해주세요.</div>
       </label>
       <button onclick="location.href='./index.html'">로그인</button> 
       <div class="another-signup">
@@ -49,5 +51,6 @@
         </div>
       </div>
     </form>
+    <script defer src="./script.js"></script>
   </body>
 </html>
