@@ -12,6 +12,7 @@ const ERROR_CLASS_NAME = "items__input--error";
 const EMAIL = "test@codeit.com";
 const PW = "codeit101";
 const REDIRECT_PATH = "/folder";
+const VALUE_EMPTY = "";
 
 const eyeIconPath = {
   eye_on: "../src/images/eye-on.svg",
@@ -55,7 +56,6 @@ emailInput.addEventListener("focusout", () => {
 });
 
 passwordInput.addEventListener("focusout", () => {
-  const VALUE_EMPTY = "";
   const isEmpty = passwordInput.value === VALUE_EMPTY;
 
   displayErrorMessage(passwordErrorMessage, isEmpty ? errorMessages.password.empty : VALUE_EMPTY);
