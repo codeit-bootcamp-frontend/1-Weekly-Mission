@@ -31,6 +31,20 @@ const passwordErrorCheck = (event) => {
   }
 };
 
+const signinCheck = (event) => {
+  if (email.value != "test@codeit.com" && password.value != "codeit101") {
+    emailErrorMessage.textContent = "이메일을 확인해주세요.";
+    emailErrorMessage.style.display = "block";
+    passwordErrorMessage.textContent = "비밀번호를 확인해주세요";
+    passwordErrorMessage.style.display = "block";
+    event.preventDefault();
+  } else {
+    // 로그인 시 폴더 페이지로 이동
+    window.location.href = "/pages/folder.html";
+    event.preventDefault();
+  }
+};
+
 // 정규표현식을 이용한 이메일 형식 검사 (오류)
 // const emailPatternCheck = (event) => {
 //   let email = event.target;
@@ -41,3 +55,4 @@ const passwordErrorCheck = (event) => {
 
 email.addEventListener("focusout", emailErrorCheck);
 password.addEventListener("focusout", passwordErrorCheck);
+signButton.addEventListener("click", signinCheck);
