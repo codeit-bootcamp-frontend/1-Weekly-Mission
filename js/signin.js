@@ -33,7 +33,7 @@ const passwordErrorCheck = (event) => {
 };
 
 const signinCheck = (event) => {
-  if (email.value != "test@codeit.com" && password.value != "codeit101") {
+  if (email.value != "test@codeit.com" || password.value != "codeit101") {
     emailErrorMessage.textContent = "이메일을 확인해주세요.";
     emailErrorMessage.style.display = "block";
     passwordErrorMessage.textContent = "비밀번호를 확인해주세요";
