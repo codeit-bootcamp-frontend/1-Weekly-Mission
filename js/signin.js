@@ -3,10 +3,13 @@ const loginForm = document.getElementById("login-form")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const inputs = document.getElementsByClassName("inner-input")
-const [TESTEMAIL, TESTPWD, EXPTEXT] = ["test@codeit.com", "codeit101", /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
+const [TEST_EMAIL, TEST_PWD, EXPTEXT] = ["test@codeit.com", "codeit101", /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
 let noEmail, noPwd
+
 const passwordEye = document.getElementsByClassName("password-eye")[0]
 let passwordEyeToggle = false
+
+const createTagP = document.createElement("p")
 
 
 // email 에러 메세지
@@ -87,7 +90,7 @@ loginForm.addEventListener("submit", e => {
     if (password.value === "") pwdError(true, noPwd)
     // else pwdError(false, noPwd)
 
-    if (email.value === TESTEMAIL && password.value === TESTPWD) location.href = "./folder.html"
+    if (email.value === TEST_EMAIL && password.value === TEST_PWD) location.href = "../pages/folder.html"
     else {
 
         // 로그인 시도
@@ -110,20 +113,21 @@ loginForm.addEventListener("submit", e => {
 
 })
 
-loginButton.addEventListener("click", e => e.preventDefault())
-
-email.addEventListener("invalid", e => e.preventDefault())
 
 // 비밀번호 눈 표시 Toggle
-passwordEye.addEventListener("click", e => {
+const eyeOnOffToggleFunc = e => {
     e.preventDefault()
-
     if (passwordEyeToggle){
-        passwordEye.src = "images/eye-off.png"
-        password.type = "password"
+        passwordEye.setAttribute("src", "images/eye-off.png")
+        password.setAttribute("type", "password")
     } else {
-        passwordEye.src = "images/eye-on.png"
-        password.type = "text"
+        passwordEye.setAttribute("src", "images/eye-on.png")
+        password.setAttribute("type", "text")
     }
     passwordEyeToggle = !passwordEyeToggle
-})
+}
+
+
+loginButton.addEventListener("click", e => e.preventDefault())
+email.addEventListener("invalid", e => e.preventDefault())
+passwordEye.addEventListener("click", eyeOnOffToggleFunc)
