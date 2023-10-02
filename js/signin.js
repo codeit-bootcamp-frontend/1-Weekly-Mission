@@ -46,7 +46,7 @@ function pwEmptyCheck(e) {
   }
 }
 
-function clickSigninBtn() {
+function clickSigninBtn(e) {
   if (emailInput.value !== "test@codeit.com") {
     emailEmptyMsg.textContent = "이메일을 확인해주세요.";
     emailEmptyMsg.classList.add("input-error-msg");
@@ -66,6 +66,7 @@ function clickSigninBtn() {
   }
 
   if (emailInput.value === "test@codeit.com" && pwInput.value === "codeit101") {
+    e.preventDefault();
     location.href = "folder.html";
   }
   /* 해당 function 코드가 적절한 것인지, 또한 마지막에 로그인 아이디/비번 밸류가 맞는 경우 실제 적용 화면에서 folder.html로 제대로 넘어가는 것인지 모르겠습니다. */
