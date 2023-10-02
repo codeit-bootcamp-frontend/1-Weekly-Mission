@@ -1,51 +1,55 @@
-const emailBox = document.querySelector('#email_box');
-const inputEmail = emailBox.children[0];
-const errorEmail = emailBox.children[1]; //이메일 관련 에러메세지
-
-const pwBox = document.querySelector('#pw_box');
-const pwWrapper = document.querySelector('.pw_wrapper');
-const inputPw = pwWrapper.children[0];
-const errorPw = pwBox.children[1];
-
-function enterError(event){ //아무 입력을 안했을 경우 error
-    if(event.target.value) return;
-    event.target.classList.add('error_box');
-    if(event.target === inputEmail){ //이메일 input 태그에 값이 없는 경우
-        errorEmail.textContent = "이메일을 입력해주세요.";
-    }
-    else if(event.target === inputPw){
-        errorPw.textContent = "비밀번호를 입력해주세요.";
-    }
-
-}
-function enterReset(event){
-    //값이 입력되고 있는 중일 때는 에러 메세지 삭제
-    if(event.target === inputEmail){
-        errorEmail.textContent = "";
-        inputEmail.classList.remove('error_box');
-    }
-    else if(event.target === inputPw){ 
-        errorPw.textContent = "";
-        inputPw.classList.remove('error_box');
-    }
-}
-
-let emailType = /[0-9a-zA-Z]*@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/i;
-function checkEmail(event){ //이메일 형식에 맞지 않는 경우
-    if(!event.target.value) return; //아무것도 입력 안 된 경우는 pass
-    if(!emailType.test(event.target.value)){
-        errorEmail.textContent = "올바른 이메일 주소가 아닙니다.";
-        inputEmail.classList.add('error_box');
-    }
-}
-
+const inputEmail = document.querySelector('input[name = "signin_email"]');
+const errorEmail = document.querySelector('#email_error');
+const inputPw = document.querySelector('input[name = "signin_pw"]');
+const errorPw = document.querySelector('#pw_error');
 const form = document.querySelector('form');
+const eyeIcon = document.querySelector('.eye_icon');
+
+const emailType = /[0-9a-zA-Z]*@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/i;
+
+const TEST_EMAIL = 'test@codeit.com';
+const TEST_PW = 'codeit101';
+
+let eye_on = 0;
+
+function emptyError(event){
+    /* input이 없을 경우, "이메일/비밀번호를 입력해주세요." 에러 메시지 출력하는 함수 */
+    const isNotEmpty = event.target.value;
+    const isEmail = event.target === inputEmail;
+
+    if(isNotEmpty) return;
+    event.target.classList.add('error_box');
+    if(isEmail) errorEmail.textContent = "이메일을 입력해주세요.";
+    else errorPw.textContent = "비밀번호를 입력해주세요.";
+}
+
+function emptyErrorReset(event){
+    /* 키보드 입력 중일 때 에러 메세지 삭제하는 함수 */
+    const isEmail = event.target === inputEmail;
+
+    event.target.classList.remove('error_box');
+    if(isEmail) errorEmail.textContent = "";
+    else errorPw.textContent = "";
+}
+
+function checkEmail(event){
+    /* 이메일 형식 유효성 검사하는 함수 */
+    const isEmpty = !event.target.value;
+    const isValid = emailType.test(event.target.value);
+
+    if(isEmpty || isValid) return;
+    errorEmail.textContent = "올바른 이메일 주소가 아닙니다.";
+    inputEmail.classList.add('error_box');
+}
+
 function checkLogin(event){
+    /* 특정 로그인 시도 시 /folder 페이지로 이동하는 함수 */
     event.preventDefault();
-    let testEmail = 'test@codeit.com';
-    let testPw = 'codeit101';
-    if(!inputEmail.value || !inputPw.value) return; //두 값이 모두 있어야만 확인
-    if(inputEmail.value === testEmail && inputPw.value === testPw) {
+    const isEmptyEmail = !inputEmail.value;
+    const isEmptyPw = !inputPw.value;
+
+    if(isEmptyEmail || isEmptyPw) return;
+    if(inputEmail.value === TEST_EMAIL && inputPw.value === TEST_PW) {
         location.href = '/folder';
     }
     else{
@@ -56,16 +60,17 @@ function checkLogin(event){
     }
 }
 
-const eyeIcon = document.querySelector('.eye_icon');
-let eye_on = 0;
 function clickEye(event){
-    if(!eye_on){ //off -> on
+    /* 눈 아이콘을 클릭하면 비밀번호 문자열 가리기 설정을 변경해주는 함수 */
+    if(!eye_on){ 
+        //off -> on
         eye_on = 1;
-        eyeIcon.setAttribute('src', '/assets/images/eye-on.svg'); //눈 아이콘 사진 변경
+        eyeIcon.setAttribute('src', '/assets/images/eye-on.svg');
         inputPw.setAttribute('type', '');
         inputPw.setAttribute('placeholder', 'password');
     }
-    else{ //on -> off
+    else{
+        //on -> off
         eye_on = 0;
         eyeIcon.setAttribute('src', '/assets/images/eye-off.svg');
         inputPw.setAttribute('type', 'password');
@@ -74,13 +79,13 @@ function clickEye(event){
 }
 
 //이메일
-inputEmail.addEventListener('focusout', enterError);
-inputEmail.addEventListener('input', enterReset);
+inputEmail.addEventListener('focusout', emptyError);
+inputEmail.addEventListener('input', emptyErrorReset);
 inputEmail.addEventListener('focusout', checkEmail);
 
 //비밀번호
-inputPw.addEventListener('focusout', enterError);
-inputPw.addEventListener('input', enterReset);
+inputPw.addEventListener('focusout', emptyError);
+inputPw.addEventListener('input', emptyErrorReset);
 
 //로그인 버튼
 form.addEventListener('submit', checkLogin);
