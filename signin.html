@@ -10,6 +10,7 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <script src="./signin.js"></script>
   </head>
   <body>
     <div class="page-container">
@@ -26,20 +27,33 @@
       <div class="main">
         <div class="main-input">
           <p class="input-type">이메일</p>
-          <input class="input-content" />
+          <input
+            class="input-content"
+            id="email"
+            onblur="checkEmailValidation()"
+          />
+          <p class="error-msg" id="error-email1">이메일을 입력해주세요.</p>
+          <p class="error-msg" id="error-email2">
+            올바른 이메일 주소가 아닙니다.
+          </p>
         </div>
         <div class="main-input">
           <p class="input-type">비밀번호</p>
           <div class="input-wrapper">
-            <input class="input-content" type="password" />
+            <input
+              class="input-content"
+              id="pwd"
+              type="password"
+              onblur="checkPwdValidation()"
+            />
             <div class="eyes"><img src="./image/eye-off.svg" /></div>
           </div>
+          <p class="error-msg" id="error-pwd1">비밀번호를 입력해주세요.</p>
+          <p class="error-msg" id="error-pwd2">비밀번호를 확인해주세요.</p>
         </div>
       </div>
 
-      <button class="signin" onclick="location.href='./signin.html'">
-        로그인
-      </button>
+      <button class="signin" onclick="submit()">로그인</button>
 
       <div class="social-login">
         <p>소셜 로그인</p>

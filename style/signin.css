@@ -111,6 +111,14 @@ button {
   outline: 1px solid #6d6afe;
 }
 
+.error-msg {
+  font-size: 1.4rem;
+  color: var(--red-color);
+  margin-top: 0.6rem;
+
+  display: none;
+}
+
 .signin {
   width: 40rem;
 
