@@ -1,9 +1,9 @@
 // 요소노드 선택
-const emailInput = document.querySelector('#email-input');
-const emailError = document.querySelector('#email-error');
-const passwordInput = document.querySelector('#password-input');
-const passwordError = document.querySelector('#password-error');
-const loginButton = document.querySelector('#login-button');
+const emailInput = document.querySelector('#form--input__email');
+const emailError = document.querySelector('#form--error-message__email');
+const passwordInput = document.querySelector('#form--input__password');
+const passwordError = document.querySelector('#form--error-message__password');
+const loginButton = document.querySelector('#form--login-button');
 const eyeButton = document.querySelector('.form--eye-button');
 
 const borderRed = "border-red";
@@ -74,7 +74,7 @@ function showPassword() {
     passwordInput.type = "text";
   } else {
     eyeButton.classList.toggle(eyeOn);
-    passwordInput.type = "password"
+    passwordInput.type = "password";
   };
 };
 

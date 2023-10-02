@@ -157,7 +157,7 @@
   height: 2.4rem;
 }
 
-.error__style {
+.form--error-message__style {
   margin-top: 0.6rem;
   color: var(--red);
   font-size: 1.4rem;
