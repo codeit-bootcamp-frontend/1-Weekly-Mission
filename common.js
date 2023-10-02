@@ -18,10 +18,14 @@ function showEmptyErrorMessage(input, inputLabel) {
   }
 }
 
-function validEmailCheck(input, inputLabel) {
+function isEmailValid(input) {
   const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
   const texts = input.value.trim();
-  if (!re.test(texts) && texts.length) {
+  return re.test(texts);
+}
+
+function showValidEmailErrorMessage(input, inputLabel) {
+  if (!isEmailValid(input)) {
     const errorMsgs = inputLabel.querySelector(".error-message");
     errorMsgs.innerText = "유효하지않은이메일입니다";
     errorMsgs.style.color = "red";
