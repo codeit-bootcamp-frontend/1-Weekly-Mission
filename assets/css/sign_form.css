@@ -84,8 +84,10 @@ input:focus{
 }
 
 .errorMsg{
+  display: inline-block;
   color: var(--linkbrary-red);
   font-size: 0.875rem;
+  margin-top: 0.38rem;
 }
 
 .input--pw{
