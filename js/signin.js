@@ -38,7 +38,7 @@ const addErrorMessage = (createdTag, errorText) => {
     }
 }
 
-// email 에러 메세지
+// 이메일 확인
 const emailValidation = e => {
     e.preventDefault()
     if (!email.value){
@@ -48,7 +48,7 @@ const emailValidation = e => {
     }
 }
 
-// 비밀번호 이벤트 함수
+// 비밀번호 확인
 const passwordValidation = e => {
     e.preventDefault()
     if (!password.value){
@@ -57,7 +57,7 @@ const passwordValidation = e => {
 }
 
 // Form 전송 이벤트 함수
-const loginSubmitFunc = e => {
+const loginSubmit = e => {
     e.preventDefault()
     const [TEST_EMAIL, TEST_PWD] = ["test@codeit.com", "codeit101"]
 
@@ -71,7 +71,7 @@ const loginSubmitFunc = e => {
 
 
 // 비밀번호 눈 표시 Toggle
-const eyeOnOffToggleFunc = e => {
+const eyeOnOffToggle = e => {
     e.preventDefault()
     if (passwordEyeToggle){
         passwordEye.setAttribute("src", "../images/eye-off.png")
@@ -84,13 +84,10 @@ const eyeOnOffToggleFunc = e => {
 }
 
 
-// return 으로 접근
 email.addEventListener("focusin", () => clearErrorMessage(createEmailError))
 password.addEventListener("focusin", () => clearErrorMessage(createPasswordError))
-
-// 이름으로 접근
 email.addEventListener("focusout", emailValidation)
 password.addEventListener("focusout", passwordValidation)
-loginForm.addEventListener("submit", loginSubmitFunc)
+loginForm.addEventListener("submit", loginSubmit)
 email.addEventListener("invalid", e => e.preventDefault())
-passwordEye.addEventListener("click", eyeOnOffToggleFunc)
+passwordEye.addEventListener("click", eyeOnOffToggle)
