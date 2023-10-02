@@ -34,18 +34,18 @@ const isEmail = (input) => {
 };
 
 
-const validateInput = (arg) => {
-    if (arg.value === "") {
-        return errorMessageInput[arg.id]
-    } else if (!isEmail(arg.value) && arg.id === "signinEmail") {
+const validateInput = (inputEl) => {
+    if (inputEl.value === "") {
+        return errorMessageInput[inputEl.id]
+    } else if (!isEmail(inputEl.value) && inputEl.id === "signinEmail") {
         return "올바른 이메일 주소가 아닙니다.";
     }
 }
 
-const setErrorMessage = (arg, target) => {
-    if (arg.textContent !== "") {
+const setErrorMessage = (divTag, target) => {
+    if (divTag.textContent !== "") {
         let pointNode = target.parentElement;
-        pointNode.after(arg);
+        pointNode.after(divTag);
         pointNode.classList.add(nullErrBorder);
     }
 }
