@@ -64,6 +64,7 @@ function clickSigninBtn(e){
   }
 
   if(idInput.value === "test@codeit.com" && pwInput.value === "codeit101"){
+    e.preventDefault();
     location.href = "../folder.html";
   }
 }
