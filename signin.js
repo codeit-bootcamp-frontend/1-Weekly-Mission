@@ -64,6 +64,7 @@ email.addEventListener("focusout", e => {
     }
 })
 
+
 // 비밀번호 이벤트 함수
 password.addEventListener("focusout", e => {
     e.preventDefault()
@@ -111,6 +112,7 @@ loginForm.addEventListener("submit", e => {
 
 loginButton.addEventListener("click", e => e.preventDefault())
 
+email.addEventListener("invalid", e => e.preventDefault())
 
 // 비밀번호 눈 표시 Toggle
 passwordEye.addEventListener("click", e => {
