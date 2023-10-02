@@ -24,22 +24,21 @@
       </div>
       <div class="sign-form-container">
         <form>
-          <div class="sign-input">
+          <div class="sign-input email">
             <label for="signin-email">이메일</label>
-            <input id="signin-email" name="email" type="email">
+            <input class="signin-input" id="signin-email" name="email" type="email">
           </div>
           <div class="sign-input password">
             <label for="signin-password">비밀번호</label>
-            <input id="signin-password" name="password" type="password">
+            <input class="signin-input" id="signin-password" name="password" type="password">
             <div class="eye-off-icon">
-              <img class="eye-off" src="images/eye-off.svg" alt="eye-off">
+              <img class="eye-off" src="images/eye-off.svg" alt="eye-on-off-toggle">
             </div>
           </div>
+          <button class="btn login" type="submit">로그인</button>
         </form>
       </div>
-      <a class="sign-link-btn" href="#">
-        <div class="btn login">로그인</div>
-      </a>
+
       <div class="social-login">
         <h4 class="social-login-title">소셜 로그인</h4>
         <div class="social-icon">
@@ -57,6 +56,6 @@
       </div>
     </div>
   </main>
-
+<script src="sign.js"></script>
 </body>
 </html>

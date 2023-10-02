@@ -3,6 +3,7 @@ body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset, legend, 
 th, td, tr, textarea, button, form {
   margin: 0;
   padding: 0;
+  border: 0;
 }
 
 /* 불릿 기호 초기화 */
@@ -27,7 +28,30 @@ h6 {
   font-weight: normal;
 }
 
+/* html, body font 사이즈 초기화 */
+html,
+body {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
 /* 박스 사이즈 초기화 */
 * {
   box-sizing: border-box;
+}
+
+/* color 관리 */
+:root {
+  --font-family: Arial, sans-serif;
+  --bg-color: #f0f6ff;
+}
+
+.btn {
+  --btn-color: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  --font-color: #f5f5f5;
+}
+
+footer {
+  --footer-bg-color: #111322;
+  --footer-font-family: Arial;
 }

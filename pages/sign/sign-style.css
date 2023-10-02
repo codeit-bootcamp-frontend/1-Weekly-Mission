@@ -1,3 +1,8 @@
+/* color */
+:root {
+    --error-color: #FF5B56;
+}
+
 /* main */
 main {
     display: flex;
@@ -85,26 +90,38 @@ main {
     line-height: normal;
 }
 
-.sign-form-container input {
+.signin-input {
     width: 400px;
     padding: 18px 15px;
     border-radius: 8px;
-    border: 1px solid #6D6AFE;
+    border: 1px solid #CCD5E3;
     background: #FFF;
 }
 
 .sign-form-container input:focus {
-    border: 1px solid #6D7CCD;
+    border: 1px solid #6D6AFE;
 }
 
 .sign-input.password {
     position: relative;
 }
 
+.error-input {
+    outline: none;
+    border-color: var(--error-color);
+}
+
+.email-type-error,
+.password-type-error {
+    color: var(--error-color);
+    font-size: 0.8rem;
+}
+
 .eye-off-icon {
     position: absolute;
     right: 15px;
     top: 48px;
+    cursor: pointer;
 }
 
 .btn {
@@ -113,7 +130,8 @@ main {
     padding: 16px 20px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    margin-top: 10px;
+    cursor: pointer;
     border-radius: 8px;
     background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     color: #F5F5F5;
