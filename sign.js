@@ -1,7 +1,7 @@
 // DOM 요소 집어오기
 const eyeButtons = document.querySelectorAll(".input__eyes");
 const signInputs = document.querySelectorAll(".input__container");
-const loginButtonNode = document.querySelector(".sign_form__btn");
+const signForm = document.querySelector(".sign_form");
 const signFormInputs = document.querySelectorAll(".sign_form__input")
 
 // class 선택자 변수화
@@ -62,6 +62,7 @@ const togglePasswordVisibility = ({ target }) => {
 
     target.classList.toggle(eyesOn);
 
+    // 이 아래는 빼도 박도 못하게 DOM 종속적이다.
     if (isVisible) {
         target.previousElementSibling.type = "password"
     } else {
@@ -90,7 +91,7 @@ const removeInputError = (e) => {
     }
 }
 
-const handleLoginButton = (e) => {
+const handleSubmit = (e) => {
     e.preventDefault();
     if (validateLoginInputs()) {
         location.href = "/folder.html";
@@ -121,4 +122,4 @@ for (const line of signInputs) {
 }
 
 // 로그인 버튼 폴더 이동 클릭 이벤트 바인딩
-loginButtonNode.addEventListener("click", handleLoginButton);
+signForm.addEventListener("submit", handleSubmit);
