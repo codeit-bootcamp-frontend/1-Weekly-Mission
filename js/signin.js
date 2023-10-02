@@ -4,6 +4,7 @@ const email = document.querySelector(".email-input");
 const password = document.querySelector(".password-input");
 const signButton = document.querySelector(".login-button");
 const passwordEye = document.querySelector(".eye-button");
+let eyeOn = false;
 
 const emailErrorCheck = (event) => {
   if (event.target.value === "") {
@@ -45,6 +46,22 @@ const signinCheck = (event) => {
   }
 };
 
+const eyeChange = (event) => {
+  eyeOn = !eyeOn;
+  if (eyeOn) {
+    event.target.src = "/assets/eye-on.svg";
+    password.type = "text";
+  } else {
+    event.target.src = "/assets/eye-off.svg";
+    password.type = "password";
+  }
+};
+
+email.addEventListener("focusout", emailErrorCheck);
+password.addEventListener("focusout", passwordErrorCheck);
+signButton.addEventListener("click", signinCheck);
+passwordEye.addEventListener("click", eyeChange);
+
 // 정규표현식을 이용한 이메일 형식 검사 (오류)
 // const emailPatternCheck = (event) => {
 //   let email = event.target;
@@ -52,7 +69,3 @@ const signinCheck = (event) => {
 //   pattern.test(email) ? true : false;
 //   console.log(email);
 // };
-
-email.addEventListener("focusout", emailErrorCheck);
-password.addEventListener("focusout", passwordErrorCheck);
-signButton.addEventListener("click", signinCheck);
