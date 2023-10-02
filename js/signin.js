@@ -4,11 +4,10 @@ const emailError = document.querySelector('#email-error')
 const passwordInput = document.querySelector('#password-input')
 const passwordError = document.querySelector('#password-error')
 
-const loginBtn = document.querySelector('#login-button')
-const eyeBtn = document.querySelector('.form--eye-button')
+const loginButton = document.querySelector('#login-button')
+const eyeButton = document.querySelector('.form--eye-button')
 
-/* 이메일, 비밀번호 에러문구 설정 */
-function emailEvent() {
+function valiDateEmail() {
   const emailValue = emailInput.value;
 
   if (!emailValue) {
@@ -23,7 +22,7 @@ function emailEvent() {
   }
 }
 
-function passwordEvent() {
+function valiDatePassword() {
   const passwordValue = passwordInput.value;
 
   if (!passwordValue) {
@@ -35,11 +34,10 @@ function passwordEvent() {
   }
 }
 
-emailInput.addEventListener('focusout', emailEvent);
-passwordInput.addEventListener('focusout', passwordEvent);
+emailInput.addEventListener('focusout', valiDateEmail);
+passwordInput.addEventListener('focusout', valiDatePassword);
 
-/* 로그인 버튼 */
-function loginEvent() {
+function getLogin() {
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
 
@@ -55,17 +53,16 @@ function loginEvent() {
   }
 }
 
-loginBtn.addEventListener('click', loginEvent);
+loginButton.addEventListener('click', getLogin);
 
-/* eye-button */
-function eyeBtnEvent() {
+function showPassword() {
   if (passwordInput.type === "password") {
-    eyeBtn.classList.toggle('on')
+    eyeButton.classList.toggle('on')
     passwordInput.type = "text";
   } else {
-    eyeBtn.classList.toggle('on')
+    eyeButton.classList.toggle('on')
     passwordInput.type = "password"
   }
 }
 
-eyeBtn.addEventListener('click', eyeBtnEvent);
+eyeButton.addEventListener('click', showPassword);
