@@ -4,6 +4,10 @@ body {
   font-family: Pretendard;
 }
 
+html {
+  font-size: 10px;
+}
+
 * {
   font-family: Pretendard;
 }
@@ -17,7 +21,7 @@ button {
 }
 
 .page-container {
-  padding: 15rem 0 15.75rem;
+  padding: 24rem 0 25.2rem;
 
   background-color: #f0f6ff;
 
@@ -35,11 +39,11 @@ button {
 }
 
 .header-logo {
-  width: 210px;
+  width: 21rem;
 }
 
 .header-signup {
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 24px; /* 150% */
 
   display: flex;
@@ -47,7 +51,7 @@ button {
 }
 
 .main {
-  margin: 1.875rem 0;
+  margin: 3rem 0;
 
   display: flex;
   flex-direction: column;
@@ -55,10 +59,10 @@ button {
 }
 
 .input-type {
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   line-height: normal;
 
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.2rem;
 }
 
 .password {
@@ -92,11 +96,11 @@ button {
 .input-content {
   display: flex;
   width: 400px;
-  padding: 1.125rem 1rem;
+  padding: 1.7rem 1.6rem;
   justify-content: center;
   align-items: center;
 
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 24px; /* 150% */
 
   border-radius: 8px;
@@ -108,14 +112,14 @@ button {
 }
 
 .signin {
-  width: 25rem;
+  width: 40rem;
 
   color: #f5f5f5;
-  font-size: 1.125rem;
+  font-size: 1.8rem;
   font-weight: 600;
 
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
-  padding: 1rem 1.25rem;
+  padding: 1.6rem 2rem;
   align-items: center;
   border: none;
   border-radius: 8px;
@@ -124,15 +128,15 @@ button {
 .social-login {
   width: 400px;
 
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   line-height: normal;
 
   border-radius: 8px;
   border: 1px solid #ccd5e3;
   background-color: #e7effb;
 
-  padding: 0.75rem 1.5rem;
-  margin-top: 2rem;
+  padding: 1.2rem 2.4rem;
+  margin-top: 3.2rem;
 
   display: flex;
   flex-direction: row;
