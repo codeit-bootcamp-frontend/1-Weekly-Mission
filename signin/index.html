@@ -19,16 +19,11 @@
         <!-- 헤더 영역 -->
         <div class="header">
           <a class="header__logo" href="/">
-            <img
-              src="../src/images/signin-logo.svg"
-              alt="LinkBrary 로고 이미지"
-            />
+            <img src="../src/images/signin-logo.svg" alt="LinkBrary 로고 이미지" />
           </a>
           <div class="header__description">
             <h3 class="description__title">
-              회원이 아니신가요?<a class="description__link" href="../signup/"
-                >회원 가입하기</a
-              >
+              회원이 아니신가요?<a class="description__link" href="../signup/">회원 가입하기</a>
             </h3>
           </div>
         </div>
@@ -38,12 +33,8 @@
           <div class="form__contents">
             <div class="items">
               <label for="email" class="items__label">이메일</label>
-              <input
-                id="email"
-                class="items__input"
-                placeholder="이메일을 입력해주세요."
-              />
-              <div id="email-error" class="error-message"></div>
+              <input id="email" class="items__input" placeholder="이메일을 입력해주세요." autocomplete="off" />
+              <p id="email-error" class="error-message"></p>
             </div>
 
             <div class="items sign-password">
@@ -54,21 +45,13 @@
                   class="items__input"
                   type="password"
                   placeholder="비밀번호를 입력해주세요."
+                  autocomplete="off"
                 />
                 <button class="items__eye-button" type="button">
-                  <img
-                    class="eye-button"
-                    src="../src/images/eye-off.svg"
-                    alt="패스워드 숨기기 이미지"
-                  />
-                  <img
-                    class="eye-button"
-                    src="../src/images/eye-on.svg"
-                    alt="패스워드 숨기기 이미지"
-                  />
+                  <img class="eye-button" src="../src/images/eye-off.svg" alt="패스워드 숨기기 이미지" />
                 </button>
               </div>
-              <div id="password-error" class="error-message"></div>
+              <p id="password-error" class="error-message"></p>
             </div>
           </div>
           <button class="cta" type="submit">로그인</button>

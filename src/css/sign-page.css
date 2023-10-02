@@ -107,10 +107,9 @@ body {
   top: 50%;
 }
 
-.eye-button:last-child {
-  position: relative;
-  top: -0.1rem;
-  display: none;
+.relocate-y {
+  position: absolute;
+  top: 49%;
 }
 
 .cta {
