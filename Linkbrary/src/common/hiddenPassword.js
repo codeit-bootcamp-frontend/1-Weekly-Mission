@@ -1,5 +1,3 @@
-"use strict";
-
 const eyeIcons = document.querySelectorAll(".form__input--selected");
 
 // 비밀번호 가리기 토글 기능 - selected 상태에 따라 type과 src를 변경
@@ -8,13 +6,10 @@ const hiddenPasswordToggle = (e) => {
   input.classList.toggle("selected");
 
   const isSelected = input.classList.contains("selected");
-  if (isSelected) {
-    input.setAttribute("type", "text");
-    e.target.setAttribute("src", "images/eye-on.svg");
-  } else {
-    input.setAttribute("type", "password");
-    e.target.setAttribute("src", "images/eye-off.svg");
-  }
+  const pwIconPath = isSelected ? "images/eye-on.svg" : "images/eye-off.svg";
+
+  input.setAttribute("type", isSelected ? "text" : "password");
+  e.target.setAttribute("src", pwIconPath);
 };
 
 eyeIcons.forEach((icon) =>
