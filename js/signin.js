@@ -57,7 +57,7 @@ const pwdError = (bool, verify) => {
 }
 
 // 이메일 이벤트 함수
-email.addEventListener("focusout", e => {
+const emailValidationFunc = e => {
     e.preventDefault()
     if (e.target.value === "") emailError(true, noEmail, true)
     else if(e.target.value !== "") {
@@ -65,17 +65,18 @@ email.addEventListener("focusout", e => {
         if (EXPTEXT.test(e.target.value) === false) emailError(false, noEmail, false)
         else emailError(false, noEmail, true)
     }
-})
+}
 
 
 // 비밀번호 이벤트 함수
-password.addEventListener("focusout", e => {
+const passwordValidationFunc = e => {
     e.preventDefault()
     if (e.target.value === "") pwdError(true, noPwd)
     else pwdError(false, noPwd)
-})
+}
 
-loginForm.addEventListener("submit", e => {
+// Form 전송 이벤트 함수
+const loginSubmitFunc = e => {
     e.preventDefault()
 
     // Errors
@@ -110,8 +111,7 @@ loginForm.addEventListener("submit", e => {
         }
         noPwd.textContent = "비밀번호를 확인해주세요."
     }
-
-})
+}
 
 
 // 비밀번호 눈 표시 Toggle
@@ -128,6 +128,9 @@ const eyeOnOffToggleFunc = e => {
 }
 
 
+email.addEventListener("focusout", emailValidationFunc)
+password.addEventListener("focusout", passwordValidationFunc)
+loginForm.addEventListener("submit", loginSubmitFunc)
 loginButton.addEventListener("click", e => e.preventDefault())
 email.addEventListener("invalid", e => e.preventDefault())
 passwordEye.addEventListener("click", eyeOnOffToggleFunc)
