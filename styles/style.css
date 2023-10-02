@@ -1,34 +1,31 @@
 @font-face {
   font-family: 'Pretendard';
-  src: url('../asset/fonts/Pretendard-Regular.woff2') format('woff2');
+  src: url('/asset/fonts/Pretendard-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: #edf7ff;
-}
-
-nav {
+nav.gnb {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 192rem;
   height: 9.4rem;
-  padding: 0 20rem;
+  padding: 2rem 20rem;
+  background-color: #edf7ff;
 }
 
 .main-box {
+  margin-top: 9.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 4rem;
-  padding-top: 7rem;
+  padding-top: 7rem 36rem;
   background-color: #edf7ff;
 }
 
