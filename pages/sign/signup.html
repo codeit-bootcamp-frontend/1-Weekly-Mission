@@ -28,27 +28,30 @@
 
       <div class="input_container">
         <form class="input_content">
-          <div>
-          <label for="e-mail">이메일</label>
-          <input id="e-mail" name="e-mail" type="email">
-          </div>
-        
-          <div>
-          <label for="password">비밀번호</label>
-          <input id="password" name="password" type="password">
+          <div class="email_input_box">
+            <label for="email_input">이메일</label>
+            <input id="email_input" name="e-mail" type="email">
+            <div id="email_check"></div>            
           </div>
           
-          <div id="password_repeat_box">
-          <label for="password_repeat">비밀번호 확인</label>
-          <input id="password_repeat" name="password_repeat" type="password">
+          <div class= "password_input_box contain_mark">
+            <label for="password_input">비밀번호</label> 
+            <input id="password_input" name="password" type="password">
+            <div id="password_check"></div>
+            <div class = "eye_mark_container"><img src="/assets/images/eye_on_mark.svg"></div>
           </div>
-        </form> 
+          
+          <div class="password_repeat_box contain_mark">
+            <label for="password_repeat_input">비밀번호 확인</label>
+            <input id="password_repeat_input" name="password_repeat" type="password">
+            <div id="password_repeat_check"></div>
+            <div class ="eye_mark_container"><img class="eye_mark" src="/assets/images/eye_on_mark.svg"></div>
+          </div>
 
-        <img id="eye_on_mark_password" src="/assets/images/eye_on_mark.svg">    
-        <img id="eye_on_mark_password_repeat" src="/assets/images/eye_on_mark.svg"> 
+          <button id=>회원가입</button>          
+        </form> 
       </div>
 
-      <button>회원가입</button>
 
       <div class="sns_link_container">
         <div>다른 방식으로 가입하기</div>
@@ -61,7 +64,8 @@
         </div>
       </div>          
     </div>
-
+    <script type="module" src="/pages/sign/signup.js"></script>
+    
   </main>
 </body>
 </html>
