@@ -1,115 +1,71 @@
-const loginButton = document.getElementsByClassName("password-hide-btn")[0]
 const loginForm = document.getElementById("login-form")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const inputs = document.getElementsByClassName("inner-input")
-const [TEST_EMAIL, TEST_PWD, EXPTEXT] = ["test@codeit.com", "codeit101", /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
-let noEmail, noPwd
 
 const passwordEye = document.getElementsByClassName("password-eye")[0]
 let passwordEyeToggle = false
 
-const createTagP = document.createElement("p")
+const createEmailError = document.createElement("p")
+const createPasswordError = document.createElement("p")
 
 
-// email 에러 메세지
-const emailError = (bool, verify, check) => {
-    if (bool && verify === undefined){
-        noEmail = document.createElement("p")
-        noEmail.classList.add("inner-input-error-message")
-        noEmail.textContent = "이메일을 입력해주세요."
-        email.parentNode.parentNode.append(noEmail)
-        inputs[0].classList.add("inner-input-error")
-    } else if (!bool && !check) {
-        if (!noEmail){
-            noEmail = document.createElement("p")
-            noEmail.classList.add("inner-input-error-message")
-            noEmail.textContent = "이메일을 입력해주세요."
-            email.parentNode.parentNode.append(noEmail)
-            inputs[0].classList.add("inner-input-error")
-        }
-        noEmail.textContent = "올바른 이메일 주소가 아닙니다."
+const validateEmailForm = email => {
+    const REGEXP_TEXT = new RegExp("[a-z0-9]+@[a-z]+\.[a-z]{2,3}")
+    return REGEXP_TEXT.test(email)
+}
 
-        
-    } else if (!bool && check) {
-        noEmail.remove()
-        noEmail = undefined
+const clearErrorMessage = (createdTag) => {
+    if (createdTag === email.parentElement.nextElementSibling){
         inputs[0].classList.remove("inner-input-error")
-    } else if (bool && check) {
-        noEmail.textContent = "이메일을 입력해주세요."
+        createdTag.remove()
+    } else if (createdTag === password.parentElement.nextElementSibling){
+        inputs[1].classList.remove("inner-input-error")
+        createdTag.remove()
     }
 }
 
-// password 에러 메세지
-const pwdError = (bool, verify) => {
-    if (bool && verify === undefined){
-        noPwd = document.createElement("p")
-        noPwd.classList.add("inner-input-error-message")
-        noPwd.textContent = "비밀번호를 입력해주세요."
-        password.parentNode.parentNode.append(noPwd)
+
+const addErrorMessage = (createdTag, errorText) => {
+    createdTag.classList.add("inner-input-error-message")
+    createdTag.textContent = errorText
+    if (createdTag === createEmailError){
+        email.parentNode.parentNode.append(createdTag)
+        inputs[0].classList.add("inner-input-error")
+    } else if (createdTag === createPasswordError){
+        password.parentNode.parentNode.append(createdTag)
         inputs[1].classList.add("inner-input-error")
     }
-    else if (!bool && verify !== undefined){
-        noPwd.remove()
-        noPwd = undefined
-        inputs[1].classList.remove("inner-input-error")
-    } else noPwd.textContent = "비밀번호를 입력해주세요."
 }
 
-// 이메일 이벤트 함수
-const emailValidationFunc = e => {
+// email 에러 메세지
+const emailValidation = e => {
     e.preventDefault()
-    if (e.target.value === "") emailError(true, noEmail, true)
-    else if(e.target.value !== "") {
-        //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐경우
-        if (EXPTEXT.test(e.target.value) === false) emailError(false, noEmail, false)
-        else emailError(false, noEmail, true)
+    if (!email.value){
+        addErrorMessage(createEmailError, "이메일을 입력해주세요.")
+    } else if (!validateEmailForm(email.value)){
+        addErrorMessage(createEmailError, "올바른 이메일 주소가 아닙니다.")
     }
 }
 
-
 // 비밀번호 이벤트 함수
-const passwordValidationFunc = e => {
+const passwordValidation = e => {
     e.preventDefault()
-    if (e.target.value === "") pwdError(true, noPwd)
-    else pwdError(false, noPwd)
+    if (!password.value){
+        addErrorMessage(createPasswordError, "비밀번호를 입력해주세요.")
+    }
 }
 
 // Form 전송 이벤트 함수
 const loginSubmitFunc = e => {
     e.preventDefault()
+    const [TEST_EMAIL, TEST_PWD] = ["test@codeit.com", "codeit101"]
 
-    // Errors
-    // Email 부분
-    if (email.value === undefined) emailError(true, noEmail, true)
-    else if (email.value !== undefined){
-        if (EXPTEXT.test(email.value) === false) emailError(false, noEmail, false)
-        // else emailError(false, noEmail, true)
-    }
-    
-    // Password 부분
-    if (password.value === "") pwdError(true, noPwd)
-    // else pwdError(false, noPwd)
-
-    if (email.value === TEST_EMAIL && password.value === TEST_PWD) location.href = "../pages/folder.html"
-    else {
-
-        // 로그인 시도
-        if (noEmail === undefined){
-            noEmail = document.createElement("p")
-            noEmail.classList.add("inner-input-error-message")
-            email.parentNode.parentNode.append(noEmail)
-            inputs[0].classList.add("inner-input-error")
-        }
-        noEmail.textContent = "이메일을 확인해주세요."
-
-        if (noPwd === undefined){
-            noPwd = document.createElement("p")
-            noPwd.classList.add("inner-input-error-message")
-            password.parentNode.parentNode.append(noPwd)
-            inputs[1].classList.add("inner-input-error")
-        }
-        noPwd.textContent = "비밀번호를 확인해주세요."
+    if (email.value === TEST_EMAIL && password.value === TEST_PWD){
+        location.href = "../pages/folder.html"
+    } else {
+        addErrorMessage(createEmailError, "이메일을 확인해주세요.")
+        addErrorMessage(createPasswordError, "비밀번호를 확인해주세요.")
     }
 }
 
@@ -118,19 +74,23 @@ const loginSubmitFunc = e => {
 const eyeOnOffToggleFunc = e => {
     e.preventDefault()
     if (passwordEyeToggle){
-        passwordEye.setAttribute("src", "images/eye-off.png")
+        passwordEye.setAttribute("src", "../images/eye-off.png")
         password.setAttribute("type", "password")
     } else {
-        passwordEye.setAttribute("src", "images/eye-on.png")
+        passwordEye.setAttribute("src", "../images/eye-on.png")
         password.setAttribute("type", "text")
     }
     passwordEyeToggle = !passwordEyeToggle
 }
 
 
-email.addEventListener("focusout", emailValidationFunc)
-password.addEventListener("focusout", passwordValidationFunc)
+// return 으로 접근
+email.addEventListener("focusin", () => clearErrorMessage(createEmailError))
+password.addEventListener("focusin", () => clearErrorMessage(createPasswordError))
+
+// 이름으로 접근
+email.addEventListener("focusout", emailValidation)
+password.addEventListener("focusout", passwordValidation)
 loginForm.addEventListener("submit", loginSubmitFunc)
-loginButton.addEventListener("click", e => e.preventDefault())
 email.addEventListener("invalid", e => e.preventDefault())
 passwordEye.addEventListener("click", eyeOnOffToggleFunc)
