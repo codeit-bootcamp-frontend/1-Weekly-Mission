@@ -115,7 +115,7 @@ input:focus {
   width: 100%;
 }
 
-.input-eye-off{
+#eyeImage-password, #eyeImage-password-re {
   position: absolute;
   right: 1.5rem;
   display:flex;

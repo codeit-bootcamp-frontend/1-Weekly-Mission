@@ -1,16 +1,28 @@
 window.onload=function(){
   
   // <눈모양 아이콘 적용, 비밀번호 입력타입 변경> // 왜 눌러도 반응이 없을까요? ㅠㅠ
-  const eyeImage = document.querySelector('.input-eye-off')
+  const eyeImagePasswordEl = document.querySelector('#eyeImage-password')
+  const eyeImagePasswordReEl = document.querySelector('#eyeImage-password-re')
+  const eyeImagePassword = eyeImagePasswordEl.children[0]
+  const eyeImagePasswordRe = eyeImagePasswordReEl.children[0]
   const passWord = document.querySelector('#password')
-  function toggleImage() {
-    if (eyeImage.src.includes('eye-off')) {
-      eyeImage.src = './images/signin/eye-on.svg';
-      passWord.setAttribute('type', '');
+  const passWordRe = document.querySelector('#password-re')
+
+  function toggleImage(image, password) {
+    if (image.src.includes('eye-off')) {
+      image.setAttribute('src','./images/signin/eye-on.png');
+      password.setAttribute('type', '');
     } else {
-      eyeImage.src = './images/signin/eye-off.svg';
+      image.setAttribute('src','./images/signin/eye-off.svg');
+      password.setAttribute('type', 'password');
     }
   }
+  eyeImagePassword.addEventListener('click', ()=> {
+    toggleImage(eyeImagePassword, passWord)});
+
+  eyeImagePasswordRe.addEventListener('click', ()=> {
+    toggleImage(eyeImagePasswordRe, passWordRe)});
+
   //오류메시지 출력
   const emailErrorMessage = document.querySelector('.email-error-message')
   const passwordErrorMessage = document.querySelector('.password-error-message')
@@ -18,6 +30,7 @@ window.onload=function(){
 
   //인풋
   const inputEmail= document.querySelector('#sign-up')
+ 
   const inputPassword = document.querySelector('#password')
   const inputPasswordRe = document.querySelector('#password-re')
   
@@ -37,18 +50,18 @@ window.onload=function(){
   }
   //2) 불린값으로 반환된 결과를 기준으로 오류메세지를 출력하고 CSS속성을 변경
   function checkEmail(){
-    const email = emailInput.value; //사용자가 인풋란에 입력한 값을 JS에서 email로 선언
+    const email = inputEmail.value;
+    const inputCss = document.querySelector('input')
+     //사용자가 인풋란에 입력한 값을 JS에서 email로 선언
     if (testEmail(email)){
       emailErrorMessage.style.display = 'none';
-      inputEmail.classList.remove('.error-border')
     } else {
       emailErrorMessage.style.display = 'block';
       emailErrorMessage.textContent = '올바른 이메일 주소가 아닙니다.';
-      inputEmail.classList.add('.error-border');
+      inputCss.style.border = '1px solid red';
     }
   };
   //3) 이벤트 적용
-  inputEmail.addEventListener('input', checkEmail){
-  };
+  inputEmail.addEventListener('focusout', checkEmail)
 
 } //onload end
