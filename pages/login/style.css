@@ -54,6 +54,16 @@ form input{
     color: #373740;
 }
 
+.form-item input.error{
+    border-color:var(--red);
+    margin-bottom: .6rem;
+}
+
+.form-item p{
+    color: var(--red);
+    font-size: 1.4rem;
+}
+
 .form-item{
     position: relative;
 }
@@ -62,6 +72,10 @@ form input{
     position: absolute;
     right: 1.5rem;
     top: 50%;
+}
+
+.eye.open{
+    content: url(../../images/eye-on.svg);
 }
 
 .form-item:not(:first-child){
