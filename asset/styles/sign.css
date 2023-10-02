@@ -36,7 +36,7 @@ html {
     margin-top: 3rem
 }
 
-.form {
+.sign_form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@ html {
     gap: 2.4rem;
 }
 
-.form__container {
+.sign_form__container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -52,12 +52,12 @@ html {
     width: 100%;
 }
 
-.form__label {
+.sign_form__label {
     color: #000;
     font-size: 1.4rem;
 }
 
-.form__input {
+.sign_form__input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,11 +68,14 @@ html {
     background: var(--white);
 }
 
-.form__input:focus-within {
+.sign_form__input:focus-within {
     border: 0.1rem solid var(--primary);
 }
 
 .input__container {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.4rem;
     border: none;
     flex: 1;
 }
@@ -97,7 +100,16 @@ html {
     background-image: url('/asset/images/eye-on.svg');
 }
 
-.form__btn {
+.null_error_message {
+    font-size: 1.4rem;
+    color: var(--error)
+}
+
+.null_error_border {
+    border: 0.1rem solid var(--error);
+}
+
+.sign_form__btn {
     margin-top: 0.6rem;
     width: 100%;
 }
