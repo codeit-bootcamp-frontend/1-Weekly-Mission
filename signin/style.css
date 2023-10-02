@@ -135,24 +135,11 @@ footer p{
 .social_icon_box{
     display : flex;
     gap : 16px;
-    justify-content: center;
-    align-items: center;
 }
 
 .social_icon{
     width : 42px;
     height : 42px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-.kakao{
-    background-image: url("/assets/images/kakaotalk.svg");
-}
-
-.google{
-    background-image: url("/assets/images/google.svg");
 }
 
 .error{
