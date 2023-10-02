@@ -19,7 +19,8 @@ function isEmptyValue(e) {
     div.innerHTML = '이메일을 입력해주세요';
     email.after(div);
   } else {
-    span.classList.remove('error-message');
+    email.remove();
+    div.classList.remove('error-message');
   }
 }
 
