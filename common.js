@@ -3,8 +3,10 @@ function showMessage(inputText) {
 }
 
 function emptyCheck(input, inputLabel) {
-  const errorMsgs = inputLabel.querySelector("small");
-  if (input.value.trim().length === 0 && errorMsgs.innerText.length === 0) {
+  const errorMsgs = inputLabel.querySelector(".error-message");
+  // init해주기
+  errorMsgs.innerText = "";
+  if (input.value.trim().length === 0) {
     let errorMessage = showMessage(inputLabel.innerText);
     errorMsgs.innerText = errorMessage;
     errorMsgs.style.color = "red";
@@ -17,7 +19,7 @@ function validEmailCheck(input, inputLabel) {
   const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
   const texts = input.value.trim();
   if (!re.test(texts) && texts.length) {
-    const errorMsgs = inputLabel.querySelector("small");
+    const errorMsgs = inputLabel.querySelector(".error-message");
     errorMsgs.innerText = "유효하지않은이메일입니다";
     errorMsgs.style.color = "red";
   }
@@ -30,7 +32,7 @@ function isCodeItLogin(email, password) {
   );
 }
 
-function isPasswordVisible() {
+function passwordVisible() {
   if (eyeIcon.classList.contains("fa-eye")) {
     eyeIcon.classList.remove("fa-eye");
     eyeIcon.classList.add("fa-eye-slash");
