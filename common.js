@@ -2,15 +2,18 @@ function showMessage(inputText) {
   return `${inputText}을 입력해주세요`;
 }
 
-function emptyCheck(input, inputLabel) {
+function isEmpty(input) {
+  return input.value.trim().length;
+}
+
+function showEmptyErrorMessage(input, inputLabel) {
   const errorMsgs = inputLabel.querySelector(".error-message");
-  // init해주기
   errorMsgs.innerText = "";
-  if (input.value.trim().length === 0) {
+  if (!isEmpty(input)) {
     let errorMessage = showMessage(inputLabel.innerText);
     errorMsgs.innerText = errorMessage;
     errorMsgs.style.color = "red";
-  } else if (input.value.trim().length !== 0) {
+  } else if (isEmpty(input)) {
     errorMsgs.innerText = "";
   }
 }
