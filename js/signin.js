@@ -69,7 +69,7 @@ const submitLoginForm = e => {
     const [TEST_EMAIL, TEST_PWD] = ["test@codeit.com", "codeit101"]
 
     if (email.value === TEST_EMAIL && password.value === TEST_PWD){
-        location.href = "../pages/folder.html"
+        location.href = "/pages/folder.html"
     } else {
         addErrorMessage(pElementEmailError, "이메일을 확인해주세요.")
         addErrorMessage(pElementPasswordError, "비밀번호를 확인해주세요.")
@@ -81,10 +81,10 @@ const submitLoginForm = e => {
 const changeEyeImg = e => {
     e.preventDefault()
     if (passwordEyeToggle){
-        passwordEye.setAttribute("src", "../images/eye-off.png")
+        passwordEye.setAttribute("src", "/images/eye-off.png")
         password.setAttribute("type", "password")
     } else {
-        passwordEye.setAttribute("src", "../images/eye-on.png")
+        passwordEye.setAttribute("src", "/images/eye-on.png")
         password.setAttribute("type", "text")
     }
     passwordEyeToggle = !passwordEyeToggle
