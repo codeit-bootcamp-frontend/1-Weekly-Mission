@@ -73,7 +73,6 @@ loginForm.addEventListener("submit", (event) => {
   }
 
   Object.keys(errorMessages.submit).forEach((field) => {
-    console.log(field);
     displayErrorMessage(field === "email" ? emailErrorMessage : passwordErrorMessage, errorMessages.submit[field]);
   });
 
