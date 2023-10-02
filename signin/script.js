@@ -13,11 +13,13 @@ const errorMessage = document.querySelector(".error-message");
 
 function isEmptyValue(e) {
   if (!e.target.value) {
-    // alert('값을 입력해주세요');
-    // const span = document.createElement('span');
-    // span.classList.add('error-message');
-    // span.textContent = '이메일을 입력해주세요.';
+    const div = document.createElement('div');
     email.style.borderColor = "red";
+    div.classList.add('error-message');
+    div.innerHTML = '이메일을 입력해주세요';
+    email.after(div);
+  } else {
+    span.classList.remove('error-message');
   }
 }
 
