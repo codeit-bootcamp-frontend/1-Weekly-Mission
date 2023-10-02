@@ -11,7 +11,7 @@
 		<!--== START of MAIN-SECTION ==-->
         <section class="container">
 			<!-- starting form -->
-            <form class="form" onsubmit="submitForm()">
+            <form class="form">
                 <div class="contents flex--center">
 					<!-- main logo section -->
 					<a href ="./">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 				<!-- sign-in button -->
-                <button id="btn_signin" class="form__input_button btn--gradient-blue-to-mint flex--center font--normal" type="submit">
+                <button id="btn_signin" class="form__input_button btn--gradient-blue-to-mint flex--center font--normal" onclick="{(e)=>e.preventDefalut(); Login()}">
                     로그인
                 </button>
             </form>
