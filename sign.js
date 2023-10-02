@@ -29,10 +29,8 @@ const renderErrorMessageNode = () => {
 
 const isEmail = (input) => {
     const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  
     return emailRegex.test(input);
 };
-
 
 const validateInput = (inputEl) => {
     if (inputEl.value === "") {
@@ -42,10 +40,10 @@ const validateInput = (inputEl) => {
     }
 }
 
-const setErrorMessage = (divTag, target) => {
-    if (divTag.textContent !== "") {
+const setErrorMessage = (errMsgEl, target) => {
+    if (errMsgEl.textContent !== "") {
         let pointNode = target.parentElement;
-        pointNode.after(divTag);
+        pointNode.after(errMsgEl);
         pointNode.classList.add(nullErrBorder);
     }
 }
@@ -56,9 +54,7 @@ const validateLoginInput = () => signInputs[0].value === "test@codeit.com" && si
 const togglePasswordVisibility = ({ target }) => {
     const isVisible = target.classList.contains(eyesOn);
     const targetType = target.previousElementSibling.type;
-
     target.classList.toggle(eyesOn);
-
     if (!isVisible) {
         targetType = "password"
     } else {
@@ -68,15 +64,12 @@ const togglePasswordVisibility = ({ target }) => {
 
 const handleInputError = (e) => {
     const errorMessageNode = renderErrorMessageNode();
-
     errorMessageNode.textContent = validateInput(e.target);
-
     setErrorMessage(errorMessageNode, e.target);
 }
 
 const removeErrorMessage = (e) => {
     let currentDivTag = e.target.parentElement;
-
     if (currentDivTag.classList.contains(nullErrBorder)) {
         currentDivTag.classList.remove(nullErrBorder)
         currentDivTag.nextElementSibling.remove();
@@ -85,16 +78,13 @@ const removeErrorMessage = (e) => {
 
 const handleLoginButton = (e) => {
     e.preventDefault();
-
     if (validateLoginInput()) {
         location.href = "/folder.html";
     } else {
         for (const line of signInputs) {
             const errorMessageNode = renderErrorMessageNode();
-
             errorMessageNode.textContent = errorMessageLogin[line.id];
-
-            setErrorMessage(errorMessageNode, line)
+            setErrorMessage(errorMessageNode, line);
         }
     }
 }
