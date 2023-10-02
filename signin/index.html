@@ -11,7 +11,7 @@
         <!-- Logo & Signup -->
         <header>
             <a href = "/index.html">
-                <img class = "icon_logo" src = "/assets/images/logo.svg">
+                <img class = "linkbrary_logo" alt = "Linkbrary 로고 이미지" src = "/assets/images/logo.svg">
             </a>
             <p>
                 <span>회원이 아니신가요?</span>
@@ -21,20 +21,20 @@
         <!-- Login input & button -->
         <main>
             <form>
-                <label class = "main_box" id = "email">
+                <label id = "email_box" class = "input_box">
                     이메일
-                    <input class = "input_box" name = "signin_email" type = "email" placeholder = "codeit@codeit.com">
-                    <div class = "error"></div>
+                    <input name = "signin_email" type = "email" placeholder = "codeit@codeit.com">
+                    <div class = "error_msg"></div>
                 </label>
-                <label class = "main_box" id = "password">
+                <label id = "pw_box" class = "input_box">
                     비밀번호
                     <div class = "pw_wrapper">
-                        <input class = "input_box" name = "signin_pw" type = "password" placeholder = "●●●●●●●●">
-                        <img class = "icon_eye" src = "/assets/images/eye-off.svg">
+                        <input name = "signin_pw" type = "password" placeholder = "●●●●●●●●">
+                        <img class = "eye_icon" alt = "비밀번호 문자열 가리기" src = "/assets/images/eye-off.svg">
                     </div>
-                    <div class = "error"></div>
+                    <div class = "error_msg"></div>
                 </label>
-                <button class = "button_login">로그인</button>
+                <button class = "login_button">로그인</button>
             </form>
         </main>
         <!-- Social Login -->
@@ -42,10 +42,10 @@
             <p>소셜 로그인</p>
             <div class = "social_icon_box">
                 <a href = "https://www.google.com/">
-                    <img class = "social_icon" src = "/assets/images/google.svg">
+                    <img class = "social_icon" alt = "구글 바로가기" src = "/assets/images/google.svg">
                 </a>
                 <a href = "https://www.kakaocorp.com/page/">
-                    <img class = "social_icon" src = "/assets/images/kakaotalk.svg">
+                    <img class = "social_icon" alt = "카카오톡 바로가기" src = "/assets/images/kakaotalk.svg">
                 </a>
             </div>
         </footer>

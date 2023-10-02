@@ -1,8 +1,8 @@
-const emailBox = document.querySelector('#email');
+const emailBox = document.querySelector('#email_box');
 const inputEmail = emailBox.children[0];
 const errorEmail = emailBox.children[1]; //이메일 관련 에러메세지
 
-const pwBox = document.querySelector('#password');
+const pwBox = document.querySelector('#pw_box');
 const pwWrapper = document.querySelector('.pw_wrapper');
 const inputPw = pwWrapper.children[0];
 const errorPw = pwBox.children[1];
@@ -56,7 +56,7 @@ function checkLogin(event){
     }
 }
 
-const eyeIcon = document.querySelector('.icon_eye');
+const eyeIcon = document.querySelector('.eye_icon');
 let eye_on = 0;
 function clickEye(event){
     if(!eye_on){ //off -> on
