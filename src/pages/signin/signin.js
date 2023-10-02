@@ -29,6 +29,7 @@ const checking_email_input = (event) => {
     $email.classList.add('error_border');
   } else {
     $email_error_msg.textContent = '';
+    $email.classList.remove('error_border');
   }
 }
 
@@ -39,6 +40,7 @@ const checking_password_input = (event) => {
     $password.classList.add('error_border');
   } else {
     $password_error_msg.textContent = '';
+    $password.classList.remove('error_border');
   }
 }
 
