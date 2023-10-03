@@ -1,103 +1,69 @@
-const INPUT_EMAIL = document.querySelector('.input-email');
-const INPUT_PSW = document.querySelector('.input-psw');
-const INPUT_PSW_CHECK = document.querySelector('.psw-box.check .input-psw');
-const LOGIN_BUTTON = document.querySelector('.sign-link');
-const MESSAGE_P = document.createElement('p');
-const SIGN_BOX = document.querySelector('.sign-box');
+
+const inputEmailEl = document.querySelector('.input-email');
+const inputPswEl = document.querySelector('.input-psw');
+const loginBtn = document.querySelector('.sign-link');
+const showMessageByEmailEl = document.querySelector('.by-email');
+const showMessageByPswEl = document.querySelector('.by-psw')
+const ShowPswEyeIconEl = document.querySelector('.psw-box img');
 
 const TEST_EMAIL = 'test@codeit.com';
 const TEST_PSW = 'codeit101';
 
 function checkEmail() {
-
-  const validRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/; 
-  const EMAIL_BOX = document.querySelector('.email-box');
-
-  if(!INPUT_EMAIL.value) {
-  MESSAGE_P.textContent = '이메일을 입력해주세요.';
-  EMAIL_BOX.append(MESSAGE_P);
-  INPUT_EMAIL.classList.add('input-wrong');
-  } else if (!validRegex.test(INPUT_EMAIL.value)) {
-    MESSAGE_P.textContent = '올바른 이메일 주소가 아닙니다.';
-    EMAIL_BOX.append(MESSAGE_P);
-    INPUT_EMAIL.classList.add('input-wrong');
-  }
+  const VALID_EMAIL_REG = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+  const VALID_EMAIL_CHECK = VALID_EMAIL_REG .test(inputEmailEl.value);
+  // early return 기법 사용
+  if(!inputEmailEl.value) {
+    showMessageByEmailEl.textContent = '이메일을 입력해주세요.';
+    inputEmailEl.classList.add('input-wrong');
+    } else if (!VALID_EMAIL_CHECK) {
+      showMessageByEmailEl.textContent = '올바른 이메일 주소가 아닙니다.';
+      inputEmailEl.classList.add('input-wrong');
+    }
 }
 
 function removeEmailCheckMessage () {
-  const EMAIL_BOX_P = document.querySelectorAll('.email-box > p');
-
-  if(INPUT_PSW.type === focus)
-  for(P of EMAIL_BOX_P) {
-    P.remove();
-  }
-  INPUT_EMAIL.classList.remove('input-wrong');
+  showMessageByEmailEl.textContent = '';
+  inputEmailEl.classList.remove('input-wrong');
 }
 
 function removePswCheckMessage () {
-  const PSW_BOX_P = document.querySelectorAll('.psw-box > p');
-  const PSW_BOX_EYE = document.querySelector('.psw-box img');
-
-  for(P of PSW_BOX_P) {
-    P.remove();
-  }
-
-    PSW_BOX_EYE.classList.remove('psw-wrong');
-    INPUT_PSW.classList.remove('input-wrong');
+    showMessageByPswEl.textContent = '';
+    ShowPswEyeIconEl.classList.remove('psw-wrong');
+    inputPswEl.classList.remove('input-wrong');
 }
 
 function checkPassword () {
-  const PSW_BOX = document.querySelector('.psw-box');
-  const PSW_BOX_EYE = document.querySelector('.psw-box img');
-
-  if(!INPUT_PSW.value) {
-    MESSAGE_P.textContent = '비밀번호를 입력해주세요.';
-    PSW_BOX.append(MESSAGE_P);
-    PSW_BOX_EYE.classList.add('psw-wrong');
-    INPUT_PSW.classList.add('input-wrong');
+  if(!inputPswEl.value) {
+    showMessageByPswEl.textContent = '비밀번호를 입력해주세요.';
+    ShowPswEyeIconEl.classList.add('psw-wrong');
+    inputPswEl.classList.add('input-wrong');
   }
 }
 
-function checkTestEmailLogin(e) {
-  if(INPUT_EMAIL.value === TEST_EMAIL && INPUT_PSW.value === TEST_PSW) {
+function checkUser(e) {
+  if(inputEmailEl.value === TEST_EMAIL && inputPswEl.value === TEST_PSW) {
     e.target.setAttribute('href', '/folder');
 
   } else {
-    const SHOW_MESSAGE_WRONG_EMAIL = document.createElement('p');
-    const SHOW_MESSAGE_WRONG_PSW = document.createElement('p');
-    const EMAIL_BOX = document.querySelector('.email-box');
-    const PSW_BOX = document.querySelector('.psw-box');
-    const PSW_BOX_EYE = document.querySelector('.psw-box img');
-    const EMAIL_BOX_P = document.querySelectorAll('.email-box > p');
-    const PSW_BOX_P = document.querySelectorAll('.psw-box > p');
+    showMessageByEmailEl.textContent = '이메일을 확인해주세요.';
+    showMessageByPswEl.textContent = '비밀번호를 확인해주세요.';
 
-    for(P of EMAIL_BOX_P) {
-      P.remove();
-    }
+    ShowPswEyeIconEl.classList.add('psw-wrong');
+    inputPswEl.classList.add('input-wrong');
+    inputEmailEl.classList.add('input-wrong');
 
-    for(P of PSW_BOX_P) {
-      P.remove();
-    }
-    
-    SHOW_MESSAGE_WRONG_EMAIL.textContent = '이메일을 확인해주세요.';
-    EMAIL_BOX.append(SHOW_MESSAGE_WRONG_EMAIL);
-    SHOW_MESSAGE_WRONG_PSW.textContent = '비밀번호를 확인해주세요.';
-    PSW_BOX.append(SHOW_MESSAGE_WRONG_PSW); 
-    PSW_BOX_EYE.classList.add('psw-wrong');
-    INPUT_PSW.classList.add('input-wrong');
-    INPUT_EMAIL.classList.add('input-wrong');
-
-    INPUT_EMAIL.setAttribute('onfocus', 'this.select()');
-    INPUT_PSW.setAttribute('onfocus', 'this.select()');
+    inputEmailEl.setAttribute('onfocus', 'this.select()');
+    inputPswEl.setAttribute('onfocus', 'this.select()');
   }
 }
 
 
-INPUT_EMAIL.addEventListener('focusout', checkEmail);
-INPUT_EMAIL.addEventListener('focusin', removeEmailCheckMessage);
+inputEmailEl.addEventListener('focusout', checkEmail);
+inputEmailEl.addEventListener('focusin', removeEmailCheckMessage);
 
-INPUT_PSW.addEventListener('focusout', checkPassword);
-INPUT_PSW.addEventListener('focusin', removePswCheckMessage);
+inputPswEl.addEventListener('focusout', checkPassword);
+inputPswEl.addEventListener('focusin', removePswCheckMessage);
 
-LOGIN_BUTTON.addEventListener('click',checkTestEmailLogin);
+loginBtn.addEventListener('click',checkUser);
 
