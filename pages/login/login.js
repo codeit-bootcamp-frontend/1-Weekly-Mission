@@ -71,11 +71,12 @@ function validateInputValue(e){
             printMessage(id, 'validation');
         }
 
-    }else if(id === 'password-check'){
+    }else if(id === 'password' || id === 'password-check'){
         // 비밀번호가 일치하는지 체크
         const password = document.querySelector('#password');
-        if(value !== password.value){
-            printMessage(id, 'coincidence');
+        const passwordCheck = document.querySelector('#password-check');
+        if(password.value !== passwordCheck.value){
+            printMessage('password-check', 'coincidence');
         }
     }
 }
