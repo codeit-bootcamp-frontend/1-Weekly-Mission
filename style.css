@@ -160,12 +160,14 @@ footer .footer-link {
   }
 
   main .contents-container {
-    padding: 3.125rem 0; /* 50px */
+    padding-bottom: 3.125rem; /* 50px */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   main .contents-wrapper {
+    margin-top: 6.25rem; /* 100px */
     width: 65rem;
     display: grid;
     grid-template-rows: 1.2fr 1fr;
@@ -173,18 +175,14 @@ footer .footer-link {
     row-gap: 1rem;
   }
   
-  main .contents-wrapper.odd {
+  main .contents-wrapper:nth-child(odd) {    
     grid-template-columns: 4fr 6fr;
     grid-template-areas: "h image" "p image";
   }
   
-  main .contents-wrapper.even {
+  main .contents-wrapper:nth-child(even) {
     grid-template-columns: 6fr 4fr;
     grid-template-areas: "image h" "image p";
-  }
-  
-  main .contents-container:nth-of-type(2) {
-    padding-top: 7.5rem; /* 120px */
   }
 
   main h2 {
@@ -228,12 +226,14 @@ footer .footer-link {
   }
 
   main .contents-container {
-    padding: 3rem 0; /* 48px */
+    padding-bottom: 3rem; /* 48px */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   main .contents-wrapper {
+    margin-top: 6rem; /* 96px */
     width: 42rem;
     display: grid;
     grid-template-rows: 1.2fr 1fr;
@@ -241,18 +241,14 @@ footer .footer-link {
     row-gap: 1rem;
   }
   
-  main .contents-wrapper.odd {
+  main .contents-wrapper:nth-child(odd) {
     grid-template-columns: 4fr 5fr;
     grid-template-areas: "h image" "p image";
   }
   
-  main .contents-wrapper.even {
+  main .contents-wrapper:nth-child(even) {
     grid-template-columns: 5fr 4fr;
     grid-template-areas: "image h" "image p";
-  }
-  
-  main .contents-container:nth-of-type(2) {
-    padding-top: 5rem; /* 80px */
   }
 
   main h2 {
@@ -325,19 +321,17 @@ footer .footer-link {
   }
 
   main .contents-container {
-    padding: 2rem; /* 32px */
+    padding: 0 2rem 2rem; /* 32px */
     display: flex;
+    flex-direction: column;
   }
 
   main .contents-wrapper {
+    margin-top: 4rem; /* 64px */
     display: grid;
     grid-template-rows: 0.2fr 2fr 0.2fr;
     grid-template-columns: 1fr;
     gap: 1rem;
-  }
-
-  main .contents-container:nth-of-type(2) {
-    padding-top: 3rem;
   }
   
   main h2 {

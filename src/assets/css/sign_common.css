@@ -1,4 +1,4 @@
-body {
+  body {
   padding-top: 5rem; 
   background-color: var(--linkbrary-bg);
 }
@@ -23,7 +23,7 @@ header .header-text {
   font-weight: 400;
 }
 
-a.signin {
+a.signup {
   color: var(--linkbrary-primary);
 }
 
@@ -46,10 +46,14 @@ form label {
   font-weight: 400;
 }
 
+form label:nth-of-type(2) {
+  margin-top: -0.3rem;
+}
+
 form input {
   width: 100%;
   height: 3.75rem;
-  margin-top: 0.4rem;
+  margin-top: -0.4rem;
   padding: 18px 15px;
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-silver);
@@ -64,22 +68,11 @@ form .password-wrapper {
   position: relative;
 }
 
-form .password-visible {
+form .password-invisible {
   position: absolute;
   top: 50%;
   right: 1.5rem;
-  transform: translateY(-40%);
-}
-
-form .signup-btn {
-  padding: 1rem 1.25rem;
-  align-items: center;
-  border-radius: 8px;
-  background: var(--gra-purpleblue-to-skyblue);
-  font-size: 1rem;
-  font-weight: 600;
-  color: #f5f5f5;
-  border: none;
+  transform: translateY(-100%);
   cursor: pointer;
 }
 
@@ -109,6 +102,26 @@ footer .social-logo-container {
 footer .social-logo {
   width: 2.625rem;
   height: 2.625rem;
+}
+
+.error_border {
+  border: 1px solid var(--linkbrary-red);
+}
+
+.email_error_msg {
+  height: 0.75rem;
+  color: red;
+  font-size: 0.5rem;
+  margin-top: -0.7rem;
+  padding-left: 0.5rem;
+}
+
+.password_error_msg {
+  height: 0.75rem;
+  color: red;
+  font-size: 0.5rem;
+  margin-top: 0.1rem;
+  padding-left: 0.5rem;
 }
 
 /* Mobile: 375px 이상 ~ 767 px 이하 */

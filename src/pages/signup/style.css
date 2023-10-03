@@ -1,0 +1,11 @@
+form .signup-btn {
+  padding: 1rem 1.25rem;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f5f5f5;
+  border: none;
+  cursor: pointer;
+}
