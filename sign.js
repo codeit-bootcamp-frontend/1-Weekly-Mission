@@ -49,6 +49,12 @@ const handleInputPasswordError = ({ target: { value } }) => {
     }
 }
 
+const handleSubmitError = (line) => {
+    const errMsgNode = renderErrorMessageNode();
+    errMsgNode.textContent = errorMessageLogin[line.id];
+    setErrorMessage(errMsgNode, line);
+}
+
 const eraseError = (targetTag) => {
     targetTag.classList.remove(nullErrBorder)
     targetTag.nextElementSibling.remove(); // 이놈도 DOM 종속적이다!!!! 근데 에러 메세지의 생성 자체가 꽤 종속적인 위치에서 생성되는 거 아닌가..? 그럼 DOM 종속적이라고 할 수 없는 것 아닐까?
@@ -103,9 +109,7 @@ const handleSubmit = (e) => {
         }
 
         for (const line of signInputs) {
-            const errMsgNode = renderErrorMessageNode();
-            errMsgNode.textContent = errorMessageLogin[line.id];
-            setErrorMessage(errMsgNode, line);
+            handleSubmitError(line);
         }
     }
 }
