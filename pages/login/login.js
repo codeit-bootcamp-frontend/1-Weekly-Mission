@@ -5,8 +5,8 @@ const hidePasswordButton = document.querySelector('.hide-password');
 const hidePasswordCheckButton = document.querySelector('.hide-password-check');
 
 form.addEventListener('focusout', validateInputValue);
-form.addEventListener('keydown', resetErrorMessage);
-form.addEventListener('change', resetErrorMessage);
+form.addEventListener('keydown', removeValidationError);
+form.addEventListener('change', removeValidationError);
 
 signinButton?.addEventListener('click', login);
 signupButton?.addEventListener('click', signup);
@@ -69,11 +69,14 @@ function validateInputValue(e){
         }
 
     }else if(id === 'password' || id === 'password-check'){
-        // 비밀번호가 일치하는지 체크
-        const password = document.querySelector('#password');
+        // 비밀번호가 일치하는지 체크(password-check가 있을 때에만 체크한다.)
         const passwordCheck = document.querySelector('#password-check');
-        if(password.value !== passwordCheck.value){
-            printErrorMessage('password-check', 'coincidence');
+        if(passwordCheck){
+            const password = document.querySelector('#password');
+
+            if(password.value !== passwordCheck.value){
+                printErrorMessage('password-check', 'coincidence');
+            }
         }
     }
 }
@@ -121,14 +124,26 @@ function makeErrorMessage(id, type){
     return errorMessages[type]?.[id] ?? "";
 }
 
-function resetErrorMessage(e){
+function removeValidationError(e){
     // 값이 변경되었을 경우, 변경대상의 error클래스와 에러메세지를 삭제한다.
+    removeErrorClassAndMessage(e.target);
 
-    if(e.target.classList.contains('error')){
-        e.target.classList.remove('error');
+    // password값이 변경되었을 때, password-check값을 비운다.
+    if(e.target.id === 'password'){
+        const passwordCheck = document.querySelector('#password-check');
+        if(passwordCheck){
+            passwordCheck.value = '';
+            removeErrorClassAndMessage(passwordCheck);
+        }
+    }
+}
 
-        if(e.target.parentElement.querySelector('p')){
-            e.target.parentElement.querySelector('p').remove();
+function removeErrorClassAndMessage(target){
+    if(target.classList.contains('error')){
+        target.classList.remove('error');
+
+        if(target.parentElement.querySelector('p')){
+            target.parentElement.querySelector('p').remove();
         }
     }
 }
