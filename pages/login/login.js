@@ -4,22 +4,22 @@ const signupButton = document.querySelector('#signup-button');
 const hidePasswordButton = document.querySelector('.hide-password');
 const hidePasswordCheckButton = document.querySelector('.hide-password-check');
 
-form.addEventListener('focusout', validateInputValue);
-form.addEventListener('keydown', removeValidationError);
-form.addEventListener('change', removeValidationError);
+form.addEventListener('focusout', _onValidateInputValue);
+form.addEventListener('keydown', _onRemoveValidationError);
+form.addEventListener('change', _onRemoveValidationError);
 
-signinButton?.addEventListener('click', login);
-signupButton?.addEventListener('click', signup);
+signinButton?.addEventListener('click', _onLogin);
+signupButton?.addEventListener('click', _onSignup);
 
-hidePasswordButton.addEventListener('click', hidePassword)
-hidePasswordCheckButton?.addEventListener('click', hidePassword);
+hidePasswordButton.addEventListener('click', _onHidePassword)
+hidePasswordCheckButton?.addEventListener('click', _onHidePassword);
 
 /**
  * password, password-check의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
  * image의 src는 pages/login/style.css에서 변경한다.
  * @param {PointerEvent} e 이벤트 객체
  */
-function hidePassword(e){
+function _onHidePassword(e){
     e.target.classList.toggle('hide');
 
     if(e.target.classList.contains('hide')){
@@ -31,7 +31,7 @@ function hidePassword(e){
     }
 }
 
-function signup(){
+function _onSignup(){
     alert("회원가입");
 }
 
@@ -39,8 +39,7 @@ function signup(){
  * 문서안에 .error가 있는지 확인 후 로그인을 시도한다.
  * id와 비밀번호가 틀렸을 경우 에러메세지를 출력한다.
  */
-function login(){
-    // 에러 여부 확인 후 로그인.
+function _onLogin(){
     const errors = document.querySelectorAll('.error');
     if(errors.length === 0){
         const email = document.querySelector('#email');
@@ -52,8 +51,8 @@ function login(){
 
         }else{
             // 에러메세지 출력.
-            printErrorMessage(email.id, 'login');
-            printErrorMessage(password.id, 'login');
+            setErrorMessage(email.id, 'login');
+            setErrorMessage(password.id, 'login');
         }
     }
 }
@@ -65,23 +64,20 @@ function login(){
  * password, password-check : 두 값이 일치하는지 체크.
  * @param {FocusEvent} e 이벤트 객체
  */
-function validateInputValue(e){
-    console.log(e);
-    // 값의 유효성을 체크 후 문제가 있다면 printErrorMessage 함수를 호출한다.
-
+function _onValidateInputValue(e){
     const id = e.target.id;
     const value = e.target.value;
 
     if(!value){
         // 비어있는 값인지 체크
-        printErrorMessage(id, 'empty');
+        setErrorMessage(id, 'empty');
 
     }else if(id === 'email'){
         // 이메일 형식인지 체크
         const emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
         if(emailReg.test(value) === false){
-            printErrorMessage(id, 'validation');
+            setErrorMessage(id, 'validation');
         }
 
     }else if(id === 'password' || id === 'password-check'){
@@ -91,7 +87,7 @@ function validateInputValue(e){
             const password = document.querySelector('#password');
 
             if(password.value !== passwordCheck.value){
-                printErrorMessage('password-check', 'coincidence');
+                setErrorMessage('password-check', 'coincidence');
             }
         }
     }
@@ -103,10 +99,8 @@ function validateInputValue(e){
  * @param {string} id target's id
  * @param {string} type error type
  */
-function printErrorMessage(id, type){
-    // 메세지를 화면에 출력하고, 대상에 error클래스를 추가한다.
-
-    const message = makeErrorMessage(id, type);
+function setErrorMessage(id, type){
+    const message = getErrorMessage(id, type);
 
     // 에러메세지가 이미 있다면 print하지 않는다.
     const target = document.getElementById(id);
@@ -130,8 +124,7 @@ function printErrorMessage(id, type){
  * @param {string} type error type
  * @returns {string} 에러메세지
  */
-function makeErrorMessage(id, type){
-    // 에러메세지 객체
+function getErrorMessage(id, type){
     const errorMessages = {
         empty : {
             email : '이메일을 입력해주세요.',
@@ -158,8 +151,7 @@ function makeErrorMessage(id, type){
  * password의 값이 변경된 경우, password-check의 값을 비운다.
  * @param {KeyboardEvent} e 이벤트 객체
  */
-function removeValidationError(e){
-    // 값이 변경되었을 경우, 변경대상의 error클래스와 에러메세지를 삭제한다.
+function _onRemoveValidationError(e){
     removeErrorClassAndMessage(e.target);
 
     // password값이 변경되었을 때, password-check값을 비운다.
@@ -177,7 +169,6 @@ function removeValidationError(e){
  * @param {Element} target target element
  */
 function removeErrorClassAndMessage(target){
-    console.log(typeof(target));
     if(target.classList.contains('error')){
         target.classList.remove('error');
 
