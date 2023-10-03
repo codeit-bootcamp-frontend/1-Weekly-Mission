@@ -14,10 +14,14 @@ signupButton?.addEventListener('click', signup);
 hidePasswordButton.addEventListener('click', hidePassword)
 hidePasswordCheckButton?.addEventListener('click', hidePassword);
 
+/**
+ * password, password-check의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
+ * image의 src는 pages/login/style.css에서 변경한다.
+ * @param {PointerEvent} e 이벤트 객체
+ */
 function hidePassword(e){
     e.target.classList.toggle('hide');
 
-    // 이미지의 alt와 input의 type 변경. 이미지의 src는 style.css에서 변경함.
     if(e.target.classList.contains('hide')){
         e.target.setAttribute('alt','비밀번호 안보이게하기(현재 보임)');
         e.target.parentElement.querySelector('input').setAttribute('type','text');
@@ -31,6 +35,10 @@ function signup(){
     alert("회원가입");
 }
 
+/**
+ * 문서안에 .error가 있는지 확인 후 로그인을 시도한다.
+ * id와 비밀번호가 틀렸을 경우 에러메세지를 출력한다.
+ */
 function login(){
     // 에러 여부 확인 후 로그인.
     const errors = document.querySelectorAll('.error');
@@ -50,7 +58,15 @@ function login(){
     }
 }
 
+/**
+ * input의 value의 유효성검사를 한다.
+ * 공통 : 값이 비어있는지 체크.
+ * email : 올바른 형식인지 체크.
+ * password, password-check : 두 값이 일치하는지 체크.
+ * @param {FocusEvent} e 이벤트 객체
+ */
 function validateInputValue(e){
+    console.log(e);
     // 값의 유효성을 체크 후 문제가 있다면 printErrorMessage 함수를 호출한다.
 
     const id = e.target.id;
@@ -81,6 +97,12 @@ function validateInputValue(e){
     }
 }
 
+/**
+ * target의 nextSibling으로 에러메세지를 출력하고, target에 error클래스를 추가한다.
+ * 에러메세지가 이미 있다면 print하지 않는다.
+ * @param {string} id target's id
+ * @param {string} type error type
+ */
 function printErrorMessage(id, type){
     // 메세지를 화면에 출력하고, 대상에 error클래스를 추가한다.
 
@@ -101,6 +123,13 @@ function printErrorMessage(id, type){
     target.classList.add('error');
 }
 
+/**
+ * errorMessages 객체안에서 type과 id로 메세지를 찾아 리턴한다.
+ * 해당하는 에러메세지가 없는 경우 빈문자열을 리턴한다.
+ * @param {string} id target's id
+ * @param {string} type error type
+ * @returns {string} 에러메세지
+ */
 function makeErrorMessage(id, type){
     // 에러메세지 객체
     const errorMessages = {
@@ -124,6 +153,11 @@ function makeErrorMessage(id, type){
     return errorMessages[type]?.[id] ?? "";
 }
 
+/**
+ * 에러메세지를 삭제할 대상을 removeErrorClassAndMessage함수의 인자로 전달한다.
+ * password의 값이 변경된 경우, password-check의 값을 비운다.
+ * @param {KeyboardEvent} e 이벤트 객체
+ */
 function removeValidationError(e){
     // 값이 변경되었을 경우, 변경대상의 error클래스와 에러메세지를 삭제한다.
     removeErrorClassAndMessage(e.target);
@@ -138,7 +172,12 @@ function removeValidationError(e){
     }
 }
 
+/**
+ * target의 error클래스를 제거하고, 에러메세지를 삭제한다.
+ * @param {Element} target target element
+ */
 function removeErrorClassAndMessage(target){
+    console.log(typeof(target));
     if(target.classList.contains('error')){
         target.classList.remove('error');
 
