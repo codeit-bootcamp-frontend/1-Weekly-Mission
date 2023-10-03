@@ -31,28 +31,30 @@
                 <div class="form__content">
                     <!-- input: email -->
                     <div class="form__input__wrap">
-                        <label class="txt--inputLabel" for="email">
+                        <label class="txt--inputLabel" for="email_signup">
                             이메일
                         </label>
-                        <input id="email" class="input email font--normal flex--center margin--bottom-24" name="email" type="email">
+                        <input id="email_signup" class="input email font--normal flex--center " name="email_signup" type="text">
+                        <!-- <input id="email" class="input email font--normal flex--center margin--bottom-24" name="email" type="text" oninput="showHint_Writing()"> -->
                     </div>
                     <!-- input: password -->
-                    <div class="form__input__wrap">
-                        <label class="txt--inputLabel" for="password">
+                    <div class="form__input__wrap margin--top-24">
+                        <label class="txt--inputLabel" for="password_signup">
                             비밀번호
                         </label>
-                        <input id = "password" class="input password font--normal flex--center margin--bottom-24" name="password" type="password">
+                        <input id = "password_signup" class="input password font--normal flex--center" name="password_signup" type="password">
                     </div>
-                    <!-- input: check-password -->
-                    <div class="form__input__wrap">
-                        <label class="txt--inputLabel" for="check-password">
+                    <!-- input: check_password -->
+                    <div class="form__input__wrap margin--top-24">
+                        <label class="txt--inputLabel" for="check_password_signup">
                             비밀번호 확인
                         </label>
-                        <input id="check-password" class="input check-password font--normal flex-cente " name="check-password" type="password">
+                        <input id="check_password_signup" class="input check_password font--normal flex-center " name="check_password_signup" type="password">
                     </div>
                 </div>
-                 <!-- sign-up button -->
-                <button class ="form__input_button btn--gradient-blue-to-mint flex--center font--normal" onclick="location.href='#'">
+                <!-- sign-up button -->
+                <button class="form__input_button btn--gradient-blue-to-mint flex--center font--normal" onclick="location.href='#'">
+
                     회원가입
                 </button>
             </form>
@@ -74,6 +76,6 @@
         </section>
         <!--== END of MAIN-SECTION ==-->
     </main>
-</script>
+    <script src="/assets/js/signform.js"></script>
 </body>
 </html>

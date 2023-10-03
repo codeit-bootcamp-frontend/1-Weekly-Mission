@@ -11,7 +11,7 @@
 		<!--== START of MAIN-SECTION ==-->
         <section class="container">
 			<!-- starting form -->
-            <form class="form">
+            <form class="form" novalidate>
                 <div class="contents flex--center">
 					<!-- main logo section -->
 					<a href ="./">
@@ -31,22 +31,21 @@
                 <div class="form__content">
 					<!-- input: email -->
                     <div class="form__input__wrap">
-                        <label class="txt--inputLabel" for="email">
+                        <label class="txt--inputLabel" for="email_signin">
                             이메일
                         </label>
-                        <input id="email" class="input email font--normal flex--center margin--bottom-24" name="email" type="email">
+                        <input id="email_signin" class="input email font--normal flex--center" name="email_signin" type="email">
                     </div> 
-					 <!-- input: password -->
-                    <div class="form__input__wrap">
-                        <label class="txt--inputLabel" for="password">
+					<!-- input: password -->
+                    <div class="form__input__wrap margin--top-24">
+                        <label class="txt--inputLabel" for="password_signin">
                             비밀번호
                         </label>
-                        <input id="password" class="input password font--normal flex--center" name="password" type="password">
+                        <input id="password_signin" class="input password font--normal flex--center " name="password_signin" type="password">
                     </div>
                 </div>
-				 <!-- sign-in button -->
-                 <!-- ssssdddd -->
-                <button class ="form__input_button btn--gradient-blue-to-mint flex--center font--normal" onclick="location.href='#'">
+				<!-- sign-in button -->
+                <button id="btn_signin" class="form__input_button btn--gradient-blue-to-mint flex--center font--normal" >
                     로그인
                 </button>
             </form>
@@ -68,5 +67,8 @@
         </section>
 		<!--== END of MAIN-SECTION ==-->
     </main>
+    <script type="text/javascript" src="/assets/js/signform.js">
+        
+    </script>
 </body>
 </html>
