@@ -37,26 +37,15 @@
     }
     .contents_img{
         width: 385px;
+        height: 315px;
     }
     .save,
     .share{
         grid-template-columns : 262px 31px 385px;
-        grid-template-areas: 
-        ". . img"
-        "text . img"
-        "detail . img"
-        ". . img"
-        ;
     }
     .folder,
     .search{
         grid-template-columns : 385px 31px 262px;
-        grid-template-areas: 
-        "img . ."
-        "img . text"
-        "img . detail"
-        "img . ."
-        ;
     }
     .contents_detail{
         width : 260px;

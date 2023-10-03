@@ -153,8 +153,8 @@ main{
 .contents_img{
     grid-area : img;
     width : 550px;
+    height : 450px;
     background-repeat: no-repeat;
-    background-position: center;
     background-size : contain;
 }
 
