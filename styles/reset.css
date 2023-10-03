@@ -1,5 +1,22 @@
 * {
   box-sizing: border-box;
+  font-family: "Pretendard";
+}
+
+html,
+body {
+  word-break: keep-all;
+  font-size: 62.5%;
+  font-family: "Noto Sans Korean", "Poppins", "sans-serif";
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 :root {
@@ -18,10 +35,4 @@
     var(--color-primary) 0.12%,
     #6ae3fe 101.84%
   );
-}
-
-html {
-  word-break: keep-all;
-  font-size: 62.5%;
-  font-family: "Noto Sans Korean", "Poppins", "sans-serif";
 }

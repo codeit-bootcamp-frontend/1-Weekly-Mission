@@ -1,22 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <title>Linkbrary</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style_main.css" />
-    <!-- 페북 카톡 디코 트위터 미리보기 -->
+    <link rel="stylesheet" href="styles/style_main.css" />
     <!-- 구글 미리보기 -->
     <meta
       name="description"
@@ -44,133 +36,112 @@
   </head>
 
   <body>
-    <!-- 1. 맨 위 로고와 로그인 버튼이 있는 header 만들기. -->
-    <header class="GNB">
-      <div class="spacing"></div>
-      <a href="index.html">
-        <img src="images/logo.svg" alt="링크브러리 로고" />
-      </a>
-      <div class="spacing-center"></div>
-      <button class="link-button signin-button">
-        <a href="signin.html" class="a-label"> 로그인 </a>
+    <!-- 1. 맨 위 로고와 로그인 버튼이 있는 nav 만들기. -->
+    <nav class="nav">
+      <div class="gnb">
+        <a href="index.html">
+          <img src="images/logo.svg" alt="링크브러리 로고" />
+        </a>
+        <button class="link-button signin-button">
+          <a href="signin.html" class="a-label"> 로그인 </a>
+        </button>
+      </div>
+    </nav>
+
+    <!-- header -->
+    <header class="main-header">
+      <h1 class="header-title">
+        <span class="gradient-text">세상의 모든 정보</span>
+        를<br />
+        쉽게 저장하고<wbr /> 관리해 보세요
+      </h1>
+      <button class="link-button signup-button">
+        <a href="signup.html" class="a-label"> 링크 추가하기 </a>
       </button>
-      <div class="spacing"></div>
+      <img src="images/image25.png" alt="헤더 샘플 이미지" class="sample-web" />
     </header>
 
+    <!-- section cards list -->
     <main>
-      <!-- section.1 세상의 모든 정보를 쉽게 저장하고 관리해 보세요 -->
-      <section class="main-section">
-        <div class="section-title">
-          <span class="gradient-text">세상의 모든 정보</span>를 쉽게 저장하고
-          관리해 보세요
-        </div>
-        <button class="link-button signup-button">
-          <a href="signup.html" class="a-label"> 링크 추가하기 </a>
-        </button>
-        <img src="images/image25.png" class="sample-web" />
-      </section>
-
-      <!-- section. 2 cards list. -->
       <section class="cards">
         <!-- 1번 카드. 원하는 링크를 저장하세요 -->
         <div class="card">
+          <h2 class="card-title">
+            <span class="color-link">원하는 링크</span>를 저장하세요
+          </h2>
           <div class="card-article">
-            <h2 class="card-title">
-              <span class="color-link">원하는 링크</span>를 저장하세요
-            </h2>
-            <img src="images/image1.png" class="card-img-mobile" />
-            <p class="card-content">
-              나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
-              싶은 모든 것을 한 공간에 저장하세요.
-            </p>
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
+            싶은 모든 것을 한 공간에 저장하세요.
           </div>
-          <div class="spacing"></div>
-          <img src="images/image1.png" class="card-img-tablet" />
+          <img src="images/image1.png" class="card-img" />
         </div>
 
         <!-- 2번 카드. 링크를 폴더로 관리하세요 -->
-        <div class="card card-reverse">
+        <div class="card">
+          <h2 class="card-title">
+            링크를 폴더로
+            <span class="color-manage">관리</span>하세요
+          </h2>
           <div class="card-article">
-            <h2 class="card-title">
-              링크를 폴더로
-              <span class="color-manage">관리</span>하세요
-            </h2>
-            <img src="images/image2.png" class="card-img-mobile" />
-            <p class="card-content">
-              나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
-            </p>
+            나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
           </div>
-          <div class="spacing"></div>
-          <img src="images/image2.png" class="card-img-tablet" />
+          <img src="images/image2.png" class="card-img" />
         </div>
 
         <!-- 3번 카드. 저장한 링크를 공유해보세요 -->
         <div class="card">
+          <h2 class="card-title">
+            저장한 링크를
+            <span class="color-share">공유</span>해보세요
+          </h2>
           <div class="card-article">
-            <h2 class="card-title">
-              저장한 링크를
-              <span class="color-share">공유</span>해보세요
-            </h2>
-            <img src="images/image3.png" class="card-img-mobile" />
-            <p class="card-content">
-              여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
-              쉽고 빠르게 링크를 공유해 보세요.
-            </p>
+            여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
+            쉽고 빠르게 링크를 공유해 보세요.
           </div>
-          <div class="spacing"></div>
-          <img src="images/image3.png" class="card-img-tablet" />
+          <img src="images/image3.png" class="card-img" />
         </div>
 
         <!-- 4번 카드. 저장한 링크를 검색해보세요 -->
-        <div class="card card-reverse">
+        <div class="card">
+          <h2 class="card-title">
+            저장한 링크를
+            <span class="color-search">검색</span>해보세요
+          </h2>
           <div class="card-article">
-            <h2 class="card-title">
-              저장한 링크를
-              <span class="color-search">검색</span>해보세요
-            </h2>
-            <img src="images/image4.png" class="card-img-mobile" />
-            <p class="card-content">
-              중요한 정보들을 검색으로 쉽게 찾아보세요.
-            </p>
+            중요한 정보들을 검색으로 쉽게 찾아보세요.
           </div>
-          <div class="spacing"></div>
-          <img src="images/image4.png" class="card-img-tablet" />
+          <img src="images/image4.png" class="card-img" />
         </div>
       </section>
     </main>
 
-    <!-- 바닥 -->
+    <!-- footer -->
     <footer>
       <div class="content">
-        <div class="footer sns">
-          <a href="https://www.facebook.com/" target="_blank"
-            ><img src="images/akar-icons_facebook-fill.svg"
-          /></a>
-          <a href="https://www.twitter.com/" target="_blank"
-            ><img src="images/akar-icons_twitter-fill.svg"
-          /></a>
-          <a href="https://www.youtube.com/" target="_blank"
-            ><img src="images/akar-icons_youtube-fill.svg"
-          /></a>
-          <a href="https://www.instagram.com/" target="_blank"
-            ><img src="images/ant-design_instagram-filled.svg"
-          /></a>
-        </div>
-        <div class="footer spacing-sns-link"></div>
-        <div class="footer link"><a href="faq.html">FAQ</a></div>
-        <div class="footer spacing-pp-fq"></div>
+        <div class="footer logo">©Codeit - 2023</div>
         <div class="footer link">
           <a href="privacy.html">Privacy Policy </a>
+          <a href="faq.html">FAQ</a>
         </div>
-        <div class="footer spacing-link-logo"></div>
-        <div class="footer logo">©Codeit - 2023</div>
+        <div class="footer sns">
+          <a href="https://www.facebook.com/" target="_blank"
+            ><img
+              src="images/akar-icons_facebook-fill.svg"
+              alt="페이스북 아이콘"
+          /></a>
+          <a href="https://www.twitter.com/" target="_blank"
+            ><img src="images/akar-icons_twitter-fill.svg" alt="트위터 아이콘"
+          /></a>
+          <a href="https://www.youtube.com/" target="_blank"
+            ><img src="images/akar-icons_youtube-fill.svg" alt="유튜브 아이콘"
+          /></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><img
+              src="images/ant-design_instagram-filled.svg"
+              alt="인스타그램 아이콘"
+          /></a>
+        </div>
       </div>
     </footer>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>

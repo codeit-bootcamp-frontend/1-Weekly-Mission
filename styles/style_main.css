@@ -1,0 +1,310 @@
+@import "reset.css";
+
+body {
+  background-color: var(--color-gray1);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+}
+
+/* header css 작성 */
+nav {
+  width: 100%;
+  background-color: var(--color-gray1);
+  padding: 2rem 3.2rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.gnb {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.link-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.6rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+}
+.link-button .a-label {
+  color: var(--grey-light);
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 0 1rem;
+}
+
+/* header css코드 */
+.main-header {
+  padding: 3rem 3.2rem 0 3.2rem;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-header .header-title {
+  text-align: center;
+  font-size: 3rem;
+  line-height: 4rem;
+  white-space: nowrap;
+}
+.main-header .header-title .gradient-text {
+  background: linear-gradient(
+    91deg,
+    var(--color-primary) 17.28%,
+    #ff9f9f 74.98%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main-header .signup-button {
+  width: 35rem;
+}
+.main-header .sample-web {
+  position: relative;
+  top: 5rem;
+  z-index: -1;
+  width: 100%;
+}
+
+/* .section. cards list */
+/* card 요소 공통 부분들 */
+.cards {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 4rem 3.2rem;
+  gap: 4rem;
+  align-items: center;
+  margin: 0;
+}
+.cards .card {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  grid-template-rows: 10rem 1fr 8rem;
+  grid-template-areas:
+    "title"
+    "img"
+    "article";
+}
+.card-article {
+  grid-area: article;
+  color: #6b6b6b;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.4rem;
+  min-width: 29rem;
+}
+.card .card-title {
+  grid-area: title;
+  color: #000;
+  font-size: 4.8rem;
+  letter-spacing: -0.03rem;
+  min-width: 29rem;
+}
+.card .card-img {
+  grid-area: img;
+  border-radius: 15px;
+  background: var(--color-gray1);
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* 1번 카드 css 코드 */
+.card-title .color-link {
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 2번 카드 css 코드 */
+.card-title .color-manage {
+  background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3번 카드 css 코드 */
+.card-title .color-share {
+  background: linear-gradient(
+    99deg,
+    #6d7ccd 19.76%,
+    rgba(82, 136, 133, 0.22) 52.69%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 4번 카드 css 코드 */
+.card-title .color-search {
+  background: var(
+    --fandom-k-gra-blue-to-pink,
+    linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* footer css 작성 */
+footer {
+  background: var(--the-julge-black, var(--color-black));
+  padding: 3rem 3rem 10rem;
+  position: relative;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.footer.logo {
+  color: #676767;
+  text-align: center;
+  position: absolute;
+  bottom: 3rem;
+}
+.footer.link {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+.footer.link a {
+  color: #cfcfcf;
+}
+.footer.sns {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 768px 이상 1199px 이하 타블렛에서는 
+ * nav 좌우 padding이 최소 3.2rem이며 gnb div의 크기가 최대 80rem이었다가 nav 태그의 크기가 86.4rem보다 작아지면 gnb의 로고와 버튼 사이 간격을 줄인다.
+ * 
+ * header의 title padding, font size, line height, width를 조절한다.
+ * header의 img 크기를 65rem으로 고정한다.
+ *
+ * section의 cards 간의 여백과 간격을 수정 
+ * section의 card 이미지 크기 변경
+ * 
+ * footer의 padding을 조절한다.
+*/
+@media (min-width: 768px) {
+  .gnb {
+    max-width: 80rem;
+  }
+  .main-header {
+    padding: 4rem 25rem 0 25rem;
+    gap: 4rem;
+  }
+  .main-header .header-title {
+    font-size: 6rem;
+    width: 47rem;
+    line-height: 8rem;
+  }
+  .main-header .sample-web {
+    width: 65rem;
+  }
+  footer {
+    padding: 3rem 10rem 10rem;
+  }
+  .footer.logo {
+    position: static;
+  }
+  .cards {
+    padding: 8rem 25rem;
+    gap: 8rem;
+  }
+  .card .card-img {
+    width: 38.5rem;
+  }
+  .cards .card {
+    display: grid;
+    gap: 0 8rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 27.5rem 27.5rem;
+    grid-template-areas:
+      "title img"
+      "article img";
+  }
+  .cards .card:nth-child(even) {
+    grid-template-areas:
+      "img title"
+      "img article";
+  }
+  .card .card-title {
+    position: relative;
+    top: 7rem;
+  }
+  .card .card-article {
+    position: relative;
+    top: -3rem;
+    width: 35rem;
+  }
+}
+/* 1200px 이상 컴퓨터에서는
+ * 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다.
+ * 
+ * header의 title padding, width를 조절하고 나머지 속성은 타블렛 조건에서 물려받는다.
+ * headed의 img 크기를 112rem으로 고정한다.
+ *
+ * section의 cards 간의 여백과 간격을 수정
+ * section의 card 이미지 크기 변경
+ */
+@media (min-width: 1200px) {
+  nav {
+    padding: 2rem 20rem;
+  }
+  .main-header {
+    padding: 7rem 36rem 0 36rem;
+  }
+  .main-header .header-title {
+    width: 77rem;
+  }
+  .main-header .sample-web {
+    width: 112rem;
+  }
+  .cards {
+    gap: 10rem;
+    padding: 10rem 46rem;
+  }
+  .card .card-img {
+    width: 55rem;
+  }
+  .cards .card {
+    gap: 0 15rem;
+  }
+  .card .card-title {
+    top: 5rem;
+  }
+  .card .card-article {
+    top: -1rem;
+  }
+}

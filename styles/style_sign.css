@@ -2,7 +2,6 @@
 
 body {
   background-color: var(--color-gray1);
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,21 +10,15 @@ a:visited,
 a:link {
   color: var(--color-primary);
 }
-button {
-  cursor: pointer;
-}
-
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20rem auto 5rem;
+  padding: 0 3.2rem;
 }
-.spacing {
-  margin: 0;
-  padding-top: 2rem;
-}
+
 /* title section 설정하기 */
 .title-section {
   display: flex;
@@ -47,12 +40,21 @@ button {
 }
 
 /* submit section 설정하기 */
-label {
+.submit-section {
+  width: 100%;
+  max-width: 40rem;
+}
+.submit-section label {
+  display: block;
+  margin-bottom: 1rem;
   font-weight: 400;
   font-size: 1.4rem;
 }
+form {
+  width: 100%;
+  margin: 3rem 0;
+}
 input {
-  width: 40rem;
   height: 6rem;
   border: 1px solid var(--color-gray3);
   border-radius: 8px;
@@ -66,7 +68,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 3rem;
 }
 .form-div > div {
   display: flex;
@@ -80,14 +82,10 @@ input:focus {
 .form-password-repeat .eye-button {
   position: absolute;
   right: 3rem;
-  bottom: 2rem;
+  bottom: 3rem;
   border: none;
   background-color: transparent;
 }
-.form-div .spacing {
-  padding-top: 1.2rem;
-}
-
 .link-button {
   margin-top: 2rem;
   padding: 1rem;
@@ -99,7 +97,6 @@ input:focus {
   background: var(--gra-purpleblue-to-skyblue);
   color: var(--grey-light);
   font-size: 1.8rem;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
@@ -109,20 +106,20 @@ input:focus {
   background-color: var(--color-gray2);
   border: 1px solid var(--color-gray3);
   border-radius: 8px;
-  width: 40rem;
+  width: 100%;
+  max-width: 40rem;
   height: 6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
 }
-
 .social-section label {
   font-size: 1.4rem;
   font-weight: 400;
   color: #373740;
+  border: none;
 }
-
 .social-section .img-group {
   display: flex;
   gap: 1rem;
@@ -130,15 +127,22 @@ input:focus {
   align-items: center;
 }
 
-/* 부트스트랩 small 기준 */
-@media (max-width: 768px) {
-  main.container {
-    padding: 0 3.2rem;
-  }
-  .container section,
-  form input {
-    max-width: 40rem;
-    min-width: 26rem;
-    width: 100%;
+.error-border {
+  border: solid 1px var(--color-red);
+}
+.error-message {
+  margin-top: 1rem;
+  color: var(--color-red);
+  height: 0;
+  visibility: hidden;
+}
+.error-appear {
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .submit-section,
+  .social-section {
+    width: 40rem;
   }
 }
