@@ -115,12 +115,34 @@ input:focus {
   width: 100%;
 }
 
-.input-eye-off{
+#eyeImage-password, #eyeImage-password-re {
   position: absolute;
   right: 1.5rem;
   display:flex;
   flex-direction: row;
   justify-content: center;
+  cursor : pointer;
+}
+
+.email-error-message{
+  padding-top:6px; 
+  color: rgba(255, 91, 86, 1);
+  display: none;
+}
+
+.password-error-message{
+  padding-top:6px; 
+  color: rgba(255, 91, 86, 1);
+  display: none;
+}
+
+.password-re-error-message{
+  padding-top:6px; 
+  color: rgba(255, 91, 86, 1);
+}
+
+.error-border{
+  border: 0.2rem rgba(255, 91, 86, 1);
 }
 
 .another-signup {
