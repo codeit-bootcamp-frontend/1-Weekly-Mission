@@ -101,47 +101,26 @@ function printMessage(id, type){
 }
 
 function makeMessage(id, type){
-    let message = "";
-
-    if(type === 'empty'){
-        switch(id){
-            case 'email':
-                message = "이메일을 입력해주세요.";
-                break;
-            case 'password':
-                message = "비밀번호를 입력해주세요.";
-                break;
-            case 'password-check':
-                message = "비밀번호를 한 번 더 입력해주세요.";
-                break;
+    // 에러메세지 객체
+    const errorMessages = {
+        empty : {
+            email : '이메일을 입력해주세요.',
+            password : '비밀번호를 입력해주세요.',
+            'password-check' : '비밀번호를 한 번 더 입력해주세요.',
+        },
+        validation : {
+            email: '올바른 이메일 주소가 아닙니다.',
+        },
+        login : {
+            email : '이메일을 확인해주세요.',
+            password : '비밀번호를 확인해주세요.',
+        },
+        coincidence : {
+            'password-check' : '비밀번호가 다릅니다.',
         }
+    };
 
-    }else if(type === 'validation'){
-        switch(id){
-            case 'email':
-                message = "올바른 이메일 주소가 아닙니다.";
-                break;
-        }
-
-    }else if(type === 'login'){
-        switch(id){
-            case 'email':
-                message = "이메일을 확인해주세요.";
-                break;
-            case 'password':
-                message = "비밀번호를 확인해주세요.";
-                break;
-        }
-
-    }else if(type === 'coincidence'){
-        switch(id){
-            case 'password-check':
-                message = "비밀번호가 다릅니다.";
-                break;
-        }
-    }
-
-    return message;
+    return errorMessages[type]?.[id] ?? "";
 }
 
 function resetValidation(e){
