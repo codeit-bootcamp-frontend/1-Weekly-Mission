@@ -22,52 +22,58 @@
           </div>
         </div>
       </header>
-      <div class="inputWrapper">
-        <div class="inputForm">
-          <label>이메일</label>
-          <input
-            class="authInput"
-            type="email"
-            placeholder="Enter your email"
-          />
-        </div>
-        <div class="inputForm">
-          <label>비밀번호</label>
-          <input
-            class="authInput"
-            type="password"
-            placeholder="Enter your password"
-          />
-        </div>
-        <div class="inputForm">
-          <label>비밀번호 확인</label>
-          <input
-            class="authInput"
-            type="password"
-            placeholder="Enter your password again"
-          />
-        </div>
-      </div>
-      <a href="./signin.html" class="loginLink">회원가입</a>
-      <div class="socialWrapper">
-        <span>다른 방식으로 가입하기</span>
-        <div class="socialIconWrapper">
-          <a href="https://www.google.com/">
-            <img
-              src="src/assets/images/google.png"
-              alt="google_logo"
-              class="googleLogo"
+      <form class="form">
+        <div class="inputWrapper">
+          <div class="inputForm">
+            <label>이메일</label>
+            <input
+              class="authInput emailInput"
+              type="email"
+              placeholder="Enter your email"
             />
-          </a>
-          <a href="https://www.kakaocorp.com/page/">
-            <img
-              src="src/assets/images/kakao.png"
-              alt="kakao_logo"
-              class="kakaoLogo"
+            <span></span>
+          </div>
+          <div class="inputForm">
+            <label>비밀번호</label>
+            <input
+              class="authInput passwordInput"
+              type="password"
+              placeholder="Enter your password"
             />
-          </a>
+            <span></span>
+          </div>
+          <div class="inputForm">
+            <label>비밀번호 확인</label>
+            <input
+              class="authInput passwordInputTwo"
+              type="password"
+              placeholder="Enter your password again"
+            />
+            <span></span>
+          </div>
         </div>
-      </div>
+        <button type="submit" class="loginLink">회원가입</button>
+        <div class="socialWrapper">
+          <span>다른 방식으로 가입하기</span>
+          <div class="socialIconWrapper">
+            <a href="https://www.google.com/">
+              <img
+                src="src/assets/images/google.png"
+                alt="google_logo"
+                class="googleLogo"
+              />
+            </a>
+            <a href="https://www.kakaocorp.com/page/">
+              <img
+                src="src/assets/images/kakao.png"
+                alt="kakao_logo"
+                class="kakaoLogo"
+              />
+            </a>
+          </div>
+        </div>
+      </form>
     </div>
+    <script src="src/js/auth.js"></script>
   </body>
 </html>
