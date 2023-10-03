@@ -98,6 +98,19 @@ form {
   transition-duration: 0.5s;
 }
 
+.inner-input-error {
+  border: 1px solid var(--linkbrary-red);
+  transition-duration: 0.5s;
+}
+
+.inner-input-error-message {
+  color: var(--linkbrary-red);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .inner-input > input {
   border: none;
   display: flex;
