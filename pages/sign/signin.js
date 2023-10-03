@@ -1,11 +1,28 @@
 //올바른 이메일 확인 함수(구글링)
 function email_check(email) {
-	let reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	const reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	return reg.test(email);
 }
 
+//에러 메세지 발생 시 사용할 함수//
+function error_occur (input, input_check, message) {
+  input.classList.add("error_box")
+  input_check.classList.add("check_message")
+  input_check.innerHTML = message
+}
 
+//에러 메세지 소멸 시 사용할 함수(조건 만족 시)//
+function error_disappear (input, input_check) {
+  input.classList.remove("error_box")
+  input_check.classList.remove("check_message")
+  input_check.innerHTML = ""
+}
 
+//에러 메세지 객체 //
+const messages = {
+  email_empty_error : "이메일을 입력해 주세요",
+  email_type_error : "올바른 이메일 형식이 아닙니다"
+}
 
 // 이메일 부분 //
 // 과제에서 요구된 조건을 만족시키고, 올바른 이메일 형식이 입력되었을 때 focusout하면 원래대로 돌아감
@@ -13,19 +30,15 @@ const email_input = document.querySelector('#email_input')
 const email_input_check = document.querySelector("#email_check")
 
 function email_error () {
-
-  email_input_check.classList.add("check_message")
-  email_input.classList.add("error_box")
   
   if (!email_input.value) {
-    email_input_check.innerHTML = "이메일을 입력해 주세요";
+    error_occur(email_input, email_input_check, messages.email_empty_error)
   } 
     else if (!email_check(email_input.value)) {
-    email_input_check.innerHTML = "올바른 이메일 형식이 아닙니다.";
+    error_occur(email_input, email_input_check, messages.email_type_error)
   } 
     else {
-    email_input_check.innerHTML = "";
-    email_input.classList.remove("error_box")
+    error_disappear(email_input, email_input_check)
   }
 }
 
