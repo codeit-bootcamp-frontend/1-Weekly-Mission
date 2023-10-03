@@ -1,33 +1,30 @@
 const form = document.querySelector('#form');
 const signinButton = document.querySelector('#signin-button');
 const signupButton = document.querySelector('#signup-button');
-const eyes = document.querySelectorAll('.eye');
+const hidePasswordButton = document.querySelector('.hide-password');
+const hidePasswordCheckButton = document.querySelector('.hide-password-check');
 
 form.addEventListener('focusout', validateInputValue);
 form.addEventListener('keydown', resetErrorMessage);
 form.addEventListener('change', resetErrorMessage);
 
-if(signinButton){
-    signinButton.addEventListener('click', login);
-}
+signinButton?.addEventListener('click', login);
+signupButton?.addEventListener('click', signup);
 
-if(signupButton){
-    signupButton.addEventListener('click', signup);
-}
+hidePasswordButton.addEventListener('click', hidePassword)
+hidePasswordCheckButton?.addEventListener('click', hidePassword);
 
-for(const eye of eyes){
-    eye.addEventListener('click', function(e){
-        e.target.classList.toggle('open');
+function hidePassword(e){
+    e.target.classList.toggle('hide');
 
-        // 이미지의 alt와 input의 type 변경. 이미지의 src는 style.css에서 변경함.
-        if(e.target.classList.contains('open')){
-            e.target.setAttribute('alt','비밀번호 안보이게하기(현재 보임)');
-            e.target.parentElement.querySelector('input').setAttribute('type','text');
-        }else{
-            e.target.setAttribute('alt','비밀번호 보이게하기(현재 보이지 않음)');
-            e.target.parentElement.querySelector('input').setAttribute('type','password');
-        }
-    })
+    // 이미지의 alt와 input의 type 변경. 이미지의 src는 style.css에서 변경함.
+    if(e.target.classList.contains('hide')){
+        e.target.setAttribute('alt','비밀번호 안보이게하기(현재 보임)');
+        e.target.parentElement.querySelector('input').setAttribute('type','text');
+    }else{
+        e.target.setAttribute('alt','비밀번호 보이게하기(현재 보이지 않음)');
+        e.target.parentElement.querySelector('input').setAttribute('type','password');
+    }
 }
 
 function signup(){
