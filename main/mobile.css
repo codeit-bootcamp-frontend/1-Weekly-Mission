@@ -59,8 +59,8 @@
         padding-bottom: 80%;
     }
     /* footer */
-    footer{
-        padding : 32px 32px;
+    .footer_container{
+        padding : 32px 32px 0;
         display : grid;
         grid-template-columns: 1.5fr 1fr;
         grid-template-rows: 1.5fr 1fr;
