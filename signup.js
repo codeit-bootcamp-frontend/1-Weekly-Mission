@@ -1,18 +1,17 @@
 window.onload=function(){
-  
- 
+
   const eyeImagePasswordEl = document.querySelector('#eyeImage-password')
-  const eyeImagePasswordReEl = document.querySelector('#eyeImage-password-re')
+  // const eyeImagePasswordReEl = document.querySelector('#eyeImage-password-re')
   const eyeImagePassword = eyeImagePasswordEl.children[0]
-  const eyeImagePasswordRe = eyeImagePasswordReEl.children[0]
+  // const eyeImagePasswordRe = eyeImagePasswordReEl.children[0]
   const inputEmail= document.querySelector('#sign-up')
   const inputPassWord = document.querySelector('#password')
-  const inputPassWordRe = document.querySelector('#password-re')
+  // const inputPassWordRe = document.querySelector('#password-re')
 
     //오류메시지 출력
   const emailErrorMessage = document.querySelector('.email-error-message')
   const passwordErrorMessage = document.querySelector('.password-error-message')
-  const passwordReErrorMessage = document.querySelector('.password-re-error-message')
+  // const passwordReErrorMessage = document.querySelector('.password-re-error-message')
 
  // <눈모양 아이콘 적용, 비밀번호 입력타입 변경>
   function toggleImage(image, inputPassword) {
@@ -27,8 +26,8 @@ window.onload=function(){
   eyeImagePassword.addEventListener('click', ()=> {
     toggleImage(eyeImagePassword, inputPassWord)});
 
-  eyeImagePasswordRe.addEventListener('click', ()=> {
-    toggleImage(eyeImagePasswordRe, inputPassWordRe)});
+  // eyeImagePasswordRe.addEventListener('click', ()=> {
+  //   toggleImage(eyeImagePasswordRe, inputPassWordRe)});
 
   //인풋
   // const inputPassword = document.querySelector('#password')
@@ -67,7 +66,7 @@ window.onload=function(){
   //3) 이벤트 적용
   inputEmail.addEventListener('focusout', checkEmail)
 
-  //<비밀번호 오류메시지 출력>
+  //<비밀번호 빈 값일때 오류메시지 출력>
   function checkPassword(){
     const password = inputPassWord.value;
     if (password === ''){
@@ -76,8 +75,6 @@ window.onload=function(){
       passwordErrorMessage.style.display = 'none';
     };
   }
-  
   inputPassWord.addEventListener('focusout', checkPassword)
-
 
 } //onload end
