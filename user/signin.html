@@ -20,17 +20,17 @@
             <p class="auth__header-text">회원이 아니신가요? <a class="auth__header-link" href="./signup.html">회원 가입하기</a></p>
         </header>
 
-        <form class="form auth__form">
+        <form class="form auth__form" action="./folder.html">
             <div class="form__field">
                 <label for="user-email" class="form__label">이메일</label>
                 <div class="form__field-inner">
-                    <input type="email" name="email" id="user-email" class="form__input">
+                    <input type="email" name="email" id="user-email" class="form__input" autocomplete="username">
                 </div>
             </div>
             <div class="form__field">
                 <label for="user-password" class="form__label">비밀번호</label>
                 <div class="form__field-inner">
-                    <input type="password" name="password" id="user-password" class="form__input form__input--password">
+                    <input type="password" name="password" id="user-password" class="form__input form__input--password" maxlength="20" autocomplete="current-password">
                     <img src="../images/eye-off.svg" class="form__eye-icon" alt="비밀번호 보기">
                 </div>
 
@@ -38,7 +38,7 @@
         </form>
 
         <footer class="auth__footer">
-            <button class="button auth__button">로그인</button>
+            <button type="submit" class="button auth__button">로그인</button>
             <div class="auth__social">
                 <p class="auth__social-text">소셜 로그인</p>
                 <div class="auth__social__inner">
@@ -49,6 +49,7 @@
         </footer>
 
     </div>
+    <script src="./auth.js"></script>
 </body>
 
 </html>
