@@ -62,13 +62,4 @@
     .contents_detail{
         width : 260px;
     }
-    .folder img,
-    .share img{
-        width : 300px;
-        top : 70px;
-        left : 45px;
-    }
-    .search img{
-        width : 420px;
-    }
 }

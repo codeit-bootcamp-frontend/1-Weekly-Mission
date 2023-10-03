@@ -5,6 +5,7 @@
     --bg : #F0F6FF;
     --gra-purpleblue-to-skyblue : linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     --grey-light : #F5F5F5;
+    --grey : #6B6B6B;
 }
 
 *{
@@ -26,6 +27,7 @@ html{
 a :hover{
     cursor: pointer;
 }
+
 /* header */
 header{
     width : 100%;
@@ -60,6 +62,7 @@ header{
 .login_btn{
     width : 128px;
 }
+
 /* main */
 .add_link_btn {
     width : 350px;
@@ -102,6 +105,7 @@ main{
     background-position : top;
     background-size : cover;
 }
+
 /* contents */
 .contents_box{
     width : 100%;
@@ -112,7 +116,6 @@ main{
     grid-template-rows : repeat(4, 1fr);
     gap : 10px;
 }
-
 .save,
 .share{
     grid-template-columns : 30% 10% 55%;
@@ -123,7 +126,6 @@ main{
     ". . img"
     ;
 }
-
 .folder,
 .search{
     grid-template-columns : 55% 10% 30%;
@@ -134,139 +136,75 @@ main{
     "img . ."
     ;
 }
-
-.contents_text{
+.contents_title{
     grid-area : text;
-    font-family: Pretendard;
     font-size: 4.8rem;
-    font-style: normal;
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.3px;
 }
-
 .contents_detail{
-    /* 컨텐츠 세부 설명 */
     grid-area : detail;
-    color: #6B6B6B;
-    font-family: Pretendard;
+    color: var(--grey);
     font-size: 1.6rem;
-    font-style: normal;
     font-weight: 500;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
     word-break: keep-all;
     width : 277px;
 }
-
 .contents_img{
-    /* 각 컨텐츠의 그림이 들어가는 하늘색 박스 */
     grid-area : img;
     width : 550px;
     height : 450px;
-    border-radius : 15px;
-    background: #F0F6FF;
-    overflow : hidden;
-    position : relative;
+    background-repeat: no-repeat;
+    background-size : contain;
 }
 
-/* contents-02 : save */
+/* contents-01 : save */
 .save_grd{
     background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 } 
-
-.card_box{
-    display : flex;
-    justify-content: center;
-    align-items: center;
-    gap : 12px;
-    position : absolute;
-    inset : 0;
+.save .contents_img{
+    background-image : url('/assets/images/contents_01.svg');
 }
 
-.card{
-    width: 244px;
-    height: 239px;
-    flex-shrink: 0;
-    border-radius: 11px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.card.left{
-    background-image: url('/assets/images/card1.png');
-}
-
-.card.center{
-    background-image: url('/assets/images/card2.png');
-    position : relative;
-    border-radius: 11px;
-    border: 2px solid var(--linkbrary-primary-color, #6D6AFE);
-}
-
-.card.right{
-    background-image: url('/assets/images/card3.png');
-}
-
-.down_icon{
-    position : absolute;
-    bottom : -15px;
-    right : -15px;
-}
-
-/* contents-03 : folder */
+/* contents-02 : folder */
 .folder_grd{
     background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.folder img,
-.share img{
-    /* folder, share 컨텐츠 - 팝업 이미지 */
-    width : 414px;
-    position : absolute;
-    top : 114px;
-    left : 68px;
+.folder .contents_img{
+    background-image : url('/assets/images/contents_02.svg');
 }
 
-/* contents-04 : share */
+/* contents-03 : share */
 .share_grd{
     background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.contents_img.share{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("/assets/images/main.png");
-    background-position : center;
-    background-size : 160%;
-    background-repeat : no-repeat;
+.share .contents_img{
+    background-image : url('/assets/images/contents_03.svg');
 }
 
-/* contents-05 : search */
+/* contents-04 : search */
 .search_grd{
     background: var(--fandom-k-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.search img{
-    position : absolute;
-    top : 55px;
-    left : 60px;
-    width: 550px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+.search .contents_img{
+    background-image : url('/assets/images/contents_04.svg');
 }
 
+/* footer */
 footer{
     display: flex;
     width : 100%;
