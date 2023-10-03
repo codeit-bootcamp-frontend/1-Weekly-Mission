@@ -35,8 +35,6 @@ a,button{
     --color-red:#ff5b56;
     --color-footer-darkblue: #111322;
     --color-footer-gray: #676767;
-
-
     --gradient-blue-to-mint: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     --gradient-blue-to-red: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
     --gradient-red-to-blue: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
