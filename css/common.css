@@ -11,7 +11,7 @@
   --linkbrary-bg: #f0f6ff;
   --linkbrary-gray-100: #373740;
   --linkbrary-gray-10: #e7effb;
-  --linkbrary-gray-20: ##ccd5e3;
+  --linkbrary-gray-20: #ccd5e3;
 }
 
 * {
@@ -43,9 +43,7 @@ body {
 form {
   display: flex;
   flex-direction: column;
-
   width: 50rem;
-
   row-gap: 3.2rem;
 }
 
@@ -60,22 +58,26 @@ label input {
   width: 100%;
   height: 50px;
   border-radius: 8px;
-  background: var(--linkbrary-white);
+  border: 5px solid var(--linkbrary-gray-20);
 }
-
+input:focus {
+  outline: none;
+  border: 5px solid var(--linkbrary-primary);
+}
 .password-container {
   position: relative;
 }
 
 .eye-on-image {
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
   right: 18px;
 }
 
-input:focus {
-  outline: none;
-  border: 5px solid var(--linkbrary-primary-color);
+.re-eye-on-image {
+  position: absolute;
+  bottom: 20px;
+  right: 18px;
 }
 
 .social-login {
@@ -98,11 +100,6 @@ input:focus {
   margin-right: 10px;
 }
 
-/* PC */
-@media screen and (min-width: 1200px) {
-  /* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다. */
-}
-
 /* tablet */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   /* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다. */
@@ -113,7 +110,6 @@ input:focus {
 }
 
 /* mobile */
-
 @media screen and (min-width: 375px) and (max-width: 767px) {
   body {
     /*  좌우 여백 32px 제외 */
