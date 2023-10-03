@@ -81,8 +81,26 @@ function validateInputValue(e){
 }
 
 function printMessage(id, type){
-    // 메세지를 생성 후 messageDelivery 함수를 호출한다.
+    // 메세지를 화면에 출력하고, 대상에 error클래스를 추가한다.
 
+    const message = makeMessage(id, type);
+
+    // 에러메세지가 이미 있다면 print하지 않는다.
+    const target = document.getElementById(id);
+    if(target.classList.contains('error')){
+        return;
+    }
+
+    // 메세지를 넣을 곳 탐색 후 출력.
+    const p = document.createElement('p');
+    p.textContent = message;
+    document.getElementById(id).parentElement.append(p);
+
+    // 에러메세지를 넣은 후 target에 error클래스를 추가.
+    target.classList.add('error');
+}
+
+function makeMessage(id, type){
     let message = "";
 
     if(type === 'empty'){
@@ -123,27 +141,8 @@ function printMessage(id, type){
         }
     }
 
-    messageDelivery(id, message);
+    return message;
 }
-
-function messageDelivery(id, message){
-    // 메세지를 화면에 출력하고, 대상에 error클래스를 추가한다.
-
-    // 에러메세지가 이미 있다면 return
-    const target = document.getElementById(id);
-    if(target.classList.contains('error')){
-        return;
-    }
-
-    // 메세지를 넣을 곳 탐색 후 출력.
-    const p = document.createElement('p');
-    p.textContent = message;
-    document.getElementById(id).parentElement.append(p);
-
-    // 에러메세지를 넣은 후 target에 error클래스를 추가.
-    target.classList.add('error');
-}
-
 
 function resetValidation(e){
     // 값이 변경되었을 경우, 변경대상의 error클래스와 에러메세지를 삭제한다.
