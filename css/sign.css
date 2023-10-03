@@ -64,13 +64,14 @@ header p{
 .form__sign label{
     font-size: 1.4rem;
 }
-.form__sign input{
+.email_input,.pwd_input,.check_pwd_input{
     padding: 1.8rem 1.5rem;
     border: 0.1rem solid var(--linkbrary-gray-20);
     border-radius: 0.8rem;
 }
 .form__sign input:focus-visible{
     outline-color: var(--linkbrary-primary-color);
+
 }
 .btn-sign{
     padding: 1.6rem 2rem;
@@ -79,6 +80,7 @@ header p{
     color: var(--grey-light);
     border-radius: 0.8rem;
     font-size: 1.8rem;
+    cursor: pointer;
 }
 
 .social-sign{
@@ -113,7 +115,7 @@ header p{
     flex-direction: column;
 }
 .form__input-wrapper input{
-    padding-right: 1.6rem;
+    padding-right: 4rem;
 } 
 
 .password-eye{
@@ -122,4 +124,12 @@ header p{
     bottom:50%;
     transform: translateY(50%);
     fill: white;
+    cursor: pointer;
+}
+.email_error_message,.pwd_error_message{
+    display: none;
+    color: red;
+}
+.border-red{
+    border-color: red;
 }

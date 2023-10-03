@@ -5,6 +5,7 @@
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "1-Weekly-Mission"
+		"liveServer.settings.multiRootWorkspaceName": "1-Weekly-Mission",
+		"liveServer.settings.port": 5501
 	}
 }
