@@ -4,8 +4,8 @@ const signupButton = document.querySelector('#signup-button');
 const eyes = document.querySelectorAll('.eye');
 
 form.addEventListener('focusout', validateInputValue);
-form.addEventListener('keydown', resetValidation);
-form.addEventListener('change', resetValidation);
+form.addEventListener('keydown', resetErrorMessage);
+form.addEventListener('change', resetErrorMessage);
 
 if(signinButton){
     signinButton.addEventListener('click', login);
@@ -47,28 +47,28 @@ function login(){
 
         }else{
             // 에러메세지 출력.
-            printMessage(email.id, 'login');
-            printMessage(password.id, 'login');
+            printErrorMessage(email.id, 'login');
+            printErrorMessage(password.id, 'login');
         }
     }
 }
 
 function validateInputValue(e){
-    // 값의 유효성을 체크 후 문제가 있다면 printMessage 함수를 호출한다.
+    // 값의 유효성을 체크 후 문제가 있다면 printErrorMessage 함수를 호출한다.
 
     const id = e.target.id;
     const value = e.target.value;
 
     if(!value){
         // 비어있는 값인지 체크
-        printMessage(id, 'empty');
+        printErrorMessage(id, 'empty');
 
     }else if(id === 'email'){
         // 이메일 형식인지 체크
         const emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
         if(emailReg.test(value) === false){
-            printMessage(id, 'validation');
+            printErrorMessage(id, 'validation');
         }
 
     }else if(id === 'password' || id === 'password-check'){
@@ -76,15 +76,15 @@ function validateInputValue(e){
         const password = document.querySelector('#password');
         const passwordCheck = document.querySelector('#password-check');
         if(password.value !== passwordCheck.value){
-            printMessage('password-check', 'coincidence');
+            printErrorMessage('password-check', 'coincidence');
         }
     }
 }
 
-function printMessage(id, type){
+function printErrorMessage(id, type){
     // 메세지를 화면에 출력하고, 대상에 error클래스를 추가한다.
 
-    const message = makeMessage(id, type);
+    const message = makeErrorMessage(id, type);
 
     // 에러메세지가 이미 있다면 print하지 않는다.
     const target = document.getElementById(id);
@@ -101,7 +101,7 @@ function printMessage(id, type){
     target.classList.add('error');
 }
 
-function makeMessage(id, type){
+function makeErrorMessage(id, type){
     // 에러메세지 객체
     const errorMessages = {
         empty : {
@@ -124,7 +124,7 @@ function makeMessage(id, type){
     return errorMessages[type]?.[id] ?? "";
 }
 
-function resetValidation(e){
+function resetErrorMessage(e){
     // 값이 변경되었을 경우, 변경대상의 error클래스와 에러메세지를 삭제한다.
 
     if(e.target.classList.contains('error')){
