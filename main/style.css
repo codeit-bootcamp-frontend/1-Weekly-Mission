@@ -1,5 +1,12 @@
 @import "/assets/reset.css"; /* 브라우저 기본 margin 없애기 위해서 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root{
+    --bg : #F0F6FF;
+    --gra-purpleblue-to-skyblue : linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+    --grey-light : #F5F5F5;
+}
+
 *{
     box-sizing : border-box;
 }
@@ -7,13 +14,8 @@
 html{
     color : black;
     margin : 0 auto;
+    font-family: Pretendard;
     font-size : 62.5%; /* 크롬 기준 10px */
-}
-
-.bg_header_main{
-    /* 1920px 이상이 되면 파란색 배경만 늘어나도록 이 class 배경 따로 설정 */
-    width : 100%;
-    background: var(--linkbrary-bg, #F0F6FF);
 }
 
 .bg_footer{
@@ -24,93 +26,71 @@ html{
 a :hover{
     cursor: pointer;
 }
-
+/* header */
 header{
     width : 100%;
-    display: flex;
     padding : 20px 200px;
-    background: var(--linkbrary-bg, #F0F6FF);
-    justify-content: center;
+    background: var(--bg);
     position : fixed;
     top : 0px;
     left : 0px;
     right : 0px;
     z-index : 1;
 }
-
-header div{
+.header_container{
     width : 100%;
-    max-width : 1920px; /* 너비가 1920px 이상이면 요소들이 더이상 넓어지지 않도록*/
+    max-width : 1920px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-self: stretch;
 }
-
-.blue_btn{ /* click button */
+.blue_btn{
     display: flex;
     padding : 16px 20px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    
     border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    background: var(--gra-purpleblue-to-skyblue);
 
-    /* text */
-    color: var(--grey-light, #F5F5F5);
-    font-family: Pretendard;
-    font-size: 1.8rem; /*18px*/
-    font-style: normal;
+    color: var(--grey-light);
+    font-size: 1.8rem;
     font-weight: 600;
-    line-height: normal;
     text-decoration: none;
 }
-
-header a{ /* login button */
+.login_btn{
     width : 128px;
 }
-
-.main_content a { /* add_link button */
+/* main */
+.add_link_btn {
     width : 350px;
 }
-
-.main_content{
-    display: flex;
+main{
     width: 100%;
-    max-width : 1920px;
     margin : 0 auto;
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     gap: 40px;
-
-    background: #F0F6FF;
+    background: var(--bg);
     overflow : hidden;
 }
-
 .main_text{
     padding-top : 170px;
     text-align: center;
-    font-family: Pretendard;
-    font-size: 6.4rem; /*64px*/
-    font-style: normal;
+    font-size: 6.4rem;
     font-weight: 700;
-    line-height: 125%; /* 125% */
-    color : #000;
+    line-height: 125%;
 }
-
 .main_grd {
     background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.img_box{
+.main_img{
     margin : 50px 41px 0px;
-    width : 100%;
-    max-width : 1118px;
+    width : 1118px;
     height : 590px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
@@ -118,11 +98,11 @@ header a{ /* login button */
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
     background-image: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%)
     ,url('/assets/images/main.png');
-    background-repeat : no-repeat;
+    background-repeat: no-repeat;
     background-position : top;
     background-size : cover;
 }
-
+/* contents */
 .contents_box{
     width : 100%;
     max-width : 998px;
