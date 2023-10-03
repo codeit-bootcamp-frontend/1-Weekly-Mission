@@ -25,14 +25,9 @@ window.onload=function(){
   }
   eyeImagePassword.addEventListener('click', ()=> {
     toggleImage(eyeImagePassword, inputPassWord)});
-
   // eyeImagePasswordRe.addEventListener('click', ()=> {
   //   toggleImage(eyeImagePasswordRe, inputPassWordRe)});
 
-  //인풋
-  // const inputPassword = document.querySelector('#password')
-  // const inputPasswordRe = document.querySelector('#password-re')
-  
   //<이메일을 입력하는 동안에 에러메시지 안 보이게 하기 >
   //1) 이메일을 입력하는 동안 에러메시지를 가려주는 함수
   function errorMessageStop(){
@@ -76,5 +71,25 @@ window.onload=function(){
     };
   }
   inputPassWord.addEventListener('focusout', checkPassword)
+
+  //<아이디&비밀번호 올바르게 입력했을 경우 /folder로 이동하고 아닌 경우 확인메시지 출력>
+const loginButton = document.querySelector('button[type="submit"]');
+function validAccount(email, password){
+  if (email === 'test@codeit.com' && password === 'codeit101'){
+    window.location.href = './index.html';
+  } else if (email !== 'test@codeit.com'){
+    emailErrorMessage.style.display = 'block';
+    emailErrorMessage.textContent = '이메일을 확인해주세요.';
+  } else if (password !== 'codeit101'){
+    passwordErrorMessage.style.display = 'block';
+    passwordErrorMessage.textContent = '비밀번호를 확인해주세요';    
+  }
+}
+loginButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  const email = inputEmail.value.trim();
+  const password = inputPassWord.value;
+  validAccount(email, password);
+});
 
 } //onload end
