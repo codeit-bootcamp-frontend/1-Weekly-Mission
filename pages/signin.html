@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <link
       rel="stylesheet"
@@ -31,21 +32,27 @@
         <div class="sign-inputs">
           <div class="sign-input-box">
             <label class="sign-input-label">이메일</label>
-            <input class="sign-input" placeholder="이메일을 입력해주세요" />
+            <input
+              class="email-input"
+              type="text"
+              placeholder="이메일을 입력해주세요"
+            />
+            <div class="email-error-message"></div>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
             <input
-              class="sign-input"
+              class="password-input"
               type="password"
               placeholder="비밀번호를 입력해주세요"
             />
             <button class="eye-button" type="button">
               <img src="/assets/eye-off.svg" />
             </button>
+            <div class="password-error-message"></div>
           </div>
         </div>
-        <button class="cta" type="submit">로그인</button>
+        <button class="cta login-button" type="submit">로그인</button>
       </form>
       <div class="sns-box">
         <span class="sns-text">소셜 로그인</span>
@@ -59,5 +66,6 @@
         </div>
       </div>
     </div>
+    <script src="/js/signin.js"></script>
   </body>
 </html>

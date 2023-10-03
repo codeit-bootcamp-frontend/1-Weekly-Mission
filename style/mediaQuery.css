@@ -28,7 +28,7 @@
 }
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
-@media screen and (min-width: 375px) and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   /* 레이아웃 조정
 
   섹션 그리드 순서 변경하거나 플렉스 박스 order 조정 
