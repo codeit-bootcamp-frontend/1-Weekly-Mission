@@ -3,7 +3,7 @@ const signinButton = document.querySelector('#signin-button');
 const signupButton = document.querySelector('#signup-button');
 const eyes = document.querySelectorAll('.eye');
 
-form.addEventListener('focusout', validate);
+form.addEventListener('focusout', validateInputValue);
 form.addEventListener('keydown', resetValidation);
 form.addEventListener('change', resetValidation);
 
@@ -53,7 +53,7 @@ function login(){
     }
 }
 
-function validate(e){
+function validateInputValue(e){
     // 값의 유효성을 체크 후 문제가 있다면 printMessage 함수를 호출한다.
 
     const id = e.target.id;
@@ -65,9 +65,9 @@ function validate(e){
 
     }else if(id === 'email'){
         // 이메일 형식인지 체크
-        const exp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+        const emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
-        if(exp.test(value) === false){
+        if(emailReg.test(value) === false){
             printMessage(id, 'validation');
         }
 
@@ -143,6 +143,7 @@ function messageDelivery(id, message){
     // 에러메세지를 넣은 후 target에 error클래스를 추가.
     target.classList.add('error');
 }
+
 
 function resetValidation(e){
     // 값이 변경되었을 경우, 변경대상의 error클래스와 에러메세지를 삭제한다.
