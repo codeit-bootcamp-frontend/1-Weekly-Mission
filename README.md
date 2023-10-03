@@ -11,3 +11,5 @@
 [week3](./docs/week3/README.md)
 
 [week4](./docs/week4/README.md)
+
+[week5](./docs/week5/README.md)
