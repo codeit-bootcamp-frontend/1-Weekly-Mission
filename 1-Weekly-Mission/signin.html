@@ -9,12 +9,12 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
-    <link rel="stylesheet" href="./src/sign.css" />
+    <link rel="stylesheet" href="./css/sign.css" />
   </head>
   <body>
     <header>
       <a href="./index.html" class="sign_title">
-        <img src="./image/logo.svg" class="sign_title_logo" />
+        <img src="./image/logo.svg" class="sign_title_logo" alt="로고 이미지" />
       </a>
       <p>
         회원이 아니신가요?
@@ -26,15 +26,15 @@
       <form>
         <div class="sign_input">
           <div class="sign_input_box">
-            <label>이메일</label>
-            <input name="email" type="email" />
+            <label for="email">이메일</label>
+            <input id="email" name="email" type="email" />
           </div>
 
           <div class="sign_input_box sign_password">
-            <label>비밀번호</label>
-            <input name="password" type="password" />
+            <label for="password">비밀번호</label>
+            <input id="password" name="password" type="password" />
             <button class="eye_off" type="button">
-              <img src="./image/eye-off.svg" />
+              <img src="./image/eye-off.svg" alt="눈모양 버튼 이미지" />
             </button>
           </div>
         </div>
@@ -44,12 +44,15 @@
       <div class="sign_social">
         <p>소셜 로그인</p>
         <div class="social_links">
-          <a href="https://www.google.com/"><img src="./image/google.svg" /></a>
+          <a href="https://www.google.com/"
+            ><img src="./image/google.svg" alt="구글 로고 이미지"
+          /></a>
           <a href="https://www.kakaocorp.com/page/"
-            ><img src="./image/kakao_talk.svg"
+            ><img src="./image/kakao_talk.svg" alt="카카오톡 로고 이미지"
           /></a>
         </div>
       </div>
     </main>
+    <script src="./js/signin.js"></script>
   </body>
 </html>

@@ -31,7 +31,7 @@ header > p {
   display: flex;
   gap: 0.8rem;
 
-  color: var(--linkbrary-black, #000);
+  color: var(--linkbrary-black);
 
   font-size: 1.6rem;
   font-weight: 400;
@@ -39,7 +39,7 @@ header > p {
 }
 
 .to_sign {
-  color: var(--primary-color, #6d6afe);
+  color: var(--primary-color);
 
   font-weight: 600;
 }
@@ -76,7 +76,7 @@ form {
 }
 
 label {
-  color: var(--linkbrary-black, #000);
+  color: var(--linkbrary-black);
 
   font-size: 1.4rem;
   font-weight: 400;
@@ -85,19 +85,19 @@ label {
 input {
   padding: 1.8rem 1.5rem;
   border-radius: 0.8rem;
-  border: 1px solid var(--linkbrary-gray-3, #ccd5e3);
+  border: 1px solid var(--linkbrary-gray-3);
 
   font-size: 1.6rem;
   line-height: 150%;
 }
 
 input:focus {
-  border-color: var(--primary-color, #6d6afe);
+  border-color: var(--primary-color);
 }
 
 .eye_off {
   position: absolute;
-  bottom: 2.2rem;
+  top: 5.2rem;
   right: 1.5rem;
   width: 1.6rem;
   height: 1.6rem;
@@ -125,12 +125,12 @@ input:focus {
   padding: 1.2rem 2.4rem;
 
   border-radius: 0.8rem;
-  border: 0.1rem solid var(--linkbrary-gray-3, #ccd5e3);
-  background: var(--linkbrary-gray-4, #e7effb);
+  border: 0.1rem solid var(--linkbrary-gray-3);
+  background: var(--linkbrary-gray-4);
 }
 
 .sign_social > p {
-  color: var(--linkbrary-gray-1, #373740);
+  color: var(--linkbrary-gray-1);
 
   font-size: 1.4rem;
   font-weight: 400;
@@ -170,4 +170,15 @@ input:focus {
     width: 100%;
     max-width: 40rem;
   }
+}
+
+.error_border {
+  outline: none;
+  border-color: var(--linkbrary-red);
+}
+
+.email_error,
+.password_error {
+  color: var(--linkbrary-red);
+  font-size: 14px;
 }
