@@ -7,8 +7,10 @@ window.onload=function(){
   const inputEmail= document.querySelector('#sign-up')
   const inputPassWord = document.querySelector('#password')
   // const inputPassWordRe = document.querySelector('#password-re')
+  const loginButton = document.querySelector('button[type="submit"]');
+  const inputEmailCss = document.querySelector('input')
 
-    //오류메시지 출력
+  //오류메시지 출력
   const emailErrorMessage = document.querySelector('.email-error-message')
   const passwordErrorMessage = document.querySelector('.password-error-message')
   // const passwordReErrorMessage = document.querySelector('.password-re-error-message')
@@ -45,17 +47,18 @@ window.onload=function(){
   //2) 불린값으로 반환된 결과를 기준으로 오류메세지를 출력하고 CSS속성을 변경
   function checkEmail(){
     const email = inputEmail.value.trim();    //사용자가 인풋란에 입력한 값을 JS에서 email로 선언
-    const inputCss = document.querySelector('input')
     if (email === ''){
       emailErrorMessage.style.display = 'block';
+      inputEmailCss.style.border = '1px solid red';
       emailErrorMessage.textContent = '이메일을 입력해주세요.';
     }
     else if (!testEmail(email)){
       emailErrorMessage.style.display = 'block';
       emailErrorMessage.textContent = '올바른 이메일 주소가 아닙니다.';
-      inputCss.style.border = '1px solid red';
+      inputEmailCss.style.border = '1px solid red';
     } else {
       emailErrorMessage.style.display = 'none';
+      inputEmailCss.style.border = '1px solid #ccd5e3';
     }
   };
   //3) 이벤트 적용
@@ -73,12 +76,12 @@ window.onload=function(){
   inputPassWord.addEventListener('focusout', checkPassword)
 
   //<아이디&비밀번호 올바르게 입력했을 경우 /folder로 이동하고 아닌 경우 확인메시지 출력>
-const loginButton = document.querySelector('button[type="submit"]');
 function validAccount(email, password){
   if (email === 'test@codeit.com' && password === 'codeit101'){
     window.location.href = './index.html';
   } else if (email !== 'test@codeit.com'){
     emailErrorMessage.style.display = 'block';
+    inputEmailCss.style.border = '1px solid red';
     emailErrorMessage.textContent = '이메일을 확인해주세요.';
   } else if (password !== 'codeit101'){
     passwordErrorMessage.style.display = 'block';
