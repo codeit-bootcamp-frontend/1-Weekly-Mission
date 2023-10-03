@@ -10,15 +10,15 @@
 		<title>Linkbrary</title>
 	</head>
 	<body>
-		<!-- H1 (hidden) -->
-		<h1 class="h1__page-title--hidden">Linkbrary SignIn Page</h1>
+		<!-- H1 (a11y) -->
+		<h1 class="page-title--a11y">Linkbrary SignIn Page</h1>
 
 		<article id="signin__container" class="auth__container">
 			<!-- FORM -->
 			<form>
 				<fieldset>
 					<legend class="auth__legend-wrapper">
-						<a href="/main.html" class="auth__logo">
+						<a href="/" class="auth__logo">
 							<img
 								src="/public/icons/logo.svg"
 								width="210"
@@ -34,23 +34,37 @@
 					<div class="auth__input-wrapper">
 						<label>
 							<p class="auth__input-title">이메일</p>
-							<input class="auth__input" type="email" required />
+							<input
+								class="auth__input auth__input-email"
+								type="email"
+								required
+							/>
+							<p class="auth__email-hint"></p>
 						</label>
 						<label>
 							<p class="auth__input-title">비밀번호</p>
-							<div class="auth__input-password">
-								<input class="auth__input" type="password" required />
-								<button type="button">
+							<div class="auth__wrapper-password">
+								<input
+									class="auth__input auth__input-password"
+									type="password"
+									required
+								/>
+								<button class="auth__toggle-password" type="button">
 									<img
-										src="/public/icons/password.svg"
+										class="auth__icon-password"
+										src="/public/icons/password-invisible.svg"
 										width="16px"
 										height="16px"
+										alt="비밀번호 숨김 아이콘"
 									/>
 								</button>
 							</div>
+							<p class="auth__password-hint"></p>
 						</label>
 					</div>
-					<button type="submit" class="auth__button">로그인</button>
+					<button type="submit" class="auth__button signin__buton">
+						로그인
+					</button>
 				</fieldset>
 			</form>
 
@@ -91,5 +105,7 @@
 				</ul>
 			</section>
 		</article>
+
+		<script src="/utils/auth.js" defer></script>
 	</body>
 </html>

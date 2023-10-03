@@ -2,21 +2,7 @@ body {
 	background-color: var(--linkbrary--color--gray5);
 }
 
-/* AUTH GLOBAL */
 /* PC */
-.h1__page-title--hidden {
-	font-size: 0;
-	width: 1px;
-	height: 1px;
-	display: inline-block;
-	overflow: hidden;
-	position: absolute;
-	border: 0;
-	padding: 0;
-	margin: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-}
-
 .auth__container {
 	width: 40rem;
 	margin: 23.8rem auto 25.2rem auto;
@@ -78,7 +64,7 @@ body {
 	padding: 0 1.5rem;
 	border: 0.1rem solid var(--linkbrary--color--gray3);
 	border-radius: 0.8rem;
-	background: var(--linkbrary-white, #fff);
+	background: var(--linkbrary--color--white);
 	color: var(--linkbrary--color--gray0);
 }
 
@@ -86,19 +72,31 @@ body {
 	border: 0.1rem solid var(--linkbrary--color--primary);
 }
 
-.auth__input-password {
+.auth__input.auth__input--hint {
+	border-color: var(--linkbrary--color--red);
+}
+
+.auth__wrapper-password,
+.auth__wrapper-password--confirm {
 	position: relative;
 }
 
-.auth__input-password button {
+.auth__wrapper-password button,
+.auth__wrapper-password--confirm button {
 	position: absolute;
 	right: 1.5rem;
 	bottom: 50%;
 	transform: translateY(50%);
 }
 
-.auth__input-password--invisible button {
-	display: none;
+.auth__email-hint,
+.auth__password-hint,
+.auth__password-confirm-hint {
+	min-height: 1.7rem;
+	margin-top: 0.6rem;
+	color: var(--linkbrary--color--red);
+	font-size: 1.4rem;
+	font-weight: 400;
 }
 
 .auth__button {
