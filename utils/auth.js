@@ -76,7 +76,7 @@ const INPUT_STATUS = {
 
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");
-const signInButtonElement = document.querySelector(".signin__buton");
+const signInButtonElement = document.querySelector(".signin__button");
 const emailHintElement = document.querySelector(".auth__email-hint");
 const passwordHintElement = document.querySelector(".auth__password-hint");
 
