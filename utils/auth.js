@@ -103,10 +103,13 @@ function handleSigninSuccess() {
 }
 
 function checkEmailInputValue(email) {
-	if (email === "") handleEmailHint("isNotFilled");
-	else if (EMAIL_PATTERN.test(email) === false)
+	if (email === "") {
+		handleEmailHint("isNotFilled");
+	} else if (EMAIL_PATTERN.test(email) === false) {
 		handleEmailHint("isNotValidated");
-	else handleEmailHint("default");
+	} else {
+		handleEmailHint("default");
+	}
 }
 
 function checkPasswordInputValue(password) {
