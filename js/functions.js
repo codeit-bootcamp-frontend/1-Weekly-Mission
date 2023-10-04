@@ -1,5 +1,16 @@
 import { email, password, emailError, passwordError, passwordVisible } from "./tags.js";
 
+const testEmail = "test@codeit.com";
+const testPassword = "codeit101";
+
+function passwordCount() {
+  let count = 0;
+  for (let i in password.value) {
+    count += 1;
+  }
+  return count;
+}
+
 function validateEmail(email) {
   const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return pattern.test(email);
@@ -24,6 +35,8 @@ function addEmailErrorMsg() {
     addEmailClass("이메일을 입력하세요.");
   } else if (!validateEmail(email.value)) {
     addEmailClass("올바른 이메일 주소가 아닙니다.");
+  } else if (location.pathname === "/pages/signup.html" && email.value === testEmail) {
+    addEmailClass("이미 사용중인 이메일입니다.");
   }
 }
 
@@ -40,6 +53,16 @@ function addPasswordErrorMsg() {
   }
 }
 
+function addPassWordErrorMsgSignup() {
+  const stringCheck = /[a-zA-Z]/;
+  const numberCheck = /[0-9]/;
+  if (passwordCount() >= 8 && stringCheck.test(password.value) && numberCheck.test(password.value)) {
+    return true; // if문을 바꿔야 될꺼 같은데 생각이 잘 안남
+  } else {
+    addPasswordClass("비밀번호는 영문, 숫자, 조합 8자 이상 입력해주세요.");
+  }
+}
+
 function deletePasswordErrorMsg() {
   if (password.parentElement.nextElementSibling === passwordError) {
     password.classList.remove("error");
@@ -53,9 +76,6 @@ function loginPage() {
 
 function login(event) {
   event.preventDefault();
-
-  const testEmail = "test@codeit.com";
-  const testPassword = "codeit101";
 
   if (email.value === testEmail && password.value === testPassword) {
     loginPage();
@@ -81,6 +101,7 @@ export {
   addEmailErrorMsg,
   deleteEmailErrorMsg,
   addPasswordErrorMsg,
+  addPassWordErrorMsgSignup,
   deletePasswordErrorMsg,
   togglePasswordVisible,
   login,

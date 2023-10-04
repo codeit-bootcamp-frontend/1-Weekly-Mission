@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/variables.css" />
     <link rel="stylesheet" href="/css/signin.css" />
+    <script defer type="module" src="/js/signup.js"></script>
     <title>회원가입 페이지</title>
   </head>
   <body>
@@ -34,25 +35,31 @@
           </div>
           <div class="password-input">
             <label for="password">비밀번호</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="비밀번호를 입력하세요."
-              autocomplete="off"
-              required
-            />
+            <div class="password-input-area">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="비밀번호를 입력하세요."
+                autocomplete="off"
+                required
+              />
+              <button class="toogle-eye"></button>
+            </div>
           </div>
           <div class="password-check-input">
             <label for="password-check">비밀번호 확인</label>
-            <input
-              id="password-check"
-              name="password-check"
-              type="password"
-              placeholder="비밀번호를 한번 더 입력하세요."
-              autocomplete="off"
-              required
-            />
+            <div class="password-input-area">
+              <input
+                id="password-check"
+                name="password-check"
+                type="password"
+                placeholder="비밀번호를 한번 더 입력하세요."
+                autocomplete="off"
+                required
+              />
+              <button class="toogle-eye"></button>
+            </div>
           </div>
           <button class="login button" type="submit">로그인</button>
         </form>
