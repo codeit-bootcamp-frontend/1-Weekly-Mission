@@ -42,7 +42,7 @@ loginBtn.addEventListener("click", function () {
   const password = passwordInput.value;
 
   if (email === "test@codeit.com" && password === "codeit101") {
-    location.href = "/folder/folder.html";
+    location.href = "/folder";
   } else if (!email && !password) {
     emailErrorText.textContent = "이메일을 확인해주세요.";
     emailErrorText.style.visibility = "visible"; // 에러 메시지 표시
