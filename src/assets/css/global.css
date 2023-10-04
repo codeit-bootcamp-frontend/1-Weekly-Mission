@@ -13,4 +13,17 @@
 
   --font_white: #f0f6ff;
   --font_black: #000000;
+
+  --error_msg_red: #ff5b56;
+}
+
+/* Error CSS */
+.error_msg {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--error_msg_red);
+}
+
+.errorInput {
+  border: solid 1px var(--error_msg_red) !important;
 }
