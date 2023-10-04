@@ -106,7 +106,7 @@ function handleSigninSuccess() {
 	location.href = FOLDER_PAGE_PATH;
 }
 
-function checkEmailInputValue(email) {
+function handleEmailFocusoutCheck(email) {
 	if (email === "") {
 		handleEmailHint(INPUT_STATUS.isNotFilled);
 	} else if (!EMAIL_PATTERN.test(email)) {
@@ -116,7 +116,7 @@ function checkEmailInputValue(email) {
 	}
 }
 
-function checkPasswordInputValue(password) {
+function handlePasswordFocusoutCheck(password) {
 	if (password === "") {
 		handlePasswordHint(INPUT_STATUS.isNotFilled);
 	} else {
@@ -151,12 +151,12 @@ function handleSignIn(email, password) {
 
 emailInputElement.addEventListener("focusout", () => {
 	const emailValue = emailInputElement.value;
-	checkEmailInputValue(emailValue);
+	handleEmailFocusoutCheck(emailValue);
 });
 
 passwordInputElement.addEventListener("focusout", () => {
 	const passwordValue = passwordInputElement.value;
-	checkPasswordInputValue(passwordValue);
+	handlePasswordFocusoutCheck(passwordValue);
 });
 
 signInButtonElement.addEventListener("click", (e) => {
