@@ -1,6 +1,7 @@
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const btnLogin = document.querySelector('.btn-login');
+const toggleEye = document.querySelector('#toggle-eye');
 
 
 const setError = (element, message) => {
@@ -68,7 +69,18 @@ const submit = () => {
   }
 }
 
+const eyeOnOff = () => {
+  if(password.type === "password") {
+    password.type = "text";
+    toggleEye.src = '/images/eye-on.svg';
+  } else {
+    password.type = "password";
+    toggleEye.src = '/images/eye-off.svg';
+  }
+}
+
 
 email.addEventListener("focusout", checkEmailValidation);
 password.addEventListener("focusout", checkPwdValidation);
+toggleEye.addEventListener("click", eyeOnOff);
 btnLogin.addEventListener('click', submit);
