@@ -7,7 +7,7 @@ const idInvalidMsgEl = document.createElement('span');
 const loginBtn = document.querySelector('.login-btn');
 const eyeImg = document.querySelector('.eye-off');
 
-let reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+const REG_ID = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
 function idEmpty(e) {
   if(e.target.value.length === 0){
