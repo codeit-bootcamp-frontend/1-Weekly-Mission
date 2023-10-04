@@ -21,7 +21,10 @@ function error_disappear (input, input_check) {
 //에러 메세지 객체 //
 const messages = {
   email_empty_error : "이메일을 입력해 주세요",
-  email_type_error : "올바른 이메일 형식이 아닙니다"
+  email_type_error : "올바른 이메일 형식이 아닙니다",
+  password_empty_error : "비밀번호를 입력해 주세요",
+  email_check_error : "이메일을 확인해 주세요",
+  password_check_error: "비밀번호를 확인해 주세요",
 }
 
 // 이메일 부분 //
@@ -55,13 +58,10 @@ const password_input_check = document.querySelector("#password_check")
 
 function password_error () {
   if (!password_input.value) {
-    password_input_check.innerHTML = "비밀번호를 입력해 주세요"
-    password_input_check.classList.add("check_message")
-    password_input.classList.add("error_box")
+    error_occur(password_input, password_input_check, messages.password_empty_error)
+
   } else {
-    password_input_check.innerHTML = ""
-    password_input_check.classList.remove("check_message")
-    password_input.classList.remove("error_box")
+    error_disappear(password_input, password_input_check)
   }
 }
 
@@ -77,13 +77,8 @@ function submit_check () {
   if (email_input.value === "test@codeit.com" && password_input.value === "codeit101") {
     location.href = "/pages/folder/folder.html"
   } else {
-    email_input_check.innerHTML = "이메일을 확인해 주세요";
-    email_input_check.classList.add("check_message")
-    email_input.classList.add("error_box")
-
-    password_input_check.innerHTML = "비밀번호를 확인해 주세요"
-    password_input_check.classList.add("check_message")
-    password_input.classList.add("error_box")
+    error_occur(email_input, email_input_check, messages.email_check_error)
+    error_occur(password_input, password_input_check, messages.password_check_error)
   }
 }
 
@@ -93,17 +88,17 @@ submit_button.addEventListener("click", submit_check)
 
 
 // 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
-const eye_mark = document.querySelector('.eye_mark') 
+const eye_mark_in_password = document.querySelector('.eye_mark_in_password') 
 
 function password_toggle(e) {
   if (e.target.parentElement.parentElement.children[1].type === "password") {
-    e.target.parentElement.parentElement.children[1].type = "text"
-    eye_mark.src = "/assets/images/eye_on_mark.svg"  
+    password_input.type = "text"
+    eye_mark_in_password.src = "/assets/images/eye_on_mark.svg" 
   } else {    
-    e.target.parentElement.parentElement.children[1].type = "password"
-    eye_mark.src = "/assets/images/eye_off_mark.svg"
+    password_input.type = "password"
+    eye_mark_in_password.src = "/assets/images/eye_off_mark.svg" 
   }
 }
 
-eye_mark.addEventListener("click", password_toggle)
+eye_mark_in_password.addEventListener('click', password_toggle)
 
