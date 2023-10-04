@@ -79,9 +79,20 @@ input:focus{
   outline: 1px solid var(--linkbrary-primary);
 }
 
-/* .input--pw{
+.input__error{
+  border-color: var(--linkbrary-red);
+}
+
+.errorMsg{
+  display: inline-block;
+  color: var(--linkbrary-red);
+  font-size: 0.875rem;
+  margin-top: 0.38rem;
+}
+
+.input--pw{
   letter-spacing: 0.375rem;
-} */
+}
 
 .input__eye{
   position: absolute;
