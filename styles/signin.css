@@ -102,8 +102,6 @@ input:focus {
   top: 50%;
   right: 1%;
   transform: translate(-50%, -50%);
-  background-color: var(--color-white);
-  border: none;
 }
 
 .login-btn {

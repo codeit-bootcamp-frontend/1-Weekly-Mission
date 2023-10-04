@@ -5,7 +5,7 @@ const pwErrorMsg = document.createElement('span');
 const inputBox = document.querySelector('.input-box:nth-child(2)');
 const idInvalidMsg = document.createElement('span');
 const loginBtn = document.querySelector('.login-btn');
-const eyeBtn = document.querySelector('.eye-off');
+const eyeImg = document.querySelector('.eye-off');
 
 let reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
@@ -69,13 +69,13 @@ function clickSigninBtn(e){
   }
 }
 
-function clickEyeBtn(e){
+function clickEyeImg(e){
   if(pwInput.getAttribute("type") === "password"){
     pwInput.setAttribute("type", "text");
-    eyeBtn.firstElementChild.setAttribute("src", "../assets/png/eye-on.png");
+    eyeImg.setAttribute("src", "../assets/png/eye-on.png");
   }else{
     pwInput.setAttribute("type", "password");
-    eyeBtn.firstElementChild.setAttribute("src", "../assets/png/eye-off.png");
+    eyeImg.setAttribute("src", "../assets/png/eye-off.png");
   }
 }
 
@@ -84,4 +84,4 @@ idInput.addEventListener("focusout", idEmpty);
 idInput.addEventListener("focusout", idInvalid);
 pwInput.addEventListener("focusout", pwEmpty);
 loginBtn.addEventListener("click", clickSigninBtn);
-eyeBtn.addEventListener("click", clickEyeBtn);
+eyeImg.addEventListener("click", clickEyeImg);
