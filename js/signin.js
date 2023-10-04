@@ -6,75 +6,95 @@ const passwordError = document.querySelector('#form--error-message__password');
 const loginButton = document.querySelector('#form--login-button');
 const eyeButton = document.querySelector('.form--eye-button');
 
-const borderRed = "border-red";
-const eyeOn = "on";
-
 // 유저 정보
-const userEmail = "test@codeit.com";
-const userePassword = "codeit101";
+const user = {
+  email: "test@codeit.com",
+  password: "codeit101"
+};
 
-// 이메일 유효성 검사 함수
+// 추가 스타일 클래스 변수
+const borderRed = 'border-red';
+const eyeOn = 'on';
+
 function checkEmail(email) {  
   let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   
   return regExp.test(email);
 };
 
+function showErrorMessage(label, message) { 
+  if (label === 'email') {
+    emailError.textContent = message;
+    emailInput.classList.add(borderRed);
+  } else if (label === 'password') {
+    passwordError.textContent = message;
+    passwordInput.classList.add(borderRed);
+  }
+};
+
+function removeErrorMessage(label) {
+  if (label === 'email') {
+    emailError.textContent = '';
+    emailInput.classList.remove(borderRed);
+  } else if (label === 'password') {
+    passwordError.textContent = '';
+    passwordInput.classList.remove(borderRed);
+  }
+};
+
 function valiDateEmail() {
   const emailValue = emailInput.value;
 
   if (!emailValue) {
-    emailError.textContent = '이메일을 입력해주세요.';
-    emailInput.classList.add(borderRed);
+    showErrorMessage('email', '이메일을 입력해주세요.');
   } else if (!checkEmail(emailValue)) {
-    emailError.textContent = '올바른 이메일 주소가 아닙니다.';
+    showErrorMessage('email', '올바른 이메일 주소가 아닙니다.');
     emailInput.classList.add(borderRed);
   } else {
-    emailError.textContent = '';
-    emailInput.classList.remove(borderRed);
+    removeErrorMessage('email');
   }
 }
+
+emailInput.addEventListener('focusout', valiDateEmail);
 
 function valiDatePassword() {
   const passwordValue = passwordInput.value;
 
   if (!passwordValue) {
-    passwordError.textContent = '비밀번호를 입력해주세요.';
-    passwordInput.classList.add(borderRed);
+    showErrorMessage('password', '비밀번호를 입력해주세요.');
   } else {
-    passwordError.textContent = '';
-    passwordInput.classList.remove(borderRed);
+    removeErrorMessage('password');
   };
 };
 
-emailInput.addEventListener('focusout', valiDateEmail);
 passwordInput.addEventListener('focusout', valiDatePassword);
 
 function getLogin() {
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
 
-  if (emailValue === userEmail && passwordValue === userePassword) {
+  if (emailValue === user.email && passwordValue === user.password) {
     location.href = '../pages/folder.html';
-  } else if (emailValue !== userEmail) {
-    emailError.textContent = '이메일을 확인해주세요.';
-    passwordError.textContent = '비밀번호를 확인해주세요.';
-    emailInput.classList.add(borderRed);
-  } else if (passwordValue !== userePassword) {
-    passwordError.textContent = '비밀번호를 확인해주세요.';
-    passwordInput.classList.add(borderRed);
+  } else if (emailValue !== user.email) {
+    showErrorMessage('email', '이메일을 확인해주세요.');
+    showErrorMessage('password', '비밀번호를 확인해주세요.');
+  } else if (passwordValue !== user.password) {
+    showErrorMessage('password', '비밀번호를 확인해주세요.');
   };
 };
 
 loginButton.addEventListener('click', getLogin);
 
+function changeTypeEyeButton(type) {
+  eyeButton.classList.toggle(eyeOn);
+  passwordInput.type = type;
+};
+
 function showPassword() {
   if (passwordInput.type === "password") {
-    eyeButton.classList.toggle(eyeOn);
-    passwordInput.type = "text";
+    changeTypeEyeButton('text');
   } else {
-    eyeButton.classList.toggle(eyeOn);
-    passwordInput.type = "password";
+    changeTypeEyeButton('password');
   };
 };
 
