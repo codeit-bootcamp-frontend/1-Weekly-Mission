@@ -1,4 +1,4 @@
-import { email, password, emailError, passwordError, passwordVisible } from "./tags.js";
+import { email, password, passwordCheck, emailError, passwordError, passwordVisible } from "./tags.js";
 
 const testEmail = "test@codeit.com";
 const testPassword = "codeit101";
@@ -28,6 +28,13 @@ function addPasswordClass(msg) {
   passwordError.classList.add("error-msg");
   passwordError.textContent = msg;
   password.parentElement.parentElement.append(passwordError);
+}
+
+function addPasswordCheckClass(msg) {
+  passwordCheck.classList.add("error");
+  passwordError.classList.add("error-msg");
+  passwordError.textContent = msg;
+  passwordCheck.parentElement.parentElement.append(passwordError);
 }
 
 function addEmailErrorMsg() {
@@ -70,6 +77,13 @@ function deletePasswordErrorMsg() {
   }
 }
 
+function deletePasswordCheckErrorMsg() {
+  if (passwordCheck.parentElement.nextElementSibling === passwordError) {
+    passwordCheck.classList.remove("error");
+    passwordCheck.parentElement.nextElementSibling.remove();
+  }
+}
+
 function loginPage() {
   return (location.href = "../pages/folder.html");
 }
@@ -96,6 +110,14 @@ function togglePasswordVisible(event) {
   passwordVisible.classList.toggle("on");
 }
 
+function checkPassword() {
+  if (password.value === passwordCheck.value) {
+    return true;
+  } else {
+    addPasswordCheckClass("비밀번호가 일치하지 않아요.");
+  }
+}
+
 export {
   validateEmail,
   addEmailErrorMsg,
@@ -105,4 +127,6 @@ export {
   deletePasswordErrorMsg,
   togglePasswordVisible,
   login,
+  checkPassword,
+  deletePasswordCheckErrorMsg,
 };
