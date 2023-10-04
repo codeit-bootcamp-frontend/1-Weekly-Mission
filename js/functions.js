@@ -40,11 +40,15 @@ function addPasswordCheckClass(msg) {
 function addEmailErrorMsg() {
   if (!email.value) {
     addEmailClass("이메일을 입력하세요.");
+    return false;
   } else if (!validateEmail(email.value)) {
     addEmailClass("올바른 이메일 주소가 아닙니다.");
+    return false;
   } else if (location.pathname === "/pages/signup.html" && email.value === testEmail) {
     addEmailClass("이미 사용중인 이메일입니다.");
+    return false;
   }
+  return true;
 }
 
 function deleteEmailErrorMsg() {
@@ -67,6 +71,7 @@ function addPassWordErrorMsgSignup() {
     return true; // if문을 바꿔야 될꺼 같은데 생각이 잘 안남
   } else {
     addPasswordClass("비밀번호는 영문, 숫자, 조합 8자 이상 입력해주세요.");
+    return false;
   }
 }
 
@@ -115,6 +120,14 @@ function checkPassword() {
     return true;
   } else {
     addPasswordCheckClass("비밀번호가 일치하지 않아요.");
+    return false;
+  }
+}
+
+function signup(event) {
+  event.preventDefault();
+  if (addEmailErrorMsg() === true && addPassWordErrorMsgSignup() === true && checkPassword() === true) {
+    loginPage();
   }
 }
 
@@ -129,4 +142,5 @@ export {
   login,
   checkPassword,
   deletePasswordCheckErrorMsg,
+  signup,
 };

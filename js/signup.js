@@ -1,4 +1,4 @@
-import { email, password, passwordCheck, passwordVisible } from "./tags.js";
+import { email, password, passwordCheck, passwordVisible, signupButton } from "./tags.js";
 import {
   addEmailErrorMsg,
   deleteEmailErrorMsg,
@@ -7,6 +7,7 @@ import {
   togglePasswordVisible,
   checkPassword,
   deletePasswordCheckErrorMsg,
+  signup,
 } from "./functions.js";
 
 email.addEventListener("focusout", addEmailErrorMsg);
@@ -16,3 +17,4 @@ password.addEventListener("focusin", deletePasswordErrorMsg);
 passwordCheck.addEventListener("focusout", checkPassword);
 passwordCheck.addEventListener("focusin", deletePasswordCheckErrorMsg);
 passwordVisible.addEventListener("click", togglePasswordVisible);
+signupButton.addEventListener("submit", signup);

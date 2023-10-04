@@ -112,6 +112,17 @@ input:focus {
   font-size: 1.8rem;
 }
 
+.signup.button {
+  width: 100%;
+  padding: 1.6rem 2rem;
+  border: none;
+  background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
+  color: #fff;
+  margin-top: 3rem;
+  border-radius: 8px;
+  font-size: 1.8rem;
+}
+
 /* social login */
 .social.border {
   display: flex;
