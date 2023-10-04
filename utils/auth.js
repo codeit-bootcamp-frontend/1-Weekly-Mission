@@ -73,6 +73,8 @@ const INPUT_STATUS = {
 	isNotValidated: "isNotValidated",
 	iaNotUser: "isNotUser",
 };
+const INPUT_HINT_CLASSNAME = "auth__input--hint";
+const FOLDER_PAGE_PATH = "/pages/forder.html";
 
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");
@@ -83,25 +85,25 @@ const passwordHintElement = document.querySelector(".auth__password-hint");
 function handleEmailHint(hintType) {
 	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
 	if (hintType === INPUT_STATUS.default) {
-		emailInputElement.classList.remove("auth__input--hint");
-	} else if (!emailInputElement.classList.contains("auth__input--hint")) {
-		emailInputElement.classList.add("auth__input--hint");
+		emailInputElement.classList.remove(INPUT_HINT_CLASSNAME);
+	} else if (!emailInputElement.classList.contains(INPUT_HINT_CLASSNAME)) {
+		emailInputElement.classList.add(INPUT_HINT_CLASSNAME);
 	}
 }
 
 function handlePasswordHint(hintType) {
 	passwordHintElement.innerText = SIGNIN_HINT.password[hintType];
-	if (hintType === "default") {
-		passwordInputElement.classList.remove("auth__input--hint");
-	} else if (!passwordInputElement.classList.contains("auth__input--hint")) {
-		passwordInputElement.classList.add("auth__input--hint");
+	if (hintType === INPUT_STATUS.default) {
+		passwordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
+	} else if (!passwordInputElement.classList.contains(INPUT_HINT_CLASSNAME)) {
+		passwordInputElement.classList.add(INPUT_HINT_CLASSNAME);
 	}
 }
 
 function handleSigninSuccess() {
-	emailInputElement.classList.remove("auth__input--hint");
-	passwordInputElement.classList.remove("auth__input--hint");
-	location.href = "/pages/forder.html";
+	emailInputElement.classList.remove(INPUT_HINT_CLASSNAME);
+	passwordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
+	location.href = FOLDER_PAGE_PATH;
 }
 
 function checkEmailInputValue(email) {
