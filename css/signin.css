@@ -169,11 +169,13 @@ input:focus {
   font-size: 1.4rem;
 }
 
-.password-input-area {
+.password-input-area,
+.password-check-input-area {
   position: relative;
 }
 
-.toogle-eye {
+.toogle-eye,
+.toogle-eye-check {
   position: absolute;
   width: 1.8rem;
   height: 1.8rem;
@@ -186,7 +188,8 @@ input:focus {
   background-repeat: no-repeat;
 }
 
-.toogle-eye.on {
+.toogle-eye.on,
+.toogle-eye-check.on {
   position: absolute;
   width: 1.8rem;
   height: 1.8rem;

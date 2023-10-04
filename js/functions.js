@@ -1,15 +1,15 @@
-import { email, password, passwordCheck, emailError, passwordError, passwordVisible } from "./tags.js";
+import {
+  email,
+  password,
+  passwordCheck,
+  emailError,
+  passwordError,
+  passwordVisible,
+  passwordCheckVisible,
+} from "./tags.js";
 
 const testEmail = "test@codeit.com";
 const testPassword = "codeit101";
-
-function passwordCount() {
-  let count = 0;
-  for (let i in password.value) {
-    count += 1;
-  }
-  return count;
-}
 
 function validateEmail(email) {
   const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -35,6 +35,25 @@ function addPasswordCheckClass(msg) {
   passwordError.classList.add("error-msg");
   passwordError.textContent = msg;
   passwordCheck.parentElement.parentElement.append(passwordError);
+}
+
+function passwordCount() {
+  let count = 0;
+  for (let i in password.value) {
+    count += 1;
+  }
+  return count;
+}
+
+function toggleEye(event) {
+  const inputId = event.target.previousElementSibling;
+  if (event.pointerType === "mouse") {
+    if (inputId.type === "text") {
+      inputId.type = "password";
+    } else {
+      inputId.type = "text";
+    }
+  }
 }
 
 function addEmailErrorMsg() {
@@ -105,14 +124,13 @@ function login(event) {
 }
 
 function togglePasswordVisible(event) {
-  event.preventDefault();
-
-  if (password.type === "text") {
-    password.type = "password";
-  } else {
-    password.type = "text";
-  }
+  toggleEye(event);
   passwordVisible.classList.toggle("on");
+}
+
+function togglePasswordCheckVisible(event) {
+  toggleEye(event);
+  passwordCheckVisible.classList.toggle("on");
 }
 
 function checkPassword() {
@@ -131,6 +149,12 @@ function signup(event) {
   }
 }
 
+function enterSignup(event) {
+  if (event.code === "Enter") {
+    signup(event);
+  }
+}
+
 export {
   validateEmail,
   addEmailErrorMsg,
@@ -143,4 +167,6 @@ export {
   checkPassword,
   deletePasswordCheckErrorMsg,
   signup,
+  enterSignup,
+  togglePasswordCheckVisible,
 };
