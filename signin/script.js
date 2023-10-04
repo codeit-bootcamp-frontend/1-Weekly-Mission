@@ -1,5 +1,6 @@
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
+const btnLogin = document.querySelector('.btn-login');
 
 
 const setError = (element, message) => {
@@ -47,5 +48,27 @@ const checkPwdValidation = () => {
   }
 }
 
+const submit = () => {
+  const emailValue = email.value.trim();
+  const passwordValue = password.value.trim();
+  const testEmail = 'test@codeit.com';
+  const testPassword = 'codeit101';
+
+  if (emailValue != testEmail && passwordValue 
+  != testPassword) {
+    setError(email, '이메일을 확인해주세요.');
+    setError(password, '비밀번호를 확인해주세요.');
+  } else if (emailValue != testEmail) {
+    setError(email, '이메일을 확인해주세요.');
+  } else if (passwordValue != testPassword) {
+    setError(password, '비밀번호를 확인해주세요.');
+  } else {
+    const link = '/folder.html';
+    location.href = link;
+  }
+}
+
+
 email.addEventListener("focusout", checkEmailValidation);
 password.addEventListener("focusout", checkPwdValidation);
+btnLogin.addEventListener('click', submit);
