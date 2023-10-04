@@ -21,17 +21,23 @@
             <div class="input">
                 <div class="box">
                     이메일
-                    <input id="email" type="email" autocomplete="on">
+                    <input id="email" type="email" autocomplete="on" class="normal">
+                    <div class="error-text">
+                        이메일을 입력해주세요.
+                    </div>
                 </div>
                 <div class="box">
                     비밀번호
                     <div class="input-box">
-                        <input id="password" type="password" autocomplete="on">
-                        <img src="/images/icon/signin-eye-off.png">
+                        <input id="password" type="password" autocomplete="on" class="normal">
+                        <img src="/images/icon/signin-eye-off.png" class="icon-eye off">
+                    </div>
+                    <div class="error-text">
+                        비밀번호를 입력해주세요.
                     </div>
                 </div>
             </div> 
-            <a href="\">
+            <a class="login-box">
                 <div class="login">
                     로그인 
                 </div>
@@ -57,5 +63,6 @@
             </div>
         </section>
     </main> 
+    <script src="/sign.js"></script>
 </body>
 </html>
