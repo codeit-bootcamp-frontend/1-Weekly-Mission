@@ -49,10 +49,12 @@ passwordConfirmToggle?.addEventListener("click", () => {
 });
 
 // Signin 유효성 검사
-const SIGNIN_CURRECT = {
-	email: "test@codeit.com",
-	password: "codeit101",
-};
+const USERS = [
+	{
+		email: "test@codeit.com",
+		password: "codeit101",
+	},
+];
 const SIGNIN_HINT = {
 	email: {
 		default: "",
@@ -138,7 +140,7 @@ function handleSignIn(email, password) {
 		handleEmailHint(INPUT_STATUS.isNotFilled);
 	} else if (!EMAIL_PATTERN.test(email)) {
 		handleEmailHint(INPUT_STATUS.isNotValidated);
-	} else if (email !== SIGNIN_CURRECT.email) {
+	} else if (email !== USERS[0].email) {
 		handleEmailHint(INPUT_STATUS.isNotUser);
 	} else {
 		isEmailRight = true;
@@ -146,7 +148,7 @@ function handleSignIn(email, password) {
 
 	if (password === "") {
 		handlePasswordHint(INPUT_STATUS.isNotFilled);
-	} else if (password !== SIGNIN_CURRECT.password) {
+	} else if (password !== USERS[0].password) {
 		handlePasswordHint(INPUT_STATUS.isNotUser);
 	} else {
 		isPasswordRight = true;
