@@ -10,7 +10,7 @@ const pwEmptyMsg = document.createElement("span");
 let emailRegex = new Regexp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
 
 function handleEmailInputEmptyValueCheck(e) {
-  if (!e.target.value) {
+  if (!e.target.value.trim) {
     emailEmptyMsg.textContent = "이메일을 입력해주세요.";
     emailEmptyMsg.classList.add("input-error-msg");
     emailInput.after(emailEmptyMsg);
@@ -22,7 +22,7 @@ function handleEmailInputEmptyValueCheck(e) {
 }
 
 function handleEmailInputInvalidValueCheck(e) {
-  if (!emailRegex.test(e.target.value) && e.target.value.length > 0) {
+  if (!emailRegex.test(e.target.value.trim) && e.target.value.trim.length > 0) {
     emailInvalidMsg.textContent = "올바른 이메일 주소가 아닙니다.";
     emailInvalidMsg.classList.add("input-error-msg");
     emailInput.after(emailInvalidMsg);
@@ -33,7 +33,7 @@ function handleEmailInputInvalidValueCheck(e) {
 }
 
 function handlePasswordInputEmptyValueCheck(e) {
-  if (!e.target.value) {
+  if (!e.target.value.trim) {
     pwEmptyMsg.textContent = "비밀번호를 입력해주세요.";
     pwEmptyMsg.classList.add("input-error-msg");
     pwWrapper.after(pwEmptyMsg);
@@ -45,7 +45,7 @@ function handlePasswordInputEmptyValueCheck(e) {
 }
 
 function handleSigninBtnClick() {
-  if (emailInput.value !== "test@codeit.com") {
+  if (emailInput.value.trim !== "test@codeit.com") {
     emailEmptyMsg.textContent = "이메일을 확인해주세요.";
     emailEmptyMsg.classList.add("input-error-msg");
     emailInput.classList.add("input-error");
@@ -54,7 +54,7 @@ function handleSigninBtnClick() {
     emailEmptyMsg.remove();
   }
 
-  if (pwInput.value !== "codeit101") {
+  if (pwInput.value.trim !== "codeit101") {
     pwEmptyMsg.textContent = "비밀번호를 확인해주세요.";
     pwEmptyMsg.classList.add("input-error-msg");
     pwWrapper.after(pwEmptyMsg);
@@ -63,7 +63,10 @@ function handleSigninBtnClick() {
     pwEmptyMsg.remove();
   }
 
-  if (emailInput.value === "test@codeit.com" && pwInput.value === "codeit101") {
+  if (
+    emailInput.value.trim === "test@codeit.com" &&
+    pwInput.value.trim === "codeit101"
+  ) {
     location.href = "/folder";
   }
 }
