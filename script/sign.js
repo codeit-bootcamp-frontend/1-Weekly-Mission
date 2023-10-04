@@ -8,6 +8,7 @@ const $pwdEye = document.querySelector('.password-eye');
 let emailValid = false;
 let pwdValid = false;
 
+const REGEMAIL = /^[A-Za-z0-9\-]+@[A-Za-z0-9]+\.[a-z]/;
 function emailErrorMessage(e){
     emailValid = false;
     if(e.target.value === ""){
@@ -15,7 +16,7 @@ function emailErrorMessage(e){
         $emailErrorMessage.style.display ="block";
         $email.classList.add('border-red');
     }
-   else if(!e.target.value.includes('@')){
+   else if(!REGEMAIL.test(e.target.value)){
         $emailErrorMessage.textContent = "올바른 이메일 주소가 아닙니다."
         $emailErrorMessage.style.display ="block";
         $email.classList.add('border-red');
