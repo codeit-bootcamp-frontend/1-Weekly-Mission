@@ -70,7 +70,9 @@ function login(event) {
   }
 }
 
-function togglePasswordVisible() {
+function togglePasswordVisible(event) {
+  event.preventDefault();
+
   if (password.type === "text") {
     password.type = "password";
   } else {
