@@ -56,9 +56,9 @@ function signinValidCheck(e){
         e.preventDefault();
     }
 }
-$signBtn.addEventListener('click',signinValidCheck);
+document.querySelector('.form__sign').addEventListener('submit',signinValidCheck);
 
-let eyeOn = $pwdEye.src.includes('eye-on');;
+let eyeOn = $pwdEye.src.includes('eye-on');
 function pwdEyeOnOff(e){
     eyeOn = !eyeOn;
     if(eyeOn){
@@ -70,4 +70,4 @@ function pwdEyeOnOff(e){
         $pwd.type ="password";
     }
 }
-$pwdEye.addEventListener('submit',pwdEyeOnOff);
+$pwdEye.addEventListener('click',pwdEyeOnOff);
