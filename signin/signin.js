@@ -43,21 +43,14 @@ loginBtn.addEventListener("click", function () {
 
   if (email === "test@codeit.com" && password === "codeit101") {
     location.href = "/folder";
-  } else if (!email && !password) {
+  } else {
+    // 잘못된 계정과 비밀번호에 대한 처리
     emailErrorText.textContent = "이메일을 확인해주세요.";
-    emailErrorText.style.visibility = "visible"; // 에러 메시지 표시
+    emailErrorText.style.visibility = "visible";
     passwordErrorText.textContent = "비밀번호를 확인해주세요.";
-    passwordErrorText.style.visibility = "visible"; // 에러 메시지 표시
-    emailInput.classList.add("error"); // 에러 발생 시 .error 클래스 추가
-    passwordInput.classList.add("error"); // 에러 발생 시 .error 클래스 추가
-  } else if (!email) {
-    emailErrorText.textContent = "이메일을 확인해주세요.";
-    emailErrorText.style.visibility = "visible"; // 에러 메시지 표시
-    emailInput.classList.add("error"); // 에러 발생 시 .error 클래스 추가
-  } else if (!password) {
-    passwordErrorText.textContent = "비밀번호를 확인해주세요.";
-    passwordErrorText.style.visibility = "visible"; // 에러 메시지 표시
-    passwordInput.classList.add("error"); // 에러 발생 시 .error 클래스 추가
+    passwordErrorText.style.visibility = "visible";
+    emailInput.classList.add("error");
+    passwordInput.classList.add("error");
   }
 });
 
