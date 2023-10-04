@@ -45,7 +45,9 @@ function handlePasswordInputEmptyValueCheck(e) {
 }
 
 function handleSigninBtnClick() {
-  if (emailInput.value.trim !== "test@codeit.com") {
+  const testEmail = "test@codeit.com";
+  const testPw = "codeit101";
+  if (emailInput.value.trim !== testEmail) {
     emailEmptyMsg.textContent = "이메일을 확인해주세요.";
     emailEmptyMsg.classList.add("input-error-msg");
     emailInput.classList.add("input-error");
@@ -54,7 +56,7 @@ function handleSigninBtnClick() {
     emailEmptyMsg.remove();
   }
 
-  if (pwInput.value.trim !== "codeit101") {
+  if (pwInput.value.trim !== testPw) {
     pwEmptyMsg.textContent = "비밀번호를 확인해주세요.";
     pwEmptyMsg.classList.add("input-error-msg");
     pwWrapper.after(pwEmptyMsg);
@@ -63,10 +65,7 @@ function handleSigninBtnClick() {
     pwEmptyMsg.remove();
   }
 
-  if (
-    emailInput.value.trim === "test@codeit.com" &&
-    pwInput.value.trim === "codeit101"
-  ) {
+  if (emailInput.value.trim === testEmail && pwInput.value.trim === testPw) {
     location.href = "/folder";
   }
 }
