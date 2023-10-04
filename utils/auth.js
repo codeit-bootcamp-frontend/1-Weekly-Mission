@@ -16,19 +16,21 @@ const passwordConfirmToggle = document.querySelector(
 	".auth__toggle-password--confirm"
 );
 
+function getPasswordVisibility(inputType) {
+	return inputType === "password"
+		? PASSWORD_TOGGLE_CONSTANT.visible
+		: PASSWORD_TOGGLE_CONSTANT.invisible;
+}
+
 passwordToggle.addEventListener("click", () => {
 	const passwordInput = document.querySelector(".auth__input-password");
 	const passwordIcon = document.querySelector(".auth__icon-password");
 
-	if (passwordInput.type === "password") {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.visible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.visible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.visible.imageAlt;
-	} else {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.invisible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.invisible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.invisible.imageAlt;
-	}
+	const passwordVisibility = getPasswordVisibility(passwordInput.type);
+
+	passwordInput.type = passwordVisibility.inputType;
+	passwordIcon.src = passwordVisibility.imageSrc;
+	passwordIcon.alt = passwordVisibility.imageAlt;
 });
 
 passwordConfirmToggle?.addEventListener("click", () => {
@@ -39,15 +41,11 @@ passwordConfirmToggle?.addEventListener("click", () => {
 		".auth__icon-password--confirm"
 	);
 
-	if (passwordConfirmInput.type === "password") {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.visible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.invisible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.invisible.imageAlt;
-	} else {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.invisible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.visible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.visible.imageAlt;
-	}
+	const passwordVisibility = getPasswordVisibility(passwordConfirmInput.type);
+
+	passwordConfirmInput.type = passwordVisibility.inputType;
+	passwordConfirmIcon.src = passwordVisibility.imageSrc;
+	passwordConfirmIcon.alt = passwordVisibility.imageAlt;
 });
 
 // Signin 유효성 검사
