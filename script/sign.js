@@ -57,7 +57,7 @@ function signinValidCheck(e){
 }
 $signBtn.addEventListener('click',signinValidCheck);
 
-let eyeOn = false;
+let eyeOn = $pwdEye.src.includes('eye-on');;
 function pwdEyeOnOff(e){
     eyeOn = !eyeOn;
     if(eyeOn){
