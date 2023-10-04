@@ -83,6 +83,9 @@ const emailHintElement = document.querySelector(".auth__email-hint");
 const passwordHintElement = document.querySelector(".auth__password-hint");
 
 function handleEmailHint(hintType) {
+	const hintText = emailHintElement.innerText;
+	if (hintText === SIGNIN_HINT.email[hintType]) return;
+
 	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
 	if (hintType === INPUT_STATUS.default) {
 		emailInputElement.classList.remove(INPUT_HINT_CLASSNAME);
@@ -92,6 +95,9 @@ function handleEmailHint(hintType) {
 }
 
 function handlePasswordHint(hintType) {
+	const hintText = passwordHintElement.innerText;
+	if (hintText === SIGNIN_HINT.password[hintType]) return;
+
 	passwordHintElement.innerText = SIGNIN_HINT.password[hintType];
 	if (hintType === INPUT_STATUS.default) {
 		passwordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
