@@ -67,6 +67,12 @@ const SIGNIN_HINT = {
 	},
 };
 const EMAIL_PATTERN = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+const INPUT_STATUS = {
+	default: "default",
+	isNotFilled: "isNotFilled",
+	isNotValidated: "isNotValidated",
+	iaNotUser: "isNotUser",
+};
 
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");
@@ -76,7 +82,7 @@ const passwordHintElement = document.querySelector(".auth__password-hint");
 
 function handleEmailHint(hintType) {
 	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
-	if (hintType === "default") {
+	if (hintType === INPUT_STATUS.default) {
 		emailInputElement.classList.remove("auth__input--hint");
 	} else if (
 		emailInputElement.classList.contains("auth__input--hint") === false
@@ -104,19 +110,19 @@ function handleSigninSuccess() {
 
 function checkEmailInputValue(email) {
 	if (email === "") {
-		handleEmailHint("isNotFilled");
+		handleEmailHint(INPUT_STATUS.isNotFilled);
 	} else if (EMAIL_PATTERN.test(email) === false) {
-		handleEmailHint("isNotValidated");
+		handleEmailHint(INPUT_STATUS.isNotValidated);
 	} else {
-		handleEmailHint("default");
+		handleEmailHint(INPUT_STATUS.default);
 	}
 }
 
 function checkPasswordInputValue(password) {
 	if (password === "") {
-		handlePasswordHint("isNotFilled");
+		handlePasswordHint(INPUT_STATUS.isNotFilled);
 	} else {
-		handlePasswordHint("default");
+		handlePasswordHint(INPUT_STATUS.default);
 	}
 }
 
@@ -125,19 +131,19 @@ function handleSignIn(email, password) {
 	let isPasswordRight = false;
 
 	if (email === "") {
-		handleEmailHint("isNotFilled");
+		handleEmailHint(INPUT_STATUS.isNotFilled);
 	} else if (EMAIL_PATTERN.test(email) === false) {
-		handleEmailHint("isNotValidated");
+		handleEmailHint(INPUT_STATUS.isNotValidated);
 	} else if (email !== SIGNIN_CURRECT.email) {
-		handleEmailHint("isNotUser");
+		handleEmailHint(INPUT_STATUS.isNotUser);
 	} else {
 		isEmailRight = true;
 	}
 
 	if (password === "") {
-		handlePasswordHint("isNotFilled");
+		handlePasswordHint(INPUT_STATUS.isNotFilled);
 	} else if (password !== SIGNIN_CURRECT.password) {
-		handlePasswordHint("isNotUser");
+		handlePasswordHint(INPUT_STATUS.isNotUser);
 	} else {
 		isPasswordRight = true;
 	}
