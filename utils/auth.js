@@ -68,7 +68,7 @@ const SIGNIN_HINT = {
 		isNotUser: "비밀번호를 변경해주세요.",
 	},
 };
-const EMAIL_PATTURN = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+const EMAIL_PATTERN = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");
@@ -106,7 +106,7 @@ function handleSigninSuccess() {
 
 function checkEmailInputValue(email) {
 	if (email === "") handleEmailHint("isNotFilled");
-	else if (EMAIL_PATTURN.test(email) === false)
+	else if (EMAIL_PATTERN.test(email) === false)
 		handleEmailHint("isNotValidated");
 	else handleEmailHint("default");
 }
@@ -125,7 +125,7 @@ function handleSignIn(email, password) {
 
 	if (email === "") {
 		handleEmailHint("isNotFilled");
-	} else if (EMAIL_PATTURN.test(email) === false) {
+	} else if (EMAIL_PATTERN.test(email) === false) {
 		handleEmailHint("isNotValidated");
 	} else if (email !== SIGNIN_CURRECT.email) {
 		handleEmailHint("isNotUser");
