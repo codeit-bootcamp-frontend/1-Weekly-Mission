@@ -69,4 +69,4 @@ function pwdEyeOnOff(e){
         $pwd.type ="password";
     }
 }
-$pwdEye.addEventListener('click',pwdEyeOnOff);
+$pwdEye.addEventListener('submit',pwdEyeOnOff);
