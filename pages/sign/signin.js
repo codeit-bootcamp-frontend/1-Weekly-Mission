@@ -1,6 +1,6 @@
 import { emailCheck, error_occur, error_disappear } from './modules/functions.js'
 import { messages } from './modules/message.js'
-import { email_input, email_input_check, password_input, password_input_check,  submit_button, eye_mark_in_password } from './modules/tags.js'
+import { email_input, email_input_check, password_input, password_input_check,  formtag, eye_mark_in_password } from './modules/tags.js'
 
 
 // 이메일 부분 //
@@ -33,16 +33,17 @@ password_input.addEventListener("focusout", password_error)
 
 
 // 로그인 시도 //
-function submit_check () {
+function submit_check (e) {
   if (email_input.value === "test@codeit.com" && password_input.value === "codeit101") {
     location.href = "/pages/folder/folder.html"
   } else {
     error_occur(email_input, email_input_check, messages.email_check_error)
     error_occur(password_input, password_input_check, messages.password_check_error)
+    e.preventDefault()
   }
 }
 
-submit_button.addEventListener("click", submit_check)
+formtag.addEventListener("submit", submit_check)
 
 
 // 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //

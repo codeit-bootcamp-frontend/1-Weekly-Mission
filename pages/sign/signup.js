@@ -1,6 +1,6 @@
 import { emailCheck, passwordCheck, error_occur, error_disappear } from './modules/functions.js'
 import { messages } from './modules/message.js'
-import { email_input, email_input_check, password_input, password_input_check, password_repeat_input, password_repeat_input_check, submit_button, eye_mark_in_password, eye_mark_in_password_repeat } from './modules/tags.js'
+import { email_input, email_input_check, password_input, password_input_check, password_repeat_input, password_repeat_input_check, formtag, eye_mark_in_password, eye_mark_in_password_repeat } from './modules/tags.js'
 
 
 // 이메일 부분 //
@@ -48,18 +48,19 @@ password_repeat_input.addEventListener('focusout',password_repeat_error)
 
 
 // 회원가입 시도 //
-function signin_submit_check () {
+function signup_submit_check (e) {
   if (email_input.value != "test@codeit.com" && passwordCheck(password_input.value) && password_input.value === password_repeat_input.value ) {
     location.href = "/pages/folder/folder.html"
   } else {
     error_occur(email_input, email_input_check, messages.email_check_error)
     error_occur(password_input, password_input_check, messages.password_check_error)
     error_occur(password_repeat_input, password_repeat_input_check, messages.password_check_error)
+    e.preventDefault()
   }
 }
 
-submit_button.addEventListener("click", signin_submit_check)
-window.addEventListener("keypress", (e) => e.code === 'Enter' && signin_submit_check())
+formtag.addEventListener("submit", signup_submit_check)
+window.addEventListener("keypress", (e) => e.code === 'Enter' && signup_submit_check())
 
 
 // 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
