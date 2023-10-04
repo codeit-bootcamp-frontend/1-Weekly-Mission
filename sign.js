@@ -1,18 +1,19 @@
-const email = document.querySelector('#email');
-const password = document.querySelector('#password');
-const emailBox = email.parentElement;
-const passwordBox = password.parentElement.parentElement;
+const emailEl = document.querySelector('#email');
+const emailBox = emailEl.closest('.box');
+const emailErrorText = emailBox.lastElementChild;
+const passwordEl = document.querySelector('#password');
+const passwordBox = passwordEl.closest('.box');
+const passwordErrorText = passwordBox.lastElementChild;
 const login = document.querySelector('.login-box');
+let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+const emailTest = 'test@codeit.com'
+const passwordTest = 'codeit101'
 
 function emailValueChecker () {
-    const includeAt = email.value.indexOf('@');
-    const includeFullStop = email.value.indexOf('.');
-    const includeSpace = email.value.indexOf(' ');
-    if (email.value === '') {
+    if (emailEl.value === '') {
         return (`이메일을 입력해주세요.`);
     }
-    else if (includeAt === -1 || includeFullStop === -1 || includeSpace !== -1
-        || (Math.abs(includeAt - includeFullStop) === 1 || includeFullStop === email.value.length - 1)) {
+    else if (!(regex.test(emailEl.value))) {
         return (`올바른 이메일 주소가 아닙니다.`)
     }
     else {
@@ -22,90 +23,48 @@ function emailValueChecker () {
 
 function emailCheck () {
     const emailValue = emailValueChecker();
-    
     if (emailValue){
-        email.className = 'wrong';
-        const alertWord = document.createElement('div');
-        alertWord.textContent = `${emailValue}`;
-        alertWord.setAttribute('class','wrong-text');
-        emailBox.append(alertWord);
+        emailEl.className = 'error';
+        emailErrorText.textContent = `${emailValue}`;
+        emailErrorText.style.visibility = 'visible';
     }
     else {
-        email.className = 'normal';
+        emailEl.className = 'normal';
+        emailErrorText.removeAttribute('style');
     }
-    paddingFix();
-}
-
-function emailRemove () {
-    if (emailBox.lastElementChild.classList.contains(`wrong-text`)) {
-        emailBox.lastElementChild.remove();
-    }
-    paddingFix();
 }
 
 function passwordCheck () {
-    if (password.value === ''){
-        password.className = 'wrong';
-        const alertWord = document.createElement('div');
-        alertWord.textContent = `비밀번호를 입력해주세요`;
-        alertWord.setAttribute('class','wrong-text');
-        passwordBox.append(alertWord);
+    if (passwordEl.value === ''){
+        passwordEl.className = 'error';
+        passwordErrorText.style.visibility = 'visible';
     }
     else {
-        password.className = 'normal';
+        passwordEl.className = 'normal';
+        passwordErrorText.removeAttribute('style');
     }
-    paddingFix();
-}
-
-function passwordRemove () {
-    if (passwordBox.lastElementChild.classList.contains(`wrong-text`)) {
-        passwordBox.lastElementChild.remove();
-    }
-    paddingFix();
 }
 
 function loginCheck () {
-    if (email.value === '' || password.value === '') {
-        if (email.value === '') {
-            emailRemove();
-            email.className = 'wrong';
-            const alertEmail = document.createElement('div');
-            alertEmail.textContent = `이메일을 확인해주세요`;
-            alertEmail.setAttribute('class','wrong-text');
-            emailBox.append(alertEmail);
-        }
-        if (password.value === '') {
-            passwordRemove();
-            password.className = 'wrong';
-            const alertPassword = document.createElement('div');
-            alertPassword.textContent = `비밀번호를 확인해주세요`;
-            alertPassword.setAttribute('class','wrong-text');
-            passwordBox.append(alertPassword);
-        }
+    if (emailEl.value === '' || emailEl.value !== emailTest ) {
+        emailEl.className = 'error';
+        emailErrorText.textContent = `이메일을 확인해주세요`;
+        emailErrorText.style.visibility = 'visible';
+        return;
     }
-    else if (email.classList.contains('normal') && password.classList.contains('normal')){
+    else if (passwordEl.value === '' || passwordEl.value !== passwordTest) {
+        passwordEl.className = 'error';
+        passwordErrorText.textContent = `비밀번호를 확인해주세요`;
+        passwordErrorText.style.visibility = 'visible';
+        return;
+    }
+    else if (emailEl.classList.contains('normal') && passwordEl.classList.contains('normal')){
         login.setAttribute('href','/folder.html');
     }
-    paddingFix();
 }
 
-function paddingFix () {
-    const sign = document.querySelector('.sign');
-    if (passwordBox.lastElementChild.classList.contains(`wrong-text`) && emailBox.lastElementChild.classList.contains(`wrong-text`)){
-        sign.style.padding = '16.6rem 0'
-    }
-    else if (passwordBox.lastElementChild.classList.contains(`wrong-text`) || emailBox.lastElementChild.classList.contains(`wrong-text`)) {
-        sign.style.padding = '17.4rem 0'
-    }
-    else {
-        sign.removeAttribute('style')
-    }
-}
-
-email.addEventListener('focusout', emailCheck);
-email.addEventListener('focusin', emailRemove);
-password.addEventListener('focusout', passwordCheck);
-password.addEventListener('focusin', passwordRemove)
+emailEl.addEventListener('focusout', emailCheck);
+passwordEl.addEventListener('focusout', passwordCheck);
 login.addEventListener('click', loginCheck);
 
 const eye = document.querySelector('.icon-eye');
@@ -115,13 +74,13 @@ function eyeOnOff () {
         eye.setAttribute('src', 'images/icon/signup-input-active-eye-on.png');
         eye.classList.remove('off');
         eye.classList.add('on');
-        password.setAttribute('type','text')
+        passwordEl.setAttribute('type','text')
     }
     else if (eye.classList.contains('on')) {
         eye.setAttribute('src', 'images/icon/signin-eye-off.png');
         eye.classList.remove('on');
         eye.classList.add('off');
-        password.setAttribute('type','password')
+        passwordEl.setAttribute('type','password')
     }    
 }
 
