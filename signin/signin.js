@@ -1,3 +1,5 @@
+import { createErrorMsg } from "../utils/auth.js";
+
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
 const pwWrapper = document.querySelector(".password-wrapper");
@@ -88,13 +90,6 @@ function handleEyeBtnClick() {
     pwInput.setAttribute("type", "password");
     eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-off.svg");
   }
-}
-
-function createErrorMsg(style, errorStatement) {
-  const errorMsg = document.createElement("span");
-  errorMsg.textContent = errorStatement;
-  errorMsg.classList.add(style);
-  return errorMsg;
 }
 
 emailInput.addEventListener("blur", handleEmailInputEmptyValueCheck);
