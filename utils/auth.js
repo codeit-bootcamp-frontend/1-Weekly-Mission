@@ -132,32 +132,42 @@ function handlePasswordFocusoutCheck(password) {
 	}
 }
 
-function handleSignIn(email, password) {
-	let isEmailRight = false;
-	let isPasswordRight = false;
-
+function getIsUserEmail(email) {
 	if (email === "") {
 		handleEmailHint(INPUT_STATUS.isNotFilled);
+		return false;
 	} else if (!EMAIL_PATTERN.test(email)) {
 		handleEmailHint(INPUT_STATUS.isNotValidated);
+		return false;
 	} else if (email !== USERS[0].email) {
 		handleEmailHint(INPUT_STATUS.isNotUser);
+		return false;
 	} else {
-		isEmailRight = true;
+		handleEmailHint(INPUT_STATUS.default);
+		return true;
 	}
-
-	if (password === "") {
-		handlePasswordHint(INPUT_STATUS.isNotFilled);
-	} else if (password !== USERS[0].password) {
-		handlePasswordHint(INPUT_STATUS.isNotUser);
-	} else {
-		isPasswordRight = true;
-	}
-
-	if (isEmailRight === true && isPasswordRight === true) handleSigninSuccess();
 }
 
-emailInputElement.addEventListener("focusout", () => {
+function getIsUserPassword(password) {
+	if (password === "") {
+		handlePasswordHint(INPUT_STATUS.isNotFilled);
+		return false;
+	} else if (password !== USERS[0].password) {
+		handlePasswordHint(INPUT_STATUS.isNotUser);
+		return false;
+	} else {
+		handlePasswordHint(INPUT_STATUS.default);
+		return true;
+	}
+}
+
+function handleSignIn(email, password) {
+	const isUserEmail = getIsUserEmail(email);
+	const isUserPassword = getIsUserPassword(password);
+	if (isUserEmail && isUserPassword) handleSigninSuccess();
+}
+
+emailInputElement.addEventListener("focusout", (e) => {
 	const emailValue = emailInputElement.value;
 	handleEmailFocusoutCheck(emailValue);
 });
