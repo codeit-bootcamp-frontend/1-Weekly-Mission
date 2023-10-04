@@ -84,9 +84,7 @@ function handleEmailHint(hintType) {
 	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
 	if (hintType === INPUT_STATUS.default) {
 		emailInputElement.classList.remove("auth__input--hint");
-	} else if (
-		emailInputElement.classList.contains("auth__input--hint") === false
-	) {
+	} else if (!emailInputElement.classList.contains("auth__input--hint")) {
 		emailInputElement.classList.add("auth__input--hint");
 	}
 }
@@ -95,9 +93,7 @@ function handlePasswordHint(hintType) {
 	passwordHintElement.innerText = SIGNIN_HINT.password[hintType];
 	if (hintType === "default") {
 		passwordInputElement.classList.remove("auth__input--hint");
-	} else if (
-		passwordInputElement.classList.contains("auth__input--hint") === false
-	) {
+	} else if (!passwordInputElement.classList.contains("auth__input--hint")) {
 		passwordInputElement.classList.add("auth__input--hint");
 	}
 }
@@ -111,7 +107,7 @@ function handleSigninSuccess() {
 function checkEmailInputValue(email) {
 	if (email === "") {
 		handleEmailHint(INPUT_STATUS.isNotFilled);
-	} else if (EMAIL_PATTERN.test(email) === false) {
+	} else if (!EMAIL_PATTERN.test(email)) {
 		handleEmailHint(INPUT_STATUS.isNotValidated);
 	} else {
 		handleEmailHint(INPUT_STATUS.default);
@@ -132,7 +128,7 @@ function handleSignIn(email, password) {
 
 	if (email === "") {
 		handleEmailHint(INPUT_STATUS.isNotFilled);
-	} else if (EMAIL_PATTERN.test(email) === false) {
+	} else if (!EMAIL_PATTERN.test(email)) {
 		handleEmailHint(INPUT_STATUS.isNotValidated);
 	} else if (email !== SIGNIN_CURRECT.email) {
 		handleEmailHint(INPUT_STATUS.isNotUser);
