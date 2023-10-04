@@ -73,7 +73,7 @@ const INPUT_STATUS = {
 	default: "default",
 	isNotFilled: "isNotFilled",
 	isNotValidated: "isNotValidated",
-	iaNotUser: "isNotUser",
+	isNotUser: "isNotUser",
 };
 const INPUT_HINT_CLASSNAME = "auth__input--hint";
 const FOLDER_PAGE_PATH = "/pages/forder.html";
