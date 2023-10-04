@@ -69,14 +69,22 @@ function clickSigninBtn(e){
   }
 }
 
+
+
 function clickEyeImg(e){
-  if(pwInput.getAttribute("type") === "password"){
-    pwInput.setAttribute("type", "text");
-    eyeImg.setAttribute("src", "../assets/png/eye-on.png");
-  }else{
-    pwInput.setAttribute("type", "password");
-    eyeImg.setAttribute("src", "../assets/png/eye-off.png");
-  }
+  const pwType = pwInput.getAttribute("type") === "password";
+  const [inputType, eyeOnOff] = pwType ? ["text", "eye-on"] : ["password", "eye-off"];
+
+  pwInput.setAttribute("type", inputType);
+  eyeImg.setAttribute("src", `../assets/png/${eyeOnOff}.png`)
+
+  // if(pwInput.getAttribute("type") === "password"){
+  //   pwInput.setAttribute("type", "text");
+  //   eyeImg.setAttribute("src", "../assets/png/eye-on.png");
+  // }else{
+  //   pwInput.setAttribute("type", "password");
+  //   eyeImg.setAttribute("src", "../assets/png/eye-off.png");
+  // }
 }
 
 
