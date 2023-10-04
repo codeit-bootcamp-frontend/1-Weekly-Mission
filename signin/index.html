@@ -22,13 +22,11 @@
           </section>
         </header>
         <form class="login-input">
-          <section class="input">
-            <label class="input-text" for="username">이메일</label>
-            <input id="username" class="input-box" name="username" />
-            <p class="error-message" id="emailError"></p>
-          </section>
-          <section class="input">
-            <label class="input-text" for="password">비밀번호</label>
+          <label class="input-text" for="username">이메일</label>
+          <input id="username" class="input-box" name="username" />
+          <p class="error-message" id="emailError"></p>
+          <label class="input-text" for="password">비밀번호</label>
+          <section class="pwd-input">
             <input
               id="password"
               class="input-box"
@@ -40,8 +38,8 @@
               src="/assets/eye-off.svg"
               id="toggleVisibility"
             />
-            <p class="error-message" id="passwordError"></p>
           </section>
+          <p class="error-message" id="passwordError"></p>
         </form>
         <section class="login-button">
           <button id="loginBtn">로그인</button>

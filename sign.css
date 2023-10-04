@@ -91,11 +91,6 @@ header {
   gap: 24px;
 }
 
-.input {
-  gap: 12px;
-  position: relative;
-}
-
 .input-text {
   font-size: 14px;
   font-weight: 400;
@@ -113,9 +108,26 @@ header {
   outline: 1px solid var(--color-primary);
 }
 
+.pwd-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-box {
+  padding-right: 40px;
+}
+
+.eye-off,
+.eye-on {
+  margin-left: -30px;
+  cursor: pointer;
+}
+
 .input-box.error {
-  outline: none; /* 포커스 스타일을 무효화 */
-  border: 1px solid var(--color-red); /* 에러 발생 시 빨간 테두리 */
+  outline: none;
+  border: 1px solid var(--color-red);
 }
 
 .error-message {
@@ -134,13 +146,6 @@ header {
 .social-login {
   width: 100%;
   border-radius: 8px;
-}
-
-.eye-off,
-.eye-on {
-  position: absolute;
-  top: 47px;
-  right: 15px;
 }
 
 .login-button {
