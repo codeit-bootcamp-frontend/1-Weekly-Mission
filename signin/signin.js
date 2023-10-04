@@ -7,7 +7,7 @@ const emailEmptyMsg = document.createElement("span");
 const emailInvalidMsg = document.createElement("span");
 const pwEmptyMsg = document.createElement("span");
 
-let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+let emailRegex = new Regexp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
 
 function inputEmptyValueHandler(e) {
   if (!e.target.value) {
@@ -22,7 +22,7 @@ function inputEmptyValueHandler(e) {
 }
 
 function inputInvalidEmailHandler(e) {
-  if (!regex.test(e.target.value) && e.target.value.length > 0) {
+  if (!emailRegex.test(e.target.value) && e.target.value.length > 0) {
     emailInvalidMsg.textContent = "올바른 이메일 주소가 아닙니다.";
     emailInvalidMsg.classList.add("input-error-msg");
     emailInput.after(emailInvalidMsg);
