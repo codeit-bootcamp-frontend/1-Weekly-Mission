@@ -9,7 +9,7 @@ const pwEmptyMsg = document.createElement("span");
 
 let emailRegex = new Regexp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
 
-function inputEmptyValueHandler(e) {
+function handleEmailInputEmptyValueCheck(e) {
   if (!e.target.value) {
     emailEmptyMsg.textContent = "이메일을 입력해주세요.";
     emailEmptyMsg.classList.add("input-error-msg");
@@ -21,7 +21,7 @@ function inputEmptyValueHandler(e) {
   }
 }
 
-function inputInvalidEmailHandler(e) {
+function handleEmailInputInvalidValueCheck(e) {
   if (!emailRegex.test(e.target.value) && e.target.value.length > 0) {
     emailInvalidMsg.textContent = "올바른 이메일 주소가 아닙니다.";
     emailInvalidMsg.classList.add("input-error-msg");
@@ -32,7 +32,7 @@ function inputInvalidEmailHandler(e) {
   }
 }
 
-function pwInputEmptyHandler(e) {
+function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value) {
     pwEmptyMsg.textContent = "비밀번호를 입력해주세요.";
     pwEmptyMsg.classList.add("input-error-msg");
@@ -44,7 +44,7 @@ function pwInputEmptyHandler(e) {
   }
 }
 
-function clickSigninBtnHandler() {
+function handleSigninBtnClick() {
   if (emailInput.value !== "test@codeit.com") {
     emailEmptyMsg.textContent = "이메일을 확인해주세요.";
     emailEmptyMsg.classList.add("input-error-msg");
@@ -68,7 +68,7 @@ function clickSigninBtnHandler() {
   }
 }
 
-function clickEyeBtnHandler() {
+function handleEyeBtnClick() {
   if (pwInput.getAttribute("type") === "password") {
     pwInput.setAttribute("type", "text");
     eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-on.svg");
