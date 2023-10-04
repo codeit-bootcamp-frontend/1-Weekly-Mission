@@ -78,8 +78,8 @@ function handleEyeBtnClick() {
   }
 }
 
-emailInput.addEventListener("focusout", inputEmptyValueHandler);
-emailInput.addEventListener("focusout", inputInvalidEmailHandler);
-pwInput.addEventListener("focusout", pwInputEmptyHandler);
+emailInput.addEventListener("blur", inputEmptyValueHandler);
+emailInput.addEventListener("blur", inputInvalidEmailHandler);
+pwInput.addEventListener("blur", pwInputEmptyHandler);
 signinBtn.addEventListener("click", clickSigninBtnHandler);
 eyeBtn.addEventListener("click", clickEyeBtnHandler);
