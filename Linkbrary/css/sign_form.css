@@ -66,6 +66,10 @@
   }
 }
 
+.error {
+  border-color: var(--color-red);
+}
+
 .form__input--selected {
   position: relative;
   top: 5px;
@@ -84,6 +88,12 @@
   font-size: var(--font-small);
   font-weight: var(--font-semibold);
   cursor: pointer;
+}
+
+.form__errorMessage {
+  margin: 0;
+  color: var(--color-red);
+  font-size: 0.875rem;
 }
 
 .form-container__oauth {

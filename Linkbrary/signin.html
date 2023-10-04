@@ -6,6 +6,8 @@
     <title>Signin Page</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/sign_form.css" />
+    <script type="module" src="src/signin.js" defer></script>
+    <script type="module" src="src/common/hiddenPassword.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -28,19 +30,24 @@
             <div class="form-container__link__underline"></div>
           </div>
         </div>
-        <form class="form">
+        <form class="form" action="folder.html">
           <label class="form__title">이메일</label>
           <input
+            id="email"
             class="form__input"
             placeholder="이메일을 입력해주세요."
             type="text"
+            autocomplete="off"
           />
+          <p id="emailError" class="form__errorMessage"></p>
           <label class="form__title">비밀번호</label>
           <div>
             <input
+              id="password"
               class="form__input"
               placeholder="비밀번호를 입력해주세요."
               type="password"
+              autocomplete="off"
             />
             <img
               class="form__input--selected"
@@ -48,6 +55,7 @@
               alt="비밀번호 숨기기 기능"
             />
           </div>
+          <p id="passwordError" class="form__errorMessage"></p>
           <a>
             <button class="form__button">로그인</button>
           </a>
