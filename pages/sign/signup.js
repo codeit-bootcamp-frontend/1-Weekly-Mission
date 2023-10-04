@@ -49,9 +49,9 @@ password_repeat_input.addEventListener('focusout',password_repeat_error)
 
 // 회원가입 시도 //
 function signup_submit_check (e) {
-  if (email_input.value != "test@codeit.com" && passwordCheck(password_input.value) && password_input.value === password_repeat_input.value ) {
-    location.href = "/pages/folder/folder.html"
-  } else {
+  if (email_input.value != "test@codeit.com" && emailCheck(email_input.value) && passwordCheck(password_input.value) && password_input.value === password_repeat_input.value ) {
+    formtag.action = "/pages/folder/folder.html"
+  } else {    
     error_occur(email_input, email_input_check, messages.email_check_error)
     error_occur(password_input, password_input_check, messages.password_check_error)
     error_occur(password_repeat_input, password_repeat_input_check, messages.password_check_error)
