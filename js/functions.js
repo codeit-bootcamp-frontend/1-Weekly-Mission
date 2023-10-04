@@ -46,6 +46,7 @@ function passwordCount() {
 }
 
 function toggleEye(event) {
+  event.preventDefault();
   const inputId = event.target.previousElementSibling;
   if (event.pointerType === "mouse") {
     if (inputId.type === "text") {
