@@ -1,4 +1,5 @@
 const email = document.querySelector('#email');
+const password = document.querySelector('#password');
 
 
 const setError = (element, message) => {
@@ -36,4 +37,15 @@ const checkEmailValidation = () => {
   }
 }
 
+const checkPwdValidation = () => {
+  const passwordValue = password.value.trim();
+  
+  if (passwordValue === '') {
+    setError(password, '비밀번호를 입력하세요.');
+  } else {
+    setSuccess(password);
+  }
+}
+
 email.addEventListener("focusout", checkEmailValidation);
+password.addEventListener("focusout", checkPwdValidation);
