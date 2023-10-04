@@ -3,16 +3,31 @@ const pwInput = document.querySelector(".password-input");
 const pwWrapper = document.querySelector(".password-wrapper");
 const signinBtn = document.querySelector(".signin-btn");
 const eyeBtn = document.querySelector(".eye-off-btn");
-const emailEmptyMsg = document.createElement("span");
-const emailInvalidMsg = document.createElement("span");
-const pwEmptyMsg = document.createElement("span");
 
-let emailRegex = new Regexp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
+let emailRegex = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
+const emailEmptyMsg = createErrorMsg(
+  "input-error-msg",
+  "이메일을 입력해주세요."
+);
+const emailInvalidMsg = createErrorMsg(
+  "input-error-msg",
+  "올바른 이메일 주소가 아닙니다."
+);
+const pwEmptyMsg = createErrorMsg(
+  "input-error-msg",
+  "비밀번호를 입력해주세요."
+);
+const emailIncorrectMsg = createErrorMsg(
+  "input-error-msg",
+  "이메일을 확인해주세요."
+);
+const pwIncorrectMsg = createErrorMsg(
+  "input-error-msg",
+  "비밀번호를 확인해주세요."
+);
 
 function handleEmailInputEmptyValueCheck(e) {
-  if (!e.target.value.trim) {
-    emailEmptyMsg.textContent = "이메일을 입력해주세요.";
-    emailEmptyMsg.classList.add("input-error-msg");
+  if (!e.target.value.trim()) {
     emailInput.after(emailEmptyMsg);
     emailInput.classList.add("input-error");
   } else {
@@ -22,9 +37,10 @@ function handleEmailInputEmptyValueCheck(e) {
 }
 
 function handleEmailInputInvalidValueCheck(e) {
-  if (!emailRegex.test(e.target.value.trim) && e.target.value.trim.length > 0) {
-    emailInvalidMsg.textContent = "올바른 이메일 주소가 아닙니다.";
-    emailInvalidMsg.classList.add("input-error-msg");
+  if (
+    !emailRegex.test(e.target.value.trim()) &&
+    e.target.value.trim().length > 0
+  ) {
     emailInput.after(emailInvalidMsg);
     emailInput.classList.add("input-error");
   } else {
@@ -33,9 +49,7 @@ function handleEmailInputInvalidValueCheck(e) {
 }
 
 function handlePasswordInputEmptyValueCheck(e) {
-  if (!e.target.value.trim) {
-    pwEmptyMsg.textContent = "비밀번호를 입력해주세요.";
-    pwEmptyMsg.classList.add("input-error-msg");
+  if (!e.target.value.trim()) {
     pwWrapper.after(pwEmptyMsg);
     pwInput.classList.add("input-error");
   } else {
@@ -47,25 +61,21 @@ function handlePasswordInputEmptyValueCheck(e) {
 function handleSigninBtnClick() {
   const testEmail = "test@codeit.com";
   const testPw = "codeit101";
-  if (emailInput.value.trim !== testEmail) {
-    emailEmptyMsg.textContent = "이메일을 확인해주세요.";
-    emailEmptyMsg.classList.add("input-error-msg");
+  if (emailInput.value.trim() !== testEmail) {
     emailInput.classList.add("input-error");
-    emailInput.after(emailEmptyMsg);
+    emailInput.after(emailIncorrectMsg);
   } else {
-    emailEmptyMsg.remove();
+    emailIncorrectMsg.remove();
   }
 
-  if (pwInput.value.trim !== testPw) {
-    pwEmptyMsg.textContent = "비밀번호를 확인해주세요.";
-    pwEmptyMsg.classList.add("input-error-msg");
-    pwWrapper.after(pwEmptyMsg);
+  if (pwInput.value.trim() !== testPw) {
+    pwWrapper.after(pwIncorrectMsg);
     pwInput.classList.add("input-error");
   } else {
-    pwEmptyMsg.remove();
+    pwIncorrectMsg.remove();
   }
 
-  if (emailInput.value.trim === testEmail && pwInput.value.trim === testPw) {
+  if (emailInput.value.trim() === testEmail && pwInput.value.trim === testPw) {
     location.href = "/folder";
   }
 }
@@ -80,8 +90,15 @@ function handleEyeBtnClick() {
   }
 }
 
-emailInput.addEventListener("blur", inputEmptyValueHandler);
-emailInput.addEventListener("blur", inputInvalidEmailHandler);
-pwInput.addEventListener("blur", pwInputEmptyHandler);
-signinBtn.addEventListener("click", clickSigninBtnHandler);
-eyeBtn.addEventListener("click", clickEyeBtnHandler);
+function createErrorMsg(style, errorStatement) {
+  const errorMsg = document.createElement("span");
+  errorMsg.textContent = errorStatement;
+  errorMsg.classList.add(style);
+  return errorMsg;
+}
+
+emailInput.addEventListener("blur", handleEmailInputEmptyValueCheck);
+emailInput.addEventListener("blur", handleEmailInputInvalidValueCheck);
+pwInput.addEventListener("blur", handlePasswordInputEmptyValueCheck);
+signinBtn.addEventListener("click", handleSigninBtnClick);
+eyeBtn.addEventListener("click", handleEyeBtnClick);
