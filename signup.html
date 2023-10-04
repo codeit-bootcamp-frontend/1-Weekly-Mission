@@ -25,29 +25,29 @@
       <a class="link-signin" href="/signin.html">로그인 하기</a>
     </div>
 
-    <div class="signup__wrap">
+    <form class="signup__wrap">
       <div class="signup__email__wrap">
         <label class="signup__label">이메일</label>
         <div class="signup__input__wrap">
-          <input class="input__row input--email" type="text">
+          <input class="input__row input--email" type="text" autocomplete="off">
         </div>
       </div>
       <div class="signup__pw__wrap">
         <label class="signup__label">비밀번호</label>
         <div class="signup__input__wrap">
-          <input class="input__row input--pw" type="text"> <!--type="password"-->
+          <input class="input__row input--pw" type="text" autocomplete="off"> <!--type="password"-->
           <img class="input__eye" src="assets/img/eyeOn.svg" alt="password eye on">
         </div>
       </div>
       <div class="signup__pw__wrap--confirm">
         <label class="signup__label">비밀번호 확인</label>
         <div class="signup__input__wrap">
-          <input class="input__row input--pw" type="text"> <!--type="password"-->
+          <input class="input__row input--pw" type="text" autocomplete="off"> <!--type="password"-->
           <img class="input__eye" src="assets/img/eyeOn.svg" alt="password eye on">
         </div>
       </div>
        <button class="signup__btn" type="submit">회원가입</button>
-    </div>
+    </form>
     
     <div class="signup--social">
       다른 방식으로 가입하기
