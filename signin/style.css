@@ -25,6 +25,7 @@ input:focus {
 }
 
 .container {
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,16 +46,19 @@ input:focus {
 }
 
 #form {
+  width: 100%;
   margin: 30px 0;
   position: relative;
 }
 .input-control label {
   display: block;
+  width: 100%;
   font-size: 0.875rem;
   color: var(--color-black);
   margin-bottom: 12px;
 }
 .input-control input {
+  display: block;
   width: 100%;
 }
 
@@ -66,7 +70,8 @@ input:focus {
 }
 
 .btn-login {
-  width: 400px;
+  width: 100%;
+  display: block;
   border: none;
   margin-top: 32px;
 }
@@ -83,7 +88,7 @@ input:focus {
 
 
 .social-login {
-  width: 400px;
+  width: 100%;
   padding: 12px 24px;
   display: flex;
   justify-content: space-between;
@@ -115,6 +120,7 @@ input:focus {
     height: 100%;
   }
   .container {
+    max-width: 400px;
     margin: auto 32px;
   }
 }
