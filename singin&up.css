@@ -64,7 +64,11 @@ body {
 .psw-box img {
   position: absolute;
   right: 5%;
-  top: 60%;
+  top: 55%;
+}
+
+.psw-box img.psw-wrong {
+  top: 47%;
 }
 
 .sign-box .input-box input {
@@ -75,9 +79,18 @@ body {
   border-radius: 8px;
 }
 
+.sign-box .input-box p {
+  padding-top: 6px;
+  color: var(--red);
+}
+
 .sign-box .input-box input:focus {
   outline: none;
   border: 1px solid var(--primary);
+}
+
+.sign-box .input-box .input-wrong {
+  border: 1px solid var(--red);
 }
 
 .sign-link {

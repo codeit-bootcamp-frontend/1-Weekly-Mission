@@ -282,6 +282,12 @@ footer {
   text-align: center;
 }
 
+.footer-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .footer-link {
   display: flex;
   gap: 2.5rem;
@@ -289,6 +295,12 @@ footer {
 
 .footer-link a {
   color: #CFCFCF;
+}
+
+.sns_icons {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .sns_icons img {
@@ -391,6 +403,10 @@ footer {
     min-width: 400px;
     height: 320px;
   } 
+  
+  .sns_icons {
+    width: 55%;
+  }
 }
 
 /*** mobile size***/
@@ -566,7 +582,6 @@ footer {
   }
 
   .footer-box {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 60px;
