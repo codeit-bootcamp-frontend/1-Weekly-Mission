@@ -1,3 +1,4 @@
+/*pc size >= 1200px*/
 body{
     display: flex;  
     align-items: center;
@@ -22,9 +23,7 @@ nav {
 }
 
 .gnb__side {
-    display: flex;
-    flex-basis: 20rem;
-    /* flex-grow: 1; */
+    flex-basis: 20rem;    
 }
 
 .cta {
@@ -42,7 +41,7 @@ nav {
   }
   
 .cta__short {
-width: 12rem;
+width: 8rem;
 }
 
 .cta__long {
