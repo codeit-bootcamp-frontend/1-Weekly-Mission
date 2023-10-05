@@ -29,19 +29,6 @@ const ACCOUNT = {
 const EMAIL_PATTERN =
   /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
-export {
-  authInputs,
-  authEmail,
-  authPassword,
-  authPasswordCheck,
-  authSubmit,
-  togglePasswordButton,
-  togglePasswordImg,
-  ERROR_MSGS,
-  ACCOUNT,
-  EMAIL_PATTERN,
-};
-
 const printErrorMsg = ({ error, type, target }) => {
   target.classList.add("form__input-box__error");
   const errorMsg = target.parentElement.querySelector(".error-msg");
@@ -56,34 +43,34 @@ const removeErrorMsg = (target) => {
   errorMsg.style.display = "none";
 };
 
-const checkEmptyInput = (event) => {
-  if (!event.target.value) {
+const checkEmptyInput = (target) => {
+  if (!target.value) {
     printErrorMsg({
       error: "emptyInput",
-      type: event.target.type,
-      target: event.target,
+      type: target.type,
+      target,
     });
   } else {
-    removeErrorMsg(event.target);
+    removeErrorMsg(target);
   }
 };
 
-const validateEmail = (event) => {
-  if (!event.target.value) {
+const validateEmail = (target) => {
+  if (!target.value) {
     return;
   }
 
-  if (!EMAIL_PATTERN.test(event.target.value)) {
+  if (!EMAIL_PATTERN.test(target.value)) {
     printErrorMsg({
       error: "invalidInput",
-      type: event.target.type,
-      target: event.target,
+      type: target.type,
+      target,
     });
   }
 };
 
-const validatePassword = (event) => {
-  if (!event.target.value) {
+const validatePassword = (target) => {
+  if (!target.value) {
     return;
   }
 };
@@ -118,10 +105,10 @@ const signin = (event) => {
 
 const initSignin = () => {
   for (const input of authInputs) {
-    input.addEventListener("focusout", checkEmptyInput);
+    input.addEventListener("focusout", ({ target }) => checkEmptyInput(target));
   }
 
-  authEmail.addEventListener("focusout", validateEmail);
+  authEmail.addEventListener("focusout", ({ target }) => validateEmail(target));
   authSubmit.addEventListener("click", signin);
   togglePasswordButton.addEventListener("click", togglePasswordVisibility);
 };
