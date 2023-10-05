@@ -6,13 +6,13 @@ const inputPwdCheck = document.querySelector(".pwd_check");
 const eyesToggle = document.querySelectorAll(".eyes_toggle");
 
 inputEmail.addEventListener("focusout", (e) => {
-  account.validationForm(e);
+  account.validateInput(e);
 });
 inputPwd.addEventListener("focusout", (e) => {
-  account.validationForm(e);
+  account.validateInput(e);
 });
 inputPwdCheck.addEventListener("focusout", (e) => {
-  account.validationForm(e);
+  account.validateInput(e);
 });
 
 eyesToggle.forEach((el) => {

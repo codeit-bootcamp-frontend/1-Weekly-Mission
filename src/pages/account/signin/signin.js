@@ -6,13 +6,13 @@ const loginForm = document.querySelector(".sign_form");
 const eyesToggle = document.querySelector(".eyes_toggle");
 
 inputEmail.addEventListener("focusout", (e) => {
-  account.validationForm(e);
+  account.validateInput(e);
 });
 inputPwd.addEventListener("focusout", (e) => {
-  account.validationForm(e);
+  account.validateInput(e);
 });
 eyesToggle.addEventListener("click", (e) => {
-  account.eyesToggleEvent(e);
+  account.togglePasswordVisibility(e);
 });
 
 loginForm.addEventListener("submit", (e) => {

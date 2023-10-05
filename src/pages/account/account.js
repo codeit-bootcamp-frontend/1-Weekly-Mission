@@ -12,7 +12,7 @@ const expEmail =
  *3.조건에 맞지 않을 시 에러 메시지 생성
  *
  */
-function validationForm(e) {
+function validateInput(e) {
   let node = e.target;
   let nodeInfo = {
     type: node.type,
@@ -107,4 +107,4 @@ function eyesToggleEvent(e) {
   }
 }
 
-export { validationForm, eyesToggleEvent };
+export { validateInput, eyesToggleEvent };
