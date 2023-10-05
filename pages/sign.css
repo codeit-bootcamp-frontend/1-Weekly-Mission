@@ -127,8 +127,7 @@ input:focus {
   font-size: 1.4rem;
   color: var(--red);
   font-weight: 400;
-  position: relative;
-  left: 1rem;
+  height: 0rem;
 }
 
 @media (max-width: 1199px) {

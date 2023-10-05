@@ -11,58 +11,51 @@ const passwordErrorEl = document.querySelector('.password.error-msg');
 const eyeComponent = document.querySelector('.eye-off')
 
 // 이메일 유효성 검사식
-const checkRightEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+const emailPattern = /^([\w\.\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9])+([\w\.\_\-])+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,8}$/; 
+  // 동사로 시작하는 변수는 함수
+  // TLD 2~8, 일부 특수문자 가능한 이메일로 수정(일부 Daum user email) 
 
 // 코드잇 로그인 계정 정보
-let accountInfo = {
-  codeit: {
+const accountInfo = Object.freeze({  // freeze(): 읽기 전용의 객체를 생성하기 위해.. depth마다 해줘야함
+  codeit: Object.freeze({
     id: 'test@codeit.com',
     password: 'codeit101'
-  }
+  })
+});
+
+const ActiveError = (messageTarget, message, borderTarget, borderColor = 'var(--red)') => {
+  messageTarget.textContent = message;
+  borderTarget.previousElementSibling.style.borderColor = borderColor;
 }
 
-// 실행할 이벤트 핸들러
-emailInputEl.addEventListener('focusout', EmailInputCheck);
-passwordInputEl.addEventListener('focusout', PasswordInputCheck);
-LoginButton.addEventListener('click', TryLogin);
-eyeComponent.addEventListener('click', EyeComponentOnOffChange);
-
-
-function EmailInputCheck(e) {
+const checkEmailInput = () => {
   if (emailInputEl.value == '') {  // 만약 인풋 태그가 비어있다면
-    emailErrorEl.textContent = '이메일을 입력해주세요.';  // emailErrorEl에 해당 메세지 출력
-    emailErrorEl.previousElementSibling.style.borderColor = 'var(--red)';
-  } else if (checkRightEmail.test(emailInputEl.value) == false) {  // 이메일 유효성 검사
-    emailErrorEl.textContent = '올바른 이메일 주소가 아닙니다.'; 
-    emailErrorEl.previousElementSibling.style.borderColor = 'var(--red)';
+    ActiveError(emailErrorEl, '이메일을 입력해주세요.', emailErrorEl);
+  } else if (emailPattern.test(emailInputEl.value) == false) {  // 이메일 유효성 검사
+    ActiveError(emailErrorEl, '올바른 이메일 주소가 아닙니다.', emailErrorEl);
   } else {
-    emailErrorEl.textContent = ''; 
-    emailErrorEl.previousElementSibling.style.borderColor = 'var(--gray-three)';
+    ActiveError(emailErrorEl, '', emailErrorEl, 'var(--gray-three)');
   }
 }
 
-function PasswordInputCheck(e) {
+const checkPasswordInput = () => {
   if (passwordInputEl.value == '') { 
-    passwordErrorEl.textContent = '비밀번호를 입력해주세요.';
-    eyeComponent.previousElementSibling.style.borderColor = 'var(--red)';
+    ActiveError(passwordErrorEl, '비밀번호를 입력해주세요.', eyeComponent);
   } else {
-    passwordErrorEl.textContent = '';
-    eyeComponent.previousElementSibling.style.borderColor = 'var(--gray-three)';
+    ActiveError(passwordErrorEl, '', eyeComponent, 'var(--gray-three)');
   }
 }
  
-function TryLogin(e) {
+const TryLogin = () => {
   if (emailInputEl.value === accountInfo.codeit.id && passwordInputEl.value === accountInfo.codeit.password) {  // 만약 코드잇 계정으로 로그인 한다면
     location.replace('/folder.html');  // location.href()는 뒤로가기(이젠페이지로 이동)이 가능, replace는 불가능
   } else {
-    emailErrorEl.textContent = '이메일을 확인해주세요.';
-    passwordErrorEl.textContent = '비밀번호를 확인해주세요.';
-    emailErrorEl.previousElementSibling.style.borderColor = 'var(--red)';
-    eyeComponent.previousElementSibling.style.borderColor = 'var(--red)';
+    ActiveError(emailErrorEl, '이메일을 확인해주세요.', emailErrorEl);
+    ActiveError(passwordErrorEl, '비밀번호를 확인해주세요.', eyeComponent);
   }
 }
 
-function EyeComponentOnOffChange(e) {
+const EyeComponentOnOffChange = () => {
   if (!eyeComponent.classList.contains('eye-on')) {
     eyeComponent.src = 'assets/components/eye-on.svg';
     eyeComponent.classList.add('eye-on');
@@ -73,3 +66,9 @@ function EyeComponentOnOffChange(e) {
     eyeComponent.previousElementSibling.type ="password";
   }
 }
+
+// 실행할 이벤트 핸들러
+emailInputEl.addEventListener('focusout', checkEmailInput);
+passwordInputEl.addEventListener('focusout', checkPasswordInput);
+LoginButton.addEventListener('click', TryLogin);
+eyeComponent.addEventListener('click', EyeComponentOnOffChange);
