@@ -24,23 +24,26 @@
       </p>
     </header>
     <div class="sign-box">
-      <form class="sign-form">
+      <form id="form" class="sign-form">
         <div class="sign-inputs">
           <div class="sign-input-box">
             <label class="sign-input-label">이메일</label>
-            <input class="sign-input" />
+            <input id="email" class="sign-input" />
+            <p id="email-error-message" class="error-message"></p>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input class="sign-input" type="password" />
-            <button class="eye-button" type="button">
+            <input id="password" class="sign-input" type="password" />
+            <p id="password-error-message" class="error-message"></p>
+            <button id="password-toggle" class="eye-button" type="button">
               <img src="./images/eye-off.png" />
             </button>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호 확인</label>
-            <input class="sign-input" type="password" />
-            <button class="eye-button" type="button">
+            <input id="passwordConfirm" class="sign-input" type="password" />
+            <p id="password-error-message-2" class="error-message"></p>
+            <button id="password-toggle-2" class="eye-button" type="button">
               <img src="./images/eye-off.png" />
             </button>
           </div>
@@ -59,5 +62,6 @@
         </div>
       </div>
     </div>
+  <script type="module" src="./src/signup.js"></script>
   </body>
 </html>
