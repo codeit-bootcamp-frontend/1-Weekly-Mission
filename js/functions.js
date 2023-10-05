@@ -37,14 +37,6 @@ function addPasswordCheckClass(msg) {
   passwordCheck.parentElement.parentElement.append(passwordError);
 }
 
-function passwordCount() {
-  let count = 0;
-  for (let i in password.value) {
-    count += 1;
-  }
-  return count;
-}
-
 function toggleEye(event) {
   event.preventDefault();
   const inputId = event.target.previousElementSibling;
@@ -85,9 +77,10 @@ function addPasswordErrorMsg() {
 }
 
 function addPassWordErrorMsgSignup() {
+  console.log(password.value.length);
   const stringCheck = /[a-zA-Z]/;
   const numberCheck = /[0-9]/;
-  if (passwordCount() >= 8 && stringCheck.test(password.value) && numberCheck.test(password.value)) {
+  if (password.value.length >= 8 && stringCheck.test(password.value) && numberCheck.test(password.value)) {
     return true; // if문을 바꿔야 될꺼 같은데 생각이 잘 안남
   } else {
     addPasswordClass("비밀번호는 영문, 숫자, 조합 8자 이상 입력해주세요.");
