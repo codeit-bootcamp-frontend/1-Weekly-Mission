@@ -16,20 +16,32 @@ function passwordMatch(password, rePassword, repasswordLabel) {
   }
 }
 
-email.addEventListener("focusout", function (event) {
+function alreadyUsedEmail(email, emailLabel) {
+  if (email.value.trim() === "test@codeit.com") {
+    const errorMsgs = emailLabel.querySelector(".error-message");
+    errorMsgs.innerText = "이미 사용 중인 이메일입니다";
+    errorMsgs.style.color = "red";
+    email.style.border = "3px solid red";
+  }
+}
+
+email.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(email, emailLabel);
-  if (isEmpty(email)) {
+  if (isNotEmpty(email)) {
     showValidEmailErrorMessage(email, emailLabel);
+  }
+  if (isNotEmpty(email)) {
+    alreadyUsedEmail(email, emailLabel);
   }
 });
 
-password.addEventListener("focusout", function (event) {
+password.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(password, passwordLabel);
 });
 
-rePassword.addEventListener("focusout", function (event) {
+rePassword.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(rePassword, repasswordLabel);
   if (password.value.length && rePassword.value.length) {
