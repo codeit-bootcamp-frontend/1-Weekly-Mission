@@ -3,11 +3,59 @@
   <head>
     <meta charset="utf-8" />
     <title>로그인</title>
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <link rel="stylesheet" href="./src/sign.css" />
+  </head>
+  <body>
+    <header>
+      <a class="logo-link" href="index.html">
+        <img class="header-logo" src="./images/logo.svg" alt="홈으로 연결된 Linkbrary 로고" />
+      </a>
+      <p class="header-message">
+        회원이 아니신가요?<a class="header-link" href="signup.html">회원 가입하기</a>
+      </p>
+    </header>
+    <div class="sign-box">
+      <form class="sign-form">
+        <div class="sign-inputs">
+          <div class="sign-input-box">
+            <label class="sign-input-label">이메일</label>
+            <input class="sign-input" id="emailInput" placeholder = '내용 입력'/>
+            <div id="emailError" class="error-message"></div>
+          </div>
+          <div class="sign-input-box sign-password">
+            <label class="sign-input-label">비밀번호</label>
+            <input class="sign-input" id="passwordInput" type="password" />
+            <div id="passwordError" class="error-message"></div>
+            <button class="eye-button" type="button">
+              <img src="./images/eye-off.png" id="eyeImg"/>
+            </button>
+          </div>
+        </div>
+        <button class="cta" id="loginButton" type="submit">로그인</button>
+      </form>
+      <div class="sns-box">
+        <span class="sns-text">소셜 로그인</span>
+        <div class="sns-links">
+          <a class="sns-link google-link" href="https://www.google.com/">
+            <img src="./images/google.png" />
+          </a>
+          <a class="sns-link kakao-link" href="https://www.kakaocorp.com/page/">
+            <img src="./images/kakao.png" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <script src="./signin.js">
+    </script>
     <link rel = "stylesheet" href = "./src/reset.css">
     <link rel = "stylesheet" href = "./src/signin.css">
   </head>
