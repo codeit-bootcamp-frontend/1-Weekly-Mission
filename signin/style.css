@@ -73,7 +73,7 @@ input {
     border-radius: 8px;
     border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
     background: var(--linkbrary-white, #FFF);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -121,4 +121,23 @@ button {
 }
 
 input:focus{outline-color: #6D6AFE;}
-   
+
+
+.warning-border {
+    border-color: red;
+
+}
+
+.warning-text {
+    color: red;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.line {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
