@@ -5,18 +5,18 @@ const inputPwd = document.querySelector(".pwd_input");
 const inputPwdCheck = document.querySelector(".pwd_check");
 const eyesToggle = document.querySelectorAll(".eyes_toggle");
 
-inputEmail.addEventListener("focusout", (e) => {
+inputEmail.addEventListener("blur", (e) => {
   account.validateInput(e);
 });
-inputPwd.addEventListener("focusout", (e) => {
+inputPwd.addEventListener("blur", (e) => {
   account.validateInput(e);
 });
-inputPwdCheck.addEventListener("focusout", (e) => {
+inputPwdCheck.addEventListener("blur", (e) => {
   account.validateInput(e);
 });
 
 eyesToggle.forEach((el) => {
   el.addEventListener("click", (e) => {
-    account.eyesToggleEvent(e);
+    account.togglePasswordVisibility(e);
   });
 });

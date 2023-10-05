@@ -86,7 +86,7 @@ function setErrorMsg(nodeInfo, errType) {
   return result;
 }
 /***
- * password eyesToggleEvent
+ * password togglePasswordVisibility
  *
  * 패스워드 타입 변경 이벤트 함수
  *
@@ -94,7 +94,7 @@ function setErrorMsg(nodeInfo, errType) {
  *
  *
  */
-function eyesToggleEvent(e) {
+function togglePasswordVisibility(e) {
   let target = e.target;
   let prevSibling = target.previousElementSibling; //이전 형제 요소
   console.log(prevSibling);
@@ -107,4 +107,4 @@ function eyesToggleEvent(e) {
   }
 }
 
-export { validateInput, eyesToggleEvent };
+export { validateInput, togglePasswordVisibility };

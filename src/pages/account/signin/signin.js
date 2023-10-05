@@ -5,10 +5,10 @@ const inputPwd = document.querySelector(".pwd_input");
 const loginForm = document.querySelector(".sign_form");
 const eyesToggle = document.querySelector(".eyes_toggle");
 
-inputEmail.addEventListener("focusout", (e) => {
+inputEmail.addEventListener("blur", (e) => {
   account.validateInput(e);
 });
-inputPwd.addEventListener("focusout", (e) => {
+inputPwd.addEventListener("blur", (e) => {
   account.validateInput(e);
 });
 eyesToggle.addEventListener("click", (e) => {

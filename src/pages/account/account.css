@@ -89,6 +89,7 @@ body {
 
 .pwd_box {
   position: relative;
+  height: 65px;
 }
 
 .eyes_toggle {
