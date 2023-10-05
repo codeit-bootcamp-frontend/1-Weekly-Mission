@@ -19,6 +19,7 @@
                 <div class="form__wrapper">
                     <label for="email_input">이메일</label>
                     <input type="email" class="email_input" id="email_input" name="email">
+                    <div class="email_error_message"></div>
                 </div>
                 <div class="form__wrapper">
                     <label for="pwd_input">비밀번호</label>
@@ -26,6 +27,7 @@
                         <input type="password" class="pwd_input" id="pwd_input" name="password">
                         <img src="/img/eye-on.svg" alt="" class="password-eye">
                     </div>
+                    <div class="pwd_error_message"></div>
                 </div>
                 <div class="form__wrapper">
                     <label for="check_pwd_input">비밀번호 확인</label>
@@ -33,6 +35,7 @@
                         <input type="password" class="check_pwd_input" id="check_pwd_input">
                         <img src="/img/eye-on.svg" alt="" class="password-eye">
                     </div>
+                    <div class="check_pwd_error_message"></div>
                 </div>
                 <button class="btn-sign">회원가입</button>
             </form>
@@ -45,5 +48,6 @@
             </div>
         </div>
     </div>
+    <script src="/script/sign.js"></script>
 </body>
 </html>
