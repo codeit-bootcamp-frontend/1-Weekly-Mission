@@ -2,13 +2,9 @@
     box-sizing: border-box;
 }
 
-html {
-    /* 62.5% of 16px browser font size is 10px */
-    /* 16px * 0.625 = 10px */
-    font-size: 62.5%;
-  }
 
-html, body, div, span, applet, object, iframe,
+
+body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -28,6 +24,17 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+html {
+    /* 62.5% of 16px browser font size is 10px */
+    /* 16px * 0.625 = 10px */
+    font-size: 62.5%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+  }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
