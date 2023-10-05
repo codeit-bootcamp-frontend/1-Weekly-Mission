@@ -39,14 +39,22 @@ function isCodeItLogin(email, password) {
   );
 }
 
-function passwordVisible() {
-  if (eyeIcon.classList.contains("fa-eye")) {
-    eyeIcon.classList.remove("fa-eye");
-    eyeIcon.classList.add("fa-eye-slash");
-    password.type = "password";
-  } else if (eyeIcon.classList.contains("fa-eye-slash")) {
-    eyeIcon.classList.remove("fa-eye-slash");
-    eyeIcon.classList.add("fa-eye");
-    password.type = "text";
+function PasswordVisibility(eye, passwordInput) {
+  if (!eye) {
+    throw new Error("not found eye icon");
+    return;
+  }
+  if (!passwordInput) {
+    throw new Error("not found password input");
+    return;
+  }
+  if (eye.classList.contains("fa-eye")) {
+    eye.classList.remove("fa-eye");
+    eye.classList.add("fa-eye-slash");
+    passwordInput.type = "password";
+  } else if (eye.classList.contains("fa-eye-slash")) {
+    eye.classList.remove("fa-eye-slash");
+    eye.classList.add("fa-eye");
+    passwordInput.type = "text";
   }
 }

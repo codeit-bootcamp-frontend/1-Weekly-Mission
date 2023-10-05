@@ -7,13 +7,16 @@ const eyeIcon = document.querySelector(".eye-on-image");
 
 email.addEventListener("focusout", function (event) {
   event.preventDefault();
-  emptyCheck(email, emailLabel);
-  validEmailCheck(email, emailLabel);
+
+  showEmptyErrorMessage(email, emailLabel);
+  if (isEmpty(email)) {
+    showValidEmailErrorMessage(email, emailLabel);
+  }
 });
 
 password.addEventListener("focusout", function (event) {
   event.preventDefault();
-  emptyCheck(password, passwordLabel);
+  showEmptyErrorMessage(password, passwordLabel);
 });
 
 loginButton.addEventListener("click", function (event) {
@@ -23,4 +26,6 @@ loginButton.addEventListener("click", function (event) {
   }
 });
 
-eyeIcon.addEventListener("click", passwordVisible);
+eyeIcon.addEventListener("click", () => {
+  PasswordVisibility(eyeIcon, password);
+});
