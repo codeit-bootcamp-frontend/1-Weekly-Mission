@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linkbrary</title>
     <link rel="stylesheet" href="/css/main.css" />
-    <script src="/js/script.js" defer></script>
+    <script src="/js/auth.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -35,6 +35,7 @@
                 id="form-email"
                 class="form__input-box"
               />
+              <p class="error-msg"></p>
             </div>
             <div class="form__input">
               <label for="form-password" class="form__input-text">
@@ -49,6 +50,7 @@
               <button class="form__password-toggle">
                 <img src="/public/icons/eye-off.svg" alt="비밀번호 표시" />
               </button>
+              <p class="error-msg"></p>
             </div>
           </div>
           <button type="submit" class="form__submit button">로그인</button>
