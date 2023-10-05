@@ -68,7 +68,7 @@ main{
   flex-direction: column;
   align-items: flex-start;
   gap: 1.2rem;
-  margin: 2.4rem 0 2.4rem 0;
+  margin: 2rem 0;
   width: 100%;
 }
 
@@ -87,12 +87,17 @@ input:focus {
   outline: 1px solid var(--blue);
 }
 
+.input-error-msg{
+  color: var(--red);
+  font-size: 1.4rem;
+}
+
 .input-password{
   width: 100%;
   position: relative;
 }
 
-.eye-image {
+.eye-off {
   position: absolute;
   top: 50%;
   right: 1%;
@@ -102,6 +107,7 @@ input:focus {
 .login-btn {
   width: 100%;
   padding: 1.6rem 2rem;
+  margin: 1rem auto;
   color: var(--grey-light, #F5F5F5);
   text-decoration: none;
   font-size: 1.8rem;

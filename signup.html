@@ -28,7 +28,7 @@
                   <label for="id-label">
                       이메일
                   </label>
-                  <input type="text" placeholder="이메일을 입력해주세요" id="id-label" name="idLabel">
+                  <input type="text" placeholder="이메일을 입력해주세요" id="id-label" name="idLabel" autocomplete="off">
                 </div>
                 <div class="input-box">
                   <label for="password-label">
@@ -36,9 +36,9 @@
                   </label>
                   <div class="input-password">
                     <input type="password" placeholder="비밀번호를 입력해주세요" id="password-label" name="passwordLabel">
-                    <div class="eye-image">
+                    <button class="eye-off">
                         <img src="./assets/png/eye-off.png" alt="click to see password">
-                    </div>
+                    </button>
                   </div>
                 </div>
                 <div class="input-box">
@@ -47,9 +47,9 @@
                   </label>
                   <div class="input-password">
                     <input type="password" placeholder="비밀번호를 한번 더 입력해주세요" id="identify-label" name="identifyLabel">
-                    <div class="eye-image">
+                    <button class="eye-off">
                         <img src="./assets/png/eye-off.png" alt="click to see password">
-                    </div>
+                    </button>
                   </div>
                 </div>
                 <button type="submit" class="login-btn">
