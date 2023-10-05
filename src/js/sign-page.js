@@ -42,7 +42,7 @@ const validatePassword = (passwordInput, passwordErrorMessage) => {
 const handleLoginFormSubmit = (event) => {
   event.preventDefault();
 
-  passwordInputs.forEach((passwordInput) => {
+  passwordInputs.forEach((passwordInput, index) => {
     const isValid = emailInput.value === TEST_ACCOUNT.email && passwordInput.value === TEST_ACCOUNT.pw;
 
     if (isValid) {
@@ -51,7 +51,10 @@ const handleLoginFormSubmit = (event) => {
     }
 
     Object.keys(ERROR_MESSAGES.submit).forEach((field) => {
-      displayErrorMessage(field === "email" ? emailErrorMessage : passwordErrorMessage, ERROR_MESSAGES.submit[field]);
+      displayErrorMessage(
+        field === "email" ? emailErrorMessage : passwordErrorMessages[index],
+        ERROR_MESSAGES.submit[field]
+      );
     });
 
     addErrorClass(emailInput, passwordInput);
