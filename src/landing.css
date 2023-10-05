@@ -5,7 +5,8 @@ body{
 }
 
 nav {
-    padding: 2rem 20rem;
+    display: flex;
+    padding: 2rem 0;
     position: sticky;
     top: 0;        
     width: 100%;
@@ -17,6 +18,13 @@ nav {
     align-items: center;
     justify-content: space-between;
     max-width: 192rem;  
+    flex-grow: 1;
+}
+
+.gnb__side {
+    display: flex;
+    flex-basis: 20rem;
+    /* flex-grow: 1; */
 }
 
 .cta {
@@ -33,13 +41,13 @@ nav {
     text-decoration: none;
   }
   
-  .cta--short {
-    width: 12rem;
-  }
-  
-  .cta--long {
-    width: 35rem;
-  }
+.cta__short {
+width: 12rem;
+}
+
+.cta__long {
+width: 35rem;
+}
 
 .gnb__logo {    
     width: 8.3125rem;
@@ -66,7 +74,7 @@ nav {
     text-align: center;
 }
 
-.intro__title-color{    
+.intro__title--color{    
     background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -92,7 +100,7 @@ nav {
 }
 
 .intro__img {
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0.4rem 2.5rem 0 rgba(0, 0, 0, 0.08);
     width: 69.875rem;
     height: 41.1875rem;
     border-radius: 1.5625rem;

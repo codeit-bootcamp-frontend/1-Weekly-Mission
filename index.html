@@ -3,6 +3,7 @@
 <!-- 5주차 수정 예정!-->
 <head>
     <meta charset="UTF-8">
+    <title>Linkbrary</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Linkbrary" key="title" />
     <meta
@@ -32,36 +33,36 @@
     <link rel="stylesheet" href="src/reset.css">
     <link rel="stylesheet" href="src/colors.css">    
     <link rel="stylesheet" href="src/landing.css">
-    <title>Linkbrary</title>
+    
 </head>
 <body>
     <nav>
         <div class="gnb__side"></div>
         <div class="gnb">
             <a class="gnb__logo" href="/">
-                <img src="images/logo.svg" alt="로고_홈_이동">
+                <img src="images/logo.svg" alt="Linkbrary 로고">
             </a>
-            <a class="cta cta--short" href="/signin.html">
+            <a class="cta cta__short" href="/signin.html">
                 <span>로그인</span>
             </a>
         </div>
         <div class="gnb__side"></div>
-    </nav>
-    <main>
-        <section class="intro">
-            <article class="intro__title">
-                <h1>
-                    <span class="intro__title-color">세상의 모든 정보</span>를<br>
-                    <span class="intro__title-underline">쉽게 저장하고 관리해 보세요</span>
-                </h1>                
-            </article>
+    </nav>    
+    <header>
+        <div class="intro">
+            <h1 class="intro__title">
+                <span class="intro__title--color">세상의 모든 정보</span>를<br>
+                <span class="intro__title-underline">쉽게 저장하고 관리해 보세요</span>
+            </h1>              
             <a class="cta cta--long" href="/">
                 링크 추가하기
             </a>
             <img class="intro__img" src="/images/hero.png">
-        </section>
+        </div>
+    </header>
+    <article>
         <section class="contents">
-            <div id="first_container" class="contents__container">
+            <div class="contents__container">
                 <article class="container__article">
                     <h1 class="container__article-title">
                         <span class="container__article-title-color-1">원하는 링크</span>를<br>저장하세요
@@ -76,7 +77,7 @@
                     <div class="container__img"></div>
                 </div>
             </div>
-            <div id="second_container" class="contents__container">
+            <div class="contents__container">
                 <div class="container__img-wrap"><div class="container__img"></div></div>
                 <article class="container__article">
                     <h1 class="container__article-title">
@@ -89,7 +90,7 @@
                     </p>
                 </article>                
             </div>
-            <div id="third_container" class="contents__container">
+            <div class="contents__container">
                 <article class="container__article">
                     <h1 class="container__article-title">
                         저장한 링크를
@@ -102,7 +103,7 @@
                 </article>
                 <div class="container__img-wrap"><div class="container__img"></div></div>
             </div>
-            <div id="fourth_container" class="contents__container">
+            <div class="contents__container">
                 <div class="container__img-wrap"><div class="container__img"></div></div>
                 <article class="container__article">
                     <h1 class="container__article-title">
@@ -114,8 +115,8 @@
                     </p>
                 </article>                
             </div>
-        </section>                
-    </main>
+        </section>      
+    </article>         
     <footer>
         <div class="footer__container">
             <div class="footer__container-left-mobile"> 
