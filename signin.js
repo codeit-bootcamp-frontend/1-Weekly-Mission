@@ -1,14 +1,10 @@
-
-const inputEmailEl = document.querySelector('.input-email');
-const inputPswEl = document.querySelector('.input-psw');
-const showMessageByEmailEl = document.querySelector('.by-email');
-const showMessageByPswEl = document.querySelector('.by-psw')
-const eyeOffIconEl = document.querySelector('.psw-box img');
+import {inputEmailEl, inputPswEl, showMessageByEmailEl, showMessageByPswEl, eyeOffIconEl} from './variablesEl.js'
 
 const TEST_EMAIL = 'test@codeit.com';
 const TEST_PSW = 'codeit101';
 
-function checkEmail() {
+
+function checkEmailValid() {
   const VALID_EMAIL_REG = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
   const VALID_EMAIL_CHECK = VALID_EMAIL_REG .test(inputEmailEl.value);
 
@@ -36,7 +32,7 @@ function removePswCheckMessage () {
     inputPswEl.classList.remove('input-wrong');
 }
 
-function checkPassword () {
+function checkPasswordFill () {
   if(!inputPswEl.value) {
     showMessageByPswEl.textContent = '비밀번호를 입력해주세요.';
     eyeOffIconEl.classList.add('psw-wrong');
@@ -73,10 +69,10 @@ function showPsw () {
 function init() {
   const loginBtn = document.querySelector('.sign-link');
 
-  inputEmailEl.addEventListener('focusout', checkEmail);
+  inputEmailEl.addEventListener('focusout', checkEmailValid);
   inputEmailEl.addEventListener('focusin', removeEmailCheckMessage);
 
-  inputPswEl.addEventListener('focusout', checkPassword);
+  inputPswEl.addEventListener('focusout', checkPasswordFill);
   inputPswEl.addEventListener('focusin', removePswCheckMessage);
 
   loginBtn.addEventListener('click', checkUser);
@@ -86,5 +82,4 @@ function init() {
 
 init();
 
-
-
+export {init};
