@@ -1,8 +1,8 @@
+const authForm = document.querySelector(".form");
 const authInputs = document.querySelectorAll(".form__input-box");
 const authEmail = document.querySelector("#form-email");
 const authPassword = document.querySelector("#form-password");
 const authPasswordCheck = document.querySelector("#form-password-check");
-const authSubmit = document.querySelector(".form__submit");
 const togglePasswordButton = document.querySelector(".form__password-toggle");
 const togglePasswordImg = document.querySelector(".form__password-toggle img");
 
@@ -14,10 +14,18 @@ const ERROR_MSGS = {
   },
   invalidInput: {
     email: "올바른 이메일 주소가 아닙니다.",
+    password: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
+    text: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
   },
   invalidLogin: {
     email: "이메일을 확인해주세요.",
     password: "비밀번호를 확인해주세요.",
+  },
+  unavailableEmail: {
+    email: "이미 사용 중인 이메일입니다.",
+  },
+  unmatchingPassword: {
+    password: "비밀번호가 일치하지 않아요.",
   },
 };
 
@@ -29,7 +37,9 @@ const ACCOUNT = {
 const EMAIL_PATTERN =
   /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
-const printErrorMsg = ({ error, type, target }) => {
+const PASSWORD_PATTERN = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+
+const paintErrorMsg = ({ error, type, target }) => {
   target.classList.add("form__input-box__error");
   const errorMsg = target.parentElement.querySelector(".error-msg");
   errorMsg.textContent = ERROR_MSGS[error][type];
@@ -45,13 +55,14 @@ const removeErrorMsg = (target) => {
 
 const checkEmptyInput = (target) => {
   if (!target.value) {
-    printErrorMsg({
+    paintErrorMsg({
       error: "emptyInput",
       type: target.type,
       target,
     });
   } else {
     removeErrorMsg(target);
+    return true;
   }
 };
 
@@ -61,17 +72,64 @@ const validateEmail = (target) => {
   }
 
   if (!EMAIL_PATTERN.test(target.value)) {
-    printErrorMsg({
+    paintErrorMsg({
       error: "invalidInput",
       type: target.type,
       target,
     });
+  } else {
+    removeErrorMsg(target);
+    return true;
   }
 };
 
 const validatePassword = (target) => {
-  if (!target.value) {
+  if (target.value) {
     return;
+  }
+
+  if (!PASSWORD_PATTERN.test(target.value)) {
+    paintErrorMsg({
+      error: "invalidInput",
+      type: target.type,
+      target,
+    });
+  } else {
+    removeErrorMsg(target);
+    return true;
+  }
+};
+
+const isEmailAvailable = (target) => {
+  if (!EMAIL_PATTERN.test(target.value)) {
+    return;
+  }
+
+  if (target.value === ACCOUNT.email) {
+    paintErrorMsg({
+      error: "unavailableEmail",
+      type: target.type,
+      target,
+    });
+  }
+
+  return true;
+};
+
+const checkPasswordMatch = () => {
+  if (!authPassword.value || !authPasswordCheck.value) {
+    return;
+  }
+
+  if (authPassword.value !== authPasswordCheck.value) {
+    paintErrorMsg({
+      error: "unmatchingPassword",
+      type: "password",
+      target: authPasswordCheck,
+    });
+  } else {
+    removeErrorMsg(authPasswordCheck);
+    return true;
   }
 };
 
@@ -86,21 +144,33 @@ const togglePasswordVisibility = (event) => {
   }
 };
 
-const signin = (event) => {
+const handleSigninSubmit = (event) => {
   event.preventDefault();
   if (
-    ACCOUNT.email === authEmail.value &&
-    ACCOUNT.password === authPassword.value
+    authEmail.value === ACCOUNT.email &&
+    authPassword.value === ACCOUNT.password
   ) {
     location.href = "/pages/folder.html";
   } else {
-    printErrorMsg({ error: "invalidLogin", type: "email", target: authEmail });
-    printErrorMsg({
+    paintErrorMsg({ error: "invalidLogin", type: "email", target: authEmail });
+    paintErrorMsg({
       error: "invalidLogin",
       type: "password",
       target: authPassword,
     });
   }
+};
+
+const handleSignupSubmit = (event) => {
+  event.preventDefault();
+  let signupFlag = true;
+
+  if (!checkEmptyInput(authEmail)) signupFlag = false;
+  if (!validateEmail(authEmail)) signupFlag = false;
+  if (!validatePassword(authPassword)) signupFlag = false;
+  if (!checkPasswordMatch()) signupFlag = false;
+
+  if (signupFlag) location.href = "/pages/folder.html";
 };
 
 const initSignin = () => {
@@ -109,10 +179,29 @@ const initSignin = () => {
   }
 
   authEmail.addEventListener("focusout", ({ target }) => validateEmail(target));
-  authSubmit.addEventListener("click", signin);
   togglePasswordButton.addEventListener("click", togglePasswordVisibility);
+  authForm.addEventListener("submit", handleSigninSubmit);
 };
 
-const initSignup = () => {};
+const initSignup = () => {
+  authEmail.addEventListener("focusout", ({ target }) =>
+    checkEmptyInput(target)
+  );
+
+  authEmail.addEventListener("focusout", ({ target }) => validateEmail(target));
+  authPassword.addEventListener("focusout", ({ target }) =>
+    validatePassword(target)
+  );
+
+  authEmail.addEventListener("focusout", ({ target }) =>
+    isEmailAvailable(target)
+  );
+  authPassword.addEventListener("focusout", ({ target }) =>
+    checkPasswordMatch(target)
+  );
+  authPasswordCheck.addEventListener("focusout", checkPasswordMatch);
+
+  authForm.addEventListener("submit", handleSignupSubmit);
+};
 
 export { initSignin, initSignup };
