@@ -1,5 +1,5 @@
-  body {
-  padding-top: 5rem; 
+body {
+  padding-top: 5rem;
   background-color: var(--linkbrary-bg);
 }
 
@@ -104,11 +104,11 @@ footer .social-logo {
   height: 2.625rem;
 }
 
-.error_border {
+.error-border {
   border: 1px solid var(--linkbrary-red);
 }
 
-.email_error_msg {
+.email-error-msg {
   height: 0.75rem;
   color: red;
   font-size: 0.5rem;
@@ -116,7 +116,7 @@ footer .social-logo {
   padding-left: 0.5rem;
 }
 
-.password_error_msg {
+.password-error-msg {
   height: 0.75rem;
   color: red;
   font-size: 0.5rem;
@@ -130,11 +130,11 @@ footer .social-logo {
   body {
     padding: 5rem 2rem 0;
   }
-  
+
   header {
     width: 100%;
   }
-  
+
   main {
     width: 100%;
     max-width: 400px;
