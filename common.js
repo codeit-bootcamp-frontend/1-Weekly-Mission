@@ -58,7 +58,7 @@ function isCodeItLogin(email, password) {
   );
 }
 
-function PasswordVisibility(eye, passwordInput) {
+function passwordVisibility(eye, passwordInput) {
   if (!eye) {
     throw new Error("not found eye icon");
     return;

@@ -54,7 +54,7 @@ rePassword.addEventListener("focusout", (event) => {
 
 eyeIcon.addEventListener("click", (event) => {
   event.preventDefault();
-  PasswordVisibility(eyeIcon, password);
+  passwordVisibility(eyeIcon, password);
 });
 
 ReEyeIcon.addEventListener("click", (event) => {

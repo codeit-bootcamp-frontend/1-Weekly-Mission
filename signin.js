@@ -27,5 +27,5 @@ loginButton.addEventListener("click", function (event) {
 });
 
 eyeIcon.addEventListener("click", () => {
-  PasswordVisibility(eyeIcon, password);
+  passwordVisibility(eyeIcon, password);
 });
