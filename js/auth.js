@@ -34,27 +34,25 @@ const init = () => {
   }
 
   formEmail.addEventListener("focusout", validateEmail);
-  formSubmit.addEventListener("click", auth);
+  formSubmit.addEventListener("click", signin);
   togglePasswordButton.addEventListener("click", togglePasswordVisibility);
 };
 
-init();
-
-function printErrorMsg({ error, type, target }) {
+const printErrorMsg = ({ error, type, target }) => {
   target.classList.add("form__input-box__error");
   const errorMsg = target.parentElement.querySelector(".error-msg");
   errorMsg.textContent = ERROR_MSGS[error][type];
   errorMsg.style.display = "block";
   target.after(errorMsg);
-}
+};
 
-function removeErrorMsg(target) {
+const removeErrorMsg = (target) => {
   target.classList.remove("form__input-box__error");
   const errorMsg = target.parentElement.querySelector(".error-msg");
   errorMsg.style.display = "none";
-}
+};
 
-function checkEmptyInput(event) {
+const checkEmptyInput = (event) => {
   if (!event.target.value) {
     printErrorMsg({
       error: "emptyInput",
@@ -64,9 +62,9 @@ function checkEmptyInput(event) {
   } else {
     removeErrorMsg(event.target);
   }
-}
+};
 
-function validateEmail(event) {
+const validateEmail = (event) => {
   if (!event.target.value) {
     return;
   }
@@ -78,9 +76,9 @@ function validateEmail(event) {
       target: event.target,
     });
   }
-}
+};
 
-function auth(event) {
+const signin = (event) => {
   event.preventDefault();
   if (
     ACCOUNT.email === formEmail.value &&
@@ -95,9 +93,9 @@ function auth(event) {
       target: formPassword,
     });
   }
-}
+};
 
-function togglePasswordVisibility(event) {
+const togglePasswordVisibility = (event) => {
   event.preventDefault();
   if (formPassword.type === "password") {
     formPassword.type = "text";
@@ -106,4 +104,6 @@ function togglePasswordVisibility(event) {
     formPassword.type = "password";
     togglePasswordImg.src = "/public/icons/eye-off.svg";
   }
-}
+};
+
+init();
