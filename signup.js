@@ -39,6 +39,9 @@ email.addEventListener("focusout", (event) => {
 password.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(password, passwordLabel);
+  if (isNotEmpty(password)) {
+    showValidPasswordErrorMessage(password, passwordLabel);
+  }
 });
 
 rePassword.addEventListener("focusout", (event) => {

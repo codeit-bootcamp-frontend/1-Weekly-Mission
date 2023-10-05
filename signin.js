@@ -9,7 +9,7 @@ email.addEventListener("focusout", function (event) {
   event.preventDefault();
 
   showEmptyErrorMessage(email, emailLabel);
-  if (isEmpty(email)) {
+  if (isNotEmpty(email)) {
     showValidEmailErrorMessage(email, emailLabel);
   }
 });
