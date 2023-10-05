@@ -13,8 +13,10 @@ function showEmptyErrorMessage(input, inputLabel) {
     let errorMessage = showMessage(inputLabel.innerText);
     errorMsgs.innerText = errorMessage;
     errorMsgs.style.color = "red";
+    input.style.border = "3px solid red";
   } else if (isEmpty(input)) {
     errorMsgs.innerText = "";
+    input.style.border = "";
   }
 }
 
@@ -29,6 +31,7 @@ function showValidEmailErrorMessage(input, inputLabel) {
     const errorMsgs = inputLabel.querySelector(".error-message");
     errorMsgs.innerText = "유효하지않은이메일입니다";
     errorMsgs.style.color = "red";
+    input.style.border = "3px solid red";
   }
 }
 

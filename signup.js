@@ -12,6 +12,7 @@ function passwordMatch(password, rePassword, repasswordLabel) {
     const errorMsgs = repasswordLabel.querySelector(".error-message");
     errorMsgs.innerText = "비밀번호가맞지않습니다";
     errorMsgs.style.color = "red";
+    rePassword.style.border = "3px solid red";
   }
 }
 
