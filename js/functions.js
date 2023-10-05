@@ -77,7 +77,6 @@ function addPasswordErrorMsg() {
 }
 
 function addPassWordErrorMsgSignup() {
-  console.log(password.value.length);
   const stringCheck = /[a-zA-Z]/;
   const numberCheck = /[0-9]/;
   if (password.value.length >= 8 && stringCheck.test(password.value) && numberCheck.test(password.value)) {
