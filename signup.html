@@ -1,64 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/pages/signin.css" />
+    <title>Linkbrary</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel=stylesheet href="style/style.css">
-  <link rel=stylesheet href="style/pages/signin.css">
-  <title>Linkbrary</title>
-</head>
-
-
-
-<body class="flex-center">
-  <main>
-    <div class="logo-and-signup">
-      <div class="logo">
-        <a href="/">
-          <img src="images/signin/logo.svg">
-        </a>
+  <body class="flex-center">
+    <main>
+      <div class="logo-and-signup">
+        <div class="logo">
+          <a href="/">
+            <img src="images/signin/logo.svg" />
+          </a>
+        </div>
+        <span>이미 회원이신가요? <a href="signin.html">로그인 하기</a></span>
       </div>
-      <span>이미 회원이신가요? <a href="signin.html">로그인 하기</a></span>
-    </div>
 
-    <div class="inputFrame">
-      <form>
-        <div class="inputbox">
-          <label for="email">이메일</label>
-          <input id="email" name="email" type="email">
-        </div>
-        <div class="inputbox">
-          <label for="password">비밀번호</label>
-          <div class="password">
-            <input id="password" name="password" type="password">
-            <img src="images/signin/eye-off.svg">
+      <div class="inputFrame">
+        <form>
+          <div class="inputbox email">
+            <label for="email">이메일</label>
+            <input id="email" name="email" type="email" />
           </div>
-        </div>
-        <div class="inputbox">
-          <label for="password">비밀번호 확인</label>
-          <div class="password">
-            <input id="password" name="password" type="password">
-            <img src="images/signin/eye-off.svg">
+          <div class="inputbox password">
+            <label for="password">비밀번호</label>
+            <div class="password">
+              <input id="password" name="password" type="password" />
+              <img src="images/signin/eye-off.svg" />
+            </div>
           </div>
-        </div>
+          <div class="inputbox">
+            <label for="password">비밀번호 확인</label>
+            <div class="password">
+              <input id="password" name="password" type="password" />
+              <img src="images/signin/eye-off.svg" />
+            </div>
+          </div>
 
-        <button class="login-button flex-center">회원가입</button>
-      </form>
-    </div>
-
-    <div class="social-login">
-      <span>다른 방식으로 가입하기</span>
-      <div class="icons">
-        <a href="https://www.google.com/">
-          <img src="images/signin/google.png">
-        </a>
-        <a href="https://www.kakaocorp.com/page/">
-          <img src="images/signin/kakaotalk.png">
-        </a>
+          <button class="login-button flex-center">회원가입</button>
+        </form>
       </div>
-    </div>
-  </main>
-</body>
 
+      <div class="social-login">
+        <span>다른 방식으로 가입하기</span>
+        <div class="icons">
+          <a href="https://www.google.com/">
+            <img src="images/signin/google.png" />
+          </a>
+          <a href="https://www.kakaocorp.com/page/">
+            <img src="images/signin/kakaotalk.png" />
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
