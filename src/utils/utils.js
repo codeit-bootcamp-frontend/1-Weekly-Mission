@@ -1,4 +1,4 @@
-import { EMAIL_PATTERN } from "../components/regexp.js";
+import { EMAIL_PATTERN, PASSWORD_PATTERN } from "../components/regexp.js";
 
 const TEST_ACCOUNT = {
   email: "test@codeit.com",
@@ -30,4 +30,6 @@ const EYE_ICON_PATH = {
 
 const isValidEmail = (email) => EMAIL_PATTERN.test(email);
 
-export { TEST_ACCOUNT, ERROR_MESSAGES, REDIRECT_PATH, VALUE_EMPTY, EYE_ICON_PATH, isValidEmail };
+const isValidPassword = (password) => PASSWORD_PATTERN.test(password);
+
+export { TEST_ACCOUNT, ERROR_MESSAGES, REDIRECT_PATH, VALUE_EMPTY, EYE_ICON_PATH, isValidEmail, isValidPassword };
