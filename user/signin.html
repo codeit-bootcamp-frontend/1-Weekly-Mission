@@ -31,14 +31,14 @@
                 <label for="user-password" class="form__label">비밀번호</label>
                 <div class="form__field-inner">
                     <input type="password" name="password" id="user-password" class="form__input form__input--password" maxlength="20" autocomplete="current-password">
-                    <img src="../images/eye-off.svg" class="form__eye-icon" alt="비밀번호 보기">
+                    <img src="../images/eye-off.svg" class="form__eye-icon" data-current-view-mode="off" data-password-input-id="user-password" alt="비밀번호 보기">
                 </div>
 
             </div>
         </form>
 
         <footer class="auth__footer">
-            <button type="submit" class="button auth__button">로그인</button>
+            <button type="submit" class="button auth__button" id="login-button">로그인</button>
             <div class="auth__social">
                 <p class="auth__social-text">소셜 로그인</p>
                 <div class="auth__social__inner">

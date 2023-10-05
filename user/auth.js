@@ -24,13 +24,13 @@ const ERROR_MSG_CLASS = {
 
 const PASSWORD_VIEW_MODE = {
 	on: {
-		current: "on",
-		next: "off",
+		mode: "off",
+		imgSrc: "../images/eye-off.svg",
 		type: "password",
 	},
 	off: {
-		current: "off",
-		next: "on",
+		mode: "on",
+		imgSrc: "../images/eye-on.svg",
 		type: "text",
 	},
 };
@@ -40,84 +40,94 @@ const USER = {
 	"test@codeit.com": "codeit101",
 };
 
-// 인풋 focustout시 유효성검사
-const validateInput = ({ tagName, id, value, parentNode, classList }) => {
-	if (tagName !== "INPUT") return;
+// 인풋 focustout시 유효성검사 후 에러메시지 리턴
+const validateInput = ($target) => {
+	const { id, value } = $target;
+	let msgType = "";
 
-	const isValid = REGEX[id].test(value) && value.length > 0;
-	const msgType = isValid ? "" : value.length ? "wrong" : "empty";
+	if (!REGEX[id].test(value))
+		msgType = value.length === 0 ? "empty" : "wrong";
 
-	toggleError(parentNode, classList, ERROR_MSG[id][msgType]);
+	return ERROR_MSG[id][msgType];
 };
 
 //에러 메시지 삭제
-const removeError = (parentNode, classList) => {
-	const [existingErrorMsg] = parentNode
+const removeError = ($target) => {
+	const [existingErrorMsg] = $target
 		.closest(".form__field")
 		.getElementsByClassName(ERROR_MSG_CLASS.msg);
 
 	if (!existingErrorMsg) return;
 
 	existingErrorMsg.remove();
-	classList.remove(ERROR_MSG_CLASS.input);
+	$target.classList.remove(ERROR_MSG_CLASS.input);
 };
 
 //에러 메시지 생성
-const showError = (parentNode, classList, errorText) => {
+const showError = ($target, errorText) => {
 	const errorMsg = document.createElement("p");
+
+	$target.classList.add(ERROR_MSG_CLASS.input);
+	$target.closest(".form__field").append(errorMsg);
 
 	errorMsg.classList.add(ERROR_MSG_CLASS.msg);
 	errorMsg.textContent = errorText;
-
-	classList.add(ERROR_MSG_CLASS.input);
-	parentNode.insertAdjacentElement("afterend", errorMsg);
 };
 
 //에러 메시지 생성,삭제 토글
-const toggleError = (parentNode, classList, errorText) => {
-	removeError(parentNode, classList);
-	if (errorText) showError(parentNode, classList, errorText);
+const toggleError = ($target, submitErrorText) => {
+	const errorText = submitErrorText || validateInput($target);
+	removeError($target);
+	if (errorText) showError($target, errorText);
 };
 
 //비밀번호 인풋 password <-> text 토글
-const togglePasswordInput = ({ target }) => {
-	if (!target.classList.contains("form__eye-icon")) return;
+const togglePasswordInput = ({ target: eyeIcon }) => {
+	const { currentViewMode, passwordInputId } = eyeIcon.dataset;
 
-	const viewMode = target.src.includes("off")
-		? PASSWORD_VIEW_MODE.off
-		: PASSWORD_VIEW_MODE.on;
+	const nextViewMode = PASSWORD_VIEW_MODE[currentViewMode];
+	const passwordInput = document.getElementById(passwordInputId);
 
-	const input = target.previousElementSibling;
-
-	target.src = target.src.replace(viewMode.current, viewMode.next);
-	input.type = viewMode.type;
+	eyeIcon.dataset.currentViewMode = nextViewMode.mode;
+	eyeIcon.src = nextViewMode.imgSrc;
+	passwordInput.type = nextViewMode.type;
 };
 
 //유저 정보 확인 임시
 const isValidUser = ([email, password]) => USER[email.value] === password.value;
 
+// 인풋의 blur 이벤트와 버튼의 submit 이벤트가 중복 실행되지 않도록 방지하는 플래그
+let isSubmit = false;
+
 //로그인 폼 전송
 const authFormLogin = () => {
+	isSubmit = true;
+	const authForm = document.querySelector(".auth__form");
 	const inputArr = authForm.querySelectorAll("#user-email, #user-password");
 	if (isValidUser(inputArr)) authForm.submit();
 	else {
-		inputArr.forEach(({ parentNode, classList, id }) =>
-			toggleError(parentNode, classList, ERROR_MSG[id].check)
-		);
+		inputArr.forEach((target) => {
+			target.blur();
+			toggleError(target, ERROR_MSG[target.id].check);
+		});
 	}
+
+	isSubmit = false;
 };
 
-const authForm = document.querySelector(".auth__form");
+const formInputs = document.querySelectorAll(".form__input");
+formInputs.forEach((input) => {
+	input.addEventListener("blur", (e) => !isSubmit && toggleError(e.target));
+});
 
-authForm.addEventListener(
-	"focusout",
-	({ target, relatedTarget }) =>
-		//로그인 버튼 누를때도 focusout 되버려서 submit할땐 실행안되도록...
-		relatedTarget?.type !== "submit" && validateInput(target)
+const loginButton = document.querySelector("#login-button");
+loginButton.addEventListener("mousedown", authFormLogin);
+
+const inputAndButton = [...formInputs, loginButton];
+inputAndButton.forEach((ele) =>
+	ele.addEventListener("keydown", (e) => e.key === "Enter" && authFormLogin())
 );
 
-authForm.addEventListener("click", togglePasswordInput);
-
-document
-	.querySelector(".auth__button")
-	.addEventListener("click", authFormLogin);
+document.querySelectorAll(".form__eye-icon").forEach((icon) => {
+	icon.addEventListener("click", togglePasswordInput);
+});
