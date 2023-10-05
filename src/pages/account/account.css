@@ -143,6 +143,10 @@ body {
 .kakao_icon {
   background-color: #f7e600;
 }
+/* Error  */
+input.errorInput {
+  border: solid 1px var(--error_msg_red);
+}
 
 /* Mobile width: 390px height 2460px*/
 @media screen and (min-width: 375px) and (max-width: 767px) {
