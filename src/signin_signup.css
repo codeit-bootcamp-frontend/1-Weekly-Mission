@@ -43,8 +43,8 @@ form {
 }
 
 input {
-  width: 100%;
   display: flex;
+  width: 100%;
   margin: 12px 0;
   padding: 18px 15px;
   justify-content: center;
@@ -55,12 +55,13 @@ input {
 }
 
 input:focus {
+  outline: none;
   border-radius: 8px;
   border: 1px solid var(--primary-color);
   background: var(--white-color);
 }
 
-.password-eye-off {
+.password-wrapper {
   position: relative;
 }
 
@@ -69,6 +70,7 @@ input:focus {
   transform: translate(-50%, -50%);
   top: 50%;
   right: 2%;
+  cursor: pointer;
 }
 
 #signup-button,
@@ -130,6 +132,19 @@ input:focus {
   height: 42px;
   background-color: #f5e14b;
   border-radius: 50%;
+}
+
+.input-error {
+  width: 100%;
+  padding: 18px 15px;
+  border: 1px solid var(--red-color);
+  border-radius: 8px;
+}
+
+.input-error-msg {
+  color: var(--red-color);
+  font-size: 14px;
+  margin: -6px 0 12px;
 }
 
 @media (max-width: 767px) {
