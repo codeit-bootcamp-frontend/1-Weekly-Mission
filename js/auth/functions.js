@@ -1,7 +1,8 @@
-const formInputs = document.querySelectorAll(".form__input-box");
-const formEmail = document.querySelector("#form-email");
-const formPassword = document.querySelector("#form-password");
-const formSubmit = document.querySelector(".form__submit");
+const authInputs = document.querySelectorAll(".form__input-box");
+const authEmail = document.querySelector("#form-email");
+const authPassword = document.querySelector("#form-password");
+const authPasswordCheck = document.querySelector("#form-password-check");
+const authSubmit = document.querySelector(".form__submit");
 const togglePasswordButton = document.querySelector(".form__password-toggle");
 const togglePasswordImg = document.querySelector(".form__password-toggle img");
 
@@ -28,14 +29,17 @@ const ACCOUNT = {
 const EMAIL_PATTERN =
   /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
-const init = () => {
-  for (const input of formInputs) {
-    input.addEventListener("focusout", checkEmptyInput);
-  }
-
-  formEmail.addEventListener("focusout", validateEmail);
-  formSubmit.addEventListener("click", signin);
-  togglePasswordButton.addEventListener("click", togglePasswordVisibility);
+export {
+  authInputs,
+  authEmail,
+  authPassword,
+  authPasswordCheck,
+  authSubmit,
+  togglePasswordButton,
+  togglePasswordImg,
+  ERROR_MSGS,
+  ACCOUNT,
+  EMAIL_PATTERN,
 };
 
 const printErrorMsg = ({ error, type, target }) => {
@@ -78,32 +82,50 @@ const validateEmail = (event) => {
   }
 };
 
-const signin = (event) => {
-  event.preventDefault();
-  if (
-    ACCOUNT.email === formEmail.value &&
-    ACCOUNT.password === formPassword.value
-  ) {
-    location.href = "/pages/folder.html";
-  } else {
-    printErrorMsg({ error: "invalidLogin", type: "email", target: formEmail });
-    printErrorMsg({
-      error: "invalidLogin",
-      type: "password",
-      target: formPassword,
-    });
+const validatePassword = (event) => {
+  if (!event.target.value) {
+    return;
   }
 };
 
 const togglePasswordVisibility = (event) => {
   event.preventDefault();
-  if (formPassword.type === "password") {
-    formPassword.type = "text";
+  if (authPassword.type === "password") {
+    authPassword.type = "text";
     togglePasswordImg.src = "/public/icons/eye-on.svg";
   } else {
-    formPassword.type = "password";
+    authPassword.type = "password";
     togglePasswordImg.src = "/public/icons/eye-off.svg";
   }
 };
 
-init();
+const signin = (event) => {
+  event.preventDefault();
+  if (
+    ACCOUNT.email === authEmail.value &&
+    ACCOUNT.password === authPassword.value
+  ) {
+    location.href = "/pages/folder.html";
+  } else {
+    printErrorMsg({ error: "invalidLogin", type: "email", target: authEmail });
+    printErrorMsg({
+      error: "invalidLogin",
+      type: "password",
+      target: authPassword,
+    });
+  }
+};
+
+const initSignin = () => {
+  for (const input of authInputs) {
+    input.addEventListener("focusout", checkEmptyInput);
+  }
+
+  authEmail.addEventListener("focusout", validateEmail);
+  authSubmit.addEventListener("click", signin);
+  togglePasswordButton.addEventListener("click", togglePasswordVisibility);
+};
+
+const initSignup = () => {};
+
+export { initSignin, initSignup };
