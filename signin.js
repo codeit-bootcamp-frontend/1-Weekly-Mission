@@ -5,7 +5,7 @@ const eyeImage = getElements(".eye-Image")[0];
 const loginButton = getElements(".login-button")[0];
 
 
-const REG_PATTERN = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
+const REG_EMAIL = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
 
 
 const pEmail = document.createElement("p");
@@ -43,7 +43,10 @@ function showErrorMessage(e) {
   switch (e.target.id) {
 
     case "email":
-      if (e.target.value === "") {
+
+      // const emailErrorMessage = !e.target.value ? "이메일을 입력해주세요." : "올바른 이메일 주소가 아닙니다.";
+      // displayError(inputBox, emailErrorMessage, pEmail);
+      if (!e.target.value) {
         displayError(inputBox, "이메일을 입력해주세요.", pEmail);
       } else if (!isValidEmail(email.value)) {
         displayError(inputBox, "올바른 이메일 주소가 아닙니다.", pEmail);
@@ -52,7 +55,7 @@ function showErrorMessage(e) {
       break;
 
     case "password":
-      if (e.target.value === "") {
+      if (!e.target.value) {
         displayError(inputBox, "비밀번호를 입력해주세요.", pPassword);
       }
       break;
@@ -65,15 +68,11 @@ function showErrorMessage(e) {
 
 function eyeOnOff(e) {
   e.stopPropagation();
-  const eyeOn = "images/signin/eye-on.png";
-  const eyeOff = "images/signin/eye-off.svg"
-  if (e.target.src.includes("eye-on")) {
-    e.target.src = eyeOff;
-    password.type = "password";
-  } else if (e.target.src.includes("eye-off")) {
-    e.target.src = eyeOn;
-    password.type = "text";
-  }
+  const isEyeOn = e.target.src.includes("eye-on");
+  
+  e.target.src = `./images/signin/${isEyeOn ? "eye-off" : "eye-on"}.svg`;
+  console.log(e.target.src);
+  e.target.type = isEyeOn ? "password" : "text";
 
 }
 
@@ -81,7 +80,6 @@ function eyeOnOff(e) {
 
 inputFrame.addEventListener("focusout", showErrorMessage);
 inputFrame.addEventListener("focusin", clearErrors);
-
 eyeImage.addEventListener("click", eyeOnOff);
 
 
@@ -96,9 +94,10 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
   if (email.value === "test@codeit.com" && password.value === "codeit101") {
     window.location.href = "/folder";
-  } else {
-    displayError(emailInput, "이메일을 확인해주세요.", pEmail);
-    displayError(passwordInput, "비밀번호를 확인해주세요.", pPassword);
-  }
+    return;
+  } 
+  displayError(emailInput, "이메일을 확인해주세요.", pEmail);
+  displayError(passwordInput, "비밀번호를 확인해주세요.", pPassword);
+
 
 });
