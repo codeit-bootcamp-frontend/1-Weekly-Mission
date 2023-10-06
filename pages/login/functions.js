@@ -1,16 +1,24 @@
 /* 공통 함수 */
 
 /**
- * input의 value의 유효성검사를 한다.
- * 공통 : 값이 비어있는지 체크.
- * email : 올바른 형식인지 체크.
- * password, password-check : 두 값이 일치하는지 체크.
+ * validateInputValue 함수를 호출한다.
  * @param {FocusEvent} e 이벤트 객체
  */
 function _onValidateInputValue(e){
     const id = e.target.id;
     const value = e.target.value;
 
+    validateInputValue(id, value);
+}
+
+/**
+ * input의 value의 유효성검사를 한다.
+ * 공통 : 값이 비어있는지 체크.
+ * email : 올바른 형식인지 체크.
+ * @param id
+ * @param value
+ */
+function validateInputValue(id, value){
     if(!value){
         // 비어있는 값인지 체크
         setErrorMessage(id, 'empty');
@@ -24,7 +32,6 @@ function _onValidateInputValue(e){
         }
     }
 }
-
 
 /**
  * password, password-check의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
@@ -109,14 +116,16 @@ function getErrorMessage(id, type){
  * @param {KeyboardEvent} e 이벤트 객체
  */
 function _onRemoveValidationError(e){
-    removeErrorClassAndMessage(e.target);
+    if(e.key !== 'Enter'){
+        removeErrorClassAndMessage(e.target);
 
-    // password값이 변경되었을 때, password-check값을 비운다.
-    if(e.target.id === 'password'){
-        const passwordCheck = document.querySelector('#password-check');
-        if(passwordCheck){
-            passwordCheck.value = '';
-            removeErrorClassAndMessage(passwordCheck);
+        // password값이 변경되었을 때, password-check값을 비운다.
+        if(e.target.id === 'password'){
+            const passwordCheck = document.querySelector('#password-check');
+            if(passwordCheck){
+                passwordCheck.value = '';
+                removeErrorClassAndMessage(passwordCheck);
+            }
         }
     }
 }
@@ -146,4 +155,4 @@ function isFormContainsError(){
     return errors.length !== 0;
 }
 
-export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, isFormContainsError };
+export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, isFormContainsError, validateInputValue, removeErrorClassAndMessage };
