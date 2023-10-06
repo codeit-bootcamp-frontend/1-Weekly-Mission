@@ -1,24 +1,34 @@
-const inputFrame = document.querySelector(".input-frame");
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
-const eyeImage = document.querySelector(".eye-Image");
-const loginButton = document.querySelector(".login-button");
+const inputFrame = getElements(".input-frame")[0];
+const email = getElement("#email");
+const password = getElement("#password");
+const eyeImage = getElements(".eye-Image")[0];
+const loginButton = getElements(".login-button")[0];
 
 
-const pattern = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
+const REG_PATTERN = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
 
 
 const pEmail = document.createElement("p");
 const pPassword = document.createElement("p");
 
-function emailValidChk(email) {
-  return pattern.test(email);
+
+function getElement(selector){
+  return document.querySelector(selector);
 }
 
-function displayError(inputBox, errorMessage, p) {
-  p.textContent = errorMessage;
-  p.classList.add("error");
-  inputBox.append(p);
+function getElements(selector){
+  return document.querySelectorAll(selector);
+}
+
+
+function isValidEmail(email) {
+  return REG_PATTERN.test(email);
+}
+
+function displayError(inputBox, errorMessage, element) {
+  element.textContent = errorMessage;
+  element.classList.add("error");
+  inputBox.append(element);
 }
 
 function clearErrors(e) {
@@ -35,7 +45,7 @@ function showErrorMessage(e) {
     case "email":
       if (e.target.value === "") {
         displayError(inputBox, "이메일을 입력해주세요.", pEmail);
-      } else if (!emailValidChk(email.value)) {
+      } else if (!isValidEmail(email.value)) {
         displayError(inputBox, "올바른 이메일 주소가 아닙니다.", pEmail);
       }
 
@@ -51,23 +61,6 @@ function showErrorMessage(e) {
       return;
   }
 }
-
-function userAuthentication(e) {
-
-  const inputEmail = email.parentElement;
-  const inputPassword = password.parentElement.parentElement;
-
-  if (e.key === "Enter" || e.type === "click") {
-    e.preventDefault();
-    if (email.value === "test@codeit.com" && password.value === "codeit101") {
-      window.location.href = "/folder";
-    } else {
-      displayError(inputEmail, "이메일을 확인해주세요.", pEmail);
-      displayError(inputPassword, "비밀번호를 확인해주세요.", pPassword);
-    }
-  }
-}
-
 
 
 function eyeOnOff(e) {
@@ -89,7 +82,23 @@ function eyeOnOff(e) {
 inputFrame.addEventListener("focusout", showErrorMessage);
 inputFrame.addEventListener("focusin", clearErrors);
 
-password.addEventListener("keypress", userAuthentication);
-loginButton.addEventListener("click", userAuthentication);
-
 eyeImage.addEventListener("click", eyeOnOff);
+
+
+
+document.querySelector('form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const {target : {elements}} = event;
+  
+
+  const emailInput = elements[0].parentElement;
+  const passwordInput = elements[1].parentElement;
+
+  if (email.value === "test@codeit.com" && password.value === "codeit101") {
+    window.location.href = "/folder";
+  } else {
+    displayError(emailInput, "이메일을 확인해주세요.", pEmail);
+    displayError(passwordInput, "비밀번호를 확인해주세요.", pPassword);
+  }
+
+});
