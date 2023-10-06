@@ -1,4 +1,4 @@
-const ERROR_CLASS_NAME = "items__input--error";
+import { ERROR_CLASS_NAME } from "./utils.js";
 
 const displayErrorMessage = (element, message) => (element.textContent = message);
 
