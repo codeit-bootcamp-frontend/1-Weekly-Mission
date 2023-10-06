@@ -87,15 +87,15 @@ label {
   background: var(--white);
 }
 
-.warningInput {
+.errorInput {
   border: 1px solid var(--error);
 }
 
-.warningInput:focus {
+.errorInput:focus {
   border: 1px solid var(--error);
 }
 
-.warningContent {
+.errorContent {
   color: var(--error);
 }
 
