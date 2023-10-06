@@ -6,7 +6,6 @@ const [emailInnerInput, passwordInnerInput] = document.getElementsByClassName("i
 const loginForm = document.getElementById("login-form")
 
 const passwordEye = document.getElementsByClassName("password-eye")[0]
-let passwordEyeToggle = false
 
 
 // 이메일 형식 체크 함수
@@ -82,14 +81,13 @@ const submitLoginForm = e => {
 // 비밀번호 눈 이미지 Toggle
 const changeEyeImg = e => {
     e.preventDefault()
-    if (passwordEyeToggle){
-        passwordEye.setAttribute("src", "/images/eye-off.png")
-        password.setAttribute("type", "password")
+    if (e.target.src.includes("/images/eye-on.png")){
+        e.target.src = "/images/eye-off.png"
+        e.target.parentNode.parentNode.firstElementChild.setAttribute("type", "password")
     } else {
-        passwordEye.setAttribute("src", "/images/eye-on.png")
-        password.setAttribute("type", "text")
+        e.target.src = "/images/eye-on.png"
+        e.target.parentNode.parentNode.firstElementChild.setAttribute("type", "text")
     }
-    passwordEyeToggle = !passwordEyeToggle
 }
 
 email.addEventListener("focusin", () => clearErrorMessage(pElementEmailError))
