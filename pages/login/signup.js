@@ -1,4 +1,4 @@
-import { _onHidePassword, setErrorMessage, formContainsError } from './functions.js';
+import { _onHidePassword, setErrorMessage, isFormContainsError } from './functions.js';
 import { form } from './tags.js';
 
 const signupButton = document.querySelector('#signup-button');
@@ -18,7 +18,7 @@ function _onSignup(){
  * 회원가입시 필요한 validation을 실행한다.
  */
 function _onValidateSignupInputValue(e){
-    if(formContainsError() === false){
+    if(isFormContainsError() === false){
         const id = e.target.id;
         const value = e.target.value;
 

@@ -141,9 +141,9 @@ function removeErrorClassAndMessage(target){
  * .error 를 가진 태그가 있는지 확인한다.
  * @returns {boolean} 에러가 있다면 true, 없다면 false반환.
  */
-function formContainsError(){
+function isFormContainsError(){
     const errors = document.querySelectorAll('.error');
     return errors.length !== 0;
 }
 
-export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, formContainsError };
+export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, isFormContainsError };

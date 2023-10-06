@@ -1,4 +1,4 @@
-import { setErrorMessage, formContainsError } from './functions.js';
+import { setErrorMessage, isFormContainsError } from './functions.js';
 
 const signinButton = document.querySelector('#signin-button');
 
@@ -10,7 +10,7 @@ signinButton.addEventListener('click', _onLogin);
  * id와 비밀번호가 틀렸을 경우 에러메세지를 출력한다.
  */
 function _onLogin(){
-    if(formContainsError() === false){
+    if(isFormContainsError() === false){
         const email = document.querySelector('#email');
         const password = document.querySelector('#password');
 
