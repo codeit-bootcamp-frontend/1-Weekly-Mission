@@ -71,12 +71,12 @@ form {
 .label {
   font-size: 1.4rem;
   font-weight: 400;
+  margin-bottom: 12px;
 }
 
 .input_box {
   width: 100%;
   padding: 18px 15px;
-  margin: 12px 0 0;
   border: 1px solid #CCD5E3;
   border-radius: 8px;
 }
@@ -91,12 +91,17 @@ form {
   outline-width: 0;
 }
 
+.input_container {
+  position: relative;
+}
+
 .eye_icon {
   position: absolute;
-  right: 4px;
-  top: 33px;
-  padding: 10px 10px;
-  display: none;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
 }
 

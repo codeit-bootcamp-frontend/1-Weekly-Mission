@@ -25,11 +25,10 @@
         <div class="input_wrapper password">
           <label class="label">비밀번호</label>
           <div class="input_container">
-            <img class="eye_icon" id="eye_on" src="./images/eye-on.png">
-            <img class="eye_icon show" id="eye_off" src="./images/eye-off.png">
+            <img class="eye_icon" id="eye" status = "closed" src="./Images/eye-slash.svg">
             <input class="input_box" type="password" name="password" placeholder="비밀번호를 입력해주세요.">
-            <span class="error_message" id="error_password"></span>
           </div>
+          <span class="error_message" id="error_password"></span>
         </div>
         <button id="submit">로그인</button>
       </form>
@@ -44,7 +43,7 @@
       </footer>
     </div>
   </div>
-  <script src="/JS/signin.js"></script>
+  <script src="/JS/signin.js" type="module"></script>
   <script src="https://kit.fontawesome.com/4fad5bb7ce.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-// form input box 유효성 검사
+// // form input box 유효성 검사
 
 const $inputEmail = document.querySelector(`[name="email"]`);
 const $inputPassword = document.querySelector(`[name="password"]`)
@@ -75,22 +75,13 @@ $inputPassword.addEventListener('focusout', verificationPassword);
 $inputEmail.addEventListener('focusout', verificationEmail);
 $submitBtn.addEventListener('click', submitVerification);
 
-// eye icon toggle 이벤트
 
-const $eyeOn = document.querySelector('#eye_on');
-const $eyeOff = document.querySelector('#eye_off');
+import eyeToggle from "./eyeOnOff.js";
 
-function makeEyeOn (){
-  $eyeOn.classList.toggle('show');
-  $eyeOff.classList.toggle('show');
-  $inputPassword.type = "text";
-}
+//eyeToggle 이벤트
 
-function makeEyeOff (){
-  $eyeOn.classList.toggle('show');
-  $eyeOff.classList.toggle('show');
-  $inputPassword.type = "password";
-}
+const $eye = document.querySelector('#eye')
 
-$eyeOff.addEventListener('click', makeEyeOn);
-$eyeOn.addEventListener('click', makeEyeOff);
+$eye.addEventListener('click', (e) => eyeToggle(e));
+
+
