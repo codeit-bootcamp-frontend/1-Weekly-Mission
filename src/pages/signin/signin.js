@@ -69,7 +69,12 @@ const checkPasswordInput = (event) => {
 };
 
 const checkAdminAccount = () => {
-  if ($email.value === "test@codeit.com" && $password.value === "codeit101") {
+  if (
+    $email.value === "test@codeit.com" &&
+    $password.value === "codeit101" &&
+    $emailErrorMsg.textContent === "" &&
+    $passwordErrorMsg.textContent === ""
+  ) {
     // admin 계정으로 로그인 시 'folder/' 로 이동
     window.location.href = "../folder/index.html";
   } else {
