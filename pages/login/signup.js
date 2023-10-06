@@ -28,7 +28,15 @@ function _onValidateSignupInputValue(e){
                 setErrorMessage(id, 'duplicate');
             }
 
-        }else if(id === 'password' || id === 'password-check') {
+        } else if(id === 'password'){
+            // 비밀번호는 영문, 숫자 조합으로 8자 이상입력되었는지 체크
+            const passwordReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
+
+            if(passwordReg.test(value) === false){
+                setErrorMessage(id, 'validation');
+            }
+
+        } else if(id === 'password' || id === 'password-check') {
             // 비밀번호가 일치하는지 체크
             const passwordCheck = document.querySelector('#password-check');
             const password = document.querySelector('#password');
