@@ -80,11 +80,7 @@ const validateEmail = (target) => {
 };
 
 const validatePassword = (target) => {
-  if (!target.value) {
-    return;
-  }
-
-  if (!PASSWORD_PATTERN.test(target.value)) {
+  if (!target.value || !PASSWORD_PATTERN.test(target.value)) {
     paintErrorMsg({
       error: "invalidInput",
       type: target.type,
@@ -175,6 +171,10 @@ const handleSignupSubmit = (event) => {
 const initSignin = () => {
   for (const input of authInputs) {
     input.addEventListener("focusout", ({ target }) => checkEmptyInput(target));
+    input.addEventListener(
+      "keypress",
+      (event) => e.code === "Enter" && handleSigninSubmit(event)
+    );
   }
 
   authEmail.addEventListener("focusout", ({ target }) => validateEmail(target));
@@ -183,6 +183,13 @@ const initSignin = () => {
 };
 
 const initSignup = () => {
+  for (const input of authInputs) {
+    input.addEventListener(
+      "keypress",
+      (event) => e.code === "Enter" && handleSignupSubmit(event)
+    );
+  }
+
   authEmail.addEventListener("focusout", ({ target }) =>
     checkEmptyInput(target)
   );
