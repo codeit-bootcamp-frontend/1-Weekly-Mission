@@ -4,8 +4,6 @@ const emailInput = document.querySelector('.content1_div2_div1_input'); //이메
 const pwInput = document.querySelector('.content1_div2_div2_input'); //비밀번호 input
 const eye = document.querySelector('.content1_div2_div2_img');
 const login = document.querySelector('.content1_div3_div');
-const emailCheck = document.querySelector('.content1_div2_div1_span2');
-const passwordCheck = document.querySelector('.content1_div2_div2_span2');
 
 const VERIFYEAMIL = 'test@codeit.com';
 const VERIFYPW = 'codeit101';
@@ -17,14 +15,14 @@ function emailErrorMsg(e) {
     //이메일칸 빈칸일때 경고창
     msgDelete('.errorEmailMsg', '.wrongEmailSpan');
     const emptyEmailspan = document.createElement('span');
-    emptyEmailspan.classList.add('emptyEmailErrorSpan', 'errorEmailMsg', 'Msg');
+    emptyEmailspan.classList.add('emptyEmailErrorSpan', 'errorEmailMsg');
     msgCreate(emptyEmailspan, emailDiv, emailInput, '이메일을 입력해주세요.');
   } else if (newMsg && verify(newMsg) !== true) {
     //이메일칸 내용은 있지만 이메일 형식 안맞을 때
     msgDelete('.errorEmailMsg', '.wrongEmailSpan');
     //이메일 형식 안맞을때의 경고창
     const noEmailspan = document.createElement('span');
-    noEmailspan.classList.add('noEmailErrorSpan', 'errorEmailMsg', 'Msg');
+    noEmailspan.classList.add('noEmailErrorSpan', 'errorEmailMsg');
     msgCreate(
       noEmailspan,
       emailDiv,
@@ -74,12 +72,13 @@ function verify(text) {
   return emailVal.match(regExp) != null ? true : false;
 }
 
-//아이디 비번 일치
+//아이디 비번 일치 확인
 function loginCheck(e) {
+  //비밀번호 일치할때
   if (emailInput.value === VERIFYEAMIL && pwInput.value === VERIFYPW) {
-    msgDelete('.Msg');
     location.replace('./folder.html');
   } else {
+    //비밀번호 불일치일때
     msgDelete('.pwErrorSpan', '.errorEmailMsg');
     const wrongEmailSpan = document.querySelector('.wrongEmailSpan');
     const wrongPwErrorSpan = document.querySelector('.wrongPwErrorSpan');
@@ -98,6 +97,7 @@ function loginCheck(e) {
   }
 }
 
+//에러 메세지 삭제 함수
 function msgDelete(...msg) {
   for (const arg of msg) {
     const errorMsg = document.querySelector(arg);
@@ -105,12 +105,14 @@ function msgDelete(...msg) {
   }
 }
 
+//에러 메세지 생성 함수
 function msgCreate(spanName, divName, inputName, msg) {
   spanName.innerText = msg;
   divName.append(spanName);
   inputName.style.border = '1px solid red';
 }
 
+//Event 부분
 emailInput.addEventListener('focusout', emailErrorMsg);
 pwInput.addEventListener('focusout', pwErrorMsg);
 eye.addEventListener('click', viewPassword);

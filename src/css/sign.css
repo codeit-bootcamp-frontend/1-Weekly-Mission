@@ -91,7 +91,8 @@ body {
   font-weight: 400;
 }
 
-.Msg,
+.errorEmailMsg,
+.pwErrorSpan,
 .wrongMsg {
   color: var(--errorRed);
   font-family: Pretendard;
