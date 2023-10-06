@@ -105,16 +105,20 @@ const checkAllInput = () => {
     $password.value.length > 0 &&
     $doubleCheckPw.value.length > 0
   ) {
-    // error msg 모두 처리 시 'folder/' 로 이동
+    // error msg 모두 처리 및 input 태그에 값들이 있을 시 'folder/' 로 이동
     window.location.href =
       "/Weekly_mission/1-Weekly-Mission/src/pages/folder/index.html";
   } else if (
-    $email.value === "" &&
-    $password.value === "" &&
+    // input 태그가 비어있을 때, 에러 메시지 출력
+    $email.value === "" ||
+    $password.value === "" ||
     $doubleCheckPw.value === ""
   ) {
-    showEmailError("void");
-    showPasswordError("void");
+    if ($email.value === "") {
+      showEmailError("void");
+    } else if ($password.value === "" || $doubleCheckPw.value === "") {
+      showPasswordError("void");
+    }
   }
 };
 
