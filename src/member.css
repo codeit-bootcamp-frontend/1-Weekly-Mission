@@ -88,20 +88,23 @@ form {
   align-items: center;
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-20);
-  outline: none;
   background-color: var(--linkbrary-white);
   transition-duration: 0.5s;
 }
+
 
 .inner-input:focus-within {
   border: 1px solid var(--linkbrary-primary-color);
   transition-duration: 0.5s;
 }
 
-.inner-input-error {
+
+/* 명시도 높여서 에러메세지가 우선 출력됨 */
+.form-inner-frame > .inner-input-error {
   border: 1px solid var(--linkbrary-red);
   transition-duration: 0.5s;
 }
+
 
 .inner-input-error-message {
   color: var(--linkbrary-red);
