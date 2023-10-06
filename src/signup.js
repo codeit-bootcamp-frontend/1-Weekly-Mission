@@ -73,15 +73,16 @@ function submitForm(event) {
   event.preventDefault();
 
   const isValidSignup =
-    emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
+    emailInput.value !== TEST_USER.email && emailInput.value !==""
+    && passwordInput.value === passwordConfirmInput.value && passwordInput.value !=="";
 
-  if (isTestUser) {
+  if (isValidSignup) {
     location.href = "/folder";
     return;
   }
-  setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
+  /*setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
   setInputError(
     { input: passwordInput, errorMessage: passwordErrorMessage },
     "비밀번호를 확인해주세요."
-  );
+  );*/
 }
