@@ -52,15 +52,9 @@ form {
   display: flex;
   flex-direction: column;
   padding: 30px 0 32px;
+  gap: 24px;
 }
 
-.input_wrapper.email {
-  margin-bottom: 24px;
-}
-
-.input_wrapper.password {
-  margin-bottom: 30px;
-}
 
 .input_wrapper {
   display: flex;
@@ -136,6 +130,7 @@ footer {
   text-align: center;
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
   padding: 16px 20px;
+  margin: 6px 0 0;
   border-radius: 8px;
   color: #ffffff;
   text-decoration: none;

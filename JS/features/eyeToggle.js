@@ -1,3 +1,4 @@
+//eye icon toggle 모듈
 function eyeToggle (e){
   const isEyeClosed = e.target.getAttribute('status') === 'closed';
   return isEyeClosed ? makeEyeOpened(e) : makeEyeClosed(e) 
