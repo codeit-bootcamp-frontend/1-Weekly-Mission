@@ -1,4 +1,5 @@
-import { INPUT_ERROR_MESSAGE } from "../constants/error";
+import { TEST_EMAIL, TEST_PASSWORD } from "../constants/authConstant.js";
+import { INPUT_ERROR_MESSAGE } from "../constants/error.js";
 
 export let emailRegex = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
 
@@ -21,6 +22,10 @@ export const emailIncorrectMsg = createErrorMsg(
 export const pwIncorrectMsg = createErrorMsg(
   INPUT_ERROR_MESSAGE,
   "비밀번호를 확인해주세요."
+);
+export const emailDuplicatedMsg = createErrorMsg(
+  INPUT_ERROR_MESSAGE,
+  "이미 사용 중인 이메일입니다."
 );
 
 export function createErrorMsg(style, errorStatement) {
@@ -49,6 +54,15 @@ export function handleEmailInputInvalidValueCheck(
     !regex.test(inputElement.value.trim()) &&
     inputElement.value.trim().length > 0
   ) {
+    inputElement.after(errorMsg);
+    inputElement.classList.add("input-error");
+  } else {
+    errorMsg.remove();
+  }
+}
+
+export function handleInputDuplicatedCheck(inputElement, errorMsg) {
+  if (inputElement.value.trim() === TEST_EMAIL) {
     inputElement.after(errorMsg);
     inputElement.classList.add("input-error");
   } else {

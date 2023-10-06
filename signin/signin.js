@@ -17,6 +17,7 @@ import {
   handleEmailInputEmptyValueCheck,
   handleEmailInputInvalidValueCheck,
 } from "../utils/auth.js";
+import { TEST_EMAIL, TEST_PASSWORD } from "../constants/authConstant.js";
 
 function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value.trim()) {
@@ -29,23 +30,24 @@ function handlePasswordInputEmptyValueCheck(e) {
 }
 
 function handleSigninBtnClick() {
-  const testEmail = "test@codeit.com";
-  const testPw = "codeit101";
-  if (emailInput.value.trim() !== testEmail) {
+  if (emailInput.value.trim() !== TEST_EMAIL) {
     emailInput.classList.add("input-error");
     emailInput.after(emailIncorrectMsg);
   } else {
     emailIncorrectMsg.remove();
   }
 
-  if (pwInput.value.trim() !== testPw) {
+  if (pwInput.value.trim() !== TEST_PASSWORD) {
     pwWrapper.after(pwIncorrectMsg);
     pwInput.classList.add("input-error");
   } else {
     pwIncorrectMsg.remove();
   }
 
-  if (emailInput.value.trim() === testEmail && pwInput.value.trim === testPw) {
+  if (
+    emailInput.value.trim() === TEST_EMAIL &&
+    pwInput.value.trim === TEST_PASSWORD
+  ) {
     location.href = "/folder";
   }
 }
