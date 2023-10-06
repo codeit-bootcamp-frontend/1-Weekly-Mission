@@ -288,7 +288,7 @@ button {
 .form__input-box:focus {
   border-color: #6d6afe;
 }
-.form__input-box__error {
+.form__input-box--error {
   border-color: #ff5b56;
 }
 .form__password-toggle {

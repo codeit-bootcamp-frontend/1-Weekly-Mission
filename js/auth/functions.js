@@ -16,6 +16,7 @@ const ERROR_MSGS = {
     email: "올바른 이메일 주소가 아닙니다.",
     password: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
     text: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
+    "password-check": "비밀번호가 일치하지 않아요.",
   },
   invalidLogin: {
     email: "이메일을 확인해주세요.",
@@ -23,9 +24,6 @@ const ERROR_MSGS = {
   },
   unavailableEmail: {
     email: "이미 사용 중인 이메일입니다.",
-  },
-  unmatchingPassword: {
-    password: "비밀번호가 일치하지 않아요.",
   },
 };
 
@@ -40,7 +38,7 @@ const EMAIL_PATTERN =
 const PASSWORD_PATTERN = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
 const paintErrorMsg = ({ error, type, target }) => {
-  target.classList.add("form__input-box__error");
+  target.classList.add("form__input-box--error");
   const errorMsg = target.parentElement.querySelector(".error-msg");
   errorMsg.textContent = ERROR_MSGS[error][type];
   errorMsg.style.display = "block";
@@ -48,7 +46,7 @@ const paintErrorMsg = ({ error, type, target }) => {
 };
 
 const removeErrorMsg = (target) => {
-  target.classList.remove("form__input-box__error");
+  target.classList.remove("form__input-box--error");
   const errorMsg = target.parentElement.querySelector(".error-msg");
   errorMsg.style.display = "none";
 };
@@ -84,7 +82,7 @@ const validateEmail = (target) => {
 };
 
 const validatePassword = (target) => {
-  if (target.value) {
+  if (!target.value) {
     return;
   }
 
@@ -111,9 +109,10 @@ const isEmailAvailable = (target) => {
       type: target.type,
       target,
     });
+  } else {
+    removeErrorMsg(target);
+    return true;
   }
-
-  return true;
 };
 
 const checkPasswordMatch = () => {
@@ -123,8 +122,8 @@ const checkPasswordMatch = () => {
 
   if (authPassword.value !== authPasswordCheck.value) {
     paintErrorMsg({
-      error: "unmatchingPassword",
-      type: "password",
+      error: "invalidInput",
+      type: "password-check",
       target: authPasswordCheck,
     });
   } else {
@@ -163,14 +162,19 @@ const handleSigninSubmit = (event) => {
 
 const handleSignupSubmit = (event) => {
   event.preventDefault();
-  let signupFlag = true;
 
-  if (!checkEmptyInput(authEmail)) signupFlag = false;
-  if (!validateEmail(authEmail)) signupFlag = false;
-  if (!validatePassword(authPassword)) signupFlag = false;
-  if (!checkPasswordMatch()) signupFlag = false;
+  checkEmptyInput(authEmail);
+  validateEmail(authEmail);
+  validatePassword(authPassword);
+  isEmailAvailable(authEmail);
+  checkPasswordMatch();
 
-  if (signupFlag) location.href = "/pages/folder.html";
+  for (const input of authInputs) {
+    if (input.classList.contains("form__input-box--error")) {
+      return;
+    }
+  }
+  location.href = "/pages/folder.html";
 };
 
 const initSignin = () => {
@@ -192,7 +196,6 @@ const initSignup = () => {
   authPassword.addEventListener("focusout", ({ target }) =>
     validatePassword(target)
   );
-
   authEmail.addEventListener("focusout", ({ target }) =>
     isEmailAvailable(target)
   );
@@ -200,7 +203,6 @@ const initSignup = () => {
     checkPasswordMatch(target)
   );
   authPasswordCheck.addEventListener("focusout", checkPasswordMatch);
-
   authForm.addEventListener("submit", handleSignupSubmit);
 };
 
