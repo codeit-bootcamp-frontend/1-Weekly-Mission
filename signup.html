@@ -19,7 +19,7 @@
         <span>이미 회원이신가요? <a href="signin.html">로그인 하기</a></span>
       </div>
 
-      <div class="inputFrame">
+      <div class="input-frame">
         <form>
           <div class="input-box email">
             <label for="email">이메일</label>
@@ -28,19 +28,24 @@
           <div class="input-box password">
             <label for="password">비밀번호</label>
             <div class="password">
-              <input id="password" name="password" type="password" />
-              <img src="images/signin/eye-off.svg" />
+              <input
+                id="password"
+                class="flex-center"
+                name="password"
+                type="password"
+              />
+              <img class="eye-Image" src="images/signin/eye-off.svg" />
             </div>
           </div>
-          <div class="input-box">
+          <div class="input-box password">
             <label for="password">비밀번호 확인</label>
             <div class="password">
               <input id="password" name="password" type="password" />
-              <img src="images/signin/eye-off.svg" />
+              <img class="eye-Image" src="images/signin/eye-off.svg" />
             </div>
           </div>
 
-          <button class="login-button flex-center">회원가입</button>
+          <button class="login-button flex-center" type="submit">회원가입</button>
         </form>
       </div>
 

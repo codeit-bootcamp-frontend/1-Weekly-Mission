@@ -8,35 +8,33 @@ function $All(selector) {
   return document.querySelectorAll(selector);
 }
 
-
 function isValidEmail(email) {
   return REG_EMAIL.test(email);
 }
 
-function displayError(inputBox, errorMessage) {
-  element = document.createElement("p");
-  element.textContent = errorMessage;
-  element.classList.add("error");
-  inputBox.append(element);
+function displayError(errorLocation, errorMessage) {
+  errorLocation.textContent = errorMessage;
 }
 
 
+const emailError = $All(".error")[0]; 
+const passwordError = $All(".error")[1]; 
+
 function showErrorMessage(e) {
-  const inputBox = e.target.parentElement;
   const hasTargetValue = e.target.value;
 
   switch (e.target.id) {
     case "email":
       if (!hasTargetValue) {
-        displayError(inputBox, "이메일을 입력해주세요.");
+        displayError(emailError, "이메일을 입력해주세요.");
       } else if (!isValidEmail(e.target.value)) {
-        displayError(inputBox, "올바른 이메일 주소가 아닙니다.");
+        displayError(emailError, "올바른 이메일 주소가 아닙니다.");
       }
       break;
 
     case "password":
       if (!hasTargetValue) {
-        displayError(inputBox, "비밀번호를 입력해주세요.");
+        displayError(passwordError, "비밀번호를 입력해주세요.");
       }
       break;
 
@@ -50,17 +48,18 @@ function eyeOnOff(e) {
   e.stopPropagation();
   const isEyeOn = e.target.src.includes("eye-on");
   e.target.src = `./images/signin/${isEyeOn ? "eye-off" : "eye-on"}.svg`;
-  e.target.type = isEyeOn ? "password" : "text";
+  passwordInput.type = isEyeOn ? "password" : "text";
 
 }
 
-function clearErrors(e) {
-  const hasError = e.target.nextElementSibling;
-  hasError ? hasError.remove() : null;
+function clearError(e) {
+  const errorElement = `${e.target.id}Error`;
+  errorElement.textContent = "";
 
 }
 
-document.querySelector('form').addEventListener('submit', (event) => {
+
+function userAuthenticated(event){
   event.preventDefault();
   const { target: { elements } } = event;
 
@@ -71,17 +70,21 @@ document.querySelector('form').addEventListener('submit', (event) => {
     window.location.href = "/folder";
     return;
   }
-  displayError(emailInput.parentElement, "이메일을 확인해주세요.");
-  displayError(passwordInput.parentElement, "비밀번호를 확인해주세요.");
+  displayError(emailError, "이메일을 확인해주세요.");
+  displayError(passwordError, "비밀번호를 확인해주세요.");
+  
 
-
-});
+};
 
 const emailInput = $("#email");
 const passwordInput = $("#password");
+const $form = $("form");
+
 
 emailInput.addEventListener("focusout", showErrorMessage);
 passwordInput.addEventListener("focusout", showErrorMessage);
-emailInput.addEventListener("focusin", clearErrors);
-passwordInput.addEventListener("focusin", clearErrors);
+emailInput.addEventListener("focusin", clearError);
+passwordInput.addEventListener("focusin", clearError);
+
+$form.addEventListener("submit", userAuthenticated);
 $All(".eye-Image")[0].addEventListener("click", eyeOnOff);
