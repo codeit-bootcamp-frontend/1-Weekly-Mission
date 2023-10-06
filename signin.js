@@ -1,62 +1,42 @@
-const inputFrame = getElements(".input-frame")[0];
-const email = getElement("#email");
-const password = getElement("#password");
-const eyeImage = getElements(".eye-Image")[0];
-const loginButton = getElements(".login-button")[0];
-
-
 const REG_EMAIL = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
 
-
-const pEmail = document.createElement("p");
-const pPassword = document.createElement("p");
-
-
-function getElement(selector){
+function $(selector) {
   return document.querySelector(selector);
 }
 
-function getElements(selector){
+function $All(selector) {
   return document.querySelectorAll(selector);
 }
 
 
 function isValidEmail(email) {
-  return REG_PATTERN.test(email);
+  return REG_EMAIL.test(email);
 }
 
-function displayError(inputBox, errorMessage, element) {
+function displayError(inputBox, errorMessage) {
+  element = document.createElement("p");
   element.textContent = errorMessage;
   element.classList.add("error");
   inputBox.append(element);
 }
 
-function clearErrors(e) {
-  e.target.parentElement.lastElementChild.textContent = "";
 
-}
 function showErrorMessage(e) {
   const inputBox = e.target.parentElement;
-
-
+  const hasTargetValue = e.target.value;
 
   switch (e.target.id) {
-
     case "email":
-
-      // const emailErrorMessage = !e.target.value ? "이메일을 입력해주세요." : "올바른 이메일 주소가 아닙니다.";
-      // displayError(inputBox, emailErrorMessage, pEmail);
-      if (!e.target.value) {
-        displayError(inputBox, "이메일을 입력해주세요.", pEmail);
-      } else if (!isValidEmail(email.value)) {
-        displayError(inputBox, "올바른 이메일 주소가 아닙니다.", pEmail);
+      if (!hasTargetValue) {
+        displayError(inputBox, "이메일을 입력해주세요.");
+      } else if (!isValidEmail(e.target.value)) {
+        displayError(inputBox, "올바른 이메일 주소가 아닙니다.");
       }
-
       break;
 
     case "password":
-      if (!e.target.value) {
-        displayError(inputBox, "비밀번호를 입력해주세요.", pPassword);
+      if (!hasTargetValue) {
+        displayError(inputBox, "비밀번호를 입력해주세요.");
       }
       break;
 
@@ -69,35 +49,39 @@ function showErrorMessage(e) {
 function eyeOnOff(e) {
   e.stopPropagation();
   const isEyeOn = e.target.src.includes("eye-on");
-  
   e.target.src = `./images/signin/${isEyeOn ? "eye-off" : "eye-on"}.svg`;
-  console.log(e.target.src);
   e.target.type = isEyeOn ? "password" : "text";
 
 }
 
+function clearErrors(e) {
+  const hasError = e.target.nextElementSibling;
+  hasError ? hasError.remove() : null;
 
-
-inputFrame.addEventListener("focusout", showErrorMessage);
-inputFrame.addEventListener("focusin", clearErrors);
-eyeImage.addEventListener("click", eyeOnOff);
-
-
+}
 
 document.querySelector('form').addEventListener('submit', (event) => {
   event.preventDefault();
-  const {target : {elements}} = event;
-  
+  const { target: { elements } } = event;
 
-  const emailInput = elements[0].parentElement;
-  const passwordInput = elements[1].parentElement;
+  const emailInput = elements[0];
+  const passwordInput = elements[1];
 
-  if (email.value === "test@codeit.com" && password.value === "codeit101") {
+  if (emailInput.value === "test@codeit.com" && passwordInput.value === "codeit101") {
     window.location.href = "/folder";
     return;
-  } 
-  displayError(emailInput, "이메일을 확인해주세요.", pEmail);
-  displayError(passwordInput, "비밀번호를 확인해주세요.", pPassword);
+  }
+  displayError(emailInput.parentElement, "이메일을 확인해주세요.");
+  displayError(passwordInput.parentElement, "비밀번호를 확인해주세요.");
 
 
 });
+
+const emailInput = $("#email");
+const passwordInput = $("#password");
+
+emailInput.addEventListener("focusout", showErrorMessage);
+passwordInput.addEventListener("focusout", showErrorMessage);
+emailInput.addEventListener("focusin", clearErrors);
+passwordInput.addEventListener("focusin", clearErrors);
+$All(".eye-Image")[0].addEventListener("click", eyeOnOff);
