@@ -135,6 +135,7 @@ function removeErrorClassAndMessage(target){
     }
 }
 
+
 /**
  * .error 를 가진 태그가 있는지 확인한다.
  * @returns {boolean} 에러가 있다면 true, 없다면 false반환.

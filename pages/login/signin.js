@@ -4,6 +4,7 @@ const signinButton = document.querySelector('#signin-button');
 
 signinButton.addEventListener('click', _onLogin);
 
+
 /**
  * 문서안에 .error가 있는지 확인 후 로그인을 시도한다.
  * id와 비밀번호가 틀렸을 경우 에러메세지를 출력한다.

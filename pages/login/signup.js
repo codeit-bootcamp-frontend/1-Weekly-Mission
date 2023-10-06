@@ -4,6 +4,7 @@ import { form } from './tags.js';
 const signupButton = document.querySelector('#signup-button');
 const hidePasswordCheckButton = document.querySelector('.hide-password-check');
 
+form.addEventListener('focusout', _onValidateSignupInputValue);
 signupButton.addEventListener('click', _onSignup);
 hidePasswordCheckButton.addEventListener('click', _onHidePassword);
 
@@ -11,7 +12,6 @@ function _onSignup(){
     alert("회원가입");
 }
 
-form.addEventListener('focusout', _onValidateSignupInputValue);
 
 /**
  * _onValidationInputValue()결과 에러가 발생하지 않은경우,
