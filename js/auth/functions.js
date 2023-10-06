@@ -60,7 +60,6 @@ const checkEmptyInput = (target) => {
     });
   } else {
     removeErrorMsg(target);
-    return true;
   }
 };
 
@@ -77,7 +76,6 @@ const validateEmail = (target) => {
     });
   } else {
     removeErrorMsg(target);
-    return true;
   }
 };
 
@@ -94,7 +92,6 @@ const validatePassword = (target) => {
     });
   } else {
     removeErrorMsg(target);
-    return true;
   }
 };
 
@@ -111,7 +108,6 @@ const isEmailAvailable = (target) => {
     });
   } else {
     removeErrorMsg(target);
-    return true;
   }
 };
 
@@ -128,7 +124,6 @@ const checkPasswordMatch = () => {
     });
   } else {
     removeErrorMsg(authPasswordCheck);
-    return true;
   }
 };
 
