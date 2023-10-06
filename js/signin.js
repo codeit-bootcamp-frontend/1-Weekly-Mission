@@ -4,7 +4,7 @@ const form = document.querySelector('form');
 const eyeButton = document.querySelector('.eye-button');
 const eyeIcon = document.querySelectorAll('.eye-icon');
 
-let mailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,}');
+const emailRegex = new RegExp('^[a-z\d]+@[a-z]+\.[a-z]{2,}$');
 const correctMail = 'test@codeit.com';
 const correctPassword = 'codeit101';
 
@@ -21,7 +21,7 @@ const editErrorStatus = (element, message='') => {
 const checkEmailInput = (e) => {
   if (!e.target.value) {
     editErrorStatus(e.target, '이메일을 입력해주세요.');
-  } else if (!mailRegex.test(e.target.value)) {
+  } else if (!emailRegex.test(e.target.value)) {
     editErrorStatus(e.target, '올바른 이메일 주소가 아닙니다.');
   } else {
     editErrorStatus(e.target);
