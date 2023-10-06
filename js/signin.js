@@ -37,10 +37,11 @@ const checkPasswordInput = (e) => {
 }
 
 const trySignIn = (e) => {
+  e.preventDefault();
+  
   if (emailInput.value === correctMail && passwordInput.value === correctPassword) {
     location.href = '/html/folder.html';
   } else {
-    e.preventDefault();
     editErrorStatus(emailInput, '이메일을 확인해주세요.');
     editErrorStatus(passwordInput, '비밀번호를 확인해주세요.');
   }
