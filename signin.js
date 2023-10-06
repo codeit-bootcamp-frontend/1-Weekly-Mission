@@ -1,4 +1,4 @@
-const inputFrame = document.querySelector(".inputFrame");
+const inputFrame = document.querySelector(".input-frame");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const eyeImage = document.querySelector(".eye-Image");

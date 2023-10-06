@@ -51,20 +51,20 @@ main{
 
 }
 
-.inputFrame{
+.input-frame{
   display: flex;
   flex-direction: column;
   align-items: center;
   
 }
 
-.inputFrame form{
+.input-frame form{
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.inputFrame .inputbox{
+.input-frame .input-box{
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -76,7 +76,7 @@ main{
 }
 
 
-.inputFrame .inputbox #email, #password{
+.input-frame .input-box #email, #password{
  
   width: 400px;
   padding: 18px 15px;
@@ -85,7 +85,7 @@ main{
   background: var(--linkbrary-white);
 }
 
-.inputFrame .inputbox .password{
+.input-frame .input-box .password{
   
   position: relative;
   display: flex;
@@ -95,7 +95,7 @@ main{
 }
 
 
-.inputFrame .inputbox .password img{
+.input-frame .input-box .password img{
   position: absolute;
   top : 18px;
   right: 15px;
@@ -104,11 +104,11 @@ main{
 }
 
 
-.inputFrame .inputbox:focus{
+.input-frame .input-box:focus{
   border-color: #6D6AFE;
 }
 
-.inputFrame .login-button{
+.input-frame .login-button{
   padding: 16px 20px;
   gap: 10px;
   border-radius: 8px;
@@ -162,7 +162,7 @@ main{
  
   }
 
-  main > *, main .inputFrame form, .inputFrame .inputbox #email, .inputFrame .inputbox #password, .social-login{
+  main > *, main .input-frame form, .input-frame .input-box #email, .input-frame .input-box #password, .social-login{
     width: 100%;
     max-width: 400px;
   }
