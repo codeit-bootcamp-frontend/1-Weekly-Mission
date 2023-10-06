@@ -33,7 +33,7 @@ header {
 .intro-content {
   text-align: center;
   font-size: 6.4rem;
-  font-weight: 700; 
+  font-weight: 700;
   line-height: 8rem;
 }
 
@@ -44,7 +44,7 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
-.addlink {
+.add-link {
   width: 35rem;
   padding: 1.6rem 2rem;
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%));
@@ -72,21 +72,21 @@ header {
 }
 
 .section:nth-of-type(odd) {
-  grid-template: 
-  ". img"
-  "title img"
-  "text img"
-  ". img"
-  /291px 55rem;
+  grid-template:
+    ". img"
+    "title img"
+    "text img"
+    ". img"
+    /291px 55rem;
 }
 
 .section:nth-of-type(even) {
-  grid-template: 
-  "img ."
-  "img title"
-  "img text"
-  "img ."
-   /550px 29.1rem;
+  grid-template:
+    "img ."
+    "img title"
+    "img text"
+    "img ."
+    /550px 29.1rem;
 }
 
 .title {
@@ -95,7 +95,7 @@ header {
   font-weight: 700;
 }
 
-.text {
+.description {
   color: #6b6b6b;
   grid-area: text;
   font-size: 1.6rem;
@@ -183,7 +183,6 @@ footer {
   gap: 1.2rem;
 }
 
-
 /* Tablet Size */
 @media (max-width: 1199px) {
   .nav {
@@ -193,46 +192,46 @@ footer {
   }
 
   .intro-section {
-   padding: 13.3rem 25rem 0;
+    padding: 13.3rem 25rem 0;
   }
 
   .intro-content {
-   width: 75%;
-   word-break: keep-all;
+    width: 75%;
+    word-break: keep-all;
   }
 
   .intro-img {
-   width: 65rem;
-   height: auto;
-   flex-shrink: 0;
+    width: 65rem;
+    height: auto;
+    flex-shrink: 0;
   }
 
   .section {
-   column-gap: 5.1rem;
-   row-gap: 1rem;
+    column-gap: 5.1rem;
+    row-gap: 1rem;
   }
 
   .section:nth-of-type(odd) {
-    grid-template: 
-    ". img"
-    "title img"
-    "text img"
-    ". img"
-    /291px 38rem;
+    grid-template:
+      ". img"
+      "title img"
+      "text img"
+      ". img"
+      /291px 38rem;
   }
-  
+
   .section:nth-of-type(even) {
-    grid-template: 
-    "img ."
-    "img title"
-    "img text"
-    "img ."
-     /400px 29.1rem;
+    grid-template:
+      "img ."
+      "img title"
+      "img text"
+      "img ."
+      /400px 29.1rem;
   }
 
   .title {
-   width: 100%;
-   word-break: keep-all;
+    width: 100%;
+    word-break: keep-all;
   }
 
   .image {
@@ -240,10 +239,9 @@ footer {
     height: 31.5rem;
   }
 
-  .text {
-   word-break: keep-all;
+  .description {
+    word-break: keep-all;
   }
-
 }
 
 /* Mobile Size */
@@ -254,100 +252,100 @@ footer {
 
   .nav {
     width: 100%;
-   }
+  }
 
-   .linkbrary {
+  .linkbrary {
     width: 8.8rem;
-   }
+  }
 
-   .login {
+  .login {
     width: 8rem;
     padding: 1rem 1.6rem;
     font-size: 1.4rem;
-   }
+  }
 
-   .intro-section {
+  .intro-section {
     padding: 9.1rem 3.2rem 0;
     gap: 2.4rem;
-   }
+  }
 
-   .intro-content {
-    width: 80%;
+  .intro-content {
+    width: 85%;
     font-size: 3.2rem;
     line-height: 4.2rem;
-   }
+  }
 
-   .addlink {
+  .add-link {
     width: 24rem;
     padding: 1rem 1.6rem;
-   }
+  }
 
-   .intro-img {
+  .intro-img {
     width: 100%;
-   }
+  }
 
-   .section {
+  .section {
     display: grid;
     width: 100%;
     height: auto;
     padding: 4rem 3.2rem;
     row-gap: 2rem;
-   }
+  }
 
-   .section:nth-of-type(odd) {
-    grid-template: 
-    "title"
-    "img"
-    "text"
-    /100%;
-   }
+  .section:nth-of-type(odd) {
+    grid-template:
+      "title"
+      "img"
+      "text"
+      /100%;
+  }
 
-   .section:nth-of-type(even) {
-    grid-template: 
-    "title"
-    "img"
-    "text"
-    /100%;
-   }
+  .section:nth-of-type(even) {
+    grid-template:
+      "title"
+      "img"
+      "text"
+      /100%;
+  }
 
-   .title {
+  .title {
     font-size: 2.4rem;
-   }
+  }
 
-   .text {
+  .description {
     font-size: 1.5rem;
     word-wrap: break;
-   }
+  }
 
-   .image {
+  .image {
     width: 100%;
     height: auto;
-   }
+  }
 
-   footer {
+  footer {
     padding-top: 4rem;
-   }
+  }
 
-   .footer-background {
+  .footer-background {
     padding: 3.2rem 3.2rem 6.4rem 3.2rem;
-   }
+  }
 
-   .footer-content {
+  .footer-content {
     flex-wrap: wrap;
     row-gap: 6rem;
-   }
+  }
 
-   .name {
+  .name {
     order: 3;
-   }
+  }
 
-   .option {
+  .option {
     flex-basis: 50%;
-    gap: 2.5rem
-   }
+    gap: 2.5rem;
+  }
 
-   .social {
+  .social {
     flex-basis: 50%;
     justify-content: end;
-   }
+  }
 }

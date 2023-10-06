@@ -1,13 +1,13 @@
 @font-face {
-  font-family: 'Pretendard';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
   font-style: normal;
 }
 
 * {
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Pretendard;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Pretendard;
 }
 
 html {
@@ -15,11 +15,12 @@ html {
 }
 
 body {
-    width: 100%;
+  width: 100%;
 }
 
-a, button {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
+a,
+button {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
