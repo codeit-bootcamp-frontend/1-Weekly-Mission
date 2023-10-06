@@ -134,6 +134,7 @@ const togglePasswordVisibility = (event) => {
 
 const handleSigninSubmit = (event) => {
   event.preventDefault();
+
   if (
     $authEmail.value === ACCOUNT.email &&
     $authPassword.value === ACCOUNT.password
@@ -171,7 +172,7 @@ const initSignin = () => {
     input.addEventListener("focusout", ({ target }) => checkEmptyInput(target));
     input.addEventListener(
       "keypress",
-      (event) => e.code === "Enter" && handleSigninSubmit(event)
+      (event) => event.code === "Enter" && handleSigninSubmit(event)
     );
   }
 
@@ -186,7 +187,7 @@ const initSignup = () => {
   for (const input of $authInputs) {
     input.addEventListener(
       "keypress",
-      (event) => e.code === "Enter" && handleSignupSubmit(event)
+      (event) => event.code === "Enter" && handleSignupSubmit(event)
     );
   }
 
