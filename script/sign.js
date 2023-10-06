@@ -3,7 +3,7 @@ const $pwdErrorMessage = document.querySelector('.pwd_error_message');
 const $email = document.querySelector('.email_input');
 const $pwd = document.querySelector('.pwd_input');
 const $signBtn = document.querySelector('.btn-sign');
-const $pwdEye = document.querySelector('.password-eye');
+const $pwdEye = document.querySelectorAll('.password-eye');
 
 let emailValid = false;
 let pwdValid = false;
@@ -27,6 +27,8 @@ function emailErrorMessage(e){
     emailValid = true;
    }
 }
+$email.addEventListener("focusout",emailErrorMessage);
+
 
 function pwdErrorMessage(e){
     pwdValid=false;
@@ -41,7 +43,6 @@ function pwdErrorMessage(e){
         pwdValid = true;
     }
 }
-$email.addEventListener("focusout",emailErrorMessage);
 $pwd.addEventListener("focusout",pwdErrorMessage);
 
 function signinValidCheck(e){
@@ -58,16 +59,17 @@ function signinValidCheck(e){
 }
 document.querySelector('.form__sign').addEventListener('submit',signinValidCheck);
 
-let eyeOn = $pwdEye.src.includes('eye-on');
 function pwdEyeOnOff(e){
-    eyeOn = !eyeOn;
+    let eyeOn = e.target.src.includes('eye-on');
     if(eyeOn){
-        e.target.src = "/img/eye-on.svg";
-        $pwd.type ="text";
+        e.target.src = "/img/eye-off.svg";
+        e.target.previousElementSibling.type ="password";
     }
     else{
-        e.target.src = "/img/eye-off.svg";
-        $pwd.type ="password";
+        e.target.src = "/img/eye-on.svg";
+        e.target.previousElementSibling.type ="text";
     }
 }
-$pwdEye.addEventListener('click',pwdEyeOnOff);
+$pwdEye[0].addEventListener('click',pwdEyeOnOff);
+
+export {$email,$emailErrorMessage,$pwdErrorMessage,$pwd,pwdEyeOnOff,$pwdEye}
