@@ -13,19 +13,10 @@ import {
   signinBtn,
   eyeBtn,
 } from "../utils/tags.js";
-import { handleEmailInputEmptyValueCheck } from "../utils/auth.js";
-
-function handleEmailInputInvalidValueCheck(e) {
-  if (
-    !emailRegex.test(e.target.value.trim()) &&
-    e.target.value.trim().length > 0
-  ) {
-    emailInput.after(emailInvalidMsg);
-    emailInput.classList.add("input-error");
-  } else {
-    emailInvalidMsg.remove();
-  }
-}
+import {
+  handleEmailInputEmptyValueCheck,
+  handleEmailInputInvalidValueCheck,
+} from "../utils/auth.js";
 
 function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value.trim()) {
@@ -72,7 +63,9 @@ function handleEyeBtnClick() {
 emailInput.addEventListener("blur", () =>
   handleEmailInputEmptyValueCheck(emailInput, emailEmptyMsg)
 );
-emailInput.addEventListener("blur", handleEmailInputInvalidValueCheck);
+emailInput.addEventListener("blur", () =>
+  handleEmailInputInvalidValueCheck(emailRegex, emailInput, emailInvalidMsg)
+);
 pwInput.addEventListener("blur", handlePasswordInputEmptyValueCheck);
 signinBtn.addEventListener("click", handleSigninBtnClick);
 eyeBtn.addEventListener("click", handleEyeBtnClick);
