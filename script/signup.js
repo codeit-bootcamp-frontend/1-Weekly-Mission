@@ -1,4 +1,6 @@
 import {$email,$emailErrorMessage,$pwdErrorMessage,$pwd,pwdEyeOnOff,$pwdEye} from './sign.js';
+const $pwdCheckErrorMessage = document.querySelector('.check_pwd_error_message');
+const $pwdCheck = document.querySelector('.check_pwd_input');
 
 function emailDuplication(){
     const existEmail = 'test@codeit.com'
@@ -21,3 +23,16 @@ function pwdValidation(){
 $pwd.addEventListener("focusout", pwdValidation);
 
 $pwdEye[1].addEventListener('click',pwdEyeOnOff);
+
+function pwdCheck(){
+    if($pwdCheck.value === $pwd.value){
+        $pwdCheckErrorMessage.style.display ="none";
+        $pwdCheck.classList.remove('border-red');
+    }
+    else{
+        $pwdCheckErrorMessage.textContent = "비밀번호가 일치하지 않아요."
+        $pwdCheckErrorMessage.style.display ="block";
+        $pwdCheck.classList.add('border-red');
+    }
+}
+$pwdCheck.addEventListener("focusout", pwdCheck);
