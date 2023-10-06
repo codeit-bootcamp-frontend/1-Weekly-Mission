@@ -76,7 +76,7 @@ $inputEmail.addEventListener('focusout', verificationEmail);
 $submitBtn.addEventListener('click', submitVerification);
 
 
-import eyeToggle from "./eyeOnOff.js";
+import eyeToggle from "./eyeToggle.js";
 
 //eyeToggle 이벤트
 

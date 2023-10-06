@@ -24,14 +24,14 @@
         <div class="input_wrapper password">
           <label class="label">비밀번호</label>
           <div class="input_container">
-            <a href="#"><img class="eye_icon" src="./images/eye-on.png"></a>
+            <img class="eye_icon" id="eye" status = "closed" src="./Images/eye-slash.svg">
             <input class="input_box" type="password" name="password">
           </div>
         </div>
         <div class="input_wrapper password_check">
           <label class="label">비밀번호 확인</label>
           <div class="input_container">
-            <a href="#"><img class="eye_icon" src="./images/eye-on.png"></a>
+            <img class="eye_icon" id="eye" status = "closed" src="./Images/eye-slash.svg">
             <input class="input_box" type="password" name="password_check">
           </div>
           <span class="error_message">비밀번호가 다릅니다</span>
@@ -49,6 +49,7 @@
       </footer>
     </div>
   </div>
+  <script src="./JS/signup.js" type="module"></script>
   <script src="https://kit.fontawesome.com/4fad5bb7ce.js" crossorigin="anonymous"></script>
 </body>
 </html>
