@@ -76,7 +76,8 @@ const checkAdminAccount = () => {
     $passwordErrorMsg.textContent === ""
   ) {
     // admin 계정으로 로그인 시 'folder/' 로 이동
-    window.location.href = "../folder/index.html";
+    window.location.href =
+      "/Weekly_mission/1-Weekly-Mission/src/assets/pages/folder/index.html";
   } else {
     showEmailError("wrong");
     showPasswordError("wrong");
@@ -86,12 +87,18 @@ const checkAdminAccount = () => {
 const togglePwVisibility = () => {
   if (!togglePwVisible) {
     // 비밀번호 보이게 하기
-    $pwInvisible.setAttribute("src", "../../assets/images/svg/eye-on.svg");
+    $pwInvisible.setAttribute(
+      "src",
+      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-on.svg"
+    );
     $password.setAttribute("type", "text");
     togglePwVisible = true;
   } else {
     // 비밀번호 가리기
-    $pwInvisible.setAttribute("src", "../../assets/images/svg/eye-off.svg");
+    $pwInvisible.setAttribute(
+      "src",
+      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-off.svg"
+    );
     $password.setAttribute("type", "password");
     togglePwVisible = false;
   }

@@ -124,12 +124,14 @@ const checkDoubleCheckPwInput = (event) => {
 };
 
 const checkAllInput = () => {
-  if ($email.value === "test@codeit.com" && $password.value === "codeit101") {
-    // admin 계정으로 로그인 시 'folder/' 로 이동
-    window.location.href = "../folder/index.html";
-  } else {
-    showEmailError("wrong");
-    showPasswordError("wrong");
+  if (
+    $emailErrorMsg.textContent === "" &&
+    $passwordErrorMsg.textContent === "" &&
+    $doubleCheckPwErrorMsg.textContent === ""
+  ) {
+    // error msg 모두 처리 시 'folder/' 로 이동
+    window.location.href =
+      "/Weekly_mission/1-Weekly-Mission/src/assets/pages/folder/index.html";
   }
 };
 
@@ -137,12 +139,18 @@ const checkAllInput = () => {
 const togglePwVisibility = () => {
   if (!togglePwVisible) {
     // 비밀번호 보이게 하기
-    $pwInvisible.setAttribute("src", "../../assets/images/svg/eye-on.svg");
+    $pwInvisible.setAttribute(
+      "src",
+      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-on.svg"
+    );
     $password.setAttribute("type", "text");
     togglePwVisible = true;
   } else {
     // 비밀번호 가리기
-    $pwInvisible.setAttribute("src", "../../assets/images/svg/eye-off.svg");
+    $pwInvisible.setAttribute(
+      "src",
+      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-off.svg"
+    );
     $password.setAttribute("type", "password");
     togglePwVisible = false;
   }
@@ -184,6 +192,7 @@ const doubleCheckPwInputEventHandler = (event) => {
 
 const formSubmitEventHandler = (event) => {
   event.preventDefault();
+  checkAllInput();
 };
 
 const pwInvisibleEventHandler = () => {
