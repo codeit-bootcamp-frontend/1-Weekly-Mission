@@ -7,6 +7,7 @@
   <link href="pages/sign.css" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css">
   <title>Linkbrary</title>
+  <script defer src="js/signUp.js"></script>
 </head>
 <body>
   <div class="regular-login">
@@ -22,22 +23,25 @@
     <section class="sign-field">
       <p class="text">이메일</p>
       <input class="email" name="email" type="email" required autocomplete="email" placeholder="이메일을 입력하세요.">
+      <div class="email error-msg"></div>
     </section>
     <section class="sign-field">
       <p class="text">비밀번호</p>
       <div class="input-container">
         <input class="password" name="password" type="password" required placeholder="비밀번호를 입력하세요.">
-        <img src="assets/components/eye-off.svg" class="eye-off">
-      </div>
-    </section>
-    <section class="sign-field">
-      <p class="text">비밀번호</p>
-      <div class="input-container">
-        <input class="password password-again" name="password-again" type="password" required placeholder="비밀번호를 다시 입력하세요.">
         <img src="assets/components/eye-off.svg" class="eye-off" alt="비밀번호 숨기기 아이콘">
       </div>
+      <div class="password error-msg"></div>
     </section>
-    <section class="button">
+    <section class="sign-field">
+      <p class="text">비밀번호 확인</p>
+      <div class="input-container">
+        <input class="password-again" name="password-again" type="password" required placeholder="비밀번호를 다시 입력하세요.">
+        <img src="assets/components/eye-off.svg" class="eye-off" alt="비밀번호 숨기기 아이콘">
+      </div>
+      <div class="password-again error-msg"></div>
+    </section>
+    <section class="button try-sign">
       <p class="text">회원가입</p>
     </section>
   </div>

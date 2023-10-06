@@ -1,7 +1,7 @@
 // 이메일, 비밀번호 인풋값에 대한 검사를 하기 위한 변수(인풋 태그를 가져옴)
 const emailInputEl = document.querySelector('input.email');
 const passwordInputEl = document.querySelector('input.password');
-const LoginButton = document.querySelector('.login.button');
+const signButton = document.querySelector('.button.try-sign');
 
 // 이메일, 비밀번호 인풋값 검사에 대한 결과(오류메세지)를 입력할 변수(인풋 태그 아래에 빈 요소를 가져옴)
 const emailErrorEl = document.querySelector('.email.error-msg');
@@ -70,5 +70,5 @@ const EyeComponentOnOffChange = () => {
 // 실행할 이벤트 핸들러
 emailInputEl.addEventListener('focusout', checkEmailInput);
 passwordInputEl.addEventListener('focusout', checkPasswordInput);
-LoginButton.addEventListener('click', TryLogin);
+signButton.addEventListener('click', TryLogin);
 eyeComponent.addEventListener('click', EyeComponentOnOffChange);
