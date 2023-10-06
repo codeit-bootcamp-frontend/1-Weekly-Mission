@@ -5,28 +5,20 @@ const eye = document.querySelector('#password-icon');
 const eyeCheck = document.querySelector('#password-icon-check');
 const login = document.querySelector('.login-box');
 
-
-emailEl.addEventListener('focusout', emailCheck);
-passwordEl.addEventListener('focusout', passwordCheck);
-passwordCheckEl.addEventListener('focusout',passwordCheck)
-eye.addEventListener('click',eyeOnOff);
-eyeCheck.addEventListener('click',eyeOnOff);
-login.addEventListener('click',loginCheck)
-
 function loginCheck () {
-    if (emailEl.value === '' || emailEl.parentElement.nextElementSibling.classList.contains('error')) {
+    if (emailEl.value === '' || emailEl.classList.contains('error')) {
         emailEl.className = 'error';
         emailEl.nextElementSibling.textContent = `이메일을 확인해주세요`;
         emailEl.nextElementSibling.style.visibility = 'visible';
         return;
     }
-    else if (passwordEl.value === '' || passwordEl.parentElement.nextElementSibling.classList.contains('error')) {
+    else if (passwordEl.value === '' || passwordEl.classList.contains('error')) {
         passwordEl.className = 'error';
         passwordEl.parentElement.nextElementSibling.textContent = `비밀번호를 확인해주세요`;
         passwordEl.parentElement.nextElementSibling.style.visibility = 'visible';
         return;
     }
-    else if (passwordCheckEl.value === '' || passwordCheckEl.parentElement.nextElementSibling.classList.contains('error')) {
+    else if (passwordCheckEl.value === '' || passwordCheckEl.classList.contains('error')) {
         passwordCheckEl.className = 'error';
         passwordCheckEl.parentElement.nextElementSibling.textContent = `비밀번호를 확인해주세요`;
         passwordCheckEl.parentElement.nextElementSibling.style.visibility = 'visible';
@@ -36,3 +28,17 @@ function loginCheck () {
         location.href = '/folder.html'
     }
 }
+
+function loginCheckKey (e) {
+    e.key === 'Enter' ? loginCheck() : false;
+}
+
+emailEl.addEventListener('focusout', emailCheck);
+emailEl.addEventListener('keydown', loginCheckKey);
+passwordEl.addEventListener('focusout', passwordCheck);
+passwordEl.addEventListener('keydown', loginCheckKey);
+passwordCheckEl.addEventListener('focusout',passwordCheck);
+passwordCheckEl.addEventListener('keydown', loginCheckKey);
+eye.addEventListener('click',eyeOnOff);
+eyeCheck.addEventListener('click',eyeOnOff);
+login.addEventListener('click',loginCheck);
