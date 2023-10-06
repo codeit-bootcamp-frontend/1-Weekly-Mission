@@ -39,16 +39,14 @@ const PASSWORD_PATTERN = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
 const paintErrorMsg = ({ error, type, target }) => {
   target.classList.add("form__input-box--error");
-  const errorMsg = target.parentElement.querySelector(".error-msg");
-  errorMsg.textContent = ERROR_MSGS[error][type];
-  errorMsg.style.display = "block";
-  target.after(errorMsg);
+  const $errorMsg = target.parentElement.querySelector(".error-msg");
+  $errorMsg.textContent = ERROR_MSGS[error][type];
 };
 
 const removeErrorMsg = (target) => {
   target.classList.remove("form__input-box--error");
-  const errorMsg = target.parentElement.querySelector(".error-msg");
-  errorMsg.style.display = "none";
+  const $errorMsg = target.parentElement.querySelector(".error-msg");
+  $errorMsg.textContent = "";
 };
 
 const checkEmptyInput = (target) => {
