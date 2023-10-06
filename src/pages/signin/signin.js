@@ -1,48 +1,22 @@
-// HTML tag를 담는 변수는 앞에 $를 붙임
-const $email = document.querySelector("#email");
-const $password = document.querySelector("#password");
-const $form = document.querySelector("form");
-const $pwInvisible = document.querySelector(".password-invisible");
+import {
+  $email,
+  $password,
+  $form,
+  $pwInvisible,
+  $emailErrorMsg,
+  $passwordErrorMsg,
+  showEmailError,
+  deleteEmailError,
+  showPasswordError,
+  deletePasswordError,
+  togglePwVisibility,
+} from "/Weekly_mission/1-Weekly-Mission/src/assets/js/sign_common.js";
 
-const $emailErrorMsg = document.createElement("div");
-const $passwordErrorMsg = document.createElement("div");
+// HTML tag를 담는 변수는 앞에 $를 붙임
 $emailErrorMsg.classList.add("email-error-msg");
 $passwordErrorMsg.classList.add("password-error-msg");
 $email.after($emailErrorMsg);
 $password.after($passwordErrorMsg);
-
-// togglePwVisibility() 에서 쓰임
-let togglePwVisible = false;
-
-const showEmailError = (type) => {
-  if (type === "void") {
-    $emailErrorMsg.textContent = "이메일을 입력해주세요.";
-  } else if (type === "typo") {
-    $emailErrorMsg.textContent = "올바른 이메일 주소가 아닙니다.";
-  } else if (type === "wrong") {
-    $emailErrorMsg.textContent = "이메일을 확인해주세요.";
-  }
-  $email.classList.add("error-border");
-};
-
-const deleteEmailError = () => {
-  $emailErrorMsg.textContent = "";
-  $email.classList.remove("error-border");
-};
-
-const showPasswordError = (type) => {
-  if (type === "void") {
-    $passwordErrorMsg.textContent = "비밀번호를 입력해주세요.";
-  } else if (type === "wrong") {
-    $passwordErrorMsg.textContent = "비밀번호를 확인해주세요.";
-  }
-  $password.classList.add("error-border");
-};
-
-const deletePasswordError = () => {
-  $passwordErrorMsg.textContent = "";
-  $password.classList.remove("error-border");
-};
 
 const checkEmailInput = (event) => {
   // 이메일 validation 정규표현식
@@ -77,30 +51,10 @@ const checkAdminAccount = () => {
   ) {
     // admin 계정으로 로그인 시 'folder/' 로 이동
     window.location.href =
-      "/Weekly_mission/1-Weekly-Mission/src/assets/pages/folder/index.html";
+      "/Weekly_mission/1-Weekly-Mission/src/pages/folder/index.html";
   } else {
     showEmailError("wrong");
     showPasswordError("wrong");
-  }
-};
-
-const togglePwVisibility = () => {
-  if (!togglePwVisible) {
-    // 비밀번호 보이게 하기
-    $pwInvisible.setAttribute(
-      "src",
-      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-on.svg"
-    );
-    $password.setAttribute("type", "text");
-    togglePwVisible = true;
-  } else {
-    // 비밀번호 가리기
-    $pwInvisible.setAttribute(
-      "src",
-      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-off.svg"
-    );
-    $password.setAttribute("type", "password");
-    togglePwVisible = false;
   }
 };
 
