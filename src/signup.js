@@ -62,9 +62,27 @@ function isSamePasswordInput(password) {
   removeInputError({ input: passwordConfirmInput, errorMessage: passwordErrorMessage2 });
 }
 
-const passwordToggleButton = document.querySelector("#password-toggle");
+/*const passwordToggleButton = document.querySelector("#password-toggle");
 passwordToggleButton.addEventListener("click", () =>
   togglePassword(passwordInput, passwordToggleButton)
+);*/
+
+/*const passwordToggleButtons = document.querySelectorAll(".password-toggle");
+passwordToggleButtons.forEach((button) => {
+  button.addEventListener("click", () =>
+  togglePassword(passwordConfirmInput, button))
+  button.addEventListener("click", () => 
+  togglePassword(passwordInput, button)) 
+});*/
+
+const passwordToggleButtons = document.querySelectorAll(".password-toggle");
+const FirstEyeToggleButton = passwordToggleButtons[0];
+const SecondEyeToggleButton = passwordToggleButtons[1];
+FirstEyeToggleButton.addEventListener('click', () =>
+  togglePassword(passwordInput, FirstEyeToggleButton)
+);
+SecondEyeToggleButton.addEventListener('click', () =>
+  togglePassword(passwordConfirmInput, SecondEyeToggleButton)
 );
 
 const signForm = document.querySelector("#form");
