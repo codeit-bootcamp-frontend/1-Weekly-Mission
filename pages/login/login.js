@@ -78,7 +78,14 @@ function _onValidateInputValue(e){
 
         if(emailReg.test(value) === false){
             setErrorMessage(id, 'validation');
+            return;
         }
+
+        // 중복된 이메일인지 체크
+        if(value === 'test@codeit.com'){
+            setErrorMessage(id, 'duplication');
+        }
+
 
     }else if(id === 'password' || id === 'password-check'){
         // 비밀번호가 일치하는지 체크(password-check가 있을 때에만 체크한다.)
@@ -140,6 +147,9 @@ function getErrorMessage(id, type){
         },
         coincidence : {
             'password-check' : '비밀번호가 다릅니다.',
+        },
+        duplication : {
+            email : '이미 사용 중인 이메일입니다.',
         }
     };
 
