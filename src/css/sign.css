@@ -91,12 +91,18 @@ body {
   font-weight: 400;
 }
 
-.emailErrorSpan,
-.pwErrorSpan {
+.Msg,
+.wrongMsg {
   color: var(--errorRed);
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
+}
+
+.pwErrorSpan,
+.wrongPwErrorSpan {
+  display: inline-block;
+  padding-top: 10px;
 }
 
 .content1_div2_div1_input {
