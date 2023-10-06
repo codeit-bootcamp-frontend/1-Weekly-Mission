@@ -49,16 +49,12 @@ function validateAll(){
 }
 
 /**
- * _onValidationInputValue()결과 에러가 발생하지 않은경우,
  * 회원가입시 필요한 validateSingupInputValue 함수를 호출한다.
  */
 function _onValidateSignupInputValue(e){
-    if(isFormContainsError() === false){
-        const id = e.target.id;
-        const value = e.target.value;
-
-        validateSingupInputValue(id, value);
-    }
+    const id = e.target.id;
+    const value = e.target.value;
+    validateSingupInputValue(id, value);
 }
 
 /**
