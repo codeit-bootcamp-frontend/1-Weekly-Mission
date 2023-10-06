@@ -2,7 +2,7 @@ import { form, emailInput, emailErrorMessage, passwordErrorMessages, passwordInp
 import { TEST_ACCOUNT, REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from "../utils/utils.js";
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../utils/error-handling.js";
 import generateEyeButton from "../utils/eye-button.js";
-import ERROR_MESSAGES from "../utils/error-message.js";
+import ERROR_MESSAGES from "../components/error-messages.js";
 
 const validateEmail = () => {
   const emailValue = emailInput.value;

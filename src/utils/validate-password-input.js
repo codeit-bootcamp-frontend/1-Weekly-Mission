@@ -1,6 +1,6 @@
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "./error-handling.js";
 import { VALUE_EMPTY, isEmpty, isValidPassword } from "./utils.js";
-import ERROR_MESSAGES from "./error-message.js";
+import ERROR_MESSAGES from "../components/error-messages.js";
 
 const validatePasswordInput = (passwordInput, passwordErrorMessage, passwordInputValue) => {
   const passwordValue = passwordInput.value;
