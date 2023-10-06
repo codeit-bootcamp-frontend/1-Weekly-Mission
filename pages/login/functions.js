@@ -1,61 +1,4 @@
-const form = document.querySelector('#form');
-const signinButton = document.querySelector('#signin-button');
-const signupButton = document.querySelector('#signup-button');
-const hidePasswordButton = document.querySelector('.hide-password');
-const hidePasswordCheckButton = document.querySelector('.hide-password-check');
-
-form.addEventListener('focusout', _onValidateInputValue);
-form.addEventListener('keydown', _onRemoveValidationError);
-form.addEventListener('change', _onRemoveValidationError);
-
-signinButton?.addEventListener('click', _onLogin);
-signupButton?.addEventListener('click', _onSignup);
-
-hidePasswordButton.addEventListener('click', _onHidePassword)
-hidePasswordCheckButton?.addEventListener('click', _onHidePassword);
-
-/**
- * password, password-check의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
- * image의 src는 pages/login/style.css에서 변경한다.
- * @param {PointerEvent} e 이벤트 객체
- */
-function _onHidePassword(e){
-    e.target.classList.toggle('hide');
-
-    if(e.target.classList.contains('hide')){
-        e.target.setAttribute('alt','비밀번호 안보이게하기(현재 보임)');
-        e.target.parentElement.querySelector('input').setAttribute('type','text');
-    }else{
-        e.target.setAttribute('alt','비밀번호 보이게하기(현재 보이지 않음)');
-        e.target.parentElement.querySelector('input').setAttribute('type','password');
-    }
-}
-
-function _onSignup(){
-    alert("회원가입");
-}
-
-/**
- * 문서안에 .error가 있는지 확인 후 로그인을 시도한다.
- * id와 비밀번호가 틀렸을 경우 에러메세지를 출력한다.
- */
-function _onLogin(){
-    const errors = document.querySelectorAll('.error');
-    if(errors.length === 0){
-        const email = document.querySelector('#email');
-        const password = document.querySelector('#password');
-
-        if(email.value === 'test@codeit.com' && password.value === 'codeit101'){
-            // 로그인 성공.
-            location.href = "/pages/folder";
-
-        }else{
-            // 에러메세지 출력.
-            setErrorMessage(email.id, 'login');
-            setErrorMessage(password.id, 'login');
-        }
-    }
-}
+/* 공통 함수 */
 
 /**
  * input의 value의 유효성검사를 한다.
@@ -78,27 +21,28 @@ function _onValidateInputValue(e){
 
         if(emailReg.test(value) === false){
             setErrorMessage(id, 'validation');
-            return;
-        }
-
-        // 중복된 이메일인지 체크
-        if(value === 'test@codeit.com'){
-            setErrorMessage(id, 'duplicate');
-        }
-
-
-    }else if(id === 'password' || id === 'password-check'){
-        // 비밀번호가 일치하는지 체크(password-check가 있을 때에만 체크한다.)
-        const passwordCheck = document.querySelector('#password-check');
-        if(passwordCheck){
-            const password = document.querySelector('#password');
-
-            if(password.value !== passwordCheck.value){
-                setErrorMessage('password-check', 'coincidence');
-            }
         }
     }
 }
+
+
+/**
+ * password, password-check의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
+ * image의 src는 pages/login/style.css에서 변경한다.
+ * @param {PointerEvent} e 이벤트 객체
+ */
+function _onHidePassword(e){
+    e.target.classList.toggle('hide');
+
+    if(e.target.classList.contains('hide')){
+        e.target.setAttribute('alt','비밀번호 안보이게하기(현재 보임)');
+        e.target.parentElement.querySelector('input').setAttribute('type','text');
+    }else{
+        e.target.setAttribute('alt','비밀번호 보이게하기(현재 보이지 않음)');
+        e.target.parentElement.querySelector('input').setAttribute('type','password');
+    }
+}
+
 
 /**
  * target의 nextSibling으로 에러메세지를 출력하고, target에 error클래스를 추가한다.
@@ -124,6 +68,7 @@ function setErrorMessage(id, type){
     target.classList.add('error');
 }
 
+
 /**
  * errorMessages 객체안에서 type과 id로 메세지를 찾아 리턴한다.
  * 해당하는 에러메세지가 없는 경우 빈문자열을 리턴한다.
@@ -146,7 +91,7 @@ function getErrorMessage(id, type){
             password : '비밀번호를 확인해주세요.',
         },
         coincidence : {
-            'password-check' : '비밀번호가 다릅니다.',
+            'password-check' : '비밀번호가 일치하지 않아요.',
         },
         duplicate : {
             email : '이미 사용 중인 이메일입니다.',
@@ -155,6 +100,7 @@ function getErrorMessage(id, type){
 
     return errorMessages[type]?.[id] ?? "";
 }
+
 
 /**
  * 에러메세지를 삭제할 대상을 removeErrorClassAndMessage함수의 인자로 전달한다.
@@ -174,6 +120,7 @@ function _onRemoveValidationError(e){
     }
 }
 
+
 /**
  * target의 error클래스를 제거하고, 에러메세지를 삭제한다.
  * @param {Element} target target element
@@ -187,3 +134,14 @@ function removeErrorClassAndMessage(target){
         }
     }
 }
+
+/**
+ * .error 를 가진 태그가 있는지 확인한다.
+ * @returns {boolean} 에러가 있다면 true, 없다면 false반환.
+ */
+function formContainsError(){
+    const errors = document.querySelectorAll('.error');
+    return errors.length !== 0;
+}
+
+export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, formContainsError };
