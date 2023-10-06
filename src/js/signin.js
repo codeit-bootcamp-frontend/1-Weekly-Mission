@@ -6,7 +6,10 @@ import ERROR_MESSAGES from "../components/error-messages.js";
 
 const validateEmail = () => {
   const emailValue = emailInput.value;
+
   const isEmptyValue = isEmpty(emailValue);
+  const isValidValue = isValidEmail(emailValue);
+  const invalidMessage = ERROR_MESSAGES.email.invalid;
 
   if (isEmptyValue) {
     displayErrorMessage(emailErrorMessage, ERROR_MESSAGES.email.empty);
@@ -14,16 +17,17 @@ const validateEmail = () => {
     return;
   }
 
-  isValidEmail(emailValue)
+  isValidValue
     ? (displayErrorMessage(emailErrorMessage, VALUE_EMPTY), removeErrorClass(emailInput))
-    : (displayErrorMessage(emailErrorMessage, ERROR_MESSAGES.email.invalid), addErrorClass(emailInput));
+    : (displayErrorMessage(emailErrorMessage, invalidMessage), addErrorClass(emailInput));
 };
 
 const validatePassword = (passwordInput, passwordErrorMessage) => {
   const passwordValue = passwordInput.value;
   const isEmptyValue = isEmpty(passwordValue);
+  const emptyMessage = ERROR_MESSAGES.password.empty;
 
-  displayErrorMessage(passwordErrorMessage, isEmptyValue ? ERROR_MESSAGES.password.empty : VALUE_EMPTY);
+  displayErrorMessage(passwordErrorMessage, isEmptyValue ? emptyMessage : VALUE_EMPTY);
   isEmptyValue ? addErrorClass(passwordInput) : removeErrorClass(passwordInput);
 };
 
@@ -31,17 +35,24 @@ const handleLoginFormSubmit = (event) => {
   event.preventDefault();
 
   passwordInputs.forEach((passwordInput, index) => {
-    const isValid = emailInput.value === TEST_ACCOUNT.email && passwordInput.value === TEST_ACCOUNT.pw;
+    const emailInputValue = emailInput.value;
+    const passwordInputValue = passwordInput.value;
+    const testAccountEmail = TEST_ACCOUNT.email;
+    const testAccountPW = TEST_ACCOUNT.pw;
+    const isValid = emailInputValue === testAccountEmail && passwordInputValue === testAccountPW;
+
+    const submitErrorMessages = ERROR_MESSAGES.submit;
+    const isMatchEmail = (field) => field === "email";
 
     if (isValid) {
       window.location.href = REDIRECT_PATH;
       return;
     }
 
-    Object.keys(ERROR_MESSAGES.submit).forEach((field) => {
+    Object.keys(submitErrorMessages).forEach((field) => {
       displayErrorMessage(
-        field === "email" ? emailErrorMessage : passwordErrorMessages[index],
-        ERROR_MESSAGES.submit[field]
+        isMatchEmail(field) ? emailErrorMessage : passwordErrorMessages[index],
+        submitErrorMessages[field]
       );
     });
 

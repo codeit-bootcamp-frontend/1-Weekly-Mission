@@ -7,23 +7,28 @@ import generateEyeButton from "../utils/eye-button.js";
 
 const validateEmail = () => {
   const emailValue = emailInput.value;
+
   const isEmptyValue = isEmpty(emailValue);
   const isDuplicate = emailValue === TEST_ACCOUNT.email;
+  const invalidEmail = !isValidEmail(emailValue);
+  const emptyMessage = ERROR_MESSAGES.email.empty;
+  const invalidMessage = ERROR_MESSAGES.email.invalid;
+  const duplicateMessage = ERROR_MESSAGES.email.duplicate;
 
   if (isEmptyValue) {
-    displayErrorMessage(emailErrorMessage, ERROR_MESSAGES.email.empty);
+    displayErrorMessage(emailErrorMessage, emptyMessage);
     addErrorClass(emailInput);
     return;
   }
 
-  if (!isValidEmail(emailValue)) {
-    displayErrorMessage(emailErrorMessage, ERROR_MESSAGES.email.invalid);
+  if (invalidEmail) {
+    displayErrorMessage(emailErrorMessage, invalidMessage);
     addErrorClass(emailInput);
     return;
   }
 
   isDuplicate
-    ? (displayErrorMessage(emailErrorMessage, ERROR_MESSAGES.email.duplicate), addErrorClass(emailInput))
+    ? (displayErrorMessage(emailErrorMessage, duplicateMessage), addErrorClass(emailInput))
     : (displayErrorMessage(emailErrorMessage, VALUE_EMPTY), removeErrorClass(emailInput));
 };
 
@@ -39,13 +44,14 @@ const handleSignupFormSubmit = (event) => {
   event.preventDefault();
 
   const passwordInput = passwordInputs[0];
+  const passwordInputValue = passwordInput.value;
   const confirmPasswordInput = passwordInputs[1];
   const passwordErrorMessage = passwordErrorMessages[0];
   const confirmPasswordErrorMessages = passwordErrorMessages[1];
 
   validateEmail();
   validatePassword(passwordInput, passwordErrorMessage);
-  validateConfirmPassword(confirmPasswordInput, confirmPasswordErrorMessages, passwordInput.value);
+  validateConfirmPassword(confirmPasswordInput, confirmPasswordErrorMessages, passwordInputValue);
 
   const isValidForm =
     !emailInput.classList.contains(ERROR_CLASS_NAME) &&
