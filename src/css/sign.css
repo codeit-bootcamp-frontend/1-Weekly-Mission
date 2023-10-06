@@ -91,6 +91,13 @@ body {
   font-weight: 400;
 }
 
+.emailErrorSpan {
+  color: var(--errorRed);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .content1_div2_div1_input {
   position: relative;
   display: flex;
@@ -110,15 +117,6 @@ body {
 .content1_div2_div1_input:focus {
   border: 1px solid var(--mainColor);
   outline: none;
-}
-
-.content1_div2_div1_span,
-.content1_div2_div1_span2,
-.content1_div2_div1_span3 {
-  color: var(--errorRed);
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 400;
 }
 
 .content1_div2_div2 {
