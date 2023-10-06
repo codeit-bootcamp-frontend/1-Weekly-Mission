@@ -1,42 +1,19 @@
-import { createErrorMsg } from "../utils/auth.js";
-
-const emailInput = document.querySelector(".email-input");
-const pwInput = document.querySelector(".password-input");
-const pwWrapper = document.querySelector(".password-wrapper");
-const signinBtn = document.querySelector(".signin-btn");
-const eyeBtn = document.querySelector(".eye-off-btn");
-
-let emailRegex = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
-const emailEmptyMsg = createErrorMsg(
-  "input-error-msg",
-  "이메일을 입력해주세요."
-);
-const emailInvalidMsg = createErrorMsg(
-  "input-error-msg",
-  "올바른 이메일 주소가 아닙니다."
-);
-const pwEmptyMsg = createErrorMsg(
-  "input-error-msg",
-  "비밀번호를 입력해주세요."
-);
-const emailIncorrectMsg = createErrorMsg(
-  "input-error-msg",
-  "이메일을 확인해주세요."
-);
-const pwIncorrectMsg = createErrorMsg(
-  "input-error-msg",
-  "비밀번호를 확인해주세요."
-);
-
-function handleEmailInputEmptyValueCheck(e) {
-  if (!e.target.value.trim()) {
-    emailInput.after(emailEmptyMsg);
-    emailInput.classList.add("input-error");
-  } else {
-    emailInput.classList.remove("input-error");
-    emailEmptyMsg.remove();
-  }
-}
+import {
+  emailEmptyMsg,
+  emailInvalidMsg,
+  pwEmptyMsg,
+  emailIncorrectMsg,
+  pwIncorrectMsg,
+  emailRegex,
+} from "../utils/auth.js";
+import {
+  emailInput,
+  pwInput,
+  pwWrapper,
+  signinBtn,
+  eyeBtn,
+} from "../utils/tags.js";
+import { handleEmailInputEmptyValueCheck } from "../utils/auth.js";
 
 function handleEmailInputInvalidValueCheck(e) {
   if (
@@ -92,7 +69,9 @@ function handleEyeBtnClick() {
   }
 }
 
-emailInput.addEventListener("blur", handleEmailInputEmptyValueCheck);
+emailInput.addEventListener("blur", () =>
+  handleEmailInputEmptyValueCheck(emailInput, emailEmptyMsg)
+);
 emailInput.addEventListener("blur", handleEmailInputInvalidValueCheck);
 pwInput.addEventListener("blur", handlePasswordInputEmptyValueCheck);
 signinBtn.addEventListener("click", handleSigninBtnClick);

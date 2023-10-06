@@ -5,9 +5,15 @@ import {
   signinBtn,
   eyeBtn,
 } from "../utils/tags.js";
-import { handleEmailInputEmptyValueCheck } from "../utils/auth.js";
-import { emailEmptyMsg, emailInvalidMsg } from "../utils/auth.js";
+import {
+  handleEmailInputEmptyValueCheck,
+  handleEmailInputInvalidValueCheck,
+} from "../utils/auth.js";
+import { emailEmptyMsg, emailInvalidMsg, emailRegex } from "../utils/auth.js";
 
 emailInput.addEventListener("blur", () =>
   handleEmailInputEmptyValueCheck(emailInput, emailEmptyMsg)
+);
+emailInput.addEventListener("blur", () =>
+  handleEmailInputInvalidValueCheck(emailRegex, emailInput, emailInvalidMsg)
 );

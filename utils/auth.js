@@ -1,3 +1,5 @@
+export let emailRegex = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
+
 export const emailEmptyMsg = createErrorMsg(
   "input-error-msg",
   "이메일을 입력해주세요."
@@ -32,6 +34,22 @@ export function handleEmailInputEmptyValueCheck(inputElement, errorMsg) {
     inputElement.classList.add("input-error");
   } else {
     inputElement.classList.remove("input-error");
+    errorMsg.remove();
+  }
+}
+
+export function handleEmailInputInvalidValueCheck(
+  regex,
+  inputElement,
+  errorMsg
+) {
+  if (
+    !regex.test(inputElement.value.trim()) &&
+    inputElement.value.trim().length > 0
+  ) {
+    inputElement.after(errorMsg);
+    inputElement.classList.add("input-error");
+  } else {
     errorMsg.remove();
   }
 }
