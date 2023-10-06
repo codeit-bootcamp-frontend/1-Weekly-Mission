@@ -50,7 +50,6 @@ function _onHidePassword(e){
     }
 }
 
-
 /**
  * target의 nextSibling으로 에러메세지를 출력하고, target에 error클래스를 추가한다.
  * 에러메세지가 이미 있다면 print하지 않는다.
@@ -74,7 +73,6 @@ function setErrorMessage(id, type){
     // 에러메세지를 넣은 후 target에 error클래스를 추가.
     target.classList.add('error');
 }
-
 
 /**
  * errorMessages 객체안에서 type과 id로 메세지를 찾아 리턴한다.
@@ -109,7 +107,6 @@ function getErrorMessage(id, type){
     return errorMessages[type]?.[id] ?? "";
 }
 
-
 /**
  * 에러메세지를 삭제할 대상을 removeErrorClassAndMessage함수의 인자로 전달한다.
  * password의 값이 변경된 경우, password-check의 값을 비운다.
@@ -130,7 +127,6 @@ function _onRemoveValidationError(e){
     }
 }
 
-
 /**
  * target의 error클래스를 제거하고, 에러메세지를 삭제한다.
  * @param {Element} target target element
@@ -144,7 +140,6 @@ function removeErrorClassAndMessage(target){
         }
     }
 }
-
 
 /**
  * .error 를 가진 태그가 있는지 확인한다.

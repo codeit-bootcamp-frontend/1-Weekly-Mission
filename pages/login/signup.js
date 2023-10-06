@@ -9,7 +9,6 @@ signupButton.addEventListener('click', _onClickSignup);
 form.addEventListener('keydown',_onEnterSignup);
 hidePasswordCheckButton.addEventListener('click', _onHidePassword);
 
-
 /**
  * 회원가입 버튼을 클릭한 경우 유효성검사 후, signup함수를 호출한다.
  */
@@ -48,7 +47,6 @@ function validateAll(){
         validateSingupInputValue(input.id, input.value);
     }
 }
-
 
 /**
  * _onValidationInputValue()결과 에러가 발생하지 않은경우,

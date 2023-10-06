@@ -34,7 +34,6 @@ function _onEnterLogin(e){
     }
 }
 
-
 /**
  * form 전체 input의 유효성검사를 한다.
  */
@@ -45,7 +44,6 @@ function validateAll(){
         validateInputValue(input.id, input.value);
     }
 }
-
 
 /**
  * 유효한 계정인지 확인 후, 유효하지 않다면 에러메세지를 출력한다.
