@@ -8,7 +8,7 @@ const correctMailForm = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const correctMail = 'test@codeit.com';
 const correctPassword = 'codeit101';
 
-function editErrorStatus(element, message='') {
+const editErrorStatus = (element, message='') => {
   if (message) {
     element.classList.add('incorrect-input');
     element.nextElementSibling.textContent = message;
@@ -18,7 +18,7 @@ function editErrorStatus(element, message='') {
   }
 }
 
-function checkEmailInput(e) {
+const checkEmailInput = (e) => {
   if (!e.target.value) {
     editErrorStatus(e.target, '이메일을 입력해주세요.');
   } else if (!correctMailForm.test(e.target.value)) {
@@ -28,7 +28,7 @@ function checkEmailInput(e) {
   }
 }
 
-function checkPasswordInput(e) {
+const checkPasswordInput = (e) => {
   if (!e.target.value) {
     editErrorStatus(e.target, '비밀번호를 입력해주세요.');
   } else {
@@ -36,7 +36,7 @@ function checkPasswordInput(e) {
   }
 }
 
-function trySignIn(e) {
+const trySignIn = (e) => {
   if (emailInput.value === correctMail && passwordInput.value === correctPassword) {
     location.href = '/html/folder.html';
   } else {
@@ -46,7 +46,7 @@ function trySignIn(e) {
   }
 }
 
-function toggleEyeButton() {
+const toggleEyeButton = () => {
   if (!eyeIcon[0].classList.contains('off')) { // 비밀번호 표시 off인 경우
     passwordInput.removeAttribute('type'); // {type:"password"} 속성 제거
   } else { // 비밀번호 표시 on인 경우
