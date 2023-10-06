@@ -12,6 +12,4 @@ const hiddenPasswordToggle = (e) => {
   e.target.setAttribute("src", pwIconPath);
 };
 
-eyeIcons.forEach((icon) =>
-  icon.addEventListener("click", hiddenPasswordToggle)
-);
+eyeIcons.forEach((icon) => icon.addEventListener("click", hiddenPasswordToggle));
