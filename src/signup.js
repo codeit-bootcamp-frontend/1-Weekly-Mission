@@ -30,6 +30,7 @@ const passwordInput = document.querySelector("#password");
 const passwordErrorMessage = document.querySelector("#password-error-message");
 passwordInput.addEventListener("focusout", (event) => validatePasswordInput(event.target.value));
 function validatePasswordInput(password) {
+  //console.dir(password);
   if (password === "") {
     setInputError(
       { input: passwordInput, errorMessage: passwordErrorMessage },
@@ -47,17 +48,19 @@ function validatePasswordInput(password) {
   removeInputError({ input: passwordInput, errorMessage: passwordErrorMessage });
 }
 
-/*const passwordConfirmInput = document.querySelector("#passwordConfirm");
-const passwordErrorMessage2 = document.querySelector("password-error-message-2")
+const passwordConfirmInput = document.querySelector("#passwordConfirm");
+const passwordErrorMessage2 = document.querySelector("#password-error-message-2")
 passwordConfirmInput.addEventListener("focusout", (event) => isSamePasswordInput(event.target.value));
 function isSamePasswordInput(password) {
-  if (password !== passwordInput.target.value) {
+  if (password !== passwordInput.value) {
     setInputError(
       { input: passwordConfirmInput, errorMessage: passwordErrorMessage2 },
       "비밀번호가 일치하지 않아요."
-    )
+    );
+    return;
   }
-}*/
+  removeInputError({ input: passwordConfirmInput, errorMessage: passwordErrorMessage2 });
+}
 
 const passwordToggleButton = document.querySelector("#password-toggle");
 passwordToggleButton.addEventListener("click", () =>
@@ -69,7 +72,7 @@ signForm.addEventListener("submit", submitForm);
 function submitForm(event) {
   event.preventDefault();
 
-  const isTestUser =
+  const isValidSignup =
     emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
 
   if (isTestUser) {
