@@ -15,22 +15,16 @@ $password.after($passwordErrorMsg);
 let togglePwVisible = false;
 
 const checkEmailInput = (event) => {
-  const repExpKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글 정규표현식
   // 이메일 정규식
-  // let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+  const EMAIL_REG_EXP =
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   event.preventDefault();
   if (!event.target.value) {
     // input에 아무런 입력이 없는 경우
     $emailErrorMsg.textContent = "이메일을 입력해주세요.";
     $email.classList.add("error-border");
-  } else if (
-    event.target.value.indexOf("@") === -1 ||
-    event.target.value
-      .slice(event.target.value.indexOf("@") + 1)
-      .indexOf(".") === -1 ||
-    repExpKorean.test(event.target.value)
-  ) {
-    // '@'가 없거나 '@'뒤에 '.'이 없거나 한글이 포함된 경우
+  } else if (!EMAIL_REG_EXP.test(event.target.value)) {
+    // 이메일 정규표현식 test시 false값 출력의 경우
     $emailErrorMsg.textContent = "올바른 이메일 주소가 아닙니다.";
     $email.classList.add("error-border");
   } else {
@@ -77,7 +71,7 @@ const togglePwVisibility = () => {
   }
 };
 
-$email.addEventListener("focusout", checkEmailInput);
-$password.addEventListener("focusout", checkPasswordInput);
+$email.addEventListener("blur", checkEmailInput);
+$password.addEventListener("blur", checkPasswordInput);
 $form.addEventListener("submit", adminLogin);
 $pwInvisible.addEventListener("click", togglePwVisibility);
