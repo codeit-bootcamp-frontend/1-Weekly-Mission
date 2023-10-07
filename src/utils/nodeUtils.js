@@ -9,11 +9,11 @@
  * @param {string} text 태그에 넣을 내용
  * @returns {object} newNode
  */
-function createNode(tag, className, text) {
+const createNode = (tag, className, text) => {
   let newNode = document.createElement(tag);
   newNode.className = className;
   newNode.textContent = text;
   return newNode;
-}
+};
 
 export { createNode };

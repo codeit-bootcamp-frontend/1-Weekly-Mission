@@ -7,7 +7,7 @@ import { EXP_EMAIL } from "../../constants/regexConstants.js";
  * 3.조건에 맞지 않을 시 에러 메시지 생성
  * @param {object} e 유효성 검사 진행할 요소
  */
-function validateInput(e) {
+const validateInput = (e) => {
   let node = e.target;
   let nodeInfo = {
     type: node.type,
@@ -46,7 +46,8 @@ function validateInput(e) {
     node.classList.add("errorInput"); //error class 추가 및 삭제
     node.after(errTag);
   }
-}
+};
+
 /**에러 메세지 생성 함수
  *
  * errType=
@@ -56,9 +57,8 @@ function validateInput(e) {
  * @param {number} errType
  * @returns {string} result
  */
-function setErrorMsg(nodeInfo, errType) {
-  let type = nodeInfo.type;
-  let className = nodeInfo.className;
+const setErrorMsg = (nodeInfo, errType) => {
+  const { type, className } = nodeInfo;
   let errorMsg = { type: "", errType: errType };
   let message = "";
   if (type === "email") {
@@ -78,23 +78,22 @@ function setErrorMsg(nodeInfo, errType) {
   }
 
   return message;
-}
-
+};
 /**비밀번호 보이기/가리기 함수
  *
  *비밀번호 Input Type변경
  * @param {object} e passwordInput 요소
  */
-function togglePasswordVisibility(e) {
-  let target = e.target;
-  let prevSibling = target.previousElementSibling; //이전 형제 요소
-  if (prevSibling.getAttribute("type") === "password") {
-    prevSibling.setAttribute("type", "text");
+const togglePasswordVisibility = (e) => {
+  const { target } = e;
+  const { previousElementSibling } = target;
+  if (previousElementSibling.getAttribute("type") === "password") {
+    previousElementSibling.setAttribute("type", "text");
     target.setAttribute("src", "/src/assets/img/open_eyes.png");
   } else {
-    prevSibling.setAttribute("type", "password");
+    previousElementSibling.setAttribute("type", "password");
     target.setAttribute("src", "/src/assets/img/close_eyes.png");
   }
-}
+};
 
 export { validateInput, togglePasswordVisibility };
