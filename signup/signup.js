@@ -63,10 +63,10 @@ function checkPasswordValidity() {
 
 function checkPasswordMatch() {
   if (passwordInput.value !== passwordCheckInput.value) {
-    displayError(passwordCheckErrorText, PASSWORD_MISMATCH);
+    displayError(passwordCheckInput, passwordCheckErrorText, PASSWORD_MISMATCH);
     return false;
   } else {
-    displayError(passwordCheckErrorText, "");
+    displayError(passwordCheckInput, passwordCheckErrorText, "");
     return true;
   }
 }
