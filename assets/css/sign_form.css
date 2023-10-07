@@ -75,12 +75,16 @@ main{
   line-height: 1.5rem;
 }
 
-input:focus{
+.input__row:focus{
   outline: 1px solid var(--linkbrary-primary);
 }
 
 .input__error{
   border-color: var(--linkbrary-red);
+}
+
+.input__row.input__error:focus{
+  outline: var(--linkbrary-red);
 }
 
 .errorMsg{
