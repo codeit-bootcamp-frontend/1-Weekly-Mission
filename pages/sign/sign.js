@@ -1,8 +1,8 @@
 import {errorMessages} from "./error-message.js";
 import {emailRegex} from "./constant.js";
 
-const emailInput = document.querySelector('#signin-email');
-const passwordInput = document.querySelector('#signin-password');
+const emailInput = document.querySelector('#sign-email');
+const passwordInput = document.querySelector('#sign-password');
 const submitButton = document.querySelector('.btn.login');
 const eyeButton = document.querySelector('.eye-off');
 
@@ -60,7 +60,7 @@ function login(e) {
     showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.invalid);
 }
 
-function toggleEyeButton(e) {
+function toggleEyeButton() {
     if (passwordInput.getAttribute("type") === "password") {
         passwordInput.setAttribute("type", "text");
         eyeButton.setAttribute("src", "images/eye-on.svg");
