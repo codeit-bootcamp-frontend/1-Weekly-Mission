@@ -68,10 +68,13 @@ form.addEventListener("submit", handleSignupFormSubmit);
 emailInput.addEventListener("focusout", validateEmail);
 
 passwordInputs.forEach((passwordInput, index) => {
-  index === 0
+  const isFirstPasswordInput = index === 0;
+  const firstPasswordInputValue = passwordInputs[0].value;
+
+  isFirstPasswordInput
     ? passwordInput.addEventListener("focusout", () => validatePassword(passwordInput, passwordErrorMessages[index]))
     : passwordInput.addEventListener("focusout", () =>
-        validateConfirmPassword(passwordInput, passwordErrorMessages[index], passwordInputs[0].value)
+        validateConfirmPassword(passwordInput, passwordErrorMessages[index], firstPasswordInputValue)
       );
 });
 
