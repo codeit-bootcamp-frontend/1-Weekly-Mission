@@ -55,6 +55,8 @@ function validatePassword(e) {
 }
 
 function login(e) {
+    e.preventDefault();
+
     const email = emailInput.value;
     const password = passwordInput.value;
 
