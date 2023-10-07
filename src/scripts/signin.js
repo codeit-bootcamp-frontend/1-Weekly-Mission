@@ -1,17 +1,18 @@
 import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
 import { addErrorMsg, removeErrorMsg, checkErrorMsg } from './errorMsg.js';
 import { emailValidation } from "./validations.js";
+import { toggleEye } from "./hideChar.js";
 
 const loginEmailInput = document.querySelector('input[name = "signin_email"]');
 const loginPwInput = document.querySelector('input[name = "signin_pw"]');
 const loginForm = document.querySelector('form');
 const loginError = document.querySelectorAll('.error_msg');
-const eyeIcon = document.querySelector('.eye_icon');
+const loginEyeIcon = document.querySelector('.eye_icon');
 
 const TEST_EMAIL = 'test@codeit.com';
 const TEST_PW = 'codeit101';
 
-let eye_on = 0;
+let loginEyeFlag = 0;
 /**
  * 특정 로그인 시도 시 folder 페이지로 이동하는 함수
  */
@@ -35,22 +36,9 @@ function login(event){
     }
 }
 
-function clickEye(event){
-    /* 눈 아이콘을 클릭하면 비밀번호 문자열 가리기 설정을 변경해주는 함수 */
-    if(!eye_on){ 
-        //off -> on
-        eye_on = 1;
-        eyeIcon.setAttribute('src', '/assets/images/eye-on.svg');
-        loginPwInput.setAttribute('type', '');
-        loginPwInput.setAttribute('placeholder', 'password');
-    }
-    else{
-        //on -> off
-        eye_on = 0;
-        eyeIcon.setAttribute('src', '/assets/images/eye-off.svg');
-        loginPwInput.setAttribute('type', 'password');
-        loginPwInput.setAttribute('placeholder', '●●●●●●●●');
-    }
+function hidePw(event){
+    event.preventDefault();
+    loginEyeFlag = toggleEye(loginPwInput, loginEyeIcon, loginEyeFlag);
 }
 
 //이메일
@@ -66,4 +54,4 @@ loginPwInput.addEventListener('input', removeErrorMsg);
 loginForm.addEventListener('submit', login);
 
 //눈 아이콘
-eyeIcon.addEventListener('click', clickEye);
+loginEyeIcon.addEventListener('click', hidePw);
