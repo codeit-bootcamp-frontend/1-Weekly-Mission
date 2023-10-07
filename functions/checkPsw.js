@@ -1,5 +1,3 @@
-//함수수정하기
-
 import { inputPswEl, showMessageByPswEl, eyeOffIconEls, inputPswCheckEl, showMessageByPswCheckEl } from './variablesEl.js'
 
 function checkPasswordFill () {
@@ -13,7 +11,10 @@ const INPUT_PSW_VALUE = inputPswEl.value;
 }
 
 function checkPasswordValid (e) {
-  if(e.target.value.length < 8 ){
+  const VALID_PSW_REG = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+  const VALID_PSW_CHECK = VALID_PSW_REG.test(e.target.value);
+
+  if(!VALID_PSW_CHECK){
     showMessageByPswEl.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.'
     inputPswEl.classList.add('input-wrong');
   }
@@ -27,6 +28,8 @@ function checkPasswordSame () {
     showMessageByPswCheckEl.textContent = '비밀번호가 일치하지 않아요.';
     eyeOffIconEls[1].classList.add('psw-wrong');
     inputPswCheckEl.classList.add('input-wrong');
+  } else {
+    inputPswCheckEl.classList.remove('input-wrong');
   }
 }
 
@@ -37,6 +40,14 @@ function removePswCheckMessage () {
   inputPswEl.classList.remove('input-wrong');
 }
 
+function removePswSameCheckMessage () {
+showMessageByPswCheckEl.textContent = '';
+
+  eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.classList.remove('psw-wrong'));
+  inputPswCheckEl.classList.remove('input-wrong');
+}
+
+// 눈아이콘수정
 function showPsw (e) {
   if(e.target.getAttribute('src') === "images/icon/eye-off.svg") {
     e.target.setAttribute('src', 'images/icon/eye-on.svg');
@@ -47,4 +58,4 @@ function showPsw (e) {
   }
 }
 
-export { checkPasswordFill, checkPasswordValid, checkPasswordSame, removePswCheckMessage, showPsw };
+export { checkPasswordFill, checkPasswordValid, checkPasswordSame, removePswCheckMessage,removePswSameCheckMessage, showPsw };

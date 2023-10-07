@@ -2,7 +2,7 @@ import { inputEmailEl, inputPswEl, eyeOffIconEls } from './functions/variablesEl
 
 import { checkEmailValid, removeEmailCheckMessage } from './functions/checkEmail.js';
 import { checkPasswordFill, removePswCheckMessage, showPsw } from './functions/checkPsw.js';
-import { checkUser } from './functions/login.js';
+import { checkUserForLogin } from './functions/login.js';
 
  function initSignIn() {
   const loginBtn = document.querySelector('.sign-link');
@@ -13,11 +13,9 @@ import { checkUser } from './functions/login.js';
   inputPswEl.addEventListener('focusout', checkPasswordFill);
   inputPswEl.addEventListener('focusin', removePswCheckMessage);
 
-  loginBtn.addEventListener('click', checkUser);
+  loginBtn.addEventListener('click', checkUserForLogin);
 
   eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.addEventListener('click', showPsw));
 }
 
 initSignIn();
-
-export {initSignIn}
