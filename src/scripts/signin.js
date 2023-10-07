@@ -1,26 +1,16 @@
+import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
+import { addErrorMsg, removeErrorMsg } from './errorMsg.js';
+import { emailValidation } from "./validations.js";
+
 const inputEmail = document.querySelector('input[name = "signin_email"]');
 const inputPw = document.querySelector('input[name = "signin_pw"]');
 const form = document.querySelector('form');
 const eyeIcon = document.querySelector('.eye_icon');
 
-const emailType = /[0-9a-zA-Z]*@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/i;
-
 const TEST_EMAIL = 'test@codeit.com';
 const TEST_PW = 'codeit101';
 
 let eye_on = 0;
-
-import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
-import { addErrorMsg, removeErrorMsg } from './errorMsg.js';
-
-function checkEmail(event){
-    /* 이메일 형식 유효성 검사하는 함수 */
-    const isEmpty = !event.target.value;
-    const isValid = emailType.test(event.target.value);
-
-    if(isEmpty || isValid) return;
-    addErrorMsg(event.target, "올바른 이메일 주소가 아닙니다.");
-}
 
 function checkLogin(event){
     /* 특정 로그인 시도 시 /folder 페이지로 이동하는 함수 */
@@ -59,7 +49,7 @@ function clickEye(event){
 //이메일
 inputEmail.addEventListener('focusout', emptyInputEmail);
 inputEmail.addEventListener('input', removeErrorMsg);
-inputEmail.addEventListener('focusout', checkEmail);
+inputEmail.addEventListener('focusout', emailValidation);
 
 //비밀번호
 inputPw.addEventListener('focusout', emptyInputPw);
