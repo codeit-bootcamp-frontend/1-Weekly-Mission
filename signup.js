@@ -1,3 +1,15 @@
+import {
+  showMessage,
+  isNotEmpty,
+  showEmptyErrorMessage,
+  isEmailValid,
+  isPasswordValid,
+  showValidPasswordErrorMessage,
+  showValidEmailErrorMessage,
+  isCodeItLogin,
+  passwordVisibility,
+} from "./common.js";
+
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const rePassword = document.getElementById("re-password");
@@ -59,5 +71,5 @@ eyeIcon.addEventListener("click", (event) => {
 
 ReEyeIcon.addEventListener("click", (event) => {
   event.preventDefault();
-  PasswordVisibility(ReEyeIcon, rePassword);
+  passwordVisibility(ReEyeIcon, rePassword);
 });

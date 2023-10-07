@@ -1,12 +1,12 @@
-function showMessage(inputText) {
+export function showMessage(inputText) {
   return `${inputText}을 입력해주세요`;
 }
 
-function isNotEmpty(input) {
+export function isNotEmpty(input) {
   return input.value.trim().length;
 }
 
-function showEmptyErrorMessage(input, inputLabel) {
+export function showEmptyErrorMessage(input, inputLabel) {
   const errorMsgs = inputLabel.querySelector(".error-message");
   errorMsgs.innerText = "";
   if (!isNotEmpty(input)) {
@@ -20,21 +20,21 @@ function showEmptyErrorMessage(input, inputLabel) {
   }
 }
 
-function isEmailValid(input) {
+export function isEmailValid(input) {
   const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
   const texts = input.value.trim();
   return re.test(texts);
 }
 
 // 값이 8자 미만으로 있거나 문자열만 있거나 숫자만 있는 경우, “비밀번호는 영문, 숫자 조합 8자 이상
-function isPasswordValid(input) {
+export function isPasswordValid(input) {
   const texts = input;
   var regex = /^[A-Za-z]+$/; // 문자로만 이루어진거
   var regex2 = /^[0-9]+$/; // 숫자로만 이루어진거
   return !regex2.test(texts) && !regex.test(texts) && texts.length > 8;
 }
 
-function showValidPasswordErrorMessage(input, inputLabel) {
+export function showValidPasswordErrorMessage(input, inputLabel) {
   if (!isPasswordValid(input)) {
     const errorMsgs = inputLabel.querySelector(".error-message");
     errorMsgs.innerText = "올바른 패스워드 형식이 아닙니다";
@@ -42,7 +42,7 @@ function showValidPasswordErrorMessage(input, inputLabel) {
     input.style.border = "3px solid red";
   }
 }
-function showValidEmailErrorMessage(input, inputLabel) {
+export function showValidEmailErrorMessage(input, inputLabel) {
   if (!isEmailValid(input)) {
     const errorMsgs = inputLabel.querySelector(".error-message");
     errorMsgs.innerText = "올바른 이메일 주소가 아닙니다";
@@ -51,14 +51,14 @@ function showValidEmailErrorMessage(input, inputLabel) {
   }
 }
 
-function isCodeItLogin(email, password) {
+export function isCodeItLogin(email, password) {
   return (
     email.value.trim() === "test@codeit.com" &&
     password.value.trim() === "codeit101"
   );
 }
 
-function passwordVisibility(eye, passwordInput) {
+export function passwordVisibility(eye, passwordInput) {
   if (!eye) {
     throw new Error("not found eye icon");
     return;
