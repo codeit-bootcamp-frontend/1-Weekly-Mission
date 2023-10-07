@@ -26,7 +26,7 @@ function disappearErrorPassword() {
 
 signinBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  if (email.value == "test@codeit.com" && password.value == "codeit101") {
+  if (email.value === "test@codeit.com" && password.value === "codeit101") {
     location.href = "./folder.html";
     disappearErrorEmail();
     disappearErrorPassword();
