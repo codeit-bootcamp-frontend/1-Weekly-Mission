@@ -5,15 +5,9 @@ const inputPwd = document.querySelector(".pwd_input");
 const loginForm = document.querySelector(".sign_form");
 const eyesToggle = document.querySelector(".eyes_toggle");
 
-inputEmail.addEventListener("blur", (e) => {
-  validateInput(e);
-});
-inputPwd.addEventListener("blur", (e) => {
-  validateInput(e);
-});
-eyesToggle.addEventListener("click", (e) => {
-  togglePasswordVisibility(e);
-});
+inputEmail.addEventListener("blur", validateInput);
+inputPwd.addEventListener("blur", validateInput);
+eyesToggle.addEventListener("click", togglePasswordVisibility);
 
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
