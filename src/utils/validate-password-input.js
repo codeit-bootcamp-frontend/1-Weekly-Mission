@@ -6,8 +6,8 @@ const validatePasswordInput = (passwordInput, passwordErrorMessage, passwordInpu
   const passwordValue = passwordInput.value;
   const isEmptyValue = isEmpty(passwordValue);
   const inValidPassword = !isValidPassword(passwordValue);
-  const passwordMatch = passwordValue !== passwordInputValue;
-  const confirmPasswordMatch = passwordInputValue !== undefined;
+  const passwordMismatch = passwordValue !== passwordInputValue;
+  const isConfirmPasswordInput = passwordInputValue !== undefined;
   const errorMessagePassword = ERROR_MESSAGES.password;
 
   if (isEmptyValue) {
@@ -22,12 +22,10 @@ const validatePasswordInput = (passwordInput, passwordErrorMessage, passwordInpu
     return;
   }
 
-  if (confirmPasswordMatch) {
-    if (passwordMatch) {
-      displayErrorMessage(passwordErrorMessage, errorMessagePassword.mismatch);
-      addErrorClass(passwordInput);
-      return;
-    }
+  if (isConfirmPasswordInput && passwordMismatch) {
+    displayErrorMessage(passwordErrorMessage, errorMessagePassword.mismatch);
+    addErrorClass(passwordInput);
+    return;
   }
 
   displayErrorMessage(passwordErrorMessage, VALUE_EMPTY);
