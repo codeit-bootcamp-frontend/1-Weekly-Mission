@@ -1,24 +1,34 @@
 import { displayError, togglePasswordVisibility } from "/utils/common.js";
 import { isValidEmail, isValidPassword } from "/utils/validation.js";
 import {
+  USERNAME_SELECTOR,
+  PASSWORD_SELECTOR,
+  PASSWORD_CHECK_SELECTOR,
+  LOGIN_BTN_SELECTOR,
+  EMAIL_ERROR_TEXT_SELECTOR,
+  PASSWORD_ERROR_TEXT_SELECTOR,
+  PASSWORD_CHECK_ERROR_TEXT_SELECTOR,
+  TOGGLE_VISIBILITY_SELECTOR,
+} from "/constants/selector.js";
+import {
   EMAIL_EMPTY,
   EMAIL_INVALID,
   EMAIL_TAKEN,
   PASSWORD_EMPTY,
   PASSWORD_MISMATCH,
+  PASSWORD_REQUIREMENTS,
 } from "/constants/errorMessages.js";
 
-const emailInput = document.querySelector("#username");
-const passwordInput = document.querySelector("#password");
-const passwordCheckInput = document.querySelector("#password-check");
-
-const loginBtn = document.querySelector("#loginBtn");
-
-const emailErrorText = document.querySelector("#email-error");
-const passwordErrorText = document.querySelector("#password-error");
-const passwordCheckErrorText = document.querySelector("#password-check-error");
-
-const toggleVisibility = document.querySelectorAll(".toggleVisibility");
+const emailInput = document.querySelector(USERNAME_SELECTOR);
+const passwordInput = document.querySelector(PASSWORD_SELECTOR);
+const passwordCheckInput = document.querySelector(PASSWORD_CHECK_SELECTOR);
+const loginBtn = document.querySelector(LOGIN_BTN_SELECTOR);
+const emailErrorText = document.querySelector(EMAIL_ERROR_TEXT_SELECTOR);
+const passwordErrorText = document.querySelector(PASSWORD_ERROR_TEXT_SELECTOR);
+const passwordCheckErrorText = document.querySelector(
+  PASSWORD_CHECK_ERROR_TEXT_SELECTOR
+);
+const toggleVisibility = document.querySelectorAll(TOGGLE_VISIBILITY_SELECTOR);
 
 function checkEmailValidity() {
   const email = emailInput.value;
@@ -43,11 +53,7 @@ function checkPasswordValidity() {
     displayError(passwordInput, passwordErrorText, PASSWORD_EMPTY);
     return false;
   } else if (password.length < 8 || !isValidPassword(password)) {
-    displayError(
-      passwordInput,
-      passwordErrorText,
-      "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요."
-    );
+    displayError(passwordInput, passwordErrorText, PASSWORD_REQUIREMENTS);
     return false;
   } else {
     displayError(passwordInput, passwordErrorText, "");

@@ -1,6 +1,14 @@
 import { displayError, togglePasswordVisibility } from "/utils/common.js";
 import { isValidEmail } from "/utils/validation.js";
 import {
+  USERNAME_SELECTOR,
+  PASSWORD_SELECTOR,
+  LOGIN_BTN_SELECTOR,
+  EMAIL_ERROR_TEXT_SELECTOR,
+  PASSWORD_ERROR_TEXT_SELECTOR,
+  TOGGLE_VISIBILITY_SELECTOR,
+} from "/constants/selector.js";
+import {
   EMAIL_EMPTY,
   EMAIL_INVALID,
   PASSWORD_EMPTY,
@@ -8,15 +16,12 @@ import {
   PASSWORD_VERIFY,
 } from "/constants/errorMessages.js";
 
-const emailInput = document.querySelector("#username");
-const passwordInput = document.querySelector("#password");
-
-const loginBtn = document.querySelector("#loginBtn");
-
-const emailErrorText = document.querySelector("#email-error");
-const passwordErrorText = document.querySelector("#password-error");
-
-const toggleVisibility = document.querySelector(".toggleVisibility");
+const emailInput = document.querySelector(USERNAME_SELECTOR);
+const passwordInput = document.querySelector(PASSWORD_SELECTOR);
+const loginBtn = document.querySelector(LOGIN_BTN_SELECTOR);
+const emailErrorText = document.querySelector(EMAIL_ERROR_TEXT_SELECTOR);
+const passwordErrorText = document.querySelector(PASSWORD_ERROR_TEXT_SELECTOR);
+const toggleVisibility = document.querySelector(TOGGLE_VISIBILITY_SELECTOR);
 
 function checkEmailValidity() {
   const email = emailInput.value;
