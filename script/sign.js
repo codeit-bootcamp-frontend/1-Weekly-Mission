@@ -77,4 +77,4 @@ function pwdEyeOnOff(e){
 }
 $pwdEye[0].addEventListener('click',pwdEyeOnOff);
 
-export {$email,$emailErrorMessage,$pwdErrorMessage,$pwd,pwdEyeOnOff,$pwdEye}
+export {$email,$emailErrorMessage,$pwdErrorMessage,$pwd,pwdEyeOnOff,$pwdEye,emailValid,emailErrorMessage}
