@@ -52,9 +52,6 @@ label {
   color: var(--color-black);
   margin-bottom: 12px;
 }
-.input-password {
-  background: var(--color-white) url(images/eye-off.svg) no-repeat center right 15px;
-}
 .input-box input:not(.input-password2) {
   margin-bottom: 24px;
 }
@@ -90,11 +87,13 @@ label {
   display: inline-block;
 }
 
-.input-control.error input {
+.email-field.error input,
+.pwd-field.error input {
   border-color: red;
   margin-bottom: 5px;
 }
-.input-control.error .error {
+.email-field.error .error,
+.pwd-field.error .error {
   font-size: 14px;
   color: red;
 }

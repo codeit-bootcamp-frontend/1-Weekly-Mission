@@ -22,11 +22,6 @@ const setSuccess = element => {
   inputControl.classList.remove('error');
 }
 
-const isValidEmail = email => {
-  const regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return regExp.test(email);
-}
-
 const checkEmailValidation = () => {
   const emailValue = email.value.trim();
   
@@ -47,6 +42,11 @@ const checkPwdValidation = () => {
   } else {
     setSuccess(password);
   }
+}
+
+const isValidEmail = email => {
+  const regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return regExp.test(email);
 }
 
 const submit = () => {

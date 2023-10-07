@@ -1,4 +1,5 @@
 const emailInput = document.querySelector('#email');
+const pwdInput = document.querySelector('#password');
 
 
 const isValidEmail = email => {
@@ -7,8 +8,8 @@ const isValidEmail = email => {
 }
 
 const checkEmailValidation = () => {
+  const inputControl = document.querySelector('.email-field');
   const email = emailInput.value.trim();
-  const inputControl = document.querySelector('.input-control');
   const errorMessage = inputControl.querySelector('.error');
 
   if (email === '') {
@@ -26,4 +27,26 @@ const checkEmailValidation = () => {
   }
 };
 
+const checkPwdValidation = () => {
+  const inputControl = document.querySelector('.pwd-field');
+  const pwd = pwdInput.value.trim();
+  const errorMessage = inputControl.querySelector('.error');
+
+  if (!isValidPwd(pwd)) { // 값이 8자 미만 or only 문자열 or only 숫자
+    errorMessage.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
+    inputControl.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    inputControl.classList.remove('error');
+  }
+};
+
+const isValidPwd = value => {
+  const pwdRegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+  return pwdRegExp.test(value);
+}
+
+
+
 emailInput.addEventListener("focusout", checkEmailValidation);
+pwdInput.addEventListener("focusout", checkPwdValidation);
