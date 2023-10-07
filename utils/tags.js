@@ -5,6 +5,7 @@ const pwWrapper = document.querySelector(".password-wrapper");
 const signinBtn = document.querySelector(".signin-btn");
 const eyeBtn = document.querySelector(".eye-off-btn");
 const pwCheckEyeBtn = document.querySelector(".pw-check-eye-off-btn");
+const signupBtn = document.querySelector(".signup-btn");
 
 export {
   emailInput,
@@ -14,4 +15,5 @@ export {
   eyeBtn,
   pwCheckInput,
   pwCheckEyeBtn,
+  signupBtn,
 };

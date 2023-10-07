@@ -2,7 +2,7 @@ import { TEST_EMAIL, TEST_PASSWORD } from "../constants/authConstant.js";
 import { INPUT_ERROR_MESSAGE } from "../constants/error.js";
 import { eyeBtn, pwInput } from "./tags.js";
 
-export let emailRegex = new RegExp(/^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$/);
+export let emailRegex = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$");
 export let pwRegex = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
 
 export const emailEmptyMsg = createErrorMsg(
@@ -30,7 +30,7 @@ export const emailDuplicatedMsg = createErrorMsg(
   "이미 사용 중인 이메일입니다."
 );
 
-export const emailNotMachedMsg = createErrorMsg(
+export const pwNotMachedMsg = createErrorMsg(
   INPUT_ERROR_MESSAGE,
   "비밀번호가 일치하지 않아요."
 );
