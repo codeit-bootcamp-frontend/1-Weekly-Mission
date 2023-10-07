@@ -4,7 +4,7 @@ const passwordConfirmInput = document.querySelector('.password-confirm');
 const form = document.querySelector('form');
 const eyeIcons = document.querySelectorAll('.eye-icon');
 
-const emailRegex = new RegExp(/^[a-z\d]+@[a-z]+\.[a-z]{2,}$/);
+const emailRegex = new RegExp(/^[a-z\d]+@[a-z]+\.[a-z]{2,}$/, 'i');
 const passwordRegex = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
 const email = 'test@codeit.com';
 const password = 'codeit101';
