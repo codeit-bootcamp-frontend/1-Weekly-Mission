@@ -13,6 +13,7 @@ const validateInput = (e) => {
     type: node.type,
     className: node.className,
     value: node.value,
+    path: node.baseURI.slice(-7),
   };
   let errorGb = false; //Error 구분값
   let errType = 0;
@@ -32,10 +33,17 @@ const validateInput = (e) => {
     errorGb = true;
     errType = 1;
   } else {
-    //정규표현식 체크
     if (nodeInfo.type === "email") {
-      errorGb = !EXP_EMAIL.test(nodeInfo.value);
-      errType = 2;
+      //정규표현식 체크
+      if (!EXP_EMAIL.test(nodeInfo.value.trim())) errType = 2;
+
+      //회원가입 페이지 전용
+      if (nodeInfo.path === "signup/") {
+        // 중복 체크
+        if (nodeInfo.value === "test@codeit.com") errType = 3;
+      }
+
+      errorGb = errType > 0;
     }
   }
 
@@ -75,6 +83,8 @@ const setErrorMsg = (nodeInfo, errType) => {
     message = `${errorMsg.type}을 입력해주세요.`;
   } else if (errType === 2) {
     message = `올바른 ${errorMsg.type} 주소가 아닙니다.`;
+  } else if (errType === 3) {
+    message = `이미 사용 중인  ${errorMsg.type}입니다.`;
   }
 
   return message;
