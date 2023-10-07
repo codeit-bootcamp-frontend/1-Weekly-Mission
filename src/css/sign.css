@@ -101,7 +101,8 @@ body {
 }
 
 .pwErrorSpan,
-.wrongPwErrorSpan {
+.wrongPwErrorSpan,
+.wrongPwSignupErrorSpan {
   display: inline-block;
   padding-top: 10px;
 }
@@ -161,12 +162,20 @@ body {
 .content1_div2_div2_div-input {
   position: relative;
 }
-.content1_div2_div2_img {
+.content1_div2_div2_img,
+.content1_div2_div2_img_signup1,
+.content1_div2_div2_img_signup2 {
   position: absolute;
   top: 18px;
   right: 15px;
 }
 .content1_div2_div2_img:hover {
+  cursor: pointer;
+}
+.content1_div2_div2_img_signup1:hover {
+  cursor: pointer;
+}
+.content1_div2_div2_img_signup2:hover {
   cursor: pointer;
 }
 .content1_div2_div2_span,
