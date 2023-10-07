@@ -1,21 +1,14 @@
-const emailInput = document.querySelector('.email');
-const passwordInput = document.querySelector('.password');
-const form = document.querySelector('form');
-const eyeIcons = document.querySelectorAll('.eye-icon');
-
-const emailRegex = new RegExp('^[a-z\d]+@[a-z]+\.[a-z]{2,}$');
-const correctMail = 'test@codeit.com';
-const correctPassword = 'codeit101';
-
-const editErrorStatus = (element, message='') => {
-  if (message) {
-    element.classList.add('incorrect-input');
-    element.nextElementSibling.textContent = message;
-  } else {
-    element.classList.remove('incorrect-input');
-    element.nextElementSibling.textContent = message;
-  }
-}
+import {
+  emailInput,
+  passwordInput,
+  form,
+  eyeIcons,
+  emailRegex,
+  email as correctEmail,
+  password as correctPassword,
+  editErrorStatus,
+  toggleEyeButton
+} from '/js/module.js';
 
 const checkEmailInput = (e) => {
   if (!e.target.value) {
@@ -38,27 +31,12 @@ const checkPasswordInput = (e) => {
 const trySignIn = (e) => {
   e.preventDefault();
 
-  if (emailInput.value === correctMail && passwordInput.value === correctPassword) {
+  if (emailInput.value === correctEmail && passwordInput.value === correctPassword) {
     location.href = '/html/folder.html';
   } else {
     editErrorStatus(emailInput, '이메일을 확인해주세요.');
     editErrorStatus(passwordInput, '비밀번호를 확인해주세요.');
   }
-}
-
-const toggleEyeButton = (e) => {
-  const eyeOff = e.target.parentElement.children[0];
-  const eyeOn = e.target.parentElement.children[1];
-  const input = e.target.parentElement.parentElement.parentElement.children[1];
-
-  if (!eyeOff.classList.contains('display-none')) {
-    input.removeAttribute('type');
-  } else {
-    input.setAttribute('type', 'password');
-  }
-
-  eyeOff.classList.toggle('display-none');
-  eyeOn.classList.toggle('display-none');
 }
 
 emailInput.addEventListener('focusout', checkEmailInput);
