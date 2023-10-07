@@ -7,21 +7,23 @@ export const passwordEyeButton = document.querySelector('.eye-off');
 
 const submitButton = document.querySelector('.btn.login');
 
-const emailErrorMessageElement = document.createElement("p");
-const passwordErrorMessageElement = document.createElement("p");
+export const emailErrorMessageElement = document.createElement("p");
+export const passwordErrorMessageElement = document.createElement("p");
 
 export function validateEmailType(e) {
     const input = e.target.value.trimEnd();
     if (emailRegex.test(input)) {
         removeErrorMessage(emailInput, emailErrorMessageElement);
+        return true;
     } else {
         let errorMessage = "";
         if (!input) {
             errorMessage = errorMessages.email.empty;
         } else if (!emailRegex.test(input)) {
-            errorMessage = errorMessages.email.invalid;
+            errorMessage = errorMessages.email.typeInvalid;
         }
         showErrorMessage(emailInput, emailErrorMessageElement, errorMessage);
+        return false;
     }
 }
 
