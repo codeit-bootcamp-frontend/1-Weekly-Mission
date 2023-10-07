@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/asset/styles/reset.css">
     <link rel="stylesheet" href="/asset/styles/component.css">
     <link rel="stylesheet" href="/asset/styles/sign.css">
-    <link rel="stylesheet" href="/asset/pretendard/pretendard.css">
+    <link rel="stylesheet" href="/asset/fonts/pretendard/pretendard.css">
     <title>Linkbrary : 회원가입</title>
 </head>
 
@@ -23,7 +23,7 @@
         </header>
 
         <section class="sign">
-            <form class="sign_form">
+            <form class="sign_form" novalidate>
                 <div class="sign_form__container">
                     <label class="sign_form__label" for="signinEmail">이메일</label>
                     <div class="sign_form__input" id="email">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <button class="sign_form__btn btn btn--width-full">로그인</button>
+                <button class="sign_form__btn btn btn--width-full">회원가입</button>
             </form>
         </section>
 
@@ -60,6 +60,6 @@
         </footer>
     </main>
 
-    <script type="text/javascript" src="/sign.js"></script> 
+    <script type="module" src="/asset/js/signUp.js"></script>
 </body>
 </html>
