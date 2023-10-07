@@ -1,4 +1,4 @@
-import * as account from "../account.js";
+import { validateInput, togglePasswordVisibility } from "../account.js";
 
 const inputEmail = document.querySelector(".email_input");
 const inputPwd = document.querySelector(".pwd_input");
@@ -6,13 +6,13 @@ const loginForm = document.querySelector(".sign_form");
 const eyesToggle = document.querySelector(".eyes_toggle");
 
 inputEmail.addEventListener("blur", (e) => {
-  account.validateInput(e);
+  validateInput(e);
 });
 inputPwd.addEventListener("blur", (e) => {
-  account.validateInput(e);
+  validateInput(e);
 });
 eyesToggle.addEventListener("click", (e) => {
-  account.togglePasswordVisibility(e);
+  togglePasswordVisibility(e);
 });
 
 loginForm.addEventListener("submit", (e) => {
