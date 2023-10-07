@@ -9,4 +9,12 @@
 const EXP_EMAIL =
   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-export { EXP_EMAIL };
+/**비밀번호 정규표현식
+ *
+ * 1 .숫자 or 영문 (소문자, 대문자) 조합\
+ * 2. 8자리 이상
+ *
+ */
+const EXP_PASSWORD = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+export { EXP_EMAIL, EXP_PASSWORD };

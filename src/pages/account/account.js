@@ -1,5 +1,5 @@
 import * as nodeUtils from "../../utils/nodeUtils.js";
-import { EXP_EMAIL } from "../../constants/regexConstants.js";
+import { EXP_EMAIL, EXP_PASSWORD } from "../../constants/regexConstants.js";
 /**유효성 검사 함수
  *
  * 1.Null check\
@@ -12,7 +12,7 @@ const validateInput = (e) => {
   let nodeInfo = {
     type: node.type,
     className: node.className,
-    value: node.value,
+    value: node.value.trim(),
     path: node.baseURI.slice(-7),
   };
   let errorGb = false; //Error 구분값
@@ -29,23 +29,28 @@ const validateInput = (e) => {
     node.nextElementSibling.remove("error_msg");
   }
 
-  if (nodeInfo.value.trim() === "") {
+  if (nodeInfo.value === "") {
     errorGb = true;
     errType = 1;
   } else {
     if (nodeInfo.type === "email") {
       //정규표현식 체크
-      if (!EXP_EMAIL.test(nodeInfo.value.trim())) errType = 2;
+      if (!EXP_EMAIL.test(nodeInfo.value)) errType = 2;
 
       //회원가입 페이지 전용
       if (nodeInfo.path === "signup/") {
         // 중복 체크
         if (nodeInfo.value === "test@codeit.com") errType = 3;
       }
-
-      errorGb = errType > 0;
+    } else if (nodeInfo.type === "password") {
+      //회원가입 페이지 전용
+      if (nodeInfo.path === "signup/") {
+        //정규표현식 체크
+        if (!EXP_PASSWORD.test(nodeInfo.value)) errType = 2;
+      }
     }
   }
+  errorGb = errType > 0;
 
   //Error 이벤트 동작
   if (errorGb) {
@@ -58,9 +63,10 @@ const validateInput = (e) => {
 
 /**에러 메세지 생성 함수
  *
- * errType=
- *    1 : value 없음,
- *    2 : 유효성 검사 실패
+ * errType =\
+ *    1 : value 없음\
+ *    2 : 유효성 검사 실패\
+ *    3 : 중복 검사 실패
  * @param {object} nodeInfo
  * @param {number} errType
  * @returns {string} result
@@ -82,7 +88,11 @@ const setErrorMsg = (nodeInfo, errType) => {
   if (errType === 1) {
     message = `${errorMsg.type}을 입력해주세요.`;
   } else if (errType === 2) {
-    message = `올바른 ${errorMsg.type} 주소가 아닙니다.`;
+    if (errorMsg.type === "이메일") {
+      message = `올바른 ${errorMsg.type} 주소가 아닙니다.`;
+    } else if (errorMsg.type === "비밀번호") {
+      message = `${errorMsg.type}는 영문, 숫자 조합 8자 이상 입력해 주세요.`;
+    }
   } else if (errType === 3) {
     message = `이미 사용 중인  ${errorMsg.type}입니다.`;
   }
@@ -96,13 +106,13 @@ const setErrorMsg = (nodeInfo, errType) => {
  */
 const togglePasswordVisibility = (e) => {
   const { target } = e;
-  const { previousElementSibling } = target;
-  if (previousElementSibling.getAttribute("type") === "password") {
-    previousElementSibling.setAttribute("type", "text");
-    target.setAttribute("src", "/src/assets/img/open_eyes.png");
+  const { parentElement } = target;
+  if (parentElement.firstElementChild.type === "password") {
+    parentElement.firstElementChild.type = "text";
+    target.src = "/src/assets/img/open_eyes.png";
   } else {
-    previousElementSibling.setAttribute("type", "password");
-    target.setAttribute("src", "/src/assets/img/close_eyes.png");
+    parentElement.firstElementChild.type = "password";
+    target.src = "/src/assets/img/close_eyes.png";
   }
 };
 
