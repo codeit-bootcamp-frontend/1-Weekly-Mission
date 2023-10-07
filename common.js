@@ -8,10 +8,6 @@ export function displayError(inputElement, errorElement, message) {
   }
 }
 
-export function isValidEmail(email) {
-  return /\S+@\S+\.\S+/.test(email);
-}
-
 export function togglePasswordVisibility(inputElement, toggleElement) {
   if (inputElement.type === "password") {
     inputElement.type = "text";

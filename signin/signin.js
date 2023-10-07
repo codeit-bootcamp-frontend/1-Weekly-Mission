@@ -1,8 +1,6 @@
-import {
-  displayError,
-  isValidEmail,
-  togglePasswordVisibility,
-} from "/common.js";
+import { displayError, togglePasswordVisibility } from "/common.js";
+
+import { isValidEmail } from "/utils/validation.js";
 
 const emailInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");

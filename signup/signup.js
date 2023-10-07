@@ -1,8 +1,6 @@
-import {
-  displayError,
-  isValidEmail,
-  togglePasswordVisibility,
-} from "/common.js";
+import { displayError, togglePasswordVisibility } from "/common.js";
+
+import { isValidEmail, isValidPassword } from "/utils/validation.js";
 
 const emailInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
@@ -84,8 +82,3 @@ toggleVisibility.forEach((icon) => {
     togglePasswordVisibility(inputBox, icon);
   });
 });
-
-function isValidPassword(password) {
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-  return passwordRegex.test(password);
-}
