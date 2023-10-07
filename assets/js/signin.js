@@ -11,7 +11,7 @@ const signinBtn = document.querySelector('.signin__btn')
 //이메일 유효성 검사
 const emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-function validEmail(email){
+function isEmailValid(email){
   return (email.match(emailRegExp)!=null);
 }
 
@@ -39,7 +39,7 @@ function removeErrorClassName(element) {
 }
 
 
-function checkEmail(e){
+function validateEmailInput(e){
   removeElementOrNull(emailWrap, '.errorMsg');
   removeErrorClassName(inputEmail);
 
@@ -53,18 +53,18 @@ function checkEmail(e){
     return;
   }
   
-  if (validEmail(email) == false){
+  if (isEmailValid(email) == false){
     spanTag.textContent = "올바른 이메일 주소가 아닙니다.";
     emailWrap.appendChild(spanTag);
     addErrorClassName(inputEmail);
   }
 }
 
-inputEmail.addEventListener('focusout', checkEmail);
+inputEmail.addEventListener('focusout', validateEmailInput);
 
 
 //비밀번호 유효성 검사
-function checkPw(e){
+function validatePwInput(e){
   removeElementOrNull(pwWrap, '.errorMsg');
   removeErrorClassName(inputPw);
 
@@ -78,7 +78,7 @@ function checkPw(e){
   }
 }
 
-inputPw.addEventListener('focusout', checkPw);
+inputPw.addEventListener('focusout', validatePwInput);
 
 
 //로그인 성공
@@ -87,7 +87,7 @@ const TEST_USER = {
   pw: "codeit101"
 }
 
-function checkAccount(e){
+function submitForm(e){
   e.preventDefault()
 
   const email = inputEmail.value;
@@ -114,13 +114,13 @@ function checkAccount(e){
   addErrorClassName(inputPw);
 }
 
-signinForm.addEventListener('submit', checkAccount);
+signinForm.addEventListener('submit', submitForm);
 
 /*-----눈모양 아이콘 클릭에 따른 노출-----*/
 const eye = document.querySelector(".input__eye");
 let isShowPw = false
 
-function showPw(e){
+function togglePw(e){
   const showPwBtn = e.target
 
   isShowPw = !isShowPw
@@ -138,4 +138,4 @@ function showPw(e){
   showPwBtn.setAttribute('alt', pwIconAltText)
 }
 
-eye.addEventListener('click', showPw)
+eye.addEventListener('click', togglePw)
