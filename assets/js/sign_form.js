@@ -22,7 +22,7 @@ function createErrorSpanTag(){
   return spanTag;
 }
 
-function ifExistRemoveElement(range, element){
+function removeElementOrNull(range, element){
   if (range.querySelector(element)){
     let temp = range.querySelector(element);
     temp.remove();
@@ -40,7 +40,7 @@ function removeErrorClassName(element) {
 
 
 function checkEmail(e){
-  ifExistRemoveElement(emailWrap, '.errorMsg');
+  removeElementOrNull(emailWrap, '.errorMsg');
   removeErrorClassName(inputEmail);
 
   const spanTag = createErrorSpanTag();
@@ -65,7 +65,7 @@ inputEmail.addEventListener('focusout', checkEmail);
 
 //비밀번호 유효성 검사
 function checkPw(e){
-  ifExistRemoveElement(pwWrap, '.errorMsg');
+  removeElementOrNull(pwWrap, '.errorMsg');
   removeErrorClassName(inputPw);
 
   const spanTag = createErrorSpanTag();
@@ -82,8 +82,10 @@ inputPw.addEventListener('focusout', checkPw);
 
 
 //로그인 성공
-const VALIDEMAIL = "test@codeit.com"
-const VALIDPW = "codeit101"
+const TEST_USER = {
+  email: "test@codeit.com",
+  pw: "codeit101"
+}
 
 function checkAccount(e){
   e.preventDefault()
@@ -91,13 +93,13 @@ function checkAccount(e){
   const email = inputEmail.value;
   const password = inputPw.value;
 
-  if (email === VALIDEMAIL && password === VALIDPW){
+  if (email === TEST_USER.email && password === TEST_USER.pw){
     e.submit();
     return;
   }
 
-  ifExistRemoveElement(emailWrap, '.errorMsg');
-  ifExistRemoveElement(pwWrap, '.errorMsg');
+  removeElementOrNull(emailWrap, '.errorMsg');
+  removeElementOrNull(pwWrap, '.errorMsg');
   removeErrorClassName(inputEmail);
   removeErrorClassName(inputPw);
 
@@ -116,23 +118,24 @@ signinForm.addEventListener('submit', checkAccount);
 
 /*-----눈모양 아이콘 클릭에 따른 노출-----*/
 const eye = document.querySelector(".input__eye");
-let eyeStatus = "off"
+let isShowPw = false
 
 function showPw(e){
-  if (eyeStatus === "off"){
-    eyeStatus = "on"
-    inputPw.setAttribute('type', 'text');
-    inputPw.style.letterSpacing = '0rem'
-    e.target.setAttribute('src', "assets/img/eyeOn.svg");
-    e.target.setAttribute('alt', "show password");
-    return
-  }
+  const showPwBtn = e.target
 
-  eyeStatus = "off"
-  inputPw.setAttribute('type', 'password');
-  inputPw.style.letterSpacing = '0.375rem'
-  e.target.setAttribute('src', "assets/img/eyeOff.svg");
-  e.target.setAttribute('alt', "hide password");
+  isShowPw = !isShowPw
+
+  const pwInputType = (isShowPw) ? 'text' : 'password';
+  inputPw.setAttribute('type', pwInputType)
+
+  const pwIconPath = (isShowPw) ? "assets/img/eyeOn.svg" : "assets/img/eyeOff.svg";
+  showPwBtn.setAttribute('src', pwIconPath)
+  
+  const pwLetterSpacing = (isShowPw) ? '0rem' : '0.375rem';
+  inputPw.style.letterSpacing = pwLetterSpacing
+
+  const pwIconAltText = (isShowPw) ? "show password" : "hide password";
+  showPwBtn.setAttribute('alt', pwIconAltText)
 }
 
 eye.addEventListener('click', showPw)
