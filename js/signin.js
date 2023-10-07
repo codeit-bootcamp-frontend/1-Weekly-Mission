@@ -1,5 +1,8 @@
 const emailErrorMessage = document.querySelector(".email-error-message");
 const passwordErrorMessage = document.querySelector(".password-error-message");
+const passwordCheckErrorMessage = document.querySelector(
+  ".passwordCheck-error-message"
+);
 const email = document.querySelector(".email-input");
 const password = document.querySelector(".password-input");
 const passwordCheck = document.querySelector(".passwordCheck-input");
@@ -31,20 +34,25 @@ const checkPasswordError = (event) => {
     passwordErrorMessage.style.display = "block";
     passwordErrorMessage.textContent = "비밀번호를 입력해주세요";
     password.classList.add("border-red");
-  } else {
-    passwordErrorMessage.style.display = "none";
-    password.classList.remove("border-red");
-  }
-};
-
-const checkPasswordCheckError = (event) => {
-  if (event.target.value === "") {
+  } else if (event.target.value.length < 8) {
     passwordErrorMessage.style.display = "block";
-    passwordErrorMessage.textContent = "비밀번호를 입력해주세요";
+    passwordErrorMessage.textContent =
+      "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요";
     password.classList.add("border-red");
   } else {
     passwordErrorMessage.style.display = "none";
-    password.classList.remove("border-red");
+    passwordCheck.classList.remove("border-red");
+  }
+};
+
+const equalCheckPasswordCheckError = (event) => {
+  if (event.target.value === password.value) {
+    passwordCheckErrorMessage.style.display = "none";
+    passwordCheck.classList.remove("border-red");
+  } else {
+    passwordCheckErrorMessage.style.display = "block";
+    passwordCheckErrorMessage.textContent = "비밀번호가 일치하지 않아요";
+    passwordCheck.classList.add("border-red");
   }
 };
 
@@ -75,7 +83,7 @@ const changeEye = (event) => {
 
 email.addEventListener("focusout", checkEmailError);
 password.addEventListener("focusout", checkPasswordError);
-passwordCheck.addEventListener("focusout", checkPasswordCheckError);
+passwordCheck.addEventListener("focusout", equalCheckPasswordCheckError);
 signButton.addEventListener("click", checkSignin);
 passwordEye.addEventListener("click", changeEye);
 

@@ -169,7 +169,8 @@ header {
 }
 
 .email-error-message,
-.password-error-message {
+.password-error-message,
+.passwordCheck-error-message {
   color: var(--red);
   font-family: Pretendard;
   font-size: 1.4rem;
