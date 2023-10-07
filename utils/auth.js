@@ -28,6 +28,11 @@ export const emailDuplicatedMsg = createErrorMsg(
   "이미 사용 중인 이메일입니다."
 );
 
+export const emailNotMachedMsg = createErrorMsg(
+  INPUT_ERROR_MESSAGE,
+  "비밀번호가 일치하지 않아요."
+);
+
 export function createErrorMsg(style, errorStatement) {
   const errorMsg = document.createElement("span");
   errorMsg.textContent = errorStatement;
@@ -65,6 +70,19 @@ export function handleInputDuplicatedCheck(inputElement, errorMsg) {
   if (inputElement.value.trim() === TEST_EMAIL) {
     inputElement.after(errorMsg);
     inputElement.classList.add("input-error");
+  } else {
+    errorMsg.remove();
+  }
+}
+
+export function handlePwInputDoubleCheck(
+  passwordInput,
+  passwordCheckInput,
+  errorMsg
+) {
+  if (passwordInput.value.trim() !== passwordCheckInput.value.trim()) {
+    passwordCheckInput.parentNode.after(errorMsg);
+    passwordCheckInput.classList.add("input-error");
   } else {
     errorMsg.remove();
   }

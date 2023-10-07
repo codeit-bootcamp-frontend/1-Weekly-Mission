@@ -1,6 +1,7 @@
 import {
   emailInput,
   pwInput,
+  pwCheckInput,
   pwWrapper,
   signinBtn,
   eyeBtn,
@@ -13,6 +14,8 @@ import {
   emailEmptyMsg,
   emailInvalidMsg,
   emailRegex,
+  handlePwInputDoubleCheck,
+  emailNotMachedMsg,
 } from "../utils/auth.js";
 
 emailInput.addEventListener("blur", () =>
@@ -23,4 +26,7 @@ emailInput.addEventListener("blur", () =>
 );
 emailInput.addEventListener("blur", () =>
   handleInputDuplicatedCheck(emailInput, emailDuplicatedMsg)
+);
+pwCheckInput.addEventListener("blur", () =>
+  handlePwInputDoubleCheck(pwInput, pwCheckInput, emailNotMachedMsg)
 );
