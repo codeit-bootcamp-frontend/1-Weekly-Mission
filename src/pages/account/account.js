@@ -65,9 +65,10 @@ const validateInput = (e) => {
   if (errorGb) {
     let errMsg = setErrorMsg(nodeInfo, errType); //error 메세지 생성
     let errTag = nodeUtils.createNode("span", "error_msg", errMsg); //tag 생성
-    node.classList.add("errorInput"); //error class 추가 및 삭제
+    node.classList.add("errorInput"); //error class 추가
     node.after(errTag);
   }
+  return errorGb;
 };
 
 /**에러 메세지 생성 함수
