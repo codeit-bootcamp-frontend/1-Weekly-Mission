@@ -1,6 +1,12 @@
 import { displayError, togglePasswordVisibility } from "/utils/common.js";
-
 import { isValidEmail } from "/utils/validation.js";
+import {
+  EMAIL_EMPTY,
+  EMAIL_INVALID,
+  PASSWORD_EMPTY,
+  EMAIL_VERIFY,
+  PASSWORD_VERIFY,
+} from "/constants/errorMessages.js";
 
 const emailInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
@@ -15,9 +21,9 @@ const toggleVisibility = document.querySelector(".toggleVisibility");
 function checkEmailValidity() {
   const email = emailInput.value;
   if (!email) {
-    displayError(emailInput, emailErrorText, "이메일을 입력해주세요.");
+    displayError(emailInput, emailErrorText, EMAIL_EMPTY);
   } else if (!isValidEmail(email)) {
-    displayError(emailInput, emailErrorText, "올바른 이메일 주소가 아닙니다.");
+    displayError(emailInput, emailErrorText, EMAIL_INVALID);
   } else {
     displayError(emailInput, emailErrorText, "");
   }
@@ -26,7 +32,7 @@ function checkEmailValidity() {
 function checkPasswordInput() {
   const password = passwordInput.value;
   if (!password) {
-    displayError(passwordInput, passwordErrorText, "비밀번호를 입력해주세요.");
+    displayError(passwordInput, passwordErrorText, PASSWORD_EMPTY);
   } else {
     displayError(passwordInput, passwordErrorText, "");
   }
@@ -42,8 +48,8 @@ loginBtn.addEventListener("click", function () {
   if (email === "test@codeit.com" && password === "codeit101") {
     location.href = "/folder";
   } else {
-    displayError(emailInput, emailErrorText, "이메일을 확인해주세요.");
-    displayError(passwordInput, passwordErrorText, "비밀번호를 확인해주세요.");
+    displayError(emailInput, emailErrorText, EMAIL_VERIFY);
+    displayError(passwordInput, passwordErrorText, PASSWORD_VERIFY);
   }
 });
 

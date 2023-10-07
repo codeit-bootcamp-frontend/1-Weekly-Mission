@@ -1,6 +1,12 @@
 import { displayError, togglePasswordVisibility } from "/utils/common.js";
-
 import { isValidEmail, isValidPassword } from "/utils/validation.js";
+import {
+  EMAIL_EMPTY,
+  EMAIL_INVALID,
+  EMAIL_TAKEN,
+  PASSWORD_EMPTY,
+  PASSWORD_MISMATCH,
+} from "/constants/errorMessages.js";
 
 const emailInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
@@ -17,13 +23,13 @@ const toggleVisibility = document.querySelectorAll(".toggleVisibility");
 function checkEmailValidity() {
   const email = emailInput.value;
   if (!email) {
-    displayError(emailInput, emailErrorText, "이메일을 입력해주세요.");
+    displayError(emailInput, emailErrorText, EMAIL_EMPTY);
     return false;
   } else if (!isValidEmail(email)) {
-    displayError(emailInput, emailErrorText, "올바른 이메일 주소가 아닙니다.");
+    displayError(emailInput, emailErrorText, EMAIL_INVALID);
     return false;
   } else if (email === "test@codeit.com") {
-    displayError(emailInput, emailErrorText, "이미 사용 중인 이메일입니다.");
+    displayError(emailInput, emailErrorText, EMAIL_TAKEN);
     return false;
   } else {
     displayError(emailInput, emailErrorText, "");
@@ -34,7 +40,7 @@ function checkEmailValidity() {
 function checkPasswordValidity() {
   const password = passwordInput.value;
   if (!password) {
-    displayError(passwordInput, passwordErrorText, "비밀번호를 입력해주세요.");
+    displayError(passwordInput, passwordErrorText, PASSWORD_EMPTY);
     return false;
   } else if (password.length < 8 || !isValidPassword(password)) {
     displayError(
@@ -51,7 +57,7 @@ function checkPasswordValidity() {
 
 function checkPasswordMatch() {
   if (passwordInput.value !== passwordCheckInput.value) {
-    displayError(passwordCheckErrorText, "비밀번호가 일치하지 않아요.");
+    displayError(passwordCheckErrorText, PASSWORD_MISMATCH);
     return false;
   } else {
     displayError(passwordCheckErrorText, "");
