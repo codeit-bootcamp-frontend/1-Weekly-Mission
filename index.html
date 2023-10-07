@@ -24,8 +24,7 @@
     <meta name="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
     
     <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/style.css" />
-    <link rel="stylesheet" href="/asset/fonts/pretendard.css" />
+    <link rel="stylesheet" href="/asset/fonts/pretendard.css"> 
     <link rel="stylesheet" href="/styles/component.css" />
   </head>
 
@@ -33,84 +32,81 @@
     <!-- HEADER : LOGO, SIGN-IN -->
     <header>
       <nav class="gnb">
-        <div class="container">
-          <h1>
-            <a id="home" href="/">
-              <img src="/asset/images/logo.svg" alt="Linkbrary 로고" />
+        <div class="gnb__container">
+          <h1 class="logo">
+            <a href="/">
+              <img class="logo__image" src="/asset/images/logo.svg" alt="Linkbrary 로고" />
             </a>
           </h1>
-          <a id="signin" class="gradation button-short" href="signin.html">
-            <span>로그인</span>
-          </a>
+          <a class="btn btn--short" href="signin.html">로그인</a>
         </div>
       </nav>
     </header>
 
-    <!-- MAIN : MAIN IMAGE, SLOGAN -->
-    <main>
-      <div class="container">
-        <h1 class="slogan">
-          <span class="slogan-gradation background-clip-text"> 세상의 모든 정보</span>를<br/>쉽게 저장하고<br/>관리해 보세요
+    <!-- MAIN : SLOGAN, HERO-IMAGE -->
+    <main class="hero">
+      <div class="hero__container">
+        <h1 class="hero__slogan">
+          <span class="hero__slogan--gradation background-clip-text"> 세상의 모든 정보</span>를<br/>쉽게 저장하고 관리해 보세요
         </h1>
-        <a id="addLink" class="gradation button-long" href="/">
-          <span>링크 추가하기</span>
-        </a>
-        <img src="/asset/images/hero.png" class="hero-image" alt="Linkbrary 메인 서비스 소개" />
+        <a class="btn btn--long" href="/">링크 추가하기</a>
+        <img class ="hero__image" src="/asset/images/hero.png" alt="Linkbrary 메인 서비스 이미지" />
       </div>
     </main>
 
     <!-- ARTICLE : CARD-IMAGE SECTIONS -->
-    <article>
+    <article class="main-contents">
+
       <!-- Section1 : Link Saving -->
-      <section>
-        <h2 class="title">
-          <span class="title-1-gradient background-clip-text"> 원하는 링크</span>를<br class="br-mobile"/>저장하세요
-        </h2>
-        <p class="description">
-          나중에 읽고 싶은 글, 다시 보고 싶은 영상, <br class="br-mobile"/>사고 싶은 옷, 기억하고 싶은 모든 것을 <br class="br-mobile"/>한 공간에 저장하세요.
-        </p>
-        <img src="/asset/images/image1.png" class="content-image" alt="링크를 저장하는 기능을 소개하는 이미지" />
+      <section class="main-content">
+          <h2 class="main-content__title">
+            <span class="main-content__title--gradient1 background-clip-text"> 원하는 링크</span>를<br class="br--visible"/>저장하세요
+          </h2>
+          <p class="main-content__description">
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상, <br class="br-visible"/>사고 싶은 옷, 기억하고 싶은 모든 것을 <br class="br--visible"/>한 공간에 저장하세요.
+          </p>
+          <img class="main-content__image" src="/asset/images/image1.png" alt="링크를 저장하는 기능을 소개하는 이미지" />
       </section>
 
       <!-- Section2 : Link Folder -->
-      <section>
-        <h2 class="title">
-          링크를 폴더로<br class="br-mobile"/><span class="title-2-gradient background-clip-text">관리</span>하세요
+      <section class="main-content">
+        <h2 class="main-content__title">
+          링크를 폴더로<br class="br-visible"/><span class="main-content__title--gradient2 background-clip-text">관리</span>하세요
         </h2>
-        <p class="description">
-          나만의 폴더를 무제한으로 만들고 <br class="br-mobile"/>다양하게 활용할 수 있습니다.
+        <p class="main-content__description">
+          나만의 폴더를 무제한으로 만들고 <br class="br-visible"/>다양하게 활용할 수 있습니다.
         </p>
-        <img src="/asset/images/image2.png" class="content-image" alt="링크들을 폴더로 관리하는 기능을 소개하는 이미지" />
+        <img class="main-content__image" src="/asset/images/image2.png" alt="링크들을 폴더로 관리하는 기능을 소개하는 이미지" />
       </section>
 
       <!-- Section3 : Link Sharing -->
-      <section>
-        <h2 class="title">
-          저장한 링크를<br class="br-mobile"/><span class="title-3-gradient background-clip-text">공유</span>해 보세요
+      <section class="main-content">
+        <h2 class="main-content__title">
+          저장한 링크를<br class="br-visible"/><span class="main-content__title--gradient3 background-clip-text">공유</span>해 보세요
         </h2>
-        <p class="description">
-          여러 링크를 폴더에 담고 공유할 수 있습니다.<br class="br-mobile"/>가족, 친구, 동료들에게 쉽고 빠르게 링크를 <br class="br-mobile"/>공유해 보세요.
+        <p class="main-content__description">
+          여러 링크를 폴더에 담고 공유할 수 있습니다.<br class="br-visible"/>가족, 친구, 동료들에게 쉽고 빠르게 링크를 <br class="br-visible"/>공유해 보세요.
         </p>
-        <img src="/asset/images/image3.png" class="content-image" alt="폴더공유 기능을 소개하는 이미지" />
+        <img class="main-content__image" src="/asset/images/image3.png" alt="폴더공유 기능을 소개하는 이미지" />
       </section>
 
       <!-- Section4 : Link Searching -->
-      <section>
-        <h2 class="title">
-          저장한 링크를<br class="br-mobile"/><span class="title-4-gradient background-clip-text">검색</span>해 보세요
+      <section class="main-content">
+        <h2 class="main-content__title">
+          저장한 링크를<br class="br-visible"/><span class="main-content__title--gradient4 background-clip-text">검색</span>해 보세요
         </h2>
-        <p class="description">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
-        <img src="/asset/images/image4.png" class="content-image" alt="링크검색 기능을 소개하는 이미지" />
+        <p class="main-content__description">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+        <img class="main-content__image" src="/asset/images/image4.png" alt="링크검색 기능을 소개하는 이미지" />
       </section>
     </article>
 
     <!-- FOOTER : FAQ, POLICY, SNS LINKS -->
-    <footer>
-      <div class="container">
+    <footer class="footer">
+      <div class="footer__container">
         <span class="copyright">©codeit - 2023</span>
-        <div class="footer-links">
-          <a id="privacy" class="footer-link" href="/privacy.html">Privacy Policy</a>
-          <a id="faq" class="footer-link" href="/faq.html">FAQ</a>
+        <div class="footer__links">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/faq.html">FAQ</a>
         </div>
         <div class="sns">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
