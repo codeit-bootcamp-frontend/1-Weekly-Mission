@@ -11,13 +11,14 @@ function emailDuplication(){
         $emailErrorMessage.textContent = "이미 사용 중인 이메일입니다."
         $emailErrorMessage.style.display ="block";
         $email.classList.add('border-red');
+        emailDupliValid = false;
     }
     else
         emailDupliValid = true;
 }
 $email.addEventListener("focusout", emailDuplication);
 
-const REGPWD = /(?=.*[a-zA-Z])(?=.*[0-9]){8,}/;
+const REGPWD = /(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}/;
 let pwdValid = false;
 function pwdValidation(){
     if(!REGPWD.test($pwd.value)){
@@ -56,5 +57,6 @@ function validCheck(e){
 }
 $submit.addEventListener("submit",validCheck);
 $submit.addEventListener("submit",emailErrorMessage);
+$submit.addEventListener("submit",emailDuplication);
 $submit.addEventListener("submit",pwdCheck);
 $submit.addEventListener("submit",pwdValidation);
