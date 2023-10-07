@@ -128,7 +128,7 @@ function showPw(e){
   const pwInputType = (isShowPw) ? 'text' : 'password';
   inputPw.setAttribute('type', pwInputType)
 
-  const pwIconPath = (isShowPw) ? "assets/img/eyeOn.svg" : "assets/img/eyeOff.svg";
+  const pwIconPath = (isShowPw) ? "assets/img/icon-eye-on.svg" : "assets/img/icon-eye-off.svg";
   showPwBtn.setAttribute('src', pwIconPath)
   
   const pwLetterSpacing = (isShowPw) ? '0rem' : '0.375rem';
