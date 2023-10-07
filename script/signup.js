@@ -44,6 +44,7 @@ function pwdCheck(){
         $pwdCheckErrorMessage.textContent = "비밀번호가 일치하지 않아요."
         $pwdCheckErrorMessage.style.display ="block";
         $pwdCheck.classList.add('border-red');
+        pwdCheckValid=false;
     }
 }
 
