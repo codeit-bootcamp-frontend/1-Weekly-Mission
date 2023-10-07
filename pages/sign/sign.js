@@ -12,16 +12,15 @@ export function validateEmailType(input) {
     if (emailRegex.test(input)) {
         removeErrorMessage(emailInput, emailErrorMessageElement);
         return true;
-    } else {
-        let errorMessage = "";
-        if (!input) {
-            errorMessage = errorMessages.email.empty;
-        } else if (!emailRegex.test(input)) {
-            errorMessage = errorMessages.email.typeInvalid;
-        }
-        showErrorMessage(emailInput, emailErrorMessageElement, errorMessage);
-        return false;
     }
+    let errorMessage = "";
+    if (!input) {
+        errorMessage = errorMessages.email.empty;
+    } else if (!emailRegex.test(input)) {
+        errorMessage = errorMessages.email.typeInvalid;
+    }
+    showErrorMessage(emailInput, emailErrorMessageElement, errorMessage);
+    return false;
 }
 
 export function showErrorMessage(input, errorMessageElement, errorMessage) {
@@ -40,10 +39,9 @@ export function validatePassword(input) {
     if (input) {
         removeErrorMessage(passwordInput, passwordErrorMessageElement);
         return input;
-    } else {
-        showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.empty);
-        return null;
     }
+    showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.empty);
+    return null;
 }
 
 export function toggleEyeButton(input, eyeButton) {
