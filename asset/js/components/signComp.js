@@ -4,17 +4,10 @@ const signInputs = document.querySelectorAll(".input__container");
 const signForm = document.querySelector(".sign_form");
 const eyeButtons = document.querySelectorAll(".input__eyes");
 
-
 // class 선택자 변수화
 const nullErrMsg = "null_error_message";
 const nullErrBorder = "null_error_border";
 const eyesOn = "input__eyes--on";
-
-const errorMessageLogin = {
-    signinEmail: "이메일을 확인해주세요",
-    signinPassword: "비밀번호를 확인해주세요",
-}
-
 
 // 각종 함수
 const renderErrorMessageNode = () => {
@@ -28,19 +21,18 @@ const isEmail = (input) => {
     return emailRegex.test(input);
 }
 
-const handleInputEmailError = ({ target: { value } }) => {
-    if (value === "") {
-        return "이메일을 입력해주세요";
-    } else if (!isEmail(value)) {
-        return "올바른 이메일 주소가 아닙니다";
-    }
+const isPassword = (input) => {
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+    return passwordRegex.test(input);
 }
 
-const handleInputPasswordError = ({ target: { value } }) => {
-    if (value === "") {
-        return "비밀번호를 입력해주세요";
-    }
+const isPasswordCheck = () => {
+    const passwordValue = document.querySelector("#signinPassword").value;
+    const passwordCheckValue = document.querySelector("#signinPasswordCheck").value;
+
+    return (passwordValue === passwordCheckValue)
 }
+
 
 const setErrStyle = (errMsgNode, target) => {
     let targetNode = document.getElementById(target.name);
@@ -48,15 +40,6 @@ const setErrStyle = (errMsgNode, target) => {
     if (errMsgNode.textContent !== "") {
         targetNode.after(errMsgNode);
         targetNode.classList.add(nullErrBorder);
-    }
-}
-
-const eraseErrStyle = (el) => {
-    try {
-        el.classList.remove(nullErrBorder)
-    } finally {
-        try {el.nextElementSibling.remove();}
-        catch {} // 이놈도 DOM 종속적이다!!!! 근데 에러 메세지의 생성 자체가 꽤 종속적인 위치에서 생성되는 거 아닌가..? 그럼 DOM 종속적이라고 할 수 없는 것 아닐까?
     }
 }
 
@@ -71,18 +54,30 @@ const validInputNodeType = (inputContainer) => {
     }
 }
 
-const setLoginErr = (line) => {
-    const errMsgNode = renderErrorMessageNode();
-    errMsgNode.textContent = errorMessageLogin[line.id];
-    setErrStyle(errMsgNode, line);
+const removeInputError = (e) => {
+    const targetTag = document.getElementById(e.target.name); // 이놈은 묵시적으로 input의 name 속성에 종속되어버리고 말았다!!! DOM가면의 저주를 받아버리고 만 것이다!!!
+    eraseErrStyle(targetTag);
 }
 
-const validateLoginInputs = () => signInputs[0].value === "test@codeit.com" && signInputs[1].value === "codeit101";
+const eraseErrStyle = (el) => {
+    try {
+        el.classList.remove(nullErrBorder)
+    } finally {
+        try {el.nextElementSibling.remove();}
+        catch {} // 이놈도 DOM 종속적이다!!!! 근데 에러 메세지의 생성 자체가 꽤 종속적인 위치에서 생성되는 거 아닌가..? 그럼 DOM 종속적이라고 할 수 없는 것 아닐까?
+    }
+}
 
+const togglePasswordVisibility = ({ target }) => {
+    for (const line of signFormInputs) {
+        const inputContainer = line.querySelector(".input__container");
+        const inputEye = line.querySelector(".input__eyes");
+        
+        if (target === inputEye) {
+            inputEye.classList.toggle(eyesOn);
+            validInputNodeType(inputContainer);
+        }
+    }
+}
 
-
-
-
-
-
-export { signFormInputs, eyeButtons, signInputs, signForm, eyesOn, validateLoginInputs, renderErrorMessageNode, isEmail, handleInputEmailError, handleInputPasswordError, setErrStyle, eraseErrStyle, validInputNodeType, setLoginErr };
+export { signFormInputs, eyeButtons, signInputs, signForm, eyesOn, renderErrorMessageNode, isEmail, isPassword, isPasswordCheck, setErrStyle, eraseErrStyle, validInputNodeType, removeInputError, togglePasswordVisibility };
