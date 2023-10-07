@@ -53,18 +53,12 @@ const deletePasswordError = () => {
 const togglePwVisibility = () => {
   if (!togglePwVisible) {
     // 비밀번호 보이게 하기
-    $pwInvisible.setAttribute(
-      "src",
-      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-on.svg"
-    );
+    $pwInvisible.setAttribute("src", "../images/svg/eye-on.svg");
     $password.setAttribute("type", "text");
     togglePwVisible = true;
   } else {
     // 비밀번호 가리기
-    $pwInvisible.setAttribute(
-      "src",
-      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-off.svg"
-    );
+    $pwInvisible.setAttribute("src", "../images/svg/eye-off.svg");
     $password.setAttribute("type", "password");
     togglePwVisible = false;
   }

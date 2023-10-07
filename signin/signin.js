@@ -10,7 +10,7 @@ import {
   showPasswordError,
   deletePasswordError,
   togglePwVisibility,
-} from "/Weekly_mission/1-Weekly-Mission/src/assets/js/sign_common.js";
+} from "../assets/js/sign_common.js";
 
 // HTML tag를 담는 변수는 앞에 $를 붙임
 $emailErrorMsg.classList.add("email-error-msg");
@@ -50,8 +50,7 @@ const checkAdminAccount = () => {
     $passwordErrorMsg.textContent === ""
   ) {
     // admin 계정으로 로그인 시 'folder/' 로 이동
-    window.location.href =
-      "/Weekly_mission/1-Weekly-Mission/src/pages/folder/index.html";
+    window.location.href = "../folder/index.html";
   } else {
     showEmailError("wrong");
     showPasswordError("wrong");

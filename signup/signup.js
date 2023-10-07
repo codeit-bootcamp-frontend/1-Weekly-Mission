@@ -10,7 +10,7 @@ import {
   showPasswordError,
   deletePasswordError,
   togglePwVisibility,
-} from "/Weekly_mission/1-Weekly-Mission/src/assets/js/sign_common.js";
+} from "../assets/js/sign_common.js";
 
 // HTML tag를 담는 변수는 앞에 $를 붙임
 const $doubleCheckPw = document.querySelector("#doublecheck-pw");
@@ -106,8 +106,7 @@ const checkAllInput = () => {
     $doubleCheckPw.value.length > 0
   ) {
     // error msg 모두 처리 및 input 태그에 값들이 있을 시 'folder/' 로 이동
-    window.location.href =
-      "/Weekly_mission/1-Weekly-Mission/src/pages/folder/index.html";
+    window.location.href = "../folder/index.html";
   } else if (
     // input 태그가 비어있을 때, 에러 메시지 출력
     $email.value === "" ||
@@ -128,7 +127,7 @@ const toggleDoubleCheckPwVisibility = () => {
     // 비밀번호 보이게 하기
     $doubleCheckPwInvisible.setAttribute(
       "src",
-      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-on.svg"
+      "../assets/images/svg/eye-on.svg"
     );
     $doubleCheckPw.setAttribute("type", "text");
     toggleDoubleCheckPwVisible = true;
@@ -136,7 +135,7 @@ const toggleDoubleCheckPwVisibility = () => {
     // 비밀번호 가리기
     $doubleCheckPwInvisible.setAttribute(
       "src",
-      "/Weekly_mission/1-Weekly-Mission/src/assets/images/svg/eye-off.svg"
+      "../assets/images/svg/eye-off.svg"
     );
     $doubleCheckPw.setAttribute("type", "password");
     toggleDoubleCheckPwVisible = false;
