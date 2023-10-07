@@ -11,7 +11,7 @@ import {
 
 const loginButton = document.querySelector('.btn.login');
 
-function login(e) {
+const login = (e) => {
     e.preventDefault();
 
     const email = emailInput.value;
