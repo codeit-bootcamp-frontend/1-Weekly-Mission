@@ -37,6 +37,7 @@ const emailValidation = (value) => {
 
   emailError.textContent = "";
   removeErrorClass(email);
+  return true;
 };
 
 /* 비밀번호 유효성 검사 */
@@ -49,6 +50,7 @@ const passwordValidation = (value) => {
   }
   passwordError.textContent = "";
   removeErrorClass(password);
+  return true;
 };
 
 /* 비밀번호 확인 유효성 검사 */
@@ -60,6 +62,7 @@ const passwordCheckValidation = (value) => {
   }
   passwordCheckError.textContent = "";
   removeErrorClass(passwordCheck);
+  return true;
 };
 
 /** 이메일, 비밀번호 focus out할 때, value 체크 */
@@ -73,9 +76,16 @@ const checkFormValue = (e) => {
   if (id === "passwordCheck") passwordCheckValidation(value);
 };
 
-form.addEventListener("focusout", checkFormValue);
+/*유효한 회원가입 시도의 경우, “/folder”로 이동 */
+const onClickSubmit = (e) => {
+  e.preventDefault();
 
-/* TO-DO */
-// 회원가입을 실행할 경우, 문제가 있는 경우 문제가 있는 input에 에러 메세지
-// 이외의 유효한 회원가입 시도의 경우, “/folder”로 이동
-// 회원가입 버튼 클릭 또는 Enter키 입력으로 회원가입 실행돼야 합니다.
+  if (!emailValidation(email.value)) return;
+  if (!passwordValidation(password.value)) return;
+  if (!passwordCheckValidation(passwordCheck.value)) return;
+
+  form.submit();
+};
+
+form.addEventListener("focusout", checkFormValue);
+form.addEventListener("submit", onClickSubmit);
