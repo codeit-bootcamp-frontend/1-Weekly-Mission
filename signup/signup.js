@@ -1,4 +1,4 @@
-import { displayError, togglePasswordVisibility } from "/common.js";
+import { displayError, togglePasswordVisibility } from "/utils/common.js";
 
 import { isValidEmail, isValidPassword } from "/utils/validation.js";
 
