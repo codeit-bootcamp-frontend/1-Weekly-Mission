@@ -119,8 +119,7 @@ header {
   padding-right: 40px;
 }
 
-.eye-off,
-.eye-on {
+.toggleVisibility {
   margin-left: -30px;
   cursor: pointer;
 }

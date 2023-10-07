@@ -8,7 +8,7 @@ const emailErrorText = document.querySelector("#email-error");
 const passwordErrorText = document.querySelector("#password-error");
 const passwordCheckErrorText = document.querySelector("#password-check-error");
 
-const toggleVisibility = document.querySelector("#toggleVisibility");
+const toggleVisibilityIcons = document.querySelectorAll(".toggleVisibility");
 
 function displayError(element, message) {
   element.textContent = message;
@@ -76,14 +76,18 @@ function submitForm() {
   }
 }
 
-toggleVisibility.addEventListener("click", function () {
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    toggleVisibility.src = "/assets/eye-on.svg";
-  } else {
-    passwordInput.type = "password";
-    toggleVisibility.src = "/assets/eye-off.svg";
-  }
+toggleVisibilityIcons.forEach((icon) => {
+  icon.addEventListener("click", function () {
+    const inputBox = icon.previousElementSibling;
+
+    if (inputBox.type === "password") {
+      inputBox.type = "text";
+      icon.src = "/assets/eye-on.svg";
+    } else {
+      inputBox.type = "password";
+      icon.src = "/assets/eye-off.svg";
+    }
+  });
 });
 
 function isValidEmail(email) {
