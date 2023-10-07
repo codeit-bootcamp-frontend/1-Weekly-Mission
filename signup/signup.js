@@ -14,7 +14,7 @@ const emailErrorText = document.querySelector("#email-error");
 const passwordErrorText = document.querySelector("#password-error");
 const passwordCheckErrorText = document.querySelector("#password-check-error");
 
-const toggleVisibilityIcons = document.querySelectorAll(".toggleVisibility");
+const toggleVisibility = document.querySelectorAll(".toggleVisibility");
 
 function checkEmailValidity() {
   const email = emailInput.value;
@@ -78,7 +78,7 @@ function submitForm() {
   }
 }
 
-toggleVisibilityIcons.forEach((icon) => {
+toggleVisibility.forEach((icon) => {
   icon.addEventListener("click", function () {
     const inputBox = icon.previousElementSibling;
     togglePasswordVisibility(inputBox, icon);

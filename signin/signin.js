@@ -9,8 +9,8 @@ const passwordInput = document.querySelector("#password");
 
 const loginBtn = document.querySelector("#loginBtn");
 
-const emailErrorText = document.querySelector("#emailError");
-const passwordErrorText = document.querySelector("#passwordError");
+const emailErrorText = document.querySelector("#email-error");
+const passwordErrorText = document.querySelector("#password-error");
 
 const toggleVisibility = document.querySelector(".toggleVisibility");
 
