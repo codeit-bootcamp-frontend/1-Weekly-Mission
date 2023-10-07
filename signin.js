@@ -33,15 +33,16 @@ password.addEventListener("focusout", (event) => {
 loginButton.addEventListener("click", (event) => {
   event.preventDefault();
   if (isCodeItLogin(email, password)) {
-    window.location = "http://127.0.0.1:5500/folder.html";
+    window.location.href = window.location.origin + "/folder.html";
   }
-  if (
-    isEmailValid(email) &&
-    isPasswordValid(password) &&
-    !isCodeItLogin(email, password)
-  ) {
-    console.log("어라?");
-  }
+  //  email과 password형식은 valid하지만, codeIt아이디가 아닐 때를 판단하고, 그에 따른 ui를 보이도록 리팩토링 해보세요.
+  // if (
+  //   isEmailValid(email) &&
+  //   isPasswordValid(password) &&
+  //   !isCodeItLogin(email, password)
+  // ) {
+  //   console.log("어라?");
+  // }
 });
 
 eyeIcon.addEventListener("click", (event) => {
