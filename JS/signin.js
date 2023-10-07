@@ -1,66 +1,54 @@
 import * as tags from "./features/tags.js"
-
 // [form input box 유효성 검사]
 
+
 // 이메일 유효성 검사
-import validationEmail from "./features/validationEmail.js";
+import {removeErrorStyle, errorStyle } from "./features/errorStyle.js";
+import {isNotEmailEmpty, isValidEmail} from "./features/validationEmail.js";
 
-const $emailValue = tags.$emailInput.value;
+const $emailWrapper = document.querySelector('.email')
 
-tags.$emailWrapper.addEventListener('focusout',(e) => validationEmail(e, $emailValue));
+function emailValidation(email){
+  if (!isNotEmailEmpty(email))
+    return errorStyle(tags.$inputEmail, tags.$errorEmail, "아이디를 입력해주세요.")
+  else if (!isValidEmail(email)) {
+    return errorStyle(tags.$inputEmail, tags.$errorEmail, "올바른 이메일 주소가 아닙니다.")
+  } else {
+    return true
+  }
+}
 
+$emailWrapper.addEventListener('focusout', () => {
+  //여기서 변수를 선언하지 않고 validationEmail에서 이메일 변수를 설정해줄 수 있는 법이 있을까요?
+  const $email = tags.$inputEmail.value;
+  emailValidation($email)});
+tags.$inputEmail.addEventListener('focusin', () => {removeErrorStyle(tags.$inputEmail, tags.$errorEmail)});
 
-// function verificationPassword (){
-//   if ( $inputPassword.value.length === 0){
-//     spanErrorPassword.textContent = "비밀번호를 입력해주세요.";
-//     spanErrorPassword.classList.add('show');
-//     spanErrorPassword.previousElementSibling.classList.add('red_border');
-//     flag = false;
-//   } else {
-//     spanErrorPassword.classList.remove('show')
-//     spanErrorPassword.previousElementSibling.classList.remove('red_border');
-//   }
-// }
+// // 비밀번호 유효성 검사
+import { passwordValidation } from "./features/validationPassword.js";
 
-// function successToAccess(){
-//   if ($inputEmail.value === "test@codeit.com" && $inputPassword.value === "codeit101"){
-//     flag = true;
-//   } else {
-//     flag = false;
-//   }
-// }
+const $psdWrapper = document.querySelector('.password');
 
+$psdWrapper.addEventListener('focusout', () => {
+  const $password = tags.$inputPassword.value;
+  passwordValidation($password) 
+});
+tags.$inputPassword.addEventListener('focusin', () => {removeErrorStyle(tags.$inputPassword, tags.$errorPassword)});
 
+// // 이메일 비밀번호 데이터 유무 확인
 
-// function submitVerification (e){
-//   e.preventDefault();
-//   verificationEmail();
-//   verificationPassword();
-//   successToAccess()
+import isValidAccount from "./features/validationAccount.js";
 
-
-//   if (flag === true){
-//     let link = '../folder.html';
-//     window.location.href = link;
-//   } else {
-//     spanErrorEmail.textContent = "이메일을 확인해주세요.";
-//     spanErrorPassword.textContent = "비밀번호를 확인해주세요.";
-//     spanErrorEmail.classList.add('show');
-//     spanErrorPassword.classList.add('show');
-//     spanErrorEmail.previousElementSibling.classList.add('red_border');
-//     spanErrorPassword.previousElementSibling.classList.add('red_border');
-    
-//   }
-// }
-
-// $inputPassword.addEventListener('focusout', verificationPassword);
-
-// $submitBtn.addEventListener('click', submitVerification);
+tags.$submitBtn.addEventListener('click', () => {
+  const isAllValid = emailValidation(tags.$inputEmail.value) && passwordValidation(tags.$inputPassword.value)
+  if (isAllValid){
+    isValidAccount()
+  }
+})
 
 // [eyeToggle 이벤트]
 
 import eyeToggle from "./features/eyeToggle.js";
-
 
 const $eye = document.querySelector('#eye')
 

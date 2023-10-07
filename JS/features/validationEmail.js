@@ -1,19 +1,14 @@
-import { errorStyle, removeErrorStyle } from "./errorStyle.js";
-
-function validationEmail(e, email){
-  const EMAIL_REGEX = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-  const isNotValid = !EMAIL_REGEX.test(email.trim());
-  const isEmpty = e.target.value.length === 0;
-
-  if (isEmpty) {
-    return errorStyle(e, "아이디를 입력해주세요.")
-  } else if (isNotValid) {
-    return errorStyle(e, "올바른 이메일 주소를 입력해주세요.")
-  } else {
-    return removeErrorStyle(e);
-  }
+function isNotEmailEmpty(email){
+  const isNotEmpty = !(email.length === 0);
+  return isNotEmpty ? true : false
 }
 
-export default validationEmail
+function isValidEmail(email){
+  const EMAIL_REGEX = new RegExp(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);
+  const isValid = EMAIL_REGEX.test(email.trim());
+  return isValid ? true : false
+}
+
+export {isNotEmailEmpty, isValidEmail}
 
 

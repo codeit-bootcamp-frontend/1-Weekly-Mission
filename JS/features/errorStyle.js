@@ -1,14 +1,12 @@
-function errorStyle(e, message){
-  const $spanError = e.currentTarget.children[2];
-  e.target.classList.add('red_border'); 
-  $spanError.classList.add('show');
-  $spanError.textContent = message; 
+function errorStyle(inputTag, errorTag, message){;
+  inputTag.classList.add('red_border'); 
+  errorTag.classList.add('show');
+  errorTag.textContent = message; 
 }
 
-function removeErrorStyle(e){
-  const $spanError = e.currentTarget.children[2];
-  e.target.classList.remove('red_border')
-  $spanError.classList.remove('show');
+function removeErrorStyle(inputTag, errorTag){
+  inputTag.classList.remove('red_border')
+  errorTag.classList.remove('show');
 }
 
 export {errorStyle, removeErrorStyle}
