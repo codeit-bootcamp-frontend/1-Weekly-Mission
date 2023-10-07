@@ -3,14 +3,12 @@ import * as nodeUtils from "../../utils/nodeUtils.js";
 const expEmail =
   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-/***
- *유효성 검사 함수
+/**유효성 검사 함수
  *
- *
- *1.Null check
- *2.타입에 맞게 양식을 제대로 작성했는지 정규표현식 검사
- *3.조건에 맞지 않을 시 에러 메시지 생성
- *
+ * 1.Null check
+ * 2.타입에 맞게 양식을 제대로 작성했는지 정규표현식 검사
+ * 3.조건에 맞지 않을 시 에러 메시지 생성
+ * @param {object} e 유효성 검사 진행할 요소
  */
 function validateInput(e) {
   let node = e.target;
@@ -52,21 +50,20 @@ function validateInput(e) {
     node.after(errTag);
   }
 }
-
-/***
- * 에러 메세지 생성 함수
- * errType
- *    1 : value 없음
+/**에러 메세지 생성 함수
+ *
+ * errType=
+ *    1 : value 없음,
  *    2 : 유효성 검사 실패
- *
- *
- *
+ * @param {object} nodeInfo
+ * @param {number} errType
+ * @returns {string} result
  */
 function setErrorMsg(nodeInfo, errType) {
   let type = nodeInfo.type;
   let className = nodeInfo.className;
   let errorMsg = { type: "", errType: errType };
-  let result = "";
+  let message = "";
   if (type === "email") {
     errorMsg.type = "이메일";
   } else if (
@@ -78,26 +75,22 @@ function setErrorMsg(nodeInfo, errType) {
   }
 
   if (errType === 1) {
-    result = `${errorMsg.type}을 입력해주세요.`;
+    message = `${errorMsg.type}을 입력해주세요.`;
   } else if (errType === 2) {
-    result = `올바른 ${errorMsg.type} 주소가 아닙니다.`;
+    message = `올바른 ${errorMsg.type} 주소가 아닙니다.`;
   }
 
-  return result;
+  return message;
 }
-/***
- * password togglePasswordVisibility
+
+/**비밀번호 보이기/가리기 함수
  *
- * 패스워드 타입 변경 이벤트 함수
- *
- *
- *
- *
+ *비밀번호 Input Type변경
+ * @param {object} e passwordInput 요소
  */
 function togglePasswordVisibility(e) {
   let target = e.target;
   let prevSibling = target.previousElementSibling; //이전 형제 요소
-  console.log(prevSibling);
   if (prevSibling.getAttribute("type") === "password") {
     prevSibling.setAttribute("type", "text");
     target.setAttribute("src", "/src/assets/img/open_eyes.png");
