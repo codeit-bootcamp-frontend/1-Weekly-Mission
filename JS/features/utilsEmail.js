@@ -1,3 +1,5 @@
+import { USER_DATA } from "./userData.js";
+
 function isNotEmailEmpty(email){
   const isNotEmpty = !(email.length === 0);
   return isNotEmpty ? true : false
@@ -9,6 +11,15 @@ function isValidEmail(email){
   return isValid ? true : false
 }
 
-export {isNotEmailEmpty, isValidEmail}
+function isEmailAvailable(email){
+  const usersID = []
+  for (let i in USER_DATA){
+    usersID.push(USER_DATA[i].Email)
+  }
+  const isAvailable = !(usersID.includes(email))
+  return isAvailable ? true : false
+}
+
+export {isNotEmailEmpty, isValidEmail , isEmailAvailable}
 
 

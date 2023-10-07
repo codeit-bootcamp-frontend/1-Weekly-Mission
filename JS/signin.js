@@ -4,11 +4,10 @@ import * as tags from "./features/tags.js"
 
 // 이메일 유효성 검사
 import {removeErrorStyle, errorStyle } from "./features/errorStyle.js";
-import {isNotEmailEmpty, isValidEmail} from "./features/validationEmail.js";
+import {isNotEmailEmpty, isValidEmail} from "./features/utilsEmail.js";
 
-const $emailWrapper = document.querySelector('.email')
-
-function emailValidation(email){
+function emailValidation(){
+  const email = tags.$inputEmail.value;
   if (!isNotEmailEmpty(email))
     return errorStyle(tags.$inputEmail, tags.$errorEmail, "아이디를 입력해주세요.")
   else if (!isValidEmail(email)) {
@@ -18,18 +17,20 @@ function emailValidation(email){
   }
 }
 
-$emailWrapper.addEventListener('focusout', () => {
-  //여기서 변수를 선언하지 않고 validationEmail에서 이메일 변수를 설정해줄 수 있는 법이 있을까요?
-  const $email = tags.$inputEmail.value;
-  emailValidation($email)});
+tags.$emailWrapper.addEventListener('focusout', emailValidation);
 tags.$inputEmail.addEventListener('focusin', () => {removeErrorStyle(tags.$inputEmail, tags.$errorEmail)});
 
 // // 비밀번호 유효성 검사
-import { passwordValidation } from "./features/validationPassword.js";
+import { isNotPasswordEmpty } from "./features/utilsPassword.js";
 
-const $psdWrapper = document.querySelector('.password');
+function passwordValidation(password){
+  if (!isNotPasswordEmpty(password)){
+  return errorStyle(tags.$inputPassword, tags.$errorPassword, "비밀번호를 입력해주세요.")
+  }
+  return true
+}
 
-$psdWrapper.addEventListener('focusout', () => {
+tags.$psdWrapper.addEventListener('focusout', () => {
   const $password = tags.$inputPassword.value;
   passwordValidation($password) 
 });
@@ -50,8 +51,6 @@ tags.$submitBtn.addEventListener('click', () => {
 
 import eyeToggle from "./features/eyeToggle.js";
 
-const $eye = document.querySelector('#eye')
-
-$eye.addEventListener('click', (e) => eyeToggle(e));
+tags.$eye.addEventListener('click', (e) => eyeToggle(e));
 
 

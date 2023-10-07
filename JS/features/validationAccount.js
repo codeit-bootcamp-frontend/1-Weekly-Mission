@@ -1,8 +1,8 @@
-import {USER_DATA} from "./userData.js";
+import { USER_DATA } from "./userData.js";
 import { $inputEmail , $errorEmail , $inputPassword, $errorPassword } from "./tags.js";
 import { errorStyle, removeErrorStyle } from "./errorStyle.js";
 
-const USER_ID = USER_DATA.id1.email;
+const USER_ID = USER_DATA.id1.Email;
 const USER_PASSWORD = USER_DATA.id1.password;
 
 function isValidAccount(){
