@@ -1,7 +1,5 @@
 const inputEmail = document.querySelector('input[name = "signin_email"]');
-const errorEmail = document.querySelector('#email_error');
 const inputPw = document.querySelector('input[name = "signin_pw"]');
-const errorPw = document.querySelector('#pw_error');
 const form = document.querySelector('form');
 const eyeIcon = document.querySelector('.eye_icon');
 
@@ -12,25 +10,8 @@ const TEST_PW = 'codeit101';
 
 let eye_on = 0;
 
-function emptyError(event){
-    /* input이 없을 경우, "이메일/비밀번호를 입력해주세요." 에러 메시지 출력하는 함수 */
-    const isNotEmpty = event.target.value;
-    const isEmail = event.target === inputEmail;
-
-    if(isNotEmpty) return;
-    event.target.classList.add('error_box');
-    if(isEmail) errorEmail.textContent = "이메일을 입력해주세요.";
-    else errorPw.textContent = "비밀번호를 입력해주세요.";
-}
-
-function emptyErrorReset(event){
-    /* 키보드 입력 중일 때 에러 메세지 삭제하는 함수 */
-    const isEmail = event.target === inputEmail;
-
-    event.target.classList.remove('error_box');
-    if(isEmail) errorEmail.textContent = "";
-    else errorPw.textContent = "";
-}
+import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
+import { addErrorMsg, removeErrorMsg } from './errorMsg.js';
 
 function checkEmail(event){
     /* 이메일 형식 유효성 검사하는 함수 */
@@ -38,8 +19,7 @@ function checkEmail(event){
     const isValid = emailType.test(event.target.value);
 
     if(isEmpty || isValid) return;
-    errorEmail.textContent = "올바른 이메일 주소가 아닙니다.";
-    inputEmail.classList.add('error_box');
+    addErrorMsg(event.target, "올바른 이메일 주소가 아닙니다.");
 }
 
 function checkLogin(event){
@@ -53,10 +33,8 @@ function checkLogin(event){
         location.href = '/folder';
     }
     else{
-        errorEmail.textContent = '이메일을 확인해주세요.';
-        inputEmail.classList.add('error_box');
-        errorPw.textContent = '비밀번호를 확인해주세요.';
-        inputPw.classList.add('error_box');
+        addErrorMsg(inputEmail, "이메일을 확인해주세요.");
+        addErrorMsg(inputPw, "비밀번호를 확인해주세요.");
     }
 }
 
@@ -79,13 +57,13 @@ function clickEye(event){
 }
 
 //이메일
-inputEmail.addEventListener('focusout', emptyError);
-inputEmail.addEventListener('input', emptyErrorReset);
+inputEmail.addEventListener('focusout', emptyInputEmail);
+inputEmail.addEventListener('input', removeErrorMsg);
 inputEmail.addEventListener('focusout', checkEmail);
 
 //비밀번호
-inputPw.addEventListener('focusout', emptyError);
-inputPw.addEventListener('input', emptyErrorReset);
+inputPw.addEventListener('focusout', emptyInputPw);
+inputPw.addEventListener('input', removeErrorMsg);
 
 //로그인 버튼
 form.addEventListener('submit', checkLogin);
