@@ -1,3 +1,8 @@
+const VALID_STATUS = {
+	"user-email": false,
+	"user-password": false,
+};
+
 const REGEX = {
 	"user-email":
 		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -48,6 +53,8 @@ const validateInput = ($target) => {
 	if (!REGEX[id].test(value))
 		msgType = value.length === 0 ? "empty" : "wrong";
 
+	VALID_STATUS[id] = !ERROR_MSG[id][msgType];
+
 	return ERROR_MSG[id][msgType];
 };
 
@@ -96,32 +103,34 @@ const togglePasswordInput = ({ target: eyeIcon }) => {
 //유저 정보 확인 임시
 const isValidUser = ([email, password]) => USER[email.value] === password.value;
 
-// 인풋의 blur 이벤트와 버튼의 submit 이벤트가 중복 실행되지 않도록 방지하는 플래그
-let isSubmit = false;
-
 //로그인 폼 전송
 const authFormLogin = () => {
-	isSubmit = true;
 	const authForm = document.querySelector(".auth__form");
 	const inputArr = authForm.querySelectorAll("#user-email, #user-password");
-	if (isValidUser(inputArr)) authForm.submit();
-	else {
+
+	inputArr.forEach((input) => toggleError(input));
+
+	if (!isAllInputsValid()) return;
+
+	if (!isValidUser(inputArr)) {
 		inputArr.forEach((target) => {
-			target.blur();
 			toggleError(target, ERROR_MSG[target.id].check);
 		});
+		return;
 	}
 
-	isSubmit = false;
+	authForm.submit();
 };
+
+const isAllInputsValid = () => Object.values(VALID_STATUS).every(Boolean);
 
 const formInputs = document.querySelectorAll(".form__input");
 formInputs.forEach((input) => {
-	input.addEventListener("blur", (e) => !isSubmit && toggleError(e.target));
+	input.addEventListener("blur", (e) => toggleError(e.target));
 });
 
 const loginButton = document.querySelector("#login-button");
-loginButton.addEventListener("mousedown", authFormLogin);
+loginButton.addEventListener("click", authFormLogin);
 
 const inputAndButton = [...formInputs, loginButton];
 inputAndButton.forEach((ele) =>
