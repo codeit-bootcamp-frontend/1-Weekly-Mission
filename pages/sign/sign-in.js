@@ -4,7 +4,9 @@ import {
     emailInput,
     passwordErrorMessageElement,
     passwordInput,
-    showErrorMessage
+    showErrorMessage,
+    validateEmailType,
+    validatePassword
 } from "./sign.js";
 
 const loginButton = document.querySelector('.btn.login');
@@ -24,4 +26,10 @@ function login(e) {
     showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.invalid);
 }
 
+emailInput.addEventListener("focusout", ({target}) => {
+    validateEmailType(target.value);
+});
+passwordInput.addEventListener("focusout", ({target}) => {
+    validatePassword(target.value);
+});
 loginButton.addEventListener("click", login);

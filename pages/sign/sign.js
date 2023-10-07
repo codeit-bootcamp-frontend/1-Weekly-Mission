@@ -8,12 +8,10 @@ export const passwordEyeButton = document.querySelector('.eye-off');
 export const emailErrorMessageElement = document.createElement("p");
 export const passwordErrorMessageElement = document.createElement("p");
 
-function validateEmailType(e) {
-    const input = e.target.value.trimEnd();
+export function validateEmailType(input) {
     if (emailRegex.test(input)) {
         removeErrorMessage(emailInput, emailErrorMessageElement);
-        emailInputValid.validate = true;
-        emailInputValid.data = input;
+        return true;
     } else {
         let errorMessage = "";
         if (!input) {
@@ -22,15 +20,9 @@ function validateEmailType(e) {
             errorMessage = errorMessages.email.typeInvalid;
         }
         showErrorMessage(emailInput, emailErrorMessageElement, errorMessage);
-        emailInputValid.validate = false;
-        emailInputValid.data = null;
+        return false;
     }
 }
-
-export const emailInputValid = {
-    validate: false,
-    data: null
-};
 
 export function showErrorMessage(input, errorMessageElement, errorMessage) {
     input.classList.add("error-input");
@@ -44,23 +36,15 @@ export function removeErrorMessage(input, errorMessageElement) {
     errorMessageElement.remove();
 }
 
-function validatePassword(e) {
-    const input = e.target.value;
+export function validatePassword(input) {
     if (input) {
         removeErrorMessage(passwordInput, passwordErrorMessageElement);
-        passwordInputValid.validate = true;
-        passwordInputValid.data = input;
+        return input;
     } else {
         showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.empty);
-        passwordInputValid.validate = false;
-        passwordInputValid.data = null;
+        return null;
     }
 }
-
-export const passwordInputValid = {
-    validate: false,
-    data: null
-};
 
 export function toggleEyeButton(input, eyeButton) {
     if (input.getAttribute("type") === "password") {
@@ -72,8 +56,6 @@ export function toggleEyeButton(input, eyeButton) {
     }
 }
 
-emailInput.addEventListener("focusout", validateEmailType);
-passwordInput.addEventListener("focusout", validatePassword);
 passwordEyeButton.addEventListener("click", () => {
     toggleEyeButton(passwordInput, passwordEyeButton);
 });
