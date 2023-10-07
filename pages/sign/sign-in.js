@@ -7,7 +7,7 @@ import {
     showErrorMessage
 } from "./sign.js";
 
-const submitButton = document.querySelector('.btn.login');
+const loginButton = document.querySelector('.btn.login');
 
 function login(e) {
     e.preventDefault();
@@ -24,4 +24,4 @@ function login(e) {
     showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.invalid);
 }
 
-submitButton.addEventListener("click", login);
+loginButton.addEventListener("click", login);

@@ -8,7 +8,7 @@ export const passwordEyeButton = document.querySelector('.eye-off');
 export const emailErrorMessageElement = document.createElement("p");
 export const passwordErrorMessageElement = document.createElement("p");
 
-export function validateEmailType(e) {
+function validateEmailType(e) {
     const input = e.target.value.trimEnd();
     if (emailRegex.test(input)) {
         removeErrorMessage(emailInput, emailErrorMessageElement);
@@ -44,7 +44,7 @@ export function removeErrorMessage(input, errorMessageElement) {
     errorMessageElement.remove();
 }
 
-export function validatePassword(e) {
+function validatePassword(e) {
     const input = e.target.value;
     if (input) {
         removeErrorMessage(passwordInput, passwordErrorMessageElement);
