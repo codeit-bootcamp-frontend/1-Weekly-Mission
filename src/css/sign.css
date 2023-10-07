@@ -93,7 +93,8 @@ body {
 
 .errorEmailMsg,
 .pwErrorSpan,
-.wrongMsg {
+.wrongMsg,
+.pwDisMatchSpan {
   color: var(--errorRed);
   font-family: Pretendard;
   font-size: 14px;
@@ -102,7 +103,9 @@ body {
 
 .pwErrorSpan,
 .wrongPwErrorSpan,
-.wrongPwSignupErrorSpan {
+.wrongPwSignupErrorSpan1,
+.wrongPwSignupErrorSpan2,
+.pwDisMatchSpan {
   display: inline-block;
   padding-top: 10px;
 }
