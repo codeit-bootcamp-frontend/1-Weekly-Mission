@@ -70,7 +70,7 @@ elementFromClassToId($dom, ".form__submit", "submits")
         res.input = this.inputPw
         res.img = this.imgPw
         break;
-      case this.buttonCh.id:
+      case this.buttonCh?.id:
         res.input = this.inputCh
         res.img = this.imgCh
         break;
