@@ -1,5 +1,10 @@
-import {emailInputEl, passwordInputEl, signButton, emailErrorEl, passwordErrorEl,
-  eyeComponents, emailPattern, accountInfo, activeError, eyeComponentOnOffChange} from '/js/utils.js';
+import {
+  emailInputEl, passwordInputEl, 
+  emailErrorEl, passwordErrorEl,
+  emailPattern, accountInfo, 
+  signButton, eyeComponents, 
+  activeError, eyeComponentOnOffChange
+} from '/js/utils.js';
 
 // 비밀번호 재확인 인풋값에 대한 검사를 하기 위한 변수(인풋 태그를 가져옴)
 const passwordAgainInputEl = document.querySelector('input.password-again');
@@ -53,3 +58,6 @@ passwordInputEl.addEventListener('focusout', checkPasswordInput);
 signButton.addEventListener('click', trySignUp);
 [...eyeComponents].forEach(compo => compo.addEventListener('click', eyeComponentOnOffChange));
 passwordAgainInputEl.addEventListener('focusout', checkPasswordAgainInput);
+emailInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && trySignUp());  // e.code도 같은 결과
+passwordInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && trySignUp());
+passwordAgainInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && trySignUp());
