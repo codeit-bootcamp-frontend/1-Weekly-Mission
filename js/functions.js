@@ -1,8 +1,8 @@
 import { email, password, passwordVisible, passwordCheckVisible } from "./tags.js";
 import { addEmailErrorMsg, addPassWordErrorMsgSignup, addPasswordCheckErrorMsg } from "./errormsg.js";
 
-const testEmail = "test@codeit.com";
-const testPassword = "codeit101";
+const TEST_EMAIL = "test@codeit.com";
+const TEST_PASSSWORD = "codeit101";
 
 function toggleEye(event) {
   event.preventDefault();
@@ -23,9 +23,9 @@ function loginPage() {
 function login(event) {
   event.preventDefault();
 
-  if (email.value === testEmail && password.value === testPassword) {
+  if (email.value === TEST_EMAIL && password.value === TEST_PASSSWORD) {
     loginPage();
-  } else if (email.value !== testEmail || password.value !== testPassword) {
+  } else if (email.value !== TEST_EMAIL || password.value !== TEST_PASSSWORD) {
     addEmailClass("이메일을 확인해주세요.");
     addPasswordClass("비밀번호를 확인해주세요.");
   }

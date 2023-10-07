@@ -1,11 +1,11 @@
-import { email, emailError, password, passwordCheck, passwordError } from "./tags.js";
+import { email, emailError, password, passwordCheck, passwordError, passwordCheckError } from "./tags.js";
 import { addEmailClass, addPasswordClass, addPasswordCheckClass } from "./addclass.js";
 
-const testEmail = "test@codeit.com";
+const TEST_EMAIL = "test@codeit.com";
 
 function validateEmail(email) {
-  const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return pattern.test(email);
+  const PATTERN = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return PATTERN.test(email);
 }
 
 function addEmailErrorMsg() {
@@ -15,7 +15,7 @@ function addEmailErrorMsg() {
   } else if (!validateEmail(email.value)) {
     addEmailClass("올바른 이메일 주소가 아닙니다.");
     return false;
-  } else if (location.pathname === "/pages/signup.html" && email.value === testEmail) {
+  } else if (location.pathname === "/pages/signup.html" && email.value === TEST_EMAIL) {
     addEmailClass("이미 사용중인 이메일입니다.");
     return false;
   }
@@ -36,9 +36,9 @@ function addPasswordErrorMsg() {
 }
 
 function addPassWordErrorMsgSignup() {
-  const stringCheck = /[a-zA-Z]/;
-  const numberCheck = /[0-9]/;
-  if (password.value.length >= 8 && stringCheck.test(password.value) && numberCheck.test(password.value)) {
+  const STRING_CEHCK = /[a-zA-Z]/;
+  const NUMBER_CHECK = /[0-9]/;
+  if (password.value.length >= 8 && STRING_CEHCK.test(password.value) && NUMBER_CHECK.test(password.value)) {
     return true;
   } else {
     addPasswordClass("비밀번호는 영문, 숫자, 조합 8자 이상 입력해주세요.");
@@ -63,7 +63,7 @@ function addPasswordCheckErrorMsg() {
 }
 
 function deletePasswordCheckErrorMsg() {
-  if (passwordCheck.parentElement.nextElementSibling === passwordError) {
+  if (passwordCheck.parentElement.nextElementSibling === passwordCheckError) {
     passwordCheck.classList.remove("error");
     passwordCheck.parentElement.nextElementSibling.remove();
   }

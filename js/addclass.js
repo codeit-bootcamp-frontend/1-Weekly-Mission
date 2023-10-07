@@ -1,4 +1,4 @@
-import { email, emailError, password, passwordCheck, passwordError } from "./tags.js";
+import { email, emailError, password, passwordCheck, passwordError, passwordCheckError } from "./tags.js";
 
 function addEmailClass(msg) {
   email.classList.add("error");
@@ -16,9 +16,9 @@ function addPasswordClass(msg) {
 
 function addPasswordCheckClass(msg) {
   passwordCheck.classList.add("error");
-  passwordError.classList.add("error-msg");
-  passwordError.textContent = msg;
-  passwordCheck.parentElement.parentElement.append(passwordError);
+  passwordCheckError.classList.add("error-msg");
+  passwordCheckError.textContent = msg;
+  passwordCheck.parentElement.parentElement.append(passwordCheckError);
 }
 
 export { addEmailClass, addPasswordClass, addPasswordCheckClass };
