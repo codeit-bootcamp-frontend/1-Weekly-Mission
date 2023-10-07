@@ -42,11 +42,20 @@ const validateInput = (e) => {
         // 중복 체크
         if (nodeInfo.value === "test@codeit.com") errType = 3;
       }
-    } else if (nodeInfo.type === "password") {
+    } else if (
+      nodeInfo.type === "password" ||
+      nodeInfo.className === "pwd_input" ||
+      nodeInfo.className === "pwd_check"
+    ) {
       //회원가입 페이지 전용
       if (nodeInfo.path === "signup/") {
         //정규표현식 체크
         if (!EXP_PASSWORD.test(nodeInfo.value)) errType = 2;
+        //비밀번호와 비밀번호체크의 값이 일치 하지 않을 경우
+        if (nodeInfo.className === "pwd_check") {
+          let inputPwdValue = document.querySelector(".pwd_input").value;
+          if (inputPwdValue !== nodeInfo.value) errType = 4;
+        }
       }
     }
   }
@@ -66,7 +75,8 @@ const validateInput = (e) => {
  * errType =\
  *    1 : value 없음\
  *    2 : 유효성 검사 실패\
- *    3 : 중복 검사 실패
+ *    3 : 중복 검사 실패\
+ *    4 : 비밀번호 체크 일치 하지않음 (회원가입)
  * @param {object} nodeInfo
  * @param {number} errType
  * @returns {string} result
@@ -95,6 +105,8 @@ const setErrorMsg = (nodeInfo, errType) => {
     }
   } else if (errType === 3) {
     message = `이미 사용 중인  ${errorMsg.type}입니다.`;
+  } else if (errType === 4) {
+    message = `${errorMsg.type}가 일치하지 않아요.`;
   }
 
   return message;
