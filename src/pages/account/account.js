@@ -1,8 +1,5 @@
 import * as nodeUtils from "../../utils/nodeUtils.js";
-// 정규 표현식
-const expEmail =
-  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
+import { EXP_EMAIL } from "../../constants/regexConstants.js";
 /**유효성 검사 함수
  *
  * 1.Null check
@@ -37,7 +34,7 @@ function validateInput(e) {
   } else {
     //정규표현식 체크
     if (nodeInfo.type === "email") {
-      errorGb = !expEmail.test(nodeInfo.value);
+      errorGb = !EXP_EMAIL.test(nodeInfo.value);
       errType = 2;
     }
   }
