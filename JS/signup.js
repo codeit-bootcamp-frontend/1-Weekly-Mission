@@ -36,10 +36,9 @@ function passwordValidation(){
 function password2Validation(){
   const password = tags.$inputPassword.value;
   const password2 = tags.$inputPassword2.value;
-  if(!isNotPasswordEmpty(password)){
+  if(!isNotPasswordEmpty(password2)){
     return errorStyle(tags.$inputPassword2, tags.$errorPassword2, "비밀번호를 입력해주세요.")
-  }
-  if(!chkPasswordSame(password, password2)){
+  } else if(!chkPasswordSame(password, password2)){
     return errorStyle(tags.$inputPassword2, tags.$errorPassword2, "비밀번호가 일치하지 않아요.")
   }
   removeErrorStyle(tags.$inputPassword2, tags.$errorPassword2)
