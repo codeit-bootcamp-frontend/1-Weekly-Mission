@@ -7,7 +7,7 @@ const inputPw = document.querySelector('input[name = "signin_pw"]');
 const form = document.querySelector('form');
 const eyeIcon = document.querySelector('.eye_icon');
 
-const TEST_EMAIL = 'test@codeit.com';
+export const TEST_EMAIL = 'test@codeit.com';
 const TEST_PW = 'codeit101';
 
 let eye_on = 0;
