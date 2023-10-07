@@ -10,7 +10,7 @@
 <body>
     <div class="Container">
         <!-- 로그인  -->
-        <div class="LoginForm">
+        <div class="LoginForm" id="loginForm">
             <!-- 링크, 회원가입  -->
             <div class="LoginHeader">
                 <div class="Logo">
@@ -33,11 +33,13 @@
                 <!-- 비밀번호  -->
                 <div class="InputForm">
                     <label>비밀번호</label>
-                    <div class="Input">
-                        <input type="password" id="password" placeholder="비밀번호를 입력하세요.">
-                        <img id="password-toggle" src="assets/img/eye-off.svg">
+                    <div>
+                        <div class="Input">
+                            <input type="password" id="password" placeholder="비밀번호를 입력하세요.">
+                            <img id="password-toggle" src="assets/img/eye-off.svg">
+                        </div>
+                        <div class="error-message" id="password-error">비밀번호를 입력해주세요.</div>
                     </div>
-                    <div class="error-message" id="password-error">비밀번호를 입력해주세요.</div>
                 </div>
                 <!-- 로그인 버튼  -->
                 <div class="LoginButton">
@@ -57,24 +59,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
-
-        </div>
-
-        <!-- 소셜 로그인  -->
-        <div class="SocialContainer">
-            <div class="SocialContent">소셜 로그인</div>
-            <div class="IconContainer">
-                <div class="Icon">
-                    <a href="https://www.google.com/"><img src="assets/img/google.svg"></a>
-                </div>
-                <div class="Icon">
-                    <a href="https://www.kakaocorp.com/page/"><img src="assets/img/kakao.svg"></a>
-                </div>
-            </div>
-        </div>
->>>>>>> c49222e5c7ae0d4bf3377d9e9b3b4af4d64e60e0
     </div>
     <script type="text/javascript" src="login.js"></script>
 </body>
