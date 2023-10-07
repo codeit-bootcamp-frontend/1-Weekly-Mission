@@ -5,6 +5,9 @@ import {
   $pwInvisible,
   $emailErrorMsg,
   $passwordErrorMsg,
+  $doubleCheckPw,
+  $doubleCheckPwErrorMsg,
+  $doubleCheckPwInvisible,
   showEmailError,
   deleteEmailError,
   showPasswordError,
@@ -13,12 +16,6 @@ import {
 } from "../assets/js/sign_common.js";
 
 // HTML tag를 담는 변수는 앞에 $를 붙임
-const $doubleCheckPw = document.querySelector("#doublecheck-pw");
-const $doubleCheckPwInvisible = document.querySelector(
-  ".doublecheck-pw-invisible"
-);
-
-const $doubleCheckPwErrorMsg = document.createElement("div");
 $emailErrorMsg.classList.add("email-error-msg");
 $passwordErrorMsg.classList.add("password-error-msg");
 $doubleCheckPwErrorMsg.classList.add("password-error-msg");
@@ -115,8 +112,10 @@ const checkAllInput = () => {
   ) {
     if ($email.value === "") {
       showEmailError("void");
-    } else if ($password.value === "" || $doubleCheckPw.value === "") {
+    } else if ($password.value === "") {
       showPasswordError("void");
+    } else if ($doubleCheckPw.value === "") {
+      showPasswordError("voidDC");
     }
   }
 };

@@ -3,9 +3,14 @@ const $email = document.querySelector("#email");
 const $password = document.querySelector("#password");
 const $form = document.querySelector("form");
 const $pwInvisible = document.querySelector(".password-invisible");
+const $doubleCheckPw = document.querySelector("#doublecheck-pw");
+const $doubleCheckPwInvisible = document.querySelector(
+  ".doublecheck-pw-invisible"
+);
 
 const $emailErrorMsg = document.createElement("div");
 const $passwordErrorMsg = document.createElement("div");
+const $doubleCheckPwErrorMsg = document.createElement("div");
 
 // togglePwVisibility() 에서 쓰임
 let togglePwVisible = false;
@@ -38,6 +43,9 @@ const showPasswordError = (type) => {
     $doubleCheckPw.classList.add("error-border");
   } else if (type === "void") {
     $passwordErrorMsg.textContent = "비밀번호를 입력해주세요.";
+  } else if (type === "voidDC") {
+    $doubleCheckPwErrorMsg.textContent = "비밀번호를 입력해주세요.";
+    $doubleCheckPw.classList.add("error-border");
   } else if (type === "wrong") {
     $passwordErrorMsg.textContent = "비밀번호를 확인해주세요.";
   }
@@ -71,6 +79,9 @@ export {
   $pwInvisible,
   $emailErrorMsg,
   $passwordErrorMsg,
+  $doubleCheckPw,
+  $doubleCheckPwErrorMsg,
+  $doubleCheckPwInvisible,
   showEmailError,
   deleteEmailError,
   showPasswordError,
