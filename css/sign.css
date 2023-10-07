@@ -149,11 +149,10 @@
 }
 
 /* js용 클래스 */
-.err,
-.err:focus-within {
+.err {
   color: var(--Red);
 }
 
-.err-input {
+input.err {
   border: 0.1rem solid var(--Red);
 }
