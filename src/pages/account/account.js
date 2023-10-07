@@ -28,7 +28,7 @@ const validateInput = (e) => {
     node.nextElementSibling.remove("error_msg");
   }
 
-  if (nodeInfo.value === "") {
+  if (nodeInfo.value.trim() === "") {
     errorGb = true;
     errType = 1;
   } else {
