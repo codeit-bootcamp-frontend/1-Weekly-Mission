@@ -36,13 +36,13 @@ loginButton.addEventListener("click", (event) => {
     window.location.href = window.location.origin + "/folder.html";
   }
   //  email과 password형식은 valid하지만, codeIt아이디가 아닐 때를 판단하고, 그에 따른 ui를 보이도록 리팩토링 해보세요.
-  // if (
-  //   isEmailValid(email) &&
-  //   isPasswordValid(password) &&
-  //   !isCodeItLogin(email, password)
-  // ) {
-  //   console.log("어라?");
-  // }
+  if (
+    isEmailValid(email) &&
+    isPasswordValid(password) &&
+    !isCodeItLogin(email, password)
+  ) {
+    window.location.href = window.location.origin + "/404ErrorPage.html";
+  }
 });
 
 eyeIcon.addEventListener("click", (event) => {
