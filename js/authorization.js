@@ -1,3 +1,6 @@
+import { validateEmailPattern, validatePasswordPattern } from "./validation.js";
+import { paintErrorMsg, removeErrorMsg } from "./paintError.js";
+
 const $authForm = document.querySelector(".form");
 const $authInputs = document.querySelectorAll(".form__input-box");
 const $authEmail = document.querySelector("#form-email");
@@ -7,47 +10,9 @@ const $togglePasswordButtons = document.querySelectorAll(
   ".form__password-toggle"
 );
 
-const ERROR_MSGS = {
-  emptyInput: {
-    email: "이메일을 입력해주세요.",
-    password: "비밀번호를 입력해주세요.",
-    text: "비밀번호를 입력해주세요.",
-  },
-  invalidInput: {
-    email: "올바른 이메일 주소가 아닙니다.",
-    password: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-    text: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-    "password-check": "비밀번호가 일치하지 않아요.",
-  },
-  invalidLogin: {
-    email: "이메일을 확인해주세요.",
-    password: "비밀번호를 확인해주세요.",
-  },
-  unavailableEmail: {
-    email: "이미 사용 중인 이메일입니다.",
-  },
-};
-
 const ACCOUNT = {
   email: "test@codeit.com",
   password: "codeit101",
-};
-
-const EMAIL_PATTERN =
-  /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
-const PASSWORD_PATTERN = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-
-const paintErrorMsg = ({ error, type, target }) => {
-  target.classList.add("form__input-box--error");
-  const $errorMsg = target.parentElement.querySelector(".error-msg");
-  $errorMsg.textContent = ERROR_MSGS[error][type];
-};
-
-const removeErrorMsg = (target) => {
-  target.classList.remove("form__input-box--error");
-  const $errorMsg = target.parentElement.querySelector(".error-msg");
-  $errorMsg.textContent = "";
 };
 
 const checkEmptyInput = (target) => {
@@ -67,7 +32,7 @@ const validateEmail = (target) => {
     return;
   }
 
-  if (!EMAIL_PATTERN.test(target.value)) {
+  if (!validateEmailPattern(target.value)) {
     paintErrorMsg({
       error: "invalidInput",
       type: target.type,
@@ -79,7 +44,7 @@ const validateEmail = (target) => {
 };
 
 const validatePassword = (target) => {
-  if (!target.value || !PASSWORD_PATTERN.test(target.value)) {
+  if (!target.value || !validatePasswordPattern(target.value)) {
     paintErrorMsg({
       error: "invalidInput",
       type: target.type,
@@ -91,7 +56,7 @@ const validatePassword = (target) => {
 };
 
 const isEmailAvailable = (target) => {
-  if (!EMAIL_PATTERN.test(target.value)) {
+  if (!validateEmailPattern(target.value)) {
     return;
   }
 
