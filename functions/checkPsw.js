@@ -1,32 +1,50 @@
 //함수수정하기
 
-import { inputPswEl, showMessageByPswEl, eyeOffIconEls } from './variablesEl.js'
-
-
-function removePswCheckMessage () {
-  showMessageByPswEl.textContent = '';
-  eyeOffIconEls[0].classList.remove('psw-wrong');
-  inputPswEl.classList.remove('input-wrong');
-}
+import { inputPswEl, showMessageByPswEl, eyeOffIconEls, inputPswCheckEl, showMessageByPswCheckEl } from './variablesEl.js'
 
 function checkPasswordFill () {
 const INPUT_PSW_VALUE = inputPswEl.value;
 
   if(!INPUT_PSW_VALUE) {
   showMessageByPswEl.textContent = '비밀번호를 입력해주세요.';
-  eyeOffIconEls[0].classList.add('psw-wrong');
+  eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.classList.add('psw-wrong'));
   inputPswEl.classList.add('input-wrong');
   }
 }
 
-function showPsw () {
-  if(eyeOffIconEls[0].getAttribute('src') === "images/icon/eye-off.svg") {
-    eyeOffIconEls[0].setAttribute('src', 'images/icon/eye-on.svg');
-    inputPswEl.removeAttribute('type');
-  } else {
-    eyeOffIconEls[0].setAttribute('src', 'images/icon/eye-off.svg');
-    inputPswEl.setAttribute('type','password');
+function checkPasswordValid (e) {
+  if(e.target.value.length < 8 ){
+    showMessageByPswEl.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.'
+    inputPswEl.classList.add('input-wrong');
   }
 }
 
-export { removePswCheckMessage, checkPasswordFill, showPsw };
+function checkPasswordSame () {
+  const INPUT_PSW_VALUE = inputPswEl.value;
+  const INPUT_PSW_CHECK_VALUE = inputPswCheckEl.value;
+
+  if(INPUT_PSW_VALUE !== INPUT_PSW_CHECK_VALUE) {
+    showMessageByPswCheckEl.textContent = '비밀번호가 일치하지 않아요.';
+    eyeOffIconEls[1].classList.add('psw-wrong');
+    inputPswCheckEl.classList.add('input-wrong');
+  }
+}
+
+function removePswCheckMessage () {
+  showMessageByPswEl.textContent = '';
+
+  eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.classList.remove('psw-wrong'));
+  inputPswEl.classList.remove('input-wrong');
+}
+
+function showPsw (e) {
+  if(e.target.getAttribute('src') === "images/icon/eye-off.svg") {
+    e.target.setAttribute('src', 'images/icon/eye-on.svg');
+    e.target.classList.contains('psw-check-eye') ? inputPswCheckEl.removeAttribute('type') : inputPswEl.removeAttribute('type');
+  } else {
+    e.target.setAttribute('src', 'images/icon/eye-off.svg');
+    e.target.classList.contains('psw-check-eye') ? inputPswCheckEl.setAttribute('type','password') : inputPswEl.setAttribute('type','password');
+  }
+}
+
+export { checkPasswordFill, checkPasswordValid, checkPasswordSame, removePswCheckMessage, showPsw };
