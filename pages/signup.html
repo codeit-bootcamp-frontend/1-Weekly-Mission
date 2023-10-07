@@ -39,28 +39,45 @@
               type="text"
               placeholder="이메일을 입력해주세요"
             />
+            <div class="email-error-message"></div>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input
-              class="password-input"
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-            />
-            <button class="eye-button" type="button">
-              <img src="/assets/eye-off.svg" />
-            </button>
+            <div password-input-wrapper>
+              <input
+                class="password-input"
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+              />
+              <div class="eye-wrapper">
+                <button class="eye-button" type="button">
+                  <img
+                    src="/assets/eye-off.svg"
+                    alt="비밀번호 표시 가능한 아이콘 버튼"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="password-error-message"></div>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호 확인</label>
-            <input
-              class="password-input"
-              type="password"
-              placeholder="비밀번호를 다시 입력해주세요"
-            />
-            <button class="eye-button" type="button">
-              <img src="/assets/eye-off.svg" />
-            </button>
+            <div password-input-wrapper>
+              <input
+                class="passwordCheck-input"
+                type="password"
+                placeholder="비밀번호를 다시 입력해주세요"
+              />
+              <div class="eye-wrapper">
+                <button class="eye-button" type="button">
+                  <img
+                    src="/assets/eye-off.svg"
+                    alt="비밀번호 표시 가능한 아이콘 버튼"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="passwordCheck-error-message"></div>
           </div>
         </div>
         <button class="cta" type="submit">로그인</button>

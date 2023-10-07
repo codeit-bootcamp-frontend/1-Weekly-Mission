@@ -94,7 +94,8 @@ header {
   height: 100%;
 }
 
-.password-input {
+.password-input,
+.passwordCheck-input {
   width: 100%;
   padding: 1.8rem 4.6rem 1.8rem 1.5rem; /*오른쪽 패딩값 줘서 눈 표시 가리지 않기*/
   border-radius: 0.8rem;

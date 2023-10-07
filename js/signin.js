@@ -2,6 +2,7 @@ const emailErrorMessage = document.querySelector(".email-error-message");
 const passwordErrorMessage = document.querySelector(".password-error-message");
 const email = document.querySelector(".email-input");
 const password = document.querySelector(".password-input");
+const passwordCheck = document.querySelector(".passwordCheck-input");
 const signButton = document.querySelector(".login-button");
 const passwordEye = document.querySelector(".eye-button");
 let eyeOn = false;
@@ -15,6 +16,10 @@ const checkEmailError = (event) => {
     emailErrorMessage.style.display = "block";
     emailErrorMessage.textContent = "올바른 이메일을 입력해주세요";
     email.classList.add("border-red");
+  } else if (event.target.value === "test@codeit.com") {
+    emailErrorMessage.style.display = "block";
+    emailErrorMessage.textContent = "이미 사용 중인 이메일입니다";
+    email.classList.add("border-red");
   } else {
     emailErrorMessage.style.display = "none";
     email.classList.remove("border-red");
@@ -22,6 +27,17 @@ const checkEmailError = (event) => {
 };
 
 const checkPasswordError = (event) => {
+  if (event.target.value === "") {
+    passwordErrorMessage.style.display = "block";
+    passwordErrorMessage.textContent = "비밀번호를 입력해주세요";
+    password.classList.add("border-red");
+  } else {
+    passwordErrorMessage.style.display = "none";
+    password.classList.remove("border-red");
+  }
+};
+
+const checkPasswordCheckError = (event) => {
   if (event.target.value === "") {
     passwordErrorMessage.style.display = "block";
     passwordErrorMessage.textContent = "비밀번호를 입력해주세요";
@@ -59,6 +75,7 @@ const changeEye = (event) => {
 
 email.addEventListener("focusout", checkEmailError);
 password.addEventListener("focusout", checkPasswordError);
+passwordCheck.addEventListener("focusout", checkPasswordCheckError);
 signButton.addEventListener("click", checkSignin);
 passwordEye.addEventListener("click", changeEye);
 
