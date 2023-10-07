@@ -2,8 +2,7 @@ import {$, $all} from './utils.js';
 
 const inputs = $all('input'); /* 이메일, 비밀번호 input */
 const form = $('form') /* form */
-const emailBox = $('.email-box'); /* 이메일 메세지*/
-const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
+
 
 /* 정규표현식 */
 const CHECK_EMAIL = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/; /* 이메일 체크*/
@@ -22,7 +21,7 @@ const inputAccount = {
 };
 
 /* 이메일 에러 메세지 */
-function emailErrorMessage(email) {
+function emailErrorMessage(email, emailBox) {
     if(!email.value) {
         emailBox.classList.add('empty');
         return ;
@@ -31,28 +30,33 @@ function emailErrorMessage(email) {
         emailBox.classList.add('wrong');
         return;
     } 
-    emailBox.classList.remove('disaccord', 'empty', 'wrong');
+    
 }
 /* 비밀번호 에러 메세지 */
-function passwordErrorMessage(password) {
+function passwordErrorMessage(password, passwordBox) {
     if(!password.value) {
         passwordBox.classList.add('empty');
         return;
     } 
-    passwordBox.classList.remove('empty', 'disaccord');
+    
 }
 
 /* focusout 될 시 입력값 저장 */
 function hendleFocusOut(event) {
+    const emailBox = $('.email-box'); /* 이메일 메세지*/
+    const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
+
     const {target = target.name} = event; /* 이메일과 비밀번호 분해 */
 
     if(target.name === 'email') {
+        emailBox.classList.remove('disaccord', 'empty', 'wrong'); /* 제거 */
         /* 아이디 입력확인 */
-        emailErrorMessage(email)
+        emailErrorMessage(email, emailBox)
         inputAccount.email = email.value;
     } else {
+        passwordBox.classList.remove('empty', 'disaccord'); /* 제거 */
         /* 비밀번호 입력확인 */
-        passwordErrorMessage(password)
+        passwordErrorMessage(password, passwordBox)
         inputAccount.password = password.value;
     }
 }
@@ -60,6 +64,9 @@ function hendleFocusOut(event) {
 
 /* 로그인 확인 */
 function handleSubmit(event) {
+    const emailBox = $('.email-box'); /* 이메일 메세지*/
+    const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
+    
     event.preventDefault();
     if(inputAccount.email === testAccount.email && inputAccount.password === testAccount.password) {
         alert('환영합니다.');
