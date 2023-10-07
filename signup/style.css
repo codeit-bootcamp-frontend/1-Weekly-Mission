@@ -90,6 +90,15 @@ label {
   display: inline-block;
 }
 
+.input-control.error input {
+  border-color: red;
+  margin-bottom: 5px;
+}
+.input-control.error .error {
+  font-size: 14px;
+  color: red;
+}
+
 /* Mobile */
 @media (max-width: 767px) {
   body {

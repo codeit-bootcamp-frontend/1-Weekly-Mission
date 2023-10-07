@@ -13,12 +13,19 @@
       이미 회원이신가요? <a class="sign-in" href="/signin/index.html">로그인 하기</a>
     </p>
     <div class="input-box">
-      <label for="email">이메일</label>
-      <input id="email" type="email">
-      <label id="password" for="password">비밀번호</label>
-      <input class="input-password" type="password">
-      <label id="password" for="password">비밀번호 확인</label>
-      <input class="input-password input-password2" type="password">
+      <div class="input-control">
+        <label for="email">이메일</label>
+        <input id="email" type="email">
+        <p class="error"></p>
+      </div>
+      <div class="input-control">
+        <label for="password">비밀번호</label>
+        <input id="password" type="password">
+      </div>
+      <div class="input-control">
+        <label for="password">비밀번호 확인</label>
+        <input id="password" class="password-check" type="password">
+      </div>
     </div>
     <button class="btn-login cta">로그인</button>
     <div class="social-login">
@@ -33,5 +40,6 @@
       </div>
     </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
