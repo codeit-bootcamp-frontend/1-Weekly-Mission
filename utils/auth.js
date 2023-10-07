@@ -85,5 +85,6 @@ export function handlePwInputDoubleCheck(
     passwordCheckInput.classList.add("input-error");
   } else {
     errorMsg.remove();
+    passwordCheckInput.classList.remove("input-error");
   }
 }
