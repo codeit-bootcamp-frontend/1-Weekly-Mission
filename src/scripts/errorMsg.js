@@ -16,5 +16,16 @@ function removeErrorMsg(event){
     event.target.classList.remove('error_box');
     errorMsg.textContent = "";
 }
+/**
+ * 에러 메시지가 있는 input 태그가 있는지 확인하는 함수
+ * @param {*} errorList 'error_msg' class인 div 태그들의 list
+ */
+function checkErrorMsg(errorList){
+    let existError = 0;
+    errorList.forEach(err => {
+        if(err.textContent !== "") existError = 1;
+    });
+    return existError;
+}
 
-export {addErrorMsg, removeErrorMsg};
+export {addErrorMsg, removeErrorMsg, checkErrorMsg};
