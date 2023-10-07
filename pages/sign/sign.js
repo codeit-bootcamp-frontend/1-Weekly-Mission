@@ -1,14 +1,5 @@
-const emailRegex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
-const errorMessages = {
-    email: {
-        empty: "이메일을 입력해주세요.",
-        invalid: "이메일을 확인해주세요."
-    },
-    password: {
-        empty: "비밀번호를 입력해주세요.",
-        invalid: "비밀번호를 확인해주세요."
-    }
-};
+import {errorMessages} from "./error-message.js";
+import {emailRegex} from "./constant.js";
 
 const emailInput = document.querySelector('#signin-email');
 const passwordInput = document.querySelector('#signin-password');
