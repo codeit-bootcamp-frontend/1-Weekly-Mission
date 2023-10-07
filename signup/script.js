@@ -17,6 +17,9 @@ const checkEmailValidation = () => {
   } else if (!isValidEmail(email)) {
     errorMessage.textContent = '올바른 이메일 주소가 아닙니다.';
     inputControl.classList.add('error');
+  } else if (email == 'test@codeit.com') {
+    errorMessage.textContent = '이미 사용 중인 이메일입니다.';
+    inputControl.classList.add('error');
   } else {
     errorMessage.textContent = '';
     inputControl.classList.remove('error');
