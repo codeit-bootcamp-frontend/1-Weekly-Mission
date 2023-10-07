@@ -1,8 +1,8 @@
-import { inputEmailEl, inputPswEl, eyeOffIconEls } from './functions/variablesEl.js';
+import { inputEmailEl, inputPswEl, eyeOffIconEls, inputBoxEls } from './functions/variablesEl.js';
 
 import { checkEmailValid, removeEmailCheckMessage } from './functions/checkEmail.js';
 import { checkPasswordFill, removePswCheckMessage, showPsw } from './functions/checkPsw.js';
-import { checkUserForLogin } from './functions/login.js';
+import { checkUserForLogin, checkUserForLoginByEnter } from './functions/login.js';
 
  function initSignIn() {
   const loginBtn = document.querySelector('.sign-link');
@@ -16,6 +16,8 @@ import { checkUserForLogin } from './functions/login.js';
   loginBtn.addEventListener('click', checkUserForLogin);
 
   eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.addEventListener('click', showPsw));
+
+  inputBoxEls.forEach((inputBox) => inputBox.addEventListener('keypress', checkUserForLoginByEnter));
 }
 
 initSignIn();

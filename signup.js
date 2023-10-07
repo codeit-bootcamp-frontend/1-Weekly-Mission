@@ -1,7 +1,7 @@
-import { inputEmailEl, inputPswEl, eyeOffIconEls, inputPswCheckEl } from './functions/variablesEl.js';
+import { inputEmailEl, inputPswEl, eyeOffIconEls, inputPswCheckEl, inputBoxEls } from './functions/variablesEl.js';
 import { checkEmailValid, removeEmailCheckMessage } from './functions/checkEmail.js';
 import { checkPasswordFill, checkPasswordSame, removePswCheckMessage, removePswSameCheckMessage, checkPasswordValid, showPsw } from './functions/checkPsw.js';
-import { checkUserForJoin } from './functions/join.js';
+import { checkUserForJoin ,checkUserForJoinByEnter } from './functions/join.js';
 
 
 function initSignUp () {
@@ -19,8 +19,9 @@ function initSignUp () {
 
   eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.addEventListener('click', showPsw));
 
-  joinBtn.addEventListener('click', checkUserForJoin)
-  
+  joinBtn.addEventListener('click', checkUserForJoin);
+
+  inputBoxEls.forEach((inputBox) => inputBox.addEventListener('keypress', checkUserForJoinByEnter));
 }
 
 initSignUp ();
