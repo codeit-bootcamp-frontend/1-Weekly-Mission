@@ -111,8 +111,7 @@ main {
     border-color: var(--error-color);
 }
 
-.email-type-error,
-.password-type-error {
+.error-input-message {
     color: var(--error-color);
     font-size: 0.8rem;
 }
