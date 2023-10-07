@@ -5,7 +5,7 @@ const loginBtn = document.querySelector("#loginBtn");
 const emailErrorText = document.querySelector("#emailError");
 const passwordErrorText = document.querySelector("#passwordError");
 
-const toggleVisibility = document.querySelector("#toggleVisibility");
+const toggleVisibility = document.querySelector(".toggleVisibility");
 
 emailInput.addEventListener("blur", function () {
   const email = emailInput.value;
