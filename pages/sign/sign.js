@@ -15,12 +15,13 @@ const passwordInput = document.querySelector('#signin-password');
 const submitButton = document.querySelector('.btn.login');
 const eyeButton = document.querySelector('.eye-off');
 
-const errorMessageElement = document.createElement("p");
+const emailErrorMessageElement = document.createElement("p");
+const passwordErrorMessageElement = document.createElement("p");
 
 function validateEmailType(e) {
     const input = e.target.value.trimEnd();
     if (emailRegex.test(input)) {
-        removeErrorMessage(emailInput);
+        removeErrorMessage(emailInput, emailErrorMessageElement);
     } else {
         let errorMessage = "";
         if (!input) {
@@ -28,18 +29,18 @@ function validateEmailType(e) {
         } else if (!emailRegex.test(input)) {
             errorMessage = errorMessages.email.invalid;
         }
-        showErrorMessage(emailInput, errorMessage);
+        showErrorMessage(emailInput, emailErrorMessageElement, errorMessage);
     }
 }
 
-function showErrorMessage(input, errorMessage) {
+function showErrorMessage(input, errorMessageElement, errorMessage) {
     input.classList.add("error-input");
     errorMessageElement.textContent = errorMessage;
     errorMessageElement.classList.add("error-input-message");
     input.after(errorMessageElement);
 }
 
-function removeErrorMessage(input) {
+function removeErrorMessage(input, errorMessageElement) {
     input.classList.remove("error-input");
     errorMessageElement.remove();
 }
@@ -47,13 +48,9 @@ function removeErrorMessage(input) {
 function validatePassword(e) {
     const input = e.target.value;
     if (input) {
-        passwordInput.classList.remove("error-input");
-        errorMessageElement.remove();
+        removeErrorMessage(passwordInput, passwordErrorMessageElement);
     } else if (!input) {
-        errorMessageElement.textContent = errorMessages.password.empty;
-        passwordInput.classList.add("error-input");
-        errorMessageElement.classList.add("error-input-message");
-        passwordInput.after(errorMessageElement);
+        showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.empty);
     }
 }
 
@@ -66,15 +63,8 @@ function login(e) {
         return;
     }
 
-    errorMessageElement.textContent = "이메일을 확인해주세요.";
-    emailInput.classList.add("error-input");
-    errorMessageElement.classList.add("error-input-message");
-    emailInput.after(errorMessageElement);
-
-    errorMessageElement.textContent = "비밀번호를 확인해주세요.";
-    passwordInput.classList.add("error-input");
-    errorMessageElement.classList.add("error-input-message");
-    passwordInput.after(errorMessageElement);
+    showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.invalid);
+    showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.invalid);
 }
 
 function toggleEyeButton(e) {
