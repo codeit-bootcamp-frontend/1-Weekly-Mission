@@ -2,8 +2,7 @@ const emailInput = document.querySelector('.email');
 const passwordInput = document.querySelector('.password');
 const passwordConfirmInput = document.querySelector('.password-confirm');
 const form = document.querySelector('form');
-const eyeButton = document.querySelector('.eye-button');
-const eyeIcon = document.querySelectorAll('.eye-icon');
+const eyeIcons = document.querySelectorAll('.eye-icon');
 
 const emailRegex = new RegExp(/^[a-z\d]+@[a-z]+\.[a-z]{2,}$/);
 const passwordRegex = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
@@ -72,19 +71,25 @@ const trySignUp = (e) => {
   }
 };
 
-const toggleEyeButton = () => {
-  if (!eyeIcon[0].classList.contains('off')) { // 비밀번호 표시 off인 경우
-    passwordInput.removeAttribute('type'); // {type:"password"} 속성 제거
-  } else { // 비밀번호 표시 on인 경우
-    passwordInput.setAttribute('type', 'password'); // {type: "password"} 속성 추가
+const toggleEyeButton = (e) => {
+  const eyeOff = e.target.parentElement.children[0];
+  const eyeOn = e.target.parentElement.children[1];
+  const input = e.target.parentElement.parentElement.parentElement.children[1];
+
+  if (!eyeOff.classList.contains('display-none')) {
+    input.removeAttribute('type');
+  } else {
+    input.setAttribute('type', 'password');
   }
 
-  eyeIcon[0].classList.toggle('off');
-  eyeIcon[1].classList.toggle('off');
-};
+  eyeOff.classList.toggle('display-none');
+  eyeOn.classList.toggle('display-none');
+}
 
 emailInput.addEventListener('focusout', checkEmailInput);
 passwordInput.addEventListener('focusout', checkPasswordInput);
 passwordConfirmInput.addEventListener('focusout', checkPasswordConfirmInput)
 form.addEventListener('submit', trySignUp);
-eyeButton.addEventListener('click', toggleEyeButton);
+for (let el of eyeIcons) {
+  el.addEventListener('click', toggleEyeButton);
+}
