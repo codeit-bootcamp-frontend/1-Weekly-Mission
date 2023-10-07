@@ -52,7 +52,7 @@ const validateInput = (e) => {
         //정규표현식 체크
         if (!EXP_PASSWORD.test(nodeInfo.value)) errType = 2;
         //비밀번호와 비밀번호체크의 값이 일치 하지 않을 경우
-        if (nodeInfo.className === "pwd_check") {
+        if (node.classList.contains("pwd_check")) {
           let inputPwdValue = document.querySelector(".pwd_input").value;
           if (inputPwdValue !== nodeInfo.value) errType = 4;
         }
