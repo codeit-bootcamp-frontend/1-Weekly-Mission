@@ -149,7 +149,8 @@
 }
 
 /* js용 클래스 */
-.err {
+.err,
+.err:focus-within {
   color: var(--Red);
 }
 
