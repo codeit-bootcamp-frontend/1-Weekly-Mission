@@ -1,7 +1,8 @@
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/authConstant.js";
 import { INPUT_ERROR_MESSAGE } from "../constants/error.js";
 
-export let emailRegex = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
+export let emailRegex = new RegExp(/^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$/);
+export let pwRegex = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
 
 export const emailEmptyMsg = createErrorMsg(
   INPUT_ERROR_MESSAGE,
@@ -31,6 +32,11 @@ export const emailDuplicatedMsg = createErrorMsg(
 export const emailNotMachedMsg = createErrorMsg(
   INPUT_ERROR_MESSAGE,
   "비밀번호가 일치하지 않아요."
+);
+
+export const pwInvalidMsg = createErrorMsg(
+  INPUT_ERROR_MESSAGE,
+  "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요."
 );
 
 export function createErrorMsg(style, errorStatement) {
@@ -86,5 +92,15 @@ export function handlePwInputDoubleCheck(
   } else {
     errorMsg.remove();
     passwordCheckInput.classList.remove("input-error");
+  }
+}
+
+export function handlePwInputInvalidCheck(regex, pwInput, errorMsg) {
+  if (!regex.test(pwInput.value.trim())) {
+    pwInput.parentNode.after(errorMsg);
+    pwInput.classList.add("input-error");
+  } else {
+    errorMsg.remove();
+    pwInput.classList.remove("input-error");
   }
 }

@@ -16,6 +16,9 @@ import {
   emailRegex,
   handlePwInputDoubleCheck,
   emailNotMachedMsg,
+  handlePwInputInvalidCheck,
+  pwRegex,
+  pwInvalidMsg,
 } from "../utils/auth.js";
 
 emailInput.addEventListener("blur", () =>
@@ -29,4 +32,7 @@ emailInput.addEventListener("blur", () =>
 );
 pwCheckInput.addEventListener("blur", () =>
   handlePwInputDoubleCheck(pwInput, pwCheckInput, emailNotMachedMsg)
+);
+pwInput.addEventListener("blur", () =>
+  handlePwInputInvalidCheck(pwRegex, pwInput, pwInvalidMsg)
 );
