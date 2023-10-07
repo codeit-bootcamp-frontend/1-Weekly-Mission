@@ -1,23 +1,24 @@
 import {
     emailErrorMessageElement,
     emailInput,
-    passwordEyeButton,
+    emailInputValid,
+    passwordErrorMessageElement,
     passwordInput,
+    passwordInputValid,
     removeErrorMessage,
     showErrorMessage,
     toggleEyeButton,
-    validateEmailType,
-    validatePassword,
 } from "./sign.js";
 import {errorMessages} from "./error-message.js";
+import {passwordRegex} from "./constant.js";
 
 const passwordCheckInput = document.querySelector('#sign-password-repeat');
 const passwordCheckEyeButton = document.querySelector('.eye-off-check');
 
-function validateSignUpEmail(e) {
-    if(validateEmailType(e)) {
-        const input = e.target.value.trimEnd();
-        if (input === "test@codeit.com") {
+function validateSignUpEmail() {
+    const {validate, data} = emailInputValid;
+    if (validate) {
+        if (data === "test@codeit.com") {
             showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.duplicated);
         } else {
             removeErrorMessage(emailInput, emailErrorMessageElement);
@@ -25,11 +26,17 @@ function validateSignUpEmail(e) {
     }
 }
 
+function validateSignUpPassword() {
+    const {validate, data} = passwordInputValid;
+    if (validate) {
+        if (!passwordRegex.test(data)) {
+            showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.typeInvalid);
+        }
+    }
+}
+
 emailInput.addEventListener("focusout", validateSignUpEmail);
-passwordInput.addEventListener("focusout", validatePassword);
-passwordEyeButton.addEventListener("click", () => {
-    toggleEyeButton(passwordInput, passwordEyeButton);
-});
+passwordInput.addEventListener("focusout", validateSignUpPassword);
 passwordCheckEyeButton.addEventListener("click", () => {
     toggleEyeButton(passwordCheckInput, passwordCheckEyeButton);
 });

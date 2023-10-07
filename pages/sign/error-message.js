@@ -7,6 +7,7 @@ export const errorMessages = {
     },
     password: {
         empty: "비밀번호를 입력해주세요.",
-        invalid: "비밀번호를 확인해주세요."
+        typeInvalid: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
+        invalid: "비밀번호를 확인해주세요.",
     }
 };

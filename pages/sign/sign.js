@@ -10,11 +10,17 @@ const submitButton = document.querySelector('.btn.login');
 export const emailErrorMessageElement = document.createElement("p");
 export const passwordErrorMessageElement = document.createElement("p");
 
+export const emailInputValid = {
+    validate: false,
+    data: null
+};
+
 export function validateEmailType(e) {
     const input = e.target.value.trimEnd();
     if (emailRegex.test(input)) {
         removeErrorMessage(emailInput, emailErrorMessageElement);
-        return true;
+        emailInputValid.validate = true;
+        emailInputValid.data = input;
     } else {
         let errorMessage = "";
         if (!input) {
@@ -23,7 +29,8 @@ export function validateEmailType(e) {
             errorMessage = errorMessages.email.typeInvalid;
         }
         showErrorMessage(emailInput, emailErrorMessageElement, errorMessage);
-        return false;
+        emailInputValid.validate = false;
+        emailInputValid.data = null;
     }
 }
 
@@ -39,12 +46,21 @@ export function removeErrorMessage(input, errorMessageElement) {
     errorMessageElement.remove();
 }
 
+export const passwordInputValid = {
+    validate: false,
+    data: null
+};
+
 export function validatePassword(e) {
     const input = e.target.value;
     if (input) {
         removeErrorMessage(passwordInput, passwordErrorMessageElement);
-    } else if (!input) {
+        passwordInputValid.validate = true;
+        passwordInputValid.data = input;
+    } else {
         showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.empty);
+        passwordInputValid.validate = false;
+        passwordInputValid.data = null;
     }
 }
 
