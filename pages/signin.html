@@ -6,7 +6,7 @@
   <title>로그인</title>
   <link rel="stylesheet" href="../styles/reset.css">
   <link rel="stylesheet" href="../styles/sign.css">
-  <script src="../js/signin.js" defer></script>
+  <script type="module" src="../js/signin.js" defer></script>
 </head>
 <body class="background">
   <div class="frame">
@@ -25,7 +25,7 @@
           </label>
           <label class="form--label">비밀번호
             <input id="form--input__password" class="form--input" name="password" type="password" required>
-            <button class="form--eye-button" type="button"></button>
+            <button id="eye-button1" class="form--eye-button" type="button"></button>
             <p id="form--error-message__password" class="form--error-message__style"></p>
           </label>
           <button id="form--login-button" class="form--sign-button" type="button">
