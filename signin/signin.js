@@ -3,9 +3,9 @@ const passwordInput = document.querySelector('#password');
 const loginBtn = document.querySelector('button');
 const eyeOff = document.querySelector('.eye-off');
 
-function reset() {
-    emailInput.classList.remove('warning');
-    const warningText = document.querySelector('.warning-text');
+function reset(e) {
+    e.target.classList.remove('warning');
+    const warningText = e.target.getAttribute('warning-text')
     if (warningText) {
         warningText.remove();
     }
@@ -77,3 +77,9 @@ passwordInput.addEventListener('focusout', checkerPassword);
 passwordInput.addEventListener('focusin', reset);
 loginBtn.addEventListener('click', login);
 eyeOff.addEventListener('click', eyeOnOff)
+
+
+
+
+
+export {checkerEmail, reset, eyeOnOff};
