@@ -1,11 +1,10 @@
-import { inputPswEl, showMessageByPswEl, eyeOffIconEls, inputPswCheckEl, showMessageByPswCheckEl } from './variablesEl.js'
+import { inputPswEl, showMessageByPswEl, inputPswCheckEl,showMessageByPswCheckEl } from './variablesEl.js'
 
 function checkPasswordFill () {
 const INPUT_PSW_VALUE = inputPswEl.value;
 
   if(!INPUT_PSW_VALUE) {
   showMessageByPswEl.textContent = '비밀번호를 입력해주세요.';
-  eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.classList.add('psw-wrong'));
   inputPswEl.classList.add('input-wrong');
   }
 }
@@ -26,7 +25,6 @@ function checkPasswordSame () {
 
   if(INPUT_PSW_VALUE !== INPUT_PSW_CHECK_VALUE) {
     showMessageByPswCheckEl.textContent = '비밀번호가 일치하지 않아요.';
-    eyeOffIconEls[1].classList.add('psw-wrong');
     inputPswCheckEl.classList.add('input-wrong');
   } else {
     inputPswCheckEl.classList.remove('input-wrong');
@@ -35,26 +33,25 @@ function checkPasswordSame () {
 
 function removePswCheckMessage () {
   showMessageByPswEl.textContent = '';
-
-  eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.classList.remove('psw-wrong'));
   inputPswEl.classList.remove('input-wrong');
 }
 
 function removePswSameCheckMessage () {
-showMessageByPswCheckEl.textContent = '';
-
-  eyeOffIconEls.forEach((eyeOffIconEl) => eyeOffIconEl.classList.remove('psw-wrong'));
+  showMessageByPswCheckEl.textContent = '';
   inputPswCheckEl.classList.remove('input-wrong');
 }
 
-// 눈아이콘수정
 function showPsw (e) {
   if(e.target.getAttribute('src') === "images/icon/eye-off.svg") {
     e.target.setAttribute('src', 'images/icon/eye-on.svg');
-    e.target.classList.contains('psw-check-eye') ? inputPswCheckEl.removeAttribute('type') : inputPswEl.removeAttribute('type');
+    e.target.classList.contains('psw-check-eye') ? 
+    inputPswCheckEl.removeAttribute('type') : 
+    inputPswEl.removeAttribute('type');
   } else {
     e.target.setAttribute('src', 'images/icon/eye-off.svg');
-    e.target.classList.contains('psw-check-eye') ? inputPswCheckEl.setAttribute('type','password') : inputPswEl.setAttribute('type','password');
+    e.target.classList.contains('psw-check-eye') ? 
+    inputPswCheckEl.setAttribute('type','password') : 
+    inputPswEl.setAttribute('type','password');
   }
 }
 

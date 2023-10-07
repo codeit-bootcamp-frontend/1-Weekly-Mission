@@ -17,7 +17,10 @@ function checkEmailValid(e) {
     return;
   }
 
-  if(e.target.classList.contains('overlap-check') && INPUT_EMAIL_VALUE === TEST_EMAIL) {
+  if(
+    e.target.classList.contains('overlap-check') && 
+     INPUT_EMAIL_VALUE === TEST_EMAIL
+    ) {
     showMessageByEmailEl.textContent = '이미 사용중인 이메일입니다.'
     e.target.classList.add('input-wrong');
   }

@@ -19,6 +19,7 @@ export {
   inputPswCheckEl, 
   showMessageByPswCheckEl, 
   TEST_EMAIL, 
-  TEST_PSW };
+  TEST_PSW 
+};
 
   

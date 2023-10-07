@@ -57,18 +57,14 @@ body {
   font-size: 14px;
 }
 
-.psw-box {
+.psw-with-eye {
   position: relative;
 }
 
 .psw-box img {
   position: absolute;
   right: 5%;
-  top: 55%;
-}
-
-.psw-box img.psw-wrong {
-  top: 47%;
+  top: 50%;
 }
 
 .sign-box .input-box input {
