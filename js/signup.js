@@ -57,9 +57,9 @@ const trySignUp = (e) => {
   if (emailRegex.test(emailInput.value) && passwordRegex.test(passwordInput.value) && passwordConfirmInput.value === passwordInput.value) {
     location.href = '/html/folder.html';
   } else {
-    checkEmail(emailInput);
-    checkPassword(passwordInput);
-    checkPasswordConfirm(passwordConfirmInput);
+    checkEmail(emailInput.value);
+    checkPassword(passwordInput.value);
+    checkPasswordConfirm(passwordConfirmInput.value);
   }
 };
 
