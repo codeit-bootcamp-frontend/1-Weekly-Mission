@@ -18,9 +18,15 @@ const passwordLabel = document.querySelector(".password-label");
 const repasswordLabel = document.querySelector(".re-password-label");
 const eyeIcon = document.querySelector(".eye-on-image");
 const ReEyeIcon = document.querySelector(".re-eye-on-image");
-
-function passwordMatch(password, rePassword, repasswordLabel) {
-  if (password.value.trim() !== rePassword.value.trim()) {
+const registerButton = document.querySelector(".register-button");
+function isPasswordMatch(password, rePassword) {
+  if (password.value.trim() === rePassword.value.trim()) {
+    return true;
+  }
+  return false;
+}
+function showPasswordMatchErrorMessage(password, rePassword, repasswordLabel) {
+  if (!isPasswordMatch(password, rePassword)) {
     const errorMsgs = repasswordLabel.querySelector(".error-message");
     errorMsgs.innerText = "비밀번호가맞지않습니다";
     errorMsgs.style.color = "red";
@@ -59,9 +65,7 @@ password.addEventListener("focusout", (event) => {
 rePassword.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(rePassword, repasswordLabel);
-  if (password.value.length && rePassword.value.length) {
-    passwordMatch(password, rePassword, repasswordLabel);
-  }
+  showPasswordMatchErrorMessage(password, rePassword, repasswordLabel);
 });
 
 eyeIcon.addEventListener("click", (event) => {
@@ -72,4 +76,15 @@ eyeIcon.addEventListener("click", (event) => {
 ReEyeIcon.addEventListener("click", (event) => {
   event.preventDefault();
   passwordVisibility(ReEyeIcon, rePassword);
+});
+
+registerButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (
+    isEmailValid(email) &&
+    isPasswordValid(password) &&
+    isPasswordMatch(password, rePassword)
+  ) {
+    window.location.href = window.location.origin + "/folder.html";
+  }
 });
