@@ -185,6 +185,7 @@ body {
   height: 16px;
   background-color: var(--color-white);
   border: none;
+  cursor: pointer;
 }
 
 .input-error {

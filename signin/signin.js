@@ -5,6 +5,7 @@ import {
   emailIncorrectMsg,
   pwIncorrectMsg,
   emailRegex,
+  handleEyeBtnClick,
 } from "../utils/auth.js";
 import {
   emailInput,
@@ -49,16 +50,6 @@ function handleSigninBtnClick() {
     pwInput.value.trim === TEST_PASSWORD
   ) {
     location.href = "/folder";
-  }
-}
-
-function handleEyeBtnClick() {
-  if (pwInput.getAttribute("type") === "password") {
-    pwInput.setAttribute("type", "text");
-    eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-on.svg");
-  } else {
-    pwInput.setAttribute("type", "password");
-    eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-off.svg");
   }
 }
 

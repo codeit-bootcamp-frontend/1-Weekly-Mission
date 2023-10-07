@@ -5,6 +5,7 @@ import {
   pwWrapper,
   signinBtn,
   eyeBtn,
+  pwCheckEyeBtn,
 } from "../utils/tags.js";
 import {
   emailDuplicatedMsg,
@@ -19,6 +20,7 @@ import {
   handlePwInputInvalidCheck,
   pwRegex,
   pwInvalidMsg,
+  handleEyeBtnClick,
 } from "../utils/auth.js";
 
 emailInput.addEventListener("blur", () =>
@@ -35,4 +37,8 @@ pwCheckInput.addEventListener("blur", () =>
 );
 pwInput.addEventListener("blur", () =>
   handlePwInputInvalidCheck(pwRegex, pwInput, pwInvalidMsg)
+);
+eyeBtn.addEventListener("click", () => handleEyeBtnClick(pwInput, eyeBtn));
+pwCheckEyeBtn.addEventListener("click", () =>
+  handleEyeBtnClick(pwCheckInput, pwCheckEyeBtn)
 );

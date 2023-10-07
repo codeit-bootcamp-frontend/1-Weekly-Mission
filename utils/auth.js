@@ -1,5 +1,6 @@
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/authConstant.js";
 import { INPUT_ERROR_MESSAGE } from "../constants/error.js";
+import { eyeBtn, pwInput } from "./tags.js";
 
 export let emailRegex = new RegExp(/^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$/);
 export let pwRegex = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
@@ -102,5 +103,15 @@ export function handlePwInputInvalidCheck(regex, pwInput, errorMsg) {
   } else {
     errorMsg.remove();
     pwInput.classList.remove("input-error");
+  }
+}
+
+export function handleEyeBtnClick(inputElement, eyeBtn) {
+  if (inputElement.getAttribute("type") === "password") {
+    inputElement.setAttribute("type", "text");
+    eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-on.svg");
+  } else {
+    inputElement.setAttribute("type", "password");
+    eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-off.svg");
   }
 }
