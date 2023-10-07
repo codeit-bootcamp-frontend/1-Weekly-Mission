@@ -10,11 +10,6 @@ const submitButton = document.querySelector('.btn.login');
 export const emailErrorMessageElement = document.createElement("p");
 export const passwordErrorMessageElement = document.createElement("p");
 
-export const emailInputValid = {
-    validate: false,
-    data: null
-};
-
 export function validateEmailType(e) {
     const input = e.target.value.trimEnd();
     if (emailRegex.test(input)) {
@@ -34,6 +29,11 @@ export function validateEmailType(e) {
     }
 }
 
+export const emailInputValid = {
+    validate: false,
+    data: null
+};
+
 export function showErrorMessage(input, errorMessageElement, errorMessage) {
     input.classList.add("error-input");
     errorMessageElement.textContent = errorMessage;
@@ -45,11 +45,6 @@ export function removeErrorMessage(input, errorMessageElement) {
     input.classList.remove("error-input");
     errorMessageElement.remove();
 }
-
-export const passwordInputValid = {
-    validate: false,
-    data: null
-};
 
 export function validatePassword(e) {
     const input = e.target.value;
@@ -63,6 +58,11 @@ export function validatePassword(e) {
         passwordInputValid.data = null;
     }
 }
+
+export const passwordInputValid = {
+    validate: false,
+    data: null
+};
 
 export function toggleEyeButton(input, eyeButton) {
     if (input.getAttribute("type") === "password") {

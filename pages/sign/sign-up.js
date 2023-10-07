@@ -12,8 +12,9 @@ import {
 import {errorMessages} from "./error-message.js";
 import {passwordRegex} from "./constant.js";
 
-const passwordCheckInput = document.querySelector('#sign-password-repeat');
-const passwordCheckEyeButton = document.querySelector('.eye-off-check');
+const passwordRepeatInput = document.querySelector('#sign-password-repeat');
+const passwordRepeatErrorMessageElement = document.createElement("p");
+const passwordRepeatEyeButton = document.querySelector('.eye-off-check');
 
 function validateSignUpEmail() {
     const {validate, data} = emailInputValid;
@@ -35,8 +36,19 @@ function validateSignUpPassword() {
     }
 }
 
+const validatePasswordRepeatMatch = ({target}) => {
+    const passwordRepeat = target.value;
+    const {data: password} = passwordInputValid;
+    if (password !== passwordRepeat) {
+        showErrorMessage(passwordRepeatInput, passwordRepeatErrorMessageElement, errorMessages.password.notMatched);
+    } else {
+        removeErrorMessage(passwordRepeatInput, passwordRepeatErrorMessageElement);
+    }
+}
+
 emailInput.addEventListener("focusout", validateSignUpEmail);
 passwordInput.addEventListener("focusout", validateSignUpPassword);
-passwordCheckEyeButton.addEventListener("click", () => {
-    toggleEyeButton(passwordCheckInput, passwordCheckEyeButton);
+passwordRepeatInput.addEventListener("focusout", validatePasswordRepeatMatch);
+passwordRepeatEyeButton.addEventListener("click", () => {
+    toggleEyeButton(passwordRepeatInput, passwordRepeatEyeButton);
 });
