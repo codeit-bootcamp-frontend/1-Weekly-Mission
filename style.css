@@ -1,4 +1,4 @@
-@import url(common.css);
+@import url(/style/common.css);
 
 body {
   font-size: 16px;
@@ -128,6 +128,13 @@ header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.content:nth-of-type(even) {
+  grid-template-areas:
+  "img title"
+  "img desc";
+  gap: 10px 157px;
+}
+
 
 /* footer */
 footer {
@@ -245,21 +252,25 @@ footer .footer-links a {
     padding: 40px 32px;
     word-break: keep-all;
   }
+  .content:nth-of-type(even) {
+    grid-template-areas: 
+    "title"
+    "img"
+    "desc";
+    gap: 20px;
+  }
   .content br {
     display: none;
   }
   .title {
     font-size: 24px;
-    grid-area: title;
   }
   .description {
     font-size: 15px;
-    grid-area: desc;
   }
   .content-img {
     width: 100%;
     height: 100%;
-    grid-area: img;
   }
 
   /* footer */

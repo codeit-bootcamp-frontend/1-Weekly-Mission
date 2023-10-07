@@ -1,7 +1,6 @@
-@import url(common.css);
+@import url(/style/common.css);
 
 body {
-  width: 100w;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +25,7 @@ input:focus {
 }
 
 .container {
-  min-width: 400px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,29 +44,51 @@ input:focus {
   color: var(--color-primary);
   font-weight: 600;
 }
-.input-box {
+
+#form {
+  width: 100%;
   margin: 30px 0;
+  position: relative;
 }
-.input-box label {
+.input-control label {
   display: block;
+  width: 100%;
   font-size: 0.875rem;
   color: var(--color-black);
   margin-bottom: 12px;
 }
-.input-password {
-  background: var(--color-white) url(images/eye-off.svg) no-repeat center right 15px;
-}
-.input-box input[type='email'] {
-  margin-bottom: 24px;
-}
-.btn-login {
-  width: 400px;
-  border: none;
-  margin-bottom: 32px;
+.input-control input {
+  display: block;
+  width: 100%;
 }
 
+#toggle-eye {
+  position: absolute;
+  top: 53%;
+  right: 15px;
+  cursor: pointer;
+}
+
+.btn-login {
+  width: 100%;
+  display: block;
+  border: none;
+  margin-top: 32px;
+}
+
+/* 에러메세지 발생 */
+.input-control.error input {
+  border-color: var(--color-red);
+}
+.input-control .error {
+  font-size: 14px;
+  color: var(--color-red);
+  margin: 6px 0;
+}
+
+
 .social-login {
-  width: 400px;
+  width: 100%;
   padding: 12px 24px;
   display: flex;
   justify-content: space-between;
@@ -99,6 +120,7 @@ input:focus {
     height: 100%;
   }
   .container {
+    max-width: 400px;
     margin: auto 32px;
   }
 }
