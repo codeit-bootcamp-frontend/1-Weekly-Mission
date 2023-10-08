@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Linkbrary-로그인</title>
-  <!-- <link rel="stylesheet" href="/styles/fonts.css"> -->
+  <link rel="stylesheet" href="/styles/fonts.css">
   <link rel="stylesheet" href="/styles/sign.css">
 </head>
 <body>
@@ -17,17 +17,23 @@
         <span>회원이 아니신가요?</span>
         <a href="signup.html">회원 가입하기</a>
       </div>
-      <form action="" method="post" class="auth-form">
-        <label for="email">이메일</label>
-        <div class="input-box box-round">
-          <input id="email" type="email" placeholder="codeit@codeit.com" name="email" >
+      <form action="" method="post" id="auth-form" novalidate>
+        <div id="email-box">
+          <label for="email">이메일</label>
+          <div class="input-box box-round">
+            <input id="email" type="email" placeholder="codeit@codeit.com" name="email" class="text-input">
+          </div>
+          <div class="error-message"></div>
         </div>
-        <label for="password">비밀번호</label>
-        <div class="input-box box-round">
-          <input id="password" type="password" placeholder="••••••••" name="password" >
-          <button class="eye-button" type="button">
-            <img src="/assets/imgs/eye-off.svg" alt="eye-off">
-          </button>
+        <div id="password-box">
+          <label for="password">비밀번호</label>
+          <div class="input-box box-round">
+            <input id="password" type="password" placeholder="••••••••" name="password" class="text-input">
+            <button class="eye-button" type="button">
+              <img src="/assets/imgs/eye-off.svg" alt="eye-off" class="eye">
+            </button>
+          </div>
+          <div class="error-message"></div>
         </div>
         <button class="btn box-round">로그인</button>
       </form>
@@ -44,6 +50,6 @@
       </div>
     </div>
   </div>
-  <script src="/auth.js"></script>
+  <script src="/js/auth.js" type="module"></script>
 </body>
 </html>
