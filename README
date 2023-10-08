@@ -1,0 +1,7 @@
+
+
+
+### Question
+1. font를 cdn없이 내부에서 제공하려고 하는데 pretendard.css를 link로 첨부해주는 방식보다 더 좋은 방식이 있을까?
+2. component.css에 공통적으로 빼려고 하는 요소를 넣고 싶은데 btn, text-background-clip 이외에 더 못 빼내겠다.. component.css에 저장할만한 다른 것들이 있는지.
+3. css 속성 순서를 어떻게 배치해야할지. (컬러->레이아웃->디스플레이 등)
