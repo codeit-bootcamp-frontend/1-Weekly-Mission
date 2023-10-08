@@ -10,20 +10,20 @@
   <div class="container">
     <a class="logo" href="/index.html"><img src="/images/logo.svg" alt="Linkbrary 홈페이지로 이동"></a>
     <p>회원이 아니신가요? <a class="sign-up" href="/signup/index.html">회원가입하기</a></p>
-    <form id="form">
-      <div class="input-control">
+    <div class="input-box">
+      <div class="email-field">
         <label for="email">이메일</label>
         <input type="email" id="email">
         <div class="error"></div>
       </div>
-      <div class="input-control">
+      <div class="pwd-field">
         <label for="password">비밀번호</label>
         <input id="password" type="password">
-        <img id="toggle-eye" src="/images/eye-off.svg" alt="클릭시 비밀번호 표시">
         <div class="error"></div>
+        <!-- <img id="toggle-eye" src="/images/eye-off.svg" alt="클릭시 비밀번호 표시"> -->
       </div>
-      <button type="button" class="btn-login cta">로그인</button>
-    </form>
+    </div>
+    <button type="button" class="btn-login cta">로그인</button>
     <div class="social-login">
       <p>소셜 로그인</p>
       <div class="sns">
@@ -36,6 +36,6 @@
       </div>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>

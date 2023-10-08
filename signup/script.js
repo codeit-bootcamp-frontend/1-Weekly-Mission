@@ -1,13 +1,12 @@
-const emailInput = document.querySelector('#email');
-const pwdInput = document.querySelector('#password');
-const pwdConfirmInput = document.querySelector('#password-confirm');
-const signUpBtn = document.querySelector('.btn-login');
+import { 
+  emailInput,
+  pwdInput,
+  pwdConfirmInput,
+  signUpBtn,
+  toggleEye
+} from '../data.js';
+import { isValidEmail, isValidPwd } from '../validation.js';
 
-
-const isValidEmail = email => {
-  const regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return regExp.test(email);
-}
 
 const checkEmailValidation = (e) => {
   const inputField = document.querySelector('.email-field');
@@ -29,10 +28,6 @@ const checkEmailValidation = (e) => {
   }
 };
 
-const isValidPwd = value => {
-  const pwdRegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-  return pwdRegExp.test(value);
-}
 
 const checkPwdValidation = (e) => {
   const inputField = document.querySelector('.pwd-field');
@@ -84,6 +79,16 @@ function enter(e) {
   }
 }
 
+// const eyeOnOff = () => {
+//   if(pwdInput.type === "password") {
+//     pwdInput.type = "text";
+//     toggleEye.src = '/images/eye-on.svg';
+//   } else {
+//     pwdInput.type = "password";
+//     toggleEye.src = '/images/eye-off.svg';
+//   }
+// };
+
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
@@ -91,4 +96,5 @@ pwdConfirmInput.addEventListener("focusout", confirmPwd);
 emailInput.addEventListener("keyup", enter);
 pwdInput.addEventListener("keyup", enter);
 pwdConfirmInput.addEventListener("keyup", enter);
+toggleEye.addEventListener("click", eyeOnOff);
 signUpBtn.addEventListener("click", submitForm);

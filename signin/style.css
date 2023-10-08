@@ -25,7 +25,7 @@ input:focus {
 }
 
 .container {
-  width: 400px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,45 +45,48 @@ input:focus {
   font-weight: 600;
 }
 
-#form {
+.input-box {
   width: 100%;
   margin: 30px 0;
-  position: relative;
 }
-.input-control label {
+label {
   display: block;
   width: 100%;
   font-size: 0.875rem;
   color: var(--color-black);
   margin-bottom: 12px;
 }
-.input-control input {
-  display: block;
-  width: 100%;
+
+.email-field {
+  margin-bottom: 12px;
 }
 
-#toggle-eye {
+/* #toggle-eye {
   position: absolute;
   top: 53%;
   right: 15px;
   cursor: pointer;
-}
+} */
 
 .btn-login {
   width: 100%;
   display: block;
   border: none;
-  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 /* 에러메세지 발생 */
-.input-control.error input {
-  border-color: var(--color-red);
+.email-field.error input,
+.pwd-field.error input,
+.pwd-confirm-field.error input {
+  border-color: red;
+  margin-bottom: 5px;
 }
-.input-control .error {
+.email-field.error .error,
+.pwd-field.error .error,
+.pwd-confirm-field.error .error {
   font-size: 14px;
-  color: var(--color-red);
-  margin: 6px 0;
+  color: red;
 }
 
 
