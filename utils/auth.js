@@ -85,8 +85,7 @@ const emailHintElement = document.querySelector(".auth__email-hint");
 const passwordHintElement = document.querySelector(".auth__password-hint");
 
 function changeEmailHint(hintType) {
-	const hintText = emailHintElement.innerText;
-	if (hintText === SIGNIN_HINT.email[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
+	if (emailHintElement.innerText === SIGNIN_HINT.email[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
 	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
 
 	if (hintType === INPUT_STATUS.default) {
@@ -97,8 +96,7 @@ function changeEmailHint(hintType) {
 }
 
 function changePasswordHint(hintType) {
-	const hintText = passwordHintElement.innerText;
-	if (hintText === SIGNIN_HINT.password[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
+	if (passwordHintElement.innerText === SIGNIN_HINT.password[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
 	passwordHintElement.innerText = SIGNIN_HINT.password[hintType];
 
 	if (hintType === INPUT_STATUS.default) {
@@ -173,18 +171,14 @@ function signIn(email, password) {
 }
 
 emailInputElement.addEventListener("focusout", (e) => {
-	const emailValue = emailInputElement.value;
-	checkEmailFocusout(emailValue);
+	checkEmailFocusout(emailInputElement.value);
 });
 
 passwordInputElement.addEventListener("focusout", () => {
-	const passwordValue = passwordInputElement.value;
-	checkPasswordFocusout(passwordValue);
+	checkPasswordFocusout(passwordInputElement.value);
 });
 
 signInButtonElement.addEventListener("click", (e) => {
 	e.preventDefault();
-	const emailValue = emailInputElement.value;
-	const passwordValue = passwordInputElement.value;
-	signIn(emailValue, passwordValue);
+	signIn(emailInputElement.value, passwordInputElement.value);
 });
