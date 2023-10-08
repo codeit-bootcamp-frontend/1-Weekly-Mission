@@ -87,7 +87,7 @@ main{
   outline: var(--linkbrary-red);
 }
 
-.errorMsg{
+.error{
   display: inline-block;
   color: var(--linkbrary-red);
   font-size: 0.875rem;
