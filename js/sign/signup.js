@@ -6,11 +6,11 @@ import {
   passwordError,
   passwordRepeatError,
 } from "./tags.js";
-import { appearError, disappearError } from "./controlError.js";
+import { appearError, disappearError, eyeCheck } from "./functions.js";
 
 const signupBtn = document.querySelector(".signup-button");
-const eyeBtn = document.querySelector(".eye-slashed");
-
+const eyeBtn1 = document.querySelector("#eye-button1");
+const eyeBtn2 = document.querySelector("#eye-button2");
 signupBtn.addEventListener("click", function (e) {
   e.preventDefault();
   if (
@@ -18,7 +18,6 @@ signupBtn.addEventListener("click", function (e) {
     !password.classList.contains("error-border") &&
     !passwordRepeat.classList.contains("error-border")
   ) {
-    // 문제가 없으면 회원가입 성공.
     location.href = "./folder.html";
     disappearError(email, emailError);
     disappearError(password, passwordError);
@@ -74,12 +73,5 @@ passwordRepeat.addEventListener("blur", function () {
   }
 });
 
-eyeBtn.addEventListener("click", function () {
-  if (password.type === "password") {
-    password.type = "text";
-    eyeBtn.src = "./images/eye_unslashed.svg";
-  } else {
-    password.type = "password";
-    eyeBtn.src = "./images/eye_slashed.svg";
-  }
-});
+eyeBtn1.addEventListener("click", eyeCheck);
+eyeBtn2.addEventListener("click", eyeCheck);

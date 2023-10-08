@@ -1,8 +1,8 @@
 import { email, password, emailError, passwordError } from "./tags.js";
-import { appearError, disappearError, eyeCheck } from "./controlError.js";
+import { appearError, disappearError, eyeCheck } from "./functions.js";
 
 const signinBtn = document.querySelector(".signin-button");
-const eyeBtn = document.querySelector(".eye-button");
+const eyeBtn = document.querySelector("#eye-button1");
 
 signinBtn.addEventListener("click", function (e) {
   e.preventDefault();
