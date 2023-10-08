@@ -155,49 +155,17 @@ function loginCheck(e) {
   } else if (pwSignupDiv1) {
     //이메일 비밀번호 불일치일때
     // console.log('z번');
-    /* 여기 주석칸은 회원가입 눌렀을 시 오류가 있으면 전체 input에 오류 있다고 뜨게 하는 코드였다.
-    // msgDelete('.errorEmailMsg', '.wrongEmailSpan');
-    // const wrongEmailSpan = document.querySelector('.wrongEmailSpan');
-    // if (!wrongEmailSpan) {
-    //   //이메일 오류
-    //   // console.log('0번');
-    //   if (pwSignupDiv1.children.length !== 2)
-    //     msgDelete('.wrongEmailSpan', '.errorEmailMsg');
-    //   const noEmailspan = document.createElement('span');
-    //   noEmailspan.classList.add('wrongEmailSpan', 'wrongMsg');
-    //   msgCreate(noEmailspan, emailDiv, emailInput, '이메일을 확인해 주세요.');
-    // }
-    // //비밀번호 오류
-    // //signup 페이지
-    // // console.log('1번');
-    // //비밀번호 아래 오류창 있으면 제거
-    // if (pwSignupDiv1.children.length !== 2) {
-    //   pwSignupDiv1.lastElementChild.remove();
-    // }
-    // if (pwSignupDiv2.children.length !== 2) {
-    //   pwSignupDiv2.lastElementChild.remove();
-    // }
-    // //조건 만족하지 않았으니 비밀번호에도 확인 오류창 추가
-    // const noPwSignupspan1 = document.createElement('span');
-    // noPwSignupspan1.classList.add('wrongPwSignupErrorSpan1', 'wrongMsg');
-    // msgCreate(
-    //   noPwSignupspan1,
-    //   pwSignupDiv1,
-    //   pwSignupInput1,
-    //   '비밀번호를 확인해 주세요.'
-    // );
-    // const noPwSignupspan2 = document.createElement('span');
-    // noPwSignupspan2.classList.add('wrongPwSignupErrorSpan2', 'wrongMsg');
-    // msgCreate(
-    //   noPwSignupspan2,
-    //   pwSignupDiv2,
-    //   pwSignupInput2,
-    //   '비밀번호를 확인해 주세요.'
-    // );
-    */
-    //여기는 오류가 있거나 비어있는 칸이 있으면 확인해 달라 오류 뜨게하는 코드
+    //아래는 오류가 있거나 비어있는 칸이 있으면 확인해 달라 오류 뜨게하는 코드
+    //
+    //이메일칸에 내용이 없거나 오류메세지가 있는 경우
+    if (!emailInput.value || emailDiv.children.length !== 2) {
+      msgDelete('.errorEmailMsg', '.wrongEmailSpan');
+      const noEmailspan = document.createElement('span');
+      noEmailspan.classList.add('wrongEmailSpan', 'wrongMsg');
+      msgCreate(noEmailspan, emailDiv, emailInput, '이메일을 확인해 주세요.');
+    }
+    //비밀번호칸에 내용이 없거나 오류메세지가 있는 경우
     if (!pwSignupInput1.value || pwSignupDiv1.children.length !== 2) {
-      console.log('회원가입 - 비번오류');
       if (pwSignupDiv1.children.length !== 2)
         pwSignupDiv1.lastElementChild.remove();
       const noPwSignupspan1 = document.createElement('span');
@@ -209,8 +177,8 @@ function loginCheck(e) {
         '비밀번호를 확인해 주세요.'
       );
     }
+    //비밀번호 확인 칸에 내용이 없거나 오류메세지가 있는 경우
     if (!pwSignupInput2.value || pwSignupDiv2.children.length !== 2) {
-      console.log('회원가입 - 비번확인오류');
       if (pwSignupDiv2.children.length !== 2)
         pwSignupDiv2.lastElementChild.remove();
       const noPwSignupspan2 = document.createElement('span');
@@ -221,13 +189,6 @@ function loginCheck(e) {
         pwSignupInput2,
         '비밀번호를 확인해 주세요.'
       );
-    }
-    if (!emailInput.value || emailDiv.children.length !== 2) {
-      console.log('회원가입 - 이메일오류');
-      msgDelete('.errorEmailMsg', '.wrongEmailSpan');
-      const noEmailspan = document.createElement('span');
-      noEmailspan.classList.add('wrongEmailSpan', 'wrongMsg');
-      msgCreate(noEmailspan, emailDiv, emailInput, '이메일을 확인해 주세요.');
     }
   } else if (!pwSignupDiv1) {
     //signin 페이지
