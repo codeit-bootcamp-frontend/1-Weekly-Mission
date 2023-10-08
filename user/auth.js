@@ -74,8 +74,6 @@ const validateInput = ($target) => {
 	if (!REGEX[id].test(value))
 		msgType = value.length === 0 ? "empty" : "wrong";
 
-	setValidStatus(id, !ERROR_MSG[id][msgType]);
-
 	return ERROR_MSG[id][msgType];
 };
 
@@ -100,9 +98,10 @@ const removeError = ($target, errorElement) => {
 const toggleError = ($target, submitErrorText) => {
 	const [errorElement] = findErrorElement($target);
 	const errorText = submitErrorText || validateInput($target);
-
 	errorElement && removeError($target, errorElement);
 	errorText && showError($target, errorText);
+
+	setValidStatus($target.id, !errorText);
 };
 
 // 비밀번호 인풋 password <-> text 토글

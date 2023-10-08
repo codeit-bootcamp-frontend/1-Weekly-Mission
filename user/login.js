@@ -36,10 +36,10 @@ const authFormLogin = () => {
 
 formInputs.forEach((input) => {
 	input.addEventListener("blur", (e) => toggleError(e.target));
+	input.addEventListener(
+		"keydown",
+		(e) => e.key === "Enter" && authFormLogin()
+	);
 });
 
 submitButton.addEventListener("click", authFormLogin);
-
-inputsAndButton.forEach((ele) =>
-	ele.addEventListener("keydown", (e) => e.key === "Enter" && authFormLogin())
-);

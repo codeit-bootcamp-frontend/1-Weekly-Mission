@@ -34,53 +34,46 @@ const userExists = () => !!USER[emailInput.value];
 
 // 비밀번호 일치하지 않을 경우 에러 보여주기
 const showPasswordNotEqualError = () => {
-	const isEqual = isEqualPassword();
 	const [errorElement] = findErrorElement(passwordCheckInput);
 
-	if (!isEqual)
+	if (isEqualPassword()) {
+		errorElement && removeError(passwordCheckInput, errorElement);
+		setValidStatus(passwordCheckInput.id, true);
+	} else
 		toggleError(
 			passwordCheckInput,
 			ERROR_MSG[passwordCheckInput.id]["notEqual"]
 		);
-	else errorElement && removeError(passwordCheckInput, errorElement);
-
-	setValidStatus(passwordCheckInput.id, isEqual);
 };
 
 // 에러 메시지 생성,삭제 토글
 const toggleErrorForJoin = (input) => {
-	if (input === passwordCheckInput) showPasswordNotEqualError();
+	if (input === emailInput && userExists()) {
+		toggleError(emailInput, ERROR_MSG[emailInput.id]["exist"]);
+	} else if (input === passwordCheckInput) showPasswordNotEqualError();
 	else toggleError(input);
 };
 
 // 회원가입 폼 전송
 const authFormJoin = () => {
 	formInputs.forEach((input) => toggleErrorForJoin(input));
-
 	if (!isAllInputsValid()) return;
-
-	const doesUserExist = userExists();
-
-	if (doesUserExist) {
-		toggleError(emailInput, ERROR_MSG[emailInput.id]["exist"]);
-		setValidStatus(emailInput.id, !doesUserExist);
-		return;
-	}
 
 	authForm.submit();
 };
 
 formInputs.forEach((input) => {
 	input.addEventListener("blur", (e) => toggleErrorForJoin(e.target));
+	input.addEventListener(
+		"keydown",
+		(e) => e.key === "Enter" && authFormJoin()
+	);
 });
 
 const passwordInputs = [passwordInput, passwordCheckInput];
+
 passwordInputs.forEach((input) =>
 	input.addEventListener("blur", showPasswordNotEqualError)
 );
 
 submitButton.addEventListener("click", authFormJoin);
-
-inputsAndButton.forEach((ele) =>
-	ele.addEventListener("keydown", (e) => e.key === "Enter" && authFormJoin())
-);
