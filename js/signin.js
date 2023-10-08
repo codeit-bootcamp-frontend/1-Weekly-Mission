@@ -4,7 +4,7 @@ const loginButton = $('.login-btn');
 const eyeImage = $('.eye-off');
 
 const emailErrorMassageElem = document.createElement('span');
-const pwErrorMassageElem = document.createElement('span');
+const passwordErrorMassageElem = document.createElement('span');
 
 const REG_EMAIL = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
@@ -47,7 +47,9 @@ function handleEmailError(event) {
   if(!event.target.value){
     displayUserInputError(emailErrorMassageElem, emailInput, '이메일을 입력해주세요.');
     return;
-  }else if(!REG_EMAIL.test(event.target.value) && event.target.value.length > 0){
+  }
+  
+  if(event.target.value.length > 0 && !REG_EMAIL.test(event.target.value)){
     displayUserInputError(emailErrorMassageElem, emailInput, '올바른 이메일 주소가 아닙니다.');
     return;
   }
@@ -61,11 +63,11 @@ function handlePasswordEmptyError(event) {
   
 
   if(!event.target.value){
-    displayUserInputError(pwErrorMassageElem, passwordInput, '비밀번호를 입력해주세요.');
+    displayUserInputError(passwordErrorMassageElem, passwordInput, '비밀번호를 입력해주세요.');
     return;
   }
 
-  clearUserInputError(pwErrorMassageElem, passwordInput);
+  clearUserInputError(passwordErrorMassageElem, passwordInput);
 }
 
 
@@ -87,11 +89,11 @@ function handleTogglePassword() {
   const passwordInput = $('#password-label');
 
   if(passwordInput.value !== "codeit101"){
-    displayUserInputError(pwErrorMassageElem, passwordInput, '비밀번호를 확인해주세요.');
+    displayUserInputError(passwordErrorMassageElem, passwordInput, '비밀번호를 확인해주세요.');
     return;
   }
 
-  clearUserInputError(pwErrorMassageElem, passwordInput);
+  clearUserInputError(passwordErrorMassageElem, passwordInput);
 }
 
 //로그인 성공했을 때
@@ -139,6 +141,8 @@ export {
   passwordInput,
   loginButton,
   eyeImage,
+  emailErrorMassageElem,
+  passwordErrorMassageElem,
   REG_EMAIL,
   $,
   addClass,
