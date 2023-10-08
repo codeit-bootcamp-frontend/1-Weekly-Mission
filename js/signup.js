@@ -32,7 +32,7 @@ signupBtn.addEventListener("click", function (e) {
   }
 });
 
-email.addEventListener("focusout", function () {
+email.addEventListener("blur", function () {
   if (!email.value) {
     appearError(email, emailError, "이메일을 입력해주세요.");
   } else if (!isValidEmail(email.value)) {
@@ -49,7 +49,7 @@ function isValidEmail(email) {
   return pattern.test(email);
 }
 
-password.addEventListener("focusout", function () {
+password.addEventListener("blur", function () {
   if (!password.value) {
     appearError(password, passwordError, "비밀번호를 입력해주세요.");
   } else if (!isValidPassword(password.value)) {
@@ -68,7 +68,7 @@ function isValidPassword(password) {
   return pattern.test(password);
 }
 
-passwordRepeat.addEventListener("focusout", function () {
+passwordRepeat.addEventListener("blur", function () {
   if (passwordRepeat.value !== password.value) {
     appearError(
       passwordRepeat,
