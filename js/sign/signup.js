@@ -20,48 +20,39 @@ const eyeBtn2 = document.querySelector("#eye-button2");
 
 function emailChecker() {
   if (!email.value) {
-    appearError(email, emailError, "이메일을 입력해주세요.");
-    return false;
+    return appearError(email, emailError, "이메일을 입력해주세요.");
   } else if (!isValidEmail(email.value)) {
-    appearError(email, emailError, "올바른 이메일 주소가 아닙니다.");
-    return false;
+    return appearError(email, emailError, "올바른 이메일 주소가 아닙니다.");
   } else if (email.value === "test@codeit.com") {
-    appearError(email, emailError, "이미 사용 중인 이메일입니다.");
-    return false;
+    return appearError(email, emailError, "이미 사용 중인 이메일입니다.");
   } else {
-    disappearError(email, emailError);
-    return true;
+    return disappearError(email, emailError);
   }
 }
 
 function passwordChecker() {
   if (!password.value) {
-    appearError(password, passwordError, "비밀번호를 입력해주세요.");
-    return false;
+    return appearError(password, passwordError, "비밀번호를 입력해주세요.");
   } else if (!isValidPassword(password.value)) {
-    appearError(
+    return appearError(
       password,
       passwordError,
       "비밀번호는 영문, 숫자 조합 8자리 이상 입력해 주세요."
     );
-    return false;
   } else {
-    disappearError(password, passwordError);
-    return true;
+    return disappearError(password, passwordError);
   }
 }
 
 function passwordRepeatChecker() {
-  if (passwordRepeat.value !== password.value || !passwordRepeat.value) {
-    appearError(
+  if (passwordRepeat.value !== password.value) {
+    return appearError(
       passwordRepeat,
       passwordRepeatError,
       "비밀번호가 일치하지 않아요."
     );
-    return false;
   } else {
-    disappearError(passwordRepeat, passwordRepeatError);
-    return true;
+    return disappearError(passwordRepeat, passwordRepeatError);
   }
 }
 
