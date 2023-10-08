@@ -9,7 +9,6 @@ const joinButton = document.querySelector('#form--join-button');
 const eyeButton1 = document.querySelector('#eye-button1');
 const eyeButton2 = document.querySelector('#eye-button2');
 
-
 export {
   emailInput, emailError, 
   passwordInput, passwordError, 
