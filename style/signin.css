@@ -84,7 +84,7 @@ button {
 
 .eyes {
   position: absolute;
-  top: 0;
+  top: 8px;
   bottom: 0;
   right: 15px;
   margin: auto 2px;
