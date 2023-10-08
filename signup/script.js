@@ -8,36 +8,22 @@ const isValidEmail = email => {
 }
 
 const checkEmailValidation = () => {
-  const inputControl = document.querySelector('.email-field');
+  const inputField = document.querySelector('.email-field');
   const email = emailInput.value.trim();
-  const errorMessage = inputControl.querySelector('.error');
+  const errorMessage = inputField.querySelector('.error');
 
   if (email === '') {
     errorMessage.textContent = '이메일을 입력해주세요.';
-    inputControl.classList.add('error');
+    inputField.classList.add('error');
   } else if (!isValidEmail(email)) {
     errorMessage.textContent = '올바른 이메일 주소가 아닙니다.';
-    inputControl.classList.add('error');
+    inputField.classList.add('error');
   } else if (email == 'test@codeit.com') {
     errorMessage.textContent = '이미 사용 중인 이메일입니다.';
-    inputControl.classList.add('error');
+    inputField.classList.add('error');
   } else {
     errorMessage.textContent = '';
-    inputControl.classList.remove('error');
-  }
-};
-
-const checkPwdValidation = () => {
-  const inputControl = document.querySelector('.pwd-field');
-  const pwd = pwdInput.value.trim();
-  const errorMessage = inputControl.querySelector('.error');
-
-  if (!isValidPwd(pwd)) { // 값이 8자 미만 or only 문자열 or only 숫자
-    errorMessage.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
-    inputControl.classList.add('error');
-  } else {
-    errorMessage.textContent = '';
-    inputControl.classList.remove('error');
+    inputField.classList.remove('error');
   }
 };
 
@@ -46,23 +32,36 @@ const isValidPwd = value => {
   return pwdRegExp.test(value);
 }
 
+const checkPwdValidation = () => {
+  const inputField = document.querySelector('.pwd-field');
+  const pwd = pwdInput.value.trim();
+  const errorMessage = inputField.querySelector('.error');
+
+  if (!isValidPwd(pwd)) { // 값이 8자 미만 or only 문자열 or only 숫자
+    errorMessage.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
+    inputField.classList.add('error');
+  } else {
+    errorMessage.textContent = '';
+    inputField.classList.remove('error');
+  }
+};
+
 
 const confirmPwd = () => {
-  const inputControl = document.querySelector('.pwd-confirm-field');
+  const inputField = document.querySelector('.pwd-confirm-field');
   const pwd = pwdInput.value.trim();
   const pwd2 = document.querySelector('#password-confirm').value.trim();
-  const errorMessage = inputControl.querySelector('.error');
+  const errorMessage = inputField.querySelector('.error');
 
   if(pwd !="" && pwd2 != "") {
         if(pwd !== pwd2){
-          errorMessage.innerHTML='비밀번호가 일치하지 않습니다.'
-          inputControl.classList.add('error');
+          errorMessage.textContent = '비밀번호가 일치하지 않습니다.'
+          inputField.classList.add('error');
       }
   }
 };
 
 
-const 
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
