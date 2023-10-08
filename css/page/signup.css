@@ -1,5 +1,6 @@
 @import url(../reset.css);
 @import url(../root.css);
+@import url(../page/message.css);
 
 body {
     background:var(--linkbrary-bg);
@@ -103,30 +104,6 @@ form .input-box:not(:last-child) {
     cursor: pointer;
 }
 
-.email-box::after {
-    content:"이메일이 맞지 않습니다";
-    margin-top: 6px;
-    color: var(--linkbrary-red);
-    font-size: 14px;
-    font-weight: 400;
-    /* display: none; */
-}
-.password-box::after {
-    content:"특수문자가 포함된 8~11자 입력해주세요";
-    margin-top: 6px;
-    color: var(--linkbrary-red);
-    font-size: 14px;
-    font-weight: 400;
-   /*  display: none; */
-}
-.password-check-box::after {
-    content:"비밀번호가 일치하지 않습니다";
-    margin-top: 6px;
-    color: var(--linkbrary-red);
-    font-size: 14px;
-    font-weight: 400;
-    /* display: none; */
-} 
 
 .join-form-social {
     display: flex;

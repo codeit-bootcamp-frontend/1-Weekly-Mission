@@ -19,12 +19,12 @@
                 <a href="./signin.html">로그인 하기</a>
             </div>
             <form>
-                <div class="input-box email-box">
+                <div class="input-box email-box email-box-signup">
                     <label for="email">이메일</label>
                     <input id="email" name="email" type="text" placeholder="이메일" required>
                     <!-- <div class="check-text">유효한 이메일이 아닙니다</div> -->
                 </div>
-                <div class="input-box password-box">
+                <div class="input-box password-box password-box-signup">
                     <label for="password">비밀번호</label>
                     <div class="inner-icon">
                         <input id="password" name="password" type="password" placeholder="비밀번호" required>
@@ -33,12 +33,12 @@
                     </div>
                     <!-- <div class="check-text">특수문자를 포함한 8~11자 입력해주세요</div> -->
                 </div>
-                <div class="input-box password-check-box">
+                <div class="input-box password-check-box password-box-signup">
                     <label for="password-check">비밀번호 확인</label>
                     <div class="inner-icon">
                         <input id="password-check" name="passwordCh" type="password" placeholder="비밀번호 확인" required>
                         <!-- <i class="fa-solid fa-eye"></i> -->
-                        <i class="fa-solid fa-eye-slash"></i>
+                        <i class="fa-solid fa-eye-slash fa-solid-passwordCh"></i>
                     </div>
                     <!-- <div class="check-text">비밀번호가 다릅니다</div> -->
                 </div>
@@ -57,5 +57,7 @@
     </div>
     <!-- 아이콘 스크립트 -->
     <script src="https://kit.fontawesome.com/94f46b7060.js" crossorigin="anonymous"></script>
+    <script type="module" src="./javascript/member/signup.js"></script>
+     <script type="module" src="./javascript/eyeIcon.js"></script>
 </body>
 </html>
