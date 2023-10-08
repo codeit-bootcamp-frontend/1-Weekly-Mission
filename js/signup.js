@@ -34,9 +34,11 @@ signupBtn.addEventListener("click", function (e) {
 
 email.addEventListener("focusout", function () {
   if (!email.value) {
-    appearError(email, emailError, "이메일을 확인해주세요.");
+    appearError(email, emailError, "이메일을 입력해주세요.");
   } else if (!isValidEmail(email.value)) {
     appearError(email, emailError, "올바른 이메일 주소가 아닙니다.");
+  } else if (email.value === "test@codeit.com") {
+    appearError(email, emailError, "이미 사용 중인 이메일입니다.");
   } else {
     disappearError(email, emailError);
   }
@@ -50,17 +52,28 @@ function isValidEmail(email) {
 password.addEventListener("focusout", function () {
   if (!password.value) {
     appearError(password, passwordError, "비밀번호를 입력해주세요.");
+  } else if (!isValidPassword(password.value)) {
+    appearError(
+      password,
+      passwordError,
+      "비밀번호는 영문, 숫자 조합 8자리 이상 입력해 주세요."
+    );
   } else {
     disappearError(password, passwordError);
   }
 });
 
+function isValidPassword(password) {
+  const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  return pattern.test(password);
+}
+
 passwordRepeat.addEventListener("focusout", function () {
-  if (!passwordRepeat.value) {
+  if (passwordRepeat.value !== password.value) {
     appearError(
       passwordRepeat,
       passwordRepeatError,
-      "비밀번호를 확인해주세요."
+      "비밀번호가 일치하지 않아요."
     );
   } else {
     disappearError(passwordRepeat, passwordRepeatError);
