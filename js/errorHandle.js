@@ -1,16 +1,16 @@
 import { $all } from "./utils.js";
-
+import { isValidEmail } from "./inputValidation.js";
 function displayError(errorLocation, errorMessage) {
   errorLocation.textContent = errorMessage;
 }
 
-function getErrors() {
+function getInputErrors() {
   return $all(".error");
 }
 
 function showErrorMessage({ id, value }) {
   const targetValue = value;
-  const [emailError, passwordError] = getErrors();
+  const [emailError, passwordError] = getInputErrors();
 
   switch (id) {
     case "email":
@@ -36,10 +36,10 @@ function showErrorMessage({ id, value }) {
 }
 
 function clearError({ target: { id } }) {
-  const [$emailError, $passwordError] = getErrors();
+  const [$emailError, $passwordError] = getInputErrors();
   const errorToDelete = id === "email" ? $emailError : id === "password" ? $passwordError : null;
   errorToDelete.textContent = "";
 }
 
 
-export { displayError, showErrorMessage, clearError, getErrors};
+export { displayError, showErrorMessage, clearError, getInputErrors };

@@ -1,10 +1,10 @@
-import { displayError, showErrorMessage, getErrors } from "./errorHandle.js";
+import { displayError, showErrorMessage, getInputErrors } from "./errorHandle.js";
 
 function userAuthenticate(e) {
   e.preventDefault();
   const { target: { elements } } = e;
   const [$emailInput, $passwordInput] = elements;
-  const [$emailError, $passwordError] = getErrors();
+  const [$emailError, $passwordError] = getInputErrors();
 
 
   if (showErrorMessage($emailInput) || showErrorMessage($passwordInput)) {
@@ -15,6 +15,7 @@ function userAuthenticate(e) {
     window.location.href = "/folder";
     return;
   }
+
   displayError($emailError, "이메일을 확인해주세요.");
   displayError($passwordError, "비밀번호를 확인해주세요.");
 };

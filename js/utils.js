@@ -6,4 +6,13 @@ function $all(selector) {
   return document.querySelectorAll(selector);
 }
 
-export {$, $all};
+
+function toggleEye(e) {
+  e.stopPropagation();
+  const isEyeOn = e.target.src.includes("eye-on");
+  e.target.src = `./images/signin/${isEyeOn ? "eye-off" : "eye-on"}.svg`;
+  $("#password").type = isEyeOn ? "password" : "text";
+}
+
+
+export { $, $all, toggleEye };
