@@ -4,4 +4,4 @@ const REG_EXP = {
     CHECK_PASSWORD : /^[a-zA-Z0-9]{8,}$/, 
 }
 
-export {REG_EXP}
+export {REG_EXP};

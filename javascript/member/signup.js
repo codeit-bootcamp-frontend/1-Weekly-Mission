@@ -5,20 +5,20 @@ import {
     form,
     hendleFocusOut,
     isCheck,
+    passwordCheckErrorMessage,
 } from '../utils.js';
 
 
-/* 비밀번호 재확인 에러 메세지 */
-function passwordCheckErrorMessage(passwordCheck, passwordCheckBox) {
-    if(!passwordCheck.value) {
-        passwordCheckBox.classList.add('empty');
-    }else if(passwordCheckBox.classList.contains('password-box-signup') 
-    && inputAccount.password !== passwordCheck.value) {
-        passwordCheckBox.classList.add('check');
-    } else {
-        isCheck.reCheckPassword = true;
-    }
+
+/* 회원가입 조건 */
+function isSignUp(userPassword, userPasswordCh) {
+    return isCheck.checkEmail && isCheck.checkPassword && isCheck.reCheckPassword && userPassword === userPasswordCh;
 }
+/* 회원가입 시 비밀번호에 문제 있을 경우 */
+function isSignUpPassword(userPassword, userPasswordCh) {
+    return !isCheck.checkPassword || userPassword !== userPasswordCh;
+}
+
 
 /* 비밀번호 재확인 체크 */
 function hendleChange(event){
@@ -28,6 +28,7 @@ function hendleChange(event){
     if(target.name === 'passwordCh') {
         passwordCheckBox.classList.remove('empty', 'check');
         passwordCheckErrorMessage(target, passwordCheckBox);
+        inputAccount.userPasswordCh = target.value;
     }
 }
 
@@ -35,9 +36,10 @@ function hendleChange(event){
 function handleSignUpSubmit(event){
     const emailBox = $('.email-box'); /* 이메일 메세지*/
     const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
+    const {userEmail, userPassword, userPasswordCh} = inputAccount;
 
     event.preventDefault();
-    if(isCheck.checkEmail && isCheck.checkPassword && isCheck.reCheckPassword) {
+    if(isSignUp(userPassword, userPasswordCh)) {
         alert('환영합니다.');
         form.submit();
         location.href= './folder.html'; 
@@ -46,8 +48,7 @@ function handleSignUpSubmit(event){
         if(!isCheck.checkEmail) {
             emailBox.classList.add('disaccord');
         }
-
-        if(!isCheck.checkPassword) {
+        if(isSignUpPassword(userPassword, userPasswordCh)) {
             passwordBox.classList.add('disaccord');
         }
     }

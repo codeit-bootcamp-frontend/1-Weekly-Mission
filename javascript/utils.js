@@ -3,6 +3,11 @@ import {REG_EXP} from './constant.js';
 const inputs = $all('input'); /* 이메일, 비밀번호 input */
 const form = $('form') /* form */
 
+function selectElement() {
+const emailBox = $('.email-box'); /* 이메일 메세지*/
+    const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
+    const passwordCheckBox = $('.password-check-box'); /* 비밀번호 재확인 메세지 */
+}
 
 /* 요소 하나 선택 함수  */
 function $(selector) {
@@ -14,6 +19,7 @@ function $all(selector) {
     return document.querySelectorAll(selector);
 }
 
+
 /* 테스트 아이디&비번 */
 const testAccount = [
     {
@@ -24,8 +30,9 @@ const testAccount = [
 
 /* 입력값 테스트 아이디&비번 */
 const inputAccount = {
-    email: "",
-    password: "",
+    userEmail: "",
+    userPassword: "",
+    userPasswordCh:""
 };
 
 /* 각 input란 조건 확인 */
@@ -71,24 +78,42 @@ function passwordErrorMessage(password, passwordBox) {
     }  
 }
 
+/* 비밀번호 재확인 에러 메세지 */
+function passwordCheckErrorMessage(passwordCheck, passwordCheckBox) {
+    if(!passwordCheck.value) {
+        passwordCheckBox.classList.add('empty');
+    }else if(passwordCheckBox.classList.contains('password-box-signup') 
+    && inputAccount.userPassword !== passwordCheck.value) {
+        passwordCheckBox.classList.add('check');
+    } else {
+        isCheck.reCheckPassword = true;
+    }
+}
+
 /* focusout 될 시 입력값 저장 */
 function hendleFocusOut(event) {
     const emailBox = $('.email-box'); /* 이메일 메세지*/
     const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
-
-    const {target = target.name} = event; /* 이메일과 비밀번호 분해 */
+    const passwordCheckBox = $('.password-check-box'); /* 비밀번호 재확인 메세지 */
+    
+    const {target} = event; /* 이메일과 비밀번호 분해 */
 
     if(target.name === 'email') {
         emailBox.classList.remove('disaccord', 'empty', 'wrong', 'already'); 
         /* 아이디 입력확인 */
-        emailErrorMessage(email, emailBox);
-        inputAccount.email = email.value;
+        emailErrorMessage(target, emailBox);
+        inputAccount.userEmail = target.value;
     } else if(target.name === 'password') {
         passwordBox.classList.remove('empty', 'disaccord','terms'); 
         /* 비밀번호 입력확인 */
-        passwordErrorMessage(password, passwordBox);
-        inputAccount.password = password.value;
-    } 
+        passwordErrorMessage(target, passwordBox);
+        inputAccount.userPassword = target.value;
+    } else if (target.name === 'passwordCh') {
+        passwordCheckBox.classList.remove('empty', 'check');
+        /* 비밀번호 확인란 입력확인 */
+        passwordCheckErrorMessage(target, passwordCheckBox)
+        
+    }
 }
 
 
@@ -103,4 +128,5 @@ export {
     hendleFocusOut,
     isCheck,
     isFindEmail,
+    passwordCheckErrorMessage,
 };

@@ -2,7 +2,7 @@ import {$, $all} from './utils.js';
 
 const eyeIcons = $all('.fa-solid'); /* 눈 아이콘 */
 
-/* 눈 아이콘 위치 확인 */
+/* 눈 아이콘 위치  확인 */
 function isClassName(className) {
     if(className.classList.contains("fa-solid-passwordCh")) {
         const passwordCheckInput = $('#password-check');

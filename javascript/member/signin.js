@@ -8,16 +8,18 @@ import {
     isFindEmail,
 } from '../utils.js';
 
+
+
 /* 로그인 계정 일치 확인 */
-function isFindAccount(email, password) {
+function isFindAccount(userEmail, userPassword) {
     return testAccount.findIndex(account => {
-        return email === account.email && password === account.password;
+        return userEmail === account.email && userPassword === account.password;
     })
 }
 /* 로그인 비밀번호 일치 확인 */
-function isFindPassword(password) {
+function isFindPassword(userPassword) {
     return testAccount.findIndex(account => {
-        return password === account.password;
+        return userPassword === account.password;
     })
 }
 
@@ -25,21 +27,20 @@ function isFindPassword(password) {
 function handleSubmit(event) {
     const emailBox = $('.email-box'); /* 이메일 메세지*/
     const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
-
-    const {email, password} = inputAccount;
+    const {userEmail, userPassword} = inputAccount;
 
     event.preventDefault();
-    if(isFindAccount(email, password) > -1) {
+    if(isFindAccount(userEmail, userPassword) > -1) {
         alert('환영합니다.');
         form.submit();
         location.href= './folder.html'; 
     } else {
         /* 이메일 최종확인 */
-        if(isFindEmail(email) <= -1) {
+        if(isFindEmail(userEmail) <= -1) {
             emailBox.classList.add('disaccord');
         }
         /* 비밀번호 최종확인 */ 
-        if(isFindPassword(password) <= -1) {
+        if(isFindPassword(userPassword) <= -1) {
             passwordBox.classList.add('disaccord');
         }
     }
