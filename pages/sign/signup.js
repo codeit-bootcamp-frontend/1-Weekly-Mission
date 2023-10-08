@@ -38,8 +38,9 @@ password_input.addEventListener("focusout", password_error)
 function password_repeat_error () {
   if (password_input.value != password_repeat_input.value) {
     error_occur(password_repeat_input, password_repeat_input_check, messages.password_repeat_error)
-  }
-  else {
+  } else if (!password_input.value) {
+    error_occur(password_repeat_input, password_repeat_input_check, messages.password_repeat_empty_error)
+  } else {
     error_disappear(password_repeat_input, password_repeat_input_check)
   }
 }
@@ -79,5 +80,5 @@ function password_toggle(e) {
 }
 
 eye_mark_in_password.addEventListener('click', password_toggle)
-eye_mark_in_password_repeat.addEventListener('click', password_toggle)
+eye_mark_in_password_repeat.addEventListener('click', (password_toggle))
 
