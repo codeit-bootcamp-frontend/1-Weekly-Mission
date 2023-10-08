@@ -42,4 +42,4 @@ function clearError({ target: { id } }) {
 }
 
 
-export { displayError, showErrorMessage, clearError };
+export { displayError, showErrorMessage, clearError, getErrors};

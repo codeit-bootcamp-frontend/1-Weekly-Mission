@@ -1,11 +1,6 @@
 import { $, $all } from "./utils.js";
-
-const REG_EMAIL = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
-
-
-function isValidEmail(email) {
-  return REG_EMAIL.test(email);
-}
+import { showErrorMessage, clearError } from "./errorHandle.js";
+import { userAuthenticate } from "./userAuthentication.js";
 
 function toggleEye(e) {
   e.stopPropagation();
@@ -15,24 +10,6 @@ function toggleEye(e) {
 }
 
 
-
-function userAuthenticate(e) {
-  e.preventDefault();
-  const { target: { elements } } = e;
-  const [$emailInput, $passwordInput] = elements;
-
-
-  if (showErrorMessage($emailInput) || showErrorMessage($passwordInput)) {
-    return;
-  }
-
-  if ($emailInput.value === "test@codeit.com" && $passwordInput.value === "codeit101") {
-    window.location.href = "/folder";
-    return;
-  }
-  displayError(emailError, "이메일을 확인해주세요.");
-  displayError(passwordError, "비밀번호를 확인해주세요.");
-};
 
 
 $("#email").addEventListener("focusout", ({ target }) => showErrorMessage(target));
