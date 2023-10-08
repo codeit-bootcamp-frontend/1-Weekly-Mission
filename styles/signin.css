@@ -158,6 +158,14 @@ input:focus {
   background-color: #e7effb;
 }
 
+.another-signup a {
+  background-color: #e7effb;
+}
+
+.another-signup a img{
+  background-color: #e7effb;
+}
+
 .another-signup-logo {
   display: flex;
   flex-direction: row;
