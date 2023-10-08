@@ -1,6 +1,7 @@
 import {
+  email,
+  password,
   emailInput,
-  emailErrorMsg,
   pwInput,
   TEST_ID,
   showError,
@@ -15,9 +16,14 @@ const pwConfirmEyeBtn = document.querySelector(
 );
 const signupBtn = document.querySelector("#signupBtn");
 
+const passwordConfirm = {
+  input: pwConfirmInput,
+  errorMsg: pwConfirmErrorMsg,
+};
+
 function validEmail() {
   if (emailInput.value === TEST_ID) {
-    showError(emailInput, emailErrorMsg, "이미 사용 중인 이메일입니다.");
+    showError(email, "이미 사용 중인 이메일입니다.");
   }
 }
 
@@ -29,13 +35,9 @@ pwInput.addEventListener("focusout", function () {
   const regexPw = /^(?=.*[a-zA-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
 
   if (!regexPw.test(pwInput.value)) {
-    showError(
-      pwInput,
-      pwErrorMsg,
-      "비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요."
-    );
+    showError(password, "비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.");
   } else {
-    removeError(pwInput, pwErrorMsg);
+    removeError(password);
   }
 });
 
@@ -44,10 +46,10 @@ pwConfirmEyeBtn.addEventListener("click", function () {
 });
 
 pwConfirmInput.addEventListener("focusout", function () {
-  if (pwConfirmInput.value !== pwInput.value) {
-    showError(pwConfirmInput, pwConfirmErrorMsg, "비밀번호가 일치하지 않아요.");
+  if (passwordConfirm.input.value !== pwInput.value) {
+    showError(passwordConfirm, "비밀번호가 일치하지 않아요.");
   } else {
-    removeError(pwConfirmInput, pwConfirmErrorMsg);
+    removeError(passwordConfirm);
   }
 });
 

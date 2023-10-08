@@ -1,8 +1,8 @@
 import {
   emailInput,
-  emailErrorMsg,
   pwInput,
-  pwErrorMsg,
+  email,
+  password,
   TEST_ID,
   TEST_PW,
   showError,
@@ -16,7 +16,7 @@ loginBtn.addEventListener("click", function (e) {
   if (emailInput.value === TEST_ID && pwInput.value === TEST_PW) {
     location.href = "folder.html";
   } else {
-    showError(pwInput, pwErrorMsg, "비밀번호를 확인해주세요");
-    showError(emailInput, emailErrorMsg, "이메일을 확인해주세요");
+    showError(password, "비밀번호를 확인해주세요");
+    showError(email, "이메일을 확인해주세요");
   }
 });
