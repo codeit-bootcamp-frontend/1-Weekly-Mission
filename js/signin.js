@@ -1,12 +1,7 @@
+import { $, $all } from "./utils.js";
+
 const REG_EMAIL = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
 
-function $(selector) {
-  return document.querySelector(selector);
-}
-
-function $All(selector) {
-  return document.querySelectorAll(selector);
-}
 
 function isValidEmail(email) {
   return REG_EMAIL.test(email);
@@ -17,15 +12,16 @@ function displayError(errorLocation, errorMessage) {
 }
 
 
-const emailError = $All(".error")[0]; 
-const passwordError = $All(".error")[1]; 
 
-function showErrorMessage(e) {
-  const hasTargetValue = e.target.value;
+function showErrorMessage({ target }) {
+
+  console.log(e.target);
+  const targetValue = e.target.value;
+  const [emailError, passwordError] = $all(".error");
 
   switch (e.target.id) {
     case "email":
-      if (!hasTargetValue) {
+      if (!targetValue) {
         displayError(emailError, "이메일을 입력해주세요.");
       } else if (!isValidEmail(e.target.value)) {
         displayError(emailError, "올바른 이메일 주소가 아닙니다.");
@@ -33,7 +29,7 @@ function showErrorMessage(e) {
       break;
 
     case "password":
-      if (!hasTargetValue) {
+      if (!targetValue) {
         displayError(passwordError, "비밀번호를 입력해주세요.");
       }
       break;
@@ -44,7 +40,7 @@ function showErrorMessage(e) {
 }
 
 
-function eyeOnOff(e) {
+function toggleEye(e) {
   e.stopPropagation();
   const isEyeOn = e.target.src.includes("eye-on");
   e.target.src = `./images/signin/${isEyeOn ? "eye-off" : "eye-on"}.svg`;
@@ -53,15 +49,16 @@ function eyeOnOff(e) {
 }
 
 function clearError(e) {
-  const errorElement = `${e.target.id}Error`;
-  errorElement.textContent = "";
+  const errorMessage = e.target.parentsElement.$all(".error");
+
+  errorMessage.textContent = "";
 
 }
 
 
-function userAuthenticated(event){
-  event.preventDefault();
-  const { target: { elements } } = event;
+function userAuthenticate(e) {
+  e.preventDefault();
+  const { target: { elements } } = e;
 
   const emailInput = elements[0];
   const passwordInput = elements[1];
@@ -72,19 +69,15 @@ function userAuthenticated(event){
   }
   displayError(emailError, "이메일을 확인해주세요.");
   displayError(passwordError, "비밀번호를 확인해주세요.");
-  
+
 
 };
 
-const emailInput = $("#email");
-const passwordInput = $("#password");
-const $form = $("form");
 
+$("#email").addEventListener("focusout", showErrorMessage);
+$("#password").addEventListener("focusout", showErrorMessage);
+$("#email").addEventListener("focusin", clearError);
+$("#password").addEventListener("focusin", clearError);
 
-emailInput.addEventListener("focusout", showErrorMessage);
-passwordInput.addEventListener("focusout", showErrorMessage);
-emailInput.addEventListener("focusin", clearError);
-passwordInput.addEventListener("focusin", clearError);
-
-$form.addEventListener("submit", userAuthenticated);
-$All(".eye-Image")[0].addEventListener("click", eyeOnOff);
+$("form").addEventListener("submit", userAuthenticate);
+$all(".eye-Image")[0].addEventListener("click", toggleEye);
