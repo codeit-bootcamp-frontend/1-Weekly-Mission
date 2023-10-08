@@ -1,5 +1,12 @@
 import { displayError, showErrorMessage, getInputErrors } from "./errorHandle.js";
 
+
+
+const user = {
+  email: "test@codeit.com",
+  password: "codeit101"
+}
+
 function userAuthenticate(e) {
   e.preventDefault();
   const { target: { elements } } = e;
@@ -11,7 +18,7 @@ function userAuthenticate(e) {
     return;
   }
 
-  if ($emailInput.value === "test@codeit.com" && $passwordInput.value === "codeit101") {
+  if ($emailInput.value === user.email && $passwordInput.value === user.password) {
     window.location.href = "/folder";
     return;
   }
@@ -21,4 +28,4 @@ function userAuthenticate(e) {
 };
 
 
-export { userAuthenticate };
+export { userAuthenticate, user};
