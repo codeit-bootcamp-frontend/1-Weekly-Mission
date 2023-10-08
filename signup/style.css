@@ -1,3 +1,11 @@
+form .doublecheck-pw-invisible {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-100%);
+  cursor: pointer;
+}
+
 form .signup-btn {
   padding: 1rem 1.25rem;
   align-items: center;
