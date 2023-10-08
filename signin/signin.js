@@ -5,12 +5,11 @@ const eyeOff = document.querySelector('.eye-off');
 
 function reset(e) {
     e.target.classList.remove('warning');
-    const warningText = e.target.getAttribute('warning-text')
+    const warningText = document.querySelector('.warning-text');
     if (warningText) {
         warningText.remove();
     }
 }
-
 function checkerEmail(e) {
     if (emailInput.value === '') {
         emailInput.classList.add('warning');
@@ -73,8 +72,11 @@ function eyeOnOff(e) {
 
 emailInput.addEventListener('focusout', checkerEmail);
 emailInput.addEventListener('focusin', reset);
+
 passwordInput.addEventListener('focusout', checkerPassword);
 passwordInput.addEventListener('focusin', reset);
+
+
 loginBtn.addEventListener('click', login);
 eyeOff.addEventListener('click', eyeOnOff)
 
