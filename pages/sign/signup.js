@@ -80,5 +80,5 @@ function password_toggle(e) {
 }
 
 eye_mark_in_password.addEventListener('click', password_toggle)
-eye_mark_in_password_repeat.addEventListener('click', (password_toggle))
+eye_mark_in_password_repeat.addEventListener('click', password_toggle)
 
