@@ -11,20 +11,22 @@ function displayError(errorLocation, errorMessage) {
   errorLocation.textContent = errorMessage;
 }
 
+function getErrors() {
+  return $all(".error");
+}
 
-
-function showErrorMessage({id, value}) {
-  
-  // const {id, value} = target;
-
+function showErrorMessage({ id, value }) {
   const targetValue = value;
-  const [emailError, passwordError] = $all(".error");
+  const [emailError, passwordError] = getErrors();
 
   switch (id) {
     case "email":
       if (!targetValue) {
         displayError(emailError, "이메일을 입력해주세요.");
-      } else if (!isValidEmail(value)) {
+        return;
+      }
+
+      if (!isValidEmail(value)) {
         displayError(emailError, "올바른 이메일 주소가 아닙니다.");
       }
       break;
@@ -45,36 +47,37 @@ function toggleEye(e) {
   e.stopPropagation();
   const isEyeOn = e.target.src.includes("eye-on");
   e.target.src = `./images/signin/${isEyeOn ? "eye-off" : "eye-on"}.svg`;
-  passwordInput.type = isEyeOn ? "password" : "text";
-
+  $("#password").type = isEyeOn ? "password" : "text";
 }
 
-function clearError(e) {
-  // const errorMessage = e.target.parentsElement.$all(".error");
-
-  // errorMessage.textContent = "";
-
+function clearError({ target: { id } }) {
+  const [emailError, passwordError] = getErrors();
+  const errorToDelete = id === "email" ? emailError : id === "password" ? passwordError : null;
+  errorToDelete.textContent = "";
 }
 
 
 function userAuthenticate(e) {
   e.preventDefault();
   const { target: { elements } } = e;
-  const [emailInput, passwordInput] = elements;
+  const [$emailInput, $passwordInput] = elements;
 
-  if (emailInput.value === "test@codeit.com" && passwordInput.value === "codeit101") {
+
+  if (showErrorMessage($emailInput) || showErrorMessage($passwordInput)) {
+    return;
+  }
+
+  if ($emailInput.value === "test@codeit.com" && $passwordInput.value === "codeit101") {
     window.location.href = "/folder";
     return;
   }
   displayError(emailError, "이메일을 확인해주세요.");
   displayError(passwordError, "비밀번호를 확인해주세요.");
-
-
 };
 
 
-$("#email").addEventListener("focusout", ({target}) => showErrorMessage(target));
-$("#password").addEventListener("focusout", ({target}) => showErrorMessage(target));
+$("#email").addEventListener("focusout", ({ target }) => showErrorMessage(target));
+$("#password").addEventListener("focusout", ({ target }) => showErrorMessage(target));
 $("#email").addEventListener("focusin", clearError);
 $("#password").addEventListener("focusin", clearError);
 
