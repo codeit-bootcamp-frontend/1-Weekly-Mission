@@ -23,18 +23,6 @@ signinBtn.addEventListener("click", function (e) {
     location.href = "./folder.html";
     disappearError(email, emailError);
     disappearError(password, passwordError);
-  } else if (
-    email.value !== "test@codeit.com" &&
-    password.value == "codeit101"
-  ) {
-    appearError(email, emailError, "이메일을 확인해주세요.");
-    disappearError(password, passwordError);
-  } else if (
-    email.value == "test@codeit.com" &&
-    password.value !== "codeit101"
-  ) {
-    disappearError(email, emailError);
-    appearError(password, passwordError, "비밀번호를 확인해주세요.");
   } else {
     appearError(email, emailError, "이메일을 확인해주세요.");
     appearError(password, passwordError, "비밀번호를 확인해주세요.");
@@ -47,7 +35,7 @@ email.addEventListener("blur", function () {
   } else if (!isValidEmail(email.value)) {
     appearError(email, emailError, "올바른 이메일 주소가 아닙니다.");
   } else {
-    disappearErrorEmail();
+    disappearError(email, emailError);
   }
 });
 
