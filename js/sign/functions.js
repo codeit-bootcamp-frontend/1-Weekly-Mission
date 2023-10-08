@@ -23,4 +23,14 @@ function eyeCheck(e) {
   }
 }
 
-export { appearError, disappearError, eyeCheck };
+function isValidEmail(email) {
+  const pattern = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
+  return pattern.test(email);
+}
+
+function isValidPassword(password) {
+  const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  return pattern.test(password);
+}
+
+export { appearError, disappearError, eyeCheck, isValidEmail, isValidPassword };

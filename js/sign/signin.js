@@ -1,5 +1,10 @@
 import { email, password, emailError, passwordError } from "./tags.js";
-import { appearError, disappearError, eyeCheck } from "./functions.js";
+import {
+  appearError,
+  disappearError,
+  eyeCheck,
+  isValidEmail,
+} from "./functions.js";
 
 const signinBtn = document.querySelector(".signin-button");
 const eyeBtn = document.querySelector("#eye-button1");
@@ -25,11 +30,6 @@ email.addEventListener("blur", function () {
     disappearError(email, emailError);
   }
 });
-
-function isValidEmail(email) {
-  const pattern = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
-  return pattern.test(email);
-}
 
 password.addEventListener("blur", function () {
   if (!password.value) {

@@ -6,7 +6,13 @@ import {
   passwordError,
   passwordRepeatError,
 } from "./tags.js";
-import { appearError, disappearError, eyeCheck } from "./functions.js";
+import {
+  appearError,
+  disappearError,
+  eyeCheck,
+  isValidEmail,
+  isValidPassword,
+} from "./functions.js";
 
 const signupBtn = document.querySelector(".signup-button");
 const eyeBtn1 = document.querySelector("#eye-button1");
@@ -37,11 +43,6 @@ email.addEventListener("blur", function () {
   }
 });
 
-function isValidEmail(email) {
-  const pattern = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-za-z0-9\\-]+/;
-  return pattern.test(email);
-}
-
 password.addEventListener("blur", function () {
   if (!password.value) {
     appearError(password, passwordError, "비밀번호를 입력해주세요.");
@@ -55,11 +56,6 @@ password.addEventListener("blur", function () {
     disappearError(password, passwordError);
   }
 });
-
-function isValidPassword(password) {
-  const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-  return pattern.test(password);
-}
 
 passwordRepeat.addEventListener("blur", function () {
   if (passwordRepeat.value !== password.value) {
