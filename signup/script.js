@@ -1,6 +1,6 @@
 const emailInput = document.querySelector('#email');
 const pwdInput = document.querySelector('#password');
-
+const pwdConfirmInput = document.querySelector('#password-confirm');
 
 const isValidEmail = email => {
   const regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -47,6 +47,21 @@ const isValidPwd = value => {
 }
 
 
+const confirmPwd = () => {
+  const inputControl = document.querySelector('.pwd-confirm-field');
+  const pwd = pwdInput.value.trim();
+  const pwd2 = document.querySelector('#password-confirm').value.trim();
+  const errorMessage = inputControl.querySelector('.error');
+
+  if(pwd !="" && pwd2 != "") {
+        if(pwd !== pwd2){
+          errorMessage.innerHTML='비밀번호가 일치하지 않습니다.'
+          inputControl.classList.add('error');
+      }
+  }
+};
+
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
+pwdConfirmInput.addEventListener("focusout", confirmPwd);
