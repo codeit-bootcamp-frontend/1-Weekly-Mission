@@ -11,7 +11,9 @@ function toggleEye(e) {
   e.stopPropagation();
   const isEyeOn = e.target.src.includes("eye-on");
   e.target.src = `./images/signin/${isEyeOn ? "eye-off" : "eye-on"}.svg`;
-  $("#password").type = isEyeOn ? "password" : "text";
+  const $passwordInput = e.target.previousElementSibling;
+  $passwordInput.type = isEyeOn ? "password" : "text";
+
 }
 
 

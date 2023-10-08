@@ -72,7 +72,8 @@ main {
 }
 
 .input-frame .input-box #email,
-#password {
+.input-frame .input-box #password,
+.input-frame .input-box #password-check{
   width: 400px;
   padding: 18px 15px;
   border-radius: 8px;
@@ -153,6 +154,7 @@ main {
   main .input-frame form,
   .input-frame .input-box #email,
   .input-frame .input-box #password,
+  .input-frame .input-box #password-check,
   .social-login {
     width: 100%;
     max-width: 400px;

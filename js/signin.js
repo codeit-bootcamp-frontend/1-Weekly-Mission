@@ -3,8 +3,6 @@ import { showErrorMessage, clearError } from "./errorHandle.js";
 import { userAuthenticate } from "./userAuthentication.js";
 
 
-
-
 $("#email").addEventListener("focusout", ({ target }) => showErrorMessage(target));
 $("#password").addEventListener("focusout", ({ target }) => showErrorMessage(target));
 $("#email").addEventListener("change", clearError);
