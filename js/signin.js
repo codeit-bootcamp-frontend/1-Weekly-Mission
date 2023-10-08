@@ -13,17 +13,18 @@ function displayError(errorLocation, errorMessage) {
 
 
 
-function showErrorMessage({ target }) {
+function showErrorMessage({id, value}) {
+  
+  // const {id, value} = target;
 
-  console.log(e.target);
-  const targetValue = e.target.value;
+  const targetValue = value;
   const [emailError, passwordError] = $all(".error");
 
-  switch (e.target.id) {
+  switch (id) {
     case "email":
       if (!targetValue) {
         displayError(emailError, "이메일을 입력해주세요.");
-      } else if (!isValidEmail(e.target.value)) {
+      } else if (!isValidEmail(value)) {
         displayError(emailError, "올바른 이메일 주소가 아닙니다.");
       }
       break;
@@ -49,9 +50,9 @@ function toggleEye(e) {
 }
 
 function clearError(e) {
-  const errorMessage = e.target.parentsElement.$all(".error");
+  // const errorMessage = e.target.parentsElement.$all(".error");
 
-  errorMessage.textContent = "";
+  // errorMessage.textContent = "";
 
 }
 
@@ -59,9 +60,7 @@ function clearError(e) {
 function userAuthenticate(e) {
   e.preventDefault();
   const { target: { elements } } = e;
-
-  const emailInput = elements[0];
-  const passwordInput = elements[1];
+  const [emailInput, passwordInput] = elements;
 
   if (emailInput.value === "test@codeit.com" && passwordInput.value === "codeit101") {
     window.location.href = "/folder";
@@ -74,8 +73,8 @@ function userAuthenticate(e) {
 };
 
 
-$("#email").addEventListener("focusout", showErrorMessage);
-$("#password").addEventListener("focusout", showErrorMessage);
+$("#email").addEventListener("focusout", ({target}) => showErrorMessage(target));
+$("#password").addEventListener("focusout", ({target}) => showErrorMessage(target));
 $("#email").addEventListener("focusin", clearError);
 $("#password").addEventListener("focusin", clearError);
 
