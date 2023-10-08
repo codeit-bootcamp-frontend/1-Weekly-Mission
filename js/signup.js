@@ -1,12 +1,24 @@
+import { 
+  idInput,
+  passwordInput,
+  loginButton,
+  eyeImage,
+  REG_ID,
+  $,
+  addError,
+  displayUserInputError,
+  clearUserInputError,
+  handleToggleEye,
+} from './signin.js';
+
 const idInput = $('#id-label');
 const passwordInput = $('#password-label');
 const loginButton = $('.login-btn');
 const eyeImage = $('.eye-off');
-
-const idErrorMassageElem = document.createElement('span');
-const pwErrorMassageElem = document.createElement('span');
+const identifyInput = $('#identify-label');
 
 const REG_ID = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+const REG_PASSWORD = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
 function $(selector){
   return document.querySelector(selector);
@@ -31,10 +43,10 @@ function clearUserInputError(element, input){
   input.style.borderColor = 'var(--gray-40)';
 }
 
-// 로그인 에러 다루는 함수
-function handleIdError(event) {
+
+function handleSignUpIdError(event) {
   const idInput = $('#id-label');
-  
+  const idErrorMassageElem = document.createElement('span');
 
   if(!event.target.value){
     displayUserInputError(idErrorMassageElem, idInput, '이메일을 입력해주세요.');
@@ -42,63 +54,36 @@ function handleIdError(event) {
   }else if(!REG_ID.test(event.target.value) && event.target.value.length > 0){
     displayUserInputError(idErrorMassageElem, idInput, '올바른 이메일 주소가 아닙니다.');
     return;
+  }else if(idInput.value === 'test@codeit.com'){
+    displayUserInputError(idErrorMassageElem, idInput, '이미 사용 중인 이메일입니다.');
+    return;
   }
+  
 
-  clearUserInputError(idErrorMassageElem, idInput);
+  clearUserInputError(idInput, idErrorMassageElem);
 }
 
-// 비밀번호 오류시 에러 출력, 삭제 함수
-function handlePasswordEmptyError(event) {
+function handleSignUpPasswordError(event) {
   const passwordInput = $('#password-label');
-  
+  const pwErrorMassageElem = document.createElement('span');
 
   if(!event.target.value){
     displayUserInputError(pwErrorMassageElem, passwordInput, '비밀번호를 입력해주세요.');
     return;
-  }
-
-  clearUserInputError(pwErrorMassageElem, passwordInput);
-}
-
-
-//존재하지 않는 이메일일 떄
-function handleToggleEmail() {
-  const idInput = $('#id-label');
-
-  if(idInput.value !== "test@codeit.com"){
-    displayUserInputError(idErrorMassageElem, idInput, '이메일을 확인해주세요.');
+  }else if(!REG_PASSWORD.test(event.target.value) && event.target.value.length > 0){
+    displayUserInputError(pwErrorMassageElem, passwordInput, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
     return;
   }
 
-  clearUserInputError(idErrorMassageElem, idInput);
+
+  clearUserInputError(passwordInput, pwErrorMassageElem);
 }
 
-
-//존재하지 않는 비밀번호일 떄
-function handleTogglePassword() {
-  const passwordInput = $('#password-label');
-
-  if(passwordInput.value !== "codeit101"){
-    displayUserInputError(pwErrorMassageElem, passwordInput, '비밀번호를 확인해주세요.');
-    return;
-  }
-
-  clearUserInputError(pwErrorMassageElem, passwordInput);
-}
-
-//로그인 성공했을 때
-function loginSuccess(event){
-  event.preventDefault();
-  alert('로그인 되었습니다.');
-  location.href = "../folder.html";
-}
-
-// 로그인 성공, 실패 다루는 함수
-function handleSignIn(){
+function handleSignUp(event){
   const idInput = $('#id-label');
   const passwordInput = $('#password-label');
 
-  if(idInput.value === "test@codeit.com" && passwordInput.value === "codeit101"){
+  if(idInput.value !== "test@codeit.com" && passwordInput.value === "codeit101"){
     return loginSuccess();
   }
 
@@ -107,7 +92,6 @@ function handleSignIn(){
   handleTogglePassword()
 }
 
-// 눈모양 아이콘 다루는 함수
 function handleToggleEye(){
   const passwordInput = $('#password-label');
   const eyeImage = $('.eye-off');
@@ -119,21 +103,7 @@ function handleToggleEye(){
   eyeImage.setAttribute("src", `../assets/png/${eyeOnOff}.png`);
 }
 
-
-idInput.addEventListener("focusout", handleIdError);
-passwordInput.addEventListener("focusout", handlePasswordEmptyError);
+idInput.addEventListener("focusout", handleSignUpIdError);
+passwordInput.addEventListener("focusout", handleSignUpPasswordError);
 loginButton.addEventListener("click", handleSignIn);
 eyeImage.addEventListener("click", handleToggleEye);
-
-export { 
-  idInput,
-  passwordInput,
-  loginButton,
-  eyeImage,
-  REG_ID,
-  $,
-  addError,
-  displayUserInputError,
-  clearUserInputError,
-  handleToggleEye,
-}
