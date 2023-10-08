@@ -3,11 +3,6 @@ import {REG_EXP} from './constant.js';
 const inputs = $all('input'); /* 이메일, 비밀번호 input */
 const form = $('form') /* form */
 
-function selectElement() {
-const emailBox = $('.email-box'); /* 이메일 메세지*/
-    const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
-    const passwordCheckBox = $('.password-check-box'); /* 비밀번호 재확인 메세지 */
-}
 
 /* 요소 하나 선택 함수  */
 function $(selector) {
