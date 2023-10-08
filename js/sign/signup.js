@@ -5,6 +5,7 @@ import {
   emailError,
   passwordError,
   passwordRepeatError,
+  userEmail,
 } from "./tags.js";
 import {
   appearError,
@@ -23,7 +24,7 @@ function emailChecker() {
     return appearError(email, emailError, "이메일을 입력해주세요.");
   } else if (!isValidEmail(email.value)) {
     return appearError(email, emailError, "올바른 이메일 주소가 아닙니다.");
-  } else if (email.value === "test@codeit.com") {
+  } else if (userEmail.includes(email.value)) {
     return appearError(email, emailError, "이미 사용 중인 이메일입니다.");
   } else {
     return disappearError(email, emailError);

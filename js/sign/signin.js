@@ -1,4 +1,11 @@
-import { email, password, emailError, passwordError } from "./tags.js";
+import {
+  email,
+  password,
+  emailError,
+  passwordError,
+  userEmail,
+  userPassword,
+} from "./tags.js";
 import {
   appearError,
   disappearError,
@@ -34,7 +41,10 @@ eyeBtn.addEventListener("click", eyeCheck);
 
 signinBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  if (email.value === "test@codeit.com" && password.value === "codeit101") {
+  if (
+    userEmail.includes(email.value) &&
+    userPassword.includes(password.value)
+  ) {
     location.href = "./folder.html";
     disappearError(email, emailError);
     disappearError(password, passwordError);
