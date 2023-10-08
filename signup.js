@@ -1,19 +1,15 @@
 window.onload=function(){
 
   const eyeImagePasswordEl = document.querySelector('#eyeImage-password')
-  // const eyeImagePasswordReEl = document.querySelector('#eyeImage-password-re')
   const eyeImagePassword = eyeImagePasswordEl.children[0]
-  // const eyeImagePasswordRe = eyeImagePasswordReEl.children[0]
   const inputEmail= document.querySelector('#sign-up')
   const inputPassword = document.querySelector('#password')
-  // const inputPassWordRe = document.querySelector('#password-re')
   const loginButton = document.querySelector('button[type="submit"]');
   const [inputEmailCss, inputPasswordCss] = document.querySelectorAll('input')
 
   //오류메시지 출력
   const emailErrorMessage = document.querySelector('.email-error-message')
   const passwordErrorMessage = document.querySelector('.password-error-message')
-  // const passwordReErrorMessage = document.querySelector('.password-re-error-message')
 
  // <눈모양 아이콘 적용, 비밀번호 입력타입 변경>
   function toggleImage(image, inputPassword) {
@@ -27,8 +23,6 @@ window.onload=function(){
   }
   eyeImagePassword.addEventListener('click', ()=> {
     toggleImage(eyeImagePassword, inputPassword)});
-  // eyeImagePasswordRe.addEventListener('click', ()=> {
-  //   toggleImage(eyeImagePasswordRe, inputPassWordRe)});
 
   //<입력하는 동안에는 에러메시지 안 보이게 하기 >
   function errorMessageStop(){
@@ -63,9 +57,9 @@ window.onload=function(){
     }
     else if (!testEmail(email)){
       addErrorStyle(inputEmailCss, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
-    } else {
-      emailErrorMessage.style.display = 'none';
-      inputEmailCss.style.border = '1px solid #ccd5e3';
+    }
+    else{
+      removeErrorStyle(inputEmailCss, emailErrorMessage);
     }
   };
   //3) 이벤트 적용
@@ -82,7 +76,7 @@ window.onload=function(){
   }
   inputPassword.addEventListener('focusout', checkPassword)
 
-  //<아이디&비밀번호 올바르게 입력했을 경우 /folder로 이동하고 아닌 경우 확인메시지 출력>
+  <아이디&비밀번호 올바르게 입력했을 경우 /folder로 이동하고 아닌 경우 확인메시지 출력>
 function validAccount(email, password){
   if (email === 'test@codeit.com' && password === 'codeit101'){
     window.location.href = './index.html';
