@@ -22,6 +22,7 @@
           <a href="signin.html" class="link-to-sign">로그인하기</a>
         </div>
       </section>
+
       <section class="submit-section">
         <form>
           <div class="form-div">
@@ -33,9 +34,7 @@
                 type="email"
                 placeholder="이메일을 입력하세요."
               />
-              <div class="email-message error-message">
-                이메일을 입력해주세요.
-              </div>
+              <div class="email-message error-message"></div>
             </div>
             <div class="form-password">
               <label for="password"> 비밀번호 </label>
@@ -45,11 +44,10 @@
                 type="password"
                 placeholder="비밀번호를 입력하세요."
               />
-              <span class="password-message error-message">
-                비밀번호를 입력해주세요.
-              </span>
+              <div class="password-message error-message"></div>
               <button class="eye-button" type="button">
                 <img
+                  id="eye-button1"
                   class="eye-icon eye-slashed"
                   src="images/eye_slashed.svg"
                   alt="비밀번호 가리기 버튼"
@@ -64,11 +62,10 @@
                 type="password"
                 placeholder="비밀번호를 다시 입력하세요."
               />
-              <span class="repeat-message error-message">
-                비밀번호를 확인해주세요.
-              </span>
+              <div class="password-repeat-message error-message"></div>
               <button class="eye-button" type="button">
                 <img
+                  id="eye-button2"
                   class="eye-icon eye-slashed"
                   src="images/eye_slashed.svg"
                   alt="비밀번호 가리기 버튼"
@@ -94,6 +91,6 @@
       </section>
     </main>
 
-    <script src="./js/sign.js"></script>
+    <script src="./js/sign/signup.js" type="module"></script>
   </body>
 </html>

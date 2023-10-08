@@ -58,7 +58,7 @@ input {
   height: 6rem;
   border: 1px solid var(--color-gray3);
   border-radius: 8px;
-  padding: 1rem 2rem;
+  padding: 1.8rem 1.5rem;
 }
 input:focus {
   outline: none !important;
@@ -81,7 +81,7 @@ input:focus {
 .form-password .eye-button,
 .form-password-repeat .eye-button {
   position: absolute;
-  right: 3rem;
+  right: 1.5rem;
   bottom: 3rem;
   border: none;
   background-color: transparent;
@@ -135,6 +135,7 @@ input:focus {
   color: var(--color-red);
   height: 0;
   visibility: hidden;
+  font-size: 1.4rem;
 }
 .error-appear {
   visibility: visible;
