@@ -86,24 +86,24 @@ const passwordHintElement = document.querySelector(".auth__password-hint");
 
 function handleEmailHint(hintType) {
 	const hintText = emailHintElement.innerText;
-	if (hintText === SIGNIN_HINT.email[hintType]) return;
-
+	if (hintText === SIGNIN_HINT.email[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
 	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
+
 	if (hintType === INPUT_STATUS.default) {
 		emailInputElement.classList.remove(INPUT_HINT_CLASSNAME);
-	} else if (!emailInputElement.classList.contains(INPUT_HINT_CLASSNAME)) {
+	} else {
 		emailInputElement.classList.add(INPUT_HINT_CLASSNAME);
 	}
 }
 
 function handlePasswordHint(hintType) {
 	const hintText = passwordHintElement.innerText;
-	if (hintText === SIGNIN_HINT.password[hintType]) return;
-
+	if (hintText === SIGNIN_HINT.password[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
 	passwordHintElement.innerText = SIGNIN_HINT.password[hintType];
+
 	if (hintType === INPUT_STATUS.default) {
 		passwordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
-	} else if (!passwordInputElement.classList.contains(INPUT_HINT_CLASSNAME)) {
+	} else {
 		passwordInputElement.classList.add(INPUT_HINT_CLASSNAME);
 	}
 }
@@ -148,16 +148,21 @@ function getIsUserEmail(email) {
 	}
 }
 
-function getIsUserPassword(password) {
-	if (password === "") {
-		handlePasswordHint(INPUT_STATUS.isNotFilled);
-		return false;
-	} else if (password !== USERS[0].password) {
-		handlePasswordHint(INPUT_STATUS.isNotUser);
-		return false;
+function getIsUserPassword(password, isUserEmail) {
+	if (isUserEmail) {
+		if (password === "") {
+			handlePasswordHint(INPUT_STATUS.isNotFilled);
+			return false;
+		} else if (password !== USERS[0].password) {
+			handlePasswordHint(INPUT_STATUS.isNotUser);
+			return false;
+		} else {
+			handlePasswordHint(INPUT_STATUS.default);
+			return true;
+		}
 	} else {
-		handlePasswordHint(INPUT_STATUS.default);
-		return true;
+		handlePasswordFocusoutCheck(password);
+		return false;
 	}
 }
 
