@@ -92,12 +92,13 @@ form .input-box:not(:last-child) {
     border: 1px solid var(--linkbrary-red);
 }
 .email-box.empty input,
-.email-box.error input,
-.email-box.wrong input {
+.email-box.wrong input,
+.email-box.disaccord input {
     border: 1px solid var(--linkbrary-red);
 }
 
-  
+
+  /* 이메일 값 없을 경우 나타나는 에러메세지 */
 .email-box.empty::after {
     content:"이메일을 입력해주세요.";
     margin-top: 6px;
@@ -105,16 +106,16 @@ form .input-box:not(:last-child) {
     font-size: 14px;
     font-weight: 400;
 }
-
-.email-box.error::after {
+/* 이메일 값이 옳지 않을 경우 나타느는 에러메세지 */
+.email-box.wrong::after {
     content:"올바른 이메일 주소가 아닙니다.";
     margin-top: 6px;
     color: var(--linkbrary-red);
     font-size: 14px;
     font-weight: 400;
 }
-
-.email-box.wrong::after {
+/* 이메일 값이 일치 하지않을 경우 나타나는 에러메세지 */
+.email-box.disaccord::after {
     content:"이메일을 확인해주세요.";
     margin-top: 6px;
     color: var(--linkbrary-red);
@@ -122,6 +123,8 @@ form .input-box:not(:last-child) {
     font-weight: 400;
 }
 
+
+/* 비밀번호값이 없을경우 나타나는 에러메세지 */
 .password-box.empty::after {
     content:"비밀번호를 입력해주세요.";
     margin-top: 6px;
@@ -129,8 +132,8 @@ form .input-box:not(:last-child) {
     font-size: 14px;
     font-weight: 400;
 }
-
-.password-box.wrong::after {
+/* 비밀번호가 일치하지 않을 경우 나타나는 에러메세지 */
+.password-box.disaccord::after {
     content:"비밀번호를 확인해주세요.";
     margin-top: 6px;
     color: var(--linkbrary-red);
