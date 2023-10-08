@@ -8,22 +8,26 @@ const checkEmailValidation = () => {
   //email이 빈 칸일 때    - error-email1
   if (!email) {
     document.getElementById('error-email1').style = 'display:block';
-    document.getElementById('error-email2').style = 'display:none';
-    document.getElementById('error-email3').style = 'display:none';
-    document.getElementById('email').style = 'border:1px solid red';
-  } else if (!regExp.test(email)) {
-    document.getElementById('error-email1').style = 'display:none';
-    document.getElementById('error-email2').style = 'display:block';
-    document.getElementById('error-email3').style = 'display:none';
-    document.getElementById('email').style = 'border:1px solid red';
-  } else if (email == TEST_EMAIL) {
-    document.getElementById('error-email1').style = 'display:none';
-    document.getElementById('error-email2').style = 'display:none';
-    document.getElementById('error-email3').style = 'display:block';
     document.getElementById('email').style = 'border:1px solid red';
   } else {
     document.getElementById('error-email1').style = 'display:none';
+    document.getElementById('email').style = 'border: 1px solid #d3d4dd';
+  }
+
+  //유효하지 않은 email일 때    - error-email2
+  if (email && !regExp.test(email)) {
+    document.getElementById('error-email2').style = 'display:block';
+    document.getElementById('email').style = 'border:1px solid red';
+  } else {
     document.getElementById('error-email2').style = 'display:none';
+    document.getElementById('email').style = 'border: 1px solid #d3d4dd';
+  }
+
+  //이미 존재하는 email일 때    - error-email3
+  if (email == TEST_EMAIL) {
+    document.getElementById('error-email3').style = 'display:block';
+    document.getElementById('email').style = 'border:1px solid red';
+  } else {
     document.getElementById('error-email3').style = 'display:none';
     document.getElementById('email').style = 'border: 1px solid #d3d4dd';
   }
@@ -57,20 +61,38 @@ const checkRePwdValidation = () => {
 };
 
 const submit = () => {
-  let email = document.getElementById('email').value;
-  let pwd = document.getElementById('pwd').value;
+  const VALID = '1px solid rgb(211, 212, 221)';
 
-  if ((email != TEST_EMAIL) & (pwd != TEST_PWD)) {
-    //화면에 나올 내용
-    document.getElementById('error-email2').style = 'display:block';
-    document.getElementById('error-pwd2').style = 'display:block';
-    document.getElementById('email').style = 'border:1px solid red';
-    document.getElementById('pwd').style = 'border:1px solid red';
-    //화면에 나오면 안 되는 내용
-    document.getElementById('erorr-email1').style = 'display:none';
-    document.getElementById('erorr-pwd1').style = 'display:none';
-  } else {
+  //   let email = document.getElementById('email').style.border;
+  //   let pwd = document.getElementById('pwd').style.border;
+  //   let rePwd = document.getElementById('rePwd').style.border;
+
+  //   if (email == VALID && pwd == VALID && rePwd == VALID) {
+  //     alert('회원가입 성공');
+  //     const link = 'folder.html';
+  //     location.href = link;
+  //   } else {
+  //     console.log('not checked');
+  //   }
+
+  //   let email = document.getElementById('email').style.border;
+  //   let pwd = document.getElementById('pwd').style.border;
+  //   let rePwd = document.getElementById('rePwd').style.border;
+
+  let email_style = document.getElementById('email').style.border;
+  let pwd_style = document.getElementById('pwd').style.border;
+  let rePwd_style = document.getElementById('rePwd').style.border;
+
+  if (email_style == VALID && pwd_style == VALID && rePwd_style == VALID) {
+    alert('회원가입 성공');
     const link = 'folder.html';
     location.href = link;
+  } else {
+    document.getElementById('error-email2').style = 'display:block';
+    document.getElementById('email').style = 'border:1px solid red';
+    document.getElementById('error-pwd1').style = 'display:block';
+    document.getElementById('pwd').style = 'border:1px solid red';
+    document.getElementById('error-re-pwd1').style = 'display:block';
+    document.getElementById('rePwd').style = 'border:1px solid red';
   }
 };
