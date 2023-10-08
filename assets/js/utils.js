@@ -1,3 +1,9 @@
+//TEST USER
+const TEST_USER = {
+  email: "test@codeit.com",
+  pw: "codeit101"
+}
+
 //이메일 유효 형식 검사
 const EMAIL_REGEXP = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
@@ -33,15 +39,39 @@ if (range.querySelector(element)){
 }
 
 //ErrorTag
-function addErrorTag (el, parent, message) {
+function addErrorTag (el, insertionPoint, message) {
   const SpanTag = createErrorTag();
   SpanTag.textContent = message;
-  parent.appendChild(SpanTag);
+  insertionPoint.appendChild(SpanTag);
   addErrorClass(el);
 }
 
+/*-----눈모양 아이콘 클릭에 따른 노출-----*/
+function togglePw(e){
+  const pwIcon = e.target
+  const inputBox = e.target.previousElementSibling
+
+  pwIcon.classList.toggle("active")
+  let isShowPw = pwIcon.classList.contains("active")
+
+  const pwInputType = (isShowPw) ? 'text' : 'password';
+  inputBox.setAttribute('type', pwInputType)
+
+  const pwIconPath = (isShowPw) ? "assets/img/icon-eye-on.svg" : "assets/img/icon-eye-off.svg";
+  pwIcon.setAttribute('src', pwIconPath)
+  
+  const pwLetterSpacing = (isShowPw) ? '0rem' : '0.375rem';
+  inputBox.style.letterSpacing = pwLetterSpacing
+
+  const pwIconAltText = (isShowPw) ? "show password" : "hide password";
+  pwIcon.setAttribute('alt', pwIconAltText)
+}
+
 export { 
+  TEST_USER,
   isEmailValid,
   addErrorTag,
   removeErrorClass,
-  removeElementOrNull }
+  removeElementOrNull,
+  togglePw
+}

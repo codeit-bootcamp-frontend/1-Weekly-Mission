@@ -1,8 +1,10 @@
 import {
+  TEST_USER,
   isEmailValid,
   addErrorTag,
   removeErrorClass,
-  removeElementOrNull} from './utils.js';
+  removeElementOrNull,
+  togglePw} from './utils.js';
 
 const signinForm = document.querySelector('form');
 const emailWrap = document.querySelector('.signin__email__wrap');
@@ -48,14 +50,7 @@ function validatePwInput(e){
 
 inputPw.addEventListener('focusout', validatePwInput);
 
-
-//테스트 계정
-const TEST_USER = {
-  email: "test@codeit.com",
-  pw: "codeit101"
-}
-
-//로그인 시도
+//로그인 실행
 function submitForm(e){
   e.preventDefault()
 
@@ -79,33 +74,9 @@ function submitForm(e){
   addErrorTag(inputPw, pwWrap, incorrectPwError)
 }
 
-function isEnter(key){
-  if (key.keycode == 13) {submitForm} ;
-}
-
 signinForm.addEventListener('submit', submitForm); //버튼 클릭시 실행
-signinForm.addEventListener('keypress', isEnter) //Enter시 실행
 
 /*-----눈모양 아이콘 클릭에 따른 노출-----*/
 const eye = document.querySelector(".input__eye");
-let isShowPw = false
-
-function togglePw(e){
-  const pwIcon = e.target
-
-  isShowPw = !isShowPw
-
-  const pwInputType = (isShowPw) ? 'text' : 'password';
-  inputPw.setAttribute('type', pwInputType)
-
-  const pwIconPath = (isShowPw) ? "assets/img/icon-eye-on.svg" : "assets/img/icon-eye-off.svg";
-  pwIcon.setAttribute('src', pwIconPath)
-  
-  const pwLetterSpacing = (isShowPw) ? '0rem' : '0.375rem';
-  inputPw.style.letterSpacing = pwLetterSpacing
-
-  const pwIconAltText = (isShowPw) ? "show password" : "hide password";
-  pwIcon.setAttribute('alt', pwIconAltText)
-}
 
 eye.addEventListener('click', togglePw)

@@ -25,7 +25,7 @@
       <a class="link-signin" href="/signin.html">로그인 하기</a>
     </div>
 
-    <form class="signup__wrap">
+    <form class="signup__wrap" action="/folder">
       <div class="signup__email__wrap">
         <label class="signup__label">이메일</label>
         <div class="signup__input__wrap">
@@ -35,15 +35,15 @@
       <div class="signup__pw__wrap">
         <label class="signup__label">비밀번호</label>
         <div class="signup__input__wrap">
-          <input class="input__row input--pw" type="text" autocomplete="off"> <!--type="password"-->
-          <img class="input__eye" src="assets/img/icon-eye-on.svg" alt="password eye on">
+          <input class="input__row input--pw" type="password" autocomplete="off"> <!--type="password"-->
+          <img class="input__eye" src="assets/img/icon-eye-off.svg" alt="password eye off">
         </div>
       </div>
       <div class="signup__pw__wrap--confirm">
         <label class="signup__label">비밀번호 확인</label>
         <div class="signup__input__wrap">
-          <input class="input__row input--pw" type="text" autocomplete="off"> <!--type="password"-->
-          <img class="input__eye" src="assets/img/icon-eye-on.svg" alt="password eye on">
+          <input class="input__row input--pw-confirm" type="password" autocomplete="off"> <!--type="password"-->
+          <img class="input__eye" src="assets/img/icon-eye-off.svg" alt="password eye off">
         </div>
       </div>
        <button class="signup__btn" type="submit">회원가입</button>
@@ -59,5 +59,7 @@
   
   </main> <!--end main-->
     
+  <script type=module src="./assets/js/signup.js"></script>
+
 </body> <!-- Page Content ends here -->
 </html>
