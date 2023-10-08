@@ -22,13 +22,16 @@ function disappearError(el, elError) {
 
 signupBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  if (email.value === "test@codeit.com" && password.value === "codeit101") {
+  if (
+    !email.classList.contains("error-border") &&
+    !password.classList.contains("error-border") &&
+    !passwordRepeat.classList.contains("error-border")
+  ) {
+    // 문제가 없으면 회원가입 성공.
     location.href = "./folder.html";
     disappearError(email, emailError);
     disappearError(password, passwordError);
-  } else {
-    appearError(email, emailError, "이메일을 확인해주세요.");
-    appearError(password, passwordError, "비밀번호를 확인해주세요.");
+    disappearError(passwordRepeat, passwordRepeatError);
   }
 });
 
