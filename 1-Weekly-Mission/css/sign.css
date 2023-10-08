@@ -177,8 +177,7 @@ input:focus {
   border-color: var(--linkbrary-red);
 }
 
-.email_error,
-.password_error {
+.print_error_message {
   color: var(--linkbrary-red);
   font-size: 14px;
 }
