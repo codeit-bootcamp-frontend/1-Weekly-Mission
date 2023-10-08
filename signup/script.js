@@ -1,6 +1,8 @@
 const emailInput = document.querySelector('#email');
 const pwdInput = document.querySelector('#password');
 const pwdConfirmInput = document.querySelector('#password-confirm');
+const signUpBtn = document.querySelector('.btn-login');
+
 
 const isValidEmail = email => {
   const regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -61,8 +63,22 @@ const confirmPwd = () => {
   }
 };
 
+const submitForm = (e) => {
+  e.preventDefault();
+
+  if (
+    emailInput.value &&
+    pwdInput.value
+  ) {
+    location.href = "/folder/folder.html";
+  } else {
+    checkEmailValidation(e);
+    checkPwdValidation(e);
+  }
+}; 
 
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
 pwdConfirmInput.addEventListener("focusout", confirmPwd);
+signUpBtn.addEventListener("click", submitForm);
