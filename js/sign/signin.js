@@ -1,11 +1,7 @@
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
+import { email, password, emailError, passwordError } from "./tags.js";
+
 const signinBtn = document.querySelector(".signin-button");
-
 const eyeBtn = document.querySelector(".eye-slashed");
-
-const emailError = document.querySelector(".email-message");
-const passwordError = document.querySelector(".password-message");
 
 function appearError(el, elError, errorText) {
   elError.classList.add("error-appear");

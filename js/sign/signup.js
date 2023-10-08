@@ -1,14 +1,14 @@
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
-const passwordRepeat = document.querySelector("#password-repeat");
+import {
+  email,
+  password,
+  passwordRepeat,
+  emailError,
+  passwordError,
+  passwordRepeatError,
+} from "./tags.js";
 
 const signupBtn = document.querySelector(".signup-button");
-
 const eyeBtn = document.querySelector(".eye-slashed");
-
-const emailError = document.querySelector(".email-message");
-const passwordError = document.querySelector(".password-message");
-const passwordRepeatError = document.querySelector(".password-repeat-message");
 
 function appearError(el, elError, errorText) {
   elError.classList.add("error-appear");
