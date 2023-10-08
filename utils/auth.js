@@ -1,4 +1,4 @@
-// SignIn, SignUp 비밀번호 토글
+// Signin, Signup 비밀번호 토글
 const PASSWORD_TOGGLE_CONSTANT = {
 	visible: {
 		inputType: "text",
@@ -48,7 +48,7 @@ passwordConfirmToggle?.addEventListener("click", () => {
 	passwordConfirmIcon.alt = passwordVisibility.imageAlt;
 });
 
-// SignIn 유효성 검사
+// Signin 유효성 검사
 const USERS = [
 	{
 		email: "test@codeit.com",
@@ -80,7 +80,7 @@ const FOLDER_PAGE_PATH = "/pages/forder.html";
 
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");
-const signInButtonElement = document.querySelector(".signIn__button");
+const signinButtonElement = document.querySelector(".signin__button");
 const emailHintElement = document.querySelector(".auth__email-hint");
 const passwordHintElement = document.querySelector(".auth__password-hint");
 
@@ -106,7 +106,7 @@ function changePasswordHint(hintType) {
 	}
 }
 
-function handleSignInSuccess() {
+function signinSuccess() {
 	emailInputElement.classList.remove(INPUT_HINT_CLASSNAME);
 	passwordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
 	location.href = FOLDER_PAGE_PATH;
@@ -146,28 +146,24 @@ function getIsUserEmail(email) {
 	}
 }
 
-function getIsUserPassword(password, isUserEmail) {
-	if (isUserEmail) {
-		if (password === "") {
-			changePasswordHint(INPUT_STATUS.isNotFilled);
-			return false;
-		} else if (password !== USERS[0].password) {
-			changePasswordHint(INPUT_STATUS.isNotUser);
-			return false;
-		} else {
-			changePasswordHint(INPUT_STATUS.default);
-			return true;
-		}
-	} else {
-		checkPasswordFocusout(password);
+function getIsUserPassword(password) {
+	if (password === "") {
+		changePasswordHint(INPUT_STATUS.isNotFilled);
 		return false;
+	} else if (password !== USERS[0].password) {
+		changePasswordHint(INPUT_STATUS.isNotUser);
+		return false;
+	} else {
+		changePasswordHint(INPUT_STATUS.default);
+		return true;
 	}
 }
 
-function signIn(email, password) {
+function clickSignin(email, password) {
 	const isUserEmail = getIsUserEmail(email);
+	if (!isUserEmail) return; // 유저 이메일이 아닌경우 비밀번호 검사하지 않고 리턴
 	const isUserPassword = getIsUserPassword(password);
-	if (isUserEmail && isUserPassword) handleSignInSuccess();
+	if (isUserEmail && isUserPassword) signinSuccess();
 }
 
 emailInputElement.addEventListener("focusout", (e) => {
@@ -178,7 +174,7 @@ passwordInputElement.addEventListener("focusout", (e) => {
 	checkPasswordFocusout(e.target.value);
 });
 
-signInButtonElement.addEventListener("click", (e) => {
+signinButtonElement.addEventListener("click", (e) => {
 	e.preventDefault();
-	signIn(emailInputElement.value, passwordInputElement.value);
+	clickSignin(emailInputElement.value, passwordInputElement.value);
 });
