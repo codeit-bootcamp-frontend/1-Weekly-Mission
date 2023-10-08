@@ -4,6 +4,7 @@ const $passwordBox = document.querySelector("#password");
 const $passwordCheckBox = document.querySelector("#password_check");
 // const $submitButton = document.querySelector(".sign_button");
 const $eyeButton = document.querySelector(".eye_off");
+const $eyeButtonCheck = document.querySelector(".eye_off_check");
 
 const $emailErrMsg = document.createElement("p");
 const $passwordErrMsg = document.createElement("p");
@@ -18,8 +19,11 @@ const addError = (target, ErrorMessage) => {
     $emailBox.after(target);
     $emailBox.classList.add("error_border");
   } else if (target === $passwordErrMsg) {
-    $passwordBox.after(target);
+    $eyeButton.after(target);
     $passwordBox.classList.add("error_border");
+  } else if (target === $passwordConfirmErrMsg) {
+    $eyeButtonCheck.after(target);
+    $passwordCheckBox.classList.add("error_border");
   }
 };
 
@@ -29,18 +33,27 @@ const removeError = (target) => {
     $emailBox.classList.remove("error_border");
   } else if (target === $passwordErrMsg) {
     $passwordBox.classList.remove("error_border");
+  } else if (target === $passwordConfirmErrMsg) {
+    $passwordCheckBox.classList.remove("error_border");
   }
   target.textContent = "";
 };
 
 // 눈모양 버튼 클릭 시 비밀번호 toggle
-const togglePassword = () => {
-  if ($passwordBox.getAttribute("type") === "password") {
-    $passwordBox.setAttribute("type", "text");
-    $eyeButton.firstElementChild.setAttribute("src", "./image/eye-on.svg");
-  } else if ($passwordBox.getAttribute("type") === "text") {
-    $passwordBox.setAttribute("type", "password");
-    $eyeButton.firstElementChild.setAttribute("src", "./image/eye-off.svg");
+const togglePassword = (e) => {
+  e.preventDefault();
+  const $parentElement = e.target.parentElement;
+
+  if (
+    $parentElement.previousElementSibling.getAttribute("type") === "password"
+  ) {
+    $parentElement.previousElementSibling.setAttribute("type", "text");
+    e.target.setAttribute("src", "./image/eye-on.svg");
+  } else if (
+    $parentElement.previousElementSibling.getAttribute("type") === "text"
+  ) {
+    $parentElement.previousElementSibling.setAttribute("type", "password");
+    e.target.setAttribute("src", "./image/eye-off.svg");
   }
 };
 
@@ -50,7 +63,10 @@ export {
   togglePassword,
   $emailBox,
   $passwordBox,
+  $passwordCheckBox,
   $eyeButton,
+  $eyeButtonCheck,
   $emailErrMsg,
   $passwordErrMsg,
+  $passwordConfirmErrMsg,
 };
