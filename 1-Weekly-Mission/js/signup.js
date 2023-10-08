@@ -4,15 +4,20 @@ import {
   togglePassword,
   $emailBox,
   $passwordBox,
+  $passwordCheckBox,
   $eyeButton,
+  $eyeButtonCheck,
   $emailErrMsg,
   $passwordErrMsg,
+  $passwordConfirmErrMsg,
 } from "./index.js";
 
 const $submitButton = document.querySelector(".sign_button");
 
 // 이메일 정규식
 const EMAIL_REGEX = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+// 비밀번호 정규식(영문, 숫자 포함 8자 이상)
+const PASSWORD_REGEX = new RegExp("^(?=.*[0-9])(?=.*[a-zA-z]).{8,}$");
 
 // 이메일 입력
 const setEmailErrorMessage = (e) => {
@@ -24,6 +29,8 @@ const setEmailErrorMessage = (e) => {
   } else if (!EMAIL_REGEX.test(e.target.value) && e.target.value.length > 0) {
     // 이메일 형식에 맞지 않을 때
     addError($emailErrMsg, "올바른 이메일 주소가 아닙니다.");
+  } else if (e.target.value === "test@codeit.com") {
+    addError($emailErrMsg, "이미 사용중인 이메일입니다.");
   } else {
     removeError($emailErrMsg);
   }
@@ -36,8 +43,25 @@ const setPasswordErrorMessage = (e) => {
   if (!e.target.value) {
     // 아무것도 입력하지 않았을 때
     addError($passwordErrMsg, "비밀번호를 입력해주세요.");
+  } else if (!PASSWORD_REGEX.test(e.target.value)) {
+    addError(
+      $passwordErrMsg,
+      "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요."
+    );
   } else {
     removeError($passwordErrMsg);
+  }
+};
+
+// 비밀번호 확인
+const setCheckPasswordErrorMessage = (e) => {
+  e.preventDefault();
+
+  if ($passwordBox.value !== $passwordCheckBox.value) {
+    // 비밀번호 input과 비밀번호 확인 input값이 다른 경우
+    addError($passwordConfirmErrMsg, "비밀번호가 일치하지 않아요.");
+  } else {
+    removeError($passwordConfirmErrMsg);
   }
 };
 
@@ -46,20 +70,25 @@ const submitForm = (e) => {
   e.preventDefault();
   // 이메일: test@codeit.com, 비밀번호: codeit101 으로 로그인 시도할 경우
   if (
-    $emailBox.value === "test@codeit.com" &&
-    $passwordBox.value === "codeit101"
+    $emailBox.value &&
+    $passwordBox.value &&
+    $passwordCheckBox.value &&
+    !$emailErrMsg.value &&
+    !$passwordErrMsg.value &&
+    !$passwordConfirmErrMsg.value
   ) {
     location.href = "./folder.html";
   } else {
-    $emailErrorMsg.textContent = "이메일을 확인해주세요.";
-    $emailBox.classList.add("error_border");
-    $passwordErrorMsg.textContent = "비밀번호를 확인해주세요.";
-    $passwordBox.classList.add("error_border");
+    setEmailErrorMessage(e);
+    setPasswordErrorMessage(e);
+    setCheckPasswordErrorMessage(e);
   }
 };
 
 $emailBox.addEventListener("blur", setEmailErrorMessage);
 $passwordBox.addEventListener("blur", setPasswordErrorMessage);
+$passwordCheckBox.addEventListener("blur", setCheckPasswordErrorMessage);
 
 $eyeButton.addEventListener("click", togglePassword);
+$eyeButtonCheck.addEventListener("click", togglePassword);
 $submitButton.addEventListener("click", submitForm);

@@ -95,7 +95,8 @@ input:focus {
   border-color: var(--primary-color);
 }
 
-.eye_off {
+.eye_off,
+.eye_off_check {
   position: absolute;
   top: 5.2rem;
   right: 1.5rem;
@@ -177,8 +178,7 @@ input:focus {
   border-color: var(--linkbrary-red);
 }
 
-.email_error,
-.password_error {
+.print_error_message {
   color: var(--linkbrary-red);
   font-size: 14px;
 }
