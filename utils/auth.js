@@ -1,4 +1,4 @@
-// Signin, Signup 비밀번호 토글
+// SignIn, SignUp 비밀번호 토글
 const PASSWORD_TOGGLE_CONSTANT = {
 	visible: {
 		inputType: "text",
@@ -48,7 +48,7 @@ passwordConfirmToggle?.addEventListener("click", () => {
 	passwordConfirmIcon.alt = passwordVisibility.imageAlt;
 });
 
-// Signin 유효성 검사
+// SignIn 유효성 검사
 const USERS = [
 	{
 		email: "test@codeit.com",
@@ -80,11 +80,11 @@ const FOLDER_PAGE_PATH = "/pages/forder.html";
 
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");
-const signInButtonElement = document.querySelector(".signin__button");
+const signInButtonElement = document.querySelector(".signIn__button");
 const emailHintElement = document.querySelector(".auth__email-hint");
 const passwordHintElement = document.querySelector(".auth__password-hint");
 
-function handleEmailHint(hintType) {
+function changeEmailHint(hintType) {
 	const hintText = emailHintElement.innerText;
 	if (hintText === SIGNIN_HINT.email[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
 	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
@@ -96,7 +96,7 @@ function handleEmailHint(hintType) {
 	}
 }
 
-function handlePasswordHint(hintType) {
+function changePasswordHint(hintType) {
 	const hintText = passwordHintElement.innerText;
 	if (hintText === SIGNIN_HINT.password[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
 	passwordHintElement.innerText = SIGNIN_HINT.password[hintType];
@@ -108,42 +108,42 @@ function handlePasswordHint(hintType) {
 	}
 }
 
-function handleSigninSuccess() {
+function handleSignInSuccess() {
 	emailInputElement.classList.remove(INPUT_HINT_CLASSNAME);
 	passwordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
 	location.href = FOLDER_PAGE_PATH;
 }
 
-function handleEmailFocusoutCheck(email) {
+function checkEmailFocusout(email) {
 	if (email === "") {
-		handleEmailHint(INPUT_STATUS.isNotFilled);
+		changeEmailHint(INPUT_STATUS.isNotFilled);
 	} else if (!EMAIL_PATTERN.test(email)) {
-		handleEmailHint(INPUT_STATUS.isNotValidated);
+		changeEmailHint(INPUT_STATUS.isNotValidated);
 	} else {
-		handleEmailHint(INPUT_STATUS.default);
+		changeEmailHint(INPUT_STATUS.default);
 	}
 }
 
-function handlePasswordFocusoutCheck(password) {
+function checkPasswordFocusout(password) {
 	if (password === "") {
-		handlePasswordHint(INPUT_STATUS.isNotFilled);
+		changePasswordHint(INPUT_STATUS.isNotFilled);
 	} else {
-		handlePasswordHint(INPUT_STATUS.default);
+		changePasswordHint(INPUT_STATUS.default);
 	}
 }
 
 function getIsUserEmail(email) {
 	if (email === "") {
-		handleEmailHint(INPUT_STATUS.isNotFilled);
+		changeEmailHint(INPUT_STATUS.isNotFilled);
 		return false;
 	} else if (!EMAIL_PATTERN.test(email)) {
-		handleEmailHint(INPUT_STATUS.isNotValidated);
+		changeEmailHint(INPUT_STATUS.isNotValidated);
 		return false;
 	} else if (email !== USERS[0].email) {
-		handleEmailHint(INPUT_STATUS.isNotUser);
+		changeEmailHint(INPUT_STATUS.isNotUser);
 		return false;
 	} else {
-		handleEmailHint(INPUT_STATUS.default);
+		changeEmailHint(INPUT_STATUS.default);
 		return true;
 	}
 }
@@ -151,40 +151,40 @@ function getIsUserEmail(email) {
 function getIsUserPassword(password, isUserEmail) {
 	if (isUserEmail) {
 		if (password === "") {
-			handlePasswordHint(INPUT_STATUS.isNotFilled);
+			changePasswordHint(INPUT_STATUS.isNotFilled);
 			return false;
 		} else if (password !== USERS[0].password) {
-			handlePasswordHint(INPUT_STATUS.isNotUser);
+			changePasswordHint(INPUT_STATUS.isNotUser);
 			return false;
 		} else {
-			handlePasswordHint(INPUT_STATUS.default);
+			changePasswordHint(INPUT_STATUS.default);
 			return true;
 		}
 	} else {
-		handlePasswordFocusoutCheck(password);
+		checkPasswordFocusout(password);
 		return false;
 	}
 }
 
-function handleSignIn(email, password) {
+function signIn(email, password) {
 	const isUserEmail = getIsUserEmail(email);
 	const isUserPassword = getIsUserPassword(password);
-	if (isUserEmail && isUserPassword) handleSigninSuccess();
+	if (isUserEmail && isUserPassword) handleSignInSuccess();
 }
 
 emailInputElement.addEventListener("focusout", (e) => {
 	const emailValue = emailInputElement.value;
-	handleEmailFocusoutCheck(emailValue);
+	checkEmailFocusout(emailValue);
 });
 
 passwordInputElement.addEventListener("focusout", () => {
 	const passwordValue = passwordInputElement.value;
-	handlePasswordFocusoutCheck(passwordValue);
+	checkPasswordFocusout(passwordValue);
 });
 
 signInButtonElement.addEventListener("click", (e) => {
 	e.preventDefault();
 	const emailValue = emailInputElement.value;
 	const passwordValue = passwordInputElement.value;
-	handleSignIn(emailValue, passwordValue);
+	signIn(emailValue, passwordValue);
 });
