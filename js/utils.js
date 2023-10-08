@@ -23,20 +23,21 @@ export const accountInfo = Object.freeze({  // freeze(): 읽기 전용의 객체
   })
 });
 
-export const activeError = (messageTarget, message, borderTarget, borderColor = 'var(--red)') => {
+export const validateInput = (messageTarget, message, borderTarget, borderColor = 'var(--red)') => {
   messageTarget.textContent = message;
   borderTarget.previousElementSibling.style.borderColor = borderColor;
 }
 
-export const eyeComponentOnOffChange = (e) => {
+export const changeEyeComponentOnOff = (e) => {
+  const target = e.target;
   e.stopPropagation();
-  if (!e.target.classList.contains('eye-on')) {
-    e.target.src = 'assets/components/eye-on.svg';
-    e.target.classList.add('eye-on');
-    e.target.previousElementSibling.type ="text"
+  if (!target.classList.contains('eye-on')) {
+    target.src = 'assets/components/eye-on.svg';
+    target.classList.add('eye-on');
+    target.previousElementSibling.type ="text"
   } else {
-    e.target.src = 'assets/components/eye-off.svg';
-    e.target.classList.remove('eye-on');
-    e.target.previousElementSibling.type ="password";
+    target.src = 'assets/components/eye-off.svg';
+    target.classList.remove('eye-on');
+    target.previousElementSibling.type ="password";
   }
 }
