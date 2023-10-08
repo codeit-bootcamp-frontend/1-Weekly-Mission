@@ -62,6 +62,8 @@ const confirmPwd = () => {
 };
 
 
+const 
+
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
 pwdConfirmInput.addEventListener("focusout", confirmPwd);
