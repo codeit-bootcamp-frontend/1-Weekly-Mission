@@ -171,11 +171,11 @@ function signIn(email, password) {
 }
 
 emailInputElement.addEventListener("focusout", (e) => {
-	checkEmailFocusout(emailInputElement.value);
+	checkEmailFocusout(e.target.value);
 });
 
-passwordInputElement.addEventListener("focusout", () => {
-	checkPasswordFocusout(passwordInputElement.value);
+passwordInputElement.addEventListener("focusout", (e) => {
+	checkPasswordFocusout(e.target.value);
 });
 
 signInButtonElement.addEventListener("click", (e) => {
