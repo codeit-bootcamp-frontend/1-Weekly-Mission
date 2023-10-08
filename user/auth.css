@@ -66,9 +66,6 @@
 	flex-direction: column;
 	gap: 0.75rem;
 }
-.form__field--password-check {
-	gap: 0;
-}
 .form__label {
 	width: max-content;
 	color: #000;
@@ -77,9 +74,6 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-}
-.form__label--password-check {
-	margin-bottom: 0.75rem;
 }
 .form__field-inner {
 	position: relative;
