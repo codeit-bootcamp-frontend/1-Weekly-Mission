@@ -97,14 +97,16 @@ header > .userContainer {
   margin-bottom: 2.4rem;
 }
 
-.inputBoxContainer .inputContainer #pwErrorMsg {
+.inputBoxContainer .inputContainer #pwErrorMsg,
+#pwConfirmErrorMsg {
   margin-top: 0.6rem;
 }
 
-#eyeOffImg {
+.eyeOffImg {
   position: absolute;
-  top: 25%;
+  top: 2rem;
   right: 1.5rem;
+  cursor: pointer;
 }
 
 .inputBoxContainer .loginBtn {

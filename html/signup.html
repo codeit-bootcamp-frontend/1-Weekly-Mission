@@ -11,6 +11,8 @@
     />
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/user.css" />
+    <script defer src="../js/user/user.js" type="module"></script>
+    <script defer src="../js/user/signup.js" type="module"></script>
   </head>
   <body>
     <header>
@@ -32,35 +34,44 @@
       <form>
         <div class="inputContainer" id="emailInputContainer">
           <label for="emailInput">이메일</label>
-          <input type="email" name="emailInput" />
+          <input type="email" id="emailInput" />
+          <div class="errorMessage" id="emailErrorMsg">
+            이메일을 입력해주세요.
+          </div>
         </div>
         <div class="inputContainer" id="pwInputContainer">
           <label for="pwInput">비밀번호</label>
           <div class="inputBox">
-            <input type="password" name="pwInput" />
+            <input type="password" id="pwInput" />
             <img
               src="/assets/user/img_eyeOff.png"
-              id="eyeOffImg"
+              class="eyeOffImg"
               alt="eyeOffImg"
               width="16"
               height="16"
             />
+            <div class="errorMessage" id="pwErrorMsg">
+              비밀번호를 입력해주세요.
+            </div>
           </div>
         </div>
         <div class="inputContainer" id="pwConfirmInputContainer">
           <label for="pwConfirmInput">비밀번호 확인</label>
           <div class="inputBox">
-            <input type="password" name="pwConfirmInput" />
+            <input type="password" id="pwConfirmInput" />
             <img
               src="/assets/user/img_eyeOff.png"
-              id="eyeOffImg"
+              class="eyeOffImg"
               alt="eyeOffImg"
               width="16"
               height="16"
             />
+            <div class="errorMessage" id="pwConfirmErrorMsg">
+              비밀번호가 일치하지 않아요.
+            </div>
           </div>
         </div>
-        <button type="submit" class="loginBtn">회원가입</button>
+        <button type="submit" class="loginBtn" id="signupBtn">회원가입</button>
       </form>
     </section>
 
