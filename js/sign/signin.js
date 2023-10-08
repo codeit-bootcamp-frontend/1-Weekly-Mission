@@ -1,17 +1,8 @@
 import { email, password, emailError, passwordError } from "./tags.js";
+import { appearError, disappearError } from "./controlError.js";
 
 const signinBtn = document.querySelector(".signin-button");
 const eyeBtn = document.querySelector(".eye-slashed");
-
-function appearError(el, elError, errorText) {
-  elError.classList.add("error-appear");
-  elError.textContent = errorText;
-  el.classList.add("error-border");
-}
-function disappearError(el, elError) {
-  elError.classList.remove("error-appear");
-  el.classList.remove("error-border");
-}
 
 signinBtn.addEventListener("click", function (e) {
   e.preventDefault();

@@ -6,19 +6,10 @@ import {
   passwordError,
   passwordRepeatError,
 } from "./tags.js";
+import { appearError, disappearError } from "./controlError.js";
 
 const signupBtn = document.querySelector(".signup-button");
 const eyeBtn = document.querySelector(".eye-slashed");
-
-function appearError(el, elError, errorText) {
-  elError.classList.add("error-appear");
-  elError.textContent = errorText;
-  el.classList.add("error-border");
-}
-function disappearError(el, elError) {
-  elError.classList.remove("error-appear");
-  el.classList.remove("error-border");
-}
 
 signupBtn.addEventListener("click", function (e) {
   e.preventDefault();
