@@ -1,12 +1,14 @@
 import { $, $all, toggleEye } from "./utils.js";
-import { showErrorMessage, clearError } from "./errorHandle.js";
-import { userAuthenticate } from "./userAuthentication.js";
+import { commonInputCheck, clearError } from "./errorHandle.js";
+import { loginAuthentication } from "./userAuthentication.js";
 
 
-$("#email").addEventListener("focusout", ({ target }) => showErrorMessage(target));
-$("#password").addEventListener("focusout", ({ target }) => showErrorMessage(target));
-$("#email").addEventListener("change", clearError);
-$("#password").addEventListener("change", clearError);
+$("#email").addEventListener("focusout", ({ target }) => commonInputCheck(target));
+$("#password").addEventListener("focusout", ({ target }) => commonInputCheck(target));
+$("#email").addEventListener("focusin", ({target}) => clearError(target));
+$("#password").addEventListener("focusin", ({target}) => clearError(target));
 
-$("form").addEventListener("submit", userAuthenticate);
+
+$("form").addEventListener("submit", loginAuthentication);
+
 $all(".eye-Image")[0].addEventListener("click", toggleEye);

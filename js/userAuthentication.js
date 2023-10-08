@@ -1,5 +1,4 @@
-import { displayError, showErrorMessage, getInputErrors } from "./errorHandle.js";
-
+import { displayError, getInputErrors, errorMessages, commonInputCheck, signupInputCheck } from "./errorHandle.js";
 
 
 const user = {
@@ -7,14 +6,13 @@ const user = {
   password: "codeit101"
 }
 
-function userAuthenticate(e) {
+function loginAuthentication(e) {
   e.preventDefault();
   const { target: { elements } } = e;
   const [$emailInput, $passwordInput] = elements;
   const [$emailError, $passwordError] = getInputErrors();
 
-
-  if (showErrorMessage($emailInput) || showErrorMessage($passwordInput)) {
+  if (commonInputCheck($emailInput) || commonInputCheck($passwordInput)) {
     return;
   }
 
@@ -23,9 +21,23 @@ function userAuthenticate(e) {
     return;
   }
 
-  displayError($emailError, "이메일을 확인해주세요.");
-  displayError($passwordError, "비밀번호를 확인해주세요.");
+  displayError($emailError, errorMessages.loginFailed.email);
+  displayError($passwordError, errorMessages.loginFailed.password);
 };
 
 
-export { userAuthenticate, user};
+function signupAuthentication(e) {
+  e.preventDefault();
+  const { target: { elements } } = e;
+  const [$emailInput, $passwordInput] = elements;
+
+  if (signupInputCheck($emailInput) || signupInputCheck($passwordInput)) {
+    return;
+  }
+  window.location.href = "/folder";
+
+};
+
+
+
+export { loginAuthentication, user, signupAuthentication };
