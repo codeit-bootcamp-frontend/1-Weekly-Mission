@@ -9,7 +9,7 @@ const isValidEmail = email => {
   return regExp.test(email);
 }
 
-const checkEmailValidation = () => {
+const checkEmailValidation = (e) => {
   const inputField = document.querySelector('.email-field');
   const email = emailInput.value.trim();
   const errorMessage = inputField.querySelector('.error');
@@ -34,7 +34,7 @@ const isValidPwd = value => {
   return pwdRegExp.test(value);
 }
 
-const checkPwdValidation = () => {
+const checkPwdValidation = (e) => {
   const inputField = document.querySelector('.pwd-field');
   const pwd = pwdInput.value.trim();
   const errorMessage = inputField.querySelector('.error');
@@ -49,7 +49,7 @@ const checkPwdValidation = () => {
 };
 
 
-const confirmPwd = () => {
+const confirmPwd = (e) => {
   const inputField = document.querySelector('.pwd-confirm-field');
   const pwd = pwdInput.value.trim();
   const pwd2 = document.querySelector('#password-confirm').value.trim();
@@ -66,19 +66,29 @@ const confirmPwd = () => {
 const submitForm = (e) => {
   e.preventDefault();
 
-  if (
-    emailInput.value &&
-    pwdInput.value
+  if (emailInput.value && 
+      pwdInput.value && 
+      pwdConfirmInput.value
   ) {
     location.href = "/folder/folder.html";
   } else {
     checkEmailValidation(e);
     checkPwdValidation(e);
+    confirmPwd(e);
   }
 }; 
+
+function enter(e) {
+  if(e.key === "Enter") {
+    submitForm(e);
+  }
+}
 
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
 pwdConfirmInput.addEventListener("focusout", confirmPwd);
+emailInput.addEventListener("keyup", enter);
+pwdInput.addEventListener("keyup", enter);
+pwdConfirmInput.addEventListener("keyup", enter);
 signUpBtn.addEventListener("click", submitForm);
