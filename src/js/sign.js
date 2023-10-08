@@ -15,7 +15,7 @@ const VERIFYEAMIL = 'test@codeit.com';
 const VERIFYPW = 'codeit101';
 
 import { msgCreate, msgDelete } from './error-msg.js';
-import { verify, checkSpecial, checkEng, checkNum } from './check.js';
+import { verifyEmail, checkSpecial, checkEng, checkNum } from './check.js';
 
 //이메일 오류 함수
 function emailErrorMsg(e) {
@@ -27,7 +27,7 @@ function emailErrorMsg(e) {
     const emptyEmailspan = document.createElement('span');
     emptyEmailspan.classList.add('emptyEmailErrorSpan', 'errorEmailMsg');
     msgCreate(emptyEmailspan, emailDiv, emailInput, '이메일을 입력해주세요.');
-  } else if (newMsg && verify(newMsg) !== true) {
+  } else if (newMsg && verifyEmail(newMsg) !== true) {
     //이메일칸 내용은 있지만 이메일 형식 안맞을 때
     if (parentDiv.children.length !== 2) parentDiv.lastElementChild.remove();
     const noEmailspan = document.createElement('span');
@@ -38,7 +38,7 @@ function emailErrorMsg(e) {
       emailInput,
       '올바른 이메일 주소가 아닙니다.'
     );
-  } else if (newMsg && verify(newMsg) == true) {
+  } else if (newMsg && verifyEmail(newMsg) == true) {
     //이메일칸 내용은 있고 이메일 형식 맞을 때
     if (parentDiv.children.length !== 2) parentDiv.lastElementChild.remove();
     //signup 페이지에서 이메일 형식 맞지만 이미 존재하는 이메일일 경우
