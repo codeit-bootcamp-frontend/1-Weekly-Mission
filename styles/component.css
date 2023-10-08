@@ -6,6 +6,7 @@
   height: 5.4rem;
   border-radius: 0.8rem;
   background-image: linear-gradient(135deg, #6d6afe 0%, #6ae3fe 100%);
+  padding: 1.6rem 2rem;
   
   font-size: 1.8rem;
   font-weight: 600;
@@ -16,4 +17,18 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+.br__title--visible {
+  display: inline;
+  @media(min-width: 1200px) {
+    display: none;
+  }
+}
+
+.br__description--visible {
+  display: none;
+  @media(min-width: 768px) {
+    display: inline;
+  }
 }
