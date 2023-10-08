@@ -139,7 +139,11 @@ function viewPassword(e) {
 //로그인 / 회원가입 버튼 눌렀을 때 이메일 비밀번호 일치 확인
 function loginCheck(e) {
   //이메일 비밀번호 일치할때
-  if (emailInput.value === VERIFYEAMIL && pwInput.value === VERIFYPW) {
+  if (
+    !pwSignupDiv1 &&
+    emailInput.value === VERIFYEAMIL &&
+    pwInput.value === VERIFYPW
+  ) {
     location.replace('./folder.html');
   } else if (
     pwSignupDiv1 &&
