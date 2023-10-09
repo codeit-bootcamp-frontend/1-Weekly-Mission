@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/styles/variables.css" />
 		<link rel="stylesheet" href="/styles/auth.css" />
 		<title>Linkbrary</title>
-		<script src="/utils/auth.js" defer></script>
+		<script type="module" src="/utils/signup.js" defer></script>
 	</head>
 	<body>
 		<!-- H1 (a11y) -->
@@ -35,7 +35,12 @@
 					<div class="auth__input-wrapper">
 						<label>
 							<p class="auth__input-title">이메일</p>
-							<input class="auth__input" type="email" required />
+							<input
+								class="auth__input auth__input-email"
+								type="email"
+								required
+							/>
+							<p class="auth__email-hint"></p>
 						</label>
 						<label>
 							<p class="auth__input-title">비밀번호</p>
@@ -56,6 +61,7 @@
 									/>
 								</button>
 							</div>
+							<p class="auth__password-hint"></p>
 						</label>
 						<label>
 							<p class="auth__input-title">비밀번호 확인</p>
@@ -63,6 +69,7 @@
 								<input
 									class="auth__input auth__input-password--confirm"
 									type="password"
+									autocomplete="on"
 									required
 								/>
 								<button class="auth__toggle-password--confirm" type="button">
@@ -75,9 +82,12 @@
 									/>
 								</button>
 							</div>
+							<p class="auth__password-hint--confirm"></p>
 						</label>
 					</div>
-					<button type="submit" class="auth__button">회원가입</button>
+					<button type="submit" class="auth__button signup__button">
+						회원가입
+					</button>
 				</fieldset>
 			</form>
 
