@@ -3,60 +3,67 @@ import {
   passwordInput,
   loginButton,
   eyeImage,
-  emailErrorMassageElem,
-  passwordErrorMassageElem,
-  REG_EMAIL,
-  $,
-  addClass,
   displayUserInputError,
   clearUserInputError,
   handleToggleEye,
-} from './signin.js';
+} from '../pages/signin.js';
+
+import {
+  $,
+  addClass,
+  createElement,
+  isValidUserInput,
+} from '../utils.js'
+
+import {
+  REG_EXP,
+} from '../constants.js'
 
 const passwordCheckInput = $('#password-check-label');
 const passwordCheckEyeOff = $('.password-check-eye-off');
 
-const REG_PASSWORD = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
 // 회원가입 아이디 에러 다루는 함수
 function handleSignUpEmailError(event) {
   const emailInput = $('#id-label');
+  const {value: emailValue} = emailInput;
 
-  if(!event.target.value){
-    displayUserInputError(emailErrorMassageElem, emailInput, '이메일을 입력해주세요.');
+  if(!emailValue.trim()){
+    displayUserInputError(emailInput, '이메일을 입력해주세요.');
     return;
   }
   
-  if(event.target.value.length > 0 && !REG_EMAIL.test(event.target.value)){
-    displayUserInputError(emailErrorMassageElem, emailInput, '올바른 이메일 주소가 아닙니다.');
+  if(!isValidUserInput(emailValue)){
+    displayUserInputError(emailInput, '올바른 이메일 주소가 아닙니다.');
     return;
   }
   
-  if(event.target.value === 'test@codeit.com'){
-    displayUserInputError(emailErrorMassageElem, emailInput, '이미 사용 중인 이메일입니다.');
+  if(emailValue === 'test@codeit.com'){
+    displayUserInputError(emailInput, '이미 사용 중인 이메일입니다.');
     return;
   }
   
 
-  clearUserInputError(emailInput, emailErrorMassageElem);
+  clearUserInputError(emailInput);
 }
 
 // 회원가입 비밀번호 에러 다루는 함수
 function handleSignUpPasswordError(event) {
   const passwordInput = $('#password-label');
+  const {value: passwordValue} = passwordInput;
 
 
-  if(!event.target.value){
-    displayUserInputError(passwordErrorMassageElem, passwordInput, '비밀번호를 입력해주세요.');
+  if(!passwordValue){
+    displayUserInputError(passwordInput, '비밀번호를 입력해주세요.');
     return;
   }
   
-  if(event.target.value.length > 0 && !REG_PASSWORD.test(event.target.value)){
-    displayUserInputError(passwordErrorMassageElem, passwordInput, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
+  if(!isValidUserInput(passwordValue)){
+    displayUserInputError(passwordInput, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
     return;
   }
 
-  clearUserInputError(passwordInput, passwordErrorMassageElem);
+  clearUserInputError(passwordInput);
 }
 
 // 회원가입 비밀번호 체크 에러 다루는 함수
@@ -66,16 +73,16 @@ function handleSignUpPasswordCheckError(event) {
 
 
   if(passwordInput.value !== passwordCheckInput.value){
-    displayUserInputError(passwordErrorMassageElem, passwordCheckInput, '비밀번호가 일치하지 않아요.');
+    displayUserInputError(passwordCheckInput, '비밀번호가 일치하지 않아요.');
     return;
   }
 
-  clearUserInputError(passwordCheckInput, passwordErrorMassageElem);
+  clearUserInputError(passwordCheckInput);
 }
 
 function signupSuccess() {
   alert('회원가입이 완료되었습니다.');
-  location.href = "../folder.html";
+  location.href = "../../folder.html";
 }
 
 //회원가입 성공, 실패 다루는 함수
@@ -92,7 +99,7 @@ function handleSignUp(event){
 
   handleToggleEmail();
 
-  handleTogglePassword()
+  handleTogglePassword();
 }
 
 function handlePasswordCheckToggleEye(){
@@ -103,7 +110,7 @@ function handlePasswordCheckToggleEye(){
   const [inputType, eyeOnOff] = passwordCheckType ? ["text", "eye-on"] : ["password", "eye-off"];
 
   passwordCheckInput.setAttribute("type", inputType);
-  passwordCheckEyeOff.setAttribute("src", `../assets/png/${eyeOnOff}.png`);
+  passwordCheckEyeOff.setAttribute("src", `../../assets/png/${eyeOnOff}.png`);
 }
 
 

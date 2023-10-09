@@ -1,24 +1,24 @@
+import {
+  $,
+  addClass,
+  createElement,
+} from '../utils.js'
+
+import {
+  REG_EXP,
+} from '../constants.js'
+
 const emailInput = $('#id-label');
 const passwordInput = $('#password-label');
 const loginButton = $('.login-btn');
 const eyeImage = $('.eye-off');
 
-const emailErrorMassageElem = document.createElement('span');
-const passwordErrorMassageElem = document.createElement('span');
 
-const REG_EMAIL = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-
-function $(selector){
-  return document.querySelector(selector);
-}
-
-// 클래스 추가 함수
-function addClass(element, className = 'input-error-msg'){
-  element.classList.add(className);
-}
 
 // 에러 메세지 생성 함수
-function displayUserInputError(element, input, message){
+function displayUserInputError(input, message){
+  const element = createElement();
+
   element.textContent = message;
   input.style.borderColor = 'var(--red)';
   addClass(element);
@@ -34,40 +34,52 @@ function displayUserInputError(element, input, message){
 }
 
 // 옳으면 에러 메세지 제거하는 함수
-function clearUserInputError(element, input){
-  element.textContent = '';
+function clearUserInputError(input){
   input.style.borderColor = 'var(--gray-40)';
+
+  if(input.id === 'password-label') {
+    const passwordErrorMessage = input.parentElement.nextSibling;
+    passwordErrorMessage.remove();
+    return;
+  }
+  
+  input.nextSibling.remove();
 }
 
+// function isValidEmail(email) {
+//   return email.length > 0 && !REG_EXP.EMAIL.test(email)
+// }
+
 // 로그인 에러 다루는 함수
-function handleEmailError(event) {
+function handleEmailError() {
   const emailInput = $('#id-label');
+  const {value: emailValue} = emailInput;
   
 
-  if(!event.target.value){
-    displayUserInputError(emailErrorMassageElem, emailInput, '이메일을 입력해주세요.');
+  if(!emailValue.trim()){
+    displayUserInputError(emailInput, '이메일을 입력해주세요.');
     return;
   }
   
-  if(event.target.value.length > 0 && !REG_EMAIL.test(event.target.value)){
-    displayUserInputError(emailErrorMassageElem, emailInput, '올바른 이메일 주소가 아닙니다.');
+  if(emailValue.length > 0 && !REG_EXP.EMAIL.test(emailValue)){
+    displayUserInputError(emailInput, '올바른 이메일 주소가 아닙니다.');
     return;
   }
 
-  clearUserInputError(emailErrorMassageElem, emailInput);
+  clearUserInputError(emailInput);
 }
 
 // 비밀번호 오류시 에러 출력, 삭제 함수
-function handlePasswordEmptyError(event) {
+function handlePasswordEmptyError() {
   const passwordInput = $('#password-label');
   
 
-  if(!event.target.value){
-    displayUserInputError(passwordErrorMassageElem, passwordInput, '비밀번호를 입력해주세요.');
+  if(!passwordInput.value.trim()){
+    displayUserInputError(passwordInput, '비밀번호를 입력해주세요.');
     return;
   }
 
-  clearUserInputError(passwordErrorMassageElem, passwordInput);
+  clearUserInputError(passwordInput);
 }
 
 
@@ -76,11 +88,11 @@ function handleToggleEmail() {
   const emailInput = $('#id-label');
 
   if(emailInput.value !== "test@codeit.com"){
-    displayUserInputError(emailErrorMassageElem, emailInput, '이메일을 확인해주세요.');
+    displayUserInputError(emailInput, '이메일을 확인해주세요.');
     return;
   }
 
-  clearUserInputError(emailErrorMassageElem, emailInput);
+  clearUserInputError(emailInput);
 }
 
 
@@ -89,17 +101,17 @@ function handleTogglePassword() {
   const passwordInput = $('#password-label');
 
   if(passwordInput.value !== "codeit101"){
-    displayUserInputError(passwordErrorMassageElem, passwordInput, '비밀번호를 확인해주세요.');
+    displayUserInputError(passwordInput, '비밀번호를 확인해주세요.');
     return;
   }
 
-  clearUserInputError(passwordErrorMassageElem, passwordInput);
+  clearUserInputError(passwordInput);
 }
 
 //로그인 성공했을 때
 function loginSuccess(){
   alert('로그인 되었습니다.');
-  location.href = "../folder.html";
+  location.href = "../../folder.html";
 }
 
 // 로그인 성공, 실패 다루는 함수
@@ -127,7 +139,7 @@ function handleToggleEye(){
   const [inputType, eyeOnOff] = passwordType ? ["text", "eye-on"] : ["password", "eye-off"];
 
   passwordInput.setAttribute("type", inputType);
-  eyeImage.setAttribute("src", `../assets/png/${eyeOnOff}.png`);
+  eyeImage.setAttribute("src", `../../assets/png/${eyeOnOff}.png`);
 }
 
 
@@ -141,11 +153,6 @@ export {
   passwordInput,
   loginButton,
   eyeImage,
-  emailErrorMassageElem,
-  passwordErrorMassageElem,
-  REG_EMAIL,
-  $,
-  addClass,
   displayUserInputError,
   clearUserInputError,
   handleToggleEye,
