@@ -98,6 +98,13 @@ input:focus {
   transform: translate(-50%, -50%);
 }
 
+.password-check-eye-off {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translate(-50%, -50%);
+}
+
 .input-password{
   width: 100%;
 }

@@ -14,6 +14,7 @@ import {
 } from './signin.js';
 
 const passwordCheckInput = $('#password-check-label');
+const passwordCheckEyeOff = $('.password-check-eye-off');
 
 const REG_PASSWORD = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
@@ -43,7 +44,6 @@ function handleSignUpEmailError(event) {
 // 회원가입 비밀번호 에러 다루는 함수
 function handleSignUpPasswordError(event) {
   const passwordInput = $('#password-label');
-  const passwordCheckInput = $('#password-check-label');
 
 
   if(!event.target.value){
@@ -59,6 +59,25 @@ function handleSignUpPasswordError(event) {
   clearUserInputError(passwordInput, passwordErrorMassageElem);
 }
 
+// 회원가입 비밀번호 체크 에러 다루는 함수
+function handleSignUpPasswordCheckError(event) {
+  const passwordInput = $('#password-label');
+  const passwordCheckInput = $('#password-check-label');
+
+
+  if(passwordInput.value !== passwordCheckInput.value){
+    displayUserInputError(passwordErrorMassageElem, passwordCheckInput, '비밀번호가 일치하지 않아요.');
+    return;
+  }
+
+  clearUserInputError(passwordCheckInput, passwordErrorMassageElem);
+}
+
+function signupSuccess() {
+  alert('회원가입이 완료되었습니다.');
+  location.href = "../folder.html";
+}
+
 //회원가입 성공, 실패 다루는 함수
 function handleSignUp(event){
   event.preventDefault();
@@ -68,7 +87,7 @@ function handleSignUp(event){
   const passwordCheckInput = $('#password-check-label');
 
   if(emailInput.value !== "test@codeit.com" && passwordInput.value === passwordCheckInput.value){
-    return loginSuccess();
+    return signupSuccess();
   }
 
   handleToggleEmail();
@@ -78,18 +97,20 @@ function handleSignUp(event){
 
 function handlePasswordCheckToggleEye(){
   const passwordCheckInput = $('#password-check-label');
-  const eyeImage = $('.eye-off');
+  const passwordCheckEyeOff = $('.password-check-eye-off');
 
-  const passwordType = passwordCheckInput.getAttribute("type") === "password";
-  const [inputType, eyeOnOff] = passwordType ? ["text", "eye-on"] : ["password", "eye-off"];
+  const passwordCheckType = passwordCheckInput.getAttribute("type") === "password";
+  const [inputType, eyeOnOff] = passwordCheckType ? ["text", "eye-on"] : ["password", "eye-off"];
 
   passwordCheckInput.setAttribute("type", inputType);
-  eyeImage.setAttribute("src", `../assets/png/${eyeOnOff}.png`);
+  passwordCheckEyeOff.setAttribute("src", `../assets/png/${eyeOnOff}.png`);
 }
 
 
 
 emailInput.addEventListener("focusout", handleSignUpEmailError);
-passwordCheckInput.addEventListener("focusout", handleSignUpPasswordError);
-eyeImage.addEventListener("click", handlePasswordCheckToggleEye);
+passwordInput.addEventListener("focusout", handleSignUpPasswordError);
+passwordCheckEyeOff.addEventListener("click", handlePasswordCheckToggleEye);
+loginButton.addEventListener("click", handleSignUp);
+passwordCheckInput.addEventListener("focusout", handleSignUpPasswordCheckError);
 loginButton.addEventListener("click", handleSignUp);
