@@ -154,6 +154,6 @@
   color: var(--Red);
 }
 
-.err-input {
+input.err {
   border: 0.1rem solid var(--Red);
 }

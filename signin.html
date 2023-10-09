@@ -29,27 +29,37 @@
         </p>
       </div>
       <form class="form grid--form">
-        <label class="form__label margin-top30">
+        <label class="form__label margin-top30" id="labelEm">
           이메일
-          <input class="form__input" type="email" name="email" />
-          <p class="form__err"></p>
+          <input class="form__input" type="email" name="email" id="inputEm" />
+          <p class="form__err" id="pEm"></p>
         </label>
-        <label class="form__label">
+        <label class="form__label" id="labelPw">
           비밀번호
-          <input class="form__input password" type="password" name="password" />
+          <input
+            class="form__input password"
+            type="password"
+            name="password"
+            id="inputPw"
+          />
           <button
             class="form__input-btn form__input-btn--absolute"
             type="button"
+            id="buttonPw"
           >
             <img
-              class="eye"
+              class="form__img"
+              name="img"
+              id="imgPw"
               src="assets/sign-eye-off.svg"
               alt="가려진 비밀번호 보여주기"
             />
           </button>
-          <p class="form__err"></p>
+          <p class="form__err" id="pPw"></p>
         </label>
-        <button class="form__submit margin-top30">로그인</button>
+        <button class="form__submit margin-top30" name="submit" id="buttonSub">
+          로그인
+        </button>
       </form>
       <div class="form__sns grid--sns margin-top30">
         <p>소셜 로그인</p>
@@ -71,6 +81,6 @@
         </div>
       </div>
     </section>
-    <script src="js/sign.js"></script>
+    <script src="js/sign-test.js"></script>
   </body>
 </html>
