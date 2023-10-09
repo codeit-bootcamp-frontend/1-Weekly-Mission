@@ -8,13 +8,14 @@ import {
   PASSWORD_ERROR_TEXT_SELECTOR,
   TOGGLE_VISIBILITY_SELECTOR,
 } from "/constants/selector.js";
-import {
+import ERROR_MESSAGES from "/constants/errorMessages.js";
+const {
   EMAIL_EMPTY,
   EMAIL_INVALID,
   PASSWORD_EMPTY,
   EMAIL_VERIFY,
   PASSWORD_VERIFY,
-} from "/constants/errorMessages.js";
+} = ERROR_MESSAGES;
 
 const emailInput = document.querySelector(USERNAME_SELECTOR);
 const passwordInput = document.querySelector(PASSWORD_SELECTOR);
