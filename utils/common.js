@@ -1,11 +1,18 @@
+export function resetErrorMessage(inputElement, errorElement) {
+  errorElement.textContent = "";
+  errorElement.style.visibility = "hidden";
+  inputElement.classList.remove("error");
+}
+
 export function displayError(inputElement, errorElement, message) {
-  errorElement.textContent = message;
-  errorElement.style.visibility = message ? "visible" : "hidden";
-  if (message) {
-    inputElement.classList.add("error");
-  } else {
-    inputElement.classList.remove("error");
+  if (!message) {
+    resetErrorMessage(inputElement, errorElement);
+    return;
   }
+
+  errorElement.textContent = message;
+  errorElement.style.visibility = "visible";
+  inputElement.classList.add("error");
 }
 
 export function togglePasswordVisibility(inputElement, toggleElement) {

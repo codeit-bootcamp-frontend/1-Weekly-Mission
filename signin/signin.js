@@ -1,4 +1,8 @@
-import { displayError, togglePasswordVisibility } from "/utils/common.js";
+import {
+  displayError,
+  resetErrorMessage,
+  togglePasswordVisibility,
+} from "/utils/common.js";
 import { isValidEmail } from "/utils/validation.js";
 import {
   USERNAME_SELECTOR,
@@ -31,7 +35,7 @@ function checkEmailValidity() {
   } else if (!isValidEmail(email)) {
     displayError(emailInput, emailErrorText, EMAIL_INVALID);
   } else {
-    displayError(emailInput, emailErrorText, "");
+    resetErrorMessage(emailInput, emailErrorText);
   }
 }
 
@@ -40,7 +44,7 @@ function checkPasswordInput() {
   if (!password) {
     displayError(passwordInput, passwordErrorText, PASSWORD_EMPTY);
   } else {
-    displayError(passwordInput, passwordErrorText, "");
+    resetErrorMessage(passwordInput, passwordErrorText);
   }
 }
 
