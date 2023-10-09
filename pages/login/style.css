@@ -68,13 +68,15 @@ form input{
     position: relative;
 }
 
-.eye{
+.hide-password-check,
+.hide-password{
     position: absolute;
     right: 1.5rem;
     top: 50%;
 }
 
-.eye.open{
+.hide-password-check.hide,
+.hide-password.hide{
     content: url(../../images/eye-on.svg);
 }
 
