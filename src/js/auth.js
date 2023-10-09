@@ -43,6 +43,7 @@ function deleteErrorStyle(input) {
   const errorInput = eachParent.querySelector('input')
 
   errorInput.classList.remove(ERROR_INPUT_STYLE)
+  errorContent.className = ''
   errorContent.innerText = ''
 }
 
@@ -120,10 +121,10 @@ form.addEventListener('submit', function (e) {
   emailInputSignup && signupSubmit()
 })
 
-emailInput.addEventListener('focusout', existEmail)
+emailInputSignup && emailInputSignup.addEventListener('focusout', existEmail)
 emailInput.addEventListener('focusout', emailValidation)
-emailInputSignup && emailInputSignup.addEventListener('focusout', emailCheck)
+emailInput.addEventListener('focusout', emailCheck)
 
+passwordInput.addEventListener('focusout', passwordCheck)
 passwordInputSignup &&
   passwordInputSignup.addEventListener('focusout', passwordValidation)
-passwordInput.addEventListener('focusout', passwordCheck)
