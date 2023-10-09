@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로그인</title>
+    <title>회원가입</title>
     <link
       rel="stylesheet"
       type="text/css"
@@ -12,7 +12,7 @@
     <!-- singin css 재사용 -->
     <link rel="stylesheet" href="/style/signin.css" />
     <link rel="stylesheet" href="/style/mediaQuery.css" />
-    <script defer src="/js/signin.js"></script>
+    <script defer src="/js/signup.js"></script>
   </head>
   <body>
     <header>
@@ -49,14 +49,9 @@
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
               />
-              <div class="eye-wrapper">
-                <button class="eye-button" type="button">
-                  <img
-                    src="/assets/eye-off.svg"
-                    alt="비밀번호 표시 가능한 아이콘 버튼"
-                  />
-                </button>
-              </div>
+              <button id="password-toggle" class="eye-button" type="button">
+                <img src="/assets/eye-off.svg" />
+              </button>
             </div>
             <div class="password-error-message"></div>
           </div>
@@ -64,23 +59,22 @@
             <label class="sign-input-label">비밀번호 확인</label>
             <div password-input-wrapper>
               <input
-                class="passwordCheck-input"
+                class="passwordConfirm-input"
                 type="password"
                 placeholder="비밀번호를 다시 입력해주세요"
               />
-              <div class="eye-wrapper">
-                <button class="eye-button" type="button">
-                  <img
-                    src="/assets/eye-off.svg"
-                    alt="비밀번호 표시 가능한 아이콘 버튼"
-                  />
-                </button>
-              </div>
+              <button
+                id="password-check-toggle"
+                class="eye-button"
+                type="button"
+              >
+                <img src="/assets/eye-off.svg" />
+              </button>
             </div>
-            <div class="passwordCheck-error-message"></div>
+            <div class="passwordConfirm-error-message"></div>
           </div>
         </div>
-        <button class="cta" type="submit">로그인</button>
+        <button class="cta login-button" type="submit">회원가입</button>
       </form>
       <div class="sns-box">
         <span class="sns-text">소셜 로그인</span>
