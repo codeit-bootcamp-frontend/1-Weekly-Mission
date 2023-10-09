@@ -11,7 +11,8 @@
     />
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/user.css" />
-    <script defer src="../js/user.js"></script>
+    <script defer src="../js/user/user.js" type="module"></script>
+    <script defer src="../js/user/login.js" type="module"></script>
   </head>
   <body>
     <header>
@@ -45,7 +46,7 @@
               <input type="password" id="pwInput" />
               <img
                 src="/assets/user/img_eyeOff.png"
-                id="eyeOffImg"
+                class="eyeOffImg"
                 alt="eyeOffImg"
                 width="16"
                 height="16"
@@ -55,7 +56,7 @@
               </div>
             </div>
           </div>
-          <button type="button" class="loginBtn">로그인</button>
+          <button type="submit" class="loginBtn" id="loginBtn">로그인</button>
         </form>
       </section>
 
