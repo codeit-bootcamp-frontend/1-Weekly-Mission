@@ -82,7 +82,7 @@ passwordInput.addEventListener("blur", checkPasswordValidity);
 passwordCheckInput.addEventListener("blur", checkPasswordMatch);
 
 loginBtn.addEventListener("click", submitForm);
-document.addEventListener("keydown", function (event) {
+passwordCheckInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     submitForm();
   }
