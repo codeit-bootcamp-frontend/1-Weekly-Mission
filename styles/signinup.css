@@ -1,144 +1,140 @@
+.signin__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--linkbrary-bg);
+  background-color: var(--linkbrary-bg);
+  
+  height: fit-content;
+  padding: 23.8rem 0 25.2rem;
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 23.8rem;
-    margin-bottom: 25.2rem;
-    width: 40rem;
+/*-----------------------------------------------------------------------------*/
+/* HEADER : LOGO, CTA */
+
+.signin__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
 }
 
-header {
-    width: 21.8rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.6rem;
-    margin-bottom: 3rem;
+.signin-logo__img {
+  width: 21rem;
+  margin-bottom: 1.6rem;
 }
 
-.logo {
-    width: 21rem;
+.signin-cta {
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+} 
+
+.signin-cta__call {
+  color: black;
+  font: 400 1.6rem 'Pretendard';
+  line-height: 2.4rem;
+  margin-right: 0.8rem;
 }
 
-.plain {
-    font: 400 1.6rem Pretendard;
-}
-
-.small {
-    font-size: 1.4rem;
-}
-
-.gray {
-    color: var(--gray-100);
-}
-
-.plain.link {
-    color: var(--primary-color);
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-.cta {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.8rem;
-}
-
-form {
-    width: 100%;
-    margin-bottom: 3.2rem;
-    display: grid;
-}
-
-form.signin {
-    grid-template-rows: 8.9rem 8.9rem 5.2rem;
-    grid-template-areas: 
-        'em'
-        'pw'
-        'bt';
-    row-gap: 2.4rem;
-}
-
-form.signup {
-    grid-template-rows: 8.9rem 8.9rem 8.9rem 5.2rem;
-    grid-template-areas: 
-        'em'
-        'pw'
-        'pwc'
-        'bt';
-    row-gap: 2.4rem;
+.signin-cta__action {
+  color: var(--primary-color);
+  font: 600 1.6rem 'Pretendard';
+  text-decoration: underline;
 }
 
 
-label {
-    display: block;
-    font: 400 1.4rem Pretendard;
-    color: black;
-    margin-bottom: 1.2rem;
+
+/*-----------------------------------------------------------------------------*/
+/* MAIN : FORM */
+
+.signin-form {
+  width: 40rem;
+  margin-bottom: 3.2rem;
+}
+
+.signin-form__container {
+  width: 100%;
+  margin-bottom: 2.4rem;
+}
+
+.signin-form__label {
+  display: block;
+  font: 400 1.4rem Pretendard;
+  color: black;
+  margin-bottom: 1.2rem;
+}
+
+.signin-form__input-container {
+  position: relative;
+}
+
+.signin-form__input {
+  background-color: white;
+  
+  width: 100%;
+  height: 6rem;
+  padding: 1.8rem 1.5rem;
+  margin-bottom: 0.6rem;
+
+  border: 0.1rem solid var(--gray-20);
+  border-radius: 8px;
+  outline: none;
+
+  font-size: 1.6rem;
+}
+
+.signin-form__input:focus {
+  border: 0.1rem solid var(--primary-color);
+}
+
+.signin-form__input--error {
+  border-color: var(--red);
+}
+
+.signin-form__error-msg {
+  color: var(--red);
+  font: 400 1.4rem Pretendard;
+  height: fit-content;
+}
+
+.signin-form__pw-eye {
+  position: absolute;
+  width: 1.6rem;
+  bottom: 2.5rem;
+  right: 2.0rem;
+}
+
+.signin-form__btn {
+  width: 100%;
+  margin-top: 3rem;
+  border: none;
 }
 
 
-input {
-    width: 100%;
-    height: 6rem;
-    border-radius: 8px;
-    border: 0.1rem solid var(--gray-20);
-    background-color: white;
-    padding: 1.8rem 1.5rem;
-    outline: none;
+/*-----------------------------------------------------------------------------*/
+/* FOOTER : SNS */
+
+.signin-footer {
+  background-color: var(--gray-10);
+  border-radius: 8px;
+  max-width: 40rem;
+  width: 100%;
+  padding: 1.2rem 2.4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
-input:focus {
-    border: 0.1rem solid var(--primary-color);
+.signin-footer__text {
+  color: var(--gray-100);
+  font: 400 1.4rem Pretendard;
 }
 
-img#pw-eye, img#pwCheck-eye {
-    position: absolute;
-    width: 1.6rem;
-    bottom: 2.0rem;
-    right: 2.0rem;
-}
-
-.email {
-    grid-area: em;
-}
-
-.pw {
-    grid-area: pw;
-    position: relative;
-}
-
-.pw-check {
-    grid-area: pwc;
-    position: relative;
-}
-
-button {
-    grid-area: bt;
-    border: 0;
-}
-
-
-footer {
-    padding: 1.2rem 2.4rem;
-    border-radius: 8px;
-    background-color: var(--gray-10);
-    display: flex;
-    flex-basis: 6.6rem;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.sns {
-    display: flex;
-    align-items: center;
+.signin-footer__sns {
+  display: flex;
+  align-items: center;
+  column-gap: 1.6rem;
 }
