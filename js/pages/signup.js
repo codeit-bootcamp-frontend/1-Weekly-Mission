@@ -2,17 +2,13 @@ import {
   emailInput,
   passwordInput,
   loginButton,
-  eyeImage,
   displayUserInputError,
   clearUserInputError,
-  handleToggleEye,
 } from '../pages/signin.js';
 
 import {
   $,
-  addClass,
-  createElement,
-  isValidUserInput,
+  isCorrectUser,
 } from '../utils.js'
 
 import {
@@ -33,7 +29,7 @@ function handleSignUpEmailError(event) {
     return;
   }
   
-  if(!isValidUserInput(emailValue)){
+  if(emailValue.length > 0 && !REG_EXP.EMAIL.test(emailValue)){
     displayUserInputError(emailInput, '올바른 이메일 주소가 아닙니다.');
     return;
   }
@@ -58,7 +54,7 @@ function handleSignUpPasswordError(event) {
     return;
   }
   
-  if(!isValidUserInput(passwordValue)){
+  if(passwordValue.length > 0 && !REG_EXP.PASSWORD.test(passwordValue)){
     displayUserInputError(passwordInput, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
     return;
   }
@@ -96,10 +92,6 @@ function handleSignUp(event){
   if(emailInput.value !== "test@codeit.com" && passwordInput.value === passwordCheckInput.value){
     return signupSuccess();
   }
-
-  handleToggleEmail();
-
-  handleTogglePassword();
 }
 
 function handlePasswordCheckToggleEye(){

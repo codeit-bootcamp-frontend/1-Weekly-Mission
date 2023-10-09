@@ -17,8 +17,15 @@ function isValidUserInput(email) {
   return email.length > 0 && !REG_EXP.EMAIL.test(email);
 }
 
+function isCorrectUser(email, password) {
+  return DB_USERS.findIndex((dbUser) => {
+    return dbUser.email === email && dbUser.password === password;
+  })
+}
+
 export {
   $,
   addClass,
   createElement,
+  isCorrectUser,
 }

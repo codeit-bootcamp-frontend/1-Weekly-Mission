@@ -2,6 +2,7 @@ import {
   $,
   addClass,
   createElement,
+  isCorrectUser,
 } from '../utils.js'
 
 import {
@@ -82,32 +83,6 @@ function handlePasswordEmptyError() {
   clearUserInputError(passwordInput);
 }
 
-
-//존재하지 않는 이메일일 떄
-function handleToggleEmail() {
-  const emailInput = $('#id-label');
-
-  if(emailInput.value !== "test@codeit.com"){
-    displayUserInputError(emailInput, '이메일을 확인해주세요.');
-    return;
-  }
-
-  clearUserInputError(emailInput);
-}
-
-
-//존재하지 않는 비밀번호일 떄
-function handleTogglePassword() {
-  const passwordInput = $('#password-label');
-
-  if(passwordInput.value !== "codeit101"){
-    displayUserInputError(passwordInput, '비밀번호를 확인해주세요.');
-    return;
-  }
-
-  clearUserInputError(passwordInput);
-}
-
 //로그인 성공했을 때
 function loginSuccess(){
   alert('로그인 되었습니다.');
@@ -117,17 +92,10 @@ function loginSuccess(){
 // 로그인 성공, 실패 다루는 함수
 function handleSignIn(event){
   event.preventDefault();
-  
-  const emailInput = $('#id-label');
-  const passwordInput = $('#password-label');
 
-  if(emailInput.value === "test@codeit.com" && passwordInput.value === "codeit101"){
+  if(isCorrectUser()){
     return loginSuccess();
   }
-
-  handleToggleEmail();
-
-  handleTogglePassword()
 }
 
 // 눈모양 아이콘 다루는 함수
