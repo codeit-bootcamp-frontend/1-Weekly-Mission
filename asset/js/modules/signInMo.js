@@ -19,7 +19,23 @@ const handleInputPasswordError = ({ target: { value } }) => {
     }
 }
 
-const validateLoginInputs = () => signComp.signInputs[0].value === "test@codeit.com" && signComp.signInputs[1].value === "codeit101";
+const validateLoginInputs = async (email, password) => {
+    const newMember = {
+        email,
+        password,
+    };
+
+    const validatePost = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newMember),
+    });
+
+    return validatePost.status === 200;
+}
+
 
 const setLoginErr = (line) => {
     const errMsgNode = signComp.renderErrorMessageNode();
@@ -41,9 +57,12 @@ const handleInputError = (e) => {
 }
 
 
-const handleLoginSubmit = (e) => {
+const handleLoginSubmit = async (e) => {
+    const email = signComp.signInputs[0].value;
+    const password = signComp.signInputs[1].value;
+
     e.preventDefault();
-    if (validateLoginInputs()) {
+    if (await validateLoginInputs(email, password)) {
         location.href = "/folder.html";
     } else {
         for (const line of signComp.signFormInputs) {
