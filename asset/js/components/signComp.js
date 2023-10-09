@@ -34,7 +34,7 @@ const isPasswordCheck = () => {
 }
 
 const postJSONdata = async (URL, DATA) => {
-    const postedData = await fetch(URL, {
+    const postedData = await fetch(`https://bootcamp-api.codeit.kr/api/${URL}`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -44,8 +44,6 @@ const postJSONdata = async (URL, DATA) => {
 
     return postedData
 }
-
-
 
 const setErrStyle = (errMsgNode, target) => {
     let targetNode = document.getElementById(target.name);

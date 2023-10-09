@@ -25,7 +25,7 @@ const validateLoginInputs = async (email, password) => {
         password,
     };
     
-    const validatePost = await signComp.postJSONdata("https://bootcamp-api.codeit.kr/api/sign-in", newMember);
+    const validatePost = await signComp.postJSONdata("sign-in", newMember);
     
     return validatePost.status === 200;
 }

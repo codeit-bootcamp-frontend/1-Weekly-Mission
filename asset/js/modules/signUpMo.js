@@ -5,7 +5,7 @@ const isEmailDuplicated = async (email) => {
         email,
     }
 
-    const emailDuplicationCheck = await signComp.postJSONdata("https://bootcamp-api.codeit.kr/api/check-email", emailCheck);
+    const emailDuplicationCheck = await signComp.postJSONdata("check-email", emailCheck);
 
     return emailDuplicationCheck.status === 409;
 }
@@ -17,7 +17,7 @@ const validateSignUpInputs = async () => {
             password: signComp.signInputs[1].value,
         };
 
-        const postSignUpInputs = await signComp.postJSONdata("https://bootcamp-api.codeit.kr/api/sign-up", sendSignUpInputs);
+        const postSignUpInputs = await signComp.postJSONdata("sign-up", sendSignUpInputs);
 
         return postSignUpInputs.status === 200;
         
