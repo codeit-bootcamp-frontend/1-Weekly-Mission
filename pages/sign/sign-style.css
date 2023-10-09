@@ -78,7 +78,7 @@ main {
     gap: 24px;
 }
 
-.sign-input {
+.sign-input-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -90,7 +90,7 @@ main {
     line-height: normal;
 }
 
-.signin-input {
+.sign-input {
     width: 400px;
     padding: 18px 15px;
     border-radius: 8px;
@@ -102,7 +102,7 @@ main {
     border: 1px solid #6D6AFE;
 }
 
-.sign-input.password {
+.sign-input-container.password {
     position: relative;
 }
 
@@ -111,8 +111,7 @@ main {
     border-color: var(--error-color);
 }
 
-.email-type-error,
-.password-type-error {
+.error-input-message {
     color: var(--error-color);
     font-size: 0.8rem;
 }
@@ -230,7 +229,7 @@ main {
         max-width: 400px;
     }
 
-    .sign-input {
+    .sign-input-container {
         width: 100%;
         max-width: 400px;
     }
