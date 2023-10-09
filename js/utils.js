@@ -17,6 +17,7 @@ function isValidUserInput(email) {
   return email.length > 0 && !REG_EXP.EMAIL.test(email);
 }
 
+//이메일, 비밀번호 맞는지 확인하는 함수
 function isCorrectUser(email, password) {
   return DB_USERS.findIndex((dbUser) => {
     return dbUser.email === email && dbUser.password === password;

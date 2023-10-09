@@ -47,10 +47,6 @@ function clearUserInputError(input){
   input.nextSibling.remove();
 }
 
-// function isValidEmail(email) {
-//   return email.length > 0 && !REG_EXP.EMAIL.test(email)
-// }
-
 // 로그인 에러 다루는 함수
 function handleEmailError() {
   const emailInput = $('#id-label');

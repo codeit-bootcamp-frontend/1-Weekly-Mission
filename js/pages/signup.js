@@ -20,7 +20,7 @@ const passwordCheckEyeOff = $('.password-check-eye-off');
 
 
 // 회원가입 아이디 에러 다루는 함수
-function handleSignUpEmailError(event) {
+function handleSignUpEmailError() {
   const emailInput = $('#id-label');
   const {value: emailValue} = emailInput;
 
@@ -44,7 +44,7 @@ function handleSignUpEmailError(event) {
 }
 
 // 회원가입 비밀번호 에러 다루는 함수
-function handleSignUpPasswordError(event) {
+function handleSignUpPasswordError() {
   const passwordInput = $('#password-label');
   const {value: passwordValue} = passwordInput;
 
@@ -63,7 +63,7 @@ function handleSignUpPasswordError(event) {
 }
 
 // 회원가입 비밀번호 체크 에러 다루는 함수
-function handleSignUpPasswordCheckError(event) {
+function handleSignUpPasswordCheckError() {
   const passwordInput = $('#password-label');
   const passwordCheckInput = $('#password-check-label');
 
