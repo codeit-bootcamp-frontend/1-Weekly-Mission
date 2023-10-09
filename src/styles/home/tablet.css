@@ -13,12 +13,8 @@
     .blue_btn{
         padding : 16px 20px;
         font-size : 1.8rem;
-        width : 12.8rem;
     }
-    /* main content */
-    .main_content{
-        max-width : 698px;
-    }
+    /* main */
     .main_text{
         display : flex;
         flex-direction: column;
@@ -26,11 +22,11 @@
         font-size : 6.4rem;
         line-height : 8rem;
     }
-    .main_content a{
+    .add_link_btn{
         width : 350px;
         text-align: center;
     }
-    .img_box{
+    .main_img{
         width: 650.303px;
         height: 350px;
     }
@@ -46,33 +42,12 @@
     .save,
     .share{
         grid-template-columns : 262px 31px 385px;
-        grid-template-areas: 
-        ". . img"
-        "text . img"
-        "detail . img"
-        ". . img"
-        ;
     }
     .folder,
     .search{
         grid-template-columns : 385px 31px 262px;
-        grid-template-areas: 
-        "img . ."
-        "img . text"
-        "img . detail"
-        "img . ."
-        ;
     }
     .contents_detail{
         width : 260px;
-    }
-    .folder img,
-    .share img{
-        width : 300px;
-        top : 70px;
-        left : 45px;
-    }
-    .search img{
-        width : 420px;
     }
 }

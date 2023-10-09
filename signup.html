@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "/src/styles/sign.css">
+</head>
+<body>
+    <div class = "container">
+        <!-- Logo & signin -->
+        <header>
+            <a href = "/index.html">
+                <img class = "linkbrary_logo" src = "/assets/images/logo.svg">
+            </a>
+            <p>
+                <span>이미 회원이신가요?</span>
+                <a href = "/signin.html">로그인 하기</a>
+            </p>
+        </header>
+        <!-- email & password input -->
+        <main>
+            <form>
+                <label class = "input_box">
+                    이메일
+                    <input name = "signup_email" type = "email" placeholder = "codeit@codeit.com">
+                    <div class = "error_msg"></div>
+                </label>
+                <label class = "input_box">
+                    비밀번호
+                    <div class = "pw_wrapper">
+                        <input name = "signup_pw" type = "password" placeholder = "●●●●●●●●">
+                        <img class = "eye_icon" src = "/assets/images/eye-off.svg">
+                    </div>
+                    <div class = "error_msg"></div>
+                </label>
+                <label class = "input_box">
+                    비밀번호 확인
+                    <div class = "pw_wrapper">
+                        <input name = "signup_pw_check" type = "password" placeholder = "●●●●●●●●">
+                        <img class = "eye_icon" src = "/assets/images/eye-off.svg">
+                    </div>
+                    <div class = "error_msg"></div>
+                </label>
+                <button class = "signup_button">회원가입</button>
+            </form>
+        </main>
+        <!-- Social Login -->
+        <footer>
+            <p>다른 방식으로 가입하기</p>
+            <div class = "social_icon_box">
+                <a href = "https://www.google.com/">
+                    <img class = "social_icon" src = "/assets/images/google.svg">
+                </a>
+                <a href = "https://www.kakaocorp.com/page/">
+                    <img class = "social_icon" src = "/assets/images/kakaotalk.svg">
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script type = "module" src = "src/scripts/signup.js"></script>
+</body>
+</html>

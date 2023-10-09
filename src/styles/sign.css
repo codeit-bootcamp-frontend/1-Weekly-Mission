@@ -1,6 +1,16 @@
 @import "/assets/reset.css";
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+:root{
+    --grey-10 : #E7EFFB;
+    --grey-20 : #CCD5E3;
+    --grey-100 : #373740;
+    --grey-light : #F5F5F5;
+    --background : #F0F6FF;
+    --primary-color : #6D6AFE;
+    --gra-purpleblue-to-skyblue : linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+}
+
 *{
     box-sizing : border-box;
 }
@@ -10,7 +20,7 @@ html{
 }
 
 body{
-    background: var(--linkbrary-bg, #F0F6FF);
+    background: var(--background);
     font-family: Pretendard;
     display : flex;
     justify-content: center;
@@ -39,18 +49,18 @@ header{
     font-size: 1.6rem;
 }
 
-.icon_logo{
+.linkbrary_logo{
     width: 210.583px;
     height: 38px;
 }
 
 header span{
-    color: var(--black, #000);
+    color: black;
     font-weight : 400;
 }
 
 header a{
-    color: var(--linkbrary-primary-color, #6D6AFE);
+    color: var(--primary-color);
     font-weight : 600;
 }
 
@@ -65,7 +75,7 @@ form{
     gap : 24px;
 }
 
-.main_box{
+.input_box{
     display : flex;
     flex-direction: column;
     gap : 12px;
@@ -75,40 +85,40 @@ form{
     position : relative;
 }
 
-.icon_eye{
+.eye_icon{
     position : absolute;
     bottom : 18px;
     right : 20px;
     cursor : pointer;
 }
 
-.input_box{
+input{
     width : 100%;
     padding : 18px 15px;
     border-radius: 8px;
-    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
-    background: var(--linkbrary-white, #FFF);
+    border: 1px solid var(--grey-20);
+    background: white;
 }
 
-.input_box::placeholder{
+input::placeholder{
     color: #9FA6B2;
     font-family: Pretendard;
     font-size: 1.2rem;
 }
 
 input:focus{
-    outline: 1px solid var(--linkbrary-primary-color, #6D6AFE);
+    outline: 1px solid var(--primary-color);
 }
 
-.button_login,
-.button_signup{
+.login_button,
+.signup_button{
     /* margin : 30px 0; */
     padding : 16px 20px;
     border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    background: var(--gra-purpleblue-to-skyblue);
     border : none;
 
-    color: var(--grey-light, #F5F5F5);
+    color: var(--grey-light);
     font-family: Pretendard;
     font-size: 1.8rem;
     font-weight: 600;
@@ -119,8 +129,8 @@ footer{
     width : 100%;
     padding : 12px 24px;
     border-radius: 8px;
-    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
-    background: var(--linkbrary-gray-10, #E7EFFB);
+    border: 1px solid var(--grey-20);
+    background: var(--grey-10);
 
     display : flex;
     justify-content: space-between;
@@ -128,34 +138,21 @@ footer{
 }
 
 footer p{
-    color: var(--linkbrary-gray-100, #373740);
+    color: var(--grey-100);
     font-size: 1.4rem;
 }
 
 .social_icon_box{
     display : flex;
     gap : 16px;
-    justify-content: center;
-    align-items: center;
 }
 
 .social_icon{
     width : 42px;
     height : 42px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
 }
 
-.kakao{
-    background-image: url("/assets/images/kakaotalk.svg");
-}
-
-.google{
-    background-image: url("/assets/images/google.svg");
-}
-
-.error{
+.error_msg{
     color : red;
 }
 
