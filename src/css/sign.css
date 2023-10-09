@@ -91,6 +91,25 @@ body {
   font-weight: 400;
 }
 
+.errorEmailMsg,
+.pwErrorSpan,
+.wrongMsg,
+.pwDisMatchSpan {
+  color: var(--errorRed);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.pwErrorSpan,
+.wrongPwErrorSpan,
+.wrongPwSignupErrorSpan1,
+.wrongPwSignupErrorSpan2,
+.pwDisMatchSpan {
+  display: inline-block;
+  padding-top: 10px;
+}
+
 .content1_div2_div1_input {
   position: relative;
   display: flex;
@@ -110,15 +129,6 @@ body {
 .content1_div2_div1_input:focus {
   border: 1px solid var(--mainColor);
   outline: none;
-}
-
-.content1_div2_div1_span,
-.content1_div2_div1_span2,
-.content1_div2_div1_span3 {
-  color: var(--errorRed);
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 400;
 }
 
 .content1_div2_div2 {
@@ -155,12 +165,20 @@ body {
 .content1_div2_div2_div-input {
   position: relative;
 }
-.content1_div2_div2_img {
+.content1_div2_div2_img,
+.content1_div2_div2_img_signup1,
+.content1_div2_div2_img_signup2 {
   position: absolute;
   top: 18px;
   right: 15px;
 }
 .content1_div2_div2_img:hover {
+  cursor: pointer;
+}
+.content1_div2_div2_img_signup1:hover {
+  cursor: pointer;
+}
+.content1_div2_div2_img_signup2:hover {
   cursor: pointer;
 }
 .content1_div2_div2_span,
