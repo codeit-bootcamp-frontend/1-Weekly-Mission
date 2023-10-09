@@ -175,3 +175,13 @@ button {
     max-width: 40rem;
   }
 }
+
+.check_message {
+  font-size: 1.7rem;
+  color: red ;
+}
+
+.input_container .error_box {
+  margin-bottom: 0.6rem;
+  border-color: red;
+}
