@@ -33,6 +33,19 @@ const isPasswordCheck = () => {
     return (passwordValue === passwordCheckValue)
 }
 
+const postJSONdata = async (URL, DATA) => {
+    const postedData = await fetch(URL, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(DATA),
+    });
+
+    return postedData
+}
+
+
 
 const setErrStyle = (errMsgNode, target) => {
     let targetNode = document.getElementById(target.name);
@@ -80,4 +93,4 @@ const togglePasswordVisibility = ({ target }) => {
     }
 }
 
-export { signFormInputs, eyeButtons, signInputs, signForm, eyesOn, renderErrorMessageNode, isEmail, isPassword, isPasswordCheck, setErrStyle, eraseErrStyle, validInputNodeType, removeInputError, togglePasswordVisibility };
+export { signFormInputs, eyeButtons, signInputs, signForm, eyesOn, renderErrorMessageNode, isEmail, isPassword, isPasswordCheck, postJSONdata, setErrStyle, eraseErrStyle, validInputNodeType, removeInputError, togglePasswordVisibility };

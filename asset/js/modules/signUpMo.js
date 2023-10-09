@@ -4,17 +4,24 @@ const isEmailDuplicated = async (email) => {
     const emailCheck = {
         email,
     }
-    console.log(emailCheck)
-    const emailDuplicationCheck = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(emailCheck),
-    });
-    console.log(emailDuplicationCheck)
+
+    const emailDuplicationCheck = await signComp.postJSONdata("https://bootcamp-api.codeit.kr/api/check-email", emailCheck);
 
     return emailDuplicationCheck.status === 409;
+}
+
+const validateSignUpInputs = async () => {
+    if (signComp.isEmail(signComp.signInputs[0].value) && signComp.isPasswordCheck() && signComp.signInputs[1].value !== "") {
+        const sendSignUpInputs = {
+            email: signComp.signInputs[0].value,
+            password: signComp.signInputs[1].value,
+        };
+
+        const postSignUpInputs = await signComp.postJSONdata("https://bootcamp-api.codeit.kr/api/sign-up", sendSignUpInputs);
+
+        return postSignUpInputs.status === 200;
+        
+    }
 }
 
 const handleInputEmailError = async ({ target: { value } }) => {
@@ -66,25 +73,7 @@ const setSignUpErr = (line) => {
     signComp.setErrStyle(errMsgNode, line);
 }
 
-const validateSignUpInputs = async () => {
-    if (signComp.isEmail(signComp.signInputs[0].value) && signComp.isPasswordCheck() && signComp.signInputs[1].value !== "") {
-        const sendSignUpInputs = {
-            email: signComp.signInputs[0].value,
-            password: signComp.signInputs[1].value,
-        }
 
-        const postSignUpInputs = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(sendSignUpInputs),
-        });
-
-        return postSignUpInputs.status === 200;
-        
-    }
-}
 
 const handleSignUpSubmit = async (e) => {
     e.preventDefault();
