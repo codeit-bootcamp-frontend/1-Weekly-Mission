@@ -145,8 +145,8 @@ input:focus {
   color: var(--red-color);
   font-size: 14px;
   margin: 0 0 12px;
-}
 
+  
 @media (max-width: 767px) {
   .container {
     padding: 120px 32px;
