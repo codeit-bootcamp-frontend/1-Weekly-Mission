@@ -1,4 +1,5 @@
-// Signin, Signup 비밀번호 토글
+/* 비밀번호 토글 */
+// 상수
 const PASSWORD_TOGGLE_CONSTANT = {
 	visible: {
 		inputType: "text",
@@ -11,170 +12,65 @@ const PASSWORD_TOGGLE_CONSTANT = {
 		imageAlt: "비밀번호 숨김 아이콘",
 	},
 };
-const passwordToggle = document.querySelector(".auth__toggle-password");
-const passwordConfirmToggle = document.querySelector(
-	".auth__toggle-password--confirm"
-);
 
+// DOM 요소
+const passwordToggleElement = document.querySelector(".auth__toggle-password");
+
+// 함수
 function getPasswordVisibility(inputType) {
 	return inputType === "password"
 		? PASSWORD_TOGGLE_CONSTANT.visible
 		: PASSWORD_TOGGLE_CONSTANT.invisible;
 }
 
-passwordToggle.addEventListener("click", () => {
-	const passwordInput = document.querySelector(".auth__input-password");
-	const passwordIcon = document.querySelector(".auth__icon-password");
-
-	const passwordVisibility = getPasswordVisibility(passwordInput.type);
-
-	passwordInput.type = passwordVisibility.inputType;
-	passwordIcon.src = passwordVisibility.imageSrc;
-	passwordIcon.alt = passwordVisibility.imageAlt;
-});
-
-passwordConfirmToggle?.addEventListener("click", () => {
-	const passwordConfirmInput = document.querySelector(
-		".auth__input-password--confirm"
-	);
-	const passwordConfirmIcon = document.querySelector(
-		".auth__icon-password--confirm"
-	);
-
-	const passwordVisibility = getPasswordVisibility(passwordConfirmInput.type);
-
-	passwordConfirmInput.type = passwordVisibility.inputType;
-	passwordConfirmIcon.src = passwordVisibility.imageSrc;
-	passwordConfirmIcon.alt = passwordVisibility.imageAlt;
-});
-
-// Signin 유효성 검사
+/* 유효성 검사 */
+// 상수
 const USERS = [
 	{
 		email: "test@codeit.com",
 		password: "codeit101",
 	},
 ];
-const SIGNIN_HINT = {
+
+const AUTH_HINT = {
 	email: {
 		default: "",
 		isNotFilled: "이메일을 입력해주세요.",
-		isNotValidated: "올바른 이메일 주소가 아닙니다",
-		isNotUser: "이메일을 변경해주세요.",
+		isNotValidated: "올바른 이메일 주소가 아닙니다.",
+		isNotExists: "이메일을 변경해주세요.",
+		isExists: "이미 사용중인 이메일입니다.",
 	},
 	password: {
 		default: "",
 		isNotFilled: "비밀번호를 입력해주세요.",
-		isNotUser: "비밀번호를 변경해주세요.",
+		isNotExists: "비밀번호를 변경해주세요.",
+		isNotValidated: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
+		isNotConfirmed: "비밀번호가 일치하지 않아요.",
 	},
 };
+
 const EMAIL_PATTERN = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
 const INPUT_STATUS = {
 	default: "default",
 	isNotFilled: "isNotFilled",
 	isNotValidated: "isNotValidated",
-	isNotUser: "isNotUser",
+	isExists: "isExists",
+	isNotExists: "isNotExists",
+	isNotConfirmed: "isNotConfirmed",
 };
+
 const INPUT_HINT_CLASSNAME = "auth__input--hint";
+
 const FOLDER_PAGE_PATH = "/pages/forder.html";
 
-const emailInputElement = document.querySelector(".auth__input-email");
-const passwordInputElement = document.querySelector(".auth__input-password");
-const signinButtonElement = document.querySelector(".signin__button");
-const emailHintElement = document.querySelector(".auth__email-hint");
-const passwordHintElement = document.querySelector(".auth__password-hint");
-
-function changeEmailHint(hintType) {
-	if (emailHintElement.innerText === SIGNIN_HINT.email[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
-	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
-
-	if (hintType === INPUT_STATUS.default) {
-		emailInputElement.classList.remove(INPUT_HINT_CLASSNAME);
-	} else {
-		emailInputElement.classList.add(INPUT_HINT_CLASSNAME);
-	}
-}
-
-function changePasswordHint(hintType) {
-	if (passwordHintElement.innerText === SIGNIN_HINT.password[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
-	passwordHintElement.innerText = SIGNIN_HINT.password[hintType];
-
-	if (hintType === INPUT_STATUS.default) {
-		passwordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
-	} else {
-		passwordInputElement.classList.add(INPUT_HINT_CLASSNAME);
-	}
-}
-
-function signinSuccess() {
-	emailInputElement.classList.remove(INPUT_HINT_CLASSNAME);
-	passwordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
-	location.href = FOLDER_PAGE_PATH;
-}
-
-function checkEmailFocusout(email) {
-	if (email === "") {
-		changeEmailHint(INPUT_STATUS.isNotFilled);
-	} else if (!EMAIL_PATTERN.test(email)) {
-		changeEmailHint(INPUT_STATUS.isNotValidated);
-	} else {
-		changeEmailHint(INPUT_STATUS.default);
-	}
-}
-
-function checkPasswordFocusout(password) {
-	if (password === "") {
-		changePasswordHint(INPUT_STATUS.isNotFilled);
-	} else {
-		changePasswordHint(INPUT_STATUS.default);
-	}
-}
-
-function getIsUserEmail(email) {
-	if (email === "") {
-		changeEmailHint(INPUT_STATUS.isNotFilled);
-		return false;
-	} else if (!EMAIL_PATTERN.test(email)) {
-		changeEmailHint(INPUT_STATUS.isNotValidated);
-		return false;
-	} else if (email !== USERS[0].email) {
-		changeEmailHint(INPUT_STATUS.isNotUser);
-		return false;
-	} else {
-		changeEmailHint(INPUT_STATUS.default);
-		return true;
-	}
-}
-
-function getIsUserPassword(password) {
-	if (password === "") {
-		changePasswordHint(INPUT_STATUS.isNotFilled);
-		return false;
-	} else if (password !== USERS[0].password) {
-		changePasswordHint(INPUT_STATUS.isNotUser);
-		return false;
-	} else {
-		changePasswordHint(INPUT_STATUS.default);
-		return true;
-	}
-}
-
-function clickSignin(email, password) {
-	const isUserEmail = getIsUserEmail(email);
-	if (!isUserEmail) return; // 유저 이메일이 아닌경우 비밀번호 검사하지 않고 리턴
-	const isUserPassword = getIsUserPassword(password);
-	if (isUserEmail && isUserPassword) signinSuccess();
-}
-
-emailInputElement.addEventListener("focusout", (e) => {
-	checkEmailFocusout(e.target.value);
-});
-
-passwordInputElement.addEventListener("focusout", (e) => {
-	checkPasswordFocusout(e.target.value);
-});
-
-signinButtonElement.addEventListener("click", (e) => {
-	e.preventDefault();
-	clickSignin(emailInputElement.value, passwordInputElement.value);
-});
+export {
+	passwordToggleElement,
+	getPasswordVisibility,
+	USERS,
+	AUTH_HINT,
+	EMAIL_PATTERN,
+	INPUT_STATUS,
+	INPUT_HINT_CLASSNAME,
+	FOLDER_PAGE_PATH,
+};
