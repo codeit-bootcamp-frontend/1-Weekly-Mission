@@ -1,11 +1,28 @@
 import * as signComp from '../components/signComp.js';
 
-const handleInputEmailError = ({ target: { value } }) => {
+const isEmailDuplicated = async (email) => {
+    const emailCheck = {
+        email,
+    }
+    console.log(emailCheck)
+    const emailDuplicationCheck = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailCheck),
+    });
+    console.log(emailDuplicationCheck)
+
+    return emailDuplicationCheck.status === 409;
+}
+
+const handleInputEmailError = async ({ target: { value } }) => {
     if (value === "") {
         return "이메일을 입력해주세요";
     } else if (!signComp.isEmail(value)) {
         return "올바른 이메일 주소가 아닙니다";
-    } else if (value === "test@codeit.com") {
+    } else if (await isEmailDuplicated(value)) {
         return "이미 사용 중인 이메일입니다";
     }
 }
@@ -22,12 +39,12 @@ const handleInputPasswordCheckError = ({ target: { value } }) => {
     }
 }
 
-const handleInputError = (e) => {
+const handleInputError = async (e) => {
     const errMsgNode = signComp.renderErrorMessageNode();
     const ID = e.target.id;
 
     if (ID === "signinEmail") {
-        errMsgNode.textContent = handleInputEmailError(e);
+        errMsgNode.textContent = await handleInputEmailError(e);
     } else if (ID === "signinPassword") {
         errMsgNode.textContent = handleInputPasswordError(e);
     } else if (ID === "signinPasswordCheck") {
@@ -49,11 +66,29 @@ const setSignUpErr = (line) => {
     signComp.setErrStyle(errMsgNode, line);
 }
 
-const validateSignUpInputs = () => signComp.isEmail(signComp.signInputs[0].value) && signComp.isPasswordCheck() && signComp.signInputs[1].value !== "";
+const validateSignUpInputs = async () => {
+    if (signComp.isEmail(signComp.signInputs[0].value) && signComp.isPasswordCheck() && signComp.signInputs[1].value !== "") {
+        const sendSignUpInputs = {
+            email: signComp.signInputs[0].value,
+            password: signComp.signInputs[1].value,
+        }
 
-const handleSignUpSubmit = (e) => {
+        const postSignUpInputs = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(sendSignUpInputs),
+        });
+
+        return postSignUpInputs.status === 200;
+        
+    }
+}
+
+const handleSignUpSubmit = async (e) => {
     e.preventDefault();
-    if (validateSignUpInputs()) {
+    if (await validateSignUpInputs()) {
         location.href = "/folder.html";
     } else {
         for (const line of signComp.signFormInputs) {

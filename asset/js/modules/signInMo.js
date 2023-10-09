@@ -24,7 +24,7 @@ const validateLoginInputs = async (email, password) => {
         email,
         password,
     };
-
+    
     const validatePost = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
         method: "POST",
         headers: {
@@ -35,7 +35,6 @@ const validateLoginInputs = async (email, password) => {
 
     return validatePost.status === 200;
 }
-
 
 const setLoginErr = (line) => {
     const errMsgNode = signComp.renderErrorMessageNode();
@@ -55,7 +54,6 @@ const handleInputError = (e) => {
 
     signComp.setErrStyle(errMsgNode, e.target);
 }
-
 
 const handleLoginSubmit = async (e) => {
     const email = signComp.signInputs[0].value;
