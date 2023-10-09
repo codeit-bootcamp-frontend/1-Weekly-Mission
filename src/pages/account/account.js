@@ -1,5 +1,6 @@
 import * as nodeUtils from "../../utils/nodeUtils.js";
-import { EXP_EMAIL, EXP_PASSWORD } from "../../constants/regexConstants.js";
+import { EXP_EMAIL, EXP_PASSWORD } from "../../constants/regex.js";
+import { VALIDATE_ERRORS } from "../../constants/errorMsg.js";
 /**유효성 검사 함수
  *
  * 1.Null check\
@@ -18,16 +19,7 @@ const validateInput = (e) => {
   let errorGb = false; //Error 구분값
   let errType = 0;
 
-  /** 기존 에러 이벤트 초기화 */
-  if (node.classList.contains("errorInput")) {
-    node.classList.remove("errorInput");
-  }
-  if (
-    node.nextElementSibling !== null &&
-    node.nextElementSibling.className === "error_msg"
-  ) {
-    node.nextElementSibling.remove("error_msg");
-  }
+  resetErrorEvent(node);
 
   if (nodeInfo.value === "") {
     errorGb = true;
@@ -126,6 +118,22 @@ const togglePasswordVisibility = (e) => {
   } else {
     parentElement.firstElementChild.type = "password";
     target.src = "/src/assets/img/close_eyes.png";
+  }
+};
+/**에러이벤트 초기화 함수
+ *
+ *기존 설정되어있는 error node 가 있다면 삭제
+ * @param {object} node
+ */
+const resetErrorEvent = (node) => {
+  if (node.classList.contains("errorInput")) {
+    node.classList.remove("errorInput");
+  }
+  if (
+    node.nextElementSibling !== null &&
+    node.nextElementSibling.className === "error_msg"
+  ) {
+    node.nextElementSibling.remove("error_msg");
   }
 };
 
