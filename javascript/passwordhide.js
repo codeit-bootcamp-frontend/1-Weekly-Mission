@@ -1,4 +1,4 @@
-import { passwordInput, eyeButton } from "./valiable";
+import { passwordInput, eyeButton } from "./valiable.js";
 
 
 export function hidePassword() {

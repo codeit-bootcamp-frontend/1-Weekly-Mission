@@ -1,12 +1,9 @@
-export function deleteMsg (e) {
-  const sibling = e.target.nextElementSibling;
+import { notifyMsg } from "./valiable.js"
 
-  if ((sibling.tagName === 'span')) {
-    sibling.classList.remove('inputSpan');
-    sibling.remove();
-  } else {
-    sibling.nextElementSiblingclassList.remove('inputSpan');
-    sibling.remove();
+
+export function deleteMsg (e) {
+  if (e.target.nextElementSibling === notifyMsg) {
+    notifyMsg.classList.remove('notify');
+    notifyMsg.remove();
   }
 }
-
