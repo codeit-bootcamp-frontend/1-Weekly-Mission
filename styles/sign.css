@@ -69,10 +69,6 @@
   background-image: url(../public/icons/eye-off.png);
 }
 
-.form--eye-button.on {
-  background-image: url(../public/icons/eye-on.png);
-}
-
 .header {
   display: flex;
   flex-direction: column;
@@ -161,14 +157,18 @@
   height: 2.4rem;
 }
 
-.error__style {
+.form--error-message__style {
   margin-top: 0.6rem;
   color: var(--red);
   font-size: 1.4rem;
   font-weight: 400;
 }
 
-.form--input.error {
+.form--input.border-red {
   outline: none;
   border: 0.1rem solid var(--red);
+}
+
+.form--eye-button.on {
+  background-image: url(../public/icons/eye-on.png);
 }

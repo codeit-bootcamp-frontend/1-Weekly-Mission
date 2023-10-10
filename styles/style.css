@@ -53,12 +53,12 @@
   }
 }
 
-.banner {
+.header {
   padding-top: 7rem;
   background-color: var(--bg);
 }
 
-.banner--container {
+.header--container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +72,7 @@
   }
 }
 
-.banner--slogan {
+.header--slogan {
   text-align: center;
   font-size: 6.4rem;
   font-weight: 700;
@@ -84,14 +84,14 @@
   }
 }
 
-.banner--slogan__gradient {
+.header--slogan__gradient {
   background-image: linear-gradient(91deg, var(--primary) 17.28%, #ff9f9f 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.banner--button{
+.header--button{
   width: 35rem;
 
   @media (max-width: 767px) {
@@ -99,7 +99,7 @@
   }
 }
 
-.banner--img {
+.header--img {
   width: 111.8rem;
   height: 59rem;
   border-radius: 25px;
