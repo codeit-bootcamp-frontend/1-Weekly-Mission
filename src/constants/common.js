@@ -1,4 +1,4 @@
-import { EMAIL_PATTERN, PASSWORD_PATTERN } from "../components/regexp.js";
+import { EMAIL_PATTERN, PASSWORD_PATTERN } from "./regexp.js";
 
 const ERROR_CLASS_NAME = "items__input--error";
 
@@ -12,8 +12,8 @@ const REDIRECT_PATH = "/folder";
 const VALUE_EMPTY = "";
 
 const EYE_ICON_PATH = {
-  eye_on: "../src/images/eye-on.svg",
-  eye_off: "../src/images/eye-off.svg",
+  eye_on: "../assets/eye-on.svg",
+  eye_off: "../assets/eye-off.svg",
 };
 
 const isEmpty = (emailValue) => emailValue === VALUE_EMPTY;

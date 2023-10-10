@@ -1,9 +1,9 @@
-import { displayErrorMessage, addErrorClass, removeErrorClass } from "./error-handling.js";
-import { VALUE_EMPTY, isEmpty, isValidPassword } from "./utils.js";
-import ERROR_MESSAGES from "../components/error-messages.js";
+import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
+import { VALUE_EMPTY, isEmpty, isValidPassword } from "../constants/common.js";
+import ERROR_MESSAGES from "../constants/error-messages.js";
 
-const validatePasswordInput = (passwordInput, passwordErrorMessage, passwordInputValue) => {
-  const passwordValue = passwordInput.value;
+const validatePasswordInput = (passwordInputEl, passwordErrorMessage, passwordInputValue) => {
+  const passwordValue = passwordInputEl.value;
   const isEmptyValue = isEmpty(passwordValue);
   const inValidPassword = !isValidPassword(passwordValue);
   const passwordMismatch = passwordValue !== passwordInputValue;
@@ -12,24 +12,24 @@ const validatePasswordInput = (passwordInput, passwordErrorMessage, passwordInpu
 
   if (isEmptyValue) {
     displayErrorMessage(passwordErrorMessage, errorMessagePassword.empty);
-    addErrorClass(passwordInput);
+    addErrorClass(passwordInputEl);
     return;
   }
 
   if (inValidPassword) {
     displayErrorMessage(passwordErrorMessage, errorMessagePassword.invalid);
-    addErrorClass(passwordInput);
+    addErrorClass(passwordInputEl);
     return;
   }
 
   if (isConfirmPasswordInput && passwordMismatch) {
     displayErrorMessage(passwordErrorMessage, errorMessagePassword.mismatch);
-    addErrorClass(passwordInput);
+    addErrorClass(passwordInputEl);
     return;
   }
 
   displayErrorMessage(passwordErrorMessage, VALUE_EMPTY);
-  removeErrorClass(passwordInput);
+  removeErrorClass(passwordInputEl);
 };
 
 export default validatePasswordInput;
