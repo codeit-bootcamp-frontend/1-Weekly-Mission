@@ -70,6 +70,8 @@ loginBtn.addEventListener("click", async function () {
     }),
   });
 
+  const responseData = await response.json();
+
   if (response.status === 200) {
     // 로그인 성공
     localStorage.setItem("accessToken", responseData.accessToken); // accessToken 저장

@@ -25,6 +25,11 @@ const {
   PASSWORD_REQUIREMENTS,
 } = ERROR_MESSAGES;
 
+// 페이지 접근 시 accessToken 확인하고 있으면 /folder로 이동
+if (localStorage.getItem("accessToken")) {
+  window.location.href = "/folder";
+}
+
 const emailInput = document.querySelector(USERNAME_SELECTOR);
 const passwordInput = document.querySelector(PASSWORD_SELECTOR);
 const passwordCheckInput = document.querySelector(PASSWORD_CHECK_SELECTOR);
@@ -131,8 +136,12 @@ async function submitForm() {
         }
       );
 
+      const responseData = await response.json();
+
       if (response.status === 200) {
         // 회원가입 성공
+        // 회원가입 성공
+        localStorage.setItem("accessToken", responseData.accessToken);
         window.location.href = "/folder";
       }
     } catch (error) {
