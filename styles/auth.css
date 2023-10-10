@@ -91,7 +91,7 @@ body {
 
 .auth__email-hint,
 .auth__password-hint,
-.auth__password-confirm-hint {
+.auth__password-hint--confirm {
 	min-height: 1.7rem;
 	margin-top: 0.6rem;
 	color: var(--linkbrary--color--red);

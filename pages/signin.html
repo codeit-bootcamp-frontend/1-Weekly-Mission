@@ -8,10 +8,11 @@
 		<link rel="stylesheet" href="/styles/variables.css" />
 		<link rel="stylesheet" href="/styles/auth.css" />
 		<title>Linkbrary</title>
+		<script type="module" src="/utils/signin.js" defer></script>
 	</head>
 	<body>
 		<!-- H1 (a11y) -->
-		<h1 class="page-title--a11y">Linkbrary SignIn Page</h1>
+		<h1 class="a11y">Linkbrary SignIn Page</h1>
 
 		<article id="signin__container" class="auth__container">
 			<!-- FORM -->
@@ -47,6 +48,7 @@
 								<input
 									class="auth__input auth__input-password"
 									type="password"
+									autocomplete="on"
 									required
 								/>
 								<button class="auth__toggle-password" type="button">
@@ -62,7 +64,7 @@
 							<p class="auth__password-hint"></p>
 						</label>
 					</div>
-					<button type="submit" class="auth__button signin__buton">
+					<button type="submit" class="auth__button signin__button">
 						로그인
 					</button>
 				</fieldset>
@@ -105,7 +107,5 @@
 				</ul>
 			</section>
 		</article>
-
-		<script src="/utils/auth.js" defer></script>
 	</body>
 </html>

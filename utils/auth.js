@@ -1,4 +1,5 @@
-// Signin, Signup 비밀번호 토글
+/* 비밀번호 토글 */
+// 상수
 const PASSWORD_TOGGLE_CONSTANT = {
 	visible: {
 		inputType: "text",
@@ -11,152 +12,65 @@ const PASSWORD_TOGGLE_CONSTANT = {
 		imageAlt: "비밀번호 숨김 아이콘",
 	},
 };
-const passwordToggle = document.querySelector(".auth__toggle-password");
-const passwordConfirmToggle = document.querySelector(
-	".auth__toggle-password--confirm"
-);
 
-passwordToggle.addEventListener("click", () => {
-	const passwordInput = document.querySelector(".auth__input-password");
-	const passwordIcon = document.querySelector(".auth__icon-password");
+// DOM 요소
+const passwordToggleElement = document.querySelector(".auth__toggle-password");
 
-	if (passwordInput.type === "password") {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.visible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.visible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.visible.imageAlt;
-	} else {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.invisible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.invisible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.invisible.imageAlt;
-	}
-});
+// 함수
+function getPasswordVisibility(inputType) {
+	return inputType === "password"
+		? PASSWORD_TOGGLE_CONSTANT.visible
+		: PASSWORD_TOGGLE_CONSTANT.invisible;
+}
 
-passwordConfirmToggle?.addEventListener("click", () => {
-	const passwordConfirmInput = document.querySelector(
-		".auth__input-password--confirm"
-	);
-	const passwordConfirmIcon = document.querySelector(
-		".auth__icon-password--confirm"
-	);
+/* 유효성 검사 */
+// 상수
+const USERS = [
+	{
+		email: "test@codeit.com",
+		password: "codeit101",
+	},
+];
 
-	if (passwordConfirmInput.type === "password") {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.visible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.invisible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.invisible.imageAlt;
-	} else {
-		passwordInput.type = PASSWORD_TOGGLE_CONSTANT.invisible.inputType;
-		passwordIcon.src = PASSWORD_TOGGLE_CONSTANT.visible.imageSrc;
-		passwordIcon.alt = PASSWORD_TOGGLE_CONSTANT.visible.imageAlt;
-	}
-});
-
-// Signin 유효성 검사
-const SIGNIN_CURRECT = {
-	email: "test@codeit.com",
-	password: "codeit101",
-};
-const SIGNIN_HINT = {
+const AUTH_HINT = {
 	email: {
 		default: "",
 		isNotFilled: "이메일을 입력해주세요.",
-		isNotValidated: "올바른 이메일 주소가 아닙니다",
-		isNotUser: "이메일을 변경해주세요.",
+		isNotValidated: "올바른 이메일 주소가 아닙니다.",
+		isNotExists: "이메일을 변경해주세요.",
+		isExists: "이미 사용중인 이메일입니다.",
 	},
 	password: {
 		default: "",
 		isNotFilled: "비밀번호를 입력해주세요.",
-		isNotUser: "비밀번호를 변경해주세요.",
+		isNotExists: "비밀번호를 변경해주세요.",
+		isNotValidated: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
+		isNotConfirmed: "비밀번호가 일치하지 않아요.",
 	},
 };
-const EMAIL_PATTURN = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
-const emailInputElement = document.querySelector(".auth__input-email");
-const passwordInputElement = document.querySelector(".auth__input-password");
-const signInButtonElement = document.querySelector(".signin__buton");
-const emailHintElement = document.querySelector(".auth__email-hint");
-const passwordHintElement = document.querySelector(".auth__password-hint");
+const EMAIL_PATTERN = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
-function handleEmailHint(hintType) {
-	emailHintElement.innerText = SIGNIN_HINT.email[hintType];
-	if (hintType === "default") {
-		emailInputElement.classList.remove("auth__input--hint");
-	} else if (
-		emailInputElement.classList.contains("auth__input--hint") === false
-	) {
-		emailInputElement.classList.add("auth__input--hint");
-	}
-}
+const INPUT_STATUS = {
+	default: "default",
+	isNotFilled: "isNotFilled",
+	isNotValidated: "isNotValidated",
+	isExists: "isExists",
+	isNotExists: "isNotExists",
+	isNotConfirmed: "isNotConfirmed",
+};
 
-function handlePasswordHint(hintType) {
-	passwordHintElement.innerText = SIGNIN_HINT.password[hintType];
-	if (hintType === "default") {
-		passwordInputElement.classList.remove("auth__input--hint");
-	} else if (
-		passwordInputElement.classList.contains("auth__input--hint") === false
-	) {
-		passwordInputElement.classList.add("auth__input--hint");
-	}
-}
+const INPUT_HINT_CLASSNAME = "auth__input--hint";
 
-function handleSigninSuccess() {
-	emailInputElement.classList.remove("auth__input--hint");
-	passwordInputElement.classList.remove("auth__input--hint");
-	location.href = "/pages/forder.html";
-}
+const FOLDER_PAGE_PATH = "/pages/forder.html";
 
-function checkEmailInputValue(email) {
-	if (email === "") handleEmailHint("isNotFilled");
-	else if (EMAIL_PATTURN.test(email) === false)
-		handleEmailHint("isNotValidated");
-	else handleEmailHint("default");
-}
-
-function checkPasswordInputValue(password) {
-	if (password === "") {
-		handlePasswordHint("isNotFilled");
-	} else {
-		handlePasswordHint("default");
-	}
-}
-
-function handleSignIn(email, password) {
-	let isEmailRight = false;
-	let isPasswordRight = false;
-
-	if (email === "") {
-		handleEmailHint("isNotFilled");
-	} else if (EMAIL_PATTURN.test(email) === false) {
-		handleEmailHint("isNotValidated");
-	} else if (email !== SIGNIN_CURRECT.email) {
-		handleEmailHint("isNotUser");
-	} else {
-		isEmailRight = true;
-	}
-
-	if (password === "") {
-		handlePasswordHint("isNotFilled");
-	} else if (password !== SIGNIN_CURRECT.password) {
-		handlePasswordHint("isNotUser");
-	} else {
-		isPasswordRight = true;
-	}
-
-	if (isEmailRight === true && isPasswordRight === true) handleSigninSuccess();
-}
-
-emailInputElement.addEventListener("focusout", () => {
-	const emailValue = emailInputElement.value;
-	checkEmailInputValue(emailValue);
-});
-
-passwordInputElement.addEventListener("focusout", () => {
-	const passwordValue = passwordInputElement.value;
-	checkPasswordInputValue(passwordValue);
-});
-
-signInButtonElement.addEventListener("click", (e) => {
-	e.preventDefault();
-	const emailValue = emailInputElement.value;
-	const passwordValue = passwordInputElement.value;
-	handleSignIn(emailValue, passwordValue);
-});
+export {
+	passwordToggleElement,
+	getPasswordVisibility,
+	USERS,
+	AUTH_HINT,
+	EMAIL_PATTERN,
+	INPUT_STATUS,
+	INPUT_HINT_CLASSNAME,
+	FOLDER_PAGE_PATH,
+};
