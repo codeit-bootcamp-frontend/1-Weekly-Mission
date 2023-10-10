@@ -18,8 +18,9 @@ function addEmailErrorMsg() {
   } else if (location.pathname === "/pages/signup.html" && email.value === TEST_EMAIL) {
     addEmailClass("이미 사용중인 이메일입니다.");
     return false;
+  } else {
+    return true;
   }
-  return true;
 }
 
 function deleteEmailErrorMsg() {

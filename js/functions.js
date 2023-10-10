@@ -2,6 +2,8 @@ import { email, password, passwordVisible, passwordCheckVisible } from "./tags.j
 import { addEmailClass, addPasswordClass } from "./addclass.js";
 import { addEmailErrorMsg, addPassWordErrorMsgSignup, addPasswordCheckErrorMsg } from "./errormsg.js";
 
+const URL = "https://bootcamp-api.codeit.kr/api";
+
 function toggleEye(event) {
   event.preventDefault();
   const inputId = event.target.previousElementSibling;
@@ -14,7 +16,7 @@ function toggleEye(event) {
   }
 }
 
-const loginPage = () => (location.href = "../pages/folder.html");
+const folderPage = () => (location.href = "../pages/folder.html");
 
 const validationLogin = async (email, password) => {
   try {
@@ -22,7 +24,7 @@ const validationLogin = async (email, password) => {
       email: email,
       password: password,
     };
-    const signIn = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+    const signIn = await fetch(`${URL}/sign-in`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +32,7 @@ const validationLogin = async (email, password) => {
       body: JSON.stringify(loginContext),
     });
     if (signIn.status === 200) {
-      return loginPage();
+      return folderPage();
     } else {
       addEmailClass("이메일을 확인해주세요.");
       addPasswordClass("비밀번호를 확인해주세요.");
@@ -46,10 +48,36 @@ function login(event) {
   validationLogin(email.value, password.value);
 }
 
+const duplicationEmail = async email => {
+  try {
+    const emailContext = {
+      email: email,
+    };
+    const signUp = await fetch(`${URL}/check-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailContext),
+    });
+    if (signUp.status === 409) {
+      addEmailClass("이미 사용중인 이메일입니다.");
+    }
+    if (signUp.status === 200) {
+      return folderPage();
+    }
+  } catch (error) {
+    return error;
+  }
+};
+
 function signup(event) {
   event.preventDefault();
   if (addEmailErrorMsg() === true && addPassWordErrorMsgSignup() === true && addPasswordCheckErrorMsg() === true) {
-    loginPage();
+    folderPage();
+  }
+  if (addEmailErrorMsg() === false) {
+    duplicationEmail(email.value);
   }
 }
 
