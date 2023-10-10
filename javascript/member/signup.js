@@ -22,20 +22,17 @@ function isSignUpPassword(userPassword, userPasswordCh) {
 
 /* 비밀번호 재확인 체크 */
 function hendleChange(event){
-    const passwordCheckBox = $('.password-check-box'); /* 비밀번호 재확인 메세지 */
     const {target} = event;
 
     if(target.name === 'passwordCh') {
-        passwordCheckBox.classList.remove('empty', 'check');
-        passwordCheckErrorMessage(target, passwordCheckBox);
+        $('.password-check-box').classList.remove('empty', 'check');
+        passwordCheckErrorMessage(target, $('.password-check-box'));
         inputAccount.userPasswordCh = target.value;
     }
 }
 
 /* 회원가입 확인 */
 function handleSignUpSubmit(event){
-    const emailBox = $('.email-box'); /* 이메일 메세지*/
-    const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
     const {userEmail, userPassword, userPasswordCh} = inputAccount;
 
     event.preventDefault();
@@ -46,10 +43,10 @@ function handleSignUpSubmit(event){
         return;
     } else {
         if(!isCheck.checkEmail) {
-            emailBox.classList.add('disaccord');
+            $('.email-box').classList.add('disaccord');
         }
         if(isSignUpPassword(userPassword, userPasswordCh)) {
-            passwordBox.classList.add('disaccord');
+            $('.password-box').classList.add('disaccord');
         }
     }
     

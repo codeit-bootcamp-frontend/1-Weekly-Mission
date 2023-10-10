@@ -25,8 +25,6 @@ function isFindPassword(userPassword) {
 
 /* 로그인 확인 */
 function handleSubmit(event) {
-    const emailBox = $('.email-box'); /* 이메일 메세지*/
-    const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
     const {userEmail, userPassword} = inputAccount;
 
     event.preventDefault();
@@ -37,11 +35,11 @@ function handleSubmit(event) {
     } else {
         /* 이메일 최종확인 */
         if(isFindEmail(userEmail) <= -1) {
-            emailBox.classList.add('disaccord');
+            $('.email-box').classList.add('disaccord');
         }
         /* 비밀번호 최종확인 */ 
         if(isFindPassword(userPassword) <= -1) {
-            passwordBox.classList.add('disaccord');
+            $('.password-box').classList.add('disaccord');
         }
     }
 };

@@ -87,26 +87,22 @@ function passwordCheckErrorMessage(passwordCheck, passwordCheckBox) {
 
 /* focusout 될 시 입력값 저장 */
 function hendleFocusOut(event) {
-    const emailBox = $('.email-box'); /* 이메일 메세지*/
-    const passwordBox = $('.password-box'); /* 비밀번호 메세지 */
-    const passwordCheckBox = $('.password-check-box'); /* 비밀번호 재확인 메세지 */
-    
     const {target} = event; /* 이메일과 비밀번호 분해 */
 
     if(target.name === 'email') {
-        emailBox.classList.remove('disaccord', 'empty', 'wrong', 'already'); 
+        $('.email-box').classList.remove('disaccord', 'empty', 'wrong', 'already'); 
         /* 아이디 입력확인 */
-        emailErrorMessage(target, emailBox);
+        emailErrorMessage(target, $('.email-box'));
         inputAccount.userEmail = target.value;
     } else if(target.name === 'password') {
-        passwordBox.classList.remove('empty', 'disaccord','terms'); 
+        $('.password-box').classList.remove('empty', 'disaccord','terms'); 
         /* 비밀번호 입력확인 */
-        passwordErrorMessage(target, passwordBox);
+        passwordErrorMessage(target, $('.password-box'));
         inputAccount.userPassword = target.value;
     } else if (target.name === 'passwordCh') {
-        passwordCheckBox.classList.remove('empty', 'check');
+        $('.password-check-box').classList.remove('empty', 'check');
         /* 비밀번호 확인란 입력확인 */
-        passwordCheckErrorMessage(target, passwordCheckBox)
+        passwordCheckErrorMessage(target, $('.password-check-box'))
         
     }
 }
