@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="/style/signin.css" />
     <link rel="stylesheet" href="/style/mediaQuery.css" />
+    <script defer src="/js/signin.js"></script>
   </head>
   <body>
     <header>
@@ -41,14 +42,16 @@
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input
-              class="password-input"
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-            />
-            <button class="eye-button" type="button">
-              <img src="/assets/eye-off.svg" />
-            </button>
+            <div password-input-wrapper>
+              <input
+                class="password-input"
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+              />
+              <button id="password-toggle" class="eye-button" type="button">
+                <img src="/assets/eye-off.svg" />
+              </button>
+            </div>
             <div class="password-error-message"></div>
           </div>
         </div>
@@ -66,6 +69,5 @@
         </div>
       </div>
     </div>
-    <script src="/js/signin.js"></script>
   </body>
 </html>

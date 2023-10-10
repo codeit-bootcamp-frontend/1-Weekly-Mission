@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로그인</title>
+    <title>회원가입</title>
     <link
       rel="stylesheet"
       type="text/css"
@@ -12,6 +12,7 @@
     <!-- singin css 재사용 -->
     <link rel="stylesheet" href="/style/signin.css" />
     <link rel="stylesheet" href="/style/mediaQuery.css" />
+    <script defer src="/js/signup.js"></script>
   </head>
   <body>
     <header>
@@ -38,31 +39,42 @@
               type="text"
               placeholder="이메일을 입력해주세요"
             />
+            <div class="email-error-message"></div>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input
-              class="password-input"
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-            />
-            <button class="eye-button" type="button">
-              <img src="/assets/eye-off.svg" />
-            </button>
+            <div password-input-wrapper>
+              <input
+                class="password-input"
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+              />
+              <button id="password-toggle" class="eye-button" type="button">
+                <img src="/assets/eye-off.svg" />
+              </button>
+            </div>
+            <div class="password-error-message"></div>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호 확인</label>
-            <input
-              class="password-input"
-              type="password"
-              placeholder="비밀번호를 다시 입력해주세요"
-            />
-            <button class="eye-button" type="button">
-              <img src="/assets/eye-off.svg" />
-            </button>
+            <div password-input-wrapper>
+              <input
+                class="passwordConfirm-input"
+                type="password"
+                placeholder="비밀번호를 다시 입력해주세요"
+              />
+              <button
+                id="password-check-toggle"
+                class="eye-button"
+                type="button"
+              >
+                <img src="/assets/eye-off.svg" />
+              </button>
+            </div>
+            <div class="passwordConfirm-error-message"></div>
           </div>
         </div>
-        <button class="cta" type="submit">로그인</button>
+        <button class="cta login-button" type="submit">회원가입</button>
       </form>
       <div class="sns-box">
         <span class="sns-text">소셜 로그인</span>
@@ -76,6 +88,5 @@
         </div>
       </div>
     </div>
-    <script src="/js/signin.js"></script>
   </body>
 </html>

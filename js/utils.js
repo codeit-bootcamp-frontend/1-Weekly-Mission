@@ -1,16 +1,9 @@
-const email = document.querySelector(".email-input");
-const password = document.querySelector(".password-input");
-const signButton = document.querySelector(".sign-form");
-const passwordEye = document.querySelector("#password-toggle");
-const emailErrorMessage = document.querySelector(".email-error-message");
-const passwordErrorMessage = document.querySelector(".password-error-message");
-const passwordConfirmErrorMessage = document.querySelector(
-  ".passwordCheck-error-message"
-);
+export const TEST_USER = {
+  email: "test@codeit.com",
+  password: "codeit101",
+};
 
-let eyeOn = false;
-
-const checkEmailError = (event) => {
+export const checkEmailError = (event) => {
   const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   if (event.target.value === "") {
     emailErrorMessage.style.display = "block";
@@ -20,13 +13,17 @@ const checkEmailError = (event) => {
     emailErrorMessage.style.display = "block";
     emailErrorMessage.textContent = "올바른 이메일을 입력해주세요";
     email.classList.add("border-red");
+  } else if (event.target.value === "test@codeit.com") {
+    emailErrorMessage.style.display = "block";
+    emailErrorMessage.textContent = "이미 사용 중인 이메일입니다";
+    email.classList.add("border-red");
   } else {
     emailErrorMessage.style.display = "none";
     email.classList.remove("border-red");
   }
 };
 
-const checkPasswordError = (event) => {
+export const checkPasswordError = (event) => {
   const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   if (event.target.value === "") {
     passwordErrorMessage.style.display = "block";
@@ -46,17 +43,35 @@ const checkPasswordError = (event) => {
   }
 };
 
-const submitForm = (event) => {
-  event.preventDefault();
-  if (email.value === "test@codeit.com" && password.value === "codeit101") {
-    location.href = "/pages/folder.html";
+export const checkPasswordConfirmError = (event) => {
+  if (event.target.value === password.value) {
+    passwordConfirmErrorMessage.style.display = "none";
+    passwordConfirm.classList.remove("border-red");
   } else {
-    checkEmailError();
-    checkPasswordError();
+    passwordConfirmErrorMessage.style.display = "block";
+    passwordConfirmErrorMessage.textContent = "비밀번호가 일치하지 않아요";
+    passwordConfirm.classList.add("border-red");
   }
 };
 
-const togglePassword = (input, toggleButton) => {
+export const checkSignin = (event) => {
+  if (
+    email.value === TEST_USER.email ||
+    password.value === TEST_USER.password
+  ) {
+    // 로그인 시 폴더 페이지로 이동
+    location.href = "/pages/folder.html";
+    event.preventDefault();
+  } else {
+    emailErrorMessage.textContent = "이메일을 확인해주세요.";
+    emailErrorMessage.style.display = "block";
+    passwordErrorMessage.textContent = "비밀번호를 확인해주세요";
+    passwordErrorMessage.style.display = "block";
+    event.preventDefault();
+  }
+};
+
+export const togglePassword = (input, toggleButton) => {
   if (input.getAttribute("type") === "password") {
     input.setAttribute("type", "text");
     toggleButton
@@ -69,17 +84,3 @@ const togglePassword = (input, toggleButton) => {
     .getElementsByTagName("img")[0]
     .setAttribute("src", "/assets/eye-off.svg");
 };
-
-email.addEventListener("focusout", checkEmailError);
-password.addEventListener("focusout", checkPasswordError);
-passwordEye.addEventListener("click", () =>
-  togglePassword(password, passwordEye)
-);
-signButton.addEventListener("submit", submitForm);
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    submitForm();
-  }
-});
-
-// 모듈화 안 됨

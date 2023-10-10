@@ -89,7 +89,14 @@ header {
   border-color: var(--primary);
 }
 
-.password-input {
+.password-input-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.password-input,
+.passwordConfirm-input {
+  width: 100%;
   padding: 1.8rem 4.6rem 1.8rem 1.5rem; /*오른쪽 패딩값 줘서 눈 표시 가리지 않기*/
   border-radius: 0.8rem;
   border: 0.1rem solid var(--gray20);
@@ -99,8 +106,8 @@ header {
 
 .eye-button {
   position: absolute;
-  bottom: 3.4rem;
-  right: 1.8rem;
+  top: 5.1rem;
+  right: 1.5rem;
   width: 1.6rem;
   height: 1.6rem;
 }
@@ -164,8 +171,9 @@ header {
 }
 
 .email-error-message,
-.password-error-message {
-  color: var(--linkbrary-red, #ff5b56);
+.password-error-message,
+.passwordConfirm-error-message {
+  color: var(--red);
   font-family: Pretendard;
   font-size: 1.4rem;
   font-style: normal;

@@ -1,13 +1,23 @@
+// import {
+//   checkEmailError,
+//   checkPasswordError,
+//   checkPasswordConfirmError,
+//   checkSignin,
+//   togglePassword,
+//   TEST_USER,
+// } from "./utils.js";
+
 const email = document.querySelector(".email-input");
 const password = document.querySelector(".password-input");
-const signButton = document.querySelector(".sign-form");
+const passwordConfirm = document.querySelector(".passwordConfirm-input");
 const passwordEye = document.querySelector("#password-toggle");
+const passwordConfirmEye = document.querySelector("#password-check-toggle");
 const emailErrorMessage = document.querySelector(".email-error-message");
 const passwordErrorMessage = document.querySelector(".password-error-message");
 const passwordConfirmErrorMessage = document.querySelector(
-  ".passwordCheck-error-message"
+  ".passwordConfirm-error-message"
 );
-
+const signForm = document.querySelector(".sign-form");
 let eyeOn = false;
 
 const checkEmailError = (event) => {
@@ -16,13 +26,16 @@ const checkEmailError = (event) => {
     emailErrorMessage.style.display = "block";
     emailErrorMessage.textContent = "이메일을 입력해주세요";
     email.classList.add("border-red");
+    return false;
   } else if (!EMAIL_REGEX.test(event.target.value)) {
     emailErrorMessage.style.display = "block";
     emailErrorMessage.textContent = "올바른 이메일을 입력해주세요";
     email.classList.add("border-red");
+    return false;
   } else {
     emailErrorMessage.style.display = "none";
     email.classList.remove("border-red");
+    return true;
   }
 };
 
@@ -32,6 +45,7 @@ const checkPasswordError = (event) => {
     passwordErrorMessage.style.display = "block";
     passwordErrorMessage.textContent = "비밀번호를 입력해주세요";
     password.classList.add("border-red");
+    return false;
   } else if (
     event.target.value.length < 8 ||
     !PASSWORD_REGEX.test(event.target.value)
@@ -40,19 +54,24 @@ const checkPasswordError = (event) => {
     passwordErrorMessage.textContent =
       "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요";
     password.classList.add("border-red");
+    return false;
   } else {
     passwordErrorMessage.style.display = "none";
     passwordCheck.classList.remove("border-red");
+    return true;
   }
 };
 
-const submitForm = (event) => {
-  event.preventDefault();
-  if (email.value === "test@codeit.com" && password.value === "codeit101") {
-    location.href = "/pages/folder.html";
+const checkPasswordConfirmError = (event) => {
+  if (event.target.value === password.value) {
+    passwordConfirmErrorMessage.style.display = "none";
+    passwordConfirm.classList.remove("border-red");
+    return true;
   } else {
-    checkEmailError();
-    checkPasswordError();
+    passwordConfirmErrorMessage.style.display = "block";
+    passwordConfirmErrorMessage.textContent = "비밀번호가 일치하지 않아요";
+    passwordConfirm.classList.add("border-red");
+    return false;
   }
 };
 
@@ -70,16 +89,30 @@ const togglePassword = (input, toggleButton) => {
     .setAttribute("src", "/assets/eye-off.svg");
 };
 
+const submitForm = (event) => {
+  event.preventDefault();
+  const isVaildUser =
+    email.value === "test@codeit.com" && password.value === "codeit101";
+  if (isVaildUser) {
+    location.href = "/pages/folder.html";
+    return;
+  }
+};
+
 email.addEventListener("focusout", checkEmailError);
 password.addEventListener("focusout", checkPasswordError);
+passwordConfirm.addEventListener("focusout", checkPasswordConfirmError);
 passwordEye.addEventListener("click", () =>
   togglePassword(password, passwordEye)
 );
-signButton.addEventListener("submit", submitForm);
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    submitForm();
-  }
-});
+passwordConfirmEye.addEventListener("click", () =>
+  togglePassword(passwordConfirm, passwordEye)
+);
+signForm.addEventListener("submit", submitForm);
 
-// 모듈화 안 됨
+// 아래 코드에 대해 실패해서 일일이 이벤트 등록
+// for (let passwordEye of passwordEyes) {
+//   passwordEye.addEventListener("click", () =>
+//     togglePassword(password, passwordEye)
+//   );
+// }
