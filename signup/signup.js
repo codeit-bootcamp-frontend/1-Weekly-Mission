@@ -88,9 +88,35 @@ passwordCheckInput.addEventListener("keydown", function (event) {
   }
 });
 
-function submitForm() {
-  if (checkEmailValidity() && checkPasswordValidity() && checkPasswordMatch()) {
-    window.location.href = "/folder";
+async function submitForm() {
+  const isEmailValid = checkEmailValidity();
+  const isPasswordValid = checkPasswordValidity();
+  const isPasswordMatching = checkPasswordMatch();
+
+  // 유효성 검사를 모두 통과한 경우만 API 요청을 수행
+  if (isEmailValid && isPasswordValid && isPasswordMatching) {
+    try {
+      const response = await fetch(
+        "https://bootcamp-api.codeit.kr/api/sign-up",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: emailInput.value,
+            password: passwordInput.value,
+          }),
+        }
+      );
+
+      if (response.status === 200) {
+        // 회원가입 성공
+        window.location.href = "/folder";
+      }
+    } catch (error) {
+      console.error("error:", error);
+    }
   }
 }
 
