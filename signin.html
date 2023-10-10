@@ -35,21 +35,23 @@
             id="email"
             name="email"
             type="email"
-            placeholder="이메일을 입력해주세요"
+            placeholder="codeit@codeit.com"
             required
           />
           <label for="password">비밀번호</label>
-          <div class="password-eye-off">
-            <input
+          <div class="password-wrapper">
+            <div class="password-wrapper-inner">
+              <input
               id="password"
               name="password"
               type="password"
-              placeholder="비밀번호를 입력해주세요"
+              placeholder="········"
               required
-            />
-            <img class="eye-off" src="img/eye-off.svg" />
+              />
+              <img class="eye-off" src="img/eye-off.svg" />
+            </div>
           </div>
-          <button id="login-button" type="submit">로그인</button>
+          <button id="login-button" class="form-submit" type="submit">로그인</button>
         </form>
         <div class="social-login">
           <span class="social-login-text">소셜 로그인</span>
@@ -65,5 +67,6 @@
       </div>
     </div>
     </main>
+    <script type="module" src = "./js/pages/signin.js"></script>
   </body>
 </html>
