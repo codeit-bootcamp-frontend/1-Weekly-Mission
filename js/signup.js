@@ -41,13 +41,16 @@ const checkPasswordConfirm = (password) => {
 
 const trySignUp = (e) => {
   e.preventDefault();
+  const email = emailInput.value;
+  const password = passwordInput.value;
+  const passwordConfirm = passwordConfirmInput.value;
 
   if (emailRegex.test(emailInput.value) && passwordRegex.test(passwordInput.value) && passwordConfirmInput.value === passwordInput.value) {
     location.href = '/html/folder.html';
   } else {
-    checkEmail(emailInput.value);
-    checkPassword(passwordInput.value);
-    checkPasswordConfirm(passwordConfirmInput.value);
+    checkEmail(email);
+    checkPassword(password);
+    checkPasswordConfirm(passwordConfirm);
   }
 };
 
