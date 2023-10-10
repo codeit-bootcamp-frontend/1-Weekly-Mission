@@ -51,13 +51,28 @@ function checkPasswordInput() {
 emailInput.addEventListener("blur", checkEmailValidity);
 passwordInput.addEventListener("blur", checkPasswordInput);
 
-loginBtn.addEventListener("click", function () {
+loginBtn.addEventListener("click", async function () {
   const email = emailInput.value;
   const password = passwordInput.value;
 
-  if (email === "test@codeit.com" && password === "codeit101") {
+  const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+    }),
+  });
+
+  const responseData = await response.json();
+
+  if (response.status === 200) {
+    // 로그인 성공
     location.href = "/folder";
-  } else {
+  } else if (response.status === 400) {
+    // 로그인 오류
     displayError(emailInput, emailErrorText, EMAIL_VERIFY);
     displayError(passwordInput, passwordErrorText, PASSWORD_VERIFY);
   }
