@@ -2,9 +2,6 @@ import { email, password, passwordVisible, passwordCheckVisible } from "./tags.j
 import { addEmailClass, addPasswordClass } from "./addclass.js";
 import { addEmailErrorMsg, addPassWordErrorMsgSignup, addPasswordCheckErrorMsg } from "./errormsg.js";
 
-const TEST_EMAIL = "test@codeit.com";
-const TEST_PASSSWORD = "codeit101";
-
 function toggleEye(event) {
   event.preventDefault();
   const inputId = event.target.previousElementSibling;
@@ -17,19 +14,36 @@ function toggleEye(event) {
   }
 }
 
-function loginPage() {
-  return (location.href = "../pages/folder.html");
-}
+const loginPage = () => (location.href = "../pages/folder.html");
+
+const validationLogin = async (email, password) => {
+  try {
+    const loginContext = {
+      email: email,
+      password: password,
+    };
+    const signIn = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginContext),
+    });
+    if (signIn.status === 200) {
+      return loginPage();
+    } else {
+      addEmailClass("이메일을 확인해주세요.");
+      addPasswordClass("비밀번호를 확인해주세요.");
+    }
+  } catch (error) {
+    return error;
+  }
+};
 
 function login(event) {
   event.preventDefault();
 
-  if (email.value === TEST_EMAIL && password.value === TEST_PASSSWORD) {
-    loginPage();
-  } else if (email.value !== TEST_EMAIL || password.value !== TEST_PASSSWORD) {
-    addEmailClass("이메일을 확인해주세요.");
-    addPasswordClass("비밀번호를 확인해주세요.");
-  }
+  validationLogin(email.value, password.value);
 }
 
 function signup(event) {
