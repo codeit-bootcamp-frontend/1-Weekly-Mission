@@ -22,20 +22,31 @@
           </section>
         </header>
         <form class="login-input">
-          <section class="input">
-            <label class="input-text" for="username">이메일</label>
-            <input class="input-box" name="username" />
+          <label class="input-text" for="username">이메일</label>
+          <input id="username" class="input-box" name="username" />
+          <p class="error-message" id="email-error"></p>
+          <label class="input-text" for="password">비밀번호</label>
+          <section class="pwd-input">
+            <input
+              id="password"
+              class="input-box"
+              name="password"
+              type="password"
+            />
+            <img class="toggleVisibility" src="/assets/eye-off.svg" />
           </section>
-          <section class="input">
-            <label class="input-text" for="password">비밀번호</label>
-            <input class="input-box" name="password" type="password" />
-            <img class="eye-on" src="/assets/eye-on.svg" />
+          <p class="error-message" id="password-error"></p>
+          <label class="input-text" for="password">비밀번호 확인</label>
+          <section class="pwd-input">
+            <input
+              id="password-check"
+              class="input-box"
+              name="password"
+              type="password"
+            />
+            <img class="toggleVisibility" src="/assets/eye-off.svg" />
           </section>
-          <section class="input">
-            <label class="input-text" for="password">비밀번호 확인</label>
-            <input class="input-box" name="password" type="password" />
-            <img class="eye-on" src="/assets/eye-on.svg" />
-          </section>
+          <p class="error-message" id="password-check-error"></p>
         </form>
         <section class="login-button">
           <button id="loginBtn">회원가입</button>
@@ -55,6 +66,6 @@
         </section>
       </section>
     </main>
-    <script src="signup.js"></script>
+    <script type="module" src="signup.js"></script>
   </body>
 </html>
