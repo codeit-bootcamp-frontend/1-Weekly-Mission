@@ -9,8 +9,8 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
-    <link rel="stylesheet" href="../src/css/common.css" />
-    <link rel="stylesheet" href="../src/css/sign-page.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/sign-page.css" />
     <title>LinkBrary - 로그인</title>
   </head>
   <body>
@@ -19,11 +19,11 @@
         <!-- 헤더 영역 -->
         <div class="header">
           <a class="header__logo" href="/">
-            <img src="../src/images/signin-logo.svg" alt="LinkBrary 로고 이미지" />
+            <img src="../assets/signin-logo.svg" alt="LinkBrary 로고 이미지" />
           </a>
           <div class="header__description">
             <h3 class="description__title">
-              회원이 아니신가요?<a class="description__link" href="../signup/">회원 가입하기</a>
+              회원이 아니신가요?<a class="description__link" href="/signup/">회원 가입하기</a>
             </h3>
           </div>
         </div>
@@ -42,13 +42,13 @@
               <div class="password__container">
                 <input
                   id="password"
-                  class="items__input"
+                  class="items__input password"
                   type="password"
                   placeholder="비밀번호를 입력해주세요."
                   autocomplete="off"
                 />
                 <button class="items__eye-button" type="button">
-                  <img class="eye-button" src="../src/images/eye-off.svg" alt="패스워드 숨기기 이미지" />
+                  <img class="eye-button" src="../assets/eye-off.svg" alt="패스워드 숨기기 이미지" />
                 </button>
               </div>
               <p id="password-error" class="error-message"></p>
@@ -62,15 +62,15 @@
           <h2>소셜 로그인</h2>
           <div class="social__icons">
             <a href="https://www.google.com/" class="social__icons__btn"
-              ><img src="../src/images/google.svg" alt="Google"
+              ><img src="../assets/google.svg" alt="Google"
             /></a>
             <a href="https://www.kakaocorp.com/page/" class="social__icons__btn"
-              ><img src="../src/images/kakaotalk.svg" alt="KakaoTalk"
+              ><img src="../assets/kakaotalk.svg" alt="KakaoTalk"
             /></a>
           </div>
         </div>
       </main>
     </div>
-    <script src="../src/js/signin.js"></script>
+    <script type="module" src="signin.js"></script>
   </body>
 </html>
