@@ -1,4 +1,4 @@
-import { emailTest, passwordTest } from "../../assets/js/test.js";
+import { emailTest, passwordTest } from "../../assets/js/constants.js";
 import { passwordEl, passwordCheck, eyeOnOff } from "../../assets/js/password.js";
 import { emailEl, emailCheck } from "../../assets/js/email.js";
 
@@ -13,15 +13,11 @@ function loginCheck () {
         emailEl.className = 'error';
         emailErrorText.textContent = `이메일을 확인해주세요`;
         emailErrorText.style.visibility = 'visible';
-        return;
-    }
-    else if (passwordEl.value === '' || passwordEl.value !== passwordTest) {
+    } else if (passwordEl.value === '' || passwordEl.value !== passwordTest) {
         passwordEl.className = 'error';
         passwordErrorText.textContent = `비밀번호를 확인해주세요`;
         passwordErrorText.style.visibility = 'visible';
-        return;
-    }
-    else{
+    } else {
         location.href = '/folder.html'
     }
 }

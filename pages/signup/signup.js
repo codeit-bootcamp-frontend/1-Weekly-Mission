@@ -10,21 +10,15 @@ function loginCheck () {
         emailEl.className = 'error';
         emailEl.nextElementSibling.textContent = `이메일을 확인해주세요`;
         emailEl.nextElementSibling.style.visibility = 'visible';
-        return;
-    }
-    else if (passwordEl.value === '' || passwordEl.classList.contains('error')) {
+    } else if (passwordEl.value === '' || passwordEl.classList.contains('error')) {
         passwordEl.className = 'error';
         passwordEl.parentElement.nextElementSibling.textContent = `비밀번호를 확인해주세요`;
         passwordEl.parentElement.nextElementSibling.style.visibility = 'visible';
-        return;
-    }
-    else if (passwordCheckEl.value === '' || passwordCheckEl.classList.contains('error')) {
+    } else if (passwordCheckEl.value === '' || passwordCheckEl.classList.contains('error')) {
         passwordCheckEl.className = 'error';
         passwordCheckEl.parentElement.nextElementSibling.textContent = `비밀번호를 확인해주세요`;
         passwordCheckEl.parentElement.nextElementSibling.style.visibility = 'visible';
-        return;
-    }
-    else{
+    } else{
         location.href = '/folder.html'
     }
 }
