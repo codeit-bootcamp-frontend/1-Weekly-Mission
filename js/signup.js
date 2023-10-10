@@ -39,18 +39,6 @@ const checkPasswordConfirm = (password) => {
   }
 };
 
-const checkEmailInput = (e) => {
-  checkEmail(e.target.value);
-};
-
-const checkPasswordInput = (e) => {
-  checkPassword(e.target.value);
-};
-
-const checkPasswordConfirmInput = (e) => {
-  checkPasswordConfirm(e.target.value);
-};
-
 const trySignUp = (e) => {
   e.preventDefault();
 
@@ -63,9 +51,9 @@ const trySignUp = (e) => {
   }
 };
 
-emailInput.addEventListener('focusout', checkEmailInput);
-passwordInput.addEventListener('focusout', checkPasswordInput);
-passwordConfirmInput.addEventListener('focusout', checkPasswordConfirmInput)
+emailInput.addEventListener('focusout', (e) => checkEmail(e.target.value));
+passwordInput.addEventListener('focusout', (e) => checkPassword(e.target.value));
+passwordConfirmInput.addEventListener('focusout', (e) => checkPasswordConfirm(e.target.value));
 form.addEventListener('submit', trySignUp);
 for (let el of eyeIcons) {
   el.addEventListener('click', toggleEyeButton);
