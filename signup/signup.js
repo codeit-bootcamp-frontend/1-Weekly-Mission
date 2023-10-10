@@ -43,13 +43,16 @@ const toggleVisibility = document.querySelectorAll(TOGGLE_VISIBILITY_SELECTOR);
 
 async function isEmailTaken(email) {
   try {
-    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      }
+    );
 
     if (response.status === 409) {
       return true; // 중복된 이메일
@@ -139,7 +142,6 @@ async function submitForm() {
       const responseData = await response.json();
 
       if (response.status === 200) {
-        // 회원가입 성공
         // 회원가입 성공
         localStorage.setItem("accessToken", responseData.accessToken);
         window.location.href = "/folder";
