@@ -13,7 +13,7 @@ const validateInput = (e) => {
   let nodeInfo = {
     type: node.type,
     className: node.className,
-    value: node.value.trim(),
+    value: node.value,
     path: node.baseURI.slice(-7),
   };
   let errorGb = false; //Error 구분값
@@ -21,7 +21,7 @@ const validateInput = (e) => {
 
   resetErrorEvent(node);
 
-  if (nodeInfo.value === "") {
+  if (nodeInfo.value.trim() === "") {
     errorGb = true;
     errType = 1;
   } else {
@@ -89,17 +89,25 @@ const setErrorMsg = (nodeInfo, errType) => {
   }
 
   if (errType === 1) {
-    message = `${errorMsg.type}을 입력해주세요.`;
-  } else if (errType === 2) {
-    if (errorMsg.type === "이메일") {
-      message = `올바른 ${errorMsg.type} 주소가 아닙니다.`;
-    } else if (errorMsg.type === "비밀번호") {
-      message = `${errorMsg.type}는 영문, 숫자 조합 8자 이상 입력해 주세요.`;
-    }
-  } else if (errType === 3) {
-    message = `이미 사용 중인  ${errorMsg.type}입니다.`;
-  } else if (errType === 4) {
-    message = `${errorMsg.type}가 일치하지 않아요.`;
+    message =
+      errorMsg.type === "이메일"
+        ? VALIDATE_ERRORS.EMPTY_EMAIL
+        : VALIDATE_ERRORS.EMPTY_PWD;
+  }
+
+  if (errType === 2) {
+    message =
+      errorMsg.type === "이메일"
+        ? VALIDATE_ERRORS.INVALID_EMAIL
+        : VALIDATE_ERRORS.INVALID_PWD;
+  }
+
+  if (errType === 3) {
+    message = VALIDATE_ERRORS.INUSE_EMAIL;
+  }
+
+  if (errType === 4) {
+    message = VALIDATE_ERRORS.MISMATCH_PWD;
   }
 
   return message;
