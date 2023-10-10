@@ -36,7 +36,28 @@ const passwordCheckErrorText = document.querySelector(
 );
 const toggleVisibility = document.querySelectorAll(TOGGLE_VISIBILITY_SELECTOR);
 
-function checkEmailValidity() {
+async function isEmailTaken(email) {
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (response.status === 409) {
+      return true; // 중복된 이메일
+    } else if (response.status === 200) {
+      return false; // 중복되지 않은 이메일
+    }
+  } catch (error) {
+    console.error("이메일 중복 체크 에러: ", error);
+    return false;
+  }
+}
+
+async function checkEmailValidity() {
   const email = emailInput.value;
   if (!email) {
     displayError(emailInput, emailErrorText, EMAIL_EMPTY);
@@ -44,7 +65,7 @@ function checkEmailValidity() {
   } else if (!isValidEmail(email)) {
     displayError(emailInput, emailErrorText, EMAIL_INVALID);
     return false;
-  } else if (email === "test@codeit.com") {
+  } else if (await isEmailTaken(email)) {
     displayError(emailInput, emailErrorText, EMAIL_TAKEN);
     return false;
   } else {
