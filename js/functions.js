@@ -1,4 +1,5 @@
 import { email, password, passwordVisible, passwordCheckVisible } from "./tags.js";
+import { addEmailClass, addPasswordClass } from "./addclass.js";
 import { addEmailErrorMsg, addPassWordErrorMsgSignup, addPasswordCheckErrorMsg } from "./errormsg.js";
 
 const TEST_EMAIL = "test@codeit.com";
