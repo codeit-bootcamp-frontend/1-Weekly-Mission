@@ -3,7 +3,7 @@
   font-weight: 900;
   font-display: swap;
   src: local("Pretendard Black"),
-    url("./woff2/Pretendard-Black.woff2") format("woff2");
+    url("./woff2/Pretendard-Black.subset.woff2") format("woff2");
 }
 
 @font-face {
@@ -11,7 +11,8 @@
   font-weight: 800;
   font-display: swap;
   src: local("Pretendard ExtraBold"),
-    url("/public/fonts/pretendard/Pretendard-ExtraBold.woff2") format("woff2");
+    url("/public/fonts/pretendard/Pretendard-ExtraBold.subset.woff2")
+      format("woff2");
 }
 
 @font-face {
@@ -19,7 +20,7 @@
   font-weight: 700;
   font-display: swap;
   src: local("Pretendard Bold"),
-    url("/public/fonts/pretendard/Pretendard-Bold.woff2") format("woff2");
+    url("/public/fonts/pretendard/Pretendard-Bold.subset.woff2") format("woff2");
 }
 
 @font-face {
@@ -27,7 +28,8 @@
   font-weight: 600;
   font-display: swap;
   src: local("Pretendard SemiBold"),
-    url("/public/fonts/pretendard/Pretendard-SemiBold.woff2") format("woff2");
+    url("/public/fonts/pretendard/Pretendard-SemiBold.subset.woff2")
+      format("woff2");
 }
 
 @font-face {
@@ -35,7 +37,8 @@
   font-weight: 500;
   font-display: swap;
   src: local("Pretendard Medium"),
-    url("/public/fonts/pretendard/Pretendard-Medium.woff2") format("woff2");
+    url("/public/fonts/pretendard/Pretendard-Medium.subset.woff2")
+      format("woff2");
 }
 
 @font-face {
@@ -43,7 +46,8 @@
   font-weight: 400;
   font-display: swap;
   src: local("Pretendard Regular"),
-    url("/public/fonts/pretendard/Pretendard-Regular.woff2") format("woff2");
+    url("/public/fonts/pretendard/Pretendard-Regular.subset.woff2")
+      format("woff2");
 }
 
 @font-face {
@@ -51,7 +55,8 @@
   font-weight: 300;
   font-display: swap;
   src: local("Pretendard Light"),
-    url("/public/fonts/pretendard/Pretendard-Light.woff2") format("woff2");
+    url("/public/fonts/pretendard/Pretendard-Light.subset.woff2")
+      format("woff2");
 }
 
 @font-face {
@@ -59,7 +64,8 @@
   font-weight: 200;
   font-display: swap;
   src: local("Pretendard ExtraLight"),
-    url("/public/fonts/pretendard/Pretendard-ExtraLight.woff2") format("woff2");
+    url("/public/fonts/pretendard/Pretendard-ExtraLight.subset.woff2")
+      format("woff2");
 }
 
 @font-face {
@@ -67,5 +73,5 @@
   font-weight: 100;
   font-display: swap;
   src: local("Pretendard Thin"),
-    url("/public/fonts/pretendard/Pretendard-Thin.woff2") format("woff2");
+    url("/public/fonts/pretendard/Pretendard-Thin.subset.woff2") format("woff2");
 }

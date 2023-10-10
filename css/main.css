@@ -89,55 +89,55 @@ button {
   font-family: "Pretendard";
   font-weight: 900;
   font-display: swap;
-  src: local("Pretendard Black"), url("./woff2/Pretendard-Black.woff2") format("woff2");
+  src: local("Pretendard Black"), url("./woff2/Pretendard-Black.subset.woff2") format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 800;
   font-display: swap;
-  src: local("Pretendard ExtraBold"), url("/public/fonts/pretendard/Pretendard-ExtraBold.woff2") format("woff2");
+  src: local("Pretendard ExtraBold"), url("/public/fonts/pretendard/Pretendard-ExtraBold.subset.woff2") format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 700;
   font-display: swap;
-  src: local("Pretendard Bold"), url("/public/fonts/pretendard/Pretendard-Bold.woff2") format("woff2");
+  src: local("Pretendard Bold"), url("/public/fonts/pretendard/Pretendard-Bold.subset.woff2") format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 600;
   font-display: swap;
-  src: local("Pretendard SemiBold"), url("/public/fonts/pretendard/Pretendard-SemiBold.woff2") format("woff2");
+  src: local("Pretendard SemiBold"), url("/public/fonts/pretendard/Pretendard-SemiBold.subset.woff2") format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 500;
   font-display: swap;
-  src: local("Pretendard Medium"), url("/public/fonts/pretendard/Pretendard-Medium.woff2") format("woff2");
+  src: local("Pretendard Medium"), url("/public/fonts/pretendard/Pretendard-Medium.subset.woff2") format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 400;
   font-display: swap;
-  src: local("Pretendard Regular"), url("/public/fonts/pretendard/Pretendard-Regular.woff2") format("woff2");
+  src: local("Pretendard Regular"), url("/public/fonts/pretendard/Pretendard-Regular.subset.woff2") format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 300;
   font-display: swap;
-  src: local("Pretendard Light"), url("/public/fonts/pretendard/Pretendard-Light.woff2") format("woff2");
+  src: local("Pretendard Light"), url("/public/fonts/pretendard/Pretendard-Light.subset.woff2") format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 200;
   font-display: swap;
-  src: local("Pretendard ExtraLight"), url("/public/fonts/pretendard/Pretendard-ExtraLight.woff2") format("woff2");
+  src: local("Pretendard ExtraLight"), url("/public/fonts/pretendard/Pretendard-ExtraLight.subset.woff2") format("woff2");
 }
 @font-face {
   font-family: "Pretendard";
   font-weight: 100;
   font-display: swap;
-  src: local("Pretendard Thin"), url("/public/fonts/pretendard/Pretendard-Thin.woff2") format("woff2");
+  src: local("Pretendard Thin"), url("/public/fonts/pretendard/Pretendard-Thin.subset.woff2") format("woff2");
 }
 .gnb {
   position: sticky;
@@ -270,7 +270,7 @@ button {
 .form__inputs {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 1.6rem;
 }
 .form__input {
   position: relative;
@@ -279,7 +279,6 @@ button {
 }
 .form__input-box {
   width: 100%;
-  height: auto;
   margin-top: 1.2rem;
   padding: 1.8rem 1.5rem;
   outline: none;
@@ -289,7 +288,7 @@ button {
 .form__input-box:focus {
   border-color: #6d6afe;
 }
-.form__input-box__error {
+.form__input-box--error {
   border-color: #ff5b56;
 }
 .form__password-toggle {
@@ -299,6 +298,7 @@ button {
 }
 
 .error-msg {
+  height: 1.4rem;
   margin-top: 0.6rem;
   font-size: 1.4rem;
   font-weight: 400;
@@ -562,8 +562,7 @@ button {
   align-items: center;
   gap: 3rem;
   width: 100%;
-  max-width: 40rem;
-  height: auto;
+  max-width: 46.4rem;
   padding: 0 3.2rem;
 }
 .auth__logo img {
@@ -582,6 +581,7 @@ button {
   line-height: 1.5;
 }
 .auth__redirect-link {
+  font-size: 1.6rem;
   font-weight: 600;
   line-height: normal;
   text-decoration: underline;

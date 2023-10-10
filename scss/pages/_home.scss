@@ -121,9 +121,11 @@
     .section:first-child &--grad {
       background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
     }
+
     .section:nth-child(2) &--grad {
       background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
     }
+
     .section:nth-child(3) &--grad {
       background: linear-gradient(
         99deg,
@@ -131,9 +133,11 @@
         rgba(82, 136, 133, 0.22) 52.69%
       );
     }
+
     .section:nth-child(4) &--grad {
       background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
     }
+
     .section-container .section &--grad {
       @include text-linear-grad;
     }
@@ -142,6 +146,7 @@
       grid-column: 1;
       grid-row: 1;
     }
+
     .section:nth-child(even) & {
       grid-column: 2;
       grid-row: 1;
@@ -173,6 +178,7 @@
       grid-column: 1;
       grid-row: 2;
     }
+
     .section:nth-child(even) & {
       grid-column: 2;
       grid-row: 2;
@@ -201,6 +207,7 @@
       grid-column: 2;
       grid-row: 1/3;
     }
+
     .section:nth-child(even) & {
       grid-column: 1;
       grid-row: 1/3;
