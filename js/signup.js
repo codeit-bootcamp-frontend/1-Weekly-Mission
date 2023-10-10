@@ -9,7 +9,7 @@ import {
   email as existingEmail,
   editErrorStatus,
   toggleEyeButton
-} from '/js/module.js';
+} from '/js/utils.js';
 
 const checkEmail = (email) => {
   if (!email) {

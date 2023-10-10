@@ -8,7 +8,7 @@ import {
   password as correctPassword,
   editErrorStatus,
   toggleEyeButton
-} from '/js/module.js';
+} from '/js/utils.js';
 
 const checkEmailInput = (e) => {
   if (!e.target.value) {
