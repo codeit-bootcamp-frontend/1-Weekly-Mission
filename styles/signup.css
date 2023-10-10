@@ -113,6 +113,10 @@ input:focus {
   position: relative;
 }
 
+.input-password-wrapper2{
+  position: relative;
+}
+
 .login-btn {
   width: 100%;
   padding: 1.6rem 2rem;

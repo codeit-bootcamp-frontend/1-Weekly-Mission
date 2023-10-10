@@ -2,80 +2,34 @@ import {
   emailInput,
   passwordInput,
   loginButton,
-  displayUserInputError,
-  clearUserInputError,
 } from '../pages/signin.js';
 
 import {
   $,
-  isCorrectUser,
+  handleEmailError,
+  handlePasswordError,
+  displayUserInputError,
+  clearUserInputError,
 } from '../utils.js'
-
-import {
-  REG_EXP,
-} from '../constants.js'
 
 const passwordCheckInput = $('#password-check-label');
 const passwordCheckEyeOff = $('.password-check-eye-off');
 
-
-// 회원가입 아이디 에러 다루는 함수
-function handleSignUpEmailError() {
-  const emailInput = $('#id-label');
-  const {value: emailValue} = emailInput;
-
-  if(!emailValue.trim()){
-    displayUserInputError(emailInput, '이메일을 입력해주세요.');
-    return;
-  }
-  
-  if(emailValue.length > 0 && !REG_EXP.EMAIL.test(emailValue)){
-    displayUserInputError(emailInput, '올바른 이메일 주소가 아닙니다.');
-    return;
-  }
-  
-  if(emailValue === 'test@codeit.com'){
-    displayUserInputError(emailInput, '이미 사용 중인 이메일입니다.');
-    return;
-  }
-  
-
-  clearUserInputError(emailInput);
-}
-
-// 회원가입 비밀번호 에러 다루는 함수
-function handleSignUpPasswordError() {
-  const passwordInput = $('#password-label');
-  const {value: passwordValue} = passwordInput;
-
-
-  if(!passwordValue){
-    displayUserInputError(passwordInput, '비밀번호를 입력해주세요.');
-    return;
-  }
-  
-  if(passwordValue.length > 0 && !REG_EXP.PASSWORD.test(passwordValue)){
-    displayUserInputError(passwordInput, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
-    return;
-  }
-
-  clearUserInputError(passwordInput);
-}
 
 // 회원가입 비밀번호 체크 에러 다루는 함수
 function handleSignUpPasswordCheckError() {
   const passwordInput = $('#password-label');
   const passwordCheckInput = $('#password-check-label');
 
+  clearUserInputError(passwordCheckInput);
 
   if(passwordInput.value !== passwordCheckInput.value){
     displayUserInputError(passwordCheckInput, '비밀번호가 일치하지 않아요.');
     return;
   }
-
-  clearUserInputError(passwordCheckInput);
 }
 
+// 회원가입 성공했을 때
 function signupSuccess() {
   alert('회원가입이 완료되었습니다.');
   location.href = "../../folder.html";
@@ -94,6 +48,7 @@ function handleSignUp(event){
   }
 }
 
+// 비밀번호 체크 눈모양 아이콘 다루는 함수
 function handlePasswordCheckToggleEye(){
   const passwordCheckInput = $('#password-check-label');
   const passwordCheckEyeOff = $('.password-check-eye-off');
@@ -107,8 +62,8 @@ function handlePasswordCheckToggleEye(){
 
 
 
-emailInput.addEventListener("focusout", handleSignUpEmailError);
-passwordInput.addEventListener("focusout", handleSignUpPasswordError);
+emailInput.addEventListener("focusout", handleEmailError);
+passwordInput.addEventListener("focusout", handlePasswordError);
 passwordCheckEyeOff.addEventListener("click", handlePasswordCheckToggleEye);
 loginButton.addEventListener("click", handleSignUp);
 passwordCheckInput.addEventListener("focusout", handleSignUpPasswordCheckError);
