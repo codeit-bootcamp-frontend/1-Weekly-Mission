@@ -24,6 +24,23 @@
       </p>
     </header>
     <div class="sign-box">
+      <form id="form" class="sign-form">
+        <div class="sign-inputs">
+          <div class="sign-input-box">
+            <label class="sign-input-label">이메일</label>
+            <input id="email" class="sign-input" />
+            <p id="email-error-message" class="error-message"></p>
+          </div>
+          <div class="sign-input-box sign-password">
+            <label class="sign-input-label">비밀번호</label>
+            <input id="password" class="sign-input" type="password" />
+            <p id="password-error-message" class="error-message"></p>
+            <button id="password-toggle" class="eye-button" type="button">
+              <img src="./images/eye-off.png" />
+            </button>
+          </div>
+        </div>
+        <button class="cta" type="submit">로그인</button>
       <form class="sign-form">
         <div class="sign-inputs">
           <div class="sign-input-box">
@@ -54,6 +71,9 @@
         </div>
       </div>
     </div>
+    <script type="module" src="./src/signin.js"></script>
+  </body>
+</html>
     <script src="./signin.js">
     </script>
     <link rel = "stylesheet" href = "./src/reset.css">
@@ -72,15 +92,12 @@
       <form>
         <label>
           <span>이메일</span>
-          <input name = "email" type = "email">
-          
+          <input name = "email" type = "email"> 
           <span>비밀번호</span>
           <input name = "password" type = "password" class="input-for-position">
           <img src="./images/eye-off.png" class="eyeimg">
         </label>
-        
-        <button >로그인</button>
-        
+        <button >로그인</button>        
       </form>
     </main>
     <footer>
@@ -92,8 +109,7 @@
         <a href="https://www.kakaocorp.com/page/">
           <img src="./images/kakao.png" class="kakao">
         </a>
-      </div>
-      
+      </div>     
     </footer>
   </body>
 </html>

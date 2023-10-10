@@ -104,6 +104,7 @@ header {
 
 .eye-button {
   position: absolute;
+  top: 5.1rem;
   bottom: 4.5rem;
   right: 1.5rem;
   width: 1.6rem;
@@ -162,4 +163,24 @@ header {
 .kakao-link {
   padding-top: 0.2rem;
   background-color: #f5e14b;
+}
+
+.sign-input.sign-input-error {
+  border-color: var(--red);
+}
+
+.sign-input.sign-input-error:focus {
+  border-color: var(--red);
+}
+
+.error-message {
+  display: none;
+  margin-top: -0.4rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--red);
+}
+
+.error-message.error-message-on {
+  display: inline-block;
 }

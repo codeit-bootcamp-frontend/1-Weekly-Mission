@@ -24,6 +24,18 @@
       </p>
     </header>
     <div class="sign-box">
+      <form id="form" class="sign-form">
+        <div class="sign-inputs">
+          <div class="sign-input-box">
+            <label class="sign-input-label">이메일</label>
+            <input id="email" class="sign-input" />
+            <p id="email-error-message" class="error-message"></p>
+          </div>
+          <div class="sign-input-box sign-password">
+            <label class="sign-input-label">비밀번호</label>
+            <input id="password" class="sign-input" type="password" />
+            <p id="password-error-message" class="error-message"></p>
+            <button class="password-toggle eye-button" type="button">
       <form class="sign-form">
         <div class="sign-inputs">
           <div class="sign-input-box">
@@ -39,6 +51,9 @@
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호 확인</label>
+            <input id="passwordConfirm" class="sign-input" type="password" />
+            <p id="password-error-message-2" class="error-message"></p>
+            <button class="password-toggle eye-button" type="button">
             <input class="sign-input" type="password" />
             <button class="eye-button" type="button">
               <img src="./images/eye-off.png" />
@@ -59,6 +74,7 @@
         </div>
       </div>
     </div>
+  <script type="module" src="./src/signup.js"></script>
   </body>
 </html>
     <link rel = "stylesheet" href = "./src/reset.css">
@@ -77,19 +93,15 @@
       <form>
         <label>
           <span>이메일</span>
-          <input name = "email" type = "email">
-          
+          <input name = "email" type = "email">        
           <span>비밀번호</span>
           <input name = "password" type = "password" class="input-for-position">
           <img src="./images/eye-off.png" class="eyeimg">
-
           <span>비밀번호 확인</span>
           <input name = "password" type = "password" class="input-for-position">
           <img src="./images/eye-off1.png" class="eyeimg1">
-        </label>
-        
-        <button>회원가입</button>
-        
+        </label>        
+        <button>회원가입</button>       
       </form>
     </main>
     <footer>
@@ -101,8 +113,7 @@
         <a href="https://www.kakaocorp.com/page/">
           <img src="./images/kakao.png" class="kakao">
         </a>
-      </div>
-      
+      </div>     
     </footer>
   </body>
 </html>
