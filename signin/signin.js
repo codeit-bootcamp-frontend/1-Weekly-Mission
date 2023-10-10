@@ -21,6 +21,10 @@ const {
   PASSWORD_VERIFY,
 } = ERROR_MESSAGES;
 
+if (localStorage.getItem("accessToken")) {
+  location.href = "/folder";
+}
+
 const emailInput = document.querySelector(USERNAME_SELECTOR);
 const passwordInput = document.querySelector(PASSWORD_SELECTOR);
 const loginBtn = document.querySelector(LOGIN_BTN_SELECTOR);
@@ -66,10 +70,9 @@ loginBtn.addEventListener("click", async function () {
     }),
   });
 
-  const responseData = await response.json();
-
   if (response.status === 200) {
     // 로그인 성공
+    localStorage.setItem("accessToken", responseData.accessToken); // accessToken 저장
     location.href = "/folder";
   } else if (response.status === 400) {
     // 로그인 오류
