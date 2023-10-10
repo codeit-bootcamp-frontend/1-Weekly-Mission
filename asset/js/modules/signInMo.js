@@ -1,4 +1,5 @@
 import * as signComp from '../components/signComp.js';
+import { requestSign } from '../services/service.js'
 
 const errorMessageLogin = {
     signinEmail: "이메일을 확인해주세요",
@@ -25,7 +26,7 @@ const validateLoginInputs = async (email, password) => {
         password,
     };
     
-    const validatePost = await signComp.postJSONdata("sign-in", newMember);
+    const validatePost = await requestSign("sign-in", newMember);
     
     return validatePost.status === 200;
 }

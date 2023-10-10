@@ -1,11 +1,12 @@
 import * as signComp from '../components/signComp.js';
+import { requestSign } from '../services/service.js'
 
 const isEmailDuplicated = async (email) => {
     const emailCheck = {
         email,
     }
 
-    const emailDuplicationCheck = await signComp.postJSONdata("check-email", emailCheck);
+    const emailDuplicationCheck = await requestSign("check-email", emailCheck);
 
     return emailDuplicationCheck.status === 409;
 }
@@ -17,7 +18,7 @@ const validateSignUpInputs = async () => {
             password: signComp.signInputs[1].value,
         };
 
-        const postSignUpInputs = await signComp.postJSONdata("sign-up", sendSignUpInputs);
+        const postSignUpInputs = await requestSign("sign-up", sendSignUpInputs);
 
         return postSignUpInputs.status === 200;
         
