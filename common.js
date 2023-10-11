@@ -40,9 +40,13 @@ export function showValidEmailErrorMessage(input, inputLabel) {
 
 export function isPasswordValid(input) {
   const texts = input.value.trim();
-  const regex1 = /[a-zA-z]{1,}/g;
-  const regex2 = /[0-9]{1,}/g;
-  return regex1.test(texts) && regex2.test(texts) && texts.length > 8;
+  const atLeastOneCharacter = /[a-zA-z]{1,}/g;
+  const atLeastOneNumber = /[0-9]{1,}/g;
+  return (
+    atLeastOneCharacter.test(texts) &&
+    atLeastOneNumber.test(texts) &&
+    texts.length > 8
+  );
 }
 
 export function showValidPasswordErrorMessage(input, inputLabel) {
