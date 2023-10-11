@@ -37,6 +37,7 @@ let pwdValid = false;
 function pwdValidation(){
     if(!REGPWD.test($pwd.value)){
         showErrorMessage($pwd,$pwdErrorMessage,"비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.");
+        pwdValid = false;
     }
     else{
         removeErrorMessage($pwd,$pwdErrorMessage);

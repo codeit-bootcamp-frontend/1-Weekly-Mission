@@ -1,7 +1,5 @@
 const $emailErrorMessage = document.querySelector('.email_error_message');
-const $pwdErrorMessage = document.querySelector('.pwd_error_message');
 const $email = document.querySelector('.email_input');
-const $pwd = document.querySelector('.pwd_input');
 
 export let emailValid = false;
 export let pwdValid = false;
@@ -20,16 +18,7 @@ export function emailErrorMessage(){
     emailValid = true;
    }
 }
-export function pwdErrorMessage(){
-    pwdValid=false;
-    if($pwd.value === ""){
-        showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 입력해주세요.");
-    }
-    else{
-        removeErrorMessage($pwd,$pwdErrorMessage);
-        pwdValid = true;
-    }
-}
+
 export function showErrorMessage($input,$errorMessage, message){
     $errorMessage.textContent = message;
     $errorMessage.style.display = "block";

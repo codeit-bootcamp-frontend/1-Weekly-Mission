@@ -1,10 +1,9 @@
 import {
-    pwdErrorMessage,
     emailValid,
-    pwdValid,
     emailErrorMessage,
     pwdEyeOnOff,
     showErrorMessage,
+    removeErrorMessage
 
 } from './sign.js';
 
@@ -16,8 +15,20 @@ const $submit = document.querySelector('.form__sign');
 const $pwd = document.querySelector('.pwd_input');
 
 $email.addEventListener("focusout",emailErrorMessage);
-$pwd.addEventListener("focusout",pwdErrorMessage);
 $pwdEye.addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwd));
+
+let pwdValid = false;
+function pwdErrorMessage(){
+    pwdValid=false;
+    if($pwd.value === ""){
+        showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 입력해주세요.");
+    }
+    else{
+        removeErrorMessage($pwd,$pwdErrorMessage);
+        pwdValid = true;
+    }
+}
+$pwd.addEventListener("focusout",pwdErrorMessage);
 
 function signinValidCheck(e){
     emailErrorMessage();
