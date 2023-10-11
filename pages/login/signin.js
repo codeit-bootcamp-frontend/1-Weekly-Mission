@@ -19,7 +19,7 @@ function _onClickLogin(){
  * 에러가 있는지 확인하고, 존재하는 계정인지 확인 후, 로그인 한다.
  */
 function login(){
-    if(isFormContainsError() === false && isVerificatedAccount() === true){
+    if(!isFormContainsError() && isVerificatedAccount()){
         location.href = "/pages/folder";
     }
 }
