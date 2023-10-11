@@ -97,5 +97,5 @@ pwdConfirmInput.addEventListener("focusout", confirmPwd);
 emailInput.addEventListener("keyup", submitOnEnter);
 pwdInput.addEventListener("keyup", submitOnEnter);
 pwdConfirmInput.addEventListener("keyup", submitOnEnter);
-toggleEye.addEventListener("click", eyeOnOff);
+// toggleEye.addEventListener("click", eyeOnOff);
 signUpBtn.addEventListener("click", submitForm);

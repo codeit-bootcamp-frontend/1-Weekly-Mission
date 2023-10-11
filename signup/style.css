@@ -55,9 +55,18 @@ label {
   color: var(--color-black);
   margin-bottom: 12px;
 }
-.input-box input:not(.input-password2) {
+/* .input-box input:not(.input-password2) {
   margin-bottom: 24px;
+} */
+
+.password-wrapper {
+  width: 100%;
+  display: flex;
 }
+#toggle-eye {
+  margin-left: -30px;
+}
+
 .btn-login {
   width: 100%;
   display: block;

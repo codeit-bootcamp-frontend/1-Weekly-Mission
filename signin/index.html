@@ -18,9 +18,11 @@
       </div>
       <div class="pwd-field">
         <label for="password">비밀번호</label>
-        <input id="password" type="password">
+        <div class="password-wrapper">
+          <input id="password" type="password">
+          <img id="toggle-eye" src="/images/eye-off.svg" alt="클릭시 비밀번호 표시">
+        </div>
         <div class="error"></div>
-        <!-- <img id="toggle-eye" src="/images/eye-off.svg" alt="클릭시 비밀번호 표시"> -->
       </div>
     </div>
     <button type="button" class="btn-login cta">로그인</button>

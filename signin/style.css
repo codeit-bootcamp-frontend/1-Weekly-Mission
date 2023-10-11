@@ -61,12 +61,15 @@ label {
   margin-bottom: 12px;
 }
 
-/* #toggle-eye {
-  position: absolute;
-  top: 53%;
-  right: 15px;
+.password-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+#toggle-eye {
+  margin-left: -30px;
   cursor: pointer;
-} */
+}
 
 .btn-login {
   width: 100%;

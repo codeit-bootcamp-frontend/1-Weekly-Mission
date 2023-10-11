@@ -67,5 +67,5 @@ const submit = (e) => {
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
-toggleEye.addEventListener("click", eyeOnOff);
+// toggleEye.addEventListener("click", eyeOnOff);
 signUpBtn.addEventListener('click', submit);
