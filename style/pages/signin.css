@@ -2,20 +2,19 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   padding: 238px 0px 252px 0px;
   background: var(--linkbrary-bg);
-
 }
 
-main{
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
 }
 
-.logo-and-signup{
+.logo-and-signup {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,16 +23,16 @@ main{
   height: 78px;
 }
 
-.logo-and-signup .logo{
+.logo-and-signup .logo {
   width: 210.583px;
   height: 38px;
 }
 
-.logo-and-signup .logo img{
+.logo-and-signup .logo img {
   width: 100%;
 }
 
-.logo-and-signup span{
+.logo-and-signup span {
   color: var(--black);
 
   /* Linkbrary/body1-regular */
@@ -43,28 +42,26 @@ main{
   line-height: 24px; /* 150% */
 }
 
-.logo-and-signup span a{
+.logo-and-signup span a {
   color: var(--linkbrary-primary-color);
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 600;
-
 }
 
-.inputFrame{
+.input-frame {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
-.inputFrame form{
+.input-frame form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 15px;
 }
 
-.inputFrame .inputbox{
+.input-frame .input-box {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -72,12 +69,11 @@ main{
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
-  
 }
 
-
-.inputFrame .inputbox #email, #password{
- 
+.input-frame .input-box #email,
+.input-frame .input-box #password,
+.input-frame .input-box #password-check{
   width: 400px;
   padding: 18px 15px;
   border-radius: 8px;
@@ -85,30 +81,25 @@ main{
   background: var(--linkbrary-white);
 }
 
-.inputFrame .inputbox .password{
-  
+.input-frame .input-box .password {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap : 10px;
+  gap: 10px;
   justify-content: flex-end;
 }
 
-
-.inputFrame .inputbox .password img{
+.input-frame .input-box .password img {
   position: absolute;
-  top : 18px;
+  top: 18px;
   right: 15px;
-
-  
 }
 
-
-.inputFrame .inputbox:focus{
-  border-color: #6D6AFE;
+.input-frame .input-box:focus {
+  border-color: #6d6afe;
 }
 
-.inputFrame .login-button{
+.input-frame .login-button {
   padding: 16px 20px;
   gap: 10px;
   border-radius: 8px;
@@ -120,7 +111,7 @@ main{
   border-style: none;
 }
 
-.social-login{
+.social-login {
   display: flex;
   width: 400px;
   padding: 12px 24px;
@@ -131,16 +122,25 @@ main{
   background: var(--linkbrary-gray-10);
 }
 
-.social-login span{
+.social-login span {
   color: var(--linkbrary-gray-100);
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
 }
 
-.social-login .icons{
+.social-login .icons {
   display: flex;
-  gap : 16px;
+  gap: 16px;
+}
+
+.error {
+  color: var(--linkbrary-red);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .error{
@@ -158,17 +158,15 @@ main{
     width: 100%;
     padding-left: 32px;
     padding-right: 32px;
-    
- 
   }
 
-  main > *, main .inputFrame form, .inputFrame .inputbox #email, .inputFrame .inputbox #password, .social-login{
+  main > *,
+  main .input-frame form,
+  .input-frame .input-box #email,
+  .input-frame .input-box #password,
+  .input-frame .input-box #password-check,
+  .social-login {
     width: 100%;
     max-width: 400px;
   }
-
-
-
-  
-
 }

@@ -19,28 +19,42 @@
         <span>이미 회원이신가요? <a href="signin.html">로그인 하기</a></span>
       </div>
 
-      <div class="inputFrame">
+      <div class="input-frame">
         <form>
-          <div class="inputbox email">
+          <div class="input-box">
             <label for="email">이메일</label>
             <input id="email" name="email" type="email" />
+            <p class="error"></p>
           </div>
-          <div class="inputbox password">
+          <div class="input-box">
             <label for="password">비밀번호</label>
             <div class="password">
-              <input id="password" name="password" type="password" />
-              <img src="images/signin/eye-off.svg" />
+              <input
+                id="password"
+                class="flex-center"
+                name="password"
+                type="password"
+              />
+              <img class="eye-Image" src="images/signin/eye-off.svg" />
+              <p class="error"></p>
             </div>
           </div>
-          <div class="inputbox">
-            <label for="password">비밀번호 확인</label>
+          <div class="input-box">
+            <label for="password-check">비밀번호 확인</label>
             <div class="password">
-              <input id="password" name="password" type="password" />
-              <img src="images/signin/eye-off.svg" />
+              <input
+                id="password-check"
+                name="password-check"
+                type="password"
+              />
+              <img class="eye-Image" src="images/signin/eye-off.svg" />
+              <p class="error"></p>
             </div>
           </div>
 
-          <button class="login-button flex-center">회원가입</button>
+          <button class="login-button flex-center" type="submit">
+            회원가입
+          </button>
         </form>
       </div>
 
@@ -56,5 +70,6 @@
         </div>
       </div>
     </main>
+    <script src="js/signup.js" type="module"></script>
   </body>
 </html>
