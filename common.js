@@ -2,20 +2,21 @@ export function showMessage(inputText) {
   return `${inputText}을 입력해주세요`;
 }
 
+//  true이면은 emptry라는것 false이면은 empty가 아니라는거
 export function isEmpty(input) {
   // input.value가 inpuValue가
-  return input.value.trim().length;
+  return input.value.trim().length ? false : true;
 }
 
 export function showEmptyErrorMessage(input, inputLabel) {
   const errorMsgs = inputLabel.querySelector(".error-message");
   errorMsgs.innerText = "";
-  if (!isEmpty(input)) {
+  if (isEmpty(input)) {
     let errorMessage = showMessage(inputLabel.innerText);
     errorMsgs.innerText = errorMessage;
     errorMsgs.style.color = "red";
     input.style.border = "3px solid red";
-  } else if (isEmpty(input)) {
+  } else {
     errorMsgs.innerText = "";
     input.style.border = "";
   }
@@ -27,6 +28,14 @@ export function isEmailValid(input) {
   return re.test(texts);
 }
 
+export function showValidEmailErrorMessage(input, inputLabel) {
+  if (!isEmailValid(input) && !isEmpty(input)) {
+    const errorMsgs = inputLabel.querySelector(".error-message");
+    errorMsgs.innerText = "올바른 이메일 주소가 아닙니다";
+    errorMsgs.style.color = "red";
+    input.style.border = "3px solid red";
+  }
+}
 // 값이 8자 미만으로 있거나 문자열만 있거나 숫자만 있는 경우, “비밀번호는 영문, 숫자 조합 8자 이상
 export function isPasswordValid(input) {
   const texts = input.value.trim();
@@ -43,14 +52,6 @@ export function showValidPasswordErrorMessage(input, inputLabel) {
     input.style.border = "3px solid red";
   } else {
     input.style.border = "";
-  }
-}
-export function showValidEmailErrorMessage(input, inputLabel) {
-  if (!isEmailValid(input)) {
-    const errorMsgs = inputLabel.querySelector(".error-message");
-    errorMsgs.innerText = "올바른 이메일 주소가 아닙니다";
-    errorMsgs.style.color = "red";
-    input.style.border = "3px solid red";
   }
 }
 

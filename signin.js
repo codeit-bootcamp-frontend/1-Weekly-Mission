@@ -20,9 +20,7 @@ const eyeIcon = document.querySelector(".eye-on-image");
 email.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(email, emailLabel);
-  if (isEmpty(email)) {
-    showValidEmailErrorMessage(email, emailLabel);
-  }
+  showValidEmailErrorMessage(email, emailLabel);
 });
 
 password.addEventListener("focusout", (event) => {
