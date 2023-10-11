@@ -31,7 +31,7 @@ const checkEmailValidation = (e) => {
 
 const checkPwdValidation = (e) => {
   const inputField = document.querySelector('.pwd-field');
-  const pwd = pwdInput.value;
+  const pwd = pwdInput.value.trim();
   const errorMessage = inputField.querySelector('.error');
 
   // 값이 8자 미만 or only 문자열 or only 숫자
@@ -47,8 +47,8 @@ const checkPwdValidation = (e) => {
 
 const confirmPwd = (e) => {
   const inputField = document.querySelector('.pwd-confirm-field');
-  const pwd = pwdInput.value.trim();
-  const pwd2 = document.querySelector('#password-confirm').value.trim();
+  const pwd = pwdInput.value;
+  const pwd2 = document.querySelector('#password-confirm').value;
   const errorMessage = inputField.querySelector('.error');
 
   if(pwd !="" && pwd2 != "") {
