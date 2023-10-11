@@ -1,10 +1,10 @@
-import { login } from "./tags.js";
+import { login, addLink } from "./tags.js";
 
 const goToLoginPage = () => (location.href = "../pages/signin.html");
+const goToSignUpPage = () => (location.href = "../pages/signup.html");
 const goToFolderPage = () => (location.href = "../pages/folder.html");
 
-const checkAccessToken = () => {
-  console.log(login);
+const checkLoginToken = () => {
   let token = localStorage.getItem("login-token");
   if (token) {
     return goToFolderPage();
@@ -13,4 +13,14 @@ const checkAccessToken = () => {
   }
 };
 
-login.addEventListener("click", checkAccessToken);
+const checkSignUptoken = () => {
+  let token = localStorage.getItem("signup-token");
+  if (token) {
+    return goToFolderPage();
+  } else {
+    return goToSignUpPage();
+  }
+};
+
+login.addEventListener("click", checkLoginToken);
+addLink.addEventListener("click", checkSignUptoken);

@@ -67,6 +67,9 @@ const duplicationEmail = async email => {
       body: JSON.stringify(emailContext),
     });
     if (signUp.status === 200) {
+      const response = await signUp.json();
+      const result = await response.data.isUsableNickname;
+      localStorage.setItem("signup-token", result);
       return goToFolderPage();
     } else if (signUp.status === 409) {
       addErrorMessageClass(tagEmail, ALREADY_USE_EMAIL);

@@ -9,6 +9,7 @@ const passwordCheckError = document.createElement("div");
 const loginButton = document.querySelector(".signin-form");
 const signupButton = document.querySelector(".signup-form");
 const login = document.querySelector(".login");
+const addLink = document.querySelector(".add-link");
 
 export {
   email,
@@ -22,4 +23,5 @@ export {
   signupButton,
   passwordCheckError,
   login,
+  addLink,
 };
