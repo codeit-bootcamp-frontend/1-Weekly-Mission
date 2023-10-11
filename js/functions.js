@@ -1,15 +1,13 @@
-import { email, password, passwordVisible, passwordCheckVisible } from "./tags.js";
-import {
-  addEmailErrorMsg,
-  addPassWordErrorMsgSignup,
-  addPasswordCheckErrorMsg,
-  addErrorMessageClass,
-} from "./errorMsg.js";
+import { email as tagEmail, password, passwordVisible, passwordCheckVisible } from "./tags.js";
+import { checkEmail, checkSignupPassword, checkPasswordMatch, addErrorMessageClass } from "./errorMsg.js";
 
 const URL = "https://bootcamp-api.codeit.kr/api";
+
 const CHECK_EMAIL = "이메일을 확인해주세요.";
 const CHECK_PASSWORD = "비밀번호를 확인해주세요.";
 const ALREADY_USE_EMAIL = "이미 사용중인 이메일입니다.";
+
+const goToFolderPage = () => (location.href = "../pages/folder.html");
 
 function toggleEye(event) {
   event.preventDefault();
@@ -23,14 +21,10 @@ function toggleEye(event) {
   }
 }
 
-const folderPage = () => (location.href = "../pages/folder.html");
-
 const validationLogin = async (email, password) => {
   try {
     let token = localStorage.getItem("login-token");
-    if (token !== null) {
-      folderPage();
-    }
+
     const loginContext = {
       email: email,
       password: password,
@@ -46,7 +40,7 @@ const validationLogin = async (email, password) => {
       const response = await signIn.json();
       const result = await response.data.accessToken;
       localStorage.setItem("login-token", result);
-      folderPage();
+      return goToFolderPage();
     } else {
       addErrorMessageClass(email, CHECK_EMAIL);
       addErrorMessageClass(password, CHECK_PASSWORD);
@@ -74,11 +68,12 @@ const duplicationEmail = async email => {
       },
       body: JSON.stringify(emailContext),
     });
-    if (signUp.status === 409) {
-      addErrorMessageClass(email, ALREADY_USE_EMAIL);
-    }
     if (signUp.status === 200) {
-      return folderPage();
+      return goToFolderPage();
+    } else if (signUp.status === 409) {
+      addErrorMessageClass(tagEmail, ALREADY_USE_EMAIL);
+    } else {
+      addErrorMessageClass(tagEmail, CHECK_EMAIL);
     }
   } catch (error) {
     return error;
@@ -87,10 +82,7 @@ const duplicationEmail = async email => {
 
 function signup(event) {
   event.preventDefault();
-  if (addEmailErrorMsg() === true && addPassWordErrorMsgSignup() === true && addPasswordCheckErrorMsg() === true) {
-    folderPage();
-  }
-  if (addEmailErrorMsg() === false) {
+  if (checkEmail() && checkSignupPassword() && checkPasswordMatch()) {
     duplicationEmail(email.value);
   }
 }
