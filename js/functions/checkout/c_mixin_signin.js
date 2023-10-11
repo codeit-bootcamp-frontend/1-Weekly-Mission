@@ -1,4 +1,57 @@
+import { pipe } from "../default";
+import { locator, isValue, printError, isError } from "./c_common";
+import { regEmail, isVaildEmail } from "./c_email";
+import { common_password } from "./c_mixin_common";
 
+
+export const siginin_allCheck = (obj) => {
+  for (const $input of obj.inputs) {
+    switch ($input.name) {
+      case 'email':
+        signin_email($input);
+        break;
+      case 'password':
+        common_password($input);
+        break;
+    }
+  }
+  return obj
+}
+
+export const siginin_accountCheck = (obj) => {
+  for (const $input of obj.inputs) {
+    switch ($input.name) {
+      case 'email':
+        printError(isVaildEmail($input));
+        break;
+      case 'password':
+        printError(isVaildPassword($input));
+        break;
+    }
+  }
+  return obj
+}
+
+export const signin_email = pipe(
+  locator,
+  isValue,
+  printError,
+  regEmail,
+  printError
+)
+
+export const signin_submit = pipe(
+  locator,
+  allCheck_Signin,
+  isError,
+  siginin_accountCheck,
+  isError,
+  goToFolder
+)
+
+
+
+/*
 // focusout 시, 값 확인 함수
 const checkout = curry((f, { currentTarget: $input }) => {
   //값이 없을때
@@ -35,3 +88,4 @@ const isError = (f, { currentTarget: target }) => {
     .map($input => { checkout(f, { currentTarget: $input }); return $input })
     .some($input => $input.classList.contains(variable.errClass))
 }
+*/

@@ -31,15 +31,21 @@
       <form class="form grid--form">
         <label class="form__label margin-top30" id="labelEm">
           이메일
-          <input class="form__input" type="email" id="inputEm" />
+          <input class="form__input" type="email" name="email" id="inputEm" />
           <p class="form__err" id="pEm"></p>
         </label>
         <label class="form__label" id="labelPw">
           비밀번호
-          <input class="form__input password" type="password" id="inputPw" />
+          <input
+            class="form__input password"
+            type="password"
+            name="password"
+            id="inputPw"
+          />
           <button
             class="form__input-btn form__input-btn--absolute"
             type="button"
+            name="passwordBtn"
             id="buttonPw"
           >
             <img
@@ -51,7 +57,9 @@
           </button>
           <p class="form__err" id="pPw"></p>
         </label>
-        <button class="form__submit margin-top30" id="buttonSub">로그인</button>
+        <button class="form__submit margin-top30" name="submit" id="buttonSub">
+          로그인
+        </button>
       </form>
       <div class="form__sns grid--sns margin-top30">
         <p>소셜 로그인</p>

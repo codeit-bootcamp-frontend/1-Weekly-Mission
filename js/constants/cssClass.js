@@ -7,7 +7,6 @@ export const htmlClasses = [
   [".form__submit", "submits"]
 ]
 export const errClass = 'err';
-export const activeClass = 'active';
 export const imgs = {
   on: "assets/sign-eye-on.svg",
   off: "assets/sign-eye-off.svg",
