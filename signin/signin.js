@@ -18,7 +18,7 @@ import {
   handleEmailInputEmptyValueCheck,
   handleEmailInputInvalidValueCheck,
 } from "../utils/auth.js";
-import { TEST_EMAIL, TEST_PASSWORD } from "../constants/authConstant.js";
+import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 
 function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value.trim()) {

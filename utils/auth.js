@@ -1,4 +1,4 @@
-import { TEST_EMAIL, TEST_PASSWORD } from "../constants/authConstant.js";
+import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 import { INPUT_ERROR_MESSAGE } from "../constants/error.js";
 import { eyeBtn, pwInput } from "./tags.js";
 
