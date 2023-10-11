@@ -1,6 +1,11 @@
 import { isValidEmail } from '../../utiles/validation';
 
 
+const emailInput = document.querySelector('#email');
+const pwdInput = document.querySelector('#password');
+const signUpBtn = document.querySelector('.btn-login');
+const pwdToggleIcon = document.querySelector('#toggle-eye');
+
 const checkEmailValidation = (e) => {
   const inputField = document.querySelector('.email-field');
   const email = emailInput.value.trim();
@@ -47,18 +52,18 @@ const submit = (e) => {
   } 
 }
 
-// const eyeOnOff = () => {
-//   if(password.type === "password") {
-//     password.type = "text";
-//     toggleEye.src = '/images/eye-on.svg';
-//   } else {
-//     password.type = "password";
-//     toggleEye.src = '/images/eye-off.svg';
-//   }
-// }
+const toggleEyeIcon = () => {
+  if(password.type === "password") {
+    password.type = "text";
+    pwdToggleIcon.src = '/images/eye-on.svg';
+  } else {
+    password.type = "password";
+    pwdToggleIcon.src = '/images/eye-off.svg';
+  }
+}
 
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
-// toggleEye.addEventListener("click", eyeOnOff);
+pwdToggleIcon.addEventListener("click", toggleEyeIcon);
 signUpBtn.addEventListener('click', submit);
