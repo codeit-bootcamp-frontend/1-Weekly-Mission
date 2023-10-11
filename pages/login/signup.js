@@ -77,13 +77,13 @@ function validateSingupInputValue(id, value){
             setErrorMessage(id, 'validation');
         }
 
-    } else if(id === 'password' || id === 'password-check') {
+    } else if(id === 'password' || id === 'passwordCheck') {
         // 비밀번호가 일치하는지 체크
-        const passwordCheck = document.querySelector('#password-check');
+        const passwordCheck = document.querySelector('#passwordCheck');
         const password = document.querySelector('#password');
 
         if (password.value !== passwordCheck.value) {
-            setErrorMessage('password-check', 'coincidence');
+            setErrorMessage('passwordCheck', 'coincidence');
         }
     }
 }

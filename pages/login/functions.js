@@ -34,7 +34,7 @@ function validateInputValue(id, value){
 }
 
 /**
- * password, password-check의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
+ * password, passwordCheck의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
  * image의 src는 pages/login/style.css에서 변경한다.
  * @param {PointerEvent} e 이벤트 객체
  */
@@ -86,7 +86,7 @@ function getErrorMessage(id, type){
         empty : {
             email : '이메일을 입력해주세요.',
             password : '비밀번호를 입력해주세요.',
-            'password-check' : '비밀번호를 한 번 더 입력해주세요.',
+            passwordCheck : '비밀번호를 한 번 더 입력해주세요.',
         },
         validation : {
             email : '올바른 이메일 주소가 아닙니다.',
@@ -97,7 +97,7 @@ function getErrorMessage(id, type){
             password : '비밀번호를 확인해주세요.',
         },
         coincidence : {
-            'password-check' : '비밀번호가 일치하지 않아요.',
+            passwordCheck : '비밀번호가 일치하지 않아요.',
         },
         duplicate : {
             email : '이미 사용 중인 이메일입니다.',
@@ -109,16 +109,16 @@ function getErrorMessage(id, type){
 
 /**
  * 에러메세지를 삭제할 대상을 removeErrorClassAndMessage함수의 인자로 전달한다.
- * password의 값이 변경된 경우, password-check의 값을 비운다.
+ * password의 값이 변경된 경우, passwordCheck의 값을 비운다.
  * @param {KeyboardEvent} e 이벤트 객체
  */
 function _onRemoveValidationError(e){
     if(e.key !== 'Enter'){
         removeErrorClassAndMessage(e.target);
 
-        // password값이 변경되었을 때, password-check값을 비운다.
+        // password값이 변경되었을 때, passwordCheck값을 비운다.
         if(e.target.id === 'password'){
-            const passwordCheck = document.querySelector('#password-check');
+            const passwordCheck = document.querySelector('#passwordCheck');
             if(passwordCheck){
                 passwordCheck.value = '';
                 removeErrorClassAndMessage(passwordCheck);
