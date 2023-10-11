@@ -1,4 +1,4 @@
-import { email as tagEmail, password, passwordVisible, passwordCheckVisible } from "./tags.js";
+import { email as tagEmail, password as tagPassword, passwordVisible, passwordCheckVisible } from "./tags.js";
 import { checkEmail, checkSignupPassword, checkPasswordMatch, addErrorMessageClass } from "./errorMsg.js";
 
 const URL = "https://bootcamp-api.codeit.kr/api";
@@ -23,8 +23,6 @@ function toggleEye(event) {
 
 const validationLogin = async (email, password) => {
   try {
-    let token = localStorage.getItem("login-token");
-
     const loginContext = {
       email: email,
       password: password,
@@ -42,8 +40,8 @@ const validationLogin = async (email, password) => {
       localStorage.setItem("login-token", result);
       return goToFolderPage();
     } else {
-      addErrorMessageClass(email, CHECK_EMAIL);
-      addErrorMessageClass(password, CHECK_PASSWORD);
+      addErrorMessageClass(tagEmail, CHECK_EMAIL);
+      addErrorMessageClass(tagPassword, CHECK_PASSWORD);
     }
   } catch (error) {
     return error;
@@ -83,7 +81,7 @@ const duplicationEmail = async email => {
 function signup(event) {
   event.preventDefault();
   if (checkEmail() && checkSignupPassword() && checkPasswordMatch()) {
-    duplicationEmail(email.value);
+    duplicationEmail(tagEmail.value);
   }
 }
 
