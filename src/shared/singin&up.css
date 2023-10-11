@@ -1,7 +1,7 @@
-@import url(reset.css);
-@import url(common.css);
+@import url(/src/shared/reset.css);
+@import url(/src/shared/common.css);
 
-/* sign-in page */
+/* signin & signup page common */
 
 body {
   background: var(--gray-zircon);
@@ -135,7 +135,7 @@ body {
   margin: 25%;
 }
 
-/* sign-up page */
+/* singup page*/
 
 .sign-box.sign-up .container {
   padding: 238px 0 116px;
@@ -154,5 +154,4 @@ body {
   .sign-box.sign-up .container{
     padding: 25% 0;
   }
-
 }

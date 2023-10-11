@@ -1,31 +1,30 @@
-import { showMessageByEmailEl, TEST_EMAIL } from './variablesEl.js'
+import { showMessageByEmailEl } from '../shared/constants.js'
 
+// 이메일 입력값 체크
 function checkEmailValid(e) {
   const VALID_EMAIL_REG = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-  const INPUT_EMAIL_VALUE = e.target.value;
-  const VALID_EMAIL_CHECK = VALID_EMAIL_REG .test(INPUT_EMAIL_VALUE);
+  const inputEmailValue = e.target.value;
+  const validEmailCheck = VALID_EMAIL_REG .test(inputEmailValue);
 
-  if(!INPUT_EMAIL_VALUE) {
+  if(!inputEmailValue) {
     showMessageByEmailEl.textContent = '이메일을 입력해주세요.';
     e.target.classList.add('input-wrong');
     return;
     }
 
-  if (!VALID_EMAIL_CHECK) {
+  if (!validEmailCheck) {
     showMessageByEmailEl.textContent = '올바른 이메일 주소가 아닙니다.';
     e.target.classList.add('input-wrong');
     return;
   }
 
-  if(
-    e.target.classList.contains('overlap-check') && 
-     INPUT_EMAIL_VALUE === TEST_EMAIL
-    ) {
-    showMessageByEmailEl.textContent = '이미 사용중인 이메일입니다.'
-    e.target.classList.add('input-wrong');
+  if(inputEmailValue && validEmailCheck) {
+    removeEmailCheckMessage(e);
+    return;
   }
 }
 
+// 이메일 안내메시지 삭제
 function removeEmailCheckMessage (e) {
   showMessageByEmailEl.textContent = '';
   e.target.classList.remove('input-wrong');
