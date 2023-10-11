@@ -1,36 +1,32 @@
-import { emailInput, passwordInput, repasswordInput } from '../valiable.js';
+import { emailInput, passwordInput, confirmPasswordInput } from '../variables.js';
 import { users } from '../user.js';
-import makeMsg from '../makemsg.js'
-import { isvalidPassword, isvalidEmail } from '../validate.js';
-
-
-
+import makeMessage from '../makeMessage.js'
+import { isValidPassword, isValidEmail } from '../validate.js';
+import { checkPasswordConfirmation } from './confirmPassword.js';
+import * as errorConstants from '../errorConstants.js';
 
 export function checkInput (e) {
-  const findUser = users.some((user) => user.email === emailInput.value);
-  var err;
+  const inputEvent = e.target;
+  const existsUser = users.some((user) => user.email === emailInput.value);
+  let errorMessage;
+  
 
-  if (e.target === emailInput){
-    if (e.target.value.length === 0){
-      err = 'emptyEmail';
-    } else if (!isvalidEmail(e.target.value)){
-      err = 'shapeEmail';
-    } else if (findUser){
-      err = 'userEmail'; 
+  if (inputEvent === emailInput){
+    if (inputEvent.value.length === 0){
+      errorMessage = errorConstants.EMPTY_EMAIL;
+    } else if (!isValidEmail(inputEvent.value)){
+      errorMessage = errorConstants.SHAPE_EMAIL;
+    } else if (existsUser){
+      errorMessage = errorConstants.USER_EMAIL;
     }
-  } else if (e.target === passwordInput){
-      if (e.target.value.length === 0){
-        err = 'emptyPassword';
-      } else if (!isvalidPassword(e.target.value)){
-        err = 'shapePassword';
+  } else if (inputEvent === passwordInput){
+      if (inputEvent.value.length === 0){
+        errorMessage = errorConstants.EMPTY_PASSWORD;
+      } else if (!isValidPassword(inputEvent.value)){
+        errorMessage = errorConstants.SHAPE_PASSWORD;
       }
-  } else if (e.target === repasswordInput){
-      if (e.target.value.length === 0){
-        err = 'emptyPassword';
-      }
-      else if (e.target.value !== passwordInput.value) {
-        err = 'samePassword';
-      }
+  } else if (inputEvent === confirmPasswordInput) {
+    errorMessage = checkPasswordConfirmation(passwordInput.value, inputEvent.value);
   }
-  return makeMsg(e.target, err);
+  return makeMessage(inputEvent, errorMessage);
 };

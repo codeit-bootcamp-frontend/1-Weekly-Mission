@@ -1,6 +1,6 @@
 import { users } from "../user.js";
 // import { checkInput } from "./checkinput.js";
-import { emailInput , passwordInput} from "../valiable.js";
+import { emailInput , passwordInput} from "../variables.js";
 const findUser = users.some((user) => user.email === emailInput.value && user.password === passwordInput.value);
 
 function login(e){
@@ -14,8 +14,8 @@ function login(e){
 };
 
 function loginEnter(e){
-  if (findUser && e.key === 'Enter'){
-    login()
+  if (findUser && e.key === 13){
+    login(e)
   } 
 };
 
