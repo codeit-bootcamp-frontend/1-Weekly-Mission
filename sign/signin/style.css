@@ -1,0 +1,18 @@
+@import url(/style/common.css);
+
+
+.email-field {
+  margin-bottom: 12px;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  body {
+    padding: 120px 0 232px;
+    height: 100%;
+  }
+  .container {
+    max-width: 400px;
+    margin: auto 32px;
+  }
+}

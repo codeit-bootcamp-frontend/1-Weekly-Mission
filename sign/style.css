@@ -25,7 +25,7 @@ input:focus {
 }
 
 .container {
-  width: 400px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,52 +40,39 @@ input:focus {
   font-weight: 400;
   line-height: 150%;
 }
-.container .sign-up {
+.container .sign {
   color: var(--color-primary);
   font-weight: 600;
 }
-
-#form {
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   width: 100%;
   margin: 30px 0;
-  position: relative;
 }
-.input-control label {
+label {
   display: block;
   width: 100%;
   font-size: 0.875rem;
   color: var(--color-black);
   margin-bottom: 12px;
 }
-.input-control input {
-  display: block;
-  width: 100%;
-}
 
+.password-wrapper {
+  width: 100%;
+  display: flex;
+}
 #toggle-eye {
-  position: absolute;
-  top: 53%;
-  right: 15px;
+  margin-left: -30px;
   cursor: pointer;
 }
-
 .btn-login {
   width: 100%;
   display: block;
   border: none;
-  margin-top: 32px;
+  margin-bottom: 32px;
 }
-
-/* 에러메세지 발생 */
-.input-control.error input {
-  border-color: var(--color-red);
-}
-.input-control .error {
-  font-size: 14px;
-  color: var(--color-red);
-  margin: 6px 0;
-}
-
 
 .social-login {
   width: 100%;
@@ -113,14 +100,17 @@ input:focus {
   display: inline-block;
 }
 
-/* Mobile */
-@media (max-width: 767px) {
-  body {
-    padding: 120px 0 232px;
-    height: 100%;
-  }
-  .container {
-    max-width: 400px;
-    margin: auto 32px;
-  }
+
+/* 에러메세지 발생 */
+.email-field.error input,
+.pwd-field.error input,
+.pwd-confirm-field.error input {
+  border-color: red;
+  margin-bottom: 5px;
+}
+.email-field.error .error,
+.pwd-field.error .error,
+.pwd-confirm-field.error .error {
+  font-size: 14px;
+  color: red;
 }
