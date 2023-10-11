@@ -1,6 +1,6 @@
 import {
   showMessage,
-  isNotEmpty,
+  isEmpty,
   showEmptyErrorMessage,
   isEmailValid,
   isPasswordValid,
@@ -17,7 +17,7 @@ const emailLabel = document.querySelector(".email-label");
 const passwordLabel = document.querySelector(".password-label");
 const repasswordLabel = document.querySelector(".re-password-label");
 const eyeIcon = document.querySelector(".eye-on-image");
-const ReEyeIcon = document.querySelector(".re-eye-on-image");
+const reEyeIcon = document.querySelector(".re-eye-on-image");
 const registerButton = document.querySelector(".register-button");
 function isPasswordMatch(password, rePassword) {
   if (password.value.trim() === rePassword.value.trim()) {
@@ -46,20 +46,14 @@ function alreadyUsedEmail(email, emailLabel) {
 email.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(email, emailLabel);
-  if (isNotEmpty(email)) {
-    showValidEmailErrorMessage(email, emailLabel);
-  }
-  if (isNotEmpty(email)) {
-    alreadyUsedEmail(email, emailLabel);
-  }
+  showValidEmailErrorMessage(email, emailLabel);
+  alreadyUsedEmail(email, emailLabel);
 });
 
 password.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(password, passwordLabel);
-  if (isNotEmpty(password)) {
-    showValidPasswordErrorMessage(password, passwordLabel);
-  }
+  showValidPasswordErrorMessage(password, passwordLabel);
 });
 
 rePassword.addEventListener("focusout", (event) => {
@@ -73,7 +67,7 @@ eyeIcon.addEventListener("click", (event) => {
   passwordVisibility(eyeIcon, password);
 });
 
-ReEyeIcon.addEventListener("click", (event) => {
+reEyeIcon.addEventListener("click", (event) => {
   event.preventDefault();
   passwordVisibility(ReEyeIcon, rePassword);
 });
