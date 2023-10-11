@@ -1,3 +1,9 @@
+const VALID_STATUS = {
+	"user-email": false,
+	"user-password": false,
+	"user-password-check": true,
+};
+
 const REGEX = {
 	"user-email":
 		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -9,11 +15,15 @@ const ERROR_MSG = {
 		empty: "이메일을 입력해주세요.",
 		wrong: "올바른 이메일 주소가 아닙니다.",
 		check: "이메일을 확인해주세요",
+		exist: "이미 사용 중인 이메일입니다.",
 	},
 	"user-password": {
 		empty: "비밀번호를 입력해주세요.",
 		wrong: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
 		check: "비밀번호를 확인해주세요",
+	},
+	"user-password-check": {
+		notEqual: "비밀번호가 일치하지 않아요.",
 	},
 };
 
@@ -24,14 +34,16 @@ const ERROR_MSG_CLASS = {
 
 const PASSWORD_VIEW_MODE = {
 	on: {
-		current: "on",
-		next: "off",
+		mode: "off",
+		imgSrc: "../images/eye-off.svg",
 		type: "password",
+		alt: "비밀번호 보기",
 	},
 	off: {
-		current: "off",
-		next: "on",
+		mode: "on",
+		imgSrc: "../images/eye-on.svg",
 		type: "text",
+		alt: "비밀번호 가리기",
 	},
 };
 
@@ -40,84 +52,96 @@ const USER = {
 	"test@codeit.com": "codeit101",
 };
 
-// 인풋 focustout시 유효성검사
-const validateInput = ({ tagName, id, value, parentNode, classList }) => {
-	if (tagName !== "INPUT") return;
+// --- 순수 함수들 ---
 
-	const isValid = REGEX[id].test(value) && value.length > 0;
-	const msgType = isValid ? "" : value.length ? "wrong" : "empty";
+// 이미 존재하는 에러 엘리먼트를 찾아서 반환
+const findErrorElement = ($target) =>
+	$target.closest(".form__field").getElementsByClassName(ERROR_MSG_CLASS.msg);
 
-	toggleError(parentNode, classList, ERROR_MSG[id][msgType]);
+// 모든 인풋 유효성 검사 통과 여부
+const isAllInputsValid = () => Object.values(VALID_STATUS).every(Boolean);
+
+// --- 사이드 이펙트 함수들 ---
+
+// 유효성 검사 통과 여부 업데이트
+const setValidStatus = (id, status) => (VALID_STATUS[id] = status);
+
+// 인풋 focustout시 유효성검사 후 에러메시지 리턴
+const validateInput = ($target) => {
+	const { id, value } = $target;
+	let msgType = "";
+
+	if (!REGEX[id].test(value))
+		msgType = value.length === 0 ? "empty" : "wrong";
+
+	return ERROR_MSG[id][msgType];
 };
 
-//에러 메시지 삭제
-const removeError = (parentNode, classList) => {
-	const [existingErrorMsg] = parentNode
-		.closest(".form__field")
-		.getElementsByClassName(ERROR_MSG_CLASS.msg);
-
-	if (!existingErrorMsg) return;
-
-	existingErrorMsg.remove();
-	classList.remove(ERROR_MSG_CLASS.input);
-};
-
-//에러 메시지 생성
-const showError = (parentNode, classList, errorText) => {
+// 에러 메시지 생성
+const showError = ($target, errorText) => {
 	const errorMsg = document.createElement("p");
+
+	$target.classList.add(ERROR_MSG_CLASS.input);
+	$target.closest(".form__field").append(errorMsg);
 
 	errorMsg.classList.add(ERROR_MSG_CLASS.msg);
 	errorMsg.textContent = errorText;
-
-	classList.add(ERROR_MSG_CLASS.input);
-	parentNode.insertAdjacentElement("afterend", errorMsg);
 };
 
-//에러 메시지 생성,삭제 토글
-const toggleError = (parentNode, classList, errorText) => {
-	removeError(parentNode, classList);
-	if (errorText) showError(parentNode, classList, errorText);
+// 에러 메시지 삭제
+const removeError = ($target, errorElement) => {
+	$target.classList.remove(ERROR_MSG_CLASS.input);
+	errorElement.remove();
 };
 
-//비밀번호 인풋 password <-> text 토글
-const togglePasswordInput = ({ target }) => {
-	if (!target.classList.contains("form__eye-icon")) return;
+// 에러 메시지 생성,삭제 토글
+const toggleError = ($target, submitErrorText) => {
+	const [errorElement] = findErrorElement($target);
+	const errorText = submitErrorText || validateInput($target);
+	errorElement && removeError($target, errorElement);
+	errorText && showError($target, errorText);
 
-	const viewMode = target.src.includes("off")
-		? PASSWORD_VIEW_MODE.off
-		: PASSWORD_VIEW_MODE.on;
-
-	const input = target.previousElementSibling;
-
-	target.src = target.src.replace(viewMode.current, viewMode.next);
-	input.type = viewMode.type;
+	setValidStatus($target.id, !errorText);
 };
 
-//유저 정보 확인 임시
-const isValidUser = ([email, password]) => USER[email.value] === password.value;
+// 비밀번호 인풋 password <-> text 토글
+const togglePasswordInput = ($target) => {
+	const { currentViewMode, passwordInputId } = $target.dataset;
 
-//로그인 폼 전송
-const authFormLogin = () => {
-	const inputArr = authForm.querySelectorAll("#user-email, #user-password");
-	if (isValidUser(inputArr)) authForm.submit();
-	else {
-		inputArr.forEach(({ parentNode, classList, id }) =>
-			toggleError(parentNode, classList, ERROR_MSG[id].check)
-		);
-	}
+	const nextViewMode = PASSWORD_VIEW_MODE[currentViewMode];
+	const passwordInput = document.getElementById(passwordInputId);
+
+	$target.dataset.currentViewMode = nextViewMode.mode;
+	$target.src = nextViewMode.imgSrc;
+	$target.alt = nextViewMode.alt;
+	passwordInput.type = nextViewMode.type;
 };
 
 const authForm = document.querySelector(".auth__form");
 
-authForm.addEventListener(
-	"focusout",
-	({ target, relatedTarget }) =>
-		//로그인 버튼 누를때도 focusout 되버려서 submit할땐 실행안되도록...
-		relatedTarget?.type !== "submit" && validateInput(target)
-);
+const formInputs = document.querySelectorAll(".form__input");
 
-authForm.addEventListener("click", togglePasswordInput);
+const submitButton = document.querySelector("#submit-button");
 
-document
-	.querySelector(".auth__button")
-	.addEventListener("click", authFormLogin);
+const inputsAndButton = [...formInputs, submitButton];
+
+const eyeIcons = authForm.querySelectorAll(".form__eye-icon");
+
+eyeIcons.forEach((icon) => {
+	icon.addEventListener("click", (e) => togglePasswordInput(e.target));
+});
+
+export {
+	VALID_STATUS,
+	ERROR_MSG,
+	USER,
+	findErrorElement,
+	isAllInputsValid,
+	setValidStatus,
+	removeError,
+	toggleError,
+	authForm,
+	formInputs,
+	submitButton,
+	inputsAndButton,
+};
