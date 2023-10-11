@@ -2,19 +2,20 @@ export function showMessage(inputText) {
   return `${inputText}을 입력해주세요`;
 }
 
-export function isNotEmpty(input) {
+export function isEmpty(input) {
+  // input.value가 inpuValue가
   return input.value.trim().length;
 }
 
 export function showEmptyErrorMessage(input, inputLabel) {
   const errorMsgs = inputLabel.querySelector(".error-message");
   errorMsgs.innerText = "";
-  if (!isNotEmpty(input)) {
+  if (!isEmpty(input)) {
     let errorMessage = showMessage(inputLabel.innerText);
     errorMsgs.innerText = errorMessage;
     errorMsgs.style.color = "red";
     input.style.border = "3px solid red";
-  } else if (isNotEmpty(input)) {
+  } else if (isEmpty(input)) {
     errorMsgs.innerText = "";
     input.style.border = "";
   }
@@ -29,8 +30,8 @@ export function isEmailValid(input) {
 // 값이 8자 미만으로 있거나 문자열만 있거나 숫자만 있는 경우, “비밀번호는 영문, 숫자 조합 8자 이상
 export function isPasswordValid(input) {
   const texts = input.value.trim();
-  var regex = /^[A-Za-z]+$/; // 문자로만 이루어진거
-  var regex2 = /^[0-9]+$/; // 숫자로만 이루어진거
+  let regex = /^[A-Za-z]+$/; // 문자로만 이루어진거
+  let regex2 = /^[0-9]+$/; // 숫자로만 이루어진거
   return !regex2.test(texts) && !regex.test(texts) && texts.length > 8;
 }
 

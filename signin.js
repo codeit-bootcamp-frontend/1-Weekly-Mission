@@ -1,6 +1,6 @@
 import {
   showMessage,
-  isNotEmpty,
+  isEmpty,
   showEmptyErrorMessage,
   isEmailValid,
   isPasswordValid,
@@ -20,7 +20,7 @@ const eyeIcon = document.querySelector(".eye-on-image");
 email.addEventListener("focusout", (event) => {
   event.preventDefault();
   showEmptyErrorMessage(email, emailLabel);
-  if (isNotEmpty(email)) {
+  if (isEmpty(email)) {
     showValidEmailErrorMessage(email, emailLabel);
   }
 });
