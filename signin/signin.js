@@ -5,10 +5,10 @@ import {
   emailIncorrectMsg,
   pwIncorrectMsg,
   emailRegex,
-  handleEyeBtnClick,
-  checkEmailEmptyValue,
+  addErrorMessage,
+  toggleEyeBtn,
+  removeErrorMessage,
 } from "../utils/auth.js";
-import { handleEmailInputInvalidValueCheck } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 
 const emailInput = document.querySelector(".email-input");
@@ -19,27 +19,23 @@ const eyeBtn = document.querySelector(".eye-off-btn");
 
 function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value.trim()) {
-    pwWrapper.after(pwEmptyMsg);
-    pwInput.classList.add("input-error");
+    addErrorMessage(pwEmptyMsg, pwInput);
   } else {
-    pwEmptyMsg.remove();
-    pwInput.classList.remove("input-error");
+    removeErrorMessage(pwEmptyMsg, pwInput);
   }
 }
 
 function handleSigninBtnClick() {
   if (emailInput.value.trim() !== TEST_EMAIL) {
-    emailInput.classList.add("input-error");
-    emailInput.after(emailIncorrectMsg);
+    addErrorMessage(emailIncorrectMsg, emailInput);
   } else {
-    emailIncorrectMsg.remove();
+    removeErrorMessage(emailIncorrectMsg, emailInput);
   }
 
   if (pwInput.value.trim() !== TEST_PASSWORD) {
-    pwWrapper.after(pwIncorrectMsg);
-    pwInput.classList.add("input-error");
+    addErrorMessage(pwIncorrectMsg, pwInput);
   } else {
-    pwIncorrectMsg.remove();
+    removeErrorMessage(pwIncorrectMsg, pwInput);
   }
 
   if (
@@ -50,12 +46,28 @@ function handleSigninBtnClick() {
   }
 }
 
-emailInput.addEventListener("blur", () =>
-  checkEmailEmptyValue(emailInput, emailEmptyMsg)
-);
-emailInput.addEventListener("blur", () =>
-  handleEmailInputInvalidValueCheck(emailRegex, emailInput, emailInvalidMsg)
-);
+function handleEmailInputEmptyCheck() {
+  if (!emailInput.value.trim()) {
+    addErrorMessage(emailEmptyMsg, emailInput);
+  } else {
+    removeErrorMessage(emailEmptyMsg, emailInput);
+  }
+}
+
+function handleEmailInputValidCheck() {
+  if (!isInputValueValid(emailRegex, emailInput)) {
+    addErrorMessage(emailInvalidMsg, emailInput);
+  } else {
+    removeErrorMessage(emailInvalidMsg, emailInput);
+  }
+}
+
+function handleEyeButtonToggle() {
+  toggleEyeBtn(pwInput, eyeBtn);
+}
+
+emailInput.addEventListener("blur", handleEmailInputEmptyCheck);
+emailInput.addEventListener("blur", handleEmailInputValidCheck);
 pwInput.addEventListener("blur", handlePasswordInputEmptyValueCheck);
 signinBtn.addEventListener("click", handleSigninBtnClick);
-eyeBtn.addEventListener("click", handleEyeBtnClick);
+eyeBtn.addEventListener("click", handleEyeButtonToggle);
