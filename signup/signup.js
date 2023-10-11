@@ -11,6 +11,7 @@ import {
   removeErrorMessage,
   isInputValueValid,
   toggleEyeBtn,
+  addPwInputErrorMessage,
 } from "../utils/auth.js";
 
 const signupBtn = document.querySelector(".signup-btn");
@@ -21,10 +22,10 @@ const pwInput = document.querySelector(".password-input");
 const pwCheckInput = document.querySelector("#password-check-input");
 
 function handleSignup() {
-  checkEmailEmptyValue(emailInput, emailEmptyMsg);
+  handleEmailInputEmptyCheck();
   handleEmailInputValidCheck();
-  handlePwInputDoubleCheck(pwInput, pwCheckInput, pwNotMachedMsg);
-  handlePwInputInvalidCheck(pwRegex, pwInput, pwInvalidMsg);
+  handlePwInputDoubleCheck();
+  handlePwInputInvalidCheck();
   if (
     !emailInput.querySelector("input-error") &&
     !pwInput.querySelector("input-error")
@@ -40,7 +41,10 @@ function handleSignupEnter(e) {
 }
 
 function handleEmailInputValidCheck() {
-  if (!isInputValueValid(emailRegex, emailInput)) {
+  if (
+    !isInputValueValid(emailRegex, emailInput) &&
+    emailInput.value.trim().length > 0
+  ) {
     addErrorMessage(emailInvalidMsg, emailInput);
   } else {
     removeErrorMessage(emailInvalidMsg, emailInput);
@@ -65,7 +69,7 @@ function handleEmailDuplicatedCheck() {
 
 function handlePwInputDoubleCheck() {
   if (pwInput.value.trim() !== pwCheckInput.value.trim()) {
-    addErrorMessage(pwNotMachedMsg, pwCheckInput);
+    addPwInputErrorMessage(pwNotMachedMsg, pwCheckInput);
   } else {
     removeErrorMessage(pwNotMachedMsg, pwCheckInput);
   }
@@ -73,7 +77,7 @@ function handlePwInputDoubleCheck() {
 
 function handlePwInputInvalidCheck() {
   if (!isInputValueValid(pwRegex, pwInput)) {
-    addErrorMessage(pwInvalidMsg, pwInput);
+    addPwInputErrorMessage(pwInvalidMsg, pwInput);
   } else {
     removeErrorMessage(pwInvalidMsg, pwInput);
   }

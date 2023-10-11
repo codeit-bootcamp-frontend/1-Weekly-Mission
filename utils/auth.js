@@ -46,16 +46,18 @@ export function createErrorMsg(style, errorStatement) {
 }
 
 export function isInputValueValid(regex, inputElement) {
-  if (
-    regex.test(inputElement.value.trim()) &&
-    inputElement.value.trim().length > 0
-  ) {
+  if (regex.test(inputElement.value.trim())) {
     return true;
   }
 }
 
 export function addErrorMessage(errorMessage, element) {
   element.after(errorMessage);
+  element.classList.add("input-error");
+}
+
+export function addPwInputErrorMessage(errorMessage, element) {
+  element.parentNode.after(errorMessage);
   element.classList.add("input-error");
 }
 

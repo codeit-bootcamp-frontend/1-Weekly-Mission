@@ -8,6 +8,7 @@ import {
   addErrorMessage,
   toggleEyeBtn,
   removeErrorMessage,
+  addPwInputErrorMessage,
 } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 
@@ -19,7 +20,7 @@ const eyeBtn = document.querySelector(".eye-off-btn");
 
 function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value.trim()) {
-    addErrorMessage(pwEmptyMsg, pwInput);
+    addPwInputErrorMessage(pwEmptyMsg, pwInput);
   } else {
     removeErrorMessage(pwEmptyMsg, pwInput);
   }
@@ -33,7 +34,7 @@ function handleSigninBtnClick() {
   }
 
   if (pwInput.value.trim() !== TEST_PASSWORD) {
-    addErrorMessage(pwIncorrectMsg, pwInput);
+    addPwInputErrorMessage(pwIncorrectMsg, pwInput);
   } else {
     removeErrorMessage(pwIncorrectMsg, pwInput);
   }
