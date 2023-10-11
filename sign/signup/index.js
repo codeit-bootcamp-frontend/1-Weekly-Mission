@@ -3,7 +3,7 @@ import { isValidEmail, isValidPwd } from '../../utiles/validation.js';
 const emailInput = document.querySelector('#email');
 const pwdInput = document.querySelector('#password');
 const pwdConfirmInput = document.querySelector('#password-confirm');
-const signUpBtn = document.querySelector('.btn-login');
+const loginBtn = document.querySelector('.btn-login');
 const pwdToggleIcon = document.querySelector('#toggle-eye');
 
 
@@ -97,4 +97,4 @@ emailInput.addEventListener("keyup", submitOnEnter);
 pwdInput.addEventListener("keyup", submitOnEnter);
 pwdConfirmInput.addEventListener("keyup", submitOnEnter);
 pwdToggleIcon.addEventListener("click", toggleEyeIcon);
-signUpBtn.addEventListener("click", submitForm);
+loginBtn.addEventListener("click", submitForm);
