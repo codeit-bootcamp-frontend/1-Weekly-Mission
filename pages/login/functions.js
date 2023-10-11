@@ -1,5 +1,7 @@
 /* 공통 함수 */
 
+import { emailReg } from './validationRegExp.js';
+
 /**
  * validateInputValue 함수를 호출한다.
  * @param {FocusEvent} e 이벤트 객체
@@ -24,9 +26,6 @@ function validateInputValue(id, value){
         setErrorMessage(id, 'empty');
 
     }else if(id === 'email'){
-        // 이메일 형식인지 체크
-        const emailReg = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
-
         if(emailReg.test(value) === false){
             setErrorMessage(id, 'validation');
         }

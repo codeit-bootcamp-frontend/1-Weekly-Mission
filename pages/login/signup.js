@@ -1,5 +1,6 @@
 import { _onHidePassword, setErrorMessage, isFormContainsError, validateInputValue } from './functions.js';
 import { form } from './tags.js';
+import { passwordReg } from './validationRegExp.js';
 
 const signupButton = document.querySelector('#signup-button');
 const hidePasswordCheckButton = document.querySelector('.hide-password-check');
@@ -70,9 +71,6 @@ function validateSingupInputValue(id, value){
         }
 
     } else if(id === 'password'){
-        // 비밀번호는 영문, 숫자 조합으로 8자 이상입력되었는지 체크
-        const passwordReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
-
         if(passwordReg.test(value) === false){
             setErrorMessage(id, 'validation');
         }
