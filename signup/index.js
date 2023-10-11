@@ -34,7 +34,8 @@ const checkPwdValidation = (e) => {
   const pwd = pwdInput.value;
   const errorMessage = inputField.querySelector('.error');
 
-  if (!isValidPwd(pwd)) { // 값이 8자 미만 or only 문자열 or only 숫자
+  // 값이 8자 미만 or only 문자열 or only 숫자
+  if (!isValidPwd(pwd)) { 
     errorMessage.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
     inputField.classList.add('error');
   } else {
@@ -93,8 +94,8 @@ function submitOnEnter(e) {
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
 pwdConfirmInput.addEventListener("focusout", confirmPwd);
-emailInput.addEventListener("keyup", enter);
-pwdInput.addEventListener("keyup", enter);
-pwdConfirmInput.addEventListener("keyup", enter);
+emailInput.addEventListener("keyup", submitOnEnter);
+pwdInput.addEventListener("keyup", submitOnEnter);
+pwdConfirmInput.addEventListener("keyup", submitOnEnter);
 toggleEye.addEventListener("click", eyeOnOff);
 signUpBtn.addEventListener("click", submitForm);
