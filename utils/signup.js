@@ -114,7 +114,6 @@ function checkPasswordFocusout(password) {
 }
 
 function checkPasswordConfirmFocusout(passwordConfirm) {
-	console.log(passwordConfirm, passwordInputElement.value);
 	if (passwordConfirm === "") {
 		changePasswordConfirmHint(INPUT_STATUS.isNotFilled);
 	} else if (passwordConfirm !== passwordInputElement.value) {
@@ -154,7 +153,6 @@ function getIsValidatedPassword(password) {
 }
 
 function getIsConfirmedPassword(passwordConfirm) {
-	console.log(passwordConfirm, passwordInputElement.value);
 	if (passwordConfirm === "") {
 		changePasswordConfirmHint(INPUT_STATUS.isNotFilled);
 		return false;
