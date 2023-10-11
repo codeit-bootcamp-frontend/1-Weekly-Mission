@@ -1,0 +1,14 @@
+@import url(/style/common.css);
+
+
+/* Mobile */
+@media (max-width: 767px) {
+  body {
+    padding: 120px 0 119px;
+    height: 100%;
+  }
+  .container {
+    max-width: 400px;
+    margin: auto 32px;
+  }
+}
