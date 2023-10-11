@@ -26,7 +26,7 @@ function isPasswordMatch(password, rePassword) {
   return false;
 }
 function showPasswordMatchErrorMessage(password, rePassword, repasswordLabel) {
-  if (!isPasswordMatch(password, rePassword)) {
+  if (!isPasswordMatch(password, rePassword) && !isEmpty(rePassword)) {
     const errorMsgs = repasswordLabel.querySelector(".error-message");
     errorMsgs.innerText = "비밀번호가맞지않습니다";
     errorMsgs.style.color = "red";
@@ -69,7 +69,7 @@ eyeIcon.addEventListener("click", (event) => {
 
 reEyeIcon.addEventListener("click", (event) => {
   event.preventDefault();
-  passwordVisibility(ReEyeIcon, rePassword);
+  passwordVisibility(reEyeIcon, rePassword);
 });
 
 registerButton.addEventListener("click", (event) => {

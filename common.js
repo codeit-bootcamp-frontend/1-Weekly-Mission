@@ -13,6 +13,7 @@ export function showEmptyErrorMessage(input, inputLabel) {
   errorMsgs.innerText = "";
   if (isEmpty(input)) {
     let errorMessage = showMessage(inputLabel.innerText);
+
     errorMsgs.innerText = errorMessage;
     errorMsgs.style.color = "red";
     input.style.border = "3px solid red";
@@ -50,8 +51,6 @@ export function showValidPasswordErrorMessage(input, inputLabel) {
     errorMsgs.innerText = "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요";
     errorMsgs.style.color = "red";
     input.style.border = "3px solid red";
-  } else {
-    input.style.border = "";
   }
 }
 
