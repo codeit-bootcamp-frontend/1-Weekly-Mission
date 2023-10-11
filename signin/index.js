@@ -27,7 +27,7 @@ const checkEmailValidation = (e) => {
 
 const checkPwdValidation = (e) => {
   const inputField = document.querySelector('.pwd-field');
-  const pwd = pwdInput.value.trim();
+  const pwd = pwdInput.value;
   const errorMessage = inputField.querySelector('.error');
 
   if (pwd === '') {
