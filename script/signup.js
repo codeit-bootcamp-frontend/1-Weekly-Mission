@@ -1,16 +1,30 @@
-import {$email,$emailErrorMessage,$pwdErrorMessage,$pwd,pwdEyeOnOff,$pwdEye,emailValid, emailErrorMessage} from './sign.js';
+import {
+    pwdEyeOnOff,
+    emailValid,
+    emailErrorMessage,
+    showErrorMessage,
+    removeErrorMessage,
+} from './sign.js';
 
+const $pwdErrorMessage = document.querySelector('.pwd_error_message');
 const $pwdCheckErrorMessage = document.querySelector('.check_pwd_error_message');
+const $emailErrorMessage = document.querySelector('.email_error_message');
 const $pwdCheck = document.querySelector('.check_pwd_input');
 const $submit = document.querySelector('.form__sign');
+const $pwdEyes = document.querySelectorAll('.password-eye');
+const $email = document.querySelector('.email_input');
+const $pwd = document.querySelector('.pwd_input');
+
+$email.addEventListener("focusout",emailErrorMessage);
+$pwdEyes[0].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwd));
+$pwdEyes[1].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwdCheck));
+
 
 let emailDupliValid = false;
 function emailDuplication(){
     const existEmail = 'test@codeit.com'
     if($email.value === existEmail){
-        $emailErrorMessage.textContent = "이미 사용 중인 이메일입니다."
-        $emailErrorMessage.style.display ="block";
-        $email.classList.add('border-red');
+        showErrorMessage($email,$emailErrorMessage,"이미 사용 중인 이메일입니다.");
         emailDupliValid = false;
     }
     else
@@ -22,28 +36,23 @@ const REGPWD = /(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}/;
 let pwdValid = false;
 function pwdValidation(){
     if(!REGPWD.test($pwd.value)){
-        $pwdErrorMessage.textContent = "비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요."
-        $pwdErrorMessage.style.display ="block";
-        $pwd.classList.add('border-red');
+        showErrorMessage($pwd,$pwdErrorMessage,"비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.");
     }
-    else
+    else{
+        removeErrorMessage($pwd,$pwdErrorMessage);
         pwdValid = true;
+    }
 }
 $pwd.addEventListener("focusout", pwdValidation);
-
-$pwdEye[1].addEventListener('click',pwdEyeOnOff);
 
 let pwdCheckValid = false;
 function pwdCheck(){
     if($pwdCheck.value === $pwd.value){
-        $pwdCheckErrorMessage.style.display ="none";
-        $pwdCheck.classList.remove('border-red');
+        removeErrorMessage($pwdCheck,$pwdCheckErrorMessage);
         pwdCheckValid=true;
     }
     else{
-        $pwdCheckErrorMessage.textContent = "비밀번호가 일치하지 않아요."
-        $pwdCheckErrorMessage.style.display ="block";
-        $pwdCheck.classList.add('border-red');
+        showErrorMessage($pwdCheck,$pwdCheckErrorMessage,"비밀번호가 일치하지 않아요.")
         pwdCheckValid=false;
     }
 }
@@ -51,13 +60,11 @@ function pwdCheck(){
 $pwdCheck.addEventListener("focusout", pwdCheck);
 
 function validCheck(e){
+    emailErrorMessage();
+    pwdCheck();
     if(pwdValid && pwdCheckValid && emailValid&&emailDupliValid)
         return;
     else
-      e.preventDefault();  
+      e.preventDefault();
 }
 $submit.addEventListener("submit",validCheck);
-$submit.addEventListener("submit",emailErrorMessage);
-$submit.addEventListener("submit",emailDuplication);
-$submit.addEventListener("submit",pwdCheck);
-$submit.addEventListener("submit",pwdValidation);
