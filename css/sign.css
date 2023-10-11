@@ -126,7 +126,7 @@ header p{
     fill: white;
     cursor: pointer;
 }
-.email_error_message,.pwd_error_message{
+.err_message{
     display: none;
     color: red;
 }
