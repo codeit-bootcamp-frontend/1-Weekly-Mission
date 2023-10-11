@@ -3,14 +3,14 @@ import {form} from "./tags.js";
 
 const signinButton = document.querySelector('#signin-button');
 
-signinButton.addEventListener('click', _onClickLogin);
+signinButton.addEventListener('click', _onLogin);
 form.addEventListener('keydown',_onEnterLogin);
 form.addEventListener('keydown',_onRemoveALLErrorClassAndMessage);
 
 /**
  * 유효성 검사 후 login함수를 호출한다.
  */
-function _onClickLogin(){
+function _onLogin(){
     validateAll();
     login();
 }
@@ -29,8 +29,7 @@ function login(){
  */
 function _onEnterLogin(e){
     if(e.key === 'Enter'){
-        validateAll();
-        login();
+        _onLogin();
     }
 }
 

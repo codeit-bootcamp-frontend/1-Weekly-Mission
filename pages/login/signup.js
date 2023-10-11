@@ -11,9 +11,9 @@ form.addEventListener('keydown',_onEnterSignup);
 hidePasswordCheckButton.addEventListener('click', _onHidePassword);
 
 /**
- * 회원가입 버튼을 클릭한 경우 유효성검사 후, signup함수를 호출한다.
+ * 유효성검사 후, signup함수를 호출한다.
  */
-function _onClickSignup(){
+function _onSignup(){
     validateAll();
     signup();
 }
@@ -32,8 +32,7 @@ function signup(){
  */
 function _onEnterSignup(e){
     if(e.key === 'Enter'){
-        validateAll();
-        signup();
+        _onSignup();
     }
 }
 
