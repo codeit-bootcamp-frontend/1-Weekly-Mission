@@ -89,6 +89,7 @@ body {
 
 .pwd_box {
   position: relative;
+  height: 65px;
 }
 
 .eyes_toggle {
@@ -142,6 +143,10 @@ body {
 .kakao_icon {
   background-color: #f7e600;
 }
+/* Error  */
+input.errorInput {
+  border: solid 1px var(--error_msg_red);
+}
 
 /* Mobile width: 390px height 2460px*/
 @media screen and (min-width: 375px) and (max-width: 767px) {
@@ -152,6 +157,6 @@ body {
   }
 
   .sign_form input {
-    width: 100%;
+    width: 90%;
   }
 }

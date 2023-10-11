@@ -23,7 +23,3 @@
   font-weight: 400;
   color: var(--error_msg_red);
 }
-
-.errorInput {
-  border: solid 1px var(--error_msg_red) !important;
-}
