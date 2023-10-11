@@ -65,6 +65,7 @@ label {
 }
 #toggle-eye {
   margin-left: -30px;
+  cursor: pointer;
 }
 .btn-login {
   width: 100%;

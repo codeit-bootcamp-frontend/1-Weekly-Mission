@@ -1,4 +1,5 @@
-import { isValidEmail } from '../../utiles/validation';
+import { isValidEmail } from '../../utils/validation.js';
+
 
 const emailInput = document.querySelector('#email');
 const pwdInput = document.querySelector('#password');
@@ -35,8 +36,6 @@ const checkPwdValidation = (e) => {
     inputField.classList.remove('error');
   }
 };
-
-
 
 const submit = (e) => {
   e.preventDefault();
