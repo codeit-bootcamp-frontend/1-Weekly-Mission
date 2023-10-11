@@ -143,6 +143,16 @@ main {
   line-height: normal;
 }
 
+.error{
+  color: var(--linkbrary-red);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+
 @media (max-width: 767px) {
   main {
     width: 100%;
