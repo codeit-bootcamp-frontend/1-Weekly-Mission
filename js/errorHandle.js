@@ -1,7 +1,7 @@
 import { $, $all } from "./utils.js";
 import { isValidEmail, isValidPassword } from "./inputValidation.js";
-import { user } from "./userAuthentication.js";
-
+import { displayError } from "./utils.js";
+import { user } from "./db/users.js";
 const errorMessages = {
 
   emptyInput: {
@@ -29,7 +29,13 @@ function isEmptyInput(target) {
 }
 
 
+function isDuplicatedEmail({ value }) {
+  return value === user.email;
+}
+
+
 function commonInputCheck(target) {
+
   const { id, value } = target;
   const errorLocation = getErrorLocation(target);
 
@@ -56,9 +62,11 @@ function signupInputCheck(target) {
 
   switch (id) {
     case "email":
-      if (value === user.email) {
-        displayError(errorLocation, errorMessages.duplicateEmail);
+      if (!isDuplicatedEmail(target)) {
+        return;
       }
+
+      displayError(errorLocation, errorMessages.duplicateEmail);
       break;
 
     case "password":
@@ -79,10 +87,13 @@ function signupInputCheck(target) {
 }
 
 
-
-function displayError(errorLocation, errorMessage) {
-  errorLocation.textContent = errorMessage;
+function displayLoginFailedError() {
+  const [$emailError, $passwordError] = getInputErrors();
+  $emailError.textContent = errorMessages.loginFailed.email;
+  $passwordError.textContent = errorMessages.loginFailed.password;
 }
+
+
 
 
 function getInputErrors() {
@@ -97,9 +108,9 @@ function getErrorLocation({ id }) {
 }
 
 
-function clearError(target) {
+function clearError({ target }) {
   getErrorLocation(target).textContent = "";
 }
 
 
-export { displayError, clearError, getInputErrors, isEmptyInput, errorMessages, commonInputCheck, signupInputCheck }
+export { displayError, clearError, getInputErrors, isEmptyInput, errorMessages, commonInputCheck, signupInputCheck, displayLoginFailedError }

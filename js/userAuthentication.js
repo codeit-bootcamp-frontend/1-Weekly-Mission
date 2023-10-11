@@ -1,18 +1,15 @@
-import { displayError, getInputErrors, errorMessages, commonInputCheck, signupInputCheck } from "./errorHandle.js";
+import { commonInputCheck, signupInputCheck, displayLoginFailedError } from "./errorHandle.js";
+import { user } from "./db/users.js";
 
-
-const user = {
-  email: "test@codeit.com",
-  password: "codeit101"
-}
 
 function loginAuthentication(e) {
   e.preventDefault();
   const { target: { elements } } = e;
   const [$emailInput, $passwordInput] = elements;
-  const [$emailError, $passwordError] = getInputErrors();
+  //console.log($emailInput, $passwordInput);
 
   if (commonInputCheck($emailInput) || commonInputCheck($passwordInput)) {
+    
     return;
   }
 
@@ -21,8 +18,8 @@ function loginAuthentication(e) {
     return;
   }
 
-  displayError($emailError, errorMessages.loginFailed.email);
-  displayError($passwordError, errorMessages.loginFailed.password);
+
+  displayLoginFailedError();
 };
 
 
@@ -40,4 +37,4 @@ function signupAuthentication(e) {
 
 
 
-export { loginAuthentication, user, signupAuthentication };
+export { loginAuthentication, signupAuthentication };

@@ -5,8 +5,8 @@ import { loginAuthentication } from "./userAuthentication.js";
 
 $("#email").addEventListener("focusout", ({ target }) => commonInputCheck(target));
 $("#password").addEventListener("focusout", ({ target }) => commonInputCheck(target));
-$("#email").addEventListener("focusin", ({target}) => clearError(target));
-$("#password").addEventListener("focusin", ({target}) => clearError(target));
+$("#email").addEventListener("focusin", clearError);
+$("#password").addEventListener("focusin", clearError);
 
 
 $("form").addEventListener("submit", loginAuthentication);

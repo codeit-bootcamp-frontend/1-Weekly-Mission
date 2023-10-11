@@ -16,5 +16,8 @@ function toggleEye(e) {
 
 }
 
+function displayError(errorLocation, errorMessage) {
+  errorLocation.textContent = errorMessage;
+}
 
-export { $, $all, toggleEye };
+export { $, $all, toggleEye, displayError };
