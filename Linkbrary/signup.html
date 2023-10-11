@@ -6,61 +6,52 @@
     <title>Signup Page</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/sign_form.css" />
+    <script type="module" src="./src/signup.js" defer></script>
+    <script type="module" src="src/common/utils/hiddenPassword.js" defer></script>
   </head>
   <body>
     <div class="container">
       <main class="form-container">
         <h1 class="form-container__title">
           <a href="index.html">
-            <img
-              class="form-container__logo"
-              src="images/logo.svg"
-              alt="logo-icon"
-            />
+            <img class="form-container__logo" src="images/logo.svg" alt="logo-icon" />
           </a>
         </h1>
         <div class="form-container__description">
           <span>이미 회원이신가요?</span>
           <div>
-            <a href="signin.html" class="form-container__link--sign"
-              >로그인 하기</a
-            >
+            <a href="signin.html" class="form-container__link--sign">로그인 하기</a>
             <div class="form-container__link__underline"></div>
           </div>
         </div>
-        <form class="form">
+        <form class="form" action="folder.html">
           <label class="form__title">이메일</label>
-          <input
-            class="form__input"
-            placeholder="이메일을 입력해주세요."
-            type="text"
-          />
+          <input id="email" class="form__input" placeholder="이메일을 입력해주세요." type="text" autocomplete="off" />
+          <p id="emailError" class="form__errorMessage"></p>
           <label class="form__title">비밀번호</label>
           <div>
             <input
+              id="password"
               class="form__input"
               placeholder="비밀번호를 입력해주세요."
               type="password"
+              autocomplete="off"
             />
-            <img
-              class="form__input--selected"
-              src="images/eye-off.svg"
-              alt="비밀번호 숨기기 기능"
-            />
+            <img class="form__input--selected" src="images/eye-off.svg" alt="비밀번호 숨기기 기능" />
           </div>
+          <p id="passwordError" class="form__errorMessage"></p>
           <label class="form__title">비밀번호 확인</label>
           <div>
             <input
+              id="passwordCheck"
               class="form__input"
               placeholder="비밀번호를 한번 더 입력해주세요."
-              type="text"
+              type="password"
+              autocomplete="off"
             />
-            <img
-              class="form__input--selected"
-              src="images/eye-on.svg"
-              alt="비밀번호 숨기기 기능"
-            />
+            <img class="form__input--selected" src="images/eye-off.svg" alt="비밀번호 숨기기 기능" />
           </div>
+          <p id="passwordCheckError" class="form__errorMessage"></p>
           <a>
             <button class="form__button">회원가입</button>
           </a>
@@ -68,18 +59,10 @@
         <div class="form-container__oauth">
           <span class="oauth__title">다른 방식으로 가입하기</span>
           <div class="oauth__links">
-            <a
-              href="https://www.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
               <img src="images/sns/google-icon.svg" alt="구글로 회원가입" />
             </a>
-            <a
-              href="https://www.kakaocorp.com/page/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.kakaocorp.com/page/" target="_blank" rel="noopener noreferrer">
               <img src="images/sns/kakao-icon.svg" alt="카카오로 회원가입" />
             </a>
           </div>
