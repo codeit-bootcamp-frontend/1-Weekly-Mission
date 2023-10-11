@@ -1,8 +1,15 @@
 import { email, password, passwordVisible, passwordCheckVisible } from "./tags.js";
-import { addEmailClass, addPasswordClass } from "./addclass.js";
-import { addEmailErrorMsg, addPassWordErrorMsgSignup, addPasswordCheckErrorMsg } from "./errormsg.js";
+import {
+  addEmailErrorMsg,
+  addPassWordErrorMsgSignup,
+  addPasswordCheckErrorMsg,
+  addErrorMessageClass,
+} from "./errorMsg.js";
 
 const URL = "https://bootcamp-api.codeit.kr/api";
+const CHECK_EMAIL = "이메일을 확인해주세요.";
+const CHECK_PASSWORD = "비밀번호를 확인해주세요.";
+const ALREADY_USE_EMAIL = "이미 사용중인 이메일입니다.";
 
 function toggleEye(event) {
   event.preventDefault();
@@ -20,6 +27,10 @@ const folderPage = () => (location.href = "../pages/folder.html");
 
 const validationLogin = async (email, password) => {
   try {
+    let token = localStorage.getItem("login-token");
+    if (token !== null) {
+      folderPage();
+    }
     const loginContext = {
       email: email,
       password: password,
@@ -32,10 +43,13 @@ const validationLogin = async (email, password) => {
       body: JSON.stringify(loginContext),
     });
     if (signIn.status === 200) {
-      return folderPage();
+      const response = await signIn.json();
+      const result = await response.data.accessToken;
+      localStorage.setItem("login-token", result);
+      folderPage();
     } else {
-      addEmailClass("이메일을 확인해주세요.");
-      addPasswordClass("비밀번호를 확인해주세요.");
+      addErrorMessageClass(email, CHECK_EMAIL);
+      addErrorMessageClass(password, CHECK_PASSWORD);
     }
   } catch (error) {
     return error;
@@ -61,7 +75,7 @@ const duplicationEmail = async email => {
       body: JSON.stringify(emailContext),
     });
     if (signUp.status === 409) {
-      addEmailClass("이미 사용중인 이메일입니다.");
+      addErrorMessageClass(email, ALREADY_USE_EMAIL);
     }
     if (signUp.status === 200) {
       return folderPage();

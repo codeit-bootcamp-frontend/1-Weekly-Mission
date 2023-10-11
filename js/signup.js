@@ -7,7 +7,7 @@ import {
   deletePasswordErrorMsg,
   addPasswordCheckErrorMsg,
   deletePasswordCheckErrorMsg,
-} from "./errormsg.js";
+} from "./errorMsg.js";
 
 email.addEventListener("focusout", addEmailErrorMsg);
 email.addEventListener("focusin", deleteEmailErrorMsg);
