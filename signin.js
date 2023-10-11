@@ -1,4 +1,15 @@
-const form = document.querySelector("form");
+import {
+  showMessage,
+  isNotEmpty,
+  showEmptyErrorMessage,
+  isEmailValid,
+  isPasswordValid,
+  showValidPasswordErrorMessage,
+  showValidEmailErrorMessage,
+  isCodeItLogin,
+  passwordVisibility,
+} from "./common.js";
+
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const emailLabel = document.querySelector(".email-label");
@@ -6,71 +17,35 @@ const passwordLabel = document.querySelector(".password-label");
 const loginButton = document.getElementById("login-button");
 const eyeIcon = document.querySelector(".eye-on-image");
 
-function showMessage(inputText) {
-  return `${inputText}을 입력해주세요`;
-}
-
-// 빈값일때 handling
-function IsEmpty(input, inputLabel) {
-  const errorMsgs = inputLabel.querySelector("small");
-  if (input.value.trim().length === 0 && errorMsgs.innerText.length === 0) {
-    let errorMessage = showMessage(inputLabel.innerText);
-    errorMsgs.innerText = errorMessage;
-    errorMsgs.style.color = "red";
-  } else if (input.value.trim().length !== 0) {
-    errorMsgs.innerText = "";
-  }
-}
-
-// 유효한 이메일이 아닐때 handling
-// 메세지는 validation의 기능이 아니다...
-function IsValidEmail(input, inputLabel) {
-  const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
-  const texts = input.value.trim();
-  if (!re.test(texts) && texts.length) {
-    const errorMsgs = inputLabel.querySelector("small");
-    errorMsgs.innerText = "유효하지않은이메일입니다";
-    errorMsgs.style.color = "red";
-  }
-}
-
-// test@codeit.com, codeit101 으로 로그인 시도한경우
-function isCodeItLogin(email, password) {
-  return (
-    email.value.trim() === "test@codeit.com" &&
-    password.value.trim() === "codeit101"
-  );
-}
-
-// 비밀번호 눈emoji클릭한경우
-function isPasswordVisible() {
-  if (eyeIcon.classList.contains("fa-eye")) {
-    eyeIcon.classList.remove("fa-eye");
-    eyeIcon.classList.add("fa-eye-slash");
-    password.type = "password";
-  } else if (eyeIcon.classList.contains("fa-eye-slash")) {
-    eyeIcon.classList.remove("fa-eye-slash");
-    eyeIcon.classList.add("fa-eye");
-    password.type = "text";
-  }
-}
-
-email.addEventListener("focusout", function (event) {
+email.addEventListener("focusout", (event) => {
   event.preventDefault();
-  IsEmpty(email, emailLabel);
-  IsValidEmail(email, emailLabel);
+  showEmptyErrorMessage(email, emailLabel);
+  if (isNotEmpty(email)) {
+    showValidEmailErrorMessage(email, emailLabel);
+  }
 });
 
-password.addEventListener("focusout", function (event) {
+password.addEventListener("focusout", (event) => {
   event.preventDefault();
-  IsEmpty(password, passwordLabel);
+  showEmptyErrorMessage(password, passwordLabel);
 });
 
-loginButton.addEventListener("click", function (event) {
+loginButton.addEventListener("click", (event) => {
   event.preventDefault();
   if (isCodeItLogin(email, password)) {
-    window.location = "http://127.0.0.1:5500/folder.html";
+    window.location.href = window.location.origin + "/folder.html";
+  }
+  //  email과 password형식은 valid하지만, codeIt아이디가 아닐 때를 판단하고, 그에 따른 ui를 보이도록 리팩토링 해보세요.
+  if (
+    isEmailValid(email) &&
+    isPasswordValid(password) &&
+    !isCodeItLogin(email, password)
+  ) {
+    window.location.href = window.location.origin + "/404ErrorPage.html";
   }
 });
 
-eyeIcon.addEventListener("click", isPasswordVisible);
+eyeIcon.addEventListener("click", (event) => {
+  event.preventDefault();
+  passwordVisibility(eyeIcon, password);
+});

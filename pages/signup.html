@@ -26,7 +26,7 @@
         <label for="email" class="email-label"
           >이메일 <input id="email" name="email" type="email"
         />
-        <small></small>
+        <p class="error-message"></p>
       </label>
         <label for="password" class="password-label"
           >비밀번호
@@ -34,7 +34,7 @@
             <input id="password" name="password" type="password" />
             <span class="eye-on-image fa-solid fa-eye-slash" >
           </div> 
-          <small></small>
+          <p class="error-message"></p>
         </label>
         <label for="password" class="re-password-label"
           >비밀번호확인
@@ -47,9 +47,9 @@
             />
             <span class="re-eye-on-image fa-solid fa-eye-slash" >
           </div>
-          <small></small>
+          <p class="error-message"></p>
         </label>
-        <button id="registor-button">회원가입</button>
+        <button class="register-button">회원가입</button>
         <div class="social-login">
           <p>다른방식으로 가입하기</p>
           <div class="social-login-images">
@@ -64,6 +64,7 @@
         </div>
       </form>
     </div> 
-    <script src="../signup.js"></script>
+    <!-- <script src="../common.js"></script>    -->
+    <script type="module" src="../signup.js"></script>
   </body>
 </html>
