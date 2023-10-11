@@ -31,9 +31,11 @@ function valiDatePassword() {
   }
 }
 
-function getLogin() {
+function getLogin(e) {
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
+
+  e.preventDefault();
 
   if (emailValue === user.email && passwordValue === user.password) {
     location.href = '../pages/folder.html';

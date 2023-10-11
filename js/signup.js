@@ -51,8 +51,10 @@ function includeBorderRed(input) {
   return input.className.includes(borderRed);
 }
 
-function getJoin() {
+function getJoin(e) {
   const emailValue = emailInput.value;
+
+  e.preventDefault();
 
   if (!emailValue || includeBorderRed(emailInput)) {
     showErrorMessage('email', '이메일을 확인해주세요.');
