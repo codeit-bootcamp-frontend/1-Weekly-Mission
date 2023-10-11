@@ -1,12 +1,4 @@
 import {
-  emailInput,
-  pwInput,
-  pwCheckInput,
-  eyeBtn,
-  pwCheckEyeBtn,
-  signupBtn,
-} from "../utils/tags.js";
-import {
   emailDuplicatedMsg,
   handleEmailInputEmptyValueCheck,
   handleEmailInputInvalidValueCheck,
@@ -21,6 +13,13 @@ import {
   handleEyeBtnClick,
   pwNotMachedMsg,
 } from "../utils/auth.js";
+
+const signupBtn = document.querySelector(".signup-btn");
+const pwCheckEyeBtn = document.querySelector(".pw-check-eye-off-btn");
+const eyeBtn = document.querySelector(".eye-off-btn");
+const emailInput = document.querySelector(".email-input");
+const pwInput = document.querySelector(".password-input");
+const pwCheckInput = document.querySelector("#password-check-input");
 
 function handleSignup() {
   handleEmailInputEmptyValueCheck(emailInput, emailEmptyMsg);

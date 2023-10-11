@@ -1,6 +1,5 @@
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 import { ERROR_MESSAGE_SELECTOR } from "../constants/error.js";
-import { eyeBtn, pwInput } from "./tags.js";
 
 export let emailRegex = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$");
 export let pwRegex = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);

@@ -8,17 +8,16 @@ import {
   handleEyeBtnClick,
 } from "../utils/auth.js";
 import {
-  emailInput,
-  pwInput,
-  pwWrapper,
-  signinBtn,
-  eyeBtn,
-} from "../utils/tags.js";
-import {
   handleEmailInputEmptyValueCheck,
   handleEmailInputInvalidValueCheck,
 } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
+
+const emailInput = document.querySelector(".email-input");
+const pwInput = document.querySelector(".password-input");
+const pwWrapper = document.querySelector(".password-wrapper");
+const signinBtn = document.querySelector(".signin-btn");
+const eyeBtn = document.querySelector(".eye-off-btn");
 
 function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value.trim()) {
