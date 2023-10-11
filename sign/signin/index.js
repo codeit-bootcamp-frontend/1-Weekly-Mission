@@ -1,11 +1,4 @@
-import { 
-  emailInput,
-  pwdInput,
-  signUpBtn,
-  toggleEye
-} from '../data.js';
-
-import { isValidEmail } from '../validation.js';
+import { isValidEmail } from '../../utiles/validation';
 
 
 const checkEmailValidation = (e) => {
