@@ -1,6 +1,5 @@
 import { isValidEmail } from '../../utiles/validation';
 
-
 const emailInput = document.querySelector('#email');
 const pwdInput = document.querySelector('#password');
 const signUpBtn = document.querySelector('.btn-login');
