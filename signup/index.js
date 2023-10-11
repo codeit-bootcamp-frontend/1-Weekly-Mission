@@ -19,7 +19,7 @@ const checkEmailValidation = (e) => {
   } else if (!isValidEmail(email)) {
     errorMessage.textContent = '올바른 이메일 주소가 아닙니다.';
     inputField.classList.add('error');
-  } else if (email == 'test@codeit.com') {
+  } else if (email === 'test@codeit.com') {
     errorMessage.textContent = '이미 사용 중인 이메일입니다.';
     inputField.classList.add('error');
   } else {
