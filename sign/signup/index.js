@@ -65,7 +65,7 @@ const submitForm = (e) => {
       pwdInput.value && 
       pwdConfirmInput.value
   ) {
-    location.href = "/folder/folder.html";
+    location.href = "../../folder/index.html";
   } else {
     checkEmailValidation(e);
     checkPwdValidation(e);
