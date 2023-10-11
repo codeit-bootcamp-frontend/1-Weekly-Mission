@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
-  <link rel="stylesheet" href="singin&up.css">
+  <link rel="stylesheet" href="/src/shared/singin&up.css">
   <title>Linkbrary</title>
 </head>
 
@@ -16,42 +16,49 @@
     <div class="container">
         <div class="head">
           <a href="/">
-            <img src="images/icon/logo.svg"/>
+            <img src="/src/assets/svg/logo.svg"/>
           </a>
           <div class="ask-sign">
             이미 회원이신가요?
-            <a href="signin.html">로그인 하기</a>
+            <a href="../signin/signin.html">로그인 하기</a>
           </div>
         </div>
         <div class="input-box">
           <div class="email-box">
             이메일
-            <input class="input-email" type="email">
+            <input class="input-email overlap-check" type="email">
+            <p class="show-message by-email"></p>
           </div>
           <div class="psw-box">
             비밀번호
-            <input class="input-psw" type="password">
-            <img src="images/icon/eye-off.svg"/>
+            <div class="psw-with-eye">
+              <input class="input-psw" type="password">
+              <img class="psw-show-eye" src="/src/assets/svg/eye-off.svg"/>
+            </div>
+            <p class="show-message by-psw"></p>
           </div>
           <div class="psw-box check">
             비밀번호 확인
-            <input class="input-psw" type="password">
-            <img src="images/icon/eye-off.svg"/>
+            <div class="psw-with-eye">
+              <input class="input-psw" type="password">
+              <img class="psw-show-eye psw-check" src="/src/assets/svg/eye-off.svg"/>
+            </div>
+            <p class="show-message by-psw-check"></p>
           </div>
-          <a href="#" class="sign-link">회원가입</a>
+          <a href="#" class="sign-link join">회원가입</a>
           <div class="social-sign">
             다른 방식으로 가입하기
             <div class="social-link">
               <div class="google-link">
                 <a href="https://www.google.com/">
-                  <img src="images/icon/google-icon-bg.svg" class="icon-bg" />
-                  <img src="images/icon/google-icon.png" class="google-icon" />
+                  <img src="/src/assets/svg/google-icon-bg.svg" class="icon-bg" />
+                  <img src="/src/assets/png/google-icon.png" class="google-icon" />
                 </a>
               </div>
               <div class="kakao-link">
                 <a href="https://www.kakaocorp.com/page/">
-                  <img src="images/icon/kakao-icon-bg.svg" class="icon-bg" />
-                  <img src="images/icon/kakao-icon.svg" class="kakao-icon" />
+                  <img src="/src/assets/svg/kakao-icon-bg.svg" class="icon-bg" />
+                  <img src="/src/assets/svg/kakao-icon.svg" class="kakao-icon" />
                 </a>
               </div>
             </div>
@@ -59,6 +66,6 @@
         </div>
     </div>
   </section>
-  <script src="signup.js"></script>
+  <script type="module" src="signup.js"></script>
 </body>
 </html>
