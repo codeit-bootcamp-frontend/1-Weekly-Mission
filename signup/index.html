@@ -32,12 +32,17 @@
           <section class="signup-input-wrapper">
             <div class="signup-input-container">
               <p class="signup-input-name">이메일</p>
-              <input class="signup-input" id="email" autocomplete="off" />
+              <input class="email-input" id="email" autocomplete="off" />
             </div>
             <div class="signup-input-container">
               <p class="signup-input-name">비밀번호</p>
-              <div class="password-input">
-                <input class="signup-input" id="password" autocomplete="off" />
+              <div class="password-wrapper">
+                <input
+                  class="password-input"
+                  id="password"
+                  autocomplete="off"
+                  type="password"
+                />
                 <button class="eye-off-btn" type="button">
                   <img
                     src="/assets/common/eye-off.svg"
@@ -49,13 +54,14 @@
             </div>
             <div class="signup-input-container">
               <p class="signup-input-name">비밀번호 확인</p>
-              <div class="password-input">
+              <div class="password-wrapper">
                 <input
-                  class="signup-input"
-                  id="password-confirm"
+                  class="password-input"
+                  id="password-check-input"
                   autocomplete="off"
+                  type="password"
                 />
-                <button class="eye-off-btn" type="button">
+                <button class="eye-off-btn pw-check-eye-off-btn" type="button">
                   <img
                     src="/assets/common/eye-off.svg"
                     alt="eye-off-ic"
@@ -84,5 +90,6 @@
         </section>
       </main>
     </article>
+    <script type="module" src="signup.js"></script>
   </body>
 </html>
