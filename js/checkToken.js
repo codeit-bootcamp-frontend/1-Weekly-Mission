@@ -9,6 +9,7 @@ const checkLoginToken = () => {
   if (token) {
     return goToFolderPage();
   } else {
+    console.log(token);
     return goToLoginPage();
   }
 };
