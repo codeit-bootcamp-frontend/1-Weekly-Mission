@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--gray20-color);
-    padding: 17.6rem 0;
+    padding: 18.6rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .content .title {
@@ -43,7 +43,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 10px;
 }
 
 .content .input .box {
@@ -123,16 +123,8 @@
     margin: auto;
 }
 
-.sign .input .box .check {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    color : var(--red-color);
-    font-size: 14px;
-}
-
-#up{
-    padding: 238px 0 105px;
+#up {
+    padding: 15.1rem 0;
 }
 
 .error {

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/sign.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <title>signup</title>
+</head>
+<body>
+    <main class="sign" id="up">
+        <section class="content">
+            <div class="title">
+                <img src="/assets/images/icon/signin-logo.png">
+                <div class="text">
+                    이미 회원이신가요? <a href="/pages/signin/signin.html">로그인 하기</a>
+                </div>
+            </div>
+            <div class="input">
+                <div class="box">
+                    이메일
+                    <input id="email" type="email" autocomplete="on" class="normal">
+                    <div class="error-text" id="email-error">
+                        이메일을 입력해주세요.
+                    </div>
+                </div>
+                <div class="box">
+                    비밀번호
+                    <div class="input-box">
+                        <input id="password" type="password" autocomplete="on" class="normal">
+                        <img src="/assets/images/icon/signin-eye-off.png" class="icon-eye off" id="password-icon">
+                    </div>
+                    <div class="error-text" id="password-error">
+                        비밀번호를 입력해주세요.
+                    </div>
+                </div>
+                <div class="box">
+                    비밀번호 확인
+                    <div class="input-box">
+                        <input id="password-check" type="password" autocomplete="on" class="normal">
+                        <img src="/assets/images/icon/signin-eye-off.png" class="icon-eye off" id="password-icon-check">
+                    </div>
+                    <div class="error-text" id="password-error">
+                        비밀번호를 입력해주세요.
+                    </div>
+                </div>
+            </div> 
+            <a class="login-box">
+                <div class="login">
+                    회원가입 
+                </div>
+            </a>
+        </section>
+        <section class="sns">
+            <div class="title">
+                다른 방식으로 가입하기
+            </div>
+            <div class="logo">
+                <a href="https://www.google.com/">
+                    <div class="box">
+                        <img src="/assets/images/icon/signin-google-bg.png">
+                        <img src="/assets/images/icon/signin-google.png" class="in-logo">
+                    </div>
+                </a>
+                <a href="https://www.kakaocorp.com/page/">
+                    <div class="box">
+                        <img src="/assets/images/icon/signin-kakao.bg.png">
+                        <img src="/assets/images/icon/signin-kakao.png" class="in-logo">
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main> 
+    <script type="module" src="/pages/signup/signup.js"></script>
+</body>
+</html>
