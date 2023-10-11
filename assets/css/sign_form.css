@@ -75,7 +75,7 @@ main{
   line-height: 1.5rem;
 }
 
-input:focus{
+.input__row:focus{
   outline: 1px solid var(--linkbrary-primary);
 }
 
@@ -83,14 +83,19 @@ input:focus{
   border-color: var(--linkbrary-red);
 }
 
-.errorMsg{
+.input__row.input__error:focus{
+  outline: var(--linkbrary-red);
+}
+
+.error{
   display: inline-block;
   color: var(--linkbrary-red);
   font-size: 0.875rem;
   margin-top: 0.38rem;
 }
 
-.input--pw{
+.input--pw,
+.input--pw-confirm{
   letter-spacing: 0.375rem;
 }
 
