@@ -2,13 +2,13 @@ const emailInput = document.querySelector('#email-form');
 const emailSpan = document.createElement('span');
 const passwordInput = document.querySelector('#password-form');
 const passwordSpan = document.createElement('span');
-const eyeButtonImage = document.querySelector('.eye-image');
+const eyeButton = document.querySelector('.eye-image');
 const loginButton = document.querySelector('.login-button')
 
 
 
 /*--이메일 형식확인하는 함수--*/
-function isValidEmail(email) {
+function isvalidEmail(email) {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
 }
@@ -17,17 +17,17 @@ function isValidEmail(email) {
 function emailInputAdd (e) {
   if (e.target.value.length === 0) {
     emailSpan.textContent = "이메일을 입력해주세요.";
-  } else if (!isValidEmail(e.target.value) && (e.target.value.length >= 1)) {
+  } else if (!isvalidEmail(e.target.value)) {
     emailSpan.textContent = "올바른 이메일 주소가 아닙니다.";
   } else {
     emailSpan.textContent = '';
   }
 
   if (emailSpan.textContent) {
-    emailInput.classList.add('InputEvent');
+    emailInput.className = 'inputEvent';
+    emailSpan.classList.add('inputSpan');
   }
 
-  emailSpan.classList.add('inputSpan');
   emailInput.after(emailSpan);
 }
 
@@ -49,16 +49,16 @@ function passwordInputAdd (e) {
   }
 
   if (passwordSpan.textContent) {
-    e.target.classList.add('InputEvent');
+    e.target.className ='inputEvent';
+    passwordSpan.classList.add('inputSpan');
   }
 
-  passwordSpan.classList.add('inputSpan');
   e.target.parentElement.append(passwordSpan);
 }
 
 
 /*--비밀번호 input에 focusin한 경우 초기화시켜주기--*/
-function passwordInputDelete (e) {
+function passwordInputDelete(e) {
   if ((e.target.parentElement.lastElementChild) === passwordSpan) {
     passwordSpan.classList.remove('inputSpan');
     e.target.parentElement.lastElementChild.remove();
@@ -70,20 +70,26 @@ function passwordInputDelete (e) {
 function eyeButtonClick() {
   if (passwordInput.type === 'password'){
     passwordInput.setAttribute('type', 'text');
-    eyeButtonImage.setAttribute('src', "../images/eye-on.svg")
+    eyeButton.setAttribute('src', "../images/eye-on.svg")
   } else {
     passwordInput.setAttribute('type', 'password');
-    eyeButtonImage.setAttribute('src', "../images/eye-off.svg")
+    eyeButton.setAttribute('src', "../images/eye-off.svg")
   }
 }
 
 /*-- /folder로 제출하기--*/
-function login(){
-  if ((emailInput.value === 'test@codeit.com') && (passwordInput.value === 'codeit101')){
+const account = {
+  email: 'test@codeit.com',
+  password: 'codeit101'
+} 
+
+function login(e){
+  if ((emailInput.value === account.email) && (passwordInput.value === account.password)){
     e.target.setAttribute('href', '/folder')
   }
+  e.preventDefault();
 }
-
+///띄어쓰기 하면 안되는지 확인(-)
 
 
 
@@ -91,5 +97,5 @@ emailInput.addEventListener('focusout', emailInputAdd);
 emailInput.addEventListener('focusin', emailInputDelete);
 passwordInput.addEventListener('focusout', passwordInputAdd);
 passwordInput.addEventListener('focusin', passwordInputDelete);
-eyeButtonImage.addEventListener('click', eyeButtonClick);
+eyeButton.addEventListener('click', eyeButtonClick);
 loginButton.addEventListener('submit', login);

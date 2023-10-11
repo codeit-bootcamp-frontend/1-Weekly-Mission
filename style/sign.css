@@ -25,7 +25,6 @@ body {
   flex-direction: column;
   gap: 3rem;
   margin: 0;
-  height: fit-content;
 }
 
 .footer {
@@ -72,32 +71,29 @@ input:focus {
   border-color: #6d6afe;
 }
 
-.email-form > input, 
-.password-form > input,
-.re-password-form > input {
+input {
+  width: 100%;
+  display: flex;
   padding: 1.8rem 1.5rem;
   margin-top: 1.2rem;
   color: #373740;
   border-radius: 8px;
-  border: 1px solid #ccd5e3;
   background:#fff;
 }
 
-.inputSpan {
-  color: #FF5B56;
+.notify {
+  color: #ff5b56;
   font-size: 1.4rem;
   font-weight: 400;
 }
 
-.InputEvent{
+.inputEvent {
   margin-bottom : 0.6rem;
-  border: 1px solid #FF5B56 !important;
+  border: 1px solid #ff5b56 ;
 }
 
 .content {
-  border: none;
-  width: 100%;
-  display: flex;
+  border: 1px solid #ccd5e3;
 }
 
 .password-form,
@@ -135,7 +131,7 @@ input:focus {
   text-decoration: none;
 }
 
-.icon-circle{
+.icon-circle {
   border-radius: 50%;
   width: 4.2rem;
   height: 4.2rem;
@@ -161,14 +157,14 @@ input:focus {
 
 
 /* 태블릿 화면에 적용 */
-@media(max-width:1199px){
+@media(max-width:1199px) {
   .container{
     margin-top : 20rem;
   }
 }
 
 /* 모바일 화면에 적용 */
-@media(max-width:767px){
+@media(max-width:767px) {
   .container{
     margin-top : 12rem;
     padding-left: 3.3rem;
