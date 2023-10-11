@@ -1,9 +1,14 @@
-export const locator = ({ currentTarget: tag }) => {
+import { errClass } from "../../constants/cssClass.js";
+import { errorMessage } from "../../constants/errorMessage.js";
+import { $dom } from "../../class/dom.js";
+
+export const locator = (event) => {
   const res = {};
-  res.tag = tag;
-  res.name = tag.name;
-  res.value = tag.value;
-  switch (tag.name) {
+  res.event = event;
+  res.tag = event.currentTarget ?? event
+  res.name = res.tag.name;
+  res.value = res.tag.value;
+  switch (res.name) {
     case 'email':
       res.label = $dom.labelEm
       res.p = $dom.pEm
@@ -17,8 +22,6 @@ export const locator = ({ currentTarget: tag }) => {
     case 'passwordCheck':
       res.label = $dom.labelCh
       res.p = $dom.pCh
-      res.input = $dom.inputCh
-      res.img = $dom.imgCh
       break;
     case 'submit':
       res.inputs = $dom.inputs
@@ -36,13 +39,13 @@ export const locator = ({ currentTarget: tag }) => {
 }
 
 export const isValue = (obj) => {
-  if (!obj.value) obj.errorType = 'EmptyError';
+  if (!obj.value) obj.errorType = 'emptyError';
   return obj
 }
 
 export const printError = (obj) => {
   if (obj.errorType) {
-    obj.p.textContent = (obj.name)[errorType];
+    obj.p.textContent = errorMessage[obj.name][obj.errorType];
     obj.label.classList.add(errClass);
     obj.tag.classList.add(errClass);
     return null;

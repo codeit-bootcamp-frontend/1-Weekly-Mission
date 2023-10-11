@@ -1,7 +1,7 @@
-import { pipe } from "../default";
-import { locator, isValue, printError, isError } from "./c_common";
-import { regEmail, isVaildEmail } from "./c_email";
-import { common_password } from "./c_mixin_common";
+import { pipe } from "../default.js";
+import { isValue, printError, isError, locator } from "./c_common.js";
+import { regEmail, isVaildEmail } from "./c_email.js";
+import { common_preventDefault } from "./c_mixin_common.js";
 
 
 export const siginin_allCheck = (obj) => {
@@ -11,7 +11,7 @@ export const siginin_allCheck = (obj) => {
         signin_email($input);
         break;
       case 'password':
-        common_password($input);
+        signin_password($input);
         break;
     }
   }
@@ -40,52 +40,18 @@ export const signin_email = pipe(
   printError
 )
 
+export const signin_password = pipe(
+  locator,
+  isValue,
+  printError
+)
+
 export const signin_submit = pipe(
   locator,
-  allCheck_Signin,
+  common_preventDefault,
+  siginin_allCheck,
   isError,
   siginin_accountCheck,
   isError,
-  goToFolder
+  // goToFolder
 )
-
-
-
-/*
-// focusout 시, 값 확인 함수
-const checkout = curry((f, { currentTarget: $input }) => {
-  //값이 없을때
-  if (!$input.value) {
-    f($input).classAdd('emptyError');
-    return;
-  }
-  // 이메일 형태 확인, 회원가입 페이지 이메일 중복 확인
-  if ($input.id === $dom.inputEm.id) {
-    variable.reg[$input.id].test($input.value) ? null : f($input).classAdd('typeError');
-    variable.isSignup && $input.value === variable.devAccount[$dom.inputEm.id] ? f($input).classAdd('occupiedError') : null;
-  }
-  // 비밀번호 형태 확인
-  if ($input.id === $dom.inputPw.id) {
-    userPw = $input.value;
-    $input.id === $dom.inputPw.id &&
-      variable.reg[$input.id].test(userPw) ? null : f($input).classAdd('typeError');
-  }
-  // 회원가입 페이지 비밀번호 일치 확인
-  if ($input.id === $dom.inputCh?.id) {
-    $input.value === userPw ? null : f($input).classAdd('typeError');
-  }
-})
-
-// 에러 메시지 초기화 함수, 첫번째 인자로 위치를 지정하는 함수를 받습니다.
-// 가독성을 위해 currentTarget을 $input으로 직관적인 변수로 바꾸었습니다.
-const reset = curry((f, { currentTarget: $input }) => {
-  f($input).classRemove();
-})
-
-// 모든 input 태그 값을 조회해서 에러가 있는지 확인하는 함수
-const isError = (f, { currentTarget: target }) => {
-  return Array.from(f(target).inputs)
-    .map($input => { checkout(f, { currentTarget: $input }); return $input })
-    .some($input => $input.classList.contains(variable.errClass))
-}
-*/

@@ -1,17 +1,17 @@
-import { pipe } from "../default";
-import { locator } from "../checkout/c_common";
+import { pipe } from "../default.js";
+import { imgs } from "../../constants/imgs.js";
+import { locator } from "../checkout/c_common.js";
 
 export const toggleImg = (obj) => {
-  obj.input.focus();
-  if (!obj.class) {
+  if (!obj.img.classList.contains("active")) {
+    obj.img.classList.add("active")
     obj.img.setAttribute("src", imgs.on);
     obj.input.setAttribute("type", "text");
-    obj.class = "active"
     return
   }
-  $img.setAttribute("src", variable.imgs.off);
-  $input.setAttribute("type", "password");
-  obj.class = "";
+  obj.img.classList.remove("active")
+  obj.img.setAttribute("src", imgs.off);
+  obj.input.setAttribute("type", "password");
   return
 }
 

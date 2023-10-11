@@ -1,3 +1,5 @@
+import { htmlClasses } from "../constants/cssClass.js";
+
 export class Dom {
   constructor(arr) {
     Object.assign(this, arr.reduce((acc, cur) => this.elementFromClassToId(acc, ...cur), {}));
@@ -11,3 +13,5 @@ export class Dom {
     return obj
   }
 }
+
+export const $dom = new Dom(htmlClasses);
