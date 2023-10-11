@@ -1,3 +1,3 @@
-const INPUT_ERROR_MESSAGE = "input-error-msg";
+const ERROR_MESSAGE_SELECTOR = "input-error-msg";
 
-export { INPUT_ERROR_MESSAGE };
+export { ERROR_MESSAGE_SELECTOR };
