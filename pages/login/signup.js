@@ -77,7 +77,7 @@ function validateSingupInputValue(id, value){
             setErrorMessage(id, 'validation');
         }
 
-    } else if(id === 'password' || id === 'passwordCheck') {
+    } else if(id === 'passwordCheck') {
         // 비밀번호가 일치하는지 체크
         const passwordCheck = document.querySelector('#passwordCheck');
         const password = document.querySelector('#password');
