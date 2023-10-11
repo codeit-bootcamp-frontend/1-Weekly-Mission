@@ -73,7 +73,7 @@ const submitForm = (e) => {
   }
 }; 
 
-function enter(e) {
+function submitOnEnter(e) {
   if(e.key === "Enter") {
     submitForm(e);
   }
