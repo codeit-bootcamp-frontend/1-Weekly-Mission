@@ -15,7 +15,7 @@ const $pwdEyes = document.querySelectorAll('.password-eye');
 const $email = document.querySelector('.email_input');
 const $pwd = document.querySelector('.pwd_input');
 
-$email.addEventListener("focusout",emailErrorMessage);
+$email.addEventListener("focusout",(e)=>emailErrorMessage(e.target,$emailErrorMessage));
 $pwdEyes[0].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwd));
 $pwdEyes[1].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwdCheck));
 
@@ -61,8 +61,6 @@ function pwdCheck(){
 $pwdCheck.addEventListener("focusout", pwdCheck);
 
 function validCheck(e){
-    emailErrorMessage();
-    pwdCheck();
     if(pwdValid && pwdCheckValid && emailValid&&emailDupliValid)
         return;
     else

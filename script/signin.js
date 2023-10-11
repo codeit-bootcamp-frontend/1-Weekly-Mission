@@ -14,7 +14,7 @@ const $pwdEye = document.querySelector('.password-eye');
 const $submit = document.querySelector('.form__sign');
 const $pwd = document.querySelector('.pwd_input');
 
-$email.addEventListener("focusout",emailErrorMessage);
+$email.addEventListener("focusout",(e)=>emailErrorMessage(e.target,$emailErrorMessage));
 $pwdEye.addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwd));
 
 let pwdValid = false;
@@ -31,8 +31,6 @@ function pwdErrorMessage(){
 $pwd.addEventListener("focusout",pwdErrorMessage);
 
 function signinValidCheck(e){
-    emailErrorMessage();
-    pwdErrorMessage();
     if(emailValid && pwdValid){
         return;
     }
