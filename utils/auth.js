@@ -1,4 +1,3 @@
-import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 import { ERROR_MESSAGE_SELECTOR } from "../constants/error.js";
 
 export let emailRegex = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$");
@@ -46,66 +45,26 @@ export function createErrorMsg(style, errorStatement) {
   return errorMsg;
 }
 
-export function handleEmailInputEmptyValueCheck(inputElement, errorMsg) {
-  if (!inputElement.value.trim()) {
-    inputElement.after(errorMsg);
-    inputElement.classList.add("input-error");
-  } else {
-    inputElement.classList.remove("input-error");
-    errorMsg.remove();
-  }
-}
-
-export function handleEmailInputInvalidValueCheck(
-  regex,
-  inputElement,
-  errorMsg
-) {
+export function isInputValueValid(regex, inputElement) {
   if (
-    !regex.test(inputElement.value.trim()) &&
+    regex.test(inputElement.value.trim()) &&
     inputElement.value.trim().length > 0
   ) {
-    inputElement.after(errorMsg);
-    inputElement.classList.add("input-error");
-  } else {
-    errorMsg.remove();
+    return true;
   }
 }
 
-export function handleInputDuplicatedCheck(inputElement, errorMsg) {
-  if (inputElement.value.trim() === TEST_EMAIL) {
-    inputElement.after(errorMsg);
-    inputElement.classList.add("input-error");
-  } else {
-    errorMsg.remove();
-  }
+export function addErrorMessage(errorMessage, element) {
+  element.after(errorMessage);
+  element.classList.add("input-error");
 }
 
-export function handlePwInputDoubleCheck(
-  passwordInput,
-  passwordCheckInput,
-  errorMsg
-) {
-  if (passwordInput.value.trim() !== passwordCheckInput.value.trim()) {
-    passwordCheckInput.parentNode.after(errorMsg);
-    passwordCheckInput.classList.add("input-error");
-  } else {
-    errorMsg.remove();
-    passwordCheckInput.classList.remove("input-error");
-  }
+export function removeErrorMessage(errorMessage, element) {
+  errorMessage.remove();
+  element.classList.remove("input-error");
 }
 
-export function handlePwInputInvalidCheck(regex, pwInput, errorMsg) {
-  if (!regex.test(pwInput.value.trim())) {
-    pwInput.parentNode.after(errorMsg);
-    pwInput.classList.add("input-error");
-  } else {
-    errorMsg.remove();
-    pwInput.classList.remove("input-error");
-  }
-}
-
-export function handleEyeBtnClick(inputElement, eyeBtn) {
+export function toggleEyeBtn(inputElement, eyeBtn) {
   if (inputElement.getAttribute("type") === "password") {
     inputElement.setAttribute("type", "text");
     eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-on.svg");

@@ -6,11 +6,9 @@ import {
   pwIncorrectMsg,
   emailRegex,
   handleEyeBtnClick,
+  checkEmailEmptyValue,
 } from "../utils/auth.js";
-import {
-  handleEmailInputEmptyValueCheck,
-  handleEmailInputInvalidValueCheck,
-} from "../utils/auth.js";
+import { handleEmailInputInvalidValueCheck } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 
 const emailInput = document.querySelector(".email-input");
@@ -53,7 +51,7 @@ function handleSigninBtnClick() {
 }
 
 emailInput.addEventListener("blur", () =>
-  handleEmailInputEmptyValueCheck(emailInput, emailEmptyMsg)
+  checkEmailEmptyValue(emailInput, emailEmptyMsg)
 );
 emailInput.addEventListener("blur", () =>
   handleEmailInputInvalidValueCheck(emailRegex, emailInput, emailInvalidMsg)

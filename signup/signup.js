@@ -1,17 +1,16 @@
+import { TEST_EMAIL } from "../constants/auth.js";
 import {
   emailDuplicatedMsg,
-  handleEmailInputEmptyValueCheck,
-  handleEmailInputInvalidValueCheck,
-  handleInputDuplicatedCheck,
   emailEmptyMsg,
   emailInvalidMsg,
   emailRegex,
-  handlePwInputDoubleCheck,
-  handlePwInputInvalidCheck,
   pwRegex,
   pwInvalidMsg,
-  handleEyeBtnClick,
   pwNotMachedMsg,
+  addErrorMessage,
+  removeErrorMessage,
+  isInputValueValid,
+  toggleEyeBtn,
 } from "../utils/auth.js";
 
 const signupBtn = document.querySelector(".signup-btn");
@@ -22,8 +21,8 @@ const pwInput = document.querySelector(".password-input");
 const pwCheckInput = document.querySelector("#password-check-input");
 
 function handleSignup() {
-  handleEmailInputEmptyValueCheck(emailInput, emailEmptyMsg);
-  handleEmailInputInvalidValueCheck(emailRegex, emailInput, emailInvalidMsg);
+  checkEmailEmptyValue(emailInput, emailEmptyMsg);
+  handleEmailInputValidCheck();
   handlePwInputDoubleCheck(pwInput, pwCheckInput, pwNotMachedMsg);
   handlePwInputInvalidCheck(pwRegex, pwInput, pwInvalidMsg);
   if (
@@ -40,25 +39,61 @@ function handleSignupEnter(e) {
   }
 }
 
-emailInput.addEventListener("blur", () =>
-  handleEmailInputEmptyValueCheck(emailInput, emailEmptyMsg)
-);
-emailInput.addEventListener("blur", () =>
-  handleEmailInputInvalidValueCheck(emailRegex, emailInput, emailInvalidMsg)
-);
-emailInput.addEventListener("blur", () =>
-  handleInputDuplicatedCheck(emailInput, emailDuplicatedMsg)
-);
-pwCheckInput.addEventListener("blur", () =>
-  handlePwInputDoubleCheck(pwInput, pwCheckInput, pwNotMachedMsg)
-);
-pwInput.addEventListener("blur", () =>
-  handlePwInputInvalidCheck(pwRegex, pwInput, pwInvalidMsg)
-);
-eyeBtn.addEventListener("click", () => handleEyeBtnClick(pwInput, eyeBtn));
-pwCheckEyeBtn.addEventListener("click", () =>
-  handleEyeBtnClick(pwCheckInput, pwCheckEyeBtn)
-);
+function handleEmailInputValidCheck() {
+  if (!isInputValueValid(emailRegex, emailInput)) {
+    addErrorMessage(emailInvalidMsg, emailInput);
+  } else {
+    removeErrorMessage(emailInvalidMsg, emailInput);
+  }
+}
+
+function handleEmailInputEmptyCheck() {
+  if (!emailInput.value.trim()) {
+    addErrorMessage(emailEmptyMsg, emailInput);
+  } else {
+    removeErrorMessage(emailEmptyMsg, emailInput);
+  }
+}
+
+function handleEmailDuplicatedCheck() {
+  if (emailInput.value.trim() === TEST_EMAIL) {
+    addErrorMessage(emailDuplicatedMsg, emailInput);
+  } else {
+    removeErrorMessage(emailDuplicatedMsg, emailInput);
+  }
+}
+
+function handlePwInputDoubleCheck() {
+  if (pwInput.value.trim() !== pwCheckInput.value.trim()) {
+    addErrorMessage(pwNotMachedMsg, pwCheckInput);
+  } else {
+    removeErrorMessage(pwNotMachedMsg, pwCheckInput);
+  }
+}
+
+function handlePwInputInvalidCheck() {
+  if (!isInputValueValid(pwRegex, pwInput)) {
+    addErrorMessage(pwInvalidMsg, pwInput);
+  } else {
+    removeErrorMessage(pwInvalidMsg, pwInput);
+  }
+}
+
+function handleEyeButtonToggle() {
+  toggleEyeBtn(pwInput, eyeBtn);
+}
+
+function handlePwCheckEyeButtonToggle() {
+  toggleEyeBtn(pwCheckInput, pwCheckEyeBtn);
+}
+
+emailInput.addEventListener("blur", handleEmailInputEmptyCheck);
+emailInput.addEventListener("blur", handleEmailInputValidCheck);
+emailInput.addEventListener("blur", handleEmailDuplicatedCheck);
+pwCheckInput.addEventListener("blur", handlePwInputDoubleCheck);
+pwInput.addEventListener("blur", handlePwInputInvalidCheck);
+eyeBtn.addEventListener("click", handleEyeButtonToggle);
+pwCheckEyeBtn.addEventListener("click", handlePwCheckEyeButtonToggle);
 signupBtn.addEventListener("click", handleSignup);
 emailInput.addEventListener("keyup", handleSignupEnter);
 pwInput.addEventListener("keyup", handleSignupEnter);
