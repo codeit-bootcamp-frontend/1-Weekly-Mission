@@ -3,8 +3,8 @@ import {
   passwordInput, 
   checkPasswordInput, 
   joinButton, 
-  eyeButton1, 
-  eyeButton2
+  eyeButtonInPassword, 
+  eyeButtonInCheckPassword
 } from './tags.js';
 
 import {
@@ -14,7 +14,7 @@ import {
   removeErrorMessage
 } from './validation.js';
 
-import { showPassword1, showPassword2 } from './showPW.js';
+import { togglePasswordInPassword, togglePasswordInCheckPassword } from './togglePassword.js';
 import { user } from './userInfo.js';
 
 const borderRed = 'border-red';
@@ -79,5 +79,5 @@ passwordInput.addEventListener('focusout', valiDatePassword);
 checkPasswordInput.addEventListener('focusout', valiDateCheckPassword);
 checkPasswordInput.addEventListener('keypress', (e) => e.code === 'Enter' && getJoin());
 joinButton.addEventListener('click', getJoin);
-eyeButton1.addEventListener('click', showPassword1);
-eyeButton2.addEventListener('click', showPassword2);
+eyeButtonInPassword.addEventListener('click', togglePasswordInPassword);
+eyeButtonInCheckPassword.addEventListener('click', togglePasswordInCheckPassword);

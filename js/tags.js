@@ -6,8 +6,8 @@ const checkPasswordInput = document.querySelector('#form__input--check-password'
 const checkPasswordError = document.querySelector('#form__error-message--check-password');
 const loginButton = document.querySelector('#form__login-button');
 const joinButton = document.querySelector('#form__join-button');
-const eyeButton1 = document.querySelector('#eye-button1');
-const eyeButton2 = document.querySelector('#eye-button2');
+const eyeButtonInPassword = document.querySelector('#eye-button--password');
+const eyeButtonInCheckPassword = document.querySelector('#eye-button--check-password');
 
 export {
   emailInput, 
@@ -18,6 +18,6 @@ export {
   checkPasswordError, 
   loginButton, 
   joinButton, 
-  eyeButton1, 
-  eyeButton2
+  eyeButtonInPassword, 
+  eyeButtonInCheckPassword
 };

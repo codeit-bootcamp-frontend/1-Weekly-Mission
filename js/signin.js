@@ -2,7 +2,7 @@ import {
   emailInput,
   passwordInput,
   loginButton,
-  eyeButton1
+  eyeButtonInPassword
 } from './tags.js';
 
 import {
@@ -11,7 +11,7 @@ import {
   removeErrorMessage
 } from './validation.js';
 
-import { showPassword1 } from './showPW.js';
+import { togglePasswordInPassword } from './togglePassword.js';
 import { user } from './userInfo.js';
 
 function valiDateEmail() {
@@ -56,4 +56,4 @@ emailInput.addEventListener('focusout', valiDateEmail);
 passwordInput.addEventListener('focusout', valiDatePassword);
 passwordInput.addEventListener('keypress', (e) => e.code === 'Enter' && getLogin());
 loginButton.addEventListener('click', getLogin);
-eyeButton1.addEventListener('click', showPassword1);
+eyeButtonInPassword.addEventListener('click', togglePasswordInPassword);
