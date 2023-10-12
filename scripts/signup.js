@@ -16,42 +16,18 @@
 
   //오류메시지 출력
   const emailErrorMessage = document.querySelector('.email-error-message')
-  const passwordErrorMessage = document.querySelector('.password-error-message')
   const passwordReErrorMessage = document.querySelector('.password-re-error-message')
 
  // <눈모양 아이콘 적용, 비밀번호 입력타입 변경>
-  // function toggleImage(image, inputPassword) {
-  //   if (image.src.includes('eye-off')) {
-  //     image.setAttribute('src','./images/signin/eye-on.svg');
-  //     inputPassword.setAttribute('type', '');
-  //   } else {
-  //     image.setAttribute('src','./images/signin/eye-off.svg');
-  //     inputPassword.setAttribute('type', 'password');
-  //   }
-  // }
   eyeImagePassword.addEventListener('click', ()=> {
     toggleImage(eyeImagePassword, inputPassword)});
   eyeImagePasswordRe.addEventListener('click', ()=> {
     toggleImage(eyeImagePasswordRe, inputPasswordRe)});
 
   //<입력하는 동안에는 에러메시지 안 보이게 하기 >
-  // function errorMessageStop(){
-  //   emailErrorMessage.style.display = 'none';
-  // }
   inputEmail.addEventListener('input', errorMessageStop)
   inputPassword.addEventListener('input', errorMessageStop)
 
-  //<에러가 발생한 경우 CSS속성 정리>>
-  // function addErrorStyle(inputElement, errorMessageElement, errorMessage){
-  //   inputElement.style.border = '1px solid red';
-  //   errorMessageElement.style.display = 'block';
-  //   errorMessageElement.textContent = errorMessage;
-  // }
-  // function removeErrorStyle(inputElement, errorMessageElement, errorMessage){
-  //   inputElement.style.border = '1px solid #ccd5e3';
-  //   errorMessageElement.style.display = 'none';
-  //   errorMessageElement.textContent = errorMessage;
-  // }
 
   // <이메일 형식검증, 오류메시지 출력 >
   function testEmail(email){
@@ -74,17 +50,6 @@
   inputEmail.addEventListener('focusout', checkEmail)
 
   //<비밀번호 형식 검증>
-  // function checkPassword(){
-  //   const password = inputPassword.value;
-  //   if (password === ''){
-  //     addErrorStyle(inputPasswordCss, passwordErrorMessage, '비밀번호를 입력해주세요.');
-  //   }else if (password.length < 8 || !/^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)){
-  //     addErrorStyle(inputPasswordCss, passwordErrorMessage, '비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.');
-  //   }else {
-  //     removeErrorStyle(inputPasswordCss, passwordErrorMessage)
-  //     return true;
-  //   };
-  // }
   inputPassword.addEventListener('focusout', checkPassword)
 
   //비밀번호-비밀번호 확인 값 일치 확인
