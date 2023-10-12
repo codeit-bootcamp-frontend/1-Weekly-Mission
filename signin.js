@@ -1,13 +1,11 @@
 import {
-  showMessage,
-  isEmpty,
-  showEmptyErrorMessage,
   isEmailValid,
   isPasswordValid,
-  showValidPasswordErrorMessage,
-  showValidEmailErrorMessage,
+  showErrorMessageEffect,
   isCodeItLogin,
   passwordVisibility,
+  EMAIL_MAP,
+  PASSWORD_MAP,
 } from "./common.js";
 
 const email = document.getElementById("email");
@@ -17,15 +15,36 @@ const passwordLabel = document.querySelector(".password-label");
 const loginButton = document.getElementById("login-button");
 const eyeIcon = document.querySelector(".eye-on-image");
 
+// email
 email.addEventListener("focusout", (event) => {
   event.preventDefault();
-  showEmptyErrorMessage(email, emailLabel);
-  showValidEmailErrorMessage(email, emailLabel);
+  const errorMsgsLabel = emailLabel.querySelector(".error-message");
+  for (const state of ["empty", "notValid"]) {
+    if (state === "empty") {
+      // checker는 isEmpty함수
+      if (EMAIL_MAP[state].checker(email)) {
+        showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+        return;
+      }
+    } else if (state === "notValid") {
+      if (!EMAIL_MAP[state].checker(email)) {
+        showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+        return;
+      }
+    }
+  }
+  showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP.valid);
 });
 
+// pasword
 password.addEventListener("focusout", (event) => {
   event.preventDefault();
-  showEmptyErrorMessage(password, passwordLabel);
+  const errorMsgsLabel = passwordLabel.querySelector(".error-message");
+  if (PASSWORD_MAP["empty"].checker(password)) {
+    showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP["empty"]);
+    return;
+  }
+  showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP["valid"]);
 });
 
 loginButton.addEventListener("click", (event) => {
@@ -33,7 +52,6 @@ loginButton.addEventListener("click", (event) => {
   if (isCodeItLogin(email, password)) {
     window.location.href = window.location.origin + "/folder.html";
   }
-  //  email과 password형식은 valid하지만, codeIt아이디가 아닐 때를 판단하고, 그에 따른 ui를 보이도록 리팩토링 해보세요.
   if (
     isEmailValid(email) &&
     isPasswordValid(password) &&

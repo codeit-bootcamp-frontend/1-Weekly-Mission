@@ -1,26 +1,53 @@
+export const EMAIL_MAP = {
+  empty: {
+    checker: isEmpty,
+    message: "이메일을 입력해주세요",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
+
+  notValid: {
+    checker: isEmailValid,
+    message: "올바른 이메일 주소가 아닙니다",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
+
+  valid: {
+    message: "",
+    textColor: "",
+    borderColor: "",
+  },
+};
+
+export const PASSWORD_MAP = {
+  empty: {
+    checker: isEmpty,
+    message: "비밀번호을 입력해주세요",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
+
+  notValid: {
+    checker: isPasswordValid,
+    message: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
+
+  valid: {
+    message: "",
+    textColor: "",
+    borderColor: "",
+  },
+};
+
 export function showMessage(inputText) {
   return `${inputText}을 입력해주세요`;
 }
 
-//  true이면은 emptry라는것 false이면은 empty가 아니라는거
 export function isEmpty(input) {
-  // input.value가 inpuValue가
   return input.value.trim().length ? false : true;
-}
-
-export function showEmptyErrorMessage(input, inputLabel) {
-  const errorMsgs = inputLabel.querySelector(".error-message");
-  errorMsgs.innerText = "";
-  if (isEmpty(input)) {
-    let errorMessage = showMessage(inputLabel.innerText);
-
-    errorMsgs.innerText = errorMessage;
-    errorMsgs.style.color = "red";
-    input.style.border = "3px solid red";
-  } else {
-    errorMsgs.innerText = "";
-    input.style.border = "";
-  }
 }
 
 export function isEmailValid(input) {
@@ -29,13 +56,10 @@ export function isEmailValid(input) {
   return re.test(texts);
 }
 
-export function showValidEmailErrorMessage(input, inputLabel) {
-  if (!isEmailValid(input) && !isEmpty(input)) {
-    const errorMsgs = inputLabel.querySelector(".error-message");
-    errorMsgs.innerText = "올바른 이메일 주소가 아닙니다";
-    errorMsgs.style.color = "red";
-    input.style.border = "3px solid red";
-  }
+export function showErrorMessageEffect(input, errorMsgsLabel, state) {
+  errorMsgsLabel.innerText = state.message;
+  errorMsgsLabel.style.color = state.textColor;
+  input.style.border = state.borderColor;
 }
 
 export function isPasswordValid(input) {
@@ -47,15 +71,6 @@ export function isPasswordValid(input) {
     atLeastOneNumber.test(texts) &&
     texts.length > 8
   );
-}
-
-export function showValidPasswordErrorMessage(input, inputLabel) {
-  if (!isPasswordValid(input) && !isEmpty(input)) {
-    const errorMsgs = inputLabel.querySelector(".error-message");
-    errorMsgs.innerText = "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요";
-    errorMsgs.style.color = "red";
-    input.style.border = "3px solid red";
-  }
 }
 
 export function isCodeItLogin(email, password) {

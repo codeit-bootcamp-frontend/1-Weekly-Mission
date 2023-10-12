@@ -15,7 +15,7 @@ const password = document.getElementById("password");
 const rePassword = document.getElementById("re-password");
 const emailLabel = document.querySelector(".email-label");
 const passwordLabel = document.querySelector(".password-label");
-const repasswordLabel = document.querySelector(".re-password-label");
+const rePasswordLabel = document.querySelector(".re-password-label");
 const eyeIcon = document.querySelector(".eye-on-image");
 const reEyeIcon = document.querySelector(".re-eye-on-image");
 const registerButton = document.querySelector(".register-button");
@@ -58,8 +58,8 @@ password.addEventListener("focusout", (event) => {
 
 rePassword.addEventListener("focusout", (event) => {
   event.preventDefault();
-  showEmptyErrorMessage(rePassword, repasswordLabel);
-  showPasswordMatchErrorMessage(password, rePassword, repasswordLabel);
+  showEmptyErrorMessage(rePassword, rePasswordLabel);
+  showPasswordMatchErrorMessage(password, rePassword, rePasswordLabel);
 });
 
 eyeIcon.addEventListener("click", (event) => {
