@@ -8,6 +8,7 @@ import {
     validateEmailType,
     validatePassword
 } from "./sign.js";
+import {domain} from "./constant.js";
 import LocalStorage from "./localstorage.js";
 
 const loginButton = document.querySelector('.btn.login');
@@ -18,7 +19,7 @@ const login = (e) => {
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+    fetch(`${domain}/sign-in`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
