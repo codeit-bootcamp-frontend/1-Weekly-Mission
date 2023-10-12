@@ -1,13 +1,4 @@
-import {
-    $, 
-    inputs,
-    form,
-    testAccount, 
-    inputAccount, 
-    hendleFocusOut,
-    isFindEmail,
-} from '../utils.js';
-
+import {$, form, testAccount, inputAccount, isFindEmail} from '../utils.js';
 
 
 /* 로그인 계정 일치 확인 */
@@ -24,7 +15,7 @@ function isFindPassword(userPassword) {
 }
 
 /* 로그인 확인 */
-function handleSubmit(event) {
+export function handleSigninSubmit(event) {
     const {userEmail, userPassword} = inputAccount;
 
     event.preventDefault();
@@ -45,8 +36,3 @@ function handleSubmit(event) {
 };
 
 
-for (let input of inputs) {
-    input.addEventListener('focusout', hendleFocusOut);
-}
-
-form.addEventListener('submit',handleSubmit);

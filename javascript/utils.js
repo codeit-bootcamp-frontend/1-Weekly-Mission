@@ -30,12 +30,6 @@ const inputAccount = {
     userPasswordCh:""
 };
 
-/* 각 input란 조건 확인 */
-const isCheck = {
-    checkEmail: false,
-    checkPassword: false,
-    reCheckPassword: false
-}
 
 /* 이메일 중복확인 & 로그인 이메일 일치 확인  */
 function isFindEmail(email) {
@@ -44,66 +38,64 @@ function isFindEmail(email) {
     })
 }
 
+/* 페이지 위치 확인(회원가입 페이지일 때 true) */
+function isLocation() {
+    return location.pathname.includes('signup');
+}
+
 /* 이메일 에러 메세지 */
 function emailErrorMessage(email, emailBox) {
-    if(!email.value.trim()) {
+    if(!email.trim()) {
         emailBox.classList.add('empty');
-        
-    } else if(!REG_EXP.CHECK_EMAIL.test(email.value)) {
+    } else if(!REG_EXP.CHECK_EMAIL.test(email)) {
         emailBox.classList.add('wrong');
-
-    } else if(emailBox.classList.contains('email-box-signup') 
-    && isFindEmail(email.value) > -1) {
+    } else if(isLocation() && isFindEmail(email) > -1) {
         emailBox.classList.add('already');
-    }  else {
-        isCheck.checkEmail = true;
-    }
-    
+    } 
+
+    inputAccount.userEmail = emailBox.classList.length <= 2 ? email : "" ;
 }
+
 
 /* 비밀번호 에러 메세지 */
 function passwordErrorMessage(password, passwordBox) {
-    if(!password.value.trim()) {
+    if(!password.trim()) {
         passwordBox.classList.add('empty');
-    } else if(passwordBox.classList.contains('password-box-signup') 
-    && !REG_EXP.CHECK_PASSWORD.test(password.value)) {
+    } else if(isLocation() && !REG_EXP.CHECK_PASSWORD.test(password)) {
         passwordBox.classList.add('terms');
-    } else {
-        isCheck.checkPassword = true;
-    }  
+    } 
+    inputAccount.userPassword = passwordBox.classList.length <=2 ? password : "";
 }
 
 /* 비밀번호 재확인 에러 메세지 */
 function passwordCheckErrorMessage(passwordCheck, passwordCheckBox) {
-    if(!passwordCheck.value) {
+    if(!passwordCheck.trim()) {
         passwordCheckBox.classList.add('empty');
-    }else if(passwordCheckBox.classList.contains('password-box-signup') 
-    && inputAccount.userPassword !== passwordCheck.value) {
+    }else if(inputAccount.userPassword !== passwordCheck) {
         passwordCheckBox.classList.add('check');
-    } else {
-        isCheck.reCheckPassword = true;
     }
+
+    inputAccount.userPasswordCh  = passwordCheckBox.classList.length <= 2 ? passwordCheck : "";
 }
 
-/* focusout 될 시 입력값 저장 */
-function hendleFocusOut(event) {
-    const {target} = event; /* 이메일과 비밀번호 분해 */
-
-    if(target.name === 'email') {
+/* focusout & input에 입력될 시 실행*/
+function hendleEvent(event) {
+    const {id, value} = event.target; /* input의 id값,value 값 분해 */
+  
+    if(id === 'email') {
         $('.email-box').classList.remove('disaccord', 'empty', 'wrong', 'already'); 
         /* 아이디 입력확인 */
-        emailErrorMessage(target, $('.email-box'));
-        inputAccount.userEmail = target.value;
-    } else if(target.name === 'password') {
+        emailErrorMessage(value, $('.email-box'));
+    
+    } else if(id === 'password') {
         $('.password-box').classList.remove('empty', 'disaccord','terms'); 
         /* 비밀번호 입력확인 */
-        passwordErrorMessage(target, $('.password-box'));
-        inputAccount.userPassword = target.value;
-    } else if (target.name === 'passwordCh') {
-        $('.password-check-box').classList.remove('empty', 'check');
-        /* 비밀번호 확인란 입력확인 */
-        passwordCheckErrorMessage(target, $('.password-check-box'))
+        passwordErrorMessage(value, $('.password-box'));
         
+    } else if (id === 'password-check') {
+        $('.password-check-box').classList.remove('empty', 'check');
+        /* 비밀번호 재입력확인 */
+        passwordCheckErrorMessage(value, $('.password-check-box'))
     }
 }
 
@@ -114,10 +106,11 @@ export {
     $all,
     inputs,
     form,
+    isLocation,
     testAccount, 
     inputAccount, 
-    hendleFocusOut,
-    isCheck,
+    hendleEvent,
     isFindEmail,
+    passwordErrorMessage,
     passwordCheckErrorMessage,
 };
