@@ -19,34 +19,34 @@ const passwordRepeatEyeButton = document.querySelector('.eye-off-check');
 
 function validateSignUpEmail(input) {
     if (validateEmailType(input)) {
-        if (input === "test@codeit.com") {
-            showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.duplicated);
-            return false;
+        if (input !== "test@codeit.com") {
+            removeErrorMessage(emailInput, emailErrorMessageElement);
+            return true;
         }
-        removeErrorMessage(emailInput, emailErrorMessageElement);
-        return true;
+        showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.duplicated);
+        return false;
     }
 }
 
 function validateSignUpPassword(input) {
     if (validatePassword(input)) {
-        if (!passwordRegex.test(input)) {
-            showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.typeInvalid);
-            return false;
+        if (passwordRegex.test(input)) {
+            removeErrorMessage(passwordInput, passwordErrorMessageElement);
+            return true;
         }
-        removeErrorMessage(passwordInput, passwordErrorMessageElement);
-        return true;
+        showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.typeInvalid);
+        return false;
     }
 }
 
 function validatePasswordRepeatMatch(input) {
     const password = passwordInput.value;
-    if (!input || password !== input) {
-        showErrorMessage(passwordRepeatInput, passwordRepeatErrorMessageElement, errorMessages.password.notMatched);
-        return false;
+    if (input && password === input) {
+        removeErrorMessage(passwordRepeatInput, passwordRepeatErrorMessageElement);
+        return true;
     }
-    removeErrorMessage(passwordRepeatInput, passwordRepeatErrorMessageElement);
-    return true;
+    showErrorMessage(passwordRepeatInput, passwordRepeatErrorMessageElement, errorMessages.password.notMatched);
+    return false;
 }
 
 const signUp = (e) => {
