@@ -1,13 +1,13 @@
 import {
   EMAIL_MAP,
   PASSWORD_MAP,
+  REPASSWORD_MAP,
   showErrorMessageEffect,
   isEmailValid,
   isPasswordValid,
-  isCodeItLogin,
+  postData,
   isPasswordMatch,
   passwordVisibility,
-  REPASSWORD_MAP,
 } from "./common.js";
 
 const email = document.getElementById("email");
@@ -20,7 +20,7 @@ const eyeIcon = document.querySelector(".eye-on-image");
 const reEyeIcon = document.querySelector(".re-eye-on-image");
 const registerButton = document.querySelector(".register-button");
 
-email.addEventListener("focusout", (event) => {
+email.addEventListener("focusout", async (event) => {
   event.preventDefault();
   const errorMsgsLabel = emailLabel.querySelector(".error-message");
 
@@ -37,8 +37,20 @@ email.addEventListener("focusout", (event) => {
         return;
       }
     } else if (state === "alreadyUsed") {
-      if (EMAIL_MAP[state].checker(email)) {
-        showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+      try {
+        const emailValue = email.value.trim();
+        const response = await postData(
+          "bootcamp-api.codeit.kr",
+          "api/check-email",
+          {
+            email: emailValue,
+          }
+        );
+        if (response.status !== 200) {
+          showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+          return;
+        }
+      } catch (err) {
         return;
       }
     }
@@ -72,7 +84,6 @@ rePassword.addEventListener("focusout", (event) => {
   for (const state of ["empty", "notMatch"]) {
     if (state === "empty") {
       // checker는 isEmpty함수
-      console.log(REPASSWORD_MAP[state].checker);
       if (REPASSWORD_MAP[state].checker(rePassword)) {
         showErrorMessageEffect(
           rePassword,
@@ -106,13 +117,36 @@ reEyeIcon.addEventListener("click", (event) => {
   passwordVisibility(reEyeIcon, rePassword);
 });
 
-registerButton.addEventListener("click", (event) => {
+registerButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  if (
-    isEmailValid(email) &&
-    isPasswordValid(password) &&
-    isPasswordMatch(password, rePassword)
-  ) {
-    window.location.href = window.location.origin + "/folder.html";
+  // const emailValue = email.value;
+  if (isEmailValid(email) && isPasswordValid(password)) {
+    try {
+      const emailValue = email.value.trim();
+      const passwordValue = password.value.trim();
+      console.log(emailValue, passwordValue);
+      const response = await postData("bootcamp-api.codeit.kr", "api/sign-up", {
+        email: emailValue,
+        password: passwordValue,
+      });
+      // console.log(response); 400에러가 자꾸 나옴
+      // if (response.status === 200 && isEmailValid(emailValue)) {
+      //   window.location.href = window.location.origin + "/folder.html";
+      // } else {
+      //   //  status가 400일떄
+      //   let error = new Error("올바른 이메일이 아닙니다");
+      //   throw error;
+      // }
+    } catch (err) {
+      alert(err.message);
+    }
   }
+
+  // if (
+  //   isEmailValid(email) &&
+  //   isPasswordValid(password) &&
+  //   isPasswordMatch(password, rePassword)
+  // ) {
+  //   window.location.href = window.location.origin + "/folder.html";
+  // }
 });
