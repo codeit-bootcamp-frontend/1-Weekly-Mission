@@ -10,16 +10,17 @@ import {
     validatePassword,
 } from "./sign.js";
 import {errorMessages} from "./error-message.js";
-import {passwordRegex} from "./constant.js";
+import {domain, passwordRegex} from "./constant.js";
+import LocalStorage from "./localstorage.js";
 
 const signUpButton = document.querySelector('.btn.sign-up');
 const passwordRepeatInput = document.querySelector('#sign-password-repeat');
 const passwordRepeatErrorMessageElement = document.createElement("p");
 const passwordRepeatEyeButton = document.querySelector('.eye-off-check');
 
-function validateSignUpEmail(input) {
+async function validateSignUpEmail(input) {
     if (validateEmailType(input)) {
-        fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+        await fetch(`${domain}/check-email`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -73,7 +74,34 @@ const signUp = (e) => {
 
     if (validateSignUpEmail(email) && validateSignUpPassword(password) &&
         validatePasswordRepeatMatch(passwordRepeat)) {
-        location.href = "/folder.html";
+        fetch(`${domain}/sign-up`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                if (response.status === 400) {
+                    throw new Error("AuthSignUpError");
+                }
+            })
+            .then(result => {
+                const loginToken = "accessToken";
+                const {accessToken} = result.data;
+                if (LocalStorage.getItem(loginToken)) {
+                    LocalStorage.removeItem(accessToken);
+                }
+                LocalStorage.saveItem(loginToken, accessToken);
+                location.href = "/folder.html";
+            })
+            .catch(error => console.error(error));
     }
 }
 
