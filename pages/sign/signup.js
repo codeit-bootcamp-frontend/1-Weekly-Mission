@@ -1,4 +1,5 @@
-import { emailCheck, passwordCheck, error_occur, error_disappear } from './modules/functions.js'
+import { emailCheck, passwordCheck } from './modules/regex.js'
+import { error_occur, error_disappear } from './modules/functions.js'
 import { messages } from './modules/message.js'
 import { email_input, email_input_check, password_input, password_input_check, password_repeat_input, password_repeat_input_check, formtag, eye_mark_in_password, eye_mark_in_password_repeat } from './modules/tags.js'
 

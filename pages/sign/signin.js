@@ -1,6 +1,10 @@
-import { emailCheck, error_occur, error_disappear } from './modules/functions.js'
+import { emailCheck } from './modules/regex.js'
+import { error_occur, error_disappear } from './modules/functions.js'
 import { messages } from './modules/message.js'
-import { email_input, email_input_check, password_input, password_input_check,  formtag, eye_mark_in_password } from './modules/tags.js'
+import { email_input, email_input_check, 
+  password_input, password_input_check, 
+  formtag, eye_mark_in_password } from './modules/tags.js'
+
 
 
 // 이메일 부분 //
