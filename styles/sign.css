@@ -33,7 +33,7 @@
   gap: 2.4rem;
 }
 
-.form--label {
+.form__label {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -43,7 +43,7 @@
   font-weight: 400;
 }
 
-.form--input {
+.form__input {
   display: block;
   width: 100%;
   padding: 1.8rem 1.5rem;
@@ -55,12 +55,12 @@
   font-weight: 400;
 }
 
-.form--input:focus {
+.form__input:focus {
   outline: none;
   border: 0.1rem solid var(--primary);
 }
 
-.form--eye-button {
+.form__eye-button {
   position: absolute;
   right: 1.5rem;
   top: 5rem;
@@ -80,25 +80,25 @@
   height: 3.8rem;
 }
 
-.logo--img {
+.logo__img {
   width: 21rem;
   height: 3.8rem;
 }
 
-.header--text {
+.header__text {
   color: black;
   font-size: 1.6rem;
   font-weight: 400;
 }
 
-.header--link {
+.header__link {
   text-decoration: underline;
   color: var(--primary);
   font-size: 1.6rem;
   font-weight: 400;
 }
 
-.form--sign-button {
+.form__sign-button {
   padding: 1.6rem 2rem;
   border-radius: 0.8rem;
   background: linear-gradient(91deg, var(--primary) 0.12%, #6AE3FE 101.84%);
@@ -117,19 +117,19 @@
   background-color: var(--gray-10);
 }
 
-.footer--description {
+.footer__description {
   color: var(--gray-100);
   font-size: 1.4rem;
   font-weight: 400;
 }
 
-.footer--sns-links {
+.footer__sns-links {
   display: flex;
   gap: 1.6rem;
   list-style: none;
 }
 
-.footer--sns-link {
+.footer__sns-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,7 +143,7 @@
   background-image: url(../public/icons/google_background.png);
 }
 
-.google--icon {
+.google__icon {
   width: 2.2rem;
   height: 2.2rem;
 }
@@ -152,23 +152,23 @@
   background-image: url(../public/icons/kakao_background.png);
 }
 
-.kakao--icon {
+.kakao__icon {
   width: 2.6rem;
   height: 2.4rem;
 }
 
-.form--error-message__style {
+.form__error-message--style {
   margin-top: 0.6rem;
   color: var(--red);
   font-size: 1.4rem;
   font-weight: 400;
 }
 
-.form--input.border-red {
+.form__input.border-red {
   outline: none;
   border: 0.1rem solid var(--red);
 }
 
-.form--eye-button.on {
+.form__eye-button.on {
   background-image: url(../public/icons/eye-on.png);
 }
