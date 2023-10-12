@@ -19,12 +19,27 @@ const passwordRepeatEyeButton = document.querySelector('.eye-off-check');
 
 function validateSignUpEmail(input) {
     if (validateEmailType(input)) {
-        if (input !== "test@codeit.com") {
-            removeErrorMessage(emailInput, emailErrorMessageElement);
-            return true;
-        }
-        showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.duplicated);
-        return false;
+        fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: input
+            })
+        })
+            .then(response => {
+                if (response.status === 409) {
+                    throw new Error("DuplicatedError");
+                }
+                removeErrorMessage(emailInput, emailErrorMessageElement);
+                return true;
+            })
+            .catch(error => {
+                console.error(error);
+                showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.duplicated);
+                return false;
+            })
     }
 }
 
