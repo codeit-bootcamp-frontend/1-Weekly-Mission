@@ -1,4 +1,7 @@
-window.onload=function(){
+  import { errorMessageStop, addErrorStyle, removeErrorStyle } from './errors/errors.js';
+  import { toggleImage } from './toggleImage.js';
+  import { checkPassword } from './input/checkPassword.js';
+  import { accountInfo } from './accounts/accountInfo.js';
 
   const eyeImagePasswordEl = document.querySelector('#eyeImage-password')
   const eyeImagePasswordReEl = document.querySelector('#eyeImage-password-re')
@@ -9,7 +12,7 @@ window.onload=function(){
   const inputPasswordRe = document.querySelector('#password-re')
   const submitButton = document.querySelector('button[type="submit"]');
   const [inputEmailCss, inputPasswordCss, inputPasswordReCss] = document.querySelectorAll('input')
-  const signinForm = document.querySelector('form');
+  const signupForm = document.querySelector('form');
 
   //오류메시지 출력
   const emailErrorMessage = document.querySelector('.email-error-message')
@@ -32,23 +35,23 @@ window.onload=function(){
     toggleImage(eyeImagePasswordRe, inputPasswordRe)});
 
   //<입력하는 동안에는 에러메시지 안 보이게 하기 >
-  function errorMessageStop(){
-    emailErrorMessage.style.display = 'none';
-  }
+  // function errorMessageStop(){
+  //   emailErrorMessage.style.display = 'none';
+  // }
   inputEmail.addEventListener('input', errorMessageStop)
   inputPassword.addEventListener('input', errorMessageStop)
 
   //<에러가 발생한 경우 CSS속성 정리>>
-  function addErrorStyle(inputElement, errorMessageElement, errorMessage){
-    inputElement.style.border = '1px solid red';
-    errorMessageElement.style.display = 'block';
-    errorMessageElement.textContent = errorMessage;
-  }
-  function removeErrorStyle(inputElement, errorMessageElement, errorMessage){
-    inputElement.style.border = '1px solid #ccd5e3';
-    errorMessageElement.style.display = 'none';
-    errorMessageElement.textContent = errorMessage;
-  }
+  // function addErrorStyle(inputElement, errorMessageElement, errorMessage){
+  //   inputElement.style.border = '1px solid red';
+  //   errorMessageElement.style.display = 'block';
+  //   errorMessageElement.textContent = errorMessage;
+  // }
+  // function removeErrorStyle(inputElement, errorMessageElement, errorMessage){
+  //   inputElement.style.border = '1px solid #ccd5e3';
+  //   errorMessageElement.style.display = 'none';
+  //   errorMessageElement.textContent = errorMessage;
+  // }
 
   // <이메일 형식검증, 오류메시지 출력 >
   function testEmail(email){
@@ -61,7 +64,7 @@ window.onload=function(){
       addErrorStyle(inputEmailCss, emailErrorMessage, '이메일을 입력해주세요.');
     }else if (!testEmail(email)){
       addErrorStyle(inputEmailCss, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
-    }else if (email === 'test@codeit.com'){
+    }else if (!(accountInfo.find(account => account.email === email)===undefined)){
       addErrorStyle(inputEmailCss, emailErrorMessage, '이미 사용중인 이메일입니다.');
     }else {
       removeErrorStyle(inputEmailCss, emailErrorMessage)
@@ -71,17 +74,17 @@ window.onload=function(){
   inputEmail.addEventListener('focusout', checkEmail)
 
   //<비밀번호 형식 검증>
-  function checkPassword(){
-    const password = inputPassword.value;
-    if (password === ''){
-      addErrorStyle(inputPasswordCss, passwordErrorMessage, '비밀번호를 입력해주세요.');
-    }else if (password.length < 8 || !/^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)){
-      addErrorStyle(inputPasswordCss, passwordErrorMessage, '비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.');
-    }else {
-      removeErrorStyle(inputPasswordCss, passwordErrorMessage)
-      return true;
-    };
-  }
+  // function checkPassword(){
+  //   const password = inputPassword.value;
+  //   if (password === ''){
+  //     addErrorStyle(inputPasswordCss, passwordErrorMessage, '비밀번호를 입력해주세요.');
+  //   }else if (password.length < 8 || !/^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)){
+  //     addErrorStyle(inputPasswordCss, passwordErrorMessage, '비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.');
+  //   }else {
+  //     removeErrorStyle(inputPasswordCss, passwordErrorMessage)
+  //     return true;
+  //   };
+  // }
   inputPassword.addEventListener('focusout', checkPassword)
 
   //비밀번호-비밀번호 확인 값 일치 확인
@@ -111,12 +114,9 @@ window.onload=function(){
     submitAccount();
   });
 
-  signinForm.addEventLisnter('submit');
-  // submitButton.addEventListener('keypress', function(event) {
-  //   if (event.key === 'Enter') {
-  //     event.preventDefault();
-  //     submitAccount();
-  //   }
-  // });
-
-}//onload end
+  signupForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = inputEmail.value.trim();
+    const password = inputPassword.value;
+    validAccount(email, password);
+  });

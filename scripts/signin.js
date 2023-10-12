@@ -1,6 +1,5 @@
   import { errorMessageStop, addErrorStyle, removeErrorStyle } from './errors/errors.js';
-  import { checkSigninEmail } from './input/checkSignInEmail.js';
-  import { checkSigninPassword } from './input/checkSignInPassword.js';
+  import { checkPassword } from './input/checkPassword.js';
   import  { toggleImage } from './toggleImage.js';
   import { validAccount } from '../scripts/accounts/validAccount.js';
  
@@ -9,11 +8,11 @@
   const inputEmail= document.querySelector('#sign-up')
   const inputPassword = document.querySelector('#password')
   const submitButton = document.querySelector('button[type="submit"]');
-  // const [inputEmailCss, inputPasswordCss] = document.querySelectorAll('input')
+  const [inputEmailCss, inputPasswordCss] = document.querySelectorAll('input')
   const loginForm = document.querySelector('form');
 
   //오류메시지 출력
-  // const emailErrorMessage = document.querySelector('.email-error-message')
+  const emailErrorMessage = document.querySelector('.email-error-message')
   // const passwordErrorMessage = document.querySelector('.password-error-message')
 
  // <눈모양 아이콘 적용, 비밀번호 입력타입 변경>
@@ -49,22 +48,22 @@
   // }
 
   // <이메일 형식검증, 오류메시지 출력 >
-  // function testEmail(email){
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   return emailRegex.test(email);
-  // }
-  // function checkEmail(){
-  //   const email = inputEmail.value.trim();
-  //   if (email === ''){
-  //     addErrorStyle(inputEmailCss, emailErrorMessage, '이메일을 입력해주세요.');
-  //   }
-  //   else if (!testEmail(email)){
-  //     addErrorStyle(inputEmailCss, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
-  //   }
-  //   else{
-  //     removeErrorStyle(inputEmailCss, emailErrorMessage);
-  //   }
-  // };
+  function testEmail(email){
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  function checkSigninEmail(){
+    const email = inputEmail.value.trim();
+    if (email === ''){
+      addErrorStyle(inputEmailCss, emailErrorMessage, '이메일을 입력해주세요.');
+    }
+    else if (!testEmail(email)){
+      addErrorStyle(inputEmailCss, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
+    }
+    else{
+      removeErrorStyle(inputEmailCss, emailErrorMessage);
+    }
+  };
   inputEmail.addEventListener('focusout', checkSigninEmail);
 
   //<비밀번호 빈 값일때 오류메시지 출력>
@@ -76,7 +75,7 @@
   //     removeErrorStyle(inputPasswordCss, passwordErrorMessage);
   //   };
   // }
-  inputPassword.addEventListener('focusout', checkSigninPassword);
+  inputPassword.addEventListener('focusout', checkPassword);
 
   // <아이디&비밀번호 올바르게 입력했을 경우 /folder로 이동하고 아닌 경우 확인메시지 출력>
 // function validAccount(email, password){
