@@ -66,18 +66,13 @@ formtag.addEventListener("keypress", (e) => e.code === 'Enter' && signup_submit_
 
 
 // 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
+// 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
 function password_toggle(e) {
-    if (e.target.parentElement.parentElement.children[1].type === "password") {
-      password_input.type = "text"
-      password_repeat_input.type ="text"
-      eye_mark_in_password.src = "/assets/images/eye_on_mark.svg" 
-      eye_mark_in_password_repeat.src = "/assets/images/eye_on_mark.svg"
-    } else {    
-      password_input.type = "password"
-      password_repeat_input.type ="password"
-      eye_mark_in_password.src = "/assets/images/eye_off_mark.svg" 
-      eye_mark_in_password_repeat.src = "/assets/images/eye_off_mark.svg"    
-    }
+  const isPasswordType = e.target.parentElement.parentElement.children[1].type === "password"
+  password_input.type = ( isPasswordType ? "text" : "password")
+  password_repeat_input.type = isPasswordType ? "text" : "password"
+  eye_mark_in_password.src = isPasswordType ? "/assets/images/eye_on_mark.svg" : "/assets/images/eye_off_mark.svg";
+  eye_mark_in_password_repeat.src = isPasswordType ? "/assets/images/eye_on_mark.svg" : "/assets/images/eye_off_mark.svg";
 }
 
 eye_mark_in_password.addEventListener('click', password_toggle)
