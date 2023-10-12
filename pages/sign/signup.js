@@ -62,7 +62,7 @@ function signup_submit_check (e) {
 }
 
 formtag.addEventListener("submit", signup_submit_check)
-window.addEventListener("keypress", (e) => e.code === 'Enter' && signup_submit_check())
+formtag.addEventListener("keypress", (e) => e.code === 'Enter' && signup_submit_check())
 
 
 // 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
