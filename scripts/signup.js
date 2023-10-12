@@ -9,6 +9,7 @@ window.onload=function(){
   const inputPasswordRe = document.querySelector('#password-re')
   const submitButton = document.querySelector('button[type="submit"]');
   const [inputEmailCss, inputPasswordCss, inputPasswordReCss] = document.querySelectorAll('input')
+  const signinForm = document.querySelector('form');
 
   //오류메시지 출력
   const emailErrorMessage = document.querySelector('.email-error-message')
@@ -102,7 +103,7 @@ window.onload=function(){
     const isPasswordValid = checkPassword();
     const isPasswordReValid = checkPasswordRe(); 
     if (isEmailValid && isPasswordValid && isPasswordReValid) {
-      window.location.href = './index.html';
+      window.location.href = './folder.html';
     }}
 
   submitButton.addEventListener('click', function(event) {
@@ -110,11 +111,12 @@ window.onload=function(){
     submitAccount();
   });
 
-  submitButton.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      submitAccount();
-    }
-  });
+  signinForm.addEventLisnter('submit');
+  // submitButton.addEventListener('keypress', function(event) {
+  //   if (event.key === 'Enter') {
+  //     event.preventDefault();
+  //     submitAccount();
+  //   }
+  // });
 
 }//onload end
