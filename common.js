@@ -19,12 +19,12 @@ export const EMAIL_MAP = {
     borderColor: "",
   },
 
-  alreadyUsed: {
-    checker: alreadyUsedEmail,
-    message: "이미 사용 중인 이메일입니다",
-    textColor: "red",
-    borderColor: "3px solid red",
-  },
+  // alreadyUsed: {
+  //   checker: alreadyUsedEmail,
+  //   message: "이미 사용 중인 이메일입니다",
+  //   textColor: "red",
+  //   borderColor: "3px solid red",
+  // },
 };
 
 export const PASSWORD_MAP = {
@@ -80,10 +80,17 @@ export function isEmpty(input) {
 }
 
 export function isEmailValid(input) {
-  const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
+  // @codeit.com 얘만 유효하다
+  const re = /[a-zA-Z0-9]{2,10}@codeit\.com$/;
   const texts = input.value.trim();
   return re.test(texts);
 }
+
+// export function isEmailValid2(inputValue) {
+//   const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
+//   const texts = inputValue.trim();
+//   return re.test(texts);
+// }
 
 export function alreadyUsedEmail(input) {
   return input.value.trim() === "test@codeit.com";
@@ -135,4 +142,18 @@ export function passwordVisibility(eye, passwordInput) {
       passwordInput.type = "text";
     }
   }
+}
+
+export async function postData(host, path, body) {
+  const url = `https://${host}/${path}`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json, text-plain, */*",
+    },
+    body: JSON.stringify(body),
+  };
+  const response = await fetch(url, options);
+  return response;
 }
