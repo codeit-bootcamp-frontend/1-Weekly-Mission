@@ -1,13 +1,13 @@
 import {
-  showMessage,
-  isEmpty,
-  showEmptyErrorMessage,
+  EMAIL_MAP,
+  PASSWORD_MAP,
+  showErrorMessageEffect,
   isEmailValid,
   isPasswordValid,
-  showValidPasswordErrorMessage,
-  showValidEmailErrorMessage,
   isCodeItLogin,
+  isPasswordMatch,
   passwordVisibility,
+  REPASSWORD_MAP,
 } from "./common.js";
 
 const email = document.getElementById("email");
@@ -19,49 +19,83 @@ const rePasswordLabel = document.querySelector(".re-password-label");
 const eyeIcon = document.querySelector(".eye-on-image");
 const reEyeIcon = document.querySelector(".re-eye-on-image");
 const registerButton = document.querySelector(".register-button");
-function isPasswordMatch(password, rePassword) {
-  if (password.value.trim() === rePassword.value.trim()) {
-    return true;
-  }
-  return false;
-}
-function showPasswordMatchErrorMessage(password, rePassword, repasswordLabel) {
-  if (!isPasswordMatch(password, rePassword) && !isEmpty(rePassword)) {
-    const errorMsgs = repasswordLabel.querySelector(".error-message");
-    errorMsgs.innerText = "비밀번호가맞지않습니다";
-    errorMsgs.style.color = "red";
-    rePassword.style.border = "3px solid red";
-  }
-}
-
-function alreadyUsedEmail(email, emailLabel) {
-  if (email.value.trim() === "test@codeit.com") {
-    const errorMsgs = emailLabel.querySelector(".error-message");
-    errorMsgs.innerText = "이미 사용 중인 이메일입니다";
-    errorMsgs.style.color = "red";
-    email.style.border = "3px solid red";
-  }
-}
 
 email.addEventListener("focusout", (event) => {
   event.preventDefault();
-  showEmptyErrorMessage(email, emailLabel);
-  showValidEmailErrorMessage(email, emailLabel);
-  alreadyUsedEmail(email, emailLabel);
+  const errorMsgsLabel = emailLabel.querySelector(".error-message");
+
+  for (const state of ["empty", "notValid", "alreadyUsed"]) {
+    if (state === "empty") {
+      // checker는 isEmpty함수
+      if (EMAIL_MAP[state].checker(email)) {
+        showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+        return;
+      }
+    } else if (state === "notValid") {
+      if (!EMAIL_MAP[state].checker(email)) {
+        showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+        return;
+      }
+    } else if (state === "alreadyUsed") {
+      if (EMAIL_MAP[state].checker(email)) {
+        showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+        return;
+      }
+    }
+  }
+  showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP.valid);
 });
 
 password.addEventListener("focusout", (event) => {
   event.preventDefault();
-  showEmptyErrorMessage(password, passwordLabel);
-  showValidPasswordErrorMessage(password, passwordLabel);
+  const errorMsgsLabel = passwordLabel.querySelector(".error-message");
+  for (const state of ["empty", "notValid"]) {
+    if (state === "empty") {
+      // checker는 isEmpty함수
+      if (PASSWORD_MAP[state].checker(password)) {
+        showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP[state]);
+        return;
+      }
+    } else if (state === "notValid") {
+      if (!PASSWORD_MAP[state].checker(password)) {
+        showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP[state]);
+        return;
+      }
+    }
+  }
+  showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP.valid);
 });
 
 rePassword.addEventListener("focusout", (event) => {
   event.preventDefault();
-  showEmptyErrorMessage(rePassword, rePasswordLabel);
-  showPasswordMatchErrorMessage(password, rePassword, rePasswordLabel);
+  const errorMsgsLabel = rePasswordLabel.querySelector(".error-message");
+  for (const state of ["empty", "notMatch"]) {
+    if (state === "empty") {
+      // checker는 isEmpty함수
+      console.log(REPASSWORD_MAP[state].checker);
+      if (REPASSWORD_MAP[state].checker(rePassword)) {
+        showErrorMessageEffect(
+          rePassword,
+          errorMsgsLabel,
+          REPASSWORD_MAP[state]
+        );
+        return;
+      }
+    } else if (state === "notMatch") {
+      if (!REPASSWORD_MAP[state].checker(password, rePassword)) {
+        showErrorMessageEffect(
+          rePassword,
+          errorMsgsLabel,
+          REPASSWORD_MAP[state]
+        );
+        return;
+      }
+    }
+  }
+  showErrorMessageEffect(rePassword, errorMsgsLabel, REPASSWORD_MAP.valid);
 });
 
+// 눈아이콘
 eyeIcon.addEventListener("click", (event) => {
   event.preventDefault();
   passwordVisibility(eyeIcon, password);

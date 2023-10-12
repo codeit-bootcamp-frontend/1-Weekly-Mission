@@ -1,11 +1,11 @@
 import {
+  EMAIL_MAP,
+  PASSWORD_MAP,
   isEmailValid,
   isPasswordValid,
   showErrorMessageEffect,
   isCodeItLogin,
   passwordVisibility,
-  EMAIL_MAP,
-  PASSWORD_MAP,
 } from "./common.js";
 
 const email = document.getElementById("email");

@@ -18,6 +18,13 @@ export const EMAIL_MAP = {
     textColor: "",
     borderColor: "",
   },
+
+  alreadyUsed: {
+    checker: alreadyUsedEmail,
+    message: "이미 사용 중인 이메일입니다",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
 };
 
 export const PASSWORD_MAP = {
@@ -31,6 +38,28 @@ export const PASSWORD_MAP = {
   notValid: {
     checker: isPasswordValid,
     message: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
+
+  valid: {
+    message: "",
+    textColor: "",
+    borderColor: "",
+  },
+};
+
+export const REPASSWORD_MAP = {
+  empty: {
+    checker: isEmpty,
+    message: "비밀번호확인을 입력해주세요",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
+
+  notMatch: {
+    checker: isPasswordMatch,
+    message: "비밀번호가 일치하지 않습니다",
     textColor: "red",
     borderColor: "3px solid red",
   },
@@ -56,6 +85,9 @@ export function isEmailValid(input) {
   return re.test(texts);
 }
 
+export function alreadyUsedEmail(input) {
+  return input.value.trim() === "test@codeit.com";
+}
 export function showErrorMessageEffect(input, errorMsgsLabel, state) {
   errorMsgsLabel.innerText = state.message;
   errorMsgsLabel.style.color = state.textColor;
@@ -72,7 +104,9 @@ export function isPasswordValid(input) {
     texts.length > 8
   );
 }
-
+export function isPasswordMatch(password, rePassword) {
+  return password.value.trim() === rePassword.value.trim();
+}
 export function isCodeItLogin(email, password) {
   return (
     email.value.trim() === "test@codeit.com" &&
