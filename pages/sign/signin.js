@@ -37,13 +37,13 @@ password_input.addEventListener("focusout", password_error)
 
 
 // 로그인 시도 //
-function submit_check (e) {
+function submit_check (e) {  
   if (email_input.value === "test@codeit.com" && password_input.value === "codeit101") {
     formtag.action = "/pages/folder/folder.html"
   } else {
+    e.preventDefault()
     error_occur(email_input, email_input_check, messages.email_check_error)
     error_occur(password_input, password_input_check, messages.password_check_error)
-    e.preventDefault()
   }
 }
 
