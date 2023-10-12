@@ -8,6 +8,7 @@ import {
     validateEmailType,
     validatePassword
 } from "./sign.js";
+import LocalStorage from "./localstorage.js";
 
 const loginButton = document.querySelector('.btn.login');
 
@@ -17,13 +18,38 @@ const login = (e) => {
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    if (email === "test@codeit.com" && password === "codeit101") {
-        location.href = "/folder.html";
-        return;
-    }
-
-    showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.invalid);
-    showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.invalid);
+    fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            if (response.status === 400) {
+                throw new Error("AuthApiError");
+            }
+        })
+        .then(result => {
+            const loginToken = "accessToken";
+            const {accessToken} = result.data;
+            if (LocalStorage.getItem(loginToken)) {
+                LocalStorage.removeItem(accessToken);
+            }
+            LocalStorage.saveItem(loginToken, accessToken);
+            location.href = "/folder.html";
+        })
+        .catch(error => {
+            console.error(error);
+            showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.invalid);
+            showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.invalid);
+        });
 }
 
 emailInput.addEventListener("focusout", ({target}) => {
