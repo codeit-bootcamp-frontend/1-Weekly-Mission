@@ -7,14 +7,14 @@ import {
   ERROR_PASSWORD_EMPTY,
   ERROR_PASSWORD_NOTCORRECT,
   ERROR_PASSWORD_VALIDATION,
-} from 'constants/authMessage.js'
+} from '../constants/authMessage.js'
 import {
   ERROR_CONTENT_STYLE,
   ERROR_INPUT_STYLE,
   VERIFIED_EMAIL,
   VERIFIED_PASSWORD,
-} from 'constants/common.js'
-import { existError } from 'js/error.js'
+} from '../constants/common.js'
+import { existError } from './error.js'
 
 const form = document.querySelector('.form')
 const emailInput = document.querySelector('.emailInput')
