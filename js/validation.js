@@ -1,9 +1,10 @@
 import {
-  emailInput, emailError, 
-  passwordInput, passwordError, 
-  checkPasswordInput, checkPasswordError, 
-  loginButton, joinButton, 
-  eyeButton1, eyeButton2
+  emailInput, 
+  emailError, 
+  passwordInput, 
+  passwordError, 
+  checkPasswordInput, 
+  checkPasswordError
 } from './tags.js'
 
 const borderRed = 'border-red';
@@ -49,4 +50,9 @@ function removeErrorMessage(label) {
   }
 }
 
-export { checkEmail, checkPassword, showErrorMessage, removeErrorMessage };
+export { 
+  checkEmail, 
+  checkPassword, 
+  showErrorMessage, 
+  removeErrorMessage 
+};

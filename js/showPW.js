@@ -1,6 +1,8 @@
 import {
-  passwordInput, checkPasswordInput,
-  eyeButton1, eyeButton2
+  passwordInput,
+  checkPasswordInput,
+  eyeButton1,
+  eyeButton2
 } from './tags.js';
 
 const eyeOn = 'on';

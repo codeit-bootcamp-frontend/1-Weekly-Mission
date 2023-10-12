@@ -10,8 +10,14 @@ const eyeButton1 = document.querySelector('#eye-button1');
 const eyeButton2 = document.querySelector('#eye-button2');
 
 export {
-  emailInput, emailError, 
-  passwordInput, passwordError, 
-  checkPasswordInput, checkPasswordError, 
-  loginButton, joinButton, 
-  eyeButton1, eyeButton2};
+  emailInput, 
+  emailError, 
+  passwordInput, 
+  passwordError, 
+  checkPasswordInput, 
+  checkPasswordError, 
+  loginButton, 
+  joinButton, 
+  eyeButton1, 
+  eyeButton2
+};

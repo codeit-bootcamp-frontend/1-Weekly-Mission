@@ -1,9 +1,14 @@
 import {
-  emailInput, passwordInput, loginButton, eyeButton1
+  emailInput,
+  passwordInput,
+  loginButton,
+  eyeButton1
 } from './tags.js';
 
 import {
-  checkEmail, showErrorMessage, removeErrorMessage
+  checkEmail,
+  showErrorMessage,
+  removeErrorMessage
 } from './validation.js';
 
 import { showPassword1 } from './showPW.js';
