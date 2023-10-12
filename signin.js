@@ -47,17 +47,43 @@ password.addEventListener("focusout", (event) => {
   showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP["valid"]);
 });
 
-loginButton.addEventListener("click", (event) => {
+async function postData(host, path, body) {
+  const url = `https://${host}/${path}`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json, text-plain, */*",
+    },
+    body: JSON.stringify(body),
+  };
+  const response = await fetch(url, options);
+  return response;
+}
+
+loginButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  if (isCodeItLogin(email, password)) {
-    window.location.href = window.location.origin + "/folder.html";
-  }
-  if (
-    isEmailValid(email) &&
-    isPasswordValid(password) &&
-    !isCodeItLogin(email, password)
-  ) {
-    window.location.href = window.location.origin + "/404ErrorPage.html";
+  const emailValue = email.value.trim();
+  const passwordValue = password.value.trim();
+
+  // test@codeit.com   sprint101
+  try {
+    const response = await postData("bootcamp-api.codeit.kr", "api/sign-in", {
+      email: emailValue,
+      password: passwordValue,
+    });
+
+    if (response.status === 200) {
+      window.location.href = window.location.origin + "/folder.html";
+    } else {
+      //  status가 400일떄
+      let error = new Error("Invalid login credentials");
+      error.name = "AuthApiError";
+      throw error;
+    }
+  } catch (err) {
+    alert(err.name);
+    alert(err.message);
   }
 });
 
