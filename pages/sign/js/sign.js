@@ -13,14 +13,18 @@ export function validateEmailType(input) {
         removeErrorMessage(emailInput, emailErrorMessageElement);
         return true;
     }
-    let errorMessage = "";
-    if (!input) {
-        errorMessage = errorMessages.email.empty;
-    } else if (!emailRegex.test(input)) {
-        errorMessage = errorMessages.email.typeInvalid;
-    }
+    const errorMessage = checkValidEmail(input);
     showErrorMessage(emailInput, emailErrorMessageElement, errorMessage);
     return false;
+}
+
+function checkValidEmail(input) {
+    if (!input) {
+        return errorMessages.email.empty;
+    }
+    if (!emailRegex.test(input)) {
+        return errorMessages.email.typeInvalid;
+    }
 }
 
 export function showErrorMessage(input, errorMessageElement, errorMessage) {
