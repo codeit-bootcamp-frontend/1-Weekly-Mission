@@ -34,7 +34,7 @@ const login = (e) => {
                 return response.json();
             }
             if (response.status === 400) {
-                throw new Error("AuthApiError");
+                throw new Error("AuthSignInError");
             }
         })
         .then(result => {
