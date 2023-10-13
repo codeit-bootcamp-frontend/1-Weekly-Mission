@@ -4,6 +4,7 @@ import {
     emailErrorMessage,
     showErrorMessage,
     removeErrorMessage,
+    CODEIT,
 } from './sign.js';
 
 const $pwdErrorMessage = document.querySelector('.pwd_error_message');
@@ -21,14 +22,25 @@ $pwdEyes[1].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwdCheck));
 
 
 let emailDupliValid = false;
-function emailDuplication(){
-    const existEmail = 'test@codeit.com'
-    if($email.value === existEmail){
+async function emailDuplication(){
+    try{
+        const response = await fetch(`${CODEIT}/api/check-email`,{
+            method : 'POST',
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body : JSON.stringify({"email" : $email.value})
+        })
+        const emailResponse = await response.json();
+        if(response.status == 409)
+            throw new Error(`${emailResponse.error.message}`)
+        else if(response.status == 200)
+            emailDupliValid = true;
+    }catch(error){
+        console.log(error.message)
         showErrorMessage($email,$emailErrorMessage,"이미 사용 중인 이메일입니다.");
         emailDupliValid = false;
     }
-    else
-        emailDupliValid = true;
 }
 $email.addEventListener("focusout", emailDuplication);
 

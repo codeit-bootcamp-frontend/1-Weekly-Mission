@@ -3,7 +3,8 @@ import {
     emailErrorMessage,
     pwdEyeOnOff,
     showErrorMessage,
-    removeErrorMessage
+    removeErrorMessage,
+    CODEIT
 
 } from './sign.js';
 
@@ -38,7 +39,7 @@ async function signinValidCheck(e){
                 "email" : $email.value,
                 "password" : $pwd.value
             }
-            const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in",{
+            const response = await fetch(`${CODEIT}/api/sign-in`,{
                 method : "POST",
                 headers: {
                     "Content-Type": "application/json",

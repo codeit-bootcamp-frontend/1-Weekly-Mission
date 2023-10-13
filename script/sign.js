@@ -1,3 +1,4 @@
+export const CODEIT = "https://bootcamp-api.codeit.kr"
 export let emailValid = false;
 
 const REGEMAIL = /^[A-Za-z0-9\-]+@[A-Za-z0-9]+\.[a-z]/;
