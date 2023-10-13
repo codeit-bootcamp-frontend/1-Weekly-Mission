@@ -1,4 +1,4 @@
-const ERROR_MSGS = {
+const ERROR_MESSAGES = {
   emptyInput: {
     email: "이메일을 입력해주세요.",
     password: "비밀번호를 입력해주세요.",
@@ -8,7 +8,7 @@ const ERROR_MSGS = {
     email: "올바른 이메일 주소가 아닙니다.",
     password: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
     text: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-    "password-check": "비밀번호가 일치하지 않아요.",
+    passwordCheck: "비밀번호가 일치하지 않아요.",
   },
   invalidLogin: {
     email: "이메일을 확인해주세요.",
@@ -19,16 +19,23 @@ const ERROR_MSGS = {
   },
 };
 
-const paintErrorMsg = ({ error, type, target }) => {
-  target.classList.add("form__input-box--error");
-  const $errorMsg = target.parentElement.querySelector(".error-msg");
-  $errorMsg.textContent = ERROR_MSGS[error][type];
+const ERROR_MESSAGE_STYLE = "error-message";
+const ERROR_INPUT_STYLE = "form__input-box--error";
+
+const paintErrorMessage = ({ error, type, target }) => {
+  target.classList.add(ERROR_INPUT_STYLE);
+  const $errorMessage = target.parentElement.querySelector(
+    `.${ERROR_MESSAGE_STYLE}`
+  );
+  $errorMessage.textContent = ERROR_MESSAGES[error][type];
 };
 
-const removeErrorMsg = (target) => {
-  target.classList.remove("form__input-box--error");
-  const $errorMsg = target.parentElement.querySelector(".error-msg");
-  $errorMsg.textContent = "";
+const removeErrorMessage = (target) => {
+  target.classList.remove(ERROR_INPUT_STYLE);
+  const $errorMessage = target.parentElement.querySelector(
+    `.${ERROR_MESSAGE_STYLE}`
+  );
+  $errorMessage.textContent = "";
 };
 
-export { paintErrorMsg, removeErrorMsg };
+export { paintErrorMessage, removeErrorMessage };
