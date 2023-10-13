@@ -103,13 +103,13 @@ label {
 
 /* 에러메세지 발생 */
 .email-field.error input,
-.pwd-field.error input,
+.password-field.error input,
 .pwd-confirm-field.error input {
   border-color: red;
   margin-bottom: 5px;
 }
 .email-field.error .email-error-message,
-.pwd-field.error .error,
+.password-field.error .password-error-message,
 .pwd-confirm-field.error .error {
   font-size: 14px;
   color: red;

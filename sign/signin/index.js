@@ -2,7 +2,7 @@ import { isValidEmail } from '../../utils/validation.js';
 
 
 // const emailInput = document.querySelector('#email');
-const pwdInput = document.querySelector('#password');
+// const pwdInput = document.querySelector('#password');
 const loginBtn = document.querySelector('.btn-login');
 const pwdToggleIcon = document.querySelector('#toggle-eye');
 
@@ -23,16 +23,33 @@ function checkEmailValidation() {
   }
 }
 
-function addErrorMessage(inputField, errorMessage) {
+
+const passwordField = document.querySelector('.password-field');
+const passwordInput = document.querySelector('#password');
+const passwordErrorMessage = document.querySelector('.password-error-message');
+
+function checkPwdValidation() {
+  const password = passwordInput.value.trim();
+
+  if (password === '') {
+    addErrorMessage(passwordField, passwordErrorMessage, '비밀번호를 입력해주세요.');
+  } else {
+    removeErrorMessage(passwordField, passwordErrorMessage);
+  }
+};
+
+
+function addErrorMessage(inputField, errorElement, errorMessage) {
   inputField.classList.add('error');
-  emailErrorMessage.textContent = errorMessage;
+  errorElement.textContent = errorMessage;
 }
 
-function removeErrorMessage(inputField, errorMessage) {
+function removeErrorMessage(inputField, errorElement) {
   inputField.classList.remove('error');
-  errorMessage.textContent = '';
+  errorElement.textContent = '';
 }
 
+passwordInput.addEventListener("focusout", checkPwdValidation);
 
 const submit = (e) => {
   e.preventDefault();
@@ -58,6 +75,6 @@ const toggleEyeIcon = () => {
 }
 
 emailInput.addEventListener("focusout", checkEmailValidation);
-pwdInput.addEventListener("focusout", checkPwdValidation);
+// passwordInput.addEventListener("focusout", checkPwdValidation);
 pwdToggleIcon.addEventListener("click", toggleEyeIcon);
 loginBtn.addEventListener('click', submit);
