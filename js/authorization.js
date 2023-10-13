@@ -92,8 +92,6 @@ const checkPasswordMatch = () => {
 };
 
 const togglePasswordVisibility = (event) => {
-  event.preventDefault();
-
   const passwordInput =
     event.currentTarget.parentElement.querySelector(".form__input-box");
   const togglePasswordImg = event.currentTarget.parentElement.querySelector(
@@ -156,10 +154,6 @@ const handleSignupSubmit = (event) => {
 const initSignin = () => {
   for (const input of authInputs) {
     input.addEventListener("focusout", ({ target }) => checkEmptyInput(target));
-    input.addEventListener(
-      "keypress",
-      (event) => event.code === "Enter" && handleSigninSubmit(event)
-    );
   }
 
   authEmail.addEventListener("focusout", ({ target }) => validateEmail(target));
@@ -168,13 +162,6 @@ const initSignin = () => {
 };
 
 const initSignup = () => {
-  for (const input of authInputs) {
-    input.addEventListener(
-      "keypress",
-      (event) => event.code === "Enter" && handleSignupSubmit(event)
-    );
-  }
-
   authEmail.addEventListener("focusout", ({ target }) =>
     checkEmptyInput(target)
   );
