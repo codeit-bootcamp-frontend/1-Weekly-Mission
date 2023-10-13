@@ -4,10 +4,8 @@ const passwordConfirmInput = document.querySelector('.password-confirm');
 const form = document.querySelector('form');
 const eyeIcons = document.querySelectorAll('.eye-icon');
 
-const emailRegex = new RegExp(/^[a-z\d]+@[a-z]+\.[a-z]{2,}$/, 'i');
-const passwordRegex = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
-const email = 'test@codeit.com';
-const password = 'codeit101';
+const EMAIL_REGEX = new RegExp(/^[a-z\d]+@[a-z]+\.[a-z]{2,}$/, 'i');
+const PASSWORD_REGEX = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/);
 
 const editErrorStatus = (element, message='') => {
   if (message) {
@@ -34,4 +32,4 @@ const toggleEyeButton = (e) => {
   eyeOn.classList.toggle('display-none');
 }
 
-export { emailInput, passwordInput, passwordConfirmInput, form, eyeIcons, emailRegex, passwordRegex, email, password, editErrorStatus, toggleEyeButton };
+export { emailInput, passwordInput, passwordConfirmInput, form, eyeIcons, EMAIL_REGEX, PASSWORD_REGEX, editErrorStatus, toggleEyeButton };

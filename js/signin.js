@@ -3,9 +3,7 @@ import {
   passwordInput,
   form,
   eyeIcons,
-  emailRegex,
-  // email as correctEmail,
-  // password as correctPassword,
+  EMAIL_REGEX,
   editErrorStatus,
   toggleEyeButton
 } from '/js/utils.js';
@@ -13,7 +11,7 @@ import {
 const checkEmailInput = (e) => {
   if (!e.target.value) {
     editErrorStatus(e.target, '이메일을 입력해주세요.');
-  } else if (!emailRegex.test(e.target.value)) {
+  } else if (!EMAIL_REGEX.test(e.target.value)) {
     editErrorStatus(e.target, '올바른 이메일 주소가 아닙니다.');
   } else {
     editErrorStatus(e.target);
@@ -55,12 +53,6 @@ const requestSignIn = async () => {
 const trySignIn = (e) => {
   e.preventDefault();
   requestSignIn();
-  // if (emailInput.value === correctEmail && passwordInput.value === correctPassword) {
-  //   location.href = '/html/folder.html';
-  // } else {
-  //   editErrorStatus(emailInput, '이메일을 확인해주세요.');
-  //   editErrorStatus(passwordInput, '비밀번호를 확인해주세요.');
-  // }
 }
 
 emailInput.addEventListener('focusout', checkEmailInput);
