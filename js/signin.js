@@ -4,8 +4,8 @@ import {
   form,
   eyeIcons,
   emailRegex,
-  email as correctEmail,
-  password as correctPassword,
+  // email as correctEmail,
+  // password as correctPassword,
   editErrorStatus,
   toggleEyeButton
 } from '/js/utils.js';
@@ -28,15 +28,39 @@ const checkPasswordInput = (e) => {
   }
 }
 
+const requestSignIn = async () => {
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          email: emailInput.value,
+          password: passwordInput.value,
+      }),
+    });
+    
+    if (response.status === 200) {
+      location.href = '/html/folder.html';
+    } else {
+      editErrorStatus(emailInput, '이메일을 확인해주세요.');
+      editErrorStatus(passwordInput, '비밀번호를 확인해주세요.');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const trySignIn = (e) => {
   e.preventDefault();
-
-  if (emailInput.value === correctEmail && passwordInput.value === correctPassword) {
-    location.href = '/html/folder.html';
-  } else {
-    editErrorStatus(emailInput, '이메일을 확인해주세요.');
-    editErrorStatus(passwordInput, '비밀번호를 확인해주세요.');
-  }
+  requestSignIn();
+  // if (emailInput.value === correctEmail && passwordInput.value === correctPassword) {
+  //   location.href = '/html/folder.html';
+  // } else {
+  //   editErrorStatus(emailInput, '이메일을 확인해주세요.');
+  //   editErrorStatus(passwordInput, '비밀번호를 확인해주세요.');
+  // }
 }
 
 emailInput.addEventListener('focusout', checkEmailInput);
