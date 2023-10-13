@@ -2,20 +2,19 @@ import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
 import { addErrorMsg, removeErrorMsg, checkErrorMsg } from './errorMsg.js';
 import { emailValidation } from "./validations.js";
 import { toggleEye } from "./toggleEye.js";
+import {post} from "./api.js";
 
 const [loginEmailInput, loginPwInput] = document.querySelectorAll('input');
 const loginForm = document.querySelector('form');
 const loginError = document.querySelectorAll('.error_msg');
 const loginEyeIcon = document.querySelector('.eye_icon');
 
-const TEST_EMAIL = 'test@codeit.com';
-const TEST_PW = 'codeit101';
-
 let loginEyeFlag = false;
+
 /**
  * 특정 로그인 시도 시 folder 페이지로 이동하는 함수
  */
-function login(event){
+async function login(event){
     event.preventDefault();
     
     emptyInputEmail(event);
@@ -26,9 +25,8 @@ function login(event){
     
     if(checkErrorMsg(Array.from(loginError))) return;
 
-    if(loginEmailInput.value === TEST_EMAIL && loginPwInput.value === TEST_PW) {
-        location.href = '/folder.html';
-    }
+    const isSuccessful = await post(loginEmailInput.value, loginPwInput.value) == 200;
+    if(isSuccessful) window.location.href = '/folder.html';
     else{
         addErrorMsg(loginEmailInput, "이메일을 확인해주세요.");
         addErrorMsg(loginPwInput, "비밀번호를 확인해주세요.");
