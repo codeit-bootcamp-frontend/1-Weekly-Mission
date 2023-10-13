@@ -20,7 +20,7 @@ const passwordRepeatEyeButton = document.querySelector('.eye-off-check');
 
 async function validateSignUpEmail(input) {
     if (validateEmailType(input)) {
-        await fetch(`${domain}/check-email`, {
+        fetch(`${domain}/check-email`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
