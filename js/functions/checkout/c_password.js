@@ -1,3 +1,6 @@
+import { reg } from "../../constants/regExp.js";
+let userPw
+
 export const regPassword = (obj) => {
   if (obj.name === 'password' && !reg.password.test(obj.value)) {
     obj.errorType = "typeError";

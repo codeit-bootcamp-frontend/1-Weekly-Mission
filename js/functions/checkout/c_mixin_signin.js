@@ -4,7 +4,7 @@ import { regEmail, isVaildEmail } from "./c_email.js";
 import { common_preventDefault } from "./c_mixin_common.js";
 
 
-export const siginin_allCheck = (obj) => {
+const signin_allCheck = (obj) => {
   for (const $input of obj.inputs) {
     switch ($input.name) {
       case 'email':
@@ -18,7 +18,7 @@ export const siginin_allCheck = (obj) => {
   return obj
 }
 
-export const siginin_accountCheck = (obj) => {
+const signin_accountCheck = (obj) => {
   for (const $input of obj.inputs) {
     switch ($input.name) {
       case 'email':
@@ -31,7 +31,6 @@ export const siginin_accountCheck = (obj) => {
   }
   return obj
 }
-
 export const signin_email = pipe(
   locator,
   isValue,
@@ -49,9 +48,6 @@ export const signin_password = pipe(
 export const signin_submit = pipe(
   locator,
   common_preventDefault,
-  siginin_allCheck,
+  signin_allCheck,
   isError,
-  siginin_accountCheck,
-  isError,
-  // goToFolder
 )

@@ -1,4 +1,5 @@
 import { reg } from "../../constants/regExp.js";
+import { dev } from "../../constants/account.js";
 
 export const regEmail = (obj) => {
   if (obj.name === 'email' && !reg.email.test(obj.value)) {
@@ -8,7 +9,7 @@ export const regEmail = (obj) => {
 }
 
 export const isAvailableEmail = (obj) => {
-  if (isSignup && obj.name === 'email' && obj.value === dev.email) {
+  if (obj.name === 'email' && obj.value === dev.email) {
     obj.errorType = "occupiedError"
   }
   return obj

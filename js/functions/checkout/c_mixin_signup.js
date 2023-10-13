@@ -27,8 +27,6 @@ export const signup_email = pipe(
   printError,
   regEmail,
   printError,
-  isAvailableEmail,
-  printError
 )
 
 export const signup_password = pipe(
@@ -52,6 +50,5 @@ export const signup_sumbit = pipe(
   locator,
   common_preventDefault,
   signup_allCheck,
-  isError,
-  // goToFolder
+  isError
 )
