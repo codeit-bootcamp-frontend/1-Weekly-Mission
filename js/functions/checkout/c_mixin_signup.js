@@ -1,6 +1,6 @@
 import { pipe } from "../default.js";
 import { locator, isValue, printError, isError } from "./c_common.js";
-import { regEmail, isAvailableEmail } from "./c_email.js";
+import { regEmail } from "./c_email.js";
 import { regPassword, savePassword, isMatchedPassword } from "./c_password.js";
 import { common_preventDefault } from "./c_mixin_common.js";
 
@@ -50,5 +50,4 @@ export const signup_sumbit = pipe(
   locator,
   common_preventDefault,
   signup_allCheck,
-  isError
 )

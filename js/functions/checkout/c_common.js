@@ -65,6 +65,3 @@ export const isError = (obj) => {
     return null;
   return obj;
 }
-
-const goToFolder = (obj) => {
-}

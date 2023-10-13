@@ -1,6 +1,6 @@
 import { pipe } from "../default.js";
-import { isValue, printError, isError, locator } from "./c_common.js";
-import { regEmail, isVaildEmail } from "./c_email.js";
+import { isValue, printError, locator } from "./c_common.js";
+import { regEmail } from "./c_email.js";
 import { common_preventDefault } from "./c_mixin_common.js";
 
 
@@ -18,19 +18,6 @@ const signin_allCheck = (obj) => {
   return obj
 }
 
-const signin_accountCheck = (obj) => {
-  for (const $input of obj.inputs) {
-    switch ($input.name) {
-      case 'email':
-        printError(isVaildEmail($input));
-        break;
-      case 'password':
-        printError(isVaildPassword($input));
-        break;
-    }
-  }
-  return obj
-}
 export const signin_email = pipe(
   locator,
   isValue,
@@ -49,5 +36,4 @@ export const signin_submit = pipe(
   locator,
   common_preventDefault,
   signin_allCheck,
-  isError,
 )

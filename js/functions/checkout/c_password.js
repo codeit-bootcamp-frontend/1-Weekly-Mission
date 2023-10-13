@@ -19,8 +19,3 @@ export const isMatchedPassword = (obj) => {
   }
   return obj
 }
-
-export const isVaildPassword = (obj) => {
-  if (obj.value !== dev.password) obj.errorType = 'invaildError';
-  return obj
-}
