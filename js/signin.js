@@ -36,7 +36,7 @@ function valiDatePassword() {
   }
 }
 
-function getLogin(e) {
+function login(e) {
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
 
@@ -54,6 +54,6 @@ function getLogin(e) {
 
 emailInput.addEventListener('focusout', valiDateEmail);
 passwordInput.addEventListener('focusout', valiDatePassword);
-passwordInput.addEventListener('keypress', (e) => e.code === 'Enter' && getLogin());
-loginButton.addEventListener('click', getLogin);
+passwordInput.addEventListener('keypress', (e) => e.code === 'Enter' && login());
+loginButton.addEventListener('click', login);
 eyeButtonInPassword.addEventListener('click', togglePasswordInPassword);

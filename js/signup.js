@@ -58,7 +58,7 @@ function includeErrorMessageClass(input) {
   return input.className.includes(errorMessageClass);
 }
 
-function getJoin(e) {
+function join(e) {
   const emailValue = emailInput.value;
 
   e.preventDefault();
@@ -77,7 +77,7 @@ function getJoin(e) {
 emailInput.addEventListener('focusout', valiDateEmail);
 passwordInput.addEventListener('focusout', valiDatePassword);
 passwordCheckInput.addEventListener('focusout', valiDatePasswordCheck);
-passwordCheckInput.addEventListener('keypress', (e) => e.code === 'Enter' && getJoin());
-joinButton.addEventListener('click', getJoin);
+passwordCheckInput.addEventListener('keypress', (e) => e.code === 'Enter' && join());
+joinButton.addEventListener('click', join);
 eyeButtonInPassword.addEventListener('click', togglePasswordInPassword);
 eyeButtonInPasswordCheck.addEventListener('click', togglePasswordInPasswordCheck);
