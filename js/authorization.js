@@ -107,29 +107,45 @@ const togglePasswordVisibility = (event) => {
   }
 };
 
-const redirect = () => {
+const redirect = async () => {
   location.href = "/pages/folder.html";
 };
 
-const handleSigninSubmit = (event) => {
+const handleSigninSubmit = async (event) => {
   event.preventDefault();
 
-  if (
-    authEmail.value === ACCOUNT.email &&
-    authPassword.value === ACCOUNT.password
-  ) {
+  const account = { email: authEmail.value, password: authPassword.value };
+
+  try {
+    const signinResponse = await fetch(
+      "https://bootcamp-api.codeit.kr/api/sign-in",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(account),
+      }
+    );
+    if (signinResponse.status === 400) {
+      throw new Error("invalidCredientials");
+    }
     redirect();
-  } else {
-    paintErrorMessage({
-      error: "invalidLogin",
-      type: "email",
-      target: authEmail,
-    });
-    paintErrorMessage({
-      error: "invalidLogin",
-      type: "password",
-      target: authPassword,
-    });
+  } catch (error) {
+    if (error.message === "invalidCredientials") {
+      paintErrorMessage({
+        error: "invalidLogin",
+        type: "email",
+        target: authEmail,
+      });
+      paintErrorMessage({
+        error: "invalidLogin",
+        type: "password",
+        target: authPassword,
+      });
+    } else {
+      alert("Error");
+    }
   }
 };
 
