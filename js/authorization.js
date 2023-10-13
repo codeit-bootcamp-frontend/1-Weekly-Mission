@@ -55,7 +55,7 @@ const validatePassword = (target) => {
   }
 };
 
-const isEmailAvailable = (target) => {
+const checkEmailAvailability = (target) => {
   if (!validateEmailPattern(target.value)) {
     return;
   }
@@ -133,7 +133,7 @@ const handleSignupSubmit = (event) => {
   checkEmptyInput(authEmail);
   validateEmail(authEmail);
   validatePassword(authPassword);
-  isEmailAvailable(authEmail);
+  checkEmailAvailability(authEmail);
   checkPasswordMatch();
 
   for (const input of authInputs) {
@@ -174,7 +174,7 @@ const initSignup = () => {
     validatePassword(target)
   );
   authEmail.addEventListener("focusout", ({ target }) =>
-    isEmailAvailable(target)
+    checkEmailAvailability(target)
   );
   authPassword.addEventListener("focusout", ({ target }) =>
     checkPasswordMatch(target)
