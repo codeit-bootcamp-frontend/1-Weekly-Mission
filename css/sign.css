@@ -24,7 +24,7 @@ header {
     
 }
 
-.signup-question {
+.sign-question {
     color: var(--black, #000);
     /* Linkbrary/body1-regular */
     font-family: Pretendard;
@@ -35,7 +35,7 @@ header {
 
 }
 
-.going-to-signup {
+.going-to-sign {
     color: var(--linkbrary-primary-color, #6D6AFE);
 
     /* Linkbrary/body 1-semibold */
@@ -76,7 +76,7 @@ input {
     margin-bottom: 20px;
 }
 
-button {
+.cta {
     display: flex;
     padding: 16px 20px;
     justify-content: center;
@@ -92,7 +92,21 @@ button {
     line-height: normal;
 }
 
-.login-as-sns {
+.sign-input-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.sign-password {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+
+.sns-box {
     display: flex;
     border-radius: 8px;
     border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
@@ -112,12 +126,16 @@ button {
     gap: 16px;
 }
 
-.eye-off {
-    width: 16px;
-    height: 16px;
-    position: relative;
-    top: -63px;
-    left: 370px
+.eye-button {
+  position: absolute;
+  top: 5.8rem;
+  right: 1.5rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: none;
+  padding: unset;
+  background-color: unset;
+  cursor: pointer;
 }
 
 input:focus{outline-color: #6D6AFE;}
@@ -135,6 +153,7 @@ input:focus{outline-color: #6D6AFE;}
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-bottom: 10px;
 }
 
 .line {

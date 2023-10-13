@@ -5,36 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linkbrary/signup</title>
     <link rel="short icon" href="#" />
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="media.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/sign.css" />
+    <link rel="stylesheet" href="../css/media.css" />
   </head>
   <body>
     <header>
-      <a href="/"><img class="logo" src="logo.svg" alt="사이트 로고" /></a>
-      <span class="signin-question">
+      <a href="/"
+        ><img class="logo" src="../logo/logo.svg" alt="사이트 로고"
+      /></a>
+      <span class="sign-question">
         이미 회원이신가요?
-        <a class="going-to-signin" href="../signin/"> 로그인 하기 </a>
+        <a class="going-to-sign" href="../signin/"> 로그인 하기 </a>
       </span>
     </header>
     <form>
-      <label for="email">이메일</label>
-      <input id="email" name="email" />
-      <label for="password">비밀번호</label>
-      <input id="password" name="password" type="password" />
-      <img class="eye-off" src="eye-off.svg" />
-      <label for="repassword">비밀번호 확인</label>
-      <input id="rePassword" name="password" type="password" />
-      <img class="eye-off second" src="eye-off.svg" />
-      <button>회원가입</button>
-      <div class="signup-as-sns">
+      <div class="sign-input-box sign-email">
+        <label for="email">이메일</label>
+        <input id="email" name="email" />
+      </div>
+      <div class="sign-input-box sign-password">
+        <label for="password">비밀번호</label>
+        <input id="password" name="password" type="password" />
+        <button id="password-toggle" class="eye-button" type="button">
+          <img src="../logo/eye-off.svg" />
+        </button>
+      </div>
+      <div class="sign-input-box sign-password">
+        <label for="repassword">비밀번호 확인</label>
+        <input id="rePassword" name="password" type="password" />
+        <button id="password-toggle" class="eye-button second" type="button">
+          <img src="../logo/eye-off.svg" />
+        </button>
+      </div>
+      <button class="cta" type="submit">로그인</button>
+      <div class="sns-box">
         다른 방식으로 가입하기
         <div class="sns">
           <a href="https://google.com"
-            ><img class="sns-logo" src="google.svg" alt="구글 로고"
+            ><img class="sns-logo" src="../logo/google.svg" alt="구글 로고"
           /></a>
           <a href="https://www.kakaocorp.com/page/"
-            ><img class="sns-logo" src="kakao.svg" alt="카카오톡 로고"
+            ><img class="sns-logo" src="../logo/kakao.svg" alt="카카오톡 로고"
           /></a>
         </div>
       </div>
