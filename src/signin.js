@@ -8,8 +8,9 @@ import {
 
 const emailInput = document.querySelector("#email");
 const emailErrorMessage = document.querySelector("#email-error-message");
-emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
-function validateEmailInput(email) {
+emailInput.addEventListener("focusout", validateEmailInput);
+function validateEmailInput({target}) {
+  const email = target.value;
   if (email === "") {
     setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 입력해주세요.");
     return;

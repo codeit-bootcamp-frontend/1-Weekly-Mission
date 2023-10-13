@@ -6,10 +6,13 @@ import {
   TEST_USER,
 } from "./utils.js";
 
+import {PATTERN1, PATTERN2, PATTERN3} from "./const.js";
+
 const emailInput = document.querySelector("#email");
 const emailErrorMessage = document.querySelector("#email-error-message");
-emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
-function validateEmailInput(email) {
+emailInput.addEventListener("focusout", validateEmailInput);
+function validateEmailInput({target}) {
+  const email = target.value;
   if (email === "") {
     setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 입력해주세요.");
     return;
@@ -38,7 +41,7 @@ function validatePasswordInput(password) {
     );
     return;
   }
-  if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password) || /^\d+$/.test(password)) {
+  if (password.length < 8 || !PATTERN1.test(password) || !PATTERN2.test(password) || PATTERN3.test(password)) {
     setInputError(
       { input: passwordInput, errorMessage: passwordErrorMessage },
       "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요."
@@ -62,27 +65,14 @@ function isSamePasswordInput(password) {
   removeInputError({ input: passwordConfirmInput, errorMessage: passwordErrorMessage2 });
 }
 
-/*const passwordToggleButton = document.querySelector("#password-toggle");
-passwordToggleButton.addEventListener("click", () =>
-  togglePassword(passwordInput, passwordToggleButton)
-);*/
-
-/*const passwordToggleButtons = document.querySelectorAll(".password-toggle");
-passwordToggleButtons.forEach((button) => {
-  button.addEventListener("click", () =>
-  togglePassword(passwordConfirmInput, button))
-  button.addEventListener("click", () => 
-  togglePassword(passwordInput, button)) 
-});*/
-
 const passwordToggleButtons = document.querySelectorAll(".password-toggle");
-const FirstEyeToggleButton = passwordToggleButtons[0];
-const SecondEyeToggleButton = passwordToggleButtons[1];
-FirstEyeToggleButton.addEventListener('click', () =>
-  togglePassword(passwordInput, FirstEyeToggleButton)
+const firstEyeToggleButton = passwordToggleButtons[0];
+const secondEyeToggleButton = passwordToggleButtons[1];
+firstEyeToggleButton.addEventListener('click', () =>
+  togglePassword(passwordInput, firstEyeToggleButton)
 );
-SecondEyeToggleButton.addEventListener('click', () =>
-  togglePassword(passwordConfirmInput, SecondEyeToggleButton)
+secondEyeToggleButton.addEventListener('click', () =>
+  togglePassword(passwordConfirmInput, secondEyeToggleButton)
 );
 
 const signForm = document.querySelector("#form");
@@ -98,9 +88,4 @@ function submitForm(event) {
     location.href = "/folder";
     return;
   }
-  /*setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
-  setInputError(
-    { input: passwordInput, errorMessage: passwordErrorMessage },
-    "비밀번호를 확인해주세요."
-  );*/
 }
