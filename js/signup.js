@@ -6,20 +6,40 @@ import {
   eyeIcons,
   emailRegex,
   passwordRegex,
-  email as existingEmail,
+  // email as existingEmail,
   editErrorStatus,
   toggleEyeButton
 } from '/js/utils.js';
+
+const checkDuplicationEmail = async () => {
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: emailInput.value,
+      }),
+    });
+
+    if (response.status === 409) {
+      editErrorStatus(emailInput, '이미 사용 중인 이메일입니다.');
+    } else {
+      editErrorStatus(emailInput);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 const checkEmail = (email) => {
   if (!email) {
     editErrorStatus(emailInput, '이메일을 입력해주세요.');
   } else if (!emailRegex.test(email)) {
     editErrorStatus(emailInput, '올바른 이메일 주소가 아닙니다.');
-  } else if (email === existingEmail) {
-    editErrorStatus(emailInput, '이미 사용 중인 이메일입니다.');
   } else {
-    editErrorStatus(emailInput);
+    checkDuplicationEmail();
   }
 };
 

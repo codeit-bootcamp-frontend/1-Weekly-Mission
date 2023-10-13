@@ -36,8 +36,8 @@ const requestSignIn = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-          email: emailInput.value,
-          password: passwordInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
       }),
     });
     
