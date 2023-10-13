@@ -1,29 +1,40 @@
 import { commonInputCheck, signupInputCheck, displayLoginFailedError } from "./errorHandle.js";
-import { user } from "./db/users.js";
 
 
-function loginAuthentication(e) {
+async function loginAuthentication(e) {
   e.preventDefault();
   const { target: { elements } } = e;
   const [$emailInput, $passwordInput] = elements;
-  //console.log($emailInput, $passwordInput);
 
   if (commonInputCheck($emailInput) || commonInputCheck($passwordInput)) {
-    
     return;
   }
 
-  if ($emailInput.value === user.email && $passwordInput.value === user.password) {
-    window.location.href = "/folder";
-    return;
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: $emailInput.value, password: $passwordInput.value })
+    });
+
+    if (response.ok) {
+      window.location.href = "/folder";
+    }
+
+  }
+  catch (error) {
+    displayLoginFailedError();
   }
 
-
-  displayLoginFailedError();
 };
 
 
-function signupAuthentication(e) {
+
+
+
+async function signupAuthentication(e) {
   e.preventDefault();
   const { target: { elements } } = e;
   const [$emailInput, $passwordInput] = elements;
@@ -31,7 +42,25 @@ function signupAuthentication(e) {
   if (signupInputCheck($emailInput) || signupInputCheck($passwordInput)) {
     return;
   }
-  window.location.href = "/folder";
+
+  console.log($emailInput.value);
+  console.log($passwordInput.value);
+  try {
+
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email: $emailInput.value, password: $passwordInput.value })
+    });
+
+    console.log(response);
+    if (response.ok) {
+      window.location.href = "/folder";
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
 
 };
 

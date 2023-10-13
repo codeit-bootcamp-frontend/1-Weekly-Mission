@@ -1,7 +1,6 @@
 import { $, $all } from "./utils.js";
 import { isValidEmail, isValidPassword } from "./inputValidation.js";
 import { displayError } from "./utils.js";
-import { user } from "./db/users.js";
 const errorMessages = {
 
   emptyInput: {
@@ -29,13 +28,21 @@ function isEmptyInput(target) {
 }
 
 
-function isDuplicatedEmail({ value }) {
-  return value === user.email;
+async function isDuplicatedEmail({ value }) {
+  const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ value })
+  });
+
+  if (response.ok) {
+    displayError(errorLocation, errorMessages.duplicateEmail);
+  }
+  return;
 }
 
 
 function commonInputCheck(target) {
-
   const { id, value } = target;
   const errorLocation = getErrorLocation(target);
 
@@ -54,7 +61,6 @@ function commonInputCheck(target) {
 
 
 function signupInputCheck(target) {
-
   commonInputCheck(target);
 
   const { id, value } = target;
@@ -62,11 +68,7 @@ function signupInputCheck(target) {
 
   switch (id) {
     case "email":
-      if (!isDuplicatedEmail(target)) {
-        return;
-      }
-
-      displayError(errorLocation, errorMessages.duplicateEmail);
+      isDuplicatedEmail(target);
       break;
 
     case "password":
