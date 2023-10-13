@@ -23,9 +23,6 @@ $email.after($emailErrorMsg);
 $password.after($passwordErrorMsg);
 $doubleCheckPw.after($doubleCheckPwErrorMsg);
 
-// toggleDoubleCheckPwVisibility() 에서 쓰임
-let toggleDoubleCheckPwVisible = false;
-
 const deleteDoubleCheckPwError = () => {
   $doubleCheckPwErrorMsg.textContent = "";
   $doubleCheckPw.classList.remove("error-border");
@@ -120,27 +117,6 @@ const checkAllInput = () => {
   }
 };
 
-// 비밀번호 확인란의 비번 보이기 토글버튼
-const toggleDoubleCheckPwVisibility = () => {
-  if (!toggleDoubleCheckPwVisible) {
-    // 비밀번호 보이게 하기
-    $doubleCheckPwInvisible.setAttribute(
-      "src",
-      "../assets/images/svg/eye-on.svg"
-    );
-    $doubleCheckPw.setAttribute("type", "text");
-    toggleDoubleCheckPwVisible = true;
-  } else {
-    // 비밀번호 가리기
-    $doubleCheckPwInvisible.setAttribute(
-      "src",
-      "../assets/images/svg/eye-off.svg"
-    );
-    $doubleCheckPw.setAttribute("type", "password");
-    toggleDoubleCheckPwVisible = false;
-  }
-};
-
 const emailInputEventHandler = (event) => {
   event.preventDefault();
   checkEmailInput(event);
@@ -159,12 +135,8 @@ const formSubmitEventHandler = (event) => {
   checkAllInput();
 };
 
-const pwInvisibleEventHandler = () => {
-  togglePwVisibility();
-};
-
-const doubleCheckPwInvisibleEventHandler = () => {
-  toggleDoubleCheckPwVisibility();
+const pwInvisibleEventHandler = (event) => {
+  togglePwVisibility(event);
 };
 
 $email.addEventListener("blur", emailInputEventHandler);
@@ -172,7 +144,4 @@ $password.addEventListener("blur", passwordInputEventHandler);
 $doubleCheckPw.addEventListener("blur", doubleCheckPwInputEventHandler);
 $form.addEventListener("submit", formSubmitEventHandler);
 $pwInvisible.addEventListener("click", pwInvisibleEventHandler);
-$doubleCheckPwInvisible.addEventListener(
-  "click",
-  doubleCheckPwInvisibleEventHandler
-);
+$doubleCheckPwInvisible.addEventListener("click", pwInvisibleEventHandler);
