@@ -120,33 +120,28 @@ reEyeIcon.addEventListener("click", (event) => {
 registerButton.addEventListener("click", async (event) => {
   event.preventDefault();
   // const emailValue = email.value;
-  if (isEmailValid(email) && isPasswordValid(password)) {
+  if (
+    isEmailValid(email) &&
+    isPasswordValid(password) &&
+    isPasswordMatch(password, rePassword)
+  ) {
     try {
       const emailValue = email.value.trim();
       const passwordValue = password.value.trim();
-      console.log(emailValue, passwordValue);
       const response = await postData("bootcamp-api.codeit.kr", "api/sign-up", {
         email: emailValue,
         password: passwordValue,
       });
-      // console.log(response); 400에러가 자꾸 나옴
-      // if (response.status === 200 && isEmailValid(emailValue)) {
-      //   window.location.href = window.location.origin + "/folder.html";
-      // } else {
-      //   //  status가 400일떄
-      //   let error = new Error("올바른 이메일이 아닙니다");
-      //   throw error;
-      // }
+      if (response.status === 200) {
+        window.location.href = window.location.origin + "/folder.html";
+      } else {
+        let error = new Error("올바른이메일이 아닙니다");
+        error.name = "AuthApiError";
+        throw error;
+      }
     } catch (err) {
+      alert(err.name);
       alert(err.message);
     }
   }
-
-  // if (
-  //   isEmailValid(email) &&
-  //   isPasswordValid(password) &&
-  //   isPasswordMatch(password, rePassword)
-  // ) {
-  //   window.location.href = window.location.origin + "/folder.html";
-  // }
 });

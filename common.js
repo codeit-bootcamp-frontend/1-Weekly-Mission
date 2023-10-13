@@ -19,12 +19,12 @@ export const EMAIL_MAP = {
     borderColor: "",
   },
 
-  // alreadyUsed: {
-  //   checker: alreadyUsedEmail,
-  //   message: "이미 사용 중인 이메일입니다",
-  //   textColor: "red",
-  //   borderColor: "3px solid red",
-  // },
+  alreadyUsed: {
+    // checker: alreadyUsedEmail,
+    message: "이미 사용 중인 이메일입니다",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
 };
 
 export const PASSWORD_MAP = {

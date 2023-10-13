@@ -6,6 +6,7 @@ import {
   showErrorMessageEffect,
   isCodeItLogin,
   passwordVisibility,
+  postData,
 } from "./common.js";
 
 const email = document.getElementById("email");
@@ -47,20 +48,6 @@ password.addEventListener("focusout", (event) => {
   showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP["valid"]);
 });
 
-async function postData(host, path, body) {
-  const url = `https://${host}/${path}`;
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json, text-plain, */*",
-    },
-    body: JSON.stringify(body),
-  };
-  const response = await fetch(url, options);
-  return response;
-}
-
 loginButton.addEventListener("click", async (event) => {
   event.preventDefault();
   const emailValue = email.value.trim();
@@ -76,7 +63,6 @@ loginButton.addEventListener("click", async (event) => {
     if (response.status === 200) {
       window.location.href = window.location.origin + "/folder.html";
     } else {
-      //  status가 400일떄
       let error = new Error("Invalid login credentials");
       error.name = "AuthApiError";
       throw error;
