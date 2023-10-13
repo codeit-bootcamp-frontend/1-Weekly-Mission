@@ -9,9 +9,14 @@ const passwordConfirmErrorMessage = document.querySelector(
 );
 
 let eyeOn = false;
+const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+const TEST_USER = {
+  email: "test@codeit.com",
+  password: "codeit101",
+};
 
-const checkEmailError = (event) => {
-  const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+const checkEmailValidation = (event) => {
   if (event.target.value === "") {
     emailErrorMessage.style.display = "block";
     emailErrorMessage.textContent = "이메일을 입력해주세요";
@@ -26,16 +31,12 @@ const checkEmailError = (event) => {
   }
 };
 
-const checkPasswordError = (event) => {
-  const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+const checkPasswordValidation = (event) => {
   if (event.target.value === "") {
     passwordErrorMessage.style.display = "block";
     passwordErrorMessage.textContent = "비밀번호를 입력해주세요";
     password.classList.add("border-red");
-  } else if (
-    event.target.value.length < 8 ||
-    !PASSWORD_REGEX.test(event.target.value)
-  ) {
+  } else if (!PASSWORD_REGEX.test(event.target.value)) {
     passwordErrorMessage.style.display = "block";
     passwordErrorMessage.textContent =
       "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요";
@@ -48,7 +49,10 @@ const checkPasswordError = (event) => {
 
 const submitForm = (event) => {
   event.preventDefault();
-  if (email.value === "test@codeit.com" && password.value === "codeit101") {
+  if (
+    email.value === TEST_USER.email &&
+    password.value === TEST_USER.password
+  ) {
     location.href = "/pages/folder.html";
   } else {
     checkEmailError();
@@ -70,16 +74,9 @@ const togglePassword = (input, toggleButton) => {
     .setAttribute("src", "/assets/eye-off.svg");
 };
 
-email.addEventListener("focusout", checkEmailError);
-password.addEventListener("focusout", checkPasswordError);
+email.addEventListener("focusout", checkEmailValidation);
+password.addEventListener("focusout", checkPasswordValidation);
 passwordEye.addEventListener("click", () =>
   togglePassword(password, passwordEye)
 );
 signButton.addEventListener("submit", submitForm);
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    submitForm();
-  }
-});
-
-// 모듈화 안 됨
