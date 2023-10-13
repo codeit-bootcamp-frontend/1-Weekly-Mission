@@ -52,24 +52,32 @@ loginButton.addEventListener("click", async (event) => {
   event.preventDefault();
   const emailValue = email.value.trim();
   const passwordValue = password.value.trim();
-
   // test@codeit.com   sprint101
   try {
-    const response = await postData("bootcamp-api.codeit.kr", "api/sign-in", {
+    await postData("bootcamp-api.codeit.kr", "api/sign-in", {
       email: emailValue,
       password: passwordValue,
-    });
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          return response.text();
+        }
+      })
+      .then((result) => {
+        const accessToken = result.split('"')[5];
+        localStorage.setItem("accessToken", JSON.stringify(accessToken));
+      });
 
-    if (response.status === 200) {
+    if (JSON.parse(localStorage.getItem("accessToken"))) {
       window.location.href = window.location.origin + "/folder.html";
     } else {
       let error = new Error("Invalid login credentials");
       error.name = "AuthApiError";
       throw error;
     }
-  } catch (err) {
-    alert(err.name);
-    alert(err.message);
+  } catch (error) {
+    alert(error.name);
+    alert(error.message);
   }
 });
 
