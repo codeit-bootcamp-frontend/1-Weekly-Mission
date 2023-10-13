@@ -50,8 +50,9 @@ async function signinValidCheck(e){
                   },
                 body : JSON.stringify(user)
             });
+            const signinResponse = await response.json()
             if(response.status == 200){
-                localStorage.setItem("accessToken",signupResponse.data.accessToken)
+                localStorage.setItem("accessToken",signinResponse.data.accessToken)
                 location.href = '/folder'
             }
             else if(response.status == 400){
