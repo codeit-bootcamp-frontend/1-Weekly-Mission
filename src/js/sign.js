@@ -212,10 +212,22 @@ function loginCheck(e) {
 
 //Event 부분
 emailInput.addEventListener('focusout', emailErrorMsg);
-if (pwInput) pwInput.addEventListener('focusout', pwErrorMsg);
-if (pwSignupInput1) pwSignupInput1.addEventListener('focusout', pwErrorMsg);
-if (pwSignupInput2) pwSignupInput2.addEventListener('focusout', pwErrorMsg);
-if (eye) eye.addEventListener('click', viewPassword);
-if (eye_signup1) eye_signup1.addEventListener('click', viewPassword);
-if (eye_signup2) eye_signup2.addEventListener('click', viewPassword);
+//signin 페이지
+if (pwInput) {
+  pwInput.addEventListener('focusout', pwErrorMsg);
+  eye.addEventListener('click', viewPassword);
+}
+//signup 페이지
+if (pwSignupInput1) {
+  pwSignupInput1.addEventListener('focusout', pwErrorMsg);
+  pwSignupInput2.addEventListener('focusout', pwErrorMsg);
+  eye_signup1.addEventListener('click', viewPassword);
+  eye_signup2.addEventListener('click', viewPassword);
+}
+//로그인 회원가입 버튼
+document.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    loginCheck();
+  }
+});
 login.addEventListener('click', loginCheck);

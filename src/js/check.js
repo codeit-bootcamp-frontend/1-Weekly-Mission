@@ -1,5 +1,5 @@
 //이메일 형식 체크 함수
-function verify(text) {
+function verifyEmail(text) {
   var emailVal = text;
   var regExp =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -36,4 +36,4 @@ function checkNum(text) {
   }
 }
 
-export { verify, checkSpecial, checkEng, checkNum };
+export { verifyEmail, checkSpecial, checkEng, checkNum };
