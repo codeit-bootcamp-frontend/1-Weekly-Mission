@@ -116,8 +116,6 @@ async function submitForm(event) {
       location.href = "/folder";
       return;
     }
-  } else {
-    console.log("오류");
   }
 }
 
