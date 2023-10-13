@@ -46,14 +46,16 @@ async function signinValidCheck(e){
                   },
                 body : JSON.stringify(user)
             });
-            const postResponse = await response.json();
-            if(postResponse.error)
-                throw new Error('bad Request')
-            else
+            if(response.status == 200)
                 location.href = '/folder';
-        }catch{
-            showErrorMessage($email,$emailErrorMessage, "이메일을 확인해주세요.");
-            showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 확인해주세요.");
+            else if(response.status == 400){
+                showErrorMessage($email,$emailErrorMessage, "이메일을 확인해주세요.");
+                showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 확인해주세요.");
+            }
+            else
+                throw new Error(`${response.status}`);
+        }catch(err){
+            console.log(err)
         }
     }
 }

@@ -24,22 +24,23 @@ $pwdEyes[1].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwdCheck));
 let emailDupliValid = false;
 async function emailDuplication(){
     try{
-        const response = await fetch(`${CODEIT}/api/check-email`,{
+        const response = await fetch(`${CODEIT}/api/check-emaisl`,{
             method : 'POST',
             headers:{
                 "Content-Type": "application/json",
             },
             body : JSON.stringify({"email" : $email.value})
         })
-        const emailResponse = await response.json();
-        if(response.status == 409)
-            throw new Error(`${emailResponse.error.message}`)
+        if(response.status == 409){
+            showErrorMessage($email,$emailErrorMessage,"이미 사용 중인 이메일입니다.");
+            emailDupliValid = false;
+        }
         else if(response.status == 200)
             emailDupliValid = true;
-    }catch(error){
-        console.log(error.message)
-        showErrorMessage($email,$emailErrorMessage,"이미 사용 중인 이메일입니다.");
-        emailDupliValid = false;
+        else
+            throw new Error(`${response.status}`);
+    }catch(err){
+        console.log(err);
     }
 }
 $email.addEventListener("focusout", emailDuplication);
