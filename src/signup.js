@@ -22,12 +22,37 @@ function validateEmailInput({target}) {
       { input: emailInput, errorMessage: emailErrorMessage }, "올바른 이메일 주소가 아닙니다.");
     return;
   }
-  if (email === "test@codeit.com") {
-    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이미 사용 중인 이메일입니다.");
+  if (!isDuplicatedEmail(email)) {
     return;
   }
   removeInputError({ input: emailInput, errorMessage: emailErrorMessage });
 }
+
+async function isDuplicatedEmail(paramEmail) {
+  const POST_EMAIL = {
+    email: `${paramEmail}`
+  }
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(POST_EMAIL),
+    })
+    if (!response.ok) {
+      console.log("중복됨")
+      setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이미 사용 중인 이메일입니다.");
+      return false;
+    } else {
+      console.log("중복 안됨");
+      return true;
+    }
+  }
+  catch(error) {
+    console.log(error);
+  }
+}
+  
+
 
 const passwordInput = document.querySelector("#password");
 const passwordErrorMessage = document.querySelector("#password-error-message");
@@ -80,12 +105,16 @@ signForm.addEventListener("submit", submitForm);
 function submitForm(event) {
   event.preventDefault();
 
-  const isValidSignup =
+  
+  return;
+
+
+  /*const isValidSignup =
     emailInput.value !== TEST_USER.email && emailInput.value !==""
     && passwordInput.value === passwordConfirmInput.value && passwordInput.value !=="";
 
   if (isValidSignup) {
     location.href = "/folder";
     return;
-  }
+  }*/
 }
