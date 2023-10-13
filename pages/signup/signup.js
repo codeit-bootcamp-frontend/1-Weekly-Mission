@@ -1,4 +1,4 @@
-import { emailEl, emailCheck } from "../../assets/js/email.js";
+import { emailEl, emailCheck,  emailIApiCheck} from "../../assets/js/email.js";
 import { passwordEl, passwordCheckEl, passwordCheck, eyeOnOff } from "../../assets/js/password.js";
 
 const eye = document.querySelector('#password-icon');
@@ -19,8 +19,18 @@ function loginCheck () {
         passwordCheckEl.parentElement.nextElementSibling.textContent = `비밀번호를 확인해주세요`;
         passwordCheckEl.parentElement.nextElementSibling.style.visibility = 'visible';
     } else{
-        location.href = '/folder.html'
-    }
+        emailIApiCheck(email.value)
+            .then((res) => {
+                if (!res.ok){
+                throw new Error(`${res.status} error `)
+            }
+            location.href = '/folder.html'
+        })
+        .catch(() => {
+            emailEl.className = 'error';
+            emailEl.nextElementSibling.textContent = `이미 사용 중인 이메일입니다.`;
+            emailEl.nextElementSibling.style.visibility = 'visible';}   )
+        }
 }
 
 function loginCheckKey (e) {
