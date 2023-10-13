@@ -18,6 +18,10 @@ const $pwd = document.querySelector('.pwd_input');
 $email.addEventListener("focusout",(e)=>emailErrorMessage(e.target,$emailErrorMessage));
 $pwdEye.addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwd));
 
+if(localStorage.getItem("accessToken")){
+    location.href = '/folder';
+}
+
 let pwdValid = false;
 function pwdErrorMessage(){
     pwdValid=false;
@@ -46,8 +50,10 @@ async function signinValidCheck(e){
                   },
                 body : JSON.stringify(user)
             });
-            if(response.status == 200)
-                location.href = '/folder';
+            if(response.status == 200){
+                localStorage.setItem("accessToken",signupResponse.data.accessToken)
+                location.href = '/folder'
+            }
             else if(response.status == 400){
                 showErrorMessage($email,$emailErrorMessage, "이메일을 확인해주세요.");
                 showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 확인해주세요.");

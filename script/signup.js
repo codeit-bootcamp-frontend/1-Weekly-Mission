@@ -20,11 +20,14 @@ $email.addEventListener("focusout",(e)=>emailErrorMessage(e.target,$emailErrorMe
 $pwdEyes[0].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwd));
 $pwdEyes[1].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwdCheck));
 
+if(localStorage.getItem("accessToken")){
+    location.href = '/folder';
+}
 
 let emailDupliValid = false;
 async function emailDuplication(){
     try{
-        const response = await fetch(`${CODEIT}/check-emaisl`,{
+        const response = await fetch(`${CODEIT}/check-email`,{
             method : 'POST',
             headers:{
                 "Content-Type": "application/json",
@@ -82,8 +85,11 @@ async function validCheck(e){
             "password" : $pwd.value
             }
             const response = await fetch(`${CODEIT}/sign-up`,{
-                method : 'POST',
-                body: JSON.stringify(user)
+                method : "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                body : JSON.stringify(user)
             });
             const signupResponse = await response.json()
             if(response.status == 200){
