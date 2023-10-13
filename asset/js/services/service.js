@@ -10,4 +10,10 @@ const requestSign = async (url, data) => {
   return postedData;
 };
 
-export { requestSign };
+const saveAccessTokenToLocalStorage = async (promise) => {
+  const data = await promise.json();
+  const accessToken = data.data.accessToken;
+  localStorage.setItem('accessToken', accessToken);
+};
+
+export { requestSign, saveAccessTokenToLocalStorage };

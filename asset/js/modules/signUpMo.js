@@ -1,5 +1,8 @@
 import * as signComp from '../components/signComp.js';
-import { requestSign } from '../services/service.js';
+import {
+  requestSign,
+  saveAccessTokenToLocalStorage,
+} from '../services/service.js';
 
 const isEmailDuplicated = async (email) => {
   const emailCheck = {
@@ -23,6 +26,8 @@ const validateSignUpInputs = async () => {
     };
 
     const postSignUpInputs = await requestSign('sign-up', sendSignUpInputs);
+
+    saveAccessTokenToLocalStorage(postSignUpInputs);
 
     return postSignUpInputs.status === 200;
   }

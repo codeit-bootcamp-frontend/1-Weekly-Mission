@@ -1,5 +1,8 @@
 import * as signComp from '../components/signComp.js';
-import { requestSign } from '../services/service.js';
+import {
+  requestSign,
+  saveAccessTokenToLocalStorage,
+} from '../services/service.js';
 
 const errorMessageLogin = {
   signinEmail: '이메일을 확인해주세요',
@@ -9,7 +12,7 @@ const errorMessageLogin = {
 const handleInputEmailError = ({ target: { value } }) => {
   if (value === '') {
     return '이메일을 입력해주세요';
-  } else if (!isEmail(value)) {
+  } else if (!signComp.isEmail(value)) {
     return '올바른 이메일 주소가 아닙니다';
   }
 };
@@ -25,8 +28,13 @@ const validateLoginInputs = async (email, password) => {
     email,
     password,
   };
-
   const validatePost = await requestSign('sign-in', newMember);
+  console.log(validatePost);
+  try {
+    saveAccessTokenToLocalStorage(validatePost);
+  } catch (err) {
+    console.error(err);
+  }
 
   return validatePost.status === 200;
 };
