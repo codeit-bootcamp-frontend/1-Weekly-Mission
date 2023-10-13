@@ -1,3 +1,4 @@
+
 function errorStyle(inputTag, errorTag, message){;
   inputTag.classList.add('red_border'); 
   errorTag.classList.add('show');

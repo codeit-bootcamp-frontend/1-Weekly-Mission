@@ -1,10 +1,10 @@
-import * as tags from "../module/signIn&signUp/tags.js"
+import * as tags from "../module/Auth/tags.js"
 // [form input box 유효성 검사]
 
 
 // 이메일 유효성 검사
-import {removeErrorStyle, errorStyle } from "../module/signIn&signUp/errorMessage.js";
-import {checkErrorMessagesExist, checkFormEmpty, checkEmailValid} from "../module/signIn&signUp/validation.js";
+import {removeErrorStyle, errorStyle } from "../module/Auth/errorMessage.js";
+import {checkErrorMessagesExist, checkFormEmpty, checkEmailValid} from "../module/Auth/validation.js";
 
 function emailValidation(){
   const email = tags.inputEmail.value;
@@ -37,7 +37,7 @@ tags.inputPassword.addEventListener('focusin', () => {removeErrorStyle(tags.inpu
 
 // // 이메일 비밀번호 데이터 유무 확인
 
-import handleLogin from "../module/signIn&signUp/logIn.js";
+import handleLogin from "../module/Auth/logIn.js";
 
 tags.submitBtn.addEventListener('click', (e) => {
   e.preventDefault()
@@ -54,7 +54,7 @@ tags.submitBtn.addEventListener('click', (e) => {
 
 // [eyeToggle 이벤트]
 
-import handleEyeClick from "../module/signIn&signUp/handleEye.js";
+import handleEyeClick from "../module/Auth/handleEye.js";
 
 tags.eye.addEventListener('click', (e) => handleEyeClick(e));
 

@@ -1,9 +1,9 @@
-import * as $tags from "../module/signIn&signUp/tags.js"
-import {removeErrorStyle, errorStyle } from "../module/signIn&signUp/errorMessage.js";
+import * as $tags from "../module/Auth/tags.js"
+import {removeErrorStyle, errorStyle } from "../module/Auth/errorMessage.js";
 // [form input box 유효성 검사]
 
 // 이메일 유효성 검사
-import {checkFormEmpty, checkEmailValid, checkEmailAvailable, checkErrorMessagesExist, checkPasswordValid , checkStringSame} from "../module/signIn&signUp/validation.js";
+import {checkFormEmpty, checkEmailValid, checkEmailAvailable, checkErrorMessagesExist, checkPasswordValid , checkStringSame} from "../module/Auth/validation.js";
 
 function emailValidation(){
   const email = $tags.inputEmail.value;
@@ -85,7 +85,7 @@ function submitByEnter (e) {
 window.addEventListener('keypress', submitByEnter);
 
 // [eyeToggle 모듈]
-import handleEyeClick from "../module/signIn&signUp/handleEye.js";
+import handleEyeClick from "../module/Auth/handleEye.js";
 
 $tags.eyes.forEach((eye) => {
   eye.addEventListener('click', (e) => handleEyeClick(e));
