@@ -1,0 +1,155 @@
+body {
+  background: var(--gray20-color);
+}
+
+main {
+  height: 100vh;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 464px;
+  padding: 238px 32px;
+}
+
+.signup-intro,
+.signin-intro {
+  text-align: center;
+}
+
+.logo {
+  width: 210.583px;
+  height: 38px;
+  margin-bottom: 16px;
+}
+
+.signin-link,
+.signup-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  line-height: normal;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  color: var(--black-color);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+input {
+  display: flex;
+  width: 100%;
+  margin: 12px 0;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--gray60-color);
+  background: var(--white-color);
+}
+
+input:focus {
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  background: var(--white-color);
+}
+
+.password-wrapper-inner {
+  position: relative;
+}
+
+.eye-off {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  right: 2%;
+  cursor: pointer;
+}
+
+#signup-button,
+#login-button {
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  margin: 18px 0 32px;
+  padding: 16px 20px;
+  color: #f5f5f5;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.social-signup,
+.social-login {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--gray60-color);
+  background: var(--gray40-color);
+}
+
+.social-signup-text,
+.social-login-text {
+  color: var(--gray100-color);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.social-signup-buttons,
+.social-login-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.google-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-color: var(--white-color);
+  border: 1px solid var(--gray60-color);
+  border-radius: 50%;
+}
+
+.kakao-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-color: #f5e14b;
+  border-radius: 50%;
+}
+
+.input-error {
+  width: 100%;
+  padding: 18px 15px;
+  border: 1px solid var(--red-color);
+  border-radius: 8px;
+}
+
+.input-error-message {
+  display: inline-block;
+  color: var(--red-color);
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 120px 32px;
+  }
+}
