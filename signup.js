@@ -119,29 +119,37 @@ reEyeIcon.addEventListener("click", (event) => {
 
 registerButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  // const emailValue = email.value;
   if (
     isEmailValid(email) &&
     isPasswordValid(password) &&
     isPasswordMatch(password, rePassword)
   ) {
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
     try {
-      const emailValue = email.value.trim();
-      const passwordValue = password.value.trim();
-      const response = await postData("bootcamp-api.codeit.kr", "api/sign-up", {
+      await postData("bootcamp-api.codeit.kr", "api/sign-up", {
         email: emailValue,
         password: passwordValue,
-      });
-      if (response.status === 200) {
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.text();
+          }
+        })
+        .then((result) => {
+          const accessToken = result.split('"')[5];
+          localStorage.setItem("accessToken", JSON.stringify(accessToken));
+        });
+      if (JSON.parse(localStorage.getItem("accessToken"))) {
         window.location.href = window.location.origin + "/folder.html";
       } else {
         let error = new Error("올바른이메일이 아닙니다");
         error.name = "AuthApiError";
         throw error;
       }
-    } catch (err) {
-      alert(err.name);
-      alert(err.message);
+    } catch (error) {
+      alert(error.name);
+      alert(error.message);
     }
   }
 });
