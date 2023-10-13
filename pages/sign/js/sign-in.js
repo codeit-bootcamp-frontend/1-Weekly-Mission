@@ -14,7 +14,7 @@ import {postApi} from "./fetch.js";
 
 const loginButton = document.querySelector('.btn.login');
 
-const login = async (e) => {
+const _login = async (e) => {
     e.preventDefault();
 
     const email = emailInput.value;
@@ -51,4 +51,4 @@ emailInput.addEventListener("focusout", ({target}) => {
 passwordInput.addEventListener("focusout", ({target}) => {
     validatePassword(target.value);
 });
-loginButton.addEventListener("click", login);
+loginButton.addEventListener("click", _login);
