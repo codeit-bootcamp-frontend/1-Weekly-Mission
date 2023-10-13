@@ -4,6 +4,7 @@ import {
     passwordErrorMessageElement,
     passwordInput,
     removeErrorMessage,
+    saveAccessToken,
     showErrorMessage,
     toggleEyeButton,
     validateEmailType,
@@ -11,7 +12,6 @@ import {
 } from "./sign.js";
 import {errorMessages} from "./error-message.js";
 import {domain, passwordRegex} from "./constant.js";
-import LocalStorage from "./localstorage.js";
 import {postApi} from "./fetch.js";
 
 const signUpButton = document.querySelector('.btn.sign-up');
@@ -73,13 +73,7 @@ const _signUp = async (e) => {
             const response = await postApi(`${domain}/sign-up`, body);
             if (response.ok) {
                 const result = await response.json();
-                const loginToken = "accessToken";
-                const {accessToken} = result.data;
-                if (LocalStorage.getItem(loginToken)) {
-                    LocalStorage.removeItem(accessToken);
-                }
-                LocalStorage.saveItem(loginToken, accessToken);
-                location.href = "/folder.html";
+                saveAccessToken(result);
             }
             if (response.status === 400) {
                 throw new Error("AuthSignUpError");

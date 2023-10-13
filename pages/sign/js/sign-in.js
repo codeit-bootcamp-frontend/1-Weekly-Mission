@@ -4,12 +4,12 @@ import {
     emailInput,
     passwordErrorMessageElement,
     passwordInput,
+    saveAccessToken,
     showErrorMessage,
     validateEmailType,
     validatePassword
 } from "./sign.js";
 import {domain} from "./constant.js";
-import LocalStorage from "./localstorage.js";
 import {postApi} from "./fetch.js";
 
 const loginButton = document.querySelector('.btn.login');
@@ -28,13 +28,7 @@ const _login = async (e) => {
         const response = await postApi(`${domain}/sign-in`, body);
         if (response.ok) {
             const result = await response.json();
-            const loginToken = "accessToken";
-            const {accessToken} = result.data;
-            if (LocalStorage.getItem(loginToken)) {
-                LocalStorage.removeItem(accessToken);
-            }
-            LocalStorage.saveItem(loginToken, accessToken);
-            location.href = "/folder.html";
+            saveAccessToken(result);
         }
         if (response.status === 400) {
             showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.invalid);

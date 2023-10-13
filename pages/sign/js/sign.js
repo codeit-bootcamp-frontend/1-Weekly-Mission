@@ -1,5 +1,6 @@
 import {errorMessages} from "./error-message.js";
 import {emailRegex} from "./constant.js";
+import LocalStorage from "./localstorage.js";
 
 export const emailInput = document.querySelector('#sign-email');
 export const passwordInput = document.querySelector('#sign-password');
@@ -46,6 +47,16 @@ export function validatePassword(input) {
     }
     showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.empty);
     return null;
+}
+
+export function saveAccessToken(result) {
+    const loginToken = "accessToken";
+    const {accessToken} = result.data;
+    if (LocalStorage.getItem(loginToken)) {
+        LocalStorage.removeItem(accessToken);
+    }
+    LocalStorage.saveItem(loginToken, accessToken);
+    location.href = "/folder.html";
 }
 
 export function toggleEyeButton(input, eyeButton) {
