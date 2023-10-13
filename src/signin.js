@@ -11,6 +11,8 @@ const emailErrorMessage = document.querySelector("#email-error-message");
 emailInput.addEventListener("focusout", validateEmailInput);
 function validateEmailInput({target}) {
   const email = target.value;
+emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
+function validateEmailInput(email) {
   if (email === "") {
     setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 입력해주세요.");
     return;
@@ -66,6 +68,9 @@ function submitForm(event) {
           location.href = "/folder";
         }
       })
+
+  if (isTestUser) {
+    location.href = "/folder";
     return;
   }
   setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
