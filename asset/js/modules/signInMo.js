@@ -15,7 +15,7 @@ const handleInputEmailError = ({ target: { value } }) => {
   } else if (!signComp.isEmail(value)) {
     return '올바른 이메일 주소가 아닙니다';
   } else {
-    return '알 수 없는 오류';
+    return '';
   }
 };
 
@@ -56,7 +56,7 @@ const handleInputError = (e) => {
   } else if (ID === 'signinPassword') {
     errMsgNode.textContent = handleInputPasswordError(e);
   } else {
-    errMsgNode.textContent = '알 수 없는 오류';
+    errMsgNode.textContent = '';
   }
 
   signComp.setErrStyle(errMsgNode, e.target);
