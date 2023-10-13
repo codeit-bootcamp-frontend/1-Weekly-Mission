@@ -39,7 +39,7 @@ async function signinValidCheck(e){
                 "email" : $email.value,
                 "password" : $pwd.value
             }
-            const response = await fetch(`${CODEIT}/api/sign-in`,{
+            const response = await fetch(`${CODEIT}/sign-in`,{
                 method : "POST",
                 headers: {
                     "Content-Type": "application/json",

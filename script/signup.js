@@ -24,7 +24,7 @@ $pwdEyes[1].addEventListener('click',(e)=>pwdEyeOnOff(e.target,$pwdCheck));
 let emailDupliValid = false;
 async function emailDuplication(){
     try{
-        const response = await fetch(`${CODEIT}/api/check-emaisl`,{
+        const response = await fetch(`${CODEIT}/check-emaisl`,{
             method : 'POST',
             headers:{
                 "Content-Type": "application/json",
@@ -73,10 +73,34 @@ function pwdCheck(){
 
 $pwdCheck.addEventListener("focusout", pwdCheck);
 
-function validCheck(e){
-    if(pwdValid && pwdCheckValid && emailValid&&emailDupliValid)
-        return;
-    else
-      e.preventDefault();
+async function validCheck(e){
+    e.preventDefault();
+    if(pwdValid && pwdCheckValid && emailValid&&emailDupliValid){
+        try{
+           const user = {
+            "email" : $email.value,
+            "password" : $pwd.value
+            }
+            const response = await fetch(`${CODEIT}/sign-up`,{
+                method : 'POST',
+                body: JSON.stringify(user)
+            });
+            const signupResponse = await response.json()
+            if(response.status == 200){
+                localStorage.setItem("accessToken",signupResponse.data.accessToken)
+                location.href = '/folder'
+            }
+            else if(response.status == 400){
+                console.log(response);
+            }
+            else
+                throw new Error(`${response.status}`)
+        }catch(err){
+            console.log(err);
+
+        }
+        
+    }
+        
 }
 $submit.addEventListener("submit",validCheck);
