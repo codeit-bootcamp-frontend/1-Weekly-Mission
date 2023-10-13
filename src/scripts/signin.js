@@ -1,10 +1,9 @@
 import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
 import { addErrorMsg, removeErrorMsg, checkErrorMsg } from './errorMsg.js';
 import { emailValidation } from "./validations.js";
-import { toggleEye } from "./hideChar.js";
+import { toggleEye } from "./toggleEye.js";
 
-const loginEmailInput = document.querySelector('input[name = "signin_email"]');
-const loginPwInput = document.querySelector('input[name = "signin_pw"]');
+const [loginEmailInput, loginPwInput] = document.querySelectorAll('input');
 const loginForm = document.querySelector('form');
 const loginError = document.querySelectorAll('.error_msg');
 const loginEyeIcon = document.querySelector('.eye_icon');
@@ -12,7 +11,7 @@ const loginEyeIcon = document.querySelector('.eye_icon');
 const TEST_EMAIL = 'test@codeit.com';
 const TEST_PW = 'codeit101';
 
-let loginEyeFlag = 0;
+let loginEyeFlag = false;
 /**
  * 특정 로그인 시도 시 folder 페이지로 이동하는 함수
  */

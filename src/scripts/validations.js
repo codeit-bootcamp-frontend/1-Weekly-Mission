@@ -1,6 +1,7 @@
 import { addErrorMsg, removeErrorMsg } from "./errorMsg.js";
 
 const emailType = /[0-9a-zA-Z]*@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/i;
+const MIN_PASSWORD_LENGTH = 8;
 
 /**
  * Email 유효성 검사하는 함수
@@ -17,10 +18,10 @@ function emailValidation(event){
  * Password 유효성 검사하는 함수
  */
 function pwValidation(event){
-    const isNotSatisfiedLength = event.target.value.length < 8;
+    const isShort = event.target.value.length < MIN_PASSWORD_LENGTH;
     const isOnlyChar = !event.target.value.match(/[0-9]/);
     const isOnlyNum = !event.target.value.match(/[a-zA-Z]/);
-    if(isNotSatisfiedLength || isOnlyChar || isOnlyNum)
+    if(isShort || isOnlyChar || isOnlyNum)
         addErrorMsg(event.target, "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.");
 }
 

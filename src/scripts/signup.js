@@ -2,19 +2,17 @@ import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
 import { addErrorMsg, checkErrorMsg, removeErrorMsg } from "./errorMsg.js";
 import { emailValidation, pwValidation } from "./validations.js";
 import { checkSubmitEvent } from "./checkEventType.js";
-import { toggleEye } from "./hideChar.js";
+import { toggleEye } from "./toggleEye.js";
 
-const signupEmailInput = document.querySelector('input[name = "signup_email"]');
-const signupPwInput = document.querySelector('input[name = "signup_pw"]');
-const signupPwCheckInput = document.querySelector('input[name = "signup_pw_check"]');
 const signupForm = document.querySelector('form');
 const signupError = document.querySelectorAll('.error_msg');
+const [signupEmailInput, signupPwInput, signupPwCheckInput] = document.querySelectorAll('input');
 const [signupPwEye, signupPwCheckEye] = document.querySelectorAll('.eye_icon');
 
 const TEST_EMAIL = 'test@codeit.com';
 
-let PwEyeFlag = 0;
-let PwCheckEyeFlag = 0;
+let PwEyeFlag = false;
+let PwCheckEyeFlag = false;
 
 /**
  * 비밀번호와 비밀번호 확인 input값이 동일한지 검사하는 함수
