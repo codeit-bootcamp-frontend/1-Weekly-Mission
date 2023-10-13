@@ -1,7 +1,7 @@
   import { errorMessageStop, addErrorStyle, removeErrorStyle } from './errors/errors.js';
   import { toggleImage } from './toggleImage.js';
   import { checkPassword } from './input/checkPassword.js';
-  import { accountInfo } from './accounts/accountInfo.js';
+  import { accountInfo } from './accounts/constants.js';
 
   const eyeImagePasswordEl = document.querySelector('#eyeImage-password')
   const eyeImagePasswordReEl = document.querySelector('#eyeImage-password-re')
@@ -34,15 +34,16 @@
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
+
   function checkEmail(){
     const email = inputEmail.value.trim();    //사용자가 인풋란에 입력한 값을 JS에서 email로 선언
     if (email === ''){
       addErrorStyle(inputEmailCss, emailErrorMessage, '이메일을 입력해주세요.');
-    }else if (!testEmail(email)){
+    } else if (!testEmail(email)){
       addErrorStyle(inputEmailCss, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
-    }else if (!(accountInfo.find(account => account.email === email)===undefined)){
+    } else if (!(accountInfo.find(account => account.email === email)===undefined)){
       addErrorStyle(inputEmailCss, emailErrorMessage, '이미 사용중인 이메일입니다.');
-    }else {
+    } else {
       removeErrorStyle(inputEmailCss, emailErrorMessage)
       return true;
     }

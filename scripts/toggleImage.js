@@ -7,6 +7,6 @@
     image.setAttribute('src','./images/signin/eye-off.svg');
     inputPassword.setAttribute('type', 'password');
   }
-};
+ };
 
-export { toggleImage };
+ export { toggleImage };

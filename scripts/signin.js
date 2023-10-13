@@ -31,11 +31,9 @@
     const email = inputEmail.value.trim();
     if (email === ''){
       addErrorStyle(inputEmailCss, emailErrorMessage, '이메일을 입력해주세요.');
-    }
-    else if (!testEmail(email)){
+    } else if (!testEmail(email)){
       addErrorStyle(inputEmailCss, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
-    }
-    else{
+    } else{
       removeErrorStyle(inputEmailCss, emailErrorMessage);
     }
   };
@@ -44,29 +42,15 @@
   //<비밀번호 빈 값일때 오류메시지 출력>
   inputPassword.addEventListener('focusout', checkPassword);
 
-// <아이디&비밀번호 올바르게 입력했을 경우 /folder로 이동하고 아닌 경우 확인메시지 출력 
-// function validAccount(email, password){
-//   const accountMatch = accountInfo.find(account => account.email === email)
-//   if (accountMatch){
-//     if (accountMatch.password === password){
-//       window.location.href = './folder.html';
-//     }else{
-//       addErrorStyle(inputPasswordCss, passwordErrorMessage, '비밀번호를 확인해주세요');
-//     }
-//   }else{
-//     addErrorStyle(inputEmailCss, emailErrorMessage, '이메일을 확인해주세요.');
-//     addErrorStyle(inputPasswordCss, passwordErrorMessage, '비밀번호를 확인해주세요');
-//   }
-// }
-submitButton.addEventListener('click', function(event) {
+  submitButton.addEventListener('click', function(event) {
   event.preventDefault();
   const email = inputEmail.value.trim();
   const password = inputPassword.value;
   validAccount(email, password);
-});
-loginForm.addEventListener('submit', function(event) {
+  });
+  loginForm.addEventListener('submit', function(event) {
   event.preventDefault();
   const email = inputEmail.value.trim();
   const password = inputPassword.value;
   validAccount(email, password);
-});
+  });
