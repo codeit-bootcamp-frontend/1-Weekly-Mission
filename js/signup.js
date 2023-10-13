@@ -54,7 +54,7 @@ function valiDatePasswordCheck() {
   }
 }
 
-function includeErrorMessageClass(input) {
+function hasErrorMessageClass(input) {
   return input.className.includes(errorMessageClass);
 }
 
@@ -63,11 +63,11 @@ function join(e) {
 
   e.preventDefault();
 
-  if (!emailValue || includeErrorMessageClass(emailInput)) {
+  if (!emailValue || hasErrorMessageClass(emailInput)) {
     showErrorMessage('email', '이메일을 확인해주세요.');
-  } else if (includeErrorMessageClass(passwordInput)) {
+  } else if (hasErrorMessageClass(passwordInput)) {
     showErrorMessage('password', '비밀번호를 확인해주세요.');
-  } else if (includeErrorMessageClass(passwordCheckInput)) {
+  } else if (hasErrorMessageClass(passwordCheckInput)) {
     showErrorMessage('passwordCheck', '비밀번호가 일치하지 않아요.')
   } else {
     location.href = '../pages/folder.html';;
