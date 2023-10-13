@@ -9,6 +9,7 @@ import { TEST_ACCOUNT, REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from 
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
+import apiSignin from "../utils/api-signin.js";
 
 const validateEmail = () => {
   const emailValue = emailInputEl.value;
@@ -40,12 +41,10 @@ const validatePassword = (passwordInputEl, passwordErrorMessage) => {
 const handleLoginFormSubmit = (event) => {
   event.preventDefault();
 
-  passwordInputsEl.forEach((passwordInputEl, index) => {
+  passwordInputsEl.forEach(async (passwordInputEl, index) => {
     const emailInputValue = emailInputEl.value;
     const passwordInputValue = passwordInputEl.value;
-    const testAccountEmail = TEST_ACCOUNT.email;
-    const testAccountPW = TEST_ACCOUNT.pw;
-    const isValid = emailInputValue === testAccountEmail && passwordInputValue === testAccountPW;
+    const isValid = await apiSignin(emailInputValue, passwordInputValue);
 
     const submitErrorMessages = ERROR_MESSAGES.submit;
     const isMatchEmail = (field) => field === "email";
