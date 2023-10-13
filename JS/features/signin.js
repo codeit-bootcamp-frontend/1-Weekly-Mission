@@ -1,4 +1,12 @@
 import * as tags from "../module/Auth/tags.js"
+
+const moveToFolderPage = () => {window.location.href = '../folder.html'}
+window.addEventListener('load',() => {
+  if (Object.keys(window.localStorage).includes('signInToken')){
+    moveToFolderPage()
+  }
+})
+
 // [form input box 유효성 검사]
 
 
