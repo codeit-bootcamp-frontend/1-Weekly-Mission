@@ -4,6 +4,7 @@ import {
   removeErrorMessage,
   ERROR_INPUT_STYLE,
 } from "./paintError.js";
+import { requestAPI } from "./service.js";
 
 const authForm = document.querySelector(".form");
 const authInputs = document.querySelectorAll(".form__input-box");
@@ -117,22 +118,13 @@ const handleSigninSubmit = async (event) => {
   const account = { email: authEmail.value, password: authPassword.value };
 
   try {
-    const signinResponse = await fetch(
-      "https://bootcamp-api.codeit.kr/api/sign-in",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(account),
-      }
-    );
+    const signinResponse = await requestAPI("sign-in", account);
     if (signinResponse.status === 400) {
-      throw new Error("invalidCredientials");
+      throw new Error("invalidCredentials");
     }
     redirect();
   } catch (error) {
-    if (error.message === "invalidCredientials") {
+    if (error.message === "invalidCredentials") {
       paintErrorMessage({
         error: "invalidLogin",
         type: "email",
