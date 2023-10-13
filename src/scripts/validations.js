@@ -27,11 +27,11 @@ function pwValidation(event){
 }
 
 /**
- * 로그인 정보 객체를 만들어 server에 POST 요청을 해 유효한 로그인인지 검사하는 함수
+ * 로그인 정보 객체를 만들고, server에 POST 요청을 해 유효한 로그인/회원가입인지 검사하는 함수
  */
-async function loginValidation(email, password){
+async function loginValidation(email, password, url){
     const member = { email, password };
-    return await post('sign-in', member);
+    return await post(url, member);
 }
 
 export {emailValidation, pwValidation, loginValidation};

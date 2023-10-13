@@ -25,14 +25,16 @@ async function login(event){
     
     if(checkErrorMsg(Array.from(loginError))) return;
 
-    const isSuccessful = await loginValidation(loginEmailInput.value, loginPwInput.value) == 200;
+    const isSuccessful = await loginValidation(loginEmailInput.value, loginPwInput.value, 'sign-in') == 200;
     if(isSuccessful) window.location.href = '/folder.html';
     else{
         addErrorMsg(loginEmailInput, "이메일을 확인해주세요.");
         addErrorMsg(loginPwInput, "비밀번호를 확인해주세요.");
     }
 }
-
+/**
+ * 로그인 페이지 비밀번호 가리기 이벤트
+ */
 function hidePw(event){
     event.preventDefault();
     loginEyeFlag = toggleEye(loginPwInput, loginEyeIcon, loginEyeFlag);

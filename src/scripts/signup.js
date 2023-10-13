@@ -4,6 +4,7 @@ import { emailValidation, pwValidation } from "./validations.js";
 import { checkSubmitEvent } from "./checkEventType.js";
 import { toggleEye } from "./toggleEye.js";
 import { post } from "./api.js";
+import { loginValidation as loginInfoValidation } from "./validations.js";
 
 const signupForm = document.querySelector('form');
 const signupError = document.querySelectorAll('.error_msg');
@@ -36,7 +37,7 @@ async function emailDuplicationCheck(event){
 /**
  * 회원가입을 실행할 경우, 다시 에러 검사 후 유효한 회원가입이라면 /folder 페이지로 이동하는 함수
  */
-function signup(event){
+async function signup(event){
     event.preventDefault();
     
     emptyInputEmail(event);
@@ -48,6 +49,8 @@ function signup(event){
     signupPwCheckInput.blur();
 
     if(checkErrorMsg(Array.from(signupError))) return;
+    const isSuccessful = await loginInfoValidation(signupEmailInput.value, signupPwInput.value, 'sign-up') == 200;
+    if(isSuccessful) window.location.href = '/folder.html';
     location.href = '/folder.html';
 }
 /**
