@@ -2,6 +2,8 @@ import {errorMessages} from "./error-message.js";
 import {emailRegex} from "./constant.js";
 import LocalStorage from "./localstorage.js";
 
+export const signInATag = document.querySelector('.sign-link.sign-in');
+export const signUpATag = document.querySelector('.sign-link.sign-up');
 export const emailInput = document.querySelector('#sign-email');
 export const passwordInput = document.querySelector('#sign-password');
 export const passwordEyeButton = document.querySelector('.eye-off');

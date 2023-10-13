@@ -6,6 +6,7 @@ import {
     removeErrorMessage,
     saveAccessToken,
     showErrorMessage,
+    signInATag,
     toggleEyeButton,
     validateEmailType,
     validatePassword,
@@ -13,6 +14,7 @@ import {
 import {errorMessages} from "./error-message.js";
 import {domain, passwordRegex} from "./constant.js";
 import {postApi} from "./fetch.js";
+import LocalStorage from "./localstorage.js";
 
 const signUpButton = document.querySelector('.btn.sign-up');
 const passwordRepeatInput = document.querySelector('#sign-password-repeat');
@@ -84,6 +86,11 @@ const _signUp = async (e) => {
     }
 }
 
+signInATag.addEventListener('click', () => {
+    if (LocalStorage.getItem("accessToken")) {
+        signInATag.setAttribute("href", "/folder.html");
+    }
+});
 emailInput.addEventListener("focusout", ({target}) => {
     validateSignUpEmail(target.value);
 });

@@ -6,11 +6,13 @@ import {
     passwordInput,
     saveAccessToken,
     showErrorMessage,
+    signUpATag,
     validateEmailType,
     validatePassword
 } from "./sign.js";
 import {domain} from "./constant.js";
 import {postApi} from "./fetch.js";
+import LocalStorage from "./localstorage.js";
 
 const loginButton = document.querySelector('.btn.login');
 
@@ -39,6 +41,11 @@ const _login = async (e) => {
     }
 }
 
+signUpATag.addEventListener('click', () => {
+    if (LocalStorage.getItem("accessToken")) {
+        signUpATag.setAttribute("href", "/folder.html");
+    }
+});
 emailInput.addEventListener("focusout", ({target}) => {
     validateEmailType(target.value);
 });
