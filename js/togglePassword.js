@@ -20,7 +20,6 @@ function togglePasswordInPassword() {
   }
 }
 
-//checkPassword-eyebutton
 function changeTypeEyeButtonInCheckPassword(type) {
   eyeButtonInCheckPassword.classList.toggle(eyeOn);
   checkPasswordInput.type = type;
