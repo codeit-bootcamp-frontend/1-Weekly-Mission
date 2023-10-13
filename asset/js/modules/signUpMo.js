@@ -40,6 +40,8 @@ const handleInputEmailError = async ({ target: { value } }) => {
     return '올바른 이메일 주소가 아닙니다';
   } else if (await isEmailDuplicated(value)) {
     return '이미 사용 중인 이메일입니다';
+  } else {
+    return '알 수 없는 오류';
   }
 };
 
@@ -65,6 +67,8 @@ const handleInputError = async (e) => {
     errMsgNode.textContent = handleInputPasswordError(e);
   } else if (ID === 'signinPasswordCheck') {
     errMsgNode.textContent = handleInputPasswordCheckError(e);
+  } else {
+    errMsgNode.textContent = '알 수 없는 오류';
   }
 
   signComp.setErrStyle(errMsgNode, e.target);
