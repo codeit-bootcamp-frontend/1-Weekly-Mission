@@ -62,15 +62,37 @@ const checkFormValue = (e) => {
 };
 
 /*유효한 회원가입 시도의 경우, “/folder”로 이동 */
-const onClickSubmit = (e) => {
+const onClickSubmit = async (e) => {
   e.preventDefault();
 
   if (
-    emailInputValidation(emailEl.value) &&
-    passwordInputValidation(passwordEl.value) &&
-    passwordCheckInputValidation(passwordCheckEl.value)
+    !emailInputValidation(emailEl.value) ||
+    !passwordInputValidation(passwordEl.value) ||
+    !passwordCheckInputValidation(passwordCheckEl.value)
   )
-    formEl.submit();
+    return;
+
+  try {
+    const res = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify({
+        email: emailEl.value,
+        password: passwordEl.value,
+      }),
+    });
+
+    if (res.ok) {
+      const result = await res.json();
+      const accessToken = result.data.accessToken;
+      localStorage.setItem("accessToken", accessToken);
+      formEl.submit();
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 formEl.addEventListener("focusout", checkFormValue);

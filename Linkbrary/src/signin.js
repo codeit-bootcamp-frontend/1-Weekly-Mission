@@ -2,9 +2,6 @@ import { formEl, emailEl, passwordEl, emailErrorEl, passwordErrorEl } from "./co
 import { isEmailEmpty, isEmailValidation } from "./common/utils/emailValidationCheck.js";
 import { isPasswordEmpty } from "./common/utils/passwordValidationCheck.js";
 
-const USER_EMAIL = "test@codeit.com";
-const USER_PASSWORD = "codeit101";
-
 const addErrorClass = (el) => el.classList.add("error");
 const removeErrorClass = (el) => el.classList.remove("error");
 
@@ -43,20 +40,38 @@ const checkFormValue = (e) => {
 };
 
 /** 이메일, 비밀번호가 매치되는 로그인 시도할 경우, “/folder” 페이지로 이동  */
-const onClickSubmit = (e) => {
+const onClickSubmit = async (e) => {
   e.preventDefault();
 
   if (!emailInputValidation(emailEl.value) || !passwordInputValidation(passwordEl.value)) return;
 
-  /** 이외의 로그인 시도의 경우, 이메일 input, 비밀번호 input 아래에 해당 에러 메세지 */
-  if (emailEl.value !== USER_EMAIL || passwordEl.value !== USER_PASSWORD) {
-    emailErrorEl.textContent = "이메일을 확인해주세요";
-    passwordErrorEl.textContent = "비밀번호를 확인해주세요";
-    addErrorClass(emailEl);
-    addErrorClass(passwordEl);
-    return;
+  try {
+    const res = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify({
+        email: emailEl.value,
+        password: passwordEl.value,
+      }),
+    });
+
+    if (!res.ok) {
+      emailErrorEl.textContent = "이메일을 확인해주세요";
+      passwordErrorEl.textContent = "비밀번호를 확인해주세요";
+      addErrorClass(emailEl);
+      addErrorClass(passwordEl);
+      return;
+    }
+
+    const result = await res.json();
+    const accessToken = result.data.accessToken;
+    localStorage.setItem("accessToken", accessToken);
+    formEl.submit();
+  } catch (error) {
+    console.log(error);
   }
-  formEl.submit();
 };
 
 formEl.addEventListener("focusout", checkFormValue);
