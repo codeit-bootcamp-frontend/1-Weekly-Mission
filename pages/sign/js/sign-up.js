@@ -6,7 +6,6 @@ import {
     removeErrorMessage,
     saveAccessToken,
     showErrorMessage,
-    signInATag,
     toggleEyeButton,
     validateEmailType,
     validatePassword,
@@ -15,6 +14,7 @@ import {errorMessages} from "./error-message.js";
 import {domain, passwordRegex} from "./constant.js";
 import {postApi} from "./fetch.js";
 import LocalStorage from "./localstorage.js";
+import {signInATag} from "./page.js";
 
 const signUpButton = document.querySelector('.btn.sign-up');
 const passwordRepeatInput = document.querySelector('#sign-password-repeat');

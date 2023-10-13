@@ -6,13 +6,13 @@ import {
     passwordInput,
     saveAccessToken,
     showErrorMessage,
-    signUpATag,
     validateEmailType,
     validatePassword
 } from "./sign.js";
 import {domain} from "./constant.js";
 import {postApi} from "./fetch.js";
 import LocalStorage from "./localstorage.js";
+import {signUpATag} from "./page.js";
 
 const loginButton = document.querySelector('.btn.login');
 
