@@ -8,8 +8,6 @@ import { form, errorMsgList, emailInput, pwInput, pwCheckInput, pwEyeIcon, pwChe
 let PwEyeFlag = false;
 let PwCheckEyeFlag = false;
 
-if(window.localStorage.getItem('loginToken')) window.location.href = "/folder.html";
-
 /**
  * 회원가입을 실행할 경우, 다시 에러 검사 후 유효한 회원가입이라면 /folder 페이지로 이동하는 함수
  */

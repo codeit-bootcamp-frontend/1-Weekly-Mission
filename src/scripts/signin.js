@@ -8,8 +8,6 @@ import { emailInput, pwInput, form, errorMsgList, pwEyeIcon } from "./constants.
 
 let loginEyeFlag = false;
 
-if(window.localStorage.getItem('loginToken')) window.location.href = "/folder.html";
-
 /**
  * 특정 로그인 시도 시 folder 페이지로 이동하는 함수
  */
