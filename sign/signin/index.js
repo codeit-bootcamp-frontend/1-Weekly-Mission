@@ -46,7 +46,7 @@ const submit = (e) => {
   const testPassword = 'codeit101';
   
   if (email == testEmail && password == testPassword) {
-    location.href = "/folder/folder.html";
+    location.href = "/folder/index.html";
   } 
 }
 
