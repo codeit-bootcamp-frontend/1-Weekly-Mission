@@ -18,15 +18,18 @@ export function isEmailValid(email) {
   return new RegExp(EMAIL_REGEX).test(email);
 }
 
+function toggleImg(btn, tagName, imgSrc) {
+  return btn.getElementsByTagName(tagName)[0].setAttribute("src", imgSrc);
+}
 
 export function togglePassword(input, toggleButton) {
   if (input.getAttribute("type") === "password") {
     input.setAttribute("type", "text");
-    toggleButton.getElementsByTagName("img")[0].setAttribute("src", "./images/eye-on.png");
+    toggleImg(toggleButton, "img", "./images/eye-on.png");
     return;
   }
   input.setAttribute("type", "password");
-  toggleButton.getElementsByTagName("img")[0].setAttribute("src", "./images/eye-off.png");
+  toggleImg(toggleButton, "img", "./images/eye-off.png");
 }
 
 export const TEST_USER = {
