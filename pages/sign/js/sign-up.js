@@ -56,34 +56,23 @@ function validatePasswordRepeatMatch(input) {
     return false;
 }
 
-const signUp = (e) => {
+const _signUp = async (e) => {
     e.preventDefault();
 
     const email = emailInput.value;
     const password = passwordInput.value;
     const passwordRepeat = passwordRepeatInput.value;
 
-    if (validateSignUpEmail(email) && validateSignUpPassword(password) &&
-        validatePasswordRepeatMatch(passwordRepeat)) {
-        fetch(`${domain}/sign-up`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                if (response.status === 400) {
-                    throw new Error("AuthSignUpError");
-                }
-            })
-            .then(result => {
+    const body = {
+        email: email,
+        password: password
+    }
+    try {
+        if (await validateSignUpEmail(email) && validateSignUpPassword(password) &&
+            validatePasswordRepeatMatch(passwordRepeat)) {
+            const response = await postApi(`${domain}/sign-up`, body);
+            if (response.ok) {
+                const result = await response.json();
                 const loginToken = "accessToken";
                 const {accessToken} = result.data;
                 if (LocalStorage.getItem(loginToken)) {
@@ -91,8 +80,13 @@ const signUp = (e) => {
                 }
                 LocalStorage.saveItem(loginToken, accessToken);
                 location.href = "/folder.html";
-            })
-            .catch(error => console.error(error));
+            }
+            if (response.status === 400) {
+                throw new Error("AuthSignUpError");
+            }
+        }
+    } catch (err) {
+        console.error(err);
     }
 }
 
@@ -108,4 +102,4 @@ passwordRepeatInput.addEventListener("focusout", ({target}) => {
 passwordRepeatEyeButton.addEventListener("click", () => {
     toggleEyeButton(passwordRepeatInput, passwordRepeatEyeButton);
 });
-signUpButton.addEventListener("click", signUp);
+signUpButton.addEventListener("click", _signUp);
