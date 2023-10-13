@@ -1,41 +1,38 @@
 import { isValidEmail } from '../../utils/validation.js';
 
 
-const emailInput = document.querySelector('#email');
+// const emailInput = document.querySelector('#email');
 const pwdInput = document.querySelector('#password');
 const loginBtn = document.querySelector('.btn-login');
 const pwdToggleIcon = document.querySelector('#toggle-eye');
 
-const checkEmailValidation = (e) => {
-  const inputField = document.querySelector('.email-field');
+
+const emailField = document.querySelector('.email-field');
+const emailInput = document.querySelector('#email');
+const emailErrorMessage = document.querySelector('.email-error-message');
+
+function checkEmailValidation() {
   const email = emailInput.value.trim();
-  const errorMessage = inputField.querySelector('.error');
 
   if (email === '') {
-    errorMessage.textContent = '이메일을 입력해주세요.';
-    inputField.classList.add('error');
+    addErrorMessage(emailField, '이메일을 입력해주세요.');
   } else if (!isValidEmail(email)) {
-    errorMessage.textContent = '올바른 이메일 주소가 아닙니다.';
-    inputField.classList.add('error');
+    addErrorMessage(emailField, '올바른 이메일을 입력해주세요.');
   } else {
-    errorMessage.textContent = '';
-    inputField.classList.remove('error');
+    removeErrorMessage(emailField, emailErrorMessage);
   }
-};
+}
 
-const checkPwdValidation = (e) => {
-  const inputField = document.querySelector('.pwd-field');
-  const pwd = pwdInput.value;
-  const errorMessage = inputField.querySelector('.error');
+function addErrorMessage(inputField, errorMessage) {
+  inputField.classList.add('error');
+  emailErrorMessage.textContent = errorMessage;
+}
 
-  if (pwd === '') {
-    errorMessage.textContent = '비밀번호를 입력하세요.';
-    inputField.classList.add('error');
-  } else {
-    errorMessage.textContent = '';
-    inputField.classList.remove('error');
-  }
-};
+function removeErrorMessage(inputField, errorMessage) {
+  inputField.classList.remove('error');
+  errorMessage.textContent = '';
+}
+
 
 const submit = (e) => {
   e.preventDefault();
@@ -59,7 +56,6 @@ const toggleEyeIcon = () => {
     pwdToggleIcon.src = '/images/eye-off.svg';
   }
 }
-
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);

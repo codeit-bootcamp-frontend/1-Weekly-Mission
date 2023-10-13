@@ -108,7 +108,7 @@ label {
   border-color: red;
   margin-bottom: 5px;
 }
-.email-field.error .error,
+.email-field.error .email-error-message,
 .pwd-field.error .error,
 .pwd-confirm-field.error .error {
   font-size: 14px;
