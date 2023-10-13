@@ -1,10 +1,10 @@
 import {
   emailInput, 
   passwordInput, 
-  checkPasswordInput, 
+  passwordCheckInput, 
   joinButton, 
   eyeButtonInPassword, 
-  eyeButtonInCheckPassword
+  eyeButtonInPasswordCheck
 } from './tags.js';
 
 import {
@@ -14,10 +14,10 @@ import {
   removeErrorMessage
 } from './validation.js';
 
-import { togglePasswordInPassword, togglePasswordInCheckPassword } from './togglePassword.js';
+import { togglePasswordInPassword, togglePasswordInPasswordCheck } from './togglePassword.js';
 import { user } from './userInfo.js';
 
-const borderRed = 'border-red';
+const errorMessageClass = 'border-red';
 
 function valiDateEmail() {
   const emailValue = emailInput.value;
@@ -43,19 +43,19 @@ function valiDatePassword() {
   }
 }
 
-function valiDateCheckPassword() {
+function valiDatePasswordCheck() {
   const passwordValue = passwordInput.value;
-  const checkPasswordValue = checkPasswordInput.value;
+  const passwordCheckValue = passwordCheckInput.value;
 
-  if (passwordValue !== checkPasswordValue) {
-    showErrorMessage('checkPassword', '비밀번호가 일치하지 않아요.');
+  if (passwordValue !== passwordCheckValue) {
+    showErrorMessage('passwordCheck', '비밀번호가 일치하지 않아요.');
   } else {
-    removeErrorMessage('checkPassword');
+    removeErrorMessage('passwordCheck');
   }
 }
 
-function includeBorderRed(input) {
-  return input.className.includes(borderRed);
+function includeErrorMessageClass(input) {
+  return input.className.includes(errorMessageClass);
 }
 
 function getJoin(e) {
@@ -63,12 +63,12 @@ function getJoin(e) {
 
   e.preventDefault();
 
-  if (!emailValue || includeBorderRed(emailInput)) {
+  if (!emailValue || includeErrorMessageClass(emailInput)) {
     showErrorMessage('email', '이메일을 확인해주세요.');
-  } else if (includeBorderRed(passwordInput)) {
+  } else if (includeErrorMessageClass(passwordInput)) {
     showErrorMessage('password', '비밀번호를 확인해주세요.');
-  } else if (includeBorderRed(checkPasswordInput)) {
-    showErrorMessage('checkPassword', '비밀번호가 일치하지 않아요.')
+  } else if (includeErrorMessageClass(passwordCheckInput)) {
+    showErrorMessage('passwordCheck', '비밀번호가 일치하지 않아요.')
   } else {
     location.href = '../pages/folder.html';;
   }
@@ -76,8 +76,8 @@ function getJoin(e) {
 
 emailInput.addEventListener('focusout', valiDateEmail);
 passwordInput.addEventListener('focusout', valiDatePassword);
-checkPasswordInput.addEventListener('focusout', valiDateCheckPassword);
-checkPasswordInput.addEventListener('keypress', (e) => e.code === 'Enter' && getJoin());
+passwordCheckInput.addEventListener('focusout', valiDatePasswordCheck);
+passwordCheckInput.addEventListener('keypress', (e) => e.code === 'Enter' && getJoin());
 joinButton.addEventListener('click', getJoin);
 eyeButtonInPassword.addEventListener('click', togglePasswordInPassword);
-eyeButtonInCheckPassword.addEventListener('click', togglePasswordInCheckPassword);
+eyeButtonInPasswordCheck.addEventListener('click', togglePasswordInPasswordCheck);

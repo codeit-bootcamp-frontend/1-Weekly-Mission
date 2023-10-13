@@ -3,11 +3,11 @@ import {
   emailError, 
   passwordInput, 
   passwordError, 
-  checkPasswordInput, 
-  checkPasswordError
+  passwordCheckInput, 
+  passwordCheckError
 } from './tags.js'
 
-const borderRed = 'border-red';
+const errorMessageClass = 'border-red';
 
 function checkEmail(email) {  
   const emailRegExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -24,26 +24,26 @@ function checkPassword(password) {
 function showErrorMessage(label, message) { 
   if (label === 'email') {
     emailError.textContent = message;
-    emailInput.classList.add(borderRed);
+    emailInput.classList.add(errorMessageClass);
   } else if (label === 'password') {
     passwordError.textContent = message;
-    passwordInput.classList.add(borderRed);
-  } else if (label === 'checkPassword') {
-    checkPasswordError.textContent = message;
-    checkPasswordInput.classList.add(borderRed);
+    passwordInput.classList.add(errorMessageClass);
+  } else if (label === 'passwordCheck') {
+    passwordCheckError.textContent = message;
+    passwordCheckInput.classList.add(errorMessageClass);
   }
 }
 
 function removeErrorMessage(label) {
   if (label === 'email') {
     emailError.textContent = '';
-    emailInput.classList.remove(borderRed);
+    emailInput.classList.remove(errorMessageClass);
   } else if (label === 'password') {
     passwordError.textContent = '';
-    passwordInput.classList.remove(borderRed);
-  } else if (label === 'checkPassword') {
-    checkPasswordError.textContent = '';
-    checkPasswordInput.classList.remove(borderRed);
+    passwordInput.classList.remove(errorMessageClass);
+  } else if (label === 'passwordCheck') {
+    passwordCheckError.textContent = '';
+    passwordCheckInput.classList.remove(errorMessageClass);
   }
 }
 
