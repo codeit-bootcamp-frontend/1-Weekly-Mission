@@ -30,17 +30,30 @@ function pwdErrorMessage(){
 }
 $pwd.addEventListener("focusout",pwdErrorMessage);
 
-function signinValidCheck(e){
+async function signinValidCheck(e){
+    e.preventDefault();
     if(emailValid && pwdValid){
-        return;
-    }
-    if(!emailValid){
-        showErrorMessage($email,$emailErrorMessage, "이메일을 확인해주세요.");
-        e.preventDefault();
-    }
-    if(!pwdValid){
-        showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 확인해주세요.");
-        e.preventDefault();
+        try{
+            const user = {
+                "email" : $email.value,
+                "password" : $pwd.value
+            }
+            const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in",{
+                method : "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                body : JSON.stringify(user)
+            });
+            const postResponse = await response.json();
+            if(postResponse.error)
+                throw new Error('bad Request')
+            else
+                location.href = '/folder';
+        }catch{
+            showErrorMessage($email,$emailErrorMessage, "이메일을 확인해주세요.");
+            showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 확인해주세요.");
+        }
     }
 }
 $submit.addEventListener('submit',signinValidCheck);
