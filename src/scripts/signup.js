@@ -3,6 +3,7 @@ import { addErrorMsg, checkErrorMsg, removeErrorMsg } from "./errorMsg.js";
 import { emailValidation, pwValidation } from "./validations.js";
 import { checkSubmitEvent } from "./checkEventType.js";
 import { toggleEye } from "./toggleEye.js";
+import { post } from "./api.js";
 
 const signupForm = document.querySelector('form');
 const signupError = document.querySelectorAll('.error_msg');
@@ -25,8 +26,11 @@ function pwMatchCheck(event){
 /**
  * 이메일 중복 검사하는 함수
  */
-function emailDuplicationCheck(event){
-    const isDuplicated = event.target.value === TEST_EMAIL;
+async function emailDuplicationCheck(event){
+    const email = {
+        "email" : event.target.value
+    };
+    const isDuplicated = await post('check-email', email) == 409;
     if(isDuplicated) addErrorMsg(event.target, "이미 사용 중인 이메일입니다.");
 }
 /**
