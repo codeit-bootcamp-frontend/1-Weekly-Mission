@@ -11,11 +11,11 @@ const eye_signup1 = document.querySelector('.content1_div2_div2_img_signup1'); /
 const eye_signup2 = document.querySelector('.content1_div2_div2_img_signup2'); //signup 눈2
 const login = document.querySelector('.content1_div3_div'); //로그인,회원가입 버튼
 
-const VERIFYEAMIL = 'test@codeit.com';
-const VERIFYPW = 'codeit101';
+const VERIFY_EAMIL = 'test@codeit.com';
+const VERIFY_PW = 'codeit101';
 
 import { msgCreate, msgDelete } from './error-msg.js';
-import { verifyEmail, checkSpecial, checkEng, checkNum } from './check.js';
+import { verifyEmail, checkPw } from './check.js';
 
 //이메일 오류 함수
 function emailErrorMsg(e) {
@@ -24,16 +24,16 @@ function emailErrorMsg(e) {
   if (!newMsg && !document.querySelector('.emptyEmailErrorSpan')) {
     //이메일칸 빈칸일때 경고창
     msgDelete('.errorEmailMsg', '.wrongEmailSpan');
-    const emptyEmailspan = document.createElement('span');
-    emptyEmailspan.classList.add('emptyEmailErrorSpan', 'errorEmailMsg');
-    msgCreate(emptyEmailspan, emailDiv, emailInput, '이메일을 입력해주세요.');
+    const emptyEmailSpan = document.createElement('span');
+    emptyEmailSpan.classList.add('emptyEmailErrorSpan', 'errorEmailMsg');
+    msgCreate(emptyEmailSpan, emailDiv, emailInput, '이메일을 입력해주세요.');
   } else if (newMsg && verifyEmail(newMsg) !== true) {
     //이메일칸 내용은 있지만 이메일 형식 안맞을 때
     if (parentDiv.children.length !== 2) parentDiv.lastElementChild.remove();
-    const noEmailspan = document.createElement('span');
-    noEmailspan.classList.add('noEmailErrorSpan', 'errorEmailMsg');
+    const noEmailSpan = document.createElement('span');
+    noEmailSpan.classList.add('noEmailErrorSpan', 'errorEmailMsg');
     msgCreate(
-      noEmailspan,
+      noEmailSpan,
       emailDiv,
       emailInput,
       '올바른 이메일 주소가 아닙니다.'
@@ -42,11 +42,11 @@ function emailErrorMsg(e) {
     //이메일칸 내용은 있고 이메일 형식 맞을 때
     if (parentDiv.children.length !== 2) parentDiv.lastElementChild.remove();
     //signup 페이지에서 이메일 형식 맞지만 이미 존재하는 이메일일 경우
-    if (newMsg == VERIFYEAMIL && pwSignupDiv1) {
-      const existEmailspan = document.createElement('span');
-      existEmailspan.classList.add('existEmailErrorSpan', 'errorEmailMsg');
+    if (newMsg == VERIFY_EAMIL && pwSignupDiv1) {
+      const existEmailSpan = document.createElement('span');
+      existEmailSpan.classList.add('existEmailErrorSpan', 'errorEmailMsg');
       msgCreate(
-        existEmailspan,
+        existEmailSpan,
         emailDiv,
         emailInput,
         '이미 존재하는 이메일입니다.'
@@ -92,7 +92,7 @@ function pwErrorMsg(e) {
         );
         //8글자 이상, 비밀번호 형식 안맞을 경우
       } else {
-        if (!checkSpecial(newMsg) || !checkEng(newMsg) || !checkNum(newMsg)) {
+        if (!checkPw(newMsg)) {
           if (pwDiv.children.length !== 2) pwDiv.lastElementChild.remove();
           const wrongLengthPwSpan = document.createElement('span');
           wrongLengthPwSpan.classList.add('pwErrorSpan');
@@ -141,10 +141,10 @@ function loginCheck(e) {
   //이메일 비밀번호 일치할때
   if (
     !pwSignupDiv1 &&
-    emailInput.value === VERIFYEAMIL &&
-    pwInput.value === VERIFYPW
+    emailInput.value === VERIFY_EAMIL &&
+    pwInput.value === VERIFY_PW
   ) {
-    location.replace('./folder.html');
+    location.href = './folder.html';
   } else if (
     pwSignupDiv1 &&
     emailDiv.children.length == 2 &&
@@ -155,7 +155,7 @@ function loginCheck(e) {
     emailInput.value
   ) {
     // console.log('오ㅓ류없었냐ㅑㅑㅑㅑㅑㅑㅑㅑ');
-    location.replace('./folder.html');
+    location.href = './folder.html';
   } else if (pwSignupDiv1) {
     //이메일 비밀번호 불일치일때
     // console.log('z번');
@@ -164,18 +164,18 @@ function loginCheck(e) {
     //이메일칸에 내용이 없거나 오류메세지가 있는 경우
     if (!emailInput.value || emailDiv.children.length !== 2) {
       msgDelete('.errorEmailMsg', '.wrongEmailSpan');
-      const noEmailspan = document.createElement('span');
-      noEmailspan.classList.add('wrongEmailSpan', 'wrongMsg');
-      msgCreate(noEmailspan, emailDiv, emailInput, '이메일을 확인해 주세요.');
+      const noEmailSpan = document.createElement('span');
+      noEmailSpan.classList.add('wrongEmailSpan', 'wrongMsg');
+      msgCreate(noEmailSpan, emailDiv, emailInput, '이메일을 확인해 주세요.');
     }
     //비밀번호칸에 내용이 없거나 오류메세지가 있는 경우
     if (!pwSignupInput1.value || pwSignupDiv1.children.length !== 2) {
       if (pwSignupDiv1.children.length !== 2)
         pwSignupDiv1.lastElementChild.remove();
-      const noPwSignupspan1 = document.createElement('span');
-      noPwSignupspan1.classList.add('wrongPwSignupErrorSpan1', 'wrongMsg');
+      const noPwSignupSpan1 = document.createElement('span');
+      noPwSignupSpan1.classList.add('wrongPwSignupErrorSpan1', 'wrongMsg');
       msgCreate(
-        noPwSignupspan1,
+        noPwSignupSpan1,
         pwSignupDiv1,
         pwSignupInput1,
         '비밀번호를 확인해 주세요.'
@@ -185,10 +185,10 @@ function loginCheck(e) {
     if (!pwSignupInput2.value || pwSignupDiv2.children.length !== 2) {
       if (pwSignupDiv2.children.length !== 2)
         pwSignupDiv2.lastElementChild.remove();
-      const noPwSignupspan2 = document.createElement('span');
-      noPwSignupspan2.classList.add('wrongPwSignupErrorSpan1', 'wrongMsg');
+      const noPwSignupSpan2 = document.createElement('span');
+      noPwSignupSpan2.classList.add('wrongPwSignupErrorSpan1', 'wrongMsg');
       msgCreate(
-        noPwSignupspan2,
+        noPwSignupSpan2,
         pwSignupDiv2,
         pwSignupInput2,
         '비밀번호를 확인해 주세요.'
@@ -198,15 +198,15 @@ function loginCheck(e) {
     //signin 페이지
     //이메일 오류창
     msgDelete('.wrongEmailSpan', '.errorEmailMsg');
-    const noEmailspan = document.createElement('span');
-    noEmailspan.classList.add('wrongEmailSpan', 'wrongMsg');
-    msgCreate(noEmailspan, emailDiv, emailInput, '이메일을 확인해 주세요.');
+    const noEmailSpan = document.createElement('span');
+    noEmailSpan.classList.add('wrongEmailSpan', 'wrongMsg');
+    msgCreate(noEmailSpan, emailDiv, emailInput, '이메일을 확인해 주세요.');
     // console.log('2번');
     //비밀번호 오류창
     if (pwDiv.children.length !== 2) pwDiv.lastElementChild.remove();
-    const noPwspan = document.createElement('span');
-    noPwspan.classList.add('wrongPwErrorSpan', 'wrongMsg');
-    msgCreate(noPwspan, pwDiv, pwInput, '비밀번호를 확인해 주세요.');
+    const noPwSpan = document.createElement('span');
+    noPwSpan.classList.add('wrongPwErrorSpan', 'wrongMsg');
+    msgCreate(noPwSpan, pwDiv, pwInput, '비밀번호를 확인해 주세요.');
   }
 }
 
