@@ -1,4 +1,5 @@
 import { addErrorMsg, removeErrorMsg } from "./errorMsg.js";
+import { post } from "./api.js";
 
 const emailType = /[0-9a-zA-Z]*@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/i;
 const MIN_PASSWORD_LENGTH = 8;
@@ -25,4 +26,12 @@ function pwValidation(event){
         addErrorMsg(event.target, "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.");
 }
 
-export {emailValidation, pwValidation};
+/**
+ * 로그인 정보 객체를 만들어 server에 POST 요청을 해 유효한 로그인인지 검사하는 함수
+ */
+async function loginValidation(email, password){
+    const member = { email, password };
+    return await post('sign-in', member);
+}
+
+export {emailValidation, pwValidation, loginValidation};

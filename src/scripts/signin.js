@@ -2,7 +2,7 @@ import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
 import { addErrorMsg, removeErrorMsg, checkErrorMsg } from './errorMsg.js';
 import { emailValidation } from "./validations.js";
 import { toggleEye } from "./toggleEye.js";
-import {post} from "./api.js";
+import { loginValidation } from "./validations.js";
 
 const [loginEmailInput, loginPwInput] = document.querySelectorAll('input');
 const loginForm = document.querySelector('form');
@@ -25,7 +25,7 @@ async function login(event){
     
     if(checkErrorMsg(Array.from(loginError))) return;
 
-    const isSuccessful = await post(loginEmailInput.value, loginPwInput.value) == 200;
+    const isSuccessful = await loginValidation(loginEmailInput.value, loginPwInput.value) == 200;
     if(isSuccessful) window.location.href = '/folder.html';
     else{
         addErrorMsg(loginEmailInput, "이메일을 확인해주세요.");
