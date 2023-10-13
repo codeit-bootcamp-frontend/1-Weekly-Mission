@@ -71,18 +71,17 @@ export const REPASSWORD_MAP = {
   },
 };
 
-export function showMessage(inputText) {
-  return `${inputText}을 입력해주세요`;
+export function isEmpty(inputValue) {
+  return inputValue.trim().length ? false : true;
 }
+// export function isEmpty2(inputValue) {
+//   return inputValue.trim().length ? false : true;
+// }
 
-export function isEmpty(input) {
-  return input.value.trim().length ? false : true;
-}
-
-export function isEmailValid(input) {
+export function isEmailValid(inputValue) {
   // @codeit.com 얘만 유효하다
   const re = /[a-zA-Z0-9]{2,10}@codeit\.com$/;
-  const texts = input.value.trim();
+  const texts = inputValue.trim();
   return re.test(texts);
 }
 
@@ -92,17 +91,18 @@ export function isEmailValid(input) {
 //   return re.test(texts);
 // }
 
-export function alreadyUsedEmail(input) {
-  return input.value.trim() === "test@codeit.com";
-}
+// export function alreadyUsedEmail(input) {
+//   return input.value.trim() === "test@codeit.com";
+// }
+
 export function showErrorMessageEffect(input, errorMsgsLabel, state) {
   errorMsgsLabel.innerText = state.message;
   errorMsgsLabel.style.color = state.textColor;
   input.style.border = state.borderColor;
 }
 
-export function isPasswordValid(input) {
-  const texts = input.value.trim();
+export function isPasswordValid(inputValue) {
+  const texts = inputValue.trim();
   const atLeastOneCharacter = /[a-zA-z]{1,}/g;
   const atLeastOneNumber = /[0-9]{1,}/g;
   return (
@@ -111,8 +111,8 @@ export function isPasswordValid(input) {
     texts.length > 8
   );
 }
-export function isPasswordMatch(password, rePassword) {
-  return password.value.trim() === rePassword.value.trim();
+export function isPasswordMatch(passwordValue, rePasswordValue) {
+  return passwordValue.trim() === rePasswordValue.trim();
 }
 export function isCodeItLogin(email, password) {
   return (

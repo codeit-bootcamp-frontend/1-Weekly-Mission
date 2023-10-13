@@ -16,16 +16,17 @@ const eyeIcon = document.querySelector(".eye-on-image");
 // email
 email.addEventListener("focusout", (event) => {
   event.preventDefault();
+  const emailValue = email.value;
   const errorMsgsLabel = emailLabel.querySelector(".error-message");
   for (const state of ["empty", "notValid"]) {
     if (state === "empty") {
       // checker는 isEmpty함수
-      if (EMAIL_MAP[state].checker(email)) {
+      if (EMAIL_MAP[state].checker(emailValue)) {
         showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
         return;
       }
     } else if (state === "notValid") {
-      if (!EMAIL_MAP[state].checker(email)) {
+      if (!EMAIL_MAP[state].checker(emailValue)) {
         showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
         return;
       }
@@ -37,8 +38,9 @@ email.addEventListener("focusout", (event) => {
 // pasword
 password.addEventListener("focusout", (event) => {
   event.preventDefault();
+  const passwordValue = password.value;
   const errorMsgsLabel = passwordLabel.querySelector(".error-message");
-  if (PASSWORD_MAP["empty"].checker(password)) {
+  if (PASSWORD_MAP["empty"].checker(passwordValue)) {
     showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP["empty"]);
     return;
   }

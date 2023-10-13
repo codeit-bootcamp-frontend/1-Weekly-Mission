@@ -22,23 +22,24 @@ const registerButton = document.querySelector(".register-button");
 
 email.addEventListener("focusout", async (event) => {
   event.preventDefault();
+  const emailValue = email.value;
   const errorMsgsLabel = emailLabel.querySelector(".error-message");
+  // 순수함수를 만들기위해? input.value 자체를 인자로 받는다. Not, input이 아닌
 
   for (const state of ["empty", "notValid", "alreadyUsed"]) {
     if (state === "empty") {
       // checker는 isEmpty함수
-      if (EMAIL_MAP[state].checker(email)) {
+      if (EMAIL_MAP[state].checker(emailValue)) {
         showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
         return;
       }
     } else if (state === "notValid") {
-      if (!EMAIL_MAP[state].checker(email)) {
+      if (!EMAIL_MAP[state].checker(emailValue)) {
         showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
         return;
       }
     } else if (state === "alreadyUsed") {
       try {
-        const emailValue = email.value.trim();
         const response = await postData(
           "bootcamp-api.codeit.kr",
           "api/check-email",
@@ -60,16 +61,17 @@ email.addEventListener("focusout", async (event) => {
 
 password.addEventListener("focusout", (event) => {
   event.preventDefault();
+  const passwordValue = password.value;
   const errorMsgsLabel = passwordLabel.querySelector(".error-message");
   for (const state of ["empty", "notValid"]) {
     if (state === "empty") {
       // checker는 isEmpty함수
-      if (PASSWORD_MAP[state].checker(password)) {
+      if (PASSWORD_MAP[state].checker(passwordValue)) {
         showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP[state]);
         return;
       }
     } else if (state === "notValid") {
-      if (!PASSWORD_MAP[state].checker(password)) {
+      if (!PASSWORD_MAP[state].checker(passwordValue)) {
         showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP[state]);
         return;
       }
@@ -80,11 +82,12 @@ password.addEventListener("focusout", (event) => {
 
 rePassword.addEventListener("focusout", (event) => {
   event.preventDefault();
+  const passwordValue = password.value;
+  const rePasswordValue = rePassword.value;
   const errorMsgsLabel = rePasswordLabel.querySelector(".error-message");
   for (const state of ["empty", "notMatch"]) {
     if (state === "empty") {
-      // checker는 isEmpty함수
-      if (REPASSWORD_MAP[state].checker(rePassword)) {
+      if (REPASSWORD_MAP[state].checker(rePasswordValue)) {
         showErrorMessageEffect(
           rePassword,
           errorMsgsLabel,
@@ -93,7 +96,7 @@ rePassword.addEventListener("focusout", (event) => {
         return;
       }
     } else if (state === "notMatch") {
-      if (!REPASSWORD_MAP[state].checker(password, rePassword)) {
+      if (!REPASSWORD_MAP[state].checker(passwordValue, rePasswordValue)) {
         showErrorMessageEffect(
           rePassword,
           errorMsgsLabel,
@@ -119,13 +122,16 @@ reEyeIcon.addEventListener("click", (event) => {
 
 registerButton.addEventListener("click", async (event) => {
   event.preventDefault();
+  let emailValue = email.value;
+  let passwordValue = password.value;
+  let rePasswordValue = rePassword.value;
   if (
-    isEmailValid(email) &&
-    isPasswordValid(password) &&
-    isPasswordMatch(password, rePassword)
+    isEmailValid(emailValue) &&
+    isPasswordValid(passwordValue) &&
+    isPasswordMatch(passwordValue, rePasswordValue)
   ) {
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
+    emailValue = emailValue.trim();
+    passwordValue = passwordValue.trim();
     try {
       await postData("bootcamp-api.codeit.kr", "api/sign-up", {
         email: emailValue,
