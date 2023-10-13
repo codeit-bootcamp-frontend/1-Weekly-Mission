@@ -1,10 +1,7 @@
 import {
   EMAIL_MAP,
   PASSWORD_MAP,
-  isEmailValid,
-  isPasswordValid,
   showErrorMessageEffect,
-  isCodeItLogin,
   passwordVisibility,
   postData,
 } from "./common.js";
