@@ -43,7 +43,7 @@ function signup(event){
     signupPwInput.blur();
     signupPwCheckInput.blur();
 
-    if(checkErrorMsg(signupError)) return;
+    if(checkErrorMsg(Array.from(signupError))) return;
     location.href = '/folder.html';
 }
 /**

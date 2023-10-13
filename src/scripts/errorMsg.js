@@ -21,7 +21,7 @@ function removeErrorMsg(event){
  * @param {*} errorList 'error_msg' class인 div 태그들의 list
  */
 function checkErrorMsg(errorList){
-    return errorList.some(err => err.textContent !== "");
+    return errorList.some((err) => err.textContent !== "");
 }
 
 export {addErrorMsg, removeErrorMsg, checkErrorMsg};

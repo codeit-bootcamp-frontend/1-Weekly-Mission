@@ -23,8 +23,8 @@ function login(event){
 
     loginEmailInput.blur();
     loginPwInput.blur();
-
-    if(checkErrorMsg(loginError)) return;
+    
+    if(checkErrorMsg(Array.from(loginError))) return;
 
     if(loginEmailInput.value === TEST_EMAIL && loginPwInput.value === TEST_PW) {
         location.href = '/folder.html';
