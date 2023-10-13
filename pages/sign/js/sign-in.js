@@ -10,34 +10,24 @@ import {
 } from "./sign.js";
 import {domain} from "./constant.js";
 import LocalStorage from "./localstorage.js";
+import {postApi} from "./fetch.js";
 
 const loginButton = document.querySelector('.btn.login');
 
-const login = (e) => {
+const login = async (e) => {
     e.preventDefault();
 
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    fetch(`${domain}/sign-in`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            email: email,
-            password: password
-        })
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            if (response.status === 400) {
-                throw new Error("AuthSignInError");
-            }
-        })
-        .then(result => {
+    const body = {
+        email: email,
+        password: password
+    }
+    try {
+        const response = await postApi(`${domain}/sign-in`, body);
+        if (response.ok) {
+            const result = await response.json();
             const loginToken = "accessToken";
             const {accessToken} = result.data;
             if (LocalStorage.getItem(loginToken)) {
@@ -45,12 +35,14 @@ const login = (e) => {
             }
             LocalStorage.saveItem(loginToken, accessToken);
             location.href = "/folder.html";
-        })
-        .catch(error => {
-            console.error(error);
+        }
+        if (response.status === 400) {
             showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.invalid);
             showErrorMessage(passwordInput, passwordErrorMessageElement, errorMessages.password.invalid);
-        });
+        }
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 emailInput.addEventListener("focusout", ({target}) => {

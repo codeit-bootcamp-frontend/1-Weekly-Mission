@@ -1,4 +1,4 @@
-function post(url, body) {
+function postApi(url, body) {
     return fetch(url, {
         method: "POST",
         headers: {
@@ -8,4 +8,4 @@ function post(url, body) {
     });
 }
 
-export {post}
+export {postApi}
