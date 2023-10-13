@@ -1,5 +1,7 @@
-import { addErrorMsg, removeErrorMsg } from "./errorMsg.js";
+import { addErrorMsg } from "./errorMsg.js";
 import { post } from "./api.js";
+import { checkSubmitEvent } from "./checkEventType.js";
+import { pwInput } from "./constants.js";
 
 const emailType = /[0-9a-zA-Z]*@[0-9a-zA-Z]*\.[a-zA-Z]{2,3}$/i;
 const MIN_PASSWORD_LENGTH = 8;
@@ -16,6 +18,17 @@ function emailValidation(event){
 }
 
 /**
+ * Email 중복 검사하는 함수
+ */
+async function emailDuplicationCheck(event){
+    const email = {
+        "email" : event.target.value
+    };
+    const isDuplicated = await post('check-email', email) == 409;
+    if(isDuplicated) addErrorMsg(event.target, "이미 사용 중인 이메일입니다.");
+}
+
+/**
  * Password 유효성 검사하는 함수
  */
 function pwValidation(event){
@@ -27,11 +40,20 @@ function pwValidation(event){
 }
 
 /**
+ * 비밀번호와 비밀번호 확인 input값이 동일한지 검사하는 함수
+ */
+function pwCheckValidation(event){
+    const target = checkSubmitEvent(event, 'pwCheck');
+    const isNotEqual = target.value !== pwInput.value;
+    if(isNotEqual) addErrorMsg(target, "비밀번호가 일치하지 않아요.");
+}
+
+/**
  * 로그인 정보 객체를 만들고, server에 POST 요청을 해 유효한 로그인/회원가입인지 검사하는 함수
  */
-async function loginValidation(email, password, url){
+async function loginInfoValidation(email, password, url){
     const member = { email, password };
     return await post(url, member);
 }
 
-export {emailValidation, pwValidation, loginValidation};
+export {emailValidation, pwValidation, loginInfoValidation, emailDuplicationCheck, pwCheckValidation};
