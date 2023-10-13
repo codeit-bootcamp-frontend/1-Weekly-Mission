@@ -12,6 +12,7 @@ import {
 import {errorMessages} from "./error-message.js";
 import {domain, passwordRegex} from "./constant.js";
 import LocalStorage from "./localstorage.js";
+import {postApi} from "./fetch.js";
 
 const signUpButton = document.querySelector('.btn.sign-up');
 const passwordRepeatInput = document.querySelector('#sign-password-repeat');
@@ -20,27 +21,17 @@ const passwordRepeatEyeButton = document.querySelector('.eye-off-check');
 
 async function validateSignUpEmail(input) {
     if (validateEmailType(input)) {
-        fetch(`${domain}/check-email`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: input
-            })
-        })
-            .then(response => {
-                if (response.status === 409) {
-                    throw new Error("DuplicatedError");
-                }
-                removeErrorMessage(emailInput, emailErrorMessageElement);
-                return true;
-            })
-            .catch(error => {
-                console.error(error);
+        try {
+            const response = await postApi(`${domain}/check-email`, {email: input });
+            if (response.status === 409) {
                 showErrorMessage(emailInput, emailErrorMessageElement, errorMessages.email.duplicated);
                 return false;
-            })
+            }
+            removeErrorMessage(emailInput, emailErrorMessageElement);
+            return true;
+        } catch (err) {
+            console.error(err);
+        }
     }
 }
 
