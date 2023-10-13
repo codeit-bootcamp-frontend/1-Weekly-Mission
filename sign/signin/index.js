@@ -1,5 +1,5 @@
 import { isValidEmail } from '../../utils/validation.js';
-
+import { addErrorMessage, removeErrorMessage } from '../../utils/error.js';
 
 // const emailInput = document.querySelector('#email');
 // const pwdInput = document.querySelector('#password');
@@ -39,17 +39,6 @@ function checkPwdValidation() {
 };
 
 
-function addErrorMessage(inputField, errorElement, errorMessage) {
-  inputField.classList.add('error');
-  errorElement.textContent = errorMessage;
-}
-
-function removeErrorMessage(inputField, errorElement) {
-  inputField.classList.remove('error');
-  errorElement.textContent = '';
-}
-
-passwordInput.addEventListener("focusout", checkPwdValidation);
 
 const submit = (e) => {
   e.preventDefault();
@@ -75,6 +64,6 @@ const toggleEyeIcon = () => {
 }
 
 emailInput.addEventListener("focusout", checkEmailValidation);
-// passwordInput.addEventListener("focusout", checkPwdValidation);
+passwordInput.addEventListener("focusout", checkPwdValidation);
 pwdToggleIcon.addEventListener("click", toggleEyeIcon);
 loginBtn.addEventListener('click', submit);
