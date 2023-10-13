@@ -8,6 +8,8 @@ import { emailInput, pwInput, form, errorMsgList, pwEyeIcon } from "./constants.
 
 let loginEyeFlag = false;
 
+if(window.localStorage.getItem('loginToken')) window.location.href = "/folder.html";
+
 /**
  * 특정 로그인 시도 시 folder 페이지로 이동하는 함수
  */
@@ -41,11 +43,11 @@ function hidePw(event){
 //이메일
 emailInput.addEventListener('focusout', emptyInputEmail);
 emailInput.addEventListener('focusout', emailValidation);
-emailInput.addEventListener('input', removeErrorMsg);
+emailInput.addEventListener('focusin', removeErrorMsg);
 
 //비밀번호
 pwInput.addEventListener('focusout', emptyInputPw);
-pwInput.addEventListener('input', removeErrorMsg);
+pwInput.addEventListener('focusin', removeErrorMsg);
 
 //로그인 버튼
 form.addEventListener('submit', login);

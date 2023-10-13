@@ -10,6 +10,10 @@ async function post(url, content){
             },
             body : JSON.stringify(content)
         });
+        if(response.status == 200){
+            const responseData = await response.json();
+            window.localStorage.setItem('loginToken', responseData.data.accessToken);
+        }
         return response.status;
     }
     catch(error){

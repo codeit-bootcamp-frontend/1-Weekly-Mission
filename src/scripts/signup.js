@@ -8,6 +8,8 @@ import { form, errorMsgList, emailInput, pwInput, pwCheckInput, pwEyeIcon, pwChe
 let PwEyeFlag = false;
 let PwCheckEyeFlag = false;
 
+if(window.localStorage.getItem('loginToken')) window.location.href = "/folder.html";
+
 /**
  * 회원가입을 실행할 경우, 다시 에러 검사 후 유효한 회원가입이라면 /folder 페이지로 이동하는 함수
  */
@@ -25,7 +27,6 @@ async function signup(event){
     if(checkErrorMsg(Array.from(errorMsgList))) return;
     const isSuccessful = await loginInfoValidation(emailInput.value, pwInput.value, 'sign-up') == 200;
     if(isSuccessful) window.location.href = '/folder.html';
-    location.href = '/folder.html';
 }
 /**
  * 회원가입 페이지 비밀번호 가리기 이벤트
@@ -46,15 +47,15 @@ function hidesignupPwCheck(event){
 emailInput.addEventListener('focusout', emptyInputEmail);
 emailInput.addEventListener('focusout', emailValidation);
 emailInput.addEventListener('focusout', emailDuplicationCheck);
-emailInput.addEventListener('input', removeErrorMsg);
+emailInput.addEventListener('focusin', removeErrorMsg);
 
 //비밀번호
 pwInput.addEventListener('focusout', pwValidation);
-pwInput.addEventListener('input', removeErrorMsg);
+pwInput.addEventListener('focusin', removeErrorMsg);
 
 //비밀번호 확인
 pwCheckInput.addEventListener('focusout', pwCheckValidation);
-pwCheckInput.addEventListener('input', removeErrorMsg);
+pwCheckInput.addEventListener('focusin', removeErrorMsg);
 
 //회원가입
 form.addEventListener('submit', signup);
