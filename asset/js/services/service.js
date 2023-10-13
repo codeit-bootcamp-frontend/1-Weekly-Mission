@@ -12,7 +12,7 @@ const requestSign = async (url, data) => {
 
 const saveAccessTokenToLocalStorage = async (promise) => {
   const { data } = await promise.json();
-  const accessToken = data?.accessToken ?? 'XS Denied';
+  const accessToken = data?.accessToken;
   localStorage.setItem('accessToken', accessToken);
 };
 
