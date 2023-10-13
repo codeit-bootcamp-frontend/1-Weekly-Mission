@@ -1,5 +1,9 @@
 import { validateEmailPattern, validatePasswordPattern } from "./validation.js";
-import { paintErrorMessage, removeErrorMessage } from "./paintError.js";
+import {
+  paintErrorMessage,
+  removeErrorMessage,
+  ERROR_INPUT_STYLE,
+} from "./paintError.js";
 
 const authForm = document.querySelector(".form");
 const authInputs = document.querySelectorAll(".form__input-box");
@@ -105,6 +109,10 @@ const togglePasswordVisibility = (event) => {
   }
 };
 
+const redirect = () => {
+  location.href = "/pages/folder.html";
+};
+
 const handleSigninSubmit = (event) => {
   event.preventDefault();
 
@@ -112,7 +120,7 @@ const handleSigninSubmit = (event) => {
     authEmail.value === ACCOUNT.email &&
     authPassword.value === ACCOUNT.password
   ) {
-    location.href = "/pages/folder.html";
+    redirect();
   } else {
     paintErrorMessage({
       error: "invalidLogin",
@@ -136,12 +144,13 @@ const handleSignupSubmit = (event) => {
   checkEmailAvailability(authEmail);
   checkPasswordMatch();
 
-  for (const input of authInputs) {
-    if (input.classList.contains("form__input-box--error")) {
-      return;
-    }
+  const isValidForm = ![...authInputs].some((input) =>
+    input.classList.contains(ERROR_INPUT_STYLE)
+  );
+
+  if (isValidForm) {
+    redirect();
   }
-  location.href = "/pages/folder.html";
 };
 
 const initSignin = () => {

@@ -38,4 +38,4 @@ const removeErrorMessage = (target) => {
   $errorMessage.textContent = "";
 };
 
-export { paintErrorMessage, removeErrorMessage };
+export { paintErrorMessage, removeErrorMessage, ERROR_INPUT_STYLE };
