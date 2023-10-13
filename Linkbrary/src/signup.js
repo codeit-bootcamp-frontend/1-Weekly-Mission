@@ -15,8 +15,8 @@ const addErrorClass = (el) => el.classList.add("error");
 const removeErrorClass = (el) => el.classList.remove("error");
 
 /* 이메일 유효성 검사 */
-const emailInputValidation = (value) => {
-  if (isEmailEmpty(value) || isEmailValidation(value) || isDuplicateEmail(value)) {
+const emailInputValidation = async (value) => {
+  if (isEmailEmpty(value) || isEmailValidation(value) || (await isDuplicateEmail(value))) {
     addErrorClass(emailEl);
     return false;
   }

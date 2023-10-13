@@ -22,12 +22,22 @@ export const isEmailValidation = (value) => {
 };
 
 /* 이메일 중복 검증 */
-const USER_EMAIL = "test@codeit.com";
+export const isDuplicateEmail = async (value) => {
+  try {
+    const res = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify({ email: value }),
+    });
 
-export const isDuplicateEmail = (value) => {
-  if (value === USER_EMAIL) {
-    emailErrorEl.textContent = "이미 사용 중인 이메일입니다.";
-    return true;
+    if (!res.ok) {
+      emailErrorEl.textContent = "이미 사용 중인 이메일입니다.";
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.log(error.message);
   }
-  return false;
 };
