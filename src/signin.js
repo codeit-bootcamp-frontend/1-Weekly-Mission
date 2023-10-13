@@ -50,8 +50,22 @@ function submitForm(event) {
   const isTestUser =
     emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
 
+
+  const POST_TEST_USER = {
+    email: "test@codeit.com",
+    password: "sprint101"
+  }
   if (isTestUser) {
-    location.href = "/folder";
+    fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(POST_TEST_USER),
+    })
+      .then((response) => {
+        if (response.ok) {
+          location.href = "/folder";
+        }
+      })
     return;
   }
   setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
