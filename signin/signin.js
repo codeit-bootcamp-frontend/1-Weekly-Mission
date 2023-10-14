@@ -55,9 +55,12 @@ const checkAdminAccount = async () => {
     body: JSON.stringify(codeitAccount),
   });
   const responseStatus = response.status;
+  const result = await response.json();
+  const accessToken = result.data.accessToken;
   if (responseStatus === 200) {
     // admin 계정으로 로그인 시 'folder/' 로 이동
     window.location.href = "../folder/index.html";
+    window.localStorage.setItem("accessToken", accessToken);
   } else {
     showEmailError("wrong");
     showPasswordError("wrong");
