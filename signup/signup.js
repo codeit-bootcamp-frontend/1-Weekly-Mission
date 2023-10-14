@@ -35,9 +35,6 @@ const checkEmailInput = (event) => {
   if (!event.target.value) {
     // input에 아무런 입력이 없는 경우
     showEmailError("void");
-  } else if (event.target.value === "test@codeit.com") {
-    // 입력된 값이 "test@codeit.com"일 때
-    showEmailError("already");
   } else if (!EMAIL_REG_EXP.test(event.target.value)) {
     // 이메일 정규표현식 test시 false값 출력의 경우
     showEmailError("typo");
@@ -81,7 +78,7 @@ const checkPasswordInput = (event) => {
     if (checkPasswordSame(event)) {
       deleteDoubleCheckPwError();
     }
-  } else if (!checkPasswordSame(event)) {
+  } else if (!checkPasswordSame(event) && $doubleCheckPw.value.length > 0) {
     // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 다를 때
     showPasswordError("diff");
   } else if (checkPasswordSame(event)) {
@@ -114,18 +111,8 @@ const checkDoubleCheckPwInput = (event) => {
   }
 };
 
-const checkAllInput = () => {
+const checkAllInput = async () => {
   if (
-    $emailErrorMsg.textContent === "" &&
-    $passwordErrorMsg.textContent === "" &&
-    $doubleCheckPwErrorMsg.textContent === "" &&
-    $email.value.length > 0 &&
-    $password.value.length > 0 &&
-    $doubleCheckPw.value.length > 0
-  ) {
-    // error msg 모두 처리 및 input 태그에 값들이 있을 시 'folder/' 로 이동
-    window.location.href = "../folder/index.html";
-  } else if (
     // input 태그가 비어있을 때, 에러 메시지 출력
     $email.value === "" ||
     $password.value === "" ||
@@ -137,6 +124,34 @@ const checkAllInput = () => {
       showPasswordError("void");
     } else if ($doubleCheckPw.value === "") {
       showPasswordError("voidDC");
+    }
+  } else if (
+    !$emailErrorMsg.textContent &&
+    !$passwordErrorMsg.textContent &&
+    !$doubleCheckPwErrorMsg.textContent &&
+    $email.value.length > 0 &&
+    $password.value.length > 0 &&
+    $doubleCheckPw.value.length > 0
+  ) {
+    const signupEmail = {
+      email: $email.value,
+    };
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signupEmail),
+      }
+    );
+    const responseStatus = response.status;
+    if (responseStatus === 200) {
+      // 중복된 이메일이 아니고 error msg 모두 처리 및 input 태그에 값들이 있을 시 'folder/' 로 이동
+      window.location.href = "../folder/index.html";
+    } else if (responseStatus === 409) {
+      showEmailError("already");
     }
   }
 };
