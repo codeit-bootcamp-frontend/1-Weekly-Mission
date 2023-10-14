@@ -5,10 +5,21 @@ import { email_input, email_input_check, password_input, password_input_check, p
 
 
 
-// 입력한 이메일이 중복인지 아닌지 POST를 보내 확인하는 함수
+
+// 이메일 부분 - 이메일 입력값이 비었거나, 형식에 맞지 않을때 에러메시지 출력 //
+function email_error() {
+  if (!email_input.value || !emailCheck(email_input.value)) {     
+    const message = !email_input.value ? messages.email_empty_error : messages.email_type_error
+    error_occur(email_input, email_input_check, message)    
+  } else {
+    error_disappear(email_input,email_input_check)
+  }
+}
+
+// 입력한 이메일이 중복인지 아닌지 POST를 보내 중복일 시 에러 메세지 출력
 async function isDuplicatedEmail () {
   try {
-    const response = await fetch(`${domain}/check-email`, {
+    const response = await fetch(`${domain}/api/check-email`, {
       method: 'POST',
       headers: {
         'content-type':'application/json'
@@ -33,42 +44,24 @@ async function isDuplicatedEmail () {
   }
 }
 
-
-
-// 이메일 부분 //
-function email_error () {
-  
-  if (!email_input.value) {
-    error_occur(email_input, email_input_check, messages.email_empty_error)
-    return
-  } 
-  if (!emailCheck(email_input.value)) {
-    error_occur(email_input, email_input_check, messages.email_type_error)
-    return
-  } else {
-    error_disappear(email_input, email_input_check)
-  }
-}
-
-email_input.addEventListener("focusout", isDuplicatedEmail )
 email_input.addEventListener("focusout", email_error)
+email_input.addEventListener("focusout", isDuplicatedEmail )
+
 
 
 
 
 // 패스워드 부분 //
 function password_error () {
-  if (!password_input.value) {
-    error_occur(password_input, password_input_check, messages.password_empty_error)
-  } else if (!passwordCheck(password_input.value)) {
-    error_occur(password_input, password_input_check, messages.password_type_error)
+  if (!password_input.value || !passwordCheck(password_input.value)) {
+    const message = !password_input.value ? messages.password_empty_error : messages.password_type_error
+    error_occur(password_input, password_input_check, message)    
   } else {
     error_disappear(password_input, password_input_check)
   }
 }
 
 password_input.addEventListener("focusout", password_error)
-
 
 
 // 패스워드 확인 부분 //
@@ -85,21 +78,22 @@ function password_repeat_error () {
 password_repeat_input.addEventListener('focusout',password_repeat_error)
 
 
+
+
 // 회원가입 시도 //
 
-
+// 회원가입을 위한 모든 양식을 갖췄는지 확인
 async function signupReady () {
   return emailCheck(email_input.value) && passwordCheck(password_input.value) && 
   password_input.value === password_repeat_input.value &&  await isDuplicatedEmail()===false
 }
 
+// 회원가입 시도 POST 전송 //
 async function singupTry (e) {  
   try {
-    e.preventDefault()  
-    
+    e.preventDefault()      
     if (await signupReady()) {   
-
-      const response= await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      const response= await fetch(`${domain}/api/sign-up`, {
         method: 'POST',
         headers: {
           'content-type' : 'application/json'
@@ -111,12 +105,14 @@ async function singupTry (e) {
       }) 
       
       const statusCode = response.status
+      
 
       if (statusCode === 200) {
         window.location.href = '/pages/folder/folder.html'
-      }     
+        return
+      }          
     } else {
-      signupTryShowError
+      signupTryShowError()
     }
   } catch (error) {
     console.log("회원가입 시도중 에러 발생", error)
@@ -125,6 +121,7 @@ async function singupTry (e) {
 
 formtag.addEventListener("submit", singupTry)
 formtag.addEventListener("keypress", (e) => e.code === 'Enter' && singupTry)
+
 
 
 
@@ -140,4 +137,8 @@ function password_toggle(e) {
 
 eye_mark_in_password.addEventListener('click', password_toggle)
 eye_mark_in_password_repeat.addEventListener('click', password_toggle)
+
+
+
+
 

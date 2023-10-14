@@ -8,11 +8,10 @@ import { email_input, email_input_check,
 
 
 // 이메일 부분 //
-// 과제에서 요구된 조건을 만족시키고, 올바른 이메일 형식이 입력되었을 때 focusout하면 원래대로 돌아감
 
 function email_error() {
   if (!email_input.value || !emailCheck(email_input.value)) { 
-    const message = !email_input.value ? messages.email_empty_error : messages.email_type_error
+    const message = !email_input.value ? messages.email_empty_error  : messages.email_type_error
     error_occur(email_input, email_input_check, message)        
   } else {
     error_disappear(email_input,email_input_check)
@@ -35,7 +34,7 @@ function password_error () {
 password_input.addEventListener("focusout", password_error)
 
 
-// 로그인 시도 //
+// 로그인 시도 POST 전송//
 async function loginTry(e) {
 
   e.preventDefault()
@@ -46,8 +45,8 @@ async function loginTry(e) {
 
   } else {    
     try{
-      
-    const response = await fetch(`https://bootcamp-api.codeit.kr/api/sign-in`, {
+
+    const response = await fetch(`${domain}/api/sign-in`, {
       method: 'POST',
       headers: {
         'content-type' : 'application/json'

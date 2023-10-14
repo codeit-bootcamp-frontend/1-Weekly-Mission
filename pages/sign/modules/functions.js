@@ -28,6 +28,5 @@ function signupTryShowError() {
   error_occur(password_repeat_input, password_repeat_input_check, messages.password_check_error)
 }
 
-
 //export
 export { error_occur, error_disappear, loginTryShowError, signupTryShowError }
