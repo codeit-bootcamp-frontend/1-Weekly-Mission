@@ -20,9 +20,8 @@ async function authentication(e, url, inputCheck) {
     });
 
     if (response.ok) {
-      
       const {data} = await response.json();
-      console.log(data.accessToken);
+
       if (data.accessToken) {
         localStorage.setItem("access-token", data.accessToken);
       }
@@ -32,8 +31,8 @@ async function authentication(e, url, inputCheck) {
     }
 
 
-    const isSignupPage = url.split("/").includes("sign-in");
-    if (isSignupPage) {
+    const isSigninPage = url.split("/").includes("sign-in");
+    if (isSigninPage) {
       displayLoginFailedError();
     }
 

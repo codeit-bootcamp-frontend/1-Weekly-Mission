@@ -8,7 +8,6 @@ $("#password").addEventListener("focusout", ({ target }) => commonInputCheck(tar
 $("#email").addEventListener("focusin", clearError);
 $("#password").addEventListener("focusin", clearError);
 
-
 $("form").addEventListener("submit", loginAuthentication);
 
 $all(".eye-Image")[0].addEventListener("click", toggleEye);
