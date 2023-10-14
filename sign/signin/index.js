@@ -17,7 +17,7 @@ function checkEmailValidation() {
   if (email === '') {
     addErrorMessage(emailField, emailErrorMessage, '이메일을 입력해주세요.');
   } else if (!isValidEmail(email)) {
-    addErrorMessage(emailField, emailErrorMessage, '올바른 이메일을 입력해주세요.');
+    addErrorMessage(emailField, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
   } else {
     removeErrorMessage(emailField, emailErrorMessage);
   }
@@ -37,7 +37,6 @@ function checkPwdValidation() {
     removeErrorMessage(passwordField, passwordErrorMessage);
   }
 };
-
 
 
 const submit = (e) => {
