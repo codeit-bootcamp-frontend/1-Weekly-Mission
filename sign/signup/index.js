@@ -94,18 +94,25 @@ function submitOnEnter(e) {
   }
 }
 
-const pwdToggleEyeIcon = document.querySelector('#eye-icon');
+const eyeIcon = document.querySelector('#eye-icon');
+const eyeIcon_Re = document.querySelector('#eye-icon-re');
 
-function toggleEyeIcon () {
-  if(passwordInput.type === "password") {
-    passwordInput.type = "text";
-    pwdToggleEyeIcon.src = '/images/eye-on.svg';
+function toggleEyeIcon(inputElement, toggleImage) { 
+  if(inputElement.type === "password") {
+    inputElement.type = "text";
+    toggleImage.src = '/images/eye-on.svg';
   } else {
-    passwordInput.type = "password";
-    pwdToggleEyeIcon.src = '/images/eye-off.svg';
+    inputElement.type = "password";
+    toggleImage.src = '/images/eye-off.svg';
   }
 }
-pwdToggleEyeIcon.addEventListener("click", toggleEyeIcon);
+eyeIcon.addEventListener("click", () => {
+  toggleEyeIcon(passwordInput, eyeIcon)
+});
+eyeIcon_Re.addEventListener("click", () => {
+  toggleEyeIcon(pwdConfirmInput, eyeIcon_Re)
+});
+
 
 
 // emailInput.addEventListener("focusout", checkEmailValidation);

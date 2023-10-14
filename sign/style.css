@@ -63,7 +63,8 @@ label {
   width: 100%;
   display: flex;
 }
-#eye-icon {
+#eye-icon,
+#eye-icon-re {
   margin-left: -30px;
   cursor: pointer;
 }
