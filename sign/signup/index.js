@@ -1,4 +1,4 @@
-import { isValidEmail, isValidPwd } from '../../utiles/validation.js';
+import { isValidEmail, isValidPwd } from '/utils/validation.js';
 import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 
 
@@ -29,20 +29,26 @@ function checkEmailValidation() {
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 
-const checkPwdValidation = (e) => {
-  const inputField = document.querySelector('.pwd-field');
-  const pwd = pwdInput.value.trim();
-  const errorMessage = inputField.querySelector('.error');
+
+
+const passwordField = document.querySelector('.password-field');
+const passwordInput = document.querySelector('#password');
+const passwordErrorMessage = document.querySelector('.password-error-message');
+
+function checkPwdValidation() {
+  const password = passwordInput.value.trim();
 
   // 값이 8자 미만 or only 문자열 or only 숫자
-  if (!isValidPwd(pwd)) { 
-    errorMessage.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
-    inputField.classList.add('error');
+  if (!isValidPwd(password)) { 
+    addErrorMessage(passwordField, passwordErrorMessage, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
   } else {
-    errorMessage.textContent = '';
-    inputField.classList.remove('error');
+    removeErrorMessage(passwordField, passwordErrorMessage);
   }
 };
+
+passwordInput.addEventListener("focusout", checkPwdValidation);
+
+
 
 
 const confirmPwd = (e) => {
@@ -92,7 +98,7 @@ const toggleEyeIcon = () => {
 
 
 // emailInput.addEventListener("focusout", checkEmailValidation);
-pwdInput.addEventListener("focusout", checkPwdValidation);
+// pwdInput.addEventListener("focusout", checkPwdValidation);
 pwdConfirmInput.addEventListener("focusout", confirmPwd);
 emailInput.addEventListener("keyup", submitOnEnter);
 pwdInput.addEventListener("keyup", submitOnEnter);
