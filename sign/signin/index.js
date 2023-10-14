@@ -1,5 +1,5 @@
-import { isValidEmail } from '../../utils/validation.js';
-import { addErrorMessage, removeErrorMessage } from '../../utils/error.js';
+import { isValidEmail } from '/utils/validation.js';
+import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 
 // const emailInput = document.querySelector('#email');
 // const pwdInput = document.querySelector('#password');
