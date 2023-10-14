@@ -91,16 +91,7 @@ async function singupTry (e) {
     e.preventDefault()     
     
     if (await signupReady()) {   
-      const response= await fetch(`${domain}/api/sign-up`, {
-        method: 'POST',
-        headers: {
-          'content-type' : 'application/json'
-        },
-        body: JSON.stringify({
-          email: emailInput.value,
-          password: passwordInput.value
-        })
-      }) 
+      const response= await postAPI (`${domain}/api/check-email`, emailInput.value, passwordInput.value)
 
       const responseData = response.json()
       const statusCode = response.status
