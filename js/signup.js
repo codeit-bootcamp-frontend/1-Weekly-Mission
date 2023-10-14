@@ -76,19 +76,34 @@ function hasErrorMessageClass(input) {
   return input.className.includes(errorMessageClass);
 }
 
-function join(e) {
+async function join(e) {
   const emailValue = emailInput.value;
+  const passwordValue = passwordInput.value;
+  const passwordCheckValue = passwordCheckInput.value;
 
   e.preventDefault();
 
-  if (!emailValue || hasErrorMessageClass(emailInput)) {
-    showErrorMessage('email', '이메일을 확인해주세요.');
-  } else if (hasErrorMessageClass(passwordInput)) {
-    showErrorMessage('password', '비밀번호를 확인해주세요.');
-  } else if (hasErrorMessageClass(passwordCheckInput)) {
-    showErrorMessage('passwordCheck', '비밀번호가 일치하지 않아요.')
-  } else {
-    location.href = '../pages/folder.html';;
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: emailValue,
+        password: passwordValue
+      })
+    });
+    const result = await response.json();
+
+    if (response.status === 200 && passwordValue === passwordCheckValue) {
+      return location.href = '../pages/folder.html';
+    } else if (response.status === 400) {
+      showErrorMessage('email', '이메일을 확인해주세요.');
+      showErrorMessage('password', '비밀번호를 확인해주세요.');
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 
