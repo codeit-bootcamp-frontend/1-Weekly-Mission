@@ -13,5 +13,16 @@ function error_disappear (input, input_check) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 //export
 export { error_occur, error_disappear }
