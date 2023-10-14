@@ -67,7 +67,6 @@ function submitForm() {
 emailInput.addEventListener("focusout", checkEmailValidation);
 passwordInput.addEventListener("focusout", checkPwdValidation);
 loginBtn.addEventListener('click', submitForm);
-
-eyeIcon.addEventListener("click", () => { // 동작 X 
+eyeIcon.addEventListener("click", () => {
   toggleEyeIcon(passwordInput, eyeIcon)
 });
