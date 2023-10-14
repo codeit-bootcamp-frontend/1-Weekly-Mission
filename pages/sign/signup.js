@@ -116,7 +116,7 @@ async function singupTry (e) {
         window.location.href = '/pages/folder/folder.html'
       }     
     } else {
-      signupTryShowError()
+      signupTryShowError
     }
   } catch (error) {
     console.log("회원가입 시도중 에러 발생", error)

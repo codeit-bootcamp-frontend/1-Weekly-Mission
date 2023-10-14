@@ -36,10 +36,18 @@ password_input.addEventListener("focusout", password_error)
 
 
 // 로그인 시도 //
-function loginTry(e) {
+async function loginTry(e) {
+
   e.preventDefault()
-  if (email_input.value && emailCheck(email_input.value)) {
-    fetch(`${domain}/api/sign-in`, {
+
+  if(!email_input.value && !emailCheck(email_input.value)) {
+
+    loginTryShowError()
+
+  } else {    
+    try{
+      
+    const response = await fetch(`https://bootcamp-api.codeit.kr/api/sign-in`, {
       method: 'POST',
       headers: {
         'content-type' : 'application/json'
@@ -49,21 +57,21 @@ function loginTry(e) {
         password: password_input.value,
       })
     })
-    .then((response) => response.status)
-    .then((statusCode) => {
-      if (statusCode === 200) {
-        window.location.href = "/pages/folder/folder.html"
-        return
-      } 
-      if (statusCode === 400) {
-        loginTryShowError()
-        return
-      }
-    })
-    .catch((error) => console.log('로그인 시도 중 에러 발생!', error))
-  } else {
-    loginTryShowError()
-  }
+
+    const statusCode = response.status
+
+    if (statusCode === 200) {
+      window.location.href = "/pages/folder/folder.html"
+      return
+    } 
+    if (statusCode === 400) {
+      loginTryShowError()
+      return
+    }
+    } catch (error) {
+      console.log('로그인 시도 중 에러 발생!', error)
+    }
+  }  
 }
 
 formtag.addEventListener("submit", loginTry)
