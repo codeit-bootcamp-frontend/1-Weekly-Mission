@@ -1,5 +1,6 @@
 import { isValidEmail } from '/utils/validation.js';
 import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
+import { toggleEyeIcon } from '/utils/toggle-icon.js';
 
 // const emailInput = document.querySelector('#email');
 // const pwdInput = document.querySelector('#password');
@@ -60,19 +61,13 @@ function submitForm() {
 }
 
 
-const pwdToggleIcon = document.querySelector('#eye-icon');
+const eyeIcon = document.querySelector('#eye-icon');
 
-const toggleEyeIcon = () => {
-  if(passwordInput.type == "password") {
-    passwordInput.type = "text";
-    pwdToggleIcon.src = '/images/eye-on.svg';
-  } else {
-    passwordInput.type = "password";
-    pwdToggleIcon.src = '/images/eye-off.svg';
-  }
-}
+eyeIcon.addEventListener("click", () => {
+  toggleEyeIcon(passwordInput, eyeIcon)
+});
+
 
 emailInput.addEventListener("focusout", checkEmailValidation);
 passwordInput.addEventListener("focusout", checkPwdValidation);
-pwdToggleIcon.addEventListener("click", toggleEyeIcon);
 loginBtn.addEventListener('click', submitForm);
