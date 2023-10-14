@@ -10,5 +10,8 @@ function passwordCheck(password) {
 	return passwordReg.test(password);
 }
 
+//도메인 주소 
+const domain = "https://bootcamp-api.codeit.kr";
+
 //export
-export { emailCheck, passwordCheck}
+export { emailCheck, passwordCheck, domain}

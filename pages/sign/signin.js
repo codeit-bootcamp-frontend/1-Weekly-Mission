@@ -1,4 +1,4 @@
-import { emailCheck } from './modules/regex.js'
+import { emailCheck, domain } from './modules/constant.js'
 import { error_occur, error_disappear } from './modules/functions.js'
 import { messages } from './modules/message.js'
 import { email_input, email_input_check, 
@@ -51,7 +51,7 @@ password_input.addEventListener("focusout", password_error)
 function loginTry(e) {
   e.preventDefault()
   if (email_input.value && emailCheck(email_input.value)) {
-    fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+    fetch(`${domain}/api/sign-in`, {
       method: 'POST',
       headers: {
         'content-type' : 'application/json'
