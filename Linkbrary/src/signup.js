@@ -1,3 +1,5 @@
+import { auth } from "./common/constants/endpoints.js";
+import { API_URL, APPLICATION_JSON_TYPE } from "./common/constants/api.js";
 import {
   emailEl,
   emailErrorEl,
@@ -73,10 +75,10 @@ const onClickSubmit = async (e) => {
     return;
 
   try {
-    const res = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+    const res = await fetch(`${API_URL}${auth.SIGN_UP}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": APPLICATION_JSON_TYPE,
       },
       body: JSON.stringify({
         email: emailEl.value,

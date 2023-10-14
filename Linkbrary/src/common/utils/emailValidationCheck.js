@@ -1,3 +1,5 @@
+import { user } from "../constants/endpoints.js";
+import { API_URL, APPLICATION_JSON_TYPE } from "../constants/api.js";
 import { emailErrorEl } from "../constants/elements.js";
 
 /* 이메일 유효성 검사 */
@@ -24,10 +26,10 @@ export const isEmailValidation = (value) => {
 /* 이메일 중복 검증 */
 export const isDuplicateEmail = async (value) => {
   try {
-    const res = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+    const res = await fetch(`${API_URL}${user.CHECK_EMAIL}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": APPLICATION_JSON_TYPE,
       },
       body: JSON.stringify({ email: value }),
     });
