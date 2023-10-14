@@ -57,26 +57,6 @@ function checkPwdValidation() {
   }
 };
 
-
-// function submitForm() {
-//   e.preventDefault();
-
-//   const email = emailInput.value;
-//   const password = passwordInput.value;
-//   const testEmail = 'test@codeit.com';
-//   const testPassword = 'codeit101';
-
-//     if (email === testEmail && password === testPassword) {
-//       location.href = "/folder/index.html";
-//     } else if (email !== testEmail && password !== testPassword) {
-//       addErrorMessage(emailInput, emailError, EMAIL_WRONG);
-//       addErrorMessage(passwordInput, passwordError, PASSWORD_WRONG);
-//     } else {
-//       checkEmailValidation();
-//       checkPwdValidation();
-//     }
-// }
-
 async function submitForm() {
   const email = emailInput.value;
   const password = passwordInput.value;
