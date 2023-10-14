@@ -5,7 +5,8 @@ import {
   eyeIcons,
   EMAIL_REGEX,
   editErrorStatus,
-  toggleEyeButton
+  toggleEyeButton,
+  checkAccessToken
 } from '/js/utils.js';
 
 const checkEmailInput = (e) => {
@@ -57,6 +58,8 @@ const trySignIn = (e) => {
   e.preventDefault();
   requestSignIn();
 }
+
+checkAccessToken();
 
 emailInput.addEventListener('focusout', checkEmailInput);
 passwordInput.addEventListener('focusout', checkPasswordInput);

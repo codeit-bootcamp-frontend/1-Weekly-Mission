@@ -38,4 +38,4 @@ const checkAccessToken = () => {
   }
 }
 
-export { emailInput, passwordInput, passwordConfirmInput, form, eyeIcons, EMAIL_REGEX, PASSWORD_REGEX, editErrorStatus, toggleEyeButton };
+export { emailInput, passwordInput, passwordConfirmInput, form, eyeIcons, EMAIL_REGEX, PASSWORD_REGEX, editErrorStatus, toggleEyeButton, checkAccessToken };

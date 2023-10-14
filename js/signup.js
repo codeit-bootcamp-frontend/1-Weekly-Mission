@@ -7,7 +7,8 @@ import {
   EMAIL_REGEX,
   PASSWORD_REGEX,
   editErrorStatus,
-  toggleEyeButton
+  toggleEyeButton,
+  checkAccessToken
 } from '/js/utils.js';
 
 const checkDuplicationEmail = async () => {
@@ -96,6 +97,8 @@ const trySignUp = (e) => {
     requestSignUp();
   }
 };
+
+checkAccessToken();
 
 emailInput.addEventListener('focusout', (e) => checkEmail(e.target.value));
 passwordInput.addEventListener('focusout', (e) => checkPassword(e.target.value));
