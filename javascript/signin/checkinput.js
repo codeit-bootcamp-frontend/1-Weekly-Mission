@@ -1,22 +1,24 @@
-import { emailInput, passwordInput } from '../valiable.js';
-import makeMsg from '../makemsg.js'
-import { isvalidPassword, isvalidEmail } from '../validate.js';
+import { emailInput, passwordInput } from '../variables.js';
+import makeMessage from '../makeMessage.js'
+import { isValidPassword, isValidEmail } from '../validate.js';
+import * as errorConstants from '../errorConstants.js';
 
+export function checkInput(e){
+  const inputTarget = e.target;
+  let errorMessage;
 
-
-export function checkInput (e, err) {
-  if (e.target === emailInput){
-    if (e.target.value.length === 0){
-      err = 'emptyEmail';
-    } else if (!isvalidEmail(e.target.value)){
-      err = 'shapeEmail';
+  if (inputTarget === emailInput){
+    if (inputTarget.value.length === 0){
+      errorMessage = errorConstants.EMPTY_EMAIL;
+    } else if (!isValidEmail(inputTarget.value)){
+      errorMessage = errorConstants.SHAPE_EMAIL;
     } 
-  } else if (e.target === passwordInput){
-      if (e.target.value.length === 0){
-        err = 'emptyPassword';
-      } else if (!isvalidPassword(e.target.value)){
-        err = 'shapePassword';
+  } else if (inputTarget === passwordInput){
+      if (inputTarget.value.length === 0){
+        errorMessage = errorConstants.EMPTY_PASSWORD;
+      } else if (!isValidPassword(inputTarget.value)){
+        errorMessage = errorConstants.SHAPE_PASSWORD;
       }
   } 
-  return makeMsg(e.target, err);
+  return makeMessage(inputTarget, errorMessage);
 };
