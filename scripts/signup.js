@@ -59,6 +59,7 @@ function submitAccount() {
   const isEmailValid = checkSignupEmail();
   const isPasswordValid = checkPassword();
   const isPasswordReValid = checkPasswordRe();
+
   if (isEmailValid && isPasswordValid && isPasswordReValid) {
     window.location.href = "./folder.html";
   }

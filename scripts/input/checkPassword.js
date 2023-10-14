@@ -4,6 +4,7 @@ import { inputPassword, passwordErrorMessage } from "../constants.js";
 
 function checkPassword() {
   const password = inputPassword.value;
+
   if (password === "") {
     addErrorStyle(
       inputPassword,

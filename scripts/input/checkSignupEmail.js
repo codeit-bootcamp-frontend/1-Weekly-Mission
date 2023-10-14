@@ -5,6 +5,7 @@ import { addErrorStyle, removeErrorStyle } from "../errors/errors.js";
 
 function checkSignupEmail() {
   const email = inputEmail.value.trim(); //사용자가 인풋란에 입력한 값을 JS에서 email로 선언
+
   if (email === "") {
     addErrorStyle(inputEmail, emailErrorMessage, "이메일을 입력해주세요.");
   } else if (!emailRegex(email)) {

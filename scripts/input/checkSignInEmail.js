@@ -5,6 +5,7 @@ import { emailRegex } from "./emailRegex.js";
 
 function checkSigninEmail() {
   const email = inputEmail.value.trim();
+
   if (email === "") {
     addErrorStyle(inputEmail, emailErrorMessage, "이메일을 입력해주세요.");
   } else if (!emailRegex(email)) {
