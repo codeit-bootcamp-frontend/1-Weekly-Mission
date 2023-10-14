@@ -12,7 +12,6 @@ import {
 } from './validation.js';
 
 import { togglePasswordInPassword } from './togglePassword.js';
-import { user } from './userInfo.js';
 
 function valiDateEmail() {
   const emailValue = emailInput.value;
@@ -36,19 +35,32 @@ function valiDatePassword() {
   }
 }
 
-function login(e) {
-  const emailValue = emailInput.value;
-  const passwordValue = passwordInput.value;
-
+async function login(e) {
   e.preventDefault();
 
-  if (emailValue === user.email && passwordValue === user.password) {
-    location.href = '../pages/folder.html';
-  } else if (emailValue !== user.email) {
-    showErrorMessage('email', '이메일을 확인해주세요.');
-    showErrorMessage('password', '비밀번호를 확인해주세요.');
-  } else if (passwordValue !== user.password) {
-    showErrorMessage('password', '비밀번호를 확인해주세요.');
+  const emailValue = emailInput.value;
+  const passwordValue = passwordInput.value;
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: emailValue,
+        password: passwordValue
+      })
+    });
+    const result = await response.json();
+
+    if (response.status === 200) {
+      return location.href = '../pages/folder.html';
+    } else if (response.status === 400) {
+      showErrorMessage('email', '이메일을 확인해주세요.');
+      showErrorMessage('password', '비밀번호를 확인해주세요.');
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 

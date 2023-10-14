@@ -15,7 +15,7 @@ import {
 } from './validation.js';
 
 import { togglePasswordInPassword, togglePasswordInPasswordCheck } from './togglePassword.js';
-import { user } from './userInfo.js';
+import { USER } from './userInfo.js';
 
 const errorMessageClass = 'border-red';
 
@@ -26,7 +26,7 @@ function valiDateEmail() {
     showErrorMessage('email', '이메일을 입력해주세요.');
   } else if (!checkEmail(emailValue)) {
     showErrorMessage('email', '올바른 이메일 주소가 아닙니다.');
-  } else if (emailValue === user.email) {
+  } else if (emailValue === USER.email) {
     showErrorMessage('email', '이미 사용 중인 이메일입니다.');
   } else {
     removeErrorMessage('email');
