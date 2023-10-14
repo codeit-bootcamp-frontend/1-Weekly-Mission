@@ -1,5 +1,5 @@
 import { emailCheck, domain } from './modules/constant.js'
-import { error_occur, error_disappear } from './modules/functions.js'
+import { error_occur, error_disappear, loginTryShowError } from './modules/functions.js'
 import { messages } from './modules/message.js'
 import { email_input, email_input_check, 
   password_input, password_input_check, 
@@ -9,22 +9,11 @@ import { email_input, email_input_check,
 
 // 이메일 부분 //
 // 과제에서 요구된 조건을 만족시키고, 올바른 이메일 형식이 입력되었을 때 focusout하면 원래대로 돌아감
-function email_error () {  
-  if (!email_input.value) {
-    error_occur(email_input, email_input_check, messages.email_empty_error)
-  } else if (!emailCheck(email_input.value)) {
-    error_occur(email_input, email_input_check, messages.email_type_error)
-  } else {
-    error_disappear(email_input, email_input_check)
-  }
-}
 
-function email_error2() {
-
+function email_error() {
   if (!email_input.value || !emailCheck(email_input.value)) { 
     const message = !email_input.value ? messages.email_empty_error : messages.email_type_error
-
-    error_occur(email_input, email_input_check, message)    
+    error_occur(email_input, email_input_check, message)        
   } else {
     error_disappear(email_input,email_input_check)
   }
@@ -38,7 +27,6 @@ email_input.addEventListener("focusout", email_error)
 function password_error () {
   if (!password_input.value) {
     error_occur(password_input, password_input_check, messages.password_empty_error)
-
   } else {
     error_disappear(password_input, password_input_check)
   }
@@ -68,15 +56,13 @@ function loginTry(e) {
         return
       } 
       if (statusCode === 400) {
-        error_occur(email_input, email_input_check, messages.email_check_error)
-        error_occur(password_input, password_input_check, messages.password_check_error)
+        loginTryShowError()
         return
       }
     })
     .catch((error) => console.log('로그인 시도 중 에러 발생!', error))
   } else {
-    error_occur(email_input, email_input_check, messages.email_check_error)
-    error_occur(password_input, password_input_check, messages.password_check_error)
+    loginTryShowError()
   }
 }
 

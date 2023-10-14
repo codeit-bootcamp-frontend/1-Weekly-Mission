@@ -1,13 +1,14 @@
 import { emailCheck, passwordCheck, domain} from './modules/constant.js'
-import { error_occur, error_disappear } from './modules/functions.js'
+import { error_occur, error_disappear, signupTryShowError } from './modules/functions.js'
 import { messages } from './modules/message.js'
 import { email_input, email_input_check, password_input, password_input_check, password_repeat_input, password_repeat_input_check, formtag, eye_mark_in_password, eye_mark_in_password_repeat } from './modules/tags.js'
 
 
-// 입력한 이메일이 중복인지 아닌지 확인 함수
+
+// 입력한 이메일이 중복인지 아닌지 POST를 보내 확인하는 함수
 async function isDuplicatedEmail () {
   try {
-    const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', {
+    const response = await fetch(`${domain}/check-email`, {
       method: 'POST',
       headers: {
         'content-type':'application/json'
@@ -39,8 +40,11 @@ function email_error () {
   
   if (!email_input.value) {
     error_occur(email_input, email_input_check, messages.email_empty_error)
-  } else if (!emailCheck(email_input.value)) {
+    return
+  } 
+  if (!emailCheck(email_input.value)) {
     error_occur(email_input, email_input_check, messages.email_type_error)
+    return
   } else {
     error_disappear(email_input, email_input_check)
   }
@@ -58,7 +62,7 @@ function password_error () {
     error_occur(password_input, password_input_check, messages.password_empty_error)
   } else if (!passwordCheck(password_input.value)) {
     error_occur(password_input, password_input_check, messages.password_type_error)
-  }  else {
+  } else {
     error_disappear(password_input, password_input_check)
   }
 }
@@ -112,9 +116,7 @@ async function singupTry (e) {
         window.location.href = '/pages/folder/folder.html'
       }     
     } else {
-      error_occur(email_input, email_input_check, messages.email_check_error)
-      error_occur(password_input, password_input_check, messages.password_check_error)
-      error_occur(password_repeat_input, password_repeat_input_check, messages.password_check_error)
+      signupTryShowError()
     }
   } catch (error) {
     console.log("회원가입 시도중 에러 발생", error)
