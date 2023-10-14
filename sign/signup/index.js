@@ -112,5 +112,5 @@ eyeIcon.addEventListener("click", () => {
   toggleEyeIcon(passwordInput, eyeIcon)
 });
 eyeIcon_Re.addEventListener("click", () => {
-  toggleEyeIcon(passwordConfirmInput, eyeIcon_Re)
+  toggleEyeIcon(pwdConfirmInput, eyeIcon_Re)
 });
