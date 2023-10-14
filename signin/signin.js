@@ -43,12 +43,7 @@ const checkPasswordInput = (event) => {
 };
 
 const checkAdminAccount = () => {
-  if (
-    $email.value === "test@codeit.com" &&
-    $password.value === "codeit101" &&
-    $emailErrorMsg.textContent === "" &&
-    $passwordErrorMsg.textContent === ""
-  ) {
+  if ($email.value === "test@codeit.com" && $password.value === "codeit101") {
     // admin 계정으로 로그인 시 'folder/' 로 이동
     window.location.href = "../folder/index.html";
   } else {
@@ -71,8 +66,8 @@ const formSubmitEventHandler = (event) => {
   checkAdminAccount();
 };
 
-const pwInvisibleEventHandler = () => {
-  togglePwVisibility();
+const pwInvisibleEventHandler = (event) => {
+  togglePwVisibility(event);
 };
 
 $email.addEventListener("blur", emailInputEventHandler);
