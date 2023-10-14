@@ -49,6 +49,7 @@ signinBtn.addEventListener("click", async function (event) {
       location.href = "./folder.html";
       disappearError(email, emailError);
       disappearError(password, passwordError);
+      localStorage.setItem("loginToken", userInfo);
     } else {
       throw new Error();
     }
