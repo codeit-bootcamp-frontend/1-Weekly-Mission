@@ -1,11 +1,4 @@
-import {
-  email,
-  password,
-  emailError,
-  passwordError,
-  userEmail,
-  userPassword,
-} from "./consts.js";
+import { email, password, emailError, passwordError } from "./consts.js";
 import {
   appearError,
   disappearError,
@@ -38,16 +31,20 @@ email.addEventListener("blur", emailChecker);
 password.addEventListener("blur", passwordChecker);
 
 eyeBtn.addEventListener("click", eyeCheck);
-
-signinBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (
-    userEmail.includes(email.value) &&
-    userPassword.includes(password.value)
-  ) {
-    location.href = "./folder.html";
-    disappearError(email, emailError);
-    disappearError(password, passwordError);
+signinBtn.addEventListener("click", async function login(event) {
+  const userInfo = {
+    email: email.value,
+    password: password.value,
+  };
+  const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+    method: "POST",
+    body: JSON.stringify(userInfo),
+  });
+  const result = await response.text();
+  console.log(result);
+  console.log(userInfo);
+  if (response.status === 200) {
+    location.replace("./folder.html");
   } else {
     appearError(email, emailError, "이메일을 확인해주세요.");
     appearError(password, passwordError, "비밀번호를 확인해주세요.");
