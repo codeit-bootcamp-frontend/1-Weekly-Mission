@@ -3,8 +3,8 @@ import { addErrorMessage, removeErrorMessage } from '../../utils/error.js';
 
 // const emailInput = document.querySelector('#email');
 // const pwdInput = document.querySelector('#password');
-const loginBtn = document.querySelector('.btn-login');
-const pwdToggleIcon = document.querySelector('#toggle-eye');
+// const loginBtn = document.querySelector('.btn-login');
+// const pwdToggleIcon = document.querySelector('#toggle-eye');
 
 
 const emailField = document.querySelector('.email-field');
@@ -38,6 +38,7 @@ function checkPwdValidation() {
   }
 };
 
+const loginBtn = document.querySelector('.btn-login');
 
 function submitForm() {
   // e.preventDefault();
@@ -57,6 +58,9 @@ function submitForm() {
       checkPwdValidation();
     }
 }
+
+
+const pwdToggleIcon = document.querySelector('#toggle-eye');
 
 const toggleEyeIcon = () => {
   if(password.type === "password") {
