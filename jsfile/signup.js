@@ -12,6 +12,8 @@ import {
 const $emailInput = document.querySelector("#email");
 
 async function checkerUsingEmail(e) {
+  /* postInputs 함수를 이용하여 중복되는 이메일 체크하고 싶었으나, 계속 오류가 생겨
+                                                             이와 같이 구현하였습니다. 방법이 궁금합니다.*/
   try {
     const response = await fetch(
       "https://bootcamp-api.codeit.kr/api/check-email",
@@ -78,12 +80,12 @@ function signUpAftercheckingError(e) {
   if (e.key === "Enter" || e.type === "click") {
     e.preventDefault();
 
-    const userProfile = {
+    const userProfiles = {
       email: $emailInput.value,
       password: $passwordInput.value,
     };
 
-    postInputs("https://bootcamp-api.codeit.kr/api/check-email", userProfile)
+    postInputs("https://bootcamp-api.codeit.kr/api/check-email", userProfiles)
       .then((response) => {
         if (response.ok) {
           const link = "../folder.html";
