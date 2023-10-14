@@ -46,7 +46,7 @@ const checkEmailInput = (event) => {
   }
 };
 
-const isCheckPasswordRule = (event) => {
+const checkPasswordRule = (event) => {
   const valueArray = event.target.value.split("");
   // 모두 문자열인지
   const isAllString = valueArray.every((el) => Number.isNaN(Number(el)));
@@ -59,7 +59,7 @@ const isCheckPasswordRule = (event) => {
   return false;
 };
 
-const isCheckPasswordSame = (event) => {
+const checkPasswordSame = (event) => {
   if (
     $doubleCheckPw.value.length > 0 &&
     event.target.value !== $doubleCheckPw.value
@@ -76,15 +76,15 @@ const isCheckPasswordSame = (event) => {
 };
 
 const checkPasswordInput = (event) => {
-  if (isCheckPasswordRule(event)) {
+  if (checkPasswordRule(event)) {
     showPasswordError("again");
-    if (isCheckPasswordSame(event)) {
+    if (checkPasswordSame(event)) {
       deleteDoubleCheckPwError();
     }
-  } else if (!isCheckPasswordSame(event)) {
+  } else if (!checkPasswordSame(event)) {
     // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 다를 때
     showPasswordError("diff");
-  } else if (isCheckPasswordSame(event)) {
+  } else if (checkPasswordSame(event)) {
     // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 같을 때
     deletePasswordError();
     deleteDoubleCheckPwError();
@@ -106,7 +106,7 @@ const checkDoubleCheckPwInput = (event) => {
       // 비밀번호 에러 텍스트에 '비밀번호가 일치하지 않아요.'가 써져있을 때
       deletePasswordError();
       deleteDoubleCheckPwError();
-      if (isCheckPasswordRule(event)) {
+      if (checkPasswordRule(event)) {
         showPasswordError("again");
         deleteDoubleCheckPwError();
       }
