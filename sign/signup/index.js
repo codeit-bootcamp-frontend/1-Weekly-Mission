@@ -78,10 +78,9 @@ function submitForm() {
   }
 }
 
-
 function submitOnEnter(e) {
   if(e.key === "Enter") {
-    submitForm(e);
+    submitForm();
   }
 }
 
@@ -89,6 +88,7 @@ emailInput.addEventListener("focusout", checkEmailValidation);
 passwordInput.addEventListener("focusout", checkPwdValidation);
 pwdConfirmInput.addEventListener("focusout", confirmPwd);
 loginBtn.addEventListener("click", submitForm);
+pwdConfirmInput.addEventListener("keydown", submitOnEnter);
 
 
 // 비밀번호 문자열 노출 
