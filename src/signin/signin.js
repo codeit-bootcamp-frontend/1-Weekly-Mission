@@ -9,7 +9,7 @@ import { REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from "../constants/
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
-import requestSignin from "../utils/requestSignin.js";
+import requestSignin from "../utils/request-signin.js";
 import refreshAccessToken from "../utils/api-refresh-token.js";
 
 const validateEmail = () => {
