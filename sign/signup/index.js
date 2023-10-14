@@ -1,4 +1,4 @@
-import { isValidEmail, isValidPwd } from '/utils/validation.js';
+import { isEmail, isPassword } from '/utils/validation.js';
 import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 
 
@@ -18,7 +18,7 @@ function checkEmailValidation() {
 
   if (email === '') {
     addErrorMessage(emailField, emailErrorMessage, '이메일을 입력해주세요.');
-  } else if (!isValidEmail(email)) {
+  } else if (!isEmail(email)) {
     addErrorMessage(emailField, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
   } else if (email === 'test@codeit.com') {
     addErrorMessage(emailField, emailErrorMessage, '이미 사용 중인 이메일입니다.'); 
@@ -39,7 +39,7 @@ function checkPwdValidation() {
   const password = passwordInput.value.trim();
 
   // 값이 8자 미만 or only 문자열 or only 숫자
-  if (!isValidPwd(password)) { 
+  if (!isPassword(password)) { 
     addErrorMessage(passwordField, passwordErrorMessage, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
   } else {
     removeErrorMessage(passwordField, passwordErrorMessage);
