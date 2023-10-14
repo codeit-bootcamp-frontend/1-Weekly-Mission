@@ -58,23 +58,54 @@ function checkPwdValidation() {
 };
 
 
-function submitForm() {
-  e.preventDefault();
+// function submitForm() {
+//   e.preventDefault();
 
+//   const email = emailInput.value;
+//   const password = passwordInput.value;
+//   const testEmail = 'test@codeit.com';
+//   const testPassword = 'codeit101';
+
+//     if (email === testEmail && password === testPassword) {
+//       location.href = "/folder/index.html";
+//     } else if (email !== testEmail && password !== testPassword) {
+//       addErrorMessage(emailInput, emailError, EMAIL_WRONG);
+//       addErrorMessage(passwordInput, passwordError, PASSWORD_WRONG);
+//     } else {
+//       checkEmailValidation();
+//       checkPwdValidation();
+//     }
+// }
+
+async function submitForm() {
   const email = emailInput.value;
   const password = passwordInput.value;
-  const testEmail = 'test@codeit.com';
-  const testPassword = 'codeit101';
 
-    if (email === testEmail && password === testPassword) {
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+      method: 'POST',
+      headers: {
+      "content-Type": 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+
+    if (response.status === 200){
       location.href = "/folder/index.html";
-    } else if (email !== testEmail && password !== testPassword) {
+    } else if (response.status === 400) {
       addErrorMessage(emailInput, emailError, EMAIL_WRONG);
       addErrorMessage(passwordInput, passwordError, PASSWORD_WRONG);
-    } else {
-      checkEmailValidation();
-      checkPwdValidation();
     }
+
+    const result = await response.json();
+
+  } catch (error) {
+    console.log(error);
+  }
+  
 }
 
 
