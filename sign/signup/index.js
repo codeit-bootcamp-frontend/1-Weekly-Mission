@@ -48,12 +48,35 @@ function checkEmailValidation() {
   } else if (!isEmail(email)) {
     addErrorMessage(emailInput, emailError, EMAIL_INVALID);
     return false;
-  } else if (email === 'test@codeit.com') {
+  } else if (isDuplicatedEmail(email)) {
     addErrorMessage(emailInput, emailError, EMAIL_USED); 
     return false;
   } else {
     removeErrorMessage(emailInput, emailError);
     return true;
+  }
+}
+
+// 이메일 중복 확인
+async function isDuplicatedEmail() {
+  const email = emailInput.value;
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', {
+      method: 'POST',
+      headers: {
+      "content-Type": 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    });
+
+    if (response.status !== 200) {
+      return true;
+    }
+    return false; // 동작 오류
+  } catch (error) {
+    console.log(error);
   }
 }
 
