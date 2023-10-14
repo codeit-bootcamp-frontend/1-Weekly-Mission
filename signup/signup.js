@@ -46,25 +46,45 @@ const checkEmailInput = (event) => {
   }
 };
 
-const checkPasswordInput = (event) => {
+const isCheckPasswordRule = (event) => {
   const valueArray = event.target.value.split("");
   // 모두 문자열인지
-  const isAllString = valueArray.every((el) => isNaN(+el));
+  const isAllString = valueArray.every((el) => Number.isNaN(Number(el)));
   // 모두 숫자인지
-  const isAllNumber = valueArray.every((el) => !isNaN(+el));
+  const isAllNumber = valueArray.every((el) => !Number.isNaN(Number(el)));
   if (valueArray.length < 8 || isAllString || isAllNumber) {
     // 8자리 이하이거나 문자열만 있거나 숫자만 있는 경우
-    showPasswordError("again");
-  } else if (
+    return true;
+  }
+  return false;
+};
+
+const isCheckPasswordSame = (event) => {
+  if (
     $doubleCheckPw.value.length > 0 &&
     event.target.value !== $doubleCheckPw.value
   ) {
     // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 다를 때
-    showPasswordError("diff");
+    return false;
   } else if (
     $doubleCheckPw.value.length > 0 &&
     event.target.value === $doubleCheckPw.value
   ) {
+    // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 같을 때
+    return true;
+  }
+};
+
+const checkPasswordInput = (event) => {
+  if (isCheckPasswordRule(event)) {
+    showPasswordError("again");
+    if (isCheckPasswordSame(event)) {
+      deleteDoubleCheckPwError();
+    }
+  } else if (!isCheckPasswordSame(event)) {
+    // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 다를 때
+    showPasswordError("diff");
+  } else if (isCheckPasswordSame(event)) {
     // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 같을 때
     deletePasswordError();
     deleteDoubleCheckPwError();
@@ -86,6 +106,10 @@ const checkDoubleCheckPwInput = (event) => {
       // 비밀번호 에러 텍스트에 '비밀번호가 일치하지 않아요.'가 써져있을 때
       deletePasswordError();
       deleteDoubleCheckPwError();
+      if (isCheckPasswordRule(event)) {
+        showPasswordError("again");
+        deleteDoubleCheckPwError();
+      }
     }
   }
 };
