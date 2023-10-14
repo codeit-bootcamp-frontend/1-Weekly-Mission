@@ -9,14 +9,14 @@ import {
   editErrorStatus,
   toggleEyeButton,
   checkAccessToken
-} from '/js/utils.js';
+} from "/js/utils.js";
 
 const checkDuplicationEmail = async () => {
   try {
-    const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', {
-      method: 'POST',
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: emailInput.value,
@@ -24,20 +24,20 @@ const checkDuplicationEmail = async () => {
     });
 
     if (response.status === 409) {
-      editErrorStatus(emailInput, '이미 사용 중인 이메일입니다.');
+      editErrorStatus(emailInput, "이미 사용 중인 이메일입니다.");
     } else if (response.status === 200) {
       editErrorStatus(emailInput);
     }
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 const checkEmail = (email) => {
   if (!email) {
-    editErrorStatus(emailInput, '이메일을 입력해주세요.');
+    editErrorStatus(emailInput, "이메일을 입력해주세요.");
   } else if (!EMAIL_REGEX.test(email)) {
-    editErrorStatus(emailInput, '올바른 이메일 주소가 아닙니다.');
+    editErrorStatus(emailInput, "올바른 이메일 주소가 아닙니다.");
   } else {
     checkDuplicationEmail();
   }
@@ -45,7 +45,7 @@ const checkEmail = (email) => {
 
 const checkPassword = (password) => {
   if (!PASSWORD_REGEX.test(password)) {
-    editErrorStatus(passwordInput, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
+    editErrorStatus(passwordInput, "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.");
   } else {
     editErrorStatus(passwordInput);
   }
@@ -53,7 +53,7 @@ const checkPassword = (password) => {
 
 const checkPasswordConfirm = (password) => {
   if (password !== passwordInput.value) {
-    editErrorStatus(passwordConfirmInput, '비밀번호가 일치하지 않아요.');
+    editErrorStatus(passwordConfirmInput, "비밀번호가 일치하지 않아요.");
   } else {
     editErrorStatus(passwordConfirmInput);
   }
@@ -61,10 +61,10 @@ const checkPasswordConfirm = (password) => {
 
 const requestSignUp = async () => {
   try {
-    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
-      method: 'POST',
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: emailInput.value,
@@ -73,10 +73,10 @@ const requestSignUp = async () => {
     });
 
     const result = await response.json();
-    
+
     if (response.status === 200) {
-      localStorage.setItem('login-token', result.data.accessToken);
-      location.href = '/html/folder.html';
+      localStorage.setItem("login-token", result.data.accessToken);
+      redirect();
     } else {
       checkEmail(emailInput.value);
       checkPassword(passwordInput.value);
@@ -85,7 +85,7 @@ const requestSignUp = async () => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 const trySignUp = (e) => {
   const email = emailInput.value;
@@ -100,10 +100,10 @@ const trySignUp = (e) => {
 
 checkAccessToken();
 
-emailInput.addEventListener('focusout', (e) => checkEmail(e.target.value));
-passwordInput.addEventListener('focusout', (e) => checkPassword(e.target.value));
-passwordConfirmInput.addEventListener('focusout', (e) => checkPasswordConfirm(e.target.value));
-form.addEventListener('submit', trySignUp);
+emailInput.addEventListener("focusout", (e) => checkEmail(e.target.value));
+passwordInput.addEventListener("focusout", (e) => checkPassword(e.target.value));
+passwordConfirmInput.addEventListener("focusout", (e) => checkPasswordConfirm(e.target.value));
+form.addEventListener("submit", trySignUp);
 for (let el of eyeIcons) {
-  el.addEventListener('click', toggleEyeButton);
+  el.addEventListener("click", toggleEyeButton);
 }
