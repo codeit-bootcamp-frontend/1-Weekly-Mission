@@ -1,9 +1,13 @@
 import { $, displayInputError, removeInputError, handleEmailError } from "../utils.js";
-import { REG_EXP, DB_USERS } from "../constants.js";
+import { REG_EXP, API } from "../constants.js";
 
+// 페이지 접근 시 엑세스토큰 보유 -> folder페이지로 이동
+if(localStorage.getItem("accessToken")) {
+  location.href = "folder.html";
+}
 
 // 비밀번호 공란, 유효성, 일치 여부 확인
-function handleSignUpPasswordError(event) {
+function handleSignUpPasswordError() {
   const passwordInput = $("#password");
   const passwordInputVerify = $("#password-verify");
 
@@ -22,23 +26,8 @@ function handleSignUpPasswordError(event) {
   }
 }
 
-// 유저 DB 추가 가능 여부 확인
-function isPossibleUser(email) {
-  const userIndex = DB_USERS.findIndex((dbUser) => {
-    return dbUser.email === email;
-  });
-
-  return userIndex === -1; // 일치하는 사용자가 없을 때 true를 반환합니다.
-}
-
-//회원가입 성공 시
-function signUpSuccess() {
-  alert('회원가입 되었습니다.');
-  location.href = "folder.html";
-}
-
 // 회원가입 클릭 시
-function handleSignUp(event) {
+async function handleSignUp(event) {
   event.preventDefault();
 
   const elements = event.target.elements;
@@ -46,19 +35,41 @@ function handleSignUp(event) {
   const passwordInput = elements['password'];
   const passwordInputVerify = elements['password-verify'];
 
-  // 이전에 표시된 에러 메시지 제거
-  removeInputError(emailInput);
-  removeInputError(passwordInput);
-  removeInputError(passwordInputVerify);
-
   const emailError = handleEmailError(emailInput);
   const passwordError = handleSignUpPasswordError(passwordInput, passwordInputVerify);
 
-  if (isPossibleUser(emailInput.value) && !emailError && !passwordError) {
-    return signUpSuccess();
-  } else {
-    // 문제가 있는 경우 에러 메세지로 알림
-    displayInputError(emailInput, "유효하지 않은 회원가입 시도입니다.");
+  try {
+    if(!emailError && !passwordError){
+      const response = await fetch(`${API}/sign-up`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: emailInput.value,
+          password: passwordInput.value
+        })
+      });
+
+      const responseData = await response.json();
+
+      if(response.status === 200){
+        localStorage.setItem("accessToken", responseData.accessToken);
+        alert("회원가입 되었습니다.");
+        return location.href = "folder.html";
+      }
+
+      removeInputError(emailInput);
+      displayInputError(emailInput, "이메일을 확인해주세요.");
+
+      removeInputError(passwordInput);
+      displayInputError(passwordInput, "비밀번호를 확인해주세요.");
+
+      removeInputError(passwordInputVerify);
+      displayInputError(passwordInputVerify, "비밀번호를 확인해주세요.");
+    }
+  } catch (error){
+    console.log(error);
   }
 }
 

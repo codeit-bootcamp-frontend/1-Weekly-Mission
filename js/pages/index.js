@@ -18,3 +18,4 @@ $all(".eye-off").forEach((eyeButton, index) => {
 
   eyeButton.addEventListener("click", () => handleToggleEye(eyeButton, passwordInput));
 });
+

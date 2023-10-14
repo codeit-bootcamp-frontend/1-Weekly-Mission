@@ -1,4 +1,4 @@
-import { REG_EXP } from "./constants.js";
+import { REG_EXP, API } from "./constants.js";
 
 // 요소 하나 선택 함수
 function $(selector) {
@@ -101,11 +101,34 @@ function handleEmailError({value}) {
       return;
     }  
   
-    if (isLocation() && value === "test@codeit.com") {
-      displayInputError(emailInput, "이미 사용 중인 이메일입니다.");
+    if (isLocation() && value) {
+      checkEmailDBValid(value);
     }
-  }
+}
 
+// 이메일 중복 체크
+async function checkEmailDBValid(e) {
+  const emailInput = $("#email");
+  
+  try {
+    const response = await fetch(`${API}/check-email`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: emailInput.value
+      })
+    });
+    
+    if (response.status === 409) {
+      displayInputError(emailInput, "이미 사용 중인 이메일입니다.");
+      return;
+    } 
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // 비밀번호 eye 토글
 function handleToggleEye(eyeButton, passwordInput) {
@@ -114,8 +137,7 @@ function handleToggleEye(eyeButton, passwordInput) {
   
     passwordInput.setAttribute("type", isPasswordType ? "text" : "password");
     eyeButton.setAttribute("src", `img/eye-${isPasswordType ? 'on' : 'off'}.svg`);
-  }
-  
-  
+}
+
 
 export { $, $all, displayInputError, removeInputError, isLocation, handleEmailError, handleToggleEye };
