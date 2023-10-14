@@ -97,6 +97,8 @@ async function join(e) {
     const result = await response.json();
 
     if (response.status === 200 && passwordValue === passwordCheckValue) {
+      localStorage.setItem('join-token', result.data.accessToken);
+      setTimeout(() => {localStorage.removeItem('join-token');}, 5000)
       return location.href = '../pages/folder.html';
     } else if (response.status === 400) {
       showErrorMessage('email', '이메일을 확인해주세요.');
@@ -105,6 +107,10 @@ async function join(e) {
   } catch (error) {
     console.log(error);
   }
+}
+
+if (localStorage.getItem('join-token')) {
+  location.href = '../pages/folder.html';
 }
 
 emailInput.addEventListener('focusout', valiDateEmail);

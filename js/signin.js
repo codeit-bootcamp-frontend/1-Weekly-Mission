@@ -54,6 +54,7 @@ async function login(e) {
     const result = await response.json();
 
     if (response.status === 200) {
+      localStorage.setItem('login-token', result.data.accessToken);
       return location.href = '../pages/folder.html';
     } else if (response.status === 400) {
       showErrorMessage('email', '이메일을 확인해주세요.');
@@ -62,6 +63,10 @@ async function login(e) {
   } catch (error) {
     console.log(error);
   }
+}
+
+if (localStorage.getItem('login-token')) {
+  location.href = '../pages/folder.html';
 }
 
 emailInput.addEventListener('focusout', valiDateEmail);
