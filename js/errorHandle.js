@@ -40,9 +40,6 @@ async function isDuplicatedEmail({ value }, errorLocation) {
       return;
     }
     displayError(errorLocation, errorMessages.duplicateEmail);
-    const result = await response.json();
-    console.log(result);
-
   }
 
   catch (error) {
@@ -72,7 +69,7 @@ function commonInputCheck(target) {
 
 
 function signupInputCheck(target) {
-  if(!commonInputCheck(target)){
+  if (!commonInputCheck(target)) {
     return;
   };
 

@@ -20,17 +20,20 @@ async function authentication(e, url, inputCheck) {
     });
 
     if (response.ok) {
-      window.location.href = "/folder";
-      const result = await response.json();
-      if (result.ACCESS_TOKEN) {
-        localStorage.setItem("access-token", result.ACCESS_TOKEN);
+      
+      const {data} = await response.json();
+      console.log(data.accessToken);
+      if (data.accessToken) {
+        localStorage.setItem("access-token", data.accessToken);
       }
+
+      window.location.href = "/folder";
       return;
     }
 
 
-
-    if (url.split("/").includes("sign-in")) {
+    const isSignupPage = url.split("/").includes("sign-in");
+    if (isSignupPage) {
       displayLoginFailedError();
     }
 
@@ -44,14 +47,11 @@ async function authentication(e, url, inputCheck) {
 
 async function loginAuthentication(e) {
   await authentication(e, "https://bootcamp-api.codeit.kr/api/sign-in", commonInputCheck);
-
-
 }
 
 
 async function signupAuthentication(e) {
   await authentication(e, "https://bootcamp-api.codeit.kr/api/sign-up", signupInputCheck);
-
 }
 
 
