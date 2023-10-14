@@ -49,6 +49,9 @@ function submitForm() {
 
     if (email === testEmail && password === testPassword) {
       location.href = "/folder/index.html";
+    } else if (email !== testEmail && password !== testPassword) {
+      addErrorMessage(emailField, emailErrorMessage, '이메일을 확인해주세요.');
+      addErrorMessage(passwordField, passwordErrorMessage, '비밀번호를 확인해주세요.')
     } else {
       checkEmailValidation();
       checkPwdValidation();
