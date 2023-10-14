@@ -71,7 +71,10 @@ const requestSignUp = async () => {
       }),
     });
 
+    const result = await response.json();
+    
     if (response.status === 200) {
+      localStorage.setItem('login-token', result.data.accessToken);
       location.href = '/html/folder.html';
     } else {
       checkEmail(emailInput.value);

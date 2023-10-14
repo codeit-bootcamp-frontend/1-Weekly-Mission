@@ -32,4 +32,10 @@ const toggleEyeButton = (e) => {
   eyeOn.classList.toggle('display-none');
 }
 
+const checkAccessToken = () => {
+  if ('login-token' in localStorage) {
+    location.href = '/html/folder.html'
+  }
+}
+
 export { emailInput, passwordInput, passwordConfirmInput, form, eyeIcons, EMAIL_REGEX, PASSWORD_REGEX, editErrorStatus, toggleEyeButton };

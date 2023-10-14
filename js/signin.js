@@ -39,7 +39,10 @@ const requestSignIn = async () => {
       }),
     });
     
+    const result = await response.json();
+
     if (response.status === 200) {
+      localStorage.setItem('login-token', result.data.accessToken);
       location.href = '/html/folder.html';
     } else {
       editErrorStatus(emailInput, '이메일을 확인해주세요.');
