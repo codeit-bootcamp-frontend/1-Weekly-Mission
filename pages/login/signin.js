@@ -19,8 +19,31 @@ function _onLogin(){
  * 에러가 있는지 확인하고, 존재하는 계정인지 확인 후, 로그인 한다.
  */
 function login(){
-    if(!isFormContainsError() && isVerificatedAccount()){
-        location.href = "/pages/folder";
+    if(!isFormContainsError()){
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
+
+        const account = {
+            email: email.value,
+            password: password.value,
+        }
+
+        requestSignin(account)
+            .then((response) => {
+                if(response.ok){
+                    return response.json();
+                }else{
+                    setErrorMessage(email.id, 'login');
+                    setErrorMessage(password.id, 'login');
+                }
+            })
+            .then((result) => {
+                // 로컬스토리지에 accessToken저장
+                localStorage.setItem('accessToken',result.data.accessToken);
+
+                // 경로 이동
+                location.href = "/pages/folder";
+            })
     }
 }
 
@@ -44,22 +67,14 @@ function validateAll(){
     }
 }
 
-/**
- * 유효한 계정인지 확인 후, 유효하지 않다면 에러메세지를 출력한다.
- */
-function isVerificatedAccount(){
-
-    const email = document.querySelector('#email');
-    const password = document.querySelector('#password');
-
-    if(email.value === 'test@codeit.com' && password.value === 'codeit101'){
-        return true;
-    }else{
-        // 에러메세지 출력.
-        setErrorMessage(email.id, 'login');
-        setErrorMessage(password.id, 'login');
-        return false;
-    }
+async function requestSignin(account){
+    return fetch('https://bootcamp-api.codeit.kr/api/sign-in',{
+        method: 'POST',
+        body: JSON.stringify(account),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 }
 
 /**
