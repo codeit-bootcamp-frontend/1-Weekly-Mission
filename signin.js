@@ -49,8 +49,39 @@ password.addEventListener("focusout", (event) => {
 
 loginButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  const emailValue = email.value.trim();
-  const passwordValue = password.value.trim();
+  let emailValue = email.value;
+  let passwordValue = password.value;
+  const emailErrorMsgsLabel = emailLabel.querySelector(".error-message");
+  const passwordErrorMsgsLabel = passwordLabel.querySelector(".error-message");
+  for (const state of ["empty", "notValid"]) {
+    if (state === "empty") {
+      if (
+        EMAIL_MAP[state].checker(emailValue) ||
+        PASSWORD_MAP[state].checker(passwordValue)
+      ) {
+        showErrorMessageEffect(email, emailErrorMsgsLabel, EMAIL_MAP["login"]);
+        showErrorMessageEffect(
+          password,
+          passwordErrorMsgsLabel,
+          PASSWORD_MAP["login"]
+        );
+        return;
+      }
+    }
+
+    if (state === "notValid") {
+      if (!EMAIL_MAP[state].checker(emailValue)) {
+        showErrorMessageEffect(email, emailErrorMsgsLabel, EMAIL_MAP["login"]);
+        showErrorMessageEffect(
+          password,
+          passwordErrorMsgsLabel,
+          PASSWORD_MAP["login"]
+        );
+      }
+    }
+  }
+  emailValue = email.value.trim();
+  passwordValue = password.value.trim();
   // test@codeit.com   sprint101
   try {
     await postData("bootcamp-api.codeit.kr", "api/sign-in", {
@@ -58,6 +89,7 @@ loginButton.addEventListener("click", async (event) => {
       password: passwordValue,
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           return response.text();
         }
@@ -68,6 +100,7 @@ loginButton.addEventListener("click", async (event) => {
       });
 
     if (JSON.parse(localStorage.getItem("accessToken"))) {
+      // console.log(JSON.parse(localStorage.getItem("accessToken")));
       window.location.href = window.location.origin + "/folder.html";
     } else {
       let error = new Error("Invalid login credentials");
@@ -75,8 +108,7 @@ loginButton.addEventListener("click", async (event) => {
       throw error;
     }
   } catch (error) {
-    alert(error.name);
-    alert(error.message);
+    alert(error);
   }
 });
 

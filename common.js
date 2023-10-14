@@ -20,8 +20,12 @@ export const EMAIL_MAP = {
   },
 
   alreadyUsed: {
-    // checker: alreadyUsedEmail,
     message: "이미 사용 중인 이메일입니다",
+    textColor: "red",
+    borderColor: "3px solid red",
+  },
+  login: {
+    message: "이메일를 확인해주세요",
     textColor: "red",
     borderColor: "3px solid red",
   },
@@ -46,6 +50,11 @@ export const PASSWORD_MAP = {
     message: "",
     textColor: "",
     borderColor: "",
+  },
+  login: {
+    message: "비밀번호를 확인해주세요",
+    textColor: "red",
+    borderColor: "3px solid red",
   },
 };
 
@@ -74,9 +83,6 @@ export const REPASSWORD_MAP = {
 export function isEmpty(inputValue) {
   return inputValue.trim().length ? false : true;
 }
-// export function isEmpty2(inputValue) {
-//   return inputValue.trim().length ? false : true;
-// }
 
 export function isEmailValid(inputValue) {
   // @codeit.com 얘만 유효하다
@@ -84,16 +90,6 @@ export function isEmailValid(inputValue) {
   const texts = inputValue.trim();
   return re.test(texts);
 }
-
-// export function isEmailValid2(inputValue) {
-//   const re = /^[a-z0-9]+@[a-z]+\.[a-z]{2,5}/;
-//   const texts = inputValue.trim();
-//   return re.test(texts);
-// }
-
-// export function alreadyUsedEmail(input) {
-//   return input.value.trim() === "test@codeit.com";
-// }
 
 export function showErrorMessageEffect(input, errorMsgsLabel, state) {
   errorMsgsLabel.innerText = state.message;
