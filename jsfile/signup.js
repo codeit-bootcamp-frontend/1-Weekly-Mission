@@ -11,21 +11,25 @@ import {
 
 const $emailInput = document.querySelector("#email");
 
-function checkerUsingEmail(e) {
-  const userEmail = {
-    email: "test@codeit.com",
-  };
-  postInputs("https://bootcamp-api.codeit.kr/api/check-email", userEmail)
-    .then((response) => {
-      if (response.ok) {
-        return;
-      } else {
-        displayError(e, "중복되는 이메일입니다.");
+async function checkerUsingEmail(e) {
+  try {
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: $emailInput.value }),
       }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    );
+
+    if (response.status === 409) {
+      displayError(e, "중복되는 이메일입니다.");
+    } else {
+      return;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 const $passwordInput = document.querySelector("#password");
 
@@ -93,7 +97,7 @@ function signUpAftercheckingError(e) {
 }
 
 $emailInput.addEventListener("focusout", checkerEmail);
-$emailInput.addEventListener("change", checkerUsingEmail);
+$emailInput.addEventListener("focusout", checkerUsingEmail);
 $emailInput.addEventListener("focusin", reset);
 
 $passwordInput.addEventListener("focusout", isValidPassword);
