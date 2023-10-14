@@ -11,7 +11,7 @@ import {
 import {
   EMAIL_INPUT,
   EMAIL_ERROR,
-  PASSWORD_FIELD,
+  // PASSWORD_FIELD,
   PASSWORD_INPUT,
   PASSWORD_ERROR,
   EYE_ICON,
@@ -20,14 +20,14 @@ import {
 
 
 // Email
-const emailField = document.querySelector(PASSWORD_FIELD);
+// const emailField = document.querySelector(PASSWORD_FIELD);
 const emailInput = document.querySelector(EMAIL_INPUT);
-const emailErrorMessage = document.querySelector(EMAIL_ERROR);
+const emailError = document.querySelector(EMAIL_ERROR);
 
 // Password
-const passwordField = document.querySelector(PASSWORD_FIELD);
+// const passwordField = document.querySelector(PASSWORD_FIELD);
 const passwordInput = document.querySelector(PASSWORD_INPUT);
-const passwordErrorMessage = document.querySelector(PASSWORD_ERROR);
+const passwordError = document.querySelector(PASSWORD_ERROR);
 
 // Toggle
 const eyeIcon = document.querySelector(EYE_ICON);
@@ -41,11 +41,11 @@ function checkEmailValidation() {
   const email = emailInput.value.trim();
 
   if (email === '') {
-    addErrorMessage(emailField, emailErrorMessage, EMAIL_EMPTY);
+    addErrorMessage(emailInput, emailError, EMAIL_EMPTY);
   } else if (!isEmail(email)) {
-    addErrorMessage(emailField, emailErrorMessage, EMAIL_INVALID);
+    addErrorMessage(emailInput, emailError, EMAIL_INVALID);
   } else {
-    removeErrorMessage(emailField, emailErrorMessage);
+    removeErrorMessage(emailInput, emailError);
   }
 }
 
@@ -54,9 +54,9 @@ function checkPwdValidation() {
   const password = passwordInput.value.trim();
 
   if (password === '') {
-    addErrorMessage(passwordField, passwordErrorMessage, PASSWORD_EMPTY);
+    addErrorMessage(passwordInput, passwordError, PASSWORD_EMPTY);
   } else {
-    removeErrorMessage(passwordField, passwordErrorMessage);
+    removeErrorMessage(passwordInput, passwordError);
   }
 };
 
@@ -72,8 +72,8 @@ function submitForm() {
     if (email === testEmail && password === testPassword) {
       location.href = "/folder/index.html";
     } else if (email !== testEmail && password !== testPassword) {
-      addErrorMessage(emailField, emailErrorMessage, EMAIL_WRONG);
-      addErrorMessage(passwordField, passwordErrorMessage, PASSWORD_WRONG);
+      addErrorMessage(emailInput, emailError, EMAIL_WRONG);
+      addErrorMessage(passwordInput, passwordError, PASSWORD_WRONG);
     } else {
       checkEmailValidation();
       checkPwdValidation();

@@ -9,14 +9,11 @@ import {
   PASSWORD_NOT_MATCH
 } from '/constants/error-message.js';
 import {
-  EMAIL_FIELD,
   EMAIL_INPUT,
   EMAIL_ERROR,
-  PASSWORD_FIELD,
   PASSWORD_INPUT,
   PASSWORD_ERROR,
   PASSWORD_CONFIRM_INPUT,
-  PASSWORD_CONFIRM_FIELD,
   PASSWORD_CONFIRM_ERROR,
   EYE_ICON,
   EYE_ICON_RE,
@@ -24,15 +21,14 @@ import {
 } from '/constants/selector.js';
 
 // Email
-const emailField = document.querySelector(EMAIL_FIELD);
 const emailInput = document.querySelector(EMAIL_INPUT);
-const emailErrorMessage = document.querySelector(EMAIL_ERROR);
+const emailError = document.querySelector(EMAIL_ERROR);
 
 // Password
-const passwordField = document.querySelector(PASSWORD_FIELD);
 const passwordInput = document.querySelector(PASSWORD_INPUT);
-const passwordErrorMessage = document.querySelector(PASSWORD_ERROR);
+const passwordError = document.querySelector(PASSWORD_ERROR);
 const pwdConfirmInput = document.querySelector(PASSWORD_CONFIRM_INPUT);
+const pwdConfirmError = document.querySelector(PASSWORD_CONFIRM_ERROR);
 
 // Toggle
 const eyeIcon = document.querySelector(EYE_ICON);
@@ -47,16 +43,16 @@ function checkEmailValidation() {
   const email = emailInput.value.trim();
 
   if (email === '') {
-    addErrorMessage(emailField, emailErrorMessage, EMAIL_EMPTY);
+    addErrorMessage(emailInput, emailError, EMAIL_EMPTY);
     return false;
   } else if (!isEmail(email)) {
-    addErrorMessage(emailField, emailErrorMessage, EMAIL_INVALID);
+    addErrorMessage(emailInput, emailError, EMAIL_INVALID);
     return false;
   } else if (email === 'test@codeit.com') {
-    addErrorMessage(emailField, emailErrorMessage, EMAIL_USED); 
+    addErrorMessage(emailInput, emailError, EMAIL_USED); 
     return false;
   } else {
-    removeErrorMessage(emailField, emailErrorMessage);
+    removeErrorMessage(emailInput, emailError);
     return true;
   }
 }
@@ -66,26 +62,25 @@ function checkPwdValidation() {
   const password = passwordInput.value.trim();
 
   if (!isPassword(password)) { // 값이 8자 미만 or only 문자열 or only 숫자
-    addErrorMessage(passwordField, passwordErrorMessage, PASSWORD_INVALID);
+    addErrorMessage(passwordInput, passwordError, PASSWORD_INVALID);
     return false;
   } else {
-    removeErrorMessage(passwordField, passwordErrorMessage);
+    removeErrorMessage(passwordInput, passwordError);
     return true;
   }
 }
 
+
 // 비밀번호 일치 확인 
 function confirmPwd() {
   const password = passwordInput.value;
-  const pwdConfirmField = document.querySelector(PASSWORD_CONFIRM_FIELD);
   const pwdConfirm = pwdConfirmInput.value;
-  const pwdConfirmErrorMessage = document.querySelector(PASSWORD_CONFIRM_ERROR);
 
   if(password !== pwdConfirm) {
-    addErrorMessage(pwdConfirmField, pwdConfirmErrorMessage, PASSWORD_NOT_MATCH);
+    addErrorMessage(pwdConfirmInput, pwdConfirmError, PASSWORD_NOT_MATCH);
     return false;
   } else {
-    removeErrorMessage(pwdConfirmField, pwdConfirmErrorMessage);
+    removeErrorMessage(pwdConfirmInput, pwdConfirmError);
     return true;
   }
 }
@@ -117,5 +112,5 @@ eyeIcon.addEventListener("click", () => {
   toggleEyeIcon(passwordInput, eyeIcon)
 });
 eyeIcon_Re.addEventListener("click", () => {
-  toggleEyeIcon(pwdConfirmInput, eyeIcon_Re)
+  toggleEyeIcon(passwordConfirmInput, eyeIcon_Re)
 });

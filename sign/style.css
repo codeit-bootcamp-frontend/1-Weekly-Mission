@@ -103,16 +103,10 @@ label {
 
 
 /* 에러메세지 발생 */
-/* 이후에 components 영역의 에러 케이스로 적용하기 */
-.email-field.error input,
-.password-field.error input,
-.pwd-confirm-field.error input {
-  border-color: red;
-  margin-bottom: 5px;
-}
-.email-field.error .email-error-message,
-.password-field.error .password-error-message,
-.pwd-confirm-field.error .pwd-confirm-error-message {
+.email-error.error,
+.password-error.error,
+.password-confirm-error.error {
   font-size: 14px;
-  color: red;
+  color: var(--color-red);
+  margin-top: 5px;
 }

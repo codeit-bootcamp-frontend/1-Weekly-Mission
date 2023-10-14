@@ -1,11 +1,8 @@
-export const EMAIL_FIELD = '.email-field'
 export const EMAIL_INPUT = '#email'
 export const EMAIL_ERROR = '.email-error'
-export const PASSWORD_FIELD = '.password-field'
 export const PASSWORD_INPUT = '#password';
 export const PASSWORD_ERROR = '.password-error';
 export const PASSWORD_CONFIRM_INPUT = '#password-confirm';
-export const PASSWORD_CONFIRM_FIELD = '.password-confirm-field';
 export const PASSWORD_CONFIRM_ERROR = '.password-confirm-error';
 export const EYE_ICON = '#eye-icon';
 export const EYE_ICON_RE = '#eye-icon-re';
