@@ -61,13 +61,41 @@ passwordRepeat.addEventListener("blur", passwordRepeatChecker);
 eyeBtn1.addEventListener("click", eyeCheck);
 eyeBtn2.addEventListener("click", eyeCheck);
 
-signupBtn.addEventListener("click", function (e) {
+signupBtn.addEventListener("click", async function (e) {
   e.preventDefault();
   const flag = emailChecker() && passwordChecker() && passwordRepeatChecker();
   if (flag) {
-    location.href = "./folder.html";
-    disappearError(email, emailError);
-    disappearError(password, passwordError);
-    disappearError(passwordRepeat, passwordRepeatError);
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.value,
+        }),
+      }
+    );
+    if (response.status === 200) {
+      const signUpPost = await fetch(
+        "https://bootcamp-api.codeit.kr/api/sign-up",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email.value,
+            password: password.value,
+          }),
+        }
+      );
+      if (signUpPost === 200) {
+        location.href = "./folder.html";
+      }
+    } else {
+      appearError(email, emailError, "중복된 이메일입니다.");
+    }
   }
 });
