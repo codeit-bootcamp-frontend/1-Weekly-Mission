@@ -39,17 +39,20 @@ function checkPwdValidation() {
 };
 
 
-const submit = (e) => {
-  e.preventDefault();
+function submitForm() {
+  // e.preventDefault();
 
-  const email = emailInput.value.trim();
-  const password = pwdInput.value.trim();
+  const email = emailInput.value;
+  const password = passwordInput.value;
   const testEmail = 'test@codeit.com';
   const testPassword = 'codeit101';
-  
-  if (email == testEmail && password == testPassword) {
-    location.href = "/folder/index.html";
-  } 
+
+    if (email === testEmail && password === testPassword) {
+      location.href = "/folder/index.html";
+    } else {
+      checkEmailValidation();
+      checkPwdValidation();
+    }
 }
 
 const toggleEyeIcon = () => {
@@ -65,4 +68,4 @@ const toggleEyeIcon = () => {
 emailInput.addEventListener("focusout", checkEmailValidation);
 passwordInput.addEventListener("focusout", checkPwdValidation);
 pwdToggleIcon.addEventListener("click", toggleEyeIcon);
-loginBtn.addEventListener('click', submit);
+loginBtn.addEventListener('click', submitForm);
