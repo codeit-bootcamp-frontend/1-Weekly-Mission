@@ -8,25 +8,37 @@ import {
   PASSWORD_INVALID,
   PASSWORD_NOT_MATCH
 } from '/constants/error-message.js';
-
+import {
+  EMAIL_FIELD,
+  EMAIL_INPUT,
+  EMAIL_ERROR_MESSAGE,
+  PASSWORD_FIELD,
+  PASSWORD_INPUT,
+  PASSWORD_ERROR_MESSAGE,
+  PASSWORD_CONFIRM,
+  PASSWORD_CONFIRM_FIELD,
+  EYE_ICON,
+  EYE_ICON_RE,
+  LOGIN_BUTTON
+} from '/constants/selector.js';
 
 // Email
-const emailField = document.querySelector('.email-field');
-const emailInput = document.querySelector('#email');
-const emailErrorMessage = document.querySelector('.email-error-message');
+const emailField = document.querySelector(EMAIL_FIELD);
+const emailInput = document.querySelector(EMAIL_INPUT);
+const emailErrorMessage = document.querySelector(EMAIL_ERROR_MESSAGE);
 
 // Password
-const passwordField = document.querySelector('.password-field');
-const passwordInput = document.querySelector('#password');
-const passwordErrorMessage = document.querySelector('.password-error-message');
-const pwdConfirmInput = document.querySelector('#pwd-confirm');
+const passwordField = document.querySelector(PASSWORD_FIELD);
+const passwordInput = document.querySelector(PASSWORD_INPUT);
+const passwordErrorMessage = document.querySelector(PASSWORD_ERROR_MESSAGE);
+const pwdConfirmInput = document.querySelector(PASSWORD_CONFIRM);
 
 // Toggle
-const eyeIcon = document.querySelector('#eye-icon');
-const eyeIcon_Re = document.querySelector('#eye-icon-re');
+const eyeIcon = document.querySelector(EYE_ICON);
+const eyeIcon_Re = document.querySelector(EYE_ICON_RE);
 
 // LoginButton
-const loginBtn = document.querySelector('.btn-login');
+const loginBtn = document.querySelector(LOGIN_BUTTON);
 
 
 // 이메일 유효성 검사 
@@ -64,9 +76,9 @@ function checkPwdValidation() {
 // 비밀번호 일치 확인 
 function confirmPwd() {
   const password = passwordInput.value;
-  const pwdConfirmField = document.querySelector('.pwd-confirm-field');
+  const pwdConfirmField = document.querySelector(PASSWORD_CONFIRM_FIELD);
   const pwdConfirm = pwdConfirmInput.value;
-  const pwdConfirmErrorMessage = document.querySelector('.pwd-confirm-error-message');
+  const pwdConfirmErrorMessage = document.querySelector(PASSWORD_CONFIRM_ERROR);
 
   if(password !== pwdConfirm) {
     addErrorMessage(pwdConfirmField, pwdConfirmErrorMessage, PASSWORD_NOT_MATCH);

@@ -8,23 +8,32 @@ import {
   EMAIL_WRONG, 
   PASSWORD_WRONG 
 } from '/constants/error-message.js';
+import {
+  EMAIL_INPUT,
+  EMAIL_ERROR_MESSAGE,
+  PASSWORD_FIELD,
+  PASSWORD_INPUT,
+  PASSWORD_ERROR_MESSAGE,
+  EYE_ICON,
+  LOGIN_BUTTON
+} from '/constants/selector.js';
 
 
 // Email
-const emailField = document.querySelector('.email-field');
-const emailInput = document.querySelector('#email');
-const emailErrorMessage = document.querySelector('.email-error-message');
+const emailField = document.querySelector(PASSWORD_FIELD);
+const emailInput = document.querySelector(EMAIL_INPUT);
+const emailErrorMessage = document.querySelector(EMAIL_ERROR_MESSAGE);
 
 // Password
-const passwordField = document.querySelector('.password-field');
-const passwordInput = document.querySelector('#password');
-const passwordErrorMessage = document.querySelector('.password-error-message');
+const passwordField = document.querySelector(PASSWORD_FIELD);
+const passwordInput = document.querySelector(PASSWORD_INPUT);
+const passwordErrorMessage = document.querySelector(PASSWORD_ERROR_MESSAGE);
 
 // Toggle
-const eyeIcon = document.querySelector('#eye-icon');
+const eyeIcon = document.querySelector(EYE_ICON);
 
 // LoginButton
-const loginBtn = document.querySelector('.btn-login');
+const loginBtn = document.querySelector(LOGIN_BUTTON);
 
 
 // 이메일 유효성 검사 
