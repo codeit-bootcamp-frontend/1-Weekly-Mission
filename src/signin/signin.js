@@ -45,12 +45,12 @@ const handleLoginFormSubmit = (event) => {
   passwordInputsEl.forEach(async (passwordInputEl, index) => {
     const emailInputValue = emailInputEl.value;
     const passwordInputValue = passwordInputEl.value;
-    const isValid = await requestSignin(emailInputValue, passwordInputValue);
+    const isValidRequest = await requestSignin(emailInputValue, passwordInputValue);
 
     const submitErrorMessages = ERROR_MESSAGES.submit;
     const isMatchEmail = (field) => field === "email";
 
-    if (isValid) {
+    if (isValidRequest) {
       window.location.href = REDIRECT_PATH;
       return;
     }
