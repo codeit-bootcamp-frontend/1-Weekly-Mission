@@ -55,6 +55,7 @@ async function login(e) {
 
     if (response.status === 200) {
       localStorage.setItem('login-token', result.data.accessToken);
+      //setTimeout(() => { localStorage.removeItem('login-token')}, 1000 * 60 * 60);
       return location.href = '../pages/folder.html';
     } else if (response.status === 400) {
       showErrorMessage('email', '이메일을 확인해주세요.');
