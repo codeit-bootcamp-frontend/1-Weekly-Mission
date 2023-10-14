@@ -60,19 +60,29 @@ const validatePassword = (target) => {
   }
 };
 
-const checkEmailAvailability = (target) => {
+const checkEmailAvailability = async (target) => {
   if (!validateEmailPattern(target.value)) {
     return;
   }
 
-  if (target.value === ACCOUNT.email) {
-    paintErrorMessage({
-      error: "unavailableEmail",
-      type: target.type,
-      target,
-    });
-  } else {
+  const email = { email: target.value };
+
+  try {
+    const checkEmailResponse = await requestAPI("check-email", email);
+    if (checkEmailResponse.status === 409) {
+      throw new Error("existingEmail");
+    }
     removeErrorMessage(target);
+  } catch (error) {
+    if (error.message === "existingEmail") {
+      paintErrorMessage({
+        error: "unavailableEmail",
+        type: target.type,
+        target,
+      });
+    } else {
+      alert("Error");
+    }
   }
 };
 
@@ -108,7 +118,7 @@ const togglePasswordVisibility = (event) => {
   }
 };
 
-const redirect = async () => {
+const redirect = () => {
   location.href = "/pages/folder.html";
 };
 
