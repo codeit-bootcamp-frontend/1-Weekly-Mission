@@ -4,7 +4,7 @@ import {
   removeErrorMessage,
   ERROR_INPUT_STYLE,
 } from "./paintError.js";
-import { requestAPI } from "./service.js";
+import { requestAPI, checkToken } from "./service.js";
 
 const authForm = document.querySelector(".form");
 const authInputs = document.querySelectorAll(".form__input-box");
@@ -132,6 +132,9 @@ const handleSigninSubmit = async (event) => {
     if (signinResponse.status === 400) {
       throw new Error("invalidCredentials");
     }
+    const signinData = await signinResponse.json();
+    const accessToken = signinData.data.accessToken;
+    localStorage.setItem("accessToken", accessToken);
     redirect();
   } catch (error) {
     if (error.message === "invalidCredentials") {
@@ -146,7 +149,7 @@ const handleSigninSubmit = async (event) => {
         target: authPassword,
       });
     } else {
-      alert("Error");
+      alert(error.message);
     }
   }
 };
@@ -175,6 +178,9 @@ const handleSignupSubmit = async (event) => {
     if (signupResponse.status === 400) {
       throw new Error("invalidCredentials");
     }
+    const signupData = await signupResponse.json();
+    const accessToken = signupData.data.accessToken;
+    localStorage.setItem("accessToken", accessToken);
     redirect();
   } catch (error) {
     alert("Error");
@@ -182,6 +188,9 @@ const handleSignupSubmit = async (event) => {
 };
 
 const initSignin = () => {
+  if (checkToken("accessToken")) {
+    redirect();
+  }
   for (const input of authInputs) {
     input.addEventListener("focusout", ({ target }) => checkEmptyInput(target));
   }
@@ -192,6 +201,9 @@ const initSignin = () => {
 };
 
 const initSignup = () => {
+  if (checkToken("accessToken")) {
+    redirect();
+  }
   authEmail.addEventListener("focusout", ({ target }) =>
     checkEmptyInput(target)
   );

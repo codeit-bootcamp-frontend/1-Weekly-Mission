@@ -10,4 +10,8 @@ const requestAPI = async (url, data) => {
   return response;
 };
 
-export { requestAPI };
+const checkToken = (token) => {
+  return localStorage.getItem(token);
+};
+
+export { requestAPI, checkToken };
