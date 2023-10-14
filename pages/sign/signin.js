@@ -1,9 +1,9 @@
 import { emailCheck, domain } from './modules/constant.js'
-import { error_occur, error_disappear, loginTryShowError, moveToFolderPage } from './modules/functions.js'
+import { errorOccur, errorDisappear, loginTryShowError, moveToFolderPage } from './modules/functions.js'
 import { messages } from './modules/message.js'
-import { email_input, email_input_check, 
-  password_input, password_input_check, 
-  formtag, eye_mark_in_password } from './modules/tags.js'
+import { emailInput, emailInputCheck, 
+  passwordInput, passwordInputCheck, 
+  formTag, eyeMarkInPassword } from './modules/tags.js'
 import { saveAccessToken, getAccessToken } from './modules/localStorage.js'
 
 
@@ -15,29 +15,29 @@ if (getAccessToken(`accessToken`)) {
 
 // 이메일 부분 //
 
-function email_error() {
-  if (!email_input.value || !emailCheck(email_input.value)) { 
-    const message = !email_input.value ? messages.email_empty_error  : messages.email_type_error
-    error_occur(email_input, email_input_check, message)        
+function emailError() {
+  if (!emailInput.value || !emailCheck(emailInput.value)) { 
+    const message = !emailInput.value ? messages.email_empty_error  : messages.email_type_error
+    errorOccur(emailInput, emailInputCheck, message)        
   } else {
-    error_disappear(email_input,email_input_check)
+    errorDisappear(emailInput,emailInputCheck)
   }
 }
 
-email_input.addEventListener("focusout", email_error)
+emailInput.addEventListener("focusout", emailError)
 
 
 // 패스워드 부분 //
 // 과제에서 요구된 조건을 만족시키고, 올바른 비밀번호 형식이 입력되었을 때 focusout하면 원래대로 돌아감
-function password_error () {
-  if (!password_input.value) {
-    error_occur(password_input, password_input_check, messages.password_empty_error)
+function passwordError () {
+  if (!passwordInput.value) {
+    errorOccur(passwordInput, passwordInputCheck, messages.password_empty_error)
   } else {
-    error_disappear(password_input, password_input_check)
+    errorDisappear(passwordInput, passwordInputCheck)
   }
 }
 
-password_input.addEventListener("focusout", password_error)
+passwordInput.addEventListener("focusout", passwordError)
 
 
 // 로그인 시도 POST 전송//
@@ -45,7 +45,7 @@ async function loginTry(e) {
 
   e.preventDefault()
 
-  if(!email_input.value && !emailCheck(email_input.value)) {
+  if(!emailInput.value && !emailCheck(emailInput.value)) {
 
     loginTryShowError()
 
@@ -58,8 +58,8 @@ async function loginTry(e) {
         'content-type' : 'application/json'
       },
       body: JSON.stringify({
-        email: email_input.value,
-        password: password_input.value,
+        email: emailInput.value,
+        password: passwordInput.value,
       })
     })
     
@@ -81,16 +81,16 @@ async function loginTry(e) {
   }  
 }
 
-formtag.addEventListener("submit", loginTry)
+formTag.addEventListener("submit", loginTry)
 window.addEventListener("keypress", (e) => e.code === 'Enter' && loginTry)
 
 
 // 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
-function password_toggle(e) {
+function passwordToggle(e) {
   const PasswordType = e.target.parentElement.parentElement.children[1].type === "password"
-  password_input.type =  (PasswordType ? "text" : "password")
-  eye_mark_in_password.src = (PasswordType ? "/assets/images/eye_on_mark.svg" : "/assets/images/eye_off_mark.svg" )
+  passwordInput.type =  (PasswordType ? "text" : "password")
+  eyeMarkInPassword.src = (PasswordType ? "/assets/images/eye_on_mark.svg" : "/assets/images/eye_off_mark.svg" )
 }
 
-eye_mark_in_password.addEventListener('click', password_toggle)
+eyeMarkInPassword.addEventListener('click', passwordToggle)
 

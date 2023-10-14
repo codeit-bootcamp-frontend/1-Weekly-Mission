@@ -11,7 +11,7 @@ const messages = {
   password_check_error: "비밀번호를 확인해 주세요",
   password_type_error : "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요",
   password_repeat_empty_error : "비밀번호를 다시 입력해 주세요",
-  password_repeat_error : "비밀번호가 일치하지 않아요"
+  password_repeat_invalid_error : "비밀번호가 일치하지 않아요"
 }
 
 
