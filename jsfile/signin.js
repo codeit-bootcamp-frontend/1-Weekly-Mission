@@ -4,6 +4,9 @@ import {
   writeError,
   displayError,
   checkerEmail,
+  checkerInputBoxs,
+  postInputs,
+  testUserFile,
 } from "./util.js";
 
 const emailInput = document.querySelector("#email");
@@ -13,24 +16,32 @@ const signForm = document.querySelector("form");
 
 function checkerPassword(e) {
   if (passwordInput.value === "") {
-    displayError(e, "비밀번호를 입력해주세요.");
+    displayError(e.target, "비밀번호를 입력해주세요.");
   }
 }
 
 function login(e) {
   e.preventDefault();
-  if (
-    emailInput.value === "test@codeit.com" &&
-    passwordInput.value === "codeit101"
-  ) {
-    const link = "../folder.html";
-    window.location.assign(link);
-  } else {
-    const emailText = writeError(e, "이메일을 확인해주세요.");
-    document.querySelector("#email").after(emailText);
-    const passwordText = writeError(e, "비밀번호를 확인해주세요");
-    document.querySelector("#password").after(passwordText);
+
+  const userChecking =
+    emailInput.value === testUserFile.email &&
+    passwordInput.value === testUserFile.password;
+
+  if (userChecking === false) {
+    checkerInputBoxs("이메일을 확인해주세요.", "비밀번호를 확인해주세요");
+    return;
   }
+
+  postInputs("https://bootcamp-api.codeit.kr/api/sign-in", testUserFile)
+    .then((response) => {
+      if (response.ok) {
+        const link = "../folder.html";
+        window.location.assign(link);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 emailInput.addEventListener("focusout", checkerEmail);

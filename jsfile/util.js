@@ -1,5 +1,9 @@
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
+const testUserFile = {
+  email: "test@codeit.com",
+  password: "sprint101",
+};
 
 function checkerEmail(e) {
   if (emailInput.value === "") {
@@ -27,7 +31,7 @@ function eyeOnOff(e) {
 }
 
 function writeError(e, errorMessage) {
-  emailInput.classList.add("warning");
+  e.target.classList.add("warning");
   const text = document.createElement("span");
   text.classList.add("warning-text");
   text.textContent = errorMessage;
@@ -39,4 +43,55 @@ function displayError(e, errorMessage) {
   e.target.after(warningMessage);
 }
 
-export { reset, eyeOnOff, writeError, displayError, checkerEmail };
+function checkerInputBoxs(emailMassage, passwordMassage) {
+  emailInput.classList.add("warning");
+  const emailText = document.createElement("span");
+  emailText.classList.add("warning-text");
+  emailText.textContent = emailMassage;
+  emailInput.after(emailText);
+
+  passwordInput.classList.add("warning");
+  const passwordText = document.createElement("span");
+  passwordText.classList.add("warning-text");
+  passwordText.textContent = passwordMassage;
+  passwordInput.after(passwordText);
+}
+
+async function postInputs(url, userProfile) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userProfile),
+  });
+  return response;
+}
+
+async function FindEmail(url, userEmail) {
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userEmail),
+    });
+    if (response.ok) {
+      return false;
+    } else {
+      return true;
+    }
+  } catch (error) {
+    console.error("에러발생");
+  }
+}
+export {
+  reset,
+  eyeOnOff,
+  writeError,
+  displayError,
+  checkerEmail,
+  checkerInputBoxs,
+  postInputs,
+  testUserFile,
+  FindEmail,
+};
