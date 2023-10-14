@@ -10,7 +10,7 @@
 <body>
     <div class="Container">
         <!-- 로그인  -->
-        <div class="LoginForm">
+        <div id="loginForm" class="LoginForm">
             <!-- 링크, 회원가입  -->
             <div class="LoginHeader">
                 <div class="Logo">
@@ -27,22 +27,29 @@
                 <!-- 이메일  -->
                 <div class="InputForm">
                     <label>이메일</label>
-                    <input type="email" placeholder="이메일을 입력하세요.">
+                    <input id="email" type="email" placeholder="이메일을 입력하세요.">
+                    <div class="error-message" id="email-error">이메일을 입력해주세요.</div>
                 </div>
                 <!-- 비밀번호  -->
                 <div class="InputForm">
                     <label>비밀번호</label>
-                    <div class="Input">
-                        <input type="password" placeholder="비밀번호를 입력하세요.">
-                        <img src="assets/img/eye-on.svg">
+                    <div>
+                        <div class="Input">
+                            <input type="password" id="password" placeholder="비밀번호를 입력하세요.">
+                            <img id="password-toggle" src="assets/img/eye-off.svg">
+                        </div>
+                        <div class="error-message" id="password-error">비밀번호를 입력해주세요.</div>
                     </div>
                 </div>
                 <!-- 비밀번호 확인  -->
                 <div class="InputForm">
                     <label>비밀번호 확인</label>
-                    <div class="Input">
-                        <input type="password" placeholder="비밀번호를 한번 더 입력하세요.">
-                        <img src="assets/img/eye-on.svg">
+                    <div>
+                        <div class="Input">
+                            <input type="password" id="passwordCheck" placeholder="비밀번호를 입력하세요.">
+                            <img id="passwordcheck-toggle" src="assets/img/eye-off.svg">
+                        </div>
+                        <div class="error-message" id="passwordCheck-error">비밀번호를 입력해주세요.</div>
                     </div>
                 </div>
                 <!-- 로그인 버튼  -->
@@ -65,6 +72,6 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="signup.js"></script>
 </body>
 </html>
