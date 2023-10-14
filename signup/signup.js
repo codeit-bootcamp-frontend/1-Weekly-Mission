@@ -126,6 +126,7 @@ const checkAllInput = async () => {
       showPasswordError("voidDC");
     }
   } else if (
+    // 에러 메시지가 없고 모든 input 태그가 비어있지 않을 때
     !$emailErrorMsg.textContent &&
     !$passwordErrorMsg.textContent &&
     !$doubleCheckPwErrorMsg.textContent &&
@@ -136,6 +137,11 @@ const checkAllInput = async () => {
     const signupEmail = {
       email: $email.value,
     };
+    const signupAccount = {
+      email: $email.value,
+      password: $password.value,
+    };
+
     const response = await fetch(
       "https://bootcamp-api.codeit.kr/api/check-email",
       {
@@ -147,11 +153,24 @@ const checkAllInput = async () => {
       }
     );
     const responseStatus = response.status;
-    if (responseStatus === 200) {
-      // 중복된 이메일이 아니고 error msg 모두 처리 및 input 태그에 값들이 있을 시 'folder/' 로 이동
-      window.location.href = "../folder/index.html";
-    } else if (responseStatus === 409) {
+    if (responseStatus === 409) {
       showEmailError("already");
+    } else if (responseStatus === 200) {
+      // 중복된 이메일이 아닐 때
+      const response = await fetch(
+        "https://bootcamp-api.codeit.kr/api/sign-up",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(signupAccount),
+        }
+      );
+      const responseStatus = response.status;
+      if (responseStatus === 200) {
+        window.location.href = "../folder/index.html";
+      }
     }
   }
 };
