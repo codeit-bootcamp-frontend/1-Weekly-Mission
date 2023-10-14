@@ -102,6 +102,7 @@ label {
 
 
 /* 에러메세지 발생 */
+/* 이후에 components 영역의 에러 케이스로 적용하기 */
 .email-field.error input,
 .password-field.error input,
 .pwd-confirm-field.error input {
