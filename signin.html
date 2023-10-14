@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linkbrary/signin</title>
     <link rel="short icon" href="#" />
-    <link rel="stylesheet" href="../css/reset.css" />
-    <link rel="stylesheet" href="../css/sign.css" />
-    <link rel="stylesheet" href="../css/media.css" />
+    <link rel="stylesheet" href="../styles/signStyle/reset.css" />
+    <link rel="stylesheet" href="../styles/signStyle/sign.css" />
+    <link rel="stylesheet" href="../styles/signStyle/media.css" />
   </head>
   <body>
     <header>
-      <a href="../"><img class="logo" src="../logo/logo.svg" alt="사이트 로고" /></a>
+      <a href="../"
+        ><img class="logo" src="./images/signImages/logo.svg" alt="사이트 로고"
+      /></a>
       <span class="sign-question">
         회원이 아니신가요?
-        <a class="going-to-sign" href="../signup/"> 회원 가입하기 </a>
+        <a class="going-to-sign" href="./signup/"> 회원 가입하기 </a>
       </span>
     </header>
     <form>
@@ -26,22 +28,28 @@
         <label for="password">비밀번호</label>
         <input id="password" name="password" type="password" />
         <button id="password-toggle" class="eye-button" type="button">
-          <img src="../logo/eye-off.svg" />
+          <img src="./images/signImages/eye-off.svg" />
         </button>
       </div>
-      <button class = "cta" type="submit"> 로그인</button>
+      <button class="cta" type="submit">로그인</button>
       <div class="sns-box">
         소셜 로그인
         <div class="sns">
           <a href="https://google.com"
-            ><img class="sns-logo" src="../logo/google.svg" alt="구글 로고"
+            ><img
+              class="sns-logo"
+              src="./images/signImages/google.svg"
+              alt="구글 로고"
           /></a>
           <a href="https://www.kakaocorp.com/page/"
-            ><img class="sns-logo" src="../logo/kakao.svg" alt="카카오톡 로고"
+            ><img
+              class="sns-logo"
+              src="./images/signImages/kakao.svg"
+              alt="카카오톡 로고"
           /></a>
         </div>
       </div>
     </form>
-    <script type="module" src="signin.js"></script>
+    <script type="module" src="./jsfile/signin.js"></script>
   </body>
 </html>
