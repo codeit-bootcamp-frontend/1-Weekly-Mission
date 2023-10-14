@@ -35,7 +35,7 @@ const isValidEmail = (email) => EMAIL_PATTERN.test(email);
 
 const isValidPassword = (password) => PASSWORD_PATTERN.test(password);
 
-const getEndpoint = (endpoint) => API_ENDPOINTS.auth[endpoint];
+const getEndpoint = (section, endpoint) => API_ENDPOINTS[section][endpoint];
 
 const localStorageSetToken = (responseData) => {
   const getResponseAccessToken = responseData.accessToken;
