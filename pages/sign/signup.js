@@ -132,8 +132,6 @@ formTag.addEventListener("keypress", (e) => e.code === 'Enter' && singupTry)
 
 
 
-
-// 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
 // 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
 function password_toggle(e) {
   const PasswordType = e.target.parentElement.parentElement.children[1].type === "password"
