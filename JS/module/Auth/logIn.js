@@ -1,6 +1,7 @@
-import {inputEmail,inputPassword,errorEmail,errorPassword} from './tags.js'
-import { errorStyle, removeErrorStyle } from "./errorMessage.js";
+import {inputEmail,inputPassword,errorEmail,errorPassword} from './variables.js'
+import { errorStyle, removeErrorStyle } from "./errorStyle.js";
 import {USER_INPUT_VALUES,requestSettings} from "./requestSettings.js"
+
 const moveToFolderPage = () => {window.location.href = '../../folder.html'}
 
 async function handleLogin() {

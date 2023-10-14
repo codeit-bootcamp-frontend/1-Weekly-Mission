@@ -8,6 +8,5 @@ export const inputPassword2 = document.querySelector(`[data-name="password_check
 export const errorPassword2 = document.querySelector('#error_password_chk')
 export const submitBtn = document.querySelector('#submit')
 export const form = document.querySelector('form')
-
 export const eyes = document.querySelectorAll('#eye')
 export const eye = document.querySelector('#eye')

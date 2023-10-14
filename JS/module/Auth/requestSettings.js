@@ -1,4 +1,4 @@
-import { inputEmail, inputPassword } from "./tags.js";
+import { inputEmail, inputPassword } from "./variables.js";
 
 function USER_INPUT_VALUES () {
   const EMAIL = inputEmail.value;

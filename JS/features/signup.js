@@ -1,9 +1,10 @@
-import { inputEmail, errorEmail, inputPassword, errorPassword, inputPassword2, errorPassword2, emailWrapper, submitBtn, eyes} from "../module/Auth/tags.js";
-import { removeErrorStyle, errorStyle } from "../module/Auth/errorMessage.js";
-import { checkFormEmpty, checkEmailValid, checkErrorMessagesExist, checkPasswordValid,checkStringSame,checkEmailAvailable} from "../module/Auth/validation.js";
+import { inputEmail, errorEmail, inputPassword, errorPassword, inputPassword2, errorPassword2, emailWrapper, submitBtn, eyes} from "../module/Auth/variables.js";
+import { removeErrorStyle} from "../module/Auth/errorStyle.js";
 import { USER_INPUT_VALUES, requestSettings } from "../module/Auth/requestSettings.js";
+import { emailValidationSignUp, passwordValidationSignUp, password2ValidationSignUp} from "../module/Auth/validation.js";
+import { checkErrorMessagesExist } from "../module/Auth/conditions.js";
 
-
+// 로컬 스토리지에 이미 accessToken이 있다면 자동으로 folder로 이동
 const moveToFolderPage = () => {window.location.href = '../folder.html'}
 window.addEventListener('load',() => {
   if (Object.keys(window.localStorage).includes('signUpToken')){
@@ -12,55 +13,14 @@ window.addEventListener('load',() => {
 })
 
 // [form input box 유효성 검사]
-
 // 이메일 유효성 검사
 
-
-async function emailValidation() {
-  const email = inputEmail.value;
-  if (!checkFormEmpty(email)) {
-    return errorStyle(inputEmail,errorEmail,"아이디를 입력해주세요.");
-  } else if (!checkEmailValid(email)) {
-    return errorStyle(inputEmail,errorEmail,"올바른 이메일 주소가 아닙니다.");
-  } else if (!await checkEmailAvailable()) {
-    return errorStyle(inputEmail,errorEmail,"이미 사용중인 이메일입니다.");
-  } else {
-    removeErrorStyle(inputEmail, errorEmail);
-    return true;
-  }
-}
-
-emailWrapper.addEventListener("focusout", emailValidation);
+emailWrapper.addEventListener("focusout", emailValidationSignUp);
 
 // 비밀번호 유효성 검사
 
-function passwordValidation() {
-  const password = inputPassword.value;
-  if (!checkFormEmpty(password)) {
-    return errorStyle(inputPassword,errorPassword,"비밀번호를 입력해주세요.");
-  }
-  if (!checkPasswordValid(password)) {
-    return errorStyle(inputPassword,errorPassword,"비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.");
-  }
-  removeErrorStyle(inputPassword, errorPassword);
-  return true;
-}
-
-function password2Validation() {
-  const password = inputPassword.value;
-  const password2 = inputPassword2.value;
-  if (!checkFormEmpty(password2)) {
-    return errorStyle(inputPassword2,errorPassword2,"비밀번호를 입력해주세요.");
-  } else if (!checkStringSame(password, password2)) {
-    return errorStyle(inputPassword2,errorPassword2,"비밀번호가 일치하지 않아요."
-);
-  }
-  removeErrorStyle(inputPassword2, errorPassword2);
-  return true;
-}
-
-inputPassword.addEventListener("focusout", passwordValidation);
-inputPassword2.addEventListener("focusout", password2Validation);
+inputPassword.addEventListener("focusout", passwordValidationSignUp);
+inputPassword2.addEventListener("focusout", password2ValidationSignUp);
 
 //focusin일 때 입력창 에러 스타일 제거
 inputEmail.addEventListener("focusin", () =>
@@ -75,9 +35,9 @@ inputPassword2.addEventListener("focusin", () =>
 
 // submit 클릭시 이벤트
 async function submitAccepted() {
-  emailValidation();
-  passwordValidation();
-  password2Validation();
+  await emailValidationSignUp();
+  passwordValidationSignUp();
+  password2ValidationSignUp();
   const isAllValid = checkErrorMessagesExist();
   if (isAllValid) {
     const inputValues = USER_INPUT_VALUES()

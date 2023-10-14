@@ -1,4 +1,9 @@
-import * as tags from "../module/Auth/tags.js"
+import { inputEmail, errorEmail, inputPassword, errorPassword, emailWrapper, psdWrapper,submitBtn, eye} from "../module/Auth/variables.js";
+import { removeErrorStyle} from "../module/Auth/errorStyle.js";
+import { emailValidationSignIn, passwordValidationSignIn } from "../module/Auth/validation.js";
+import { checkErrorMessagesExist } from "../module/Auth/conditions.js";
+import handleLogin from "../module/Auth/logIn.js";
+
 
 const moveToFolderPage = () => {window.location.href = '../folder.html'}
 window.addEventListener('load',() => {
@@ -8,52 +13,25 @@ window.addEventListener('load',() => {
 })
 
 // [form input box 유효성 검사]
-
-
 // 이메일 유효성 검사
-import {removeErrorStyle, errorStyle } from "../module/Auth/errorMessage.js";
-import {checkErrorMessagesExist, checkFormEmpty, checkEmailValid} from "../module/Auth/validation.js";
 
-function emailValidation(){
-  const email = tags.inputEmail.value;
-  if (!checkFormEmpty(email))
-    return errorStyle(tags.inputEmail, tags.errorEmail, "아이디를 입력해주세요.")
-  else if (!checkEmailValid(email)) {
-    return errorStyle(tags.inputEmail, tags.errorEmail, "올바른 이메일 주소가 아닙니다.")
-  } else {
-    return true
-  }
-}
-
-tags.emailWrapper.addEventListener('focusout', emailValidation);
-tags.inputEmail.addEventListener('focusin', () => {removeErrorStyle(tags.inputEmail, tags.errorEmail)});
+emailWrapper.addEventListener('focusout', emailValidationSignIn);
+inputEmail.addEventListener('focusin', () => {removeErrorStyle(inputEmail, errorEmail)});
 
 // // 비밀번호 유효성 검사
 
-function passwordValidation(password){
-  if (!checkFormEmpty(password)){
-  return errorStyle(tags.inputPassword, tags.errorPassword, "비밀번호를 입력해주세요.")
-  }
-  return true
-}
-
-tags.psdWrapper.addEventListener('focusout', () => {
-  const $password = tags.inputPassword.value;
-  passwordValidation($password) 
-});
-tags.inputPassword.addEventListener('focusin', () => {removeErrorStyle(tags.inputPassword, tags.errorPassword)});
+psdWrapper.addEventListener('focusout',passwordValidationSignIn);
+inputPassword.addEventListener('focusin', () => {removeErrorStyle(inputPassword, errorPassword)});
 
 // // 이메일 비밀번호 데이터 유무 확인
 
-import handleLogin from "../module/Auth/logIn.js";
-
-tags.submitBtn.addEventListener('click', (e) => {
+submitBtn.addEventListener('click', (e) => {
   e.preventDefault()
-  removeErrorStyle(tags.inputEmail, tags.errorEmail)
-  removeErrorStyle(tags.inputPassword, tags.errorPassword)
+  removeErrorStyle(inputEmail, errorEmail)
+  removeErrorStyle(inputPassword, errorPassword)
 
-  emailValidation(tags.inputEmail.value);
-  passwordValidation(tags.inputPassword.value);
+  emailValidationSignIn();
+  passwordValidationSignIn();
   const isAllValid = checkErrorMessagesExist();
   if (isAllValid){
     handleLogin()
@@ -64,6 +42,6 @@ tags.submitBtn.addEventListener('click', (e) => {
 
 import handleEyeClick from "../module/Auth/handleEye.js";
 
-tags.eye.addEventListener('click', (e) => handleEyeClick(e));
+eye.addEventListener('click', (e) => handleEyeClick(e));
 
 
