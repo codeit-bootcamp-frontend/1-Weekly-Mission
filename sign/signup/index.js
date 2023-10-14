@@ -3,12 +3,6 @@ import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 import { toggleEyeIcon } from '/utils/toggle-icon.js';
 
 
-// const emailInput = document.querySelector('#email');
-// const pwdInput = document.querySelector('#password');
-// const pwdConfirmInput = document.querySelector('#password-confirm');
-// const loginBtn = document.querySelector('.btn-login');
-// const pwdToggleIcon = document.querySelector('#toggle-eye');
-
 
 const emailField = document.querySelector('.email-field');
 const emailInput = document.querySelector('#email');

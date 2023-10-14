@@ -2,16 +2,24 @@ import { isValidEmail } from '/utils/validation.js';
 import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 import { toggleEyeIcon } from '/utils/toggle-icon.js';
 
-// const emailInput = document.querySelector('#email');
-// const pwdInput = document.querySelector('#password');
-// const loginBtn = document.querySelector('.btn-login');
-// const pwdToggleIcon = document.querySelector('#toggle-eye');
-
-
+// Email
 const emailField = document.querySelector('.email-field');
 const emailInput = document.querySelector('#email');
 const emailErrorMessage = document.querySelector('.email-error-message');
 
+// Password
+const passwordField = document.querySelector('.password-field');
+const passwordInput = document.querySelector('#password');
+const passwordErrorMessage = document.querySelector('.password-error-message');
+
+// Toggle
+const eyeIcon = document.querySelector('#eye-icon');
+
+// LoginButton
+const loginBtn = document.querySelector('.btn-login');
+
+
+// 이메일 유효성 검사 
 function checkEmailValidation() {
   const email = emailInput.value.trim();
 
@@ -24,11 +32,7 @@ function checkEmailValidation() {
   }
 }
 
-
-const passwordField = document.querySelector('.password-field');
-const passwordInput = document.querySelector('#password');
-const passwordErrorMessage = document.querySelector('.password-error-message');
-
+// 비밀번호 유효성 검사 
 function checkPwdValidation() {
   const password = passwordInput.value.trim();
 
@@ -39,7 +43,6 @@ function checkPwdValidation() {
   }
 };
 
-const loginBtn = document.querySelector('.btn-login');
 
 function submitForm() {
   // e.preventDefault();
@@ -61,13 +64,10 @@ function submitForm() {
 }
 
 
-const eyeIcon = document.querySelector('#eye-icon');
-
-eyeIcon.addEventListener("click", () => {
-  toggleEyeIcon(passwordInput, eyeIcon)
-});
-
-
 emailInput.addEventListener("focusout", checkEmailValidation);
 passwordInput.addEventListener("focusout", checkPwdValidation);
 loginBtn.addEventListener('click', submitForm);
+
+eyeIcon.addEventListener("click", () => { // 동작 X 
+  toggleEyeIcon(passwordInput, eyeIcon)
+});
