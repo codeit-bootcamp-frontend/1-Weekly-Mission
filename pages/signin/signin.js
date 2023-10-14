@@ -17,17 +17,21 @@ function loginCheck () {
         passwordErrorText.textContent = `비밀번호를 확인해주세요`;
         passwordErrorText.style.visibility = 'visible';
     } else {
-    loginPost(emailEl.value,passwordEl.value)
-        .then((res) => {
-            if (!res.ok){
-                throw new Error(`${res.status} error `)
-            }
-            location.href = '/folder.html'
-        })
-        .catch(() => {
-            passwordEl.className = 'error';
-            passwordErrorText.textContent = `이메일 또는 비밀번호를 확인해주세요`;
-            passwordErrorText.style.visibility = 'visible';
+        loginPost(emailEl.value,passwordEl.value)
+            .then((res) => {
+                if (!res.ok){
+                    throw new Error(`${res.status} error `)
+                }
+                return res.json();
+            })
+            .then((resData) => {
+                localStorage.setItem("accessToken",resData.data.accessToken);
+                location.href = '/folder.html';
+            })
+            .catch(() => {
+                passwordEl.className = 'error';
+                passwordErrorText.textContent = `이메일 또는 비밀번호를 확인해주세요`;
+                passwordErrorText.style.visibility = 'visible';
         })
     }
 }
@@ -49,6 +53,10 @@ async function loginPost (email, password) {
         body: JSON.stringify(data)
     });
     return res;
+}
+
+if(localStorage.getItem("accessToken")) {
+    location.href = '/folder.html';
 }
 
 emailEl.addEventListener('focusout', emailCheck);
