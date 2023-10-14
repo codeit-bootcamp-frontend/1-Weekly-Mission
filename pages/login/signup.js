@@ -6,7 +6,7 @@ const signupButton = document.querySelector('#signup-button');
 const hidePasswordCheckButton = document.querySelector('.hide-password-check');
 
 form.addEventListener('focusout', _onValidateSignupInputValue);
-signupButton.addEventListener('click', _onClickSignup);
+signupButton.addEventListener('click', _onSignup);
 form.addEventListener('keydown',_onEnterSignup);
 hidePasswordCheckButton.addEventListener('click', _onHidePassword);
 
@@ -65,9 +65,15 @@ function _onValidateSignupInputValue(e){
 function validateSingupInputValue(id, value){
     if(id === 'email'){
         // 중복된 이메일인지 체크
-        if(value === 'test@codeit.com'){
-            setErrorMessage(id, 'duplicate');
+        const email = {
+            email : value,
         }
+        requestCheckEmail(email)
+            .then((response) => {
+                if(!response.ok){
+                    setErrorMessage(id, 'duplicate');
+                }
+            })
 
     } else if(id === 'password'){
         if(passwordReg.test(value) === false){
@@ -83,4 +89,14 @@ function validateSingupInputValue(id, value){
             setErrorMessage('passwordCheck', 'coincidence');
         }
     }
+}
+
+async function requestCheckEmail(email){
+    return fetch('https://bootcamp-api.codeit.kr/api/check-email',{
+        method: 'POST',
+        body: JSON.stringify(email),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 }
