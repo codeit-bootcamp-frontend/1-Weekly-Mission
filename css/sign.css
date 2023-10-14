@@ -126,7 +126,7 @@ input {
     gap: 16px;
 }
 
-.eye-button {
+.eye-button, .eye-button-second {
   position: absolute;
   top: 5.8rem;
   right: 1.5rem;

@@ -1,7 +1,6 @@
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
-const loginBtn = document.querySelector("button");
-const eyeBtn = document.querySelector(".eye-button");
+
 
 function reset(e) {
   e.target.classList.remove("warning");
@@ -10,6 +9,7 @@ function reset(e) {
     warningText.remove();
   }
 }
+
 
 function eyeOnOff(e) {
   e.target.classList.toggle("line");
@@ -34,12 +34,17 @@ function displayError(e, errorMessage) {
     e.target.after(warningMessage);
 }
 
+function checkerEmail(e) {
+  if (emailInput.value === "") {
+    displayError(e, "이메일을 입력해주세요.");
+  } else if (emailInput.value.includes("@") === false) {
+    displayError(e, "올바른 이메일 주소가 아닙니다.");
+  }
+}
 
 
 
 
-
-
-export {reset, eyeOnOff, writeError, displayError};
+export {reset, eyeOnOff, writeError, displayError, checkerEmail};
 
 
