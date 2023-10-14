@@ -111,7 +111,7 @@ label {
 }
 .email-field.error .email-error-message,
 .password-field.error .password-error-message,
-.pwd-confirm-field.error .error {
+.pwd-confirm-field.error .pwd-confirm-error-message {
   font-size: 14px;
   color: red;
 }

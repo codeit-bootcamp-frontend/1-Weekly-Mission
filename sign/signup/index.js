@@ -4,7 +4,7 @@ import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 
 // const emailInput = document.querySelector('#email');
 // const pwdInput = document.querySelector('#password');
-const pwdConfirmInput = document.querySelector('#password-confirm');
+// const pwdConfirmInput = document.querySelector('#password-confirm');
 // const loginBtn = document.querySelector('.btn-login');
 // const pwdToggleIcon = document.querySelector('#toggle-eye');
 
@@ -50,20 +50,23 @@ passwordInput.addEventListener("focusout", checkPwdValidation);
 
 
 
+const pwdConfirmInput = document.querySelector('#pwd-confirm');
 
-const confirmPwd = (e) => {
-  const inputField = document.querySelector('.pwd-confirm-field');
-  const pwd = pwdInput.value;
-  const pwd2 = document.querySelector('#password-confirm').value;
-  const errorMessage = inputField.querySelector('.error');
+function confirmPwd() {
+  const password = passwordInput.value;
+  const pwdConfirmField = document.querySelector('.pwd-confirm-field');
+  const pwdConfirm = document.querySelector('#pwd-confirm').value;
+  const pwdConfirmErrorMessage = document.querySelector('.pwd-confirm-error-message')
 
-  if(pwd !="" && pwd2 != "") {
-        if(pwd !== pwd2){
-          errorMessage.textContent = '비밀번호가 일치하지 않습니다.'
-          inputField.classList.add('error');
+  if(password !== "" && pwdConfirm !== "") {
+        if(password !== pwdConfirm){
+          addErrorMessage(pwdConfirmField, pwdConfirmErrorMessage, '비밀번호가 일치하지 않아요.');
       }
   }
 };
+
+pwdConfirmInput.addEventListener("focusout", confirmPwd);
+
 
 const submitForm = (e) => {
   e.preventDefault();
@@ -99,7 +102,7 @@ const toggleEyeIcon = () => {
 
 // emailInput.addEventListener("focusout", checkEmailValidation);
 // pwdInput.addEventListener("focusout", checkPwdValidation);
-pwdConfirmInput.addEventListener("focusout", confirmPwd);
+// pwdConfirmInput.addEventListener("focusout", confirmPwd);
 emailInput.addEventListener("keyup", submitOnEnter);
 pwdInput.addEventListener("keyup", submitOnEnter);
 pwdConfirmInput.addEventListener("keyup", submitOnEnter);
