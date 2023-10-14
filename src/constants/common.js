@@ -3,11 +3,6 @@ import API_ENDPOINTS from "./api-endpoints.js";
 
 const ERROR_CLASS_NAME = "items__input--error";
 
-const TEST_ACCOUNT = {
-  email: "test@codeit.com",
-  pw: "codeit101",
-};
-
 const REDIRECT_PATH = "/folder";
 
 const VALUE_EMPTY = "";

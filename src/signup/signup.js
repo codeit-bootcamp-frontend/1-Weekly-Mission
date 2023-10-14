@@ -5,25 +5,20 @@ import {
   passwordErrorMessagesEl,
   passwordInputsEl,
 } from "../constants/tags.js";
-import {
-  ERROR_CLASS_NAME,
-  TEST_ACCOUNT,
-  REDIRECT_PATH,
-  VALUE_EMPTY,
-  isEmpty,
-  isValidEmail,
-} from "../constants/common.js";
+import { REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from "../constants/common.js";
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
 import validatePasswordInput from "../utils/validate-password-input.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
 import requestSignup from "../utils/request-signup.js";
+import requestCheckEmail from "../utils/api-check-email.js";
+import refreshAccessToken from "../utils/api-refresh-token.js";
 
 const validateEmail = () => {
   const emailValue = emailInputEl.value;
 
   const isEmptyValue = isEmpty(emailValue);
-  const isDuplicate = emailValue === TEST_ACCOUNT.email;
+  const isDuplicate = !requestCheckEmail(emailValue);
   const invalidEmail = !isValidEmail(emailValue);
   const emptyMessage = ERROR_MESSAGES.email.empty;
   const invalidMessage = ERROR_MESSAGES.email.invalid;
@@ -96,3 +91,9 @@ passwordInputsEl.forEach((passwordInputEl, index) => {
 });
 
 generateEyeButton();
+
+(async () => {
+  if (await refreshAccessToken()) {
+    window.location.href = REDIRECT_PATH;
+  }
+})();
