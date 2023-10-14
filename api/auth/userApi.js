@@ -1,9 +1,9 @@
 import { storeAccessToken } from "../../utils/auth.js";
-import { baseURL } from "../config.js";
+import { BASE_URL, SIGNIN_ENDPOINT } from "../services/endpoints.js";
 
 export const signin = async (id, password) => {
   try {
-    const response = await fetch(`${baseURL}/api/sign-in`, {
+    const response = await fetch(`${BASE_URL}${SIGNIN_ENDPOINT}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
