@@ -28,17 +28,28 @@ function isEmptyInput(target) {
 }
 
 
-async function isDuplicatedEmail({ value }) {
-  const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ value })
-  });
+async function isDuplicatedEmail({ value }, errorLocation) {
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email: value })
+    });
 
-  if (response.ok) {
+    if (response.ok) {
+      return;
+    }
     displayError(errorLocation, errorMessages.duplicateEmail);
+    const result = await response.json();
+    console.log(result);
+
   }
-  return;
+
+  catch (error) {
+    console.log(error);
+
+  }
+
 }
 
 
@@ -53,22 +64,25 @@ function commonInputCheck(target) {
 
   if (id === "email" && !isValidEmail(value)) {
     displayError(errorLocation, errorMessages.invalidInput.email);
-
+    return;
   }
-
+  return true;
 }
 
 
 
 function signupInputCheck(target) {
-  commonInputCheck(target);
+  if(!commonInputCheck(target)){
+    return;
+  };
 
   const { id, value } = target;
   const errorLocation = getErrorLocation(target);
 
   switch (id) {
     case "email":
-      isDuplicatedEmail(target);
+
+      isDuplicatedEmail(target, errorLocation);
       break;
 
     case "password":
@@ -86,6 +100,8 @@ function signupInputCheck(target) {
     default:
       break;
   }
+
+  return true;
 }
 
 

@@ -1,17 +1,17 @@
 import { commonInputCheck, signupInputCheck, displayLoginFailedError } from "./errorHandle.js";
 
 
-async function loginAuthentication(e) {
+async function authentication(e, url, inputCheck) {
   e.preventDefault();
   const { target: { elements } } = e;
   const [$emailInput, $passwordInput] = elements;
 
-  if (commonInputCheck($emailInput) || commonInputCheck($passwordInput)) {
+  if (!inputCheck($emailInput) || !inputCheck($passwordInput)) {
     return;
   }
 
   try {
-    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,48 +21,38 @@ async function loginAuthentication(e) {
 
     if (response.ok) {
       window.location.href = "/folder";
+      const result = await response.json();
+      if (result.ACCESS_TOKEN) {
+        localStorage.setItem("access-token", result.ACCESS_TOKEN);
+      }
+      return;
+    }
+
+
+
+    if (url.split("/").includes("sign-in")) {
+      displayLoginFailedError();
     }
 
   }
   catch (error) {
-    displayLoginFailedError();
+    console.log(error.message);
   }
 
 };
 
 
+async function loginAuthentication(e) {
+  await authentication(e, "https://bootcamp-api.codeit.kr/api/sign-in", commonInputCheck);
 
+
+}
 
 
 async function signupAuthentication(e) {
-  e.preventDefault();
-  const { target: { elements } } = e;
-  const [$emailInput, $passwordInput] = elements;
+  await authentication(e, "https://bootcamp-api.codeit.kr/api/sign-up", signupInputCheck);
 
-  if (signupInputCheck($emailInput) || signupInputCheck($passwordInput)) {
-    return;
-  }
-
-  console.log($emailInput.value);
-  console.log($passwordInput.value);
-  try {
-
-    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email: $emailInput.value, password: $passwordInput.value })
-    });
-
-    console.log(response);
-    if (response.ok) {
-      window.location.href = "/folder";
-    }
-  } catch (error) {
-    console.log(error);
-  }
-
-
-};
+}
 
 
 
