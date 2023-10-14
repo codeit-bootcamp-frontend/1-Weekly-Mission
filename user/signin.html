@@ -24,16 +24,18 @@
             <div class="form__field">
                 <label for="user-email" class="form__label">이메일</label>
                 <div class="form__field-inner">
-                    <input type="email" name="email" id="user-email" class="form__input" autocomplete="username">
+                    <input type="email" name="email" id="user-email" class="form__input" autocomplete="username" data-error-class="input">
                 </div>
+                <p class="form__warning-message" data-error-class="msg"></p>
+
             </div>
             <div class="form__field">
                 <label for="user-password" class="form__label">비밀번호</label>
                 <div class="form__field-inner">
-                    <input type="password" name="password" id="user-password" class="form__input form__input--password" maxlength="20" autocomplete="current-password">
-                    <img src="../images/eye-off.svg" class="form__eye-icon" data-current-view-mode="off" data-password-input-id="user-password" alt="비밀번호 보기">
+                    <input type="password" name="password" id="user-password" class="form__input form__input--password" maxlength="20" autocomplete="current-password" data-error-class="input">
+                    <img src="../images/eye-off.svg" class="form__eye-icon" data-current-view-mode="off" data-password-input-id="user-password" alt="비밀번호 보기" data-error-class="img">
                 </div>
-
+                <p class="form__warning-message" data-error-class="msg"></p>
             </div>
         </form>
 
@@ -49,7 +51,7 @@
         </footer>
 
     </div>
-    <script type="module" src="./login.js"></script>
+    <script src="./auth.js"></script>
 </body>
 
 </html>
