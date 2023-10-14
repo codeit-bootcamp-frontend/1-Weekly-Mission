@@ -1,107 +1,138 @@
-import { email as tagEmail, password as tagPassword, passwordVisible, passwordCheckVisible } from "./tags.js";
-import { checkEmail, checkSignupPassword, checkPasswordMatch, addErrorMessageClass } from "./errorMsg.js";
+import { email, password, passwordVisible, passwordCheckVisible } from './tags.js';
+import { checkEmail, checkSignupPassword, checkPasswordMatch, addErrorMessageClass } from './errorMsg.js';
 
-const URL = "https://bootcamp-api.codeit.kr/api";
+const URL = 'https://bootcamp-api.codeit.kr/api';
 
-const CHECK_EMAIL = "이메일을 확인해주세요.";
-const CHECK_PASSWORD = "비밀번호를 확인해주세요.";
-const ALREADY_USE_EMAIL = "이미 사용중인 이메일입니다.";
+const CHECK_EMAIL = '이메일을 확인해주세요.';
+const CHECK_PASSWORD = '비밀번호를 확인해주세요.';
+const ALREADY_USE_EMAIL = '이미 사용중인 이메일입니다.';
 
-const goToFolderPage = () => (location.href = "../pages/folder.html");
+const goToFolderPage = () => (location.href = '../pages/folder.html');
 
-function toggleEye(event) {
+const getToken = async (responseType, tokenType) => {
+  const response = await responseType.json();
+  const result = await response.data.accessToken;
+  localStorage.setItem(tokenType, result);
+  goToFolderPage();
+};
+
+const toggleEye = event => {
   event.preventDefault();
   const inputId = event.target.previousElementSibling;
-  if (event.pointerType === "mouse") {
-    if (inputId.type === "text") {
-      inputId.type = "password";
+  if (event.pointerType === 'mouse') {
+    if (inputId.type === 'text') {
+      inputId.type = 'password';
     } else {
-      inputId.type = "text";
+      inputId.type = 'text';
     }
   }
-}
+};
 
-const validationLogin = async (email, password) => {
+const validationLogin = async () => {
   try {
     const loginContext = {
-      email: email,
-      password: password,
+      email: email.value,
+      password: password.value,
     };
     const signIn = await fetch(`${URL}/sign-in`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(loginContext),
     });
     if (signIn.status === 200) {
-      const response = await signIn.json();
-      const result = await response.data.accessToken;
-      localStorage.setItem("login-token", result);
-      return goToFolderPage();
+      getToken(signIn, 'access-token');
     } else {
-      addErrorMessageClass(tagEmail, CHECK_EMAIL);
-      addErrorMessageClass(tagPassword, CHECK_PASSWORD);
+      addErrorMessageClass(email, CHECK_EMAIL);
+      addErrorMessageClass(password, CHECK_PASSWORD);
+      throw new Error('이메일, 비밀번호 체크');
     }
   } catch (error) {
-    return error;
+    console.error(error.message);
   }
 };
 
-function login(event) {
+const login = event => {
   event.preventDefault();
+  validationLogin();
+};
 
-  validationLogin(email.value, password.value);
-}
-
-const duplicationEmail = async email => {
+const duplicationEmail = async () => {
   try {
     const emailContext = {
-      email: email,
+      email: email.value,
     };
-    const signUp = await fetch(`${URL}/check-email`, {
-      method: "POST",
+    const checkEmail = await fetch(`${URL}/check-email`, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(emailContext),
     });
-    if (signUp.status === 200) {
-      const response = await signUp.json();
-      const result = await response.data.isUsableNickname;
-      localStorage.setItem("signup-token", result);
-      return goToFolderPage();
-    } else if (signUp.status === 409) {
-      addErrorMessageClass(tagEmail, ALREADY_USE_EMAIL);
+    if (checkEmail.status === 200) {
+      return;
+    } else if (checkEmail.status === 409) {
+      addErrorMessageClass(email, ALREADY_USE_EMAIL);
+      throw Error('중복된 이메일');
     } else {
-      addErrorMessageClass(tagEmail, CHECK_EMAIL);
+      addErrorMessageClass(email, CHECK_EMAIL);
     }
   } catch (error) {
-    return error;
+    console.error(error.message);
   }
 };
 
-function signup(event) {
-  event.preventDefault();
-  if (checkEmail() && checkSignupPassword() && checkPasswordMatch()) {
-    duplicationEmail(tagEmail.value);
+const signUp = async event => {
+  try {
+    event.preventDefault();
+    if (checkEmail() && checkSignupPassword() && checkPasswordMatch()) {
+      duplicationEmail(email.value);
+    }
+    const singUpContext = {
+      email: email.value,
+      password: password.value,
+    };
+    const verifiedSignup = await fetch(`${URL}/sign-up`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(singUpContext),
+    });
+    if (verifiedSignup.status === 200) {
+      getToken(verifiedSignup, 'access-token');
+    } else {
+      addErrorMessageClass(email, CHECK_EMAIL);
+      throw new Error('회원가입 실패');
+    }
+  } catch (error) {
+    console.error(error.message);
   }
-}
+};
 
-function enterSignup(event) {
-  if (event.code === "Enter") {
-    signup(event);
+const enterSignup = event => {
+  if (event.code === 'Enter') {
+    signUp(event);
   }
-}
+};
 
-function togglePasswordVisible(event) {
+const togglePasswordVisible = event => {
   toggleEye(event);
-  passwordVisible.classList.toggle("on");
-}
+  passwordVisible.classList.toggle('on');
+};
 
-function togglePasswordCheckVisible(event) {
+const togglePasswordCheckVisible = event => {
   toggleEye(event);
-  passwordCheckVisible.classList.toggle("on");
-}
+  passwordCheckVisible.classList.toggle('on');
+};
 
-export { login, signup, enterSignup, togglePasswordCheckVisible, togglePasswordVisible };
+export {
+  login,
+  signUp,
+  duplicationEmail,
+  enterSignup,
+  togglePasswordCheckVisible,
+  togglePasswordVisible,
+  goToFolderPage,
+};
