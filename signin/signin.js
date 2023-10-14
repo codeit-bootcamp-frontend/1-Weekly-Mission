@@ -11,7 +11,7 @@ import {
   addPwInputErrorMessage,
 } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
-import { signin } from "../api/auth.js";
+import { signin } from "../api/auth/userApi.js";
 
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");

@@ -1,5 +1,5 @@
-import { storeAccessToken } from "../utils/auth.js";
-import { baseURL } from "./config.js";
+import { storeAccessToken } from "../../utils/auth.js";
+import { baseURL } from "../config.js";
 
 export const signin = async (id, password) => {
   try {
