@@ -11,7 +11,6 @@ import {
 import {
   EMAIL_INPUT,
   EMAIL_ERROR,
-  // PASSWORD_FIELD,
   PASSWORD_INPUT,
   PASSWORD_ERROR,
   EYE_ICON,
@@ -20,12 +19,10 @@ import {
 
 
 // Email
-// const emailField = document.querySelector(PASSWORD_FIELD);
 const emailInput = document.querySelector(EMAIL_INPUT);
 const emailError = document.querySelector(EMAIL_ERROR);
 
 // Password
-// const passwordField = document.querySelector(PASSWORD_FIELD);
 const passwordInput = document.querySelector(PASSWORD_INPUT);
 const passwordError = document.querySelector(PASSWORD_ERROR);
 
@@ -62,7 +59,7 @@ function checkPwdValidation() {
 
 
 function submitForm() {
-  // e.preventDefault();
+  e.preventDefault();
 
   const email = emailInput.value;
   const password = passwordInput.value;
