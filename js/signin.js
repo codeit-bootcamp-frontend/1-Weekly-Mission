@@ -13,6 +13,8 @@ import {
   addErrorMessage,
 } from "./member.js" // import functions
 
+import { fetchPost } from "/apis/api.js"
+
 const passwordEye = document.getElementsByClassName("password-eye")[0]
 
 // 이메일 확인
@@ -44,15 +46,23 @@ const pressEnter = (e) => {
 }
 
 // Form 전송 이벤트 함수
-const submitLoginForm = (event) => {
+const submitLoginForm = async (event) => {
   event?.preventDefault()
-  if (email.value === "test@codeit.com" && password.value === "codeit101") {
-    try {
-      location.href = "/pages/folder.html"
-    } catch (err) {
-      throw new Error("Can't redirect to folder page")
+
+  const signinBody = {
+    email: email.value,
+    password: password.value,
+  }
+
+  try {
+    const response = await fetchPost("/api/sign-in", signinBody)
+    const { data } = response
+    if (data) {
+      window.localStorage.setItem("accessToken", data.accessToken)
+      window.alert("로그인에 성공하셨습니다!")
+      window.location.href = "/folder.html"
     }
-  } else {
+  } catch {
     addErrorMessage(pElementEmailError, "이메일을 확인해주세요.")
     addErrorMessage(pElementPasswordError, "비밀번호를 확인해주세요.")
   }
