@@ -78,6 +78,7 @@ function submitForm() {
   }
 }
 
+// Enter키 입력 시 회원가입 시도
 function submitOnEnter(e) {
   if(e.key === "Enter") {
     submitForm();
