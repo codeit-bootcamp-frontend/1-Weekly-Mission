@@ -3,7 +3,7 @@ import {
   emailErrorEl, passwordErrorEl,
   emailPattern, getSignedMember, 
   signButton, eyeComponents, 
-  validateInput, changeEyeComponentOnOff
+  validateInput, changeEyeComponentOnOff, loadPage, getAccessToken
 } from '/js/utils.js';
 
 // 비밀번호 재확인 인풋값에 대한 검사를 하기 위한 변수(인풋 태그를 가져옴)
@@ -75,6 +75,7 @@ const requestSignUp = async function () {
   });
   const statusCode = response.status;
   if (statusCode === 200) {
+    getAccessToken(response);
     location.replace('/folder.html'); 
   }
 }
@@ -92,6 +93,7 @@ const trySignUp = async function () {
 }
 
 // 실행할 이벤트 핸들러
+window.addEventListener('load', loadPage);
 emailInputEl.addEventListener('focusout', checkEmailInput);
 passwordInputEl.addEventListener('focusout', checkPasswordInput);
 signButton.addEventListener('click', trySignUp);

@@ -48,3 +48,15 @@ export const getSignedMember = () => {
     password: passwordInputEl.value
   };
 };
+
+export const loadPage = async function () {
+  if (localStorage.getItem("accessToken")) {
+    location.replace('/folder.html'); 
+  }
+}
+
+export const getAccessToken = async function (response) {
+  const responseData = await response.json()  // 응답의 JSON 데이터 추출
+  const accessToken = responseData.data.accessToken
+  localStorage.setItem("accessToken", accessToken);
+}

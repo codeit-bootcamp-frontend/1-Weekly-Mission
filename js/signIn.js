@@ -3,7 +3,7 @@ import {
   emailErrorEl, passwordErrorEl,
   emailPattern, getSignedMember, 
   signButton, eyeComponents, 
-  validateInput, changeEyeComponentOnOff
+  validateInput, changeEyeComponentOnOff, loadPage, getAccessToken
 } from '/js/utils.js';
 
 const checkEmailInput = () => {
@@ -48,6 +48,7 @@ const tryLogin = async function () {
     });
     const statusCode = response.status;  // response.ok 는 200~299까지
     if (statusCode === 200) {
+      getAccessToken(response);
       location.replace('/folder.html');  // location.href()는 뒤로가기(이젠페이지로 이동)이 가능, replace는 불가능
     } else {  // statusCode = 400
       validateInput(emailErrorEl, '이메일을 확인해주세요.', emailErrorEl);
@@ -59,11 +60,10 @@ const tryLogin = async function () {
 }
 
 // 실행할 이벤트 핸들러
+window.addEventListener('load', loadPage);
 emailInputEl.addEventListener('focusout', checkEmailInput);
 passwordInputEl.addEventListener('focusout', checkPasswordInput);
 signButton.addEventListener('click', tryLogin);
 [...eyeComponents].forEach(eyeComponent => eyeComponent.addEventListener('click', changeEyeComponentOnOff));
 emailInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && tryLogin());  // e.code도 같은 결과
 passwordInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && tryLogin());
-
-
