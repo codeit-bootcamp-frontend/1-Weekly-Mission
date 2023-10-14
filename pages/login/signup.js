@@ -91,6 +91,16 @@ function validateSingupInputValue(id, value){
     }
 }
 
+async function requestSignup(account){
+    return fetch('https://bootcamp-api.codeit.kr/api/sign-up',{
+        method: 'POST',
+        body: JSON.stringify(account),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
+
 async function requestCheckEmail(email){
     return fetch('https://bootcamp-api.codeit.kr/api/check-email',{
         method: 'POST',
