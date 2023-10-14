@@ -1,7 +1,7 @@
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
-export function checkerEmail(e) {
+function checkerEmail(e) {
   if (emailInput.value === "") {
     displayError(e, "이메일을 입력해주세요.");
   } else if (emailInput.value.includes("@") === false) {
