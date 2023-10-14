@@ -81,7 +81,7 @@ const checkEmailAvailability = async (target) => {
         target,
       });
     } else {
-      alert("Error");
+      alert(error.message);
     }
   }
 };
@@ -183,7 +183,7 @@ const handleSignupSubmit = async (event) => {
     localStorage.setItem("accessToken", accessToken);
     redirect();
   } catch (error) {
-    alert("Error");
+    alert(error.message);
   }
 };
 
