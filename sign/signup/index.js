@@ -1,6 +1,13 @@
 import { isEmail, isPassword } from '/utils/validation.js';
 import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 import { toggleEyeIcon } from '/utils/toggle-icon.js';
+import { 
+  EMAIL_EMPTY, 
+  EMAIL_INVALID, 
+  EMAIL_USED,
+  PASSWORD_INVALID,
+  PASSWORD_NOT_MATCH
+} from '/constants/error-message.js';
 
 
 // Email
@@ -27,13 +34,13 @@ function checkEmailValidation() {
   const email = emailInput.value.trim();
 
   if (email === '') {
-    addErrorMessage(emailField, emailErrorMessage, '이메일을 입력해주세요.');
+    addErrorMessage(emailField, emailErrorMessage, EMAIL_EMPTY);
     return false;
   } else if (!isEmail(email)) {
-    addErrorMessage(emailField, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
+    addErrorMessage(emailField, emailErrorMessage, EMAIL_INVALID);
     return false;
   } else if (email === 'test@codeit.com') {
-    addErrorMessage(emailField, emailErrorMessage, '이미 사용 중인 이메일입니다.'); 
+    addErrorMessage(emailField, emailErrorMessage, EMAIL_USED); 
     return false;
   } else {
     removeErrorMessage(emailField, emailErrorMessage);
@@ -46,7 +53,7 @@ function checkPwdValidation() {
   const password = passwordInput.value.trim();
 
   if (!isPassword(password)) { // 값이 8자 미만 or only 문자열 or only 숫자
-    addErrorMessage(passwordField, passwordErrorMessage, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
+    addErrorMessage(passwordField, passwordErrorMessage, PASSWORD_INVALID);
     return false;
   } else {
     removeErrorMessage(passwordField, passwordErrorMessage);
@@ -62,7 +69,7 @@ function confirmPwd() {
   const pwdConfirmErrorMessage = document.querySelector('.pwd-confirm-error-message');
 
   if(password !== pwdConfirm) {
-    addErrorMessage(pwdConfirmField, pwdConfirmErrorMessage, '비밀번호가 일치하지 않아요.');
+    addErrorMessage(pwdConfirmField, pwdConfirmErrorMessage, PASSWORD_NOT_MATCH);
     return false;
   } else {
     removeErrorMessage(pwdConfirmField, pwdConfirmErrorMessage);

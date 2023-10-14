@@ -1,6 +1,14 @@
 import { isEmail } from '/utils/validation.js';
 import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 import { toggleEyeIcon } from '/utils/toggle-icon.js';
+import { 
+  EMAIL_EMPTY, 
+  EMAIL_INVALID, 
+  PASSWORD_EMPTY, 
+  EMAIL_WRONG, 
+  PASSWORD_WRONG 
+} from '/constants/error-message.js';
+
 
 // Email
 const emailField = document.querySelector('.email-field');
@@ -24,9 +32,9 @@ function checkEmailValidation() {
   const email = emailInput.value.trim();
 
   if (email === '') {
-    addErrorMessage(emailField, emailErrorMessage, '이메일을 입력해주세요.');
+    addErrorMessage(emailField, emailErrorMessage, EMAIL_EMPTY);
   } else if (!isEmail(email)) {
-    addErrorMessage(emailField, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
+    addErrorMessage(emailField, emailErrorMessage, EMAIL_INVALID);
   } else {
     removeErrorMessage(emailField, emailErrorMessage);
   }
@@ -37,7 +45,7 @@ function checkPwdValidation() {
   const password = passwordInput.value.trim();
 
   if (password === '') {
-    addErrorMessage(passwordField, passwordErrorMessage, '비밀번호를 입력해주세요.');
+    addErrorMessage(passwordField, passwordErrorMessage, PASSWORD_EMPTY);
   } else {
     removeErrorMessage(passwordField, passwordErrorMessage);
   }
@@ -55,8 +63,8 @@ function submitForm() {
     if (email === testEmail && password === testPassword) {
       location.href = "/folder/index.html";
     } else if (email !== testEmail && password !== testPassword) {
-      addErrorMessage(emailField, emailErrorMessage, '이메일을 확인해주세요.');
-      addErrorMessage(passwordField, passwordErrorMessage, '비밀번호를 확인해주세요.')
+      addErrorMessage(emailField, emailErrorMessage, EMAIL_WRONG);
+      addErrorMessage(passwordField, passwordErrorMessage, PASSWORD_WRONG);
     } else {
       checkEmailValidation();
       checkPwdValidation();
