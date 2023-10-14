@@ -1,4 +1,5 @@
-import { reset, eyeOnOff, writeError, displayError, checkerEmail } from "../util.js";
+import {reset, eyeOnOff, writeError, displayError} from "../util.js"
+
 
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
@@ -6,12 +7,20 @@ const eyeBtn = document.querySelector(".eye-button");
 const signForm = document.querySelector("form");
 
 
+export function checkerEmail(e) {
+  if (emailInput.value === "") {
+    displayError(e, "이메일을 입력해주세요.");
+  } else if (emailInput.value.includes("@") === false) {
+    displayError(e, "올바른 이메일 주소가 아닙니다.")
+  }
+}
 
 function checkerPassword(e) {
   if (passwordInput.value === "") {
-    displayError(e, "비밀번호를 입력해주세요.");
+    displayError(e,"비밀번호를 입력해주세요.");
   }
 }
+
 
 function login(e) {
   e.preventDefault();
@@ -24,10 +33,12 @@ function login(e) {
   } else {
     const emailText = writeError(e, "이메일을 확인해주세요.");
     document.querySelector("#email").after(emailText);
-    const passwordText = writeError(e, "비밀번호를 확인해주세요");
+    const passwordText= writeError(e, "비밀번호를 확인해주세요");
     document.querySelector("#password").after(passwordText);
   }
 }
+
+
 
 emailInput.addEventListener("focusout", checkerEmail);
 emailInput.addEventListener("focusin", reset);
@@ -37,3 +48,5 @@ passwordInput.addEventListener("focusin", reset);
 
 signForm.addEventListener("submit", login);
 eyeBtn.addEventListener("click", eyeOnOff);
+
+

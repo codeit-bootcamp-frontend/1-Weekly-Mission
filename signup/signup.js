@@ -1,11 +1,11 @@
-import { reset, eyeOnOff, writeError, displayError, checkerEmail } from "../util.js";
-
+import {reset, eyeOnOff, writeError, displayError} from "../util.js"
+import {checkerEmail} from "../signin.js"
 
 const $emailInput = document.querySelector("#email");
 
 function checkerEmailAlreadyInUse(e) {
   if ($emailInput.value !== "test@codeit.com") {
-    return;
+   return
   }
   displayError(e, "이미 사용중인 이메일입니다");
 }
@@ -30,7 +30,7 @@ function isIncludePassword(passArray) {
 
 function conditionOfPassword(e) {
   if (!isIncludePassword(passArray)) {
-    displayError(e, "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요");
+   displayError(e, "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요");
   }
 }
 
@@ -43,9 +43,10 @@ function matchPassword(e) {
   displayError(e, "비밀번호가 일치하지 않아요");
 }
 
-const $eyeOff = document.querySelector(".eye-button-second");
 
-const $signBtn = document.querySelector(".cta");
+const $eyeOff2 = document.querySelector("eye-button.second")
+
+const $signBtn = document.querySelector(".cta")
 
 function signUpAftercheckingError(e) {
   const $errorTextList = document.querySelectorAll("warning-text");
@@ -60,6 +61,7 @@ function signUpAftercheckingError(e) {
   }
 }
 
+
 $emailInput.addEventListener("focusout", checkerEmail);
 $emailInput.addEventListener("focusout", checkerEmailAlreadyInUse);
 $emailInput.addEventListener("focusin", reset);
@@ -70,6 +72,7 @@ $passwordInput.addEventListener("focusin", reset);
 $rePasswordInput.addEventListener("focusout", matchPassword);
 $rePasswordInput.addEventListener("focusin", reset);
 
-$signBtn.addEventListener("click", signUpAftercheckingError);
+$signBtn.addEventListener("click", signUpAftercheckingError)
 $rePasswordInput.addEventListener("keypress", signUpAftercheckingError);
-$eyeOff.addEventListener("click", eyeOnOff);
+$eyeOff2.addEventListener("click", eyeOnOff );
+
