@@ -93,6 +93,7 @@ signupBtn.addEventListener("click", async function (e) {
       );
       if (signUpPost === 200) {
         location.href = "./folder.html";
+        localStorage.setItem("signupToken", signUpPost);
       }
     } else {
       appearError(email, emailError, "중복된 이메일입니다.");
