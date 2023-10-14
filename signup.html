@@ -6,7 +6,7 @@
         <title>Linkbrary signup</title>
         <link href="./styles/reset.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-        <link href="./styles/signin.css" rel="stylesheet" type="text/css" />
+        <link href="./styles/signup.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div class="root">
@@ -35,21 +35,21 @@
                       비밀번호
                   </label>
                   <div class="input-password">
-                    <input type="password" placeholder="비밀번호를 입력해주세요" id="password-label" name="passwordLabel">
-                    <button class="eye-off">
-                        <img src="./assets/png/eye-off.png" alt="click to see password">
-                    </button>
+                    <div class="input-password-wrapper">
+                      <input type="password" placeholder="비밀번호를 입력해주세요" id="password-label" name="passwordLabel">
+                      <img src="./assets/png/eye-off.png" alt="click to see password" class="eye-off">
+                    </div>
                   </div>
                 </div>
                 <div class="input-box">
-                  <label for="identify-label">
+                  <label for="password-check-label">
                       비밀번호 확인
                   </label>
                   <div class="input-password">
-                    <input type="password" placeholder="비밀번호를 한번 더 입력해주세요" id="identify-label" name="identifyLabel">
-                    <button class="eye-off">
-                        <img src="./assets/png/eye-off.png" alt="click to see password">
-                    </button>
+                    <div class="input-password-wrapper2">
+                      <input type="password" placeholder="비밀번호를 한번 더 입력해주세요" id="password-check-label" name="password-checkLabel">
+                      <img src="./assets/png/eye-off.png" alt="click to see password" class="password-check-eye-off">
+                    </div>
                   </div>
                 </div>
                 <button type="submit" class="login-btn">
@@ -76,5 +76,6 @@
             </footer>
           </div>
         </div>
+        <script type="module" src="./js/pages/signup.js"></script>
     </body>
 </html>

@@ -96,12 +96,24 @@ input:focus {
   top: 50%;
   right: 1%;
   transform: translate(-50%, -50%);
-  background-color: var(--color-white);
-  border: none;
+}
+
+.password-check-eye-off {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translate(-50%, -50%);
 }
 
 .input-password{
   width: 100%;
+}
+
+.input-password-wrapper{
+  position: relative;
+}
+
+.input-password-wrapper2{
   position: relative;
 }
 

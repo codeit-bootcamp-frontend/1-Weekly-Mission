@@ -94,6 +94,9 @@ input:focus {
 
 .input-password{
   width: 100%;
+}
+
+.input-password-wrapper{
   position: relative;
 }
 
