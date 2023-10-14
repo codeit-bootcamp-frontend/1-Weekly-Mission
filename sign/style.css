@@ -63,7 +63,7 @@ label {
   width: 100%;
   display: flex;
 }
-#toggle-eye {
+#eye-icon {
   margin-left: -30px;
   cursor: pointer;
 }

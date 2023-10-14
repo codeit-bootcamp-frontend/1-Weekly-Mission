@@ -55,7 +55,6 @@ function checkPwdValidation() {
 passwordInput.addEventListener("focusout", checkPwdValidation);
 
 
-
 const pwdConfirmInput = document.querySelector('#pwd-confirm');
 
 function confirmPwd() {
@@ -73,27 +72,12 @@ function confirmPwd() {
   }
 }
 
-
 pwdConfirmInput.addEventListener("focusout", confirmPwd);
 
 
-// const submitForm = (e) => {
-//   e.preventDefault();
-
-//   if (emailInput.value && 
-//       pwdInput.value && 
-//       pwdConfirmInput.value
-//   ) {
-//     location.href = "../../folder/index.html";
-//   } else {
-//     checkEmailValidation(e);
-//     checkPwdValidation(e);
-//     confirmPwd(e);
-//   }
-// }; 
+const loginBtn = document.querySelector('.btn-login');
 
 function submitForm() { // 동작 X
-  e.preventDefault();
 
   if (checkEmailValidation() && checkPwdValidation() && confirmPwd()) {
     window.location.href = "/folder/index.html";
@@ -104,29 +88,30 @@ loginBtn.addEventListener("click", submitForm);
 
 
 
-
 function submitOnEnter(e) {
   if(e.key === "Enter") {
     submitForm(e);
   }
 }
 
-const toggleEyeIcon = () => {
-  if(password.type === "password") {
-    password.type = "text";
-    pwdToggleIcon.src = '/images/eye-on.svg';
+const pwdToggleEyeIcon = document.querySelector('#eye-icon');
+
+function toggleEyeIcon () {
+  if(passwordInput.type === "password") {
+    passwordInput.type = "text";
+    pwdToggleEyeIcon.src = '/images/eye-on.svg';
   } else {
-    password.type = "password";
-    pwdToggleIcon.src = '/images/eye-off.svg';
+    passwordInput.type = "password";
+    pwdToggleEyeIcon.src = '/images/eye-off.svg';
   }
 }
+pwdToggleEyeIcon.addEventListener("click", toggleEyeIcon);
 
 
 // emailInput.addEventListener("focusout", checkEmailValidation);
 // pwdInput.addEventListener("focusout", checkPwdValidation);
 // pwdConfirmInput.addEventListener("focusout", confirmPwd);
-emailInput.addEventListener("keyup", submitOnEnter);
-pwdInput.addEventListener("keyup", submitOnEnter);
-pwdConfirmInput.addEventListener("keyup", submitOnEnter);
-pwdToggleIcon.addEventListener("click", toggleEyeIcon);
+// emailInput.addEventListener("keyup", submitOnEnter);
+// pwdInput.addEventListener("keyup", submitOnEnter);
+// pwdConfirmInput.addEventListener("keyup", submitOnEnter);
 // loginBtn.addEventListener("click", submitForm);

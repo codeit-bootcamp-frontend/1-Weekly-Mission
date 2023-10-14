@@ -60,14 +60,14 @@ function submitForm() {
 }
 
 
-const pwdToggleIcon = document.querySelector('#toggle-eye');
+const pwdToggleIcon = document.querySelector('#eye-icon');
 
 const toggleEyeIcon = () => {
-  if(password.type === "password") {
-    password.type = "text";
+  if(passwordInput.type == "password") {
+    passwordInput.type = "text";
     pwdToggleIcon.src = '/images/eye-on.svg';
   } else {
-    password.type = "password";
+    passwordInput.type = "password";
     pwdToggleIcon.src = '/images/eye-off.svg';
   }
 }
