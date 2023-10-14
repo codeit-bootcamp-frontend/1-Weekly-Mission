@@ -1,26 +1,57 @@
-// 요소노드 및 테스트데이터 import
-import { inputEmailEl, inputPswEl, showMessageByEmailEl, showMessageByPswEl, showMessageByPswCheckEl, eyeOffIconByPswIcon,
-  eyeOffIconByPswCheckIcon,inputPswCheckEl,TEST_EMAIL } from '../../shared/constants.js';
+import { 
+  inputEmailEl, 
+  inputPswEl, 
+  showMessageByEmailEl, 
+  showMessageByPswEl, 
+  showMessageByPswCheckEl, 
+  eyeOffIconByPswIcon,
+  eyeOffIconByPswCheckIcon,
+  inputPswCheckEl,
+  API } 
+  from '../../shared/constants.js';
 
-// 이메일 체크, 이메일 안내메시지 삭제
-import { checkEmailValid, removeEmailCheckMessage } from '../../utils/checkEmail.js';
+import { 
+  checkEmailValid, 
+  removeEmailCheckMessage } 
+  from '../../utils/checkEmail.js';
 
-// 비밀번호 체크, 비밀번호 안내메시지 삭제, 비밀번호 보이기on/off
-import { checkPasswordFill, removePswCheckMessage, showPsw } from '../../utils/checkPsw.js';
+import { 
+  checkPasswordFill, 
+  removePswCheckMessage, 
+  showPsw } 
+  from '../../utils/checkPsw.js';
 
-// 이메일 중복 체크
-function checkEmailValidWithOverlap (e) {
-  const inputEmailValue = e.target.value;
-  checkEmailValid(e);
-    if(
-    e.target.classList.contains('overlap-check') && 
-     inputEmailValue === TEST_EMAIL
-    ) {
-    showMessageByEmailEl.textContent = '이미 사용중인 이메일입니다.'
-    e.target.classList.add('input-wrong');
-  }
+// 페이지 접근 시 엑세스토큰 보유 -> folder페이지로 이동
+if(localStorage.getItem("accessToken")) {
+  location.href = '../folder/folder.html';
 }
 
+// 이메일 중복 체크
+async function checkEmailValidWithOverlap (e) {
+  const inputEmailValue = e.target.value;
+  checkEmailValid(e);
+  
+  try {
+    const response = await fetch(`${API}/check-email`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: inputEmailValue,
+      })
+    });
+    
+    if (response.status === 409) {
+      
+      showMessageByEmailEl.textContent = '이미 사용중인 이메일입니다.'
+      e.target.classList.add('input-wrong');
+      return;
+    } 
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // 비밀번호 유효성 체크
 function checkPasswordValid (e) {
@@ -33,7 +64,7 @@ function checkPasswordValid (e) {
   }
 }
 
-// 비밀번호 확인값 체크
+// 입력한 비밀번호가 동일한지 체크
 function checkPasswordSame () {
   const inputPswValue = inputPswEl.value;
   const inputPswCheckValue = inputPswCheckEl.value;
@@ -46,39 +77,61 @@ function checkPasswordSame () {
   }
 }
 
-// 비밀번호 확인값 안내메시지 삭제
+// 입력한 비밀번호 비동일값 메시지 삭제
 function removePswSameCheckMessage () {
   showMessageByPswCheckEl.textContent = '';
   inputPswCheckEl.classList.remove('input-wrong');
 }
 
 // 회원가입 가능 체크
-function checkUserForJoin() {
+async function checkUserForJoin() {
   const inputEmailValue = inputEmailEl.value;
-  const VALID_EMAIL_REG = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-  const validEmailCheck = VALID_EMAIL_REG .test(inputEmailValue);
-  const validPswValue = inputPswEl.value;
-  const VALID_PSW_REG = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-  const validPswCheck = VALID_PSW_REG.test(validPswValue);
+  const inputPswValue = inputPswEl.value;
   const inputPswCheckValue = inputPswCheckEl.value;
 
-  if (
-      validEmailCheck && 
-      validPswCheck &&
-      validPswValue === inputPswCheckValue &&
-      inputEmailValue!== TEST_EMAIL
-    )
-      return location.href = '/folder';
-  
-  showMessageByEmailEl.textContent = '이메일을 확인해주세요.';
-  showMessageByPswEl.textContent = '비밀번호를 확인해주세요.';
+  const VALID_EMAIL_REG = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+  const VALID_PSW_REG = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
-  inputPswEl.classList.add('input-wrong');
-  inputEmailEl.classList.add('input-wrong');
-  inputPswCheckEl.classList.add('input-wrong');
-  inputEmailEl.setAttribute('onfocus', 'this.select()');
-  inputPswEl.setAttribute('onfocus', 'this.select()');
-  inputPswCheckEl.setAttribute('onfocus','this.select()');
+  const validEmailCheck = VALID_EMAIL_REG .test(inputEmailValue);
+  const validPswCheck = VALID_PSW_REG.test(inputPswValue);
+ 
+  try {
+    if (
+      validEmailCheck &&
+      validPswCheck &&
+      (inputPswValue === inputPswCheckValue)
+    ) {
+      const response = await fetch(`${API}/sign-up` ,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: inputEmailValue,
+          password: inputPswValue
+        })
+      });
+
+      const responseData = await response.json();
+  
+      if(response.status === 200) {
+        localStorage.setItem('accessToken', responseData.accessToken);
+        return location.href = '../folder/folder.html';
+      }
+    }
+    showMessageByEmailEl.textContent = '이메일을 확인해주세요.';
+    showMessageByPswEl.textContent = '비밀번호를 확인해주세요.';
+
+    inputPswEl.classList.add('input-wrong');
+    inputEmailEl.classList.add('input-wrong');
+    inputPswCheckEl.classList.add('input-wrong');
+    inputEmailEl.setAttribute('onfocus', 'this.select()');
+    inputPswEl.setAttribute('onfocus', 'this.select()');
+    inputPswCheckEl.setAttribute('onfocus', 'this.select()');
+  } catch (error) {
+    console.log(error);
+  }
+
 } 
 
 function checkUserForJoinByEnter (e) {

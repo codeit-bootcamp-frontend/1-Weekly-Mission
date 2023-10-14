@@ -9,8 +9,7 @@ const eyeOffIconByPswIcon = document.querySelector('.psw-box .psw-show-eye');
 const eyeOffIconByPswCheckIcon = document.querySelector('.psw-box .psw-show-eye.psw-check');
 
 // 상수 데이터
-const TEST_EMAIL = 'test@codeit.com';
-const TEST_PSW = 'codeit101';
+const API = 'https://bootcamp-api.codeit.kr/api';
 
 export { 
   inputEmailEl, 
@@ -21,8 +20,7 @@ export {
   eyeOffIconByPswCheckIcon,
   inputPswCheckEl, 
   showMessageByPswCheckEl,
-  TEST_EMAIL, 
-  TEST_PSW 
+  API
 };
 
   
