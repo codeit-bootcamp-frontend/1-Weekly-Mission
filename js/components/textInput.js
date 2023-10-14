@@ -1,17 +1,21 @@
-import { isSignUpPassword, isDuplication } from './signUp.js' 
+import { isSignUpPassword } from './signUp.js' 
 
-export default function textInput({$root, empthyErrorMessage, invalidErrorMessage, validate, isSignUpPage }) {
+export default function createTextInput({$root, empthyErrorMessage, invalidErrorMessage, validate, signService,isSignUpPage }) {
   const $input = $root.querySelector('.text-input')
   const $inputBox = $root.querySelector('.input-box')
   const $errorMessage = $root.querySelector('.error-message')
 
   function init(){
-    $input.addEventListener('focusout',(e) => {
+    $input.addEventListener('focusout',async(e) => {
       const inputValue = e.target.value
-      isValid = validate(inputValue)
+      let duplication = false
+      if(isSignUpPage){
+        const res  = await signService.login({email: inputValue},'check-email')
+        duplication = !res.ok
+      }
+      isValid = validate(inputValue) && !duplication
       toggleErorr(isValid)
-      $errorMessage.textContent = insertErrorMessage(isValid, inputValue)
-      console.log(isValid)
+      $errorMessage.textContent = insertErrorMessage(isValid, inputValue, duplication)
     });
   };
 
@@ -19,11 +23,11 @@ export default function textInput({$root, empthyErrorMessage, invalidErrorMessag
     $inputBox.classList.toggle('error-input-box', !isValid && isSignUpPassword(isSignUpPage, $input))
   };
 
-  function insertErrorMessage(isValid, inputValue){
+  function insertErrorMessage(isValid, inputValue, duplication){
     if(inputValue === '') {
       return empthyErrorMessage
     };
-    if(isDuplication(isSignUpPage, inputValue)) {
+    if(duplication) {
       return '이미 사용 중인 이메일입니다.'
     }
     if(!isValid && isSignUpPassword(isSignUpPage, $input)) {
@@ -51,10 +55,15 @@ export default function textInput({$root, empthyErrorMessage, invalidErrorMessag
     }
   }
 
+  function getInputElement() {
+    return $input
+  }
+
   return {
     init,
     isValid,
     getData,
     getErrorMessage,
+    getInputElement,
   };
 };
