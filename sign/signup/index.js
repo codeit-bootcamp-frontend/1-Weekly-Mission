@@ -1,32 +1,33 @@
 import { isValidEmail, isValidPwd } from '../../utiles/validation.js';
+import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
 
-const emailInput = document.querySelector('#email');
-const pwdInput = document.querySelector('#password');
+
+// const emailInput = document.querySelector('#email');
+// const pwdInput = document.querySelector('#password');
 const pwdConfirmInput = document.querySelector('#password-confirm');
-const loginBtn = document.querySelector('.btn-login');
-const pwdToggleIcon = document.querySelector('#toggle-eye');
+// const loginBtn = document.querySelector('.btn-login');
+// const pwdToggleIcon = document.querySelector('#toggle-eye');
 
 
-const checkEmailValidation = (e) => {
-  const inputField = document.querySelector('.email-field');
+const emailField = document.querySelector('.email-field');
+const emailInput = document.querySelector('#email');
+const emailErrorMessage = document.querySelector('.email-error-message');
+
+function checkEmailValidation() {
   const email = emailInput.value.trim();
-  const errorMessage = inputField.querySelector('.error');
 
   if (email === '') {
-    errorMessage.textContent = '이메일을 입력해주세요.';
-    inputField.classList.add('error');
+    addErrorMessage(emailField, emailErrorMessage, '이메일을 입력해주세요.');
   } else if (!isValidEmail(email)) {
-    errorMessage.textContent = '올바른 이메일 주소가 아닙니다.';
-    inputField.classList.add('error');
+    addErrorMessage(emailField, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
   } else if (email === 'test@codeit.com') {
-    errorMessage.textContent = '이미 사용 중인 이메일입니다.';
-    inputField.classList.add('error');
+    addErrorMessage(emailField, emailErrorMessage, '이미 사용 중인 이메일입니다.'); // 작동 X 
   } else {
-    errorMessage.textContent = '';
-    inputField.classList.remove('error');
+    removeErrorMessage(emailField, emailErrorMessage);
   }
 };
 
+emailInput.addEventListener("focusout", checkEmailValidation);
 
 const checkPwdValidation = (e) => {
   const inputField = document.querySelector('.pwd-field');
@@ -90,7 +91,7 @@ const toggleEyeIcon = () => {
 }
 
 
-emailInput.addEventListener("focusout", checkEmailValidation);
+// emailInput.addEventListener("focusout", checkEmailValidation);
 pwdInput.addEventListener("focusout", checkPwdValidation);
 pwdConfirmInput.addEventListener("focusout", confirmPwd);
 emailInput.addEventListener("keyup", submitOnEnter);
