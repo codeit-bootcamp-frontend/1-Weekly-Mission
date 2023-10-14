@@ -1,5 +1,5 @@
 import { emailCheck, passwordCheck, domain} from './modules/constant.js'
-import { errorOccur, errorDisappear, signupTryShowError, moveToFolderPage } from './modules/functions.js'
+import { errorOccur, errorDisappear, signupTryShowError, moveToFolderPage, postAPI } from './modules/functions.js'
 import { messages } from './modules/message.js'
 import { emailInput, emailInputCheck, passwordInput, passwordInputCheck, passwordRepeatInput, passwordRepeatInputCheck, formTag, eyeMarkInPassword, eyeMarkInPasswordRepeat } from './modules/tags.js'
 import { saveAccessToken, getAccessToken } from './modules/localStorage.js'
@@ -24,15 +24,7 @@ function emailError() {
 // 입력한 이메일이 중복인지 아닌지 POST를 보내 중복일 시 에러 메세지 출력
 async function isDuplicatedEmail () {
   try {
-    const response = await fetch(`${domain}/api/check-email`, {
-      method: 'POST',
-      headers: {
-        'content-type':'application/json'
-      },
-      body: JSON.stringify({
-        email: emailInput.value,
-      })
-    })
+    const response = await postAPI (`${domain}/api/check-email`, emailInput.value, passwordInput.value)
 
     const statusCode = response.status
 
@@ -96,7 +88,8 @@ async function signupReady () {
 // 회원가입 시도 POST 전송 //
 async function singupTry (e) {  
   try {
-    e.preventDefault()      
+    e.preventDefault()     
+    
     if (await signupReady()) {   
       const response= await fetch(`${domain}/api/sign-up`, {
         method: 'POST',
@@ -133,7 +126,6 @@ formTag.addEventListener("keypress", (e) => e.code === 'Enter' && singupTry)
 
 
 
-// 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
 // 눈 모양 아이콘 클릭시 패스워드 노출 여부 변화 //
 function password_toggle(e) {
   const PasswordType = e.target.parentElement.parentElement.children[1].type === "password"

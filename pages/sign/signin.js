@@ -1,5 +1,5 @@
 import { emailCheck, domain } from './modules/constant.js'
-import { errorOccur, errorDisappear, loginTryShowError, moveToFolderPage } from './modules/functions.js'
+import { errorOccur, errorDisappear, loginTryShowError, moveToFolderPage, postAPI} from './modules/functions.js'
 import { messages } from './modules/message.js'
 import { emailInput, emailInputCheck, 
   passwordInput, passwordInputCheck, 
@@ -52,18 +52,9 @@ async function loginTry(e) {
   } else {    
     try{
 
-    const response = await fetch(`${domain}/api/sign-in`, {
-      method: 'POST',
-      headers: {
-        'content-type' : 'application/json'
-      },
-      body: JSON.stringify({
-        email: emailInput.value,
-        password: passwordInput.value,
-      })
-    })
+    const response =  await postAPI (`${domain}/api/sign-in`, emailInput.value, passwordInput.value)
     
-    const responseData = response.json()
+    const responseData = await response.json()
     const statusCode = response.status
 
     if (statusCode === 200) {
