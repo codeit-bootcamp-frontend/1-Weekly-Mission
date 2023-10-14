@@ -66,7 +66,7 @@ eyeBtn2.addEventListener("click", eyeCheck);
 
 signupBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  const flag = emailChecker() * passwordChecker() * passwordRepeatChecker();
+  const flag = emailChecker() && passwordChecker() && passwordRepeatChecker();
   if (flag) {
     location.href = "./folder.html";
     disappearError(email, emailError);
