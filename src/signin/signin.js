@@ -5,11 +5,12 @@ import {
   passwordErrorMessagesEl,
   passwordInputsEl,
 } from "../constants/tags.js";
-import { TEST_ACCOUNT, REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from "../constants/common.js";
+import { REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from "../constants/common.js";
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
-import apiSignin from "../utils/api-signin.js";
+import requestSignin from "../utils/requestSignin.js";
+import refreshAccessToken from "../utils/api-refresh-token.js";
 
 const validateEmail = () => {
   const emailValue = emailInputEl.value;
@@ -44,7 +45,7 @@ const handleLoginFormSubmit = (event) => {
   passwordInputsEl.forEach(async (passwordInputEl, index) => {
     const emailInputValue = emailInputEl.value;
     const passwordInputValue = passwordInputEl.value;
-    const isValid = await apiSignin(emailInputValue, passwordInputValue);
+    const isValid = await requestSignin(emailInputValue, passwordInputValue);
 
     const submitErrorMessages = ERROR_MESSAGES.submit;
     const isMatchEmail = (field) => field === "email";
@@ -74,3 +75,9 @@ passwordInputsEl.forEach((passwordInputEl, index) =>
 );
 
 generateEyeButton();
+
+(async () => {
+  if (await refreshAccessToken()) {
+    window.location.href = REDIRECT_PATH;
+  }
+})();
