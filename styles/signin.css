@@ -89,6 +89,10 @@ button {
   margin-top: 1.2rem;
 }
 
+a{
+  color:#6D6AFE;
+}
+
 input {
   display: flex;
   padding: 1.8rem 1.5rem;
