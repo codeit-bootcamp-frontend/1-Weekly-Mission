@@ -151,21 +151,33 @@ const handleSigninSubmit = async (event) => {
   }
 };
 
-const handleSignupSubmit = (event) => {
+const handleSignupSubmit = async (event) => {
   event.preventDefault();
 
   checkEmptyInput(authEmail);
   validateEmail(authEmail);
   validatePassword(authPassword);
-  checkEmailAvailability(authEmail);
   checkPasswordMatch();
+  await checkEmailAvailability(authEmail);
 
   const isValidForm = ![...authInputs].some((input) =>
     input.classList.contains(ERROR_INPUT_STYLE)
   );
 
-  if (isValidForm) {
+  if (!isValidForm) {
+    return;
+  }
+
+  const account = { email: authEmail.value, password: authPassword.value };
+
+  try {
+    const signupResponse = await requestAPI("sign-up", account);
+    if (signupResponse.status === 400) {
+      throw new Error("invalidCredentials");
+    }
     redirect();
+  } catch (error) {
+    alert("Error");
   }
 };
 
