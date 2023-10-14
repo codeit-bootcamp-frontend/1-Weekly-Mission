@@ -1,5 +1,7 @@
 // <이메일 형식검증, 오류메시지 출력 >
-import { emailRegex } from "./emailRegex";
+import { emailRegex } from "./emailRegex.js";
+import { accountInfo, inputEmail, emailErrorMessage } from "../constants.js";
+import { addErrorStyle, removeErrorStyle } from "../errors/errors.js";
 
 function checkSignupEmail() {
   const email = inputEmail.value.trim(); //사용자가 인풋란에 입력한 값을 JS에서 email로 선언

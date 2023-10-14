@@ -3,6 +3,7 @@ import { checkPassword } from "./input/checkPassword.js";
 import { toggleImage } from "./toggleImage.js";
 import { inputEmail, inputPassword } from "./constants.js";
 import { checkSigninEmail } from "./input/checkSignInEmail.js";
+import { validAccount } from "./accounts/validAccount.js";
 
 const eyeImagePasswordEl = document.querySelector("#eyeImage-password");
 const eyeImagePassword = eyeImagePasswordEl.children[0];

@@ -56,7 +56,7 @@ inputPasswordRe.addEventListener("focusout", checkPasswordRe);
 
 //이메일&비밀번호 모두 유효한 값이라면 버튼 동작하도록 함
 function submitAccount() {
-  const isEmailValid = checkEmail();
+  const isEmailValid = checkSignupEmail();
   const isPasswordValid = checkPassword();
   const isPasswordReValid = checkPasswordRe();
   if (isEmailValid && isPasswordValid && isPasswordReValid) {
