@@ -47,6 +47,22 @@ header a img {
     text-align: center;
 }
 
+.header-login span {
+        display: inline-block;
+        padding: 16px 20px;
+        background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+        border-radius: 8px;
+        color: #F5F5F5;
+        text-decoration: none;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        width: 110px;
+        text-align: center;
+        cursor: pointer;
+    }
+
 main {
     padding-top: 93px;
 }
