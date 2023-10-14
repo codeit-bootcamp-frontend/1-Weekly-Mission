@@ -1,10 +1,16 @@
 import { emailCheck, domain } from './modules/constant.js'
-import { error_occur, error_disappear, loginTryShowError } from './modules/functions.js'
+import { error_occur, error_disappear, loginTryShowError, moveToFolderPage } from './modules/functions.js'
 import { messages } from './modules/message.js'
 import { email_input, email_input_check, 
   password_input, password_input_check, 
   formtag, eye_mark_in_password } from './modules/tags.js'
+import { saveAccessToken, getAccessToken } from './modules/localStorage.js'
 
+
+// 로컬스토리지에 'accessToken'이 있으면 폴더 페이지로 넘어감
+if (getAccessToken(`accessToken`)) {
+  moveToFolderPage()
+}
 
 
 // 이메일 부분 //
@@ -56,11 +62,13 @@ async function loginTry(e) {
         password: password_input.value,
       })
     })
-
+    
+    const responseData = response.json()
     const statusCode = response.status
 
     if (statusCode === 200) {
-      window.location.href = "/pages/folder/folder.html"
+      moveToFolderPage()
+      saveAccessToken(responseData)                      //accessToken 로컬 스토리지 저장
       return
     } 
     if (statusCode === 400) {

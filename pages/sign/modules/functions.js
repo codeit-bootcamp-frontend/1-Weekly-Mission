@@ -28,5 +28,10 @@ function signupTryShowError() {
   error_occur(password_repeat_input, password_repeat_input_check, messages.password_check_error)
 }
 
+//폴더 페이지로 접근하는 함수
+function moveToFolderPage () {
+  window.location.href = '/pages/folder/folder.html'
+} 
+
 //export
-export { error_occur, error_disappear, loginTryShowError, signupTryShowError }
+export { error_occur, error_disappear, loginTryShowError, signupTryShowError, moveToFolderPage}
