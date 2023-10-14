@@ -5,7 +5,7 @@ import {
   passwordError,
   userEmail,
   userPassword,
-} from "./tags.js";
+} from "./consts.js";
 import {
   appearError,
   disappearError,
