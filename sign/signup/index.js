@@ -11,12 +11,13 @@ import {
 import {
   EMAIL_FIELD,
   EMAIL_INPUT,
-  EMAIL_ERROR_MESSAGE,
+  EMAIL_ERROR,
   PASSWORD_FIELD,
   PASSWORD_INPUT,
-  PASSWORD_ERROR_MESSAGE,
-  PASSWORD_CONFIRM,
+  PASSWORD_ERROR,
+  PASSWORD_CONFIRM_INPUT,
   PASSWORD_CONFIRM_FIELD,
+  PASSWORD_CONFIRM_ERROR,
   EYE_ICON,
   EYE_ICON_RE,
   LOGIN_BUTTON
@@ -25,13 +26,13 @@ import {
 // Email
 const emailField = document.querySelector(EMAIL_FIELD);
 const emailInput = document.querySelector(EMAIL_INPUT);
-const emailErrorMessage = document.querySelector(EMAIL_ERROR_MESSAGE);
+const emailErrorMessage = document.querySelector(EMAIL_ERROR);
 
 // Password
 const passwordField = document.querySelector(PASSWORD_FIELD);
 const passwordInput = document.querySelector(PASSWORD_INPUT);
-const passwordErrorMessage = document.querySelector(PASSWORD_ERROR_MESSAGE);
-const pwdConfirmInput = document.querySelector(PASSWORD_CONFIRM);
+const passwordErrorMessage = document.querySelector(PASSWORD_ERROR);
+const pwdConfirmInput = document.querySelector(PASSWORD_CONFIRM_INPUT);
 
 // Toggle
 const eyeIcon = document.querySelector(EYE_ICON);

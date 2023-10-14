@@ -10,10 +10,10 @@ import {
 } from '/constants/error-message.js';
 import {
   EMAIL_INPUT,
-  EMAIL_ERROR_MESSAGE,
+  EMAIL_ERROR,
   PASSWORD_FIELD,
   PASSWORD_INPUT,
-  PASSWORD_ERROR_MESSAGE,
+  PASSWORD_ERROR,
   EYE_ICON,
   LOGIN_BUTTON
 } from '/constants/selector.js';
@@ -22,12 +22,12 @@ import {
 // Email
 const emailField = document.querySelector(PASSWORD_FIELD);
 const emailInput = document.querySelector(EMAIL_INPUT);
-const emailErrorMessage = document.querySelector(EMAIL_ERROR_MESSAGE);
+const emailErrorMessage = document.querySelector(EMAIL_ERROR);
 
 // Password
 const passwordField = document.querySelector(PASSWORD_FIELD);
 const passwordInput = document.querySelector(PASSWORD_INPUT);
-const passwordErrorMessage = document.querySelector(PASSWORD_ERROR_MESSAGE);
+const passwordErrorMessage = document.querySelector(PASSWORD_ERROR);
 
 // Toggle
 const eyeIcon = document.querySelector(EYE_ICON);

@@ -1,12 +1,12 @@
 export const EMAIL_FIELD = '.email-field'
 export const EMAIL_INPUT = '#email'
-export const EMAIL_ERROR_MESSAGE = '.email-error-message'
+export const EMAIL_ERROR = '.email-error'
 export const PASSWORD_FIELD = '.password-field'
 export const PASSWORD_INPUT = '#password';
-export const PASSWORD_ERROR_MESSAGE = '.password-error-message';
-export const PASSWORD_CONFIRM = '#pwd-confirm';
-export const PASSWORD_CONFIRM_FIELD = '.pwd-confirm-field';
-export const PASSWORD_CONFIRM_ERROR = '.pwd-confirm-error-message';
+export const PASSWORD_ERROR = '.password-error';
+export const PASSWORD_CONFIRM_INPUT = '#password-confirm';
+export const PASSWORD_CONFIRM_FIELD = '.password-confirm-field';
+export const PASSWORD_CONFIRM_ERROR = '.password-confirm-error';
 export const EYE_ICON = '#eye-icon';
 export const EYE_ICON_RE = '#eye-icon-re';
 export const LOGIN_BUTTON = '.btn-login';
