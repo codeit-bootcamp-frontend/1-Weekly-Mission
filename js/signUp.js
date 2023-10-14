@@ -1,7 +1,7 @@
 import {
   emailInputEl, passwordInputEl, 
   emailErrorEl, passwordErrorEl,
-  emailPattern, accountInfo, 
+  emailPattern, getSignedMember, 
   signButton, eyeComponents, 
   validateInput, changeEyeComponentOnOff
 } from '/js/utils.js';
@@ -13,17 +13,40 @@ const passwordAgainErrorEl = document.querySelector('.password-again.error-msg')
 // 비밀번호 유효성 검사식
 const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-const checkEmailInput = () => {
+const checkEmailInput = async function () {
   if (emailInputEl.value == '') {  // 만약 인풋 태그가 비어있다면
     validateInput(emailErrorEl, '이메일을 입력해주세요.', emailErrorEl);
   } else if (emailPattern.test(emailInputEl.value) == false) {  // 이메일 유효성 검사
     validateInput(emailErrorEl, '올바른 이메일 주소가 아닙니다.', emailErrorEl);
-  } else if (emailInputEl.value === accountInfo.codeit.id) {
-    validateInput(emailErrorEl, '이미 사용중인 이메일입니다.', emailErrorEl);
   } else {
-    validateInput(emailErrorEl, '', emailErrorEl, 'var(--gray-three)');
+    const isDuplicate = await checkEmailDuplicate();
+    if (!isDuplicate) {
+      validateInput(emailErrorEl, '이미 사용중인 이메일입니다.', emailErrorEl);
+    } else {
+      validateInput(emailErrorEl, '', emailErrorEl, 'var(--gray-three)');
+    }
   }
 }
+
+const checkEmailDuplicate = async function () {
+  const signUpEmail = { email: emailInputEl.value };
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',  
+      },
+      body: JSON.stringify(signUpEmail),
+    });
+    const statusCode = response.status;
+    if (statusCode === 409) {
+      return false;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  return true;  // 만약 오류가 아니면 중복되지 않음
+} 
 
 const checkPasswordInput = () => {
   if (!passwordPattern.test(passwordInputEl.value)) { 
@@ -40,15 +63,31 @@ const checkPasswordAgainInput = () => {
     validateInput(passwordAgainErrorEl, '', Array.from(eyeComponents)[1], 'var(--gray-three)');
   }
 }
+
+const requestSignUp = async function () {
+  const signUpMember = getSignedMember();
+  const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',  
+    },
+    body: JSON.stringify(signUpMember),
+  });
+  const statusCode = response.status;
+  if (statusCode === 200) {
+    location.replace('/folder.html'); 
+  }
+}
  
-const trySignUp = () => {
+const trySignUp = async function () {
   checkEmailInput();
   checkPasswordInput();
   checkPasswordAgainInput();
-  if (emailInputEl.value === accountInfo.codeit.id) {  // 만약 코드잇 계정으로 로그인 한다면
+  const isDuplicate = await checkEmailDuplicate();
+  if (!isDuplicate) {  // 만약 코드잇 계정으로 로그인 한다면
     validateInput(emailErrorEl, '이미 회원가입된 이메일입니다.', emailErrorEl);
-  } else if (!emailErrorEl.textContent  && !passwordErrorEl.textContent && !passwordAgainErrorEl.textContent) {
-    location.replace('/folder.html');
+  } else if (emailPattern.test(emailInputEl.value)  && passwordPattern.test(passwordInputEl.value) && passwordInputEl.value === passwordAgainInputEl.value) {
+    requestSignUp();
   }
 }
 
@@ -61,3 +100,4 @@ passwordAgainInputEl.addEventListener('focusout', checkPasswordAgainInput);
 emailInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && trySignUp());  // e.code도 같은 결과
 passwordInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && trySignUp());
 passwordAgainInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && trySignUp());
+
