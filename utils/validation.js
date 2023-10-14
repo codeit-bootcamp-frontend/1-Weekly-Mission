@@ -3,7 +3,7 @@ export const isValidEmail = email => {
   return regExp.test(email);
 };
 
-export const isValidPwd = value => {
+export const isValidPwd = password => {
   const pwdRegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-  return pwdRegExp.test(value);
+  return pwdRegExp.test(password);
 }
