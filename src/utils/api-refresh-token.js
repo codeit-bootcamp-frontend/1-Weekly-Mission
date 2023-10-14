@@ -6,7 +6,7 @@ import {
   localStorageSetToken,
 } from "../constants/common.js";
 
-const endpoint = getEndpoint("refreshToken");
+const endpoint = getEndpoint("auth", "refreshToken");
 const requsetBody = { refresh_token: getRefreshToken() };
 
 const refreshAccessToken = async () => {
