@@ -11,6 +11,7 @@ import {
   addPwInputErrorMessage,
 } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
+import { signin } from "../api/auth.js";
 
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
@@ -38,13 +39,7 @@ function handleSigninBtnClick() {
   } else {
     removeErrorMessage(pwIncorrectMsg, pwInput);
   }
-
-  if (
-    emailInput.value.trim() === TEST_EMAIL &&
-    pwInput.value.trim === TEST_PASSWORD
-  ) {
-    location.href = "/folder";
-  }
+  signin(emailInput.value.trim(), pwInput.value.trim());
 }
 
 function handleEmailInputEmptyCheck() {

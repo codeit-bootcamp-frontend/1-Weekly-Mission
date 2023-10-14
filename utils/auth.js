@@ -75,3 +75,7 @@ export function toggleEyeBtn(inputElement, eyeBtn) {
     eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-off.svg");
   }
 }
+
+export function storeAccessToken(token) {
+  localStorage.setItem("accessToken", token);
+}
