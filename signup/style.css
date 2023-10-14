@@ -123,4 +123,24 @@ button {
 }
 
 input:focus{outline-color: #6D6AFE;}
+
+
+.warning {
+    border-color: red;
+
+}
+
+.warning-text {
+    color: red;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.line {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
    
