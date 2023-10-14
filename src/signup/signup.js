@@ -17,6 +17,7 @@ import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constan
 import validatePasswordInput from "../utils/validate-password-input.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
+import requestSignup from "../utils/request-signup.js";
 
 const validateEmail = () => {
   const emailValue = emailInputEl.value;
@@ -45,17 +46,15 @@ const validateEmail = () => {
     : (displayErrorMessage(emailErrorMessageEl, VALUE_EMPTY), removeErrorClass(emailInputEl));
 };
 
-const validatePassword = (passwordInputEl, passwordErrorMessage) => {
+const validatePassword = (passwordInputEl, passwordErrorMessage) =>
   validatePasswordInput(passwordInputEl, passwordErrorMessage);
-};
 
-const validateConfirmPassword = (passwordInputEl, passwordErrorMessage, passwordInputValue) => {
+const validateConfirmPassword = (passwordInputEl, passwordErrorMessage, passwordInputValue) =>
   validatePasswordInput(passwordInputEl, passwordErrorMessage, passwordInputValue);
-};
 
-const handleSignupFormSubmit = (event) => {
+const handleSignupFormSubmit = async (event) => {
   event.preventDefault();
-
+  const emailValue = emailInputEl.value;
   const passwordInputEl = passwordInputsEl[0];
   const passwordInputValue = passwordInputEl.value;
   const confirmPasswordInputEl = passwordInputsEl[1];
@@ -64,15 +63,17 @@ const handleSignupFormSubmit = (event) => {
 
   validateEmail();
   validatePassword(passwordInputEl, passwordErrorMessage);
-  validateConfirmPassword(confirmPasswordInputEl, confirmPasswordErrorMessages, passwordInputValue);
+  const isMismatchPassword = validateConfirmPassword(
+    confirmPasswordInputEl,
+    confirmPasswordErrorMessages,
+    passwordInputValue
+  );
 
-  const isValidForm =
-    !emailInputEl.classList.contains(ERROR_CLASS_NAME) &&
-    !passwordInputEl.classList.contains(ERROR_CLASS_NAME) &&
-    !confirmPasswordInputEl.classList.contains(ERROR_CLASS_NAME);
+  const isValidRequest = await requestSignup(emailValue, passwordInputValue, isMismatchPassword);
 
-  if (isValidForm) {
+  if (isValidRequest) {
     window.location.href = REDIRECT_PATH;
+    return;
   }
 };
 
