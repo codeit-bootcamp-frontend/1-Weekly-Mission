@@ -21,7 +21,7 @@ function checkEmailValidation() {
   } else if (!isValidEmail(email)) {
     addErrorMessage(emailField, emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
   } else if (email === 'test@codeit.com') {
-    addErrorMessage(emailField, emailErrorMessage, '이미 사용 중인 이메일입니다.'); // 작동 X 
+    addErrorMessage(emailField, emailErrorMessage, '이미 사용 중인 이메일입니다.'); 
   } else {
     removeErrorMessage(emailField, emailErrorMessage);
   }
