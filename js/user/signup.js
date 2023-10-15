@@ -24,6 +24,10 @@ const passwordConfirm = {
   errorMsg: pwConfirmErrorMsg,
 };
 
+const regexPw = /^(?=.*[a-zA-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
+
+const inputArr = [emailInput, pwInput, pwConfirmInput];
+
 const checkEmail = async () => {
   const data = {
     email: emailInput.value,
@@ -69,13 +73,21 @@ const handleSignUp = async () => {
   }
 };
 
-emailInput.addEventListener("focusout", function () {
-  checkEmail();
-});
+const isError = () => {
+  return inputArr.every((e) => {
+    return e.classList.contains("error") === false;
+  });
+};
+
+const isEmpty = () => {
+  return inputArr.every((e) => {
+    return e.value;
+  });
+};
+
+emailInput.addEventListener("focusout", checkEmail);
 
 pwInput.addEventListener("focusout", function () {
-  const regexPw = /^(?=.*[a-zA-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
-
   if (!regexPw.test(pwInput.value)) {
     showError(password, "비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.");
   } else {
@@ -97,14 +109,9 @@ pwConfirmInput.addEventListener("focusout", function () {
 
 signupBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  if (
-    emailInput.value &&
-    pwInput &&
-    pwConfirmInput &&
-    !emailInput.classList.contains("error") &&
-    !pwInput.classList.contains("error") &&
-    !pwConfirmInput.classList.contains("error")
-  ) {
+  if (isEmpty() && isError()) {
     handleSignUp();
+  } else {
+    alert("erro");
   }
 });
