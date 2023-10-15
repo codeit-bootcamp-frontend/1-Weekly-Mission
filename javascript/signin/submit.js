@@ -1,22 +1,24 @@
-import { users } from "../user.js";
-// import { checkInput } from "./checkinput.js";
 import { emailInput , passwordInput} from "../variables.js";
-const findUser = users.some((user) => user.email === emailInput.value && user.password === passwordInput.value);
+import { requestapi } from "./requestAPI.js";
 
 function login(e){
-  if (findUser){
-    location.href = '/index.html';
-  } 
-  // else {
-  //   checkInput()
-  // }
   e.preventDefault();
+  const email = emailInput.value;
+  const password = passwordInput.value;
+
+  if (email && password){
+    const member = {
+      email : emailInput.value,
+      password : passwordInput.value,
+    }
+    requestapi(member);
+  }
 };
 
 function loginEnter(e){
-  if (findUser && e.key === 13){
+  if ( e.key === 'Enter'){
     login(e)
   } 
 };
 
-export {login, loginEnter};
+export { login, loginEnter };
