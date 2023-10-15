@@ -37,7 +37,7 @@ function signup(){
                     return response.json();
                 }
             })
-            .then((result) => {
+            .then(() => {
                 // 경로 이동
                 location.href = "/pages/folder";
             })
