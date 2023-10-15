@@ -104,7 +104,11 @@ function signinSuccess() {
 
 function clickSignin(email, password) {
 	const isUserEmail = getIsUserEmail(email);
-	if (!isUserEmail) return checkPasswordFocusout(password); // TODO 유저 이메일이 아닌경우 비밀번호 입력 여부만 검사하고 리턴
+	if (!isUserEmail) {
+		// TODO 유저 이메일이 아닌경우 비밀번호 입력 여부만 검사하고 리턴
+		checkPasswordFocusout(password);
+		return;
+	}
 	const isUserPassword = getIsUserPassword(password);
 	if (isUserEmail && isUserPassword) signinSuccess();
 }
