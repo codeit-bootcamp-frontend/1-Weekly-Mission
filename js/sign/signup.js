@@ -17,7 +17,6 @@ import {
 (function () {
   if (localStorage.getItem("signupToken")) {
     location.href = "./folder.html";
-    localStorage.removeItem("signupToken");
     return;
   }
 })();
