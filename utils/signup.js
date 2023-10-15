@@ -1,16 +1,15 @@
+import { getPasswordVisibility } from "/utils/auth.js";
 import {
-	passwordToggleElement,
-	getPasswordVisibility,
 	USERS,
 	AUTH_HINT,
 	EMAIL_PATTERN,
+	PASSWORD_PATTERN,
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 	FOLDER_PAGE_PATH,
-} from "/utils/auth.js";
+} from "/utils/constants.js";
 
 /* 비밀번호 토글 */
-// DOM 요소
 const passwordConfirmToggleElement = document.querySelector(
 	".auth__toggle-password--confirm"
 );
@@ -20,8 +19,8 @@ const passwordConfirmInputElement = document.querySelector(
 const passwordConfirmIconElement = document.querySelector(
 	".auth__icon-password--confirm"
 );
+const passwordToggleElement = document.querySelector(".auth__toggle-password");
 
-// 핸들러
 passwordToggleElement.addEventListener("click", () => {
 	const passwordInput = document.querySelector(".auth__input-password");
 	const passwordIcon = document.querySelector(".auth__icon-password");
@@ -44,9 +43,6 @@ passwordConfirmToggleElement.addEventListener("click", () => {
 });
 
 /* 유효성 검사 */
-// 상수
-const PASSWORD_PATTERN = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
-
 // DOM 요소
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");

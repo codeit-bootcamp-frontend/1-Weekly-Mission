@@ -1,16 +1,16 @@
+import { getPasswordVisibility } from "/utils/auth.js";
 import {
-	passwordToggleElement,
-	getPasswordVisibility,
 	USERS,
 	AUTH_HINT,
 	EMAIL_PATTERN,
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 	FOLDER_PAGE_PATH,
-} from "/utils/auth.js";
+} from "/utils/constants.js";
 
 /* 비밀번호 토글 */
-// 이벤트 핸들러
+const passwordToggleElement = document.querySelector(".auth__toggle-password");
+
 passwordToggleElement.addEventListener("click", () => {
 	const passwordInput = document.querySelector(".auth__input-password");
 	const passwordIcon = document.querySelector(".auth__icon-password");
@@ -23,14 +23,12 @@ passwordToggleElement.addEventListener("click", () => {
 });
 
 /* 유효성 검사 */
-// DOM 요소
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");
 const emailHintElement = document.querySelector(".auth__email-hint");
 const passwordHintElement = document.querySelector(".auth__password-hint");
 const signinButtonElement = document.querySelector(".signin__button");
 
-// 함수
 function changeEmailHint(hintType) {
 	if (emailHintElement.innerText === AUTH_HINT.email[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
 	emailHintElement.innerText = AUTH_HINT.email[hintType];
@@ -53,7 +51,6 @@ function changePasswordHint(hintType) {
 	}
 }
 
-// 함수
 function checkEmailFocusout(email) {
 	if (email === "") {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
