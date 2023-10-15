@@ -12,7 +12,7 @@ import {
   $passwordConfirmErrMsg,
 } from "./index.js";
 
-const $submitButton = document.querySelector(".sign_button");
+const $signForm = document.querySelector("#form");
 
 // 이메일 정규식
 const EMAIL_REGEX = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
@@ -57,7 +57,10 @@ const setPasswordErrorMessage = (e) => {
 const setCheckPasswordErrorMessage = (e) => {
   e.preventDefault();
 
-  if ($passwordBox.value !== $passwordCheckBox.value) {
+  if (
+    $passwordBox.value !== $passwordCheckBox.value &&
+    $passwordCheckBox.value
+  ) {
     // 비밀번호 input과 비밀번호 확인 input값이 다른 경우
     addError($passwordConfirmErrMsg, "비밀번호가 일치하지 않아요.");
   } else {
@@ -66,29 +69,34 @@ const setCheckPasswordErrorMessage = (e) => {
 };
 
 // form 전송
-const submitForm = (e) => {
-  e.preventDefault();
-  // 이메일: test@codeit.com, 비밀번호: codeit101 으로 로그인 시도할 경우
-  if (
-    $emailBox.value &&
-    $passwordBox.value &&
-    $passwordCheckBox.value &&
-    !$emailErrMsg.value &&
-    !$passwordErrMsg.value &&
-    !$passwordConfirmErrMsg.value
-  ) {
-    location.href = "./folder.html";
-  } else {
-    setEmailErrorMessage(e);
-    setPasswordErrorMessage(e);
-    setCheckPasswordErrorMessage(e);
-  }
-};
+// const submitForm = (e) => {
+//   e.preventDefault();
+//   // 이메일: test@codeit.com, 비밀번호: codeit101 으로 로그인 시도할 경우
+//   if (
+//     $emailBox.value &&
+//     $passwordBox.value &&
+//     $passwordCheckBox.value &&
+//     !$emailErrMsg.value &&
+//     !$passwordErrMsg.value &&
+//     !$passwordConfirmErrMsg.value
+//   ) {
+//     location.href = "./folder.html";
+//   }
+//   // else {
+//   //   setEmailErrorMessage(e);
+//   //   setPasswordErrorMessage(e);
+//   //   setCheckPasswordErrorMessage(e);
+//   // }
+// };
+
+const submitForm = async (e) => {};
 
 $emailBox.addEventListener("blur", setEmailErrorMessage);
 $passwordBox.addEventListener("blur", setPasswordErrorMessage);
+// 비밀번호 바꿔서 입력 시 오류 생성하도록
+$passwordBox.addEventListener("blur", setCheckPasswordErrorMessage);
 $passwordCheckBox.addEventListener("blur", setCheckPasswordErrorMessage);
 
 $eyeButton.addEventListener("click", togglePassword);
 $eyeButtonCheck.addEventListener("click", togglePassword);
-$submitButton.addEventListener("click", submitForm);
+$signForm.addEventListener("submit", submitForm);

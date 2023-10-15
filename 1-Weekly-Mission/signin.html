@@ -10,6 +10,11 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
     <link rel="stylesheet" href="./css/sign.css" />
+
+    <!-- <script>
+      if (localStorage.getItem("accessToken"))
+        window.location.href = "/folder.html";
+    </script> -->
   </head>
   <body>
     <header>
@@ -23,7 +28,7 @@
     </header>
 
     <main class="sign_box">
-      <form>
+      <form id="form">
         <div class="sign_input">
           <div class="sign_input_box">
             <label for="email">이메일</label>
