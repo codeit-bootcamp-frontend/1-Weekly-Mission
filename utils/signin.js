@@ -1,11 +1,17 @@
-import { goToFolderPage, getPasswordVisibility } from "/utils/auth.js";
 import {
-	USERS,
+	goToFolderPage,
+	getPasswordVisibility,
+	getIsFilledEmail,
+	getIsValidEmail,
+	getIsExistEmail,
+	getIsFilledPassword,
+	getIsCorrectPassword,
+} from "/utils/auth.js";
+
+import {
 	AUTH_HINT,
-	EMAIL_PATTERN,
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
-	FOLDER_PAGE_PATH,
 } from "/utils/constants.js";
 
 /* 비밀번호 토글 */
@@ -52,9 +58,9 @@ function changePasswordHint(hintType) {
 }
 
 function checkEmailFocusout(email) {
-	if (email === "") {
+	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
-	} else if (!EMAIL_PATTERN.test(email)) {
+	} else if (!getIsValidEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotValidated);
 	} else {
 		changeEmailHint(INPUT_STATUS.default);
@@ -70,13 +76,13 @@ function checkPasswordFocusout(password) {
 }
 
 function getIsUserEmail(email) {
-	if (email === "") {
+	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
 		return false;
-	} else if (!EMAIL_PATTERN.test(email)) {
+	} else if (!getIsValidEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotValidated);
 		return false;
-	} else if (email !== USERS[0].email) {
+	} else if (!getIsExistEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotExists);
 		return false;
 	} else {
@@ -86,20 +92,16 @@ function getIsUserEmail(email) {
 }
 
 function getIsUserPassword(password) {
-	if (password === "") {
+	if (!getIsFilledPassword(password)) {
 		changePasswordHint(INPUT_STATUS.isNotFilled);
 		return false;
-	} else if (password !== USERS[0].password) {
+	} else if (!getIsCorrectPassword(password)) {
 		changePasswordHint(INPUT_STATUS.isNotCorrect);
 		return false;
 	} else {
 		changePasswordHint(INPUT_STATUS.default);
 		return true;
 	}
-}
-
-function goToFolderPage() {
-	location.href = FOLDER_PAGE_PATH;
 }
 
 function clickSignin(email, password) {
@@ -113,7 +115,6 @@ function clickSignin(email, password) {
 	if (isUserEmail && isUserPassword) goToFolderPage();
 }
 
-// 이벤트 핸들러 등록
 emailInputElement.addEventListener("focusout", (e) => {
 	checkEmailFocusout(e.target.value);
 });

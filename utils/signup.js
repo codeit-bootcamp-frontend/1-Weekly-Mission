@@ -1,21 +1,29 @@
-import { goToFolderPage, getPasswordVisibility } from "/utils/auth.js";
 import {
-	USERS,
+	goToFolderPage,
+	getPasswordVisibility,
+	getIsFilledEmail,
+	getIsValidEmail,
+	getIsExistEmail,
+	getIsFilledPassword,
+	getIsValidPassword,
+	getIsFilledConfirmPassword,
+	getIsConfirmedConfirmPassword,
+} from "/utils/auth.js";
+
+import {
 	AUTH_HINT,
-	EMAIL_PATTERN,
-	PASSWORD_PATTERN,
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 } from "/utils/constants.js";
 
 /* 비밀번호 토글 */
-const passwordConfirmToggleElement = document.querySelector(
+const confirmPasswordToggleElement = document.querySelector(
 	".auth__toggle-password--confirm"
 );
-const passwordConfirmInputElement = document.querySelector(
+const confirmPasswordInputElement = document.querySelector(
 	".auth__input-password--confirm"
 );
-const passwordConfirmIconElement = document.querySelector(
+const confirmPasswordIconElement = document.querySelector(
 	".auth__icon-password--confirm"
 );
 const passwordToggleElement = document.querySelector(".auth__toggle-password");
@@ -31,28 +39,26 @@ passwordToggleElement.addEventListener("click", () => {
 	passwordIcon.alt = passwordVisibility.imageAlt;
 });
 
-passwordConfirmToggleElement.addEventListener("click", () => {
+confirmPasswordToggleElement.addEventListener("click", () => {
 	const passwordVisibility = getPasswordVisibility(
-		passwordConfirmInputElement.type
+		confirmPasswordInputElement.type
 	);
 
-	passwordConfirmInputElement.type = passwordVisibility.inputType;
-	passwordConfirmIconElement.src = passwordVisibility.imageSrc;
-	passwordConfirmIconElement.alt = passwordVisibility.imageAlt;
+	confirmPasswordInputElement.type = passwordVisibility.inputType;
+	confirmPasswordIconElement.src = passwordVisibility.imageSrc;
+	confirmPasswordIconElement.alt = passwordVisibility.imageAlt;
 });
 
 /* 유효성 검사 */
-// DOM 요소
 const emailInputElement = document.querySelector(".auth__input-email");
 const passwordInputElement = document.querySelector(".auth__input-password");
 const emailHintElement = document.querySelector(".auth__email-hint");
 const passwordHintElement = document.querySelector(".auth__password-hint");
-const passwordConfirmHintElement = document.querySelector(
+const confirmPasswordHintElement = document.querySelector(
 	".auth__password-hint--confirm"
 );
 const signupButtonElement = document.querySelector(".signup__button");
 
-// 함수
 function changeEmailHint(hintType) {
 	if (emailHintElement.innerText === AUTH_HINT.email[hintType]) return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
 	emailHintElement.innerText = AUTH_HINT.email[hintType];
@@ -76,22 +82,23 @@ function changePasswordHint(hintType) {
 }
 
 function changePasswordConfirmHint(hintType) {
-	if (passwordConfirmHintElement.innerText === AUTH_HINT.password[hintType])
+	if (confirmPasswordHintElement.innerText === AUTH_HINT.password[hintType])
 		return; // 이전 상태와 바꾸려는 상태가 동일할 경우 리턴
-	passwordConfirmHintElement.innerText = AUTH_HINT.password[hintType];
+	confirmPasswordHintElement.innerText = AUTH_HINT.password[hintType];
 
 	if (hintType === INPUT_STATUS.default) {
-		passwordConfirmInputElement.classList.remove(INPUT_HINT_CLASSNAME);
+		confirmPasswordInputElement.classList.remove(INPUT_HINT_CLASSNAME);
 	} else {
-		passwordConfirmInputElement.classList.add(INPUT_HINT_CLASSNAME);
+		confirmPasswordInputElement.classList.add(INPUT_HINT_CLASSNAME);
 	}
 }
+
 function checkEmailFocusout(email) {
-	if (email === "") {
+	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
-	} else if (!EMAIL_PATTERN.test(email)) {
+	} else if (!getIsValidEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotValidated);
-	} else if (email === USERS[0].email) {
+	} else if (getIsExistEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isExists);
 	} else {
 		changeEmailHint(INPUT_STATUS.default);
@@ -99,33 +106,35 @@ function checkEmailFocusout(email) {
 }
 
 function checkPasswordFocusout(password) {
-	if (password === "") {
+	if (!getIsFilledPassword(password)) {
 		changePasswordHint(INPUT_STATUS.isNotFilled);
-	} else if (!PASSWORD_PATTERN.test(password)) {
+	} else if (!getIsValidPassword(password)) {
 		changePasswordHint(INPUT_STATUS.isNotValidated);
 	} else {
 		changePasswordHint(INPUT_STATUS.default);
 	}
 }
 
-function checkPasswordConfirmFocusout(passwordConfirm) {
-	if (passwordConfirm === "") {
+function checkPasswordConfirmFocusout(confirmPassword) {
+	if (!getIsFilledConfirmPassword(confirmPassword)) {
 		changePasswordConfirmHint(INPUT_STATUS.isNotFilled);
-	} else if (passwordConfirm !== passwordInputElement.value) {
+	} else if (
+		!getIsConfirmedConfirmPassword(confirmPassword, passwordInputElement.value)
+	) {
 		changePasswordConfirmHint(INPUT_STATUS.isNotConfirmed);
 	} else {
 		changePasswordConfirmHint(INPUT_STATUS.default);
 	}
 }
 
-function getIsValidatedEmail(email) {
-	if (email === "") {
+function getIsCompleteEmail(email) {
+	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
 		return false;
-	} else if (!EMAIL_PATTERN.test(email)) {
+	} else if (!getIsValidEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotValidated);
 		return false;
-	} else if (email === USERS[0].email) {
+	} else if (getIsExistEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isExists);
 		return false;
 	} else {
@@ -134,11 +143,11 @@ function getIsValidatedEmail(email) {
 	}
 }
 
-function getIsValidatedPassword(password) {
-	if (password === "") {
+function getIsCompletePassword(password) {
+	if (!getIsFilledPassword(password)) {
 		changePasswordHint(INPUT_STATUS.isNotFilled);
 		return false;
-	} else if (!PASSWORD_PATTERN.test(password)) {
+	} else if (!getIsValidPassword(password)) {
 		changePasswordHint(INPUT_STATUS.isNotValidated);
 		return false;
 	} else {
@@ -147,11 +156,13 @@ function getIsValidatedPassword(password) {
 	}
 }
 
-function getIsConfirmedPassword(passwordConfirm) {
-	if (passwordConfirm === "") {
+function getIsConfirmedPassword(confirmPassword) {
+	if (!getIsFilledConfirmPassword(confirmPassword)) {
 		changePasswordConfirmHint(INPUT_STATUS.isNotFilled);
 		return false;
-	} else if (passwordConfirm !== passwordInputElement.value) {
+	} else if (
+		!getIsConfirmedConfirmPassword(confirmPassword, passwordInputElement.value)
+	) {
 		changePasswordConfirmHint(INPUT_STATUS.isNotConfirmed);
 		return false;
 	} else {
@@ -159,12 +170,12 @@ function getIsConfirmedPassword(passwordConfirm) {
 	}
 }
 
-function clickSignup({ email, password, passwordConfirm }) {
-	const isValidatedEmail = getIsValidatedEmail(email);
-	const isValidatedPassword = getIsValidatedPassword(password);
-	const isConfirmedPassword = getIsConfirmedPassword(passwordConfirm);
-
-	if (isValidatedEmail && isValidatedPassword && isConfirmedPassword)
+function clickSignup({ email, password, confirmPassword }) {
+	if (
+		getIsCompleteEmail(email) &&
+		getIsCompletePassword(password) &&
+		getIsConfirmedPassword(confirmPassword)
+	)
 		goToFolderPage();
 }
 
@@ -176,7 +187,7 @@ passwordInputElement.addEventListener("focusout", (e) => {
 	checkPasswordFocusout(e.target.value);
 });
 
-passwordConfirmInputElement.addEventListener("focusout", (e) => {
+confirmPasswordInputElement.addEventListener("focusout", (e) => {
 	checkPasswordConfirmFocusout(e.target.value);
 });
 
@@ -193,6 +204,6 @@ signupButtonElement.addEventListener("click", (e) => {
 	clickSignup({
 		email: emailInputElement.value,
 		password: passwordInputElement.value,
-		passwordConfirm: passwordConfirmInputElement.value,
+		confirmPassword: confirmPasswordInputElement.value,
 	});
 });
