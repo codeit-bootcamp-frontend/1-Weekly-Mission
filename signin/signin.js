@@ -43,25 +43,27 @@ const checkPasswordInput = (event) => {
 };
 
 const checkAdminAccount = async () => {
-  const codeitAccount = {
-    email: $email.value,
-    password: $password.value,
-  };
-  const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(codeitAccount),
-  });
-  const responseStatus = response.status;
-  const result = await response.json();
-  const accessToken = result.data.accessToken;
-  if (responseStatus === 200) {
-    // admin 계정으로 로그인 시 'folder/' 로 이동
-    window.location.href = "../folder/index.html";
-    window.localStorage.setItem("accessToken", accessToken);
-  } else {
+  try {
+    const codeitAccount = {
+      email: $email.value,
+      password: $password.value,
+    };
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(codeitAccount),
+    });
+    const responseStatus = response.status;
+    const result = await response.json();
+    const accessToken = result.data.accessToken;
+    if (responseStatus === 200) {
+      // admin 계정으로 로그인 시 'folder/' 로 이동
+      window.location.href = "../folder/index.html";
+      window.localStorage.setItem("accessToken", accessToken);
+    }
+  } catch (err) {
     showEmailError("wrong");
     showPasswordError("wrong");
   }
