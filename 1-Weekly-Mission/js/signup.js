@@ -12,6 +12,8 @@ import {
   $passwordConfirmErrMsg,
 } from "./index.js";
 
+import { fetchClient } from "./api.js";
+
 const $signForm = document.querySelector("#form");
 
 // 이메일 정규식
@@ -78,47 +80,38 @@ const submitForm = async (e) => {
     !$passwordConfirmErrMsg.textContent
   ) {
     try {
-      const firstResponse = await fetch(
-        "https://bootcamp-api.codeit.kr/api/check-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: $emailBox.value,
-          }),
-        }
-      );
+      const clientEmail = {
+        email: $emailBox.value,
+      };
+      const clientAccount = {
+        email: $emailBox.value,
+        password: $passwordBox.value,
+      };
 
+      const firstResponse = await fetchClient(
+        "check-email",
+        "POST",
+        clientEmail
+      );
       const firstResponseStatus = firstResponse.status;
+
       if (firstResponseStatus === 409) {
         // 사용할 수 없는 중복된 이메일 오류
         addError($emailErrMsg, "이미 사용중인 이메일입니다.");
       } else if (firstResponseStatus === 200) {
         // 중복되지 않은 이메일 확인
-        const secondResponse = await fetch(
-          "https://bootcamp-api.codeit.kr/api/sign-up",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: $emailBox.value,
-              password: $passwordBox.value,
-            }),
-          }
+        const secondResponse = await fetchClient(
+          "sign-up",
+          "POST",
+          clientAccount
         );
 
+        const { data } = await secondResponse.json();
         const secondResponseStatus = secondResponse.status;
-        const result = await secondResponse.json();
-        const accessToken = result.data.accessToken;
 
         if (secondResponseStatus === 200) {
           // 회원가입 성공
-          window.localStorage.setItem("accessToken", accessToken);
-          window.location.href = "./folder.html";
+          window.localStorage.setItem("accessToken", data.accessToken);
         }
       }
     } catch (error) {
@@ -128,9 +121,9 @@ const submitForm = async (e) => {
 };
 
 // 토큰 존재하면 바로 folder로 연결
-// if (localStorage.getItem("accessToken")) {
-//   location.href = "./folder.html";
-// }
+if (localStorage.getItem("accessToken")) {
+  location.href = "./folder.html";
+}
 
 $emailBox.addEventListener("blur", setEmailErrorMessage);
 $passwordBox.addEventListener("blur", setPasswordErrorMessage);

@@ -9,6 +9,8 @@ import {
   $passwordErrMsg,
 } from "./index.js";
 
+import { fetchClient } from "./api.js";
+
 const $signForm = document.querySelector("#form");
 // 이메일 정규식
 const EMAIL_REGEX = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
@@ -44,25 +46,18 @@ const submitForm = async (e) => {
   e.preventDefault();
 
   try {
-    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: $emailBox.value,
-        password: $passwordBox.value,
-      }),
-    });
+    const clientAccount = {
+      email: $emailBox.value,
+      password: $passwordBox.value,
+    };
 
-    const responseStatus = response.status;
-    const result = await response.json();
-    const accessToken = result.data.accessToken;
+    const response = await fetchClient("sign-in", "POST", clientAccount);
+    const { data } = await response.json();
 
-    if (responseStatus === 200) {
-      // 로그인 성공
-      window.location.href = "./folder.html";
-      window.localStorage.setItem("accessToken", accessToken);
+    // 로그인 성공
+
+    if (response.status === 200) {
+      window.localStorage.setItem("accessToken", data.accessToken);
     }
   } catch (error) {
     // 로그인 오류
@@ -72,9 +67,9 @@ const submitForm = async (e) => {
 };
 
 // 토큰 존재하면 바로 folder로 연결
-// if (localStorage.getItem("accessToken")) {
-//   location.href = "./folder.html";
-// }
+if (localStorage.getItem("accessToken")) {
+  location.href = "./folder.html";
+}
 
 $emailBox.addEventListener("blur", setEmailErrorMessage);
 $passwordBox.addEventListener("blur", setPasswordErrorMessage);
