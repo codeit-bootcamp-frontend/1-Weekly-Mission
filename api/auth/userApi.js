@@ -6,7 +6,7 @@ import {
   SIGNUP_ENDPOINT,
 } from "../services/endpoints.js";
 
-export const signin = async (id, password) => {
+export const signin = async (email, password) => {
   try {
     const response = await fetch(`${BASE_URL}${SIGNIN_ENDPOINT}`, {
       method: "POST",
@@ -14,18 +14,13 @@ export const signin = async (id, password) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: id,
+        email,
         password,
       }),
     });
     const result = await response.json();
     const token = result.data.accessToken;
-    if (response.status === 200) {
-      location.href = "/folder";
-    }
-    if (token) {
-      storeAccessToken(token);
-    }
+    return token;
   } catch (error) {
     console.log(error.message);
   }

@@ -9,6 +9,7 @@ import {
   toggleEyeBtn,
   removeErrorMessage,
   addPwInputErrorMessage,
+  storeAccessToken,
 } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 import { signin } from "../api/auth/userApi.js";
@@ -26,7 +27,7 @@ function handlePasswordInputEmptyValueCheck(e) {
   }
 }
 
-function handleSigninBtnClick() {
+async function handleSigninBtnClick() {
   if (emailInput.value.trim() !== TEST_EMAIL) {
     addErrorMessage(emailIncorrectMsg, emailInput);
   } else {
@@ -38,7 +39,9 @@ function handleSigninBtnClick() {
   } else {
     removeErrorMessage(pwIncorrectMsg, pwInput);
   }
-  signin(emailInput.value.trim(), pwInput.value.trim());
+  const token = await signin(emailInput.value.trim(), pwInput.value.trim());
+  storeAccessToken(token);
+  location.href = "../pages/folder/";
 }
 
 function handleEmailInputEmptyCheck() {
