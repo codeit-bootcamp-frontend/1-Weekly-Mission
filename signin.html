@@ -2,56 +2,66 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/asset/styles/reset.css">
-    <link rel="stylesheet" href="/asset/styles/component.css">
-    <link rel="stylesheet" href="/asset/styles/sign.css">
-    <link rel="stylesheet" href="/asset/fonts/pretendard/pretendard.css">
-    <title>Linkbrary : 로그인</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/asset/styles/reset.css" />
+  <link rel="stylesheet" href="/asset/styles/component.css" />
+  <link rel="stylesheet" href="/asset/styles/sign.css" />
+  <link rel="stylesheet" href="/asset/fonts/pretendard/pretendard.css" />
+  <title>Linkbrary : 로그인</title>
 </head>
 
 <body>
-    <main class="main">
-        <header class="header">
-            <h1 class="header__logo logo"><a href="/" title="Linkbrary의 로고"></a></h1>
+  <script>
+    const accessToken = localStorage.getItem('accessToken');
 
-            <div class="header__subtitle">
-                <p>회원이 아니신가요?</p>
-                <a class="text--link" href="/signup.html" title="signup">회원 가입하기</a>
-            </div>
-        </header>
+    if (accessToken) {
+      window.location.href = '/folder.html';
+    }
+  </script>
+  <main class="main">
+    <header class="header">
+      <h1 class="header__logo logo">
+        <a href="/" title="Linkbrary의 로고"></a>
+      </h1>
 
-        <section class="sign">
-            <form class="sign_form" novalidate>
-                <div class="sign_form__container">
-                    <label class="sign_form__label" for="signinEmail">이메일</label>
-                    <div class="sign_form__input" id="email">
-                        <input class="input__container" id="signinEmail" name="email" type="email" autoComplete="off">
-                    </div>
-                </div>
+      <div class="header__subtitle">
+        <p>회원이 아니신가요?</p>
+        <a class="text--link" href="/signup.html" title="signup">회원 가입하기</a>
+      </div>
+    </header>
 
-                <div class="sign_form__container">
-                    <label class="sign_form__label" for="signinPassword">비밀번호</label>
-                    <div class="sign_form__input" id="password">
-                        <input class="input__container" id="signinPassword" name="password" type="password" autoComplete="off">
-                        <button class="input__eyes input__eyes--off" type="button"></button>
-                    </div>
-                </div>
+    <section class="sign">
+      <form class="sign_form" novalidate>
+        <div class="sign_form__container">
+          <label class="sign_form__label" for="signinEmail">이메일</label>
+          <div class="sign_form__input" id="email">
+            <input class="input__container" id="signinEmail" name="email" type="email" autocomplete="off" />
+          </div>
+        </div>
 
-                <button class="sign_form__btn btn">로그인</button>
-            </form>
-        </section>
+        <div class="sign_form__container">
+          <label class="sign_form__label" for="signinPassword">비밀번호</label>
+          <div class="sign_form__input" id="password">
+            <input class="input__container" id="signinPassword" name="password" type="password" autocomplete="off" />
+            <button class="input__eyes input__eyes--off" type="button"></button>
+          </div>
+        </div>
 
-        <footer class="footer">
-            <h2 class="footer__title">소셜 로그인</h2>
-            <div class="footer__icon">
-                <a href="https://www.google.com/" target="_blank"><img src="/asset/images/sign_google.png" alt="구글 로그인 아이콘" /></a>
-                <a href="https://www.kakaocorp.com/page/" target="_blank"><img src="/asset/images/sign_kakao.png" alt="카카오톡 로그인 아이콘" /></a>
-            </div>
-        </footer>
-    </main>
+        <button class="sign_form__btn btn">로그인</button>
+      </form>
+    </section>
 
-    <script type="module" src="/asset/js/signIn.js"></script>
+    <footer class="footer">
+      <h2 class="footer__title">소셜 로그인</h2>
+      <div class="footer__icon">
+        <a href="https://www.google.com/" target="_blank"><img src="/asset/images/sign_google.png" alt="구글 로그인 아이콘" /></a>
+        <a href="https://www.kakaocorp.com/page/" target="_blank"><img src="/asset/images/sign_kakao.png" alt="카카오톡 로그인 아이콘" /></a>
+      </div>
+    </footer>
+  </main>
+
+  <script type="module" src="/asset/js/signIn.js"></script>
 </body>
+
 </html>
