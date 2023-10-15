@@ -180,6 +180,7 @@ const login = async (param) => {
     //로그인 성공
     if (response.status === 200) {
       console.log("로그인 성공 ", result.data);
+      localStorage.setItem("accessToken", result.data.accessToken);
       loginGb = true;
       return loginGb;
     } else if (response.status === 400) {
@@ -261,4 +262,18 @@ const signup = async (param) => {
     // console.log(error);
   }
 };
-export { validateInput, togglePasswordVisibility, login, signup };
+
+/** AccessToken 체크 함수
+ *
+ * 엑세스 토큰이 있는지 확인
+ * @returns boolean
+ */
+const isAccessToken = () => localStorage.getItem("accessToken") !== null;
+
+export {
+  validateInput,
+  togglePasswordVisibility,
+  login,
+  signup,
+  isAccessToken,
+};

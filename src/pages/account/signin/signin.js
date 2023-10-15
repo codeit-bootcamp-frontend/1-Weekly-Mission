@@ -1,4 +1,9 @@
-import { validateInput, togglePasswordVisibility, login } from "../account.js";
+import {
+  validateInput,
+  togglePasswordVisibility,
+  login,
+  isAccessToken,
+} from "../account.js";
 
 const inputEmail = document.querySelector(".email_input");
 const inputPwd = document.querySelector(".pwd_input");
@@ -30,3 +35,7 @@ loginForm.addEventListener("submit", (e) => {
     }
   });
 });
+
+if (isAccessToken()) {
+  location.href = "/folder";
+}

@@ -1,4 +1,9 @@
-import { validateInput, togglePasswordVisibility, signup } from "../account.js";
+import {
+  validateInput,
+  togglePasswordVisibility,
+  signup,
+  isAccessToken,
+} from "../account.js";
 
 const inputEmail = document.querySelector(".email_input");
 const inputPwd = document.querySelector(".pwd_input");
@@ -44,3 +49,7 @@ signupBtn.addEventListener("submit", (e) => {
   //   alert("회원가입 실패!");
   // }
 });
+
+if (isAccessToken()) {
+  location.href = "/folder";
+}
