@@ -8,7 +8,7 @@ import {
   checkPasswordMatch,
   deletePasswordCheckErrorMsg,
 } from './errorMsg.js';
-import { checkToken } from './checkToken.js';
+import { checkToken } from './authorization.js';
 
 window.addEventListener('DOMContentLoaded', checkToken);
 email.addEventListener('focusout', checkEmail);
