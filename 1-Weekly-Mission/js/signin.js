@@ -40,21 +40,6 @@ const setPasswordErrorMessage = (e) => {
   }
 };
 
-// form 전송
-// const submitForm = (e) => {
-//   e.preventDefault();
-//   // 이메일: test@codeit.com, 비밀번호: codeit101 으로 로그인 시도할 경우
-//   if (
-//     $emailBox.value === "test@codeit.com" &&
-//     $passwordBox.value === "codeit101"
-//   ) {
-//     location.href = "./folder.html";
-//   } else {
-//     addError($emailErrMsg, "이메일을 확인해주세요.");
-//     addError($passwordErrMsg, "비밀번호를 확인해주세요.");
-//   }
-// };
-
 const submitForm = async (e) => {
   e.preventDefault();
 
@@ -78,9 +63,6 @@ const submitForm = async (e) => {
       // 로그인 성공
       window.location.href = "./folder.html";
       window.localStorage.setItem("accessToken", accessToken);
-      setTimeout(() => {
-        localStorage.removeItem("accessToken");
-      }, 1000);
     }
   } catch (error) {
     // 로그인 오류

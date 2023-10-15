@@ -29,8 +29,6 @@ const setEmailErrorMessage = (e) => {
   } else if (!EMAIL_REGEX.test(e.target.value) && e.target.value.length > 0) {
     // 이메일 형식에 맞지 않을 때
     addError($emailErrMsg, "올바른 이메일 주소가 아닙니다.");
-    // } else if (e.target.value === "test@codeit.com") {
-    //   addError($emailErrMsg, "이미 사용중인 이메일입니다.");
   } else {
     removeError($emailErrMsg);
   }
@@ -67,27 +65,6 @@ const setCheckPasswordErrorMessage = (e) => {
     removeError($passwordConfirmErrMsg);
   }
 };
-
-// form 전송
-// const submitForm = (e) => {
-//   e.preventDefault();
-//   // 이메일: test@codeit.com, 비밀번호: codeit101 으로 로그인 시도할 경우
-//   if (
-//     $emailBox.value &&
-//     $passwordBox.value &&
-//     $passwordCheckBox.value &&
-//     !$emailErrMsg.value &&
-//     !$passwordErrMsg.value &&
-//     !$passwordConfirmErrMsg.value
-//   ) {
-//     location.href = "./folder.html";
-//   }
-//   // else {
-//   //   setEmailErrorMessage(e);
-//   //   setPasswordErrorMessage(e);
-//   //   setCheckPasswordErrorMessage(e);
-//   // }
-// };
 
 const submitForm = async (e) => {
   e.preventDefault();
@@ -140,11 +117,8 @@ const submitForm = async (e) => {
 
         if (secondResponseStatus === 200) {
           // 회원가입 성공
-          window.location.href = "./folder.html";
           window.localStorage.setItem("accessToken", accessToken);
-          setTimeout(() => {
-            localStorage.removeItem("accessToken");
-          }, 5000);
+          window.location.href = "./folder.html";
         }
       }
     } catch (error) {

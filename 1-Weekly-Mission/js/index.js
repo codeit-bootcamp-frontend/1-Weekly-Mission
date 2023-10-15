@@ -2,7 +2,6 @@
 const $emailBox = document.querySelector("#email");
 const $passwordBox = document.querySelector("#password");
 const $passwordCheckBox = document.querySelector("#password_check");
-// const $submitButton = document.querySelector(".sign_button");
 const $eyeButton = document.querySelector(".eye_off");
 const $eyeButtonCheck = document.querySelector(".eye_off_check");
 
