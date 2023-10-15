@@ -1,37 +1,42 @@
 import {
-  TEST_USER,
   isEmailValid,
+  isPwValid,
   addErrorTag,
   removeErrorClass,
   removeElementOrNull,
-  togglePw } from './utils.js';
+  togglePw, } from './utils.js';
   
-  const signupForm = document.querySelector('form');
-  const emailWrap = document.querySelector('.signup__email__wrap');
-  const inputEmail = document.querySelector('.input--email');
-  const pwWrap = document.querySelector('.signup__pw__wrap');
-  const inputPw = document.querySelector('.input--pw');
-  const pwConfirmWrap = document.querySelector('.signup__pw__wrap--confirm')
-  const inputPwConfirm = document.querySelector('.input--pw-confirm')
-  
+import {
+  TEST_USER,
+  formEl,
+  emailWrap,
+  inputEmail,
+  pwWrap,
+  inputPw,
+  pwConfirmWrap,
+  inputPwConfirm, } from './const.js';
+
 /*-----회원가입 유효성 검사-----*/
 //이메일 유효성 검사
 function validateEmailInput(email){
   removeElementOrNull(emailWrap, '.error');
   removeErrorClass(inputEmail);
 
-  if (email == '' || !isEmailValid(email) || email == TEST_USER.email) {
+  if (email == null || isEmailValid(email) === false || email === TEST_USER.email) {
     
     const emptyEmailError = "이메일을 입력해주세요."
     const invalidEmailError = "올바른 이메일 주소가 아닙니다."
     const takenEmailError = "이미 사용 중인 이메일입니다."
     
-    let tagMessage =
-    (email == '') 
-    ? emptyEmailError 
-    : (!isEmailValid(email)) 
-    ? invalidEmailError 
-    : takenEmailError;
+    let tagMessage = ''
+
+    if (email == null) {
+      tagMessage = emptyEmailError;
+    } else if (isEmailValid(email) === false){
+      tagMessage = invalidEmailError;
+    } else {
+      tagMessage = takenEmailError;
+    }
     
     addErrorTag (inputEmail, emailWrap, tagMessage)
     return false; //오류있음
@@ -41,14 +46,7 @@ function validateEmailInput(email){
 
 inputEmail.addEventListener('focusout', (e) => {validateEmailInput(e.target.value)})
 
-const PW_REGEXP = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
-
-function isPwValid(password) {
-  return PW_REGEXP.test(password);
-}
-
 //비밀번호 유효성 검사
-
 function validatePwInput(password){
   removeElementOrNull(pwWrap, '.error');
   removeErrorClass(inputPw);
@@ -56,7 +54,7 @@ function validatePwInput(password){
   if (password == '' || !isPwValid(password)){
     const emptyPwError = "비밀번호를 입력해주세요."
     const invalidPwError = "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요."
-    let tagMessage = (password == '') ? emptyPwError : invalidPwError;
+    const tagMessage = (password == '') ? emptyPwError : invalidPwError;
 
     addErrorTag(inputPw, pwWrap, tagMessage)
     return false; //오류있음
@@ -71,14 +69,14 @@ function confirmPw(){
   removeElementOrNull(pwConfirmWrap, '.error');
   removeErrorClass(inputPwConfirm);
 
-  let password01 = inputPw.value;
-  let password02 = inputPwConfirm.value;
+  const password = inputPw.value;
+  const confirmPassword = inputPwConfirm.value;
 
-  if (password02 == '') {
+  if (confirmPassword == '') {
     return false
   }
 
-  let isPwMatch = password01 === password02;
+  const isPwMatch = password === confirmPassword;
 
   if (!isPwMatch) {
     const mismatchPwError = "비밀번호가 일치하지 않아요."
@@ -106,16 +104,15 @@ function submitForm(e){
   let isPwMatch = confirmPw();
 
   if (isValidEmail && isValidPw && isPwMatch) {
-    signupForm.submit()
+    formEl.submit()
   }
 }
 
-signupForm.addEventListener('submit', submitForm); //버튼 클릭시 실행
+formEl.addEventListener('submit', submitForm); //버튼 클릭시 실행
 
 //비밀번호 숨기기 보이기
 const eyes = document.querySelectorAll(".input__eye");
 
-for (let i = 0 ; i < eyes.length ; i++) {
-  let eye = eyes[i]
-  eye.addEventListener('click', togglePw)
-}
+eyes.forEach((eye) => {
+  eye.addEventListener('click', togglePw);
+});
