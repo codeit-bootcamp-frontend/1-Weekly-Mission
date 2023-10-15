@@ -127,7 +127,8 @@ const checkAllInput = async () => {
     }
   } else if (
     // 에러 메시지가 없고 모든 input 태그가 비어있지 않을 때
-    !$emailErrorMsg.textContent &&
+    (!$emailErrorMsg.textContent ||
+      $emailErrorMsg.textContent === "이미 사용 중인 이메일입니다.") &&
     !$passwordErrorMsg.textContent &&
     !$doubleCheckPwErrorMsg.textContent &&
     $email.value.length > 0 &&
