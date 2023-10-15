@@ -10,6 +10,7 @@ import {
   removeErrorMessage,
   addPwInputErrorMessage,
   storeAccessToken,
+  hasToken,
 } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
 import { signin } from "../api/auth/userApi.js";
@@ -18,6 +19,8 @@ const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
 const signinBtn = document.querySelector(".signin-btn");
 const eyeBtn = document.querySelector(".eye-off-btn");
+
+hasToken();
 
 function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value.trim()) {

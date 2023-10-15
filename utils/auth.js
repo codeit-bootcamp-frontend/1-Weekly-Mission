@@ -91,3 +91,9 @@ export function toggleEyeBtn(inputElement, eyeBtn) {
 export function storeAccessToken(token) {
   localStorage.setItem("accessToken", token);
 }
+
+export function hasToken() {
+  if (localStorage.getItem("accessToken")) {
+    location.href = "../pages/folder/";
+  }
+}
