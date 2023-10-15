@@ -9,8 +9,7 @@ import {
 (function () {
   if (localStorage.getItem("signInToken")) {
     location.href = "./folder.html";
-    console.log("valid access token");
-    localStorage.clear();
+    localStorage.removeItem("signInToken");
     return;
   }
 })();
