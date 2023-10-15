@@ -41,15 +41,13 @@ async function getSignupResponse(email,password){
         body : JSON.stringify(code),
     });
     const result = await response.json();
-    // console.log(result.data.accessToken);
-    // console.log(response.status);
     const apiStatus = response.status;
     const token = await result.data.accessToken;
     return  [apiStatus,token];
     }
     catch(error){
         console.log(error.message);
-        return [error.message];
+        return [444];
     }
     finally{
         console.log('꼭');
@@ -76,7 +74,7 @@ async function getSignupExistEmail(email){
     }
     catch(error){
         console.log(error.message);
-        return [error.message];
+        return [444];
     }
     finally{
         console.log('꼭');
