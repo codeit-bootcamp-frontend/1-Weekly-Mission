@@ -67,11 +67,14 @@ passwordRepeat.addEventListener("blur", passwordRepeatChecker);
 eyeBtn1.addEventListener("click", eyeCheck);
 eyeBtn2.addEventListener("click", eyeCheck);
 
-signupBtn.addEventListener("click", async function (e) {
-  e.preventDefault();
-  const flag = emailChecker() && passwordChecker() && passwordRepeatChecker();
-  if (flag) {
-    const response = await fetch(
+signupBtn.addEventListener("click", async function (event) {
+  event.preventDefault();
+  const flag = emailChecker() * passwordChecker() * passwordRepeatChecker();
+  if (!flag) {
+    return;
+  }
+  try {
+    const isDuplicated = await fetch(
       "https://bootcamp-api.codeit.kr/api/check-email",
       {
         method: "POST",
@@ -83,7 +86,7 @@ signupBtn.addEventListener("click", async function (e) {
         }),
       }
     );
-    if (response.status === 200) {
+    if (isDuplicated.status === 200) {
       const signUpPost = await fetch(
         "https://bootcamp-api.codeit.kr/api/sign-up",
         {
@@ -97,12 +100,17 @@ signupBtn.addEventListener("click", async function (e) {
           }),
         }
       );
-      if (signUpPost === 200) {
-        location.href = "./folder.html";
-        localStorage.setItem("signupToken", signUpPost);
-      }
+      localStorage.setItem("signupToken", signUpPost);
+      location.href = "./folder.html";
     } else {
+      throw new Error("duplicatedEmail");
+    }
+  } catch (error) {
+    if (error.message === "duplicatedEmail") {
       appearError(email, emailError, "중복된 이메일입니다.");
+      return;
+    } else {
+      return;
     }
   }
 });
