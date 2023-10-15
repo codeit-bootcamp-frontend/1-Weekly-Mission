@@ -43,7 +43,13 @@ function passwordChecker() {
 }
 
 function passwordRepeatChecker() {
-  if (passwordRepeat.value !== password.value) {
+  if (!passwordRepeat.value) {
+    return appearError(
+      passwordRepeat,
+      passwordRepeatError,
+      "비밀번호를 확인해주세요."
+    );
+  } else if (passwordRepeat.value !== password.value) {
     return appearError(
       passwordRepeat,
       passwordRepeatError,
