@@ -64,6 +64,13 @@ function changeEyeBtn(input, btn) {
   }
 }
 
+const checkUser = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    location.href = "folder.html";
+  }
+};
+
 emailInput.addEventListener("focusout", function () {
   checkInput("email", email);
 });
@@ -74,6 +81,10 @@ pwInput.addEventListener("focusout", function () {
 
 eyeImgBtn.addEventListener("click", function () {
   changeEyeBtn(password.input, eyeImgBtn);
+});
+
+window.addEventListener("DOMContentLoaded", function () {
+  checkUser();
 });
 
 export {
