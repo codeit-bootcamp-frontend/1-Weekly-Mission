@@ -3,7 +3,6 @@ import {
 	getPasswordVisibility,
 	getIsFilledEmail,
 	getIsValidEmail,
-	getIsExistEmail,
 	getIsFilledPassword,
 	getIsValidPassword,
 	getIsFilledConfirmPassword,
@@ -15,6 +14,8 @@ import {
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 } from "/utils/constants.js";
+
+import { getIsNewEmail } from "/utils/api.js";
 
 /* 비밀번호 토글 */
 const confirmPasswordToggleElement = document.querySelector(
@@ -93,12 +94,14 @@ function changePasswordConfirmHint(hintType) {
 	}
 }
 
-function checkEmailFocusout(email) {
+async function checkEmailFocusout(email) {
+	const isNewEmail = await getIsNewEmail(email);
+
 	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
 	} else if (!getIsValidEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotValidated);
-	} else if (getIsExistEmail(email)) {
+	} else if (!isNewEmail) {
 		changeEmailHint(INPUT_STATUS.isExists);
 	} else {
 		changeEmailHint(INPUT_STATUS.default);
@@ -127,14 +130,16 @@ function checkPasswordConfirmFocusout(confirmPassword) {
 	}
 }
 
-function getIsCompleteEmail(email) {
+async function getIsCompleteEmail(email) {
+	const isNewEmail = await getIsNewEmail(email);
+
 	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
 		return false;
 	} else if (!getIsValidEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotValidated);
 		return false;
-	} else if (getIsExistEmail(email)) {
+	} else if (!isNewEmail) {
 		changeEmailHint(INPUT_STATUS.isExists);
 		return false;
 	} else {

@@ -34,14 +34,6 @@ function getIsValidEmail(email) {
 	}
 }
 
-function getIsExistEmail(email) {
-	if (email === USERS[0].email) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
 function getIsFilledPassword(password) {
 	if (password !== "") {
 		return true;
@@ -90,7 +82,6 @@ export {
 	goToFolderPage,
 	getIsFilledEmail,
 	getIsValidEmail,
-	getIsExistEmail,
 	getIsFilledPassword,
 	getIsValidPassword,
 	getIsCorrectPassword,

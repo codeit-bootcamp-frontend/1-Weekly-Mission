@@ -25,4 +25,26 @@ async function signIn(userData) {
 	}
 }
 
-export { signIn };
+async function getIsNewEmail(email) {
+	try {
+		const response = await fetch(`${BASE_URL}/check-email`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ email }),
+		});
+
+		if (!response.ok) {
+			// Q1. 필요한가
+			throw new Error(response.status);
+		} else {
+			return true;
+		}
+	} catch (error) {
+		console.error(error);
+		return false;
+	}
+}
+
+export { signIn, getIsNewEmail };
