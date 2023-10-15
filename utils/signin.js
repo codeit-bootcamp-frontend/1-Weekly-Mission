@@ -2,9 +2,7 @@ import {
 	getPasswordVisibility,
 	getIsFilledEmail,
 	getIsValidEmail,
-	getIsExistEmail,
 	getIsFilledPassword,
-	getIsCorrectPassword,
 } from "/utils/auth.js";
 
 import {
@@ -99,10 +97,9 @@ function getIsCompletePassword(password) {
 	}
 }
 
-function clickSignin(email, password) {
-	const isCompleteEmail = getIsCompleteEmail(email);
-	const isCompletePassword = getIsCompletePassword(password);
-	if (isCompleteEmail && isCompletePassword) signIn({ email, password });
+async function clickSignin(email, password) {
+	if (getIsCompleteEmail(email) && getIsCompletePassword(password))
+		await signIn({ email, password });
 }
 
 emailInputElement.addEventListener("focusout", (e) => {

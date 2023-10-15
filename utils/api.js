@@ -12,6 +12,7 @@ async function signIn(userData) {
 		});
 
 		if (!response.ok) {
+			// Q1. 필요한가
 			throw new Error(response.status);
 		} else {
 			const result = await response.json();
