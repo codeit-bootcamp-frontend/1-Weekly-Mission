@@ -160,7 +160,7 @@ function getIsConfirmedPassword(passwordConfirm) {
 	}
 }
 
-function signupSuccess() {
+function goToFolderPage() {
 	location.href = FOLDER_PAGE_PATH;
 }
 
@@ -170,7 +170,7 @@ function clickSignup(email, password, passwordConfirm) {
 	const isConfirmedPassword = getIsConfirmedPassword(passwordConfirm);
 
 	if (isValidatedEmail && isValidatedPassword && isConfirmedPassword)
-		signupSuccess();
+		goToFolderPage();
 }
 
 emailInputElement.addEventListener("focusout", (e) => {
