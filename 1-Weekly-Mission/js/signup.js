@@ -29,8 +29,8 @@ const setEmailErrorMessage = (e) => {
   } else if (!EMAIL_REGEX.test(e.target.value) && e.target.value.length > 0) {
     // 이메일 형식에 맞지 않을 때
     addError($emailErrMsg, "올바른 이메일 주소가 아닙니다.");
-  } else if (e.target.value === "test@codeit.com") {
-    addError($emailErrMsg, "이미 사용중인 이메일입니다.");
+    // } else if (e.target.value === "test@codeit.com") {
+    //   addError($emailErrMsg, "이미 사용중인 이메일입니다.");
   } else {
     removeError($emailErrMsg);
   }
@@ -89,7 +89,74 @@ const setCheckPasswordErrorMessage = (e) => {
 //   // }
 // };
 
-const submitForm = async (e) => {};
+const submitForm = async (e) => {
+  e.preventDefault();
+
+  if (
+    $emailBox.value &&
+    $passwordBox.value &&
+    $passwordCheckBox.value &&
+    !$emailErrMsg.textContent &&
+    !$passwordErrMsg.textContent &&
+    !$passwordConfirmErrMsg.textContent
+  ) {
+    try {
+      const firstResponse = await fetch(
+        "https://bootcamp-api.codeit.kr/api/check-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: $emailBox.value,
+          }),
+        }
+      );
+
+      const firstResponseStatus = firstResponse.status;
+      if (firstResponseStatus === 409) {
+        // 사용할 수 없는 중복된 이메일 오류
+        addError($emailErrMsg, "이미 사용중인 이메일입니다.");
+      } else if (firstResponseStatus === 200) {
+        // 중복되지 않은 이메일 확인
+        const secondResponse = await fetch(
+          "https://bootcamp-api.codeit.kr/api/sign-up",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: $emailBox.value,
+              password: $passwordBox.value,
+            }),
+          }
+        );
+
+        const secondResponseStatus = secondResponse.status;
+        const result = await secondResponse.json();
+        const accessToken = result.data.accessToken;
+
+        if (secondResponseStatus === 200) {
+          // 회원가입 성공
+          window.location.href = "./folder.html";
+          window.localStorage.setItem("accessToken", accessToken);
+          setTimeout(() => {
+            localStorage.removeItem("accessToken");
+          }, 5000);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
+// 토큰 존재하면 바로 folder로 연결
+// if (localStorage.getItem("accessToken")) {
+//   location.href = "./folder.html";
+// }
 
 $emailBox.addEventListener("blur", setEmailErrorMessage);
 $passwordBox.addEventListener("blur", setPasswordErrorMessage);
@@ -99,4 +166,5 @@ $passwordCheckBox.addEventListener("blur", setCheckPasswordErrorMessage);
 
 $eyeButton.addEventListener("click", togglePassword);
 $eyeButtonCheck.addEventListener("click", togglePassword);
+
 $signForm.addEventListener("submit", submitForm);

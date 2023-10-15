@@ -70,17 +70,29 @@ const submitForm = async (e) => {
       }),
     });
 
+    const responseStatus = response.status;
     const result = await response.json();
     const accessToken = result.data.accessToken;
 
-    window.location.href = "./folder.html";
-    window.localStorage.setItem("accessToken", accessToken);
+    if (responseStatus === 200) {
+      // 로그인 성공
+      window.location.href = "./folder.html";
+      window.localStorage.setItem("accessToken", accessToken);
+      setTimeout(() => {
+        localStorage.removeItem("accessToken");
+      }, 1000);
+    }
   } catch (error) {
-    console.log(error);
+    // 로그인 오류
     addError($emailErrMsg, "이메일을 확인해주세요.");
     addError($passwordErrMsg, "비밀번호를 확인해주세요.");
   }
 };
+
+// 토큰 존재하면 바로 folder로 연결
+// if (localStorage.getItem("accessToken")) {
+//   location.href = "./folder.html";
+// }
 
 $emailBox.addEventListener("blur", setEmailErrorMessage);
 $passwordBox.addEventListener("blur", setPasswordErrorMessage);
