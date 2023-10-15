@@ -58,27 +58,24 @@ function checkEmailValidation() {
 }
 
 // 이메일 중복 확인
-async function isDuplicatedEmail(email) {
-  // const email = emailInput.value;
+async function isDuplicatedEmail() {
+  const email = { email: emailInput.value };
   try {
     const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
       method: 'POST',
       headers: {
       "content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email,
-      }),
+      body: JSON.stringify(email),
     });
 
-    if (response.ok) {
-      return true;
-    } else {
-      return false; // 동작 오류
+    if (response.status === 409) {
+      return false;
     }
   } catch (error) {
     console.log(error);
   }
+  return true;
 }
 
 // 비밀번호 유효성 검사 
@@ -128,8 +125,6 @@ async function submitForm() {
       if (response.ok) {
         window.location.href = "/folder/index.html";
       }
-      const result = await response.json();
-      console.log(result);
 
     } catch(error) {
       console.log(error);
