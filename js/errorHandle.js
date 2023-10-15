@@ -1,7 +1,6 @@
 import { $, $all } from "./utils.js";
 import { isValidEmail, isValidPassword } from "./inputValidation.js";
-import { user } from "./userAuthentication.js";
-
+import { displayError } from "./utils.js";
 const errorMessages = {
 
   emptyInput: {
@@ -29,6 +28,28 @@ function isEmptyInput(target) {
 }
 
 
+async function isDuplicatedEmail({ value }, errorLocation) {
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email: value })
+    });
+
+    if (response.ok) {
+      return;
+    }
+    displayError(errorLocation, errorMessages.duplicateEmail);
+  }
+
+  catch (error) {
+    console.log(error);
+
+  }
+
+}
+
+
 function commonInputCheck(target) {
   const { id, value } = target;
   const errorLocation = getErrorLocation(target);
@@ -40,25 +61,25 @@ function commonInputCheck(target) {
 
   if (id === "email" && !isValidEmail(value)) {
     displayError(errorLocation, errorMessages.invalidInput.email);
-
+    return;
   }
-
+  return true;
 }
 
 
 
 function signupInputCheck(target) {
-
-  commonInputCheck(target);
+  if (!commonInputCheck(target)) {
+    return;
+  };
 
   const { id, value } = target;
   const errorLocation = getErrorLocation(target);
 
   switch (id) {
     case "email":
-      if (value === user.email) {
-        displayError(errorLocation, errorMessages.duplicateEmail);
-      }
+
+      isDuplicatedEmail(target, errorLocation);
       break;
 
     case "password":
@@ -76,13 +97,18 @@ function signupInputCheck(target) {
     default:
       break;
   }
+
+  return true;
 }
 
 
-
-function displayError(errorLocation, errorMessage) {
-  errorLocation.textContent = errorMessage;
+function displayLoginFailedError() {
+  const [$emailError, $passwordError] = getInputErrors();
+  $emailError.textContent = errorMessages.loginFailed.email;
+  $passwordError.textContent = errorMessages.loginFailed.password;
 }
+
+
 
 
 function getInputErrors() {
@@ -97,9 +123,9 @@ function getErrorLocation({ id }) {
 }
 
 
-function clearError(target) {
+function clearError({ target }) {
   getErrorLocation(target).textContent = "";
 }
 
 
-export { displayError, clearError, getInputErrors, isEmptyInput, errorMessages, commonInputCheck, signupInputCheck }
+export { displayError, clearError, getInputErrors, isEmptyInput, errorMessages, commonInputCheck, signupInputCheck, displayLoginFailedError }

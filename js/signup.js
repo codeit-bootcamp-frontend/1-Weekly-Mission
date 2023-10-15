@@ -8,9 +8,11 @@ $("#password").addEventListener("focusout", ({ target }) => signupInputCheck(tar
 $("#password-check").addEventListener("focusout", ({ target }) => signupInputCheck(target));
 
 
-$("#email").addEventListener("focusin", ({ target }) => clearError(target));
-$("#password").addEventListener("focusin", ({ target }) => clearError(target));
-$("#password-check").addEventListener("focusin", ({ target }) => clearError(target));
+$("#email").addEventListener("focusin", clearError);
+$("#password").addEventListener("focusin", clearError);
+$("#password-check").addEventListener("focusin", clearError);
 
 $("form").addEventListener("submit", signupAuthentication);
 $all(".eye-Image").forEach((eye) => { eye.addEventListener("click", toggleEye); });
+
+document.addEventListener("DOMContentLoaded", autoRedirect);
