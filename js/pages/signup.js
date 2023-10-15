@@ -6,6 +6,10 @@ import {
   clearUserInputError,
 } from '../utils.js'
 
+import {
+  API_URL
+} from '../constants.js'
+
 
 // 회원가입 비밀번호 체크 에러 다루는 함수
 function handleSignUpPasswordCheckError() {
@@ -27,12 +31,54 @@ function signupSuccess() {
 }
 
 //회원가입 성공, 실패 다루는 함수
-function handleSignUp(event){
+async function handleSignUp(event){
   event.preventDefault();
 
   const emailInput = $('#id-label');
   const passwordInput = $('#password-label');
   const passwordCheckInput = $('#password-check-label');
+
+  const { target: elements } = event;
+  const [emailElem, passwordElem] = elements;
+
+  const userData = {
+    email: emailElem.value,
+    password: passwordElem.value,
+  };
+
+  const isValidEmail = !handleEmailError();
+  const isValidPassword = !handlePasswordError();
+
+  if(isValidEmail && isValidPassword){
+    try{
+      const response = await fetch(`${API_URL}/check-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData)
+      })
+  
+      const result = await response.json;
+
+      if(response.status === 200){
+        localStorage.setItem("accessToken", result.accessToken);
+        isCorrectUser();
+        return loginSuccess();
+      }
+      
+      clearUserInputError(emailElem);
+      displayUserInputError(emailElem, '이메일을 확인해주세요.');
+
+      clearUserInputError(passwordInput);
+      displayUserInputError(passwordInput, '비밀번호를 확인해주세요.');
+
+      clearUserInputError(passwordCheckInput);
+      displayUserInputError(passwordCheckInput, '비밀번호를 확인해주세요.');
+    }catch(error){
+      console.log(error);
+    }
+  }
 
   if(emailInput.value !== "test@codeit.com" && passwordInput.value === passwordCheckInput.value){
     return signupSuccess();

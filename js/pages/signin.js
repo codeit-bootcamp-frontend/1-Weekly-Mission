@@ -21,11 +21,11 @@ async function handleSignIn(event){
   event.preventDefault();
 
   const { target: elements } = event;
-  const [emailInput, passwordInput] = elements;
+  const [emailElem, passwordElem] = elements;
 
   const userData = {
-    email: emailInput.value,
-    password: passwordInput.value,
+    email: emailElem.value,
+    password: passwordElem.value,
   };
 
   try{
@@ -46,14 +46,14 @@ async function handleSignIn(event){
     }
 
     if(response.status === 400){
-      const emailInput = $('#id-label');
-      const passwordInput = $('#password-label');
+      const emailElem = $('#id-label');
+      const passwordElem = $('#password-label');
 
-      clearUserInputError(emailInput);
-      displayUserInputError(emailInput, '이메일을 확인해주세요.');
+      clearUserInputError(emailElem);
+      displayUserInputError(emailElem, '이메일을 확인해주세요.');
 
-      clearUserInputError(passwordInput);
-      displayUserInputError(passwordInput, '비밀번호를 확인해주세요.');
+      clearUserInputError(passwordElem);
+      displayUserInputError(passwordElem, '비밀번호를 확인해주세요.');
     }
   }catch(error){
     console.log(error);
