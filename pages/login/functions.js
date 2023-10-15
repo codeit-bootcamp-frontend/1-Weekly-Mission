@@ -128,4 +128,20 @@ function isFormContainsError(){
     return errors.length !== 0;
 }
 
-export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, isFormContainsError, validateInputValue, removeErrorClassAndMessage };
+/**
+ * 서버에 POST Request를 보낸다.
+ * @param {string} api 요청을 보낼 api 이름
+ * @param {object} data 서버로 보낼 데이터
+ * @returns {promise} 서버에서 받은 response를 리턴한다.
+ */
+function postRequest(api, data){
+    return fetch(`https://bootcamp-api.codeit.kr/api/${api}`,{
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
+
+export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, isFormContainsError, validateInputValue, removeErrorClassAndMessage, postRequest };

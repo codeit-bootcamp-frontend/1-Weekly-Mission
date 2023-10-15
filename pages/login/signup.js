@@ -1,4 +1,4 @@
-import { _onHidePassword, setErrorMessage, isFormContainsError, validateInputValue } from './functions.js';
+import { _onHidePassword, setErrorMessage, isFormContainsError, validateInputValue, postRequest } from './functions.js';
 import { form } from './tags.js';
 import { passwordReg } from './validationRegExp.js';
 
@@ -22,8 +22,26 @@ function _onSignup(){
  * 에러여부 확인 후, 회원가입한다.
  */
 function signup(){
-    if(isFormContainsError() === false){
-        location.href = "/pages/folder";
+    if(!isFormContainsError()) {
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
+
+        const account = {
+            email: email.value,
+            password: password.value,
+        }
+
+        postRequest('sign-up', account)
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then((result) => {
+                // 경로 이동
+                location.href = "/pages/folder";
+            })
+
     }
 }
 
@@ -68,7 +86,7 @@ function validateSingupInputValue(id, value){
         const email = {
             email : value,
         }
-        requestCheckEmail(email)
+        postRequest('check-email', email)
             .then((response) => {
                 if(!response.ok){
                     setErrorMessage(id, 'duplicate');
@@ -89,24 +107,4 @@ function validateSingupInputValue(id, value){
             setErrorMessage('passwordCheck', 'coincidence');
         }
     }
-}
-
-async function requestSignup(account){
-    return fetch('https://bootcamp-api.codeit.kr/api/sign-up',{
-        method: 'POST',
-        body: JSON.stringify(account),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-}
-
-async function requestCheckEmail(email){
-    return fetch('https://bootcamp-api.codeit.kr/api/check-email',{
-        method: 'POST',
-        body: JSON.stringify(email),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
 }

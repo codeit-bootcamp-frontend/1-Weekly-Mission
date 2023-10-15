@@ -1,4 +1,4 @@
-import {setErrorMessage, isFormContainsError, validateInputValue, removeErrorClassAndMessage} from './functions.js';
+import {setErrorMessage, isFormContainsError, validateInputValue, removeErrorClassAndMessage, postRequest} from './functions.js';
 import {form} from "./tags.js";
 
 const signinButton = document.querySelector('#signin-button');
@@ -28,7 +28,7 @@ function login(){
             password: password.value,
         }
 
-        requestSignin(account)
+        postRequest('sign-in',account)
             .then((response) => {
                 if(response.ok){
                     return response.json();
@@ -65,16 +65,6 @@ function validateAll(){
     for(const input of inputs){
         validateInputValue(input.id, input.value);
     }
-}
-
-async function requestSignin(account){
-    return fetch('https://bootcamp-api.codeit.kr/api/sign-in',{
-        method: 'POST',
-        body: JSON.stringify(account),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
 }
 
 /**
