@@ -8,6 +8,9 @@ import {
 
 const emailInput = document.querySelector("#email");
 const emailErrorMessage = document.querySelector("#email-error-message");
+emailInput.addEventListener("focusout", validateEmailInput);
+function validateEmailInput({target}) {
+  const email = target.value;
 emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
 function validateEmailInput(email) {
   if (email === "") {
@@ -48,6 +51,23 @@ function submitForm(event) {
 
   const isTestUser =
     emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
+
+
+  const POST_TEST_USER = {
+    email: "test@codeit.com",
+    password: "sprint101"
+  }
+  if (isTestUser) {
+    fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(POST_TEST_USER),
+    })
+      .then((response) => {
+        if (response.ok) {
+          location.href = "/folder";
+        }
+      })
 
   if (isTestUser) {
     location.href = "/folder";

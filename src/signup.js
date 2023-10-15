@@ -6,10 +6,13 @@ import {
   TEST_USER,
 } from "./utils.js";
 
+import {PATTERN1, PATTERN2, PATTERN3} from "./const.js";
+
 const emailInput = document.querySelector("#email");
 const emailErrorMessage = document.querySelector("#email-error-message");
-emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
-function validateEmailInput(email) {
+emailInput.addEventListener("focusout", validateEmailInput);
+async function validateEmailInput({target}) {
+  const email = target.value;
   if (email === "") {
     setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 입력해주세요.");
     return;
@@ -19,12 +22,39 @@ function validateEmailInput(email) {
       { input: emailInput, errorMessage: emailErrorMessage }, "올바른 이메일 주소가 아닙니다.");
     return;
   }
-  if (email === "test@codeit.com") {
-    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이미 사용 중인 이메일입니다.");
+  if (! await isDuplicatedEmail(email, "https://bootcamp-api.codeit.kr/api/check-email")) {
+    setInputError(
+      { input: emailInput, errorMessage: emailErrorMessage }, "중복된 이메일입니다.");
     return;
   }
   removeInputError({ input: emailInput, errorMessage: emailErrorMessage });
 }
+
+async function isDuplicatedEmail(paramEmail, url) {
+  const POST_EMAIL = {
+    email: `${paramEmail}`
+  }
+  try {
+    const response = await fetch(`${url}`, {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(POST_EMAIL),
+    })
+    if (!response.ok) {
+      //console.log("중복됨")
+      
+      return false;
+    } else {
+      //console.log("중복 안됨");
+      return true;
+    }
+  }
+  catch(error) {
+    console.log(error);
+  }
+}
+  
+
 
 const passwordInput = document.querySelector("#password");
 const passwordErrorMessage = document.querySelector("#password-error-message");
@@ -38,7 +68,7 @@ function validatePasswordInput(password) {
     );
     return;
   }
-  if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password) || /^\d+$/.test(password)) {
+  if (password.length < 8 || !PATTERN1.test(password) || !PATTERN2.test(password) || PATTERN3.test(password)) {
     setInputError(
       { input: passwordInput, errorMessage: passwordErrorMessage },
       "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요."
@@ -62,45 +92,53 @@ function isSamePasswordInput(password) {
   removeInputError({ input: passwordConfirmInput, errorMessage: passwordErrorMessage2 });
 }
 
-/*const passwordToggleButton = document.querySelector("#password-toggle");
-passwordToggleButton.addEventListener("click", () =>
-  togglePassword(passwordInput, passwordToggleButton)
-);*/
-
-/*const passwordToggleButtons = document.querySelectorAll(".password-toggle");
-passwordToggleButtons.forEach((button) => {
-  button.addEventListener("click", () =>
-  togglePassword(passwordConfirmInput, button))
-  button.addEventListener("click", () => 
-  togglePassword(passwordInput, button)) 
-});*/
-
 const passwordToggleButtons = document.querySelectorAll(".password-toggle");
-const FirstEyeToggleButton = passwordToggleButtons[0];
-const SecondEyeToggleButton = passwordToggleButtons[1];
-FirstEyeToggleButton.addEventListener('click', () =>
-  togglePassword(passwordInput, FirstEyeToggleButton)
+const firstEyeToggleButton = passwordToggleButtons[0];
+const secondEyeToggleButton = passwordToggleButtons[1];
+firstEyeToggleButton.addEventListener('click', () =>
+  togglePassword(passwordInput, firstEyeToggleButton)
 );
-SecondEyeToggleButton.addEventListener('click', () =>
-  togglePassword(passwordConfirmInput, SecondEyeToggleButton)
+secondEyeToggleButton.addEventListener('click', () =>
+  togglePassword(passwordConfirmInput, secondEyeToggleButton)
 );
 
 const signForm = document.querySelector("#form");
 signForm.addEventListener("submit", submitForm);
-function submitForm(event) {
+async function submitForm(event) {
   event.preventDefault();
 
   const isValidSignup =
-    emailInput.value !== TEST_USER.email && emailInput.value !==""
+    (! await isDuplicatedEmail(email.value)) && emailInput.value !==""
     && passwordInput.value === passwordConfirmInput.value && passwordInput.value !=="";
 
   if (isValidSignup) {
-    location.href = "/folder";
-    return;
+    if (await notDuplicatedEmail(email.value, passwordInput.value)) {
+      location.href = "/folder";
+      return;
+    }
   }
-  /*setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
-  setInputError(
-    { input: passwordInput, errorMessage: passwordErrorMessage },
-    "비밀번호를 확인해주세요."
-  );*/
 }
+
+
+async function notDuplicatedEmail(paramEmail, paramPassword) {
+  const POST_EMAIL = {
+    email: String(paramEmail),
+    password: String(paramPassword)
+  }
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(POST_EMAIL),
+    })
+    if (response.ok) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  catch(error) {
+    console.log(error);
+  }
+}
+
