@@ -1,15 +1,15 @@
-const emailDiv = document.querySelector('.email_div'); //이메일 상위 div
-const pwDiv = document.querySelector('.signin_pw_div'); //비밀번호 상위 div
-const emailInput = document.querySelector('.email_input'); //이메일 input
-const pwInput = document.querySelector('.signin_pw_input'); //비밀번호 input
-const pwSignupDiv1 = document.querySelector('.signup_pw_div1'); //signup 비밀번호 상위 div1
-const pwSignupDiv2 = document.querySelector('.signup_pw_div2'); //signup 비밀번호 상위 div2
-const pwSignupInput1 = document.querySelector('.signup_pw_input1'); //signup 비밀번호 input1
-const pwSignupInput2 = document.querySelector('.signup_pw_input2'); //signup 비밀번호 input2
-const eye = document.querySelector('.signin_eye'); //signin 눈
-const eye_signup1 = document.querySelector('.signup_eye1'); //signup 눈1
-const eye_signup2 = document.querySelector('.signup_eye2'); //signup 눈2
-const login = document.querySelector('.submit_button'); //로그인,회원가입 버튼
+const emailDiv = document.querySelector('.email_div');
+const pwDiv = document.querySelector('.signin_pw_div');
+const emailInput = document.querySelector('.email_input');
+const pwInput = document.querySelector('.signin_pw_input');
+const pwSignupDiv1 = document.querySelector('.signup_pw_div1');
+const pwSignupDiv2 = document.querySelector('.signup_pw_div2');
+const pwSignupInput1 = document.querySelector('.signup_pw_input1');
+const pwSignupInput2 = document.querySelector('.signup_pw_input2');
+const eye = document.querySelector('.signin_eye');
+const eye_signup1 = document.querySelector('.signup_eye1');
+const eye_signup2 = document.querySelector('.signup_eye2');
+const login = document.querySelector('.submit_button');
 const signupPage = pwSignupDiv1;
 const signinPage = !pwSignupDiv1;
 
@@ -39,7 +39,6 @@ function emailErrorMsg(e) {
     const promise = getSignupExistEmail(emailInput.value);
     const getData = () => {
       promise.then((data) => {
-        console.log(data);
         if (signupPage&&data!==200) {
           createErrorMsg(parentDiv, SPAN,'existEmailSpan', emailDiv, emailInput, EXIST_EMAIL,'existEmailErrorSpan','errorEmailMsg');
         } 
@@ -58,7 +57,7 @@ function pwErrorMsg(e) {
   const input = e.target;
   const newMsg = input.value;
   const tempPwDiv = input.parentElement;
-  const SigninPwIsMsg = newMsg&&!signupPage;
+  const SigninPwIsMsg = newMsg&&signinPage;
   const SignupPwIsMsgNoLength = newMsg&&signupPage&&input.value.length < 8;
   const SignupPwIsMsgYesLength = newMsg&&signupPage&&input.value.length >= 8;
   if (!newMsg) {
@@ -72,11 +71,11 @@ function pwErrorMsg(e) {
     return createErrorMsg(tempPwDiv,SPAN,'wrongLengthPwSpan',tempPwDiv,input, NO_VALID_PW,'pwErrorSpan');
   } 
   if(SignupPwIsMsgYesLength&&!checkPw(newMsg)) {
-    console.log('wrong')
     return createErrorMsg(tempPwDiv,SPAN,'wrongLengthPwSpan',tempPwDiv,input, NO_VALID_PW,'pwErrorSpan');
   }
   if (SignupPwIsMsgYesLength&&pwSignupInput2.value &&pwSignupInput1.value !== pwSignupInput2.value) {
-    console.log('no')
+    if(pwSignupDiv1.children.length !== 2) {pwSignupDiv1.lastElementChild.remove()}
+    pwSignupInput1.style.border = '1px solid #ccd5e3';
     return createErrorMsg(pwSignupDiv2,SPAN,'wrongLengthPwSpan',pwSignupDiv2,pwSignupInput2, NO_SAME_PW,'pwDisMatchSpan');
   }
   else{
@@ -112,7 +111,6 @@ function loginCheck(e) {
     const promise = getSignupResponse(emailInput.value,pwSignupInput1.value);
     const getData = () => {
       promise.then((data) => {
-        console.log(data)
         if (isValidSignup&&data[0]==200) {
           window.localStorage.setItem('signupToken',data[1]);
           location.href = './folder.html';
@@ -126,13 +124,16 @@ function loginCheck(e) {
     //오류가 있거나 비어있는 칸이 있으면 확인해 달라 오류 뜨게하는 코드
     if (!emailInput.value || emailDiv.children.length !== 2) {
       createErrorMsg(emailDiv,SPAN,'noEmailSpan',emailDiv,emailInput, CHECK_EMAIL,'wrongEmailSpan','wrongMsg');
+      emailInput.blur();
     }
     if (!pwSignupInput1.value || pwSignupDiv1.children.length !== 2) {
       createErrorMsg(pwSignupDiv1,SPAN,'noPwSignupSpan1',pwSignupDiv1,pwSignupInput1, CHECK_PW,'wrongPwSignupErrorSpan1','wrongMsg');
+      pwSignupInput1.blur();
     }
     if (!pwSignupInput2.value || pwSignupDiv2.children.length !== 2) {
       createErrorMsg(pwSignupDiv2, SPAN,'noPwSignupSpan2',pwSignupDiv2,pwSignupInput2, CHECK_PW,'wrongPwSignupErrorSpan1','wrongMsg'
       );
+      pwSignupInput2.blur();
     }
   }
 }
