@@ -7,4 +7,9 @@ function getPasswordVisibility(inputType) {
 		: PASSWORD_TOGGLE_CONSTANT.invisible;
 }
 
-export { getPasswordVisibility };
+// 로그인, 회원가입
+function goToFolderPage() {
+	location.href = FOLDER_PAGE_PATH;
+}
+
+export { getPasswordVisibility, goToFolderPage };

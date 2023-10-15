@@ -1,4 +1,4 @@
-import { getPasswordVisibility } from "/utils/auth.js";
+import { goToFolderPage, getPasswordVisibility } from "/utils/auth.js";
 import {
 	USERS,
 	AUTH_HINT,
@@ -6,7 +6,6 @@ import {
 	PASSWORD_PATTERN,
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
-	FOLDER_PAGE_PATH,
 } from "/utils/constants.js";
 
 /* 비밀번호 토글 */
@@ -158,10 +157,6 @@ function getIsConfirmedPassword(passwordConfirm) {
 	} else {
 		return true;
 	}
-}
-
-function goToFolderPage() {
-	location.href = FOLDER_PAGE_PATH;
 }
 
 function clickSignup(email, password, passwordConfirm) {

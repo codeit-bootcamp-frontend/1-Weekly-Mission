@@ -1,4 +1,4 @@
-import { getPasswordVisibility } from "/utils/auth.js";
+import { goToFolderPage, getPasswordVisibility } from "/utils/auth.js";
 import {
 	USERS,
 	AUTH_HINT,
@@ -98,7 +98,7 @@ function getIsUserPassword(password) {
 	}
 }
 
-function signinSuccess() {
+function goToFolderPage() {
 	location.href = FOLDER_PAGE_PATH;
 }
 
@@ -110,7 +110,7 @@ function clickSignin(email, password) {
 		return;
 	}
 	const isUserPassword = getIsUserPassword(password);
-	if (isUserEmail && isUserPassword) signinSuccess();
+	if (isUserEmail && isUserPassword) goToFolderPage();
 }
 
 // 이벤트 핸들러 등록
