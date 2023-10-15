@@ -14,10 +14,25 @@ import {
       setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 입력해주세요.");
       return;
     }
-    if (email === "test@codeit.com") {
+    fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json" ,
+      },
+      body: JSON.stringify({
+        email: emailInput.value,
+      }),
+    })
+    .then(async (response) => {
+      if (response.status === 409) {
         setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이미 사용 중인 이메일입니다.");
         return;
-    }
+      }
+    })
+    .catch((error) => {
+      console.log('Error: ', error);
+    });
+
     if (!isEmailValid(email)) {
       setInputError(
         { input: emailInput, errorMessage: emailErrorMessage },
@@ -89,28 +104,32 @@ import {
   signForm.addEventListener("submit", submitForm);
   function submitForm(event) {
     event.preventDefault();
-  
-    const isTestUser =
-      emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
-  
-    if (isTestUser) {
-      let newUser = {
-        email: "test@codeit.com",
-        paswword: "sprint101",
-      };
 
-      fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
-        method: 'POST',
-        body: JSON.stringify(newUser),
-      })
-      .then((response) => { if (response.status === '200') location.href = "../folder.html"; });
-      
-      return;
-    }
-    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
-    setInputError(
-      { input: passwordInput, errorMessage: passwordErrorMessage },
-      "비밀번호를 확인해주세요."
-    );
+    fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json" ,
+      },
+      body: JSON.stringify({
+        email: emailInput.value,
+        password: passwordInput.value,
+      }),
+    })
+    .then(async (response) => {
+      if (response.status === 200) {
+        const data = await response.json();
+        localStorage.setItem("login-token", data.accessToken);
+        location.href = "../folder.html";
+      } else {
+        setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
+        setInputError(
+          { input: passwordInput, errorMessage: passwordErrorMessage },
+          "비밀번호를 확인해주세요."
+        );
+      }
+    })
+    .catch((error) => {
+      console.log('Error: ', error);
+    });
   }
   

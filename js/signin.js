@@ -62,6 +62,7 @@ import {
       if (response.status === 200) {
         const data = await response.json();
         localStorage.setItem("login-token", data.accessToken);
+        location.href = "../folder.html";
       } else {
         setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
         setInputError(
