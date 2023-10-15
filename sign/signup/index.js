@@ -112,7 +112,7 @@ function confirmPwd() {
 async function submitForm() { 
   if (checkEmailValidation() && checkPwdValidation() && confirmPwd()) {
     try {
-      const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', 
+      const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", 
       {
         method: "POST",
         headers: {
@@ -128,6 +128,7 @@ async function submitForm() {
         window.location.href = "/folder/index.html";
       }
       const result = await response.json();
+      console.log(result);
 
     } catch(error) {
       console.log(error);
