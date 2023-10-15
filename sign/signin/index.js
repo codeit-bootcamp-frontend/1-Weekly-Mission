@@ -80,8 +80,6 @@ async function submitForm() {
       addErrorMessage(passwordInput, passwordError, PASSWORD_WRONG);
     }
 
-    const result = await response.json();
-
   } catch (error) {
     console.log(error);
   }

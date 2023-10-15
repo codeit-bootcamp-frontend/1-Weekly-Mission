@@ -58,23 +58,24 @@ function checkEmailValidation() {
 }
 
 // 이메일 중복 확인
-async function isDuplicatedEmail() {
-  const email = emailInput.value;
+async function isDuplicatedEmail(email) {
+  // const email = emailInput.value;
   try {
-    const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
       method: 'POST',
       headers: {
-      "content-Type": 'application/json',
+      "content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
+        email,
       }),
     });
 
-    if (response.status !== 200) {
+    if (response.ok) {
       return true;
+    } else {
+      return false; // 동작 오류
     }
-    return false; // 동작 오류
   } catch (error) {
     console.log(error);
   }
