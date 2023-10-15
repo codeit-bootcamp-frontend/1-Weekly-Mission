@@ -11,9 +11,10 @@ import {
 
 const $emailInput = document.querySelector("#email");
 
+/* postInputs 함수를 이용하여 중복되는 이메일 체크하고 싶었으나, 계속 오류가 생겨
+    이와 같이 구현하였습니다. 방법이 궁금합니다.*/
+
 async function checkerUsingEmail(e) {
-  /* postInputs 함수를 이용하여 중복되는 이메일 체크하고 싶었으나, 계속 오류가 생겨
-                                                             이와 같이 구현하였습니다. 방법이 궁금합니다.*/
   try {
     const response = await fetch(
       "https://bootcamp-api.codeit.kr/api/check-email",
@@ -70,7 +71,7 @@ const $eyeOff2 = document.querySelector(".eye-button.second");
 
 const $signBtn = document.querySelector(".cta");
 
-function signUpAftercheckingError(e) {
+async function signUpAftercheckingError(e) {
   const $errorTextList = document.querySelectorAll("warning-text");
 
   if ($errorTextList.length !== 0) {
@@ -85,9 +86,11 @@ function signUpAftercheckingError(e) {
       password: $passwordInput.value,
     };
 
-    postInputs("https://bootcamp-api.codeit.kr/api/check-email", userProfiles)
-      .then((response) => {
+    postInputs("https://bootcamp-api.codeit.kr/api/sign-up", userProfiles)
+      .then(async (response) => {
         if (response.ok) {
+          const { data } = await response.json();
+          localStorage.setItem("access-token", data.accessToken);
           const link = "../folder.html";
           window.location.assign(link);
         }
@@ -99,7 +102,7 @@ function signUpAftercheckingError(e) {
 }
 
 $emailInput.addEventListener("focusout", checkerEmail);
-$emailInput.addEventListener("focusout", checkerUsingEmail);
+$emailInput.addEventListener("change", checkerUsingEmail);
 $emailInput.addEventListener("focusin", reset);
 
 $passwordInput.addEventListener("focusout", isValidPassword);
