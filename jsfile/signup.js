@@ -1,56 +1,35 @@
 import {
   reset,
   eyeOnOff,
-  writeError,
   displayError,
   checkerEmail,
   postInputs,
-  testUserFile,
-  FindEmail,
+  isIncludePassword,
 } from "./util.js";
 
 const $emailInput = document.querySelector("#email");
 
-/* postInputs 함수를 이용하여 중복되는 이메일 체크하고 싶었으나, 계속 오류가 생겨
-    이와 같이 구현하였습니다. 방법이 궁금합니다.*/
+/* postInputs 함수를 이용하여 중복되는 이메일 체크하고 싶었으나, 계속 오류가 생겨 어쩔 수 없이
+    이와 같이 구현하였습니다. 이 문제를 해결하는 방법이 궁금합니다.*/
 
-async function checkerUsingEmail(e) {
-  try {
-    const response = await fetch(
-      "https://bootcamp-api.codeit.kr/api/check-email",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: $emailInput.value }),
+function checkerUsingEmail(e) {
+  postInputs("https://bootcamp-api.codeit.kr/api/check-email", {
+    email: $emailInput.value,
+  })
+    .then((response) => {
+      if (response.status === 409) {
+        displayError(e, "중복되는 이메일입니다.");
+      } else {
+        return;
       }
-    );
-
-    if (response.status === 409) {
-      displayError(e, "중복되는 이메일입니다.");
-    } else {
-      return;
-    }
-  } catch (error) {
-    console.log(error);
-  }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
+
 const $passwordInput = document.querySelector("#password");
-
-const alphabet = "abcdefghijklmnopqrstuvwxyz";
-const numbers = "0123456789";
-const alphaArray = [...alphabet];
-const numArray = [...numbers];
 const passArray = [...$passwordInput.value];
-
-function isIncludePassword(passArray) {
-  if (
-    passArray.some((p) => alphaArray.includes(p)) &&
-    passArray.some((p) => numArray.includes(p)) &&
-    passArray.length >= 8
-  ) {
-    return true;
-  }
-}
 
 function isValidPassword(e) {
   if (!isIncludePassword(passArray)) {
@@ -64,7 +43,7 @@ function matchPassword(e) {
   if ($passwordInput.value === $rePasswordInput.value) {
     return;
   }
-  displayError(e.target, "비밀번호가 일치하지 않아요");
+  displayError(e, "비밀번호가 일치하지 않아요");
 }
 
 const $eyeOff2 = document.querySelector(".eye-button.second");
