@@ -6,7 +6,8 @@ import {
 import { toggleImage } from "./toggleImage.js";
 import { checkPassword } from "./input/checkPassword.js";
 import { inputEmail, inputPassword } from "./constants.js";
-import { checkSignupEmail } from "./input/checkSignupEmail.js";
+import { emailDuplicationCheck } from "./input/emailDuplicationCheck.js";
+import { checkEmailFormat } from "./input/checkEmailFormat.js";
 
 const eyeImagePasswordEl = document.querySelector("#eyeImage-password");
 const eyeImagePasswordReEl = document.querySelector("#eyeImage-password-re");
@@ -32,7 +33,7 @@ inputEmail.addEventListener("input", errorMessageStop);
 inputPassword.addEventListener("input", errorMessageStop);
 
 //<이메일 형식 검증>
-inputEmail.addEventListener("focusout", checkSignupEmail);
+inputEmail.addEventListener("focusout", checkEmailFormat);
 
 //<비밀번호 형식 검증>
 inputPassword.addEventListener("focusout", checkPassword);
@@ -54,25 +55,53 @@ function checkPasswordRe() {
 }
 inputPasswordRe.addEventListener("focusout", checkPasswordRe);
 
-//이메일&비밀번호 모두 유효한 값이라면 버튼 동작하도록 함
+//이메일&비밀번호 모두 유효한 값이라면 버튼 클릭시 /folder로 이동하기
 function submitAccount() {
-  const isEmailValid = checkSignupEmail();
+  const isEmailValid = checkEmailFormat();
   const isPasswordValid = checkPassword();
   const isPasswordReValid = checkPasswordRe();
 
   if (isEmailValid && isPasswordValid && isPasswordReValid) {
-    window.location.href = "./folder.html";
+    async function newAccount(email, password) {
+      //POST로 새로운 계정정보를 추가
+      const newAccountInfo = {
+        email: email,
+        password: password,
+      };
+
+      try {
+        const response = await fetch(
+          "https://bootcamp-api.codeit.kr/api/sign-up",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newAccountInfo),
+          }
+        );
+
+        if (response.status === 200) {
+          const responseData = await response.json();
+          const accessToken = responseData.accessToken;
+          window.localStorage.setItem("accessToken", accessToken);
+          window.location.href = "/folder";
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
 }
 
 submitButton.addEventListener("click", function (event) {
   event.preventDefault();
+  emailDuplicationCheck();
   submitAccount();
 });
 
 signupForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const email = inputEmail.value.trim();
-  const password = inputPassword.value;
-  validAccount(email, password);
+  emailDuplicationCheck();
+  submitAccount();
 });
