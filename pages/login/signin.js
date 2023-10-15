@@ -1,4 +1,4 @@
-import {setErrorMessage, isFormContainsError, validateInputValue, removeErrorClassAndMessage, postRequest} from './functions.js';
+import {setErrorMessage, isFormContainsError, validateInputValue, removeErrorClassAndMessage, postRequest, loginCheck} from './functions.js';
 import {form} from "./tags.js";
 
 const signinButton = document.querySelector('#signin-button');
@@ -6,6 +6,8 @@ const signinButton = document.querySelector('#signin-button');
 signinButton.addEventListener('click', _onLogin);
 form.addEventListener('keydown',_onEnterLogin);
 form.addEventListener('keydown',_onRemoveALLErrorClassAndMessage);
+
+loginCheck();
 
 /**
  * 유효성 검사 후 login함수를 호출한다.
@@ -41,8 +43,8 @@ function login(){
                 // 로컬스토리지에 accessToken저장
                 localStorage.setItem('accessToken',result.data.accessToken);
 
-                // 경로 이동
-                location.href = "/pages/folder";
+                // location.href = "/pages/folder";
+                location.reload();
             })
     }
 }

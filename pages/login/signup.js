@@ -1,6 +1,8 @@
-import { _onHidePassword, setErrorMessage, isFormContainsError, validateInputValue, postRequest } from './functions.js';
+import { _onHidePassword, setErrorMessage, isFormContainsError, validateInputValue, postRequest, loginCheck } from './functions.js';
 import { form } from './tags.js';
 import { passwordReg } from './validationRegExp.js';
+
+loginCheck();
 
 const signupButton = document.querySelector('#signup-button');
 const hidePasswordCheckButton = document.querySelector('.hide-password-check');

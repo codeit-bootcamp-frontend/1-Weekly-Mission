@@ -144,4 +144,15 @@ function postRequest(api, data){
     });
 }
 
-export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, isFormContainsError, validateInputValue, removeErrorClassAndMessage, postRequest };
+/**
+ * accessToken이 있다면 로그인 성공 페이지로 이동한다.
+ */
+function loginCheck(){
+    if(localStorage.getItem('accessToken')){
+        location.href = "/pages/folder";
+    }
+}
+
+export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError
+    ,isFormContainsError, validateInputValue, removeErrorClassAndMessage, postRequest
+    , loginCheck};
