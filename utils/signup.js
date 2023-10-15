@@ -19,6 +19,15 @@ import { signUp } from "./api.js";
 
 import { getIsNewEmail } from "/utils/api.js";
 
+/* 로그인 상태로 접근 시 리다이렉트 */
+(function () {
+	const accessToken = localStorage.getItem("accessToken");
+
+	if (accessToken) {
+		goToFolderPage();
+	}
+})();
+
 /* 비밀번호 토글 */
 const confirmPasswordToggleElement = document.querySelector(
 	".auth__toggle-password--confirm"

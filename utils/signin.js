@@ -1,4 +1,5 @@
 import {
+	goToFolderPage,
 	getPasswordVisibility,
 	getIsFilledEmail,
 	getIsValidEmail,
@@ -12,6 +13,15 @@ import {
 } from "/utils/constants.js";
 
 import { signIn } from "./api.js";
+
+/* 로그인 상태로 접근 시 리다이렉트 */
+(function () {
+	const accessToken = localStorage.getItem("accessToken");
+
+	if (accessToken) {
+		goToFolderPage();
+	}
+})();
 
 /* 비밀번호 토글 */
 const passwordToggleElement = document.querySelector(".auth__toggle-password");
