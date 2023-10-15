@@ -24,6 +24,11 @@ function handleSignUpPasswordCheckError() {
   }
 }
 
+//회원가입 페이지 접근 시 로컬 레포에 accessToken이 있으면 folder.html로 이동
+if(localStorage.getItem('accessToken')) {
+  location.href= "../../folder.html"; 
+}
+
 // 회원가입 성공했을 때
 function signupSuccess() {
   alert('회원가입이 완료되었습니다.');
@@ -67,14 +72,18 @@ async function handleSignUp(event){
         return loginSuccess();
       }
       
-      clearUserInputError(emailElem);
-      displayUserInputError(emailElem, '이메일을 확인해주세요.');
+      if(response.status === 400){
+        clearUserInputError(emailElem);
+        displayUserInputError(emailElem, '이메일을 확인해주세요.');
 
-      clearUserInputError(passwordInput);
-      displayUserInputError(passwordInput, '비밀번호를 확인해주세요.');
+        clearUserInputError(passwordInput);
+        displayUserInputError(passwordInput, '비밀번호를 확인해주세요.');
 
-      clearUserInputError(passwordCheckInput);
-      displayUserInputError(passwordCheckInput, '비밀번호를 확인해주세요.');
+        clearUserInputError(passwordCheckInput);
+        displayUserInputError(passwordCheckInput, '비밀번호를 확인해주세요.');
+      }else{
+        throw new Error(`${response.status}`);
+      }
     }catch(error){
       console.log(error);
     }

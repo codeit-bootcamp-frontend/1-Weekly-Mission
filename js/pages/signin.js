@@ -9,6 +9,10 @@ import {
   API_URL
 } from '../constants.js'
 
+//로그인 페이지 접근 시 로컬 레포에 accessToken이 있으면 folder.html로 이동
+if(localStorage.getItem('accessToken')) {
+  location.href= "../../folder.html"; 
+}
 
 //로그인 성공했을 때
 function loginSuccess(){
