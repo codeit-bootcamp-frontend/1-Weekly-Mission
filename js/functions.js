@@ -9,9 +9,29 @@ const ALREADY_USE_EMAIL = '이미 사용중인 이메일입니다.';
 
 const goToFolderPage = () => (location.href = '../pages/folder.html');
 
-async function getToken(responseType, tokenType) {
-  const response = await responseType.json();
-  const result = await response.data.accessToken;
+async function fetchClient(url, method, body) {
+  try {
+    const response = await fetch(`${BASE_URL}/${url}`, {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (response.status !== 200) {
+      throw new Error(response.status);
+    }
+
+    const data = response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+function getToken(response, tokenType) {
+  const result = response.data.accessToken;
   localStorage.setItem(tokenType, result);
   goToFolderPage();
 }
@@ -34,22 +54,11 @@ async function login() {
       email: email.value,
       password: password.value,
     };
-    const signIn = await fetch(`${BASE_URL}/sign-in`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(loginContext),
-    });
-    if (signIn.status === 200) {
-      getToken(signIn, 'access-token');
-    } else {
-      addErrorMessageClass(email, CHECK_EMAIL);
-      addErrorMessageClass(password, CHECK_PASSWORD);
-      throw new Error('이메일, 비밀번호 체크');
-    }
-  } catch (error) {
-    console.error(error.message);
+    const response = await fetchClient('sign-in', 'POST', loginContext);
+    getToken(response, 'access-token');
+  } catch {
+    addErrorMessageClass(email, CHECK_EMAIL);
+    addErrorMessageClass(password, CHECK_PASSWORD);
   }
 }
 
@@ -63,23 +72,9 @@ async function checkDuplicationEmail() {
     const emailContext = {
       email: email.value,
     };
-    const checkEmail = await fetch(`${BASE_URL}/check-email`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(emailContext),
-    });
-    if (checkEmail.status === 200) {
-      return;
-    } else if (checkEmail.status === 409) {
-      addErrorMessageClass(email, ALREADY_USE_EMAIL);
-      throw Error('중복된 이메일');
-    } else {
-      addErrorMessageClass(email, CHECK_EMAIL);
-    }
-  } catch (error) {
-    console.error(error.message);
+    await fetchClient('check-email', 'POST', emailContext);
+  } catch {
+    addErrorMessageClass(email, ALREADY_USE_EMAIL);
   }
 }
 
@@ -93,21 +88,10 @@ async function signUp(event) {
       email: email.value,
       password: password.value,
     };
-    const verifiedSignup = await fetch(`${BASE_URL}/sign-up`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(singUpContext),
-    });
-    if (verifiedSignup.status === 200) {
-      getToken(verifiedSignup, 'access-token');
-    } else {
-      addErrorMessageClass(email, CHECK_EMAIL);
-      throw new Error('회원가입 실패');
-    }
-  } catch (error) {
-    console.error(error.message);
+    const response = await fetchClient('sign-up', 'POST', singUpContext);
+    getToken(response, 'access-token');
+  } catch {
+    addErrorMessageClass(email, CHECK_EMAIL);
   }
 }
 
