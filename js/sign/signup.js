@@ -14,6 +14,18 @@ import {
   isValidPassword,
 } from "./functions.js";
 
+// 토큰이 있으면 즉시 실행함수를 통해 folder.html 로 이동.
+// clear() 메소드로 토큰을 없애보면 즉시 실행함수가 실행 안됨.
+//localStorage.clear();
+
+(function () {
+  if (localStorage.getItem("signupToken")) {
+    location.href = "./folder.html";
+    console.log("valid access token");
+    return;
+  }
+})();
+
 const signupBtn = document.querySelector(".signup-button");
 const eyeBtn1 = document.querySelector("#eye-button1");
 const eyeBtn2 = document.querySelector("#eye-button2");
@@ -100,7 +112,7 @@ signupBtn.addEventListener("click", async function (event) {
           }),
         }
       );
-      localStorage.setItem("signupToken", signUpPost);
+      localStorage.setItem("signupToken", signUpPost["access_token"]);
       location.href = "./folder.html";
     } else {
       throw new Error("duplicatedEmail");
