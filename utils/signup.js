@@ -159,7 +159,7 @@ function getIsConfirmedPassword(passwordConfirm) {
 	}
 }
 
-function clickSignup(email, password, passwordConfirm) {
+function clickSignup({ email, password, passwordConfirm }) {
 	const isValidatedEmail = getIsValidatedEmail(email);
 	const isValidatedPassword = getIsValidatedPassword(password);
 	const isConfirmedPassword = getIsConfirmedPassword(passwordConfirm);
@@ -190,9 +190,9 @@ passwordInputElement.addEventListener("focusout", (e) => {
 
 signupButtonElement.addEventListener("click", (e) => {
 	e.preventDefault();
-	clickSignup(
-		emailInputElement.value,
-		passwordInputElement.value,
-		passwordConfirmInputElement.value
-	);
+	clickSignup({
+		email: emailInputElement.value,
+		password: passwordInputElement.value,
+		passwordConfirm: passwordConfirmInputElement.value,
+	});
 });
