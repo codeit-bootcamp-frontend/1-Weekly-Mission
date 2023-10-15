@@ -50,15 +50,33 @@ function emailInputFocusOut(){
     emailError.style.display = "block";
     emailInput.style.borderColor = "red";
   } else { // 유효한 이메일 형식일 때
-    if (emailInput.value === "test@codeit.com"){
-        emailError.textContent = "이미 사용 중인 이메일입니다.";
-        emailError.style.display = "block";
-        emailInput.style.borderColor = "red";
-    }
-    else{
-        emailError.style.display = "none";
-        emailInput.style.borderColor = "black";
-    }
+    // 이메일 중복 검사
+    fetch('https://bootcamp-api.codeit.kr/docs/api/check-email', {
+      method: 'POST',
+      body: "test@codeit.com",
+    })
+    .then((response)=> {response.text()})
+    .then((result)=>{
+      fetch('https://bootcamp-api.codeit.kr/docs/api/sign-up', {
+        method: 'POST',
+        body: "test@codeit.com",
+      })
+      .then((result)=>{
+        window.location.href = "/folder";
+      })
+      .catch((error)=> {console.log(error);})
+    })
+    .catch((error)=> {console.log(error);})
+
+    // if (emailInput.value === "test@codeit.com"){
+    //     emailError.textContent = "이미 사용 중인 이메일입니다.";
+    //     emailError.style.display = "block";
+    //     emailInput.style.borderColor = "red";
+    // }
+    // else{
+    //     emailError.style.display = "none";
+    //     emailInput.style.borderColor = "black";
+    // }
   }
 }
 
@@ -97,8 +115,9 @@ function passwordCheckInputFocusOut(){
 
 // 로그인 폼 제출 시 유효성 검사 및 로그인 처리
 function checkAvailability(event) {
-    window.location.href = "/folder";
-    alert('회원가입 성공');
+  window.localStorage.setItem('token', result.data.token);
+  window.location.href = "/folder";
+  alert('회원가입 성공');
 }
 
 

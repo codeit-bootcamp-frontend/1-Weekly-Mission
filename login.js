@@ -53,29 +53,48 @@ function passwordInputFocusOut() {
 function checkAvailability(event) {
   let email = emailInput.value;
   let password = passwordInput.value;
+  const requestData={
+    email: 'test@codeit.com',
+    password: 'sprint101',
+  };
 
-  if (email === "test@codeit.com" && password === "codeit101") {
-    // 유효한 경우 "/folder" 페이지로 이동
+  fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+    method: 'POST',
+    body: JSON.stringify(requestData),
+  })
+  .then((response)=> {response.text()})
+  .then((result)=>{
+    window.localStorage.setItem('token', result.data.token);
+    alert('로그인 성공');
     window.location.href = "/folder";
-    alert('로그인 되었습니다');
-  } else {
+  })
+  .catch((error)=> {
+    console.error('요청 중 오류 발생:', error);
     event.preventDefault(); // 폼 제출 막기
-    // 비번만 다름 (이메일은 유효)
-    if(email === "test@codeit.com"){
-      passwordError.textContent = "비밀번호를 확인해주세요.";
-      passwordError.style.display = "block";
-      passwordInput.style.borderColor = "red";
-    }
-    else{
-      emailError.textContent = "이메일을 확인해주세요.";
-      passwordError.textContent = "비밀번호를 확인해주세요.";
-      emailError.style.display = "block";
-      passwordError.style.display = "block";
-      emailInput.style.borderColor = "red";
-      passwordInput.style.borderColor = "red";
-    }
-  }
+  })
+
+  // if (email === "test@codeit.com" && password === "codeit101") {
+  //   // 유효한 경우 "/folder" 페이지로 이동
+  //   window.location.href = "/folder";
+  //   alert('로그인 되었습니다');
+  // } else {
+  //   event.preventDefault(); // 폼 제출 막기
+  //   // 비번만 다름 (이메일은 유효)
+  //   if(email === "test@codeit.com"){
+  //     passwordError.textContent = "비밀번호를 확인해주세요.";
+  //     passwordError.style.display = "block";
+  //     passwordInput.style.borderColor = "red";
+  //   }
+  //   else{
+  //     emailError.textContent = "이메일을 확인해주세요.";
+  //     passwordError.textContent = "비밀번호를 확인해주세요.";
+  //     emailError.style.display = "block";
+  //     passwordError.style.display = "block";
+  //     emailInput.style.borderColor = "red";
+  //     passwordInput.style.borderColor = "red";
+  //   }
 }
+
 
 
 emailInput.addEventListener('focusout',emailInputFocusOut);
