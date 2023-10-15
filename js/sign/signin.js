@@ -6,14 +6,11 @@ import {
   isValidEmail,
 } from "./functions.js";
 
-// 토큰이 있으면 즉시 실행함수를 통해 folder.html 로 이동.
-// clear() 메소드로 토큰을 없애보면 즉시 실행함수가 실행 안됨.
-//localStorage.clear();
-
 (function () {
   if (localStorage.getItem("signInToken")) {
     location.href = "./folder.html";
     console.log("valid access token");
+    localStorage.clear();
     return;
   }
 })();
