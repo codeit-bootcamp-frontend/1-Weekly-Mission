@@ -1,5 +1,6 @@
 import { emailInput, pwInput, email, password, showError } from "./user.js";
 import config from "../../config/api.js";
+import callApi from "../../config/index.js";
 
 const loginBtn = document.querySelector("#loginBtn");
 const APP_API = config.APP_API;
@@ -10,13 +11,10 @@ const handleLogin = async (emailValue, pwValue) => {
     password: pwValue,
   };
   try {
-    const response = await fetch(`${APP_API}/api/sign-in`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      `${APP_API}/api/sign-in`,
+      callApi("POST", data)
+    );
     const result = await response.json();
 
     if (response.status === 200) {

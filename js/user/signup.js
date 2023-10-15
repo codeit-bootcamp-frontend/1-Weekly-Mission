@@ -8,6 +8,7 @@ import {
   removeError,
 } from "./user.js";
 import config from "../../config/api.js";
+import callApi from "../../config/index.js";
 
 const APP_API = config.APP_API;
 
@@ -29,13 +30,10 @@ const checkEmail = async () => {
   };
 
   try {
-    const response = await fetch(`${APP_API}/api/check-email`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      `${APP_API}/api/check-email`,
+      callApi("POST", data)
+    );
     if (response.status === 409) {
       showError(email, "이미 사용 중인 이메일입니다.");
       return;
@@ -52,13 +50,10 @@ const handleSignUp = async () => {
   };
 
   try {
-    const response = await fetch(`${APP_API}/api/sign-up`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      `${APP_API}/api/sign-up`,
+      callApi("POST", data)
+    );
     if (response.status === 200) {
       location.href = "folder.html";
     }
