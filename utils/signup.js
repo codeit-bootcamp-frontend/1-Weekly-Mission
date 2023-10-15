@@ -15,6 +15,8 @@ import {
 	INPUT_HINT_CLASSNAME,
 } from "/utils/constants.js";
 
+import { signUp } from "./api.js";
+
 import { getIsNewEmail } from "/utils/api.js";
 
 /* 비밀번호 토글 */
@@ -175,13 +177,13 @@ function getIsConfirmedPassword(confirmPassword) {
 	}
 }
 
-function clickSignup({ email, password, confirmPassword }) {
+async function clickSignup({ email, password, confirmPassword }) {
 	if (
 		getIsCompleteEmail(email) &&
 		getIsCompletePassword(password) &&
 		getIsConfirmedPassword(confirmPassword)
 	)
-		goToFolderPage();
+		await signUp({ email, password });
 }
 
 emailInputElement.addEventListener("focusout", (e) => {
