@@ -5,6 +5,10 @@ import {
   handlePasswordError,
 } from '../utils.js'
 
+import {
+  API_URL
+} from '../constants.js'
+
 
 //로그인 성공했을 때
 function loginSuccess(){
@@ -13,11 +17,46 @@ function loginSuccess(){
 }
 
 // 로그인 성공, 실패 다루는 함수
-function handleSignIn(event){
+async function handleSignIn(event){
   event.preventDefault();
 
-  if(isCorrectUser()){
-    return loginSuccess();
+  const { target: elements } = event;
+  const [emailInput, passwordInput] = elements;
+
+  const userData = {
+    email: emailInput.value,
+    password: passwordInput.value,
+  };
+
+  try{
+    const response = await fetch(`${API_URL}/sign-in`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData)
+    })
+
+    const result = await response.json;
+
+    if(response.status === 200){
+      localStorage.setItem("accessToken", result.accessToken);
+      isCorrectUser();
+      return loginSuccess();
+    }
+
+    if(response.status === 400){
+      const emailInput = $('#id-label');
+      const passwordInput = $('#password-label');
+
+      clearUserInputError(emailInput);
+      displayUserInputError(emailInput, '이메일을 확인해주세요.');
+
+      clearUserInputError(passwordInput);
+      displayUserInputError(passwordInput, '비밀번호를 확인해주세요.');
+    }
+  }catch(error){
+    console.log(error);
   }
 }
 
