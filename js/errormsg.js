@@ -1,16 +1,16 @@
-import { email, password, passwordCheck } from "./tags.js";
+import { email, password, passwordCheck } from './tags.js';
 
-const INPUT_EMAIL = "이메일을 입력하세요.";
-const INPUT_PASSWORD = "비밀번호를 입력하세요.";
-const NOT_CORRECT_EMAIL = "올바른 이메일 주소가 아닙니다.";
-const NOT_MATCH_PASSWORD = "비밀번호가 일치하지 않아요.";
-const COMBINATION_PASSWORD = "비밀번호는 영문, 숫자, 조합 8자 이상 입력해주세요.";
+const INPUT_EMAIL = '이메일을 입력하세요.';
+const INPUT_PASSWORD = '비밀번호를 입력하세요.';
+const NOT_CORRECT_EMAIL = '올바른 이메일 주소가 아닙니다.';
+const NOT_MATCH_PASSWORD = '비밀번호가 일치하지 않아요.';
+const COMBINATION_PASSWORD = '비밀번호는 영문, 숫자, 조합 8자 이상 입력해주세요.';
 
 function addErrorMessageClass(context, errorMessage) {
-  if (context.classList.value !== "error") {
-    const errorElement = document.createElement("div");
-    context.classList.add("error");
-    errorElement.classList.add("error-msg");
+  if (context.classList.value !== 'error') {
+    const errorElement = document.createElement('div');
+    context.classList.add('error');
+    errorElement.classList.add('error-msg');
     errorElement.textContent = errorMessage;
     context.parentElement.append(errorElement);
   }
@@ -32,13 +32,13 @@ function checkEmail() {
 }
 
 function deleteEmailErrorMsg() {
-  if (email.classList.value === "error") {
-    email.classList.remove("error");
+  if (email.classList.value === 'error') {
+    email.classList.remove('error');
     email.nextElementSibling.remove();
   }
 }
 
-function checkPassowrd() {
+function checkPassword() {
   if (!password.value) {
     addErrorMessageClass(password, INPUT_PASSWORD);
   }
@@ -55,8 +55,8 @@ function checkSignupPassword() {
 }
 
 function deletePasswordErrorMsg() {
-  if (password.classList.value === "error") {
-    password.classList.remove("error");
+  if (password.classList.value === 'error') {
+    password.classList.remove('error');
     password.nextElementSibling.nextElementSibling.remove();
   }
 }
@@ -71,8 +71,8 @@ function checkPasswordMatch() {
 }
 
 function deletePasswordCheckErrorMsg() {
-  if (passwordCheck.classList.value === "error") {
-    passwordCheck.classList.remove("error");
+  if (passwordCheck.classList.value === 'error') {
+    passwordCheck.classList.remove('error');
     passwordCheck.nextElementSibling.nextElementSibling.remove();
   }
 }
@@ -80,7 +80,7 @@ function deletePasswordCheckErrorMsg() {
 export {
   checkEmail,
   deleteEmailErrorMsg,
-  checkPassowrd,
+  checkPassword,
   checkSignupPassword,
   deletePasswordErrorMsg,
   checkPasswordMatch,

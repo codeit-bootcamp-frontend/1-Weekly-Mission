@@ -1,15 +1,13 @@
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
-const passwordCheck = document.querySelector("#password-check");
-const passwordVisible = document.querySelector(".toogle-eye");
-const passwordCheckVisible = document.querySelector(".toogle-eye-check");
-const emailError = document.createElement("div");
-const passwordError = document.createElement("div");
-const passwordCheckError = document.createElement("div");
-const loginButton = document.querySelector(".signin-form");
-const signupButton = document.querySelector(".signup-form");
-const login = document.querySelector(".login");
-const addLink = document.querySelector(".add-link");
+const email = document.querySelector('#email');
+const password = document.querySelector('#password');
+const passwordCheck = document.querySelector('#password-check');
+const passwordVisible = document.querySelector('.toogle-eye');
+const passwordCheckVisible = document.querySelector('.toogle-eye-check');
+const emailError = document.createElement('div');
+const passwordError = document.createElement('div');
+const passwordCheckError = document.createElement('div');
+const loginButton = document.querySelector('.signin-form');
+const signupButton = document.querySelector('.signup-form');
 
 export {
   email,
@@ -22,6 +20,4 @@ export {
   loginButton,
   signupButton,
   passwordCheckError,
-  login,
-  addLink,
 };
