@@ -1,79 +1,129 @@
 import {
-	ERROR_MSG,
-	USER,
-	findErrorElement,
+	API_URL,
+	VALID_STATUS,
+	USER_EMAIL,
+	USER_PASSWORD,
+	USER_PASSWORD_CHECK,
+	ERROR_ELEMENT_CLASS,
+	PASSWORD_VIEW_MODE,
+	updateInputDomError,
+	findElementFromCloestFormField,
+	togglePasswordInput,
+	handleInputError,
+	handlePasswordNotEqualError,
 	isAllInputsValid,
-	setValidStatus,
-	removeError,
-	toggleError,
-	authForm,
-	formInputs,
-	submitButton,
-	inputsAndButton,
+	makeIsEmpty,
+	makeIsValid,
+	makeIsEqualPassword,
 } from "./auth.js";
 
-const inputMap = {};
-
-formInputs.forEach((input) => {
-	inputMap[input.id] = input;
+//엑세스 토큰 있으면 바로 폴더로 이동
+window.addEventListener("DOMContentLoaded", function () {
+	localStorage.getItem("accessToken") && authForm.submit();
 });
 
-const emailInput = inputMap["user-email"];
-const passwordInput = inputMap["user-password"];
-const passwordCheckInput = inputMap["user-password-check"];
+const handleAuthEvent = (e) => {
+	if (e.type === "keydown" && e.key !== "Enter") return;
+	if (!isAllInputsValid(VALID_STATUS)) return;
+	const authData = {
+		email: emailInput.value,
+	};
+	const authJson = JSON.stringify(authData);
 
-// --- 순수 함수들 ---
-
-// 비밀번호, 비밀번호 확인 일치여부
-const isEqualPassword = () => passwordInput.value === passwordCheckInput.value;
-
-// 이미 존재하는 회원 여부 임시
-const userExists = () => !!USER[emailInput.value];
-
-// --- 사이드 이펙트 함수들 ---
-
-// 비밀번호 일치하지 않을 경우 에러 보여주기
-const showPasswordNotEqualError = () => {
-	const [errorElement] = findErrorElement(passwordCheckInput);
-
-	if (isEqualPassword()) {
-		errorElement && removeError(passwordCheckInput, errorElement);
-		setValidStatus(passwordCheckInput.id, true);
-	} else
-		toggleError(
-			passwordCheckInput,
-			ERROR_MSG[passwordCheckInput.id]["notEqual"]
-		);
+	joinFormSubmit(API_URL.checkEmail, authJson);
 };
 
-// 에러 메시지 생성,삭제 토글
-const toggleErrorForJoin = (input) => {
-	if (input === emailInput && userExists()) {
-		toggleError(emailInput, ERROR_MSG[emailInput.id]["exist"]);
-	} else if (input === passwordCheckInput) showPasswordNotEqualError();
-	else toggleError(input);
+const validateInput = (inputElement, regex, errorMsg) => {
+	const isEmpty = makeIsEmpty();
+	const isValid = makeIsValid(regex);
+	const validators = [isEmpty, isValid];
+	return handleInputError(inputElement, validators, errorMsg, ERROR_ELEMENT_CLASS);
 };
 
-// 회원가입 폼 전송
-const authFormJoin = () => {
-	formInputs.forEach((input) => toggleErrorForJoin(input));
-	if (!isAllInputsValid()) return;
+const saveToken = (key, value) => localStorage.setItem(key, value);
 
-	authForm.submit();
+const joinFormSubmit = async (url, jsonData) => {
+	try {
+		const response = await fetch(url, {
+			method: "POST",
+			headers: {
+				accept: "*/*",
+				"Content-Type": "application/json",
+			},
+			body: jsonData,
+		});
+
+		if (response.ok) {
+			const responseJson = await response.json();
+			const { accessToken, refreshToken } = responseJson.data;
+			saveToken("accessToken", accessToken);
+			saveToken("refreshToken", refreshToken);
+			authForm.submit();
+		} else {
+			const responseJson = await response.json();
+			const pTag = findElementFromCloestFormField(emailInput, ".form__warning-message");
+			const errorMessage = responseJson.error.message;
+
+			updateInputDomError(emailInput, pTag, errorMessage, ERROR_ELEMENT_CLASS);
+		}
+	} catch (error) {
+		console.error(`에러: ${error.message}`);
+	}
 };
 
-formInputs.forEach((input) => {
-	input.addEventListener("blur", (e) => toggleErrorForJoin(e.target));
-	input.addEventListener(
-		"keydown",
-		(e) => e.key === "Enter" && authFormJoin()
+const authForm = document.querySelector(".auth__form");
+
+const formInputs = document.querySelectorAll(".form__input");
+
+const submitButton = document.querySelector("#submit-button");
+
+const eyeIcons = document.querySelectorAll(".form__eye-icon");
+
+const emailInput = document.querySelector("#user-email");
+
+const passwordInput = document.querySelector("#user-password");
+
+const passwordCheckInput = document.querySelector("#user-password-check");
+
+emailInput.addEventListener("blur", (e) => {
+	VALID_STATUS[e.target.id] = validateInput(e.target, USER_EMAIL.regex, USER_EMAIL.errorMsg);
+});
+
+passwordInput.addEventListener("blur", (e) => {
+	VALID_STATUS[e.target.id] = validateInput(e.target, USER_PASSWORD.regex, USER_PASSWORD.errorMsg);
+
+	const isEqualPassword = makeIsEqualPassword(e.target.value);
+
+	VALID_STATUS[passwordCheckInput.id] = handlePasswordNotEqualError(
+		passwordCheckInput,
+		[isEqualPassword],
+		USER_PASSWORD_CHECK.errorMsg,
+		ERROR_ELEMENT_CLASS,
+		VALID_STATUS
 	);
 });
 
-const passwordInputs = [passwordInput, passwordCheckInput];
+passwordCheckInput.addEventListener("blur", (e) => {
+	const isEqualPassword = makeIsEqualPassword(passwordInput.value);
 
-passwordInputs.forEach((input) =>
-	input.addEventListener("blur", showPasswordNotEqualError)
-);
+	VALID_STATUS[passwordCheckInput.id] = handlePasswordNotEqualError(
+		e.target,
+		[isEqualPassword],
+		USER_PASSWORD_CHECK.errorMsg,
+		ERROR_ELEMENT_CLASS,
+		VALID_STATUS
+	);
+});
 
-submitButton.addEventListener("click", authFormJoin);
+eyeIcons.forEach((icon) => {
+	icon.addEventListener("click", (e) => {
+		const imgElement = e.target;
+		const { currentViewMode, passwordInputId } = imgElement.dataset;
+		const inputElement = document.getElementById(passwordInputId);
+		togglePasswordInput(imgElement, inputElement, PASSWORD_VIEW_MODE[currentViewMode]);
+	});
+});
+
+formInputs.forEach((input) => input.addEventListener("keydown", handleAuthEvent));
+
+submitButton.addEventListener("click", handleAuthEvent);
