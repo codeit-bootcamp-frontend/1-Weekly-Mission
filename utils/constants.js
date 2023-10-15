@@ -31,7 +31,7 @@ const AUTH_HINT = {
 	password: {
 		default: "",
 		isNotFilled: "비밀번호를 입력해주세요.",
-		isNotExists: "비밀번호를 변경해주세요.",
+		isNotCorrect: "비밀번호를 변경해주세요.",
 		isNotValidated: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
 		isNotConfirmed: "비밀번호가 일치하지 않아요.",
 	},
@@ -48,6 +48,7 @@ const INPUT_STATUS = {
 	isExists: "isExists",
 	isNotExists: "isNotExists",
 	isNotConfirmed: "isNotConfirmed",
+	isNotCorrect: "isNotCorrect",
 };
 
 const INPUT_HINT_CLASSNAME = "auth__input--hint";

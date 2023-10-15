@@ -90,7 +90,7 @@ function getIsUserPassword(password) {
 		changePasswordHint(INPUT_STATUS.isNotFilled);
 		return false;
 	} else if (password !== USERS[0].password) {
-		changePasswordHint(INPUT_STATUS.isNotExists);
+		changePasswordHint(INPUT_STATUS.isNotCorrect);
 		return false;
 	} else {
 		changePasswordHint(INPUT_STATUS.default);
