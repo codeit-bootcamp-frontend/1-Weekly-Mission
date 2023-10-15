@@ -14,11 +14,12 @@ import {
   isValidPassword,
 } from "./functions.js";
 
+const flagToken = true;
 (function () {
-  if (localStorage.getItem("signupToken")) {
+  if (localStorage.getItem("signupToken") && flagToken) {
     location.href = "./folder.html";
     console.log("valid access token");
-    localStorage.clear();
+    flagToken = false;
     return;
   }
 })();
