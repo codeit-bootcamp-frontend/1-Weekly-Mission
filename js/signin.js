@@ -13,7 +13,7 @@ import {
 
 import { togglePasswordInPassword } from './togglePassword.js';
 
-function valiDateEmail() {
+function validateEmail() {
   const emailValue = emailInput.value;
 
   if (!emailValue) {
@@ -25,7 +25,7 @@ function valiDateEmail() {
   }
 }
 
-function valiDatePassword() {
+function validatePassword() {
   const passwordValue = passwordInput.value;
 
   if (!passwordValue) {
@@ -40,6 +40,7 @@ async function login(e) {
 
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
+
   try {
     const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
       method: 'POST',
@@ -54,9 +55,8 @@ async function login(e) {
     const result = await response.json();
 
     if (response.status === 200) {
-      localStorage.setItem('login-token', result.data.accessToken);
-      //setTimeout(() => { localStorage.removeItem('login-token')}, 1000 * 60 * 60);
-      return location.href = '../pages/folder.html';
+      localStorage.setItem('accessToken', result.data.accessToken);
+      location.href = '../pages/folder.html';
     } else if (response.status === 400) {
       showErrorMessage('email', '이메일을 확인해주세요.');
       showErrorMessage('password', '비밀번호를 확인해주세요.');
@@ -66,12 +66,12 @@ async function login(e) {
   }
 }
 
-if (localStorage.getItem('login-token')) {
+if (localStorage.getItem('accessToken')) {
   location.href = '../pages/folder.html';
 }
 
-emailInput.addEventListener('focusout', valiDateEmail);
-passwordInput.addEventListener('focusout', valiDatePassword);
+emailInput.addEventListener('focusout', validateEmail);
+passwordInput.addEventListener('focusout', validatePassword);
 passwordInput.addEventListener('keypress', (e) => e.code === 'Enter' && login());
 loginButton.addEventListener('click', login);
 eyeButtonInPassword.addEventListener('click', togglePasswordInPassword);

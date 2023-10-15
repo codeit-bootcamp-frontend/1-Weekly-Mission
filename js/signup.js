@@ -18,7 +18,7 @@ import { togglePasswordInPassword, togglePasswordInPasswordCheck } from './toggl
 
 const errorMessageClass = 'border-red';
 
-async function valiDateEmail() {
+async function validateEmail() {
   const emailValue = emailInput.value;
 
   if (!emailValue) {
@@ -51,7 +51,7 @@ async function valiDateEmail() {
   }
 }
 
-function valiDatePassword() {
+function validatePassword() {
   const passwordValue = passwordInput.value;
 
   if (!passwordValue || !checkPassword(passwordValue)) {
@@ -61,7 +61,7 @@ function valiDatePassword() {
   }
 }
 
-function valiDatePasswordCheck() {
+function validatePasswordCheck() {
   const passwordValue = passwordInput.value;
   const passwordCheckValue = passwordCheckInput.value;
 
@@ -77,11 +77,11 @@ function hasErrorMessageClass(input) {
 }
 
 async function join(e) {
+  e.preventDefault();
+
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
   const passwordCheckValue = passwordCheckInput.value;
-
-  e.preventDefault();
 
   try {
     const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
@@ -97,9 +97,8 @@ async function join(e) {
     const result = await response.json();
 
     if (response.status === 200 && passwordValue === passwordCheckValue) {
-      localStorage.setItem('join-token', result.data.accessToken);
-      setTimeout(() => {localStorage.removeItem('join-token');}, 5000)
-      return location.href = '../pages/folder.html';
+      localStorage.setItem('accessToken', result.data.accessToken);
+      location.href = '../pages/folder.html';
     } else if (response.status === 400) {
       showErrorMessage('email', '이메일을 확인해주세요.');
       showErrorMessage('password', '비밀번호를 확인해주세요.');
@@ -109,13 +108,13 @@ async function join(e) {
   }
 }
 
-if (localStorage.getItem('join-token')) {
+if (localStorage.getItem('accessToken')) {
   location.href = '../pages/folder.html';
 }
 
-emailInput.addEventListener('focusout', valiDateEmail);
-passwordInput.addEventListener('focusout', valiDatePassword);
-passwordCheckInput.addEventListener('focusout', valiDatePasswordCheck);
+emailInput.addEventListener('focusout', validateEmail);
+passwordInput.addEventListener('focusout', validatePassword);
+passwordCheckInput.addEventListener('focusout', validatePasswordCheck);
 passwordCheckInput.addEventListener('keypress', (e) => e.code === 'Enter' && join());
 joinButton.addEventListener('click', join);
 eyeButtonInPassword.addEventListener('click', togglePasswordInPassword);
