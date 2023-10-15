@@ -1,37 +1,42 @@
-import {$, form, testAccount, inputAccount, isFindEmail} from '../utils.js';
+import {$, inputAccount} from '../utils.js';
+import { API_URL } from '../config/apiurl.js';
 
-
-/* 로그인 계정 일치 확인 */
-function isFindAccount(userEmail, userPassword) {
-    return testAccount.findIndex(account => {
-        return userEmail === account.email && userPassword === account.password;
-    })
-}
-/* 로그인 비밀번호 일치 확인 */
-function isFindPassword(userPassword) {
-    return testAccount.findIndex(account => {
-        return userPassword === account.password;
-    })
+if(window.localStorage.getItem("user")) {
+    location.href= './folder.html'; 
 }
 
 /* 로그인 확인 */
-export function handleSigninSubmit(event) {
+export async function handleSigninSubmit(event) {
     const {userEmail, userPassword} = inputAccount;
 
+    const userData = {
+        email: userEmail,
+        password: userPassword
+    }
+
     event.preventDefault();
-    if(isFindAccount(userEmail, userPassword) > -1) {
-        alert('환영합니다.');
-        form.submit();
-        location.href= './folder.html'; 
-    } else {
-        /* 이메일 최종확인 */
-        if(isFindEmail(userEmail) <= -1) {
+    try {
+        const response = await fetch(`${API_URL}sign-in`,{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData)
+    
+        })
+        if(response.ok) {
+            const result = await response.json();
+            const {accessToken} = result.data;
+            window.localStorage.setItem("user", accessToken) /* 로컬스토리지 저장 */
+
+            alert('환영합니다.');
+            location.href= './folder.html'; 
+        } else {
             $('.email-box').classList.add('disaccord');
-        }
-        /* 비밀번호 최종확인 */ 
-        if(isFindPassword(userPassword) <= -1) {
             $('.password-box').classList.add('disaccord');
         }
+    } catch (error) {
+        console.error(error)
     }
 };
 

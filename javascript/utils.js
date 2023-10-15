@@ -1,8 +1,5 @@
 import {REG_EXP} from './constant.js';
-
-const inputs = $all('input'); /* 이메일, 비밀번호 input */
-const form = $('form') /* form */
-
+import { API_URL } from './config/apiurl.js';
 
 /* 요소 하나 선택 함수  */
 function $(selector) {
@@ -15,14 +12,6 @@ function $all(selector) {
 }
 
 
-/* 테스트 아이디&비번 */
-const testAccount = [
-    {
-        email: "test@codeit.com",
-        password: "codeit101"
-    },
-];
-
 /* 입력값 테스트 아이디&비번 */
 const inputAccount = {
     userEmail: "",
@@ -32,10 +21,28 @@ const inputAccount = {
 
 
 /* 이메일 중복확인 & 로그인 이메일 일치 확인  */
-function isFindEmail(email) {
-    return testAccount.findIndex(account => {
-        return email === account.email;
-    })
+async function isFindEmail(userEmail) {
+    const userEmailData = {
+        email : userEmail
+    };
+    try {
+        const response = await fetch(`${API_URL}check-email` ,{
+            method : 'POST',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(userEmailData)
+        });
+        if(response.ok){
+            return false;
+        } else {
+            return true;
+        }
+        
+    } catch (error) {
+        console.error(error)
+    }
+    
 }
 
 /* 페이지 위치 확인(회원가입 페이지일 때 true) */
@@ -43,13 +50,15 @@ function isLocation() {
     return location.pathname.includes('signup');
 }
 
+
+
 /* 이메일 에러 메세지 */
-function emailErrorMessage(email, emailBox) {
+async function emailErrorMessage(email, emailBox) {
     if(!email.trim()) {
         emailBox.classList.add('empty');
     } else if(!REG_EXP.CHECK_EMAIL.test(email)) {
         emailBox.classList.add('wrong');
-    } else if(isLocation() && isFindEmail(email) > -1) {
+    } else if(isLocation() && await isFindEmail(email)) {
         emailBox.classList.add('already');
     } 
 
@@ -104,10 +113,7 @@ function hendleEvent(event) {
 export {
     $, 
     $all,
-    inputs,
-    form,
     isLocation,
-    testAccount, 
     inputAccount, 
     hendleEvent,
     isFindEmail,
