@@ -1,6 +1,7 @@
 import * as nodeUtils from "../../utils/nodeUtils.js";
 import { EXP_EMAIL, EXP_PASSWORD } from "../../constants/regex.js";
 import { VALIDATE_ERRORS } from "../../constants/errorMsg.js";
+import { LOGIN_PATH, CHECK_EMAIL_PATH } from "../../constants/path.js";
 /**유효성 검사 함수
  *
  * 1.Null check\
@@ -145,4 +146,37 @@ const resetErrorEvent = (node) => {
   }
 };
 
-export { validateInput, togglePasswordVisibility };
+/**로그인 요청 함수
+ *
+ * 계정 정보를 보내 로그인 요청
+ * @param {object} param {
+  "email": "string",
+  "password": "string"
+}
+ */
+const login = async (param) => {
+  let loginGb = false;
+  try {
+    const response = await fetch(LOGIN_PATH, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(param),
+    });
+    const result = await response.json();
+    console.log(result);
+
+    //로그인 성공
+    if (response.status === 200) {
+      console.log("로그인 성공 ", result.data);
+      loginGb = true;
+      return loginGb;
+    } else {
+      throw new Error(`Login Fail \n ${result.error.message}`);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+export { validateInput, togglePasswordVisibility, login };
