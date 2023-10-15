@@ -1,5 +1,9 @@
 import { storeAccessToken } from "../../utils/auth.js";
-import { BASE_URL, SIGNIN_ENDPOINT } from "../services/endpoints.js";
+import {
+  BASE_URL,
+  CHECK_EMAIL_ENDPOINT,
+  SIGNIN_ENDPOINT,
+} from "../services/endpoints.js";
 
 export const signin = async (id, password) => {
   try {
@@ -20,6 +24,28 @@ export const signin = async (id, password) => {
     }
     if (token) {
       storeAccessToken(token);
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const checkEmailDuplication = async (email) => {
+  try {
+    const response = await fetch(`${BASE_URL}${CHECK_EMAIL_ENDPOINT}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    });
+    const result = await response.json();
+    if (response.status === 200) {
+      return result.data.isUsableNickname;
+    } else if (response.status === 409) {
+      return result.error.message;
     }
   } catch (error) {
     console.log(error.message);

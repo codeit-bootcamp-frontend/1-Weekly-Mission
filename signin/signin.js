@@ -15,7 +15,6 @@ import { signin } from "../api/auth/userApi.js";
 
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
-const pwWrapper = document.querySelector(".password-wrapper");
 const signinBtn = document.querySelector(".signin-btn");
 const eyeBtn = document.querySelector(".eye-off-btn");
 
