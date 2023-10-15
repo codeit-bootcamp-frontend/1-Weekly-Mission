@@ -54,7 +54,7 @@ const checkPasswordValidation = (event) => {
 };
 
 const checkPasswordConfirmValidation = (event) => {
-  if (event.target.value === password.value) {
+  if (event.target.value === $password.value) {
     $passwordConfirmErrorMessage.style.display = "none";
     $passwordConfirm.classList.remove("border-red");
     return true;
@@ -80,13 +80,34 @@ const togglePassword = (input, toggleButton) => {
     .setAttribute("src", "/assets/eye-off.svg");
 };
 
-const submitForm = (event) => {
+const submitForm = async (event) => {
   event.preventDefault();
-  const isVaildUser =
-    email.value === TEST_USER.email && password.value === TEST_USER.password;
-  if (isVaildUser) {
-    location.href = "/pages/folder.html";
-    return;
+  try {
+    if (
+      checkPasswordValidation &&
+      checkPasswordValidation &&
+      checkPasswordConfirmValidation
+    ) {
+      const response = await fetch(`${API}/sign-up`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: $email.value,
+          password: $password.value,
+        }),
+      });
+      const responseData = await response.json();
+      if (response.status === 200) {
+        localStorage.setItem("accessToken", responseData.accessToken);
+        window.location.href = "/pages/folder.html";
+      } else {
+        alert("회원가입을 실패했습니다. 다시 작성하시오.");
+      }
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -94,9 +115,9 @@ $email.addEventListener("focusout", checkEmailValidation);
 $password.addEventListener("focusout", checkPasswordValidation);
 $passwordConfirm.addEventListener("focusout", checkPasswordConfirmValidation);
 $passwordEye.addEventListener("click", () =>
-  togglePassword(password, passwordEye)
+  togglePassword($password, $passwordEye)
 );
 $passwordConfirmEye.addEventListener("click", () =>
-  togglePassword(passwordConfirm, passwordEye)
+  togglePassword($passwordConfirm, $passwordEye)
 );
 $signForm.addEventListener("submit", submitForm);

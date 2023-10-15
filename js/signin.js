@@ -11,10 +11,7 @@ const $passwordConfirmErrorMessage = document.querySelector(
 let eyeOn = false;
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-const TEST_USER = {
-  email: "test@codeit.com",
-  password: "codeit101",
-};
+
 const API = "https://bootcamp-api.codeit.kr/api";
 
 // 토큰 존재하는 경우
@@ -67,7 +64,6 @@ const submitForm = async (event) => {
       }),
     });
     const responseData = await response.json();
-
     if (response.status === 200) {
       // 토큰 추가
       localStorage.setItem("accessToken", responseData.accessToken);
