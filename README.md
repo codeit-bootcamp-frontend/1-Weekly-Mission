@@ -28,4 +28,4 @@
 
 [week5](https://github.com/codeit-bootcamp-frontend/1-Weekly-Mission/pull/230)
 
-[week6]()
+[week6](https://github.com/codeit-bootcamp-frontend/1-Weekly-Mission/pull/248)
