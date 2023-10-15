@@ -88,22 +88,36 @@ const submitForm = async (event) => {
       checkPasswordValidation &&
       checkPasswordConfirmValidation
     ) {
-      const response = await fetch(`${API}/sign-up`, {
+      const duplicateIdResponse = await fetch(`${API}/check-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: $email.value,
-          password: $password.value,
         }),
       });
-      const responseData = await response.json();
-      if (response.status === 200) {
-        localStorage.setItem("accessToken", responseData.accessToken);
-        window.location.href = "/pages/folder.html";
-      } else {
-        alert("회원가입을 실패했습니다. 다시 작성하시오.");
+      const duplicateIdResponseData = await duplicateIdResponse.json();
+      if (duplicateIdResponse.status === 409) {
+        alert("이미 사용중인 이메일입니다.");
+      } else if (duplicateIdResponse.status === 200) {
+        const signUpResponse = await fetch(`${API}/sign-up`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: $email.value,
+            password: $password.value,
+          }),
+        });
+        const signUpResponseData = await signUpResponse.json();
+        if (signUpResponse.status === 200) {
+          localStorage.setItem("accessToken", signUpResponseData.accessToken);
+          window.location.href = "/pages/folder.html";
+        } else {
+          alert("회원가입을 실패했습니다. 다시 작성하시오.");
+        }
       }
     }
   } catch (err) {
