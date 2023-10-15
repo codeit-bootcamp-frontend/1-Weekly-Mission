@@ -26,6 +26,7 @@ if(localStorage.getItem("accessToken")){
 
 let emailDupliValid = false;
 async function emailDuplication(){
+    emailDupliValid = false;
     try{
         const response = await fetch(`${CODEIT}/check-email`,{
             method : 'POST',
@@ -36,7 +37,6 @@ async function emailDuplication(){
         })
         if(response.status == 409){
             showErrorMessage($email,$emailErrorMessage,"이미 사용 중인 이메일입니다.");
-            emailDupliValid = false;
         }
         else if(response.status == 200)
             emailDupliValid = true;
@@ -92,11 +92,11 @@ async function validCheck(e){
                 body : JSON.stringify(user)
             });
             const signupResponse = await response.json()
-            if(response.status == 200){
+            if(response.status === 200){
                 localStorage.setItem("accessToken",signupResponse.data.accessToken)
                 location.href = '/folder'
             }
-            else if(response.status == 400){
+            else if(response.status === 400){
                 console.log(response);
             }
             else
