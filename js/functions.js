@@ -1,7 +1,7 @@
 import { email, password, passwordVisible, passwordCheckVisible } from './tags.js';
 import { checkEmail, checkSignupPassword, checkPasswordMatch, addErrorMessageClass } from './errorMsg.js';
 
-const URL = 'https://bootcamp-api.codeit.kr/api';
+const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
 
 const CHECK_EMAIL = '이메일을 확인해주세요.';
 const CHECK_PASSWORD = '비밀번호를 확인해주세요.';
@@ -28,13 +28,13 @@ function toggleEye(event) {
   }
 }
 
-async function validationLogin() {
+async function login() {
   try {
     const loginContext = {
       email: email.value,
       password: password.value,
     };
-    const signIn = await fetch(`${URL}/sign-in`, {
+    const signIn = await fetch(`${BASE_URL}/sign-in`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,17 +53,17 @@ async function validationLogin() {
   }
 }
 
-function login(event) {
+function handleLogin(event) {
   event.preventDefault();
-  validationLogin();
+  login();
 }
 
-async function duplicationEmail() {
+async function checkDuplicationEmail() {
   try {
     const emailContext = {
       email: email.value,
     };
-    const checkEmail = await fetch(`${URL}/check-email`, {
+    const checkEmail = await fetch(`${BASE_URL}/check-email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -87,13 +87,13 @@ async function signUp(event) {
   try {
     event.preventDefault();
     if (checkEmail() && checkSignupPassword() && checkPasswordMatch()) {
-      duplicationEmail(email.value);
+      checkDuplicationEmail(email.value);
     }
     const singUpContext = {
       email: email.value,
       password: password.value,
     };
-    const verifiedSignup = await fetch(`${URL}/sign-up`, {
+    const verifiedSignup = await fetch(`${BASE_URL}/sign-up`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -127,12 +127,4 @@ async function togglePasswordCheckVisible(event) {
   passwordCheckVisible.classList.toggle('on');
 }
 
-export {
-  login,
-  signUp,
-  duplicationEmail,
-  enterSignup,
-  togglePasswordCheckVisible,
-  togglePasswordVisible,
-  goToFolderPage,
-};
+export { handleLogin, signUp, enterSignup, togglePasswordCheckVisible, togglePasswordVisible, goToFolderPage };
