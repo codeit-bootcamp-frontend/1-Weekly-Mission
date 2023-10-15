@@ -1,4 +1,4 @@
-import { checkEmailDuplication } from "../api/auth/userApi.js";
+import { checkEmailDuplication, signup } from "../api/auth/userApi.js";
 import {
   emailEmptyMsg,
   emailInvalidMsg,
@@ -13,6 +13,7 @@ import {
   addPwInputErrorMessage,
   deleteErrorMessage,
   setErrorMessage,
+  storeAccessToken,
 } from "../utils/auth.js";
 
 const signupBtn = document.querySelector(".signup-btn");
@@ -23,7 +24,7 @@ const pwInput = document.querySelector(".password-input");
 const pwCheckInput = document.querySelector("#password-check-input");
 const emailErrorContainer = document.querySelector("#email-error-container");
 
-function handleSignup() {
+async function handleSignup() {
   handleEmailInputEmptyCheck();
   handleEmailInputValidCheck();
   handleEmailDuplicatedCheck();
@@ -33,7 +34,9 @@ function handleSignup() {
     !emailInput.querySelector("input-error") &&
     !pwInput.querySelector("input-error")
   ) {
-    // location.href = "/folder";
+    const token = await signup(emailInput.value.trim(), pwInput.value.trim());
+    storeAccessToken(token);
+    location.href = "../pages/folder/";
   }
 }
 

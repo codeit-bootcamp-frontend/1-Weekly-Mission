@@ -3,6 +3,7 @@ import {
   BASE_URL,
   CHECK_EMAIL_ENDPOINT,
   SIGNIN_ENDPOINT,
+  SIGNUP_ENDPOINT,
 } from "../services/endpoints.js";
 
 export const signin = async (id, password) => {
@@ -24,6 +25,28 @@ export const signin = async (id, password) => {
     }
     if (token) {
       storeAccessToken(token);
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const signup = async (email, password) => {
+  try {
+    const response = await fetch(`${BASE_URL}${SIGNUP_ENDPOINT}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+    const result = await response.json();
+    const token = result.data.accessToken;
+    if (token) {
+      return token;
     }
   } catch (error) {
     console.log(error.message);
