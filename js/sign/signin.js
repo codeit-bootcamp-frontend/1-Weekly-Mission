@@ -7,11 +7,12 @@ import {
 } from "./functions.js";
 
 (function () {
-  if (localStorage.getItem("signInToken")) {
+  console.log(document.referrer);
+  if (document.referrer && localStorage.getItem("signInToken")) {
     location.href = "./folder.html";
-    localStorage.removeItem("signInToken");
     return;
   }
+  return;
 })();
 
 const signinBtn = document.querySelector(".signin-button");
