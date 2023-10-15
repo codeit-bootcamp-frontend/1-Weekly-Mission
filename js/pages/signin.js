@@ -1,6 +1,10 @@
 import { $, displayInputError, removeInputError } from "../utils.js";
-import { DB_USERS } from "../constants.js";
+import { API } from "../constants.js";
 
+// 페이지 접근 시 엑세스토큰 보유 -> folder페이지로 이동
+if(localStorage.getItem("accessToken")) {
+  location.href = "folder.html";
+}
 
 // 비밀번호 공란 에러 확인
 function handlePasswordError(event) {
@@ -11,13 +15,6 @@ function handlePasswordError(event) {
     displayInputError(passwordInput, "비밀번호를 입력해주세요.");
     return;
   }
-}
-
-// 유저 DB 확인
-function isCorrectUser(email, password) {
-  return DB_USERS.findIndex((dbUser) => {
-    return dbUser.email === email && dbUser.password === password;
-  })
 }
 
 //존재하지 않는 이메일일 떄
@@ -44,27 +41,47 @@ export function handleTogglePassword() {
   removeInputError(passwordInput);
 }
 
-//로그인 성공 시
-function loginSuccess() {
-  alert('로그인 되었습니다.');
-  location.href = "folder.html";
-}
-
 // 로그인 클릭 시
-function handleSignIn(event) {
+async function handleSignIn(event) {
   event.preventDefault();
 
   const elements = event.target.elements;
   const emailInput = elements['email'];
   const passwordInput = elements['password'];
 
-  if (isCorrectUser(emailInput.value, passwordInput.value) > -1) {
-    return loginSuccess();
+  try {
+    const response = await fetch(`${API}/sign-in`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: emailInput.value,
+        password: passwordInput.value
+      })
+    });
+
+    const responseData = await response.json();
+
+    if(response.status === 200){
+      localStorage.setItem("accessToken", responseData.accessToken);
+      alert("로그인 되었습니다.");
+      return location.href = "folder.html";
+    }
+
+    if(response.status === 400){
+      const emailInput = $("#email");
+      const passwordInput = $("#password");
+
+      removeInputError(emailInput);
+      displayInputError(emailInput, "이메일을 확인해주세요.");
+
+      removeInputError(passwordInput);
+      displayInputError(passwordInput, "비밀번호를 확인해주세요.");
+    }
+  } catch (error){
+    console.log(error);
   }
-
-  handleToggleEmail();
-  handleTogglePassword()
 }
-
 
 export { handlePasswordError, handleSignIn };
