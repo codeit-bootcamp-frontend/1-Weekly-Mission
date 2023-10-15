@@ -54,9 +54,13 @@ const handleSignUp = async () => {
       `${APP_API}/api/sign-up`,
       callApi("POST", data)
     );
+    const result = await response.json();
+
     if (response.status === 200) {
+      localStorage.setItem("accessToken", result.data.accessToken);
       location.href = "folder.html";
     }
+
     if (response.status === 400) {
       alert("회원가입에 실패했습니다.");
     }
