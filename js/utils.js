@@ -4,8 +4,8 @@ const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 export function setInputError(elements, message) {
-  elements.input.className += ` ${SIGN_INPUT_ERROR_CLASSNAME}`;
-  elements.errorMessage.className += ` ${ERROR_MESSAGE_CLASSNAME}`;
+  elements.input.classList.add(SIGN_INPUT_ERROR_CLASSNAME);
+  elements.errorMessage.classList.add(ERROR_MESSAGE_CLASSNAME);
   elements.errorMessage.textContent = message;
 }
 
@@ -20,21 +20,20 @@ export function isEmailValid(email) {
 }
 
 export function isPasswordValid(password) {
-  console.log('test');
   return new RegExp(PASSWORD_REGEX).test(password);
 }
 
 export function togglePassword(input, toggleButton) {
   if (input.getAttribute("type") === "password") {
     input.setAttribute("type", "text");
-    toggleButton.getElementsByTagName("img")[0].setAttribute("src", "image/eye-on.svg");
+    toggleButton.getElementsByTagName("img")[0].setAttribute("src", "../images/eye-on.svg");
     return;
   }
   input.setAttribute("type", "password");
-  toggleButton.getElementsByTagName("img")[0].setAttribute("src", "image/eye-off.svg");
+  toggleButton.getElementsByTagName("img")[0].setAttribute("src", "../images/eye-off.svg");
 }
 
 export const TEST_USER = {
   email: "test@codeit.com",
-  password: "codeit101",
+  password: "sprint101",
 };

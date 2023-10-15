@@ -47,18 +47,32 @@ import {
   signForm.addEventListener("submit", submitForm);
   function submitForm(event) {
     event.preventDefault();
-  
-    const isTestUser =
-      emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
-  
-    if (isTestUser) {
-      location.href = "/folder";
-      return;
-    }
-    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
-    setInputError(
-      { input: passwordInput, errorMessage: passwordErrorMessage },
-      "비밀번호를 확인해주세요."
-    );
+
+    fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json" ,
+      },
+      body: JSON.stringify({
+        email: emailInput.value,
+        password: passwordInput.value,
+      }),
+    })
+    .then(async (response) => {
+      if (response.status === 200) {
+        const data = await response.json();
+        localStorage.setItem("login-token", data.accessToken);
+        location.href = "../folder.html";
+      } else {
+        setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
+        setInputError(
+          { input: passwordInput, errorMessage: passwordErrorMessage },
+          "비밀번호를 확인해주세요."
+        );
+      }
+    })
+    .catch((error) => {
+      console.log('Error: ', error);
+    });
   }
   
