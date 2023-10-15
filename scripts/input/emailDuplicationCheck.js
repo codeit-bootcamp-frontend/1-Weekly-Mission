@@ -2,9 +2,9 @@ import { inputEmail, emailErrorMessage } from "../constants.js";
 import { addErrorStyle } from "../errors/errors.js";
 
 //이메일 중복을 확인하는 함수
-async function emailDuplicationCheck(email) {
+async function emailDuplicationCheck(emailStr) {
   const checkEmail = {
-    email: email,
+    email: emailStr,
   };
   try {
     const response = await fetch(

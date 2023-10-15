@@ -39,6 +39,7 @@ loginForm.addEventListener("submit", function (event) {
   validAccount(email, password);
 });
 
+//자동로그인
 window.addEventListener("load", () => {
   const storedAccessToken = localStorage.getItem("accessToken");
   if (storedAccessToken) {

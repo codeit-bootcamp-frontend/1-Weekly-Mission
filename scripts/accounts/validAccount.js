@@ -7,7 +7,6 @@ import {
 } from "../constants.js";
 
 // <아이디&비밀번호 올바르게 입력했을 경우 /folder로 이동하고 아닌 경우 확인메시지 출력>
-
 async function validAccount(email, password) {
   const loginInfo = {
     email: email,
