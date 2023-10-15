@@ -13,8 +13,4 @@ const DB_USERS = [
     email: "test1@codeit.com",
     password: "codeit101"
   },
-
-  {
-
-  }
 ]

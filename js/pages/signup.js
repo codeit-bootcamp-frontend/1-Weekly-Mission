@@ -1,9 +1,3 @@
-import { 
-  emailInput,
-  passwordInput,
-  loginButton,
-} from '../pages/signin.js';
-
 import {
   $,
   handleEmailError,
@@ -11,9 +5,6 @@ import {
   displayUserInputError,
   clearUserInputError,
 } from '../utils.js'
-
-const passwordCheckInput = $('#password-check-label');
-const passwordCheckEyeOff = $('.password-check-eye-off');
 
 
 // 회원가입 비밀번호 체크 에러 다루는 함수
@@ -62,9 +53,8 @@ function handlePasswordCheckToggleEye(){
 
 
 
-emailInput.addEventListener("focusout", handleEmailError);
-passwordInput.addEventListener("focusout", handlePasswordError);
-passwordCheckEyeOff.addEventListener("click", handlePasswordCheckToggleEye);
-loginButton.addEventListener("click", handleSignUp);
-passwordCheckInput.addEventListener("focusout", handleSignUpPasswordCheckError);
-loginButton.addEventListener("click", handleSignUp);
+$('#id-label').addEventListener("focusout", handleEmailError);
+$('#password-label').addEventListener("focusout", handlePasswordError($('password-check-label')));
+$('.password-check-eye-off').addEventListener("click", handlePasswordCheckToggleEye);
+$('.login-btn').addEventListener("click", handleSignUp);
+$('#password-check-label').addEventListener("focusout", handleSignUpPasswordCheckError);

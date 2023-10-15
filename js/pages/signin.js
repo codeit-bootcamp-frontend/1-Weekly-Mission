@@ -5,18 +5,6 @@ import {
   handlePasswordError,
 } from '../utils.js'
 
-export { 
-  emailInput,
-  passwordInput,
-  loginButton,
-}
-
-const emailInput = $('#id-label');
-const passwordInput = $('#password-label');
-const loginButton = $('.login-btn');
-const eyeImage = $('.eye-off');
-
-
 
 //로그인 성공했을 때
 function loginSuccess(){
@@ -46,7 +34,7 @@ function handleToggleEye(){
 }
 
 
-emailInput.addEventListener("focusout", handleEmailError,);
-passwordInput.addEventListener("focusout", handlePasswordError);
-loginButton.addEventListener("click", handleSignIn);
-eyeImage.addEventListener("click", handleToggleEye);
+$('#id-label').addEventListener("focusout", handleEmailError,);
+$('#password-label').addEventListener("focusout", handlePasswordError($('password-label')));
+$('.login-btn').addEventListener("click", handleSignIn);
+$('.eye-off').addEventListener("click", handleToggleEye);
