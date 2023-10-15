@@ -9,14 +9,14 @@ const ALREADY_USE_EMAIL = '이미 사용중인 이메일입니다.';
 
 const goToFolderPage = () => (location.href = '../pages/folder.html');
 
-const getToken = async (responseType, tokenType) => {
+async function getToken(responseType, tokenType) {
   const response = await responseType.json();
   const result = await response.data.accessToken;
   localStorage.setItem(tokenType, result);
   goToFolderPage();
-};
+}
 
-const toggleEye = event => {
+function toggleEye(event) {
   event.preventDefault();
   const inputId = event.target.previousElementSibling;
   if (event.pointerType === 'mouse') {
@@ -26,9 +26,9 @@ const toggleEye = event => {
       inputId.type = 'text';
     }
   }
-};
+}
 
-const validationLogin = async () => {
+async function validationLogin() {
   try {
     const loginContext = {
       email: email.value,
@@ -51,14 +51,14 @@ const validationLogin = async () => {
   } catch (error) {
     console.error(error.message);
   }
-};
+}
 
-const login = event => {
+function login(event) {
   event.preventDefault();
   validationLogin();
-};
+}
 
-const duplicationEmail = async () => {
+async function duplicationEmail() {
   try {
     const emailContext = {
       email: email.value,
@@ -81,9 +81,9 @@ const duplicationEmail = async () => {
   } catch (error) {
     console.error(error.message);
   }
-};
+}
 
-const signUp = async event => {
+async function signUp(event) {
   try {
     event.preventDefault();
     if (checkEmail() && checkSignupPassword() && checkPasswordMatch()) {
@@ -109,23 +109,23 @@ const signUp = async event => {
   } catch (error) {
     console.error(error.message);
   }
-};
+}
 
-const enterSignup = event => {
+async function enterSignup(event) {
   if (event.code === 'Enter') {
     signUp(event);
   }
-};
+}
 
-const togglePasswordVisible = event => {
+async function togglePasswordVisible(event) {
   toggleEye(event);
   passwordVisible.classList.toggle('on');
-};
+}
 
-const togglePasswordCheckVisible = event => {
+async function togglePasswordCheckVisible(event) {
   toggleEye(event);
   passwordCheckVisible.classList.toggle('on');
-};
+}
 
 export {
   login,
