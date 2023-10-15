@@ -3,7 +3,7 @@ import {
   emailErrorEl, passwordErrorEl,
   emailPattern, getSignedMember, 
   signButton, eyeComponents, 
-  validateInput, changeEyeComponentOnOff, loadPage, getAccessToken
+  validateInput, toggleEyeIcon, loadPage, getAccessToken
 } from '/js/utils.js';
 
 // 비밀번호 재확인 인풋값에 대한 검사를 하기 위한 변수(인풋 태그를 가져옴)
@@ -79,7 +79,11 @@ const requestSignUp = async function () {
     location.replace('/folder.html'); 
   }
 }
- 
+
+const isValidEmail = () => {
+  return emailPattern.test(emailInputEl.value)  && passwordPattern.test(passwordInputEl.value) && passwordInputEl.value === passwordAgainInputEl.value;
+}
+
 const trySignUp = async function () {
   checkEmailInput();
   checkPasswordInput();
@@ -87,7 +91,7 @@ const trySignUp = async function () {
   const isDuplicate = await checkEmailDuplicate();
   if (!isDuplicate) {  // 만약 코드잇 계정으로 로그인 한다면
     validateInput(emailErrorEl, '이미 회원가입된 이메일입니다.', emailErrorEl);
-  } else if (emailPattern.test(emailInputEl.value)  && passwordPattern.test(passwordInputEl.value) && passwordInputEl.value === passwordAgainInputEl.value) {
+  } else if (isValidEmail()) {
     requestSignUp();
   }
 }
@@ -97,7 +101,7 @@ window.addEventListener('load', loadPage);
 emailInputEl.addEventListener('focusout', checkEmailInput);
 passwordInputEl.addEventListener('focusout', checkPasswordInput);
 signButton.addEventListener('click', trySignUp);
-[...eyeComponents].forEach(eyeComponent => eyeComponent.addEventListener('click', changeEyeComponentOnOff));
+[...eyeComponents].forEach(eyeComponent => eyeComponent.addEventListener('click', toggleEyeIcon));
 passwordAgainInputEl.addEventListener('focusout', checkPasswordAgainInput);
 emailInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && trySignUp());  // e.code도 같은 결과
 passwordInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && trySignUp());

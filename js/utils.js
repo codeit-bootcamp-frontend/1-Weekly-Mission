@@ -28,7 +28,7 @@ export const validateInput = (messageTarget, message, borderTarget, borderColor 
   borderTarget.previousElementSibling.style.borderColor = borderColor;
 }
 
-export const changeEyeComponentOnOff = (e) => {
+export const toggleEyeIcon = (e) => {
   const target = e.target;
   e.stopPropagation();
   if (!target.classList.contains('eye-on')) {

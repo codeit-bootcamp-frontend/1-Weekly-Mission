@@ -3,7 +3,7 @@ import {
   emailErrorEl, passwordErrorEl,
   emailPattern, getSignedMember, 
   signButton, eyeComponents, 
-  validateInput, changeEyeComponentOnOff, loadPage, getAccessToken
+  validateInput, toggleEyeIcon, loadPage, getAccessToken
 } from '/js/utils.js';
 
 const checkEmailInput = () => {
@@ -64,6 +64,6 @@ window.addEventListener('load', loadPage);
 emailInputEl.addEventListener('focusout', checkEmailInput);
 passwordInputEl.addEventListener('focusout', checkPasswordInput);
 signButton.addEventListener('click', tryLogin);
-[...eyeComponents].forEach(eyeComponent => eyeComponent.addEventListener('click', changeEyeComponentOnOff));
+[...eyeComponents].forEach(eyeComponent => eyeComponent.addEventListener('click', toggleEyeIcon));
 emailInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && tryLogin());  // e.code도 같은 결과
 passwordInputEl.addEventListener('keypress', (e) => e.key === 'Enter' && tryLogin());
