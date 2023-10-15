@@ -33,7 +33,13 @@ const validateInput = (e) => {
       //회원가입 페이지 전용
       if (nodeInfo.path === "signup/") {
         // 중복 체크
-        if (nodeInfo.value === "test@codeit.com") errType = 3;
+        if (errType !== 2) {
+          //수정이 필요한 부분
+          checkEmail(nodeInfo.value).then((result) => {
+            errType = result ? 0 : 3;
+          });
+          if (nodeInfo.value === "test@codeit.com") errType = 3;
+        }
       }
     } else if (
       nodeInfo.type === "password" ||
@@ -172,11 +178,48 @@ const login = async (param) => {
       console.log("로그인 성공 ", result.data);
       loginGb = true;
       return loginGb;
+    } else if (response.status === 400) {
+      throw new Error(`로그인 오류 \n ${result.error.message}`);
     } else {
       throw new Error(`Login Fail \n ${result.error.message}`);
     }
   } catch (error) {
     console.log(error);
+  }
+};
+/**이메일 중복 체크 함수
+ *
+ * @param {string} email value
+ * @returns
+ */
+const checkEmail = async (val) => {
+  let checkGb = false;
+  let param = {
+    email: val,
+  };
+  try {
+    const response = await fetch(CHECK_EMAIL_PATH, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(param),
+    });
+    const result = await response.json();
+    console.log(result);
+    console.log(response.status);
+    if (response.status === 200) {
+      checkGb = result.data.isUsableNickname;
+      return checkGb;
+    } else if (response.status === 409) {
+      console.log("사용 할 수 없는 이메일 입니다.");
+      return checkGb;
+    } else {
+      throw new Error(`checkEmail Fail \n ${result.error.message}`);
+    }
+  } catch (error) {
+    alert(error);
+    // console.log(error);
   }
 };
 export { validateInput, togglePasswordVisibility, login };
