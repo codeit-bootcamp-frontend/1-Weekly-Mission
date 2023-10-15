@@ -109,6 +109,9 @@ signupBtn.addEventListener("click", async function (event) {
           }),
         }
       );
+      if (signUpPost.status !== 200) {
+        throw new Error();
+      }
       localStorage.setItem("signupToken", signUpPost["access_token"]);
       location.href = "./folder.html";
     } else {
