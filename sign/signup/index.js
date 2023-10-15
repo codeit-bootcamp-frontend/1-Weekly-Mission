@@ -91,7 +91,7 @@ function checkPwdValidation() {
     removeErrorMessage(passwordInput, passwordError);
     return true;
   }
-}
+} 
 
 
 // 비밀번호 일치 확인 
@@ -109,10 +109,29 @@ function confirmPwd() {
 }
 
 // 회원가입 시도 
-function submitForm() { 
-
+async function submitForm() { 
   if (checkEmailValidation() && checkPwdValidation() && confirmPwd()) {
-    window.location.href = "/folder/index.html";
+    try {
+      const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', 
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailInput.value,
+          password: passwordInput.value,
+        })
+      });
+      
+      if (response.ok) {
+        window.location.href = "/folder/index.html";
+      }
+      const result = await response.json();
+
+    } catch(error) {
+      console.log(error);
+    }
   }
 }
 
