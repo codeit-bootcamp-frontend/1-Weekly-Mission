@@ -1,4 +1,4 @@
-import { validateInput, togglePasswordVisibility } from "../account.js";
+import { validateInput, togglePasswordVisibility, signup } from "../account.js";
 
 const inputEmail = document.querySelector(".email_input");
 const inputPwd = document.querySelector(".pwd_input");
@@ -23,10 +23,24 @@ eyesToggle.forEach((el) =>
 
 signupBtn.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (!errorGb) {
-    alert("회원가입 성공!");
-    location.href = "/folder";
-  } else {
-    alert("회원가입 실패!");
-  }
+  const param = {
+    email: inputEmail.value,
+    password: inputPwd.value,
+  };
+  signup(param).then((result) => {
+    console.log("회원가입 결과 : ", result);
+    if (result && !errorGb) {
+      alert("회원가입 성공!");
+      location.href = "/folder";
+    } else {
+      alert("회원가입 실패!");
+    }
+  });
+
+  // if (!errorGb) {
+  //   alert("회원가입 성공!");
+  //   location.href = "/folder";
+  // } else {
+  //   alert("회원가입 실패!");
+  // }
 });

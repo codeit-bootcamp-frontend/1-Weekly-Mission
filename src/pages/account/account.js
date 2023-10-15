@@ -1,7 +1,11 @@
 import * as nodeUtils from "../../utils/nodeUtils.js";
 import { EXP_EMAIL, EXP_PASSWORD } from "../../constants/regex.js";
 import { VALIDATE_ERRORS } from "../../constants/errorMsg.js";
-import { LOGIN_PATH, CHECK_EMAIL_PATH } from "../../constants/path.js";
+import {
+  LOGIN_PATH,
+  CHECK_EMAIL_PATH,
+  SIGNUP_PATH,
+} from "../../constants/path.js";
 /**유효성 검사 함수
  *
  * 1.Null check\
@@ -222,4 +226,39 @@ const checkEmail = async (val) => {
     // console.log(error);
   }
 };
-export { validateInput, togglePasswordVisibility, login };
+
+/**회원가입 요청 함수
+ *
+ *@param {object} param {
+  "email": "string",
+  "password": "string"
+}
+ */
+const signup = async (param) => {
+  let signupGb = false;
+  try {
+    const response = await fetch(SIGNUP_PATH, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(param),
+    });
+    const result = await response.json();
+    console.log(result);
+    console.log(response.status);
+    if (response.status === 200) {
+      signupGb = result.data;
+      return signupGb;
+    } else if (response.status === 400) {
+      console.log("회원가입 오류.");
+      return signupGb;
+    } else {
+      throw new Error(`Signup  Fail \n ${result.error.message}`);
+    }
+  } catch (error) {
+    alert(error);
+    // console.log(error);
+  }
+};
+export { validateInput, togglePasswordVisibility, login, signup };
