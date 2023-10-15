@@ -9,7 +9,6 @@ import {
   
   const emailInput = document.querySelector("#email");
   const emailErrorMessage = document.querySelector("#email-error-message");
-  emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
   function validateEmailInput(email) {
     if (email === "") {
       setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 입력해주세요.");
@@ -28,10 +27,10 @@ import {
     }
     removeInputError({ input: emailInput, errorMessage: emailErrorMessage });
   }
-  
+  emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
+
   const passwordInput = document.querySelector("#password");
   const passwordErrorMessage = document.querySelector("#password-error-message");
-  passwordInput.addEventListener("focusout", (event) => validatePasswordInput(event.target.value));
   function validatePasswordInput(password) {
     if (password === "") {
       setInputError(
@@ -49,10 +48,9 @@ import {
     }
     removeInputError({ input: passwordInput, errorMessage: passwordErrorMessage });
   }
+  passwordInput.addEventListener("focusout", (event) => validatePasswordInput(event.target.value));
 
   const passwordCheckInput = document.querySelector("#password-check");
-  const passwordCheckErrorMessage = document.querySelector("#password-check-error-message");
-  passwordCheckInput.addEventListener("keydown", (event) => validatePasswordCheckInput(event.target.value));
   function validatePasswordCheckInput(password) {
     if (password !== passwordInput.value) {
       setInputError(
@@ -63,7 +61,9 @@ import {
     }
     removeInputError({ input: passwordCheckInput, errorMessage: passwordCheckErrorMessage });
   }
-  passwordCheckInput.addEventListener("keyup", (event) => stopPasswordCheckInput(event.target.value));
+  passwordCheckInput.addEventListener("keydown", (event) => validatePasswordCheckInput(event.target.value));
+  
+  const passwordCheckErrorMessage = document.querySelector("#password-check-error-message");
   function stopPasswordCheckInput(password) {
     if (password !== passwordInput.value) {
       setInputError(
@@ -74,6 +74,7 @@ import {
     }
     removeInputError({ input: passwordCheckInput, errorMessage: passwordCheckErrorMessage });
   }
+  passwordCheckInput.addEventListener("keyup", (event) => stopPasswordCheckInput(event.target.value));
   
   const passwordToggleButton = document.querySelector("#password-toggle");
   passwordToggleButton.addEventListener("click", () =>
@@ -93,7 +94,17 @@ import {
       emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
   
     if (isTestUser) {
-      location.href = "/folder";
+      let newUser = {
+        email: "test@codeit.com",
+        paswword: "sprint101",
+      };
+
+      fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
+        method: 'POST',
+        body: JSON.stringify(newUser),
+      })
+      .then((response) => { if (response.status === '200') location.href = "../folder.html"; });
+      
       return;
     }
     setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
