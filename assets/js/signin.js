@@ -57,13 +57,35 @@ inputPw.addEventListener('focusout', validatePwInput);
 function submitForm(e) {
   e.preventDefault()
 
-  const email = inputEmail.value;
-  const password = inputPw.value;
+  const email = inputEmail.value
+  const password = inputPw.value
 
-  if (email === TEST_USER.email && password === TEST_USER.pw) {
-    formEl.submit()
-    return;
+  const apiUrl = "https://bootcamp-api.codeit.kr/api/sign-in"
+  const inputAccount = {
+    email: email,
+    password: password,
   }
+
+  fetch (apiUrl, {
+    method: "POST", 
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(inputAccount)
+  })
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else{
+      throw new Error('존재하지 않는 계정')
+    }
+  })
+  .then( (result) => {
+    formEl.submit()
+  })
+  .catch ((err) => {
+    console.log(err)
+  });
 
   removeElementOrNull(emailWrap, '.error');
   removeErrorClass(inputEmail);

@@ -1,7 +1,7 @@
 //TEST USER
 const TEST_USER = {
     email: "test@codeit.com",
-    pw: "codeit101"
+    pw: "sprint101"
   }
 
 //Element
