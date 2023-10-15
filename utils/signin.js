@@ -1,5 +1,4 @@
 import {
-	goToFolderPage,
 	getPasswordVisibility,
 	getIsFilledEmail,
 	getIsValidEmail,
@@ -13,6 +12,8 @@ import {
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 } from "/utils/constants.js";
+
+import { signIn } from "./api.js";
 
 /* 비밀번호 토글 */
 const passwordToggleElement = document.querySelector(".auth__toggle-password");
@@ -75,15 +76,12 @@ function checkPasswordFocusout(password) {
 	}
 }
 
-function getIsUserEmail(email) {
+function getIsCompleteEmail(email) {
 	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
 		return false;
 	} else if (!getIsValidEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotValidated);
-		return false;
-	} else if (!getIsExistEmail(email)) {
-		changeEmailHint(INPUT_STATUS.isNotExists);
 		return false;
 	} else {
 		changeEmailHint(INPUT_STATUS.default);
@@ -91,12 +89,9 @@ function getIsUserEmail(email) {
 	}
 }
 
-function getIsUserPassword(password) {
+function getIsCompletePassword(password) {
 	if (!getIsFilledPassword(password)) {
 		changePasswordHint(INPUT_STATUS.isNotFilled);
-		return false;
-	} else if (!getIsCorrectPassword(password)) {
-		changePasswordHint(INPUT_STATUS.isNotCorrect);
 		return false;
 	} else {
 		changePasswordHint(INPUT_STATUS.default);
@@ -105,14 +100,9 @@ function getIsUserPassword(password) {
 }
 
 function clickSignin(email, password) {
-	const isUserEmail = getIsUserEmail(email);
-	if (!isUserEmail) {
-		// TODO 유저 이메일이 아닌경우 비밀번호 입력 여부만 검사하고 리턴
-		checkPasswordFocusout(password);
-		return;
-	}
-	const isUserPassword = getIsUserPassword(password);
-	if (isUserEmail && isUserPassword) goToFolderPage();
+	const isCompleteEmail = getIsCompleteEmail(email);
+	const isCompletePassword = getIsCompletePassword(password);
+	if (isCompleteEmail && isCompletePassword) signIn({ email, password });
 }
 
 emailInputElement.addEventListener("focusout", (e) => {

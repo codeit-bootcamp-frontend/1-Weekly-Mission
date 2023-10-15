@@ -55,6 +55,8 @@ const INPUT_HINT_CLASSNAME = "auth__input--hint";
 
 const FOLDER_PAGE_PATH = "/pages/forder.html";
 
+const BASE_URL = "https://bootcamp-api.codeit.kr/api";
+
 export {
 	PASSWORD_TOGGLE_CONSTANT,
 	USERS,
@@ -64,4 +66,5 @@ export {
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 	FOLDER_PAGE_PATH,
+	BASE_URL,
 };
