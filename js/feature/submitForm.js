@@ -5,12 +5,7 @@ export default function submitForm({ $root, inputs, signService, errorMessage, i
       email: inputs[0].getData().value,
       password: inputs[1].getData().value
     }
-    // console.log()
-    // inputs.forEach((ele)=>{
-    //   const data = ele.getData()
-    //   formData[data.id] = data.value
-    // })
-    console.log(formData)
+
     return formData
   }
 
@@ -20,7 +15,7 @@ export default function submitForm({ $root, inputs, signService, errorMessage, i
       const isValid = inputs.every((el) => el.isValid())
       if(isValid){
         const url = isSignUpPage ? 'sign-up': 'sign-in'
-        const res = await signService.login(getFormData(),url)
+        const res = await signService.auth(getFormData(),url)
         if(res.ok){
           location.href = '/pages/folder.html'
         }else {

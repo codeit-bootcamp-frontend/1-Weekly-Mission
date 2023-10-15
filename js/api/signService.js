@@ -1,6 +1,6 @@
 export default function signService() {
   return {
-    async login(req, url) {
+    async auth(req, url) {
       const res = await fetch(`https://bootcamp-api.codeit.kr/api/${url}`,{
         method: 'POST',
         headers: {

@@ -9,8 +9,8 @@ export default function createTextInput({$root, empthyErrorMessage, invalidError
     $input.addEventListener('focusout',async(e) => {
       const inputValue = e.target.value
       let duplication = false
-      if(isSignUpPage){
-        const res  = await signService.login({email: inputValue},'check-email')
+      if(isSignUpPage && e.target.id === 'email'){
+        const res  = await signService.auth({email: inputValue},'check-email')
         duplication = !res.ok
       }
       isValid = validate(inputValue) && !duplication
