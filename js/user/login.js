@@ -1,12 +1,4 @@
-import {
-  emailInput,
-  pwInput,
-  email,
-  password,
-  TEST_ID,
-  TEST_PW,
-  showError,
-} from "./user.js";
+import { emailInput, pwInput, email, password, showError } from "./user.js";
 import config from "../../config/api.js";
 
 const loginBtn = document.querySelector("#loginBtn");

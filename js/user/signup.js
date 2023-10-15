@@ -3,11 +3,13 @@ import {
   password,
   emailInput,
   pwInput,
-  TEST_ID,
   showError,
   changeEyeBtn,
   removeError,
 } from "./user.js";
+import config from "../../config/api.js";
+
+const APP_API = config.APP_API;
 
 const pwConfirmInput = document.querySelector("#pwConfirmInput");
 const pwConfirmErrorMsg = document.querySelector("#pwConfirmErrorMsg");
@@ -21,14 +23,55 @@ const passwordConfirm = {
   errorMsg: pwConfirmErrorMsg,
 };
 
-function validEmail() {
-  if (emailInput.value === TEST_ID) {
-    showError(email, "이미 사용 중인 이메일입니다.");
+const checkEmail = async () => {
+  const data = {
+    email: emailInput.value,
+  };
+
+  try {
+    const response = await fetch(`${APP_API}/api/check-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.status === 409) {
+      showError(email, "이미 사용 중인 이메일입니다.");
+      return;
+    }
+  } catch (e) {
+    console.error(e);
   }
-}
+};
+
+const handleSignUp = async () => {
+  const data = {
+    email: emailInput.value,
+    password: pwInput.value,
+  };
+
+  try {
+    const response = await fetch(`${APP_API}/api/sign-up`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.status === 200) {
+      location.href = "folder.html";
+    }
+    if (response.status === 400) {
+      alert("회원가입에 실패했습니다.");
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 emailInput.addEventListener("focusout", function () {
-  validEmail();
+  checkEmail();
 });
 
 pwInput.addEventListener("focusout", function () {
@@ -63,6 +106,6 @@ signupBtn.addEventListener("click", function (e) {
     !pwInput.classList.contains("error") &&
     !pwConfirmInput.classList.contains("error")
   ) {
-    location.href = "folder.html";
+    handleSignUp();
   }
 });
