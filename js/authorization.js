@@ -116,6 +116,24 @@ const redirect = () => {
   location.href = "/pages/folder.html";
 };
 
+const signup = async () => {
+  try {
+    const account = { email: authEmail.value, password: authPassword.value };
+    const signupResponse = await requestAPI({
+      url: "sign-up",
+      method: "POST",
+      data: account,
+    });
+    const {
+      data: { accessToken },
+    } = signupResponse;
+    setAccessToken(accessToken);
+    redirect();
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
 const handleSigninSubmit = async (event) => {
   event.preventDefault();
 
@@ -166,21 +184,7 @@ const handleSignupSubmit = async (event) => {
     return;
   }
 
-  try {
-    const account = { email: authEmail.value, password: authPassword.value };
-    const signupResponse = await requestAPI({
-      url: "sign-up",
-      method: "POST",
-      data: account,
-    });
-    const {
-      data: { accessToken },
-    } = signupResponse;
-    setAccessToken(accessToken);
-    redirect();
-  } catch (error) {
-    alert(error.message);
-  }
+  await signup();
 };
 
 const initSignin = () => {
