@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>회원가입</title>
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="./src/reset.css" />
+    <link rel="stylesheet" href="./src/colors.css" />
+    <link rel="stylesheet" href="./src/sign.css" />
+  </head>
+  <body>
+    <header>
+      <a class="header__logo__wrap" href="index.html">
+        <img class="header__logo" src="./images/logo.svg" alt="홈으로 연결된 Linkbrary 로고" />
+      </a>
+      <p class="header__message">
+        이미 회원이신가요?<a class="header__link" href="signin.html">로그인 하기</a>
+      </p>
+    </header>
+    <div class="sign__wrap">
+      <form id="form" class="sign__form">
+        <div class="sign__inputs">
+          <div class="input__box">
+            <label class="input__label">이메일</label>
+            <input id="signup__email" class="input" />
+            <p id="signup__email__error__message" class="error__message"></p>
+          </div>
+          <div class="input__box password">
+            <label class="input__label">비밀번호</label>
+            <input id="signup__password" class="input" type="password" />
+            <p id="signup__password__error__message" class="error__message"></p>
+            <button id="password__toggle" class="eye__button" type="button">
+              <img class="img1" src="./images/eye-off.svg" />
+            </button>
+          </div>
+          <div class="input__box password">
+            <label class="input__label">비밀번호 확인</label>
+            <input id="signup__password__check" class="input" type="password" />
+            <p id="signup__password__check__error__message" class="error__message"></p>
+            <button id="password__check__toggle" class="eye__button" type="button">
+              <img class="img2" src="./images/eye-off.svg" />
+            </button>
+          </div>
+        </div>
+        <button class="cta" type="submit">회원가입</button>
+      </form>
+      <div class="sns__box">
+        <span class="sns__text">다른 방식으로 가입하기</span>
+        <div class="sns__link__wrap">
+          <a class="sns__link google__link" href="https://www.google.com/">
+            <img src="./images/signin-google.png" />
+          </a>
+          <a class="sns__link kakao__link" href="https://www.kakaocorp.com/page/">
+            <img src="./images/signin-talk.png" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/signup.js"></script>
+  </body>
+</html>
