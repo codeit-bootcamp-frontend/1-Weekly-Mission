@@ -16,19 +16,19 @@ export const emailPattern = /^([\w\.\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9]
   // TLD 2~8, 일부 특수문자 가능한 이메일로 수정(일부 Daum user email) 
 
 // 코드잇 로그인 계정 정보
-export const accountInfo = Object.freeze({  // freeze(): 읽기 전용의 객체를 생성하기 위해.. depth마다 해줘야함
-  codeit: Object.freeze({
-    id: 'test@codeit.com',
-    password: 'codeit101'
-  })
-});
+// export const accountInfo = Object.freeze({  // freeze(): 읽기 전용의 객체를 생성하기 위해.. depth마다 해줘야함
+//   codeit: Object.freeze({
+//     email: 'test@codeit.com',
+//     password: 'codeit101'
+//   })
+// });
 
 export const validateInput = (messageTarget, message, borderTarget, borderColor = 'var(--red)') => {
   messageTarget.textContent = message;
   borderTarget.previousElementSibling.style.borderColor = borderColor;
 }
 
-export const changeEyeComponentOnOff = (e) => {
+export const toggleEyeIcon = (e) => {
   const target = e.target;
   e.stopPropagation();
   if (!target.classList.contains('eye-on')) {
@@ -40,4 +40,23 @@ export const changeEyeComponentOnOff = (e) => {
     target.classList.remove('eye-on');
     target.previousElementSibling.type ="password";
   }
+}
+
+export const getSignedMember = () => {
+  return {
+    email: emailInputEl.value,
+    password: passwordInputEl.value
+  };
+};
+
+export const loadPage = async function () {
+  if (localStorage.getItem("accessToken")) {
+    location.replace('/folder.html'); 
+  }
+}
+
+export const getAccessToken = async function (response) {
+  const responseData = await response.json()  // 응답의 JSON 데이터 추출
+  const accessToken = responseData.data.accessToken
+  localStorage.setItem("accessToken", accessToken);
 }
