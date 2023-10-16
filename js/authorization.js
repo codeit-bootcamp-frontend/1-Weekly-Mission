@@ -4,7 +4,7 @@ import {
   removeErrorMessage,
   ERROR_INPUT_STYLE,
 } from "./paintError.js";
-import { requestAPI, checkToken } from "./service.js";
+import { requestAPI, checkToken } from "./apiClient.js";
 
 const authForm = document.querySelector(".form");
 const authInputs = document.querySelectorAll(".form__input-box");
