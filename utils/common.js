@@ -24,3 +24,9 @@ export function togglePasswordVisibility(inputElement, toggleElement) {
     toggleElement.src = "/assets/eye-off.svg";
   }
 }
+
+export function redirectToFolderIfAuthenticated() {
+  if (localStorage.getItem("accessToken")) {
+    window.location.href = "/folder";
+  }
+}

@@ -2,6 +2,7 @@ import {
   displayError,
   resetErrorMessage,
   togglePasswordVisibility,
+  redirectToFolderIfAuthenticated,
 } from "/utils/common.js";
 import { isValidEmail, isValidPassword } from "/utils/validation.js";
 import {
@@ -25,10 +26,7 @@ const {
   PASSWORD_REQUIREMENTS,
 } = ERROR_MESSAGES;
 
-// 페이지 접근 시 accessToken 확인하고 있으면 /folder로 이동
-if (localStorage.getItem("accessToken")) {
-  window.location.href = "/folder";
-}
+redirectToFolderIfAuthenticated();
 
 const emailInput = document.querySelector(USERNAME_SELECTOR);
 const passwordInput = document.querySelector(PASSWORD_SELECTOR);

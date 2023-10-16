@@ -2,6 +2,7 @@ import {
   displayError,
   resetErrorMessage,
   togglePasswordVisibility,
+  redirectToFolderIfAuthenticated,
 } from "/utils/common.js";
 import { isValidEmail } from "/utils/validation.js";
 import {
@@ -22,9 +23,7 @@ const {
 } = ERROR_MESSAGES;
 import { signIn } from "/api/auth.js";
 
-if (localStorage.getItem("accessToken")) {
-  location.href = "/folder";
-}
+redirectToFolderIfAuthenticated();
 
 const emailInput = document.querySelector(USERNAME_SELECTOR);
 const passwordInput = document.querySelector(PASSWORD_SELECTOR);
