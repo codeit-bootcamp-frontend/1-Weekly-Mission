@@ -188,9 +188,12 @@ const handleSignupSubmit = async (event) => {
 };
 
 const initSignin = () => {
-  if (getAccessToken()) {
-    redirect();
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    if (getAccessToken()) {
+      redirect();
+    }
+  });
+
   for (const input of authInputs) {
     input.addEventListener("focusout", ({ target }) => checkEmptyInput(target));
   }
@@ -201,9 +204,12 @@ const initSignin = () => {
 };
 
 const initSignup = () => {
-  if (getAccessToken()) {
-    redirect();
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    if (getAccessToken()) {
+      redirect();
+    }
+  });
+
   authEmail.addEventListener("focusout", ({ target }) =>
     checkEmptyInput(target)
   );
