@@ -20,6 +20,7 @@ const {
   EMAIL_VERIFY,
   PASSWORD_VERIFY,
 } = ERROR_MESSAGES;
+import { signIn } from "/api/auth.js";
 
 if (localStorage.getItem("accessToken")) {
   location.href = "/folder";
@@ -59,17 +60,7 @@ loginBtn.addEventListener("click", async function () {
   const email = emailInput.value;
   const password = passwordInput.value;
 
-  const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: email,
-      password: password,
-    }),
-  });
-
+  const response = await signIn(email, password);
   const responseData = await response.json();
 
   if (response.status === 200) {
