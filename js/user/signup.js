@@ -3,11 +3,14 @@ import {
   password,
   emailInput,
   pwInput,
-  TEST_ID,
   showError,
   changeEyeBtn,
   removeError,
 } from "./user.js";
+import config from "../../config/api.js";
+import callApi from "../../config/index.js";
+
+const APP_API = config.APP_API;
 
 const pwConfirmInput = document.querySelector("#pwConfirmInput");
 const pwConfirmErrorMsg = document.querySelector("#pwConfirmErrorMsg");
@@ -21,19 +24,70 @@ const passwordConfirm = {
   errorMsg: pwConfirmErrorMsg,
 };
 
-function validEmail() {
-  if (emailInput.value === TEST_ID) {
-    showError(email, "이미 사용 중인 이메일입니다.");
-  }
-}
+const regexPw = /^(?=.*[a-zA-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
 
-emailInput.addEventListener("focusout", function () {
-  validEmail();
-});
+const inputArr = [emailInput, pwInput, pwConfirmInput];
+
+const checkEmail = async () => {
+  const data = {
+    email: emailInput.value,
+  };
+
+  try {
+    const response = await fetch(
+      `${APP_API}/api/check-email`,
+      callApi("POST", data)
+    );
+    if (response.status === 409) {
+      showError(email, "이미 사용 중인 이메일입니다.");
+      return;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const handleSignUp = async () => {
+  const data = {
+    email: emailInput.value,
+    password: pwInput.value,
+  };
+
+  try {
+    const response = await fetch(
+      `${APP_API}/api/sign-up`,
+      callApi("POST", data)
+    );
+    const result = await response.json();
+
+    if (response.status === 200) {
+      localStorage.setItem("accessToken", result.data.accessToken);
+      location.href = "folder.html";
+    }
+
+    if (response.status === 400) {
+      alert("회원가입에 실패했습니다.");
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const isError = () => {
+  return inputArr.every((e) => {
+    return e.classList.contains("error") === false;
+  });
+};
+
+const isEmpty = () => {
+  return inputArr.every((e) => {
+    return e.value;
+  });
+};
+
+emailInput.addEventListener("focusout", checkEmail);
 
 pwInput.addEventListener("focusout", function () {
-  const regexPw = /^(?=.*[a-zA-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
-
   if (!regexPw.test(pwInput.value)) {
     showError(password, "비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.");
   } else {
@@ -55,14 +109,9 @@ pwConfirmInput.addEventListener("focusout", function () {
 
 signupBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  if (
-    emailInput.value &&
-    pwInput &&
-    pwConfirmInput &&
-    !emailInput.classList.contains("error") &&
-    !pwInput.classList.contains("error") &&
-    !pwConfirmInput.classList.contains("error")
-  ) {
-    location.href = "folder.html";
+  if (isEmpty() && isError()) {
+    handleSignUp();
+  } else {
+    alert("erro");
   }
 });

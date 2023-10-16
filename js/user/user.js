@@ -6,6 +6,11 @@ const pwInput = document.querySelector("#pwInput");
 const pwErrorMsg = document.querySelector("#pwErrorMsg");
 const eyeImgBtn = document.querySelector(".eyeOffImg");
 
+const eyeOnSrc = "../assets/user/img_eyeOn.png";
+const eyeOffSrc = "../assets/user/img_eyeOff.png";
+
+const regexEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
 const email = {
   input: emailInput,
   errorMsg: emailErrorMsg,
@@ -31,7 +36,6 @@ function removeError(obj) {
 }
 
 function checkInput(type, obj) {
-  const exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
   const input = obj.input;
 
   if (input.value === "") {
@@ -41,7 +45,7 @@ function checkInput(type, obj) {
       showError(obj, "비밀번호를 입력해주세요.");
     }
   } else {
-    if (type === "email" && !exptext.test(input.value)) {
+    if (type === "email" && !regexEmail.test(input.value)) {
       showError(obj, "올바른 이메일 주소가 아닙니다.");
     } else {
       removeError(obj);
@@ -50,19 +54,18 @@ function checkInput(type, obj) {
 }
 
 function changeEyeBtn(input, btn) {
-  const eyeOnSrc = "../assets/user/img_eyeOn.png";
-  const eyeOffSrc = "../assets/user/img_eyeOff.png";
+  const isOn = input.classList.toggle("on");
 
-  input.classList.toggle("on");
-
-  if (input.classList.contains("on")) {
-    input.type = "text";
-    btn.src = eyeOnSrc;
-  } else {
-    input.type = "password";
-    btn.src = eyeOffSrc;
-  }
+  input.type = isOn ? "text" : "password";
+  btn.src = isOn ? eyeOnSrc : eyeOffSrc;
 }
+
+const checkUser = () => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    location.href = "folder.html";
+  }
+};
 
 emailInput.addEventListener("focusout", function () {
   checkInput("email", email);
@@ -74,6 +77,10 @@ pwInput.addEventListener("focusout", function () {
 
 eyeImgBtn.addEventListener("click", function () {
   changeEyeBtn(password.input, eyeImgBtn);
+});
+
+window.addEventListener("DOMContentLoaded", function () {
+  checkUser();
 });
 
 export {
