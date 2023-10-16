@@ -1,5 +1,8 @@
 /* 공통 함수 */
 
+import { emailReg } from './validationRegExp.js';
+import { errorMessages } from './errorMessages.js';
+
 /**
  * validateInputValue 함수를 호출한다.
  * @param {FocusEvent} e 이벤트 객체
@@ -24,9 +27,6 @@ function validateInputValue(id, value){
         setErrorMessage(id, 'empty');
 
     }else if(id === 'email'){
-        // 이메일 형식인지 체크
-        const emailReg = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
-
         if(emailReg.test(value) === false){
             setErrorMessage(id, 'validation');
         }
@@ -34,7 +34,7 @@ function validateInputValue(id, value){
 }
 
 /**
- * password, password-check의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
+ * password, passwordCheck의 문자열을 숨기거나 보이게 하고, image의 alt를 변경한다.
  * image의 src는 pages/login/style.css에서 변경한다.
  * @param {PointerEvent} e 이벤트 객체
  */
@@ -82,43 +82,21 @@ function setErrorMessage(id, type){
  * @returns {string} 에러메세지
  */
 function getErrorMessage(id, type){
-    const errorMessages = {
-        empty : {
-            email : '이메일을 입력해주세요.',
-            password : '비밀번호를 입력해주세요.',
-            'password-check' : '비밀번호를 한 번 더 입력해주세요.',
-        },
-        validation : {
-            email : '올바른 이메일 주소가 아닙니다.',
-            password : '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.',
-        },
-        login : {
-            email : '이메일을 확인해주세요.',
-            password : '비밀번호를 확인해주세요.',
-        },
-        coincidence : {
-            'password-check' : '비밀번호가 일치하지 않아요.',
-        },
-        duplicate : {
-            email : '이미 사용 중인 이메일입니다.',
-        }
-    };
-
     return errorMessages[type]?.[id] ?? "";
 }
 
 /**
  * 에러메세지를 삭제할 대상을 removeErrorClassAndMessage함수의 인자로 전달한다.
- * password의 값이 변경된 경우, password-check의 값을 비운다.
+ * password의 값이 변경된 경우, passwordCheck의 값을 비운다.
  * @param {KeyboardEvent} e 이벤트 객체
  */
 function _onRemoveValidationError(e){
     if(e.key !== 'Enter'){
         removeErrorClassAndMessage(e.target);
 
-        // password값이 변경되었을 때, password-check값을 비운다.
+        // password값이 변경되었을 때, passwordCheck값을 비운다.
         if(e.target.id === 'password'){
-            const passwordCheck = document.querySelector('#password-check');
+            const passwordCheck = document.querySelector('#passwordCheck');
             if(passwordCheck){
                 passwordCheck.value = '';
                 removeErrorClassAndMessage(passwordCheck);
@@ -150,4 +128,31 @@ function isFormContainsError(){
     return errors.length !== 0;
 }
 
-export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError, isFormContainsError, validateInputValue, removeErrorClassAndMessage };
+/**
+ * 서버에 POST Request를 보낸다.
+ * @param {string} api 요청을 보낼 api 이름
+ * @param {object} data 서버로 보낼 데이터
+ * @returns {promise} 서버에서 받은 response를 리턴한다.
+ */
+function postRequest(api, data){
+    return fetch(`https://bootcamp-api.codeit.kr/api/${api}`,{
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
+
+/**
+ * accessToken이 있다면 로그인 성공 페이지로 이동한다.
+ */
+function loginCheck(){
+    if(localStorage.getItem('accessToken')){
+        location.href = "/pages/folder";
+    }
+}
+
+export { _onValidateInputValue, _onHidePassword, setErrorMessage, _onRemoveValidationError
+    ,isFormContainsError, validateInputValue, removeErrorClassAndMessage, postRequest
+    , loginCheck};

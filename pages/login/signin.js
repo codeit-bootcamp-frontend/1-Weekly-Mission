@@ -1,16 +1,18 @@
-import {setErrorMessage, isFormContainsError, validateInputValue, removeErrorClassAndMessage} from './functions.js';
+import {setErrorMessage, isFormContainsError, validateInputValue, removeErrorClassAndMessage, postRequest, loginCheck} from './functions.js';
 import {form} from "./tags.js";
 
 const signinButton = document.querySelector('#signin-button');
 
-signinButton.addEventListener('click', _onClickLogin);
+signinButton.addEventListener('click', _onLogin);
 form.addEventListener('keydown',_onEnterLogin);
 form.addEventListener('keydown',_onRemoveALLErrorClassAndMessage);
+
+loginCheck();
 
 /**
  * 유효성 검사 후 login함수를 호출한다.
  */
-function _onClickLogin(){
+function _onLogin(){
     validateAll();
     login();
 }
@@ -19,8 +21,31 @@ function _onClickLogin(){
  * 에러가 있는지 확인하고, 존재하는 계정인지 확인 후, 로그인 한다.
  */
 function login(){
-    if(isFormContainsError() === false && isVerificatedAccount() === true){
-        location.href = "/pages/folder";
+    if(!isFormContainsError()){
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
+
+        const account = {
+            email: email.value,
+            password: password.value,
+        }
+
+        postRequest('sign-in',account)
+            .then((response) => {
+                if(response.ok){
+                    return response.json();
+                }else{
+                    setErrorMessage(email.id, 'login');
+                    setErrorMessage(password.id, 'login');
+                }
+            })
+            .then((result) => {
+                // 로컬스토리지에 accessToken저장
+                localStorage.setItem('accessToken',result.data.accessToken);
+
+                // location.href = "/pages/folder";
+                location.reload();
+            })
     }
 }
 
@@ -29,8 +54,7 @@ function login(){
  */
 function _onEnterLogin(e){
     if(e.key === 'Enter'){
-        validateAll();
-        login();
+        _onLogin();
     }
 }
 
@@ -42,24 +66,6 @@ function validateAll(){
 
     for(const input of inputs){
         validateInputValue(input.id, input.value);
-    }
-}
-
-/**
- * 유효한 계정인지 확인 후, 유효하지 않다면 에러메세지를 출력한다.
- */
-function isVerificatedAccount(){
-
-    const email = document.querySelector('#email');
-    const password = document.querySelector('#password');
-
-    if(email.value === 'test@codeit.com' && password.value === 'codeit101'){
-        return true;
-    }else{
-        // 에러메세지 출력.
-        setErrorMessage(email.id, 'login');
-        setErrorMessage(password.id, 'login');
-        return false;
     }
 }
 
