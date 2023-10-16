@@ -158,11 +158,11 @@ const handleSignupSubmit = async (event) => {
   checkPasswordMatch();
   await checkEmailAvailability(authEmail);
 
-  const isValidForm = ![...authInputs].some((input) =>
+  const hasErrorMessage = [...authInputs].some((input) =>
     input.classList.contains(ERROR_INPUT_STYLE)
   );
 
-  if (!isValidForm) {
+  if (hasErrorMessage) {
     return;
   }
 
