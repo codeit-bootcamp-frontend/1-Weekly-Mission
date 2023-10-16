@@ -15,11 +15,6 @@ const togglePasswordButtons = document.querySelectorAll(
   ".form__password-toggle"
 );
 
-const ACCOUNT = {
-  email: "test@codeit.com",
-  password: "codeit101",
-};
-
 const checkEmptyInput = (target) => {
   if (!target.value) {
     paintErrorMessage({
@@ -65,16 +60,15 @@ const checkEmailAvailability = async (target) => {
     return;
   }
 
-  const email = { email: target.value };
-
   try {
-    const checkEmailResponse = await requestAPI("check-email", email);
-    if (checkEmailResponse.status === 409) {
-      throw new Error("existingEmail");
-    }
+    const checkEmailResponse = await requestAPI({
+      url: "check-email",
+      method: "POST",
+      data: { email: target.value },
+    });
     removeErrorMessage(target);
   } catch (error) {
-    if (error.message === "existingEmail") {
+    if (error.message === "409") {
       paintErrorMessage({
         error: "unavailableEmail",
         type: target.type,
@@ -125,19 +119,20 @@ const redirect = () => {
 const handleSigninSubmit = async (event) => {
   event.preventDefault();
 
-  const account = { email: authEmail.value, password: authPassword.value };
-
   try {
-    const signinResponse = await requestAPI("sign-in", account);
-    if (signinResponse.status === 400) {
-      throw new Error("invalidCredentials");
-    }
-    const signinData = await signinResponse.json();
-    const accessToken = signinData.data.accessToken;
+    const account = { email: authEmail.value, password: authPassword.value };
+    const signinResponse = await requestAPI({
+      url: "sign-in",
+      method: "POST",
+      data: account,
+    });
+    const {
+      data: { accessToken },
+    } = signinResponse;
     localStorage.setItem("accessToken", accessToken);
     redirect();
   } catch (error) {
-    if (error.message === "invalidCredentials") {
+    if (error.message === "400") {
       paintErrorMessage({
         error: "invalidLogin",
         type: "email",
@@ -171,15 +166,16 @@ const handleSignupSubmit = async (event) => {
     return;
   }
 
-  const account = { email: authEmail.value, password: authPassword.value };
-
   try {
-    const signupResponse = await requestAPI("sign-up", account);
-    if (signupResponse.status === 400) {
-      throw new Error("invalidCredentials");
-    }
-    const signupData = await signupResponse.json();
-    const accessToken = signupData.data.accessToken;
+    const account = { email: authEmail.value, password: authPassword.value };
+    const signupResponse = await requestAPI({
+      url: "sign-up",
+      method: "POST",
+      data: account,
+    });
+    const {
+      data: { accessToken },
+    } = signupResponse;
     localStorage.setItem("accessToken", accessToken);
     redirect();
   } catch (error) {
