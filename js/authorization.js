@@ -4,7 +4,7 @@ import {
   removeErrorMessage,
   ERROR_INPUT_STYLE,
 } from "./paintError.js";
-import { requestAPI, checkToken } from "./apiClient.js";
+import { requestAPI, setAccessToken, getAccessToken } from "./apiClient.js";
 
 const authForm = document.querySelector(".form");
 const authInputs = document.querySelectorAll(".form__input-box");
@@ -129,7 +129,7 @@ const handleSigninSubmit = async (event) => {
     const {
       data: { accessToken },
     } = signinResponse;
-    localStorage.setItem("accessToken", accessToken);
+    setAccessToken(accessToken);
     redirect();
   } catch (error) {
     if (error.message === "400") {
@@ -176,7 +176,7 @@ const handleSignupSubmit = async (event) => {
     const {
       data: { accessToken },
     } = signupResponse;
-    localStorage.setItem("accessToken", accessToken);
+    setAccessToken(accessToken);
     redirect();
   } catch (error) {
     alert(error.message);
@@ -184,7 +184,7 @@ const handleSignupSubmit = async (event) => {
 };
 
 const initSignin = () => {
-  if (checkToken("accessToken")) {
+  if (getAccessToken()) {
     redirect();
   }
   for (const input of authInputs) {
@@ -197,7 +197,7 @@ const initSignin = () => {
 };
 
 const initSignup = () => {
-  if (checkToken("accessToken")) {
+  if (getAccessToken()) {
     redirect();
   }
   authEmail.addEventListener("focusout", ({ target }) =>

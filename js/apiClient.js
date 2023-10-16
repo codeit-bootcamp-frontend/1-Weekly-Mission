@@ -18,8 +18,12 @@ const requestAPI = async ({ url, method, data }) => {
   }
 };
 
-const checkToken = (token) => {
-  return localStorage.getItem(token);
+const setAccessToken = (data) => {
+  return localStorage.setItem("accessToken", data);
 };
 
-export { requestAPI, checkToken };
+const getAccessToken = () => {
+  return localStorage.getItem("accessToken");
+};
+
+export { requestAPI, setAccessToken, getAccessToken };
