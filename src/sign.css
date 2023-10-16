@@ -5,11 +5,11 @@ body {
   align-items: center;
   row-gap: 3rem;
   padding: 12rem 3.2rem 0;
-
+  /*TB size*/
   @media (min-width: 768px) {
     padding: 20rem 0 0;
   }
-
+  /*PC size*/
   @media (min-width: 1200px) {
     padding: 23.8rem 0 0;
   }
@@ -21,16 +21,16 @@ header {
   row-gap: 1.6rem;
 }
 
-.logo-link {
+.header__logo__wrap{
   display: flex;
   justify-content: center;
 }
 
-.header-logo {
+.header__logo {
   height: 3.8rem;
 }
 
-.header-message {
+.header__message {
   display: flex;
   column-gap: 0.8rem;
   font-size: 1.6rem;
@@ -38,7 +38,7 @@ header {
   line-height: 150%;
 }
 
-.header-link {
+.header__link {
   height: fit-content;
   font-size: 1.6rem;
   font-weight: 600;
@@ -47,48 +47,48 @@ header {
   border-bottom: 0.1rem solid var(--primary);
 }
 
-.sign-box {
+.sign__wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 3.2rem;
   width: 100%;
   max-width: 40rem;
-
+  /*over TB size*/
   @media (min-width: 768px) {
     width: 40rem;
   }
 }
 
-.sign-form {
+.sign__form {
   display: flex;
   flex-direction: column;
   row-gap: 3rem;
   width: 100%;
 }
 
-.sign-inputs {
+.sign__inputs {
   display: flex;
   flex-direction: column;
   row-gap: 2.4rem;
 }
 
-.sign-input-box {
+.input__box {
   display: flex;
   flex-direction: column;
   row-gap: 1.2rem;
 }
 
-.sign-password {
+.password {
   position: relative;
 }
 
-.sign-input-label {
+.input__label {
   font-size: 1.4rem;
   font-weight: 400;
 }
 
-.sign-input {
+.input {
   padding: 1.8rem 1.5rem;
   border-radius: 0.8rem;
   border: 0.1rem solid var(--gray20);
@@ -96,19 +96,19 @@ header {
   line-height: 150%;
 }
 
-.sign-input:focus {
+.input:focus {
   border-color: var(--primary);
 }
 
-.sign-input.sign-input-error {
+.input.input--error {
   border-color: var(--red);
 }
 
-.sign-input.sign-input-error:focus {
+.input.input--error:focus {
   border-color: var(--red);
 }
 
-.error-message {
+.error__message {
   display: none;
   margin-top: -0.4rem;
   font-size: 1.4rem;
@@ -116,11 +116,11 @@ header {
   color: var(--red);
 }
 
-.error-message.error-message-on {
+.error__message.error__message--on {
   display: inline-block;
 }
 
-.eye-button {
+.eye__button {
   position: absolute;
   top: 5.1rem;
   right: 1.5rem;
@@ -141,7 +141,7 @@ header {
   font-weight: 600;
 }
 
-.sns-box {
+.sns__box {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,12 +152,18 @@ header {
   background-color: var(--gray10);
 }
 
-.sns-links {
+.sns__text {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--gray100);
+}
+
+.sns__link__wrap {
   display: flex;
   column-gap: 1.6rem;
 }
 
-.sns-link {
+.sns__link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,18 +172,12 @@ header {
   border-radius: 50%;
 }
 
-.sns-text {
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: var(--gray100);
-}
-
-.google-link {
+.google__link {
   background-color: var(--white);
   border: 0.1rem solid #d3d4dd;
 }
 
-.kakao-link {
+.kakao__link {
   padding-top: 0.2rem;
   background-color: #f5e14b;
 }
