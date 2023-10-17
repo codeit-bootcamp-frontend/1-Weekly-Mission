@@ -74,7 +74,7 @@ async function submitForm() {
     });
 
     if (response.status === 200){
-      location.href = "/folder/index.html";
+      location.href = "/folder";
     } else if (response.status === 400) {
       addErrorMessage(emailInput, emailError, EMAIL_WRONG);
       addErrorMessage(passwordInput, passwordError, PASSWORD_WRONG);
