@@ -48,7 +48,7 @@ function checkEmailValidation() {
   } else if (!isEmail(email)) {
     addErrorMessage(emailInput, emailError, EMAIL_INVALID);
     return false;
-  } else if (isDuplicatedEmail(email)) {
+  } else if (await (isDuplicatedEmail(email))) {
     addErrorMessage(emailInput, emailError, EMAIL_USED); 
     return false;
   } else {
