@@ -1,4 +1,4 @@
-import { checkEmailDuplication, signup } from "../api/auth/userApi.js";
+import { checkEmailDuplication, signup } from "../api/auth/user.js";
 import {
   emailEmptyMsg,
   emailInvalidMsg,

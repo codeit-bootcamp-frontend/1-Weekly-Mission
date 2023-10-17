@@ -13,7 +13,7 @@ import {
   hasToken,
 } from "../utils/auth.js";
 import { TEST_EMAIL, TEST_PASSWORD } from "../constants/auth.js";
-import { signin } from "../api/auth/userApi.js";
+import { signin } from "../api/auth/user.js";
 
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
