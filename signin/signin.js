@@ -2,6 +2,7 @@ import {
   displayError,
   resetErrorMessage,
   togglePasswordVisibility,
+  redirectToFolderIfAuthenticated,
 } from "/utils/common.js";
 import { isValidEmail } from "/utils/validation.js";
 import {
@@ -20,6 +21,9 @@ const {
   EMAIL_VERIFY,
   PASSWORD_VERIFY,
 } = ERROR_MESSAGES;
+import { signIn } from "/api/auth.js";
+
+redirectToFolderIfAuthenticated();
 
 const emailInput = document.querySelector(USERNAME_SELECTOR);
 const passwordInput = document.querySelector(PASSWORD_SELECTOR);
@@ -51,13 +55,19 @@ function checkPasswordInput() {
 emailInput.addEventListener("blur", checkEmailValidity);
 passwordInput.addEventListener("blur", checkPasswordInput);
 
-loginBtn.addEventListener("click", function () {
+loginBtn.addEventListener("click", async function () {
   const email = emailInput.value;
   const password = passwordInput.value;
 
-  if (email === "test@codeit.com" && password === "codeit101") {
+  const response = await signIn(email, password);
+  const responseData = await response.json();
+
+  if (response.status === 200) {
+    // 로그인 성공
+    localStorage.setItem("accessToken", responseData.accessToken); // accessToken 저장
     location.href = "/folder";
-  } else {
+  } else if (response.status === 400) {
+    // 로그인 오류
     displayError(emailInput, emailErrorText, EMAIL_VERIFY);
     displayError(passwordInput, passwordErrorText, PASSWORD_VERIFY);
   }
