@@ -38,25 +38,6 @@ const eyeIcon_Re = document.querySelector(EYE_ICON_RE);
 const loginBtn = document.querySelector(LOGIN_BUTTON);
 
 
-// 이메일 유효성 검사 
-function checkEmailValidation() {
-  const email = emailInput.value.trim();
-
-  if (email === '') {
-    addErrorMessage(emailInput, emailError, EMAIL_EMPTY);
-    return false;
-  } else if (!isEmail(email)) {
-    addErrorMessage(emailInput, emailError, EMAIL_INVALID);
-    return false;
-  } else if (await (isDuplicatedEmail(email))) {
-    addErrorMessage(emailInput, emailError, EMAIL_USED); 
-    return false;
-  } else {
-    removeErrorMessage(emailInput, emailError);
-    return true;
-  }
-}
-
 // 이메일 중복 확인
 async function isDuplicatedEmail(email) {
   try {
@@ -76,6 +57,27 @@ async function isDuplicatedEmail(email) {
     console.log(error);
   }
 }
+
+
+// 이메일 유효성 검사 
+async function checkEmailValidation() {
+  const email = emailInput.value.trim();
+
+  if (email === '') {
+    addErrorMessage(emailInput, emailError, EMAIL_EMPTY);
+    return false;
+  } else if (!isEmail(email)) {
+    addErrorMessage(emailInput, emailError, EMAIL_INVALID);
+    return false;
+  } else if (await isDuplicatedEmail(email)) {
+    addErrorMessage(emailInput, emailError, EMAIL_USED); 
+    return false;
+  } else {
+    removeErrorMessage(emailInput, emailError);
+    return true;
+  }
+}
+
 
 // 비밀번호 유효성 검사 
 function checkPwdValidation() {
