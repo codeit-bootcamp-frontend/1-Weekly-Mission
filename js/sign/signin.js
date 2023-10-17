@@ -1,17 +1,19 @@
-import {
-  email,
-  password,
-  emailError,
-  passwordError,
-  userEmail,
-  userPassword,
-} from "./tags.js";
+import { email, password, emailError, passwordError } from "./consts.js";
 import {
   appearError,
   disappearError,
   eyeCheck,
   isValidEmail,
 } from "./functions.js";
+
+(function () {
+  console.log(document.referrer);
+  if (document.referrer && localStorage.getItem("signInToken")) {
+    location.href = "./folder.html";
+    return;
+  }
+  return;
+})();
 
 const signinBtn = document.querySelector(".signin-button");
 const eyeBtn = document.querySelector("#eye-button1");
@@ -39,16 +41,28 @@ password.addEventListener("blur", passwordChecker);
 
 eyeBtn.addEventListener("click", eyeCheck);
 
-signinBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  if (
-    userEmail.includes(email.value) &&
-    userPassword.includes(password.value)
-  ) {
-    location.href = "./folder.html";
-    disappearError(email, emailError);
-    disappearError(password, passwordError);
-  } else {
+signinBtn.addEventListener("click", async function (event) {
+  event.preventDefault();
+  try {
+    const userInfo = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value,
+      }),
+    });
+    if (userInfo.status === 200) {
+      location.href = "./folder.html";
+      disappearError(email, emailError);
+      disappearError(password, passwordError);
+      localStorage.setItem("signInToken", userInfo["access_token"]);
+    } else {
+      throw new Error();
+    }
+  } catch (e) {
     appearError(email, emailError, "이메일을 확인해주세요.");
     appearError(password, passwordError, "비밀번호를 확인해주세요.");
   }

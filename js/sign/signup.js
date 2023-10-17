@@ -5,8 +5,7 @@ import {
   emailError,
   passwordError,
   passwordRepeatError,
-  userEmail,
-} from "./tags.js";
+} from "./consts.js";
 import {
   appearError,
   disappearError,
@@ -14,6 +13,13 @@ import {
   isValidEmail,
   isValidPassword,
 } from "./functions.js";
+
+(function () {
+  if (localStorage.getItem("signupToken")) {
+    location.href = "./folder.html";
+    return;
+  }
+})();
 
 const signupBtn = document.querySelector(".signup-button");
 const eyeBtn1 = document.querySelector("#eye-button1");
@@ -24,8 +30,6 @@ function emailChecker() {
     return appearError(email, emailError, "이메일을 입력해주세요.");
   } else if (!isValidEmail(email.value)) {
     return appearError(email, emailError, "올바른 이메일 주소가 아닙니다.");
-  } else if (userEmail.includes(email.value)) {
-    return appearError(email, emailError, "이미 사용 중인 이메일입니다.");
   } else {
     return disappearError(email, emailError);
   }
@@ -46,7 +50,13 @@ function passwordChecker() {
 }
 
 function passwordRepeatChecker() {
-  if (passwordRepeat.value !== password.value) {
+  if (!passwordRepeat.value) {
+    return appearError(
+      passwordRepeat,
+      passwordRepeatError,
+      "비밀번호를 확인해주세요."
+    );
+  } else if (passwordRepeat.value !== password.value) {
     return appearError(
       passwordRepeat,
       passwordRepeatError,
@@ -64,13 +74,53 @@ passwordRepeat.addEventListener("blur", passwordRepeatChecker);
 eyeBtn1.addEventListener("click", eyeCheck);
 eyeBtn2.addEventListener("click", eyeCheck);
 
-signupBtn.addEventListener("click", function (e) {
-  e.preventDefault();
+signupBtn.addEventListener("click", async function (event) {
+  event.preventDefault();
   const flag = emailChecker() * passwordChecker() * passwordRepeatChecker();
-  if (flag) {
-    location.href = "./folder.html";
-    disappearError(email, emailError);
-    disappearError(password, passwordError);
-    disappearError(passwordRepeat, passwordRepeatError);
+  if (!flag) {
+    return;
+  }
+  try {
+    const isDuplicated = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.value,
+        }),
+      }
+    );
+    if (isDuplicated.status === 200) {
+      const signUpPost = await fetch(
+        "https://bootcamp-api.codeit.kr/api/sign-up",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email.value,
+            password: password.value,
+          }),
+        }
+      );
+      if (signUpPost.status !== 200) {
+        throw new Error();
+      }
+      localStorage.setItem("signupToken", signUpPost["access_token"]);
+      location.href = "./folder.html";
+    } else {
+      throw new Error("duplicatedEmail");
+    }
+  } catch (error) {
+    if (error.message === "duplicatedEmail") {
+      appearError(email, emailError, "중복된 이메일입니다.");
+      return;
+    } else {
+      return;
+    }
   }
 });
