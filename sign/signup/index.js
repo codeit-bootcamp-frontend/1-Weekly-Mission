@@ -122,8 +122,11 @@ async function submitForm() {
           password: passwordInput.value,
         })
       });
+
+      const responseData = await response.json();
       
       if (response.ok) {
+        localStorage.setItem("acceessToken", responseData.accessToken);
         window.location.href = "/folder/index.html";
       }
 
