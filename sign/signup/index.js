@@ -70,12 +70,12 @@ async function isDuplicatedEmail() {
     });
 
     if (response.status === 409) {
-      return false;
+      return true;
     }
+    return false;
   } catch (error) {
     console.log(error);
   }
-  return true;
 }
 
 // 비밀번호 유효성 검사 
