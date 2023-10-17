@@ -7,42 +7,58 @@ import {
   togglePw, } from './utils.js';
   
 import {
-  TEST_USER,
   formEl,
   emailWrap,
   inputEmail,
   pwWrap,
   inputPw,
   pwConfirmWrap,
-  inputPwConfirm, } from './const.js';
+  inputPwConfirm,
+  ERROR,
+  API_URL,
+ } from './const.js';
 
 /*-----회원가입 유효성 검사-----*/
 //이메일 유효성 검사
+
 function validateEmailInput(email){
   removeElementOrNull(emailWrap, '.error');
   removeErrorClass(inputEmail);
+  let result = false
 
-  if (email == null || isEmailValid(email) === false || email === TEST_USER.email) {
-    
-    const emptyEmailError = "이메일을 입력해주세요."
-    const invalidEmailError = "올바른 이메일 주소가 아닙니다."
-    const takenEmailError = "이미 사용 중인 이메일입니다."
-    
-    let tagMessage = ''
-
-    if (email == null) {
-      tagMessage = emptyEmailError;
-    } else if (isEmailValid(email) === false){
-      tagMessage = invalidEmailError;
-    } else {
-      tagMessage = takenEmailError;
-    }
-    
+  if (email === ''){
+    let tagMessage = ERROR.EMAIL.empty;
+    addErrorTag (inputEmail, emailWrap, tagMessage);
+    return result;
+  } 
+  
+  if (isEmailValid(email) === false){
+    let tagMessage = ERROR.EMAIL.invalid;
     addErrorTag (inputEmail, emailWrap, tagMessage)
-    return false; //오류있음
+    return result;
   }
-  return true; //오류없음
+
+  fetch(API_URL.AUTH.checkEmail, {
+    method: 'POST',
+    headers: {
+      "Content-Type" : 'application/json',
+    },
+    body: JSON.stringify({"email": email}),
+  })
+  .then((response) => {
+    if(!response.ok) {
+      result = true;
+      throw Error("This email is already taken");
+    }
+  })
+  .catch ((err) => {
+    let tagMessage = ERROR.EMAIL.duplicated;
+    addErrorTag (inputEmail, emailWrap, tagMessage)
+  });
+
+  return result; //오류없음
 }
+
 
 inputEmail.addEventListener('focusout', (e) => {validateEmailInput(e.target.value)})
 
