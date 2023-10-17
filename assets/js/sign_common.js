@@ -13,7 +13,8 @@ const $passwordErrorMsg = document.createElement("div");
 const $doubleCheckPwErrorMsg = document.createElement("div");
 
 // togglePwVisibility() 에서 쓰임
-let togglePwVisible = false;
+let isPwVisible = false;
+let isDoubleCheckPwVisible = false;
 
 const showEmailError = (type) => {
   if (type === "void") {
@@ -58,17 +59,39 @@ const deletePasswordError = () => {
 };
 
 // 비밀번호란의 비번 보이기 토글버튼
-const togglePwVisibility = () => {
-  if (!togglePwVisible) {
+const togglePwVisibility = (event) => {
+  // 비밀번호 input의 비밀번호 가리기 toggle
+  if (event.target === $pwInvisible && !isPwVisible) {
     // 비밀번호 보이게 하기
     $pwInvisible.setAttribute("src", "../assets/images/svg/eye-on.svg");
     $password.setAttribute("type", "text");
-    togglePwVisible = true;
-  } else {
+    isPwVisible = true;
+  } else if (event.target === $pwInvisible && isPwVisible) {
     // 비밀번호 가리기
     $pwInvisible.setAttribute("src", "../assets/images/svg/eye-off.svg");
     $password.setAttribute("type", "password");
-    togglePwVisible = false;
+    isPwVisible = false;
+  }
+  // 비밀번호 확인 input의 비밀번호 확인 가리기 toggle
+  if (event.target === $doubleCheckPwInvisible && !isDoubleCheckPwVisible) {
+    // 비밀번호 보이게 하기
+    $doubleCheckPwInvisible.setAttribute(
+      "src",
+      "../assets/images/svg/eye-on.svg"
+    );
+    $doubleCheckPw.setAttribute("type", "text");
+    isDoubleCheckPwVisible = true;
+  } else if (
+    event.target === $doubleCheckPwInvisible &&
+    isDoubleCheckPwVisible
+  ) {
+    // 비밀번호 가리기
+    $doubleCheckPwInvisible.setAttribute(
+      "src",
+      "../assets/images/svg/eye-off.svg"
+    );
+    $doubleCheckPw.setAttribute("type", "password");
+    isDoubleCheckPwVisible = false;
   }
 };
 

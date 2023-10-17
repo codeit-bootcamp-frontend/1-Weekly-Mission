@@ -12,6 +12,8 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <link rel="icon" href="../assets/images/Avatar.png" />
+    <script src="../assets/js/login_redirection.js"></script>
     <script type="module" src="./signin.js" defer></script>
     <title>signin</title>
   </head>
@@ -30,14 +32,9 @@
       </p>
     </header>
     <main>
-      <form>
+      <form novalidate>
         <label for="email">이메일</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          formnovalidate="formnovalidate"
-        />
+        <input id="email" name="email" type="email" />
         <label for="password">비밀번호</label>
         <div class="password-wrapper">
           <input id="password" name="password" type="password" />

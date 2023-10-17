@@ -23,9 +23,6 @@ $email.after($emailErrorMsg);
 $password.after($passwordErrorMsg);
 $doubleCheckPw.after($doubleCheckPwErrorMsg);
 
-// toggleDoubleCheckPwVisibility() 에서 쓰임
-let toggleDoubleCheckPwVisible = false;
-
 const deleteDoubleCheckPwError = () => {
   $doubleCheckPwErrorMsg.textContent = "";
   $doubleCheckPw.classList.remove("error-border");
@@ -38,9 +35,6 @@ const checkEmailInput = (event) => {
   if (!event.target.value) {
     // input에 아무런 입력이 없는 경우
     showEmailError("void");
-  } else if (event.target.value === "test@codeit.com") {
-    // 입력된 값이 "test@codeit.com"일 때
-    showEmailError("already");
   } else if (!EMAIL_REG_EXP.test(event.target.value)) {
     // 이메일 정규표현식 test시 false값 출력의 경우
     showEmailError("typo");
@@ -49,25 +43,45 @@ const checkEmailInput = (event) => {
   }
 };
 
-const checkPasswordInput = (event) => {
+const checkPasswordRule = (event) => {
   const valueArray = event.target.value.split("");
   // 모두 문자열인지
-  const isAllString = valueArray.every((el) => isNaN(+el));
+  const isAllString = valueArray.every((el) => Number.isNaN(Number(el)));
   // 모두 숫자인지
-  const isAllNumber = valueArray.every((el) => !isNaN(+el));
+  const isAllNumber = valueArray.every((el) => !Number.isNaN(Number(el)));
   if (valueArray.length < 8 || isAllString || isAllNumber) {
     // 8자리 이하이거나 문자열만 있거나 숫자만 있는 경우
-    showPasswordError("again");
-  } else if (
+    return true;
+  }
+  return false;
+};
+
+const checkPasswordSame = (event) => {
+  if (
     $doubleCheckPw.value.length > 0 &&
     event.target.value !== $doubleCheckPw.value
   ) {
     // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 다를 때
-    showPasswordError("diff");
+    return false;
   } else if (
     $doubleCheckPw.value.length > 0 &&
     event.target.value === $doubleCheckPw.value
   ) {
+    // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 같을 때
+    return true;
+  }
+};
+
+const checkPasswordInput = (event) => {
+  if (checkPasswordRule(event)) {
+    showPasswordError("again");
+    if (checkPasswordSame(event)) {
+      deleteDoubleCheckPwError();
+    }
+  } else if (!checkPasswordSame(event) && $doubleCheckPw.value.length > 0) {
+    // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 다를 때
+    showPasswordError("diff");
+  } else if (checkPasswordSame(event)) {
     // 비밀번호 확인에 뭐라도 입력이 되어있고, 비밀번호와 비밀번호 확인이 같을 때
     deletePasswordError();
     deleteDoubleCheckPwError();
@@ -89,22 +103,16 @@ const checkDoubleCheckPwInput = (event) => {
       // 비밀번호 에러 텍스트에 '비밀번호가 일치하지 않아요.'가 써져있을 때
       deletePasswordError();
       deleteDoubleCheckPwError();
+      if (checkPasswordRule(event)) {
+        showPasswordError("again");
+        deleteDoubleCheckPwError();
+      }
     }
   }
 };
 
-const checkAllInput = () => {
+const checkAllInput = async () => {
   if (
-    $emailErrorMsg.textContent === "" &&
-    $passwordErrorMsg.textContent === "" &&
-    $doubleCheckPwErrorMsg.textContent === "" &&
-    $email.value.length > 0 &&
-    $password.value.length > 0 &&
-    $doubleCheckPw.value.length > 0
-  ) {
-    // error msg 모두 처리 및 input 태그에 값들이 있을 시 'folder/' 로 이동
-    window.location.href = "../folder/index.html";
-  } else if (
     // input 태그가 비어있을 때, 에러 메시지 출력
     $email.value === "" ||
     $password.value === "" ||
@@ -117,27 +125,54 @@ const checkAllInput = () => {
     } else if ($doubleCheckPw.value === "") {
       showPasswordError("voidDC");
     }
-  }
-};
+  } else if (
+    // 에러 메시지가 없고 모든 input 태그가 비어있지 않을 때
+    (!$emailErrorMsg.textContent ||
+      $emailErrorMsg.textContent === "이미 사용 중인 이메일입니다.") &&
+    !$passwordErrorMsg.textContent &&
+    !$doubleCheckPwErrorMsg.textContent &&
+    $email.value.length > 0 &&
+    $password.value.length > 0 &&
+    $doubleCheckPw.value.length > 0
+  ) {
+    const signupEmail = {
+      email: $email.value,
+    };
+    const signupAccount = {
+      email: $email.value,
+      password: $password.value,
+    };
 
-// 비밀번호 확인란의 비번 보이기 토글버튼
-const toggleDoubleCheckPwVisibility = () => {
-  if (!toggleDoubleCheckPwVisible) {
-    // 비밀번호 보이게 하기
-    $doubleCheckPwInvisible.setAttribute(
-      "src",
-      "../assets/images/svg/eye-on.svg"
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signupEmail),
+      }
     );
-    $doubleCheckPw.setAttribute("type", "text");
-    toggleDoubleCheckPwVisible = true;
-  } else {
-    // 비밀번호 가리기
-    $doubleCheckPwInvisible.setAttribute(
-      "src",
-      "../assets/images/svg/eye-off.svg"
-    );
-    $doubleCheckPw.setAttribute("type", "password");
-    toggleDoubleCheckPwVisible = false;
+    const responseStatus = response.status;
+    if (responseStatus === 409) {
+      showEmailError("already");
+    } else if (responseStatus === 200) {
+      // 중복된 이메일이 아닐 때
+      const response = await fetch(
+        "https://bootcamp-api.codeit.kr/api/sign-up",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(signupAccount),
+        }
+      );
+      const responseStatus = response.status;
+      if (responseStatus === 200) {
+        window.location.href = "../folder/index.html";
+      }
+    }
   }
 };
 
@@ -159,12 +194,8 @@ const formSubmitEventHandler = (event) => {
   checkAllInput();
 };
 
-const pwInvisibleEventHandler = () => {
-  togglePwVisibility();
-};
-
-const doubleCheckPwInvisibleEventHandler = () => {
-  toggleDoubleCheckPwVisibility();
+const pwInvisibleEventHandler = (event) => {
+  togglePwVisibility(event);
 };
 
 $email.addEventListener("blur", emailInputEventHandler);
@@ -172,7 +203,4 @@ $password.addEventListener("blur", passwordInputEventHandler);
 $doubleCheckPw.addEventListener("blur", doubleCheckPwInputEventHandler);
 $form.addEventListener("submit", formSubmitEventHandler);
 $pwInvisible.addEventListener("click", pwInvisibleEventHandler);
-$doubleCheckPwInvisible.addEventListener(
-  "click",
-  doubleCheckPwInvisibleEventHandler
-);
+$doubleCheckPwInvisible.addEventListener("click", pwInvisibleEventHandler);
