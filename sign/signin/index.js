@@ -62,6 +62,7 @@ function checkPwdValidation() {
   }
 };
 
+// 로그인 시도 
 async function submitForm() {
   const email = emailInput.value;
   const password = passwordInput.value;
