@@ -19,6 +19,7 @@ import {
   EYE_ICON_RE,
   LOGIN_BUTTON
 } from '/constants/selector.js';
+import { requestPost } from '/api/post.js';
 
 // Email
 const emailInput = document.querySelector(EMAIL_INPUT);
@@ -47,13 +48,15 @@ if (localStorage.getItem("accessToken")) {
 // 이메일 중복 확인
 async function isDuplicatedEmail(email) {
   try {
-    const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
-      method: 'POST',
-      headers: {
-      "content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
+    // const response = await fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+    //   method: 'POST',
+    //   headers: {
+    //   "content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ email }),
+    // });
+
+    const response = await requestPost(email);
 
     if (response.status === 409) {
       return true;
@@ -75,7 +78,7 @@ async function checkEmailValidation() {
   } else if (!isEmail(email)) {
     addErrorMessage(emailInput, emailError, EMAIL_INVALID);
     return false;
-  } else if (await isDuplicatedEmail(email)) {
+  } else if (await (isDuplicatedEmail(email))) {
     addErrorMessage(emailInput, emailError, EMAIL_USED); 
     return false;
   } else {
@@ -132,7 +135,7 @@ async function submitForm() {
       const responseData = await response.json();
       
       if (response.ok) {
-        localStorage.setItem("acceessToken", responseData.accessToken);
+        // localStorage.setItem("acceessToken", responseData.accessToken);
         window.location.href = "/folder/index.html";
       }
 
