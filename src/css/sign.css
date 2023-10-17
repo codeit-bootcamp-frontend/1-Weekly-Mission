@@ -16,6 +16,7 @@ body {
 }
 
 .all {
+  height: auto;
   display: flex;
   padding: 238px 0 252px;
   justify-content: center;
