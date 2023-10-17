@@ -1,3 +1,5 @@
+import { auth } from "./common/constants/endpoints.js";
+import { API_URL, APPLICATION_JSON_TYPE } from "./common/constants/api.js";
 import {
   emailEl,
   emailErrorEl,
@@ -15,8 +17,8 @@ const addErrorClass = (el) => el.classList.add("error");
 const removeErrorClass = (el) => el.classList.remove("error");
 
 /* 이메일 유효성 검사 */
-const emailInputValidation = (value) => {
-  if (isEmailEmpty(value) || isEmailValidation(value) || isDuplicateEmail(value)) {
+const emailInputValidation = async (value) => {
+  if (isEmailEmpty(value) || isEmailValidation(value) || (await isDuplicateEmail(value))) {
     addErrorClass(emailEl);
     return false;
   }
@@ -62,15 +64,37 @@ const checkFormValue = (e) => {
 };
 
 /*유효한 회원가입 시도의 경우, “/folder”로 이동 */
-const onClickSubmit = (e) => {
+const onClickSubmit = async (e) => {
   e.preventDefault();
 
   if (
-    emailInputValidation(emailEl.value) &&
-    passwordInputValidation(passwordEl.value) &&
-    passwordCheckInputValidation(passwordCheckEl.value)
+    !emailInputValidation(emailEl.value) ||
+    !passwordInputValidation(passwordEl.value) ||
+    !passwordCheckInputValidation(passwordCheckEl.value)
   )
-    formEl.submit();
+    return;
+
+  try {
+    const res = await fetch(`${API_URL}${auth.SIGN_UP}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": APPLICATION_JSON_TYPE,
+      },
+      body: JSON.stringify({
+        email: emailEl.value,
+        password: passwordEl.value,
+      }),
+    });
+
+    if (res.ok) {
+      const result = await res.json();
+      const accessToken = result.data.accessToken;
+      localStorage.setItem("accessToken", accessToken);
+      formEl.submit();
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 formEl.addEventListener("focusout", checkFormValue);
