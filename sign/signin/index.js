@@ -32,6 +32,11 @@ const eyeIcon = document.querySelector(EYE_ICON);
 // LoginButton
 const loginBtn = document.querySelector(LOGIN_BUTTON);
 
+// Token 존재 여부
+if(localStorage.getItem("accessToken")) {
+  location.href = "/folder";
+}
+
 
 // 이메일 유효성 검사 
 function checkEmailValidation() {
@@ -73,7 +78,10 @@ async function submitForm() {
       }),
     });
 
+    const responseData = await response.json();
+
     if (response.status === 200){
+      localStorage.setItem("accessToken", responseData.accessToken);
       location.href = "/folder";
     } else if (response.status === 400) {
       addErrorMessage(emailInput, emailError, EMAIL_WRONG);
