@@ -13,23 +13,24 @@ const validatePasswordInput = (passwordInputEl, passwordErrorMessage, passwordIn
   if (isEmptyValue) {
     displayErrorMessage(passwordErrorMessage, errorMessagePassword.empty);
     addErrorClass(passwordInputEl);
-    return;
+    return false;
   }
 
   if (inValidPassword) {
     displayErrorMessage(passwordErrorMessage, errorMessagePassword.invalid);
     addErrorClass(passwordInputEl);
-    return;
+    return false;
   }
 
   if (isConfirmPasswordInput && passwordMismatch) {
     displayErrorMessage(passwordErrorMessage, errorMessagePassword.mismatch);
     addErrorClass(passwordInputEl);
-    return;
+    return false;
   }
 
   displayErrorMessage(passwordErrorMessage, VALUE_EMPTY);
   removeErrorClass(passwordInputEl);
+  return true;
 };
 
 export default validatePasswordInput;

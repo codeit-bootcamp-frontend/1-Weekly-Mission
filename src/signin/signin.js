@@ -5,10 +5,11 @@ import {
   passwordErrorMessagesEl,
   passwordInputsEl,
 } from "../constants/tags.js";
-import { TEST_ACCOUNT, REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from "../constants/common.js";
+import { VALUE_EMPTY, isEmpty, isValidEmail, getAccessToken, redirectPath } from "../constants/common.js";
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
+import requestSignin from "../utils/request-signin.js";
 
 const validateEmail = () => {
   const emailValue = emailInputEl.value;
@@ -40,20 +41,13 @@ const validatePassword = (passwordInputEl, passwordErrorMessage) => {
 const handleLoginFormSubmit = (event) => {
   event.preventDefault();
 
-  passwordInputsEl.forEach((passwordInputEl, index) => {
+  passwordInputsEl.forEach(async (passwordInputEl, index) => {
     const emailInputValue = emailInputEl.value;
     const passwordInputValue = passwordInputEl.value;
-    const testAccountEmail = TEST_ACCOUNT.email;
-    const testAccountPW = TEST_ACCOUNT.pw;
-    const isValid = emailInputValue === testAccountEmail && passwordInputValue === testAccountPW;
-
     const submitErrorMessages = ERROR_MESSAGES.submit;
     const isMatchEmail = (field) => field === "email";
 
-    if (isValid) {
-      window.location.href = REDIRECT_PATH;
-      return;
-    }
+    await requestSignin(emailInputValue, passwordInputValue);
 
     Object.keys(submitErrorMessages).forEach((field) => {
       displayErrorMessage(
@@ -65,6 +59,12 @@ const handleLoginFormSubmit = (event) => {
     addErrorClass(emailInputEl, passwordInputEl);
   });
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (getAccessToken) {
+    redirectPath();
+  }
+});
 
 emailInputEl.addEventListener("focusout", validateEmail);
 

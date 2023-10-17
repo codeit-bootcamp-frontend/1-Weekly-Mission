@@ -5,24 +5,19 @@ import {
   passwordErrorMessagesEl,
   passwordInputsEl,
 } from "../constants/tags.js";
-import {
-  ERROR_CLASS_NAME,
-  TEST_ACCOUNT,
-  REDIRECT_PATH,
-  VALUE_EMPTY,
-  isEmpty,
-  isValidEmail,
-} from "../constants/common.js";
+import { VALUE_EMPTY, isEmpty, isValidEmail, getAccessToken, redirectPath } from "../constants/common.js";
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
 import validatePasswordInput from "../utils/validate-password-input.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
+import requestSignup from "../utils/request-signup.js";
+import requestCheckEmail from "../utils/api-check-email.js";
 
 const validateEmail = () => {
   const emailValue = emailInputEl.value;
 
   const isEmptyValue = isEmpty(emailValue);
-  const isDuplicate = emailValue === TEST_ACCOUNT.email;
+  const isDuplicate = requestCheckEmail(emailValue);
   const invalidEmail = !isValidEmail(emailValue);
   const emptyMessage = ERROR_MESSAGES.email.empty;
   const invalidMessage = ERROR_MESSAGES.email.invalid;
@@ -34,28 +29,22 @@ const validateEmail = () => {
     return;
   }
 
-  if (invalidEmail) {
-    displayErrorMessage(emailErrorMessageEl, invalidMessage);
-    addErrorClass(emailInputEl);
-    return;
-  }
-
-  isDuplicate
+  invalidEmail
+    ? (displayErrorMessage(emailErrorMessageEl, invalidMessage), addErrorClass(emailInputEl))
+    : isDuplicate
     ? (displayErrorMessage(emailErrorMessageEl, duplicateMessage), addErrorClass(emailInputEl))
     : (displayErrorMessage(emailErrorMessageEl, VALUE_EMPTY), removeErrorClass(emailInputEl));
 };
 
-const validatePassword = (passwordInputEl, passwordErrorMessage) => {
+const validatePassword = (passwordInputEl, passwordErrorMessage) =>
   validatePasswordInput(passwordInputEl, passwordErrorMessage);
-};
 
-const validateConfirmPassword = (passwordInputEl, passwordErrorMessage, passwordInputValue) => {
+const validateConfirmPassword = (passwordInputEl, passwordErrorMessage, passwordInputValue) =>
   validatePasswordInput(passwordInputEl, passwordErrorMessage, passwordInputValue);
-};
 
-const handleSignupFormSubmit = (event) => {
+const handleSignupFormSubmit = async (event) => {
   event.preventDefault();
-
+  const emailValue = emailInputEl.value;
   const passwordInputEl = passwordInputsEl[0];
   const passwordInputValue = passwordInputEl.value;
   const confirmPasswordInputEl = passwordInputsEl[1];
@@ -64,17 +53,20 @@ const handleSignupFormSubmit = (event) => {
 
   validateEmail();
   validatePassword(passwordInputEl, passwordErrorMessage);
-  validateConfirmPassword(confirmPasswordInputEl, confirmPasswordErrorMessages, passwordInputValue);
+  const isMismatchPassword = validateConfirmPassword(
+    confirmPasswordInputEl,
+    confirmPasswordErrorMessages,
+    passwordInputValue
+  );
 
-  const isValidForm =
-    !emailInputEl.classList.contains(ERROR_CLASS_NAME) &&
-    !passwordInputEl.classList.contains(ERROR_CLASS_NAME) &&
-    !confirmPasswordInputEl.classList.contains(ERROR_CLASS_NAME);
-
-  if (isValidForm) {
-    window.location.href = REDIRECT_PATH;
-  }
+  await requestSignup(emailValue, passwordInputValue, isMismatchPassword);
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (getAccessToken) {
+    redirectPath();
+  }
+});
 
 formEl.addEventListener("submit", handleSignupFormSubmit);
 
