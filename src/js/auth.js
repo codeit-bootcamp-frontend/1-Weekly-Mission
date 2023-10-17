@@ -1,20 +1,15 @@
 import {
-  ERROR_EMAIL_CHECK,
   ERROR_EMAIL_EMPTY,
-  ERROR_EMAIL_EXIST,
   ERROR_EMAIL_VALIDATION,
-  ERROR_PASSWORD_CHECK,
   ERROR_PASSWORD_EMPTY,
   ERROR_PASSWORD_NOTCORRECT,
   ERROR_PASSWORD_VALIDATION,
-} from '/src/constants/authMessage.js'
-import {
-  ERROR_CONTENT_STYLE,
-  ERROR_INPUT_STYLE,
-  VERIFIED_EMAIL,
-  VERIFIED_PASSWORD,
-} from '/src/constants/common.js'
-import { existError } from '/src/js/error.js'
+} from '../constants/authMessage.js'
+import { ERROR_CONTENT_STYLE, ERROR_INPUT_STYLE } from '../constants/common.js'
+import EmailDoubleCheck from '../libs/apis/email.js'
+import Signin from '../libs/apis/signin.js'
+import Signup from '../libs/apis/signup.js'
+import { existError } from './error.js'
 
 const form = document.querySelector('.form')
 const emailInput = document.querySelector('.emailInput')
@@ -86,31 +81,45 @@ function passwordCorrect() {
 
 // 존재하는 이메일
 function existEmail() {
-  emailInputSignup.value === VERIFIED_EMAIL
-    ? setErrorStyle(emailInputSignup, ERROR_EMAIL_EXIST)
-    : deleteErrorStyle(emailInputSignup)
+  // 5주차
+  // emailInputSignup.value === VERIFIED_EMAIL ? setErrorStyle(emailInputSignup, ERROR_EMAIL_EXIST)
+  //   : deleteErrorStyle(emailInputSignup)
+
+  EmailDoubleCheck(emailInputSignup.value)
 }
 
 // 정해진 이메일과 비밀번호
 function loginCheck() {
-  emailInput.value === VERIFIED_EMAIL &&
-  passwordInput.value === VERIFIED_PASSWORD
-    ? (deleteErrorStyle(emailInput),
-      deleteErrorStyle(passwordInput),
-      (location.href = '/folder.html'))
-    : (setErrorStyle(emailInput, ERROR_EMAIL_CHECK),
-      setErrorStyle(passwordInput, ERROR_PASSWORD_CHECK))
+  // 5주차
+  // emailInput.value === VERIFIED_EMAIL &&
+  // passwordInput.value === VERIFIED_PASSWORD ? (deleteErrorStyle(emailInput),
+  //     deleteErrorStyle(passwordInput),
+  //     (location.href = '/folder.html'))
+  //   : (setErrorStyle(emailInput, ERROR_EMAIL_CHECK),
+  //     setErrorStyle(passwordInput, ERROR_PASSWORD_CHECK))
+
+  let auth = {
+    email: emailInput.value,
+    password: passwordInput.value,
+  }
+
+  Signin(auth.email, auth.password)
 }
 
 // 회원가입 버튼 클릭 시 잘못된 부분 확인
 function signupSubmit() {
+  let auth = {
+    email: emailInputSignup.value,
+    password: passwordInputSignup.value,
+  }
+
   existEmail()
   emailValidation()
   emailCheck()
   passwordCheck()
   passwordValidation()
 
-  existError(ERROR_CONTENT_STYLE) ? '' : (location.href = '/folder.html')
+  existError(ERROR_CONTENT_STYLE) ? '' : Signup(auth.email, auth.password)
 }
 
 // 이벤트 리스너
@@ -121,7 +130,6 @@ form.addEventListener('submit', function (e) {
   emailInputSignup && signupSubmit()
 })
 
-emailInputSignup && emailInputSignup.addEventListener('focusout', existEmail)
 emailInput.addEventListener('focusout', emailValidation)
 emailInput.addEventListener('focusout', emailCheck)
 
