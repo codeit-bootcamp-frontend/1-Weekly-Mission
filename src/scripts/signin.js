@@ -1,57 +1,54 @@
 import { emptyInputEmail, emptyInputPw } from "./emptyInput.js";
 import { addErrorMsg, removeErrorMsg, checkErrorMsg } from './errorMsg.js';
 import { emailValidation } from "./validations.js";
-import { toggleEye } from "./hideChar.js";
+import { toggleEye } from "./toggleEye.js";
+import { loginInfoValidation } from "./validations.js";
 
-const loginEmailInput = document.querySelector('input[name = "signin_email"]');
-const loginPwInput = document.querySelector('input[name = "signin_pw"]');
-const loginForm = document.querySelector('form');
-const loginError = document.querySelectorAll('.error_msg');
-const loginEyeIcon = document.querySelector('.eye_icon');
+import { emailInput, pwInput, form, errorMsgList, pwEyeIcon } from "./constants.js";
 
-const TEST_EMAIL = 'test@codeit.com';
-const TEST_PW = 'codeit101';
+let loginEyeFlag = false;
 
-let loginEyeFlag = 0;
 /**
  * 특정 로그인 시도 시 folder 페이지로 이동하는 함수
  */
-function login(event){
+async function login(event){
     event.preventDefault();
     
     emptyInputEmail(event);
     emptyInputPw(event);
 
-    loginEmailInput.blur();
-    loginPwInput.blur();
+    emailInput.blur();
+    pwInput.blur();
+    
+    if(checkErrorMsg(Array.from(errorMsgList))) return;
 
-    if(checkErrorMsg(loginError)) return;
-
-    if(loginEmailInput.value === TEST_EMAIL && loginPwInput.value === TEST_PW) {
-        location.href = '/folder.html';
-    }
+    const isSuccessful = await loginInfoValidation(emailInput.value, pwInput.value, 'sign-in') == 200;
+    if(isSuccessful) window.location.href = '/folder.html';
     else{
-        addErrorMsg(loginEmailInput, "이메일을 확인해주세요.");
-        addErrorMsg(loginPwInput, "비밀번호를 확인해주세요.");
+        addErrorMsg(emailInput, "이메일을 확인해주세요.");
+        addErrorMsg(pwInput, "비밀번호를 확인해주세요.");
     }
 }
 
+/**
+ * 로그인 페이지 비밀번호 가리기 이벤트
+ */
 function hidePw(event){
     event.preventDefault();
-    loginEyeFlag = toggleEye(loginPwInput, loginEyeIcon, loginEyeFlag);
+    loginEyeFlag = toggleEye(pwInput, pwEyeIcon, loginEyeFlag);
 }
 
 //이메일
-loginEmailInput.addEventListener('focusout', emptyInputEmail);
-loginEmailInput.addEventListener('input', removeErrorMsg);
-loginEmailInput.addEventListener('focusout', emailValidation);
+emailInput.addEventListener('focusout', emptyInputEmail);
+emailInput.addEventListener('focusout', emailValidation);
+emailInput.addEventListener('focusin', removeErrorMsg);
 
 //비밀번호
-loginPwInput.addEventListener('focusout', emptyInputPw);
-loginPwInput.addEventListener('input', removeErrorMsg);
+pwInput.addEventListener('focusout', emptyInputPw);
+pwInput.addEventListener('focusin', removeErrorMsg);
 
 //로그인 버튼
-loginForm.addEventListener('submit', login);
+form.addEventListener('submit', login);
 
 //눈 아이콘
-loginEyeIcon.addEventListener('click', hidePw);
+pwEyeIcon.addEventListener('click', hidePw);

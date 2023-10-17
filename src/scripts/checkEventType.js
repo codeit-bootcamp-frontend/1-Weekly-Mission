@@ -3,10 +3,11 @@
  * @param {*} type 'email' / 'pw' / 'pwCheck' 값이 들어온다.
  */
 function checkSubmitEvent(event, type){
+    const [inputEmail, inputPw, inputPwCheck] = document.querySelectorAll('input');
     if(event.type == 'submit'){
-        if(type === 'email') return event.target.children[0].children[0];
-        else if(type === 'pw') return event.target.children[1].children[0].children[0];
-        else return event.target.children[2].children[0].children[0];
+        if(type === 'email') return inputEmail;
+        else if(type === 'pw') return inputPw;
+        else return inputPwCheck;
     }
     else return event.target
 }
