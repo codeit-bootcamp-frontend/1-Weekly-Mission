@@ -62,9 +62,14 @@ const submitLoginForm = async (event) => {
       window.alert("로그인에 성공하셨습니다!")
       window.location.href = "/folder.html"
     }
-  } catch {
-    addErrorMessage(pElementEmailError, "이메일을 확인해주세요.")
-    addErrorMessage(pElementPasswordError, "비밀번호를 확인해주세요.")
+  } catch (error) {
+    const errorStatus = error.message.slice(0, 3)
+    const errorMsg = error.message.slice(4)
+    console.log(errorStatus, errorMsg)
+    if (errorStatus === "400" && errorMsg === "Invalid login credentials") {
+      addErrorMessage(pElementEmailError, "이메일을 확인해주세요.")
+      addErrorMessage(pElementPasswordError, "비밀번호를 확인해주세요.")
+    }
   }
 }
 

@@ -86,24 +86,23 @@ const submitLoginForm = async (event) => {
     password.value === passwordConfirm.value
   ) {
     try {
-      const firstResponse = await fetchPost("/api/check-email", emailBody)
-      const { data } = firstResponse
-
-      if (!data) {
-        throw new SyntaxError("이미 사용중인 이메일이 있습니다.")
-      }
-
+      await fetchPost("/api/check-email", emailBody)
       const secondResponse = await fetchPost("/api/sign-up", fullBody)
       const { accessToken } = secondResponse.data
 
-      if (!accessToken) {
-        throw new SyntaxError("회원가입에 실패했습니다.")
-      }
-
       window.localStorage.setItem("accessToken", accessToken)
       window.location.href = "/folder.html"
-    } catch {
-      addErrorMessage(pElementEmailError, "이미 사용중인 이메일입니다.")
+    } catch (error) {
+      const errorStatus = error.message.slice(0, 3)
+      const errorMsg = error.message.slice(4)
+      if (errorStatus === "409" && errorMsg === "이미 존재하는 이메일입니다.") {
+        addErrorMessage(pElementEmailError, "이미 사용중인 이메일입니다.")
+      } else if (
+        errorStatus === "400" &&
+        errorMsg === "올바른 이메일이 아닙니다."
+      ) {
+        addErrorMessage(pElementEmailError, "회원가입에 실패했습니다.")
+      }
     }
   } else {
     setEmailErrorMessage(event)

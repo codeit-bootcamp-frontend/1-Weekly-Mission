@@ -11,7 +11,12 @@ const fetchPost = async (url, body, headers = {}) => {
     body: JSON.stringify(body),
   }
   const res = await fetch(fullUrl, options)
-  return await res.json()
+  const data = await res.json()
+  if (res.ok) {
+    return data
+  } else {
+    throw Error([res.status, data.error.message])
+  }
 }
 
 const fetchGet = async (url, headers = {}) => {
@@ -24,7 +29,12 @@ const fetchGet = async (url, headers = {}) => {
     },
   }
   const res = await fetch(fullUrl, options)
-  return await res.json()
+  const data = await res.json()
+  if (res.ok) {
+    return data
+  } else {
+    throw Error([res.status, data.error.message])
+  }
 }
 
 const fetchPut = async (url, body, headers = {}) => {
@@ -38,7 +48,12 @@ const fetchPut = async (url, body, headers = {}) => {
     body: JSON.stringify(body),
   }
   const res = await fetch(fullUrl, options)
-  return await res.json()
+  const data = await res.json()
+  if (res.ok) {
+    return data
+  } else {
+    throw Error([res.status, data.error.message])
+  }
 }
 
 const fetchDelete = async (url, headers = {}) => {
@@ -51,7 +66,12 @@ const fetchDelete = async (url, headers = {}) => {
     },
   }
   const res = await fetch(fullUrl, options)
-  return await res.json()
+  const data = await res.json()
+  if (res.ok) {
+    return data
+  } else {
+    throw Error([res.status, data.error.message])
+  }
 }
 
 export { fetchPost, fetchGet, fetchPut, fetchDelete }
