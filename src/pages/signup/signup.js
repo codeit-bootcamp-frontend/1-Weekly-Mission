@@ -21,10 +21,7 @@ import {
   showPsw } 
   from '../../utils/checkPsw.js';
 
-// 페이지 접근 시 엑세스토큰 보유 -> folder페이지로 이동
-if(localStorage.getItem("accessToken")) {
-  location.href = '../folder/folder.html';
-}
+import { checkAccessToken } from '../../utils/checkAccessToken.js';
 
 // 이메일 중복 체크
 async function checkEmailValidWithOverlap (e) {
@@ -112,22 +109,23 @@ async function checkUserForJoin() {
         })
       });
 
-      const responseData = await response.json();
+      const {data} = await response.json();
   
-      if(response.status === 200) {
-        localStorage.setItem('accessToken', responseData.accessToken);
+      if(data) {
+        localStorage.setItem('accessToken', data.accessToken);
         return location.href = '../folder/folder.html';
+      } else {
+        showMessageByEmailEl.textContent = '이메일을 확인해주세요.';
+        showMessageByPswEl.textContent = '비밀번호를 확인해주세요.';
+
+        inputPswEl.classList.add('input-wrong');
+        inputEmailEl.classList.add('input-wrong');
+        inputPswCheckEl.classList.add('input-wrong');
+        inputEmailEl.setAttribute('onfocus', 'this.select()');
+        inputPswEl.setAttribute('onfocus', 'this.select()');
+        inputPswCheckEl.setAttribute('onfocus', 'this.select()');
       }
     }
-    showMessageByEmailEl.textContent = '이메일을 확인해주세요.';
-    showMessageByPswEl.textContent = '비밀번호를 확인해주세요.';
-
-    inputPswEl.classList.add('input-wrong');
-    inputEmailEl.classList.add('input-wrong');
-    inputPswCheckEl.classList.add('input-wrong');
-    inputEmailEl.setAttribute('onfocus', 'this.select()');
-    inputPswEl.setAttribute('onfocus', 'this.select()');
-    inputPswCheckEl.setAttribute('onfocus', 'this.select()');
   } catch (error) {
     console.log(error);
   }
@@ -155,8 +153,10 @@ function showPswCheck(e) {
   }
 }
 
-// 이벤트 리스너 등록
+// 페이지 로드 시 최초실행 함수들
 function initSignUp () {
+  checkAccessToken(); // accessToken 
+
   const joinBtn = document.querySelector('.sign-link');
 
   inputEmailEl.addEventListener('focusout', checkEmailValidWithOverlap);

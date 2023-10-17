@@ -18,10 +18,7 @@ import {
   showPsw } 
   from '../../utils/checkPsw.js';
 
-// 페이지 접근 시 엑세스토큰 보유 -> folder페이지로 이동
-if(localStorage.getItem("accessToken")) {
-  location.href = '../folder/folder.html';
-}
+  import {checkAccessToken} from '../../utils/checkAccessToken.js'
 
 // 로그인 가능 체크
 async function checkUserForLogin() {
@@ -40,14 +37,12 @@ async function checkUserForLogin() {
     })
   });
   
-  const responseData = await response.json();
+  const {data} = await response.json();
 
-  if (response.status === 200) {
-    localStorage.setItem("accessToken", responseData.accessToken);
+  if (data) {
+    localStorage.setItem("accessToken", data.accessToken);
     return location.href = '../folder/folder.html';
-  } 
-  
-  if(response.status === 400) {
+  } else { 
     showMessageByEmailEl.textContent = '이메일을 확인해주세요.';
     showMessageByPswEl.textContent = '비밀번호를 확인해주세요.';
 
@@ -68,8 +63,10 @@ function checkUserForLoginByEnter (e) {
   }
 }
 
-//이벤트 리스너 등록
+// 페이지 로드 시 최초실행 함수들
 function initSignIn() {
+  checkAccessToken();// accessToken 체크
+
   const loginBtn = document.querySelector('.sign-link');
 
   inputEmailEl.addEventListener('focusout', checkEmailValid);
