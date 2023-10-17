@@ -7,12 +7,13 @@ import {
 } from './utils.js';
 
 import {
-  TEST_USER,
   formEl,
   emailWrap,
   inputEmail,
   pwWrap,
-  inputPw
+  inputPw,
+  ERROR,
+  API_URL,
 } from './const.js';
 
 /*-----로그인 유효성 검사-----*/
@@ -25,10 +26,7 @@ function validateEmailInput(e) {
   const email = e.target.value;
 
   if (email == '' || !isEmailValid(email)) {
-
-    const emptyEmailError = "이메일을 입력해주세요."
-    const invalidEmailError = "올바른 이메일 주소가 아닙니다."
-    let tagMessage = (email == '') ? emptyEmailError : invalidEmailError;
+    let tagMessage = (email == '') ? ERROR.EMAIL.empty : ERROR.EMAIL.invalid;
 
     addErrorTag(inputEmail, emailWrap, tagMessage)
     return;
@@ -46,8 +44,7 @@ function validatePwInput(e) {
   const password = e.target.value;
 
   if (password == '') {
-    const emptyPwError = "비밀번호를 입력해주세요."
-    addErrorTag(inputPw, pwWrap, emptyPwError)
+    addErrorTag(inputPw, pwWrap, ERROR.PW.empty)
   }
 }
 
@@ -60,13 +57,12 @@ function submitForm(e) {
   const email = inputEmail.value
   const password = inputPw.value
 
-  const apiUrl = "https://bootcamp-api.codeit.kr/api/sign-in"
   const inputAccount = {
-    email: email,
-    password: password,
+    email,
+    password,
   }
 
-  fetch (apiUrl, {
+  fetch (API_URL.AUTH.signin, {
     method: "POST", 
     headers: {
       "Content-Type": "application/json"
@@ -74,29 +70,23 @@ function submitForm(e) {
     body: JSON.stringify(inputAccount)
   })
   .then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else{
-      throw new Error('존재하지 않는 계정')
+    if (!response.ok) {
+     throw Error("This account is not exist")
     }
   })
-  .then( (result) => {
+  .then(() => {
     formEl.submit()
   })
   .catch ((err) => {
     console.log(err)
+    removeElementOrNull(emailWrap, '.error');
+    removeErrorClass(inputEmail);
+    removeElementOrNull(pwWrap, '.error');
+    removeErrorClass(inputPw);
+  
+    addErrorTag(inputEmail, emailWrap, ERROR.EMAIL.incorrect)
+    addErrorTag(inputPw, pwWrap, ERROR.PW.incorrect)
   });
-
-  removeElementOrNull(emailWrap, '.error');
-  removeErrorClass(inputEmail);
-  removeElementOrNull(pwWrap, '.error');
-  removeErrorClass(inputPw);
-
-  const incorrectEmailError = "이메일을 확인해주세요."
-  const incorrectPwError = "비밀번호를 확인해주세요."
-
-  addErrorTag(inputEmail, emailWrap, incorrectEmailError)
-  addErrorTag(inputPw, pwWrap, incorrectPwError)
 }
 
 formEl.addEventListener('submit', submitForm); //버튼 클릭시 실행
