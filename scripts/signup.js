@@ -6,7 +6,9 @@ import {
 import { toggleImage } from "./toggleImage.js";
 import { checkPassword } from "./input/checkPassword.js";
 import { inputEmail, inputPassword } from "./constants.js";
-import { checkSignupEmail } from "./input/checkSignupEmail.js";
+import { emailDuplicationCheck } from "./input/emailDuplicationCheck.js";
+import { checkEmailFormat } from "./input/checkEmailFormat.js";
+import { postNewAccount } from "./accounts/postNewAccount.js";
 
 const eyeImagePasswordEl = document.querySelector("#eyeImage-password");
 const eyeImagePasswordReEl = document.querySelector("#eyeImage-password-re");
@@ -32,12 +34,12 @@ inputEmail.addEventListener("input", errorMessageStop);
 inputPassword.addEventListener("input", errorMessageStop);
 
 //<이메일 형식 검증>
-inputEmail.addEventListener("focusout", checkSignupEmail);
+inputEmail.addEventListener("focusout", checkEmailFormat);
 
 //<비밀번호 형식 검증>
 inputPassword.addEventListener("focusout", checkPassword);
 
-//비밀번호-비밀번호 확인 값 일치 확인
+//<비밀번호-비밀번호 확인 값 일치 확인>
 function checkPasswordRe() {
   const password = inputPassword.value;
   const passwordRe = inputPasswordRe.value;
@@ -54,14 +56,20 @@ function checkPasswordRe() {
 }
 inputPasswordRe.addEventListener("focusout", checkPasswordRe);
 
-//이메일&비밀번호 모두 유효한 값이라면 버튼 동작하도록 함
-function submitAccount() {
-  const isEmailValid = checkSignupEmail();
+//<이메일&비밀번호 모두 유효한 값이라면 버튼 클릭시 /folder로 이동하기>
+async function submitAccount() {
+  const isEmailValid = checkEmailFormat();
   const isPasswordValid = checkPassword();
   const isPasswordReValid = checkPasswordRe();
+  const isEmailDuplicationCheck = await emailDuplicationCheck(inputEmail.value);
 
-  if (isEmailValid && isPasswordValid && isPasswordReValid) {
-    window.location.href = "./folder.html";
+  if (
+    isEmailValid &&
+    isPasswordValid &&
+    isPasswordReValid &&
+    isEmailDuplicationCheck
+  ) {
+    postNewAccount(inputEmail.value, inputPassword.value);
   }
 }
 
@@ -72,7 +80,5 @@ submitButton.addEventListener("click", function (event) {
 
 signupForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const email = inputEmail.value.trim();
-  const password = inputPassword.value;
-  validAccount(email, password);
+  submitAccount();
 });

@@ -3,7 +3,7 @@ import { addErrorStyle, removeErrorStyle } from "../errors/errors.js";
 import { inputEmail, emailErrorMessage } from "../constants.js";
 import { emailRegex } from "./emailRegex.js";
 
-function checkSigninEmail() {
+function checkEmailFormat() {
   const email = inputEmail.value.trim();
 
   if (email === "") {
@@ -16,7 +16,8 @@ function checkSigninEmail() {
     );
   } else {
     removeErrorStyle(inputEmail, emailErrorMessage);
+    return true;
   }
 }
 
-export { checkSigninEmail };
+export { checkEmailFormat };
