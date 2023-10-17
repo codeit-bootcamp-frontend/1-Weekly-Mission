@@ -24,19 +24,20 @@ import {
 function validateEmailInput(email){
   removeElementOrNull(emailWrap, '.error');
   removeErrorClass(inputEmail);
-  let result = false
 
   if (email === ''){
     let tagMessage = ERROR.EMAIL.empty;
     addErrorTag (inputEmail, emailWrap, tagMessage);
-    return result;
+    return false;
   } 
   
   if (isEmailValid(email) === false){
     let tagMessage = ERROR.EMAIL.invalid;
     addErrorTag (inputEmail, emailWrap, tagMessage)
-    return result;
+    return false;
   }
+
+let result = true
 
   fetch(API_URL.AUTH.checkEmail, {
     method: 'POST',
@@ -47,16 +48,17 @@ function validateEmailInput(email){
   })
   .then((response) => {
     if(!response.ok) {
-      result = true;
+      result = false;
       throw Error("This email is already taken");
     }
   })
   .catch ((err) => {
     let tagMessage = ERROR.EMAIL.duplicated;
     addErrorTag (inputEmail, emailWrap, tagMessage)
-  });
-
-  return result; //오류없음
+  })
+  .finally ( () => {
+    return result;
+});
 }
 
 
