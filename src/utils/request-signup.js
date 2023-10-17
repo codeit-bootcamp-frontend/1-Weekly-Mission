@@ -1,4 +1,10 @@
-import { responseData, isResponseSuccess, getEndpoint, localStorageSetToken } from "../constants/common.js";
+import {
+  redirectPath,
+  responseData,
+  isResponseSuccess,
+  getEndpoint,
+  setLocalStorageToken,
+} from "../constants/common.js";
 
 const endpoint = getEndpoint("auth", "signUp");
 
@@ -17,12 +23,13 @@ const requestSignup = async (email, password, ismismatchPassword) => {
     const response = await axios.post(endpoint, requsetBody(email, password));
 
     if (isResponseSuccess(response)) {
-      localStorageSetToken(responseData(response));
+      setLocalStorageToken(responseData(response));
+      redirectPath;
       return true;
     }
     return false;
   } catch (error) {
-    console.error("request-signup error:", error.response.status);
+    console.error("request-signup status:", error.response.status);
     return false;
   }
 };

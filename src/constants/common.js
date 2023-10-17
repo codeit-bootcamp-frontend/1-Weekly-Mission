@@ -16,9 +16,11 @@ const HTTP_STATUS_OK = 200;
 
 const baseUrl = API_ENDPOINTS.baseUrl;
 
-axios.defaults.baseURL = baseUrl;
+const getAccessToken = localStorage.getItem("accessToken");
 
-const getRefreshToken = () => localStorage.getItem("refreshToken");
+const redirectPath = () => {
+  window.location.href = REDIRECT_PATH;
+};
 
 const responseData = (response) => response.data.data;
 
@@ -32,27 +34,29 @@ const isValidPassword = (password) => PASSWORD_PATTERN.test(password);
 
 const getEndpoint = (section, endpoint) => API_ENDPOINTS[section][endpoint];
 
-const localStorageSetToken = (responseData) => {
+const setLocalStorageToken = (responseData) => {
   const getResponseAccessToken = responseData.accessToken;
   const getResponseRefreshToken = responseData.refreshToken;
   localStorage.setItem("accessToken", getResponseAccessToken);
   localStorage.setItem("refreshToken", getResponseRefreshToken);
 };
 
+axios.defaults.baseURL = baseUrl;
+
 export {
   ERROR_CLASS_NAME,
-  TEST_ACCOUNT,
   REDIRECT_PATH,
   VALUE_EMPTY,
   EYE_ICON_PATH,
   HTTP_STATUS_OK,
   baseUrl,
-  getRefreshToken,
+  getAccessToken,
+  redirectPath,
   responseData,
   isResponseSuccess,
   isEmpty,
   isValidEmail,
   isValidPassword,
   getEndpoint,
-  localStorageSetToken,
+  setLocalStorageToken,
 };

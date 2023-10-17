@@ -13,12 +13,12 @@ const requestCheckEmail = async (email) => {
     const response = await axios.post(endpoint, requsetBody(email));
 
     if (isResponseSuccess(response)) {
-      return true;
+      return false;
     }
-    return false;
+    return true;
   } catch (error) {
-    console.error("request-signup error:", error.response);
-    return false;
+    console.log("request-check-email status:", error.response.status);
+    return true;
   }
 };
 

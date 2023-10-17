@@ -5,12 +5,11 @@ import {
   passwordErrorMessagesEl,
   passwordInputsEl,
 } from "../constants/tags.js";
-import { REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from "../constants/common.js";
+import { VALUE_EMPTY, isEmpty, isValidEmail, getAccessToken, redirectPath } from "../constants/common.js";
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
 import requestSignin from "../utils/request-signin.js";
-import refreshAccessToken from "../utils/api-refresh-token.js";
 
 const validateEmail = () => {
   const emailValue = emailInputEl.value;
@@ -45,15 +44,10 @@ const handleLoginFormSubmit = (event) => {
   passwordInputsEl.forEach(async (passwordInputEl, index) => {
     const emailInputValue = emailInputEl.value;
     const passwordInputValue = passwordInputEl.value;
-    const isValidRequest = await requestSignin(emailInputValue, passwordInputValue);
-
     const submitErrorMessages = ERROR_MESSAGES.submit;
     const isMatchEmail = (field) => field === "email";
 
-    if (isValidRequest) {
-      window.location.href = REDIRECT_PATH;
-      return;
-    }
+    await requestSignin(emailInputValue, passwordInputValue);
 
     Object.keys(submitErrorMessages).forEach((field) => {
       displayErrorMessage(
@@ -66,6 +60,12 @@ const handleLoginFormSubmit = (event) => {
   });
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+  if (getAccessToken) {
+    redirectPath();
+  }
+});
+
 emailInputEl.addEventListener("focusout", validateEmail);
 
 formEl.addEventListener("submit", handleLoginFormSubmit);
@@ -75,9 +75,3 @@ passwordInputsEl.forEach((passwordInputEl, index) =>
 );
 
 generateEyeButton();
-
-(async () => {
-  if (await refreshAccessToken()) {
-    window.location.href = REDIRECT_PATH;
-  }
-})();

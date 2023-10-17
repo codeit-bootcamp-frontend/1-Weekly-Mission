@@ -5,20 +5,19 @@ import {
   passwordErrorMessagesEl,
   passwordInputsEl,
 } from "../constants/tags.js";
-import { REDIRECT_PATH, VALUE_EMPTY, isEmpty, isValidEmail } from "../constants/common.js";
+import { VALUE_EMPTY, isEmpty, isValidEmail, getAccessToken, redirectPath } from "../constants/common.js";
 import { displayErrorMessage, addErrorClass, removeErrorClass } from "../constants/error-handling.js";
 import validatePasswordInput from "../utils/validate-password-input.js";
 import ERROR_MESSAGES from "../constants/error-messages.js";
 import generateEyeButton from "../utils/generate-eye-button.js";
 import requestSignup from "../utils/request-signup.js";
 import requestCheckEmail from "../utils/api-check-email.js";
-import refreshAccessToken from "../utils/api-refresh-token.js";
 
 const validateEmail = () => {
   const emailValue = emailInputEl.value;
 
   const isEmptyValue = isEmpty(emailValue);
-  const isDuplicate = !requestCheckEmail(emailValue);
+  const isDuplicate = requestCheckEmail(emailValue);
   const invalidEmail = !isValidEmail(emailValue);
   const emptyMessage = ERROR_MESSAGES.email.empty;
   const invalidMessage = ERROR_MESSAGES.email.invalid;
@@ -30,13 +29,9 @@ const validateEmail = () => {
     return;
   }
 
-  if (invalidEmail) {
-    displayErrorMessage(emailErrorMessageEl, invalidMessage);
-    addErrorClass(emailInputEl);
-    return;
-  }
-
-  isDuplicate
+  invalidEmail
+    ? (displayErrorMessage(emailErrorMessageEl, invalidMessage), addErrorClass(emailInputEl))
+    : isDuplicate
     ? (displayErrorMessage(emailErrorMessageEl, duplicateMessage), addErrorClass(emailInputEl))
     : (displayErrorMessage(emailErrorMessageEl, VALUE_EMPTY), removeErrorClass(emailInputEl));
 };
@@ -64,13 +59,14 @@ const handleSignupFormSubmit = async (event) => {
     passwordInputValue
   );
 
-  const isValidRequest = await requestSignup(emailValue, passwordInputValue, isMismatchPassword);
-
-  if (isValidRequest) {
-    window.location.href = REDIRECT_PATH;
-    return;
-  }
+  await requestSignup(emailValue, passwordInputValue, isMismatchPassword);
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (getAccessToken) {
+    redirectPath();
+  }
+});
 
 formEl.addEventListener("submit", handleSignupFormSubmit);
 
@@ -91,9 +87,3 @@ passwordInputsEl.forEach((passwordInputEl, index) => {
 });
 
 generateEyeButton();
-
-(async () => {
-  if (await refreshAccessToken()) {
-    window.location.href = REDIRECT_PATH;
-  }
-})();
