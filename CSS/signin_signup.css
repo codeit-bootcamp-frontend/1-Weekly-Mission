@@ -94,8 +94,8 @@ form {
   top: 50%;
   transform: translateY(-50%);
   right: 15px;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
@@ -110,11 +110,11 @@ form {
   font-weight: 400;
   color: #FF5B56;
   margin-top: .375rem;
-  display: none;
+  visibility: hidden;
 }
 
 .show {
-  display: block;
+  visibility: visible;
 }
 
 footer {
