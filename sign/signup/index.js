@@ -38,6 +38,12 @@ const eyeIcon_Re = document.querySelector(EYE_ICON_RE);
 const loginBtn = document.querySelector(LOGIN_BUTTON);
 
 
+// AccessToken 존재 여부
+if (localStorage.getItem("accessToken")) {
+  location.href="/folder";
+}
+
+
 // 이메일 중복 확인
 async function isDuplicatedEmail(email) {
   try {
