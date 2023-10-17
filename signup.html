@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>회원가입</title>
+    <link rel="icon" href="/images/Avatar.png" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -11,6 +12,12 @@
     <link rel="stylesheet" href="/src/reset.css" />
     <link rel="stylesheet" href="/src/global.css" />
     <link rel="stylesheet" href="/src/member.css" />
+
+    <!-- 로그인 했는지 확인 -->
+    <script>
+      if (localStorage.getItem("accessToken"))
+        window.location.href = "/folder.html"
+    </script>
   </head>
   <body>
     <div class="member-frame">

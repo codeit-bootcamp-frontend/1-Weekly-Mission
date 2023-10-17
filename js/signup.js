@@ -15,6 +15,8 @@ import {
   addErrorMessage,
 } from "./member.js" // import functions
 
+import { fetchPost } from "/apis/api.js"
+
 const [passwordEye, passwordConfirmEye] =
   document.getElementsByClassName("password-eye")
 
@@ -27,12 +29,11 @@ const checkPasswordForm = (password) => {
 // 이메일 확인
 const setEmailErrorMessage = (e) => {
   e.preventDefault()
+
   if (!email.value) {
     addErrorMessage(pElementEmailError, "이메일을 입력해주세요.")
   } else if (!checkEmailForm(email.value)) {
     addErrorMessage(pElementEmailError, "올바른 이메일 주소가 아닙니다.")
-  } else if (email.value === "test@codeit.com") {
-    addErrorMessage(pElementEmailError, "이미 사용중인 이메일입니다.")
   } else {
     clearErrorMessage(pElementEmailError)
   }
@@ -74,21 +75,34 @@ const pressEnter = (e) => {
 }
 
 // Form 전송 이벤트 함수
-const submitLoginForm = (event) => {
+const submitLoginForm = async (event) => {
   event?.preventDefault()
+  const emailBody = { email: email.value }
+  const fullBody = { email: email.value, password: password.value }
 
   if (
-    email.value &&
-    password.value &&
     checkEmailForm(email.value) &&
     checkPasswordForm(password.value) &&
     password.value === passwordConfirm.value
   ) {
-    // 유효한 회원가입 시도
     try {
-      location.href = "/pages/folder.html"
+      await fetchPost("/api/check-email", emailBody)
+      const secondResponse = await fetchPost("/api/sign-up", fullBody)
+      const { accessToken } = secondResponse.data
+
+      window.localStorage.setItem("accessToken", accessToken)
+      window.location.href = "/folder.html"
     } catch (error) {
-      throw new Error("Can't redirect to folder page")
+      const errorStatus = error.message.slice(0, 3)
+      const errorMsg = error.message.slice(4)
+      if (errorStatus === "409" && errorMsg === "이미 존재하는 이메일입니다.") {
+        addErrorMessage(pElementEmailError, "이미 사용중인 이메일입니다.")
+      } else if (
+        errorStatus === "400" &&
+        errorMsg === "올바른 이메일이 아닙니다."
+      ) {
+        addErrorMessage(pElementEmailError, "회원가입에 실패했습니다.")
+      }
     }
   } else {
     setEmailErrorMessage(event)
