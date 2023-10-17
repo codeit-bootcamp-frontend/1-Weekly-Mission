@@ -1,13 +1,14 @@
 import React from "react";
-import "./Navbar.css"; // 해당 CSS를 import합니다 (아래에서 해당 CSS도 만들어 보겠습니다.)
+import "./Navbar.css"; // 기존 상단 바 css 규칙 가져오기!!
 import "./global.css";
+import Logo from "./Logo";
 
 function Navbar() {
   return (
     <header className="header">
       <div className="header-content">
-        <a href="/">
-          <img className="logo" src="assets/logo.svg" alt="logo" />
+        <a href="../public">
+          <Logo className="logo" alt="logo" />
         </a>
         <a href="signin">
           <button className="loginBtn">로그인</button>

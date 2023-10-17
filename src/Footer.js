@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css"; // 필요한 CSS 파일 import
+import "./Footer.css";
 import "./global.css";
 import FacebookIcon from "./FacebookIcon";
 import InstagramIcon from "./InstagramIcon";

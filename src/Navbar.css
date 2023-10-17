@@ -1,92 +1,61 @@
-.footer {
-  padding-top: 120px;
-}
-
-.footer-content {
-  align-self: stretch;
-  height: 160px;
-  padding: 32px 104px;
-  background: var(--color-black-10);
-}
-
-.footer .section {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.footer .section_1 {
+header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background: var(--color-bg);
 }
 
-.footer .footer-content .section .section_1 p {
-  margin: 0;
-  font-family: Arial;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  color: #676767;
-  text-align: center;
-}
-
-.footer .section_2 {
+.header-content {
   display: flex;
-  gap: 30px;
+  align-items: center; /*세로 정렬*/
+  justify-content: space-between; /*가로 정렬*/
+}
+
+.logo {
+  width: 133px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.loginBtn {
+  display: flex;
+  gap: 10px;
+  align-items: center;
   justify-content: center;
-}
-
-.footer .footer-content .section .section_2 p {
-  margin: 0;
-  font-family: Arial;
-  font-size: 16px;
+  padding: 16px 20px;
+  border: none;
+  width: 128px;
+  background: var(--gra-purpleblue-to-skyblue);
+  font-family: "Pretendard";
+  font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: normal;
-  color: #cfcfcf;
-}
-
-.footer .footer-content .section .section_3 {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-}
-
-.footer .footer-content .section .section_3 .icon {
-  width: 20px;
-  height: 20px;
+  color: var(--color-grey-light);
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 /* mobile */
 
 @media (min-width: 375px) {
+  .header-content {
+    margin: 13px 32px;
+    width: 100%;
+  }
+
   @media (max-width: 767px) {
-    .footer {
-      padding-top: 40px;
+    .loginBtn {
+      padding: 10px 16px;
+      width: 80px;
+      font-size: 14px;
     }
 
-    .footer-content {
-      padding: 32px;
-    }
-
-    .footer .section {
-      display: grid;
-      grid-template-columns: 60% 40%;
-      grid-template-rows: repeat(2, 1fr);
-      grid-row-gap: 60px;
-    }
-
-    .footer .section_1 {
-      display: flex;
-      justify-content: flex-start;
-      grid-row: 2;
-      grid-column: 1;
-    }
-
-    .footer .section_2 {
-      display: flex;
-      gap: 30px;
-      justify-content: flex-start;
+    .logo {
+      width: 88.667px;
+      height: 16px;
     }
   }
 }
@@ -94,9 +63,9 @@
 /* Tablet */
 
 @media (min-width: 768px) and (max-width: 1199px) {
-}
-
-/* Desktop */
-
-@media (min-width: 1200px) {
+  .header-content {
+    margin: 20px 0;
+    padding: 0px 32px;
+    width: 864px;
+  }
 }

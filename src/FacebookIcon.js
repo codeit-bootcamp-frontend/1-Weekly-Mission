@@ -1,4 +1,3 @@
-// FacebookIcon.js
 import React from "react";
 
 const FacebookIcon = () => (
