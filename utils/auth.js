@@ -94,6 +94,6 @@ export function storeAccessToken(token) {
 
 export function hasToken() {
   if (localStorage.getItem("accessToken")) {
-    location.href = "/pages/folder/";
+    return true;
   }
 }

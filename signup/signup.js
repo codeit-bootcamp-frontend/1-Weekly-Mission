@@ -14,7 +14,6 @@ import {
   deleteErrorMessage,
   setErrorMessage,
   storeAccessToken,
-  hasToken,
 } from "../utils/auth.js";
 
 const signupBtn = document.querySelector(".signup-btn");
@@ -25,7 +24,13 @@ const pwInput = document.querySelector(".password-input");
 const pwCheckInput = document.querySelector("#password-check-input");
 const emailErrorContainer = document.querySelector("#email-error-container");
 
-hasToken();
+function relocateAuthPage() {
+  if (hasToken()) {
+    location.href = "/pages/folder/";
+  }
+}
+
+relocateAuthPage();
 
 async function handleSignup() {
   handleEmailInputEmptyCheck();

@@ -20,7 +20,13 @@ const pwInput = document.querySelector(".password-input");
 const signinBtn = document.querySelector(".signin-btn");
 const eyeBtn = document.querySelector(".eye-off-btn");
 
-hasToken();
+function relocateAuthPage() {
+  if (hasToken()) {
+    location.href = "/pages/folder/";
+  }
+}
+
+relocateAuthPage();
 
 function handlePasswordInputEmptyValueCheck(e) {
   if (!e.target.value.trim()) {
