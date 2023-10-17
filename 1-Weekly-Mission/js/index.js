@@ -2,13 +2,12 @@
 const $emailBox = document.querySelector("#email");
 const $passwordBox = document.querySelector("#password");
 const $passwordCheckBox = document.querySelector("#password_check");
-// const $submitButton = document.querySelector(".sign_button");
 const $eyeButton = document.querySelector(".eye_off");
 const $eyeButtonCheck = document.querySelector(".eye_off_check");
 
-const $emailErrMsg = document.createElement("p");
-const $passwordErrMsg = document.createElement("p");
-const $passwordConfirmErrMsg = document.createElement("p");
+const $emailErrMsg = document.querySelector("#email_error");
+const $passwordErrMsg = document.querySelector("#password_error");
+const $passwordConfirmErrMsg = document.querySelector("#password_check_error");
 
 // 에러 메시지 추가
 const addError = (target, ErrorMessage) => {
@@ -16,13 +15,10 @@ const addError = (target, ErrorMessage) => {
   target.textContent = ErrorMessage;
 
   if (target === $emailErrMsg) {
-    $emailBox.after(target);
     $emailBox.classList.add("error_border");
   } else if (target === $passwordErrMsg) {
-    $eyeButton.after(target);
     $passwordBox.classList.add("error_border");
   } else if (target === $passwordConfirmErrMsg) {
-    $eyeButtonCheck.after(target);
     $passwordCheckBox.classList.add("error_border");
   }
 };
