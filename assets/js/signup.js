@@ -30,37 +30,37 @@ function validateEmailInput(email){
     addErrorTag (inputEmail, emailWrap, tagMessage);
     return false;
   } 
-  
+
   if (isEmailValid(email) === false){
     let tagMessage = ERROR.EMAIL.invalid;
     addErrorTag (inputEmail, emailWrap, tagMessage)
     return false;
   }
 
-let result = true
+  let result = true
 
-  fetch(API_URL.AUTH.checkEmail, {
+  const checkEmail = function () {
+    fetch(API_URL.AUTH.checkEmail, {
     method: 'POST',
     headers: {
       "Content-Type" : 'application/json',
     },
     body: JSON.stringify({"email": email}),
-  })
-  .then((response) => {
-    if(!response.ok) {
-      result = false;
-      throw Error("This email is already taken");
-    }
-  })
-  .catch ((err) => {
-    let tagMessage = ERROR.EMAIL.duplicated;
-    addErrorTag (inputEmail, emailWrap, tagMessage)
-  })
-  .finally ( () => {
-    return result;
-});
+    })
+    .then((response) => {
+      if(!response.ok) {
+        result = false;
+        throw Error("This email is already taken");
+      }
+    })
+    .catch ((err) => {
+      let tagMessage = ERROR.EMAIL.duplicated;
+      addErrorTag (inputEmail, emailWrap, tagMessage)
+    })
+    return result
+  }
+  return (checkEmail());
 }
-
 
 inputEmail.addEventListener('focusout', (e) => {validateEmailInput(e.target.value)})
 
@@ -106,23 +106,45 @@ function confirmPw(){
 }
 
 inputPwConfirm.addEventListener('focusout', confirmPw)
-inputPw.addEventListener('focusout',confirmPw)
+inputPw.addEventListener('focusout',confirmPw) //비밀번호 입력칸에서 수정 발생시 재검사
 
 //회원가입 실행
 function submitForm(e){
   e.preventDefault()
 
-  //이메일 검사
-  const email = inputEmail.value;
-  let isValidEmail = validateEmailInput(email)
+  const email = inputEmail.value
+  const password = inputPw.value
 
-  //비밀번호 검사
-  const password01 = inputPw.value;
-  let isValidPw = validatePwInput(password01)
+  const inputAccount = {
+    "email": email,
+    "password": password
+  }
+
+  //이메일&비밀번호 검사
+  let isValidEmail = validateEmailInput(email)
+  let isValidPw = validatePwInput(password)
   let isPwMatch = confirmPw();
 
+  //모두 true면 submit
   if (isValidEmail && isValidPw && isPwMatch) {
-    formEl.submit()
+    fetch (API_URL.AUTH.signup, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(inputAccount)
+    })
+    .then((response) => {
+      if (!response.ok) {
+       throw Error("This account is not available")
+      }
+    })
+    .then(() => {
+      formEl.submit()
+    })
+    .catch ((err) => {
+      console.log(err)
+    });
   }
 }
 
