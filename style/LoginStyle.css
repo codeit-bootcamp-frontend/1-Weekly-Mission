@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body{
+    padding: 238px 0 252px 0;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background: var(--linkbrary-bg, #F0F6FF);
+  }
+
+  /* 에러 메시지 스타일 */
+.error-message {
+  display: none;
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+  .Container{
+    width: 400px;
+    height: 100%;
+  }
+
+  .LoginForm{
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
+  }
+
+  .LoginHeader{
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .Logo>a>img{
+    width: 210.583px;
+    height: 38px;
+  }
+
+  .Signup{
+    display: flex;
+    gap: 8px;
+  }
+
+  .GetInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+  .InputForm{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.Input{
+  position: relative;
+}
+
+.Input>img{
+    position: absolute;
+    bottom: 18px;
+    right: 15px;
+}
+
+label{
+    color: var(--black, #000);
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+input{
+    width: 400px;
+    padding: 18px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+}
+
+input:focus{
+    border-color: #6D6AFE;
+	outline: none;
+}
+
+.LoginButton{
+    margin-top: 30px;
+    margin-bottom: 32px;
+}
+
+button{
+    padding: 16px 20px;
+    width: 400px;
+    color: white;
+    color: var(--grey-light, #F5F5F5);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border-radius: 8px;
+    border: none;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+}
+
+/* 소셜 로그인 */
+.SocialContainer{
+    display: flex;
+    width: 400px;
+    padding: 12px 24px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--linkbrary-gray-20, #CCD5E3);
+    background: var(--linkbrary-gray-10, #E7EFFB);
+}
+
+.SocialContent{
+    color: var(--linkbrary-gray-100, #373740);
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.IconContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+/* signup */
+.SignupContainer{
+    width: 400px;
+    height: 394px;
+    margin-bottom: 116px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .Container{
+    padding: 20px 32px;
+  }
+}
