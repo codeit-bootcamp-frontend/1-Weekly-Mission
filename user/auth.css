@@ -89,7 +89,7 @@
 .form__input:focus {
 	outline-color: var(--linkbrary-primary-color);
 }
-.form__input--warning {
+.form__input--warning--active {
 	border-color: var(--linkbrary-red);
 }
 .form__eye-icon {
@@ -102,7 +102,7 @@
 .form__input--password {
 	padding-right: 2.125rem;
 }
-.form__warning-message {
+.form__warning-message--active {
 	color: var(--linkbrary-red);
 	font-family: Pretendard;
 	font-size: 0.875rem;

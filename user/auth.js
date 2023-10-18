@@ -4,144 +4,170 @@ const VALID_STATUS = {
 	"user-password-check": true,
 };
 
+const USER_EMAIL = {
+	regex: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+	errorMsg: {
+		empty: "이메일을 입력해주세요.",
+		wrong: "올바른 이메일 주소가 아닙니다.",
+		check: "이메일을 확인해주세요",
+		exist: "이미 사용 중인 이메일입니다.",
+	},
+	errorCode: {
+		409: "exist",
+	},
+};
+
+const USER_PASSWORD = {
+	regex: /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/,
+	errorMsg: {
+		empty: "비밀번호를 입력해주세요.",
+		wrong: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
+		check: "비밀번호를 확인해주세요",
+		notEqual: "비밀번호가 일치하지 않아요.",
+	},
+	equalTarget: "user-password-check",
+};
+
+const USER_PASSWORD_CHECK = {
+	errorMsg: {
+		notEqual: "비밀번호가 일치하지 않아요.",
+	},
+	equalTarget: "user-password",
+};
+
 const REGEX = {
 	"user-email":
 		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 	"user-password": /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/,
 };
 
-const ERROR_MSG = {
-	"user-email": {
-		empty: "이메일을 입력해주세요.",
-		wrong: "올바른 이메일 주소가 아닙니다.",
-		check: "이메일을 확인해주세요",
-		exist: "이미 사용 중인 이메일입니다.",
-	},
-	"user-password": {
-		empty: "비밀번호를 입력해주세요.",
-		wrong: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-		check: "비밀번호를 확인해주세요",
-	},
-	"user-password-check": {
-		notEqual: "비밀번호가 일치하지 않아요.",
-	},
-};
-
-const ERROR_MSG_CLASS = {
-	msg: "form__warning-message",
-	input: "form__input--warning",
+const ERROR_ELEMENT_CLASS = {
+	input: "form__input--warning--active",
+	msg: "form__warning-message--active",
 };
 
 const PASSWORD_VIEW_MODE = {
 	on: {
-		mode: "off",
-		imgSrc: "../images/eye-off.svg",
-		type: "password",
-		alt: "비밀번호 보기",
+		img: {
+			"data-current-view-mode": "off",
+			src: "../images/eye-off.svg",
+			alt: "비밀번호 보기",
+		},
+		input: {
+			type: "password",
+		},
 	},
 	off: {
-		mode: "on",
-		imgSrc: "../images/eye-on.svg",
-		type: "text",
-		alt: "비밀번호 가리기",
+		img: {
+			"data-current-view-mode": "on",
+			src: "../images/eye-on.svg",
+			alt: "비밀번호 가리기",
+		},
+		input: {
+			type: "text",
+		},
 	},
 };
 
-const USER = {
-	"test@ddd.com": "testtesttes1t",
-	"test@codeit.com": "codeit101",
+const API_URL = {
+	checkEmail: "https://bootcamp-api.codeit.kr/api/check-email",
+	signIn: "https://bootcamp-api.codeit.kr/api/sign-in",
 };
 
-// --- 순수 함수들 ---
+// 계산
+const isAllInputsValid = (status) => Object.values(status).every(Boolean);
 
-// 이미 존재하는 에러 엘리먼트를 찾아서 반환
-const findErrorElement = ($target) =>
-	$target.closest(".form__field").getElementsByClassName(ERROR_MSG_CLASS.msg);
+const getErrorMessage = (errorMessages, errorType) => errorMessages[errorType];
 
-// 모든 인풋 유효성 검사 통과 여부
-const isAllInputsValid = () => Object.values(VALID_STATUS).every(Boolean);
+const makeIsEmpty = () => (value) => value.length > 0 ? null : "empty";
 
-// --- 사이드 이펙트 함수들 ---
+const makeIsValid = (regex) => (value) => regex.test(value) ? null : "wrong";
 
-// 유효성 검사 통과 여부 업데이트
-const setValidStatus = (id, status) => (VALID_STATUS[id] = status);
+const makeIsEqualPassword = (passwordValue) => (passwordCheckValue) =>
+	passwordValue === passwordCheckValue ? null : "notEqual";
 
-// 인풋 focustout시 유효성검사 후 에러메시지 리턴
-const validateInput = ($target) => {
-	const { id, value } = $target;
-	let msgType = "";
+const getErrorType = (validators, value) => validators.map((validator) => validator(value)).find(Boolean);
 
-	if (!REGEX[id].test(value))
-		msgType = value.length === 0 ? "empty" : "wrong";
-
-	return ERROR_MSG[id][msgType];
+const getInputErrorMeesage = (valdators, value, errorMessages) => {
+	const errorType = getErrorType(valdators, value);
+	return getErrorMessage(errorMessages, errorType);
 };
 
-// 에러 메시지 생성
-const showError = ($target, errorText) => {
-	const errorMsg = document.createElement("p");
-
-	$target.classList.add(ERROR_MSG_CLASS.input);
-	$target.closest(".form__field").append(errorMsg);
-
-	errorMsg.classList.add(ERROR_MSG_CLASS.msg);
-	errorMsg.textContent = errorText;
+// 사이드 이펙트
+const setPropertiesForElement = (element, properties) => {
+	for (let [propName, value] of Object.entries(properties)) {
+		element.setAttribute(propName, value);
+	}
 };
 
-// 에러 메시지 삭제
-const removeError = ($target, errorElement) => {
-	$target.classList.remove(ERROR_MSG_CLASS.input);
-	errorElement.remove();
+const findElementFromCloestFormField = (element, selector) => findElement(element.closest(".form__field"), selector);
+
+const addClass = (element, className) => element.classList.add(className);
+
+const removeClass = (element, className) => element.classList.remove(className);
+
+const findElement = (element, selector) => element.querySelector(selector);
+
+const showInputError = (input, pTag, errorClasses) => {
+	addClass(input, errorClasses["input"]);
+	addClass(pTag, errorClasses["msg"]);
 };
 
-// 에러 메시지 생성,삭제 토글
-const toggleError = ($target, submitErrorText) => {
-	const [errorElement] = findErrorElement($target);
-	const errorText = submitErrorText || validateInput($target);
-	errorElement && removeError($target, errorElement);
-	errorText && showError($target, errorText);
-
-	setValidStatus($target.id, !errorText);
+const hideInputError = (input, pTag, errorClasses) => {
+	removeClass(input, errorClasses["input"]);
+	removeClass(pTag, errorClasses["msg"]);
 };
 
-// 비밀번호 인풋 password <-> text 토글
-const togglePasswordInput = ($target) => {
-	const { currentViewMode, passwordInputId } = $target.dataset;
+const changeTextContent = (element, text) => (element.textContent = text);
 
-	const nextViewMode = PASSWORD_VIEW_MODE[currentViewMode];
-	const passwordInput = document.getElementById(passwordInputId);
-
-	$target.dataset.currentViewMode = nextViewMode.mode;
-	$target.src = nextViewMode.imgSrc;
-	$target.alt = nextViewMode.alt;
-	passwordInput.type = nextViewMode.type;
+const updateInputDomError = (input, pTag, errorMessage, errorClasses) => {
+	const isValid = !errorMessage;
+	isValid ? hideInputError(input, pTag, errorClasses) : showInputError(input, pTag, errorClasses);
+	changeTextContent(pTag, errorMessage);
 };
 
-const authForm = document.querySelector(".auth__form");
+const togglePasswordInput = (img, input, viewMode) => {
+	setPropertiesForElement(img, viewMode.img);
+	setPropertiesForElement(input, viewMode.input);
+};
 
-const formInputs = document.querySelectorAll(".form__input");
+const handleInputError = ($target, validators, errorMessages, errorClasses) => {
+	const pTag = findElementFromCloestFormField($target, ".form__warning-message");
+	const errorMessage = getInputErrorMeesage(validators, $target.value, errorMessages);
+	const isValid = !errorMessage;
 
-const submitButton = document.querySelector("#submit-button");
+	updateInputDomError($target, pTag, errorMessage, errorClasses);
 
-const inputsAndButton = [...formInputs, submitButton];
+	return isValid;
+};
 
-const eyeIcons = authForm.querySelectorAll(".form__eye-icon");
+// handleInputError에서 비밀번호체크 인풋만 특별히 바꾸기 실패...
+const handlePasswordNotEqualError = (passwordCheckInput, isEqualPassword, errorMessages, errorClasses) => {
+	const pTag = findElementFromCloestFormField(passwordCheckInput, ".form__warning-message");
+	const errorMessage = getInputErrorMeesage(isEqualPassword, passwordCheckInput.value, errorMessages);
+	const isValid = !errorMessage;
 
-eyeIcons.forEach((icon) => {
-	icon.addEventListener("click", (e) => togglePasswordInput(e.target));
-});
+	updateInputDomError(passwordCheckInput, pTag, errorMessage, errorClasses);
+
+	return isValid;
+};
 
 export {
+	API_URL,
 	VALID_STATUS,
-	ERROR_MSG,
-	USER,
-	findErrorElement,
+	USER_EMAIL,
+	USER_PASSWORD,
+	USER_PASSWORD_CHECK,
+	REGEX,
+	ERROR_ELEMENT_CLASS,
+	PASSWORD_VIEW_MODE,
+	findElementFromCloestFormField,
+	updateInputDomError,
+	togglePasswordInput,
+	handleInputError,
+	handlePasswordNotEqualError,
+	makeIsEmpty,
+	makeIsValid,
+	makeIsEqualPassword,
 	isAllInputsValid,
-	setValidStatus,
-	removeError,
-	toggleError,
-	authForm,
-	formInputs,
-	submitButton,
-	inputsAndButton,
 };
