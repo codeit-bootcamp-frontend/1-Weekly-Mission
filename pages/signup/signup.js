@@ -1,4 +1,4 @@
-import { emailEl, emailCheck } from "../../assets/js/email.js";
+import { emailEl, emailCheck} from "../../assets/js/email.js";
 import { passwordEl, passwordCheckEl, passwordCheck, eyeOnOff } from "../../assets/js/password.js";
 
 const eye = document.querySelector('#password-icon');
@@ -19,12 +19,45 @@ function loginCheck () {
         passwordCheckEl.parentElement.nextElementSibling.textContent = `비밀번호를 확인해주세요`;
         passwordCheckEl.parentElement.nextElementSibling.style.visibility = 'visible';
     } else{
-        location.href = '/folder.html'
-    }
+        emailIApiCheck(email.value)
+            .then((res) => {
+                if (!res.ok){
+                    throw new Error(`${res.status} error `)
+                }
+                return res.json();
+            })
+            .then((resData) => {
+                localStorage.setItem("accessToken",resData.data.accessToken);
+                location.href = '/folder.html';
+            })
+            .catch(() => {
+                emailEl.className = 'error';
+                emailEl.nextElementSibling.textContent = `이미 사용 중인 이메일입니다.`;
+                emailEl.nextElementSibling.style.visibility = 'visible';}   )
+            }
 }
 
 function loginCheckKey (e) {
     e.key === 'Enter' ? loginCheck() : false;
+}
+
+async function emailIApiCheck (email) {
+    const data = {
+        email: `${email}`
+    }
+    const res = await fetch(`https://bootcamp-api.codeit.kr/api/check-email
+    `, {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return res;
+}
+
+if(localStorage.getItem("accessToken")) {
+    location.href = '/folder.html';
 }
 
 emailEl.addEventListener('focusout', emailCheck);

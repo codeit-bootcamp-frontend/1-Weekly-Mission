@@ -1,4 +1,5 @@
-const emailTest = 'test@codeit.com'
-const passwordTest = 'codeit101'
+const emailTest = 'test@codeit.com';
+const passwordTest = 'codeit101';
+const passwordApi = 'sprint101';
 
-export {emailTest, passwordTest}
+export {emailTest, passwordTest, passwordApi}
