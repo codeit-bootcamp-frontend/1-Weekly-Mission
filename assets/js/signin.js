@@ -65,13 +65,22 @@ function submitForm(e) {
   fetch (API_URL.AUTH.signin, {
     method: "POST", 
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(inputAccount)
   })
   .then((response) => {
+    console.log(response)
     if (!response.ok) {
      throw Error("This account is not exist")
+    }
+    return response.json()
+  })
+  .then((result) => {
+    //로그인 성공시 accessToken 저장
+    if (result.data.accessToken) {
+      localStorage.setItem('accessToken', result.data.accessToken)
+      localStorage.setItem('refreshToken', result.data.refreshToken)
     }
   })
   .then(() => {
