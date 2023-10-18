@@ -7,17 +7,15 @@ import {
 	getIsValidPassword,
 	getIsFilledConfirmPassword,
 	getIsConfirmedConfirmPassword,
-} from "/utils/auth.js";
+	signUp,
+	getIsNewEmail,
+} from "/utils/authorize.js";
 
 import {
 	AUTH_HINT,
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 } from "/utils/constants.js";
-
-import { signUp } from "./api.js";
-
-import { getIsNewEmail } from "/utils/api.js";
 
 /* 로그인 상태로 접근 시 리다이렉트 */
 (function () {
@@ -186,13 +184,13 @@ function getIsConfirmedPassword(confirmPassword) {
 	}
 }
 
-async function clickSignup({ email, password, confirmPassword }) {
+function clickSignup({ email, password, confirmPassword }) {
 	if (
 		getIsCompleteEmail(email) &&
 		getIsCompletePassword(password) &&
 		getIsConfirmedPassword(confirmPassword)
 	)
-		await signUp({ email, password });
+		signUp(email, password);
 }
 
 emailInputElement.addEventListener("focusout", (e) => {
@@ -205,14 +203,6 @@ passwordInputElement.addEventListener("focusout", (e) => {
 
 confirmPasswordInputElement.addEventListener("focusout", (e) => {
 	checkPasswordConfirmFocusout(e.target.value);
-});
-
-emailInputElement.addEventListener("focusout", (e) => {
-	checkEmailFocusout(e.target.value);
-});
-
-passwordInputElement.addEventListener("focusout", (e) => {
-	checkPasswordFocusout(e.target.value);
 });
 
 signupButtonElement.addEventListener("click", (e) => {

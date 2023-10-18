@@ -6,6 +6,8 @@ import {
 	FOLDER_PAGE_PATH,
 } from "/utils/constants.js";
 
+import { fetchClient } from "./apiClient.js";
+
 // 비밀번호 토글
 function getPasswordVisibility(inputType) {
 	return inputType === "password"
@@ -77,6 +79,43 @@ function getIsConfirmedConfirmPassword(
 	}
 }
 
+const signIn = async (email, password) => {
+	const response = await fetchClient({
+		url: "sign-in",
+		method: "POST",
+		body: { email, password },
+	});
+	const result = await response.json();
+	const accessToken = result.data.accessToken;
+	window.localStorage.setItem("accessToken", accessToken);
+	goToFolderPage();
+};
+
+const getIsNewEmail = async (email) => {
+	try {
+		await fetchClient({
+			url: "check-email",
+			method: "POST",
+			body: { email },
+		});
+		return true;
+	} catch {
+		return false;
+	}
+};
+
+const signUp = async (email, password) => {
+	const response = await fetchClient({
+		url: "sign-up",
+		method: "POST",
+		body: { email, password },
+	});
+	const result = await response.json();
+	const accessToken = result.data.accessToken;
+	window.localStorage.setItem("accessToken", accessToken);
+	goToFolderPage();
+};
+
 export {
 	getPasswordVisibility,
 	goToFolderPage,
@@ -87,4 +126,7 @@ export {
 	getIsCorrectPassword,
 	getIsFilledConfirmPassword,
 	getIsConfirmedConfirmPassword,
+	signIn,
+	getIsNewEmail,
+	signUp,
 };

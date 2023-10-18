@@ -4,15 +4,14 @@ import {
 	getIsFilledEmail,
 	getIsValidEmail,
 	getIsFilledPassword,
-} from "/utils/auth.js";
+	signIn,
+} from "/utils/authorize.js";
 
 import {
 	AUTH_HINT,
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 } from "/utils/constants.js";
-
-import { signIn } from "./api.js";
 
 /* 로그인 상태로 접근 시 리다이렉트 */
 (function () {
@@ -106,10 +105,9 @@ function getIsCompletePassword(password) {
 		return true;
 	}
 }
-
-async function clickSignin(email, password) {
+function clickSignin(email, password) {
 	if (getIsCompleteEmail(email) && getIsCompletePassword(password))
-		await signIn({ email, password });
+		signIn(email, password);
 }
 
 emailInputElement.addEventListener("focusout", (e) => {
