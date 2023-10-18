@@ -1,5 +1,11 @@
 import * as nodeUtils from "../../utils/nodeUtils.js";
-import { EXP_EMAIL, EXP_PASSWORD } from "../../constants/regexConstants.js";
+import { EXP_EMAIL, EXP_PASSWORD } from "../../constants/regex.js";
+import { VALIDATE_ERRORS } from "../../constants/errorMsg.js";
+import {
+  LOGIN_PATH,
+  CHECK_EMAIL_PATH,
+  SIGNUP_PATH,
+} from "../../constants/path.js";
 /**유효성 검사 함수
  *
  * 1.Null check\
@@ -12,24 +18,15 @@ const validateInput = (e) => {
   let nodeInfo = {
     type: node.type,
     className: node.className,
-    value: node.value.trim(),
+    value: node.value,
     path: node.baseURI.slice(-7),
   };
   let errorGb = false; //Error 구분값
   let errType = 0;
 
-  /** 기존 에러 이벤트 초기화 */
-  if (node.classList.contains("errorInput")) {
-    node.classList.remove("errorInput");
-  }
-  if (
-    node.nextElementSibling !== null &&
-    node.nextElementSibling.className === "error_msg"
-  ) {
-    node.nextElementSibling.remove("error_msg");
-  }
+  resetErrorEvent(node);
 
-  if (nodeInfo.value === "") {
+  if (nodeInfo.value.trim() === "") {
     errorGb = true;
     errType = 1;
   } else {
@@ -40,7 +37,13 @@ const validateInput = (e) => {
       //회원가입 페이지 전용
       if (nodeInfo.path === "signup/") {
         // 중복 체크
-        if (nodeInfo.value === "test@codeit.com") errType = 3;
+        if (errType !== 2) {
+          //수정이 필요한 부분
+          checkEmail(nodeInfo.value).then((result) => {
+            errType = result ? 0 : 3;
+          });
+          if (nodeInfo.value === "test@codeit.com") errType = 3;
+        }
       }
     } else if (
       nodeInfo.type === "password" ||
@@ -97,17 +100,25 @@ const setErrorMsg = (nodeInfo, errType) => {
   }
 
   if (errType === 1) {
-    message = `${errorMsg.type}을 입력해주세요.`;
-  } else if (errType === 2) {
-    if (errorMsg.type === "이메일") {
-      message = `올바른 ${errorMsg.type} 주소가 아닙니다.`;
-    } else if (errorMsg.type === "비밀번호") {
-      message = `${errorMsg.type}는 영문, 숫자 조합 8자 이상 입력해 주세요.`;
-    }
-  } else if (errType === 3) {
-    message = `이미 사용 중인  ${errorMsg.type}입니다.`;
-  } else if (errType === 4) {
-    message = `${errorMsg.type}가 일치하지 않아요.`;
+    message =
+      errorMsg.type === "이메일"
+        ? VALIDATE_ERRORS.EMPTY_EMAIL
+        : VALIDATE_ERRORS.EMPTY_PWD;
+  }
+
+  if (errType === 2) {
+    message =
+      errorMsg.type === "이메일"
+        ? VALIDATE_ERRORS.INVALID_EMAIL
+        : VALIDATE_ERRORS.INVALID_PWD;
+  }
+
+  if (errType === 3) {
+    message = VALIDATE_ERRORS.INUSE_EMAIL;
+  }
+
+  if (errType === 4) {
+    message = VALIDATE_ERRORS.MISMATCH_PWD;
   }
 
   return message;
@@ -128,5 +139,141 @@ const togglePasswordVisibility = (e) => {
     target.src = "/src/assets/img/close_eyes.png";
   }
 };
+/**에러이벤트 초기화 함수
+ *
+ *기존 설정되어있는 error node 가 있다면 삭제
+ * @param {object} node
+ */
+const resetErrorEvent = (node) => {
+  if (node.classList.contains("errorInput")) {
+    node.classList.remove("errorInput");
+  }
+  if (
+    node.nextElementSibling !== null &&
+    node.nextElementSibling.className === "error_msg"
+  ) {
+    node.nextElementSibling.remove("error_msg");
+  }
+};
 
-export { validateInput, togglePasswordVisibility };
+/**로그인 요청 함수
+ *
+ * 계정 정보를 보내 로그인 요청
+ * @param {object} param {
+  "email": "string",
+  "password": "string"
+}
+ */
+const login = async (param) => {
+  let loginGb = false;
+  try {
+    const response = await fetch(LOGIN_PATH, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(param),
+    });
+    const result = await response.json();
+    console.log(result);
+
+    //로그인 성공
+    if (response.status === 200) {
+      console.log("로그인 성공 ", result.data);
+      localStorage.setItem("accessToken", result.data.accessToken);
+      loginGb = true;
+      return loginGb;
+    } else if (response.status === 400) {
+      throw new Error(`로그인 오류 \n ${result.error.message}`);
+    } else {
+      throw new Error(`Login Fail \n ${result.error.message}`);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+/**이메일 중복 체크 함수
+ *
+ * @param {string} email value
+ * @returns
+ */
+const checkEmail = async (val) => {
+  let checkGb = false;
+  let param = {
+    email: val,
+  };
+  try {
+    const response = await fetch(CHECK_EMAIL_PATH, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(param),
+    });
+    const result = await response.json();
+    console.log(result);
+    console.log(response.status);
+    if (response.status === 200) {
+      checkGb = result.data.isUsableNickname;
+      return checkGb;
+    } else if (response.status === 409) {
+      console.log("사용 할 수 없는 이메일 입니다.");
+      return checkGb;
+    } else {
+      throw new Error(`checkEmail Fail \n ${result.error.message}`);
+    }
+  } catch (error) {
+    alert(error);
+    // console.log(error);
+  }
+};
+
+/**회원가입 요청 함수
+ *
+ *@param {object} param {
+  "email": "string",
+  "password": "string"
+}
+ */
+const signup = async (param) => {
+  let signupGb = false;
+  try {
+    const response = await fetch(SIGNUP_PATH, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(param),
+    });
+    const result = await response.json();
+    console.log(result);
+    console.log(response.status);
+    if (response.status === 200) {
+      signupGb = result.data;
+      return signupGb;
+    } else if (response.status === 400) {
+      console.log("회원가입 오류.");
+      return signupGb;
+    } else {
+      throw new Error(`Signup  Fail \n ${result.error.message}`);
+    }
+  } catch (error) {
+    alert(error);
+    // console.log(error);
+  }
+};
+
+/** AccessToken 체크 함수
+ *
+ * 엑세스 토큰이 있는지 확인
+ * @returns boolean
+ */
+const isAccessToken = () => localStorage.getItem("accessToken") !== null;
+
+export {
+  validateInput,
+  togglePasswordVisibility,
+  login,
+  signup,
+  isAccessToken,
+};
