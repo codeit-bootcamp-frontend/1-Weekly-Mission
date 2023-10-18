@@ -1,15 +1,19 @@
 import {
-  emailInput, passwordInput, loginButton, eyeButton1
+  emailInput,
+  passwordInput,
+  loginButton,
+  eyeButtonInPassword
 } from './tags.js';
 
 import {
-  checkEmail, showErrorMessage, removeErrorMessage
+  checkEmail,
+  showErrorMessage,
+  removeErrorMessage
 } from './validation.js';
 
-import { showPassword1 } from './showPW.js';
-import { user } from './userInfo.js';
+import { togglePasswordInPassword } from './togglePassword.js';
 
-function valiDateEmail() {
+function validateEmail() {
   const emailValue = emailInput.value;
 
   if (!emailValue) {
@@ -21,7 +25,7 @@ function valiDateEmail() {
   }
 }
 
-function valiDatePassword() {
+function validatePassword() {
   const passwordValue = passwordInput.value;
 
   if (!passwordValue) {
@@ -31,22 +35,43 @@ function valiDatePassword() {
   }
 }
 
-function getLogin() {
+async function login(e) {
+  e.preventDefault();
+
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
 
-  if (emailValue === user.email && passwordValue === user.password) {
-    location.href = '../pages/folder.html';
-  } else if (emailValue !== user.email) {
-    showErrorMessage('email', '이메일을 확인해주세요.');
-    showErrorMessage('password', '비밀번호를 확인해주세요.');
-  } else if (passwordValue !== user.password) {
-    showErrorMessage('password', '비밀번호를 확인해주세요.');
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: emailValue,
+        password: passwordValue
+      })
+    });
+    const result = await response.json();
+
+    if (response.status === 200) {
+      localStorage.setItem('accessToken', result.data.accessToken);
+      location.href = '../pages/folder.html';
+    } else if (response.status === 400) {
+      showErrorMessage('email', '이메일을 확인해주세요.');
+      showErrorMessage('password', '비밀번호를 확인해주세요.');
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 
-emailInput.addEventListener('focusout', valiDateEmail);
-passwordInput.addEventListener('focusout', valiDatePassword);
-passwordInput.addEventListener('keypress', (e) => e.code === 'Enter' && getLogin());
-loginButton.addEventListener('click', getLogin);
-eyeButton1.addEventListener('click', showPassword1);
+if (localStorage.getItem('accessToken')) {
+  location.href = '../pages/folder.html';
+}
+
+emailInput.addEventListener('focusout', validateEmail);
+passwordInput.addEventListener('focusout', validatePassword);
+passwordInput.addEventListener('keypress', (e) => e.code === 'Enter' && login());
+loginButton.addEventListener('click', login);
+eyeButtonInPassword.addEventListener('click', togglePasswordInPassword);

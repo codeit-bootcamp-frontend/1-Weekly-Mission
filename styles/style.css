@@ -1,4 +1,3 @@
-/*-------header-------*/
 .nav {
   position: fixed;
   top: 0;
@@ -13,7 +12,7 @@
   }
 }
 
-.nav--container {
+.nav__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,12 +24,12 @@
   }
 }
 
-.logo--img {
+.logo__img {
   width: 13.3rem;
   height: 2.4rem;
 }
 
-.button__style {
+.button--style {
   background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
   padding: 1.6rem 2.0rem;
   border-radius: 8px;
@@ -45,7 +44,7 @@
   }
 }
 
-.nav--button {
+.nav__button {
   width: 12.8rem;
 
   @media (max-width: 767px) {
@@ -58,7 +57,7 @@
   background-color: var(--bg);
 }
 
-.header--container {
+.header__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +71,7 @@
   }
 }
 
-.header--slogan {
+.header__slogan {
   text-align: center;
   font-size: 6.4rem;
   font-weight: 700;
@@ -84,14 +83,14 @@
   }
 }
 
-.header--slogan__gradient {
+.header__slogan--gradient {
   background-image: linear-gradient(91deg, var(--primary) 17.28%, #ff9f9f 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.header--button{
+.header__button {
   width: 35rem;
 
   @media (max-width: 767px) {
@@ -99,7 +98,7 @@
   }
 }
 
-.header--img {
+.header__img {
   width: 111.8rem;
   height: 59rem;
   border-radius: 25px;
@@ -115,7 +114,6 @@
   }
 }
 
-/*-------main-------*/
 .section {
   display: grid;
   align-items: center;
@@ -133,38 +131,38 @@
   }
 }
 
-.section:nth-child(odd) {     /*홀수*/
+.section:nth-child(odd) {
   grid-template-areas: 
-    ". section-img"
-    "title section-img"
-    "description section-img"
-    ". section-img";
+    ". section__img"
+    "title section__img"
+    "description section__img"
+    ". section__img";
 
   @media (max-width: 767px) {
     grid-template-areas: 
       "title"
-      "section-img"
+      "section__img"
       "description";
   }
 }
 
-.section:nth-child(even) {     /*짝수*/
+.section:nth-child(even) {
   grid-template-areas: 
-    "section-img ."
-    "section-img title"
-    "section-img description"
-    "section-img .";
+    "section__img ."
+    "section__img title"
+    "section__img description"
+    "section__img .";
 
     @media (max-width: 767px) {
       grid-template-areas: 
         "title"
-        "section-img"
+        "section__img"
         "description";
     }
 }
 
-.section--img {
-  grid-area: section-img;
+.section__img {
+  grid-area: section__img;
   width: 55rem;
   height: 45rem;
   border-radius: 15px;
@@ -180,7 +178,7 @@
   }
 }
 
-.section--title {
+.section__title {
   grid-area: title;
   font-size: 4.8rem;
   font-weight: 700;
@@ -190,7 +188,7 @@
   }
 }
 
-.section--description {
+.section__description {
   grid-area: description;
   color: #6b6b6b;
   font-size: 1.6rem;
@@ -201,36 +199,36 @@
   }
 }
 
-.section--title br,
-.section--description br {
+.section__title br,
+.section__description br {
   @media (max-width: 767px) {
     display: none;
     word-break: keep-all
   }
 }
 
-.save__gradient {
+.save--gradient {
   background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.management__gradient {
+.management--gradient {
   background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.sharing__gradient {
+.sharing--gradient {
   background: linear-gradient(99deg, #6d7ccd 19.76%, rgba(82, 136, 133, 0.22) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.search__gradient {
+.search--gradient {
   background: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -259,7 +257,7 @@
   }
 }
 
-.footer--copyright {
+.footer__copyright {
   grid-area: copyright;
   color: #676767;
   text-align: center;
@@ -267,19 +265,19 @@
   font-weight: 400;
 }
 
-.footer--link {
+.footer__link {
   font-size: 1.6rem;
   font-weight: 400;
   color: #cfcfcf;
 }
 
-.footer--links {
+.footer__links {
   display: flex;
   grid-area: link-frame;
   gap: 3rem;
 }
 
-.footer--sns-buttons {
+.footer__sns-buttons {
   display: flex;
   grid-area: sns-frame;
   height: 2rem;
@@ -287,7 +285,7 @@
   list-style: none;
 }
 
-.footer--sns-button {
+.footer__sns-button {
   display: inline-block;
   width: 2rem;
   height: 2rem;
