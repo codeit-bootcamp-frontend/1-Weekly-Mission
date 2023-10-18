@@ -1,13 +1,9 @@
 import {
-  showMessage,
-  isNotEmpty,
-  showEmptyErrorMessage,
-  isEmailValid,
-  isPasswordValid,
-  showValidPasswordErrorMessage,
-  showValidEmailErrorMessage,
-  isCodeItLogin,
+  EMAIL_MAP,
+  PASSWORD_MAP,
+  showErrorMessageEffect,
   passwordVisibility,
+  postData,
 } from "./common.js";
 
 const email = document.getElementById("email");
@@ -17,31 +13,102 @@ const passwordLabel = document.querySelector(".password-label");
 const loginButton = document.getElementById("login-button");
 const eyeIcon = document.querySelector(".eye-on-image");
 
+// email
 email.addEventListener("focusout", (event) => {
   event.preventDefault();
-  showEmptyErrorMessage(email, emailLabel);
-  if (isNotEmpty(email)) {
-    showValidEmailErrorMessage(email, emailLabel);
+  const emailValue = email.value;
+  const errorMsgsLabel = emailLabel.querySelector(".error-message");
+  for (const state of ["empty", "notValid"]) {
+    if (state === "empty") {
+      // checker는 isEmpty함수
+      if (EMAIL_MAP[state].checker(emailValue)) {
+        showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+        return;
+      }
+    } else if (state === "notValid") {
+      if (!EMAIL_MAP[state].checker(emailValue)) {
+        showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP[state]);
+        return;
+      }
+    }
   }
+  showErrorMessageEffect(email, errorMsgsLabel, EMAIL_MAP.valid);
 });
 
+// pasword
 password.addEventListener("focusout", (event) => {
   event.preventDefault();
-  showEmptyErrorMessage(password, passwordLabel);
+  const passwordValue = password.value;
+  const errorMsgsLabel = passwordLabel.querySelector(".error-message");
+  if (PASSWORD_MAP["empty"].checker(passwordValue)) {
+    showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP["empty"]);
+    return;
+  }
+  showErrorMessageEffect(password, errorMsgsLabel, PASSWORD_MAP["valid"]);
 });
 
-loginButton.addEventListener("click", (event) => {
+loginButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  if (isCodeItLogin(email, password)) {
-    window.location.href = window.location.origin + "/folder.html";
+  let emailValue = email.value;
+  let passwordValue = password.value;
+  const emailErrorMsgsLabel = emailLabel.querySelector(".error-message");
+  const passwordErrorMsgsLabel = passwordLabel.querySelector(".error-message");
+  for (const state of ["empty", "notValid"]) {
+    if (state === "empty") {
+      if (
+        EMAIL_MAP[state].checker(emailValue) ||
+        PASSWORD_MAP[state].checker(passwordValue)
+      ) {
+        showErrorMessageEffect(email, emailErrorMsgsLabel, EMAIL_MAP["login"]);
+        showErrorMessageEffect(
+          password,
+          passwordErrorMsgsLabel,
+          PASSWORD_MAP["login"]
+        );
+        return;
+      }
+    }
+
+    if (state === "notValid") {
+      if (!EMAIL_MAP[state].checker(emailValue)) {
+        showErrorMessageEffect(email, emailErrorMsgsLabel, EMAIL_MAP["login"]);
+        showErrorMessageEffect(
+          password,
+          passwordErrorMsgsLabel,
+          PASSWORD_MAP["login"]
+        );
+      }
+    }
   }
-  //  email과 password형식은 valid하지만, codeIt아이디가 아닐 때를 판단하고, 그에 따른 ui를 보이도록 리팩토링 해보세요.
-  if (
-    isEmailValid(email) &&
-    isPasswordValid(password) &&
-    !isCodeItLogin(email, password)
-  ) {
-    window.location.href = window.location.origin + "/404ErrorPage.html";
+  emailValue = email.value.trim();
+  passwordValue = password.value.trim();
+  // test@codeit.com   sprint101
+  try {
+    await postData("bootcamp-api.codeit.kr", "api/sign-in", {
+      email: emailValue,
+      password: passwordValue,
+    })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          return response.text();
+        }
+      })
+      .then((result) => {
+        const accessToken = result.split('"')[5];
+        localStorage.setItem("accessToken", JSON.stringify(accessToken));
+      });
+
+    if (JSON.parse(localStorage.getItem("accessToken"))) {
+      // console.log(JSON.parse(localStorage.getItem("accessToken")));
+      window.location.href = window.location.origin + "/folder.html";
+    } else {
+      let error = new Error("Invalid login credentials");
+      error.name = "AuthApiError";
+      throw error;
+    }
+  } catch (error) {
+    alert(error);
   }
 });
 
