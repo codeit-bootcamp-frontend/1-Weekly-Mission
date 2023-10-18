@@ -13,11 +13,11 @@ import {
 	INPUT_HINT_CLASSNAME,
 } from "/utils/constants.js";
 
+import { getAccessToken } from "/utils/accessToken.js";
+
 /* 로그인 상태로 접근 시 리다이렉트 */
 (function () {
-	const accessToken = localStorage.getItem("accessToken");
-
-	if (accessToken) {
+	if (getAccessToken()) {
 		goToFolderPage();
 	}
 })();

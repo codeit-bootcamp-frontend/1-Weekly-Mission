@@ -9,6 +9,7 @@ import {
 	getIsConfirmedConfirmPassword,
 	signUp,
 	getIsNewEmail,
+	redirectIfSignedIn,
 } from "/utils/authorize.js";
 
 import {
@@ -18,13 +19,7 @@ import {
 } from "/utils/constants.js";
 
 /* 로그인 상태로 접근 시 리다이렉트 */
-(function () {
-	const accessToken = localStorage.getItem("accessToken");
-
-	if (accessToken) {
-		goToFolderPage();
-	}
-})();
+redirectIfSignedIn();
 
 /* 비밀번호 토글 */
 const confirmPasswordToggleElement = document.querySelector(

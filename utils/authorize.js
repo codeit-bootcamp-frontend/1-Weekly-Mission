@@ -7,6 +7,7 @@ import {
 } from "/utils/constants.js";
 
 import { fetchClient } from "./apiClient.js";
+import { getAccessToken, setAccessToken } from "./accessToken.js";
 
 // 비밀번호 토글
 function getPasswordVisibility(inputType) {
@@ -79,6 +80,12 @@ function getIsConfirmedConfirmPassword(
 	}
 }
 
+const redirectIfSignedIn = () => {
+	if (getAccessToken()) {
+		goToFolderPage();
+	}
+};
+
 const signIn = async (email, password) => {
 	const response = await fetchClient({
 		url: "sign-in",
@@ -87,8 +94,8 @@ const signIn = async (email, password) => {
 	});
 	const result = await response.json();
 	const accessToken = result.data.accessToken;
-	window.localStorage.setItem("accessToken", accessToken);
-	goToFolderPage();
+	setAccessToken(accessToken);
+	redirectIfSignedIn();
 };
 
 const getIsNewEmail = async (email) => {
@@ -112,8 +119,8 @@ const signUp = async (email, password) => {
 	});
 	const result = await response.json();
 	const accessToken = result.data.accessToken;
-	window.localStorage.setItem("accessToken", accessToken);
-	goToFolderPage();
+	setAccessToken(accessToken);
+	redirectIfSignedIn();
 };
 
 export {
@@ -129,4 +136,5 @@ export {
 	signIn,
 	getIsNewEmail,
 	signUp,
+	redirectIfSignedIn,
 };
