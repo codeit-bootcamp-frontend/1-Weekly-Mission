@@ -5,18 +5,14 @@ import {
   handlePasswordError,
 } from '../utils.js'
 
-export { 
-  emailInput,
-  passwordInput,
-  loginButton,
+import {
+  API_URL
+} from '../constants.js'
+
+//로그인 페이지 접근 시 로컬 레포에 accessToken이 있으면 folder.html로 이동
+if(localStorage.getItem('accessToken')) {
+  location.href= "../../folder.html"; 
 }
-
-const emailInput = $('#id-label');
-const passwordInput = $('#password-label');
-const loginButton = $('.login-btn');
-const eyeImage = $('.eye-off');
-
-
 
 //로그인 성공했을 때
 function loginSuccess(){
@@ -25,11 +21,46 @@ function loginSuccess(){
 }
 
 // 로그인 성공, 실패 다루는 함수
-function handleSignIn(event){
+async function handleSignIn(event){
   event.preventDefault();
 
-  if(isCorrectUser()){
-    return loginSuccess();
+  const { target: elements } = event;
+  const [emailElem, passwordElem] = elements;
+
+  const userData = {
+    email: emailElem.value,
+    password: passwordElem.value,
+  };
+
+  try{
+    const response = await fetch(`${API_URL}/sign-in`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData)
+    })
+
+    const result = await response.json;
+
+    if(response.status === 200){
+      localStorage.setItem("accessToken", result.accessToken);
+      isCorrectUser();
+      return loginSuccess();
+    }
+
+    if(response.status === 400){
+      const emailElem = $('#id-label');
+      const passwordElem = $('#password-label');
+
+      clearUserInputError(emailElem);
+      displayUserInputError(emailElem, '이메일을 확인해주세요.');
+
+      clearUserInputError(passwordElem);
+      displayUserInputError(passwordElem, '비밀번호를 확인해주세요.');
+    }
+  }catch(error){
+    console.log(error);
   }
 }
 
@@ -46,7 +77,7 @@ function handleToggleEye(){
 }
 
 
-emailInput.addEventListener("focusout", handleEmailError,);
-passwordInput.addEventListener("focusout", handlePasswordError);
-loginButton.addEventListener("click", handleSignIn);
-eyeImage.addEventListener("click", handleToggleEye);
+$('#id-label').addEventListener("focusout", handleEmailError,);
+$('#password-label').addEventListener("focusout", handlePasswordError($('password-label')));
+$('.login-btn').addEventListener("click", handleSignIn);
+$('.eye-off').addEventListener("click", handleToggleEye);

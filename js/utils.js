@@ -11,6 +11,7 @@ export {
 
 import {
   REG_EXP,
+  DB_USERS,
 } from './constants.js'
 
 
@@ -70,7 +71,7 @@ function handleEmailError() {
 
 
 // 회원가입 비밀번호 에러 다루는 함수
-function handlePasswordError() {
+function handlePasswordError(input) {
   const passwordInput = $('#password-label');
   const {value: passwordValue} = passwordInput;
 
@@ -81,9 +82,11 @@ function handlePasswordError() {
     return;
   }
   
-  if(passwordValue.length > 0 && !REG_EXP.PASSWORD.test(passwordValue)){
-    displayUserInputError(passwordInput, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
-    return;
+  if(input.id === 'password-check-label'){
+    if(passwordValue.length > 0 && !REG_EXP.PASSWORD.test(passwordValue)){
+      displayUserInputError(passwordInput, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
+      return;
+    }
   }
 }
 

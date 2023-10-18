@@ -1,6 +1,7 @@
 export {
   REG_EXP, 
   DB_USERS,
+  API_URL,
 }
 
 const REG_EXP = {
@@ -13,8 +14,6 @@ const DB_USERS = [
     email: "test1@codeit.com",
     password: "codeit101"
   },
-
-  {
-
-  }
 ]
+
+const API_URL = "https://bootcamp-api.codeit.kr/api/";
