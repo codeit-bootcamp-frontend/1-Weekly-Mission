@@ -1,0 +1,9 @@
+.login {
+  width: 12.8rem;
+  padding: 1.6rem 2rem;
+  background: linear-gradient(90deg, var(--primary), #6ae3fe);
+  color: var(--white);
+  text-align: center;
+  border-radius: 0.8rem;
+  font-size: 1.8rem;
+}

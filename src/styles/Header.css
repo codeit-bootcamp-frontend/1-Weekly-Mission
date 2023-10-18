@@ -11,3 +11,9 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}

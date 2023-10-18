@@ -1,15 +1,21 @@
 .intro-section {
   display: flex;
-  padding: 16.4rem 62.4rem 0;
+  padding: 16.4rem 50rem 0;
   background: #f0f6ff;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
+  gap: 1.2rem;
+}
+
+.profile-img {
+  height: 60px;
+  border-radius: 47px;
 }
 
 .bookmark {
   text-align: center;
   font-size: 40px;
   font-weight: 600;
+  margin-top: 0.8rem;
   padding-bottom: 6rem;
 }

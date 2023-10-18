@@ -1,10 +1,10 @@
 import '../styles/Intro.css';
-import Avatar from '../assets/images/Avatar.png';
 
-function Intro() {
+function Intro({ name, img }) {
   return (
     <div class="intro-section">
-      <img src={Avatar} alt="프로필 이미지" />
+      <img className="profile-img" src={img} alt="프로필 이미지" />
+      <p className="name">@{name}</p>
       <p className="bookmark">⭐️ 즐겨찾기</p>
     </div>
   );
