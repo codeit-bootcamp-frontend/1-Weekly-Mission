@@ -5,4 +5,4 @@ export function deleteMessage (e) {
     notificationMessage.classList.remove('notify');
     notificationMessage.remove();
   }
-};
+}
