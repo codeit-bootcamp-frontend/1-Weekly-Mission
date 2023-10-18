@@ -56,6 +56,18 @@ export function addErrorMessage(errorMessage, element) {
   element.classList.add("input-error");
 }
 
+export function setErrorMessage(elements, message) {
+  elements.input.classList.add("input-error");
+  elements.errorMessageContainer.className += "input-error-msg";
+  elements.errorMessageContainer.textContent = message;
+}
+
+export function deleteErrorMessage(elements) {
+  elements.input.classList.remove("input-error");
+  elements.errorMessageContainer.classList.remove("input-error-msg");
+  elements.errorMessageContainer.textContent = "";
+}
+
 export function addPwInputErrorMessage(errorMessage, element) {
   element.parentNode.after(errorMessage);
   element.classList.add("input-error");
@@ -73,5 +85,15 @@ export function toggleEyeBtn(inputElement, eyeBtn) {
   } else {
     inputElement.setAttribute("type", "password");
     eyeBtn.firstElementChild.setAttribute("src", "/assets/common/eye-off.svg");
+  }
+}
+
+export function storeAccessToken(token) {
+  localStorage.setItem("accessToken", token);
+}
+
+export function hasToken() {
+  if (localStorage.getItem("accessToken")) {
+    return true;
   }
 }

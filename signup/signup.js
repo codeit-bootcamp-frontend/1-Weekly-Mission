@@ -1,6 +1,5 @@
-import { TEST_EMAIL } from "../constants/auth.js";
+import { checkEmailDuplication, signup } from "../api/auth/user.js";
 import {
-  emailDuplicatedMsg,
   emailEmptyMsg,
   emailInvalidMsg,
   emailRegex,
@@ -12,6 +11,9 @@ import {
   isInputValueValid,
   toggleEyeBtn,
   addPwInputErrorMessage,
+  deleteErrorMessage,
+  setErrorMessage,
+  storeAccessToken,
 } from "../utils/auth.js";
 
 const signupBtn = document.querySelector(".signup-btn");
@@ -20,17 +22,29 @@ const eyeBtn = document.querySelector(".eye-off-btn");
 const emailInput = document.querySelector(".email-input");
 const pwInput = document.querySelector(".password-input");
 const pwCheckInput = document.querySelector("#password-check-input");
+const emailErrorContainer = document.querySelector("#email-error-container");
 
-function handleSignup() {
+function relocateAuthPage() {
+  if (hasToken()) {
+    location.href = "/pages/folder/";
+  }
+}
+
+relocateAuthPage();
+
+async function handleSignup() {
   handleEmailInputEmptyCheck();
   handleEmailInputValidCheck();
+  handleEmailDuplicatedCheck();
   handlePwInputDoubleCheck();
   handlePwInputInvalidCheck();
   if (
     !emailInput.querySelector("input-error") &&
     !pwInput.querySelector("input-error")
   ) {
-    location.href = "/folder";
+    const token = await signup(emailInput.value.trim(), pwInput.value.trim());
+    storeAccessToken(token);
+    location.href = "../pages/folder/";
   }
 }
 
@@ -59,11 +73,17 @@ function handleEmailInputEmptyCheck() {
   }
 }
 
-function handleEmailDuplicatedCheck() {
-  if (emailInput.value.trim() === TEST_EMAIL) {
-    addErrorMessage(emailDuplicatedMsg, emailInput);
-  } else {
-    removeErrorMessage(emailDuplicatedMsg, emailInput);
+async function handleEmailDuplicatedCheck() {
+  const res = await checkEmailDuplication(emailInput.value.trim());
+  deleteErrorMessage({
+    input: emailInput,
+    errorMessageContainer: emailErrorContainer,
+  });
+  if (res === "이미 존재하는 이메일입니다.") {
+    setErrorMessage(
+      { input: emailInput, errorMessageContainer: emailErrorContainer },
+      "이미 존재하는 이메일입니다."
+    );
   }
 }
 
