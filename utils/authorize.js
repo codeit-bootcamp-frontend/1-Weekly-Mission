@@ -2,21 +2,12 @@ import {
 	USERS,
 	EMAIL_PATTERN,
 	PASSWORD_PATTERN,
-	PASSWORD_TOGGLE_CONSTANT,
 	FOLDER_PAGE_PATH,
 } from "/utils/constants.js";
 
-import { fetchClient } from "./apiClient.js";
+import { fetchClient } from "../apiClient.js";
 import { getAccessToken, setAccessToken } from "./accessToken.js";
 
-// 비밀번호 토글
-function getPasswordVisibility(inputType) {
-	return inputType === "password"
-		? PASSWORD_TOGGLE_CONSTANT.visible
-		: PASSWORD_TOGGLE_CONSTANT.invisible;
-}
-
-// 로그인, 회원가입
 function goToFolderPage() {
 	location.href = FOLDER_PAGE_PATH;
 }
