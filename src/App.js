@@ -1,14 +1,14 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import FolderOwnerInfo from "./FolderOwnerInfo";
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      {/* 네비게이션 바 내용 */}
+      <FolderOwnerInfo />
       <Footer />
-      {/* 푸터 내용*/}
     </div>
   );
 };
