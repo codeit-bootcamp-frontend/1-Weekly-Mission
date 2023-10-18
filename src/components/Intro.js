@@ -5,7 +5,7 @@ function Intro() {
   return (
     <div class="intro-section">
       <img src={Avatar} alt="프로필 이미지" />
-      <p className="bookmark">⭐️ 즐겨찾기 </p>
+      <p className="bookmark">⭐️ 즐겨찾기</p>
     </div>
   );
 }
