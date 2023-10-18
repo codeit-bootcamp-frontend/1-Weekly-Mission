@@ -1,0 +1,13 @@
+header {
+  position: fixed;
+  width: 100%;
+  background: var(--linkbrary-bg);
+}
+
+.nav {
+  display: flex;
+  padding: 3.3rem 20rem;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
