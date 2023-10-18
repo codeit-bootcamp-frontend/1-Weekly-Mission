@@ -16,6 +16,8 @@
 .card-text {
   height: 40%;
   padding: 15px;
+  font-family: "Pretendard";
+  font-style: normal;
 }
 
 .card-text h3,
@@ -28,6 +30,31 @@
   flex-wrap: wrap;
   margin: 0 auto;
   justify-content: center;
+}
+
+.date {
+  color: #666;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.title,
+.description {
+  overflow: hidden;
+  font-weight: 400;
+  text-overflow: ellipsis;
+}
+
+.title {
+  color: #000;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.description {
+  color: #333;
+  white-space: nowrap;
+  font-size: 14px;
 }
 
 /* PC (1124px 이상) */

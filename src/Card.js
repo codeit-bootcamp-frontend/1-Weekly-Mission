@@ -38,9 +38,9 @@ const Card = ({ link }) => {
     <div className="card" onClick={() => window.open(link.url, "_blank")}>
       <img src={link.imageSource} alt={link.title} />
       <div className="card-text">
-        <span>{timeDifference(currentTime, createdAt)}</span>
-        <h3>{link.title}</h3>
-        <p>{link.description}</p>
+        <span className="date">{timeDifference(currentTime, createdAt)}</span>
+        <h3 className="title">{link.title}</h3>
+        <p className="description">{link.description}</p>
       </div>
     </div>
   );
