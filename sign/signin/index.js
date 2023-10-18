@@ -1,67 +1,104 @@
-import { isValidEmail } from '../../utils/validation.js';
+import { isEmail } from '/utils/validation.js';
+import { addErrorMessage, removeErrorMessage } from '/utils/error.js';
+import { toggleEyeIcon } from '/utils/toggle-icon.js';
+import { 
+  EMAIL_EMPTY, 
+  EMAIL_INVALID, 
+  PASSWORD_EMPTY, 
+  EMAIL_WRONG, 
+  PASSWORD_WRONG 
+} from '/constants/error-message.js';
+import {
+  EMAIL_INPUT,
+  EMAIL_ERROR,
+  PASSWORD_INPUT,
+  PASSWORD_ERROR,
+  EYE_ICON,
+  LOGIN_BUTTON
+} from '/constants/selector.js';
 
 
-const emailInput = document.querySelector('#email');
-const pwdInput = document.querySelector('#password');
-const loginBtn = document.querySelector('.btn-login');
-const pwdToggleIcon = document.querySelector('#toggle-eye');
+// Email
+const emailInput = document.querySelector(EMAIL_INPUT);
+const emailError = document.querySelector(EMAIL_ERROR);
 
-const checkEmailValidation = (e) => {
-  const inputField = document.querySelector('.email-field');
-  const email = emailInput.value.trim();
-  const errorMessage = inputField.querySelector('.error');
+// Password
+const passwordInput = document.querySelector(PASSWORD_INPUT);
+const passwordError = document.querySelector(PASSWORD_ERROR);
 
-  if (email === '') {
-    errorMessage.textContent = '이메일을 입력해주세요.';
-    inputField.classList.add('error');
-  } else if (!isValidEmail(email)) {
-    errorMessage.textContent = '올바른 이메일 주소가 아닙니다.';
-    inputField.classList.add('error');
-  } else {
-    errorMessage.textContent = '';
-    inputField.classList.remove('error');
-  }
-};
+// Toggle
+const eyeIcon = document.querySelector(EYE_ICON);
 
-const checkPwdValidation = (e) => {
-  const inputField = document.querySelector('.pwd-field');
-  const pwd = pwdInput.value;
-  const errorMessage = inputField.querySelector('.error');
+// LoginButton
+const loginBtn = document.querySelector(LOGIN_BUTTON);
 
-  if (pwd === '') {
-    errorMessage.textContent = '비밀번호를 입력하세요.';
-    inputField.classList.add('error');
-  } else {
-    errorMessage.textContent = '';
-    inputField.classList.remove('error');
-  }
-};
-
-const submit = (e) => {
-  e.preventDefault();
-
-  const email = emailInput.value.trim();
-  const password = pwdInput.value.trim();
-  const testEmail = 'test@codeit.com';
-  const testPassword = 'codeit101';
-  
-  if (email == testEmail && password == testPassword) {
-    location.href = "/folder/folder.html";
-  } 
+// Token 존재 여부
+if(localStorage.getItem("accessToken")) {
+  location.href = "/folder";
 }
 
-const toggleEyeIcon = () => {
-  if(password.type === "password") {
-    password.type = "text";
-    pwdToggleIcon.src = '/images/eye-on.svg';
+
+// 이메일 유효성 검사 
+function checkEmailValidation() {
+  const email = emailInput.value.trim();
+
+  if (email === '') {
+    addErrorMessage(emailInput, emailError, EMAIL_EMPTY);
+  } else if (!isEmail(email)) {
+    addErrorMessage(emailInput, emailError, EMAIL_INVALID);
   } else {
-    password.type = "password";
-    pwdToggleIcon.src = '/images/eye-off.svg';
+    removeErrorMessage(emailInput, emailError);
   }
+}
+
+// 비밀번호 유효성 검사 
+function checkPwdValidation() {
+  const password = passwordInput.value.trim();
+
+  if (password === '') {
+    addErrorMessage(passwordInput, passwordError, PASSWORD_EMPTY);
+  } else {
+    removeErrorMessage(passwordInput, passwordError);
+  }
+};
+
+// 로그인 시도 
+async function submitForm() {
+  const email = emailInput.value;
+  const password = passwordInput.value;
+
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+      method: 'POST',
+      headers: {
+      "content-Type": 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (response.status === 200){
+      localStorage.setItem("accessToken", responseData.accessToken);
+      location.href = "/folder";
+    } else if (response.status === 400) {
+      addErrorMessage(emailInput, emailError, EMAIL_WRONG);
+      addErrorMessage(passwordInput, passwordError, PASSWORD_WRONG);
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
+  
 }
 
 
 emailInput.addEventListener("focusout", checkEmailValidation);
-pwdInput.addEventListener("focusout", checkPwdValidation);
-pwdToggleIcon.addEventListener("click", toggleEyeIcon);
-loginBtn.addEventListener('click', submit);
+passwordInput.addEventListener("focusout", checkPwdValidation);
+loginBtn.addEventListener('click', submitForm);
+eyeIcon.addEventListener("click", () => {
+  toggleEyeIcon(passwordInput, eyeIcon)
+});
