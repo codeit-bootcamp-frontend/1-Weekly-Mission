@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--gray-warm);
+  width: 100%;
+  padding: 1.7rem;
+  border-radius: 1rem;
+  font-weight: 400;
+}
+
+.searchImg {
+  width: 1.5rem;
+  margin-right: 1rem;
+}
+
+input {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 0.2rem;
+  font-size: 1.4rem;
+}
