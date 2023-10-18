@@ -91,6 +91,11 @@ input:focus {
   font-size: 1.4rem;
 }
 
+#password,
+#password-check {
+  margin-bottom: 0.6rem;
+}
+
 .password-input,
 .password-check-input {
   display: flex;

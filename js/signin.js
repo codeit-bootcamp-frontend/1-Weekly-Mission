@@ -1,10 +1,12 @@
-import { email, password, passwordVisible, loginButton } from "./tags.js";
-import { togglePasswordVisible, login } from "./functions.js";
-import { addEmailErrorMsg, deleteEmailErrorMsg, addPasswordErrorMsg, deletePasswordErrorMsg } from "./errormsg.js";
+import { email, password, passwordVisible, loginButton } from './tags.js';
+import { togglePasswordVisible, handleLogin } from './functions.js';
+import { checkEmail, deleteEmailErrorMsg, checkPassword, deletePasswordErrorMsg } from './errorMsg.js';
+import { checkToken } from './authorization.js';
 
-email.addEventListener("focusout", addEmailErrorMsg);
-email.addEventListener("focusin", deleteEmailErrorMsg);
-password.addEventListener("focusout", addPasswordErrorMsg);
-password.addEventListener("focusin", deletePasswordErrorMsg);
-passwordVisible.addEventListener("click", togglePasswordVisible);
-loginButton.addEventListener("submit", login);
+window.addEventListener('DOMContentLoaded', checkToken);
+email.addEventListener('focusout', checkEmail);
+email.addEventListener('focusin', deleteEmailErrorMsg);
+password.addEventListener('focusout', checkPassword);
+password.addEventListener('focusin', deletePasswordErrorMsg);
+passwordVisible.addEventListener('click', togglePasswordVisible);
+loginButton.addEventListener('submit', handleLogin);

@@ -1,80 +1,91 @@
-import { email, emailError, password, passwordCheck, passwordError, passwordCheckError } from "./tags.js";
-import { addEmailClass, addPasswordClass, addPasswordCheckClass } from "./addclass.js";
+import { email, password, passwordCheck } from './tags.js';
 
-const TEST_EMAIL = "test@codeit.com";
+const INPUT_EMAIL = '이메일을 입력하세요.';
+const INPUT_PASSWORD = '비밀번호를 입력하세요.';
+const NOT_CORRECT_EMAIL = '올바른 이메일 주소가 아닙니다.';
+const NOT_MATCH_PASSWORD = '비밀번호가 일치하지 않아요.';
+const COMBINATION_PASSWORD = '비밀번호는 영문, 숫자, 조합 8자 이상 입력해주세요.';
+const ERROR = 'error';
+const ERROR_MSG = 'error-msg';
+
+function addErrorMessageClass(context, errorMessage) {
+  if (context.classList.value !== ERROR) {
+    const errorElement = document.createElement('div');
+    context.classList.add(ERROR);
+    errorElement.classList.add(ERROR_MSG);
+    errorElement.textContent = errorMessage;
+    context.parentElement.append(errorElement);
+  }
+}
 
 function validateEmail(email) {
   const PATTERN = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return PATTERN.test(email);
 }
 
-function addEmailErrorMsg() {
+function checkEmail() {
   if (!email.value) {
-    addEmailClass("이메일을 입력하세요.");
-    return false;
+    addErrorMessageClass(email, INPUT_EMAIL);
   } else if (!validateEmail(email.value)) {
-    addEmailClass("올바른 이메일 주소가 아닙니다.");
-    return false;
-  } else if (location.pathname === "/pages/signup.html" && email.value === TEST_EMAIL) {
-    addEmailClass("이미 사용중인 이메일입니다.");
-    return false;
+    addErrorMessageClass(email, NOT_CORRECT_EMAIL);
+  } else {
+    return true;
   }
-  return true;
 }
 
 function deleteEmailErrorMsg() {
-  if (email.parentElement.lastElementChild === emailError) {
-    email.classList.remove("error");
+  if (email.classList.value === ERROR) {
+    email.classList.remove(ERROR);
     email.nextElementSibling.remove();
   }
 }
 
-function addPasswordErrorMsg() {
+function checkPassword() {
   if (!password.value) {
-    addPasswordClass("비밀번호를 입력하세요.");
+    addErrorMessageClass(password, INPUT_PASSWORD);
   }
 }
 
-function addPassWordErrorMsgSignup() {
-  const STRING_CEHCK = /[a-zA-Z]/;
-  const NUMBER_CHECK = /[0-9]/;
-  if (password.value.length >= 8 && STRING_CEHCK.test(password.value) && NUMBER_CHECK.test(password.value)) {
+function checkSignupPassword() {
+  const INPUT_CEHCK = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
+  if (INPUT_CEHCK.test(password.value)) {
     return true;
   } else {
-    addPasswordClass("비밀번호는 영문, 숫자, 조합 8자 이상 입력해주세요.");
+    addErrorMessageClass(password, COMBINATION_PASSWORD);
     return false;
   }
 }
 
 function deletePasswordErrorMsg() {
-  if (password.parentElement.nextElementSibling === passwordError) {
-    password.classList.remove("error");
-    password.parentElement.nextElementSibling.remove();
+  if (password.classList.value === ERROR) {
+    password.classList.remove(ERROR);
+    password.nextElementSibling.nextElementSibling.remove();
   }
 }
 
-function addPasswordCheckErrorMsg() {
+function checkPasswordMatch() {
   if (password.value === passwordCheck.value) {
     return true;
   } else {
-    addPasswordCheckClass("비밀번호가 일치하지 않아요.");
+    addErrorMessageClass(passwordCheck, NOT_MATCH_PASSWORD);
     return false;
   }
 }
 
 function deletePasswordCheckErrorMsg() {
-  if (passwordCheck.parentElement.nextElementSibling === passwordCheckError) {
-    passwordCheck.classList.remove("error");
-    passwordCheck.parentElement.nextElementSibling.remove();
+  if (passwordCheck.classList.value === ERROR) {
+    passwordCheck.classList.remove(ERROR);
+    passwordCheck.nextElementSibling.nextElementSibling.remove();
   }
 }
 
 export {
-  addEmailErrorMsg,
+  checkEmail,
   deleteEmailErrorMsg,
-  addPasswordErrorMsg,
-  addPassWordErrorMsgSignup,
+  checkPassword,
+  checkSignupPassword,
   deletePasswordErrorMsg,
-  addPasswordCheckErrorMsg,
+  checkPasswordMatch,
   deletePasswordCheckErrorMsg,
+  addErrorMessageClass,
 };
