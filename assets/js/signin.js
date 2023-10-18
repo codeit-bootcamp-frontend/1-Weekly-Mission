@@ -3,7 +3,7 @@ import {
   addErrorTag,
   removeErrorClass,
   removeElementOrNull,
-  togglePw
+  togglePw,
 } from './utils.js';
 
 import {
@@ -59,7 +59,7 @@ function submitForm(e) {
 
   const inputAccount = {
     "email": email,
-    "password": password
+    "password": password,
   }
 
   fetch (API_URL.AUTH.signin, {
