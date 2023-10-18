@@ -19,8 +19,15 @@ import {
  } from './const.js';
 
 /*-----회원가입 유효성 검사-----*/
-//이메일 유효성 검사
 
+//accessToken 확인 후 이동
+let token = localStorage.getItem("accessToken") || null ;
+
+if (token) {
+  formEl.submit()
+}
+
+//이메일 유효성 검사
 function validateEmailInput(email){
   removeElementOrNull(emailWrap, '.error');
   removeErrorClass(inputEmail);

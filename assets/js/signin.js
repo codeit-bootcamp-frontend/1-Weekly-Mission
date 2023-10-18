@@ -18,6 +18,13 @@ import {
 
 /*-----로그인 유효성 검사-----*/
 
+//accessToken 확인 후 이동
+let token = localStorage.getItem("accessToken") || null ;
+
+if (token) {
+  formEl.submit()
+}
+
 //이메일 유효성 검사
 function validateEmailInput(e) {
   removeElementOrNull(emailWrap, '.error');
