@@ -58,8 +58,8 @@ function submitForm(e) {
   const password = inputPw.value
 
   const inputAccount = {
-    email,
-    password,
+    "email": email,
+    "password": password
   }
 
   fetch (API_URL.AUTH.signin, {
