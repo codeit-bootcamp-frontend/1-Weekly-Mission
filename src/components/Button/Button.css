@@ -1,0 +1,23 @@
+.btn {
+  background: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 10px;
+  width: 128px;
+  height: 54px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  /* font */
+  height: 22px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fdfdfd;
+}

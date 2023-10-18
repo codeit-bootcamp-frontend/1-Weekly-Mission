@@ -1,5 +1,11 @@
+import Header from "../Header/Header.js";
 const App = () => {
-  return <h1>HI</h1>;
+  return (
+    <>
+      <Header />
+      <h1>CONTENT</h1>
+    </>
+  );
 };
 
 export default App;
