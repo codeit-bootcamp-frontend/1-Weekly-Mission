@@ -36,7 +36,11 @@ const Card = ({ link }) => {
 
   return (
     <div className="card" onClick={() => window.open(link.url, "_blank")}>
-      <img src={link.imageSource} alt={link.title} />
+      {link.imageSource ? (
+        <img src={link.imageSource} alt={link.title} />
+      ) : (
+        <div className="no-image">이미지가 없습니다.</div>
+      )}
       <div className="card-text">
         <span className="date">{timeDifference(currentTime, createdAt)}</span>
         <h3 className="title">{link.title}</h3>
