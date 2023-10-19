@@ -1,6 +1,5 @@
 import React from "react";
 import "./Footer.css";
-import "./global.css";
 import FacebookIcon from "./FacebookIcon";
 import InstagramIcon from "./InstagramIcon";
 import YoutubeIcon from "./YoutubeIcon";

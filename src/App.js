@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import FolderOwnerInfo from "./FolderOwnerInfo";
 import CardList from "./CardList";
 import SearchBar from "./SearchBar";
+import "./global.css";
 
 const App = () => {
   return (
