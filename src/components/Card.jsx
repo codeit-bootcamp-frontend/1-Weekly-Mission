@@ -8,9 +8,11 @@ function Card() {
           <span className="star-mark">star</span>
         </div>
         <div className="card-info-box">
-          <div>
-            <div>nowDate - createdAt</div>
-            <span>점표(...)</span>
+          <div className="card-info-top">
+            <div className="card-passed-time">nowDate - createdAt</div>
+            <button>
+              <img src='/src/assets/image/kebab.svg' alt='' />
+            </button>
           </div>
           <p>Paragraph</p>
           <div>createdAt</div>
