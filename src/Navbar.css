@@ -56,25 +56,11 @@ header {
   border-radius: 8px;
 }
 
-/* mobile */
-
-@media (min-width: 375px) {
+/* PC (1124px 이상) */
+@media (min-width: 1200px) {
   .header-content {
-    margin: 13px 32px;
     width: 100%;
-  }
-
-  @media (max-width: 767px) {
-    .loginBtn {
-      padding: 10px 16px;
-      width: 80px;
-      font-size: 14px;
-    }
-
-    .logo {
-      width: 88.667px;
-      height: 16px;
-    }
+    margin: 33px 200px;
   }
 }
 
@@ -82,8 +68,28 @@ header {
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .header-content {
-    margin: 20px 0;
+    margin: 33px 0;
     padding: 0px 32px;
     width: 864px;
+  }
+}
+
+/* mobile */
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .header-content {
+    margin: 17px 32px;
+    width: 100%;
+  }
+
+  .loginBtn {
+    padding: 10px 16px;
+    width: 80px;
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 88.667px;
+    height: 16px;
   }
 }
