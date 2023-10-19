@@ -9,6 +9,7 @@
 .card-image-box {
     width: 100%;
     height: 19.5rem;
+    position: relative;
 }
 
 .card-info-box {
@@ -19,4 +20,17 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+}
+
+.card-image {
+    width: 34rem;
+    height: 100%;
+    overflow: hidden;
+    background: lightgray 50% / cover no-repeat;
+}
+
+.star-mark {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
 }
