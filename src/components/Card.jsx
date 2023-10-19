@@ -1,6 +1,10 @@
+function formatDate(value) {
+  const date = new Date(value);
+  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}.`;
+}
 
 function calculatePassedTime(time) {
-  return Date.now() - time
+  return Date.now() - time;
 }
 
 function Card({ item }) {
@@ -20,7 +24,7 @@ function Card({ item }) {
             </button>
           </div>
           <p>{item.description}</p>
-          <div>{item.createdAt}</div>
+          <div>{formatDate(item.createdAt)}</div>
         </div>
       </div>
     </>
