@@ -19,7 +19,7 @@ function Navbar() {
   return (
     <header className="header">
       <div className="header-content">
-        <a href="../public">
+        <a href="/">
           <Logo className="logo" alt="logo" />
         </a>
         {userData ? (
