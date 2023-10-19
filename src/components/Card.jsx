@@ -7,7 +7,7 @@ function calculatePassedTime(time) {
   return Date.now() - time;
 }
 
-function Card({ item }) {
+function Card({ item, id }) {
 
   return (
     <>
