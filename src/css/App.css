@@ -1,0 +1,53 @@
+@import './colors.css';
+
+.card-wrapper {
+    width: 34rem;
+    height: 33rem;
+    flex-shrink: 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 40px 0 rgba(0, 0, 0, 0.16);
+}
+
+.card-image-box {
+    width: 100%;
+    height: 19.5rem;
+    position: relative;
+}
+
+.card-image {
+    width: 34rem;
+    height: 100%;
+    overflow: hidden;
+    background: lightgray 50% / cover no-repeat;
+}
+
+.card-info-box {
+    display: flex;
+    width: 100%;
+    height: 13.5rem;
+    padding: 1.5rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.star-mark {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.card-info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.card-passed-time {
+    color: var(--gray06);
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
