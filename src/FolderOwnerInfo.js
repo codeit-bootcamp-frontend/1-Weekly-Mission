@@ -11,25 +11,15 @@ function FolderOwnerInfo() {
       .then((response) => response.json())
       .then((data) => {
         setFolderName(data.folder.name);
-      });
-
-    fetch("https://bootcamp-api.codeit.kr/api/sample/user")
-      .then((response) => response.json())
-      .then((data) => {
-        setOwnerName(data.name);
-        setOwnerImage(data.profileImageSource);
+        setOwnerName(data.folder.owner.name);
+        setOwnerImage(data.folder.owner.profileImageSource);
       });
   }, []);
 
   return (
     <div className="owner-info">
-      {/* 폴더 소유자 이미지 출력 */}
       <img src={ownerImage} alt="Folder Owner" className="owner-image" />
-
-      {/* 폴더 소유자 이름 출력 */}
       <div className="owner-name">@{ownerName}</div>
-
-      {/* 폴더 소유자 즐겨찾기 이름 출력 */}
       <div className="owner-favorites">
         <span>{folderName}</span>
       </div>

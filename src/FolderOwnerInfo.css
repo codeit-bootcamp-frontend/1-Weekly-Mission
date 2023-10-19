@@ -12,8 +12,6 @@
 .owner-image {
   width: 60px;
   height: 60px;
-  border-radius: 50%;
-  background: var(--primary-purple-70);
 }
 
 .owner-name {
