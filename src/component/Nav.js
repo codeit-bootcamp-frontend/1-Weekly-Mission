@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import logoImg from "../img/logo.svg";
-import { isSignIn } from "../api";
 import "../css/index.css";
 import "../css/color.css";
 
@@ -20,18 +18,7 @@ function NavProfile({ userInfo }) {
   return <button>로그인</button>;
 }
 
-function Nav() {
-  const [userInfo, setUserInfo] = useState("");
-
-  const getUser = async () => {
-    const userInfo = await isSignIn();
-    setUserInfo(userInfo);
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
+function Nav({ userInfo }) {
   return (
     <div className="nav">
       <a href="/">
