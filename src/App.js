@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import getUserFolder from "./utils/api";
+import { useEffect, useState } from "react";
+import CardComponent from "./components/CardComponent";
 
 function App() {
+  const [state, setState] = useState([]);
+
+  async function handleList() {
+    const { links } = await getUserFolder();
+    setState(links);
+  }
+
+  useEffect(() => {
+    handleList();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ul>
+        {state.map((cardInfo) => {
+          return <CardComponent cardInfo={cardInfo} key={cardInfo.id} />;
+        })}
+      </ul>
+    </>
   );
 }
 
