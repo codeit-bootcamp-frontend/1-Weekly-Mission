@@ -1,4 +1,10 @@
-import ReactDOM from "react-dom/client";
+import ReactDOM from 'react-dom/client';
+import React from 'react';
+import LandingPage from './pages/landing/LandingPage';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<h1>초기세팅</h1>);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <div>
+    <LandingPage />
+  </div>,
+);
