@@ -95,6 +95,15 @@ header {
   }
 }
 
+.cta-short-account {
+  width: 8rem;
+  background-image: none;
+  color: #000000;
+  @media (min-width: 768px) {
+    width: 12.8rem;
+  }
+}
+
 .cta-long {
   width: 20rem;
 
