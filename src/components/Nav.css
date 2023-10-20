@@ -13,6 +13,20 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 1124px) {
+  .nav1-wrapper {
+    padding: 33px;
+  }
+}
+@media (max-width: 767px) {
+  .nav1-wrapper {
+    padding: 18px 33px;
+  }
+}
+.nav1-libraryImg {
+  width: 133px;
+  height: 24px;
+}
 .nav1-div {
   display: flex;
   gap: 10px;
@@ -21,13 +35,38 @@ body {
 .nav1-div-logo {
   display: flex;
 }
-
+.nav1-humanImg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.nav1-div-mail {
+  color: #373740;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  .nav1-div-mail {
+    display: none;
+  }
+}
 .nav2-wrapper {
   display: flex;
   flex-direction: column;
   padding: 20px 0 60px 0;
   align-items: center;
   gap: 20px;
+}
+.nav2-smileImg {
+  height: 60px;
+}
+.nav2-div {
+  color: #000;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 .nav2-logo {
   display: flex;

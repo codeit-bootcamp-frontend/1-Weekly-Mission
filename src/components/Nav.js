@@ -9,22 +9,22 @@ export default function Nav() {
     <div className="nav1-container">
       <div className="nav1-wrapper">
         <div className="nav1-logo">
-          <img className="nav1-logoImg" src={library} />
+          <img className="nav1-libraryImg" src={library} />
         </div>
         <div className="nav1-div">
-          <div className="nav1-div-logo">
-            <img src={humanImg} />
+          <div className="nav1-div-human">
+            <img className="nav1-humanImg" src={humanImg} />
           </div>
           <div className="nav1-div-mail">Codeit@codeit.com</div>
         </div>
       </div>
       <div className="nav2-wrapper">
         <div className="nav2-logo">
-          <img src={smile} />
+          <img className="nav2-smileImg" src={smile} />
           <div className="nav2-div">@코드잇</div>
         </div>
         <div className="nav2-starDiv">
-          <img src={star} />
+          <img className="nav2-starImg" src={star} />
         </div>
       </div>
     </div>
