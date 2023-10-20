@@ -6,7 +6,7 @@ function App() {
     <>
       <Card 
       src={image}
-      createdAt={'2023. 3. 15'} 
+      createdAt={'2023-10-20T15:30:08Z'} 
       content={'Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc consequat.'}
       />    
       <Card 
