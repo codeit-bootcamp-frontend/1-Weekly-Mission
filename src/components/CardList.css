@@ -4,6 +4,21 @@
   gap: 2.5rem 2rem;
 }
 
+.Card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0rem 0.5rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+  width: 34rem;
+  height: 33.4rem;
+  cursor: pointer;
+}
+
+.Card:hover {
+  background: var(--gray0);
+}
+
 ul {
   list-style-type: none;
+  padding-inline-start: 0;
 }

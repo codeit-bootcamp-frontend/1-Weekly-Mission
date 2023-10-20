@@ -21,7 +21,7 @@ export default function CardList() {
         <ul className="CardList">
           {items.map((item) => {
             return (
-              <li key={item.id}>
+              <li className="Card" key={item.id}>
                 <Card item={item} />
               </li>
             );
