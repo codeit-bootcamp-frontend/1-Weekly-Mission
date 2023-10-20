@@ -1,0 +1,30 @@
+.FolderInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+}
+
+.FolderInfo__profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.FolderInfo__profile-img {
+  width: 6rem;
+  border-radius: 50%;
+}
+
+.FolderInfo__user-name {
+  font-size: 1.6rem;
+}
+
+.FolderInfo__folder-name {
+  font-size: 4rem;
+}
