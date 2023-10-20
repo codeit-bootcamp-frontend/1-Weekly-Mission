@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { getFolder } from "./api";
 import Search from "./Search";
-//import "./landing.css";
+import "./landing.css";
 
 const Header = () => {
   const [profile, setProfile] = useState("");

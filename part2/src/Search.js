@@ -1,4 +1,5 @@
 import React from "react";
+import "./landing.css";
 
 const Search = () => {
   return (
@@ -8,17 +9,17 @@ const Search = () => {
         marginBottom: "4rem",
       }}
     >
-      <form>
+      <form className="search-area" style={{}}>
         {/* <img src="/images/Search.svg" alt="검색 이미지" /> */}
         <input
-          placeholder="  링크를 검색해 보세요."
+          placeholder="링크를 검색해 보세요."
           style={{
             height: "5rem",
             width: "100%",
             backgroundColor: "#CCD5E3",
             borderRadius: "1rem",
             display: "flex",
-            padding: "15px 16px",
+            padding: "1.5rem 4.5rem",
             justifyContent: "space-between",
             alignItems: "flex-start",
             alignSelf: "stretch",
@@ -26,7 +27,7 @@ const Search = () => {
             color: "#666",
             backgroundImage: `url("/images/Search.svg")`,
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "left",
+            backgroundPosition: "left 1.7rem bottom 50%",
           }}
         ></input>
       </form>

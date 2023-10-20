@@ -1,10 +1,10 @@
 @import "./global.css";
 
-body {
+/* body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 nav {
   display: flex;
@@ -51,6 +51,20 @@ header {
   background-color: #edf7ff;
 }
 
+.search-area,
+.card-area {
+  padding: 0 3.2rem;
+  font-size: 20rem;
+
+  @media (min-width: 768px) {
+    padding: 0 3.2rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 19rem;
+  }
+}
+
 .hero-header {
   display: flex;
   flex-direction: column;
@@ -93,6 +107,29 @@ header {
 
   @media (min-width: 768px) {
     width: 12.8rem;
+  }
+}
+
+.accountImg1 {
+  z-index: 1;
+  position: absolute;
+  left: -6rem;
+  bottom: 0.2rem;
+
+  @media (min-width: 768px) {
+    left: -4rem;
+    bottom: 1.1rem;
+  }
+}
+.accountImg2 {
+  z-index: 2;
+  position: absolute;
+  left: -5.1rem;
+  bottom: 1.1rem;
+
+  @media (min-width: 768px) {
+    left: -3.1rem;
+    bottom: 2.1rem;
   }
 }
 
