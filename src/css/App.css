@@ -19,6 +19,7 @@
     height: 100%;
     overflow: hidden;
     background: lightgray 50% / cover no-repeat;
+    border-radius: 15px 15px 0 0;
 }
 
 .card-info-box {
