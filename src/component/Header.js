@@ -1,5 +1,7 @@
+import Nav from "./Nav";
+
 function Header() {
-  return;
+  return <Nav />;
 }
 
 export default Header;
