@@ -1,0 +1,26 @@
+.profile {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 624px 60px;
+    gap: 20px;
+    text-align: center;
+}
+
+.profile-img {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    height: 60px;
+    padding: 16px 17px 16px 15px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 47px;
+    background: var(--primary-purple-70, #8F00FF);
+}
+
+.main {
+    padding: 40px 0;
+    background-color: chartreuse;
+}
