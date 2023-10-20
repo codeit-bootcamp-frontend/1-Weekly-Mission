@@ -1,7 +1,18 @@
-import "./App.css";
+import Article from "./Article";
+import Footer from "./Footer";
+import Header from "./Header";
+import Nav from "./Nav";
+import "./landing.css";
 
 function App() {
-  return <div></div>;
+  return (
+    <>
+      <Nav />
+      <Header />
+      <Article />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
