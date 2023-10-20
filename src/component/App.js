@@ -1,4 +1,5 @@
 import Header from "./Header";
+import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import { isSignIn, getFolder } from "../api";
 
@@ -19,7 +20,12 @@ function App() {
     loadUser();
     loadFolder();
   }, []);
-  return <Header userInfo={userInfo} folderInfo={folderInfo.folder} />;
+  return (
+    <>
+      <Header userInfo={userInfo} folderInfo={folderInfo.folder} />
+      <Footer />
+    </>
+  );
 }
 
 export default App;

@@ -1,5 +1,3 @@
-import { async } from "q";
-
 const API_URL = {
   sampleUser: "https://bootcamp-api.codeit.kr/api/sample/user",
   sampleFolder: "https://bootcamp-api.codeit.kr/api/sample/folder",
