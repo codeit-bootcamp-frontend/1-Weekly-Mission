@@ -7,6 +7,7 @@ header {
   box-sizing: border-box;
   position: fixed;
   justify-content: center;
+  min-height: 9.4rem;
 }
 
 .contentContainer {
@@ -38,4 +39,22 @@ header {
 
 #loginBtn {
   width: 12.8rem;
+}
+
+.profileContainer {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.profileContainer img {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+}
+
+.profileContainer .profileEmail {
+  color: var(--linkbrary-gray-100, #373740);
+  font-size: 1.4rem;
+  font-weight: 400;
 }
