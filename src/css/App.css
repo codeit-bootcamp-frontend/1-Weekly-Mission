@@ -1,5 +1,15 @@
 @import './colors.css';
 
+/* main */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 3.2rem;
+}
+
+/* 카드리스트 */
 .card-wrapper {
     width: 34rem;
     height: 33rem;
@@ -16,7 +26,7 @@
 }
 
 .card-image {
-    width: 34rem;
+    width: 100%;
     height: 100%;
     background: lightgray 50% / cover no-repeat;
     border-radius: 15px 15px 0 0;

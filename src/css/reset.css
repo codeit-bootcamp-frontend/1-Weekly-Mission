@@ -22,6 +22,10 @@ input:focus {
     outline: none;
 }
 
+ol, ul, li {
+    list-style: none;
+}
+
 button {
     border: none;
     padding: unset;
