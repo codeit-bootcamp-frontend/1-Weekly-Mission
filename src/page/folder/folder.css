@@ -1,3 +1,51 @@
 .wrapper {
-  padding-top: 7rem;
+  padding-top: 9.3rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+}
+
+.folderContentContainer {
+  margin: 2rem auto 6rem;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+#cardContainer {
+  margin: 4rem auto 6rem;
+  width: 106rem;
+  gap: 4rem;
+}
+
+#userProfile {
+  border-radius: 4.7rem;
+  background: #8f00ff;
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 1.2rem;
+}
+
+#userName {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+  margin-bottom: 2rem;
+}
+
+#folderName {
+  color: #000;
+  font-size: 4rem;
+  font-weight: 600;
 }

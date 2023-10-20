@@ -7,15 +7,15 @@ import TwitterIcon from "../../assets/common/img_twitterIcon.png";
 const Footer = () => {
   return (
     <footer>
-      <div class="contentContainer">
-        <div id="leftItem" class="footerItem">
+      <div className="contentContainer">
+        <div id="leftItem" className="footerItem">
           ©codeit - 2023
         </div>
         <div id="centerItemContainer">
-          <a class="centerItem footerItem" href="./html/privacy.html">
+          <a className="centerItem footerItem" href="./html/privacy.html">
             Privacy Policy
           </a>
-          <a class="centerItem footerItem" href="./html/faq.html">
+          <a className="centerItem footerItem" href="./html/faq.html">
             FAQ
           </a>
         </div>
