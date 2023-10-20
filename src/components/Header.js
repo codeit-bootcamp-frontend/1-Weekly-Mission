@@ -35,7 +35,7 @@ function Header() {
   }, []);
 
   return (
-    <>
+    <header>
       <nav>
         <a href="/">
           <img src={linkbraryLogo} alt="홈으로 연결된 Linkbrary 로고" />
@@ -43,7 +43,7 @@ function Header() {
         <Profile email={email} image={profileImageSource} />
       </nav>
       <FolderInfo folderName={folderName} ownerName={ownerName} image={ownerProfileImageSource} />
-    </>
+    </header>
   );
 }
 
