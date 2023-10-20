@@ -1,0 +1,19 @@
+.loginDiv {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.loginImage {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.loginEmail {
+  color: var(--linkbrary-gray-100, #373740);
+
+  /* Linkbrary/body2-regular */
+  font-size: 1rem;
+  font-weight: 400;
+}

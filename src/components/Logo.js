@@ -1,10 +1,10 @@
 import logoIMG from "../assets/images/svg/Linkbrary.svg";
 
-const Logo = () => {
+const Logo = ({ className }) => {
   return (
     <>
       <a href="/">
-        <img src={logoIMG} alt="Linkbrary 로고" />
+        <img className={className} src={logoIMG} alt="Linkbrary 로고" />
       </a>
     </>
   );
