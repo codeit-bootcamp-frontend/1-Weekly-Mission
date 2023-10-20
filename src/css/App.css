@@ -79,17 +79,22 @@ main {
     gap: 1rem;
 }
 
-.star-mark {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-}
-
 .card-info-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     align-self: stretch;
+}
+
+.star-mark-button {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.star-mark {
+    width: 3.4rem;
+    height: 3.4rem;
 }
 
 .card-passed-time {

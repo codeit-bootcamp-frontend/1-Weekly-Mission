@@ -6,7 +6,9 @@ function Card({ item }) {
       <div className='card-wrapper'>
         <div className='card-image-box'>
           <img className='card-image' src={item.imageSource} alt={item.title} />
-          <span className='star-mark'>star</span>
+          <button className='star-mark-button'>
+            <img className="star-mark" src='/assets/image/star.png' alt='카드 즐겨찾기 버튼' />
+          </button>
         </div>
         <div className='card-info-box'>
           <div className='card-info-top'>
