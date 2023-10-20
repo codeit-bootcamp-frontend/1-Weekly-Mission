@@ -1,0 +1,62 @@
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-black: #111322;
+  --color-purple: #6d6afe;
+  --color-red: #ff5b56;
+  --color-light-gray: #f0f6ff;
+  --color-blue: #6ae3fe;
+  --color-gray: #6b6b6b;
+  --color-gray-10: #e7effb;
+  --color-gray-20: #ccd5e3;
+
+  /* App Colors */
+  --color-primary: var(--color-purple);
+  --color-primary-varient: var(--color-light-gray);
+  --color-primary-bg: var(--color-light-gray);
+  --color-text: var(--color-gray);
+
+  /* Button Gradient */
+  --gra-purpleblue-to-skyblue: linear-gradient(
+    91deg,
+    var(--color-primary) 0.12%,
+    var(--color-blue) 101.84%
+  );
+
+  /* Font Size */
+  --font-small: 1.2rem; /* 18px */
+  --font-medium: 3rem; /* 48px */
+  --font-large: 4rem; /* 64px */
+
+  /* Font Weight */
+  --font-semibold: 600;
+}
+
+/* Common */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Pretendard, sans-serif;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+  padding-left: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.max-container {
+  max-width: 1920px;
+  margin: auto;
+}

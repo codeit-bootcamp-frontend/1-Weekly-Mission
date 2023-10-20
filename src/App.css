@@ -1,1 +1,101 @@
+@import url(styles/globalStyles.css);
 
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-primary-varient);
+}
+
+.header__container {
+  padding: 1.25rem 12.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  cursor: pointer;
+}
+
+.header__login__btn {
+  padding: 1rem 1.25rem;
+  width: 128px;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--color-white);
+  font-size: var(--font-small);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  background-color: var(--color-primary-varient);
+}
+
+.hero__profile {
+  padding-top: 160px;
+  margin: 0;
+  text-align: center;
+}
+
+.hero__link {
+  padding: 40px 0;
+}
+
+.hero__link__btn {
+  width: 350px;
+  padding: 1rem 1.25rem;
+  background: var(--gra-purpleblue-to-skyblue);
+  border-radius: 0.5rem;
+  border: none;
+  color: var(--color-white);
+  font-size: var(--font-small);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+/* Contents */
+.contents {
+  padding: 120px 0;
+}
+
+/* Footer */
+.contact {
+  height: 160px;
+  background-color: var(--color-black);
+}
+
+.contact__container {
+  height: 100%;
+  padding: 2rem 6.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1920px;
+  margin: auto;
+}
+
+.contact__rights {
+  color: #676767;
+}
+
+.contact__policy {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.contact__policy--text {
+  color: #cfcfcf;
+  text-decoration: none;
+}
+
+.contact__links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
