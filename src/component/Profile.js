@@ -1,10 +1,10 @@
-function Profile({ userInfo }) {
-  if (userInfo) {
+function Profile({ folderInfo }) {
+  if (folderInfo) {
     return (
       <div className="profile">
-        <img src={userInfo.profileImageSource} />
-        <div>{userInfo.name}</div>
-        <div>{userInfo.email}</div>
+        <img src={folderInfo.owner.profileImageSource} />
+        <div>{folderInfo.owner.name}</div>
+        <div>{folderInfo.name}</div>
       </div>
     );
   }
