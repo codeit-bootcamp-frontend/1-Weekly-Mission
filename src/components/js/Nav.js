@@ -5,7 +5,7 @@ function Profile() {
   return(
     <div>
       <img src={profileImg} alt={profileImg}/>
-      <p>'Codeit@codeit.com</p>
+      <p>Codeit@codeit.com</p>
     </div>
   )
 }
