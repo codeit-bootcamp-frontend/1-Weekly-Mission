@@ -1,4 +1,5 @@
 import React from 'react';
+import './footer.css';
 import facebookIcon from '../../assets/landing/facebookIcon.svg';
 import instagramIcon from '../../assets/landing/instagramIcon.svg';
 import twitterIcon from '../../assets/landing/twitterIcon.svg';
