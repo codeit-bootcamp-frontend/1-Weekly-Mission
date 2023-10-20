@@ -12,14 +12,20 @@
     width: 100%;
     height: 19.5rem;
     position: relative;
+    overflow: hidden;
 }
 
 .card-image {
     width: 34rem;
     height: 100%;
-    overflow: hidden;
     background: lightgray 50% / cover no-repeat;
     border-radius: 15px 15px 0 0;
+    transition: 0.5s;
+    object-fit: contain;
+}
+
+.card-image:hover {
+    transform: scale(1.3);
 }
 
 .card-info-box {
