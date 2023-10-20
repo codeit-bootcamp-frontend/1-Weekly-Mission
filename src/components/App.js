@@ -1,5 +1,11 @@
+import Logo from "./Logo";
+
 const App = () => {
-  return <h1>Hi</h1>;
+  return (
+    <>
+      <Logo></Logo>
+    </>
+  );
 };
 
 export default App;
