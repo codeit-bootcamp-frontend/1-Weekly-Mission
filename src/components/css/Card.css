@@ -1,0 +1,6 @@
+.Card {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 600;
+}

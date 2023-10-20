@@ -1,7 +1,5 @@
 {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "cSpell.words": [
-        "codeit"
-    ]
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "cSpell.words": ["codeit", "Pretendard"]
 }

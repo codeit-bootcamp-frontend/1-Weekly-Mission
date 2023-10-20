@@ -1,3 +1,51 @@
-.icon{
+.Footer_wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  background-color: #111322;
+}
+
+.Footer {
+  height: 64px;
+  display: flex;
+  padding: 32px 104px 64px;
+  margin: 0 auto;
+  justify-content: space-between;
+  font-size: 1.6rem;
+}
+
+.Footer_copyright {
+  flex-shrink: 0;
+  color: #676767;
+}
+
+.Footer_directLink {
+  flex-shrink: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.link_policy,
+.link_policy:visited {
+  color: #cfcfcf;
+  text-decoration: none;
+}
+
+.link_faq,
+.link_faq:visited {
+  color: #cfcfcf;
+  text-decoration: none;
+}
+
+.Footer_icons {
+  display: flex;
+  gap: 12px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }

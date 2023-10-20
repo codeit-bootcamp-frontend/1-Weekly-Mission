@@ -1,19 +1,47 @@
-.avatar {
+.Header_Nav {
+  margin: 0 auto;
+}
+
+.Header_wrapper {
+  padding: 20px 0 60px;
+  background-color: #f0f6ff;
+}
+
+.Header_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.folder_owner_avatar {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
+}
+
+.folder_owner {
+  margin-top: 12px;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.folder_name {
+  margin-top: 20px;
+  font-size: 4rem;
+  font-weight: 600;
 }
 
 .avatar_img {
-  position: absolute;
+  width: 60px;
+  height: 60px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .avatar_bg {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background-color: #8F00FF;
+  background-color: #8f00ff;
 }
