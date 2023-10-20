@@ -1,0 +1,50 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0rem 0.5rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+  width: 34rem;
+  height: 33.4rem;
+}
+
+.img-container {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  width: 34rem;
+  height: 20rem;
+}
+
+.img {
+  max-width: 100%;
+}
+
+.info {
+  display: flex;
+  width: 34rem;
+  padding: 1.5rem 2.0rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.time-diff {
+  font-size: 1.3rem;
+  color: #666666;
+}
+
+.description {
+  height: 4.9rem;
+  font-size: 1.6rem;
+  line-height: 150%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-self: stretch;
+}
+
+.date {
+  font-size: 1.4rem;
+}

@@ -1,0 +1,9 @@
+.CardList {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+  gap: 2.5rem 2rem;
+}
+
+ul {
+  list-style-type: none;
+}

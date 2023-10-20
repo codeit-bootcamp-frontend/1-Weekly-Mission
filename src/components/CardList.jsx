@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import { getFolder } from "../api";
+import './CardList.css';
 
 export default function CardList() {
   const [items, setItems] = useState("");
@@ -17,7 +18,7 @@ export default function CardList() {
   return (
     <>
       {items && (
-        <ul>
+        <ul className="CardList">
           {items.map((item) => {
             return (
               <li key={item.id}>

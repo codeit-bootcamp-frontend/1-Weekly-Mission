@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import FolderInfo from "./FolderInfo";
 import Profile from "./Profile";
 import { getFolder, getProfile } from "../api";
+import './Header.css';
 
 function Header() {
   const [email, setEmail] = useState("");

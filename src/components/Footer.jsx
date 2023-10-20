@@ -2,6 +2,7 @@ import facebookLogo from "../images/sns/facebook.svg";
 import twitterLogo from "../images/sns/twitter.svg";
 import youtubeLogo from "../images/sns/youtube.svg";
 import instagramLogo from "../images/sns/instagram.svg";
+import './Footer.css';
 
 function Footer() {
   return (

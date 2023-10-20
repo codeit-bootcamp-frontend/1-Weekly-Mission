@@ -1,4 +1,5 @@
 import CardList from "./CardList";
+import './Main.css';
 
 function Main() {
   return (
