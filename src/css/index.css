@@ -28,5 +28,20 @@ body {
 .nav__profile__img {
   width: 2.4rem;
   height: 2.4rem;
-  border-radius: 4.4rem;
+  border-radius: 4.7rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 6rem;
+}
+
+.profile img {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 4.7rem;
 }
