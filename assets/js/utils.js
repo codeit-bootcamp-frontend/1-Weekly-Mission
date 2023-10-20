@@ -1,14 +1,15 @@
-//TEST USER
-const TEST_USER = {
-  email: "test@codeit.com",
-  pw: "codeit101"
-}
+//정규식
+const EMAIL_REGEXP = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,}$/i;
+const PW_REGEXP = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
 
 //이메일 유효 형식 검사
-const EMAIL_REGEXP = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
 function isEmailValid(email){
   return (email.match(EMAIL_REGEXP)!=null);
+}
+
+//비밀번호 유효 형식 검사
+function isPwValid(password) {
+  return PW_REGEXP.test(password);
 }
 
 //에러 태그 생성
@@ -32,17 +33,17 @@ function removeErrorClass(element) {
   
 //특정 범위 내 요소 있으면 제거
 function removeElementOrNull(range, element){
-if (range.querySelector(element)){
-  let temp = range.querySelector(element);
-  temp.remove();
+  if (range.querySelector(element)){
+    const el = range.querySelector(element);
+    el.remove();
   }
 }
 
 //ErrorTag
 function addErrorTag (el, insertionPoint, message) {
-  const SpanTag = createErrorTag();
-  SpanTag.textContent = message;
-  insertionPoint.appendChild(SpanTag);
+  const spanTag = createErrorTag();
+  spanTag.textContent = message;
+  insertionPoint.appendChild(spanTag);
   addErrorClass(el);
 }
 
@@ -68,8 +69,8 @@ function togglePw(e){
 }
 
 export { 
-  TEST_USER,
   isEmailValid,
+  isPwValid,
   addErrorTag,
   removeErrorClass,
   removeElementOrNull,

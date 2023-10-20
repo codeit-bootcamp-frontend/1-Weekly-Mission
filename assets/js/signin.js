@@ -1,33 +1,41 @@
 import {
-  TEST_USER,
   isEmailValid,
   addErrorTag,
   removeErrorClass,
   removeElementOrNull,
-  togglePw} from './utils.js';
+  togglePw,
+} from './utils.js';
 
-const signinForm = document.querySelector('form');
-const emailWrap = document.querySelector('.signin__email__wrap');
-const inputEmail = document.querySelector('.input--email');
-const pwWrap = document.querySelector('.signin__pw__wrap');
-const inputPw = document.querySelector('.input--pw');
+import {
+  formEl,
+  emailWrap,
+  inputEmail,
+  pwWrap,
+  inputPw,
+  ERROR,
+  API_URL,
+} from './const.js';
 
 /*-----로그인 유효성 검사-----*/
 
+//accessToken 확인 후 이동
+let token = localStorage.getItem("accessToken") || null ;
+
+if (token) {
+  formEl.submit()
+}
+
 //이메일 유효성 검사
-function validateEmailInput(e){
+function validateEmailInput(e) {
   removeElementOrNull(emailWrap, '.error');
   removeErrorClass(inputEmail);
 
   const email = e.target.value;
 
   if (email == '' || !isEmailValid(email)) {
-    
-    const emptyEmailError = "이메일을 입력해주세요."
-    const invalidEmailError = "올바른 이메일 주소가 아닙니다."
-    let tagMessage = (email == '') ? emptyEmailError : invalidEmailError ;
-    
-    addErrorTag (inputEmail, emailWrap, tagMessage)
+    let tagMessage = (email == '') ? ERROR.EMAIL.empty : ERROR.EMAIL.invalid;
+
+    addErrorTag(inputEmail, emailWrap, tagMessage)
     return;
   }
 }
@@ -36,45 +44,68 @@ inputEmail.addEventListener('focusout', validateEmailInput);
 
 
 //비밀번호 유효성 검사
-function validatePwInput(e){
+function validatePwInput(e) {
   removeElementOrNull(pwWrap, '.error');
   removeErrorClass(inputPw);
 
   const password = e.target.value;
-  
-  if (password == ''){
-    const emptyPwError = "비밀번호를 입력해주세요."
-    addErrorTag(inputPw, pwWrap, emptyPwError)
+
+  if (password == '') {
+    addErrorTag(inputPw, pwWrap, ERROR.PW.empty)
   }
 }
 
 inputPw.addEventListener('focusout', validatePwInput);
 
 //로그인 실행
-function submitForm(e){
+function submitForm(e) {
   e.preventDefault()
 
-  const email = inputEmail.value;
-  const password = inputPw.value;
+  const email = inputEmail.value
+  const password = inputPw.value
 
-  if (email === TEST_USER.email && password === TEST_USER.pw){
-    signinForm.submit()
-    return;
+  const inputAccount = {
+    "email": email,
+    "password": password,
   }
 
-  removeElementOrNull(emailWrap, '.error');
-  removeErrorClass(inputEmail);
-  removeElementOrNull(pwWrap, '.error');
-  removeErrorClass(inputPw);
-
-  const incorrectEmailError = "이메일을 확인해주세요."
-  const incorrectPwError = "비밀번호를 확인해주세요."
-
-  addErrorTag(inputEmail, emailWrap, incorrectEmailError)
-  addErrorTag(inputPw, pwWrap, incorrectPwError)
+  fetch (API_URL.AUTH.signin, {
+    method: "POST", 
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(inputAccount)
+  })
+  .then((response) => {
+    console.log(response)
+    if (!response.ok) {
+     throw Error("This account is not exist")
+    }
+    return response.json()
+  })
+  .then((result) => {
+    //로그인 성공시 accessToken 저장
+    if (result.data.accessToken) {
+      localStorage.setItem('accessToken', result.data.accessToken)
+      localStorage.setItem('refreshToken', result.data.refreshToken)
+    }
+  })
+  .then(() => {
+    formEl.submit()
+  })
+  .catch ((err) => {
+    console.log(err)
+    removeElementOrNull(emailWrap, '.error');
+    removeErrorClass(inputEmail);
+    removeElementOrNull(pwWrap, '.error');
+    removeErrorClass(inputPw);
+  
+    addErrorTag(inputEmail, emailWrap, ERROR.EMAIL.incorrect)
+    addErrorTag(inputPw, pwWrap, ERROR.PW.incorrect)
+  });
 }
 
-signinForm.addEventListener('submit', submitForm); //버튼 클릭시 실행
+formEl.addEventListener('submit', submitForm); //버튼 클릭시 실행
 
 /*-----눈모양 아이콘 클릭에 따른 노출-----*/
 const eye = document.querySelector(".input__eye");

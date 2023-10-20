@@ -43,24 +43,21 @@ main{
   width: 100%; 
 }
 
-.signin__label,
-.signup__label{
+.sign__label{
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 400;
   padding-bottom: 0.75rem;
 }
 
-.signin__input__wrap,
-.signup__input__wrap{
+.input__box{
   display:flex;
   align-items: center;
   position: relative;
 }
 
-.signin__pw__wrap,
-.signup__pw__wrap,
-.signup__pw__wrap--confirm{
+.sign__pw__wrap,
+.sign__pw__wrap--confirm{
   margin-top: 1.5rem;
 }
 
@@ -118,8 +115,7 @@ main{
 }
 
 /*--소셜 로그인--*/
-.signin--social,
-.signup--social{
+.sign--social{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -134,8 +130,7 @@ main{
   font-weight: 400;
 }
 
-.signin--social-icon,
-.signup--social-icon{
+.sign--social-icon{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -144,8 +139,7 @@ main{
   list-style: none;
 }
 
-.signin--social-icon img,
-.signup--social-icon img{
+.sign--social-icon img{
   vertical-align: bottom;
 }
 
