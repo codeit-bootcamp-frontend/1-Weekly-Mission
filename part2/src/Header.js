@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { getFolder } from "./api";
+import Search from "./Search";
 //import "./landing.css";
 
 const Header = () => {
@@ -24,7 +25,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="hero-header">
+        <div className="hero-header" style={{ paddingBottom: "6rem" }}>
           <div
             style={{
               display: "flex",
@@ -38,10 +39,10 @@ const Header = () => {
             <p style={{ fontSize: "1.6rem" }}>{userName}</p>
             <p style={{ fontSize: "4rem", fontWeight: "600" }}>{folderName}</p>
           </div>
-
-          <Card />
         </div>
       </header>
+      <Search />
+      <Card />
     </>
   );
 };
