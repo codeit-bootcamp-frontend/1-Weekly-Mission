@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     handleLoad();
-  }, []);
+  }, [handleLoad]);
 
   return (
     <div className='App'>

@@ -7,9 +7,9 @@ function CardList({ items }) {
       <div className='card-list'>
         {items.map((item) => {
           return (
-            <Fragment key={item.id}>
+            <li key={item.id}>
               <Card item={item} />
-            </Fragment>
+            </li>
           );
         })}
       </div>
