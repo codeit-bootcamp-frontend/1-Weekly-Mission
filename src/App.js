@@ -25,7 +25,13 @@ function App() {
 
   return (
     <div className='App'>
-      <CardList items={cards} />
+      <header>
+        <nav></nav>
+      </header>
+      <main>
+        <input />
+        <CardList items={cards} />
+      </main>
     </div>
   );
 }
