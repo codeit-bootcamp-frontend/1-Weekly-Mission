@@ -40,8 +40,15 @@ body {
   padding-bottom: 6rem;
 }
 
-.profile img {
-  width: 2.8rem;
-  height: 2.8rem;
+.profile__img {
+  width: 6rem;
+  height: 6rem;
   border-radius: 4.7rem;
+}
+.profile__folder-name {
+  font-size: 4rem;
+  font-weight: 600;
+}
+.profile__name {
+  font-size: 1.6rem;
 }
