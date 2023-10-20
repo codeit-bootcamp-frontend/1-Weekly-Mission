@@ -3,10 +3,10 @@ header {
   background: var(--background);
   padding: 2rem 20rem;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   box-sizing: border-box;
-  max-width: 192rem;
   position: fixed;
+  justify-content: center;
 }
 
 .contentContainer {
@@ -14,6 +14,7 @@ header {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 152rem;
 }
 
 #logoImg {

@@ -3,7 +3,6 @@ footer {
   width: 100%;
   justify-content: center;
   display: flex;
-  padding: 3.2rem 10.4rem 6.4rem;
   align-items: center;
   box-sizing: border-box;
 }
@@ -12,6 +11,7 @@ footer > .contentContainer {
   height: 6.4rem;
   align-items: flex-start;
   max-width: 171.2rem;
+  padding: 3.2rem 10.4rem 6.4rem;
 }
 
 #leftItem {

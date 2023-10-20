@@ -1,9 +1,9 @@
 .wrapper {
-  padding-top: 9.3rem;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 9.4rem;
 }
 
 .section {
@@ -22,7 +22,7 @@
   justify-content: center;
 }
 
-#cardContainer {
+#bottomContainer {
   margin: 4rem auto 6rem;
   width: 106rem;
   gap: 4rem;
@@ -48,4 +48,39 @@
   color: #000;
   font-size: 4rem;
   font-weight: 600;
+}
+
+#cardContainer {
+  gap: 4rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.searchInputContainer {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 1.6rem;
+  border-radius: 1rem;
+  background: #f5f5f5;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#searchContainer {
+  width: 100%;
+  height: 2.3rem;
+}
+
+#searchContainer::placeholder {
+  color: #666;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+}
+
+#searchImg {
+  width: 1.6rem;
+  height: 1.6rem;
 }

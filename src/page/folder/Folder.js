@@ -1,4 +1,6 @@
+import Card from "../../components/card/Card";
 import "./folder.css";
+import SearchImg from "../../assets/folder/img_search.png";
 
 const Folder = () => {
   return (
@@ -11,9 +13,24 @@ const Folder = () => {
         </div>
       </div>
       <div className="section" style={{ background: "#fff" }}>
-        <div className="folderContentContainer" id="cardContainer">
-          <div id="searchContainer"></div>
-          <div id="cardContainer"></div>
+        <div className="folderContentContainer" id="bottomContainer">
+          <div className="searchInputContainer">
+            <img src={SearchImg} alt="searchImg" id="searchImg" />
+            <input
+              id="searchContainer"
+              placeholder="링크를 검색해보세요."
+            ></input>
+          </div>
+          <div id="cardContainer">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
         </div>
       </div>
     </div>

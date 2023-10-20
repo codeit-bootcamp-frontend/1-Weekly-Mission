@@ -20,6 +20,7 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 ul {
@@ -50,6 +51,4 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  max-width: 192rem;
 }
