@@ -16,6 +16,18 @@ main {
     gap: 2rem;
 }
 
+@media (min-width: 768px) {
+    main {
+        margin: 4rem 0;
+        gap: 4rem;
+    }
+    .card-list {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        gap: 2.5rem;
+    }
+}
+
 /* 카드 */
 .card-wrapper {
     width: 34rem;
