@@ -7,6 +7,10 @@
   gap: 1.2rem;
 }
 
+.name {
+  font-size: 1.6rem;
+}
+
 .profile-img {
   height: 60px;
   border-radius: 47px;
@@ -18,4 +22,26 @@
   font-weight: 600;
   margin-top: 0.8rem;
   padding-bottom: 6rem;
+}
+
+@media (max-width: 1199px) {
+  .intro-section {
+    padding: 13.3rem 3.2rem 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro-section {
+    padding: 13.3rem 3.2rem 0;
+    gap: 0.6rem;
+  }
+
+  .name {
+    font-size: 1.4rem;
+  }
+
+  .bookmark {
+    font-size: 3.2rem;
+    margin-top: 0.4rem;
+  }
 }

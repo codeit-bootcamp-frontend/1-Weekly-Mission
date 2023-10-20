@@ -7,14 +7,14 @@ import Instagram from '../assets/icon/instagram.svg';
 function Footer() {
   return (
     <footer>
-      <div class="footer-background">
-        <div class="footer-content">
-          <div class="name">©codeit - 2023</div>
-          <div class="option">
+      <div className="footer-background">
+        <div className="footer-content">
+          <div className="footer-name">©codeit - 2023</div>
+          <div className="option">
             <a href="pages/privacy.html">Privacy Policy</a>
             <a href="pages/faq.html">FAQ</a>
           </div>
-          <div class="social">
+          <div className="social">
             <a href="https://www.facebook.com/" target="noopener noreferrer">
               <img src={Facebook} alt="페이스북 아이콘" />
             </a>

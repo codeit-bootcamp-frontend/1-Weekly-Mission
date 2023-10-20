@@ -17,3 +17,25 @@ header {
   align-items: center;
   gap: 0.6rem;
 }
+
+.header-profile-img {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+@media (max-width: 1199px) {
+  .nav {
+    padding: 2rem 3.2rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav {
+    padding: 2rem 3.2rem;
+    margin: 0 auto;
+  }
+  .email {
+    display: none;
+  }
+}

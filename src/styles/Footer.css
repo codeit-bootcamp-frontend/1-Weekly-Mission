@@ -16,7 +16,7 @@ footer {
   align-items: flex-start;
 }
 
-.name {
+.footer-name {
   color: #676767;
   align-items: flex-start;
   gap: 2.4rem;
@@ -33,4 +33,33 @@ footer {
 .social {
   display: flex;
   gap: 1.2rem;
+}
+
+@media (max-width: 767px) {
+  footer {
+    padding-top: 4rem;
+  }
+
+  .footer-background {
+    padding: 3.2rem 3.2rem 6.4rem 3.2rem;
+  }
+
+  .footer-content {
+    flex-wrap: wrap;
+    row-gap: 4.5rem;
+  }
+
+  .footer-name {
+    order: 3;
+  }
+
+  .option {
+    flex-basis: 60%;
+    gap: 3rem;
+  }
+
+  .social {
+    flex-basis: 40%;
+    justify-content: end;
+  }
 }

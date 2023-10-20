@@ -1,7 +1,15 @@
 .main-section {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
   margin: 4rem 0;
+}
+
+@media (max-width: 1199px) {
+  .main-section {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }

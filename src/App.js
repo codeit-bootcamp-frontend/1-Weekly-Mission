@@ -3,34 +3,54 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Intro from './components/Intro';
 import Main from './components/Main';
-import RequestData from './services/api';
+import HeaderRequestData, { introRequestData } from './services/api';
+import './styles/variables.css';
+import './styles/reset.css';
 
 function App() {
-  const [id, setId] = useState();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [img, setImg] = useState('');
+  const [headerId, setHeaderId] = useState();
+  const [headerEmail, setHeaderEmail] = useState('');
+  const [headerImg, setHeaderImg] = useState('');
+
+  const [introId, setIntroId] = useState();
+  const [introName, setIntroName] = useState('');
+  const [introImg, setIntroImg] = useState('');
+  const [introFolderName, setIntroFolderName] = useState('');
 
   const loginInfo = async () => {
-    const result = await RequestData();
-    const { id, name, email, profileImageSource } = result;
-    setId(id);
-    setName(name);
-    setEmail(email);
-    setImg(profileImageSource);
+    const headerResult = await HeaderRequestData();
+    if (!headerResult) return;
+
+    const { id, email, profileImageSource } = headerResult;
+
+    setHeaderId(id);
+    setHeaderEmail(email);
+    setHeaderImg(profileImageSource);
+  };
+
+  const profileInfo = async () => {
+    const introResult = await introRequestData();
+    if (!introResult) return;
+
+    const { id, name, profileImageSource } = introResult.owner;
+
+    setIntroId(id);
+    setIntroName(name);
+    setIntroImg(profileImageSource);
+    setIntroFolderName(introResult.name);
   };
 
   useEffect(() => {
     loginInfo();
+    profileInfo();
   }, []);
 
   return (
     <>
-      <Header id={id} email={email} />
+      <Header id={headerId} email={headerEmail} headerProfileImg={headerImg} />
       <main>
-        <Intro name={name} img={img} />
+        <Intro id={introId} name={introName} introProfileImg={introImg} introFolderName={introFolderName} />
         <Main />
-        {}
       </main>
       <Footer />
     </>

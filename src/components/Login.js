@@ -1,6 +1,8 @@
+import '../styles/Login.css';
+
 function Login() {
   return (
-    <a class="login" href="/">
+    <a className="login" href="/">
       로그인
     </a>
   );

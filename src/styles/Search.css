@@ -14,3 +14,9 @@ input:focus {
   padding-left: 4rem;
   border-radius: 1rem;
 }
+
+@media (max-width: 1199px) {
+  .search-input {
+    width: 100%;
+  }
+}
