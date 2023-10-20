@@ -7,18 +7,18 @@ import "../styles/Footer.css";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="footer__container">
-        <span className="footer__copyright">©codeit - 2023</span>
-        <div className="footer__links">
-          <a className="footer__link" href="privacy.html">
+    <footer className="Footer">
+      <div className="Footer__container">
+        <span className="Footer__copyright">©codeit - 2023</span>
+        <div className="Footer__links">
+          <a className="Footer__link" href="privacy.html">
             Privacy Policy
           </a>
-          <a className="footer__link" href="faq.html">
+          <a className="Footer__link" href="faq.html">
             FAQ
           </a>
         </div>
-        <div className="footer__sns-links">
+        <div className="Footer__sns-links">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
             <img src={facebookImg} alt="facebook 바로가기" />
           </a>

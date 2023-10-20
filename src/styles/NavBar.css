@@ -1,6 +1,6 @@
 /* PC 화면 크기 (1200px 이상) */
 
-nav {
+.NavBar {
   display: flex;
   justify-content: center;
   position: sticky;
@@ -9,7 +9,7 @@ nav {
   z-index: 1;
 }
 
-.header__container {
+.NavBar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,12 +17,12 @@ nav {
   padding: 2rem 20rem;
 }
 
-a.header__logo img {
+a.NavBar__logo img {
   width: 13.3rem;
   height: 2.4rem;
 }
 
-.header__login {
+.NavBar__login {
   text-align: center;
   text-decoration: none;
   width: 12.8rem;
@@ -53,14 +53,14 @@ a.header__logo img {
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  .header__container {
+  .NavBar__container {
     padding: 2rem 3.2rem;
   }
 }
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .header__container {
+  .NavBar__container {
     padding: 1.3rem 3.2rem;
   }
 }

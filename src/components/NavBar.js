@@ -3,9 +3,9 @@ import logo from "../assets/logo.svg";
 
 const NavBar = () => {
   return (
-    <nav>
-      <div className="header__container">
-        <a href="/" className="header__logo">
+    <nav className="NavBar">
+      <div className="NavBar__container">
+        <a href="/" className="NavBar__logo">
           <img src={logo} alt="LinkBrary 로고" />
         </a>
         <a href="/signin" className="cta cta-short">
