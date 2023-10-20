@@ -1,10 +1,10 @@
 .cardContainer {
-  width: 340px;
-  height: 334px;
-  flex-shrink: 0;
+  width: 34rem;
+  height: 33.4rem;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
-  border-radius: 15px;
+  border-radius: 1.5rem;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .cardContainer:hover {
@@ -17,6 +17,9 @@
 
 .cardImage {
   border-radius: 15px 15px 0 0;
+  object-fit: cover;
+  width: 34rem;
+  height: 20rem;
 }
 
 .cardImageContainer {
