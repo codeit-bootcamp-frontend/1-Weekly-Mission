@@ -18,3 +18,5 @@ function useAsync(asyncFunction) {
 
   return [pending, error, wrappedFunction];
 }
+
+export default useAsync;
