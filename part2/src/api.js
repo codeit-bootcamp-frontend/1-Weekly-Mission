@@ -4,3 +4,10 @@ export async function getLogin() {
   const body = await response.json();
   return body;
 }
+
+export async function getFolder() {
+  const folderUrl = "https://bootcamp-api.codeit.kr/api/sample/folder";
+  const response = await fetch(folderUrl);
+  const body = await response.json();
+  return body;
+}
