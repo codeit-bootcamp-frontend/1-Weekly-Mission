@@ -8,7 +8,6 @@ const getSampleUserFolder = async () => {
 	const folder = result.folder;
 	return folder;
 };
-
 const getSampleUserProfile = async () => {
 	const profile = await fetchClientJson({
 		url: "sample/user",

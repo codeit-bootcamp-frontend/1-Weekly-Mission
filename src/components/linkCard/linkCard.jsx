@@ -1,8 +1,8 @@
-import "./card.css";
+import "./linkCard.css";
 import noImageSource from "../../assets/images/noLinkCardImg.png";
 import { NO_SPECIAL_CHA_PATTERN } from "../../utils/constants";
 
-export default function CardComponent({ cardData }) {
+export default function LinkCardComponent({ cardData }) {
 	const { createdAt, url, description, title, imageSource } = cardData;
 
 	const imageAlt =

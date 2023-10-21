@@ -1,10 +1,40 @@
-/* list-share */
-.list-share--container {
-	width: 100%;
-	padding: 0 190px;
+/* link-share */
+.page--container {
+	padding-top: 9.4rem;
 }
 
-.card-list--container {
+.folder-info--wrapper {
+	padding: 2rem 0 6rem;
+	overflow: hidden;
+	background-color: var(--linkbrary--color--gray5);
+	text-align: center;
+}
+
+.profile-image {
+	border-radius: 4.7rem;
+	margin-bottom: 1.2rem;
+}
+
+.profile-name {
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.5;
+	margin-bottom: 2rem;
+}
+
+.folder-name {
+	font-size: 40px;
+	font-weight: 600;
+	line-height: normal;
+}
+
+.folder-contents--wrapper {
+	padding: 4rem 19rem 10rem;
+	display: grid;
+	gap: 4rem;
+}
+
+.link-card-list--wrapper {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: 33.5rem;

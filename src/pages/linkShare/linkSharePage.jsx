@@ -4,7 +4,6 @@ import "./linkShare.css";
 import LinkCardComponent from "../../components/linkCard/linkCard.jsx";
 import { getSampleUserFolder, getSampleUserProfile } from "./linkShare.js";
 import HeaderComponent from "../../components/header/header.jsx";
-import LinkSearchBarComponent from "../../components/linkSearchBar/linkSearchBar.jsx";
 
 export default function LinkSharePage() {
 	const [folder, setFolder] = useState([]);
@@ -42,7 +41,6 @@ export default function LinkSharePage() {
 			</main>
 
 			<section className="folder-contents--wrapper">
-				<LinkSearchBarComponent />
 				<ul className="link-card-list--wrapper">
 					{folder?.links &&
 						folder?.links?.map((cardData) => {

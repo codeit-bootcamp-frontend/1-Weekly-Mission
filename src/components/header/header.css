@@ -1,0 +1,47 @@
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 9;
+	background-color: var(--linkbrary--color--gray5);
+}
+
+.header__nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 192rem;
+	height: 9.4rem;
+	margin: 0 auto;
+	padding: 0 20rem;
+}
+
+.header__home-button img {
+	width: 13.3rem;
+}
+
+.header__profile-button {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	cursor: default;
+}
+
+.profile-image {
+	border-radius: 50%;
+}
+
+.profile-email {
+	font-size: 1.4rem;
+	font-weight: 400;
+	line-height: normal;
+	color: var(--linkbrary--color--gray0);
+}
+
+.header__signin-button {
+	padding: 1.6rem 4.05rem;
+	border-radius: 0.8rem;
+	background: var(--linkbrary--gra--purpleblue);
+	font-size: 1.8rem;
+	color: var(--linkbrary--color--white);
+}
