@@ -7,6 +7,11 @@
   border-radius: 15px;
   overflow: hidden;
 }
+
+.card:hover {
+  border: 3px solid var(--color-primary);
+}
+
 .card-img-section {
   width: 340px;
   height: 200px;
@@ -14,13 +19,18 @@
   border-top-right-radius: 15px;
   overflow: hidden;
 }
+
 .no-card-list {
   height: 500px;
   padding: 5rem;
 }
+
 .sample-img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
 .sample-img:hover {
   transform: scale(1.5);
   transition: transform 0.3s;
