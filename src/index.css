@@ -1,13 +1,41 @@
-body {
+/* user agent stylesheet 초기화 */
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Pretendard";
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  --Primary: #6d6afe;
+  --Red: #ff5b56;
+  --Black: #111322;
+  --White: #fff;
+
+  --base-Gray1: 216, 100%, 97%;
+  --Gray1: hsl(var(--base-Gray1));
+  --Gray1-80: hsla(var(--base-Gray1), 80%);
+
+  --Gray2: #e7effb;
+  --Gray3: #ccd5e3;
+  --Gray4: #9fa6b2;
+  --Gray5: #3e3e43;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

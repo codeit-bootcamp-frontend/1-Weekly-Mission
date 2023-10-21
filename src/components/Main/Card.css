@@ -1,0 +1,38 @@
+:root {
+  --grey: #666666;
+}
+
+* {
+  font-family: Pretendard;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 34rem;
+  height: 34rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.card__imgbox {
+  height: 20.5rem;
+  margin: 0 auto;
+}
+
+.card__img {
+  width: 34rem;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+  gap: 1rem;
+}
+
+.timeDiff {
+  color: var(--grey);
+}
