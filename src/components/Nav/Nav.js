@@ -1,7 +1,28 @@
 import logoImg from "../../assets/images/logo.png";
-import Button from "../Button/Button.js";
 import "./Nav.css";
+import { getLoginInfo } from "../../utils/api";
+import { useState } from "react";
+
 const Nav = () => {
+  const [isLogin, setIsLogin] = useState(false);
+  const [userInfo, setUserInfo] = useState([]);
+
+  const handleLogin = async () => {
+    let result;
+    try {
+      result = await getLoginInfo();
+      if (result?.id) {
+        //Id 값이 있을 경우 로그인 된것으로 간주
+        setIsLogin(true);
+        setUserInfo(result);
+      }
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+    // const { email, name, profileImageSource } = result;
+  };
+
   return (
     <>
       <nav>
@@ -10,7 +31,21 @@ const Nav = () => {
             <img src={logoImg} alt="로고" />
           </a>
         </span>
-        <Button className="btn login">로그인</Button>
+        {!isLogin && (
+          <button className="btn login" onClick={handleLogin}>
+            로그인
+          </button>
+        )}
+        {isLogin && (
+          <div className="userProfile">
+            <img
+              className="userProfileImg"
+              src={userInfo.profileImageSource}
+              alt="프로필 사진"
+            ></img>
+            <span className="userProfileEmail">{userInfo.email}</span>
+          </div>
+        )}
       </nav>
     </>
   );
