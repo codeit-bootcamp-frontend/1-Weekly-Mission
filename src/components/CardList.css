@@ -1,6 +1,6 @@
 .CardList {
   display: grid;
-  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   gap: 2.5rem 2rem;
   place-items: center;
 }
@@ -22,4 +22,16 @@
 ul {
   list-style-type: none;
   padding-inline-start: 0;
+}
+
+@media screen and (max-width: 1124px) {
+  .CardList {
+    grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .CardList {
+    grid-template: repeat(9, 1fr) / 1fr;
+  }
 }

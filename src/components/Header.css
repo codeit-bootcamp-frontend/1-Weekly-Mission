@@ -32,3 +32,9 @@ nav {
   font-weight: 600;
   width: 12.8rem;
 }
+
+@media screen and (max-width: 1124px) {
+  nav {
+    padding: 0 3.2rem;
+  }
+}

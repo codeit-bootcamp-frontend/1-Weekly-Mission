@@ -1,9 +1,17 @@
 main {
-  margin-top: 4rem;
-  margin-bottom: 10rem;
-  margin-left: 19rem;
-  margin-right: 19rem;
+  margin: 4rem 19rem 10rem 19rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;
+}
+
+@media screen and (max-width: 1124px) {
+  main {
+    margin-left: 3.2rem;
+    margin-right: 3.2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
 }
