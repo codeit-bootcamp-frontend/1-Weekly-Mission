@@ -7,7 +7,7 @@ import { getAccount, getFolder } from "./config/apiurl";
 function App() {
   const [account, setAccount] = useState({});
   const [folderOwner, setFolderOwner] = useState({});
-  const [folderLinks, setFolderLinks] = useState([]);
+  const [folderLinks, setFolderLinks] = useState({});
   const [folderName, setFolderName] = useState("");
 
   const handleLoad = async () => {
