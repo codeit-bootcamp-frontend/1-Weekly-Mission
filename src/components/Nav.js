@@ -1,8 +1,8 @@
-import "../styles/header.css";
+import "../styles/nav.css";
 import "../styles/reset.css";
 import logoSvg from "../assets/logo.svg";
 
-function Header() {
+function Nav() {
   return (
     <nav className="nav">
       <div className="gnb">
@@ -19,4 +19,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Nav;
