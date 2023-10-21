@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SearchBar from "./components/SearchBar";
 import CardList from "./components/Card";
+
 import { getUser, getUserFolder } from "./api";
+import "./styles/app.css";
 
 function App() {
   // const [userName, setUserName] = useState("");
@@ -42,9 +45,14 @@ function App() {
         folderName={folderName}
         folderUserName={folderUserName}
       />
-      <div>
-        <CardList cardList={cardList} />
-      </div>
+      <section className="section">
+        <div className="search-section">
+          <SearchBar />
+        </div>
+        <div className="card-section">
+          <CardList cardList={cardList} />
+        </div>
+      </section>
       <Footer />
     </>
   );

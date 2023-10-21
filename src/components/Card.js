@@ -22,7 +22,7 @@ function CardList({ cardList }) {
     return <div className="no-card-list"> 저장된 카드가 없습니다.</div>;
   }
   return (
-    <div>
+    <>
       {cardList.map((card) => {
         return (
           <div key={card.id} className="card">
@@ -30,7 +30,7 @@ function CardList({ cardList }) {
           </div>
         );
       })}
-    </div>
+    </>
   );
 }
 

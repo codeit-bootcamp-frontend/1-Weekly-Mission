@@ -1,0 +1,19 @@
+.search-form {
+  width: 100%;
+  position: relative;
+}
+
+.search-bar {
+  padding: 1rem 4rem;
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #eeeeee;
+}
+
+.search-icon {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
