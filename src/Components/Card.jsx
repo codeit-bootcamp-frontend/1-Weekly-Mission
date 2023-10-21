@@ -7,11 +7,11 @@ function Card({ data }) {
   const timePassed = calculateTimePassed(createdAt);
   const createdDate = getDate(createdAt);
 
-  const reduceDescription = (description) => {
-    if (description.length > 100) {
-      return `${description.slice(0, 100)}...`;
+  const reduceText = (text, length) => {
+    if (text.length > length) {
+      return `${text.slice(0, length)}...`;
     } else {
-      return description;
+      return text;
     }
   };
 
@@ -26,8 +26,8 @@ function Card({ data }) {
       </div>
       <div className='card__text'>
         <p className='card__time-passed'>{timePassed}</p>
-        <p className='card__title'>{title}</p>
-        <p className='card__description'>{reduceDescription(description)}</p>
+        <p className='card__title'>{reduceText(title, 70)}</p>
+        <p className='card__description'>{reduceText(description, 100)}</p>
         <p className='card__date'>{createdDate}</p>
       </div>
     </a>

@@ -2,7 +2,7 @@ import Card from './Card';
 
 function CardList({ links = [] }) {
   return (
-    <ul>
+    <ul className='card-container'>
       {links.map((link) => (
         <li key={link.id}>
           <Card data={link} />
