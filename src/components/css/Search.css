@@ -1,8 +1,18 @@
 .search {
-  max-width: 1060px;
+  width: 1060px;
   height: 54px;
   margin: 40px auto;
   position: relative;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 1199px) and (min-width: 768px) {
+    width: 704px;
+  }
+
+  @media (max-width: 767px) {
+    width: 325px;
+  }
 }
 
 .search_icon {

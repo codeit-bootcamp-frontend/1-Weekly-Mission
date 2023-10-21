@@ -3,40 +3,48 @@
 }
 
 .Header_wrapper {
+  margin-top: 93px;
   padding: 20px 0 60px;
   background-color: #f0f6ff;
+
+  @media (max-width: 767px) {
+    padding: 10px 32px 40px;
+  }
 }
 
 .Header_container {
+  min-width: 170px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-.folder_owner_avatar {
-  position: relative;
-  width: 60px;
-  height: 60px;
 }
 
 .folder_owner {
   margin-top: 12px;
   font-size: 1.6rem;
   font-weight: 400;
+
+  @media (max-width: 767px) {
+    font-size: 1.4rem;
+  }
 }
 
 .folder_name {
   margin-top: 20px;
   font-size: 4rem;
   font-weight: 600;
+
+  @media (max-width: 767px) {
+    font-size: 3.2rem;
+  }
 }
 
 .avatar_img {
   width: 60px;
   height: 60px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 50%;
 }
 
 .avatar_bg {

@@ -14,8 +14,10 @@ function App() {
   const handleLoad = async () => {
     const nextAccount = await getAccount();
     setAccount(nextAccount);
-    const { folder } = await getFolder();
-    const { owner, links, name } = folder;
+    const folderResult = await getFolder();
+    const {
+      folder: { owner, links, name },
+    } = folderResult;
     setFolderOwner(owner);
     setFolderLinks(links);
     setFolderName(name);

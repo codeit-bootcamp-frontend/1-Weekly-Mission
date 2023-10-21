@@ -6,16 +6,26 @@ import instagramIcon from "../../Assets/instagramIcon.svg";
 import "../css/Footer.css";
 
 const urlList = {
-  facebook: "https://www.facebook.com/",
-  twitter: "https://twitter.com/?lang=ko",
-  youtube: "https://www.youtube.com/",
-  instagram: "https://www.instagram.com/",
+  facebook: { url: "https://www.facebook.com/", icon: facebookIcon },
+  twitter: { url: "https://twitter.com/?lang=ko", icon: twitterIcon },
+  youtube: { url: "https://www.youtube.com/", icon: youtubeIcon },
+  instagram: { url: "https://www.instagram.com/", icon: instagramIcon },
 };
 
+function Icon({ name, onClick }) {
+  const { url } = urlList[name];
+  const { icon } = urlList[name];
+
+  const handleClick = () => onClick(url);
+
+  return (
+    <img src={icon} className="icon" alt={name} onClick={handleClick}></img>
+  );
+}
+
 function Footer() {
-  const handleIconClick = (e) => {
-    const nextUrl = e.target.name;
-    window.open(urlList[nextUrl]);
+  const handleIconClick = (url) => {
+    window.open(url);
   };
 
   return (
@@ -31,34 +41,10 @@ function Footer() {
           </Link>
         </div>
         <div className="Footer_icons">
-          <img
-            className="icon"
-            src={facebookIcon}
-            alt={facebookIcon}
-            name="facebook"
-            onClick={handleIconClick}
-          ></img>
-          <img
-            className="icon"
-            src={twitterIcon}
-            alt={twitterIcon}
-            name="twitter"
-            onClick={handleIconClick}
-          ></img>
-          <img
-            className="icon"
-            src={youtubeIcon}
-            alt={youtubeIcon}
-            name="youtube"
-            onClick={handleIconClick}
-          ></img>
-          <img
-            className="icon"
-            src={instagramIcon}
-            alt={instagramIcon}
-            name="instagram"
-            onClick={handleIconClick}
-          ></img>
+          <Icon name="facebook" onClick={handleIconClick} />
+          <Icon name="twitter" onClick={handleIconClick} />
+          <Icon name="youtube" onClick={handleIconClick} />
+          <Icon name="instagram" onClick={handleIconClick} />
         </div>
       </div>
     </div>

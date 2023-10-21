@@ -11,9 +11,7 @@ function Header({ account, owner, folderName }) {
       <Nav className="Header_Nav" account={account} />
       <div className="Header_wrapper">
         <div className="Header_container">
-          <div className="folder_owner_avatar">
-            <img className="avatar_img" src={avatarImg} alt="avatar"></img>
-          </div>
+          <img className="avatar_img" src={avatarImg} alt="avatar"></img>
           <span className="folder_owner">{`@${ownerName}`}</span>
           <span className="folder_name">{folderName}</span>
         </div>
