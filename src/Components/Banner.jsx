@@ -1,11 +1,12 @@
 function Banner({ info }) {
-  const { name, owner } = info;
+  const { name: folderName, owner } = info;
+  const { name: ownerName, profileImageSource } = owner;
   return (
-    <header>
-      <img src={owner.profileImageSource} />
-      <div>{`@${owner.name}`}</div>
-      <h1>{name}</h1>
-    </header>
+    <div>
+      <img src={profileImageSource} alt='폴더 유저 프로필 이미지' />
+      <div>{`@${ownerName}`}</div>
+      <h1>{folderName}</h1>
+    </div>
   );
 }
 

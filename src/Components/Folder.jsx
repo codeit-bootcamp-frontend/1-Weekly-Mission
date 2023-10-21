@@ -3,9 +3,17 @@ import { fetchFolder } from '../api/fetchAPI';
 import Banner from './Banner';
 import CardList from './CardList';
 
+const INITIAL_FOLDERINFO = {
+  name: '',
+  owner: {
+    name: '',
+    profileImageSource: '',
+  },
+};
+
 function Folder() {
-  const [links, setLinks] = useState();
-  const [folderInfo, setFolderInfo] = useState();
+  const [links, setLinks] = useState([]);
+  const [folderInfo, setFolderInfo] = useState(INITIAL_FOLDERINFO);
 
   const getFolder = useCallback(async () => {
     const { folder } = await fetchFolder();

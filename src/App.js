@@ -1,7 +1,13 @@
 import Folder from './Components/Folder';
 
+import './styles/reset.scss';
+
 function App() {
-  return <Folder />;
+  return (
+    <>
+      <Folder />
+    </>
+  );
 }
 
 export default App;
