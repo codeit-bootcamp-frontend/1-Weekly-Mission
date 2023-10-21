@@ -9,6 +9,30 @@ main {
     gap: 3.2rem;
 }
 
+/* 검색 바 */
+.search-form {
+    display: flex;
+    width: 34rem;
+    padding: 0 1.6rem;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    gap: 0.6rem;
+}
+
+.search-bar {
+    display: flex;
+    width: 100%;
+    padding: 1.3rem 1.6rem;
+    align-items: flex-start;
+    background-color: #f5f5f5;
+    border: 0;
+}
+
+.search-bar:focus::placeholder {
+    color: transparent;
+}
+
 /* 카드리스트 */
 .card-list {
     display: grid;
