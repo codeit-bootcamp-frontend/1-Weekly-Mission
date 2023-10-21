@@ -1,0 +1,46 @@
+footer {
+  margin-top: 12rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 16rem;
+  width: 100%;
+  padding: 3.2rem 10.4rem 6.4rem 10.4rem;
+  flex-shrink: 0;
+  background: var(--black);
+  position: relative;
+  align-self: stretch;
+  flex: 0 1 192rem;
+}
+
+footer {
+  font-family: Arial;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+#footer-codeit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4rem;
+  color: #676767;
+  text-align: center;
+}
+
+footer .info {
+  display: flex;
+  width: 18.1111rem;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+footer .info a {
+  color: #cfcfcf;
+}
+
+footer .website {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}

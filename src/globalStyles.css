@@ -29,6 +29,10 @@ body {
   font-family: Pretendard;
   font-style: normal;
   margin: 0;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 p {
