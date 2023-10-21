@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
-import Card from "./Card";
+import CardList from "./CardList";
 import Search from "./Search";
 import { getAccount, getFolder } from "../../Api";
 
 function App() {
   const [account, setAccount] = useState({});
   const [folderOwner, setFolderOwner] = useState({});
-  const [folderlinks, setFolderLinks] = useState({});
+  const [folderLinks, setFolderLinks] = useState({});
   const [folderName, setFolderName] = useState("");
 
   const handleLoad = async () => {
@@ -32,7 +32,7 @@ function App() {
       <Header account={account} owner={folderOwner} folderName={folderName} />
       <div>
         <Search />
-        <Card />
+        <CardList folderLinks={folderLinks} />
       </div>
       <Footer />
     </div>
