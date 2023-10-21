@@ -1,12 +1,15 @@
 import "../styles/card.css";
-
+import noImage from "../assets/no-img-card.svg";
 function Card(card) {
-  console.log(card);
   const { createdAt, url, title, description, imageSource } = card.card;
   return (
     <a href={url} className="card-link">
       <div className="card-img-section">
-        <img src={imageSource} alt={title} className="sample-img" />
+        <img
+          src={imageSource ? imageSource : noImage}
+          alt={title}
+          className="sample-img"
+        />
       </div>
       <div className="card-text-section">
         <p className="time-stamp">{createdAt}</p>
