@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { getResponse } from "./api.js";
 import Header from "./components/Header.js";
 import FolderInfo from "./components/FolderInfo.js";
-import Content from "./components/Content.js";
+import SearchBar from "./components/SearchBar.js";
+import CardList from "./components/CardList.js";
 import './styles/app.css';
 
 function App() {
@@ -39,7 +40,12 @@ function App() {
     <>
       <div className = "header"><Header user = {user}/></div>
       <div className = "folder_info"><FolderInfo folderData = {folder}/></div>
-      <div className = "content"><Content links = {links} /></div>
+      <div className = "content">
+        <div className = "content_container">
+            <SearchBar />
+            <CardList links = {links} />
+        </div>
+      </div>
     </>
   );
 }

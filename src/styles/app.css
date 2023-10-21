@@ -33,6 +33,10 @@
 .content{
     margin : 40px 0px;
 }
+.content_container{
+    width : 1060px;
+    margin : 0 auto;
+}
 
 /* Tablet */
 @media (max-width : 1199px){
@@ -42,6 +46,10 @@
     .blue_btn{
         padding : 16px 20px;
         font-size : 1.8rem;
+    }
+    .content_container{
+        width : 100%;
+        padding : 0px 32px;
     }
 }
 
