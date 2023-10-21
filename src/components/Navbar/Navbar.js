@@ -12,10 +12,6 @@ const Logo = ({ link = "/", className, src, alt, height }) => {
   );
 };
 
-const TopFrame = () => {
-  return <></>;
-};
-
 const Profile = ({ imgUrl, email, name, id }) => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
@@ -74,7 +70,6 @@ const Navbar = () => {
           />
         )}
       </div>
-      <TopFrame />
     </nav>
   );
 };

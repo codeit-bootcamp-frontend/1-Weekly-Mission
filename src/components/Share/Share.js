@@ -5,7 +5,7 @@ import { fetchGet } from "../../apis/api";
 
 import "./Share.css";
 
-const Owner = ({ name, id, owenrId, ownerName, ownerImageSrc }) => {
+const Owner = ({ name, id, ownerId, ownerName, ownerImageSrc }) => {
   return (
     <div className="owner-container">
       <div className="owner-inner-container">
@@ -35,7 +35,6 @@ const Share = () => {
       const { folder } = result;
       setCards(folder.links); // Card data들
 
-      console.log("FOLDER", folder);
       setOwner((prevState) => ({
         ...prevState,
         name: folder.name,

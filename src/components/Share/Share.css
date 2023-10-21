@@ -1,12 +1,11 @@
 .owner-container {
   display: flex;
   width: 100%;
-  /* padding: 20px 624px 60px 624px; */
+  padding: 2rem 0 6rem;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   background: var(--linkbrary-bg, #f0f6ff);
-  padding: 0 20rem;
 }
 
 .owner-inner-container {
@@ -28,7 +27,6 @@
 .owner-firstname {
   color: var(--text-color-light-mode, #000);
 
-  /* Linkbrary/body1-regular */
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -41,7 +39,6 @@
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
 
-  /* Linkbrary/h1-semibold */
   font-family: Pretendard;
   font-size: 40px;
   font-style: normal;
@@ -63,12 +60,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  /* justify-content: center; */
-  /* column-gap: 15.7rem; */
-  /* row-gap: 1rem; */
-  /* width: 100%; */
-  /* height: 100%; */
-  /* padding: 50px 0; */
 }
 
 /* Tablet */

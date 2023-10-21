@@ -1,26 +1,24 @@
+import moment from "moment/moment";
+
 const cardCreatedAtConvert = (value) => {
-  const today = new Date();
-  const timeValue = new Date(value);
+  const today = moment();
+  const createdDate = moment(value);
 
-  const betweenTime = Math.floor(
-    (today.getTime() - timeValue.getTime()) / 1000 / 60
-  );
-  if (betweenTime < 1) return "방금전";
-  if (betweenTime < 60) {
-    return `${betweenTime}분전`;
-  }
+  const minute = today.diff(createdDate, "minutes");
+  const hour = today.diff(createdDate, "hours");
+  const day = today.diff(createdDate, "days");
+  const month = today.diff(createdDate, "months");
 
-  const betweenTimeHour = Math.floor(betweenTime / 60);
-  if (betweenTimeHour < 24) {
-    return `${betweenTimeHour}시간전`;
-  }
-
-  const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-  if (betweenTimeDay < 365) {
-    return `${betweenTimeDay}일전`;
-  }
-
-  return `${Math.floor(betweenTimeDay / 365)}년전`;
+  if (minute < 2) return "1 minute ago";
+  else if (minute <= 59) return `${minute} minutes ago`;
+  else if (minute >= 60 && minute < 120) return "1 hour ago";
+  else if (hour <= 23) return `${hour} hours ago`;
+  else if (hour >= 24 && hour < 48) return "1 day ago";
+  else if (day <= 30) return `${day} days ago`;
+  else if (day >= 31 && day < 62) return "1 month ago";
+  else if (month <= 11) return `${month} months ago`;
+  else if (month >= 12 && month < 24) return "1 year ago";
+  else return `${Math.floor(month / 12)} years ago`;
 };
 
-export default cardCreatedAtConvert;
+export { cardCreatedAtConvert };
