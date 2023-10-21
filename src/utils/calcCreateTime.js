@@ -1,11 +1,11 @@
 export default function calcCreateTime(createdAt) {
   const currentDate = new Date();
   const timeDifference = currentDate - createdAt;
-  const minutesDifference = Math.floor(timeDifference / (1000 * 60)); // 분 단위
-  const hoursDifference = Math.floor(minutesDifference / 60); // 시간 단위
-  const daysDifference = Math.floor(hoursDifference / 24); // 일 단위
-  const monthsDifference = Math.floor(daysDifference / 30); // 월 단위
-  const yearsDifference = Math.floor(monthsDifference / 12); // 년 단위
+  const minutesDifference = Math.floor(timeDifference / (1000 * 60));
+  const hoursDifference = Math.floor(minutesDifference / 60);
+  const daysDifference = Math.floor(hoursDifference / 24);
+  const monthsDifference = Math.floor(daysDifference / 30);
+  const yearsDifference = Math.floor(monthsDifference / 12);
 
   if (minutesDifference < 2) {
     return '1 minute ago';
