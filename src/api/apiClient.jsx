@@ -10,3 +10,8 @@ export async function getFolder() {
   const data = await requestAPI('folder');
   return data;
 }
+
+export async function getUser() {
+  const data = await requestAPI('user');
+  return data;
+}

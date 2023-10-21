@@ -1,0 +1,21 @@
+@use '../utils' as *;
+
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.6rem;
+
+  border-radius: 0.8rem;
+  background: $linkbrary-grad;
+  font-size: 1.4rem;
+
+  font-weight: 600;
+  color: $grey-light;
+
+  @include pc {
+    padding: 1.6rem 2rem;
+    font-size: 1.8rem;
+  }
+}

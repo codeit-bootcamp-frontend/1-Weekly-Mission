@@ -1,0 +1,73 @@
+@use '../utils' as *;
+
+.gnb {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: $linkbrary-bg;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1.3rem 3.2rem;
+    width: 100%;
+    max-width: 80rem;
+
+    @include tablet {
+      padding-left: 3.2rem;
+      padding-right: 3.2rem;
+      max-width: 80rem;
+    }
+
+    @include pc {
+      padding: 2rem 20rem;
+      max-width: 192rem;
+    }
+  }
+
+  &__logo {
+    margin-right: 0.5rem;
+  }
+
+  &__signin {
+    width: 8rem;
+    margin-left: 0.5rem;
+
+    @include pc {
+      width: 12.8rem;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.7rem;
+    width: 8rem;
+    margin-left: 0.5rem;
+  }
+
+  &__profile-img {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+  }
+
+  &__profile-email {
+    display: none;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: $linkbrary-gray-100;
+
+    @include tablet {
+      display: block;
+    }
+
+    @include pc {
+      display: block;
+    }
+  }
+}
