@@ -23,6 +23,12 @@ nav {
         height: 9.4rem;
         max-width: 86.3rem;
     }
+
+    @media (min-width: 1024px) {
+        height: 9.4rem;
+        max-width: 192rem;
+        padding: 0 20rem;
+    }
 }
 
 .logo {
