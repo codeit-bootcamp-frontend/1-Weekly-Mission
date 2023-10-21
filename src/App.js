@@ -1,6 +1,6 @@
 import Folder from './Components/Folder';
 
-import './styles/reset.scss';
+import './scss/main.scss';
 
 function App() {
   return (
