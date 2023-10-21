@@ -7,7 +7,7 @@ import { getAccount, getFolder } from "./config/apiurl";
 function App() {
   const [account, setAccount] = useState({});
   const [folderOwner, setFolderOwner] = useState({});
-  const [folderLinks, setFolderLinks] = useState({});
+  const [folderLinks, setFolderLinks] = useState([]);
   const [folderName, setFolderName] = useState("");
 
   const handleLoad = async () => {
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header account={account} owner={folderOwner} folderName={folderName} />
+      <Header account={account} />
       <Main
         folderLinks={folderLinks}
         owner={folderOwner}
