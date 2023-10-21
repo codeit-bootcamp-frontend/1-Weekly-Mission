@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import "./linkShare.css";
+import "./linkSharePage.css";
 import LinkCardComponent from "../../components/linkCard/linkCard.jsx";
-import { getSampleUserFolder, getSampleUserProfile } from "./linkShare.js";
+import { getSampleUserFolder, getSampleUserProfile } from "./linkSharePage.js";
 import HeaderComponent from "../../components/header/header.jsx";
 
 export default function LinkSharePage() {
