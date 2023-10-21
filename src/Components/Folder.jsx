@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { fetchFolder } from '../api/fetchAPI';
+import { getFolder } from '../api/apiClient';
 import Banner from './Banner';
 import CardList from './CardList';
 
@@ -15,8 +15,8 @@ function Folder() {
   const [links, setLinks] = useState([]);
   const [folderInfo, setFolderInfo] = useState(INITIAL_FOLDERINFO);
 
-  const getFolder = useCallback(async () => {
-    const { folder } = await fetchFolder();
+  const loadFolder = useCallback(async () => {
+    const { folder } = await getFolder();
     const { name, owner, links: linksData } = folder;
     const folderInfoData = { name, owner };
     setFolderInfo(folderInfoData);
@@ -24,8 +24,8 @@ function Folder() {
   }, []);
 
   useEffect(() => {
-    getFolder();
-  }, [getFolder]);
+    loadFolder();
+  }, [loadFolder]);
 
   return (
     <main>

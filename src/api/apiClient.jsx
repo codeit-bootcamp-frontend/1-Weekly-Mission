@@ -1,4 +1,4 @@
-async function fetchAPI(url) {
+async function requestAPI(url) {
   const response = await fetch(
     `https://bootcamp-api.codeit.kr/api/sample/${url}`
   );
@@ -6,7 +6,7 @@ async function fetchAPI(url) {
   return result;
 }
 
-export async function fetchFolder() {
-  const data = await fetchAPI('folder');
+export async function getFolder() {
+  const data = await requestAPI('folder');
   return data;
 }
