@@ -7,7 +7,7 @@ import "./card.css";
 
 const Card = () => {
   return (
-    <div className="content_wrapper">
+    <div className="card_block">
       <div className="image_area">
         <CardImage src={catImg} />
       </div>

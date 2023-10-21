@@ -1,0 +1,37 @@
+@import "../common.css";
+
+footer {
+  background-color: #111322;
+  width: 100%;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 192rem;
+  height: 16rem;
+  padding: 3.2rem 10.4rem;
+}
+
+.copyright {
+  color: #676767;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.footer_links {
+  display: flex;
+  column-gap: 3rem;
+}
+
+.footer_links > a {
+  color: #cfcfcf;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.footer_sns {
+  display: flex;
+  column-gap: 1.2rem;
+  height: 2rem;
+}

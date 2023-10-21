@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import Card from "./card/card";
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Card></Card>);
+root.render(<App />);

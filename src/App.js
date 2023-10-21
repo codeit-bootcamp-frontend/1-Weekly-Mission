@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Nav from "./nav/Nav";
+import Header from "./header/Header";
+import Main from "./main/Main";
+import Footer from "./footer/Footer";
 
-function App() {
+const App = () => {
+  // const user_name = "@코드잇";
+  // const folder_name = "⭐️ 즐겨찾기";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav />
+      {/* <Header>{[user_name, folder_name]}</Header> */}
+      <Header />
+      <Main />
+      <Footer />
+    </>
   );
-}
+};
 
 export default App;

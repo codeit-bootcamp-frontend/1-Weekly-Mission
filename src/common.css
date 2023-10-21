@@ -1,0 +1,36 @@
+/* 초기화 코드 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Pretendard";
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* 색상 코드 */
+:root {
+  --primary-color: #6d6afe;
+  --linkbrary-red: #ff5b56;
+  --linkbrary-black: #111322;
+  --linkbrary-white: #ffffff;
+
+  --linkbrary-gray-1: #3e3e43;
+  --linkbrary-gray-2: #9fa6b2;
+  --linkbrary-gray-3: #ccd5e3;
+  --linkbrary-gray-4: #e7effb;
+
+  --background-color: #f0f6ff;
+}

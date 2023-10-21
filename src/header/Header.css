@@ -1,0 +1,51 @@
+@import "../common.css";
+
+header {
+  width: 100%;
+
+  background: var(--background-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.header_wrapper {
+  padding: 2rem 62.4rem 6rem 62.4rem;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  /* 즐겨찾기 문자 가로정렬 위해.. 왜이러지 */
+  width: 20rem;
+}
+
+.user_profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.user_name {
+  color: var(--linkbrary-black);
+
+  /* Linkbrary/body1-regular */
+  font-size: 1.6rem;
+  line-height: 2.4rem; /* 150% */
+}
+
+.folder_name {
+  color: var(--linkbrary-black);
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+
+  /* Linkbrary/h1-semibold */
+  font-size: 4rem;
+  font-weight: 6rem;
+}

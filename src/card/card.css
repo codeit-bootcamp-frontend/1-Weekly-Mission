@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-.content_wrapper {
+.card_block {
   width: 340px;
   height: 334px;
   flex-shrink: 0;
@@ -19,6 +19,8 @@
   position: relative;
   border-radius: 15px 15px 0 0;
   overflow: hidden;
+
+  background: #dddfff;
 }
 /* 
 .card_img {
