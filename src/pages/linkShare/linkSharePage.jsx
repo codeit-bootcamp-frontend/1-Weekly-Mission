@@ -5,6 +5,7 @@ import LinkCardComponent from "../../components/linkCard/linkCard.jsx";
 import { getSampleUserFolder, getSampleUserProfile } from "./linkSharePage.js";
 import HeaderComponent from "../../components/header/header.jsx";
 import LinkSearchBarComponent from "../../components/linkSearchBar/linkSearchBar";
+import FooterComponent from "../../components/footer/footer";
 
 export default function LinkSharePage() {
 	const [folder, setFolder] = useState([]);
@@ -56,6 +57,8 @@ export default function LinkSharePage() {
 						})}
 				</ul>
 			</section>
+
+			<FooterComponent />
 		</div>
 	);
 }

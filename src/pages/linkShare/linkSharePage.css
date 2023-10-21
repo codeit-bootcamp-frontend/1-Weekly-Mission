@@ -1,4 +1,4 @@
-/* link-share */
+/* PC */
 .page--container {
 	padding-top: 9.4rem;
 }
@@ -40,4 +40,24 @@
 	grid-template-rows: 33.5rem;
 	gap: 2rem 2.5rem;
 	width: 100%;
+}
+
+/* TABLET */
+@media screen and (max-width: 1199px) {
+	.folder-contents--wrapper {
+		padding: 4rem 3.25rem 10rem;
+		display: grid;
+		gap: 4rem;
+	}
+
+	.link-card-list--wrapper {
+		gap: 2.4rem 2.5rem;
+	}
+}
+
+/* MOBILE */
+@media screen and (max-width: 767px) {
+	.page--container {
+		padding-top: 6.3rem;
+	}
 }
