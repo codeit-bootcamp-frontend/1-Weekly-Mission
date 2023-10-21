@@ -1,5 +1,7 @@
+import CardList from './Components/CardList';
+
 function App() {
-  return;
+  return <CardList />;
 }
 
 export default App;
