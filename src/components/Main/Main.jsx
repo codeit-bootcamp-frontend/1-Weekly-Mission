@@ -1,6 +1,6 @@
-import CardList from "../CardList/CardList";
+import CardList from "components/CardList/CardList";
 import './Main.css';
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "components/SearchBar/SearchBar";
 
 function Main() {
   return (

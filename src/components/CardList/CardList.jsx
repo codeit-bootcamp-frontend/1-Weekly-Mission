@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Card from "../Card/Card";
-import { getFolder } from "../../api";
+import Card from "components/Card/Card";
+import { getFolder } from "api";
 import "./CardList.css";
 
 export default function CardList() {

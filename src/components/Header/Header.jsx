@@ -1,8 +1,8 @@
-import linkbraryLogo from "../../images/logo.svg";
+import linkbraryLogo from "images/logo.svg";
 import { useEffect, useState } from "react";
-import FolderInfo from "../FolderInfo/FolderInfo";
-import Profile from "../Profile/Profile";
-import { getFolder, getProfile } from "../../api";
+import FolderInfo from "components/FolderInfo/FolderInfo";
+import Profile from "components/Profile/Profile";
+import { getFolder, getProfile } from "api";
 import "./Header.css";
 
 function Header() {

@@ -1,8 +1,8 @@
-import Header from "./Header/Header";
-import Main from "./Main/Main";
-import Footer from "./Footer/Footer";
-import '../styles/reset.css';
-import '../styles/color.css';
+import Header from "components/Header/Header";
+import Main from "components/Main/Main";
+import Footer from "components/Footer/Footer";
+import 'styles/reset.css';
+import 'styles/color.css';
 
 function App() {
   return (
