@@ -1,6 +1,10 @@
 main {
+  width: 106rem;
   margin-top: 4rem;
   margin-bottom: 10rem;
   margin-left: 19rem;
   margin-right: 19rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
