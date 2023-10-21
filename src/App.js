@@ -6,8 +6,9 @@ import facebookIcon from "assets/akar-icons_facebook-fill.svg";
 import twitterIcon from "assets/akar-icons_twitter-fill.svg";
 import youtubeIcon from "assets/akar-icons_youtube-fill.svg";
 import instagramIcon from "assets/ant-design_instagram-filled.svg";
-import { getUser } from "api/api";
 import { useEffect, useState } from "react";
+import { getUser } from "api/api";
+import CardList from "components/units/CardList";
 
 function App() {
   const [user, setUser] = useState();
@@ -50,6 +51,9 @@ function App() {
         </section>
         <section>
           <div className="contents"></div>
+          <div>
+            <CardList />
+          </div>
         </section>
       </main>
       <footer className="contact">
