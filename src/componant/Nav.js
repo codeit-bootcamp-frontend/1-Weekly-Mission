@@ -5,10 +5,15 @@ import './Nav.css';
 
 function Nav() {
   const navLogo = 'nav__logo';
+  const navProfile = ['nav__profile', 'nav__profileImage', 'nav__UserProfile'];
   return (
     <nav className="nav">
       <NavLogo className={navLogo} />
-      {false ? <NavProfile /> : <NavBtn className={NavBtn}>로그인</NavBtn>}
+      {true ? (
+        <NavProfile className={navProfile} />
+      ) : (
+        <NavBtn className={NavBtn}>로그인</NavBtn>
+      )}
     </nav>
   );
 }

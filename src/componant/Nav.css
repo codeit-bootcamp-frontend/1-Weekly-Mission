@@ -20,6 +20,22 @@
   width: 12.8rem;
 }
 
+.nav__profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+.nav__profileImage {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 3rem;
+  overflow: hidden;
+}
+.nav__UserProfile {
+  font-size: 1.4rem;
+}
+
 @media (max-width: 1199px) {
   .nav {
     padding: 2rem 3.2rem;
@@ -45,5 +61,8 @@
 
   .nav__btn {
     width: 8rem;
+  }
+  .nav__UserProfile {
+    display: none;
   }
 }

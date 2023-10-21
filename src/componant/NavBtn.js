@@ -1,4 +1,4 @@
-import '../componant.css';
+import '../styles/componant.css';
 import './Nav.css';
 
 function NavBtn({ children }) {
