@@ -8,6 +8,7 @@ import Header from './components/header/Header';
 export default function App() {
   const [userProfile, setUserProfile] = useState({});
   const [folderInfo, setFolderInfo] = useState(null);
+  const [links, setLinks] = useState([]);
 
   const handleFetchUser = async () => {
     const response = await getSampleUser();
@@ -24,6 +25,8 @@ export default function App() {
   useEffect(async () => {
     const response = await getSampleFolder();
     setFolderInfo(response);
+    const link = response.folder.links;
+    setLinks((prevItems) => [...prevItems, ...link]);
   }, []);
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function App() {
     <div>
       <Nav userProfile={userProfile} />
       <Header folderInfo={folderInfo} />
-      <SharedPage />
+      <SharedPage links={links} />
       <Footer />
     </div>
   );
