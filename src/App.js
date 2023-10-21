@@ -1,8 +1,6 @@
 import "./App.css";
 import LinkSharePage from "./pages/linkShare/linkShare.jsx";
 
-function App() {
+export default function App() {
 	return <LinkSharePage />;
 }
-
-export default App;
