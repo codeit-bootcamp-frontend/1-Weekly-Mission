@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./Card/Card";
+import Searchbar from "./Searchbar/Searchbar";
 
 const Share = () => {
   const [cards, setCards] = useState([]);
@@ -22,6 +23,7 @@ const Share = () => {
   }, []);
   return (
     <>
+      <Searchbar />
       <div>{/* 상위 정보들 넣기*/}</div>
       {cards &&
         cards.map((card) => (
