@@ -31,6 +31,18 @@
   cursor: pointer;
 }
 
+.header__navbar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.navbar__userImage {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+}
+
 /* Hero */
 .hero {
   text-align: center;

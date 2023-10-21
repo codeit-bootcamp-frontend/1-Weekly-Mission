@@ -6,15 +6,35 @@ import facebookIcon from "assets/akar-icons_facebook-fill.svg";
 import twitterIcon from "assets/akar-icons_twitter-fill.svg";
 import youtubeIcon from "assets/akar-icons_youtube-fill.svg";
 import instagramIcon from "assets/ant-design_instagram-filled.svg";
+import { getUser } from "api/api";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  const getUserData = async () => {
+    const data = await getUser();
+    setUser(data);
+  };
+
   return (
     <div>
       <header className="header">
         <div className="header__container max-container">
-          <img src={logo} alt="logo-image" className="header__logo" />
+          <img src={logo} alt="logo" className="header__logo" />
           <nav>
-            <button className="header__login__btn">로그인</button>
+            {user ? (
+              <div className="header__navbar">
+                <img src={user.profileImageSource} className="navbar__userImage" />
+                <span className="navbar__userEmail">{user.email}</span>
+              </div>
+            ) : (
+              <button className="header__login__btn">로그인</button>
+            )}
           </nav>
         </div>
       </header>
