@@ -1,0 +1,63 @@
+/* header */
+
+.header {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  padding: 33px 200px;
+
+  background: var(--linkbrary-bg, #f0f6ff);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 164px;
+
+  padding: 20px 0;
+  background: var(--linkbrary-bg, #f0f6ff);
+}
+
+.codeit {
+  width: 28px;
+  height: 28px;
+
+  margin-bottom: 12px;
+}
+
+.userName {
+  font-family: Pretendard;
+  font-size: 16px;
+  line-height: 24px; /* 150% */
+
+  margin-bottom: 20px;
+}
+
+.folderName {
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+/* footer */
+.footer {
+  width: 100%;
+  height: 160px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 32px 104px 64px;
+
+  color: #676767;
+  background: #111322;
+}
+
+.icons a {
+  margin-left: 12px;
+}
