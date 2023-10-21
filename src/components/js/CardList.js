@@ -1,6 +1,5 @@
 import "../css/Card.css";
 import logoImg from "../../Assets/noImgLogo.svg";
-import { Link } from "react-router-dom";
 
 /* 게시물 올린 시간 함수 */
 function getTimeDiff(value) {
@@ -43,19 +42,13 @@ function CardItem({ item, key }) {
   /* 이미지 스타일 함수 */
   const imgStyle = {
     backgroundImage: `URL(${item.imageSource})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-    width: `100%`,
-    borderTopLeftRadius: "15px",
-    borderTopRightRadius: "15px",
   };
 
   const nowDate = getTimeDiff(new Date(item.createdAt));
   const createdDate = item.createdAt.split("T")[0].split("-");
 
   return (
-    <Link to={item.url}>
+    <a href={item.url}>
       <div key={key} className="card">
         <div className="card-img-wrap">
           {!item.imageSource ? (
@@ -70,7 +63,7 @@ function CardItem({ item, key }) {
           <div className="day">{createdDate.join(".")}</div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
 
@@ -80,9 +73,10 @@ function CardList({ folderLinks }) {
   return (
     <div className="section-title section-title-third">
       <div className="section-title-third-inner">
-        {folderLinks.map((item) => {
-          return <CardItem key={item.id} item={item} />;
-        })}
+        {folderLinks &&
+          folderLinks.map((item) => {
+            return <CardItem key={item.id} item={item} />;
+          })}
       </div>
     </div>
   );

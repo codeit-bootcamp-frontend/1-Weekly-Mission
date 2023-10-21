@@ -1,17 +1,12 @@
-
-
 .Header_wrapper {
+  min-width: 375px;
   margin-top: 93px;
   padding: 20px 0 60px;
   background-color: #f0f6ff;
-
-  /* @media (max-width: 767px) {
-    padding: 10px 32px 40px;
-  } */
 }
 
 .Header_container {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,4 +44,10 @@
   height: 60px;
   border-radius: 50%;
   background-color: #8f00ff;
+}
+
+@media screen and (max-width: 767px) {
+  .Header_wrapper {
+    padding: 10px 0 40px;
+  }
 }

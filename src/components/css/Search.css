@@ -5,7 +5,6 @@
   position: relative;
   display: flex;
   justify-content: center;
-
 }
 
 .search_icon {
@@ -30,9 +29,8 @@
   outline: none;
 }
 
-
 @media (max-width: 1199px) and (min-width: 768px) {
-  .search { 
+  .search {
     width: 704px;
   }
 }

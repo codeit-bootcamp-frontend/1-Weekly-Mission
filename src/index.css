@@ -1,16 +1,15 @@
 @import "./reset.css";
 
 html {
+  min-width: 410px;
   font-size: 62.5%;
 }
 
 body {
   box-sizing: border-box;
   margin: 0;
-  font-family:
-    Pretendard, Roboto, "Noto Sans KR", "Segoe UI",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
+  font-family: Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   word-break: keep-all;
   word-wrap: break;
   overflow-x: hidden;

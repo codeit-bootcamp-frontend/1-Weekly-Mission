@@ -13,8 +13,7 @@ const urlList = {
 };
 
 function Icon({ name, onClick }) {
-  const { url } = urlList[name];
-  const { icon } = urlList[name];
+  const { url, icon } = urlList[name];
 
   const handleClick = () => onClick(url);
 
