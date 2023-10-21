@@ -1,0 +1,31 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.search {
+  display: flex;
+  width: 106rem;
+  padding: 1.5rem 1.6rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 1rem;
+  background: #F5F5F5;
+  border: 0;
+}
+
+.search:focus {
+  border: 0.1rem solid var(--primary);
+  outline: none;
+}
+
+content {
+  display: grid;
+  gap: 2.5rem 2rem;
+  grid-template-columns: 34rem 34rem 34rem;
+  grid-template-rows: 33.4rem 33.4rem 33.4rem;
+}

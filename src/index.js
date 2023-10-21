@@ -1,13 +1,7 @@
 import ReactDOM from 'react-dom/client';
-import Card from './components/Card/Card';
-import Nav from './components/Nav/Nav';
-import Footer from './components/Footer/Footer';
+import App from './components/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <>
-    <Nav />
-    <Card />
-    <Footer />
-  </>
+  <App />
 );

@@ -1,26 +1,52 @@
-import cardImg from './card_img.svg';
-import ImgArea from './ImgArea';
+
 import CardTextContent from './CardTextContent';
 import CardExtraInfo from './CardExtraInfo';
 import '../../globalStyles.css'
 import './Card.css';
+import starIcon from './star.svg';
+import EmptyCardImg from './Card_img.svg'
 
-const Card = () => {
-  const text = "Lorem ipsum dolor sit met consectetur. Me too met habitant nun cons.";
-  const date = "2023. 3. 15";
-  const uploadTime = "10 minutes ago";
+const Cards = ( { folderCards } ) => {
+  return (
+    <>
+      {folderCards.map((item) => {
+        return (
+          <div key={item.id}>
+            <Card item={item} />
+          </div>
+        );
+      })}
+    </>
+  )
+}
+
+const formatDate = (createdAt) => {
+  const date = new Date(createdAt);
+  const formattedDate = `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
+  return formattedDate;
+};
+
+const Card = ( { item } ) => {
+
+  const {createdAt, url, description, imageSource} = item;
+  const uploadDate = formatDate(createdAt)
 
   return (
-    <div className="card">
+    <a className="card" href={url}>
       <div className="img-area">
-        <ImgArea src={cardImg} />
+        <img className="star-icon" src={starIcon} alt="즐겨찾기 등록 버튼" />
+        {imageSource ? (
+          <img className="card-img" src={imageSource} alt="이미지" />
+        ) : ( 
+          <img className="empty-img" src={EmptyCardImg} alt="이미지 없음" />
+        )}
       </div>
       <div className="info-area">
-        <CardExtraInfo>{uploadTime}</CardExtraInfo>
-        <CardTextContent text={text} date={date}/>
+        <CardExtraInfo createdAt={createdAt} />
+        <CardTextContent text={description} date={uploadDate}/>
       </div>
-    </div>
+    </a>
   );
 ;}
 
-export default Card;
+export default Cards;
