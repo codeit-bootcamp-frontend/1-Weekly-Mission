@@ -24,22 +24,38 @@ const Footer = () => {
         <div className="footer sns">
           <ul>
             <li>
-              <a href="https://www.facebook.com/" target="_blank">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={facebookLogo} alt="페이스북 로고" />
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/" target="_blank">
+              <a
+                href="https://twitter.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={twitterLogo} alt="트위터 로고" />
               </a>
             </li>
             <li>
-              <a href="https://youtube.com/" target="_blank">
+              <a
+                href="https://youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={youtubeLogo} alt="유튜브 로고" />
               </a>
             </li>
             <li>
-              <a href="https://instagram.com" target="_blank">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={instagramLogo} alt="인스타그램 로고" />
               </a>
             </li>
