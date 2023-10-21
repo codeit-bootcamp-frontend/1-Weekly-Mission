@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CardList from "./components/Card";
 import { getUser, getUserFolder } from "./api";
 
 function App() {
-  const [userName, setUserName] = useState("");
+  // const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userProfileImage, setUserProfileImage] = useState("");
 
@@ -17,23 +18,22 @@ function App() {
 
   const loadUser = async () => {
     const { name, email, profileImageSource } = await getUser();
-    setUserName(name);
+    // setUserName(name);
     setUserEmail(email);
     setUserProfileImage(profileImageSource);
   };
   const loadUserFolder = async () => {
-    const { folder, links } = await getUserFolder();
+    const { folder } = await getUserFolder();
     setFolderUserProfileImage(folder.owner.profileImageSource);
     setFolderName(folder.name);
     setFolderUserName(folder.owner.name);
-    setCardList(links);
+    setCardList(folder.links);
   };
 
   useEffect(() => {
     loadUser();
     loadUserFolder();
   }, []);
-
   return (
     <>
       <Nav userEmail={userEmail} userProfile={userProfileImage} />
@@ -42,7 +42,9 @@ function App() {
         folderName={folderName}
         folderUserName={folderUserName}
       />
-      <div>{/* <CardList cards={cardList} /> */}</div>
+      <div>
+        <CardList cardList={cardList} />
+      </div>
       <Footer />
     </>
   );
