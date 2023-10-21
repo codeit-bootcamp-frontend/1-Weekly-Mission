@@ -1,3 +1,4 @@
+import Footer from "../Footer/Footer.js";
 import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
 const App = () => {
@@ -5,6 +6,7 @@ const App = () => {
     <>
       <Header />
       <Main />
+      <Footer />
     </>
   );
 };
