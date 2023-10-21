@@ -9,6 +9,37 @@ main {
     gap: 3.2rem;
 }
 
+/* 네비게이션 */
+nav {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: var(--background);
+}
+
+.gnb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 6.3rem;
+    padding: 0 3.2rem;
+}
+
+.logo {
+    height: 1.6rem;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: var(--background);
+}
+
 /* 검색 바 */
 .search-form {
     display: flex;

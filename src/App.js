@@ -27,8 +27,16 @@ function App() {
 
   return (
     <div className='App'>
+      <nav>
+        <div className='gnb'>
+          <img className='logo' src='/assets/image/logo.svg' alt='홈으로 연결된 Linkbrary 로고' />
+          <div>로그인</div>
+        </div>
+      </nav>
       <header>
-        <nav></nav>
+        <div className='avatar'>아바타</div>
+        <div className='nickname'>닉네임</div>
+        <div className='folder'>즐겨찾기</div>
       </header>
       <main>
         <form className='search-form'>
