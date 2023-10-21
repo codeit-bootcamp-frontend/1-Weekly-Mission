@@ -1,0 +1,146 @@
+.folder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px 0 60px 0;
+	gap: 20px;
+}
+
+.folder__user-avatar {
+	width: 60px;
+}
+
+.folder__user {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	gap: 12px;
+}
+
+.folder {
+	display: flex;
+	justify-content: center;
+	padding: 20px 32px 60px 32px;
+}
+
+.folder__inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.5rem;
+}
+
+@media screen and (max-width: 1123px) {
+	.folder {
+		gap: 24px;
+	}
+}
+
+.cardList {
+	display: grid;
+	grid-template-columns: repeat(3, 340px);
+	justify-content: center;
+	gap: 20px;
+}
+@media screen and (max-width: 1123px) {
+	.cardList {
+		grid-template-columns: repeat(2, 340px);
+		gap: 24px;
+	}
+}
+@media screen and (max-width: 47.9375rem) {
+	.cardList {
+		grid-template-columns: minmax(auto, 340px);
+		gap: 20px;
+	}
+}
+
+.card {
+	text-decoration: none;
+	color: #000;
+	box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+	display: grid;
+	grid-template-rows: 200px 1fr;
+	overflow: hidden;
+	transform-origin: center center;
+}
+@media screen and (max-width: 47.9375rem) {
+	.card {
+		width: 100%;
+		max-width: 325px;
+		grid-template-rows: 192px 1fr;
+	}
+}
+.card__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 15px 15px 0px 0px;
+	transform-origin: center center;
+	transition: all 0.3s ease-in-out;
+}
+
+.card__image--hover {
+	transform: scale(1.3);
+	overflow: hidden;
+}
+
+.card__image-wrap {
+	position: relative;
+	border-radius: 15px 15px 0px 0px;
+	overflow: hidden;
+}
+.card__star {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.card__time {
+	display: flex;
+	justify-content: space-between;
+	grid-area: card__time;
+}
+
+.card__text {
+	padding: 15px 20px;
+	display: grid;
+	gap: 10px;
+	grid-template-rows: 16px 49px 19px;
+	grid-template-areas:
+		"card__time"
+		"card__title"
+		"card__created-date";
+}
+
+.card__text--hover {
+	background-color: var(--linkbrary-zircon);
+}
+
+.card__time-diff {
+	font-size: 13px;
+	font-weight: 400;
+	color: #666;
+}
+.card__title {
+	display: -webkit-box;
+	color: #000;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 32px;
+	line-height: 16px;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	grid-area: card__title;
+}
+.card__created-date {
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 14px;
+	font-weight: 400;
+	grid-area: card__created-date;
+}
