@@ -1,0 +1,11 @@
+.nav-bar {
+  padding: 32px 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-account {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

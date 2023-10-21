@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { CardList } from './components/CardList';
+import Nav from './components/Nav';
+import User from './components/User';
+import getFolderData from './services/api';
+import { useEffect, useState, useCallback } from 'react';
 
 function App() {
+  const [cards, setcards] = useState([]);
+  const [folderInfo, setFolderInfo] = useState({});
+  const [owner, setOwner] = useState({});
+  const getdata = useCallback(async () => {
+    const { folder } = await getFolderData();
+    console.log('app components', folder, owner);
+    const ownerInfo = { ...folder.owner };
+    setFolderInfo(folder);
+    setOwner(ownerInfo);
+    setcards(folder.links);
+  }, []);
+
+  useEffect(() => {
+    getdata();
+  }, [getdata]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Nav />
+      <User folderInfo={folderInfo} owner={owner} />
+      <CardList cards={cards} />
     </div>
   );
 }
