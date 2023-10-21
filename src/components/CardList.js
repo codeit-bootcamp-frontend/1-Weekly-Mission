@@ -7,9 +7,9 @@ const CardList = ({ links }) => {
 			<div className="folder__inner">
 				<SearchBar />
 				<div className="cardList">
-					{links?.map((link) => {
-						return <Card link={link} key={link.id} />;
-					})}
+					{links.map((link) => (
+						<Card link={link} key={link.id} />
+					))}
 				</div>
 			</div>
 		</div>

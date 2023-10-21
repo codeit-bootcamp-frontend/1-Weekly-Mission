@@ -53,7 +53,7 @@
 }
 @media screen and (max-width: 47.9375rem) {
 	.cardList {
-		grid-template-columns: minmax(auto, 340px);
+		grid-template-columns: minmax(auto, 325px);
 		gap: 20px;
 	}
 }

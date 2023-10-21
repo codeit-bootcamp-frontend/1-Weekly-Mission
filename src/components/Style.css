@@ -8,10 +8,13 @@
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
+	height: 94px;
+	z-index: 1;
 }
 @media screen and (max-width: 47.9375rem) {
 	.header {
 		padding: 0.8125rem 0;
+		height: 63px;
 	}
 }
 .header__inner {
@@ -76,6 +79,11 @@
 	color: #373740;
 	font-size: 14px;
 	font-weight: 400;
+}
+@media screen and (max-width: 47.9375rem) {
+	.header__user-email {
+		display: none;
+	}
 }
 
 /* 텍스트 gradient */

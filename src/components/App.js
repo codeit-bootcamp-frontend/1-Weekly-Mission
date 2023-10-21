@@ -2,7 +2,6 @@ import "./Normalize.css";
 import "./Common.css";
 import "./Style.css";
 import Header from "./Header";
-import BgSection from "./BgSection";
 import Footer from "./Footer";
 import { useCallback, useEffect, useState } from "react";
 import { getUserFolder, getUserInfo } from "../api";
@@ -18,16 +17,15 @@ function App() {
 	const handleUserInfo = useCallback(async () => {
 		const result = await getUserInfoAsync();
 		if (!result) return;
+
 		setUserInfo(result);
 	}, [getUserInfoAsync, setUserInfo]);
 
 	const handleUserFolder = useCallback(async () => {
-		const result = await getUserFolderAsync();
-		if (!result) return;
-		const {
-			folder: { id, name, owner, links },
-		} = result;
-		setFolderInfo({ id, name, owner, links });
+		const { folder } = await getUserFolderAsync();
+		if (!folder) return;
+
+		setFolderInfo(folder);
 	}, [getUserFolderAsync, setFolderInfo]);
 
 	useEffect(() => {
@@ -37,18 +35,10 @@ function App() {
 
 	return (
 		<>
-			<BgSection bgColor="skyblue">
-				{!userInfoLoading && (
-					<Header isLogin={!!userInfo} userEmail={userInfo?.email} error={userInfoError}></Header>
-				)}
-				{userInfoError?.message && <div>{userInfoError.message}</div>}
-			</BgSection>
+			{!userInfoLoading && <Header isLogin={!!userInfo} userEmail={userInfo?.email} />}
+			{userInfoError?.message && <div>{userInfoError.message}</div>}
 			{userFolderError?.message && <div>{userFolderError.message}</div>}
-			{userFolderLoading ? (
-				<div>로딩중..</div>
-			) : (
-				folderInfo && <Folder userInfo={userInfo} folderInfo={folderInfo} />
-			)}
+			{userFolderLoading ? <div>로딩중..</div> : folderInfo && <Folder folderInfo={folderInfo} />}
 			<Footer />
 		</>
 	);

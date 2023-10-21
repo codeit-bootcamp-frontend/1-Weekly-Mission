@@ -5,8 +5,8 @@ import kebab from "../images/kebab.png";
 
 const Card = ({ link }) => {
 	const [isHover, setIsHover] = useState(false);
-	const cardImgClass = `card__image ${isHover ? "card__image--hover" : ""}`;
-	const cardTextClass = `card__text ${isHover ? "card__text--hover" : ""}`;
+	const cardImgClass = `card__image${isHover ? " card__image--hover" : ""}`;
+	const cardTextClass = `card__text${isHover ? " card__text--hover" : ""}`;
 	const handleMouseOver = () => setIsHover(true);
 	const handleMouseOut = () => setIsHover(false);
 
