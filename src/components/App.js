@@ -1,12 +1,20 @@
 import Navigator from "./NavigationBar";
-import { getUsers } from "../api";
+import FolderInfo from "./FolderInfo";
+import { getUsers, getFolder } from "../api";
 import { useState, useEffect } from "react";
 import "../style/App.css";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
-  const [userImage, setUserImage] = useState("");
+  const [userData, setUserData] = useState({
+    email: "",
+    imageSource: "",
+  });
+  const [folderData, setFolderData] = useState({
+    folderName: "",
+    ownerName: "",
+    ownerImage: "",
+  });
 
   const handleUserProfile = async () => {
     let userProfile;
@@ -18,12 +26,34 @@ const App = () => {
       setIsLogin(false);
     }
     const { email, profileImageSource } = userProfile;
-    setUserEmail(email);
-    setUserImage(profileImageSource);
+    setUserData((prevData) => ({
+      ...prevData,
+      email,
+      imageSource: profileImageSource,
+    }));
+  };
+
+  const handleFolderInfo = async () => {
+    let folderInfo;
+    try {
+      folderInfo = await getFolder();
+    } catch (err) {
+      console.log(err);
+    }
+    const {
+      folder: { name, owner },
+    } = folderInfo;
+    setFolderData((prevData) => ({
+      ...prevData,
+      folderName: name,
+      ownerName: owner["name"],
+      ownerImage: owner["profileImageSource"],
+    }));
   };
 
   useEffect(() => {
     handleUserProfile();
+    handleFolderInfo();
   }, []);
 
   return (
@@ -31,8 +61,12 @@ const App = () => {
       <Navigator
         className={["nav", "gnb", "logo", "cta", "cta-short"]}
         isLogin={isLogin}
-        data={[userEmail, userImage]}
+        data={userData}
       />
+      <header>
+        <FolderInfo data={folderData} />
+      </header>
+      <article></article>
     </>
   );
 };
