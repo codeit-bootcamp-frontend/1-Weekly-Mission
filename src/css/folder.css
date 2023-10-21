@@ -1,0 +1,30 @@
+.folder-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.folder-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.folder-avatar {
+    border-radius: 47px;
+    width: 4rem;
+    height: 4rem;
+}
+
+.folder-owner-name {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.folder-name {
+    font-size: 3.2rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}

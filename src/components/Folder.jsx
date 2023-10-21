@@ -1,3 +1,5 @@
+import '../css/folder.css';
+
 function Folder({ folderProfile }) {
   const avatar = folderProfile?.avatar ?? '';
   const ownerName = folderProfile?.ownerName ?? '';
