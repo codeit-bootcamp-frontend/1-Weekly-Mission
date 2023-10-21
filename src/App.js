@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import CardList from './components/CardList';
+import Nav from './components/Nav';
+import User from './components/User';
+import Search from './components/Search';
+import Footer from './components/Footer';
+import getFolderData from './services/api';
+import { useEffect, useState, useCallback } from 'react';
 
 function App() {
+  const [cards, setcards] = useState([]);
+  const [folderInfo, setFolderInfo] = useState(null);
+  const [user, setUser] = useState({});
+  const getdata = useCallback(async () => {
+    const { folder } = await getFolderData('sample/folder');
+    const userData = await getFolderData('sample/user');
+    setUser(userData);
+    setFolderInfo(folder);
+    setcards(folder.links);
+  }, []);
+
+  useEffect(() => {
+    getdata();
+  }, [getdata]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Nav user={user} />
+      <User folderInfo={folderInfo} />
+      <Search />
+      <CardList cards={cards} />
+      <Footer />
     </div>
   );
 }
