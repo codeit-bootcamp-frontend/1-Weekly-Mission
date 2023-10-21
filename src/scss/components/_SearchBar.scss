@@ -2,12 +2,18 @@
 
 .search-bar {
   width: 100%;
-  padding: 1.5rem 1.6rem;
+  padding: 1.3rem 1.6rem;
 
   border: none;
   border-radius: 1rem;
   background-color: $grey-light;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 400;
   line-height: 1.5;
+
+  @include pc {
+    padding: 1.5rem 1.6rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
 }
