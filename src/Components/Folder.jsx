@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { getFolder } from '../api/apiClient';
 import Banner from './Banner';
+import SearchBar from './SearchBar';
 import CardList from './CardList';
 
 const INITIAL_FOLDERINFO = {
@@ -30,7 +31,10 @@ function Folder() {
   return (
     <main>
       <Banner info={folderInfo} />
-      <CardList links={links} />
+      <div className='folder-container'>
+        <SearchBar />
+        <CardList links={links} />
+      </div>
     </main>
   );
 }

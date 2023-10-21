@@ -1,0 +1,13 @@
+@use '../utils' as *;
+
+.search-bar {
+  width: 100%;
+  padding: 1.5rem 1.6rem;
+
+  border: none;
+  border-radius: 1rem;
+  background-color: $grey-light;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
