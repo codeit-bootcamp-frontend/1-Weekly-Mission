@@ -1,5 +1,5 @@
 import '../styles/cardlist.css'
-import TimeFlow from './timeflow.js';
+import TimeFlow from '../timeflow.js';
 import defaultImg from '../assets/images/logo.svg'
 
 function formatDate(value) {
