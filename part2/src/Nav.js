@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./landing.css";
 import { getLogin } from "./api";
+import { useAsync } from "./hooks/useAsync";
 
 const Nav = () => {
-  const [userEmail, setUserEmail] = useState(false);
+  const [userEmail, getLoginAsync] = useAsync(getLogin);
 
-  const defaultLogin = async () => {
-    const { email } = await getLogin();
-    setUserEmail(email);
-  };
+  // const [userEmail, setUserEmail] = useState(false);
+
+  // const defaultLogin = async () => {
+  //   const { email } = await getLogin();
+  //   setUserEmail(email);
+  // };
 
   useEffect(() => {
-    defaultLogin();
+    //defaultLogin();
+    getLoginAsync();
   }, []);
 
   return (
@@ -25,9 +29,6 @@ const Nav = () => {
               alt="홈으로 연결된 Linkbrary 로고"
             />
           </a>
-          {/* <a className="cta cta-short" href="signin.html">
-            {userEmail ? <p>{userEmail}</p> : <span>로그인</span>}
-          </a> */}
           {userEmail ? (
             <div className="cta cta-short-account">
               <div>
