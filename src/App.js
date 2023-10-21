@@ -1,10 +1,13 @@
+import './styles/app.css';
+
 import { useState, useEffect } from "react";
 import { getResponse } from "./api.js";
+
 import Header from "./components/Header.js";
 import FolderInfo from "./components/FolderInfo.js";
 import SearchBar from "./components/SearchBar.js";
 import CardList from "./components/CardList.js";
-import './styles/app.css';
+import Footer from "./components/Footer.js";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,14 +41,15 @@ function App() {
 
   return (
     <>
-      <div className = "header"><Header user = {user}/></div>
+      <header><Header user = {user}/></header>
       <div className = "folder_info"><FolderInfo folderData = {folder}/></div>
-      <div className = "content">
+      <main>
         <div className = "content_container">
             <SearchBar />
             <CardList links = {links} />
         </div>
-      </div>
+      </main>
+      <footer><Footer /></footer>
     </>
   );
 }
