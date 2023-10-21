@@ -1,5 +1,6 @@
 import Card from './Card';
 import { Fragment } from 'react';
+import '../css/card-list.css';
 
 function CardList({ items }) {
   return (
