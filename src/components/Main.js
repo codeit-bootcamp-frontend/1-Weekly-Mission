@@ -1,7 +1,7 @@
 import React from 'react';
-import Search from './Search';
-import CardList from './CardList';
 import '../styles/Main.css';
+import CardList from './CardList';
+import Search from './Search';
 
 function Main() {
   return (

@@ -3,11 +3,13 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Intro from './components/Intro';
 import Main from './components/Main';
-import HeaderRequestData, { introRequestData } from './services/api';
-import './styles/Variables.css';
+import { HeaderRequestData, introRequestData } from './services/Api';
 import './styles/Reset.css';
+import './styles/Variables.css';
 
 function App() {
+  // 난리난 state ㅋㅋㅋㅋ
+
   const [headerId, setHeaderId] = useState();
   const [headerEmail, setHeaderEmail] = useState('');
   const [headerImg, setHeaderImg] = useState('');
