@@ -33,3 +33,15 @@
   font-weight: 600;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
 }
+
+.user-profile-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+}
+
+.user-profile-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
