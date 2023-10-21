@@ -23,10 +23,16 @@ export default function Nav() {
   return (
     <div className="nav1-container">
       <div className="nav1-wrapper">
-        <div className="nav1-logo">
+        <a href="/" className="nav1-logo">
           <img className="nav1-libraryImg" src={library} />
-        </div>
-        <LogIn item={login} />
+        </a>
+        {login ? (
+          <LogIn item={login} />
+        ) : (
+          <a href="/" className="nav-login">
+            로그인
+          </a>
+        )}
       </div>
       <div className="nav2-wrapper">
         <div className="nav2-logo">

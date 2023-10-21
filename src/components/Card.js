@@ -1,4 +1,4 @@
-import './Main.css';
+import './Card.css';
 import noImage from './img/no-image.svg';
 import { dateCalculator } from './dateCalculator';
 
@@ -19,7 +19,7 @@ export default function Card(item) {
     };
   }
   return (
-    <a href={item.item.url} className="card-wrapper">
+    <a href={item.item.url} className="card-wrapper" target="_blank">
       <div className="card-box">
         <div className="card-image" style={image}></div>
         <div className="card-text">

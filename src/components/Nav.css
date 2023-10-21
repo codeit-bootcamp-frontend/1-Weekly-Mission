@@ -35,6 +35,23 @@ body {
 .nav1-div-logo {
   display: flex;
 }
+.nav-login {
+  color: #f5f5f5;
+  font-family: Pretendard;
+  font-size: 18px;
+
+  font-weight: 600;
+  display: flex;
+  width: 128px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  text-decoration: none;
+}
+
 .nav1-humanImg {
   width: 28px;
   height: 28px;
