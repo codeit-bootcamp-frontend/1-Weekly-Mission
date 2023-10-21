@@ -19,7 +19,7 @@ body {
 	min-height: -webkit-fill-available;
 }
 input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0 1000px var(--linkbrary-white) inset;
+	-webkit-box-shadow: 0 0 0 62.5rem var(--linkbrary-white) inset;
 }
 
 /* 버튼 기본 스타일 */

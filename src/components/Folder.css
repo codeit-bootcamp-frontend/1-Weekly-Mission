@@ -3,12 +3,12 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 20px 0 60px 0;
-	gap: 20px;
+	padding: 1.25rem 0 3.75rem 0;
+	gap: 1.25rem;
 }
 
 .folder__user-avatar {
-	width: 60px;
+	width: 3.75rem;
 }
 
 .folder__user {
@@ -16,14 +16,14 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-size: 16px;
-	gap: 12px;
+	font-size: 1rem;
+	gap: 0.75rem;
 }
 
 .folder {
 	display: flex;
 	justify-content: center;
-	padding: 20px 32px 60px 32px;
+	padding: 1.25rem 2rem 3.75rem 2rem;
 }
 
 .folder__inner {
@@ -33,52 +33,52 @@
 	gap: 2.5rem;
 }
 
-@media screen and (max-width: 1123px) {
+@media screen and (max-width: 70.1875rem) {
 	.folder {
-		gap: 24px;
+		gap: 1.5rem;
 	}
 }
 
 .cardList {
 	display: grid;
-	grid-template-columns: repeat(3, 340px);
+	grid-template-columns: repeat(3, 21.25rem);
 	justify-content: center;
-	gap: 20px;
+	gap: 1.25rem;
 }
-@media screen and (max-width: 1123px) {
+@media screen and (max-width: 70.1875rem) {
 	.cardList {
-		grid-template-columns: repeat(2, 340px);
-		gap: 24px;
+		grid-template-columns: repeat(2, 21.25rem);
+		gap: 1.5rem;
 	}
 }
 @media screen and (max-width: 47.9375rem) {
 	.cardList {
-		grid-template-columns: minmax(auto, 325px);
-		gap: 20px;
+		grid-template-columns: minmax(auto, 20.3125rem);
+		gap: 1.25rem;
 	}
 }
 
 .card {
 	text-decoration: none;
 	color: #000;
-	box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 0.3125rem 1.5625rem 0 rgba(0, 0, 0, 0.08);
 	display: grid;
-	grid-template-rows: 200px 1fr;
+	grid-template-rows: 12.5rem 1fr;
 	overflow: hidden;
 	transform-origin: center center;
 }
 @media screen and (max-width: 47.9375rem) {
 	.card {
 		width: 100%;
-		max-width: 325px;
-		grid-template-rows: 192px 1fr;
+		max-width: 20.3125rem;
+		grid-template-rows: 12rem 1fr;
 	}
 }
 .card__image {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	border-radius: 15px 15px 0px 0px;
+	border-radius: 0.9375rem 0.9375rem 0 0;
 	transform-origin: center center;
 	transition: all 0.3s ease-in-out;
 }
@@ -90,13 +90,13 @@
 
 .card__image-wrap {
 	position: relative;
-	border-radius: 15px 15px 0px 0px;
+	border-radius: 0.9375rem 0.9375rem 0 0;
 	overflow: hidden;
 }
 .card__star {
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	top: 0.9375rem;
+	right: 0.9375rem;
 }
 
 .card__time {
@@ -106,10 +106,10 @@
 }
 
 .card__text {
-	padding: 15px 20px;
+	padding: 0.9375rem 1.25rem;
 	display: grid;
-	gap: 10px;
-	grid-template-rows: 16px 49px 19px;
+	gap: 0.625rem;
+	grid-template-rows: 1rem 3.0625rem 1.1875rem;
 	grid-template-areas:
 		"card__time"
 		"card__title"
@@ -121,7 +121,7 @@
 }
 
 .card__time-diff {
-	font-size: 13px;
+	font-size: 0.8125rem;
 	font-weight: 400;
 	color: #666;
 }
@@ -130,8 +130,8 @@
 	color: #000;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	height: 32px;
-	line-height: 16px;
+	height: 2rem;
+	line-height: 1rem;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	grid-area: card__title;
@@ -140,7 +140,7 @@
 	color: #333;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 14px;
+	font-size: 0.875rem;
 	font-weight: 400;
 	grid-area: card__created-date;
 }
