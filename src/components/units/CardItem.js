@@ -1,17 +1,21 @@
+import "components/units/CardItem.css";
+import logo from "assets/logo.svg";
+
 export default function CardItem({ link }) {
-  const { title, description, imageSource, createdAt } = link;
+  const { description, imageSource, createdAt, url } = link;
   return (
-    <a>
-      <article>
-        <div>이미지</div>
-        <div className="item">
-          <p>10 minutes ago</p>
-          <img src={imageSource} />
-          <p>{title}</p>
-          <p>{description}</p>
-          <p>{createdAt}</p>
-        </div>
-      </article>
+    <a href={url} className="item" target="_blank" rel="noreferrer">
+      <div className="image-wrapper">
+        <img
+          src={imageSource ? imageSource : logo}
+          className={imageSource ? "image" : "image default"}
+        />
+      </div>
+      <div className="info">
+        <p className="timeDiffInfo">10 minutes ago</p>
+        <p className="description">{description}</p>
+        <p className="createdAt">{createdAt}</p>
+      </div>
     </a>
   );
 }

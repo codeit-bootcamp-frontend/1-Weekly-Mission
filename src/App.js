@@ -50,8 +50,7 @@ function App() {
           </div>
         </section>
         <section>
-          <div className="contents"></div>
-          <div>
+          <div className="contents">
             <CardList />
           </div>
         </section>
