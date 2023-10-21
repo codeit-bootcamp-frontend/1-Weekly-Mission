@@ -1,11 +1,5 @@
 @import url('../../styles/global.css');
 
-.header {
-  width: 100%;
-  margin-bottom: 93.5px;
-  background-color: var(--backgroundcolor-skyblue-10);
-}
-
 .gnb {
   display: flex;
   justify-content: space-between;

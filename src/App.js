@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Nav from './components/nav/Nav';
 import SharedPage from './pages/share/SharedPage';
 import Footer from './components/footer/Footer';
-import getSampleUser from './api/user';
+import { getSampleFolder, getSampleUser } from './api/user';
+import Header from './components/header/Header';
 
 export default function App() {
   const [userProfile, setUserProfile] = useState({});
+  const [folderInfo, setFolderInfo] = useState(null);
 
   const handleFetchUser = async () => {
     const response = await getSampleUser();
@@ -19,6 +21,11 @@ export default function App() {
     }));
   };
 
+  useEffect(async () => {
+    const response = await getSampleFolder();
+    setFolderInfo(response);
+  }, []);
+
   useEffect(() => {
     handleFetchUser();
   }, []);
@@ -26,6 +33,7 @@ export default function App() {
   return (
     <div>
       <Nav userProfile={userProfile} />
+      <Header folderInfo={folderInfo} />
       <SharedPage />
       <Footer />
     </div>
