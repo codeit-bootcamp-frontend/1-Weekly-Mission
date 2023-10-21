@@ -1,4 +1,5 @@
 import logoImg from "../../assets/images/logo.png";
+import defaultProfileImg from "../../assets/images/defaultProfileImg.png";
 import "./Nav.css";
 import { getLoginInfo } from "../../utils/api";
 import { useState } from "react";
@@ -40,7 +41,7 @@ const Nav = () => {
           <div className="userProfile">
             <img
               className="userProfileImg"
-              src={userInfo.profileImageSource}
+              src={defaultProfileImg}
               alt="프로필 사진"
             ></img>
             <span className="userProfileEmail">{userInfo.email}</span>

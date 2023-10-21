@@ -17,7 +17,7 @@ const getLoginInfo = async () => {
  *
  * @returns
  */
-const getForderData = async () => {
+const getFolderData = async () => {
   const response = await fetch(
     "https://bootcamp-api.codeit.kr/api/sample/folder"
   );
@@ -30,4 +30,4 @@ const getForderData = async () => {
   return body;
 };
 
-export { getLoginInfo, getForderData };
+export { getLoginInfo, getFolderData };

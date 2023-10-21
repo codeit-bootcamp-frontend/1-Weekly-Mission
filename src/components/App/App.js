@@ -1,9 +1,10 @@
 import Header from "../Header/Header.js";
+import Main from "../Main/Main.js";
 const App = () => {
   return (
     <>
       <Header />
-      <h1>CONTENT</h1>
+      <Main />
     </>
   );
 };
