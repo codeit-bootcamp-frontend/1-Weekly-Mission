@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f6ff;
+  padding: 1rem 0 4rem;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user__img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.user__name {
+  color: --Black;
+  font-size: 1.4rem;
+}
+
+.user__folder-name {
+  font-size: 3.2rem;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .user__img {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+}

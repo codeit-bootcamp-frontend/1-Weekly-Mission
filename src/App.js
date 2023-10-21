@@ -1,36 +1,33 @@
 import './App.css';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getSample } from './api';
 import Navigation from './components/Nav/Navigation';
-import useCatch from './hooks/useCatch';
-import CardList from './components/Main/Card';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
 
 function App() {
-  const [sampleLoading, sampleError, getSampleCatch] = useCatch(getSample);
-  const [links, setLinks] = useState(false);
+  const [folder, setFolder] = useState('');
 
-  const loadData = useCallback(async (option) => {
-    const res = await getSampleCatch(option);
+  const loadData = async (option) => {
+    const res = await getSample(option);
     if (!res) return;
-    const { folder: { links } } = res;
-
-    setLinks(links);
-    console.log(links);
-  }, [getSampleCatch])
+    const newfolder = res.folder;
+    setFolder(newfolder);
+  }
 
   useEffect(() => {
     loadData('folder');
-  }, [loadData])
+  }, [])
+
+  console.log(folder)
 
   return (
     <>
-
       <Navigation />
-      {/* <Header /> */}
-      {/* <Main /> */}
-
-      <CardList links={links} />
-      {/* <Footer /> */}
+      <Header name={folder.name} owner={folder.owner} />
+      <Main links={folder.links} />
+      <Footer />
     </>
 
   );

@@ -1,6 +1,6 @@
 import './Profile.css'
 
-function Profile({ email, profileIamgeSource: img }) {
+function Profile({ email, profileImageSource: img }) {
   return (
     <div className="profile grid--sign">
       <img className='profile__img' src={img} alt="프로필 사진" />

@@ -1,0 +1,57 @@
+.footer {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-template-areas:
+    "info sns"
+    "copy .";
+  row-gap: 6rem;
+  margin-top: 4rem;
+  padding: 3.2rem;
+  background: var(--Black);
+}
+
+.footer__content {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--Gray5);
+}
+
+.gap10 {
+  gap: 1.2rem;
+}
+.gap30 {
+  gap: 3rem;
+}
+.color--gray3 {
+  color: var(--Gray3);
+}
+
+.grid--copy {
+  align-self: center;
+  grid-area: copy;
+}
+.grid--info {
+  grid-area: info;
+}
+.grid--sns {
+  justify-self: end;
+  grid-area: sns;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    grid-template: 1fr / 1fr 1fr 1fr;
+    grid-template-areas: "copy info sns";
+    padding: 3.2rem 10rem 11.2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .footer {
+    grid-template: 1fr / calc(50vw - 96rem) 1fr 1fr 1fr calc(50vw - 96rem);
+    grid-template-areas: ". copy info sns .";
+    padding: 3.2rem 10rem 11.2rem;
+  }
+}
