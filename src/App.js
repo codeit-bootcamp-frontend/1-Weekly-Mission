@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getResponse } from "./api.js";
 import Header from "./components/Header.js";
 import FolderInfo from "./components/FolderInfo.js";
+import Content from "./components/Content.js";
 import './styles/app.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     <>
       <div className = "header"><Header user={user}/></div>
       <div className = "folder_info"><FolderInfo folderData={folder}/></div>
+      <div className = "content"><Content /></div>
       {/* <div>카드들을 넣을거다</div> */}
     </>
   );

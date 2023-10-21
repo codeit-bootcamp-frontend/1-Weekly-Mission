@@ -29,6 +29,9 @@
     width : 100%;
     padding : 80px 0px 60px;
 }
+.content{
+    margin : 40px 0px;
+}
 
 /* Tablet */
 @media (max-width : 1199px){
