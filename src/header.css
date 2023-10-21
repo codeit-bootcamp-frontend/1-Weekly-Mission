@@ -17,3 +17,16 @@
     font-weight: 600;
     text-align: center;
 }
+
+.account {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 20px;
+}
