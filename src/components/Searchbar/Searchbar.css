@@ -1,0 +1,40 @@
+.searchbar {
+  margin-top: 4rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  display: flex;
+  width: 100%;
+  padding: 15px 16px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background: #f5f5f5;
+}
+
+.searchbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchbar-input {
+  background-color: transparent;
+  border: none;
+  color: var(--Text, #666);
+
+  /* Linkbrary/body1-regular */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.searchbar-input:active {
+  border: none;
+  outline: none;
+}
+
+.searchbar-input:focus {
+  border: none;
+  outline: none;
+}

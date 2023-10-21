@@ -46,7 +46,7 @@ const Navbar = () => {
         setSampleUser({ id, name, email, profileImageSource });
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
   useEffect(() => {

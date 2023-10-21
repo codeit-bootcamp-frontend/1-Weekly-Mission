@@ -1,16 +1,15 @@
-import { fetchGet } from "../../apis/api";
 import searchIcon from "../../assets/Search.png";
 
+import "./Searchbar.css";
+
 const Searchbar = () => {
-  const getSample = async () => {
-    const result = await fetchGet("/api/sample/folder");
-  };
   return (
-    <div>
-      <div>
+    <div className="searchbar">
+      <div className="searchbar-inner">
         <label htmlFor="search" />
-        <img src={searchIcon} />
+        <img src={searchIcon} alt="Search" />
         <input
+          className="searchbar-input"
           id="search"
           name="search"
           placeholder="링크를 검색해 보세요"

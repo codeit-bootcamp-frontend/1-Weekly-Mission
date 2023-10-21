@@ -1,7 +1,7 @@
 // components
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
-import Share from "./components/Share";
+import Share from "./components/Share/Share";
 
 // css
 import "./styles/reset.css";
