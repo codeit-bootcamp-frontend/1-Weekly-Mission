@@ -1,7 +1,7 @@
-import CardList from './Components/CardList';
+import Folder from './Components/Folder';
 
 function App() {
-  return <CardList />;
+  return <Folder />;
 }
 
 export default App;

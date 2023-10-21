@@ -1,18 +1,6 @@
-import { useEffect, useState } from 'react';
-import { fetchFolder } from '../api/fetchAPI';
 import Card from './Card';
 
-function CardList() {
-  const [links, setLinks] = useState([]);
-  const getFolder = async () => {
-    const {
-      folder: { links },
-    } = await fetchFolder();
-    setLinks(links);
-  };
-  useEffect(() => {
-    getFolder();
-  });
+function CardList({ links = [] }) {
   return (
     <ul>
       {links.map((link) => (
