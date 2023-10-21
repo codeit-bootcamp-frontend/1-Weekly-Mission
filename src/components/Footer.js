@@ -1,34 +1,39 @@
 import React from 'react';
 import '../css/footer.css';
+import facebookImg from '../img/png/Vector-1.png';
+import twitterImg from '../img/png/Vector-2.png';
+import youtubeImg from '../img/png/Vector-3.png';
+import melonImg from '../img/png/Vector-4.png';
+
 
 const Footer = () => {
     return (
         <footer>
-            <div class="footer-connect">
-                <div class="footer-connect-year">codeit - 2023</div>
-                <ul class="footer-connect-faq">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">FAQ</a></li>
+            <div className="footer-connect">
+                <div className="footer-connect-year">codeit - 2023</div>
+                <ul className="footer-connect-faq">
+                    <li><a href="none">Privacy Policy</a></li>
+                    <li><a href="none">FAQ</a></li>
                 </ul>
-                <ul class="footer-connect-sns">
+                <ul className="footer-connect-sns">
                     <li>
                         <a href="https://www.facebook.com/" target="blank">
-                            <img src="img/png/Vector-1.png" alt="페이스북"/>
+                            <img src={facebookImg} alt="페이스북"/>
                         </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/" target="blank">
-                            <img src="img/png/Vector-2.png" alt="트위터"/>
+                            <img src={twitterImg} alt="트위터"/>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.youtube.com/" target="blank">
-                            <img src="img/png/Vector-3.png" alt="유튜브"/>
+                            <img src={youtubeImg} alt="유튜브"/>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.melon.com/" target="blank">
-                            <img src="img/png/Vector-4.png" alt="멜론"/>
+                            <img src={melonImg} alt="멜론"/>
                         </a>
                     </li>
                 </ul>

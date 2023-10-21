@@ -1,108 +1,65 @@
 import React from 'react';
+import logoImg from "../img/svg/noImgLogo.svg";
 
-const Cards = () => {
+
+
+/* 게시물 올린 시간 함수 */
+function getTimeDiff(value) {
+    const milliSeconds = new Date() - value;
+    const seconds = milliSeconds / 1000;
+    if (seconds < 60) return `방금 전`;
+    const minutes = seconds / 60;
+    if (minutes < 60) return `${Math.floor(minutes)}${Math.floor(minutes) > 1 ? "minutes ago" : "minute ago"}`;
+    const hours = minutes / 60;
+    if (hours < 24) return `${Math.floor(hours)}${Math.floor(hours) > 1 ? "hours ago" : "hour ago"}`;
+    const days = hours / 24;
+    if (days < 7) return `${Math.floor(days)}${Math.floor(days) > 1 ? "days ago" : "day ago"}`;
+    const weeks = days / 7;
+    if (weeks < 5) return `${Math.floor(weeks)}${Math.floor(weeks) > 1 ? "weeks ago" : "week ago"}`;
+    const months = days / 30;
+    if (months < 12) return `${Math.floor(months)}${Math.floor(months) > 1 ? "months ago" : "month ago"}`;
+    const years = days / 365;
+    return `${Math.floor(years)}${Math.floor(years) > 1 ? "years ago" :"year ago"}`;
+};
+
+/* 각 카드 컴포넌트 */
+function CardItem({item, key}) {
+    const imgStyle = {
+        'backgroundImage': `URL(${item.imageSource})`,
+        'backgroundRepeat':'no-repeat',
+        'backgroundSize':'cover',
+        'backgroundPosition':'center center',
+        'width': `100%`,
+        'borderTopLeftRadius': "15px",
+        'borderTopRightRadius': "15px",
+    }
+
+    const nowDate = getTimeDiff(new Date(item.createdAt));
+
+    return (
+    <a href={item.url} target='_blank'>
+    <div id={key} className='card'>
+        <div className="card-img-wrap">
+            {!item.imageSource ? <img className="logoImg" src={logoImg}/> :
+            <div className='card-img' style={imgStyle}></div>}
+        </div>
+        <div className='card-inpormation'>
+            <div className='time'>{nowDate}</div>
+            <p>{item.description}</p>
+            <div className='day'>{item.createdAt.split("T")[0]}</div>  
+        </div>  
+    </div>
+    </a>
+    )
+}
+
+const Cards = ({personalfolder}) => {
+    const {links} = personalfolder;
+ 
     return (
         <div className="section-title section-title-third">
             <div className='section-title-third-inner'>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image7.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image8.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image9.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image10.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image11.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image12.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image13.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image14.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
-                <div className='card'>
-                    <div className='card-img'>
-                        <img src='img/png/image15.png' alt='카드이미지'/>
-                    </div>
-                    <div className='card-inpormation'>
-                        <div className='time'>10 minutes ago</div>
-                        <p>Lorem ipsum dolor sit amet consectetur. 
-                            Metus amet habitant nunc consequat. Tldkd</p>
-                        <div className='day'>2023.3.15</div>  
-                    </div>  
-                </div>
+                {links && links.map(item => <CardItem key={item.id} item={item}/>)}
             </div>
         </div>
     );
