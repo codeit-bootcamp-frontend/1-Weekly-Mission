@@ -49,7 +49,7 @@ header {
   width: 12.8rem;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1124px) {
   .header_container {
     width: 79.9rem;
     margin-right: 3.2rem;

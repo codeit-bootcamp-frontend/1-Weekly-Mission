@@ -44,7 +44,7 @@ function Card({ createdAt, description, imageSource, title, url }) {
     }
 
     const yearDifference = Math.floor(monthDifference / 12);
-    return `${yearDifference} years ago`;c
+    return `${yearDifference} years ago`;
   }
 
   function handleSiteMoveClick() {

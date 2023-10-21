@@ -1,0 +1,16 @@
+
+main {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 10rem;
+}
+
+@media (max-width: 1124px) {
+  main {
+    margin-left: 3.2rem;
+    margin-right: 3.2rem;
+  }
+}

@@ -2,6 +2,7 @@
   width: 106rem;
   height: 105.2rem;
   display: grid;
+  place-items:center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 2.5rem 2rem;
@@ -63,4 +64,27 @@
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
+}
+
+@media (max-width: 1124px) {
+  .card-container {
+    width:70.4rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    overflow-y:scroll;
+    -ms-overflow-style: none;
+  }
+  .card-container::-webkit-scrollbar{
+    display:none;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2.5rem 2rem;
+  }
 }
