@@ -14,7 +14,6 @@ export default function Main() {
   useEffect(() => {
     handleLoad();
   }, []);
-  // console.log(items);
   return (
     <div className="main-container">
       <div className="main-search">

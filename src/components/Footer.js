@@ -9,14 +9,26 @@ export default function Footer() {
     <div className="footer-container">
       <div className="footer-left">©codeit - 2023</div>
       <div className="footer-middle">
-        <div className="policy">Privacy Policy</div>
-        <div className="faq">FAQ</div>
+        <a href="./policy.html" className="policy">
+          Privacy Policy
+        </a>
+        <a href="./faq.html" className="faq">
+          FAQ
+        </a>
       </div>
       <div className="footer-right">
-        <img src={facebook} />
-        <img src={twitter} />
-        <img src={youtube} />
-        <img src={insta} />
+        <a href="https://www.facebook.com">
+          <img src={facebook} />
+        </a>
+        <a href="https://www.twitter.com">
+          <img src={twitter} />
+        </a>
+        <a href="https://www.youtube.com">
+          <img src={youtube} />
+        </a>
+        <a href="https://www.instagram.com">
+          <img src={insta} />
+        </a>
       </div>
     </div>
   );

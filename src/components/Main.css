@@ -47,31 +47,33 @@
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 .card-wrapper {
   width: 340px;
-  height: 388px;
+  height: 365px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
 }
-
 .card-wrapper :hover {
   background-size: 160%;
 }
+
 .card-box {
   width: 340px;
   background-color: #fff;
   border-radius: 15px;
 }
 
-a {
-  color: black;
-  text-decoration: none;
-}
-
 .card-image {
-  overflow: hidden;
   width: 340px;
-  height: 253.746px;
+  height: 230px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 15px 15px 0px 0px;
 }
 
 .card-text {
@@ -81,19 +83,26 @@ a {
   gap: 10px;
 }
 
+.card-time-ago {
+  color: #666;
+  font-family: Pretendard;
+  font-size: 13px;
+  font-weight: 400;
+}
+
 .text-description {
   text-overflow: ellipsis;
   white-space: normal;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   color: #000;
 }
 
-.card-image {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 15px 15px 0px 0px;
+.card-year {
+  color: #333;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
 }
