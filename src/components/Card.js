@@ -3,6 +3,7 @@ import kebab from "../assets/images/svg/kebab.svg";
 import noImageIMG from "../assets/images/svg/noImage.svg";
 import starIMG from "../assets/images/svg/star.svg";
 import chosenStarIMG from "../assets/images/svg/chosenStar.svg";
+import { timeForToday } from "../utils";
 import "../style/Card.css";
 
 const Card = ({ data, onClick }) => {
@@ -16,15 +17,6 @@ const Card = ({ data, onClick }) => {
   const formatDate = (value) => {
     const date = new Date(value);
     return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
-  };
-
-  const formatSnippet = (value) => {
-    const LENGTH = 50;
-    let str = value;
-    if (str.length > LENGTH) {
-      str = str.substring(0, LENGTH - 2) + "...";
-    }
-    return str;
   };
 
   const handleMouseEnter = () => {
@@ -45,33 +37,6 @@ const Card = ({ data, onClick }) => {
       setStar(true);
     }
   };
-
-  function timeForToday(createdAt) {
-    const today = new Date();
-    const createdTime = new Date(createdAt);
-
-    const betweenTime = Math.floor(
-      (today.getTime() - createdTime.getTime()) / 1000 / 60
-    );
-    if (betweenTime < 2) return "1 minute ago";
-    if (betweenTime < 60) return `${betweenTime} minutes ago`;
-
-    const betweenTimeHour = Math.floor(betweenTime / 60);
-    if (betweenTimeHour < 2) return "1 hour ago";
-    if (betweenTimeHour < 24) return `${betweenTimeHour} hours ago`;
-
-    const betweenTimeDay = Math.floor(betweenTimeHour / 24);
-    if (betweenTimeDay < 2) return "1 day ago";
-    if (betweenTimeDay < 31) return `${betweenTimeDay} days ago`;
-
-    const betweenTimeMonth = Math.floor(betweenTimeDay / 31);
-    if (betweenTimeMonth < 2) return "1 month ago";
-    if (betweenTimeMonth < 12) return `${betweenTimeMonth} months ago`;
-
-    const betweenTimeYear = Math.floor(betweenTimeMonth / 12);
-    if (betweenTimeYear < 2) return "1 year ago";
-    return `${betweenTimeYear} years ago`;
-  }
 
   return (
     <div
@@ -102,7 +67,7 @@ const Card = ({ data, onClick }) => {
           <span>{timeForToday(data.createdAt)}</span>
           <img src={kebab} alt="카드 설정 더보기" />
         </div>
-        <p className="description">{formatSnippet(data.description)}</p>
+        <p className="description">{data.description}</p>
         <span>{formatDate(data.createdAt)}</span>
       </div>
       <img
