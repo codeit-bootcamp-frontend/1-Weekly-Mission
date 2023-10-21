@@ -1,0 +1,46 @@
+nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 9.4rem;
+  background-color: var(--linkbrary-bg);
+  padding: 0 20rem;
+}
+
+.nav-box {
+  width: 152rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+  nav {
+    padding: 0;
+  }
+
+  .nav-box {
+    width: 79.9rem;
+    padding: 0 min(32px);
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  nav {
+    padding: 0;
+  }
+
+  .nav-box {
+    width: 100%;
+    padding: 0 min(32px);
+  }
+
+  .nav-logo {
+    width: 8.9rem;
+  }
+}
