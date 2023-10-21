@@ -17,6 +17,7 @@ nav {
     top: 0;
     width: 100%;
     background: var(--background);
+    z-index: 1;
 }
 
 .gnb {
@@ -42,12 +43,45 @@ nav {
     display: none;
 }
 
+/* 폴더 프로필 */
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     background: var(--background);
+    padding: 1rem 10rem 4rem 10rem;
+}
+
+.folder-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.folder-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.folder-avatar {
+    border-radius: 47px;
+    width: 4rem;
+    height: 4rem;
+}
+
+.folder-owner-name {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.folder-name {
+    font-size: 3.2rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
 }
 
 /* 검색 바 */
