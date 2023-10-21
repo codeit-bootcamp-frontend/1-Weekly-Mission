@@ -1,5 +1,6 @@
 import React from 'react';
 import './card.css';
+import logo from '../../assets/common/logo.svg';
 import calcCreateTime from '../../utils/calcCreateTime';
 
 function Card({ linkInfo }) {
@@ -14,8 +15,20 @@ function Card({ linkInfo }) {
         target="_blank"
         rel="noreferrer"
       >
-        <div className="card-img-section">
-          <img src={linkInfo?.imageSource} alt="cat" className="sample-img" />
+        <div
+          className={
+            linkInfo?.imageSource
+              ? 'card-img-section'
+              : 'card-img-section-empty'
+          }
+        >
+          <img
+            src={linkInfo?.imageSource || logo}
+            className={
+              linkInfo?.imageSource ? 'sample-img' : 'sample-img-empty'
+            }
+            alt="cat"
+          />
         </div>
         <div className="card-text-section">
           <p className="time-stamp">{formattedTime}</p>
