@@ -8,7 +8,13 @@ const LoginButton = ({ className, isLogin, data }) => {
     <>
       {isLogin ? (
         <div className="loginDiv">
-          <img className="loginImage" src={imageSource} alt="프로필 사진"></img>
+          <div className="loginImageBg">
+            <img
+              className="loginImage"
+              src={imageSource}
+              alt="프로필 사진"
+            ></img>
+          </div>
           <span className="loginEmail">{email}</span>
         </div>
       ) : (

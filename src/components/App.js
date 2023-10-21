@@ -1,5 +1,7 @@
 import Navigator from "./NavigationBar";
 import FolderInfo from "./FolderInfo";
+import SearchBar from "./SearchBar";
+import CardSection from "./CardSection";
 import { getUsers, getFolder } from "../api";
 import { useState, useEffect } from "react";
 import "../style/App.css";
@@ -66,7 +68,10 @@ const App = () => {
       <header>
         <FolderInfo data={folderData} />
       </header>
-      <article></article>
+      <article>
+        <SearchBar />
+        <CardSection />
+      </article>
     </>
   );
 };

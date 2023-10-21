@@ -4,10 +4,17 @@
   gap: 6px;
 }
 
-.loginImage {
+.loginImageBg {
+  display: flex;
+  justify-content: center;
   width: 28px;
   height: 28px;
-  flex-shrink: 0;
+  border-radius: 70%;
+  overflow: hidden;
+}
+
+.loginImageBg {
+  object-fit: cover;
 }
 
 .loginEmail {
