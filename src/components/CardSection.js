@@ -1,10 +1,17 @@
 import Card from "./Card";
+import "../style/CardSection.css";
 
-const CardSection = () => {
+const CardSection = ({ data }) => {
+  const handleCardClick = (url) => {
+    window.open(url);
+  };
+
   return (
-    <div>
-      <Card />
-    </div>
+    <section>
+      {data.map((data) => {
+        return <Card key={data.id} data={data} onClick={handleCardClick} />;
+      })}
+    </section>
   );
 };
 

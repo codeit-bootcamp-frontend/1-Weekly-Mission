@@ -2,6 +2,7 @@ import Navigator from "./NavigationBar";
 import FolderInfo from "./FolderInfo";
 import SearchBar from "./SearchBar";
 import CardSection from "./CardSection";
+import Footer from "./Footer";
 import { getUsers, getFolder } from "../api";
 import { useState, useEffect } from "react";
 import "../style/App.css";
@@ -16,6 +17,7 @@ const App = () => {
     folderName: "",
     ownerName: "",
     ownerImage: "",
+    datas: [],
   });
 
   const handleUserProfile = async () => {
@@ -43,13 +45,14 @@ const App = () => {
       console.log(err);
     }
     const {
-      folder: { name, owner },
+      folder: { name, links, owner },
     } = folderInfo;
     setFolderData((prevData) => ({
       ...prevData,
       folderName: name,
       ownerName: owner["name"],
       ownerImage: owner["profileImageSource"],
+      datas: links,
     }));
   };
 
@@ -70,8 +73,9 @@ const App = () => {
       </header>
       <article>
         <SearchBar />
-        <CardSection />
+        <CardSection data={folderData.datas} />
       </article>
+      <Footer />
     </>
   );
 };

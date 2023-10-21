@@ -1,3 +1,7 @@
+/* PC: 1200px 이상
+Tablet: 768px 이상 ~ 1199px 이하
+Mobile: 375px 이상 ~ 767px 이하 */
+
 .nav {
   display: flex;
   justify-content: center;
@@ -5,6 +9,7 @@
   top: 0;
   width: 100%;
   background-color: #edf7ff;
+  z-index: 9999;
 }
 
 .gnb {
@@ -81,7 +86,7 @@ article {
   padding-bottom: 7rem;
 
   @media (min-width: 768px) {
-    padding-top: 1rem;
+    padding-top: 3rem;
     padding-bottom: 5rem;
   }
 
