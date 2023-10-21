@@ -1,6 +1,6 @@
 import "./Card.css";
 import { format } from "timeago.js";
-import noImage from "../images/no-image.svg";
+import noImage from "../../images/no-image.svg";
 
 function Card({ item }) {
   const { imageSource, createdAt, title, description, url } = item;
@@ -8,7 +8,7 @@ function Card({ item }) {
   let date = new Date(createdAt);
   date = date.toLocaleDateString();
 
-  let timeDiff = format(createdAt, 'en_US');
+  let timeDiff = format(createdAt, "en_US");
 
   const moveUrl = () => {
     window.open(url);

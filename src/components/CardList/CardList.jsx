@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
-import { getFolder } from "../api";
-import './CardList.css';
+import Card from "../Card/Card";
+import { getFolder } from "../../api";
+import "./CardList.css";
 
 export default function CardList() {
   const [items, setItems] = useState("");
