@@ -32,6 +32,16 @@ nav {
     height: 1.6rem;
 }
 
+.user-profile-image {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 70%;
+}
+
+.user-profile-email {
+    display: none;
+}
+
 header {
     display: flex;
     flex-direction: column;
