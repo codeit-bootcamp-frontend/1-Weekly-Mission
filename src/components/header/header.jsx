@@ -1,5 +1,6 @@
 import "./header.css";
 import logoImgSource from "../../assets/icons/logo.svg";
+import profileImgSource from "../../assets/icons/profile.svg";
 
 export default function HeaderComponent({ email }) {
 	return (
@@ -17,8 +18,8 @@ export default function HeaderComponent({ email }) {
 				{email ? (
 					<button className="header__profile-button">
 						<img
-							className="profile-image"
-							src={""} // TODO
+							className="profile-icon"
+							src={profileImgSource}
 							alt="프로필 아이콘"
 							width="28"
 							height="28"

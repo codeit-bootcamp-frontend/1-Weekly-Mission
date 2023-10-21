@@ -27,7 +27,7 @@ export default function LinkSharePage() {
 
 	return (
 		<div className="page--container">
-			<HeaderComponent profile={profile.email} />
+			<HeaderComponent email={profile.email} />
 
 			<main className="folder-info--wrapper">
 				<img
