@@ -1,7 +1,9 @@
 const URL = 'https://bootcamp-api.codeit.kr/api/sample';
 
 export const HeaderRequestData = async () => {
-  const response = await fetch(`${URL}/user`);
+  const response = await fetch(`${URL}/user`, {
+    method: 'GET',
+  });
   if (!response.ok) {
     throw new Error('헤더 프로필 에러 발생');
   }
@@ -11,7 +13,9 @@ export const HeaderRequestData = async () => {
 };
 
 export const introRequestData = async () => {
-  const response = await fetch(`${URL}/folder`);
+  const response = await fetch(`${URL}/folder`, {
+    method: 'GET',
+  });
   if (!response.ok) {
     throw new Error('인트로 프로필 에러 발생');
   }

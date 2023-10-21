@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Intro from './components/Intro';
 import Main from './components/Main';
 import HeaderRequestData, { introRequestData } from './services/api';
-import './styles/variables.css';
-import './styles/reset.css';
+import './styles/Variables.css';
+import './styles/Reset.css';
 
 function App() {
   const [headerId, setHeaderId] = useState();

@@ -1,6 +1,7 @@
-import '../styles/Header.css';
-import Logo from '../assets/icon/logo.svg';
+import React from 'react';
 import Login from '../components/Login';
+import Logo from '../assets/icon/logo.svg';
+import '../styles/Header.css';
 
 function Header({ id, email, headerProfileImg }) {
   return (

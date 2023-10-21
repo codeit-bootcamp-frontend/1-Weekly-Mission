@@ -1,3 +1,4 @@
+import React from 'react';
 import '../styles/Intro.css';
 
 function Intro({ id, name, introProfileImg, introFolderName }) {
