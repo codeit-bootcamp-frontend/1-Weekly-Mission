@@ -1,0 +1,86 @@
+@use '../utils' as *;
+
+.footer {
+  width: 100%;
+  background-color: $the-julge-black;
+
+  &__inner {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 18rem 11.6rem;
+    grid-template-rows: 1.8rem 1.8rem;
+    row-gap: 6rem;
+    column-gap: auto;
+    padding: 3.2rem;
+
+    @include tablet {
+      grid-template-columns: auto auto auto;
+    }
+
+    @include pc {
+      grid-template-columns: auto auto auto;
+    }
+  }
+
+  &__copyright {
+    font-family: Arial;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #676767;
+    grid-column: 1;
+    grid-row: 2;
+
+    @include tablet {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    @include pc {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+  &__extra-page {
+    display: flex;
+    gap: 3rem;
+    grid-column: 1;
+    grid-row: 1;
+
+    @include tablet {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    @include pc {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+  &__link {
+    font-family: Arial;
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: #cfcfcf;
+  }
+
+  &__sns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2rem;
+    grid-column: 2;
+    grid-row: 1;
+
+    @include tablet {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    @include pc {
+      grid-column: 3;
+      grid-row: 1;
+    }
+  }
+}

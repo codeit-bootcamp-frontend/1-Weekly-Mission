@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { getUser } from '../api/apiClient';
 
-import linkbraryLogo from '../assets/icons/linkbrary.svg';
+import linkbraryIcon from '../assets/icons/linkbrary.svg';
 
 function Navigator() {
   const [userInfo, setUserInfo] = useState({});
@@ -26,7 +26,7 @@ function Navigator() {
         <div class='gnb__logo'>
           <a href='/'>
             <img
-              src={linkbraryLogo}
+              src={linkbraryIcon}
               alt='링크브러리 로고'
               class='gnb__logo-img'
             />

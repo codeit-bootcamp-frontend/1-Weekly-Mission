@@ -1,5 +1,6 @@
-import Folder from './Components/Folder';
 import Navigator from './Components/Navigator';
+import Folder from './Components/Folder';
+import Footer from './Components/Footer';
 
 import './scss/main.scss';
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <Navigator />
       <Folder />
+      <Footer />
     </>
   );
 }
