@@ -10,7 +10,6 @@
     display : flex;
     align-items: center;
     gap : 0.6rem;
-    font-size : 1.4rem;
     color : var(--gray-100);
 }
 .profile_img{
@@ -18,6 +17,9 @@
     height : 2.8rem;
     object-fit: cover;
     border-radius: 100%;
+}
+.profile_email{
+    font-size : 1.4rem;
 }
 .blue_btn{
     display: flex;

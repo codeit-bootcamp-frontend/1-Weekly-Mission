@@ -24,6 +24,12 @@
     right : 0px;
     z-index : 1;
 }
+.folder_info{
+    background-color: var(--bg);
+    width : 100%;
+    padding : 80px 0px 60px;
+}
+
 /* Tablet */
 @media (max-width : 1199px){
     .header{
@@ -34,6 +40,7 @@
         font-size : 1.8rem;
     }
 }
+
 /* Mobile */
 @media (max-width : 767px){
     .header{
@@ -45,5 +52,8 @@
     }
     .login_btn{
         width : 80px;
+    }
+    .folder_info{
+        padding : 80px 0px 40px;
     }
 }
