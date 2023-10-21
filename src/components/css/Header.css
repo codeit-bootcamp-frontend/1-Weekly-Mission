@@ -1,19 +1,16 @@
-.Header_Nav {
-  margin: 0 auto;
-}
+
 
 .Header_wrapper {
   margin-top: 93px;
   padding: 20px 0 60px;
   background-color: #f0f6ff;
 
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     padding: 10px 32px 40px;
-  }
+  } */
 }
 
 .Header_container {
-  min-width: 170px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

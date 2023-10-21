@@ -21,7 +21,7 @@ function Nav({ account }) {
     <div className="Nav_wrapper">
       <div className="Nav">
         <div className="Nav_left">
-          <img className="Nav_logo" src={logoImg} alt={logoImg} />
+          <a href="/"><img className="Nav_logo" src={logoImg} alt={logoImg}/></a>
         </div>
         <div className="Nav_right">
           {account.email ? (

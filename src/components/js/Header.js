@@ -1,22 +1,12 @@
 import Nav from "./Nav";
 import "../css/Header.css";
+import "../css/Nav.css";
 
-function Header({ account, owner, folderName }) {
-  const { name, profileImageSource } = owner;
-  const ownerName = name;
-  const avatarImg = profileImageSource;
-
+function Header({ account}) {
   return (
-    <div>
-      <Nav className="Header_Nav" account={account} />
-      <div className="Header_wrapper">
-        <div className="Header_container">
-          <img className="avatar_img" src={avatarImg} alt="avatar"></img>
-          <span className="folder_owner">{`@${ownerName}`}</span>
-          <span className="folder_name">{folderName}</span>
-        </div>
-      </div>
-    </div>
+    <header>
+      <Nav account={account} />
+    </header>
   );
 }
 
