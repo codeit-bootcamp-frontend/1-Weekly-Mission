@@ -1,20 +1,17 @@
+import css from "../css/Footer.module.css";
 import FacebookIcon from "../icon/FacebookIcon";
 import InstagramIcon from "../icon/InstagramIcon";
 import TwitterIcon from "../icon/TwitterIcon";
 import YoutubeIcon from "../icon/YoutubeIcon";
 function Footer() {
   return (
-    <div className="footer">
-      <div className="since-codeit">©codeit - 2023</div>
-      <div class="extra_sites">
-        <a class="extra_sites__link" href="/html/privacy.html">
-          Privacy Policy
-        </a>
-        <a class="extra_sites__link" href="/html/faq.html">
-          FAQ
-        </a>
+    <div className={css.footer}>
+      <div className={css.since}>©codeit - 2023</div>
+      <div className={css.extraSites}>
+        <a href="/html/privacy.html">Privacy Policy</a>
+        <a href="/html/faq.html">FAQ</a>
       </div>
-      <div class="icons">
+      <div className={css.icons}>
         <a
           href="https://www.facebook.com/"
           target="_blank"
