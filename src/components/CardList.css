@@ -2,6 +2,7 @@
   display: grid;
   grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
   gap: 2.5rem 2rem;
+  place-items: center;
 }
 
 .Card {
