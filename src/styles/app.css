@@ -1,5 +1,5 @@
 .section {
-  padding: 4rem;
+  padding: 3.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,7 +8,7 @@
 }
 
 .search-section {
-  width: 100%;
+  width: 90%;
 }
 
 .card-section {
@@ -26,11 +26,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
   }
+  .search-section {
+    min-width: 30rem;
+  }
 }
 
-/* 1124 이상 컴퓨터에서는
- * 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다.
- */
 @media (min-width: 1124px) {
   .card-section {
     display: grid;

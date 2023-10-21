@@ -1,5 +1,5 @@
 .search-form {
-  width: 100%;
+  /* width: 100%; */
   position: relative;
 }
 
@@ -9,7 +9,12 @@
   height: 3.5rem;
   border-radius: 10px;
   border: none;
-  background-color: #eeeeee;
+  background-color: var(--color-gray2);
+}
+
+input:focus {
+  outline: none !important;
+  border: 2px solid var(--color-gray4);
 }
 
 .search-icon {
