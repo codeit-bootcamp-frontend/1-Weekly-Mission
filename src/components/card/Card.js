@@ -7,6 +7,10 @@ function Card({ linkInfo }) {
   const createdAt = new Date(linkInfo?.createdAt);
   const formattedTime = calcCreateTime(createdAt);
 
+  const year = createdAt.getFullYear();
+  const month = createdAt.getMonth() + 1;
+  const date = createdAt.getDate();
+
   return (
     <div className="card">
       <a
@@ -36,7 +40,7 @@ function Card({ linkInfo }) {
             Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc
             consequat. Tldkd
           </p>
-          <p className="created-date">생성 날짜</p>
+          <p className="created-date">{`${year}. ${month}. ${date}`}</p>
         </div>
       </a>
     </div>
