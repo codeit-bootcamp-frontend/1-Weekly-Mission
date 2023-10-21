@@ -12,7 +12,7 @@ export default function Nav() {
           <img className="nav1-libraryImg" src={library} />
         </div>
         <div className="nav1-div">
-          <div className="nav1-div-human">
+          <div className="nav1-div-logo">
             <img className="nav1-humanImg" src={humanImg} />
           </div>
           <div className="nav1-div-mail">Codeit@codeit.com</div>

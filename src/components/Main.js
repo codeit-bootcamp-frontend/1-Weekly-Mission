@@ -1,53 +1,30 @@
+import { useState, useEffect } from 'react';
 import './Main.css';
-import card1 from './img/card1.svg';
-import card2 from './img/card2.svg';
-import card3 from './img/card3.svg';
 import search from './img/search.svg';
+import { getDatas } from '../api';
+import Card from './Card';
 
 export default function Main() {
+  const [items, setItems] = useState([]);
+
+  const handleLoad = async () => {
+    const { folder } = await getDatas();
+    setItems(folder.links);
+  };
+  useEffect(() => {
+    handleLoad();
+  }, []);
+  // console.log(items);
   return (
     <div className="main-container">
       <div className="main-search">
-        <img src={search} />
+        <img src={search} alt="search" />
         <div className="search-div">링크를 검색해 보세요.</div>
       </div>
-
       <div className="main-content-wrapper">
-        <div className="card1-content">
-          <div className="card1-img-div">
-            <img className="cards" src={card1} />
-          </div>
-          <div className="card1-description">
-            <div className="card1-time-div">10 minutes ago</div>
-            <div className="card1-text-div">
-              Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc
-              consequat.
-            </div>
-            <div className="card1-year-div">2023. 3. 15</div>
-          </div>
-        </div>
-        <div className="card2-content">
-          <img className="cards" src={card2} />
-          <div className="card2-description">
-            <div>10 minutes ago</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc
-              consequat.
-            </div>
-            <div>2023. 3. 15</div>
-          </div>
-        </div>
-        <div className="card3-content">
-          <img className="cards" src={card3} />
-          <div className="card3-description">
-            <div>10 minutes ago</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc
-              consequat.
-            </div>
-            <div>2023. 3. 15</div>
-          </div>
-        </div>
+        {items.map((item) => (
+          <Card key={item.id} item={item} />
+        ))}
       </div>
     </div>
   );
