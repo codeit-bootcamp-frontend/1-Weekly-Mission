@@ -16,15 +16,29 @@
     border-radius: 47px;
     width: 4rem;
     height: 4rem;
+
+    @media (min-width: 768px) {
+        width: 6rem;
+        height: 6rem;
+    }
 }
 
 .folder-owner-name {
     font-size: 1.4rem;
     font-weight: 400;
+
+    @media (min-width: 768px) {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+    }
 }
 
 .folder-name {
     font-size: 3.2rem;
     font-weight: 600;
     letter-spacing: -0.2px;
+
+    @media (min-width: 768px) {
+        font-size: 4rem;
+    }
 }
