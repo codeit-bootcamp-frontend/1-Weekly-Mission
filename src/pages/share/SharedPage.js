@@ -9,11 +9,12 @@ export default function SharedPage({ links }) {
       <section className="content-section">
         <SearchBar />
         <div className="links-container">
-          {links.map((item) => (
-            <div key={item.id}>
-              <Card linkInfo={item} />
-            </div>
-          ))}
+          {links &&
+            links.map((item) => (
+              <div key={item.id}>
+                <Card linkInfo={item} />
+              </div>
+            ))}
         </div>
       </section>
     </main>
