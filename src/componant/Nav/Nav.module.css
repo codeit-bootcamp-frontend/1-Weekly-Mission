@@ -37,7 +37,7 @@
 }
 
 @media (max-width: 1199px) {
-  .nav {
+  .root {
     padding: 2rem 3.2rem;
     margin: 0 auto;
     max-width: 86.4rem;
@@ -55,7 +55,7 @@
     font-size: 1.4rem;
   }
 
-  .nav {
+  .root {
     padding: 1.3rem 3.2rem;
   }
 
