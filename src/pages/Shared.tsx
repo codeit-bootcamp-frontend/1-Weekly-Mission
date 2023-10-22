@@ -8,7 +8,7 @@ import manageStatus from "utils/manageStatus";
 function Shared() {
   const { isLoading, isError, data } = useQuery<Folder>({
     queryKey: ["userInform"],
-    queryFn: getUserFolder
+    queryFn: getUserFolder,
   });
 
   if (isLoading || isError) {
@@ -34,7 +34,7 @@ function Shared() {
         <div className={styles.itemInWrapper}>
           <SearchBar />
           <div className={styles.cardListWrapper}>
-            <FolderCardList />
+            <FolderCardList data={data} />
           </div>
         </div>
       </div>

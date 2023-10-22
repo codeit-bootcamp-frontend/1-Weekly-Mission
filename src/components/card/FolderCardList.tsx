@@ -1,18 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import FolderCard from "components/card/FolderCard";
-import QUERY_KEYS from "constants/queryKeys";
-import getUserFolder from "libs/apis/getUserFolder";
-import manageStatus from "utils/manageStatus";
 
-function FolderCardList() {
-  const { isLoading, isError, data } = useQuery<Folder>({
-    queryKey: [QUERY_KEYS.sample.folder],
-    queryFn: getUserFolder,
-  });
+interface Props {
+  data?: Folder;
+}
 
-  if (isLoading || isError) {
-    return manageStatus({ isLoading, isError });
-  }
+function FolderCardList({ data }: Props) {
   return (
     <>
       {data?.folder.links.map((item) => (
