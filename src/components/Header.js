@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Logo from '../assets/icon/logo.svg';
 import Login from '../components/Login';
+import HeaderRequestData from '../services/Api';
 import '../styles/Header.css';
 
-function Header({ loginData }) {
+function Header() {
+  const [loginData, setLoginData] = useState({});
+
+  const loginInfo = useCallback(async () => {
+    const headerResult = await HeaderRequestData();
+    if (!headerResult) return;
+
+    setLoginData(headerResult);
+  }, []);
+
+  useEffect(() => {
+    loginInfo();
+  }, [loginInfo]);
+
   const { id, email, profileImageSource } = loginData;
 
   return (
