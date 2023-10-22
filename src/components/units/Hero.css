@@ -1,0 +1,21 @@
+.hero__profile {
+  padding-top: 5.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.hero__profile__image {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.hero__profile__name {
+  margin: 1rem 0;
+}
+
+.hero__title {
+  padding-bottom: 3.75rem;
+  font-size: 2.5rem;
+  font-weight: var(--font-semibold);
+  margin: 0;
+}

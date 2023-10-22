@@ -1,7 +1,6 @@
 import "App.css";
 
 import logo from "assets/logo.svg";
-import avatar from "assets/Avatar.svg";
 import facebookIcon from "assets/akar-icons_facebook-fill.svg";
 import twitterIcon from "assets/akar-icons_twitter-fill.svg";
 import youtubeIcon from "assets/akar-icons_youtube-fill.svg";
@@ -10,6 +9,7 @@ import { useEffect, useState } from "react";
 import { getUser } from "api/api";
 import CardList from "components/units/CardList";
 import Searchbar from "components/units/Searchbar";
+import Hero from "components/units/Hero";
 
 function App() {
   const [user, setUser] = useState();
@@ -42,13 +42,7 @@ function App() {
       </header>
       <main>
         <section className="hero">
-          <div className="hero__profile">
-            <img src={avatar} alt="avatar" />
-            <p>@코드잇</p>
-          </div>
-          <div className="hero__link">
-            <button className="hero__link__btn">⭐️ 즐겨찾기</button>
-          </div>
+          <Hero />
         </section>
         <section>
           <div className="contents">
