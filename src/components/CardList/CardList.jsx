@@ -3,8 +3,8 @@ import Card from "components/Card/Card";
 import { getFolder } from "api";
 import "./CardList.css";
 
-export default function CardList() {
-  const [items, setItems] = useState("");
+function CardList() {
+  const [items, setItems] = useState();
 
   const handleLoad = async () => {
     const data = await getFolder();
@@ -31,3 +31,5 @@ export default function CardList() {
     </>
   );
 }
+
+export default CardList;
