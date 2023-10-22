@@ -1,4 +1,5 @@
 import Moment from 'react-moment';
+import '../css/card.css';
 
 function Card({ item }) {
   return (
@@ -19,7 +20,7 @@ function Card({ item }) {
               <img src="/assets/image/kebab.svg" alt="카드 설정 버튼" />
             </button>
           </div>
-          <p>{item.description}</p>
+          <p className="card-description">{item.description}</p>
           <Moment format="YYYY.MM.DD">{item.createdAt}</Moment>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import './css/reset.css';
+import './css/colors.css';
 import './css/App.css';
 import CardList from './components/CardList';
 import { useCallback, useEffect, useState } from 'react';

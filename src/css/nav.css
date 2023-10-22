@@ -1,21 +1,29 @@
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  background-color: var(--background);
+  padding: 1.8rem 3.2rem;
+}
+
 .gnb {
+  /* 모바일 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 6.3rem;
-  padding: 0 3.2rem;
-  background-color: var(--background);
 
+  /* 태블릿 */
   @media (min-width: 768px) {
     height: 9.4rem;
     max-width: 86.3rem;
   }
 
-  @media (min-width: 1200px) {
+  /* 데스크탑 */
+  @media (min-width: 1024px) {
     height: 9.4rem;
-    max-width: 192rem;
-    padding: 0 20rem;
+    padding: 0 2rem;
   }
 }
 

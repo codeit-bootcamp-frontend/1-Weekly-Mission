@@ -1,4 +1,5 @@
 import Card from './Card';
+import '../css/cardList.css';
 
 function CardList({ items }) {
   return (
