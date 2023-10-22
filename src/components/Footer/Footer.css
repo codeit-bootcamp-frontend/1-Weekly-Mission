@@ -9,15 +9,19 @@ footer {
   flex-shrink: 0;
   background: var(--black);
   position: relative;
-  align-self: stretch;
-  flex: 0 1 192rem;
-}
-
-footer {
   font-family: Arial;
   font-size: 1.6rem;
   font-weight: 400;
 }
+
+#footer {
+  display: flex;
+  flex: 0 1 192rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
 
 #footer-codeit {
   display: flex;
@@ -43,4 +47,24 @@ footer .website {
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
+}
+
+@media (max-width: 767px) {
+
+  footer {
+    margin-top: 8rem;
+    padding: 3.2rem;
+  }
+
+  #footer {
+    flex: 0 1 192rem;
+    align-items: flex-start;
+  }
+
+  #footer-codeit{
+    position: absolute;
+    bottom: 3.2rem;
+    left: 3.2rem;
+  }
+
 }

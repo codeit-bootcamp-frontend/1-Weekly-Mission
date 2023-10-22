@@ -16,9 +16,9 @@ const Main = ( {folder} ) => {
           required placeholder="링크를 검색해 보세요.">
         </input>  {/*돋보기 아이콘 삽입해야 함*/}
       </form>
-      <content>
+      <section>
         <Cards folderCards={folder.links}/>
-      </content>
+      </section>
     </main>
   )
 }

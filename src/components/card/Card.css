@@ -1,15 +1,15 @@
 .card {
-  width: 340px;
-  height: 334px;
+  display: block;
+  width: 34rem;
+  height: 33.4rem;
   flex-shrink: 0;
-  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0rem 0.5rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
   border-radius: 1.5rem;
-  
 }
 
 .img-area {
-  width: 340px;
-  height: 200px;
+  width: 34rem;
+  height: 20rem;
   flex-shrink: 0;
   overflow: hidden;
   position: relative;
@@ -18,8 +18,8 @@
 
 .img-area .star-icon {
   position: absolute;
-  width: 34px;
-  height: 34px;
+  width: 3.4rem;
+  height: 3.4rem;
   flex-shrink: 0;
   right: 1.5rem;
   top: 1.5rem;
@@ -27,8 +27,8 @@
 }
 
 .card-img, .empty-img {
-  width: 340px;
-  height: 200px;
+  width: 34rem;
+  height: 20rem;
   object-fit: cover;
 }
 
@@ -38,12 +38,12 @@
 
 .info-area {
   display: flex;
-  width: 340px;
-  padding: 15px 20px;
+  width: 34rem;
+  padding: 1.5rem 2rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-  border-radius: 0px 0px 15px 15px;
+  gap: 1rem;
+  border-radius: 0rem 0rem 1.5rem 1.5rem;
   background: #FFF;
 }
 
@@ -62,12 +62,12 @@
 
 
 .card-extra-info .kebab {
-  width: 21px;
-  height: 17px;
+  width: 2.1rem;
+  height: 1.7rem;
 }
 
 .info-area .text {
-  height: 49px;
+  height: 4.9rem;
   align-self: stretch;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -76,8 +76,12 @@
   margin: 0;
 }
 
+.info-area .text:hover {
+  text-decoration: underline;
+}
+
 .info-area .date {
-  height: 19px;
+  height: 1.9rem;
   align-self: stretch;
   color: #333;
   overflow: hidden;

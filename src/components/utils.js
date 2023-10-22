@@ -1,6 +1,4 @@
-import kebab from './kebab.svg';
-
-function formatDateDifference(createdAt) {
+export const formatDateDifference = (createdAt) => {
   const now = new Date();
   const createdDate = new Date(createdAt);
   const timeDifference = now - createdDate;
@@ -32,18 +30,10 @@ function formatDateDifference(createdAt) {
   } else {
     return `${years} years ago`;
   }
-}
+};
 
-const CardExtraInfo = ( {createdAt} ) => {
-
-  const formattedDate = formatDateDifference(createdAt);
-
-  return(
-    <div className="card-extra-info">
-      <p className="upload-time">{formattedDate}</p>
-      <img src={kebab} className="kebab" alt="더보기 아이콘"></img>
-    </div>
-  )
-}
-
-export default CardExtraInfo;
+export const formatDate = (createdAt) => {
+  const date = new Date(createdAt);
+  const formattedDate = `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
+  return formattedDate;
+};

@@ -34,3 +34,21 @@ header {
   font-weight: 600;
   margin: 0;
 }
+
+@media (max-width: 767px) {
+
+  .owner-info .profile-image {
+    height: 4rem;
+    border-radius: 2rem;
+  }
+
+  .owner-info .name {
+    font-size: 1.4rem;
+    line-height: normal; /* 150% */
+  }
+
+  .folder-title {
+    font-size: 3.2rem;
+  }
+
+}

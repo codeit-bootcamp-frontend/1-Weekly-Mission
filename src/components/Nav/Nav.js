@@ -8,12 +8,16 @@ const Nav = ( {account} ) => {
 
   return (
     <nav> 
-      <img src={NavLogo} id="logo" href="index" alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
-      {email && <div className="account">  {/*프로필 누르면 자기 계정으로 들어갈 것 같아서 일단 a*/}
-        <img className="profile-img" src={profileImageSource} alt="프로필 이미지"/>
-         <p className="email">{email}</p>
-      </div>}
-      {!email && <button className='login-button'>로그인</button>}
+      <div id='nav-contents'>
+        <a href="/">
+          <img src={NavLogo} id="logo" alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
+        </a>
+        {email && <div className="account">  {/*프로필 누르면 자기 계정으로 들어갈 것 같아서 일단 a*/}
+          <img className="profile-img" src={profileImageSource} alt="프로필 이미지"/>
+          <p className="email">{email}</p>
+        </div>}
+        {!email && <button className='login-button'>로그인</button>}
+      </div>
     </nav>
   )
 }

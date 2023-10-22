@@ -1,10 +1,8 @@
-
-import CardTextContent from './CardTextContent';
-import CardExtraInfo from './CardExtraInfo';
+import { formatDateDifference, formatDate } from '../utils';
 import '../../globalStyles.css'
 import './Card.css';
-import starIcon from './star.svg';
 import EmptyCardImg from './Card_img.svg'
+import kebab from './kebab.svg';
 
 const Cards = ( { folderCards } ) => {
   return (
@@ -20,21 +18,15 @@ const Cards = ( { folderCards } ) => {
   )
 }
 
-const formatDate = (createdAt) => {
-  const date = new Date(createdAt);
-  const formattedDate = `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
-  return formattedDate;
-};
-
 const Card = ( { item } ) => {
 
   const {createdAt, url, description, imageSource} = item;
   const uploadDate = formatDate(createdAt)
+  const dateDifference = formatDateDifference(createdAt);
 
   return (
     <a className="card" href={url}>
       <div className="img-area">
-        <img className="star-icon" src={starIcon} alt="즐겨찾기 등록 버튼" />
         {imageSource ? (
           <img className="card-img" src={imageSource} alt="이미지" />
         ) : ( 
@@ -42,11 +34,15 @@ const Card = ( { item } ) => {
         )}
       </div>
       <div className="info-area">
-        <CardExtraInfo createdAt={createdAt} />
-        <CardTextContent text={description} date={uploadDate}/>
+        <div className="card-extra-info">
+          <p className="upload-time">{dateDifference}</p>
+          <img src={kebab} className="kebab" alt="더보기 아이콘"></img>
+        </div>
+        <p className='text'>{description}</p>
+        <p className='date'>{uploadDate}</p>
       </div>
     </a>
   );
-;}
+};
 
 export default Cards;
