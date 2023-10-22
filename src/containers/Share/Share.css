@@ -43,26 +43,9 @@
 .shared-frame {
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
   align-items: center;
   justify-content: center;
   gap: 4rem;
   margin: 4rem auto;
   padding: 0 clamp(3.2rem, 5%, 19rem);
-  /* padding-right:  */
-  /* padding: 0 19rem; */
-}
-
-/* Tablet */
-@media screen and (min-width: 769px) and (max-width: 1123px) {
-  .shared-frame {
-    /* padding: 0 19rem; */
-  }
-}
-
-/* Mobile */
-@media screen and (max-width: 767px) {
-  .shared-frame {
-    /* padding: 0 min(3.2rem); */
-  }
 }
