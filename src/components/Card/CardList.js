@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-const CardList = ({ cards }) => {
+const CardList = ({ cards, hasDetails }) => {
   return (
     <div className="card-list">
       {cards &&
@@ -14,6 +14,7 @@ const CardList = ({ cards }) => {
             imgUrl={card.imageSource}
             title={card.title}
             url={card.url}
+            hasDetails={hasDetails}
           />
         ))}
     </div>

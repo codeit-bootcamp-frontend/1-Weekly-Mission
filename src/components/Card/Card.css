@@ -29,6 +29,7 @@
 }
 
 .card-img-container {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -48,6 +49,17 @@
 .card:hover .card-img {
   transform: scale(1.2);
   transition: 0.5s;
+}
+
+.card-star {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.card-star:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
 }
 
 .card-time-difference {
