@@ -5,8 +5,7 @@
 }
 
 .content-section {
-  width: 1000px;
-  margin: auto;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -19,4 +18,18 @@
   column-gap: 20px;
   row-gap: 25px;
   margin-top: 40px;
+}
+
+/* tablet */
+
+@media (max-width: 1124px) {
+  .links-container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+  }
+
+  .main {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
 }
