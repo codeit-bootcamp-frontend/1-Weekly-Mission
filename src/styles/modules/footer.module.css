@@ -5,9 +5,11 @@ footer {
   height: 16rem;
   padding-top: 3.2rem;
   background-color: #111322;
+  min-height: 100%;
 }
 
 .wrapper {
+  bottom: 0;
   display: grid;
   grid-template: "logo linkToPage socialIcon";
   justify-content: space-between;
