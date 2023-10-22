@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import defaultProfileImg from '../assets/images/default-profile.svg';
 
 function Profile({user}){
     const {email, profileImageSource} = user;
@@ -14,10 +15,10 @@ function Profile({user}){
         window.removeEventListener("resize", handleResize);
       };
     }, []);
-
+    
     return (
         <div className = "profile">
-            <img className = "profile_img" src = {profileImageSource} alt = "프로필 사진"/>
+            <img className = "profile_img" src = {profileImageSource || defaultProfileImg} alt = "프로필 사진"/>
             {(resize < 768) ? null : <div className = "profile_email">{email}</div>}
         </div>
     );
