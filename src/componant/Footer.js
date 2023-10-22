@@ -30,10 +30,10 @@ function Footer() {
         </div>
 
         <div className="footer__privacy">
-          <a href="/privacy.html" title="Privacy Policy">
+          <a href="/privacy" title="Privacy Policy">
             Privacy Policy
           </a>
-          <a href="/faq.html" title="FAQ">
+          <a href="/faq" title="FAQ">
             FAQ
           </a>
         </div>
