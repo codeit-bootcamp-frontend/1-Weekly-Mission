@@ -1,31 +1,33 @@
+import "../styles/Folder.css";
+import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import { useState } from "react";
-import getUser from "../api/getUser";
 import FolderInfo from "../components/FolderInfo";
-import "../styles/Folder.css";
-const Folder = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [userData, setUserData] = useState("");
+import Card from "../components/Card";
+import getFolder from "../api/getFolder";
 
-  const handleUserData = async (e) => {
+const Folder = () => {
+  const [folderData, setFolderData] = useState([]);
+
+  const handleLoadFolderData = async () => {
     try {
-      setIsLoading(true);
-      e.preventDefault();
-      setUserData(await getUser());
+      setFolderData(await getFolder());
     } catch (error) {
       console.error(error);
-    } finally {
-      setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    handleLoadFolderData();
+  }, []);
 
   return (
     <>
       <div className="header">
-        <NavBar userData={userData} isLoading={isLoading} onClick={handleUserData} />
-        <FolderInfo userData={userData} />
+        <NavBar />
+        <FolderInfo folderData={folderData} />
       </div>
+      <Card folderData={folderData} />
       <Footer />
     </>
   );
