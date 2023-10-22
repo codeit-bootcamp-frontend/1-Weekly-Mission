@@ -36,7 +36,7 @@ function App() {
 
 	return (
 		<>
-			{!userInfoLoading && <Header isLogin={!!userInfo} userEmail={userInfo?.email} />}
+			{!userInfoLoading && userInfo && <Header isLogin={!!userInfo} userInfo={userInfo} />}
 			{userInfoError?.message && <div>{userInfoError.message}</div>}
 			{userFolderError?.message && <div>{userFolderError.message}</div>}
 			{userFolderLoading ? <div>로딩중..</div> : folderInfo && <Folder folderInfo={folderInfo} />}
