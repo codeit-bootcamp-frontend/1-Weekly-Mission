@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import Cards from "./Cards";
 import { getFolder } from "./api";
 import Search from "./Search";
 import "./landing.css";
@@ -42,7 +42,7 @@ const Header = () => {
         </div>
       </header>
       <Search />
-      <Card />
+      <Cards />
     </>
   );
 };

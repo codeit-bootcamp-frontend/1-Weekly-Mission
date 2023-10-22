@@ -1,23 +1,56 @@
 import React from "react";
-import "./landing.css";
 
-const Card = () => {
+const Card = ({ cardImage }) => {
   return (
-    <div className="card-area">
-      <div
+    <>
+      <li
         style={{
-          fontSize: "2rem",
-          width: "100%",
-          height: "50rem",
-          backgroundColor: "#bada55",
-          alignItems: "center",
-          justifyContent: "center",
+          listStyle: "none",
           display: "flex",
+          flexDirection: "column",
         }}
       >
-        카드 컴포넌트 영역 페어 프로그래밍
-      </div>
-    </div>
+        <a
+          href="/"
+          target="_blank"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "30%",
+            borderRadius: "1rem",
+            width: "34rem",
+          }}
+        >
+          <img
+            src={cardImage}
+            alt="card 이미지"
+            style={{
+              boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
+              borderTopLeftRadius: "1rem",
+              borderTopRightRadius: "1rem",
+            }}
+          />
+          <div
+            style={{
+              backgroundColor: "white",
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+              borderBottomLeftRadius: "1rem",
+              borderBottomRightRadius: "1rem",
+              padding: "1rem",
+            }}
+          >
+            <span>0 minutes ago</span>
+            <span>
+              Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc
+              consequat...
+            </span>
+            <span>2023.3.15</span>
+          </div>
+        </a>
+      </li>
+    </>
   );
 };
 
