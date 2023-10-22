@@ -16,13 +16,13 @@
 
   /* 태블릿 */
   @media (min-width: 768px) {
-    height: 9.4rem;
+    height: 2.8rem;
     max-width: 86.3rem;
   }
 
   /* 데스크탑 */
   @media (min-width: 1024px) {
-    height: 9.4rem;
+    height: 2.8rem;
     padding: 0 2rem;
   }
 }
