@@ -1,7 +1,7 @@
 @use '../utils' as *;
 
-.folder-container {
-  padding: 2rem 3rem;
+.content-container {
+  padding: 2rem 3.2rem;
 
   @include pc {
     margin: 0 auto;

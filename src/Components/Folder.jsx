@@ -25,7 +25,7 @@ function Folder() {
   return (
     <main>
       {folderInfo && <Banner info={folderInfo} />}
-      <div className='folder-container'>
+      <div className='content-container'>
         <SearchBar />
         {links && <CardList links={links} />}
       </div>
