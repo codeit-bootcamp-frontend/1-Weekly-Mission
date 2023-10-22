@@ -1,15 +1,16 @@
 import "App.css";
 
-import logo from "assets/logo.svg";
 import facebookIcon from "assets/akar-icons_facebook-fill.svg";
 import twitterIcon from "assets/akar-icons_twitter-fill.svg";
 import youtubeIcon from "assets/akar-icons_youtube-fill.svg";
 import instagramIcon from "assets/ant-design_instagram-filled.svg";
-import { useEffect, useState } from "react";
-import { getUser } from "api/api";
+
 import CardList from "components/units/CardList";
 import Searchbar from "components/units/Searchbar";
+import Header from "components/units/Header";
 import Hero from "components/units/Hero";
+import { useEffect, useState } from "react";
+import { getUser } from "api/api";
 
 function App() {
   const [user, setUser] = useState();
@@ -22,24 +23,9 @@ function App() {
     const data = await getUser();
     setUser(data);
   };
-
   return (
     <div>
-      <header className="header">
-        <div className="header__container max-container">
-          <img src={logo} alt="logo" className="header__logo" />
-          <nav>
-            {user ? (
-              <div className="header__navbar">
-                <img src={user.profileImageSource} className="navbar__userImage" />
-                <span className="navbar__userEmail">{user.email}</span>
-              </div>
-            ) : (
-              <button className="header__login__btn">로그인</button>
-            )}
-          </nav>
-        </div>
-      </header>
+      <Header user={user} />
       <main>
         <section className="hero">
           <Hero />
