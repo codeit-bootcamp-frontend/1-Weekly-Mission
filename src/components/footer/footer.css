@@ -57,3 +57,38 @@
   align-items: flex-start;
   gap: 12px;
 }
+
+@media (max-width: 766px) and (min-width: 375px) {
+  .footer {
+    padding: 0px;
+    margin-top: 40px;
+  }
+
+  .footer-privacy-policy {
+    display: grid;
+    grid-column: 1 / 3;
+  }
+
+  .footer-copyrights {
+    grid-row: 2 / 2;
+  }
+
+  .footer-content {
+    padding: 32px 32px 64px;
+  }
+
+  .footer-items {
+    display: grid;
+    row-gap: 60px;
+    margin: 0px;
+  }
+
+  .footer-faq {
+    grid-column: 2 / 3;
+    color: var(--color-white);
+  }
+
+  .footer-icons {
+    grid-column: 3 / 3;
+  }
+}
