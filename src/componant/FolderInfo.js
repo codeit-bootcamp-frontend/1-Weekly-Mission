@@ -1,13 +1,6 @@
-import { getSampleFolder } from '../api.js';
 import styles from './FolderInfo.module.css';
 
-const {
-  folder: { name, owner },
-} = await getSampleFolder();
-
-console.log(styles);
-
-function FolderInfo() {
+function FolderInfo({ name, owner }) {
   return (
     <header className={styles.root}>
       <div className={styles.container}>
