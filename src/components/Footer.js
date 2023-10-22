@@ -5,7 +5,7 @@ import instagramImage from "../assets/png/instagram.png";
 
 import "../styles/footer.css";
 
-function footer() {
+function Footer() {
   return (
     <footer>
       <div className="footer__container">
@@ -32,3 +32,5 @@ function footer() {
     </footer>
   );
 }
+
+export default Footer;

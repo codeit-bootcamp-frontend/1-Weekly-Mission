@@ -1,8 +1,9 @@
 import "../styles/header.css";
+import { getUserData, getFolders } from "../api/api.js";
 import logoImage from "../assets/png/logo.png";
 
-function header() {
-  const { name, email, profileImageSource } = account;
+function Header({ userData }) {
+  const { name, email, profileImageSource } = getUserData;
 
   return (
     <header>
@@ -13,7 +14,7 @@ function header() {
           </a>
         </div>
         <div className="header__profile">
-          {!account ? (
+          {!userData ? (
             <button>로그인</button>
           ) : (
             <>
@@ -30,3 +31,5 @@ function header() {
     </header>
   );
 }
+
+export default Header;
