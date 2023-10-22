@@ -39,7 +39,6 @@ header {
   color: var(--grey-light, #f5f5f5);
   font-family: Pretendard;
   font-size: 1.8rem;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
   text-decoration: none;
@@ -47,6 +46,27 @@ header {
 
 .login.link {
   width: 12.8rem;
+}
+
+.user-account-container {
+  width: 15.8rem;
+  height: 2.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-profile-image {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 2rem;
+}
+
+.user-email {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: normal;
+  color: #373740;
 }
 
 @media (max-width: 1124px) {

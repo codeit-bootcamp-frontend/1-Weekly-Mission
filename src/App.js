@@ -1,35 +1,36 @@
 import { useEffect, useState } from "react";
-import { getFolderData, getUserInfos } from "./APIs/api";
+import { getUserAccount, getFolderData } from "./APIs/api";
 import { CardList } from "./components/Card/CardList";
 import GlobalNavBar from "./components/GnB/GnB";
 import Footer from "./components/Footer/footer";
 import IntroSection from "./components/IntroSection/IntroSection";
 import SearchBar from "./components/SearchBar/SearchBar";
-import './App.css'
+import "./App.css";
 
 function App() {
-
-  const [userInfos, setUserInfos] = useState([])
   
-  const getUserInfos = async() => {
-    const result = await getFolderData()
-    const {folder} = result
-    setUserInfos(folder)
-  }
+  const [account, setAccount] = useState('')
+  
+  const handleLoad = async () => {
+    const userAccount = await getUserAccount()
+    setAccount(userAccount)
+  } 
 
   useEffect(() => {
-    getUserInfos()
-  }, [])
+    handleLoad()
+  },[])
+
+
 
   return (
     <div>
-      <GlobalNavBar />
-        <IntroSection />
+      <GlobalNavBar email={account.email} profileImageSource={account.profileImageSource} />
+      <IntroSection />
       <main>
         <SearchBar />
         <CardList />
       </main>
-        <Footer />
+      <Footer />
     </div>
   );
 }
