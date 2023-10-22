@@ -29,7 +29,7 @@ function Footer() {
     },
   ];
   const socialLinks = SOCIAL_LINKS.map((link) => {
-    return <SocialLink link={{ ...link }} />;
+    return <SocialLink key={link.description} link={link} />;
   });
 
   return (
