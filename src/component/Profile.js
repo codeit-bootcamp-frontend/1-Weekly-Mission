@@ -21,7 +21,7 @@ function Profile() {
           src={folderInfo.owner.profileImageSource}
           alt="프로필 이미지"
         />
-        <div className={style.userName}>{folderInfo.owner.name}</div>
+        <div className={style.userName}>@{folderInfo.owner.name}</div>
         <div className={style.folderName}>{folderInfo.name}</div>
       </div>
     );
