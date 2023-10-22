@@ -33,14 +33,7 @@ function Navigator() {
             <h1 className='a11y'>Linkbrary - 링크브러리</h1>
           </a>
         </div>
-        {isLoggedIn || (
-          <div className='gnb__signin'>
-            <a href='/' className='button'>
-              로그인
-            </a>
-          </div>
-        )}
-        {isLoggedIn && (
+        {isLoggedIn ? (
           <div className='gnb__profile'>
             <img
               src={userInfo.profileImageSource}
@@ -48,6 +41,12 @@ function Navigator() {
               className='gnb__profile-img'
             />
             <div className='gnb__profile-email'>{userInfo.email}</div>
+          </div>
+        ) : (
+          <div className='gnb__signin'>
+            <a href='/' className='button'>
+              로그인
+            </a>
           </div>
         )}
       </div>

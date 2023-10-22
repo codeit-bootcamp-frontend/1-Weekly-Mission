@@ -4,17 +4,9 @@ import Banner from './Banner';
 import SearchBar from './SearchBar';
 import CardList from './CardList';
 
-const INITIAL_FOLDERINFO = {
-  name: '',
-  owner: {
-    name: '',
-    profileImageSource: '',
-  },
-};
-
 function Folder() {
   const [links, setLinks] = useState([]);
-  const [folderInfo, setFolderInfo] = useState(INITIAL_FOLDERINFO);
+  const [folderInfo, setFolderInfo] = useState();
 
   const loadFolder = useCallback(async () => {
     const { folder } = await getFolder();
@@ -30,10 +22,10 @@ function Folder() {
 
   return (
     <main>
-      <Banner info={folderInfo} />
+      {folderInfo && <Banner info={folderInfo} />}
       <div className='folder-container'>
         <SearchBar />
-        <CardList links={links} />
+        {links && <CardList links={links} />}
       </div>
     </main>
   );
