@@ -21,10 +21,10 @@ function Main() {
   }, []);
 
   return (
-    <main className={style.root}>
+    <div className={style.root}>
       <Search />
       <Cards cards={cards} />
-    </main>
+    </div>
   );
 }
 export default Main;

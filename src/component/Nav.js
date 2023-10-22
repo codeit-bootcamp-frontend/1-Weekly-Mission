@@ -24,7 +24,7 @@ function NavProfile() {
           src={userInfo.profileImageSource}
           alt="유저 프로필"
         />
-        <div>{userInfo.email}</div>
+        <div className={style.email}>{userInfo.email}</div>
       </div>
     );
   }

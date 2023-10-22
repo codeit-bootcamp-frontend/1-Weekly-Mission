@@ -8,10 +8,12 @@
 .since {
   color: #676767;
   font-size: 1.6rem;
+  grid-area: since;
 }
 .extraSites {
   display: flex;
   gap: 1.3rem;
+  grid-area: extraSites;
 }
 .extraSites a {
   color: #cfcfcf;
@@ -21,4 +23,15 @@
 .icons {
   display: flex;
   gap: 1.2rem;
+  grid-area: icons;
+}
+
+@media (max-width: 767px) {
+  .root {
+    display: grid;
+    grid-template-areas:
+      "extraSites icons"
+      "since .";
+    gap: 3rem;
+  }
 }

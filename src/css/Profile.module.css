@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  padding-top: 2rem;
   padding-bottom: 6rem;
   background-color: var(--linkbrary-bg);
 }
@@ -21,4 +22,22 @@
 }
 .userName {
   font-size: 1.6rem;
+}
+@media (max-width: 767px) {
+  .root {
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+  }
+  .img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .userName {
+    font-size: 1.4rem;
+  }
+  .folderName {
+    font-size: 3.2rem;
+    font-weight: 400;
+  }
 }
