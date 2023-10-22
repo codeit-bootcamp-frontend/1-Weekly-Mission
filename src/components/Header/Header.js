@@ -1,16 +1,17 @@
-function Header({name , owner}){
-  // const {name, profileImageSource} = owner;
-  if (!name || !owner) {
-    return null; // 데이터가 없을 때 아무것도 렌더링하지 않음
-  }
-  
-  console.log(name);
-  return(
-    <>
-    <span>{name}</span>
-    <span>{owner.name}</span>
-    <img src={owner.profileImageSource} alt = "소유자 사진"></img>
-    </>
+import './Header.js';
+import '../../style/style.css';
+import './Header.css'
+function Header({ name = '', owner = {} }) {
+
+  return (
+    <header className='Header'>
+      <div className='Header-owner'>
+        <img className='Header-owner-img' src={owner.profileImageSource} alt="소유자 사진"></img>
+        <p className='Header-owner-name'>{owner.name}</p>
+      </div>
+      <h1 className='Header-name'>{name}</h1>
+
+    </header>
   )
 }
 

@@ -35,7 +35,7 @@ function App() {
   }, []); // 이펙트가 컴포넌트가 마운트될 때 한 번만 실행됨을 나타냅니다.
 
 
-  console.log(name);
+ 
   return (
     <>
       <Nav />
