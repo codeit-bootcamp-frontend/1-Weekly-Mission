@@ -1,9 +1,17 @@
 import CardList from "./CardList";
+import SearchBar from "./SearchBar";
 
-function Main({}){
+
+function Main({ links }) {
+  if (!links) {
+    return <div>No links available.</div>;
+  }
   return (
     <>
-    <CardList/>
+      <SearchBar />
+
+      <CardList links ={links} />
+
     </>
   )
 }

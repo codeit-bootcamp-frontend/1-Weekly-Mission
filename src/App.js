@@ -11,10 +11,12 @@ function App() {
 
   const getSampleFolder = async (option) => {
     let result = await getSample(option);
-    setFolder(result)
+    setFolder(result.folder);
   }
-  const { links, name, owner } = folder;
 
+
+  const { name, owner, links } = folder;
+  
   useEffect(() => getSampleFolder('folder'), []);
 
   return (
