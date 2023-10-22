@@ -23,7 +23,7 @@ const FooterLink = ({ link, text }) => {
 const SNSImageLink = ({ src, name }) => {
   return (
     <a href={snsLinks[name]} target="_blank" rel="noopener noreferrer">
-      <img src={src} alt={name} height={20} />
+      <img className="sns-icon" src={src} alt={name} height={20} />
     </a>
   );
 };

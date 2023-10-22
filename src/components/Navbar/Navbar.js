@@ -2,7 +2,7 @@ import logo from "../../assets/logo.svg";
 import Button from "../Button/Button.js";
 import "./Navbar.css";
 import { fetchGet } from "../../apis/api";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Logo = ({ link = "/", className, src, alt, height }) => {
   return (

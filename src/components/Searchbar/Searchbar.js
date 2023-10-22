@@ -17,7 +17,9 @@ const Searchbar = () => {
   return (
     <div className="searchbar">
       <div className="searchbar-inner">
-        <img src={searchIcon} alt="Search" />
+        <label htmlFor="search">
+          <img src={searchIcon} alt="Search" />
+        </label>
         <input
           className="searchbar-input"
           id="search"
