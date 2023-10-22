@@ -31,3 +31,17 @@ main {
   background-size: 1.6rem;
   background-position: 1.6rem center;
 }
+
+@media (max-width: 1124px) {
+  .content_wrapper,
+  #search {
+    width: 70.4rem;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .content_wrapper,
+  #search {
+    width: 34rem;
+  }
+}
