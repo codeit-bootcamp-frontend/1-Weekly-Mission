@@ -13,7 +13,6 @@ function Header() {
       result = await getLoginData();
       setHasData(true);
       setLoginData(result);
-      console.log(result.email);
     } catch (error) {
       setHasData(false);
       return;

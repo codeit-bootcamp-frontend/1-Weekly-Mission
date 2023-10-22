@@ -3,14 +3,14 @@ import "./App.css";
 import Header from "./Header.js";
 import Banner from "./Banner.js";
 import Footer from "./Footer.js";
-import Card from "./Card.js";
+import CardList from "./CardList.js";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Banner />
-      <Card />
+      <CardList />
       <Footer />
     </div>
   );
