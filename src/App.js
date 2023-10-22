@@ -1,23 +1,35 @@
+import { useState, useEffect } from "react";
+import { getFolder } from "./api";
 import "./assets/css/App.css";
 import Gnb from "./component/Gnb";
 import SearchBar from "./component/SearchBar";
+import CardSection from "./component/CardSection";
 import Footer from "./component/Footer";
-import { getFolder } from "./api";
-import { useState, useEffect } from "react";
 
 function App() {
-  const [folderData, setFolderData] = useState([]);
+  const [folderData, setFolderData] = useState({});
 
   async function getFolderData() {
-    const { id, name, owner, links } = await getFolder();
-    setFolderData([id, name, owner, links]);
+    let folderData = {};
+    try {
+      folderData = await getFolder();
+    } catch (err) {
+      console.log(err);
+    }
+    const { id, name, owner, links } = folderData;
+    setFolderData({
+      id,
+      name,
+      ownerId: owner["id"],
+      ownerName: owner["name"],
+      ownerProfile: owner["profileImageSource"],
+      links,
+    });
   }
 
   useEffect(() => {
     getFolderData();
   }, []);
-
-  const folderId = folderData[0];
 
   return (
     <div className="body">
@@ -26,19 +38,23 @@ function App() {
       </header>
 
       <div className="folderInfo">
-        <div>프로필사진</div>
-        <div>프로필이름</div>
-        <div>폴더이름</div>
+        <div className="profileBox">
+          <img
+            className="profile"
+            src={folderData.ownerProfile}
+            alt="프로필 이미지"
+          />
+        </div>
+        <p className="ownerName">{`@${folderData.ownerName}`}</p>
+        <h1 className="folderName">{folderData.name}</h1>
       </div>
 
       <section className="section">
         <SearchBar size="large" />
-        <div>
-          <p>여기에 컴포넌트 넣으세요</p>
-        </div>
+        <CardSection data={folderData.links} />
       </section>
 
-      <Footer size="large" />
+      <Footer className="footer" size="large" />
     </div>
   );
 }
