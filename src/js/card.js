@@ -80,7 +80,7 @@ function Card ({items}) {
     const month = apiDate.getMonth() + 1;
     const days = apiDate.getDate();
     return (
-        <a href={items.url} className='card-wrapper'>
+        <a href={items.url} className='card-wrapper' target='_blank' rel='noopener noreferrer'>
             <div className='card-box'> 
                 <div className='card-image' style={image} >
                 </div> 
