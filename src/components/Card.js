@@ -29,6 +29,10 @@ const Card = ({ data, onClick }) => {
     $imgNode.removeAttribute("style");
   };
 
+  const handleKebabClick = (e) => {
+    e.stopPropagation();
+  };
+
   const handleStarClick = (e) => {
     e.stopPropagation();
     if (star) {
@@ -65,7 +69,12 @@ const Card = ({ data, onClick }) => {
       <div className="infoContainer">
         <div className="additionalInfo">
           <span>{timeForToday(data.createdAt)}</span>
-          <img src={kebab} alt="카드 설정 더보기" />
+          <img
+            className="kebab"
+            src={kebab}
+            alt="카드 설정 더보기"
+            onClick={handleKebabClick}
+          />
         </div>
         <p className="description">{data.description}</p>
         <span>{formatDate(data.createdAt)}</span>

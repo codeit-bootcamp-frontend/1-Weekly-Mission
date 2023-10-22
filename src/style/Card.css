@@ -39,6 +39,10 @@
   align-items: center;
 }
 
+.kebab {
+  cursor: pointer;
+}
+
 .description {
   height: 2.4em;
   font-size: 1.5rem;
