@@ -56,3 +56,28 @@
   color: var(--linkbrary-gray-1);
   font-size: 14px;
 }
+
+@media (max-width: 1124px) {
+  .nav_bar {
+    padding-right: 3.25rem;
+    padding-left: 3.25rem;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .nav_bar {
+    padding: 1.8rem 3.2rem 1.7rem 3.2rem;
+  }
+
+  .logo {
+    width: 8.8667rem;
+    height: 1.6rem;
+  }
+
+  .login_button {
+    width: 8rem;
+
+    font-size: 1.4rem;
+    padding: 1rem 1.6rem;
+  }
+}
