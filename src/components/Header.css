@@ -1,3 +1,9 @@
+.header {
+  width: 100%;
+  background-color: #f0f6ff;
+  display: flex;
+  justify-content: center;
+}
 .user {
   display: flex;
   flex-direction: column;
@@ -12,6 +18,7 @@
 
 .user-folder-name {
   font-size: 40px;
+  font-weight: 600;
 }
 
 .user-name {

@@ -1,11 +1,14 @@
-import Card from './Card';
-import './CardList.css';
+import Card from "./Card";
+import "./CardList.css";
+
 export function CardList({ cards }) {
   return (
-    <div className='card-list'>
-      {cards.map((card) => (
-        <Card value={card} key={card.id} />
-      ))}
+    <div className="card-list-wrapper">
+      <div className="card-list">
+        {cards.map((card) => (
+          <Card value={card} key={card.id} />
+        ))}
+      </div>
     </div>
   );
 }

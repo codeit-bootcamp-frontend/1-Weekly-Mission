@@ -1,6 +1,15 @@
 .nav-bar {
+  width: 100%;
+  background-color: #f0f6ff;
+  display: flex;
+  justify-content: center;
+}
+.nav-wrapper {
+  max-width: 1920px;
+  width: 100%;
   padding: 32px 200px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 

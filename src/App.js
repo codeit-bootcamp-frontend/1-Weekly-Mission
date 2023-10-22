@@ -1,9 +1,10 @@
-import './App.css';
-import { CardList } from './components/CardList';
-import Nav from './components/Nav';
-import User from './components/User';
-import getFolderData from './services/api';
-import { useEffect, useState, useCallback } from 'react';
+import "./App.css";
+import { CardList } from "./components/CardList";
+import Nav from "./components/Nav";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import getFolderData from "./services/api";
+import { useEffect, useState, useCallback } from "react";
 
 function App() {
   const [cards, setcards] = useState([]);
@@ -11,7 +12,6 @@ function App() {
   const [owner, setOwner] = useState({});
   const getdata = useCallback(async () => {
     const { folder } = await getFolderData();
-    console.log('app components', folder, owner);
     const ownerInfo = { ...folder.owner };
     setFolderInfo(folder);
     setOwner(ownerInfo);
@@ -23,10 +23,11 @@ function App() {
   }, [getdata]);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Nav />
-      <User folderInfo={folderInfo} owner={owner} />
+      <Header folderInfo={folderInfo} owner={owner} />
       <CardList cards={cards} />
+      <Footer />
     </div>
   );
 }

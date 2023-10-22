@@ -14,5 +14,5 @@
 
 body {
   margin: 0;
-  background: var(--linkbrary-bg, #f0f6ff);
+  /* background: var(--linkbrary-bg, #f0f6ff); */
 }
