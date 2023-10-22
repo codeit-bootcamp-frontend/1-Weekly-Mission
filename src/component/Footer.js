@@ -36,8 +36,8 @@ function Footer() {
     <div className={css.root}>
       <div className={css.since}>©codeit - 2023</div>
       <div className={css.extraSites}>
-        <a>Privacy Policy</a>
-        <a>FAQ</a>
+        <a href="">Privacy Policy</a>
+        <a href="">FAQ</a>
       </div>
       <div className={css.icons}>{socialLinks}</div>
     </div>
