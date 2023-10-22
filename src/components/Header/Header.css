@@ -1,7 +1,7 @@
 .Header {
   display: flex;
   align-items: center;
-  height: 180px;
+  height: 140px;
   padding: 20px 624px 60px 624px;
   flex-direction: column;
 
@@ -41,6 +41,3 @@
 }
 
 
-.Header-owner{
-
-}

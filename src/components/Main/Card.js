@@ -3,7 +3,6 @@ import './Card.css';
 import '../../style/style.css';
 
 import moment from 'moment';
-// import { useEffect, useState } from 'react';
 
 function calculateTimeAgo(createdAt) {
   const createdDate = moment(createdAt, 'YYYY-MM-DDTHH:mm:ss[Z]');
@@ -33,13 +32,7 @@ function calculateTimeAgo(createdAt) {
 
 function Card({ link }) {
   const { createdAt, description, imageSource, title, url } = link;
-  // const [ago, setAgo] = useState(0);
-  // const [createdAtFormat, setCreatedAtFormat] = useState(createdAt);
 
-  // useEffect(() => {
-  //   setAgo(calculateTimeAgo(createdAt))
-  //   setCreatedAtFormat(moment(createdAt).format('YYYY.MM.DD'))
-  // }, [])
 
   return (
     <div className='Card'>

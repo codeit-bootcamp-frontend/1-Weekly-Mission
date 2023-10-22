@@ -1,0 +1,28 @@
+.SearchBar{
+  position: relative;
+  gap : 8px;
+}
+
+.SearchBar-icon{
+  position: absolute;
+  left : 8px;
+  top : 15px;
+}
+
+.SearchBar-input {
+
+  display: flex;
+  width: 1060px;
+  height: 20px;
+  padding: 14px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 10px;
+  background: #f5f5f5;
+  border : none;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/search.png);
+  background-position: 15px 15px;
+  padding-left: 45px;
+
+}
