@@ -19,10 +19,10 @@ function Footer(){
                 <a href="/faq">FAQ</a>
             </div>
             <div className = "link_icon">
-                <a href = {FACEBOOK_URL} target = "_blank"><img alt = "facebook 바로가기" src = {faceboockIcon} /></a>
-                <a href = {TWITTER_URL} target = "_blank"><img alt = "twitter 바로가기" src = {twitterIcon} /></a>
-                <a href = {YOUTUBE_URL} target = "_blank"><img alt = "youtube 바로가기" src = {youtubeIcon} /></a>
-                <a href = {INSTA_URL} target = "_blank"><img alt = "instagram 바로가기" src = {instaIcon} /></a>
+                <a href = {FACEBOOK_URL} target = "_blank" rel = "noopener noreferrer"><img alt = "facebook 바로가기" src = {faceboockIcon} /></a>
+                <a href = {TWITTER_URL} target = "_blank" rel = "noopener noreferrer"><img alt = "twitter 바로가기" src = {twitterIcon} /></a>
+                <a href = {YOUTUBE_URL} target = "_blank" rel = "noopener noreferrer"><img alt = "youtube 바로가기" src = {youtubeIcon} /></a>
+                <a href = {INSTA_URL} target = "_blank" rel = "noopener noreferrer"><img alt = "instagram 바로가기" src = {instaIcon} /></a>
             </div>
         </div>
     );

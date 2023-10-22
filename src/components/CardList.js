@@ -9,7 +9,7 @@ function formatDate(value) {
 
 function Card({ imageSource = defaultImg, title, description, createdAt, url }) {
   return (
-    <a className="card" href = {url} target = "_blank">
+    <a className="card" href = {url} target = "_blank" rel = "noopener noreferrer">
         <div className="card_imgbox">
             <img className="card_img" src={imageSource} alt='카드 이미지' />
         </div>
