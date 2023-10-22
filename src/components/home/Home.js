@@ -1,101 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../reset.css';
 import '../../common_style.css';
 import './style.css';
-import { TitleImg, SaveImg, ManageImg, ShareImg, SearchImg } from './Images';
 import {
   LogoImg,
   SnsIconF,
   SnsIconT,
   SnsIconY,
   SnsIconI,
+  SearchIcon,
 } from '../CommonImages';
+import { getFolder, getUser } from '../../api';
+import Card from '../Card';
 
 function Home() {
+  const [links, setLinks] = useState([]);
+  const [folderInfo, setFolderInfo] = useState({});
+  const [user, setUser] = useState({});
+  const handleFolderLoad = async () => {
+    const { folder } = await getFolder();
+    setLinks([...folder.links]);
+    setFolderInfo(folder);
+  };
+
+  const handleUserLoad = async () => {
+    const userData = await getUser();
+    setUser({ ...userData });
+  };
+
+  useEffect(() => {
+    handleFolderLoad();
+    handleUserLoad();
+  }, []);
+
   return (
     <>
       <header>
         <nav>
-          <a href="../..">
+          <a href="../.." className="nav-logo">
             <img src={LogoImg} alt="Linkbrary 로고" />
           </a>
-          <a href="/pages/login/signin.html">
-            <div className="btn btn-login">로그인</div>
-          </a>
+
+          <div className="user-profile">
+            <img src={user.profileImageSource} alt="프로필 이미지" />
+            <span>{user.email}</span>
+          </div>
         </nav>
-        <div className="hero-header">
-          <h1>
-            <span>세상의 모든 정보</span>를<br />
-            쉽게 저장하고 관리해 보세요.
-          </h1>
-          <a href="/pages/login/signup.html">
-            <div className="btn btn-add-link">링크 추가하기</div>
-          </a>
-          <img src={TitleImg} alt="웹사이트 사진" />
+        <div className="folder-info">
+          <div className="folder-owner">
+            <div className="owner-profile">
+              <img
+                src={folderInfo?.owner?.profileImageSource}
+                alt="프로필 이미지"
+              />
+            </div>
+            <div className="owner-name">@{folderInfo?.owner?.name}</div>
+          </div>
+          <div className="folder-name">{folderInfo.name}</div>
         </div>
       </header>
-      <article>
-        <section className="save">
-          <div className="section-text">
-            <h2>
-              <span>원하는 링크</span>를<br />
-              저장하세요.
-            </h2>
-            <p>
-              나중에 읽고 싶은 글, 다시 보고 싶은 영상,
-              <br />
-              사고 싶은 옷, 기억하고 싶은 모든 것을
-              <br />한 공간에 저장하세요.
-            </p>
-          </div>
-
-          <img src={SaveImg} alt="저장기능 설명 사진" />
-        </section>
-
-        <section className="manage">
-          <div className="section-text">
-            <h2>
-              링크를 폴더로
-              <br />
-              <span>관리</span>하세요
-            </h2>
-            <p>
-              나만의 폴더를 무제한으로 만들고
-              <br />
-              다양하게 활용할 수 있습니다.
-            </p>
-          </div>
-
-          <img src={ManageImg} alt="폴더관리기능 설명 사진" />
-        </section>
-
-        <section className="share">
-          <div className="section-text">
-            <h2>
-              저장한 링크를 <br />
-              <span>공유</span>해 보세요.
-            </h2>
-            <p>
-              여러 링크를 폴더에 담고 공유할 수 있습니다. <br />
-              가족, 친구, 동료들에게 쉽고 빠르게 링크를 <br />
-              공유해 보세요.
-            </p>
-          </div>
-          <img src={ShareImg} alt="공유기능 설명 사진" />
-        </section>
-
-        <section className="search">
-          <div className="section-text">
-            <h2>
-              저장한 링크를
-              <br />
-              <span>검색</span>해 보세요.
-            </h2>
-            <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
-          </div>
-          <img src={SearchImg} alt="검색기능 설명 이미지" />
-        </section>
-      </article>
+      <main>
+        <div className="search-bar">
+          <img src={SearchIcon} alt="검색아이콘" />
+          <input
+            className="search-input"
+            type="text"
+            placeholder="링크를 검색해 보세요."
+          />
+        </div>
+        <div className="card-container">
+          {links.map((link) => (
+            <Card key={link.id} data={link} />
+          ))}
+        </div>
+      </main>
 
       <footer>
         <div className="footer-container">
@@ -104,7 +82,7 @@ function Home() {
             <a href="/pages/privacy/privacy.html">Privacy Policy</a>
             <a href="/pages/faq/faq.html">FAQ</a>
           </div>
-          <div className="snsIcons">
+          <div className="sns-icons">
             <a
               href="https://www.facebook.com/"
               target="_blank"
