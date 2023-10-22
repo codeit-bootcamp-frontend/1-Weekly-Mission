@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 function useAsync(asyncFunction) {
+  console.log(asyncFunction);
   const [error, setError] = useState(null);
 
-  const wrappedFunction = async (asyncFunction) => {
+  const wrappedFunction = useCallback(async (asyncFunction) => {
     try {
       return await asyncFunction();
     } catch (error) {
       setError(error);
     } finally {
     }
-  };
+  }, []);
+  console.log(asyncFunction);
   return [error, wrappedFunction];
 }
 
