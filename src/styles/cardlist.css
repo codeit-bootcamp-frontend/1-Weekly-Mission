@@ -67,7 +67,7 @@ a{
     justify-items: center;
 }
 
-@media (max-width : 1199px){
+@media (max-width : 1124px){
     .card_list{
         grid-template-columns: repeat(2, 1fr);
     }
