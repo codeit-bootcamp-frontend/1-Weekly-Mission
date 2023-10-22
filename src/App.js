@@ -1,5 +1,5 @@
 import "./App.css";
-import { CardList } from "./components/CardList";
+import { Main } from "./components/Main";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <Nav profileImageSource={user.profileImageSource} email={user.email} />
       <Header folderInfo={folderInfo} owner={owner} />
-      <CardList cards={cards} />
+      <Main cards={cards} />
       <Footer />
     </div>
   );
