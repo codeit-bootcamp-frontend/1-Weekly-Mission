@@ -73,9 +73,13 @@ function CardList() {
   const [cardInfos, setCardInfos] = useState([]);
 
   const handleFolderLoad = async () => {
+    try {
     const { folder } = await getFolderData();
     const { links } = folder;
-    setCardInfos(links);
+    setCardInfos(links)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   useEffect(() => {

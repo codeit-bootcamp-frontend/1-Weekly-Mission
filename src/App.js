@@ -9,10 +9,14 @@ import "./App.css";
 
 function App() {
   const [userAccount, setUserAccount] = useState({});
-
+  
   const handleLoad = async () => {
+    try {
     const { email, profileImageSource } = await getUserAccount();
     setUserAccount({ email, profileImageSource });
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   useEffect(() => {

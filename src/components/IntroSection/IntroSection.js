@@ -6,8 +6,12 @@ function IntroSection() {
   const [userInfos, setUserInfos] = useState(null);
 
   const handleFolderLoad = async () => {
-    const { folder } = await getFolderData();
-    setUserInfos(folder);
+    try {
+      const { folder } = await getFolderData();
+      setUserInfos(folder);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
