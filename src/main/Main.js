@@ -1,5 +1,4 @@
 import "./Main.css";
-// import Card from "../card/card";
 import CardList from "../card/cardList";
 import { useCallback, useEffect, useState } from "react";
 import { getFolder } from "../api";

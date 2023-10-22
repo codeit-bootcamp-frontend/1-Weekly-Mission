@@ -71,7 +71,6 @@
 .card_time {
   color: #666;
 
-  /* Linkbrary/caption */
   font-size: 1.3rem;
 }
 
@@ -85,21 +84,18 @@
   align-self: stretch;
 
   overflow: hidden;
-  color: #000;
+  color: var(--linkbrary-black);
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: break-spaces;
 
-  /* Linkbrary/body1-regular */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
   font-size: 1.6rem;
-  line-height: 2.4rem; /* 150% */
+  line-height: 2.4rem;
 }
 
 .card_date {
-  height: 1.9rem;
-  align-self: stretch;
-
-  overflow: hidden;
   color: #333;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }

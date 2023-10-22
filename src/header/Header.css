@@ -21,7 +21,6 @@ header {
   align-items: center;
   gap: 2rem;
 
-  /* 즐겨찾기 문자 가로정렬 위해.. 왜이러지 */
   width: 20rem;
 }
 
@@ -39,7 +38,6 @@ header {
 .owner_name {
   color: var(--linkbrary-black);
 
-  /* Linkbrary/body1-regular */
   font-size: 1.6rem;
   line-height: 2.4rem; /* 150% */
 }
@@ -48,7 +46,6 @@ header {
   color: var(--linkbrary-black);
   text-align: center;
 
-  /* Linkbrary/h1-semibold */
   font-size: 4rem;
   font-weight: 600;
 }

@@ -1,6 +1,5 @@
 import "./Header.css";
 import { getFolder } from "../api";
-// import avatar from "../image/avatar.svg";
 
 const {
   folder: { name, owner },

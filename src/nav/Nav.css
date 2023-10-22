@@ -9,7 +9,6 @@
 
   display: flex;
   padding: 3.3rem 20rem 3.2rem 20rem;
-  /* flex-direction: column; */
   align-items: center;
   gap: 0.8rem;
   align-self: stretch;
@@ -42,7 +41,7 @@
 .profile_wrapper {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.6rem;
 }
 
 .profile_img {
@@ -54,7 +53,7 @@
 
 .profile_email {
   color: var(--linkbrary-gray-1);
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 @media (max-width: 1124px) {

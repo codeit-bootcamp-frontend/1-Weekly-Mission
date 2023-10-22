@@ -41,17 +41,15 @@ const Card = ({ item }) => {
   const get_time = getTimeDiff(createdAt);
   const get_date = formatDate(createdAt);
 
-  // const yes_img = "card_img";
-
   return (
     <a className="card_block" href={url} key={id}>
-      {/* <div className="image_area"> */}
-      {imageSource ? (
-        <CardImage src={imageSource} />
-      ) : (
-        <CardImage className="img_not_loaded" src={noImg} />
-      )}
-      {/* </div> */}
+      <div className="image_area">
+        {imageSource ? (
+          <CardImage src={imageSource} />
+        ) : (
+          <CardImage className="img_not_loaded" src={noImg} />
+        )}
+      </div>
       <div className="description_area">
         <CardTime set_time={get_time} />
         <CardContent>{description}</CardContent>
