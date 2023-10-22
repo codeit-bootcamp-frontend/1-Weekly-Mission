@@ -2,7 +2,7 @@ import css from "../css/Footer.module.css";
 import FacebookIcon from "../icon/FacebookIcon";
 import InstagramIcon from "../icon/InstagramIcon";
 import TwitterIcon from "../icon/TwitterIcon";
-import YoutubeIcon from "../icon/YoutubeIcon";
+import YoutubeIcon from "../img/Youtube.svg";
 function Footer() {
   return (
     <div className={css.footer}>
@@ -31,7 +31,7 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <YoutubeIcon />
+          <img src={YoutubeIcon} />
         </a>
         <a
           href="https://www.instagram.com/"

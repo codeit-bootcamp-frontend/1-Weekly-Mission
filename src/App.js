@@ -1,7 +1,7 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./component/Header";
+import Footer from "./component/Footer";
 import { useEffect, useState } from "react";
-import { isSignIn, getFolder } from "../api";
+import { isSignIn, getFolder } from "./api";
 
 function App() {
   const [userInfo, setUserInfo] = useState("");
