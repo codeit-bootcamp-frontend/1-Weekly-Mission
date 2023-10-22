@@ -35,3 +35,13 @@
     }
   }
 }
+
+/* mobile */
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .links-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 20px;
+  }
+}
