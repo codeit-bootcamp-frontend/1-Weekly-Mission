@@ -5,7 +5,8 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  margin: 20px 0px 60px;
+  padding: 20px 0px 60px;
+  background-color: var(--backgroundcolor-skyblue-10);
 }
 
 .header-user-info-box {
