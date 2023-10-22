@@ -53,15 +53,7 @@ const Folder = () => {
           </div>
           <div id="cardContainer">
             {cardData?.map((e) => {
-              return (
-                <Card
-                  key={e.id}
-                  url={e.url}
-                  src={e.imageSource}
-                  content={e.description}
-                  createdAt={e.createdAt}
-                />
-              );
+              return <Card cardData={e} />;
             })}
           </div>
         </div>

@@ -3,9 +3,9 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import LogoImg from "../../assets/common/img_logo.png";
 
-const Card = ({ src, createdAt, content, url }) => {
+const Card = ({ cardData }) => {
   const [ago, setAgo] = useState(0);
-  const [createdAtFormat, setCreatedAtFormat] = useState(createdAt);
+  const [createdAtFormat, setCreatedAtFormat] = useState(cardData.createdAt);
 
   const calculateTimeAgo = (createdAt) => {
     const createdDate = moment(createdAt, "YYYY-MM-DDTHH:mm:ss[Z]");
@@ -34,19 +34,19 @@ const Card = ({ src, createdAt, content, url }) => {
   };
 
   const openUrl = () => {
-    window.open(url, "__blank");
+    window.open(cardData.url, "__blank");
   };
 
   useEffect(() => {
-    setAgo(calculateTimeAgo(createdAt));
-    setCreatedAtFormat(moment(createdAt).format("YYYY.MM.DD"));
-  }, [createdAt]);
+    setAgo(calculateTimeAgo(cardData.createdAt));
+    setCreatedAtFormat(moment(cardData.createdAt).format("YYYY.MM.DD"));
+  }, [cardData]);
 
   return (
     <div className="cardContainer" onClick={openUrl}>
-      {src ? (
+      {cardData.imageSource ? (
         <div className="cardImageContainer">
-          <img className="cardImage" src={src} alt="cardImg" />
+          <img className="cardImage" src={cardData.imageSource} alt="cardImg" />
         </div>
       ) : (
         <div className="cardImageContainer cardImage">
@@ -55,7 +55,7 @@ const Card = ({ src, createdAt, content, url }) => {
       )}
       <div className="contentContainer">
         <div className="contentAgo">{ago}</div>
-        <div className="content">{content}</div>
+        <div className="content">{cardData.description}</div>
         <div className="contentAt">{createdAtFormat}</div>
       </div>
     </div>
