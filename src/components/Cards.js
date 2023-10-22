@@ -7,6 +7,7 @@ import logoImg from "../img/svg/noImgLogo.svg";
 function getTimeDiff(value) {
     const milliSeconds = new Date() - value;
     const seconds = milliSeconds / 1000;
+    /* console.log(`달단위 ${seconds / 60 / 60 / 24 / 30}`) */
     if (seconds < 60) return `방금 전`;
     const minutes = seconds / 60;
     if (minutes < 60) return `${Math.floor(minutes)}${Math.floor(minutes) > 1 ? "minutes ago" : "minute ago"}`;
@@ -23,7 +24,7 @@ function getTimeDiff(value) {
 };
 
 /* 각 카드 컴포넌트 */
-function CardItem({item, key}) {
+function CardItem({item}) {
     const imgStyle = {
         'backgroundImage': `URL(${item.imageSource})`,
         'backgroundRepeat':'no-repeat',
@@ -37,29 +38,31 @@ function CardItem({item, key}) {
     const nowDate = getTimeDiff(new Date(item.createdAt));
 
     return (
-    <a href={item.url} target='_blank'>
-    <div id={key} className='card'>
-        <div className="card-img-wrap">
-            {!item.imageSource ? <img className="logoImg" src={logoImg}/> :
-            <div className='card-img' style={imgStyle}></div>}
+        <div className='card'>
+            <div className="card-img-wrap">
+                {!item.imageSource ? <img className="logoImg" src={logoImg}/> :
+                <div className='card-img' style={imgStyle}></div>}
+            </div>
+            <div className='card-inpormation'>
+                <div className='time'>{nowDate}</div>
+                <p>{item.description}</p>
+                <div className='day'>{item.createdAt.split("T")[0]}</div>  
+            </div>  
         </div>
-        <div className='card-inpormation'>
-            <div className='time'>{nowDate}</div>
-            <p>{item.description}</p>
-            <div className='day'>{item.createdAt.split("T")[0]}</div>  
-        </div>  
-    </div>
-    </a>
+    
     )
 }
 
 const Cards = ({personalfolder}) => {
     const {links} = personalfolder;
- 
     return (
         <div className="section-title section-title-third">
             <div className='section-title-third-inner'>
-                {links && links.map(item => <CardItem key={item.id} item={item}/>)}
+                {links && links.map(item =>(
+                    <a key={item.id} href={item.url} target='_blank'>
+                        <CardItem item={item}/>
+                    </a>
+                ))}
             </div>
         </div>
     );

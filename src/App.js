@@ -3,21 +3,22 @@ import './css/root.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import { getAccount, getFolder } from './api/apiUrl';
+import { getAccount} from './api/apiUrl';
 import { useEffect, useState } from 'react';
 
 
 function App() {
   const [account, setAccount] = useState({});
-  const [personalfolder, setPersonalfolder] = useState({});
-
+  const [userErrorMessage, setUserErrorMessage] = useState("");
   
   const handleLoad = async () => {
-    const {name, email, profileImageSource} = await getAccount();
-    setAccount({name, email, profileImageSource})
-
-    const {folder:{links, name:title }} = await getFolder();
-    setPersonalfolder({links,title})
+    try{
+      const {name, email, profileImageSource} = await getAccount();
+      setAccount({name, email, profileImageSource});
+    }
+    catch(error){
+      setUserErrorMessage(error);
+    }
   };
 
   
@@ -26,8 +27,8 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Header account={account}/>
-      <Main account={account} personalfolder={personalfolder}/>
+      <Header account={account} userErrorMessage={userErrorMessage}/>
+      <Main account={account} userErrorMessage={userErrorMessage}/>
       <Footer/>
     </div>
   );

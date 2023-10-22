@@ -6,10 +6,10 @@ import logoImg from '../img/png/Linkbrary.png'
 
 
 
-const Header = ({account}) => {
+const Header = ({account , userErrorMessage}) => {
       const {name, email, profileImageSource} = account;
-      const [windowWidth, setWindowWidth] = useState(0);
-    
+      const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
       window.addEventListener('resize', () => {
         setWindowWidth(window.innerWidth);
       })
@@ -23,6 +23,7 @@ const Header = ({account}) => {
                     {!account ? <button type='button'>로그인</button> :
                     <><img className="profile_logo" src={profileImageSource} alt={name} />
                     {windowWidth > 390 ? <span className="profile_id">{email}</span> : null}</>}
+                    {userErrorMessage && <span>{userErrorMessage.message}</span>}
                 </div>
             </div>
         </header>
