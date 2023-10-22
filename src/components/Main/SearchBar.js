@@ -1,5 +1,4 @@
 import './SearchBar.css'
-import searchIcon from "../../assets/search.png";
 function SearchBar() {
   return (
     <div className='SearchBar flex-center'>

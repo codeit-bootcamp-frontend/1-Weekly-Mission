@@ -1,0 +1,16 @@
+.login{
+  border: none;
+  color: var(--grey-light);
+  font-family: Pretendard;
+  font-size: 1.125rem;
+  font-weight: 600;
+
+  width: 90px;
+  height: 26px;
+  padding: 1rem 1.25rem;
+
+  gap: 0.625rem;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  text-decoration-line: none;
+}

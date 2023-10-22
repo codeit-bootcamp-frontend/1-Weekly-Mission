@@ -35,27 +35,31 @@ function Card({ link }) {
 
 
   return (
-    <div className='Card'>
-      {
-        imageSource
-          ? (
-            <div className='card-image-container'>
-              <img className='Card-image' src={imageSource} alt="고양이" />
-            </div>)
-          : (
-            <div className='card-image-container Card-image'>
-              <img src={LogoImg} alt='logoImg' className='no-img-logo' />
-            </div>
-          )
-      }
-      <div className='contentContainer'>
-        <div className='contentAgo'>{calculateTimeAgo(createdAt)}</div>
-        <div >{title}</div>
-        <div className='content'>{description}</div>
-        <div className='contentAt'>{moment(createdAt).format('YYYY.MM.DD')}</div>
-      </div>
+    <a className='Card' href={url}>
+      <div >
+        {
+          imageSource
+            ? (
+              <div className='Card-image-container'>
 
-    </div>
+                <img className='Card-image' src={imageSource} alt="카드 사진" />
+
+              </div>)
+            : (
+              <div className='Card-image-container Card-image'>
+                <img src={LogoImg} alt='logoImg' className='no-img-logo' />
+              </div>
+            )
+        }
+        <div className='contentContainer'>
+          <div className='content-ago'>{calculateTimeAgo(createdAt)}</div>
+          <div >{title}</div>
+          <div className='content'>{description}</div>
+          <div className='contentAt'>{moment(createdAt).format('YYYY.MM.DD')}</div>
+        </div>
+
+      </div>
+    </a>
   )
 }
 

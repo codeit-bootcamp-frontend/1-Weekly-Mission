@@ -8,7 +8,7 @@ function CardList({ links }) {
   }
   return (
     <div className="CardList">
-      {links.map((link, index) => { return <Card key={index} link={link} /> })}
+      {links.map((link, index) =>  <Card key={index} link={link} /> )}
     </div>
   );
 }
