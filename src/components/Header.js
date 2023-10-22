@@ -1,7 +1,7 @@
 import "./Header.css";
 
 export default function User({ folderInfo, owner }) {
-  console.log(`user components:`, folderInfo);
+  // console.log(`user components:`, folderInfo);
   return (
     <div className="header">
       <div className="user">
