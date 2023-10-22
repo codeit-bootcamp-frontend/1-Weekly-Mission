@@ -10,27 +10,19 @@ export default function App() {
   const [folderInfo, setFolderInfo] = useState(null);
   const [links, setLinks] = useState([]);
 
-  const handleFetchUser = async () => {
+  useEffect(async () => {
     const response = await getSampleUser();
-    const { id, name, email, profileImageSource } = response;
     setUserProfile((prevItem) => ({
       ...prevItem,
-      id,
-      name,
-      email,
-      profileImageSource,
+      ...response,
     }));
-  };
+  }, []);
 
   useEffect(async () => {
     const response = await getSampleFolder();
     setFolderInfo(response);
     const link = response.folder.links;
     setLinks((prevItems) => [...prevItems, ...link]);
-  }, []);
-
-  useEffect(() => {
-    handleFetchUser();
   }, []);
 
   return (
