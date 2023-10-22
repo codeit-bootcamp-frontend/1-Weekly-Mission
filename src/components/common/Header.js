@@ -1,8 +1,8 @@
 import "./header.css";
 import LogoImg from "../../assets/common/img_logo.png";
-import { useEffect, useState } from "react";
-import { ApiMapper } from "../../api/apiMapper";
-import request from "../../api";
+import { useCallback, useEffect, useState } from "react";
+import useAsync from "../../hooks/useAsync";
+import { getUser } from "../../api/api";
 
 const Header = () => {
   const [userData, setUserData] = useState({
@@ -11,20 +11,26 @@ const Header = () => {
     id: null,
     profileImageSource: null,
   });
-  const handleProfile = async () => {
-    try {
-      const response = await request.get(`${ApiMapper.sample.get.GET_USER}`);
-      if (response.status === 200) {
-        setUserData(response.data);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  const [isLoading, error, getUserAsync] = useAsync(getUser);
+
+  const handleProfile = useCallback(async () => {
+    const result = await getUserAsync();
+    if (!result) return;
+
+    setUserData(result);
+  }, [getUserAsync]);
 
   useEffect(() => {
     handleProfile();
-  }, []);
+  }, [handleProfile]);
+
+  if (isLoading) {
+    return <div>화면을 불러오는 중입니다.</div>;
+  }
+
+  if (error) {
+    return <div>문제가 발생했습니다.</div>;
+  }
 
   return (
     <header>

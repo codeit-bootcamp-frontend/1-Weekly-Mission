@@ -1,32 +1,38 @@
 import Card from "../../components/card/Card";
 import "./folder.css";
 import SearchImg from "../../assets/folder/img_search.png";
-import { useEffect, useState } from "react";
-import { ApiMapper } from "../../api/apiMapper";
-import request from "../../api";
+import { useCallback, useEffect, useState } from "react";
+import useAsync from "../../hooks/useAsync";
+import { getFolder } from "../../api/api";
 
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
   const [user, setUser] = useState();
   const [name, setName] = useState("");
+  const [isLoading, error, getFolderAsync] = useAsync(getFolder);
 
-  const handleFolder = async () => {
-    try {
-      const response = await request.get(ApiMapper.sample.get.GET_FOLDER);
-      if (response.status === 200) {
-        const result = response.data.folder;
-        setCardData(result.links);
-        setUser(result.owner);
-        setName(result.name);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  const handleFolder = useCallback(async () => {
+    const result = await getFolderAsync();
+    if (!result) return;
+
+    const { folder } = result;
+
+    setCardData(folder.links);
+    setUser(folder.owner);
+    setName(folder.name);
+  }, [getFolderAsync]);
 
   useEffect(() => {
     handleFolder();
-  }, []);
+  }, [handleFolder]);
+
+  if (isLoading) {
+    return <div>화면을 불러오는 중입니다.</div>;
+  }
+
+  if (error) {
+    return <div>문제가 발생했습니다. {error}</div>;
+  }
 
   return (
     <div className="wrapper">
@@ -52,7 +58,7 @@ const Folder = () => {
           </div>
           <div id="cardContainer">
             {cardData?.map((e) => {
-              return <Card cardData={e} />;
+              return <Card key={e.id} cardData={e} />;
             })}
           </div>
         </div>
