@@ -45,7 +45,7 @@ function App() {
     <>
       <div className="App">
         <header>
-          <Nav userProfileLoadingError={userProfileLoadingError} />
+          <Nav userProfile={userProfile} userProfileLoadingError={userProfileLoadingError} />
           <Header />
         </header>
         <main>
