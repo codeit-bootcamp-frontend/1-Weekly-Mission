@@ -22,8 +22,9 @@ function App() {
 	}, [getUserInfoAsync, setUserInfo]);
 
 	const handleUserFolder = useCallback(async () => {
-		const { folder } = await getUserFolderAsync();
-		if (!folder) return;
+		const result = await getUserFolderAsync();
+		if (!result) return;
+		const { folder } = result;
 
 		setFolderInfo(folder);
 	}, [getUserFolderAsync, setFolderInfo]);
