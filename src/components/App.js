@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { getSample } from './api';
-//import Navigation from './components/Nav/Navigation';
+import Navigation from './components/Nav/Navigation';
 import CardList from '../components/Main/Card';
 
 function App() {
