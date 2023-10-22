@@ -1,0 +1,13 @@
+@import "../global.css";
+
+.user-email {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
+  /* descktop*/
+  @media (min-width: 1200px) {
+    display: inline-block;
+  }
+}
