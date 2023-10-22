@@ -1,5 +1,5 @@
 import { calculateTimePassed, getDate } from '../functions/calculateDate';
-import DEFAULT_IMAGE from '../assets/images/linkbrary.png';
+import DEFAULT_IMAGE from '../assets/images/default-link-img.svg';
 
 function Card({ data }) {
   const { url, title, description, createdAt, imageSource } = data;
