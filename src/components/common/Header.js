@@ -1,7 +1,8 @@
 import "./header.css";
 import LogoImg from "../../assets/common/img_logo.png";
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { ApiMapper } from "../../api/apiMapper";
+import request from "../../api";
 
 const Header = () => {
   const [userData, setUserData] = useState({
@@ -12,9 +13,7 @@ const Header = () => {
   });
   const handleProfile = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/api/sample/user`
-      );
+      const response = await request.get(`${ApiMapper.sample.get.GET_USER}`);
       if (response.status === 200) {
         setUserData(response.data);
       }

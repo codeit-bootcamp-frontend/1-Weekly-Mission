@@ -1,8 +1,9 @@
 import Card from "../../components/card/Card";
 import "./folder.css";
 import SearchImg from "../../assets/folder/img_search.png";
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { ApiMapper } from "../../api/apiMapper";
+import request from "../../api";
 
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
@@ -11,9 +12,7 @@ const Folder = () => {
 
   const handleFolder = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/api/sample/folder`
-      );
+      const response = await request.get(ApiMapper.sample.get.GET_FOLDER);
       if (response.status === 200) {
         const result = response.data.folder;
         setCardData(result.links);
