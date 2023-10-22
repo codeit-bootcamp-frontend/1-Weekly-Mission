@@ -33,6 +33,8 @@ footer {
 
 .footer__information a {
   padding-right: 18px;
+  text-decoration: none;
+  color: #676767;
 }
 
 .footer__sns {
