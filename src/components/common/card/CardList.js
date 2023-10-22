@@ -1,5 +1,5 @@
 import CardItem from "./CardItem";
-import "components/units/CardList.css";
+import "./CardList.css";
 
 export default function CardList({ links }) {
   return (

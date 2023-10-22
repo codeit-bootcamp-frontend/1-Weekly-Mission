@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-import Hero from "./Hero";
-import CardList from "./CardList";
-import Searchbar from "./Searchbar";
+import Hero from "components/common/hero/Hero.js";
+import Searchbar from "components/common/searchbar/Searchbar.js";
+import CardList from "components/common/card/CardList.js";
 
-import "components/units/Main.css";
+import "./Share.css";
 import { getFolder } from "api/api";
 
-export default function Main() {
+export default function Share() {
   const [folder, setFolder] = useState("");
   const [profile, setProfile] = useState();
   const [links, setLinks] = useState();

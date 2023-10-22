@@ -3,9 +3,9 @@ import "styles/globalStyles.css";
 import { useEffect, useState } from "react";
 import { getUser } from "api/api";
 
-import Header from "components/units/Header";
-import Main from "components/units/Main";
-import Footer from "components/units/Footer";
+import Header from "components/common/header/Header";
+import Footer from "components/common/footer/Footer";
+import SharedPage from "pages/shareFolder";
 
 function App() {
   const [user, setUser] = useState();
@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <Header user={user} />
-      <Main />
+      <SharedPage />
       <Footer />
     </div>
   );

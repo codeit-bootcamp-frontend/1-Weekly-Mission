@@ -1,4 +1,4 @@
-import "components/units/Hero.css";
+import "./Hero.css";
 
 export default function Hero({ folder, profile }) {
   return (

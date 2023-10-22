@@ -1,4 +1,4 @@
-import "components/units/Header.css";
+import "./Header.css";
 import logo from "assets/logo.svg";
 
 export default function Header({ user }) {

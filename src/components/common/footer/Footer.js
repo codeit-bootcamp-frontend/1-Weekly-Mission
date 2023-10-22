@@ -3,7 +3,7 @@ import twitterIcon from "assets/akar-icons_twitter-fill.svg";
 import youtubeIcon from "assets/akar-icons_youtube-fill.svg";
 import instagramIcon from "assets/ant-design_instagram-filled.svg";
 
-import "components/units/Footer.css";
+import "./Footer.css";
 
 export default function Footer() {
   return (

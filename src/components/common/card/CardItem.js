@@ -1,4 +1,4 @@
-import "components/units/CardItem.css";
+import "./CardItem.css";
 import logo from "assets/logo.svg";
 import { getCreatedDate, getDiffTime } from "common/utils/getDate";
 
