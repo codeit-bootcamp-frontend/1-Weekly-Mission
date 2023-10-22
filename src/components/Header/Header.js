@@ -1,6 +1,9 @@
 function Header({name , owner}){
   // const {name, profileImageSource} = owner;
-
+  if (!name || !owner) {
+    return null; // 데이터가 없을 때 아무것도 렌더링하지 않음
+  }
+  
   console.log(name);
   return(
     <>

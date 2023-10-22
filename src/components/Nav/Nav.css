@@ -1,16 +1,18 @@
 .Nav {
-  display: flex;
-  padding: 33px 200px 32px 200px;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  align-self: stretch;
+  height: 25px;
+  padding: 32px 200px;
   background: var(--linkbrary-bg);
+  position: sticky;
+  top : 0px;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  align-self: stretch;
+}
+
+.logo{
+  width: 133px;
+  height: 24px;
 }

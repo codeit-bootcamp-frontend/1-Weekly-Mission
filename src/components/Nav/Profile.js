@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import getSample from "../../api";
 
+import '../../style/style.css';
+import './Profile.css';
+
 function Profile() {
   const [email, setEmail] = useState('');
   const [profileImage, setProfileImage] = useState('');
@@ -17,10 +20,10 @@ function Profile() {
   useEffect(() => getSampleUser)
 
   return (
-    <>
-      <img src={profileImage} alt = "프로필 사진"></img>
-      <span>{email}</span>
-    </>
+    <div className="Profile">
+      <img src={profileImage} className = 'profile-img' alt = "프로필 사진"></img>
+      <span className="flex-center">{email}</span>
+    </div>
   );
 
 }
