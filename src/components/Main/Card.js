@@ -1,6 +1,7 @@
-import image from '../../assets/image.png';
 import LogoImg from '../../assets/logo.png'
 import './Card.css';
+import '../../style/style.css';
+
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 
