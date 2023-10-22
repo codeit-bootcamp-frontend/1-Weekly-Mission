@@ -1,25 +1,25 @@
-.profile {
+.root {
   background-color: var(--gray1);
   padding: 8.8rem 0 6rem;
 }
 
-.profile__container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
 }
 
-.profile__ownerImage {
+.ownerImage {
   width: 6rem;
 }
 
-.profile__ownerName {
+.ownerName {
   font-size: 1.4rem;
   margin: 1.2rem 0 2rem;
 }
 
-.profile__folderName {
+.folderName {
   font-size: 4rem;
   font-weight: 600;
 }
@@ -29,15 +29,15 @@
     padding: 6.4rem 0 6rem;
   }
 
-  .profile__ownerImage {
+  .ownerImage {
     width: 4rem;
   }
 
-  .profile__ownerName {
+  .ownerName {
     margin: 0.6rem 0 1rem;
   }
 
-  .profile__folderName {
+  .folderName {
     font-size: 3.2rem;
   }
 }

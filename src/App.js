@@ -1,13 +1,13 @@
 import Nav from './componant/Nav/Nav';
 import Footer from './componant/Footer/Footer';
-import Profile from './componant/Profile';
+import FolderInfo from './componant/FolderInfo';
 import Section from './componant/Section';
 
 function App() {
   return (
     <>
       <Nav />
-      <Profile />
+      <FolderInfo />
       <Section />
       <Footer />
     </>
