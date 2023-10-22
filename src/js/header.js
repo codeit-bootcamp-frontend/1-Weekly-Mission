@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import logo from './assets/images/logo.png'
-import './header.css'
+import logo from '../assets/images/logo.png'
+import '../css/header.css'
 import { getUser } from './api';
 
 function Header() {

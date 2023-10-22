@@ -1,5 +1,5 @@
-import searchIcon from './assets/images/shared-search.svg'
-import './main.css'
+import searchIcon from '../assets/images/shared-search.svg'
+import '../css/main.css'
 import Cards from './card';
 import { getFolder } from './api';
 import { useEffect, useState } from 'react';
@@ -20,7 +20,9 @@ function MainSection () {
         <div className='main'>
             <div className='main-box'>
                 <SearchBar/>
-                <Cards/> 
+                <div className='cards-grid'>
+                    <Cards/> 
+                </div>
             </div>
         </div>
     );

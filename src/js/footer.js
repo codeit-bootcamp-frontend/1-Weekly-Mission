@@ -1,8 +1,8 @@
-import './footer.css'
-import facebookIcon from './assets/images/facebook-fill.png'
-import twitterIcon from './assets/images/twitter-fill.png'
-import youtubeIcon from './assets/images/youtube-fill.png'
-import instagramIcon from './assets/images/instagram-filled.png'
+import '../css/footer.css'
+import facebookIcon from '../assets/images/facebook-fill.png'
+import twitterIcon from '../assets/images/twitter-fill.png'
+import youtubeIcon from '../assets/images/youtube-fill.png'
+import instagramIcon from '../assets/images/instagram-filled.png'
 
 
 function Footer() {

@@ -1,7 +1,7 @@
-import './card.css'
+import '../css/card.css'
 import { getFolder } from './api';
 import { useEffect, useState } from 'react';
-import noImage from './assets/images/no-image.svg'
+import noImage from '../assets/images/no-image.svg'
 
 
 function Cards () {
@@ -17,9 +17,7 @@ function Cards () {
     },[]);
     
     return (
-        <div className='cards-grid'>
-            {items.map((item)=><Card key={item.id} items={item}/>)}
-        </div>
+        items.map((item)=><Card key={item.id} items={item}/>)
     );
 }
 

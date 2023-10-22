@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #F0F6FF;
-    padding: 33px 200px 32px 200px;
+    padding: 33px 200px 32px;
 }
 
 .link {
@@ -29,4 +29,11 @@
     width: 28px;
     height: 28px;
     border-radius: 20px;
+}
+
+/* tablet */
+@media (max-width:1124px) {
+    .nav {
+        padding: 33px 32px 32px;
+    }
 }
