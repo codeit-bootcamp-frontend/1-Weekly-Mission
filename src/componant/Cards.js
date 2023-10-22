@@ -13,6 +13,11 @@ function Card({ card }) {
     setHover(false);
   };
 
+  const formatDate = (value) => {
+    const date = new Date(value);
+    return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
+  };
+
   const hoverImage = hover ? style.hoverImage : '';
   const hoverBg = hover ? style.hoverBgColor : '';
 
@@ -41,7 +46,7 @@ function Card({ card }) {
             <div>{card.description}</div>
           </div>
 
-          <div>{card.createdAt}</div>
+          <div className={style.footer}>{formatDate(card.createdAt)}</div>
         </div>
       </a>
     </div>

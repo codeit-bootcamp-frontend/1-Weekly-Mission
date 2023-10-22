@@ -7,7 +7,6 @@
 }
 
 .container {
-  /* display: flex; */
   width: 34rem;
   height: 33.4rem;
   border-radius: 1.5rem;
@@ -40,12 +39,15 @@
 
 .header {
   display: flex;
+  font-size: 1.3rem;
+  color: #666;
   justify-content: space-between;
 }
 
 .text {
   font-size: 1.6rem;
   width: 30rem;
+  line-height: 24px;
   height: 4.9rem;
 }
 
@@ -54,6 +56,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 1.6rem;
+}
+
+.footer {
+  height: 1.9rem;
+  font-size: 1.4rem;
 }
 
 @media (max-width: 1199px) {
