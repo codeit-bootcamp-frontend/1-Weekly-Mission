@@ -1,8 +1,8 @@
-import image from './image.png';
-import LogoImg from './logo.png'
-import './Card.css';
+import image from './assets/image.png';
+import LogoImg from './assets/logo.png'
+import './style/Card.css';
 import moment from 'moment';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function calculateTimeAgo(createdAt) {
   const createdDate = moment(createdAt, 'YYYY-MM-DDTHH:mm:ss[Z]');
@@ -32,13 +32,13 @@ function calculateTimeAgo(createdAt) {
 
 
 function Card({ src, createdAt, content }) {
-    const [ago,setAgo]=useState(0)
-    const [createdAtFormat,setCreatedAtFormat]=useState(createdAt)
+  const [ago, setAgo] = useState(0)
+  const [createdAtFormat, setCreatedAtFormat] = useState(createdAt)
 
-  useEffect(()=>{
+  useEffect(() => {
     setAgo(calculateTimeAgo(createdAt))
     setCreatedAtFormat(moment(createdAt).format('YYYY.MM.DD'))
-  },[createdAt])
+  }, [createdAt])
 
   return (
     <div className='Card'>

@@ -1,5 +1,5 @@
 import Card from './Card';
-import image from './image.png';
+import image from './assets/image.png';
 
 function App() {
   return (
