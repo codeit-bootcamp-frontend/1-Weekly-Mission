@@ -1,11 +1,29 @@
 import "./Main.css";
-import Card from "../card/card";
+// import Card from "../card/card";
+import CardList from "../card/cardList";
+import { useCallback, useEffect, useState } from "react";
+import { getFolder } from "../api";
 
 const Main = () => {
+  const [cards, setCards] = useState([]);
+
+  const handleLoad = useCallback(async () => {
+    const result = await getFolder();
+    if (!result) {
+      return;
+    }
+
+    const { links } = result.folder;
+    setCards(links);
+  }, []);
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
   return (
     <main>
       <div className="content_wrapper">
-        {/* 추후 input으로 수정 예정 */}
         <form>
           <input
             id="search"
@@ -14,7 +32,7 @@ const Main = () => {
             placeholder="링크를 검색해 보세요."
           />
         </form>
-        <div className="card_wrapper"></div>
+        <CardList items={cards} />
       </div>
     </main>
   );

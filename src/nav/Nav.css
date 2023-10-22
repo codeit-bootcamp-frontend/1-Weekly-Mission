@@ -5,6 +5,8 @@
   top: 0;
   width: 100%;
 
+  z-index: 3;
+
   display: flex;
   padding: 3.3rem 20rem 3.2rem 20rem;
   /* flex-direction: column; */
@@ -35,4 +37,22 @@
 
   width: 12.8rem;
   padding: 1.6rem 2rem;
+}
+
+.profile_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile_img {
+  width: 2.8rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.profile_email {
+  color: var(--linkbrary-gray-1);
+  font-size: 14px;
 }

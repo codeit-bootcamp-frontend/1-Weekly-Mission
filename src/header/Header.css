@@ -32,7 +32,11 @@ header {
   gap: 1.2rem;
 }
 
-.user_name {
+.owner_img {
+  width: 60px;
+}
+
+.owner_name {
   color: var(--linkbrary-black);
 
   /* Linkbrary/body1-regular */
@@ -43,9 +47,8 @@ header {
 .folder_name {
   color: var(--linkbrary-black);
   text-align: center;
-  font-feature-settings: "clig" off, "liga" off;
 
   /* Linkbrary/h1-semibold */
   font-size: 4rem;
-  font-weight: 6rem;
+  font-weight: 600;
 }

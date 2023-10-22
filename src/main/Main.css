@@ -9,6 +9,7 @@ main {
 }
 
 .content_wrapper {
+  width: 106rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

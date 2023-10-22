@@ -1,5 +1,10 @@
 import "./Header.css";
-import avatar from "../image/avatar.svg";
+import { getFolder } from "../api";
+// import avatar from "../image/avatar.svg";
+
+const {
+  folder: { name, owner },
+} = await getFolder();
 
 const Header = () => {
   return (
@@ -7,10 +12,14 @@ const Header = () => {
       <div className="header_wrapper">
         <div className="user_info">
           <div className="user_profile">
-            <img className="user_img" src={avatar} />
-            <div className="user_name">@코드잇</div>
+            <img
+              className="owner_img"
+              src={owner.profileImageSource}
+              alt="프로필 사진"
+            />
+            <div className="owner_name">{owner.name}</div>
           </div>
-          <div className="folder_name">⭐️ 즐겨찾기</div>
+          <div className="folder_name">{name}</div>
         </div>
       </div>
     </header>
