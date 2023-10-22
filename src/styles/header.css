@@ -1,11 +1,22 @@
 header {
   display: flex;
-  padding: 33px 200px 32px 200px;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   gap: 8px;
-  align-self: stretch;
   background: var(--linkbrary-bg, #f0f6ff);
+}
+
+.header__container {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1920px;
+  height: 94px;
+  padding: 0 200px;
 }
 
 .header__logo {
