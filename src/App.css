@@ -12,25 +12,6 @@
   border-radius: 50%;
 }
 
-/* Hero */
-.hero {
-  text-align: center;
-  background-color: var(--color-primary-varient);
-}
-
-/* Contents */
-.contents {
-  padding: 2.5rem 2rem;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  /* width: 998px;
-  height: 550px; */
-  margin: auto;
-}
-
 /* Tablet */
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
   .max-container {
@@ -39,10 +20,6 @@
 
   .header__container {
     padding: 1.25rem 2rem;
-  }
-
-  .contents {
-    padding: 2.5rem 2rem;
   }
 }
 
@@ -65,12 +42,5 @@
 
   .navbar__userEmail {
     display: none;
-  }
-
-  .contents {
-    width: 100%;
-    height: 100%;
-    padding: 1.25rem 2rem;
-    gap: 2rem;
   }
 }

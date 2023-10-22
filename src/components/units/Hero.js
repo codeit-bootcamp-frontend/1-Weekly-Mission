@@ -1,23 +1,6 @@
-import { getFolder } from "api/api";
-import { useEffect, useState } from "react";
 import "components/units/Hero.css";
 
-export default function Hero() {
-  const [folder, setFolder] = useState("");
-  const [profile, setProfile] = useState();
-
-  useEffect(() => {
-    getFolderData();
-  }, []);
-
-  const getFolderData = async () => {
-    const result = await getFolder();
-    const { name: folderName, owner } = result.folder;
-
-    setFolder(folderName);
-    setProfile(owner);
-  };
-
+export default function Hero({ folder, profile }) {
   return (
     <>
       <div className="hero__profile">
