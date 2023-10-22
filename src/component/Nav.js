@@ -1,14 +1,14 @@
 import logoImg from "../assets/img/logo.svg";
 import { LoginButton } from "./Button";
-import "../css/index.css";
-import "../css/color.css";
+import style from "../css/Nav.module.css";
+// import "../css/color.css";
 
 function NavProfile({ userInfo }) {
   if (userInfo) {
     return (
-      <div className="nav__profile">
+      <div className={style.profile}>
         <img
-          className="nav__profile__img"
+          className={style.profileImg}
           src={userInfo.profileImageSource}
           alt="유저 프로필"
         />
@@ -21,9 +21,9 @@ function NavProfile({ userInfo }) {
 
 function Nav({ userInfo }) {
   return (
-    <div className="nav">
+    <div className={style.root}>
       <a href="/">
-        <img className="nav__logo" src={logoImg} alt="로고" />
+        <img className={style.logo} src={logoImg} alt="로고" />
       </a>
       <NavProfile userInfo={userInfo} />
     </div>

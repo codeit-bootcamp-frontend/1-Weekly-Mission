@@ -1,20 +1,23 @@
-import Header from "./component/Header";
+import Nav from "./component/Nav";
 import Footer from "./component/Footer";
+import Profile from "./component/Profile";
 import { useEffect, useState } from "react";
 import { isSignIn, getFolder } from "./api";
+import "./css/index.css";
+import "./css/color.css";
 
 function App() {
   const [userInfo, setUserInfo] = useState("");
   const [folderInfo, setFolderInfo] = useState("");
 
   const loadUser = async () => {
-    const info = await isSignIn();
-    setUserInfo(info);
+    const userInfo = await isSignIn();
+    setUserInfo(userInfo);
   };
 
   const loadFolder = async () => {
-    const info = await getFolder();
-    setFolderInfo(info);
+    const { folder } = await getFolder();
+    setFolderInfo(folder);
   };
   useEffect(() => {
     loadUser();
@@ -22,7 +25,8 @@ function App() {
   }, []);
   return (
     <>
-      <Header userInfo={userInfo} folderInfo={folderInfo.folder} />
+      <Nav userInfo={userInfo} />
+      <Profile folderInfo={folderInfo} />
       <Footer />
     </>
   );

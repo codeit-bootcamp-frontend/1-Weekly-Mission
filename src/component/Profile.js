@@ -1,16 +1,16 @@
 import { LoginButton } from "./Button";
-
+import style from "../css/Profile.module.css";
 function Profile({ folderInfo }) {
   if (folderInfo) {
     return (
-      <div className="profile">
+      <div className={style.root}>
         <img
-          className="profile__img"
+          className={style.img}
           src={folderInfo.owner.profileImageSource}
           alt="프로필 이미지"
         />
-        <div className="profile__name">{folderInfo.owner.name}</div>
-        <div className="profile__folder-name">{folderInfo.name}</div>
+        <div className={style.userName}>{folderInfo.owner.name}</div>
+        <div className={style.folderName}>{folderInfo.name}</div>
       </div>
     );
   }

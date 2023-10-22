@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 6rem;
+  background-color: var(--linkbrary-bg);
+}
+.root button {
+  width: 200px;
+}
+.img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 4.7rem;
+}
+.folderName {
+  font-size: 4rem;
+  font-weight: 600;
+}
+.userName {
+  font-size: 1.6rem;
+}
