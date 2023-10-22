@@ -1,16 +1,30 @@
 import Search from './Search';
 import Cards from './Cards';
-
-const style = {
-  width: '106rem',
-  margin: '4rem auto',
-};
+import './Section.css';
+import { getSampleFolder } from '../api';
+import { useState, useEffect } from 'react';
 
 function Section() {
+  const [cards, setCards] = useState([]);
+
+  const loadLink = async () => {
+    const {
+      folder: { links },
+    } = await getSampleFolder();
+
+    setCards((prevCards) => {
+      return [...prevCards, ...links];
+    });
+  };
+
+  useEffect(() => {
+    loadLink();
+  }, []);
+
   return (
-    <section style={style}>
+    <section className="section">
       <Search />
-      <Cards />
+      <Cards cards={cards} />
     </section>
   );
 }

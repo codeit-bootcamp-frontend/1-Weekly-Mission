@@ -1,0 +1,9 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  max-width: 112.4rem;
+  padding: 0rem 3.2rem;
+  margin: 4rem auto;
+}
