@@ -20,7 +20,9 @@ const Profile = ({ imgUrl, email, name, id }) => {
         alt="profile"
         style={{ width: "28px", borderRadius: "100%", cursor: "pointer" }}
       />
-      <p style={{ marginLeft: "4px" }}>{email}</p>
+      <p className="profile-collapse" style={{ marginLeft: "4px" }}>
+        {email}
+      </p>
     </div>
   );
 };

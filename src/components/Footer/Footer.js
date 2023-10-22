@@ -5,48 +5,43 @@ import twitter from "../../assets/twitter.svg";
 import youtube from "../../assets/youtube.svg";
 import instagram from "../../assets/instagram.svg";
 
+const snsLinks = {
+  facebook: "https://www.facebook.com/",
+  twitter: "https://www.twitter.com/",
+  youtube: "https://www.youtube.com/",
+  instagram: "https://www.instagram.com/",
+};
+
+const FooterLink = ({ link, text }) => {
+  return (
+    <a className="footer-link" href={link}>
+      {text}
+    </a>
+  );
+};
+
+const SNSImageLink = ({ src, name }) => {
+  return (
+    <a href={snsLinks[name]} target="_blank" rel="noopener noreferrer">
+      <img src={src} alt={name} height={20} />
+    </a>
+  );
+};
+
 const Footer = () => {
   return (
     <footer>
       <div className="footer-box">
         <span className="copyright">©codeit - 2023</span>
         <div className="footer-links">
-          <a className="footer-link" href="/privacy.html">
-            Privacy Policy
-          </a>
-          <a className="footer-link" href="/faq.html">
-            FAQ
-          </a>
+          <FooterLink link="/privacy.html" text="Privacy Policy" />
+          <FooterLink link="/faq.html" text="FAQ" />
         </div>
         <div className="sns">
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={facebook} alt="facebook logo" height={20} />
-          </a>
-          <a
-            href="https://twitter.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={twitter} alt="twitter logo" height={20} />
-          </a>
-          <a
-            href="https://www.youtube.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={youtube} alt="youtube logo" height={20} />
-          </a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={instagram} alt="instagram logo" height={20} />
-          </a>
+          <SNSImageLink src={facebook} name="facebook" />
+          <SNSImageLink src={twitter} name="twitter" />
+          <SNSImageLink src={youtube} name="youtube" />
+          <SNSImageLink src={instagram} name="instagram" />
         </div>
       </div>
     </footer>

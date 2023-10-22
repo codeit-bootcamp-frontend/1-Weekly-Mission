@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
-import Card from "../Card/Card";
+import { useCallback, useEffect, useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
 import { fetchGet } from "../../apis/api";
 
 import "./Share.css";
+import CardList from "../Card/CardList";
+// import useAsync from "../../hooks/useAsync";
 
 const Owner = ({ name, id, ownerId, ownerName, ownerImageSrc }) => {
   return (
@@ -29,12 +30,11 @@ const Share = () => {
     ownerProfileImageSource: "",
   });
 
-  const getSampleFolder = async () => {
+  const handleSampleFolder = useCallback(async () => {
     try {
       const result = await fetchGet("/api/sample/folder");
       const { folder } = result;
       setCards(folder.links); // Card data들
-
       setOwner((prevState) => ({
         ...prevState,
         name: folder.name,
@@ -46,12 +46,19 @@ const Share = () => {
     } catch (err) {
       console.log("ERROR 입니다", err);
     }
-    // Data -> 상위 정보들, 카드 리스트 정보들
-  };
+  }, []);
+
+  // useAsync Test Code
+
+  // const { loading, error, value } = useAsync(
+  //   fetchGet("/api/sample/folder"),
+  //   []
+  // );
+  // console.log(loading, error, value);
 
   useEffect(() => {
-    getSampleFolder();
-  }, []);
+    handleSampleFolder();
+  }, [handleSampleFolder]);
   return (
     <>
       <Owner
@@ -63,21 +70,7 @@ const Share = () => {
       />
       <div className="shared-frame">
         <Searchbar />
-        <div className="shared-cards-frame">
-          {cards &&
-            cards.map((card) => (
-              <Card
-                key={card.id}
-                className={"Card"}
-                createdAt={card.createdAt}
-                description={card.description}
-                id={card.id}
-                imgUrl={card.imageSource}
-                title={card.title}
-                url={card.url}
-              />
-            ))}
-        </div>
+        <CardList cards={cards} />
       </div>
     </>
   );

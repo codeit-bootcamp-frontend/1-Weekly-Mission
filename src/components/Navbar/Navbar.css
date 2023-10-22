@@ -1,5 +1,5 @@
 nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   justify-content: center;
@@ -8,6 +8,7 @@ nav {
   height: 9.4rem;
   background-color: var(--linkbrary-bg);
   padding: 0 20rem;
+  z-index: 2;
 }
 
 .nav-box {
@@ -42,5 +43,9 @@ nav {
 
   .nav-logo {
     width: 8.9rem;
+  }
+
+  .profile-collapse {
+    display: none;
   }
 }

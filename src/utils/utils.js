@@ -1,6 +1,6 @@
 import moment from "moment/moment";
 
-const cardCreatedAtConvert = (value) => {
+const convertCreatedAt = (value) => {
   const today = moment();
   const createdDate = moment(value);
 
@@ -8,6 +8,8 @@ const cardCreatedAtConvert = (value) => {
   const hour = today.diff(createdDate, "hours");
   const day = today.diff(createdDate, "days");
   const month = today.diff(createdDate, "months");
+
+  // moment().from() 사용 가능
 
   if (minute < 2) return "1 minute ago";
   else if (minute <= 59) return `${minute} minutes ago`;
@@ -21,4 +23,4 @@ const cardCreatedAtConvert = (value) => {
   else return `${Math.floor(month / 12)} years ago`;
 };
 
-export { cardCreatedAtConvert };
+export { convertCreatedAt };
