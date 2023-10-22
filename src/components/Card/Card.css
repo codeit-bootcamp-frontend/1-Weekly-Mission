@@ -4,7 +4,6 @@
   display: flex;
   overflow: hidden;
   justify-content: center;
-  width: 34rem;
   height: 20rem;
 }
 
@@ -23,7 +22,6 @@
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   display: flex;
-  width: 34rem;
   padding: 1.5rem 2rem;
   flex-direction: column;
   align-items: flex-start;
