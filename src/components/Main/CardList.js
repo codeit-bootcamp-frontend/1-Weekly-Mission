@@ -5,7 +5,7 @@ function CardList({ links }) {
     return <div>No links available.</div>;
   }
   return (
-    links.map((link, index) => { console.log(link); return <Card key = {index} link={link} />})
+    links.map((link, index) => { return <Card key = {index} link={link} />})
   );
 }
 

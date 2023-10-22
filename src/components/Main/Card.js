@@ -1,9 +1,9 @@
-import LogoImg from '../../assets/logo.png'
+import LogoImg from '../../assets/card-logo.png'
 import './Card.css';
 import '../../style/style.css';
 
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 function calculateTimeAgo(createdAt) {
   const createdDate = moment(createdAt, 'YYYY-MM-DDTHH:mm:ss[Z]');
@@ -33,13 +33,13 @@ function calculateTimeAgo(createdAt) {
 
 function Card({ link }) {
   const { createdAt, description, imageSource, title, url } = link;
-  const [ago, setAgo] = useState(0);
-  const [createdAtFormat, setCreatedAtFormat] = useState(createdAt);
+  // const [ago, setAgo] = useState(0);
+  // const [createdAtFormat, setCreatedAtFormat] = useState(createdAt);
 
-  useEffect(() => {
-    setAgo(calculateTimeAgo(createdAt))
-    setCreatedAtFormat(moment(createdAt).format('YYYY.MM.DD'))
-  }, [createdAt])
+  // useEffect(() => {
+  //   setAgo(calculateTimeAgo(createdAt))
+  //   setCreatedAtFormat(moment(createdAt).format('YYYY.MM.DD'))
+  // }, [])
 
   return (
     <div className='Card'>
@@ -56,10 +56,10 @@ function Card({ link }) {
           )
       }
       <div className='contentContainer'>
-        <div className='contentAgo'>{ago}</div>
+        <div className='contentAgo'>{calculateTimeAgo(createdAt)}</div>
         <div >{title}</div>
         <div className='content'>{description}</div>
-        <div className='contentAt'>{createdAtFormat}</div>
+        <div className='contentAt'>{moment(createdAt).format('YYYY.MM.DD')}</div>
       </div>
 
     </div>
