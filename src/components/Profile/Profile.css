@@ -10,3 +10,9 @@
   height: 2.8rem;
   border-radius: 99rem;
 }
+
+@media screen and (max-width: 767px) {
+  .email {
+    display: none;
+  }
+}
