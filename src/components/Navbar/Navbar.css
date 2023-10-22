@@ -18,12 +18,24 @@ nav {
   align-items: center;
 }
 
+.profile-box {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-image {
+  width: 2.8rem;
+  border-radius: 100%;
+}
+
 .profile-collapse {
   color: var(--linkbrary-gray-100, #373740);
+  margin-left: 0.6rem;
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 0;
 }
 
 /* Tablet */

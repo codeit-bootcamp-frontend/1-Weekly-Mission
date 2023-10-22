@@ -14,15 +14,9 @@ const Logo = ({ link = "/", className, src, alt, height }) => {
 
 const Profile = ({ imgUrl, email, name, id }) => {
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <img
-        src={imgUrl}
-        alt="profile"
-        style={{ width: "28px", borderRadius: "100%", cursor: "pointer" }}
-      />
-      <p className="profile-collapse" style={{ marginLeft: "4px" }}>
-        {email}
-      </p>
+    <div className="profile-box">
+      <img className="profile-image" src={imgUrl} alt="profile" />
+      <p className="profile-collapse">{email}</p>
     </div>
   );
 };
