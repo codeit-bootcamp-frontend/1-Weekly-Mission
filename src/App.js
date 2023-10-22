@@ -1,4 +1,4 @@
-import "App.css";
+import "styles/globalStyles.css";
 
 import { useEffect, useState } from "react";
 import { getUser } from "api/api";
