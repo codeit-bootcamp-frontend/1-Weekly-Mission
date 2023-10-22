@@ -1,11 +1,11 @@
 /* PC 화면 크기 (1200px 이상) */
-
 .NavBar {
   display: flex;
   justify-content: center;
   position: sticky;
   top: 0;
   z-index: 1;
+  background: var(--linkbrary-bg, #f0f6ff);
 }
 
 .NavBar__container {
