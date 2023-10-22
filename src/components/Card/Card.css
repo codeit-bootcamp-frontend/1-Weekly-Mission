@@ -23,6 +23,11 @@
   gap: 1rem;
 }
 
+.card-info-top {
+  display: flex;
+  justify-content: space-between;
+}
+
 .card-img-container {
   display: flex;
   justify-content: center;
