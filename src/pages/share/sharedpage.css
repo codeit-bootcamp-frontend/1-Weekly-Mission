@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
 .links-container {
@@ -30,8 +29,7 @@
     }
 
     .main {
-      margin-left: 32px;
-      margin-right: 32px;
+      margin: 40px 32px;
     }
   }
 }
