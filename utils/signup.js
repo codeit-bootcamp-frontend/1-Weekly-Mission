@@ -1,6 +1,4 @@
 import {
-	goToFolderPage,
-	getPasswordVisibility,
 	getIsFilledEmail,
 	getIsValidEmail,
 	getIsFilledPassword,
@@ -17,6 +15,8 @@ import {
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 } from "/utils/constants.js";
+
+import { getPasswordVisibility } from "./getPasswordVisibility.js";
 
 /* 로그인 상태로 접근 시 리다이렉트 */
 redirectIfSignedIn();
@@ -99,17 +99,23 @@ function changePasswordConfirmHint(hintType) {
 }
 
 async function checkEmailFocusout(email) {
-	const isNewEmail = await getIsNewEmail(email);
-
 	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
-	} else if (!getIsValidEmail(email)) {
-		changeEmailHint(INPUT_STATUS.isNotValidated);
-	} else if (!isNewEmail) {
-		changeEmailHint(INPUT_STATUS.isExists);
-	} else {
-		changeEmailHint(INPUT_STATUS.default);
+		return;
 	}
+
+	if (!getIsValidEmail(email)) {
+		changeEmailHint(INPUT_STATUS.isNotValidated);
+		return;
+	}
+
+	const isNewEmail = await getIsNewEmail(email);
+	if (!isNewEmail) {
+		changeEmailHint(INPUT_STATUS.isExists);
+		return;
+	}
+
+	changeEmailHint(INPUT_STATUS.default);
 }
 
 function checkPasswordFocusout(password) {
@@ -135,21 +141,25 @@ function checkPasswordConfirmFocusout(confirmPassword) {
 }
 
 async function getIsCompleteEmail(email) {
-	const isNewEmail = await getIsNewEmail(email);
-
 	if (!getIsFilledEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotFilled);
 		return false;
-	} else if (!getIsValidEmail(email)) {
+	}
+
+	if (!getIsValidEmail(email)) {
 		changeEmailHint(INPUT_STATUS.isNotValidated);
 		return false;
-	} else if (!isNewEmail) {
+	}
+
+	const isNewEmail = await getIsNewEmail(email);
+
+	if (!isNewEmail) {
 		changeEmailHint(INPUT_STATUS.isExists);
 		return false;
-	} else {
-		changeEmailHint(INPUT_STATUS.default);
-		return true;
 	}
+
+	changeEmailHint(INPUT_STATUS.default);
+	return true;
 }
 
 function getIsCompletePassword(password) {

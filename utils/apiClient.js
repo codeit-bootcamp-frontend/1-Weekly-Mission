@@ -12,8 +12,6 @@ export const fetchClient = async ({ url, method, body }) => {
 
 		if (response.status !== 200) {
 			throw new Error(response.status);
-		} else {
-			return response;
 		}
 	} catch (error) {
 		throw error;

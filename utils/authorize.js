@@ -5,7 +5,8 @@ import {
 	FOLDER_PAGE_PATH,
 } from "/utils/constants.js";
 
-import { fetchClient } from "../apiClient.js";
+import { fetchClient } from "./apiClient.js";
+
 import { getAccessToken, setAccessToken } from "./accessToken.js";
 
 function goToFolderPage() {
@@ -115,7 +116,6 @@ const signUp = async (email, password) => {
 };
 
 export {
-	getPasswordVisibility,
 	goToFolderPage,
 	getIsFilledEmail,
 	getIsValidEmail,
