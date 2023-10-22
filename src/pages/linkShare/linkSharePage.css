@@ -23,7 +23,7 @@
 }
 
 .folder-name {
-	font-size: 40px;
+	font-size: 4rem;
 	font-weight: 600;
 	line-height: normal;
 }
@@ -51,6 +51,7 @@
 	}
 
 	.link-card-list--wrapper {
+		grid-template-columns: repeat(2, 1fr);
 		gap: 2.4rem 2.5rem;
 	}
 }
@@ -59,5 +60,35 @@
 @media screen and (max-width: 767px) {
 	.page--container {
 		padding-top: 6.3rem;
+	}
+
+	.folder-info--wrapper {
+		padding: 1rem 0 4rem;
+	}
+
+	.profile-image {
+		width: 4rem;
+		height: 4rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.profile-name {
+		margin-bottom: 1rem;
+		font-size: 1.4rem;
+	}
+
+	.folder-name {
+		font-size: 3.2rem;
+		letter-spacing: -0.2px;
+	}
+
+	.folder-contents--wrapper {
+		padding: 2rem 3.25rem 4rem;
+		gap: 3.2rem;
+	}
+
+	.link-card-list--wrapper {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
 	}
 }

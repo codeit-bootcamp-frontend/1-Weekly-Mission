@@ -28,18 +28,22 @@ export default function LinkSharePage() {
 
 	return (
 		<div className="page--container">
-			<HeaderComponent email={profile.email} />
+			{profile.email && <HeaderComponent email={profile.email} />}
 
 			<main className="folder-info--wrapper">
-				<img
-					className="profile-image"
-					src={profile.profileImageSource}
-					alt="유저 프로필 이미지"
-					width="60px"
-					height="60px"
-				/>
-				<p className="profile-name">@{profile.name}</p>
-				<p className="folder-name">{folder.name}</p>
+				{profile.profileImageSource && (
+					<img
+						className="profile-image"
+						src={profile.profileImageSource}
+						alt="유저 프로필 이미지"
+						width="60px"
+						height="60px"
+					/>
+				)}
+
+				{profile.name && <p className="profile-name">@{profile.name}</p>}
+
+				{folder.name && <p className="folder-name">{folder.name}</p>}
 			</main>
 
 			<section className="folder-contents--wrapper">
