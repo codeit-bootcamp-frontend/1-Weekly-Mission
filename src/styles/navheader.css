@@ -105,3 +105,26 @@ header {
   display: flex;
   flex-direction: row;
 }
+
+.profile {
+  display: flex;
+  gap: 6px;
+  width: 158px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+}
+.user-image {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.user-email {
+  color: var(--linkbrary-gray-100, #373740);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

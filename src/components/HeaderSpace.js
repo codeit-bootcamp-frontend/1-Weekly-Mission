@@ -2,22 +2,25 @@ import "../styles/navheader.css";
 import "../styles/reset.css";
 import logo from "../images/logo.svg";
 
-function HeaderSpace({ items, userData }) {
+function HeaderSpace({ items, lists }) {
   const { name, profileImageSource, title } = items;
-  // const { email, profileImageSource: userImage } = userData;
+  const { email, userImage } = lists;
 
   return (
     <>
       <nav>
         <div className="nav-box">
           <img className="logo" src={logo} alt="회사 로고" />
-          <div className="profile">
-            {/* <img src={userImage} alt="" />
-            <span>{email}</span> */}
-          </div>
-          <a className="cta cta-short" href="/">
-            <span>로그인</span>
-          </a>
+          {lists ? (
+            <div className="profile">
+              <img className="user-image" src={userImage} alt="사용자 이미지" />
+              <span className="user-email">{email}</span>
+            </div>
+          ) : (
+            <a className="cta cta-short" href="/">
+              <span>로그인</span>
+            </a>
+          )}
         </div>
       </nav>
 
