@@ -11,7 +11,8 @@ import SearchBar from './components/SearchBar';
 import Header from './components/Header';
 
 function App() {
-  const [userProfile, setUserProfile] = useState(null);
+  const [userProfile, setUserProfile] = useState(null); // api 객체 받아오기
+  const [folder, setFolder] = useState(null); // api 객체 받아오기
   const [cards, setCards] = useState([]);
   const [isLoadingUserProfile, userProfileLoadingError, getUserProfileAsync] = useAsync(getUserProfile);
   const [isLoading, loadingError, getCardsAsync] = useAsync(getCards);
@@ -31,8 +32,13 @@ function App() {
     if (!result) {
       return;
     }
-
-    const { links } = result.folder;
+    // 폴더 정보 받아오기
+    const { name, owner, links } = { ...result.folder };
+    setFolder({
+      avatar: owner?.profileImageSource,
+      ownerName: owner?.name,
+      folderName: name,
+    });
     setCards(links);
   }, [getCardsAsync]);
 
@@ -46,7 +52,7 @@ function App() {
       <div className="App">
         <header>
           <Nav userProfile={userProfile} userProfileLoadingError={userProfileLoadingError} />
-          <Header />
+          <Header folder={folder} />
         </header>
         <main>
           <SearchBar />
