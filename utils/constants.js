@@ -1,5 +1,4 @@
-/* 비밀번호 토글 */
-// 상수
+// 로그인, 회원가입 폼 비밀번호 토글
 const PASSWORD_TOGGLE_CONSTANT = {
 	visible: {
 		inputType: "text",
@@ -13,18 +12,7 @@ const PASSWORD_TOGGLE_CONSTANT = {
 	},
 };
 
-// DOM 요소
-const passwordToggleElement = document.querySelector(".auth__toggle-password");
-
-// 함수
-function getPasswordVisibility(inputType) {
-	return inputType === "password"
-		? PASSWORD_TOGGLE_CONSTANT.visible
-		: PASSWORD_TOGGLE_CONSTANT.invisible;
-}
-
-/* 유효성 검사 */
-// 상수
+// 로그인, 회원가입
 const USERS = [
 	{
 		email: "test@codeit.com",
@@ -43,13 +31,15 @@ const AUTH_HINT = {
 	password: {
 		default: "",
 		isNotFilled: "비밀번호를 입력해주세요.",
-		isNotExists: "비밀번호를 변경해주세요.",
+		isNotCorrect: "비밀번호를 변경해주세요.",
 		isNotValidated: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
 		isNotConfirmed: "비밀번호가 일치하지 않아요.",
 	},
 };
 
 const EMAIL_PATTERN = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+const PASSWORD_PATTERN = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
 
 const INPUT_STATUS = {
 	default: "default",
@@ -58,19 +48,23 @@ const INPUT_STATUS = {
 	isExists: "isExists",
 	isNotExists: "isNotExists",
 	isNotConfirmed: "isNotConfirmed",
+	isNotCorrect: "isNotCorrect",
 };
 
 const INPUT_HINT_CLASSNAME = "auth__input--hint";
 
 const FOLDER_PAGE_PATH = "/pages/forder.html";
 
+const BASE_URL = "https://bootcamp-api.codeit.kr/api";
+
 export {
-	passwordToggleElement,
-	getPasswordVisibility,
+	PASSWORD_TOGGLE_CONSTANT,
 	USERS,
 	AUTH_HINT,
 	EMAIL_PATTERN,
+	PASSWORD_PATTERN,
 	INPUT_STATUS,
 	INPUT_HINT_CLASSNAME,
 	FOLDER_PAGE_PATH,
+	BASE_URL,
 };
