@@ -1,6 +1,5 @@
 import NotFound from "NotFound";
 import Folder from "pages/Folder";
-import Main from "pages/Main";
 import Shared from "pages/Shared";
 import Signin from "pages/Signin";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -13,9 +12,8 @@ function Router() {
       element: <Root />,
       errorElement: <NotFound />,
       children: [
-        { path: "/", element: <Main /> },
+        { path: "/", element: <Shared /> },
         { path: "/signin", element: <Signin /> },
-        { path: "/shared", element: <Shared /> },
         { path: "/folder", element: <Folder /> },
       ],
     },
