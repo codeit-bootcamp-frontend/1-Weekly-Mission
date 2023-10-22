@@ -5,14 +5,13 @@ import "./IntroSection.css";
 function IntroSection() {
   const [userInfos, setUserInfos] = useState(null);
 
-  const getUserInfos = async () => {
-    const result = await getFolderData();
-    const { folder } = result;
+  const handleFolderLoad = async () => {
+    const { folder } = await getFolderData();
     setUserInfos(folder);
   };
 
   useEffect(() => {
-    getUserInfos();
+    handleFolderLoad();
   }, []);
 
   return (
@@ -28,7 +27,7 @@ function IntroSection() {
                   alt="유저 프로필 사진"
                 />
               </div>
-              <div className="user-name">{userInfos.owner.name}</div>
+              <div className="user-name">@{userInfos.owner.name}</div>
             </div>
             <div className="bookmark">{userInfos.name}</div>
           </>

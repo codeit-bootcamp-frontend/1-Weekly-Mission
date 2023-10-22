@@ -55,14 +55,12 @@ a:hover {
   cursor: pointer;
 }
 
-
-@media (max-width:768px) {
-  
-  .footer-content {    
-    margin: 32px 32px 64px;   
+@media (max-width: 768px) {
+  .footer-content {
+    margin: 32px 32px 64px;
     position: relative;
   }
-  
+
   .footer-copyright {
     position: absolute;
     left: 0;

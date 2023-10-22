@@ -13,7 +13,7 @@ function formatDate(value) {
 // 카드 컴포넌트
 function Card({ createdAt, description, imageSource, title, url }) {
   // 얼마전에 등록했는지?
-  function folderCreatedAgo(value) {
+  function getFolderCreatedAgo(value) {
     const currentDate = new Date();
     const createdDate = new Date(value);
     const timeDifference = currentDate - createdDate;
@@ -52,18 +52,15 @@ function Card({ createdAt, description, imageSource, title, url }) {
   }
 
   return (
-    <div className="card">
+    <div className="card" onClick={handleSiteMoveClick}>
       <div className="folder-img-container" href={url} target="_blank">
-        <img
-          className="folder-img"
-          src={imageSource || nonImage}
-          alt={title}
-          onClick={handleSiteMoveClick}
-        />
+        <img className="folder-img" src={imageSource || nonImage} alt={title} />
       </div>
 
       <div className="folder-contents-container">
-        <div className="folder-createdAgo">{folderCreatedAgo(createdAt)}</div>
+        <div className="folder-createdAgo">
+          {getFolderCreatedAgo(createdAt)}
+        </div>
         <div className="folder-description">{description}</div>
         <div className="folder-createdAt">{formatDate(createdAt)}</div>
       </div>
@@ -75,15 +72,14 @@ function Card({ createdAt, description, imageSource, title, url }) {
 function CardList() {
   const [cardInfos, setCardInfos] = useState([]);
 
-  const getFolderInfos = async () => {
-    const result = await getFolderData();
-    const { folder } = result;
+  const handleFolderLoad = async () => {
+    const { folder } = await getFolderData();
     const { links } = folder;
     setCardInfos(links);
   };
 
   useEffect(() => {
-    getFolderInfos();
+    handleFolderLoad();
   }, []);
 
   return (

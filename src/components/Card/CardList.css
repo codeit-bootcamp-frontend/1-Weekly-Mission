@@ -2,7 +2,7 @@
   width: 106rem;
   height: 105.2rem;
   display: grid;
-  place-items:center;
+  place-items: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 2.5rem 2rem;
@@ -40,6 +40,10 @@
   gap: 1rem;
 }
 
+.folder-contents-container:hover {
+  cursor: pointer;
+}
+
 .folder-createdAgo {
   font-size: 1.3rem;
   font-weight: 400;
@@ -68,14 +72,14 @@
 
 @media (max-width: 1124px) {
   .card-container {
-    width:70.4rem;
+    width: 70.4rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    overflow-y:scroll;
+    overflow-y: scroll;
     -ms-overflow-style: none;
   }
-  .card-container::-webkit-scrollbar{
-    display:none;
+  .card-container::-webkit-scrollbar {
+    display: none;
   }
 }
 

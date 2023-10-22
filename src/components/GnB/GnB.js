@@ -2,7 +2,9 @@ import "../../Global.css";
 import "./GnB.css";
 import linkbraryLogo from "../../assets/logo/linkbrary_logo.svg";
 
-function UserProfile({ email, profileImageSource }) {
+function UserProfile({ userAccount }) {
+  const { email, profileImageSource } = userAccount;
+
   if (!email) {
     return <a className="login link">로그인</a>;
   } else {
@@ -19,19 +21,19 @@ function UserProfile({ email, profileImageSource }) {
   }
 }
 
-function GlobalNavBar({ email, profileImageSource }) {
+function GlobalNavBar({ userAccount }) {
   return (
-    <header>
-      <div className="header_container">
+    <div className="gnb-container">
+      <div className="gnb">
         <a className="site_logo">
           <img
             src={linkbraryLogo}
             alt="링크브러리 로고 링크(랜딩페이지 이동)"
           />
         </a>
-        <UserProfile email={email} profileImageSource={profileImageSource} />
+        <UserProfile userAccount={userAccount} />
       </div>
-    </header>
+    </div>
   );
 }
 
