@@ -1,3 +1,5 @@
+import { LoginButton } from "./Button";
+
 function Profile({ folderInfo }) {
   if (folderInfo) {
     return (
@@ -12,7 +14,11 @@ function Profile({ folderInfo }) {
       </div>
     );
   }
-  return <button>로그인</button>;
+  return (
+    <div className="profile">
+      <LoginButton />
+    </div>
+  );
 }
 
 export default Profile;

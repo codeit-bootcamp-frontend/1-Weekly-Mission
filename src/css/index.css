@@ -39,7 +39,9 @@ body {
   gap: 2rem;
   padding-bottom: 6rem;
 }
-
+.profile button {
+  width: 200px;
+}
 .profile__img {
   width: 6rem;
   height: 6rem;

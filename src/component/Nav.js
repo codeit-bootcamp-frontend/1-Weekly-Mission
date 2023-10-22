@@ -1,4 +1,5 @@
 import logoImg from "../img/logo.svg";
+import { LoginButton } from "./Button";
 import "../css/index.css";
 import "../css/color.css";
 
@@ -15,7 +16,7 @@ function NavProfile({ userInfo }) {
       </div>
     );
   }
-  return <button>로그인</button>;
+  return <LoginButton />;
 }
 
 function Nav({ userInfo }) {
