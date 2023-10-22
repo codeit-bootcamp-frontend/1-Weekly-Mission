@@ -4,6 +4,21 @@ import instagram from '../images/icon-instagram.svg';
 import twitter from '../images/icon-twitter.svg';
 import './Footer.css';
 
+class SocialMedia {
+  constructor(url, title, src) {
+    this.url = url;
+    this.title = title;
+    this.src = src;
+  }
+}
+
+const socialMediaArray = [
+  new SocialMedia('https://ko-kr.facebook.com', 'facebook', facebook),
+  new SocialMedia('https://twitter.com', 'twitter', twitter),
+  new SocialMedia('https://www.instagram.com', 'instagram', instagram),
+  new SocialMedia('https://www.youtube.com', 'youtube', youtube),
+];
+
 function Footer() {
   return (
     <footer className="footer">
@@ -15,7 +30,7 @@ function Footer() {
         </div>
 
         <div className="footer__privacy">
-          <a href="/privacy.html" title="rivacy Polic">
+          <a href="/privacy.html" title="Privacy Policy">
             Privacy Policy
           </a>
           <a href="/faq.html" title="FAQ">
@@ -24,38 +39,19 @@ function Footer() {
         </div>
 
         <div className="footer__social_media">
-          <a
-            href="https://ko-kr.facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="facebook"
-          >
-            <img src={facebook} alt="페이스북 아이콘" />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="twitter"
-          >
-            <img src={twitter} alt="트위터 아이콘" />
-          </a>
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="instagram"
-          >
-            <img src={youtube} alt="유튜브 아이콘" />
-          </a>
-          <a
-            href="https://www.youtube.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="youtube"
-          >
-            <img src={instagram} alt="인스타그램 아이콘" />
-          </a>
+          {socialMediaArray.map((media) => {
+            return (
+              <a
+                key={media.title}
+                href={media.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={media.title}
+              >
+                <img src={media.src} alt={media.title} />
+              </a>
+            );
+          })}
         </div>
       </div>
     </footer>
