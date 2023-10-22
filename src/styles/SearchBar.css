@@ -1,0 +1,22 @@
+.SearchBar {
+  position: relative;
+}
+
+.SearchBar__search-icon {
+  position: absolute;
+  top: 50%;
+  left: 2.4rem;
+  transform: translate(-50%, -50%);
+}
+
+.SearchBar__input {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  background-color: #f5f5f5;
+  width: 1060px;
+  padding: 1.5rem 4.2rem;
+  font-size: 1.6rem;
+  line-height: 150%;
+  border-radius: 1rem;
+}
