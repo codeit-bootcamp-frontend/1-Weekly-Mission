@@ -11,7 +11,7 @@ import {
   SnsIconI,
 } from '../CommonImages';
 
-function Landing() {
+function Home() {
   return (
     <>
       <header>
@@ -136,4 +136,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default Home;

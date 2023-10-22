@@ -1,8 +1,11 @@
 import React from 'react';
-import { LogoImg } from '../CommonImages';
-import { eyeOffImg, snsIconG, snsIconK } from './Images';
+import '../../reset.css';
+import '../../common_style.css';
+import './style.css';
+import { LogoImg, snsIconG, snsIconK } from '../CommonImages';
+import { eyeOffImg } from './Images';
 
-function SignUp() {
+function SignIn() {
   return (
     <>
       <div className="container">
@@ -13,9 +16,9 @@ function SignUp() {
             </a>
           </div>
           <nav>
-            <span>이미 회원이신가요?</span>
-            <a className="nav-link" href="/pages/login/signin.html">
-              로그인 하기
+            <span>회원이 아니신가요?</span>
+            <a className="nav-link" href="/pages/login/signup.html">
+              회원 가입하기
             </a>
           </nav>
         </header>
@@ -35,25 +38,16 @@ function SignUp() {
                 alt="비밀번호 보이게하기(현재 보이지 않음)"
               />
             </div>
-            <div className="form-item">
-              <label htmlFor="password-check">비밀번호 확인</label>
-              <input id="password-check" type="password" name="password" />
-              <img
-                className="eye"
-                src={eyeOffImg}
-                alt="비밀번호 보이게하기(현재 보이지 않음)"
-              />
-            </div>
           </form>
-          <div className="btn">회원가입</div>
+          <div className="btn">로그인</div>
           <div className="sns">
-            <span>다른 방식으로 가입하기</span>
+            <span>소셜 로그인</span>
             <div className="sns-icons">
               <a href="https://www.google.com/">
-                <img src={snsIconG} alt="구글 회원가입 바로가기" />
+                <img src={snsIconG} alt="구글 로그인 바로가기" />
               </a>
               <a href="https://www.kakaocorp.com/page/">
-                <img src={snsIconK} alt="카카오 회원가입 바로가기" />
+                <img src={snsIconK} alt="카카오 로그인 바로가기" />
               </a>
             </div>
           </div>
@@ -63,4 +57,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignIn;
