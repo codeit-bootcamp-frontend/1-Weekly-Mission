@@ -29,7 +29,7 @@ function UserInform() {
       ) : (
         <>
           <img src={DEFAULT_PROFILE_IMAGE} alt="profile" />
-          <span>data?.email</span>
+          <span>{data?.email}</span>
         </>
       )}
     </div>
