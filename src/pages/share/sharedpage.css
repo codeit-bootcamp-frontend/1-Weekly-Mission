@@ -22,14 +22,16 @@
 
 /* tablet */
 
-@media (max-width: 1124px) {
-  .links-container {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 24px;
-  }
+@media (min-width: 768px) and (max-width: 1199px) {
+  @media (max-width: 1124px) {
+    .links-container {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+    }
 
-  .main {
-    margin-left: 32px;
-    margin-right: 32px;
+    .main {
+      margin-left: 32px;
+      margin-right: 32px;
+    }
   }
 }
