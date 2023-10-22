@@ -1,7 +1,7 @@
-import facebook from '../images/icon-facebook.svg';
-import youtube from '../images/icon-youtube.png';
-import instagram from '../images/icon-instagram.svg';
-import twitter from '../images/icon-twitter.svg';
+import facebook from '../../images/icon-facebook.svg';
+import youtube from '../../images/icon-youtube.png';
+import instagram from '../../images/icon-instagram.svg';
+import twitter from '../../images/icon-twitter.svg';
 import './Footer.css';
 
 class SocialMedia {

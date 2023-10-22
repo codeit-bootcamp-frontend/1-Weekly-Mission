@@ -1,5 +1,5 @@
-import Nav from './componant/Nav';
-import Footer from './componant/Footer';
+import Nav from './componant/Nav/Nav';
+import Footer from './componant/Footer/Footer';
 import Profile from './componant/Profile';
 import Section from './componant/Section';
 

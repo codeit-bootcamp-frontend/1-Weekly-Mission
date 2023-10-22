@@ -1,4 +1,4 @@
-.nav {
+.root {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,28 +11,28 @@
   justify-content: space-between;
 }
 
-.nav__logo {
+.logo {
   width: 13.3rem;
   height: 2.4rem;
 }
 
-.nav__btn {
+.button {
   width: 12.8rem;
 }
 
-.nav__profile {
+.profile {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
 }
-.nav__profileImage {
+.profileImage {
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 3rem;
   overflow: hidden;
 }
-.nav__UserProfile {
+.UserProfile {
   font-size: 1.4rem;
 }
 
@@ -45,12 +45,12 @@
 }
 
 @media (max-width: 767px) {
-  .nav__logo {
+  .logo {
     width: 8.9rem;
     height: 1.6rem;
   }
 
-  .btn {
+  .button {
     padding: 1rem 1.6rem;
     font-size: 1.4rem;
   }
@@ -59,10 +59,10 @@
     padding: 1.3rem 3.2rem;
   }
 
-  .nav__btn {
+  .button {
     width: 8rem;
   }
-  .nav__UserProfile {
+  .UserProfile {
     display: none;
   }
 }
