@@ -1,16 +1,28 @@
+import { getFolderAccount } from "../api";
+import { CardList } from './CardList';
+import { useEffect, useState } from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 import './global.css';
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
-
 
 function App() {
-  // const [accout, setAccout] = useState({});
+  const [account, setAccount] = useState({});
+
+  const handleLoad = async () => {
+    const { email, profileImageSource } = await getFolderAccount();
+    setAccount({ email, profileImageSource });
+  };
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
 
   return (
     <div>
-      <Header />
-      <Main />
+      <Header account={account} />
+      <div>
+        <CardList />
+      </div>
       <Footer />
     </div>
   );

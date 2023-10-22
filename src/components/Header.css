@@ -1,14 +1,12 @@
-/* Header */
-.header {
-  background: var(--color-bg);
+* {
+  margin: 0;
+}
+.Header {
+  background: #F0F6FF;
   width: 100%;
 }
-.nav-container {
-  /* position: fixed;
-  top: 0;
-  left: 0; */
+.gnb {
   width: 100%;
-  padding: 20px 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,26 +20,24 @@
 .login {
   width: 128px;
 }
-.banner {
-  width: 100%;
+
+.folder {
+  /* 임시 */
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
-.banner-inner {
-  border: 1px solid #000;
+.folder-wrapper {
+}
+.avatar {
+  background-color: purple;
+  width: 60px;
+  height: 60px;
   text-align: center;
+  border-radius: 50%;
 }
-.profile-img {
-
-}
-.profile-user {
-  font-size: 16px;
-}
-.profile-folder {
-  color: var(--color-black);
+.folder-name {
   font-size: 40px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
 }

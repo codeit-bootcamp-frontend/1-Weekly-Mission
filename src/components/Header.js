@@ -1,19 +1,31 @@
-import icon from '../assets/icon-smile.svg';
 import './Header.css';
-import Nav from './Nav';
+import logoImg from '../assets/logo.svg'
+import Folder from "./Folder";
 
-function Header () {
+function Profile({ account }) {
+  const { email, profileImageSource } = account;
+
+  if (!email) {
+    return <a>로그인</a>;
+  } else {
+    <div>
+      <img src={profileImageSource} />
+      <div>{email}</div>
+    </div>
+  }
+}
+
+function Header({ account }) {
   return (
-    <div className="header">
-      <Nav />
-      <div className="banner">
-        <div className="banner-inner">
-          <div className="profile-img"><img src={icon} alt="" /></div>
-          <div className="folder-user">@코드잇</div>
-          <div className="folder-fname ">⭐️ 즐겨찾기</div>
+    <div className="Header">
+      <div className="gnb">
+        <div className="logo">
+          <a href="/"><img src={logoImg} alt="홈으로 이동"/></a>
         </div>
+        <Profile account={account}/>
       </div>
-  </div>
+      <Folder />
+    </div>
   );
 }
 

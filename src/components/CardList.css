@@ -1,0 +1,34 @@
+.card-container {
+  display: grid;
+  grid-template-areas: 
+    "item item item"
+    "item item item"
+    "item item item";
+  }
+.card {
+  width: 340px;
+  height: 334px;
+  border-radius: 30px;
+  position: relative;
+}
+.card-img {
+  width: 100%;
+}
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+}
+.createdAt {
+  color: #666;
+  font-size: 13px;
+}
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
