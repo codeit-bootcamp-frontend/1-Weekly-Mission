@@ -1,19 +1,19 @@
-import "./Header.css";
+import style from "./Header.module.css";
 import logo from "assets/logo.svg";
 
 export default function Header({ user }) {
   return (
-    <header className="header">
-      <div className="header__container max-container">
-        <img src={logo} alt="logo" className="header__logo" />
+    <header className={style.wrapper}>
+      <div className={style.container}>
+        <img src={logo} alt="logo" className={style.logo} />
         <nav>
           {user ? (
-            <div className="header__navbar">
-              <img src={user?.profileImageSource} className="navbar__userImage" />
-              <span className="navbar__userEmail">{user?.email}</span>
+            <div className={style.navbar}>
+              <img src={user?.profileImageSource} className={style.profileImage} />
+              <span className={style.profileEmail}>{user?.email}</span>
             </div>
           ) : (
-            <button className="header__login__btn">로그인</button>
+            <button className={style.button}>로그인</button>
           )}
         </nav>
       </div>

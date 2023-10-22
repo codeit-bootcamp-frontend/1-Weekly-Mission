@@ -1,13 +1,13 @@
-import "./Hero.css";
+import style from "./Hero.module.css";
 
 export default function Hero({ folder, profile }) {
   return (
     <>
-      <div className="hero__profile">
-        <img src={profile?.profileImageSource} alt="avatar" className="hero__profile__image" />
-        <p className="hero__profile__name">{profile?.name}</p>
+      <div className={style.wrapper}>
+        <img src={profile?.profileImageSource} alt="avatar" className={style.profileImage} />
+        <p className={style.profileName}>{profile?.name}</p>
       </div>
-      <h2 className="hero__title">{folder}</h2>
+      <h2 className={style.title}>{folder}</h2>
     </>
   );
 }

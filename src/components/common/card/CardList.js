@@ -1,9 +1,9 @@
 import CardItem from "./CardItem";
-import "./CardList.css";
+import style from "./CardList.module.css";
 
 export default function CardList({ links }) {
   return (
-    <ul className="cards">
+    <ul className={style.cards}>
       {links?.map((link) => (
         <li key={link.id}>
           <CardItem link={link} />

@@ -4,7 +4,7 @@ import Hero from "components/common/hero/Hero.js";
 import Searchbar from "components/common/searchbar/Searchbar.js";
 import CardList from "components/common/card/CardList.js";
 
-import "./Share.css";
+import style from "./Share.module.css";
 import { getFolder } from "api/api";
 
 export default function Share() {
@@ -31,11 +31,11 @@ export default function Share() {
 
   return (
     <main>
-      <section className="hero">
+      <section className={style.hero}>
         <Hero folder={folder} profile={profile} />
       </section>
       <section>
-        <div className="contents">
+        <div className={style.contents}>
           <Searchbar />
           <CardList links={links} />
         </div>

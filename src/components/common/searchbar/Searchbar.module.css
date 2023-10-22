@@ -1,18 +1,18 @@
-.searchBar {
+.wrapper {
   position: relative;
   max-width: 1060px;
   width: 100%;
   margin: auto;
 }
 
-.searchBar__icon {
+.searchIcon {
   position: absolute;
   top: 50%;
   left: 16px;
   transform: translate(-50%, -50%);
 }
 
-.searchBar__input {
+.searchInput {
   padding: 1rem 2rem;
   width: 100%;
   border: none;
