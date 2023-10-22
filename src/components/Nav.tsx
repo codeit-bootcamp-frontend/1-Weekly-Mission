@@ -1,6 +1,6 @@
-import Button from "components/button";
 import { Link } from "react-router-dom";
 import styles from "styles/modules/nav.module.css";
+import UserInform from "./profile/UserInform";
 
 function Nav() {
   return (
@@ -8,8 +8,7 @@ function Nav() {
       <Link to="/">
         <img src="assets/images/logo.png" alt="logo" />
       </Link>
-
-      <Button content="로그인" link="/signin" />
+      <UserInform />
     </nav>
   );
 }
