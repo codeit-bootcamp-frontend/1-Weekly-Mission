@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import searchIcon from '../images/Search.svg';
-import './Search.css';
+import styles from './Search.module.css';
 
 function Search() {
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -10,14 +10,14 @@ function Search() {
   }
 
   return (
-    <article className="search">
-      <img className="search__icon" src={searchIcon} alt="" />
+    <article className={styles.root}>
+      <img className={styles.icon} src={searchIcon} alt="" />
       <form>
         <input
           onChange={handleInputChange}
           value={searchInputValue}
           type="text"
-          className="search__input"
+          className={styles.input}
           placeholder="링크를 검색해 보세요"
         ></input>
       </form>

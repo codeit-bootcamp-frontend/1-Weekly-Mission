@@ -1,15 +1,15 @@
 import { getSampleUser } from '../../api.js';
-import style from './Nav.module.css';
+import styles from './Nav.module.css';
 
 const { email, profileImageSource } = await getSampleUser();
 
 function NavProfile() {
   return (
-    <div className={style.profile}>
-      <div className={style.profileImage}>
+    <div className={styles.profile}>
+      <div className={styles.profileImage}>
         <img src={profileImageSource} alt="profile" />
       </div>
-      <p className={style.UserProfile}>{email}</p>
+      <p className={styles.UserProfile}>{email}</p>
     </div>
   );
 }

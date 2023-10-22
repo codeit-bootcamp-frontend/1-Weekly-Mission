@@ -1,4 +1,4 @@
-.search {
+.root {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -8,11 +8,11 @@
   width: 100%;
 }
 
-.search__icon {
+.icon {
   width: 1.6rem;
 }
 
-.search__input {
+.input {
   font-size: 1.6rem;
   line-height: 2.4rem;
   border: none;
@@ -20,6 +20,6 @@
   background: #f5f5f5;
 }
 
-.search__input:focus {
+.input:focus {
   outline: none;
 }

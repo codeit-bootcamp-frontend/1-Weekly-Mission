@@ -7,7 +7,7 @@ function Nav() {
   return (
     <nav className={styles.root}>
       <NavLogo className={styles.logo} />
-      {false ? (
+      {true ? (
         <NavProfile />
       ) : (
         <LinkButton className={styles.button} href="/signin" title="signin">
