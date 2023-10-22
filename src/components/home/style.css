@@ -53,133 +53,6 @@ a{
     text-decoration: none;
 }
 
-
-/* hero-header*/
-.hero-header{
-    background-color: #f0f6ff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 4.38rem  0 0;
-    margin-top: 7rem;
-    width: 100%;
-}
-
-.hero-header h1{
-    font-size: 6.4rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 8rem;
-    margin: 0;
-    padding: 0 3.2rem;
-
-}
-
-.hero-header h1 span{
-    background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-}
-
-.btn-add-link{
-    width: 35rem;
-    margin: 2.5rem;
-}
-
-.hero-header img{
-    width: 111.8rem;
-    height: 65.9rem;
-}
-
-
-/* section */
-section {
-    display: grid;
-    padding: 3.12rem 10rem;
-    row-gap: 1rem;
-    column-gap: 10%;
-    background-color: #fff;
-    justify-content: center;
-}
-
-section:nth-of-type(odd) {
-    grid-template:
-    ". image"
-    "title image"
-    "description image"
-    ". image";
-}
-
-section:nth-of-type(even) {
-    grid-template:
-    "image ."
-    "image title"
-    "image description"
-    "image .";
-}
-
-section:first-child{
-    padding-top: 7.5rem;
-}
-
-section:last-child{
-    padding-bottom: 12rem;
-}
-
-section h2,
-section p {
-    word-break:initial;
-    min-width: 15rem;
-    margin: 0;
-    font-style: normal;
-}
-
-section h2{
-    font-size: 4.8rem;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.01875rem;
-    grid-area: title;
-}
-
-section p{
-    color: #6B6B6B;
-    font-size: 1.6rem;
-    font-weight: 500;
-    grid-area: description;
-}
-
-
-section img{
-    width: 55rem;
-    grid-area: image;
-}
-
-
-/* section span 그라데이션 배경색 */
-.save span{
-    background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
-}
-
-.manage span{
-    background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
-}
-
-.share span{
-    background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
-}
-
-.search span{
-    background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
-}
-
-section .font-gradation,
-.hero-header .font-gradation{
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
 /* footer */
 footer{
     background-color: #111322;
@@ -341,4 +214,93 @@ footer span{
         order: 2;
         padding-top: 6rem;
     }
+}
+
+/* main */
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 4rem 0;
+}
+
+/* folder 정보 */
+.folder-info{
+    padding: 9.6rem  0 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.folder-owner{
+    display: flex;
+    flex-direction: column;
+}
+
+.owner-profile img{
+    width:6rem;
+    height: 6rem;
+    border-radius: 4.7rem;
+}
+
+.owner-name{
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+}
+
+.folder-name{
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* folder 검색 */
+.search-bar{
+    display: flex;
+    background-color: #F5F5F5;
+    padding: 1.5rem;
+    margin: 0 3.2rem;
+    border-radius: 10px;
+    max-width: 113rem;
+    width: 90%;
+    gap: 1rem;
+}
+
+.search-input{
+    border: 0;
+    background-color: #F5F5F5;
+    width: 100%;
+}
+
+.search-input:focus{
+    outline:none;
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 113rem;
+    gap: 2.5rem 2rem;
+    padding: 4rem 3.2rem 0;
+}
+
+/* login User 정보*/
+.user-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+}
+
+.user-profile img{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 2rem;
 }
