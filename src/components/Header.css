@@ -1,0 +1,47 @@
+/* Header */
+.header {
+  background: var(--color-bg);
+  width: 100%;
+}
+.nav-container {
+  /* position: fixed;
+  top: 0;
+  left: 0; */
+  width: 100%;
+  padding: 20px 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg);
+  z-index: 100;
+}
+.logo {
+  width: 133px;
+  height: 24px;
+}
+.login {
+  width: 128px;
+}
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner-inner {
+  border: 1px solid #000;
+  text-align: center;
+}
+.profile-img {
+
+}
+.profile-user {
+  font-size: 16px;
+}
+.profile-folder {
+  color: var(--color-black);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
