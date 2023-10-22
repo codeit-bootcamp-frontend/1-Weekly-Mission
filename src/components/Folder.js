@@ -15,7 +15,7 @@ const Folder = ({ folderInfo }) => {
 						<img src={profileImageSource} className="folder__user-avatar" alt={userName} />
 						<p className="folder__user-name">@{userName}</p>
 					</div>
-					<h1>{folderName}</h1>
+					<h1 className="folder__title">{folderName}</h1>
 				</div>
 			</BgSection>
 			<BgSection bgColor="white">
