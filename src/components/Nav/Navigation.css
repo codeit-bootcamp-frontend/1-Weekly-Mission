@@ -7,6 +7,10 @@
   grid-template-areas: "logo sign";
   align-items: center;
   padding: 1.6rem 3.2rem;
+  background-color: var(--Gray1);
+}
+
+.nav.scroll {
   background-color: var(--Gray1-80);
 }
 

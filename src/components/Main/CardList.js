@@ -28,9 +28,9 @@ function CardList({ links = [] }) {
   return (
     <div className="cardlist">
       {links.map(link => (
-        <div key={link.id} className="card" >
+        <a key={link.id} className="card" href={link.url} target='_blank' rel='noreferrer' >
           <Card {...link} />
-        </div>
+        </a>
       ))}
     </div>
   )

@@ -20,8 +20,6 @@ function App() {
     loadData('folder');
   }, [])
 
-  console.log(folder)
-
   return (
     <>
       <Navigation />

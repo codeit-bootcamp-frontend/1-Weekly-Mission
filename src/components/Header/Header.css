@@ -25,7 +25,7 @@
 }
 
 .user__name {
-  color: --Black;
+  color: var(--Black);
   font-size: 1.4rem;
 }
 
@@ -39,7 +39,4 @@
     width: 5.6rem;
     height: 5.6rem;
   }
-}
-
-@media screen and (min-width: 1200px) {
 }
