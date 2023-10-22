@@ -1,6 +1,4 @@
 .cards {
-  width: 1060px;
-  /* height: 1052px; */
   display: grid;
   justify-content: center;
   align-items: center;
@@ -8,4 +6,19 @@
   row-gap: 1.5rem;
   column-gap: 1.25rem;
   margin: auto;
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1123px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media only screen and (min-width: 375px) and (max-width: 767px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
 }
