@@ -7,6 +7,7 @@ import useAsync from './hooks/useAsync';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
+import Header from './components/Header';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -31,6 +32,7 @@ function App() {
       <div className="App">
         <header>
           <Nav />
+          <Header />
         </header>
         <main>
           <SearchBar />
