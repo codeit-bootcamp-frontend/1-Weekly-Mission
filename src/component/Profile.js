@@ -1,6 +1,18 @@
 import { LoginButton } from "./Button";
 import style from "../css/Profile.module.css";
-function Profile({ folderInfo }) {
+import { useEffect, useState } from "react";
+import { getFolder } from "../api";
+
+function Profile() {
+  const [folderInfo, setFolderInfo] = useState("");
+
+  const loadFolder = async () => {
+    const { folder } = await getFolder();
+    setFolderInfo(folder);
+  };
+  useEffect(() => {
+    loadFolder();
+  }, []);
   if (folderInfo) {
     return (
       <div className={style.root}>
