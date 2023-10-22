@@ -1,3 +1,4 @@
+import "../styles/LoginButton.css";
 import ProfileInfo from "./ProfileInfo";
 import getUser from "./../api/getUser";
 import { useState } from "react";
