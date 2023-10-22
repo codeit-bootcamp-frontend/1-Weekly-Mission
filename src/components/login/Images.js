@@ -1,4 +1,4 @@
-import eyeOffImg from '../../assets/eye-off.svg';
-import eyeOnImg from '../../assets/eye-on.svg';
+import EyeOffImg from '../../assets/eye-off.svg';
+import EyeOnImg from '../../assets/eye-on.svg';
 
-export { eyeOffImg, eyeOnImg };
+export { EyeOffImg, EyeOnImg };
