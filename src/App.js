@@ -9,7 +9,7 @@ import { getUser, getUserFolder } from "./api";
 import "./styles/app.css";
 
 function App() {
-  // const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userProfileImage, setUserProfileImage] = useState("");
 
@@ -20,12 +20,11 @@ function App() {
   const [cardList, setCardList] = useState([]);
 
   const loadUser = async () => {
-    const { name, email, profileImageSource } = await getUser();
-    // setUserName(name);
+    const { name: userName, email, profileImageSource } = await getUser();
+    setUserName(userName);
     setUserEmail(email);
     setUserProfileImage(profileImageSource);
-  };
-  const loadUserFolder = async () => {
+
     const { folder } = await getUserFolder();
     setFolderUserProfileImage(folder.owner.profileImageSource);
     setFolderName(folder.name);
@@ -35,16 +34,18 @@ function App() {
 
   useEffect(() => {
     loadUser();
-    loadUserFolder();
   }, []);
+
   return (
     <>
       <Nav userEmail={userEmail} userProfile={userProfileImage} />
+
       <Header
         folderUserProfile={folderUserProfileImage}
         folderName={folderName}
         folderUserName={folderUserName}
       />
+
       <section className="section">
         <div className="search-section">
           <SearchBar />
@@ -53,6 +54,7 @@ function App() {
           <CardList cardList={cardList} />
         </div>
       </section>
+
       <Footer />
     </>
   );
