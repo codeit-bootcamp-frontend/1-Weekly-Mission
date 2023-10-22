@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../css/main.css';
 import Search from './Search';
 import Cards from './Cards';
 import { getFolder } from '../api/apiUrl';
+import { AccountContext } from '../contexts/AccountContext';
 
-const Main = ({account, userErrorMessage}) => {
+const Main = () => {
+    const {account, userErrorMessage} = useContext(AccountContext)
     const {name, profileImageSource} = account;
     const [personalfolder, setPersonalfolder] = useState({});
     const [folderErrorMessage, setFolderErrorMessage] = useState("");

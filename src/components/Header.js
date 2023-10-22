@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../css/header.css';
 import logoImg from '../img/png/Linkbrary.png'
+import { AccountContext } from '../contexts/AccountContext';
 
 
 
 
 
-const Header = ({account , userErrorMessage}) => {
-      const {name, email, profileImageSource} = account;
-      const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+const Header = () => {
+    const {account, userErrorMessage} = useContext(AccountContext);
+    const {name, email, profileImageSource} = account;
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-      window.addEventListener('resize', () => {
-        setWindowWidth(window.innerWidth);
-      })
+    window.addEventListener('resize', () => {
+    setWindowWidth(window.innerWidth);
+    })
     return (
         <header>
              <div className="inner">

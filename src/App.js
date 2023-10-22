@@ -5,6 +5,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import { getAccount} from './api/apiUrl';
 import { useEffect, useState } from 'react';
+import { AccountContext } from './contexts/AccountContext';
 
 
 function App() {
@@ -26,11 +27,13 @@ function App() {
     handleLoad();
   }, []);
   return (
-    <div className="App">
-      <Header account={account} userErrorMessage={userErrorMessage}/>
-      <Main account={account} userErrorMessage={userErrorMessage}/>
-      <Footer/>
-    </div>
+    <AccountContext.Provider value={{account, userErrorMessage}}>
+      <div className="App">
+        <Header/>
+        <Main/>
+        <Footer/>
+      </div>
+    </AccountContext.Provider>
   );
 }
 

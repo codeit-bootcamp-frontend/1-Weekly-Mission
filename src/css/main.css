@@ -187,6 +187,7 @@
 @media screen and (max-width: 1200px) {
     .section-title-second {
         padding: 0 32px;
+        max-width: 765px;
     }
     .section-title-third{
         padding: 0 32px;
@@ -195,6 +196,9 @@
 }
 
 @media screen and (max-width: 770px) {
+    .section-title-second {
+        max-width: 390px;
+    }
     .section-title-third{
         max-width: 390px;
     }
