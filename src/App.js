@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Footer from "./components/js/Footer";
 import Header from "./components/js/Header";
 import Main from "./components/js/Main";
-import { getAccount, getFolder } from "./config/apiurl";
+import { getAccount, getFolder } from "./api/apiUrl";
 
 function App() {
   const [account, setAccount] = useState({});

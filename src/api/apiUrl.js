@@ -11,6 +11,9 @@ export async function getAccount() {
 
 export async function getFolder() {
   const response = await fetch(`${BASE_URL}/sample/folder`);
+  if (!response.ok) {
+    throw new Error("데이터를 불러오는데 실패하였습니다.");
+  }
   const body = await response.json();
   return body;
 }
