@@ -1,10 +1,10 @@
-.footer {
+.root {
   padding-top: 12rem;
   font-family: Arial;
   text-align: center;
 }
 
-.footer__container {
+.container {
   width: 100%;
   display: grid;
   grid-template:
@@ -16,13 +16,13 @@
   background: var(--black);
 }
 
-.footer__copyright {
+.copyright {
   color: #676767;
   font-size: 1.6rem;
   grid-area: copy;
 }
 
-.footer__privacy {
+.privacy {
   color: #cfcfcf;
   font-size: 1.6rem;
   display: flex;
@@ -30,12 +30,12 @@
   grid-area: priv;
 }
 
-.footer__privacy a {
+.privacy a {
   display: block;
   width: 10rem;
 }
 
-.footer__social_media {
+.socialMedia {
   display: flex;
   justify-content: center;
   gap: 1.2rem;
@@ -43,11 +43,11 @@
 }
 
 @media (max-width: 767px) {
-  .footer {
+  .root {
     padding-top: 4rem;
   }
 
-  .footer__container {
+  .container {
     grid-template:
       'priv social'
       'copy .';
@@ -55,7 +55,7 @@
     padding: 3.2rem;
   }
 
-  .footer__copyright {
+  .copyright {
     justify-self: start;
     align-self: end;
   }

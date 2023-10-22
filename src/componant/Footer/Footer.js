@@ -2,7 +2,7 @@ import facebook from '../../images/icon-facebook.svg';
 import youtube from '../../images/icon-youtube.png';
 import instagram from '../../images/icon-instagram.svg';
 import twitter from '../../images/icon-twitter.svg';
-import './Footer.css';
+import styles from './Footer.module.css';
 
 class SocialMedia {
   constructor(url, title, src) {
@@ -21,15 +21,15 @@ const socialMediaArray = [
 
 function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__copyright">
+    <footer className={styles.root}>
+      <div className={styles.container}>
+        <div className={styles.copyright}>
           <a href="https://www.codeit.kr/" title="codeit">
             ©codeit - 2023
           </a>
         </div>
 
-        <div className="footer__privacy">
+        <div className={styles.privacy}>
           <a href="/privacy" title="Privacy Policy">
             Privacy Policy
           </a>
@@ -38,7 +38,7 @@ function Footer() {
           </a>
         </div>
 
-        <div className="footer__social_media">
+        <div className={styles.socialMedia}>
           {socialMediaArray.map((media) => {
             return (
               <a
