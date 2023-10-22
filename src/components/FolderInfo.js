@@ -1,19 +1,20 @@
 import "../styles/FolderInfo.css";
 
-const FolderInfo = ({ userData }) => {
-  const { name, profileImageSource } = userData;
+const FolderInfo = ({ folderData }) => {
+  if (folderData && folderData.folder) {
+    const { folder } = folderData;
+    const { owner } = folder;
 
-  return (
-    <div className="FolderInfo">
-      {userData && (
+    return (
+      <div className="FolderInfo">
         <div className="FolderInfo__profile-info">
-          <img className="FolderInfo__profile-img" src={profileImageSource} alt="프로필 이미지" />
-          <p className="FolderInfo__user-name">@{name}</p>
+          <img className="FolderInfo__profile-img" src={owner.profileImageSource} alt="프로필 이미지" />
+          <p className="FolderInfo__user-name">@{owner.name}</p>
         </div>
-      )}
-      <h1 className="FolderInfo__folder-name">⭐️ 즐겨찾기</h1>
-    </div>
-  );
+        <h1 className="FolderInfo__folder-name">{folder.name}</h1>
+      </div>
+    );
+  }
 };
 
 export default FolderInfo;
