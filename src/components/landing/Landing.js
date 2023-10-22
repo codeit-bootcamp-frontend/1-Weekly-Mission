@@ -3,7 +3,6 @@ import '../../reset.css';
 import '../../common_style.css';
 import './style.css';
 import {
-  LogoImg,
   TitleImg,
   SaveImg,
   ManageImg,
@@ -14,6 +13,7 @@ import {
   SnsIconY,
   SnsIconI,
 } from './Images';
+import { LogoImg } from '../CommonImages';
 
 function Landing() {
   return (
