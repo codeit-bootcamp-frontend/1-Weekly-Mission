@@ -1,4 +1,4 @@
-import logoImg from "../img/logo.svg";
+import logoImg from "../assets/img/logo.svg";
 import { LoginButton } from "./Button";
 import "../css/index.css";
 import "../css/color.css";

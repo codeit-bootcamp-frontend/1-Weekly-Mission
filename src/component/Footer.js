@@ -1,8 +1,9 @@
 import css from "../css/Footer.module.css";
-import FacebookIcon from "../icon/FacebookIcon";
-import InstagramIcon from "../icon/InstagramIcon";
-import TwitterIcon from "../icon/TwitterIcon";
-import YoutubeIcon from "../img/Youtube.svg";
+import youtubeImg from "../assets/img/youtube.svg";
+import instagramImg from "../assets/img/instagram.svg";
+import twitterImg from "../assets/img/twitter.svg";
+import facebookImg from "../assets/img/facebook.svg";
+
 function Footer() {
   return (
     <div className={css.footer}>
@@ -17,28 +18,28 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FacebookIcon />
+          <img src={facebookImg} />
         </a>
         <a
           href="https://twitter.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <TwitterIcon />
+          <img src={twitterImg} />
         </a>
         <a
           href="https://www.youtube.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={YoutubeIcon} />
+          <img src={youtubeImg} />
         </a>
         <a
           href="https://www.instagram.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <InstagramIcon />
+          <img src={instagramImg} />
         </a>
       </div>
     </div>
