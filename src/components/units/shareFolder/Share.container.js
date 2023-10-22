@@ -17,12 +17,16 @@ export default function Share() {
   }, []);
 
   const getFolderData = async () => {
-    const result = await getFolder();
-    const { name: folderName, owner, links } = result.folder;
+    try {
+      const result = await getFolder();
+      const { name: folderName, owner, links } = result.folder;
 
-    setFolder(folderName);
-    setProfile(owner);
-    setLinks(links);
+      setFolder(folderName);
+      setProfile(owner);
+      setLinks(links);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
