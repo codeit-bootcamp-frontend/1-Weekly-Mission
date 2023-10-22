@@ -8,7 +8,7 @@ export const makeDateMessage = (num, dateType) => {
   return `${num} ${dateType}${num !== 1 ? 's' : ''} ago`;
 };
 
-export const calculateTimePassed = (createdAt) => {
+export const calculateTimeAgo = (createdAt) => {
   const createdDay = new Date(createdAt);
   const today = new Date();
 

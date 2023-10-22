@@ -1,10 +1,10 @@
-import { calculateTimePassed, getDate } from '../functions/calculateDate';
+import { calculateTimeAgo, getDate } from '../functions/calculateDate';
 import DEFAULT_IMAGE from '../assets/images/default-link-img.svg';
 
 function Card({ data }) {
   const { url, title, description, createdAt, imageSource } = data;
 
-  const timePassed = calculateTimePassed(createdAt);
+  const timeAgo = calculateTimeAgo(createdAt);
   const createdDate = getDate(createdAt);
 
   const reduceText = (text, length) => {
@@ -25,7 +25,7 @@ function Card({ data }) {
         />
       </div>
       <div className='card__text'>
-        <p className='card__time-passed'>{timePassed}</p>
+        <p className='card__time-passed'>{timeAgo}</p>
         <p className='card__title'>{reduceText(title, 70)}</p>
         <p className='card__description'>{reduceText(description, 100)}</p>
         <p className='card__date'>{createdDate}</p>
