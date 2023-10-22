@@ -12,7 +12,7 @@
   padding: 15px 16px;
   align-items: center;
   border-radius: 10px;
-  background: #f5f5f5;
+  background-color: #f5f5f5;
   gap: 10px;
 }
 @media (max-width: 1124px) {
@@ -23,10 +23,16 @@
 
 .search-div {
   color: #666;
+  width: 800px;
+  background-color: #f5f5f5;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  border: none;
+}
+.search-div:focus {
+  outline: none;
 }
 
 .main-content-wrapper {

@@ -19,7 +19,10 @@ export default function Main() {
     <div className="main-container">
       <div className="main-search">
         <img src={search} alt="search" />
-        <div className="search-div">링크를 검색해 보세요.</div>
+        <input
+          className="search-div"
+          placeholder="링크를 검색해 보세요."
+        ></input>
       </div>
       <div className="main-content-wrapper">
         {items.map((item) => (
