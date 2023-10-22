@@ -2,7 +2,7 @@ import library from './img/linkbrary.svg';
 import star from './img/star.svg';
 import { useState, useEffect } from 'react';
 import { getDatas, getUserData } from '../api';
-import './Nav.css';
+import './css/Nav.css';
 import LogIn from './LogIn';
 
 export default function Nav() {
@@ -16,22 +16,20 @@ export default function Nav() {
     setUser(folder.owner);
     setLogin(data);
   };
-  useEffect(() => {
-    handleLoad();
-  }, []);
 
+  console.log(user);
   return (
     <div className="nav1-container">
       <div className="nav1-wrapper">
         <a href="/" className="nav1-logo">
           <img className="nav1-libraryImg" src={library} />
         </a>
-        {login ? (
+        {login.id ? (
           <LogIn item={login} />
         ) : (
-          <a href="/" className="nav-login">
+          <button href="/" className="nav-login" onClick={handleLoad}>
             로그인
-          </a>
+          </button>
         )}
       </div>
       <div className="nav2-wrapper">

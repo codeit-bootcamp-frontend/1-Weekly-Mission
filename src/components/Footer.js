@@ -2,7 +2,7 @@ import facebook from './img/facebook.svg';
 import twitter from './img/twitter.svg';
 import youtube from './img/youtube.svg';
 import insta from './img/insta.svg';
-import './Footer.css';
+import './css/Footer.css';
 
 export default function Footer() {
   return (

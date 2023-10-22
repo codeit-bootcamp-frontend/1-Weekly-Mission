@@ -55,7 +55,6 @@ body {
 .nav1-humanImg {
   width: 28px;
   height: 28px;
-  flex-shrink: 0;
 }
 .nav1-div-mail {
   color: #373740;

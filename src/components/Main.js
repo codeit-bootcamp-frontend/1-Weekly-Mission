@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Main.css';
+import './css/Main.css';
 import search from './img/search.svg';
 import { getDatas } from '../api';
 import Card from './Card';
@@ -14,6 +14,7 @@ export default function Main() {
   useEffect(() => {
     handleLoad();
   }, []);
+
   return (
     <div className="main-container">
       <div className="main-search">

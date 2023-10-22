@@ -1,4 +1,4 @@
-import './Card.css';
+import './css/Card.css';
 import noImage from './img/no-image.svg';
 import { dateCalculator } from './dateCalculator';
 
@@ -9,6 +9,7 @@ export default function Card(item) {
   const month = apiDate.getMonth() + 1;
   const days = apiDate.getDate();
   let image = {};
+
   if (item.item.imageSource === undefined) {
     image = {
       backgroundImage: `url(${noImage})`,
@@ -18,6 +19,7 @@ export default function Card(item) {
       backgroundImage: `url(${item.item.imageSource})`,
     };
   }
+
   return (
     <a href={item.item.url} className="card-wrapper" target="_blank">
       <div className="card-box">
