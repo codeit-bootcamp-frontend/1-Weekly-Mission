@@ -1,15 +1,4 @@
-/* header */
-
-.header {
-  display: flex;
-  flex-direction: row;
-
-  justify-content: space-between;
-  padding: 33px 200px;
-
-  background: var(--linkbrary-bg, #f0f6ff);
-}
-
+/* info */
 .info {
   display: flex;
   flex-direction: column;
@@ -22,9 +11,11 @@
   background: var(--linkbrary-bg, #f0f6ff);
 }
 
-.codeit {
+.avatar {
   width: 28px;
   height: 28px;
+
+  border-radius: 100%;
 
   margin-bottom: 12px;
 }
@@ -43,21 +34,8 @@
   font-weight: 600;
 }
 
-/* footer */
-.footer {
-  width: 100%;
-  height: 160px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  padding: 32px 104px 64px;
-
-  color: #676767;
-  background: #111322;
-}
-
-.icons a {
-  margin-left: 12px;
+/* cardWrapper */
+.cardWrapper {
+  max-width: 1060px;
+  margin: 20px auto;
 }

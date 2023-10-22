@@ -1,13 +1,13 @@
-import CardList from './components/Card';
-import items from './mock.json';
-import Shared from './pages/Shared';
+import Footer from './pages/Footer/Footer';
+import NavBar from './pages/NavBar/NavBar';
+import Shared from './pages/Shared/Shared';
 
 function App() {
-  console.log(items);
   return (
     <div className='App'>
+      <NavBar />
       <Shared />
-      {/* <CardList items={items} /> */}
+      <Footer />
     </div>
   );
 }
