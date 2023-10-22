@@ -3,7 +3,6 @@
   border-top-right-radius: 1.5rem;
   display: flex;
   overflow: hidden;
-  align-items: center;
   justify-content: center;
   width: 34rem;
   height: 20rem;
@@ -12,6 +11,7 @@
 .img {
   width: 100%;
   transition-duration: 0.2s;
+  object-fit: cover;
 }
 
 .Card:hover .img {
@@ -40,8 +40,6 @@
   font-size: 1.6rem;
   line-height: 150%;
   overflow: hidden;
-  text-overflow: ellipsis;
-  align-self: stretch;
 }
 
 .date {
