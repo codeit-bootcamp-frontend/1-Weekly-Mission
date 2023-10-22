@@ -50,3 +50,26 @@ footer > .contentContainer {
   width: 2rem;
   height: 2rem;
 }
+
+@media (max-width: 767px) {
+  footer {
+    padding: 3.2rem;
+  }
+
+  footer .contentContainer {
+    height: 9.6rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #leftItem {
+    text-align: start;
+    order: 3;
+    align-self: flex-end;
+  }
+
+  #snsItemContainer {
+    justify-content: flex-end;
+  }
+}

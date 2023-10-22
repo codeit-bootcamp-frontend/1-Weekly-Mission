@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <header>
       <nav className="contentContainer">
-        <img src={LogoImg} width="133" height="24" id="logoImg" alt="logoImg" />
+        <img src={LogoImg} id="logoImg" alt="logoImg" />
         {userData.email ? (
           <div className="profileContainer">
             <img src={userData.profileImageSource} alt="profileImg" />
