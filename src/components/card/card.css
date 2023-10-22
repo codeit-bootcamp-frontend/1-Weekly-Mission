@@ -28,15 +28,15 @@
   background: var(--color-purple-20);
 }
 
-.sample-img {
+.link-img {
   width: 100%;
 }
 
-.sample-img-empty {
+.link-img-empty {
   opacity: 0.2;
 }
 
-.sample-img:hover {
+.link-img:hover {
   transform: scale(1.5);
   transition: transform 0.3s;
 }
