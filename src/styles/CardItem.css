@@ -52,7 +52,7 @@
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
   .CardItem {
-    width: 325px;
-    height: 327px;
+    width: 32.5rem;
+    height: 32.7rem;
   }
 }

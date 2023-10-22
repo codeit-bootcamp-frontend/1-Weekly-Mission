@@ -22,7 +22,7 @@
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
   .Card__list {
-    grid-template-columns: 34rem;
+    grid-template-columns: 32.5rem;
     row-gap: 2rem;
   }
 }
