@@ -24,7 +24,7 @@
 
 #bottomContainer {
   margin: 4rem auto 6rem;
-  width: 106rem;
+  /* width: 106rem; */
   gap: 4rem;
 }
 
@@ -82,4 +82,16 @@
 #searchImg {
   width: 1.6rem;
   height: 1.6rem;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  #cardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  #cardContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
