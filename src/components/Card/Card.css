@@ -85,24 +85,29 @@
 .card-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 2rem;
-  row-gap: 2.5rem;
-  width: 100%;
+  gap: 2rem 2.5rem;
 }
 
 /* Tablet */
-@media screen and (max-width: 1123px) {
+@media screen and (max-width: 1124px) {
+  .card {
+    width: 34rem;
+    height: 33.4rem;
+  }
   .card-list {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
 }
 
 /* Mobile */
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 767px) {
   .card {
     width: 32.5rem;
+    height: 32.7rem;
   }
   .card-list {
     grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
   }
 }

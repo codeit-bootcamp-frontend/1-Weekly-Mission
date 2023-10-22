@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import Searchbar from "../Searchbar/Searchbar";
+import Searchbar from "../../components/Searchbar/Searchbar";
 import { fetchGet } from "../../apis/api";
 
 import "./Share.css";
-import CardList from "../Card/CardList";
+import CardList from "../../components/Card/CardList";
 // import useAsync from "../../hooks/useAsync";
 
 const Owner = ({ name, id, ownerId, ownerName, ownerImageSrc }) => {
@@ -34,7 +34,7 @@ const Share = () => {
     try {
       const result = await fetchGet("/api/sample/folder");
       const { folder } = result;
-      setCards(folder.links); // Card data들
+      setCards(folder.links);
       setOwner((prevState) => ({
         ...prevState,
         name: folder.name,

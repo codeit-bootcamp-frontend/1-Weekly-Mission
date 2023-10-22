@@ -1,14 +1,12 @@
 .searchbar {
-  /* margin-top: 4rem; */
-  /* margin-left: 4rem; */
-  /* margin-right: 4rem; */
   display: flex;
-  width: 100%;
+  width: 106rem;
   padding: 1.5rem 1.6rem;
   justify-content: space-between;
   align-items: center;
   border-radius: 1rem;
   background: #f5f5f5;
+  transition: 0.5s;
 }
 
 .searchbar-inner {
@@ -42,4 +40,18 @@
 
 .searchbar-delete {
   cursor: pointer;
+}
+
+/* Tablet */
+@media screen and (max-width: 1124px) {
+  .searchbar {
+    width: 70.4rem;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .searchbar {
+    width: 32.5rem;
+  }
 }
