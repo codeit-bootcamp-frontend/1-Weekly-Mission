@@ -10,8 +10,8 @@ function CardList() {
     const cardListResult = await introRequestData();
     if (!cardListResult) return;
 
-    const result = cardListResult.links;
-    setResult(result);
+    const { links } = cardListResult.folder;
+    setResult(links);
   };
 
   useEffect(() => {
@@ -20,15 +20,16 @@ function CardList() {
 
   return (
     <div className={styles.wrapper}>
-      {result.map((result) => (
-        <CardForm
-          key={result.id}
-          createdAt={result.createdAt}
-          content={result.description}
-          imgUrl={result.imageSource}
-          url={result.url}
-        />
-      ))}
+      {result &&
+        result.map((result) => (
+          <CardForm
+            key={result.id}
+            createdAt={result.createdAt}
+            content={result.description}
+            imgUrl={result.imageSource}
+            url={result.url}
+          />
+        ))}
     </div>
   );
 }

@@ -9,11 +9,7 @@ import './styles/Variables.css';
 
 function App() {
   const [loginData, setLoginData] = useState({});
-
-  const [introId, setIntroId] = useState();
-  const [introName, setIntroName] = useState('');
-  const [introImg, setIntroImg] = useState('');
-  const [introFolderName, setIntroFolderName] = useState('');
+  const [folderData, setFolderData] = useState({});
 
   const loginInfo = async () => {
     const headerResult = await HeaderRequestData();
@@ -26,12 +22,9 @@ function App() {
     const introResult = await introRequestData();
     if (!introResult) return;
 
-    const { id, name, profileImageSource } = introResult.owner;
+    const { folder } = introResult;
 
-    setIntroId(id);
-    setIntroName(name);
-    setIntroImg(profileImageSource);
-    setIntroFolderName(introResult.name);
+    setFolderData(folder);
   };
 
   useEffect(() => {
@@ -41,9 +34,9 @@ function App() {
 
   return (
     <>
-      <Header id={loginData.id} email={loginData.email} img={loginData.profileImageSource} />
+      <Header loginData={loginData} />
       <main>
-        <Intro id={introId} name={introName} introProfileImg={introImg} introFolderName={introFolderName} />
+        <Intro folderData={folderData} />
         <Main />
       </main>
       <Footer />

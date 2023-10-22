@@ -3,7 +3,9 @@ import Logo from '../assets/icon/logo.svg';
 import Login from '../components/Login';
 import '../styles/Header.css';
 
-function Header({ id, email, img }) {
+function Header({ loginData }) {
+  const { id, email, profileImageSource } = loginData;
+
   return (
     <header>
       <nav className="nav">
@@ -12,7 +14,7 @@ function Header({ id, email, img }) {
         </a>
         {id !== undefined ? (
           <div className="profile">
-            <img className="header-profile-img" src={img} alt="프로필 이미지" />
+            <img className="header-profile-img" src={profileImageSource} alt="프로필 이미지" />
             <p className="email" key={id}>
               {email}
             </p>

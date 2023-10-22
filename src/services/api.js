@@ -21,8 +21,7 @@ export const introRequestData = async () => {
   }
 
   const body = await response.json();
-  const result = body.folder;
-  return result;
+  return body;
 };
 
 export default HeaderRequestData;
