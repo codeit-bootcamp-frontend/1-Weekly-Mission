@@ -12,8 +12,6 @@ const fetchClient = async ({ url, method, body }) => {
 
 		if (!response.ok) {
 			throw new Error(response.status);
-		} else {
-			return response;
 		}
 	} catch (error) {
 		throw error;
