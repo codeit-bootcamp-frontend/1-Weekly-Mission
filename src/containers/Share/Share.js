@@ -4,7 +4,7 @@ import { fetchGet } from "../../apis/api";
 
 import "./Share.css";
 import CardList from "../../components/Card/CardList";
-// import useAsync from "../../hooks/useAsync";
+import useAsync from "../../hooks/useAsync";
 
 const Owner = ({ name, id, ownerId, ownerName, ownerImageSrc }) => {
   return (
@@ -29,49 +29,49 @@ const Share = () => {
     ownerName: "",
     ownerProfileImageSource: "",
   });
+  const [loading, error, getSampleUserFolder] = useAsync(
+    fetchGet("/api/sample/folder")
+  );
 
   const handleSampleFolder = useCallback(async () => {
-    try {
-      const result = await fetchGet("/api/sample/folder");
-      const { folder } = result;
-      setCards(folder.links);
-      setOwner((prevState) => ({
-        ...prevState,
-        name: folder.name,
-        id: folder.id,
-        ownerId: folder.owner.id,
-        ownerName: folder.owner.name,
-        ownerProfileImageSource: folder.owner.profileImageSource,
-      }));
-    } catch (err) {
-      console.log("ERROR 입니다", err);
-    }
-  }, []);
+    const result = await getSampleUserFolder();
+    if (!result) return;
+    const { folder } = result;
 
-  // useAsync Test Code
-
-  // const { loading, error, value } = useAsync(
-  //   fetchGet("/api/sample/folder"),
-  //   []
-  // );
-  // console.log(loading, error, value);
+    setCards(folder.links);
+    setOwner((prevState) => ({
+      ...prevState,
+      name: folder.name,
+      id: folder.id,
+      ownerId: folder.owner.id,
+      ownerName: folder.owner.name,
+      ownerProfileImageSource: folder.owner.profileImageSource,
+    }));
+  }, [getSampleUserFolder]);
 
   useEffect(() => {
     handleSampleFolder();
-  }, [handleSampleFolder]);
+  }, []);
+
   return (
     <>
-      <Owner
-        name={owner.name}
-        id={owner.id}
-        ownerId={owner.ownerId}
-        ownerName={owner.ownerName}
-        ownerImageSrc={owner.ownerProfileImageSource}
-      />
-      <div className="shared-frame">
-        <Searchbar />
-        <CardList cards={cards} />
-      </div>
+      {!loading && (
+        <>
+          (
+          <Owner
+            name={owner.name}
+            id={owner.id}
+            ownerId={owner.ownerId}
+            ownerName={owner.ownerName}
+            ownerImageSrc={owner.ownerProfileImageSource}
+          />
+          <div className="shared-frame">
+            <Searchbar />
+            <CardList cards={cards} />
+          </div>
+          )
+        </>
+      )}
     </>
   );
 };
