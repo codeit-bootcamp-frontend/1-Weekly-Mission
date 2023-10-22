@@ -1,6 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getFolder } from "./api";
 
-const Card = ({ cardImage }) => {
+const Card = ({ cardImage, idx }) => {
+  const [id, setId] = useState(0);
+  const [hrefUrl, setHrefUrl] = useState("");
+  const [imageSource, setImageSource] = useState("");
+  const [description, setDescription] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
+
+  const defaultFolder = async () => {
+    const temp = await getFolder();
+    setId(temp.folder.links[idx].id);
+    setHrefUrl(temp.folder.links[idx].url);
+    setImageSource(temp.folder.links[idx].imageSource);
+    setDescription(temp.folder.links[idx].description);
+    setCreatedAt(temp.folder.links[idx].createdAt);
+  };
+
+  useEffect(() => {
+    defaultFolder();
+  }, []);
+
+  const createdAtDate = new Date(createdAt);
+  const currentDate = new Date();
+  const timeDifference = currentDate - createdAtDate;
+  const seconds = Math.floor(timeDifference / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 31);
+  const years = Math.floor(months / 12);
+  //console.log(years, months, days, hours, minutes);
+
+  let timePassed = "";
+  if (minutes < 2 && hours === 0) {
+    timePassed = "1 minute";
+  } else if (minutes >= 2 && minutes <= 59 && hours === 0) {
+    timePassed = `${minutes} minutes`;
+  } else if (minutes >= 60 && hours === 1) {
+    timePassed = "1 hour";
+  } else if (hours >= 2 && hours <= 23) {
+    timePassed = `${hours} hours`;
+  } else if (hours >= 24 && days === 1) {
+    timePassed = "1 day";
+  } else if (days >= 2 && days <= 30) {
+    timePassed = `${days} days`;
+  } else if (days >= 31 && months === 1) {
+    timePassed = "1 month";
+  } else if (months >= 2 && months <= 11) {
+    timePassed = `${months} months`;
+  } else if (months >= 12 && years === 1) {
+    timePassed = "1 year";
+  } else if (years >= 2) {
+    timePassed = `${years} years`;
+  }
+
   return (
     <>
       <li
@@ -11,18 +65,17 @@ const Card = ({ cardImage }) => {
         }}
       >
         <a
-          href="/"
+          href={hrefUrl}
           target="_blank"
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "30%",
             borderRadius: "1rem",
-            width: "34rem",
+            width: "41.8rem",
           }}
         >
           <img
-            src={cardImage}
+            src={imageSource}
             alt="card 이미지"
             style={{
               boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
@@ -41,12 +94,9 @@ const Card = ({ cardImage }) => {
               padding: "1rem",
             }}
           >
-            <span>0 minutes ago</span>
-            <span>
-              Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc
-              consequat...
-            </span>
-            <span>2023.3.15</span>
+            <span>{timePassed} ago</span>
+            <span>{description}</span>
+            <span>{createdAt.substring(0, 10)}</span>
           </div>
         </a>
       </li>

@@ -6,7 +6,7 @@ const Cards = () => {
   const cardRendering = () => {
     const result = [];
     for (let i = 1; i <= 9; i++) {
-      result.push(<Card cardImage={`images/card${i}.png`} />);
+      result.push(<Card key={i} idx={i - 1} />);
     }
     return result;
   };
@@ -18,7 +18,7 @@ const Cards = () => {
           fontSize: "1.6rem",
           width: "100%",
 
-          backgroundColor: "#bada55",
+          backgroundColor: "#F0F6FF",
           alignItems: "center",
           justifyContent: "center",
           display: "flex",
@@ -29,7 +29,7 @@ const Cards = () => {
             display: "flex",
             gap: "2rem",
             flexWrap: "wrap",
-            justifyContent: "center",
+            justifyContent: "space-between",
           }}
         >
           {cardRendering()}
