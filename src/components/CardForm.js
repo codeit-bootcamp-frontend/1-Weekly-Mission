@@ -1,6 +1,6 @@
 import React from 'react';
 import EmptyImg from '../assets/icon/emptyImg.svg';
-import styles from '../styles/modules/card.module.css';
+import styles from '../styles/modules/Card.module.css';
 import CutString from '../utils/CutString';
 import FormatDate from '../utils/FormatDate';
 import FormatTime from '../utils/FormatTime';

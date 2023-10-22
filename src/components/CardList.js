@@ -1,4 +1,4 @@
-import styles from '../styles/modules/cardList.module.css';
+import styles from '../styles/modules/CardList.module.css';
 import CardForm from './CardForm';
 
 function CardList({ cardData }) {
