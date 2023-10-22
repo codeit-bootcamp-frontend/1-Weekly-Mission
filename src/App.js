@@ -6,6 +6,7 @@ import { getCards } from './api/api';
 import useAsync from './hooks/useAsync';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import SearchBar from './components/SearchBar';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -27,18 +28,19 @@ function App() {
 
   return (
     <>
-      <Nav />
       <div className="App">
         <header>
-          <nav></nav>
+          <Nav />
         </header>
         <main>
-          <input />
+          <SearchBar />
           <CardList items={cards} />
           {loadingError?.message && <span>{loadingError.message}</span>}
         </main>
       </div>
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
