@@ -8,11 +8,7 @@ import './styles/Reset.css';
 import './styles/Variables.css';
 
 function App() {
-  // 난리난 state ㅋㅋㅋㅋ
-
-  const [headerId, setHeaderId] = useState();
-  const [headerEmail, setHeaderEmail] = useState('');
-  const [headerImg, setHeaderImg] = useState('');
+  const [loginData, setLoginData] = useState({});
 
   const [introId, setIntroId] = useState();
   const [introName, setIntroName] = useState('');
@@ -23,11 +19,7 @@ function App() {
     const headerResult = await HeaderRequestData();
     if (!headerResult) return;
 
-    const { id, email, profileImageSource } = headerResult;
-
-    setHeaderId(id);
-    setHeaderEmail(email);
-    setHeaderImg(profileImageSource);
+    setLoginData(headerResult);
   };
 
   const profileInfo = async () => {
@@ -49,7 +41,7 @@ function App() {
 
   return (
     <>
-      <Header id={headerId} email={headerEmail} headerProfileImg={headerImg} />
+      <Header id={loginData.id} email={loginData.email} img={loginData.profileImageSource} />
       <main>
         <Intro id={introId} name={introName} introProfileImg={introImg} introFolderName={introFolderName} />
         <Main />

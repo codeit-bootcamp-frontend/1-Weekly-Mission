@@ -1,9 +1,9 @@
 import React from 'react';
-import Login from '../components/Login';
 import Logo from '../assets/icon/logo.svg';
+import Login from '../components/Login';
 import '../styles/Header.css';
 
-function Header({ id, email, headerProfileImg }) {
+function Header({ id, email, img }) {
   return (
     <header>
       <nav className="nav">
@@ -12,7 +12,7 @@ function Header({ id, email, headerProfileImg }) {
         </a>
         {id !== undefined ? (
           <div className="profile">
-            <img className="header-profile-img" src={headerProfileImg} alt="프로필 이미지" />
+            <img className="header-profile-img" src={img} alt="프로필 이미지" />
             <p className="email" key={id}>
               {email}
             </p>

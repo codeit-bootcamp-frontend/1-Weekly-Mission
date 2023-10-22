@@ -9,6 +9,7 @@
 
 @media (max-width: 1199px) {
   .main-section {
+    width: 100%;
     padding-left: 32px;
     padding-right: 32px;
   }
