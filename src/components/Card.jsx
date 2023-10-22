@@ -13,6 +13,7 @@ function Card({ item }) {
         </div>
         <div className="card-info-box">
           <div className="card-info-top">
+            {/* Moment에서 fromNow는 현재(날짜 및 시간)기준으로 상대적인 시간 구하기*/}
             <Moment className="card-passed-time" fromNow>
               {item.createdAt}
             </Moment>
@@ -21,6 +22,7 @@ function Card({ item }) {
             </button>
           </div>
           <p className="card-description">{item.description}</p>
+          {/* Moment에서 format()을 하면 원하는 타입으로 string으로 반환 */}
           <Moment format="YYYY.MM.DD">{item.createdAt}</Moment>
         </div>
       </div>
