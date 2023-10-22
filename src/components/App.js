@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 
 function App() {
-  const [accout, setAccout] = useState({});
+  // const [accout, setAccout] = useState({});
 
   return (
     <div>
