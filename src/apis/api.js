@@ -1,7 +1,17 @@
 const BASE_URL = "https://bootcamp-api.codeit.kr";
 
+const commonFetchFunction = async (url, options) => {
+  const res = await fetch(BASE_URL + url, options);
+  const data = await res.json();
+  if (res.ok) {
+    return data;
+  } else {
+    throw new Error(res.status + data.error.message);
+  }
+};
+
+// POST
 const fetchPost = async (url, body, headers = {}) => {
-  const fullUrl = BASE_URL + url;
   const options = {
     method: "POST",
     headers: {
@@ -10,17 +20,11 @@ const fetchPost = async (url, body, headers = {}) => {
     },
     body: JSON.stringify(body),
   };
-  const res = await fetch(fullUrl, options);
-  const data = await res.json();
-  if (res.ok) {
-    return data;
-  } else {
-    throw new Error(res.status + data.error.message);
-  }
+  return await commonFetchFunction(url, options);
 };
 
+// GET
 const fetchGet = async (url, headers = {}) => {
-  const fullUrl = BASE_URL + url;
   const options = {
     method: "GET",
     headers: {
@@ -28,17 +32,11 @@ const fetchGet = async (url, headers = {}) => {
       ...headers,
     },
   };
-  const res = await fetch(fullUrl, options);
-  const data = await res.json();
-  if (res.ok) {
-    return data;
-  } else {
-    throw new Error(res.status + data.error.message);
-  }
+  return await commonFetchFunction(url, options);
 };
 
+// PUT
 const fetchPut = async (url, body, headers = {}) => {
-  const fullUrl = BASE_URL + url;
   const options = {
     method: "PUT",
     headers: {
@@ -47,17 +45,12 @@ const fetchPut = async (url, body, headers = {}) => {
     },
     body: JSON.stringify(body),
   };
-  const res = await fetch(fullUrl, options);
-  const data = await res.json();
-  if (res.ok) {
-    return data;
-  } else {
-    throw new Error(res.status + data.error.message);
-  }
+
+  return await commonFetchFunction(url, options);
 };
 
+// DELETE
 const fetchDelete = async (url, headers = {}) => {
-  const fullUrl = BASE_URL + url;
   const options = {
     method: "DELETE",
     headers: {
@@ -65,13 +58,8 @@ const fetchDelete = async (url, headers = {}) => {
       ...headers,
     },
   };
-  const res = await fetch(fullUrl, options);
-  const data = await res.json();
-  if (res.ok) {
-    return data;
-  } else {
-    throw new Error(res.status + data.error.message);
-  }
+
+  return await commonFetchFunction(url, options);
 };
 
 export { fetchPost, fetchGet, fetchPut, fetchDelete };
