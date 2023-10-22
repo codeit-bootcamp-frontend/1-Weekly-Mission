@@ -39,3 +39,34 @@
   align-items: center;
   gap: 6px;
 }
+
+/* tablet */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .gnb-logo {
+    width: 133px;
+    height: 24px;
+  }
+
+  .login-btn {
+    width: 128px;
+  }
+}
+
+/* mobile */
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .gnb {
+    padding: 13px 32px;
+  }
+
+  .gnb-logo {
+    width: 90px;
+    height: 16px;
+  }
+
+  .login-btn {
+    width: 80px;
+    padding: 10px 16px;
+  }
+}
