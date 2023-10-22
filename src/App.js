@@ -9,6 +9,7 @@ import instagramIcon from "assets/ant-design_instagram-filled.svg";
 import { useEffect, useState } from "react";
 import { getUser } from "api/api";
 import CardList from "components/units/CardList";
+import Searchbar from "components/units/Searchbar";
 
 function App() {
   const [user, setUser] = useState();
@@ -51,6 +52,7 @@ function App() {
         </section>
         <section>
           <div className="contents">
+            <Searchbar />
             <CardList />
           </div>
         </section>
