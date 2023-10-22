@@ -17,8 +17,28 @@ async function getUserFolder() {
     const folder = result.folder;
     return folder;
   } catch (error) {
-    console.log(error);
+    alert("페이지를 불러오지 못했습니다.");
   }
 }
 
-export default getUserFolder;
+async function getUserData() {
+  try {
+    const response = await fetch(`${API_URL}/sample/user`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status !== 200) {
+      throw new Error(response.status);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    alert("페이지를 불러오지 못했습니다.");
+  }
+}
+
+export { getUserFolder, getUserData };
