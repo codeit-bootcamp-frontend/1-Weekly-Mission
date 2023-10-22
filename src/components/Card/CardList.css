@@ -4,7 +4,6 @@
   display: grid;
   place-items: center;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   gap: 2.5rem 2rem;
 }
 
@@ -74,7 +73,6 @@
   .card-container {
     width: 70.4rem;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     overflow-y: scroll;
     -ms-overflow-style: none;
   }
@@ -88,7 +86,6 @@
     display: grid;
     place-items: center;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     gap: 2.5rem 2rem;
   }
 }

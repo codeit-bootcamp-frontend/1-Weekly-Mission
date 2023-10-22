@@ -1,6 +1,6 @@
 async function getUserAccount() {
   const response = await fetch(
-    "https://bootcamp-api.codeit.kr/api/sample/user"
+    "https://bootcamp-api.codeit.kr/api/sample/userasd"
   );
   if (!response.ok) {
     throw new Error("사용자 정보 받아오기를 실패했습니다.");
