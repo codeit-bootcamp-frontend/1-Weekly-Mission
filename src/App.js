@@ -4,6 +4,7 @@ import CardList from './components/CardList';
 import { useCallback, useEffect, useState } from 'react';
 import { getCards } from './api/api';
 import useAsync from './hooks/useAsync';
+import Nav from './components/Nav';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -24,16 +25,19 @@ function App() {
   }, [handleLoad]);
 
   return (
-    <div className="App">
-      <header>
-        <nav></nav>
-      </header>
-      <main>
-        <input />
-        <CardList items={cards} />
-        {loadingError?.message && <span>{loadingError.message}</span>}
-      </main>
-    </div>
+    <>
+      <Nav />
+      <div className="App">
+        <header>
+          <nav></nav>
+        </header>
+        <main>
+          <input />
+          <CardList items={cards} />
+          {loadingError?.message && <span>{loadingError.message}</span>}
+        </main>
+      </div>
+    </>
   );
 }
 
