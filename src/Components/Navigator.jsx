@@ -21,21 +21,21 @@ function Navigator() {
   }, [loadUser]);
 
   return (
-    <header class='gnb'>
-      <div class='gnb__inner'>
-        <div class='gnb__logo'>
+    <header className='gnb'>
+      <div className='gnb__inner'>
+        <div className='gnb__logo'>
           <a href='/'>
             <img
               src={linkbraryIcon}
               alt='링크브러리 로고'
-              class='gnb__logo-img'
+              className='gnb__logo-img'
             />
-            <h1 class='a11y'>Linkbrary - 링크브러리</h1>
+            <h1 className='a11y'>Linkbrary - 링크브러리</h1>
           </a>
         </div>
         {isLoggedIn || (
-          <div class='gnb__signin'>
-            <a href='/' class='button'>
+          <div className='gnb__signin'>
+            <a href='/' className='button'>
               로그인
             </a>
           </div>

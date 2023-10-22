@@ -5,12 +5,14 @@
 
   @include pc {
     margin: 0 auto;
-    width: 106rem;
+    width: 115rem;
   }
 }
 
 .card-container {
   display: grid;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
   margin: 0 auto;
   padding-top: 3.2rem;
