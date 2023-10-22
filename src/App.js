@@ -1,6 +1,7 @@
 import Nav from "./component/Nav";
 import Footer from "./component/Footer";
 import Profile from "./component/Profile";
+import Main from "./component/Main";
 import { useEffect, useState } from "react";
 import { isSignIn, getFolder } from "./api";
 import "./css/index.css";
@@ -27,6 +28,7 @@ function App() {
     <>
       <Nav userInfo={userInfo} />
       <Profile folderInfo={folderInfo} />
+      <Main />
       <Footer />
     </>
   );
