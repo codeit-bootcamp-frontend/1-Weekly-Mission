@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+body {
+  font-family: Pretendard, sans-serif;
+  font-style: normal;
+  color: #000;
+  background-color: #fff;
+}
+
+input {
+  outline: none;
+}

@@ -1,0 +1,74 @@
+.Footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 16rem;
+  margin-top: 6rem;
+  padding-top: 3.2rem;
+  background-color: var(--black);
+}
+
+.Footer__container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 192rem;
+  width: 100%;
+  padding: 0 10.4rem;
+}
+
+.Footer__copyright {
+  color: #676767;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.Footer__links {
+  display: flex;
+  padding-right: 1.8rem;
+  column-gap: 3rem;
+}
+
+.Footer__link {
+  color: #cfcfcf;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.Footer__sns-links {
+  display: flex;
+  column-gap: 1.2rem;
+  height: 2rem;
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .Footer {
+    width: 100%;
+    margin-top: 4rem;
+  }
+
+  .Footer__container {
+    display: grid;
+    grid-template:
+      "links sns"
+      ". ."
+      "copyright .";
+    padding: 0 3.2rem;
+  }
+
+  .Footer__links {
+    grid-area: links;
+  }
+
+  .Footer__copyright {
+    grid-area: copyright;
+  }
+
+  .Footer__sns-links {
+    grid-area: sns;
+  }
+}
