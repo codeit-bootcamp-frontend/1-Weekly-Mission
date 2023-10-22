@@ -1,4 +1,8 @@
 interface Folder {
+  folder: FolderData;
+}
+
+interface FolderData {
   id: number;
   name: string;
   owner: OwnerData;
@@ -13,10 +17,10 @@ interface OwnerData {
 }
 
 interface LinksData {
-  id: number;
+  id?: number;
   createdAt: string;
   url: string;
-  title: string;
+  title?: string;
   description: string;
   imageSource: string;
 }
