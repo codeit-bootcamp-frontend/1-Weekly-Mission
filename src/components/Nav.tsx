@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "styles/modules/nav.module.css";
-import UserInform from "./profile/UserInform";
+import UserInform from "components/profile/UserInform";
 
 function Nav() {
   return (
