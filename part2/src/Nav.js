@@ -6,15 +6,7 @@ import { useAsync } from "./hooks/useAsync";
 const Nav = () => {
   const [userEmail, getLoginAsync] = useAsync(getLogin);
 
-  // const [userEmail, setUserEmail] = useState(false);
-
-  // const defaultLogin = async () => {
-  //   const { email } = await getLogin();
-  //   setUserEmail(email);
-  // };
-
   useEffect(() => {
-    //defaultLogin();
     getLoginAsync();
   }, []);
 

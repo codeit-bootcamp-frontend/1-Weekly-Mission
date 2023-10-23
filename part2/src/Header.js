@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Cards from "./Cards";
 import { getFolder } from "./api";
 import Search from "./Search";
@@ -20,7 +20,18 @@ const Header = () => {
     defaultFolder();
   }, []);
 
-  //console.log(profile, userName, folderName);
+  const [fullData, setFullData] = useState([]);
+
+  const defaultFolder2 = useCallback(async () => {
+    const temp = await getFolder();
+    setFullData(temp.folder.links);
+  }, []);
+
+  useEffect(() => {
+    defaultFolder2();
+  }, [defaultFolder2]);
+
+  console.log(fullData);
 
   return (
     <>
@@ -42,7 +53,7 @@ const Header = () => {
         </div>
       </header>
       <Search />
-      <Cards />
+      {fullData && <Cards fullData={fullData} />}
     </>
   );
 };

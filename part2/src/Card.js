@@ -1,25 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { getFolder } from "./api";
+import React from "react";
 
-const Card = ({ cardImage, idx }) => {
-  const [id, setId] = useState(0);
-  const [hrefUrl, setHrefUrl] = useState("");
-  const [imageSource, setImageSource] = useState("");
-  const [description, setDescription] = useState("");
-  const [createdAt, setCreatedAt] = useState("");
-
-  const defaultFolder = async () => {
-    const temp = await getFolder();
-    setId(temp.folder.links[idx].id);
-    setHrefUrl(temp.folder.links[idx].url);
-    setImageSource(temp.folder.links[idx].imageSource);
-    setDescription(temp.folder.links[idx].description);
-    setCreatedAt(temp.folder.links[idx].createdAt);
-  };
-
-  useEffect(() => {
-    defaultFolder();
-  }, []);
+const Card = ({ data }) => {
+  const { url, description, createdAt, imageSource } = data;
 
   const createdAtDate = new Date(createdAt);
   const currentDate = new Date();
@@ -30,7 +12,6 @@ const Card = ({ cardImage, idx }) => {
   const days = Math.floor(hours / 24);
   const months = Math.floor(days / 31);
   const years = Math.floor(months / 12);
-  //console.log(years, months, days, hours, minutes);
 
   let timePassed = "";
   if (minutes < 2 && hours === 0) {
@@ -65,8 +46,9 @@ const Card = ({ cardImage, idx }) => {
         }}
       >
         <a
-          href={hrefUrl}
+          href={url}
           target="_blank"
+          rel="noreferrer"
           style={{
             display: "flex",
             flexDirection: "column",

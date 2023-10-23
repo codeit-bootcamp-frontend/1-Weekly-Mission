@@ -1,16 +1,7 @@
-import React from "react";
 import "./landing.css";
 import Card from "./Card";
 
-const Cards = () => {
-  const cardRendering = () => {
-    const result = [];
-    for (let i = 1; i <= 9; i++) {
-      result.push(<Card key={i} idx={i - 1} />);
-    }
-    return result;
-  };
-
+const Cards = ({ fullData }) => {
   return (
     <div className="card-area">
       <div
@@ -32,7 +23,9 @@ const Cards = () => {
             justifyContent: "space-between",
           }}
         >
-          {cardRendering()}
+          {fullData.map((data) => (
+            <Card key={data.id} data={data} />
+          ))}
         </ul>
       </div>
     </div>
