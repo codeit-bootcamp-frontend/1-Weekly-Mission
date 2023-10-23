@@ -1,0 +1,130 @@
+nav {
+  display: flex;
+  padding: 33px 200px 32px 200px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  background: var(--linkbrary-bg, #f0f6ff);
+  justify-content: center;
+
+  @media (max-width: 1123px) {
+    padding: 33px 32.5px 32px 32.5px;
+  }
+}
+
+.nav-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 6.3rem;
+  @media (max-width: 1123px) {
+    width: 900px;
+  }
+}
+
+.logo {
+  width: 133px;
+  height: 24px;
+}
+
+.cta {
+  cursor: pointer;
+  display: flex;
+  width: 128px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+header {
+  display: flex;
+  width: 1440px;
+  padding: 20px 624px 60px 624px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--linkbrary-bg, #f0f6ff);
+}
+
+.hero-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 188px;
+  height: 164px;
+}
+
+.company-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.circle-logo {
+  width: 28px;
+  height: 28px;
+}
+
+.company-name {
+  color: var(--text-color-light-mode, #000);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.bookmarks {
+  color: #000;
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Pretendard;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.bookmarks-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile {
+  display: flex;
+  gap: 6px;
+  width: 158px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+}
+.user-image {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.user-email {
+  color: var(--linkbrary-gray-100, #373740);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
