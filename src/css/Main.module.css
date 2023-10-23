@@ -1,0 +1,8 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+  padding: 0rem 3.2rem;
+  margin: 4rem auto;
+}

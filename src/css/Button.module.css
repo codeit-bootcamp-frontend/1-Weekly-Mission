@@ -1,0 +1,11 @@
+.loginBtn {
+  width: 8.8rem;
+  padding: 1.6rem 2rem;
+  border: none;
+  color: white;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  border-radius: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
