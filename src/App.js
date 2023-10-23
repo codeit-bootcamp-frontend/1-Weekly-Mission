@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./Header.js";
+import { Article } from "./Article.js";
+import { Footer } from "./Footer.js";
+import { useState, useEffect } from "react";
+import { RequestAPI } from "./RequestApi.js";
+import { FOLDER_FAIL, PROFILE_FAIL } from "./ErrorMessage.js";
+import "./css/index.css";
 
-function App() {
+
+export function App() {
+  const [profile, setProfile] = useState({
+    src: "",
+    email: "",
+  });
+  const [items, setItems] = useState({
+    name : '',
+    links : [],
+    owner : {},
+  })
+
+
+  const information = async () => {
+    try {
+      const review = await RequestAPI( '/api/sample/user', PROFILE_FAIL );
+      const { profileImageSource, email } = review;
+      setProfile({
+        src : profileImageSource,
+        email,
+      });
+
+      const response = await RequestAPI(`/api/sample/folder`, FOLDER_FAIL);
+      const { name, links, owner } = response.folder;
+      setItems({
+        name,
+        links,
+        owner,
+      });
+    } catch(error){
+        /*로그인 뜨게 하기 */
+    } 
+  }
+
+  useEffect(() => {
+    information();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="header">
+        <Header profile={profile} items={items}/>
+      </div>
+      <div className="article">
+        <Article items={items} />
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
+    </>
   );
 }
-
-export default App;
