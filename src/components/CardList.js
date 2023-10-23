@@ -1,4 +1,5 @@
 import '../styles/cardlist.css';
+import { Fragment } from 'react';
 import TimeFlow from '../timeflow.js';
 import defaultImg from '../assets/images/no-Image.svg';
 
@@ -27,7 +28,9 @@ function CardList({ links = [] }) {
   return (
     <div className="card_list">
       {links.map((link) => (
-        <Card {...link} />
+        <Fragment key={link.id}>
+          <Card {...link} />
+        </Fragment>
       ))}
     </div>
   );
