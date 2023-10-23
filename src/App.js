@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Layout } from "./feature/Layout";
+import { SharedPage } from "./page-layout/SharedPage";
+import "./global.css";
+import { FolderInfo } from "./ui/FolderInfo";
+import { SearchBar } from "./ui/SearchBar";
+import { CardList } from "./ui/CardList";
+import { useGetFolder } from "./data-access/useGetFolder";
+import { ReadOnlyCard } from "./ui/ReadOnlyCard";
 
 function App() {
+  const { data } = useGetFolder();
+  const { profileImage, ownerName, folderName, links } = data || {};
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <SharedPage
+        folderInfo={
+          <FolderInfo
+            profileImage={profileImage}
+            ownerName={ownerName}
+            folderName={folderName}
+          />
+        }
+        searchBar={<SearchBar />}
+        cardList={
+          <CardList>
+            {links?.map((link) => (
+              <ReadOnlyCard key={link?.id} {...link} />
+            ))}
+          </CardList>
+        }
+      />
+    </Layout>
   );
 }
 
