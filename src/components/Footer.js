@@ -24,7 +24,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={facebookIcon} alt="facebook icon" />
+            <img src={facebookIcon} alt="페이스북 아이콘" />
           </a>
           <a
             className="twitter"
@@ -32,7 +32,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={twitterIcon} alt="twitter icon" />
+            <img src={twitterIcon} alt="트위터 아이콘" />
           </a>
           <a
             className="youtube"
@@ -40,7 +40,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={youtubeIcon} alt="youtube icon" />
+            <img src={youtubeIcon} alt="유튜브 아이콘" />
           </a>
           <a
             className="instagram"
@@ -48,7 +48,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={instagramIcon} alt="instagram icon" />
+            <img src={instagramIcon} alt="인스타그램 아이콘" />
           </a>
         </div>
       </div>

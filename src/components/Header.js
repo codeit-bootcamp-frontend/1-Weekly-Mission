@@ -22,12 +22,12 @@ function Nav({ userInfo }) {
   const { email, profileImageSource } = userInfo;
   return (
     <div className="nav">
-      <img className="logo" src={logoImg} alt="logo" />
+      <img className="logo" src={logoImg} alt="로고" />
       <div className="user-info">
         <img
           className="user-profile"
           src={profileImageSource}
-          alt="user-profile"
+          alt="유저 프로필"
         />
         <span className="user-email">{email}</span>
       </div>
@@ -46,7 +46,7 @@ function FolderInfo({ folderInfo }) {
       <img
         className="folder-profile"
         src={profileImageSource}
-        alt={`user folder profile`}
+        alt="유저 폴더 파일"
       />
       <span className="folder-user-name">{name}</span>
       <span className="folder-name">{folderName}</span>

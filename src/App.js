@@ -1,7 +1,7 @@
 // import "./App.css";
 import { getUserData, getUserFolder } from "./utils/api";
 import { useEffect, useState } from "react";
-import CardComponent from "./components/CardComponent";
+import Cards from "./components/Cards";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Footer from "./components/Footer";
@@ -34,7 +34,7 @@ function App() {
         <Search />
         <div className="cards">
           {state.map((cardInfo) => {
-            return <CardComponent cardInfo={cardInfo} key={cardInfo.id} />;
+            return <Cards cardInfo={cardInfo} key={cardInfo.id} />;
           })}
         </div>
       </ul>
