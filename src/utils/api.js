@@ -14,7 +14,7 @@ async function getUserFolder() {
     }
 
     const result = await response.json();
-    const folder = result.folder;
+    const { folder } = result;
     return folder;
   } catch (error) {
     alert("페이지를 불러오지 못했습니다.");

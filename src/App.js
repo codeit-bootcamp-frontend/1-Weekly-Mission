@@ -1,5 +1,5 @@
 // import "./App.css";
-import { getUserData, getUserFolder } from "./utils/api";
+import { getUserFolder } from "./utils/api";
 import { useEffect, useState } from "react";
 import Cards from "./components/Cards";
 import Header from "./components/Header";
@@ -9,17 +9,16 @@ import "./App.css";
 
 function App() {
   const [state, setState] = useState([]);
-  const [userInfo, setUserInfo] = useState(null);
-  const [folderInfo, setFolderInfo] = useState(null);
+  // const [userInfo, setUserInfo] = useState(null);
+  // const [folderInfo, setFolderInfo] = useState(null);
 
   async function handleList() {
     const { links } = await getUserFolder();
     setState(links);
-    const folderData = await getUserFolder();
-    setFolderInfo(folderData);
-    const userData = await getUserData();
-    // console.log(userData);
-    setUserInfo(userData);
+    // const folderData = await getUserFolder();
+    // setFolderInfo(folderData);
+    // const userData = await getUserData();
+    // setUserInfo(userData);
   }
 
   useEffect(() => {
@@ -29,7 +28,7 @@ function App() {
   // console.log(state, userInfo, folderInfo);
   return (
     <>
-      <Header userInfo={userInfo} folderInfo={folderInfo} />
+      <Header /*userInfo={userInfo} folderInfo={folderInfo} */ />
       <ul className="cards-list">
         <Search />
         <div className="cards">
