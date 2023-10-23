@@ -4,6 +4,7 @@ import facebook from "../../assets/facebook.svg";
 import twitter from "../../assets/twitter.svg";
 import youtube from "../../assets/youtube.svg";
 import instagram from "../../assets/instagram.svg";
+import { Link } from "react-router-dom";
 
 const snsLinks = {
   facebook: "https://www.facebook.com/",
@@ -11,20 +12,19 @@ const snsLinks = {
   youtube: "https://www.youtube.com/",
   instagram: "https://www.instagram.com/",
 };
-
 const FooterLink = ({ link, text }) => {
   return (
-    <a className="footer-link" href={link}>
+    <Link to={link} className="footer-link">
       {text}
-    </a>
+    </Link>
   );
 };
 
 const SNSImageLink = ({ src, name }) => {
   return (
-    <a href={snsLinks[name]} target="_blank" rel="noopener noreferrer">
+    <Link to={snsLinks[name]} target="_blank" rel="noopener noreferrer">
       <img className="sns-icon" src={src} alt={name} height={20} />
-    </a>
+    </Link>
   );
 };
 

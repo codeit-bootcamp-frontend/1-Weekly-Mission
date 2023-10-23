@@ -4,12 +4,13 @@ import "./Navbar.css";
 import { fetchGet } from "../../apis/api";
 import { useCallback, useEffect, useState } from "react";
 import useAsync from "../../hooks/useAsync";
+import { Link } from "react-router-dom";
 
 const Logo = ({ link = "/", className, src, alt, height }) => {
   return (
-    <a href={link}>
+    <Link to={link}>
       <img className={className} src={src} alt={alt} height={height} />
-    </a>
+    </Link>
   );
 };
 
