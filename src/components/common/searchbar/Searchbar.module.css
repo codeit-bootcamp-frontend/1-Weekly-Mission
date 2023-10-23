@@ -1,0 +1,22 @@
+.wrapper {
+  position: relative;
+  max-width: 1060px;
+  width: 100%;
+  margin: auto;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translate(-50%, -50%);
+}
+
+.searchInput {
+  padding: 1rem 2rem;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: #f5f5f5;
+  line-height: 24px;
+}

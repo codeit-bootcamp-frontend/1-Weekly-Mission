@@ -1,0 +1,44 @@
+.wrapper {
+  padding-top: 5.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.profileImage {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.profileName {
+  margin: 1rem 0;
+}
+
+.title {
+  padding-bottom: 3.75rem;
+  font-size: 2.5rem;
+  font-weight: var(--font-semibold);
+  margin: 0 auto;
+}
+
+/* Mobile */
+@media only screen and (min-width: 375px) and (max-width: 767px) {
+  .wrapper {
+    padding-top: 4.5rem;
+  }
+
+  .profileImage {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .profileName {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 0.875rem;
+  }
+
+  .title {
+    padding-bottom: 2.5rem;
+    font-size: 2rem;
+  }
+}
