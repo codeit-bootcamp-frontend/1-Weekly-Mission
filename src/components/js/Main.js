@@ -3,16 +3,17 @@ import React from "react";
 import Search from "./Search";
 import CardList from "./CardList";
 import { getFolder } from "../../api/apiUrl";
-// import useAsync from "../../hooks/useAsync";
+import useAsync from "../../hooks/useAsync";
 
 const Main = () => {
   const [folderLinks, setFolderLinks] = useState([]);
   const [folderName, setFolderName] = useState("");
   const [owner, setOwner] = useState({});
-  // const [loadingError, getFolderAsync] = useAsync(getFolder);
+  const [loadingError, getFolderAsync] = useAsync(getFolder);
 
-  const handleLoad = async () => {
-    const folderResult = await getFolder();
+  //커스텀 훅이 잘 작동하지 않는 문제의 부분입니다..
+  const handleLoad = useCallback(async () => {
+    const folderResult = await getFolderAsync();
     if (!folderResult) return;
 
     const {
@@ -21,28 +22,11 @@ const Main = () => {
     setFolderLinks(links);
     setFolderName(name);
     setOwner(owner);
-  };
+  }, [getFolderAsync]);
 
   useEffect(() => {
     handleLoad();
-  }, []);
-
-  //커스텀 훅이 잘 작동하지 않는 문제의 부분입니다..
-  // const handleLoad = useCallback(async () => {
-  //   const folderResult = await getFolderAsync();
-  //   if (!folderResult) return;
-
-  //   const {
-  //     folder: { owner, links, name },
-  //   } = folderResult;
-  //   setFolderLinks(links);
-  //   setFolderName(name);
-  //   setOwner(owner);
-  // }, []);
-
-  // useEffect(() => {
-  //   handleLoad();
-  // }, [handleLoad]);
+  }, [handleLoad]);
 
   const { name, profileImageSource } = owner;
   const ownerName = name;
@@ -58,12 +42,11 @@ const Main = () => {
         </div>
       </div>
       <Search />
-      {/* {!loadingError ? (
+      {!loadingError ? (
         <CardList folderLinks={folderLinks} />
       ) : (
         loadingError.message
-      )} */}
-      <CardList folderLinks={folderLinks} />
+      )}
     </div>
   );
 };

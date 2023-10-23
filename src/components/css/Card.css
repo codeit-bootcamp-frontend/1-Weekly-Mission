@@ -33,13 +33,6 @@ a {
   position: relative;
 }
 
-.card-img-wrap .logoImg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .card:hover .card-img {
   transform: scale(130%);
   transition: 1s;
