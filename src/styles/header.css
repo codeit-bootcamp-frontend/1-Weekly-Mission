@@ -1,54 +1,59 @@
-.header_container{
-    width : 100%;
-    max-width : 1920px;
-    margin : 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.profile{
-    display : flex;
-    align-items: center;
-    gap : 0.6rem;
-    color : var(--gray-100);
-}
-.profile_img{
-    width : 2.8rem;
-    height : 2.8rem;
-    object-fit: cover;
-    border-radius: 100%;
-}
-.profile_email{
-    font-size : 1.4rem;
-}
-.blue_btn{
-    display: flex;
-    padding : 16px 20px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    background: var(--gra-button);
-
-    color: var(--grey-light);
-    font-size: 1.8rem;
-    font-weight: 600;
-    text-decoration: none;
-}
-.login_btn{
-    width : 128px;
+.header_container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@media (max-width : 1199px){
-    .header_container{
-        max-width : 799px;
-    }
-    .linkbrary_logo{
-        height : 24px;
-    }
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gray-100);
 }
 
-@media (max-width : 767px){
-    .linkbrary_logo{
-        height : 18px;
-    }
+.profile_img {
+  width: 2.8rem;
+  height: 2.8rem;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.profile_email {
+  font-size: 1.4rem;
+}
+
+.blue_btn {
+  display: flex;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--gra-button);
+
+  color: var(--grey-light);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login_btn {
+  width: 128px;
+}
+
+@media (max-width: 1199px) {
+  .header_container {
+    max-width: 799px;
+  }
+  .linkbrary_logo {
+    height: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .linkbrary_logo {
+    height: 18px;
+  }
 }

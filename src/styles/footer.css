@@ -1,55 +1,59 @@
-.footer_container{
-    padding: 32px 104px 64px 104px;
-    width : 100%;
-    max-width : 1920px;
-    margin : 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-footer a{
-    text-decoration: none;
-    color: var(--grey-10);
-    font-family: Arial;
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: normal;
-}
-.ppf{
-    display : flex;
-    gap : 30px;
-}
-.link_icon{
-    display : flex;
-    gap : 12px;
-}
-.sources{
-    color: var(--grey-70);
-    font-family: Arial;
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: normal;
+.footer_container {
+  padding: 32px 104px 64px 104px;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
-@media (max-width : 767px) {
-    .footer_container{
-        padding : 32px 32px 0;
-        display : grid;
-        grid-template-columns: 1.5fr 1fr;
-        grid-template-rows: 1.5fr 1fr;
-        grid-template-areas: 
-        "p icon"
-        "r .";
-        row-gap : 60px;
-        column-gap: 30px;;
-    }
-    .ppf{
-        grid-area : p;
-    }
-    .resources{
-        grid-area : r;
-    }
-    .link_icon{
-        grid-area : icon;
-        justify-content: flex-end;
-    }
+footer a {
+  text-decoration: none;
+  color: var(--grey-10);
+  font-family: Arial;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ppf {
+  display: flex;
+  gap: 30px;
+}
+
+.link_icon {
+  display: flex;
+  gap: 12px;
+}
+
+.sources {
+  color: var(--grey-70);
+  font-family: Arial;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (max-width: 767px) {
+  .footer_container {
+    padding: 32px 32px 0;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1.5fr 1fr;
+    grid-template-areas:
+      "p icon"
+      "r .";
+    row-gap: 60px;
+    column-gap: 30px;
+  }
+  .ppf {
+    grid-area: p;
+  }
+  .resources {
+    grid-area: r;
+  }
+  .link_icon {
+    grid-area: icon;
+    justify-content: flex-end;
+  }
 }
