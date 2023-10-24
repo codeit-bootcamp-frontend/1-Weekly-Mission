@@ -2,6 +2,7 @@ import styles from './Card.module.css';
 import kebabImg from '../../images/kebab.svg';
 import noImg from '../../images/no-image.svg';
 import { useState } from 'react';
+import FormatData from '../../formatDate';
 
 function Card({ card }) {
   const useCardHover = () => {
@@ -20,11 +21,6 @@ function Card({ card }) {
 
   const [hover, handleMouseOver, handleMouseOut] = useCardHover();
 
-  const formatDate = (value) => {
-    const date = new Date(value);
-    return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
-  };
-
   const hoverImage = hover ? styles.hoverImage : '';
   const hoverBg = hover ? styles.hoverBgColor : '';
 
@@ -34,6 +30,8 @@ function Card({ card }) {
   const bgImg = {
     backgroundImage: `url(${card.imageSource || noImg})`,
   };
+
+  const formatData = new FormatData(card.createdAt);
 
   return (
     <div
@@ -45,7 +43,7 @@ function Card({ card }) {
         <div className={imageStyle} style={bgImg}></div>
         <div className={styles.explanation}>
           <div className={styles.header}>
-            <div>{card.createdAt}</div>
+            <div>{formatData.timeAgo()}</div>
             <img src={kebabImg} alt="쩜쩜쩜" />
           </div>
           <div className={styles.text}>
@@ -53,7 +51,7 @@ function Card({ card }) {
             <div>{card.description}</div>
           </div>
 
-          <div className={styles.footer}>{formatDate(card.createdAt)}</div>
+          <div className={styles.footer}>{formatData.ymd()}</div>
         </div>
       </a>
     </div>
