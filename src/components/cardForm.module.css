@@ -1,7 +1,6 @@
 .wrapper {
   display: flex;
   overflow: hidden;
-  width: 35rem;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s;
   border-radius: 15px;
@@ -46,12 +45,18 @@
 
 @media (max-width: 1123px) {
   .wrapper {
-    width: 30rem;
+    width: 100%;
+  }
+  a {
+    width: 100%;
   }
 }
 
 @media (max-width: 767px) {
   .wrapper {
-    width: 32.5rem;
+    width: 100%;
+  }
+  a {
+    width: 100%;
   }
 }
