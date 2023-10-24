@@ -1,9 +1,11 @@
 import "./Profile.css";
 
-function Profile({ email, image }) {
+function Profile({ data }) {
+  const { name, email, profileImageSource } = data;
+
   return (
     <div className="profile">
-      <img className="image" src={image} alt="프로필 이미지"></img>
+      <img className="image" src={profileImageSource} alt={name}></img>
       <p className="email">{email}</p>
     </div>
   );

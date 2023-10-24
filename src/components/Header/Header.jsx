@@ -6,12 +6,9 @@ import { getFolder, getProfile } from "api";
 import "./Header.css";
 
 function Header() {
-  const [email, setEmail] = useState("");
-  const [profileImageSource, setProfileImageSource] = useState(null);
+  const [profile, setProfile] = useState({});
   const [hasProfile, setHasProfile] = useState(false);
-  const [folderName, setFolderName] = useState("");
-  const [ownerName, setOwnerName] = useState("");
-  const [ownerProfileImageSource, setOwnerProfileImageSource] = useState(null);
+  const [folder, setFolder] = useState({});
 
   const handleLoadProfile = async () => {
     const result = await getProfile();
@@ -19,22 +16,13 @@ function Header() {
       setHasProfile(false);
       return;
     }
-    const { email, profileImageSource } = result;
-    setEmail(email);
-    setProfileImageSource(profileImageSource);
+    setProfile(result);
     setHasProfile(true);
   };
 
   const handleLoadFolder = async () => {
     const result = await getFolder();
-    const { folder } = result;
-    const name = folder?.name;
-    const owner = folder?.owner;
-    const ownerName = owner?.name;
-    const ownerImage = owner?.profileImageSource;
-    setFolderName(name);
-    setOwnerName(ownerName);
-    setOwnerProfileImageSource(ownerImage);
+    setFolder(result);
   };
 
   useEffect(() => {
@@ -49,14 +37,14 @@ function Header() {
           <img src={linkbraryLogo} alt="홈으로 연결된 Linkbrary 로고" />
         </a>
         {hasProfile ? (
-          <Profile email={email} image={profileImageSource} />
+          <Profile data={profile} />
         ) : (
           <a className="signin" href="signin.html">
             <span>로그인</span>
           </a>
         )}
       </nav>
-      <FolderInfo folderName={folderName} ownerName={ownerName} image={ownerProfileImageSource} />
+      <FolderInfo data={folder} />
     </header>
   );
 }
