@@ -27,17 +27,13 @@ const Card = ({
     setIsColor(isColor);
   };
 
-  const handleCardClick = (url) => {
-    window.open(url, "_blank", "noopener, noreferrer");
-  };
-
   const formatDate = (timeValue) => {
     const date = new Date(timeValue);
     return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
   };
 
   return (
-    <div className="card" onClick={() => handleCardClick(url)}>
+    <a href={url} target="_blank" rel="noreferrer" className="card">
       <div className="card-img-container">
         <img className="card-img" src={imgUrl || noImage} alt="카드" />
         {hasDetails && (
@@ -57,7 +53,7 @@ const Card = ({
         <p className="card-description">{description}</p>
         <p className="card-created-at">{formatDate(createdAt)}</p>
       </div>
-    </div>
+    </a>
   );
 };
 
