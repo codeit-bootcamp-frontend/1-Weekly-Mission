@@ -1,4 +1,4 @@
-function FormatTime(createdAt) {
+export function dateTime(createdAt) {
   function leapYear(year) {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   }
@@ -49,4 +49,14 @@ function FormatTime(createdAt) {
   }
 }
 
-export default FormatTime;
+export function date(createdAt) {
+  const createDate = new Date(createdAt);
+
+  const year = createDate.getFullYear();
+  const month = createDate.getMonth();
+  const day = createDate.getDate();
+
+  const formattedDate = `${year}. ${month}. ${day}`;
+
+  return formattedDate;
+}
