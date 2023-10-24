@@ -8,7 +8,7 @@ function CardList() {
 
   const handleLoad = async () => {
     const data = await getFolder();
-    setItems(data.folder.links);
+    setItems(data.folder?.links);
   };
 
   useEffect(() => {

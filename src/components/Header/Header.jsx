@@ -28,9 +28,10 @@ function Header() {
   const handleLoadFolder = async () => {
     const result = await getFolder();
     const { folder } = result;
-    const { name, owner } = folder;
-    const ownerName = owner.name;
-    const ownerImage = owner.profileImageSource;
+    const name = folder?.name;
+    const owner = folder?.owner;
+    const ownerName = owner?.name;
+    const ownerImage = owner?.profileImageSource;
     setFolderName(name);
     setOwnerName(ownerName);
     setOwnerProfileImageSource(ownerImage);
