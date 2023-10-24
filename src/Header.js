@@ -11,9 +11,9 @@ const Header = () => {
 
   const getFolderOwner = async () => {
     const temp = await getFolder();
-    setProfile(temp.folder.owner.profileImageSource);
-    setUserName(temp.folder.owner.name);
-    setFolderName(temp.folder.name);
+    setProfile(temp?.folder?.owner?.profileImageSource);
+    setUserName(temp?.folder?.owner?.name);
+    setFolderName(temp?.folder?.name);
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Header = () => {
 
   const getFullFolderData = useCallback(async () => {
     const temp = await getFolder();
-    setFullData(temp.folder.links);
+    setFullData(temp?.folder?.links);
   }, []);
 
   useEffect(() => {

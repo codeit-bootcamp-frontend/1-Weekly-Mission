@@ -24,7 +24,7 @@ const Cards = ({ fullData }) => {
           }}
         >
           {fullData.map((data) => (
-            <Card key={data.id} data={data} />
+            <Card key={data?.id} data={data} />
           ))}
         </ul>
       </div>
