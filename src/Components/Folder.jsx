@@ -6,28 +6,19 @@ import SearchBar from './SearchBar';
 import CardList from './CardList';
 
 function Folder() {
-  const [isLoading, loadingError, getFolderAsync] = useAsync(getFolder);
-  const [links, setLinks] = useState([]);
-  const [folderInfo, setFolderInfo] = useState();
+  const [data, isLoading, loadingError, getFolderAsync] = useAsync(getFolder);
 
-  const loadFolder = useCallback(async () => {
-    const { folder } = await getFolderAsync();
-    const { name, owner, links: linksData } = folder;
-    const folderInfoData = { name, owner };
-    setFolderInfo(folderInfoData);
-    setLinks(linksData);
-  }, []);
-
-  useEffect(() => {
-    loadFolder();
-  }, [loadFolder]);
+  const folder = data?.folder;
+  const name = folder?.name;
+  const owner = folder?.owner;
+  const links = folder?.links;
 
   return (
     <main>
-      {folderInfo && <Banner info={folderInfo} />}
+      {data && <Banner info={{ name, owner }} />}
       <div className='content-container'>
         <SearchBar />
-        {links && <CardList links={links} />}
+        {data && <CardList links={links} />}
       </div>
     </main>
   );

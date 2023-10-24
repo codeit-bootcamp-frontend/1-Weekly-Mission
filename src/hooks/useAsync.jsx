@@ -1,25 +1,29 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
-function useAsync(asyncFunction) {
+function useAsync(asyncFunction, deps = [], skip = false) {
+  const [data, setData] = useState(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
 
-  const wrappedFunction = useCallback(
-    async (...args) => {
-      setPending(true);
-      setError(null);
-      try {
-        return await asyncFunction(...args);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setPending(false);
-      }
-    },
-    [asyncFunction]
-  );
+  const fetchData = async (...args) => {
+    setPending(true);
+    setError(null);
+    try {
+      const fetchedData = await asyncFunction(...args);
+      setData(fetchedData);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setPending(false);
+    }
+  };
 
-  return [pending, error, wrappedFunction];
+  useEffect(() => {
+    if (skip) return;
+    fetchData();
+  }, deps);
+
+  return [data, pending, error, fetchData];
 }
 
 export default useAsync;

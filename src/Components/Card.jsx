@@ -20,14 +20,14 @@ function Card({ data }) {
     <a href={url} target='_blank' className='card'>
       <div className='card__img-container'>
         <img
-          src={imageSource ? imageSource : DEFAULT_IMAGE}
+          src={imageSource ?? DEFAULT_IMAGE}
           alt='링크 이미지'
           className='card__img'
         />
       </div>
       <div className='card__text'>
         <p className='card__time-passed'>
-          <ReactTimeAgo date={createdAt} locale='en-US' />
+          <ReactTimeAgo date={createdDate} locale='en-US' />
         </p>
         <p className='card__title'>{reduceText(title, 70)}</p>
         <p className='card__description'>{reduceText(description, 100)}</p>
