@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import IMAGES from "../../assets/images.js";
-import Button from "../Button/Button.js";
+import Button from "../Button/Button.jsx";
 import { fetchGet } from "../../apis/api";
 import useAsync from "../../hooks/useAsync";
 
@@ -30,23 +30,24 @@ const Navbar = () => {
     email: "",
     profileImageSource: "",
   });
+
   const [loading, error, getSampleUser] = useAsync(
     fetchGet("/api/sample/user")
   );
 
-  const handleSampleUserProfile = async () => {
-    const result = await getSampleUser();
-    if (!result) return;
-
-    setSampleUser({
-      id: result.id,
-      name: result.name,
-      email: result.email,
-      profileImageSource: result.profileImageSource,
-    });
-  };
-
   useEffect(() => {
+    const handleSampleUserProfile = async () => {
+      const result = await getSampleUser();
+      if (!result) return;
+
+      setSampleUser({
+        id: result.id,
+        name: result.name,
+        email: result.email,
+        profileImageSource: result.profileImageSource,
+      });
+    };
+
     handleSampleUserProfile();
 
     return () =>

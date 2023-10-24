@@ -3,7 +3,7 @@ import Searchbar from "../../components/Searchbar/Searchbar";
 import { fetchGet } from "../../apis/api";
 
 import "./Share.css";
-import CardList from "../../components/Card/CardList";
+import CardList from "../../components/Card/CardList.jsx";
 import useAsync from "../../hooks/useAsync";
 
 const Owner = ({ name, id, ownerId, ownerName, ownerImageSrc }) => {
@@ -33,23 +33,23 @@ const Share = () => {
     fetchGet("/api/sample/folder")
   );
 
-  const handleSampleFolder = async () => {
-    const result = await getSampleUserFolder();
-    if (!result) return;
-    const { folder } = result;
-
-    setCards(folder.links);
-    setOwner((prevState) => ({
-      ...prevState,
-      name: folder.name,
-      id: folder.id,
-      ownerId: folder.owner.id,
-      ownerName: folder.owner.name,
-      ownerProfileImageSource: folder.owner.profileImageSource,
-    }));
-  };
-
   useEffect(() => {
+    const handleSampleFolder = async () => {
+      const result = await getSampleUserFolder();
+      if (!result) return;
+      const { folder } = result;
+
+      setCards(folder.links);
+      setOwner((prevState) => ({
+        ...prevState,
+        name: folder.name,
+        id: folder.id,
+        ownerId: folder.owner.id,
+        ownerName: folder.owner.name,
+        ownerProfileImageSource: folder.owner.profileImageSource,
+      }));
+    };
+
     handleSampleFolder();
   }, []);
 

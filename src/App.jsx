@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Shared from "./pages/Share/Shared";
-import HomePage from "./pages/Homepage/Homepage";
-import Signup from "./pages/SignUp/Signup";
-import Signin from "./pages/SignIn/SignIn";
+import Shared from "./pages/Share/Shared.jsx";
+import HomePage from "./pages/Homepage/Homepage.jsx";
+import Signup from "./pages/SignUp/Signup.jsx";
+import Signin from "./pages/SignIn/SignIn.jsx";
 
 const App = () => {
   return (

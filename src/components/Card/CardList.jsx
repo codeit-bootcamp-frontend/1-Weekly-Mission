@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "./Card.jsx";
 
 const CardList = ({ cards, hasDetails }) => {
   return (
