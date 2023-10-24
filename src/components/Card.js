@@ -1,5 +1,6 @@
 import '../styles/Card.css';
 import defaultImg from '../assets/no-image.png';
+
 const moment = require('moment');
 
 export default function Card({ value }) {

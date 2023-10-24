@@ -11,7 +11,8 @@ function App() {
   const [cards, setcards] = useState([]);
   const [folderInfo, setFolderInfo] = useState(null);
   const [user, setUser] = useState({});
-  const getdata = useCallback(async () => {
+
+  const getData = useCallback(async () => {
     const { folder } = await getFolderData('sample/folder');
     const userData = await getFolderData('sample/user');
     setUser(userData);
@@ -20,8 +21,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getdata();
-  }, [getdata]);
+    getData();
+  }, [getData]);
 
   return (
     <div className='App'>

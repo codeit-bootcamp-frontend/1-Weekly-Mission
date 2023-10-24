@@ -1,6 +1,6 @@
 import '../styles/User.css';
 
-const INIT_FOLDERINFO = {
+const INIT_FOLDER_INFO = {
   id: 0,
   name: '',
   owner: {
@@ -10,7 +10,7 @@ const INIT_FOLDERINFO = {
   },
 };
 export default function User({ folderInfo }) {
-  const folder = folderInfo ? folderInfo : INIT_FOLDERINFO;
+  const folder = folderInfo ? folderInfo : INIT_FOLDER_INFO;
 
   return (
     <div className='user'>
