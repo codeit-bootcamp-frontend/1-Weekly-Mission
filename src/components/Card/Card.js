@@ -20,11 +20,11 @@ const Card = ({
 }) => {
   // hasDetails는 카드의 별표시와 kebab을 활용할때 true 값을 준다.
 
-  const [isColor, setIsColor] = useToggle(false);
+  const [isLiked, setIsLiked] = useToggle(false);
 
   const handleStarClick = (e) => {
-    e.stopPropagation();
-    setIsColor(isColor);
+    e.preventDefault();
+    setIsLiked(isLiked);
   };
 
   const formatDate = (timeValue) => {
@@ -39,7 +39,7 @@ const Card = ({
         {hasDetails && (
           <img
             className="card-star"
-            src={isColor ? filledStar : emptyStar}
+            src={isLiked ? filledStar : emptyStar}
             alt="star"
             onClick={handleStarClick}
           />
