@@ -4,11 +4,11 @@ export function Article({ items }) {
   const links = items.links;
 
   return (
-    <div>
+    <div className="article-section">
       <Search />
-      <div className='card-container'>
+      <div className="card-container">
         {links.map((link) => (
-          <Card link={link} key={link.id}/>
+          <Card link={link} key={link.id} />
         ))}
       </div>
     </div>

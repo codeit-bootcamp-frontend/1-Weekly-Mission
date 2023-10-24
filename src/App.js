@@ -1,11 +1,12 @@
+import { useState, useEffect } from "react";
 import { Header } from "./Header.js";
 import { Article } from "./Article.js";
 import { Footer } from "./Footer.js";
-import { useState, useEffect } from "react";
 import { RequestAPI } from "./RequestApi.js";
 import { FOLDER_FAIL, PROFILE_FAIL } from "./ErrorMessage.js";
+import profileImg from "./image/profileImg.png";
+import avatarImg from "./image/Avatar.png";
 import "./css/index.css";
-
 
 export function App() {
   const [profile, setProfile] = useState({
@@ -13,18 +14,18 @@ export function App() {
     email: "",
   });
   const [items, setItems] = useState({
-    name : '',
-    links : [],
-    owner : {},
-  })
-
+    name: "",
+    links: [],
+    owner: {},
+  });
+  const [errorLoading, setErrorLoading] = useState(null);
 
   const information = async () => {
     try {
-      const review = await RequestAPI( '/api/sample/user', PROFILE_FAIL );
+      const review = await RequestAPI("/api/sample/user", PROFILE_FAIL);
       const { profileImageSource, email } = review;
       setProfile({
-        src : profileImageSource,
+        src: profileImageSource,
         email,
       });
 
@@ -35,10 +36,18 @@ export function App() {
         links,
         owner,
       });
-    } catch(error){
-        /*로그인 뜨게 하기 */
-    } 
-  }
+    } catch (error) {
+      setProfile({
+        src: `${profileImg}`,
+        email: "로그인",
+      });
+      setItems({
+        ...items,
+        owner: { profileImageSource: `${avatarImg}`, name: "@코드잇" },
+      });
+      setErrorLoading(error);
+    }
+  };
 
   useEffect(() => {
     information();
@@ -47,7 +56,7 @@ export function App() {
   return (
     <>
       <div className="header">
-        <Header profile={profile} items={items}/>
+        <Header profile={profile} items={items} />
       </div>
       <div className="article">
         <Article items={items} />
