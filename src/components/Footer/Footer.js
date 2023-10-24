@@ -1,9 +1,5 @@
-import facebookLogo from "../../assets/images/facebook.png";
-import twitterLogo from "../../assets/images/twitter.png";
-import youtubeLogo from "../../assets/images/youtube.png";
-import instagramLogo from "../../assets/images/instagram.png";
 import "./Footer.css";
-
+import { SNS_LINK_LIST } from "../../constants/SNS_LINK_LIST.js";
 const Footer = () => {
   return (
     <>
@@ -23,42 +19,16 @@ const Footer = () => {
         </div>
         <div className="footer sns">
           <ul>
-            <li>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={facebookLogo} alt="페이스북 로고" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={twitterLogo} alt="트위터 로고" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={youtubeLogo} alt="유튜브 로고" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={instagramLogo} alt="인스타그램 로고" />
-              </a>
-            </li>
+            {SNS_LINK_LIST.map((item) => {
+              const { id, link, imgSrc, alt } = item;
+              return (
+                <li key={id}>
+                  <a href={link} target="_blank" rel="noreferrer">
+                    <img src={imgSrc} alt={alt} />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </footer>
