@@ -37,52 +37,50 @@ const Card = ({ data }) => {
   }
 
   return (
-    <>
-      <li
+    <li
+      style={{
+        listStyle: "none",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <a
+        href={url}
+        target="_blank"
+        rel="noreferrer"
         style={{
-          listStyle: "none",
           display: "flex",
           flexDirection: "column",
+          borderRadius: "1rem",
+          width: "41.8rem",
         }}
       >
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer"
+        <img
+          src={imageSource}
+          alt="card 이미지"
           style={{
+            boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
+            borderTopLeftRadius: "1rem",
+            borderTopRightRadius: "1rem",
+          }}
+        />
+        <div
+          style={{
+            backgroundColor: "white",
             display: "flex",
             flexDirection: "column",
-            borderRadius: "1rem",
-            width: "41.8rem",
+            gap: "1rem",
+            borderBottomLeftRadius: "1rem",
+            borderBottomRightRadius: "1rem",
+            padding: "1rem",
           }}
         >
-          <img
-            src={imageSource}
-            alt="card 이미지"
-            style={{
-              boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
-              borderTopLeftRadius: "1rem",
-              borderTopRightRadius: "1rem",
-            }}
-          />
-          <div
-            style={{
-              backgroundColor: "white",
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: "1rem",
-              padding: "1rem",
-            }}
-          >
-            <span>{timePassed} ago</span>
-            <span>{description}</span>
-            <span>{createdAt.substring(0, 10)}</span>
-          </div>
-        </a>
-      </li>
-    </>
+          <span>{timePassed} ago</span>
+          <span>{description}</span>
+          <span>{createdAt.substring(0, 10)}</span>
+        </div>
+      </a>
+    </li>
   );
 };
 

@@ -9,7 +9,7 @@ const Header = () => {
   const [userName, setUserName] = useState("");
   const [folderName, setFolderName] = useState("");
 
-  const defaultFolder = async () => {
+  const getFolderOwner = async () => {
     const temp = await getFolder();
     setProfile(temp.folder.owner.profileImageSource);
     setUserName(temp.folder.owner.name);
@@ -17,19 +17,19 @@ const Header = () => {
   };
 
   useEffect(() => {
-    defaultFolder();
+    getFolderOwner();
   }, []);
 
   const [fullData, setFullData] = useState([]);
 
-  const defaultFolder2 = useCallback(async () => {
+  const getFullFolderData = useCallback(async () => {
     const temp = await getFolder();
     setFullData(temp.folder.links);
   }, []);
 
   useEffect(() => {
-    defaultFolder2();
-  }, [defaultFolder2]);
+    getFullFolderData();
+  }, [getFullFolderData]);
 
   console.log(fullData);
 
