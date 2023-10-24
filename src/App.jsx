@@ -1,11 +1,11 @@
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
 
-import Navigator from './Components/Navigator';
-import Folder from './Components/Folder';
-import Footer from './Components/Footer';
+import Navigator from 'components/Navigator';
+import Folder from 'components/Folder';
+import Footer from 'components/Footer';
 
-import './scss/main.scss';
+import './styles/main.scss';
 
 TimeAgo.addDefaultLocale(en);
 

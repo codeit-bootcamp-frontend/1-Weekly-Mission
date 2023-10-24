@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTimeAgo from 'react-time-ago';
 
-import DEFAULT_IMAGE from '../assets/images/default-link-img.svg';
+import DEFAULT_IMAGE from 'assets/images/default-link-img.svg';
 
 function Card({ data }) {
   const { url, title, description, createdAt, imageSource } = data;

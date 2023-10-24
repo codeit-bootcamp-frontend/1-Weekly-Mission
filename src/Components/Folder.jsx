@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
-import { getFolder } from '../api/apiClient';
-import useAsync from '../hooks/useAsync';
-import Banner from './Banner';
-import SearchBar from './SearchBar';
-import CardList from './CardList';
+import { getFolder } from 'utils/apiClient';
+import useAsync from 'hooks/useAsync';
+import Banner from 'components/Banner';
+import SearchBar from 'components/SearchBar';
+import CardList from 'components/CardList';
 
 function Folder() {
   const [data, isLoading, loadingError, getFolderAsync] = useAsync(getFolder);

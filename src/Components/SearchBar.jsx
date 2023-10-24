@@ -1,4 +1,4 @@
-import searchIcon from '../assets/icons/search.svg';
+import searchIcon from 'assets/icons/search.svg';
 
 function SearchBar() {
   return (

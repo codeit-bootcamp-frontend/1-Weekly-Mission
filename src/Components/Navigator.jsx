@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getUser } from '../api/apiClient';
+import { getUser } from 'utils/apiClient';
 
-import linkbraryIcon from '../assets/icons/linkbrary.svg';
+import linkbraryIcon from 'assets/icons/linkbrary.svg';
 
 function Navigator() {
   const [userInfo, setUserInfo] = useState({});
