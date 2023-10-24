@@ -12,17 +12,14 @@ export default function App() {
 
   useEffect(async () => {
     const response = await getSampleUser();
-    setUserProfile((prevItem) => ({
-      ...prevItem,
-      ...response,
-    }));
+    setUserProfile(response);
   }, []);
 
   useEffect(async () => {
     const response = await getSampleFolder();
     setFolderInfo(response);
     const link = response.folder.links;
-    setLinks((prevItems) => [...prevItems, ...link]);
+    setLinks(link);
   }, []);
 
   return (
