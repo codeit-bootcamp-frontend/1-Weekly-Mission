@@ -4,15 +4,21 @@ import noImg from '../../images/no-image.svg';
 import { useState } from 'react';
 
 function Card({ card }) {
-  const [hover, setHover] = useState(false);
+  const useCardHover = () => {
+    const [hover, setHover] = useState(false);
 
-  const handleMouseOver = () => {
-    setHover(true);
+    const handleMouseOver = () => {
+      setHover(true);
+    };
+
+    const handleMouseOut = () => {
+      setHover(false);
+    };
+
+    return [hover, handleMouseOver, handleMouseOut];
   };
 
-  const handleMouseOut = () => {
-    setHover(false);
-  };
+  const [hover, handleMouseOver, handleMouseOut] = useCardHover();
 
   const formatDate = (value) => {
     const date = new Date(value);
