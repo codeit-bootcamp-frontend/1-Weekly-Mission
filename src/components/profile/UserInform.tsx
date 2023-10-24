@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Button from "components/button";
 import { DEFAULT_PROFILE_IMAGE } from "constants/common";
 import QUERY_KEYS from "constants/queryKeys";
-import getUserProfile from "libs/apis/getUserProfile";
+import { getUserProfile } from "libs/apis/user";
 import styles from "styles/modules/user.module.css";
 import manageStatus from "utils/manageStatus";
 

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import FolderCardList from "components/card/FolderCardList";
 import SearchBar from "components/search/SearchBar";
-import getUserFolder from "libs/apis/getUserFolder";
+import { getUserFolder } from "libs/apis/user";
 import styles from "styles/modules/shared.module.css";
 import manageStatus from "utils/manageStatus";
 

@@ -1,9 +1,0 @@
-import { instance } from "libs/api";
-
-async function getUserProfile() {
-  const response = await instance.get<{}, User>("/api/sample/user");
-
-  return response;
-}
-
-export default getUserProfile;
