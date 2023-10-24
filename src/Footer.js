@@ -6,7 +6,7 @@ import twitterImg from "./images/twitter-icon.svg";
 
 function Footer() {
   return (
-    <div className="footerContainer">
+    <footer>
       <p className="footerCopyright">©codeit - 2023</p>
       <div className="footerInformation">
         <p onclick="location.href='privacy.html'">Privacy Policy</p>
@@ -48,7 +48,7 @@ function Footer() {
           />
         </a>
       </div>
-    </div>
+    </footer>
   );
 }
 
