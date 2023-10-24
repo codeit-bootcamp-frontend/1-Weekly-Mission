@@ -1,6 +1,5 @@
 import React from 'react';
 import EmptyImg from '../assets/icon/emptyImg.svg';
-import CutString from '../utils/cutString';
 import FormatDate from '../utils/formatDate';
 import FormatTime from '../utils/formatTime';
 import styles from './card.module.css';
@@ -8,7 +7,6 @@ import styles from './card.module.css';
 function CardForm({ createdAt, content, imgUrl, url }) {
   const formatDate = FormatDate(createdAt);
   const formatTime = FormatTime(createdAt);
-  const cutString = CutString(content);
 
   return (
     <div className={styles.wrapper}>
@@ -22,7 +20,7 @@ function CardForm({ createdAt, content, imgUrl, url }) {
         </div>
         <div className={styles.contentWrapper}>
           <span>{formatTime}</span>
-          <p className={styles.content}>{cutString}</p>
+          <p className={styles.content}>{content}</p>
           <span>{formatDate}</span>
         </div>
       </a>
