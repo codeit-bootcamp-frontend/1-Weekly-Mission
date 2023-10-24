@@ -1,4 +1,4 @@
-function CutString(description) {
+function cutString(description) {
   if (description.length >= 74) {
     return description.substring(0, 74) + '....';
   } else {
@@ -6,4 +6,4 @@ function CutString(description) {
   }
 }
 
-export default CutString;
+export default cutString;

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Search.css';
+import './search.css';
 
 const LinkSearch = '링크를 검색해 보세요.';
 

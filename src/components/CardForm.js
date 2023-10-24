@@ -1,9 +1,9 @@
 import React from 'react';
 import EmptyImg from '../assets/icon/emptyImg.svg';
-import styles from '../styles/modules/Card.module.css';
-import CutString from '../utils/CutString';
-import FormatDate from '../utils/FormatDate';
-import FormatTime from '../utils/FormatTime';
+import CutString from '../utils/cutString';
+import FormatDate from '../utils/formatDate';
+import FormatTime from '../utils/formatTime';
+import styles from './card.module.css';
 
 function CardForm({ createdAt, content, imgUrl, url }) {
   const formatDate = FormatDate(createdAt);

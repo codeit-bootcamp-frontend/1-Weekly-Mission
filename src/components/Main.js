@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { introRequestData } from '../services/Api';
-import '../styles/Main.css';
+import { introRequestData } from '../services/api';
 import CardList from './CardList';
 import Intro from './Intro';
 import Search from './Search';
+import './main.css';
 
 function Main() {
   const [folderData, setFolderData] = useState({});

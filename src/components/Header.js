@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Logo from '../assets/icon/logo.svg';
 import Login from '../components/Login';
-import headerRequestData from '../services/Api';
-import '../styles/Header.css';
+import headerRequestData from '../services/api';
+import './header.css';
 
 function Header() {
   const [loginData, setLoginData] = useState({});

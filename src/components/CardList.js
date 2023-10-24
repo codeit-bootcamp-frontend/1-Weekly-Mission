@@ -1,5 +1,5 @@
-import styles from '../styles/modules/CardList.module.css';
 import CardForm from './CardForm';
+import styles from './cardList.module.css';
 
 function CardList({ cardData }) {
   const { links } = cardData;

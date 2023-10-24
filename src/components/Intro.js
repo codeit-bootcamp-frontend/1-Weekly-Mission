@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Intro.css';
+import './intro.css';
 
 function Intro({ folderData }) {
   const { owner, name: folderName } = folderData;
