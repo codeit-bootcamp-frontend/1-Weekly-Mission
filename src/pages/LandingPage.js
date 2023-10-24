@@ -1,45 +1,52 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ReactComponent as Searchbar } from "../assets/searchbar.svg";
-import { getCardPics } from "../api";
+import { getfoldersData } from "../api/folder";
 import ImageList from "../components/ImageList";
-
-const ResponiveSearchBar = styled.div`
-  border: 5px solid black;
+import "./LandingPage.css";
+const LandingResponsive = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 3.2rem;
-  row-gap: 10rem;
-  /* tablet */
-  @media (min-width: 768px) {
-    height: 9.5rem;
-  }
-  /* descktop*/
-  @media (min-width: 1200px) {
-    padding: 0 20rem;
-    height: 9.5rem;
-  }
+  border: 5px solid red;
+  /* width: 80%; */
 `;
+
+const ResponiveSearchBar = styled.div``;
 
 export default function LandingPage() {
   const [items, setItems] = useState([]);
-  const handleCardData = async () => {
-    const { folder } = await getCardPics();
-    const { links } = folder;
-    setItems(links);
-  };
+
+  // const handleCardData = async () => {
+  //   const { folder } = await getfoldersData();
+  //   const { links } = folder;
+  //   setItems(links);
+  // };
 
   useEffect(() => {
-    handleCardData();
+    async function fetchingFolder() {
+      setItems([]);
+      const { folder } = await getfoldersData();
+      const { links } = folder;
+      if (!isLoading) {
+        setItems(links);
+      }
+    }
+    let isLoading = false;
+    fetchingFolder();
+    return () => {
+      isLoading = true;
+    };
   }, []);
 
+  // useEffect(() => {
+  //   handleCardData();
+  // }, []);
+
   return (
-    <div>
-      <ResponiveSearchBar>
-        <Searchbar />
-      </ResponiveSearchBar>
+    <LandingResponsive>
+      <Searchbar className="search-bar" />
       <ImageList items={items} />
-    </div>
+    </LandingResponsive>
   );
 }
