@@ -21,7 +21,7 @@
   object-fit: cover;
 }
 
-.owner-firstname {
+.owner-ownername {
   color: var(--text-color-light-mode, #000);
   font-size: 1.6rem;
   font-style: normal;
@@ -29,7 +29,7 @@
   line-height: 2.4rem;
 }
 
-.owner-secondname {
+.owner-foldername {
   color: #000;
   text-align: center;
   vertical-align: middle;

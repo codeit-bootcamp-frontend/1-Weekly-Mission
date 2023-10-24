@@ -39,6 +39,7 @@ const Navbar = () => {
     const handleSampleUserProfile = async () => {
       const result = await getSampleUser();
       if (!result) return;
+      if (error) console.error(error);
 
       setSampleUser({
         id: result.id,
