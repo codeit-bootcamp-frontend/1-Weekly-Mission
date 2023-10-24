@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
-import IMAGES from "../../assets/images.js";
-import Button from "../Button/Button.jsx";
+
 import { fetchGet } from "../../apis/api";
 import useAsync from "../../hooks/useAsync";
+import IMAGES from "../../assets/images.js";
+import Button from "../Button/Button.jsx";
+import "./Navbar.css";
 
 const Logo = ({ link = "/", className, src, alt, height }) => {
   return (
@@ -14,10 +15,11 @@ const Logo = ({ link = "/", className, src, alt, height }) => {
   );
 };
 
-const Profile = ({ imgUrl, email, name, id }) => {
+const Profile = ({ items }) => {
+  const { email, profileImageSource } = items;
   return (
     <div className="profile-box">
-      <img className="profile-image" src={imgUrl} alt="profile" />
+      <img className="profile-image" src={profileImageSource} alt="profile" />
       <p className="profile-collapse">{email}</p>
     </div>
   );
@@ -58,6 +60,7 @@ const Navbar = () => {
         email: "",
         profileImageSource: "",
       });
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -67,19 +70,14 @@ const Navbar = () => {
           link="/"
           className="nav-logo"
           src={IMAGES.logo}
-          alt="Linkbrary Logo"
+          alt="Linkbrary"
           height={24}
         />
         {!loading ? (
           !sampleUser.id ? (
             <Button className="cta-short" link="/signin.html" text="로그인" />
           ) : (
-            <Profile
-              imgUrl={sampleUser.profileImageSource}
-              email={sampleUser.email}
-              id={sampleUser.id}
-              name={sampleUser.name}
-            />
+            <Profile items={sampleUser} />
           )
         ) : null}
         {}

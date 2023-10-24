@@ -106,6 +106,10 @@
   gap: 2rem 2.5rem;
 }
 
+.card-kebab {
+  cursor: pointer;
+}
+
 /* Tablet */
 @media screen and (max-width: 1124px) {
   .card {

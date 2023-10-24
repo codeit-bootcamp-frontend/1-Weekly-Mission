@@ -1,19 +1,25 @@
 import { useEffect, useState } from "react";
-import Searchbar from "../../components/Searchbar/Searchbar";
+
 import { fetchGet } from "../../apis/api";
-
-import "./Share.css";
-import CardList from "../../components/Card/CardList.jsx";
 import useAsync from "../../hooks/useAsync";
+import Searchbar from "../../components/Searchbar/Searchbar";
+import CardList from "../../components/Card/CardList.jsx";
+import "./Share.css";
 
-const Owner = ({ folderName, ownerName, ownerImageSrc }) => {
+const Owner = ({ items }) => {
+  const { name, ownerName, ownerProfileImageSource } = items;
+
   return (
     <div className="owner-container">
       <div className="owner-inner-container">
-        <img className="owner-image" src={ownerImageSrc} alt="사용자 이미지" />
+        <img
+          className="owner-image"
+          src={ownerProfileImageSource}
+          alt="사용자 이미지"
+        />
         <p className="owner-ownername">@{ownerName}</p>
         <div>
-          <p className="owner-foldername">{folderName}</p>
+          <p className="owner-foldername">{name}</p>
         </div>
       </div>
     </div>
@@ -49,6 +55,7 @@ const Share = () => {
     };
 
     handleSampleFolder();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -56,14 +63,10 @@ const Share = () => {
       {!loading && (
         <>
           (
-          <Owner
-            folderName={owner.name}
-            ownerName={owner.ownerName}
-            ownerImageSrc={owner.ownerProfileImageSource}
-          />
+          <Owner items={owner} />
           <div className="shared-frame">
             <Searchbar />
-            <CardList cards={cards} hasDetails={true} />
+            <CardList cards={cards} />
           </div>
           )
         </>

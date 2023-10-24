@@ -1,22 +1,9 @@
 import Card from "./Card.jsx";
 
-const CardList = ({ cards, hasDetails }) => {
+const CardList = ({ cards }) => {
   return (
     <div className="card-list">
-      {cards &&
-        cards.map((card) => (
-          <Card
-            key={card.id}
-            className={"Card"}
-            createdAt={card.createdAt}
-            description={card.description}
-            id={card.id}
-            imgUrl={card.imageSource}
-            title={card.title}
-            url={card.url}
-            hasDetails={hasDetails}
-          />
-        ))}
+      {cards && cards.map((card) => <Card key={card.id} items={card} />)}
     </div>
   );
 };

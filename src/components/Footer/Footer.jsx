@@ -1,7 +1,7 @@
-import "./Footer.css";
+import { Link } from "react-router-dom";
 
 import IMAGES from "../../assets/images.js";
-import { Link } from "react-router-dom";
+import "./Footer.css";
 
 const snsLinks = {
   facebook: "https://www.facebook.com/",

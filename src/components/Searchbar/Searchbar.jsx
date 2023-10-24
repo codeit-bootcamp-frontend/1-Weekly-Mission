@@ -1,6 +1,6 @@
 import { useState } from "react";
-import IMAGES from "../../assets/images.js";
 
+import IMAGES from "../../assets/images.js";
 import "./Searchbar.css";
 
 const Searchbar = () => {
