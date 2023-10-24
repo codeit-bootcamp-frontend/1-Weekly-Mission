@@ -7,13 +7,12 @@ function Header() {
     const [email, setEmail] = useState('');
     const [profileImg, setProfileImg] = useState('');
 
-    const handleUser = async()=>{
-        const{ email,profileImageSource } = await getUser();
-        setEmail(email);
-        setProfileImg(profileImageSource);
-    }
-
     useEffect(()=>{
+        const handleUser = async()=>{
+            const{ email,profileImageSource } = await getUser();
+            setEmail(email);
+            setProfileImg(profileImageSource);
+        }
         handleUser();
     },[]); 
 
@@ -22,7 +21,7 @@ function Header() {
             <a href="index.html"><img src={logo} alt='logo' width="133px" height="24px" /></a>
             <div className='account'>
                 <img src={profileImg} alt='profileImg'  className='account-img'/>
-                {`${email}`}
+                {email}
             </div>
             {/* <a href="/signin.html" className='link'>
                 로그인

@@ -1,21 +1,8 @@
 import '../css/card.css'
-import { getFolder } from './api';
-import { useEffect, useState } from 'react';
 import noImage from '../assets/images/no-image.svg'
 
 
-function Cards () {
-    const [items,setItems]=useState([]);
-
-    const handleLoad = async()=>{
-        const{ folder } = await getFolder();
-        setItems(folder.links);
-    }
-
-    useEffect(()=>{
-        handleLoad();
-    },[]);
-    
+function Cards ({items}) {
     return (
         items.map((item)=><Card key={item.id} items={item}/>)
     );
@@ -23,56 +10,37 @@ function Cards () {
 
 
 function Card ({items}) {
-    let image = {};
-    if(items.imageSource===undefined){
-        image = {
-            backgroundImage: `url(${noImage})`,
-        };
-    } else {
-        image = {
-        
-            backgroundImage: `url(${items.imageSource})`,
-        };
-    }
-    let apiDate = new Date(items.createdAt);
+    const image = {
+        backgroundImage: `url(${items.imageSource ?? noImage})`
+    };
+
+    const apiDate = new Date(items.createdAt);
 
     function dateCalculator (apiDate) {
-        let myDate = new Date();
-        let elapsedMinute = Math.floor((myDate - apiDate) / 1000 / 60) ;
-        let elapsedHour = Math.floor((myDate - apiDate) / 1000 / 60 / 60) ;
-        let elapsedDays = Math.floor((myDate - apiDate) / 1000 / 60 / 60 / 24) ;
-        let elapsedMonth = Math.floor((myDate - apiDate) / 1000 / 60 / 60 / 24 / 31) ;
-        let elapsedYear = Math.floor((myDate - apiDate) / 1000 / 60 / 60 / 24 / 31 / 12) ;
+        const myDate = new Date();
+        const elapsedMinute = Math.floor((myDate - apiDate) / 1000 / 60) ;
+        const elapsedHour = Math.floor((myDate - apiDate) / 1000 / 60 / 60) ;
+        const elapsedDays = Math.floor((myDate - apiDate) / 1000 / 60 / 60 / 24) ;
+        const elapsedMonth = Math.floor((myDate - apiDate) / 1000 / 60 / 60 / 24 / 31) ;
+        const elapsedYear = Math.floor((myDate - apiDate) / 1000 / 60 / 60 / 24 / 31 / 12) ;
         
         if (elapsedMinute < 60) {
-            if(elapsedMinute < 2){
-                return (`${elapsedMinute} minute ago`)
+            if (elapsedMinute < 2) {
+                return (`1 minute ago`);
             }
-            return (`${elapsedMinute} minutes ago`)
+            return (`${elapsedMinute} minute${elapsedMinute ? 's' : ''} ago`)
         }
         if (elapsedHour < 24) {
-            if(elapsedHour < 2){
-                return (`${elapsedHour} hour ago`)
-            }
-            return (`${elapsedHour} hours ago`)
+            return (`${elapsedHour} hour${elapsedHour ? 's' : ''} ago`)
         }
         if (elapsedDays < 31) {
-            if(elapsedDays < 2) {
-                return (`${elapsedDays} day ago`)
-            }
-            return (`${elapsedDays} days ago`)
+            return (`${elapsedDays} day${elapsedDays ? 's' : ''} ago`)
         }
         if (elapsedMonth < 12) {
-            if (elapsedMonth < 2){
-                return (`${elapsedMonth} month ago`)
-            }
-            return (`${elapsedMonth} months ago`)
+            return (`${elapsedMonth} month${elapsedMonth ? 's' : ''} ago`)
         }
         if (elapsedYear) {
-            if (elapsedYear < 2){
-                return (`${elapsedYear} year ago`)
-            }
-            return (`${elapsedYear} years ago`)
+            return (`${elapsedYear} year${elapsedYear ? 's' : ''} ago`)
         }
     }
     const elapsedTime = dateCalculator(apiDate);

@@ -8,39 +8,27 @@ function SearchBar () {
     return (
         <div className='search-box'>
             <img src={searchIcon} alt='searchIcon'/>
-            <from>
+            <form>
                 <input type='text' placeholder='링크를 검색해 보세요.' className='search-input'/>
-            </from>
+            </form>
         </div>
     );
 }
 
-function MainSection () {
+function MainSection ({items}) {
     return (
         <div className='main'>
             <div className='main-box'>
                 <SearchBar/>
                 <div className='cards-grid'>
-                    <Cards/> 
+                    <Cards items = {items}/> 
                 </div>
             </div>
         </div>
     );
 }
 
-function Profile() {
-    const [name, setName] = useState('');
-    const [owner, setOwner] = useState({});
-    const handleProfile = async()=>{
-        const{ folder } = await getFolder();
-        setName(folder.name);
-        setOwner(folder.owner);
-    }
-
-    useEffect(() => {handleProfile()}, []);
-
-    console.log(name, owner);
-
+function Profile({name, owner}) {
     return (
         <div className='profile'>
             <div className='profile-img-name'>
@@ -57,10 +45,24 @@ function Profile() {
 }
 
 function Main() {
+    const [name, setName] = useState('');
+    const [owner, setOwner] = useState({});
+    const [items,setItems] = useState([]);
+
+    useEffect(() => {
+        const handleFolder = async()=>{
+            const{ folder } = await getFolder();
+            setName(folder.name);
+            setOwner(folder.owner);
+            setItems(folder.links);
+        };
+        handleFolder();
+    }, []);
+
     return(
         <>
-        <Profile />
-        <MainSection />
+        <Profile name = {name} owner={owner}/>
+        <MainSection items = {items}/>
         </>
     );
 }
