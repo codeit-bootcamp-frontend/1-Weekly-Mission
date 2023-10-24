@@ -1,6 +1,15 @@
 const BASE_URL = "https://bootcamp-api.codeit.kr";
 
-const commonFetchFunction = async (url, options) => {
+const commonFetchFunction = async (url, method, headers, body) => {
+  let options = {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    body: JSON.stringify(body),
+  };
+
   const res = await fetch(BASE_URL + url, options);
   const data = await res.json();
   if (res.ok) {
@@ -12,54 +21,22 @@ const commonFetchFunction = async (url, options) => {
 
 // POST
 const fetchPost = async (url, body, headers = {}) => {
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(body),
-  };
-  return await commonFetchFunction(url, options);
+  return await commonFetchFunction(url, "POST", headers, body);
 };
 
 // GET
 const fetchGet = async (url, headers = {}) => {
-  const options = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-  };
-  return await commonFetchFunction(url, options);
+  return await commonFetchFunction(url, "GET", headers);
 };
 
 // PUT
 const fetchPut = async (url, body, headers = {}) => {
-  const options = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(body),
-  };
-
-  return await commonFetchFunction(url, options);
+  return await commonFetchFunction(url, "PUT", headers, body);
 };
 
 // DELETE
 const fetchDelete = async (url, headers = {}) => {
-  const options = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-  };
-
-  return await commonFetchFunction(url, options);
+  return await commonFetchFunction(url, "DELETE", headers);
 };
 
 export { fetchPost, fetchGet, fetchPut, fetchDelete };
