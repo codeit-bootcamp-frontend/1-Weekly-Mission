@@ -7,7 +7,7 @@ import "./Shared.css";
 const Shared = () => {
   return (
     <>
-      <header>
+      <header className="shared-header">
         <Navbar />
       </header>
       <Share />

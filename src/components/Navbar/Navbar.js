@@ -59,7 +59,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav>
+    <nav id="nav">
       <div className="nav-box">
         <Logo
           link="/"

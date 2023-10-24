@@ -1,4 +1,4 @@
-nav {
+#nav {
   position: fixed;
   top: 0;
   display: flex;
@@ -40,7 +40,7 @@ nav {
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1199px) {
-  nav {
+  #nav {
     padding: 0;
   }
 
@@ -52,7 +52,7 @@ nav {
 
 /* Mobile */
 @media screen and (max-width: 767px) {
-  nav {
+  #nav {
     padding: 0;
   }
 

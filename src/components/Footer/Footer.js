@@ -30,7 +30,7 @@ const SNSImageLink = ({ src, name }) => {
 
 const Footer = () => {
   return (
-    <footer>
+    <footer id="footer">
       <div className="footer-box">
         <span className="copyright">©codeit - 2023</span>
         <div className="footer-links">

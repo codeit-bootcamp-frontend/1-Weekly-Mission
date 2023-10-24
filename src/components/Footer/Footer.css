@@ -1,4 +1,4 @@
-footer {
+#footer {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -71,13 +71,9 @@ footer {
   transform: scaleX(1);
 }
 
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1199px) {
-}
-
 /* Mobile */
 @media screen and (max-width: 767px) {
-  footer {
+  #footer {
     padding: 3.2rem;
   }
 
