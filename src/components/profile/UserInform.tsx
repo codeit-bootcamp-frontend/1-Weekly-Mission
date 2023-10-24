@@ -10,12 +10,6 @@ function UserInform() {
   const { isLoading, isError, data } = useQuery<User>({
     queryKey: [QUERY_KEYS.sample.user],
     queryFn: getUserProfile,
-    // onError: (error) => {
-    // if (error.response.status === 401) {
-    // console.log("401이면 해당 컴포넌트가 안보이게 하려고 한 로직")
-    // console.log("이렇게 하면 되는 거 아닌가? ㅜㅡㅜ")
-    //   }
-    // },
   });
 
   if (isLoading || isError) {
