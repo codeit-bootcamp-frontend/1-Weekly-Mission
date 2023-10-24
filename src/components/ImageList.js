@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../common/Card";
-import { Link, useNavigate } from "react-router-dom";
-
+import "./ImageList.css";
 import { changeDateFormat, compareNowAndAfter } from "../utils";
 
 const ResponiveImageContainer = styled.div`
@@ -41,8 +40,7 @@ function ImageListItem({ item }) {
   const targetData = changeDateFormat(createdAt);
   //const result = compareNowAndAfter(currentData, targetData);
   const { year, month, day } = targetData;
-  // navgiate로 쓸 방법을 찾아보자
-  // const navigate = useNavigate();
+
   const navgiateToPage = (url) => {
     window.location.href = `${url}`;
   };
@@ -50,7 +48,13 @@ function ImageListItem({ item }) {
   return (
     <>
       <Card onClickFunc={() => navgiateToPage(url)}>
-        <img src={imageSource} alt={title} width="100%" height="250" />
+        <img
+          className="card-image"
+          src={imageSource}
+          alt={title}
+          // width="100%"
+          // height="250"
+        />
         <p>시간계산함수만들어야함 </p>
         <p>{description}</p>
         <p>

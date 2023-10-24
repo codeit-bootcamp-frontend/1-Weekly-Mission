@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCardPics, getUsers } from "../api";
+import { getCardPics } from "../api";
 import styled from "styled-components";
 import "./Header.css";
 
@@ -41,7 +41,7 @@ export default function Header() {
   useEffect(() => {
     handleFolderData();
   }, []);
-  
+
   useEffect(() => {
     handleProfileData();
   }, [profile]);

@@ -1,10 +1,10 @@
 import React from "react";
 import "./Footer.css";
 import styled from "styled-components";
-import { ReactComponent as InstagramIcon } from "../assets/Instagram.svg";
-import { ReactComponent as MetaIcon } from "../assets/Meta.svg";
-import { ReactComponent as TwitterIcon } from "../assets/Twitter.svg";
-import { ReactComponent as YoutubeIcon } from "../assets/Youtube.svg";
+import { ReactComponent as InstagramIcon } from "../assets/instagram.svg";
+import { ReactComponent as MetaIcon } from "../assets/meta.svg";
+import { ReactComponent as TwitterIcon } from "../assets/twitter.svg";
+import { ReactComponent as YoutubeIcon } from "../assets/youtube.svg";
 
 const ResponsiveFooter = styled.div`
   height: 17rem;

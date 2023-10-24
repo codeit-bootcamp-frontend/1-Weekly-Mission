@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import { getUsers } from "../api";
 import styled from "styled-components";
-import { ReactComponent as Logo } from "../assets/Logo.svg";
-import { ReactComponent as Person } from "../assets/Person.svg";
-import { ReactComponent as Login } from "../assets/Login.svg";
+import { ReactComponent as Logo } from "../assets/logo.svg";
+import { ReactComponent as Person } from "../assets/person.svg";
+import { ReactComponent as Login } from "../assets/login.svg";
 
 const ResponSiveNavbar = styled.div`
   display: flex;
