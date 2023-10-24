@@ -27,7 +27,7 @@ function Card({ linkInfo }) {
           }
         >
           <img
-            src={linkInfo?.imageSource || logo}
+            src={linkInfo?.imageSource ?? logo}
             className={linkInfo?.imageSource ? 'link-img' : 'link-img-empty'}
             alt="cat"
           />
