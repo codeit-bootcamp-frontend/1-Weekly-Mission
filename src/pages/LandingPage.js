@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { ReactComponent as Searchbar } from "../assets/searchbar.svg";
-import { getfoldersData } from "../api/folder";
-import ImageList from "../components/ImageList";
-import "./LandingPage.css";
-const LandingResponsive = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 5px solid red;
-  /* width: 80%; */
-`;
 
-const ResponiveSearchBar = styled.div``;
+import { ReactComponent as Searchbar } from "../assets/imgs/searchbar.svg";
+import { getfoldersData } from "../api/folder";
+import ImageList from "../components/imageList/ImageList";
+import "./LandingPage.css";
 
 export default function LandingPage() {
   const [items, setItems] = useState([]);
@@ -36,9 +27,7 @@ export default function LandingPage() {
   console.log(items);
   return (
     <div>
-      <ResponiveSearchBar>
-        <Searchbar />
-      </ResponiveSearchBar>
+      <Searchbar />
       <ImageList items={items} />
     </div>
   );
