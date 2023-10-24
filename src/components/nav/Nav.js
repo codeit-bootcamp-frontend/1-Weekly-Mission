@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/common/logo.svg';
 import './nav.css';
+import { getSampleUser } from '../../api/user';
 
-export default function Nav({ userProfile }) {
+export default function Nav() {
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(async () => {
+    const response = await getSampleUser();
+    setUserProfile(response);
+  }, []);
+
   return (
     <div>
       <nav className="gnb">

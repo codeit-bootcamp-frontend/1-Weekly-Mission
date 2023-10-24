@@ -2,18 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Nav from './components/nav/Nav';
 import SharedPage from './pages/share/SharedPage';
 import Footer from './components/footer/Footer';
-import { getSampleFolder, getSampleUser } from './api/user';
+import { getSampleFolder } from './api/user';
 import Header from './components/header/Header';
 
 export default function App() {
-  const [userProfile, setUserProfile] = useState({});
   const [folderInfo, setFolderInfo] = useState(null);
   const [links, setLinks] = useState([]);
-
-  useEffect(async () => {
-    const response = await getSampleUser();
-    setUserProfile(response);
-  }, []);
 
   useEffect(async () => {
     const response = await getSampleFolder();
@@ -24,7 +18,7 @@ export default function App() {
 
   return (
     <div>
-      <Nav userProfile={userProfile} />
+      <Nav />
       <Header folderInfo={folderInfo} />
       <SharedPage links={links} />
       <Footer />
