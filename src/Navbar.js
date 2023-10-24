@@ -12,8 +12,7 @@ const Navbar = () => {
         if (data.id) {
           setUserData(data);
         }
-      })
-      .catch((error) => console.error("Error:", error));
+      });
   }, []);
 
   return (

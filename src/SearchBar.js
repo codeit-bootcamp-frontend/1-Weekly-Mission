@@ -11,7 +11,6 @@ const SearchBar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("검색어:", searchTerm);
   };
 
   return (
