@@ -1,9 +1,7 @@
 import React from 'react';
 import './footer.css';
-import facebookIcon from '../../assets/landing/facebookIcon.svg';
-import instagramIcon from '../../assets/landing/instagramIcon.svg';
-import twitterIcon from '../../assets/landing/twitterIcon.svg';
-import youtubeIcon from '../../assets/landing/youtubeIcon.svg';
+import LinkIcon from './components/LinkIcons';
+import LINK_ICONS from './constant/linkIcons';
 
 export default function Footer() {
   return (
@@ -20,26 +18,11 @@ export default function Footer() {
             </a>
           </div>
           <div className="footer-icons">
-            <a
-              href="https://www.facebook.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={facebookIcon} alt="facebookIcon" />
-            </a>
-            <a href="https://twitter.com/" target="_blank" rel="noreferrer">
-              <img src={twitterIcon} alt="twitterIcon" />
-            </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
-              <img src={youtubeIcon} alt="youtubeIcon" />
-            </a>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={instagramIcon} alt="instagramIcon" />
-            </a>
+            {LINK_ICONS.map((item) => (
+              <div key={item.id}>
+                <LinkIcon image={item.image} alt={item.alt} url={item.url} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
