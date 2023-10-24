@@ -8,7 +8,6 @@ const Searchbar = () => {
   const handleSearch = (e) => {
     setSearchText(e.target.value);
   };
-  console.log(searchText);
 
   const handleSearchDelete = (e) => {
     setSearchText("");
@@ -18,7 +17,7 @@ const Searchbar = () => {
     <div className="searchbar">
       <div className="searchbar-inner">
         <label htmlFor="search">
-          <img src={IMAGES.searchIcon} alt="Search" />
+          <img src={IMAGES.search} alt="Search" />
         </label>
         <input
           className="searchbar-input"

@@ -63,7 +63,7 @@ const Share = () => {
           />
           <div className="shared-frame">
             <Searchbar />
-            <CardList cards={cards} hasDetails={false} />
+            <CardList cards={cards} hasDetails={true} />
           </div>
           )
         </>
