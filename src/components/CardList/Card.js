@@ -1,6 +1,6 @@
 import React from "react";
 import "./CardStyles.css";
-import { timeDifference } from "./utils/timeUtils";
+import { timeDifference } from "../../utils/timeUtils";
 
 const Card = ({ link = {} }) => {
   if (!link) {

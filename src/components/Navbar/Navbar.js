@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
-import Logo from "./Logo";
+import Logo from "../../assets/icons/Logo";
 
 const Navbar = () => {
   const [userData, setUserData] = useState(null);

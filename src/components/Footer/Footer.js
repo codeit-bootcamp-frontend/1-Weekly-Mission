@@ -1,9 +1,9 @@
 import React from "react";
 import "./Footer.css";
-import FacebookIcon from "./FacebookIcon";
-import InstagramIcon from "./InstagramIcon";
-import YoutubeIcon from "./YoutubeIcon";
-import TwitterIcon from "./TwitterIcon";
+import FacebookIcon from "../../assets/icons/FacebookIcon";
+import InstagramIcon from "../../assets/icons/InstagramIcon";
+import YoutubeIcon from "../../assets/icons/YoutubeIcon";
+import TwitterIcon from "../../assets/icons/TwitterIcon";
 import SocialLink from "./SocialLink";
 
 const Footer = () => {

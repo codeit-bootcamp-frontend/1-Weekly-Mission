@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import FolderOwnerInfo from "./FolderOwnerInfo";
-import CardList from "./CardList";
-import SearchBar from "./SearchBar";
-import "./global.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import FolderOwnerInfo from "./components/FolderOwnerInfo";
+import CardList from "./components/CardList";
+import SearchBar from "./components/SearchBar";
+import "./styles/global.css";
 
 const App = () => {
   return (

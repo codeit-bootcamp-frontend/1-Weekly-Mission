@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
-import SearchIcon from "./assets/search-icon.svg";
+import SearchIcon from "../../assets/icons/SearchIcon";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,7 +16,7 @@ const SearchBar = () => {
   return (
     <div className="search-bar-container">
       <form onSubmit={handleSubmit}>
-        <img src={SearchIcon} alt="Search" />
+        <SearchIcon />
         <input
           className="search-input"
           type="text"
