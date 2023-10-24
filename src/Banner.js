@@ -6,7 +6,7 @@ function Banner() {
   const [hasData, setHasData] = useState(false);
   const [folderData, setFolderData] = useState();
 
-  const handleLoad = async () => {
+  const load = async () => {
     let result;
     try {
       result = await getFolderData();
@@ -20,11 +20,11 @@ function Banner() {
   };
 
   useEffect(() => {
-    handleLoad();
+    load();
   }, []);
 
   return (
-    <div>
+    <>
       {hasData && (
         <div className="bannerContainer">
           <div className="bannerProfile">
@@ -38,7 +38,7 @@ function Banner() {
           <p>{folderData.name}</p>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

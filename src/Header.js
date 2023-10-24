@@ -5,14 +5,14 @@ import { getLoginData } from "./api";
 
 function Header() {
   const [hasData, setHasData] = useState(false);
-  const [loginData, setLoginData] = useState();
+  const [userData, setUserData] = useState();
 
   const handleLoad = async () => {
     let result;
     try {
       result = await getLoginData();
       setHasData(true);
-      setLoginData(result);
+      setUserData(result);
     } catch (error) {
       setHasData(false);
       return;
@@ -30,11 +30,11 @@ function Header() {
         {hasData && (
           <div className="headerProfile">
             <img
-              src={loginData.profileImageSource}
+              src={userData.profileImageSource}
               id="profileImg"
               alt="Profile Img"
             />
-            <p>{loginData.email}</p>
+            <p>{userData.email}</p>
           </div>
         )}
         {!hasData && <button id="headerButton">로그인</button>}

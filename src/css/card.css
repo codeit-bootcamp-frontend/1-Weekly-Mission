@@ -74,6 +74,7 @@
   font-weight: 400;
   line-height: normal;
   text-align: left;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
 }
 
 .cardImg {
