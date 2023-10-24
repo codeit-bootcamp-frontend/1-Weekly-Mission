@@ -1,22 +1,22 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { introRequestData } from '../services/api';
+import { getUserProfile } from '../services/api';
+import Banner from './Banner';
 import CardList from './CardList';
-import Intro from './Intro';
 import Search from './Search';
 import './main.css';
 
 function Main() {
-  const [folderData, setFolderData] = useState({});
-  const [cardData, setCardData] = useState(null);
+  const [folder, setFolder] = useState({});
+  const [card, setCard] = useState(null);
 
   const profileInfo = useCallback(async () => {
-    const introResult = await introRequestData();
+    const introResult = await getUserProfile();
     if (!introResult) return;
 
     const { folder } = introResult;
 
-    setFolderData(folder);
-    setCardData(folder);
+    setFolder(folder);
+    setCard(folder);
   }, []);
 
   useEffect(() => {
@@ -25,10 +25,10 @@ function Main() {
 
   return (
     <main>
-      {folderData && <Intro folderData={folderData} />}
+      {folder && <Banner folderData={folder} />}
       <div className="main-section">
         <Search />
-        {cardData && <CardList cardData={cardData} />}
+        {card && <CardList cardData={card} />}
       </div>
     </main>
   );

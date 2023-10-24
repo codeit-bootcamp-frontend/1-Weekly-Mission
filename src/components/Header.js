@@ -5,20 +5,20 @@ import headerRequestData from '../services/api';
 import './header.css';
 
 function Header() {
-  const [loginData, setLoginData] = useState({});
+  const [getUser, setGetUser] = useState({});
 
   const loginInfo = useCallback(async () => {
     const headerResult = await headerRequestData();
     if (!headerResult) return;
 
-    setLoginData(headerResult);
+    setGetUser(headerResult);
   }, []);
 
   useEffect(() => {
     loginInfo();
   }, [loginInfo]);
 
-  const { id, email, profileImageSource } = loginData;
+  const { id, email, profileImageSource } = getUser;
 
   return (
     <header>

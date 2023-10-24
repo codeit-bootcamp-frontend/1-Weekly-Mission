@@ -1,6 +1,6 @@
 const URL = 'https://bootcamp-api.codeit.kr/api/sample';
 
-export const headerRequestData = async () => {
+const getSampleUser = async () => {
   const response = await fetch(`${URL}/user`, {
     method: 'GET',
   });
@@ -12,7 +12,7 @@ export const headerRequestData = async () => {
   return body;
 };
 
-export const introRequestData = async () => {
+export const getUserProfile = async () => {
   const response = await fetch(`${URL}/folder`, {
     method: 'GET',
   });
@@ -24,4 +24,4 @@ export const introRequestData = async () => {
   return body;
 };
 
-export default headerRequestData;
+export default getSampleUser;
