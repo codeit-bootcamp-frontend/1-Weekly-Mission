@@ -17,21 +17,15 @@ const ResponiveSearchBar = styled.div``;
 export default function LandingPage() {
   const [items, setItems] = useState([]);
 
-  // const handleCardData = async () => {
-  //   const { folder } = await getfoldersData();
-  //   const { links } = folder;
-  //   setItems(links);
-  // };
-
   useEffect(() => {
     async function fetchingFolder() {
-      setItems([]);
       const { folder } = await getfoldersData();
       const { links } = folder;
       if (!isLoading) {
         setItems(links);
       }
     }
+
     let isLoading = false;
     fetchingFolder();
     return () => {
@@ -39,14 +33,13 @@ export default function LandingPage() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   handleCardData();
-  // }, []);
-
+  console.log(items);
   return (
-    <LandingResponsive>
-      <Searchbar className="search-bar" />
+    <div>
+      <ResponiveSearchBar>
+        <Searchbar />
+      </ResponiveSearchBar>
       <ImageList items={items} />
-    </LandingResponsive>
+    </div>
   );
 }
