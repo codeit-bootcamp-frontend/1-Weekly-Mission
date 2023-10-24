@@ -1,0 +1,51 @@
+.owner-container {
+  display: flex;
+  width: 100%;
+  padding: 2rem 0 6rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--linkbrary-bg, #f0f6ff);
+}
+
+.owner-inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.owner-image {
+  height: 6rem;
+  border-radius: 4.7rem;
+  object-fit: cover;
+}
+
+.owner-ownername {
+  color: var(--text-color-light-mode, #000);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+
+.owner-foldername {
+  color: #000;
+  text-align: center;
+  vertical-align: middle;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.shared-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  margin: 4rem auto;
+  padding: 0 clamp(3.2rem, 5%, 19rem);
+}

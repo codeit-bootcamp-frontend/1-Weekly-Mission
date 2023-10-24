@@ -1,0 +1,38 @@
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5.4rem;
+  cursor: pointer;
+  background-image: var(--linkbrary-button-gradient);
+  border-radius: 0.8rem;
+  color: var(--linkbrary-button-text);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.cta-short {
+  width: 12.8rem;
+}
+
+.cta-long {
+  width: 35rem;
+}
+
+/* Media */
+@media screen and (max-width: 767px) {
+  .cta {
+    height: 3.7rem;
+    font-size: 1.4rem;
+  }
+
+  .cta-short {
+    width: 8rem;
+    padding: 1rem 1.6rem;
+    gap: 1rem;
+  }
+
+  .cta-long {
+    width: 20rem;
+  }
+}
