@@ -1,6 +1,7 @@
 import "./css/card.css";
 import { useState, useEffect } from "react";
 import { calculateRelativeTime, formatDate } from "./utils/timeUtil.js";
+import defaultImg from "./images/noImage.svg";
 
 function redirectToCardPage(url) {
   window.open(url, "_blank", "noopener");
@@ -25,6 +26,9 @@ function Card({ item }) {
     <div className="card" onClick={() => redirectToCardPage(item.url)}>
       {hasImage && (
         <img className="cardImg" src={item.imageSource} alt="카드폼 이미지" />
+      )}
+      {!hasImage && (
+        <img className="cardImg" src={defaultImg} alt="카드폼 이미지" />
       )}
       <div className="cardContent">
         <p id="createTime">{calculateRelativeTime(item.createdAt)}</p>
