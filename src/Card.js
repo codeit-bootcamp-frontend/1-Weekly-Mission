@@ -2,7 +2,11 @@ import React from "react";
 import "./CardStyles.css";
 import { timeDifference } from "./utils/timeUtils";
 
-const Card = ({ link }) => {
+const Card = ({ link = {} }) => {
+  if (!link) {
+    return null;
+  }
+
   const currentTime = new Date().getTime();
   const createdAt = new Date(link.createdAt).getTime();
   const timeDiffText = timeDifference(currentTime, createdAt);
