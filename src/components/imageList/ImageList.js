@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "../common/Card";
+import Card from "../card/Card";
 import "./ImageList.css";
-import { changeDateFormat, compareNowAndAfter } from "../utils";
+import { changeDateFormat, compareNowAndAfter } from "../../utils";
 
 const ResponiveImageContainer = styled.div`
-  border: 5px solid blue;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   row-gap: 5rem;

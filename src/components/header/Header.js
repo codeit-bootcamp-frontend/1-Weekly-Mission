@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCardPics } from "../api";
+import { getfoldersData } from "../../api/folder";
 import styled from "styled-components";
 import "./Header.css";
 
@@ -26,7 +26,7 @@ export default function Header() {
   const [personImage, setPersonImage] = useState("");
 
   const handleFolderData = async () => {
-    const { folder } = await getCardPics();
+    const { folder } = await getfoldersData();
     const { name, owner } = folder;
     setFolderName(name);
     setProfile(owner);
@@ -40,10 +40,13 @@ export default function Header() {
 
   useEffect(() => {
     handleFolderData();
+    // api clean-up
+    return () => {};
   }, []);
 
   useEffect(() => {
     handleProfileData();
+    return () => {};
   }, [profile]);
   return (
     <div>

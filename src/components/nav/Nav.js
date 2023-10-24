@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
-import { getUsers } from "../api";
+import { getUsersData } from "../../api/users";
 import styled from "styled-components";
-import { ReactComponent as Logo } from "../assets/logo.svg";
-import { ReactComponent as Person } from "../assets/person.svg";
-import { ReactComponent as Login } from "../assets/login.svg";
+import { ReactComponent as Logo } from "../../assets/imgs/logo.svg";
+import { ReactComponent as Person } from "../../assets/imgs/person.svg";
+import { ReactComponent as Login } from "../../assets/imgs/login.svg";
 
 const ResponSiveNavbar = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ export default function Nav() {
   const [isUser, setIsUser] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const handlUserDate = async () => {
-    const { email } = await getUsers();
+    const { email } = await getUsersData();
     if (email) {
       setUserEmail(email);
       setIsUser(true);

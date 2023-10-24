@@ -1,10 +1,10 @@
 import React from "react";
 import "./Footer.css";
 import styled from "styled-components";
-import { ReactComponent as InstagramIcon } from "../assets/instagram.svg";
-import { ReactComponent as MetaIcon } from "../assets/meta.svg";
-import { ReactComponent as TwitterIcon } from "../assets/twitter.svg";
-import { ReactComponent as YoutubeIcon } from "../assets/youtube.svg";
+import { ReactComponent as InstagramIcon } from "../../assets/imgs/instagram.svg";
+import { ReactComponent as MetaIcon } from "../../assets/imgs/meta.svg";
+import { ReactComponent as TwitterIcon } from "../../assets/imgs/twitter.svg";
+import { ReactComponent as YoutubeIcon } from "../../assets/imgs/youtube.svg";
 
 const ResponsiveFooter = styled.div`
   height: 17rem;
@@ -19,11 +19,9 @@ const ResponsiveFooter = styled.div`
 
   /* tablet2 */
   @media (min-width: 1124px) {
-    border: 5px solid red;
   }
   /* descktop*/
   @media (min-width: 1200px) {
-    border: 5px solid green;
   }
 `;
 export default function Footer() {
