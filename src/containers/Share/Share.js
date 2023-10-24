@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import { fetchGet } from "../../apis/api";
 
@@ -33,7 +33,7 @@ const Share = () => {
     fetchGet("/api/sample/folder")
   );
 
-  const handleSampleFolder = useCallback(async () => {
+  const handleSampleFolder = async () => {
     const result = await getSampleUserFolder();
     if (!result) return;
     const { folder } = result;
@@ -47,7 +47,7 @@ const Share = () => {
       ownerName: folder.owner.name,
       ownerProfileImageSource: folder.owner.profileImageSource,
     }));
-  }, [getSampleUserFolder]);
+  };
 
   useEffect(() => {
     handleSampleFolder();

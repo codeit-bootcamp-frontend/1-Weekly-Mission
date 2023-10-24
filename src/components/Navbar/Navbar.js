@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import IMAGES from "../../assets/images.js";
@@ -34,7 +34,7 @@ const Navbar = () => {
     fetchGet("/api/sample/user")
   );
 
-  const handleSampleUserProfile = useCallback(async () => {
+  const handleSampleUserProfile = async () => {
     const result = await getSampleUser();
     if (!result) return;
 
@@ -44,7 +44,7 @@ const Navbar = () => {
       email: result.email,
       profileImageSource: result.profileImageSource,
     });
-  }, [getSampleUser]);
+  };
 
   useEffect(() => {
     handleSampleUserProfile();
