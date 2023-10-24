@@ -28,7 +28,7 @@ function Shared() {
           </div>
           <span className={styles.name}>@{data?.folder.owner.name}</span>
         </div>
-        <h1 className={styles.bookmark}>⭐️ 즐겨찾기</h1>
+        <h1 className={styles.bookmark}>{data?.folder.name}</h1>
       </header>
       <div className={styles.itemWrapper}>
         <div className={styles.itemInWrapper}>
