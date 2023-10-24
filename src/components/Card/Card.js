@@ -1,5 +1,5 @@
 import React from "react";
-import { getTimePassed } from "./utils/formatTimePassed";
+import { getTimePassed } from "../../utils/formatTimePassed";
 
 const Card = ({ data }) => {
   const { url, description, createdAt, imageSource } = data;
@@ -11,6 +11,7 @@ const Card = ({ data }) => {
         listStyle: "none",
         display: "flex",
         flexDirection: "column",
+        maxWidth: "41.8rem",
       }}
     >
       <a
@@ -21,7 +22,6 @@ const Card = ({ data }) => {
           display: "flex",
           flexDirection: "column",
           borderRadius: "1rem",
-          width: "41.8rem",
         }}
       >
         <img

@@ -1,7 +1,7 @@
-import Article from "./Article";
-import Footer from "./Footer";
-import Header from "./Header";
-import Nav from "./Nav";
+import Article from "./ui/Article";
+import Footer from "./ui/Footer";
+import Header from "./ui/Header";
+import Nav from "./ui/Nav";
 
 function App() {
   return (

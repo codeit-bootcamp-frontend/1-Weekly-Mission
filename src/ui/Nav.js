@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "./landing.css";
-import { getLogin } from "./api";
-import { useAsync } from "./hooks/useAsync";
+import React, { useEffect } from "react";
+import "../styles/landing.css";
+import { getLogin } from "../api/api";
+import { useAsync } from "../hooks/useAsync";
 
 const Nav = () => {
   const [userEmail, getLoginAsync] = useAsync(getLogin);

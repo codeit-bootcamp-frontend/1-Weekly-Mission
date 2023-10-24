@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Cards from "./Cards";
-import { getFolder } from "./api";
-import Search from "./Search";
-import "./landing.css";
+import { getFolder } from "../api/api";
+import "../styles/landing.css";
+import Search from "../components/Search/Search";
+import Cards from "../components/Cards/Cards";
 
 const Header = () => {
   const [profile, setProfile] = useState("");
