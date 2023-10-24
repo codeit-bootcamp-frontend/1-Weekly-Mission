@@ -1,5 +1,5 @@
 import { useState } from "react";
-import searchIcon from "../../assets/Search.png";
+import IMAGES from "../../assets/images.js";
 
 import "./Searchbar.css";
 
@@ -18,7 +18,7 @@ const Searchbar = () => {
     <div className="searchbar">
       <div className="searchbar-inner">
         <label htmlFor="search">
-          <img src={searchIcon} alt="Search" />
+          <img src={IMAGES.searchIcon} alt="Search" />
         </label>
         <input
           className="searchbar-input"

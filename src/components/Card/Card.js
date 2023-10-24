@@ -1,10 +1,6 @@
 import "./Card.css";
 
-import noImage from "../../assets/no-image.svg";
-import kebab from "../../assets/kebab.png";
-import filledStar from "../../assets/filled-star.png";
-import emptyStar from "../../assets/empty-star.svg";
-
+import IMAGES from "../../assets/images.js";
 import { convertCreatedAt } from "../../utils/utils";
 import useToggle from "../../hooks/useToggle";
 
@@ -35,11 +31,11 @@ const Card = ({
   return (
     <a href={url} target="_blank" rel="noreferrer" className="card">
       <div className="card-img-container">
-        <img className="card-img" src={imgUrl || noImage} alt="카드" />
+        <img className="card-img" src={imgUrl || IMAGES.noImage} alt="카드" />
         {hasDetails && (
           <img
             className="card-star"
-            src={isLiked ? filledStar : emptyStar}
+            src={isLiked ? IMAGES.filledStar : IMAGES.emptyStar}
             alt="star"
             onClick={handleStarClick}
           />
@@ -48,7 +44,7 @@ const Card = ({
       <div className="card-info">
         <div className="card-info-top">
           <p className="card-time-difference">{convertCreatedAt(createdAt)}</p>
-          {hasDetails && <img src={kebab} alt="더보기" />}
+          {hasDetails && <img src={IMAGES.kebab} alt="더보기" />}
         </div>
         <p className="card-description">{description}</p>
         <p className="card-created-at">{formatDate(createdAt)}</p>

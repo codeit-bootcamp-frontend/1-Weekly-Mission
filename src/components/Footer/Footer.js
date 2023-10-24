@@ -1,9 +1,6 @@
 import "./Footer.css";
 
-import facebook from "../../assets/facebook.svg";
-import twitter from "../../assets/twitter.svg";
-import youtube from "../../assets/youtube.svg";
-import instagram from "../../assets/instagram.svg";
+import IMAGES from "../../assets/images.js";
 import { Link } from "react-router-dom";
 
 const snsLinks = {
@@ -38,10 +35,10 @@ const Footer = () => {
           <FooterLink link="/faq.html" text="FAQ" />
         </div>
         <div className="sns">
-          <SNSImageLink src={facebook} name="facebook" />
-          <SNSImageLink src={twitter} name="twitter" />
-          <SNSImageLink src={youtube} name="youtube" />
-          <SNSImageLink src={instagram} name="instagram" />
+          <SNSImageLink src={IMAGES.facebook} name="facebook" />
+          <SNSImageLink src={IMAGES.twitter} name="twitter" />
+          <SNSImageLink src={IMAGES.youtube} name="youtube" />
+          <SNSImageLink src={IMAGES.instagram} name="instagram" />
         </div>
       </div>
     </footer>

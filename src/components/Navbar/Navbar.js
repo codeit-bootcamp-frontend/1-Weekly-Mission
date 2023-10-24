@@ -1,10 +1,10 @@
-import logo from "../../assets/logo.svg";
-import Button from "../Button/Button.js";
-import "./Navbar.css";
-import { fetchGet } from "../../apis/api";
 import { useCallback, useEffect, useState } from "react";
-import useAsync from "../../hooks/useAsync";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
+import IMAGES from "../../assets/images.js";
+import Button from "../Button/Button.js";
+import { fetchGet } from "../../apis/api";
+import useAsync from "../../hooks/useAsync";
 
 const Logo = ({ link = "/", className, src, alt, height }) => {
   return (
@@ -64,7 +64,7 @@ const Navbar = () => {
         <Logo
           link="/"
           className="nav-logo"
-          src={logo}
+          src={IMAGES.logo}
           alt="Linkbrary Logo"
           height={24}
         />
