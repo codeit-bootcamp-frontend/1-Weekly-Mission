@@ -1,14 +1,9 @@
 import IMAGES from "../../assets/images.js";
-import { convertCreatedAt } from "../../utils/utils";
+import { convertCreatedAt, formatDate } from "../../utils/utils";
 import useToggle from "../../hooks/useToggle";
 import "./Card.css";
 
 const CardInfo = ({ createdAt, description }) => {
-  const formatDate = (timeValue) => {
-    const date = new Date(timeValue);
-    return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
-  };
-
   const handleKebabClick = (e) => {
     e.preventDefault();
   };
