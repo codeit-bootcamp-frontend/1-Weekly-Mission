@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  --primary_color: #6d6afe;
+  --red_color: #ff5b56;
+  --black_color: #111322;
+  --white_color: #ffffff;
+  --gray_color_1: #3e3e43;
+  --gray_color_2: #9fa6b2;
+  --gray_color_3: #ccd5e3;
+  --gray_color_4: #e7effb;
+  --gray_color_5: #f0f6ff;
+}
+
+html {
+  font-family: Pretendard, Arial;
+  word-break: keep-all;
+  font-size: 10px;
+  font-style: normal;
+  color: #000000;
+}
+
+body {
+  font-size: 1rem;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #fff inset;
+  -webkit-text-fill-color: #000;
+}

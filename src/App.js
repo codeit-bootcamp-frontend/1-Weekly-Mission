@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { getUserAccount } from "./APIs/api";
+import { CardList } from "./components/Card/CardList";
+import GlobalNavBar from "./components/GnB/GnB";
+import Footer from "./components/Footer/footer";
+import IntroSection from "./components/IntroSection/IntroSection";
+import SearchBar from "./components/SearchBar/SearchBar";
+import "./App.css";
 
 function App() {
+  const [userAccount, setUserAccount] = useState({});
+  
+  const handleLoad = async () => {
+    try {
+    const { email, profileImageSource } = await getUserAccount();
+    setUserAccount({ email, profileImageSource });
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <GlobalNavBar userAccount={userAccount} />
+        <IntroSection />
       </header>
+      <main>
+        <SearchBar />
+        <CardList />
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,49 @@
+.intro-section-container {
+  width: 100%;
+  height: 24.4rem;
+  background: var(--gray_color_5);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-section {
+  width: 18.8rem;
+  height: 16.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  width: 6rem;
+  height: 9rem;
+}
+
+.user-image {
+  width: 6rem;
+  height: 6rem;
+}
+
+.user-name {
+  color: var(--text-color-light-mode, #000);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.bookmark {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: normal;
+  width: 18.8rem;
+  height: 4.8rem;
+  white-space: nowrap;
+  text-align: left;
+}
