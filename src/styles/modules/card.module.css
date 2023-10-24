@@ -21,13 +21,9 @@
   object-fit: cover;
 }
 
-.cardImgHover {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.cardImg:hover {
   transform: scale(1.3);
   transition: 0.2s;
-  object-fit: cover;
 }
 
 .contentWrapper {
