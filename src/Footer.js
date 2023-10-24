@@ -4,8 +4,16 @@ import FacebookIcon from "./FacebookIcon";
 import InstagramIcon from "./InstagramIcon";
 import YoutubeIcon from "./YoutubeIcon";
 import TwitterIcon from "./TwitterIcon";
+import SocialLink from "./SocialLink";
 
 const Footer = () => {
+  const socialLinks = [
+    { href: "https://www.facebook.com", icon: <FacebookIcon /> },
+    { href: "https://twitter.com/", icon: <InstagramIcon /> },
+    { href: "https://youtube.com/", icon: <YoutubeIcon /> },
+    { href: "https://instagram.com/", icon: <TwitterIcon /> },
+  ];
+
   return (
     <div className="footer">
       <div className="footer-content">
@@ -18,34 +26,9 @@ const Footer = () => {
             <p>FAQ</p>
           </div>
           <div className="section_3">
-            <a
-              href="https://www.facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FacebookIcon />
-            </a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <InstagramIcon />
-            </a>
-            <a
-              href="https://youtube.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <YoutubeIcon />
-            </a>
-            <a
-              href="https://instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <TwitterIcon />
-            </a>
+            {socialLinks.map((link, index) => (
+              <SocialLink key={index} href={link.href} icon={link.icon} />
+            ))}
           </div>
         </div>
       </div>
