@@ -1,6 +1,6 @@
 import React from "react";
 
-function Logo(props) {
+const Logo = (props) => {
   return (
     <svg
       className={props.className}
@@ -52,6 +52,6 @@ function Logo(props) {
       </g>
     </svg>
   );
-}
+};
 
 export default Logo;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./FolderOwnerInfo.css";
 
-function FolderOwnerInfo() {
+const FolderOwnerInfo = () => {
   const [ownerName, setOwnerName] = useState("");
   const [folderName, setFolderName] = useState("");
   const [ownerImage, setOwnerImage] = useState("");
@@ -25,6 +25,6 @@ function FolderOwnerInfo() {
       </div>
     </div>
   );
-}
+};
 
 export default FolderOwnerInfo;

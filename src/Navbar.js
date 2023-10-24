@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import Logo from "./Logo";
 
-function Navbar() {
+const Navbar = () => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -39,6 +39,6 @@ function Navbar() {
       </div>
     </header>
   );
-}
+};
 
 export default Navbar;
