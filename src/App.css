@@ -14,9 +14,14 @@
 
 body {
   margin: 0;
-  background: var(--linkbrary-bg, #f0f6ff);
 }
 
 .App {
   margin: auto;
+}
+
+@media (max-width: 767px) {
+  * {
+    font-size: 14px;
+  }
 }

@@ -1,7 +1,7 @@
-import facebook from '../assets/facebook.svg';
-import twitter from '../assets/twitter.svg';
-import youtube from '../assets/youtube.svg';
-import instagram from '../assets/instagram.svg';
+import facebook from '../assets/images/facebook.svg';
+import twitter from '../assets/images/twitter.svg';
+import youtube from '../assets/images/youtube.svg';
+import instagram from '../assets/images/instagram.svg';
 import '../styles/Footer.css';
 
 const sns = [

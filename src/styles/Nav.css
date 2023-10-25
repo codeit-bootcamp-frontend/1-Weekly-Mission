@@ -36,8 +36,13 @@
   border-radius: 20px;
 }
 
-/* @media (max-width: 767px) {
-  .card-list {
-    grid-template-columns: 340px;
+@media (max-width: 767px) {
+  .user-email {
+    display: none;
   }
-} */
+
+  .nav-logo {
+    width: 88.667px;
+    height: 16px;
+  }
+}

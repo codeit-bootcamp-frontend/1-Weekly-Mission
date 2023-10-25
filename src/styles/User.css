@@ -1,8 +1,10 @@
 .user {
   display: flex;
+  margin-top: 92px;
   flex-direction: column;
   align-items: center;
   padding: 20px 0 60px;
+  background: var(--linkbrary-bg, #f0f6ff);
 }
 
 .folder-profile-image {
@@ -16,4 +18,15 @@
 
 .user-name {
   margin: 12px 0 20px;
+}
+
+@media (max-width: 767px) {
+  .folder-profile-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .user-folder-name {
+    font-size: 32px;
+  }
 }
