@@ -1,0 +1,45 @@
+@import url('../../styles/global.css');
+
+.main {
+  margin: 40px 0px;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.links-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 25px;
+  margin-top: 40px;
+}
+
+/* tablet */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  @media (max-width: 1124px) {
+    .links-container {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+    }
+
+    .main {
+      margin: 40px 32px;
+    }
+  }
+}
+
+/* mobile */
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .links-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 20px;
+  }
+}

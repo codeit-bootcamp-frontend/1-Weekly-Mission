@@ -1,0 +1,72 @@
+@import url('../../styles/global.css');
+
+.gnb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+  padding: 20px 200px;
+  background-color: var(--backgroundcolor-skyblue-10);
+}
+
+.login-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 128px;
+  cursor: pointer;
+  padding: 16px 20px;
+  border-radius: 8px;
+  border-style: none;
+  color: var(--color-gray-10);
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+}
+
+.user-profile-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+}
+
+.user-profile-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* tablet */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .gnb-logo {
+    width: 133px;
+    height: 24px;
+  }
+
+  .login-btn {
+    width: 128px;
+  }
+}
+
+/* mobile */
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .gnb {
+    padding: 13px 32px;
+  }
+
+  .gnb-logo {
+    width: 90px;
+    height: 16px;
+  }
+
+  .login-btn {
+    width: 80px;
+    padding: 10px 16px;
+  }
+}
