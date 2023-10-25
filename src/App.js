@@ -48,6 +48,8 @@ function App() {
   return (
     <>
       <Nav userEmail={userEmail} userProfile={userProfileImage} />
+      {isUserLoading && <p> 로그인 중...</p>}
+      {userLoadingError?.message && <span>{userLoadingError.message}</span>}
 
       <Header
         folderUserProfile={folderUserProfileImage}
@@ -60,6 +62,10 @@ function App() {
           <SearchBar />
         </div>
         <div className="card-section">
+          {isFolderLoading && <p> 유저 정보를 받아오는 중...</p>}
+          {folderLoadingError?.message && (
+            <span>{folderLoadingError.message}</span>
+          )}
           <CardList cardList={cardList} />
         </div>
       </section>
