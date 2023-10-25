@@ -1,5 +1,10 @@
+import API_ENDPOINTS from "./common";
+
+const baseUrl = API_ENDPOINTS.baseUrl;
+const endpoint = API_ENDPOINTS.sample.user;
+
 const getUser = async () => {
-  const response = await fetch("https://bootcamp-api.codeit.kr/api/sample/user");
+  const response = await fetch(baseUrl + endpoint);
   const body = await response.json();
   return body;
 };
