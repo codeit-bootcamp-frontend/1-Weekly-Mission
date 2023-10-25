@@ -1,5 +1,5 @@
-import "../styles/Folder.css";
 import { useEffect, useState } from "react";
+import "../styles/Folder.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import FolderInfo from "../components/FolderInfo";
