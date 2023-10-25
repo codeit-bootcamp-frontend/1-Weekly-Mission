@@ -2,6 +2,9 @@ header {
   width: 100%;
   padding: 20px 200px;
   background: var(--bg);
+}
+
+.fixed {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -34,24 +37,6 @@ header {
 
 .profile_email {
   font-size: 1.4rem;
-}
-
-.blue_btn {
-  display: flex;
-  padding: 16px 20px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  background: var(--gra-button);
-
-  color: var(--grey-light);
-  font-size: 1.8rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.login_btn {
-  width: 128px;
 }
 
 @media (max-width: 1199px) {

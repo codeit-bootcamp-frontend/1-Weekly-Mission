@@ -1,0 +1,48 @@
+.blue_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--gra-button);
+
+  color: var(--grey-light);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login_btn {
+  padding: 16px 20px;
+  width: 128px;
+  font-size: 1.8rem;
+}
+
+.add_btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  padding: 10px 16px;
+  width: 81px;
+  font-size: 1.4rem;
+  border: none;
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .login_btn {
+    padding: 16px 20px;
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .login_btn {
+    padding: 10px 16px;
+    font-size: 1.4rem;
+    width: 80px;
+  }
+  .add_btn {
+    top: 8px;
+    right: 10px;
+  }
+}

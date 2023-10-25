@@ -1,3 +1,5 @@
+import '../styles/loginBtn.css';
+
 function LoginBtn() {
   return (
     <a className="blue_btn login_btn" href="/">
