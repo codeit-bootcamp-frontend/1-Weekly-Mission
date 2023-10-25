@@ -1,0 +1,28 @@
+html {
+  font-size: 62.5%;
+}
+
+html,
+body,
+button,
+input,
+h1,
+h2 {
+  font-family: Pretendard;
+  line-height: normal;
+  font-style: normal;
+  font-weight: 400;
+  word-break: keep-all;
+}
+
+:root {
+  --primary: #6d6afe;
+  --error: #ff5b56;
+  --black: #111322;
+  --white: #ffffff;
+  --gray5: #373740;
+  --gray4: #9fa6b2;
+  --gray3: #ccd5e3;
+  --gray2: #e7effb;
+  --gray1: #f0f6ff;
+}
