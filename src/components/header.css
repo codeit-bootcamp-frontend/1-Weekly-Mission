@@ -1,0 +1,41 @@
+header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--linkbrary-bg);
+}
+
+.nav {
+  display: flex;
+  padding: 3.3rem 20rem;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.header-profile-img {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+@media (max-width: 1199px) {
+  .nav {
+    padding: 2rem 3.2rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav {
+    padding: 2rem 3.2rem;
+    margin: 0 auto;
+  }
+  .email {
+    display: none;
+  }
+}

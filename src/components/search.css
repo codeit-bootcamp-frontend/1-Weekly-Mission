@@ -1,0 +1,22 @@
+input:focus {
+  outline: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1.5rem 1.6rem;
+  border: none;
+  background: #f5f5f5;
+  background-image: url(../assets/images/Search.png);
+  background-repeat: no-repeat;
+  background-position: 1.5rem center;
+  font-size: 1.6rem;
+  padding-left: 4rem;
+  border-radius: 1rem;
+}
+
+@media (max-width: 1199px) {
+  .search-input {
+    width: 100%;
+  }
+}

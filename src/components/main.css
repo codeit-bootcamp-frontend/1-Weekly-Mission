@@ -1,0 +1,16 @@
+.main-section {
+  width: 106rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+@media (max-width: 1199px) {
+  .main-section {
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
