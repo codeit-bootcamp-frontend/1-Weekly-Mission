@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import SearchBar from "./components/SearchBar/SearchBar";
 import CardList from "./components/Card/Card";
+import useAsync from "./hooks/useAsync";
 
 import { getUser, getUserFolder } from "../src/api/api";
 import "./App.style.css";
@@ -13,6 +14,8 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
   const [userProfileImage, setUserProfileImage] = useState("");
 
+  const [isLoading, loadingError, getUserAsync] = useAsync(getUser);
+
   const [folderUserProfileImage, setFolderUserProfileImage] = useState("");
   const [folderName, setFolderName] = useState("");
   const [folderUserName, setFolderUserName] = useState("");
@@ -20,7 +23,10 @@ function App() {
   const [cardList, setCardList] = useState([]);
 
   const loadUser = async () => {
-    const { name: userName, email, profileImageSource } = await getUser();
+    const result = await getUserAsync();
+    if (!result) return;
+
+    const { name: userName, email, profileImageSource } = result;
     setUserName(userName);
     setUserEmail(email);
     setUserProfileImage(profileImageSource);
