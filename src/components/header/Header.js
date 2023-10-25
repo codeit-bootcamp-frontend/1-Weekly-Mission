@@ -1,24 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getfoldersData } from "../../api/folder";
-import styled from "styled-components";
-import "./Header.css";
 
-const ResponSiveHeader = styled.div`
-  background-color: #edf7ff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 2.5rem;
-  padding: 3rem;
-  /* tablet */
-  @media (min-width: 768px) {
-    padding: 5rem;
-  }
-  /* descktop*/
-  @media (min-width: 1200px) {
-    padding: 5rem;
-  }
-`;
+import styles from "./Header.module.css";
+
 export default function Header() {
   const [folderName, setFolderName] = useState("");
   const [profile, setProfile] = useState({});
@@ -49,12 +33,10 @@ export default function Header() {
     return () => {};
   }, [profile]);
   return (
-    <div>
-      <ResponSiveHeader>
-        <img src={personImage} alt={personName} width="200"></img>
-        <p className="Text-codeit">{personName}</p>
-        <p className="Text-favorite">{folderName}</p>
-      </ResponSiveHeader>
+    <div className={styles.container}>
+      <img src={personImage} alt={personName} width="200"></img>
+      <p className={styles.text__codeit}>{personName}</p>
+      <p className={styles.text__favorite}>{folderName}</p>
     </div>
   );
 }
