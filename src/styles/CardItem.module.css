@@ -33,12 +33,12 @@
   padding: 1.5rem 2rem;
 }
 
-.time_diff__container {
+.time_diff {
   color: #666;
   font-size: 1.3rem;
 }
 
-.description__container {
+.description {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -46,7 +46,7 @@
   line-height: 150%;
 }
 
-.createdAt__container {
+.createdAt {
   color: #333;
   font-size: 14px;
 }

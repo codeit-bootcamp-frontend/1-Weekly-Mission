@@ -65,13 +65,13 @@ function CardItem({ item }) {
         <img className={styles.img} src={imageSource === undefined ? logo : imageSource} alt={title} />
       </div>
       <div className={styles.container}>
-        <p className={styles.time_diff__container}>{formatTimeDiff}</p>
-        <p className={styles.description__container}>
+        <p className={styles.time_diff}>{formatTimeDiff}</p>
+        <p className={styles.description}>
           {title}
           <br />
           {description}
         </p>
-        <p className={styles.createdAt__container}>{formattedCreatedAt}</p>
+        <p className={styles.createdAt}>{formattedCreatedAt}</p>
       </div>
     </a>
   );
