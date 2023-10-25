@@ -1,68 +1,21 @@
 @import './reset.css';
 
-header {
-  width: 100%;
-  padding: 20px 200px;
-  background: var(--bg);
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  z-index: 1;
-}
-
-.folder_info {
-  background-color: var(--bg);
-  width: 100%;
-  padding: 80px 0px 60px;
-}
-
-main {
-  margin: 40px 0px;
-}
-
-.content_container {
-  width: 1060px;
-  margin: 0 auto;
-}
-
-footer {
-  background: var(--the-julge-black);
-  width: 100%;
-  height: 160px;
-}
-
 /* Tablet */
 @media (max-width: 1199px) {
-  header {
-    padding: 20px 32px;
-  }
   .blue_btn {
     padding: 16px 20px;
     font-size: 1.8rem;
   }
 }
 
-@media (max-width: 1124px) {
-  .content_container {
-    width: 704px;
-  }
-}
-
 /* Mobile */
 @media (max-width: 767px) {
-  header {
-    padding: 13px 32px;
-  }
   .blue_btn {
     padding: 10px 16px;
     font-size: 1.4rem;
   }
   .login_btn {
     width: 80px;
-  }
-  .folder_info {
-    padding: 80px 0px 40px;
   }
   .content_container {
     width: 100%;

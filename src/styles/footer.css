@@ -1,3 +1,9 @@
+footer {
+  background: var(--the-julge-black);
+  width: 100%;
+  height: 160px;
+}
+
 .footer_container {
   padding: 32px 104px 64px 104px;
   width: 100%;
@@ -41,8 +47,8 @@ footer a {
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1.5fr 1fr;
     grid-template-areas:
-      "p icon"
-      "r .";
+      'p icon'
+      'r .';
     row-gap: 60px;
     column-gap: 30px;
   }

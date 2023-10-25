@@ -1,3 +1,14 @@
+header {
+  width: 100%;
+  padding: 20px 200px;
+  background: var(--bg);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+}
+
 .header_container {
   width: 100%;
   max-width: 1920px;
@@ -44,6 +55,9 @@
 }
 
 @media (max-width: 1199px) {
+  header {
+    padding: 20px 32px;
+  }
   .header_container {
     max-width: 799px;
   }
@@ -53,6 +67,9 @@
 }
 
 @media (max-width: 767px) {
+  header {
+    padding: 13px 32px;
+  }
   .linkbrary_logo {
     height: 18px;
   }

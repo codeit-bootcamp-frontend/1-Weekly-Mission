@@ -5,8 +5,7 @@ import { getResponse } from './api.js';
 
 import Header from './components/Header.js';
 import FolderInfo from './components/FolderInfo.js';
-import SearchBar from './components/SearchBar.js';
-import CardList from './components/CardList.js';
+import SharedContent from './components/SharedContent';
 import Footer from './components/Footer.js';
 import PATH from './constants/path';
 
@@ -47,17 +46,10 @@ function App() {
 
   return (
     <>
-      <header>{user && <Header user={user} />}</header>
-      <div className="folder_info">{folder && <FolderInfo folderData={folder} />}</div>
-      <main>
-        <div className="content_container">
-          <SearchBar />
-          {links && <CardList links={links} />}
-        </div>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Header user={user} />
+      {folder && <FolderInfo folderData={folder} />}
+      <SharedContent links={links} />
+      <Footer />
     </>
   );
 }
