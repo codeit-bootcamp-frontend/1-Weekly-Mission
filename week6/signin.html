@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>로그인</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+  <link rel="stylesheet" href="css/sign.css">
+  <link rel="stylesheet" href="css/media-sign.css">
+  </head>
+  <body>
+    <main>
+      <section id="guide">
+        <a href="index.html">
+          <img src="./images/logo.svg" alt="linkbrary logo">
+        </a>
+        <p>회원이 아니신가요? <a href="signup.html">회원 가입하기</a></p>
+      </section>
+      <div class="sign-box">
+        <form id="form" class="sign-form">
+          <div class="sign-inputs">
+            <div class="sign-input-box">
+              <label class="sign-input-label">이메일</label>
+              <input id="email" class="sign-input" />
+              <p id="email-error-message" class="error-message"></p>
+            </div>
+            <div class="sign-input-box sign-password">
+              <label class="sign-input-label">비밀번호</label>
+              <input id="password" class="sign-input" type="password" />
+              <p id="password-error-message" class="error-message"></p>
+              <button id="password-toggle" class="eye-button" type="button">
+                <img src="./images/eye-off.svg" />
+              </button>
+            </div>
+          </div>
+          <button class="cta" type="submit">로그인</button>
+        </form>
+      <section id="social-login">
+        <p>
+          소셜 로그인
+        </p>
+        <div>
+          <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+            <div class="background-img">
+              <img src="./images/google.png" alt="google background">
+              <div class="logo-img">
+                <img src="./images/google_logo.png" alt="google logo">
+              </div>
+            </div>
+          </a>
+          <a href="https://www.kakaocorp.com/page" target="_blank" rel="noopener noreferrer">
+            <div class="background-img">
+              <img src="./images/kakao.png" alt="kakao background">
+              <div class="logo-img">
+                <img src="./images/kakao_logo.png" alt="kakaotalk logo">
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+      </div>
+    </main>
+    <script type="module" src="js/signin.js"></script>
+  </body>
+</html>
