@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getFolder } from "../api/api";
 import "../styles/landing.css";
 import Search from "../components/Search/Search";
@@ -8,28 +8,18 @@ const Header = () => {
   const [profile, setProfile] = useState("");
   const [userName, setUserName] = useState("");
   const [folderName, setFolderName] = useState("");
-
+  const [fullData, setFullData] = useState([]);
   const getFolderOwner = async () => {
     const temp = await getFolder();
     setProfile(temp?.folder?.owner?.profileImageSource);
     setUserName(temp?.folder?.owner?.name);
     setFolderName(temp?.folder?.name);
+    setFullData(temp?.folder?.links);
   };
 
   useEffect(() => {
     getFolderOwner();
   }, []);
-
-  const [fullData, setFullData] = useState([]);
-
-  const getFullFolderData = useCallback(async () => {
-    const temp = await getFolder();
-    setFullData(temp?.folder?.links);
-  }, []);
-
-  useEffect(() => {
-    getFullFolderData();
-  }, [getFullFolderData]);
 
   console.log(fullData);
 
