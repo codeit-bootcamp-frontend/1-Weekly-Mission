@@ -23,4 +23,8 @@
   /* Linkbrary/body2-regular */
   font-size: 16px;
   font-weight: 400;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }

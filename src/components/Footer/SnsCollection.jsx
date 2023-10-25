@@ -6,16 +6,16 @@ import youtubeIMG from "assets/youtube.svg";
 
 const SnsCollection = ({ className }) => {
   const snsCollection = [
-    ["facebook", facebookIMG],
-    ["twitter", twitterIMG],
-    ["youtube", youtubeIMG],
-    ["instagram", instagramIMG],
+    ["facebook", facebookIMG, 0],
+    ["twitter", twitterIMG, 1],
+    ["youtube", youtubeIMG, 2],
+    ["instagram", instagramIMG, 3],
   ];
 
   return (
     <div className={className}>
       {snsCollection.map((item) => {
-        return <SnsLogo brand={item} />;
+        return <SnsLogo key={item[2]} brand={item} />;
       })}
     </div>
   );

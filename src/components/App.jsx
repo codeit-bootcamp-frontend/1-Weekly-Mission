@@ -11,20 +11,20 @@ const App = ({ children }) => {
   });
 
   const handleUserProfile = async () => {
-    let userProfile;
     try {
+      let userProfile = await getUsers();
+      const valuesProfile = Object.values(userProfile);
+      if (!userProfile || valuesProfile.length < 4) return;
       setIsLogin(true);
-      userProfile = await getUsers();
+      const { email, profileImageSource } = userProfile;
+      setUserData((prevData) => ({
+        ...prevData,
+        email,
+        imageSource: profileImageSource,
+      }));
     } catch (err) {
-      console.log(err);
       setIsLogin(false);
     }
-    const { email, profileImageSource } = userProfile;
-    setUserData((prevData) => ({
-      ...prevData,
-      email,
-      imageSource: profileImageSource,
-    }));
   };
 
   useEffect(() => {

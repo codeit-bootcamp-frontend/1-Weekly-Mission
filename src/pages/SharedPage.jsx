@@ -12,27 +12,26 @@ const SharedPage = () => {
   });
 
   const handleFolderInfo = async () => {
-    let folderInfo;
     try {
-      folderInfo = await getFolder();
+      let folderInfo = await getFolder();
+      const {
+        folder: { name, links, owner },
+      } = folderInfo;
+      setFolderData((prevData) => ({
+        ...prevData,
+        folderName: name,
+        ownerName: owner["name"],
+        ownerImage: owner["profileImageSource"],
+        datas: links,
+      }));
     } catch (err) {
       console.log(err);
     }
-    const {
-      folder: { name, links, owner },
-    } = folderInfo;
-    setFolderData((prevData) => ({
-      ...prevData,
-      folderName: name,
-      ownerName: owner["name"],
-      ownerImage: owner["profileImageSource"],
-      datas: links,
-    }));
   };
 
   useEffect(() => {
     handleFolderInfo();
-  });
+  }, []);
 
   return (
     <>

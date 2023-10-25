@@ -1,11 +1,8 @@
-import { useWindowSizeCustom } from "hooks/useWindowSize";
 import "./LoginButton.css";
 
 const LoginButton = ({ className, isLogin, data }) => {
   const { email, imageSource } = data;
   const [cta, ctaShort] = className;
-
-  const { width } = useWindowSizeCustom();
 
   return (
     <>
@@ -18,7 +15,7 @@ const LoginButton = ({ className, isLogin, data }) => {
               alt="프로필 사진"
             ></img>
           </div>
-          {width > 767 && <span className="loginEmail">{email}</span>}
+          <span className="loginEmail">{email}</span>
         </div>
       ) : (
         <a className={`${cta} ${ctaShort}`} href="/">

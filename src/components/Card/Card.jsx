@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { timeForToday } from "utils/moment";
 import kebab from "assets/kebab.svg";
 import noImageIMG from "assets/noImage.svg";
@@ -7,7 +7,7 @@ import chosenStarIMG from "assets/chosenStar.svg";
 import "./Card.css";
 
 const Card = ({ data, onClick }) => {
-  const imgRef = useRef();
+  // const imgRef = useRef();
   const [star, setStar] = useState(false);
 
   const handleCardClick = () => {
@@ -19,15 +19,15 @@ const Card = ({ data, onClick }) => {
     return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
   };
 
-  const handleMouseEnter = () => {
-    const $imgNode = imgRef.current;
-    $imgNode.setAttribute("style", "transform: scale(1.3)");
-  };
+  // const handleMouseEnter = () => {
+  //   const $imgNode = imgRef.current;
+  //   $imgNode.setAttribute("style", "transform: scale(1.3)");
+  // };
 
-  const handleMouseLeave = () => {
-    const $imgNode = imgRef.current;
-    $imgNode.removeAttribute("style");
-  };
+  // const handleMouseLeave = () => {
+  //   const $imgNode = imgRef.current;
+  //   $imgNode.removeAttribute("style");
+  // };
 
   const handleKebabClick = (e) => {
     e.stopPropagation();
@@ -46,25 +46,16 @@ const Card = ({ data, onClick }) => {
     <div
       className="cardContainer"
       onClick={handleCardClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      // onMouseEnter={handleMouseEnter}
+      // onMouseLeave={handleMouseLeave}
     >
       <div className="cardImgBox">
-        {data.imageSource ? (
-          <img
-            className="cardImg"
-            ref={imgRef}
-            src={data.imageSource}
-            alt="카드 이미지"
-          />
-        ) : (
-          <img
-            className="cardImg"
-            ref={imgRef}
-            src={noImageIMG}
-            alt="이미지 없음"
-          />
-        )}
+        <img
+          className="cardImg"
+          // ref={imgRef}
+          src={data.imageSource ? data.imageSource : noImageIMG}
+          alt={data.imageSource ? "카드 이미지" : "이미지 없음"}
+        />
       </div>
       <div className="infoContainer">
         <div className="additionalInfo">
