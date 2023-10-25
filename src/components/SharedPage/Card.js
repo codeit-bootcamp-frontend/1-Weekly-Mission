@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./card.css";
+import defaultCardImg from "../../assets/images/defaultCardImg.png";
 
 function formatDate(val) {
   const date = new Date(val);
@@ -49,13 +50,15 @@ function redirectToCardPage(url) {
 }
 
 function Card({ item }) {
+  const { url, imageSource, createdAt, description } = item;
+  const imgSrc = imageSource ? imageSource : defaultCardImg;
   return (
-    <div className="card" onClick={() => redirectToCardPage(item.url)}>
-      <img className="cardImg" src={item.imageSource} alt="카드폼 이미지" />
+    <div className="card" onClick={() => redirectToCardPage(url)}>
+      <img className="cardImg" src={imgSrc} alt="카드폼 이미지" />
       <div className="cardContent">
-        <p id="createTime">{calculateTimeAgo(item.createdAt)}</p>
-        <p id="cardDescription">{item.description}</p>
-        <p id="cardDate">{formatDate(item.createdAt)}</p>
+        <p id="createTime">{calculateTimeAgo(createdAt)}</p>
+        <p id="cardDescription">{description}</p>
+        <p id="cardDate">{formatDate(createdAt)}</p>
       </div>
     </div>
   );
