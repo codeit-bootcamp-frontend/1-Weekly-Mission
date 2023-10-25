@@ -1,7 +1,7 @@
-import "./css/header.css";
-import logoImg from "./images/logo.svg";
+import "../css/header.css";
+import logoImg from "../images/logo.svg";
 import { useState, useEffect } from "react";
-import { getLoginData } from "./api";
+import { getLoginData } from "../api";
 
 function Header() {
   const [hasData, setHasData] = useState(false);

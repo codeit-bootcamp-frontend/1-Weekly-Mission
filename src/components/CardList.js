@@ -1,7 +1,7 @@
 import Card from "./Card.js";
 import { useState, useEffect } from "react";
-import { getFolderData } from "./api";
-import searchImg from "./images/Search.svg";
+import { getFolderData } from "../api.js";
+import searchImg from "../images/Search.svg";
 
 function CardList() {
   const [hasData, setHasData] = useState(false);

@@ -1,6 +1,6 @@
-import "./css/banner.css";
+import "../css/banner.css";
 import { useState, useEffect } from "react";
-import { getFolderData } from "./api";
+import { getFolderData } from "../api";
 
 function Banner() {
   const [hasData, setHasData] = useState(false);
