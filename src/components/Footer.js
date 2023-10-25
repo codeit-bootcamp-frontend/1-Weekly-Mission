@@ -10,8 +10,8 @@ function Footer() {
       <div className="footer-box">
         <div className="copyright">©codeit - 2023</div>
         <div className="footer-links">
-          <a href="/privacy/index.html">Privacy</a>
-          <a href="/faq/index.html">FAQ</a>
+          <a href="/">Privacy Policy</a>
+          <a href="/">FAQ</a>
         </div>
         <div className="sns">
           <a href="https://www.facebook.com/" target="_blank">
