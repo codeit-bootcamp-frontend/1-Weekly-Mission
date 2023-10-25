@@ -2,7 +2,7 @@ import React from "react";
 import "./CardStyles.css";
 import { timeDifference } from "../../utils/timeUtils";
 
-const Card = ({ link = {} }) => {
+const Card = ({ link }) => {
   if (!link) {
     return null;
   }
