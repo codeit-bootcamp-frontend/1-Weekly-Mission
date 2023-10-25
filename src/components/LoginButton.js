@@ -3,21 +3,14 @@ import styles from "../styles/LoginButton.module.css";
 import ProfileInfo from "./ProfileInfo";
 import getUser from "./../api/getUser";
 import classnames from "classnames";
+import useAsync from "../hooks/useAsync";
 
 const LoginButton = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [isLoading, getUserAsync] = useAsync(getUser);
 
   const handleButtonClick = async (e) => {
-    try {
-      setIsLoading(true);
-      e.preventDefault();
-      setUserData(await getUser());
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
+    setUserData(await getUserAsync());
   };
 
   return (
