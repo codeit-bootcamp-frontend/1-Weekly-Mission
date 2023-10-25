@@ -8,7 +8,7 @@ import SearchBar from "../components/SearchBar";
 const FolderPage = () => {
   return (
     <div>
-      <Navbar />
+      <Navbar isFolderPage={true} />
       <LinkInput />
       <SearchBar />
       <CardList isFolderPage={true} />

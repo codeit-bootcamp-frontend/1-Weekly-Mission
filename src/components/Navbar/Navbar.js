@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import Logo from "../../assets/icons/Logo";
 
-const Navbar = () => {
+const Navbar = ({ isFolderPage }) => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="header">
+    <header className={`header ${isFolderPage ? "folder-page" : "share-page"}`}>
       <div className="header-content">
         <a href="/">
           <Logo className="logo" alt="logo" />

@@ -1,9 +1,6 @@
 header {
   display: flex;
   justify-content: center;
-  position: fixed;
-  z-index: 1;
-  width: 100%;
   background: var(--color-bg);
 }
 
@@ -54,6 +51,12 @@ header {
   color: var(--color-grey-light);
   cursor: pointer;
   border-radius: 8px;
+}
+
+header.share-page {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
 }
 
 /* PC (1124px 이상) */
