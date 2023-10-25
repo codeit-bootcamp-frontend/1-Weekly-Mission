@@ -1,8 +1,8 @@
 import "./Header.style.css";
 import "../../styles/reset.css";
 
-function Header({ folderUserProfile, folderName, folderUserName }) {
-  if (!folderUserName) {
+function Header({ folderOwnerProfile, folderName, folderOwnerName }) {
+  if (!folderOwnerName) {
     return (
       <header>
         <div>
@@ -20,13 +20,13 @@ function Header({ folderUserProfile, folderName, folderUserName }) {
         {/* 프사 */}
         <div>
           <img
-            src={folderUserProfile}
+            src={folderOwnerProfile}
             alt="profile"
             className="folder-profile-img"
           />
         </div>
         {/* 이름 */}
-        <div className="folder-user-name">{folderUserName}</div>
+        <div className="folder-user-name">{folderOwnerName}</div>
         {/* 즐겨찾기 */}
         <div className="folder-name">{folderName}</div>
       </div>

@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import CardList from "./components/Card/Card";
 import useAsync from "./hooks/useAsync";
 
-import { getUser, getUserFolder } from "../src/api/api";
+import { getUser, getFolder } from "../src/api/api";
 import "./App.style.css";
 
 const INITIAL_USER = {
@@ -17,21 +17,17 @@ const INITIAL_USER = {
 
 const INITIAL_FOLDER = {
   folderName: "",
-  folderUserName: "",
-  folderUserProfileImage: "",
+  folderOwnerrName: "",
+  folderOwnerProfileImage: "",
 };
 
 function App() {
   const [userValues, setUserValues] = useState(INITIAL_USER);
+  const [folderValues, setFolderValues] = useState(INITIAL_FOLDER);
 
   const [isUserLoading, userLoadingError, getUserAsync] = useAsync(getUser);
   const [isFolderLoading, folderLoadingError, getFolderAsync] =
-    useAsync(getUserFolder);
-
-  const [folderValues, setFolderValues] = useState(INITIAL_FOLDER);
-  // const [folderUserProfileImage, setFolderUserProfileImage] = useState("");
-  // const [folderName, setFolderName] = useState("");
-  // const [folderUserName, setFolderUserName] = useState("");
+    useAsync(getFolder);
 
   const [cardList, setCardList] = useState([]);
 
@@ -54,14 +50,11 @@ function App() {
     setFolderValues((prevValues) => {
       const newValues = {
         folderName: folder.name,
-        folderUserName: folder.owner.name,
-        folderUserProfileImage: folder.owner.profileImageSource,
+        folderOwnerName: folder.owner.name,
+        folderOwnerProfileImage: folder.owner.profileImageSource,
       };
       return { ...prevValues, ...newValues };
     });
-    // setFolderUserProfileImage(folder.owner.profileImageSource);
-    // setFolderName(folder.name);
-    // setFolderUserName(folder.owner.name);
     setCardList(folder.links);
   };
 
@@ -79,9 +72,9 @@ function App() {
       {userLoadingError?.message && <span>{userLoadingError.message}</span>}
 
       <Header
-        folderUserProfile={folderValues.folderUserProfileImage}
+        folderOwnerProfile={folderValues.folderOwnerProfileImage}
         folderName={folderValues.folderName}
-        folderUserName={folderValues.folderUserName}
+        folderOwnerName={folderValues.folderOwnerName}
       />
 
       <section className="section">
