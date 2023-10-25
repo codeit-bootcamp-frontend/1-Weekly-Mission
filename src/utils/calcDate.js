@@ -2,40 +2,34 @@ function calcDate(value) {
   const now = new Date(); // 현재 날짜 및 시간
   const createdDate = new Date(value);
 
-  let minutes = (now - createdDate) / 1000 / 60;
-  if (minutes < 2) {
-    return `1 minute ago`;
-  } else if (minutes < 60) {
-    return `${Math.floor(minutes)} minutes ago`;
-  }
+  const helpCalc = (time, condition, str) => {
+    if (time < 2) {
+      return `1 ${str} ago`;
+    } else if (time < condition) {
+      return `${Math.floor(time)} ${str}s ago`;
+    }
+    return "";
+  };
 
-  let hours = minutes / 60;
-  if (hours < 2) {
-    return `1 hour ago`;
-  } else if (hours < 24) {
-    return `${Math.floor(hours)} hours ago`;
-  }
+  let minute = (now - createdDate) / 1000 / 60;
+  let str = helpCalc(minute, 60, "minute");
+  if (str) return str;
 
-  let days = hours / 24;
-  if (days < 2) {
-    return `1 day ago`;
-  } else if (days < 31) {
-    return `${Math.floor(days)} days ago`;
-  }
+  let hour = minute / 60;
+  str = helpCalc(hour, 24, "hour");
+  if (str) return str;
 
-  let months = days / 31;
-  if (months < 2) {
-    return `1 month ago`;
-  } else if (months < 12) {
-    return `${Math.floor(months)} months ago`;
-  }
+  let day = hour / 24;
+  str = helpCalc(day, 31, "day");
+  if (str) return str;
 
-  let years = months / 12;
-  if (years < 2) {
-    return `1 year ago`;
-  } else {
-    return `${Math.floor(years)} years ago`;
-  }
+  let month = day / 31;
+  str = helpCalc(month, 12, "month");
+  if (str) return str;
+
+  let year = month / 12;
+  str = helpCalc(year, 100, "year");
+  if (str) return str;
 }
 
 export default calcDate;
