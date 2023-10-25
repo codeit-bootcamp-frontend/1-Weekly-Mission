@@ -1,8 +1,6 @@
 import "../styles/ProfileInfo.css";
 
-const ProfileInfo = ({ userData }) => {
-  const { profileImageSource, email } = userData;
-
+const ProfileInfo = ({ profileImageSource, email }) => {
   return (
     <div className="ProfileInfo">
       <img className="ProfileInfo__profile-img" src={profileImageSource} alt="프로필 아이콘" />

@@ -21,8 +21,8 @@ const LoginButton = () => {
 
   return (
     <div className="LoginButton">
-      {userData ? (
-        <ProfileInfo userData={userData} />
+      {userData?.email ? (
+        <ProfileInfo email={userData.email} profileImageSource={userData.profileImageSource} />
       ) : (
         <button disabled={isLoading} className="cta cta-short" onClick={handleButtonClick}>
           로그인
