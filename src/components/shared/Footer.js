@@ -1,9 +1,9 @@
-import '../styles/footer.css';
+import '../../styles/footer.css';
 
-import facebookIcon from '../assets/images/akar-icons_facebook-fill.svg';
-import twitterIcon from '../assets/images/akar-icons_twitter-fill.svg';
-import youtubeIcon from '../assets/images/akar-icons_youtube-fill.svg';
-import instagramIcon from '../assets/images/ant-design_instagram-filled.svg';
+import facebookIcon from '../../assets/images/akar-icons_facebook-fill.svg';
+import twitterIcon from '../../assets/images/akar-icons_twitter-fill.svg';
+import youtubeIcon from '../../assets/images/akar-icons_youtube-fill.svg';
+import instagramIcon from '../../assets/images/ant-design_instagram-filled.svg';
 
 const FACEBOOK_URL = 'https://www.facebook.com/';
 const TWITTER_URL = 'https://twitter.com/';

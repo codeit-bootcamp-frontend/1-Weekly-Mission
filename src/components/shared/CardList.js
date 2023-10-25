@@ -1,7 +1,7 @@
-import '../styles/cardlist.css';
+import '../../styles/cardlist.css';
 import { Fragment } from 'react';
-import TimeFlow from './utils/TimeFlow.js';
-import defaultImg from '../assets/images/no-Image.svg';
+import TimeFlow from '../../utils/TimeFlow.js';
+import defaultImg from '../../assets/images/no-Image.svg';
 
 function formatDate(value) {
   const date = new Date(value);
@@ -24,7 +24,10 @@ function Card({ imageSource = defaultImg, title, description, createdAt, url }) 
   );
 }
 
-function CardList({ links = [] }) {
+function CardList({ folder = null }) {
+  const { folder: folderData } = folder;
+  const { links } = folderData;
+
   return (
     <div className="card_list">
       {links.map((link) => (
