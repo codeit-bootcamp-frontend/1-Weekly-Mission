@@ -1,0 +1,31 @@
+.search-form {
+  display: flex;
+  align-items: center;
+  width: 32.5rem;
+  padding: 1.3rem 1.6rem;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  gap: 0.6rem;
+
+  @media (min-width: 768px) {
+    width: 70.4rem;
+    padding: 1.5rem 1.6rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 106rem;
+  }
+}
+
+.search-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 0;
+}

@@ -1,0 +1,18 @@
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.user-profile-image {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 70%;
+  overflow: hidden;
+}
+
+.user-profile-email {
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
