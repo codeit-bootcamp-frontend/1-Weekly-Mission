@@ -59,7 +59,9 @@ function CardItem({ item }) {
 
   return (
     <a className="CardItem" href={url} target="_blank" rel="noopener noreferrer">
-      <img className="CardItem__img" src={imageSource === undefined ? logo : imageSource} alt={title} />
+      <div className="CardItem__container__img">
+        <img className="CardItem__img" src={imageSource === undefined ? logo : imageSource} alt={title} />
+      </div>
       <div className="CardItem__container">
         <p className="CardItem__container__time-diff">{timeDifference}</p>
         <p className="CardItem__container__description">

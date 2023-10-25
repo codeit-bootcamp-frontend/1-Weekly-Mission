@@ -7,17 +7,23 @@
   height: 33.4rem;
   box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.08);
   border-radius: 1.5rem;
-  transition: transform 0.2s;
 }
 
-.CardItem:hover {
-  transform: scale(1.3);
+.CardItem__container__img {
+  height: 60%;
+  overflow: hidden;
 }
 
 .CardItem__img {
   width: 100%;
-  height: 60%;
+  height: 100%;
+
   object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.CardItem__img:hover {
+  transform: scale(1.3);
 }
 
 .CardItem__container {
