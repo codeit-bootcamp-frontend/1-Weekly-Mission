@@ -1,0 +1,18 @@
+.Nav {
+  height: 25px;
+  padding: 32px 200px;
+  background: var(--linkbrary-bg);
+  position: sticky;
+  top : 0px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  width: 133px;
+  height: 24px;
+}
