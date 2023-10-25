@@ -13,6 +13,7 @@ const IMAGES = {
   logo: require("./logo.svg").default,
   emptyStar: require("./emptyStar.svg").default,
   filledStar: require("./filledStar.svg").default,
+  link: require("./link.svg").default,
   hero: require("./hero.png"),
   image1: require("./image1.png"),
   image2: require("./image2.png"),
