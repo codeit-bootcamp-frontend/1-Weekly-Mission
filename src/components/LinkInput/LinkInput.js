@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LinkInput.css";
+import Link from "../../assets/icons/Link";
 
 const LinkInput = () => {
   const [link, setLink] = useState("");
@@ -9,19 +10,21 @@ const LinkInput = () => {
   };
 
   const handleAddLink = () => {
-    console.log("Link added:", link);
     setLink("");
   };
 
   return (
-    <div className="link-input-container">
-      <input
-        type="text"
-        placeholder="링크를 추가해 보세요."
-        value={link}
-        onChange={handleLinkChange}
-      />
-      <button onClick={handleAddLink}>추가하기</button>
+    <div className="link-add-form">
+      <div>
+        <Link />
+        <input
+          type="text"
+          placeholder="링크를 추가해 보세요."
+          value={link}
+          onChange={handleLinkChange}
+        />
+        <button onClick={handleAddLink}>추가하기</button>
+      </div>
     </div>
   );
 };
