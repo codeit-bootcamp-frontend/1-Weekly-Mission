@@ -8,7 +8,7 @@ import { getFolder } from "../../api/api";
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
   const [user, setUser] = useState();
-  const [name, setName] = useState("");
+  const [folderName, setFolderName] = useState("");
   const [isLoading, error, getFolderAsync] = useAsync(getFolder);
 
   const handleFolder = useCallback(async () => {
@@ -19,7 +19,7 @@ const Folder = () => {
 
     setCardData(folder.links);
     setUser(folder.owner);
-    setName(folder.name);
+    setFolderName(folder.name);
   }, [getFolderAsync]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const Folder = () => {
             alt="profileImg"
           />
           <div id="userName">{user?.name}</div>
-          <div id="folderName">{name}</div>
+          <div id="folderName">{folderName}</div>
         </div>
       </div>
       <div className="section" style={{ background: "#fff" }}>
