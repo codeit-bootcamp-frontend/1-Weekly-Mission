@@ -5,14 +5,14 @@ import Twitter from '../assets/icon/twitter.svg';
 import Youtube from '../assets/icon/youtube.svg';
 import './footer.css';
 
-function Footer() {
-  const socialList = [
-    { id: 0, href: 'https://www.facebook.com/', imgSrc: Facebook, alt: '페이스북 아이콘' },
-    { id: 1, href: 'https://twitter.com/', imgSrc: Twitter, alt: '트위터 아이콘' },
-    { id: 2, href: 'https://www.youtube.com/', imgSrc: Youtube, alt: '유튜브 아이콘' },
-    { id: 3, href: 'https://www.instagram.com/', imgSrc: Instagram, alt: '인스타그램 아이콘' },
-  ];
+const SOCIAL_LIST = [
+  { id: 0, href: 'https://www.facebook.com/', imgSrc: Facebook, alt: '페이스북 아이콘' },
+  { id: 1, href: 'https://twitter.com/', imgSrc: Twitter, alt: '트위터 아이콘' },
+  { id: 2, href: 'https://www.youtube.com/', imgSrc: Youtube, alt: '유튜브 아이콘' },
+  { id: 3, href: 'https://www.instagram.com/', imgSrc: Instagram, alt: '인스타그램 아이콘' },
+];
 
+function Footer() {
   return (
     <footer>
       <div className="footer-background">
@@ -23,7 +23,7 @@ function Footer() {
             <a href="pages/faq.html">FAQ</a>
           </div>
           <div className="social">
-            {socialList.map((social) => (
+            {SOCIAL_LIST.map((social) => (
               <a key={social.id} href={social.href} target="noopener noreferrer">
                 <img src={social.imgSrc} alt={social.alt} />
               </a>

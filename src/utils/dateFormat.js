@@ -1,4 +1,4 @@
-export function dateTime(createdAt) {
+export function changeDateTime(createdAt) {
   function leapYear(year) {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   }
@@ -49,7 +49,7 @@ export function dateTime(createdAt) {
   }
 }
 
-export function date(createdAt) {
+export function changeDate(createdAt) {
   const createDate = new Date(createdAt);
 
   const year = createDate.getFullYear();

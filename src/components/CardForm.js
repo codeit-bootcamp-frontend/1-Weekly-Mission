@@ -1,11 +1,11 @@
 import React from 'react';
 import EmptyImg from '../assets/icon/emptyImg.svg';
-import { date, dateTime } from '../utils/dateFormat';
+import { changeDate, changeDateTime } from '../utils/dateFormat';
 import styles from './cardForm.module.css';
 
 function CardForm({ createdAt, content, imgUrl, url }) {
-  const formatDate = date(createdAt);
-  const formatTime = dateTime(createdAt);
+  const formatDate = changeDate(createdAt);
+  const formatTime = changeDateTime(createdAt);
 
   return (
     <div className={styles.wrapper}>
