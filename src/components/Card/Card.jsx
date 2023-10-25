@@ -17,7 +17,7 @@ function Card({ data }) {
   };
 
   return (
-    <S.CardContainer href={url} target='_blank'>
+    <S.CardContainer href={url} target='_blank' rel='noreferrer noopener'>
       <S.CardImgContainer>
         <S.CardImg src={imageSource ?? DEFAULT_IMAGE} alt='링크 이미지' />
       </S.CardImgContainer>
