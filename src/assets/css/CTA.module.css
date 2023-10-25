@@ -1,9 +1,10 @@
 .cta {
   text-align: center;
+  width: 8rem;
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
   background: var(--gra-purpleblue-to-skyblue);
-  color: var(--grey-light);
+  color: var(--gray-light);
   font-size: 1.125rem;
   font-weight: 600;
 }
