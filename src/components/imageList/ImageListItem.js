@@ -1,12 +1,13 @@
 import React from "react";
 import Card from "../card/Card";
 import styles from "./ImageListItem.module.css";
-import { changeDateFormat, compareNowAndAfter } from "../../utils";
+import { parseDatestring, compareNowAndAfter } from "../../utils";
 
 export default function ImageListItem({ item }) {
   const { createdAt, url, title, description, imageSource } = item;
-  const currentData = changeDateFormat(new Date());
-  const targetData = changeDateFormat(createdAt);
+  const currentData = parseDatestring(new Date());
+  const targetData = parseDatestring(createdAt);
+  console.log(currentData, targetData);
   //const result = compareNowAndAfter(currentData, targetData);
   const { year, month, day } = targetData;
 

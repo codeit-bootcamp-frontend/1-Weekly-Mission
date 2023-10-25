@@ -1,4 +1,4 @@
-export const changeDateFormat = (targetDate) => {
+export const parseDatestring = (targetDate) => {
   const changedDate = new Date(targetDate);
   const year = changedDate.getFullYear();
   const month = changedDate.getMonth() + 1;

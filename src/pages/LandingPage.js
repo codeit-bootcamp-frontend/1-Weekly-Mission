@@ -1,34 +1,24 @@
-import React, { useState, useEffect } from "react";
-
-import { ReactComponent as Searchbar } from "../assets/imgs/searchbar.svg";
-import { getfoldersData } from "../api/folder";
+import React, { useEffect, useState } from "react";
+import "react-loading-skeleton/dist/skeleton.css";
+import { ReactComponent as Searchbar } from "../assets/images/searchbar.svg";
 import ImageList from "../components/imageList/ImageList";
+import useFetch from "../hooks/useFetch";
+import ItemSkeleton from "../components/skeleton/ItemSkeleton";
 import "./LandingPage.css";
+import LocaleContext from "../contexts/LocaleContext";
 
 export default function LandingPage() {
-  const [items, setItems] = useState([]);
+  const response = useFetch("https://bootcamp-api.codeit.kr/api/sample/folder");
+  const [data, isLoading] = response;
 
-  useEffect(() => {
-    async function fetchingFolder() {
-      const { folder } = await getfoldersData();
-      const { links } = folder;
-      if (!isLoading) {
-        setItems(links);
-      }
-    }
-
-    let isLoading = false;
-    fetchingFolder();
-    return () => {
-      isLoading = true;
-    };
-  }, []);
-
-  console.log(items);
   return (
     <div>
       <Searchbar />
-      <ImageList items={items} />
+      {!isLoading ? (
+        <ImageList items={data} isLoading={isLoading} />
+      ) : (
+        <ItemSkeleton />
+      )}
     </div>
   );
 }
