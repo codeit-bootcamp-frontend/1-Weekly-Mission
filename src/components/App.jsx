@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import { Navigator, Footer } from "components";
 import { getUsers } from "utils/api";
 import "./App.css";
 
-const App = ({ children }) => {
+const App = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
@@ -38,7 +39,7 @@ const App = ({ children }) => {
         isLogin={isLogin}
         data={userData}
       />
-      {children}
+      <Outlet />
       <Footer />
     </>
   );

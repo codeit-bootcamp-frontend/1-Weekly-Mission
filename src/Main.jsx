@@ -5,11 +5,11 @@ import { SharedPage } from "pages";
 function Main() {
   return (
     <BrowserRouter>
-      <App>
-        <Routes>
+      <Routes>
+        <Route path="/" element={<App />}>
           <Route path="shared" element={<SharedPage />}></Route>
-        </Routes>
-      </App>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
