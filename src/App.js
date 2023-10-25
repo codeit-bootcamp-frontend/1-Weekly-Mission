@@ -9,10 +9,20 @@ import useAsync from "./hooks/useAsync";
 import { getUser, getUserFolder } from "../src/api/api";
 import "./App.style.css";
 
+const INITIAL_USER = {
+  userName: "",
+  userEmail: "",
+  userProfileImage: "",
+};
+
+const INITIAL_FOLDER = {
+  folderName: "",
+  folderUserName: "",
+  folderUserProfileImage: "",
+};
+
 function App() {
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userProfileImage, setUserProfileImage] = useState("");
+  const [userValues, setUserValues] = useState(INITIAL_USER);
 
   const [isUserLoading, userLoadingError, getUserAsync] = useAsync(getUser);
   const [isFolderLoading, folderLoadingError, getFolderAsync] =
@@ -30,9 +40,14 @@ function App() {
     if (!folderResult || !userResult) return;
 
     const { name: userName, email, profileImageSource } = userResult;
-    setUserName(userName);
-    setUserEmail(email);
-    setUserProfileImage(profileImageSource);
+    setUserValues((prevValues) => {
+      const newValues = {
+        userName: userName,
+        userEmail: email,
+        userProfileImage: profileImageSource,
+      };
+      return { ...prevValues, ...newValues };
+    });
 
     const { folder } = folderResult;
     setFolderUserProfileImage(folder.owner.profileImageSource);
@@ -47,7 +62,10 @@ function App() {
 
   return (
     <>
-      <Nav userEmail={userEmail} userProfile={userProfileImage} />
+      <Nav
+        userEmail={userValues.userEmail}
+        userProfile={userValues.userProfileImage}
+      />
       {isUserLoading && <p> 로그인 중...</p>}
       {userLoadingError?.message && <span>{userLoadingError.message}</span>}
 
