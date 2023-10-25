@@ -9,7 +9,7 @@
   transition: 0.5s;
 }
 
-.searchbar-inner {
+.searchbarInner {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
   width: 100%;
 }
 
-.searchbar-input {
+.searchbarInput {
   background-color: transparent;
   border: none;
   color: var(--Text, #666);
@@ -29,17 +29,17 @@
   line-height: 2.4rem;
 }
 
-.searchbar-input:active {
+.searchbarInput:active {
   border: none;
   outline: none;
 }
 
-.searchbar-input:focus {
+.searchbarInput:focus {
   border: none;
   outline: none;
 }
 
-.searchbar-delete {
+.searchbarDelete {
   cursor: pointer;
 }
 

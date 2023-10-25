@@ -11,11 +11,11 @@
   font-weight: 600;
 }
 
-.cta-short {
+.ctaShort {
   width: 12.8rem;
 }
 
-.cta-long {
+.ctaLong {
   width: 35rem;
 }
 
@@ -26,13 +26,13 @@
     font-size: 1.4rem;
   }
 
-  .cta-short {
+  .ctaShort {
     width: 8rem;
     padding: 1rem 1.6rem;
     gap: 1rem;
   }
 
-  .cta-long {
+  .ctaLong {
     width: 20rem;
   }
 }

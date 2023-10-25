@@ -11,25 +11,25 @@
   z-index: 2;
 }
 
-.nav-box {
+.navBox {
   width: 152rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.profile-box {
+.profileBox {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.profile-image {
+.profileImage {
   width: 2.8rem;
   border-radius: 100%;
 }
 
-.profile-collapse {
+.profileCollapse {
   color: var(--linkbrary-gray-100, #373740);
   margin-left: 0.6rem;
   font-size: 1.4rem;
@@ -44,7 +44,7 @@
     padding: 0;
   }
 
-  .nav-box {
+  .navBox {
     width: 79.9rem;
     padding: 0 min(32px);
   }
@@ -56,16 +56,16 @@
     padding: 0;
   }
 
-  .nav-box {
+  .navBox {
     width: 100%;
     padding: 0 min(32px);
   }
 
-  .nav-logo {
+  .navLogo {
     width: 8.9rem;
   }
 
-  .profile-collapse {
+  .profileCollapse {
     display: none;
   }
 }

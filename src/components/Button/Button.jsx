@@ -1,9 +1,9 @@
-import "./Button.css";
+import styles from "./Button.module.css";
 
 const Button = ({ className, link, text }) => {
-  const buttonClassName = `cta ${className}`;
+  const buttonClassName = className;
   return (
-    <a className={buttonClassName} href={link}>
+    <a className={`${styles.cta} ${styles[buttonClassName]}`} href={link}>
       <span>{text}</span>
     </a>
   );

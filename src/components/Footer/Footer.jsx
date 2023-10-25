@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import IMAGES from "../../assets/images.js";
-import "./Footer.css";
+import styles from "./Footer.module.css";
 
 const snsLinks = {
   facebook: "https://www.facebook.com/",
@@ -11,7 +11,7 @@ const snsLinks = {
 };
 const FooterLink = ({ link, text }) => {
   return (
-    <Link to={link} className="footer-link">
+    <Link to={link} className={styles.footerLink}>
       {text}
     </Link>
   );
@@ -20,21 +20,21 @@ const FooterLink = ({ link, text }) => {
 const SNSImageLink = ({ src, name }) => {
   return (
     <Link to={snsLinks[name]} target="_blank" rel="noopener noreferrer">
-      <img className="sns-icon" src={src} alt={name} height={20} />
+      <img className={styles.snsIcon} src={src} alt={name} height={20} />
     </Link>
   );
 };
 
 const Footer = () => {
   return (
-    <footer id="footer">
-      <div className="footer-box">
-        <span className="copyright">©codeit - 2023</span>
-        <div className="footer-links">
+    <footer id={styles.footer}>
+      <div className={styles.footerBox}>
+        <span className={styles.copyright}>©codeit - 2023</span>
+        <div className={styles.footerLinks}>
           <FooterLink link="/privacy.html" text="Privacy Policy" />
           <FooterLink link="/faq.html" text="FAQ" />
         </div>
-        <div className="sns">
+        <div className={styles.sns}>
           <SNSImageLink src={IMAGES.facebook} name="facebook" />
           <SNSImageLink src={IMAGES.twitter} name="twitter" />
           <SNSImageLink src={IMAGES.youtube} name="youtube" />

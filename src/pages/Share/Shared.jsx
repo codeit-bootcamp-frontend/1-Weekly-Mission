@@ -5,7 +5,7 @@ import {
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Share from "../../containers/Share/Share";
-import "./Shared.css";
+import styles from "./Shared.module.css";
 
 const Shared = () => {
   const userProfile = useFetchUserProfileSample();
@@ -23,7 +23,7 @@ const Shared = () => {
   if (userData && folderData) {
     return (
       <>
-        <header className="shared-header">
+        <header className={styles.sharedHeader}>
           <Navbar userData={userData} />
         </header>
         <Share shareData={folderData} />

@@ -1,4 +1,4 @@
-.owner-container {
+.ownerContainer {
   display: flex;
   width: 100%;
   padding: 2rem 0 6rem;
@@ -8,20 +8,20 @@
   background: var(--linkbrary-bg, #f0f6ff);
 }
 
-.owner-inner-container {
+.ownerInnerContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
 
-.owner-image {
+.ownerImage {
   height: 6rem;
   border-radius: 4.7rem;
   object-fit: cover;
 }
 
-.owner-ownername {
+.ownerName {
   color: var(--text-color-light-mode, #000);
   font-size: 1.6rem;
   font-style: normal;
@@ -29,7 +29,7 @@
   line-height: 2.4rem;
 }
 
-.owner-foldername {
+.ownerFolderName {
   color: #000;
   text-align: center;
   vertical-align: middle;
@@ -40,7 +40,7 @@
   line-height: normal;
 }
 
-.shared-frame {
+.sharedFrame {
   display: flex;
   flex-direction: column;
   align-items: center;

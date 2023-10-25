@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import IMAGES from "../../assets/images.js";
-import "./Searchbar.css";
+import styles from "./Searchbar.module.css";
 
 const Searchbar = () => {
   const [searchText, setSearchText] = useState("");
@@ -14,13 +14,13 @@ const Searchbar = () => {
   };
 
   return (
-    <div className="searchbar">
-      <div className="searchbar-inner">
+    <div className={styles.searchbar}>
+      <div className={styles.searchbarInner}>
         <label htmlFor="search">
           <img src={IMAGES.search} alt="Search" />
         </label>
         <input
-          className="searchbar-input"
+          className={styles.searchbarInput}
           id="search"
           name="search"
           value={searchText}
@@ -30,7 +30,7 @@ const Searchbar = () => {
         />
       </div>
       {searchText !== "" && (
-        <div className="searchbar-delete" onClick={handleSearchDelete}>
+        <div className={styles.searchbarDelete} onClick={handleSearchDelete}>
           X
         </div>
       )}

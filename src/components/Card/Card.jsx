@@ -2,7 +2,7 @@ import IMAGES from "../../assets/images.js";
 
 import { convertCreatedAt, formatDate } from "../../utils/utils";
 import useToggle from "../../hooks/useToggle";
-import "./Card.css";
+import styles from "./Card.module.css";
 
 const CardInfo = ({ createdAt, description }) => {
   const handleKebabClick = (e) => {
@@ -10,18 +10,20 @@ const CardInfo = ({ createdAt, description }) => {
   };
 
   return (
-    <div className="card-info">
-      <div className="card-info-top">
-        <p className="card-time-difference">{convertCreatedAt(createdAt)}</p>
+    <div className={styles.cardInfo}>
+      <div className={styles.cardInfoTop}>
+        <p className={styles.cardTimeDifference}>
+          {convertCreatedAt(createdAt)}
+        </p>
         <img
-          className="card-kebab"
+          className={styles.cardKebab}
           src={IMAGES.kebab}
           alt="더보기"
           onClick={handleKebabClick}
         />
       </div>
-      <p className="card-description">{description}</p>
-      <p className="card-created-at">{formatDate(createdAt)}</p>
+      <p className={styles.cardDescription}>{description}</p>
+      <p className={styles.cardCreatedAt}>{formatDate(createdAt)}</p>
     </div>
   );
 };
@@ -34,10 +36,14 @@ const CardImage = ({ imgUrl }) => {
     setIsLiked(isLiked);
   };
   return (
-    <div className="card-img-container">
-      <img className="card-img" src={imgUrl || IMAGES.noImage} alt="카드" />
+    <div className={styles.cardImgContainer}>
       <img
-        className="card-star"
+        className={styles.cardImg}
+        src={imgUrl || IMAGES.noImage}
+        alt="카드"
+      />
+      <img
+        className={styles.cardStar}
         src={isLiked ? IMAGES.filledStar : IMAGES.emptyStar}
         alt="star"
         onClick={handleStarClick}
@@ -50,7 +56,7 @@ const Card = ({ items }) => {
   const { createdAt, description, imageSource, url } = items;
 
   return (
-    <a href={url} target="_blank" rel="noreferrer" className="card">
+    <a href={url} target="_blank" rel="noreferrer" className={styles.card}>
       <CardImage imgUrl={imageSource} />
       <CardInfo createdAt={createdAt} description={description} />
     </a>

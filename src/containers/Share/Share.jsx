@@ -1,21 +1,21 @@
-import Searchbar from "../../components/Searchbar/Searchbar";
+import Searchbar from "../../components/Searchbar/Searchbar.jsx";
 import CardList from "../../components/Card/CardList.jsx";
-import "./Share.css";
+import styles from "./Share.module.css";
 
 const Owner = ({ items }) => {
   const { name, owner } = items;
 
   return (
-    <div className="owner-container">
-      <div className="owner-inner-container">
+    <div className={styles.ownerContainer}>
+      <div className={styles.ownerInnerContainer}>
         <img
-          className="owner-image"
+          className={styles.ownerImage}
           src={owner.profileImageSource}
           alt="사용자 이미지"
         />
-        <p className="owner-ownername">@{owner.name}</p>
+        <p className={styles.ownerName}>@{owner.name}</p>
         <div>
-          <p className="owner-foldername">{name}</p>
+          <p className={styles.ownerFolderName}>{name}</p>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@ const Share = ({ shareData }) => {
   return (
     <>
       <Owner items={folder} />
-      <div className="shared-frame">
+      <div className={styles.sharedFrame}>
         <Searchbar />
         <CardList cards={folder?.links} />
       </div>

@@ -15,7 +15,7 @@
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
 }
 
-.card-info {
+.cardInfo {
   margin: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -24,12 +24,12 @@
   gap: 1rem;
 }
 
-.card-info-top {
+.cardInfoTop {
   display: flex;
   justify-content: space-between;
 }
 
-.card-img-container {
+.cardImgContainer {
   position: relative;
   display: flex;
   justify-content: center;
@@ -38,7 +38,7 @@
   overflow: hidden;
 }
 
-.card-img {
+.cardImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -52,18 +52,18 @@
   transition: 0.5s;
 }
 
-.card-star {
+.cardStar {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
 }
 
-.card-star:hover {
+.cardStar:hover {
   transform: scale(1.1);
   transition: 0.3s;
 }
 
-.card-time-difference {
+.cardTimeDifference {
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 400;
@@ -72,7 +72,7 @@
   text-overflow: ellipsis;
 }
 
-.card-description {
+.cardDescription {
   color: #000;
   font-size: 1.6rem;
   font-style: normal;
@@ -87,7 +87,7 @@
   text-overflow: ellipsis;
 }
 
-.card-created-at {
+.cardCreatedAt {
   overflow: hidden;
   color: #333;
   text-overflow: ellipsis;
@@ -100,13 +100,13 @@
   height: 1.9rem;
 }
 
-.card-list {
+.cardList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem 2.5rem;
 }
 
-.card-kebab {
+.cardKebab {
   cursor: pointer;
 }
 
@@ -116,7 +116,7 @@
     width: 34rem;
     height: 33.4rem;
   }
-  .card-list {
+  .cardList {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
   }
@@ -128,7 +128,7 @@
     width: 32.5rem;
     height: 32.7rem;
   }
-  .card-list {
+  .cardList {
     grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
   }
