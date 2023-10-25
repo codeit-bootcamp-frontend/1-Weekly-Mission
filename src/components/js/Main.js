@@ -5,31 +5,11 @@ import CardList from "./CardList";
 import { getFolder } from "../../api/apiUrl";
 import useAsync from "../../hooks/useAsync";
 
-const Main = () => {
-  const [folderLinks, setFolderLinks] = useState([]);
-  const [folderName, setFolderName] = useState("");
-  const [owner, setOwner] = useState({});
-  const [loadingError, getFolderAsync] = useAsync(getFolder);
-
-  //커스텀 훅이 잘 작동하지 않는 문제의 부분입니다..
-  const handleLoad = useCallback(async () => {
-    const folderResult = await getFolderAsync();
-    if (!folderResult) return;
-
-    const {
-      folder: { owner, links, name },
-    } = folderResult;
-    setFolderLinks(links);
-    setFolderName(name);
-    setOwner(owner);
-  }, [getFolderAsync]);
-
-  useEffect(() => {
-    handleLoad();
-  }, [handleLoad]);
-
-  const { name, profileImageSource } = owner;
-  const ownerName = name;
+const Main = ({ personalFolder, loadingError }) => {
+  const { owner, name: folderName, links } = personalFolder;
+  // const {name:FolderName, profileImageSource} = owner;
+  const ownerName = owner?.name;
+  const profileImageSource = owner?.profileImageSource;
   const avatarImg = profileImageSource;
 
   return (
@@ -42,11 +22,7 @@ const Main = () => {
         </div>
       </div>
       <Search />
-      {!loadingError ? (
-        <CardList folderLinks={folderLinks} />
-      ) : (
-        loadingError.message
-      )}
+      {!loadingError ? <CardList folderLinks={links} /> : loadingError.message}
     </div>
   );
 };

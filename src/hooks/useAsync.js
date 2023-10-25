@@ -6,6 +6,7 @@ function useAsync(asyncFunction) {
 
   const wrappedFunction = useCallback(async () => {
     try {
+      setError(null);
       return await asyncFunction();
     } catch (error) {
       setError(error);
