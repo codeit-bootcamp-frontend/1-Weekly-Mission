@@ -54,3 +54,8 @@
 .card-info .update-date p {
   color: #333;
 }
+
+/* mobile size */
+.card-info {
+  width: 32rem;
+}

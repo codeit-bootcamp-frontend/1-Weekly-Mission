@@ -27,7 +27,7 @@ function Header(/*{ userInfo, folderInfo }*/) {
 }
 
 function FolderInfo({ folderInfo }) {
-  if (folderInfo === null) return;
+  if (!folderInfo) return;
 
   const { name: folderName } = folderInfo;
   const { name, profileImageSource } = folderInfo.owner;
@@ -47,12 +47,14 @@ function FolderInfo({ folderInfo }) {
 
 function Nav({ userInfo }) {
   // 유저데이터가 있으면 유저데이터, 없으면 로그인 버튼
-  if (userInfo === null) return;
+  if (!userInfo) return;
 
   const { email, profileImageSource } = userInfo;
   return (
     <div className="nav">
-      <img className="logo" src={logoImg} alt="로고" />
+      <a href="/">
+        <img className="logo" src={logoImg} alt="로고" />
+      </a>
       {userInfo ? (
         <div className="user-info">
           <img

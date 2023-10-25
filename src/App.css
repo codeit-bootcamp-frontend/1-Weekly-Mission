@@ -32,6 +32,6 @@
   }
 
   .cards {
-    grid-template-columns: 34rem;
+    grid-template-columns: 32rem;
   }
 }
