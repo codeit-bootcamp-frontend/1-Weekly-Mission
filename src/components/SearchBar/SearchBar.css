@@ -1,0 +1,44 @@
+.search-bar-container {
+  border-radius: 10px;
+  background: #f5f5f5;
+  padding: 15px 16px;
+  margin: 40px auto;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  background-color: transparent;
+  margin-left: 10px;
+}
+
+.search-icon {
+  position: relative;
+  left: -30px;
+  color: #b3b3b3;
+}
+
+/* PC (1124px 이상) */
+@media (min-width: 1124px) {
+  .search-bar-container {
+    max-width: 1060px;
+  }
+}
+
+/* Tablet (764px ~ 1123px) */
+@media (min-width: 764px) and (max-width: 1123px) {
+  .search-bar-container {
+    max-width: 704px;
+  }
+}
+
+/* Mobile (763px 이하) */
+@media (max-width: 763px) {
+  .search-bar-container {
+    max-width: 325px;
+  }
+}

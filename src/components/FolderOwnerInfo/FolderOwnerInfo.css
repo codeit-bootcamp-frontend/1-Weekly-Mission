@@ -1,0 +1,31 @@
+.owner-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  background: var(--color-bg);
+}
+
+.owner-image {
+  width: 60px;
+  height: 60px;
+}
+
+.owner-name {
+  font-family: "Pretendard";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.owner-favorites {
+  font-family: "Pretendard";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
