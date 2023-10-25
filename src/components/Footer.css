@@ -1,0 +1,61 @@
+.footer {
+  width: 100%;
+  background: #111322;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 32px 10.4px 64px;
+}
+.footer-container {
+  max-width: 1920px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 160px;
+  justify-content: space-between;
+  color: #676767;
+}
+/* 
+.footer-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+} */
+
+.copyright {
+  color: #676767;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 400;
+  grid-area: copyright;
+}
+
+.explain {
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  grid-area: explain;
+}
+
+.policy,
+.faq {
+  color: #676767;
+}
+
+.sns-logo {
+  grid-area: sns-logo;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sns-logo a {
+  gap: 12px;
+}

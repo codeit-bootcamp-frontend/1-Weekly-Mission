@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Main } from "./components/Main";
+import Nav from "./components/Nav";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { getFolderData, getUserData } from "./services/api";
+import { useEffect, useState, useCallback } from "react";
 
 function App() {
+  const [cards, setcards] = useState([]);
+  const [folderInfo, setFolderInfo] = useState({});
+  const [owner, setOwner] = useState({});
+  const [user, setUser] = useState([]);
+
+  const getdata = useCallback(async () => {
+    const { folder } = await getFolderData();
+    const ownerInfo = { ...folder.owner };
+    setFolderInfo(folder);
+    setOwner(ownerInfo);
+    setcards(folder.links);
+  }, []);
+
+  const getUserInfo = useCallback(async () => {
+    const userInfo = await getUserData();
+    setUser(userInfo);
+  });
+
+  useEffect(() => {
+    getdata();
+  }, [getdata]);
+
+  useEffect(() => {
+    getUserInfo();
+  }, []); //마운트시점에만 호출
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav profileImageSource={user.profileImageSource} email={user.email} />
+      <Header folderInfo={folderInfo} owner={owner} />
+      <Main cards={cards} />
+      <Footer />
     </div>
   );
 }
-
 export default App;
