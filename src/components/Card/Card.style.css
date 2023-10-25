@@ -31,10 +31,11 @@
   object-fit: cover;
 }
 
-.sample-img:hover {
+.sample-img-bigger {
   transform: scale(1.5);
   transition: transform 0.3s;
 }
+
 .card-text-section {
   display: flex;
   flex-direction: column;
