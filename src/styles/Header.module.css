@@ -1,4 +1,4 @@
-.header {
+.root {
   height: 94px;
 
   display: flex;
@@ -9,7 +9,7 @@
   background: #f0f6ff;
 }
 
-.headerContainer {
+.container {
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -21,51 +21,7 @@
   padding: 0 200px;
 }
 
-.headerLogo {
+.logo {
   width: 133px;
   height: 24px;
-}
-
-.profile {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.loginButton {
-  width: 128px;
-
-  display: flex;
-  padding: 16px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-
-  border-radius: 8px;
-  border: none;
-  background: var(
-    --gra-purpleblue-to-skyblue,
-    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
-  );
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.profileLogo {
-  width: 10px;
-  height: 10px;
-
-  flex-shrink: 0;
-}
-
-.profileEmail {
-  color: #373740;
-  /* Linkbrary/body2-regular */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }

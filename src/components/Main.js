@@ -1,7 +1,7 @@
 import styles from '../styles/Main.module.css';
 import Cards from './Cards.js';
 import Search from './Search.js';
-import Profile from './Profile.js';
+import FolderInfo from './FolderInfo.js';
 import { getUserData } from '../api/getUserData';
 import { getFolders } from '../api/getFolders.js';
 import { useState, useEffect } from 'react';
@@ -25,7 +25,7 @@ function Main() {
 
   return (
     <div className={styles.root}>
-      <Profile name={name} owner={owner} />
+      <FolderInfo name={name} owner={owner} />
       <Search />
       {/* <Cards /> */}
     </div>

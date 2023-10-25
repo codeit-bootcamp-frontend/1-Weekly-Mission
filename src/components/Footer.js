@@ -7,7 +7,7 @@ import styles from '../styles/Footer.module.css';
 
 function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.root}>
       <div className={styles.container}>
         <div className={styles.copyright}>©codeit - 2023</div>
         <div className={styles.information}>

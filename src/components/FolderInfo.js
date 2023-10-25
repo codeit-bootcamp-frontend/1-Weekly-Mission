@@ -1,6 +1,6 @@
-import styles from '../styles/Profile.module.css';
+import styles from '../styles/FolderInfo.module.css';
 
-function Profile({ name, owner }) {
+function FolderInfo({ name, owner }) {
   return (
     <div className={styles.root}>
       <div className={styles.container}>
@@ -18,4 +18,4 @@ function Profile({ name, owner }) {
   );
 }
 
-export default Profile;
+export default FolderInfo;
