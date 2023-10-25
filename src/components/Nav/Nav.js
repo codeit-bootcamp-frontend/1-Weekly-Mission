@@ -1,6 +1,6 @@
-import "../styles/nav.css";
-import "../styles/reset.css";
-import logoSvg from "../assets/logo.svg";
+import "./Nav.style.css";
+import "../../styles/reset.css";
+import logoSvg from "../../assets/logo.svg";
 
 function Button() {
   return (

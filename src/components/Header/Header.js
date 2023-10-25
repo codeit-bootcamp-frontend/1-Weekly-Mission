@@ -1,5 +1,5 @@
-import "../styles/header.css";
-import "../styles/reset.css";
+import "./Header.style.css";
+import "../../styles/reset.css";
 
 function Header({ folderUserProfile, folderName, folderUserName }) {
   if (!folderUserName) {

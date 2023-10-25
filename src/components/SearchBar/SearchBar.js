@@ -1,7 +1,7 @@
-import "../styles/searchBar.css";
-import "../styles/reset.css";
+import "./SearchBar.style.css";
+import "../../styles/reset.css";
 import { useState } from "react";
-import searchIcon from "../assets/search-icon.svg";
+import searchIcon from "../../assets/search-icon.svg";
 function SearchBar() {
   const [text, setText] = useState("");
   const handleTitleChange = (e) => {

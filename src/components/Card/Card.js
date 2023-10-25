@@ -1,5 +1,5 @@
-import "../styles/card.css";
-import noImage from "../assets/no-img-card.svg";
+import "./Card.style.css";
+import noImage from "../../assets/no-img-card.svg";
 
 function formatDate(value) {
   const date = new Date(value);

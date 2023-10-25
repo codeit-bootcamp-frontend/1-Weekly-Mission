@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Nav from "./components/Nav";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import SearchBar from "./components/SearchBar";
-import CardList from "./components/Card";
+import Nav from "./components/Nav/Nav";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import SearchBar from "./components/SearchBar/SearchBar";
+import CardList from "./components/Card/Card";
 
-import { getUser, getUserFolder } from "./api";
-import "./styles/app.css";
+import { getUser, getUserFolder } from "../src/api/api";
+import "./styles/App.style.css";
 
 function App() {
   const [userName, setUserName] = useState("");
