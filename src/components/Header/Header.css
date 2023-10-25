@@ -1,0 +1,54 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0 6rem;
+  background: var(--gray-five);
+}
+
+.owner-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.owner-info .profile-image {
+  display: flex;
+  height: 6rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3rem;
+}
+
+.owner-info .name {
+  font-size: 1.6rem;
+  line-height: 2.4rem; /* 150% */
+}
+
+.folder-title {
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+
+  .owner-info .profile-image {
+    height: 4rem;
+    border-radius: 2rem;
+  }
+
+  .owner-info .name {
+    font-size: 1.4rem;
+    line-height: normal; /* 150% */
+  }
+
+  .folder-title {
+    font-size: 3.2rem;
+  }
+
+}
