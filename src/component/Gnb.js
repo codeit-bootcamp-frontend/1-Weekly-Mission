@@ -8,13 +8,17 @@ function Gnb() {
   const [userData, setUserData] = useState({});
 
   async function getUserData() {
-    const { id, email, name, profileImageSource } = await getUser();
-    setUserData({
-      id,
-      email,
-      name,
-      profile: profileImageSource,
-    });
+    try {
+      const { id, email, name, profileImageSource } = await getUser();
+      setUserData({
+        id,
+        email,
+        name,
+        profile: profileImageSource,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {

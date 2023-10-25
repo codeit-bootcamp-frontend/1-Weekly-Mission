@@ -14,5 +14,3 @@ export async function getUser() {
   const userData = await response.json();
   return userData;
 }
-
-//try..catch 쓰기

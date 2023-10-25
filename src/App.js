@@ -13,18 +13,18 @@ function App() {
     let folderData = {};
     try {
       folderData = await getFolder();
+      const { id, name, owner, links } = folderData;
+      setFolderData({
+        id,
+        name,
+        ownerId: owner["id"],
+        ownerName: owner["name"],
+        ownerProfile: owner["profileImageSource"],
+        links,
+      });
     } catch (err) {
       console.log(err);
     }
-    const { id, name, owner, links } = folderData;
-    setFolderData({
-      id,
-      name,
-      ownerId: owner["id"],
-      ownerName: owner["name"],
-      ownerProfile: owner["profileImageSource"],
-      links,
-    });
   }
 
   useEffect(() => {
