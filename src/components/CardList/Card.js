@@ -1,8 +1,10 @@
 import React from "react";
 import "./CardStyles.css";
 import { timeDifference } from "../../utils/timeUtils";
+import Star from "../../assets/icons/Star";
+import Kebab from "../../assets/icons/Kebab";
 
-const Card = ({ link }) => {
+const Card = ({ link, isFolderPage }) => {
   if (!link) {
     return null;
   }
@@ -12,14 +14,30 @@ const Card = ({ link }) => {
   const timeDiffText = timeDifference(currentTime, createdAt);
 
   return (
-    <div className="card" onClick={() => window.open(link.url, "_blank")}>
+    <div
+      className={`card ${isFolderPage ? "folder-page" : "share-page"}`}
+      onClick={() => window.open(link.url, "_blank")}
+    >
+      {isFolderPage && (
+        <button className="star-button">
+          <Star />
+        </button>
+      )}
       {link.imageSource ? (
         <img src={link.imageSource} alt={link.title} />
       ) : (
         <div className="no-image">이미지가 없습니다.</div>
       )}
       <div className="card-text">
-        <span className="date">{timeDiffText}</span>
+        {isFolderPage && (
+          <div className="card-text-top">
+            <span className="date">{timeDiffText}</span>
+            <button className="kebab-button">
+              <Kebab />
+            </button>
+          </div>
+        )}
+        {!isFolderPage && <span className="date">{timeDiffText}</span>}
         <h3 className="title">{link.title}</h3>
         <p className="description">{link.description}</p>
       </div>

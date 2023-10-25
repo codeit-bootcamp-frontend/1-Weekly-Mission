@@ -11,7 +11,7 @@ const FolderPage = () => {
       <Navbar />
       <LinkInput />
       <SearchBar />
-      <CardList />
+      <CardList isFolderPage={true} />
       <Footer />
     </div>
   );

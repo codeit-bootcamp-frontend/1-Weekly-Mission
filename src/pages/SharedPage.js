@@ -11,7 +11,7 @@ const SharedPage = () => {
       <Navbar />
       <FolderOwnerInfo />
       <SearchBar />
-      <CardList />
+      <CardList isFolderPage={false} />
       <Footer />
     </div>
   );

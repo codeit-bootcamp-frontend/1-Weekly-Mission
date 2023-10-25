@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import "./CardStyles.css";
 
-const CardList = () => {
+const CardList = ({ isFolderPage }) => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const CardList = () => {
   return (
     <div className="card-list">
       {links.map((link) => (
-        <Card key={link.id} link={link} />
+        <Card key={link.id} link={link} isFolderPage={isFolderPage} />
       ))}
     </div>
   );
