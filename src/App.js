@@ -36,7 +36,11 @@ function App() {
     const folderResult = await getFolderAsync();
     if (!folderResult || !userResult) return;
 
-    const { name: userName, email, profileImageSource } = userResult;
+    const {
+      name: userName = "",
+      email = "",
+      profileImageSource = "",
+    } = userResult;
     setUserValues((prevValues) => {
       const newValues = {
         userName: userName,
@@ -46,16 +50,17 @@ function App() {
       return { ...prevValues, ...newValues };
     });
 
-    const { folder } = folderResult;
+    if (!folderResult.folder) return;
+    const { name = "", owner = null, links = "" } = folderResult.folder;
     setFolderValues((prevValues) => {
       const newValues = {
-        folderName: folder.name,
-        folderOwnerName: folder.owner.name,
-        folderOwnerProfileImage: folder.owner.profileImageSource,
+        folderName: name,
+        folderOwnerName: owner?.name,
+        folderOwnerProfileImage: owner?.profileImageSource,
       };
       return { ...prevValues, ...newValues };
     });
-    setCardList(folder.links);
+    setCardList(links);
   };
 
   useEffect(() => {
