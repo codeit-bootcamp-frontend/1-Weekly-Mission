@@ -1,10 +1,6 @@
 import "./Card.style.css";
 import noImage from "../../assets/no-img-card.svg";
-
-function formatDate(value) {
-  const date = new Date(value);
-  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
-}
+import formatDate from "../../utils/formatDate";
 
 function calcDate(value) {
   const now = new Date(); // 현재 날짜 및 시간
