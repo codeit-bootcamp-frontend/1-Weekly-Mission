@@ -3,14 +3,14 @@
   position: relative;
 }
 
-.SearchBar__search-icon {
+.search_icon {
   position: absolute;
   top: 50%;
   left: 2.4rem;
   transform: translate(-50%, -50%);
 }
 
-.SearchBar__input {
+.input {
   display: flex;
   justify-content: space-between;
   border: none;
@@ -24,14 +24,14 @@
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  .SearchBar__input {
+  .input {
     width: 70.4rem;
   }
 }
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .SearchBar__input {
+  .input {
     width: 32.5rem;
   }
 }

@@ -8,7 +8,7 @@
   padding-bottom: 6rem;
 }
 
-.FolderInfo__profile-info {
+.profile_info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,16 +16,16 @@
   gap: 1.2rem;
 }
 
-.FolderInfo__profile-img {
+.profile_img {
   width: 6rem;
   border-radius: 50%;
 }
 
-.FolderInfo__user-name {
+.owner_name {
   font-size: 1.6rem;
 }
 
-.FolderInfo__folder-name {
+.folder_name {
   font-size: 4rem;
 }
 
@@ -35,16 +35,16 @@
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .FolderInfo__profile-img {
+  .profile_img {
     width: 4rem;
     border-radius: 50%;
   }
 
-  .FolderInfo__user-name {
+  .owner_name {
     font-size: 1.4rem;
   }
 
-  .FolderInfo__folder-name {
+  .folder_name {
     font-size: 3.2rem;
   }
 }

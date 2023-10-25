@@ -1,3 +1,4 @@
+import styles from "../styles/CardList.module.css";
 import CardItem from "./CardItem";
 
 const CardList = ({ folderData }) => {
@@ -6,7 +7,7 @@ const CardList = ({ folderData }) => {
     const { links } = folder;
 
     return (
-      <ul className="Card__list">
+      <ul className={styles.CardList}>
         {links.map((data) => (
           <li key={data.id}>
             <CardItem item={data} />

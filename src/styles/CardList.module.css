@@ -1,10 +1,5 @@
 /* PC 화면 크기 (1200px 이상) */
-.Card {
-  display: flex;
-  justify-content: center;
-}
-
-.Card__list {
+.CardList {
   display: grid;
   grid-template-columns: repeat(3, 34rem);
   column-gap: 2rem;
@@ -13,7 +8,7 @@
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  .Card__list {
+  .CardList {
     grid-template-columns: repeat(2, 34rem);
     column-gap: 2.4rem;
   }
@@ -21,7 +16,7 @@
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .Card__list {
+  .CardList {
     grid-template-columns: 32.5rem;
     row-gap: 2rem;
   }

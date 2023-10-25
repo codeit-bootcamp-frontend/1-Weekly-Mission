@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../styles/Folder.css";
+import styles from "../styles/Folder.module.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import FolderInfo from "../components/FolderInfo";
@@ -24,7 +24,7 @@ const Folder = () => {
 
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <NavBar />
         <FolderInfo folderData={folderData} />
       </header>

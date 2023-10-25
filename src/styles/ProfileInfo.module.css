@@ -5,19 +5,19 @@
   height: 5.4rem;
 }
 
-.ProfileInfo__profile-img {
+.profile_img {
   border-radius: 50%;
   width: 2.8rem;
 }
 
-.ProfileInfo__email {
+.email {
   color: var(--linkbrary-gray-100, #373740);
   font-size: 1.4rem;
 }
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .ProfileInfo__email {
+  .email {
     display: none;
   }
 }

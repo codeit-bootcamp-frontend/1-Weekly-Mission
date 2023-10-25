@@ -1,7 +1,8 @@
 import { useState } from "react";
-import "../styles/LoginButton.css";
+import styles from "../styles/LoginButton.module.css";
 import ProfileInfo from "./ProfileInfo";
 import getUser from "./../api/getUser";
+import classnames from "classnames";
 
 const LoginButton = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,11 +21,11 @@ const LoginButton = () => {
   };
 
   return (
-    <div className="LoginButton">
+    <div>
       {userData?.email ? (
         <ProfileInfo email={userData.email} profileImageSource={userData.profileImageSource} />
       ) : (
-        <button disabled={isLoading} className="cta cta-short" onClick={handleButtonClick}>
+        <button disabled={isLoading} className={classnames(styles.cta, styles.cta_short)} onClick={handleButtonClick}>
           로그인
         </button>
       )}

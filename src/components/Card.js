@@ -1,9 +1,9 @@
-import "../styles/Card.css";
+import styles from "../styles/Card.module.css";
 import CardList from "./CardList";
 
 const Card = ({ folderData }) => {
   return (
-    <div className="Card">
+    <div className={styles.Card}>
       <CardList folderData={folderData} />
     </div>
   );

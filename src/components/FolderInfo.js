@@ -1,4 +1,4 @@
-import "../styles/FolderInfo.css";
+import styles from "../styles/FolderInfo.module.css";
 
 const FolderInfo = ({ folderData }) => {
   if (folderData && folderData.folder) {
@@ -6,12 +6,12 @@ const FolderInfo = ({ folderData }) => {
     const { owner } = folder;
 
     return (
-      <div className="FolderInfo">
-        <div className="FolderInfo__profile-info">
-          <img className="FolderInfo__profile-img" src={owner.profileImageSource} alt="프로필 이미지" />
-          <p className="FolderInfo__user-name">@{owner.name}</p>
+      <div className={styles.FolderInfo}>
+        <div className={styles.profile_info}>
+          <img className={styles.profile_img} src={owner.profileImageSource} alt="프로필 이미지" />
+          <p className={styles.owner_name}>@{owner.name}</p>
         </div>
-        <h1 className="FolderInfo__folder-name">{folder.name}</h1>
+        <h1 className={styles.folder_name}>{folder.name}</h1>
       </div>
     );
   }

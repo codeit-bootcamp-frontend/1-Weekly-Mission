@@ -1,12 +1,12 @@
-import "../styles/NavBar.css";
+import styles from "../styles/NavBar.module.css";
 import logo from "../assets/logo.svg";
 import LoginButton from "./LoginButton";
 
 const NavBar = () => {
   return (
-    <nav className="NavBar">
-      <div className="NavBar__container">
-        <a href="/" className="NavBar__logo">
+    <nav className={styles.NavBar}>
+      <div className={styles.container}>
+        <a href="/" className={styles.logo}>
           <img src={logo} alt="LinkBrary 로고" />
         </a>
         <LoginButton />

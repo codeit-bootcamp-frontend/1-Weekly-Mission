@@ -1,4 +1,4 @@
-import "../styles/CardItem.css";
+import styles from "../styles/CardItem.module.css";
 import logo from "../assets/emptyImg.svg";
 
 const formatDate = (value) => {
@@ -60,18 +60,18 @@ function CardItem({ item }) {
   const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
 
   return (
-    <a className="CardItem" href={url} target="_blank" rel="noopener noreferrer">
-      <div className="CardItem__container__img">
-        <img className="CardItem__img" src={imageSource === undefined ? logo : imageSource} alt={title} />
+    <a className={styles.CardItem} href={url} target="_blank" rel="noopener noreferrer">
+      <div className={styles.img_container}>
+        <img className={styles.img} src={imageSource === undefined ? logo : imageSource} alt={title} />
       </div>
-      <div className="CardItem__container">
-        <p className="CardItem__container__time-diff">{formatTimeDiff}</p>
-        <p className="CardItem__container__description">
+      <div className={styles.container}>
+        <p className={styles.time_diff__container}>{formatTimeDiff}</p>
+        <p className={styles.description__container}>
           {title}
           <br />
           {description}
         </p>
-        <p className="CardItem__container__createdAt">{formattedCreatedAt}</p>
+        <p className={styles.createdAt__container}>{formattedCreatedAt}</p>
       </div>
     </a>
   );
