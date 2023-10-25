@@ -28,9 +28,10 @@ function App() {
   const [isFolderLoading, folderLoadingError, getFolderAsync] =
     useAsync(getUserFolder);
 
-  const [folderUserProfileImage, setFolderUserProfileImage] = useState("");
-  const [folderName, setFolderName] = useState("");
-  const [folderUserName, setFolderUserName] = useState("");
+  const [folderValues, setFolderValues] = useState(INITIAL_FOLDER);
+  // const [folderUserProfileImage, setFolderUserProfileImage] = useState("");
+  // const [folderName, setFolderName] = useState("");
+  // const [folderUserName, setFolderUserName] = useState("");
 
   const [cardList, setCardList] = useState([]);
 
@@ -50,9 +51,17 @@ function App() {
     });
 
     const { folder } = folderResult;
-    setFolderUserProfileImage(folder.owner.profileImageSource);
-    setFolderName(folder.name);
-    setFolderUserName(folder.owner.name);
+    setFolderValues((prevValues) => {
+      const newValues = {
+        folderName: folder.name,
+        folderUserName: folder.owner.name,
+        folderUserProfileImage: folder.owner.profileImageSource,
+      };
+      return { ...prevValues, ...newValues };
+    });
+    // setFolderUserProfileImage(folder.owner.profileImageSource);
+    // setFolderName(folder.name);
+    // setFolderUserName(folder.owner.name);
     setCardList(folder.links);
   };
 
@@ -70,9 +79,9 @@ function App() {
       {userLoadingError?.message && <span>{userLoadingError.message}</span>}
 
       <Header
-        folderUserProfile={folderUserProfileImage}
-        folderName={folderName}
-        folderUserName={folderUserName}
+        folderUserProfile={folderValues.folderUserProfileImage}
+        folderName={folderValues.folderName}
+        folderUserName={folderValues.folderUserName}
       />
 
       <section className="section">
