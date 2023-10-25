@@ -1,23 +1,19 @@
-import { useEffect, useState } from "react";
-
-import { fetchGet } from "../../apis/api";
-import useAsync from "../../hooks/useAsync";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import CardList from "../../components/Card/CardList.jsx";
 import "./Share.css";
 
 const Owner = ({ items }) => {
-  const { name, ownerName, ownerProfileImageSource } = items;
+  const { name, owner } = items;
 
   return (
     <div className="owner-container">
       <div className="owner-inner-container">
         <img
           className="owner-image"
-          src={ownerProfileImageSource}
+          src={owner.profileImageSource}
           alt="사용자 이미지"
         />
-        <p className="owner-ownername">@{ownerName}</p>
+        <p className="owner-ownername">@{owner.name}</p>
         <div>
           <p className="owner-foldername">{name}</p>
         </div>
@@ -26,51 +22,15 @@ const Owner = ({ items }) => {
   );
 };
 
-const Share = () => {
-  const [cards, setCards] = useState([]);
-  const [owner, setOwner] = useState({
-    name: "",
-    ownerName: "",
-    ownerProfileImageSource: "",
-  });
-  const [loading, error, getSampleUserFolder] = useAsync(
-    fetchGet("/api/sample/folder")
-  );
-
-  useEffect(() => {
-    const handleSampleFolder = async () => {
-      const result = await getSampleUserFolder();
-      if (!result) return;
-      if (error) console.error(error);
-
-      const { folder } = result;
-
-      setCards(folder.links);
-      setOwner((prevState) => ({
-        ...prevState,
-        name: folder.name,
-        ownerName: folder.owner.name,
-        ownerProfileImageSource: folder.owner.profileImageSource,
-      }));
-    };
-
-    handleSampleFolder();
-    // eslint-disable-next-line
-  }, []);
-
+const Share = ({ shareData }) => {
+  const { folder } = shareData;
   return (
     <>
-      {!loading && (
-        <>
-          (
-          <Owner items={owner} />
-          <div className="shared-frame">
-            <Searchbar />
-            <CardList cards={cards} />
-          </div>
-          )
-        </>
-      )}
+      <Owner items={folder} />
+      <div className="shared-frame">
+        <Searchbar />
+        <CardList cards={folder?.links} />
+      </div>
     </>
   );
 };
