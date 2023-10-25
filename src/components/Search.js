@@ -1,5 +1,5 @@
 import React from 'react';
-import searchImage from '../assets/png/Search.png';
+import searchImage from '../assets/images/icons/Search.png';
 import styles from '../styles/Search.module.css';
 
 function Search() {

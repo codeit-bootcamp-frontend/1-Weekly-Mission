@@ -1,6 +1,6 @@
 import styles from '../styles/Header.module.css';
 import { getUserData } from '../api/getUserData';
-import logoImage from '../assets/png/logo.png';
+import logoImage from '../assets/images/logo.png';
 import { useState } from 'react';
 
 function Header() {

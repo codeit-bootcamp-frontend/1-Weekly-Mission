@@ -1,4 +1,4 @@
-import styles from '../styles/main.css';
+import styles from '../styles/Main.module.css';
 import Cards from './Cards.js';
 import Search from './Search.js';
 import Profile from './Profile.js';

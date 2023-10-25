@@ -1,7 +1,7 @@
-import facebookImage from '../assets/png/facebook.png';
-import twitterImage from '../assets/png/twitter.png';
-import youtubeImage from '../assets/png/youtube.png';
-import instagramImage from '../assets/png/instagram.png';
+import facebookImage from '../assets/images/icons/facebook.png';
+import twitterImage from '../assets/images/icons/twitter.png';
+import youtubeImage from '../assets/images/icons/youtube.png';
+import instagramImage from '../assets/images/icons/instagram.png';
 
 import styles from '../styles/Footer.module.css';
 
