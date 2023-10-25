@@ -1,2 +1,2 @@
-import React from "react";
-import { getFolders } from "../api/api.js";
+import React from 'react';
+import { getFolders } from '../api/getFolders.js';

@@ -1,5 +1,5 @@
 import "./styles/reset.css";
-//import logo from "./logo.svg";
+//import logo from './logo.svg';
 import styles from "./styles/App.module.css";
 import Header from "./components/Header.js";
 import Main from "./components/Main.js";

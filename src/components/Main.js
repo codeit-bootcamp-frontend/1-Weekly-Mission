@@ -1,12 +1,13 @@
-import styles from "../styles/main.css";
-import Cards from "./Cards.js";
-import Search from "./Search.js";
-import Profile from "./Profile.js";
-import { getUserData, getFolders } from "../api/api.js";
-import { useState, useEffect } from "react";
+import styles from '../styles/main.css';
+import Cards from './Cards.js';
+import Search from './Search.js';
+import Profile from './Profile.js';
+import { getUserData } from '../api/getUserData';
+import { getFolders } from '../api/getFolders.js';
+import { useState, useEffect } from 'react';
 
 function Main() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [owner, setOwner] = useState({});
 
   const loadFolderData = async () => {

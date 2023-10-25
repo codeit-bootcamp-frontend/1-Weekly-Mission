@@ -1,4 +1,4 @@
-header {
+.header {
   height: 94px;
 
   display: flex;
@@ -9,7 +9,7 @@ header {
   background: #f0f6ff;
 }
 
-.header__container {
+.headerContainer {
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -21,18 +21,18 @@ header {
   padding: 0 200px;
 }
 
-.header__logo {
+.headerLogo {
   width: 133px;
   height: 24px;
 }
 
-.header__profile {
+.profile {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-button {
+.loginButton {
   width: 128px;
 
   display: flex;
@@ -42,6 +42,7 @@ button {
   gap: 10px;
 
   border-radius: 8px;
+  border: none;
   background: var(
     --gra-purpleblue-to-skyblue,
     linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
@@ -52,14 +53,14 @@ button {
   font-weight: 600;
 }
 
-.header__profile--logo {
+.profileLogo {
   width: 10px;
   height: 10px;
 
   flex-shrink: 0;
 }
 
-.header__profile--email {
+.profileEmail {
   color: #373740;
   /* Linkbrary/body2-regular */
   font-family: Pretendard;

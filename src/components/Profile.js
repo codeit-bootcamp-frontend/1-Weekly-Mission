@@ -1,4 +1,4 @@
-import styles from "../styles/Profile.module.css";
+import styles from '../styles/Profile.module.css';
 
 function Profile({ name, owner }) {
   return (
@@ -8,7 +8,7 @@ function Profile({ name, owner }) {
           <img
             className={styles.profileImage}
             src={owner.profileImageSource}
-            alt="프로필 이미지"
+            alt='프로필 이미지'
           />
         </div>
         <div className={styles.name}>{owner.name}</div>
