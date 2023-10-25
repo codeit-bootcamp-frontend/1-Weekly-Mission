@@ -3,9 +3,9 @@ import { getFolderData } from "../../utils/api";
 import "./PageTitle.css";
 const PageTitle = () => {
   const [hasData, setHasData] = useState(false);
-  const [folderData, setFolderData] = useState([]);
+  const [folderData, setFolderData] = useState({});
 
-  const handleFolderData = async () => {
+  const loadFolderData = async () => {
     let result;
     try {
       result = await getFolderData();
@@ -20,7 +20,7 @@ const PageTitle = () => {
   };
 
   useEffect(() => {
-    handleFolderData();
+    loadFolderData();
   }, []);
 
   return (

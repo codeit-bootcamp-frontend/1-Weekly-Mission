@@ -5,7 +5,7 @@ import { getLoginInfo } from "../../utils/api";
 import { useState } from "react";
 
 const Nav = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLoggedin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState([]);
 
   const handleLogin = async () => {
@@ -32,12 +32,12 @@ const Nav = () => {
             <img src={logoImg} alt="로고" />
           </a>
         </span>
-        {!isLogin && (
+        {!isLoggedin && (
           <button className="btn login" onClick={handleLogin}>
             로그인
           </button>
         )}
-        {isLogin && (
+        {isLoggedin && (
           <div className="userProfile">
             <img
               className="userProfileImg"
