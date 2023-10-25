@@ -1,6 +1,10 @@
 import styles from "../styles/FolderInfo.module.css";
+import FolderInfoSkeleton from "./FolderInfoSkeleton";
 
-const FolderInfo = ({ folderData }) => {
+const FolderInfo = ({ folderData, isLoading }) => {
+  if (isLoading) {
+    return <FolderInfoSkeleton />;
+  }
   if (folderData && folderData.folder) {
     const { folder } = folderData;
     const { owner } = folder;

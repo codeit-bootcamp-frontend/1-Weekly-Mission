@@ -24,12 +24,11 @@ const Folder = () => {
     <>
       <header className={styles.header}>
         <NavBar />
-        <FolderInfo folderData={folderData} />
+        <FolderInfo folderData={folderData} isLoading={isLoading} />
       </header>
       <main>
         <Search />
-        <Card folderData={folderData} />
-        {isLoading && <p>데이터를 불러오는 중 입니다.</p>}
+        <Card folderData={folderData} isLoading={isLoading} />
       </main>
       <footer>
         <Footer />
