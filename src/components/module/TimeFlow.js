@@ -1,4 +1,4 @@
-function timeflow({ createdAt }) {
+function TimeFlow({ createdAt }) {
   let message = '';
   const timeMinute = (new Date() - new Date(createdAt)) / 1000 / 60;
   const timeHour = Math.floor(timeMinute / 60);
@@ -43,4 +43,4 @@ function timeflow({ createdAt }) {
   return <div className="timediff">{message}</div>;
 }
 
-export default timeflow;
+export default TimeFlow;

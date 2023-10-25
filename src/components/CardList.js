@@ -1,6 +1,6 @@
 import '../styles/cardlist.css';
 import { Fragment } from 'react';
-import TimeFlow from '../timeflow.js';
+import TimeFlow from './module/TimeFlow.js';
 import defaultImg from '../assets/images/no-Image.svg';
 
 function formatDate(value) {
