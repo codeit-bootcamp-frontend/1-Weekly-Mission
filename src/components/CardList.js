@@ -1,4 +1,5 @@
 import './CardList.css';
+import noImg from '../assets/noImg.svg';
 
 function formatDate(value) {
 	const date = new Date(value);
@@ -39,7 +40,8 @@ function Card({ item }) {
   return (
     <div className="card">
       <div className="card-img-container">
-        <img className="card-img" src={item.imageSource} alt="카드 이미지" />
+        {(item.imageSource) ? <img className="card-img" src={item.imageSource} alt="카드 이미지" /> 
+        : <img className="card-img" src={noImg} alt="이미지 없음 "/>}
       </div>
       <div className="card-text-container">
         <p className="card-createdAt">{getTimeDifference(item.createdAt)}</p>
