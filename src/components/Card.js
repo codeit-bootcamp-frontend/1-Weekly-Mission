@@ -1,24 +1,13 @@
 import React from "react";
-import CardItem from "./CardItem";
 import "../styles/Card.css";
+import CardList from "./CardList";
 
 const Card = ({ folderData }) => {
-  if (folderData && folderData.folder) {
-    const { folder } = folderData;
-    const { links } = folder;
-
-    return (
-      <div className="Card">
-        <ul className="Card__list">
-          {links.map((data) => (
-            <li key={data.id}>
-              <CardItem item={data} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
+  return (
+    <div className="Card">
+      <CardList folderData={folderData} />
+    </div>
+  );
 };
 
 export default Card;
