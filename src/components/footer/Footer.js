@@ -1,43 +1,26 @@
 import React from "react";
-import "./Footer.css";
-import styled from "styled-components";
-import { ReactComponent as InstagramIcon } from "../../assets/imgs/instagram.svg";
-import { ReactComponent as MetaIcon } from "../../assets/imgs/meta.svg";
-import { ReactComponent as TwitterIcon } from "../../assets/imgs/twitter.svg";
-import { ReactComponent as YoutubeIcon } from "../../assets/imgs/youtube.svg";
 
-const ResponsiveFooter = styled.div`
-  height: 17rem;
-  background-color: var(--black);
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+import styles from "./Footer.module.css";
 
-  /* tablet1 */
-  @media (min-width: 768px) and (max-width: 1123px) {
-  }
+import { ReactComponent as InstagramIcon } from "../../assets/images/instagram.svg";
+import { ReactComponent as MetaIcon } from "../../assets/images/meta.svg";
+import { ReactComponent as TwitterIcon } from "../../assets/images/twitter.svg";
+import { ReactComponent as YoutubeIcon } from "../../assets/images/youtube.svg";
 
-  /* tablet2 */
-  @media (min-width: 1124px) {
-  }
-  /* descktop*/
-  @media (min-width: 1200px) {
-  }
-`;
 export default function Footer() {
   return (
-    <ResponsiveFooter>
-      <span className="codeit">©codeit - 2023</span>
-      <div className="policy">
+    <div className={styles.container}>
+      <span className={styles.codeit}>©codeit - 2023</span>
+      <div className={styles.policy}>
         <span>Privacy Policy</span>
         <span>FAQ</span>
       </div>
-      <div className="Icons">
+      <div className={styles.icons}>
         <MetaIcon />
         <TwitterIcon />
         <InstagramIcon />
         <YoutubeIcon />
       </div>
-    </ResponsiveFooter>
+    </div>
   );
 }
