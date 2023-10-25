@@ -1,5 +1,5 @@
-import { useWindowSizeCustom } from "../hooks";
-import "../style/LoginButton.css";
+import { useWindowSizeCustom } from "hooks/useWindowSize";
+import "./LoginButton.css";
 
 const LoginButton = ({ className, isLogin, data }) => {
   const { email, imageSource } = data;

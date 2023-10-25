@@ -1,5 +1,5 @@
-import SearchIMG from "../assets/images/svg/Search.svg";
-import "../style/SearchBar.css";
+import SearchIMG from "assets/Search.svg";
+import "./SearchBar.css";
 
 const SearchBar = () => {
   return (

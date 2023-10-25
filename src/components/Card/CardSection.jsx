@@ -1,5 +1,5 @@
-import Card from "./Card";
-import "../style/CardSection.css";
+import { Card } from "components";
+import "./CardSection.css";
 
 const CardSection = ({ data }) => {
   const handleCardClick = (url) => {

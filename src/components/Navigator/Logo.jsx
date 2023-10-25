@@ -1,4 +1,4 @@
-import logoIMG from "../assets/images/svg/Linkbrary.svg";
+import logoIMG from "assets/Linkbrary.svg";
 
 const Logo = ({ className }) => {
   return (

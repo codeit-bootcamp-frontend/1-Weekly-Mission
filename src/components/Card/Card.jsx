@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
-import kebab from "../assets/images/svg/kebab.svg";
-import noImageIMG from "../assets/images/svg/noImage.svg";
-import starIMG from "../assets/images/svg/star.svg";
-import chosenStarIMG from "../assets/images/svg/chosenStar.svg";
-import { timeForToday } from "../utils";
-import "../style/Card.css";
+import { timeForToday } from "utils/moment";
+import kebab from "assets/kebab.svg";
+import noImageIMG from "assets/noImage.svg";
+import starIMG from "assets/star.svg";
+import chosenStarIMG from "assets/chosenStar.svg";
+import "./Card.css";
 
 const Card = ({ data, onClick }) => {
   const imgRef = useRef();

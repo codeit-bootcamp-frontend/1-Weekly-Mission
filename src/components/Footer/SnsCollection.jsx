@@ -1,8 +1,8 @@
-import facebookIMG from "../assets/images/svg/facebook.svg";
-import instagramIMG from "../assets/images/svg/instagram.svg";
-import twitterIMG from "../assets/images/svg/twitter.svg";
-import youtubeIMG from "../assets/images/svg/youtube.svg";
-import SnsLogo from "./SnsLogo";
+import { SnsLogo } from "components";
+import facebookIMG from "assets/facebook.svg";
+import instagramIMG from "assets/instagram.svg";
+import twitterIMG from "assets/twitter.svg";
+import youtubeIMG from "assets/youtube.svg";
 
 const SnsCollection = ({ className }) => {
   const snsCollection = [

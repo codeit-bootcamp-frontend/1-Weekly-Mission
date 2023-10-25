@@ -1,4 +1,4 @@
-import "../style/FolderInfo.css";
+import "./FolderInfo.css";
 
 const FolderInfo = ({ data }) => {
   const { folderName, ownerName, ownerImage } = data;

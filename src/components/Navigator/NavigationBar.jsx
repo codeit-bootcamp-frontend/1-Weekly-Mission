@@ -1,5 +1,4 @@
-import LoginButton from "./LoginButton";
-import Logo from "./Logo";
+import { LoginButton, Logo } from "components";
 
 const Navigator = ({ className, isLogin, data }) => {
   const [nav, gnb, logo, cta, ctaShort] = className;
