@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import { getSample } from './api';
+import Navigation from './components/Nav/Navigation';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
 
 function App() {
+  const [folder, setFolder] = useState('');
+
+  const loadData = async (option) => {
+    const res = await getSample(option);
+    if (!res) return;
+    const newfolder = res.folder;
+    setFolder(newfolder);
+  }
+
+  useEffect(() => {
+    loadData('folder');
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      <Header name={folder.name} owner={folder.owner} />
+      <Main links={folder.links} />
+      <Footer />
+    </>
+
   );
 }
 
