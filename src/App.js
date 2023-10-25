@@ -14,7 +14,9 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
   const [userProfileImage, setUserProfileImage] = useState("");
 
-  const [isLoading, loadingError, getUserAsync] = useAsync(getUser);
+  const [isUserLoading, userLoadingError, getUserAsync] = useAsync(getUser);
+  const [isFolderLoading, folderLoadingError, getFolderAsync] =
+    useAsync(getUserFolder);
 
   const [folderUserProfileImage, setFolderUserProfileImage] = useState("");
   const [folderName, setFolderName] = useState("");
@@ -23,15 +25,16 @@ function App() {
   const [cardList, setCardList] = useState([]);
 
   const loadUser = async () => {
-    const result = await getUserAsync();
-    if (!result) return;
+    const userResult = await getUserAsync();
+    const folderResult = await getFolderAsync();
+    if (!folderResult || !userResult) return;
 
-    const { name: userName, email, profileImageSource } = result;
+    const { name: userName, email, profileImageSource } = userResult;
     setUserName(userName);
     setUserEmail(email);
     setUserProfileImage(profileImageSource);
 
-    const { folder } = await getUserFolder();
+    const { folder } = folderResult;
     setFolderUserProfileImage(folder.owner.profileImageSource);
     setFolderName(folder.name);
     setFolderUserName(folder.owner.name);
