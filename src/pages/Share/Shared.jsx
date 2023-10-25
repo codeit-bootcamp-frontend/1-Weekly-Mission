@@ -1,21 +1,25 @@
-import { useFetchSampleFolder, useFetchUserProfile } from "../../apis/fetch";
+import {
+  useFetchSampleFolder,
+  useFetchUserProfileSample,
+} from "../../apis/fetch";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Share from "../../containers/Share/Share";
 import "./Shared.css";
 
 const Shared = () => {
-  const userProfile = useFetchUserProfile();
+  const userProfile = useFetchUserProfileSample();
   const sampleFolder = useFetchSampleFolder();
   const userLoading = userProfile?.loading;
   const folderLoading = sampleFolder?.loading;
 
   let userData, folderData;
   if (!userLoading && !folderLoading) {
-    userData = userProfile.data;
-    folderData = sampleFolder.data;
+    userData = userProfile?.data;
+    folderData = sampleFolder?.data;
   }
 
+  console.log(2);
   if (userData && folderData) {
     return (
       <>
