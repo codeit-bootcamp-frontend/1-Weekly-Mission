@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import CardList from "./components/Card/Card";
 
 import { getUser, getUserFolder } from "../src/api/api";
-import "./styles/App.style.css";
+import "./App.style.css";
 
 function App() {
   const [userName, setUserName] = useState("");
