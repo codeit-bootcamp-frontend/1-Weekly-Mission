@@ -1,23 +1,16 @@
 import './App.css';
-import CardList from './components/CardList';
 import Nav from './components/Nav';
-import User from './components/User';
-import Search from './components/Search';
 import Footer from './components/Footer';
 import getFolderData from './services/api';
 import { useEffect, useState, useCallback } from 'react';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  const [cards, setcards] = useState([]);
-  const [folderInfo, setFolderInfo] = useState(null);
   const [user, setUser] = useState({});
 
   const getData = useCallback(async () => {
-    const { folder } = await getFolderData('sample/folder');
-    const userData = await getFolderData('sample/user');
+    const userData = await getFolderData('sample/use');
     setUser(userData);
-    setFolderInfo(folder);
-    setcards(folder.links);
   }, []);
 
   useEffect(() => {
@@ -27,9 +20,9 @@ function App() {
   return (
     <div className='App'>
       <Nav user={user} />
-      <User folderInfo={folderInfo} />
-      <Search />
-      <CardList cards={cards} />
+      <div className='container'>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

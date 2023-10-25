@@ -1,5 +1,10 @@
-import '../styles/Button.css';
+import styled from 'styled-components';
+
+const AuthButton = styled.button`
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  color: var(--linkbrary-white);
+`;
 
 export default function Button({ type, className }) {
-  return <button className={`button ${className}`}>{type}</button>;
+  return <AuthButton className={`button ${className}`}>{type}</AuthButton>;
 }
