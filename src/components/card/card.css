@@ -1,0 +1,84 @@
+.cardContainer {
+  width: 34rem;
+  height: 33.4rem;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cardContainer:hover {
+  border: 2px solid var(--linkbrary-primary-color, #6d6afe);
+}
+
+.cardContainer:hover img {
+  transform: scale(1.3);
+}
+
+.cardImage {
+  object-fit: cover;
+  width: 100%;
+  height: 20rem;
+}
+
+.cardImageContainer {
+  overflow: hidden;
+  background: #dddfff;
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardImageContainer > .noImgLogo {
+  width: 13.3rem;
+}
+
+.cardContainer > .contentContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 2rem;
+  height: 10.5rem;
+  gap: 1.2rem;
+  width: fit-content;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contentAgo {
+  color: #666;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.content {
+  overflow: hidden;
+  color: #000;
+  width: 300px;
+  display: -webkit-box;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+
+.contentAt {
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  .cardContainer {
+    width: 32.5rem;
+    height: 32.7rem;
+  }
+}
