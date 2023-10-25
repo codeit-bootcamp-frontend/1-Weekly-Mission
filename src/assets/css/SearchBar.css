@@ -1,0 +1,17 @@
+.searchBar-large {
+  display: flex;
+  gap: 0.62rem;
+  width: 100%;
+  max-width: 66.25rem;
+  height: 3.375rem;
+  padding: 0.94rem 1rem;
+  margin: 2.5rem 0rem;
+  border-radius: 0.625rem;
+  background-color: var(--gray-light);
+}
+
+input {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+}
