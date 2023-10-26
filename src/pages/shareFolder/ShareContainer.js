@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import useFetch from "components/common/hooks/useFetch";
+import useFetch from "hooks/useFetch";
 
 import style from "./Share.module.css";
 import { getFolder } from "api/api";
 
-import Hero from "components/common/hero/Hero.js";
-import Searchbar from "components/common/searchbar/Searchbar.js";
-import CardList from "components/common/card/CardList.js";
+import Hero from "components/hero/Hero";
+import Searchbar from "components/searchbar/Searchbar";
+import CardList from "components/card/CardList";
 import Loading from "components/loading/Loading";
 
 export default function Share() {

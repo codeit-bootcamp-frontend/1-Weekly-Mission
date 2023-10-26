@@ -1,4 +1,4 @@
-import Share from "components/units/shareFolder/Share.container.js";
+import Share from "pages/shareFolder/ShareContainer.js";
 
 export default function SharedPage() {
   return <Share />;

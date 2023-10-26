@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useFetch from "components/common/hooks/useFetch";
+import useFetch from "hooks/useFetch";
 
 import "styles/globalStyles.css";
 import { getUser } from "api/api";
 
-import Header from "components/common/header/Header";
-import Footer from "components/common/footer/Footer";
+import Header from "components/header/Header";
+import Footer from "components/footer/Footer";
 import SharedPage from "pages/shareFolder";
 
 function App() {
