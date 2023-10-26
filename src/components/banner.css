@@ -1,5 +1,6 @@
 .intro-section {
   display: flex;
+  position: relative;
   padding: 16.4rem 50rem 0;
   background: #f0f6ff;
   flex-direction: column;

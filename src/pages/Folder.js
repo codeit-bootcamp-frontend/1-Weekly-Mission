@@ -1,37 +1,32 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import CardList from '../components/CardList';
+import LinkAdd from '../components/LinkAdd';
+import Search from '../components/Search';
 import { getUserProfile } from '../services/api';
-import Banner from './Banner';
-import CardList from './CardList';
-import Search from './Search';
-import './main.css';
 
-function Main() {
-  const [folder, setFolder] = useState({});
+function Folder() {
   const [card, setCard] = useState(null);
-
   const profileInfo = useCallback(async () => {
     const introResult = await getUserProfile();
     if (!introResult) return;
 
     const { folder } = introResult;
 
-    setFolder(folder);
     setCard(folder);
   }, []);
 
   useEffect(() => {
     profileInfo();
   }, [profileInfo]);
-
   return (
-    <main>
-      {folder && <Banner folderData={folder} />}
+    <>
+      <LinkAdd />
       <div className="main-section">
         <Search />
         {card && <CardList cardData={card} />}
       </div>
-    </main>
+    </>
   );
 }
 
-export default Main;
+export default Folder;

@@ -1,0 +1,28 @@
+.intro-Wrapper {
+  padding: 6rem 32rem 9rem 32rem;
+  background-color: var(--linkbrary-bg);
+}
+.linkadd-input {
+  position: relative;
+  width: 100%;
+  padding: 1.6rem 2rem;
+  border: 1px solid #6d6afe;
+  color: var(--gray9F);
+  border-radius: 1.5rem;
+  background-image: url(../assets/icon/link.svg);
+  background-repeat: no-repeat;
+  background-position: 1.5rem center;
+  padding-left: 4rem;
+  font-size: 1.6rem;
+}
+
+.add-button {
+  position: absolute;
+  padding: 1rem 1.6rem;
+  border: 1px solid white;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  color: white;
+  border-radius: 8px;
+  top: 16.1rem;
+  right: 33.5rem;
+}
