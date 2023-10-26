@@ -1,4 +1,6 @@
+
 import styled from "styled-components";
+import { Image } from "components/Card/Card.style";
 import { onMobile, onTablet } from "styles/mediaQuery";
 
 export const CardListContainer = styled.ul`
@@ -30,7 +32,7 @@ export const CardContainer = styled.li`
   &:hover {
     background: var(--gray0);
 
-    img {
+    ${Image} {
       transform: scale(1.3);
       transition-duration: 0.5s;
     }

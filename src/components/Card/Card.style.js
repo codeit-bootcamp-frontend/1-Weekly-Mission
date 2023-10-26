@@ -7,12 +7,21 @@ export const ImageContainer = styled.div`
   overflow: hidden;
   justify-content: center;
   height: 20rem;
+  position: relative;
+`;
 
-  img {
-    width: 100%;
-    transition-duration: 0.2s;
-    object-fit: cover;
-  }
+export const Image = styled.img`
+  width: 100%;
+  transition-duration: 0.2s;
+  object-fit: cover;
+`;
+
+export const StarButton = styled.img`
+  width: 3.4rem;
+  height: 3.4rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
 `;
 
 export const Info = styled.div`
@@ -23,7 +32,16 @@ export const Info = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  position: relative;
 `;
+
+export const KebabButton = styled.img`
+  width: 2.1rem;
+  height: 1.7rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 2.0rem;
+`
 
 export const TimeDiff = styled.p`
   font-size: 1.3rem;
