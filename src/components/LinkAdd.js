@@ -3,7 +3,7 @@ import linkImg from '../assets/images/link.svg';
 import Button from './Button';
 
 const InputContainer = styled.div`
-  background-color: #f0f6ff;
+  background-color: var(--linkbrary-bg);
   padding: 60px 32px;
   width: 100%;
 `;
@@ -16,8 +16,8 @@ const InputBox = styled.div`
   margin: auto;
   padding: 16px 20px;
   border-radius: 15px;
-  border: 1px solid #6d6afe;
-  background-color: #ffffff;
+  border: 1px solid var(--linkbrary-primary-color);
+  background-color: var(--linkbrary-white);
   @media (max-width: 767px) {
     padding: 8px 10px;
   }
@@ -36,6 +36,7 @@ const LinkAddButton = styled(Button)`
   padding: 10px 16px;
   border-radius: 8px;
   font-size: 14px;
+  cursor: pointer;
 `;
 
 export default function LinkAdd() {

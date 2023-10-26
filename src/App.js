@@ -1,7 +1,7 @@
 import './App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import getFolderData from './services/api';
+import getData from './services/api';
 import { useEffect, useState, useCallback } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
@@ -16,14 +16,15 @@ const Container = styled.div`
 function App() {
   const [user, setUser] = useState({});
 
-  const getData = useCallback(async () => {
-    const { data } = await getFolderData('users/1');
+  const getUserData = useCallback(async () => {
+    const { data } = await getData('users/1');
     setUser(data[0]);
   }, []);
 
   useEffect(() => {
-    getData();
-  }, [getData]);
+    getUserData();
+    console.log('hi');
+  }, [getUserData]);
 
   return (
     <Container className='App'>

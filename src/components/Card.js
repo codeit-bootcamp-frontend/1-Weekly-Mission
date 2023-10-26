@@ -25,7 +25,10 @@ const Box = styled.div`
 `;
 
 export default function Card({ value }) {
-  const { imageSource = defaultImg } = value;
+  let { imageSource = defaultImg } = value;
+  if (value.image_source) {
+    imageSource = value.image_source;
+  }
   const imageStyle = {
     backgroundImage: `url(${imageSource})`,
   };

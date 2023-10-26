@@ -33,13 +33,10 @@ const Account = ({ user = INIT_USER }) => {
 export default function Nav({ user }) {
   const [isFixed, setIsFixed] = useState('fixed');
   const urlPath = useLocation().pathname;
-  console.log(urlPath);
   useEffect(() => {
     if (urlPath === '/folder') {
-      console.log('스태틱');
       setIsFixed('static');
     } else {
-      console.log('픽스');
       setIsFixed('fixed');
     }
   }, [urlPath]);

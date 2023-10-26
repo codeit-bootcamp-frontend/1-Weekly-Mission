@@ -1,27 +1,34 @@
 import CardList from '../components/CardList';
 import User from '../components/User';
 import Search from '../components/Search';
-import getFolderData from '../services/api';
+import getData from '../services/api';
 import { useEffect, useState, useCallback } from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  padding: 0 32px;
+`;
 
 export default function Shared() {
   const [cards, setcards] = useState([]);
   const [folderInfo, setFolderInfo] = useState(null);
 
-  const getData = useCallback(async () => {
-    const { folder } = await getFolderData('sample/folder');
+  const getFolerData = useCallback(async () => {
+    const { folder } = await getData('sample/folder');
     setFolderInfo(folder);
     setcards(folder.links);
   }, []);
 
   useEffect(() => {
-    getData();
-  }, [getData]);
+    getFolerData();
+  }, [getFolerData]);
 
   return (
     <div className='App'>
       <User folderInfo={folderInfo} />
-      <Search />
+      <Container>
+        <Search />
+      </Container>
       <CardList cards={cards} />
     </div>
   );
