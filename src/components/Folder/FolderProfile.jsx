@@ -25,7 +25,7 @@ const HeaderBlock = styled.header`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background: var(--background);
+  background: #f0f6ff;
   padding: 1rem 10rem 4rem 10rem;
 
   @media (min-width: 768px) {

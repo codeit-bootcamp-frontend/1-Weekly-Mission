@@ -1,4 +1,4 @@
-import CardList from '../CardList';
+import CardList from '../Card/CardList';
 import styled from 'styled-components';
 import SearchForm from './SearchForm';
 

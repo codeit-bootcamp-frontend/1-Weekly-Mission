@@ -17,6 +17,6 @@ const NavBlock = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background: var(--background);
+  background: #f0f6ff;
   z-index: 1;
 `
