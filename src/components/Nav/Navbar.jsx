@@ -1,35 +1,12 @@
 import UserProfile from './UserProfile';
 import styled from 'styled-components';
-import { useCallback, useEffect, useState } from 'react';
-import useAsync from '../../hooks/useAsync';
-import { getUserProfile } from '../../api/api';
 import Logo from './Logo';
 
 function Navbar() {
-  const [userProfile, setUserProfile] = useState(null);
-  const [isLoadingUserProfile, userProfileLoadingError, getUserProfileAsync] = useAsync(getUserProfile);
-
-  const handleUserProfile = useCallback(
-    async () => {
-      const result = await getUserProfileAsync();
-      if (!result) {
-        return;
-      }
-
-      const userProfile = { ...result };
-      setUserProfile(userProfile);
-    }, [getUserProfileAsync],
-  );
-
-  useEffect(() => {
-    handleUserProfile();
-  }, [handleUserProfile]);
-
   return (
     <NavbarStyle>
       <Logo />
-      <UserProfile userProfile={userProfile} />
-      {userProfileLoadingError?.message && <span>{userProfileLoadingError.message}</span>}
+      <UserProfile />
     </NavbarStyle>
   );
 }

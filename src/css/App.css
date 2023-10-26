@@ -1,31 +1,5 @@
 @import './colors.css';
 
-/* 네비게이션 */
-
-@media (min-width: 768px) {
-    .user-profile {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-    }
-}
-
-.user-profile-image {
-    width: 2.8rem;
-    height: 2.8rem;
-    border-radius: 70%;
-}
-
-.user-profile-email {
-    display: none;
-
-    @media (min-width: 768px) {
-        display: inline-block;
-        font-size: 1.4rem;
-        font-weight: 400;
-    }
-}
-
 /* 폴더 프로필 */
 header {
     display: flex;
