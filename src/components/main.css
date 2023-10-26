@@ -113,21 +113,27 @@
     position: relative;
   }
   
-  .card-img-wrap .logoImg {
+.card-img-wrap .logo-img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  
-  .card:hover .card-img {
+}
+
+.card-img-wrap .star-img {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.card:hover .card-img {
     transform: scale(130%);
     transition: 1s;
-  }
-  
-  .card:hover .card-inpormation {
+}
+
+.card:hover .card-inpormation {
     background: var(--linkbrary-bg)
-  }
+}
 
 .card-img {
     width: 100%;
@@ -156,12 +162,24 @@
     
 }
 
+.card-inpormation .card-inpormation-first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .card-inpormation .time {
     color: #666;
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.card-inpormation .Kebab-botton {
+    width: 21px;
+    height: 17px;
 }
 
 .card-inpormation p {

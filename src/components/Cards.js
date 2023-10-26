@@ -1,5 +1,7 @@
 import React from 'react';
 import logoImg from "../img/svg/noImgLogo.svg";
+import starImg from "../img/svg/star.svg";
+import kebabImg from '../img/svg/kebab.svg';
 import { getTimeDiff } from '../utils/postTime';
 
 
@@ -17,11 +19,15 @@ function CardItem({item}) {
     return (
         <div className='card'>
             <div className="card-img-wrap">
-                {!item.imageSource ? <img className="logoImg" src={logoImg} alt='로고이미지'/> :
+                {!item.imageSource ? <img className="logo-img" src={logoImg} alt='로고이미지'/> :
                 <div className='card-img' style={imgStyle}></div>}
+                <img className="star-img" src={starImg} alt='별모양 버튼'/>
             </div>
             <div className='card-inpormation'>
-                <div className='time'>{nowDate}</div>
+                <div className='card-inpormation-first-line'>
+                    <div className='time'>{nowDate}</div>
+                    <img className='Kebab-botton' src={kebabImg} alt='케밥이미지'/>
+                </div>
                 <p>{item.description}</p>
                 <div className='day'>{item.createdAt.split("T")[0]}</div>  
             </div>  
