@@ -1,0 +1,9 @@
+.folder-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 320px 90px 320px;
+  gap: 8px;
+  background: var(--backgroundcolor-skyblue-10);
+}

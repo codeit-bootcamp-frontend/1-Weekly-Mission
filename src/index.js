@@ -4,6 +4,7 @@ import React from 'react';
 import SharedPage from './pages/share/SharedPage';
 import LandingPage from './pages/landing/LandingPage';
 import Layout from './components/layout/Layout';
+import FolderPage from './pages/folder/FolderPage';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/shared',
         element: <SharedPage />,
+      },
+      {
+        path: '/folder',
+        element: <FolderPage />,
       },
     ],
   },
