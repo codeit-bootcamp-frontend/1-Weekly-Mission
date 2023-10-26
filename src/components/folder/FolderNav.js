@@ -16,16 +16,41 @@ const FolderItem = styled.li`
   list-style: none;
   font-size: 1.6rem;
   font-weight: 400;
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: var(--primary-color);
+  }
 `;
 
-function FolderNav({ folders }) {
+const selectFolderStyle = {
+  color: 'white',
+  backgroundColor: 'var(--primary-color)',
+};
+
+function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAll }) {
   const folderData = folders.data;
-  console.log(folderData);
   return (
     <FolderList>
-      <FolderItem>전체</FolderItem>
-      {folderData.map((folder) => folder.name !== 'string' && <FolderItem key={folder.id}>{folder.name}</FolderItem>)}
+      <FolderItem style={selectedFolderId === -1 ? selectFolderStyle : null} onClick={onChangeFolderAll}>
+        전체
+      </FolderItem>
+      {folderData.map((folder) => {
+        const selectedStyle = folder.id === selectedFolderId ? selectFolderStyle : null;
+        return folder.name !== 'string' && <FolderListItem style={selectedStyle} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />;
+      })}
     </FolderList>
+  );
+}
+
+function FolderListItem({ folder, onChangeFolder, style }) {
+  function handleFolderClick() {
+    onChangeFolder(folder.id);
+  }
+  return (
+    <FolderItem style={style} key={folder.id} onClick={handleFolderClick}>
+      {folder.name}
+    </FolderItem>
   );
 }
 

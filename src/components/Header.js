@@ -1,7 +1,7 @@
 import '../styles/header.css';
 import { useEffect, useState } from 'react';
 import { getData } from '../utils/getData';
-import PATH from '../constants/path';
+import { PATH } from '../constants/path';
 import Profile from './Profile';
 import LoginBtn from './LoginBtn';
 import logoImg from '../assets/images/logo.svg';
