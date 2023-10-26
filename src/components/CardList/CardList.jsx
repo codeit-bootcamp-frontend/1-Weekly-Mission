@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "components/Card";
 import { getFolder } from "api";
-import "./CardList.css";
+import * as S from "./CardList.style";
 
 function CardList() {
   const [items, setItems] = useState();
@@ -18,15 +18,15 @@ function CardList() {
   return (
     <>
       {items && (
-        <ul className="CardList">
+        <S.CardListContainer>
           {items.map((item) => {
             return (
-              <li className="Card" key={item.id}>
+              <S.CardContainer key={item.id}>
                 <Card item={item} />
-              </li>
+              </S.CardContainer>
             );
           })}
-        </ul>
+        </S.CardListContainer>
       )}
     </>
   );

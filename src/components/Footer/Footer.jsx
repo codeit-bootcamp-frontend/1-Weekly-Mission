@@ -2,23 +2,23 @@ import facebookLogo from "images/sns/facebook.svg";
 import twitterLogo from "images/sns/twitter.svg";
 import youtubeLogo from "images/sns/youtube.svg";
 import instagramLogo from "images/sns/instagram.svg";
-import "./Footer.css";
+import * as S from './Footer.style'
 
 function Footer() {
   return (
     <>
-      <footer>
-        <div className="footer-box">
-          <span className="copyright">©codeit - 2023</span>
-          <div className="footer-links">
-            <a className="footer-link" href="/html/privacy.html">
+      <S.FooterContainer>
+        <S.FooterBox>
+          <S.Copyright>©codeit - 2023</S.Copyright>
+          <S.FooterLinks>
+            <S.FooterLink href="/html/privacy.html">
               Privacy Policy
-            </a>
-            <a className="footer-link" href="/html/faq.html">
+            </S.FooterLink>
+            <S.FooterLink href="/html/faq.html">
               FAQ
-            </a>
-          </div>
-          <div className="sns">
+            </S.FooterLink>
+          </S.FooterLinks>
+          <S.SNS>
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
               <img src={facebookLogo} alt="facebook 홈페이지로 연결된 facebook 로고" />
             </a>
@@ -31,9 +31,9 @@ function Footer() {
             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
               <img src={instagramLogo} alt="instagram 홈페이지로 연결된 instagram 로고" />
             </a>
-          </div>
-        </div>
-      </footer>
+          </S.SNS>
+        </S.FooterBox>
+      </S.FooterContainer>
     </>
   );
 }

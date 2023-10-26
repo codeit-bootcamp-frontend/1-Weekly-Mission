@@ -1,13 +1,13 @@
-import "./Profile.css";
+import * as S from "./Profile.style";
 
 function Profile({ data }) {
   const { name, email, profileImageSource } = data;
 
   return (
-    <div className="profile">
-      <img className="image" src={profileImageSource} alt={name}></img>
-      <p className="email">{email}</p>
-    </div>
+    <S.ProfileContainer>
+      <img src={profileImageSource} alt={name}></img>
+      <p>{email}</p>
+    </S.ProfileContainer>
   );
 }
 

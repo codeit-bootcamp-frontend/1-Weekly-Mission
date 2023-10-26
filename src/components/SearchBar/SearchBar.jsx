@@ -1,6 +1,6 @@
 import { useState } from "react";
 import searchIcon from "images/icon/search.svg";
-import "./SearchBar.css";
+import * as S from "./SearchBar.style";
 
 function SearchBar() {
   const [value, setValue] = useState("");
@@ -10,12 +10,12 @@ function SearchBar() {
   };
 
   return (
-    <div className="search-container">
-      <form className="search-form">
-        <input className="search-input" value={value} onChange={handleValueChange} placeholder="링크를 검색해 보세요." />
-        <img className="search-icon" src={searchIcon} alt="검색 아이콘" />
+    <S.SearchBarContainer>
+      <form>
+        <input value={value} onChange={handleValueChange} placeholder="링크를 검색해 보세요." />
+        <img src={searchIcon} alt="검색 아이콘" />
       </form>
-    </div>
+    </S.SearchBarContainer>
   );
 }
 

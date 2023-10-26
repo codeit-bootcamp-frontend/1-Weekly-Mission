@@ -1,4 +1,4 @@
-import "./FolderInfo.css";
+import * as S from "./FolderInfo.style";
 
 function FolderInfo({ data }) {
   const { folder } = data;
@@ -8,11 +8,11 @@ function FolderInfo({ data }) {
   const ownerProfileImg = owner?.profileImageSource;
 
   return (
-    <div className="folderInfo">
-      <img className="folderImg" src={ownerProfileImg} alt="폴더 소유자 프로필 이미지" />
-      <p className="ownerName">{ownerName}</p>
-      <h1 className="folderName">{folderName}</h1>
-    </div>
+    <S.FolderInfoContainer>
+      <img src={ownerProfileImg} alt="폴더 소유자 프로필 이미지" />
+      <p>{ownerName}</p>
+      <h1>{folderName}</h1>
+    </S.FolderInfoContainer>
   );
 }
 
