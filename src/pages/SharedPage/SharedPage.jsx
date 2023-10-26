@@ -3,7 +3,7 @@ import SearchBar from "components/SearchBar";
 import FolderInfo from "components/FolderInfo";
 import { useEffect, useState } from "react";
 import { getFolder } from "api";
-import * as S from "./SharedPage.style";
+import { MainDiv } from "styles/MainDiv";
 
 function SharedPage() {
   const [folder, setFolder] = useState({});
@@ -20,10 +20,10 @@ function SharedPage() {
   return (
     <>
       <FolderInfo data={folder} />
-      <S.Main>
+      <MainDiv>
         <SearchBar />
         <CardList />
-      </S.Main>
+      </MainDiv>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { onTablet } from "styles/mediaQuery";
+import { onMobile, onTablet } from "styles/mediaQuery";
 
 export const NavContainer = styled.div`
   display: flex;
@@ -8,13 +8,17 @@ export const NavContainer = styled.div`
   width: 100%;
   max-width: 192rem;
   height: 9.4rem;
-  padding: 0 20rem;
+  padding: 3.2rem 20rem;
   /* position: fixed;
   top: 0; */
   background-color: #edf7ff;
 
   ${onTablet} {
-    padding: 0 3.2rem;
+    padding: 3.2rem;
+  }
+
+  ${onMobile} {
+    padding: 1.8rem 3.2rem;
   }
 `;
 
