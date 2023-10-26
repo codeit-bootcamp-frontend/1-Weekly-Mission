@@ -2,10 +2,12 @@ import * as S from './Social.style';
 import GOOGLE from 'assets/icons/google.png';
 import KAKAO from 'assets/icons/kakotalk.svg';
 
-function Social() {
+function Social({ type }) {
   return (
     <S.SocialContainer>
-      <S.Text>소셜 로그인</S.Text>
+      <S.Text>
+        {type === 'signin' ? '소셜 로그인' : '다른 방식으로 가입하기'}
+      </S.Text>
       <S.SnsContainer>
         <S.Google href='https://google.com'>
           <img src={GOOGLE} alt='구글 로고' />

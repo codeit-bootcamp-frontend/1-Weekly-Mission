@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { COLORS } from 'styles/palette';
 
 export const HeaderContainer = styled.div`
@@ -19,7 +20,7 @@ export const Redirect = styled.p`
   line-height: 1.5;
 `;
 
-export const RedirectLink = styled.a`
+export const RedirectLink = styled(Link)`
   margin-left: 0.6rem;
   font-size: 1.6rem;
   font-weight: 600;

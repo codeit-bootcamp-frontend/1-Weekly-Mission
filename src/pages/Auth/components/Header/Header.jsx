@@ -3,17 +3,34 @@ import * as S from './Header.style';
 import A11y from 'components/A11y';
 import LB_LOGO from 'assets/icons/linkbrary.svg';
 
-function Header() {
+const TEXT = {
+  signin: {
+    a11y: '링크브러리 로그인',
+    redirect: '회원이 아니신가요?',
+    redirectLink: '회원 가입하기',
+  },
+  signup: {
+    a11y: '링크브러리 회원가입',
+    redirect: '이미 회원이신가요?',
+    redirectLink: '로그인 하기',
+  },
+};
+
+function Header({ type }) {
+  const redirectUrl = {
+    signin: '/signup',
+    signup: '/signin',
+  };
   return (
     <S.HeaderContainer>
-      <A11y>링크브러리 로그인</A11y>
+      <A11y>{TEXT[type].A11y}</A11y>
       <Link to='/'>
         <S.Logo src={LB_LOGO} alt='링크브러리 로고' />
       </Link>
-      <S.Redirect class='auth__redirect'>
-        회원이 아니신가요?
-        <S.RedirectLink href='/pages/signup.html' class='auth__redirect-link'>
-          회원 가입하기
+      <S.Redirect>
+        {TEXT[type].redirect}
+        <S.RedirectLink to={redirectUrl[type]}>
+          {TEXT[type].redirectLink}
         </S.RedirectLink>
       </S.Redirect>
     </S.HeaderContainer>

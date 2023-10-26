@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import * as S from './Banner.style';
 import Button from 'components/Button';
 import FOLDER_PAGE_EXAMPLE from 'assets/images/folder-page.png';
@@ -12,7 +13,9 @@ function Banner() {
           쉽게 저장하고 관리해 보세요
         </S.Title>
         <S.Signup>
-          <Button>링크 추가하기</Button>
+          <Link to='/signup'>
+            <Button>링크 추가하기</Button>
+          </Link>
         </S.Signup>
         <S.ImgContainer>
           <S.Img src={FOLDER_PAGE_EXAMPLE} alt='링크 페이지 예시' />
