@@ -55,15 +55,16 @@ const Folder = ({ folderInfo, color, onClick }) => {
   );
 };
 
-export default function FolderList({ userFolder }) {
-  const [currentButton, setCurrentButton] = useState(0);
+export default function FolderList({ userFolder, onCurrentFolderId }) {
+  const [currentButton, setCurrentButton] = useState('');
   const handleFolder = (e) => {
-    const id = Number(e.target.id);
+    const id = e.target.id;
     if (id === currentButton) {
-      setCurrentButton(0);
+      setCurrentButton('');
     } else {
       setCurrentButton(id);
     }
+    onCurrentFolderId(id);
   };
 
   return (
@@ -72,16 +73,16 @@ export default function FolderList({ userFolder }) {
         <Folder
           folderInfo={ALL}
           key='전체'
-          color={`${currentButton === 0}`}
+          color={`${currentButton === ''}`}
           onClick={handleFolder}
-          id='0'
+          id=''
         />
         {userFolder.map((folder) => (
           <Folder
             folderInfo={folder}
             key={folder.id}
             onClick={handleFolder}
-            color={`${currentButton === folder.id}`}
+            color={`${currentButton === String(folder.id)}`}
           />
         ))}
       </FolderBox>

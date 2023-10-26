@@ -23,7 +23,6 @@ function App() {
 
   useEffect(() => {
     getUserData();
-    console.log('hi');
   }, [getUserData]);
 
   return (

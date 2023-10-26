@@ -28,10 +28,15 @@ export default function Folder() {
 
   const getFolderData = useCallback(async () => {
     const { data } = await getData('users/1/folders');
-    const linkData = await getData('users/1/links' + currentFolderId);
+    const linkData = await getData('users/1/links?folderId=' + currentFolderId);
     setUserFolder(data);
     setLinks(linkData.data);
+    console.log('실행');
   }, [currentFolderId]);
+
+  const handleCurrentFolderId = (id) => {
+    setCurrentFolderId(id);
+  };
 
   useEffect(() => {
     getFolderData();
@@ -44,7 +49,10 @@ export default function Folder() {
         <Search />
         {userFolder ? (
           <div>
-            <FolderList userFolder={userFolder} />
+            <FolderList
+              userFolder={userFolder}
+              onCurrentFolderId={handleCurrentFolderId}
+            />
             <Option />
             <CardList cards={links} />
           </div>
