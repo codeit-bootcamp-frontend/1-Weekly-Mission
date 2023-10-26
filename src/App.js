@@ -7,17 +7,17 @@ import { getFolderData, getUserData } from "./services/api";
 import { useEffect, useState, useCallback } from "react";
 
 function App() {
-  const [cards, setcards] = useState([]);
+  const [cards, setCards] = useState([]);
   const [folderInfo, setFolderInfo] = useState({});
   const [owner, setOwner] = useState({});
   const [user, setUser] = useState([]);
 
-  const getdata = useCallback(async () => {
+  const getData = useCallback(async () => {
     const { folder } = await getFolderData();
     const ownerInfo = { ...folder.owner };
     setFolderInfo(folder);
     setOwner(ownerInfo);
-    setcards(folder.links);
+    setCards(folder.links);
   }, []);
 
   const getUserInfo = useCallback(async () => {
@@ -26,8 +26,8 @@ function App() {
   });
 
   useEffect(() => {
-    getdata();
-  }, [getdata]);
+    getData();
+  }, [getData]);
 
   useEffect(() => {
     getUserInfo();
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav profileImageSource={user.profileImageSource} email={user.email} />
+      <Nav user={user} />
       <Header folderInfo={folderInfo} owner={owner} />
       <Main cards={cards} />
       <Footer />
