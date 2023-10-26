@@ -9,8 +9,7 @@ const useFetch = (url) => {
       const response = await fetch(url);
       if (response.status === 200) {
         const jsonData = await response.json();
-        // console.log(data);
-        // cleanup이 false이면은 데이터 줍줍
+
         if (!cleanup) {
           setItems(jsonData);
           setIsLoading(false);

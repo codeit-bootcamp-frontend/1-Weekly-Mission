@@ -7,7 +7,7 @@ export default function ImageListItem({ item }) {
   const { createdAt, url, title, description, imageSource } = item;
   const currentData = parseDatestring(new Date());
   const targetData = parseDatestring(createdAt);
-  console.log(currentData, targetData);
+  // console.log(currentData, targetData);
   //const result = compareNowAndAfter(currentData, targetData);
   const { year, month, day } = targetData;
 
