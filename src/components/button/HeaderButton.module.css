@@ -1,6 +1,6 @@
 .container {
+  border: 5px solid red;
   background-color: var(--background);
-  border: 5px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,4 +45,5 @@
 
 .add_button {
   align-self: center;
+  margin-right: 1rem;
 }

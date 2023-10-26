@@ -11,6 +11,7 @@ export default function FolderPage() {
     <div>
       <NavSec />
       <Header />
+      <SearchBar />
     </div>
   );
 }
