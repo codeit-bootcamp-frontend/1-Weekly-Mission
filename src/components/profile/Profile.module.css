@@ -1,4 +1,11 @@
-.text__codeit {
-  font-size: 1.4rem;
-  font-weight: bold;
+.user-email {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
+  /* descktop*/
+  @media (min-width: 1200px) {
+    display: inline-block;
+  }
 }

@@ -1,23 +1,22 @@
 import "./assets/css/reset.css";
 import "./assets/css/global.css";
-import Nav from "./components/nav/Nav";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import SharedPage from "./pages/SharedPage"; // 얜 왜 빨간색?
+import FolderPage from "./pages/FolderPage";
 import LandingPage from "./pages/LandingPage";
-import Profile from "./components/profile/Profile";
-import useFetch from "./hooks/useFetch";
 
 function App() {
-  const response = useFetch("https://bootcamp-api.codeit.kr/api/sample/folder");
-  const [data, isLoading] = response;
-
   return (
     <div className="App">
-      <Nav />
-      <Header data={data} isLoading={isLoading} />
-      <LandingPage data={data} isLoading={isLoading} />
-      <Footer />
-      <Profile />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/folder" element={<FolderPage />} />
+          <Route path="/shared" element={<SharedPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
