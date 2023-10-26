@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 const App = () => {
   
-  const [account, setAccount] = useState();
+  const [account, setAccount] = useState({email: 'stranger'});
   const [folder, setFolder] = useState();
 
   const handleLoad = async () => {
@@ -21,12 +21,12 @@ const App = () => {
 
   useEffect(() => {
     handleLoad();
-  }, [account]);
+  }, []);
 
   return (
     <>
-      {account && <Nav account={account}/>}  {/*고치기..*/}
-      {folder && <Header folder={folder}/>}  
+      <Nav account={account}/>
+      {folder && <Header folderInfo={folder}/>}  
       {folder && <Main folder={folder}/>}
       <Footer />
     </>

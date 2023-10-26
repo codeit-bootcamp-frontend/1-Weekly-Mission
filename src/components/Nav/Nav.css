@@ -50,6 +50,7 @@ nav {
 }
 
 .login-button {
+  display: flex;
   width: 12.8rem;
   padding: 1.6rem 2rem;
   border: 0;
@@ -59,10 +60,8 @@ nav {
   color: var(--gray-light);
   font-size: 1.8rem;
   font-weight: 600;
-  line-height: normal;
   border-radius: 0.8rem;
   background: var(--gra-blue-to-skyBlue);
-  display: flex;
   cursor: pointer;
 }
 

@@ -1,4 +1,3 @@
-import searchIcon from "./Search_icon.svg";
 import Cards from '../Card/Card';
 import './Main.css';
 import '../../globalStyles.css'

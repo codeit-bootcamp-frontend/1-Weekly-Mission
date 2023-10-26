@@ -4,7 +4,8 @@ import NavLogo from './Nav_logo.svg';
 
 const Nav = ( {account} ) => {
 
-  const {email, profileImageSource} = account;
+  const {email, profileImageSource} = (account.email ===  'stranger') ? {} : account;
+  // 로그인 전 후 비교하려고 useState email 초기값 stranger로 지정해서 조건 연산자 썼는데 괜찮은 코드일까요..?
 
   return (
     <nav> 

@@ -1,8 +1,8 @@
 import './Header.css';
 import '../../globalStyles.css'
 
-const Header = ( {folder} ) => {
-  const {folderTitle, owner} = folder;
+const Header = ( {folderInfo} ) => {
+  const {folderTitle, owner} = folderInfo;
   const {profileImageSource, name} = owner;
 
   return (
