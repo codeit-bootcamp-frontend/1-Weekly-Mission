@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/footer.css';
+import './footer.css';
 import facebookImg from '../img/png/Vector-1.png';
 import twitterImg from '../img/png/Vector-2.png';
 import youtubeImg from '../img/png/Vector-3.png';
