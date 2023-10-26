@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import addImg from '../assets/images/add.svg';
+import { useState } from 'react';
+import '../styles/FolderList.css';
 
 const AddFoler = styled.div`
   display: flex;
@@ -20,13 +22,19 @@ const Box = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: var(--linkbrary-white);
+  background-color: ${({ color }) =>
+    color === 'true'
+      ? 'var(--linkbrary-primary-color)'
+      : 'var(--linkbrary-white)'};
+  color: ${({ color }) =>
+    color === 'true' ? 'var(--linkbrary-white)' : 'black'};
   border: 1px solid var(--linkbrary-primary-color);
   padding: 8px 12px;
   border-radius: 5px;
   line-height: 100%;
   display: flex;
   flex-shrink: 0;
+  cursor: pointer;
 `;
 
 const FolderBox = styled.div`
@@ -39,17 +47,42 @@ const ALL = {
   name: '전체',
 };
 
-const Folder = ({ folderInfo }) => {
-  return <Button>{folderInfo.name}</Button>;
+const Folder = ({ folderInfo, color, onClick }) => {
+  return (
+    <Button color={color} onClick={onClick} id={folderInfo.id}>
+      {folderInfo.name}
+    </Button>
+  );
 };
 
 export default function FolderList({ userFolder }) {
+  const [currentButton, setCurrentButton] = useState(0);
+  const handleFolder = (e) => {
+    const id = Number(e.target.id);
+    if (id === currentButton) {
+      setCurrentButton(0);
+    } else {
+      setCurrentButton(id);
+    }
+  };
+
   return (
     <Box>
       <FolderBox>
-        <Folder folderInfo={ALL} />
+        <Folder
+          folderInfo={ALL}
+          key='전체'
+          color={`${currentButton === 0}`}
+          onClick={handleFolder}
+          id='0'
+        />
         {userFolder.map((folder) => (
-          <Folder folderInfo={folder} key={folder.id} id={folder.id} />
+          <Folder
+            folderInfo={folder}
+            key={folder.id}
+            onClick={handleFolder}
+            color={`${currentButton === folder.id}`}
+          />
         ))}
       </FolderBox>
       <AddFoler>
