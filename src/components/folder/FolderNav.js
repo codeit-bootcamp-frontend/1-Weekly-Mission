@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 const FolderList = styled.ul`
+  width: 900px;
   padding: 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 6px;
+  @media (max-width: 1124px) {
+    width: 620px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const FolderItem = styled.li`
@@ -37,7 +44,7 @@ function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAl
       </FolderItem>
       {folderData.map((folder) => {
         const selectedStyle = folder.id === selectedFolderId ? selectFolderStyle : null;
-        return folder.name !== 'string' && <FolderListItem style={selectedStyle} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />;
+        return <FolderListItem style={selectedStyle} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />;
       })}
     </FolderList>
   );

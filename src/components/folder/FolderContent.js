@@ -2,7 +2,6 @@ import '../../styles/sharedContent.css';
 import { useState, useEffect, useCallback } from 'react';
 import { getData } from '../../utils/getData';
 import { PATH } from '../../constants/path';
-import { makeQueryStr } from '../../utils/makeQueryStr';
 import SearchBar from '../SearchBar.js';
 import FolderNav from './FolderNav';
 import AddFolderBtn from './AddFolderBtn';
@@ -13,6 +12,13 @@ const NavContainer = styled.div`
   padding: 40px 0 0;
   display: flex;
   justify-content: space-between;
+`;
+
+const NoLinkMsg = styled.div`
+  padding: 100px 0;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 24px;
 `;
 
 function FolderContent() {
@@ -47,14 +53,16 @@ function FolderContent() {
       <div className="content_container">
         <SearchBar />
         {folders ? (
-          <NavContainer>
-            <FolderNav folders={folders} selectedFolderId={folder} onChangeFolder={handleChangeFolder} onChangeFolderAll={handleChangeFolderAll} />
-            <AddFolderBtn />
-          </NavContainer>
+          <>
+            <NavContainer>
+              <FolderNav folders={folders} selectedFolderId={folder} onChangeFolder={handleChangeFolder} onChangeFolderAll={handleChangeFolderAll} />
+              <AddFolderBtn />
+            </NavContainer>
+            <CardList linksData={links} />
+          </>
         ) : (
-          <div>저장된 링크가 없습니다.</div>
+          <NoLinkMsg>저장된 링크가 없습니다.</NoLinkMsg>
         )}
-        <CardList linksData={links} />
       </div>
     </main>
   );
