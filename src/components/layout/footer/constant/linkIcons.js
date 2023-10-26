@@ -1,7 +1,7 @@
-import facebookIcon from '../../../assets/landing/facebookIcon.svg';
-import instagramIcon from '../../../assets/landing/instagramIcon.svg';
-import twitterIcon from '../../../assets/landing/twitterIcon.svg';
-import youtubeIcon from '../../../assets/landing/youtubeIcon.svg';
+import facebookIcon from '../../../../assets/landing/facebookIcon.svg';
+import instagramIcon from '../../../../assets/landing/instagramIcon.svg';
+import twitterIcon from '../../../../assets/landing/twitterIcon.svg';
+import youtubeIcon from '../../../../assets/landing/youtubeIcon.svg';
 
 const LINK_ICONS = [
   {
