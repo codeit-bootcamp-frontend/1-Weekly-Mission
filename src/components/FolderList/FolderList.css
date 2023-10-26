@@ -1,0 +1,56 @@
+.folders {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  max-width: 1060px;
+  margin: 20px auto;
+}
+
+.folder-list {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 12px;
+}
+
+.folder-item {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+}
+
+.folder-item:hover {
+  background: var(--color-primary);
+}
+
+.folder-add {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #6d6afe;
+  font-family: "Pretendard";
+  cursor: pointer;
+  justify-self: end;
+}
+
+.folder-select {
+  font-family: "Pretendard";
+  font-size: 24px;
+}
+
+.selected-folder-details {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+
+.folder-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
