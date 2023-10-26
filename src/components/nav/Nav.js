@@ -15,26 +15,11 @@ export default function Nav() {
     "https://bootcamp-api.codeit.kr/api/sample/user"
   );
 
-  // const [data, isLoading] = response;
-
-  // const handlUserDate = async () => {
-  //   const { email } = await getUsersData();
-  //   if (email) {
-  //     setUserEmail(email);
-  //     setIsUser(true);
-  //     return;
-  //   }
-  //   setIsUser(false);
-  // };
-  // useEffect(() => {
-  //   handlUserDate();
-  // }, []);
   return (
     <div className={styles.container}>
       <Logo />
       <div className={styles.profile__container}>
         {userData.email ? <Person /> : <Login />}
-        {/* {isUser && <span className="user-email">{userEmail}</span>} */}
         {userData.email && <Profile data={userData} />}
       </div>
     </div>

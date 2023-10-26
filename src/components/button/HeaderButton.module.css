@@ -1,5 +1,5 @@
 .container {
-  background-color: #edf7ff;
+  background-color: var(--background);
   border: 5px solid black;
   display: flex;
   justify-content: center;
@@ -19,7 +19,26 @@
 }
 
 .button__container {
-  border: 5px solid red;
+  border: 3px solid var(--primary);
+  border-radius: 15px;
+  background-color: var(--white);
   width: 40%;
   height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input__container {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  border: none;
+}
+
+.image {
+  height: 3rem;
+  text-align: center;
 }

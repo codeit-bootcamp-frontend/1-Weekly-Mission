@@ -4,7 +4,7 @@ import FolderSkeleton from "../skeleton/FolderSkeleton";
 // 얘 왜 빨간거 뜨냥
 import HeaderButton from "../button/HeaderButton";
 export default function Header({ data, isLoading }) {
-  if (data && isLoading) {
+  if (data) {
     return (
       <div>
         {!isLoading ? (
