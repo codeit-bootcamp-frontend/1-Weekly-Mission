@@ -1,6 +1,20 @@
 .notSaveLink {
-  margin: 4rem 19rem;
-  padding: 3.5rem;
+  margin: 4.1rem 19rem;
   font-size: 1.6rem;
   text-align: center;
+}
+
+@media (max-width: 1199px) {
+  .notSaveLink {
+    margin: 5.4rem 19rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .notSaveLink {
+    margin: 4rem 6rem;
+    margin-bottom: 15.1rem;
+    font-size: 1.6rem;
+    text-align: center;
+  }
 }

@@ -26,3 +26,30 @@
   top: 16.1rem;
   right: 33.5rem;
 }
+
+@media (max-width: 1199px) {
+  .intro-Wrapper {
+    padding: 6rem 3.2rem 9rem 3.2rem;
+    background-color: var(--linkbrary-bg);
+  }
+  .add-button {
+    top: 13.5rem;
+    right: 5.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .linkadd-input {
+    font-size: 1.4rem;
+  }
+  .add-button {
+    top: 13.3rem;
+    right: 4.5rem;
+  }
+  .notSaveLink {
+    margin: 4rem 6rem;
+    text-align: center;
+    margin-bottom: 13rem;
+    font-size: 1.6rem;
+  }
+}

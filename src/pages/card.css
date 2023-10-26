@@ -2,6 +2,7 @@
   width: 106rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 4rem;
   margin: 0 auto;
   margin-top: 4rem;
