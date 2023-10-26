@@ -14,17 +14,19 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   overflow: hidden;
+  position: relative;
 }
 
-.card-img-section-empty {
+.star-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.card-empty {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 340px;
-  height: 200px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  overflow: hidden;
   background: var(--color-purple-20);
 }
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import './card.css';
 import logo from '../../assets/common/logo.svg';
+import starIcon from '../../assets/common/star.svg';
+// import kebabIcon from '../../assets/common/kebab.svg';
 import calcCreateTime from '../../utils/calcCreateTime';
 
 function Card({ linkInfo }) {
@@ -23,9 +25,10 @@ function Card({ linkInfo }) {
           className={
             linkInfo?.imageSource
               ? 'card-img-section'
-              : 'card-img-section-empty'
+              : 'card-img-section card-empty'
           }
         >
+          <img src={starIcon} alt="star" className="star-icon" />
           <img
             src={linkInfo?.imageSource ?? logo}
             className={linkInfo?.imageSource ? 'link-img' : 'link-img-empty'}
