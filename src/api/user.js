@@ -1,11 +1,14 @@
+import axios from 'axios';
+
 const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
 
 export async function getUserProfile() {
-  const response = await fetch(`${BASE_URL}/sample/user`);
-  if (!response.ok) {
+  try {
+    const response = await axios.get(`${BASE_URL}/sample/user`);
+    return response.data;
+  } catch (error) {
     throw new Error('유저 프로필 정보를 불러오지 못했습니다.');
   }
-  return await response.json();
 }
 
 export async function getCards() {
