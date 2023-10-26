@@ -24,7 +24,7 @@ const FooterBlock = styled.div`
   justify-content: center;
   width: 100%;
   height: 16rem;
-  background-color: var(--black);
+  background-color: #111322;
 `;
 
 const FooterBox = styled.div`

@@ -1,4 +1,3 @@
-import './css/reset.css';
 import { useCallback, useEffect, useState } from 'react';
 import { getCards } from './api/user';
 import useAsync from './hooks/useAsync';
@@ -6,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import Nav from './components/Nav/Nav';
 import FolderProfile from './components/Folder/FolderProfile';
 import FolderMain from './components/Folder/FolderMain';
+import GlobalStyle from './styles/GlobalStyle';
 
 
 function App() {
@@ -37,9 +37,10 @@ function App() {
 
   return (
     <div className='App'>
+      <GlobalStyle />
       <Nav />
-      <FolderProfile folderProfile={folderProfile}/>
-      <FolderMain cards={cards} cardsLoadingError={cardsLoadingError}/>
+      <FolderProfile folderProfile={folderProfile} />
+      <FolderMain cards={cards} cardsLoadingError={cardsLoadingError} />
       <Footer />
     </div>
   );
