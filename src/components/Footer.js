@@ -11,10 +11,10 @@ const SnsLogo = [
   { href: "https://www.instagram.com/", src: instagram, alt: "instagram" },
 ];
 
-const FooterSns = ({ logo }) => {
+const FooterSns = ({ href, src, alt }) => {
   return (
-    <a href={logo.href} target="_blank" rel="noopener noreferrer">
-      <img src={logo.src} alt={logo.alt} />
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <img src={src} alt={alt} />
     </a>
   );
 };
@@ -34,7 +34,7 @@ const Footer = () => {
         </div>
         <div className="footer-sns">
           {SnsLogo.map((sns) => (
-            <FooterSns key={sns.alt} logo={sns} />
+            <FooterSns key={sns.alt} {...sns} />
           ))}
         </div>
       </div>

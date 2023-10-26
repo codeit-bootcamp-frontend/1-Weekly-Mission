@@ -20,6 +20,8 @@ const StyledButton = styled.button`
   font-weight: 600;
 `;
 
-export function Button({ name }) {
+const Button = ({ name }) => {
   return <StyledButton>{name}</StyledButton>;
-}
+};
+
+export { Button };

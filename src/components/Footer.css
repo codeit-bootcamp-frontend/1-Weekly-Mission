@@ -8,6 +8,7 @@
   padding: 32px 104px 62px 104px;
   height: 160px;
 }
+
 .footer-container {
   max-width: 1920px;
   display: flex;
@@ -15,6 +16,14 @@
   width: 100%;
   justify-content: space-between;
   color: #676767;
+
+  @media (max-width: 767px) {
+    display: grid;
+    grid-template-areas:
+      "copyright explain"
+      "sns-logo .";
+    padding: 32px 32px 64px 32px;
+  }
 }
 
 .copyright {

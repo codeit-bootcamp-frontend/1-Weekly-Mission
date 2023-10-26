@@ -2,9 +2,9 @@ import Card from "./Card";
 import searchIcon from "../assets/svg/Search.svg";
 import "./Main.css";
 
-export function Main({ cards }) {
+const Main = ({ cards }) => {
   return (
-    <div>
+    <div className="main-container">
       <form className="search-bar">
         <div className="search-bar-wrapper">
           <img className="search-icon" src={searchIcon} alt="검색아이콘" />
@@ -23,4 +23,5 @@ export function Main({ cards }) {
       </div>
     </div>
   );
-}
+};
+export default Main;

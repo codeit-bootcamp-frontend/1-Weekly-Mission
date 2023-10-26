@@ -1,27 +1,27 @@
-import './Card.css';
-import defaultImg from '../assets/no-image.png';
-const moment = require('moment');
+import "./Card.css";
+import defaultImg from "../assets/no-image.png";
+const moment = require("moment");
 
-function Card({ value }) {
+const Card = ({ value }) => {
   const { imageSource = defaultImg } = value;
   const imageStyle = {
     backgroundImage: `url(${imageSource})`,
   };
   const ago = moment(value.createdAt).fromNow();
-  const date = moment(value.createdAt).format('YYYY. MM. DD');
+  const date = moment(value.createdAt).format("YYYY. MM. DD");
   return (
-    <a href={value.url} className='card'>
-      <div style={imageStyle} className='card-image'></div>
-      <div className='card-text'>
-        <div className='posting-box'>
-          <div className='posting-time'>{ago}</div>
-          <div className='kebob-button'></div>
+    <a href={value.url} className="card">
+      <div style={imageStyle} className="card-image"></div>
+      <div className="card-text">
+        <div className="posting-box">
+          <div className="posting-time">{ago}</div>
+          <div className="kebob-button"></div>
         </div>
-        <div className='posting-description'>{value.description}</div>
-        <div className='posting-date'>{date}</div>
+        <div className="posting-description">{value.description}</div>
+        <div className="posting-date">{date}</div>
       </div>
     </a>
   );
-}
+};
 
 export default Card;

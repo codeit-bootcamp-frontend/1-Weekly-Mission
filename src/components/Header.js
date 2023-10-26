@@ -1,7 +1,6 @@
 import "./Header.css";
 
-export default function User({ folderInfo, owner }) {
-  // console.log(`user components:`, folderInfo);
+const User = ({ folderInfo, owner }) => {
   return (
     <div className="header">
       <div className="user">
@@ -15,4 +14,6 @@ export default function User({ folderInfo, owner }) {
       </div>
     </div>
   );
-}
+};
+
+export default User;
