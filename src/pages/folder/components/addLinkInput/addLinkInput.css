@@ -1,0 +1,38 @@
+@import url('../../../../styles/global.css');
+
+.add-link-input {
+  width: 760px;
+  padding: 22px 20px;
+  border: 1px solid var(--color-primary);
+  border-radius: 15px;
+}
+
+.add-link-input::placeholder {
+  text-indent: 24px;
+  color: var(--color-gray-40);
+}
+
+.add-link-input-container {
+  position: relative;
+}
+
+.add-link-icon {
+  position: absolute;
+  left: 16px;
+  top: 20px;
+  color: var(--color-black);
+}
+
+.add-link-button {
+  width: 80px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  border: none;
+  color: var(--color-gray-10);
+  font-weight: 600;
+  font-size: 14px;
+  position: absolute;
+  top: 12px;
+  right: 20px;
+}
