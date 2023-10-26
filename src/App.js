@@ -6,6 +6,7 @@ import { getCards, getUserProfile } from './api/api';
 import useAsync from './hooks/useAsync';
 import UserProfile from './components/UserProfile';
 import Folder from './components/Folder';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [userProfile, setUserProfile] = useState(null);
@@ -76,29 +77,7 @@ function App() {
         <CardList items={cards} />
         {cardsLoadingError?.message && <span>{cardsLoadingError.message}</span>}
       </main>
-      <footer>
-        <div className='footer-box'>
-          <span className='copyright'>©codeit - 2023</span>
-          <div className='footer-links'>
-            <a className='footer-link' href=''>Privacy Policy</a>
-            <a className='footer-link' href=''>FAQ</a>
-          </div>
-          <div className="sns">
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/facebook.svg" alt="facebook 홈페이지로 연결된 facebook 로고" />
-            </a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/twitter.svg" alt="twitter 홈페이지로 연결된 twitter 로고" />
-            </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/youtube.svg" alt="youtube 홈페이지로 연결된 youtube 로고" />
-            </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/instagram.svg" alt="instagram 홈페이지로 연결된 instagram 로고" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
