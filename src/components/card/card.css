@@ -6,6 +6,7 @@
   background-color: var(--color-white);
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   padding: 0;
+  position: relative;
 }
 
 .card-img-section {
@@ -14,7 +15,6 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   overflow: hidden;
-  position: relative;
 }
 
 .star-icon {
@@ -50,6 +50,14 @@
   align-items: left;
   padding: 20px 15px;
   gap: 10px;
+  position: relative;
+}
+
+.kebab-icon {
+  position: absolute;
+  top: 215px;
+  right: 20px;
+  color: var(--color-gray-100);
 }
 
 .time-stamp {
