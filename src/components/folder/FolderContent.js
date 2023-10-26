@@ -7,6 +7,8 @@ import FolderNav from './FolderNav';
 import AddFolderBtn from './AddFolderBtn';
 import styled from 'styled-components';
 import CardList from '../shared/CardList';
+import FolderTitle from './FolderTitle';
+import ChoiceBar from './ChoiceBar';
 
 const NavContainer = styled.div`
   padding: 40px 0 0;
@@ -21,9 +23,19 @@ const NoLinkMsg = styled.div`
   line-height: 24px;
 `;
 
+const TitleContainer = styled.div`
+  padding: 24px 0 0;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+`;
+
 function FolderContent() {
   const [folders, setFolders] = useState(null);
-  const [folder, setFolder] = useState(null);
+  const [folder, setFolder] = useState(-1);
   const [links, setLinks] = useState(null);
 
   const handleChangeFolderAll = useCallback(() => {
@@ -58,6 +70,10 @@ function FolderContent() {
               <FolderNav folders={folders} selectedFolderId={folder} onChangeFolder={handleChangeFolder} onChangeFolderAll={handleChangeFolderAll} />
               <AddFolderBtn />
             </NavContainer>
+            <TitleContainer>
+              <FolderTitle folders={folders} selectedFolderId={folder} />
+              {folder !== -1 && <ChoiceBar />}
+            </TitleContainer>
             <CardList linksData={links} />
           </>
         ) : (
