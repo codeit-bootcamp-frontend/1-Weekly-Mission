@@ -10,6 +10,7 @@ export default function FolderPage() {
   return (
     <div>
       <NavSec />
+      <Header />
     </div>
   );
 }

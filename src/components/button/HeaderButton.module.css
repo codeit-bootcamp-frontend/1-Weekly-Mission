@@ -1,0 +1,25 @@
+.container {
+  background-color: #edf7ff;
+  border: 5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+
+  /* tablet1 */
+  @media (min-width: 768px) and (max-width: 1123px) {
+  }
+
+  /* tablet2 */
+  @media (min-width: 1124px) {
+  }
+  /* descktop*/
+  @media (min-width: 1200px) {
+  }
+}
+
+.button__container {
+  border: 5px solid red;
+  width: 40%;
+  height: 5rem;
+}

@@ -15,7 +15,6 @@ export default function Nav() {
     "https://bootcamp-api.codeit.kr/api/sample/user"
   );
 
-  console.log(userData.email);
   // const [data, isLoading] = response;
 
   // const handlUserDate = async () => {
