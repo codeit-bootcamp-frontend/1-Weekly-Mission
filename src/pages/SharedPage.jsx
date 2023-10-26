@@ -1,8 +1,8 @@
 import CardList from "components/CardList/CardList";
-import './Main.css';
 import SearchBar from "components/SearchBar/SearchBar";
+import './SharedPage.css';
 
-function Main() {
+function SharedPage() {
   return (
     <main>
       <SearchBar />
@@ -11,4 +11,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default SharedPage;
