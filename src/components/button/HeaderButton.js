@@ -11,7 +11,9 @@ export default function HeaderButton() {
           <img className={styles.image} src={linkImage} alt="링크이미지" />
           <input className={styles.input} placeholder="링크를 추가해보세요" />
         </div>
-        <Button>추가하기</Button>
+        <div className={styles.add_button}>
+          <Button>추가하기</Button>
+        </div>
       </div>
     </div>
   );
