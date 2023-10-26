@@ -36,9 +36,10 @@ function App() {
     }
     const { name, owner, links } = { ...result.folder };
     setFolder({
-      avatar: owner?.profileImageSource,
-      ownerName: owner?.name,
-      folderName: name,
+      // 여기서 마운트 초기값에 대한 null 값 처리
+      avatar: owner?.profileImageSource ?? '',
+      ownerName: owner?.name ?? '',
+      folderName: name ?? '',
     });
     setCards(links);
   }, [getCardsAsync]);
