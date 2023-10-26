@@ -1,9 +1,10 @@
 .folderInfo {
-  margin-top: 2rem;
-  margin-bottom: 6rem;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #edf7ff;
 }
 
 .folderImg {
