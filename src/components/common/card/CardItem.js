@@ -1,6 +1,6 @@
 import style from "./CardItem.module.css";
 import logo from "assets/logo.svg";
-import { getCreatedDate, getDiffTime } from "common/utils/getDate";
+import { getCreatedDate, getDiffTime } from "common/utils/dateUtils";
 
 export default function CardItem({ link }) {
   const { description, imageSource, createdAt, url } = link;

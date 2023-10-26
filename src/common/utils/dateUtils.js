@@ -31,5 +31,7 @@ export function getDiffTime(value) {
 
   if (betweenTimeMonth < 13) {
     return "1 year ago";
-  } else return `${Math.floor(betweenTimeDay / 365)} years ago`;
+  } else {
+    return `${Math.floor(betweenTimeDay / 365)} years ago`;
+  }
 }

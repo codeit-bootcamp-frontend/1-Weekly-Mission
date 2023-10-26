@@ -2,10 +2,11 @@ import { DOMAIN_URL } from "common/constants/domain";
 import { END_POINT } from "common/constants/endpoints";
 
 const { sample } = END_POINT;
+const headers = { "Content-Type": "application/json; charset=utf-8" };
 
 export async function getUser() {
   const res = await fetch(`${DOMAIN_URL}${sample.user}`, {
-    headers: { "Content-Type": "application/json; charset=utf-8" },
+    headers,
   });
 
   if (!res) {
@@ -17,7 +18,7 @@ export async function getUser() {
 
 export async function getFolder() {
   const res = await fetch(`${DOMAIN_URL}${sample.folder}`, {
-    headers: { "Content-Type": "application/json; charset=utf-8" },
+    headers,
   });
 
   if (!res) {
