@@ -3,9 +3,7 @@ import styled from 'styled-components';
 function FooterLink({ children }) {
   return (
     <>
-      <FooterLinkStyle>
-        <a href=''>{children}</a>
-      </FooterLinkStyle>
+      <FooterLinkStyle href=''>{children}</FooterLinkStyle>
     </>
   );
 }

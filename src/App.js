@@ -2,7 +2,7 @@ import './css/reset.css';
 import './css/App.css';
 import CardList from './components/CardList';
 import { useCallback, useEffect, useState } from 'react';
-import { getCards } from './api/api';
+import { getCards } from './api/user';
 import useAsync from './hooks/useAsync';
 import Folder from './components/Folder';
 import Footer from './components/Footer/Footer';
