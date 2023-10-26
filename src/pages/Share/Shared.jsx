@@ -1,36 +1,35 @@
 import {
   useFetchSampleFolder,
   useFetchUserProfileSample,
-} from "../../apis/fetch";
-import Footer from "../../components/Footer/Footer";
-import Navbar from "../../components/Navbar/Navbar";
-import Share from "../../containers/Share/Share";
-import styles from "./Shared.module.css";
+} from "../../apis/fetch"
+import Footer from "../../components/Footer/Footer"
+import Navbar from "../../components/Navbar/Navbar"
+import Share from "../../containers/Share/Share"
+import { ShareHeader } from "./styles"
 
 const Shared = () => {
-  const userProfile = useFetchUserProfileSample();
-  const sampleFolder = useFetchSampleFolder();
-  const userLoading = userProfile?.loading;
-  const folderLoading = sampleFolder?.loading;
+  const userProfile = useFetchUserProfileSample()
+  const sampleFolder = useFetchSampleFolder()
+  const userLoading = userProfile?.loading
+  const folderLoading = sampleFolder?.loading
 
-  let userData, folderData;
+  let userData, folderData
   if (!userLoading && !folderLoading) {
-    userData = userProfile?.data;
-    folderData = sampleFolder?.data;
+    userData = userProfile?.data
+    folderData = sampleFolder?.data
   }
 
-  console.log(2);
   if (userData && folderData) {
     return (
       <>
-        <header className={styles.sharedHeader}>
+        <ShareHeader>
           <Navbar userData={userData} />
-        </header>
+        </ShareHeader>
         <Share shareData={folderData} />
         <Footer />
       </>
-    );
+    )
   }
-};
+}
 
-export default Shared;
+export default Shared

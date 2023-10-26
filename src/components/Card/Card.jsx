@@ -1,66 +1,72 @@
-import IMAGES from "../../assets/images.js";
+import IMAGES from "../../assets/images.js"
 
-import { convertCreatedAt, formatDate } from "../../utils/utils";
-import useToggle from "../../hooks/useToggle";
-import styles from "./Card.module.css";
+import { convertCreatedAt, formatDate } from "../../utils/utils"
+import useToggle from "../../hooks/useToggle"
+
+import {
+  CardCreatedAtParagraph,
+  CardDescriptionParagraph,
+  CardHref,
+  CardImageContainerBox,
+  CardInfoBox,
+  CardInfoInnerBox,
+  CardKebabImage,
+  CardStarImage,
+  CardStyledImage,
+  CardTimeDiffParagraph,
+} from "./styles.js"
 
 const CardInfo = ({ createdAt, description }) => {
   const handleKebabClick = (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   return (
-    <div className={styles.cardInfo}>
-      <div className={styles.cardInfoTop}>
-        <p className={styles.cardTimeDifference}>
+    <CardInfoBox>
+      <CardInfoInnerBox>
+        <CardTimeDiffParagraph>
           {convertCreatedAt(createdAt)}
-        </p>
-        <img
-          className={styles.cardKebab}
+        </CardTimeDiffParagraph>
+        <CardKebabImage
           src={IMAGES.kebab}
           alt="더보기"
           onClick={handleKebabClick}
         />
-      </div>
-      <p className={styles.cardDescription}>{description}</p>
-      <p className={styles.cardCreatedAt}>{formatDate(createdAt)}</p>
-    </div>
-  );
-};
+      </CardInfoInnerBox>
+      <CardDescriptionParagraph>{description}</CardDescriptionParagraph>
+      <CardCreatedAtParagraph>{formatDate(createdAt)}</CardCreatedAtParagraph>
+    </CardInfoBox>
+  )
+}
 
 const CardImage = ({ imgUrl }) => {
-  const [isLiked, setIsLiked] = useToggle(false);
+  const [isLiked, setIsLiked] = useToggle(false)
 
   const handleStarClick = (e) => {
-    e.preventDefault();
-    setIsLiked(isLiked);
-  };
+    e.preventDefault()
+    setIsLiked(isLiked)
+  }
   return (
-    <div className={styles.cardImgContainer}>
-      <img
-        className={styles.cardImg}
-        src={imgUrl || IMAGES.noImage}
-        alt="카드"
-      />
-      <img
-        className={styles.cardStar}
+    <CardImageContainerBox>
+      <CardStyledImage src={imgUrl || IMAGES.noImage} alt="카드" />
+      <CardStarImage
         src={isLiked ? IMAGES.filledStar : IMAGES.emptyStar}
         alt="star"
         onClick={handleStarClick}
       />
-    </div>
-  );
-};
+    </CardImageContainerBox>
+  )
+}
 
 const Card = ({ items }) => {
-  const { createdAt, description, imageSource, url } = items;
+  const { createdAt, description, imageSource, url } = items
 
   return (
-    <a href={url} target="_blank" rel="noreferrer" className={styles.card}>
+    <CardHref href={url} target="_blank" rel="noreferrer">
       <CardImage imgUrl={imageSource} />
       <CardInfo createdAt={createdAt} description={description} />
-    </a>
-  );
-};
+    </CardHref>
+  )
+}
 
-export default Card;
+export default Card

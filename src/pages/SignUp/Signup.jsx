@@ -1,7 +1,5 @@
-import Footer from "../../components/Footer/Footer";
-import Navbar from "../../components/Navbar/Navbar";
-
-import styles from "./Signup.module.css";
+import Footer from "../../components/Footer/Footer"
+import Navbar from "../../components/Navbar/Navbar"
 
 const Signup = () => {
   return (
@@ -9,7 +7,7 @@ const Signup = () => {
       <Navbar />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Signup

@@ -1,26 +1,30 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import IMAGES from "../../assets/images.js";
-import styles from "./Searchbar.module.css";
+import IMAGES from "../../assets/images.js"
+import {
+  SearchbarBox,
+  SearchbarDeleteBox,
+  SearchbarInnerBox,
+  SearchbarInput,
+} from "./styles.js"
 
 const Searchbar = () => {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("")
   const handleSearch = (e) => {
-    setSearchText(e.target.value);
-  };
+    setSearchText(e.target.value)
+  }
 
   const handleSearchDelete = (e) => {
-    setSearchText("");
-  };
+    setSearchText("")
+  }
 
   return (
-    <div className={styles.searchbar}>
-      <div className={styles.searchbarInner}>
+    <SearchbarBox>
+      <SearchbarInnerBox>
         <label htmlFor="search">
           <img src={IMAGES.search} alt="Search" />
         </label>
-        <input
-          className={styles.searchbarInput}
+        <SearchbarInput
           id="search"
           name="search"
           value={searchText}
@@ -28,14 +32,12 @@ const Searchbar = () => {
           autoFocus
           onChange={handleSearch}
         />
-      </div>
+      </SearchbarInnerBox>
       {searchText !== "" && (
-        <div className={styles.searchbarDelete} onClick={handleSearchDelete}>
-          X
-        </div>
+        <SearchbarDeleteBox onClick={handleSearchDelete}>X</SearchbarDeleteBox>
       )}
-    </div>
-  );
-};
+    </SearchbarBox>
+  )
+}
 
-export default Searchbar;
+export default Searchbar

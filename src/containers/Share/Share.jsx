@@ -1,38 +1,39 @@
-import Searchbar from "../../components/Searchbar/Searchbar.jsx";
-import CardList from "../../components/Card/CardList.jsx";
-import styles from "./Share.module.css";
+import Searchbar from "../../components/Searchbar/Searchbar.jsx"
+import CardList from "../../components/Card/CardList.jsx"
+import {
+  OwnerContainerBox,
+  OwnerFolderParagraph,
+  OwnerImage,
+  OwnerInnerContainerBox,
+  OwnerNameParagraph,
+  ShareBox,
+} from "./styles.js"
 
 const Owner = ({ items }) => {
-  const { name, owner } = items;
+  const { name, owner } = items
 
   return (
-    <div className={styles.ownerContainer}>
-      <div className={styles.ownerInnerContainer}>
-        <img
-          className={styles.ownerImage}
-          src={owner.profileImageSource}
-          alt="사용자 이미지"
-        />
-        <p className={styles.ownerName}>@{owner.name}</p>
-        <div>
-          <p className={styles.ownerFolderName}>{name}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+    <OwnerContainerBox>
+      <OwnerInnerContainerBox>
+        <OwnerImage src={owner.profileImageSource} alt="사용자 이미지" />
+        <OwnerNameParagraph>@{owner.name}</OwnerNameParagraph>
+        <OwnerFolderParagraph>{name}</OwnerFolderParagraph>
+      </OwnerInnerContainerBox>
+    </OwnerContainerBox>
+  )
+}
 
 const Share = ({ shareData }) => {
-  const { folder } = shareData;
+  const { folder } = shareData
   return (
     <>
       <Owner items={folder} />
-      <div className={styles.sharedFrame}>
+      <ShareBox>
         <Searchbar />
         <CardList cards={folder?.links} />
-      </div>
+      </ShareBox>
     </>
-  );
-};
+  )
+}
 
-export default Share;
+export default Share

@@ -1,50 +1,48 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
-import IMAGES from "../../assets/images.js";
-import Button from "../Button/Button.jsx";
-import styles from "./Navbar.module.css";
+import IMAGES from "../../assets/images.js"
+import Button from "../Button/Button.jsx"
 
-const Logo = ({ link = "/", className, src, alt, height }) => {
+import {
+  NavBox,
+  NavInnerBox,
+  NavLogoImage,
+  ProfileBox,
+  ProfileCollapseParagraph,
+  ProfileImage,
+} from "./styles.js"
+
+const Logo = ({ link = "/", src, alt, height }) => {
   return (
     <Link to={link}>
-      <img className={className} src={src} alt={alt} height={height} />
+      <NavLogoImage src={src} alt={alt} height={height} />
     </Link>
-  );
-};
+  )
+}
 
 const Profile = ({ items }) => {
-  const { email, profileImageSource } = items;
+  const { email, profileImageSource } = items
   return (
-    <div className={styles.profileBox}>
-      <img
-        className={styles.profileImage}
-        src={profileImageSource}
-        alt="profile"
-      />
-      <p className={styles.profileCollapse}>{email}</p>
-    </div>
-  );
-};
+    <ProfileBox>
+      <ProfileImage src={profileImageSource} alt="profile" />
+      <ProfileCollapseParagraph>{email}</ProfileCollapseParagraph>
+    </ProfileBox>
+  )
+}
 
 const Navbar = ({ userData }) => {
   return (
-    <nav id={styles.nav}>
-      <div className={styles.navBox}>
-        <Logo
-          link="/"
-          className={styles.navLogo}
-          src={IMAGES.logo}
-          alt="Linkbrary"
-          height={24}
-        />
+    <NavBox>
+      <NavInnerBox>
+        <Logo link="/" src={IMAGES.logo} alt="Linkbrary" height={24} />
         {userData?.id ? (
-          <Button className="ctaShort" link="/signin.html" text="로그인" />
+          <Button size="short" link="/signin.html" text="로그인" />
         ) : (
           <Profile items={userData} />
         )}
-      </div>
-    </nav>
-  );
-};
+      </NavInnerBox>
+    </NavBox>
+  )
+}
 
-export default Navbar;
+export default Navbar

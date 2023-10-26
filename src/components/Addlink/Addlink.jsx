@@ -1,20 +1,26 @@
-import Button from "../Button/Button";
-import IMAGES from "../../assets/images";
+import Button from "../Button/Button"
+import IMAGES from "../../assets/images"
 
-import styles from "./Addlink.module.css";
+import {
+  AddLinkBox,
+  AddLinkContentBox,
+  AddLinkImage,
+  AddLinkInnerBox,
+  AddLinkInputBox,
+} from "./styles"
 
 const Addlink = () => {
   return (
-    <div className={styles.addlinkBox}>
-      <div className={styles.addlinkInput}>
-        <div className={styles.addlinkInnerInput}>
-          <img className={styles.addlinkImage} src={IMAGES.link} alt="Link" />
-          <div className={styles.addlinkContent}></div>
+    <AddLinkBox>
+      <AddLinkInputBox>
+        <AddLinkInnerBox>
+          <AddLinkImage src={IMAGES.link} alt="Link" />
+          <AddLinkContentBox></AddLinkContentBox>
           <Button />
-        </div>
-      </div>
-    </div>
-  );
-};
+        </AddLinkInnerBox>
+      </AddLinkInputBox>
+    </AddLinkBox>
+  )
+}
 
-export default Addlink;
+export default Addlink

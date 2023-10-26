@@ -1,4 +1,6 @@
-.searchbar {
+import styled from "styled-components"
+
+const SearchbarBox = styled.div`
   display: flex;
   width: 106rem;
   padding: 1.5rem 1.6rem;
@@ -7,17 +9,25 @@
   border-radius: 1rem;
   background: #f5f5f5;
   transition: 0.5s;
-}
 
-.searchbarInner {
+  @media screen and (max-width: 1124px) {
+    width: 70.4rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 32.5rem;
+  }
+`
+
+const SearchbarInnerBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   width: 100%;
-}
+`
 
-.searchbarInput {
+const SearchbarInput = styled.input`
   background-color: transparent;
   border: none;
   color: var(--Text, #666);
@@ -27,32 +37,16 @@
   font-style: normal;
   font-weight: 400;
   line-height: 2.4rem;
-}
 
-.searchbarInput:active {
-  border: none;
-  outline: none;
-}
+  &:active,
+  focus {
+    border: none;
+    outline: none;
+  }
+`
 
-.searchbarInput:focus {
-  border: none;
-  outline: none;
-}
-
-.searchbarDelete {
+const SearchbarDeleteBox = styled.div`
   cursor: pointer;
-}
+`
 
-/* Tablet */
-@media screen and (max-width: 1124px) {
-  .searchbar {
-    width: 70.4rem;
-  }
-}
-
-/* Mobile */
-@media screen and (max-width: 767px) {
-  .searchbar {
-    width: 32.5rem;
-  }
-}
+export { SearchbarBox, SearchbarInnerBox, SearchbarInput, SearchbarDeleteBox }

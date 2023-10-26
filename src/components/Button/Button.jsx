@@ -1,12 +1,12 @@
-import styles from "./Button.module.css";
+import { CTA } from "./styles"
 
-const Button = ({ className, link, text }) => {
-  const buttonClassName = className;
+const Button = ({ size, link, text }) => {
+  console.log(size)
   return (
-    <a className={`${styles.cta} ${styles[buttonClassName]}`} href={link}>
+    <CTA size={size} href={link}>
       <span>{text}</span>
-    </a>
-  );
-};
+    </CTA>
+  )
+}
 
-export default Button;
+export default Button

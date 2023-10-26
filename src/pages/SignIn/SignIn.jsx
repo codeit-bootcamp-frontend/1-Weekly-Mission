@@ -1,7 +1,5 @@
-import Footer from "../../components/Footer/Footer";
-import Navbar from "../../components/Navbar/Navbar";
-
-import styles from "./Signin.module.css";
+import Footer from "../../components/Footer/Footer"
+import Navbar from "../../components/Navbar/Navbar"
 
 const Signin = () => {
   return (
@@ -9,7 +7,7 @@ const Signin = () => {
       <Navbar />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Signin;
+export default Signin
