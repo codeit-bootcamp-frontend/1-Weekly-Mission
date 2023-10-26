@@ -1,0 +1,46 @@
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 3.3rem 20rem;
+  background: var(--gray-zircon);
+}
+
+.nav .logo {
+  width: 133px;
+  height: 24px;
+}
+
+.nav .login-link {
+  display: flex;
+  width: 128px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav .user-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav .user-profile {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+}
+
+/* tablet Size */
+@media (min-width: 768px) and (max-width: 1123px) {
+  .nav {
+    padding: 3.3rem 3.25rem 3.2rem;
+  }
+}
+
+/* mobile Size */
+@media (max-width: 767px) {
+  .nav {
+    padding: 1.8rem 3.2rem 1.7rem;
+  }
+}

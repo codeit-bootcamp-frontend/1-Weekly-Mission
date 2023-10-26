@@ -13,6 +13,13 @@
   align-items: center;
   overflow: hidden;
   height: 19rem;
+  position: relative;
+}
+
+.card-box .favorites {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
 .card-list:hover .card {
@@ -37,8 +44,13 @@
   background-color: #f0f6ff;
 }
 
-.cardInfo .update-time p {
+.card-info .update-date p {
   color: #666;
+}
+
+.card-info .update-time {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-info .description p {

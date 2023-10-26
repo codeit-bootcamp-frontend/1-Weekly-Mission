@@ -1,0 +1,11 @@
+.link-add-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-add {
+  display: flex;
+  width: 80rem;
+  padding: 16px 20px;
+}
