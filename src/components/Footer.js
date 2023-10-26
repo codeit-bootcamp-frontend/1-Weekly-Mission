@@ -18,16 +18,32 @@ const Footer = () => {
           </a>
         </div>
         <div className="sns-logo">
-          <a href="https://www.facebook.com/" target="_blank">
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={facebook} alt="facebook logo" />
           </a>
-          <a href="https://twitter.com/" target="_blank">
+          <a
+            href="https://twitter.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={twitter} alt="twitter logo" />
           </a>
-          <a href="https://www.youtube.com/" target="_blank">
+          <a
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={youtube} alt="youtube logo" />
           </a>
-          <a href="https://www.instagram.com/" target="_blank">
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={instagram} alt="instagram logo" />
           </a>
         </div>
