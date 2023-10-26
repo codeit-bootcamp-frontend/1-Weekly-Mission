@@ -4,9 +4,10 @@ import CardList from './components/CardList';
 import { useCallback, useEffect, useState } from 'react';
 import { getCards } from './api/user';
 import useAsync from './hooks/useAsync';
-import Folder from './components/Folder';
 import Footer from './components/Footer/Footer';
 import Nav from './components/Nav/Nav';
+import Folder from './components/Folder/Folder';
+
 
 function App() {
   const [folderProfile, setFolderProfile] = useState(null);
@@ -23,7 +24,7 @@ function App() {
       const { name, owner, links: cards } = { ...result.folder };
 
       setFolderProfile({
-        avatar: owner?.profileImageSource ?? '',
+        avatarUrl: owner?.profileImageSource ?? '',
         ownerName: owner?.name ?? '',
         folderName: name,
       });
@@ -38,9 +39,7 @@ function App() {
   return (
     <div className='App'>
       <Nav />
-      <header>
-        <Folder folderProfile={folderProfile} />
-      </header>
+      <Folder folderProfile={folderProfile}/>
       <main>
         <form className='search-form'>
           <img className='search-icon' src='/assets/images/search.svg' alt='검색 아이콘' />
