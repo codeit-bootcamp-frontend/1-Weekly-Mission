@@ -1,0 +1,6 @@
+.folder-name {
+  padding: 0.8rem 1.2rem;
+  background: #fff;
+  border: 1px solid var(--primary);
+  border-radius: 0.5rem;
+}

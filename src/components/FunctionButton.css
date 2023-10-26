@@ -1,0 +1,38 @@
+.function-button-Wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.share-button {
+  border: none;
+  color: #9fa6b2;
+  background-image: url('../assets/icon/share.svg');
+  font-size: 1.4rem;
+  background-repeat: no-repeat;
+  background-position: 0 0.1rem;
+  padding-left: 1.8rem;
+  background-color: white;
+}
+
+.name-button {
+  border: none;
+  color: #9fa6b2;
+  background-image: url('../assets/icon/pen.svg');
+  font-size: 1.4rem;
+  background-repeat: no-repeat;
+  background-position: 0 0.1rem;
+  padding-left: 1.8rem;
+  background-color: white;
+}
+
+.delete-button {
+  border: none;
+  color: #9fa6b2;
+  background-image: url('../assets/icon/delete.svg');
+  font-size: 1.4rem;
+  background-repeat: no-repeat;
+  background-position: 0 0.1rem;
+  padding-left: 1.8rem;
+  background-color: white;
+}

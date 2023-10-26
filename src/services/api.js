@@ -22,4 +22,16 @@ export const getUserProfile = async () => {
   return body;
 };
 
+export const getUserFolder = async () => {
+  const response = await fetch('/users/1/folders', {
+    method: 'GET',
+  });
+  if (!response.ok) {
+    throw new Error('폴더 에러 발생');
+  }
+
+  const body = await response.json();
+  return body;
+};
+
 export default getSampleUser;

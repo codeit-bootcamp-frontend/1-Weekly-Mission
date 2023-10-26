@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.folderWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
