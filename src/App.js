@@ -1,11 +1,13 @@
 import './css/reset.css';
 import './css/root.css';
 import Header from './components/Header';
-import Main from './components/Main';
+import Shared from './components/shared/Shared';
 import Footer from './components/Footer';
+import Folder from './components/folder/Folder';
 import { getAccount} from './api/apiUrl';
 import { useEffect, useState } from 'react';
 import { AccountContext } from './contexts/AccountContext';
+import { Route, Routes } from 'react-router-dom';
 
 
 function App() {
@@ -30,7 +32,10 @@ function App() {
     <AccountContext.Provider value={{account, userErrorMessage}}>
       <div className="App">
         <Header/>
-        <Main/>
+        <Routes>
+          <Route path='/shared' element={<Shared/>}/>
+          <Route path='/folder' element={<Folder/>}/>
+        </Routes>
         <Footer/>
       </div>
     </AccountContext.Provider>

@@ -1,8 +1,8 @@
 import React from 'react';
-import logoImg from "../img/svg/noImgLogo.svg";
-import starImg from "../img/svg/star.svg";
-import kebabImg from '../img/svg/kebab.svg';
-import { getTimeDiff } from '../utils/postTime';
+import logoImg from "../../img/svg/noImgLogo.svg";
+import starImg from "../../img/svg/star.svg";
+import kebabImg from '../../img/svg/kebab.svg';
+import { getTimeDiff } from '../../utils/postTime';
 
 
 

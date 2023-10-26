@@ -43,47 +43,53 @@ header a img {
 
 
 
-    .Profile {
-        display: flex;
-        align-items: center;
-        flex: 1 0 1;
-      }
+.Profile {
+    display: flex;
+    align-items: center;
+    flex: 1 0 1;
+}
+
+.profile_logo {
+width: 28px;
+height: 28px;
+border-radius: 50%;
+}
+
+.profile_id {
+margin-left: 6px;
+font-size: 14px;
+font-weight: 400;
+}
       
-      .profile_logo {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-      }
-      
-      .profile_id {
-        margin-left: 6px;
+
+@media screen and (max-width: 1200px) {
+    header .inner {
+        max-width: 767px;
+        padding: 20px 0px;
+    }
+}
+
+@media screen and (max-width: 775px) {
+    header .inner {
+        padding: 13px 32px;
+    }
+    header a {
+        width: 88.667px;
+    }
+    header a img {
+        width: 100%;
+       /*  height: 16px; */
+    }
+    .header-login a {
+        padding: 10px 16px;
+        width: 80px;
+        height: 37px;
         font-size: 14px;
-        font-weight: 400;
-      }
-      
-
-    @media screen and (max-width: 1200px) {
-        header .inner {
-            max-width: 767px;
-            padding: 20px 0px;
-        }
     }
+}
 
-    @media screen and (max-width: 775px) {
-        header .inner {
-            padding: 13px 32px;
-        }
-        header a {
-            width: 88.667px;
-        }
-        header a img {
-            width: 100%;
-            height: auto;
-        }
-        .header-login a {
-            padding: 10px 16px;
-            width: 80px;
-            height: 37px;
-            font-size: 14px;
-        }
+@media screen and (max-width: 390px) {
+    header a img {
+        height: 16px;
     }
+}

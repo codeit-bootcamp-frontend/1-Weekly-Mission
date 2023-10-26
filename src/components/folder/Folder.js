@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './main.css';
-import Search from './Search';
-import Cards from './Cards';
-import { getFolder } from '../api/apiUrl';
-import { AccountContext } from '../contexts/AccountContext';
+import '../shared/shared.css';
+import Search from '../shared/Search';
+import Cards from '../shared/Cards';
+import { getFolder } from '../../api/apiUrl';
+import { AccountContext } from '../../contexts/AccountContext';
+import AddLink from './AddLink';
+import UserFolder from './UserFolder';
 
-const Main = () => {
+const Folder = () => {
     const {account, userErrorMessage} = useContext(AccountContext)
     const {name, profileImageSource} = account;
     const [personalfolder, setPersonalfolder] = useState({});
@@ -27,22 +29,16 @@ const Main = () => {
         handleFolderLoad();
       }, []);
     return (
-        <div className='main'>
+        <div className='folder'>
             <div className="section-title section-title-first">
-                <div className='section-title-inner'>
-                    <div className='icon-wrap'>
-                        <img src={profileImageSource && profileImageSource} alt='코드잇아이콘'/>
-                    </div>
-                    <h4>@{name && name}</h4>
-                    {userErrorMessage && <h4>{userErrorMessage.message}</h4>}
-                    <h3>{name && title}</h3>
-                </div>
+                <AddLink/>
             </div>
             <Search/>
+            <UserFolder/>
             <Cards personalfolder={personalfolder}/>
             {folderErrorMessage && <h2>{folderErrorMessage.message}</h2>}
         </div>
     );
 };
 
-export default Main;
+export default Folder;

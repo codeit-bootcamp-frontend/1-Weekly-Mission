@@ -4,11 +4,58 @@
     height: 244px;
 }
 
+.folder .section-title-first {
+    padding-top: 60px;
+}
+
 .section-title-inner {
     display:flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+.section-title-first .add-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--linkbrary-white);
+    padding: 16px 20px;
+    border: 1px solid var(--linkbrary-primary-color);
+    border-radius: 15px;
+}
+
+.add-link img {
+    flex-basis: 20px;
+    margin-right:12px;
+}
+.add-link input {
+    flex-grow: 2;
+    height: 24px;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    color: #9FA6B2;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.add-link button {
+    width: 80px;
+    height: 37px;
+    border-radius: 8px;
+    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+    color: #f5f5f5;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: 0;
+    outline: 0;
+    flex-shrink: 0;
 }
 
 .icon-wrap {
@@ -75,6 +122,86 @@
     font-weight: 400;
     line-height: 24px; /* 150% */
     color:#666;
+}
+.user-folder {
+    width: 100%;
+    max-width: 1060px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+.folder-lists {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.folder-lists ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.folder-lists ul li {
+    border: 1px solid var(--linkbrary-primary-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.folder-lists h4 {
+    color: #6D6AFE;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+}
+
+.folder-lists h4 span {
+    line-height: 1px;
+    margin-right:4px;
+}
+
+
+.select-folder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-folder h2 {
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+.select-folder ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:12px;
+}
+
+.select-folder ul li {
+    display: flex;
+    align-items: center;
+    color: var(--linkbrary-gray-60);
+    gap:4px;
+}
+
+.select-folder ul li img {
+    width: 18px;
+}
+
+.select-folder ul li span {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
 }
 
 /* section3 */
@@ -205,7 +332,7 @@
     color: #333; 
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1199px) {
     .section-title-second {
         padding: 0 32px;
         max-width: 765px;
@@ -214,14 +341,72 @@
         padding: 0 32px;
         max-width: 765px;
     }
+    .user-folder {
+        padding: 0 32px;
+        max-width: 765px;
+    }
+    .folder .section-title-first {
+        padding: 60px 32px 0;
+    }
+    
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 768px) {
+    .section-title-first {
+        height: 161px;
+    }
     .section-title-second {
         max-width: 390px;
+        margin: 20px auto 32px;
+    }
+    .section-title-first .add-link {
+        max-width: 325px;
+        padding: 8px 10px;
+    }
+    .add-link input {
+        font-size: 14px;
     }
     .section-title-third{
         max-width: 390px;
+    }
+    .icon-wrap {
+        width: 40px;
+        height: 40px;
+        margin: 10px 0 6px;
+    }
+    .section-title-inner h4 {
+        font-size: 14px;
+    }
+    .search-inner-box {
+        padding: 13px 16px;
+    }
+    .section-title-inner h3 {
+        font-size: 32px;
+        margin-top: 10px;
+    }
+
+    .search-inner-box input{
+        font-size: 14px;
+    }
+    .user-folder {
+        max-width: 390px;
+        gap: 28px;
+    }
+    .folder-lists ul {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .folder-lists ul li {
+        padding: 6px 10px;
+    }
+    .folder-lists h4 {
+        display:none;
+    }
+
+    .select-folder {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import searchImg from '../img/svg/Search.svg'
+import searchImg from '../../img/svg/Search.svg'
 
 const Search = () => {
     return (
