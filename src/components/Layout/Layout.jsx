@@ -1,10 +1,10 @@
 import Navigator from 'components/Navigator';
 import Footer from 'components/Footer';
 
-function Layout({ children }) {
+function Layout({ children, isLoggedIn }) {
   return (
     <>
-      <Navigator />
+      <Navigator isLoggedIn={isLoggedIn} />
       {children}
       <Footer />
     </>

@@ -20,7 +20,17 @@ export const createUserAPI = (userId) => async (path) => {
   return data;
 };
 
-export async function getUser(userId) {
-  const data = await requestAPI(`users/${userId ?? DEFAULT_USER_ID}`);
+export async function getUser(userId = DEFAULT_USER_ID) {
+  const data = await requestAPI(`users/${userId}`);
+  return data;
+}
+
+export async function getLinks(userId = DEFAULT_USER_ID) {
+  const data = await requestAPI(`users/${userId}/links`);
+  return data;
+}
+
+export async function getFolders(userId = DEFAULT_USER_ID) {
+  const data = await requestAPI(`users/${userId}/folders`);
   return data;
 }

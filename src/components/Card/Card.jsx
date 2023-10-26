@@ -4,11 +4,20 @@ import * as S from './Card.style';
 import DEFAULT_IMAGE from 'assets/images/default-link-img.svg';
 
 function Card({ data }) {
-  const { url, title, description, createdAt, imageSource } = data;
+  const {
+    url,
+    title,
+    description,
+    created_at,
+    createdAt,
+    image_source,
+    imageSource,
+  } = data;
 
-  const createdDate = new Date(createdAt);
+  const createdDate = new Date(createdAt ?? created_at);
 
   const reduceText = (text, length) => {
+    if (!text) return;
     if (text.length > length) {
       return `${text.slice(0, length)}...`;
     } else {
@@ -19,7 +28,10 @@ function Card({ data }) {
   return (
     <S.CardContainer href={url} target='_blank' rel='noreferrer noopener'>
       <S.CardImgContainer>
-        <S.CardImg src={imageSource ?? DEFAULT_IMAGE} alt='링크 이미지' />
+        <S.CardImg
+          src={imageSource ?? image_source ?? DEFAULT_IMAGE}
+          alt='링크 이미지'
+        />
       </S.CardImgContainer>
       <S.CardTextContainer>
         <S.TimeAgo>

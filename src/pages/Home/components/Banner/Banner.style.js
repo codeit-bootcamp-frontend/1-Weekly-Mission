@@ -52,11 +52,11 @@ export const Signup = styled.div`
   width: 20rem;
   margin: 2.4rem;
 
-  @include ${onTablet} {
+  ${onTablet} {
     width: 35rem;
     margin: 4rem;
   }
-  @include ${onPc} {
+  ${onPc} {
     width: 35rem;
     margin: 4rem;
   }

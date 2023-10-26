@@ -1,5 +1,5 @@
 import Layout from 'components/Layout';
-import Folder from 'pages/Shared/components/Folder';
+import Folder from './components/Folder';
 
 function Shared() {
   return (

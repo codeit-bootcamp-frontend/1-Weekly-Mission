@@ -6,7 +6,7 @@ import { createUserAPI, getUser } from 'utils/apiClient';
 import useAsync from 'hooks/useAsync';
 import LB_ICON from 'assets/icons/linkbrary.svg';
 
-function Navigator({ isLoggedIn = true }) {
+function Navigator({ isLoggedIn }) {
   const [data, isLoading, loadingError, getUserAsync] = useAsync(
     getUser,
     [],
@@ -14,12 +14,12 @@ function Navigator({ isLoggedIn = true }) {
   );
 
   useEffect(() => {
-    getUserAsync();
+    if (isLoggedIn) {
+      getUserAsync();
+    }
   }, []);
 
   const userInfo = data?.data[0];
-  const email = userInfo?.email;
-  const imageSource = userInfo?.image_source;
 
   return (
     <S.GnbContainer>
@@ -30,8 +30,11 @@ function Navigator({ isLoggedIn = true }) {
         </S.Logo>
         {isLoggedIn ? (
           <S.Profile>
-            <S.ProfileImg src={imageSource} alt='사용자 프로필 사진' />
-            <S.ProfileEmail>{email}</S.ProfileEmail>
+            <S.ProfileImg
+              src={userInfo?.image_source}
+              alt='사용자 프로필 사진'
+            />
+            <S.ProfileEmail>{userInfo?.email}</S.ProfileEmail>
           </S.Profile>
         ) : (
           <S.Signin>

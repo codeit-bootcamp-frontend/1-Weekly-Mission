@@ -6,6 +6,7 @@ import Home from 'pages/Home';
 import Signin from 'pages/Auth/Signin';
 import Signup from 'pages/Auth/Signup';
 import SharedPage from 'pages/Shared';
+import Folder from 'pages/Folder';
 
 TimeAgo.addDefaultLocale(en);
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='signin' element={<Signin />} />
         <Route path='signup' element={<Signup />} />
         <Route path='shared' element={<SharedPage />} />
+        <Route path='folder' element={<Folder />} />
       </Routes>
     </BrowserRouter>
   );

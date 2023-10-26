@@ -1,7 +1,7 @@
 import * as S from './Home.style';
 import Layout from 'components/Layout';
-import Banner from 'pages/Home/components/Banner';
-import Card from 'pages/Home/components/Card';
+import Banner from './components/Banner';
+import Card from './components/Card';
 import LINKS_EXAMPLE from 'assets/images/link-examples.png';
 import CREATE_FOLDER from 'assets/images/link-folder.png';
 import SHARE_FOLDER from 'assets/images/folder-share.png';

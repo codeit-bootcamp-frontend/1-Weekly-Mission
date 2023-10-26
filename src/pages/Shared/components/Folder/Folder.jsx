@@ -1,9 +1,9 @@
 import * as S from './Folder.style';
 import { getSharedFolder } from 'utils/apiClient';
 import useAsync from 'hooks/useAsync';
-import Banner from 'pages/Shared/components/Banner';
-import SearchBar from 'pages/Shared/components/SearchBar';
-import CardList from 'pages/Shared/components/CardList';
+import Banner from '../Banner';
+import SearchBar from 'components/SearchBar';
+import CardList from 'components/CardList';
 
 function Folder() {
   const [data, isLoading, loadingError, getSharedFolderAsync] =
@@ -17,9 +17,9 @@ function Folder() {
   return (
     <main>
       {data && <Banner info={{ name, owner }} />}
-      <S.ContentContainer className='content-container'>
+      <S.ContentContainer>
         <SearchBar />
-        {data && <CardList links={links} />}
+        {data && <CardList cards={links} />}
       </S.ContentContainer>
     </main>
   );
