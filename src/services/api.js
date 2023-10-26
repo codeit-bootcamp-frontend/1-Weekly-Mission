@@ -1,7 +1,5 @@
-const URL = 'https://bootcamp-api.codeit.kr/api/sample';
-
 const getSampleUser = async () => {
-  const response = await fetch(`${URL}/user`, {
+  const response = await fetch('/sample/user', {
     method: 'GET',
   });
   if (!response.ok) {
@@ -13,7 +11,7 @@ const getSampleUser = async () => {
 };
 
 export const getUserProfile = async () => {
-  const response = await fetch(`${URL}/folder`, {
+  const response = await fetch('/sample/folder', {
     method: 'GET',
   });
   if (!response.ok) {
