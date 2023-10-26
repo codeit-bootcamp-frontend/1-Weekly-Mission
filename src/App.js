@@ -6,7 +6,7 @@ import { getCards } from './api/user';
 import useAsync from './hooks/useAsync';
 import Footer from './components/Footer/Footer';
 import Nav from './components/Nav/Nav';
-import Folder from './components/Folder/Folder';
+import FolderProfile from './components/Folder/FolderProfile';
 
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
   return (
     <div className='App'>
       <Nav />
-      <Folder folderProfile={folderProfile}/>
+      <FolderProfile folderProfile={folderProfile}/>
       <main>
         <form className='search-form'>
           <img className='search-icon' src='/assets/images/search.svg' alt='검색 아이콘' />

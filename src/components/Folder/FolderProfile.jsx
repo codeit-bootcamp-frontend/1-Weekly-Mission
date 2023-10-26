@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function Folder({ folderProfile }) {
+function FolderProfile({ folderProfile }) {
   const avatarUrl = folderProfile?.avatarUrl ?? '';
   const ownerName = folderProfile?.ownerName ?? '';
   const folderName = folderProfile?.folderName ?? '';
@@ -8,17 +8,17 @@ function Folder({ folderProfile }) {
   return (
     <header>
       <FolderProfileContainer>
-        <FolderProfile>
+        <FolderProfileStyle>
           <FolderAvatarImage src={avatarUrl} alt='폴더 주인 아바타' />
           <FolderOwnerName>{ownerName}</FolderOwnerName>
-        </FolderProfile>
+        </FolderProfileStyle>
         <FolderName>{folderName}</FolderName>
       </FolderProfileContainer>
     </header>
   );
 }
 
-export default Folder;
+export default FolderProfile;
 
 const FolderProfileContainer = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ const FolderProfileContainer = styled.div`
   gap: 1rem;
 `;
 
-const FolderProfile = styled.div`
+const FolderProfileStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
