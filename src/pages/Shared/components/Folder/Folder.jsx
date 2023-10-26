@@ -1,12 +1,13 @@
 import * as S from './Folder.style';
-import { getFolder } from 'utils/apiClient';
+import { getSharedFolder } from 'utils/apiClient';
 import useAsync from 'hooks/useAsync';
 import Banner from 'pages/Shared/components/Banner';
 import SearchBar from 'pages/Shared/components/SearchBar';
 import CardList from 'pages/Shared/components/CardList';
 
 function Folder() {
-  const [data, isLoading, loadingError, getFolderAsync] = useAsync(getFolder);
+  const [data, isLoading, loadingError, getSharedFolderAsync] =
+    useAsync(getSharedFolder);
 
   const folder = data?.folder;
   const name = folder?.name;

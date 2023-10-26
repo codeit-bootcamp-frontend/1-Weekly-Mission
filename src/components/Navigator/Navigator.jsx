@@ -1,26 +1,25 @@
 import * as S from './Navigator.style';
 import A11y from 'components/A11y';
 import Button from 'components/Button';
-import { useCallback, useEffect, useState } from 'react';
-import { getUser } from 'utils/apiClient';
+import { useEffect } from 'react';
+import { createUserAPI, getUser } from 'utils/apiClient';
+import useAsync from 'hooks/useAsync';
 import LB_ICON from 'assets/icons/linkbrary.svg';
 
-function Navigator() {
-  const [userInfo, setUserInfo] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const loadUser = useCallback(async () => {
-    setIsLoggedIn(false);
-    const user = await getUser();
-    if (user) {
-      setIsLoggedIn(true);
-    }
-    setUserInfo(user);
-  }, []);
+function Navigator({ isLoggedIn = true }) {
+  const [data, isLoading, loadingError, getUserAsync] = useAsync(
+    getUser,
+    [],
+    true
+  );
 
   useEffect(() => {
-    loadUser();
-  }, [loadUser]);
+    getUserAsync();
+  }, []);
+
+  const userInfo = data?.data[0];
+  const email = userInfo?.email;
+  const imageSource = userInfo?.image_source;
 
   return (
     <S.GnbContainer>
@@ -31,11 +30,8 @@ function Navigator() {
         </S.Logo>
         {isLoggedIn ? (
           <S.Profile>
-            <S.ProfileImg
-              src={userInfo.profileImageSource}
-              alt='사용자 프로필 사진'
-            />
-            <S.ProfileEmail>{userInfo.email}</S.ProfileEmail>
+            <S.ProfileImg src={imageSource} alt='사용자 프로필 사진' />
+            <S.ProfileEmail>{email}</S.ProfileEmail>
           </S.Profile>
         ) : (
           <S.Signin>
