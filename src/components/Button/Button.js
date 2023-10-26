@@ -1,18 +1,17 @@
 import styled from 'styled-components';
-import { onPc } from './mediaQuery';
-import { COLORS, GRADIENTS } from './palette';
+import { onPc } from 'styles/mediaQuery';
+import { COLORS, GRADIENTS } from 'styles/palette';
 
-export const Button = styled.a`
+const Button = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem 1.6rem;
-
+  width: 100%;
   border-radius: 0.8rem;
   background: ${GRADIENTS['LB_GRAD']};
   font-size: 1.4rem;
-
   font-weight: 600;
   color: ${COLORS['GREY_LIGHT']};
 
@@ -22,13 +21,4 @@ export const Button = styled.a`
   }
 `;
 
-export const Ally = styled.h1`
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-`;
+export default Button;

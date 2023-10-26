@@ -1,20 +1,22 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
 import GlobalStyle from 'styles/GlobalStyle';
-import Navigator from 'components/Navigator';
-import Folder from 'components/Folder';
-import Footer from 'components/Footer';
+import Layout from 'components/Layout';
+import SharedPage from 'pages/Shared/SharedPage';
+import HomePage from 'pages/Home/Home';
 
 TimeAgo.addDefaultLocale(en);
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
-      <Navigator />
-      <Folder />
-      <Footer />
-    </>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='shared' element={<SharedPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
