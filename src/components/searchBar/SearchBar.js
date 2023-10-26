@@ -6,7 +6,6 @@ export default function SearchBar() {
   return (
     <div className={styles.container}>
       <img className={styles.search__image} src={searchIcon} alt="icon" />
-
       <input
         className={styles.search__input}
         type="search"

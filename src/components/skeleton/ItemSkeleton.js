@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import SkeletonStructure from "./SkeletonStructure";
-import LocaleContext from "../../contexts/LocaleContext";
+
 export default function ItemSkeleton({ type }) {
-  // const locale = useContext(LocaleContext);
-  // console.log(locale);
   return (
     <div className="skeleton-wrapper">
       <SkeletonStructure type="image" />
