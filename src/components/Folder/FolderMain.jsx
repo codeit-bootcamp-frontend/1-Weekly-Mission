@@ -1,20 +1,29 @@
 import CardList from '../CardList';
+import styled from 'styled-components';
+import SearchForm from './SearchForm';
 
 function FolderMain({ cards, cardsLoadingError }) {
   return (
-    <main>
-      <form className='search-form'>
-        <img className='search-icon' src='/assets/images/search.svg' alt='검색 아이콘' />
-        <input
-          className='search-bar'
-          type='search'
-          placeholder='링크를 검색해 보세요.'
-        />
-      </form>
+    <Main>
+      <SearchForm />
       <CardList items={cards} />
       {cardsLoadingError?.message && <span>{cardsLoadingError.message}</span>}
-    </main>
+    </Main>
   );
 }
 
 export default FolderMain;
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 3.2rem;
+
+  @media (min-width: 768px) {
+    gap: 4rem;
+    padding: 0 3rem;
+    margin: 4rem 0;
+  }
+`;
