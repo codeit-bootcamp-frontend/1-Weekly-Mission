@@ -12,7 +12,7 @@ export default function SharedPage() {
   const [data, isLoading] = response;
 
   return (
-    <div className="App">
+    <div>
       <Nav />
       <Header data={data} isLoading={isLoading} />
       <Landing data={data} isLoading={isLoading} />

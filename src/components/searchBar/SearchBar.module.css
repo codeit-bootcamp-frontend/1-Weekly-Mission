@@ -1,10 +1,15 @@
 .container {
-  display: flex;
-  align-items: center;
+  border: 5px solid red;
+
+  @media (min-width: 768px) {
+  }
+  /* descktop*/
+  @media (min-width: 1200px) {
+  }
 }
 
-.user-email {
-  display: none;
+.search__input {
+  border: 5px solid blue;
 
   @media (min-width: 768px) {
     display: inline-block;

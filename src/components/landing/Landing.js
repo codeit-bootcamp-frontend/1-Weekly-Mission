@@ -7,7 +7,7 @@ import ItemSkeleton from "../skeleton/ItemSkeleton";
 export default function Landing({ data, isLoading }) {
   return (
     <div>
-      <Searchbar />
+      {/* <Searchbar /> */}
       {!isLoading ? (
         <ImageList items={data} isLoading={isLoading} />
       ) : (
