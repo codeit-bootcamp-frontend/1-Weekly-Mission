@@ -2,14 +2,6 @@
 
 /* 네비게이션 */
 
-.logo {
-    height: 1.6rem;
-
-    @media (min-width: 768px) {
-        height: 2.4rem;
-    }
-}
-
 @media (min-width: 768px) {
     .user-profile {
         display: flex;

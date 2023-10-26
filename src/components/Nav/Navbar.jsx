@@ -1,8 +1,9 @@
-import UserProfile from '../UserProfile';
+import UserProfile from './UserProfile';
 import styled from 'styled-components';
 import { useCallback, useEffect, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
 import { getUserProfile } from '../../api/api';
+import Logo from './Logo';
 
 function Navbar() {
   const [userProfile, setUserProfile] = useState(null);
@@ -26,7 +27,7 @@ function Navbar() {
 
   return (
     <NavbarStyle>
-      <img className='logo' src='/assets/images/logo.svg' alt='홈으로 연결된 Linkbrary 로고' />
+      <Logo />
       <UserProfile userProfile={userProfile} />
       {userProfileLoadingError?.message && <span>{userProfileLoadingError.message}</span>}
     </NavbarStyle>
