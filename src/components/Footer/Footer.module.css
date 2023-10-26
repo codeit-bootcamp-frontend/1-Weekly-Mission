@@ -1,0 +1,62 @@
+.root {
+  padding-top: 12rem;
+  font-family: Arial;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template:
+    'copy priv social'
+    / auto auto auto;
+  justify-content: space-between;
+  height: 16rem;
+  padding: 3.2rem 10.4rem 6.4rem 10.4rem;
+  background: var(--black);
+}
+
+.copyright {
+  color: #676767;
+  font-size: 1.6rem;
+  grid-area: copy;
+}
+
+.privacy {
+  color: #cfcfcf;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  grid-area: priv;
+}
+
+.privacy a {
+  display: block;
+  width: 10rem;
+}
+
+.socialMedia {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  grid-area: social;
+}
+
+@media (max-width: 767px) {
+  .root {
+    padding-top: 4rem;
+  }
+
+  .container {
+    grid-template:
+      'priv social'
+      'copy .';
+    justify-content: space-between;
+    padding: 3.2rem;
+  }
+
+  .copyright {
+    justify-self: start;
+    align-self: end;
+  }
+}
