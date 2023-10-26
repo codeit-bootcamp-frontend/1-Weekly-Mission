@@ -6,7 +6,7 @@ function FolderProfile({ folderProfile }) {
   const folderName = folderProfile?.folderName ?? '';
 
   return (
-    <header>
+    <HeaderBlock>
       <FolderProfileContainer>
         <FolderProfileStyle>
           <FolderAvatarImage src={avatarUrl} alt='폴더 주인 아바타' />
@@ -14,11 +14,24 @@ function FolderProfile({ folderProfile }) {
         </FolderProfileStyle>
         <FolderName>{folderName}</FolderName>
       </FolderProfileContainer>
-    </header>
+    </HeaderBlock>
   );
 }
 
 export default FolderProfile;
+
+const HeaderBlock = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: var(--background);
+  padding: 1rem 10rem 4rem 10rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem 29rem 6rem 29rem;
+  }
+`;
 
 const FolderProfileContainer = styled.div`
   display: flex;

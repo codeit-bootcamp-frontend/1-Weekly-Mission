@@ -1,19 +1,5 @@
 @import './colors.css';
 
-/* 폴더 프로필 */
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background: var(--background);
-    padding: 1rem 10rem 4rem 10rem;
-
-    @media (min-width: 768px) {
-        padding: 2rem 29rem 6rem 29rem;
-    }
-}
-
 /* main */
 main {
     display: flex;

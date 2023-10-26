@@ -18,6 +18,15 @@ function Footer() {
 
 export default Footer;
 
+const FooterBlock = styled.div`
+  display: flex;
+  margin-top: 6rem;
+  justify-content: center;
+  width: 100%;
+  height: 16rem;
+  background-color: var(--black);
+`;
+
 const FooterBox = styled.div`
   display: grid;
   justify-content: space-between;
@@ -36,13 +45,4 @@ const FooterBox = styled.div`
     max-width: 192rem;
     padding: 3.2rem 10.4rem 0;
   }
-`;
-
-const FooterBlock = styled.div`
-  display: flex;
-  margin-top: 6rem;
-  justify-content: center;
-  width: 100%;
-  height: 16rem;
-  background-color: var(--black);
 `;
