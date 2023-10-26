@@ -17,3 +17,12 @@ export async function getFolder() {
   const body = await response.json();
   return body;
 }
+
+export async function getFolderList() {
+  const response = await fetch(`${BASE_URL}/users/1/folders`);
+  if (!response.ok) {
+    throw new Error("폴더 목록을 불러오는데 실패했습니다");
+  }
+  const body = await response.json();
+  return body;
+}
