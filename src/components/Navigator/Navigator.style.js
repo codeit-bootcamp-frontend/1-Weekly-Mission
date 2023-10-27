@@ -1,11 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { onTablet, onPc } from 'styles/mediaQuery';
 import { COLORS } from 'styles/palette';
 
 export const GnbContainer = styled.header`
-  position: sticky;
-  top: 0;
-  z-index: 1;
   width: 100%;
   background-color: ${COLORS['LB_BACKGROUND']};
 `;

@@ -1,11 +1,10 @@
-import { useState, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import * as S from './LinkList.style';
 import { getLinks } from 'utils/apiClient';
 import useAsync from 'hooks/useAsync';
 import CardList from 'components/CardList';
 import SearchBar from 'components/SearchBar';
 import FolderHeader from '../FolderHeader';
-import { useEffect } from 'react';
 
 function LinkList({ userId }) {
   const [linksData, isLoading, loadingError, getLinksAsync] = useAsync(
