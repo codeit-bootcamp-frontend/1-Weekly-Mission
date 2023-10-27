@@ -1,6 +1,5 @@
 import React from "react";
 
-import useFetch from "../../hooks/useFetch";
 import FolderButton from "../button/FolderButton";
 import useUserFolderFetch from "../../hooks/userUserFolderFetch";
 
