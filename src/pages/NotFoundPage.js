@@ -1,9 +1,11 @@
-const headStyle = {
-  fontSize: '48px',
-};
+import styled from 'styled-components';
+
+const HeadStyle = styled.h1`
+  font-size: 3.6rem;
+`;
 
 function NotFoundPage() {
-  return <h1 style={headStyle}>이런 페이지는 없어요.. 😭</h1>;
+  return <HeadStyle>이런 페이지는 없어요.. 😭</HeadStyle>;
 }
 
 export default NotFoundPage;

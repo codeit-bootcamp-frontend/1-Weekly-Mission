@@ -1,7 +1,7 @@
 import '../../styles/folderInfo.css';
 
 function FolderInfo({ folder }) {
-  const { name, owner } = folder.folder;
+  const { name, owner } = folder;
 
   return (
     <div className="folder_info">

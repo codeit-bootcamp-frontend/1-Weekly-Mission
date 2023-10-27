@@ -36,13 +36,12 @@ const selectFolderStyle = {
 };
 
 function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAll }) {
-  const folderData = folders.data;
   return (
     <FolderList>
       <FolderItem style={selectedFolderId === -1 ? selectFolderStyle : null} onClick={onChangeFolderAll}>
         전체
       </FolderItem>
-      {folderData.map((folder) => {
+      {folders.map((folder) => {
         const selectedStyle = folder.id === selectedFolderId ? selectFolderStyle : null;
         return <FolderListItem style={selectedStyle} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />;
       })}

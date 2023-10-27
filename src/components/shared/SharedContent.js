@@ -1,26 +1,19 @@
 import '../../styles/sharedContent.css';
-
-import { useState, useEffect } from 'react';
-import { getData } from '../../utils/getData';
-import { PATH } from '../../constants/path';
 import FolderInfo from './FolderInfo.js';
 import SearchBar from '../SearchBar.js';
 import CardList from './CardList.js';
+import useGetSampleFolder from '../../hooks/useGetSampleFolder';
 
 function SharedContent() {
-  const [folder, setFolder] = useState(null);
-
-  useEffect(() => {
-    getData(setFolder, PATH.folder);
-  }, []);
+  const folderData = useGetSampleFolder();
 
   return (
     <>
-      {folder && <FolderInfo folder={folder} />}
+      {folderData && <FolderInfo folder={folderData} />}
       <main>
         <div className="content_container">
           <SearchBar />
-          {folder && <CardList folder={folder} />}
+          <CardList folderId={-2} />
         </div>
       </main>
     </>

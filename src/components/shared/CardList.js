@@ -1,15 +1,15 @@
 import '../../styles/cardlist.css';
+
 import { Fragment } from 'react';
-import { NoDiscriptMsg } from '../../constants/default';
-import TimeFlow from '../../utils/TimeFlow.js';
+import { noDiscriptMsg } from '../../constants/default';
+import { timeFlow, formatDate } from '../../utils/timeFlow.js';
+
+import useGetLinks from '../../hooks/useGetLinks';
+import useGetSampleLinks from '../../hooks/useGetSampleLinks';
+
 import defaultImg from '../../assets/images/no-Image.svg';
 import kebabIcon from '../../assets/images/kebab.svg';
 import starIcon from '../../assets/images/star.svg';
-
-function formatDate(value) {
-  const date = new Date(value);
-  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
-}
 
 function Card({ imageSource, image_source, title, description, createdAt, url, created_at }) {
   return (
@@ -20,31 +20,29 @@ function Card({ imageSource, image_source, title, description, createdAt, url, c
       </div>
       <div className="text">
         <div className="time_kebab_wrapper">
-          <TimeFlow createdAt={createdAt || created_at} />
+          <div className="timediff">{timeFlow(createdAt || created_at)}</div>
           <img src={kebabIcon} alt="kebab" />
         </div>
         {title && <div className="title">{title}</div>}
-        <div className="description">{description || NoDiscriptMsg}</div>
+        <div className="description">{description || noDiscriptMsg}</div>
         <div className="createAt">{formatDate(createdAt || created_at)}</div>
       </div>
     </a>
   );
 }
 
-function CardList({ folder = null, linksData = null }) {
-  let linkArr = [];
-
-  if (folder) {
-    const { folder: folderData } = folder;
-    const { links } = folderData;
-    linkArr = links;
-  }
-
-  if (linksData) linkArr = linksData.data;
+/**
+ * @param {*} folderId 현재 링크를 불러 올 폴더 Id. -1이면 전체, -2면 sample
+ */
+function CardList({ folderId }) {
+  const sampleLinks = useGetSampleLinks();
+  const userLinks = useGetLinks(folderId);
+  const links = folderId === -2 ? sampleLinks : userLinks;
+  if (!links) return;
 
   return (
     <div className="card_list">
-      {linkArr.map((link) => (
+      {links.map((link) => (
         <Fragment key={link.id}>
           <Card {...link} />
         </Fragment>

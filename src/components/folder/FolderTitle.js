@@ -9,9 +9,7 @@ const FolderTitleStyle = styled.div`
 `;
 
 function FolderTitle({ folders, selectedFolderId }) {
-  const folderData = folders.data;
-
-  let selectedFolder = folderData.find((folder) => selectedFolderId === folder.id);
+  let selectedFolder = folders.find((folder) => selectedFolderId === folder.id);
   const title = selectedFolderId === -1 ? '전체' : selectedFolder.name;
 
   return <FolderTitleStyle>{title}</FolderTitleStyle>;

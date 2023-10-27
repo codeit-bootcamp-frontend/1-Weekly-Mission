@@ -1,19 +1,15 @@
 import '../styles/header.css';
-import { useEffect, useState } from 'react';
-import { getData } from '../utils/getData';
-import { PATH } from '../constants/path';
 import Profile from './Profile';
 import LoginBtn from './LoginBtn';
 import logoImg from '../assets/images/logo.svg';
+import useGetUser from '../hooks/useGetUser';
+import useGetSampleUser from '../hooks/useGetSampleUser';
 
 function Header({ page = '' }) {
-  const [user, setUser] = useState(null);
+  const sampleuser = useGetSampleUser();
+  const user = useGetUser();
+  const userData = page === 'shared' ? sampleuser : user;
   const fixed = page === 'shared' ? 'fixed' : null;
-  const userPath = page === 'shared' ? PATH.user : PATH.users[1].userInfo;
-
-  useEffect(() => {
-    getData(setUser, userPath);
-  }, []);
 
   return (
     <header className={fixed}>
@@ -21,7 +17,7 @@ function Header({ page = '' }) {
         <a href="/" target="_blank" rel="noopener noreferrer">
           <img className="linkbrary_logo" src={logoImg} alt="Linkbrary 메인 페이지 바로가기" />
         </a>
-        {user ? <Profile user={page === 'shared' ? user : user.data[0]} /> : <LoginBtn />}
+        {userData ? <Profile user={userData} /> : <LoginBtn />}
       </div>
     </header>
   );

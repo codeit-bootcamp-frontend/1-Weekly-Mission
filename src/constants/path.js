@@ -1,5 +1,6 @@
-export const PATH = {
+export const SAMPLE = {
   user: 'sample/user',
   folder: 'sample/folder',
-  users: [{}, { userInfo: 'users/1', folders: 'users/1/folders', links: 'users/1/links' }],
 };
+
+export const USERS = [{}, { userInfo: 'users/1', folders: 'users/1/folders', links: 'users/1/links' }];

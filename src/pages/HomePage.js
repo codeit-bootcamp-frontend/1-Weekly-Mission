@@ -1,6 +1,18 @@
-import '../styles/homePage.css';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import styled from 'styled-components';
+
+const HomeHead = styled.h1`
+  font-size: 3.2rem;
+`;
+
+const linkBox = {
+  margin: '10px 10px',
+  padding: '10px 10px',
+  border: 'solid pink 4px',
+  borderRadius: '20px',
+  fontSize: '24px',
+};
 
 function HomePage() {
   return (
@@ -8,12 +20,21 @@ function HomePage() {
       <Helmet>
         <title>Linkbrary</title>
       </Helmet>
-      <h1 className="page_title">여기는 hompage 입니다.</h1>
-      <Link className="link" to="/shared">
-        👻shared
+      <HomeHead>
+        . 　/)⋈/)
+        <br />
+        　(｡•ㅅ•｡)♡
+        <br />
+        ┏-∪-∪━━━━┓
+        <br />♡ HomePage *.。♡ <br />
+        ┗━━━━━━━┛
+        <br />
+      </HomeHead>
+      <Link style={linkBox} to="/shared">
+        shared
       </Link>
-      <Link className="link" to="/folder">
-        😼folder
+      <Link style={linkBox} to="/folder">
+        folder
       </Link>
     </>
   );
