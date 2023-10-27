@@ -6,7 +6,6 @@ const FolderList = ({ fullData }) => {
     <li
       style={{
         listStyle: "none",
-        width: "100%",
       }}
     >
       {fullData.map((data) => (

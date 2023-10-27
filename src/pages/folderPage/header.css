@@ -3,6 +3,7 @@
   font-size: 2rem;
   margin-bottom: 5rem;
   font-weight: 700;
+  position: relative;
   @media (min-width: 768px) {
     padding: 0 3.2rem;
   }
@@ -18,4 +19,58 @@
   background: #fff;
   width: 6rem;
   height: 5rem;
+}
+
+.folder-list {
+  padding: 0 3.2rem;
+  font-size: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  @media (min-width: 768px) {
+    padding: 0 3.2rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 19rem;
+  }
+}
+
+.folder-add-button {
+  width: 15rem;
+  display: flex;
+  padding: 8px 24px;
+  align-items: flex-start;
+  gap: 20px;
+  left: 98.5px;
+  top: 261px;
+  border-radius: 20px;
+  border: 1px solid var(--linkbrary-white, #fff);
+  background: var(--linkbrary-primary-color, #6d6afe);
+  color: #e7effb;
+  z-index: 9999;
+  position: sticky;
+  bottom: 30%;
+  right: 50%;
+
+  @media (min-width: 768px) {
+    color: #6d6afe;
+    background: #fff;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    display: flex;
+    gap: 0.5rem;
+    top: 5rem;
+    left: 5rem;
+    position: absolute;
+  }
+
+  @media (min-width: 1200px) {
+  }
 }

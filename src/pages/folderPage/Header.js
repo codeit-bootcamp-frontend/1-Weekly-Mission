@@ -4,7 +4,7 @@ import Search from "../../components/Search/Search";
 import AddLink from "../../components/addLink/AddLink";
 import { getFolderList, getTotalFolder } from "../../api/folderListApi";
 import FolderList from "./FolderList";
-import "./folderList.css";
+
 import Cards from "./Cards";
 import "./header.css";
 
@@ -52,9 +52,17 @@ const Header = () => {
         </li>
         {fullList && <FolderList fullData={fullList} />}
       </ul>
+
       {totalData && isTotalClicked && (
-        <div className="header-summary">전체</div>
+        <div className="header-summary">
+          전체
+          <button className="folder-add-button">
+            폴더 추가
+            <img src="/images/add.svg" />
+          </button>
+        </div>
       )}
+
       {totalData && isTotalClicked && <Cards fullData={totalData} />}
     </>
   );
