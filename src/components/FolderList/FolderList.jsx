@@ -2,6 +2,7 @@ import { getFolderList } from "api";
 import { useEffect, useState } from "react";
 import * as S from "./FolderList.style";
 import addIcon from "images/add.svg";
+import addIconWhite from "images/add_white.svg";
 import deleteIcon from "images/delete.svg";
 import nameChangeIcon from "images/name-change.svg";
 import shareIcon from "images/share.svg";
@@ -50,7 +51,8 @@ function FolderList({ getFolderId }) {
           </S.FolderContainer>
           <S.AddFolderButton>
             <span>폴더 추가</span>
-            <img src={addIcon} alt="추가 아이콘" />
+            <img className="notMobile" src={addIcon} alt="추가 아이콘" />
+            <img className="onMobile" src={addIconWhite} alt="추가 아이콘" />
           </S.AddFolderButton>
         </S.FolderListContainer>
       )}
