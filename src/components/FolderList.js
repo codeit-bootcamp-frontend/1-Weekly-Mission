@@ -61,10 +61,11 @@ export default function FolderList({ userFolder, onCurrentFolderId }) {
     const id = e.target.id;
     if (id === currentButton) {
       setCurrentButton('');
+      onCurrentFolderId('');
     } else {
       setCurrentButton(id);
+      onCurrentFolderId(id);
     }
-    onCurrentFolderId(id);
   };
 
   return (

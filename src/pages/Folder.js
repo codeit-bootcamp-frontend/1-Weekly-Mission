@@ -31,7 +31,6 @@ export default function Folder() {
     const linkData = await getData('users/1/links?folderId=' + currentFolderId);
     setUserFolder(data);
     setLinks(linkData.data);
-    console.log('실행');
   }, [currentFolderId]);
 
   const handleCurrentFolderId = (id) => {
@@ -54,7 +53,11 @@ export default function Folder() {
               onCurrentFolderId={handleCurrentFolderId}
             />
             <Option />
-            <CardList cards={links} />
+            {links.length === 0 ? (
+              <Div>저장된 폴더가 없습니다</Div>
+            ) : (
+              <CardList cards={links} />
+            )}
           </div>
         ) : (
           <Div>저장된 폴더가 없습니다</Div>
