@@ -1,5 +1,5 @@
 import "../css/footer.css";
-import { snsData } from "../utils/snsUtil";
+import { snsData } from "../utils/snsData";
 
 function Footer() {
   return (
