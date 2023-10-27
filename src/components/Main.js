@@ -1,7 +1,5 @@
-import Cards from '../Card/Card';
+import Cards from './Card';
 import './Main.css';
-import '../../globalStyles.css'
-
 
 const Main = ( {folder} ) => {
   return (

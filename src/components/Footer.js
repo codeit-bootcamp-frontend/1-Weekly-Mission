@@ -1,8 +1,7 @@
-import facebookIcon from './Footer-facebook-icon.svg';
-import twitterIcon from './Footer-twitter-icon.svg';
-import youtubeIcon from './Footer-youtube-icon.svg';
-import instagramIcon from './Footer-instagram-icon.svg';
-import '../../globalStyles.css'
+import facebookIcon from '../assets/Footer-facebook-icon.svg';
+import twitterIcon from '../assets/Footer-twitter-icon.svg';
+import youtubeIcon from '../assets/Footer-youtube-icon.svg';
+import instagramIcon from '../assets/Footer-instagram-icon.svg';
 import './Footer.css';
 
 const Footer = () => {

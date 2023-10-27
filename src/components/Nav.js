@@ -1,6 +1,5 @@
-import '../../globalStyles.css'
 import './Nav.css';
-import NavLogo from './Nav_logo.svg';
+import NavLogo from '../assets/Nav_logo.svg';
 
 const Nav = ( {account} ) => {
 
