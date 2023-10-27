@@ -1,6 +1,6 @@
-import Card from './Card';
-import '../../style/style.css';
-import './CardList.css';
+import Card from "./Card";
+import "../../style/style.css";
+import "./CardList.css";
 
 function CardList({ links }) {
   if (!links) {
@@ -8,7 +8,9 @@ function CardList({ links }) {
   }
   return (
     <div className="CardList">
-      {links.map((link, index) =>  <Card key={index} link={link} /> )}
+      {links.map((link, index) => (
+        <Card key={index} link={link} />
+      ))}
     </div>
   );
 }

@@ -1,4 +1,3 @@
-
 function SocialIcon({ link, imageSource, altText }) {
   return (
     <a href={link}>

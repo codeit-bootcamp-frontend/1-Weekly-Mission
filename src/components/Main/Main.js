@@ -1,6 +1,6 @@
 import CardList from "./CardList";
 import SearchBar from "./SearchBar";
-import './Main.css'
+import "./Main.css";
 
 function Main({ links }) {
   if (!links) {
@@ -10,10 +10,9 @@ function Main({ links }) {
     <main className="Main">
       <SearchBar />
 
-      <CardList links ={links} />
-
+      <CardList links={links} />
     </main>
-  )
+  );
 }
 
 export default Main;
