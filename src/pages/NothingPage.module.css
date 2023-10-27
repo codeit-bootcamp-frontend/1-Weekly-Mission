@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+  }
+  /* descktop*/
+  @media (min-width: 1200px) {
+  }
+}
+
+.text {
+  padding: 20rem;
+  margin: 0 20rem;
+  text-align: center;
+  font-size: 3rem;
+}
