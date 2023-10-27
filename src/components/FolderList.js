@@ -10,7 +10,25 @@ const AddFoler = styled.div`
   color: var(--linkbrary-primary-color);
   flex-shrink: 0;
   height: 35px;
-  margin-left: 12px;
+  @media (max-width: 767px) {
+    position: fixed;
+    bottom: 101px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 9px 24px;
+    background-color: var(--linkbrary-primary-color);
+    border-radius: 20px;
+    color: var(--linkbrary-white);
+    z-index: 3;
+  }
+`;
+
+const AddImg = styled.img`
+  position: relative;
+  top: -1px;
+  @media (max-width: 767px) {
+    filter: brightness(0) invert(1);
+  }
 `;
 
 const Box = styled.div`
@@ -22,12 +40,12 @@ const Box = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: ${({ color }) =>
-    color === 'true'
+  background-color: ${({ $select }) =>
+    $select === 'true'
       ? 'var(--linkbrary-primary-color)'
       : 'var(--linkbrary-white)'};
-  color: ${({ color }) =>
-    color === 'true' ? 'var(--linkbrary-white)' : 'black'};
+  color: ${({ $select }) =>
+    $select === 'true' ? 'var(--linkbrary-white)' : 'black'};
   border: 1px solid var(--linkbrary-primary-color);
   padding: 8px 12px;
   border-radius: 5px;
@@ -41,15 +59,16 @@ const FolderBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-right: 12px;
 `;
 
 const ALL = {
   name: '전체',
 };
 
-const Folder = ({ folderInfo, color, onClick }) => {
+const Folder = ({ folderInfo, $select, onClick }) => {
   return (
-    <Button color={color} onClick={onClick} id={folderInfo.id}>
+    <Button $select={$select} onClick={onClick} id={folderInfo.id}>
       {folderInfo.name}
     </Button>
   );
@@ -74,7 +93,7 @@ export default function FolderList({ userFolder, onCurrentFolderId }) {
         <Folder
           folderInfo={ALL}
           key='전체'
-          color={`${currentButton === ''}`}
+          $select={`${currentButton === ''}`}
           onClick={handleFolder}
           id=''
         />
@@ -83,13 +102,13 @@ export default function FolderList({ userFolder, onCurrentFolderId }) {
             folderInfo={folder}
             key={folder.id}
             onClick={handleFolder}
-            color={`${currentButton === String(folder.id)}`}
+            $select={`${currentButton === String(folder.id)}`}
           />
         ))}
       </FolderBox>
       <AddFoler>
         <div>폴더추가</div>
-        <img src={addImg} alt='폴더추가' />
+        <AddImg src={addImg} alt='폴더추가' />
       </AddFoler>
     </Box>
   );

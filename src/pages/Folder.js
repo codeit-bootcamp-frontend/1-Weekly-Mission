@@ -9,12 +9,12 @@ import getData from '../services/api';
 
 const Div = styled.div`
   max-width: 1060px;
-  height: 100px;
+  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  margin: auto;
+  margin: 0 auto 100px;
 `;
 
 const Container = styled.div`
@@ -52,9 +52,9 @@ export default function Folder() {
               userFolder={userFolder}
               onCurrentFolderId={handleCurrentFolderId}
             />
-            <Option />
+            <Option currentFolderId={currentFolderId} />
             {links.length === 0 ? (
-              <Div>저장된 폴더가 없습니다</Div>
+              <Div>저장된 링크가 없습니다</Div>
             ) : (
               <CardList cards={links} />
             )}

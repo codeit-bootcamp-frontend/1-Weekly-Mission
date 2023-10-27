@@ -34,24 +34,29 @@ const Img = styled.img`
   height: 18px;
 `;
 
-export default function Option() {
+export default function Option({ currentFolderId }) {
+  const show = currentFolderId !== '';
   return (
     <Container>
       <Title>유용한 정보</Title>
-      <OptionContainer>
-        <OptionBox>
-          <Img src={shareImg} alt='공유' />
-          <div>공유</div>
-        </OptionBox>
-        <OptionBox>
-          <Img src={penImg} alt='수정' />
-          <div>이름 변경</div>
-        </OptionBox>
-        <OptionBox>
-          <Img src={deleteImg} alt='삭제' />
-          <div>삭제</div>
-        </OptionBox>
-      </OptionContainer>
+      {show ? (
+        <OptionContainer>
+          <OptionBox>
+            <Img src={shareImg} alt='공유' />
+            <div>공유</div>
+          </OptionBox>
+          <OptionBox>
+            <Img src={penImg} alt='수정' />
+            <div>이름 변경</div>
+          </OptionBox>
+          <OptionBox>
+            <Img src={deleteImg} alt='삭제' />
+            <div>삭제</div>
+          </OptionBox>
+        </OptionContainer>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 }
