@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "./Nav";
-import Header from "../../ui/Header";
+import Header from "./Header";
 import Article from "../../ui/Article";
 import Footer from "../../ui/Footer";
 
