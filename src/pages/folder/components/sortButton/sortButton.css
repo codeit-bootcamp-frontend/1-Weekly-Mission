@@ -15,12 +15,17 @@
   cursor: pointer;
 }
 
+.clicked {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
 .folder-sort-buttons-container {
   display: flex;
   gap: 8px;
 }
 
-.folder-content-section {
+.folder-main {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -42,4 +47,16 @@
   color: var(--color-primary);
   background-color: var(--color-white);
   cursor: pointer;
+}
+
+.folder-content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.folder-category {
+  font-size: 24px;
+  color: var(--color-black);
+  font-weight: 600;
 }
