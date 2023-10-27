@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import addImg from '../assets/images/add.svg';
 import { useState } from 'react';
-import '../styles/FolderList.css';
 
 const AddFoler = styled.div`
   display: flex;
@@ -74,16 +73,17 @@ const Folder = ({ folderInfo, $select, onClick }) => {
   );
 };
 
-export default function FolderList({ userFolder, onCurrentFolderId }) {
+export default function FolderList({ userFolder, onCurrentFolder }) {
   const [currentButton, setCurrentButton] = useState('');
   const handleFolder = (e) => {
     const id = e.target.id;
+    const name = e.target.innerHTML;
     if (id === currentButton) {
-      setCurrentButton('');
-      onCurrentFolderId('');
+      setCurrentButton({ name: '전체', id: '' });
+      onCurrentFolder({ name: '전체', id: '' });
     } else {
-      setCurrentButton(id);
-      onCurrentFolderId(id);
+      setCurrentButton({ name, id });
+      onCurrentFolder({ name, id });
     }
   };
 

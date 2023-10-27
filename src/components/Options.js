@@ -11,8 +11,13 @@ const FlexAlign = styled.div`
 
 const Container = styled(FlexAlign)`
   max-width: 1060px;
-  justify-content: space-between;
   margin: 24px auto;
+  justify-content: space-between;
+  @media (max-width: 767px) {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
 
 const Title = styled.div`
@@ -34,11 +39,11 @@ const Img = styled.img`
   height: 18px;
 `;
 
-export default function Option({ currentFolderId }) {
-  const show = currentFolderId !== '';
+export default function Option({ currentFolder }) {
+  const show = currentFolder.id !== '';
   return (
     <Container>
-      <Title>유용한 정보</Title>
+      <Title>{currentFolder.name}</Title>
       {show ? (
         <OptionContainer>
           <OptionBox>
