@@ -10,6 +10,7 @@ export default function Menubar({ data, isLoading }) {
   // console.log(data?.data);
   // const [data, isLoading] = useUserFolderFetch({ id: 1 });
   const result = data?.data;
+
   const obj = {};
   let obj_keys = [];
 

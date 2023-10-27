@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import useFetch from "../../hooks/useFetch";
 import DataListItem from "./DataListItem";
+import LocaleContext from "../../contexts/LocaleContext";
 
 import styles from "../imageList/ImageList.module.css";
 import ItemSkeleton from "../skeleton/ItemSkeleton";
 
 // 전체 버튼 클릭했을때
 export default function WholeData() {
-  const [data, isLoading] = useFetch(
+  const [linkData, isLoading] = useFetch(
     "https://bootcamp-api.codeit.kr/api/users/1/links"
   );
 
-  const result = data?.data;
+  const result = linkData?.data;
 
   return (
     <ul>

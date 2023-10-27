@@ -11,9 +11,9 @@ const BaseButton = styled.button`
   padding-right: 1rem;
 `;
 
-export default function Button({ children, className, onClickFunc }) {
+export default function Button({ children, className, name, onClickFunc }) {
   return (
-    <BaseButton className={className} onClick={onClickFunc}>
+    <BaseButton name={name} className={className} onClick={onClickFunc}>
       {children}
     </BaseButton>
   );

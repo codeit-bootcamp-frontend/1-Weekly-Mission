@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import SharedPage from "./pages/SharedPage"; // 얜 왜 빨간색?
 import FolderPage from "./pages/FolderPage";
+import NothingPage from "./pages/NothingPage";
 
 function App() {
   // const userId = 1;
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/folder" element={<FolderPage />} />
           <Route path="/shared" element={<SharedPage />} />
+          <Route path="/nothing" element={<NothingPage />} />
         </Routes>
       </BrowserRouter>
     </div>
