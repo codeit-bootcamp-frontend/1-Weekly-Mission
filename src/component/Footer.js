@@ -1,5 +1,5 @@
 import css from "../css/Footer.module.css";
-import youtubeImg from "../assets/img/youtube.svg";
+import youtubeImg from "../assets/img/Youtube.svg";
 import instagramImg from "../assets/img/instagram.svg";
 import twitterImg from "../assets/img/twitter.svg";
 import facebookImg from "../assets/img/facebook.svg";

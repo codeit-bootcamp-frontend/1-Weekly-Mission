@@ -1,11 +1,8 @@
-const API_URL = {
-  sampleUser: "https://bootcamp-api.codeit.kr/api/sample/user",
-  sampleFolder: "https://bootcamp-api.codeit.kr/api/sample/folder",
-};
+import { API } from "./config";
 
 export async function isSignIn() {
   try {
-    const userRes = await fetch(API_URL.sampleUser);
+    const userRes = await fetch(API.sampleUser);
     const userInfo = await userRes.json();
     if (userRes?.status === 200) {
       return userInfo;
@@ -16,7 +13,7 @@ export async function isSignIn() {
 
 export async function getFolder() {
   try {
-    const res = await fetch(API_URL.sampleFolder);
+    const res = await fetch(API.sampleFolder);
     const userFolder = await res.json();
     if (res?.status === 200) return userFolder;
     return false;
