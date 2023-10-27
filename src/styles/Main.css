@@ -22,6 +22,9 @@ main {
   @media (max-width: 1123px) {
     width: 700px;
   }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
 
 section {
@@ -37,8 +40,10 @@ section {
   @media (max-width: 1123px) {
     width: 700px;
   }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
-
 .search-bar {
   display: flex;
   width: 1060px;
@@ -51,6 +56,9 @@ section {
   @media (max-width: 1123px) {
     width: 700px;
   }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
 
 .search-bar-wrapper {
@@ -60,6 +68,9 @@ section {
   margin: 0 auto;
   @media (max-width: 1123px) {
     width: 700px;
+  }
+  @media (max-width: 768px) {
+    width: 500px;
   }
 }
 

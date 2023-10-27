@@ -11,10 +11,10 @@ function MainSpace({ items }) {
           <input
             type="text"
             className="search-bar"
-            placeholder="    링크를 검색해 보세요"
-          ></input>
+            placeholder="링크를 검색해 보세요"
+          />
 
-          <img src={SearchIcon} className="search-icon-image" alt=""></img>
+          <img src={SearchIcon} className="search-icon-image" alt=" " />
         </div>
 
         <section>

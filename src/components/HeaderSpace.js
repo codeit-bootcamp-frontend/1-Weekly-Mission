@@ -2,8 +2,8 @@ import "../styles/navheader.css";
 import "../styles/reset.css";
 import logo from "../images/logo.svg";
 
-function HeaderSpace({ items, lists }) {
-  const { name, profileImageSource, title } = items;
+function HeaderSpace({ profiles, lists }) {
+  const { name, profileImageSource, title } = profiles;
   const { email, userImage } = lists;
 
   return (

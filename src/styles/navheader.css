@@ -22,6 +22,9 @@ nav {
   @media (max-width: 1123px) {
     width: 900px;
   }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
 
 .logo {

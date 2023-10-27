@@ -10,24 +10,21 @@ function App() {
   const [profile, setProfile] = useState([]);
   const [user, setUser] = useState([]);
 
-  const HandleFolderLoad = async () => {
+  const handleFolderLoad = async () => {
     // eslint-disable-line no-unused-vars
     try {
       const {
-        folder: { links },
-      } = await getFolderData();
-      setItems(links);
-
-      const {
-        folder: { name: title, owner },
+        folder: { links, name: title, owner },
       } = await getFolderData();
       const ownerProfile = { title, ...owner };
+      setItems(links);
       setProfile(ownerProfile);
     } catch (error) {
       console.log(error);
     }
   };
-  const HandleUserLoad = async () => {
+
+  const handleUserLoad = async () => {
     try {
       const {
         name,
@@ -40,17 +37,17 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    HandleFolderLoad();
-  }, []);
+  const initialize = async () => {
+    await handleFolderLoad();
+    await handleUserLoad();
+  };
 
   useEffect(() => {
-    HandleUserLoad();
+    initialize();
   }, []);
-
   return (
     <>
-      <HeaderSpace items={profile} lists={user} />
+      <HeaderSpace profiles={profile} lists={user} />
       <MainSpace items={items} />
       <FooterSpace />
     </>
