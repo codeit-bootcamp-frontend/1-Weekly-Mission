@@ -25,9 +25,11 @@ const CardList = ({ isFolderPage, folderId, setHasLinks }) => {
       .then((data) => {
         const linkData = isFolderPage ? data.data : data.folder.links;
         setLinks(linkData || []);
-        setHasLinks(linkData && linkData.length > 0);
+        if (setHasLinks) {
+          setHasLinks(linkData && linkData.length > 0);
+        }
       });
-  }, [isFolderPage, folderId]);
+  }, [isFolderPage, folderId, setHasLinks]);
 
   return (
     <div className="card-list">
