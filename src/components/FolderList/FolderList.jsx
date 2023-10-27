@@ -5,6 +5,9 @@ import addIcon from "images/add.svg";
 
 function FolderList() {
   const [folders, setFolders] = useState();
+  const [currentFolder, setCurrentFolder] = useState("");
+
+  const handleAllClick = () => setCurrentFolder("");
 
   const handleLoad = async () => {
     const result = await getFolderList();
@@ -14,13 +17,16 @@ function FolderList() {
 
   useEffect(() => {
     handleLoad();
-  }, []);
+  }, [currentFolder]);
 
   return (
     <>
       {folders && (
         <S.FolderListContainer>
           <S.FolderContainer>
+            <li>
+              <S.Folder onClick={handleAllClick}>전체</S.Folder>
+            </li>
             {folders.map((folder) => {
               return (
                 <li key={folder.id}>

@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react";
-import Card from "components/Card";
-import { getFolder } from "api";
+import Card from "components/CardList/Card";
 import * as S from "./CardList.style";
 
-function CardList() {
+function CardList({ data }) {
   const [items, setItems] = useState();
 
-  const handleLoad = async () => {
-    const data = await getFolder();
-    setItems(data.folder?.links);
-  };
-
   useEffect(() => {
-    handleLoad();
-  }, []);
+    setItems(data);
+  }, [data]);
 
   return (
     <>

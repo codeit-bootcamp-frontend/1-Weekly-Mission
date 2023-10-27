@@ -1,15 +1,15 @@
-import CardList from "components/CardList";
-import SearchBar from "components/SearchBar";
 import FolderInfo from "components/FolderInfo";
+import SearchBar from "components/SearchBar";
+import SampleCardList from "components/SampleCardList";
 import { useEffect, useState } from "react";
-import { getFolder } from "api";
+import { getSampleFolder } from "api";
 import { MainDiv } from "styles/MainDiv";
 
 function SharedPage() {
   const [folder, setFolder] = useState({});
 
   const handleLoadFolder = async () => {
-    const result = await getFolder();
+    const result = await getSampleFolder();
     setFolder(result);
   };
 
@@ -22,7 +22,7 @@ function SharedPage() {
       <FolderInfo data={folder} />
       <MainDiv>
         <SearchBar />
-        <CardList />
+        <SampleCardList />
       </MainDiv>
     </>
   );

@@ -5,7 +5,7 @@ import kebab from "images/kebab.svg";
 import { formatDate, formatTimeDiff } from "utils";
 
 function Card({ item }) {
-  const { imageSource, createdAt, title, description, url } = item;
+  const { image_source, created_at, title, description, url } = item;
 
   const moveUrl = () => {
     window.open(url);
@@ -14,14 +14,14 @@ function Card({ item }) {
   return (
     <div onClick={moveUrl}>
       <S.ImageContainer>
-        <S.Image src={imageSource || noImage} alt={title} />
+        <S.Image src={image_source || noImage} alt={title} />
         <S.StarButton src={star} alt="별모양 버튼" />
       </S.ImageContainer>
       <S.Info>
         <S.KebabButton src={kebab} alt="케밥 버튼" />
-        <S.TimeDiff>{formatTimeDiff(createdAt)}</S.TimeDiff>
+        <S.TimeDiff>{formatTimeDiff(created_at)}</S.TimeDiff>
         <S.Description>{description}</S.Description>
-        <S.Date>{formatDate(createdAt)}</S.Date>
+        <S.Date>{formatDate(created_at)}</S.Date>
       </S.Info>
     </div>
   );
