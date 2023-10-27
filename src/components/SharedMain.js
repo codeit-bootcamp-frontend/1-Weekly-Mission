@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import LinkSearchInput from './LinkSearchInput';
 import CardList from './CardList';
 
-export const MainContainer = styled.main`
+const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;

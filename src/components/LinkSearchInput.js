@@ -1,10 +1,10 @@
-import Cards from './Card';
 import styled from 'styled-components';
 
 export const FormContainer = styled.form`
   display: flex;
   height: 4.5rem;
   width: 106rem;
+  margin: 1.6rem 0 1.6rem;
 
   @media (max-width: 1124px) {
     width: 100%;
