@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/global.css';
-import './style.css';
+import './HomePageStyle.css';
 import {
   logoImg,
   snsIconF,
