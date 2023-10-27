@@ -50,7 +50,18 @@ nav {
   font-size: 1.4rem;
   font-weight: 600;
 }
+.cta-long {
+  width: 128px;
+}
 
+.cta-short {
+  display: flex;
+  width: 80px;
+  padding: 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 header {
   display: flex;
   width: 1440px;
@@ -130,4 +141,54 @@ header {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.linkAdd-bar-wrapper {
+  display: flex;
+  width: 800px;
+  padding: 16px 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 15px;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+  background: var(--linkbrary-white, #fff);
+  @media (max-width: 1123px) {
+    width: 500px;
+  }
+  @media (max-width: 768px) {
+    width: 300px;
+  }
+}
+
+.linkAdd-bar {
+  display: flex;
+  width: 800px;
+  padding: 16px 20px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 15px;
+  border: 0px solid var(--linkbrary-primary-color, #6d6afe);
+  background: var(--linkbrary-white, #fff);
+  @media (max-width: 1123px) {
+    width: 500px;
+  }
+  @media (max-width: 768px) {
+    width: 300px;
+  }
+}
+
+.linkAdd-bar-image {
+  position: absolute;
+  top: 220px;
+  left: 320px;
+  cursor: pointer;
+}
+
+.folder-header {
+  padding: 60px 320px 90px 320px;
+  margin-bottom: 40px;
 }

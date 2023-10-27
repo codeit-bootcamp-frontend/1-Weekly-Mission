@@ -9,12 +9,20 @@ function Card({ item }) {
     <a href={url}>
       <div className="card-container">
         <div className="card-image-wrapper">
-          <img className="card-image" src={imageSource} alt={title} />
+          <img
+            className="card-image"
+            src={item.image_source || imageSource}
+            alt={title}
+          />
         </div>
         <div className="card-box">
-          <span className="card-created-time">{timeForToday(createdAt)}</span>
+          <span className="card-created-time">
+            {timeForToday(createdAt || item.created_at)}
+          </span>
           <span className="card-text">{description}</span>
-          <span className="card-created-at">{formatDate(createdAt)}</span>
+          <span className="card-created-at">
+            {formatDate(createdAt || item.created_at)}
+          </span>
         </div>
       </div>
     </a>

@@ -1,0 +1,16 @@
+.SelectItem {
+  display: flex;
+  padding: 8px 12px;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  white-space: nowrap;
+}
+
+.active {
+  &.active {
+    background-color: lightblue;
+  }
+}

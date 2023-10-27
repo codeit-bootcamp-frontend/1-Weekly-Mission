@@ -1,40 +1,42 @@
 import "../styles/navheader.css";
 import "../styles/reset.css";
-import logo from "../images/logo.svg";
+import linkAdd from "../images/link.svg";
 
-function HeaderSpace({ profiles, lists }) {
-  const { name, profileImageSource, title } = profiles;
-  const { email, userImage } = lists;
-
+function HeaderSpace({ profiles }) {
   return (
     <>
-      <nav>
-        <div className="nav-box">
-          <img className="logo" src={logo} alt="회사 로고" />
-          {lists ? (
-            <div className="profile">
-              <img className="user-image" src={userImage} alt="사용자 이미지" />
-              <span className="user-email">{email}</span>
+      {profiles !== undefined ? (
+        <header>
+          <div className="hero-header">
+            <div className="company-mark">
+              <img
+                className="circle-logo"
+                src={profiles.profileImageSource}
+                alt=""
+              />
+              <span className="company-name">{profiles.name}</span>
             </div>
-          ) : (
-            <a className="cta cta-short" href="/">
-              <span>로그인</span>
-            </a>
-          )}
-        </div>
-      </nav>
+            <div className="bookmarks-wrapper">
+              <span className="bookmarks">{profiles.title}</span>
+            </div>
+          </div>
+        </header>
+      ) : (
+        <header className=" folder-header">
+          <div className="linkAdd-bar-wrapper">
+            <input
+              type="text"
+              className="linkAdd-bar"
+              placeholder="링크를 추가해보세요"
+            />
 
-      <header>
-        <div className="hero-header">
-          <div className="company-mark">
-            <img className="circle-logo" src={profileImageSource} alt="" />
-            <span className="company-name">{name}</span>
+            <img src={linkAdd} className="linkAdd-bar-image" alt=" " />
+            <a className="cta cta-short" href="/">
+              <span>추가하기</span>
+            </a>
           </div>
-          <div className="bookmarks-wrapper">
-            <span className="bookmarks">{title}</span>
-          </div>
-        </div>
-      </header>
+        </header>
+      )}
     </>
   );
 }
