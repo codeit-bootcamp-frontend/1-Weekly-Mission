@@ -47,17 +47,14 @@ function FolderList({ onFolderSelect }) {
   return (
     <div className="folders">
       <div className="folder-list">
-        <div
-          className="folder-item"
-          onClick={() => handleFolderClick(null)} // '전체' 항목에 클릭 이벤트 연결
-        >
+        <div className="folder-item" onClick={() => handleFolderClick(null)}>
           전체
         </div>
         {folders.map((folder) => (
           <div
             className="folder-item"
             key={folder.id}
-            onClick={() => handleFolderClick(folder.id, folder.name)} // 폴더 클릭 이벤트 연결
+            onClick={() => handleFolderClick(folder.id, folder.name)}
           >
             {folder.name}
           </div>
@@ -68,11 +65,13 @@ function FolderList({ onFolderSelect }) {
         <FolderAdd />
       </div>
       <span className="folder-select">{selectedFolder}</span>
-      <div className="folder-actions">
-        <ActionItem icon={ShareIcon} label="공유" />
-        <ActionItem icon={PenIcon} label="이름 변경" />
-        <ActionItem icon={DeleteIcon} label="삭제" />
-      </div>
+      {selectedFolder !== "전체" && (
+        <div className="folder-actions">
+          <ActionItem icon={ShareIcon} label="공유" />
+          <ActionItem icon={PenIcon} label="이름 변경" />
+          <ActionItem icon={DeleteIcon} label="삭제" />
+        </div>
+      )}
     </div>
   );
 }
