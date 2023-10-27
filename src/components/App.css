@@ -1,19 +1,1 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
 
-* {
-  padding: 0;
-  margin: 0;
-  font-family: 'Pretendard';
-}
-body {
-  width: 100vw;
-  height: 100vh;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400; 
-  line-height: normal;
-}
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
