@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/global.css';
-import './style.css';
+import './LandingPageStyle.css';
 import {
   titleImg,
   saveImg,
@@ -8,34 +9,19 @@ import {
   shareImg,
   searchImg,
 } from '../../constants/landingImages';
-import {
-  logoImg,
-  snsIconF,
-  snsIconT,
-  snsIconY,
-  snsIconI,
-} from '../../constants/globalImages';
 
 function LandingPage() {
   return (
     <>
       <header>
-        <nav>
-          <a href="../.." className="nav-logo">
-            <img src={logoImg} alt="Linkbrary 로고" />
-          </a>
-          <a href="/pages/login/signin.html" className="nav-login">
-            <div className="btn btn-login">로그인</div>
-          </a>
-        </nav>
         <div className="hero-header">
           <h1>
             <span className="font-gradation">세상의 모든 정보</span>를<br />
             쉽게 저장하고 관리해 보세요.
           </h1>
-          <a href="/pages/login/signup.html">
+          <Link to="/sign-in">
             <div className="btn btn-add-link">링크 추가하기</div>
-          </a>
+          </Link>
           <img src={titleImg} alt="웹사이트 사진" />
         </div>
       </header>
@@ -93,42 +79,6 @@ function LandingPage() {
           <img src={searchImg} alt="검색기능 설명 이미지" />
         </section>
       </article>
-
-      <footer>
-        <div className="footer-container">
-          <span>©codeit - 2023</span>
-          <div className="footer-menu">
-            <a href="/pages/privacy/privacy.html">Privacy Policy</a>
-            <a href="/pages/faq/faq.html">FAQ</a>
-          </div>
-          <div className="sns-icons">
-            <a
-              href="https://www.facebook.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={snsIconF} alt="Linkbrary의 facebook 바로가기" />
-            </a>
-            <a
-              href="https://twitter.com/?lang=ko"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={snsIconT} alt="Linkbrary의 twiter 바로가기" />
-            </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
-              <img src={snsIconY} alt="Linkbrary의 youtube 바로가기" />
-            </a>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={snsIconI} alt="Linkbrary의 instagram 바로가기" />
-            </a>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }

@@ -1,0 +1,27 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 12.5rem 2rem;
+    position: fixed;
+    top:0;
+    z-index: 1;
+    background-image: linear-gradient(
+            180deg,
+            rgba(240, 246, 255, 1) 70%,
+            rgba(240, 246, 255, 0)
+    );
+    width: 100%;
+    max-width: 192rem;
+}
+
+.nav-logo img{
+    width: 13rem;
+    height: 2.4rem;
+}
+
+a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}

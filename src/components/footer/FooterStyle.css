@@ -1,0 +1,39 @@
+footer{
+    background-color: #111322;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container{
+    display: flex;
+    padding: 2rem 6.5rem 4rem;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 192rem;
+}
+
+footer span{
+    color: #676767;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.footer-menu{
+    display: flex;
+    gap: 1.88rem;
+    font-size: 1.6rem;
+}
+
+.footer-menu a{
+    color: #CFCFCF;
+}
+
+.sns-icons{
+    display: flex;
+    gap: 0.75rem;
+    color: #fff;
+}
