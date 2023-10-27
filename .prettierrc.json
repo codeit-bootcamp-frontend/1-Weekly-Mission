@@ -2,5 +2,17 @@
   "trailingComma": "es5",
   "tabWidth": 2,
   "semi": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "importOrder": [
+    "^@(store|modules)/(.*)$",
+    "^@(contexts|hoc)/(.*)$",
+    "^@hooks/(.*)$",
+    "^@constants/?(.*)$",
+    "^@pages/(.*)$",
+    "^@modals/(.*)$",
+    "^@(components|icons)/(.*)$",
+    "^@utils/(.*)$",
+    "^@styles/(.*)$",
+    "^[./]"
+  ]
 }

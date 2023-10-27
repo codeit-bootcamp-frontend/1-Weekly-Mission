@@ -1,13 +1,9 @@
 import React from 'react';
-import Landing from './landing/Landing';
-import Home from './home/Home';
-
-// function App() {
-//   return <Landing />;
-// }
+import LandingPage from '../pages/landing/LandingPage';
+import HomePage from '../pages/home/HomePage';
 
 function App() {
-  return true ? <Home /> : <Landing />;
+  return true ? <HomePage /> : <LandingPage />;
 }
 
 export default App;

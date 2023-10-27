@@ -1,15 +1,15 @@
 import React from 'react';
-import { LogoImg, SnsIconG, SnsIconK } from '../CommonImages';
-import { EyeOffImg, EyeOffImg } from './Images';
+import { logoImg, snsIconG, snsIconK } from '../../constants/globalImages';
+import { eyeOffImg, eyeOnImg } from '../../constants/loginImages';
 
-function SignUp() {
+function SignUpPage() {
   return (
     <>
       <div className="container">
         <header>
           <div className="header-logo">
             <a href="../..">
-              <img src={LogoImg} alt="Linkbrary 로고" />
+              <img src={logoImg} alt="Linkbrary 로고" />
             </a>
           </div>
           <nav>
@@ -31,7 +31,7 @@ function SignUp() {
               <input id="password" type="password" name="password" />
               <img
                 className="hide-password"
-                src={EyeOffImg}
+                src={eyeOffImg}
                 alt="비밀번호 보이게하기(현재 보이지 않음)"
               />
             </div>
@@ -40,7 +40,7 @@ function SignUp() {
               <input id="passwordCheck" type="password" name="password" />
               <img
                 className="hide-password-check"
-                src={EyeOffImg}
+                src={eyeOffImg}
                 alt="비밀번호 보이게하기(현재 보이지 않음)"
               />
             </div>
@@ -52,10 +52,10 @@ function SignUp() {
             <span>다른 방식으로 가입하기</span>
             <div className="sns-icons">
               <a href="https://www.google.com/">
-                <img src={SnsIconG} alt="구글 회원가입 바로가기" />
+                <img src={snsIconG} alt="구글 회원가입 바로가기" />
               </a>
               <a href="https://www.kakaocorp.com/page/">
-                <img src={SnsIconK} alt="카카오 회원가입 바로가기" />
+                <img src={snsIconK} alt="카카오 회원가입 바로가기" />
               </a>
             </div>
           </div>
@@ -67,4 +67,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignUpPage;

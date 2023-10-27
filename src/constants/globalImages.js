@@ -10,16 +10,28 @@ import SearchIcon from '../assets/icon_search.svg';
 import NoImage from '../assets/no-img.png';
 import SampleProfile from '../assets/cat.png';
 
+const logoImg = LogoImg;
+const titleImg = TitleImg;
+const snsIconF = SnsIconF;
+const snsIconT = SnsIconT;
+const snsIconY = SnsIconY;
+const snsIconI = SnsIconI;
+const snsIconG = SnsIconG;
+const snsIconK = SnsIconK;
+const searchIcon = SearchIcon;
+const noImage = NoImage;
+const sampleProfile = SampleProfile;
+
 export {
-  LogoImg,
-  TitleImg,
-  SnsIconF,
-  SnsIconT,
-  SnsIconY,
-  SnsIconI,
-  SnsIconG,
-  SnsIconK,
-  SearchIcon,
-  NoImage,
-  SampleProfile,
+  logoImg,
+  titleImg,
+  snsIconF,
+  snsIconT,
+  snsIconY,
+  snsIconI,
+  snsIconG,
+  snsIconK,
+  searchIcon,
+  noImage,
+  sampleProfile,
 };

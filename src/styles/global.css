@@ -1,10 +1,7 @@
-:root{
-    --primary: #6D6AFE;
-    --red: #FF5B56;
-    --black: #111322;
-    --white: #fff;
-    --gray: #3E3E43;
-}
+@import "./colors.css";
+@import "./reset.css";
+@import "./variables.css";
+
 .btn{
     color: var(--white);
     background-image:

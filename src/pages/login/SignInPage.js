@@ -1,18 +1,17 @@
 import React from 'react';
-import '../../reset.css';
-import '../../common_style.css';
+import '../../styles/global.css';
 import './style.css';
-import { LogoImg, SnsIconG, SnsIconK } from '../CommonImages';
-import { EyeOffImg } from './Images';
+import { logoImg, snsIconG, snsIconK } from '../../constants/globalImages';
+import { eyeOffImg } from '../../constants/loginImages';
 
-function SignIn() {
+function SignInPage() {
   return (
     <>
       <div className="container">
         <header>
           <div className="header-logo">
             <a href="../..">
-              <img src={LogoImg} alt="Linkbrary 로고" />
+              <img src={logoImg} alt="Linkbrary 로고" />
             </a>
           </div>
           <nav>
@@ -34,7 +33,7 @@ function SignIn() {
               <input id="password" type="password" name="password" />
               <img
                 className="hide-password"
-                src={EyeOffImg}
+                src={eyeOffImg}
                 alt="비밀번호 보이게하기(현재 보이지 않음)"
               />
             </div>
@@ -46,10 +45,10 @@ function SignIn() {
             <span>소셜 로그인</span>
             <div className="sns-icons">
               <a href="https://www.google.com/">
-                <img src={SnsIconG} alt="구글 로그인 바로가기" />
+                <img src={snsIconG} alt="구글 로그인 바로가기" />
               </a>
               <a href="https://www.kakaocorp.com/page/">
-                <img src={SnsIconK} alt="카카오 로그인 바로가기" />
+                <img src={snsIconK} alt="카카오 로그인 바로가기" />
               </a>
             </div>
           </div>
@@ -61,4 +60,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInPage;

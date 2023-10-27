@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import '../../reset.css';
-import '../../common_style.css';
+import '../../styles/global.css';
 import './style.css';
 import {
-  LogoImg,
-  SnsIconF,
-  SnsIconT,
-  SnsIconY,
-  SnsIconI,
-  SearchIcon,
-} from '../CommonImages';
-import { getFolder, getUser } from '../../api';
-import Card from '../Card';
+  logoImg,
+  snsIconF,
+  snsIconT,
+  snsIconY,
+  snsIconI,
+  searchIcon,
+} from '../../constants/globalImages';
+import { getFolder, getUser } from '../../api/api';
+import Card from '../../components/card/Card';
 
-function Home() {
+function HomePage() {
   const [links, setLinks] = useState([]);
   const [folderInfo, setFolderInfo] = useState({});
   const [user, setUser] = useState({});
@@ -38,7 +37,7 @@ function Home() {
       <header>
         <nav>
           <a href="../.." className="nav-logo">
-            <img src={LogoImg} alt="Linkbrary 로고" />
+            <img src={logoImg} alt="Linkbrary 로고" />
           </a>
 
           <div className="user-profile">
@@ -61,7 +60,7 @@ function Home() {
       </header>
       <main>
         <div className="search-bar">
-          <img src={SearchIcon} alt="검색아이콘" />
+          <img src={searchIcon} alt="검색아이콘" />
           <input
             className="search-input"
             type="text"
@@ -88,24 +87,24 @@ function Home() {
               target="_blank"
               rel="noreferrer"
             >
-              <img src={SnsIconF} alt="Linkbrary의 facebook 바로가기" />
+              <img src={snsIconF} alt="Linkbrary의 facebook 바로가기" />
             </a>
             <a
               href="https://twitter.com/?lang=ko"
               target="_blank"
               rel="noreferrer"
             >
-              <img src={SnsIconT} alt="Linkbrary의 twiter 바로가기" />
+              <img src={snsIconT} alt="Linkbrary의 twiter 바로가기" />
             </a>
             <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
-              <img src={SnsIconY} alt="Linkbrary의 youtube 바로가기" />
+              <img src={snsIconY} alt="Linkbrary의 youtube 바로가기" />
             </a>
             <a
               href="https://www.instagram.com/"
               target="_blank"
               rel="noreferrer"
             >
-              <img src={SnsIconI} alt="Linkbrary의 instagram 바로가기" />
+              <img src={snsIconI} alt="Linkbrary의 instagram 바로가기" />
             </a>
           </div>
         </div>
@@ -114,4 +113,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

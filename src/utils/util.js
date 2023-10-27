@@ -1,7 +1,3 @@
-import React from 'react';
-import './card.css';
-import { NoImage } from './CommonImages';
-
 function formatDate(value) {
   const date = new Date(value);
   return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
@@ -36,30 +32,4 @@ function formatDateDiff(value) {
   return message;
 }
 
-function Card(data) {
-  const {
-    data: { createdAt, description, imageSource, url },
-  } = data;
-  // url, title, id
-
-  return (
-    <a href={url} className="card-link" target="_blank" rel="noreferrer">
-      <div className="card">
-        <div className="card-img-section">
-          <img
-            src={imageSource ?? NoImage}
-            alt="folderImage"
-            className="sample-img"
-          />
-        </div>
-        <div className="card-text-section">
-          <p className="time-stamp">{formatDateDiff(createdAt)}</p>
-          <p className="introduce-text">{description}</p>
-          <p className="created-date">{formatDate(createdAt)}</p>
-        </div>
-      </div>
-    </a>
-  );
-}
-
-export default Card;
+export { formatDate, formatDateDiff };

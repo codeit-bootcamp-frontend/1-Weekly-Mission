@@ -1,23 +1,28 @@
 import React from 'react';
-import '../../reset.css';
-import '../../common_style.css';
+import '../../styles/global.css';
 import './style.css';
-import { TitleImg, SaveImg, ManageImg, ShareImg, SearchImg } from './Images';
 import {
-  LogoImg,
-  SnsIconF,
-  SnsIconT,
-  SnsIconY,
-  SnsIconI,
-} from '../CommonImages';
+  titleImg,
+  saveImg,
+  manageImg,
+  shareImg,
+  searchImg,
+} from '../../constants/landingImages';
+import {
+  logoImg,
+  snsIconF,
+  snsIconT,
+  snsIconY,
+  snsIconI,
+} from '../../constants/globalImages';
 
-function Landing() {
+function LandingPage() {
   return (
     <>
       <header>
         <nav>
           <a href="../.." className="nav-logo">
-            <img src={LogoImg} alt="Linkbrary 로고" />
+            <img src={logoImg} alt="Linkbrary 로고" />
           </a>
           <a href="/pages/login/signin.html" className="nav-login">
             <div className="btn btn-login">로그인</div>
@@ -31,7 +36,7 @@ function Landing() {
           <a href="/pages/login/signup.html">
             <div className="btn btn-add-link">링크 추가하기</div>
           </a>
-          <img src={TitleImg} alt="웹사이트 사진" />
+          <img src={titleImg} alt="웹사이트 사진" />
         </div>
       </header>
       <article>
@@ -47,7 +52,7 @@ function Landing() {
             <br />한 공간에 저장하세요.
           </p>
 
-          <img src={SaveImg} alt="저장기능 설명 사진" />
+          <img src={saveImg} alt="저장기능 설명 사진" />
         </section>
 
         <section className="manage">
@@ -62,7 +67,7 @@ function Landing() {
             다양하게 활용할 수 있습니다.
           </p>
 
-          <img src={ManageImg} alt="폴더관리기능 설명 사진" />
+          <img src={manageImg} alt="폴더관리기능 설명 사진" />
         </section>
 
         <section className="share">
@@ -75,7 +80,7 @@ function Landing() {
             가족, 친구, 동료들에게 쉽고 빠르게 링크를 <br />
             공유해 보세요.
           </p>
-          <img src={ShareImg} alt="공유기능 설명 사진" />
+          <img src={shareImg} alt="공유기능 설명 사진" />
         </section>
 
         <section className="search">
@@ -85,7 +90,7 @@ function Landing() {
             <span className="font-gradation">검색</span>해 보세요.
           </h2>
           <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
-          <img src={SearchImg} alt="검색기능 설명 이미지" />
+          <img src={searchImg} alt="검색기능 설명 이미지" />
         </section>
       </article>
 
@@ -102,24 +107,24 @@ function Landing() {
               target="_blank"
               rel="noreferrer"
             >
-              <img src={SnsIconF} alt="Linkbrary의 facebook 바로가기" />
+              <img src={snsIconF} alt="Linkbrary의 facebook 바로가기" />
             </a>
             <a
               href="https://twitter.com/?lang=ko"
               target="_blank"
               rel="noreferrer"
             >
-              <img src={SnsIconT} alt="Linkbrary의 twiter 바로가기" />
+              <img src={snsIconT} alt="Linkbrary의 twiter 바로가기" />
             </a>
             <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
-              <img src={SnsIconY} alt="Linkbrary의 youtube 바로가기" />
+              <img src={snsIconY} alt="Linkbrary의 youtube 바로가기" />
             </a>
             <a
               href="https://www.instagram.com/"
               target="_blank"
               rel="noreferrer"
             >
-              <img src={SnsIconI} alt="Linkbrary의 instagram 바로가기" />
+              <img src={snsIconI} alt="Linkbrary의 instagram 바로가기" />
             </a>
           </div>
         </div>
@@ -128,4 +133,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default LandingPage;
