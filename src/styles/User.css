@@ -1,6 +1,5 @@
 .user {
   display: flex;
-  margin-top: 92px;
   flex-direction: column;
   align-items: center;
   padding: 20px 0 60px;

@@ -11,8 +11,13 @@ const FlexAlign = styled.div`
 
 const Container = styled(FlexAlign)`
   max-width: 1060px;
-  justify-content: space-between;
   margin: 24px auto;
+  justify-content: space-between;
+  @media (max-width: 767px) {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
 
 const Title = styled.div`
@@ -34,25 +39,35 @@ const Img = styled.img`
   height: 18px;
 `;
 
-export default function Option({ currentFolderId }) {
-  const show = currentFolderId !== '';
+export default function Option({ currentFolder }) {
+  const show = currentFolder.id !== '';
+  // 나중에 함수 추가하기 위해 분리
+  const share = {
+    src: shareImg,
+    name: '공유',
+  };
+  const rename = {
+    src: penImg,
+    name: '이름 변경',
+  };
+  const deleteFolder = {
+    src: deleteImg,
+    name: '삭제',
+  };
+
+  const options = [share, rename, deleteFolder];
+
   return (
     <Container>
-      <Title>유용한 정보</Title>
+      <Title>{currentFolder.name}</Title>
       {show ? (
         <OptionContainer>
-          <OptionBox>
-            <Img src={shareImg} alt='공유' />
-            <div>공유</div>
-          </OptionBox>
-          <OptionBox>
-            <Img src={penImg} alt='수정' />
-            <div>이름 변경</div>
-          </OptionBox>
-          <OptionBox>
-            <Img src={deleteImg} alt='삭제' />
-            <div>삭제</div>
-          </OptionBox>
+          {options.map((option) => (
+            <OptionBox>
+              <Img src={option.src} alt='공유' />
+              <div>{option.name}</div>
+            </OptionBox>
+          ))}
         </OptionContainer>
       ) : (
         <></>

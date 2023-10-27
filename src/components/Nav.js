@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 const Header = styled.header`
   background: var(--linkbrary-bg, #f0f6ff);
-  position: ${({ $isFixed }) => $isFixed};
+  position: ${({ $isSticky }) => $isSticky};
   width: 100%;
   z-index: 2;
 `;
@@ -31,18 +31,18 @@ const Account = ({ user = INIT_USER }) => {
 };
 
 export default function Nav({ user }) {
-  const [isFixed, setIsFixed] = useState('fixed');
+  const [isSticky, setIsFixed] = useState('fixed');
   const urlPath = useLocation().pathname;
   useEffect(() => {
     if (urlPath === '/folder') {
       setIsFixed('static');
     } else {
-      setIsFixed('fixed');
+      setIsFixed('sticky');
     }
   }, [urlPath]);
 
   return (
-    <Header className='header' $isFixed={isFixed}>
+    <Header className='header' $isSticky={isSticky}>
       <div className='nav-bar'>
         <img src={logo} alt='로고' className='nav-logo' />
         {user.email ? (
