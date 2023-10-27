@@ -2,8 +2,8 @@ import Nav from "./component/Nav";
 import Footer from "./component/Footer";
 import Profile from "./component/Profile";
 import Main from "./component/Main";
-import "./css/index.css";
-import "./css/color.css";
+import "./global.css";
+import "./index.css";
 
 function App() {
   return (
