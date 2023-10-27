@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import * as style from "./HeaderStyle";
 import logo from "assets/logo.svg";
 import { getUser } from "api/api";
+import Button from "components/button/Button";
 
 export default function Header() {
   const [user, setUser] = useState(null);
@@ -32,7 +33,7 @@ export default function Header() {
         </Link>
         <nav>
           {isLoading ? (
-            <style.LoginBtn>로그인</style.LoginBtn>
+            <Button size="large" label="로그인" />
           ) : (
             <style.Navbar>
               <style.ProfileImage src={user?.profileImageSource} />
