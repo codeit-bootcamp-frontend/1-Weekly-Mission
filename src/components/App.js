@@ -1,9 +1,18 @@
 import React from 'react';
-import LandingPage from '../pages/landing/LandingPage';
-import HomePage from '../pages/home/HomePage';
+import { Outlet } from 'react-router-dom';
+import Nav from './nav/Nav';
+import Footer from './footer/Footer';
 
 function App() {
-  return true ? <HomePage /> : <LandingPage />;
+  return (
+    <>
+      <Nav />
+      <div>
+        <Outlet />
+      </div>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
