@@ -4,8 +4,8 @@ import Navbar from "../../components/Navbar/Navbar"
 const Signup = () => {
   return (
     <>
-      <Navbar />
-      <Footer />
+      {/* <Navbar />
+      <Footer /> */}
     </>
   )
 }

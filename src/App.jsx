@@ -18,6 +18,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="folder" element={<Folder />} />
           <Route path="share" element={<Shared />} />
+
           <Route path="signup" element={<Signup />} />
           <Route path="signin" element={<Signin />} />
 

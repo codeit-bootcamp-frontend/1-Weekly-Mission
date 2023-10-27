@@ -1,12 +1,7 @@
 import { useState } from "react"
 
 import IMAGES from "../../assets/images.js"
-import {
-  SearchbarBox,
-  SearchbarDeleteBox,
-  SearchbarInnerBox,
-  SearchbarInput,
-} from "./styles.js"
+import * as S from "./styles.js"
 
 const Searchbar = () => {
   const [searchText, setSearchText] = useState("")
@@ -19,12 +14,12 @@ const Searchbar = () => {
   }
 
   return (
-    <SearchbarBox>
-      <SearchbarInnerBox>
+    <S.SearchbarBox>
+      <S.SearchbarInnerBox>
         <label htmlFor="search">
           <img src={IMAGES.search} alt="Search" />
         </label>
-        <SearchbarInput
+        <S.SearchbarInput
           id="search"
           name="search"
           value={searchText}
@@ -32,11 +27,13 @@ const Searchbar = () => {
           autoFocus
           onChange={handleSearch}
         />
-      </SearchbarInnerBox>
+      </S.SearchbarInnerBox>
       {searchText !== "" && (
-        <SearchbarDeleteBox onClick={handleSearchDelete}>X</SearchbarDeleteBox>
+        <S.SearchbarDeleteBox onClick={handleSearchDelete}>
+          X
+        </S.SearchbarDeleteBox>
       )}
-    </SearchbarBox>
+    </S.SearchbarBox>
   )
 }
 

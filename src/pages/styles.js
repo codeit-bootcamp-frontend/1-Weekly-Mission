@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const ShareHeader = styled.header`
+const StyledHeader = styled.header`
   margin-top: 8rem;
   display: flex;
   flex-direction: column;
@@ -9,4 +9,4 @@ const ShareHeader = styled.header`
   background-color: var(--linkbrary-bg);
 `
 
-export { ShareHeader }
+export { StyledHeader }

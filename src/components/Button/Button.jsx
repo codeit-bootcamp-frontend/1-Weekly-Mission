@@ -1,11 +1,10 @@
-import { CTA } from "./styles"
+import * as S from "./styles"
 
 const Button = ({ size, link, text }) => {
-  console.log(size)
   return (
-    <CTA size={size} href={link}>
+    <S.CTA size={size} href={link}>
       <span>{text}</span>
-    </CTA>
+    </S.CTA>
   )
 }
 

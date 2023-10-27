@@ -3,18 +3,7 @@ import IMAGES from "../../assets/images.js"
 import { convertCreatedAt, formatDate } from "../../utils/utils"
 import useToggle from "../../hooks/useToggle"
 
-import {
-  CardCreatedAtParagraph,
-  CardDescriptionParagraph,
-  CardHref,
-  CardImageContainerBox,
-  CardInfoBox,
-  CardInfoInnerBox,
-  CardKebabImage,
-  CardStarImage,
-  CardStyledImage,
-  CardTimeDiffParagraph,
-} from "./styles.js"
+import * as S from "./styles.js"
 
 const CardInfo = ({ createdAt, description }) => {
   const handleKebabClick = (e) => {
@@ -22,20 +11,22 @@ const CardInfo = ({ createdAt, description }) => {
   }
 
   return (
-    <CardInfoBox>
-      <CardInfoInnerBox>
-        <CardTimeDiffParagraph>
+    <S.CardInfoBox>
+      <S.CardInfoInnerBox>
+        <S.CardTimeDiffParagraph>
           {convertCreatedAt(createdAt)}
-        </CardTimeDiffParagraph>
-        <CardKebabImage
+        </S.CardTimeDiffParagraph>
+        <S.CardKebabImage
           src={IMAGES.kebab}
           alt="더보기"
           onClick={handleKebabClick}
         />
-      </CardInfoInnerBox>
-      <CardDescriptionParagraph>{description}</CardDescriptionParagraph>
-      <CardCreatedAtParagraph>{formatDate(createdAt)}</CardCreatedAtParagraph>
-    </CardInfoBox>
+      </S.CardInfoInnerBox>
+      <S.CardDescriptionParagraph>{description}</S.CardDescriptionParagraph>
+      <S.CardCreatedAtParagraph>
+        {formatDate(createdAt)}
+      </S.CardCreatedAtParagraph>
+    </S.CardInfoBox>
   )
 }
 
@@ -47,14 +38,14 @@ const CardImage = ({ imgUrl }) => {
     setIsLiked(isLiked)
   }
   return (
-    <CardImageContainerBox>
-      <CardStyledImage src={imgUrl || IMAGES.noImage} alt="카드" />
-      <CardStarImage
+    <S.CardImageContainerBox>
+      <S.CardStyledImage src={imgUrl || IMAGES.noImage} alt="카드" />
+      <S.CardStarImage
         src={isLiked ? IMAGES.filledStar : IMAGES.emptyStar}
         alt="star"
         onClick={handleStarClick}
       />
-    </CardImageContainerBox>
+    </S.CardImageContainerBox>
   )
 }
 
@@ -62,10 +53,10 @@ const Card = ({ items }) => {
   const { createdAt, description, imageSource, url } = items
 
   return (
-    <CardHref href={url} target="_blank" rel="noreferrer">
+    <S.CardHref href={url} target="_blank" rel="noreferrer">
       <CardImage imgUrl={imageSource} />
       <CardInfo createdAt={createdAt} description={description} />
-    </CardHref>
+    </S.CardHref>
   )
 }
 

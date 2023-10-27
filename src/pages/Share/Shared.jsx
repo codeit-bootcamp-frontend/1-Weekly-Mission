@@ -5,7 +5,7 @@ import {
 import Footer from "../../components/Footer/Footer"
 import Navbar from "../../components/Navbar/Navbar"
 import Share from "../../containers/Share/Share"
-import { ShareHeader } from "./styles"
+import * as S from "../styles"
 
 const Shared = () => {
   const userProfile = useFetchUserProfileSample()
@@ -22,9 +22,9 @@ const Shared = () => {
   if (userData && folderData) {
     return (
       <>
-        <ShareHeader>
+        <S.StyledHeader>
           <Navbar userData={userData} />
-        </ShareHeader>
+        </S.StyledHeader>
         <Share shareData={folderData} />
         <Footer />
       </>

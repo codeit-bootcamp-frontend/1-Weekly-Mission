@@ -1,25 +1,19 @@
 import Button from "../Button/Button"
 import IMAGES from "../../assets/images"
 
-import {
-  AddLinkBox,
-  AddLinkContentBox,
-  AddLinkImage,
-  AddLinkInnerBox,
-  AddLinkInputBox,
-} from "./styles"
+import * as S from "./styles"
 
 const Addlink = () => {
   return (
-    <AddLinkBox>
-      <AddLinkInputBox>
-        <AddLinkInnerBox>
-          <AddLinkImage src={IMAGES.link} alt="Link" />
-          <AddLinkContentBox></AddLinkContentBox>
+    <S.AddLinkBox>
+      <S.AddLinkInputBox>
+        <S.AddLinkInnerBox>
+          <S.AddLinkImage src={IMAGES.link} alt="Link" />
+          <S.AddLinkContentBox></S.AddLinkContentBox>
           <Button />
-        </AddLinkInnerBox>
-      </AddLinkInputBox>
-    </AddLinkBox>
+        </S.AddLinkInnerBox>
+      </S.AddLinkInputBox>
+    </S.AddLinkBox>
   )
 }
 

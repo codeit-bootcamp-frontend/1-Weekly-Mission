@@ -1,11 +1,11 @@
 import Card from "./Card.jsx"
-import { CardListBox } from "./styles.js"
+import * as S from "./styles.js"
 
 const CardList = ({ cards }) => {
   return (
-    <CardListBox>
+    <S.CardListBox>
       {cards && cards.map((card) => <Card key={card.id} items={card} />)}
-    </CardListBox>
+    </S.CardListBox>
   )
 }
 
