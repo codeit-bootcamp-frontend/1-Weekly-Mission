@@ -6,11 +6,7 @@ import SearchBar from "../components/searchBar/SearchBar";
 import Footer from "../components/footer/Footer";
 import styles from "./NothingPage.module.css";
 
-export default function NothingPage({ children }) {
-  const [data, isLoading] = useFetch(
-    "https://bootcamp-api.codeit.kr/api/users/1/folders"
-  );
-
+export default function NothingPage() {
   return (
     <div className={styles.container}>
       <NavSec />
