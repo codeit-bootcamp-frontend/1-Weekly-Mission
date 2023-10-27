@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { logoImg, snsIconG, snsIconK } from '../../constants/globalImages';
-import { eyeOffImg, eyeOnImg } from '../../constants/loginImages';
+import { eyeOffImg } from '../../constants/loginImages';
 
 function SignUpPage() {
   return (
@@ -8,15 +9,15 @@ function SignUpPage() {
       <div className="container">
         <header>
           <div className="header-logo">
-            <a href="../..">
+            <Link to="/">
               <img src={logoImg} alt="Linkbrary 로고" />
-            </a>
+            </Link>
           </div>
           <nav>
             <span>이미 회원이신가요?</span>
-            <a className="nav-link" href="/pages/login/signin.html">
+            <Link className="nav-link" to="/sign-in">
               로그인 하기
-            </a>
+            </Link>
           </nav>
         </header>
 
