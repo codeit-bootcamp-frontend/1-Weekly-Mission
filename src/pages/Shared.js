@@ -4,22 +4,20 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Main from '../components/Main'
 import useGetAccount from '../hooks/useGetAccount';
-import useGetFolder from '../hooks/useGetFolder';
+import useGetShareFolder from '../hooks/useGetShareFolder';
 
 const Shared = () => {
   const account = useGetAccount();
-  const folder = useGetFolder();
-
+  const folderInfo = useGetShareFolder();
   return (
     <>
     <GlobalStyle />
     <Nav account={account}/>
-    {folder && <Header folderInfo={folder}/>}  
-    {folder && <Main folder={folder}/>}
+    {folderInfo && <Header folderInfo={folderInfo}/>}  
+    {folderInfo && <Main folderInfo={folderInfo.links}/>}
     <Footer />
     </>  
   )
-
 }
 
 export default Shared;

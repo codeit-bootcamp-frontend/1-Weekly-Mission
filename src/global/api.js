@@ -11,8 +11,21 @@ export const getAccount = async (userID = 'sample') => {
   }
 }
 
-export const getFolder = async () =>{
+export const getShareFolder = async () => {
   const response = await fetch(`https://bootcamp-api.codeit.kr/api/sample/folder`);
   const body = await response.json();
+  console.log(body.folder);
+  return body.folder;
+}
+
+export const getSearchFolder = async (userID = 1) => {
+  const userIDFolder = `${userID}/links`;
+  const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/` + userIDFolder);
+  const body = await response.json();
+  // for (let i = 0; i < body.length; i++) {
+  //   body.data.folder_id = body.data.folderId;
+  //   body.data.created_at = body.data.createdAt;
+  //   body.data.image_source = body.data.imageSource;
+  // }
   return body;
 }

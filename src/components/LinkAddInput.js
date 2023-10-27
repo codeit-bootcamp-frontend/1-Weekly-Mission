@@ -28,6 +28,7 @@ const LinkAddInput = () => {
     line-height: 2.4rem; /* 150% */
     font-size: 1.6rem;
     border: none;
+    width: 60rem;
 
     &:focus {
       outline: none;

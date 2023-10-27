@@ -12,7 +12,7 @@ const useGetAccount = (userID) => {
 
   useEffect(() => {
     getData(userID);
-  }, [getData]);
+  }, [getData, userID]);
 
   return account;
 }

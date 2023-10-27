@@ -115,8 +115,11 @@ const Cards = ( { folderCards } ) => {
 }
 
 const Card = ( { item } ) => {
+  let folderId, createdAt, url, description, imageSource;
 
-  const {createdAt, url, description, imageSource} = item;
+  if (item.created_at) {({folder_id:folderId, created_at:createdAt, url, description, image_source:imageSource} = item)}
+  else {({createdAt, url, description, imageSource} = item)}
+ 
   const uploadDate = formatDate(createdAt)
   const dateDifference = formatDateDifference(createdAt);
 

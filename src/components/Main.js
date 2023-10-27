@@ -66,7 +66,7 @@ export const SectionContainer = styled.section`
   }
 `;
 
-const Main = ( {folder} ) => {
+const Main = ( {folderInfo} ) => {
   return (
     <MainContainer>
       <FormContainer>
@@ -78,7 +78,7 @@ const Main = ( {folder} ) => {
         </SearchInput>  {/*돋보기 아이콘 삽입해야 함*/}
       </FormContainer>
       <SectionContainer>
-        <Cards folderCards={folder.links}/>
+        <Cards folderCards={folderInfo}/>
       </SectionContainer>
     </MainContainer>
   )
