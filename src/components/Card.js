@@ -3,7 +3,7 @@ import EmptyCardImg from '../assets/Card_img.svg'
 import kebab from '../assets/kebab.svg';
 import styled from 'styled-components';
 
-const CardClass = styled.a`
+const CardContainer = styled.a`
   display: block;
   width: 34rem;
   height: 33.4rem;
@@ -121,7 +121,7 @@ const Card = ( { item } ) => {
   const dateDifference = formatDateDifference(createdAt);
 
   return (
-    <CardClass href={url}>
+    <CardContainer href={url}>
       <ImgArea>
         {imageSource ? (
           <CardImg src={imageSource} alt="이미지" />
@@ -137,7 +137,7 @@ const Card = ( { item } ) => {
         <Text>{description}</Text>
         <Date>{uploadDate}</Date>
       </InfoArea>
-    </CardClass>
+    </CardContainer>
   );
 };
 
