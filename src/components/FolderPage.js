@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getFolder } from '../api';
-import './Main.css';
+// import './Folder';
 import CardList from './CardList';
 import search from '../assets/search.svg';
 
@@ -28,15 +28,10 @@ function Main() {
 
   return (
     <>
-      <div className="folder">
-        <div className ="folder-container">
-          <div>
-            <img className="profile-img" src={profileImageSource} alt="" />
-            </div>
-          <div className="folder-user">{name}</div>
-          <div className="folder-name">{folderName}</div>
-        </div>
-      </div>
+      <form>
+        <input placeholder="링크를 추가해 보세요"></input>
+        <button>추가하기</button>
+      </form>
       <div className="container">
         <div className="container2">
           <div className="search-container">

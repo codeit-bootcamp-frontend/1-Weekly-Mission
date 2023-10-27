@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import Globalstyle from "../styles/GlobalStyle";
 import theme from '../styles/theme';
 import Header from "./Header";
-import Main from "./Main";
+import Main from "./FolderPage";
 import Footer from "./Footer";
 
 function App() {
