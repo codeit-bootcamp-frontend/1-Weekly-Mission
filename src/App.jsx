@@ -19,7 +19,10 @@ function App() {
         <Route path='signin' element={<Signin />} />
         <Route path='signup' element={<Signup />} />
         <Route path='shared' element={<SharedPage />} />
-        <Route path='folder' element={<Folder />} />
+        <Route path='folder'>
+          <Route index element={<Folder />} />
+          <Route path=':folderId' element={<Folder />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

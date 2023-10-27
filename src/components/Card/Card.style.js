@@ -67,9 +67,16 @@ export const TimeAgo = styled.p`
 
 export const Title = styled.p`
   grid-area: title;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 400;
   line-height: 1.2;
+
+  ${onTablet} {
+    font-size: 1.7rem;
+  }
+  ${onPc} {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Description = styled.p`
