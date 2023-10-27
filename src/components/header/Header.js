@@ -1,22 +1,22 @@
-import style from "./Header.module.css";
+import * as style from "./HeaderStyle";
 import logo from "assets/logo.svg";
 
 export default function Header({ user, isLoading }) {
   return (
-    <header className={style.wrapper}>
-      <div className={style.container}>
-        <img src={logo} alt="logo" className={style.logo} />
+    <style.Wrapper>
+      <style.Container>
+        <style.Logo src={logo} alt="logo" />
         <nav>
           {isLoading ? (
-            <button className={style.button}>로그인</button>
+            <style.LoginBtn>로그인</style.LoginBtn>
           ) : (
-            <div className={style.navbar}>
-              <img src={user?.profileImageSource} className={style.profileImage} />
-              <span className={style.profileEmail}>{user?.email}</span>
-            </div>
+            <style.Navbar>
+              <style.ProfileImage src={user?.profileImageSource} />
+              <style.ProfileEmail>{user?.email}</style.ProfileEmail>
+            </style.Navbar>
           )}
         </nav>
-      </div>
-    </header>
+      </style.Container>
+    </style.Wrapper>
   );
 }

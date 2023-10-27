@@ -1,4 +1,7 @@
-.cards {
+import styled from "styled-components";
+import { breakPoints } from "styles/media";
+
+export const Cards = styled.ul`
   display: grid;
   justify-content: center;
   align-items: center;
@@ -6,19 +9,13 @@
   row-gap: 1.5rem;
   column-gap: 1.25rem;
   margin: auto;
-}
 
-/* Tablet */
-@media only screen and (min-width: 768px) and (max-width: 1123px) {
-  .cards {
+  @media only screen and (${breakPoints.tabletNarrowWidth}) {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-/* Mobile */
-@media only screen and (min-width: 375px) and (max-width: 767px) {
-  .cards {
+  @media only screen and (${breakPoints.mobile}) {
     grid-template-columns: repeat(1, 1fr);
     width: 100%;
   }
-}
+`;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 
-import style from "./Share.module.css";
+import * as style from "./ShareContainerStyle";
 import { getFolder } from "api/api";
 
 import Hero from "components/hero/Hero";
@@ -36,14 +36,14 @@ export default function Share() {
         <Loading />
       ) : (
         <>
-          <section className={style.hero}>
+          <style.HeroContainer>
             <Hero folder={folder} profile={profile} />
-          </section>
+          </style.HeroContainer>
           <section>
-            <div className={style.contents}>
+            <style.Contents>
               <Searchbar />
               <CardList links={links} />
-            </div>
+            </style.Contents>
           </section>
         </>
       )}

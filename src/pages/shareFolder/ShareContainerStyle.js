@@ -1,11 +1,12 @@
-/* Hero */
-.hero {
+import styled from "styled-components";
+import { breakPoints } from "styles/media";
+
+export const HeroContainer = styled.section`
   text-align: center;
   background-color: var(--color-primary-varient);
-}
+`;
 
-/* Contents */
-.contents {
+export const Contents = styled.div`
   padding: 2.5rem 2rem;
   width: 100%;
   height: 100%;
@@ -13,21 +14,15 @@
   flex-direction: column;
   gap: 2.5rem;
   margin: auto;
-}
 
-/* Tablet */
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-  .contents {
+  @media only screen and (${breakPoints.tablet}) {
     padding: 2.5rem 2rem;
   }
-}
 
-/* Mobile */
-@media only screen and (min-width: 375px) and (max-width: 767px) {
-  .contents {
+  @media only screen and (${breakPoints.mobile}) {
     width: 100%;
     height: 100%;
     padding: 1.25rem 2rem;
     gap: 2rem;
   }
-}
+`;

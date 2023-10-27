@@ -3,18 +3,19 @@ import twitterIcon from "assets/akar-icons_twitter-fill.svg";
 import youtubeIcon from "assets/akar-icons_youtube-fill.svg";
 import instagramIcon from "assets/ant-design_instagram-filled.svg";
 
-import style from "./Footer.module.css";
+// import style from "./Footer.module.css";
+import * as style from "./FooterStyle";
 
 export default function Footer() {
   return (
-    <footer className={style.wrapper}>
-      <div className={style.contact}>
-        <div className={style.rights}>©codeit - 2023</div>
-        <div className={style.policy}>
-          <a className={style.policyText}>Privacy Policy</a>
-          <a className={style.policyText}>FAQ</a>
-        </div>
-        <div className={style.links}>
+    <style.Wrapper>
+      <style.Contact>
+        <style.Rights>©codeit - 2023</style.Rights>
+        <style.Policy>
+          <style.Info>Privacy Policy</style.Info>
+          <style.Info>FAQ</style.Info>
+        </style.Policy>
+        <style.Links>
           <a href="https://www.facebook.com/?locale=ko_KR" target="_blank" rel="noreferrer">
             <img src={facebookIcon} alt="facebook" />
           </a>
@@ -27,8 +28,8 @@ export default function Footer() {
           <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
             <img src={instagramIcon} alt="instagram" />
           </a>
-        </div>
-      </div>
-    </footer>
+        </style.Links>
+      </style.Contact>
+    </style.Wrapper>
   );
 }
