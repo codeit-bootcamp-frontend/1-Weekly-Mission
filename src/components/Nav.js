@@ -3,6 +3,7 @@ import { getUser } from "../api";
 import { useState, useEffect } from "react";
 import './Nav.css';
 import './App.css';
+import LoginButton from './LoginButton';
 
 
 function Profile({ userData }) {
@@ -34,7 +35,8 @@ function Nav() {
         <a href="/" className="logo"><img className="logo-img" src={logoImg} alt="로고 이미지" /></a>
       </div>
       <div className="right">
-        <Profile userData={userData} />
+        {(userData) ? <Profile userData={userData} /> : <div>로그인</div>}
+        {/* <LoginButton /> */}
       </div>
     </div>
   );
