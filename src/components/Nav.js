@@ -92,7 +92,7 @@ export const LoginButton = styled.button`
 
 const Nav = ( {account} ) => {
 
-  const {email, profileImageSource} = (account.email ===  'stranger') ? {} : account;
+  const {email, image_source} = (account.email ===  'stranger') ? {} : account;
   // 로그인 전 후 비교하려고 useState email 초기값 stranger로 지정해서 조건 연산자 썼는데 괜찮은 코드일까요..?
 
   return (
@@ -102,7 +102,7 @@ const Nav = ( {account} ) => {
           <Logo src={NavLogo} alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
         </a>
         {email && <Account>  {/*프로필 누르면 자기 계정으로 들어갈 것 같아서 일단 a*/}
-          <ProfileImg src={profileImageSource} alt="프로필 이미지"/>
+          <ProfileImg src={image_source} alt="프로필 이미지"/>
           <Email>{email}</Email>
         </Account>}
         {!email && <LoginButton>로그인</LoginButton>}

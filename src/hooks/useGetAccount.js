@@ -1,17 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getAccount } from "../global/api";
 
-const useGetAccount = (init) => {
-  const [account, setAccount] = useState(init);
+const useGetAccount = (userID) => {
+  const [account, setAccount] = useState({email: 'stranger'});
 
-  const getData = useCallback(async () => {
-    const {email, profileImageSource} = await getAccount();
-    if (!{email, profileImageSource}) return;
-    setAccount({email, profileImageSource});
+  const getData = useCallback(async (userID) => {
+    const {email, image_source} = await getAccount(userID);
+    if (!{email}) return;
+    setAccount({email, image_source});
   }, []);
 
   useEffect(() => {
-    getData();
+    getData(userID);
   }, [getData]);
 
   return account;

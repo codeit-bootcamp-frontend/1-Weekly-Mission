@@ -6,10 +6,9 @@ import Main from '../components/Main'
 import useGetAccount from '../hooks/useGetAccount';
 import useGetFolder from '../hooks/useGetFolder';
 
-const App = () => {
-  const account = useGetAccount({email: 'stranger'});
+const Shared = () => {
+  const account = useGetAccount();
   const folder = useGetFolder();
-  console.log()
 
   return (
     <>
@@ -23,4 +22,4 @@ const App = () => {
 
 }
 
-export default App;
+export default Shared;
