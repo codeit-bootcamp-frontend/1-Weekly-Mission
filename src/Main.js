@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './components/App';
-import HomePage from './pages/home/HomePage';
 import NotFoundPage from './pages/errors/NotFoundPage';
+import SignInPage from './pages/login/SignInPage';
+import LandingPage from './pages/landing/LandingPage';
+import SignUpPage from './pages/login/SignUpPage';
 
 function Main() {
+  const LoginContext = createContext();
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route index element={<HomePage />} />
-          <Route index element={<HomePage />} />
-          <Route index element={<HomePage />} />
+    <LoginContext.Provider value="">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<LandingPage />} />
+          </Route>
+          <Route path="sign-in" element={<SignInPage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
           <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </LoginContext.Provider>
   );
 }
 
