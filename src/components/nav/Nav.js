@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { getUsersData } from "../../api/users";
+import React from "react";
+
 import Profile from "../profile/Profile";
 
-import styled from "styled-components";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as Person } from "../../assets/images/person.svg";
 import { ReactComponent as Login } from "../../assets/images/login.svg";

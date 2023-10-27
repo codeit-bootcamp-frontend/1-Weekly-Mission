@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "../button/Button";
 import styles from "./FolderButton.module.css";
-import NothingPage from "../../pages/NothingPage";
-import { Link, useNavigate, useParams } from "react-router-dom";
+
+import { useNavigate, useParams } from "react-router-dom";
 import { getEachfoldersData } from "../../api/folder";
-import LocaleContext from "../../contexts/LocaleContext";
-import { useContext } from "react";
+
 export default function FolderButton({ data, dataKeys, onClickFunc }) {
   const navigate = useNavigate();
-  const value = useContext(LocaleContext);
-  const keys = Object.keys(value);
-  const { folderId } = useParams();
+
   return (
     <div className={styles.container}>
       <div className={styles.sub__container}>
@@ -30,6 +27,7 @@ export default function FolderButton({ data, dataKeys, onClickFunc }) {
                   name={key}
                   key={key}
                   onClickFunc={() => {
+                    // custom훅을 사용할수가 없어서 API를 사용
                     getEachfoldersData({ folderId: key }).then((data) => {
                       let boolean = data.length > 0;
                       if (boolean) {

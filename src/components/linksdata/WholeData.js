@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import useFetch from "../../hooks/useFetch";
 import DataListItem from "./DataListItem";
-import LocaleContext from "../../contexts/LocaleContext";
 
 import styles from "../imageList/ImageList.module.css";
 import ItemSkeleton from "../skeleton/ItemSkeleton";

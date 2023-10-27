@@ -1,14 +1,11 @@
 import "./assets/css/reset.css";
 import "./assets/css/global.css";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import SharedPage from "./pages/SharedPage"; // 얜 왜 빨간색?
+import SharedPage from "./pages/SharedPage";
 import FolderPage from "./pages/FolderPage";
 import NothingPage from "./pages/NothingPage";
 
 function App() {
-  // const userId = 1;
   return (
     <div className="App">
       <BrowserRouter>

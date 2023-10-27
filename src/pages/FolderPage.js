@@ -9,7 +9,6 @@ import WholeData from "../components/linksdata/WholeData";
 import useFetch from "../hooks/useFetch";
 import Landing from "../components/landing/Landing";
 import LocaleContext from "../contexts/LocaleContext";
-import { getEachfoldersData } from "../api/folder";
 
 export default function FolderPage({ userId }) {
   const [data, isLoading] = useFetch(
