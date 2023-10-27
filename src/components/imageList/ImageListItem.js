@@ -18,13 +18,7 @@ export default function ImageListItem({ item }) {
   return (
     <>
       <Card onClickFunc={() => navgiateToPage(url)}>
-        <img
-          className={styles.card__image}
-          src={imageSource}
-          alt={title}
-          // width="100%"
-          // height="250"
-        />
+        <img className={styles.card__image} src={imageSource} alt={title} />
         <p>시간계산함수만들어야함 </p>
         <p>{description}</p>
         <p>

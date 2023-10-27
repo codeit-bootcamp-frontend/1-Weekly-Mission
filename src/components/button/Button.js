@@ -11,6 +11,10 @@ const BaseButton = styled.button`
   padding-right: 1rem;
 `;
 
-export default function Button({ children, className }) {
-  return <BaseButton className={className}>{children}</BaseButton>;
+export default function Button({ children, className, onClickFunc }) {
+  return (
+    <BaseButton className={className} onClick={onClickFunc}>
+      {children}
+    </BaseButton>
+  );
 }

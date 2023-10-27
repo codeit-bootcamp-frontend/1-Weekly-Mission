@@ -14,10 +14,9 @@ export default function NavSec() {
   const [data, isLoadng] = useFetch(
     "https://bootcamp-api.codeit.kr/api/users/1"
   );
-
+  // 아래는 왜 안될까 흠흠흠
   // const [userData, isLoading] = useUserFetch({ id: 1 });
-  const result = data?.data;
-  // console.log(result);
+
   return (
     <div className={styles.container}>
       <Logo />
