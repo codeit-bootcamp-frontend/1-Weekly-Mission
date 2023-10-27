@@ -1,13 +1,13 @@
 import { LoginButton } from "./Button";
 import style from "../css/Profile.module.css";
 import { useEffect, useState } from "react";
-import { getFolder } from "../api";
+import { getsampleFolder } from "../api/sampleFolder";
 
 function Profile() {
   const [folderInfo, setFolderInfo] = useState("");
 
   const loadFolder = async () => {
-    const { folder } = await getFolder();
+    const { folder } = await getsampleFolder();
     setFolderInfo(folder);
   };
   useEffect(() => {

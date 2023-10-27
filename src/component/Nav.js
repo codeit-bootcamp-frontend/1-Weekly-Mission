@@ -2,14 +2,14 @@ import logoImg from "../assets/img/logo.svg";
 import { LoginButton } from "./Button";
 import style from "../css/Nav.module.css";
 import { useEffect, useState } from "react";
-import { isSignIn } from "../api";
+import { getSampleUser } from "../api/sampleUser";
 import "../css/color.css";
 
 function NavProfile() {
   const [userInfo, setUserInfo] = useState("");
 
   const loadUser = async () => {
-    const userInfo = await isSignIn();
+    const userInfo = await getSampleUser();
     setUserInfo(userInfo);
   };
 
