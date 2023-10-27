@@ -6,13 +6,18 @@ import "../styles/SelectPart.css";
 import SelectItem from "./SelectItem";
 import { useState } from "react";
 
-function SelectPart({ selectItems, handleRenderItems }) {
+function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
+  const onClick = () => {
+    handleUserLinks();
+  };
   return (
     <div className="SelectPart">
       <div className=" selectList-info">
         <div className="selectList-wrapper">
-          <button className="entirety">전체 </button>
-          {selectItems.map((item, index) => (
+          <button onClick={onClick} className="entirety">
+            전체
+          </button>
+          {selectItems.map((item) => (
             <SelectItem
               className={"item-wrapper"}
               key={item.id}
@@ -26,6 +31,7 @@ function SelectPart({ selectItems, handleRenderItems }) {
           <img className="add" src={add} alt="" />
         </div>
       </div>
+
       <div className="links-info">
         <span className="folder-name">유용한 글</span>
         <div className="handle-link">

@@ -12,7 +12,7 @@ function SelectItem({ item, handleRenderItems }) {
     <div className="SelectItem">
       <button
         value={item.name}
-        className={item.name === activeBtn ? "active" : ""}
+        className={item.name === activeBtn ? `active` : ""}
         onClick={onClick}
       >
         {item.name}

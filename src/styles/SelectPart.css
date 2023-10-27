@@ -5,13 +5,30 @@
   gap: 24px;
   flex-direction: column;
   margin: 0 auto;
+  flex-wrap: wrap;
+  @media (max-width: 1123px) {
+    width: 700px;
+  }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
 
 .selectList-info {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
+  display: flex;
+  align-self: stretch;
+  gap: 8px;
+
+  @media (max-width: 1123px) {
+    width: 700px;
+  }
+  @media (max-width: 768px) {
+    width: 500px;
+    flex-wrap: wrap;
+  }
 }
 
 .selectList-wrapper {
@@ -19,12 +36,16 @@
   flex-direction: row;
   gap: 12px;
   width: 540px;
+  flex-wrap: wrap;
 }
 
 .add-folder {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: center;
+  gap: 4px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .add-text {
@@ -44,6 +65,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  @media (max-width: 1123px) {
+    width: 700px;
+  }
+  @media (max-width: 768px) {
+    width: 500px;
+    flex-direction: column;
+  }
 }
 
 .handle-link .span {

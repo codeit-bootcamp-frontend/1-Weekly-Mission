@@ -80,6 +80,7 @@ function Folder() {
       <SelectPart
         selectItems={selectItems}
         handleRenderItems={handleRenderItems}
+        handleUserLinks={handleUserLinks}
       />
       <MainSpace items={userLinks} />
       <FooterSpace />

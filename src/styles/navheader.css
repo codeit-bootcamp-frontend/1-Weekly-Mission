@@ -144,7 +144,9 @@ header {
 }
 
 .linkAdd-bar-wrapper {
+  position: relative;
   display: flex;
+  margin: 0 auto;
   width: 800px;
   padding: 16px 20px;
   flex-direction: row;
@@ -183,12 +185,17 @@ header {
 
 .linkAdd-bar-image {
   position: absolute;
-  top: 220px;
-  left: 320px;
+  left: 10px;
   cursor: pointer;
 }
 
 .folder-header {
   padding: 60px 320px 90px 320px;
   margin-bottom: 40px;
+  display: flex;
+  width: 1440px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--linkbrary-bg, #f0f6ff);
 }
