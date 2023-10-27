@@ -8,10 +8,14 @@ import WholeData from "../components/linksdata/WholeData";
 
 import useFetch from "../hooks/useFetch";
 
-export default function FolderPage({ id }) {
+export default function FolderPage({ userId }) {
   const [data, isLoading] = useFetch(
     "https://bootcamp-api.codeit.kr/api/users/1/folders"
   );
+
+  // const [data, isLoading] = useFetch(
+  //   `https://bootcamp-api.codeit.kr/api/users/${userId}/folders`
+  // );
 
   return (
     <div>

@@ -1,25 +1,23 @@
 import React from "react";
 import Card from "../card/Card";
 import styles from "./ImageListItem.module.css";
-import { parseDatestring, compareNowAndAfter } from "../../utils";
+import { parseDatestring, getElapsedTime } from "../../utils/calTime";
 
 export default function ImageListItem({ item }) {
   const { createdAt, url, title, description, imageSource } = item;
-  const currentData = parseDatestring(new Date());
   const targetData = parseDatestring(createdAt);
-  // console.log(currentData, targetData);
-  //const result = compareNowAndAfter(currentData, targetData);
   const { year, month, day } = targetData;
-
   const navgiateToPage = (url) => {
     window.location.href = `${url}`;
   };
+
+  const diffTime = getElapsedTime(createdAt);
 
   return (
     <>
       <Card onClickFunc={() => navgiateToPage(url)}>
         <img className={styles.card__image} src={imageSource} alt={title} />
-        <p>시간계산함수만들어야함 </p>
+        <p>{diffTime}</p>
         <p>{description}</p>
         <p>
           {year}. {month}. {day}

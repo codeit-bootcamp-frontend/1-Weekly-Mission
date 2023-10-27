@@ -9,11 +9,13 @@ export default function DataListItem({ item }) {
   };
   const targetData = parseDatestring(created_at);
   const { year, month, day } = targetData;
+  const diffTime = getElapsedTime(created_at);
+
   return (
     <>
       <Card onClickFunc={() => navgiateToPage(url)}>
         <img className={styles.card__image} src={image_source} alt={title} />
-        <p>시간계산</p>
+        <p>{diffTime}</p>
         <p>{description}</p>
         <p>
           {year}. {month}. {day}
