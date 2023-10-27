@@ -6,11 +6,11 @@ const Navbar = ({ isFolderPage }) => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    fetch("https://bootcamp-api.codeit.kr/api/sample/user")
+    fetch("https://bootcamp-api.codeit.kr/api/users/1")
       .then((response) => response.json())
       .then((data) => {
-        if (data.id) {
-          setUserData(data);
+        if (data.data && data.data.length > 0) {
+          setUserData(data.data[0]);
         }
       });
   }, []);
@@ -24,7 +24,7 @@ const Navbar = ({ isFolderPage }) => {
         {userData ? (
           <div className="profile">
             <img
-              src={userData.profileImageSource}
+              src={userData.image_source}
               alt="profile"
               className="profile-image"
             />
