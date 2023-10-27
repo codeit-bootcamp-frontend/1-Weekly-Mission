@@ -51,6 +51,10 @@
   justify-content: center;
 }
 
+.no-link {
+  padding: 40px 0px;
+}
+
 .date {
   color: #666;
   font-size: 13px;

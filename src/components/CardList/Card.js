@@ -9,8 +9,11 @@ const Card = ({ link, isFolderPage }) => {
     return null;
   }
 
+  const createdAtField = isFolderPage ? "created_at" : "createdAt";
+  const imageSourceField = isFolderPage ? "image_source" : "imageSource";
+
   const currentTime = new Date().getTime();
-  const createdAt = new Date(link.createdAt).getTime();
+  const createdAt = new Date(link[createdAtField]).getTime();
   const timeDiffText = timeDifference(currentTime, createdAt);
 
   return (
@@ -23,8 +26,8 @@ const Card = ({ link, isFolderPage }) => {
           <Star />
         </button>
       )}
-      {link.imageSource ? (
-        <img src={link.imageSource} alt={link.title} />
+      {link[imageSourceField] ? (
+        <img src={link[imageSourceField]} alt={link.title} />
       ) : (
         <div className="no-image">이미지가 없습니다.</div>
       )}

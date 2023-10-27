@@ -15,9 +15,9 @@ function ActionItem({ icon: IconComponent, label }) {
   );
 }
 
-function FolderList() {
+function FolderList({ onFolderSelect }) {
   const [folders, setFolders] = useState([]);
-  const [selectedFolder, setSelectedFolder] = useState(null);
+  const [selectedFolder, setSelectedFolder] = useState("전체");
   const userId = 1;
 
   useEffect(() => {
@@ -34,18 +34,30 @@ function FolderList() {
     fetchData();
   }, []);
 
-  const handleFolderClick = (folderName) => {
-    setSelectedFolder(folderName);
+  const handleFolderClick = (folderId, folderName) => {
+    if (folderId) {
+      setSelectedFolder(folderName);
+      onFolderSelect(folderId);
+    } else {
+      setSelectedFolder("전체");
+      onFolderSelect(null, true);
+    }
   };
 
   return (
     <div className="folders">
       <div className="folder-list">
+        <div
+          className="folder-item"
+          onClick={() => handleFolderClick(null)} // '전체' 항목에 클릭 이벤트 연결
+        >
+          전체
+        </div>
         {folders.map((folder) => (
           <div
             className="folder-item"
             key={folder.id}
-            onClick={() => handleFolderClick(folder.name)} // 폴더 클릭 이벤트 연결
+            onClick={() => handleFolderClick(folder.id, folder.name)} // 폴더 클릭 이벤트 연결
           >
             {folder.name}
           </div>
@@ -57,11 +69,9 @@ function FolderList() {
       </div>
       <span className="folder-select">{selectedFolder}</span>
       <div className="folder-actions">
-        <div className="folder-actions">
-          <ActionItem icon={ShareIcon} label="공유" />
-          <ActionItem icon={PenIcon} label="이름 변경" />
-          <ActionItem icon={DeleteIcon} label="삭제" />
-        </div>
+        <ActionItem icon={ShareIcon} label="공유" />
+        <ActionItem icon={PenIcon} label="이름 변경" />
+        <ActionItem icon={DeleteIcon} label="삭제" />
       </div>
     </div>
   );

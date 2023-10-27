@@ -49,6 +49,11 @@
   gap: 12px;
 }
 
+.folder-select,
+.folder-actions {
+  margin-top: 24px;
+}
+
 .action-item {
   display: flex;
   align-items: center;
