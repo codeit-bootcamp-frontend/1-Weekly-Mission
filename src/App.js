@@ -1,15 +1,23 @@
-import { Outlet } from "react-router-dom";
-import Footer from "./components/js/Footer";
-import Header from "./components/js/Header";
+import RouterComponent from "./RouterComponent";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-size: 62.5%;
+    font-family: Pretendard, sans-serif;
+  }
+
+`;
 
 function App() {
   return (
     <>
-      <Header />
-      <div>
-        <Outlet />
-      </div>
-      <Footer />
+      <GlobalStyle />
+      <RouterComponent />
     </>
   );
 }
