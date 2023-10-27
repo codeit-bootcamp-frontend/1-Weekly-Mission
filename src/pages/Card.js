@@ -3,7 +3,7 @@ import Banner from '../components/Banner';
 import CardList from '../components/CardList';
 import Search from '../components/Search';
 import { getUserProfile } from '../services/api';
-import './card.css';
+import './Card.css';
 
 function Card() {
   const [folder, setFolder] = useState({});

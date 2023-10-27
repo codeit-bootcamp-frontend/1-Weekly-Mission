@@ -5,6 +5,7 @@ header {
 
 .nav {
   display: flex;
+  /* position: fixed; */
   padding: 3.3rem 20rem;
   margin: 0 auto;
   justify-content: space-between;

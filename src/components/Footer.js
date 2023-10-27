@@ -3,7 +3,7 @@ import Facebook from '../assets/icon/facebook.svg';
 import Instagram from '../assets/icon/instagram.svg';
 import Twitter from '../assets/icon/twitter.svg';
 import Youtube from '../assets/icon/youtube.svg';
-import './footer.css';
+import './Footer.css';
 
 const SOCIAL_LIST = [
   { id: 0, href: 'https://www.facebook.com/', imgSrc: Facebook, alt: '페이스북 아이콘' },
