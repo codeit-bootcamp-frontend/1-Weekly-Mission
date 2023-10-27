@@ -1,7 +1,6 @@
 import React from "react";
 import NavSec from "../components/nav/NavSec";
 import Header from "../components/header/Header";
-import useFetch from "../hooks/useFetch";
 import SearchBar from "../components/searchBar/SearchBar";
 import Footer from "../components/footer/Footer";
 import styles from "./NothingPage.module.css";

@@ -15,7 +15,6 @@ export default function FolderPage({ userId }) {
   const [data, isLoading] = useFetch(
     "https://bootcamp-api.codeit.kr/api/users/1/folders"
   );
-  const [objArr, setObjArr] = useState({});
 
   const result = data?.data;
   const obj = {};
@@ -35,9 +34,6 @@ export default function FolderPage({ userId }) {
   //   `https://bootcamp-api.codeit.kr/api/users/${userId}/folders`
   // );
 
-  // context로 key를 던줘져서 landing으로 나눠보자
-
-  // value
   return (
     <LocaleContext.Provider value={obj}>
       <div>
@@ -47,7 +43,7 @@ export default function FolderPage({ userId }) {
         <Menubar data={data} isLoading={isLoading} />
         {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
         <WholeData />
-        <LinksData />
+        {/* <LinksData /> */}
       </div>
     </LocaleContext.Provider>
   );

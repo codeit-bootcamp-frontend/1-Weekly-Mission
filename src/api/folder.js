@@ -4,6 +4,7 @@ export async function getEachfoldersData({ folderId }) {
   );
   if (response.status === 200) {
     const jsonData = await response.json();
-    return [folderId, jsonData];
+    const data = jsonData.data;
+    return data;
   }
 }

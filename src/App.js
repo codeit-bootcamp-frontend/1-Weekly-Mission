@@ -13,9 +13,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/folder" element={<FolderPage />} />
+          <Route path="folder">
+            <Route index element={<FolderPage />} />
+            <Route path=":folderId" element={<FolderPage />} />
+            <Route path="nothing" element={<NothingPage />} />
+          </Route>
           <Route path="/shared" element={<SharedPage />} />
-          <Route path="/nothing" element={<NothingPage />} />
         </Routes>
       </BrowserRouter>
     </div>
