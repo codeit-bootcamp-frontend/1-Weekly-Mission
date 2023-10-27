@@ -16,15 +16,15 @@ function App() {
   
   const handleLoad = async () => {
     try{
-      const {name, email, profileImageSource} = await getAccount();
-      setAccount({name, email, profileImageSource});
+      const {data} = await getAccount();
+      const {id, name, email, image_source: profileImageSource} = data[0];
+      setAccount({id ,name, email, profileImageSource});
     }
     catch(error){
       setUserErrorMessage(error);
     }
   };
 
-  
   useEffect(() => {
     handleLoad();
   }, []);
@@ -34,7 +34,10 @@ function App() {
         <Header/>
         <Routes>
           <Route path='/shared' element={<Shared/>}/>
-          <Route path='/folder' element={<Folder/>}/>
+          <Route path='/folder' element={<Folder/>}>
+            <Route index element={<Folder/>}/>
+            <Route path=':folderId' element={<Folder/>}/>
+          </Route>
         </Routes>
         <Footer/>
       </div>

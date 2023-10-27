@@ -139,15 +139,34 @@
 }
 .folder-lists ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     gap: 8px;
 }
 
 .folder-lists ul li {
     border: 1px solid var(--linkbrary-primary-color);
-    padding: 8px 12px;
     border-radius: 5px;
+    
+}
+
+.folder-lists ul li:hover {
+    background-color: var(--linkbrary-primary-color);
+}
+
+.folder-lists ul li:hover a {
+    color: #fff;
+}
+
+
+.folder-lists ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    display: inline-block;
+    padding: 8px 12px;
 }
 
 .folder-lists h4 {
@@ -158,6 +177,7 @@
     letter-spacing: -0.3px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .folder-lists h4 span {
@@ -192,6 +212,7 @@
     align-items: center;
     color: var(--linkbrary-gray-60);
     gap:4px;
+    cursor: pointer;
 }
 
 .select-folder ul li img {
@@ -227,7 +248,7 @@
     justify-content: space-between;
     align-items: flex-start;
     border-radius: 15px;
-    max-width: 340px;
+    width: 340px;
     box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
 }
 
@@ -286,7 +307,8 @@
     align-items: flex-start;
     gap: 10px;
     padding: 15px 20px;
-    
+    height: 131px;
+    width: 100%;
 }
 
 .card-inpormation .card-inpormation-first-line {
@@ -332,6 +354,18 @@
     color: #333; 
 }
 
+.noLink {
+    width: 100%;
+    max-width: 1060px;
+    margin: 81px auto 0;
+    text-align: center;
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 124.5px auto;
+}
+
 @media screen and (max-width: 1199px) {
     .section-title-second {
         padding: 0 32px;
@@ -347,6 +381,10 @@
     }
     .folder .section-title-first {
         padding: 60px 32px 0;
+    }
+    .folder-lists ul {
+        max-width: 500px;
+        flex-wrap: wrap;
     }
     
 }

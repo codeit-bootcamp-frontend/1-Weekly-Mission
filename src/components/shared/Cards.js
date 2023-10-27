@@ -11,15 +11,15 @@ import { getTimeDiff } from '../../utils/postTime';
 /* 각 카드 컴포넌트 */
 function CardItem({item}) {
     const imgStyle = {
-        'backgroundImage': `URL(${item.imageSource})`,
+        'backgroundImage': `URL(${item.image_source})`,
     }
 
-    const nowDate = getTimeDiff(new Date(item.createdAt));
+    const nowDate = getTimeDiff(new Date(item.created_at));
 
     return (
         <div className='card'>
             <div className="card-img-wrap">
-                {!item.imageSource ? <img className="logo-img" src={logoImg} alt='로고이미지'/> :
+                {!item.image_source ? <img className="logo-img" src={logoImg} alt='로고이미지'/> :
                 <div className='card-img' style={imgStyle}></div>}
                 <img className="star-img" src={starImg} alt='별모양 버튼'/>
             </div>
@@ -28,8 +28,8 @@ function CardItem({item}) {
                     <div className='time'>{nowDate}</div>
                     <img className='Kebab-botton' src={kebabImg} alt='케밥이미지'/>
                 </div>
-                <p>{item.description}</p>
-                <div className='day'>{item.createdAt.split("T")[0]}</div>  
+                <p>{item.description ? item.description : "데이터가 없습니다"}</p>
+                <div className='day'>{item.created_at.split("T")[0]}</div>  
             </div>  
         </div>
     
@@ -37,11 +37,10 @@ function CardItem({item}) {
 }
 
 const Cards = ({personalfolder}) => {
-    const {links} = personalfolder;
     return (
         <div className="section-title section-title-third">
             <div className='section-title-third-inner'>
-                {links && links.map(item =>(
+                {personalfolder && personalfolder.map(item =>(
                     <a key={item.id} href={item.url} target='_blank'>
                         <CardItem item={item}/>
                     </a>
