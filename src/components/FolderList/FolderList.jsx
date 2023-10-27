@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import * as S from "./FolderList.style";
 import addIcon from "images/add.svg";
 
-function FolderList() {
+function FolderList({ getFolderId }) {
   const [folders, setFolders] = useState();
-  const [currentFolder, setCurrentFolder] = useState("");
 
-  const handleAllClick = () => setCurrentFolder("");
+  const handleAllClick = () => getFolderId("");
+  const handleClick = (e) => getFolderId(e.target.id);
 
   const handleLoad = async () => {
     const result = await getFolderList();
@@ -17,7 +17,7 @@ function FolderList() {
 
   useEffect(() => {
     handleLoad();
-  }, [currentFolder]);
+  }, []);
 
   return (
     <>
@@ -30,7 +30,9 @@ function FolderList() {
             {folders.map((folder) => {
               return (
                 <li key={folder.id}>
-                  <S.Folder>{folder.name}</S.Folder>
+                  <S.Folder onClick={handleClick} id={folder.id}>
+                    {folder.name}
+                  </S.Folder>
                 </li>
               );
             })}

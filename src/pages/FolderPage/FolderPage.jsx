@@ -8,7 +8,11 @@ import { MainDiv } from "styles/MainDiv";
 
 function FolderPage() {
   const [folder, setFolder] = useState([]);
-  // const [folderId, setFolderId] = useState("");
+  const [folderId, setFolderId] = useState("");
+
+  const getFolderId = (folderId) => {
+    setFolderId(folderId);
+  };
 
   const handleLoadFolder = async (folderIdQuery) => {
     const { data } = await getFolder(folderIdQuery);
@@ -16,16 +20,16 @@ function FolderPage() {
   };
 
   useEffect(() => {
-    handleLoadFolder();
-  }, []);
+    handleLoadFolder(folderId);
+  }, [folderId]);
 
   return (
     <>
       <AddLinkForm />
       <MainDiv>
         <SearchBar />
-        <FolderList />
-        <CardList data={folder} />
+        <FolderList getFolderId={getFolderId} />
+        <CardList data={folder} folderId={folderId} />
       </MainDiv>
     </>
   );
