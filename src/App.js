@@ -17,7 +17,7 @@ function App() {
   const [user, setUser] = useState({});
 
   const getUserData = useCallback(async () => {
-    const { data } = await getData('users/1');
+    const { data } = await getData('users/12');
     setUser(data[0]);
   }, []);
 

@@ -1,19 +1,12 @@
 .nav-bar {
-  padding: 32px 200px;
+  padding: 0 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 1;
   max-width: 1920px;
   margin: auto;
-}
-
-.nav-button {
-  border: none;
-  width: 128px;
-  padding: 16px 0;
-  border-radius: 8px;
-  cursor: pointer;
+  height: 94px;
 }
 
 .user-account {

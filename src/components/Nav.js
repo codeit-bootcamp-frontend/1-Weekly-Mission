@@ -12,12 +12,23 @@ const Header = styled.header`
   z-index: 2;
 `;
 
+const AuthButton = styled(Button)`
+  border-radius: 8px;
+  width: 128px;
+  padding: 16px 20px;
+  cursor: pointer;
+  @media (max-width: 767px) {
+    width: 80px;
+    padding: 10px 16px;
+  }
+`;
+
 const INIT_USER = {
   image_source: '',
   email: '',
 };
 
-const Account = ({ user = INIT_USER }) => {
+const Account = ({ user }) => {
   return (
     <div className='user-account'>
       <img
@@ -30,14 +41,15 @@ const Account = ({ user = INIT_USER }) => {
   );
 };
 
-export default function Nav({ user }) {
-  const [isSticky, setIsFixed] = useState('fixed');
+export default function Nav({ user = INIT_USER }) {
+  console.log('user: ', user);
+  const [isSticky, setIsSticky] = useState('sticky');
   const urlPath = useLocation().pathname;
   useEffect(() => {
     if (urlPath === '/folder') {
-      setIsFixed('static');
+      setIsSticky('static');
     } else {
-      setIsFixed('sticky');
+      setIsSticky('sticky');
     }
   }, [urlPath]);
 
@@ -48,7 +60,7 @@ export default function Nav({ user }) {
         {user.email ? (
           <Account user={user} />
         ) : (
-          <Button type='로그인' className='nav-button' />
+          <AuthButton type='로그인' className='nav-button' />
         )}
       </div>
     </Header>
