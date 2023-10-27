@@ -1,9 +1,10 @@
-import logoImg from "../assets/logo.svg";
-import { getUser } from "../api";
+// nav 레이아웃 구성
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import logoImg from "../assets/logo.svg";
+import { getUser } from '../api';
 import './Nav.css';
 import './App.css';
-import LoginButton from './LoginButton';
 
 
 function Profile({ userData }) {
@@ -31,13 +32,8 @@ function Nav() {
 
   return (
     <div className="nav-container">
-      <div className="left">
-        <a href="/" className="logo"><img className="logo-img" src={logoImg} alt="로고 이미지" /></a>
-      </div>
-      <div className="right">
-        {(userData) ? <Profile userData={userData} /> : <div>로그인</div>}
-        {/* <LoginButton /> */}
-      </div>
+      <Link to="/"><img className="logo-img" src={logoImg} alt="Linkbrary Logo"/></Link>
+      <Profile userData={userData} />
     </div>
   );
 }
