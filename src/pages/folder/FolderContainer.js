@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 
 import * as style from "./FolderContainerStyle";
+import AddIcon from "assets/add.svg";
 import { getAllFolders, getAllLinks } from "api/api";
 
 import CardList from "components/card/CardList";
 import Loading from "components/loading/Loading";
 import Searchbar from "components/searchbar/Searchbar";
-import Hero from "components/hero/Hero";
 import FolderHero from "components/hero/HeroAboutFolder";
+import ActiveButton from "components/button/activeButton";
 
 export default function Folder() {
   const [links, setLinks] = useState([]);
@@ -42,12 +43,23 @@ export default function Folder() {
           <style.HeroContainer>
             <FolderHero />
           </style.HeroContainer>
-          <section>
+          <style.Wrapper>
             <style.Contents>
               <Searchbar />
+              <style.MenuContainer>
+                <style.ButtonContainer>
+                  {folders?.map((folder) => (
+                    <ActiveButton key={folder.id} label={folder.name} />
+                  ))}
+                </style.ButtonContainer>
+                <style.AddFolderBtn>
+                  <span>폴더 추가</span>
+                  <img src={AddIcon} alt="add" />
+                </style.AddFolderBtn>
+              </style.MenuContainer>
               <CardList links={links} />
             </style.Contents>
-          </section>
+          </style.Wrapper>
         </>
       )}
     </main>
