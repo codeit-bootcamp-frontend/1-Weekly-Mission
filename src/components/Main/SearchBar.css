@@ -13,6 +13,10 @@
   background-color: var(--Gray1-80);
 }
 
+.search:focus-within {
+  outline: 0.1rem solid var(--Gray5);
+}
+
 .search__img {
   position: absolute;
   top: 1.5rem;

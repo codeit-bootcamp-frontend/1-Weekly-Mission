@@ -1,6 +1,6 @@
 function TimeFlow({ createdAt }) {
   let message = '';
-  const timeMinute = (new Date() - new Date(createdAt)) / 1000 / 60;
+  const timeMinute = Math.floor((new Date() - new Date(createdAt)) / 1000 / 60);
   const timeHour = Math.floor(timeMinute / 60);
   const timeDay = Math.floor(timeHour / 24);
   const timeMonth = Math.floor(timeDay / 30);
