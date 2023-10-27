@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import "../css/Card.css";
 import noImage from "../../Assets/noImage.png";
@@ -6,6 +7,11 @@ import kebabIcon from "../../Assets/kebab.svg";
 import KebabButtonMenu from "./KebabButtonMenu";
 import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
+
+const CardLink = styled.div`
+  cursor: pointer;
+  pointer-events: auto;
+`;
 
 const BookmarkButton = styled.img`
   width: 34px;
@@ -19,10 +25,24 @@ const BookmarkButton = styled.img`
 const KebabButton = styled.img`
   width: 21px;
   height: 17px;
+  z-index: 2;
+  pointer-events: auto;
 `;
 
 /* 각 카드 컴포넌트 */
 function CardItem({ item, key }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleToggleMenu = (e) => {
+    e.stopPropagation();
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleCardClick = () => {
+    const URL = item.url;
+    window.open(URL);
+  };
+
   /* 이미지 스타일 함수 */
   const imgStyle = {
     backgroundImage: `url('${item.image_source}')`,
@@ -32,10 +52,10 @@ function CardItem({ item, key }) {
   const createdDate = item.created_at.split("T")[0].split("-").join(".");
 
   return (
-    <a href={item.url}>
+    <CardLink url={item.url} onClick={handleCardClick}>
       <div key={key} className="card">
         <BookmarkButton src={starIcon} alt="bookmark_icon" />
-        <KebabButtonMenu />
+        {isMenuOpen && <KebabButtonMenu />}
         <div className="card-img-wrap">
           {!item.image_source ? (
             <img className="logoImg" src={noImage} alt={noImage} />
@@ -46,13 +66,17 @@ function CardItem({ item, key }) {
         <div className="card-information">
           <RowContainer>
             <div className="time">{nowDate}</div>
-            <KebabButton src={kebabIcon} alt="kebabButton" />
+            <KebabButton
+              src={kebabIcon}
+              alt="kebabButton"
+              onClick={handleToggleMenu}
+            />
           </RowContainer>
           <p>{item.description}</p>
           <div className="day">{createdDate}</div>
         </div>
       </div>
-    </a>
+    </CardLink>
   );
 }
 

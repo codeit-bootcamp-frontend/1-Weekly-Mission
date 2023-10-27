@@ -1,6 +1,7 @@
 /* section3 */
 a {
   text-decoration: none;
+  pointer-events: auto;
 }
 .section-title-third {
   width: 100%;

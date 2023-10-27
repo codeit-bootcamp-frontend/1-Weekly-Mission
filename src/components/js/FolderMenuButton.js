@@ -18,13 +18,13 @@ const MenuButton = styled.button`
   }
 `;
 
-function FolderMenuButton({ children, onClick, id, isActive }) {
+function FolderMenuButton({ children, onClick, id, name, isActive }) {
   const handleClick = (e) => {
-    e.target.id ? onClick(e.target.id) : onClick("");
+    e.target.id ? onClick(e.target.id, e.target.name) : onClick("");
   };
   return (
     <>
-      <MenuButton id={id} onClick={handleClick} isActive={isActive}>
+      <MenuButton id={id} name={name} onClick={handleClick} isActive={isActive}>
         {children}
       </MenuButton>
     </>

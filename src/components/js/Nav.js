@@ -6,9 +6,9 @@ import profileImg from "../../Assets/profile.svg";
 import "../css/Nav.css";
 
 function Profile({ account }) {
-  const { email, profileImageSource } = account;
+  const { email, image_source } = account;
 
-  const imgSrc = profileImageSource;
+  const imgSrc = image_source;
 
   return (
     <div className="Profile">
@@ -23,7 +23,7 @@ function Nav() {
 
   const handleLoad = async () => {
     const nextAccount = await getAccount();
-    setAccount(nextAccount);
+    setAccount(nextAccount.data[0]);
   };
 
   useEffect(() => {

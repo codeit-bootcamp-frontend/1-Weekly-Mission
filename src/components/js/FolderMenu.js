@@ -7,21 +7,40 @@ import deleteIcon from "../../Assets/delete.svg";
 
 const MenuList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 `;
 
 const Wrapper = styled.div`
-  width: 1060px;
-  margin: 0 auto 24px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  margin-bottom: 24px;
+`;
+
+const FeatureWrapper = styled(Wrapper)`
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
 `;
 
 const Container = styled.div`
   display: flex;
   cursor: pointer;
   align-items: center;
+`;
+
+const FolderAddContainer = styled(Container)`
+  min-width: 79px;
+  transform: translateY(50%);
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const Icon = styled.img`
@@ -50,6 +69,11 @@ const FeatureContainer = styled.div`
   font-size: 14px;
   font-weight: 600;
   color: #9fa6b2;
+
+  @media (max-width: 767px) {
+    margin-left: 0;
+    margin-right: 12px;
+  }
 `;
 
 const FeatureIcon = styled.img`
@@ -79,6 +103,7 @@ function FolderMenu({ folders, onClick, current, folderName }) {
               <li key={folder.id}>
                 <FolderMenuButton
                   id={folder.id}
+                  name={folder.name}
                   onClick={onClick}
                   isActive={id === current}
                 >
@@ -88,24 +113,28 @@ function FolderMenu({ folders, onClick, current, folderName }) {
             );
           })}
         </MenuList>
-        <Container>
+        <FolderAddContainer>
           <AddFolderButton>폴더 추가</AddFolderButton>
           <Icon src={addIcon} alt="Add_Button" />
-        </Container>
+        </FolderAddContainer>
       </Wrapper>
-      <Wrapper>
-        <CurrentFolderName>{folderName}</CurrentFolderName>
-        <Container>
-          {FEATURE_LIST.map((item) => {
-            return (
-              <FeatureContainer>
-                {item.name}
-                <FeatureIcon src={item.src} alt={item.alt} />
-              </FeatureContainer>
-            );
-          })}
-        </Container>
-      </Wrapper>
+      <FeatureWrapper>
+        <CurrentFolderName>
+          {folderName ? folderName : "전체"}
+        </CurrentFolderName>
+        {folderName && (
+          <Container>
+            {FEATURE_LIST.map((item) => {
+              return (
+                <FeatureContainer>
+                  {item.name}
+                  <FeatureIcon src={item.src} alt={item.alt} />
+                </FeatureContainer>
+              );
+            })}
+          </Container>
+        )}
+      </FeatureWrapper>
     </>
   );
 }
