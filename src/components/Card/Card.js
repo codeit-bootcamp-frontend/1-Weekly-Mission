@@ -22,6 +22,7 @@ const Card = ({ data }) => {
           display: "flex",
           flexDirection: "column",
           borderRadius: "1rem",
+          position: "relative",
         }}
       >
         <img
@@ -33,6 +34,11 @@ const Card = ({ data }) => {
             borderTopRightRadius: "1rem",
           }}
         />
+        <button
+          style={{ position: "absolute", right: "1.5rem", top: "1.5rem" }}
+        >
+          <img src="images/star.svg" />
+        </button>
         <div
           style={{
             backgroundColor: "white",
@@ -42,9 +48,15 @@ const Card = ({ data }) => {
             borderBottomLeftRadius: "1rem",
             borderBottomRightRadius: "1rem",
             padding: "1rem",
+            position: "relative",
           }}
         >
           <span>{timePassed} ago</span>
+          <button
+            style={{ position: "absolute", right: "2rem", top: "1.1rem" }}
+          >
+            <img src="images/kebab.svg" />
+          </button>
           <span>{description}</span>
           <span>{createdAt.substring(0, 10)}</span>
         </div>

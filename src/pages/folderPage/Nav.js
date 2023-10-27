@@ -43,7 +43,7 @@ const Nav = () => {
         }}
       >
         <div className="gnb">
-          <a href="index.html">
+          <a href="/">
             <img
               className="logo"
               src="/images/logo.svg"
