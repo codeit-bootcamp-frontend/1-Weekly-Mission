@@ -2,11 +2,14 @@ import React from "react";
 
 import useFetch from "../../hooks/useFetch";
 import FolderButton from "../button/FolderButton";
+import useUserFolderFetch from "../../hooks/userUserFolderFetch";
 
 export default function Menubar() {
-  const [data, isLoaidng] = useFetch(
+  const [data, isLoadng] = useFetch(
     "https://bootcamp-api.codeit.kr/api/users/1/folders"
   );
+
+  // const [data, isLoading] = useUserFolderFetch({ id: 1 });
   const result = data?.data;
   const obj = {};
   let obj_keys = [];
