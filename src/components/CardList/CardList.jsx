@@ -11,16 +11,20 @@ function CardList({ data }) {
 
   return (
     <>
-      {items && (
-        <S.CardListContainer>
-          {items.map((item) => {
-            return (
-              <S.CardContainer key={item.id}>
-                <Card item={item} />
-              </S.CardContainer>
-            );
-          })}
-        </S.CardListContainer>
+      {!data.length ? (
+        <S.NoLink>저장된 링크가 없습니다</S.NoLink>
+      ) : (
+        items && (
+          <S.CardListContainer>
+            {items.map((item) => {
+              return (
+                <S.CardContainer key={item.id}>
+                  <Card item={item} />
+                </S.CardContainer>
+              );
+            })}
+          </S.CardListContainer>
+        )
       )}
     </>
   );

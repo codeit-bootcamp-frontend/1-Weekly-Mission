@@ -2,20 +2,29 @@ import styled from "styled-components";
 import { Image } from "components/CardList/Card/Card.style";
 import { onMobile, onTablet } from "styles/mediaQuery";
 
+export const NoLink = styled.div`
+  display: flex;
+  font-size: 1.6rem;
+  line-height: 150%;
+  padding: 4.1rem 0 3.5rem 0px;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const CardListContainer = styled.ul`
   display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem 2rem;
   place-items: center;
   list-style-type: none;
   padding-inline-start: 0;
 
   ${onTablet} {
-    grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr)
   }
 
   ${onMobile} {
-    grid-template: repeat(9, 1fr) / 1fr;
+    grid-template-columns: 1fr;
   }
 `;
 
