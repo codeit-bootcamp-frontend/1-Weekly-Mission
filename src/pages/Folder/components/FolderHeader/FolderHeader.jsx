@@ -1,7 +1,5 @@
 import * as S from './FolderHeader.style';
-import useAsync from 'hooks/useAsync';
 import { useState } from 'react';
-import { getFolders } from 'utils/apiClient';
 import SHARE from 'assets/icons/share.svg';
 import EDIT from 'assets/icons/edit.svg';
 import DELETE from 'assets/icons/delete.svg';
@@ -22,14 +20,8 @@ function FolderButton({ data, selected, onClick }) {
   );
 }
 
-function FolderHeader({ userId, setFolderLinks }) {
-  const [foldersData, isLoading, loadingError, getFoldersAsync] = useAsync(
-    getFolders,
-    [userId]
-  );
+function FolderHeader({ folders, setFolderLinks }) {
   const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER);
-
-  const folders = foldersData?.data ?? [];
 
   const onFolderButtonClick = (folderData) => {
     setFolderLinks(folderData.id);

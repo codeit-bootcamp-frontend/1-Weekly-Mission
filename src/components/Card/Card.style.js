@@ -19,6 +19,7 @@ export const CardImgContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   overflow: hidden;
   width: 100%;
   height: 60vw;
@@ -31,6 +32,18 @@ export const CardImgContainer = styled.div`
     width: 34rem;
     height: 21rem;
   }
+`;
+
+export const StarButton = styled.button`
+  background-color: transparent;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+`;
+
+export const KebabButton = styled.button`
+  position: absolute;
+  right: 0rem;
 `;
 
 export const CardImg = styled.img`
@@ -60,6 +73,7 @@ export const CardTextContainer = styled.div`
 
 export const TimeAgo = styled.p`
   grid-area: timeAgo;
+  position: relative;
   color: #666;
   font-size: 0.9rem;
   font-weight: 400;

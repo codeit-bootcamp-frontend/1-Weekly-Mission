@@ -1,16 +1,17 @@
 import { useSearchParams } from 'react-router-dom';
 import * as S from './LinkList.style';
-import { getLinks } from 'utils/apiClient';
+import { getLinks, getFolders } from 'utils/apiClient';
 import useAsync from 'hooks/useAsync';
 import CardList from 'components/CardList';
 import SearchBar from 'components/SearchBar';
 import FolderHeader from '../FolderHeader';
+import NoLink from '../NoLink';
 
 function LinkList({ userId }) {
-  const [linksData, isLoading, loadingError, getLinksAsync] = useAsync(
-    getLinks,
-    [userId]
-  );
+  const [linksData, isLoadingLinks, linksLoadingError, getLinksAsync] =
+    useAsync(getLinks, [userId]);
+  const [foldersData, isLoadingFolders, folderLoadingError, getFoldersAsync] =
+    useAsync(getFolders, [userId]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const setFolderLinks = (folderId) => {
@@ -21,8 +22,19 @@ function LinkList({ userId }) {
   return (
     <S.ContentContainer>
       <SearchBar />
-      <FolderHeader userId={userId} setFolderLinks={setFolderLinks} />
-      {linksData?.data && <CardList cards={linksData?.data} />}
+      {foldersData?.data.length !== 0 && (
+        <FolderHeader
+          folders={foldersData?.data}
+          userId={userId}
+          setFolderLinks={setFolderLinks}
+        />
+      )}
+
+      {linksData?.data.length !== 0 ? (
+        <CardList cards={linksData?.data} />
+      ) : (
+        <NoLink />
+      )}
     </S.ContentContainer>
   );
 }

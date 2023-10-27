@@ -2,6 +2,8 @@ import React from 'react';
 import ReactTimeAgo from 'react-time-ago';
 import * as S from './Card.style';
 import DEFAULT_IMAGE from 'assets/images/default-link-img.svg';
+import STAR from 'assets/icons/star.svg';
+import KEBAB from 'assets/icons/kebab.svg';
 
 function Card({ data }) {
   const {
@@ -32,10 +34,16 @@ function Card({ data }) {
           src={imageSource ?? image_source ?? DEFAULT_IMAGE}
           alt='링크 이미지'
         />
+        <S.StarButton type='button'>
+          <img src={STAR} alt='즐겨찾기 버튼' />
+        </S.StarButton>
       </S.CardImgContainer>
       <S.CardTextContainer>
         <S.TimeAgo>
           <ReactTimeAgo date={createdDate} locale='en-US' />
+          <S.KebabButton type='button'>
+            <img src={KEBAB} alt='케밥 버튼' />
+          </S.KebabButton>
         </S.TimeAgo>
         <S.Title>{reduceText(title, 70)}</S.Title>
         <S.Description>{reduceText(description, 100)}</S.Description>
