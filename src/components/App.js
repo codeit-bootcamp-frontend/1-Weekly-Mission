@@ -1,17 +1,19 @@
+import { ThemeProvider } from "styled-components";
+import Globalstyle from "../styles/GlobalStyle";
+import theme from '../styles/theme';
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import Globalstyle from "./GlobalStyle";
 
 function App() {
   
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Globalstyle />
       <Header />
       <Main />
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
 
