@@ -76,8 +76,19 @@ background-color: #fff;
 color: #000;
 }
 
-a, button {
+a {
 cursor: pointer;
+}
+
+button{
+	overflow:visible;
+	padding:0;
+	border:none;
+	border-radius:0;
+	background: inherit;
+	box-shadow:none;
+	cursor:pointer;
+	font-family: 'Pretendard';
 }
 
 

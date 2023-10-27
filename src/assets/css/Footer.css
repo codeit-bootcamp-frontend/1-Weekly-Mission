@@ -3,15 +3,25 @@
   height: 10rem;
   margin-top: 7.5rem;
   background-color: #000;
+
+  @media (max-width: 767px) {
+    margin-top: 2.5rem;
+  }
 }
 
 .footer-large {
   display: flex;
+  position: relative;
   justify-content: space-between;
   width: 100%;
+  height: auto;
   max-width: 1920px;
   margin: 0 auto;
   padding: 32px 104px 64px;
+
+  @media (max-width: 767px) {
+    padding: 2rem;
+  }
 }
 
 .copyright {
@@ -19,6 +29,11 @@
   font-family: Arial;
   font-size: 1rem;
   font-weight: 400;
+
+  @media (max-width: 767px) {
+    position: absolute;
+    top: 7.4rem;
+  }
 }
 
 .links {

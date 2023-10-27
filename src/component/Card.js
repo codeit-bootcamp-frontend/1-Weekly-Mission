@@ -18,19 +18,6 @@ function Card({ data, onClick }) {
     }
   };
 
-  /*---card hover---*/
-  const imgRef = useRef();
-
-  const handleMouseEnter = () => {
-    const $imgNode = imgRef.current;
-    $imgNode.setAttribute("style", "transform: scale(1.3)");
-  };
-
-  const handleMouseLeave = () => {
-    const $imgNode = imgRef.current;
-    $imgNode.removeAttribute("style");
-  };
-
   /*--card clik--*/
   const handleCardClick = () => {
     onClick(data.url);
@@ -68,28 +55,14 @@ function Card({ data, onClick }) {
 
   /*========= JSX =========*/
   return (
-    <div
-      className="cardContainer"
-      onClick={handleCardClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="cardContainer" onClick={handleCardClick}>
+      <Star isStared={star} onClick={handleStarClick} />
       <div className="cardImgBox">
-        {data.imageSource ? (
-          <img
-            className="cardImg"
-            ref={imgRef}
-            src={data.imageSource}
-            alt="카드 이미지"
-          />
-        ) : (
-          <img
-            className="cardImg"
-            ref={imgRef}
-            src={noImageIMG}
-            alt="이미지 없음"
-          />
-        )}
+        <img
+          className="cardImg"
+          src={data.imageSource || noImageIMG}
+          alt={data.imageSource ? "카드 이미지" : "이미지 없음"}
+        />
       </div>
 
       <div className="infoContainer">
@@ -100,7 +73,6 @@ function Card({ data, onClick }) {
         <p className="description">{data.description}</p>
         <span className="createdDate">{formatDate(data.createdAt)}</span>
       </div>
-      <Star isStared={star} onClick={handleStarClick} />
     </div>
   );
 }
