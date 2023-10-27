@@ -1,9 +1,16 @@
 import Card from "../../components/card/Card";
-import "./folder.css";
 import SearchImg from "../../assets/folder/img_search.png";
 import { useCallback, useEffect, useState } from "react";
 import useAsync from "../../hooks/useAsync";
 import { getFolder } from "../../api/api";
+import {
+  CardContainer,
+  ContentContainer,
+  FolderContentContainer,
+  SearchInputContainer,
+  Section,
+  Wrapper,
+} from "./FolderStyledComponents";
 
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
@@ -35,9 +42,9 @@ const Folder = () => {
   }
 
   return (
-    <div className="wrapper">
-      <div className="section">
-        <div className="folderContentContainer">
+    <Wrapper>
+      <Section>
+        <ContentContainer>
           <img
             id="userProfile"
             src={user?.profileImageSource}
@@ -45,25 +52,25 @@ const Folder = () => {
           />
           <div id="userName">{user?.name}</div>
           <div id="folderName">{folderName}</div>
-        </div>
-      </div>
-      <div className="section" style={{ background: "#fff" }}>
-        <div className="folderContentContainer" id="bottomContainer">
-          <div className="searchInputContainer">
+        </ContentContainer>
+      </Section>
+      <Section bg="#fff">
+        <FolderContentContainer>
+          <SearchInputContainer>
             <img src={SearchImg} alt="searchImg" id="searchImg" />
             <input
               id="searchContainer"
               placeholder="링크를 검색해보세요."
             ></input>
-          </div>
-          <div id="cardContainer">
+          </SearchInputContainer>
+          <CardContainer>
             {cardData?.map((e) => {
               return <Card key={e.id} cardData={e} />;
             })}
-          </div>
-        </div>
-      </div>
-    </div>
+          </CardContainer>
+        </FolderContentContainer>
+      </Section>
+    </Wrapper>
   );
 };
 

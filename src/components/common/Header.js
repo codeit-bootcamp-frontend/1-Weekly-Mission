@@ -55,6 +55,8 @@ const Header = () => {
 
 export default Header;
 
+// path 검사 후 /folder일 경우 헤더 고정 안함
+
 const HeaderContainer = styled.header`
   display: flex;
   background: var(--background);
@@ -62,7 +64,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   width: 100vw;
   box-sizing: border-box;
-  position: fixed;
+  // position: fixed;
   justify-content: center;
   min-height: 9.4rem;
   z-index: 10;
