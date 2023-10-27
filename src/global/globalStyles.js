@@ -25,11 +25,12 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   }
 
-  html, body {
+  html {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    font-size: 62.5%;
   }
 
   body {
@@ -50,9 +51,8 @@ const GlobalStyle = createGlobalStyle`
     --graBlueToDarkGreen: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
     --graHotpinkToSkyBlue: linear-gradient(271deg, #FE578F, #68E8F9);
 
-    font-size: 10px;
     font-family: Pretendard;
-    color: var();
+    color: var(--black);
     font-family: Pretendard;
     font-style: normal;
     margin: 0;
@@ -64,6 +64,11 @@ const GlobalStyle = createGlobalStyle`
   
   p {
     margin: 0
+  }
+
+  a {
+  text-decoration: none;
+  color: var(--black);
   }
 `
 

@@ -1,8 +1,8 @@
 import GlobalStyle from '../global/globalStyles';
-import Nav from './Nav';
-import Footer from './Footer';
-import Header from './Header';
-import Main from './Main'
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import Main from '../components/Main'
 import { getFolder, getAccount } from '../global/api';
 import { useState, useEffect } from 'react';
 

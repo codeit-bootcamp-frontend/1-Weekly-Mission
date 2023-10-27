@@ -61,6 +61,9 @@ export const Info = styled.div`
   a {
     color: #cfcfcf;
   }
+  a:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const WebsiteLinks = styled.div`
