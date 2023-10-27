@@ -14,17 +14,6 @@ export const FolderContainer = styled.div`
   gap: 0.8rem;
 `;
 
-export const AddFolderButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--primary);
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: 500;
-`;
-
 export const Folder = styled(NavLink)`
   display: flex;
   padding: 0.8rem 1.2rem;
@@ -36,4 +25,44 @@ export const Folder = styled(NavLink)`
   color: ${({ selected }) => (selected ? `#fff` : `#000`)};
   font-size: 1.6rem;
   line-height: 100%;
+`;
+
+export const AddFolderButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+`;
+
+export const CurrentFolderInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: -0.02rem;
+  }
+`;
+
+export const OptionContainer = styled.div`
+  display: ${({ selected }) => (selected ? `none` : `flex`)};
+  align-items: flex-start;
+  gap: 1.2rem;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    span {
+      font-size: 1.4rem;
+      color: var(--gray60);
+    }
+  }
 `;
