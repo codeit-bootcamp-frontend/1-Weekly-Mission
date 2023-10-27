@@ -12,9 +12,10 @@ export async function getUserProfile() {
 }
 
 export async function getCards() {
-  const response = await fetch(`${BASE_URL}/sample/folder`);
-  if (!response.ok) {
+  try {
+    const response = await axios.get(`${BASE_URL}/sample/folder`);
+    return response.data;
+  } catch (error) {
     throw new Error('카드 정보를 불러오지 못했습니다.');
   }
-  return await response.json();
 }
