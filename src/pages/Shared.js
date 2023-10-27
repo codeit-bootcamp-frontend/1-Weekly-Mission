@@ -3,26 +3,13 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Main from '../components/Main'
-import { getFolder, getAccount } from '../global/api';
-import { useState, useEffect } from 'react';
+import useGetAccount from '../hooks/useGetAccount';
+import useGetFolder from '../hooks/useGetFolder';
 
 const App = () => {
-  
-  const [account, setAccount] = useState({email: 'stranger'});
-  const [folder, setFolder] = useState();
-
-  const handleLoad = async () => {
-    const {folder:{name:folderTitle, owner, links}} = await getFolder();
-    setFolder({folderTitle, owner, links});
-
-    const {email, profileImageSource} = await getAccount();
-    setAccount({email, profileImageSource});
-
-  };
-
-  useEffect(() => {
-    handleLoad();
-  }, []);
+  const account = useGetAccount({email: 'stranger'});
+  const folder = useGetFolder();
+  console.log()
 
   return (
     <>
