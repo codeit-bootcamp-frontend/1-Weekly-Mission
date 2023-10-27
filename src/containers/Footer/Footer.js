@@ -5,7 +5,7 @@ import twitterImg from "../../assets/img/twitter.svg";
 import facebookImg from "../../assets/img/facebook.svg";
 import SocialLink from "../../component/SocialLink";
 
-function Footer() {
+export function Footer() {
   const SOCIAL_LINKS = [
     {
       href: "https://www.facebook.com/",
@@ -43,5 +43,3 @@ function Footer() {
     </div>
   );
 }
-
-export default Footer;

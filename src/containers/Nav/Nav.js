@@ -2,7 +2,7 @@ import logoImg from "../../assets/img/logo.svg";
 import style from "./Nav.module.css";
 import NavProfile from "../../component/NavProfile";
 
-function Nav() {
+export function Nav() {
   return (
     <div className={style.root}>
       <a href="/">
@@ -12,5 +12,3 @@ function Nav() {
     </div>
   );
 }
-
-export default Nav;

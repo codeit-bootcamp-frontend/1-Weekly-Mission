@@ -1,5 +1,4 @@
-import Nav from "./containers/Nav/Nav";
-import Footer from "./containers//Footer/Footer";
+import { Nav, Footer } from "./containers";
 import Profile from "./component/Profile";
 import Main from "./component/Main";
 import "./global.css";
