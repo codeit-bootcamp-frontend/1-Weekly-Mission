@@ -1,5 +1,5 @@
 import { LoginButton } from "./Button";
-import style from "../css/Profile.module.css";
+import style from "./Profile.module.css";
 import { useEffect, useState } from "react";
 import { getsampleFolder } from "../api/sampleFolder";
 

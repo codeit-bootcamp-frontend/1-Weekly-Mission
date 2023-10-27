@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { LoginButton } from "./Button";
 import { getSampleUser } from "../api/sampleUser";
-import style from "../css/NavProfile.module.css";
+import style from "./NavProfile.module.css";
 function NavProfile() {
   const [userInfo, setUserInfo] = useState("");
 

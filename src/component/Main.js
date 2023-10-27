@@ -1,6 +1,6 @@
 import Search from "./Search";
 import Cards from "./Cards";
-import style from "../css/Main.module.css";
+import style from "./Main.module.css";
 import { useState, useEffect } from "react";
 import { getsampleFolder } from "../api/sampleFolder";
 function Main() {

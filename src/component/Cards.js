@@ -1,4 +1,4 @@
-import style from "../css/Cards.module.css";
+import style from "./Cards.module.css";
 import kebabImg from "../assets/img/kebab.png";
 import noImg from "../assets/img/no-image.svg";
 import { useState } from "react";

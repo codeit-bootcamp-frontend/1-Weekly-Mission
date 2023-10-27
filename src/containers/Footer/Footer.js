@@ -1,9 +1,9 @@
-import css from "../css/Footer.module.css";
-import youtubeImg from "../assets/img/Youtube.svg";
-import instagramImg from "../assets/img/instagram.svg";
-import twitterImg from "../assets/img/twitter.svg";
-import facebookImg from "../assets/img/facebook.svg";
-import SocialLink from "./SocialLink";
+import css from "./Footer.module.css";
+import youtubeImg from "../../assets/img/Youtube.svg";
+import instagramImg from "../../assets/img/instagram.svg";
+import twitterImg from "../../assets/img/twitter.svg";
+import facebookImg from "../../assets/img/facebook.svg";
+import SocialLink from "../../component/SocialLink";
 
 function Footer() {
   const SOCIAL_LINKS = [
