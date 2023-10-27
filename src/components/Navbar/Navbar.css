@@ -69,7 +69,7 @@ header.share-page {
 
 /* Tablet */
 
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 764px) and (max-width: 1199px) {
   .header-content {
     margin: 33px 0;
     padding: 0px 32px;
@@ -79,7 +79,7 @@ header.share-page {
 
 /* mobile */
 
-@media (min-width: 375px) and (max-width: 767px) {
+@media (min-width: 375px) and (max-width: 764px) {
   .header-content {
     margin: 17px 32px;
     width: 100%;

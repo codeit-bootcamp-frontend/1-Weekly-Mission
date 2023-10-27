@@ -128,7 +128,7 @@
 }
 
 /* Mobile (763px 이하) */
-@media (max-width: 763px) {
+@media (max-width: 764px) {
   .card-list {
     padding: 0 32px;
   }

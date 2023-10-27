@@ -1,7 +1,5 @@
 .folders {
   display: grid;
-  grid-template-columns: 1fr auto;
-  max-width: 1060px;
   margin: 20px auto;
 }
 
@@ -9,11 +7,11 @@
   display: grid;
   grid-auto-flow: column;
   justify-content: start;
-  gap: 12px;
+  gap: 6px;
 }
 
 .folder-item {
-  padding: 8px 12px;
+  padding: 6px 9px;
   border-radius: 5px;
   border: 1px solid var(--color-primary);
 }
@@ -58,4 +56,51 @@
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+/* PC (1124px 이상) */
+@media (min-width: 1124px) {
+  .folders {
+    max-width: 1060px;
+    grid-template-columns: 1fr auto;
+  }
+}
+
+/* Tablet (764px ~ 1123px) */
+@media (min-width: 764px) and (max-width: 1123px) {
+  .folders {
+    max-width: 704px;
+    grid-template-columns: 1fr auto;
+  }
+}
+
+/* Mobile (763px 이하) */
+@media (max-width: 764px) {
+  .folders {
+    max-width: 325px;
+  }
+
+  .folder-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .folder-add {
+    position: fixed;
+    bottom: 101px;
+    z-index: 100;
+    padding: 8px 24px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    color: var(--color-gray-10);
+    border: 1px solid var(--color-white);
+    background: var(--color-primary);
+  }
+
+  .folder-add svg {
+    fill: var(--color-gray-10);
+  }
 }
