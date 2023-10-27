@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const NoLink = styled.section`
   margin-top: 13rem;
   text-align: center;
