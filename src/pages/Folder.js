@@ -18,27 +18,35 @@ function Folder() {
   const [loadingError, getEachFolderAsync] = useAsync(getEachFolder);
   const [LinksloadingError, getUserLinksAsync] = useAsync(getUserLinks);
   const [personalFolder, setPersonalFolder] = useState({});
-  const [currentFolder, setCurrentFolder] = useState("");
+  const [currentFolderId, setCurrentFolderId] = useState("");
+  const [folderLinks, setFolderLinks] = useState({});
 
-  const handleLoad = async (options) => {
+  const handleLoad = async () => {
     const folders = await getFoldersAsync();
     if (!folders) return;
     console.log(folders);
 
     setPersonalFolder({ ...folders });
+
+    const links = await getUserLinks(currentFolderId);
+    if (!links) return;
+    console.log(links);
+
+    setFolderLinks(links.data);
   };
 
   const handleClickMenuButton = (value) => {
     const nextValue = value;
-    setCurrentFolder(nextValue);
-    console.log(currentFolder);
+    setCurrentFolderId(nextValue);
+    console.log(currentFolderId);
   };
 
   useEffect(() => {
     handleLoad();
-  }, []);
+  }, [currentFolderId]);
 
-  console.log(currentFolder);
+  console.log(currentFolderId);
+  console.log(folderLinks);
 
   return (
     <NavAndFooterBasic>
@@ -46,10 +54,10 @@ function Folder() {
       <Search />
       <FolderMenu
         folders={personalFolder.data}
-        current={currentFolder}
+        current={currentFolderId}
         onClick={handleClickMenuButton}
       />
-      <CardList />
+      <CardList folderLinks={folderLinks} />
     </NavAndFooterBasic>
   );
 }

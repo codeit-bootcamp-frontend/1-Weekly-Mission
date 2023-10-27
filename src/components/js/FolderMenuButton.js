@@ -12,7 +12,9 @@ const MenuButton = styled.button`
 `;
 
 function FolderMenuButton({ children, onClick, id }) {
-  const handleClick = (e) => onClick(e.target.id);
+  const handleClick = (e) => {
+    e.target.id ? onClick(e.target.id) : onClick("");
+  };
   return (
     <>
       <MenuButton id={id} onClick={handleClick}>

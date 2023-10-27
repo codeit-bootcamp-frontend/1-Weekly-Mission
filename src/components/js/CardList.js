@@ -58,7 +58,9 @@ function CardItem({ item, key }) {
 
 /* 카드리스트들 컴포넌트 */
 function CardList({ folderLinks }) {
-  console.log(folderLinks);
+  if (folderLinks === false) {
+    return null;
+  }
   return (
     <div className="section-title section-title-third">
       <div className="section-title-third-inner">

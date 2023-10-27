@@ -70,7 +70,9 @@ function FolderMenu({ folders, onClick }) {
     <>
       <Wrapper>
         <MenuList>
-          <FolderMenuButton>전체</FolderMenuButton>
+          <FolderMenuButton id={null} onClick={onClick}>
+            전체
+          </FolderMenuButton>
           {folders.map((folder) => {
             return (
               <li>
