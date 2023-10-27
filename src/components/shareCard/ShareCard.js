@@ -1,12 +1,10 @@
 import React from 'react';
-import './card.css';
+import './shareCard.css';
 import logo from '../../assets/common/logo.svg';
-import starIcon from '../../assets/common/star.svg';
-import kebabIcon from '../../assets/common/kebab.svg';
 import calcCreateTime from '../../utils/calcCreateTime';
 
-function Card({ linkInfo }) {
-  const createdAt = new Date(linkInfo?.created_at);
+function ShareCard({ linkInfo }) {
+  const createdAt = new Date(linkInfo?.createdAt);
   const formattedTime = calcCreateTime(createdAt);
 
   const year = createdAt.getFullYear();
@@ -15,8 +13,6 @@ function Card({ linkInfo }) {
 
   return (
     <div className="card">
-      <img src={starIcon} alt="star-icon" className="star-icon" />
-      <img src={kebabIcon} alt="kebab-icon" className="kebab-icon" />
       <a
         href={`${linkInfo.url}`}
         className="card-link"
@@ -25,14 +21,14 @@ function Card({ linkInfo }) {
       >
         <div
           className={
-            linkInfo?.image_source
+            linkInfo?.imageSource
               ? 'card-img-section'
               : 'card-img-section card-empty'
           }
         >
           <img
-            src={linkInfo?.image_source ?? logo}
-            className={linkInfo?.image_source ? 'link-img' : 'link-img-empty'}
+            src={linkInfo?.imageSource ?? logo}
+            className={linkInfo?.imageSource ? 'link-img' : 'link-img-empty'}
             alt="cat"
           />
         </div>
@@ -49,4 +45,4 @@ function Card({ linkInfo }) {
   );
 }
 
-export default Card;
+export default ShareCard;

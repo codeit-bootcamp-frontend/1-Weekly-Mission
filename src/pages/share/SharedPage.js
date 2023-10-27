@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Card from '../../components/card/Card';
 import Header from '../../components/header/Header';
 import SearchBar from '../../components/searchBar/SearchBar';
 import { getSampleFolder } from '../../api/user';
 import './sharedpage.css';
+import ShareCard from '../../components/shareCard/ShareCard';
 
 export default function SharedPage() {
   const [links, setLinks] = useState([]);
@@ -31,7 +31,7 @@ export default function SharedPage() {
               {links &&
                 links.map((item) => (
                   <div key={item.id}>
-                    <Card linkInfo={item} />
+                    <ShareCard linkInfo={item} />
                   </div>
                 ))}
             </div>
