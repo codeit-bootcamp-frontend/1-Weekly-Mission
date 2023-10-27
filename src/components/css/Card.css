@@ -19,6 +19,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  position: relative;
   border-radius: 15px;
   width: 340px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);

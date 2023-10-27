@@ -7,6 +7,9 @@ export const Container = styled.div`
 `;
 
 export const RowContainer = styled(Container)`
+  width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;

@@ -9,6 +9,7 @@ import FolderMenu from "../components/js/FolderMenu";
 function Folder() {
   const [loadingError, getFolderInformsAsync] = useAsync(getFolderInformations);
   const [personalFolder, setPersonalFolder] = useState({});
+  const [currentFolder, setCurrentFolder] = useState("");
 
   const handleLoad = async () => {
     const folders = await getFolderInformsAsync();
@@ -21,6 +22,8 @@ function Folder() {
   useEffect(() => {
     handleLoad();
   }, []);
+
+  console.log(window.location.pathname);
 
   return (
     <NavAndFooterBasic>

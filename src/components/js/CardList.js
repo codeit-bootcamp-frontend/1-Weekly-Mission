@@ -1,6 +1,25 @@
+import styled from "styled-components";
 import "../css/Card.css";
 import noImage from "../../Assets/noImage.png";
+import starIcon from "../../Assets/star.svg";
+import kebabIcon from "../../Assets/kebab.svg";
+import KebabButtonMenu from "./KebabButtonMenu";
+import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
+
+const BookmarkButton = styled.img`
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+`;
+
+const KebabButton = styled.img`
+  width: 21px;
+  height: 17px;
+`;
 
 /* 각 카드 컴포넌트 */
 function CardItem({ item, key }) {
@@ -15,6 +34,8 @@ function CardItem({ item, key }) {
   return (
     <a href={item.url}>
       <div key={key} className="card">
+        <BookmarkButton src={starIcon} alt="bookmark_icon" />
+        <KebabButtonMenu />
         <div className="card-img-wrap">
           {!item.imageSource ? (
             <img className="logoImg" src={noImage} alt={noImage} />
@@ -23,7 +44,10 @@ function CardItem({ item, key }) {
           )}
         </div>
         <div className="card-information">
-          <div className="time">{nowDate}</div>
+          <RowContainer>
+            <div className="time">{nowDate}</div>
+            <KebabButton src={kebabIcon} alt="kebabButton" />
+          </RowContainer>
           <p>{item.description}</p>
           <div className="day">{createdDate}</div>
         </div>
