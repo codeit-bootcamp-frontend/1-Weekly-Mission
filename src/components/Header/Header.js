@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import Logo from 'assets/icon/logo.svg';
+import Login from 'components/Login/Login';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Logo from '../assets/icon/logo.svg';
-import Login from '../components/Login';
-import headerRequestData from '../services/api';
+import headerRequestData from 'services/api';
 import './Header.css';
 
 function Header() {

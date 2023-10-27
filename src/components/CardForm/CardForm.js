@@ -1,20 +1,21 @@
-import React from 'react';
+import EmptyImg from 'assets/icon/emptyImg.svg';
+import KebabButton from 'components/KebabButton/KebabButton';
+import StarButton from 'components/StarButton/StarButton';
 import { useLocation } from 'react-router-dom';
-import EmptyImg from '../assets/icon/emptyImg.svg';
-import { changeDate, changeDateTime } from '../utils/dateFormat';
+import { changeDate, changeDateTime } from 'utils/dateFormat';
+import isEmpty from 'utils/isEmpty';
 import styles from './CardForm.module.css';
-import KebabButton from './KebabButton';
-import StarButton from './StarButton';
 
 function CardForm({ createdAt, content, imgUrl, url }) {
   const formatDate = changeDate(createdAt);
   const formatTime = changeDateTime(createdAt);
   const { pathname } = useLocation();
+
   return (
     <div className={styles.wrapper}>
-      <a href={url} target="_blank" rel="noopener noreferrer">
+      <a className={styles.url} href={url} target="_blank" rel="noopener noreferrer">
         <div className={styles.imgWrapper}>
-          {imgUrl !== undefined ? (
+          {!isEmpty(imgUrl) ? (
             <img src={imgUrl} alt="cardImg" className={styles.cardImg} />
           ) : (
             <img src={EmptyImg} alt="emptyImg" className={styles.cardImg} />

@@ -34,4 +34,15 @@ export const getUserFolder = async () => {
   return body;
 };
 
+export const getAllFolder = async () => {
+  const response = await fetch('/users/1/links', {
+    method: 'GET',
+  });
+  if (!response.ok) {
+    throw new Error('전체 폴더 데이터 가져오기 에러 발생');
+  }
+  const body = await response.json();
+  return body;
+};
+
 export default getSampleUser;

@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import Banner from '../components/Banner';
-import CardList from '../components/CardList';
-import Search from '../components/Search';
-import { getUserProfile } from '../services/api';
+import Banner from 'components/Banner/Banner';
+import CardList from 'components/CardList/CardList';
+import Search from 'components/Search/Search';
+import { useCallback, useEffect, useState } from 'react';
+import { getUserProfile } from 'services/api';
 import './Card.css';
 
 function Card() {
@@ -14,9 +14,11 @@ function Card() {
     if (!introResult) return;
 
     const { folder } = introResult;
+    const { folder: cardFolder } = introResult;
+    const { links } = cardFolder;
 
     setFolder(folder);
-    setCard(folder);
+    setCard(links);
   }, []);
 
   useEffect(() => {

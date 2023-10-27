@@ -1,13 +1,11 @@
 .function-button-Wrapper {
   display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
 }
 
 .share-button {
   border: none;
   color: #9fa6b2;
-  background-image: url('../assets/icon/share.svg');
+  background-image: url('assets/icon/share.svg');
   font-size: 1.4rem;
   background-repeat: no-repeat;
   background-position: 0 0.1rem;
@@ -18,7 +16,7 @@
 .name-button {
   border: none;
   color: #9fa6b2;
-  background-image: url('../assets/icon/pen.svg');
+  background-image: url('assets/icon/pen.svg');
   font-size: 1.4rem;
   background-repeat: no-repeat;
   background-position: 0 0.1rem;
@@ -29,7 +27,7 @@
 .delete-button {
   border: none;
   color: #9fa6b2;
-  background-image: url('../assets/icon/delete.svg');
+  background-image: url('assets/icon/delete.svg');
   font-size: 1.4rem;
   background-repeat: no-repeat;
   background-position: 0 0.1rem;

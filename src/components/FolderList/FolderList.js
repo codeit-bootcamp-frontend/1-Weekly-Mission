@@ -1,5 +1,5 @@
-import FolderAddButton from './FolderAddButton';
-import FolderForm from './FolderForm';
+import FolderAddButton from 'components/FolderAddButton/FolderAddButton';
+import FolderForm from 'components/FolderForm/FolderForm';
 import styles from './FolderList.module.css';
 
 function FolderList({ folderData }) {

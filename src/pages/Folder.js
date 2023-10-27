@@ -1,23 +1,14 @@
+import CardList from 'components/CardList/CardList';
+import FolderList from 'components/FolderList/FolderList';
+import LinkAdd from 'components/LinkAdd/LinkAdd';
+import Search from 'components/Search/Search';
+import Title from 'components/Title/Title';
 import { useCallback, useEffect, useState } from 'react';
-import CardList from '../components/CardList';
-import FolderList from '../components/FolderList';
-import LinkAdd from '../components/LinkAdd';
-import Search from '../components/Search';
-import Title from '../components/Title';
-import { getUserFolder, getUserProfile } from '../services/api';
+import { getAllFolder, getUserFolder } from 'services/api';
 
 function Folder() {
   const [folders, setFolders] = useState(null);
-  const [card, setCard] = useState(null);
-
-  const profileInfo = useCallback(async () => {
-    const introResult = await getUserProfile();
-    if (!introResult) return;
-
-    const { folder } = introResult;
-
-    setCard(folder);
-  }, []);
+  const [card, setCard] = useState([]);
 
   const folderInfo = useCallback(async () => {
     const introResult = await getUserFolder();
@@ -28,10 +19,19 @@ function Folder() {
     setFolders(data);
   }, []);
 
+  const allFolderInfo = useCallback(async () => {
+    const introResult = await getAllFolder();
+    if (!introResult) return;
+
+    const { data } = introResult;
+
+    setCard(data);
+  }, []);
+
   useEffect(() => {
-    profileInfo();
     folderInfo();
-  }, [profileInfo, folderInfo]);
+    allFolderInfo();
+  }, [folderInfo, allFolderInfo]);
 
   return (
     <>

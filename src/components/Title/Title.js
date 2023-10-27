@@ -1,4 +1,4 @@
-import FunctionButton from './FunctionButton';
+import FunctionButton from 'components/FunctionButton/FunctionButton';
 import './Title.css';
 
 function Title() {

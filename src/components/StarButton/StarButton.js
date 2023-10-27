@@ -1,5 +1,5 @@
+import Star from 'assets/icon/star.svg';
 import { Link } from 'react-router-dom';
-import Star from '../assets/icon/star.svg';
 import './StarButton.css';
 
 function StarButton() {

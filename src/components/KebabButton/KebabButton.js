@@ -1,5 +1,5 @@
+import Kebab from 'assets/icon/kebab.svg';
 import { Link } from 'react-router-dom';
-import Kebab from '../assets/icon/kebab.svg';
 import './KebabButton.css';
 
 function KebabButton() {

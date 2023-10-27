@@ -1,5 +1,5 @@
-import LinkAdd from '../components/LinkAdd';
-import Search from '../components/Search';
+import LinkAdd from 'components/LinkAdd/LinkAdd';
+import Search from 'components/Search/Search';
 import './NotFoundPage.css';
 
 function NotFoundPage() {
