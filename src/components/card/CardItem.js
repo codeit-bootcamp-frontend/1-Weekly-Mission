@@ -4,7 +4,7 @@ import logo from "assets/logo.svg";
 import { getCreatedDate, getDiffTime } from "common/utils/dateUtils";
 
 export default function CardItem({ link }) {
-  const { description, imageSource, createdAt, url } = link;
+  const { description, imageSource, createdAt } = link;
   const { yyyy, mm, dd } = getCreatedDate(createdAt);
 
   return (

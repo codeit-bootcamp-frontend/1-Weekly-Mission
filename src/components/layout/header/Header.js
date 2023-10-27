@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
+import { Link } from "react-router-dom";
 
 import * as style from "./HeaderStyle";
 import logo from "assets/logo.svg";
@@ -26,7 +27,9 @@ export default function Header() {
   return (
     <style.Wrapper>
       <style.Container>
-        <style.Logo src={logo} alt="logo" />
+        <Link to="/">
+          <style.Logo src={logo} alt="logo" />
+        </Link>
         <nav>
           {isLoading ? (
             <style.LoginBtn>로그인</style.LoginBtn>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import * as style from "./CardListStyle";
 import CardItem from "./CardItem";
 
@@ -5,9 +7,9 @@ export default function CardList({ links }) {
   return (
     <style.Cards>
       {links?.map((link) => (
-        <li key={link.id}>
+        <Link to={link.url} key={link.id} target="_blank">
           <CardItem link={link} />
-        </li>
+        </Link>
       ))}
     </style.Cards>
   );
