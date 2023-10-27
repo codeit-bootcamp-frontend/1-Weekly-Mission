@@ -6,11 +6,13 @@ import { getFolderList, getTotalFolder } from "../../api/folderListApi";
 import FolderList from "./FolderList";
 import "./folderList.css";
 import Cards from "./Cards";
+import "./header.css";
 
 const Header = () => {
   const [fullList, setFullList] = useState([]);
   const [totalData, setTotalData] = useState([]);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isTotalClicked, setIsClicked] = useState(false);
+
   const getFolderLists = async () => {
     const temp = await getFolderList();
     setFullList(temp?.data);
@@ -27,7 +29,7 @@ const Header = () => {
   }, []);
 
   function handleTotalClick() {
-    setIsClicked(true);
+    setIsClicked(!isTotalClicked);
   }
 
   return (
@@ -41,15 +43,19 @@ const Header = () => {
       <ul className="folder-list">
         <li style={{ listStyle: "none" }}>
           <button
+            className="folder-list-button"
             onClick={handleTotalClick}
-            style={{ width: "6rem", height: "5rem" }}
+            style={{ background: isTotalClicked ? "#6D6AFE" : "#fff" }}
           >
             전체
           </button>
         </li>
         {fullList && <FolderList fullData={fullList} />}
       </ul>
-      {totalData && isClicked && <Cards fullData={totalData} />}
+      {totalData && isTotalClicked && (
+        <div className="header-summary">전체</div>
+      )}
+      {totalData && isTotalClicked && <Cards fullData={totalData} />}
     </>
   );
 };

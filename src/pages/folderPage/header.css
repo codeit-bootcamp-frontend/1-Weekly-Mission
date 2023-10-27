@@ -1,0 +1,21 @@
+.header-summary {
+  padding: 0 3.2rem;
+  font-size: 2rem;
+  margin-bottom: 5rem;
+  font-weight: 700;
+  @media (min-width: 768px) {
+    padding: 0 3.2rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 19rem;
+  }
+}
+
+.folder-list-button {
+  border-radius: 5px;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  width: 6rem;
+  height: 5rem;
+}
