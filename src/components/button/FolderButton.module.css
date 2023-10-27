@@ -1,0 +1,39 @@
+.container {
+  border: 5px solid red;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 40rem);
+  margin: 3rem auto;
+  padding: 1rem;
+  /* tablet */
+  @media (min-width: 768px) {
+  }
+
+  /* table2 */
+  @media (min-width: 1124px) {
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+  }
+}
+
+.sub__container {
+  display: flex;
+  column-gap: 1rem;
+  /* tablet */
+  @media (min-width: 768px) {
+  }
+
+  /* table2 */
+  @media (min-width: 1124px) {
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+  }
+}
+
+.add__button {
+  border: 5px solid blue;
+}

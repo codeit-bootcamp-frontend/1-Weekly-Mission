@@ -11,6 +11,6 @@ const BaseButton = styled.button`
   padding-right: 1rem;
 `;
 
-export default function Button({ children }) {
-  return <BaseButton>{children}</BaseButton>;
+export default function Button({ children, className }) {
+  return <BaseButton className={className}>{children}</BaseButton>;
 }
