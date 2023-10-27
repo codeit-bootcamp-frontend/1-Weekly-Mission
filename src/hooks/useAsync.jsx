@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 
-function useAsync(asyncFunction, deps = [], skip = false) {
+function useAsync(asyncFunction, initialArgs = [], deps = [], skip = false) {
   const [data, setData] = useState(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchData = async (...args) => {
+  const fetchData = async (...initialArgs) => {
     setPending(true);
     setError(null);
     try {
-      const fetchedData = await asyncFunction(...args);
+      const fetchedData = await asyncFunction(...initialArgs);
       setData(fetchedData);
     } catch (error) {
       setError(error);
@@ -20,7 +20,7 @@ function useAsync(asyncFunction, deps = [], skip = false) {
 
   useEffect(() => {
     if (skip) return;
-    fetchData();
+    fetchData(initialArgs);
   }, deps);
 
   return [data, pending, error, fetchData];

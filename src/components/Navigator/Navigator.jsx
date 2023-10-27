@@ -2,20 +2,21 @@ import * as S from './Navigator.style';
 import A11y from 'components/A11y';
 import Button from 'components/Button';
 import { useEffect } from 'react';
-import { createUserAPI, getUser } from 'utils/apiClient';
+import { getUser } from 'utils/apiClient';
 import useAsync from 'hooks/useAsync';
 import LB_ICON from 'assets/icons/linkbrary.svg';
 
-function Navigator({ isLoggedIn }) {
+function Navigator({ isLoggedIn, userId }) {
   const [data, isLoading, loadingError, getUserAsync] = useAsync(
     getUser,
+    [userId],
     [],
     true
   );
 
   useEffect(() => {
     if (isLoggedIn) {
-      getUserAsync();
+      getUserAsync(userId);
     }
   }, []);
 

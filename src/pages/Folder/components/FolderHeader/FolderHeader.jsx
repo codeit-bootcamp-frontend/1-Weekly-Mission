@@ -14,20 +14,23 @@ const DEFAULT_FOLDER = {
 function FolderButton({ data, selected, onClick }) {
   const onSelect = onClick ? () => onClick(data) : undefined;
   return (
-    <S.FolderButton onClick={onSelect} selected={selected}>
+    <S.FolderButton type='button' onClick={onSelect} selected={selected}>
       {data.name}
     </S.FolderButton>
   );
 }
 
-function FolderHeader() {
-  const [foldersData, isLoading, loadingError, getFoldersAsync] =
-    useAsync(getFolders);
+function FolderHeader({ userId, setFolderLinks }) {
+  const [foldersData, isLoading, loadingError, getFoldersAsync] = useAsync(
+    getFolders,
+    [userId]
+  );
   const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER);
 
   const folders = foldersData?.data ?? [];
 
-  const selectFolder = (folderData) => {
+  const onFolderButtonClick = (folderData) => {
+    setFolderLinks(folderData.id);
     setSelectedFolder(folderData);
   };
 
@@ -39,7 +42,7 @@ function FolderHeader() {
             <FolderButton
               data={DEFAULT_FOLDER}
               selected={DEFAULT_FOLDER.id === selectedFolder?.id}
-              onClick={selectFolder}
+              onClick={onFolderButtonClick}
             />
           </li>
           {folders.map((folder) => (
@@ -47,7 +50,7 @@ function FolderHeader() {
               <FolderButton
                 data={folder}
                 selected={folder?.id === selectedFolder?.id}
-                onClick={selectFolder}
+                onClick={onFolderButtonClick}
               />
             </li>
           ))}

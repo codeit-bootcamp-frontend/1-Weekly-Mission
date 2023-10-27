@@ -1,5 +1,3 @@
-const DEFAULT_USER_ID = 1;
-
 async function requestAPI(url) {
   const response = await fetch(`https://bootcamp-api.codeit.kr/api/${url}`);
   const result = await response.json();
@@ -11,26 +9,21 @@ export async function getSharedFolder() {
   return data;
 }
 
-export const createUserAPI = (userId) => async (path) => {
-  if (!path) {
-    const data = await requestAPI(`users/${userId}`);
-    return data;
-  }
-  const data = await requestAPI(`users/${userId}/${path}`);
-  return data;
-};
-
-export async function getUser(userId = DEFAULT_USER_ID) {
+export async function getUser(userId) {
   const data = await requestAPI(`users/${userId}`);
   return data;
 }
 
-export async function getLinks(userId = DEFAULT_USER_ID) {
-  const data = await requestAPI(`users/${userId}/links`);
+export async function getLinks(userId, folderId) {
+  if (!folderId) {
+    const data = await requestAPI(`users/${userId}/links`);
+    return data;
+  }
+  const data = await requestAPI(`users/${userId}/links?folderId=${folderId}`);
   return data;
 }
 
-export async function getFolders(userId = DEFAULT_USER_ID) {
+export async function getFolders(userId) {
   const data = await requestAPI(`users/${userId}/folders`);
   return data;
 }

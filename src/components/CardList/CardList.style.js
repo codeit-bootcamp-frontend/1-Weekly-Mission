@@ -3,8 +3,6 @@ import { onTablet, onPc } from 'styles/mediaQuery';
 
 export const CardListContainer = styled.ul`
   display: grid;
-  justify-content: center;
-  align-items: center;
   gap: 2rem;
   margin: 0 auto;
   padding-top: 3.2rem;
