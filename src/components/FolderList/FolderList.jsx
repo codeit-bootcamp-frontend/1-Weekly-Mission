@@ -5,9 +5,16 @@ import addIcon from "images/add.svg";
 
 function FolderList({ getFolderId }) {
   const [folders, setFolders] = useState();
+  const [selectedId, setSelectedId] = useState(null);
 
-  const handleAllClick = () => getFolderId("");
-  const handleClick = (e) => getFolderId(e.target.id);
+  const handleAllClick = () => {
+    getFolderId("");
+    setSelectedId(null);
+  }
+  const handleClick = (e) => {
+    getFolderId(e.target.id);
+    setSelectedId(e.target.id);
+  }
 
   const handleLoad = async () => {
     const result = await getFolderList();
@@ -24,16 +31,14 @@ function FolderList({ getFolderId }) {
       {folders && (
         <S.FolderListContainer>
           <S.FolderContainer>
-            <li>
-              <S.Folder onClick={handleAllClick}>전체</S.Folder>
-            </li>
+            <S.Folder onClick={handleAllClick} to="/folder" selected={!selectedId}>
+              전체
+            </S.Folder>
             {folders.map((folder) => {
               return (
-                <li key={folder.id}>
-                  <S.Folder onClick={handleClick} id={folder.id}>
-                    {folder.name}
-                  </S.Folder>
-                </li>
+                <S.Folder onClick={handleClick} id={folder.id} to={`/folder?folderId=${folder.id}`} key={folder.id} selected={+selectedId === folder.id}>
+                  {folder.name}
+                </S.Folder>
               );
             })}
           </S.FolderContainer>

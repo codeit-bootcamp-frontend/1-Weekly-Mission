@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { NavLink } from "react-router-dom";
 export const FolderListContainer = styled.ul`
   display: flex;
   justify-content: space-between;
@@ -14,18 +14,6 @@ export const FolderContainer = styled.div`
   gap: 0.8rem;
 `;
 
-export const Folder = styled.button`
-  display: flex;
-  padding: 0.8rem 1.2rem;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 0.5rem;
-  border: 0.1rem solid var(--primary);
-  background: #fff;
-  font-size: 1.6rem;
-  line-height: 100%;
-`;
-
 export const AddFolderButton = styled.button`
   display: flex;
   justify-content: center;
@@ -35,4 +23,17 @@ export const AddFolderButton = styled.button`
   text-align: center;
   font-size: 1.6rem;
   font-weight: 500;
+`;
+
+export const Folder = styled(NavLink)`
+  display: flex;
+  padding: 0.8rem 1.2rem;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--primary);
+  background: ${({ selected }) => (selected ? `var(--primary)` : `#fff`)};
+  color: ${({ selected }) => (selected ? `#fff` : `#000`)};
+  font-size: 1.6rem;
+  line-height: 100%;
 `;
