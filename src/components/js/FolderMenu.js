@@ -63,20 +63,25 @@ const FEATURE_LIST = [
   { name: "삭제", src: deleteIcon, alt: "삭제 아이콘" },
 ];
 
-function FolderMenu({ folders, onClick }) {
+function FolderMenu({ folders, onClick, current, folderName }) {
   if (!folders) return null;
 
   return (
     <>
       <Wrapper>
         <MenuList>
-          <FolderMenuButton id={null} onClick={onClick}>
+          <FolderMenuButton id={""} onClick={onClick} isActive={current === ""}>
             전체
           </FolderMenuButton>
           {folders.map((folder) => {
+            const id = String(folder.id);
             return (
-              <li>
-                <FolderMenuButton id={folder.id} onClick={onClick}>
+              <li key={folder.id}>
+                <FolderMenuButton
+                  id={folder.id}
+                  onClick={onClick}
+                  isActive={id === current}
+                >
                   {folder.name}
                 </FolderMenuButton>
               </li>
@@ -89,7 +94,7 @@ function FolderMenu({ folders, onClick }) {
         </Container>
       </Wrapper>
       <Wrapper>
-        <CurrentFolderName>유용한 글</CurrentFolderName>
+        <CurrentFolderName>{folderName}</CurrentFolderName>
         <Container>
           {FEATURE_LIST.map((item) => {
             return (

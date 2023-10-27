@@ -28,12 +28,13 @@ export async function getFolderInformations() {
 }
 
 export async function getEachFolder(id = "") {
-  const query = `/folders/${40}`;
+  const query = `/folders/${id}`;
   const response = await fetch(`${BASE_URL}/users/1${query}`);
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패하였습니다.");
   }
   const body = await response.json();
+  console.log(body);
   return body;
 }
 

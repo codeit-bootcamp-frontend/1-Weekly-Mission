@@ -64,6 +64,7 @@ a {
 }
 
 .card-information {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -82,6 +83,7 @@ a {
 
 .card-information p {
   overflow: hidden;
+  height: 49px;
   /* 2줄이상 긴텍스트 생략 */
   text-overflow: ellipsis;
   display: -webkit-box;

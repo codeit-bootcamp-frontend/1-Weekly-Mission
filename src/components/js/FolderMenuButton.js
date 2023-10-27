@@ -4,20 +4,27 @@ const MenuButton = styled.button`
   font-family: Pretendard, sans-serif;
   padding: 8px 12px;
   cursor: pointer;
-  background-color: #fff;
-  font-size: #000;
+  background-color: ${({ isActive }) =>
+    isActive === true ? "#6d6afe" : "#fff"};
+  color: ${({ isActive }) => (isActive === true ? "#fff" : "#000")};
+  font-size: 16px;
   font-weight: 400;
   border-radius: 5px;
   border: 1px solid #6d6afe;
+
+  &:hover {
+    background-color: #6d6afe;
+    color: #fff;
+  }
 `;
 
-function FolderMenuButton({ children, onClick, id }) {
+function FolderMenuButton({ children, onClick, id, isActive }) {
   const handleClick = (e) => {
     e.target.id ? onClick(e.target.id) : onClick("");
   };
   return (
     <>
-      <MenuButton id={id} onClick={handleClick}>
+      <MenuButton id={id} onClick={handleClick} isActive={isActive}>
         {children}
       </MenuButton>
     </>

@@ -9,7 +9,8 @@ import useAsync from "../hooks/useAsync";
 import LinkBar from "../components/js/LinkBar";
 import Search from "../components/js/Search";
 import FolderMenu from "../components/js/FolderMenu";
-import CardList from "../components/js/CardList";
+import CardListFolder from "../components/js/CardListFolder";
+import FloatButton from "../components/js/FloatButton";
 
 function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
@@ -20,44 +21,52 @@ function Folder() {
   const [personalFolder, setPersonalFolder] = useState({});
   const [currentFolderId, setCurrentFolderId] = useState("");
   const [folderLinks, setFolderLinks] = useState({});
+  const [folderName, setFolderName] = useState("");
 
-  const handleLoad = async () => {
+  //폴더 목록, 전체 링크 데이터 fetch
+  const loadInitial = async () => {
     const folders = await getFoldersAsync();
-    if (!folders) return;
-    console.log(folders);
-
     setPersonalFolder({ ...folders });
+    const result = await getUserLinks();
+    setFolderLinks(result?.data);
+  };
 
-    const links = await getUserLinks(currentFolderId);
-    if (!links) return;
-    console.log(links);
-
-    setFolderLinks(links.data);
+  //카드 리스트 업데이트 하는 함수
+  const loadCardList = async () => {
+    const result = await getUserLinks(currentFolderId);
+    setFolderLinks(result?.data);
+    console.log(currentFolderId);
+    const folder = await getEachFolderAsync(currentFolderId);
+    console.log(folder);
+    setFolderName(folder);
+    console.log(folderName);
   };
 
   const handleClickMenuButton = (value) => {
     const nextValue = value;
     setCurrentFolderId(nextValue);
-    console.log(currentFolderId);
   };
 
   useEffect(() => {
-    handleLoad();
-  }, [currentFolderId]);
+    loadInitial();
+  }, []);
 
-  console.log(currentFolderId);
-  console.log(folderLinks);
+  useEffect(() => {
+    loadCardList();
+  }, [currentFolderId]);
 
   return (
     <NavAndFooterBasic>
+      <FloatButton>폴더 추가</FloatButton>
       <LinkBar />
       <Search />
       <FolderMenu
+        folderName={folderName}
         folders={personalFolder.data}
         current={currentFolderId}
         onClick={handleClickMenuButton}
       />
-      <CardList folderLinks={folderLinks} />
+      <CardListFolder folderLinks={folderLinks} />
     </NavAndFooterBasic>
   );
 }
