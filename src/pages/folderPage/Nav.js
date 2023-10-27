@@ -2,12 +2,13 @@ import React, { useEffect, useRef } from "react";
 import "../../styles/landing.css";
 import { getLogin } from "../../api/api";
 import { useAsync } from "../../hooks/useAsync";
+import { getProfileData } from "../../api/folderApi";
 
 const Nav = () => {
-  const [userEmail, getLoginAsync] = useAsync(getLogin);
+  const [userEmail, getProfileDataAsync] = useAsync(getProfileData);
   const targetRef = useRef(null);
   useEffect(() => {
-    getLoginAsync();
+    getProfileDataAsync();
   }, []);
 
   const handleScroll = () => {

@@ -21,8 +21,6 @@ const Header = () => {
     getFolderOwner();
   }, []);
 
-  console.log(fullData);
-
   return (
     <>
       <header>
