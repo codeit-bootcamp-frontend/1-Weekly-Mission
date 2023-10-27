@@ -16,8 +16,9 @@ const Owner = ({ items }) => {
   )
 }
 
-const Share = ({ shareData }) => {
+const ShareContainer = ({ shareData }) => {
   const { folder } = shareData
+  console.log(folder)
   return (
     <>
       <Owner items={folder} />
@@ -29,4 +30,4 @@ const Share = ({ shareData }) => {
   )
 }
 
-export default Share
+export default ShareContainer

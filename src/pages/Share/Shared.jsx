@@ -4,7 +4,7 @@ import {
 } from "../../apis/fetch"
 import Footer from "../../components/Footer/Footer"
 import Navbar from "../../components/Navbar/Navbar"
-import Share from "../../containers/Share/Share"
+import ShareContainer from "../../containers/Share/ShareContainer"
 import * as S from "../styles"
 
 const Shared = () => {
@@ -25,7 +25,7 @@ const Shared = () => {
         <S.StyledHeader>
           <Navbar userData={userData} />
         </S.StyledHeader>
-        <Share shareData={folderData} />
+        <ShareContainer shareData={folderData} />
         <Footer />
       </>
     )

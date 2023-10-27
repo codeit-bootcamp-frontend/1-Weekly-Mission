@@ -14,26 +14,26 @@ const Logo = ({ link = "/", src, alt, height }) => {
 }
 
 const Profile = ({ items }) => {
-  const { email, profileImageSource } = items
+  const { email, image_source } = items
   return (
     <S.ProfileBox>
-      <S.ProfileImage src={profileImageSource} alt="profile" />
+      <S.ProfileImage src={image_source} alt="profile" />
       <S.ProfileCollapseParagraph>{email}</S.ProfileCollapseParagraph>
     </S.ProfileBox>
   )
 }
 
 const Navbar = ({ userData }) => {
+  const data = userData[0]
+
   return (
     <S.NavBox>
       <S.NavInnerBox>
         <Logo link="/" src={IMAGES.logo} alt="Linkbrary" height={24} />
-        {userData?.id ? (
-          <Link to="signin">
-            <Button size="short" text="로그인" />
-          </Link>
+        {!data?.id ? (
+          <Button link="/signin" size="short" text="로그인" />
         ) : (
-          <Profile items={userData} />
+          <Profile items={data} />
         )}
       </S.NavInnerBox>
     </S.NavBox>

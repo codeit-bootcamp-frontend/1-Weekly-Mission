@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import {
   HomePage,
-  Folder,
+  FolderPage,
   Shared,
   Signup,
   Signin,
@@ -16,7 +16,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="folder" element={<Folder />} />
+          <Route path="folder" element={<FolderPage />} />
           <Route path="share" element={<Shared />} />
 
           <Route path="signup" element={<Signup />} />

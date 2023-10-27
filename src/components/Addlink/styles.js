@@ -1,5 +1,14 @@
 import styled from "styled-components"
 
+const AddLinkOuterBox = styled.div`
+  display: flex;
+  padding: 6rem 32rem 9rem 32rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  background: var(--linkbrary-bg);
+`
+
 const AddLinkBox = styled.div`
   display: flex;
   width: 800px;
@@ -7,6 +16,9 @@ const AddLinkBox = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+  border-radius: 15px;
+  border: 1px solid var(--linkbrary-primary-color);
+  background: var(--linkbrary-white);
 `
 
 const AddLinkInputBox = styled.div`
@@ -27,19 +39,25 @@ const AddLinkImage = styled.img`
   height: 20px;
 `
 
-const AddLinkContentBox = styled.div`
+const AddLinkContentInput = styled.input`
   color: var(--linkbrary-gray-60, #9fa6b2);
 
+  border: none;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
+
+  &:focus {
+    outline: none;
+  }
 `
 
 export {
   AddLinkBox,
-  AddLinkContentBox,
+  AddLinkContentInput,
   AddLinkImage,
   AddLinkInnerBox,
   AddLinkInputBox,
+  AddLinkOuterBox,
 }

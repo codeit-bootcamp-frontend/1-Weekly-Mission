@@ -1,6 +1,6 @@
 import styled from "styled-components"
-
-const CTA = styled.a`
+import { Link } from "react-router-dom"
+const CTA = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;

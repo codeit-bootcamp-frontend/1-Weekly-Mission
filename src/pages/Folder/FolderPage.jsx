@@ -3,11 +3,13 @@ import {
   useFetchUserLinks,
   useFetchUserProfile,
 } from "../../apis/fetch"
+import Addlink from "../../components/Addlink/Addlink"
 import Footer from "../../components/Footer/Footer"
 import Navbar from "../../components/Navbar/Navbar"
 import FolderContainer from "../../containers/Folder/FolderContainer"
+import * as S from "../styles.js"
 
-const Folder = () => {
+const FolderPage = () => {
   const userProfile = useFetchUserProfile(1)
   const userFolders = useFetchUserFolders(1)
   const userLinks = useFetchUserLinks(1)
@@ -22,21 +24,19 @@ const Folder = () => {
     folderData = userFolders?.data?.data
     linkData = userLinks?.data?.data
   }
-  console.log("프로필", userProfile)
-  console.log("폴더들", userFolders)
-  console.log("링크", userLinks)
+
   if (profileData && folderData && linkData) {
     return (
       <>
-        <header className="shared-header">
-          <Navbar userData={userProfile} />
-          <Navbar />
-          <FolderContainer />
-        </header>
+        <S.StyledHeader>
+          <Navbar userData={profileData} />
+          <Addlink />
+        </S.StyledHeader>
+        <FolderContainer folderData={folderData} linkData={linkData} />
         <Footer />
       </>
     )
   }
 }
 
-export default Folder
+export default FolderPage

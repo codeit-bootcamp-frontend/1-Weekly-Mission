@@ -1,10 +1,26 @@
-import Addlink from "../../components/Addlink/Addlink";
-const FolderContainer = () => {
+import CardList from "../../components/Card/CardList"
+import FolderFirstFrame from "../../components/Folder/FolderFirstFrame"
+import FolderSecondFrame from "../../components/Folder/FolderSecondFrame"
+import Searchbar from "../../components/Searchbar/Searchbar"
+import * as S from "./styles.js"
+
+const FolderContainer = ({ folderData }) => {
   return (
     <>
-      <Addlink />
-    </>
-  );
-};
+      <S.CardContainerBox>
+        <Searchbar />
+        <S.FolderContainerBox>
+          <FolderFirstFrame folderData={folderData} />
+        </S.FolderContainerBox>
 
-export default FolderContainer;
+        <S.FolderNameBox>
+          <FolderSecondFrame />
+        </S.FolderNameBox>
+
+        {/* <CardList cards={folderData} /> */}
+      </S.CardContainerBox>
+    </>
+  )
+}
+
+export default FolderContainer
