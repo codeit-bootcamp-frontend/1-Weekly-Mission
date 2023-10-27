@@ -2,7 +2,7 @@ import GlobalStyle from '../global/globalStyles';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import LinkAddInput from '../components/LinkAddInput';
-import Main from '../components/Main'
+import FolderMain from '../components/FolderMain'
 import useGetAccount from '../hooks/useGetAccount';
 import useGetSearchFolder from '../hooks/useGetSearchFolder';
 import styled from "styled-components";
@@ -29,7 +29,7 @@ const Folder = () => {
     <TopArea>
       <LinkAddInput />
     </TopArea>
-    {folderInfo && <Main folderInfo={folderInfo.data}/>}
+    {folderInfo && <FolderMain folderInfo={folderInfo.data}/>}
     <Footer />
     </>  
   )

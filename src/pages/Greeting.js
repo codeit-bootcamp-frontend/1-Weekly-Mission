@@ -31,7 +31,6 @@ border: 0;
 const Greeting = () => {
 
   const navigate = useNavigate();
-
   const handleClick = (domain) => navigate(domain);
 
   return (
