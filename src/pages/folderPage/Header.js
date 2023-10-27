@@ -1,28 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { getFolder } from "../../api/api";
 import "../../styles/landing.css";
 import Search from "../../components/Search/Search";
-import Cards from "../../components/Cards/Cards";
 import AddLink from "../../components/addLink/AddLink";
+import { getFolderList, getTotalFolder } from "../../api/folderListApi";
+import FolderList from "./FolderList";
+import "./folderList.css";
+import Cards from "./Cards";
 
 const Header = () => {
-  const [fullData, setFullData] = useState([]);
-  const getFolderOwner = async () => {
-    const temp = await getFolder();
-    setFullData(temp?.folder?.links);
+  const [fullList, setFullList] = useState([]);
+  const [totalData, setTotalData] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
+  const getFolderLists = async () => {
+    const temp = await getFolderList();
+    setFullList(temp?.data);
+  };
+
+  const getTotalData = async () => {
+    const temp = await getTotalFolder();
+    setTotalData(temp?.data);
   };
 
   useEffect(() => {
-    getFolderOwner();
+    getFolderLists();
+    getTotalData();
   }, []);
+
+  function handleTotalClick() {
+    setIsClicked(true);
+  }
 
   return (
     <>
       <header style={{ padding: "6rem 0 9rem 0" }}>
         <AddLink />
       </header>
+
       <Search />
-      {fullData && <Cards fullData={fullData} />}
+
+      <ul className="folder-list">
+        <li style={{ listStyle: "none" }}>
+          <button
+            onClick={handleTotalClick}
+            style={{ width: "6rem", height: "5rem" }}
+          >
+            전체
+          </button>
+        </li>
+        {fullList && <FolderList fullData={fullList} />}
+      </ul>
+      {totalData && isClicked && <Cards fullData={totalData} />}
     </>
   );
 };

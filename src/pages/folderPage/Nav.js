@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "../../styles/landing.css";
-import { getLogin } from "../../api/api";
 import { useAsync } from "../../hooks/useAsync";
-import { getProfileData } from "../../api/folderApi";
+import { getProfileData } from "../../api/folderOwnerApi";
 
 const Nav = () => {
   const [userEmail, getProfileDataAsync] = useAsync(getProfileData);

@@ -1,0 +1,15 @@
+.folder-list {
+  padding: 0 3.2rem;
+  font-size: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  @media (min-width: 768px) {
+    padding: 0 3.2rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 19rem;
+  }
+}
