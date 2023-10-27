@@ -10,15 +10,15 @@ export const CardListContainer = styled.ul`
   padding-top: 3.2rem;
 
   ${onTablet} {
-    grid-template-columns: auto auto;
-    grid-auto-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
     gap: 2.5rem;
     padding-top: 4rem;
   }
 
   ${onPc} {
-    grid-template-columns: auto auto auto;
-    grid-auto-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
     gap: 2.5rem 2rem;
     padding-top: 4rem;
   }

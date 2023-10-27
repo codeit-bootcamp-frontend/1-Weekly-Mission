@@ -45,30 +45,48 @@ export const CardImg = styled.img`
 `;
 
 export const CardTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    'timeAgo'
+    'title'
+    'description'
+    'createdDate';
+  gap: 0.6rem;
   padding: 1.5rem 2rem;
+  height: 11rem;
+  overflow: hidden;
 `;
 
 export const TimeAgo = styled.p`
+  grid-area: timeAgo;
   color: #666;
   font-size: 0.9rem;
   font-weight: 400;
 `;
 
 export const Title = styled.p`
-  font-size: 1.4rem;
+  grid-area: title;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.2;
 `;
 
 export const Description = styled.p`
-  font-size: 1rem;
+  grid-area: description;
+  font-size: 0rem;
   font-weight: 400;
+
+  ${onTablet} {
+    font-size: 0rem;
+  }
+  ${onPc} {
+    font-size: 1rem;
+  }
 `;
 
 export const Date = styled.p`
+  grid-area: createdDate;
   color: #333;
   font-size: 0.9rem;
   font-weight: 400;

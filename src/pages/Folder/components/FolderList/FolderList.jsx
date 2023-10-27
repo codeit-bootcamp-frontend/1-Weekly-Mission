@@ -9,7 +9,7 @@ const DEFAULT_FOLDER = {
 };
 
 function FolderList() {
-  const [data, isLoading, loadingError, getUserAsync] = useAsync(getFolders);
+  const [data, isLoading, loadingError, getFoldersAsync] = useAsync(getFolders);
   const folders = data?.data ?? [];
 
   return (
