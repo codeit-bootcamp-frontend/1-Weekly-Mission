@@ -1,7 +1,7 @@
 const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 
-export async function getProfile() {
-  const response = await fetch(`${BASE_URL}/sample/user`);
+export async function getProfile(path) {
+  const response = path === "/shared" ? await fetch(`${BASE_URL}/sample/user`) : await fetch(`${BASE_URL}/users/1`);
   if (!response.ok) {
     throw new Error("프로필을 불러오는데 실패했습니다");
   }

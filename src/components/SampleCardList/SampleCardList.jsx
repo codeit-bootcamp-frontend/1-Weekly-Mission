@@ -8,7 +8,6 @@ function SampleCardList() {
 
   const handleLoad = async () => {
     const data = await getSampleFolder();
-    console.log(data);
     setItems(data.folder?.links);
   };
 

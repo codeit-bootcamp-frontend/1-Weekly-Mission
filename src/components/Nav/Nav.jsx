@@ -9,12 +9,13 @@ function Nav() {
   const [hasProfile, setHasProfile] = useState(false);
 
   const handleLoadProfile = async () => {
-    const result = await getProfile();
+    const path = window.location.pathname;
+    const result = await getProfile(path);
     if (!result) {
       setHasProfile(false);
       return;
     }
-    setProfile(result);
+    setProfile(path === "/shared" ? result : result.data[0]);
     setHasProfile(true);
   };
 
