@@ -67,7 +67,9 @@
   color: #333;
 }
 
-/* mobile size */
-.card-info {
-  width: 32rem;
+/* mobile Size */
+@media (max-width: 767px) {
+  .card-info {
+    width: 32rem;
+  }
 }
