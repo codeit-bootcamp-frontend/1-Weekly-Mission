@@ -1,5 +1,6 @@
 import NavLogo from '../assets/Nav_logo.svg';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 export const Navigation = styled.nav`
   z-index: 2;
@@ -98,9 +99,9 @@ const Nav = ( {account} ) => {
   return (
     <Navigation> 
       <NavContents>
-        <a href="/">
+        <Link to="/">
           <Logo src={NavLogo} alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
-        </a>
+        </Link>
         {email && <Account>  {/*프로필 누르면 자기 계정으로 들어갈 것 같아서 일단 a*/}
           <ProfileImg src={image_source} alt="프로필 이미지"/>
           <Email>{email}</Email>
