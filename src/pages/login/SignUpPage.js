@@ -24,12 +24,17 @@ function SignUpPage() {
         <main>
           <form id="form">
             <div className="form-item">
-              <label htmlFor="email">이메일</label>
-              <input id="email" type="text" name="email" />
+              <label htmlFor="email">
+                이메일
+                <input id="email" type="text" name="email" />
+              </label>
             </div>
             <div className="form-item">
-              <label htmlFor="password">비밀번호</label>
-              <input id="password" type="password" name="password" />
+              <label htmlFor="password">
+                비밀번호
+                <input id="password" type="password" name="password" />
+              </label>
+
               <img
                 className="hide-password"
                 src={eyeOffImg}
@@ -37,8 +42,11 @@ function SignUpPage() {
               />
             </div>
             <div className="form-item">
-              <label htmlFor="passwordCheck">비밀번호 확인</label>
-              <input id="passwordCheck" type="password" name="password" />
+              <label htmlFor="passwordCheck">
+                비밀번호 확인
+                <input id="passwordCheck" type="password" name="password" />
+              </label>
+
               <img
                 className="hide-password-check"
                 src={eyeOffImg}
@@ -62,8 +70,8 @@ function SignUpPage() {
           </div>
         </main>
       </div>
-      <script type="module" src="addEvents.js"></script>
-      <script type="module" src="signup.js"></script>
+      <script type="module" src="addEvents.js" />
+      <script type="module" src="signup.js" />
     </>
   );
 }
