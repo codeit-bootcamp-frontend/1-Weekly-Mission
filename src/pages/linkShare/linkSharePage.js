@@ -1,4 +1,4 @@
-import { fetchClientJson } from "../../utils/apiClient";
+import { fetchClientJson } from "utils/apiClient.js";
 
 const getSampleUserFolder = async () => {
   const result = await fetchClientJson({

@@ -1,6 +1,6 @@
-import "./header.css";
-import logoImgSource from "../../assets/icons/logo.svg";
-import profileImgSource from "../../assets/icons/profile.svg";
+import "components/header/header.css";
+import logoImgSource from "assets/icons/logo.svg";
+import profileImgSource from "assets/icons/profile.svg";
 
 export default function HeaderComponent({ email }) {
   return (

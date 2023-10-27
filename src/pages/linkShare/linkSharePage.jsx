@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 
-import "./linkSharePage.css";
-import LinkCardComponent from "../../components/linkCard/linkCard.jsx";
-import { getSampleUserFolder, getSampleUserProfile } from "./linkSharePage.js";
-import HeaderComponent from "../../components/header/header.jsx";
-import LinkSearchBarComponent from "../../components/linkSearchBar/linkSearchBar";
-import FooterComponent from "../../components/footer/footer";
-import useAsync from "../../hooks/useAsync.js";
+import "pages/linkShare/linkSharePage.css";
+import LinkCardComponent from "components/linkCard/linkCard.jsx";
+import {
+  getSampleUserFolder,
+  getSampleUserProfile,
+} from "pages/linkShare/linkSharePage.js";
+import HeaderComponent from "components/header/header.jsx";
+import LinkSearchBarComponent from "components/linkSearchBar/linkSearchBar.jsx";
+import FooterComponent from "components/footer/footer.jsx";
+import useAsync from "hooks/useAsync.js";
 
 export default function LinkSharePage() {
   const [folder, setFolder] = useState([]);

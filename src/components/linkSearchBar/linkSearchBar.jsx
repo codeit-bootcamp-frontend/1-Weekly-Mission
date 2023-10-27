@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./linkSearchBar.css";
-import searchIcon from "../../assets/icons/search.svg";
+import "components/linkSearchBar/linkSearchBar.css";
+import searchIcon from "assets/icons/search.svg";
 
 export default function LinkSearchBarComponent() {
   return (

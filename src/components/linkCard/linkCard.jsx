@@ -1,7 +1,7 @@
-import "./linkCard.css";
-import noImageSource from "../../assets/images/noLinkCardImg.png";
-import { NO_SPECIAL_CHA_PATTERN } from "../../utils/constants";
-import getTimeAgo from "../../utils/getTimeAgo.js";
+import "components/linkCard/linkCard.css";
+import noImageSource from "assets/images/noLinkCardImg.png";
+import { NO_SPECIAL_CHA_PATTERN } from "utils/constants.js";
+import getTimeAgo from "utils/getTimeAgo.js";
 import { parseISO, format } from "date-fns";
 
 export default function LinkCardComponent({ cardData }) {
