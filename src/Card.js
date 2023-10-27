@@ -3,6 +3,7 @@ import moment from "moment";
 import noImg from "./image/noImg.svg";
 import starImg from './image/Star.svg';
 import selectedStarImg from './image/selectedStar.svg';
+import kebabMenuImg from './image/kebab.svg';
 
 export function Card({ link }) {
   const targetDate = new moment(link.createdAt).format("YYYY.M.DD");
@@ -63,7 +64,10 @@ export function Card({ link }) {
         <img className='star' src={selected} alt={selected} onClick={HandleClick} />  
       </div>
       <div className="card-description">
-        <span>{message}</span>
+        <div className="card-option">
+          <span>{message}</span>  
+          <img src={kebabMenuImg} alt='option'></img>
+        </div>
         <span className="description">{description}</span>
         <span>{targetDate}</span>
       </div>

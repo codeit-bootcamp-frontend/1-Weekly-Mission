@@ -28,13 +28,19 @@ body {
   width: 100%;
 }
 
-@media(max-width:1123px){
-  .nav{
+@media (max-width: 1123px) {
+  .nav {
     padding-left: 32.5px;
     padding-right: 32.5px;
-    } 
+  }
 }
 
+@media (max-width: 768px) {
+  .nav {
+    padding-top: 18px;
+    padding-bottom: 17px;
+  }
+}
 
 .nav-inform {
   display: flex;
@@ -49,7 +55,7 @@ body {
 }
 
 .header-section {
-  padding-top : 2rem;
+  padding-top: 2rem;
   padding-bottom: 6rem;
   margin-bottom: 40px;
   display: flex;
@@ -61,12 +67,26 @@ body {
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .header-section {
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+    margin-bottom: 20px;
+  }
+}
+
 .profile {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .profile {
+    gap: 10px;
+  }
 }
 
 .profile > img {
@@ -94,6 +114,12 @@ body {
   gap: 40px;
 }
 
+@media (max-width: 768px) {
+  .article-section {
+    gap: 32px;
+  }
+}
+
 .search-box {
   padding: 15px 16px;
   background-color: #f5f5f5;
@@ -101,6 +127,12 @@ body {
   align-items: center;
   gap: 10px;
   border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    padding: 13px 16px;
+  }
 }
 
 .search-box > input {
@@ -114,10 +146,17 @@ body {
   gap: 20px 25px;
 }
 
-@media(max-width:1123px){
-  .card-container{
+@media (max-width: 1123px) {
+  .card-container {
     grid-template-columns: repeat(2, 1fr);
-    gap : 24px 25px;
+    gap: 24px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
   }
 }
 
@@ -126,15 +165,15 @@ body {
   border-radius: 18px 18px 15px 15px;
   width: 340px;
   height: 334px;
-  cursor : point;
-  color : black;
+  cursor: point;
+  color: black;
   text-decoration: none;
 }
 
 .card:hover {
   transform: scale(1.1);
   transition: 0.5s; /*부드럽게*/
-  border : 2px solid #6D6AFE
+  border: 2px solid #6d6afe;
 }
 
 .card-description {
@@ -155,10 +194,21 @@ body {
   -webkit-box-orient: vertical;
 }
 
+.card-option{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-option > img {
+  width: 21px;
+  height: 17px;
+}
+
 .card-image-container {
   width: 340px;
   height: 200px;
-  position : relative;
+  position: relative;
 }
 
 .card-image {
@@ -171,8 +221,8 @@ body {
 
 .star {
   position: absolute;
-  top : 15px;
-  right : 15px;
+  top: 15px;
+  right: 15px;
 }
 
 .footer {
@@ -180,6 +230,13 @@ body {
   padding: 32px 104px 64px;
   background-color: #111322;
   margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 32px 32px 64px;
+    margin-top: 40px;
+  }
 }
 
 .footer-box {
