@@ -11,10 +11,13 @@ const MenuButton = styled.button`
   border: 1px solid #6d6afe;
 `;
 
-function FolderMenuButton({ children }) {
+function FolderMenuButton({ children, onClick, id }) {
+  const handleClick = (e) => onClick(e.target.id);
   return (
     <>
-      <MenuButton>{children}</MenuButton>
+      <MenuButton id={id} onClick={handleClick}>
+        {children}
+      </MenuButton>
     </>
   );
 }

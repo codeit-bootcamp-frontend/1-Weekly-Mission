@@ -27,8 +27,19 @@ export async function getFolderInformations() {
   return body;
 }
 
-export async function getFolders() {
-  const response = await fetch(`${BASE_URL}/users/1/lists`);
+export async function getEachFolder(id = "") {
+  const query = `/folders/${40}`;
+  const response = await fetch(`${BASE_URL}/users/1${query}`);
+  if (!response.ok) {
+    throw new Error("데이터를 불러오는데 실패하였습니다.");
+  }
+  const body = await response.json();
+  return body;
+}
+
+export async function getUserLinks(id = "") {
+  const query = `/links?folderId=${id}`;
+  const response = await fetch(`${BASE_URL}/users/1${query}`);
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패하였습니다.");
   }

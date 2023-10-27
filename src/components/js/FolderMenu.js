@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import addIcon from "../../Assets/add.png";
 import FolderMenuButton from "./FolderMenuButton";
@@ -64,7 +63,7 @@ const FEATURE_LIST = [
   { name: "삭제", src: deleteIcon, alt: "삭제 아이콘" },
 ];
 
-function FolderMenu({ folders }) {
+function FolderMenu({ folders, onClick }) {
   if (!folders) return null;
 
   return (
@@ -75,7 +74,9 @@ function FolderMenu({ folders }) {
           {folders.map((folder) => {
             return (
               <li>
-                <FolderMenuButton>{folder.name}</FolderMenuButton>
+                <FolderMenuButton id={folder.id} onClick={onClick}>
+                  {folder.name}
+                </FolderMenuButton>
               </li>
             );
           })}
