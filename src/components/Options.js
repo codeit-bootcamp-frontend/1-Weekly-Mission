@@ -23,6 +23,7 @@ const Container = styled(FlexAlign)`
 const Title = styled.div`
   font-size: 24px;
   font-weight: 600;
+  line-height: 100%;
   color: black;
 `;
 
