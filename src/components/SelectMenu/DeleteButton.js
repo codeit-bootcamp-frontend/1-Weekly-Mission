@@ -9,7 +9,8 @@ function DeleteButton() {
     font-size: 14px;
 
     &:hover {
-      background-color: var(--primary);
+      background-color: var(--grayE7);
+      color: var(--primary);
     }
   `;
   return (
