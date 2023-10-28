@@ -53,6 +53,7 @@ function Folder() {
     setFolderLinks(result?.data);
   };
 
+  //액션 메뉴에서 버튼을 누를 때마다 folderId와 foldername의 state가 변경되는 함수
   const handleClickMenuButton = (value, name) => {
     const nextValue = value;
     setCurrentFolderId(nextValue);
