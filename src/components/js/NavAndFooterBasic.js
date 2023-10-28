@@ -14,7 +14,7 @@ function NavAndFooterBasic({ children }) {
   return (
     <Wrapper>
       <BasicHeader />
-      <div>{children}</div>
+      {children}
       <Footer />
     </Wrapper>
   );

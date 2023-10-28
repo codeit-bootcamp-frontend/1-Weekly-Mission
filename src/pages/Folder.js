@@ -16,8 +16,9 @@ import LinksNotExist from "../components/js/LinksNotExist";
 
 const Wrapper = styled.div`
   width: 1060px;
-  height: 100vh;
-  margin: 0 auto;
+  height: auto;
+  margin: auto;
+  flex-grow: 2;
 
   @media (max-width: 1199px) and (min-width: 768px) {
     width: 704px;

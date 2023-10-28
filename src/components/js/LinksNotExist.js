@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
+  flex-grow: 3;
   margin: 40px auto auto;
   padding: 41px 0 35px;
   display: flex;
