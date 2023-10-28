@@ -5,6 +5,7 @@
   padding: 16px 20px;
   border: 1px solid var(--color-gray-20);
   border-radius: 10px;
+  width: 100%;
 }
 
 .search-bar-search-icon {
