@@ -37,6 +37,7 @@ export const CardImage = styled.img`
 
 export const CardInfo = styled.div`
   display: grid;
+  grid-template-rows: auto 1fr auto;
   gap: 1rem;
   padding: 1.5rem 2rem;
   background-color: var(--linkbrary--color--white);
