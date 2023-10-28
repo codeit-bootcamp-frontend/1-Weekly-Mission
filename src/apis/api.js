@@ -24,7 +24,7 @@ const requestSign = async (signType, data) => {
     body: JSON.stringify(data),
   });
 
-  saveTokenToLocalStorage(responseData);
+  await saveTokenToLocalStorage(responseData);
 
   return responseData;
 };
