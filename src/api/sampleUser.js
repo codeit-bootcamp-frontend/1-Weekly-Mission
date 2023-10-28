@@ -7,6 +7,6 @@ export async function getSampleUser() {
     if (userRes?.status === 200) {
       return userInfo;
     }
-    return false;
+    return null;
   } catch (err) {}
 }

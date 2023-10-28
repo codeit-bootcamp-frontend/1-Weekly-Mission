@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
 import { LinkButton } from "./LinkButton";
-import { getSampleUser } from "../api/sampleUser";
 import style from "./NavProfile.module.css";
-function NavProfile() {
-  const [userInfo, setUserInfo] = useState("");
+import useAsync from "../hooks/useAsync";
+import { getSampleUser } from "../api/sampleUser";
 
+function NavProfile() {
+  const [userInfo, setUserInfo] = useState(null);
+  const [isLoading, , getSampleUserAsync] = useAsync(getSampleUser);
   const loadUser = async () => {
-    const userInfo = await getSampleUser();
+    const userInfo = await getSampleUserAsync();
     setUserInfo(userInfo);
   };
 
   useEffect(() => {
     loadUser();
   }, []);
-  return userInfo ? (
+  return isLoading ? (
+    <span>loading</span>
+  ) : userInfo ? (
     <div className={style.profile}>
       <img
         className={style.profileImg}
