@@ -1,5 +1,6 @@
 import Cards from './Card';
 import styled from 'styled-components';
+import EmptyLinkScreen from './EmptyLinkScreen';
 
 export const SectionContainer = styled.section`
   display: grid;
@@ -20,13 +21,13 @@ export const SectionContainer = styled.section`
 
 const CardList = ( {folderCards} ) => {
 
-  if (!folderCards) {
-    return null; // 또는 로딩 중을 나타내는 컴포넌트를 렌더링
-  }
+  console.log(folderCards.length)
 
   return (
     <SectionContainer>
-      <Cards folderCards={folderCards}/>
+      {folderCards.length > 0 ? 
+      <Cards folderCards={folderCards}/> :
+      <EmptyLinkScreen />}
     </SectionContainer>
   )
 }
