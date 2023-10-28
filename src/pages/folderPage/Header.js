@@ -16,6 +16,7 @@ const Header = () => {
   const [isSingleClicked, setIsSingleClicked] = useState(false);
   const [singleFolderDataId, setSingleFolderDataId] = useState();
   const [singleFolderData, setSingleFolderData] = useState([]);
+  const [singleFolderName, setSingleFolderName] = useState();
 
   const getFolderLists = async () => {
     const temp = await getFolderList();
@@ -39,12 +40,13 @@ const Header = () => {
     setIsTotalClicked(true);
   }
 
-  const handleFolderClick = (folderId) => {
+  const handleFolderClick = (folderId, folderName) => {
     if (isTotalClicked) {
       setIsTotalClicked(false);
     }
     setIsSingleClicked(true);
     setSingleFolderDataId(folderId);
+    setSingleFolderName(folderName);
   };
 
   const getSingleFolderData = async () => {
@@ -56,8 +58,6 @@ const Header = () => {
     if (!singleFolderDataId) return;
     getSingleFolderData();
   }, [singleFolderDataId]);
-
-  console.log(singleFolderData);
 
   return (
     <>
@@ -84,13 +84,39 @@ const Header = () => {
           />
         )}
       </ul>
+      <button className="folder-add-button">
+        폴더 추가
+        <img src="/images/add.svg" />
+      </button>
 
       {totalData && isTotalClicked && (
         <div className="header-summary">
           전체
-          <button className="folder-add-button">
+          {/* <button className="folder-add-button">
             폴더 추가
             <img src="/images/add.svg" />
+          </button> */}
+        </div>
+      )}
+
+      {singleFolderData && isSingleClicked && (
+        <div className="header-summary">
+          {singleFolderName}
+          {/* <button className="folder-add-button">
+            폴더 추가
+            <img src="/images/add.svg" />
+          </button> */}
+          <button>
+            <img src="/images/share.svg" />
+            공유
+          </button>
+          <button>
+            <img src="/images/pen.svg" />
+            이름 변경
+          </button>
+          <button>
+            <img src="/images/discard.svg" />
+            삭제
           </button>
         </div>
       )}

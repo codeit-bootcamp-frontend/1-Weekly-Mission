@@ -3,12 +3,11 @@ import { requestSingleFolderApi } from "../../api/singleFolderApi";
 
 const FolderListItem = ({ data, handleFolderClick }) => {
   const { id, name } = data;
-
   return (
     <button
       className="folder-list-button"
       onClick={() => {
-        handleFolderClick(id);
+        handleFolderClick(id, name);
       }}
     >
       {name}

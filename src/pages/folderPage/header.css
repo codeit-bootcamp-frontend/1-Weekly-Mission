@@ -4,6 +4,8 @@
   margin-bottom: 5rem;
   font-weight: 700;
   position: relative;
+  display: flex;
+  justify-content: space-between;
   @media (min-width: 768px) {
     padding: 0 3.2rem;
   }
@@ -38,21 +40,23 @@
 }
 
 .folder-add-button {
-  width: 15rem;
+  width: 13rem;
+  height: 6rem;
   display: flex;
   padding: 8px 24px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
-  left: 98.5px;
-  top: 261px;
+  /* left: 98.5px;
+  top: 261px; */
   border-radius: 20px;
   border: 1px solid var(--linkbrary-white, #fff);
   background: var(--linkbrary-primary-color, #6d6afe);
   color: #e7effb;
   z-index: 9999;
-  position: sticky;
-  bottom: 30%;
-  right: 50%;
+  position: fixed;
+  bottom: 101px;
+  right: 35%;
 
   @media (min-width: 768px) {
     color: #6d6afe;
@@ -66,11 +70,12 @@
     letter-spacing: -0.3px;
     display: flex;
     gap: 0.5rem;
-    top: 5rem;
-    left: 5rem;
     position: absolute;
+    top: 58rem;
+    right: 5rem;
   }
 
   @media (min-width: 1200px) {
+    right: 17rem;
   }
 }
