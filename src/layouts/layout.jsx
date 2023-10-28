@@ -6,8 +6,7 @@ import useAsync from "hooks/useAsync.js";
 import getUserProfile from "utils/getUserProfile.js";
 import { useUserProfileContext } from "contexts/UserProfileContext.js";
 import { useEffect } from "react";
-
-const SAMPLE_USER_ID = 1;
+import { SAMPLE_USER_ID } from "utils/constants.js";
 
 export default function Layout() {
   const { setUserProfile } = useUserProfileContext();
