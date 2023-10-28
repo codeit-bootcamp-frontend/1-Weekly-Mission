@@ -5,7 +5,6 @@ import SearchBar from "../components/searchBar/SearchBar";
 import Menubar from "../components/menuBar/Menubar";
 import WholeData from "../components/linksdata/WholeData";
 import Footer from "../components/footer/Footer";
-
 import useFetch from "../hooks/useFetch";
 import Landing from "../components/landing/Landing";
 import LocaleContext from "../contexts/LocaleContext";
@@ -39,16 +38,14 @@ export default function FolderPage() {
 
   return (
     <LocaleContext.Provider value={obj}>
-      <div>
-        <NavSec />
-        <Header />
-        <SearchBar />
-        <Menubar data={data} isLoading={isLoading} />
-        {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
-        <Article />
-        <WholeData />
-        <Footer />
-      </div>
+      <NavSec />
+      <Header />
+      <SearchBar />
+      <Menubar data={data} isLoading={isLoading} />
+      {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
+      <Article />
+      <WholeData />
+      <Footer />
     </LocaleContext.Provider>
   );
 }
