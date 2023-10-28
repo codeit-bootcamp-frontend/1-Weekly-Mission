@@ -57,7 +57,7 @@ function App() {
       {isUserLoading && <p> 로그인 중...</p>}
       {userLoadingError?.message && <span>{userLoadingError.message}</span>}
 
-      <section className="section">
+      <section className="main-section">
         <Outlet />
       </section>
 
