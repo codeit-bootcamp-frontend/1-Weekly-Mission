@@ -16,8 +16,8 @@ function Card(card) {
     setIsHovering(false);
   };
 
-  const { createdAt, url, title, description, imageSource } = card.card;
-  const str = calcDate(createdAt);
+  const { created_at, url, title, description, image_source } = card.card;
+  const str = calcDate(created_at);
   return (
     <a
       href={url}
@@ -27,7 +27,7 @@ function Card(card) {
     >
       <div className="card-img-section">
         <img
-          src={imageSource ? imageSource : noImage}
+          src={image_source ? image_source : noImage}
           alt={title}
           className={isHovering ? "sample-img-bigger sample-img" : "sample-img"}
         />
@@ -35,7 +35,7 @@ function Card(card) {
       <div className="card-text-section">
         <p className="time-stamp">{str}</p>
         <p className="introduce-text">{description}</p>
-        <p className="created-date">{formatDate(createdAt)}</p>
+        <p className="created-date">{formatDate(created_at)}</p>
       </div>
     </a>
   );
