@@ -1,8 +1,8 @@
 import Card from "./Card";
 import searchIcon from "../assets/svg/Search.svg";
-import "./Main.css";
+import "./CardList.css";
 
-const Main = ({ cards }) => {
+const CardList = ({ cards }) => {
   return (
     <div className="main-container">
       <form className="search-bar">
@@ -24,4 +24,4 @@ const Main = ({ cards }) => {
     </div>
   );
 };
-export default Main;
+export default CardList;

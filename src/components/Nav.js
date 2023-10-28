@@ -1,7 +1,7 @@
 import "./Nav.css";
 import logo from "../assets/logo.svg";
 import { Button } from "../components/Button";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getUserData } from "../services/api";
 
 export default function Nav({ user }) {
