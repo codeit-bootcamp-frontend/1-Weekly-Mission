@@ -7,10 +7,10 @@ function Header({ name = "", owner = {} }) {
       <div className="Header-owner">
         <img
           className="Header-owner-img"
-          src={owner.profileImageSource}
-          alt="소유자 사진"
-        ></img>
-        <p className="Header-owner-name">{owner.name}</p>
+          src={owner?.profileImageSource}
+          alt="유저 프로필 사진"
+        />
+        <p className="Header-owner-name">{`@${owner?.name}`}</p>
       </div>
       <h1 className="Header-name">{name}</h1>
     </header>

@@ -1,7 +1,6 @@
 import LogoImg from "../../assets/card-logo.png";
 import "./Card.css";
 import "../../style/style.css";
-
 import moment from "moment";
 
 function calculateTimeAgo(createdAt) {
@@ -32,24 +31,23 @@ function calculateTimeAgo(createdAt) {
 
 function Card({ link }) {
   const { createdAt, description, imageSource, title, url } = link;
-
+  const createdDate = new Date(createdAt);
   return (
     <a className="Card" href={url}>
       <div>
-        {imageSource ? (
-          <div className="Card-image-container">
-            <img className="Card-image" src={imageSource} alt="카드 사진" />
-          </div>
-        ) : (
-          <div className="Card-image-container Card-image">
-            <img src={LogoImg} alt="logoImg" className="no-img-logo" />
-          </div>
-        )}
-        <div className="contentContainer">
-          <div className="content-ago">{calculateTimeAgo(createdAt)}</div>
+        <div className="Card-image-container">
+          <img
+            className={imageSource ? "Card-image" : "no-img-logo"}
+            src={imageSource ? imageSource : LogoImg}
+            alt="카드 사진"
+          />
+        </div>
+
+        <div className="Card-content-container">
+          <div className="Card-content-ago">{calculateTimeAgo(createdAt)}</div>
           <div>{title}</div>
-          <div className="content">{description}</div>
-          <div className="contentAt">
+          <div className="Card-content">{description}</div>
+          <div className="Card-contentAt">
             {moment(createdAt).format("YYYY.MM.DD")}
           </div>
         </div>

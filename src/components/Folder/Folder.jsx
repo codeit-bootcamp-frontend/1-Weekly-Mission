@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import getSample from "../../api";
 import useAsync from "../../Hooks/useAsync";
+
 
 function Folder() {
   const [data, isLoading, LoadingError, getSampleAsync] = useAsync(() =>
@@ -16,8 +16,8 @@ function Folder() {
 
   return (
     <>
-      <Header name={name} owner={owner} />
-      <Main links={links} />
+      {data && <Header name={name} owner={owner} />}
+      {data && <Main links={links} />}
     </>
   );
 }
