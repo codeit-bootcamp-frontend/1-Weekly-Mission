@@ -1,6 +1,6 @@
 import CardList from "../../components/Card/CardList"
-import FolderFirstFrame from "../../components/Folder/FolderFirstFrame"
-import FolderSecondFrame from "../../components/Folder/FolderSecondFrame"
+import FolderNavbar from "../../components/Folder/FolderNavbar"
+import FolderMenubar from "../../components/Folder/FolderMenubar"
 import Searchbar from "../../components/Searchbar/Searchbar"
 import * as S from "./styles.js"
 
@@ -10,11 +10,11 @@ const FolderContainer = ({ folderData }) => {
       <S.CardContainerBox>
         <Searchbar />
         <S.FolderContainerBox>
-          <FolderFirstFrame folderData={folderData} />
+          <FolderNavbar folderData={folderData} />
         </S.FolderContainerBox>
 
         <S.FolderNameBox>
-          <FolderSecondFrame />
+          <FolderMenubar />
         </S.FolderNameBox>
 
         {/* <CardList cards={folderData} /> */}

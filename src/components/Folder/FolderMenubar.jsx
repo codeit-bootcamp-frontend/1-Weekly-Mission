@@ -40,7 +40,7 @@ const FolderOptions = () => {
   )
 }
 
-const FolderSecondFrame = () => {
+const FolderMenubar = () => {
   return (
     <>
       <S.FolderNameHeader>유용한 글 - 여기 fetch해야 함</S.FolderNameHeader>
@@ -49,4 +49,4 @@ const FolderSecondFrame = () => {
   )
 }
 
-export default FolderSecondFrame
+export default FolderMenubar
