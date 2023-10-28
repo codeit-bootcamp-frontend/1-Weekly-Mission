@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  font-size: 1.6rem;
+  text-align: center;
+  font-weight: 500;
+  flex: 0;
+  letter-spacing: -0.03rem;
+  align-items: center;
+  color: var(--primary);
+  gap: 0.4rem;
+}
+
+@media (max-width: 767px) {
+  .root {
+    display: none;
+  }
+}

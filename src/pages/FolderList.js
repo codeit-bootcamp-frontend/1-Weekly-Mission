@@ -3,29 +3,37 @@ import FolderNav from '../components/FolderNav/FolderNav';
 import AddLinkInput from '../components/AddLinkInput/AddLinkInput';
 import FolderAddMenu from '../components/FolderAddMenu/FolderAddMenu';
 import FolderName from '../components/FolderName/FolderName';
+import styles from './FolderList.module.css';
 import { useEffect, useState } from 'react';
 import { getSampleUsersFolderLists } from '../apis/api';
+import { useParams } from 'react-router';
+import FolderEdit from '../components/FolderEdit/FolderEdit';
 
 function FolderList() {
-  const section = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4rem',
-    width: '100%',
-    maxWidth: '112.4rem',
-    padding: '0rem 3.2rem',
-    margin: '4rem auto',
-  };
-
   const [folderLists, setFolderLists] = useState([]);
 
   const loadFolderData = async () => {
     const { data } = await getSampleUsersFolderLists();
 
-    setFolderLists((prevfolderLists) => {
-      return [...prevfolderLists, ...data];
+    setFolderLists((prevFolderLists) => {
+      return [...prevFolderLists, ...data];
     });
   };
+
+  const { folderID } = useParams();
+
+  const getFolderName = (folderID, folderLists) => {
+    if (!folderID) {
+      return '전체';
+    } else {
+      const getFolder = folderLists.find((folderList) => {
+        return folderList.id === Number(folderID);
+      });
+      return getFolder.name;
+    }
+  };
+
+  const folder = getFolderName(folderID, folderLists);
 
   useEffect(() => {
     loadFolderData();
@@ -34,14 +42,15 @@ function FolderList() {
   return (
     <>
       <AddLinkInput />
-      <section style={section}>
+      <section className={styles.root}>
         <SearchBar />
-        <div>
+        <div className={styles.flex}>
           <FolderNav folderLists={folderLists} />
           <FolderAddMenu />
         </div>
-        <div>
-          <FolderName />
+        <div className={styles.flex}>
+          <FolderName>{folder}</FolderName>
+          {folderID && <FolderEdit />}
         </div>
       </section>
     </>
