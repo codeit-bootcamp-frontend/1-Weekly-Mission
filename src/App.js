@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 const loading = <div>화면을 불러오는 중 입니다.</div>;
 
 const Page404 = React.lazy(() => import("./page/error/Page404"));
-const Page500 = React.lazy(() => import("./page/error/Page4500"));
+const Page500 = React.lazy(() => import("./page/error/Page500"));
 const DefaultLayout = React.lazy(() =>
   import("./components/common/DefaultLayout")
 );

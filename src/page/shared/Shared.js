@@ -10,17 +10,40 @@ import {
   FolderBtnItemContainer,
   FolderContainer,
   FolderContentContainer,
+  LinkHeaderContainer,
+  LinkToolContainer,
   SearchInputContainer,
   Section,
   Wrapper,
 } from "./SharedStyledComponents";
 import FolderAddIcon from "../../assets/folder/img_folderAdd.svg";
 import LinkAddIcon from "../../assets/shared/img_linkAdd.svg";
+import ShareIcon from "../../assets/shared/img_shareIcon.svg";
+import EditIcon from "../../assets/shared/img_editIcon.svg";
+import DeleteIcon from "../../assets/shared/img_deleteIcon.svg";
+
+const LinkToolArr = [
+  {
+    src: ShareIcon,
+    title: "공유",
+  },
+  {
+    src: EditIcon,
+    title: "이름 변경",
+  },
+  {
+    src: DeleteIcon,
+    title: "삭제",
+  },
+];
 
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
   const [folderData, setFolderData] = useState([]);
-  const [isSelectedFolder, setIsSelectedFolder] = useState(1);
+  const [isSelectedFolder, setIsSelectedFolder] = useState({
+    id: 1,
+    title: "전체",
+  });
 
   const [isFolderLoading, isFolderError, getFolderAsync] = useAsync(getFolder);
   const [isLinkLoading, isLinkError, getLinksAsync] = useAsync(getLinks);
@@ -39,7 +62,7 @@ const Folder = () => {
   }, [handleFolder]);
 
   const handleLinks = useCallback(async () => {
-    const result = await getLinksAsync(isSelectedFolder);
+    const result = await getLinksAsync(isSelectedFolder.id);
     if (!result) return;
 
     const { data } = result;
@@ -88,23 +111,35 @@ const Folder = () => {
               <FolderContainer>
                 <div className="folderBtnContainer">
                   <FolderBtnItemContainer
-                    isSelected={isSelectedFolder === 1}
-                    onClick={() => setIsSelectedFolder(1)}
+                    isSelected={isSelectedFolder.id === 1}
+                    onClick={() =>
+                      setIsSelectedFolder({
+                        id: 1,
+                        title: "전체",
+                      })
+                    }
                   >
                     전체
                   </FolderBtnItemContainer>
+
                   {folderData?.map((e) => {
                     return (
                       <FolderBtnItemContainer
                         key={e.id}
                         isSelected={e.id === isSelectedFolder}
-                        onClick={() => setIsSelectedFolder(e.id)}
+                        onClick={() =>
+                          setIsSelectedFolder({
+                            id: e.id,
+                            title: e.name,
+                          })
+                        }
                       >
                         {e.name}
                       </FolderBtnItemContainer>
                     );
                   })}
                 </div>
+
                 <div className="folderAddBtnContainer">
                   <div className="folderAddTitle">폴더 추가</div>
                   <img
@@ -114,6 +149,21 @@ const Folder = () => {
                   />
                 </div>
               </FolderContainer>
+              <LinkHeaderContainer>
+                <div className="linkTitle">{isSelectedFolder.title}</div>
+
+                <LinkToolContainer>
+                  {LinkToolArr.map((e, index) => {
+                    return (
+                      <div className="linkToolItemContainer" key={index}>
+                        <img src={e.src} alt={e.title} />
+                        <div className="linkToolTitle">{e.title}</div>
+                      </div>
+                    );
+                  })}
+                </LinkToolContainer>
+              </LinkHeaderContainer>
+
               <CardContainer>
                 {cardData?.map((e) => {
                   return <Card key={e.id} cardData={e} />;

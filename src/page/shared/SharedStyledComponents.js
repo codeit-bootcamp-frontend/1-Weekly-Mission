@@ -180,6 +180,43 @@ export const FolderBtnItemContainer = styled.div`
   font-weight: 400;
 `;
 
+export const LinkHeaderContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  .linkTitle {
+    color: #000;
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+`;
+
+export const LinkToolContainer = styled.div`
+  display: flex;
+  gap: 1.2rem;
+
+  .linkToolItemContainer {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+
+    .linkToolTitle {
+      color: var(--gray60);
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+  }
+`;
+
 export const CardContainer = styled.div`
   gap: 4rem;
   display: grid;
