@@ -1,7 +1,7 @@
 import Main from '../Main/Main';
 import SearchForm from '../Search/SearchForm';
 import FolderCategory from './FolderCategory';
-import FolderCategoryPage from './FolderCategoryPage';
+import FolderCategoryControl from './FolderCategoryControl';
 import { useCallback, useEffect, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
 import { getFolders } from '../../api/api';
@@ -35,7 +35,7 @@ function FolderMain() {
     <Main>
       <SearchForm />
       <FolderCategory categories={categories} loadingError={foldersLoadingError}/>
-      <FolderCategoryPage />
+      <FolderCategoryControl />
     </Main>
   );
 }

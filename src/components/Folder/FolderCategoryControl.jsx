@@ -1,17 +1,17 @@
 import CategoryTitleContainer from './CategoryTitleContainer';
 import styled from 'styled-components';
 
-function FolderCategoryPage() {
+function FolderCategoryControl() {
   return (
-    <FolderCategoryPageStyle>
+    <FolderCategoryControlStyle>
       <CategoryTitleContainer />
-    </FolderCategoryPageStyle>
+    </FolderCategoryControlStyle>
   );
 }
 
-export default FolderCategoryPage;
+export default FolderCategoryControl;
 
-const FolderCategoryPageStyle = styled.div`
+const FolderCategoryControlStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
