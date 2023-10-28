@@ -11,7 +11,6 @@ import LinkSearchBarComponent from "components/linkSearchBar/LinkSearchBar.jsx";
 import { Outlet } from "react-router-dom";
 
 export default function FolderPage() {
-  const [selectedFolder, setSelectedFolder] = useState(null);
   const [folderList, setFolderList] = useState([]);
   const [isLoadingFolderList, loadingErrorFolderList, getUserFolderListAsync] =
     useAsync(getUserFolderList);
@@ -21,7 +20,6 @@ export default function FolderPage() {
 
     if (!folderList) return;
     setFolderList(folderList);
-    setSelectedFolder(folderList[0]);
   };
 
   useEffect(() => {
