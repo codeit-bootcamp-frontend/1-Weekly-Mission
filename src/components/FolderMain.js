@@ -42,6 +42,10 @@ const Title = styled.div`
     font-weight: 600;
     letter-spacing: -0.02rem;
   }
+
+  @media (max-width: 1124px) {
+    width: calc(100vw - 6.4rem);
+  }
 `
 
 const Options = styled.div`

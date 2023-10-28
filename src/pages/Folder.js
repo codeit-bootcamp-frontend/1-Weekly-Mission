@@ -25,6 +25,13 @@ const Folder = () => {
     align-items: space-around;
     gap: 0.8rem;
     background: var(--gray0);
+
+    @media (max-width: 1124px) {
+      padding: 6rem 20rem 9rem 20rem;
+    }
+    @media (max-width: 779px) {
+      padding: 6rem 3.25rem 9rem 3.25rem;
+    }
   `
 
   useEffect(() => {

@@ -8,18 +8,27 @@ const SortingContainer = styled.div`
   width: 106rem;
   justify-content: space-between;
   align-items: center;
+
+
+  @media (max-width: 1124px) {
+    width: calc(100vw - 6.4rem);
+    align-items: flex-start
+  }
 `
 
 const ButtonContainer = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 0.8rem;
+  flex-wrap: wrap;
 `
 
 const FolderAdd = styled.div`
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  padding: 0.8rem 1.2rem;
+  flex-shrink: 0;
 
   p{
     color: var(--primary);
