@@ -1,32 +1,31 @@
-import './css/Card.css';
-import noImage from './img/no-image.svg';
-import { dateCalculator } from './dateCalculator';
 import { Link } from 'react-router-dom';
+import { dateCalculator } from './dateCalculator';
+import noImage from './img/no-image.svg';
 
-export default function Card(item) {
-  const apiDate = new Date(item.item.createdAt);
+export default function FolderCard(link) {
+  const apiDate = new Date(link.item.created_at);
   const elapsedTime = dateCalculator(apiDate);
   const year = apiDate.getFullYear();
   const month = apiDate.getMonth() + 1;
   const days = apiDate.getDate();
 
-  if (item.item.imageSource === undefined) {
-    item.item.imageSource = noImage;
+  if (link.item.image_source === undefined || link.item.image_source === null) {
+    link.item.image_source = noImage;
   }
 
   return (
-    <Link to={item.item.url} className="card-wrapper" target="_blank">
+    <Link to={link.item.url} className="card-wrapper" target="_blank">
       <div className="card-box">
         <div className="card-img-div">
           <img
             className="card-img"
-            src={item.item.imageSource}
-            alt={item.item.title}
+            src={link.item.image_source}
+            alt={link.item.title}
           />
         </div>
         <div className="card-text">
           <div className="card-time-ago">{elapsedTime}</div>
-          <div className="text-description">{item.item.description}</div>
+          <div className="text-description">{link.item.description}</div>
           <div className="card-year">{`${year}. ${month}. ${days}`}</div>
         </div>
       </div>

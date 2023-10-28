@@ -1,14 +1,19 @@
 import Nav from './Nav';
 import Footer from './Footer';
-import SharedPage from './SharedPage';
-import Header from './Header';
+import { createGlobalStyle } from 'styled-components';
 
-export default function App() {
+const GlobalStyle = createGlobalStyle`
+* {
+  font-family: Pretendard, sans-serif;
+}
+`;
+
+export default function App({ children }) {
   return (
     <>
+      <GlobalStyle />
       <Nav />
-      <Header />
-      <SharedPage />
+      {children && <div>{children}</div>}
       <Footer />
     </>
   );

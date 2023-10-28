@@ -3,7 +3,7 @@ import { getSampleFolderDatas } from '../api';
 import './css/Nav.css';
 import { useCallback, useState, useEffect } from 'react';
 
-export default function Header() {
+export default function SharedHeader() {
   const [user, setUser] = useState([]);
 
   const handleLoad = useCallback(async () => {

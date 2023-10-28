@@ -13,10 +13,6 @@ body {
   padding: 33px 200px;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
 }
 @media (max-width: 1124px) {
   .nav1-wrapper {
@@ -41,6 +37,7 @@ body {
   display: flex;
 }
 .nav-login {
+  cursor: pointer;
   color: #f5f5f5;
   font-family: Pretendard;
   font-size: 18px;
@@ -74,7 +71,6 @@ body {
   padding: 20px 0 60px 0;
   align-items: center;
   gap: 20px;
-  padding-top: 119px;
 }
 .nav2-smileImg {
   height: 60px;
