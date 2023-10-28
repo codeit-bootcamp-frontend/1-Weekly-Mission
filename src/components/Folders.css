@@ -1,0 +1,33 @@
+.folders {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-width: 1060px;
+}
+
+.folder-box {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.add-folder {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--linkbrary-primary-color);
+}
+
+button {
+  background-color: var(--linkbrary-white);
+  color: "black";
+  border: 1px solid var(--linkbrary-primary-color);
+  border-radius: 5px;
+  line-height: 100%;
+  display: flex;
+  padding: 8px 12px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
