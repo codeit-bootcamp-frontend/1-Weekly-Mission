@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatDate, prettyFormatTimeDiff } from "../util/useDate";
+import { formatDate, prettyFormatTimeDiff } from "../util/dateUtil";
 import kebabImg from "../assets/img/kebab.png";
 import noImg from "../assets/img/no-image.svg";
 import style from "./Card.module.css";
