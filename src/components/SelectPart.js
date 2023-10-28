@@ -7,10 +7,10 @@ import SelectItem from "./SelectItem";
 import { useRef, useState } from "react";
 
 function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
-  const [activeBtn, setActiveBtn] = useState(false);
+  const [activeAllBtn, setActiveAllBtn] = useState(false);
 
   const toggleActive = () => {
-    setActiveBtn((prev) => {
+    setActiveAllBtn((prev) => {
       return !prev;
     });
   };
@@ -33,7 +33,7 @@ function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
           <button
             ref={buttonRef}
             onClick={onClick}
-            className={"SelectItem" + (activeBtn ? " active" : "")}
+            className={"SelectItem" + (activeAllBtn ? " active" : "")}
           >
             전체
           </button>
