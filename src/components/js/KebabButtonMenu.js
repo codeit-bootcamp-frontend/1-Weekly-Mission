@@ -25,8 +25,8 @@ const KebabMenu = styled.div`
   color: #000;
 
   &:hover {
-    background-color: #e7effb;
-    color: #6d6afe;
+    background-color: var(--gray10);
+    color: var(--primary);
     pointer-events: auto;
   }
 `;

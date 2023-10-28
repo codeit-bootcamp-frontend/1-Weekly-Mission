@@ -7,7 +7,13 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+`;
+
+const BlankBox = styled.div`
+  width: 100%;
+  height: auto;
+  flex-grow: 1;
 `;
 
 function NavAndFooterBasic({ children }) {
@@ -15,6 +21,7 @@ function NavAndFooterBasic({ children }) {
     <Wrapper>
       <BasicHeader />
       {children}
+      <BlankBox />
       <Footer />
     </Wrapper>
   );

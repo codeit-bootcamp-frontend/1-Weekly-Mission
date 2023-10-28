@@ -15,7 +15,7 @@ function CardItem({ item, key }) {
 
   return (
     <a href={item.url}>
-      <div key={key} className="card">
+      <div key={item.id} className="card">
         <div className="card-img-wrap">
           {!item.imageSource ? (
             <img className="logoImg" src={noImage} alt={noImage} />

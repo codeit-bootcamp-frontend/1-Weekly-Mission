@@ -49,7 +49,7 @@ const Icon = styled.img`
 `;
 
 const AddFolderButton = styled.span`
-  color: #6d6afe;
+  color: var(--primary);
   text-align: center;
   font-family: Pretendard;
   font-size: 16px;
@@ -68,7 +68,7 @@ const FeatureContainer = styled.div`
   gap: 4px;
   font-size: 14px;
   font-weight: 600;
-  color: #9fa6b2;
+  color: var(--gray60);
 
   @media (max-width: 767px) {
     margin-left: 0;
@@ -88,13 +88,16 @@ const FEATURE_LIST = [
 ];
 
 function FolderMenu({ folders, onClick, current, folderName }) {
-
   const items = Array.isArray(folders) ? folders : [];
   return (
     <>
       <Wrapper>
         <MenuList>
-          <FolderMenuButton id={""} onClick={onClick} isActive={current === ""}>
+          <FolderMenuButton
+            id={""}
+            onClick={onClick}
+            $isActive={current === ""}
+          >
             전체
           </FolderMenuButton>
           {items.map((folder) => {
@@ -105,7 +108,7 @@ function FolderMenu({ folders, onClick, current, folderName }) {
                   id={folder.id}
                   name={folder.name}
                   onClick={onClick}
-                  isActive={id === current}
+                  $isActive={id === current}
                 >
                   {folder.name}
                 </FolderMenuButton>
@@ -126,7 +129,7 @@ function FolderMenu({ folders, onClick, current, folderName }) {
           <Container>
             {FEATURE_LIST.map((item) => {
               return (
-                <FeatureContainer>
+                <FeatureContainer key={item.name}>
                   {item.name}
                   <FeatureIcon src={item.src} alt={item.alt} />
                 </FeatureContainer>

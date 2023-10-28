@@ -7,10 +7,10 @@ const StyledButton = styled.button`
   width: 80px;
   padding: 10px 16px;
   border-radius: 8px;
-  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  background: var(--gradient-blue);
   border: none;
   font-size: 14px;
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
   cursor: pointer;
 `;

@@ -16,15 +16,16 @@ const StyledFloatButton = styled.button`
   bottom: 101px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #6d6afe;
+  background-color: var(--primary);
   border: none;
   border-radius: 20px;
   font-size: 1.6rem;
   font-weight: 500;
-  color: #fff;
+  color: var(--white);
   letter-spacing: -0.3px;
   display: none;
   z-index: 3;
+
   @media screen and (max-width: 767px) {
     display: block;
   }

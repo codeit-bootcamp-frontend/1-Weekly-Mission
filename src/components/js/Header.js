@@ -4,7 +4,7 @@ import Nav from "./Nav";
 const StyledHeader = styled.div`
   width: 100%;
   height: 93px;
-  background-color: #f0f6ff;
+  background-color: var(--bg);
   margin: 0 auto;
   @media screen and (max-width: 767px) {
     .Header_wrapper {

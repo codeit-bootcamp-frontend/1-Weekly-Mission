@@ -7,6 +7,7 @@ import kebabIcon from "../../Assets/kebab.svg";
 import KebabButtonMenu from "./KebabButtonMenu";
 import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
+import { Link } from "react-router-dom";
 
 const CardLink = styled.div`
   cursor: pointer;
@@ -30,7 +31,7 @@ const KebabButton = styled.img`
 `;
 
 /* 각 카드 컴포넌트 */
-function CardItem({ item, key }) {
+function CardItem({ item }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleToggleMenu = (e) => {
@@ -52,8 +53,8 @@ function CardItem({ item, key }) {
   const createdDate = item.created_at.split("T")[0].split("-").join(".");
 
   return (
-    <CardLink url={item.url} onClick={handleCardClick}>
-      <div key={key} className="card">
+    <CardLink $url={item.url} onClick={handleCardClick}>
+      <div className="card">
         <BookmarkButton src={starIcon} alt="bookmark_icon" />
         {isMenuOpen && <KebabButtonMenu />}
         <div className="card-img-wrap">

@@ -6,5 +6,5 @@ export const Wrapper = styled.div`
 `;
 
 export const BlueWrapper = styled(Wrapper)`
-  background-color: #f0f6ff;
+  background-color: var(--bg);
 `;

@@ -17,7 +17,7 @@ import LinksNotExist from "../components/js/LinksNotExist";
 const Wrapper = styled.div`
   width: 1060px;
   height: auto;
-  margin: auto;
+  margin: 0 auto;
 
   @media (max-width: 1199px) and (min-width: 768px) {
     width: 704px;
@@ -82,7 +82,11 @@ function Folder() {
             current={currentFolderId}
             onClick={handleClickMenuButton}
           />
-          {folderLinks.length ? <CardListFolder folderLinks={folderLinks} /> : <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>}
+          {folderLinks.length ? (
+            <CardListFolder folderLinks={folderLinks} />
+          ) : (
+            <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
+          )}
         </Wrapper>
       ) : (
         <Wrapper>

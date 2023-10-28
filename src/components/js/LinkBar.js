@@ -16,11 +16,12 @@ const Wrapper = styled(BlueWrapper)`
 `;
 
 const Form = styled.form`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 800px;
   margin: 0 auto;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
   padding: 16px 20px;
   border-radius: 15px;
   border: 1px solid #6d6afe;
@@ -39,8 +40,8 @@ const Form = styled.form`
 const LinkAddInput = styled.input`
   font-size: 1.6rem;
   border: none;
-  flex: 1;
-  height: 37px;
+  overflow: hidden;
+  flex-grow: 1;
 
   &::placeholder {
     color: #9fa6b2;
@@ -50,7 +51,6 @@ const LinkAddInput = styled.input`
     outline: none;
   }
 `;
-
 
 const Icon = styled.img`
   width: 20px;
