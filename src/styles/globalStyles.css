@@ -9,12 +9,13 @@
   --color-gray: #6b6b6b;
   --color-gray-10: #e7effb;
   --color-gray-20: #ccd5e3;
+  --color-gray-30: #333236;
 
   /* App Colors */
   --color-primary: var(--color-purple);
   --color-primary-varient: var(--color-light-gray);
   --color-primary-bg: var(--color-light-gray);
-  --color-text: var(--color-gray);
+  --color-text: var(--color-gray-30);
 
   /* Button Gradient */
   --gra-purpleblue-to-skyblue: linear-gradient(

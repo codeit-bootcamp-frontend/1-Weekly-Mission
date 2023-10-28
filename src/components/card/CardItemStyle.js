@@ -66,6 +66,7 @@ export const CardInfo = styled.div`
 `;
 
 export const Info = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin: 0;
