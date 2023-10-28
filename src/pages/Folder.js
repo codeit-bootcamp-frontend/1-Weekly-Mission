@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import NavAndFooterBasic from "../components/js/NavAndFooterBasic";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import {
   getEachFolder,
   getFolderInformations,
@@ -70,30 +71,35 @@ function Folder() {
   }, [currentFolderId]);
 
   return (
-    <NavAndFooterBasic>
-      <FloatButton>폴더 추가</FloatButton>
-      <LinkBar />
-      {personalFolder.length !== 0 ? (
-        <Wrapper>
-          <Search />
-          <FolderMenu
-            folderName={folderName}
-            folders={personalFolder}
-            current={currentFolderId}
-            onClick={handleClickMenuButton}
-          />
-          {folderLinks.length ? (
-            <CardListFolder folderLinks={folderLinks} />
-          ) : (
+    <>
+      <Helmet>
+        <title>Linkbrary_Folder</title>
+      </Helmet>
+      <NavAndFooterBasic>
+        <FloatButton>폴더 추가</FloatButton>
+        <LinkBar />
+        {personalFolder.length !== 0 ? (
+          <Wrapper>
+            <Search />
+            <FolderMenu
+              folderName={folderName}
+              folders={personalFolder}
+              current={currentFolderId}
+              onClick={handleClickMenuButton}
+            />
+            {folderLinks.length ? (
+              <CardListFolder folderLinks={folderLinks} />
+            ) : (
+              <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
+            )}
+          </Wrapper>
+        ) : (
+          <Wrapper>
             <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
-          )}
-        </Wrapper>
-      ) : (
-        <Wrapper>
-          <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
-        </Wrapper>
-      )}
-    </NavAndFooterBasic>
+          </Wrapper>
+        )}
+      </NavAndFooterBasic>
+    </>
   );
 }
 

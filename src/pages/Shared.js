@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { getFolder } from "../api/apiUrl";
 import NavAndFooterFixed from "../components/js/NavAndFooterFixed";
 import useAsync from "../hooks/useAsync";
@@ -23,20 +24,25 @@ function Shared() {
   }, []);
 
   return (
-    <NavAndFooterFixed>
-      <FolderOwner
-        owner={personalFolder.owner}
-        folderName={personalFolder.name}
-      />
-      <div>
-        <Search />
-        {loadingError ? (
-          loadingError.message
-        ) : (
-          <CardList folderLinks={personalFolder.links} />
-        )}
-      </div>
-    </NavAndFooterFixed>
+    <>
+      <Helmet>
+        <title>Linkbrary_Shared</title>
+      </Helmet>
+      <NavAndFooterFixed>
+        <FolderOwner
+          owner={personalFolder.owner}
+          folderName={personalFolder.name}
+        />
+        <div>
+          <Search />
+          {loadingError ? (
+            loadingError.message
+          ) : (
+            <CardList folderLinks={personalFolder.links} />
+          )}
+        </div>
+      </NavAndFooterFixed>
+    </>
   );
 }
 
