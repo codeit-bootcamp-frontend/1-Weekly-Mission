@@ -21,8 +21,6 @@ export const SectionContainer = styled.section`
 
 const CardList = ( {folderCards} ) => {
 
-  console.log(folderCards.length)
-
   return (
     <SectionContainer>
       {folderCards.length > 0 ? 

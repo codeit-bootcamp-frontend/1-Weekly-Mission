@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import { FolderProvider  }  from '../context/FolderContext';
 
 const Folder = () => {
+  // 1번 유저로 로그인된 상태로 가정 
   const [userId, setUserId] = useState(1);
 
   const account = useGetAccount(userId);
