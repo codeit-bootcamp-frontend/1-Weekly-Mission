@@ -1,7 +1,21 @@
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
+import { useCallback, useState } from 'react';
+import { getFolderCards } from '../api/api';
+import useAsync from '../hooks/useAsync';
 
 function Folder() {
+  const [cards, setCards] = useState([]);
+  const [isLoading, loadingError, getFolderCardsAsync] = useAsync(getFolderCards);
+
+  const handleLoad = useCallback(async () => {
+    const result = await getFolderCards();
+    if (!result) {
+      return;
+    }
+    setCards(result.data);
+  }, [getFolderCardsAsync]);
+
   return (
     <Container>
       <SearchBar />

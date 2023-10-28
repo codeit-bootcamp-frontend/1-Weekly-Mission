@@ -1,4 +1,3 @@
-import Footer from '../components/Footer';
 import AddLink from '../components/AddLink';
 import styled from 'styled-components';
 import Folder from '../components/Folder';

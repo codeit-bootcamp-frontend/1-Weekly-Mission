@@ -15,3 +15,11 @@ export async function getUserProfile() {
   }
   return await response.json();
 }
+
+export async function getFolderCards() {
+  const response = await fetch(`${BASE_URL}/users/1/folders`);
+  if (!response.ok) {
+    throw new Error('Folder Cards Error');
+  }
+  return await response.json();
+}
