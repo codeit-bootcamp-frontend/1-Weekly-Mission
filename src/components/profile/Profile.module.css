@@ -1,14 +1,18 @@
 .container {
   display: flex;
   align-items: center;
-}
 
-.user-email {
   display: none;
-
+  /* tablet */
   @media (min-width: 768px) {
     display: inline-block;
   }
+
+  /* table2 */
+  @media (min-width: 1124px) {
+    display: inline-block;
+  }
+
   /* descktop*/
   @media (min-width: 1200px) {
     display: inline-block;

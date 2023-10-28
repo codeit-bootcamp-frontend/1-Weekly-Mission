@@ -4,11 +4,13 @@ import Header from "../components/header/Header";
 import SearchBar from "../components/searchBar/SearchBar";
 import Menubar from "../components/menuBar/Menubar";
 import WholeData from "../components/linksdata/WholeData";
+import Footer from "../components/footer/Footer";
 
 import useFetch from "../hooks/useFetch";
 import Landing from "../components/landing/Landing";
 import LocaleContext from "../contexts/LocaleContext";
 import { useParams } from "react-router-dom";
+import Article from "../components/article/Article";
 
 export default function FolderPage() {
   const [data, isLoading] = useFetch(
@@ -43,8 +45,9 @@ export default function FolderPage() {
         <SearchBar />
         <Menubar data={data} isLoading={isLoading} />
         {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
-
+        <Article />
         <WholeData />
+        <Footer />
       </div>
     </LocaleContext.Provider>
   );

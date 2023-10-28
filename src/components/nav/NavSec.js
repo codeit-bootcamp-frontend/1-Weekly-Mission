@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as Person } from "../../assets/images/person.svg";
@@ -7,7 +7,6 @@ import { ReactComponent as Login } from "../../assets/images/login.svg";
 import styles from "./Nav.module.css";
 import useUserFetch from "../../hooks/useUserFetch";
 import Profile from "../profile/Profile";
-import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 
 export default function NavSec() {

@@ -19,7 +19,6 @@ export default function WholeData() {
   );
 
   const result = linkData?.data;
-  console.log(result);
 
   return (
     <ul>

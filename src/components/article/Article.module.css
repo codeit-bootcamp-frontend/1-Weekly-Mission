@@ -1,0 +1,23 @@
+.container {
+  border: 5px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 40rem);
+  margin: 0 auto;
+  padding: 3rem;
+
+  @media (min-width: 768px) and (max-width: 1123px) {
+    /* width: 100%; */
+  }
+
+  /* tablet2 */
+  @media (min-width: 1124px) {
+    /* width: 100%; */
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    /* width: 80%; */
+  }
+}

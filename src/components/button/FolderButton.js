@@ -21,7 +21,16 @@ export default function FolderButton({ data, dataKeys, onClickFunc }) {
         </Button>
         {data &&
           data.map((item) => {
+            // console.log(item) 타이이밍이 이상한데?
+            console.log(item);
             return dataKeys.map((key) => {
+              if (key === 168) {
+                item[key].folderName = "코딩 팁";
+              }
+              if (key === 24) {
+                return;
+              }
+
               return (
                 <Button
                   name={key}
