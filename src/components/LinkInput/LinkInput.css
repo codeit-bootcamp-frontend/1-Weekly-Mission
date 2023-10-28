@@ -31,6 +31,10 @@
   border: none;
 }
 
+.folder-add svg path {
+  --folder-add-fill-color: var(--color-primary);
+}
+
 /* Tablet (764px ~ 1123px) */
 @media (min-width: 764px) and (max-width: 1123px) {
   .link-add-form div {
@@ -42,5 +46,9 @@
 @media (max-width: 764px) {
   .link-add-form div {
     max-width: 325px;
+  }
+
+  .folder-add svg path {
+    --folder-add-fill-color: var(--color-white);
   }
 }
