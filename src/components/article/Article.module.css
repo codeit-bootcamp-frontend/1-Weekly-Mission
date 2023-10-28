@@ -8,7 +8,6 @@
 
   @media (min-width: 768px) {
     width: calc(100% - 20rem);
-    border: 5px solid blue;
   }
 
   /* tablet2 */
@@ -26,6 +25,19 @@
 .title {
   font-size: 2rem;
   font-weight: 600;
+  @media (min-width: 768px) {
+    display: block;
+  }
+
+  /* tablet2 */
+  @media (min-width: 1124px) {
+    display: none;
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    display: block;
+  }
 }
 
 .images__container {
@@ -34,7 +46,6 @@
 
   /* tablet2 */
   @media (min-width: 1124px) {
-    /* width: 100%; */
   }
 
   /* descktop*/

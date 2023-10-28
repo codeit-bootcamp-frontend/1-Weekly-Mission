@@ -4,6 +4,9 @@
   row-gap: 5rem;
   padding: 0 3.2rem;
   margin-top: 1rem;
+  /* place-items: center; */
+  justify-content: center;
+  align-items: center;
   place-items: center;
   /* tablet1 */
   @media (min-width: 768px) {
@@ -15,8 +18,6 @@
   /* tablet2 */
   @media (min-width: 1124px) {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 3.2rem;
-    column-gap: 2.5rem;
   }
 
   /* descktop*/
