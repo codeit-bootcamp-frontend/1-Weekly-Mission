@@ -1,15 +1,26 @@
 // import Shared from "./page/shared/Shared";
-import Header from "./components/common/Header";
-import Footer from "./components/common/Footer";
-import Folder from "./page/folder/Folder";
+import React, { Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+const loading = <div>화면을 불러오는 중 입니다.</div>;
+
+const Page404 = React.lazy(() => import("./page/error/Page404"));
+const Page500 = React.lazy(() => import("./page/error/Page4500"));
+const DefaultLayout = React.lazy(() =>
+  import("./components/common/DefaultLayout")
+);
 
 function App() {
   return (
-    <>
-      <Header />
-      <Folder />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Suspense fallback={loading}>
+        <Routes>
+          <Route path="/404" element={<Page404 />} />
+          <Route path="/500" element={<Page500 />} />
+          <Route path="/*" element={<DefaultLayout />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
