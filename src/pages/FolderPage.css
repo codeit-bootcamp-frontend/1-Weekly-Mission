@@ -1,3 +1,22 @@
+.folder-name-title {
+  margin: 0 0 0 10rem;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 5px;
+  color: #000;
+
+  /* Linkbrary/h3-semibold */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
 .folder-section {
   padding: 0;
   margin: 0;

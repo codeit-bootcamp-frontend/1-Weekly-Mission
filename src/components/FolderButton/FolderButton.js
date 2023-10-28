@@ -1,9 +1,17 @@
 import "./FolderButton.style.css";
 
-function FolderButton({ children }) {
+function FolderButton({ onChange, value }) {
+  const handleButtonClick = (e) => {
+    onChange(value);
+  };
+
   return (
-    <button type="button" className="folder-name-button">
-      {children ? children : "이름 없음"}
+    <button
+      type="button"
+      onClick={handleButtonClick}
+      className="folder-name-button"
+    >
+      {value}
     </button>
   );
 }

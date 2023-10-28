@@ -11,12 +11,16 @@ import "./FolderPage.css";
 function FolderPage() {
   const [isFolderLoading, folderLoadingError, getFolderAsync] =
     useAsync(getFolder);
-
+  const [folderName, setFolderName] = useState("전체");
   const [cardList, setCardList] = useState([]);
 
   const loadUser = async () => {
     const folderResult = await getFolderAsync();
     setCardList(folderResult?.folder?.links);
+  };
+
+  const handleFolderName = (str) => {
+    setFolderName(str);
   };
 
   useEffect(() => {
@@ -33,13 +37,14 @@ function FolderPage() {
           <SearchBar />
         </div>
         <div className="folder-buttons">
-          <FolderButton>전체</FolderButton>
-          <FolderButton>⭐️즐겨찾기</FolderButton>
-          <FolderButton>코딩 팁</FolderButton>
-          <FolderButton>채용 사이트</FolderButton>
-          <FolderButton>유용한 글</FolderButton>
-          <FolderButton>나만의 장소</FolderButton>
+          <FolderButton onChange={handleFolderName} value="전체" />
+          <FolderButton onChange={handleFolderName} value="⭐️즐겨찾기" />
+          <FolderButton onChange={handleFolderName} value="코딩 팁" />
+          <FolderButton onChange={handleFolderName} value="채용 사이트" />
+          <FolderButton onChange={handleFolderName} value="유용한 글" />
+          <FolderButton onChange={handleFolderName} value="나만의 장소" />
         </div>
+        <h1 className="folder-name-title">{folderName}</h1>
         <div className="card-section">
           {isFolderLoading && <p> 유저 정보를 받아오는 중...</p>}
           {folderLoadingError?.message && (
