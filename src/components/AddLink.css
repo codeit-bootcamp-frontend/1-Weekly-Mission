@@ -35,3 +35,18 @@
   background: var(--gra-purpleblue-to-skyblue);
   white-space: nowrap;
 }
+
+/* tablet Size */
+@media (min-width: 768px) and (max-width: 1124px) {
+  .link-add {
+    min-width: 66rem;
+  }
+}
+
+/* mobile Size */
+@media (max-width: 767px) {
+  .link-add {
+    min-width: 32.5rem;
+    min-height: 5.3rem;
+  }
+}

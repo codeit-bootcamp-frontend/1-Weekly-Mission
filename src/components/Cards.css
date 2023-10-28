@@ -32,7 +32,8 @@
 
 .card-info {
   display: flex;
-  width: 34rem;
+  min-width: 34rem;
+  min-height: 100%;
   padding: 15px 20px;
   flex-direction: column;
   gap: 10px;
@@ -70,6 +71,6 @@
 /* mobile Size */
 @media (max-width: 767px) {
   .card-info {
-    width: 32rem;
+    min-width: 32rem;
   }
 }

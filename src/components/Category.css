@@ -1,0 +1,17 @@
+.category-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-item-box {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+/* mobile Size */
+@media (max-width: 767px) {
+  /*반응형*/
+}

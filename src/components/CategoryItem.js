@@ -1,22 +1,12 @@
-// import { useState, useEffect } from "react";
+import "./CategoryItem.css";
 
 function CategoryItem({ data, handleClick }) {
-  // const [folderId, setFolderId] = useState([]);
-  // const [folderName, setFolderName] = useState([]);
-
-  // const folderIdArr = folderInfo.map((item) => item.id);
-  // const folderNameArr = folderInfo.map((item) => item.name);
-
-  // useEffect(() => {
-  //   setFolderId(folderIdArr);
-  //   setFolderName(folderNameArr);
-  // }, []);
-
-  // console.log(folderInfo);
-  const handleCategoryClick = () => handleClick(data.id);
+  function handleCategoryClick() {
+    handleClick(data.id, data.name);
+  }
 
   return (
-    <li onClick={handleCategoryClick}>
+    <li className="category-item" onClick={handleCategoryClick}>
       <a>{data.name}</a>
     </li>
   );

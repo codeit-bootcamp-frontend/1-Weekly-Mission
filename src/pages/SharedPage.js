@@ -5,7 +5,7 @@ import { getUserFolder } from "../utils/api";
 import { useEffect, useState } from "react";
 import FolderInfo from "../components/FolderInfo";
 
-function Shared() {
+function SharedPage() {
   const [state, setState] = useState([]);
   const [folderInfo, setFolderInfo] = useState(null);
 
@@ -37,4 +37,4 @@ function Shared() {
   );
 }
 
-export default Shared;
+export default SharedPage;

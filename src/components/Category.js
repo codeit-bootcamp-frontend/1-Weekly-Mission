@@ -1,26 +1,33 @@
-import { useState, useEffect } from "react";
-import { getFolderLinks, getFolderCategory } from "../utils/api";
 import CategoryItem from "./CategoryItem";
+import FolderAddBtn from "./FolderAddBtn";
+import "./Category.css";
+import ShowFolderName from "./ShowFolderName";
+import { useEffect, useState } from "react";
 
 function Category({ folderData, handleClick }) {
-  const temp = { id: "", name: "전체" };
-  return (
-    <div>
-      <ul>
-        <CategoryItem data={temp} handleClick={handleClick} />
+  const MAIN_CATEGORY = { id: "", name: "전체" };
 
-        {folderData?.length &&
-          folderData.map((item) => {
-            return (
-              <CategoryItem
-                data={item}
-                key={item.id}
-                handleClick={handleClick}
-              />
-            );
-          })}
+  return (
+    <nav className="category-nav">
+      <ul className="category-box">
+        <div className="category-item-box">
+          <CategoryItem data={MAIN_CATEGORY} handleClick={handleClick} />
+
+          {folderData?.length &&
+            folderData.map((item) => {
+              return (
+                <CategoryItem
+                  data={item}
+                  key={item.id}
+                  handleClick={handleClick}
+                />
+              );
+            })}
+        </div>
+
+        <FolderAddBtn />
       </ul>
-    </div>
+    </nav>
   );
 }
 // TODO : fetch(폴더 데이터)

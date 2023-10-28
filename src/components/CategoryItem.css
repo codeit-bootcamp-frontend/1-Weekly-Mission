@@ -1,0 +1,17 @@
+.category-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  font-size: 16px;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.category-item:hover,
+.category-item.active {
+  background: var(--primary);
+  color: white;
+}
