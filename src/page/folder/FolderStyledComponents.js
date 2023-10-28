@@ -58,11 +58,14 @@ export const FolderContentContainer = styled(ContentContainer)`
   .noLinkContainer {
     color: #000;
     width: 100%;
-    padding: 4.1rem auto 3.9rem;
+    padding: 4.1rem 0 3.9rem;
     text-align: center;
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 2.4rem;
+    @media all and ${device.mobile} {
+      font-size: 1.4rem;
+    }
   }
 `;
 
@@ -196,6 +199,9 @@ export const FolderContainer = styled.div`
       font-size: 1.6rem;
       font-weight: 500;
       letter-spacing: -0.3px;
+      @media all and ${device.mobile} {
+        font-size: 1.4rem;
+      }
     }
 
     .folderAddIcon {
