@@ -51,11 +51,6 @@ export const MenuContainer = styled.div`
   margin: auto;
 `;
 
-export const ButtonContainer = styled.ul`
-  display: flex;
-  gap: 8px;
-`;
-
 export const AddFolderBtn = styled.div`
   display: flex;
   gap: 4px;

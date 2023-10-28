@@ -40,8 +40,10 @@ export async function getAllFolders(userId) {
   return data;
 }
 
-export async function getAllLinks(userId) {
-  const res = await fetch(`${DOMAIN_URL}/api/users/${userId}/links`, {
+export async function getAllLinks(userId, folderId = "") {
+  const QUERY_STRING = folderId ? `?folderId=${folderId}` : "";
+
+  const res = await fetch(`${DOMAIN_URL}/api/users/${userId}/links${QUERY_STRING}`, {
     headers,
   });
 

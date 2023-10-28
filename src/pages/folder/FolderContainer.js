@@ -9,30 +9,45 @@ import CardList from "components/card/CardList";
 import Loading from "components/loading/Loading";
 import Searchbar from "components/searchbar/Searchbar";
 import FolderHero from "components/hero/HeroAboutFolder";
-import ActiveButton from "components/button/activeButton";
+import Categories from "components/Categories";
+
+const DEFAULT = "전체";
+const USER_ID = 1;
 
 export default function Folder() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
+  const [selected, setSelected] = useState(DEFAULT);
+  const [currentFolderId, setCurrentFolderId] = useState("");
 
   const { isLoading, error, wrappedFunction: getLinksAsyncFunc } = useFetch(getAllLinks);
   // prettier-ignore
   const { isLoading: isLoadingFolder, error: errorFolder, wrappedFunction: getFoldersAsyncFunc} = useFetch(getAllFolders);
 
+  const handleSelectedFolder = (category) => {
+    setSelected(category);
+    changeFolderId(category);
+  };
+
+  const changeFolderId = (category) => {
+    const selectedFolder = folders.find((folder) => folder.name === category);
+    const selectedId = selectedFolder ? selectedFolder.id : "";
+    setCurrentFolderId(selectedId);
+  };
+
   const handleLoadedData = async () => {
-    const { data: linkData } = await getLinksAsyncFunc(1);
-    const { data: folderData } = await getFoldersAsyncFunc(1);
+    const { data: linkData } = await getLinksAsyncFunc(USER_ID, currentFolderId);
+    const { data: folderData } = await getFoldersAsyncFunc(USER_ID);
 
     setLinks(linkData);
     setFolders(folderData);
   };
 
+  const folderNames = folders.map((folder) => folder.name);
+
   useEffect(() => {
     handleLoadedData();
-  }, []);
-
-  console.log(links);
-  console.log(folders);
+  }, [currentFolderId]);
 
   return (
     <main>
@@ -47,11 +62,11 @@ export default function Folder() {
             <style.Contents>
               <Searchbar />
               <style.MenuContainer>
-                <style.ButtonContainer>
-                  {folders?.map((folder) => (
-                    <ActiveButton key={folder.id} label={folder.name} />
-                  ))}
-                </style.ButtonContainer>
+                <Categories
+                  categories={[DEFAULT, ...folderNames]}
+                  selected={selected}
+                  onClick={handleSelectedFolder}
+                />
                 <style.AddFolderBtn>
                   <span>폴더 추가</span>
                   <img src={AddIcon} alt="add" />
