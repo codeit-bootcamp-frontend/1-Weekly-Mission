@@ -8,10 +8,18 @@ import useAsync from "hooks/useAsync.js";
 import { SAMPLE_USER_ID } from "utils/constants.js";
 import addIcon from "assets/icons/add.svg";
 import LinkSearchBarComponent from "components/linkSearchBar/LinkSearchBar.jsx";
-import { Outlet } from "react-router-dom";
+import FolderHeader from "components/folderHeader/FolderHeader.jsx";
+import { Outlet, useParams } from "react-router-dom";
 
 export default function FolderPage() {
   const [folderList, setFolderList] = useState([]);
+
+  const params = useParams();
+  const folderId = params.folderId;
+  const folderTitle = folderList.find(
+    (item) => String(item.id) === folderId
+  )?.name;
+
   const [isLoadingFolderList, loadingErrorFolderList, getUserFolderListAsync] =
     useAsync(getUserFolderList);
 
@@ -41,6 +49,9 @@ export default function FolderPage() {
             <img src={addIcon} alt="폴더 추가 아이콘" />
           </S.FolderAddButton>
         </S.FolderTabListContainer>
+
+        {folderTitle && <FolderHeader folderTitle={folderTitle} />}
+
         <Outlet />
       </S.LinkFolderListContainer>
     </>

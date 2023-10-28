@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-
 import * as S from "./linkSharePage.style.js";
-import LinkCardComponent from "components/linkCard/LinkCard.jsx";
 import { getSampleUserFolder } from "pages/linkShare/linkSharePage.js";
 import LinkSearchBarComponent from "components/linkSearchBar/LinkSearchBar.jsx";
 import useAsync from "hooks/useAsync.js";
-
 import { useUserProfileContext } from "contexts/UserProfileContext";
+import LinkCardList from "components/linkCardList/LinkCardList.jsx";
 
 export default function LinkSharePage() {
   const { userProfile } = useUserProfileContext();
@@ -46,17 +44,9 @@ export default function LinkSharePage() {
 
       <S.FolderContentsContainer>
         <LinkSearchBarComponent />
-        <S.LinkCardListContainer>
-          {folder?.links?.map((cardData) => {
-            return (
-              <LinkCardComponent
-                key={cardData.id}
-                cardData={cardData}
-                isSelected={false}
-              />
-            );
-          })}
-        </S.LinkCardListContainer>
+        {folder?.links && (
+          <LinkCardList linkList={folder.links} page={"linkShare"} />
+        )}
       </S.FolderContentsContainer>
     </>
   );

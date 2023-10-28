@@ -4,8 +4,23 @@ import { NO_SPECIAL_CHA_PATTERN } from "utils/constants.js";
 import getTimeAgo from "utils/getTimeAgo.js";
 import { parseISO, format } from "date-fns";
 
-export default function LinkCardComponent({ cardData }) {
-  const { createdAt, url, description, title, imageSource } = cardData;
+const LINK_ITEM_KEY = {
+  createdAt: {
+    linkShare: "createdAt",
+    folder: "created_at",
+  },
+  imageSource: {
+    linkShare: "imageSource",
+    folder: "image_source",
+  },
+};
+
+export default function LinkCardComponent({ cardData, page }) {
+  const { url, description, title } = cardData;
+  const createAtKey = LINK_ITEM_KEY.createdAt[page];
+  const imageSourceKey = LINK_ITEM_KEY.imageSource[page];
+  const createdAt = cardData[createAtKey];
+  const imageSource = cardData[imageSourceKey];
 
   const imageAlt =
     title?.split(" ")[0].replace(NO_SPECIAL_CHA_PATTERN, "") + " 대표 이미지";
