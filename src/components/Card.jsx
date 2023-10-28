@@ -4,9 +4,9 @@ import '../css/card.css';
 function Card({ item }) {
   return (
     <>
-      <div className="card-wrapper">
+      <div className="card-wrapper" href={item.url} target="_blank" rel="noreferrer noopener">
         <div className="card-image-box">
-          <img className="card-image" src={item.imageSource} alt={item.title} />
+          <img className="card-image" src={item.image_source} alt={item.title} />
           <button className="star-mark-button">
             <img className="star-mark" src="/assets/image/star.png" alt="카드 즐겨찾기 버튼" />
           </button>

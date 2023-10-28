@@ -1,33 +1,39 @@
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
-import { useCallback, useEffect, useState } from 'react';
-import { getFolderCards } from '../api/api';
-import useAsync from '../hooks/useAsync';
 import CardList from './CardList';
+import { useCallback, useEffect, useState } from 'react';
+import useAsync from '../hooks/useAsync';
+import { getCards } from '../api/api';
 
 function Folder() {
-  const [cards, setCards] = useState([]);
-  const [isLoading, loadingError, getFolderCardsAsync] = useAsync(getFolderCards);
+  const [cards, setCards] = useState();
 
-  const handleLoad = useCallback(async () => {
-    const result = await getFolderCards();
+  const [isLoadingCards, loadingCardsError, getCardsAsync] = useAsync(getCards);
+
+  const handleCardLoad = useCallback(async () => {
+    const result = await getCardsAsync();
     if (!result) {
       return;
     }
-    setCards(result.data);
-  }, [getFolderCardsAsync]);
+    const receivedCards = result.data; // 배열로 받음
+    console.log(receivedCards);
+    setCards(receivedCards);
+  }, [getCardsAsync]);
 
   useEffect(() => {
-    handleLoad();
-  }, [handleLoad]);
+    handleCardLoad();
+  }, [handleCardLoad]);
 
   return (
     <Container>
       <SearchBar />
-      <NoSavedLinks>
-        <p>저장된 링크가 없습니다.</p>
-      </NoSavedLinks>
-      <CardList items={cards} />
+      {cards.length !== 0 ? (
+        <CardList cards={cards} />
+      ) : (
+        <NoSavedLinks>
+          <p>저장된 링크가 없습니다.</p>
+        </NoSavedLinks>
+      )}
     </Container>
   );
 }

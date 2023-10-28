@@ -1,11 +1,11 @@
 import Card from './Card';
 import '../css/cardList.css';
 
-function CardList({ items }) {
+function CardList({ cards }) {
   return (
     <>
       <div className="card-list">
-        {items.map((item) => {
+        {cards.map((item) => {
           return (
             <li key={item.id}>
               <Card item={item} />

@@ -2,11 +2,11 @@ import AddLink from '../components/AddLink';
 import styled from 'styled-components';
 import Folder from '../components/Folder';
 
-function FolderPage() {
+function FolderPage({ cards }) {
   return (
     <Container>
       <AddLink />
-      <Folder />
+      <Folder cards={cards} />
     </Container>
   );
 }
