@@ -7,6 +7,11 @@ header {
   right: 0;
   z-index: 2;
 }
+
+header.static {
+  position: static;
+}
+
 header .inner {
   display: flex;
   margin: 0 auto;
@@ -47,13 +52,13 @@ header a img {
   flex: 1 0 1;
 }
 
-.profile_logo {
+.profile-logo {
   width: 28px;
   height: 28px;
   border-radius: 50%;
 }
 
-.profile_id {
+.profile-id {
   margin-left: 6px;
   font-size: 14px;
   font-weight: 400;

@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import "./Nav.css";
 import logoImg from "../img/logo.png";
 
-const Nav = ({ user, userErrorMessage }) => {
-  const { name, email, profileImageSource } = user;
+const INIT_USER = {
+  image_source: "",
+  email: "",
+};
+
+const Nav = ({ user = INIT_USER, currentPage }) => {
+  const { email, image_source } = user;
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   window.addEventListener("resize", () => {
     setWindowWidth(window.innerWidth);
   });
+
   return (
-    <header>
+    <header className={currentPage === "/folder" ? "static" : "sticky"}>
       <div className="inner">
         <h1>
           <a href="/">
@@ -23,16 +29,15 @@ const Nav = ({ user, userErrorMessage }) => {
           ) : (
             <>
               <img
-                className="profile_logo"
-                src={profileImageSource}
-                alt={name}
+                className="profile-logo"
+                src={image_source}
+                alt="프로필 이미지"
               />
               {windowWidth > 390 ? (
-                <span className="profile_id">{email}</span>
+                <span className="profile-id">{email}</span>
               ) : null}
             </>
           )}
-          {userErrorMessage && <span>{userErrorMessage.message}</span>}
         </div>
       </div>
     </header>
