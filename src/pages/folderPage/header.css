@@ -23,6 +23,9 @@
   height: 5rem;
   padding: 0 1rem;
 }
+.selected {
+  background: #6d6afe;
+}
 
 .folder-list {
   padding: 3.2rem;

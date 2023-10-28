@@ -80,6 +80,7 @@ const Header = () => {
           <FolderList
             fullData={fullList}
             handleFolderClick={handleFolderClick}
+            isTotalClicked={isTotalClicked}
           />
         )}
       </div>
