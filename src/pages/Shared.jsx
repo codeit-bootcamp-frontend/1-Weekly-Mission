@@ -7,7 +7,7 @@ import SharedMain from '../components/Shared/SharedMain';
 function Shared() {
   const [sharedProfile, setSharedProfile] = useState(null);
   const [cards, setCards] = useState([]);
-  const [isLoadingShared, sharedLoadingError, getSharedAsync] = useAsync(getShared);
+  const [, sharedLoadingError, getSharedAsync] = useAsync(getShared);
 
   const handleLoad = useCallback(
     async () => {

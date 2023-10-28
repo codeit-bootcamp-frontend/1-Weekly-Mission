@@ -13,7 +13,7 @@ const ENTIRE_CATEGORY = {
 
 function FolderMain() {
   const [categories, setCategories] = useState([]);
-  const [isLoadingFolders, foldersLoadingError, getFoldersAsync] = useAsync(getFolders);
+  const [, foldersLoadingError, getFoldersAsync] = useAsync(getFolders);
 
   const handleLoad = useCallback(
     async () => {
