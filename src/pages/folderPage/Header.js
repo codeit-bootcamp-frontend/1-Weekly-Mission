@@ -12,7 +12,8 @@ import "./header.css";
 const Header = () => {
   const [fullList, setFullList] = useState([]);
   const [totalData, setTotalData] = useState([]);
-  const [isTotalClicked, setIsClicked] = useState(false);
+  const [isTotalClicked, setIsTotalClicked] = useState(false);
+  const [isSingleClicked, setIsSingleClicked] = useState(false);
   const [singleFolderDataId, setSingleFolderDataId] = useState();
   const [singleFolderData, setSingleFolderData] = useState([]);
 
@@ -32,16 +33,23 @@ const Header = () => {
   }, []);
 
   function handleTotalClick() {
-    setIsClicked(!isTotalClicked);
+    if (isSingleClicked) {
+      setIsSingleClicked(false);
+    }
+    setIsTotalClicked(true);
   }
 
   const handleFolderClick = (folderId) => {
+    if (isTotalClicked) {
+      setIsTotalClicked(false);
+    }
+    setIsSingleClicked(true);
     setSingleFolderDataId(folderId);
   };
 
   const getSingleFolderData = async () => {
     const temp = await requestSingleFolderApi(singleFolderDataId);
-    setSingleFolderData(temp);
+    setSingleFolderData(temp?.data);
   };
 
   useEffect(() => {
@@ -49,7 +57,7 @@ const Header = () => {
     getSingleFolderData();
   }, [singleFolderDataId]);
 
-  //console.log(singleFolderDataId);
+  console.log(singleFolderData);
 
   return (
     <>
@@ -88,6 +96,23 @@ const Header = () => {
       )}
 
       {totalData && isTotalClicked && <Cards fullData={totalData} />}
+      {singleFolderData && isSingleClicked && (
+        <Cards fullData={singleFolderData} />
+      )}
+      {singleFolderData.length === 0 && isSingleClicked && (
+        <div
+          className="folder-list"
+          style={{
+            fontSize: "1.6rem",
+            display: "flex",
+            justifyContent: "center",
+            paddingTop: "4rem",
+            paddingBottom: "4rem",
+          }}
+        >
+          저장된 링크가 없습니다
+        </div>
+      )}
     </>
   );
 };
