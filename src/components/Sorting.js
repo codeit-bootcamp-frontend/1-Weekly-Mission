@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import addIcon from '../assets/add_icon.svg'
+import SortingButton from './SortingButton';
+import { useState } from 'react';
 
 const SortingContainer = styled.div`
   display: flex;
@@ -12,16 +14,6 @@ const ButtonContainer = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 0.8rem;
-`
-
-const Button = styled.button`
-  display: flex;
-  padding: 0.8rem 1.2rem;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 0.5rem;
-  border: 0.1rem solid var(--primary);
-  background: var(--white);
 `
 
 const FolderAdd = styled.div`
@@ -44,15 +36,32 @@ const AddIcon = styled.img`
 `
 
 const Sorting = () => {
+
+  const buttonsContent = ['전체', '⭐️ 즐겨찾기', '코딩 팁', '채용 사이트', '유용한 글', '나만의 장소'];
+  let isActiveArray = Array(buttonsContent.length).fill(false)
+  isActiveArray[0] = true;
+
+  const [isActive, setIsActive] = useState(isActiveArray);
+
+  const handleClick = (index) => {
+    isActiveArray = Array(buttonsContent.length).fill(false);
+    isActiveArray[index] = true;
+    setIsActive(isActiveArray);
+  }
+
   return (
     <SortingContainer>
-      <ButtonContainer>
-        <Button>전체</Button>
-        <Button>⭐️ 즐겨찾기</Button>
-        <Button>코딩 팁</Button>
-        <Button>채용 사이트</Button>
-        <Button>유용한 글</Button>
-        <Button>나만의 장소</Button>
+      <ButtonContainer >
+        {buttonsContent.map((children, index) => {
+          return (
+            <SortingButton 
+              key={index}
+              isActive = {isActive[index]}
+              handleClick={handleClick}
+              buttonIndex={index}
+            >{children}</SortingButton>
+          )
+        })}
       </ButtonContainer>
       <FolderAdd>
         <p>폴더 추가</p>

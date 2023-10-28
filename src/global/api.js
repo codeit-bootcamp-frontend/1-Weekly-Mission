@@ -22,10 +22,5 @@ export const getSearchFolder = async (userID = 1) => {
   const userIDFolder = `${userID}/links`;
   const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/` + userIDFolder);
   const body = await response.json();
-  // for (let i = 0; i < body.length; i++) {
-  //   body.data.folder_id = body.data.folderId;
-  //   body.data.created_at = body.data.createdAt;
-  //   body.data.image_source = body.data.imageSource;
-  // }
   return body;
 }
