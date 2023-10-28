@@ -10,7 +10,6 @@ function App() {
   const [cards, setCards] = useState([]);
   const [folderInfo, setFolderInfo] = useState({});
   const [owner, setOwner] = useState({});
-  const [user, setUser] = useState([]);
 
   const getData = useCallback(async () => {
     const { folder } = await getFolderData();
@@ -20,22 +19,13 @@ function App() {
     setCards(folder.links);
   }, []);
 
-  const getUserInfo = useCallback(async () => {
-    const userInfo = await getUserData();
-    setUser(userInfo);
-  });
-
   useEffect(() => {
     getData();
   }, [getData]);
 
-  useEffect(() => {
-    getUserInfo();
-  }, []); //마운트시점에만 호출
-
   return (
     <div className="App">
-      <Nav user={user} />
+      <Nav />
       <Header folderInfo={folderInfo} owner={owner} />
       <Main cards={cards} />
       <Footer />

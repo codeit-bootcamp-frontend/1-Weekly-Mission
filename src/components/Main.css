@@ -1,45 +1,37 @@
 .main-container {
-  width: 100%;
+  max-width: 1060px;
+  /* width: 100%; */
 }
 .search-bar {
   width: 100%;
   margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-bar-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
+  display: flex;
   position: relative;
   width: 100%;
-  margin: 0 auto;
 }
 
 .search-icon {
   position: absolute;
-  left: 150px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  @media (max-width: 1124px) {
-    left: 150px;
-  }
+  left: 15px;
+  z-index: 2;
 }
 
 .search-bar-input {
-  width: 1060px;
+  width: 100%;
   padding: 15px 16px;
   border-radius: 10px;
   padding-inline-start: 36px;
   border: none;
   background-color: #f5f5f5;
   outline: none;
-
-  @media (max-width: 1124px) {
-    max-width: 704px;
-  }
+  z-index: 1;
 }
 
 .card-list-wrapper {
@@ -58,11 +50,10 @@
   margin: 40px auto 0 auto;
   background-color: rgba(255, 255, 255, 1);
 
-  @media (max-width: 1124px) {
+  @media (min-width: 768px) and (max-width: 1124px) {
     grid-template-columns: repeat(2, 340px);
   }
-  @media (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
+  @media (min-width: 1px) and (max-width: 767px) {
+    grid-template-columns: repeat(1, 340px);
   }
 }
