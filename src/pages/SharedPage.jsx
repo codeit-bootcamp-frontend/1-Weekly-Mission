@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FolderInfo, SearchBar, CardSection } from "components";
 import { getFolder } from "utils/api";
-import "./SharedPage.css";
+import styles from "./SharedPage.module.css";
 
 const SharedPage = () => {
   const [folderData, setFolderData] = useState({
@@ -35,10 +35,10 @@ const SharedPage = () => {
 
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <FolderInfo data={folderData} />
       </header>
-      <article>
+      <article className={styles.article}>
         <SearchBar />
         <CardSection data={folderData.datas} />
       </article>

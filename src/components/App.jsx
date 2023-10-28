@@ -14,14 +14,14 @@ const App = () => {
   const handleUserProfile = async () => {
     try {
       let userProfile = await getUsers();
-      const valuesProfile = Object.values(userProfile);
-      if (!userProfile || valuesProfile.length < 4) return;
       setIsLogin(true);
-      const { email, profileImageSource } = userProfile;
+      const {
+        data: [{ email, image_source }],
+      } = userProfile;
       setUserData((prevData) => ({
         ...prevData,
         email,
-        imageSource: profileImageSource,
+        imageSource: image_source,
       }));
     } catch (err) {
       setIsLogin(false);

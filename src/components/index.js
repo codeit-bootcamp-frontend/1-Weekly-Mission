@@ -9,3 +9,4 @@ export { default as LoginButton } from "./Navigator/LoginButton";
 export { default as Logo } from "./Navigator/Logo";
 export { default as Navigator } from "./Navigator/NavigationBar";
 export { default as SearchBar } from "./SearchBar/SearchBar";
+export { default as AddBar } from "./AddBar/AddBar";
