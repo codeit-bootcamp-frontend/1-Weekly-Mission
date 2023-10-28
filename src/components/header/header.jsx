@@ -1,8 +1,10 @@
 import * as S from "./header.style.js";
 import logoImgSource from "assets/icons/logo.svg";
 import profileImgSource from "assets/icons/profile.svg";
+import { useUserProfileContext } from "contexts/UserProfileContext.js";
 
 export default function HeaderComponent({ email }) {
+  const { userProfile } = useUserProfileContext();
   return (
     <S.HeaderWrapper>
       <S.HeaderNav role="navigation">
@@ -15,7 +17,7 @@ export default function HeaderComponent({ email }) {
           />
         </S.HeaderHomeButton>
 
-        {email ? (
+        {userProfile.email ? (
           <S.HeaderProfileButton>
             <S.ProfileIcon
               src={profileImgSource}
@@ -23,7 +25,7 @@ export default function HeaderComponent({ email }) {
               width="28"
               height="28"
             />
-            <S.ProfileEmail>{email}</S.ProfileEmail>
+            <S.ProfileEmail>{userProfile.email}</S.ProfileEmail>
           </S.HeaderProfileButton>
         ) : (
           <S.HeaderSignInButton>로그인</S.HeaderSignInButton>

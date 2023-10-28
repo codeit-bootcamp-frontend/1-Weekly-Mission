@@ -9,12 +9,4 @@ const getSampleUserFolder = async () => {
   return folder;
 };
 
-const getSampleUserProfile = async () => {
-  const profile = await fetchClientJson({
-    url: "sample/user",
-    method: "GET",
-  });
-  return profile;
-};
-
-export { getSampleUserFolder, getSampleUserProfile };
+export { getSampleUserFolder };

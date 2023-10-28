@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 
 import * as S from "./linkSharePage.style.js";
 import LinkCardComponent from "components/linkCard/LinkCard.jsx";
-import {
-  getSampleUserFolder,
-  getSampleUserProfile,
-} from "pages/linkShare/linkSharePage.js";
+import { getSampleUserFolder } from "pages/linkShare/linkSharePage.js";
 import LinkSearchBarComponent from "components/linkSearchBar/LinkSearchBar.jsx";
 import useAsync from "hooks/useAsync.js";
 
+import { useUserProfileContext } from "contexts/UserProfileContext";
+
 export default function LinkSharePage() {
+  const { userProfile } = useUserProfileContext();
+
   const [folder, setFolder] = useState([]);
-  const [profile, setProfile] = useState({});
-  const [isLoadingProfile, loadingErrorProfile, getSampleUserProfileAsync] =
-    useAsync(getSampleUserProfile);
+
   const [isLoadingFolder, loadingErrorFolder, getSampleUserFolderAsync] =
     useAsync(getSampleUserFolder);
 
@@ -24,29 +23,22 @@ export default function LinkSharePage() {
     setFolder(folder);
   }
 
-  async function handleProfile() {
-    const profile = await getSampleUserProfileAsync();
-    if (!profile) return;
-    setProfile(profile);
-  }
-
   useEffect(() => {
-    handleProfile();
     handleFolder();
   }, []);
 
   return (
     <>
-      {!loadingErrorProfile && (
+      {userProfile && (
         <S.FolderInfoContainer>
           <S.ProfileImage
-            src={profile.profileImageSource}
+            src={userProfile.image_source}
             alt="유저 프로필 이미지"
             width="60px"
             height="60px"
           />
 
-          <S.ProfileName>@{profile.name}</S.ProfileName>
+          <S.ProfileName>@{userProfile.name}</S.ProfileName>
 
           <S.FolderName>{folder.name}</S.FolderName>
         </S.FolderInfoContainer>
