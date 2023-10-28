@@ -8,6 +8,8 @@ import SearchBar from '../../components/searchBar/SearchBar';
 import { getUserFolders, getUserLinks } from '../../api/folder';
 import Card from '../../components/card/Card';
 import EmptyPage from './components/emptyPage/EmptyPage';
+import OptionButton from './components/optionButton/OptionButton';
+import OPTION_ICON_NAME from './constant';
 
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
@@ -17,10 +19,6 @@ export default function FolderPage() {
   const [folderId, setFolderId] = useState(initFolderId || null);
   const [isClicked, setIsClicked] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState('전체');
-
-  // 카테고리 버튼 누르면 -> 타이틀이 변경
-  // 어떤 카테고리가 눌렸는지 알아야함 -> 프롭
-  //
 
   const fetchUserFolders = async () => {
     const result = await getUserFolders();
@@ -85,7 +83,18 @@ export default function FolderPage() {
               <img src={addIcon} alt="add-icon" />
             </button>
           </div>
-          <h1 className="folder-category">{categoryTitle}</h1>
+          <div className="folder-category-container">
+            <h1 className="folder-category">{categoryTitle}</h1>
+            <div className="folder-option-button-container">
+              {OPTION_ICON_NAME.map((item) => (
+                <OptionButton
+                  name={item.name}
+                  alt={item.alt}
+                  iconSrc={item.iconSrc}
+                />
+              ))}
+            </div>
+          </div>
         </section>
         {links.length === 0 ? (
           <EmptyPage />

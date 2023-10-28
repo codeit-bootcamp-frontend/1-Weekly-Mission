@@ -9,3 +9,16 @@
   gap: 8px;
   background: var(--backgroundcolor-skyblue-10);
 }
+
+.folder-category-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folder-option-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
