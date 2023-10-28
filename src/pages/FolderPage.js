@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import Nav from "./components/Nav/Nav";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import SearchBar from "./components/SearchBar/SearchBar";
-import CardList from "./components/Card/Card";
-import useAsync from "./hooks/useAsync";
+import Nav from "../components/Nav/Nav";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import SearchBar from "../components/SearchBar/SearchBar";
+import CardList from "../components/Card/Card";
+import useAsync from "../hooks/useAsync";
 
-import { getUser, getFolder } from "../src/api/api";
-import "./App.style.css";
+import { getUser, getFolder } from "../api/api";
+import "../App.style.css";
 
 const INITIAL_USER = {
   userName: "",
