@@ -8,29 +8,37 @@ import { getUser } from "../src/api/api";
 import "./App.style.css";
 
 const INITIAL_USER = {
+  userId: "",
+  userCreatedAt: "",
   userName: "",
-  userEmail: "",
   userProfileImage: "",
+  userEmail: "",
+  userAuthId: "",
 };
 
 function App() {
   const [userValues, setUserValues] = useState(INITIAL_USER);
-
   const [isUserLoading, userLoadingError, getUserAsync] = useAsync(getUser);
   const loadUser = async () => {
     const userResult = await getUserAsync();
     if (!userResult) return;
-
     const {
-      name: userName = "",
-      email = "",
-      profileImageSource = "",
-    } = userResult;
+      id,
+      created_at,
+      name: userName,
+      image_source,
+      email,
+      auth_id,
+    } = userResult.data[0];
+    console.log(id);
     setUserValues((prevValues) => {
       const newValues = {
+        userId: id,
+        userCreatedAt: created_at,
+        userAuthId: auth_id,
         userName: userName,
         userEmail: email,
-        userProfileImage: profileImageSource,
+        userProfileImage: image_source,
       };
       return { ...prevValues, ...newValues };
     });
