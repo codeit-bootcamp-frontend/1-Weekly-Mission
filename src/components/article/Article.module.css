@@ -6,6 +6,7 @@
   margin: 0 auto;
   padding: 3rem;
 
+  /* table1 */
   @media (min-width: 768px) {
     width: calc(100% - 20rem);
   }
