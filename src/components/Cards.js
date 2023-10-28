@@ -13,6 +13,14 @@ function CardItem({ item, id }) {
     borderTopRightRadius: "15px",
   };
 
+  const noImgStyle = {
+    backgroundImage: `URL(${logoImg})`,
+    backgroundColor: "#DDDFFF",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "none",
+    backgroundPosition: "center center",
+  };
+
   const nowDate = GetTimeDiff(new Date(item.createdAt));
 
   return (
@@ -20,7 +28,7 @@ function CardItem({ item, id }) {
       <div key={id} className="card">
         <div className="card-img-wrap">
           {!item.imageSource ? (
-            <img className="logoImg" src={logoImg} alt="logoImg" />
+            <div className="card-img" style={noImgStyle}></div>
           ) : (
             <div className="card-img" style={imgStyle}></div>
           )}

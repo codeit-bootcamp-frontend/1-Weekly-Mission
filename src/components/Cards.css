@@ -97,6 +97,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 25px 20px;
+  margin: 40px auto;
 }
 
 .cardlist-inner a {

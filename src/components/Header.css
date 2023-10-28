@@ -1,5 +1,5 @@
 header {
-  background-color: #f0f6ff;
+  background-color: var(--linkbrary-bg);
   width: 100%;
   position: sticky;
   top: 0;
