@@ -26,7 +26,8 @@ const Article = () => {
       <section>
         <h2 className="title">
           링크를 폴더로
-          <span className="title-2-gradient background-clip-text">관리</span>
+          <span className="title-2-gradient background-clip-text"> 관리</span>
+          <br />
           하세요
         </h2>
         <p className="description">

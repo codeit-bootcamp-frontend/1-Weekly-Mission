@@ -20,7 +20,8 @@ const Card = ({ data }) => {
         listStyle: "none",
         display: "flex",
         flexDirection: "column",
-        maxWidth: "41.8rem",
+        maxWidth: "100rem",
+        height: "auto",
       }}
     >
       <a
@@ -41,6 +42,7 @@ const Card = ({ data }) => {
             boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
             borderTopLeftRadius: "1rem",
             borderTopRightRadius: "1rem",
+            height: "auto",
           }}
         />
         <button
