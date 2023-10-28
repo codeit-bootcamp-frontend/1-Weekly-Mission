@@ -30,7 +30,6 @@ function App() {
       email,
       auth_id,
     } = userResult.data[0];
-    console.log(id);
     setUserValues((prevValues) => {
       const newValues = {
         userId: id,
@@ -56,11 +55,7 @@ function App() {
       />
       {isUserLoading && <p> 로그인 중...</p>}
       {userLoadingError?.message && <span>{userLoadingError.message}</span>}
-
-      <section className="main-section">
-        <Outlet />
-      </section>
-
+      <Outlet />
       <Footer />
     </>
   );

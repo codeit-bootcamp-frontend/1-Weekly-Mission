@@ -45,10 +45,6 @@
   margin: 0 0 0 10rem;
   padding: 0;
   width: 100%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  gap: 5px;
 }
 
 .card-section {

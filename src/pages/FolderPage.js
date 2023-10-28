@@ -1,26 +1,42 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import SearchBar from "../components/SearchBar/SearchBar";
 import LinkAddInput from "../components/LinkAddInput/LinkAddInput";
 import CardList from "../components/CardList/CardList";
-import FolderButton from "../components/FolderButton/FolderButton";
 import useAsync from "../hooks/useAsync";
+import FolderButtonList from "../components/FolderButtonList/FolderButtonList";
 
-import { getFolder } from "../api/api";
+import { getAllCards, getAllFolders } from "../api/api";
 import "./FolderPage.css";
 
 function FolderPage() {
-  const [isFolderLoading, folderLoadingError, getFolderAsync] =
-    useAsync(getFolder);
-  const [folderName, setFolderName] = useState("전체");
+  const { folderId: folderPath } = useParams();
+  const [folderId, setFolderId] = useState("");
   const [cardList, setCardList] = useState([]);
+  const [folderList, setFolderList] = useState([]);
 
   const loadUser = async () => {
-    const folderResult = await getFolderAsync();
-    setCardList(folderResult?.data);
+    if (!folderPath) {
+      setFolderId("");
+    } else {
+      setFolderId(folderPath);
+    }
+    const folderResult = await getAllCards(folderPath);
+    setCardList((prevItem) => {
+      return [...folderResult?.data];
+    });
+    const folders = await getAllFolders();
+    setFolderList(folders?.data);
   };
 
-  const handleFolderName = (str) => {
-    setFolderName(str);
+  const loadCards = async (id) => {
+    setFolderId(id);
+    const folderResult = await getAllCards(folderId);
+    setCardList((prevItem) => {
+      return [...folderResult?.data];
+    });
+    const folders = await getAllFolders();
+    setFolderList(folders?.data);
   };
 
   useEffect(() => {
@@ -37,15 +53,9 @@ function FolderPage() {
           <SearchBar />
         </div>
         <div className="folder-buttons">
-          <FolderButton onChange={handleFolderName} value="전체" />
-          <FolderButton onChange={handleFolderName} value="나만의 장소" />
+          <FolderButtonList folderList={folderList} onChange={loadCards} />
         </div>
-        <h1 className="folder-name-title">{folderName}</h1>
         <div className="card-section">
-          {isFolderLoading && <p> 유저 정보를 받아오는 중...</p>}
-          {folderLoadingError?.message && (
-            <span>{folderLoadingError.message}</span>
-          )}
           <CardList cardList={cardList} />
         </div>
       </section>

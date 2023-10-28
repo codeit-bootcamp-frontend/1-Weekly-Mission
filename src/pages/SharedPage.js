@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import CardList from "../components/Card/Card";
 import useAsync from "../hooks/useAsync";
 
-import { getFolder } from "../api/api";
+import { getAllCards } from "../api/api";
 import "./SharedPage.css";
 
 const INITIAL_FOLDER = {
@@ -16,7 +16,7 @@ const INITIAL_FOLDER = {
 function SharedPage() {
   const [folderValues, setFolderValues] = useState(INITIAL_FOLDER);
   const [isFolderLoading, folderLoadingError, getFolderAsync] =
-    useAsync(getFolder);
+    useAsync(getAllCards);
 
   const [cardList, setCardList] = useState([]);
 

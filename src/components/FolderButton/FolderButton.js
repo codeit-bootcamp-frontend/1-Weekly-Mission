@@ -1,8 +1,10 @@
 import "./FolderButton.style.css";
 
-function FolderButton({ onChange, value }) {
-  const handleButtonClick = (e) => {
-    onChange(value);
+function FolderButton({ folder, onChange }) {
+  const { id, name } = folder;
+
+  const handleButtonClick = () => {
+    onChange(name, id);
   };
 
   return (
@@ -11,7 +13,7 @@ function FolderButton({ onChange, value }) {
       onClick={handleButtonClick}
       className="folder-name-button"
     >
-      {value}
+      {name}
     </button>
   );
 }

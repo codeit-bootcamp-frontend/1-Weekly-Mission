@@ -9,7 +9,7 @@ function LinkAddInput() {
   return (
     <form>
       <div className="add-link-form">
-        <img src={linkIcon} className="add-link-icon" />
+        <img src={linkIcon} className="add-link-icon" alt="link icon" />
         <input
           name="linkAdd-input"
           value={keyword}
