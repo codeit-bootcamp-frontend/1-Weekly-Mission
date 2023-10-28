@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import "pages/linkShare/linkSharePage.css";
-import LinkCardComponent from "components/linkCard/linkCard.jsx";
+import * as S from "./linkSharePage.style.js";
+import LinkCardComponent from "components/linkCard/LinkCard.jsx";
 import {
   getSampleUserFolder,
   getSampleUserProfile,
 } from "pages/linkShare/linkSharePage.js";
-import LinkSearchBarComponent from "components/linkSearchBar/linkSearchBar.jsx";
+import LinkSearchBarComponent from "components/linkSearchBar/LinkSearchBar.jsx";
 import useAsync from "hooks/useAsync.js";
 
 export default function LinkSharePage() {
@@ -36,26 +36,25 @@ export default function LinkSharePage() {
   }, []);
 
   return (
-    <div className="page--container">
+    <>
       {!loadingErrorProfile && (
-        <main className="folder-info--wrapper">
-          <img
-            className="profile-image"
+        <S.FolderInfoContainer>
+          <S.ProfileImage
             src={profile.profileImageSource}
             alt="유저 프로필 이미지"
             width="60px"
             height="60px"
           />
 
-          <p className="profile-name">@{profile.name}</p>
+          <S.ProfileName>@{profile.name}</S.ProfileName>
 
-          <p className="folder-name">{folder.name}</p>
-        </main>
+          <S.FolderName>{folder.name}</S.FolderName>
+        </S.FolderInfoContainer>
       )}
 
-      <section className="folder-contents--wrapper">
+      <S.FolderContentsContainer>
         <LinkSearchBarComponent />
-        <ul className="link-card-list--wrapper">
+        <S.LinkCardListContainer>
           {folder?.links?.map((cardData) => {
             return (
               <LinkCardComponent
@@ -65,8 +64,8 @@ export default function LinkSharePage() {
               />
             );
           })}
-        </ul>
-      </section>
-    </div>
+        </S.LinkCardListContainer>
+      </S.FolderContentsContainer>
+    </>
   );
 }

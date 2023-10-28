@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import "components/footer/footer.css";
+import * as S from "./footer.style.js";
 import facebookIcon from "assets/icons/facebook.svg";
 import twitterIcon from "assets/icons/twitter.svg";
 import youtubeIcon from "assets/icons/youtube.svg";
@@ -8,14 +8,14 @@ import instagramIcon from "assets/icons/instagram.svg";
 
 export default function FooterComponent() {
   return (
-    <footer className="footer">
-      <div className="footer__wrapper">
-        <p className="copyright">©codeit - 2023</p>
-        <nav className="footer__menu-wrapper">
+    <S.FooterWrapper>
+      <S.FooterContainer>
+        <S.Copyright>©codeit - 2023</S.Copyright>
+        <S.FooterMenuContainer>
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/faq">FAQ</Link>
-        </nav>
-        <nav className="footer__sns-wrapper">
+        </S.FooterMenuContainer>
+        <S.FooterSnsContainer>
           <a
             href="https://www.facebook.com/"
             target="_blank"
@@ -54,8 +54,8 @@ export default function FooterComponent() {
               height="20"
             />
           </a>
-        </nav>
-      </div>
-    </footer>
+        </S.FooterSnsContainer>
+      </S.FooterContainer>
+    </S.FooterWrapper>
   );
 }

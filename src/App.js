@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "App.css";
-import Layout from "layouts/layout.jsx";
-import LinkSharePage from "pages/linkShare/linkSharePage.jsx";
+import Layout from "layouts/Layout.jsx";
+import LinkSharePage from "pages/linkShare/LinkSharePage.jsx";
 
 export default function App() {
   return (

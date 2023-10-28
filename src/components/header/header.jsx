@@ -1,35 +1,34 @@
-import "components/header/header.css";
+import * as S from "./header.style.js";
 import logoImgSource from "assets/icons/logo.svg";
 import profileImgSource from "assets/icons/profile.svg";
 
 export default function HeaderComponent({ email }) {
   return (
-    <header className="header">
-      <nav className="header__nav" role="navigation">
-        <button className="header__home-button">
+    <S.HeaderWrapper>
+      <S.HeaderNav role="navigation">
+        <S.HeaderHomeButton>
           <img
             src={logoImgSource}
             alt="링크브러리 로고 이미지"
             aria-label="링크브러리 로고"
             width="133"
           />
-        </button>
+        </S.HeaderHomeButton>
 
         {email ? (
-          <button className="header__profile-button">
-            <img
-              className="profile-icon"
+          <S.HeaderProfileButton>
+            <S.ProfileIcon
               src={profileImgSource}
               alt="프로필 아이콘"
               width="28"
               height="28"
             />
-            <p className="profile-email">{email}</p>
-          </button>
+            <S.ProfileEmail>{email}</S.ProfileEmail>
+          </S.HeaderProfileButton>
         ) : (
-          <button className="header__signin-button">로그인</button>
+          <S.HeaderSignInButton>로그인</S.HeaderSignInButton>
         )}
-      </nav>
-    </header>
+      </S.HeaderNav>
+    </S.HeaderWrapper>
   );
 }
