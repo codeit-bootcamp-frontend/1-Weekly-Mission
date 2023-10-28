@@ -14,6 +14,7 @@
 
 .active {
   &.active {
-    background-color: lightblue;
+    background-color: var(--linkbrary-primary-color, #6d6afe);
+    border: 1px solid var(--linkbrary-primary-color, #6d6afe);
   }
 }

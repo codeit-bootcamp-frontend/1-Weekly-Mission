@@ -3,6 +3,7 @@ import HeaderSpace from "../components/HeaderSpace";
 import MainSpace from "../components/MainSpace";
 import FooterSpace from "../components/FooterSpace";
 import Nav from "../components/Nav";
+import "../styles/Folder.css";
 
 import { useState, useEffect } from "react";
 import {
@@ -77,12 +78,17 @@ function Folder() {
       <Nav lists={userLogin} />
       <HeaderSpace />
       <SearchBar />
+
       <SelectPart
         selectItems={selectItems}
         handleRenderItems={handleRenderItems}
         handleUserLinks={handleUserLinks}
       />
-      <MainSpace items={userLinks} />
+      {userLinks.length !== 0 ? (
+        <MainSpace items={userLinks} />
+      ) : (
+        <div className="empty">저장된 링크가 없습니다</div>
+      )}
       <FooterSpace />
     </>
   );

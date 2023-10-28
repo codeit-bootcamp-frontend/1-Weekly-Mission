@@ -4,25 +4,47 @@ import change from "../images/pen.svg";
 import deleting from "../images/delete.svg";
 import "../styles/SelectPart.css";
 import SelectItem from "./SelectItem";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
+  const [activeBtn, setActiveBtn] = useState(false);
+
+  const toggleActive = () => {
+    setActiveBtn((prev) => {
+      return !prev;
+    });
+  };
+  const linkRef = useRef("");
+  const buttonRef = useRef("");
   const onClick = () => {
     handleUserLinks();
+    toggleActive();
+    toggleDisplay();
   };
+
+  const toggleDisplay = () =>
+    buttonRef.current.className === "SelectItem" + " active"
+      ? (linkRef.current.className = "displayNo")
+      : (linkRef.current.className = "displayOn");
   return (
     <div className="SelectPart">
       <div className=" selectList-info">
         <div className="selectList-wrapper">
-          <button onClick={onClick} className="entirety">
+          <button
+            ref={buttonRef}
+            onClick={onClick}
+            className={"SelectItem" + (activeBtn ? " active" : "")}
+          >
             전체
           </button>
+          <button></button>
           {selectItems.map((item) => (
             <SelectItem
-              className={"item-wrapper"}
               key={item.id}
+              name={item.name}
               item={item}
               handleRenderItems={handleRenderItems}
+              toggleDisplay={toggleDisplay}
             />
           ))}
         </div>
@@ -30,11 +52,15 @@ function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
           <span className="add-text">폴더 추가</span>
           <img className="add" src={add} alt="" />
         </div>
+        <button className="add-btn">
+          <span className="add-text btn">폴더 추가</span>
+          <img className="add btn" src={add} alt="" />
+        </button>
       </div>
 
       <div className="links-info">
-        <span className="folder-name">유용한 글</span>
-        <div className="handle-link">
+        <span className="folder-name">전체</span>
+        <div ref={linkRef} className="displayNo">
           <div className="sharing">
             <img className="share" src={share} alt="" />
             <span>공유</span>
