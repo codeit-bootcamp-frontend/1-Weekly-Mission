@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Nav from "./Nav";
-import "../css/Nav.css";
 
 const StyledHeader = styled.div`
   width: 100%;

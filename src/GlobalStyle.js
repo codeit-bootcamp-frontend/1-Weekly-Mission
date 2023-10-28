@@ -4,14 +4,14 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
   * {
-    font-family: Pretendard, 'Noto Sans KR', sans-serif;
+    font-family: Pretendard, sans-serif;
     box-sizing: border-box;
     margin: 0;
   }
 
   html {
+    width: 100%;
     height: 100%;
-    min-width: 410px;
     font-size: 62.5%;
   }
   

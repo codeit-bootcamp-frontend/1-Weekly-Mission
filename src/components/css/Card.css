@@ -120,6 +120,10 @@ a {
     margin-top: 63px;
   }
   .section-title-third {
-    max-width: 340px;
+    max-width: 325px;
+  }
+
+  .card {
+    width: 325px;
   }
 }

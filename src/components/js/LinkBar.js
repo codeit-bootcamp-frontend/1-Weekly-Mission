@@ -16,11 +16,11 @@ const Wrapper = styled(BlueWrapper)`
 `;
 
 const Form = styled.form`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 800px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   padding: 16px 20px;
   border-radius: 15px;
   border: 1px solid #6d6afe;
@@ -50,6 +50,7 @@ const LinkAddInput = styled.input`
     outline: none;
   }
 `;
+
 
 const Icon = styled.img`
   width: 20px;
