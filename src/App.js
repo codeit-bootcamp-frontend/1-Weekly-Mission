@@ -2,10 +2,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './css/App.css';
 import SharedPage from './pages/SharedPage';
 import FolderPage from './pages/FolderPage';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
 import { useCallback, useEffect, useState } from 'react';
 import { getCards, getUserProfile } from './api/api';
 import useAsync from './hooks/useAsync';
-import Nav from './components/Nav';
+import Home from './pages/Home';
 
 function App() {
   const [userProfile, setUserProfile] = useState(null);
@@ -47,10 +49,12 @@ function App() {
       <Nav userProfile={userProfile} userProfileLoadingError={userProfileLoadingError} />
       <Router>
         <Routes>
-          <Route path="/shared" element={<SharedPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/shared" element={<SharedPage loadingError={loadingError} folder={folder} cards={cards} />} />
           <Route path="/folder" element={<FolderPage />} />
         </Routes>
       </Router>
+      <Footer />
     </>
   );
 }

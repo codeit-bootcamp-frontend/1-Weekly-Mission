@@ -2,7 +2,6 @@
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import CardList from '../components/CardList';
-import Footer from '../components/Footer';
 
 function SharedPage({ loadingError, folder, cards }) {
   return (
@@ -14,7 +13,6 @@ function SharedPage({ loadingError, folder, cards }) {
           <CardList items={cards} />
           {loadingError?.message && <span>{loadingError.message}</span>}
         </main>
-        <Footer />
       </div>
     </>
   );

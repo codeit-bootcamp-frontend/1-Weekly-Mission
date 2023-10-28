@@ -5,7 +5,6 @@ function FolderPage() {
   return (
     <>
       <AddLink />
-      <Footer />
     </>
   );
 }
