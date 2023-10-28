@@ -4,6 +4,10 @@ import useAsync from '../../hooks/useAsync';
 import { getFolders } from '../../api/api';
 import { Fragment, useCallback, useEffect, useState } from 'react';
 
+const ENTIRE_CATEGORY = {
+  id: 0,
+  name: '전체',
+}
 
 function FolderCategory() {
   const [categories, setCategories] = useState([]);
@@ -16,21 +20,21 @@ function FolderCategory() {
         return;
       }
       const { data } = { ...result };
-      setCategories(data);
+
+      setCategories([ENTIRE_CATEGORY, ...data]);
     }, [getFoldersAsync],
   );
 
   useEffect(() => {
     handleLoad();
-  }, [categories]);
+  }, [handleLoad]);
 
   return (
     <FolderCategoryStyle>
-      <FolderCategoryButton name='전체'></FolderCategoryButton>
       {categories.map((category) => {
         return (
-          <Fragment>
-            <FolderCategoryButton name={category}></FolderCategoryButton>
+          <Fragment key={category.id}>
+            <FolderCategoryButton name={category.name}></FolderCategoryButton>
             {foldersLoadingError?.message && <span>{foldersLoadingError.message}</span>}
           </Fragment>
         );
@@ -44,8 +48,9 @@ export default FolderCategory;
 
 const FolderCategoryStyle = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.2rem;
+  justify-content: flex-start;
+  row-gap: 1.2rem;
+  column-gap: 0.8rem;
+  width: 100%;
+  flex-wrap: wrap;
 `;
