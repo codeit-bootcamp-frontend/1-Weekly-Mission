@@ -5,12 +5,14 @@ import LinkAddInput from '../components/LinkAddInput';
 import FolderMain from '../components/FolderMain'
 import useGetAccount from '../hooks/useGetAccount';
 import useGetSearchFolder from '../hooks/useGetSearchFolder';
+import useGetSelectedFolder from '../hooks/useGetSelectedFolder';
 import styled from "styled-components";
 
 
 const Folder = () => {
   const account = useGetAccount(1);
-  const folderInfo = useGetSearchFolder(1);
+  const folderSelect = useGetSelectedFolder(1);
+  const folderContentsInfo = useGetSearchFolder(1);
 
   const TopArea = styled.div`
     display: flex;
@@ -29,7 +31,7 @@ const Folder = () => {
     <TopArea>
       <LinkAddInput />
     </TopArea>
-    {folderInfo && <FolderMain folderInfo={folderInfo.data}/>}
+    {folderContentsInfo && <FolderMain folderInfo={folderContentsInfo.data}/>}
     <Footer />
     </>  
   )

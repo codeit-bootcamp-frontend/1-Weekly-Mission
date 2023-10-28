@@ -19,7 +19,7 @@ const Button = styled.button`
   }
 `
 
-const SortingButton = ( { isActive = false, handleClick, buttonIndex, children } ) => {
+const SortingButton = ( { isActive, handleClick, buttonIndex, children } ) => {
 
   return (
     <Button 

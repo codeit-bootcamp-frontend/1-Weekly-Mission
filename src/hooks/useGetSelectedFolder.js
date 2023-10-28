@@ -1,16 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getSearchFolder } from "../global/api";
+import { getSelectedFolder } from "../global/api";
 
-const useGetSearchFolder = (userID) => {
+const useGetSelectedFolder = (userID) => {
   const [folderInfo, setFolderInfo] = useState();
   
   const getData = useCallback(async (userID) => {
-    const folderData = await getSearchFolder(userID);
-    if (!folderData) {
+    const selectedFolderData = await getSelectedFolder(userID);
+    if (!selectedFolderData) {
       console.log("저장된 링크가 없습니다.");
       return;
     }
-    setFolderInfo(folderData);
+    setFolderInfo(selectedFolderData);
   }, []);
 
   useEffect(() => {
@@ -19,5 +19,6 @@ const useGetSearchFolder = (userID) => {
 
   return folderInfo;
 }
- 
-export default useGetSearchFolder;
+
+
+export default useGetSelectedFolder;
