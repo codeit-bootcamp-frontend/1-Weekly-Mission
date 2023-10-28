@@ -58,19 +58,22 @@ const FolderMain = ({ selectedFolder, userID }) => {
   useEffect(() => {
     changeFolderId(folderId);
   }, [folderId, folderContentsInfo]);
+
+  const checkEmptyFolder = folderContentsInfo?.data.length;
   
   return (
     <MainContainer>
       <LinkSearchInput />
-      <Sorting selectedFolder={selectedFolder} userID={userID}/>
-      <Title>
-        <h1>유용한 글</h1>
-        <Options>
-          <Option icon={shareIcon}>공유</Option>
-          <Option icon={penIcon}>이름 변경</Option>
-          <Option icon={deleteIcon}>삭제</Option>
-        </Options>
-      </Title>
+        { checkEmptyFolder > 0 && <Sorting selectedFolder={selectedFolder} userID={userID}/> }
+        { checkEmptyFolder > 0 &&
+        <Title>
+          <h1>유용한 글</h1>
+          <Options>
+            <Option icon={shareIcon}>공유</Option>
+            <Option icon={penIcon}>이름 변경</Option>
+            <Option icon={deleteIcon}>삭제</Option>
+          </Options>
+        </Title> }
       {folderContentsInfo && <CardList folderCards={folderContentsInfo.data} />}
     </MainContainer>
   )
