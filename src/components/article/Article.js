@@ -6,8 +6,12 @@ export default function Article() {
   const [title, setTitle] = useState("유용한글");
   return (
     <div className={styles.container}>
-      <p className="title">{title}</p>
-      <img src={titleImage} alt={title}></img>
+      <p className={styles.title}>{title}</p>
+      <img
+        className={styles.images__container}
+        src={titleImage}
+        alt={title}
+      ></img>
     </div>
   );
 }
