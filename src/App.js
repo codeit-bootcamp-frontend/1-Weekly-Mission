@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "layouts/Layout.jsx";
 import LinkSharePage from "pages/linkShare/LinkSharePage.jsx";
 import FolderPage from "pages/folder/FolderPage.jsx";
-import Folder from "components/folder/Folder";
+import Folder from "components/folder/Folder.jsx";
 import { UserProfileContextProvider } from "contexts/UserProfileContext.js";
 
 export default function App() {
