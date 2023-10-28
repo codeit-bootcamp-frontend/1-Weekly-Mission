@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './js/header';
-import Main from './js/main';
-import Footer from './js/footer';
-import './css/common.css'
-import './css/reset.css'
+import Header from './components/common/header';
+import Folders from './pages/folders/folders';
+import Footer from './components/common/footer';
+import './components/common/common.css'
+import './components/common/reset.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
     <>
     <Header />
-    <Main />
+    <Folders />
     <Footer />
     </>
 );
