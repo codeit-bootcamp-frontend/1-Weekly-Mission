@@ -4,7 +4,7 @@ const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
 
 export async function getUserProfile() {
   try {
-    const response = await axios.get(`${BASE_URL}/sample/user`);
+    const response = await axios.get(`${BASE_URL}/users/1`);
     return response.data;
   } catch (error) {
     throw new Error('유저 프로필 정보를 불러오지 못했습니다.');

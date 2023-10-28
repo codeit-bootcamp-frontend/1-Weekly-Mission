@@ -18,8 +18,13 @@ function UserProfile() {
       if (!result) {
         return;
       }
+      const { data } = { ...result };
+      const { email, image_source } = data[0];
 
-      setUserProfile({ ...result });
+      setUserProfile({
+        email: email,
+        profileImageSource: image_source
+      });
     }, [getUserProfileAsync],
   );
 
