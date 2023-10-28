@@ -13,17 +13,19 @@ function FolderInfo() {
   useEffect(() => {
     loadFolder();
   }, []);
-
   return (
-    <div className={style.root}>
-      <img
-        className={style.img}
-        src={folderInfo.owner.profileImageSource}
-        alt="프로필 이미지"
-      />
-      <div className={style.userName}>@{folderInfo.owner.name}</div>
-      <div className={style.folderName}>{folderInfo.name}</div>
-    </div>
+    folderInfo && (
+      <div className={style.root}>
+        <img
+          className={style.img}
+          src={folderInfo.owner.profileImageSource}
+          alt="프로필 이미지"
+        />
+        <div className={style.userName}>@{folderInfo.owner.name}</div>
+        <div className={style.folderName}>{folderInfo.name}</div>
+      </div>
+    )
   );
 }
+
 export default FolderInfo;
