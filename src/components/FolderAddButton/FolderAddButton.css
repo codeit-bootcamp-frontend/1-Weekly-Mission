@@ -7,6 +7,13 @@
 
 @media (max-width: 767px) {
   .folderAdd {
-    display: none;
+    position: fixed;
+    border-radius: 2rem;
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 24px;
+    left: 130px;
+    bottom: 101px;
+    z-index: 1;
   }
 }

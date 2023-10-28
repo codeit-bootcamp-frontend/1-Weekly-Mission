@@ -2,7 +2,7 @@ import Banner from 'components/Banner/Banner';
 import CardList from 'components/CardList/CardList';
 import Search from 'components/Search/Search';
 import { useCallback, useEffect, useState } from 'react';
-import { getUserProfile } from 'services/api';
+import { getSampleUserProfile } from 'services/api';
 import './Card.css';
 
 function Card() {
@@ -10,7 +10,7 @@ function Card() {
   const [card, setCard] = useState(null);
 
   const profileInfo = useCallback(async () => {
-    const introResult = await getUserProfile();
+    const introResult = await getSampleUserProfile();
     if (!introResult) return;
 
     const { folder } = introResult;

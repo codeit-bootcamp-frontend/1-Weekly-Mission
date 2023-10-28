@@ -9,7 +9,7 @@ const getSampleUser = async () => {
   return body;
 };
 
-export const getUserProfile = async () => {
+export const getSampleUserProfile = async () => {
   const response = await fetch('/sample/folder', { method: 'GET' });
 
   if (!response.ok) {
@@ -48,6 +48,17 @@ export const getOtherFolder = async (folderId) => {
   if (!response.ok) {
     throw new Error('폴더 데이터 가져오기 에러 발생');
   }
+  const body = await response.json();
+  return body;
+};
+
+export const getUserProfile = async () => {
+  const response = await fetch('/users/1', { method: 'GET' });
+
+  if (!response.ok) {
+    throw new Error('인트로 프로필 에러 발생');
+  }
+
   const body = await response.json();
   return body;
 };

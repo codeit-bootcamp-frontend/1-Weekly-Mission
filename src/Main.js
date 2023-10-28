@@ -9,7 +9,7 @@ function Main() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Card />} />
+          <Route path="shared" element={<Card />} />
           <Route path="folder" element={<Folder />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
