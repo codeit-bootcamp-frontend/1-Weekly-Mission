@@ -1,7 +1,9 @@
 @import url('../../styles/global.css');
 
 .card {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
   height: 334px;
   background-color: var(--color-white);
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
@@ -68,8 +70,7 @@
 }
 
 .introduce-text {
-  width: 300px;
-  height: 50px;
+  width: 100%;
   color: var(--color-black);
   text-overflow: ellipsis;
   font-size: 16px;

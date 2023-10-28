@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { getUserFolders, getUserLinks } from '../../api/folder';
 import './folderPage.css';
 import AddLinkInput from './components/addLinkInput/AddLinkInput';
-import SortButton from './components/sortButton/SortButton';
-import addIcon from '../../assets/folder/add.svg';
 import SearchBar from '../../components/searchBar/SearchBar';
-import { getUserFolders, getUserLinks } from '../../api/folder';
 import Card from '../../components/card/Card';
 import EmptyPage from './components/emptyPage/EmptyPage';
 import OptionButton from './components/optionButton/OptionButton';
+import FloatingButton from '../../components/floatingButton/FloatingButton';
 import OPTION_ICONS from './constant';
+
+import addIcon from '../../assets/folder/add.svg';
+import addPrimaryIcon from '../../assets/folder/addPrimaryColor.svg';
+import SortButton from './components/sortButton/SortButton';
 
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
@@ -19,6 +22,21 @@ export default function FolderPage() {
   const [folderId, setFolderId] = useState(initFolderId || null);
   const [isClicked, setIsClicked] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState('전체');
+  const [viewPortWidth, setViewPortWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewPortWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const isMobileView = viewPortWidth <= 767;
 
   const fetchUserFolders = async () => {
     const result = await getUserFolders();
@@ -80,7 +98,11 @@ export default function FolderPage() {
             </div>
             <button type="button" className="folder-add-button">
               폴더 추가
-              <img src={addIcon} alt="add-icon" />
+              <img
+                src={addPrimaryIcon}
+                alt="add-icon"
+                className="folder-add-icon"
+              />
             </button>
           </div>
           <div className="folder-category-container">
@@ -112,6 +134,11 @@ export default function FolderPage() {
               ))}
           </div>
         )}
+        <div className="floating-action-button-container">
+          {isMobileView && (
+            <FloatingButton iconSrc={addIcon}>폴더 추가</FloatingButton>
+          )}
+        </div>
       </main>
     </div>
   );

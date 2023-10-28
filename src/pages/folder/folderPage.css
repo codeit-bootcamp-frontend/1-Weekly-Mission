@@ -22,3 +22,58 @@
   justify-content: center;
   gap: 12px;
 }
+
+.floating-action-button-container {
+  display: flex;
+  align-self: center;
+  position: fixed;
+  bottom: 101px;
+}
+
+.folder-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.folder-sort-buttons-container {
+  display: flex;
+  gap: 8px;
+}
+
+.folder-main {
+  display: flex;
+  flex-direction: column;
+  max-width: 1124px;
+  margin: auto;
+  gap: 40px;
+}
+
+.folder-sort-add-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folder-add-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  font-weight: 500;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.folder-content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.folder-category {
+  font-size: 24px;
+  color: var(--color-black);
+  font-weight: 600;
+}
