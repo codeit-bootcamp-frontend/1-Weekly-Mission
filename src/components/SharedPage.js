@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import './css/Main.css';
+import './css/SharedPage.css';
 import search from './img/search.svg';
-import { getDatas } from '../api';
+import { getSampleFolderDatas } from '../api';
 import Card from './Card';
 
-export default function Main() {
+export default function SharedPage() {
   const [items, setItems] = useState([]);
 
   const handleLoad = async () => {
-    const { folder } = await getDatas();
+    const { folder } = await getSampleFolderDatas();
     setItems(folder.links);
   };
   useEffect(() => {

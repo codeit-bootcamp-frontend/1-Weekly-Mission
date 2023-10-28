@@ -8,34 +8,23 @@ export function dateCalculator(apiDate) {
     (myDate - apiDate) / 1000 / 60 / 60 / 24 / 31 / 12
   );
 
+  function timeExpress(time, calcTime) {
+    return `${calcTime} ${time}${calcTime === 1 ? '' : 's'} ago`;
+  }
+
   if (elapsedMinute < 60) {
-    if (elapsedMinute < 2) {
-      return `${elapsedMinute} minute ago`;
-    }
-    return `${elapsedMinute} minutes ago`;
+    return timeExpress('minute', elapsedMinute);
   }
   if (elapsedHour < 24) {
-    if (elapsedHour < 2) {
-      return `${elapsedHour} hour ago`;
-    }
-    return `${elapsedHour} hours ago`;
+    return timeExpress('hour', elapsedHour);
   }
   if (elapsedDays < 31) {
-    if (elapsedDays < 2) {
-      return `${elapsedDays} day ago`;
-    }
-    return `${elapsedDays} days ago`;
+    return timeExpress('day', elapsedDays);
   }
   if (elapsedMonth < 12) {
-    if (elapsedMonth < 2) {
-      return `${elapsedMonth} month ago`;
-    }
-    return `${elapsedMonth} months ago`;
+    return timeExpress('month', elapsedMonth);
   }
   if (elapsedYear) {
-    if (elapsedYear < 2) {
-      return `${elapsedYear} year ago`;
-    }
-    return `${elapsedYear} years ago`;
+    return timeExpress('year', elapsedYear);
   }
 }

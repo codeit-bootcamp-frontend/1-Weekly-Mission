@@ -4,14 +4,19 @@
 body {
   margin: 0;
 }
-.nav1-container {
+.nav-container {
   background: #f0f6ff;
 }
 .nav1-wrapper {
+  background: #f0f6ff;
   display: flex;
   padding: 33px 200px;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 @media (max-width: 1124px) {
   .nav1-wrapper {
@@ -69,6 +74,7 @@ body {
   padding: 20px 0 60px 0;
   align-items: center;
   gap: 20px;
+  padding-top: 119px;
 }
 .nav2-smileImg {
   height: 60px;

@@ -1,12 +1,14 @@
 import Nav from './Nav';
 import Footer from './Footer';
-import Main from './Main';
+import SharedPage from './SharedPage';
+import Header from './Header';
 
 export default function App() {
   return (
     <>
       <Nav />
-      <Main />
+      <Header />
+      <SharedPage />
       <Footer />
     </>
   );

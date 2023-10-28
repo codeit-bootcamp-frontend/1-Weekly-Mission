@@ -8,23 +8,27 @@ a {
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
 }
-.card-wrapper :hover {
-  background-size: 160%;
+
+.card-wrapper:hover img {
+  transform: scale(1.3);
 }
 
 .card-box {
   width: 340px;
+  height: 234px;
   background-color: #fff;
   border-radius: 15px;
 }
 
-.card-image {
-  width: 340px;
-  height: 230px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.card-img-div {
+  overflow: hidden;
   border-radius: 15px 15px 0px 0px;
+}
+
+.card-img {
+  width: 340px;
+  height: 234px;
+  object-fit: cover;
 }
 
 .card-text {

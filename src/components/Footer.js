@@ -18,16 +18,16 @@ export default function Footer() {
       </div>
       <div className="footer-right">
         <a href="https://www.facebook.com">
-          <img src={facebook} />
+          <img src={facebook} alt="facebook" />
         </a>
         <a href="https://www.twitter.com">
-          <img src={twitter} />
+          <img src={twitter} alt="twitter" />
         </a>
         <a href="https://www.youtube.com">
-          <img src={youtube} />
+          <img src={youtube} alt="youtube" />
         </a>
         <a href="https://www.instagram.com">
-          <img src={insta} />
+          <img src={insta} alt="instagram" />
         </a>
       </div>
     </div>

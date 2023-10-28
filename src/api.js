@@ -1,15 +1,19 @@
-export async function getDatas() {
-  const response = await fetch(
-    'https://bootcamp-api.codeit.kr/api/sample/folder'
-  );
+const SAMPLE_URL = 'https://bootcamp-api.codeit.kr/api/sample/';
+
+export async function getSampleFolderDatas() {
+  const response = await fetch(`${SAMPLE_URL}folder`);
+  if (response.status !== 200) {
+    throw new Error('데이터를 불러오는데 실패했습니다');
+  }
   const body = await response.json();
   return body;
 }
 
-export async function getUserData() {
-  const response = await fetch(
-    'https://bootcamp-api.codeit.kr/api/sample/user'
-  );
+export async function getSampleUserData() {
+  const response = await fetch(`${SAMPLE_URL}user`);
+  if (response.status !== 200) {
+    throw new Error('데이터를 불러오는데 실패했습니다');
+  }
   const body = await response.json();
   return body;
 }
