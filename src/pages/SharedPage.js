@@ -1,4 +1,4 @@
-import "./Shared.css";
+import "./SharedPage.css";
 import Cards from "../components/Cards";
 import Search from "../components/Search";
 import { getUserFolder } from "../utils/api";

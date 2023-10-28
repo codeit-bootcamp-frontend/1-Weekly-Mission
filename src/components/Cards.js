@@ -1,5 +1,5 @@
 import "./Cards.css";
-import noImg from "../assets/images/noImg.png";
+import DEFAULT_IMG from "../assets/images/noImg.png";
 import favoritesImg from "../assets/images/star.svg";
 import meatballMenuImg from "../assets/images/meatball.svg";
 import dayjs from "dayjs";
@@ -7,16 +7,21 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 function Cards({ cardInfo }) {
-  const { createdAt, url, description, imageSource } = cardInfo;
+  const { createdAt, url, description, imageSource, created_at, image_source } =
+    cardInfo;
 
-  const updateTimeAgo = dayjs(createdAt).fromNow();
-  const updateDate = dayjs(createdAt).format("YYYY. MM. DD");
+  const updateTimeAgo = dayjs(createdAt ?? created_at).fromNow();
+  const updateDate = dayjs(createdAt ?? created_at).format("YYYY. MM. DD");
 
   return (
     <li className="card-list">
       <a href={url} target="_blank" rel="noreferrer noopener">
         <div className="card-box">
-          <img className="card" src={imageSource ?? noImg} alt="카드 이미지" />
+          <img
+            className="card"
+            src={imageSource ?? image_source ?? DEFAULT_IMG}
+            alt="카드 이미지"
+          />
           <img className="favorites" src={favoritesImg} alt="즐겨찾기 이미지" />
         </div>
         <div className="card-info">

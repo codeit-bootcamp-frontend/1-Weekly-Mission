@@ -13,14 +13,11 @@ function CategoryItem({ data, handleClick }) {
   // }, []);
 
   // console.log(folderInfo);
+  const handleCategoryClick = () => handleClick(data.id);
 
   return (
-    <li
-      onClick={() => {
-        handleClick(data?.id);
-      }}
-    >
-      {/* <a>{folderName[idx]}</a> */}
+    <li onClick={handleCategoryClick}>
+      <a>{data.name}</a>
     </li>
   );
 }
