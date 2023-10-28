@@ -20,4 +20,9 @@ export const ApiMapper = {
       GET_LINKS: `${URL_PATH.USER_CONTROLLER}/:userId/links`,
     },
   },
+  user: {
+    get: {
+      GET_USER: `${URL_PATH.USER_CONTROLLER}/:userId`,
+    },
+  },
 };

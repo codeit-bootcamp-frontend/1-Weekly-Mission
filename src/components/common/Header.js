@@ -11,7 +11,7 @@ const Header = () => {
     email: null,
     name: null,
     id: null,
-    profileImageSource: null,
+    image_source: null,
   });
   const [isLoading, error, getUserAsync] = useAsync(getUser);
   const { pathname } = useLocation();
@@ -24,10 +24,12 @@ const Header = () => {
   }, [pathname]);
 
   const handleProfile = useCallback(async () => {
-    const result = await getUserAsync();
+    const result = await getUserAsync(1);
     if (!result) return;
 
-    setUserData(result);
+    const { data } = result;
+
+    setUserData(data[0]);
   }, [getUserAsync]);
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const Header = () => {
 
         {userData.email ? (
           <ProfileContainer>
-            <img src={userData.profileImageSource} alt="profileImg" />
+            <img src={userData.image_source} alt="profileImg" />
             <div className="profileEmail">{userData.email}</div>
           </ProfileContainer>
         ) : (

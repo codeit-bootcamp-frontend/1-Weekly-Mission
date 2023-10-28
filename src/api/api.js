@@ -27,9 +27,13 @@ export const getFolder = async () => {
   }
 };
 
-export const getUser = async () => {
+export const getUser = async (userId) => {
   try {
-    const response = await request.get(ApiMapper.sample.get.GET_USER);
+    const response = await request.get(ApiMapper.user.get.GET_USER, {
+      path: {
+        userId: userId,
+      },
+    });
     if (response.status === 200) {
       return response.data;
     }
