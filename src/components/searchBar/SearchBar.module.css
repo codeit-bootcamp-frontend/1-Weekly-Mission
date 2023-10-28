@@ -1,9 +1,10 @@
 .container {
   display: flex;
-  width: calc(100% - 40rem);
+  width: calc(100% - 10rem);
   margin: 3rem auto;
   background-color: var(--gray20);
   border-radius: 10px;
+
   /* tablet */
   @media (min-width: 768px) {
   }
