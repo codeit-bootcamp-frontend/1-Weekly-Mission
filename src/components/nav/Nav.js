@@ -9,12 +9,12 @@ const Nav = ({ pageType }) => {
   const [user, setUser] = useState(false);
 
   const handleLoad = useCallback(async () => {
-    const result = await getResponse("sample/user");
+    const result = await getResponse(pageType, "user");
     if (!result) {
       return;
     }
 
-    setUser(result);
+    setUser(pageType === "shared" ? result : result.data[0]);
   }, []);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Nav = ({ pageType }) => {
       <a className="logo_button" href="/">
         <img className="logo" src={logo} alt="로고 이미지" />
       </a>
-      {user ? <NavProfile {...user} /> : <NavLogin>로그인</NavLogin>}
+      {user ? <NavProfile user_data={user} /> : <NavLogin>로그인</NavLogin>}
     </nav>
   );
 };

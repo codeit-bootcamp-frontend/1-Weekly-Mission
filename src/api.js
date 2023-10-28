@@ -1,7 +1,16 @@
 const BASE_URL = "https://bootcamp-api.codeit.kr/api/";
 
-const getResponse = async (path) => {
-  const response = await fetch(`${BASE_URL}${path}`);
+const PATH = {
+  shared: {
+    user: BASE_URL + "sample/user",
+  },
+  folder: {
+    user: BASE_URL + "users/1",
+  },
+};
+
+const getResponse = async (pageType, dataType) => {
+  const response = await fetch(PATH[pageType][dataType]);
 
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패했습니다.");
