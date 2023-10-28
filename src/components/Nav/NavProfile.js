@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getSampleUser } from '../../apis/api';
+import { getSample } from '../../apis/api';
 import styles from './Nav.module.css';
 
 function NavProfile() {
@@ -7,7 +7,7 @@ function NavProfile() {
   const [profileImageSource, setProfileImageSource] = useState();
 
   const loadUserData = async () => {
-    const { email, profileImageSource } = await getSampleUser();
+    const { email, profileImageSource } = await getSample('user');
     setEmail(email);
     setProfileImageSource(profileImageSource);
   };

@@ -1,15 +1,18 @@
 const url = 'https://bootcamp-api.codeit.kr/api';
 
-const getSampleUser = async () => {
-  const response = await fetch(`${url}/sample/user`);
+// getSample (user, floder)
+const getSample = async (type) => {
+  const response = await fetch(`${url}/sample/${type}`);
   const data = response.json();
   return data;
 };
 
-const getSampleFolder = async () => {
-  const response = await fetch(`${url}/sample/folder`);
-  const data = response.json();
-  return data;
+const saveTokenToLocalStorage = async (promise) => {
+  const { data } = await promise.json();
+  const accessToken = data?.accessToken;
+  const refreshToken = data?.refreshToken;
+  localStorage.setItem('accessToken', accessToken);
+  localStorage.setItem('refreshToken', refreshToken);
 };
 
 const requestSign = async (signType, data) => {
@@ -21,18 +24,9 @@ const requestSign = async (signType, data) => {
     body: JSON.stringify(data),
   });
 
+  saveTokenToLocalStorage(responseData);
+
   return responseData;
 };
 
-const saveAccessTokenToLocalStorage = async (promise) => {
-  const { data } = await promise.json();
-  const accessToken = data?.accessToken;
-  localStorage.setItem('accessToken', accessToken);
-};
-
-export {
-  getSampleFolder,
-  getSampleUser,
-  requestSign,
-  saveAccessTokenToLocalStorage,
-};
+export { getSample, requestSign };

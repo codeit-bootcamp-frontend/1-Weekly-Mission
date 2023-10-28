@@ -6,12 +6,11 @@ import SignInput from '../components/SignInput/SignInput';
 import Button from '../components/Button/Button';
 import useInputValue from '../hooks/useInputValue';
 import { Navigate, useNavigate } from 'react-router';
-import { requestSign, saveAccessTokenToLocalStorage } from '../apis/api';
+import { requestSign } from '../apis/api';
 import useInputError from '../hooks/useInputError';
+import SetSignInput from '../classes/SetSignInput';
 
 function Signin() {
-  const navigate = useNavigate();
-
   const [values, handleChange] = useInputValue();
 
   const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
@@ -24,6 +23,12 @@ function Signin() {
     handlePasswordFocus,
   ] = useInputError(values, 'in', 'password');
 
+  const navigate = useNavigate();
+
+  if (localStorage.getItem('accessToken')) {
+    return <Navigate to="/folder" />;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -34,8 +39,6 @@ function Signin() {
 
     const response = await requestSign('in', data);
 
-    saveAccessTokenToLocalStorage(response);
-
     if (response.ok) {
       navigate('/folder');
     } else {
@@ -43,44 +46,8 @@ function Signin() {
     }
   };
 
-  if (localStorage.getItem('accessToken')) {
-    return <Navigate to="/folder" />;
-  }
-
-  class SignInputMaker {
-    constructor(
-      idfor,
-      name,
-      type,
-      value,
-      children,
-
-      errorState,
-      errorText,
-
-      onChange,
-      onBlur,
-      onFocus,
-      eyes
-    ) {
-      this.idfor = idfor;
-      this.name = name;
-      this.type = type;
-      this.value = value;
-      this.children = children;
-
-      this.errorState = errorState;
-      this.errorText = errorText;
-
-      this.onChange = onChange;
-      this.onBlur = onBlur;
-      this.onFocus = onFocus;
-      this.eyes = eyes;
-    }
-  }
-
   const SignInputArray = [
-    new SignInputMaker(
+    new SetSignInput(
       'signinEmail',
       'email',
       'email',
@@ -95,7 +62,7 @@ function Signin() {
       handleEmailFocus,
       false
     ),
-    new SignInputMaker(
+    new SetSignInput(
       'signinPassword',
       'password',
       'password',
@@ -128,7 +95,7 @@ function Signin() {
         <section className={styles.sign}>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {SignInputArray.map((SignInputs) => {
-              return <SignInput {...SignInputs} key={SignInputs.name} />;
+              return <SignInput {...SignInputs} />;
             })}
 
             <Button className={styles.button}>로그인</Button>

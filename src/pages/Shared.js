@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import SharedFolderInfo from '../components/SharedFolderInfo/SharedFolderInfo';
-import { getSampleFolder } from '../apis/api';
+import { getSample } from '../apis/api';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SharedFolder from '../components/SharedFolder/SharedFolder';
 
@@ -22,7 +22,7 @@ function Shared() {
   const loadFolderData = async () => {
     const {
       folder: { name, owner, links },
-    } = await getSampleFolder();
+    } = await getSample('folder');
 
     setName(name);
     setOwner({ ...owner });

@@ -8,10 +8,9 @@ import useInputValue from '../hooks/useInputValue';
 import { requestSign } from '../apis/api';
 import { Navigate, useNavigate } from 'react-router';
 import useInputError from '../hooks/useInputError';
+import SetSignInput from '../classes/SetSignInput';
 
 function Signup() {
-  const navigate = useNavigate();
-
   const [values, handleChange] = useInputValue();
 
   const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
@@ -31,6 +30,12 @@ function Signup() {
     handlePasswordCheckFocus,
   ] = useInputError(values, 'up', 'passwordCheck');
 
+  const navigate = useNavigate();
+
+  if (localStorage.getItem('accessToken')) {
+    return <Navigate to="/folder" />;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -48,44 +53,8 @@ function Signup() {
     }
   };
 
-  if (localStorage.getItem('accessToken')) {
-    return <Navigate to="/folder" />;
-  }
-
-  class SignInputMaker {
-    constructor(
-      idfor,
-      name,
-      type,
-      value,
-      children,
-
-      errorState,
-      errorText,
-
-      onChange,
-      onBlur,
-      onFocus,
-      eyes
-    ) {
-      this.idfor = idfor;
-      this.name = name;
-      this.type = type;
-      this.value = value;
-      this.children = children;
-
-      this.errorState = errorState;
-      this.errorText = errorText;
-
-      this.onChange = onChange;
-      this.onBlur = onBlur;
-      this.onFocus = onFocus;
-      this.eyes = eyes;
-    }
-  }
-
   const SignInputArray = [
-    new SignInputMaker(
+    new SetSignInput(
       'signiupEmail',
       'email',
       'email',
@@ -100,7 +69,7 @@ function Signup() {
       handleEmailFocus,
       false
     ),
-    new SignInputMaker(
+    new SetSignInput(
       'signupPassword',
       'password',
       'password',
@@ -115,10 +84,10 @@ function Signup() {
       handlePasswordFocus,
       true
     ),
-    new SignInputMaker(
+    new SetSignInput(
       'signupPasswordCheck',
       'passwordCheck',
-      'passwordCheck',
+      'password',
       `${values.passwordCheck}`,
       '비밀번호 확인',
 
