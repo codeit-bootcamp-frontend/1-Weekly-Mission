@@ -5,7 +5,9 @@ export const CardWrapper = styled.div`
   height: 32.7rem;
   flex-shrink: 0;
   border-radius: 15px;
+  position: relative;
   box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 
   @media (min-width: 768px) {
     width: 34rem;
@@ -21,6 +23,8 @@ export const CardInfoBox = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  z-index: 1;
+  position: relative;
 `;
 
 export const CardInfoTop = styled.div`

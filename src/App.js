@@ -7,7 +7,7 @@ import Folder from './pages/Folder';
 
 function App() {
   return (
-    <div className='App'>
+    <div>
       <GlobalStyle />
       <Nav />
       <Routes>
