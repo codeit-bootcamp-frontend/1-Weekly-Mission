@@ -11,11 +11,29 @@ export async function getUserProfile() {
   }
 }
 
-export async function getCards() {
+export async function getShared() {
   try {
     const response = await axios.get(`${BASE_URL}/sample/folder`);
     return response.data;
   } catch (error) {
     throw new Error('카드 정보를 불러오지 못했습니다.');
+  }
+}
+
+export async function getLinks() {
+  try {
+    const response = await axios.get(`${BASE_URL}/users/1/links`);
+    return response.data;
+  } catch (error) {
+    throw new Error('링크 정보를 불러오지 못했습니다.');
+  }
+}
+
+export async function getFolders() {
+  try {
+    const response = await axios.get(`${BASE_URL}/users/1/folders`);
+    return response.data;
+  } catch (error) {
+    throw new Error('폴더 정보를 불러오지 못했습니다.');
   }
 }

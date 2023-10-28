@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
-import { getUserProfile } from '../../api/user';
+import { getUserProfile } from '../../api/api';
 import styled from 'styled-components';
 
 const INIT_USER_PROFILE = {
