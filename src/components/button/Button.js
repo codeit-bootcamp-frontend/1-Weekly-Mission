@@ -23,7 +23,14 @@ const BaseButton = styled.button`
 
 export default function Button({ children, className, name, onClickFunc }) {
   return (
-    <BaseButton name={name} className={className} onClick={onClickFunc}>
+    <BaseButton
+      name={name}
+      className={className}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClickFunc();
+      }}
+    >
       {children}
     </BaseButton>
   );

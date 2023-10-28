@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NavSec from "../components/nav/NavSec";
 import Header from "../components/header/Header";
 import SearchBar from "../components/searchBar/SearchBar";
@@ -8,16 +8,15 @@ import Footer from "../components/footer/Footer";
 import useFetch from "../hooks/useFetch";
 import Landing from "../components/landing/Landing";
 import LocaleContext from "../contexts/LocaleContext";
-import { useParams } from "react-router-dom";
 import Article from "../components/article/Article";
+import { useParams } from "react-router-dom";
 
 export default function FolderPage() {
+  const paramId = useParams();
   const [data, isLoading] = useFetch(
     "https://bootcamp-api.codeit.kr/api/users/1/folders"
   );
 
-  // const { folderId } = useParams();
-  // console.log(folderId);
   const result = data?.data;
   const obj = {};
   let obj_keys = [];
@@ -31,10 +30,15 @@ export default function FolderPage() {
       obj_keys.push(item.id);
     });
 
+  // console.log(Object.keys(paramId));
   // const key = "Folder";
   // const [data, isLoading] = useFetch(
   //   `https://bootcamp-api.codeit.kr/api/users/${userId}/folders`
   // );
+
+  // console.log(paramId.folderId);
+  // const title = paramId.folderId;
+  // console.log(paramId);
 
   return (
     <LocaleContext.Provider value={obj}>
@@ -43,7 +47,8 @@ export default function FolderPage() {
       <SearchBar />
       <Menubar data={data} isLoading={isLoading} />
       {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
-      <Article />
+      {/* title={title} */}
+      <Article folderId={paramId.folderId} />
       <WholeData />
       <Footer />
     </LocaleContext.Provider>

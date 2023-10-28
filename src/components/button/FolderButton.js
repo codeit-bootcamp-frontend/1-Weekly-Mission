@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "../button/Button";
 import styles from "./FolderButton.module.css";
-
-import { useNavigate, useParams } from "react-router-dom";
+import Article from "../article/Article";
+import { useNavigate } from "react-router-dom";
 import { getEachfoldersData } from "../../api/folder";
 
 export default function FolderButton({ data, dataKeys, onClickFunc }) {
@@ -14,6 +14,7 @@ export default function FolderButton({ data, dataKeys, onClickFunc }) {
         <Button
           name="total"
           onClickFunc={() => {
+            // <Article />;
             navigate("/folder");
           }}
         >
@@ -21,7 +22,6 @@ export default function FolderButton({ data, dataKeys, onClickFunc }) {
         </Button>
         {data &&
           data.map((item) => {
-            console.log(item);
             return dataKeys.map((key) => {
               if (key === 168) {
                 item[key].folderName = "코딩 팁";
@@ -39,6 +39,8 @@ export default function FolderButton({ data, dataKeys, onClickFunc }) {
                     getEachfoldersData({ folderId: key }).then((data) => {
                       let boolean = data.length > 0;
                       if (boolean) {
+                        // console.log(otherTitle);
+                        // <Article title={otherTitle} />;
                         navigate(`/folder/${key}`);
                       } else if (!boolean) {
                         navigate("/folder/nothing");
