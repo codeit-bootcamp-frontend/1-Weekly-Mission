@@ -1,6 +1,6 @@
 import LinkAdd from 'components/LinkAdd/LinkAdd';
+import NotFoundLink from 'components/NotFoundLink/NotFoundLink';
 import Search from 'components/Search/Search';
-import './NotFoundPage.css';
 
 function NotFoundPage() {
   return (
@@ -8,7 +8,7 @@ function NotFoundPage() {
       <LinkAdd />
       <div className="main-section">
         <Search />
-        <p className="notSaveLink">저장된 링크가 없습니다.</p>
+        <NotFoundLink />
       </div>
     </>
   );

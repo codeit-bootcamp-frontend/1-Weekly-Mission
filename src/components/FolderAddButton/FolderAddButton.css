@@ -4,3 +4,9 @@
   color: var(--primary);
   font-size: 1.6rem;
 }
+
+@media (max-width: 767px) {
+  .folderAdd {
+    display: none;
+  }
+}

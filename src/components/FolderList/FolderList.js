@@ -6,8 +6,9 @@ function FolderList({ folderData }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.folderWrapper}>
+        <FolderForm name={'전체'} href="/folder" />
         {folderData.map((data) => (
-          <FolderForm key={data.id} data={data} />
+          <FolderForm key={data.id} name={data.name} href={`/folder?folderId=${data.id}`} />
         ))}
       </div>
       <FolderAddButton />

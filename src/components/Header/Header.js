@@ -1,13 +1,12 @@
 import Logo from 'assets/icon/logo.svg';
 import Login from 'components/Login/Login';
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import headerRequestData from 'services/api';
 import './Header.css';
 
 function Header() {
   const [getUser, setGetUser] = useState({});
-  const { pathname } = useLocation();
 
   const loginInfo = useCallback(async () => {
     const headerResult = await headerRequestData();

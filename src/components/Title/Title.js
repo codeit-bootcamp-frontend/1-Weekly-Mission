@@ -1,10 +1,10 @@
 import FunctionButton from 'components/FunctionButton/FunctionButton';
 import './Title.css';
 
-function Title() {
+function Title({ folderName }) {
   return (
     <div className="title-wrapper">
-      <p className="title">유용한 글</p>
+      <p className="title">{folderName}</p>
       <FunctionButton />
     </div>
   );

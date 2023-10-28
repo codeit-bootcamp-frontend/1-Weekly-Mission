@@ -8,3 +8,11 @@
   font-size: 2.4rem;
   font-weight: 600;
 }
+
+@media (max-width: 767px) {
+  .title-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+}
