@@ -4,19 +4,27 @@ import { Link } from "react-router-dom";
 import logoImg from "../assets/logo.svg";
 import { getUser } from '../api';
 import './Nav.css';
-import './App.css';
 
 
-function Profile({ userData }) {
-  const { email, profileImageSource } = userData;
+// function Profile({ userData }) {
+//   const a = userData.data;
+//   console.log(a);
+//   const b = a["id"];
+//   console.log(b);
+  
+//   console.log(data);
+  
+//   const { data } = userData;
+//   console.log(data);
 
-  return (
-    <div className="profile">
-      <img className="profile-img" src={profileImageSource} alt="프로필"/>
-      <span className="profile-email">{email}</span>
-    </div>
-  );
-}
+
+//   return (
+//     <div className="profile">
+//       <img className="profile-img" src={profileImageSource} alt="프로필"/>
+//       <span className="profile-email">{email}</span>
+//     </div>
+//   );
+// }
 
 function Nav() {
   const [userData, setUserData] = useState({}); 
@@ -24,6 +32,7 @@ function Nav() {
   const handleLoad = async () => {
     const nextUserData = await getUser();
     setUserData(nextUserData);
+    console.log(userData);
   };
 
   useEffect(() => {

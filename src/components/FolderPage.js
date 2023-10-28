@@ -7,7 +7,7 @@ import linkImg from '../assets/link-Img.png';
 
 
 
-function Main() {
+function FolderPage() {
   const [folderLinks, setFolderLinks] = useState([]);
 
   const handleLoad = async () => {
@@ -44,4 +44,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default FolderPage;

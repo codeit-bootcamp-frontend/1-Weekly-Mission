@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { getFolder } from '../api';
-// import './Folder';
 import CardList from './CardList';
 import search from '../assets/search.svg';
 
