@@ -2,7 +2,7 @@ import Card from "../../components/card/Card";
 import SearchImg from "../../assets/folder/img_search.png";
 import { useCallback, useEffect, useState } from "react";
 import useAsync from "../../hooks/useAsync";
-import { getFolder } from "../../api/api";
+import { getSampleFolder } from "../../api/api";
 import {
   CardContainer,
   ContentContainer,
@@ -16,10 +16,11 @@ const Folder = () => {
   const [cardData, setCardData] = useState([]);
   const [user, setUser] = useState();
   const [folderName, setFolderName] = useState("");
-  const [isLoading, error, getFolderAsync] = useAsync(getFolder);
+
+  const [isLoading, error, getSampleFolderAsync] = useAsync(getSampleFolder);
 
   const handleFolder = useCallback(async () => {
-    const result = await getFolderAsync();
+    const result = await getSampleFolderAsync();
     if (!result) return;
 
     const { folder } = result;
@@ -27,7 +28,7 @@ const Folder = () => {
     setCardData(folder.links);
     setUser(folder.owner);
     setFolderName(folder.name);
-  }, [getFolderAsync]);
+  }, [getSampleFolderAsync]);
 
   useEffect(() => {
     handleFolder();

@@ -29,8 +29,10 @@ const calculateTimeAgo = (createdAt) => {
 };
 
 const Card = ({ cardData }) => {
-  const ago = calculateTimeAgo(cardData.createdAt);
-  const createdAtFormat = moment(cardData.createdAt).format("YYYY.MM.DD");
+  const ago = calculateTimeAgo(cardData.created_at || cardData.createdAt);
+  const createdAtFormat = moment(
+    cardData.created_at || cardData.createdAt
+  ).format("YYYY.MM.DD");
 
   const openUrl = () => {
     window.open(cardData.url, "__blank");
@@ -38,9 +40,13 @@ const Card = ({ cardData }) => {
 
   return (
     <div className="cardContainer" onClick={openUrl}>
-      {cardData.imageSource ? (
+      {cardData.image_source || cardData.imageSource ? (
         <div className="cardImageContainer">
-          <img className="cardImage" src={cardData.imageSource} alt="cardImg" />
+          <img
+            className="cardImage"
+            src={cardData.image_source || cardData.imageSource}
+            alt="cardImg"
+          />
         </div>
       ) : (
         <div className="cardImageContainer cardImage">
