@@ -9,15 +9,11 @@ const BaseButton = styled.button`
   height: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  @media (min-width: 768px) {
-  }
-
-  /* table2 */
-  @media (min-width: 1124px) {
-  }
-
-  /* descktop*/
-  @media (min-width: 1200px) {
+  color: black;
+  font-weight: bold;
+  &:hover {
+    background-color: var(--primary);
+    opacity: 0.7;
   }
 `;
 
