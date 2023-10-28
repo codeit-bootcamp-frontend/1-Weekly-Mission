@@ -4,7 +4,7 @@ import twitter_icon from '../../assets/svg/twitter.svg';
 import youtube_icon from '../../assets/svg/youtube.svg';
 import instagram_icon from '../../assets/svg/instagram.svg';
 
-const snsLinkArray = [
+const SNS_LINKS = [
   {
     id: 1,
     url: 'https://www.facebook.com/',
@@ -34,7 +34,7 @@ const snsLinkArray = [
 function SNSLinks() {
   return (
     <SNSLinksStyle>
-      {snsLinkArray.map((snsLink) => {
+      {SNS_LINKS.map((snsLink) => {
         return (
           <SNSLink snsLink={snsLink} key={snsLink.id}/>
         );

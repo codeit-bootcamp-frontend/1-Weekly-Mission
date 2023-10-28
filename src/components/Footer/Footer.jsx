@@ -18,7 +18,7 @@ function Footer() {
 
 export default Footer;
 
-const FooterBlock = styled.div`
+const FooterBlock = styled.footer`
   display: flex;
   margin-top: 6rem;
   justify-content: center;
