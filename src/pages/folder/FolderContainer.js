@@ -10,6 +10,7 @@ import Loading from "components/loading/Loading";
 import Searchbar from "components/searchbar/Searchbar";
 import FolderHero from "components/hero/HeroAboutFolder";
 import Categories from "components/Categories";
+import Options from "components/Options";
 
 const DEFAULT = "전체";
 const USER_ID = 1;
@@ -71,6 +72,10 @@ export default function Folder() {
                   <span>폴더 추가</span>
                   <img src={AddIcon} alt="add" />
                 </style.AddFolderBtn>
+              </style.MenuContainer>
+              <style.MenuContainer>
+                <style.SubTitle>{selected}</style.SubTitle>
+                {selected !== DEFAULT && <Options />}
               </style.MenuContainer>
               <CardList links={links} />
             </style.Contents>

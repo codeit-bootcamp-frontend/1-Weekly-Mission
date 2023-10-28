@@ -57,3 +57,8 @@ export const AddFolderBtn = styled.div`
   color: var(--color-primary);
   cursor: pointer;
 `;
+
+export const SubTitle = styled.div`
+  font-size: 1.5rem;
+  font-weight: 600;
+`;
