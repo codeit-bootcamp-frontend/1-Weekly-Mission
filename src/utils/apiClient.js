@@ -1,6 +1,6 @@
 import { BASE_URL } from "utils/constants.js";
 
-const fetchClient = async ({ url, method, body }) => {
+export const fetchClient = async ({ url, method, body }) => {
   try {
     const response = await fetch(`${BASE_URL}/${url}`, {
       method,
@@ -18,7 +18,7 @@ const fetchClient = async ({ url, method, body }) => {
   }
 };
 
-const fetchClientJson = async ({ url, method, body }) => {
+export const fetchClientJson = async ({ url, method, body }) => {
   try {
     const response = await fetch(`${BASE_URL}/${url}`, {
       method,
@@ -38,4 +38,3 @@ const fetchClientJson = async ({ url, method, body }) => {
     throw error;
   }
 };
-export { fetchClient, fetchClientJson };
