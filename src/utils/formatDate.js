@@ -1,11 +1,11 @@
-function formatDate(createAt) {
-  const date = new Date(createAt);
+function formatDate(createdAt) {
+  const date = new Date(createdAt);
   return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
 }
 
-function formatTimeAgo(createAt) {
+function formatTimeAgo(createdAt) {
   const currentTime = new Date();
-  const timeDifference = (currentTime - new Date(createAt)) / 1000;
+  const timeDifference = (currentTime - new Date(createdAt)) / 1000;
 
   const minutes = Math.floor(timeDifference / 60);
   const hours = Math.floor(minutes / 60);

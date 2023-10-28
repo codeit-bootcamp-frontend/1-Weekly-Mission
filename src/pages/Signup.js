@@ -3,75 +3,33 @@ import styles from './sign.module.css';
 import SignFooter from '../components/SignFooter/SignFooter';
 import SignLink from '../components/SignLink/SignLink';
 import SignInput from '../components/SignInput/SignInput';
-import { useState } from 'react';
 import Button from '../components/Button/Button';
-import { isEmail, isPassword } from '../utils/validation';
 import useInputValue from '../hooks/useInputValue';
 import { requestSign } from '../apis/api';
 import { Navigate, useNavigate } from 'react-router';
+import useInputError from '../hooks/useInputError';
 
 function Signup() {
   const navigate = useNavigate();
 
   const [values, handleChange] = useInputValue();
 
-  const [emailError, setEmailError] = useState(false);
-  const [emailErrorText, setEmailErrorText] = useState('');
-  const [passwordError, setPasswordError] = useState(false);
-  const [passwordErrorText, setPasswordErrorText] = useState('');
-  const [passwordCheckError, setPasswordCheckError] = useState(false);
-  const [passwordCheckErrorText, setPasswordCheckErrorText] = useState('');
+  const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
+    useInputError(values, 'up', 'email');
 
-  const handleEmailBlur = () => {
-    if (values.email === '') {
-      setEmailError(true);
-      setEmailErrorText('이메일을 입력해주세요');
-    } else if (!isEmail(values.email)) {
-      setEmailError(true);
-      setEmailErrorText('올바른 이메일 주소가 아닙니다');
-    } else {
-      setEmailError(false);
-    }
-  };
+  const [
+    passwordError,
+    passwordErrorText,
+    handlePasswordBlur,
+    handlePasswordFocus,
+  ] = useInputError(values, 'up', 'password');
 
-  const handlePasswordBlur = () => {
-    if (values.password === '') {
-      setPasswordError(true);
-      setPasswordErrorText('이메일을 입력해주세요');
-    } else if (!isPassword(values.password)) {
-      setPasswordError(true);
-      setPasswordErrorText('이메일을 입력해주세요');
-    } else {
-      setEmailError(false);
-    }
-  };
-
-  const handlePasswordCheckBlur = () => {
-    if (values.password !== values.passwordCheck) {
-      setPasswordCheckError(true);
-      setPasswordCheckErrorText('비밀번호가 일치하지 않아요');
-    } else {
-      setEmailError(false);
-    }
-  };
-
-  const handleEmailFocus = () => {
-    if (emailError) {
-      setEmailError(false);
-    }
-  };
-
-  const handlePasswordFocus = () => {
-    if (passwordError) {
-      setPasswordError(false);
-    }
-  };
-
-  const handlePasswordCheckFocus = () => {
-    if (passwordCheckError) {
-      setPasswordCheckError(false);
-    }
-  };
+  const [
+    passwordCheckError,
+    passwordCheckErrorText,
+    handlePasswordCheckBlur,
+    handlePasswordCheckFocus,
+  ] = useInputError(values, 'up', 'passwordCheck');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,67 +58,77 @@ function Signup() {
       name,
       type,
       value,
-      onChange,
       children,
-      eyes,
+
       errorState,
       errorText,
+
+      onChange,
       onBlur,
-      onFocus
+      onFocus,
+      eyes
     ) {
       this.idfor = idfor;
       this.name = name;
       this.type = type;
       this.value = value;
-      this.onChange = onChange;
       this.children = children;
-      this.eyes = eyes;
+
       this.errorState = errorState;
       this.errorText = errorText;
+
+      this.onChange = onChange;
       this.onBlur = onBlur;
       this.onFocus = onFocus;
+      this.eyes = eyes;
     }
   }
 
   const SignInputArray = [
     new SignInputMaker(
-      'signinEmail',
+      'signiupEmail',
       'email',
       'email',
       `${values.email}`,
-      handleChange,
       '이메일',
-      false,
+
       emailError,
       emailErrorText,
+
+      handleChange,
       handleEmailBlur,
-      handleEmailFocus
+      handleEmailFocus,
+      false
     ),
     new SignInputMaker(
-      'signinPassword',
+      'signupPassword',
       'password',
       'password',
       `${values.password}`,
-      handleChange,
       '비밀번호',
-      true,
+
       passwordError,
       passwordErrorText,
+
+      handleChange,
       handlePasswordBlur,
-      handlePasswordFocus
+      handlePasswordFocus,
+      true
     ),
     new SignInputMaker(
-      'signinPasswordCheck',
+      'signupPasswordCheck',
       'passwordCheck',
       'passwordCheck',
       `${values.passwordCheck}`,
-      handleChange,
       '비밀번호 확인',
-      true,
+
       passwordCheckError,
       passwordCheckErrorText,
+
+      handleChange,
       handlePasswordCheckBlur,
-      handlePasswordCheckFocus
+      handlePasswordCheckFocus,
+      true
     ),
   ];
 

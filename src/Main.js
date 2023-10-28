@@ -11,7 +11,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Index />} />
-          <Route path="folder" element={<Index />} />
+          <Route path="folder" element={<Shared />} />
           <Route path="shared" element={<Shared />} />
         </Route>
 

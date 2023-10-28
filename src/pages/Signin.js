@@ -7,51 +7,22 @@ import Button from '../components/Button/Button';
 import useInputValue from '../hooks/useInputValue';
 import { Navigate, useNavigate } from 'react-router';
 import { requestSign, saveAccessTokenToLocalStorage } from '../apis/api';
-import { isEmail } from '../utils/validation';
-import { useState } from 'react';
+import useInputError from '../hooks/useInputError';
 
 function Signin() {
   const navigate = useNavigate();
 
   const [values, handleChange] = useInputValue();
 
-  const [emailError, setEmailError] = useState(false);
-  const [emailErrorText, setEmailErrorText] = useState('');
-  const [passwordError, setPasswordError] = useState(false);
-  const [passwordErrorText, setPasswordErrorText] = useState('');
+  const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
+    useInputError(values, 'in', 'email');
 
-  const handleEmailBlur = () => {
-    if (values.email === '') {
-      setEmailError(true);
-      setEmailErrorText('이메일을 입력해주세요');
-    } else if (!isEmail(values.email)) {
-      setEmailError(true);
-      setEmailErrorText('올바른 이메일 주소가 아닙니다');
-    } else {
-      setEmailError(false);
-    }
-  };
-
-  const handlePasswordBlur = () => {
-    if (values.password === '') {
-      setPasswordError(true);
-      setPasswordErrorText('비밀번호를 입력해주세요');
-    } else {
-      setEmailError(false);
-    }
-  };
-
-  const handleEmailFocus = () => {
-    if (emailError) {
-      setEmailError(false);
-    }
-  };
-
-  const handlePasswordFocus = () => {
-    if (passwordError) {
-      setPasswordError(false);
-    }
-  };
+  const [
+    passwordError,
+    passwordErrorText,
+    handlePasswordBlur,
+    handlePasswordFocus,
+  ] = useInputError(values, 'in', 'password');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,31 +46,36 @@ function Signin() {
   if (localStorage.getItem('accessToken')) {
     return <Navigate to="/folder" />;
   }
+
   class SignInputMaker {
     constructor(
       idfor,
       name,
       type,
       value,
-      onChange,
       children,
-      eyes,
+
       errorState,
       errorText,
+
+      onChange,
       onBlur,
-      onFocus
+      onFocus,
+      eyes
     ) {
       this.idfor = idfor;
       this.name = name;
       this.type = type;
       this.value = value;
-      this.onChange = onChange;
       this.children = children;
-      this.eyes = eyes;
+
       this.errorState = errorState;
       this.errorText = errorText;
+
+      this.onChange = onChange;
       this.onBlur = onBlur;
       this.onFocus = onFocus;
+      this.eyes = eyes;
     }
   }
 
@@ -109,26 +85,30 @@ function Signin() {
       'email',
       'email',
       `${values.email}`,
-      handleChange,
       '이메일',
-      false,
+
       emailError,
       emailErrorText,
+
+      handleChange,
       handleEmailBlur,
-      handleEmailFocus
+      handleEmailFocus,
+      false
     ),
     new SignInputMaker(
       'signinPassword',
       'password',
       'password',
       `${values.password}`,
-      handleChange,
       '비밀번호',
-      true,
+
       passwordError,
       passwordErrorText,
+
+      handleChange,
       handlePasswordBlur,
-      handlePasswordFocus
+      handlePasswordFocus,
+      true
     ),
   ];
 

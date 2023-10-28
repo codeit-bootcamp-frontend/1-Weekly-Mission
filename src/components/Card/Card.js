@@ -35,7 +35,7 @@ function Card({ card }) {
         <div className={imageStyle} style={bgImg}></div>
         <div className={styles.explanation}>
           <div className={styles.header}>
-            <div>{formatTimeAgo(card.createAt)}</div>
+            <div>{formatTimeAgo(card.createdAt)}</div>
             <img src={kebabImg} alt="쩜쩜쩜" />
           </div>
           <div className={styles.text}>
@@ -43,7 +43,7 @@ function Card({ card }) {
             <div>{card.description}</div>
           </div>
 
-          <div className={styles.footer}>{formatDate(card.createAt)}</div>
+          <div className={styles.footer}>{formatDate(card.createdAt)}</div>
         </div>
       </a>
     </div>
