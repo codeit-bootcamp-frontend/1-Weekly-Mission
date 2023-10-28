@@ -1,5 +1,12 @@
 .add-link-form {
   position: relative;
+  width: 90%;
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .add-link-button {
@@ -19,7 +26,7 @@
 }
 
 .add-link-input {
-  width: 60rem;
+  width: 100%;
   height: 6rem;
   margin: 6rem auto;
   border: none;

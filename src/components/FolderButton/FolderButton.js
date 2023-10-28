@@ -3,8 +3,9 @@ import "./FolderButton.style.css";
 function FolderButton({ folder, onChange }) {
   const { id, name } = folder;
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e) => {
     onChange(name, id);
+    e.target.className = "folder-name-button clicked-folder-button";
   };
 
   return (

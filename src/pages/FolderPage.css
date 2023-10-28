@@ -1,76 +1,18 @@
-.folder-name-title {
-  margin: 0 0 0 10rem;
-  padding: 0;
-  width: 100%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  gap: 5px;
-  color: #000;
-
-  /* Linkbrary/h3-semibold */
-  font-family: Pretendard;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.2px;
-}
-
-.folder-section {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-}
-
-.add-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  background-color: var(--linkbrary-bg, #f0f6ff);
-}
-
-.search-section {
-  width: 90%;
-}
-
 .folder-buttons {
-  margin: 0 0 0 10rem;
-  padding: 0;
-  width: 100%;
+  position: relative;
 }
 
-.card-section {
-  margin: 4rem auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: center;
-  justify-content: center;
+.add-folder-button {
+  position: absolute;
+  top: 1rem;
+  right: 10rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: none;
 }
 
-@media (min-width: 768px) {
-  .card-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-  .search-section {
-    min-width: 30rem;
-  }
-}
-
-@media (min-width: 1124px) {
-  .card-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 3rem;
-  }
+.folder-modifier-buttons {
+  position: absolute;
+  bottom: 0;
+  right: 10rem;
 }

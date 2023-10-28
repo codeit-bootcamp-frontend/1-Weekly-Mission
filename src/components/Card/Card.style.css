@@ -18,6 +18,15 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   overflow: hidden;
+  position: relative;
+}
+
+.noFilledStar-button {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 10px;
+  left: 5px;
 }
 
 .no-card-list {
@@ -43,7 +52,15 @@
   align-items: left;
   padding: 20px 15px;
   gap: 10px;
+  position: relative;
 }
+.kebab-button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 1rem;
+}
+
 .time-stamp {
   color: #666;
   font-family: Pretendard;

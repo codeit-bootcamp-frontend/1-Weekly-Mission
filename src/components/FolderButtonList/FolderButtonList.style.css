@@ -1,5 +1,10 @@
+.folder-buttons-section {
+  padding-right: 20rem;
+}
+
 .folder-buttons-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 

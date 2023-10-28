@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import SearchBar from "../components/SearchBar/SearchBar";
 import LinkAddInput from "../components/LinkAddInput/LinkAddInput";
 import CardList from "../components/CardList/CardList";
+import FolderButtons from "../components/FolderButtons/FolderButtons";
 import useAsync from "../hooks/useAsync";
 import FolderButtonList from "../components/FolderButtonList/FolderButtonList";
 
@@ -15,7 +16,7 @@ function FolderPage() {
   const [cardList, setCardList] = useState([]);
   const [folderList, setFolderList] = useState([]);
 
-  const loadUser = async () => {
+  const loadUser = async (id = "") => {
     if (!folderPath) {
       setFolderId("");
     } else {
@@ -54,8 +55,16 @@ function FolderPage() {
         </div>
         <div className="folder-buttons">
           <FolderButtonList folderList={folderList} onChange={loadCards} />
+          <button type="button" className="add-folder-button">
+            폴더 추가+
+          </button>
+          {folderId && (
+            <div className="folder-modifier-buttons">
+              <FolderButtons />
+            </div>
+          )}
         </div>
-        <div className="card-section">
+        <div className="section">
           <CardList cardList={cardList} />
         </div>
       </section>
