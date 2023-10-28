@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
-import './Logo.css'
+import S from '../styled'
+
+const grid = {
+  gridArea: 'logo',
+}
 
 function Logo({ src = '', alt = '' }) {
   return (
-    <Link className="grid--logo" to='/'>
-      <img className="logo" src={src} alt={alt} />
+    <Link style={grid} to='/'>
+      <S.ImgLogo src={src} alt={alt} />
     </Link>
   )
 }

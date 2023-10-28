@@ -17,7 +17,6 @@ export async function getData(page, type) {
   try {
     const response = await fetch(URLS[page][type]);
     const body = await response.json();
-    console.log(body);
     return { type: `${page}_${type}`, payload: body };
   } catch (error) {
     console.error(error);

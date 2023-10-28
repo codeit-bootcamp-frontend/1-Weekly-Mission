@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import defaultAvatar from '../../assets/Avatar.png'
-import './Header.css'
 import { getData } from '../../utils/api'
 import { reduceData, useReduce } from '../../hooks/useReduce';
+import S from '../styled';
 
 function Header({ page, type = '' }) {
   const [data, dispatch] = useReduce(reduceData, undefined);
@@ -14,19 +14,17 @@ function Header({ page, type = '' }) {
   }, [page, type])
 
   return (
-    <header className='header'>
-      <div className='user' >
+    <S.Header>
+      <S.DivUser>
         {data ? (
           <>
-            <div className='user__box'>
-              <img className='user__img' src={data.owner.profileImageSource ?? defaultAvatar} alt='유저 프로필 이미지' />
-              <p className='user__name'>{data.owner.name}</p>
-            </div>
-            <h1 className='user__folder-name'>{data.folderName}</h1>
+            <S.ImgUser src={data.owner.profileImageSource ?? defaultAvatar} alt='유저 프로필 이미지' />
+            <S.PUser>{data.owner.name}</S.PUser>
+            <S.H1User>{data.folderName}</S.H1User>
           </>
         ) : <p>폴더 정보를 읽어오는 데 실패했습니다.</p>}
-      </div>
-    </header>
+      </S.DivUser>
+    </S.Header>
   )
 }
 
