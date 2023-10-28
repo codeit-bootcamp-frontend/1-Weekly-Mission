@@ -1,7 +1,7 @@
 import "../../styles/landing.css";
-import FolderName from "./FolderName";
+import FolderListItem from "./FolderListItem";
 
-const FolderList = ({ fullData }) => {
+const FolderList = ({ fullData, handleFolderClick }) => {
   return (
     <li
       style={{
@@ -9,7 +9,11 @@ const FolderList = ({ fullData }) => {
       }}
     >
       {fullData.map((data) => (
-        <FolderName key={data?.id} data={data} />
+        <FolderListItem
+          key={data?.id}
+          data={data}
+          handleFolderClick={handleFolderClick}
+        />
       ))}
     </li>
   );

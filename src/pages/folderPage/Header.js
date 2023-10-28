@@ -4,6 +4,7 @@ import Search from "../../components/Search/Search";
 import AddLink from "../../components/addLink/AddLink";
 import { getFolderList, getTotalFolder } from "../../api/folderListApi";
 import FolderList from "./FolderList";
+import { requestSingleFolderApi } from "../../api/singleFolderApi";
 
 import Cards from "./Cards";
 import "./header.css";
@@ -12,6 +13,8 @@ const Header = () => {
   const [fullList, setFullList] = useState([]);
   const [totalData, setTotalData] = useState([]);
   const [isTotalClicked, setIsClicked] = useState(false);
+  const [singleFolderDataId, setSingleFolderDataId] = useState();
+  const [singleFolderData, setSingleFolderData] = useState([]);
 
   const getFolderLists = async () => {
     const temp = await getFolderList();
@@ -32,6 +35,22 @@ const Header = () => {
     setIsClicked(!isTotalClicked);
   }
 
+  const handleFolderClick = (folderId) => {
+    setSingleFolderDataId(folderId);
+  };
+
+  const getSingleFolderData = async () => {
+    const temp = await requestSingleFolderApi(singleFolderDataId);
+    setSingleFolderData(temp);
+  };
+
+  useEffect(() => {
+    if (!singleFolderDataId) return;
+    getSingleFolderData();
+  }, [singleFolderDataId]);
+
+  //console.log(singleFolderDataId);
+
   return (
     <>
       <header style={{ padding: "6rem 0 9rem 0" }}>
@@ -50,7 +69,12 @@ const Header = () => {
             전체
           </button>
         </li>
-        {fullList && <FolderList fullData={fullList} />}
+        {fullList && (
+          <FolderList
+            fullData={fullList}
+            handleFolderClick={handleFolderClick}
+          />
+        )}
       </ul>
 
       {totalData && isTotalClicked && (
