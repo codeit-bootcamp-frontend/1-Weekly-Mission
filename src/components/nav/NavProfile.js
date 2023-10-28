@@ -1,8 +1,4 @@
-import { getProfile } from "../api";
-
-const { email, profileImageSource } = await getProfile();
-
-const NavProfile = () => {
+const NavProfile = ({ email, profileImageSource }) => {
   return (
     <div className="profile_wrapper">
       <img

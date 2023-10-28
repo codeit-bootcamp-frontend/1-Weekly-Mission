@@ -1,4 +1,4 @@
-import starImg from "../image/star.svg";
+import starImg from "../../image/star.svg";
 
 const CardImage = ({ className = "img_loaded", src }) => {
   return (

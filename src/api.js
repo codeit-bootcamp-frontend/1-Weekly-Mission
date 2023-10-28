@@ -1,7 +1,7 @@
-const getProfile = async () => {
-  const response = await fetch(
-    "https://bootcamp-api.codeit.kr/api/sample/user"
-  );
+const BASE_URL = "https://bootcamp-api.codeit.kr/api/sample/";
+
+const getResponse = async (path) => {
+  const response = await fetch(`${BASE_URL}${path}`);
 
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패했습니다.");
@@ -10,16 +10,4 @@ const getProfile = async () => {
   return data;
 };
 
-const getFolder = async () => {
-  const response = await fetch(
-    "https://bootcamp-api.codeit.kr/api/sample/folder"
-  );
-
-  if (!response.ok) {
-    throw new Error("데이터를 불러오는데 실패했습니다.");
-  }
-  const data = await response.json();
-  return data;
-};
-
-export { getProfile, getFolder };
+export { getResponse };

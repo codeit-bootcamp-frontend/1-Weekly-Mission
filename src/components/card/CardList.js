@@ -1,6 +1,6 @@
-import Card from "./card";
+import Card from "./Card";
 import { Fragment } from "react";
-import "./card.css";
+import "./Card.css";
 
 const CardList = ({ items }) => {
   return (

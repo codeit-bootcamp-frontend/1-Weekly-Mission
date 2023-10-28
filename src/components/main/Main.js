@@ -1,13 +1,13 @@
 import "./Main.css";
-import CardList from "../card/cardList";
+import CardList from "../card/CardList";
 import { useCallback, useEffect, useState } from "react";
-import { getFolder } from "../api";
+import { getResponse } from "../../api";
 
 const Main = () => {
   const [cards, setCards] = useState([]);
 
   const handleLoad = useCallback(async () => {
-    const result = await getFolder();
+    const result = await getResponse("folder");
     if (!result) {
       return;
     }

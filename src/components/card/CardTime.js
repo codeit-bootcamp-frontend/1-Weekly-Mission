@@ -1,4 +1,4 @@
-import kebab from "../image/kebab.svg";
+import kebab from "../../image/kebab.svg";
 
 const CardTime = ({ set_time }) => {
   return (
