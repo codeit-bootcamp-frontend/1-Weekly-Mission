@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getFolders } from '../../api/api';
 import CardList from '../Card/CardList';
-import SearchBar from '../SearcchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import './Share.style.css';
 
 function Owner({ profileUrl, ownerName, ownerFolderName }) {
@@ -42,12 +42,13 @@ export default function Share() {
 
   return (
     <>
-      <Owner
+      {/* <Owner
         profileUrl={ownerItem.profileImageSoure}
         ownerName={ownerItem.name}
         ownerFolderName={ownerItem.folderName}
-      />
+      /> */}
       <SearchBar />
+
       {ownerItem && (
         <div className='cardWrapper'>
           <CardList items={ownerItem.links} />

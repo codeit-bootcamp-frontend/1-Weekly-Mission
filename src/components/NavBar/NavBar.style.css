@@ -1,3 +1,10 @@
+.NavBarWrapper {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--linkbrary-bg, #f0f6ff);
+}
+
 /* header */
 
 .header {
@@ -6,8 +13,6 @@
 
   justify-content: space-between;
   padding: 33px 200px;
-
-  background: var(--linkbrary-bg, #f0f6ff);
 }
 
 .profile {

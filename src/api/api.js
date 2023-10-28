@@ -21,4 +21,15 @@ async function getFolders() {
   }
 }
 
-export { getUser, getFolders };
+async function getUserFolders() {
+  try {
+    const response = await fetch(`${BASE_URL}/api/users/1/folders`);
+    const body = await response.json();
+    const result = await body.folder;
+    return result;
+  } catch (error) {
+    console.log('error', error);
+  }
+}
+
+export { getUser, getFolders, getUserFolders };

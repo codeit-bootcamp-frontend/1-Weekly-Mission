@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getUser } from '../../api/api';
 import './NavBar.style.css';
+import AddLink from '../AddLink/AddLink';
 
 function Logo({ url = '/', src }) {
   return (
@@ -45,12 +46,15 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className='header'>
-      <Logo src='/assets/logo.svg' />
-      <Profile
-        profileUrl={userItem.profileImageSource}
-        userEmail={userItem.email}
-      />
+    <div className='NavBarWrapper'>
+      <div className='header'>
+        <Logo src='/assets/logo.svg' />
+        <Profile
+          profileUrl={userItem.profileImageSource}
+          userEmail={userItem.email}
+        />
+      </div>
+      <AddLink />
     </div>
   );
 }
