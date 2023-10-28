@@ -4,6 +4,7 @@ import useAsync from "../../hooks/useAsync";
 import { getUser } from "../../api/api";
 import styled from "styled-components";
 import { device } from "../styles";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const [userData, setUserData] = useState({
@@ -13,6 +14,14 @@ const Header = () => {
     profileImageSource: null,
   });
   const [isLoading, error, getUserAsync] = useAsync(getUser);
+  const { pathname } = useLocation();
+  const [isFixed, setIsFixed] = useState(true);
+
+  useEffect(() => {
+    if (pathname === "/folder") {
+      setIsFixed(false);
+    }
+  }, [pathname]);
 
   const handleProfile = useCallback(async () => {
     const result = await getUserAsync();
@@ -34,7 +43,7 @@ const Header = () => {
   }
 
   return (
-    <HeaderContainer>
+    <HeaderContainer $isFixed={isFixed}>
       <nav className="contentContainer">
         <img src={LogoImg} id="logoImg" alt="logoImg" />
 
@@ -55,8 +64,6 @@ const Header = () => {
 
 export default Header;
 
-// path 검사 후 /folder일 경우 헤더 고정 안함
-
 const HeaderContainer = styled.header`
   display: flex;
   background: var(--background);
@@ -64,10 +71,11 @@ const HeaderContainer = styled.header`
   align-items: center;
   width: 100vw;
   box-sizing: border-box;
-  // position: fixed;
+  position: ${(props) => (props.$isFixed ? "fixed" : "initial")};
   justify-content: center;
   min-height: 9.4rem;
   z-index: 10;
+
   @media all and ${device.tablet} {
     padding: 1.8rem 3.2rem;
   }
