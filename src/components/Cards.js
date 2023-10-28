@@ -1,6 +1,6 @@
 import "./Cards.css";
 import logoImg from "../img/noImgLogo.svg";
-import GetTimeDiff from "./GetTimeDiff";
+import GetTimeDiff from "../utils/GetTimeDiff";
 
 function CardItem({ item, id }) {
   const imgStyle = {
@@ -43,8 +43,8 @@ function CardItem({ item, id }) {
   );
 }
 
-const Cards = ({ personalfolder }) => {
-  const { links } = personalfolder;
+const Cards = ({ folderInfo }) => {
+  const { links } = folderInfo;
 
   return (
     <div className="section-title cardlist">

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./Header.css";
+import "./Nav.css";
 import logoImg from "../img/logo.png";
 
-const Header = ({ account, userErrorMessage }) => {
-  const { name, email, profileImageSource } = account;
+const Nav = ({ user, userErrorMessage }) => {
+  const { name, email, profileImageSource } = user;
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   window.addEventListener("resize", () => {
@@ -18,7 +18,7 @@ const Header = ({ account, userErrorMessage }) => {
           </a>
         </h1>
         <div className="header-login">
-          {!account ? (
+          {!user ? (
             <button type="button">로그인</button>
           ) : (
             <>
@@ -39,4 +39,4 @@ const Header = ({ account, userErrorMessage }) => {
   );
 };
 
-export default Header;
+export default Nav;

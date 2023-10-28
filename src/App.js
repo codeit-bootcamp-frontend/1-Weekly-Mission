@@ -1,34 +1,20 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import { getAccount, getFolder } from "./utils/api";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./styles/GlobalStyle.css";
+import Home from "./Home";
+import Shared from "./pages/Shared";
+import Folder from "./pages/Folder";
 
-function App() {
-  const [account, setAccount] = useState({});
-  const [personalfolder, setPersonalfolder] = useState({});
-
-  const handleLoad = async () => {
-    const { name, email, profileImageSource } = await getAccount();
-    setAccount({ name, email, profileImageSource });
-
-    const {
-      folder: { links, name: title },
-    } = await getFolder();
-    setPersonalfolder({ links, title });
-  };
-
-  useEffect(() => {
-    handleLoad();
-  }, []);
+const App = () => {
   return (
-    <>
-      <Header account={account} />
-      <Main account={account} personalfolder={personalfolder} />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="/shared" element={<Shared />} />
+          <Route path="/folder" element={<Folder />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
