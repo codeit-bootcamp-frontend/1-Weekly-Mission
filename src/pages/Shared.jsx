@@ -1,11 +1,11 @@
-import FolderProfile from '../components/Folder/FolderProfile';
-import FolderMain from '../components/Folder/FolderMain';
+import SharedProfile from '../components/Shared/SharedProfile';
 import { useCallback, useEffect, useState } from 'react';
 import useAsync from '../hooks/useAsync';
 import { getShared } from '../api/api';
+import SharedMain from '../components/Shared/SharedMain';
 
-function Folder() {
-  const [folderProfile, setFolderProfile] = useState(null);
+function Shared() {
+  const [sharedProfile, setSharedProfile] = useState(null);
   const [cards, setCards] = useState([]);
   const [isLoadingShared, sharedLoadingError, getSharedAsync] = useAsync(getShared);
 
@@ -18,7 +18,7 @@ function Folder() {
 
       const { name, owner, links: cards } = { ...result.folder };
 
-      setFolderProfile({
+      setSharedProfile({
         avatarUrl: owner?.profileImageSource ?? '',
         ownerName: owner?.name ?? '',
         folderName: name,
@@ -33,10 +33,10 @@ function Folder() {
 
   return (
     <>
-      <FolderProfile folderProfile={folderProfile} />
-      <FolderMain cards={cards} cardsLoadingError={sharedLoadingError} />
+      <SharedProfile sharedProfile={sharedProfile} />
+      <SharedMain cards={cards} cardsLoadingError={sharedLoadingError} />
     </>
   )
 }
 
-export default Folder;
+export default Shared;

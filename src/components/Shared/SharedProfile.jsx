@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 
-function FolderProfile({ folderProfile }) {
-  const avatarUrl = folderProfile?.avatarUrl ?? '';
-  const ownerName = folderProfile?.ownerName ?? '';
-  const folderName = folderProfile?.folderName ?? '';
+function SharedProfile({ sharedProfile }) {
+  const avatarUrl = sharedProfile?.avatarUrl ?? '';
+  const ownerName = sharedProfile?.ownerName ?? '';
+  const folderName = sharedProfile?.folderName ?? '';
 
   return (
     <HeaderBlock>
-      <FolderProfileContainer>
-        <FolderProfileStyle>
-          <FolderAvatarImage src={avatarUrl} alt='폴더 주인 아바타' />
-          <FolderOwnerName>{ownerName}</FolderOwnerName>
-        </FolderProfileStyle>
+      <SharedProfileContainer>
+        <SharedProfileStyle>
+          <SharedAvatarImage src={avatarUrl} alt='폴더 주인 아바타' />
+          <SharedOwnerName>{ownerName}</SharedOwnerName>
+        </SharedProfileStyle>
         <FolderName>{folderName}</FolderName>
-      </FolderProfileContainer>
+      </SharedProfileContainer>
     </HeaderBlock>
   );
 }
 
-export default FolderProfile;
+export default SharedProfile;
 
 const HeaderBlock = styled.header`
   display: flex;
@@ -33,14 +33,14 @@ const HeaderBlock = styled.header`
   }
 `;
 
-const FolderProfileContainer = styled.div`
+const SharedProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 `;
 
-const FolderProfileStyle = styled.div`
+const SharedProfileStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,7 +51,7 @@ const FolderProfileStyle = styled.div`
   }
 `
 
-const FolderAvatarImage = styled.img`
+const SharedAvatarImage = styled.img`
   border-radius: 47px;
   width: 4rem;
   height: 4rem;
@@ -62,7 +62,7 @@ const FolderAvatarImage = styled.img`
   }
 `
 
-const FolderOwnerName = styled.h3`
+const SharedOwnerName = styled.h3`
   font-size: 1.4rem;
   font-weight: 400;
 
