@@ -15,6 +15,7 @@ const IMAGES = {
   filledStar: require("./filledStar.svg").default,
   link: require("./link.svg").default,
   folderAdd: require("./folder-add.svg").default,
+  folderAddWhite: require("./folder-add-white.svg").default,
   pen: require("./pen.svg").default,
   share: require("./share.svg").default,
   trashcan: require("./trashcan.svg").default,

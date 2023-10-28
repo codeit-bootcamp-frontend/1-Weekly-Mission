@@ -8,7 +8,7 @@ const Owner = ({ items }) => {
   return (
     <S.OwnerContainerBox>
       <S.OwnerInnerContainerBox>
-        <S.OwnerImage src={owner.profileImageSource} alt="사용자 이미지" />
+        <img src={owner.profileImageSource} alt="User Profile" />
         <S.OwnerNameParagraph>@{owner.name}</S.OwnerNameParagraph>
         <S.OwnerFolderParagraph>{name}</S.OwnerFolderParagraph>
       </S.OwnerInnerContainerBox>
@@ -18,7 +18,6 @@ const Owner = ({ items }) => {
 
 const ShareContainer = ({ shareData }) => {
   const { folder } = shareData
-  console.log(folder)
   return (
     <>
       <Owner items={folder} />

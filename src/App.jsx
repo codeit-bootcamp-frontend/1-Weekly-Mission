@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import {
   HomePage,
   FolderPage,
-  Shared,
-  Signup,
-  Signin,
+  SharePage,
+  SignUpPage,
+  SignInPage,
   NotFound,
 } from "./pages/pages.js"
 import GlobalStyle from "./styles/GlobalStyles.js"
@@ -17,11 +17,15 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="folder" element={<FolderPage />} />
-          <Route path="share" element={<Shared />} />
 
-          <Route path="signup" element={<Signup />} />
-          <Route path="signin" element={<Signin />} />
+          <Route path="folder">
+            <Route index element={<FolderPage />} />
+            <Route path=":folderId" element={<FolderPage />} />
+          </Route>
+          <Route path="share" element={<SharePage />} />
+
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="signin" element={<SignInPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

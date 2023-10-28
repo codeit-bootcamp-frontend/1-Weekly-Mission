@@ -19,6 +19,13 @@ const HeroSolganHeader = styled.h1`
   font-weight: 700;
   line-height: 8rem;
 
+  span {
+    background-image: var(--linkbrary-slogan-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
   @media (min-width: 768px) and (max-width: 1199px) {
     width: 47.2rem;
     word-break: keep-all;
@@ -30,13 +37,6 @@ const HeroSolganHeader = styled.h1`
     word-break: keep-all;
     width: 23.6rem;
   }
-`
-
-const HeroSloganSpan = styled.span`
-  background-image: var(--linkbrary-slogan-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
 `
 
 const HomeTitleHeader = styled.h2`
@@ -206,7 +206,6 @@ const HomeGradientSpan4 = styled.span`
 export {
   HeroHeaderBox,
   HeroImage,
-  HeroSloganSpan,
   HeroSolganHeader,
   HomeArticle,
   HomeSection,

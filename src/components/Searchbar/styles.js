@@ -30,6 +30,7 @@ const SearchbarInnerBox = styled.div`
 const SearchbarInput = styled.input`
   background-color: transparent;
   border: none;
+  outline: none;
   color: var(--Text, #666);
   width: 100%;
 

@@ -1,7 +1,7 @@
 import { useCallback, useReducer, useEffect } from "react"
 
 const initialState = {
-  loading: false,
+  loading: true,
   data: null,
   error: null,
 }
@@ -41,7 +41,7 @@ const useAsync = (callback, deps = [], skip = false) => {
 
   const fetchData = useCallback(async () => {
     try {
-      dispatch({ type: "LOADING" })
+      // dispatch({ type: "LOADING" })
       const data = await callback()
       dispatch({ type: "SUCCESS", data })
     } catch (error) {

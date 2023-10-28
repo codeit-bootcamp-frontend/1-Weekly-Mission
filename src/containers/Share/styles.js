@@ -25,12 +25,12 @@ const OwnerInnerContainerBox = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-`
 
-const OwnerImage = styled.img`
-  height: 6rem;
-  border-radius: 4.7rem;
-  object-fit: cover;
+  img {
+    height: 6rem;
+    border-radius: 4.7rem;
+    object-fit: cover;
+  }
 `
 
 const OwnerNameParagraph = styled.p`
@@ -56,7 +56,6 @@ export {
   ShareBox,
   OwnerContainerBox,
   OwnerInnerContainerBox,
-  OwnerImage,
   OwnerNameParagraph,
   OwnerFolderParagraph,
 }

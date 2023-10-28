@@ -50,12 +50,12 @@ const CardImage = ({ imgUrl }) => {
 }
 
 const Card = ({ items }) => {
-  const { createdAt, description, imageSource, url } = items
+  const { created_at, description, image_source, url } = items
 
   return (
     <S.CardHref href={url} target="_blank" rel="noreferrer">
-      <CardImage imgUrl={imageSource} />
-      <CardInfo createdAt={createdAt} description={description} />
+      <CardImage imgUrl={image_source} />
+      <CardInfo createdAt={created_at} description={description} />
     </S.CardHref>
   )
 }

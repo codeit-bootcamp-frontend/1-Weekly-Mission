@@ -25,6 +25,7 @@ const CardInfoBox = styled.div`
   gap: 1rem;
 `
 const CardInfoInnerBox = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
 `
@@ -59,7 +60,13 @@ const CardImageContainerBox = styled.div`
 `
 
 const CardKebabImage = styled.img`
+  position: relative;
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+  }
 `
 
 const CardDescriptionParagraph = styled.p`

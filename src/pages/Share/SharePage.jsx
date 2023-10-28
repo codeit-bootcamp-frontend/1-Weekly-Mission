@@ -23,7 +23,7 @@ const SharePage = () => {
     return (
       <>
         <S.StyledHeader>
-          <Navbar userData={userData} />
+          <Navbar userData={userData} isFixed />
         </S.StyledHeader>
         <ShareContainer shareData={folderData} />
         <Footer />

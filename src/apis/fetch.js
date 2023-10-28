@@ -30,8 +30,7 @@ const useFetchUserLinks = (userId, folderId = undefined) => {
   } else {
     query = `/api/users/${userId}/links`
   }
-  const [state, refetch] = useAsync(() => fetchGet(query))
-  return state
+  return useAsync(() => fetchGet(query))
 }
 
 export {

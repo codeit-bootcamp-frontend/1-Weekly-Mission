@@ -15,7 +15,7 @@ const CTA = styled(Link)`
 
   @media screen and (max-width: 767px) {
     height: 3.7rem;
-    font-size: 1.4rem;
+    font-size: 1.15rem;
 
     width: ${({ size }) => (size === "short" ? "8rem" : "20rem")};
     padding: ${({ size }) => (size === "short" ? "1rem 1.6rem" : "auto auto")};

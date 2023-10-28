@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 const NavBox = styled.nav`
-  position: fixed;
-  top: 0;
+  position: ${(props) => (props.isFixed ? "fixed" : "relative")};
+  top: ${(props) => (props.isFixed ? "0rem" : "-9.4rem")};
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,7 +1,7 @@
 import Footer from "../../components/Footer/Footer"
 import Navbar from "../../components/Navbar/Navbar"
 
-const Signin = () => {
+const SigninPage = () => {
   return (
     <>
       {/* <Navbar />
@@ -10,4 +10,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default SigninPage

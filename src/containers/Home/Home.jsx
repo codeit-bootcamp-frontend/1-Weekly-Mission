@@ -1,4 +1,3 @@
-import IMAGES from "../../assets/images"
 import HeroHeader from "./HeroHeader"
 import HomeArticle from "./HomeArticle"
 
