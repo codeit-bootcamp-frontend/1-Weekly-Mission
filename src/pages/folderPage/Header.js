@@ -90,34 +90,26 @@ const Header = () => {
       </button>
 
       {totalData && isTotalClicked && (
-        <div className="header-summary">
-          전체
-          {/* <button className="folder-add-button">
-            폴더 추가
-            <img src="/images/add.svg" />
-          </button> */}
-        </div>
+        <div className="header-summary">전체</div>
       )}
 
       {singleFolderData && isSingleClicked && (
-        <div className="header-summary">
+        <div className="header-summary" style={{}}>
           {singleFolderName}
-          {/* <button className="folder-add-button">
-            폴더 추가
-            <img src="/images/add.svg" />
-          </button> */}
-          <button>
-            <img src="/images/share.svg" />
-            공유
-          </button>
-          <button>
-            <img src="/images/pen.svg" />
-            이름 변경
-          </button>
-          <button>
-            <img src="/images/discard.svg" />
-            삭제
-          </button>
+          <div style={{ display: "flex", gap: "2rem" }}>
+            <button>
+              <img src="/images/share.svg" />
+              공유
+            </button>
+            <button>
+              <img src="/images/pen.svg" />
+              이름 변경
+            </button>
+            <button>
+              <img src="/images/discard.svg" />
+              삭제
+            </button>
+          </div>
         </div>
       )}
 
