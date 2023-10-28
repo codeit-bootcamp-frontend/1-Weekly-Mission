@@ -9,6 +9,7 @@ export default function SortButton({
   isClicked,
   setIsClicked,
   fetchUserLinks,
+  setCategoryTitle,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +25,7 @@ export default function SortButton({
   const handleSortButtonClick = () => {
     if (!isClicked) {
       setFolderId(folderId);
+      setCategoryTitle(children);
     } else {
       setFolderId(null);
     }
@@ -33,6 +35,7 @@ export default function SortButton({
   const handleAllButtonClick = () => {
     setFolderId(null);
     fetchUserLinks(null);
+    setCategoryTitle(children);
     setIsClicked(!isClicked);
   };
 

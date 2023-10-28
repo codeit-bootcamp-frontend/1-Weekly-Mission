@@ -15,8 +15,12 @@ export default function FolderPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initFolderId = searchParams.get('folderId');
   const [folderId, setFolderId] = useState(initFolderId || null);
-  // eslint-disable-next-line no-unused-vars
   const [isClicked, setIsClicked] = useState(false);
+  const [categoryTitle, setCategoryTitle] = useState('전체');
+
+  // 카테고리 버튼 누르면 -> 타이틀이 변경
+  // 어떤 카테고리가 눌렸는지 알아야함 -> 프롭
+  //
 
   const fetchUserFolders = async () => {
     const result = await getUserFolders();
@@ -55,6 +59,7 @@ export default function FolderPage() {
                 setIsClicked={setIsClicked}
                 fetchUserLinks={fetchUserLinks}
                 isClicked={isClicked}
+                setCategoryTitle={setCategoryTitle}
               >
                 전체
               </SortButton>
@@ -68,6 +73,7 @@ export default function FolderPage() {
                       setIsClicked={setIsClicked}
                       isClicked={item.id === folderId}
                       folderId={item.id}
+                      setCategoryTitle={setCategoryTitle}
                     >
                       {item.name}
                     </SortButton>
@@ -79,7 +85,7 @@ export default function FolderPage() {
               <img src={addIcon} alt="add-icon" />
             </button>
           </div>
-          <h1 className="folder-category">카테고리</h1>
+          <h1 className="folder-category">{categoryTitle}</h1>
         </section>
         {links.length === 0 ? (
           <EmptyPage />
