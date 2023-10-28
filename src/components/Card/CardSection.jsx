@@ -1,5 +1,5 @@
 import { Card } from "components";
-import "./CardSection.css";
+import * as Styled from "./StyledCardSection";
 
 const CardSection = ({ data }) => {
   const handleCardClick = (url) => {
@@ -7,11 +7,11 @@ const CardSection = ({ data }) => {
   };
 
   return (
-    <section>
+    <Styled.Section>
       {data.map((data) => {
         return <Card key={data.id} data={data} onClick={handleCardClick} />;
       })}
-    </section>
+    </Styled.Section>
   );
 };
 

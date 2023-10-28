@@ -1,16 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 import { AddBar, SearchBar, FolderLists, CardSection } from "components";
 import { getFolderLists, getLinks } from "utils/api";
-import styles from "./FolderPage.module.css";
+import * as Styled from "./StyledFolderPage";
 
 const FolderPage = () => {
   const [folderId, setFolderId] = useState("");
   const [headContext, setHeadContext] = useState("전체");
   const [folderListsData, setFolderListsData] = useState({
-    datas: [],
+    data: [],
   });
   const [linksData, setLinksData] = useState({
-    datas: [],
+    data: [],
   });
 
   const handleFolderLists = useCallback(async (id) => {
@@ -19,15 +19,15 @@ const FolderPage = () => {
         getFolderLists(),
         getLinks(id),
       ]);
-      const { data: folderDatas } = folderLists;
-      const { data: LinkDatas } = links;
+      const { data: folderData } = folderLists;
+      const { data: LinkData } = links;
       setFolderListsData((prevData) => ({
         ...prevData,
-        datas: folderDatas,
+        data: folderData,
       }));
       setLinksData((prevData) => ({
         ...prevData,
-        datas: LinkDatas,
+        data: LinkData,
       }));
     } catch (err) {
       console.log(err);
@@ -45,18 +45,18 @@ const FolderPage = () => {
 
   return (
     <>
-      <header className={styles.header}>
+      <Styled.Header>
         <AddBar />
-      </header>
-      <article className={styles.article}>
+      </Styled.Header>
+      <Styled.Article>
         <SearchBar />
         <FolderLists
-          folderData={folderListsData.datas}
+          folderData={folderListsData.data}
           onClick={handleButtonClick}
           title={headContext}
         />
-        <CardSection data={linksData.datas} />
-      </article>
+        <CardSection data={linksData.data} />
+      </Styled.Article>
     </>
   );
 };

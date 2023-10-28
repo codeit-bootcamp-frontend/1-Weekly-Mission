@@ -1,10 +1,19 @@
+import styled from "styled-components";
 import logoIMG from "assets/Linkbrary.svg";
 
-const Logo = ({ className }) => {
+const StyledImg = styled.img`
+  height: 2.4rem;
+
+  @media (max-width: 767px) {
+    height: 1.6rem;
+  }
+`;
+
+const Logo = () => {
   return (
     <>
       <a href="/">
-        <img className={className} src={logoIMG} alt="Linkbrary 로고" />
+        <StyledImg src={logoIMG} alt="Linkbrary 로고" />
       </a>
     </>
   );

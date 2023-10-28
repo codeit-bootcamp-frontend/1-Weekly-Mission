@@ -1,4 +1,4 @@
-import styles from "./FolderLists.module.css";
+import * as Styled from "./StyledFolderLists";
 
 const FolderList = ({ data, onClick }) => {
   const handleClickButton = (id, name) => {
@@ -6,12 +6,9 @@ const FolderList = ({ data, onClick }) => {
   };
 
   return (
-    <button
-      className={styles.button}
-      onClick={() => handleClickButton(data.id, data.name)}
-    >
+    <Styled.Btn onClick={() => handleClickButton(data.id, data.name)}>
       {data.name}
-    </button>
+    </Styled.Btn>
   );
 };
 
@@ -21,22 +18,19 @@ const FolderLists = ({ folderData, onClick, title }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.buttonBox}>
-        <button
-          className={styles.button}
-          onClick={() => handleClickButton("", "전체")}
-        >
+    <Styled.Container>
+      <Styled.BtnBox>
+        <Styled.Btn onClick={() => handleClickButton("", "전체")}>
           전체
-        </button>
+        </Styled.Btn>
         {folderData.map((data) => {
           return <FolderList key={data.id} data={data} onClick={onClick} />;
         })}
-      </div>
+      </Styled.BtnBox>
       <div>
-        <h1 className={styles.title}>{title}</h1>
+        <Styled.Title>{title}</Styled.Title>
       </div>
-    </div>
+    </Styled.Container>
   );
 };
 

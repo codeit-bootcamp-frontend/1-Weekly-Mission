@@ -1,23 +1,24 @@
-/* PC: 1200px 이상
-Tablet: 768px 이상 ~ 1199px 이하
-Mobile: 375px 이상 ~ 767px 이하 */
+// PC: 1200px 이상
+// Tablet: 768px 이상 ~ 1199px 이하
+// Mobile: 375px 이상 ~ 767px 이하
+import styled from "styled-components";
 
-.header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem 0 7rem;
-  background-color: #edf7ff;
-}
-
-.article {
+export const Header = styled.header`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
+  padding: 3rem 0 6rem;
+  background-color: #edf7ff;
+`;
+
+export const Article = styled.article`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
   padding-top: 4rem;
   padding-bottom: 5rem;
 
@@ -28,4 +29,4 @@ Mobile: 375px 이상 ~ 767px 이하 */
   @media (max-width: 767px) {
     padding: 3rem 3rem 4rem;
   }
-}
+`;

@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { FolderInfo, SearchBar, CardSection } from "components";
 import { getFolder } from "utils/api";
-import styles from "./SharedPage.module.css";
+import * as Styled from "./StyledSharedPage";
 
 const SharedPage = () => {
   const [folderData, setFolderData] = useState({
     folderName: "",
     ownerName: "",
     ownerImage: "",
-    datas: [],
+    data: [],
   });
 
   const handleFolderInfo = async () => {
@@ -22,7 +22,7 @@ const SharedPage = () => {
         folderName: name,
         ownerName: owner["name"],
         ownerImage: owner["profileImageSource"],
-        datas: links,
+        data: links,
       }));
     } catch (err) {
       console.log(err);
@@ -35,13 +35,13 @@ const SharedPage = () => {
 
   return (
     <>
-      <header className={styles.header}>
+      <Styled.Header>
         <FolderInfo data={folderData} />
-      </header>
-      <article className={styles.article}>
+      </Styled.Header>
+      <Styled.Article>
         <SearchBar />
-        <CardSection data={folderData.datas} />
-      </article>
+        <CardSection data={folderData.data} />
+      </Styled.Article>
     </>
   );
 };

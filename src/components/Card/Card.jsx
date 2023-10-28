@@ -4,7 +4,7 @@ import kebab from "assets/kebab.svg";
 import noImageIMG from "assets/noImage.svg";
 import starIMG from "assets/star.svg";
 import chosenStarIMG from "assets/chosenStar.svg";
-import "./Card.css";
+import * as Styled from "./StyledCard";
 
 const Card = ({ data, onClick }) => {
   // const imgRef = useRef();
@@ -43,40 +43,36 @@ const Card = ({ data, onClick }) => {
   };
 
   return (
-    <div
-      className="cardContainer"
+    <Styled.CardContainer
       onClick={handleCardClick}
       // onMouseEnter={handleMouseEnter}
       // onMouseLeave={handleMouseLeave}
     >
-      <div className="cardImgBox">
-        <img
-          className="cardImg"
+      <Styled.CardImgBox>
+        <Styled.CardImg
           // ref={imgRef}
           src={data.image_source ? data.image_source : noImageIMG}
           alt={data.image_source ? "카드 이미지" : "이미지 없음"}
         />
-      </div>
-      <div className="infoContainer">
-        <div className="additionalInfo">
+      </Styled.CardImgBox>
+      <Styled.InfoContainer>
+        <Styled.AdditionalInfo>
           <span>{timeForToday(data.created_at)}</span>
-          <img
-            className="kebab"
+          <Styled.Kebab
             src={kebab}
             alt="카드 설정 더보기"
             onClick={handleKebabClick}
           />
-        </div>
-        <p className="description">{data.description}</p>
+        </Styled.AdditionalInfo>
+        <Styled.Description>{data.description}</Styled.Description>
         <span>{formatDate(data.created_at)}</span>
-      </div>
-      <img
+      </Styled.InfoContainer>
+      <Styled.Star
         onClick={handleStarClick}
-        className="star"
         src={star ? chosenStarIMG : starIMG}
         alt="즐겨찾기 버튼"
       />
-    </div>
+    </Styled.CardContainer>
   );
 };
 

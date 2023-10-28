@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Navigator, Footer } from "components";
 import { getUsers } from "utils/api";
-import "./App.css";
+import { StyledGlobal } from "style/StyledGlobal";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -34,11 +34,8 @@ const App = () => {
 
   return (
     <>
-      <Navigator
-        className={["nav", "gnb", "logo", "cta", "cta-short"]}
-        isLogin={isLogin}
-        data={userData}
-      />
+      <StyledGlobal />
+      <Navigator isLogin={isLogin} data={userData} />
       <Outlet />
       <Footer />
     </>

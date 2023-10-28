@@ -1,14 +1,14 @@
-import "./FolderInfo.css";
+import * as Styled from "./StyledFolderInfo";
 
 const FolderInfo = ({ data }) => {
   const { folderName, ownerName, ownerImage } = data;
   return (
     <>
-      <div className="ownerWrapper">
-        <img className="ownerImage" src={ownerImage} alt="폴더 소유자 사진" />
-        <p className="ownerName">{`@${ownerName}`}</p>
-      </div>
-      <p className="folderName">{folderName}</p>
+      <Styled.OwnerWrapper>
+        <Styled.OwnerImg src={ownerImage} alt="폴더 소유자 사진" />
+        <Styled.OwnerName>{`@${ownerName}`}</Styled.OwnerName>
+      </Styled.OwnerWrapper>
+      <Styled.FolderName>{folderName}</Styled.FolderName>
     </>
   );
 };
