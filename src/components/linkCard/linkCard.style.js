@@ -1,55 +1,59 @@
-.card--container {
-  overflow: hidden;
-  box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.08);
-  border-radius: 1.5rem;
-}
+import styled from "styled-components";
 
-.card--container:hover > .card--description {
-  background-color: #f0f6ff;
-}
-
-.card--wrapper {
+export const CardContainer = styled.li`
   display: grid;
-  grid-template-rows: 20rem auto;
   height: 100%;
-}
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.08);
 
-.card--image-container {
+  &:hover > .card--description {
+    background-color: #f0f6ff;
+  }
+`;
+
+export const CardWrapper = styled.a`
+  display: grid;
+  height: 100%;
+  grid-template-rows: 20rem auto;
+`;
+
+export const CardImageContainer = styled.div`
   height: 20rem;
   overflow: hidden;
-}
+`;
 
-.card--image {
+export const CardImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s;
-}
+  transform-origin: center;
 
-.card--container:hover .card--image {
-  transform: scale(1.3);
-}
+  ${CardContainer}:hover & {
+    transform: scale(1.3);
+  }
+`;
 
-.card--info {
+export const CardInfo = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr auto;
   gap: 1rem;
   padding: 1.5rem 2rem;
   background-color: var(--linkbrary--color--white);
-}
 
-.card--container:hover .card--info {
-  background-color: #f0f6ff;
-}
+  ${CardContainer}:hover & {
+    background-color: #f0f6ff;
+  }
+`;
 
-.time-ago {
+export const TimeAgo = styled.div`
   font-size: 1.3rem;
   font-weight: 400;
   line-height: normal;
   color: #666666;
-}
+`;
 
-.description {
+export const Description = styled.div`
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.5;
@@ -60,11 +64,11 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-}
+`;
 
-.created-date {
+export const CreatedDate = styled.div`
   font-size: 1.4rem;
   font-weight: 400;
   line-height: normal;
   color: #333333;
-}
+`;
