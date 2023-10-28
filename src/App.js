@@ -1,17 +1,15 @@
-// import Nav from "./nav/Nav";
-import Nav from "./components/nav/Nav";
-import Header from "./components/header/Header";
-import Main from "./components/main/Main";
-import Footer from "./components/footer/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SharedPage from "./pages/SharedPage";
+import FolderPage from "./pages/FolderPage";
 
 const App = () => {
   return (
-    <>
-      <Nav />
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/shared" element={<SharedPage />} />
+        <Route path="/folder" element={<FolderPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

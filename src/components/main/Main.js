@@ -7,7 +7,7 @@ const Main = () => {
   const [cards, setCards] = useState([]);
 
   const handleLoad = useCallback(async () => {
-    const result = await getResponse("folder");
+    const result = await getResponse("sample/folder");
     if (!result) {
       return;
     }

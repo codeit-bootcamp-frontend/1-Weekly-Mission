@@ -1,12 +1,6 @@
 @import "../../common.css";
 
 .nav_bar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-
-  z-index: 3;
-
   display: flex;
   padding: 3.3rem 20rem 3.2rem 20rem;
   align-items: center;
@@ -16,6 +10,14 @@
   justify-content: space-between;
 
   background: var(--background-color);
+}
+
+.shared_page {
+  position: sticky;
+  top: 0;
+  width: 100%;
+
+  z-index: 3;
 }
 
 .logo {

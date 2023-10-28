@@ -1,4 +1,4 @@
-const BASE_URL = "https://bootcamp-api.codeit.kr/api/sample/";
+const BASE_URL = "https://bootcamp-api.codeit.kr/api/";
 
 const getResponse = async (path) => {
   const response = await fetch(`${BASE_URL}${path}`);

@@ -6,7 +6,7 @@ const Header = () => {
   const [folder, setFolder] = useState("");
 
   const handleLoad = useCallback(async () => {
-    const result = await getResponse("folder");
+    const result = await getResponse("sample/folder");
     if (!result) {
       return;
     }
@@ -26,10 +26,10 @@ const Header = () => {
           <div className="user_profile">
             <img
               className="owner_img"
-              src={folder.owner.profileImageSource}
+              src={folder.owner?.profileImageSource}
               alt="프로필 사진"
             />
-            <div className="owner_name">{folder.owner.name}</div>
+            <div className="owner_name">{folder.owner?.name}</div>
           </div>
           <div className="folder_name">{folder.name}</div>
         </div>
