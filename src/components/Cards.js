@@ -44,7 +44,7 @@ function CardItem({ item, id }) {
 }
 
 const Cards = ({ folderInfo }) => {
-  const { links } = folderInfo;
+  const { links } = folderInfo ?? {};
 
   return (
     <div className="section-title cardlist">

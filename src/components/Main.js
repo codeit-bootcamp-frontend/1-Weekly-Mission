@@ -1,4 +1,5 @@
 import "./Main.css";
+import avatarImg from "../img/Avatar.png";
 
 const INIT_FOLDER_INFO = {
   id: 0,
@@ -6,7 +7,7 @@ const INIT_FOLDER_INFO = {
   owner: {
     id: 0,
     name: "",
-    profileImageSource: "",
+    profileImageSource: avatarImg,
   },
 };
 
@@ -21,7 +22,7 @@ const Main = ({ folderInfo }) => {
             <img src={folder.owner.profileImageSource} alt="프로필 이미지" />
           </div>
           <h4>@{folder.owner.name}</h4>
-          <h3>{folder.name}</h3>
+          <h3>{folder.title}</h3>
         </div>
       </div>
     </div>
