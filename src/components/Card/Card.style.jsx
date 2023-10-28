@@ -22,6 +22,7 @@ export const CardInfoBox = styled.div`
   padding: 1.5rem 2rem;
   flex-direction: column;
   align-items: flex-start;
+  background-color: #fff;
   gap: 1rem;
   z-index: 1;
   position: relative;
