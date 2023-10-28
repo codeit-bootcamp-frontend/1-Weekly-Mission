@@ -5,7 +5,7 @@
 .linkadd-input {
   position: relative;
   width: 100%;
-  padding: 1.6rem 2rem;
+  padding: 2.2rem 2rem;
   border: 1px solid #6d6afe;
   color: var(--gray9F);
   border-radius: 1.5rem;
@@ -22,7 +22,7 @@
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
   color: white;
   border-radius: 8px;
-  top: 16rem;
+  top: 16.5rem;
   right: 33.5rem;
 }
 
@@ -32,7 +32,7 @@
     background-color: var(--linkbrary-bg);
   }
   .add-button {
-    top: 13.3rem;
+    top: 14rem;
     right: 5.2rem;
   }
 }

@@ -9,6 +9,11 @@
   align-items: center;
 }
 
+.folder-name:focus {
+  background: var(--primary);
+  color: #fff;
+}
+
 @media (max-width: 1123px) {
   .folder-name {
     font-size: 1.2rem;
