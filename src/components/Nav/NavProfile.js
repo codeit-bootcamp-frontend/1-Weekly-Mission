@@ -1,27 +1,20 @@
-import { useEffect, useState } from 'react';
-import { getSample } from '../../apis/api';
+import { useEffect } from 'react';
 import styles from './Nav.module.css';
+import UseUserValues from '../../hooks/UseUserValues';
 
 function NavProfile() {
-  const [email, setEmail] = useState('');
-  const [profileImageSource, setProfileImageSource] = useState();
-
-  const loadUserData = async () => {
-    const { email, profileImageSource } = await getSample('user');
-    setEmail(email);
-    setProfileImageSource(profileImageSource);
-  };
+  const [values, getUserData] = UseUserValues();
 
   useEffect(() => {
-    loadUserData();
-  }, []);
+    getUserData();
+  }, [getUserData]);
 
   return (
     <div className={styles.profile}>
       <div className={styles.profileImage}>
-        <img src={profileImageSource} alt="profile" />
+        <img src={values.imageSource} alt="profile" />
       </div>
-      <p className={styles.UserProfile}>{email}</p>
+      <p className={styles.UserProfile}>{values.email}</p>
     </div>
   );
 }

@@ -1,11 +1,11 @@
 .root {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+  background-color: var(--gray1);
+}
+
+.container {
   padding: 2rem 20rem;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +37,7 @@
 }
 
 @media (max-width: 1199px) {
-  .root {
+  .container {
     padding: 2rem 3.2rem;
     margin: 0 auto;
     max-width: 86.4rem;
@@ -55,7 +55,7 @@
     font-size: 1.4rem;
   }
 
-  .root {
+  .container {
     padding: 1.3rem 3.2rem;
   }
 

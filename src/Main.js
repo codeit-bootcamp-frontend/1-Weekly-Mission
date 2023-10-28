@@ -4,6 +4,7 @@ import Index from './pages/Index';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Shared from './pages/Shared';
+import FolderList from './pages/FolderList';
 
 function Main() {
   return (
@@ -11,7 +12,12 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Index />} />
-          <Route path="folder" element={<Shared />} />
+
+          <Route path="folder">
+            <Route index element={<FolderList />} />
+            <Route path=":folderID" element={<FolderList />} />
+          </Route>
+
           <Route path="shared" element={<Shared />} />
         </Route>
 

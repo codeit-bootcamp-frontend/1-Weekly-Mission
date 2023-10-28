@@ -1,8 +1,26 @@
 const url = 'https://bootcamp-api.codeit.kr/api';
 
-// getSample (user, floder)
+// getSample (type == user, folder)
 const getSample = async (type) => {
   const response = await fetch(`${url}/sample/${type}`);
+  const data = response.json();
+  return data;
+};
+
+const getSampleUsersFolderLists = async () => {
+  const response = await fetch(`${url}/users/1/folders`);
+  const data = response.json();
+  return data;
+};
+
+// getUser : 진짜 토큰으로 진짜 유저 요청
+const getUser = async () => {
+  const response = await fetch(`${url}/users`, {
+    method: 'GET',
+    headers: {
+      Authorization: localStorage.getItem('accessToken'),
+    },
+  });
   const data = response.json();
   return data;
 };
@@ -29,4 +47,4 @@ const requestSign = async (signType, data) => {
   return responseData;
 };
 
-export { getSample, requestSign };
+export { getSample, getSampleUsersFolderLists, getUser, requestSign };
