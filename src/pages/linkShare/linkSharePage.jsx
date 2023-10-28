@@ -6,9 +6,7 @@ import {
   getSampleUserFolder,
   getSampleUserProfile,
 } from "pages/linkShare/linkSharePage.js";
-import HeaderComponent from "components/header/header.jsx";
 import LinkSearchBarComponent from "components/linkSearchBar/linkSearchBar.jsx";
-import FooterComponent from "components/footer/footer.jsx";
 import useAsync from "hooks/useAsync.js";
 
 export default function LinkSharePage() {
@@ -40,22 +38,19 @@ export default function LinkSharePage() {
   return (
     <div className="page--container">
       {!loadingErrorProfile && (
-        <>
-          <HeaderComponent email={profile.email} />
-          <main className="folder-info--wrapper">
-            <img
-              className="profile-image"
-              src={profile.profileImageSource}
-              alt="유저 프로필 이미지"
-              width="60px"
-              height="60px"
-            />
+        <main className="folder-info--wrapper">
+          <img
+            className="profile-image"
+            src={profile.profileImageSource}
+            alt="유저 프로필 이미지"
+            width="60px"
+            height="60px"
+          />
 
-            <p className="profile-name">@{profile.name}</p>
+          <p className="profile-name">@{profile.name}</p>
 
-            <p className="folder-name">{folder.name}</p>
-          </main>
-        </>
+          <p className="folder-name">{folder.name}</p>
+        </main>
       )}
 
       <section className="folder-contents--wrapper">
@@ -72,8 +67,6 @@ export default function LinkSharePage() {
           })}
         </ul>
       </section>
-
-      <FooterComponent />
     </div>
   );
 }

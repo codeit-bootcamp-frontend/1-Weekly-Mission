@@ -12,8 +12,8 @@ export default function FooterComponent() {
       <div className="footer__wrapper">
         <p className="copyright">©codeit - 2023</p>
         <nav className="footer__menu-wrapper">
-          <a href="/pages/privacy.html">Privacy Policy</a>
-          <a href="/pages/faq.html">FAQ</a>
+          <Link to="/privacy">Privacy Policy</Link>
+          <Link to="/faq">FAQ</Link>
         </nav>
         <nav className="footer__sns-wrapper">
           <a
