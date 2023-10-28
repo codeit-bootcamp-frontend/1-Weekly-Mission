@@ -9,7 +9,7 @@ import { getUserFolders, getUserLinks } from '../../api/folder';
 import Card from '../../components/card/Card';
 import EmptyPage from './components/emptyPage/EmptyPage';
 import OptionButton from './components/optionButton/OptionButton';
-import OPTION_ICON_NAME from './constant';
+import OPTION_ICONS from './constant';
 
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
@@ -86,7 +86,7 @@ export default function FolderPage() {
           <div className="folder-category-container">
             <h1 className="folder-category">{categoryTitle}</h1>
             <div className="folder-option-button-container">
-              {OPTION_ICON_NAME.map((item) => (
+              {OPTION_ICONS.map((item) => (
                 <OptionButton
                   name={item.name}
                   alt={item.alt}

@@ -2,7 +2,7 @@ import shareIcon from '../../assets/folder/share.svg';
 import penIcon from '../../assets/folder/pen.svg';
 import trashCanIcon from '../../assets/folder/trashCan.svg';
 
-const OPTION_ICON_NAME = [
+const OPTION_ICONS = [
   {
     name: '공유',
     iconSrc: shareIcon,
@@ -20,4 +20,4 @@ const OPTION_ICON_NAME = [
   },
 ];
 
-export default OPTION_ICON_NAME;
+export default OPTION_ICONS;
