@@ -3,3 +3,12 @@
   max-width: 1060px;
   margin: 20px auto;
 }
+
+.folderButtons {
+  display: flex;
+  flex-direction: row;
+
+  max-width: 1060px;
+  margin: 20px auto;
+  gap: 10px;
+}

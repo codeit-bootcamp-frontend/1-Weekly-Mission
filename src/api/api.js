@@ -10,22 +10,35 @@ async function getUser() {
   }
 }
 
-async function getFolders() {
+// async function getFolders() {
+//   try {
+//     const response = await fetch(`${BASE_URL}/api/sample/folder`);
+//     const body = await response.json();
+//     const result = await body.folder;
+//     return result;
+//   } catch (error) {
+//     console.log('error', error);
+//   }
+// }
+
+async function getUserFolders(user = 1) {
   try {
-    const response = await fetch(`${BASE_URL}/api/sample/folder`);
+    const response = await fetch(`${BASE_URL}/api/users/${user}/folders`);
     const body = await response.json();
-    const result = await body.folder;
+    const result = await body.data;
     return result;
   } catch (error) {
     console.log('error', error);
   }
 }
 
-async function getUserFolders() {
+async function getFolders(user = 1, folderId = '') {
   try {
-    const response = await fetch(`${BASE_URL}/api/users/1/folders`);
+    const response = await fetch(
+      `${BASE_URL}/api/users/${user}/links${folderId}`
+    );
     const body = await response.json();
-    const result = await body.folder;
+    const result = await body.data;
     return result;
   } catch (error) {
     console.log('error', error);

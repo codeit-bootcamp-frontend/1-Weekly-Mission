@@ -1,59 +1,44 @@
 import { useEffect, useState } from 'react';
-import { getFolders } from '../../api/api';
+import { getFolders, getUserFolders } from '../../api/api';
 import CardList from '../Card/CardList';
 import SearchBar from '../SearchBar/SearchBar';
+import Button from '../Button/Button';
 import './Share.style.css';
 
-function Owner({ profileUrl, ownerName, ownerFolderName }) {
-  return (
-    <div className='owner'>
-      <img src={profileUrl} alt='profile' />
-      <p className='ownerName'>@{ownerName}</p>
-      <h2 className='folderName'>{ownerFolderName}</h2>
-    </div>
-  );
-}
-
 export default function Share() {
-  const INITAL_ITEM = {
-    id: null,
-    name: '',
-    profileImageSoure: '',
-    folderName: '',
-    links: [],
-  };
-  const [ownerItem, setOwnerItem] = useState(INITAL_ITEM);
+  const [userFolderItems, setUserFolderItem] = useState();
+  const [folderItems, setFolderItems] = useState([]);
 
-  async function getFolderItem() {
-    const folder = await getFolders();
+  async function getUserFolderItem() {
+    const userFolders = await getUserFolders();
+    setUserFolderItem(userFolders);
+  }
 
-    setOwnerItem({
-      id: folder.id,
-      name: folder.owner.name,
-      profileImageSoure: folder.owner.profileImageSource,
-      folderName: folder.name,
-      links: folder.links,
-    });
+  async function getFolderItems() {
+    const folderList = await getFolders();
+    setFolderItems(folderList);
   }
 
   useEffect(() => {
-    getFolderItem();
+    getUserFolderItem();
+    getFolderItems();
   }, []);
 
   return (
     <>
-      {/* <Owner
-        profileUrl={ownerItem.profileImageSoure}
-        ownerName={ownerItem.name}
-        ownerFolderName={ownerItem.folderName}
-      /> */}
       <SearchBar />
-
-      {ownerItem && (
-        <div className='cardWrapper'>
-          <CardList items={ownerItem.links} />
-        </div>
-      )}
+      <div className='folderButtons'>
+        <Button className='folderButton' text='전체' />
+        {userFolderItems &&
+          userFolderItems.map(item => {
+            return (
+              <Button className='folderButton' key={item.id} text={item.name} />
+            );
+          })}
+      </div>
+      <div className='cardWrapper'>
+        <CardList items={folderItems} />
+      </div>
     </>
   );
 }
