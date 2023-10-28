@@ -1,13 +1,8 @@
 import "../../styles/landing.css";
 import FolderListItem from "./FolderListItem";
-
 const FolderList = ({ fullData, handleFolderClick }) => {
   return (
-    <li
-      style={{
-        listStyle: "none",
-      }}
-    >
+    <>
       {fullData.map((data) => (
         <FolderListItem
           key={data?.id}
@@ -15,7 +10,7 @@ const FolderList = ({ fullData, handleFolderClick }) => {
           handleFolderClick={handleFolderClick}
         />
       ))}
-    </li>
+    </>
   );
 };
 

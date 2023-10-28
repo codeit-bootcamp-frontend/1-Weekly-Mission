@@ -19,16 +19,20 @@
   border-radius: 5px;
   border: 1px solid var(--linkbrary-primary-color, #6d6afe);
   background: #fff;
-  width: 6rem;
+
   height: 5rem;
+  padding: 0 1rem;
 }
 
 .folder-list {
-  padding: 0 3.2rem;
+  padding: 3.2rem;
   font-size: 20rem;
   display: flex;
   align-items: center;
   justify-content: left;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
 
   @media (min-width: 768px) {
     padding: 0 3.2rem;
@@ -47,8 +51,6 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  /* left: 98.5px;
-  top: 261px; */
   border-radius: 20px;
   border: 1px solid var(--linkbrary-white, #fff);
   background: var(--linkbrary-primary-color, #6d6afe);
@@ -60,7 +62,7 @@
 
   @media (min-width: 768px) {
     color: #6d6afe;
-    background: #fff;
+    background: none;
     text-align: center;
     font-family: Pretendard;
     font-size: 16px;
@@ -71,11 +73,27 @@
     display: flex;
     gap: 0.5rem;
     position: absolute;
-    top: 58rem;
-    right: 5rem;
+    top: 41rem;
+    right: 1rem;
+    z-index: 0;
   }
 
   @media (min-width: 1200px) {
     right: 17rem;
+  }
+}
+
+.folder-data-util-buttons {
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  top: 4rem;
+
+  @media (min-width: 768px) {
+    position: inherit;
+    top: 0;
+  }
+
+  @media (min-width: 1200px) {
   }
 }

@@ -67,23 +67,22 @@ const Header = () => {
 
       <Search />
 
-      <ul className="folder-list">
-        <li style={{ listStyle: "none" }}>
-          <button
-            className="folder-list-button"
-            onClick={handleTotalClick}
-            style={{ background: isTotalClicked ? "#6D6AFE" : "#fff" }}
-          >
-            전체
-          </button>
-        </li>
+      <div className="folder-list">
+        <button
+          className="folder-list-button"
+          onClick={handleTotalClick}
+          style={{ background: isTotalClicked ? "#6D6AFE" : "#fff" }}
+        >
+          전체
+        </button>
+
         {fullList && (
           <FolderList
             fullData={fullList}
             handleFolderClick={handleFolderClick}
           />
         )}
-      </ul>
+      </div>
       <button className="folder-add-button">
         폴더 추가
         <img src="/images/add.svg" />
@@ -94,9 +93,9 @@ const Header = () => {
       )}
 
       {singleFolderData && isSingleClicked && (
-        <div className="header-summary" style={{}}>
+        <div className="header-summary">
           {singleFolderName}
-          <div style={{ display: "flex", gap: "2rem" }}>
+          <div className="folder-data-util-buttons">
             <button>
               <img src="/images/share.svg" />
               공유
