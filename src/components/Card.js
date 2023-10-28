@@ -2,6 +2,7 @@ import { formatDateDifference, formatDate } from '../global/utils';
 import EmptyCardImg from '../assets/Card_img.svg'
 import kebab from '../assets/kebab.svg';
 import styled from 'styled-components';
+import starIcon from '../assets/star.svg'
 
 const CardContainer = styled.a`
   display: block;
@@ -21,15 +22,15 @@ const ImgArea = styled.div`
   border-radius: 1.5rem 1.5rem 0 0;
 `;
 
-// const StarIcon = styled.img` // 나중에 쓸 것 같으니까 추가해놓기.
-//   position: absolute;
-//   width: 3.4rem;
-//   height: 3.4rem;
-//   flex-shrink: 0;
-//   right: 1.5rem;
-//   top: 1.5rem;
-//   z-index: 1;
-// `;
+const StarIcon = styled.img`
+  position: absolute;
+  width: 3.4rem;
+  height: 3.4rem;
+  flex-shrink: 0;
+  right: 1.5rem;
+  top: 1.5rem;
+  z-index: 1;
+`;
 
 const CardImg = styled.img`
   width: 34rem;
@@ -126,6 +127,7 @@ const Card = ( { item } ) => {
   return (
     <CardContainer href={url}>
       <ImgArea>
+        <StarIcon src={starIcon} alt="즐겨찾기 아이콘"/>
         {imageSource ? (
           <CardImg src={imageSource} alt="이미지" />
         ) : ( 
