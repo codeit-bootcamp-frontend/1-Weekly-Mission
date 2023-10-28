@@ -11,13 +11,13 @@ function App() {
   const [folderInfo, setFolderInfo] = useState({});
   const [owner, setOwner] = useState({});
 
-  const getData = useCallback(async () => {
+  const getData = async () => {
     const { folder } = await getFolderData();
     const ownerInfo = { ...folder.owner };
     setFolderInfo(folder);
     setOwner(ownerInfo);
     setCards(folder.links);
-  }, []);
+  };
 
   useEffect(() => {
     getData();

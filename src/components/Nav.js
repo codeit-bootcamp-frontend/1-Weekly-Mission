@@ -12,14 +12,14 @@ export default function Nav({ user }) {
     email: "",
   };
 
-  const getUserInfo = useCallback(async () => {
+  const getUserInfo = async () => {
     const userInfo = await getUserData();
     setUserData(userInfo);
-  });
+  };
 
   useEffect(() => {
     getUserInfo();
-  }, []); //마운트시점에만 호출
+  }, []);
 
   const Account = ({ user = INIT_USER }) => {
     return (
