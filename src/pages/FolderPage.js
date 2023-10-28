@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
 import LinkAddInput from "../components/LinkAddInput/LinkAddInput";
-import CardList from "../components/Card/Card";
+import CardList from "../components/CardList/CardList";
 import FolderButton from "../components/FolderButton/FolderButton";
 import useAsync from "../hooks/useAsync";
 
@@ -16,7 +16,7 @@ function FolderPage() {
 
   const loadUser = async () => {
     const folderResult = await getFolderAsync();
-    setCardList(folderResult?.folder?.links);
+    setCardList(folderResult?.data);
   };
 
   const handleFolderName = (str) => {
@@ -38,10 +38,6 @@ function FolderPage() {
         </div>
         <div className="folder-buttons">
           <FolderButton onChange={handleFolderName} value="전체" />
-          <FolderButton onChange={handleFolderName} value="⭐️즐겨찾기" />
-          <FolderButton onChange={handleFolderName} value="코딩 팁" />
-          <FolderButton onChange={handleFolderName} value="채용 사이트" />
-          <FolderButton onChange={handleFolderName} value="유용한 글" />
           <FolderButton onChange={handleFolderName} value="나만의 장소" />
         </div>
         <h1 className="folder-name-title">{folderName}</h1>
