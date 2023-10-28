@@ -7,6 +7,7 @@ import addIcon from '../../assets/folder/add.svg';
 import SearchBar from '../../components/searchBar/SearchBar';
 import { getUserFolders, getUserLinks } from '../../api/folder';
 import Card from '../../components/card/Card';
+import EmptyPage from './components/emptyPage/EmptyPage';
 
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
@@ -80,14 +81,18 @@ export default function FolderPage() {
           </div>
           <h1 className="folder-category">카테고리</h1>
         </section>
-        <div className="links-container">
-          {links &&
-            links.map((item) => (
-              <div key={item.id}>
-                <Card linkInfo={item} />
-              </div>
-            ))}
-        </div>
+        {links.length === 0 ? (
+          <EmptyPage />
+        ) : (
+          <div className="links-container">
+            {links &&
+              links.map((item) => (
+                <div key={item.id}>
+                  <Card linkInfo={item} />
+                </div>
+              ))}
+          </div>
+        )}
       </main>
     </div>
   );
