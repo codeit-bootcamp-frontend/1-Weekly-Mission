@@ -1,7 +1,7 @@
-function SocialLink({ link }) {
+function SocialLink({ link: { href, iconUrl, description } }) {
   return (
-    <a href={link.href} target="_blank" rel="noopener noreferrer">
-      <img src={link.iconUrl} alt={link.description} />
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <img src={iconUrl} alt={description} />
     </a>
   );
 }
