@@ -1,9 +1,10 @@
+import { getData } from "../../utils/api";
 import "./SignButton.css"
 
-function SignButton({ size, children, loadUser, onClick }) {
-  const handleLoadUser = (e) => {
+function SignButton({ size, page, type, children, dispatch, onClick = () => { } }) {
+  const handleLoadUser = async (e) => {
     e.preventDefault();
-    loadUser();
+    dispatch(await getData(page, type))
     onClick(true);
   }
   return (

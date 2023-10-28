@@ -1,34 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import defaultAvatar from '../../assets/Avatar.png'
 import './Header.css'
 import { getData } from '../../utils/api'
+import { reduceData, useReduce } from '../../hooks/useReduce';
 
 function Header({ page, type = '' }) {
-  const [folder, setFolder] = useState('');
-
-  const loadData = async (...option) => {
-    const res = await getData(...option);
-    if (!res) return;
-    const newfolder = res.folder;
-    setFolder(newfolder);
-  }
+  const [data, dispatch] = useReduce(reduceData, undefined);
 
   useEffect(() => {
-    loadData(page, type);
+    (async function () {
+      dispatch(await getData(page, type));
+    })();
   }, [page, type])
 
   return (
     <header className='header'>
       <div className='user' >
-        {folder ? (
+        {data ? (
           <>
             <div className='user__box'>
-              <img className='user__img' src={folder.owner.profileImageSource ?? defaultAvatar} alt='유저 프로필 이미지' />
-              <p className='user__name'>{folder.owner.name}</p>
+              <img className='user__img' src={data.owner.profileImageSource ?? defaultAvatar} alt='유저 프로필 이미지' />
+              <p className='user__name'>{data.owner.name}</p>
             </div>
-            <h1 className='user__folder-name'>{folder.name}</h1>
+            <h1 className='user__folder-name'>{data.folderName}</h1>
           </>
-        ) : <p> 오류입니다.</p>}
+        ) : <p>폴더 정보를 읽어오는 데 실패했습니다.</p>}
       </div>
     </header>
   )

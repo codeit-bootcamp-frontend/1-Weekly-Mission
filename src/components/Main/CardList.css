@@ -6,6 +6,7 @@
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 34rem;
@@ -17,8 +18,9 @@
   background-color: var(--White);
 }
 .card:hover {
-  transform: scale(1.3, 1.3);
+  transform: scale(110%);
   transition: all 0.2s ease-in;
+  z-index: 1;
 }
 
 .card__imgbox {
@@ -41,7 +43,22 @@
   background-color: var(--White);
 }
 
+.card__star {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: transparent;
+  border: none;
+}
+
+.card__kebab {
+  background-color: transparent;
+  border: none;
+}
+
 .card__timeDiff {
+  display: flex;
+  justify-content: space-between;
   font-size: 1.2rem;
   color: var(--Gray5);
 }

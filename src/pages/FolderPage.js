@@ -9,7 +9,7 @@ function FolderPage() {
 
   return (
     <>
-      <Navigation page='folder' onClick={setIsUser} />
+      <Navigation page='folder' type='user' setIsUser={setIsUser} />
       <HeaderSearch />
       <Main page='folder' type='links' isUser={isUser} />
       <Footer />

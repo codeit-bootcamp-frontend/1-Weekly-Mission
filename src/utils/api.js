@@ -4,6 +4,7 @@ const URLS = {
   shared: {
     user: BASE_URL + '/sample/user',
     folder: BASE_URL + '/sample/folder',
+    folderName: BASE_URL + '/sample/folder',
   },
   folder: {
     user: BASE_URL + '/users/1',
@@ -13,10 +14,13 @@ const URLS = {
 }
 
 export async function getData(page, type) {
-  const response = await fetch(URLS[page][type]);
-  if (!response.ok) {
-    throw new Error('리뷰를 불러오는데 실패했습니다.')
+  try {
+    const response = await fetch(URLS[page][type]);
+    const body = await response.json();
+    console.log(body);
+    return { type: `${page}_${type}`, payload: body };
+  } catch (error) {
+    console.error(error);
+    return { type: 'FETCH_ERROR', payload: error }
   }
-  const body = response.json();
-  return body;
 }

@@ -7,7 +7,7 @@ function SharedPage() {
   return (
     <>
       <Navigation page='shared' />
-      <Header page='shared' type='folder' />
+      <Header page='shared' type='folderName' />
       <Main page='shared' type='folder' />
       <Footer />
     </>
