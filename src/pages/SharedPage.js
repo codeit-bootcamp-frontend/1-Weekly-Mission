@@ -5,7 +5,7 @@ import CardList from "../components/Card/Card";
 import useAsync from "../hooks/useAsync";
 
 import { getFolder } from "../api/api";
-import "../App.style.css";
+import "./SharedPage.css";
 
 const INITIAL_FOLDER = {
   folderName: "",

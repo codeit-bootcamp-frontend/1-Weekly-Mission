@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
+import LinkAddInput from "../components/LinkAddInput/LinkAddInput";
 import CardList from "../components/Card/Card";
 import useAsync from "../hooks/useAsync";
 
 import { getFolder } from "../api/api";
-import "../App.style.css";
-
-const INITIAL_FOLDER = {
-  folderName: "",
-  folderOwnerrName: "",
-  folderOwnerProfileImage: "",
-};
+import "./FolderPage.css";
 
 function FolderPage() {
   const [isFolderLoading, folderLoadingError, getFolderAsync] =
@@ -29,7 +24,10 @@ function FolderPage() {
 
   return (
     <>
-      <section className="section">
+      <section className="folder-section">
+        <div className="add-section">
+          <LinkAddInput />
+        </div>
         <div className="search-section">
           <SearchBar />
         </div>
