@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import styles from "../styles/Folder.module.css";
+import styles from "../styles/SharedPage.module.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import FolderInfo from "../components/FolderInfo";
@@ -8,7 +8,7 @@ import getFolder from "../api/getFolder";
 import Search from "../components/Search";
 import useAsync from "../hooks/useAsync";
 
-const Folder = () => {
+const SharedPage = () => {
   const [folderData, setFolderData] = useState([]);
   const [isLoading, getFolerAsync] = useAsync(getFolder);
 
@@ -37,4 +37,4 @@ const Folder = () => {
   );
 };
 
-export default Folder;
+export default SharedPage;
