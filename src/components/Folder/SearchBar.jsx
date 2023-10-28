@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import search_icon from '../../assets/svg/search.svg';
 
 function SearchBar() {
   return (
     <>
-      <SearchIcon src='/assets/images/search.svg' alt='검색 아이콘' />
+      <SearchIcon src={search_icon} alt='검색 아이콘' />
       <SearchInputStyle
         type='search'
         placeholder='링크를 검색해 보세요.'

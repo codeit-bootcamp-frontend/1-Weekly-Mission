@@ -1,6 +1,7 @@
 import Moment from 'react-moment';
 import CardImage from './CardImage';
 import { CardInfoBox, CardInfoDescription, CardInfoTop, CardPassedTime, CardWrapper } from './Card.style';
+import card_config_icon from '../../assets/svg/kebab.svg';
 
 function Card({ item }) {
   return (
@@ -9,10 +10,10 @@ function Card({ item }) {
       <CardInfoBox>
         <CardInfoTop>
           <CardPassedTime>
-            <Moment className='card-passed-time' fromNow>{item.createdAt}</Moment>
+            <Moment fromNow>{item.createdAt}</Moment>
           </CardPassedTime>
           <button>
-            <img src='/assets/images/kebab.svg' alt='카드 설정 버튼' />
+            <img src={card_config_icon} alt='카드 설정 버튼' />
           </button>
         </CardInfoTop>
         <CardInfoDescription>{item.description}</CardInfoDescription>

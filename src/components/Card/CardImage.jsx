@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import star_mark from '../../assets/image/star.png';
 
 function CardImage({ item }) {
   return (
     <CardImageBox>
       <CardImageStyle src={item.imageSource} alt={item.title} />
       <StarMarkButton>
-        <StarMark src='/assets/images/star.png' alt='카드 즐겨찾기 버튼' />
+        <StarMark src={star_mark} alt='카드 즐겨찾기 버튼' />
       </StarMarkButton>
     </CardImageBox>
   );
