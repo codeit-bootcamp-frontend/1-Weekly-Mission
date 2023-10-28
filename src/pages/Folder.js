@@ -70,6 +70,11 @@ function Folder() {
     loadCardList();
   }, [currentFolderId]);
 
+  const CONDITIONS_FOR_NOT_RENDER =
+    (currentFolderId === "") &
+    (folderLinks.length === 0) &
+    (personalFolder.length === 0);
+
   return (
     <>
       <Helmet>
@@ -78,7 +83,7 @@ function Folder() {
       <NavAndFooterBasic>
         <FloatButton>폴더 추가</FloatButton>
         <LinkBar />
-        {(currentFolderId === "") & (folderLinks.length === 0) ? (
+        {CONDITIONS_FOR_NOT_RENDER ? (
           <Wrapper>
             <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
           </Wrapper>
