@@ -1,21 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './sortButton.css';
 
-export default function SortButton({ children, onClick }) {
-  const [isClicked, setIsClicked] = useState(false);
+export default function SortButton({
+  children,
+  setFolderId,
+  folderId,
+  setSearchParams,
+  isClicked,
+  setIsClicked,
+  fetchUserLinks,
+}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchParams(
+      folderId
+        ? {
+            folderId,
+          }
+        : {},
+    );
+  };
 
   const handleSortButtonClick = () => {
-    onClick(children);
+    if (!isClicked) {
+      setFolderId(folderId);
+    } else {
+      setFolderId(null);
+    }
+    setIsClicked(!isClicked);
+  };
+
+  const handleAllButtonClick = () => {
+    setFolderId(null);
+    fetchUserLinks(null);
     setIsClicked(!isClicked);
   };
 
   return (
-    <button
-      type="button"
-      className={isClicked ? 'sort-button clicked' : 'sort-button'}
-      onClick={handleSortButtonClick}
-    >
-      {children}
-    </button>
+    <form onSubmit={handleSubmit}>
+      <button
+        type="submit"
+        className={isClicked ? 'sort-button clicked' : 'sort-button'}
+        onClick={
+          children === '전체' ? handleAllButtonClick : handleSortButtonClick
+        }
+      >
+        {children}
+      </button>
+    </form>
   );
 }

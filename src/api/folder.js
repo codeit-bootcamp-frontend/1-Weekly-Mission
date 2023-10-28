@@ -13,9 +13,10 @@ export const getUserFolders = async () => {
 
 export const getUserLinks = async (folderId) => {
   let result;
+  const query = folderId ? `folderId=${folderId}` : '';
   try {
     const response = await fetch(
-      `${BASE_URL}${USERS_ENDPOINT}/1/links?folderId=${folderId}`,
+      `${BASE_URL}${USERS_ENDPOINT}/1/links?${query}`,
     );
     result = await response.json();
   } catch (error) {

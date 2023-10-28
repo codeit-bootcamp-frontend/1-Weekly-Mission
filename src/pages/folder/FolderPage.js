@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import './folderPage.css';
 import AddLinkInput from './components/addLinkInput/AddLinkInput';
 import SortButton from './components/sortButton/SortButton';
@@ -10,18 +11,31 @@ import Card from '../../components/card/Card';
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initFolderId = searchParams.get('folderId');
+  const [folderId, setFolderId] = useState(initFolderId || null);
+  // eslint-disable-next-line no-unused-vars
+  const [isClicked, setIsClicked] = useState(false);
 
-  useEffect(async () => {
+  const fetchUserFolders = async () => {
     const result = await getUserFolders();
     const { data } = result;
     setFolders(data);
-  }, []);
+  };
 
-  useEffect(async () => {
-    const result = await getUserLinks();
+  const fetchUserLinks = async (id) => {
+    const result = await getUserLinks(id);
     const { data } = result;
     setLinks(data);
+  };
+
+  useEffect(() => {
+    fetchUserFolders();
   }, []);
+
+  useEffect(() => {
+    fetchUserLinks(folderId);
+  }, [folderId]);
 
   return (
     <div className="folder-container">
@@ -33,11 +47,29 @@ export default function FolderPage() {
         <section className="folder-content-section">
           <div className="folder-sort-add-buttons-container">
             <div className="folder-sort-buttons-container">
-              <SortButton>전체</SortButton>
+              <SortButton
+                setSearchParams={setSearchParams}
+                setLinks={setLinks}
+                setFolderId={setFolderId}
+                setIsClicked={setIsClicked}
+                fetchUserLinks={fetchUserLinks}
+                isClicked={isClicked}
+              >
+                전체
+              </SortButton>
               {folders &&
                 folders.map((item) => (
                   <div key={item.id}>
-                    <SortButton>{item.name}</SortButton>
+                    <SortButton
+                      setSearchParams={setSearchParams}
+                      setLinks={setLinks}
+                      setFolderId={setFolderId}
+                      setIsClicked={setIsClicked}
+                      isClicked={item.id === folderId}
+                      folderId={item.id}
+                    >
+                      {item.name}
+                    </SortButton>
                   </div>
                 ))}
             </div>
