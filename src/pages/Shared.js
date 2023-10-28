@@ -1,6 +1,7 @@
 import CardList from "../components/CardList";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
+import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import { getFolderData } from "../services/api";
 import { useEffect, useState } from "react";
@@ -26,6 +27,7 @@ const Shared = () => {
     <div className="App">
       <Nav />
       <Header folderInfo={folderInfo} owner={owner} />
+      <SearchBar />
       <CardList cards={cards} />
       <Footer />
     </div>

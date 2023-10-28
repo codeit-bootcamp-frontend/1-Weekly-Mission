@@ -1,8 +1,5 @@
-.main-container {
-  max-width: 1060px;
-}
-
 .card-list-wrapper {
+  max-width: 1060px;
   width: 100%;
   background-color: rgba(255, 255, 255, 1);
   margin-top: 40px;
