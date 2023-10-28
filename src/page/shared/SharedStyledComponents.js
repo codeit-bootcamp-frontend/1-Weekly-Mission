@@ -17,7 +17,7 @@ export const Section = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  margin: 6rem auto 9rem;
+  margin: 2rem auto 6rem;
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -48,7 +48,6 @@ export const ContentContainer = styled.div`
 export const FolderContentContainer = styled(ContentContainer)`
   margin: 4rem auto 6rem;
   gap: 4rem;
-  min-width: 106rem;
 
   .noLinkContainer {
     color: #000;
@@ -61,52 +60,6 @@ export const FolderContentContainer = styled(ContentContainer)`
   }
 `;
 
-export const AddLinkInputContainer = styled.div`
-  width: 100%;
-  min-width: 80rem;
-  display: flex;
-  padding: 1.6rem 2rem;
-  border-radius: 1.5rem;
-  background: #fff;
-  align-items: center;
-  box-sizing: border-box;
-  border: 1px solid var(--primary);
-  align-items: center;
-
-  #linkImg {
-    width: 1.6rem;
-    margin-right: 1.2rem;
-  }
-
-  .inputContainer {
-    width: 100%;
-    height: 2.4rem;
-  }
-
-  .inputContainer::placeholder {
-    color: var(--gray60);
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 2.4rem;
-  }
-
-  .linkAddBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 9rem;
-    height: 3.7rem;
-    box-sizing: border-box;
-    padding: 1rem 1.6rem;
-    border-radius: 0.8rem;
-    background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
-    color: #f5f5f5;
-    font-size: 1.4rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
-`;
-
 export const SearchInputContainer = styled.div`
   width: 100%;
   display: flex;
@@ -116,14 +69,13 @@ export const SearchInputContainer = styled.div`
   background: #f5f5f5;
   align-items: center;
   box-sizing: border-box;
-  align-items: center;
 
-  .inputContainer {
+  #searchContainer {
     width: 100%;
     height: 2.3rem;
   }
 
-  .inputContainer::placeholder {
+  #searchContainer::placeholder {
     color: #666;
     font-size: 1.6rem;
     font-weight: 400;
@@ -178,43 +130,6 @@ export const FolderBtnItemContainer = styled.div`
   color: ${(props) => (props.isSelected ? `#fff` : "#000")};
   font-size: 1.6rem;
   font-weight: 400;
-`;
-
-export const LinkHeaderContainer = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-
-  .linkTitle {
-    color: #000;
-    font-size: 2.4rem;
-    font-weight: 600;
-    letter-spacing: -0.2px;
-  }
-`;
-
-export const LinkToolContainer = styled.div`
-  display: flex;
-  gap: 1.2rem;
-
-  .linkToolItemContainer {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-    cursor: pointer;
-
-    img {
-      width: 1.8rem;
-      height: 1.8rem;
-    }
-
-    .linkToolTitle {
-      color: var(--gray60);
-      font-size: 1.4rem;
-      font-weight: 600;
-    }
-  }
 `;
 
 export const CardContainer = styled.div`
