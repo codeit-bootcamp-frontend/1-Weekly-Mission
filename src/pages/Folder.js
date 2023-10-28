@@ -78,7 +78,11 @@ function Folder() {
       <NavAndFooterBasic>
         <FloatButton>폴더 추가</FloatButton>
         <LinkBar />
-        {personalFolder.length !== 0 ? (
+        {(currentFolderId === "") & (folderLinks.length === 0) ? (
+          <Wrapper>
+            <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
+          </Wrapper>
+        ) : (
           <Wrapper>
             <Search />
             <FolderMenu
@@ -92,10 +96,6 @@ function Folder() {
             ) : (
               <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
             )}
-          </Wrapper>
-        ) : (
-          <Wrapper>
-            <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
           </Wrapper>
         )}
       </NavAndFooterBasic>

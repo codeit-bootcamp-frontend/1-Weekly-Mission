@@ -40,7 +40,7 @@ export async function getEachFolder(id = "") {
 
 export async function getUserLinks(id = "") {
   const query = id === "" ? `/links` : `/links?folderId=${id}`;
-  const response = await fetch(`${BASE_URL}/users/1${query}`);
+  const response = await fetch(`${BASE_URL}/users/10${query}`);
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패하였습니다.");
   }
