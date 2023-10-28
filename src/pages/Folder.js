@@ -51,7 +51,6 @@ function Folder() {
   const loadCardList = async () => {
     const result = await getUserLinks(currentFolderId);
     setFolderLinks(result?.data);
-    console.log(currentFolderId);
   };
 
   const handleClickMenuButton = (value, name) => {
