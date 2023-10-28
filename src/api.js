@@ -7,6 +7,7 @@ const PATH = {
   },
   folder: {
     user: BASE_URL + "users/1",
+    links: BASE_URL + "users/1/links",
   },
 };
 
