@@ -24,8 +24,8 @@ export async function getUserFolder() {
   return body;
 }
 
-export async function getUserLinks() {
-  const response = await fetch(`${URL}users/1/links`);
+export async function getUserLinks(id = '') {
+  const response = await fetch(`${URL}users/1/links?folderId=${id}`);
   const body = await response.json();
   return body;
 }

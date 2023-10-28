@@ -21,19 +21,23 @@ const Button = styled.button`
 export default function FolderMain() {
   const [folders, setFolders] = useState([]);
   const [links, setLinks] = useState([]);
+  const [title, setTitle] = useState('전체');
 
-  // const handleFolderList= async () => {
-  //   const {data} = await get
-  // }
+  const handleLoad = async (id = '') => {
+    const { data } = await getUserFolder();
+    const links = await getUserLinks(id);
+    console.log(data);
+    setFolders(data);
+    setLinks(links.data);
+  };
+
+  const handleFolderList = async (e) => {
+    setTitle(e.target.textContent);
+    const id = e.target.name;
+    handleLoad(id);
+  };
 
   useEffect(() => {
-    const handleLoad = async () => {
-      const { data } = await getUserFolder();
-      const links = await getUserLinks();
-
-      setFolders(data);
-      setLinks(links.data);
-    };
     handleLoad();
   }, []);
 
@@ -48,9 +52,11 @@ export default function FolderMain() {
       </div>
       <div className="folder-wrapper">
         <div className="folder-div">
-          <Button>전체</Button>
+          <Button onClick={handleFolderList}>전체</Button>
           {folders.map((item) => (
-            <Button key={item.id}>{item.name}</Button>
+            <Button name={item.id} key={item.id} onClick={handleFolderList}>
+              {item.name}
+            </Button>
           ))}
         </div>
         <div className="folder-plus">
@@ -59,7 +65,7 @@ export default function FolderMain() {
         </div>
       </div>
       <div className="useful-wrapper">
-        <div className="useful">유용한 글</div>
+        <div className="useful">{title}</div>
         <div className="useful-img-div">
           <div className="useful-img">
             <img src={shareImg} alt="shareImg" />
@@ -67,18 +73,20 @@ export default function FolderMain() {
           </div>
           <div className="useful-img">
             <img src={penImg} alt="penImg" />
-            <span>공유</span>
+            <span>이름 변경</span>
           </div>
           <div className="useful-img">
             <img src={deleteImg} alt="deleteImg" />
-            <span>공유</span>
+            <span>삭제</span>
           </div>
         </div>
       </div>
       <div className="main-content-wrapper">
-        {links.map((link) => (
-          <FolderCard key={link.id} item={link} />
-        ))}
+        {links[0] ? (
+          links.map((link) => <FolderCard key={link.id} item={link} />)
+        ) : (
+          <div className="no-link">저장된 링크가 없습니다.</div>
+        )}
       </div>
     </div>
   );
