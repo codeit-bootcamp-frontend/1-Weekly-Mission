@@ -10,9 +10,11 @@ import styled from "styled-components";
 
 
 const Folder = () => {
-  const account = useGetAccount(1);
-  const selectedFolder = useGetSelectedFolder(1);
-  const folderContentsInfo = useGetSearchFolder(1);
+  let userID = 1;
+
+  const account = useGetAccount(userID);
+  const selectedFolder = useGetSelectedFolder(userID);
+  const folderContentsInfo = useGetSearchFolder(userID);
 
   const TopArea = styled.div`
     display: flex;
@@ -31,7 +33,7 @@ const Folder = () => {
     <TopArea>
       <LinkAddInput />
     </TopArea>
-    {folderContentsInfo && <FolderMain folderInfo={folderContentsInfo.data} selectedFolder={selectedFolder.data}/>}
+    {folderContentsInfo && <FolderMain userID={userID} folderInfo={folderContentsInfo.data} selectedFolder={selectedFolder.data}/>}
     <Footer />
     </>  
   )

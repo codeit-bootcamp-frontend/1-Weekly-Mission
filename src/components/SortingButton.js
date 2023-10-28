@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import useGetSearchFolder from '../hooks/useGetSearchFolder';
 
 const Button = styled.button`
   display: flex;
@@ -19,7 +20,9 @@ const Button = styled.button`
   }
 `
 
-const SortingButton = ( { isActive, handleClick, buttonIndex, children } ) => {
+const SortingButton = ( { folderId, userId, isActive, handleClick, buttonIndex, children } ) => {
+  const selectedFolder = useGetSearchFolder(userId, folderId);
+  console.log(selectedFolder);
 
   return (
     <Button 
@@ -28,4 +31,4 @@ const SortingButton = ( { isActive, handleClick, buttonIndex, children } ) => {
   )
 }
 
-export default SortingButton;
+export default SortingButton; 

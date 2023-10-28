@@ -35,7 +35,7 @@ const AddIcon = styled.img`
   height: 16px;
 `
 
-const Sorting = ({ selectedFolder }) => {
+const Sorting = ({ selectedFolder, userID }) => {
 
   let isActiveArray = Array(selectedFolder.length).fill(false)
   isActiveArray[0] = true;
@@ -54,6 +54,7 @@ const Sorting = ({ selectedFolder }) => {
         {selectedFolder.map((selectedFolder, index) => {
           return (
             <SortingButton 
+              userID = {userID}
               key={index}
               folderId = {selectedFolder.id}
               createdAt = {selectedFolder['created_at']}
