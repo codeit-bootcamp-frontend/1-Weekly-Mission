@@ -12,6 +12,7 @@ import isEmpty from 'utils/isEmpty';
 
 function Folder() {
   const [folders, setFolders] = useState(null);
+  const [show, setShow] = useState(false);
   const [card, setCard] = useState([]);
   const [folderName, setFolderName] = useState('');
 
@@ -27,7 +28,13 @@ function Folder() {
     const currentId = data.filter((data) => data.id === Number(initFolderId));
 
     let folderName;
-    isEmpty(currentId) ? (folderName = '전체') : (folderName = currentId[0].name);
+    if (isEmpty(currentId)) {
+      folderName = '전체';
+      setShow(false);
+    } else {
+      folderName = currentId[0].name;
+      setShow(true);
+    }
 
     setFolderName(folderName);
     setFolders(data);
@@ -53,7 +60,7 @@ function Folder() {
       <MainSection>
         <Search />
         {folders && <FolderList folderData={folders} />}
-        <Title folderName={folderName} />
+        <Title folderName={folderName} visibleButton={show} />
         {initFolderId && card.length === 0 ? <NotFoundLink /> : <CardList cardData={card} />}
       </MainSection>
     </>

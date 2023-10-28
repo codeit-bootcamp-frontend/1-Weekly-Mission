@@ -25,7 +25,6 @@ function Header() {
   useEffect(() => {
     loginInfo();
   }, [loginInfo]);
-  console.log(getUser);
   const { id, email, profileImageSource, image_source } = getUser;
 
   return (

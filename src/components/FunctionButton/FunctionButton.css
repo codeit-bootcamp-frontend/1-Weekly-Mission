@@ -34,9 +34,3 @@
   padding-left: 1.8rem;
   background-color: white;
 }
-
-@media (max-width: 1123px) {
-  .function-button-Wrapper {
-    display: none;
-  }
-}
