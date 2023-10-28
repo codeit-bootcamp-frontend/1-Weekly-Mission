@@ -252,6 +252,8 @@ S.DivProfile = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-area: sign;
+  justify-self: end;
 `
 
 S.SpanProfile = styled.span`

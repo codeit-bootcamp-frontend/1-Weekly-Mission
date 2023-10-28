@@ -34,6 +34,11 @@ export function reduceData(state = {}, action = {}) {
       state = { id, name, email, profileImg }
       break;
     }
+    case 'folder_category': {
+      const { data } = action.payload;
+      state = data;
+    }
+      break;
     case 'folder_links':
       const { data } = action.payload;
       state = data;

@@ -5,7 +5,7 @@ export const formatDate = (value) => {
 
 export const filterLinks = (links, type, folderId) => {
   if (type === 'searchById') {
-    return links.filter(link => link['id'] == folderId);
+    return links.filter(link => link['folder_id'] == folderId);
   }
   if (type === 'searchByKeyword') {
     return links.filter(link => link['title']?.includes(folderId));
