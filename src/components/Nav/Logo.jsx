@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import logo from '../../assets/svg/logo.svg';
 
 function Logo() {
   return (
     <>
-      <LogoStyle src='/assets/images/logo.svg' alt='홈으로 연결된 Linkbrary 로고' />
+      <LogoStyle src={logo} alt='홈으로 연결된 Linkbrary 로고' />
     </>
   );
 }
