@@ -1,6 +1,9 @@
 import * as style from "./CardItemStyle";
 
 import logo from "assets/logo.svg";
+import Star from "components/icon/Star";
+import kebabIcon from "assets/kebab.svg";
+
 import { getCreatedDate, getDiffTime } from "common/utils/dateUtils";
 
 export default function CardItem({ link }) {
@@ -11,9 +14,15 @@ export default function CardItem({ link }) {
     <style.Wrapper>
       <style.Container>
         <style.CardImage src={imageSource ? imageSource : logo} isimageurl={imageSource} />
+        <style.Icon>
+          <Star />
+        </style.Icon>
       </style.Container>
       <style.CardInfo>
-        <style.TimeDiff>{getDiffTime(createdAt)}</style.TimeDiff>
+        <style.Info>
+          {getDiffTime(createdAt)}
+          <img src={kebabIcon} />
+        </style.Info>
         <style.Description>{description}</style.Description>
         <style.CreatedAt>
           {yyyy}. {mm}. {dd}

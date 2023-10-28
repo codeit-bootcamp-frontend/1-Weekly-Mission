@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
+  position: relative;
   width: 21.25rem;
   height: 12.5rem;
   display: flex;
@@ -35,6 +36,13 @@ export const Container = styled.div`
   @media only screen and (${breakPoints.mobile}) {
     width: 100%;
   }
+`;
+
+export const Icon = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
 `;
 
 export const CardImage = styled.img`
@@ -57,7 +65,9 @@ export const CardInfo = styled.div`
   gap: 10px;
 `;
 
-export const TimeDiff = styled.p`
+export const Info = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin: 0;
   font-size: 0.8rem;
   color: #666666;
