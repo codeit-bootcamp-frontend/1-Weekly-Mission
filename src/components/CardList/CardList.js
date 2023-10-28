@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../Card/Card";
 import "../../style/style.css";
 import "./CardList.css";
 

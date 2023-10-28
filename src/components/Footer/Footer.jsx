@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import * as S from "./FooterStyle"
 import SocialIcon from "./SocialIcon";
 import facebookLogo from "../../assets/facebook.png";
 import instagramLogo from "../../assets/instagram.png";
@@ -35,19 +35,19 @@ function Footer() {
   ];
 
   return (
-    <footer>
-      <div className="frame">
-        <div className="footer-container">
-          <div className="codeit-2023">@codeit - 2023</div>
-          <div className="extra-info">
-            <a href="privacy.html">
+    <S.FooterContainer>
+      <S.Frame>
+        <S.FooterInfo>
+          <S.Codeit2023>@codeit - 2023</S.Codeit2023>
+          <S.ExtraInfo>
+            <S.Link href="privacy.html">
               <span>Privacy Policy</span>
-            </a>
-            <a href="faq.html">
+            </S.Link>
+            <S.Link href="faq.html">
               <span>FAQ</span>
-            </a>
-          </div>
-          <div className="sns-icons">
+            </S.Link>
+          </S.ExtraInfo>
+          <S.SnsIcons>
             {socialLinks.map((socialLink) => (
               <SocialIcon
                 key={socialLink.id}
@@ -56,10 +56,10 @@ function Footer() {
                 altText={socialLink.altText}
               />
             ))}
-          </div>
-        </div>
-      </div>
-    </footer>
+          </S.SnsIcons>
+        </S.FooterInfo>
+      </S.Frame>
+    </S.FooterContainer>
   );
 }
 

@@ -1,5 +1,5 @@
-import Footer from "../Footer/Footer";
-import Nav from "../Nav/Nav";
+import Footer from "../../components/Footer/Footer.jsx";
+import Nav from "../../components/Nav/Nav";
 
 function Layout({ children }) {
   return (

@@ -1,7 +1,7 @@
-import LogoImg from "../../assets/card-logo.png";
-import "./Card.css";
-import "../../style/style.css";
+import React from "react";
 import moment from "moment";
+import LogoImg from "../../assets/card-logo.png";
+import * as S from "./CardStyle"; // 스타일 컴포넌트 가져오기
 
 function calculateTimeAgo(createdAt) {
   const createdDate = moment(createdAt, "YYYY-MM-DDTHH:mm:ss[Z]");
@@ -31,28 +31,25 @@ function calculateTimeAgo(createdAt) {
 
 function Card({ link }) {
   const { createdAt, description, imageSource, title, url } = link;
-  const createdDate = new Date(createdAt);
-  return (
-    <a className="Card" href={url}>
-      <div>
-        <div className="Card-image-container">
-          <img
-            className={imageSource ? "Card-image" : "no-img-logo"}
-            src={imageSource ? imageSource : LogoImg}
-            alt="카드 사진"
-          />
-        </div>
 
-        <div className="Card-content-container">
-          <div className="Card-content-ago">{calculateTimeAgo(createdAt)}</div>
-          <div>{title}</div>
-          <div className="Card-content">{description}</div>
-          <div className="Card-contentAt">
-            {moment(createdAt).format("YYYY.MM.DD")}
-          </div>
-        </div>
-      </div>
-    </a>
+  return (
+    <S.CardContainer href={url}>
+      <S.CardImageContainer>
+        <S.CardImage
+          className={imageSource ? "Card-image" : "no-img-logo"}
+          src={imageSource ? imageSource : LogoImg}
+          alt="카드 사진"
+        />
+      </S.CardImageContainer>
+      <S.CardContentContainer>
+        <S.CardContentAgo>{calculateTimeAgo(createdAt)}</S.CardContentAgo>
+        <div>{title}</div>
+        <S.CardContent>{description}</S.CardContent>
+        <S.CardContentAt>
+          {moment(createdAt).format("YYYY.MM.DD")}
+        </S.CardContentAt>
+      </S.CardContentContainer>
+    </S.CardContainer>
   );
 }
 

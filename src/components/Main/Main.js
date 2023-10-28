@@ -1,5 +1,5 @@
-import CardList from "./CardList";
-import SearchBar from "./SearchBar";
+import CardList from "../CardList/CardList";
+import SearchBar from "../SearchBar/SearchBar";
 import "./Main.css";
 
 function Main({ links }) {
