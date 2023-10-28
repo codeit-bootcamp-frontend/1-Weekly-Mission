@@ -1,6 +1,7 @@
 import CardList from 'components/CardList/CardList';
 import FolderList from 'components/FolderList/FolderList';
 import LinkAdd from 'components/LinkAdd/LinkAdd';
+import MainSection from 'components/MainSection/MainSection';
 import NotFoundLink from 'components/NotFoundLink/NotFoundLink';
 import Search from 'components/Search/Search';
 import Title from 'components/Title/Title';
@@ -14,7 +15,7 @@ function Folder() {
   const [card, setCard] = useState([]);
   const [folderName, setFolderName] = useState('');
 
-  const [folderParams, setFolderParams] = useSearchParams();
+  const [folderParams, setFolderParams] = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
   const initFolderId = folderParams.get('folderId');
 
   const folderInfo = useCallback(async () => {
@@ -49,12 +50,12 @@ function Folder() {
   return (
     <>
       <LinkAdd />
-      <div className="main-section">
+      <MainSection>
         <Search />
         {folders && <FolderList folderData={folders} />}
         <Title folderName={folderName} />
         {initFolderId && card.length === 0 ? <NotFoundLink /> : <CardList cardData={card} />}
-      </div>
+      </MainSection>
     </>
   );
 }

@@ -1,9 +1,9 @@
 import Banner from 'components/Banner/Banner';
 import CardList from 'components/CardList/CardList';
+import MainSection from 'components/MainSection/MainSection';
 import Search from 'components/Search/Search';
 import { useCallback, useEffect, useState } from 'react';
 import { getSampleUserProfile } from 'services/api';
-import './Card.css';
 
 function Card() {
   const [folder, setFolder] = useState({});
@@ -28,10 +28,10 @@ function Card() {
   return (
     <>
       {folder && <Banner folderData={folder} />}
-      <div className="main-section">
+      <MainSection>
         <Search />
         {card && <CardList cardData={card} />}
-      </div>
+      </MainSection>
     </>
   );
 }
