@@ -8,6 +8,7 @@ export const FolderTabList = styled.ul`
 `;
 
 export const FolderNavLink = styled(NavLink)`
+  display: block;
   padding: 0.8rem 1.2rem;
   border-radius: 0.5rem;
   border: 1px solid var(--linkbrary--color--primary);
