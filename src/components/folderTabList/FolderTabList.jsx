@@ -5,7 +5,7 @@ export default function FolderTabList({ folderList }) {
   const params = useParams();
   const folderId = params.folderId;
   return (
-    <S.FolderList>
+    <S.FolderTabList>
       <li>
         <S.FolderNavLink to="/folder" $isActive={!folderId}>
           전체
@@ -23,6 +23,6 @@ export default function FolderTabList({ folderList }) {
           </li>
         );
       })}
-    </S.FolderList>
+    </S.FolderTabList>
   );
 }

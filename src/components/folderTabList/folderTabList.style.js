@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 
-export const FolderList = styled.ul`
+export const FolderTabList = styled.ul`
   display: flex;
   align-items: center;
   gap: 0.8rem;
