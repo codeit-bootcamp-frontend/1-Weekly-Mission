@@ -1,5 +1,5 @@
 import "./App.css";
-import { Main } from "./components/Main";
+import Main from "./components/Main";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -7,35 +7,25 @@ import { getFolderData, getUserData } from "./services/api";
 import { useEffect, useState, useCallback } from "react";
 
 function App() {
-  const [cards, setcards] = useState([]);
+  const [cards, setCards] = useState([]);
   const [folderInfo, setFolderInfo] = useState({});
   const [owner, setOwner] = useState({});
-  const [user, setUser] = useState([]);
 
-  const getdata = useCallback(async () => {
+  const getData = async () => {
     const { folder } = await getFolderData();
     const ownerInfo = { ...folder.owner };
     setFolderInfo(folder);
     setOwner(ownerInfo);
-    setcards(folder.links);
-  }, []);
-
-  const getUserInfo = useCallback(async () => {
-    const userInfo = await getUserData();
-    setUser(userInfo);
-  });
+    setCards(folder.links);
+  };
 
   useEffect(() => {
-    getdata();
-  }, [getdata]);
-
-  useEffect(() => {
-    getUserInfo();
-  }, []); //마운트시점에만 호출
+    getData();
+  }, [getData]);
 
   return (
     <div className="App">
-      <Nav profileImageSource={user.profileImageSource} email={user.email} />
+      <Nav />
       <Header folderInfo={folderInfo} owner={owner} />
       <Main cards={cards} />
       <Footer />

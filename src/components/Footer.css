@@ -5,24 +5,30 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 40px;
-  padding: 32px 10.4px 64px;
+  padding: 32px 104px 62px 104px;
+  height: 160px;
+  @media (max-width: 767px) {
+    padding: 32px 32px 64px 32px;
+  }
 }
+
 .footer-container {
   max-width: 1920px;
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 160px;
   justify-content: space-between;
   color: #676767;
-}
-/* 
-.footer-wrapper {
-  display: flex;
-  flex-direction: row;
 
-  justify-content: space-between;
-} */
+  @media (max-width: 767px) {
+    display: grid;
+    grid-template-areas:
+      "explain sns-logo"
+      "copyright .";
+    row-gap: 60px;
+    padding: 0 auto;
+  }
+}
 
 .copyright {
   color: #676767;
@@ -47,7 +53,7 @@
   color: #676767;
 }
 
-.sns-logo {
+.footer-sns {
   grid-area: sns-logo;
   display: flex;
   flex-direction: row;

@@ -4,6 +4,21 @@ import instagram from "../assets/svg/instagram.svg";
 import twitter from "../assets/svg/twitter.svg";
 import youtube from "../assets/svg/youtube.svg";
 
+const SnsLogo = [
+  { href: "https://www.facebook.com/", src: facebook, alt: "facebook" },
+  { href: "https://twitter.com/", src: twitter, alt: "twitter" },
+  { href: "https://www.youtube.com/", src: youtube, alt: "youtube" },
+  { href: "https://www.instagram.com/", src: instagram, alt: "instagram" },
+];
+
+const FooterSns = ({ href, src, alt }) => {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <img src={src} alt={alt} />
+    </a>
+  );
+};
+
 const Footer = () => {
   return (
     <div className="footer">
@@ -17,19 +32,10 @@ const Footer = () => {
             FAQ
           </a>
         </div>
-        <div className="sns-logo">
-          <a href="https://www.facebook.com/" target="_blank">
-            <img src={facebook} alt="facebook logo" />
-          </a>
-          <a href="https://twitter.com/" target="_blank">
-            <img src={twitter} alt="twitter logo" />
-          </a>
-          <a href="https://www.youtube.com/" target="_blank">
-            <img src={youtube} alt="youtube logo" />
-          </a>
-          <a href="https://www.instagram.com/" target="_blank">
-            <img src={instagram} alt="instagram logo" />
-          </a>
+        <div className="footer-sns">
+          {SnsLogo.map((sns) => (
+            <FooterSns key={sns.alt} {...sns} />
+          ))}
         </div>
       </div>
     </div>
