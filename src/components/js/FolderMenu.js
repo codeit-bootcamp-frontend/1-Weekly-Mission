@@ -88,8 +88,8 @@ const FEATURE_LIST = [
 ];
 
 function FolderMenu({ folders, onClick, current, folderName }) {
-  if (!folders) return null;
 
+  const items = Array.isArray(folders) ? folders : [];
   return (
     <>
       <Wrapper>
@@ -97,7 +97,7 @@ function FolderMenu({ folders, onClick, current, folderName }) {
           <FolderMenuButton id={""} onClick={onClick} isActive={current === ""}>
             전체
           </FolderMenuButton>
-          {folders.map((folder) => {
+          {items.map((folder) => {
             const id = String(folder.id);
             return (
               <li key={folder.id}>

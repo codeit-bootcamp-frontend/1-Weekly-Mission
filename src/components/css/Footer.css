@@ -2,11 +2,11 @@
   margin-top: 100px;
   background-color: #111322;
   min-width: 375px;
-  height: 160px;
+  
 }
 
 .Footer {
-  height: 64px;
+  height: 160px;
   display: grid;
   padding: 32px 104px 64px;
   margin: 0 auto;

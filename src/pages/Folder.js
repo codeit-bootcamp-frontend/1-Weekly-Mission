@@ -18,7 +18,6 @@ const Wrapper = styled.div`
   width: 1060px;
   height: auto;
   margin: auto;
-  flex-grow: 2;
 
   @media (max-width: 1199px) and (min-width: 768px) {
     width: 704px;
@@ -33,9 +32,8 @@ function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
     getFolderInformations
   );
-  const [loadingError, getEachFolderAsync] = useAsync(getEachFolder);
   const [LinksloadingError, getUserLinksAsync] = useAsync(getUserLinks);
-  const [personalFolder, setPersonalFolder] = useState({});
+  const [personalFolder, setPersonalFolder] = useState([]);
   const [currentFolderId, setCurrentFolderId] = useState("");
   const [folderLinks, setFolderLinks] = useState([]);
   const [folderName, setFolderName] = useState("");
@@ -43,8 +41,7 @@ function Folder() {
   //폴더 목록, 전체 링크 데이터 fetch
   const loadInitial = async () => {
     const folders = await getFoldersAsync();
-    //방어코드 쓰기
-    setPersonalFolder({ ...folders });
+    setPersonalFolder(folders?.data);
     const result = await getUserLinks();
     setFolderLinks(result?.data);
   };
@@ -62,11 +59,12 @@ function Folder() {
     const nextName = name;
     setFolderName(nextName);
   };
-
+  //처음 로드될 때
   useEffect(() => {
     loadInitial();
   }, []);
 
+  //currenetFolderId가 바뀔 때마다 새로 카드리스트 업데이트
   useEffect(() => {
     loadCardList();
   }, [currentFolderId]);
@@ -75,16 +73,16 @@ function Folder() {
     <NavAndFooterBasic>
       <FloatButton>폴더 추가</FloatButton>
       <LinkBar />
-      {folderLinks.length !== 0 ? (
+      {personalFolder.length !== 0 ? (
         <Wrapper>
           <Search />
           <FolderMenu
             folderName={folderName}
-            folders={personalFolder.data}
+            folders={personalFolder}
             current={currentFolderId}
             onClick={handleClickMenuButton}
           />
-          <CardListFolder folderLinks={folderLinks} />
+          {folderLinks.length ? <CardListFolder folderLinks={folderLinks} /> : <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>}
         </Wrapper>
       ) : (
         <Wrapper>

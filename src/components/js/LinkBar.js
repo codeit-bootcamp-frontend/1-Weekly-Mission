@@ -19,7 +19,7 @@ const Form = styled.form`
   width: 800px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   padding: 16px 20px;
   border-radius: 15px;

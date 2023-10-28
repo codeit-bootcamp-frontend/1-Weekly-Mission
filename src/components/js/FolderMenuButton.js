@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const MenuButton = styled.button`
-  font-family: Pretendard, sans-serif;
+  height: 35px;
+  display: flex;
+  align-items: center;
   padding: 8px 12px;
   cursor: pointer;
   background-color: ${({ isActive }) =>
