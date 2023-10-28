@@ -16,6 +16,7 @@ import LinksNotExist from "../components/js/LinksNotExist";
 
 const Wrapper = styled.div`
   width: 1060px;
+  height: 100vh;
   margin: 0 auto;
 
   @media (max-width: 1199px) and (min-width: 768px) {
@@ -41,6 +42,7 @@ function Folder() {
   //폴더 목록, 전체 링크 데이터 fetch
   const loadInitial = async () => {
     const folders = await getFoldersAsync();
+    //방어코드 쓰기
     setPersonalFolder({ ...folders });
     const result = await getUserLinks();
     setFolderLinks(result?.data);

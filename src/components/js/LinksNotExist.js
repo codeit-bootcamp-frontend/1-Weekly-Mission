@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%
-  margin: 40px auto 0;
+  width: 100%;
+  margin: 40px auto auto;
   padding: 41px 0 35px;
   display: flex;
   justify-content: center;
