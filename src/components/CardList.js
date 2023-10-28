@@ -19,6 +19,11 @@ export const SectionContainer = styled.section`
 `;
 
 const CardList = ( {folderCards} ) => {
+
+  if (!folderCards) {
+    return null; // 또는 로딩 중을 나타내는 컴포넌트를 렌더링
+  }
+
   return (
     <SectionContainer>
       <Cards folderCards={folderCards}/>

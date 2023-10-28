@@ -4,17 +4,17 @@ import Footer from '../components/Footer';
 import LinkAddInput from '../components/LinkAddInput';
 import FolderMain from '../components/FolderMain'
 import useGetAccount from '../hooks/useGetAccount';
-import useGetSearchFolder from '../hooks/useGetSearchFolder';
 import useGetSelectedFolder from '../hooks/useGetSelectedFolder';
 import styled from "styled-components";
-
+import { useState, useEffect } from 'react';
+import { FolderProvider  }  from '../context/FolderContext';
 
 const Folder = () => {
-  let userID = 1;
+  const [userId, setUserId] = useState(1);
 
-  const account = useGetAccount(userID);
-  const selectedFolder = useGetSelectedFolder(userID);
-  const folderContentsInfo = useGetSearchFolder(userID);
+  const account = useGetAccount(userId);
+  const selectedFolder = useGetSelectedFolder(userId);
+  
 
   const TopArea = styled.div`
     display: flex;
@@ -25,7 +25,11 @@ const Folder = () => {
     gap: 0.8rem;
     background: var(--gray0);
   `
- 
+
+  useEffect(() => {
+    setUserId(userId);
+  }, [userId]);
+
   return (
     <>
     <GlobalStyle />
@@ -33,11 +37,12 @@ const Folder = () => {
     <TopArea>
       <LinkAddInput />
     </TopArea>
-    {folderContentsInfo && <FolderMain userID={userID} folderInfo={folderContentsInfo.data} selectedFolder={selectedFolder.data}/>}
+    <FolderProvider>
+      {selectedFolder && <FolderMain userID={userId} selectedFolder={selectedFolder.data}/>}
+    </FolderProvider>
     <Footer />
     </>  
   )
-
 }
  
 export default Folder;

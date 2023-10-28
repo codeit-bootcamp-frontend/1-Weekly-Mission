@@ -12,7 +12,7 @@ const useGetSearchFolder = (userID, folderID) => {
     }
     setFolderInfo(folderData);
   }, []);
-
+  
   useEffect(() => {
     getData(userID, folderID);
   }, [getData, userID, folderID]);

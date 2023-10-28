@@ -6,6 +6,9 @@ import penIcon from '../assets/pen_icon.svg';
 import deleteIcon from '../assets/delete_icon.svg';
 import Sorting from './Sorting';
 import Option from './Option';
+import useGetSearchFolder from '../hooks/useGetSearchFolder';
+import { useState, useEffect, useContext } from 'react';
+import { FolderProvider, FolderContext  }  from '../context/FolderContext';
 
 const MainContainer = styled.main`
   display: flex;
@@ -47,7 +50,15 @@ const Options = styled.div`
   gap: 1.2rem;
 `
 
-const FolderMain = ( {folderInfo, selectedFolder, userID} ) => {
+const FolderMain = ({ selectedFolder, userID }) => {
+  const { folderId, changeFolderId } = useContext(FolderContext);
+
+  const folderContentsInfo = useGetSearchFolder(userID, folderId);
+  
+  useEffect(() => {
+    changeFolderId(folderId);
+  }, [folderId, folderContentsInfo]);
+  
   return (
     <MainContainer>
       <LinkSearchInput />
@@ -60,7 +71,7 @@ const FolderMain = ( {folderInfo, selectedFolder, userID} ) => {
           <Option icon={deleteIcon}>삭제</Option>
         </Options>
       </Title>
-      <CardList folderCards={folderInfo}/>
+      {folderContentsInfo && <CardList folderCards={folderContentsInfo.data} />}
     </MainContainer>
   )
 }

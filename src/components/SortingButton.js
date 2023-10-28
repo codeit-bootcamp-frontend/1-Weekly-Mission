@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import useGetSearchFolder from '../hooks/useGetSearchFolder';
+import { FolderContext }  from '../context/FolderContext';
+import { useContext } from 'react';
 
 const Button = styled.button`
   display: flex;
@@ -20,13 +21,16 @@ const Button = styled.button`
   }
 `
 
-const SortingButton = ( { folderId, userId, isActive, handleClick, buttonIndex, children } ) => {
-  const selectedFolder = useGetSearchFolder(userId, folderId);
-  console.log(selectedFolder);
+const SortingButton = ( { folderId, isActive, handleClick, buttonIndex, children } ) => {
+  
+  const { changeFolderId } = useContext(FolderContext); // 컨텍스트에서 changeFolderId 함수를 가져옵니다.
 
   return (
     <Button 
-      onClick={() => handleClick(buttonIndex)} 
+      onClick={() => {
+        handleClick(buttonIndex);
+        changeFolderId(folderId);
+      }}
       className={isActive ? 'active' : ''}>{children}</Button>
   )
 }

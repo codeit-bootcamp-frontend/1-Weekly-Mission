@@ -103,7 +103,7 @@ const Date = styled.p`
 const Cards = ( { folderCards } ) => {
   return (
     <>
-      {folderCards.map((item) => {
+      {folderCards?.map((item) => {
         return (
           <div key={item.id}>
             <Card item={item} />
