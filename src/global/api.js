@@ -29,5 +29,16 @@ export const getSelectedFolder = async (userID = 1) => {
   const userIDFolder = `${userID}/folders`;
   const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/` + userIDFolder);
   const body = await response.json();
+  const allFolder = {
+    id: 0,
+    created_at: 0,
+    name: "전체",
+    user_id: userID,
+  } 
+  const updateData = (currentData) => {
+    return [allFolder, ...currentData] ;
+  };
+  body.data = updateData(body.data);
+  console.log(body)
   return body;
 } 
