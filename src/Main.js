@@ -5,6 +5,8 @@ import Folder from './pages/Folder';
 import Landing from './pages/Landing';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import './styles/fonts.css';
+import './Main.css';
 
 export default function Main() {
   return (

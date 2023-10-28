@@ -17,7 +17,7 @@ function App() {
   const [user, setUser] = useState({});
 
   const getUserData = useCallback(async () => {
-    const { data } = await getData('users/12');
+    const { data } = await getData('users/1');
     setUser(data[0]);
   }, []);
 
@@ -29,7 +29,7 @@ function App() {
     <Container className='App'>
       <div>
         <Nav user={user} />
-        <Outlet />
+        <Outlet context={user} />
       </div>
       <Footer />
     </Container>

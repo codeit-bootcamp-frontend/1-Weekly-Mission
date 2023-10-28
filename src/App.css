@@ -1,21 +1,3 @@
-* {
-  box-sizing: border-box;
-  font-size: 16px;
-  --linkbrary-bg: #f0f6ff;
-  --linkbrary-gray-10: #e7effb;
-  --linkbrary-gray-20: #ccd5e3;
-  --linkbrary-gray-60: #9fa6b2;
-  --linkbrary-gray-100: #373740;
-  --linkbrary-white: #fff;
-  --the-julge-black: #111322;
-  --linkbrary-red: #ff5b56;
-  --linkbrary-primary-color: #6d6afe;
-}
-
-body {
-  margin: 0;
-}
-
 .App {
   margin: auto;
 }

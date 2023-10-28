@@ -1,9 +1,54 @@
-import '../styles/Nav.css';
 import Button from './Button';
 import logo from '../assets/images/logo.svg';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
+const INIT_USER = {
+  image_source: '',
+  email: '',
+};
+
+const Account = ({ user }) => {
+  return (
+    <Box className='user-account'>
+      <Img
+        src={user.image_source}
+        alt='프로필 사진'
+        className='user-profile-image'
+      />
+      <Email className='user-email'>{user.email}</Email>
+    </Box>
+  );
+};
+
+export default function Nav({ user = INIT_USER }) {
+  console.log('user: ', user);
+  const [isSticky, setIsSticky] = useState('sticky');
+  const urlPath = useLocation().pathname;
+  useEffect(() => {
+    if (urlPath === '/folder') {
+      setIsSticky('static');
+    } else {
+      setIsSticky('sticky');
+    }
+  }, [urlPath]);
+
+  return (
+    <Header className='header' $isSticky={isSticky}>
+      <Container className='nav-bar'>
+        <Link to='/'>
+          <Logo src={logo} alt='로고' className='nav-logo' />
+        </Link>
+        {user.email ? (
+          <Account user={user} />
+        ) : (
+          <AuthButton type='로그인' className='nav-button' />
+        )}
+      </Container>
+    </Header>
+  );
+}
 
 const Header = styled.header`
   background: var(--linkbrary-bg, #f0f6ff);
@@ -23,46 +68,43 @@ const AuthButton = styled(Button)`
   }
 `;
 
-const INIT_USER = {
-  image_source: '',
-  email: '',
-};
+const Container = styled.div`
+  padding: 0 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 1;
+  max-width: 1920px;
+  margin: auto;
+  height: 94px;
+  @media (max-width: 1124px) {
+    padding: 32px 32px;
+    max-width: 800px;
+    margin: auto;
+  }
+`;
 
-const Account = ({ user }) => {
-  return (
-    <div className='user-account'>
-      <img
-        src={user.image_source}
-        alt='프로필 사진'
-        className='user-profile-image'
-      />
-      <div className='user-email'>{user.email}</div>
-    </div>
-  );
-};
+const Box = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
 
-export default function Nav({ user = INIT_USER }) {
-  console.log('user: ', user);
-  const [isSticky, setIsSticky] = useState('sticky');
-  const urlPath = useLocation().pathname;
-  useEffect(() => {
-    if (urlPath === '/folder') {
-      setIsSticky('static');
-    } else {
-      setIsSticky('sticky');
-    }
-  }, [urlPath]);
+const Img = styled.img`
+  width: 28px;
+  height: 28px;
+  border-radius: 20px;
+`;
 
-  return (
-    <Header className='header' $isSticky={isSticky}>
-      <div className='nav-bar'>
-        <img src={logo} alt='로고' className='nav-logo' />
-        {user.email ? (
-          <Account user={user} />
-        ) : (
-          <AuthButton type='로그인' className='nav-button' />
-        )}
-      </div>
-    </Header>
-  );
-}
+const Email = styled.div`
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
+
+const Logo = styled.img`
+  @media (max-width: 767px) {
+    width: 88.667px;
+    height: 16px;
+  }
+`;
