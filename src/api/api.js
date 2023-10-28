@@ -9,7 +9,7 @@ export async function getCards() {
 }
 
 export async function getUserProfile() {
-  const response = await fetch(`${BASE_URL}/sample/user`);
+  const response = await fetch(`${BASE_URL}/users/1`);
   if (!response.ok) {
     throw new Error('User Profile Error');
   }

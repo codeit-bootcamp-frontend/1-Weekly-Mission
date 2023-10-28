@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getFolderCards } from '../api/api';
 import useAsync from '../hooks/useAsync';
+import CardList from './CardList';
 
 function Folder() {
   const [cards, setCards] = useState([]);
@@ -16,12 +17,17 @@ function Folder() {
     setCards(result.data);
   }, [getFolderCardsAsync]);
 
+  useEffect(() => {
+    handleLoad();
+  }, [handleLoad]);
+
   return (
     <Container>
       <SearchBar />
       <NoSavedLinks>
         <p>저장된 링크가 없습니다.</p>
       </NoSavedLinks>
+      <CardList items={cards} />
     </Container>
   );
 }

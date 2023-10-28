@@ -1,7 +1,7 @@
 import '../css/userProfile.css';
 
 function UserProfile({ userProfile }) {
-  const userProfileImage = userProfile?.profileImageSource;
+  const userProfileImage = userProfile?.image_source;
   const userEmail = userProfile?.email;
 
   return (

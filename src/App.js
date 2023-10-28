@@ -21,7 +21,7 @@ function App() {
     if (!result) {
       return;
     }
-    const receivedUserProfile = { ...result };
+    const receivedUserProfile = result.data[0]; // API 값 배열로 되어있음
     setUserProfile(receivedUserProfile);
   }, [getUserProfileAsync]);
 
