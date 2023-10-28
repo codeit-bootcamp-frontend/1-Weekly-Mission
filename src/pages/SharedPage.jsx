@@ -13,7 +13,7 @@ const SharedPage = () => {
 
   const handleFolderInfo = async () => {
     try {
-      let folderInfo = await getFolder();
+      const folderInfo = await getFolder();
       const {
         folder: { name, links, owner },
       } = folderInfo;

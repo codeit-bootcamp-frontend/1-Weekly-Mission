@@ -53,13 +53,13 @@ const Card = ({ data, onClick }) => {
         <img
           className="cardImg"
           // ref={imgRef}
-          src={data.imageSource ? data.imageSource : noImageIMG}
-          alt={data.imageSource ? "카드 이미지" : "이미지 없음"}
+          src={data.image_source ? data.image_source : noImageIMG}
+          alt={data.image_source ? "카드 이미지" : "이미지 없음"}
         />
       </div>
       <div className="infoContainer">
         <div className="additionalInfo">
-          <span>{timeForToday(data.createdAt)}</span>
+          <span>{timeForToday(data.created_at)}</span>
           <img
             className="kebab"
             src={kebab}
@@ -68,7 +68,7 @@ const Card = ({ data, onClick }) => {
           />
         </div>
         <p className="description">{data.description}</p>
-        <span>{formatDate(data.createdAt)}</span>
+        <span>{formatDate(data.created_at)}</span>
       </div>
       <img
         onClick={handleStarClick}

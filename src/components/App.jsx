@@ -13,7 +13,7 @@ const App = () => {
 
   const handleUserProfile = async () => {
     try {
-      let userProfile = await getUsers();
+      const userProfile = await getUsers();
       setIsLogin(true);
       const {
         data: [{ email, image_source }],

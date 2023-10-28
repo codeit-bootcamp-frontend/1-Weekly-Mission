@@ -18,10 +18,20 @@ export async function getFolder() {
   return body;
 }
 
-export async function getFolderList() {
+export async function getFolderLists() {
   const response = await fetch(`${BASE_URL}/users/1/folders`);
   if (!response.ok) {
     throw new Error("폴더 목록을 불러오는데 실패했습니다");
+  }
+  const body = await response.json();
+  return body;
+}
+
+export async function getLinks(folderId = "") {
+  const query = folderId ? `folderId=${folderId}` : `folderId=`;
+  const response = await fetch(`${BASE_URL}/users/1/links?${query}`);
+  if (!response.ok) {
+    throw new Error("링크 데이터를 불러오는데 실패했습니다");
   }
   const body = await response.json();
   return body;
