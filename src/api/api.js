@@ -4,8 +4,8 @@ import { END_POINT } from "common/constants/endpoints";
 const { sample } = END_POINT;
 const headers = { "Content-Type": "application/json; charset=utf-8" };
 
-export async function getUser() {
-  const res = await fetch(`${DOMAIN_URL}${sample.user}`, {
+export async function getUser(userId) {
+  const res = await fetch(`${DOMAIN_URL}/api/users/${userId}`, {
     headers,
   });
 

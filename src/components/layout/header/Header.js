@@ -7,23 +7,25 @@ import logo from "assets/logo.svg";
 import { getUser } from "api/api";
 import Button from "components/button/Button";
 
+const USER_ID = 1;
+
 export default function Header() {
   const [user, setUser] = useState(null);
   const { isLoading, error, wrappedFunction: getUserAsyncFunc } = useFetch(getUser);
 
   const handleUserData = async () => {
-    const result = await getUserAsyncFunc();
-    // if (error) console.log(error);
+    const result = await getUserAsyncFunc(USER_ID);
     if (!result) return;
 
-    setUser(result);
+    const { data } = result;
+    setUser(data[0]);
   };
-
-  if (error) console.log(error);
 
   useEffect(() => {
     handleUserData();
   }, []);
+
+  if (error) console.log(error);
 
   return (
     <style.Wrapper>
@@ -36,8 +38,8 @@ export default function Header() {
             <Button size="large" label="로그인" />
           ) : (
             <style.Navbar>
-              <style.ProfileImage src={user?.profileImageSource} />
-              <style.ProfileEmail>{user?.email}</style.ProfileEmail>
+              <style.ProfileImage src={user.image_source} />
+              <style.ProfileEmail>{user.email}</style.ProfileEmail>
             </style.Navbar>
           )}
         </nav>
