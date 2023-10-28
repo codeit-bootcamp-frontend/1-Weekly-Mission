@@ -85,15 +85,19 @@ export default function FolderPage() {
           </div>
           <div className="folder-category-container">
             <h1 className="folder-category">{categoryTitle}</h1>
-            <div className="folder-option-button-container">
-              {OPTION_ICONS.map((item) => (
-                <OptionButton
-                  name={item.name}
-                  alt={item.alt}
-                  iconSrc={item.iconSrc}
-                />
-              ))}
-            </div>
+            {categoryTitle === '전체' ? (
+              ''
+            ) : (
+              <div className="folder-option-button-container">
+                {OPTION_ICONS.map((item) => (
+                  <OptionButton
+                    name={item.name}
+                    alt={item.alt}
+                    iconSrc={item.iconSrc}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </section>
         {links.length === 0 ? (
