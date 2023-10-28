@@ -4,7 +4,7 @@ import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import useAsync from "./hooks/useAsync";
 
-import { getUser, getFolder } from "../src/api/api";
+import { getUser } from "../src/api/api";
 import "./App.style.css";
 
 const INITIAL_USER = {
@@ -17,8 +17,6 @@ function App() {
   const [userValues, setUserValues] = useState(INITIAL_USER);
 
   const [isUserLoading, userLoadingError, getUserAsync] = useAsync(getUser);
-  useAsync(getFolder);
-
   const loadUser = async () => {
     const userResult = await getUserAsync();
     if (!userResult) return;
