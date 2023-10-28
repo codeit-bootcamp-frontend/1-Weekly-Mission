@@ -3,7 +3,7 @@ import LinkIcon from "assets/link.svg";
 import Button from "components/button/Button";
 
 export const Container = styled.div`
-  padding: 8.5rem 20rem 3.75rem 20rem;
+  padding: 3.75rem 20rem;
 `;
 
 export const Wrapper = styled.div`
