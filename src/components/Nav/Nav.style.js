@@ -9,8 +9,9 @@ export const NavContainer = styled.div`
   max-width: 192rem;
   height: 9.4rem;
   padding: 3.2rem 20rem;
-  /* position: fixed;
-  top: 0; */
+  position: ${({ path }) => (path === "/folder" ? `static` : `sticky`)};
+  top: 0;
+  z-index: 9999;
   background-color: #edf7ff;
 
   ${onTablet} {

@@ -24,7 +24,7 @@ function Nav() {
   }, []);
 
   return (
-    <S.NavContainer>
+    <S.NavContainer path={window.location.pathname}>
       <a href="/">
         <img src={linkbraryLogo} alt="홈으로 연결된 Linkbrary 로고" />
       </a>
