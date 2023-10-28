@@ -6,7 +6,7 @@ const Header = () => {
   const [folder, setFolder] = useState("");
 
   const handleLoad = useCallback(async () => {
-    const result = await getResponse("sample/folder");
+    const result = await getResponse("shared", "folder");
     if (!result) {
       return;
     }

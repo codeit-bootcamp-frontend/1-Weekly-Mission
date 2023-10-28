@@ -3,6 +3,7 @@ const BASE_URL = "https://bootcamp-api.codeit.kr/api/";
 const PATH = {
   shared: {
     user: BASE_URL + "sample/user",
+    folder: BASE_URL + "sample/folder",
   },
   folder: {
     user: BASE_URL + "users/1",
