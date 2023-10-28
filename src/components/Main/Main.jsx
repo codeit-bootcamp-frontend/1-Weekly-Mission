@@ -6,6 +6,8 @@ const Main = styled.main`
   align-items: center;
   margin-top: 2rem;
   gap: 3.2rem;
+  padding: 0 2.5rem;
+  min-height: 100vh;
 
   @media (min-width: 768px) {
     gap: 4rem;

@@ -13,7 +13,7 @@ export default SearchForm;
 
 const SearchFormStyle = styled.form`
   display: flex;
-  width: 32.5rem;
+  width: 100%;
   padding: 1.3rem 1.6rem;
   justify-content: space-between;
   align-items: center;
