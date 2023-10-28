@@ -28,7 +28,6 @@ export const getSearchFolder = async (userID = 1) => {
 export const getSelectedFolder = async (userID = 1, folderID) => {
   Number(folderID) ?  folderID = `?folderId=${folderID}` : folderID = '';
   const userIDFolder = `${userID}/folders${folderID}`;
-  console.log(userIDFolder);
   const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/` + userIDFolder);
   const body = await response.json();
   return body;

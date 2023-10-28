@@ -11,7 +11,7 @@ import styled from "styled-components";
 
 const Folder = () => {
   const account = useGetAccount(1);
-  const folderSelect = useGetSelectedFolder(1);
+  const selectedFolder = useGetSelectedFolder(1);
   const folderContentsInfo = useGetSearchFolder(1);
 
   const TopArea = styled.div`
@@ -31,7 +31,7 @@ const Folder = () => {
     <TopArea>
       <LinkAddInput />
     </TopArea>
-    {folderContentsInfo && <FolderMain folderInfo={folderContentsInfo.data}/>}
+    {folderContentsInfo && <FolderMain folderInfo={folderContentsInfo.data} selectedFolder={selectedFolder.data}/>}
     <Footer />
     </>  
   )

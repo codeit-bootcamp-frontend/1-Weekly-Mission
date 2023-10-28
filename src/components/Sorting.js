@@ -35,16 +35,15 @@ const AddIcon = styled.img`
   height: 16px;
 `
 
-const Sorting = () => {
+const Sorting = ({ selectedFolder }) => {
 
-  const buttonsContent = ['전체', '⭐️ 즐겨찾기', '코딩 팁', '채용 사이트', '유용한 글', '나만의 장소'];
-  let isActiveArray = Array(buttonsContent.length).fill(false)
+  let isActiveArray = Array(selectedFolder.length).fill(false)
   isActiveArray[0] = true;
 
   const [isActive, setIsActive] = useState(isActiveArray);
 
   const handleClick = (index) => {
-    isActiveArray = Array(buttonsContent.length).fill(false);
+    isActiveArray = Array(selectedFolder.length).fill(false);
     isActiveArray[index] = true;
     setIsActive(isActiveArray);
   }
@@ -52,14 +51,16 @@ const Sorting = () => {
   return (
     <SortingContainer>
       <ButtonContainer >
-        {buttonsContent.map((children, index) => {
+        {selectedFolder.map((selectedFolder, index) => {
           return (
             <SortingButton 
               key={index}
+              folderId = {selectedFolder.id}
+              createdAt = {selectedFolder['created_at']}
               isActive = {isActive[index]}
-              handleClick={handleClick}
+              handleClick={() => handleClick(index)}
               buttonIndex={index}
-            >{children}</SortingButton>
+            >{selectedFolder.name}</SortingButton>
           )
         })}
       </ButtonContainer>

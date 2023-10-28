@@ -47,11 +47,11 @@ const Options = styled.div`
   gap: 1.2rem;
 `
 
-const FolderMain = ( {folderInfo} ) => {
+const FolderMain = ( {folderInfo, selectedFolder} ) => {
   return (
     <MainContainer>
       <LinkSearchInput />
-      <Sorting />
+      <Sorting selectedFolder={selectedFolder}/>
       <Title>
         <h1>유용한 글</h1>
         <Options>
