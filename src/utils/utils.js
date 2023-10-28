@@ -1,7 +1,7 @@
 import { format, formatDistanceToNowStrict } from 'date-fns';
 
 const dateFormat = timeValue => {
-  return format(new Date(timeValue), 'yyyy. mm. dd');
+  return format(new Date(timeValue), 'yyyy. MM. dd');
 };
 
 const dateConvert = timeValue => {

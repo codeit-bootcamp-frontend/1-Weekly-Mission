@@ -1,0 +1,24 @@
+.searchBarWrapper {
+  width: 1060px;
+  display: flex;
+  flex-direction: row;
+
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  padding: 15px 16px;
+  margin: 40px auto;
+}
+
+.searchBarWrapper img {
+  margin-right: 10px;
+}
+
+.searchBarWrapper input {
+  width: 100%;
+  border: none;
+  background-color: #f5f5f5;
+
+  font-family: Pretendard;
+  font-size: 16px;
+  line-height: 24px; /* 150% */
+}

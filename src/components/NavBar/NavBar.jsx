@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getUser } from '../../api/getUser';
+import { getUser } from '../../api/api';
 import './NavBar.style.css';
 
 function Logo({ url = '/', src }) {

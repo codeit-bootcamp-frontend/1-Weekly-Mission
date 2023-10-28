@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getFolders } from '../../api/getFolders';
-import './Share.style.css';
+import { getFolders } from '../../api/api';
 import CardList from '../Card/CardList';
+import SearchBar from '../SearcchBar/SearchBar';
+import './Share.style.css';
 
 function Owner({ profileUrl, ownerName, ownerFolderName }) {
   return (
@@ -14,13 +15,14 @@ function Owner({ profileUrl, ownerName, ownerFolderName }) {
 }
 
 export default function Share() {
-  const [ownerItem, setOwnerItem] = useState({
+  const INITAL_ITEM = {
     id: null,
     name: '',
     profileImageSoure: '',
     folderName: '',
     links: [],
-  });
+  };
+  const [ownerItem, setOwnerItem] = useState(INITAL_ITEM);
 
   async function getFolderItem() {
     const folder = await getFolders();
@@ -45,6 +47,7 @@ export default function Share() {
         ownerName={ownerItem.name}
         ownerFolderName={ownerItem.folderName}
       />
+      <SearchBar />
       {ownerItem && (
         <div className='cardWrapper'>
           <CardList items={ownerItem.links} />
