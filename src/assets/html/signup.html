@@ -1,0 +1,101 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/src/assets/fonts/pretendard/pretendard.css" />
+    <link rel="stylesheet" href="/src/assets/css/common.css" />
+    <link rel="stylesheet" href="/src/pages/SignPage/signform.css" />
+  </head>
+  <body class="flex--center">
+    <main class="main">
+      <!--== START of MAIN-SECTION ==-->
+      <section class="container">
+        <!-- starting form -->
+        <form id="form_signup" class="form">
+          <div class="contents flex--center">
+            <!-- main logo section -->
+            <a href="./">
+              <img class="img--logo" src="/assets/image/logo.svg" />
+            </a>
+            <div class="contents__txt">
+              <h4 class="txt--isMember font--normal">이미 회원이신가요?</h4>
+              <a class="txt--intent font--normal" href="./signin.html">
+                로그인 하기
+              </a>
+            </div>
+          </div>
+
+          <!-- sign-up input form -->
+          <div class="form__content">
+            <!-- input: email -->
+            <div class="form__input__wrap">
+              <label class="txt--inputLabel" for="email_signup"> 이메일 </label>
+              <input
+                id="email_signup"
+                class="input email font--normal flex--center"
+                name="email_signup"
+                type="text"
+              />
+              <!-- <input id="email" class="input email font--normal flex--center margin--bottom-24" name="email" type="text" oninput="showHint_Writing()"> -->
+            </div>
+            <!-- input: password -->
+            <div class="form__input__wrap margin--top-24">
+              <label class="txt--inputLabel" for="password_signup">
+                비밀번호
+              </label>
+              <input
+                id="password_signup"
+                class="input password font--normal flex--center"
+                name="password_signup"
+                type="password"
+              />
+            </div>
+            <!-- input: check_password -->
+            <div class="form__input__wrap margin--top-24">
+              <label class="txt--inputLabel" for="check_password_signup">
+                비밀번호 확인
+              </label>
+              <input
+                id="check_password_signup"
+                class="input check_password font--normal flex-center"
+                name="check_password_signup"
+                type="password"
+              />
+            </div>
+          </div>
+          <!-- sign-up button -->
+          <button
+            class="form__input_button btn--gradient-blue-to-mint flex--center font--normal"
+            onclick="location.href='#'"
+          >
+            회원가입
+          </button>
+        </form>
+
+        <!-- social sign-up -->
+        <div class="social_login flex--center">
+          <h4 class="social_login__txt font--normal">다른 방식으로 가입하기</h4>
+          <div class="social_login__contents">
+            <a href="https://www.google.com/">
+              <img
+                class="btn--circle-background"
+                src="/assets/image/icon-background-google.svg"
+              />
+              <img class="img--google" src="/assets/image/google.png" />
+            </a>
+            <a href="https://www.kakaocorp.com/page/">
+              <img
+                class="btn--circle-background"
+                src="/assets/image/icon-background-kakao.svg"
+              />
+              <img class="img--kakao" src="/assets/image/icon-kakao.svg" />
+            </a>
+          </div>
+        </div>
+      </section>
+      <!--== END of MAIN-SECTION ==-->
+    </main>
+    <script src="/src/pages/SignPage/signform.js"></script>
+  </body>
+</html>
