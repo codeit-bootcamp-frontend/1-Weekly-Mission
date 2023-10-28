@@ -1,9 +1,9 @@
 import { LoginButton } from "./Button";
-import style from "./Profile.module.css";
+import style from "./FolderInfo.module.css";
 import { useEffect, useState } from "react";
 import { getsampleFolder } from "../api/sampleFolder";
 
-function Profile() {
+function FolderInfo() {
   const [folderInfo, setFolderInfo] = useState("");
 
   const loadFolder = async () => {
@@ -33,4 +33,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default FolderInfo;

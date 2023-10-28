@@ -1,6 +1,5 @@
 import { Nav, Footer } from "./containers";
-import Profile from "./component/Profile";
-import Main from "./component/Main";
+import SharedPage from "./pages/SharedPage";
 import "./global.css";
 import "./index.css";
 
@@ -8,8 +7,7 @@ function App() {
   return (
     <>
       <Nav />
-      <Profile />
-      <Main />
+      <SharedPage />
       <Footer />
     </>
   );

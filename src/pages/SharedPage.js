@@ -1,9 +1,10 @@
-import Search from "./Search";
-import Cards from "./Cards";
-import style from "./Main.module.css";
 import { useState, useEffect } from "react";
 import { getsampleFolder } from "../api/sampleFolder";
-function Main() {
+import Search from "../component/Search";
+import Cards from "../component/Cards";
+import style from "./SharedPage.module.css";
+import FolderInfo from "../component/FolderInfo";
+function SharedPage() {
   const [cards, setCards] = useState([]);
 
   const loadLink = async () => {
@@ -22,9 +23,12 @@ function Main() {
 
   return (
     <div className={style.root}>
-      <Search />
-      <Cards cards={cards} />
+      <FolderInfo />
+      <div className={style.section}>
+        <Search />
+        <Cards cards={cards} />
+      </div>
     </div>
   );
 }
-export default Main;
+export default SharedPage;
