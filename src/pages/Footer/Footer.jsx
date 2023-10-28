@@ -1,7 +1,4 @@
-import facebook from '../../assets/icons/facebook.svg';
-import twitter from '../../assets/icons/twitter.svg';
-import youtube from '../../assets/icons/youtube.svg';
-import instagram from '../../assets/icons/instagram.svg';
+import ImageLink from '../../components/ImageLink/ImageLink';
 import './Footer.style.css';
 
 export default function Footer() {
@@ -9,22 +6,14 @@ export default function Footer() {
     <div className='footer'>
       <p>@Codeit - 2023</p>
       <div>
-        <a>Privacy Policy</a>
-        <a>FAQ</a>
+        <a href='/'>Privacy Policy</a>
+        <a href='/'>FAQ</a>
       </div>
       <div className='icons'>
-        <a>
-          <img src={facebook} alt='facebook' />
-        </a>
-        <a>
-          <img src={twitter} alt='twitter' />
-        </a>
-        <a>
-          <img src={youtube} alt='youtube' />
-        </a>
-        <a>
-          <img src={instagram} alt='instagram' />
-        </a>
+        <ImageLink site='facebook' />
+        <ImageLink site='twitter' />
+        <ImageLink site='instagram' />
+        <ImageLink site='youtube' />
       </div>
     </div>
   );
