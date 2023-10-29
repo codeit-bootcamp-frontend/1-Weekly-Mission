@@ -4,6 +4,7 @@ import CardList from '../Card/CardList';
 import SearchBar from '../SearchBar/SearchBar';
 import Button from '../Button/Button';
 import './Share.style.css';
+import Folder from '../Folder/Folder';
 
 export default function Share() {
   const [userFolderItems, setUserFolderItem] = useState();
@@ -27,6 +28,7 @@ export default function Share() {
   return (
     <>
       <SearchBar />
+      <Folder />
       <div className='folderButtons'>
         <Button className='folderButton' text='전체' />
         {userFolderItems &&

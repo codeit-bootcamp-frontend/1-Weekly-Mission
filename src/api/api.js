@@ -10,17 +10,6 @@ async function getUser() {
   }
 }
 
-// async function getFolders() {
-//   try {
-//     const response = await fetch(`${BASE_URL}/api/sample/folder`);
-//     const body = await response.json();
-//     const result = await body.folder;
-//     return result;
-//   } catch (error) {
-//     console.log('error', error);
-//   }
-// }
-
 async function getUserFolders(user = 1) {
   try {
     const response = await fetch(`${BASE_URL}/api/users/${user}/folders`);
