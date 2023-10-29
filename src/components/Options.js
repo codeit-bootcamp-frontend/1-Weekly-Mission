@@ -24,9 +24,9 @@ const Option = styled.button`
 `;
 
 const actions = [
-  { name: "share", icon: shareIcon },
-  { name: "pen", icon: penIcon },
-  { name: "delete", icon: deleteIcon },
+  { name: "공유", icon: shareIcon },
+  { name: "이름 변경", icon: penIcon },
+  { name: "삭제", icon: deleteIcon },
 ];
 
 export default function Options() {
