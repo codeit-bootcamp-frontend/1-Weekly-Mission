@@ -1,5 +1,10 @@
+/* 추가할 링크를 타이핑하는 인풋 컴포넌트 */
+
+/* css 모듈 방식 적용
+ */
+
 import { useState } from "react";
-import "./LinkAddInput.style.css";
+import styles from "./LinkAddInput.module.css";
 import linkIcon from "../../assets/link-icon.svg";
 
 function LinkAddInput() {
@@ -7,18 +12,22 @@ function LinkAddInput() {
   const handleKeywordChange = (e) => setKeyword(e.target.value);
 
   return (
-    <div className="add-form-container">
+    <div className={styles["add-form-container"]}>
       <form>
-        <div className="add-link-form">
-          <img src={linkIcon} className="add-link-icon" alt="link icon" />
+        <div className={styles["add-link-form"]}>
+          <img
+            src={linkIcon}
+            className={styles["add-link-icon"]}
+            alt="link icon"
+          />
           <input
-            name="linkAdd-input"
+            name="add-link-input"
             value={keyword}
             onChange={handleKeywordChange}
             placeholder="링크를 추가해보세요"
-            className="add-link-input"
+            className={styles["add-link-input"]}
           ></input>
-          <button className="add-link-button" type="submit">
+          <button className={styles["add-link-button"]} type="submit">
             추가하기
           </button>
         </div>

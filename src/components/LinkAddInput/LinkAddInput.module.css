@@ -1,17 +1,15 @@
 .add-form-container {
   background-color: var(--linkbrary-bg, #f0f6ff);
-}
-
-.add-link-form {
-  position: relative;
-  width: 90%;
-}
-
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  & form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .add-link-form {
+    position: relative;
+    width: 90%;
+  }
 }
 
 .add-link-button {
