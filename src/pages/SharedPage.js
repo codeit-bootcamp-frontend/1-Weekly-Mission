@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import SearchBar from "../components/SearchBar/SearchBar";
-import CardList from "../components/Card/Card";
+import CardList from "../components/CardList/CardList";
 import useAsync from "../hooks/useAsync";
 
 import { getAllCards } from "../api/api";
