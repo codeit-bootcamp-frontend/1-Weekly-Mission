@@ -1,5 +1,4 @@
 .wrapper {
-  position: sticky;
   top: 0;
   background-color: var(--blue-bg);
   display: flex;
