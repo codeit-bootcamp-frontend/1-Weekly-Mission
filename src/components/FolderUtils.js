@@ -9,7 +9,7 @@ const FolderUtils = ({ userId, currentFolderName = "전체" }) => {
     <div className={styles.FolderUtils}>
       <div className={styles.container}>
         <CurrentFolder>{currentFolderName}</CurrentFolder>
-        <FolderEdit />
+        {currentFolderName !== "전체" && <FolderEdit />}
       </div>
     </div>
   );
