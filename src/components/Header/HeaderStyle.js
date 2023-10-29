@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../style/colors";
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -7,7 +8,7 @@ export const HeaderContainer = styled.header`
   padding: 20px 624px 60px 624px;
   flex-direction: column;
   gap: 20px;
-  background: var(--linkbrary-bg);
+  background: ${colors.background};
 `;
 
 export const HeaderOwner = styled.div`
@@ -20,7 +21,7 @@ export const HeaderOwnerImg = styled.img`
 `;
 
 export const HeaderOwnerName = styled.p`
-  color: var(--text-color-light-mode);
+  color: #000;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
@@ -31,8 +32,9 @@ export const HeaderOwnerName = styled.p`
 export const HeaderName = styled.h1`
   color: #000;
   text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
-  /* Linkbrary/h1-semibold */
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
   font-family: Pretendard;
   font-size: 40px;
   font-style: normal;

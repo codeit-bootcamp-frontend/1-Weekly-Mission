@@ -1,31 +1,30 @@
+import React from "react";
+import * as S from "./NavStyle";
 import Profile from "./Profile";
 import LoginButton from "./LoginButton";
 import logoImg from "../../assets/logo.png";
-import { useState, useEffect } from "react";
 import getSample from "../../api";
-import "../../style/style.css";
-import "./Nav.css";
 import useAsync from "../../Hooks/useAsync";
 
 function Nav() {
-  const [data, isLoading, LoadingError, getUserAsync] = useAsync(() =>
+  const [data] = useAsync(() =>
     getSample("user")
   );
-  if (!data) return;
+  if (!data) return null;
   const { email, profileImageSource } = data;
 
   return (
-    <nav className="Nav">
-      <div className="container">
-        <img className="logo" src={logoImg} alt="로고 이미지"></img>
+    <S.NavContainer>
+      <S.NavContent className="container">
+        <S.LogoImage src={logoImg} alt="로고 이미지" />
 
         {email && profileImageSource ? (
           <Profile email={email} profileImage={profileImageSource} />
         ) : (
           <LoginButton />
         )}
-      </div>
-    </nav>
+      </S.NavContent>
+    </S.NavContainer>
   );
 }
 

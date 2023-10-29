@@ -1,5 +1,4 @@
 import Card from "../Card/Card";
-import "../../style/style.css";
 import "./CardList.css";
 
 function CardList({ links }) {

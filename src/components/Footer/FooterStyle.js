@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../style/colors";
 export const FooterContainer = styled.footer`
   display: flex;
   height: 17.5rem;
@@ -16,7 +17,9 @@ export const Frame = styled.div`
   align-items: center;
   flex-shrink: 0;
   align-self: stretch;
-  background: var(--the-julge-black);
+
+
+  background : ${colors.julgeBlack};
 `;
 
 export const FooterInfo = styled.div`

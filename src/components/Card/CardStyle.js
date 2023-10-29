@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../style/colors";
 
 export const CardContainer = styled.a`
   width: 340px;
@@ -11,7 +12,7 @@ export const CardContainer = styled.a`
   position: relative;
 
   &:hover {
-    border: 2px solid var(--linkbrary-primary-color);
+    border: 2px solid ${colors.primary};
 
     img {
       transform: scale(1.3);
