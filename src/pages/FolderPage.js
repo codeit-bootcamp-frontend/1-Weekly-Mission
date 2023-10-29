@@ -37,26 +37,24 @@ function FolderPage() {
 
   return (
     <>
-      <section className="folder-section">
-        <MobileFolderButton />
+      <MobileFolderButton />
 
-        <LinkAddInput />
-        <SearchBar />
-        <div className="folder-buttons">
-          <FolderButtonList folderList={folderList} onChange={loadCards} />
-          <button type="button" className="add-folder-button">
-            폴더 추가+
-          </button>
-          {folderId && (
-            <div className="folder-modifier-buttons">
-              <FolderModifier />
-            </div>
-          )}
-        </div>
-        <div className="section">
-          <CardList cardList={cardList} />
-        </div>
-      </section>
+      <LinkAddInput />
+      <SearchBar />
+      <div className="folder-buttons">
+        <FolderButtonList folderList={folderList} onChange={loadCards} />
+        <button type="button" className="add-folder-button">
+          폴더 추가+
+        </button>
+        {folderId && (
+          <div className="folder-modifier-buttons">
+            <FolderModifier />
+          </div>
+        )}
+      </div>
+      <div className="section">
+        <CardList cardList={cardList} />
+      </div>
     </>
   );
 }

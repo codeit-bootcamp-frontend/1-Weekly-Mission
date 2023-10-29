@@ -1,4 +1,4 @@
-import FolderButton from "../FolderButton/FolderButton";
+import FolderNameButton from "../FolderNameButton/FolderNameButton";
 import { useState } from "react";
 import "./FolderButtonList.style.css";
 
@@ -17,14 +17,14 @@ function FolderButtonList({ folderList, onChange }) {
     <div className="folder-buttons-section">
       <div className="folder-buttons-list">
         <div className="folder-button">
-          <FolderButton folder={INITIAL_FOLDER} onChange={handleButton} />
+          <FolderNameButton folder={INITIAL_FOLDER} onChange={handleButton} />
         </div>
         {folderList && (
           <>
             {folderList.map((folder) => {
               return (
                 <div key={folder.id} className="folder-button">
-                  <FolderButton folder={folder} onChange={handleButton} />
+                  <FolderNameButton folder={folder} onChange={handleButton} />
                 </div>
               );
             })}

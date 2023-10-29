@@ -10,11 +10,7 @@
   &:hover {
     border: 3px solid var(--color-primary);
   }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+
   :hover img {
     transform: scale(1.5);
     transition: transform 0.3s;
@@ -23,7 +19,11 @@
     object-fit: cover;
   }
 }
-
+.card-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 /* 카드 컴포넌트의 이미지 파트 */
 .card-img-section {
   width: 340px;
