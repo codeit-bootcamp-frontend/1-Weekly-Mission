@@ -5,7 +5,6 @@ import './NavStyle.css';
 import { getUser } from '../../api/api';
 
 function Nav() {
-  // localStorage에서 accessKey를 가져와서 없으면 로그인버튼, 있으면 로그인한 사용자의 정보가 보이게 한다.
   let accessToken = localStorage.getItem('accessToken');
   const [user, setUser] = useState({});
 
