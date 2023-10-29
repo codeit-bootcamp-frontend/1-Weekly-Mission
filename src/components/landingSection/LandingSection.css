@@ -1,0 +1,138 @@
+/* section */
+section {
+    display: grid;
+    padding: 3.12rem 10rem;
+    row-gap: 1rem;
+    column-gap: 10%;
+    background-color: #fff;
+    justify-content: center;
+}
+
+section:nth-of-type(odd) {
+    grid-template:
+    ". image"
+    "title image"
+    "description image"
+    ". image";
+}
+
+section:nth-of-type(even) {
+    grid-template:
+    "image ."
+    "image title"
+    "image description"
+    "image .";
+}
+
+section:first-child{
+    padding-top: 7.5rem;
+}
+
+section:last-child{
+    padding-bottom: 12rem;
+}
+
+section h2,
+section p {
+    word-break:initial;
+    min-width: 15rem;
+    margin: 0;
+    font-style: normal;
+}
+
+section h2{
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.01875rem;
+    grid-area: title;
+}
+
+section p{
+    color: #6B6B6B;
+    font-size: 1.6rem;
+    font-weight: 500;
+    grid-area: description;
+}
+
+
+section img{
+    width: 55rem;
+    grid-area: image;
+}
+
+
+/* section span 그라데이션 배경색 */
+.save span{
+    background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+}
+
+.manage span{
+    background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+}
+
+.share span{
+    background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+}
+
+.search span{
+    background: linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%);
+}
+
+section .font-gradation,
+.hero-header .font-gradation{
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* 반응형 */
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1199px){
+    /* section */
+    section{
+        column-gap: 5rem;
+    }
+
+    section img{
+        width: 38.5rem;
+        height: 31.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+    /* section */
+    section{
+        display: flex;
+        flex-direction: column;
+        padding: 0 3.2rem 8rem;
+        align-items: flex-start;
+        gap: 1.6rem;
+    }
+
+    section.save{
+        padding-top: 4rem;
+    }
+
+    section img{
+        width: 100%;
+    }
+
+    section h2{
+        font-size: 2.4rem;
+    }
+
+    section p{
+        margin-top: 1rem;
+        order: 2;
+    }
+
+    /* br태그의 줄바꿈 기능 제거 */
+    section br{
+        display: inline-block;
+        content: " ";
+
+    }
+}

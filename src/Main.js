@@ -6,6 +6,7 @@ import SignInPage from './pages/login/SignInPage';
 import LandingPage from './pages/landing/LandingPage';
 import SignUpPage from './pages/login/SignUpPage';
 import SharedPage from './pages/shared/SharedPage';
+import FolderPage from './pages/folder/FolderPage';
 
 function Main() {
   const LoginContext = createContext();
@@ -17,6 +18,7 @@ function Main() {
           <Route path="/" element={<App />}>
             <Route index element={<LandingPage />} />
             <Route path="shared" element={<SharedPage />} />
+            <Route path="folder" element={<FolderPage />} />
           </Route>
           <Route path="sign-in" element={<SignInPage />} />
           <Route path="sign-up" element={<SignUpPage />} />

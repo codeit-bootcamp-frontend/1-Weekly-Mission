@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/global.css';
-import './LoginPageStyle.css';
+import './LoginPage.css';
 import { snsIconG, snsIconK } from '../../constants/globalImages';
 import { eyeOffImg } from '../../constants/loginImages';
 import FormHeader from '../../components/formHeader/FormHeader';
@@ -11,19 +11,15 @@ function SignInPage() {
       <div className="container">
         <FormHeader action="goToSignUp" />
 
-        <main>
+        <main className="main-login">
           <form id="form">
             <div className="form-item">
-              <label htmlFor="email">
-                이메일
-                <input id="email" type="text" name="email" />
-              </label>
+              <label htmlFor="email">이메일</label>
+              <input id="email" type="text" name="email" />
             </div>
             <div className="form-item">
-              <label htmlFor="password">
-                비밀번호
-                <input id="password" type="password" name="password" />
-              </label>
+              <label htmlFor="password">비밀번호</label>
+              <input id="password" type="password" name="password" />
               <img
                 className="hide-password"
                 src={eyeOffImg}
@@ -31,12 +27,12 @@ function SignInPage() {
               />
             </div>
           </form>
-          <div id="signin-button" className="btn">
+          <div id="signin-button" className="btn btn-sign-in">
             로그인
           </div>
           <div className="sns">
             <span>소셜 로그인</span>
-            <div className="sns-icons">
+            <div className="sns-icons-login">
               <a href="https://www.google.com/">
                 <img src={snsIconG} alt="구글 로그인 바로가기" />
               </a>

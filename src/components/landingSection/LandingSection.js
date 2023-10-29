@@ -5,6 +5,7 @@ import {
   shareImg,
   searchImg,
 } from '../../constants/landingImages';
+import './LandingSection.css';
 
 function SaveSection() {
   return (

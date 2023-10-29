@@ -1,8 +1,14 @@
+.nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 12.5rem 2rem;
+    padding: 1.25rem 20rem 2rem;
     position: fixed;
     top:0;
     z-index: 1;
@@ -20,8 +26,30 @@ nav{
     height: 2.4rem;
 }
 
-a{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+.btn-login{
+    width: 12.8rem;
+    font-size: 1.8rem;
+}
+
+/* 반응형 */
+/* Tablet */
+@media(max-width: 1200px){
+    nav{
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+    nav{
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+    }
+
+    /* 버튼 스타일 */
+    .btn-login{
+        font-size: 1.4rem;
+        width: 8rem;
+    }
 }

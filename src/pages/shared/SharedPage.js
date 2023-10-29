@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/global.css';
 import './SharedPage.css';
-import { searchIcon } from '../../constants/globalImages';
 import { getFolder, getUser } from '../../api/api';
-import Card from '../../components/card/Card';
+import CardList from '../../components/card/CardList';
 
 function SharedPage() {
   const [links, setLinks] = useState([]);
@@ -27,7 +26,7 @@ function SharedPage() {
 
   return (
     <>
-      <header>
+      <header className="sharedHeader">
         <div className="folder-info">
           <div className="folder-owner">
             <div className="owner-profile">
@@ -41,20 +40,8 @@ function SharedPage() {
           <div className="folder-name">{folderInfo.name}</div>
         </div>
       </header>
-      <main>
-        <div className="search-bar">
-          <img src={searchIcon} alt="검색아이콘" />
-          <input
-            className="search-input"
-            type="text"
-            placeholder="링크를 검색해 보세요."
-          />
-        </div>
-        <div className="card-container">
-          {links.map((link) => (
-            <Card key={link.id} data={link} />
-          ))}
-        </div>
+      <main className="sharedMain">
+        <CardList links={links} />
       </main>
     </>
   );

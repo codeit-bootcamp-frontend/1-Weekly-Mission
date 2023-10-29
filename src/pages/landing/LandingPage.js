@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/global.css';
-import './LandingPageStyle.css';
+import './LandingPage.css';
 import { titleImg } from '../../constants/landingImages';
 import {
   ManageSection,
