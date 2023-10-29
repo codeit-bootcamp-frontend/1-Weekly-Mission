@@ -1,9 +1,8 @@
-
 import Main from "../../components/Main/Main";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Layout from "../Layout/Layout";
-import AddLink from "./AddLink/AddLink";
-import LinkList from "./LinkList/LinkList";
+import AddLink from "./components/AddLink/AddLink";
+import FolderAndLink from "./components/FolderAndLink/FolderAndLink";
 
 function FolderPage() {
   return (
@@ -11,8 +10,7 @@ function FolderPage() {
       <AddLink />
       <Main>
         <SearchBar />
-        <LinkList/>
-
+        <FolderAndLink />
       </Main>
     </Layout>
   );

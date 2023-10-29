@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import colors from "../../../style/colors";
-import { flexCenter } from "../../../style/common";
+import colors from "../../../../style/colors";
+import { flexCenter } from "../../../../style/common";
+import { Link } from "react-router-dom";
 
 const Button = styled.button`
   display: flex;
@@ -41,12 +42,14 @@ const FolderButtons = styled.div`
   gap: 8px;
   ${flexCenter};
 `;
-function FolderButton({ folders }) {
+function FolderList({ folders, onClick }) {
   return (
     <ButtonContainer>
       <FolderButtons>
         {folders.map((folder) => (
-          <Button key={folder.id}>{folder.name}</Button>
+          <Link onClick={onClick(folder.id)} key={folder.id}>
+            <Button>{folder.name}</Button>
+          </Link>
         ))}
       </FolderButtons>
       <AddFolder>폴더 추가 +</AddFolder>
@@ -54,4 +57,4 @@ function FolderButton({ folders }) {
   );
 }
 
-export default FolderButton;
+export default FolderList;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import linkImage from "../../../assets/link.png";
-import colors from "../../../style/colors";
+import linkImage from "../../../../assets/link.png";
+import colors from "../../../../style/colors";
 const AddLinkFrame = styled.div`
   display: flex;
   padding: 60px 320px 90px 320px;
