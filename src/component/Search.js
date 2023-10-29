@@ -1,4 +1,4 @@
-import searchImg from "./image/Search.svg";
+import searchImg from "../assets/Search.svg";
 
 export function Search() {
   return (

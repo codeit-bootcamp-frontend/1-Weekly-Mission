@@ -15,17 +15,13 @@ body {
   width: auto;
 }
 
-.header {
-  width: 100%;
-  background-color: #f0f6ff;
-}
-
 .nav {
-  padding: 33px 200px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 33px 200px 32px;
   width: 100%;
+  background-color: #f0f6ff
 }
 
 @media (max-width: 1123px) {
@@ -55,24 +51,68 @@ body {
 }
 
 .header-section {
-  padding-top: 2rem;
-  padding-bottom: 6rem;
-  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  gap: 20px;
   max-width: 192rem;
   width: 100%;
+  margin-bottom: 40px;
+  background-color: #f0f6ff
+}
+
+.header-section.user{
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 @media (max-width: 768px) {
-  .header-section {
+  .header-section .user {
     padding-top: 1rem;
     padding-bottom: 4rem;
     margin-bottom: 20px;
   }
+}
+
+.header-section.folder{
+  padding-top:6rem;
+  padding-bottom: 9rem;
+}
+
+.link-search-box{
+  padding : 16px 20px;
+  width: 800px;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 1px solid #6D6AFE;
+}
+
+.link-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.link-input-box{
+  display: flex;
+  justify-content: space-between;
+  gap :12px;
+}
+
+.link-input-box > input {
+  color: #9fa6b2;
+  border: none;
+  font-size: 1.6rem;
+}
+
+.link-box > button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  border: none;
+  color : #fff;
 }
 
 .profile {
@@ -138,6 +178,44 @@ body {
 .search-box > input {
   border: none;
   background-color: #f5f5f5;
+}
+
+.card-button-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.card-button-box > span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #6d6afe;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+.card-button {
+  display: flex;
+  gap : 8px;
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+.list-button {
+  padding : 8px 12px;
+  background-color: #fff;
+  border: 1px solid #6d6afe;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.list-button:hover{
+  cursor: pointer;
+  background-color: #6d6afe;
+  color: #fff;
 }
 
 .card-container {
