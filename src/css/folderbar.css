@@ -31,3 +31,14 @@
   background: #6d6afe;
   color: #fff;
 }
+
+.folderName {
+  position: relative;
+  width: 1060px;
+  margin: 24px auto;
+  color: #000;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}

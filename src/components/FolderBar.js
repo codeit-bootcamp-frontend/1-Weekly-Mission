@@ -10,6 +10,7 @@ function FolderBar() {
   const [listData, setListData] = useState();
   const [folderData, setFolderData] = useState([]);
   const [folderId, setFolderId] = useState(-1);
+  const [folderName, setFolderName] = useState("전체");
   const navigate = useNavigate();
 
   const handleLoad = async () => {
@@ -47,18 +48,25 @@ function FolderBar() {
       <div className="folderBarContainer">
         <FolderBox
           item="전체"
-          onClick={() => setFolderId(-1)}
+          onClick={() => {
+            setFolderId(-1);
+            setFolderName("전체");
+          }}
           isSelected={folderId === -1}
         />
         {folderData.map((item) => (
           <FolderBox
             item={item.name}
-            onClick={() => setFolderId(item.id)}
+            onClick={() => {
+              setFolderId(item.id);
+              setFolderName(item.name);
+            }}
             key={item.id}
             isSelected={folderId === item.id}
           />
         ))}
       </div>
+      <div className="folderName">{folderName}</div>
       {hasData && <FolderList item={listData} />}
       {!hasData && (
         <div className="nodataContainer">

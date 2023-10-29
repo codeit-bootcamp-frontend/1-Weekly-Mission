@@ -1,5 +1,3 @@
-import { getFolderListData } from "../api";
-import { useState, useEffect } from "react";
 import LinkCard from "./LinkCard";
 
 function FolderList({ item }) {
