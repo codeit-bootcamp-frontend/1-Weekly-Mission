@@ -1,0 +1,61 @@
+.container {
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+
+  /* tablet1 */
+  @media (min-width: 768px) and (max-width: 1123px) {
+  }
+
+  /* tablet2 */
+  @media (min-width: 1124px) {
+  }
+  /* descktop*/
+  @media (min-width: 1200px) {
+  }
+}
+
+.button__container {
+  border: 3px solid var(--primary);
+  border-radius: 15px;
+  background-color: var(--white);
+  width: 85%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  /* tablet */
+  @media (min-width: 768px) {
+  }
+
+  /* table2 */
+  @media (min-width: 1124px) {
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    width: 87%;
+  }
+}
+
+.input__container {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  border: none;
+}
+
+.image {
+  height: 3rem;
+  text-align: center;
+}
+
+.add_button {
+  align-self: center;
+  margin-right: 1rem;
+}

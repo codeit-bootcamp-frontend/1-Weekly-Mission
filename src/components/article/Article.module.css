@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 10rem);
+  margin: 0 auto;
+  padding: 3rem;
+
+  /* table1 */
+  @media (min-width: 768px) {
+    width: calc(100% - 20rem);
+  }
+
+  /* tablet2 */
+  @media (min-width: 1124px) {
+    /* width: 100%; */
+    width: calc(100% - 40rem);
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    /* width: 80%; */
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  @media (min-width: 768px) {
+    display: block;
+  }
+
+  /* tablet2 */
+  @media (min-width: 1124px) {
+    display: none;
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.images__container {
+  @media (min-width: 768px) {
+  }
+
+  /* tablet2 */
+  @media (min-width: 1124px) {
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    /* width: 80%; */
+  }
+}
