@@ -14,3 +14,9 @@
   font-weight: 400;
   line-height: normal;
 }
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .profileEmail {
+    display: none;
+  }
+}

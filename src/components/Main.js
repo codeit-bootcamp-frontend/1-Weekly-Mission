@@ -2,7 +2,6 @@ import styles from '../styles/Main.module.css';
 import Cards from './Cards.js';
 import Search from './Search.js';
 import FolderInfo from './FolderInfo.js';
-import { getUserData } from '../api/getUserData';
 import { getFolders } from '../api/getFolders.js';
 import { useState, useEffect } from 'react';
 

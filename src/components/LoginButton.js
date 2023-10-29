@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import UserDataInfo from './UserDataInfo.js';
 import { getUserData } from '../api/getUserData.js';
-import styles from '../styles/LoginButton.Module.css';
+import styles from '../styles/LoginButton.module.css';
 
 function LoginButton() {
   const [isLoading, setIsLoading] = useState(false);

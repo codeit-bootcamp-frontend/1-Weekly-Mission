@@ -5,13 +5,13 @@
   background-color: #fff;
   width: 340px;
   height: 334px;
-  box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   border-radius: 15px;
-  transition: transform 0.2s;
 }
 
 .CardItem:hover {
-  transform: scale(1.3);
+  transform: scale(130%);
+  transition: 1s;
 }
 
 .img {
@@ -23,8 +23,13 @@
 .container {
   display: flex;
   flex-direction: column;
+  text-align: left;
   gap: 10px;
   padding: 15px 20px;
+}
+
+.container a {
+  text-decoration: none;
 }
 
 .timeDiff {

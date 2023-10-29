@@ -43,15 +43,15 @@
 
 @media screen and (min-width: 375px) and (max-width: 767px) {
   .profileImage {
-    width: 4rem;
+    width: 40px;
     border-radius: 50%;
   }
 
   .name {
-    font-size: 1.4rem;
+    font-size: 14px;
   }
 
   .title {
-    font-size: 3.2rem;
+    font-size: 32px;
   }
 }

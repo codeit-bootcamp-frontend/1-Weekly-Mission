@@ -25,3 +25,15 @@
   width: 133px;
   height: 24px;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    padding: 20px 32px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .container {
+    padding: 13px 32px;
+  }
+}
