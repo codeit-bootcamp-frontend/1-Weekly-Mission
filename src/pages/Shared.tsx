@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import FolderCardList from "components/card/FolderCardList";
 import SearchBar from "components/search/SearchBar";
-import { getUserFolder } from "libs/apis/user";
+import { getUserSampleFolder } from "libs/apis/folder";
 import styles from "styles/modules/shared.module.css";
 import manageStatus from "utils/manageStatus";
 
 function Shared() {
   const { isLoading, isError, data } = useQuery<Folder>({
     queryKey: ["userInform"],
-    queryFn: getUserFolder,
+    queryFn: getUserSampleFolder,
   });
 
   if (isLoading || isError) {
