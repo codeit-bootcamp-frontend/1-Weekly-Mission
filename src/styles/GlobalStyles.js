@@ -28,6 +28,19 @@ const Globalstyle = createGlobalStyle`
     border: none;
     cursor: pointer;
   }
+
+  :root {
+    --color-primary: #6D6AFE;
+    --color-red: #FF5B56;
+    --color-black: #111322;
+    --color-white: #FFFFFF;
+    --color-gray-01: #3E3E43;
+    --color-gray-02: #9FA6B2;
+    --color-gray-03: #CCD5E3;
+    --color-gray-04: #E7EFFB;
+    --color-gray-05: #F0F6FF;
+    --color-background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  }
 `;
 
 export default Globalstyle;

@@ -38,10 +38,10 @@
 }
 
 .link-form {
-  border: 1px solid #6D6AFE;
+  border: 1px solid var(--color-primary);
   width: 800px;
   padding: 16px 20px;
-  background-color: #fff;
+  background-color: var(--color-white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,14 +56,14 @@
   width: calc(100% - 80px);
   outline: none;
   border: none;
-  color: #9FA6B2;
+  color: var(--color-gray-02);
   font-size: 16px;
 }
 .link-button {
   width: 80px;
   padding: 10px;
-  background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-  color: #fff;
+  background: var(--color-background);
+  color: var(--color-white);
   border-radius: 8px;
   border: none;
   font-size: 13px;
@@ -96,7 +96,7 @@
   z-index: 10;
 }
 .search-input {
-  background-color: #f5f5f5;
+  background-color: #F5F5F5;
   border: none;
   outline: none;
   width: 100%;
@@ -121,5 +121,5 @@
   border: 1px solid #000;
   padding: 8px 12px;
   border-radius: 5px;
-  border: 1px solid #6D6AFE;
+  border: 1px solid var(--color-primary);
 }
