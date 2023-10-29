@@ -3,12 +3,12 @@ import linkIcon from "assets/icons/link.svg";
 
 export default function linkAddBar() {
   return (
-    <form
+    <S.LinkAddForm
       onSubmit={(e) => {
         e.preventDefault();
       }}
     >
-      <S.LinkAddContainer>
+      <S.LinkAddFieldset>
         <img src={linkIcon} alt="링크 아이콘" />
         <label className="a11y" htmlFor="addInput"></label>
         <S.LinkAddInput
@@ -19,7 +19,7 @@ export default function linkAddBar() {
           onChange={(e) => {}}
         />
         <S.LinkAddButton>추가하기</S.LinkAddButton>
-      </S.LinkAddContainer>
-    </form>
+      </S.LinkAddFieldset>
+    </S.LinkAddForm>
   );
 }

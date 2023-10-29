@@ -3,12 +3,12 @@ import searchIcon from "assets/icons/search.svg";
 
 export default function LinkSearchBarComponent() {
   return (
-    <form
+    <S.LinkSearchForm
       onSubmit={(e) => {
         e.preventDefault();
       }}
     >
-      <S.LinkSearchContainer>
+      <S.LinkSearchFieldset>
         <img src={searchIcon} alt="검색 아이콘" />
         <label className="a11y" htmlFor="searchInput"></label>
         <S.LinkSearchInput
@@ -18,7 +18,7 @@ export default function LinkSearchBarComponent() {
           aria-label="링크 검색어를 입력하는 입력 요소입니다."
           onChange={(e) => {}}
         />
-      </S.LinkSearchContainer>
-    </form>
+      </S.LinkSearchFieldset>
+    </S.LinkSearchForm>
   );
 }

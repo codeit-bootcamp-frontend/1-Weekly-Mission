@@ -28,21 +28,24 @@ export default function FolderHeader({ folderTitle }) {
   return (
     <S.FolderHeader>
       <S.FolderTitle>{folderTitle}</S.FolderTitle>
-      <S.ButtonList>
-        {BUTTON_LIST.map((buttonItem) => {
-          return (
-            <li key={buttonItem.id}>
-              <S.ButtonItem>
-                <S.ButtonImage
-                  src={buttonItem.imageSource}
-                  alt={buttonItem.imageAlt}
-                />
-                <S.ButtonTitle>{buttonItem.title}</S.ButtonTitle>
-              </S.ButtonItem>
-            </li>
-          );
-        })}
-      </S.ButtonList>
+
+      {folderTitle !== "전체" && (
+        <S.ButtonList>
+          {BUTTON_LIST.map((buttonItem) => {
+            return (
+              <li key={buttonItem.id}>
+                <S.ButtonItem>
+                  <S.ButtonImage
+                    src={buttonItem.imageSource}
+                    alt={buttonItem.imageAlt}
+                  />
+                  <S.ButtonTitle>{buttonItem.title}</S.ButtonTitle>
+                </S.ButtonItem>
+              </li>
+            );
+          })}
+        </S.ButtonList>
+      )}
     </S.FolderHeader>
   );
 }

@@ -1,13 +1,25 @@
 import styled from "styled-components";
+import {
+  RESPONSIBLE_SIZE_TABLET,
+  RESPONSIBLE_SIZE_MOBILE,
+} from "utils/constants";
 
 export const FolderHeader = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 2.9rem;
+  margin: 2.4rem 0;
+
+  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin: 2.8rem 0 2rem;
+  }
 `;
 
 export const FolderTitle = styled.p`
+  height: 2.9rem;
   font-size: 2.4rem;
   font-weight: 600;
   line-height: normal;

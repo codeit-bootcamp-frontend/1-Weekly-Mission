@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { RESPONSIBLE_SIZE_MOBILE } from "utils/constants";
 
 export const FolderTabList = styled.ul`
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  flex-wrap: wrap;
 `;
 
 export const FolderNavLink = styled(NavLink)`
@@ -22,6 +24,11 @@ export const FolderNavLink = styled(NavLink)`
         `
       : css`
           background-color: var(--linkbrary--color--white);
-          color: var(--linkbrary--color--primary);
+          color: #000;
         `}
+
+  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+    padding: 0.6rem 1rem;
+    font-size: 1.4rem;
+  }
 `;
