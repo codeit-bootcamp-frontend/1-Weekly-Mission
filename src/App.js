@@ -1,12 +1,15 @@
-import Footer from './pages/Footer/Footer';
 import Shared from './pages/Shared/Shared';
+import HomePage from './pages/HomePage/HomePage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className='App'>
-      <Shared />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/shared' element={<Shared />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
