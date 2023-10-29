@@ -1,0 +1,7 @@
+.button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  height: 3.6rem;
+}

@@ -1,0 +1,10 @@
+.root {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.folders {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
