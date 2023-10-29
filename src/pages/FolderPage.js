@@ -8,7 +8,7 @@ import { getLink } from "../api/getLink";
 import { getFolder } from "../api/getFolder";
 import style from "./FolderPage.module.css";
 import { useSearchParams } from "react-router-dom";
-import FolderItem from "../component/FolderItem";
+import CurrentFolder from "../component/CurrentFolder";
 
 function FolderPage() {
   const [links, setLinks] = useState([]);
@@ -16,7 +16,7 @@ function FolderPage() {
   const [, , getLinkAsync] = useAsync(getLink);
   const [, , getFolderAsync] = useAsync(getFolder);
   const [searchParams, setSearchParams] = useSearchParams();
-  const initFolderParam = searchParams.get("folderId");
+  const folderParam = searchParams.get("folderId");
 
   const handleFolderLoad = async () => {
     const folders = await getFolderAsync({ id: 1 });
@@ -25,13 +25,13 @@ function FolderPage() {
   const handleLinkLoad = async () => {
     const links = await getLinkAsync({
       id: 1,
-      folderId: initFolderParam || "",
+      folderId: folderParam || "",
     });
     setLinks(links);
   };
   useEffect(() => {
     handleLinkLoad();
-  }, [initFolderParam]);
+  }, [folderParam]);
 
   useEffect(() => {
     handleFolderLoad();
@@ -42,6 +42,7 @@ function FolderPage() {
       <div className={style.section}>
         <Search />
         <FolderList folders={folders} />
+        <CurrentFolder folderId={folderParam} folders={folders} />
         {links.length ? (
           <Cards cards={links} />
         ) : (

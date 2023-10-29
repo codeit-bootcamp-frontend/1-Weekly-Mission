@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.utils {
+  display: flex;
+  gap: 1.2rem;
+}
+.utils button {
+  display: flex;
+  align-items: center;
+  color: var(--linkbrary-gray-60, #9fa6b2);
+  font-size: 1.4rem;
+  gap: 0.4rem;
+}
