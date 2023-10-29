@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import default_card_image from '../../assets/image/default_card.png';
 
-function CardImage({ item }) {
-  const { imageSource } = item;
+function CardImage({ item, path }) {
+  const imageSource = path === '/folder' ? item.image_source : item.imageSource;
   const cardImage = imageSource ? imageSource : default_card_image;
 
   return (

@@ -5,10 +5,12 @@ import card_config_icon from '../../assets/svg/kebab.svg';
 import star_mark from '../../assets/image/star.png';
 import styled from 'styled-components';
 
-function Card({ item }) {
+function Card({ item, path }) {
+
+
   return (
     <CardWrapper>
-      <CardImage item={item} />
+      <CardImage item={item} path={path}/>
       <StarMarkButton>
         <StarMark src={star_mark} alt='카드 즐겨찾기 버튼' />
       </StarMarkButton>
