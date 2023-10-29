@@ -20,6 +20,7 @@ export default function FolderPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initFolderId = searchParams.get('folderId');
   const [folderId, setFolderId] = useState(initFolderId || null);
+  // eslint-disable-next-line no-unused-vars
   const [isClicked, setIsClicked] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState('전체');
   const [viewPortWidth, setViewPortWidth] = useState(window.innerWidth);
@@ -74,7 +75,7 @@ export default function FolderPage() {
                 setFolderId={setFolderId}
                 setIsClicked={setIsClicked}
                 fetchUserLinks={fetchUserLinks}
-                isClicked={isClicked}
+                isClicked={folderId === null}
                 setCategoryTitle={setCategoryTitle}
               >
                 전체
