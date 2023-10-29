@@ -17,8 +17,10 @@ div {
   gap: 0.8rem;
 }
 
+@media (max-width: 864px) {
+  width: calc(100vw - 6.4rem);
+}
 @media (max-width: 779px) {
-  width: 32.5rem;
   padding: 0.8rem 1rem;
 }
 `;
@@ -43,7 +45,7 @@ width: 60rem;
 
 @media (max-width: 779px) {
   font-size: 1.4rem;
-  width: 13rem;
+  width: 15rem;
 }
 `
 
