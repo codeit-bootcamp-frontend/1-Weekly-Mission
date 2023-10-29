@@ -1,19 +1,20 @@
 import { useState } from "react";
 import useAsync from "../../../../Hooks/useAsync";
-import { getAllLinks, getFolders, getLinksByFolderID } from "../../../../api";
+import { getFolders, getLinksByFolderID } from "../../../../api";
 import FolderList from "../FolderList/FolderList";
 import LinkList from "../LinkList/LinkList";
+import NoLink from "../NoLink/NoLink";
 
 function FolderAndLink() {
-  const [folderId, setFolderId] = useState(undefined);
+  const [selectedFolderId, setSelectedFolderId] = useState(undefined);
 
   // 폴더
   const [folderData, isLoadingFolder, folderLoadingError, getFolderAsync] =
     useAsync(() => getFolders());
 
   const [linkData, isLoadinglink, linkLoadingError, getLinkAsync] = useAsync(
-    () => getLinksByFolderID(1, folderId),
-    [folderId]
+    () => getLinksByFolderID(1, selectedFolderId),
+    [selectedFolderId]
   );
 
   if (!folderData) return;
@@ -24,17 +25,20 @@ function FolderAndLink() {
   // console.log(links);
 
   const setFolderLink = (folder_id) => {
-    setFolderId(folder_id);
-
-    getLinkAsync(1, folderId);
+    setSelectedFolderId(folder_id);
+    getLinkAsync(1, selectedFolderId);
   };
 
   return (
     <>
       {folders.length !== 0 && (
-        <FolderList folders={folders} setFolderLink={setFolderLink} />
+        <FolderList
+          folders={folders}
+          setFolderLink={setFolderLink}
+          selectedFolderId={selectedFolderId}
+        />
       )}
-      <LinkList links={links} />
+      {links.length === 0 ? <NoLink /> : <LinkList links={links} />}
     </>
   );
 }

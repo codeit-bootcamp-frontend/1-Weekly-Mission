@@ -1,64 +1,42 @@
-import styled from "styled-components";
-import colors from "../../../../style/colors";
-import { flexCenter } from "../../../../style/common";
+// FolderList.js
 
-const Button = styled.button`
-  display: flex;
-  padding: 8px 12px;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 5px;
-  border: 1px solid ${colors.primary};
-  background: #fff;
-  color: #000;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
+import React, { useState } from "react";
+import { S } from "./FolderListStyle"; // Import the styles as S
+import SelectedFolder from "../SelectedFolder/SelectedFolder";
 
-const ButtonContainer = styled.div`
-  display: flex;
-  width: 1060px;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const AddFolder = styled.div`
-  color: #6d6afe;
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.3px;
-`;
-
-const FolderButtons = styled.div`
-  display: flex;
-  gap: 8px;
-  ${flexCenter};
-`;
-function FolderList({ folders, setFolderLink }) {
-  const onClick = (id) => (e) => {
-    setFolderLink(id);
+function FolderList({ folders, setFolderLink, selectedFolderId }) {
+  const [selectedFolder, setSelectedFolder] = useState(undefined);
+  const onClick = (folder) => (e) => {
+    setFolderLink(folder.id);
+    setSelectedFolder(folder);
   };
 
   return (
-    <ButtonContainer>
-      <FolderButtons>
-        <Button onClick={onClick(undefined)}>전체</Button>
-        {folders.length !== 0 &&
-          folders.map((folder) => (
-            <Button onClick={onClick(folder.id)} key={folder.id}>
-              {folder.name}
-            </Button>
-          ))}
-      </FolderButtons>
-      <AddFolder>폴더 추가 +</AddFolder>
-    </ButtonContainer>
+    <>
+      <S.ButtonContainer>
+        <S.FolderButtons>
+          <S.Button
+            onClick={onClick(undefined)}
+            data-onselect={selectedFolderId === undefined}
+          >
+            전체
+          </S.Button>
+          {folders.length !== 0 &&
+            folders.map((folder) => (
+              <S.Button
+                onClick={onClick(folder)}
+                key={folder.id}
+                data-onselect={selectedFolderId === folder.id}
+              >
+                {folder.name}
+              </S.Button>
+            ))}
+        </S.FolderButtons>
+        <S.AddFolder>폴더 추가 +</S.AddFolder>
+      </S.ButtonContainer>
+
+      <SelectedFolder folderName={selectedFolder?.name} />
+    </>
   );
 }
 
