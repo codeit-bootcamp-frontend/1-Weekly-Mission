@@ -68,7 +68,7 @@ const LinkAddInput = () => {
   return (
     <Form>
       <div>
-        <img src={linkIcon}/>
+        <img src={linkIcon} alt='링크 추가 아이콘'/>
         <Input
           name="searchKeyword" 
           type="text"  //  X자 삭제 버튼 없애기 위해 일단 text로 설정 

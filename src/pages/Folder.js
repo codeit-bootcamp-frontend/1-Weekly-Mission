@@ -8,7 +8,6 @@ import useGetSelectedFolder from '../hooks/useGetSelectedFolder';
 import styled from "styled-components";
 import { useState, useEffect } from 'react';
 import { FolderProvider  }  from '../context/FolderContext';
-import { useParams } from 'react-router-dom';
 
 const Folder = () => {
   // const { id } = useParams();  (path='/folder/:id')

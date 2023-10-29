@@ -7,8 +7,8 @@ import deleteIcon from '../assets/delete_icon.svg';
 import Sorting from './Sorting';
 import Option from './Option';
 import useGetSearchFolder from '../hooks/useGetSearchFolder';
-import { useState, useEffect, useContext } from 'react';
-import { FolderProvider, FolderContext  }  from '../context/FolderContext';
+import { useEffect, useContext } from 'react';
+import { FolderContext  }  from '../context/FolderContext';
 
 const MainContainer = styled.main`
   display: flex;
@@ -61,7 +61,7 @@ const FolderMain = ({ selectedFolder, userID }) => {
   
   useEffect(() => {
     changeFolderId(folderId);
-  }, [folderId, folderContentsInfo]);
+  }, [changeFolderId, folderId, folderContentsInfo]);
 
   const checkEmptyFolder = folderContentsInfo?.data.length;
   

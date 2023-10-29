@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Shared from './pages/Shared'
 import Folder from './pages/Folder'
 import Greeting from './pages/Greeting'
-import { FolderProvider } from './context/FolderContext';
 
 const Main = () => {
   return (

@@ -1,10 +1,10 @@
 import { formatDateDifference, formatDate } from '../global/utils';
 import EmptyCardImg from '../assets/Card_img.svg'
-import kebab from '../assets/kebab.svg';
 import styled from 'styled-components';
 import starIcon from '../assets/star.svg'
+import Kebab from './Kebab';
 
-const CardContainer = styled.a`
+const CardContainer = styled.div`
   display: block;
   width: 34rem;
   height: 33.4rem;
@@ -72,11 +72,6 @@ const UploadTime = styled.p`
   font-size: 1.3rem;
 `;
 
-const Kebab = styled.img`
-  width: 2.1rem;
-  height: 1.7rem;
-`;
-
 const Text = styled.p`
   height: 4.9rem;
   align-self: stretch;
@@ -125,7 +120,7 @@ const Card = ( { item } ) => {
   const dateDifference = formatDateDifference(createdAt);
 
   return (
-    <CardContainer href={url}>
+    <CardContainer>
       <ImgArea>
         <StarIcon src={starIcon} alt="즐겨찾기 아이콘"/>
         {imageSource ? (
@@ -137,9 +132,11 @@ const Card = ( { item } ) => {
       <InfoArea>
         <CardExtraInfo>
           <UploadTime>{dateDifference}</UploadTime>
-          <Kebab src={kebab} alt="더보기 아이콘"></Kebab>
+          <Kebab />
         </CardExtraInfo>
-        <Text>{description}</Text>
+        <a href={url}>
+          <Text>{description}</Text>
+        </a>
         <Date>{uploadDate}</Date>
       </InfoArea>
     </CardContainer>
