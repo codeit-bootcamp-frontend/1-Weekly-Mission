@@ -16,7 +16,16 @@ const Button = styled.button`
   border-radius: 5px;
   border: 1px solid #6d6afe;
   background: #fff;
+  &:hover {
+    color: white;
+    background-color: #6d6afe;
+  }
 `;
+
+const activeButton = {
+  color: 'white',
+  backgroundColor: '#6d6afe',
+};
 
 export default function FolderMain() {
   const [folders, setFolders] = useState([]);
@@ -39,7 +48,7 @@ export default function FolderMain() {
   useEffect(() => {
     handleLoad();
   }, []);
-
+  console.log(title);
   return (
     <div className="folder-container">
       <div className="folder-search">
@@ -51,9 +60,19 @@ export default function FolderMain() {
       </div>
       <div className="folder-wrapper">
         <div className="folder-div">
-          <Button onClick={handleFolderList}>전체</Button>
+          <Button
+            onClick={handleFolderList}
+            style={title === '전체' ? activeButton : null}
+          >
+            전체
+          </Button>
           {folders.map((item) => (
-            <Button name={item.id} key={item.id} onClick={handleFolderList}>
+            <Button
+              style={title === item.name ? activeButton : null}
+              name={item.id}
+              key={item.id}
+              onClick={handleFolderList}
+            >
               {item.name}
             </Button>
           ))}
@@ -65,28 +84,28 @@ export default function FolderMain() {
       </div>
       <div className="useful-wrapper">
         <div className="useful">{title}</div>
-        <div className="useful-img-div">
-          <div className="useful-img">
-            <img src={shareImg} alt="shareImg" />
-            <span>공유</span>
+        {title !== '전체' && (
+          <div className="useful-img-div">
+            <div className="useful-img">
+              <img src={shareImg} alt="shareImg" />
+              <span>공유</span>
+            </div>
+            <div className="useful-img">
+              <img src={penImg} alt="penImg" />
+              <span>이름 변경</span>
+            </div>
+            <div className="useful-img">
+              <img src={deleteImg} alt="deleteImg" />
+              <span>삭제</span>
+            </div>
           </div>
-          <div className="useful-img">
-            <img src={penImg} alt="penImg" />
-            <span>이름 변경</span>
-          </div>
-          <div className="useful-img">
-            <img src={deleteImg} alt="deleteImg" />
-            <span>삭제</span>
-          </div>
-        </div>
-      </div>
-      <div className="main-content-wrapper">
-        {links[0] ? (
-          links.map((link) => <FolderCard key={link.id} item={link} />)
-        ) : (
-          <div className="no-link">저장된 링크가 없습니다.</div>
         )}
       </div>
+      <div className="main-content-wrapper">
+        {links[0] &&
+          links.map((link) => <FolderCard key={link.id} item={link} />)}
+      </div>
+      {!links[0] && <div className="no-link">저장된 링크가 없습니다.</div>}
     </div>
   );
 }

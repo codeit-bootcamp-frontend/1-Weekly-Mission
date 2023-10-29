@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { dateCalculator } from './dateCalculator';
 import noImage from './img/no-image.svg';
+import kebab from './img/kebab.svg';
+import star from './img/star.svg';
+import plus from './img/plus-white.svg';
 
 export default function FolderCard(link) {
   const apiDate = new Date(link.item.created_at);
@@ -24,11 +27,23 @@ export default function FolderCard(link) {
           />
         </div>
         <div className="card-text">
-          <div className="card-time-ago">{elapsedTime}</div>
+          <div className="card-time-div">
+            <div className="card-time-ago">{elapsedTime}</div>
+
+            <img src={kebab} alt="kebabImg" />
+          </div>
+
           <div className="text-description">{link.item.description}</div>
           <div className="card-year">{`${year}. ${month}. ${days}`}</div>
         </div>
+        <img src={star} className="star-img" alt="starImg" />
       </div>
+      <button className="card-button">
+        <div className="card-button-div">
+          <div>폴더추가</div>
+          <img src={plus} alt="plusImg" />
+        </div>
+      </button>
     </Link>
   );
 }

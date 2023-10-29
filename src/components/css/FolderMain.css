@@ -36,6 +36,7 @@
 .folder-div {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .folder-plus {
@@ -46,6 +47,11 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+@media (max-width: 800px) {
+  .folder-plus {
+    display: none;
+  }
 }
 
 .useful {
@@ -62,6 +68,12 @@
 @media (max-width: 1124px) {
   .useful-wrapper {
     width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .useful-wrapper {
+    display: grid;
+    gap: 12px;
   }
 }
 
@@ -82,14 +94,9 @@
 }
 
 .no-link {
-  display: flex;
   height: 100px;
   padding: 41px 0px 35px 0px;
-  justify-content: center;
-  align-items: center;
-
   color: #000;
-  text-align: center;
   font-weight: 400;
   line-height: 24px;
 }
