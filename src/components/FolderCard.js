@@ -3,7 +3,6 @@ import { dateCalculator } from './dateCalculator';
 import noImage from './img/no-image.svg';
 import kebab from './img/kebab.svg';
 import star from './img/star.svg';
-import plus from './img/plus-white.svg';
 
 export default function FolderCard(link) {
   const apiDate = new Date(link.item.created_at);
@@ -38,12 +37,6 @@ export default function FolderCard(link) {
         </div>
         <img src={star} className="star-img" alt="starImg" />
       </div>
-      <button className="card-button">
-        <div className="card-button-div">
-          <div>폴더추가</div>
-          <img src={plus} alt="plusImg" />
-        </div>
-      </button>
     </Link>
   );
 }

@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import search from './img/search.svg';
 import { getData } from '../api';
 import styled from 'styled-components';
 import './css/FolderMain.css';
+import './css/Card.css';
 import plusImg from './img/plus.svg';
 import shareImg from './img/share.svg';
 import penImg from './img/pen.svg';
 import deleteImg from './img/delete.svg';
 import FolderCard from './FolderCard';
+import plus from './img/plus-white.svg';
 
 const Button = styled.button`
   cursor: pointer;
@@ -32,12 +34,12 @@ export default function FolderMain() {
   const [links, setLinks] = useState([]);
   const [title, setTitle] = useState('전체');
 
-  const handleLoad = async (id = '') => {
+  const handleLoad = useCallback(async (id = '') => {
     const { data } = await getData('users/1/folders');
     const links = await getData('users/1/links?folderId=', id);
     setFolders(data);
     setLinks(links.data);
-  };
+  }, []);
 
   const handleFolderList = async (e) => {
     setTitle(e.target.textContent);
@@ -47,8 +49,8 @@ export default function FolderMain() {
 
   useEffect(() => {
     handleLoad();
-  }, []);
-  console.log(title);
+  }, [handleLoad]);
+
   return (
     <div className="folder-container">
       <div className="folder-search">
@@ -82,6 +84,12 @@ export default function FolderMain() {
           <img src={plusImg} alt="plugImg" />
         </div>
       </div>
+      <button className="card-button">
+        <div className="card-button-div">
+          <div>폴더추가</div>
+          <img src={plus} alt="plusImg" />
+        </div>
+      </button>
       <div className="useful-wrapper">
         <div className="useful">{title}</div>
         {title !== '전체' && (

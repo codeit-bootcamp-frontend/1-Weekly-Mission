@@ -1,4 +1,4 @@
-import star from './img/star.svg';
+import favorites from './img/favorites.svg';
 import { getData } from '../api';
 import './css/Nav.css';
 import { useCallback, useState, useEffect } from 'react';
@@ -9,7 +9,7 @@ export default function SharedHeader() {
   const handleLoad = useCallback(async () => {
     const { folder } = await getData('sample/folder');
     setUser(folder.owner);
-  });
+  }, []);
 
   useEffect(() => {
     handleLoad();
@@ -27,7 +27,7 @@ export default function SharedHeader() {
           <div className="nav2-div">{user.name}</div>
         </div>
         <div className="nav2-starDiv">
-          <img className="nav2-starImg" src={star} alt="starImg" />
+          <img className="nav2-starImg" src={favorites} alt="starImg" />
         </div>
       </div>
     </div>

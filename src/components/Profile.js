@@ -1,5 +1,4 @@
 export default function Profile(data) {
-  console.log(data.item[0]);
   return (
     <div className="nav1-div">
       <div className="nav1-div-logo">

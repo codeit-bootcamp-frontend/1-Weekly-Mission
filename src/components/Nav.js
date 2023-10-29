@@ -6,14 +6,14 @@ import Profile from './Profile';
 
 export default function Nav() {
   const [login, setLogin] = useState([]);
-  let url = window.location.pathname;
+  const url = window.location.pathname;
 
   const handleLoad = async () => {
     if (url === '/shared') {
       const data = await getData('sample/user');
       setLogin(data);
-    } else if ((url = '/folder')) {
-      const { data } = await getData('users/1');
+    } else if (url === '/folder') {
+      const data = await getData('users/1');
       setLogin(data);
     }
   };
