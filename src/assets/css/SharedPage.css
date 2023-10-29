@@ -1,13 +1,3 @@
-.header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5.8125rem;
-  background-color: var(--linkbrary-bg);
-  z-index: 9999;
-}
-
 /*--main--*/
 
 .folderInfo {

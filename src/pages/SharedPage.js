@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
-import { getFolder } from "./api";
-import "./assets/css/App.css";
-import Gnb from "./component/Gnb";
-import SearchBar from "./component/SearchBar";
-import CardSection from "./component/CardSection";
-import Footer from "./component/Footer";
+import { Helmet } from "react-helmet";
+import { getSample } from "../api";
+import "../assets/css/SharedPage.css";
+import SearchBar from "../component/SearchBar";
+import CardSection from "../component/CardSection";
 
-function App() {
+function SharedPage() {
   const [folderData, setFolderData] = useState({});
 
   async function getFolderData() {
     let folderData = {};
     try {
-      folderData = await getFolder();
+      folderData = await getSample();
       const { id, name, owner, links } = folderData;
       setFolderData({
         id,
@@ -32,11 +31,10 @@ function App() {
   }, []);
 
   return (
-    <div className="body">
-      <header className="header">
-        <Gnb />
-      </header>
-
+    <>
+      <Helmet>
+        <title>Shared</title>
+      </Helmet>
       <div className="folderInfo">
         <div className="profileBox">
           <img
@@ -53,10 +51,8 @@ function App() {
         <SearchBar size="large" />
         <CardSection data={folderData.links} />
       </section>
-
-      <Footer className="footer" size="large" />
-    </div>
+    </>
   );
 }
 
-export default App;
+export default SharedPage;

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getUser } from "../api";
 import logo from "../assets/img/logo.svg";
 import ProfileImg from "./ProfileImg";
@@ -11,12 +12,12 @@ function Gnb() {
 
   async function getUserData() {
     try {
-      const { id, email, name, profileImageSource } = await getUser();
+      const { id, email, name, image_source } = await getUser();
       setUserData({
         id,
         email,
         name,
-        profile: profileImageSource,
+        profile: image_source,
       });
       setIsLogin(true);
     } catch (error) {
@@ -30,17 +31,21 @@ function Gnb() {
   }, []);
 
   return (
-    <div className="headerContainer">
-      <img className="logo" src={logo} alt="logo" />
-      {isLogin ? (
-        <div className="profile">
-          <ProfileImg src={userData.profile} />
-          <span>{userData.email}</span>
-        </div>
-      ) : (
-        <CTA href="">로그인</CTA>
-      )}
-    </div>
+    <header className="header">
+      <div className="headerContainer">
+        <Link to="/">
+          <img className="logo" src={logo} alt="logo" />
+        </Link>
+        {isLogin ? (
+          <div className="profile">
+            <ProfileImg src={userData.profile} />
+            <span>{userData.email}</span>
+          </div>
+        ) : (
+          <CTA href="">로그인</CTA>
+        )}
+      </div>
+    </header>
   );
 }
 

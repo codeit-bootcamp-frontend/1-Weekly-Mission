@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import facebook from "../assets/img/icon-facebook-white.svg";
 import twitter from "../assets/img/icon-twitter-white.svg";
 import youtube from "../assets/img/icon-youtube-white.svg";
@@ -20,24 +21,24 @@ function Footer({ size }) {
         </div>
         <ul className="sns">
           <li>
-            <a target="_blank" href="https://www.facebook.com/">
-              <img src={facebook} />
-            </a>
+            <Link to="https://www.facebook.com/">
+              <img src={facebook} alt="facebook" />
+            </Link>
           </li>
           <li>
-            <a target="_blank" href="https://twitter.com/">
-              <img src={twitter} />
-            </a>
+            <Link to="https://twitter.com/">
+              <img src={twitter} alt="twitter" />
+            </Link>
           </li>
           <li>
-            <a target="_blank" href="https://www.youtube.com/">
-              <img src={youtube} />
-            </a>
+            <Link to="https://www.youtube.com/">
+              <img src={youtube} alt="youtube" />
+            </Link>
           </li>
           <li>
-            <a target="_blank" href="https://www.instagram.com/">
-              <img src={instagram} />
-            </a>
+            <Link to="https://www.instagram.com/">
+              <img src={instagram} alt="instagram" />
+            </Link>
           </li>
         </ul>
       </footer>

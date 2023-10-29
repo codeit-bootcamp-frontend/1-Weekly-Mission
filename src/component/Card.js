@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import moment from "moment";
 import Star from "./Star";
 import kebabICON from "../assets/img/icon-kebab.svg";
@@ -60,18 +60,18 @@ function Card({ data, onClick }) {
       <div className="cardImgBox">
         <img
           className="cardImg"
-          src={data.imageSource || noImageIMG}
-          alt={data.imageSource ? "카드 이미지" : "이미지 없음"}
+          src={data.image_source || noImageIMG}
+          alt={data.image_source ? "카드 이미지" : "이미지 없음"}
         />
       </div>
 
       <div className="infoContainer">
         <div className="additionalInfo">
-          <span className="timeForToday">{timeForToday(data.createdAt)}</span>
+          <span className="timeForToday">{timeForToday(data.created_at)}</span>
           <img src={kebabICON} alt="카드 설정 더보기" />
         </div>
-        <p className="description">{data.description}</p>
-        <span className="createdDate">{formatDate(data.createdAt)}</span>
+        <p className="description">{data.description || data.title}</p>
+        <span className="createdDate">{formatDate(data.created_at)}</span>
       </div>
     </div>
   );
