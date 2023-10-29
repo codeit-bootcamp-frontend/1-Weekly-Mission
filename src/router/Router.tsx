@@ -12,6 +12,7 @@ function Router() {
       element: <Root />,
       errorElement: <NotFound />,
       children: [
+        { path: "/", element: <Folder /> },
         { path: "/signin", element: <Signin /> },
         { path: "/shared", element: <Shared /> },
         { path: "/folder", element: <Folder /> },
