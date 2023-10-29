@@ -1,3 +1,4 @@
+// sample folder
 interface Folder {
   folder: FolderData;
 }
@@ -23,4 +24,16 @@ interface LinksData {
   title?: string;
   description: string;
   imageSource: string;
+}
+
+// user folder
+interface UserFolder {
+  data: UserFolderData[];
+}
+
+interface UserFolderData {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
 }
