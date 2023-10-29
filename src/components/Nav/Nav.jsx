@@ -19,7 +19,7 @@ export default Nav;
 const NavBlock = styled.nav`
   display: flex;
   justify-content: center;
-  $position: ${props => (props.path === '/folder' ? 'static' : 'sticky')};
+  position: ${({$path}) => ($path === '/folder' ? 'static' : 'sticky')};
   top: 0;
   width: 100%;
   background: #f0f6ff;
