@@ -44,13 +44,12 @@ const FolderButtons = styled.div`
 function FolderList({ folders, setFolderLink }) {
   const onClick = (id) => (e) => {
     setFolderLink(id);
-    
   };
 
   return (
     <ButtonContainer>
       <FolderButtons>
-        <Button>전체</Button>
+        <Button onClick={onClick(undefined)}>전체</Button>
         {folders.length !== 0 &&
           folders.map((folder) => (
             <Button onClick={onClick(folder.id)} key={folder.id}>

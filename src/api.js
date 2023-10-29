@@ -20,11 +20,12 @@ export async function getFolders(user_id = DEFAULT_USER_ID) {
 
 
 export async function getLinksByFolderID(user_id = DEFAULT_USER_ID, folder_id = undefined) {
-  const queryParams = folder_id !== undefined ? `?folderId=${folder_id}` : '';
+  const queryParams = folder_id !== undefined ? `${folder_id}` : '';
+  
   const response = await fetch(
     `${API_URL}/api/users/${user_id}/links?folderId=${queryParams}`
   );
-
+  console.log(`${API_URL}/api/users/${user_id}/links?folderId=${queryParams}`);
   
   return getData(response);
 }

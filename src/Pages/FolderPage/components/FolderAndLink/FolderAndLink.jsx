@@ -21,11 +21,11 @@ function FolderAndLink() {
   const { data: folders } = folderData;
   const { data: links } = linkData;
   // 링크
-  console.log(links);
+  // console.log(links);
 
   const setFolderLink = (folder_id) => {
-    console.log(folder_id);
     setFolderId(folder_id);
+
     getLinkAsync(1, folderId);
   };
 
@@ -34,7 +34,7 @@ function FolderAndLink() {
       {folders.length !== 0 && (
         <FolderList folders={folders} setFolderLink={setFolderLink} />
       )}
-      {links.length !== 0 && <LinkList links={links} />}
+      <LinkList links={links} />
     </>
   );
 }
