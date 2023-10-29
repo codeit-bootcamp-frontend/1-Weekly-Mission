@@ -1,6 +1,8 @@
 import styles from "./FolderHeader.module.css";
 import FolderNameButton from "../FolderNameButton/FolderNameButton";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import CardList from "../CardList/CardList";
+import { getAllCards } from "../../api/api";
 
 import shareIcon from "../../assets/share-icon.svg";
 import renameIcon from "../../assets/rename-icon.svg";
@@ -66,12 +68,27 @@ function FolderNameList({ folderList = null, onChange }) {
 }
 
 function FolderHeader({ folderList = null, onChange }) {
+  const [cardList, setCardList] = useState([]);
+  const getCardList = async (id = "") => {
+    const folderResult = await getAllCards(id);
+    setCardList(() => {
+      return [...folderResult?.data];
+    });
+  };
+  const { current: cardListArray } = useRef(cardList);
+
+  useEffect(() => {
+    getCardList();
+  }, [cardListArray]);
   return (
     <>
-      <FolderNameList folderList={folderList} onChange={onChange} />
+      <FolderNameList folderList={folderList} onChange={getCardList} />
       <button type="button" className="add-folder-button">
         폴더 추가+
       </button>
+      <div className="section">
+        <CardList cardList={cardList} />
+      </div>
     </>
   );
 }
