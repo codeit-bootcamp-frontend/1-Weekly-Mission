@@ -1,7 +1,7 @@
-import API_ENDPOINTS from "./common";
+import API_ENDPOINTS from "./endpoints";
 
 const baseUrl = API_ENDPOINTS.baseUrl;
-const endpoint = API_ENDPOINTS.sample.user;
+const endpoint = API_ENDPOINTS.sample.getSampleUser;
 
 /**
  * 비동기 함수로 서버에서 사용자 정보를 가져오는 함수입니다.

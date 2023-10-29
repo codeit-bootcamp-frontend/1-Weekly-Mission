@@ -1,20 +1,29 @@
-import API_ENDPOINTS from "./common";
-
-const USER_ID = "1";
-const baseUrl = API_ENDPOINTS.baseUrl;
-const endpoint = API_ENDPOINTS.user.folders.getUserLinks.replace("{userId}", USER_ID);
+import API_ENDPOINTS from "./endpoints";
 
 /**
- * 비동기 함수로 서버에서 폴더 정보를 가져오는 함수입니다.
+ * 사용자의 링크 목록을 가져오는 비동기 함수입니다.
  *
  * @async
- * @function
- * @returns {Promise<Object>} 서버에서 받은 JSON 형식의 폴더 정보를 나타내는 객체를 포함하는 Promise 객체
- * @throws {Error} 서버에서 응답을 받지 못할 경우 에러가 발생합니다.
+ * @function getUserLinks
+ * @param {string} [userId="1"] - 사용자 식별자.
+ * @param {string} [folderId="16"] - 폴더 식별자.
+ * @returns {Promise<Object>} 서버로부터 받아온 사용자의 링크 목록 데이터를 나타내는 Promise.
+ *
+ * @throws {Error} 서버 요청에 실패한 경우 에러가 발생할 수 있습니다.
+ *
+ * @example
+ * // 기본 사용자 ID 및 폴더 ID를 이용해 사용자의 링크 목록을 가져옴
+ * const links = await getUserLinks();
+ *
+ * // 특정 사용자 및 폴더에 대한 링크 목록을 가져오는 예제
+ * const customLinks = await getUserLinks("2", "17");
  */
-const getUserLinks = async (folderId = "16") => {
+const getUserLinks = async ({ userId, folderId = "" }) => {
+  console.log(folderId);
+  const baseUrl = API_ENDPOINTS.baseUrl;
+  const endpoint = API_ENDPOINTS.user.links.getUserLinks.replace("{userId}", userId);
   const query = `?folderId=${folderId}`;
-  const response = await fetch(baseUrl + endpoint + query);
+  const response = await fetch(baseUrl + endpoint + (folderId ? query : ""));
   const body = await response.json();
   return body;
 };
