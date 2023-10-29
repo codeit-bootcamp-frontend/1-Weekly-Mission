@@ -1,7 +1,6 @@
 import { NO_CARD_IMAGE } from "constants/common";
 import { Link } from "react-router-dom";
 import styles from "styles/modules/card.module.css";
-import cutString from "utils/cutString";
 import formatDate from "utils/formatDate";
 import formatPeriod from "utils/formatPeriod";
 
@@ -18,7 +17,7 @@ function FolderCard({ url, description, imageSource, createdAt }: LinksData) {
         </div>
         <div className={styles.contentWrapper}>
           <span className={styles.time}>{formatPeriod(createdAt)}</span>
-          <p className={styles.description}>{cutString(description)}</p>
+          <p className={styles.description}>{description}</p>
           <span>{formatDate(createdAt)}</span>
         </div>
       </div>
