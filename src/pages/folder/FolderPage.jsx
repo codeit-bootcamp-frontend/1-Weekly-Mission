@@ -6,7 +6,6 @@ import LinkAddBar from "components/linkAddBar/linkAddBar.jsx";
 import FolderTabList from "components/folderTabList/FolderTabList.jsx";
 import { getUserFolderList } from "pages/folder/folderPage.js";
 import LinkSearchBar from "components/linkSearchBar/LinkSearchBar.jsx";
-import addIcon from "assets/icons/add.svg";
 
 import { ENTIRE_LINK_FOLDER_NAME, SAMPLE_USER_ID } from "utils/constants.js";
 import useAsync from "hooks/useAsync.js";
@@ -46,7 +45,7 @@ export default function FolderPage() {
           <FolderTabList folderList={folderList} />
           <S.FolderAddButton>
             폴더 추가
-            <S.FolderAddIcon src={addIcon} alt="폴더 추가 아이콘" />
+            <S.FolderAddIcon alt="폴더 추가 아이콘" />
           </S.FolderAddButton>
         </S.FolderTabListContainer>
 

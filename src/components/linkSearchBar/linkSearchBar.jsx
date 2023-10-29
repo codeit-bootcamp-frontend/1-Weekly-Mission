@@ -1,5 +1,5 @@
 import * as S from "./linkSearchBar.style.js";
-import searchIcon from "assets/icons/search.svg";
+import searchIconSrc from "assets/icons/search.svg";
 
 export default function LinkSearchBar() {
   return (
@@ -9,7 +9,7 @@ export default function LinkSearchBar() {
       }}
     >
       <S.LinkSearchFieldset>
-        <img src={searchIcon} alt="검색 아이콘" />
+        <img src={searchIconSrc} alt="검색 아이콘" />
         <label className="a11y" htmlFor="searchInput"></label>
         <S.LinkSearchInput
           id="searchInput"

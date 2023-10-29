@@ -1,26 +1,26 @@
 import * as S from "./folderHeader.style.js";
-import shareIcon from "assets/icons/share.svg";
-import trashIcon from "assets/icons/trash.svg";
-import penIcon from "assets/icons/pen.svg";
+import shareIconSrc from "assets/icons/share.svg";
+import trashIconSrc from "assets/icons/trash.svg";
+import penIconSrc from "assets/icons/pen.svg";
 import { ENTIRE_LINK_FOLDER_NAME } from "utils/constants.js";
 
 const BUTTON_LIST = [
   {
     id: "1",
     title: "공유",
-    imageSource: shareIcon,
+    imageSource: shareIconSrc,
     imageAlt: "공유 버튼 아이콘",
   },
   {
     id: "2",
     title: "이름 변경",
-    imageSource: trashIcon,
+    imageSource: trashIconSrc,
     imageAlt: "이름 변경 버튼 아이콘",
   },
   {
     id: "3",
     title: "삭제",
-    imageSource: penIcon,
+    imageSource: penIconSrc,
     imageAlt: "삭제 버튼 아이콘",
   },
 ];

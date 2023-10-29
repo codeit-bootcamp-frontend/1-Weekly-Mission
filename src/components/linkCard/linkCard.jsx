@@ -1,5 +1,5 @@
 import * as S from "./linkCard.style.js";
-import noImageSource from "assets/images/noLinkCardImg.png";
+import noImageSrc from "assets/images/noLinkCardImage.png";
 import { NO_SPECIAL_CHA_PATTERN } from "utils/constants.js";
 import getTimeAgo from "utils/getTimeAgo.js";
 import { parseISO, format } from "date-fns";
@@ -9,7 +9,7 @@ const LINK_ITEM_KEY = {
     linkShare: "createdAt",
     folder: "created_at",
   },
-  imageSource: {
+  imageSrc: {
     linkShare: "imageSource",
     folder: "image_source",
   },
@@ -18,9 +18,9 @@ const LINK_ITEM_KEY = {
 export default function LinkCard({ cardData, page }) {
   const { url, description, title } = cardData;
   const createAtKey = LINK_ITEM_KEY.createdAt[page];
-  const imageSourceKey = LINK_ITEM_KEY.imageSource[page];
+  const imageSrcKey = LINK_ITEM_KEY.imageSrc[page];
   const createdAt = cardData[createAtKey];
-  const imageSource = cardData[imageSourceKey];
+  const imageSrc = cardData[imageSrcKey];
 
   const imageAlt =
     title?.split(" ")[0].replace(NO_SPECIAL_CHA_PATTERN, "") + " 대표 이미지";
@@ -36,7 +36,7 @@ export default function LinkCard({ cardData, page }) {
         rel="noopener noreferrer"
       >
         <S.CardImageContainer>
-          <S.CardImage src={imageSource ?? noImageSource} alt={imageAlt} />
+          <S.CardImage src={imageSrc ?? noImageSrc} alt={imageAlt} />
         </S.CardImageContainer>
         <S.CardInfo>
           <S.TimeAgo>{getTimeAgo(createdAt)}</S.TimeAgo>

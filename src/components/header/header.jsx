@@ -1,6 +1,6 @@
 import * as S from "./header.style.js";
-import logoImgSource from "assets/icons/logo.svg";
-import profileImgSource from "assets/icons/profile.svg";
+import logoIconSrc from "assets/icons/logo.svg";
+import profileIconSrc from "assets/icons/profile.svg";
 import { useUserProfileContext } from "contexts/UserProfileContext.js";
 
 export default function Header({ email }) {
@@ -10,7 +10,7 @@ export default function Header({ email }) {
       <S.HeaderNav role="navigation">
         <S.HeaderHomeButton>
           <img
-            src={logoImgSource}
+            src={logoIconSrc}
             alt="링크브러리 로고 이미지"
             aria-label="링크브러리 로고"
             width="133"
@@ -20,7 +20,7 @@ export default function Header({ email }) {
         {userProfile.email ? (
           <S.HeaderProfileButton>
             <S.ProfileIcon
-              src={profileImgSource}
+              src={profileIconSrc}
               alt="프로필 아이콘"
               width="28"
               height="28"

@@ -1,5 +1,5 @@
 import * as S from "./linkAddBar.style.js";
-import linkIcon from "assets/icons/link.svg";
+import linkIconSrc from "assets/icons/link.svg";
 
 export default function linkAddBar() {
   return (
@@ -9,7 +9,7 @@ export default function linkAddBar() {
       }}
     >
       <S.LinkAddFieldset>
-        <img src={linkIcon} alt="링크 아이콘" />
+        <img src={linkIconSrc} alt="링크 아이콘" />
         <label className="a11y" htmlFor="addInput"></label>
         <S.LinkAddInput
           id="addInput"

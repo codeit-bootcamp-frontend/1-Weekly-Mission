@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 import * as S from "./footer.style.js";
-import facebookIcon from "assets/icons/facebook.svg";
-import twitterIcon from "assets/icons/twitter.svg";
-import youtubeIcon from "assets/icons/youtube.svg";
-import instagramIcon from "assets/icons/instagram.svg";
+import facebookIconSrc from "assets/icons/facebook.svg";
+import twitterIconSrc from "assets/icons/twitter.svg";
+import youtubeIconSrc from "assets/icons/youtube.svg";
+import instagramIconSrc from "assets/icons/instagram.svg";
 
 export default function Footer() {
   return (
@@ -22,7 +22,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <img
-              src={facebookIcon}
+              src={facebookIconSrc}
               alt="페이스북 아이콘"
               width="20"
               height="20"
@@ -33,14 +33,24 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={twitterIcon} alt="트위터 아이콘" width="20" height="20" />
+            <img
+              src={twitterIconSrc}
+              alt="트위터 아이콘"
+              width="20"
+              height="20"
+            />
           </a>
           <a
             href="https://www.youtube.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={youtubeIcon} alt="유튜브 아이콘" width="20" height="20" />
+            <img
+              src={youtubeIconSrc}
+              alt="유튜브 아이콘"
+              width="20"
+              height="20"
+            />
           </a>
           <a
             href="https://www.instagram.com/"
@@ -48,7 +58,7 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <img
-              src={instagramIcon}
+              src={instagramIconSrc}
               alt="인스타그램 아이콘"
               width="20"
               height="20"
