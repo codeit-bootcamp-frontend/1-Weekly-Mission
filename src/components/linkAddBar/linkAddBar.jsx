@@ -1,7 +1,7 @@
 import * as S from "./linkAddBar.style.js";
 import linkIconSrc from "assets/icons/link.svg";
 
-export default function linkAddBar() {
+export default function LinkAddBar() {
   return (
     <S.LinkAddForm
       onSubmit={(e) => {

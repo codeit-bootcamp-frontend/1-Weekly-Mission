@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 
 import * as S from "./folderPage.style.js";
-import LinkAddBar from "components/linkAddBar/linkAddBar.jsx";
+import LinkAddBar from "components/linkAddBar/LinkAddBar.jsx";
 import FolderTabList from "components/folderTabList/FolderTabList.jsx";
 import { getUserFolderList } from "pages/folder/folderPage.js";
 import LinkSearchBar from "components/linkSearchBar/LinkSearchBar.jsx";
