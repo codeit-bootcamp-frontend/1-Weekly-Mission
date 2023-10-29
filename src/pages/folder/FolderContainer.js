@@ -21,8 +21,7 @@ export default function Folder() {
   const [currentFolderId, setCurrentFolderId] = useState("");
 
   const { isLoading, error, wrappedFunction: getLinksAsyncFunc } = useFetch(getAllLinks);
-  // prettier-ignore
-  const { isLoading: isLoadingFolder, error: errorFolder, wrappedFunction: getFoldersAsyncFunc} = useFetch(getAllFolders);
+  const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
 
   const handleSelectedFolder = (category) => {
     setSelected(category);
@@ -48,6 +47,8 @@ export default function Folder() {
   useEffect(() => {
     handleLoadedData();
   }, [currentFolderId]);
+
+  if (error || errorFolder) console.log(error || errorFolder);
 
   return (
     <main>
