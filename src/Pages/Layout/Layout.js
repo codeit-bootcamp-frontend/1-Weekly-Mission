@@ -6,7 +6,6 @@ function Layout({ children }) {
     <>
       <Nav />
       {children}
-
       <Footer />
     </>
   );
