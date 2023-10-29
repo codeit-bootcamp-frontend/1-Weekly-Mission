@@ -1,6 +1,6 @@
 const breakpoints = {
-  tablet: "1123px", // 1199px
-  mobile: "767px", // 767px
+  tablet: "1123px",
+  mobile: "767px",
 };
 
 const DeviceSizes = {
