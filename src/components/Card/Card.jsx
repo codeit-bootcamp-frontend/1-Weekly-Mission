@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import LogoImg from "../../assets/card-logo.png";
-import * as S from "./CardStyle"; // 스타일 컴포넌트 가져오기
+import * as S from "./CardStyle"; 
 
 function calculateTimeAgo(createdAt) {
   const createdDate = moment(createdAt, "YYYY-MM-DDTHH:mm:ss[Z]");

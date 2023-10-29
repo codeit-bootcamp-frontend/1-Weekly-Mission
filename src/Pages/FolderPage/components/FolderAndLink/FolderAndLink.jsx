@@ -1,39 +1,42 @@
 import { useState } from "react";
 import useAsync from "../../../../Hooks/useAsync";
-import { getFolders, getLinksByFolderID } from "../../../../api";
+import { getAllLinks, getFolders, getLinksByFolderID } from "../../../../api";
 import FolderList from "../FolderList/FolderList";
+import LinkList from "../LinkList/LinkList";
 
 function FolderAndLink() {
-  const [data, isLoading, LoadingError, getFolderAsync] = useAsync(() =>
-    getFolders(1)
+  const [folderId, setFolderId] = useState(undefined);
+
+  // 폴더
+  const [folderData, isLoadingFolder, folderLoadingError, getFolderAsync] =
+    useAsync(() => getFolders());
+
+  const [linkData, isLoadinglink, linkLoadingError, getLinkAsync] = useAsync(
+    () => getLinksByFolderID(1, folderId),
+    [folderId]
   );
 
-  if (!data) return;
+  if (!folderData) return;
 
-  const { data: folders } = data;
+  const { data: folders } = folderData;
+  const { data: links } = linkData;
+  // 링크
+  console.log(links);
 
-  const handleClick = (folder_id) => (e) => {
-    console.log(e.target, folder_id);
+  const setFolderLink = (folder_id) => {
+    console.log(folder_id);
+    setFolderId(folder_id);
+    getLinkAsync(1, folderId);
   };
-  // const handleClick = (e) => {
-  //   console.log(e.target);
-  // }
-  // const [] = useState();
-  // const [data, isLoading, LoadingError, getLinkAsync] = useAsync(() =>
-  //   getLinksByFolderID(16)
-  // );
+
   return (
-    <FolderList folders={folders} onClick={handleClick} />
-    // <LinkList></LinkList>)
+    <>
+      {folders.length !== 0 && (
+        <FolderList folders={folders} setFolderLink={setFolderLink} />
+      )}
+      {links.length !== 0 && <LinkList links={links} />}
+    </>
   );
 }
-
-// {
-//   folder id = usestate current folder
-// --
-// 폴더 리스트 ()
-// --
-// 폴더 내용물 (folder id)
-// }
 
 export default FolderAndLink;

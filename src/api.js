@@ -17,10 +17,15 @@ export async function getFolders(user_id = DEFAULT_USER_ID) {
   const response = await fetch(`${API_URL}/api/users/${user_id}/folders`);
   return getData(response);
 }
-export async function getLinksByFolderID(folder_id, user_id = DEFAULT_USER_ID) {
+
+
+export async function getLinksByFolderID(user_id = DEFAULT_USER_ID, folder_id = undefined) {
+  const queryParams = folder_id !== undefined ? `?folderId=${folder_id}` : '';
   const response = await fetch(
-    `${API_URL}/api/users/${user_id}/links?folderId=${folder_id}`
+    `${API_URL}/api/users/${user_id}/links?folderId=${queryParams}`
   );
+
+  
   return getData(response);
 }
 

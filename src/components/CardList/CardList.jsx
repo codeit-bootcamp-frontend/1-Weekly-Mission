@@ -3,6 +3,7 @@ import * as S from "./CardListStyle";
 import Card from "../Card/Card";
 
 function CardList({ links }) {
+
   if (!links) {
     return <div>No links available.</div>;
   }
