@@ -52,10 +52,10 @@ function Card({ item }) {
   );
 }
 
-function CardList({ folderLinks }) {
+function CardList({ folderData }) {
   return (
     <ul className="cardList-container">
-      {folderLinks.map((item) => {
+      {folderData.map((item) => {
         return <li key={item.id} className="card-style">
           <Card item={item} />
         </li>

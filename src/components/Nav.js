@@ -37,7 +37,7 @@ function Nav() {
       // console.log(email);
       // console.log(image);
       const nextUserData = { email, image };
-      console.log(nextUserData);
+      // console.log(nextUserData);
       setUserData(nextUserData);
       setIsLoading(true);
     } catch (error) {

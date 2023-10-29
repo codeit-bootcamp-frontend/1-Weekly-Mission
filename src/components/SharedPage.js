@@ -4,36 +4,40 @@ import CardList from './CardList';
 import search from '../assets/search.svg';
 
 
-function Main() {
-  const [folderName, setFolderName] = useState("");
-  const [folderOwner, setFolderOwner] = useState({});
-  const [folderLinks, setFolderLinks] = useState([]);
+function SharedPage() {
+  // const [folderName, setFolderName] = useState("");
+  // const [folderOwner, setFolderOwner] = useState({});
+  // const [folderLinks, setFolderLinks] = useState([]);
+  const [folderData, setFolderData] = useState(null);
 
   const handleLoad = async () => {
     const folderData = await getFolder();
-    const {
-      folder: { name, owner, links },
-    } = folderData;
-    setFolderName(name);
-    setFolderOwner(owner);
-    setFolderLinks(links);
+    // const {
+    //   folder: { name, owner, links },
+    // } = folderData;
+    // setFolderName(name);
+    // setFolderOwner(owner);
+    // setFolderLinks(links);
+    const data = folderData.data;
+    console.log(data);
+    setFolderData(data);
   };
 
   useEffect(() => {
     handleLoad();
   }, []);
 
-  const { name, profileImageSource } = folderOwner;
+  // const { name, profileImageSource } = folderOwner;
 
   return (
     <>
       <div className="folder">
         <div className ="folder-container">
           <div>
-            <img className="profile-img" src={profileImageSource} alt="" />
+            {/* <img className="profile-img" src={profileImageSource} alt="" /> */}
             </div>
-          <div className="folder-user">{name}</div>
-          <div className="folder-name">{folderName}</div>
+          {/* <div className="folder-user">{name}</div> */}
+          {/* <div className="folder-name">{folderName}</div> */}
         </div>
       </div>
       <div className="container">
@@ -42,11 +46,11 @@ function Main() {
             <img className="search-img" src={search} alt="돋보기" />
             <input className="search-input" type="text" placeholder="링크를 검색해 보세요." />
           </div>
-          <CardList folderLinks={folderLinks} />
+          <CardList folderData={folderData} />
         </div>
       </div>
     </>
   );
 }
 
-export default Main;
+export default SharedPage;
