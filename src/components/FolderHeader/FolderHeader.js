@@ -81,9 +81,7 @@ function FolderHeader({ folderList = null, onChange }) {
   return (
     <>
       <FolderNameList folderList={folderList} onChange={getCardList} />
-      <button type="button" className="add-folder-button">
-        폴더 추가+
-      </button>
+
       <div className="section">
         <CardList cardList={cardList} />
       </div>

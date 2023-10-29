@@ -1,6 +1,5 @@
 .add-folder-button {
   position: absolute;
-  top: 1rem;
   right: 10rem;
   background-color: transparent;
   color: var(--color-primary);

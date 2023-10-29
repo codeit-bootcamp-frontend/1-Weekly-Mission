@@ -29,6 +29,9 @@ function FolderPage() {
       <MobileFolderButton />
       <LinkAddInput />
       <SearchBar />
+      <button type="button" className="add-folder-button">
+        폴더 추가+
+      </button>
       <div className="folder-buttons">
         <FolderHeader folderList={folderList} />
       </div>
