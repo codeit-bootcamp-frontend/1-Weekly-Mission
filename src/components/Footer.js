@@ -18,6 +18,7 @@ export const FooterContainer = styled.footer`
   font-family: Arial;
   font-size: 1.6rem;
   font-weight: 400;
+  z-index: 2;
 
   @media (max-width: 767px) {
     margin-top: 8rem;

@@ -6,7 +6,7 @@ export const SectionContainer = styled.section`
   display: grid;
   gap: 2.5rem 2rem;
   grid-template-columns: repeat(3, 34rem);
-  grid-template-rows: repeat(3, 33.4rem);
+  grid-template-rows: repeat(auto, 33.4rem);
 
   @media (max-width: 1124px) {
     grid-template-columns: repeat(2, 34rem);
@@ -22,11 +22,13 @@ export const SectionContainer = styled.section`
 const CardList = ( {folderCards} ) => {
 
   return (
-    <SectionContainer>
+    <>
       {folderCards.length > 0 ? 
-      <Cards folderCards={folderCards}/> :
+      <SectionContainer>
+        <Cards folderCards={folderCards}/>
+      </SectionContainer> :
       <EmptyLinkScreen />}
-    </SectionContainer>
+    </>
   )
 }
 
