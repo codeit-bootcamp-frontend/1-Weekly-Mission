@@ -15,7 +15,6 @@ export default Input;
 export const InputContainer = styled.div`
   width: 100%;
   display: flex;
-  gap: 1rem;
   padding: 1.5rem 1.6rem;
   border-radius: 1rem;
   background: #f5f5f5;
@@ -26,7 +25,7 @@ export const InputContainer = styled.div`
   }
 
   .inputContainer {
-    width: 100%;
+    flex-grow: 1;
     height: 2.3rem;
     padding-top: 0.5rem;
     @media all and ${device.mobile} {
@@ -48,5 +47,6 @@ export const InputContainer = styled.div`
   .inputIcon {
     width: 1.6rem;
     height: 1.6rem;
+    margin-right: 1rem;
   }
 `;

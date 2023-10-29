@@ -63,10 +63,7 @@ export const AddLinkInputContainer = styled.div`
     ${DefaultBtnContainer} {
       padding: 1rem 1.6rem;
       font-size: 1.4rem;
-      box-sizing: content-box;
       width: 8.1rem;
-      height: 1.7rem;
-      max-width: 8.1rem;
     }
   }
 `;
