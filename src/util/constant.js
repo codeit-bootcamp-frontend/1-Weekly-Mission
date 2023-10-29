@@ -11,6 +11,8 @@ const hour = minute * 60;
 const day = hour * 24;
 const month = day * 31;
 const year = month * 12;
+export const DEFAULT_FOLDER_NAME = "전체";
+export const DEFAULT_USER_ID = 1;
 
 export const TIME_IN_MILLISECONDS = {
   second,
