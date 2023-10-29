@@ -10,9 +10,11 @@ function CurrentFolder({ folderId, folders }) {
   console.log(folderName);
   return (
     <div className={style.root}>
-      <div style={{ fontSize: "2.4rem", fontWeight: "600" }}>{folderName}</div>
+      <div className={style.folderName}>{folderName}</div>
       <div
-        className={clsx(style.utils, { [style.hidden]: folderName == "전체" })}
+        className={clsx(style.buttons, {
+          [style.hidden]: folderName == "전체",
+        })}
       >
         <button>
           <img src={shareIcon} alt="공유하기" />

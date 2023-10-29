@@ -8,6 +8,12 @@
   border: 1px solid var(--linkbrary-primary-color, #6d6afe);
   justify-content: space-between;
   background-color: #fff;
+  @media (max-width: 1199px) {
+    width: 100%;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 }
 input {
   border: none;
