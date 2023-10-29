@@ -4,9 +4,9 @@
    SharedPage 에 접속할 때 보여주는 header
    */
 
-import styles from "./FolderTitle.module.css";
+import styles from "./ShareHeader.module.css";
 
-function Header({ folderOwnerProfile, folderName, folderOwnerName }) {
+function ShareHeader({ folderOwnerProfile, folderName, folderOwnerName }) {
   if (!folderOwnerName) {
     return <header>폴더를 만들어주세요.</header>;
   }
@@ -30,4 +30,4 @@ function Header({ folderOwnerProfile, folderName, folderOwnerName }) {
   );
 }
 
-export default Header;
+export default ShareHeader;

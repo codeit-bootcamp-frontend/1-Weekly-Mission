@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import FolderTitle from "../components/FolderTitle/FolderTitle";
+import ShareHeader from "../components/ShareHeader/ShareHeader";
 import SearchBar from "../components/SearchBar/SearchBar";
 import CardList from "../components/CardList/CardList";
 import useAsync from "../hooks/useAsync";
@@ -42,7 +42,7 @@ function SharedPage() {
 
   return (
     <>
-      <FolderTitle
+      <ShareHeader
         folderOwnerProfile={folderValues.folderOwnerProfileImage}
         folderName={folderValues.folderName}
         folderOwnerName={folderValues.folderOwnerName}
