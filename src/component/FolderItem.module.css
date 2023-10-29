@@ -8,3 +8,8 @@
 .button:hover {
   background: var(--linkbrary-gray-10, #e7effb);
 }
+
+.buttonClicked {
+  background: var(--linkbrary-primary-color, #6d6afe);
+  color: white;
+}
