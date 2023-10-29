@@ -4,6 +4,8 @@ import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import SortingFolder from "../components/SortingFolder";
 import Option from "../components/Option";
+import CardList from "../components/CardList";
+
 const Folder = () => {
   return (
     <div>
@@ -12,6 +14,7 @@ const Folder = () => {
       <SearchBar />
       <SortingFolder />
       <Option />
+      {/* <CardList cards={cards} /> */}
       <Footer />
     </div>
   );

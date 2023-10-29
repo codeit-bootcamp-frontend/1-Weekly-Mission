@@ -2,7 +2,7 @@ import "./Nav.css";
 import logo from "../assets/logo.svg";
 import { Button } from "../components/Button";
 import React, { useState, useEffect } from "react";
-import { getUserData } from "../services/api";
+import getData from "../services/api";
 
 export default function Nav({ user }) {
   const [userData, setUserData] = useState([]);
@@ -13,7 +13,7 @@ export default function Nav({ user }) {
   };
 
   const getUserInfo = async () => {
-    const userInfo = await getUserData();
+    const userInfo = await getData("sample/user");
     setUserData(userInfo);
   };
 

@@ -8,6 +8,7 @@ const AddLinkContainer = styled.form`
   width: 100%;
   align-items: center;
   position: relative;
+  justify-content: center;
 
   @media (max-width: 767px) {
     padding: 8px 10px;

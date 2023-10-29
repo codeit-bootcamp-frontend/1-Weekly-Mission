@@ -3,7 +3,7 @@ import Nav from "../components/Nav";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import { getFolderData } from "../services/api";
+import getData from "../services/api";
 import { useEffect, useState } from "react";
 
 const Shared = () => {
@@ -11,8 +11,8 @@ const Shared = () => {
   const [folderInfo, setFolderInfo] = useState({});
   const [owner, setOwner] = useState({});
 
-  const getData = async () => {
-    const { folder } = await getFolderData();
+  const getFolderData = async () => {
+    const { folder } = await getData("sample/folder");
     const ownerInfo = { ...folder.owner };
     setFolderInfo(folder);
     setOwner(ownerInfo);
@@ -20,8 +20,8 @@ const Shared = () => {
   };
 
   useEffect(() => {
-    getData();
-  }, [getData]);
+    getFolderData();
+  }, [getFolderData]);
 
   return (
     <div className="App">
