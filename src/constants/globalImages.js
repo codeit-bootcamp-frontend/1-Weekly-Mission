@@ -9,6 +9,7 @@ import SnsIconK from '../assets/snsIcon_k.svg';
 import SearchIcon from '../assets/icon_search.svg';
 import NoImage from '../assets/no-img.png';
 import SampleProfile from '../assets/cat.png';
+import LinkIcon from '../assets/link.svg';
 
 const logoImg = LogoImg;
 const titleImg = TitleImg;
@@ -21,6 +22,7 @@ const snsIconK = SnsIconK;
 const searchIcon = SearchIcon;
 const noImage = NoImage;
 const sampleProfile = SampleProfile;
+const linkIcon = LinkIcon;
 
 export {
   logoImg,
@@ -34,4 +36,5 @@ export {
   searchIcon,
   noImage,
   sampleProfile,
+  linkIcon,
 };
