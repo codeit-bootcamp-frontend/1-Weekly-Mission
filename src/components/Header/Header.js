@@ -3,7 +3,28 @@ import Login from 'components/Login/Login';
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import headerRequestData, { getUserProfile } from 'services/api';
+import { styled } from 'styled-components';
 import './Header.css';
+
+const Nav = styled.nav`
+  width: 100%;
+  display: flex;
+  position: ${({ pathname }) => (pathname === '/shared' ? 'fixed' : 'static')};
+  padding: 3.3rem 20rem;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+
+  @media (max-width: 1199px) {
+    padding: 2rem 3.2rem;
+    margin: 0 auto;
+  }
+  @media (max-width: 767px) {
+    padding: 2rem 3.2rem;
+    margin: 0 auto;
+  }
+`;
 
 function Header() {
   const [getUser, setGetUser] = useState({});
@@ -29,7 +50,7 @@ function Header() {
 
   return (
     <header>
-      <nav className="nav">
+      <Nav pathname={pathname}>
         <Link to="/">
           <img src={Logo} alt="로고 이미지" />
         </Link>
@@ -41,7 +62,7 @@ function Header() {
         ) : (
           <Login />
         )}
-      </nav>
+      </Nav>
     </header>
   );
 }
