@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import useAsync from "./hooks/useAsync";
-import MobileFolderButton from "./components/MobileFolderButton/MobileFolderButton";
 import { getUser } from "../src/api/api";
 import "./App.style.css";
 
@@ -49,8 +48,6 @@ function App() {
 
   return (
     <>
-      <MobileFolderButton />
-
       <Nav
         userEmail={userValues.userEmail}
         userProfile={userValues.userProfileImage}

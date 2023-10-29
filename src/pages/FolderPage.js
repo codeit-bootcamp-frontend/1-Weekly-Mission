@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import MobileFolderButton from "../components/MobileFolderButton/MobileFolderButton";
 import SearchBar from "../components/SearchBar/SearchBar";
 import LinkAddInput from "../components/LinkAddInput/LinkAddInput";
 import CardList from "../components/CardList/CardList";
@@ -37,6 +38,8 @@ function FolderPage() {
   return (
     <>
       <section className="folder-section">
+        <MobileFolderButton />
+
         <LinkAddInput />
         <SearchBar />
         <div className="folder-buttons">
