@@ -4,25 +4,29 @@ import { useCallback, useEffect, useState } from "react";
 import useAsync from "../../hooks/useAsync";
 import { getFolder, getLinks } from "../../api/api";
 import {
-  AddFloatingBtn,
   AddLinkInputContainer,
-  CardContainer,
-  ContentContainer,
   FolderBtnItemContainer,
   FolderContainer,
   FolderContentContainer,
   LinkHeaderContainer,
   LinkToolContainer,
-  SearchInputContainer,
-  Section,
-  Wrapper,
 } from "./FolderStyledComponents";
 import FolderAddIcon from "../../assets/folder/img_folderAdd.svg";
-import FolderAddWhIcon from "../../assets/folder/img_linkAddWh.svg";
 import LinkAddIcon from "../../assets/shared/img_linkAdd.svg";
 import ShareIcon from "../../assets/shared/img_shareIcon.svg";
 import EditIcon from "../../assets/shared/img_editIcon.svg";
 import DeleteIcon from "../../assets/shared/img_deleteIcon.svg";
+import {
+  Section,
+  Wrapper,
+} from "../../components/common/commonStyledComponents";
+import {
+  ContentContainer,
+  CardContainer,
+} from "../shared/SharedStyledComponents";
+import Input from "../../components/input/Input";
+import AddFloatingBtn from "../../components/btn/AddFloatingBtn";
+import DefaultBtn from "../../components/btn/DefaultBtn";
 
 const LinkToolArr = [
   {
@@ -51,7 +55,7 @@ const Folder = () => {
   const [isLinkLoading, isLinkError, getLinksAsync] = useAsync(getLinks);
 
   const handleFolder = useCallback(async () => {
-    const result = await getFolderAsync();
+    const result = await getFolderAsync(1);
     if (!result) return;
 
     const { data } = result;
@@ -76,45 +80,36 @@ const Folder = () => {
     handleLinks();
   }, [handleLinks]);
 
-  if (isFolderLoading && isLinkLoading) {
+  if (isFolderLoading || isLinkLoading) {
     return <div>화면을 불러오는 중입니다.</div>;
   }
 
-  if (isFolderError && isLinkError) {
+  if (isFolderError || isLinkError) {
     return <div>문제가 발생했습니다.</div>;
   }
 
   return (
     <Wrapper>
       <Section>
-        <ContentContainer>
+        <ContentContainer page={"folder"}>
           <AddLinkInputContainer>
-            <img src={LinkAddIcon} alt="linkImg" id="linkImg" />
-            <input
-              className="inputContainer"
-              placeholder="링크를 추가해 보세요"
-            ></input>
-            <button className="linkAddBtn">추가하기</button>
+            <Input src={LinkAddIcon} placeholder={"링크를 추가해 보세요"}>
+              <DefaultBtn>추가하기</DefaultBtn>
+            </Input>
           </AddLinkInputContainer>
         </ContentContainer>
       </Section>
 
       <Section bg="#fff">
         <FolderContentContainer>
-          <SearchInputContainer>
-            <img src={SearchImg} alt="searchImg" id="searchImg" />
-            <input
-              className="inputContainer"
-              placeholder="링크를 검색해보세요."
-            ></input>
-          </SearchInputContainer>
+          <Input src={SearchImg} placeholder="링크를 검색해보세요" />
 
           {cardData.length > 0 ? (
             <>
               <FolderContainer>
                 <div className="folderBtnContainer">
                   <FolderBtnItemContainer
-                    isSelected={isSelectedFolder.id === 1}
+                    $isSelected={isSelectedFolder.id === 1}
                     onClick={() =>
                       setIsSelectedFolder({
                         id: 1,
@@ -129,7 +124,7 @@ const Folder = () => {
                     return (
                       <FolderBtnItemContainer
                         key={e.id}
-                        isSelected={e.id === isSelectedFolder}
+                        $isSelected={e.id === isSelectedFolder}
                         onClick={() =>
                           setIsSelectedFolder({
                             id: e.id,
@@ -156,7 +151,7 @@ const Folder = () => {
               <LinkHeaderContainer>
                 <div className="linkTitle">{isSelectedFolder.title}</div>
 
-                <LinkToolContainer display={isSelectedFolder.id === 1}>
+                <LinkToolContainer $display={isSelectedFolder.id === 1}>
                   {LinkToolArr.map((e, index) => {
                     return (
                       <div className="linkToolItemContainer" key={index}>
@@ -179,14 +174,7 @@ const Folder = () => {
           )}
         </FolderContentContainer>
 
-        <AddFloatingBtn>
-          <div className="floatingBtnTitle">폴더 추가</div>
-          <img
-            className="floatingBtnIcon"
-            src={FolderAddWhIcon}
-            alt="folderAddIcon"
-          />
-        </AddFloatingBtn>
+        <AddFloatingBtn />
       </Section>
     </Wrapper>
   );

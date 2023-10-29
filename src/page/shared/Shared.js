@@ -7,10 +7,10 @@ import {
   CardContainer,
   ContentContainer,
   FolderContentContainer,
-  SearchInputContainer,
-  Section,
-  Wrapper,
+  SharedWrapper,
 } from "./SharedStyledComponents";
+import { Section } from "../../components/common/commonStyledComponents";
+import Input from "../../components/input/Input";
 
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
@@ -43,7 +43,7 @@ const Folder = () => {
   }
 
   return (
-    <Wrapper>
+    <SharedWrapper>
       <Section>
         <ContentContainer>
           <img
@@ -57,13 +57,8 @@ const Folder = () => {
       </Section>
       <Section bg="#fff">
         <FolderContentContainer>
-          <SearchInputContainer>
-            <img src={SearchImg} alt="searchImg" id="searchImg" />
-            <input
-              id="searchContainer"
-              placeholder="링크를 검색해보세요."
-            ></input>
-          </SearchInputContainer>
+          <Input src={SearchImg} placeholder="링크를 검색해보세요" />
+
           <CardContainer>
             {cardData?.map((e) => {
               return <Card key={e.id} cardData={e} />;
@@ -71,7 +66,7 @@ const Folder = () => {
           </CardContainer>
         </FolderContentContainer>
       </Section>
-    </Wrapper>
+    </SharedWrapper>
   );
 };
 

@@ -12,11 +12,11 @@ export const getSampleFolder = async () => {
   }
 };
 
-export const getFolder = async () => {
+export const getFolder = async (userId) => {
   try {
     const response = await request.get(ApiMapper.folder.get.GET_FOLDER, {
       path: {
-        userId: 1,
+        userId: userId,
       },
     });
     if (response.status === 200) {

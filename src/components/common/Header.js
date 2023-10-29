@@ -5,6 +5,7 @@ import { getUser } from "../../api/api";
 import styled from "styled-components";
 import { device } from "../styles";
 import { useLocation } from "react-router-dom";
+import DefaultBtn, { DefaultBtnContainer } from "../btn/DefaultBtn";
 
 const Header = () => {
   const [userData, setUserData] = useState({
@@ -56,7 +57,7 @@ const Header = () => {
           </ProfileContainer>
         ) : (
           <a href="./html/login.html">
-            <DefaultBtn state="login">로그인</DefaultBtn>
+            <DefaultBtn>로그인</DefaultBtn>
           </a>
         )}
       </nav>
@@ -100,6 +101,10 @@ const HeaderContainer = styled.header`
       }
     }
   }
+
+  ${DefaultBtnContainer} {
+    width: 12.8rem;
+  }
 `;
 
 const ProfileContainer = styled.div`
@@ -121,20 +126,4 @@ const ProfileContainer = styled.div`
       display: none;
     }
   }
-`;
-
-const DefaultBtn = styled.button`
-  border-radius: 0.8rem;
-  background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
-  color: #f5f5f5;
-  padding: 1.6rem 2rem;
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 2.2rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: ${(props) => (props.state === "login" ? "12.8rem" : "")};
 `;

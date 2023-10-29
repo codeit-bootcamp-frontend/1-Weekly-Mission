@@ -28,7 +28,7 @@ request.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.log("ApiConfig Error : ", error.message);
+    console.error("ApiConfig Error : ", error.message);
     return;
   }
 );
