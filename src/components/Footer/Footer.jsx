@@ -1,34 +1,45 @@
-import "../pages/SharedPage/sharedPage.css";
+import "./Footer.css";
+import youtubeIcon from "../../assets/image/icon-youtube.svg";
+import twitterIcon from "../../assets/image/icon-twitter.svg";
+import facebookIcon from "../../assets/image/icon-facebook.svg";
+import instagramIcon from "../../assets/image/icon-instagram.svg";
 
 const COPYRIGHT_TEXT = "©codeit - 2023";
 const PRIVACY_POLICY_TEXT = "Privacy Policy";
 const FAQ_TEXT = "FAQ";
 
 function Footer() {
+  const SnsImgUrl = {
+    youtube: youtubeIcon,
+    twitter: twitterIcon,
+    facebook: facebookIcon,
+    instagram: instagramIcon,
+  };
+
   class Sns {
     constructor(snsType) {
       this.snsType = snsType;
       this.snsUrl = `https://www.${snsType}.com`;
       this.className = "sns-icons";
-      this.snsIconUrl = `/src/assets/image/icon-${snsType}.svg`;
+      this.snsIconUrl = `../../assets/image/icon-${snsType}.svg`;
     }
     getSnsHtmlEl() {
       return (
-        <a href={JSON.stringify(this.snsUrl)} target="_blank">
+        <a href={this.snsUrl} target="_blank">
           <img
-            class={JSON.stringify(this.className)}
-            src={JSON.stringify(this.snsIconUrl)}
+            className={this.className}
+            src={SnsImgUrl[this.snsType]}
             alt="sns icon"
           />
         </a>
       );
     }
   }
-
   let facebookIconEl = new Sns("facebook");
   let twitterIconEl = new Sns("twitter");
   let youtubeIconEl = new Sns("youtube");
   let instagramIconEl = new Sns("instagram");
+  console.log(facebookIconEl.snsIconUrl);
 
   return (
     <footer>
@@ -43,10 +54,10 @@ function Footer() {
           </a>
         </div>
         <div id="sns-container">
-          {JSON.stringify(facebookIconEl)}
-          {JSON.stringify(twitterIconEl)}
-          {JSON.stringify(youtubeIconEl)}
-          {JSON.stringify(instagramIconEl)}
+          {facebookIconEl.getSnsHtmlEl()}
+          {twitterIconEl.getSnsHtmlEl()}
+          {youtubeIconEl.getSnsHtmlEl()}
+          {instagramIconEl.getSnsHtmlEl()}
         </div>
       </div>
     </footer>

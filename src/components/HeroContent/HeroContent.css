@@ -1,0 +1,12 @@
+.main-header {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 0 90px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  background: #f0f6ff;
+  position: relative;
+}

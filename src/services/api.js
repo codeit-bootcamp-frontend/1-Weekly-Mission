@@ -5,11 +5,6 @@
  * @returns {Boolean} whether request result is Ok (status:200)
  */
 
-// const data = {
-//   email: "test@codeit.com",
-//   password: "sprint101",
-// };
-
 async function requestData(requestBodyData, requestUrlType, requestMethod) {
   try {
     const response = await fetch(
@@ -27,7 +22,6 @@ async function requestData(requestBodyData, requestUrlType, requestMethod) {
     throw error;
   }
 }
-//requestData(data, "somethingToAddAtExistingURL(ex : "sign-in", "sign-up")", "POST"); 로 이용
 
 function createConfig(requestBodyData, requestMethod) {
   let config = {};

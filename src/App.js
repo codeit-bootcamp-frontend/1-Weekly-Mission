@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+import FolderPage from "./pages/FolderPage/FolderPage";
+import SharedPage from "./pages/SharedPage/SharedPage";
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Pretendard;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <GlobalStyle />
+      <div className="App">
+        <Routes>
+          {/* <Route path="/" element={<MainPage />} /> */}
+          <Route path="/" element={<FolderPage />} />
+          {/* <Route path="/folder" element={<FolderPage />} />*/}
+          <Route path="/shared" element={<SharedPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

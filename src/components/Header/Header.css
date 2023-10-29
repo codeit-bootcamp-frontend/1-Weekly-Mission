@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  width: 100%;
+  padding: 32px 60px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: #f0f6ff;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  white-space: nowrap;
+}
+
+#div-myprofile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#div-myprofile h4 {
+  color: #373740;
+
+  /* Linkbrary/body2-regular */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.userImg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
