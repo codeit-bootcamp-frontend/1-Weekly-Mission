@@ -14,28 +14,6 @@ export const getSampleUserFolder = async () => {
   return await response.json();
 };
 
-export const getUserInfo = async (id) => {
-  const response = await fetch(`${API_URL}/api/users/${id}`);
-  if (!response.ok) throw new Error("폴더 정보를 불러오는데 실패했습니다.");
-
-  return await response.json();
-};
-
-export const getFolderCategory = async () => {
-  const response = await fetch(`${API_URL}/users/1/folders`);
-  if (!response.ok) throw new Error("폴더 정보를 불러오는데 실패했습니다.");
-
-  return await response.json();
-};
-
-export const getFolderLinks = async (id) => {
-  const query = id ? `?folderId=${id}` : "";
-  const response = await fetch(`${API_URL}/users/1/links${query}`);
-  if (!response.ok) throw new Error("폴더 정보를 불러오는데 실패했습니다.");
-
-  return await response.json();
-};
-
 export const getFolderData = async (userId, folderId) => {
   const folderQuery = folderId ? `?folderId=${folderId}` : "";
 
