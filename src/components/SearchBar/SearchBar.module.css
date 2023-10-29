@@ -2,11 +2,10 @@
   width: 100%;
   padding: 6rem 4rem 9rem 4rem;
   background-color: white;
-}
 
-.search-form {
-  /* width: 100%; */
-  position: relative;
+  .search-form {
+    position: relative;
+  }
 }
 
 .search-bar {
@@ -25,7 +24,7 @@ input:focus {
 
 .search-icon {
   position: absolute;
-  top: 0;
+  top: 1rem;
   left: 1rem;
   width: 15px;
   height: 15px;
