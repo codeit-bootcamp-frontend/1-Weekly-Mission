@@ -9,7 +9,9 @@ const CardList = ({ folderData, isLoading }) => {
         {Array(9)
           .fill()
           .map((_, index) => (
-            <CardItemSkeleton key={index} />
+            <li key={index}>
+              <CardItemSkeleton />
+            </li>
           ))}
       </ul>
     );
@@ -20,9 +22,9 @@ const CardList = ({ folderData, isLoading }) => {
 
     return (
       <ul className={styles.CardList}>
-        {links.map((data) => (
-          <li key={data.id}>
-            <CardItem item={data} />
+        {links.map((item) => (
+          <li key={item.id}>
+            <CardItem item={item} />
           </li>
         ))}
       </ul>
