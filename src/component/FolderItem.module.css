@@ -1,10 +1,10 @@
 .button {
-  padding: 8px 12px;
-  border-radius: 5px;
-  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--linkbrary-primary-color, #6d6afe);
   background: #fff;
   height: 3.6rem;
-  @media (max-width767px) {
+  @media (max-width: 767px) {
     padding: 0.6rem, 1rem;
     font-size: 1.4rem;
   }

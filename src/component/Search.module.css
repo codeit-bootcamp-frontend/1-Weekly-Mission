@@ -14,8 +14,3 @@
 .root input:focus {
   outline: none;
 }
-
-@media (max-width: 767px) {
-  .root {
-  }
-}
