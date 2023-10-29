@@ -1,6 +1,7 @@
 import styles from "../styles/CardList.module.css";
 import CardItem from "./CardItem";
 import CardItemSkeleton from "./CardItemSkeleton";
+import NotFoundLink from "./NotFoundLink";
 
 const CardList = ({ folderData, isLoading }) => {
   if (isLoading) {
@@ -16,6 +17,7 @@ const CardList = ({ folderData, isLoading }) => {
       </ul>
     );
   }
+
   if (folderData && folderData.folder) {
     const { folder } = folderData;
     const { links } = folder;
@@ -32,6 +34,7 @@ const CardList = ({ folderData, isLoading }) => {
   }
   if (folderData && folderData.data) {
     const { data } = folderData;
+    if (data.length === 0) return <NotFoundLink />;
 
     return (
       <ul className={styles.CardList}>
