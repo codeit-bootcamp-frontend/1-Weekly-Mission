@@ -21,6 +21,17 @@ a {
   cursor: pointer;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--blue-bg);
+  min-height: 17rem;
+  padding-bottom: 4.5rem;
+}
+
 .notFoundMsg {
   font-size: 3rem;
   font-weight: 700;

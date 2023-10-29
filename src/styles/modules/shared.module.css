@@ -1,14 +1,3 @@
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background-color: var(--blue-bg);
-  min-height: 17rem;
-  padding-bottom: 4.5rem;
-}
-
 .gapWrapper {
   display: flex;
   flex-direction: column;
