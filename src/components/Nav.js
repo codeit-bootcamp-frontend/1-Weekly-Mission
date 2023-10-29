@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../assets/logo.svg";
-import { getUser } from '../api';
 import './Nav.css';
+import Button from "./Button";
 
 
 // function Profile({ userData }) {
@@ -27,22 +27,23 @@ import './Nav.css';
 // }
 
 function Nav() {
-  const [userData, setUserData] = useState({}); 
+  // const [userData, setUserData] = useState({}); 
 
-  const handleLoad = async () => {
-    const nextUserData = await getUser();
-    setUserData(nextUserData);
-    console.log(userData);
-  };
+  // const handleLoad = async () => {
+  //   const nextUserData = await getUser();
+  //   setUserData(nextUserData);
+  //   console.log(userData);
+  // };
 
-  useEffect(() => {
-    handleLoad();
-  }, []);
+  // useEffect(() => {
+  //   handleLoad();
+  // }, []);
 
   return (
     <div className="nav-container">
       <Link to="/"><img className="logo-img" src={logoImg} alt="Linkbrary Logo"/></Link>
-      <Profile userData={userData} />
+      {/* <Profile userData={userData} /> */}
+      <Button>로그인</Button>
     </div>
   );
 }
