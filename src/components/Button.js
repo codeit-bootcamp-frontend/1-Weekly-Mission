@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const ButtonStyle = styled.button`
   width: 128px,
   padding: 16px 20px,
   border-radius: 8px,
@@ -11,10 +11,10 @@ const Button = styled.button`
   line-height: normal
 `;
 
-function LoginButton() {
+function Button({ children }) {
   return (
-    <Button>로그인</Button>
+    <ButtonStyle>{children}</ButtonStyle>
   );
 }
 
-export default LoginButton;
+export default Button;
