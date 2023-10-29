@@ -1,0 +1,21 @@
+.folder-modifier-container {
+  display: flex;
+  gap: 1rem;
+
+  .folder-modifier-button {
+    border: none;
+    background-color: transparent;
+    color: var(--linkbrary-gray-60, #9fa6b2);
+
+    /* Linkbrary/body2-semibold */
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+  }
+  img {
+    width: 15px;
+    height: 15px;
+  }
+}

@@ -3,7 +3,7 @@ import MobileFolderButton from "../components/MobileFolderButton/MobileFolderBut
 import SearchBar from "../components/SearchBar/SearchBar";
 import LinkAddInput from "../components/LinkAddInput/LinkAddInput";
 import CardList from "../components/CardList/CardList";
-import FolderButtons from "../components/FolderButtons/FolderButtons";
+import FolderModifier from "../components/FolderModifier/FolderModifier";
 import FolderButtonList from "../components/FolderButtonList/FolderButtonList";
 
 import { getAllCards, getAllFolders } from "../api/api";
@@ -49,7 +49,7 @@ function FolderPage() {
           </button>
           {folderId && (
             <div className="folder-modifier-buttons">
-              <FolderButtons />
+              <FolderModifier />
             </div>
           )}
         </div>
