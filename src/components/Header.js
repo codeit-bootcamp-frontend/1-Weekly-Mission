@@ -1,15 +1,12 @@
 import React, { useContext, useState } from 'react';
-import './header.css';
-import logoImg from '../img/png/Linkbrary.png'
 import { AccountContext } from '../contexts/AccountContext';
-
-
-
+import logoImg from '../img/png/Linkbrary.png'
+import './header.css';
 
 
 const Header = ({isHeaderStyle}) => {
     const {account, userErrorMessage} = useContext(AccountContext);
-    const {name, email, profileImageSource} = account;
+    const {name, email, image_source: profileImageSource} = account;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     window.addEventListener('resize', () => {

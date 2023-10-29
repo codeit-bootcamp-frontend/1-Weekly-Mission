@@ -1,31 +1,33 @@
-import React, { useContext, useEffect, useState } from 'react';
-import './shared.css';
+import React, { useContext } from 'react';
+import { useFetch, useQueryFetch } from '../../api/useFetch';
+import { AccountContext } from '../../contexts/AccountContext';
 import Search from './Search';
 import Cards from './Cards';
-import { getFolder } from '../../api/apiUrl';
-import { AccountContext } from '../../contexts/AccountContext';
+import './shared.css';
 
 const Shared = () => {
-    const {account, userErrorMessage} = useContext(AccountContext)
-    const {name, profileImageSource} = account;
-    const [personalfolder, setPersonalfolder] = useState({});
-    const [folderErrorMessage, setFolderErrorMessage] = useState("");
-    
-    const handleFolderLoad = async () => {
-        try{
-            const {folder:{links, name:title }} = await getFolder();
-            setPersonalfolder({links,title})
-        }
-        catch(error){
-            setFolderErrorMessage(error);
-        }
+    const {account, errorMessage} = useContext(AccountContext)
+    const {id, name, image_source: profileImageSource} = account;
+    const {data:folderDataObject} = useFetch(`users/${id}/folders`);
+
+    /* 즐겨찾기 데이터번호만 가져오는 함수 */
+    function getBookmarkNumber() {
+        if(!folderDataObject) return;
+        const {data} = folderDataObject;
+        const bookmarkNumber = data.filter(list => {
+            if(list.name.indexOf('즐겨찾기') > -1) {
+                return list.id;
+            }
+        })
+        return bookmarkNumber[0];
     }
 
-    const {title} = personalfolder;
-    
-    useEffect(() => {
-        handleFolderLoad();
-      }, []);
+    const {data: personalfolderData} = useQueryFetch(`users/${id}/links`, getBookmarkNumber()?.id, id);
+    if(!personalfolderData) return;
+    const {data:personalfolder} = personalfolderData;
+    /* 즐겨찾기 폴더 데이터 없음 */
+
+
     return (
         <div className='shared'>
             <div className="section-title section-title-first">
@@ -34,14 +36,14 @@ const Shared = () => {
                         <img src={profileImageSource && profileImageSource} alt='코드잇아이콘'/>
                     </div>
                     <h4>@{name && name}</h4>
-                    {userErrorMessage && <h4>{userErrorMessage.message}</h4>}
-                    <h3>{name && title}</h3>
+                    {errorMessage && <h4>{errorMessage.message}</h4>}
+                    <h3>{getBookmarkNumber() && getBookmarkNumber().name}</h3>
                 </div>
             </div>
             <Search/>
             {personalfolder?.length > 0 ? <Cards personalfolder={personalfolder}/> : 
             <h3 className='noLink'>저장된 링크가 없습니다</h3>}
-            {folderErrorMessage && <h2>{folderErrorMessage.message}</h2>}
+            {errorMessage && <h2>{errorMessage.message}</h2>}
         </div>
     );
 };
