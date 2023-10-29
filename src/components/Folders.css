@@ -31,3 +31,17 @@ button {
   flex-shrink: 0;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .add-folder {
+    position: fixed;
+    bottom: 101px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 9px 24px;
+    background-color: var(--linkbrary-primary-color);
+    border-radius: 20px;
+    color: var(--linkbrary-white);
+    z-index: 3;
+  }
+}
