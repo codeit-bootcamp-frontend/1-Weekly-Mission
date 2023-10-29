@@ -5,12 +5,14 @@ import getUser from "./../api/getUser";
 import classnames from "classnames";
 import useAsync from "../hooks/useAsync";
 
-const LoginButton = () => {
+const LoginButton = ({ userId }) => {
   const [userData, setUserData] = useState(null);
   const [isLoading, getUserAsync] = useAsync(getUser);
 
-  const handleButtonClick = async (e) => {
-    setUserData(await getUserAsync());
+  const handleButtonClick = async () => {
+    const userResponseData = await getUserAsync();
+    setUserData(userResponseData);
+    userId(userResponseData.id);
   };
 
   return (
