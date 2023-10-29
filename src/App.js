@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import HomePage from "./pages/HomePage";
 import NoPage from "./pages/NoPage";
+import FolderPage from "./pages/FolderPage";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="shared" element={<SharedPage />} />
-          {/* <Route path="folder" element ={<FolderPage/>}/> */}
+          <Route path="folder" element={<FolderPage />} />
         </Route>
         <Route path="*" element={<NoPage />} />
       </Routes>

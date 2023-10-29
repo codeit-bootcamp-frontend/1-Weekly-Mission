@@ -4,11 +4,11 @@ function useAsync(asyncFunction) {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const wrappedFunction = async () => {
+  const wrappedFunction = async (param) => {
     setLoading(true);
     setError(null);
     try {
-      const res = await asyncFunction();
+      const res = await asyncFunction(param);
       return res;
     } catch (error) {
       setError(error);
