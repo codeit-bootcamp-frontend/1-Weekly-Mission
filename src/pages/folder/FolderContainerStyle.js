@@ -55,13 +55,35 @@ export const MenuContainer = styled.div`
   max-width: 1060px;
   width: 100%;
   margin: auto;
+
+  @media only screen and (${breakPoints.mobile}) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
 `;
 
 export const AddFolderBtn = styled.div`
   display: flex;
+  white-space: nowrap;
   gap: 4px;
   color: var(--color-primary);
   cursor: pointer;
+  transition: color 500ms ease-out;
+
+  @media only screen and (${breakPoints.mobile}) {
+    padding: 0.5rem 1.5rem;
+    position: absolute;
+    width: 8rem;
+    bottom: 101px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    justify-content: center;
+    background: var(--color-primary);
+    border-radius: 1.25rem;
+    z-index: 1;
+  }
 `;
 
 export const SubTitle = styled.div`

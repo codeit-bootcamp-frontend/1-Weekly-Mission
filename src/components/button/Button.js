@@ -13,7 +13,7 @@ export const MainButton = styled.button`
   cursor: pointer;
 
   @media only screen and (${breakPoints.mobile}) {
-    width: 5rem;
+    width: 5.2rem;
     padding: 0.625rem 1rem;
     font-size: 0.875rem;
   }
