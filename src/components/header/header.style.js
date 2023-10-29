@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   RESPONSIBLE_SIZE_TABLET,
   RESPONSIBLE_SIZE_MOBILE,
@@ -6,10 +6,15 @@ import {
 
 export const HeaderWrapper = styled.header`
   width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 9;
   background-color: var(--linkbrary--color--gray5);
+
+  ${(props) =>
+    props.$isHeaderFixed &&
+    css`
+      position: fixed;
+      top: 0;
+      z-index: 1;
+    `}
 `;
 
 export const HeaderNav = styled.nav`
@@ -46,7 +51,7 @@ export const HeaderProfileButton = styled.button`
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  cursor: default;
+  pointer-events: none;
 `;
 
 export const ProfileIcon = styled.img`
