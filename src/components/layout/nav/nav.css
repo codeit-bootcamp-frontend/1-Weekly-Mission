@@ -12,6 +12,10 @@
   background-color: var(--backgroundcolor-skyblue-10);
 }
 
+.gnb-folder {
+  position: static;
+}
+
 .login-btn {
   display: flex;
   flex-direction: column;
