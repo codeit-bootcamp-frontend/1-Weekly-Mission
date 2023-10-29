@@ -23,35 +23,35 @@ function FolderPage() {
   }, []);
 
   return (
-    <>
-    <div className="addLink">
-      <form className="link-form">
-          <img className="link-img" src={linkImg} alt={linkImg}/>
-          <input className="link-input" placeholder="링크를 추가해 보세요"></input>
-        <button className="link-button">추가하기</button>
-      </form>
-    </div>
-    <div className="container">
-      <div className="container2">
-        <div className="search-container">
-          <img className="search-img" src={search} alt="돋보기" />
-          <input className="search-input" type="text" placeholder="링크를 검색해 보세요." />
+    <div className="folder-container">
+      <div className="add-link">
+        <form className="add-link-form">
+            <img className="add-link-img" src={linkImg} alt={linkImg}/>
+            <input className="add-link-input" placeholder="링크를 추가해 보세요"></input>
+          <button className="add-link-button">추가하기</button>
+        </form>
+      </div>
+      <div className="container">
+        <div className="container2">
+          <div className="search-container">
+            <img className="search-img" src={search} alt="돋보기" />
+            <input className="search-input" type="text" placeholder="링크를 검색해 보세요." />
+          </div>
+          <div className="menuBar">
+            <ul className="toggleMenu">
+              <li className="menuList">전체</li>
+              <li className="menuList">즐겨찾기</li>
+              <li className="menuList">코딩 팁</li>
+              <li className="menuList">채용 사이트</li>
+              <li className="menuList">유용한 글</li>
+              <li className="menuList">나만의 장소</li>
+            </ul>
+            <div className="add-folder">폴더 추가 +</div>
+          </div>
+          <CardList folderLinks={folderLinks} />
         </div>
-        <div className="menuBar">
-          <ul className="toggleMenu">
-            <li className="menuList">전체</li>
-            <li className="menuList">즐겨찾기</li>
-            <li className="menuList">코딩 팁</li>
-            <li className="menuList">채용 사이트</li>
-            <li className="menuList">유용한 글</li>
-            <li className="menuList">나만의 장소</li>
-          </ul>
-          <div>폴더 추가 +</div>
-        </div>
-        <CardList folderLinks={folderLinks} />
       </div>
     </div>
-    </>
   );
 }
 

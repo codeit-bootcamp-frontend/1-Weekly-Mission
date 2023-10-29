@@ -6,15 +6,13 @@ ul {
 .cardList-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
-  max-width: 1060px;
-  gap: 20px 25px;
+  width: 100%;
+  gap: 20px;
 }
 .card-style {
-  width: 100%;
-  height: 100%;
+  width: 340px;
   border-radius:20px;
   overflow: hidden;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
@@ -54,4 +52,22 @@ ul {
 }
 .card-date {
   font-size: 14px;
-}     
+}
+
+@media screen and (max-width: 1124px) {
+  .cardList-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+
+}
+@media screen and (max-width: 480px) {
+  .card-style {
+    width: 325px;
+  }
+  .cardList-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

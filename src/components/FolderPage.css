@@ -27,39 +27,40 @@
   font-weight: 600;
 } */
 
-
-.addLink {
+.folder-container {
+}
+.add-link {
   background-color: #F0F6FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 200px;
+  /* max-width: 800px; */
+  /* padding: 60px 199px 90px; */
+}
+.add-link-form {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.link-form {
-  border: 1px solid var(--color-primary);
-  width: 800px;
+  width: 100%;
   padding: 16px 20px;
-  background-color: var(--color-white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 15px;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-white);
 }
-.link-img {
+.add-link-img {
   width: 20px;
   height: 20px;
   margin-right: 12px;
 }
-.link-input {
+.add-link-input {
   width: calc(100% - 80px);
   outline: none;
   border: none;
   color: var(--color-gray-02);
   font-size: 16px;
 }
-.link-button {
+.add-link-button {
   width: 80px;
   padding: 10px;
   background: var(--color-background);
@@ -74,10 +75,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  margin: 40px 0;
 }
 .container2 {
-  width: 1060px;
+  border: 1px solid #000;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -118,8 +119,48 @@
   gap: 8px;
 }
 .menuList {
-  border: 1px solid #000;
   padding: 8px 12px;
   border-radius: 5px;
   border: 1px solid var(--color-primary);
+}
+.add-folder {
+  color: var(--color-primary);
+  display: block;
+}
+
+@media screen and (max-width: 1124px) {
+  .container2 {
+    margin: min(32px);
+  }
+  .add-link {
+    padding: 60px 32.5px 90px;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  .add-link {
+    padding: 24px 32px 40px;
+  }
+  .container {
+    margin: 20px 0;
+  }
+  .container2 {
+    margin: min(32px);
+  }
+  .menuList {
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-primary);
+  }
+  
+}
+@media screen and (max-width: 480px) {
+  .add-folder {
+    display: none;
+  }
+  .toggleMenu {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 }

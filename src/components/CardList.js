@@ -38,7 +38,7 @@ function getTimeDifference(value) {
 
 function Card({ item }) {
   return (
-    <div className="card">
+    <>
       <div className="card-img-container">
         {(item.imageSource) ? <img className="card-img" src={item.imageSource} alt="카드 이미지" /> 
         : <img className="card-img" src={noImg} alt="이미지 없음 "/>}
@@ -48,7 +48,7 @@ function Card({ item }) {
         <p className="card-description">{item.description}</p>
         <p className="card-date">{formatDate(item.createdAt)}</p>
       </div>
-    </div>
+    </>
   );
 }
 
