@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { getResponse } from "../../api";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
-import addImg from "../../image/add.svg";
+import addPurpleImg from "../../image/add.svg";
+import addWhiteImg from "../../image/addWhite.svg";
 import shareImg from "../../image/share.svg";
 import penImg from "../../image/pen.svg";
 import deleteImg from "../../image/delete.svg";
@@ -10,6 +11,7 @@ import deleteImg from "../../image/delete.svg";
 const FolderList = ({ onFolderSelect }) => {
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState("전체");
+  const [addImg, setAddImg] = useState(addPurpleImg);
 
   const handleLoad = useCallback(async () => {
     const result = await getResponse("folder", "folders");
@@ -22,8 +24,25 @@ const FolderList = ({ onFolderSelect }) => {
     setFolders(data);
   }, []);
 
+  const handleResize = () => {
+    if (window.innerWidth <= 767) {
+      setAddImg(addWhiteImg);
+    } else {
+      setAddImg(addPurpleImg);
+    }
+  };
+
   useEffect(() => {
     handleLoad();
+    handleResize();
+
+    // 윈도우의 resize 이벤트에 handleResize 함수를 추가하여 화면 크기가 변경될 때마다 실행되도록 함
+    window.addEventListener("resize", handleResize);
+
+    // // 컴포넌트가 사라질 때 resize 이벤트 핸들러를 제거하여 메모리 누수를 방지
+    // return () => {
+    //   window.removeEventListener("resize", handleResize);
+    // };
   }, []);
 
   const handleClick = (folderId, folderName) => {

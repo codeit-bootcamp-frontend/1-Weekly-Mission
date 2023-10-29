@@ -97,3 +97,24 @@ header {
   right: 2rem;
   top: 1.6rem;
 }
+
+@media (max-width: 1124px) {
+  .add_link_wrapper {
+    padding-left: 32.5px;
+    padding-right: 32.5px;
+  }
+
+  #url {
+    width: 704px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .add_link_wrapper {
+    padding: 24px 32px 40px 32px;
+  }
+
+  #url {
+    width: 325px;
+  }
+}

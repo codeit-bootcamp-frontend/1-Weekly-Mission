@@ -158,4 +158,25 @@ main {
     margin-right: 3.2rem;
     margin-left: 3.2rem;
   }
+
+  .add_folder {
+    display: flex;
+    padding: 8px 24px;
+    align-items: flex-start;
+    gap: 20px;
+
+    position: fixed;
+    bottom: 100px;
+    left: 39%;
+
+    border-radius: 20px;
+    border: 1px solid var(--linkbrary-white);
+    background: var(--primary-color);
+
+    z-index: 3;
+  }
+
+  .add_folder_msg {
+    color: var(--linkbrary-white);
+  }
 }
