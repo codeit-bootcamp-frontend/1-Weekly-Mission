@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 60px 0 90px 0;
+  padding: 60px 200px 90px 200px;
   gap: 8px;
   background: var(--backgroundcolor-skyblue-10);
   width: 100%;
