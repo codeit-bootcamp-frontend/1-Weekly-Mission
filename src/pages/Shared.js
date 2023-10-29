@@ -35,6 +35,8 @@ function Shared() {
     loadFolderData();
   }, []);
 
+  console.log(cards);
+
   return (
     <>
       <SharedFolderInfo name={name} owner={owner} />

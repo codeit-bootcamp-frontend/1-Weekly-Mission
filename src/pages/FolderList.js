@@ -4,12 +4,18 @@ import AddLinkInput from '../components/AddLinkInput/AddLinkInput';
 import FolderAddMenu from '../components/FolderAddMenu/FolderAddMenu';
 import FolderName from '../components/FolderName/FolderName';
 import styles from './FolderList.module.css';
-import { useEffect, useState } from 'react';
-import { getSampleUsersFolderLists } from '../apis/api';
+import { useCallback, useEffect, useState } from 'react';
+import {
+  getSampleUsersFolderLists,
+  getUsersFolderLinkItems,
+} from '../apis/api';
 import { useParams } from 'react-router';
 import FolderEdit from '../components/FolderEdit/FolderEdit';
+import SharedFolder from '../components/SharedFolder/SharedFolder';
 
 function FolderList() {
+  const { folderID } = useParams();
+
   const [folderLists, setFolderLists] = useState([]);
 
   const loadFolderData = async () => {
@@ -20,7 +26,15 @@ function FolderList() {
     });
   };
 
-  const { folderID } = useParams();
+  const [cards, setCards] = useState([]);
+
+  const loadcardData = useCallback(async () => {
+    const { data } = await getUsersFolderLinkItems(folderID);
+
+    setCards(() => {
+      return [...data];
+    });
+  }, [folderID]);
 
   const getFolderName = (folderID, folderLists) => {
     try {
@@ -43,6 +57,12 @@ function FolderList() {
     loadFolderData();
   }, []);
 
+  useEffect(() => {
+    loadcardData();
+  }, [folderID, loadcardData]);
+
+  console.log(cards);
+
   return (
     <>
       <AddLinkInput />
@@ -56,6 +76,7 @@ function FolderList() {
           <FolderName>{folder}</FolderName>
           {folderID && <FolderEdit />}
         </div>
+        {cards ? <SharedFolder cards={cards} /> : ''}
       </section>
     </>
   );

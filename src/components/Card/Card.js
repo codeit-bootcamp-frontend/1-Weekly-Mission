@@ -22,8 +22,22 @@ function Card({ card }) {
   const bgColorStyle = `${styles.root} ${hoverBg}`;
 
   const bgImg = {
-    backgroundImage: `url(${card.imageSource || noImg})`,
+    backgroundImage: `url(${unifyCardData(card).imageSource || noImg})`,
   };
+
+  function unifyCardData(card) {
+    if (card.createdAt) {
+      return {
+        createdAt: card.createdAt,
+        imageSource: card.imageSource,
+      };
+    } else if (card.created_at) {
+      return {
+        createdAt: card.created_at,
+        imageSource: card.image_source,
+      };
+    }
+  }
 
   return (
     <div
@@ -35,7 +49,7 @@ function Card({ card }) {
         <div className={imageStyle} style={bgImg}></div>
         <div className={styles.explanation}>
           <div className={styles.header}>
-            <div>{formatTimeAgo(card.createdAt)}</div>
+            <div>{formatTimeAgo(unifyCardData(card).createdAt)}</div>
             <img src={kebabImg} alt="쩜쩜쩜" />
           </div>
           <div className={styles.text}>
@@ -43,7 +57,9 @@ function Card({ card }) {
             <div>{card.description}</div>
           </div>
 
-          <div className={styles.footer}>{formatDate(card.createdAt)}</div>
+          <div className={styles.footer}>
+            {formatDate(unifyCardData(card).createdAt)}
+          </div>
         </div>
       </a>
     </div>
