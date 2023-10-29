@@ -14,11 +14,9 @@ function FolderPage() {
   const [cardList, setCardList] = useState([]);
   const [folderList, setFolderList] = useState([]);
 
-  const getFolderTags = async () => {
+  const getFolderTags = async (id = "") => {
     const folderTags = await getAllFolders();
     setFolderList(folderTags?.data);
-  };
-  const loadCards = async (id = "") => {
     setFolderId(id);
     const folderResult = await getAllCards(folderId);
     setCardList((prevItem) => {
@@ -26,12 +24,9 @@ function FolderPage() {
     });
     console.log(folderResult);
   };
-  useEffect(() => {
-    getFolderTags();
-  }, []);
+  const loadCards = async () => {};
 
   useEffect(() => {
-    loadCards();
     getFolderTags();
   }, []);
 
@@ -42,7 +37,7 @@ function FolderPage() {
       <LinkAddInput />
       <SearchBar />
       <div className="folder-buttons">
-        <FolderNameList folderList={folderList} onChange={loadCards} />
+        <FolderNameList folderList={folderList} onChange={getFolderTags} />
         <button type="button" className="add-folder-button">
           폴더 추가+
         </button>
