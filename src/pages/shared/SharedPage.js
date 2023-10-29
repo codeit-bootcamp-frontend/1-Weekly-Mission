@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/global.css';
 import './SharedPage.css';
-import { getFolder, getUser } from '../../api/api';
+import { getFolder } from '../../api/api';
 import CardList from '../../components/card/CardList';
 
 function SharedPage() {
