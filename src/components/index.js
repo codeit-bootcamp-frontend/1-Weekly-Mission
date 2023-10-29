@@ -11,3 +11,5 @@ export { default as Navigator } from "./Navigator/NavigationBar";
 export { default as SearchBar } from "./SearchBar/SearchBar";
 export { default as AddBar } from "./AddBar/AddBar";
 export { default as FolderLists } from "./FolderLists/FolderLists";
+export { default as AddFolderBtn } from "./FolderLists/AddFolderBtn";
+export { default as EditFolderTools } from "./FolderLists/EditFolderTools";

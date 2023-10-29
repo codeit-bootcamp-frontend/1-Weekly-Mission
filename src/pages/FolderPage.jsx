@@ -34,9 +34,30 @@ const FolderPage = () => {
     }
   }, []);
 
+  const handleFolderBtnClick = useCallback(() => {
+    const FOLDER_ARR = document.querySelectorAll("#folder");
+    const TOOLBOX = document.querySelector("#toolbox");
+    for (let btn of FOLDER_ARR) {
+      if (btn.textContent === headContext) {
+        btn.style.color = "white";
+        btn.style.backgroundColor = "#6D6AFE";
+      } else {
+        btn.style.color = "black";
+        btn.style.backgroundColor = "white";
+      }
+    }
+
+    if (headContext === "전체") {
+      TOOLBOX.style.display = "none";
+    } else {
+      TOOLBOX.style.display = "flex";
+    }
+  }, [headContext]);
+
   useEffect(() => {
     handleFolderLists(folderId);
-  }, [folderId, handleFolderLists]);
+    handleFolderBtnClick();
+  }, [folderId, handleFolderLists, handleFolderBtnClick]);
 
   const handleButtonClick = (id, name) => {
     setFolderId(id);

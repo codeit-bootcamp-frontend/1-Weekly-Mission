@@ -18,6 +18,7 @@ export const LoginImgBg = styled.div`
   height: 2.7rem;
   border-radius: 70%;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const LoginImg = styled.img`

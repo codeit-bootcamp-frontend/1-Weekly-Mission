@@ -25,9 +25,6 @@ export const StyledGlobal = createGlobalStyle`
 
   html,
   body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     font-size: 62.5%;
   }
 
