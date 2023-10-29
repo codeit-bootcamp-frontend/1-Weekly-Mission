@@ -9,7 +9,7 @@ export const Navigation = styled.nav`
   align-items: center;
   padding: 3.3rem 20rem;
   background: var(--gray0);
-  position: sticky;
+  position: ${({ isSticky }) => isSticky ? 'sticky' : 'relative'};
   top: 0;
 
   @media (max-width: 1199px) {
@@ -91,13 +91,13 @@ export const LoginButton = styled.button`
   }
 `;
 
-const Nav = ( {account} ) => {
+const Nav = ( {account, isSticky = false} ) => {
 
   const {email, image_source} = (account.email ===  'stranger') ? {} : account;
   // 로그인 전 후 비교하려고 useState email 초기값 stranger로 지정해서 조건 연산자 썼는데 괜찮은 코드일까요..?
 
   return (
-    <Navigation> 
+    <Navigation isSticky={isSticky}> 
       <NavContents>
         <Link to="/">
           <Logo src={NavLogo} alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />

@@ -44,7 +44,7 @@ const Folder = () => {
   return (
     <>
     <GlobalStyle />
-    <Nav account={account}/>
+    <Nav account={account} />
     <TopArea>
       <LinkAddInput />
     </TopArea>

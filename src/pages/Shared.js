@@ -12,7 +12,7 @@ const Shared = () => {
   return (
     <>
     <GlobalStyle />
-    <Nav account={account}/>
+    <Nav account={account} isSticky/>
     {folderInfo && <Header folderInfo={folderInfo}/>}  
     {folderInfo && <SharedMain folderInfo={folderInfo.links}/>}
     <Footer />
