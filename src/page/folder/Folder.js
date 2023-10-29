@@ -124,7 +124,7 @@ const Folder = () => {
                     return (
                       <FolderBtnItemContainer
                         key={e.id}
-                        $isSelected={e.id === isSelectedFolder}
+                        $isSelected={e.id === isSelectedFolder.id}
                         onClick={() =>
                           setIsSelectedFolder({
                             id: e.id,
