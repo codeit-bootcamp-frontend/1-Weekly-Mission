@@ -45,21 +45,19 @@ function FolderNameList({ folderList = null, onChange }) {
         <div className={styles["folder-title"]}>{folderTitle}</div>
 
         {folderId && (
-          <div className="folder-modifier-buttons">
-            <div className={styles["folder-modifier-container"]}>
-              <button className={styles["folder-modifier-button"]}>
-                <img src={shareIcon} alt="share button" />
-                공유
-              </button>
-              <button className={styles["folder-modifier-button"]}>
-                <img src={renameIcon} alt="share button" />
-                이름 변경
-              </button>
-              <button className={styles["folder-modifier-button"]}>
-                <img src={deleteIcon} alt="share button" />
-                삭제
-              </button>
-            </div>{" "}
+          <div className={styles["folder-modifier-container"]}>
+            <button className={styles["folder-modifier-button"]}>
+              <img src={shareIcon} alt="share button" />
+              공유
+            </button>
+            <button className={styles["folder-modifier-button"]}>
+              <img src={renameIcon} alt="share button" />
+              이름 변경
+            </button>
+            <button className={styles["folder-modifier-button"]}>
+              <img src={deleteIcon} alt="share button" />
+              삭제
+            </button>
           </div>
         )}
       </div>

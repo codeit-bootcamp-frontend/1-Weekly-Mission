@@ -1,10 +1,17 @@
 .folder-header {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  gap: 3rem;
+}
+@media (min-width: 768px) {
+  .folder-header {
+    flex-direction: row;
+  }
 }
 
 .folder-buttons-section {
-  padding: 2rem 15rem 2rem 4rem;
+  padding: 2rem 5rem 2rem 4rem;
 }
 
 .folder-buttons-list {
@@ -14,9 +21,7 @@
 }
 
 .folder-title {
-  color: #000;
   margin-top: 5rem;
-  font-family: Pretendard;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -26,6 +31,7 @@
 
 /* 여기서부터는 foldermodifier
  */
+
 .folder-modifier-container {
   display: flex;
   gap: 1rem;
@@ -35,10 +41,10 @@
     background-color: transparent;
     color: var(--linkbrary-gray-60, #9fa6b2);
 
-    /* Linkbrary/body2-semibold */
     font-size: 14px;
     font-weight: 600;
     display: flex;
+    flex-shrink: 0;
     align-items: end;
     justify-content: end;
   }
