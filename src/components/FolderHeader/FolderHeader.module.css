@@ -1,0 +1,49 @@
+.folder-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.folder-buttons-section {
+  padding: 2rem 15rem 2rem 4rem;
+}
+
+.folder-buttons-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.folder-title {
+  color: #000;
+  margin-top: 5rem;
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+/* 여기서부터는 foldermodifier
+ */
+.folder-modifier-container {
+  display: flex;
+  gap: 1rem;
+
+  .folder-modifier-button {
+    border: none;
+    background-color: transparent;
+    color: var(--linkbrary-gray-60, #9fa6b2);
+
+    /* Linkbrary/body2-semibold */
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+  }
+  img {
+    width: 15px;
+    height: 15px;
+  }
+}
