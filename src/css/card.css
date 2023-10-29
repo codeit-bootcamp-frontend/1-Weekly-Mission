@@ -10,46 +10,6 @@
   margin: 40px;
 }
 
-.searchContainer {
-  position: relative;
-  width: 1060px;
-  margin: auto;
-}
-
-.searchImg {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  top: 13px;
-  left: 15px;
-}
-
-.searchInput {
-  display: flex;
-  width: 100%;
-  padding: 15px 16px;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: auto;
-  border-radius: 10px;
-  border: 0;
-  background: #f5f5f5;
-  color: #666666;
-}
-
-.searchInput::placeholder {
-  position: relative;
-  left: 20px;
-}
-
-.searchInput:focus::placeholder {
-  opacity: 0;
-}
-
-.searchInput:focus + .searchImg {
-  display: none;
-}
-
 .cardList {
   display: grid;
   place-items: center;

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getSampleData } from "../api.js";
 import Card from "./Card.js";
-import searchImg from "../images/search.svg";
 
 function CardList() {
   const [hasData, setHasData] = useState(false);
@@ -27,10 +26,6 @@ function CardList() {
 
   return (
     <div className="cardListContainer">
-      <div className="searchContainer">
-        <input className="searchInput" placeholder="링크를 검색해 보세요." />
-        <img className="searchImg" src={searchImg} alt="검색 이미지" />
-      </div>
       <ul className="cardList">
         {folderData.map((item) => (
           <li key={item.id}>
