@@ -1,14 +1,23 @@
-// FolderList.js
-
 import React, { useState } from "react";
 import { S } from "./FolderListStyle"; // Import the styles as S
 import SelectedFolder from "../SelectedFolder/SelectedFolder";
 
+const DEFAULT_FOLDER = {
+  id: 0,
+  name: "전체",
+};
+
 function FolderList({ folders, setFolderLink, selectedFolderId }) {
-  const [selectedFolder, setSelectedFolder] = useState(undefined);
+  const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER); // Initialize selectedFolder with the default folder
+
   const onClick = (folder) => (e) => {
-    setFolderLink(folder.id);
-    setSelectedFolder(folder);
+    if (!folder) {
+      setFolderLink(undefined);
+      setSelectedFolder(DEFAULT_FOLDER);
+    } else {
+      setFolderLink(folder.id);
+      setSelectedFolder(folder);
+    }
   };
 
   return (
@@ -19,7 +28,7 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
             onClick={onClick(undefined)}
             data-onselect={selectedFolderId === undefined}
           >
-            전체
+            {DEFAULT_FOLDER.name}
           </S.Button>
           {folders.length !== 0 &&
             folders.map((folder) => (

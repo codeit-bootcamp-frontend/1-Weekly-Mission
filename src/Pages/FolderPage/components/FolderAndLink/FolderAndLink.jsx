@@ -7,13 +7,13 @@ import NoLink from "../NoLink/NoLink";
 
 function FolderAndLink() {
   const [selectedFolderId, setSelectedFolderId] = useState(undefined);
-
+  const DEFAULT_FOLDER = 1;
   // 폴더
   const [folderData, isLoadingFolder, folderLoadingError, getFolderAsync] =
-    useAsync(() => getFolders());
+    useAsync(() => getFolders(DEFAULT_FOLDER));
 
   const [linkData, isLoadinglink, linkLoadingError, getLinkAsync] = useAsync(
-    () => getLinksByFolderID(1, selectedFolderId),
+    () => getLinksByFolderID(DEFAULT_FOLDER, selectedFolderId),
     [selectedFolderId]
   );
 
@@ -26,7 +26,7 @@ function FolderAndLink() {
 
   const setFolderLink = (folder_id) => {
     setSelectedFolderId(folder_id);
-    getLinkAsync(1, selectedFolderId);
+    getLinkAsync(DEFAULT_FOLDER, selectedFolderId);
   };
 
   return (

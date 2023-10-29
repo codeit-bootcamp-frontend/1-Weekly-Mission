@@ -11,6 +11,7 @@ const colors = {
   blueToPink: "linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%)",
   julgeBlack: "#111322",
   red: "#ff5b56",
+  gray60 : "#9FA6B2",
 
   
 };
