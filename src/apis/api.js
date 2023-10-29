@@ -13,6 +13,18 @@ const getSampleUsersFolderLists = async () => {
   return data;
 };
 
+const getUsersFolderLinkItems = async (folderID) => {
+  let response;
+
+  if (!folderID) {
+    response = await fetch(`${url}/users/1/links`);
+  } else {
+    response = await fetch(`${url}/users/1/links?folderId=${folderID}`);
+  }
+  const data = response.json();
+  return data;
+};
+
 // getUser : 진짜 토큰으로 진짜 유저 요청
 const getUser = async () => {
   const response = await fetch(`${url}/users`, {
@@ -47,4 +59,10 @@ const requestSign = async (signType, data) => {
   return responseData;
 };
 
-export { getSample, getSampleUsersFolderLists, getUser, requestSign };
+export {
+  getSample,
+  getSampleUsersFolderLists,
+  getUsersFolderLinkItems,
+  getUser,
+  requestSign,
+};
