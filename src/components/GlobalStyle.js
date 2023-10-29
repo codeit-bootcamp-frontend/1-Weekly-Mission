@@ -45,9 +45,9 @@ input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0 62.5rem var(--linkbrary-white) inset;
 }
 button, input, optgroup, select, textarea {
-    font-family: inherit;
-    line-height: 1.15;
-    margin: 0;
+  font-family: inherit;
+  line-height: 1.15;
+  margin: 0;
 }
 `;
 
