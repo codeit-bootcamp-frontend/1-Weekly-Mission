@@ -5,3 +5,6 @@
   background: #fff;
   height: 3.6rem;
 }
+.button:hover {
+  background: var(--linkbrary-gray-10, #e7effb);
+}
