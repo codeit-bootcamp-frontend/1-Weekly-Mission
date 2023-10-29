@@ -2,25 +2,19 @@ import useAsync from "../hooks/useAsync"
 import { fetchGet } from "./api"
 
 const useFetchSampleFolder = () => {
-  const [state, refetch] = useAsync(() => fetchGet("/api/sample/folder"), [])
-  return state
+  return useAsync(() => fetchGet("/api/sample/folder"), [])
 }
 
 const useFetchUserProfileSample = () => {
-  const [state, refetch] = useAsync(() => fetchGet("/api/sample/user"), [])
-  return state
+  return useAsync(() => fetchGet("/api/sample/user"), [])
 }
 
 const useFetchUserProfile = (userId) => {
-  const [state, refetch] = useAsync(() => fetchGet(`/api/users/${userId}`))
-  return state
+  return useAsync(() => fetchGet(`/api/users/${userId}`))
 }
 
 const useFetchUserFolders = (userId) => {
-  const [state, refetch] = useAsync(() =>
-    fetchGet(`/api/users/${userId}/folders`)
-  )
-  return state
+  return useAsync(() => fetchGet(`/api/users/${userId}/folders`))
 }
 
 const useFetchUserLinks = (userId, folderId = undefined) => {
@@ -30,6 +24,7 @@ const useFetchUserLinks = (userId, folderId = undefined) => {
   } else {
     query = `/api/users/${userId}/links`
   }
+
   return useAsync(() => fetchGet(query))
 }
 

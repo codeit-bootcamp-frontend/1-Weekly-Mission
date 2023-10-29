@@ -12,12 +12,11 @@ const commonFetchFunction = async (url, method, headers, body) => {
 
   const res = await fetch(BASE_URL + url, options)
   const data = await res.json()
-  return data
-  // if (res.ok) {
-  //   return data
-  // } else {
-  //   throw new Error(res.status + data.error.message)
-  // }
+  if (res.ok) {
+    return data
+  } else {
+    throw new Error(res.status + data.error.message)
+  }
 }
 
 // POST

@@ -5,18 +5,13 @@ import Home from "../../containers/Home/Home"
 import * as S from "../styles"
 
 const HomePage = () => {
-  const userProfile = useFetchUserProfileSample()
-  const userLoading = userProfile?.loading
-  let userData
-  if (!userLoading) {
-    userData = userProfile?.data
-  }
+  const [userProfile, loading, error, refetch] = useFetchUserProfileSample()
 
-  if (userData) {
+  if (!loading) {
     return (
       <>
         <S.StyledHeader>
-          <Navbar userData={userData} />
+          <Navbar userData={userProfile} />
         </S.StyledHeader>
         <Home />
         <Footer />

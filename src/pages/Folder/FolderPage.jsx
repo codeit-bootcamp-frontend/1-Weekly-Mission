@@ -1,33 +1,37 @@
-import { useState } from "react"
 import {
   useFetchUserFolders,
   useFetchUserLinks,
   useFetchUserProfile,
 } from "../../apis/fetch"
+import { DEFAULT_USER_ID } from "../../utils/utils"
 import Addlink from "../../components/Addlink/Addlink"
 import Footer from "../../components/Footer/Footer"
 import Navbar from "../../components/Navbar/Navbar"
 import FolderContainer from "../../containers/Folder/FolderContainer"
 import * as S from "../styles.js"
 
-const DEFAULT_USER_ID = 1
-
 const FolderPage = () => {
-  const userProfile = useFetchUserProfile(DEFAULT_USER_ID)
-  const userFolders = useFetchUserFolders(DEFAULT_USER_ID)
+  const [userProfile, profileLoading, profileError, profileRefetch] =
+    useFetchUserProfile(DEFAULT_USER_ID)
+  const [userFolders, folderLoading, folderError, folderRefetch] =
+    useFetchUserFolders(DEFAULT_USER_ID)
+
+  const [userLinks, userLinksLoading, error, refetch] = useFetchUserLinks(
+    DEFAULT_USER_ID,
+    undefined
+  )
 
   return (
     <>
       <S.StyledHeader>
-        {userProfile?.data?.data && (
-          <Navbar userData={userProfile?.data?.data} />
-        )}
+        {!profileLoading && <Navbar userData={userProfile?.data} />}
         <Addlink />
       </S.StyledHeader>
-      {userFolders?.data?.data && (
+      {!folderLoading && !userLinksLoading && (
         <FolderContainer
-          folderData={userFolders?.data?.data}
+          folderData={userFolders?.data}
           userId={DEFAULT_USER_ID}
+          userLinks={userLinks.data}
         />
       )}
       <Footer />

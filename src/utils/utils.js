@@ -31,4 +31,20 @@ const folderOptionNames = [
   },
 ]
 
-export { convertCreatedAt, formatDate, folderOptionNames }
+const DEFAULT_FOLDER = {
+  name: "전체",
+  id: 0,
+}
+
+const DEFAULT_FOLDER_NAME = "전체"
+
+const DEFAULT_USER_ID = 1
+
+export {
+  convertCreatedAt,
+  formatDate,
+  folderOptionNames,
+  DEFAULT_FOLDER,
+  DEFAULT_FOLDER_NAME,
+  DEFAULT_USER_ID,
+}

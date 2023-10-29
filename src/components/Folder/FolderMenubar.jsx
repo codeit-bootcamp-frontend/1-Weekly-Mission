@@ -1,5 +1,5 @@
-import * as S from "./styles.js"
 import { folderOptionNames } from "../../utils/utils.js"
+import * as S from "./styles.js"
 
 const FolderOptionsItem = ({ item }) => {
   const { name, optionImg } = item

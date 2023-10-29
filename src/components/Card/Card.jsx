@@ -6,6 +6,13 @@ import useToggle from "../../hooks/useToggle"
 import * as S from "./styles.js"
 
 const CardInfo = ({ createdAt, description }) => {
+  let text
+  if (description === null || description === undefined || description === "") {
+    text = "내용 없음"
+  } else {
+    text = description
+  }
+
   const handleKebabClick = (e) => {
     e.preventDefault()
   }
@@ -22,7 +29,7 @@ const CardInfo = ({ createdAt, description }) => {
           onClick={handleKebabClick}
         />
       </S.CardInfoInnerBox>
-      <S.CardDescriptionParagraph>{description}</S.CardDescriptionParagraph>
+      <S.CardDescriptionParagraph>{text}</S.CardDescriptionParagraph>
       <S.CardCreatedAtParagraph>
         {formatDate(createdAt)}
       </S.CardCreatedAtParagraph>

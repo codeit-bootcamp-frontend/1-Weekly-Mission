@@ -1,55 +1,59 @@
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
+
 import CardList from "../../components/Card/CardList"
 import FolderNavbar from "../../components/Folder/FolderNavbar"
 import FolderMenubar from "../../components/Folder/FolderMenubar"
 import Searchbar from "../../components/Searchbar/Searchbar"
-import { useFetchUserLinks } from "../../apis/fetch"
-import { fetchGet } from "../../apis/api"
 import NoLink from "./NoLink"
+import { fetchGet } from "../../apis/api"
+import { DEFAULT_FOLDER } from "../../utils/utils"
 import * as S from "./styles.js"
 
-const FolderContainer = ({ folderData, userId }) => {
+const FolderContainer = ({ folderData, userId, userLinks }) => {
   const [isSelectedFolder, setIsSelectedFolder] = useState(undefined)
-  const [selectedFolderName, setSelectedFolderName] = useState("전체")
+  const [selectedFolderName, setSelectedFolderName] = useState(
+    DEFAULT_FOLDER.name
+  )
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const [userLinks, refetchUserLinks] = useFetchUserLinks(
-    userId,
-    isSelectedFolder
-  )
-  const { loading, data } = userLinks
-
-  const [cards, setCards] = useState(data?.data)
+  const [cards, setCards] = useState(userLinks)
   const currentFolderId = searchParams.get("folderId")
-
-  useEffect(() => {
-    setCards(data?.data)
-  }, [loading])
 
   const handleFolderSelect = async (folderId, folderName) => {
     setIsSelectedFolder(folderId)
     setSelectedFolderName(folderName)
     setSearchParams(folderId !== 0 ? { folderId } : {})
-    refetchUserLinks(userId, folderId)
-    if (folderId !== 0) {
-      const a = await fetchGet(
-        `/api/users/${userId}/links?folderId=${folderId}`
-      )
 
-      setCards(a.data)
+    let query
+    if (folderId !== 0) {
+      query = `/api/users/${userId}/links?folderId=${folderId}`
+    } else query = `/api/users/${userId}/links`
+    const fetchedData = await fetchGet(query)
+    setCards((prev) => fetchedData.data)
+  }
+
+  const handleSearchParam = () => {
+    if (currentFolderId === null) {
+      setCards(userLinks)
+      setSelectedFolderName(DEFAULT_FOLDER.name)
     } else {
-      const b = await fetchGet(`/api/users/${userId}/links`)
-      console.log(b)
-      setCards(b.data)
+      const selectedCards = userLinks
+        .filter((card) => String(card.folder_id) === currentFolderId)
+        .map((card) => card)
+      setCards((prev) => selectedCards)
+
+      const selectedFolder = folderData.find(
+        (folder) => String(folder.id) === currentFolderId
+      )
+      setSelectedFolderName(selectedFolder.name)
+      setIsSelectedFolder(currentFolderId)
     }
   }
 
   useEffect(() => {
-    refetchUserLinks(userId, currentFolderId)
+    handleSearchParam()
   }, [currentFolderId])
-
-  console.log(currentFolderId)
 
   return (
     <>
@@ -65,6 +69,7 @@ const FolderContainer = ({ folderData, userId }) => {
                 <FolderNavbar
                   folderData={folderData}
                   handleFolderSelect={handleFolderSelect}
+                  currentFolderId={currentFolderId}
                 />
               </S.FolderContainerBox>
 

@@ -1,51 +1,20 @@
-import { useCallback, useReducer, useEffect } from "react"
-
-const initialState = {
-  loading: true,
-  data: null,
-  error: null,
-}
-
-// Fetch Reducer
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "LOADING":
-      return {
-        loading: true,
-        data: null,
-        error: null,
-      }
-    case "SUCCESS":
-      return {
-        loading: false,
-        data: action.data,
-        error: null,
-      }
-
-    case "ERROR":
-      return {
-        loading: false,
-        data: null,
-        error: action.error,
-      }
-
-    default: {
-      throw new Error(`Unhandled action type: ${action.type}`)
-    }
-  }
-}
+import { useCallback, useEffect, useState } from "react"
 
 // skip = false 일 경우 useEffect 작동
 const useAsync = (callback, deps = [], skip = false) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [data, setData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   const fetchData = useCallback(async () => {
     try {
-      // dispatch({ type: "LOADING" })
+      setIsLoading(true)
       const data = await callback()
-      dispatch({ type: "SUCCESS", data })
+      setData(data)
     } catch (error) {
-      dispatch({ type: "ERROR", error: error })
+      setError(error)
+    } finally {
+      setIsLoading(false)
     }
   }, deps)
 
@@ -56,7 +25,7 @@ const useAsync = (callback, deps = [], skip = false) => {
     // eslint-disable-next-line;
   }, [])
 
-  return [state, fetchData]
+  return [data, isLoading, error, fetchData]
 }
 
 export default useAsync

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 
 import IMAGES from "../../assets/images.js"
-
 import * as S from "./styles.js"
 
 const snsLinks = {

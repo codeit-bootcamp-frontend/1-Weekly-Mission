@@ -1,11 +1,6 @@
-import * as S from "./styles"
 import IMAGES from "../../assets/images"
-import { useState } from "react"
-
-const DEFAULT_FOLDER = {
-  name: "전체",
-  id: 0,
-}
+import { DEFAULT_FOLDER } from "../../utils/utils"
+import * as S from "./styles.js"
 
 const Folder = ({ data, onSelect, selected }) => {
   const { name, id } = data
@@ -17,25 +12,23 @@ const Folder = ({ data, onSelect, selected }) => {
   )
 }
 
-const FolderList = ({ data, handleFolderSelect }) => {
-  const handleFolderClick = (folderId, folderName) => {
-    setSelected(folderId)
-    return handleFolderSelect(folderId, folderName)
-  }
-  const [selected, setSelected] = useState(0)
+const FolderList = ({ data, handleFolderSelect, currentFolderId }) => {
+  const handleFolderClick = (folderId, folderName) =>
+    handleFolderSelect(folderId, folderName)
+
   return (
     <>
       <Folder
         data={DEFAULT_FOLDER}
         onSelect={handleFolderClick}
-        selected={selected === 0}
+        selected={currentFolderId === null}
       />
       {data.map((item) => (
         <Folder
           key={item.id}
           data={item}
           onSelect={handleFolderClick}
-          selected={selected === item.id}
+          selected={currentFolderId === String(item.id)}
         />
       ))}
     </>
@@ -52,7 +45,7 @@ const FolderAddBtn = () => {
   )
 }
 
-const FolderNavbar = ({ folderData, handleFolderSelect }) => {
+const FolderNavbar = ({ folderData, handleFolderSelect, currentFolderId }) => {
   if (folderData) {
     return (
       <>
@@ -61,6 +54,7 @@ const FolderNavbar = ({ folderData, handleFolderSelect }) => {
             <FolderList
               data={folderData}
               handleFolderSelect={handleFolderSelect}
+              currentFolderId={currentFolderId}
             />
           </S.FolderListInnerBox>
         </S.FolderListBox>
