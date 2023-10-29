@@ -2,7 +2,7 @@ import styles from "../styles/NavBar.module.css";
 import logo from "../assets/logo.svg";
 import LoginButton from "./LoginButton";
 
-const NavBar = ({ userId }) => {
+const NavBar = ({ userId = "" }) => {
   return (
     <nav className={styles.NavBar}>
       <div className={styles.container}>

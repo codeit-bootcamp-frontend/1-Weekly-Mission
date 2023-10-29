@@ -12,7 +12,9 @@ const LoginButton = ({ userId }) => {
   const handleButtonClick = async () => {
     const userResponseData = await getUserAsync();
     setUserData(userResponseData);
-    userId(userResponseData.id);
+    if (userId) {
+      userId(userResponseData.id);
+    }
   };
 
   return (
