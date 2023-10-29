@@ -1,8 +1,8 @@
 import { fetchClientJson } from "utils/apiClient.js";
 
-const getUserProfile = async (userID) => {
+const getUserProfile = async (userId) => {
   const profile = await fetchClientJson({
-    url: `users/${userID}`,
+    url: `users/${userId}`,
     method: "GET",
   });
   return profile;

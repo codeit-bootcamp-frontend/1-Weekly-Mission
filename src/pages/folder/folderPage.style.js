@@ -42,6 +42,8 @@ export const FolderAddButton = styled.button`
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  height: 3.9rem;
+  white-space: nowrap;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: normal;

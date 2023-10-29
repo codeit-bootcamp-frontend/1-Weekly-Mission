@@ -2,6 +2,7 @@ import * as S from "./folderHeader.style.js";
 import shareIcon from "assets/icons/share.svg";
 import trashIcon from "assets/icons/trash.svg";
 import penIcon from "assets/icons/pen.svg";
+import { ENTIRE_LINK_FOLDER_NAME } from "utils/constants.js";
 
 const BUTTON_LIST = [
   {
@@ -29,7 +30,7 @@ export default function FolderHeader({ folderTitle }) {
     <S.FolderHeader>
       <S.FolderTitle>{folderTitle}</S.FolderTitle>
 
-      {folderTitle !== "전체" && (
+      {folderTitle !== ENTIRE_LINK_FOLDER_NAME && (
         <S.ButtonList>
           {BUTTON_LIST.map((buttonItem) => {
             return (
