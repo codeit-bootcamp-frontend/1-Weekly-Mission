@@ -1,5 +1,5 @@
 import star from './img/star.svg';
-import { getSampleFolderDatas } from '../api';
+import { getData } from '../api';
 import './css/Nav.css';
 import { useCallback, useState, useEffect } from 'react';
 
@@ -7,7 +7,7 @@ export default function SharedHeader() {
   const [user, setUser] = useState([]);
 
   const handleLoad = useCallback(async () => {
-    const { folder } = await getSampleFolderDatas();
+    const { folder } = await getData('sample/folder');
     setUser(folder.owner);
   });
 

@@ -1,14 +1,27 @@
 export default function Profile(data) {
+  console.log(data.item[0]);
   return (
     <div className="nav1-div">
       <div className="nav1-div-logo">
-        <img
-          className="nav1-humanImg"
-          src={data.item.profileImageSource}
-          alt="profileImg"
-        />
+        {data.item.id ? (
+          <img
+            className="nav1-humanImg"
+            src={data.item.profileImageSource}
+            alt="profileImg"
+          />
+        ) : (
+          <img
+            className="nav1-humanImg"
+            src={data.item[0].image_source}
+            alt="profileImg"
+          />
+        )}
       </div>
-      <div className="nav1-div-mail">{data.item.email}</div>
+      {data.item.id ? (
+        <div className="nav1-div-mail">{data.item.email}</div>
+      ) : (
+        <div className="nav1-div-mail">{data.item[0].email}</div>
+      )}
     </div>
   );
 }

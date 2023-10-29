@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './css/SharedPage.css';
 import search from './img/search.svg';
-import { getSampleFolderDatas } from '../api';
+import { getData } from '../api';
 import SharedHeader from './SharedHeader';
 import Card from './Card';
 
@@ -10,7 +10,7 @@ export default function SharedPage() {
 
   useEffect(() => {
     const handleLoad = async () => {
-      const { folder } = await getSampleFolderDatas();
+      const { folder } = await getData('sample/folder');
       setItems(folder.links);
     };
     handleLoad();

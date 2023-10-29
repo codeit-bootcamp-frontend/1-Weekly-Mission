@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import search from './img/search.svg';
-import { getUserFolder, getUserLinks } from '../api';
+import { getData } from '../api';
 import styled from 'styled-components';
 import './css/FolderMain.css';
 import plusImg from './img/plus.svg';
@@ -24,9 +24,8 @@ export default function FolderMain() {
   const [title, setTitle] = useState('전체');
 
   const handleLoad = async (id = '') => {
-    const { data } = await getUserFolder();
-    const links = await getUserLinks(id);
-    console.log(data);
+    const { data } = await getData('users/1/folders');
+    const links = await getData('users/1/links?folderId=', id);
     setFolders(data);
     setLinks(links.data);
   };
