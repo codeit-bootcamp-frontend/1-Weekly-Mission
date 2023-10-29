@@ -1,9 +1,40 @@
-import IMAGES from "../../assets/images.js"
-
 import { convertCreatedAt, formatDate } from "../../utils/utils"
 import useToggle from "../../hooks/useToggle"
-
+import IMAGES from "../../assets/images.js"
 import * as S from "./styles.js"
+import { useState } from "react"
+
+const SelectMenu = () => {
+  const [isHover, setIsHover] = useState(false)
+  const handleMouseEnter = () => setIsHover(true)
+
+  const handleMouseLeave = () => setIsHover(false)
+
+  let boxStyle = {
+    color: isHover ? "var(--linkbrary-primary-color)" : "#000",
+    background: isHover
+      ? "var(--linkbrary-gray-10)"
+      : "var(--gray-light-gray-00)",
+  }
+  return (
+    <S.SelectMenuBox>
+      <S.SelectMenuInnerBox>
+        <S.SelectMenuButtonBox
+          style={boxStyle}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}>
+          <p>삭제하기</p>
+        </S.SelectMenuButtonBox>
+        <S.SelectMenuButtonBox
+          style={boxStyle}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}>
+          <p>폴더에 추가</p>
+        </S.SelectMenuButtonBox>
+      </S.SelectMenuInnerBox>
+    </S.SelectMenuBox>
+  )
+}
 
 const CardInfo = ({ createdAt, description }) => {
   let text
@@ -28,6 +59,8 @@ const CardInfo = ({ createdAt, description }) => {
           alt="더보기"
           onClick={handleKebabClick}
         />
+        {/* 삭제하기/폴더 추가 Modal 제작 중 */}
+        {/* <SelectMenu /> */}
       </S.CardInfoInnerBox>
       <S.CardDescriptionParagraph>{text}</S.CardDescriptionParagraph>
       <S.CardCreatedAtParagraph>

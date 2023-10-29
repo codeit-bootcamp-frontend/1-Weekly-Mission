@@ -123,6 +123,41 @@ const CardHref = styled.a`
   }
 `
 
+const SelectMenuBox = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  background: var(--gray-light-gray-00);
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+  z-index: 2;
+`
+
+const SelectMenuInnerBox = styled.div`
+  display: flex;
+  width: 10rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+`
+
+const SelectMenuButtonBox = styled.div`
+  display: flex;
+  padding: 0.7rem 1.2rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+
+  p {
+    color: var(--gray-light-gray-100);
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+`
+
 export {
   CardListBox,
   CardHref,
@@ -135,4 +170,7 @@ export {
   CardDescriptionParagraph,
   CardCreatedAtParagraph,
   CardStyledImage,
+  SelectMenuBox,
+  SelectMenuInnerBox,
+  SelectMenuButtonBox,
 }
