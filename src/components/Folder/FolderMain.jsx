@@ -10,9 +10,9 @@ import CardList from '../Card/CardList';
 const INIT_PAGE = { id: 0, name: '전체'};
 
 function FolderMain() {
-  const [name, setName] = useState('');
+  const [name, setName] = useState('전체');
   const [cards, setCards] = useState([]);
-  const [, linksLoadingError, getLinksAsync] = useAsync(getLinks);
+  const [, , getLinksAsync] = useAsync(getLinks);
 
   const handleLoadLinks = useCallback(
     async (category) => {
