@@ -26,7 +26,6 @@ const FolderPage = () => {
 
   const handleFolderLists = useCallback(
     async (id) => {
-      console.log(id);
       try {
         const [folderLists, links] = await Promise.all([
           getFolderLists(),

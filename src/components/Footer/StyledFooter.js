@@ -39,6 +39,7 @@ export const Copyright = styled.span`
 
 export const FooterLinks = styled.div`
   display: flex;
+  align-items: center;
   column-gap: 3rem;
   padding-right: 1.8rem;
 
