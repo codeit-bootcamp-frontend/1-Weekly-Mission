@@ -1,4 +1,3 @@
-/* header */
 header{
     background-color: #F0F6FF;
     display: flex;
@@ -8,7 +7,6 @@ header{
     width:100%;
 }
 
-/* hero-header*/
 .hero-header{
     background-color: #f0f6ff;
     display: flex;
@@ -46,21 +44,6 @@ header{
 
 
 /* 반응형 */
-/* 화면 너비 1200 이하에서는 상단 nav 좌우여백 고정 */
-@media(max-width: 1200px){
-    header nav{
-        min-width: 1200px;
-    }
-    .nav-logo{
-        position:sticky;
-        left: 3.2rem;
-    }
-    .nav-login{
-        position:sticky;
-        right: 3.2rem;
-    }
-}
-
 /* Tablet */
 @media (min-width: 769px) and (max-width: 1199px){
     /* header */

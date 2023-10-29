@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import CardSearchBar from './CardSearchBar';
+import './CardList.css';
 
 function CardList({ links }) {
   return (

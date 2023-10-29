@@ -7,21 +7,15 @@ import CardList from '../../components/card/CardList';
 function SharedPage() {
   const [links, setLinks] = useState([]);
   const [folderInfo, setFolderInfo] = useState({});
-  const [user, setUser] = useState({});
+
   const handleFolderLoad = async () => {
     const { folder } = await getFolder();
     setLinks([...folder.links]);
     setFolderInfo(folder);
   };
 
-  const handleUserLoad = async () => {
-    const userData = await getUser();
-    setUser({ ...userData });
-  };
-
   useEffect(() => {
     handleFolderLoad();
-    handleUserLoad();
   }, []);
 
   return (

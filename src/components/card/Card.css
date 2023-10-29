@@ -5,6 +5,7 @@
     box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
     padding: 0;
 }
+
 .card-img-section {
     width: 340px;
     height: 200px;
@@ -12,13 +13,16 @@
     border-top-right-radius: 15px;
     overflow: hidden;
 }
+
 .sample-img {
     width: 100%;
 }
+
 .sample-img:hover {
     transform: scale(1.5);
     transition: transform 0.3s;
 }
+
 .card-text-section {
     display: flex;
     flex-direction: column;
@@ -27,6 +31,7 @@
     padding: 20px 15px;
     gap: 10px;
 }
+
 .time-stamp {
     color: #666;
     font-family: Pretendard;

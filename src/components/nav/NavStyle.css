@@ -31,6 +31,24 @@ nav{
     font-size: 1.8rem;
 }
 
+/* login User 정보*/
+.user-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+}
+
+.user-profile span{
+    font-size: 1.4rem;
+}
+
+.user-profile img{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 2rem;
+}
+
 /* 반응형 */
 /* Tablet */
 @media(max-width: 1200px){

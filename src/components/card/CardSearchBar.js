@@ -1,5 +1,6 @@
 import React from 'react';
 import { searchIcon } from '../../constants/globalImages';
+import './CardSearchBar.css';
 
 function CardSearchBar() {
   return (
