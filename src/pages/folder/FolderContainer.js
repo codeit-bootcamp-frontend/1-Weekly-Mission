@@ -52,27 +52,27 @@ export default function Folder() {
 
   return (
     <main>
-      {isLoading && <Loading />}
       <style.HeroContainer>
         <FolderHero />
       </style.HeroContainer>
       <style.Contents>
         <Searchbar />
-        {links.length === 0 ? (
+        <style.MenuContainer>
+          <Categories
+            categories={[DEFAULT, ...folderNames]}
+            selected={selected}
+            onClick={handleSelectedFolder}
+          />
+          <style.AddFolderBtn>
+            <span>폴더 추가</span>
+            <style.IconAdd />
+          </style.AddFolderBtn>
+        </style.MenuContainer>
+        {isLoading && <Loading />}
+        {!isLoading && links.length === 0 ? (
           <style.Blank>저장된 링크가 없습니다</style.Blank>
         ) : (
           <>
-            <style.MenuContainer>
-              <Categories
-                categories={[DEFAULT, ...folderNames]}
-                selected={selected}
-                onClick={handleSelectedFolder}
-              />
-              <style.AddFolderBtn>
-                <span>폴더 추가</span>
-                <style.IconAdd />
-              </style.AddFolderBtn>
-            </style.MenuContainer>
             <style.MenuContainer>
               <style.SubTitle>{selected}</style.SubTitle>
               {selected !== DEFAULT && <Options />}

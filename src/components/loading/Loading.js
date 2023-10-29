@@ -1,5 +1,16 @@
-import style from "./Loading.module.css";
+import { GridLoader } from "react-spinners";
+import styled from "styled-components";
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 export default function Loading() {
-  return <div className={style.wrapper}>로딩중........</div>;
+  return (
+    <Container>
+      <GridLoader color="#6d6afe" size={20} speedMultiplier={1} width={0} />
+    </Container>
+  );
 }
