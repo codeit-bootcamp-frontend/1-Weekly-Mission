@@ -1,4 +1,4 @@
-/* 사용자의 folder list를 받아와 버튼으로 보여주는 컴포넌트 */
+/* 사용자의 folder list 각 요소를 버튼으로 보여주는 컴포넌트 */
 
 /* css 모듈 방식 적용
    파라미터로 folder 객체와 FolderButtonList.js의 handleButton 함수를 받는다.

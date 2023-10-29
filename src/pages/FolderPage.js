@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import LinkAddInput from "../components/LinkAddInput/LinkAddInput";
 import CardList from "../components/CardList/CardList";
 import FolderModifier from "../components/FolderModifier/FolderModifier";
-import FolderButtonList from "../components/FolderButtonList/FolderButtonList";
+import FolderNameList from "../components/FolderNameList/FolderNameList";
 
 import { getAllCards, getAllFolders } from "../api/api";
 import "./FolderPage.css";
@@ -42,7 +42,7 @@ function FolderPage() {
       <LinkAddInput />
       <SearchBar />
       <div className="folder-buttons">
-        <FolderButtonList folderList={folderList} onChange={loadCards} />
+        <FolderNameList folderList={folderList} onChange={loadCards} />
         <button type="button" className="add-folder-button">
           폴더 추가+
         </button>
