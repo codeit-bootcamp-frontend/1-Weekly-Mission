@@ -1,33 +1,47 @@
 import styled from "styled-components";
 import kebab from '../assets/kebab.svg';
-import selectMenuButton from "./SelectMenuButton";
+import SelectMenuButton from "./SelectMenuButton";
+import { useState } from "react";
 
+
+const KebabButton = styled.button`
+  position: relative;
+  display: inline-block;
+`
 
 const KebabImg = styled.img`
   width: 2.1rem;
   height: 1.7rem;
 `;
 
-const KebabContainer = styled.div`
-  display: flex;
+const KebabOptionsContainer = styled.div`
+  position: absolute;
+  top: 2rem;
+  right: 0;
   z-index: 1;
+  display: block;
 `
 
 const kebabOptions = ['삭제하기', '폴더에 추가'];
 
-const handleClick = (e) => {
-  {kebabOptions.map((item, index) => {
-    return (
-      <selectMenuButton key={index}>{item}</selectMenuButton>
-    );
-  })}
-}
-
 const Kebab = () => {
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  const handleClick = () => {
+    setIsMenuVisible(!isMenuVisible);
+  };
+
   return (
-    <KebabContainer>
+    <KebabButton>
       <KebabImg src={kebab} alt="더보기 아이콘" onClick={handleClick} />
-    </KebabContainer>
+      {isMenuVisible && (
+        <KebabOptionsContainer>
+          {kebabOptions.map((item, index) => (
+            <SelectMenuButton key={index}>{item}</SelectMenuButton>
+          ))}
+        </KebabOptionsContainer>
+      )}
+    </KebabButton>
   )
 }
 
