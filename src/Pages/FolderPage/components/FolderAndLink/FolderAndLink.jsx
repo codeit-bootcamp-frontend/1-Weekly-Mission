@@ -9,10 +9,11 @@ function FolderAndLink() {
   const [selectedFolderId, setSelectedFolderId] = useState(undefined);
   const DEFAULT_FOLDER = 1;
   // 폴더
-  const [folderData, isLoadingFolder, folderLoadingError, getFolderAsync] =
-    useAsync(() => getFolders(DEFAULT_FOLDER));
+  const [folderData, isLoadingFolder, folderError, getFolderAsync] = useAsync(
+    () => getFolders(DEFAULT_FOLDER)
+  );
 
-  const [linkData, isLoadinglink, linkLoadingError, getLinkAsync] = useAsync(
+  const [linkData, isLoadinglink, linkError, getLinkAsync] = useAsync(
     () => getLinksByFolderID(DEFAULT_FOLDER, selectedFolderId),
     [selectedFolderId]
   );
