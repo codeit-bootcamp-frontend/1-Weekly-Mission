@@ -6,8 +6,8 @@ function Footer() {
     <footer>
       <p className="footerCopyright">©codeit - 2023</p>
       <div className="footerInformation">
-        <p onclick="location.href='privacy.html'">Privacy Policy</p>
-        <p onclick="location.href='faq.html'">FAQ</p>
+        <p onClick="location.href='privacy.html'">Privacy Policy</p>
+        <p onClick="location.href='faq.html'">FAQ</p>
       </div>
       <div className="footerLink">
         {snsData.map((item) => (

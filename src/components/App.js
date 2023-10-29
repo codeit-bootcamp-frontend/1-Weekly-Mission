@@ -1,15 +1,15 @@
 import Header from "./Header.js";
-import Banner from "./Banner.js";
 import Footer from "./Footer.js";
-import CardList from "./CardList.js";
 import "../css/App.css";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Header />
-      <Banner />
-      <CardList />
+      <div>
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

@@ -1,7 +1,8 @@
-import Card from "./Card.js";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getFolderData } from "../api.js";
-import searchImg from "../images/Search.svg";
+import { getSampleData } from "../api.js";
+import Card from "./Card.js";
+import searchImg from "../images/search.svg";
 
 function CardList() {
   const [hasData, setHasData] = useState(false);
@@ -10,7 +11,7 @@ function CardList() {
   const handleLoad = async () => {
     let result;
     try {
-      result = await getFolderData();
+      result = await getSampleData();
       result = result.folder.links;
       setHasData(true);
       setFolderData(result);

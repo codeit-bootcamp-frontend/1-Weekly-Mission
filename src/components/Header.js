@@ -12,7 +12,7 @@ function Header() {
     try {
       result = await getLoginData();
       setHasData(true);
-      setUserData(result);
+      setUserData(result.data[0]);
     } catch (error) {
       setHasData(false);
       return;
@@ -30,7 +30,7 @@ function Header() {
         {hasData && (
           <div className="headerProfile">
             <img
-              src={userData.profileImageSource}
+              src={userData.image_source}
               id="profileImg"
               alt="Profile Img"
             />
