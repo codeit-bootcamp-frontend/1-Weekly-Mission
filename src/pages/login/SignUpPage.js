@@ -1,26 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { logoImg, snsIconG, snsIconK } from '../../constants/globalImages';
+import { snsIconG, snsIconK } from '../../constants/globalImages';
 import { eyeOffImg } from '../../constants/loginImages';
+import FormHeader from '../../components/formHeader/FormHeader';
 
 function SignUpPage() {
   return (
     <>
       <div className="container">
-        <header>
-          <div className="header-logo">
-            <Link to="/">
-              <img src={logoImg} alt="Linkbrary 로고" />
-            </Link>
-          </div>
-          <nav>
-            <span>이미 회원이신가요?</span>
-            <Link className="nav-link" to="/sign-in">
-              로그인 하기
-            </Link>
-          </nav>
-        </header>
-
+        <FormHeader action="goToSignIn" />
         <main>
           <form id="form">
             <div className="form-item">
