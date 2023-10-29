@@ -30,7 +30,7 @@ export default function Header() {
   const hideHeader = location.pathname === "/folder";
 
   return (
-    <style.Wrapper headerstyle={hideHeader}>
+    <style.Wrapper $headerstyle={hideHeader}>
       <style.Container>
         <Link to="/">
           <style.Logo src={logo} alt="logo" />

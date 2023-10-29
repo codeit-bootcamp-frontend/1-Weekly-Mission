@@ -24,7 +24,7 @@ export default function Categories({ categories, selected, onClick }) {
         <CategoryButton
           key={category}
           onClick={() => onClick(category)}
-          isactive={selected === category}
+          $isactive={selected === category}
         >
           {category}
         </CategoryButton>
