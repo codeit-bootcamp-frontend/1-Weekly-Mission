@@ -22,7 +22,7 @@ const AddLinkInput = () => {
       <input
         className={styles.input}
         name="addLink"
-        placeholder="링크를 추가해 보세요."
+        placeholder="링크를 추가해 보세요"
         value={inputValue}
         onChange={handleChange}
       />
