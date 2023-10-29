@@ -1,6 +1,14 @@
 .folder-option {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 24px auto;
+}
+
+.folder-option h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
 }
 
 .folder-option-btns {

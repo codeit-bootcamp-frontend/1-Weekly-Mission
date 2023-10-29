@@ -13,11 +13,6 @@ function FolderPage() {
   const [linkData, setLinkData] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState("전체");
 
-  // const userData = {
-  //   userId: "1",
-  //   userSaveData: "folders",
-  // };
-
   async function getFolderData() {
     const { data: folderData } = await getFolderCategory();
     setFolderData(folderData);
@@ -33,8 +28,6 @@ function FolderPage() {
     handleClick();
     getFolderData();
   }, []);
-
-  // console.log("test : " + selectedFolder);
 
   // TODO : 카테고리 컴포넌트 완성 (카테고리 컴포넌트 내부)
   // TODO : 폴더 아이디 스테이트관리

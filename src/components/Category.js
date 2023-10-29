@@ -1,8 +1,6 @@
 import CategoryItem from "./CategoryItem";
 import FolderAddBtn from "./FolderAddBtn";
 import "./Category.css";
-import ShowFolderName from "./ShowFolderName";
-import { useEffect, useState } from "react";
 
 function Category({ folderData, handleClick }) {
   const MAIN_CATEGORY = { id: "", name: "전체" };

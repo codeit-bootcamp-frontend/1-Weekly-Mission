@@ -42,7 +42,6 @@ async function getUserData() {
 }
 
 async function getFolderCategory() {
-  //trim으로 공백제거 가능
   try {
     const response = await fetch(`${API_URL}/users/1/folders`, {
       method: "GET",
@@ -63,7 +62,6 @@ async function getFolderCategory() {
 }
 
 async function getFolderLinks(folderId) {
-  //trim으로 공백제거 가능
   const query = folderId ? `?folderId=${folderId}` : "";
   try {
     const response = await fetch(`${API_URL}/users/1/links${query}`, {
