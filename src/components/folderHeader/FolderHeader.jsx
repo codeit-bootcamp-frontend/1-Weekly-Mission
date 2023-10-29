@@ -9,19 +9,19 @@ const BUTTON_LIST = [
     id: "1",
     title: "공유",
     imageSource: shareIconSrc,
-    imageAlt: "공유 버튼 아이콘",
+    areaLabel: "공유 버튼",
   },
   {
     id: "2",
     title: "이름 변경",
     imageSource: trashIconSrc,
-    imageAlt: "이름 변경 버튼 아이콘",
+    areaLabel: "이름 변경 버튼",
   },
   {
     id: "3",
     title: "삭제",
     imageSource: penIconSrc,
-    imageAlt: "삭제 버튼 아이콘",
+    areaLabel: "삭제 버튼",
   },
 ];
 
@@ -35,10 +35,10 @@ export default function FolderHeader({ folderTitle }) {
           {BUTTON_LIST.map((buttonItem) => {
             return (
               <li key={buttonItem.id}>
-                <S.ButtonItem>
+                <S.ButtonItem area-label={buttonItem.areaLabel}>
                   <S.ButtonImage
                     src={buttonItem.imageSource}
-                    alt={buttonItem.imageAlt}
+                    alt={`${buttonItem.areaLabel} 아이콘`}
                   />
                   <S.ButtonTitle>{buttonItem.title}</S.ButtonTitle>
                 </S.ButtonItem>

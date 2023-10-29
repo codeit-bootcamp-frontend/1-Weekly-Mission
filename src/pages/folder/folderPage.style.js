@@ -49,6 +49,7 @@ export const FolderAddButton = styled.button`
   line-height: normal;
   letter-spacing: -0.3px;
   color: #6d6afe;
+  cursor: pointer;
 
   @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
     z-index: 1;

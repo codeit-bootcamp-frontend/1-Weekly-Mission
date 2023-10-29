@@ -48,10 +48,10 @@ export const LinkAddButton = styled.button`
   padding: 1rem 1.6rem;
   border-radius: 8px;
   background: var(--linkbrary--gra--purpleblue);
-
   font-size: 1.4rem;
   font-weight: 600;
   line-height: normal;
   color: #f5f5f5;
   word-break: keep-all;
+  cursor: pointer;
 `;

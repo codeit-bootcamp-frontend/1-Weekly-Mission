@@ -41,6 +41,7 @@ export const HeaderNav = styled.nav`
 
 export const HeaderHomeButton = styled.button`
   width: 13.3rem;
+  cursor: pointer;
 
   @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
     width: 8.8rem;
@@ -75,6 +76,7 @@ export const HeaderSignInButton = styled.button`
   background: var(--linkbrary--gra--purpleblue);
   font-size: 1.8rem;
   color: var(--linkbrary--color--white);
+  cursor: pointer;
 
   @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
     padding: 1rem 1.6rem;

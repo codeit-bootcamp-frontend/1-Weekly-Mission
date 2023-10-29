@@ -15,7 +15,7 @@ export default function LinkSearchBar() {
           id="searchInput"
           type="text"
           placeholder="링크를 검색해 보세요."
-          aria-label="링크 검색어를 입력하는 입력 요소입니다."
+          aria-label="링크 검색어를 입력하는 입력 요소"
           onChange={(e) => {}}
         />
       </S.LinkSearchFieldset>

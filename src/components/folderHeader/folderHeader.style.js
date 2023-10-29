@@ -35,6 +35,7 @@ export const ButtonList = styled.ul`
 export const ButtonItem = styled.button`
   display: flex;
   gap: 0.4rem;
+  cursor: pointer;
 `;
 
 export const ButtonImage = styled.img`

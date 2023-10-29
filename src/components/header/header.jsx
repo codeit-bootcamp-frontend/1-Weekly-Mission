@@ -14,13 +14,11 @@ export default function Header({ isHeaderFixed }) {
   return (
     <S.HeaderWrapper $isHeaderFixed={isHeaderFixed}>
       <S.HeaderNav role="navigation">
-        <S.HeaderHomeButton onClick={() => navigate("/")}>
-          <img
-            src={logoIconSrc}
-            alt="링크브러리 로고 이미지"
-            aria-label="링크브러리 로고"
-            width="133"
-          />
+        <S.HeaderHomeButton
+          aria-label="링크브러리 메인 페이지 이동 버튼"
+          onClick={() => navigate("/")}
+        >
+          <img src={logoIconSrc} alt="링크브러리 로고 이미지" width="133" />
         </S.HeaderHomeButton>
 
         {email ? (

@@ -20,6 +20,7 @@ export default function Footer() {
             href="https://www.facebook.com/"
             target="_blank"
             rel="noopener noreferrer"
+            area-label="페이스북 새 창 열기 링크"
           >
             <img
               src={facebookIconSrc}
@@ -32,6 +33,7 @@ export default function Footer() {
             href="https://twitter.com/"
             target="_blank"
             rel="noopener noreferrer"
+            area-label="트위터 페이지 새 창 열기 링크"
           >
             <img
               src={twitterIconSrc}
@@ -44,6 +46,7 @@ export default function Footer() {
             href="https://www.youtube.com/"
             target="_blank"
             rel="noopener noreferrer"
+            area-label="유튜브 페이지 새 창 열기 링크"
           >
             <img
               src={youtubeIconSrc}
@@ -56,6 +59,7 @@ export default function Footer() {
             href="https://www.instagram.com/"
             target="_blank"
             rel="noopener noreferrer"
+            area-label="인스타그램 페이지 새 창 열기 링크"
           >
             <img
               src={instagramIconSrc}

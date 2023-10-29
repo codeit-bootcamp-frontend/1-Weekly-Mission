@@ -15,7 +15,7 @@ export default function linkAddBar() {
           id="addInput"
           type="text"
           placeholder="링크를 추가해 보세요."
-          aria-label="추가할 링크를 입력하는 입력 요소입니다."
+          aria-label="추가할 링크를 입력하는 입력 요소"
           onChange={(e) => {}}
         />
         <S.LinkAddButton>추가하기</S.LinkAddButton>
