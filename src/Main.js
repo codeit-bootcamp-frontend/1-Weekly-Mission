@@ -13,16 +13,16 @@ function Main() {
         <Route path="/" element={<App />}>
           <Route index element={<Index />} />
 
-          <Route path="folder">
+          <Route path="/folder">
             <Route index element={<FolderList />} />
             <Route path=":folderID" element={<FolderList />} />
           </Route>
 
-          <Route path="shared" element={<Shared />} />
+          <Route path="/shared" element={<Shared />} />
         </Route>
 
-        <Route path="signin" element={<Signin />} />
-        <Route path="signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

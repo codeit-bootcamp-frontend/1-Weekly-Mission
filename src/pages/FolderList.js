@@ -15,21 +15,25 @@ function FolderList() {
   const loadFolderData = async () => {
     const { data } = await getSampleUsersFolderLists();
 
-    setFolderLists((prevFolderLists) => {
-      return [...prevFolderLists, ...data];
+    setFolderLists(() => {
+      return [...data];
     });
   };
 
   const { folderID } = useParams();
 
   const getFolderName = (folderID, folderLists) => {
-    if (!folderID) {
-      return '전체';
-    } else {
-      const getFolder = folderLists.find((folderList) => {
-        return folderList.id === Number(folderID);
-      });
-      return getFolder.name;
+    try {
+      if (!folderID) {
+        return '전체';
+      } else {
+        const getFolder = folderLists.find((folderList) => {
+          return folderList.id === Number(folderID);
+        });
+        return getFolder.name;
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
