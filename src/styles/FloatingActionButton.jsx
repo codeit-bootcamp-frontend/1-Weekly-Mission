@@ -16,7 +16,7 @@ const FolderActionButton = styled.button`
   padding: 0.8rem 2.4rem;
   align-items: center;
   gap: 0.4rem;
-  position: absolute;
+  position: sticky;
   z-index: 1;
   bottom: 10.1rem;
   border-radius: 20px;
