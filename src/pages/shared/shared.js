@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/common/header';
 import Footer from '../../components/common/footer';
-import SearchBar from '../../components/common/serchbar';
+import SearchBar from '../../components/common/searchbar';
 
 const StyledProfile = styled.div`
     background-color: #F0F6FF;
@@ -82,7 +82,7 @@ function MainContent() {
     const [items,setItems] = useState([]);
 
     useEffect(() => {
-        const path = '/sample/folder'
+        const path = '/sample/folder';
         const handleFolder = async()=>{
             const{ folder } = await getApi(path);
             setName(folder.name);

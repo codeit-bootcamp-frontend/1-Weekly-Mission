@@ -1,6 +1,6 @@
 import Header from "../../components/common/header";
 import Footer from "../../components/common/footer";
-import SearchBar from "../../components/common/serchbar";
+import SearchBar from "../../components/common/searchbar";
 import styled from "styled-components";
 import linkAddIcon from '../../assets/images/linkAdd.svg'
 import Cards from "../../components/cards/card";
@@ -10,6 +10,7 @@ import add from '../../assets/images/add.svg'
 import share from '../../assets/images/share.svg'
 import pen from '../../assets/images/pen.svg'
 import trash from '../../assets/images/trash.svg'
+import TitleButton from "../../components/button/button";
 
 
 const StyledLinkAdd = styled.div`
@@ -23,7 +24,10 @@ const StyledLinkAdd = styled.div`
     border-radius: 15px;
     border: 1px solid #6D6AFE;
     background: #fff;
-    color: #9fa6b2
+    color: #9fa6b2;
+    @media  (max-width:767px) {
+        width: 390px;
+    }
 `
 
 const StyledLinkAddBox = styled.div`
@@ -35,6 +39,9 @@ const StyledLinkAddBox = styled.div`
     input {
         width: 640px;
         border: none;
+        @media  (max-width:767px) {
+            width: 200px;
+        }
     }
 `
 
@@ -42,7 +49,7 @@ const StyledLinkAddButton = styled.button`
     width: 80px;
     padding: 10px 10px;
     border-radius: 8px;
-    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
     color: var(--grey-light, #F5F5F5);
     font-size: 14px;
     font-weight: 600;
@@ -60,6 +67,12 @@ const StyledMainFlexBox = styled.div`
     gap: 40px;
     margin: 0 auto;
     width: 1060px;
+    @media  (max-width:767px) {
+        width: 390px;
+    }
+    @media (min-width:768px) and (max-width:1124px) {
+        width:760px;
+    }
 `
 
 const StyledFoldersBox = styled.div`
@@ -67,13 +80,14 @@ const StyledFoldersBox = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    position: relative;
 `
 
 const StyledFolderButtonBox = styled.div`
     display: flex;
-    width: 100%;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 `
 
 const IconAndText = styled.div`
@@ -86,6 +100,20 @@ const StyledFolderAdd = styled(IconAndText)`
     color: #6D6AFE;
     font-weight: 500;
     letter-spacing: -0.3px;
+    @media  (max-width:767px) {
+        position: fixed;
+        background: #6D6aFE;
+        bottom: 101px;
+        right: 38%;
+        z-index: 1;
+        padding: 8px 24px;
+        border-radius: 20px;
+        border: 1px solid #FFF;
+        color: #fff;
+        img {
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(100deg) brightness(200%) contrast(100%);
+        }
+    }
 `
 
 const StyledFolderNameTool = styled.div`
@@ -103,19 +131,22 @@ const StyledFolderTool = styled.div`
     font-weight: 600;
 `
 
-const StyledFolderButton = styled.div`
-    display: flex;
-    padding: 8px 12px;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 5px;
-    border: 1px solid #6D6AFE;
-`
-
 const StyledFolderTitle = styled.div`
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.2px;
+`
+
+const StyledNoLink = styled.div`
+    width:1060px;
+    text-align:center;
+    margin-bottom: 60px;
+    @media  (max-width:767px) {
+        width: 390px;
+    }
+    @media (min-width:768px) and (max-width:1124px) {
+        width:750px;
+    };
 `
 
 function LinkAdd() {
@@ -134,23 +165,41 @@ function LinkAdd() {
     )
 }
 
+function NoLink() {
+    return (
+        <StyledNoLink>
+            저장된 링크가 없습니다.
+        </StyledNoLink>
+    );
+}
+
 function Folders() {
-    const [link, setLink] = useState([]);
+    const [folderData, setFolderData] = useState([]);
+    const [query, setQuery] = useState('/users/1/links')
+    const [title, setTitle] = useState('전체');
+    const [titleData, setTitleData] = useState([]);
+
     useEffect(() => {
-        const path = '/users/1/links'
         const handleCards = async()=>{
-            const{data} = await getApi(path);
-            setLink(data);
-        };
+            const{data} = await getApi(query);
+            setFolderData(data);  
+        }
         handleCards();
-    },[]);
+    },[query]);
+
+    useEffect(() => {
+        const path = '/users/1/folders';
+        const handleTitle = async()=>{
+            const {data} = await getApi(path);
+            setTitleData(data);
+        }
+        handleTitle();
+    },[])
 
     return (
         <StyledFoldersBox>
             <StyledFolderButtonBox>
-                <StyledFolderButton>
-                    전체
-                </StyledFolderButton> 
+                <TitleButton data={titleData} onClick={setTitle} query={setQuery}/>
                 <StyledFolderAdd>
                     폴더 추가
                     <img src={add} alt="add"/>
@@ -158,9 +207,10 @@ function Folders() {
             </StyledFolderButtonBox>
             <StyledFolderNameTool>
                 <StyledFolderTitle>
-                    유용한 글
-                </StyledFolderTitle> 
-                <StyledFolderTool>
+                    {title}
+                </StyledFolderTitle>
+                { title === '전체' ||
+                    <StyledFolderTool>
                     <IconAndText>
                         <img src={share} alt="share" />
                         공유
@@ -173,9 +223,9 @@ function Folders() {
                         <img src={trash} alt="trash" />
                         삭제
                     </IconAndText>
-                </StyledFolderTool>
-            </StyledFolderNameTool> 
-            <Cards items={link}/>
+                </StyledFolderTool>}
+            </StyledFolderNameTool>
+            { folderData.length === 0 ? <NoLink /> : <Cards items={folderData}/>}
         </StyledFoldersBox>
     )
 }
