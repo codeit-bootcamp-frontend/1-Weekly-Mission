@@ -5,11 +5,13 @@ import SharedPage from './pages/share/SharedPage';
 import LandingPage from './pages/landing/LandingPage';
 import Layout from './components/layout/Layout';
 import FolderPage from './pages/folder/FolderPage';
+import ErrorPage from './pages/404/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
