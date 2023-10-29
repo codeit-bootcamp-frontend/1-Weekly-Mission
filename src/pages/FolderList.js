@@ -12,6 +12,7 @@ import {
 import { useParams } from 'react-router';
 import FolderEdit from '../components/FolderEdit/FolderEdit';
 import SharedFolder from '../components/SharedFolder/SharedFolder';
+import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
 
 function FolderList() {
   const { folderID } = useParams();
@@ -76,7 +77,11 @@ function FolderList() {
           <FolderName>{folder}</FolderName>
           {folderID && <FolderEdit />}
         </div>
-        {cards ? <SharedFolder cards={cards} /> : ''}
+        {cards.length ? (
+          <SharedFolder cards={cards} shared="off" />
+        ) : (
+          <FolderEmptyNoti />
+        )}
       </section>
     </>
   );

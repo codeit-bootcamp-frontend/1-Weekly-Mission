@@ -1,7 +1,7 @@
 import styles from './SharedFolder.module.css';
 import Card from '../Card/Card';
 
-function SharedFolder({ cards }) {
+function SharedFolder({ cards, shared }) {
   const dotRemover = {
     listStyleType: 'none',
   };
@@ -11,7 +11,7 @@ function SharedFolder({ cards }) {
       {cards.map((card) => {
         return (
           <li style={dotRemover} key={card.id}>
-            <Card card={card} />
+            <Card card={card} shared={shared} />
           </li>
         );
       })}

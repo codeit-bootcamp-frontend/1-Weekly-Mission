@@ -1,10 +1,11 @@
 import styles from './Card.module.css';
 import kebabImg from '../../assets/images/kebab.svg';
 import noImg from '../../assets/images/no-image.svg';
+import starIcon from '../../assets/images/star.svg';
 import { useState } from 'react';
 import { formatDate, formatTimeAgo } from '../../utils/formatDate';
 
-function Card({ card }) {
+function Card({ card, shared }) {
   const [hover, setHover] = useState(false);
 
   const handleMouseOver = () => {
@@ -46,11 +47,21 @@ function Card({ card }) {
       onMouseOut={handleMouseOut}
     >
       <a href={card.url}>
-        <div className={imageStyle} style={bgImg}></div>
+        <div className={imageStyle} style={bgImg}>
+          {shared === 'off' && (
+            <button type="button" className={styles.star}>
+              <img src={starIcon} alt="즐겨찾기" />
+            </button>
+          )}
+        </div>
         <div className={styles.explanation}>
           <div className={styles.header}>
             <div>{formatTimeAgo(unifyCardData(card).createdAt)}</div>
-            <img src={kebabImg} alt="쩜쩜쩜" />
+            {shared === 'off' && (
+              <button type="button">
+                <img src={kebabImg} alt="쩜쩜쩜" />
+              </button>
+            )}
           </div>
           <div className={styles.text}>
             <div>{card.title}</div>

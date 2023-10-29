@@ -42,7 +42,7 @@ function Shared() {
       <SharedFolderInfo name={name} owner={owner} />
       <section style={section}>
         <SearchBar />
-        <SharedFolder cards={cards} />
+        <SharedFolder cards={cards} shared="on" />
       </section>
     </>
   );
