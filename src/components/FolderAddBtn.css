@@ -9,9 +9,14 @@
 @media (max-width: 767px) {
   .folder-add-btn {
     border-radius: 20px;
-    border: 1px solid #fff;
+    border: 1px solid var(--primary);
     background: var(--primary);
     color: #e7effb;
     padding: 8px 24px;
+    position: fixed;
+    bottom: 101px;
+    z-index: 999;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

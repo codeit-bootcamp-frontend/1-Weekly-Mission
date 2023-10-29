@@ -1,6 +1,11 @@
-.category-box {
+.category-nav {
   display: flex;
   justify-content: space-between;
+}
+
+.category-box {
+  display: flex;
+  /* justify-content: space-between; */
   align-items: center;
   flex-wrap: wrap;
 }
@@ -16,7 +21,7 @@
   .category-item-box {
     max-width: 32.5rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 80px);
     row-gap: 12px;
   }
 }

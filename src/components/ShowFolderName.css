@@ -28,4 +28,8 @@
   .folder-option-btns {
     margin: 0;
   }
+
+  .folder-option h1 {
+    font-size: 20px;
+  }
 }
