@@ -8,6 +8,7 @@ import { getLinks } from '../../api/api';
 import CardList from '../Card/CardList';
 import EmptyCardList from '../Card/EmptyCardList';
 import FloatingActionButton from '../../styles/FloatingActionButton';
+import styled from 'styled-components';
 
 const INIT_PAGE = { id: 0, name: '전체' };
 
@@ -38,15 +39,20 @@ function FolderMain() {
   }, [handleLoadLinks]);
 
   return (
-    <Main>
+    <FolderMainStyle>
       <SearchForm />
       <FolderCategory onGetCategory={handleLoadLinks} />
       <FolderCategoryControl name={name} />
       {cards.length !== 0 ? <CardList items={cards} /> : <EmptyCardList />}
       <FloatingActionButton />
-    </Main>
+    </FolderMainStyle>
   );
 }
 
 export default FolderMain;
 
+const FolderMainStyle = styled(Main)`
+  @media (min-width: 768px) {
+    gap: 2.4rem;
+  }
+`

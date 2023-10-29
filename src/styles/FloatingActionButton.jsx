@@ -22,6 +22,10 @@ const FolderActionButton = styled.button`
   border-radius: 20px;
   border: 1px solid #fff;
   background: #6d6afe;
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const ActionName = styled.p`

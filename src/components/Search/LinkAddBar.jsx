@@ -27,18 +27,37 @@ const LinkInputContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.8rem;
-`;
-
-const LinkInput = styled.input`
-  display: flex;
-  width: 100%;
-  border: 0;
-  &:focus::placeholder {
-    color: transparent;
+  
+  @media (min-width: 768px) {
+    gap: 1.2rem;
   }
 `;
 
 const LinkIcon = styled.img`
   width: 1.6rem;
   height: 1.6rem;
+  
+  @media (min-width: 768px) {
+    width: 2rem;
+    height: 2rem;
+  }
+`;
+
+const LinkInput = styled.input`
+  display: flex;
+  width: 100%;
+  border: 0;
+  color: #9fa6b2;
+  font-family: Pretendard, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  
+  &:focus::placeholder {
+    color: transparent;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
 `;

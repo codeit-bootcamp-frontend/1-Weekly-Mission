@@ -63,4 +63,8 @@ const FolderControlContainer = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;

@@ -21,4 +21,9 @@ const LinkAddFormStyle = styled.form`
   border-radius: 15px;
   border: 1px solid #6d6afe;
   background: #fff;
+  
+  @media (min-width: 768px) {
+    width: 100%;
+    padding: 1.6rem 2rem;
+  }
 `;
