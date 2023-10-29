@@ -6,8 +6,9 @@ import { useCallback, useEffect, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
 import { getLinks } from '../../api/api';
 import CardList from '../Card/CardList';
+import EmptyCardList from '../Card/EmptyCardList';
 
-const INIT_PAGE = { id: 0, name: '전체'};
+const INIT_PAGE = { id: 0, name: '전체' };
 
 function FolderMain() {
   const [name, setName] = useState('전체');
@@ -40,7 +41,7 @@ function FolderMain() {
       <SearchForm />
       <FolderCategory onGetCategory={handleLoadLinks} />
       <FolderCategoryControl name={name} />
-      <CardList items={cards} />
+      {cards.length !== 0 ? <CardList items={cards} /> : <EmptyCardList />}
     </Main>
   );
 }
