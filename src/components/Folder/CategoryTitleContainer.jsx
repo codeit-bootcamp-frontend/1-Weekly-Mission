@@ -28,7 +28,7 @@ function CategoryTitleContainer({ name }) {
   return (
     <CategoryTitleContainerStyle>
       <CategoryTitle>{name}</CategoryTitle>
-      <FolderControlContainer>
+      <FolderControlContainer $name={name}>
         {ICONS.map((icon) => {
           return (
             <IconControlButton icon={icon} key={icon.id}/>
@@ -47,6 +47,12 @@ const CategoryTitleContainerStyle = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1.2rem;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const CategoryTitle = styled.h4`
@@ -65,6 +71,6 @@ const FolderControlContainer = styled.div`
   gap: 1.2rem;
 
   @media (min-width: 768px) {
-    display: none;
+    display: ${({$name}) => ($name === '전체' ? 'none' : '')};
   }
 `;

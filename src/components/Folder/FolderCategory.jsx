@@ -41,6 +41,7 @@ function FolderCategory({ onGetCategory }) {
       })
       }
     </FolderCategoryStyle>
+    
   );
 }
 
