@@ -2,6 +2,7 @@ import trashIcon from "../assets/img/trash.svg";
 import shareIcon from "../assets/img/share.svg";
 import penIcon from "../assets/img/pen.svg";
 import style from "./CurrentFolder.module.css";
+import clsx from "clsx";
 function CurrentFolder({ folderId, folders }) {
   console.log(folders);
   const currentFolder = folders.filter((folder) => folder.id == folderId);
@@ -10,7 +11,9 @@ function CurrentFolder({ folderId, folders }) {
   return (
     <div className={style.root}>
       <div style={{ fontSize: "1.6rem", fontWeight: "600" }}>{folderName}</div>
-      <div className={style.utils}>
+      <div
+        className={clsx(style.utils, { [style.hidden]: folderName == "전체" })}
+      >
         <button>
           <img src={shareIcon} alt="공유하기" />
           공유

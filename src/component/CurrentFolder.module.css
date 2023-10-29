@@ -14,3 +14,6 @@
   font-size: 1.4rem;
   gap: 0.4rem;
 }
+.hidden {
+  display: none;
+}
