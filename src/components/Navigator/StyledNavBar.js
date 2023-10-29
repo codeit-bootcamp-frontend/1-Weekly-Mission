@@ -1,13 +1,17 @@
 /* PC: 1200px 이상
 Tablet: 768px 이상 ~ 1199px 이하
 Mobile: 375px 이상 ~ 767px 이하 */
-
 import styled from "styled-components";
+
+const STICKY = {
+  sticky: "sticky",
+  static: "static",
+};
 
 export const Nav = styled.nav`
   display: flex;
   justify-content: center;
-  position: sticky;
+  position: ${({ sticky }) => STICKY[sticky] ?? STICKY["sticky"]};
   top: 0;
   width: 100%;
   background-color: #edf7ff;

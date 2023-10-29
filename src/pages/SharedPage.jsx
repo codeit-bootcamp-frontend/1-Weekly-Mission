@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FolderInfo, SearchBar, CardSection } from "components";
+import { useOutletContext } from "react-router-dom";
 import { getFolder } from "utils/api";
 import * as Styled from "./StyledSharedPage";
 
@@ -10,6 +11,7 @@ const SharedPage = () => {
     ownerImage: "",
     data: [],
   });
+  const { setSticky } = useOutletContext();
 
   const handleFolderInfo = async () => {
     try {
@@ -31,7 +33,8 @@ const SharedPage = () => {
 
   useEffect(() => {
     handleFolderInfo();
-  }, []);
+    setSticky("sticky");
+  }, [setSticky]);
 
   return (
     <>

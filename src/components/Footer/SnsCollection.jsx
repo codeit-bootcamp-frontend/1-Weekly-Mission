@@ -18,16 +18,16 @@ const StyledSns = styled.div`
 
 const SnsCollection = () => {
   const snsCollection = [
-    ["facebook", facebookIMG, 0],
-    ["twitter", twitterIMG, 1],
-    ["youtube", youtubeIMG, 2],
-    ["instagram", instagramIMG, 3],
+    ["facebook", facebookIMG],
+    ["twitter", twitterIMG],
+    ["youtube", youtubeIMG],
+    ["instagram", instagramIMG],
   ];
 
   return (
     <StyledSns>
-      {snsCollection.map((item) => {
-        return <SnsLogo key={item[2]} brand={item} />;
+      {snsCollection.map((item, index) => {
+        return <SnsLogo key={index} brand={item} />;
       })}
     </StyledSns>
   );

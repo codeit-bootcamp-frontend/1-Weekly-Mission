@@ -1,9 +1,18 @@
 import { useState, useEffect, useCallback } from "react";
-import { AddBar, SearchBar, FolderLists, CardSection } from "components";
+import { useOutletContext } from "react-router-dom";
+import {
+  AddBar,
+  SearchBar,
+  FolderLists,
+  CardSection,
+  NoFolderLink,
+} from "components";
 import { getFolderLists, getLinks } from "utils/api";
 import * as Styled from "./StyledFolderPage";
 
 const FolderPage = () => {
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const initFolderId = searchParams.get("folderId");
   const [folderId, setFolderId] = useState("");
   const [headContext, setHeadContext] = useState("전체");
   const [folderListsData, setFolderListsData] = useState({
@@ -13,26 +22,32 @@ const FolderPage = () => {
     data: [],
   });
 
-  const handleFolderLists = useCallback(async (id) => {
-    try {
-      const [folderLists, links] = await Promise.all([
-        getFolderLists(),
-        getLinks(id),
-      ]);
-      const { data: folderData } = folderLists;
-      const { data: LinkData } = links;
-      setFolderListsData((prevData) => ({
-        ...prevData,
-        data: folderData,
-      }));
-      setLinksData((prevData) => ({
-        ...prevData,
-        data: LinkData,
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+  const { setSticky } = useOutletContext();
+
+  const handleFolderLists = useCallback(
+    async (id) => {
+      console.log(id);
+      try {
+        const [folderLists, links] = await Promise.all([
+          getFolderLists(),
+          getLinks(id),
+        ]);
+        const { data: folderData } = folderLists;
+        const { data: LinkData } = links;
+        setFolderListsData((prevData) => ({
+          ...prevData,
+          data: folderData,
+        }));
+        setLinksData((prevData) => ({
+          ...prevData,
+          data: LinkData,
+        }));
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [setFolderListsData, setLinksData]
+  );
 
   const handleFolderBtnClick = useCallback(() => {
     const FOLDER_ARR = document.querySelectorAll("#folder");
@@ -56,8 +71,16 @@ const FolderPage = () => {
 
   useEffect(() => {
     handleFolderLists(folderId);
-    handleFolderBtnClick();
-  }, [folderId, handleFolderLists, handleFolderBtnClick]);
+    setSticky("static");
+
+    linksData.data.length && handleFolderBtnClick();
+  }, [
+    folderId,
+    handleFolderLists,
+    handleFolderBtnClick,
+    linksData.data.length,
+    setSticky,
+  ]);
 
   const handleButtonClick = (id, name) => {
     setFolderId(id);
@@ -71,12 +94,18 @@ const FolderPage = () => {
       </Styled.Header>
       <Styled.Article>
         <SearchBar />
-        <FolderLists
-          folderData={folderListsData.data}
-          onClick={handleButtonClick}
-          title={headContext}
-        />
-        <CardSection data={linksData.data} />
+        {linksData.data.length === 0 ? (
+          <NoFolderLink />
+        ) : (
+          <>
+            <FolderLists
+              folderData={folderListsData.data}
+              onClick={handleButtonClick}
+              title={headContext}
+            />
+            <CardSection data={linksData.data} />
+          </>
+        )}
       </Styled.Article>
     </>
   );

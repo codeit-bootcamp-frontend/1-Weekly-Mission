@@ -1,9 +1,9 @@
 import { LoginButton, Logo } from "components";
 import * as Styled from "./StyledNavBar";
 
-const Navigator = ({ isLogin, data }) => {
+const Navigator = ({ isLogin, data, sticky }) => {
   return (
-    <Styled.Nav>
+    <Styled.Nav sticky={sticky}>
       <Styled.Box>
         <Logo />
         <LoginButton isLogin={isLogin} data={data} />

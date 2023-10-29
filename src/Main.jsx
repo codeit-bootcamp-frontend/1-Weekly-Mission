@@ -8,7 +8,10 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="shared" element={<SharedPage />} />
-          <Route path="folder" element={<FolderPage />} />
+          <Route path="folder">
+            <Route index element={<FolderPage />} />
+            <Route path=":folderId" element={<FolderPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

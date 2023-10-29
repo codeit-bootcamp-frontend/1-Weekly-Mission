@@ -7,27 +7,20 @@ import chosenStarIMG from "assets/chosenStar.svg";
 import * as Styled from "./StyledCard";
 
 const Card = ({ data, onClick }) => {
-  // const imgRef = useRef();
+  const CREATED_AT = data.createdAt ? data.createdAt : data.created_at;
+  const IMG_SRC = data.imageSource ? data.imageSource : data.image_source;
+  const URL = data.url;
+  const DESCRIPTION = data.description;
   const [star, setStar] = useState(false);
 
   const handleCardClick = () => {
-    onClick(data.url);
+    onClick(URL);
   };
 
   const formatDate = (value) => {
     const date = new Date(value);
     return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
   };
-
-  // const handleMouseEnter = () => {
-  //   const $imgNode = imgRef.current;
-  //   $imgNode.setAttribute("style", "transform: scale(1.3)");
-  // };
-
-  // const handleMouseLeave = () => {
-  //   const $imgNode = imgRef.current;
-  //   $imgNode.removeAttribute("style");
-  // };
 
   const handleKebabClick = (e) => {
     e.stopPropagation();
@@ -43,29 +36,24 @@ const Card = ({ data, onClick }) => {
   };
 
   return (
-    <Styled.CardContainer
-      onClick={handleCardClick}
-      // onMouseEnter={handleMouseEnter}
-      // onMouseLeave={handleMouseLeave}
-    >
+    <Styled.CardContainer onClick={handleCardClick}>
       <Styled.CardImgBox>
         <Styled.CardImg
-          // ref={imgRef}
-          src={data.image_source ? data.image_source : noImageIMG}
-          alt={data.image_source ? "카드 이미지" : "이미지 없음"}
+          src={IMG_SRC ? IMG_SRC : noImageIMG}
+          alt={IMG_SRC ? "카드 이미지" : "이미지 없음"}
         />
       </Styled.CardImgBox>
       <Styled.InfoContainer>
         <Styled.AdditionalInfo>
-          <span>{timeForToday(data.created_at)}</span>
+          <span>{timeForToday(CREATED_AT)}</span>
           <Styled.Kebab
             src={kebab}
             alt="카드 설정 더보기"
             onClick={handleKebabClick}
           />
         </Styled.AdditionalInfo>
-        <Styled.Description>{data.description}</Styled.Description>
-        <span>{formatDate(data.created_at)}</span>
+        <Styled.Description>{DESCRIPTION}</Styled.Description>
+        <span>{formatDate(CREATED_AT)}</span>
       </Styled.InfoContainer>
       <Styled.Star
         onClick={handleStarClick}

@@ -5,11 +5,12 @@ import { getUsers } from "utils/api";
 import { StyledGlobal } from "style/StyledGlobal";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({
     email: "",
     imageSource: "",
   });
+  const [sticky, setSticky] = useState("sticky");
 
   const handleUserProfile = async () => {
     try {
@@ -35,8 +36,8 @@ const App = () => {
   return (
     <>
       <StyledGlobal />
-      <Navigator isLogin={isLogin} data={userData} />
-      <Outlet />
+      <Navigator isLogin={isLogin} data={userData} sticky={sticky} />
+      <Outlet context={{ setSticky }} />
       <Footer />
     </>
   );

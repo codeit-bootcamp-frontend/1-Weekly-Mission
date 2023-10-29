@@ -35,6 +35,21 @@ export const FolderBlock = styled.div`
 export const BtnBox = styled.div`
   display: flex;
   gap: 8px;
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+  }
+`;
+
+export const Btn = styled.button`
+  display: flex;
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  background-color: var(--white);
+  white-space: nowrap;
 `;
 
 export const AddFolderBtn = styled.button`
@@ -75,16 +90,6 @@ export const AddFolderImg = styled.div`
   @media (max-width: 767px) {
     background-image: url(${folderAddFloatingImg});
   }
-`;
-
-export const Btn = styled.button`
-  display: flex;
-  padding: 5px 10px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  border: 1px solid var(--primary);
-  background-color: var(--white);
 `;
 
 export const TitleBlock = styled.div`
@@ -140,4 +145,20 @@ export const EditFolderImg = styled.div`
   background-position: center;
   width: 16px;
   height: 16px;
+`;
+
+export const NoFolderContainer = styled.div`
+  width: 80%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 1199px) {
+    height: 400px;
+  }
+`;
+
+export const NoFolderMsg = styled.div`
+  font-size: 2rem;
+  padding-top: 50px;
 `;
