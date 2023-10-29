@@ -11,7 +11,15 @@
 }
 
 .category-item:hover,
-.category-item.active {
+.category-item:active .category-item:visited {
   background: var(--primary);
   color: white;
+}
+
+/* mobile Size */
+@media (max-width: 767px) {
+  .category-item {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
 }

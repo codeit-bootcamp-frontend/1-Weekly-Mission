@@ -45,8 +45,17 @@
 
 /* mobile Size */
 @media (max-width: 767px) {
+  .link-add-form {
+    padding: 2.4rem 3.2rem;
+  }
+
   .link-add {
     min-width: 32.5rem;
     min-height: 5.3rem;
+  }
+
+  .link-add-button {
+    right: 2%;
+    top: 20%;
   }
 }

@@ -23,7 +23,8 @@ function ShowFolderName({ selectedFolder }) {
     <div className="folder-option">
       <h1>{selectedFolder || "전체"}</h1>
       <div className="folder-option-btns">
-        {selectedFolder !== "전체" &&
+        {selectedFolder &&
+          selectedFolder !== "전체" &&
           btnsData?.map((btn) => {
             return <FolderOptionBtn btnData={btn} key={btn.id} />;
           })}

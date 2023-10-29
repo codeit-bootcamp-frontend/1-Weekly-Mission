@@ -1,11 +1,10 @@
-import "./FolderPage.css";
 import AddLink from "../components/AddLink";
 import { getFolderLinks, getFolderCategory } from "../utils/api";
 import { useEffect, useState } from "react";
 import Cards from "../components/Cards";
 import Search from "../components/Search";
 import Category from "../components/Category";
-import NoLink from "./NoLink";
+import NoLink from "../components/NoLink";
 import ShowFolderName from "../components/ShowFolderName";
 
 function FolderPage() {

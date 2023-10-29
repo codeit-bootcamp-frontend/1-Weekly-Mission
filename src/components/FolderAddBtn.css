@@ -4,3 +4,14 @@
   font-weight: 500;
   letter-spacing: -0.3px;
 }
+
+/* mobile Size */
+@media (max-width: 767px) {
+  .folder-add-btn {
+    border-radius: 20px;
+    border: 1px solid #fff;
+    background: var(--primary);
+    color: #e7effb;
+    padding: 8px 24px;
+  }
+}

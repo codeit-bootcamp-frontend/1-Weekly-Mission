@@ -13,5 +13,10 @@
 
 /* mobile Size */
 @media (max-width: 767px) {
-  /*반응형*/
+  .category-item-box {
+    max-width: 32.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 12px;
+  }
 }

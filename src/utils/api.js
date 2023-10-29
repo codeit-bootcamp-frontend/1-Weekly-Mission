@@ -82,4 +82,30 @@ async function getFolderLinks(folderId) {
   }
 }
 
-export { getUserFolder, getUserData, getFolderCategory, getFolderLinks };
+async function getUsers(id) {
+  try {
+    const response = await fetch(`${API_URL}/users/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status !== 200) {
+      throw new Error(response.status);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    alert("페이지를 불러오지 못했습니다.");
+  }
+}
+
+export {
+  getUserFolder,
+  getUserData,
+  getFolderCategory,
+  getFolderLinks,
+  getUsers,
+};

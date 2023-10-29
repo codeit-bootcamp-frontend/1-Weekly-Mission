@@ -6,6 +6,7 @@ function Nav({ userInfo }) {
   if (!userInfo) return;
 
   const { email, profileImageSource } = userInfo;
+
   return (
     <div className="nav">
       <a href="/">
