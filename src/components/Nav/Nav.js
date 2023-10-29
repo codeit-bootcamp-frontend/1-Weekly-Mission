@@ -1,16 +1,15 @@
 import React from "react";
 import * as S from "./NavStyle";
 import Profile from "./Profile";
-import LoginButton from "./LoginButton";
+
 import logoImg from "../../assets/logo.png";
 import getSample from "../../api";
 import useAsync from "../../Hooks/useAsync";
+import { Button } from "../Button/Button";
 
 function Nav() {
-  const [data] = useAsync(() =>
-    getSample("user")
-  );
-  if (!data) return null;
+  const [data] = useAsync(() => getSample("user"));
+  if (!data) return;
   const { email, profileImageSource } = data;
 
   return (
@@ -21,7 +20,7 @@ function Nav() {
         {email && profileImageSource ? (
           <Profile email={email} profileImage={profileImageSource} />
         ) : (
-          <LoginButton />
+          <Button>로그인</Button>
         )}
       </S.NavContent>
     </S.NavContainer>
