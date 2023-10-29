@@ -15,19 +15,19 @@ const SNS_LINKS = [
     id: 2,
     url: 'https://twitter.com/',
     icon: twitter_icon,
-    alt: 'facebook',
+    alt: 'twitter',
   },
   {
     id: 3,
     url: 'https://www.youtube.com/',
     icon: youtube_icon,
-    alt: 'facebook',
+    alt: 'youtube',
   },
   {
     id: 4,
     url: 'https://www.instagram.com/',
     icon: instagram_icon,
-    alt: 'facebook',
+    alt: 'instagram',
   },
 ];
 
