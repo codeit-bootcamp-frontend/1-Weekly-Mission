@@ -7,21 +7,6 @@ export const HeroContainer = styled.section`
   background-color: var(--color-primary-varient);
 `;
 
-// export const Wrapper = styled.section`
-//   padding: 2.5rem 2rem;
-
-//   @media only screen and (${breakPoints.tablet}) {
-//     padding: 2.5rem 2rem;
-//   }
-
-//   @media only screen and (${breakPoints.mobile}) {
-//     width: 100%;
-//     height: 100%;
-//     padding: 1.25rem 2rem;
-//     gap: 2rem;
-//   }
-// `;
-
 export const Contents = styled.section`
   padding: 2.5rem 2rem;
   width: 100%;

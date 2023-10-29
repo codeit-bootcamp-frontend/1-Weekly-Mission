@@ -2,10 +2,6 @@ import styled from "styled-components";
 import LinkIcon from "assets/link.svg";
 import Button from "components/button/Button";
 
-// export const Container = styled.div`
-//   padding: 3.75rem 20rem;
-// `;
-
 export const Wrapper = styled.div`
   padding: 1.5rem 2rem;
   position: relative;

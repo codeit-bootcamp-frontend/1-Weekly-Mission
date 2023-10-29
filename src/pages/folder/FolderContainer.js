@@ -18,7 +18,7 @@ export default function Folder() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
   const [selected, setSelected] = useState(DEFAULT);
-  const [currentFolderId, setCurrentFolderId] = useState("");
+  const [selectedFolderId, setSelectedFolderId] = useState("");
 
   const { isLoading, error, wrappedFunction: getLinksAsyncFunc } = useFetch(getAllLinks);
   const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
@@ -31,11 +31,11 @@ export default function Folder() {
   const changeFolderId = (category) => {
     const selectedFolder = folders.find((folder) => folder.name === category);
     const selectedId = selectedFolder ? selectedFolder.id : "";
-    setCurrentFolderId(selectedId);
+    setSelectedFolderId(selectedId);
   };
 
   const handleLoadedData = async () => {
-    const { data: linkData } = await getLinksAsyncFunc(USER_ID, currentFolderId);
+    const { data: linkData } = await getLinksAsyncFunc(USER_ID, selectedFolderId);
     const { data: folderData } = await getFoldersAsyncFunc(USER_ID);
 
     setLinks(linkData);
@@ -46,7 +46,7 @@ export default function Folder() {
 
   useEffect(() => {
     handleLoadedData();
-  }, [currentFolderId]);
+  }, [selectedFolderId]);
 
   if (error || errorFolder) console.log(error || errorFolder);
 
