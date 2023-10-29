@@ -7,12 +7,13 @@ const PATH = {
   },
   folder: {
     user: BASE_URL + "users/1",
+    folders: BASE_URL + "users/1/folders",
     links: BASE_URL + "users/1/links",
   },
 };
 
-const getResponse = async (pageType, dataType) => {
-  const response = await fetch(PATH[pageType][dataType]);
+const getResponse = async (pageType, dataType, query = "") => {
+  const response = await fetch(PATH[pageType][dataType] + query);
 
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패했습니다.");

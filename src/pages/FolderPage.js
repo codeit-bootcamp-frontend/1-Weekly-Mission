@@ -8,7 +8,7 @@ const FolderPage = () => {
     <>
       <Nav pageType="folder" />
       <HeaderAddLink />
-      <Main pageType="folder" />
+      <Main pageType="folder" dataType="links" />
       <Footer />
     </>
   );

@@ -8,7 +8,7 @@ const SharedPage = () => {
     <>
       <Nav pageType="shared" />
       <Header />
-      <Main pageType="shared" />
+      <Main pageType="shared" dataType="folder" />
       <Footer />
     </>
   );

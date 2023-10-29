@@ -14,3 +14,5 @@ export const useGetData = (domain) => {
 
   return data;
 };
+
+export default useGetData;
