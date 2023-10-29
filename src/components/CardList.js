@@ -5,7 +5,7 @@ import Card from "./Card.js";
 
 function CardList() {
   const [hasData, setHasData] = useState(false);
-  const [folderData, setFolderData] = useState([]);
+  const [sampleData, setSampleData] = useState([]);
 
   const handleLoad = async () => {
     let result;
@@ -13,7 +13,7 @@ function CardList() {
       result = await getSampleData();
       result = result.folder.links;
       setHasData(true);
-      setFolderData(result);
+      setSampleData(result);
     } catch (error) {
       setHasData(false);
       return;
@@ -27,7 +27,7 @@ function CardList() {
   return (
     <div className="cardListContainer">
       <ul className="cardList">
-        {folderData.map((item) => (
+        {sampleData.map((item) => (
           <li key={item.id}>
             <Card item={item} />
           </li>

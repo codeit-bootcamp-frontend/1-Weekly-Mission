@@ -1,5 +1,4 @@
 import "../css/card.css";
-import { useState, useEffect } from "react";
 import { calculateRelativeTime, formatDate } from "../utils/timeCalculate.js";
 import defaultImg from "../images/noImage.svg";
 

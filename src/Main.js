@@ -3,6 +3,7 @@ import App from "./components/App";
 import HomePage from "./pages/HomePage";
 import FolderPage from "./pages/FolderPage";
 import SharedPage from "./pages/SharedPage";
+import NoDataPage from "./pages/NoDataPage";
 
 function Main() {
   return (
@@ -12,6 +13,7 @@ function Main() {
           <Route index element={<HomePage />} />
           <Route path="shared" element={<SharedPage />} />
           <Route path="folder" element={<FolderPage />} />
+          <Route path="nodata" element={<NoDataPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

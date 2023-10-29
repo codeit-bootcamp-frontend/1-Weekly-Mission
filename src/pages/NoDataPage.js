@@ -1,16 +1,15 @@
 import AddLink from "../components/AddLink.js";
-import CardList from "../components/CardList.js";
-import FolderBar from "../components/FolderBar.js";
 import SearchBar from "../components/SearchBar.js";
+import NoData from "../components/NoData.js";
 
-function FolderPage() {
+function NoDataPage() {
   return (
     <>
       <AddLink />
       <SearchBar />
-      <FolderBar />
+      <NoData />
     </>
   );
 }
 
-export default FolderPage;
+export default NoDataPage;
