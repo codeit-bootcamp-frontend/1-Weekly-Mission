@@ -10,7 +10,7 @@ function CurrentFolder({ folderId, folders }) {
   console.log(folderName);
   return (
     <div className={style.root}>
-      <div style={{ fontSize: "1.6rem", fontWeight: "600" }}>{folderName}</div>
+      <div style={{ fontSize: "2.4rem", fontWeight: "600" }}>{folderName}</div>
       <div
         className={clsx(style.utils, { [style.hidden]: folderName == "전체" })}
       >

@@ -37,19 +37,25 @@ function FolderPage() {
     handleFolderLoad();
   }, []);
   return (
-    <div className={style.root}>
-      <AddLink />
-      <div className={style.section}>
-        <Search />
-        <FolderList folders={folders} />
-        <CurrentFolder folderId={folderParam} folders={folders} />
-        {links.length ? (
-          <Cards cards={links} />
-        ) : (
-          <span className={style.emptyLink}>저장된 링크가 없습니다.</span>
-        )}
+    <>
+      <div className={style.addLink}>
+        <AddLink />
       </div>
-    </div>
+      <div className={style.root}>
+        <div className={style.section}>
+          <Search />
+          <div className={style.folderSection}>
+            <FolderList folders={folders} />
+            <CurrentFolder folderId={folderParam} folders={folders} />
+            {links.length ? (
+              <Cards cards={links} />
+            ) : (
+              <span className={style.emptyLink}>저장된 링크가 없습니다.</span>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

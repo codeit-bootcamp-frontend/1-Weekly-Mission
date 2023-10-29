@@ -4,13 +4,25 @@
   align-items: center;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  padding: 0 3.2rem;
+  padding: 4rem 3.2rem;
 }
-
+.addLink {
+  display: flex;
+  justify-content: center;
+  padding-top: 6rem;
+  padding-bottom: 9rem;
+  background: var(--linkbrary-bg, #f0f6ff);
+}
 .section {
   display: flex;
   flex-direction: column;
   align-items: start;
+  gap: 4rem;
+}
+.folderSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
 }
 .emptyLink {
   width: 106rem;

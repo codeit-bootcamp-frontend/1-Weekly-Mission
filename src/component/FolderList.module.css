@@ -2,9 +2,23 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 .folders {
   display: flex;
   gap: 0.8rem;
   align-items: center;
+}
+
+.addFolderBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #6d6afe;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+.addFolderBtn img {
+  width: 1.6rem;
+  height: 1.6rem;
 }

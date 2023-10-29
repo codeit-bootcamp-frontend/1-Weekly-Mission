@@ -7,6 +7,7 @@
   border-radius: 1.5rem;
   border: 1px solid var(--linkbrary-primary-color, #6d6afe);
   justify-content: space-between;
+  background-color: #fff;
 }
 input {
   border: none;
