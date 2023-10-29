@@ -2,15 +2,15 @@
     padding-top: 4rem;
     width: 90%;
     max-width: 113rem;
+    position: relative;
 }
 
 .folder-list-container{
     display: flex;
     gap: .8rem;
-    width: 100%;
-
-    position: relative;
+    width: 90%;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .select-folder{
@@ -36,4 +36,20 @@
     color: #6d6afe;
     font-size: 1.6rem;
     cursor: pointer;
+}
+
+/* 반응형 */
+/* Mobile */
+@media (max-width: 768px){
+    .add-folder{
+        position: fixed;
+        bottom: 10.1rem;
+        left: 40%;
+        right: 40%;
+        background-color: #6d6afe;
+        border-radius: 20px;
+        color: #fff;
+        padding: .8rem 2.4rem;
+        text-align: center;
+    }
 }
