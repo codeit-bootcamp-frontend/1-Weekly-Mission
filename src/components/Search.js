@@ -4,12 +4,11 @@ import styles from '../styles/Search.module.css';
 
 function Search() {
   return (
-    <div className={styles.search__container}>
-      <img src={searchImage} className={styles.search__image} />
-      <input
-        className={styles.search__input}
-        placeholder='링크를 검색해 보세요.'
-      />
+    <div className={styles.root}>
+      <form className={styles.container}>
+        <img src={searchImage} className={styles.icon} alt='돋보기 아이콘' />
+        <input className={styles.input} placeholder='링크를 검색해 보세요.' />
+      </form>
     </div>
   );
 }

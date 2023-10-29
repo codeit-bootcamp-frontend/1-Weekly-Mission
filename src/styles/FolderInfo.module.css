@@ -37,3 +37,21 @@
   color: #000;
   margin-top: 20px;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .profileImage {
+    width: 4rem;
+    border-radius: 50%;
+  }
+
+  .name {
+    font-size: 1.4rem;
+  }
+
+  .title {
+    font-size: 3.2rem;
+  }
+}

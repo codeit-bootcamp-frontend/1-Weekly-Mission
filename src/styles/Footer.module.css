@@ -46,3 +46,34 @@
 .sns a {
   padding-right: 10px;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .root {
+    width: 100%;
+    margin-top: 4rem;
+  }
+
+  .container {
+    display: grid;
+    grid-template:
+      'links sns'
+      '. .'
+      'copyright .';
+    padding: 0 3.2rem;
+  }
+
+  .information {
+    grid-area: links;
+  }
+
+  .copyright {
+    grid-area: copyright;
+  }
+
+  .sns {
+    grid-area: sns;
+  }
+}
