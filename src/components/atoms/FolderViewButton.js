@@ -7,7 +7,7 @@ const FolderViewButton = styled(NavLink)`
   border: 0.1rem solid var(--linkbrary-primary-color, #6d6afe);
   background: #fff;
   font-size: 1.6rem;
-
+  color: #000;
   &:hover,
   &.active {
     color: #fff;

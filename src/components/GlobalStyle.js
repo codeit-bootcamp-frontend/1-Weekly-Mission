@@ -40,6 +40,7 @@ body {
 a{
 	text-decoration: none;
 }
+
 input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0 62.5rem var(--linkbrary-white) inset;
 }
