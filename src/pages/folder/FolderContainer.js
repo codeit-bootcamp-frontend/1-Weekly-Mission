@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 
 import * as style from "./FolderContainerStyle";
-import AddIcon from "assets/add.svg";
 import { getAllFolders, getAllLinks } from "api/api";
 
 import CardList from "components/card/CardList";
@@ -70,7 +69,7 @@ export default function Folder() {
               />
               <style.AddFolderBtn>
                 <span>폴더 추가</span>
-                <img src={AddIcon} alt="add" />
+                <style.IconAdd />
               </style.AddFolderBtn>
             </style.MenuContainer>
             <style.MenuContainer>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { breakPoints } from "styles/media";
+import { ReactComponent as AddIcon } from "assets/add.svg";
 
 export const HeroContainer = styled.section`
   text-align: center;
@@ -83,6 +84,14 @@ export const AddFolderBtn = styled.div`
     background: var(--color-primary);
     border-radius: 1.25rem;
     z-index: 1;
+  }
+`;
+
+export const IconAdd = styled(AddIcon)`
+  @media only screen and (${breakPoints.mobile}) {
+    path {
+      fill: white; /* path 요소에 fill 속성 적용 */
+    }
   }
 `;
 
