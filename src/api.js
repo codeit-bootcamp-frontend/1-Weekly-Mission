@@ -37,19 +37,9 @@ export async function getUserLogin() {
   return body;
 }
 
-export async function getUserLinks() {
-  const response = await fetch(`${URL_BASE}users/1/links`);
-  if (!response.ok) {
-    throw new Error("서버에서 데이터를 받지 못했습니다");
-  }
-  const body = await response.json();
-  return body;
-}
-
-export async function getRenderLinks(id) {
-  const URL_FOLDER =
-    "https://bootcamp-api.codeit.kr/api/users/1/links?folderId=";
-  const response = await fetch(`${URL_FOLDER}${id}`);
+export async function getRenderLinks(id = "") {
+  const path = id === "" ? `/links` : `/links?folderId=${id}`;
+  const response = await fetch(`${URL_BASE}/users/1${path}`);
   if (!response.ok) {
     throw new Error("서버에서 데이터를 받지 못했습니다");
   }

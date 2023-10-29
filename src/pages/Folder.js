@@ -6,12 +6,7 @@ import Nav from "../components/Nav";
 import "../styles/Folder.css";
 
 import { useState, useEffect } from "react";
-import {
-  getSelectItems,
-  getUserData,
-  getUserLinks,
-  getRenderLinks,
-} from "../api";
+import { getSelectItems, getUserData, getRenderLinks } from "../api";
 import SelectPart from "../components/SelectPart";
 import SearchBar from "../components/SearchBar";
 
@@ -19,6 +14,8 @@ function Folder() {
   const [selectItems, setSelectItem] = useState([]);
   const [userLogin, setUserLogin] = useState([]);
   const [userLinks, setUserLinks] = useState([]);
+  const [folderName, setFolderName] = useState([]);
+  const [nowFolderId, SetNowFolderId] = useState("");
 
   const handleSelectItems = async () => {
     try {
@@ -30,6 +27,7 @@ function Folder() {
   };
 
   const handleUserLogin = async () => {
+    //nav 상단 우측
     try {
       const {
         name,
@@ -42,24 +40,16 @@ function Folder() {
     }
   };
 
-  const handleUserLinks = async () => {
-    try {
-      const { data } = await getUserLinks();
-      setUserLinks(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const initRender = async () => {
     await handleSelectItems();
     await handleUserLogin();
-    await handleUserLinks();
+    await handleRenderItems();
   };
 
-  const handleRenderItems = async (targetId) => {
+  const handleRenderItems = async () => {
+    // 폴더이름 클릭시 해당하는 링크들 렌더링
     try {
-      const { data } = await getRenderLinks(targetId);
+      const { data } = await getRenderLinks(nowFolderId);
       if (!data) {
         return;
       }
@@ -69,9 +59,20 @@ function Folder() {
     }
   };
 
+  const handleClickUpdate = async (name, key) => {
+    setFolderName(name);
+    SetNowFolderId(key);
+  };
+
   useEffect(() => {
+    // 마운트 시 렌더링 되는 것들
     initRender();
   }, []);
+
+  useEffect(() => {
+    // 클릭 이후 업데이트
+    handleRenderItems();
+  }, [nowFolderId]);
 
   return (
     <>
@@ -81,8 +82,8 @@ function Folder() {
 
       <SelectPart
         selectItems={selectItems}
-        handleRenderItems={handleRenderItems}
-        handleUserLinks={handleUserLinks}
+        handleClickUpdate={handleClickUpdate}
+        folderName={folderName}
       />
       {userLinks.length !== 0 ? (
         <MainSpace items={userLinks} />

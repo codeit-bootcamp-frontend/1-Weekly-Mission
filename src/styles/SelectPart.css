@@ -150,7 +150,7 @@
     background: var(--linkbrary-primary-color, #6d6afe);
     position: sticky;
     bottom: 101px;
-    color: white;
     left: 50%;
+    transform: translateX(-50%);
   }
 }

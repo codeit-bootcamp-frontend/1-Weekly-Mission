@@ -1,7 +1,7 @@
 import "../styles/SelectItem.css";
 import { useState } from "react";
 
-function SelectItem({ item, handleRenderItems, toggleDisplay }) {
+function SelectItem({ item, handleClickUpdate }) {
   const [activeBtn, setActiveBtn] = useState(false);
 
   const toggleActive = () => {
@@ -10,17 +10,17 @@ function SelectItem({ item, handleRenderItems, toggleDisplay }) {
     });
   };
 
-  const onClick = () => {
-    handleRenderItems(item.id);
+  const handleBtnUpdate = () => {
+    handleClickUpdate(item.name, item.id);
     toggleActive();
-    toggleDisplay();
   };
 
   return (
     <button
-      value={item.name}
+      name={item.name}
       className={"SelectItem" + (activeBtn ? " active" : "")}
-      onClick={onClick}
+      onClick={handleBtnUpdate}
+      id={item.id}
     >
       {item.name}
     </button>

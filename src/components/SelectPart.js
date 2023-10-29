@@ -6,7 +6,12 @@ import "../styles/SelectPart.css";
 import SelectItem from "./SelectItem";
 import { useRef, useState } from "react";
 
-function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
+function SelectPart({
+  selectItems,
+  handleClickUpdate,
+  folderName,
+  nowFolderId,
+}) {
   const [activeAllBtn, setActiveAllBtn] = useState(false);
 
   const toggleActive = () => {
@@ -17,15 +22,15 @@ function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
   const linkRef = useRef("");
   const buttonRef = useRef("");
   const onClick = () => {
-    handleUserLinks();
+    handleClickUpdate();
     toggleActive();
     toggleDisplay();
   };
 
   const toggleDisplay = () =>
-    buttonRef.current.className === "SelectItem" + " active"
-      ? (linkRef.current.className = "displayNo")
-      : (linkRef.current.className = "displayOn");
+    buttonRef.current.className.includes("active")
+      ? (linkRef.current.className = "displayOn")
+      : (linkRef.current.className = "displayNo");
   return (
     <div className="SelectPart">
       <div className=" selectList-info">
@@ -34,19 +39,22 @@ function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
             ref={buttonRef}
             onClick={onClick}
             className={"SelectItem" + (activeAllBtn ? " active" : "")}
+            id={""}
+            name="전체"
           >
             전체
           </button>
-          <button></button>
-          {selectItems.map((item) => (
-            <SelectItem
-              key={item.id}
-              name={item.name}
-              item={item}
-              handleRenderItems={handleRenderItems}
-              toggleDisplay={toggleDisplay}
-            />
-          ))}
+
+          {selectItems.map((item) => {
+            return (
+              <SelectItem
+                key={item.id}
+                item={item}
+                handleClickUpdate={handleClickUpdate}
+                toggleDisplay={toggleDisplay}
+              />
+            );
+          })}
         </div>
         <div className="add-folder">
           <span className="add-text">폴더 추가</span>
@@ -59,7 +67,7 @@ function SelectPart({ selectItems, handleRenderItems, handleUserLinks }) {
       </div>
 
       <div className="links-info">
-        <span className="folder-name">전체</span>
+        <span className="folder-name">{folderName ? folderName : "전체"}</span>
         <div ref={linkRef} className="displayNo">
           <div className="sharing">
             <img className="share" src={share} alt="" />
