@@ -21,4 +21,5 @@
 
 .CategoryButton.selected {
   background: var(--linkbrary-primary-color, #6d6afe);
+  color: #fff;
 }
