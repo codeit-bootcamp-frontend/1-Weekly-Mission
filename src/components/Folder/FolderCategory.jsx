@@ -67,6 +67,14 @@ const FolderCategoryContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  
+  @media (min-width: 768px) {
+    width: 70.4rem;
+  }
+  
+  @media (min-width: 1024px) {
+    width: 106rem;
+  }
 `;
 
 const FolderAddButton = styled.button`

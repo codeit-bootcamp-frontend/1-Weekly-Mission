@@ -23,7 +23,11 @@ const LinkAddFormStyle = styled.form`
   background: #fff;
   
   @media (min-width: 768px) {
-    width: 100%;
+    width: 70.4rem;
     padding: 1.6rem 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 80rem;
   }
 `;

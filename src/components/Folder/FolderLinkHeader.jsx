@@ -19,4 +19,8 @@ const FolderHeader = styled.header`
   gap: 0.8rem;
   align-self: stretch;
   background-color: #f0f6ff;
+  
+  @media (min-width: 768px) {
+    align-items: center; 
+  }
 `

@@ -17,4 +17,12 @@ const FolderCategoryControlStyle = styled.div`
   align-items: flex-start;
   gap: 2rem;
   width: 100%;
+  
+  @media (min-width: 768px) {
+    width: 70.4rem;
+  }
+  
+  @media (min-width: 1024px) {
+    width: 106rem;
+  }
 `;
