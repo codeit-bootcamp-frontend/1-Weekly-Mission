@@ -23,15 +23,15 @@ const ICONS = [
 ]
 
 
-function CategoryTitleContainer({ title }) {
+function CategoryTitleContainer({ name }) {
 
   return (
     <CategoryTitleContainerStyle>
-      <CategoryTitle>유용한글</CategoryTitle>
+      <CategoryTitle>{name}</CategoryTitle>
       <FolderControlContainer>
         {ICONS.map((icon) => {
           return (
-            <IconControlButton icon={icon}/>
+            <IconControlButton icon={icon} key={icon.id}/>
           )
         })}
       </FolderControlContainer>

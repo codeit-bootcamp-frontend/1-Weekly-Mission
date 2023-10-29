@@ -2,40 +2,39 @@ import Main from '../Main/Main';
 import SearchForm from '../Search/SearchForm';
 import FolderCategory from './FolderCategory';
 import FolderCategoryControl from './FolderCategoryControl';
-import { useCallback, useEffect, useState } from 'react';
+import FolderCardList from './FolderCardList';
+import { useCallback, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
-import { getFolders } from '../../api/api';
-
-const ENTIRE_CATEGORY = {
-  id: 0,
-  name: '전체',
-};
+import { getLinks } from '../../api/api';
 
 function FolderMain() {
-  const [categories, setCategories] = useState([]);
-  const [, foldersLoadingError, getFoldersAsync] = useAsync(getFolders);
+  const [name, setName] = useState('전체');
+  const [cards, setCards] = useState([]);
+  const [, linksLoadingError, getLinksAsync] = useAsync(getLinks);
 
-  const handleLoad = useCallback(
-    async () => {
-      const result = await getFoldersAsync();
+  const handleLoadLinksId = useCallback(
+    async (category) => {
+      const id = category ? category.id : '';
+      const name = category ? category.name : '전체';
+
+      const result = await getLinksAsync({ id });
       if (!result) {
         return;
       }
+
       const { data } = { ...result };
 
-      setCategories([ENTIRE_CATEGORY, ...data]);
-    }, [getFoldersAsync],
+      setName(name);
+      setCards(data);
+    }, [getLinksAsync],
   );
-
-  useEffect(() => {
-    handleLoad();
-  }, [handleLoad]);
 
   return (
     <Main>
       <SearchForm />
-      <FolderCategory categories={categories} loadingError={foldersLoadingError}/>
-      <FolderCategoryControl />
+      <FolderCategory onGetCategory={handleLoadLinksId} />
+      <FolderCategoryControl name={name} />
+      <FolderCardList />
     </Main>
   );
 }

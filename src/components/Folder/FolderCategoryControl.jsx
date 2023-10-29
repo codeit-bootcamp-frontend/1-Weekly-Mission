@@ -1,10 +1,10 @@
 import CategoryTitleContainer from './CategoryTitleContainer';
 import styled from 'styled-components';
 
-function FolderCategoryControl() {
+function FolderCategoryControl({ name }) {
   return (
     <FolderCategoryControlStyle>
-      <CategoryTitleContainer />
+      <CategoryTitleContainer name={name} />
     </FolderCategoryControlStyle>
   );
 }

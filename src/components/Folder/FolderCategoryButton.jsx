@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 
-function FolderCategoryButton({ name }) {
+function FolderCategoryButton({ category, onGetCategory }) {
+
+  const handleGetCategoryClick = () => {
+    onGetCategory({
+      id: category.id,
+      name: category.name
+    });
+  }
+
   return (
-    <ButtonStyle>
-      <button>{name}</button>
-    </ButtonStyle>
+    <>
+      <ButtonStyle onClick={handleGetCategoryClick}>{category.name}</ButtonStyle>
+    </>
   );
 }
 
