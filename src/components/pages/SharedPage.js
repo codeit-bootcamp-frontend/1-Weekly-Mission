@@ -33,10 +33,6 @@ const SharedPage = () => {
     handleUserFolder();
   }, [handleUserInfo, handleUserFolder]);
 
-  useEffect(() => {
-    handleUserFolder();
-  }, [handleUserFolder]);
-
   const { owner, name: folderName, links } = folderInfo ?? {};
   const { profileImageSource = avatarImage, name: userName } = owner ?? {};
   if (userInfoError || userFolderError) {
