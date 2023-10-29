@@ -1,5 +1,10 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "../styles/CardItem.module.css";
-import logo from "../assets/emptyImg.svg";
+import logoImg from "../assets/emptyImg.svg";
+import starImg from "../assets/star.svg";
+import kebabImg from "../assets/kebab.svg";
+import plus from "../assets/plus_white.svg";
 
 const formatDate = (value) => {
   const date = new Date(value);
@@ -53,6 +58,8 @@ const prettyFormatTimeDiff = (diff) => {
 };
 
 function CardItem({ item }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   if (item.createdAt) {
     const { createdAt, url, title, description, imageSource } = item;
     const formattedCreatedAt = formatDate(createdAt);
@@ -60,11 +67,11 @@ function CardItem({ item }) {
     const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
 
     return (
-      <a className={styles.CardItem} href={url} target="_blank" rel="noopener noreferrer">
-        <div className={styles.img_container}>
-          <img className={styles.img} src={imageSource === undefined ? logo : imageSource} alt={title} />
-        </div>
-        <div className={styles.container}>
+      <div className={styles.CardItem}>
+        <Link className={styles.img_container} to={url} target="_blank" rel="noopener noreferrer">
+          <img className={styles.img} src={imageSource === undefined ? logoImg : imageSource} alt={title} />
+        </Link>
+        <div className={styles.content_container}>
           <p className={styles.time_diff}>{formatTimeDiff}</p>
           <p className={styles.description}>
             {title}
@@ -73,7 +80,7 @@ function CardItem({ item }) {
           </p>
           <p className={styles.createdAt}>{formattedCreatedAt}</p>
         </div>
-      </a>
+      </div>
     );
   }
   const { created_at, url, title, description, image_source } = item;
@@ -81,21 +88,41 @@ function CardItem({ item }) {
   const timeDiff = getTimeDiff(created_at);
   const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
 
+  const handleToggleModal = () => setIsModalOpen(!isModalOpen);
+
   return (
-    <a className={styles.CardItem} href={url} target="_blank" rel="noopener noreferrer">
-      <div className={styles.img_container}>
-        <img className={styles.img} src={image_source === null ? logo : image_source} alt={title} />
-      </div>
-      <div className={styles.container}>
-        <p className={styles.time_diff}>{formatTimeDiff}</p>
+    <div className={styles.CardItem}>
+      <Link className={styles.img_container} to={url} target="_blank" rel="noopener noreferrer">
+        <img className={styles.img} src={image_source === null ? logoImg : image_source} alt={title} />
+      </Link>
+      <button className={styles.bookmark_button}>
+        <img src={starImg} alt="즐겨찾기 이미지" />
+      </button>
+      <div className={styles.content_container}>
+        <div className={styles.container}>
+          <p className={styles.time_diff}>{formatTimeDiff}</p>
+          <button onClick={handleToggleModal}>
+            <img src={kebabImg} alt="케밥 이미지" />
+          </button>
+          {isModalOpen && (
+            <div className={styles.modal}>
+              <button>삭제하기</button>
+              <button>폴더에 추가</button>
+            </div>
+          )}
+        </div>
         <p className={styles.description}>
           {title}
           <br />
           {description}
         </p>
         <p className={styles.createdAt}>{formattedCreatedAt}</p>
+        <button className={styles.FloatingAddFolder}>
+          <p>폴더 추가</p>
+          <img className={styles.plus_img} src={plus} alt="더하기 이미지" />
+        </button>
       </div>
-    </a>
+    </div>
   );
 }
 
