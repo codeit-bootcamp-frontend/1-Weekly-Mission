@@ -5,16 +5,16 @@ import penImg from '../../img/svg/pen.svg';
 import deleteImg from '../../img/svg/delete.svg';
 import {NavLink } from 'react-router-dom';
 
+const activeStyle = {
+    backgroundColor:"#6d6afe",
+    color: "#ffffff"
+}
+
 const UserFolder = ({folders, folderId=9999}) => {
     const [titleName, setTitleName] = useState("")
     const titleRef = useRef({});
     const {current} = titleRef;
- 
-    const activeStyle = {
-        backgroundColor:"#6d6afe",
-        color: "#ffffff"
-    }
-    
+
     useEffect(()=>{
         setTitleName(current[folderId]?.innerText);
     })

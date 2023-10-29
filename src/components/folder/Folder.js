@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import '../shared/shared.css';
 import Search from '../shared/Search';
 import Cards from '../shared/Cards';
-import { getFolder, getUserFolder, getUserFolderLinks } from '../../api/apiUrl';
+import { getUserFolder, getUserFolderLinks } from '../../api/apiUrl';
 import { AccountContext } from '../../contexts/AccountContext';
 import AddLink from './AddLink';
 import UserFolder from './UserFolder';
@@ -10,7 +10,6 @@ import { useParams } from 'react-router-dom';
 
 const Folder = () => {
     const {account, userErrorMessage} = useContext(AccountContext)
-    const [toggleFolder, setToggleFolder] = useState("")
     const [folders, setFolders] = useState([])
     const [personalfolder, setPersonalfolder] = useState([]);
     const [folderErrorMessage, setFolderErrorMessage] = useState("");
@@ -25,23 +24,24 @@ const Folder = () => {
         }
         try{
             const {data} = await getUserFolder(id);
+            if(!data) return;
             setFolders([all, ...data])
         }
         catch(error){
-            /* setFolderErrorMessage(error); */
+            userErrorMessage(error);
         }
     }
     
     const handleFolderLoad = async () => {
         try{
             const {data} = await getUserFolderLinks(id, folderId);
+            if(!data) return;
             setPersonalfolder(data)
         }
         catch(error){
-            setFolderErrorMessage(error);
+            setFolderErrorMessage(error.message);
         }
     }
-    console.log(personalfolder)
     useEffect(() => {
         handleUserFloders();
         handleFolderLoad();
@@ -53,7 +53,7 @@ const Folder = () => {
             </div>
             <Search/>
             <UserFolder folders={folders} folderId={folderId}/>
-            {personalfolder.length > 0 ? <Cards personalfolder={personalfolder}/> : 
+            {personalfolder?.length > 0 ? <Cards personalfolder={personalfolder}/> : 
             <h3 className='noLink'>저장된 링크가 없습니다</h3>}
             {folderErrorMessage && <h2>{folderErrorMessage.message}</h2>}
         </div>

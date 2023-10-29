@@ -39,7 +39,8 @@ const Shared = () => {
                 </div>
             </div>
             <Search/>
-            <Cards personalfolder={personalfolder}/>
+            {personalfolder?.length > 0 ? <Cards personalfolder={personalfolder}/> : 
+            <h3 className='noLink'>저장된 링크가 없습니다</h3>}
             {folderErrorMessage && <h2>{folderErrorMessage.message}</h2>}
         </div>
     );

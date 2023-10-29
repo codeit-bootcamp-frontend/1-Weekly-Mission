@@ -17,6 +17,7 @@ function App() {
   const handleLoad = async () => {
     try{
       const {data} = await getAccount();
+      if(!data) return;
       const {id, name, email, image_source: profileImageSource} = data[0];
       setAccount({id ,name, email, profileImageSource});
     }
