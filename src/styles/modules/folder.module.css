@@ -1,0 +1,84 @@
+.wrapper {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 16rem;
+}
+
+.headerInWrapper {
+  width: 63%;
+}
+
+.itemWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: (--white);
+  width: 100%;
+  min-height: 100%;
+  padding: 3.5rem 16rem;
+
+  @media (max-width: 1199px) and (min-width: 375px) {
+    padding: 3.5rem 3.2rem;
+  }
+}
+
+.itemInWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 89%;
+  gap: 4rem;
+}
+
+.categoryWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 0.3rem;
+}
+
+.cardListWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.eachCategoryWrapper {
+  padding: 0.5rem 0.8rem;
+  width: auto;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  border: 1px solid rgba(109, 106, 254, 1);
+}
+
+.selectEachCategoryWrapper {
+  padding: 0.5rem 0.8rem;
+  width: auto;
+  border-radius: 0.5rem;
+  color: var(--white);
+  background-color: var(--primary);
+  border: 1px solid rgba(109, 106, 254, 1);
+}
+
+.content {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.cardTitleWrapper {
+  width: 100%;
+}
+
+.cardTitle {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.buttonListWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+}
