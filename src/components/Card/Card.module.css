@@ -12,7 +12,15 @@
   border-top-left-radius: 1.5rem;
   background-position: center;
   background-size: cover;
-  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+
+.star {
+  box-sizing: content-box;
+  width: 3.4rem;
+  padding: 1.5rem;
 }
 
 .hoverImage {
@@ -28,13 +36,6 @@
   flex-direction: column;
   padding: 1.5rem 2rem;
   gap: 1rem;
-}
-
-.star {
-  width: 3.4rem;
-  position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
 }
 
 .header {

@@ -62,8 +62,6 @@ function FolderList() {
     loadcardData();
   }, [folderID, loadcardData]);
 
-  console.log(cards);
-
   return (
     <>
       <AddLinkInput />
