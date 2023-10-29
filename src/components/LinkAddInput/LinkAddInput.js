@@ -7,21 +7,23 @@ function LinkAddInput() {
   const handleKeywordChange = (e) => setKeyword(e.target.value);
 
   return (
-    <form>
-      <div className="add-link-form">
-        <img src={linkIcon} className="add-link-icon" alt="link icon" />
-        <input
-          name="linkAdd-input"
-          value={keyword}
-          onChange={handleKeywordChange}
-          placeholder="링크를 추가해보세요"
-          className="add-link-input"
-        ></input>
-        <button className="add-link-button" type="submit">
-          추가하기
-        </button>
-      </div>
-    </form>
+    <div className="add-form-container">
+      <form>
+        <div className="add-link-form">
+          <img src={linkIcon} className="add-link-icon" alt="link icon" />
+          <input
+            name="linkAdd-input"
+            value={keyword}
+            onChange={handleKeywordChange}
+            placeholder="링크를 추가해보세요"
+            className="add-link-input"
+          ></input>
+          <button className="add-link-button" type="submit">
+            추가하기
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

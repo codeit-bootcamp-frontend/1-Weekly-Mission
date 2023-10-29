@@ -1,7 +1,12 @@
+.add-form-container {
+  background-color: var(--linkbrary-bg, #f0f6ff);
+}
+
 .add-link-form {
   position: relative;
   width: 90%;
 }
+
 form {
   display: flex;
   justify-content: center;
@@ -38,4 +43,6 @@ form {
   position: absolute;
   top: 8rem;
   left: 2rem;
+  width: 15px;
+  height: 15px;
 }

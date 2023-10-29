@@ -1,0 +1,32 @@
+.no-card-list {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 5rem 0 7rem;
+}
+
+.card-section {
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .card-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1124px) {
+  .card-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+}

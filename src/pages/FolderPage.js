@@ -37,12 +37,8 @@ function FolderPage() {
   return (
     <>
       <section className="folder-section">
-        <div className="add-section">
-          <LinkAddInput />
-        </div>
-        <div className="search-section">
-          <SearchBar />
-        </div>
+        <LinkAddInput />
+        <SearchBar />
         <div className="folder-buttons">
           <FolderButtonList folderList={folderList} onChange={loadCards} />
           <button type="button" className="add-folder-button">

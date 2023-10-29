@@ -8,15 +8,17 @@ function SearchBar() {
     setText(e.target.value);
   };
   return (
-    <form className="search-form">
-      <img className="search-icon" src={searchIcon} alt="search icon" />
-      <input
-        className="search-bar"
-        value={text}
-        placeholder="검색어를 입력하세요."
-        onChange={handleTitleChange}
-      ></input>
-    </form>
+    <div className="search-form-container">
+      <form className="search-form">
+        <img className="search-icon" src={searchIcon} alt="search icon" />
+        <input
+          className="search-bar"
+          value={text}
+          placeholder="검색어를 입력하세요."
+          onChange={handleTitleChange}
+        ></input>
+      </form>
+    </div>
   );
 }
 

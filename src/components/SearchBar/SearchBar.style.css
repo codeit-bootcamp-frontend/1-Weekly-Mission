@@ -1,3 +1,9 @@
+.search-form-container {
+  width: 100%;
+  padding: 6rem 4rem 9rem 4rem;
+  background-color: white;
+}
+
 .search-form {
   /* width: 100%; */
   position: relative;
@@ -19,6 +25,8 @@ input:focus {
 
 .search-icon {
   position: absolute;
-  top: 1rem;
+  top: 0;
   left: 1rem;
+  width: 15px;
+  height: 15px;
 }
