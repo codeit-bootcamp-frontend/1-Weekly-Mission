@@ -7,7 +7,7 @@ import { getFolder } from "api/api";
 import Hero from "components/hero/Hero";
 import Searchbar from "components/searchbar/Searchbar";
 import CardList from "components/card/CardList";
-import Loading from "components/loading/Loading";
+import Loading from "components/Loading";
 
 export default function Share() {
   const [folder, setFolder] = useState("");

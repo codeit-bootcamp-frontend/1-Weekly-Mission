@@ -5,7 +5,7 @@ import * as style from "./FolderContainerStyle";
 import { getAllFolders, getAllLinks } from "api/api";
 
 import CardList from "components/card/CardList";
-import Loading from "components/loading/Loading";
+import Loading from "components/Loading";
 import Searchbar from "components/searchbar/Searchbar";
 import FolderHero from "components/hero/HeroAboutFolder";
 import Categories from "components/Categories";
