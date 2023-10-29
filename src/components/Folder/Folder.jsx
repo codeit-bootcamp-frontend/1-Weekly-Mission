@@ -1,8 +1,10 @@
 import Header from "../Header/Header";
-import Main from "../Main/Main";
 import getSample from "../../api";
 import useAsync from "../../Hooks/useAsync";
 
+import SearchBar from "../SearchBar/SearchBar";
+import CardList from "../CardList/CardList";
+import Main from "../Main/Main";
 
 function Folder() {
   const [data, isLoading, LoadingError, getSampleAsync] = useAsync(() =>
@@ -17,7 +19,11 @@ function Folder() {
   return (
     <>
       {data && <Header name={name} owner={owner} />}
-      {data && <Main links={links} />}
+
+      <Main>
+        <SearchBar />
+        {data && <CardList links={links} />}
+      </Main>
     </>
   );
 }
