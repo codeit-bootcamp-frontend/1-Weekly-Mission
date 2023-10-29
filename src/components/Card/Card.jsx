@@ -6,7 +6,7 @@ import star_mark from '../../assets/image/star.png';
 import styled from 'styled-components';
 
 function Card({ item, path }) {
-
+  const createdAt = path === '/folder' ? item.created_at : item.createdAt;
 
   return (
     <CardWrapper>
@@ -17,7 +17,7 @@ function Card({ item, path }) {
       <CardInfoBox>
         <CardInfoTop>
           <CardPassedTime>
-            <Moment fromNow>{item.createdAt}</Moment>
+            <Moment fromNow>{createdAt}</Moment>
           </CardPassedTime>
           <button>
             <img src={card_config_icon} alt='카드 설정 버튼' />
