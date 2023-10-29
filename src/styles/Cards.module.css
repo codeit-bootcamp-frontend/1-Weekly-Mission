@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  justify-content: center;
+}
+
+.CardList {
+  display: grid;
+  grid-template-columns: repeat(3, 340px);
+  column-gap: 20px;
+  row-gap: 25px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .CardList {
+    grid-template-columns: repeat(2, 340px);
+    column-gap: 24px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .CardList {
+    grid-template-columns: 325px;
+    row-gap: 20px;
+  }
+}

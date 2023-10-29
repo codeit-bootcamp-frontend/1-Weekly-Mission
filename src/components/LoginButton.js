@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UserDataInfo } from './UserDataInfo.js';
+import UserDataInfo from './UserDataInfo.js';
 import { getUserData } from '../api/getUserData.js';
 import styles from '../styles/LoginButton.Module.css';
 

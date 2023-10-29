@@ -7,27 +7,25 @@ import { getFolders } from '../api/getFolders.js';
 import { useState, useEffect } from 'react';
 
 function Main() {
-  const [name, setName] = useState('');
-  const [owner, setOwner] = useState({});
+  const [folderData, setFolderData] = useState([]);
 
-  const loadFolderData = async () => {
-    const {
-      folder: { name, owner },
-    } = await getFolders();
-
-    setName(name);
-    setOwner({ ...owner });
+  const handleLoadFolderData = async () => {
+    try {
+      setFolderData(await getFolders());
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    loadFolderData();
+    handleLoadFolderData();
   }, []);
 
   return (
     <div className={styles.root}>
-      <FolderInfo name={name} owner={owner} />
+      <FolderInfo folderData={folderData} />
       <Search />
-      {/* <Cards /> */}
+      <Cards folderData={folderData} />
     </div>
   );
 }
