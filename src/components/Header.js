@@ -7,7 +7,7 @@ import { AccountContext } from '../contexts/AccountContext';
 
 
 
-const Header = () => {
+const Header = ({isHeaderStyle}) => {
     const {account, userErrorMessage} = useContext(AccountContext);
     const {name, email, profileImageSource} = account;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -16,7 +16,7 @@ const Header = () => {
     setWindowWidth(window.innerWidth);
     })
     return (
-        <header>
+        <header style={{position: isHeaderStyle ? "static" : "sticky"}}>
              <div className="inner">
                 <h1>
                     <a href="/"><img src={logoImg} alt="logo"/></a>

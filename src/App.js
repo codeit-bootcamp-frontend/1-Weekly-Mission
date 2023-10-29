@@ -12,6 +12,7 @@ import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const [account, setAccount] = useState({});
+  const [isHeaderStyle, setIsHeaderStyle] = useState(false);
   const [userErrorMessage, setUserErrorMessage] = useState("");
   
   const handleLoad = async () => {
@@ -32,10 +33,10 @@ function App() {
   return (
     <AccountContext.Provider value={{account, userErrorMessage}}>
       <div className="App">
-        <Header/>
+        <Header isHeaderStyle={isHeaderStyle}/>
         <Routes>
           <Route path='/shared' element={<Shared/>}/>
-          <Route path='/folder' element={<Folder/>}>
+          <Route path='/folder' element={<Folder setIsHeaderStyle={setIsHeaderStyle}/>}>
             <Route index element={<Folder/>}/>
             <Route path=':folderId' element={<Folder/>}/>
           </Route>

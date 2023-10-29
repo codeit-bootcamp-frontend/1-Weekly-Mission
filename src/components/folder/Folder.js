@@ -8,7 +8,7 @@ import AddLink from './AddLink';
 import UserFolder from './UserFolder';
 import { useParams } from 'react-router-dom';
 
-const Folder = () => {
+const Folder = ({setIsHeaderStyle}) => {
     const {account, userErrorMessage} = useContext(AccountContext)
     const [folders, setFolders] = useState([])
     const [personalfolder, setPersonalfolder] = useState([]);
@@ -45,6 +45,7 @@ const Folder = () => {
     useEffect(() => {
         handleUserFloders();
         handleFolderLoad();
+        setIsHeaderStyle(true);
       }, [id ,folderId]);
     return (
         <div className='folder'>
