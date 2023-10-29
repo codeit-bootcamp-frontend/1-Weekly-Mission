@@ -72,7 +72,7 @@ const FolderMain = ({ selectedFolder, userID }) => {
         { checkEmptyFolder > 0 &&
         <Title>
           <h1>유용한 글</h1>
-          { folderId !== 0 && 
+          { folderId > 0 && 
           <Options>
             <Option icon={shareIcon}>공유</Option>
             <Option icon={penIcon}>이름 변경</Option>

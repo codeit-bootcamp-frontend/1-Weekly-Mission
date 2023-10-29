@@ -8,8 +8,11 @@ import useGetSelectedFolder from '../hooks/useGetSelectedFolder';
 import styled from "styled-components";
 import { useState, useEffect } from 'react';
 import { FolderProvider  }  from '../context/FolderContext';
+import { useParams } from 'react-router-dom';
 
 const Folder = () => {
+  // const { id } = useParams();  (path='/folder/:id')
+
   // 1번 유저로 로그인된 상태로 가정 
   const [userId, setUserId] = useState(1);
 

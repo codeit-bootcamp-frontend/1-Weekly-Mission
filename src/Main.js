@@ -10,7 +10,9 @@ const Main = () => {
     <Routes>
       <Route path='/' element={<Greeting/>} />
       <Route path='/shared' element={<Shared />} />
-        <Route path='/folder' element={<Folder />} />
+      {/* <Route path='/folder/:id' element={<Folder />} />   */}
+      {/* 로그인하면 이렇게 구현 */}
+      <Route path='/folder' element={<Folder />} />  
     </Routes>
   </BrowserRouter>
   );
