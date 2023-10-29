@@ -1,38 +1,59 @@
 @import url('../../../../styles/global.css');
 
 .add-link-input {
-  width: 760px;
-  padding: 22px 20px;
-  border: 1px solid var(--color-primary);
-  border-radius: 15px;
+  width: 100%;
+  border: none;
+}
+
+.add-link-input:focus {
+  outline: none;
 }
 
 .add-link-input::placeholder {
-  text-indent: 24px;
   color: var(--color-gray-40);
 }
 
 .add-link-input-container {
+  width: 800px;
+  border: 1px solid var(--color-primary);
+  border-radius: 15px;
+  padding: 16px 20px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background-color: var(--color-white);
 }
 
 .add-link-icon {
-  position: absolute;
-  left: 16px;
-  top: 20px;
   color: var(--color-black);
 }
 
 .add-link-button {
-  width: 80px;
-  padding: 10px 15px;
+  width: 92px;
+  padding: 10px 16px;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue);
   border: none;
   color: var(--color-gray-10);
   font-weight: 600;
   font-size: 14px;
-  position: absolute;
-  top: 12px;
-  right: 20px;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .add-link-input-container {
+    width: 704px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .add-link-input-container {
+    width: 325px;
+    padding: 8px 10px;
+  }
+
+  .add-link-input {
+    width: 50%;
+  }
 }

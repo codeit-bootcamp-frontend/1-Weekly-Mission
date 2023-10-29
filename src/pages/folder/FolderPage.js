@@ -96,14 +96,16 @@ export default function FolderPage() {
                   </div>
                 ))}
             </div>
-            <button type="button" className="folder-add-button">
-              폴더 추가
-              <img
-                src={addPrimaryIcon}
-                alt="add-icon"
-                className="folder-add-icon"
-              />
-            </button>
+            {isMobileView || (
+              <button type="button" className="folder-add-button">
+                폴더 추가
+                <img
+                  src={addPrimaryIcon}
+                  alt="add-icon"
+                  className="folder-add-icon"
+                />
+              </button>
+            )}
           </div>
           <div className="folder-category-container">
             <h1 className="folder-category">{categoryTitle}</h1>

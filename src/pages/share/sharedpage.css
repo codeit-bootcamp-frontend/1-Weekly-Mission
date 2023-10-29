@@ -19,7 +19,6 @@
 .links-container {
   display: grid;
   place-items: center;
-  /* max-width: 1124px; */
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   column-gap: 20px;

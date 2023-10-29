@@ -13,3 +13,9 @@
   background-color: var(--color-primary);
   color: var(--color-white);
 }
+
+@media (max-width: 767px) {
+  .sort-button {
+    padding: 6px 10px;
+  }
+}
