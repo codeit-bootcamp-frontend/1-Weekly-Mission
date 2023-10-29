@@ -3,6 +3,7 @@ import '../../styles/global.css';
 import './SharedPage.css';
 import { getFolder } from '../../api/api';
 import CardList from '../../components/card/CardList';
+import CardSearchBar from '../../components/card/CardSearchBar';
 
 function SharedPage() {
   const [links, setLinks] = useState([]);
@@ -20,7 +21,7 @@ function SharedPage() {
 
   return (
     <>
-      <header className="sharedHeader">
+      <header className="header-share">
         <div className="folder-info">
           <div className="folder-owner">
             <div className="owner-profile">
@@ -34,7 +35,8 @@ function SharedPage() {
           <div className="folder-name">{folderInfo.name}</div>
         </div>
       </header>
-      <main className="sharedMain">
+      <main className="main-share">
+        <CardSearchBar />
         <CardList links={links} />
       </main>
     </>

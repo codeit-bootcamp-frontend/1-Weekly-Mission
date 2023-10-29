@@ -30,7 +30,7 @@
     font-weight: 600;
 }
 
-.sharedMain{
+.main-share{
     display: flex;
     flex-direction: column;
     justify-content: center;
