@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/global.css';
-import './HomePageStyle.css';
-import {
-  logoImg,
-  snsIconF,
-  snsIconT,
-  snsIconY,
-  snsIconI,
-  searchIcon,
-} from '../../constants/globalImages';
+import './SharedPage.css';
+import { searchIcon } from '../../constants/globalImages';
 import { getFolder, getUser } from '../../api/api';
 import Card from '../../components/card/Card';
 
-function HomePage() {
+function SharedPage() {
   const [links, setLinks] = useState([]);
   const [folderInfo, setFolderInfo] = useState({});
   const [user, setUser] = useState({});
@@ -67,4 +60,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default SharedPage;
