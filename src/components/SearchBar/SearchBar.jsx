@@ -6,6 +6,7 @@ function SearchBar() {
     <S.SearchBarContainer>
       <S.SearchIcon/>
       <S.SearchInput type="text" placeholder="링크를 검색해 보세요." />
+      
     </S.SearchBarContainer>
   );
 }

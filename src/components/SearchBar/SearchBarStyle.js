@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import SearchImage from "../../assets/Search.png";
+import { flexCenter } from "../../style/common";
+import colors from "../../style/colors";
 export const SearchBarContainer = styled.div`
   position: relative;
   gap: 8px;
@@ -26,3 +28,4 @@ export const SearchInput = styled.input`
   background-position: 15px 15px;
   padding-left: 45px;
 `;
+
