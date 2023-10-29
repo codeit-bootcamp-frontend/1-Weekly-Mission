@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import Button from "components/button";
 import { DEFAULT_PROFILE_IMAGE } from "constants/common";
 import QUERY_KEYS from "constants/queryKeys";
-import { getUserProfile } from "libs/apis/user";
+import { getUserProfile } from "libs/apis/profile";
 import styles from "styles/modules/user.module.css";
 import manageStatus from "utils/manageStatus";
 
 function UserInform() {
   const { isLoading, isError, data } = useQuery<User>({
-    queryKey: [QUERY_KEYS.sample.user],
+    queryKey: [QUERY_KEYS.user],
     queryFn: getUserProfile,
   });
 
@@ -18,14 +17,12 @@ function UserInform() {
 
   return (
     <div className={styles.profileWrapper}>
-      {data?.email === undefined ? (
-        <Button content="로그인" link="/signin" />
-      ) : (
-        <>
+      {data?.data.map((item) => (
+        <div className={styles.profileInWrapper} key={item.id}>
           <img src={DEFAULT_PROFILE_IMAGE} alt="profile" />
-          <span>{data?.email}</span>
-        </>
-      )}
+          <span>{item.email}</span>
+        </div>
+      ))}
     </div>
   );
 }
