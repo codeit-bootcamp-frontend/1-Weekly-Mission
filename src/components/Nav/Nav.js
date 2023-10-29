@@ -6,16 +6,18 @@ import { useState } from "react";
 
 const Nav = () => {
   const [isLoggedin, setIsLogin] = useState(false);
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
 
   const handleLogin = async () => {
     let result;
     try {
       result = await getLoginInfo();
-      if (result?.id) {
+      if (!result) return;
+      const loginUser = result.data[0];
+      if (loginUser?.id) {
         //Id 값이 있을 경우 로그인 된것으로 간주
         setIsLogin(true);
-        setUserInfo(result);
+        setUserInfo(loginUser);
       }
     } catch (error) {
       console.error(error);

@@ -1,11 +1,9 @@
 /**로그인 회원정보 찾기
- *
+ *"https://bootcamp-api.codeit.kr/api/sample/user"
  * @returns
  */
 const getLoginInfo = async () => {
-  const response = await fetch(
-    "https://bootcamp-api.codeit.kr/api/sample/user"
-  );
+  const response = await fetch("https://bootcamp-api.codeit.kr/api/users/1");
   if (!response.ok) {
     throw new Error("로그인 실패");
   }
