@@ -1,5 +1,5 @@
 import * as S from "./linkCardList.style.js";
-import LinkCardComponent from "components/linkCard/LinkCard";
+import LinkCard from "components/linkCard/LinkCard";
 
 export default function LinkCardList({ linkList, page }) {
   return (
@@ -7,7 +7,7 @@ export default function LinkCardList({ linkList, page }) {
       <S.LinkCardListContainer>
         {linkList.map((linkCardData) => {
           return (
-            <LinkCardComponent
+            <LinkCard
               key={linkCardData.id}
               cardData={linkCardData}
               page={page}

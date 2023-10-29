@@ -6,7 +6,7 @@ import twitterIcon from "assets/icons/twitter.svg";
 import youtubeIcon from "assets/icons/youtube.svg";
 import instagramIcon from "assets/icons/instagram.svg";
 
-export default function FooterComponent() {
+export default function Footer() {
   return (
     <S.FooterWrapper>
       <S.FooterContainer>

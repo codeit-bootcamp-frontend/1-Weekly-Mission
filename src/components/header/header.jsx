@@ -3,7 +3,7 @@ import logoImgSource from "assets/icons/logo.svg";
 import profileImgSource from "assets/icons/profile.svg";
 import { useUserProfileContext } from "contexts/UserProfileContext.js";
 
-export default function HeaderComponent({ email }) {
+export default function Header({ email }) {
   const { userProfile } = useUserProfileContext();
   return (
     <S.HeaderWrapper>

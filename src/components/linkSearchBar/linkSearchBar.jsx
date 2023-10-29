@@ -1,7 +1,7 @@
 import * as S from "./linkSearchBar.style.js";
 import searchIcon from "assets/icons/search.svg";
 
-export default function LinkSearchBarComponent() {
+export default function LinkSearchBar() {
   return (
     <S.LinkSearchForm
       onSubmit={(e) => {

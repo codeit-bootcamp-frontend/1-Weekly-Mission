@@ -15,7 +15,7 @@ const LINK_ITEM_KEY = {
   },
 };
 
-export default function LinkCardComponent({ cardData, page }) {
+export default function LinkCard({ cardData, page }) {
   const { url, description, title } = cardData;
   const createAtKey = LINK_ITEM_KEY.createdAt[page];
   const imageSourceKey = LINK_ITEM_KEY.imageSource[page];

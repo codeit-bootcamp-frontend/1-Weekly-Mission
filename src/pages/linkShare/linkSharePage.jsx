@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as S from "./linkSharePage.style.js";
 import { getSampleUserFolder } from "pages/linkShare/linkSharePage.js";
-import LinkSearchBarComponent from "components/linkSearchBar/LinkSearchBar.jsx";
+import LinkSearchBar from "components/linkSearchBar/LinkSearchBar.jsx";
 import useAsync from "hooks/useAsync.js";
 import { useUserProfileContext } from "contexts/UserProfileContext";
 import LinkCardList from "components/linkCardList/LinkCardList.jsx";
@@ -43,7 +43,7 @@ export default function LinkSharePage() {
       )}
 
       <S.FolderContentsContainer>
-        <LinkSearchBarComponent />
+        <LinkSearchBar />
         {folder?.links && (
           <LinkCardList linkList={folder.links} page={"linkShare"} />
         )}

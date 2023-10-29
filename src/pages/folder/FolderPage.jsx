@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 
 import * as S from "./folderPage.style.js";
-import LinkAddBarComponent from "components/linkAddBar/linkAddBar.jsx";
-import FolderTabListComponent from "components/folderTabList/FolderTabList.jsx";
+import LinkAddBar from "components/linkAddBar/linkAddBar.jsx";
+import FolderTabList from "components/folderTabList/FolderTabList.jsx";
 import { getUserFolderList } from "pages/folder/folderPage.js";
-import LinkSearchBarComponent from "components/linkSearchBar/LinkSearchBar.jsx";
+import LinkSearchBar from "components/linkSearchBar/LinkSearchBar.jsx";
 import addIcon from "assets/icons/add.svg";
 
 import { ENTIRE_LINK_FOLDER_NAME, SAMPLE_USER_ID } from "utils/constants.js";
@@ -36,14 +36,14 @@ export default function FolderPage() {
   return (
     <>
       <S.FolderAddWrapper>
-        <LinkAddBarComponent />
+        <LinkAddBar />
       </S.FolderAddWrapper>
 
       <S.LinkFolderListContainer>
-        <LinkSearchBarComponent />
+        <LinkSearchBar />
 
         <S.FolderTabListContainer>
-          <FolderTabListComponent folderList={folderList} />
+          <FolderTabList folderList={folderList} />
           <S.FolderAddButton>
             폴더 추가
             <S.FolderAddIcon src={addIcon} alt="폴더 추가 아이콘" />
