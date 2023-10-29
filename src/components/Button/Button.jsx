@@ -1,8 +1,8 @@
 import * as S from "./styles"
 
-const Button = ({ size, link, text }) => {
+const Button = ({ size, text }) => {
   return (
-    <S.CTA size={size} to={link}>
+    <S.CTA size={size}>
       <span>{text}</span>
     </S.CTA>
   )

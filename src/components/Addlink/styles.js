@@ -70,15 +70,24 @@ const AddLinkImage = styled.img`
 
 const AddLinkContentInput = styled.input`
   color: var(--linkbrary-gray-60, #9fa6b2);
-
+  width: 60rem;
   border: none;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 150% */
+  line-height: 2.4rem;
 
   &:focus {
     outline: none;
+  }
+
+  @media screen and (max-width: 1124px) {
+    width: 50rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 13rem;
+    font-size: 1.3rem;
   }
 `
 

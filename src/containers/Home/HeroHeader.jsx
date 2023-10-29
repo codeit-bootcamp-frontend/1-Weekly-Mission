@@ -1,5 +1,5 @@
 import IMAGES from "../../assets/images"
-import Button from "../../components/Button/Button"
+import LinkButton from "../../components/Button/LinkButton"
 import * as S from "./styles.js"
 
 const HeroHeader = () => {
@@ -11,7 +11,7 @@ const HeroHeader = () => {
         <br />
         쉽게 저장하고 관리해 보세요
       </S.HeroSolganHeader>
-      <Button to="signup" size="long" text="링크 추가하기"></Button>
+      <LinkButton to="signup" size="long" text="링크 추가하기"></LinkButton>
       <S.HeroImage src={IMAGES.hero} alt="Linkbrary 서비스 소개" />
     </S.HeroHeaderBox>
   )

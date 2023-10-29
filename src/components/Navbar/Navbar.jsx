@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 import IMAGES from "../../assets/images.js"
-import Button from "../Button/Button.jsx"
+import LinkButton from "../Button/LinkButton.jsx"
 import * as S from "./styles.js"
 
 const Logo = ({ link = "/", src, alt, height }) => {
@@ -15,14 +15,11 @@ const Logo = ({ link = "/", src, alt, height }) => {
 const Profile = ({ items }) => {
   // 기존 코드 - Sample 데이터 받을 때와 받는 데이터 객체 구조가 달라 if - else 문으로 처리
   // const { email, image_source } = items
-  console.log(items)
-  let email, image_source
-  if (items.profileImageSource) {
-    image_source = items.profileImageSource
-  } else {
-    image_source = items.image_source
-  }
-  email = items.email
+  const email = items.email
+  const image_source = items.profileImageSource
+    ? items.profileImageSource
+    : items.image_source
+
   return (
     <S.ProfileBox>
       <S.ProfileImage src={image_source} alt="profile" />
@@ -47,7 +44,7 @@ const Navbar = ({ userData, fixed }) => {
       <S.NavInnerBox>
         <Logo link="/" src={IMAGES.logo} alt="Linkbrary" height={24} />
         {!data?.id ? (
-          <Button link="/signin" size="short" text="로그인" />
+          <LinkButton link="/signin" size="short" text="로그인" />
         ) : (
           <Profile items={data} />
         )}

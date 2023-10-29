@@ -30,7 +30,7 @@ const FolderBoxText = styled.p`
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
     display: flex;
   }
 `
@@ -59,6 +59,7 @@ const FolderAddBox = styled.div`
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  align-items: center;
 
   @media screen and (max-width: 767px) {
     display: flex;
@@ -66,7 +67,7 @@ const FolderAddBox = styled.div`
     padding: 8px 16px;
     align-items: flex-start;
     gap: 0.8rem;
-    right: 18.5rem;
+    right: 38%;
     bottom: 10.1rem;
     transition: 0.5s;
     z-index: 2;

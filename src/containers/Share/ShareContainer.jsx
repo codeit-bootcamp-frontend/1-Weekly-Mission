@@ -18,7 +18,6 @@ const Owner = ({ items }) => {
 
 const ShareContainer = ({ shareData }) => {
   const { folder } = shareData
-  console.log(folder)
   return (
     <>
       <Owner items={folder} />
