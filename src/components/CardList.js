@@ -28,6 +28,19 @@ const CardList = ({ folderData, isLoading }) => {
       </ul>
     );
   }
+  if (folderData && folderData.data) {
+    const { data } = folderData;
+
+    return (
+      <ul className={styles.CardList}>
+        {data.map((item) => (
+          <li key={item.id}>
+            <CardItem item={item} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
 };
 
 export default CardList;

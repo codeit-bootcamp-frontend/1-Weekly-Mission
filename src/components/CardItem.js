@@ -53,16 +53,38 @@ const prettyFormatTimeDiff = (diff) => {
 };
 
 function CardItem({ item }) {
-  const { createdAt, url, title, description, imageSource } = item;
+  if (item.createdAt) {
+    const { createdAt, url, title, description, imageSource } = item;
+    const formattedCreatedAt = formatDate(createdAt);
+    const timeDiff = getTimeDiff(createdAt);
+    const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
 
-  const formattedCreatedAt = formatDate(createdAt);
-  const timeDiff = getTimeDiff(createdAt);
+    return (
+      <a className={styles.CardItem} href={url} target="_blank" rel="noopener noreferrer">
+        <div className={styles.img_container}>
+          <img className={styles.img} src={imageSource === undefined ? logo : imageSource} alt={title} />
+        </div>
+        <div className={styles.container}>
+          <p className={styles.time_diff}>{formatTimeDiff}</p>
+          <p className={styles.description}>
+            {title}
+            <br />
+            {description}
+          </p>
+          <p className={styles.createdAt}>{formattedCreatedAt}</p>
+        </div>
+      </a>
+    );
+  }
+  const { created_at, url, title, description, image_source } = item;
+  const formattedCreatedAt = formatDate(created_at);
+  const timeDiff = getTimeDiff(created_at);
   const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
 
   return (
     <a className={styles.CardItem} href={url} target="_blank" rel="noopener noreferrer">
       <div className={styles.img_container}>
-        <img className={styles.img} src={imageSource === undefined ? logo : imageSource} alt={title} />
+        <img className={styles.img} src={image_source === null ? logo : image_source} alt={title} />
       </div>
       <div className={styles.container}>
         <p className={styles.time_diff}>{formatTimeDiff}</p>
