@@ -7,6 +7,7 @@ import useAsync from '../../hooks/useAsync';
 import { getLinks } from '../../api/api';
 import CardList from '../Card/CardList';
 import EmptyCardList from '../Card/EmptyCardList';
+import FloatingActionButton from '../../styles/FloatingActionButton';
 
 const INIT_PAGE = { id: 0, name: '전체' };
 
@@ -42,6 +43,7 @@ function FolderMain() {
       <FolderCategory onGetCategory={handleLoadLinks} />
       <FolderCategoryControl name={name} />
       {cards.length !== 0 ? <CardList items={cards} /> : <EmptyCardList />}
+      <FloatingActionButton />
     </Main>
   );
 }

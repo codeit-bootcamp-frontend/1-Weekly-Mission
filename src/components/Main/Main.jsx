@@ -8,6 +8,7 @@ const Main = styled.main`
   gap: 3.2rem;
   padding: 0 2.5rem;
   min-height: 100vh;
+  position: relative;
 
   @media (min-width: 768px) {
     gap: 4rem;
