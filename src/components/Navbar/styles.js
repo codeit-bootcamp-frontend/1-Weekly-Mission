@@ -1,15 +1,16 @@
 import styled from "styled-components"
 
 const NavBox = styled.nav`
-  position: ${(props) => (props.isFixed ? "fixed" : "relative")};
-  top: ${(props) => (props.isFixed ? "0rem" : "-9.4rem")};
+  position: relative;
+  top: -9.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 9.4rem;
   background-color: var(--linkbrary-bg);
-  padding: 0 20rem;
+  padding: 2rem 20rem;
+  gap: 0.8rem;
   z-index: 2;
 
   @media (min-width: 768px) and (max-width: 1199px) {

@@ -57,8 +57,19 @@ const CardImage = ({ imgUrl }) => {
 }
 
 const Card = ({ items }) => {
-  const { created_at, description, image_source, url } = items
+  // 기존 코드 - SAMPLE 데이터를 받을 때 데이터 구조가 달라 if - els문으로 처리
+  // const { created_at, description, image_source, url } = items
+  let created_at, image_source, description, url
+  if (items.createdAt) {
+    created_at = items.createdAt
+    image_source = items.imageSource
+  } else {
+    created_at = items.created_at
+    image_source = items.image_source
+  }
 
+  description = items.description
+  url = items.url
   return (
     <S.CardHref href={url} target="_blank" rel="noreferrer">
       <CardImage imgUrl={image_source} />

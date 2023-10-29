@@ -87,6 +87,7 @@ const HomeDescriptionParagraph = styled.p`
   font-weight: 500;
   color: var(--linkbrary-description);
   line-height: 150%;
+  word-break: keep-all;
 
   @media screen and (max-width: 767px) {
     font-size: 1.5rem;

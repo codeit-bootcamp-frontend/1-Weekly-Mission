@@ -22,6 +22,7 @@ const App = () => {
             <Route index element={<FolderPage />} />
             <Route path=":folderId" element={<FolderPage />} />
           </Route>
+
           <Route path="share" element={<SharePage />} />
 
           <Route path="signup" element={<SignUpPage />} />

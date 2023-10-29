@@ -8,24 +8,21 @@ import ShareContainer from "../../containers/Share/ShareContainer"
 import * as S from "../styles.js"
 
 const SharePage = () => {
-  const userProfile = useFetchUserProfileSample()
-  const sampleFolder = useFetchSampleFolder()
-  const userLoading = userProfile?.loading
-  const folderLoading = sampleFolder?.loading
+  let [userProfile, profileLoading, profileError, profileRefetch] =
+    useFetchUserProfileSample()
+  const [sampleFolder, folderLoading, folderError, folderRefetch] =
+    useFetchSampleFolder()
 
-  let userData, folderData
-  if (!userLoading && !folderLoading) {
-    userData = userProfile?.data
-    folderData = sampleFolder?.data
-  }
+  userProfile = [userProfile]
 
-  if (userData && folderData) {
+  const fixedBool = true
+  if (!profileLoading && !folderLoading) {
     return (
       <>
         <S.StyledHeader>
-          <Navbar userData={userData} isFixed />
+          <Navbar userData={userProfile} fixed={fixedBool} />
         </S.StyledHeader>
-        <ShareContainer shareData={folderData} />
+        <ShareContainer shareData={sampleFolder} />
         <Footer />
       </>
     )

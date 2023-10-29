@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const StyledHeader = styled.header`
-  margin-top: 8rem;
+  margin-top: 9.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
