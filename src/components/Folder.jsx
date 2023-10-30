@@ -1,23 +1,23 @@
 import styled from 'styled-components';
 import CardList from './CardList';
-import { useCallback, useEffect, useState } from 'react';
-import useAsync from '../hooks/useAsync';
+import { useEffect, useState } from 'react';
 import { getCards } from '../api/api';
 import FolderButton from './FolderButton';
+import NoSavedLinks from './NoSavedLinks';
 
 const INITIAL_FOLDER = {
   id: '',
   name: '전체',
 };
 
-function FolderList({ folderList = null, onChange }) {
+function FolderList({ folderList = null, getCardList }) {
   const [folderId, setFolderId] = useState('');
   const [folderName, setFolderName] = useState('전체');
 
   const handleButton = (name, id) => {
     setFolderId(id);
     setFolderName(name);
-    onChange(id);
+    getCardList(id);
   };
   return (
     <div>
@@ -41,32 +41,23 @@ function FolderList({ folderList = null, onChange }) {
 }
 
 function Folder({ folderList = null }) {
-  // const [cards, setCards] = useState();
-  // const [isLoadingCards, loadingCardsError, getCardsAsync] = useAsync(getCards);
+  const [cards, setCards] = useState();
+  const getCardList = async (id = '') => {
+    const result = await getCards(id);
+    setCards(() => {
+      return [...result?.data];
+    });
+  };
 
-  // const handleCardLoad = useCallback(
-  //   async (id = '') => {
-  //     const result = await getCardsAsync(id);
-  //     if (!result) {
-  //       return;
-  //     }
-  //     const receivedCards = [...result?.data]; // 배열로 받음
-  //     console.log(receivedCards);
-  //     setCards(receivedCards);
-  //   },
-  //   [getCardsAsync],
-  // );
-
-  // useEffect(() => {
-  //   handleCardLoad();
-  // }, [handleCardLoad]);
+  useEffect(() => {
+    getCards();
+  }, []);
 
   return (
     <Container>
-      <FolderList folderList={folderList} onChange={getCards} />
-      <NoSavedLinks>
-        <p>저장된 링크가 없습니다.</p>
-      </NoSavedLinks>
+      <FolderList folderList={folderList} getCardList={getCardList} />
+      <NoSavedLinks />
+      <CardList cards={cards} />
     </Container>
   );
 }
@@ -83,25 +74,10 @@ const Container = styled.div`
   border: 1px solid;
 `;
 
-const NoSavedLinks = styled.div`
-  display: flex;
-  width: 106rem;
-  height: 10rem;
-  padding: 4.1rem 0 3.5rem 0;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    color: #000;
-    text-align: center;
-    font-size: 1.6rem;
-    line-height: 24px;
-  }
-`;
-
 const FolderListContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.8rem;
+  margin-bottom: 2.4rem;
   border: 1px solid;
 `;

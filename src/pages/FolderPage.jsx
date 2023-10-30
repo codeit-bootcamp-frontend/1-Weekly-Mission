@@ -8,7 +8,7 @@ import useAsync from '../hooks/useAsync';
 import { getFolders } from '../api/api';
 import { useCallback, useEffect, useState } from 'react';
 
-function FolderPage({ cards }) {
+function FolderPage() {
   const param = useParams();
   const [folderList, setFolderList] = useState([]);
 

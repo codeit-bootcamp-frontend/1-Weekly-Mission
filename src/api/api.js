@@ -9,8 +9,15 @@ export async function getUserProfile() {
   return await response.json();
 }
 
-export async function getCards() {
-  const response = await fetch(`${BASE_URL}/users/1/links?folderId=16`); // 임시로 16
+export async function getCards(id = '') {
+  let url = '';
+  if (id === '') {
+    url = `${BASE_URL}/${USER_ID}/links`;
+  } else {
+    const query = `?folderId=${id}`;
+    url = `${BASE_URL}/${USER_ID}/links${query}`;
+  }
+  const response = await fetch(`${url}`);
   if (!response.ok) {
     throw new Error('Cards Error');
   }
