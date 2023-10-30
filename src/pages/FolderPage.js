@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 66.25rem;
+  max-width: 66.25rem;
   height: 6.25rem;
   line-height: 1.5rem;
 `;
