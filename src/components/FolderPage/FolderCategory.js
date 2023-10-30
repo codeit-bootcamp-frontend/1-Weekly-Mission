@@ -2,21 +2,24 @@ import { getUserFolderCategory } from "../../utils/api";
 import { useState, useEffect } from "react";
 import "./FolderCategory.css";
 
-function Category({ item, className }) {
-  const [isSelect, setIsSelect] = useState(false);
-  const { name } = item;
-
+function Category({ item, className, onClick, categoryId }) {
+  const [isSelected, setIsSelected] = useState(false);
+  const { name, id } = item;
   const handleClick = (e) => {
-    if (e.target.className === "folderCategory selected") {
-      setIsSelect(false);
-    } else {
-      setIsSelect(true);
-    }
+    onClick(item);
+    // console.log(categoryId, " :  ", item.id);
+    // if (categoryId === item.id) {
+    //   setIsSelected(true);
+    // } else {
+    //   setIsSelected(false);
+    // }
   };
 
   return (
     <li
-      className={(className += isSelect ? " selected" : "")}
+      className={
+        (className = isSelected ? " folderCategory selected" : "folderCategory")
+      }
       onClick={handleClick}
     >
       {name}
@@ -24,13 +27,12 @@ function Category({ item, className }) {
   );
 }
 
-function FolderCategory() {
+function FolderCategory({ folderId, handleChange }) {
   const [folderCategory, setFolderCategory] = useState([]);
-  const className = "folderCategory";
+  const [categoryId, setCategoryId] = useState(null);
 
   const handleLoad = async () => {
     let result;
-
     try {
       result = await getUserFolderCategory();
       if (!result) return;
@@ -40,6 +42,12 @@ function FolderCategory() {
     }
   };
 
+  const handleClick = (item) => {
+    if (!item) setCategoryId(null);
+    setCategoryId(item.id);
+
+    handleChange(item.id);
+  };
   useEffect(() => {
     handleLoad();
   }, []);
@@ -47,10 +55,20 @@ function FolderCategory() {
   return (
     <div className="folderCategoryContainer">
       <ul className="folderCategoryList">
-        <li className="folderCategory">전체</li>
+        <li
+          className={!categoryId ? "folderCategory selected" : "folderCategory"}
+          onClick={handleClick}
+        >
+          전체
+        </li>
         {folderCategory &&
           folderCategory.map((item) => (
-            <Category key={item.id} item={item} className={className} />
+            <Category
+              key={item.id}
+              item={item}
+              onClick={handleClick}
+              categoryId={categoryId}
+            />
           ))}
       </ul>
     </div>

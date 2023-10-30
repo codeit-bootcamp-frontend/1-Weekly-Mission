@@ -26,3 +26,10 @@
   color: #fdfdfd;
   border: 0;
 }
+
+@media (max-width: 1124px) {
+  .linkAddInputContainer {
+    margin: 0 32px;
+    width: auto;
+  }
+}

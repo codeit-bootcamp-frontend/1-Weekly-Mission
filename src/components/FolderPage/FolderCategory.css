@@ -25,3 +25,13 @@
   background-color: #6d6afe;
   color: #f5f5f5;
 }
+
+@media (max-width: 767px) {
+  .folderCategoryList {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(1, 50px);
+    gap: 20px;
+  }
+}

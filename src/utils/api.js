@@ -47,14 +47,16 @@ const getUserFolderCategory = async () => {
  *
  * @returns
  */
-const getUserLinkData = async () => {
-  const response = await fetch(`${BASE_URL}/users/1/links`);
+const getUserLinkData = async (folderId = "") => {
+  const response = await fetch(
+    `${BASE_URL}/users/1/links?folderId=${folderId}`
+  );
   if (!response.ok) {
     throw new Error("링크 데이터를 불러우는데 실패 했습니다.");
   }
 
   const body = await response.json();
-
+  console.log("body:  ", body);
   return body;
 };
 

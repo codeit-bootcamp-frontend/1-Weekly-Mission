@@ -4,7 +4,7 @@
   gap: 40px;
   margin: 40px;
 }
-.LinkList {
+.linkList {
   display: grid;
   place-items: center;
   grid-template-columns: repeat(3, 340px);
@@ -15,7 +15,21 @@
   margin: auto;
 }
 
-.LinkList li {
+.linkList li {
   list-style: none;
   width: 340px;
+}
+
+/* tablet */
+@media (max-width: 1124px) {
+  .linkList {
+    grid-template-columns: repeat(2, 340px);
+  }
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  .linkList {
+    grid-template-columns: repeat(1, 340px);
+  }
 }

@@ -36,3 +36,10 @@
 .searchLinkInput:focus + .searchImg {
   display: none;
 }
+
+@media (max-width: 1124px) {
+  .searchLinkContainer {
+    margin: 0 32px;
+    width: auto;
+  }
+}
