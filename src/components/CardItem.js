@@ -57,7 +57,7 @@ const prettyFormatTimeDiff = (diff) => {
 };
 
 function CardItem({ item }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   if (item.createdAt) {
     const { createdAt, url, title, description, imageSource } = item;
@@ -87,7 +87,7 @@ function CardItem({ item }) {
   const timeDiff = getTimeDiff(created_at);
   const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
 
-  const handleToggleModal = () => setIsModalOpen(!isModalOpen);
+  const handleToggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <div className={styles.CardItem}>
@@ -100,11 +100,11 @@ function CardItem({ item }) {
       <div className={styles.content_container}>
         <div className={styles.container}>
           <p className={styles.time_diff}>{formatTimeDiff}</p>
-          <button onClick={handleToggleModal}>
+          <button onClick={handleToggleMenu}>
             <img src={kebabImg} alt="케밥 이미지" />
           </button>
-          {isModalOpen && (
-            <div className={styles.modal}>
+          {isMenuOpen && (
+            <div className={styles.menu}>
               <button>삭제하기</button>
               <button>폴더에 추가</button>
             </div>

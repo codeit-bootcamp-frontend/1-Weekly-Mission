@@ -49,7 +49,7 @@
   font-size: 1.3rem;
 }
 
-.modal {
+.menu {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -62,11 +62,11 @@
   z-index: 1;
 }
 
-.modal button {
+.menu button {
   padding: 0.7rem 1.2rem;
 }
 
-.modal button:hover {
+.menu button:hover {
   background: var(--linkbrary-gray-10, #e7effb);
   color: var(--linkbrary-primary-color, #6d6afe);
 }
