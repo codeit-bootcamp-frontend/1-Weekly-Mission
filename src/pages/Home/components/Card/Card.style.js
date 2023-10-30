@@ -15,47 +15,37 @@ export const CardContainer = styled.section`
   ${onTablet} {
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
+    grid-template-areas:
+      'title img'
+      'description img';
     column-gap: 5.1rem;
     row-gap: 0;
 
-    ${({ layout }) => {
-      if (layout === 'odd') {
-        return css`
-          grid-template-areas:
-            'title img'
-            'description img';
-        `;
-      } else if (layout === 'even') {
-        return css`
-          grid-template-areas:
-            'img title'
-            'img description';
-        `;
-      }
-    }}
+    ${({ layout }) =>
+      layout === 'even' &&
+      css`
+        grid-template-areas:
+          'img title'
+          'img description';
+      `}
   }
 
   ${onPc} {
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
+    grid-template-areas:
+      'title img'
+      'description img';
     column-gap: 15.7rem;
     row-gap: 1rem;
 
-    ${({ layout }) => {
-      if (layout === 'odd') {
-        return css`
-          grid-template-areas:
-            'title img'
-            'description img';
-        `;
-      } else if (layout === 'even') {
-        return css`
-          grid-template-areas:
-            'img title'
-            'img description';
-        `;
-      }
-    }}
+    ${({ layout }) =>
+      layout === 'even' &&
+      css`
+        grid-template-areas:
+          'img title'
+          'img description';
+      `}
   }
 `;
 
