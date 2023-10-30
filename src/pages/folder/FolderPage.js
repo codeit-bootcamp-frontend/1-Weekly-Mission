@@ -68,19 +68,18 @@ export default function FolderPage() {
               </SortButton>
               {folders &&
                 folders.map((item) => (
-                  <div key={item.id}>
-                    <SortButton
-                      setSearchParams={setSearchParams}
-                      setLinks={setLinks}
-                      setFolderId={setFolderId}
-                      setIsClicked={setIsClicked}
-                      isClicked={item.id === folderId}
-                      folderId={item.id}
-                      setCategoryTitle={setCategoryTitle}
-                    >
-                      {item.name}
-                    </SortButton>
-                  </div>
+                  <SortButton
+                    key={item.id}
+                    setSearchParams={setSearchParams}
+                    setLinks={setLinks}
+                    setFolderId={setFolderId}
+                    setIsClicked={setIsClicked}
+                    isClicked={item.id === folderId}
+                    folderId={item.id}
+                    setCategoryTitle={setCategoryTitle}
+                  >
+                    {item.name}
+                  </SortButton>
                 ))}
             </div>
             <button type="button" className="folder-add-button">
@@ -100,6 +99,7 @@ export default function FolderPage() {
               <div className="folder-option-button-container">
                 {OPTION_ICONS.map((item) => (
                   <OptionButton
+                    key={item.id}
                     name={item.name}
                     alt={item.alt}
                     iconSrc={item.iconSrc}
@@ -114,11 +114,7 @@ export default function FolderPage() {
         ) : (
           <div className="links-container">
             {links &&
-              links.map((item) => (
-                <div key={item.id}>
-                  <Card linkInfo={item} />
-                </div>
-              ))}
+              links.map((item) => <Card key={item.id} linkInfo={item} />)}
           </div>
         )}
         <div className="floating-action-button-container">
