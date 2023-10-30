@@ -4,9 +4,9 @@ import { getUser } from "../api";
 import logo from "../assets/img/logo.svg";
 import ProfileImg from "./ProfileImg";
 import CTA from "./CTA";
-import "../assets/css/Gnb.css";
+import StyledGnb from "../style/StyledGnb";
 
-function Gnb() {
+function Gnb({ isFixed }) {
   const [userData, setUserData] = useState({});
   const [isLogin, setIsLogin] = useState(false);
 
@@ -31,21 +31,24 @@ function Gnb() {
   }, []);
 
   return (
-    <header className="header">
-      <div className="headerContainer">
-        <Link to="/">
-          <img className="logo" src={logo} alt="logo" />
-        </Link>
-        {isLogin ? (
-          <div className="profile">
-            <ProfileImg src={userData.profile} />
-            <span>{userData.email}</span>
-          </div>
-        ) : (
-          <CTA href="">로그인</CTA>
-        )}
-      </div>
-    </header>
+    <>
+      <StyledGnb isFixed={isFixed} />
+      <header>
+        <div className="headerContainer">
+          <Link to="/">
+            <img className="logo" src={logo} alt="logo" />
+          </Link>
+          {isLogin ? (
+            <div className="profile">
+              <ProfileImg src={userData.profile} />
+              <span>{userData.email}</span>
+            </div>
+          ) : (
+            <CTA href="">로그인</CTA>
+          )}
+        </div>
+      </header>
+    </>
   );
 }
 

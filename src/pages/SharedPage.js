@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { getSample } from "../api";
-import "../assets/css/SharedPage.css";
+import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";
 import CardSection from "../component/CardSection";
+import "../assets/css/SharedPage.css";
 
 function SharedPage() {
   const [folderData, setFolderData] = useState({});
@@ -35,6 +36,7 @@ function SharedPage() {
       <Helmet>
         <title>Shared</title>
       </Helmet>
+      <Gnb />
       <div className="folderInfo">
         <div className="profileBox">
           <img

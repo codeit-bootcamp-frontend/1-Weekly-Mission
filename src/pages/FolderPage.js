@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { getFolderLinks, getFolders } from "../api";
+import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";
+import FolderList from "../component/FolderList";
 import CardSection from "../component/CardSection";
 import "../assets/css/SharedPage.css";
-import FolderList from "../component/FolderList";
 
 function FolderPage() {
   const { folderId } = useParams();
@@ -33,6 +34,8 @@ function FolderPage() {
       <Helmet>
         <title>Folder</title>
       </Helmet>
+      <Gnb isFixed={true} />
+
       <div className="folderInfo">
         <p>링크를 추가해 보세요</p>
       </div>

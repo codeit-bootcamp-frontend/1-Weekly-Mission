@@ -14,7 +14,7 @@ function FolderChip({ name, id }) {
   );
 }
 
-function FolderList({ folders, onClick }) {
+function FolderList({ folders }) {
   return (
     <ul>
       <li>
