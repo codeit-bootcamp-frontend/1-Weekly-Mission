@@ -18,15 +18,15 @@ function FolderPage() {
     setFolders(folders);
   }
 
-  async function getLinks() {
-    const links = await getFolderLinks();
+  async function getFolderLink(id) {
+    const links = await getFolderLinks(id);
     setLinks(links);
   }
 
   useEffect(() => {
-    getLinks(folderParam);
+    getFolderLink(folderId);
     getFolderList();
-  }, []);
+  }, [folderId]);
 
   return (
     <>

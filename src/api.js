@@ -15,7 +15,7 @@ export async function getFolders() {
 }
 
 export async function getFolderLinks(folderID) {
-  const query = `folderId={folderID}`;
+  const query = `folderId=${folderID}`;
   const response = await fetch(
     folderID
       ? `${BASE_URL}/users/1/links?${query}`
