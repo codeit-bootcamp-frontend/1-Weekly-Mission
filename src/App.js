@@ -2,13 +2,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { getUserProfile } from './api/api';
 import useAsync from './hooks/useAsync';
+import GlobalStyle from './css/GlobalStyle';
 
 import SharedPage from './pages/SharedPage';
 import FolderPage from './pages/FolderPage';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 
-// 여기서는 유저 정보만 받기
+const INITIAL_USER = {};
+
 function App() {
   const [userProfile, setUserProfile] = useState(null);
   const [isLoadingUserProfile, userProfileLoadingError, getUserProfileAsync] = useAsync(getUserProfile);
@@ -28,11 +30,11 @@ function App() {
 
   return (
     <>
+      <GlobalStyle />
       <Nav userProfile={userProfile} userProfileLoadingError={userProfileLoadingError} />
       <Router>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="folder">
+          <Route path="/folder">
             <Route index element={<FolderPage />} />
             <Route path=":folderId" element={<FolderPage />} />
           </Route>

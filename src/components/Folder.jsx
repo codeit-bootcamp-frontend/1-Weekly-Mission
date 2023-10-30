@@ -1,51 +1,33 @@
 import styled from 'styled-components';
-import SearchBar from './SearchBar';
 import CardList from './CardList';
 import { useCallback, useEffect, useState } from 'react';
 import useAsync from '../hooks/useAsync';
-import { getCards, getFolders } from '../api/api';
+import { getCards } from '../api/api';
 
 function Folder() {
-  const [cards, setCards] = useState();
-  const [folders, setFolders] = useState([]);
+  // const [cards, setCards] = useState();
 
-  const [isLoadingCards, loadingCardsError, getCardsAsync] = useAsync(getCards);
-  const [isLoadingFolders, loadingFoldersError, getFoldersAsync] = useAsync(getFolders);
+  // const [isLoadingCards, loadingCardsError, getCardsAsync] = useAsync(getCards);
 
-  const handleFolderLoad = useCallback(async () => {
-    const result = await getFoldersAsync();
-    if (!result) {
-      return;
-    }
-    const receivedFolders = result.data;
-    setFolders(receivedFolders);
-  }, [getFoldersAsync]);
+  // const handleCardLoad = useCallback(async () => {
+  //   const result = await getCardsAsync();
+  //   if (!result) {
+  //     return;
+  //   }
+  //   const receivedCards = result.data; // 배열로 받음
+  //   console.log(receivedCards);
+  //   setCards(receivedCards);
+  // }, [getCardsAsync]);
 
-  const handleCardLoad = useCallback(async () => {
-    const result = await getCardsAsync();
-    if (!result) {
-      return;
-    }
-    const receivedCards = result.data; // 배열로 받음
-    console.log(receivedCards);
-    setCards(receivedCards);
-  }, [getCardsAsync]);
-
-  useEffect(() => {
-    handleCardLoad();
-    handleFolderLoad();
-  }, [handleCardLoad, handleFolderLoad]);
+  // useEffect(() => {
+  //   handleCardLoad();
+  // }, [handleCardLoad]);
 
   return (
     <Container>
-      <SearchBar />
-      {cards.length !== 0 ? (
-        <CardList cards={cards} />
-      ) : (
-        <NoSavedLinks>
-          <p>저장된 링크가 없습니다.</p>
-        </NoSavedLinks>
-      )}
+      <NoSavedLinks>
+        <p>저장된 링크가 없습니다.</p>
+      </NoSavedLinks>
     </Container>
   );
 }
