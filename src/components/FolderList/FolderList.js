@@ -28,8 +28,10 @@ function FolderList({ onFolderSelect }) {
           throw new Error(`Server responded with ${response.status}`);
         }
 
-        const data = await response.json();
-        setFolders(data.data);
+        const { data } = await response.json();
+        if (data) {
+          setFolders(data);
+        }
       } catch (error) {
         console.error(error);
       }
