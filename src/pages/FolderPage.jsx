@@ -72,7 +72,6 @@ const FolderPage = () => {
       </Styled.Header>
       <Styled.Article>
         <SearchBar onSubmit={setSearch} />
-        <div>{search}</div>
         {linksData.data.length === 0 ? (
           <NoFolderLink />
         ) : (
