@@ -7,15 +7,6 @@ import PenIcon from "../../assets/icons/Pen";
 import DeleteIcon from "../../assets/icons/Delete";
 import API from "../../utils/api";
 
-function ActionItem({ icon: IconComponent, label }) {
-  return (
-    <div className="action-item">
-      <IconComponent />
-      <span>{label}</span>
-    </div>
-  );
-}
-
 function FolderList({ onFolderSelect }) {
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState("전체");
@@ -77,6 +68,15 @@ function FolderList({ onFolderSelect }) {
           <ActionItem icon={DeleteIcon} label="삭제" />
         </div>
       )}
+    </div>
+  );
+}
+
+function ActionItem({ icon: IconComponent, label }) {
+  return (
+    <div className="action-item">
+      <IconComponent />
+      <span>{label}</span>
     </div>
   );
 }
