@@ -21,9 +21,20 @@ function FolderList({ folderList = null, onChange }) {
   };
   return (
     <div>
-      <div>
+      <FolderListContainer>
         <FolderButton folder={INITIAL_FOLDER} handleButton={handleButton} />
-      </div>
+        {folderList && (
+          <>
+            {folderList.map((folder) => {
+              return (
+                <div key={folder.id}>
+                  <FolderButton folder={folder} handleButton={handleButton} />
+                </div>
+              );
+            })}
+          </>
+        )}
+      </FolderListContainer>
       <h1>{folderName}</h1>
     </div>
   );
@@ -31,18 +42,20 @@ function FolderList({ folderList = null, onChange }) {
 
 function Folder({ folderList = null }) {
   // const [cards, setCards] = useState();
-
   // const [isLoadingCards, loadingCardsError, getCardsAsync] = useAsync(getCards);
 
-  // const handleCardLoad = useCallback(async () => {
-  //   const result = await getCardsAsync();
-  //   if (!result) {
-  //     return;
-  //   }
-  //   const receivedCards = result.data; // 배열로 받음
-  //   console.log(receivedCards);
-  //   setCards(receivedCards);
-  // }, [getCardsAsync]);
+  // const handleCardLoad = useCallback(
+  //   async (id = '') => {
+  //     const result = await getCardsAsync(id);
+  //     if (!result) {
+  //       return;
+  //     }
+  //     const receivedCards = [...result?.data]; // 배열로 받음
+  //     console.log(receivedCards);
+  //     setCards(receivedCards);
+  //   },
+  //   [getCardsAsync],
+  // );
 
   // useEffect(() => {
   //   handleCardLoad();
@@ -50,7 +63,7 @@ function Folder({ folderList = null }) {
 
   return (
     <Container>
-      <FolderList />
+      <FolderList folderList={folderList} onChange={getCards} />
       <NoSavedLinks>
         <p>저장된 링크가 없습니다.</p>
       </NoSavedLinks>
@@ -67,6 +80,7 @@ const Container = styled.div`
   flex-direction: column;
   margin: 4rem 19rem;
   gap: 4rem;
+  border: 1px solid;
 `;
 
 const NoSavedLinks = styled.div`
@@ -83,4 +97,11 @@ const NoSavedLinks = styled.div`
     font-size: 1.6rem;
     line-height: 24px;
   }
+`;
+
+const FolderListContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  border: 1px solid;
 `;
