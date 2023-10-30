@@ -5,5 +5,11 @@
     justify-content: center;
     max-width: 113rem;
     gap: 2.5rem 2rem;
-    padding: 4rem 3.2rem 0;
+    padding: 4rem 3.2rem 6rem;
+}
+
+.no-link{
+    font-size: 1.6rem;
+    line-height: 24px;
+    padding: 3.5rem 0;
 }

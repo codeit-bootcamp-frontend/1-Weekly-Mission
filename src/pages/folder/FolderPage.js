@@ -3,20 +3,27 @@ import CardList from '../../components/card/CardList';
 import FolderList from '../../components/folder/FolderList';
 import './FolderPage.css';
 import CardSearchBar from '../../components/card/CardSearchBar';
-import { getFolder } from '../../api/api';
+import { getFolder, getFolderList } from '../../api/api';
 import { linkIcon } from '../../constants/globalImages';
 
 function FolderPage() {
   const [links, setLinks] = useState([]);
+  const [folders, setFolders] = useState([]);
 
-  const handleLinkLoad = async () => {
+  const handleLinkListLoad = async () => {
     const { folder } = await getFolder();
     setLinks([...folder.links]);
   };
+  const handleFolderListLoad = async () => {
+    const { data } = await getFolderList();
+    setFolders([...data]);
+  };
 
   useEffect(() => {
-    handleLinkLoad();
+    handleFolderListLoad();
+    handleLinkListLoad();
   }, []);
+
   return (
     <>
       <header className="header-folder">
@@ -34,8 +41,7 @@ function FolderPage() {
       </header>
       <main className="main-folder">
         <CardSearchBar />
-        <FolderList />
-
+        <FolderList folders={folders} />
         <CardList links={links} />
       </main>
     </>

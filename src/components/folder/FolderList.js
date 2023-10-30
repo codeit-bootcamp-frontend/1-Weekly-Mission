@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { getFolderList } from '../../api/api';
+import React from 'react';
 import './FolderList.css';
 
 function Folder({ data }) {
   return <div className="select-folder">{data.name}</div>;
 }
 
-function FolderList() {
-  const [folders, setFolders] = useState([]);
-
-  const handleFolderListLoad = async () => {
-    const { data } = await getFolderList();
-    setFolders([...data]);
-  };
-
-  useEffect(() => {
-    handleFolderListLoad();
-  }, []);
-
+function FolderList({ folders }) {
   return (
     <div className="folder-container">
       <div className="folder-list-container">
