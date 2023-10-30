@@ -9,10 +9,15 @@
   display: inline;
 }
 
-.a {
+.button {
   display: block;
   padding: 0.8rem 1.2rem;
   border: 1px solid var(--primary);
   border-radius: 0.5rem;
   font-size: 1.6rem;
+}
+
+.selected {
+  background-color: var(--primary);
+  color: var(--white);
 }

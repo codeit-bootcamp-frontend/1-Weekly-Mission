@@ -11,7 +11,7 @@
   border-top-right-radius: 1.5rem;
   border-top-left-radius: 1.5rem;
   background-position: center;
-  background-size: cover;
+  background-size: 100%;
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
@@ -23,8 +23,18 @@
   padding: 1.5rem;
 }
 
+@keyframes hoverImageSizeChanger {
+  from {
+    background-size: 100%;
+  }
+
+  to {
+    background-size: 130%;
+  }
+}
+
 .hoverImage {
-  background-size: 130%;
+  animation: hoverImageSizeChanger 0.3s ease-in-out forwards;
 }
 
 .hoverBgColor {

@@ -1,28 +1,22 @@
-import { useSearchParams } from 'react-router-dom';
 import styles from './FolderNav.module.css';
 
-function FolderNav({ folderLists, onClick }) {
+function FolderNav({ folderLists, onClick, folderID }) {
   return (
     <ul className={styles.root}>
-      <li className={styles.li}>
-        <button
-          type="submit"
-          name="search"
-          onClick={onClick}
-          className={styles.a}
-        >
-          전체
-        </button>
-      </li>
       {folderLists.map(({ id, name }) => {
+        const isSelected =
+          Number(folderID) === id
+            ? `${styles.button} ${styles.selected}`
+            : `${styles.button}`;
+
         return (
           <li className={styles.li} key={id}>
             <button
-              name="folderid"
-              type="submit"
+              name="folderId"
+              type="button"
               value={id}
               onClick={onClick}
-              className={styles.a}
+              className={isSelected}
             >
               {name}
             </button>

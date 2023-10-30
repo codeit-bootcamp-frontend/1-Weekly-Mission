@@ -15,24 +15,28 @@ import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
 import { useSearchParams } from 'react-router-dom';
 
 function FolderList() {
-  const [searchParams, setSearchParams] = useSearchParams();
-
   function handleClick(e) {
-    e.preventDefault();
     const { name, value } = e.target;
     searchParams.set(name, value);
     setSearchParams(searchParams);
   }
 
-  const folderID = searchParams.get('folderid');
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [folderLists, setFolderLists] = useState([]);
+  const folderID = searchParams.get('folderId');
+
+  const [folderLists, setFolderLists] = useState([
+    {
+      id: 0,
+      name: '전체',
+    },
+  ]);
 
   const loadFolderData = async () => {
     const { data } = await getSampleUsersFolderLists();
 
-    setFolderLists(() => {
-      return [...data];
+    setFolderLists((prevFolderList) => {
+      return [...prevFolderList, ...data];
     });
   };
 
@@ -77,7 +81,11 @@ function FolderList() {
       <section className={styles.root}>
         <SearchBar />
         <div className={styles.flex}>
-          <FolderNav onClick={handleClick} folderLists={folderLists} />
+          <FolderNav
+            onClick={handleClick}
+            folderID={folderID}
+            folderLists={folderLists}
+          />
           <FolderAddMenu />
         </div>
         <div className={styles.flex}>

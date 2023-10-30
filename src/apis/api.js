@@ -16,7 +16,7 @@ const getSampleUsersFolderLists = async () => {
 const getUsersFolderLinkItems = async (folderID) => {
   let response;
 
-  if (!folderID) {
+  if (folderID === '0' || !folderID) {
     response = await fetch(`${url}/users/1/links`);
   } else {
     response = await fetch(`${url}/users/1/links?folderId=${folderID}`);
