@@ -26,6 +26,7 @@
 
 .floating-action-button-container {
   display: flex;
+  display: none;
   align-self: center;
   position: fixed;
   bottom: 101px;
@@ -110,5 +111,13 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .floating-action-button-container {
+    display: block;
+  }
+
+  .folder-add-button {
+    display: none;
   }
 }

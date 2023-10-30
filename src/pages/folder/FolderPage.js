@@ -23,21 +23,6 @@ export default function FolderPage() {
   // eslint-disable-next-line no-unused-vars
   const [isClicked, setIsClicked] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState('전체');
-  const [viewPortWidth, setViewPortWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setViewPortWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const isMobileView = viewPortWidth <= 767;
 
   const fetchUserFolders = async () => {
     const result = await getUserFolders();
@@ -97,16 +82,14 @@ export default function FolderPage() {
                   </div>
                 ))}
             </div>
-            {isMobileView || (
-              <button type="button" className="folder-add-button">
-                폴더 추가
-                <img
-                  src={addPrimaryIcon}
-                  alt="add-icon"
-                  className="folder-add-icon"
-                />
-              </button>
-            )}
+            <button type="button" className="folder-add-button">
+              폴더 추가
+              <img
+                src={addPrimaryIcon}
+                alt="add-icon"
+                className="folder-add-icon"
+              />
+            </button>
           </div>
           <div className="folder-category-container">
             <h1 className="folder-category">{categoryTitle}</h1>
@@ -138,9 +121,7 @@ export default function FolderPage() {
           </div>
         )}
         <div className="floating-action-button-container">
-          {isMobileView && (
-            <FloatingButton iconSrc={addIcon}>폴더 추가</FloatingButton>
-          )}
+          <FloatingButton iconSrc={addIcon}>폴더 추가</FloatingButton>
         </div>
       </main>
     </div>
