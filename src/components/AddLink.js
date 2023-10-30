@@ -4,21 +4,25 @@ import { Button } from "./Button";
 
 const AddLinkContainer = styled.form`
   display: flex;
-  padding: 60px 320px;
+  margin-top: 60px;
+  margin-bottom: 90px;
   width: 100%;
   align-items: center;
   position: relative;
   justify-content: center;
 
   @media (max-width: 767px) {
-    padding: 8px 10px;
+    padding: 0 32px 0 32px;
+    margin-top: 24px;
+    margin-bottom: 40px;
   }
 `;
 
 const AddLinkInput = styled.input`
+  width: 100%;
   font-weight: 400;
   display: flex;
-  width: 800px;
+  max-width: 800px;
   padding: 16px 20px;
   flex-direction: column;
   align-items: flex-start;

@@ -5,8 +5,11 @@ import Footer from "../components/Footer";
 import SortingFolder from "../components/SortingFolder";
 import Option from "../components/Option";
 import CardList from "../components/CardList";
+import { useState, useEffect } from "react";
 
 const Folder = () => {
+
+  
   return (
     <div>
       <Nav />
