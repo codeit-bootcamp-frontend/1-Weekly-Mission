@@ -4,3 +4,18 @@
   gap: 40px;
   margin: 40px;
 }
+.LinkList {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 340px);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 25px;
+  grid-row-gap: 20px;
+  padding: 0;
+  margin: auto;
+}
+
+.LinkList li {
+  list-style: none;
+  width: 340px;
+}

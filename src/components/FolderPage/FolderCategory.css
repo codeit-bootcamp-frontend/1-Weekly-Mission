@@ -1,3 +1,8 @@
+.folderCategoryContainer {
+  width: 1060px;
+  margin: auto;
+}
+
 .folderCategoryList {
   list-style: none;
   display: flex;

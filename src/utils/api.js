@@ -43,4 +43,19 @@ const getUserFolderCategory = async () => {
   return body;
 };
 
-export { getLoginInfo, getFolderData, getUserFolderCategory };
+/**유저 폴더별 링크 데이터 데이터
+ *
+ * @returns
+ */
+const getUserLinkData = async () => {
+  const response = await fetch(`${BASE_URL}/users/1/links`);
+  if (!response.ok) {
+    throw new Error("링크 데이터를 불러우는데 실패 했습니다.");
+  }
+
+  const body = await response.json();
+
+  return body;
+};
+
+export { getLoginInfo, getFolderData, getUserFolderCategory, getUserLinkData };

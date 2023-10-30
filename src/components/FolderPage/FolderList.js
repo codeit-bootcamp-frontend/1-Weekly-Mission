@@ -1,18 +1,19 @@
 import SearchLink from "./SearchLink";
 import "./FolderList.css";
-import { getUserFolderCategory } from "../../utils/api.js";
+import { getUserLinkData } from "../../utils/api.js";
 import { useEffect, useState } from "react";
 import FolderCategory from "./FolderCategory";
+import LinkItem from "./LinkItem";
 function FolderList() {
-  const [folerData, setFolderData] = useState({});
+  const [linkData, setLinkData] = useState([]);
 
   const handleLoad = async () => {
     let result;
 
     try {
-      // result = await getUserFolderCategory();
-      console.log(result);
+      result = await getUserLinkData();
       if (!result) return;
+      setLinkData(result.data);
     } catch (error) {
     } finally {
     }
@@ -26,6 +27,13 @@ function FolderList() {
     <div className="folderListContainer">
       <SearchLink />
       <FolderCategory />
+      <ul className="LinkList">
+        {linkData.map((item) => (
+          <li key={item.id}>
+            <LinkItem item={item} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

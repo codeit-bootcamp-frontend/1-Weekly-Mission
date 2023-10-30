@@ -1,0 +1,53 @@
+.linkContainer {
+  width: 340px;
+  list-style: none;
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+}
+
+.linkImg {
+  display: block;
+  z-index: 0;
+  width: 100%;
+  height: 253.746px;
+  object-fit: cover;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.linkImg:hover {
+  transform: scale(1.3);
+}
+
+.linkContent {
+  z-index: 1;
+  display: flex;
+  width: 300px;
+  padding: 15px 20px;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 0px 0px 15px 15px;
+  background: #fff;
+}
+
+#createTime {
+  color: #666;
+  font-size: 13px;
+}
+
+#linkDescription {
+  font-size: 16px;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 24px;
+}
+
+#linkDate {
+  overflow: hidden;
+  color: #333;
+  height: 19px;
+}
