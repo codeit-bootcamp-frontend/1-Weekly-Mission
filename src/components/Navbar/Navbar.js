@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import Logo from "../../assets/icons/Logo";
+import API from "../../utils/api";
 
 const Navbar = ({ isFolderPage }) => {
   const [userData, setUserData] = useState(null);
+  const userId = 1;
 
   useEffect(() => {
-    fetch("https://bootcamp-api.codeit.kr/api/users/1")
+    fetch(API.USER.DATA(userId))
       .then((response) => response.json())
       .then((data) => {
         if (data.data && data.data.length > 0) {

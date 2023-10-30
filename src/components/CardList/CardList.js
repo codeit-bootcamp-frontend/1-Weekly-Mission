@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import "./CardStyles.css";
+import API from "../../utils/api";
 
 const CardList = ({ isFolderPage, folderId, setHasLinks }) => {
   const [links, setLinks] = useState([]);
+  const userId = 1;
 
   useEffect(() => {
     let url;
     if (isFolderPage) {
       url = folderId
-        ? `https://bootcamp-api.codeit.kr/api/users/1/links?folderId=${folderId}`
-        : "https://bootcamp-api.codeit.kr/api/users/1/links";
+        ? `${API.USER.LINKS(userId)}?folderId=${folderId}`
+        : API.USER.LINKS(userId);
     } else {
-      url = "https://bootcamp-api.codeit.kr/api/sample/folder";
+      url = API.SAMPLE.FOLDER;
     }
 
     fetch(url)

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./FolderOwnerInfo.css";
+import API from "../../utils/api";
 
 const FolderOwnerInfo = () => {
   const [folderInfo, setFolderInfo] = useState({
@@ -9,7 +10,7 @@ const FolderOwnerInfo = () => {
   });
 
   useEffect(() => {
-    fetch("https://bootcamp-api.codeit.kr/api/sample/folder")
+    fetch(API.SAMPLE.FOLDER)
       .then((response) => response.json())
       .then((data) => {
         setFolderInfo({

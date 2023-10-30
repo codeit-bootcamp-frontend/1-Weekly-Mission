@@ -5,7 +5,7 @@ import FolderAdd from "../../assets/icons/FolderAdd";
 import ShareIcon from "../../assets/icons/Share";
 import PenIcon from "../../assets/icons/Pen";
 import DeleteIcon from "../../assets/icons/Delete";
-import { BASE_API_URL } from "../../utils/apiConfig";
+import API from "../../utils/api";
 
 function ActionItem({ icon: IconComponent, label }) {
   return (
@@ -24,7 +24,7 @@ function FolderList({ onFolderSelect }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`${BASE_API_URL}/users/${userId}/folders`);
+        const response = await fetch(API.USER.FOLDERS(userId));
         if (!response.ok) {
           throw new Error(`Server responded with ${response.status}`);
         }
