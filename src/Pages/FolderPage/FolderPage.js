@@ -1,15 +1,24 @@
-import Footer from "../../components/Footer/Footer";
-import Main from "../../components/Main/Main";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import Layout from "../Layout/Layout";
-import AddLink from "./components/AddLink/AddLink";
-import FolderAndLink from "./components/FolderAndLink/FolderAndLink";
-import Nav from "./components/Nav/Nav";
+import useAsync from '../../Hooks/useAsync'
+import { getUser } from '../../api'
+import Footer from '../../components/Footer/Footer'
+import Main from '../../components/Main/Main'
+import Nav from '../../components/Nav/Nav'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import AddLink from './components/AddLink/AddLink'
+import FolderAndLink from './components/FolderAndLink/FolderAndLink'
 
 function FolderPage() {
+  const [data, isLoading, hasError] = useAsync(() => getUser(1))
+
+  if (!data) return null
+  if (isLoading) return <div>로딩 중입니다.</div>
+  if (hasError) return <div>에러가 발생했습니다.</div>
+
+  const { email, image_source } = data.data[0]
+
   return (
     <>
-      <Nav />
+      <Nav path="folder" email={email} profileImageSource={image_source} />
       <AddLink />
       <Main>
         <SearchBar />
@@ -17,7 +26,7 @@ function FolderPage() {
       </Main>
       <Footer />
     </>
-  );
+  )
 }
 
-export default FolderPage;
+export default FolderPage

@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "react-scripts": "5.0.1"
   }

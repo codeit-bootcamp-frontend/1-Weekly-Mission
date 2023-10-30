@@ -1,19 +1,13 @@
-import React from "react";
-import * as S from "./NavStyle";
-import Profile from "./Profile";
+import React from 'react'
+import * as S from './NavStyle'
+import Profile from './Profile'
 
-import logoImg from "../../assets/logo.png";
-import getSample from "../../api";
-import useAsync from "../../Hooks/useAsync";
-import { Button } from "../Button/Button";
+import logoImg from '../../assets/logo.png'
+import { Button } from '../Button/Button'
 
-function Nav() {
-  const [data] = useAsync(() => getSample("user"));
-  if (!data) return;
-  const { email, profileImageSource } = data;
-
+function Nav({ path, email, profileImageSource }) {
   return (
-    <S.NavContainer>
+    <S.NavContainer path={path}>
       <S.NavContent className="container">
         <S.LogoImage src={logoImg} alt="로고 이미지" />
 
@@ -24,7 +18,7 @@ function Nav() {
         )}
       </S.NavContent>
     </S.NavContainer>
-  );
+  )
 }
 
-export default Nav;
+export default Nav

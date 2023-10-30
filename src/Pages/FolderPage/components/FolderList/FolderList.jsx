@@ -8,7 +8,7 @@ const DEFAULT_FOLDER = {
 };
 
 function FolderList({ folders, setFolderLink, selectedFolderId }) {
-  const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER); // Initialize selectedFolder with the default folder
+  const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER); 
 
   const onClick = (folder) => (e) => {
     if (!folder) {
