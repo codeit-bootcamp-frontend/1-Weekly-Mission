@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./FolderList.css";
+import FolderItem from "./FolderItem";
 import FolderAdd from "../../assets/icons/FolderAdd";
 import ShareIcon from "../../assets/icons/Share";
 import PenIcon from "../../assets/icons/Pen";
@@ -56,13 +57,12 @@ function FolderList({ onFolderSelect }) {
           전체
         </div>
         {folders.map((folder) => (
-          <div
-            className="folder-item"
+          <FolderItem
             key={folder.id}
-            onClick={() => handleFolderClick(folder.id, folder.name)}
-          >
-            {folder.name}
-          </div>
+            id={folder.id}
+            name={folder.name}
+            onFolderClick={handleFolderClick}
+          />
         ))}
       </div>
       <div className="folder-add">
