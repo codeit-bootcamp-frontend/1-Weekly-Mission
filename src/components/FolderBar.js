@@ -4,6 +4,8 @@ import { getFolderData, getFolderListData } from "../api.js";
 import "../css/folderbar.css";
 import FolderBox from "./FolderBox.js";
 import FolderList from "./FolderList.js";
+import EditButton from "./EditButton.js";
+import addImg from "../images/add.svg";
 
 function FolderBar() {
   const [hasData, setHasData] = useState(false);
@@ -46,27 +48,42 @@ function FolderBar() {
   return (
     <>
       <div className="folderBarContainer">
-        <FolderBox
-          item="전체"
-          onClick={() => {
-            setFolderId(-1);
-            setFolderName("전체");
-          }}
-          isSelected={folderId === -1}
-        />
-        {folderData.map((item) => (
+        <div className="folderBar">
           <FolderBox
-            item={item.name}
+            item="전체"
             onClick={() => {
-              setFolderId(item.id);
-              setFolderName(item.name);
+              setFolderId(-1);
+              setFolderName("전체");
             }}
-            key={item.id}
-            isSelected={folderId === item.id}
+            isSelected={folderId === -1}
           />
-        ))}
+          {folderData.map((item) => (
+            <FolderBox
+              item={item.name}
+              onClick={() => {
+                setFolderId(item.id);
+                setFolderName(item.name);
+              }}
+              key={item.id}
+              isSelected={folderId === item.id}
+            />
+          ))}
+        </div>
+        <div className="addFolder">
+          <p>폴더 추가</p>
+          <img src={addImg} alt="+ 이미지" />
+        </div>
       </div>
-      <div className="folderName">{folderName}</div>
+      <div className="folderListHeader">
+        <div className="folderName">{folderName}</div>
+        {folderId !== -1 && (
+          <div className="editButtonList">
+            <EditButton item="shared" />
+            <EditButton item="edit" />
+            <EditButton item="delete" />
+          </div>
+        )}
+      </div>
       {hasData && <FolderList item={listData} />}
       {!hasData && (
         <div className="nodataContainer">

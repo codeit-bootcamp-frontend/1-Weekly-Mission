@@ -1,7 +1,13 @@
 .folderBarContainer {
-  position: relative;
+  display: flex;
   width: 1060px;
   margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folderBar {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -32,13 +38,71 @@
   color: #fff;
 }
 
+.addFolder {
+  color: #6d6afe;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  width: 100px;
+  display: flex;
+}
+
+.addFolder img {
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  margin-left: 3px;
+}
+
+.folderListHeader {
+  display: flex;
+  width: 1060px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px auto;
+}
+
 .folderName {
   position: relative;
-  width: 1060px;
-  margin: 24px auto;
   color: #000;
   font-size: 24px;
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.2px;
+}
+
+.editButtonList {
+  display: flex;
+  gap: 12px;
+  min-width: 0;
+}
+
+.editButtonContainer {
+  display: flex;
+  color: #9fa6b2;
+
+  max-height: 18px;
+  min-width: fit-content;
+}
+
+.editButtonContainer p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .addFolder {
+    position: fixed;
+    left: 38%;
+    bottom: 201px;
+    padding: 8px 24px;
+    border-radius: 20px;
+    background: #6d6afe;
+    color: #fff;
+    min-width: fit-content;
+  }
+  .addFolder img {
+    background-image: url(../images/add-mobile.svg);
+  }
 }
