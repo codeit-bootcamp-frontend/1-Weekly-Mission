@@ -17,6 +17,7 @@ const Shared = () => {
   useEffect(() => {
     handleLoad();
   }, []);
+
   return (
     <>
       <Main folderInfo={folderInfo} />
