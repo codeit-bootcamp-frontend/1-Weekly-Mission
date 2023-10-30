@@ -3,8 +3,33 @@ import CardList from './CardList';
 import { useCallback, useEffect, useState } from 'react';
 import useAsync from '../hooks/useAsync';
 import { getCards } from '../api/api';
+import FolderButton from './FolderButton';
 
-function Folder() {
+const INITIAL_FOLDER = {
+  id: '',
+  name: '전체',
+};
+
+function FolderList({ folderList = null, onChange }) {
+  const [folderId, setFolderId] = useState('');
+  const [folderName, setFolderName] = useState('전체');
+
+  const handleButton = (name, id) => {
+    setFolderId(id);
+    setFolderName(name);
+    onChange(id);
+  };
+  return (
+    <div>
+      <div>
+        <FolderButton folder={INITIAL_FOLDER} handleButton={handleButton} />
+      </div>
+      <h1>{folderName}</h1>
+    </div>
+  );
+}
+
+function Folder({ folderList = null }) {
   // const [cards, setCards] = useState();
 
   // const [isLoadingCards, loadingCardsError, getCardsAsync] = useAsync(getCards);
@@ -25,6 +50,7 @@ function Folder() {
 
   return (
     <Container>
+      <FolderList />
       <NoSavedLinks>
         <p>저장된 링크가 없습니다.</p>
       </NoSavedLinks>
