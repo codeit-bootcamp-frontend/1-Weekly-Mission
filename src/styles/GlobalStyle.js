@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
+  main {
+    min-height: calc(100vh - 37.4rem)
+  }
+
   a,
   button {
     color: inherit;
