@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/global.css';
 import './SharedPage.css';
-경import { getSharedLinkList } from '../../api/api';
+import { getSharedLinkList } from '../../api/api';
 import CardList from '../../components/card/CardList';
 import CardSearchBar from '../../components/card/CardSearchBar';
 
