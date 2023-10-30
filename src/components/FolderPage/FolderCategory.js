@@ -1,6 +1,8 @@
 import { getUserFolderCategory } from "../../utils/api";
 import { useState, useEffect } from "react";
 import "./FolderCategory.css";
+import folderAddIcon from "../../assets/images/folderAddIcon.png";
+import { Link } from "react-router-dom";
 
 function Category({ item, className, onClick, categoryId }) {
   const [isSelected, setIsSelected] = useState(false);
@@ -71,6 +73,10 @@ function FolderCategory({ folderId, handleChange }) {
             />
           ))}
       </ul>
+      <div className="folderAdd">
+        <Link>폴더추가</Link>
+        <img src={folderAddIcon}></img>
+      </div>
     </div>
   );
 }
