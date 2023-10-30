@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { getFolderLinks, getFolders } from "../api";
 import Gnb from "../component/Gnb";
@@ -34,6 +34,12 @@ function FolderPage() {
     setLinks(links);
   }
 
+  const message = links ? (
+    "저장된 링크가 없습니다📭"
+  ) : (
+    <Navigate to="/NotFoundPage" />
+  );
+
   useEffect(() => {
     getFolderLink(folderParam);
     getFolderList();
@@ -45,21 +51,19 @@ function FolderPage() {
         <title>Folder</title>
       </Helmet>
       <Gnb isFixed={true} />
-
       <div className="folderInfo">
         <p>링크를 추가해 보세요</p>
       </div>
-
       <section className="section">
         <SearchBar size="large" />
-        {links && links.length === 0 ? (
-          <StyledDiv> 저장된 링크가 없습니다 📭 </StyledDiv>
-        ) : (
+        {links && links.length !== 0 ? (
           <>
             <FolderList folders={folders} />
             <div>제목</div>
             <CardSection data={links} />
           </>
+        ) : (
+          <StyledDiv> {message} </StyledDiv>
         )}
       </section>
     </>
