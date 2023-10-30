@@ -15,7 +15,7 @@
 
   /* descktop*/
   @media (min-width: 1200px) {
-    width: calc(100% - 36rem);
+    width: calc(100% - 56rem);
   }
 }
 
