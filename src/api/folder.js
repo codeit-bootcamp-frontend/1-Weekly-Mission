@@ -1,4 +1,4 @@
-import { BASE_URL, USERS_ENDPOINT } from './services/endpoints';
+import { BASE_URL, USERS_ENDPOINT } from './services/config';
 
 export const getUserFolders = async () => {
   let result;
