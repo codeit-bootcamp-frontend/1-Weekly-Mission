@@ -3,7 +3,7 @@ import Card from "./Card";
 import "./CardStyles.css";
 import API from "../../utils/api";
 
-const CardList = ({ isFolderPage, folderId, setHasLinks }) => {
+const CardList = ({ isFolderPage, folderId, updateHasLinks }) => {
   const [links, setLinks] = useState([]);
   const userId = 1;
 
@@ -27,11 +27,11 @@ const CardList = ({ isFolderPage, folderId, setHasLinks }) => {
       .then((data) => {
         const linkData = isFolderPage ? data.data : data.folder.links;
         setLinks(linkData || []);
-        if (setHasLinks) {
-          setHasLinks(linkData && linkData.length > 0);
+        if (updateHasLinks) {
+          updateHasLinks(linkData && linkData.length > 0);
         }
       });
-  }, [isFolderPage, folderId, setHasLinks]);
+  }, [isFolderPage, folderId, updateHasLinks]);
 
   return (
     <div className="card-list">

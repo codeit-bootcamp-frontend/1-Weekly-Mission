@@ -18,6 +18,10 @@ const FolderPage = () => {
     }
   };
 
+  const updateHasLinks = (value) => {
+    setHasLinks(value);
+  };
+
   return (
     <div>
       <Navbar isFolderPage={true} />
@@ -27,7 +31,7 @@ const FolderPage = () => {
       <CardList
         isFolderPage={true}
         folderId={selectedFolderId}
-        setHasLinks={setHasLinks}
+        updateHasLinks={updateHasLinks}
       />
       <Footer />
     </div>
