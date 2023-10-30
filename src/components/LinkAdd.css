@@ -43,7 +43,27 @@
 }
 
 @media (max-width: 768px) {
+  .link-add-form {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
   .link-add-form div {
     max-width: 325px;
+    padding: 8px 10px;
+  }
+
+  .link-add-form input {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .link-add-form button {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 }

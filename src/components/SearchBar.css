@@ -38,7 +38,15 @@
 }
 
 @media (max-width: 768px) {
-  searchbar {
+  .searchbar {
     max-width: 325px;
+    margin: 20px auto 32px;
+  }
+
+  .search-inner-box input {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 }

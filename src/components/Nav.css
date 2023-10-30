@@ -24,6 +24,7 @@ header a img {
   width: 133px;
   height: 24px;
 }
+
 .header-login {
   display: flex;
   align-items: center;
@@ -78,6 +79,11 @@ header a img {
 
   header a {
     width: 88.667px;
+  }
+
+  header a img {
+    width: 88.667px;
+    height: 16px;
   }
 
   .header-login a {

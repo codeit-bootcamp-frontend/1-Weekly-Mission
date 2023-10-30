@@ -36,3 +36,27 @@ footer {
   align-items: flex-start;
   gap: 12px;
 }
+
+@media (max-width: 768px) {
+  footer {
+    margin-top: 80px;
+    padding: 32px;
+    display: grid;
+    grid-template-areas:
+      "footer-info footer-sns"
+      "footer-company footer-company";
+  }
+
+  .footer-company.footer-grid {
+    grid-area: footer-company;
+    padding-top: 60px;
+  }
+
+  .footer-info.footer-grid {
+    grid-area: footer-info;
+  }
+
+  .footer-sns.footer-grid {
+    grid-area: footer-sns;
+  }
+}

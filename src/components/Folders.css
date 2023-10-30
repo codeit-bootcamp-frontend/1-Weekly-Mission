@@ -43,11 +43,12 @@ button {
 @media (max-width: 768px) {
   .folders {
     max-width: 325px;
+    padding: 0;
   }
 
   .add-folder {
     position: fixed;
-    bottom: 101px;
+    bottom: 261px;
     left: 50%;
     transform: translateX(-50%);
     padding: 9px 24px;
@@ -59,5 +60,13 @@ button {
 
   .add-folder img {
     fill: var(--linkbrary-white);
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 }
