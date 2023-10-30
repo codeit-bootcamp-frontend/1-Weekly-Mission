@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
 import { getFolders } from '../api/api';
 import { useCallback, useEffect, useState } from 'react';
+import MobileFolderButton from '../components/MobileFolderButton';
 
 function FolderPage() {
   const param = useParams();
@@ -29,6 +30,7 @@ function FolderPage() {
 
   return (
     <Container>
+      <MobileFolderButton />
       <AddLink />
       <ContentContainer>
         <SearchBar />
@@ -57,7 +59,7 @@ const ContentContainer = styled.div`
 
 const AddFolderButton = styled.button`
   position: absolute;
-  top: 8rem;
+  top: 9rem;
   right: 24rem;
   background-color: transparent;
   color: var(--primary);

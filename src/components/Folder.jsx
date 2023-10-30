@@ -3,7 +3,6 @@ import CardList from './CardList';
 import { useEffect, useState } from 'react';
 import { getCards } from '../api/api';
 import FolderButton from './FolderButton';
-import NoSavedLinks from './NoSavedLinks';
 
 const INITIAL_FOLDER = {
   id: '',
@@ -35,7 +34,7 @@ function FolderList({ folderList = null, getCardList }) {
           </>
         )}
       </FolderListContainer>
-      <h1>{folderName}</h1>
+      <FolderTitle>{folderName}</FolderTitle>
     </div>
   );
 }
@@ -56,7 +55,6 @@ function Folder({ folderList = null }) {
   return (
     <Container>
       <FolderList folderList={folderList} getCardList={getCardList} />
-      <NoSavedLinks />
       <CardList cards={cards} />
     </Container>
   );
@@ -65,13 +63,8 @@ function Folder({ folderList = null }) {
 export default Folder;
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 4rem 19rem;
+  margin: 0rem 19rem;
   gap: 4rem;
-  border: 1px solid;
 `;
 
 const FolderListContainer = styled.div`
@@ -79,5 +72,14 @@ const FolderListContainer = styled.div`
   flex-direction: row;
   gap: 0.8rem;
   margin-bottom: 2.4rem;
-  border: 1px solid;
+`;
+
+const FolderTitle = styled.div`
+  color: var(--black);
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin-bottom: 2rem;
 `;

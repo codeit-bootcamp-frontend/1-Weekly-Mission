@@ -1,12 +1,13 @@
 import Card from './Card';
 import '../css/cardList.css';
+import NoSavedLinks from './NoSavedLinks';
 
 function CardList({ cards }) {
   if (!cards) {
-    return <div> 잘못된 접근입니다.</div>;
+    return <></>;
   }
   if (cards.length === 0) {
-    return <div> 저장된 링크가 없습니다.</div>;
+    return <NoSavedLinks />;
   }
   return (
     <>
