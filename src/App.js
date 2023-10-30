@@ -1,36 +1,30 @@
 import './css/reset.css';
 import './css/root.css';
 import Header from './components/Header';
-import Main from './components/Main';
+import Shared from './components/shared/Shared';
 import Footer from './components/Footer';
-import { getAccount} from './api/apiUrl';
-import { useEffect, useState } from 'react';
+import Folder from './components/folder/Folder';
+import { useFetch} from './hooks/useFetch';
 import { AccountContext } from './contexts/AccountContext';
+import { Route, Routes } from 'react-router-dom';
 
 
 function App() {
-  const [account, setAccount] = useState({});
-  const [userErrorMessage, setUserErrorMessage] = useState("");
-  
-  const handleLoad = async () => {
-    try{
-      const {name, email, profileImageSource} = await getAccount();
-      setAccount({name, email, profileImageSource});
-    }
-    catch(error){
-      setUserErrorMessage(error);
-    }
-  };
+  const {data: userData, errorMessage} = useFetch("users/1", 1);
+  if(!userData) return;
 
   
-  useEffect(() => {
-    handleLoad();
-  }, []);
   return (
-    <AccountContext.Provider value={{account, userErrorMessage}}>
+    <AccountContext.Provider value={{account: userData.data[0], errorMessage: errorMessage}}>
       <div className="App">
         <Header/>
-        <Main/>
+        <Routes>
+          <Route path='/shared' element={<Shared/>}/>
+          <Route path='/folder' element={<Folder/>}>
+            <Route index element={<Folder/>}/>
+            <Route path=':folderId' element={<Folder/>}/>
+          </Route>
+        </Routes>
         <Footer/>
       </div>
     </AccountContext.Provider>
