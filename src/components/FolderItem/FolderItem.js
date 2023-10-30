@@ -1,4 +1,5 @@
 import React from "react";
+import "./FolderItem.css";
 
 function FolderItem({ id, name, onFolderClick }) {
   return (

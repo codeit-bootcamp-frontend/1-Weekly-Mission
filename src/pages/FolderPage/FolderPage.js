@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import "../components/FolderItem/FolderItem.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import LinkInput from "../components/LinkInput";
-import CardList from "../components/CardList";
-import SearchBar from "../components/SearchBar";
-import FolderItem from "../components/FolderItem";
-import API from "../utils/api";
-import FolderAdd from "../assets/icons/FolderAdd";
-import ShareIcon from "../assets/icons/Share";
-import PenIcon from "../assets/icons/Pen";
-import DeleteIcon from "../assets/icons/Delete";
+import "./FolderPage.css";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import LinkInput from "../../components/LinkInput";
+import CardList from "../../components/CardList";
+import SearchBar from "../../components/SearchBar";
+import FolderItem from "../../components/FolderItem";
+import API from "../../utils/api";
+import FolderAdd from "../../assets/icons/FolderAdd";
+import ShareIcon from "../../assets/icons/Share";
+import PenIcon from "../../assets/icons/Pen";
+import DeleteIcon from "../../assets/icons/Delete";
 
 const FolderPage = () => {
   const [selectedFolderId, setSelectedFolderId] = useState(null);
