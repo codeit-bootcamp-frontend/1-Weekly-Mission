@@ -41,6 +41,7 @@ export default function FolderPage() {
   }, []);
 
   useEffect(() => {
+    if (!folderId) return;
     fetchUserLinks(folderId);
   }, [folderId]);
 
