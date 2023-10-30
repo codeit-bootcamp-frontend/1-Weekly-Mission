@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 40px;
   margin: 40px;
+  text-align: center;
 }
 .linkList {
   display: grid;
@@ -18,6 +19,46 @@
 .linkList li {
   list-style: none;
   width: 340px;
+}
+
+.noLink {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000000;
+}
+.linkMenuName {
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  text-align: left;
+  color: #000000;
+}
+.linkMenuContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.linkMenu {
+  list-style: none;
+  margin: auto 0;
+}
+.linkMenu li {
+  float: left;
+  margin-left: 3px;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.linkMenu a {
+  text-decoration: none;
+  color: #9fa6b2;
 }
 
 /* tablet */

@@ -38,15 +38,15 @@ function FolderCategory({ folderId, handleChange }) {
       if (!result) return;
       setFolderCategory(result.data);
     } catch (error) {
-    } finally {
+      console.error(error);
     }
   };
 
   const handleClick = (item) => {
+    const { id, name } = item;
     if (!item) setCategoryId(null);
-    setCategoryId(item.id);
-
-    handleChange(item.id);
+    setCategoryId(id);
+    handleChange(id, name);
   };
   useEffect(() => {
     handleLoad();
