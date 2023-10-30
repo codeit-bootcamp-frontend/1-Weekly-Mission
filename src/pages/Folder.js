@@ -20,7 +20,7 @@ const Folder = () => {
   const getFolderData = useCallback(async () => {
     const { data } = await getData("/users/1/folders");
     const linkData = await getData(
-      "/users/1/links?folderId=" + currentFolder.id
+      `/users/1/links?folderId=${currentFolder.id}`
     );
     setUserFolder(data);
     setLinks(linkData.data);
@@ -49,7 +49,7 @@ const Folder = () => {
             {links.length === 0 ? (
               <div className="no-data-inform">저장된 링크가 없습니다</div>
             ) : (
-              <Cards cards={links} />
+              <Cards folderInfo={{ links: links }} />
             )}
           </div>
         ) : (

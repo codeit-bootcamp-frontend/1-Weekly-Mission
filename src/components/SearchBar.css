@@ -30,3 +30,15 @@
   line-height: 24px; /* 150% */
   color: #666;
 }
+
+@media screen and (max-width: 1024px) {
+  .searchbar {
+    max-width: 704px;
+  }
+}
+
+@media (max-width: 768px) {
+  searchbar {
+    max-width: 325px;
+  }
+}

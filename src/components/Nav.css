@@ -64,14 +64,14 @@ header a img {
   font-weight: 400;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
   header .inner {
     max-width: 767px;
     padding: 20px 0px;
   }
 }
 
-@media screen and (max-width: 775px) {
+@media (max-width: 768px) {
   header .inner {
     padding: 13px 32px;
   }

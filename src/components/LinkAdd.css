@@ -36,15 +36,13 @@
   border: none;
 }
 
-/* Tablet (764px ~ 1123px) */
-@media (min-width: 764px) and (max-width: 1123px) {
+@media screen and (max-width: 1024px) {
   .link-add-form div {
     max-width: 704px;
   }
 }
 
-/* Mobile (763px 이하) */
-@media (max-width: 764px) {
+@media (max-width: 768px) {
   .link-add-form div {
     max-width: 325px;
   }

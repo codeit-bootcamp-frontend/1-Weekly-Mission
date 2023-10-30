@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin: 0 auto;
   max-width: 1060px;
 }
@@ -10,6 +10,7 @@
 .folder-box {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -32,7 +33,18 @@ button {
   cursor: pointer;
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 1024px) {
+  .folders {
+    max-width: 704px;
+    padding: 20px 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .folders {
+    max-width: 325px;
+  }
+
   .add-folder {
     position: fixed;
     bottom: 101px;
@@ -43,5 +55,9 @@ button {
     border-radius: 20px;
     color: var(--linkbrary-white);
     z-index: 3;
+  }
+
+  .add-folder img {
+    fill: var(--linkbrary-white);
   }
 }

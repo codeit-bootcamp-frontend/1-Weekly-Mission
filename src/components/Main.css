@@ -44,7 +44,7 @@
   margin-top: 20px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
   .searchbar {
     padding: 0 32px;
   }
@@ -54,7 +54,7 @@
   }
 }
 
-@media screen and (max-width: 770px) {
+@media (max-width: 768px) {
   .cardlist {
     max-width: 390px;
   }

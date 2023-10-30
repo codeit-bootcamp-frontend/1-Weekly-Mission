@@ -32,3 +32,15 @@ h1 {
   width: 18px;
   height: 18px;
 }
+
+@media screen and (max-width: 1024px) {
+  .option-container {
+    max-width: 704px;
+  }
+}
+
+@media (max-width: 768px) {
+  .option-container {
+    max-width: 325px;
+  }
+}

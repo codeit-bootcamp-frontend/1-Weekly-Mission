@@ -4,7 +4,7 @@ import GetTimeDiff from "../utils/GetTimeDiff";
 
 function CardItem({ item, id }) {
   const imgStyle = {
-    backgroundImage: `URL(${item.imageSource})`,
+    backgroundImage: `URL(${item.image_source})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center center",
@@ -21,13 +21,13 @@ function CardItem({ item, id }) {
     backgroundPosition: "center center",
   };
 
-  const nowDate = GetTimeDiff(new Date(item.createdAt));
+  const nowDate = GetTimeDiff(new Date(item.created_at));
 
   return (
     <a href={item.url} target="_blank" rel="noreferrer">
       <div key={id} className="card">
         <div className="card-img-wrap">
-          {!item.imageSource ? (
+          {!item.image_source ? (
             <div className="card-img" style={noImgStyle}></div>
           ) : (
             <div className="card-img" style={imgStyle}></div>
@@ -36,7 +36,9 @@ function CardItem({ item, id }) {
         <div className="card-information">
           <div className="time">{nowDate}</div>
           <p>{item.description}</p>
-          <div className="date">{item.createdAt.split("T")[0]}</div>
+          <div className="date">
+            {item.created_at && item.created_at.split("T")[0]}
+          </div>
         </div>
       </div>
     </a>

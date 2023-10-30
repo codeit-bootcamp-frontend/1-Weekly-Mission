@@ -6,9 +6,9 @@ const ALL = {
   name: "전체",
 };
 
-const Folder = ({ folderInfo, $select, onClick }) => {
+const Folder = ({ folderInfo, onClick }) => {
   return (
-    <button $select={$select} onClick={onClick} id={folderInfo.id}>
+    <button onClick={onClick} id={folderInfo.id}>
       {folderInfo.name}
     </button>
   );
@@ -31,20 +31,9 @@ const Folders = ({ userFolder, onCurrentFolder }) => {
   return (
     <div className="folders">
       <div className="folder-box">
-        <Folder
-          folderInfo={ALL}
-          key="전체"
-          $select={`${currentButton === ""}`}
-          onClick={handleFolder}
-          id=""
-        />
+        <Folder folderInfo={ALL} key="전체" onClick={handleFolder} id="" />
         {userFolder.map((folder) => (
-          <Folder
-            folderInfo={folder}
-            key={folder.id}
-            onClick={handleFolder}
-            $select={`${currentButton === String(folder.id)}`}
-          />
+          <Folder folderInfo={folder} key={folder.id} onClick={handleFolder} />
         ))}
       </div>
       <div className="add-folder">

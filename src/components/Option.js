@@ -26,9 +26,9 @@ const Option = ({ currentFolder }) => {
       <h1>{currentFolder.name}</h1>
       {show ? (
         <div className="option-wrapper">
-          {options.map((option) => (
-            <div className="option-box">
-              <img src={option.src} alt="공유" />
+          {options.map((option, index) => (
+            <div key={index} className="option-box">
+              <img src={option.src} alt={option.name} />
               <div>{option.name}</div>
             </div>
           ))}
