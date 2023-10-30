@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+apiTest.js
 
 # production
 /build
@@ -27,3 +28,5 @@ yarn-error.log*
 package-lock.json
 package.json
 settings.json
+# Local Netlify folder
+.netlify
