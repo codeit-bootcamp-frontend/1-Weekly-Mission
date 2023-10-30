@@ -9,13 +9,22 @@ import {
   getSampleUsersFolderLists,
   getUsersFolderLinkItems,
 } from '../apis/api';
-import { useParams } from 'react-router';
 import FolderEdit from '../components/FolderEdit/FolderEdit';
 import SharedFolder from '../components/SharedFolder/SharedFolder';
 import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
+import { useSearchParams } from 'react-router-dom';
 
 function FolderList() {
-  const { folderID } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  function handleClick(e) {
+    e.preventDefault();
+    const { name, value } = e.target;
+    searchParams.set(name, value);
+    setSearchParams(searchParams);
+  }
+
+  const folderID = searchParams.get('folderid');
 
   const [folderLists, setFolderLists] = useState([]);
 
@@ -68,7 +77,7 @@ function FolderList() {
       <section className={styles.root}>
         <SearchBar />
         <div className={styles.flex}>
-          <FolderNav folderLists={folderLists} />
+          <FolderNav onClick={handleClick} folderLists={folderLists} />
           <FolderAddMenu />
         </div>
         <div className={styles.flex}>
