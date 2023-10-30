@@ -4,7 +4,6 @@ import styles from "../styles/CardItem.module.css";
 import logoImg from "../assets/emptyImg.svg";
 import starImg from "../assets/star.svg";
 import kebabImg from "../assets/kebab.svg";
-import plus from "../assets/plus_white.svg";
 
 const formatDate = (value) => {
   const date = new Date(value);
@@ -117,10 +116,6 @@ function CardItem({ item }) {
           {description}
         </p>
         <p className={styles.createdAt}>{formattedCreatedAt}</p>
-        <button className={styles.FloatingAddFolder}>
-          <p>폴더 추가</p>
-          <img className={styles.plus_img} src={plus} alt="더하기 이미지" />
-        </button>
       </div>
     </div>
   );

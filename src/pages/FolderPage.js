@@ -10,6 +10,7 @@ import Category from "../components/Category";
 import Card from "../components/Card";
 import getUserLinks from "../api/getUserLinks";
 import FolderUtils from "../components/FolderUtils";
+import FloatingAddFolder from "../components/FloatingAddFolder";
 
 const FolderPage = () => {
   const [userId, setUserId] = useState(null);
@@ -49,6 +50,7 @@ const FolderPage = () => {
         />
         <FolderUtils userId={userId} currentFolderName={currentFolderName} />
         <Card folderData={linksListData} isLoading={isLoadingLinksList} />
+        <FloatingAddFolder />
       </main>
       <footer>
         <Footer />
