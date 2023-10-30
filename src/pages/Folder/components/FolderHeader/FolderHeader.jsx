@@ -11,15 +11,6 @@ const DEFAULT_FOLDER = {
   name: '전체',
 };
 
-function FolderButton({ data, selected, onClick }) {
-  const onSelect = onClick ? () => onClick(data) : undefined;
-  return (
-    <S.FolderButton type='button' onClick={onSelect} selected={selected}>
-      {data.name}
-    </S.FolderButton>
-  );
-}
-
 function FolderHeader({ folders, setFolderLinks }) {
   const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER);
 
@@ -83,3 +74,15 @@ function FolderHeader({ folders, setFolderLinks }) {
 }
 
 export default FolderHeader;
+
+function FolderButton({ data, selected, onClick }) {
+  const onSelect = () => {
+    onClick?.(data);
+  };
+
+  return (
+    <S.FolderButton type='button' onClick={onSelect} selected={selected}>
+      {data.name}
+    </S.FolderButton>
+  );
+}
