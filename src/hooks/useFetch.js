@@ -6,7 +6,7 @@ export const API_URL = 'https://bootcamp-api.codeit.kr/api/';
 
 export function useFetch(path) {
   const [data, setData] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   
   const fetchUrl = async (type) => {
     try{
@@ -18,7 +18,8 @@ export function useFetch(path) {
       setData(body);
     }
     catch (error){
-      setErrorMessage(error);
+      console.error(error)
+      setErrorMessage(error.message);
     }
 
   }
@@ -48,7 +49,8 @@ export function useQueryFetch(path, folderId = null, id) {
       setData(body);
     }
     catch(error){
-      setErrorMessage(error);
+      console.error(error)
+      setErrorMessage(error.message);
     }
 
   }

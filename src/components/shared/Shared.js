@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useFetch, useQueryFetch } from '../../api/useFetch';
+import { useFetch, useQueryFetch } from '../../hooks/useFetch';
 import { AccountContext } from '../../contexts/AccountContext';
 import Search from './Search';
 import Cards from './Cards';
@@ -36,14 +36,14 @@ const Shared = () => {
                         <img src={profileImageSource && profileImageSource} alt='코드잇아이콘'/>
                     </div>
                     <h4>@{name && name}</h4>
-                    {errorMessage && <h4>{errorMessage.message}</h4>}
+                    {errorMessage && <h4>{errorMessage}</h4>}
                     <h3>{getBookmarkNumber() && getBookmarkNumber().name}</h3>
                 </div>
             </div>
             <Search/>
             {personalfolder?.length > 0 ? <Cards personalfolder={personalfolder}/> : 
             <h3 className='noLink'>저장된 링크가 없습니다</h3>}
-            {errorMessage && <h2>{errorMessage.message}</h2>}
+            {errorMessage && <h2>{errorMessage}</h2>}
         </div>
     );
 };

@@ -2,18 +2,20 @@ import React, { useContext, useState } from 'react';
 import { AccountContext } from '../contexts/AccountContext';
 import logoImg from '../img/png/Linkbrary.png'
 import './header.css';
+import { isLocation } from '../utils/location';
 
 
-const Header = ({isHeaderStyle}) => {
+const Header = () => {
     const {account, userErrorMessage} = useContext(AccountContext);
     const {name, email, image_source: profileImageSource} = account;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+    
     window.addEventListener('resize', () => {
-    setWindowWidth(window.innerWidth);
+        setWindowWidth(window.innerWidth);
     })
+
     return (
-        <header style={{position: isHeaderStyle ? "static" : "sticky"}}>
+        <header style={{position: isLocation() ? "static" : "sticky"}}>
              <div className="inner">
                 <h1>
                     <a href="/"><img src={logoImg} alt="logo"/></a>
