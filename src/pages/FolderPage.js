@@ -24,9 +24,9 @@ function FolderPage() {
   }
 
   useEffect(() => {
-    getFolderLink(folderId);
+    getFolderLink(folderParam);
     getFolderList();
-  }, [folderId]);
+  }, [folderParam]);
 
   return (
     <>
