@@ -6,15 +6,17 @@ import Search from '../shared/Search';
 import Cards from '../shared/Cards';
 import AddLink from './AddLink';
 import UserFolder from './UserFolder';
-import '../shared/shared.css';
+import '../components.css';
+
 
 const Folder = () => {
-    const {account, errorMessage} = useContext(AccountContext)
-    
+    const {account} = useContext(AccountContext)
     const {id} = account;
-    const {data:folderDataObject} = useFetch(`users/${id}/folders`);
+    const {data:folderDataObject, 
+        errorMessage:foldersErrorMessage} = useFetch(`users/${id}/folders`, id);
     const {folderId} = useParams();
-    const {data: personalfolderData} = useQueryFetch(`users/${id}/links`, folderId, id);
+    const {data: personalfolderData, 
+        errorMessage: linksErrorMessage} = useQueryFetch(`users/${id}/links`, folderId, id);
  
     if(!folderDataObject) return;
     const all = {
@@ -35,10 +37,11 @@ const Folder = () => {
                 <AddLink/>
             </div>
             <Search/>
-            <UserFolder folders={newFolderData} folderId={folderId}/>
-            {personalfolder?.length > 0 ? <Cards personalfolder={personalfolder}/> : 
-            <h3 className='noLink'>저장된 링크가 없습니다</h3>}
-            {errorMessage && <h2>{errorMessage}</h2>}
+            {!foldersErrorMessage ? <UserFolder folders={newFolderData} folderId={folderId} />:
+            foldersErrorMessage && <div className='user-folder'>{foldersErrorMessage}</div>}
+            {!linksErrorMessage ? personalfolder?.length > 0 ? <Cards personalfolder={personalfolder}/> : 
+            <h3 className='noLink'>저장된 링크가 없습니다</h3> 
+            : <div className="section-title section-title-third">{linksErrorMessage}</div>}
         </div>
     );
 };

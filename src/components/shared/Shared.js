@@ -3,12 +3,12 @@ import { useFetch, useQueryFetch } from '../../hooks/useFetch';
 import { AccountContext } from '../../contexts/AccountContext';
 import Search from './Search';
 import Cards from './Cards';
-import './shared.css';
+import '../components.css';
 
 const Shared = () => {
     const {account, errorMessage} = useContext(AccountContext)
     const {id, name, image_source: profileImageSource} = account;
-    const {data:folderDataObject} = useFetch(`users/${id}/folders`);
+    const {data:folderDataObject} = useFetch(`users/${id}/folders`, id);
 
     /* 즐겨찾기 데이터번호만 가져오는 함수 */
     function getBookmarkNumber() {
@@ -22,11 +22,12 @@ const Shared = () => {
         return bookmarkNumber[0];
     }
 
-    const {data: personalfolderData} = useQueryFetch(`users/${id}/links`, getBookmarkNumber()?.id, id);
+
+    const {data: personalfolderData, 
+        errorMessage: linksErrorMessage} = useQueryFetch(`users/${id}/links`, getBookmarkNumber()?.id, getBookmarkNumber()?.id);
     if(!personalfolderData) return;
     const {data:personalfolder} = personalfolderData;
     /* 즐겨찾기 폴더 데이터 없음 */
-
 
     return (
         <div className='shared'>
@@ -35,15 +36,15 @@ const Shared = () => {
                     <div className='icon-wrap'>
                         <img src={profileImageSource && profileImageSource} alt='코드잇아이콘'/>
                     </div>
-                    <h4>@{name && name}</h4>
-                    {errorMessage && <h4>{errorMessage}</h4>}
-                    <h3>{getBookmarkNumber() && getBookmarkNumber().name}</h3>
+                    {!errorMessage ? <h4>@{name}</h4> :
+                      <h4>{errorMessage}</h4>}
+                    {getBookmarkNumber() ? <h3>{getBookmarkNumber().name}</h3> : <h3>데이터가 없습니다.</h3>}
                 </div>
             </div>
             <Search/>
-            {personalfolder?.length > 0 ? <Cards personalfolder={personalfolder}/> : 
-            <h3 className='noLink'>저장된 링크가 없습니다</h3>}
-            {errorMessage && <h2>{errorMessage}</h2>}
+            {!linksErrorMessage ? personalfolder?.length > 0 ? <Cards personalfolder={personalfolder}/> : 
+            <h3 className='noLink'>저장된 링크가 없습니다</h3> 
+            : <div className="section-title section-title-third">{linksErrorMessage}</div>}
         </div>
     );
 };

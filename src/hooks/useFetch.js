@@ -4,7 +4,7 @@ export const API_URL = 'https://bootcamp-api.codeit.kr/api/';
 
 
 
-export function useFetch(path) {
+export function useFetch(path, id) {
   const [data, setData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   
@@ -18,14 +18,14 @@ export function useFetch(path) {
       setData(body);
     }
     catch (error){
-      console.error(error)
       setErrorMessage(error.message);
+      return;
     }
 
   }
     useEffect(() => {
       fetchUrl(path);
-    }, []);
+    }, [id]);
 
     return {
       data,
@@ -49,8 +49,8 @@ export function useQueryFetch(path, folderId = null, id) {
       setData(body);
     }
     catch(error){
-      console.error(error)
       setErrorMessage(error.message);
+      return;
     }
 
   }
