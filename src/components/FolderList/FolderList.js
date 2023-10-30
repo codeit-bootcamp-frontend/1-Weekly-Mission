@@ -24,13 +24,16 @@ function FolderList({ onFolderSelect }) {
     async function fetchData() {
       try {
         const response = await fetch(`${BASE_API_URL}/users/${userId}/folders`);
-        if (response.status === 200) {
-          const data = await response.json();
-          setFolders(data.data);
+        if (!response.ok) {
+          throw new Error(`Server responded with ${response.status}`);
         }
-      } catch (error) {}
-    }
 
+        const data = await response.json();
+        setFolders(data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
     fetchData();
   }, []);
 
