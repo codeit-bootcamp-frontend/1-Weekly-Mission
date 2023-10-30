@@ -52,11 +52,13 @@ function FolderPage() {
 
       <section className="section">
         <SearchBar size="large" />
-        {(links && links.length === 0) || <FolderList folders={folders} />}
         {links && links.length === 0 ? (
           <StyledDiv> 저장된 링크가 없습니다 📭 </StyledDiv>
         ) : (
-          <CardSection data={links} />
+          <>
+            <FolderList folders={folders} />
+            <CardSection data={links} />
+          </>
         )}
       </section>
     </>
