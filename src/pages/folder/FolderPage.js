@@ -9,11 +9,13 @@ import { linkIcon } from '../../constants/globalImages';
 function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
+  const [selectedFolder, setSelectedFolder] = useState(null);
 
   const handleLinkListLoad = async () => {
-    const { data } = await getLinkList();
+    const { data } = await getLinkList(selectedFolder);
     setLinks([...data]);
   };
+
   const handleFolderListLoad = async () => {
     const { data } = await getFolderList();
     setFolders([...data]);
@@ -21,8 +23,11 @@ function FolderPage() {
 
   useEffect(() => {
     handleFolderListLoad();
-    handleLinkListLoad();
   }, []);
+
+  useEffect(() => {
+    handleLinkListLoad();
+  }, [selectedFolder]);
 
   return (
     <>
@@ -41,7 +46,11 @@ function FolderPage() {
       </header>
       <main className="main-folder">
         <CardSearchBar />
-        <FolderList folders={folders} />
+        <FolderList
+          folders={folders}
+          setSelectedFolder={setSelectedFolder}
+          selectedFolder={selectedFolder}
+        />
         <CardList links={links} />
       </main>
     </>

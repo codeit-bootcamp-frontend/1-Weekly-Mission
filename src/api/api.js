@@ -14,12 +14,13 @@ export async function getFolderList() {
   return body;
 }
 
-export async function getLinkList() {
-  const response = await fetch(
-    'https://bootcamp-api.codeit.kr/api/users/1/links'
-  );
+export async function getLinkList(folderId) {
+  let url = 'https://bootcamp-api.codeit.kr/api/users/1/links';
+  if (folderId) {
+    url += `?folderId=${folderId}`;
+  }
+  const response = await fetch(url);
   const body = await response.json();
-  console.log(body);
   return body;
 }
 
