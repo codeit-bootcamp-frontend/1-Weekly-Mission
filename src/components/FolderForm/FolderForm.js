@@ -9,11 +9,9 @@ function FolderForm({ name, href }) {
   };
 
   return (
-    <>
-      <button className="folder-name" onClick={handleFolderButton}>
-        {name}
-      </button>
-    </>
+    <button className="folder-name" onClick={handleFolderButton}>
+      {name}
+    </button>
   );
 }
 
