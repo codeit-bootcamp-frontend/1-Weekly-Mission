@@ -2,7 +2,7 @@
   display: flex;
   height: 3.5rem;
   padding: 0.8rem 1.2rem;
-  border: 1px solid var(--primary);
+  border: 0.1rem solid var(--primary);
   background: #fff;
   border-radius: 0.5rem;
   font-size: 1.6rem;

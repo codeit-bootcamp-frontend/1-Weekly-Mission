@@ -13,13 +13,13 @@
 }
 
 .profile-img {
-  height: 60px;
-  border-radius: 47px;
+  height: 3.75rem;
+  border-radius: 4.7rem;
 }
 
 .bookmark {
   text-align: center;
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: 600;
   margin-top: 0.8rem;
 }
