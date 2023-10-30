@@ -3,12 +3,23 @@ import SearchBar from './SearchBar';
 import CardList from './CardList';
 import { useCallback, useEffect, useState } from 'react';
 import useAsync from '../hooks/useAsync';
-import { getCards } from '../api/api';
+import { getCards, getFolders } from '../api/api';
 
 function Folder() {
   const [cards, setCards] = useState();
+  const [folders, setFolders] = useState([]);
 
   const [isLoadingCards, loadingCardsError, getCardsAsync] = useAsync(getCards);
+  const [isLoadingFolders, loadingFoldersError, getFoldersAsync] = useAsync(getFolders);
+
+  const handleFolderLoad = useCallback(async () => {
+    const result = await getFoldersAsync();
+    if (!result) {
+      return;
+    }
+    const receivedFolders = result.data;
+    setFolders(receivedFolders);
+  }, [getFoldersAsync]);
 
   const handleCardLoad = useCallback(async () => {
     const result = await getCardsAsync();
@@ -22,7 +33,8 @@ function Folder() {
 
   useEffect(() => {
     handleCardLoad();
-  }, [handleCardLoad]);
+    handleFolderLoad();
+  }, [handleCardLoad, handleFolderLoad]);
 
   return (
     <Container>
