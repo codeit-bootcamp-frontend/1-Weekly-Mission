@@ -10,20 +10,20 @@ import {
   getUsersFolderLinkItems,
 } from '../apis/api';
 import FolderEdit from '../components/FolderEdit/FolderEdit';
-import SharedFolder from '../components/SharedFolder/SharedFolder';
 import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
 import { useSearchParams } from 'react-router-dom';
+import Binder from '../components/Binder/Binder';
 
 function FolderList() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const folderID = searchParams.get('folderId');
+
   function handleClick(e) {
     const { name, value } = e.target;
     searchParams.set(name, value);
     setSearchParams(searchParams);
   }
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const folderID = searchParams.get('folderId');
 
   const [folderLists, setFolderLists] = useState([
     {
@@ -65,7 +65,7 @@ function FolderList() {
     }
   };
 
-  const folder = getFolderName(folderID, folderLists);
+  const folderName = getFolderName(folderID, folderLists);
 
   useEffect(() => {
     loadFolderData();
@@ -89,14 +89,10 @@ function FolderList() {
           <FolderAddMenu />
         </div>
         <div className={styles.flex}>
-          <FolderName>{folder}</FolderName>
+          <FolderName>{folderName}</FolderName>
           {folderID && <FolderEdit />}
         </div>
-        {cards.length ? (
-          <SharedFolder cards={cards} shared="off" />
-        ) : (
-          <FolderEmptyNoti />
-        )}
+        {cards.length ? <Binder cards={cards} /> : <FolderEmptyNoti />}
       </section>
     </>
   );

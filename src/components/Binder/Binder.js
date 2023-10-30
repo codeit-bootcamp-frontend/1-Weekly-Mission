@@ -1,7 +1,7 @@
-import styles from './SharedFolder.module.css';
+import styles from './Binder.module.css';
 import Card from '../Card/Card';
 
-function SharedFolder({ cards, shared }) {
+function Binder({ cards, shared }) {
   const dotRemover = {
     listStyleType: 'none',
   };
@@ -18,4 +18,4 @@ function SharedFolder({ cards, shared }) {
     </article>
   );
 }
-export default SharedFolder;
+export default Binder;

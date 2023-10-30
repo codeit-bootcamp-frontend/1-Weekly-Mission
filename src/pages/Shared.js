@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import SharedFolderInfo from '../components/SharedFolderInfo/SharedFolderInfo';
+import BinderInfo from '../components/BinderInfo/BinderInfo';
 import { getSample } from '../apis/api';
 import SearchBar from '../components/SearchBar/SearchBar';
-import SharedFolder from '../components/SharedFolder/SharedFolder';
+import Binder from '../components/Binder/Binder';
 
 function Shared() {
   const section = {
@@ -39,10 +39,10 @@ function Shared() {
 
   return (
     <>
-      <SharedFolderInfo name={name} owner={owner} />
+      <BinderInfo name={name} owner={owner} />
       <section style={section}>
         <SearchBar />
-        <SharedFolder cards={cards} shared="on" />
+        <Binder cards={cards} shared="on" />
       </section>
     </>
   );

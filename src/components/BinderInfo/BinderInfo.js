@@ -1,6 +1,6 @@
-import styles from './SharedFolderInfo.module.css';
+import styles from './BinderInfo.module.css';
 
-function SharedFolderInfo({ name, owner }) {
+function BinderInfo({ name, owner }) {
   return (
     <header className={styles.root}>
       <div className={styles.container}>
@@ -14,4 +14,4 @@ function SharedFolderInfo({ name, owner }) {
   );
 }
 
-export default SharedFolderInfo;
+export default BinderInfo;
