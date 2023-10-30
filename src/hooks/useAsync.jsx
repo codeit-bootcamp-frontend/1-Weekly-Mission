@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useAsync(asyncFunction, initialArgs = [], deps = [], skip = false) {
+function useAsync({ asyncFunction, initialArgs, deps = [], skip = false }) {
   const [data, setData] = useState(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
@@ -20,7 +20,11 @@ function useAsync(asyncFunction, initialArgs = [], deps = [], skip = false) {
 
   useEffect(() => {
     if (skip) return;
-    fetchData(initialArgs);
+    if (initialArgs) {
+      fetchData(initialArgs);
+    } else {
+      fetchData();
+    }
   }, deps);
 
   return [data, pending, error, fetchData];

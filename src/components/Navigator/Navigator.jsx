@@ -7,12 +7,11 @@ import useAsync from 'hooks/useAsync';
 import LB_ICON from 'assets/icons/linkbrary.svg';
 
 function Navigator({ isLoggedIn, userId }) {
-  const [data, isLoading, loadingError, getUserAsync] = useAsync(
-    getUser,
-    [userId],
-    [],
-    true
-  );
+  const [data, isLoading, loadingError, getUserAsync] = useAsync({
+    asyncFunction: getUser,
+    initialArgs: userId,
+    skip: true,
+  });
 
   useEffect(() => {
     if (isLoggedIn) {

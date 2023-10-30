@@ -9,9 +9,9 @@ import NoLink from '../NoLink';
 
 function LinkList({ userId }) {
   const [linksData, isLoadingLinks, linksLoadingError, getLinksAsync] =
-    useAsync(getLinks, [userId]);
+    useAsync({ asyncFunction: getLinks, initialArgs: userId });
   const [foldersData, isLoadingFolders, folderLoadingError, getFoldersAsync] =
-    useAsync(getFolders, [userId]);
+    useAsync({ asyncFunction: getFolders, initialArgs: userId });
   const [searchParams, setSearchParams] = useSearchParams();
 
   const setFolderLinks = (folderId) => {
