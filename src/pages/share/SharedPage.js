@@ -11,7 +11,7 @@ export default function SharedPage() {
 
   useEffect(async () => {
     const response = await getSampleFolder();
-    const link = response.folder.links;
+    const link = response?.folder.links;
     setLinks(link);
   }, []);
 
