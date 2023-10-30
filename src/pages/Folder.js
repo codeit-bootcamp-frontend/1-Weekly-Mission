@@ -3,18 +3,19 @@ import FolderNav from '../components/FolderNav/FolderNav';
 import AddLinkInput from '../components/AddLinkInput/AddLinkInput';
 import FolderAddMenu from '../components/FolderAddMenu/FolderAddMenu';
 import FolderName from '../components/FolderName/FolderName';
-import styles from './FolderList.module.css';
+import Binder from '../components/Binder/Binder';
+import FolderEdit from '../components/FolderEdit/FolderEdit';
+import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
+
+import styles from './Folder.module.css';
 import { useCallback, useEffect, useState } from 'react';
 import {
   getSampleUsersFolderLists,
   getUsersFolderLinkItems,
 } from '../apis/api';
-import FolderEdit from '../components/FolderEdit/FolderEdit';
-import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
 import { useSearchParams } from 'react-router-dom';
-import Binder from '../components/Binder/Binder';
 
-function FolderList() {
+function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const folderID = searchParams.get('folderId');
@@ -97,4 +98,4 @@ function FolderList() {
     </>
   );
 }
-export default FolderList;
+export default Folder;
