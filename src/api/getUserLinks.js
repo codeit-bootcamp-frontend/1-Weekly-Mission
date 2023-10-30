@@ -19,7 +19,6 @@ import API_ENDPOINTS from "./endpoints";
  * const customLinks = await getUserLinks("2", "17");
  */
 const getUserLinks = async ({ userId, folderId = "" }) => {
-  console.log(folderId);
   const baseUrl = API_ENDPOINTS.baseUrl;
   const endpoint = API_ENDPOINTS.user.links.getUserLinks.replace("{userId}", userId);
   const query = `?folderId=${folderId}`;
