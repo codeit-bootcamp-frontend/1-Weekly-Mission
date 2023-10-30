@@ -7,7 +7,7 @@ import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";
 import FolderList from "../component/FolderList";
 import CardSection from "../component/CardSection";
-import "../assets/css/SharedPage.css";
+import "../assets/css/FolderPage.css";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -57,6 +57,7 @@ function FolderPage() {
         ) : (
           <>
             <FolderList folders={folders} />
+            <div>제목</div>
             <CardSection data={links} />
           </>
         )}

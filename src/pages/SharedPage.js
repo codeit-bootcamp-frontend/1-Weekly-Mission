@@ -4,7 +4,7 @@ import { getSample } from "../api";
 import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";
 import CardSection from "../component/CardSection";
-import "../assets/css/SharedPage.css";
+import "../assets/css/FolderPage.css";
 
 function SharedPage() {
   const [folderData, setFolderData] = useState({});

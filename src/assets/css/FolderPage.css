@@ -1,5 +1,4 @@
 /*--main--*/
-
 .folderInfo {
   display: flex;
   flex-direction: column;
@@ -37,16 +36,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: auto;
+  max-width: 66.25rem;
+  margin: auto;
 
   @media (max-width: 1123px) {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 2rem;
+    max-width: 44rem;
   }
 
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
-    padding: 0 2rem;
+    max-width: 20.3125rem;
   }
 }
