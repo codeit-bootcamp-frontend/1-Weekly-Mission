@@ -26,26 +26,34 @@ const Card = ({ link, isFolderPage }) => {
           <Star />
         </button>
       )}
-      {link[imageSourceField] ? (
-        <img src={link[imageSourceField]} alt={link.title} />
-      ) : (
-        <div className="no-image">이미지가 없습니다.</div>
-      )}
+      <ImageSection link={link} imageSourceField={imageSourceField} />
       <div className="card-text">
-        {isFolderPage && (
-          <div className="card-text-top">
-            <span className="date">{timeDiffText}</span>
-            <button className="kebab-button">
-              <Kebab />
-            </button>
-          </div>
+        {isFolderPage ? (
+          <FolderPageHeader timeDiffText={timeDiffText} />
+        ) : (
+          <span className="date">{timeDiffText}</span>
         )}
-        {!isFolderPage && <span className="date">{timeDiffText}</span>}
         <h3 className="title">{link.title}</h3>
         <p className="description">{link.description}</p>
       </div>
     </div>
   );
 };
+
+const ImageSection = ({ link, imageSourceField }) =>
+  link[imageSourceField] ? (
+    <img src={link[imageSourceField]} alt={link.title} />
+  ) : (
+    <div className="no-image">이미지가 없습니다.</div>
+  );
+
+const FolderPageHeader = ({ timeDiffText }) => (
+  <div className="card-text-top">
+    <span className="date">{timeDiffText}</span>
+    <button className="kebab-button">
+      <Kebab />
+    </button>
+  </div>
+);
 
 export default Card;
