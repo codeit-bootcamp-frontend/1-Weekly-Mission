@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/global.css';
 import './SharedPage.css';
-import { getFolder } from '../../api/api';
+경import { getSharedLinkList } from '../../api/api';
 import CardList from '../../components/card/CardList';
 import CardSearchBar from '../../components/card/CardSearchBar';
 
@@ -10,7 +10,7 @@ function SharedPage() {
   const [folderInfo, setFolderInfo] = useState({});
 
   const handleFolderLoad = async () => {
-    const { folder } = await getFolder();
+    const { folder } = await getSharedLinkList();
     setLinks([...folder.links]);
     setFolderInfo(folder);
   };

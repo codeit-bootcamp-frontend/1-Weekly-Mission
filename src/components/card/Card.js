@@ -3,16 +3,18 @@ import './Card.css';
 import { noImage } from '../../constants/globalImages';
 import { formatDate, formatDateDiff } from '../../utils/util';
 
-function Card({ data: { createdAt, description, imageSource, url } }) {
-  const dateDiff = formatDateDiff(createdAt);
-  const formattedDate = formatDate(createdAt);
+function Card({
+  data: { created_at, createdAt, description, image_source, imageSource, url },
+}) {
+  const dateDiff = formatDateDiff(created_at ?? createdAt);
+  const formattedDate = formatDate(created_at ?? createdAt);
 
   return (
     <a href={url} className="card-link" target="_blank" rel="noreferrer">
       <div className="card">
         <div className="card-img-section">
           <img
-            src={imageSource ?? noImage}
+            src={image_source ?? imageSource ?? noImage}
             alt="folderImage"
             className="sample-img"
           />

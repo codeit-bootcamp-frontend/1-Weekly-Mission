@@ -3,7 +3,7 @@ import CardList from '../../components/card/CardList';
 import FolderList from '../../components/folder/FolderList';
 import './FolderPage.css';
 import CardSearchBar from '../../components/card/CardSearchBar';
-import { getFolder, getFolderList } from '../../api/api';
+import { getFolderList, getLinkList } from '../../api/api';
 import { linkIcon } from '../../constants/globalImages';
 
 function FolderPage() {
@@ -11,8 +11,8 @@ function FolderPage() {
   const [folders, setFolders] = useState([]);
 
   const handleLinkListLoad = async () => {
-    const { folder } = await getFolder();
-    setLinks([...folder.links]);
+    const { data } = await getLinkList();
+    setLinks([...data]);
   };
   const handleFolderListLoad = async () => {
     const { data } = await getFolderList();

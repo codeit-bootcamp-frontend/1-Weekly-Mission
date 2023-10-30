@@ -1,4 +1,4 @@
-export async function getFolder() {
+export async function getSharedLinkList() {
   const response = await fetch(
     'https://bootcamp-api.codeit.kr/api/sample/folder'
   );
@@ -19,14 +19,7 @@ export async function getLinkList() {
     'https://bootcamp-api.codeit.kr/api/users/1/links'
   );
   const body = await response.json();
-  return body;
-}
-
-export async function getLinkListByFolder(folderId) {
-  const response = await fetch(
-    `https://bootcamp-api.codeit.kr/api/users/1/links?folderId={${folderId}}`
-  );
-  const body = await response.json();
+  console.log(body);
   return body;
 }
 
