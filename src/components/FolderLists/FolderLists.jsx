@@ -13,8 +13,11 @@ const FolderList = ({ data, onClick }) => {
   );
 };
 
-const FolderLists = ({ folderData }) => {
-  const [folderTitle, setFolderTitle] = useState("전체");
+const FolderLists = ({ folderData, id }) => {
+  const [folderTitle, setFolderTitle] = useState(() => {
+    const idFolder = folderData.filter((data) => data.id === parseInt(id));
+    return idFolder[0]["name"];
+  });
 
   const handleBtnClick = (dataName) => {
     dataName === "전체" ? setFolderTitle("전체") : setFolderTitle(dataName);

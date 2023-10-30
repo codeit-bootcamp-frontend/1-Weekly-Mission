@@ -49,6 +49,7 @@ export const Btn = styled.button`
   border-radius: 5px;
   border: 1px solid var(--primary);
   background-color: var(--white);
+  color: var(--black);
   white-space: nowrap;
 `;
 

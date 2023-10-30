@@ -12,6 +12,7 @@ import * as Styled from "./StyledFolderPage";
 
 const FolderPage = () => {
   const { folderId } = useParams();
+  const [search, setSearch] = useState("");
   const [folderListsData, setFolderListsData] = useState({
     data: [],
   });
@@ -39,7 +40,20 @@ const FolderPage = () => {
       }));
     } catch (err) {
       console.log(err);
+    } finally {
+      setSearch("");
     }
+  };
+
+  const handleSearchSubmit = (value) => {
+    if (!value) return;
+    const filteredLinks = linksData.data.filter((item) =>
+      item["description"]?.includes(value)
+    );
+    setLinksData((prevData) => ({
+      ...prevData,
+      data: filteredLinks,
+    }));
   };
 
   useEffect(() => {
@@ -47,18 +61,23 @@ const FolderPage = () => {
     handleFolderLists(folderId);
   }, [folderId]);
 
+  useEffect(() => {
+    handleSearchSubmit(search);
+  }, [search]);
+
   return (
     <>
       <Styled.Header>
         <AddBar />
       </Styled.Header>
       <Styled.Article>
-        <SearchBar />
+        <SearchBar onSubmit={setSearch} />
+        <div>{search}</div>
         {linksData.data.length === 0 ? (
           <NoFolderLink />
         ) : (
           <>
-            <FolderLists folderData={folderListsData.data} />
+            <FolderLists folderData={folderListsData.data} id={folderId} />
             <CardSection data={linksData.data} />
           </>
         )}
