@@ -18,7 +18,6 @@
 .card-image {
   width: 100%;
   height: 100%;
-  background: lightgray 50% / cover no-repeat;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,7 +27,7 @@
 }
 
 .card-image:hover {
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 
 .card-info-box {

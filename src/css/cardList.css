@@ -5,7 +5,7 @@
 }
 
 @media (min-width: 768px) {
-  main {
+  .container {
     margin: 4rem 0;
     gap: 4rem;
   }
@@ -17,7 +17,7 @@
 }
 
 @media (min-width: 1024px) {
-  main {
+  .container {
     margin: 4rem 0;
     gap: 4rem;
   }

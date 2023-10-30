@@ -60,8 +60,12 @@ const ContentContainer = styled.div`
 const AddFolderButton = styled.button`
   position: absolute;
   top: 9rem;
-  right: 24rem;
+  right: 23rem;
   background-color: transparent;
   color: var(--primary);
   border: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

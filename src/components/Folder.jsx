@@ -18,6 +18,7 @@ function FolderList({ folderList = null, getCardList }) {
     setFolderName(name);
     getCardList(id);
   };
+
   return (
     <div>
       <FolderListContainer>
@@ -72,9 +73,19 @@ const FolderListContainer = styled.div`
   flex-direction: row;
   gap: 0.8rem;
   margin-bottom: 2.4rem;
+
+  @media (min-width: 768px) {
+    width: 70.4rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 106rem;
+  }
 `;
 
 const FolderTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
   color: var(--black);
   font-size: 2.4rem;
   font-style: normal;

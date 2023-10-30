@@ -11,14 +11,16 @@ function CardList({ cards }) {
   }
   return (
     <>
-      <div className="card-list">
-        {cards.map((card) => {
-          return (
-            <li key={card.id}>
-              <Card card={card} />
-            </li>
-          );
-        })}
+      <div className="container">
+        <div className="card-list">
+          {cards.map((card) => {
+            return (
+              <li key={card.id}>
+                <Card card={card} />
+              </li>
+            );
+          })}
+        </div>
       </div>
     </>
   );

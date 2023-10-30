@@ -6,7 +6,11 @@ function Card({ card }) {
     <>
       <div className="card-wrapper" href={card.url} target="_blank" rel="noreferrer noopener">
         <div className="card-image-box">
-          <img className="card-image" src={card.image_source} alt={card.title} />
+          <img
+            className="card-image"
+            src={card.image_source ? card.image_source : `/assets/image/no-img-card.svg`}
+            alt={card.title}
+          />
           <button className="star-mark-button">
             <img className="star-mark" src="/assets/image/star.png" alt="카드 즐겨찾기 버튼" />
           </button>
