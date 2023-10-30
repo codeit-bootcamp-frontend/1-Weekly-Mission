@@ -20,14 +20,14 @@ function FolderPage() {
 
   const handleFolderLoad = async () => {
     const folders = await getFolderAsync({ id: 1 });
-    setFolders(folders);
+    setFolders([...folders]);
   };
   const handleLinkLoad = async () => {
     const links = await getLinkAsync({
       id: 1,
       folderId: folderParam || "",
     });
-    setLinks(links);
+    setLinks([...links]);
   };
   useEffect(() => {
     handleLinkLoad();

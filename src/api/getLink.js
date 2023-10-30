@@ -5,6 +5,6 @@ export async function getLink({ id, folderId = " " }) {
     `${API.baseURL}/users/${id}/links?folderId=${folderId}`
   );
   const links = await res.json();
-  if (res?.status === 300) return links?.data || [];
+  if (res?.status === 200) return links?.data || [];
   return [];
 }
