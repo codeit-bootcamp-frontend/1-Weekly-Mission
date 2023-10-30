@@ -1,44 +1,46 @@
-const url = 'https://bootcamp-api.codeit.kr/api';
+const APIpoint = 'https://bootcamp-api.codeit.kr/api/';
 
-// getSample (type == user, folder)
-const getSample = async (type) => {
-  const response = await fetch(`${url}/sample/${type}`);
-  const data = response.json();
+async function requestAPI(url, body) {
+  const response = await fetch(`${APIpoint}${url}`, body);
+  const result = await response.json();
+  return result;
+}
+
+// getSample
+const getSample = async () => {
+  const data = await requestAPI('sample/folder');
   return data;
 };
 
 const getSampleUsersFolderLists = async () => {
-  const response = await fetch(`${url}/users/1/folders`);
-  const data = response.json();
+  const data = await requestAPI('users/1/folders');
   return data;
 };
 
 const getUsersFolderLinkItems = async (folderID) => {
-  let response;
-
   if (folderID === '0' || !folderID) {
-    response = await fetch(`${url}/users/1/links`);
+    const data = await requestAPI(`users/1/links`);
+    return data;
   } else {
-    response = await fetch(`${url}/users/1/links?folderId=${folderID}`);
+    const data = await requestAPI(`users/1/links?folderId=${folderID}`);
+    return data;
   }
-  const data = response.json();
-  return data;
 };
 
 // getUser : 진짜 토큰으로 진짜 유저 요청
 const getUser = async () => {
-  const response = await fetch(`${url}/users`, {
+  const data = await requestAPI('users', {
     method: 'GET',
     headers: {
       Authorization: localStorage.getItem('accessToken'),
     },
   });
-  const data = response.json();
+
   return data;
 };
 
-const saveTokenToLocalStorage = async (promise) => {
-  const { data } = await promise.json();
+const saveTokenToLocalStorage = async (responseData) => {
+  const { data } = await responseData.json();
   const accessToken = data?.accessToken;
   const refreshToken = data?.refreshToken;
   localStorage.setItem('accessToken', accessToken);
@@ -46,7 +48,7 @@ const saveTokenToLocalStorage = async (promise) => {
 };
 
 const requestSign = async (signType, data) => {
-  const responseData = await fetch(`${url}/sign-${signType}`, {
+  const responseData = await fetch(`${APIpoint}sign-${signType}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

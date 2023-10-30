@@ -42,7 +42,7 @@ function Signin() {
     if (response.ok) {
       navigate('/folder');
     } else {
-      console.log('실패란다');
+      console.log(response);
     }
   };
 

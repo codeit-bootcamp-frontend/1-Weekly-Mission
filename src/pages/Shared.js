@@ -22,7 +22,7 @@ function Shared() {
   const loadFolderData = async () => {
     const {
       folder: { name, owner, links },
-    } = await getSample('folder');
+    } = await getSample();
 
     setName(name);
     setOwner({ ...owner });
