@@ -1,8 +1,4 @@
 interface Link {
-  data: LinkData[];
-}
-
-interface LinkData {
   id: number;
   created_at: string;
   updated_at: null;

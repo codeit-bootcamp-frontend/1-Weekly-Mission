@@ -6,18 +6,18 @@ interface Folder {
 interface FolderData {
   id: number;
   name: string;
-  owner: OwnerData;
-  links: LinksData[];
+  owner: Owner;
+  links: FolderLinks[];
   count: number;
 }
 
-interface OwnerData {
+interface Owner {
   id: number;
   name: string;
   profileImageSource: string;
 }
 
-interface LinksData {
+interface FolderLinks {
   id?: number;
   createdAt: string;
   url: string;
@@ -28,10 +28,6 @@ interface LinksData {
 
 // user folder
 interface UserFolder {
-  data: UserFolderData[];
-}
-
-interface UserFolderData {
   id: number;
   created_at: string;
   name: string;

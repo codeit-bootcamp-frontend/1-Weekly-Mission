@@ -6,10 +6,6 @@ interface SampleUser {
 }
 
 interface User {
-  data: UserData[];
-}
-
-interface UserData {
   id: number;
   created_at: string;
   name: string;
