@@ -1,12 +1,10 @@
-import "../styles/ProfileInfo.css";
+import styles from "../styles/ProfileInfo.module.css";
 
-const ProfileInfo = ({ userData }) => {
-  const { profileImageSource, email } = userData;
-
+const ProfileInfo = ({ profileImageSource, email }) => {
   return (
-    <div className="ProfileInfo">
-      <img className="ProfileInfo__profile-img" src={profileImageSource} alt="프로필 아이콘" />
-      <span className="ProfileInfo__email">{email}</span>
+    <div className={styles.ProfileInfo}>
+      <img className={styles.profile_img} src={profileImageSource} alt="프로필 아이콘" />
+      <span className={styles.email}>{email}</span>
     </div>
   );
 };

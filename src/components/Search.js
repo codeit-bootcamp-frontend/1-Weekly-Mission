@@ -1,8 +1,8 @@
-import "../styles/Search.css";
+import styles from "../styles/Search.module.css";
 import SearchBar from "./SearchBar";
 
 const Search = () => (
-  <div className="Search">
+  <div className={styles.Search}>
     <SearchBar />
   </div>
 );

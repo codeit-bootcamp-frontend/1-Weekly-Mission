@@ -1,30 +1,28 @@
-import "../styles/LoginButton.css";
+import { useState } from "react";
+import styles from "../styles/LoginButton.module.css";
 import ProfileInfo from "./ProfileInfo";
 import getUser from "./../api/getUser";
-import { useState } from "react";
+import classnames from "classnames";
+import useAsync from "../hooks/useAsync";
 
-const LoginButton = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const LoginButton = ({ userId }) => {
   const [userData, setUserData] = useState(null);
+  const [isLoading, getUserAsync] = useAsync(getUser);
 
-  const handleButtonClick = async (e) => {
-    try {
-      setIsLoading(true);
-      e.preventDefault();
-      setUserData(await getUser());
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
+  const handleButtonClick = async () => {
+    const userResponseData = await getUserAsync();
+    setUserData(userResponseData);
+    if (userId) {
+      userId(userResponseData.id);
     }
   };
 
   return (
-    <div className="LoginButton">
-      {userData ? (
-        <ProfileInfo userData={userData} />
+    <div>
+      {userData?.email ? (
+        <ProfileInfo email={userData.email} profileImageSource={userData.profileImageSource} />
       ) : (
-        <button disabled={isLoading} className="cta cta-short" onClick={handleButtonClick}>
+        <button disabled={isLoading} className={classnames(styles.cta, styles.cta_short)} onClick={handleButtonClick}>
           로그인
         </button>
       )}

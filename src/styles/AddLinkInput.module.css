@@ -1,0 +1,46 @@
+/* PC 화면 크기 (1200px 이상) */
+.AddLinkInput {
+  position: relative;
+  width: 100%;
+  max-width: 80rem;
+}
+
+.chain_icon {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: 50%;
+  left: 2.4rem;
+  transform: translate(-50%, -50%);
+}
+
+.input {
+  display: flex;
+  border: none;
+  background: var(--linkbrary-white);
+  width: 100%;
+  padding: 1.6rem 2rem 1.6rem 4.2rem;
+  font-size: 1.6rem;
+  line-height: 3.52rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .chain_icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    left: 1.8rem;
+  }
+
+  .input {
+    padding: 1rem 1rem 1rem 3.4rem;
+    font-size: 1.4rem;
+    line-height: 3.1rem;
+  }
+}

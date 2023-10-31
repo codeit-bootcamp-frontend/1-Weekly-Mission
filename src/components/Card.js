@@ -1,24 +1,12 @@
-import React from "react";
-import CardItem from "./CardItem";
-import "../styles/Card.css";
+import styles from "../styles/Card.module.css";
+import CardList from "./CardList";
 
-const Card = ({ folderData }) => {
-  if (folderData && folderData.folder) {
-    const { folder } = folderData;
-    const { links } = folder;
-
-    return (
-      <div className="Card">
-        <ul className="Card__list">
-          {links.map((data) => (
-            <li key={data.id}>
-              <CardItem item={data} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
+const Card = ({ folderData, isLoading }) => {
+  return (
+    <div className={styles.Card}>
+      <CardList folderData={folderData} isLoading={isLoading} />
+    </div>
+  );
 };
 
 export default Card;

@@ -1,0 +1,142 @@
+.CardItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 34rem;
+  height: 33.4rem;
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.08);
+  border-radius: 0 0 1.5rem 1.5rem;
+}
+
+.img_container {
+  height: 60%;
+  overflow: hidden;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.img:hover {
+  transform: scale(1.3);
+}
+
+.bookmark_button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.content_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time_diff {
+  color: #666;
+  font-size: 1.3rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: -5.7rem;
+  bottom: 4.2rem;
+  gap: 0.2rem;
+  width: 100px;
+  background: var(--gray-light-gray-00, #fff);
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+  z-index: 1;
+}
+
+.menu button {
+  padding: 0.7rem 1.2rem;
+}
+
+.menu button:hover {
+  background: var(--linkbrary-gray-10, #e7effb);
+  color: var(--linkbrary-primary-color, #6d6afe);
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+.createdAt {
+  color: #333;
+  font-size: 14px;
+}
+
+.FloatingAddFolder {
+  display: none;
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-5px); /* 아래위로 움직이는 거리 조절 */
+    }
+  }
+
+  .CardItem {
+    width: 32.5rem;
+    height: 32.7rem;
+  }
+
+  .modal {
+    right: 2rem;
+  }
+
+  .CardItem:hover .FloatingAddFolder {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    border: 0.1rem solid var(--linkbrary-white, #fff);
+    background: var(--linkbrary-primary-color, #6d6afe);
+    padding: 0.8rem 2.4rem;
+    gap: 0.4rem;
+    left: 9.85rem;
+    bottom: 2.8rem;
+    z-index: 2;
+    animation: moveUpDown 0.5s alternate infinite;
+  }
+
+  .FloatingAddFolder p {
+    color: var(--linkbrary-gray-10, #e7effb);
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.03rem;
+  }
+
+  .plus_img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}

@@ -1,5 +1,5 @@
-import "../styles/SearchBar.css";
 import { useState } from "react";
+import styles from "../styles/SearchBar.module.css";
 import searchIcon from "../assets/searchIcon.svg";
 
 const SearchBar = () => {
@@ -16,10 +16,10 @@ const SearchBar = () => {
   };
 
   return (
-    <form className="SearchBar" onSubmit={handleSubmit}>
-      <img className="SearchBar__search-icon" src={searchIcon} alt="돋보기 모양 아이콘" />
+    <form className={styles.SearchBar} onSubmit={handleSubmit}>
+      <img className={styles.search_icon} src={searchIcon} alt="돋보기 모양 아이콘" />
       <input
-        className="SearchBar__input"
+        className={styles.input}
         name="search"
         placeholder="링크를 검색해 보세요."
         value={inputValue}
