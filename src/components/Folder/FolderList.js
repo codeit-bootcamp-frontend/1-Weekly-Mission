@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import addImg from '../assets/images/add.svg';
+import addImg from '../../assets/images/add.svg';
 import { useState } from 'react';
 
 const ALL = {

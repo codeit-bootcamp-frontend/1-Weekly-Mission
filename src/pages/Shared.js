@@ -1,6 +1,6 @@
-import CardList from '../components/CardList';
-import User from '../components/User';
-import Search from '../components/Search';
+import CardList from '../components/common/CardList';
+import User from '../components/Shared/User';
+import Search from '../components/common/Search';
 import getData from '../services/api';
 import { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';

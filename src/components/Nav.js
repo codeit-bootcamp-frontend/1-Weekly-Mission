@@ -1,4 +1,4 @@
-import Button from './Button';
+import Button from './common/Button';
 import logo from '../assets/images/logo.svg';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';

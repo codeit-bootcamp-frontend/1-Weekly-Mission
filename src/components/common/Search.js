@@ -1,5 +1,4 @@
-import searchImg from '../assets/images/Search.svg';
-// import '../styles/Search.css';
+import searchImg from '../../assets/images/Search.svg';
 import styled from 'styled-components';
 
 export default function Search() {

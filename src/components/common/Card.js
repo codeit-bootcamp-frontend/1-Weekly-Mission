@@ -1,6 +1,6 @@
-import defaultImg from '../assets/images/no-image.png';
-import kebabImg from '../assets/images/kebab.svg';
-import starImg from '../assets/images/star.svg';
+import defaultImg from '../../assets/images/no-image.png';
+import kebabImg from '../../assets/images/kebab.svg';
+import starImg from '../../assets/images/star.svg';
 import styled from 'styled-components';
 
 const moment = require('moment');

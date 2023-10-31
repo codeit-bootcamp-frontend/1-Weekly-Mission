@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import linkImg from '../assets/images/link.svg';
-import Button from './Button';
+import linkImg from '../../assets/images/link.svg';
+import Button from '../common/Button';
 
 export default function LinkAdd() {
   return (
