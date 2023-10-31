@@ -1,8 +1,12 @@
-import React from "react";
-import * as S from "./MainStyle"; 
+import React from 'react'
+import * as S from './MainStyle'
 
 function Main({ children }) {
-  return <S.MainContainer>{children}</S.MainContainer>;
+  return (
+    <S.MainContainer>
+      <S.MainContent>{children}</S.MainContent>
+    </S.MainContainer>
+  )
 }
 
-export default Main;
+export default Main
