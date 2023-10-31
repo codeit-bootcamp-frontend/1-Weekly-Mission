@@ -1,10 +1,11 @@
-.folder_info_container {
-  margin: 0 auto;
-  width: 210px;
+.folder_info {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  background-color: var(--bg);
+  width: 100%;
+  padding: 120px 0px 60px;
   text-align: center;
 }
 
@@ -33,6 +34,9 @@
 }
 
 @media (max-width: 767px) {
+  .folder_info {
+    padding: 80px 0px 40px;
+  }
   .folder_info_container {
     gap: 10px;
   }

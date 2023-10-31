@@ -1,4 +1,9 @@
-function timeflow({ createdAt }) {
+export function formatDate(value) {
+  const date = new Date(value);
+  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
+}
+
+export function timeFlow(createdAt) {
   let message = '';
   const timeMinute = (new Date() - new Date(createdAt)) / 1000 / 60;
   const timeHour = Math.floor(timeMinute / 60);
@@ -42,5 +47,3 @@ function timeflow({ createdAt }) {
   }
   return <div className="timediff">{message}</div>;
 }
-
-export default timeflow;
