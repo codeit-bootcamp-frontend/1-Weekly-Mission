@@ -1,10 +1,11 @@
-import { BASE_URL, USERS_ENDPOINT } from './services/config';
+import { BASE_URL, USERS_ENDPOINT } from './services/config';
 
 export const getUserFolders = async () => {
   let result;
   try {
     const response = await fetch(`${BASE_URL}${USERS_ENDPOINT}/1/folders`);
     result = await response.json();
+    console.log(result);
   } catch (error) {
     console.log(error);
   }

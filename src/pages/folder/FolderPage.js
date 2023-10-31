@@ -38,6 +38,7 @@ export default function FolderPage() {
   useEffect(() => {
     fetchUserFolders();
   }, []);
+  console.log(folders);
 
   useEffect(() => {
     if (!folderId) return;

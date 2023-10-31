@@ -35,6 +35,7 @@
 .folder-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
 }
 
@@ -46,7 +47,8 @@
 .folder-main {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  width: 100%;
+  max-width: 1124px;
   gap: 40px;
 }
 
@@ -88,6 +90,7 @@
 
   .folder-main {
     padding: 0px 32px;
+    width: 100%;
   }
 }
 
