@@ -80,7 +80,7 @@ function FolderPage() {
           )}
         </div>
 
-        <CardList links={links} />
+        <CardList links={links} hasStar="true" />
       </main>
     </>
   );

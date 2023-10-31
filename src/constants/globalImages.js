@@ -13,6 +13,8 @@ import LinkIcon from '../assets/link.svg';
 import ShareIcon from '../assets/share.svg';
 import PenIcon from '../assets/pen.svg';
 import CanIcon from '../assets/delete.svg';
+import StarIcon from '../assets/star.svg';
+import KebabIcon from '../assets/kebab.svg';
 
 const logoImg = LogoImg;
 const titleImg = TitleImg;
@@ -29,6 +31,8 @@ const linkIcon = LinkIcon;
 const shareIcon = ShareIcon;
 const penIcon = PenIcon;
 const canIcon = CanIcon;
+const startIcon = StarIcon;
+const kebabIcon = KebabIcon;
 
 export {
   logoImg,
@@ -46,4 +50,6 @@ export {
   shareIcon,
   penIcon,
   canIcon,
+  startIcon,
+  kebabIcon,
 };
