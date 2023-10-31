@@ -1,17 +1,26 @@
 import Card from './Card';
 import '../css/cardList.css';
+import NoSavedLinks from './NoSavedLinks';
 
-function CardList({ items }) {
+function CardList({ cards }) {
+  if (!cards) {
+    return <></>;
+  }
+  if (cards.length === 0) {
+    return <NoSavedLinks />;
+  }
   return (
     <>
-      <div className="card-list">
-        {items.map((item) => {
-          return (
-            <li key={item.id}>
-              <Card item={item} />
-            </li>
-          );
-        })}
+      <div className="container">
+        <div className="card-list">
+          {cards.map((card) => {
+            return (
+              <li key={card.id}>
+                <Card card={card} />
+              </li>
+            );
+          })}
+        </div>
       </div>
     </>
   );
