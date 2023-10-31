@@ -11,12 +11,12 @@ export const getUserFolders = async () => {
   return result;
 };
 
-export const getUserLinks = async (folderId) => {
+export const getUserLinks = async (folderId = '전체') => {
   let result;
-  const query = folderId ? `folderId=${folderId}` : '';
+  const query = folderId === '전체' ? '' : `?folderId=${folderId}`;
   try {
     const response = await fetch(
-      `${BASE_URL}${USERS_ENDPOINT}/1/links?${query}`,
+      `${BASE_URL}${USERS_ENDPOINT}/1/links${query}`,
     );
     result = await response.json();
   } catch (error) {

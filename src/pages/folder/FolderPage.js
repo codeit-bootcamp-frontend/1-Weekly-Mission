@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { getUserFolders, getUserLinks } from '../../api/folder';
 import './folderPage.css';
+import React, { useEffect, useState } from 'react';
+import { getUserFolders, getUserLinks } from '../../api/folder';
 import AddLinkInput from './components/addLinkInput/AddLinkInput';
 import SearchBar from '../../components/searchBar/SearchBar';
 import Card from '../../components/card/Card';
 import EmptyPage from './components/emptyPage/EmptyPage';
 import OptionButton from './components/optionButton/OptionButton';
 import FloatingButton from '../../components/floatingButton/FloatingButton';
-import OPTION_ICONS from './constant';
+import { ALL_LINK_NAME, OPTION_ICONS } from './constant';
 
 import addIcon from '../../assets/folder/add.svg';
 import addPrimaryIcon from '../../assets/folder/addPrimaryColor.svg';
@@ -17,12 +16,12 @@ import SortButton from './components/sortButton/SortButton';
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initFolderId = searchParams.get('folderId');
-  const [folderId, setFolderId] = useState(initFolderId || null);
-  // eslint-disable-next-line no-unused-vars
-  const [isClicked, setIsClicked] = useState(false);
-  const [categoryTitle, setCategoryTitle] = useState('전체');
+  const [folderId, setFolderId] = useState(ALL_LINK_NAME);
+
+  const folderName =
+    folderId === ALL_LINK_NAME
+      ? ALL_LINK_NAME
+      : folders?.find(({ id }) => id === folderId)?.name;
 
   const fetchUserFolders = async () => {
     const result = await getUserFolders();
@@ -56,30 +55,20 @@ export default function FolderPage() {
           <div className="folder-sort-add-buttons-container">
             <div className="folder-sort-buttons-container">
               <SortButton
-                setSearchParams={setSearchParams}
-                setLinks={setLinks}
-                setFolderId={setFolderId}
-                setIsClicked={setIsClicked}
-                fetchUserLinks={fetchUserLinks}
-                isClicked={folderId === null}
-                setCategoryTitle={setCategoryTitle}
-              >
-                전체
-              </SortButton>
+                onClick={() => setFolderId(ALL_LINK_NAME)}
+                isClicked={folderId === ALL_LINK_NAME}
+                text="전체"
+              />
+
               {folders &&
                 folders.map((item) => (
                   <SortButton
                     key={item.id}
-                    setSearchParams={setSearchParams}
-                    setLinks={setLinks}
-                    setFolderId={setFolderId}
-                    setIsClicked={setIsClicked}
+                    onClick={() => setFolderId(item.id)}
                     isClicked={item.id === folderId}
                     folderId={item.id}
-                    setCategoryTitle={setCategoryTitle}
-                  >
-                    {item.name}
-                  </SortButton>
+                    text={item.name}
+                  />
                 ))}
             </div>
             <button type="button" className="folder-add-button">
@@ -92,8 +81,8 @@ export default function FolderPage() {
             </button>
           </div>
           <div className="folder-category-container">
-            <h1 className="folder-category">{categoryTitle}</h1>
-            {categoryTitle === '전체' ? (
+            <h1 className="folder-category">{folderName}</h1>
+            {folderId !== ALL_LINK_NAME ? (
               ''
             ) : (
               <div className="folder-option-button-container">
@@ -109,7 +98,7 @@ export default function FolderPage() {
             )}
           </div>
         </section>
-        {links.length === 0 ? (
+        {links?.length === 0 ? (
           <EmptyPage />
         ) : (
           <div className="links-container">

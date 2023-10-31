@@ -2,7 +2,7 @@ import shareIcon from '../../assets/folder/share.svg';
 import penIcon from '../../assets/folder/pen.svg';
 import trashCanIcon from '../../assets/folder/trashCan.svg';
 
-const OPTION_ICONS = [
+export const OPTION_ICONS = [
   {
     id: 1,
     name: '공유',
@@ -23,4 +23,4 @@ const OPTION_ICONS = [
   },
 ];
 
-export default OPTION_ICONS;
+export const ALL_LINK_NAME = '전체';
