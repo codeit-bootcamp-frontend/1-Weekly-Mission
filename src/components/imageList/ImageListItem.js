@@ -7,12 +7,8 @@ export default function ImageListItem({ item }) {
   const { createdAt, url, title, description, imageSource } = item;
   const targetData = parseDatestring(createdAt);
   const { year, month, day } = targetData;
-  // const navgiateToPage = (url) => {
-  //   window.location.href = `${url}`;
-  // };
-
   const diffTime = getElapsedTime(createdAt);
-  // onClickFunc={() => navgiateToPage(url)}
+
   return (
     <a href={url}>
       <Card>

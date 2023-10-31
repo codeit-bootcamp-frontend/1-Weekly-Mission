@@ -21,7 +21,6 @@ const BaseButton = styled.button`
 `;
 
 export default function Button({ children, isActive, onClickFunc }) {
-  console.log(isActive);
   return (
     <BaseButton
       onClick={(e) => {
