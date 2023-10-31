@@ -1,0 +1,25 @@
+.category-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  font-size: 16px;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.category-item:hover,
+.category-item:active .category-item:visited {
+  background: var(--primary);
+  color: white;
+}
+
+/* mobile Size */
+@media (max-width: 767px) {
+  .category-item {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}

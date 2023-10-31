@@ -1,0 +1,27 @@
+.category-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-box {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-item-box {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+/* mobile Size */
+@media (max-width: 767px) {
+  .category-item-box {
+    max-width: 32.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    row-gap: 12px;
+  }
+}
