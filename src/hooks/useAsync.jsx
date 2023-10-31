@@ -5,11 +5,11 @@ function useAsync({ asyncFunction, initialArgs, deps = [], skip = false }) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchData = async (...initialArgs) => {
+  const fetchData = async (...args) => {
     setPending(true);
     setError(null);
     try {
-      const fetchedData = await asyncFunction(...initialArgs);
+      const fetchedData = await asyncFunction(...args);
       setData(fetchedData);
     } catch (error) {
       setError(error);
@@ -21,7 +21,9 @@ function useAsync({ asyncFunction, initialArgs, deps = [], skip = false }) {
   useEffect(() => {
     if (skip) return;
     if (initialArgs) {
-      fetchData(initialArgs);
+      Array.isArray(initialArgs)
+        ? fetchData(...initialArgs)
+        : fetchData(initialArgs);
     } else {
       fetchData();
     }
