@@ -1,5 +1,6 @@
 import CardList from 'components/CardList/CardList';
 import FolderList from 'components/FolderList/FolderList';
+import FunctionButton from 'components/FunctionButton/FunctionButton';
 import LinkAdd from 'components/LinkAdd/LinkAdd';
 import MainSection from 'components/MainSection/MainSection';
 import NotFoundLink from 'components/NotFoundLink/NotFoundLink';
@@ -57,7 +58,7 @@ function Folder() {
       <MainSection>
         <Search />
         {folders && <FolderList folderData={folders} />}
-        <Title folderName={folderName} visibleButton={isFunctionButtonShow} />
+        <Title folderName={folderName}>{isFunctionButtonShow && <FunctionButton folderName={folderName} />}</Title>
         {initFolderId && card.length === 0 ? <NotFoundLink /> : <CardList cardData={card} />}
       </MainSection>
     </>

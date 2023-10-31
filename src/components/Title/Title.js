@@ -1,11 +1,10 @@
-import FunctionButton from 'components/FunctionButton/FunctionButton';
 import './Title.css';
 
-function Title({ folderName, visibleButton }) {
+function Title({ folderName, children }) {
   return (
     <div className="title-wrapper">
       <p className="title">{folderName}</p>
-      {visibleButton && <FunctionButton folderName={folderName} />}
+      {children}
     </div>
   );
 }

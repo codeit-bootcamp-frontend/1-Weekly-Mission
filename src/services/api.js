@@ -6,7 +6,7 @@ const getSampleUser = async () => {
   }
 
   const body = await response.json();
-  return body.data;
+  return body;
 };
 
 export const getSampleUserProfile = async () => {
@@ -28,7 +28,7 @@ export const getUserFolder = async () => {
   }
 
   const body = await response.json();
-  return body;
+  return body.data;
 };
 
 export const getAllFolder = async () => {
@@ -39,7 +39,7 @@ export const getAllFolder = async () => {
   }
 
   const body = await response.json();
-  return body;
+  return body.data;
 };
 
 export const getOtherFolder = async (folderId) => {
@@ -49,7 +49,7 @@ export const getOtherFolder = async (folderId) => {
     throw new Error('폴더 데이터 가져오기 에러 발생');
   }
   const body = await response.json();
-  return body;
+  return body.data;
 };
 
 export const getUserProfile = async () => {
