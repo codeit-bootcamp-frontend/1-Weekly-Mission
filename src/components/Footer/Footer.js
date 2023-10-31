@@ -1,7 +1,7 @@
-import facebook from '../../assets/images/icon-facebook.svg';
-import youtube from '../../assets/images/icon-youtube.png';
-import instagram from '../../assets/images/icon-instagram.svg';
-import twitter from '../../assets/images/icon-twitter.svg';
+import facebookIcon from '../../assets/images/icon-facebook.svg';
+import youtubeIcon from '../../assets/images/icon-youtube.png';
+import instagramIcon from '../../assets/images/icon-instagram.svg';
+import twitterIcon from '../../assets/images/icon-twitter.svg';
 import styles from './Footer.module.css';
 
 class SocialMedia {
@@ -13,10 +13,10 @@ class SocialMedia {
 }
 
 const socialMediaArray = [
-  new SocialMedia('https://ko-kr.facebook.com', 'facebook', facebook),
-  new SocialMedia('https://twitter.com', 'twitter', twitter),
-  new SocialMedia('https://www.instagram.com', 'instagram', instagram),
-  new SocialMedia('https://www.youtube.com', 'youtube', youtube),
+  new SocialMedia('https://ko-kr.facebook.com', 'facebook', facebookIcon),
+  new SocialMedia('https://twitter.com', 'twitter', twitterIcon),
+  new SocialMedia('https://www.instagram.com', 'instagram', instagramIcon),
+  new SocialMedia('https://www.youtube.com', 'youtube', youtubeIcon),
 ];
 
 function Footer() {
