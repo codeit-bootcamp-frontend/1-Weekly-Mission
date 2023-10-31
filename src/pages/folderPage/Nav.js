@@ -1,46 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import "../../styles/landing.css";
+import "./nav.css";
 import { useAsync } from "../../hooks/useAsync";
 import { getProfileData } from "../../api/folderOwnerApi";
 
 const Nav = () => {
   const [userEmail, getProfileDataAsync] = useAsync(getProfileData);
-  const targetRef = useRef(null);
+
   useEffect(() => {
     getProfileDataAsync();
   }, []);
 
-  const handleScroll = () => {
-    if (window.scrollY > 70) {
-      targetRef.current.style.visibility = "hidden";
-    } else {
-      targetRef.current.style.visibility = "visible";
-    }
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      window.addEventListener("scroll", handleScroll);
-    }, 300);
-    return () => {
-      clearInterval(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <>
-      <nav
-        ref={targetRef}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          position: "sticky",
-          top: "0",
-          width: "100%",
-          backgroundColor: "#edf7ff",
-        }}
-      >
+      <nav className="folderPage-nav">
         <div className="gnb">
           <a href="/">
             <img
