@@ -1,6 +1,6 @@
 import React from "react";
 
-import Profile from "../profile/Profile";
+import Profile from "../../common/profile/Profile";
 
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as Person } from "../../assets/images/person.svg";
@@ -9,7 +9,7 @@ import { ReactComponent as Login } from "../../assets/images/login.svg";
 import styles from "./Nav.module.css";
 import useFetch from "../../hooks/useFetch";
 
-export default function Nav() {
+export default function ShareNav() {
   const [userData, isLoading] = useFetch(
     "https://bootcamp-api.codeit.kr/api/sample/user"
   );

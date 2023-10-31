@@ -22,8 +22,7 @@ export default function Button({ children, className, name, onClickFunc }) {
     <BaseButton
       name={name}
       className={className}
-      onClick={(e) => {
-        e.stopPropagation();
+      onClick={() => {
         onClickFunc();
       }}
     >

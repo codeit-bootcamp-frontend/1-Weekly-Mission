@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import styles from "./Article.module.css";
+import styles from "./FolderMenu.module.css";
 import titleImage from "../../assets/images/title.svg";
 import LocaleContext from "../../contexts/LocaleContext";
 
-export default function Article({ folderId }) {
+export default function FolderMenu({ folderId }) {
   const [isSelected, setIsSelected] = useState(false);
   const [letter, setLetter] = useState("전체");
   const [num, setNum] = useState(null);

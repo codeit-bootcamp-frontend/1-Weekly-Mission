@@ -1,8 +1,8 @@
 import useFetch from "./useFetch";
-import React from "react";
 
-export default function useUserFolderFetch({ id }) {
-  const response = useFetch(
-    `https://bootcamp-api.codeit.kr/api/users/${id}/folders`
+export default function useUserFolderFetch({ userId }) {
+  const [data, isLoading] = useFetch(
+    `https://bootcamp-api.codeit.kr/api/users/${userId}/folders`
   );
+  return [data, isLoading];
 }

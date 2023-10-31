@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../button/Button";
 import styles from "./FolderButton.module.css";
-import Article from "../article/Article";
+
 import { useNavigate } from "react-router-dom";
 import { getEachfoldersData } from "../../api/folder";
 
@@ -39,8 +39,6 @@ export default function FolderButton({ data, dataKeys, onClickFunc }) {
                     getEachfoldersData({ folderId: key }).then((data) => {
                       let boolean = data.length > 0;
                       if (boolean) {
-                        // console.log(otherTitle);
-                        // <Article title={otherTitle} />;
                         navigate(`/folder/${key}`);
                       } else if (!boolean) {
                         navigate("/folder/nothing");

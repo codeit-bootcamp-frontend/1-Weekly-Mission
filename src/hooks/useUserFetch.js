@@ -1,9 +1,10 @@
 import useFetch from "./useFetch";
 import React from "react";
 
-export default function useUserFetch({ id }) {
-  const response = useFetch(`https://bootcamp-api.codeit.kr/api/users/${id}`);
-  const [users, isLoading] = response;
+export default function useUserFetch({ userId }) {
+  const [users, isLoading] = useFetch(
+    `https://bootcamp-api.codeit.kr/api/users/${userId}`
+  );
 
-  return [users.data, isLoading];
+  return [users, isLoading];
 }
