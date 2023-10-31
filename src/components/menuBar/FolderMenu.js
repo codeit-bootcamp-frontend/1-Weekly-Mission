@@ -6,7 +6,7 @@ import LocaleContext from "../../contexts/LocaleContext";
 export default function FolderMenu({ folderId }) {
   const [isSelected, setIsSelected] = useState(false);
   const [letter, setLetter] = useState("전체");
-  const [num, setNum] = useState(null);
+  const [num, setNum] = useState(folderId);
   const localeValue = useContext(LocaleContext);
 
   useEffect(() => {
