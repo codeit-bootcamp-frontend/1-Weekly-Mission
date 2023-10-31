@@ -2,7 +2,7 @@ import Logo from 'assets/icon/logo.svg';
 import Login from 'components/Login/Login';
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import headerRequestData, { getUserProfile } from 'services/api';
+import { getSampleUser, getUserProfile } from 'services/api';
 import { styled } from 'styled-components';
 import './Header.css';
 
@@ -27,26 +27,26 @@ const Nav = styled.nav`
 `;
 
 function Header() {
-  const [getUser, setGetUser] = useState({});
+  const [user, setUser] = useState({});
   const { pathname } = useLocation();
   const sharedPage = pathname === '/shared';
 
   const loginInfo = useCallback(async () => {
-    const headerResult = sharedPage ? await headerRequestData() : await getUserProfile();
+    const headerResult = sharedPage ? await getSampleUser() : await getUserProfile();
     if (!headerResult) return;
 
     if (sharedPage) {
-      setGetUser(headerResult);
+      setUser(headerResult);
     } else {
       const { data } = headerResult;
-      setGetUser(data[0]);
+      setUser(data[0]);
     }
   }, [sharedPage]);
 
   useEffect(() => {
     loginInfo();
   }, [loginInfo]);
-  const { id, email, profileImageSource, image_source } = getUser;
+  const { id, email, profileImageSource, image_source } = user;
 
   return (
     <header>

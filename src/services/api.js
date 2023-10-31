@@ -1,4 +1,4 @@
-const getSampleUser = async () => {
+export const getSampleUser = async () => {
   const response = await fetch('/sample/user', { method: 'GET' });
 
   if (!response.ok) {
@@ -62,5 +62,3 @@ export const getUserProfile = async () => {
   const body = await response.json();
   return body;
 };
-
-export default getSampleUser;

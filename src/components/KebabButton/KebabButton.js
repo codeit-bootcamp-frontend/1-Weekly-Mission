@@ -5,13 +5,15 @@ import './KebabButton.css';
 
 function KebabButton() {
   const [show, setShow] = useState(false);
+
   const handleKebab = () => {
-    show === false ? setShow(true) : setShow(false);
+    setShow((val) => !val);
   };
+
   return (
     <>
       <button className="kebab-button" onClick={handleKebab}>
-        <img src={Kebab} alt="즐겨찾기 버튼" />
+        <img className="kebab-img" src={Kebab} alt="즐겨찾기 버튼" />
       </button>
       {show && <SelectMenu />}
     </>
