@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  gap: 2.5rem 2rem;
+}
+
+@media (max-width: 1199px) {
+  .root {
+    grid-template: auto / repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .root {
+    grid-template: auto / repeat(1, 1fr);
+  }
+
+  .container {
+    width: 32.5rem;
+    height: 32.7rem;
+  }
+}

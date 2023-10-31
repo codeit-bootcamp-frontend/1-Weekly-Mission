@@ -1,0 +1,79 @@
+.root {
+  background-color: var(--gray1);
+}
+
+.container {
+  max-width: 192rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 7rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 8rem;
+}
+
+.button {
+  width: 35rem;
+}
+
+.textGradiant {
+  background-image: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+}
+
+.img {
+  flex-shrink: 0;
+  width: 111.8rem;
+  height: 53.9rem;
+  margin: 0 auto;
+  border-radius: 2.5rem 2.5rem 0 0;
+  background-image: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 67.68%,
+      #f0f6ff 124.76%
+    ),
+    url('../../assets/images/HeroSec.png');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 1199px) {
+  .container {
+    padding-top: 3.9rem;
+  }
+  .img {
+    width: 65rem;
+    height: 31.3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-top: 2.8rem;
+  }
+
+  .title {
+    font-size: 3.2rem;
+    line-height: 4.2rem;
+  }
+
+  .button {
+    width: 20rem;
+  }
+
+  .img {
+    width: 30.2rem;
+    height: 14.6rem;
+  }
+}

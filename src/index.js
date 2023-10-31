@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import Main from './Main';
+
 import './styles/reset.css';
 import './styles/index.css';
-import './fonts/pretendard/pretendard.css';
+import './assets/fonts/pretendard/pretendard.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(<Main />);
