@@ -5,9 +5,9 @@ import SignLink from '../components/SignLink/SignLink';
 import SignInput from '../components/SignInput/SignInput';
 import Button from '../components/Button/Button';
 import useInputValue from '../hooks/useInputValue';
-import { requestSign } from '../apis/api';
 import { Navigate, useNavigate } from 'react-router';
 import useInputError from '../hooks/useInputError';
+import postSign from '../apis/auth/postsign';
 
 function Signup() {
   const [values, handleChange] = useInputValue();
@@ -43,7 +43,7 @@ function Signup() {
       password: `${values.password}`,
     };
 
-    const response = await requestSign('up', data);
+    const response = await postSign('up', data);
 
     if (response.ok) {
       navigate('/folder');

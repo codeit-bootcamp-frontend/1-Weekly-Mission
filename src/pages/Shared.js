@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import BinderInfo from '../components/BinderInfo/BinderInfo';
-import { getSample } from '../apis/api';
 import SearchBar from '../components/SearchBar/SearchBar';
 import Binder from '../components/Binder/Binder';
+import getSampleFolder from '../apis/sample/folder';
 
 function Shared() {
   const section = {
@@ -22,7 +22,7 @@ function Shared() {
   const loadFolderData = async () => {
     const {
       folder: { name, owner, links },
-    } = await getSample();
+    } = await getSampleFolder();
 
     setName(name);
     setOwner({ ...owner });

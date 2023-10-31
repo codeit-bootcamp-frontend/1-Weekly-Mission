@@ -6,8 +6,8 @@ import SignInput from '../components/SignInput/SignInput';
 import Button from '../components/Button/Button';
 import useInputValue from '../hooks/useInputValue';
 import { Navigate, useNavigate } from 'react-router';
-import { requestSign } from '../apis/api';
 import useInputError from '../hooks/useInputError';
+import postSign from '../apis/auth/postsign';
 
 function Signin() {
   const [values, handleChange] = useInputValue();
@@ -36,7 +36,7 @@ function Signin() {
       password: `${values.password}`,
     };
 
-    const response = await requestSign('in', data);
+    const response = await postSign('in', data);
 
     if (response.ok) {
       navigate('/folder');

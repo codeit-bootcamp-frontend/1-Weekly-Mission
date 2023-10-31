@@ -9,11 +9,10 @@ import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
 
 import styles from './Folder.module.css';
 import { useCallback, useEffect, useState } from 'react';
-import {
-  getSampleUsersFolderLists,
-  getUsersFolderLinkItems,
-} from '../apis/api';
+
 import { useSearchParams } from 'react-router-dom';
+import getFolderListsByUser from '../apis/folder/getFolderListsByUser';
+import getLinksByUsersFolder from '../apis/link/getLinksByUsersFolder';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,7 +33,7 @@ function Folder() {
   }
 
   const loadFolderData = async () => {
-    const { data } = await getSampleUsersFolderLists();
+    const { data } = await getFolderListsByUser('1');
 
     setFolderLists((prevFolderList) => {
       return [...prevFolderList, ...data];
@@ -42,7 +41,7 @@ function Folder() {
   };
 
   const loadcardData = useCallback(async () => {
-    const { data } = await getUsersFolderLinkItems(folderID);
+    const { data } = await getLinksByUsersFolder('1', folderID);
 
     setCards(() => {
       return [...data];
