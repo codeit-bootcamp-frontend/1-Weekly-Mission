@@ -1,7 +1,7 @@
 import MainSection from 'components/MainSection/MainSection';
 import { useNavigate } from 'react-router-dom';
 
-function LinkBrary() {
+function Linkbrary() {
   const navigate = useNavigate();
   const handlePageMove = (e) => {
     return navigate(e.target.value);
@@ -18,4 +18,4 @@ function LinkBrary() {
   );
 }
 
-export default LinkBrary;
+export default Linkbrary;

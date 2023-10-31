@@ -6,7 +6,7 @@ import MainSection from 'components/MainSection/MainSection';
 import NotFoundLink from 'components/NotFoundLink/NotFoundLink';
 import Search from 'components/Search/Search';
 import Title from 'components/Title/Title';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getAllFolder, getFolderLinks, getUserFolder } from 'services/api';
 import isEmpty from 'utils/isEmpty';
@@ -20,11 +20,11 @@ function Folder() {
   const [folderParams, setFolderParams] = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
   const initFolderId = folderParams.get('folderId');
 
-  const folderInfo = useCallback(async () => {
+  const folderInfo = async (folderId) => {
     const introResult = await getUserFolder();
     if (!introResult) return;
 
-    const currentId = introResult.filter((data) => data.id === Number(initFolderId));
+    const currentId = introResult.filter((data) => data.id === Number(folderId));
 
     let folderName;
     if (currentId.length === 0) {
@@ -37,20 +37,20 @@ function Folder() {
 
     setFolderName(folderName);
     setFolders(introResult);
-  }, [initFolderId]);
+  };
 
-  const cardInfo = useCallback(async () => {
-    const introResult = isEmpty(initFolderId) ? await getAllFolder() : await getFolderLinks(initFolderId);
+  const cardInfo = async (folderId) => {
+    const introResult = isEmpty(folderId) ? await getAllFolder() : await getFolderLinks(folderId);
     if (!introResult) return;
 
     setCards(introResult);
-  }, [initFolderId]);
+  };
 
   useEffect(() => {
-    folderInfo();
-    cardInfo();
+    folderInfo(initFolderId);
+    cardInfo(initFolderId);
     return setCards([]);
-  }, [folderInfo, cardInfo]);
+  }, [initFolderId]);
 
   return (
     <>
