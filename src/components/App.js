@@ -1,48 +1,16 @@
-import "./Normalize.css";
-import "./Common.css";
-import "./Style.css";
-import Header from "./Header";
-import Footer from "./Footer";
-import { useCallback, useEffect, useState } from "react";
-import { getUserFolder, getUserInfo } from "../api";
-import Folder from "./Folder";
-import useAsync from "../hooks/useAsync";
+import GlobalNav from "./modules/GlobalNav";
+import Footer from "./modules/Footer";
+import { Outlet } from "react-router-dom";
+import { UserProvider } from "../utils/UserContext";
+
 function App() {
-	const [userInfo, setUserInfo] = useState(null);
-	const [folderInfo, setFolderInfo] = useState(null);
-
-	const [userInfoLoading, userInfoError, getUserInfoAsync] = useAsync(getUserInfo);
-	const [userFolderLoading, userFolderError, getUserFolderAsync] = useAsync(getUserFolder);
-
-	const handleUserInfo = useCallback(async () => {
-		const result = await getUserInfoAsync();
-		if (!result) return;
-
-		setUserInfo(result);
-	}, [getUserInfoAsync, setUserInfo]);
-
-	const handleUserFolder = useCallback(async () => {
-		const result = await getUserFolderAsync();
-		if (!result) return;
-		const { folder } = result;
-
-		setFolderInfo(folder);
-	}, [getUserFolderAsync, setFolderInfo]);
-
-	useEffect(() => {
-		handleUserInfo();
-		handleUserFolder();
-	}, [handleUserInfo, handleUserFolder]);
-
-	return (
-		<>
-			{!userInfoLoading && userInfo && <Header isLogin={!!userInfo} userInfo={userInfo} />}
-			{userInfoError?.message && <div>{userInfoError.message}</div>}
-			{userFolderError?.message && <div>{userFolderError.message}</div>}
-			{userFolderLoading ? <div>로딩중..</div> : folderInfo && <Folder folderInfo={folderInfo} />}
-			<Footer />
-		</>
-	);
+  return (
+    <UserProvider>
+      <GlobalNav />
+      <Outlet />
+      <Footer />
+    </UserProvider>
+  );
 }
 
 export default App;
