@@ -20,7 +20,7 @@ const FolderPage = () => {
     data: [],
   });
 
-  const { setSticky } = useOutletContext();
+  const { setSticky, isLogin } = useOutletContext();
 
   const handleFolderLists = async (id) => {
     try {
@@ -58,8 +58,10 @@ const FolderPage = () => {
 
   useEffect(() => {
     setSticky("static");
-    handleFolderLists(folderId);
-  }, [folderId]);
+    if (isLogin) {
+      handleFolderLists(folderId);
+    }
+  }, [folderId, isLogin]);
 
   useEffect(() => {
     handleSearchSubmit(search);
