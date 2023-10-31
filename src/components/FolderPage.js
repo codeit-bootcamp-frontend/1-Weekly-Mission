@@ -4,22 +4,20 @@ import CardList from './CardList';
 import './FolderPage.css';
 import linkImg from '../assets/link-Img.png';
 import SearchBar from "./SearchBar";
-
+import FolderList from "./FolderList";
 
 
 function FolderPage() {
-  const [folderLinks, setFolderLinks] = useState([]);
+  const [folderList, setFolderList] = useState([]);
 
-  const handleLoad = async () => {
-    const folderData = await getFolder();
-    const {
-      folder: { links },
-    } = folderData;
-    setFolderLinks(links);
-  };
+  const getFolderList = async () => {
+    const result = await getFolder();
+    const data = result?.data;
+    setFolderList(data);
+  }
 
-  useEffect(() => {
-    handleLoad();
+  useEffect(()=>{
+    getFolderList();
   }, []);
 
   return (
@@ -34,18 +32,8 @@ function FolderPage() {
       <div className="container">
         <div className="container2">
           <SearchBar />
-          <div className="menuBar">
-            <ul className="toggleMenu">
-              <li className="menuList">전체</li>
-              <li className="menuList">즐겨찾기</li>
-              <li className="menuList">코딩 팁</li>
-              <li className="menuList">채용 사이트</li>
-              <li className="menuList">유용한 글</li>
-              <li className="menuList">나만의 장소</li>
-            </ul>
-            <div className="add-folder">폴더 추가 +</div>
-          </div>
-          <CardList folderLinks={folderLinks} />
+          <FolderList data={folderList} />
+          {/* <CardList folderLinks={folderLinks} /> */}
         </div>
       </div>
     </div>
