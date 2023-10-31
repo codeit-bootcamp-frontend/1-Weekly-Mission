@@ -3,7 +3,7 @@ import { onTablet, onPc } from 'styles/mediaQuery';
 import { COLORS } from 'styles/palette';
 import Button from 'components/Button';
 
-export const AddLinkContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: center;
   padding: 2.4rem 3.2rem 4rem;
@@ -18,7 +18,7 @@ export const AddLinkContainer = styled.div`
   }
 `;
 
-export const AddLinkInner = styled.form`
+export const Inner = styled.form`
   display: flex;
   align-items: center;
   position: relative;

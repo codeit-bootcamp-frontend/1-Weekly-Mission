@@ -3,7 +3,7 @@ import { getSharedFolder } from 'utils/apiClient';
 import useAsync from 'hooks/useAsync';
 import Banner from '../Banner';
 import SearchBar from 'components/SearchBar';
-import CardList from 'components/CardList';
+import CardList from 'components/CardsContainer';
 
 function Folder() {
   const [data, isLoading, loadingError, getSharedFolderAsync] = useAsync({

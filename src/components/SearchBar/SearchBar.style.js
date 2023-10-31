@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { onTablet, onPc } from 'styles/mediaQuery';
 import { COLORS } from 'styles/palette';
 
-export const SearchBarContainer = styled.div`
+export const Container = styled.div`
   position: relative;
   width: 100%;
 `;

@@ -3,15 +3,14 @@ import { onTablet, onPc } from 'styles/mediaQuery';
 import { COLORS } from 'styles/palette';
 import { zIndexStyle } from 'styles/zIndexStyle';
 
-export const FolderListContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding-top: 3.2rem;
-  padding-bottom: 2.8rem;
 `;
 
-export const FolderList = styled.ul`
+export const Folders = styled.ul`
   display: flex;
   flex-wrap: wrap;
   column-gap: 0.8rem;
@@ -89,41 +88,4 @@ export const AddWhite = styled.img`
   ${onPc} {
     display: none;
   }
-`;
-
-export const FolderInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  ${onTablet} {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  ${onPc} {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-`;
-
-export const FolderTitle = styled.h1`
-  margin-bottom: 1.2rem;
-  font-size: 2rem;
-  font-weight: 600;
-`;
-
-export const SettingButtonContainer = styled.div`
-  display: flex;
-  gap: 1.4rem;
-`;
-
-export const SettingButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.3rem;
-  color: ${COLORS['LB_GRAY_60']};
-  font-size: 1.4rem;
-  font-weight: 600;
 `;

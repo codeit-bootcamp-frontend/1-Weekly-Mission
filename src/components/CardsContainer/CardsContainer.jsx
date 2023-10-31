@@ -1,16 +1,16 @@
-import * as S from './CardList.style';
+import * as S from './CardsContainer.style';
 import Card from 'components/Card';
 
-function CardList({ cards = [] }) {
+function CardsContainer({ cards = [] }) {
   return (
-    <S.CardListContainer>
+    <S.Container>
       {cards.map((card) => (
         <li key={card.id}>
           <Card data={card} />
         </li>
       ))}
-    </S.CardListContainer>
+    </S.Container>
   );
 }
 
-export default CardList;
+export default CardsContainer;

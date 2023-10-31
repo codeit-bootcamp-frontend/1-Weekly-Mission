@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { onTablet, onPc } from 'styles/mediaQuery';
 
-export const CardListContainer = styled.ul`
+export const Container = styled.ul`
   display: grid;
   gap: 2rem;
   margin: 0 auto;
