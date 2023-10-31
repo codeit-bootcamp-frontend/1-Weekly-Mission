@@ -5,7 +5,7 @@ function Nav({ userInfo }) {
   // 유저데이터가 있으면 유저데이터, 없으면 로그인 버튼
   if (!userInfo) return;
 
-  const { email, profileImageSource } = userInfo;
+  const { email, image_source } = userInfo;
 
   return (
     <div className="nav">
@@ -14,11 +14,7 @@ function Nav({ userInfo }) {
       </a>
       {userInfo ? (
         <div className="user-info">
-          <img
-            className="user-profile"
-            src={profileImageSource}
-            alt="유저 프로필"
-          />
+          <img className="user-profile" src={image_source} alt="유저 프로필" />
           <span className="user-email">{email}</span>
         </div>
       ) : (

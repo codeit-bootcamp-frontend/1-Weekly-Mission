@@ -4,21 +4,17 @@ import Nav from "./Nav";
 
 import Footer from "./Footer";
 
-import { getUsers, getUserData } from "../utils/api";
+import { getUsers } from "../utils/api";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
-  const [userFolderInfo, setUserFolderInfo] = useState(null);
+  // const [userFolderInfo, setUserFolderInfo] = useState(null);
 
   async function handleLoad() {
-    const userData = await getUserData();
-    setUserInfo(userData);
-
-    const folderData = await getUsers("1");
-    console.log(folderData);
-    setUserFolderInfo(folderData);
+    const { data } = await getUsers("1");
+    setUserInfo({ ...data[0] });
   }
 
   useEffect(() => {
@@ -28,7 +24,7 @@ function App() {
   return (
     <>
       <header>
-        <Nav userInfo={userInfo} userFolderInfo={userFolderInfo} />
+        <Nav userInfo={userInfo} />
       </header>
       <div>
         <Outlet />

@@ -6,6 +6,14 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
+function MeatballBtn() {
+  return <img src={meatballMenuImg} alt="추가메뉴 버튼" />;
+}
+
+function FavoriteBtn() {
+  return <img className="favorites" src={favoritesImg} alt="즐겨찾기 이미지" />;
+}
+
 function Cards({ cardInfo }) {
   const { createdAt, url, description, imageSource, created_at, image_source } =
     cardInfo;
@@ -22,12 +30,13 @@ function Cards({ cardInfo }) {
             src={imageSource ?? image_source ?? DEFAULT_IMG}
             alt="카드 이미지"
           />
-          <img className="favorites" src={favoritesImg} alt="즐겨찾기 이미지" />
+
+          <FavoriteBtn />
         </div>
         <div className="card-info">
           <div className="update-time">
             <p>{updateTimeAgo}</p>
-            <img src={meatballMenuImg} alt="추가메뉴 버튼" />
+            <MeatballBtn />
           </div>
           <div className="description">
             <p>{description}</p>

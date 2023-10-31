@@ -21,25 +21,25 @@ async function getUserFolder() {
   }
 }
 
-async function getUserData() {
-  try {
-    const response = await fetch(`${API_URL}/sample/user`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+// async function getUserData() {
+//   try {
+//     const response = await fetch(`${API_URL}/sample/user`, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
 
-    if (response.status !== 200) {
-      throw new Error(response.status);
-    }
+//     if (response.status !== 200) {
+//       throw new Error(response.status);
+//     }
 
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    alert("페이지를 불러오지 못했습니다.");
-  }
-}
+//     const result = await response.json();
+//     return result;
+//   } catch (error) {
+//     alert("페이지를 불러오지 못했습니다.");
+//   }
+// }
 
 async function getFolderCategory() {
   try {
@@ -102,10 +102,4 @@ async function getUsers(id) {
   }
 }
 
-export {
-  getUserFolder,
-  getUserData,
-  getFolderCategory,
-  getFolderLinks,
-  getUsers,
-};
+export { getUserFolder, getFolderCategory, getFolderLinks, getUsers };
