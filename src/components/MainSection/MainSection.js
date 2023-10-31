@@ -1,7 +1,11 @@
 import './MainSection.css';
 
 function MainSection({ children }) {
-  return <div className="main-section">{children}</div>;
+  return (
+    <main>
+      <div className="main-section">{children}</div>
+    </main>
+  );
 }
 
 export default MainSection;

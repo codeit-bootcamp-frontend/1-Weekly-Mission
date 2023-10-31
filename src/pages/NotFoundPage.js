@@ -1,4 +1,5 @@
 import LinkAdd from 'components/LinkAdd/LinkAdd';
+import MainSection from 'components/MainSection/MainSection';
 import NotFoundLink from 'components/NotFoundLink/NotFoundLink';
 import Search from 'components/Search/Search';
 
@@ -6,10 +7,10 @@ function NotFoundPage() {
   return (
     <>
       <LinkAdd />
-      <div className="main-section">
+      <MainSection>
         <Search />
         <NotFoundLink />
-      </div>
+      </MainSection>
     </>
   );
 }
