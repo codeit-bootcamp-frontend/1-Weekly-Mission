@@ -7,6 +7,37 @@ import {
 } from '../../constants/globalImages';
 import './FooterStyle.css';
 
+function SnsLink({ url, imgSrc, name }) {
+  return (
+    <a href={url} target="_blank" rel="noreferrer">
+      <img src={imgSrc} alt={`Linkbrary의 ${name} 바로가기`} />
+    </a>
+  );
+}
+
+function SnsIcons() {
+  return (
+    <div className="sns-icons">
+      <SnsLink
+        url="https://www.facebook.com/"
+        imgSrc={snsIconF}
+        alt="facebook"
+      />
+      <SnsLink
+        url="https://twitter.com/?lang=ko"
+        imgSrc={snsIconT}
+        alt="twiter"
+      />
+      <SnsLink url="https://www.youtube.com/" imgSrc={snsIconY} alt="youtube" />
+      <SnsLink
+        url="https://www.instagram.com/"
+        imgSrc={snsIconI}
+        alt="instagram"
+      />
+    </div>
+  );
+}
+
 function Footer() {
   return (
     <footer>
@@ -16,24 +47,7 @@ function Footer() {
           <a href="/pages/privacy/privacy.html">Privacy Policy</a>
           <a href="/pages/faq/faq.html">FAQ</a>
         </div>
-        <div className="sns-icons">
-          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
-            <img src={snsIconF} alt="Linkbrary의 facebook 바로가기" />
-          </a>
-          <a
-            href="https://twitter.com/?lang=ko"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={snsIconT} alt="Linkbrary의 twiter 바로가기" />
-          </a>
-          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
-            <img src={snsIconY} alt="Linkbrary의 youtube 바로가기" />
-          </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-            <img src={snsIconI} alt="Linkbrary의 instagram 바로가기" />
-          </a>
-        </div>
+        <SnsIcons />
       </div>
     </footer>
   );
