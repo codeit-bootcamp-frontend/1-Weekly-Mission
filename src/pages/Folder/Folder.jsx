@@ -19,6 +19,7 @@ function Folder() {
   const { data: linksData, fetchData: getLinksAsync } = useAsync({
     asyncFunction: getLinks,
     initialArgs: [DEFAULT_USER_ID, initialFolderId],
+    skip: true,
   });
 
   const setFolderLinks = (nextFolderId) => {
