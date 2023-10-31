@@ -33,7 +33,7 @@ export default function Folder() {
   }, [getFolderData, currentFolder.id]);
 
   return (
-    <div className='folder'>
+    <div>
       <LinkAdd />
       <Container>
         <Search />

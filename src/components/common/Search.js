@@ -3,14 +3,10 @@ import styled from 'styled-components';
 
 export default function Search() {
   return (
-    <Container className='search'>
-      <Box className='search-box'>
-        <Img src={searchImg} alt='search' className='serach-img' />
-        <Input
-          type='text'
-          className='search-input'
-          placeholder='링크를 검색해 보세요'
-        />
+    <Container>
+      <Box>
+        <Img src={searchImg} alt='search' />
+        <Input type='text' placeholder='링크를 검색해 보세요' />
       </Box>
     </Container>
   );

@@ -20,7 +20,7 @@ export default function Shared() {
   }, [getFolderData]);
 
   return (
-    <div className='App'>
+    <div>
       <User folderInfo={folderInfo} />
       <Container>
         <Search />

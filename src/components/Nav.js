@@ -11,13 +11,9 @@ const INIT_USER = {
 
 const Account = ({ user }) => {
   return (
-    <Box className='user-account'>
-      <Img
-        src={user.image_source}
-        alt='프로필 사진'
-        className='user-profile-image'
-      />
-      <Email className='user-email'>{user.email}</Email>
+    <Box>
+      <Img src={user.image_source} alt='프로필 사진' />
+      <Email>{user.email}</Email>
     </Box>
   );
 };
@@ -34,16 +30,12 @@ export default function Nav({ user = INIT_USER }) {
   }, [urlPath]);
 
   return (
-    <Header className='header' $isSticky={isSticky}>
-      <Container className='nav-bar'>
+    <Header $isSticky={isSticky}>
+      <Container>
         <Link to='/'>
-          <Logo src={logo} alt='로고' className='nav-logo' />
+          <Logo src={logo} alt='로고' />
         </Link>
-        {user.email ? (
-          <Account user={user} />
-        ) : (
-          <AuthButton type='로그인' className='nav-button' />
-        )}
+        {user.email ? <Account user={user} /> : <AuthButton type='로그인' />}
       </Container>
     </Header>
   );
