@@ -7,10 +7,12 @@ import Button from '../components/Button/Button';
 import useInputValue from '../hooks/useInputValue';
 import { Navigate, useNavigate } from 'react-router';
 import useInputError from '../hooks/useInputError';
-import postSign from '../apis/auth/postsign';
+import postSign from '../apis/auth/postSign';
+import useAuth from '../hooks/useAuth';
 
 function Signin() {
   const [values, handleChange] = useInputValue();
+  const { token } = useAuth();
 
   const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
     useInputError(values, 'in', 'email');
@@ -24,7 +26,7 @@ function Signin() {
 
   const navigate = useNavigate();
 
-  if (localStorage.getItem('accessToken')) {
+  if (token.access) {
     return <Navigate to="/folder" />;
   }
 
