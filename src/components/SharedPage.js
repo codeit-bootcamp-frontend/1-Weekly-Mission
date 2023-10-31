@@ -26,9 +26,6 @@ function SharedPage() {
   return (
     <>
       <FolderInfo folderInfo={folderInfo} />
-      {/* <div>
-        <input type="text" />
-      </div> */}
     </>
   );
 }

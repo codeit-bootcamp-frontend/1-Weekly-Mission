@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 15px 16px;
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+.image {
+  width: 16px;
+  height: 16px;
+  margin-right: -20px;
+  z-index: 10;
+}
+.input {
+  background-color: #F5F5F5;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  color: #666;
+  padding-left: 26px;
+}
+.search-input::placeholder {
+  font-size: 14px;
+}

@@ -1,32 +1,3 @@
-.folder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #F0F6FF;
-  width: 100%;
-}
-.folder-container {
-  min-width: 180px;
-  flex-direction: column;
-  text-align: center;
-  margin: 20px 0 60px;
-}
-.profile-img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 12px;
-}
-.folder-user {
-  /* font-family: Pretendard; */
-  font-size: 16px;
-  line-height: 24px; /* 150% */
-  margin-bottom: 20px;
-}
-.folder-name {
-  font-size: 40px;
-  font-weight: 600;
-}
-
 .container {
   display: flex;
   flex-direction: column;
