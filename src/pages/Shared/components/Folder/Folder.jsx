@@ -6,7 +6,7 @@ import SearchBar from 'components/SearchBar';
 import CardList from 'components/CardsContainer';
 
 function Folder() {
-  const [data, isLoading, loadingError, getSharedFolderAsync] = useAsync({
+  const { data } = useAsync({
     asyncFunction: getSharedFolder,
   });
 

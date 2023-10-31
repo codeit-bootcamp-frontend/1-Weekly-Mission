@@ -15,7 +15,7 @@ const DEFAULT_USER_ID = 1;
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialFolderId = searchParams.get('folderId');
-  const [linksData, , , getLinksAsync] = useAsync({
+  const { data: linksData, fetchData: getLinksAsync } = useAsync({
     asyncFunction: getLinks,
     initialArgs: [DEFAULT_USER_ID, initialFolderId],
   });

@@ -29,7 +29,7 @@ function useAsync({ asyncFunction, initialArgs, deps = [], skip = false }) {
     }
   }, deps);
 
-  return [data, pending, error, fetchData];
+  return { data, pending, error, fetchData };
 }
 
 export default useAsync;

@@ -13,7 +13,7 @@ const DEFAULT_FOLDER = {
 };
 
 function FoldersContainer({ userId, initialFolderId, setFolderLinks }) {
-  const [folders, , ,] = useAsync({
+  const { data: folders } = useAsync({
     asyncFunction: getFolders,
     initialArgs: userId,
   });
