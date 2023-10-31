@@ -4,6 +4,7 @@ import noImg from '../../assets/images/no-image.svg';
 import starIcon from '../../assets/images/star.svg';
 import { useState } from 'react';
 import { formatDate, formatTimeAgo } from '../../utils/formatDate';
+import normalizeCardData from '../../utils/normalizeCardData';
 
 function Card({ card, shared }) {
   const [hover, setHover] = useState(false);
@@ -23,22 +24,8 @@ function Card({ card, shared }) {
   const bgColorStyle = `${styles.root} ${hoverBg}`;
 
   const bgImg = {
-    backgroundImage: `url(${unifyCardData(card).imageSource || noImg})`,
+    backgroundImage: `url(${normalizeCardData(card).imageSource || noImg})`,
   };
-
-  function unifyCardData(card) {
-    if (card.createdAt) {
-      return {
-        createdAt: card.createdAt,
-        imageSource: card.imageSource,
-      };
-    } else if (card.created_at) {
-      return {
-        createdAt: card.created_at,
-        imageSource: card.image_source,
-      };
-    }
-  }
 
   return (
     <div
@@ -56,7 +43,7 @@ function Card({ card, shared }) {
         </div>
         <div className={styles.explanation}>
           <div className={styles.header}>
-            <div>{formatTimeAgo(unifyCardData(card).createdAt)}</div>
+            <div>{formatTimeAgo(normalizeCardData(card).createdAt)}</div>
             {shared === 'off' && (
               <button type="button">
                 <img src={kebabImg} alt="쩜쩜쩜" />
@@ -69,7 +56,7 @@ function Card({ card, shared }) {
           </div>
 
           <div className={styles.footer}>
-            {formatDate(unifyCardData(card).createdAt)}
+            {formatDate(normalizeCardData(card).createdAt)}
           </div>
         </div>
       </a>
