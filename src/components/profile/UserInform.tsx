@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { DEFAULT_PROFILE_IMAGE } from "constants/common";
 import QUERY_KEYS from "constants/queryKeys";
 import { getUserProfile } from "libs/apis/profile";
-import styles from "styles/modules/user.module.css";
+import styled from "styled-components";
 import manageStatus from "utils/manageStatus";
 
 function UserInform() {
-  const { isLoading, isError, data } = useQuery<User>({
+  const { isLoading, isError, data } = useQuery<User[]>({
     queryKey: [QUERY_KEYS.user],
     queryFn: getUserProfile,
   });
@@ -16,15 +16,29 @@ function UserInform() {
   }
 
   return (
-    <div className={styles.profileWrapper}>
-      {data?.data.map((item) => (
-        <div className={styles.profileInWrapper} key={item.id}>
-          <img src={DEFAULT_PROFILE_IMAGE} alt="profile" />
-          <span>{item.email}</span>
-        </div>
-      ))}
-    </div>
+    <StyldProfileWrapper>
+      <StyldProfileInWrapper>
+        <img src={DEFAULT_PROFILE_IMAGE} alt="profile" />
+        {data?.map((item) => (
+          <span key={item.id}>{item.email}</span>
+        ))}
+      </StyldProfileInWrapper>
+    </StyldProfileWrapper>
   );
 }
 
 export default UserInform;
+
+const StyldProfileWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+`;
+
+const StyldProfileInWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+`;

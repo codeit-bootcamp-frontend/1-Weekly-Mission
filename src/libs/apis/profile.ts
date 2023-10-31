@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { instance } from "libs/api";
 
 export async function getUserSampleProfile() {
@@ -6,6 +7,8 @@ export async function getUserSampleProfile() {
 }
 
 export async function getUserProfile() {
-  const response = await instance.get<{}, User>("/api/users/1");
-  return response;
+  const response = await instance.get<{}, AxiosResponse<User[]>>(
+    "/api/users/1"
+  );
+  return response.data;
 }
