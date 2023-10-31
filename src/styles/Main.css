@@ -2,6 +2,7 @@ main {
   padding: 0 190px;
   width: 100%;
   margin: 0 auto;
+
   @media (max-width: 1123px) {
     padding: 33px 32.5px 32px 32.5px;
   }
@@ -22,6 +23,9 @@ main {
   @media (max-width: 1123px) {
     width: 700px;
   }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
 
 section {
@@ -34,11 +38,14 @@ section {
   justify-content: center;
   align-items: center;
   gap: 20px;
+
   @media (max-width: 1123px) {
     width: 700px;
   }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
-
 .search-bar {
   display: flex;
   width: 1060px;
@@ -51,6 +58,9 @@ section {
   @media (max-width: 1123px) {
     width: 700px;
   }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
 
 .search-bar-wrapper {
@@ -61,6 +71,9 @@ section {
   @media (max-width: 1123px) {
     width: 700px;
   }
+  @media (max-width: 768px) {
+    width: 500px;
+  }
 }
 
 .search-icon-image {
@@ -68,4 +81,31 @@ section {
   top: 19px;
   left: 18px;
   cursor: pointer;
+}
+
+.entirety {
+  display: flex;
+  padding: 8px 12px;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  white-space: nowrap;
+}
+
+.empty {
+  display: flex;
+  width: 1060px;
+  height: 334px;
+  padding: 41px 0px 35px 0px;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  text-align: center;
+
+  font-size: 16px;
+
+  font-weight: 400;
+  line-height: 24px;
 }
