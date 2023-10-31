@@ -14,6 +14,7 @@ import FolderMenu from "../components/js/FolderMenu";
 import CardListFolder from "../components/js/CardListFolder";
 import FloatButton from "../components/js/FloatButton";
 import LinksNotExist from "../components/js/LinksNotExist";
+import AddLinktoFolderModalContainer from "components/js/modals/container/AddLinktoFolderModalContainer";
 
 const Wrapper = styled.div`
   width: 1060px;
@@ -39,38 +40,26 @@ function Folder() {
   const [folderLinks, setFolderLinks] = useState([]);
   const [folderName, setFolderName] = useState("");
 
-  //폴더 목록, 전체 링크 데이터 fetch
-  const loadInitial = async () => {
-    const folders = await getFoldersAsync();
-    setPersonalFolder(folders?.data);
-    const result = await getUserLinks();
-    setFolderLinks(result?.data);
-  };
-
   //카드 리스트 업데이트 하는 함수
   const loadCardList = async () => {
+    const folders = await getFoldersAsync();
+    setPersonalFolder(folders?.data);
     const result = await getUserLinks(currentFolderId);
     setFolderLinks(result?.data);
   };
 
   //액션 메뉴에서 버튼을 누를 때마다 folderId와 foldername의 state가 변경되는 함수
-  const handleClickMenuButton = (value, name) => {
-    const nextValue = value;
+  const handleClickMenuButton = (nextValue, nextName) => {
     setCurrentFolderId(nextValue);
-    const nextName = name;
     setFolderName(nextName);
   };
-  //처음 로드될 때
-  useEffect(() => {
-    loadInitial();
-  }, []);
 
   //currenetFolderId가 바뀔 때마다 새로 카드리스트 업데이트
   useEffect(() => {
     loadCardList();
   }, [currentFolderId]);
 
-  const CONDITIONS_FOR_NOT_RENDER =
+  const isShowComponent =
     (currentFolderId === "") &
     (folderLinks.length === 0) &
     (personalFolder.length === 0);
@@ -80,10 +69,11 @@ function Folder() {
       <Helmet>
         <title>Linkbrary_Folder</title>
       </Helmet>
+      <AddLinktoFolderModalContainer />
       <NavAndFooterBasic>
         <FloatButton>폴더 추가</FloatButton>
         <LinkBar />
-        {CONDITIONS_FOR_NOT_RENDER ? (
+        {isShowComponent ? (
           <Wrapper>
             <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
           </Wrapper>
