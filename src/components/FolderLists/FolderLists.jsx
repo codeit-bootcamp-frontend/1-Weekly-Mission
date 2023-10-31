@@ -16,7 +16,11 @@ const FolderList = ({ data, onClick }) => {
 const FolderLists = ({ folderData, id }) => {
   const [folderTitle, setFolderTitle] = useState(() => {
     const idFolder = folderData.filter((data) => data.id === parseInt(id));
-    return idFolder[0]["name"];
+    if (idFolder[0]?.name) {
+      return idFolder[0]["name"];
+    } else {
+      return "전체";
+    }
   });
 
   const handleBtnClick = (dataName) => {
@@ -35,6 +39,17 @@ const FolderLists = ({ folderData, id }) => {
       }
     }
   };
+
+  useEffect(() => {
+    (() => {
+      const idFolder = folderData.filter((data) => data.id === parseInt(id));
+      if (idFolder[0]?.name) {
+        setFolderTitle(idFolder[0]?.name);
+      } else {
+        setFolderTitle("전체");
+      }
+    })();
+  }, [id]);
 
   useEffect(() => {
     handleBtnColor();
