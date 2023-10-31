@@ -2,9 +2,8 @@ import * as S from "./modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
 
 function AddLinktoFolderModal({ folders }) {
-  console.log(folders);
   const folderList = folders ?? [];
-  console.log(folderList);
+
   return (
     <ModalBg>
       <S.Wrapper>
