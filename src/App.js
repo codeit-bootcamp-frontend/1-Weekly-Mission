@@ -1,36 +1,38 @@
 import './App.css';
-import CardList from './components/CardList';
 import Nav from './components/Nav';
-import User from './components/User';
-import Search from './components/Search';
 import Footer from './components/Footer';
-import getFolderData from './services/api';
+import getData from './services/api';
 import { useEffect, useState, useCallback } from 'react';
+import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+`;
 
 function App() {
-  const [cards, setcards] = useState([]);
-  const [folderInfo, setFolderInfo] = useState(null);
   const [user, setUser] = useState({});
-  const getdata = useCallback(async () => {
-    const { folder } = await getFolderData('sample/folder');
-    const userData = await getFolderData('sample/user');
-    setUser(userData);
-    setFolderInfo(folder);
-    setcards(folder.links);
+
+  const getUserData = useCallback(async () => {
+    const { data } = await getData('users/1');
+    setUser(data[0]);
   }, []);
 
   useEffect(() => {
-    getdata();
-  }, [getdata]);
+    getUserData();
+  }, [getUserData]);
 
   return (
-    <div className='App'>
-      <Nav user={user} />
-      <User folderInfo={folderInfo} />
-      <Search />
-      <CardList cards={cards} />
+    <Container className='App'>
+      <div>
+        <Nav user={user} />
+        <Outlet context={user} />
+      </div>
       <Footer />
-    </div>
+    </Container>
   );
 }
 
