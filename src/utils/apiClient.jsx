@@ -1,9 +1,10 @@
+import axios from 'axios';
+
 const BASE_URL = 'https://bootcamp-api.codeit.kr/api/';
 
 async function requestAPI(url) {
-  const response = await fetch(`${BASE_URL}${url}`);
-  const result = await response.json();
-  return result;
+  const response = await axios.get(`${BASE_URL}${url}`);
+  return response.data;
 }
 
 export async function getSharedFolder() {
