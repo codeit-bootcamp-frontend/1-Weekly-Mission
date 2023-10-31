@@ -1,5 +1,5 @@
 header {
-  background-color: #f0f6ff;
+  background-color: var(--linkbrary-bg);
   width: 100%;
   position: sticky;
   top: 0;
@@ -7,6 +7,11 @@ header {
   right: 0;
   z-index: 2;
 }
+
+header.static {
+  position: static;
+}
+
 header .inner {
   display: flex;
   margin: 0 auto;
@@ -19,6 +24,7 @@ header a img {
   width: 133px;
   height: 24px;
 }
+
 .header-login {
   display: flex;
   align-items: center;
@@ -47,32 +53,37 @@ header a img {
   flex: 1 0 1;
 }
 
-.profile_logo {
+.profile-logo {
   width: 28px;
   height: 28px;
   border-radius: 50%;
 }
 
-.profile_id {
+.profile-id {
   margin-left: 6px;
   font-size: 14px;
   font-weight: 400;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
   header .inner {
     max-width: 767px;
     padding: 20px 0px;
   }
 }
 
-@media screen and (max-width: 775px) {
+@media (max-width: 768px) {
   header .inner {
     padding: 13px 32px;
   }
 
   header a {
     width: 88.667px;
+  }
+
+  header a img {
+    width: 88.667px;
+    height: 16px;
   }
 
   .header-login a {
