@@ -1,22 +1,21 @@
 import "styles/globalStyles.css";
 
-import { getUser } from "api/api";
+import { Route, Routes } from "react-router-dom";
 
-import Header from "components/common/header/Header";
-import Footer from "components/common/footer/Footer";
+import Layout from "components/layout";
 import SharedPage from "pages/shareFolder";
-
-import useFetch from "components/common/hooks/useFetch";
+import FolderPage from "pages/folder";
 
 function App() {
-  const user = useFetch(getUser());
-
   return (
-    <div>
-      <Header user={user} />
-      <SharedPage />
-      <Footer />
-    </div>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/shared" element={<SharedPage />}></Route>
+          <Route path="/folder" element={<FolderPage />}></Route>
+        </Routes>
+      </Layout>
+    </>
   );
 }
 
