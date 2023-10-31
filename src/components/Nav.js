@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Nav.css";
 import logoImg from "../img/logo.png";
 
@@ -7,7 +8,7 @@ const INIT_USER = {
   email: "",
 };
 
-const Nav = ({ user = INIT_USER, currentPage }) => {
+const Nav = ({ user = INIT_USER }) => {
   const { email, image_source } = user;
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -15,8 +16,19 @@ const Nav = ({ user = INIT_USER, currentPage }) => {
     setWindowWidth(window.innerWidth);
   });
 
+  const [isSticky, setIsSticky] = useState("sticky");
+  const urlPath = useLocation().pathname;
+
+  useEffect(() => {
+    if (urlPath === "/folder") {
+      setIsSticky("static");
+    } else {
+      setIsSticky("sticky");
+    }
+  }, [urlPath]);
+
   return (
-    <header className={currentPage === "/folder" ? "static" : "sticky"}>
+    <header className={isSticky}>
       <div className="inner">
         <h1>
           <a href="/">
