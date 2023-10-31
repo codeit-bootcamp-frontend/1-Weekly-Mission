@@ -11,7 +11,7 @@ function Category({ folderData, handleClick }) {
         <div className="category-item-box">
           <CategoryItem data={MAIN_CATEGORY} handleClick={handleClick} />
 
-          {folderData?.length &&
+          {!!folderData &&
             folderData.map((item) => {
               return (
                 <CategoryItem
