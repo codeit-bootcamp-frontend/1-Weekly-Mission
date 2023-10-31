@@ -23,8 +23,12 @@ function Card({ card, shared }) {
   const imageStyle = `${styles.image} ${hoverImage}`;
   const bgColorStyle = `${styles.root} ${hoverBg}`;
 
+  const normalizedCardData = normalizeCardData(card);
+  const cardDate = normalizedCardData.createdAt;
+  const cardImage = normalizedCardData.imageSource;
+
   const bgImg = {
-    backgroundImage: `url(${normalizeCardData(card).imageSource || noImg})`,
+    backgroundImage: `url(${cardImage || noImg})`,
   };
 
   return (
@@ -43,7 +47,7 @@ function Card({ card, shared }) {
         </div>
         <div className={styles.explanation}>
           <div className={styles.header}>
-            <div>{formatTimeAgo(normalizeCardData(card).createdAt)}</div>
+            <div>{formatTimeAgo(cardDate)}</div>
             {shared === 'off' && (
               <button type="button">
                 <img src={kebabImg} alt="쩜쩜쩜" />
@@ -55,9 +59,7 @@ function Card({ card, shared }) {
             <div>{card.description}</div>
           </div>
 
-          <div className={styles.footer}>
-            {formatDate(normalizeCardData(card).createdAt)}
-          </div>
+          <div className={styles.footer}>{formatDate(cardDate)}</div>
         </div>
       </a>
     </div>
