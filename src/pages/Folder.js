@@ -17,6 +17,13 @@ import { useSearchParams } from 'react-router-dom';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [cards, setCards] = useState([]);
+  const [folderLists, setFolderLists] = useState([
+    {
+      id: 0,
+      name: '전체',
+    },
+  ]);
 
   const folderID = searchParams.get('folderId');
 
@@ -26,13 +33,6 @@ function Folder() {
     setSearchParams(searchParams);
   }
 
-  const [folderLists, setFolderLists] = useState([
-    {
-      id: 0,
-      name: '전체',
-    },
-  ]);
-
   const loadFolderData = async () => {
     const { data } = await getSampleUsersFolderLists();
 
@@ -40,8 +40,6 @@ function Folder() {
       return [...prevFolderList, ...data];
     });
   };
-
-  const [cards, setCards] = useState([]);
 
   const loadcardData = useCallback(async () => {
     const { data } = await getUsersFolderLinkItems(folderID);
@@ -52,17 +50,13 @@ function Folder() {
   }, [folderID]);
 
   const getFolderName = (folderID, folderLists) => {
-    try {
-      if (!folderID) {
-        return '전체';
-      } else {
-        const getFolder = folderLists.find((folderList) => {
-          return folderList.id === Number(folderID);
-        });
-        return getFolder.name;
-      }
-    } catch (e) {
-      console.error(e);
+    if (!folderID) {
+      return '전체';
+    } else {
+      const folderName = folderLists.find((folderList) => {
+        return folderList.id === Number(folderID);
+      });
+      return folderName !== undefined ? folderName.name : '';
     }
   };
 
