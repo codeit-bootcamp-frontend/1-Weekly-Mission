@@ -1,89 +1,56 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
-import { fetchGet } from "../../apis/api";
-import useAsync from "../../hooks/useAsync";
-import IMAGES from "../../assets/images.js";
-import Button from "../Button/Button.jsx";
-import "./Navbar.css";
+import IMAGES from "../../assets/images.js"
+import LinkButton from "../Button/LinkButton.jsx"
+import * as S from "./styles.js"
 
-const Logo = ({ link = "/", className, src, alt, height }) => {
+const Logo = ({ link = "/", src, alt, height }) => {
   return (
     <Link to={link}>
-      <img className={className} src={src} alt={alt} height={height} />
+      <S.NavLogoImage src={src} alt={alt} height={height} />
     </Link>
-  );
-};
+  )
+}
 
 const Profile = ({ items }) => {
-  const { email, profileImageSource } = items;
-  return (
-    <div className="profile-box">
-      <img className="profile-image" src={profileImageSource} alt="profile" />
-      <p className="profile-collapse">{email}</p>
-    </div>
-  );
-};
-
-const Navbar = () => {
-  const [sampleUser, setSampleUser] = useState({
-    id: null,
-    name: "",
-    email: "",
-    profileImageSource: "",
-  });
-
-  const [loading, error, getSampleUser] = useAsync(
-    fetchGet("/api/sample/user")
-  );
-
-  useEffect(() => {
-    const handleSampleUserProfile = async () => {
-      const result = await getSampleUser();
-      if (!result) return;
-      if (error) console.error(error);
-
-      setSampleUser({
-        id: result.id,
-        name: result.name,
-        email: result.email,
-        profileImageSource: result.profileImageSource,
-      });
-    };
-
-    handleSampleUserProfile();
-
-    return () =>
-      setSampleUser({
-        id: null,
-        name: "",
-        email: "",
-        profileImageSource: "",
-      });
-    // eslint-disable-next-line
-  }, []);
+  // 기존 코드 - Sample 데이터 받을 때와 받는 데이터 객체 구조가 달라 if - else 문으로 처리
+  // const { email, image_source } = items
+  const email = items.email
+  const image_source = items.profileImageSource
+    ? items.profileImageSource
+    : items.image_source
 
   return (
-    <nav id="nav">
-      <div className="nav-box">
-        <Logo
-          link="/"
-          className="nav-logo"
-          src={IMAGES.logo}
-          alt="Linkbrary"
-          height={24}
-        />
-        {!loading ? (
-          !sampleUser.id ? (
-            <Button className="cta-short" link="/signin.html" text="로그인" />
-          ) : (
-            <Profile items={sampleUser} />
-          )
-        ) : null}
-        {}
-      </div>
-    </nav>
-  );
-};
+    <S.ProfileBox>
+      <S.ProfileImage src={image_source} alt="profile" />
+      <S.ProfileCollapseParagraph>{email}</S.ProfileCollapseParagraph>
+    </S.ProfileBox>
+  )
+}
 
-export default Navbar;
+const Navbar = ({ userData, fixed }) => {
+  const data = userData
+
+  let styledObject
+  if (fixed) {
+    styledObject = {
+      position: "fixed",
+      top: 0,
+    }
+  }
+
+  return (
+    <S.NavBox style={styledObject}>
+      <S.NavInnerBox>
+        <Logo link="/" src={IMAGES.logo} alt="Linkbrary" height={24} />
+        {!data?.id ? (
+          <LinkButton link="/signin" size="short" text="로그인" />
+        ) : (
+          <Profile items={data} />
+        )}
+      </S.NavInnerBox>
+    </S.NavBox>
+  )
+}
+
+export default Navbar

@@ -13,11 +13,17 @@ const IMAGES = {
   logo: require("./logo.svg").default,
   emptyStar: require("./emptyStar.svg").default,
   filledStar: require("./filledStar.svg").default,
+  link: require("./link.svg").default,
+  folderAdd: require("./folder-add.svg").default,
+  folderAddWhite: require("./folder-add-white.svg").default,
+  pen: require("./pen.svg").default,
+  share: require("./share.svg").default,
+  trashcan: require("./trashcan.svg").default,
   hero: require("./hero.png"),
   image1: require("./image1.png"),
   image2: require("./image2.png"),
   image3: require("./image3.png"),
   image4: require("./image4.png"),
-};
+}
 
-export default IMAGES;
+export default IMAGES

@@ -1,11 +1,12 @@
-import Card from "./Card.jsx";
+import Card from "./Card.jsx"
+import * as S from "./styles.js"
 
 const CardList = ({ cards }) => {
   return (
-    <div className="card-list">
+    <S.CardListBox>
       {cards && cards.map((card) => <Card key={card.id} items={card} />)}
-    </div>
-  );
-};
+    </S.CardListBox>
+  )
+}
 
-export default CardList;
+export default CardList

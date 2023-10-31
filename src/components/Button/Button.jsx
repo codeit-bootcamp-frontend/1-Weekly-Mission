@@ -1,11 +1,10 @@
-import "./Button.css";
+import * as S from './styles';
 
-const Button = ({ className, link, text }) => {
-  const buttonClassName = `cta ${className}`;
+const Button = ({ size, text }) => {
   return (
-    <a className={buttonClassName} href={link}>
+    <S.CTA size={size}>
       <span>{text}</span>
-    </a>
+    </S.CTA>
   );
 };
 

@@ -1,21 +1,37 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Shared from "./pages/Share/Shared.jsx";
-import HomePage from "./pages/Homepage/Homepage.jsx";
-import Signup from "./pages/SignUp/Signup.jsx";
-import Signin from "./pages/SignIn/SignIn.jsx";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  HomePage,
+  FolderPage,
+  SharePage,
+  SignUpPage,
+  SignInPage,
+  NotFound,
+} from './pages/pages';
+import GlobalStyle from './styles/GlobalStyles';
 
-const App = () => {
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="folder" element={<Shared />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="signin" element={<Signin />} />
-      </Routes>
-      <Shared />;
-    </BrowserRouter>
+    <>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+
+          <Route path="folder">
+            <Route index element={<FolderPage />} />
+            <Route path=":folderId" element={<FolderPage />} />
+          </Route>
+
+          <Route path="share" element={<SharePage />} />
+
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="signin" element={<SignInPage />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
-};
+}
 
 export default App;

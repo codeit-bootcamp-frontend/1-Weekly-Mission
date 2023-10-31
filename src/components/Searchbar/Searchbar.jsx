@@ -1,40 +1,36 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import IMAGES from "../../assets/images.js";
-import "./Searchbar.css";
+import IMAGES from '../../assets/images.js';
+import * as S from './styles.js';
 
-const Searchbar = () => {
-  const [searchText, setSearchText] = useState("");
-  const handleSearch = (e) => {
-    setSearchText(e.target.value);
-  };
-
+const Searchbar = ({ handleSearch }) => {
+  const [searchText, setSearchText] = useState('');
   const handleSearchDelete = (e) => {
-    setSearchText("");
+    setSearchText('');
+    handleSearch(e, '');
   };
-
   return (
-    <div className="searchbar">
-      <div className="searchbar-inner">
+    <S.SearchbarForm onSubmit={(e) => handleSearch(e, searchText)}>
+      <S.SearchbarInnerBox>
         <label htmlFor="search">
           <img src={IMAGES.search} alt="Search" />
         </label>
-        <input
-          className="searchbar-input"
+        <S.SearchbarInput
           id="search"
           name="search"
           value={searchText}
           placeholder="링크를 검색해 보세요"
           autoFocus
-          onChange={handleSearch}
+          onChange={(e) => setSearchText(e.target.value)}
         />
-      </div>
-      {searchText !== "" && (
-        <div className="searchbar-delete" onClick={handleSearchDelete}>
-          X
-        </div>
+      </S.SearchbarInnerBox>
+      {searchText !== '' && (
+        <S.SearchbarDeleteBox
+          onClick={(e) => handleSearchDelete(e, searchText)}>
+          <p>❌</p>
+        </S.SearchbarDeleteBox>
       )}
-    </div>
+    </S.SearchbarForm>
   );
 };
 
