@@ -1,6 +1,27 @@
-function TimeFlow({ createdAt }) {
+export const formatDate = (value) => {
+  const date = new Date(value);
+  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
+}
+
+export const filterLinks = (links, type, folderId) => {
+  if (type === 'searchById') {
+    return links.filter(link => link['folder_id'] == folderId);
+  }
+  if (type === 'searchByKeyword') {
+    return links.filter(link => link['title']?.includes(folderId));
+  }
+}
+
+export const filterFolder = (links, folderId) => {
+  if (!links) return;
+  if (!folderId) return links;
+  if (folderId * 1) return filterLinks(links, 'searchById', folderId);
+  return filterLinks(links, 'searchByKeyword', folderId);
+}
+
+export function TimeFlow({ createdAt }) {
   let message = '';
-  const timeMinute = (new Date() - new Date(createdAt)) / 1000 / 60;
+  const timeMinute = Math.floor((new Date() - new Date(createdAt)) / 1000 / 60);
   const timeHour = Math.floor(timeMinute / 60);
   const timeDay = Math.floor(timeHour / 24);
   const timeMonth = Math.floor(timeDay / 30);
@@ -43,5 +64,3 @@ function TimeFlow({ createdAt }) {
     <p className="">{message}</p>
   )
 }
-
-export default TimeFlow
