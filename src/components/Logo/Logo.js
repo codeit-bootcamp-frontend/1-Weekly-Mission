@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/logo.png';
+import logoImg from '../../assets/images/logo.png';
 
 function Logo({ className }) {
   return (
     <h1 className={className}>
       <Link to="/">
-        <img src={logo} alt="Linkbrary의 로고" />
+        <img src={logoImg} alt="Linkbrary의 로고" />
       </Link>
     </h1>
   );

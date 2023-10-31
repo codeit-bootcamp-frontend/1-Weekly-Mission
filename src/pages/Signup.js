@@ -8,7 +8,6 @@ import useInputValue from '../hooks/useInputValue';
 import { requestSign } from '../apis/api';
 import { Navigate, useNavigate } from 'react-router';
 import useInputError from '../hooks/useInputError';
-import SetSignInput from '../classes/SetSignInput';
 
 function Signup() {
   const [values, handleChange] = useInputValue();
@@ -53,52 +52,52 @@ function Signup() {
     }
   };
 
-  const SignInputArray = [
-    new SetSignInput(
-      'signiupEmail',
-      'email',
-      'email',
-      `${values.email}`,
-      '이메일',
+  const signInputConfig = [
+    {
+      idfor: 'signupEmail',
+      name: 'email',
+      type: 'email',
+      value: `${values.email}`,
+      children: '이메일',
 
-      emailError,
-      emailErrorText,
+      errorState: emailError,
+      errorText: emailErrorText,
 
-      handleChange,
-      handleEmailBlur,
-      handleEmailFocus,
-      false
-    ),
-    new SetSignInput(
-      'signupPassword',
-      'password',
-      'password',
-      `${values.password}`,
-      '비밀번호',
+      onChange: handleChange,
+      onBlur: handleEmailBlur,
+      onFocus: handleEmailFocus,
+      eyes: false,
+    },
+    {
+      idfor: 'signupPassword',
+      name: 'password',
+      type: 'password',
+      value: `${values.password}`,
+      children: '비밀번호',
 
-      passwordError,
-      passwordErrorText,
+      errorState: passwordError,
+      errorText: passwordErrorText,
 
-      handleChange,
-      handlePasswordBlur,
-      handlePasswordFocus,
-      true
-    ),
-    new SetSignInput(
-      'signupPasswordCheck',
-      'passwordCheck',
-      'password',
-      `${values.passwordCheck}`,
-      '비밀번호 확인',
+      onChange: handleChange,
+      onBlur: handlePasswordBlur,
+      onFocus: handlePasswordFocus,
+      eyes: true,
+    },
+    {
+      idfor: 'signupPasswordCheck',
+      name: 'passwordCheck',
+      type: 'password',
+      value: `${values.passwordCheck}`,
+      children: '비밀번호',
 
-      passwordCheckError,
-      passwordCheckErrorText,
+      errorState: passwordCheckError,
+      errorText: passwordCheckErrorText,
 
-      handleChange,
-      handlePasswordCheckBlur,
-      handlePasswordCheckFocus,
-      true
-    ),
+      onChange: handleChange,
+      onBlur: handlePasswordCheckBlur,
+      onFocus: handlePasswordCheckFocus,
+      eyes: true,
+    },
   ];
 
   return (
@@ -116,7 +115,7 @@ function Signup() {
 
         <section className={styles.sign}>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            {SignInputArray.map((SignInputs) => {
+            {signInputConfig.map((SignInputs) => {
               return <SignInput {...SignInputs} key={SignInputs.name} />;
             })}
 

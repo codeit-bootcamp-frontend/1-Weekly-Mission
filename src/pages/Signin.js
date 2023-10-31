@@ -8,7 +8,6 @@ import useInputValue from '../hooks/useInputValue';
 import { Navigate, useNavigate } from 'react-router';
 import { requestSign } from '../apis/api';
 import useInputError from '../hooks/useInputError';
-import SetSignInput from '../classes/SetSignInput';
 
 function Signin() {
   const [values, handleChange] = useInputValue();
@@ -46,37 +45,37 @@ function Signin() {
     }
   };
 
-  const SignInputArray = [
-    new SetSignInput(
-      'signinEmail',
-      'email',
-      'email',
-      `${values.email}`,
-      '이메일',
+  const signInputConfig = [
+    {
+      idfor: 'signinEmail',
+      name: 'email',
+      type: 'email',
+      value: `${values.email}`,
+      children: '이메일',
 
-      emailError,
-      emailErrorText,
+      errorState: emailError,
+      errorText: emailErrorText,
 
-      handleChange,
-      handleEmailBlur,
-      handleEmailFocus,
-      false
-    ),
-    new SetSignInput(
-      'signinPassword',
-      'password',
-      'password',
-      `${values.password}`,
-      '비밀번호',
+      onChange: handleChange,
+      onBlur: handleEmailBlur,
+      onFocus: handleEmailFocus,
+      eyes: false,
+    },
+    {
+      idfor: 'signinPassword',
+      name: 'password',
+      type: 'password',
+      value: `${values.password}`,
+      children: '비밀번호',
 
-      passwordError,
-      passwordErrorText,
+      errorState: passwordError,
+      errorText: passwordErrorText,
 
-      handleChange,
-      handlePasswordBlur,
-      handlePasswordFocus,
-      true
-    ),
+      onChange: handleChange,
+      onBlur: handlePasswordBlur,
+      onFocus: handlePasswordFocus,
+      eyes: true,
+    },
   ];
 
   return (
@@ -94,8 +93,8 @@ function Signin() {
 
         <section className={styles.sign}>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            {SignInputArray.map((SignInputs) => {
-              return <SignInput {...SignInputs} />;
+            {signInputConfig.map((SignInputs) => {
+              return <SignInput {...SignInputs} key={SignInputs.name} />;
             })}
 
             <Button className={styles.button}>로그인</Button>
