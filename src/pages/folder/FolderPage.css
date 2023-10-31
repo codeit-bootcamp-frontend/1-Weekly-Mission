@@ -33,3 +33,35 @@
     position: absolute;
     right: 2rem;
 }
+
+.links-header{
+    width: 90%;
+    max-width: 113rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2.4rem 0;
+
+}
+
+.controll-bar{
+    display: flex;
+    gap: 1.2rem;
+}
+
+.controll-bar-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+    color: #9fa6b2;
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.folder-info-name{
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}

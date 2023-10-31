@@ -3,21 +3,23 @@ import './FolderList.css';
 
 function Folder({ data, handleSetSelectedFolder, selected }) {
   const changeSelectedFolder = (e) => {
-    handleSetSelectedFolder(e.target.id);
+    const { id, name } = e.target.dataset;
+    handleSetSelectedFolder({ id, name });
   };
 
   return (
     <div
       className={`select-folder ${selected ? 'selected' : ''}`}
       onClick={changeSelectedFolder}
-      id={data.id}
+      data-id={data.id}
+      data-name={data.name}
     >
       {data.name}
     </div>
   );
 }
 
-function FolderList({ folders, handleSetSelectedFolder, selectedFolder }) {
+function FolderList({ folders, handleSetSelectedFolder, selectedFolderId }) {
   const clearSlectedFolder = () => {
     handleSetSelectedFolder(null);
   };
@@ -26,7 +28,7 @@ function FolderList({ folders, handleSetSelectedFolder, selectedFolder }) {
     <div className="folder-container">
       <div className="folder-list-container">
         <div
-          className={`select-folder ${selectedFolder ?? 'selected'}`}
+          className={`select-folder ${selectedFolderId ?? 'selected'}`}
           onClick={clearSlectedFolder}
         >
           전체
@@ -36,7 +38,7 @@ function FolderList({ folders, handleSetSelectedFolder, selectedFolder }) {
             key={data.id}
             data={data}
             handleSetSelectedFolder={handleSetSelectedFolder}
-            selected={String(data.id) === String(selectedFolder)}
+            selected={String(data.id) === String(selectedFolderId)}
           />
         ))}
         <div className="add-folder">폴더 추가 +</div>

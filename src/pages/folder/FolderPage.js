@@ -4,19 +4,24 @@ import FolderList from '../../components/folder/FolderList';
 import './FolderPage.css';
 import CardSearchBar from '../../components/card/CardSearchBar';
 import { getFolderList, getLinkList } from '../../api/api';
-import { linkIcon } from '../../constants/globalImages';
+import {
+  canIcon,
+  linkIcon,
+  penIcon,
+  shareIcon,
+} from '../../constants/globalImages';
 
 function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
 
-  const handleSetSelectedFolder = (folderId) => {
-    setSelectedFolder(folderId);
+  const handleSetSelectedFolder = (folderInfo) => {
+    setSelectedFolder(folderInfo);
   };
 
   const handleLinkListLoad = async () => {
-    const { data } = await getLinkList(selectedFolder);
+    const { data } = await getLinkList(selectedFolder?.id);
     setLinks([...data]);
   };
 
@@ -53,8 +58,28 @@ function FolderPage() {
         <FolderList
           folders={folders}
           handleSetSelectedFolder={handleSetSelectedFolder}
-          selectedFolder={selectedFolder}
+          selectedFolderId={selectedFolder?.id}
         />
+        <div className="links-header">
+          <span className="folder-info-name">{selectedFolder?.name}</span>
+          {selectedFolder && (
+            <div className="controll-bar">
+              <div className="controll-bar-item">
+                <img src={shareIcon} alt="" />
+                <span>공유</span>
+              </div>
+              <div className="controll-bar-item">
+                <img src={penIcon} alt="" />
+                <span>이름 변경</span>
+              </div>
+              <div className="controll-bar-item">
+                <img src={canIcon} alt="" />
+                <span>삭제</span>
+              </div>
+            </div>
+          )}
+        </div>
+
         <CardList links={links} />
       </main>
     </>

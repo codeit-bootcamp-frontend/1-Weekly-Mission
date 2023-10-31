@@ -10,6 +10,9 @@ import SearchIcon from '../assets/icon_search.svg';
 import NoImage from '../assets/no-img.png';
 import SampleProfile from '../assets/cat.png';
 import LinkIcon from '../assets/link.svg';
+import ShareIcon from '../assets/share.svg';
+import PenIcon from '../assets/pen.svg';
+import CanIcon from '../assets/delete.svg';
 
 const logoImg = LogoImg;
 const titleImg = TitleImg;
@@ -23,6 +26,9 @@ const searchIcon = SearchIcon;
 const noImage = NoImage;
 const sampleProfile = SampleProfile;
 const linkIcon = LinkIcon;
+const shareIcon = ShareIcon;
+const penIcon = PenIcon;
+const canIcon = CanIcon;
 
 export {
   logoImg,
@@ -37,4 +43,7 @@ export {
   noImage,
   sampleProfile,
   linkIcon,
+  shareIcon,
+  penIcon,
+  canIcon,
 };
