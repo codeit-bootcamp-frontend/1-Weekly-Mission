@@ -3,10 +3,10 @@ import getData from "../services/api";
 import "./SortingFolder.css";
 import { useEffect, useState } from "react";
 
-const SortingFolder = () => {
+const SortingFolder = ({ folderList }) => {
   return (
     <div>
-      <BaseButton name={"버튼이름"}></BaseButton>
+      <BaseButton name={folderList}></BaseButton>
     </div>
   );
 };
