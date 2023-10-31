@@ -11,6 +11,17 @@ export async function getUser() {
   return result;
 }
 
+export async function getSampleFolder() {
+  const response = await fetch(`${BASE_URL}/sample/folder`);
+  
+  if (!response.ok) {
+    console.log("데이터를 불러오는데 실패했습니다.");
+  } 
+  const result = await response.json();
+  return result;
+}
+
+
 // 폴더 데이터 
 export async function getFolder() {
   const response = await fetch(`${BASE_URL}/users/1/folders`);

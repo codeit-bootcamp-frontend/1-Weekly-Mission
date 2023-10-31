@@ -9,8 +9,6 @@ import { getUser } from "../api";
 
 
 function Nav() {
-
-  // 프로필 데이터 가져오기 
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState({}); 
 
@@ -39,13 +37,12 @@ function Nav() {
   return (
     <div className="nav-container">
       <Link to="/"><img className="logo-img" src={logoImg} alt="Linkbrary Logo"/></Link>
-      {!isLogin && (<Button>로그인</Button>)}
-      {isLogin && (
+      {isLogin ? (
         <div>
           <img className="profile-img" src={profileImg} alt="프로필 이미지" />
           <span className="profile-email">{email}</span>
-        </div>
-      )}
+        </div> 
+        ) : (<Button>로그인</Button>)} 
     </div>
   );
 }
