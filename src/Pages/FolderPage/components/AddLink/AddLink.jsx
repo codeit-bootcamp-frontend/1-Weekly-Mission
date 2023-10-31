@@ -36,9 +36,7 @@ const AddButton = styled.button`
   color: ${colors.white};
   font-family: Pretendard;
   font-size: 13px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
   border: none;
   top: 70px;
   right: 270px;

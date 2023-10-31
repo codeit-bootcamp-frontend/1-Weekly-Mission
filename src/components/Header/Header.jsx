@@ -4,6 +4,7 @@ import * as S from "./HeaderStyle";
 function Header({ name = "", owner = {} }) {
   return (
     <S.HeaderContainer>
+
       <S.HeaderOwner>
         <S.HeaderOwnerImg
           src={owner?.profileImageSource}
@@ -11,6 +12,7 @@ function Header({ name = "", owner = {} }) {
         />
         <S.HeaderOwnerName>{`@${owner?.name}`}</S.HeaderOwnerName>
       </S.HeaderOwner>
+      
       <S.HeaderName>{name}</S.HeaderName>
     </S.HeaderContainer>
   );

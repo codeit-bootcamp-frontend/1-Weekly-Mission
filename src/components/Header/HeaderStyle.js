@@ -1,32 +1,38 @@
 import styled from "styled-components";
 import colors from "../../style/colors";
+import { device } from "../../style/device";
+import { flexCenter } from "../../style/common";
 
 export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
-  height: 140px;
-  padding: 20px 624px 60px 624px;
+  height: 10rem;
+  padding: 4rem 3rem;
+
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
+
   background: ${colors.background};
+
 `;
 
 export const HeaderOwner = styled.div`
-  gap: 12px;
+  gap: 0.75rem;
 `;
 
 export const HeaderOwnerImg = styled.img`
-  height: 60px;
+  height: 3.75rem;
   border-radius: 70%;
 `;
 
 export const HeaderOwnerName = styled.p`
   color: #000;
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5rem;
   text-align: center;
+
 `;
 
 export const HeaderName = styled.h1`
@@ -36,8 +42,10 @@ export const HeaderName = styled.h1`
     "clig" off,
     "liga" off;
   font-family: Pretendard;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-style: normal;
+  width : 800px;
   font-weight: 600;
   line-height: normal;
+  
 `;

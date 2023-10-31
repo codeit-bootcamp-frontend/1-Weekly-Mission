@@ -3,6 +3,7 @@ import getSample from '../../api'
 import Folder from '../../components/Folder/Folder'
 import Footer from '../../components/Footer/Footer'
 import Nav from '../../components/Nav/Nav'
+import colors from '../../style/colors'
 
 function SharedPage() {
   const [data] = useAsync(() => getSample('user'))

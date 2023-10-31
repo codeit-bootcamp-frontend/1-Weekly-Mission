@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from 'styled-components'
 export const reset = css`
   html,
   body,
@@ -89,6 +89,9 @@ export const reset = css`
     vertical-align: baseline;
   }
 
+  #root {
+    width: 100vw;
+  }
   /* HTML5 display-role reset for older browsers */
   article,
   aside,
@@ -122,7 +125,7 @@ export const reset = css`
   blockquote:after,
   q:before,
   q:after {
-    content: "";
+    content: '';
     content: none;
   }
 
@@ -130,4 +133,4 @@ export const reset = css`
     border-collapse: collapse;
     border-spacing: 0;
   }
-`;
+`

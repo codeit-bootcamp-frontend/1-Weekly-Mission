@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components'
 import colors from '../../style/colors'
 
 export const NavContainer = styled.nav`
-  height: 25px;
-  padding: 32px 200px;
+  height: 1.5625rem;
+  padding: 2rem 12rem;
   background: ${colors.background};
   ${(props) =>
     props.path === 'shared' &&
@@ -20,6 +20,6 @@ export const NavContent = styled.div`
 `
 
 export const LogoImage = styled.img`
-  width: 133px;
-  height: 24px;
+  width: 8.3125rem;
+  height: 1.5rem;
 `
