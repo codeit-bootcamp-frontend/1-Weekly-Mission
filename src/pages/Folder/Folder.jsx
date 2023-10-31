@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import * as S from './Folder.style';
 import Layout from 'components/Layout';
@@ -9,24 +8,31 @@ import SearchBar from 'components/SearchBar';
 import FoldersContainer from './components/FoldersContainer';
 import CardsContainer from 'components/CardsContainer';
 import NoLinkView from './components/NoLinkView';
+import { useEffect } from 'react';
 
 const DEFAULT_USER_ID = 1;
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialFolderId = searchParams.get('folderId');
-  console.log(initialFolderId);
-  const [folderId, setFolderId] = useState(initialFolderId);
   const [linksData, , , getLinksAsync] = useAsync({
     asyncFunction: getLinks,
-    initialArgs: [DEFAULT_USER_ID, folderId],
+    initialArgs: [DEFAULT_USER_ID, initialFolderId],
   });
 
   const setFolderLinks = (nextFolderId) => {
-    setFolderId(nextFolderId);
-    setSearchParams({ folderId: nextFolderId } ?? {});
+    if (nextFolderId === 0) {
+      setSearchParams({});
+    } else {
+      setSearchParams({ folderId: nextFolderId } ?? {});
+    }
+
     getLinksAsync(DEFAULT_USER_ID, nextFolderId);
   };
+
+  useEffect(() => {
+    getLinksAsync(DEFAULT_USER_ID, initialFolderId);
+  }, [initialFolderId]);
 
   return (
     <Layout isLoggedIn userId={DEFAULT_USER_ID}>
@@ -35,6 +41,7 @@ function Folder() {
         <SearchBar />
         <FoldersContainer
           userId={DEFAULT_USER_ID}
+          initialFolderId={Number(initialFolderId)}
           setFolderLinks={setFolderLinks}
         />
 

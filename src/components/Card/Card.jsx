@@ -10,13 +10,13 @@ function Card({ data }) {
     url,
     title,
     description,
-    created_at,
+    created_at: baseCreateAt,
     createdAt,
     image_source,
     imageSource,
   } = data;
 
-  const createdDate = new Date(createdAt ?? created_at);
+  const createdDate = new Date(baseCreateAt ?? createdAt);
 
   const reduceText = (text, length) => {
     if (!text) return;

@@ -1,5 +1,5 @@
 import * as S from './FoldersContainer.style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAsync from 'hooks/useAsync';
 import { getFolders } from 'utils/apiClient';
 import SHARE from 'assets/icons/share.svg';
@@ -12,26 +12,38 @@ const DEFAULT_FOLDER = {
   name: '전체',
 };
 
-function FoldersContainer({ userId, setFolderLinks }) {
+function FoldersContainer({ userId, initialFolderId, setFolderLinks }) {
   const [folders, , ,] = useAsync({
     asyncFunction: getFolders,
     initialArgs: userId,
   });
+
+  const foldersData = folders?.data;
+  const initialSelectedFolder = foldersData?.find(
+    (folder) => folder.id === initialFolderId
+  );
+
   const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER);
 
-  const folderData = folders?.data;
-
-  const onFolderButtonClick = (folderData) => {
-    setFolderLinks(folderData.id);
-    setSelectedFolder(folderData);
+  const onFolderButtonClick = (foldersData) => {
+    setFolderLinks(foldersData.id);
+    setSelectedFolder(foldersData);
   };
+
+  useEffect(() => {
+    if (initialSelectedFolder) {
+      setSelectedFolder(initialSelectedFolder);
+    } else {
+      setSelectedFolder(DEFAULT_FOLDER);
+    }
+  }, [initialSelectedFolder]);
 
   return (
     <>
       {folders?.data?.length !== 0 && (
         <>
           <FoldersView
-            folders={folderData}
+            folders={foldersData}
             defaultFolder={DEFAULT_FOLDER}
             selectedFolder={selectedFolder}
             onFolderButtonClick={onFolderButtonClick}
