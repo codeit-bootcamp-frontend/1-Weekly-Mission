@@ -7,15 +7,15 @@ export default function ImageListItem({ item }) {
   const { createdAt, url, title, description, imageSource } = item;
   const targetData = parseDatestring(createdAt);
   const { year, month, day } = targetData;
-  const navgiateToPage = (url) => {
-    window.location.href = `${url}`;
-  };
+  // const navgiateToPage = (url) => {
+  //   window.location.href = `${url}`;
+  // };
 
   const diffTime = getElapsedTime(createdAt);
-
+  // onClickFunc={() => navgiateToPage(url)}
   return (
-    <>
-      <Card onClickFunc={() => navgiateToPage(url)}>
+    <a href={url}>
+      <Card>
         <img className={styles.card__image} src={imageSource} alt={title} />
         <p>{diffTime}</p>
         <p>{description}</p>
@@ -23,6 +23,6 @@ export default function ImageListItem({ item }) {
           {year}. {month}. {day}
         </p>
       </Card>
-    </>
+    </a>
   );
 }

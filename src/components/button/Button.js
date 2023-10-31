@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const BaseButton = styled.button`
@@ -15,16 +15,19 @@ const BaseButton = styled.button`
     background-color: var(--primary);
     opacity: 0.7;
   }
+  &.active {
+    background-color: var(--primary);
+  }
 `;
 
-export default function Button({ children, className, name, onClickFunc }) {
+export default function Button({ children, isActive, onClickFunc }) {
+  console.log(isActive);
   return (
     <BaseButton
-      name={name}
-      className={className}
-      onClick={() => {
+      onClick={(e) => {
         onClickFunc();
       }}
+      className={isActive ? "active" : ""}
     >
       {children}
     </BaseButton>

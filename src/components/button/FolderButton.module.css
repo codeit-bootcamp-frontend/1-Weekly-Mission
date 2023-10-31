@@ -61,6 +61,10 @@
   }
 }
 
+.active__button {
+  border: 5px solid blue;
+}
+
 /* 아이템버튼들 하나하 */
 /* 
 /* 모바일 */
