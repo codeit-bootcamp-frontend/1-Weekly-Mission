@@ -2,6 +2,18 @@ import styled from 'styled-components';
 import linkImg from '../assets/images/link.svg';
 import Button from './Button';
 
+export default function LinkAdd() {
+  return (
+    <InputContainer>
+      <InputBox>
+        <img src={linkImg} alt='링크' />
+        <Input type='text' placeholder='링크를 추가해 보세요' />
+        <LinkAddButton type={'추가하기'}></LinkAddButton>
+      </InputBox>
+    </InputContainer>
+  );
+}
+
 const InputContainer = styled.div`
   background-color: var(--linkbrary-bg);
   padding: 60px 32px;
@@ -38,15 +50,3 @@ const LinkAddButton = styled(Button)`
   font-size: 14px;
   cursor: pointer;
 `;
-
-export default function LinkAdd() {
-  return (
-    <InputContainer>
-      <InputBox>
-        <img src={linkImg} alt='링크' />
-        <Input type='text' placeholder='링크를 추가해 보세요' />
-        <LinkAddButton type={'추가하기'}></LinkAddButton>
-      </InputBox>
-    </InputContainer>
-  );
-}

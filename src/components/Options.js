@@ -3,6 +3,44 @@ import penImg from '../assets/images/pen.svg';
 import deleteImg from '../assets/images/Group 36.svg';
 import styled from 'styled-components';
 
+const SHARED = {
+  src: shareImg,
+  name: '공유',
+};
+const RENAME = {
+  src: penImg,
+  name: '이름 변경',
+};
+const DELETEFOLDER = {
+  src: deleteImg,
+  name: '삭제',
+};
+
+export default function Option({ currentFolder }) {
+  const show = currentFolder.id !== '';
+  // 나중에 함수 추가하기 위해 분리
+
+  const options = [SHARED, RENAME, DELETEFOLDER];
+
+  return (
+    <Container>
+      <Title>{currentFolder.name}</Title>
+      {show ? (
+        <OptionContainer>
+          {options.map((option) => (
+            <OptionBox>
+              <Img src={option.src} alt='공유' />
+              <div>{option.name}</div>
+            </OptionBox>
+          ))}
+        </OptionContainer>
+      ) : (
+        <></>
+      )}
+    </Container>
+  );
+}
+
 const FlexAlign = styled.div`
   display: flex;
   align-items: center;
@@ -39,40 +77,3 @@ const Img = styled.img`
   width: 18px;
   height: 18px;
 `;
-
-export default function Option({ currentFolder }) {
-  const show = currentFolder.id !== '';
-  // 나중에 함수 추가하기 위해 분리
-  const share = {
-    src: shareImg,
-    name: '공유',
-  };
-  const rename = {
-    src: penImg,
-    name: '이름 변경',
-  };
-  const deleteFolder = {
-    src: deleteImg,
-    name: '삭제',
-  };
-
-  const options = [share, rename, deleteFolder];
-
-  return (
-    <Container>
-      <Title>{currentFolder.name}</Title>
-      {show ? (
-        <OptionContainer>
-          {options.map((option) => (
-            <OptionBox>
-              <Img src={option.src} alt='공유' />
-              <div>{option.name}</div>
-            </OptionBox>
-          ))}
-        </OptionContainer>
-      ) : (
-        <></>
-      )}
-    </Container>
-  );
-}

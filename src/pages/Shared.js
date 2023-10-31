@@ -5,23 +5,19 @@ import getData from '../services/api';
 import { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  padding: 0 32px;
-`;
-
 export default function Shared() {
-  const [cards, setcards] = useState([]);
+  const [cards, setCards] = useState([]);
   const [folderInfo, setFolderInfo] = useState(null);
 
-  const getFolerData = useCallback(async () => {
+  const getFolderData = useCallback(async () => {
     const { folder } = await getData('sample/folder');
     setFolderInfo(folder);
-    setcards(folder.links);
+    setCards(folder.links);
   }, []);
 
   useEffect(() => {
-    getFolerData();
-  }, [getFolerData]);
+    getFolderData();
+  }, [getFolderData]);
 
   return (
     <div className='App'>
@@ -33,3 +29,7 @@ export default function Shared() {
     </div>
   );
 }
+
+const Container = styled.div`
+  padding: 0 32px;
+`;

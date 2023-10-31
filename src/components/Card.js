@@ -18,7 +18,6 @@ export default function Card({ value }) {
 
   const handleKebab = (e) => {
     e.preventDefault();
-    console.log('Kebab!');
   };
   return (
     <Container href={value.url} target='_blank' rel='noreferrer noopener'>

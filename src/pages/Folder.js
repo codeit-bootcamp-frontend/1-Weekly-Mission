@@ -7,20 +7,6 @@ import Option from '../components/Options';
 import styled from 'styled-components';
 import getData from '../services/api';
 
-const Div = styled.div`
-  max-width: 1060px;
-  height: 20vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  margin: 0 auto 100px;
-`;
-
-const Container = styled.div`
-  padding: 0 32px;
-`;
-
 const INIT_FOLDER = {
   name: '전체',
   id: '',
@@ -31,22 +17,20 @@ export default function Folder() {
   const [links, setLinks] = useState();
   const [currentFolder, setCurrentFolder] = useState(INIT_FOLDER);
 
-  const getFolderData = useCallback(async () => {
+  const getFolderData = useCallback(async (id) => {
     const { data } = await getData('users/1/folders');
-    const linkData = await getData(
-      'users/1/links?folderId=' + currentFolder.id
-    );
+    const linkData = await getData(`users/1/links?folderId=${id}`);
     setUserFolder(data);
     setLinks(linkData.data);
-  }, [currentFolder.id]);
+  }, []);
 
-  const handleCurrentFolder = (id) => {
-    setCurrentFolder(id);
+  const handleCurrentFolder = ({ id, name }) => {
+    setCurrentFolder({ id, name });
   };
 
   useEffect(() => {
-    getFolderData();
-  }, [getFolderData]);
+    getFolderData(currentFolder.id);
+  }, [getFolderData, currentFolder.id]);
 
   return (
     <div className='folder'>
@@ -73,3 +57,17 @@ export default function Folder() {
     </div>
   );
 }
+
+const Div = styled.div`
+  max-width: 1060px;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  margin: 0 auto 100px;
+`;
+
+const Container = styled.div`
+  padding: 0 32px;
+`;

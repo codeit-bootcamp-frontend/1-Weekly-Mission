@@ -2,7 +2,60 @@ import styled from 'styled-components';
 import addImg from '../assets/images/add.svg';
 import { useState } from 'react';
 
-const AddFoler = styled.div`
+const ALL = {
+  name: '전체',
+};
+
+const Folder = ({ folderInfo, $select, onClick }) => {
+  return (
+    <Button $select={$select} onClick={onClick} id={folderInfo.id}>
+      {folderInfo.name}
+    </Button>
+  );
+};
+
+export default function FolderList({ userFolder, onCurrentFolder }) {
+  const [currentButton, setCurrentButton] = useState('');
+  const handleFolder = (e) => {
+    const id = e.target.id;
+    const name = e.target.innerHTML;
+    if (id === currentButton) {
+      setCurrentButton('');
+      onCurrentFolder({ name: '전체', id: '' });
+    } else {
+      setCurrentButton(id);
+      onCurrentFolder({ name, id });
+    }
+  };
+
+  return (
+    <Box>
+      <FolderBox>
+        <Folder
+          folderInfo={ALL}
+          key='전체'
+          $select={`${currentButton === ''}`}
+          onClick={handleFolder}
+          id=''
+        />
+        {userFolder.map((folder) => (
+          <Folder
+            folderInfo={folder}
+            key={folder.id}
+            onClick={handleFolder}
+            $select={`${currentButton === String(folder.id)}`}
+          />
+        ))}
+      </FolderBox>
+      <AddFolder>
+        <div>폴더추가</div>
+        <AddImg src={addImg} alt='폴더추가' />
+      </AddFolder>
+    </Box>
+  );
+}
+
+const AddFolder = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -60,56 +113,3 @@ const FolderBox = styled.div`
   gap: 8px;
   margin-right: 12px;
 `;
-
-const ALL = {
-  name: '전체',
-};
-
-const Folder = ({ folderInfo, $select, onClick }) => {
-  return (
-    <Button $select={$select} onClick={onClick} id={folderInfo.id}>
-      {folderInfo.name}
-    </Button>
-  );
-};
-
-export default function FolderList({ userFolder, onCurrentFolder }) {
-  const [currentButton, setCurrentButton] = useState('');
-  const handleFolder = (e) => {
-    const id = e.target.id;
-    const name = e.target.innerHTML;
-    if (id === currentButton) {
-      setCurrentButton('');
-      onCurrentFolder({ name: '전체', id: '' });
-    } else {
-      setCurrentButton(id);
-      onCurrentFolder({ name, id });
-    }
-  };
-
-  return (
-    <Box>
-      <FolderBox>
-        <Folder
-          folderInfo={ALL}
-          key='전체'
-          $select={`${currentButton === ''}`}
-          onClick={handleFolder}
-          id=''
-        />
-        {userFolder.map((folder) => (
-          <Folder
-            folderInfo={folder}
-            key={folder.id}
-            onClick={handleFolder}
-            $select={`${currentButton === String(folder.id)}`}
-          />
-        ))}
-      </FolderBox>
-      <AddFoler>
-        <div>폴더추가</div>
-        <AddImg src={addImg} alt='폴더추가' />
-      </AddFoler>
-    </Box>
-  );
-}

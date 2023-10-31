@@ -23,7 +23,6 @@ const Account = ({ user }) => {
 };
 
 export default function Nav({ user = INIT_USER }) {
-  console.log('user: ', user);
   const [isSticky, setIsSticky] = useState('sticky');
   const urlPath = useLocation().pathname;
   useEffect(() => {

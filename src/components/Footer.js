@@ -63,13 +63,6 @@ const Container = styled.footer`
   background-color: var(--the-julge-black);
   font-family: Arial;
   width: 100%;
-  @media (max-width: 767px) {
-    grid-template-areas:
-      'nav sns'
-      'trademark .';
-    gap: 60px 0px;
-    padding: 32px;
-  }
 `;
 
 const Box = styled.div`
@@ -80,6 +73,13 @@ const Box = styled.div`
   justify-content: space-between;
   grid-template-areas: 'trademark nav sns';
   margin: auto;
+  @media (max-width: 767px) {
+    grid-template-areas:
+      'nav sns'
+      'trademark .';
+    gap: 60px 0px;
+    padding: 32px;
+  }
 `;
 
 const TradeMark = styled.div`
