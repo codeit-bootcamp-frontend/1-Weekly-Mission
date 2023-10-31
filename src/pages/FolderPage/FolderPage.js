@@ -20,7 +20,7 @@ const FolderPage = () => {
   const userId = 1;
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
         const response = await fetch(API.USER.FOLDERS(userId));
         if (!response.ok) {
@@ -34,7 +34,7 @@ const FolderPage = () => {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
     fetchData();
   }, []);
 
@@ -91,13 +91,11 @@ const FolderPage = () => {
   );
 };
 
-function ActionItem({ icon: IconComponent, label }) {
-  return (
-    <div className="action-item">
-      <IconComponent />
-      <span>{label}</span>
-    </div>
-  );
-}
+const ActionItem = ({ icon: IconComponent, label }) => (
+  <div className="action-item">
+    <IconComponent />
+    <span>{label}</span>
+  </div>
+);
 
 export default FolderPage;
