@@ -1,5 +1,3 @@
-@import "../common.css";
-
 footer {
   background-color: #111322;
   width: 100%;
@@ -34,4 +32,26 @@ footer {
   display: flex;
   column-gap: 1.2rem;
   height: 2rem;
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .footer_content {
+    flex-wrap: wrap;
+    gap: 6rem 0;
+    height: auto;
+    padding: 3.2rem;
+  }
+
+  .copyright {
+    order: 1;
+  }
+
+  .footer_links {
+    flex-basis: 50%;
+  }
+
+  .footer_sns {
+    flex-basis: 50%;
+    justify-content: end;
+  }
 }

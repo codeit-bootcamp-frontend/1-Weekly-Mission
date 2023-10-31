@@ -1,12 +1,6 @@
-@import "../common.css";
+@import "../../common.css";
 
 .nav_bar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-
-  z-index: 3;
-
   display: flex;
   padding: 3.3rem 20rem 3.2rem 20rem;
   align-items: center;
@@ -16,6 +10,14 @@
   justify-content: space-between;
 
   background: var(--background-color);
+}
+
+.nav_bar.shared {
+  position: sticky;
+  top: 0;
+  width: 100%;
+
+  z-index: 3;
 }
 
 .logo {
@@ -78,5 +80,9 @@
 
     font-size: 1.4rem;
     padding: 1rem 1.6rem;
+  }
+
+  .profile_email {
+    display: none;
   }
 }

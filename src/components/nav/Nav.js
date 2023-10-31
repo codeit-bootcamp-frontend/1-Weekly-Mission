@@ -1,20 +1,20 @@
 import "./Nav.css";
-import logo from "../image/logo.svg";
+import logo from "../../image/logo.svg";
 import NavProfile from "./NavProfile";
 import NavLogin from "./NavLogin";
-import { getProfile } from "../api";
+import { getResponse } from "../../api";
 import { useCallback, useEffect, useState } from "react";
 
-const Nav = () => {
+const Nav = ({ pageType }) => {
   const [user, setUser] = useState(false);
 
   const handleLoad = useCallback(async () => {
-    const result = await getProfile("user");
+    const result = await getResponse(pageType, "user");
     if (!result) {
       return;
     }
 
-    setUser(result);
+    setUser(pageType === "shared" ? result : result.data[0]);
   }, []);
 
   useEffect(() => {
@@ -22,11 +22,11 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="nav_bar">
+    <nav className={`nav_bar ${pageType}`}>
       <a className="logo_button" href="/">
         <img className="logo" src={logo} alt="로고 이미지" />
       </a>
-      {user ? <NavProfile /> : <NavLogin>로그인</NavLogin>}
+      {user ? <NavProfile user_data={user} /> : <NavLogin>로그인</NavLogin>}
     </nav>
   );
 };
