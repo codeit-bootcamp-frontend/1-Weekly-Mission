@@ -12,7 +12,7 @@ import isEmpty from 'utils/isEmpty';
 
 function Folder() {
   const [folders, setFolders] = useState(null);
-  const [show, setShow] = useState(false);
+  const [isFunctionButtonShow, setFunctionButtonShow] = useState(false);
   const [card, setCard] = useState([]);
   const [folderName, setFolderName] = useState('');
 
@@ -23,29 +23,26 @@ function Folder() {
     const introResult = await getUserFolder();
     if (!introResult) return;
 
-    const { data } = introResult;
-
-    const currentId = data.filter((data) => data.id === Number(initFolderId));
+    const currentId = introResult.filter((data) => data.id === Number(initFolderId));
 
     let folderName;
     if (isEmpty(currentId)) {
       folderName = '전체';
-      setShow(false);
+      setFunctionButtonShow(false);
     } else {
       folderName = currentId[0].name;
-      setShow(true);
+      setFunctionButtonShow(true);
     }
 
     setFolderName(folderName);
-    setFolders(data);
+    setFolders(introResult);
   }, [initFolderId]);
 
   const cardInfo = useCallback(async () => {
     const introResult = isEmpty(initFolderId) ? await getAllFolder() : await getOtherFolder(initFolderId);
     if (!introResult) return;
 
-    const { data } = introResult;
-    setCard(data);
+    setCard(introResult);
   }, [initFolderId]);
 
   useEffect(() => {
@@ -60,7 +57,7 @@ function Folder() {
       <MainSection>
         <Search />
         {folders && <FolderList folderData={folders} />}
-        <Title folderName={folderName} visibleButton={show} />
+        <Title folderName={folderName} visibleButton={isFunctionButtonShow} />
         {initFolderId && card.length === 0 ? <NotFoundLink /> : <CardList cardData={card} />}
       </MainSection>
     </>

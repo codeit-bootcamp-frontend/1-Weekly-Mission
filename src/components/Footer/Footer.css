@@ -5,7 +5,7 @@ footer {
 .footer-background {
   display: flex;
   height: 16rem;
-  padding: 3.2rem 10.4rem 6.4rem 10.4rem;
+  padding: 32px 104px 64px 104px;
   flex-direction: column;
   background-color: #111322;
 }
@@ -37,11 +37,11 @@ footer {
 
 @media (max-width: 767px) {
   footer {
-    padding-top: 4rem;
+    padding-top: 40px;
   }
 
   .footer-background {
-    padding: 3.2rem 3.2rem 6.4rem 3.2rem;
+    padding: 32px 32px 64px 32px;
   }
 
   .footer-content {

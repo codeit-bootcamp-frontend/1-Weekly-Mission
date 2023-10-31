@@ -5,13 +5,13 @@
   justify-content: space-between;
   gap: 4rem;
   margin: 0 auto;
-  margin-top: 4rem;
+  margin-top: 40px;
 }
 
 @media (max-width: 1199px) {
   .main-section {
     width: 100%;
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 }

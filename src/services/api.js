@@ -6,7 +6,7 @@ const getSampleUser = async () => {
   }
 
   const body = await response.json();
-  return body;
+  return body.data;
 };
 
 export const getSampleUserProfile = async () => {

@@ -1,6 +1,6 @@
 .login {
   width: 12.8rem;
-  padding: 1.6rem 2rem;
+  padding: 16px 20px;
   background: linear-gradient(90deg, var(--primary), #6ae3fe);
   color: var(--white);
   text-align: center;

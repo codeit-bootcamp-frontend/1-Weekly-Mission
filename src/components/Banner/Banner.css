@@ -1,7 +1,7 @@
 .intro-section {
   display: flex;
   position: relative;
-  padding: 10rem 40rem 6rem 40rem;
+  padding: 10rem 400px 60px 400px;
   background: #f0f6ff;
   flex-direction: column;
   align-items: center;
@@ -21,18 +21,18 @@
   text-align: center;
   font-size: 4rem;
   font-weight: 600;
-  margin-top: 0.8rem;
+  margin-top: 8px;
 }
 
 @media (max-width: 1199px) {
   .intro-section {
-    padding: 10rem 3.2rem 6rem;
+    padding: 100px 32px 60px;
   }
 }
 
 @media (max-width: 767px) {
   .intro-section {
-    padding: 8rem 3.2rem 4rem;
+    padding: 80px 32px 40px;
     gap: 0.6rem;
   }
 
@@ -42,6 +42,6 @@
 
   .bookmark {
     font-size: 3.2rem;
-    margin-top: 0.4rem;
+    margin-top: 4px;
   }
 }
