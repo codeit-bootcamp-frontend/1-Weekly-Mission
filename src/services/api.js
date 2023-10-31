@@ -42,7 +42,7 @@ export const getAllFolder = async () => {
   return body.data;
 };
 
-export const getOtherFolder = async (folderId) => {
+export const getFolderLinks = async (folderId) => {
   const response = await fetch(`/users/1/links?folderId=${folderId}`, { method: 'GET' });
 
   if (!response.ok) {

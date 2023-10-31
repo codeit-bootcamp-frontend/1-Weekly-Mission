@@ -8,7 +8,7 @@ import Search from 'components/Search/Search';
 import Title from 'components/Title/Title';
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getAllFolder, getOtherFolder, getUserFolder } from 'services/api';
+import { getAllFolder, getFolderLinks, getUserFolder } from 'services/api';
 import isEmpty from 'utils/isEmpty';
 
 function Folder() {
@@ -40,7 +40,7 @@ function Folder() {
   }, [initFolderId]);
 
   const cardInfo = useCallback(async () => {
-    const introResult = isEmpty(initFolderId) ? await getAllFolder() : await getOtherFolder(initFolderId);
+    const introResult = isEmpty(initFolderId) ? await getAllFolder() : await getFolderLinks(initFolderId);
     if (!introResult) return;
 
     setCard(introResult);
