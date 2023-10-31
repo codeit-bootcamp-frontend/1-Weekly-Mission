@@ -55,11 +55,11 @@ function Card({ item }) {
 function CardList({ folderData }) {
   return (
     <ul className="cardList-container">
-      {folderData.map((item) => {
+      {/* {folderData.map((item) => {
         return <li key={item.id} className="card-style">
           <Card item={item} />
         </li>
-      })}
+      })} */}
     </ul>
   );
 }
