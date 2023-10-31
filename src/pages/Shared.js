@@ -7,7 +7,7 @@ import { getSampleUserProfile } from 'services/api';
 
 function Shared() {
   const [folder, setFolder] = useState({});
-  const [card, setCard] = useState(null);
+  const [cards, setCards] = useState(null);
 
   const profileInfo = useCallback(async () => {
     const introResult = await getSampleUserProfile();
@@ -18,7 +18,7 @@ function Shared() {
     const { links } = cardFolder;
 
     setFolder(folder);
-    setCard(links);
+    setCards(links);
   }, []);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function Shared() {
       {folder && <Banner folderData={folder} />}
       <MainSection>
         <Search />
-        {card && <CardList cardData={card} />}
+        {cards && <CardList card={cards} visibleCardButton={false} />}
       </MainSection>
     </>
   );

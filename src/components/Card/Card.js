@@ -1,17 +1,15 @@
 import EmptyImg from 'assets/icon/emptyImg.svg';
 import KebabButton from 'components/KebabButton/KebabButton';
 import StarButton from 'components/StarButton/StarButton';
-import { useLocation } from 'react-router-dom';
 import { changeDate, changeDateTime } from 'utils/dateFormat';
 import isEmpty from 'utils/isEmpty';
-import styles from './CardForm.module.css';
+import styles from './Card.module.css';
 
-function CardForm({ data }) {
+function Card({ data, visibleCardButton }) {
   const { url, description, created_at, createdAt, image_source, imageSource } = data;
 
   const formatDate = changeDate(createdAt ?? created_at);
   const formatTime = changeDateTime(createdAt ?? created_at);
-  const { pathname } = useLocation();
 
   return (
     <div className={styles.wrapper}>
@@ -29,7 +27,7 @@ function CardForm({ data }) {
           <span>{formatDate}</span>
         </div>
       </a>
-      {pathname === '/folder' && (
+      {visibleCardButton && (
         <>
           <StarButton />
           <KebabButton />
@@ -39,4 +37,4 @@ function CardForm({ data }) {
   );
 }
 
-export default CardForm;
+export default Card;

@@ -1,11 +1,11 @@
-import CardForm from 'components/CardForm/CardForm';
+import Card from 'components/Card/Card';
 import styles from './CardList.module.css';
 
-function CardList({ cardData }) {
+function CardList({ card, visibleCardButton }) {
   return (
     <div className={styles.wrapper}>
-      {cardData.map((card) => (
-        <CardForm key={card.id} data={card} />
+      {card.map((val) => (
+        <Card key={val.id} data={val} visibleCardButton={visibleCardButton} />
       ))}
     </div>
   );

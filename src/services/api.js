@@ -1,4 +1,4 @@
-export const getSampleUser = async () => {
+const getSampleUser = async () => {
   const response = await fetch('/sample/user', { method: 'GET' });
 
   if (!response.ok) {
@@ -9,7 +9,7 @@ export const getSampleUser = async () => {
   return body;
 };
 
-export const getSampleUserProfile = async () => {
+const getSampleUserProfile = async () => {
   const response = await fetch('/sample/folder', { method: 'GET' });
 
   if (!response.ok) {
@@ -20,7 +20,7 @@ export const getSampleUserProfile = async () => {
   return body;
 };
 
-export const getUserFolder = async () => {
+const getUserFolder = async () => {
   const response = await fetch('/users/1/folders', { method: 'GET' });
 
   if (!response.ok) {
@@ -31,7 +31,7 @@ export const getUserFolder = async () => {
   return body.data;
 };
 
-export const getAllFolder = async () => {
+const getAllFolder = async () => {
   const response = await fetch(`/users/1/links`, { method: 'GET' });
 
   if (!response.ok) {
@@ -42,7 +42,7 @@ export const getAllFolder = async () => {
   return body.data;
 };
 
-export const getFolderLinks = async (folderId) => {
+const getFolderLinks = async (folderId) => {
   const response = await fetch(`/users/1/links?folderId=${folderId}`, { method: 'GET' });
 
   if (!response.ok) {
@@ -52,7 +52,7 @@ export const getFolderLinks = async (folderId) => {
   return body.data;
 };
 
-export const getUserProfile = async () => {
+const getUserProfile = async () => {
   const response = await fetch('/users/1', { method: 'GET' });
 
   if (!response.ok) {
@@ -62,3 +62,5 @@ export const getUserProfile = async () => {
   const body = await response.json();
   return body;
 };
+
+export { getAllFolder, getFolderLinks, getSampleUser, getSampleUserProfile, getUserFolder, getUserProfile };
