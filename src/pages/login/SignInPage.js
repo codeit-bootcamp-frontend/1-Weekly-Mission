@@ -9,7 +9,7 @@ function SignInPage() {
   return (
     <>
       <div className="container">
-        <FormHeader action="goToSignUp" />
+        <FormHeader />
 
         <main className="main-login">
           <form id="form">

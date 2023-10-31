@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 import { logoImg } from '../../constants/globalImages';
 import './FormHeader.css';
 
-function FormHeader({ action }) {
-  let actionMessage = '';
-  let actionLinkText = '';
-  let actionLink = '';
+function FormHeader() {
+  const info = {
+    '/sign-in': {
+      actionMessage: '회원이 아니신가요?',
+      actionLinkText: '회원 가입하기',
+      actionLink: '/sign-up',
+    },
+    '/sign-up': {
+      actionMessage: '이미 회원이신가요?',
+      actionLinkText: '로그인 하기',
+      actionLink: '/sign-in',
+    },
+  };
 
-  if (action === 'goToSignUp') {
-    actionMessage = '회원이 아니신가요?';
-    actionLinkText = '회원 가입하기';
-    actionLink = '/sign-up';
-  }
-  if (action === 'goToSignIn') {
-    actionMessage = '이미 회원이신가요?';
-    actionLinkText = '로그인 하기';
-    actionLink = '/sign-in';
-  }
+  const { actionMessage, actionLinkText, actionLink } = info[location.pathname];
 
   return (
     <header>

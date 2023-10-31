@@ -8,7 +8,7 @@ function SignUpPage() {
   return (
     <>
       <div className="container">
-        <FormHeader action="goToSignIn" />
+        <FormHeader />
         <main className="main-login">
           <form id="form">
             <div className="form-item">
