@@ -50,25 +50,6 @@
   flex-direction: column;
   gap: 24px;
 }
-.menuBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.toggleMenu {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.menuList {
-  padding: 8px 12px;
-  border-radius: 5px;
-  border: 1px solid var(--color-primary);
-}
-.add-folder {
-  color: var(--color-primary);
-  display: block;
-}
 
 @media screen and (max-width: 1124px) {
   .container2 {

@@ -5,6 +5,7 @@ const StyledMenu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
   ul {
     display: flex;
     gap: 8px;
@@ -14,7 +15,9 @@ const StyledMenu = styled.div`
     padding: 8px 12px;
     border-radius: 5px;
   }
-
+  .add-folder {
+    color: var(--color-primary);
+  }
 `;
 
 
