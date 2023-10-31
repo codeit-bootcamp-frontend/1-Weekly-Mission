@@ -11,6 +11,7 @@ import NoLinkView from './components/NoLinkView';
 import { useEffect } from 'react';
 
 const DEFAULT_USER_ID = 1;
+const DEFAULT_FOLDER_ID = 0;
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,7 +22,7 @@ function Folder() {
   });
 
   const setFolderLinks = (nextFolderId) => {
-    if (nextFolderId === 0) {
+    if (nextFolderId === DEFAULT_FOLDER_ID) {
       setSearchParams({});
     } else {
       setSearchParams({ folderId: nextFolderId } ?? {});

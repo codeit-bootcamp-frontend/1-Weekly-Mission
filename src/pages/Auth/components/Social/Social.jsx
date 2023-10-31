@@ -1,12 +1,15 @@
+import { useLocation } from 'react-router-dom';
 import * as S from './Social.style';
 import GOOGLE from 'assets/icons/google.png';
 import KAKAO from 'assets/icons/kakotalk.svg';
 
-function Social({ type }) {
+function Social() {
+  const { pathname: type } = useLocation();
+
   return (
     <S.SocialContainer>
       <S.Text>
-        {type === 'signin' ? '소셜 로그인' : '다른 방식으로 가입하기'}
+        {type === '/signin' ? '소셜 로그인' : '다른 방식으로 가입하기'}
       </S.Text>
       <S.SnsContainer>
         <S.Google href='https://google.com'>

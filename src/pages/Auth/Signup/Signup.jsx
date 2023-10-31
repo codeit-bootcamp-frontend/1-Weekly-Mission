@@ -7,9 +7,9 @@ function Signup() {
   return (
     <Background>
       <AuthContainer>
-        <Header type='signup' />
-        <Form type='signup' />
-        <Social type='signup' />
+        <Header />
+        <Form />
+        <Social />
       </AuthContainer>
     </Background>
   );

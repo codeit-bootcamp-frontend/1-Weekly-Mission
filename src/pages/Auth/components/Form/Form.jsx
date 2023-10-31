@@ -1,7 +1,9 @@
+import { useLocation } from 'react-router-dom';
 import * as S from './Form.style';
 import EYE_OFF from 'assets/icons/eye-off.svg';
 
-function Form({ type }) {
+function Form() {
+  const { pathname: type } = useLocation();
   return (
     <S.Form noValidate>
       <S.InputContainer>
@@ -26,7 +28,7 @@ function Form({ type }) {
           </S.PasswordToggle>
           <S.ErrorMessage />
         </S.InputBox>
-        {type === 'signup' && (
+        {type === '/signup' && (
           <S.InputBox>
             <label forhtml='form-password-check'>비밀번호 확인</label>
             <S.Input
@@ -42,7 +44,7 @@ function Form({ type }) {
         )}
       </S.InputContainer>
       <S.Submit type='submit'>
-        {type === 'signin' ? '로그인' : '회원가입'}
+        {type === '/signin' ? '로그인' : '회원가입'}
       </S.Submit>
     </S.Form>
   );
