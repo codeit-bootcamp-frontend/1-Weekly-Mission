@@ -1,15 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import './FolderForm.css';
 
-function FolderForm({ name, href }) {
-  const navigate = useNavigate();
-
-  const handleFolderButton = () => {
-    navigate(href);
-  };
-
+function FolderForm({ name, onClick }) {
   return (
-    <button className="folder-name" onClick={handleFolderButton}>
+    <button className="folder-name" onClick={onClick}>
       {name}
     </button>
   );
