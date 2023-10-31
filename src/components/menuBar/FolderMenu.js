@@ -3,12 +3,7 @@ import styles from "./FolderMenu.module.css";
 import titleImage from "../../assets/images/title.svg";
 import LocaleContext from "../../contexts/LocaleContext";
 
-// APP에서 뿌려줌
 export default function FolderMenu({ folderId }) {
-  // const [isSelected, setIsSelected] = useState(false);
-  // const [letter, setLetter] = useState("전체");
-  // const [num, setNum] = useState(folderId);
-
   const localeValue = useContext(LocaleContext); // obj
   const folder = localeValue[folderId];
   // folder의 타입이 undefined가 아니면은 isSelected = ture, undefined이면은 false
