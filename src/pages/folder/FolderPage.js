@@ -11,6 +11,10 @@ function FolderPage() {
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
 
+  const handleSetSelectedFolder = (folderId) => {
+    setSelectedFolder(folderId);
+  };
+
   const handleLinkListLoad = async () => {
     const { data } = await getLinkList(selectedFolder);
     setLinks([...data]);
@@ -48,7 +52,7 @@ function FolderPage() {
         <CardSearchBar />
         <FolderList
           folders={folders}
-          setSelectedFolder={setSelectedFolder}
+          handleSetSelectedFolder={handleSetSelectedFolder}
           selectedFolder={selectedFolder}
         />
         <CardList links={links} />

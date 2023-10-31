@@ -1,15 +1,15 @@
 import React from 'react';
 import './FolderList.css';
 
-function Folder({ data, setSelectedFolder, selected }) {
-  const handleChangeSelectedFolder = (e) => {
-    setSelectedFolder(e.target.id);
+function Folder({ data, handleSetSelectedFolder, selected }) {
+  const changeSelectedFolder = (e) => {
+    handleSetSelectedFolder(e.target.id);
   };
 
   return (
     <div
       className={`select-folder ${selected ? 'selected' : ''}`}
-      onClick={handleChangeSelectedFolder}
+      onClick={changeSelectedFolder}
       id={data.id}
     >
       {data.name}
@@ -17,9 +17,9 @@ function Folder({ data, setSelectedFolder, selected }) {
   );
 }
 
-function FolderList({ folders, setSelectedFolder, selectedFolder }) {
+function FolderList({ folders, handleSetSelectedFolder, selectedFolder }) {
   const clearSlectedFolder = () => {
-    setSelectedFolder(null);
+    handleSetSelectedFolder(null);
   };
 
   return (
@@ -35,7 +35,7 @@ function FolderList({ folders, setSelectedFolder, selectedFolder }) {
           <Folder
             key={data.id}
             data={data}
-            setSelectedFolder={setSelectedFolder}
+            handleSetSelectedFolder={handleSetSelectedFolder}
             selected={String(data.id) === String(selectedFolder)}
           />
         ))}
