@@ -13,8 +13,9 @@ const Folder = ({ data, onSelect, selected }) => {
 }
 
 const FolderList = ({ data, handleFolderSelect, currentFolderId }) => {
-  const handleFolderClick = (folderId, folderName) =>
-    handleFolderSelect(folderId, folderName)
+  const handleFolderClick = (folderId, folderName) => {
+    return handleFolderSelect(folderId, folderName)
+  }
 
   return (
     <>

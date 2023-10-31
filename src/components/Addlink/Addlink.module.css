@@ -1,0 +1,35 @@
+.addlinkBox {
+  display: flex;
+  width: 800px;
+  padding: 16px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.addlinkInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.addlinkInnerInput {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.addlinkImage {
+  width: 20px;
+  height: 20px;
+}
+
+.addlinkContent {
+  color: var(--linkbrary-gray-60, #9fa6b2);
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}

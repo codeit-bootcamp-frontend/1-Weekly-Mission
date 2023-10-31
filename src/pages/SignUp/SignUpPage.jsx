@@ -1,13 +1,14 @@
-import Footer from "../../components/Footer/Footer"
-import Navbar from "../../components/Navbar/Navbar"
+// import Footer from "../../components/Footer/Footer"
+// import Navbar from "../../components/Navbar/Navbar"
 
-const SignUpPage = () => {
+function SignUpPage() {
   return (
     <>
+      <div />
       {/* <Navbar />
       <Footer /> */}
     </>
-  )
+  );
 }
 
-export default SignUpPage
+export default SignUpPage;

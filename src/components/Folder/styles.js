@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import IMAGES from "../../assets/images"
 
 const FolderListBox = styled.div`
   display: flex;

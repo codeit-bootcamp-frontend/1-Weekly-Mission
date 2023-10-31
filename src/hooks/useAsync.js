@@ -25,7 +25,7 @@ const useAsync = (callback, deps = [], skip = false) => {
     // eslint-disable-next-line;
   }, [])
 
-  return [data, isLoading, error, fetchData]
+  return { data, isLoading, error, fetchData }
 }
 
 export default useAsync

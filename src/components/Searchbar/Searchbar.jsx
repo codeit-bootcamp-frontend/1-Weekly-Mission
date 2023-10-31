@@ -1,20 +1,16 @@
-import { useState } from "react"
+import { useState } from 'react';
 
-import IMAGES from "../../assets/images.js"
-import * as S from "./styles.js"
+import IMAGES from '../../assets/images.js';
+import * as S from './styles.js';
 
-const Searchbar = () => {
-  const [searchText, setSearchText] = useState("")
-  const handleSearch = (e) => {
-    setSearchText(e.target.value)
-  }
-
+const Searchbar = ({ handleSearch }) => {
+  const [searchText, setSearchText] = useState('');
   const handleSearchDelete = (e) => {
-    setSearchText("")
-  }
-
+    setSearchText('');
+    handleSearch(e, '');
+  };
   return (
-    <S.SearchbarBox>
+    <S.SearchbarForm onSubmit={(e) => handleSearch(e, searchText)}>
       <S.SearchbarInnerBox>
         <label htmlFor="search">
           <img src={IMAGES.search} alt="Search" />
@@ -25,16 +21,17 @@ const Searchbar = () => {
           value={searchText}
           placeholder="링크를 검색해 보세요"
           autoFocus
-          onChange={handleSearch}
+          onChange={(e) => setSearchText(e.target.value)}
         />
       </S.SearchbarInnerBox>
-      {searchText !== "" && (
-        <S.SearchbarDeleteBox onClick={handleSearchDelete}>
-          X
+      {searchText !== '' && (
+        <S.SearchbarDeleteBox
+          onClick={(e) => handleSearchDelete(e, searchText)}>
+          <p>❌</p>
         </S.SearchbarDeleteBox>
       )}
-    </S.SearchbarBox>
-  )
-}
+    </S.SearchbarForm>
+  );
+};
 
-export default Searchbar
+export default Searchbar;

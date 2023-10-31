@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
-const SearchbarBox = styled.div`
+const SearchbarForm = styled.form`
   display: flex;
   width: 106rem;
   padding: 1.5rem 1.6rem;
@@ -17,7 +17,7 @@ const SearchbarBox = styled.div`
   @media screen and (max-width: 767px) {
     width: 32.5rem;
   }
-`
+`;
 
 const SearchbarInnerBox = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ const SearchbarInnerBox = styled.div`
   align-items: center;
   gap: 1rem;
   width: 100%;
-`
+`;
 
 const SearchbarInput = styled.input`
   background-color: transparent;
@@ -44,10 +44,10 @@ const SearchbarInput = styled.input`
     border: none;
     outline: none;
   }
-`
+`;
 
 const SearchbarDeleteBox = styled.div`
   cursor: pointer;
-`
+`;
 
-export { SearchbarBox, SearchbarInnerBox, SearchbarInput, SearchbarDeleteBox }
+export { SearchbarForm, SearchbarInnerBox, SearchbarInput, SearchbarDeleteBox };

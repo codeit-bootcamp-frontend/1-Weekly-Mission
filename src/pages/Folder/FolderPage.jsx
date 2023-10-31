@@ -11,12 +11,13 @@ import FolderContainer from "../../containers/Folder/FolderContainer"
 import * as S from "../styles.js"
 
 const FolderPage = () => {
-  const [userProfile, profileLoading, profileError, profileRefetch] =
+  const { data: userProfile, isLoading: profileLoading } =
     useFetchUserProfile(DEFAULT_USER_ID)
-  const [userFolders, folderLoading, folderError, folderRefetch] =
+
+  const { data: userFolders, isLoading: folderLoading } =
     useFetchUserFolders(DEFAULT_USER_ID)
 
-  const [userLinks, userLinksLoading, error, refetch] = useFetchUserLinks(
+  const { data: userLinks, isLoading: userLinksLoading } = useFetchUserLinks(
     DEFAULT_USER_ID,
     undefined
   )
@@ -24,7 +25,9 @@ const FolderPage = () => {
   return (
     <>
       <S.StyledHeader>
-        {!profileLoading && <Navbar userData={userProfile?.data} />}
+        {!profileLoading && userProfile?.data && (
+          <Navbar userData={userProfile.data[0]} />
+        )}
         <Addlink />
       </S.StyledHeader>
       {!folderLoading && !userLinksLoading && (

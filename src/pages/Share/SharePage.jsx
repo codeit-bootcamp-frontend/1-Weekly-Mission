@@ -1,21 +1,19 @@
 import {
   useFetchSampleFolder,
   useFetchUserProfileSample,
-} from "../../apis/fetch"
-import Footer from "../../components/Footer/Footer"
-import Navbar from "../../components/Navbar/Navbar"
-import ShareContainer from "../../containers/Share/ShareContainer"
-import * as S from "../styles.js"
+} from '../../apis/fetch';
+import Footer from '../../components/Footer/Footer';
+import Navbar from '../../components/Navbar/Navbar';
+import ShareContainer from '../../containers/Share/ShareContainer';
+import * as S from '../styles';
 
-const SharePage = () => {
-  let [userProfile, profileLoading, profileError, profileRefetch] =
-    useFetchUserProfileSample()
-  const [sampleFolder, folderLoading, folderError, folderRefetch] =
-    useFetchSampleFolder()
+function SharePage() {
+  const { data: userProfile, isLoading: profileLoading } =
+    useFetchUserProfileSample();
+  const { data: sampleFolder, isLoading: folderLoading } =
+    useFetchSampleFolder();
 
-  userProfile = [userProfile]
-
-  const fixedBool = true
+  const fixedBool = true;
   if (!profileLoading && !folderLoading) {
     return (
       <>
@@ -25,8 +23,8 @@ const SharePage = () => {
         <ShareContainer shareData={sampleFolder} />
         <Footer />
       </>
-    )
+    );
   }
 }
 
-export default SharePage
+export default SharePage;

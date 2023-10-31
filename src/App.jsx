@@ -1,5 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   HomePage,
   FolderPage,
@@ -7,10 +6,10 @@ import {
   SignUpPage,
   SignInPage,
   NotFound,
-} from "./pages/pages.js"
-import GlobalStyle from "./styles/GlobalStyles.js"
+} from './pages/pages';
+import GlobalStyle from './styles/GlobalStyles';
 
-const App = () => {
+function App() {
   return (
     <>
       <GlobalStyle />
@@ -32,7 +31,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

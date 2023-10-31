@@ -60,7 +60,7 @@ const CardInfo = ({ createdAt, description }) => {
           onClick={handleKebabClick}
         />
         {/* 삭제하기/폴더 추가 Modal 제작 중 */}
-        {/* <SelectMenu /> */}
+        {null && <SelectMenu />}
       </S.CardInfoInnerBox>
       <S.CardDescriptionParagraph>{text}</S.CardDescriptionParagraph>
       <S.CardCreatedAtParagraph>
@@ -92,6 +92,7 @@ const CardImage = ({ imgUrl }) => {
 const Card = ({ items }) => {
   // 기존 코드 - SAMPLE 데이터를 받을 때 데이터 구조가 달라 if - els문으로 처리
   // const { created_at, description, image_source, url } = items
+
   const image_source = items.createdAt ? items.imageSource : items.image_source
   const created_at = items.createdAt ? items.createdAt : items.created_at
   const description = items.description

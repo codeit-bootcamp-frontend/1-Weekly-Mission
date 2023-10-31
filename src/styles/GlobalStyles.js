@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     *, *::before, *::after {
@@ -64,6 +64,6 @@ const GlobalStyle = createGlobalStyle`
         --linkbrary-button-text: #f5f5f5;
       }
       
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

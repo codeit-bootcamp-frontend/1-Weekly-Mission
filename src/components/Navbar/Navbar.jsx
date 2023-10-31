@@ -29,7 +29,7 @@ const Profile = ({ items }) => {
 }
 
 const Navbar = ({ userData, fixed }) => {
-  const data = userData[0]
+  const data = userData
 
   let styledObject
   if (fixed) {
