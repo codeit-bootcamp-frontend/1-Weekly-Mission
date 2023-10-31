@@ -1,0 +1,33 @@
+.NavBarWrapper {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--linkbrary-bg, #f0f6ff);
+}
+
+/* header */
+
+.header {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  padding: 33px 200px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+
+.profile img {
+  width: 28px;
+  height: 28px;
+
+  /* padding: 9px; */
+  border-radius: 100%;
+
+  margin-right: 6px;
+}

@@ -1,0 +1,28 @@
+.owner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  padding: 20px 0 60px;
+
+  background: var(--linkbrary-bg, #f0f6ff);
+}
+
+.owner img {
+  width: 60px;
+}
+
+.ownerName {
+  font-family: Pretendard;
+  font-size: 16px;
+  line-height: 24px; /* 150% */
+
+  margin-bottom: 20px;
+}
+
+.folderName {
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight: 600;
+}

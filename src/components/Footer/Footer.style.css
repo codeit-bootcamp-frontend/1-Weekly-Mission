@@ -1,0 +1,29 @@
+/* footer */
+.footer {
+  width: 100%;
+  height: 160px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 32px 104px 64px;
+
+  color: #676767;
+  background: #111322;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.icons a {
+  margin-left: 12px;
+}
+
+a {
+  text-decoration: none;
+  color: #676767;
+  gap: 5px;
+}
