@@ -4,7 +4,7 @@ import { getElapsedTime } from "./getElapsedTime";
 export const mapFolderData = (folder) => {
   if (!folder) return [];
   const { name, owner, links } = folder;
-
+  // 4. mapFolder와 useGetFolder의 관계성?
   const mapLinks = (link) => {
     const { id, createdAt, url, imageSource, title, description } = link;
     return {
