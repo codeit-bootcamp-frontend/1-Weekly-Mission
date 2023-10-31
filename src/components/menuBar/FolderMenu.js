@@ -7,13 +7,13 @@ export default function FolderMenu({ folderId }) {
   const [isSelected, setIsSelected] = useState(false);
   const [letter, setLetter] = useState("전체");
   const [num, setNum] = useState(null);
-  const value = useContext(LocaleContext);
+  const localeValue = useContext(LocaleContext);
 
   useEffect(() => {
     setNum(folderId || "전체");
 
-    if (value[folderId]) {
-      setLetter(value[folderId]["folderName"] || "전체");
+    if (localeValue[folderId]) {
+      setLetter(localeValue[folderId]["folderName"] || "전체");
       setIsSelected(true);
     } else {
       setLetter("전체");
