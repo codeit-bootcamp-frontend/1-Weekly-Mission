@@ -5,7 +5,7 @@ import Search from 'components/Search/Search';
 import { useCallback, useEffect, useState } from 'react';
 import { getSampleUserProfile } from 'services/api';
 
-function Card() {
+function Shared() {
   const [folder, setFolder] = useState({});
   const [card, setCard] = useState(null);
 
@@ -36,4 +36,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default Shared;
