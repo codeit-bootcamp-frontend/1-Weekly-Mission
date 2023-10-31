@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getSampleFolder } from '../api';
-import FolderInfo from "./FolderInfo";
+import { getSampleFolder } from '../../../api';
+import FolderInfo from "../../FolderInfo";
 
 
 

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { getFolder, getLink } from '../api';
-import CardList from './CardList';
+import { getFolder, getLink } from '../../api';
+import CardList from '../CardList';
 import './FolderPage.css';
-import linkImg from '../assets/link-Img.png';
-import SearchBar from "./SearchBar";
-import FolderList from "./FolderList";
+import linkImg from '../../assets/link-Img.png';
+import SearchBar from "../SearchBar";
+import FolderList from "../FolderList";
 
 
 function FolderPage() {
