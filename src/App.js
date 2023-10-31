@@ -1,18 +1,23 @@
-import Nav from "./component/Nav";
-import Footer from "./component/Footer";
-import Profile from "./component/Profile";
-import Main from "./component/Main";
-import "./css/index.css";
-import "./css/color.css";
+import SharedPage from "./pages/SharedPage";
+import "./global.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./layout/Layout";
+import HomePage from "./pages/HomePage";
+import NoPage from "./pages/NoPage";
+import FolderPage from "./pages/FolderPage";
 
 function App() {
   return (
-    <>
-      <Nav />
-      <Profile />
-      <Main />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="shared" element={<SharedPage />} />
+          <Route path="folder" element={<FolderPage />} />
+        </Route>
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

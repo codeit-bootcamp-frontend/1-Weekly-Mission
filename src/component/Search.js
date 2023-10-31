@@ -1,5 +1,5 @@
 import searchIcon from "../assets/img/search.svg";
-import style from "../css/Search.module.css";
+import style from "./Search.module.css";
 
 function Search() {
   return (

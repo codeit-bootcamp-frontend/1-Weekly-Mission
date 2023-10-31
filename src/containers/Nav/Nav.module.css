@@ -1,8 +1,13 @@
 .root {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   background-color: var(--linkbrary-bg);
   padding: 2rem 10rem;
+}
+.folder {
+  position: static;
 }
 .logo {
   width: 13.3rem;

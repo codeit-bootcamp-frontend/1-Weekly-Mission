@@ -4,6 +4,7 @@
   background-color: black;
   justify-content: space-around;
   align-items: center;
+  margin-top: 6rem;
 }
 .since {
   color: #676767;
@@ -29,6 +30,7 @@
 @media (max-width: 767px) {
   .root {
     display: grid;
+    margin-top: 4rem;
     grid-template-areas:
       "extraSites icons"
       "since .";

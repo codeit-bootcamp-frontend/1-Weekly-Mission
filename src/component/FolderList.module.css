@@ -1,0 +1,35 @@
+.root {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.folders {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.addFolderBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #6d6afe;
+  font-weight: 500;
+  @media (max-width: 767px) {
+    position: fixed;
+    bottom: 10.1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2rem;
+    border: 1px solid var(--linkbrary-white, #fff);
+    background: var(--linkbrary-primary-color, #6d6afe);
+    color: white;
+    padding: 0.8rem 2.4rem;
+  }
+}
+/* .addFolderBtn img {
+  width: 1.6rem;
+  height: 1.6rem;
+} */

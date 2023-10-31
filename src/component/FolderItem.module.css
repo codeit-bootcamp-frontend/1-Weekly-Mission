@@ -1,0 +1,20 @@
+.button {
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  height: 3.6rem;
+  @media (max-width: 767px) {
+    padding: 0.6rem, 1rem;
+    font-size: 1.4rem;
+  }
+}
+
+.button:hover {
+  background: var(--linkbrary-gray-10, #e7effb);
+}
+
+.buttonClicked {
+  background: var(--linkbrary-primary-color, #6d6afe);
+  color: white;
+}
