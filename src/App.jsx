@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
@@ -8,9 +9,11 @@ import Signup from 'pages/Auth/Signup';
 import SharedPage from 'pages/Shared';
 import Folder from 'pages/Folder';
 
-TimeAgo.addDefaultLocale(en);
-
 function App() {
+  useEffect(() => {
+    TimeAgo.addDefaultLocale(en);
+  });
+
   return (
     <BrowserRouter>
       <GlobalStyle />
