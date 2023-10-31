@@ -14,10 +14,15 @@ const UserFolder = ({folders, folderId=9999}) => {
     const [titleName, setTitleName] = useState("")
     const titleRef = useRef({});
     const {current} = titleRef;
+    const folderOption = [
+        {title: "공유", image: shareImg},
+        {title: "이름변경", image: penImg},
+        {title: "삭제", image: deleteImg},
+    ]
 
     useEffect(()=>{
         setTitleName(current[folderId]?.innerText);
-    })
+    },[folderId])
     return (
         <div className='user-folder'>
             <div className='folder-lists'>
@@ -33,18 +38,12 @@ const UserFolder = ({folders, folderId=9999}) => {
             <div className='select-folder'>
                 <h2>{titleName}</h2>
                 {titleName !== "전체" ? <ul>
-                    <li>
-                        <img src={shareImg} alt='공유이미지'/>
-                        <span>공유</span>
+                {folderOption.map(option => {
+                    return <li>
+                        <img src={option.image} alt={`${option.title}이미지`}/>
+                        <span>{option.title}</span>
                     </li>
-                    <li>
-                        <img src={penImg} alt='공유이미지'/>
-                        <span>이름변경</span>
-                    </li>
-                    <li>
-                        <img src={deleteImg} alt='공유이미지'/>
-                        <span>삭제</span>
-                    </li>
+                })}
                 </ul> : null} 
                 
             </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext} from 'react';
 import { useFetch, useQueryFetch } from '../../hooks/useFetch';
 import { AccountContext } from '../../contexts/AccountContext';
 import { useParams } from 'react-router-dom';
@@ -8,6 +8,11 @@ import AddLink from './AddLink';
 import UserFolder from './UserFolder';
 import '../components.css';
 
+const all = {
+    id:9999,
+    name: "전체",
+    user_id: 1,
+}
 
 const Folder = () => {
     const {account} = useContext(AccountContext)
@@ -18,16 +23,10 @@ const Folder = () => {
     const {data: personalfolderData, 
         errorMessage: linksErrorMessage} = useQueryFetch(`users/${id}/links`, folderId, id);
  
-    if(!folderDataObject) return;
-    const all = {
-        id:9999,
-        name: "전체",
-        user_id: 1,
-    }
+    if(!folderDataObject || !personalfolderData) return;
+    
     const {data:folderData} = folderDataObject;
     const newFolderData = [all, ...folderData];
-
-    if(!personalfolderData) return;
     const {data:personalfolder} = personalfolderData;
     
 
