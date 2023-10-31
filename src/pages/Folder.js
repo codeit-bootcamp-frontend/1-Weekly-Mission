@@ -14,7 +14,7 @@ import isEmpty from 'utils/isEmpty';
 function Folder() {
   const [folders, setFolders] = useState(null);
   const [isFunctionButtonShow, setFunctionButtonShow] = useState(false);
-  const [card, setCard] = useState([]);
+  const [cards, setCards] = useState([]);
   const [folderName, setFolderName] = useState('');
 
   const [folderParams, setFolderParams] = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
@@ -27,7 +27,7 @@ function Folder() {
     const currentId = introResult.filter((data) => data.id === Number(initFolderId));
 
     let folderName;
-    if (isEmpty(currentId)) {
+    if (currentId.length === 0) {
       folderName = '전체';
       setFunctionButtonShow(false);
     } else {
@@ -43,13 +43,13 @@ function Folder() {
     const introResult = isEmpty(initFolderId) ? await getAllFolder() : await getFolderLinks(initFolderId);
     if (!introResult) return;
 
-    setCard(introResult);
+    setCards(introResult);
   }, [initFolderId]);
 
   useEffect(() => {
     folderInfo();
     cardInfo();
-    return setCard([]);
+    return setCards([]);
   }, [folderInfo, cardInfo]);
 
   return (
@@ -59,7 +59,7 @@ function Folder() {
         <Search />
         {folders && <FolderList folderData={folders} />}
         <Title folderName={folderName}>{isFunctionButtonShow && <FunctionButton folderName={folderName} />}</Title>
-        {initFolderId && card.length === 0 ? <NotFoundLink /> : <CardList cardData={card} />}
+        {initFolderId && cards.length === 0 ? <NotFoundLink /> : <CardList cardData={cards} />}
       </MainSection>
     </>
   );
