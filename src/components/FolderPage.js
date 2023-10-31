@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getFolder } from '../api';
+import { getFolder, getLink } from '../api';
 import CardList from './CardList';
 import './FolderPage.css';
 import linkImg from '../assets/link-Img.png';
@@ -9,6 +9,7 @@ import FolderList from "./FolderList";
 
 function FolderPage() {
   const [folderList, setFolderList] = useState([]);
+  const [folderLink , setFolderLink] = useState([]);
 
   const getFolderList = async () => {
     const result = await getFolder();
@@ -16,8 +17,15 @@ function FolderPage() {
     setFolderList(data);
   }
 
+  const getFolderLink = async () => {
+    const result = await getLink();
+    const data = result?.data;
+    setFolderLink(data);
+  }
+
   useEffect(()=>{
     getFolderList();
+    getFolderLink();
   }, []);
 
   return (
@@ -33,7 +41,7 @@ function FolderPage() {
         <div className="container2">
           <SearchBar />
           <FolderList data={folderList} />
-          {/* <CardList folderLinks={folderLinks} /> */}
+          <CardList link={folderLink} />
         </div>
       </div>
     </div>

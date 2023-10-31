@@ -37,29 +37,33 @@ function getTimeDifference(value) {
   }
 
 function Card({ item }) {
+  const image = item?.image_source;
+  const desc = item?.description;
+  const date = item?.created_at;
+
   return (
     <>
       <div className="card-img-container">
-        {(item.imageSource) ? <img className="card-img" src={item.imageSource} alt="카드 이미지" /> 
+        {(image) ? <img className="card-img" src={image} alt="카드 이미지" /> 
         : <img className="card-img" src={noImg} alt="이미지 없음 "/>}
       </div>
       <div className="card-text-container">
-        <p className="card-createdAt">{getTimeDifference(item.createdAt)}</p>
-        <p className="card-description">{item.description}</p>
-        <p className="card-date">{formatDate(item.createdAt)}</p>
+        <p className="card-createdAt">{getTimeDifference(date)}</p>
+        <p className="card-description">{desc}</p>
+        <p className="card-date">{formatDate(date)}</p>
       </div>
     </>
   );
 }
 
-function CardList({ folderData }) {
+function CardList({ link }) {
   return (
     <ul className="cardList-container">
-      {/* {folderData.map((item) => {
-        return <li key={item.id} className="card-style">
+      {link.map((item) => 
+        <li key={item.id} className="card-style">
           <Card item={item} />
         </li>
-      })} */}
+      )}
     </ul>
   );
 }
