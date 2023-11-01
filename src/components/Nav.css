@@ -1,3 +1,7 @@
+.nav-bar.folder {
+  position: static;
+}
+
 .nav-bar {
   position: sticky;
   top: 0;

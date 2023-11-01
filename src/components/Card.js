@@ -2,10 +2,13 @@ import "./Card.css";
 import defaultImg from "../assets/no-image.png";
 const moment = require("moment");
 
-const Card = ({ value }) => {
-  const { imageSource = defaultImg } = value;
+const Card = ({ value, path }) => {
+  const imageSource =
+    path === "/Folder" ? value.image_source : value.imageSource;
+  const cardImage = imageSource ? imageSource : defaultImg;
+
   const imageStyle = {
-    backgroundImage: `url(${imageSource})`,
+    backgroundImage: `url(${cardImage})`,
   };
   const ago = moment(value.createdAt).fromNow();
   const date = moment(value.createdAt).format("YYYY. MM. DD");
