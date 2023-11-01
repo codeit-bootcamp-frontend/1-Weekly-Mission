@@ -1,9 +1,9 @@
-import '../styles/header.css';
-import Profile from './Profile';
-import LoginBtn from './LoginBtn';
-import logoImg from '../assets/images/logo.svg';
-import useGetUser from '../hooks/useGetUser';
-import useGetSampleUser from '../hooks/useGetSampleUser';
+import 'styles/header.css';
+import Profile from './Profile.js';
+import LoginBtn from './LoginBtn.js';
+import useGetUser from 'hooks/useGetUser';
+import useGetSampleUser from 'hooks/useGetSampleUser';
+import logoImg from 'assets/images/logo.svg';
 
 function Header({ page = '' }) {
   const sampleuser = useGetSampleUser();

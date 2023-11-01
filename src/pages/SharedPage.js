@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
-import Header from '../components/Header.js';
+import Header from '../components/common/Header.js';
 import SharedContent from '../components/shared/SharedContent';
-import Footer from '../components/Footer.js';
+import Footer from '../components/common/Footer.js';
 
 function SharedPage() {
   return (

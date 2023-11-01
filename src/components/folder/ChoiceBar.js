@@ -1,6 +1,10 @@
 import styled from 'styled-components';
-import { CHOICES } from '../../constants/default';
+import { CHOICES } from 'constants/default';
 
+/**
+ * 폴더 관리 메뉴 선택 컴포넌트
+ * [공유 / 이름 변경 / 삭제]
+ */
 function ChoiceBar() {
   return (
     <Box>

@@ -1,5 +1,5 @@
 import useGetData from './useGetData';
-import { SAMPLE } from '../constants/path';
+import { SAMPLE } from 'constants/path';
 
 function useGetSampleLinks() {
   const folderData = useGetData(SAMPLE.folder);

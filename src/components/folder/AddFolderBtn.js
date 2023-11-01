@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import addButton from '../../assets/images/add.svg';
-import addMobileButton from '../../assets/images/add_mobile.svg';
-import useGetWindowWidth from '../../hooks/useGetWindowWidth';
+import addButton from 'assets/images/add.svg';
+import addMobileButton from 'assets/images/add_mobile.svg';
+import useGetWindowWidth from 'hooks/useGetWindowWidth';
 
 function AddFolderBtn() {
   const innerWidth = useGetWindowWidth();

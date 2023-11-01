@@ -1,12 +1,12 @@
-import '../../styles/sharedContent.css';
+import 'styles/sharedContent.css';
 import { useState } from 'react';
-import { ALL_ID } from '../../constants/default';
+import { ALL_ID } from 'constants/default';
 import styled from 'styled-components';
-import useGetFolders from '../../hooks/useGetFolders';
-import SearchBar from '../SearchBar.js';
+import useGetFolders from 'hooks/useGetFolders';
+import SearchBar from 'components/common/SearchBar.js';
+import CardList from 'components/common/Card/CardList.js';
 import FolderNav from './FolderNav';
 import AddFolderBtn from './AddFolderBtn';
-import CardList from '../shared/CardList';
 import FolderTitle from './FolderTitle';
 import ChoiceBar from './ChoiceBar';
 

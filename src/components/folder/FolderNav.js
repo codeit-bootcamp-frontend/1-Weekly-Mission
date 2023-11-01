@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { ALL_ID } from '../../constants/default';
+import { ALL_ID } from 'constants/default';
 
-const selectFolderStyle = {
-  color: 'white',
-  backgroundColor: 'var(--primary-color)',
-};
-
+/**
+ * Folder 목록 Nav 컴포넌트
+ */
 function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAll }) {
   return (
     <FolderList>
@@ -13,13 +11,16 @@ function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAl
         전체
       </FolderItem>
       {folders.map((folder) => (
-        <FolderListItem style={folder.id === selectedFolderId ? selectFolderStyle : null} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />
+        <FolderNavItem style={folder.id === selectedFolderId ? selectFolderStyle : null} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />
       ))}
     </FolderList>
   );
 }
 
-function FolderListItem({ folder, onChangeFolder, style }) {
+/**
+ * Folder Nav의 Item 컴포넌트
+ */
+function FolderNavItem({ folder, onChangeFolder, style }) {
   function handleFolderClick() {
     onChangeFolder(folder.id);
   }
@@ -32,6 +33,11 @@ function FolderListItem({ folder, onChangeFolder, style }) {
 }
 
 export default FolderNav;
+
+const selectFolderStyle = {
+  color: 'white',
+  backgroundColor: 'var(--primary-color)',
+};
 
 const FolderList = styled.ul`
   width: 900px;

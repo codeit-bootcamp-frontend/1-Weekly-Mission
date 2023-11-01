@@ -1,5 +1,5 @@
-import defaultProfileImg from '../assets/images/default-profile.svg';
-import useGetWindowWidth from '../hooks/useGetWindowWidth';
+import defaultProfileImg from 'assets/images/default-profile.svg';
+import useGetWindowWidth from 'hooks/useGetWindowWidth';
 
 function Profile({ user }) {
   const { email, profileImageSource, image_source } = user;

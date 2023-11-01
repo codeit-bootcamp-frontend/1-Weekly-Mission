@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
+import styled from 'styled-components';
 
 function NotFoundPage() {
   return (

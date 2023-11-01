@@ -1,5 +1,5 @@
 import useGetData from './useGetData';
-import { PATH } from '../constants/path';
+import { PATH } from 'constants/path';
 
 /**
  * @param {*} userId user 정보를 얻을 user의 ID

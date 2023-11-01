@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ALL_ID } from '../../constants/default';
+import { ALL_ID } from 'constants/default';
 
 function FolderTitle({ folders, selectedFolderId }) {
   let selectedFolder = folders.find((folder) => selectedFolderId === folder.id);

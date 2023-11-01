@@ -1,10 +1,10 @@
-import shareIcon from '../assets/images/share.svg';
-import nameModifyIcon from '../assets/images/pen.svg';
-import deleteIcon from '../assets/images/trash.svg';
-import facebookIcon from '../assets/images/akar-icons_facebook-fill.svg';
-import twitterIcon from '../assets/images/akar-icons_twitter-fill.svg';
-import youtubeIcon from '../assets/images/akar-icons_youtube-fill.svg';
-import instagramIcon from '../assets/images/ant-design_instagram-filled.svg';
+import shareIcon from 'assets/images/share.svg';
+import nameModifyIcon from 'assets/images/pen.svg';
+import deleteIcon from 'assets/images/trash.svg';
+import facebookIcon from 'assets/images/akar-icons_facebook-fill.svg';
+import twitterIcon from 'assets/images/akar-icons_twitter-fill.svg';
+import youtubeIcon from 'assets/images/akar-icons_youtube-fill.svg';
+import instagramIcon from 'assets/images/ant-design_instagram-filled.svg';
 
 export const SAMPLE_ID = -2;
 export const ALL_ID = -1;

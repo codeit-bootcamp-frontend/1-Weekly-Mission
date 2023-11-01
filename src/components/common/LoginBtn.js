@@ -1,4 +1,4 @@
-import '../styles/loginBtn.css';
+import 'styles/loginBtn.css';
 
 function LoginBtn() {
   return (

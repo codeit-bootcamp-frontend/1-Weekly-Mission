@@ -1,5 +1,5 @@
 import useGetData from './useGetData';
-import { PATH } from '../constants/path';
+import { PATH } from 'constants/path';
 /**
  * @returns userId를 가진 user의 folder 데이터 배열
  */

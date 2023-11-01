@@ -1,4 +1,4 @@
-import '../../styles/folderInfo.css';
+import 'styles/folderInfo.css';
 
 function FolderInfo({ folder }) {
   const { name, owner } = folder;

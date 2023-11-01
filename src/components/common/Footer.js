@@ -1,5 +1,5 @@
-import '../styles/footer.css';
-import { SNS_LIST } from '../constants/default';
+import 'styles/footer.css';
+import { SNS_LIST } from 'constants/default';
 
 function Footer() {
   return (

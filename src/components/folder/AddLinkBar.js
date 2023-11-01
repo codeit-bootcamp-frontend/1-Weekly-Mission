@@ -1,5 +1,5 @@
-import '../../styles/loginBtn.css';
-import '../../styles/addLinkBar.css';
+import 'styles/loginBtn.css';
+import 'styles/addLinkBar.css';
 
 function AddLinkBar() {
   return (

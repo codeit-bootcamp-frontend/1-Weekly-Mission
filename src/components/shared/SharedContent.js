@@ -1,9 +1,9 @@
-import '../../styles/sharedContent.css';
-import { SAMPLE_ID } from '../../constants/default';
+import 'styles/sharedContent.css';
+import { SAMPLE_ID } from 'constants/default';
+import useGetSampleFolder from 'hooks/useGetSampleFolder';
+import SearchBar from 'components/common/SearchBar.js';
+import CardList from 'components/common/Card/CardList.js';
 import FolderInfo from './FolderInfo.js';
-import SearchBar from '../SearchBar.js';
-import CardList from './CardList.js';
-import useGetSampleFolder from '../../hooks/useGetSampleFolder';
 
 function SharedContent() {
   const folderData = useGetSampleFolder();

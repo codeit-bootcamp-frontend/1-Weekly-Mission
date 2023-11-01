@@ -1,10 +1,10 @@
-import './styles/reset.css';
+import 'styles/reset.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import HomePage from './pages/HomePage';
-import SharedPage from './pages/SharedPage';
-import FolderPage from './pages/FolderPage';
-import NotFoundPage from './pages/NotFoundPage';
+import HomePage from 'pages/HomePage';
+import SharedPage from 'pages/SharedPage';
+import FolderPage from 'pages/FolderPage';
+import NotFoundPage from 'pages/NotFoundPage';
 
 function App() {
   return (
