@@ -3,18 +3,9 @@ import BinderInfo from '../components/BinderInfo/BinderInfo';
 import SearchBar from '../components/SearchBar/SearchBar';
 import Binder from '../components/Binder/Binder';
 import getSampleFolder from '../apis/sample/folder';
+import styles from './Shared.module.css';
 
 function Shared() {
-  const section = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4rem',
-    width: '100%',
-    maxWidth: '112.4rem',
-    padding: '0rem 3.2rem',
-    margin: '4rem auto',
-  };
-
   const [name, setName] = useState('');
   const [owner, setOwner] = useState({});
   const [cards, setCards] = useState([]);
@@ -40,7 +31,7 @@ function Shared() {
   return (
     <>
       <BinderInfo name={name} owner={owner} />
-      <section style={section}>
+      <section className={styles.root}>
         <SearchBar />
         <Binder cards={cards} shared="on" />
       </section>
