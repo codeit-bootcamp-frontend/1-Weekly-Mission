@@ -1,0 +1,20 @@
+.notSaveLink {
+  margin: 41px 190px;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+@media (max-width: 1199px) {
+  .notSaveLink {
+    margin: 54px 190px;
+  }
+}
+
+@media (max-width: 767px) {
+  .notSaveLink {
+    margin: 40px 60px;
+    margin-bottom: 151px;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+}

@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.folderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    display: block;
+  }
+  .folderWrapper {
+    flex-wrap: wrap;
+    flex-basis: 90%;
+  }
+}

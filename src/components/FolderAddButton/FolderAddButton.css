@@ -1,0 +1,19 @@
+.folderAdd {
+  background-color: white;
+  border: none;
+  color: var(--primary);
+  font-size: 1.6rem;
+}
+
+@media (max-width: 767px) {
+  .folderAdd {
+    position: fixed;
+    border-radius: 2rem;
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 24px;
+    left: 13rem;
+    bottom: 10.1rem;
+    z-index: 1;
+  }
+}

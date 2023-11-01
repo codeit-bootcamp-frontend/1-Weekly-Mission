@@ -1,0 +1,36 @@
+.function-button-Wrapper {
+  display: flex;
+}
+
+.share-button {
+  border: none;
+  color: #9fa6b2;
+  background-image: url('assets/icon/share.svg');
+  font-size: 1.4rem;
+  background-repeat: no-repeat;
+  background-position: 0 0.1rem;
+  padding-left: 18px;
+  background-color: white;
+}
+
+.name-button {
+  border: none;
+  color: #9fa6b2;
+  background-image: url('assets/icon/pen.svg');
+  font-size: 1.4rem;
+  background-repeat: no-repeat;
+  background-position: 0 0.1rem;
+  padding-left: 18px;
+  background-color: white;
+}
+
+.delete-button {
+  border: none;
+  color: #9fa6b2;
+  background-image: url('assets/icon/delete.svg');
+  font-size: 1.4rem;
+  background-repeat: no-repeat;
+  background-position: 0 0.1rem;
+  padding-left: 18px;
+  background-color: white;
+}

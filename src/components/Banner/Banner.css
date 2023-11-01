@@ -1,0 +1,47 @@
+.intro-section {
+  display: flex;
+  position: relative;
+  padding: 10rem 400px 60px 400px;
+  background: #f0f6ff;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.name {
+  font-size: 1.6rem;
+}
+
+.profile-img {
+  height: 3.75rem;
+  border-radius: 4.7rem;
+}
+
+.bookmark {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+@media (max-width: 1199px) {
+  .intro-section {
+    padding: 100px 32px 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro-section {
+    padding: 80px 32px 40px;
+    gap: 0.6rem;
+  }
+
+  .name {
+    font-size: 1.4rem;
+  }
+
+  .bookmark {
+    font-size: 3.2rem;
+    margin-top: 4px;
+  }
+}

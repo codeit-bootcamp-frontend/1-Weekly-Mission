@@ -1,0 +1,53 @@
+.intro-Wrapper {
+  padding: 60px 320px 90px 320px;
+  background-color: var(--linkbrary-bg);
+}
+.linkadd-input {
+  position: relative;
+  width: 100%;
+  padding: 22px 20px;
+  border: 1px solid #6d6afe;
+  color: var(--gray9F);
+  border-radius: 1.5rem;
+  background-image: url(assets/icon/link.svg);
+  background-repeat: no-repeat;
+  background-position: 1.5rem center;
+  padding-left: 40px;
+}
+
+.add-button {
+  position: absolute;
+  padding: 10px 16px;
+  border: 1px solid white;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  color: white;
+  border-radius: 8px;
+  top: 16.5rem;
+  right: 33.5rem;
+}
+
+@media (max-width: 1199px) {
+  .intro-Wrapper {
+    padding: 60px 32px 90px 32px;
+    background-color: var(--linkbrary-bg);
+  }
+  .add-button {
+    top: 14rem;
+    right: 5.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .linkadd-input {
+    font-size: 1.4rem;
+  }
+  .add-button {
+    right: 4.5rem;
+  }
+  .notSaveLink {
+    margin: 40px 60px;
+    text-align: center;
+    margin-bottom: 13rem;
+    font-size: 1.6rem;
+  }
+}

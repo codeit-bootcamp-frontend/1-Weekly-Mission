@@ -1,0 +1,8 @@
+.select-menu {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  padding: 7px 12px;
+  bottom: 3rem;
+  right: 0.5rem;
+}
