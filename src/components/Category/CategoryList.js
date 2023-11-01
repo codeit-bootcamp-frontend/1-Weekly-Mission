@@ -1,28 +1,8 @@
 import styles from "./CategoryList.module.css";
 import CategoryButton from "./CategoryButton";
 import plus from "../../assets/plus.svg";
-import CategoryButtonSkeleton from "./CategoryButtonSkeleton";
 
-const CategoryList = ({ folderListData, currentFolder, isLoading, selectedCategoryId, onclick }) => {
-  if (isLoading) {
-    return (
-      <div className={styles.CategoryList}>
-        <ul className={styles.list}>
-          {Array(6)
-            .fill()
-            .map((_, index) => (
-              <li key={index}>
-                <CategoryButtonSkeleton />
-              </li>
-            ))}
-        </ul>
-        <div className={styles.container}>
-          <CategoryButtonSkeleton />
-        </div>
-      </div>
-    );
-  }
-
+const CategoryList = ({ folderListData, currentFolder, selectedCategoryId, onclick }) => {
   if (!folderListData || !folderListData.data) return;
 
   const folderListDataArray = folderListData.data.sort((a, b) => a.id - b.id);

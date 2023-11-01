@@ -11,6 +11,9 @@ import Card from "../components/Card/Card";
 import getUserLinks from "../api/getUserLinks";
 import FolderUtils from "../components/FolderUtils/FolderUtils";
 import FloatingAddFolder from "../components/FloatingAddFolder/FloatingAddFolder";
+import Loadable from "../components/Skeleton/Loadable";
+import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSkeleton";
+import CategoryListSkeleton from "./../components/Skeleton/CategoryListSkeleton/CategoryListSkeleton";
 
 const FolderPage = () => {
   const [userId, setUserId] = useState(null);
@@ -44,15 +47,18 @@ const FolderPage = () => {
       </header>
       <main className={styles.main}>
         <Search />
-        <Category
-          folderListData={folderListData}
-          currentFolder={SetCurrentFolderName}
-          isLoading={isLoadingFolderList}
-          selectedCategoryId={selectedCategoryId}
-          onclick={SetSelectedCategoryId}
-        />
+        <Loadable isLoading={isLoadingFolderList} fallback={<CategoryListSkeleton size={6} />}>
+          <Category
+            folderListData={folderListData}
+            currentFolder={SetCurrentFolderName}
+            selectedCategoryId={selectedCategoryId}
+            onclick={SetSelectedCategoryId}
+          />
+        </Loadable>
         <FolderUtils userId={userId} currentFolderName={currentFolderName} />
-        <Card folderData={linksListData} isLoading={isLoadingLinksList} />
+        <Loadable isLoading={isLoadingLinksList} fallback={<CardListSkeleton size={9} />}>
+          <Card folderData={linksListData} />
+        </Loadable>
         <FloatingAddFolder />
       </main>
       <footer>

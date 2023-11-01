@@ -1,0 +1,49 @@
+/* PC 화면 크기 (1200px 이상) */
+.CategoryListSkeleton {
+  display: flex;
+  justify-content: center;
+  padding: 0 3.2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 106rem;
+}
+
+.category_container {
+  display: flex;
+  gap: 0.8rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.right_container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.CategoryButtonSkeleton {
+  height: 4.1rem;
+  width: 11rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  background-color: #dadada;
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .CategoryList {
+    flex-wrap: wrap;
+  }
+
+  .right_container {
+    display: none;
+  }
+}
