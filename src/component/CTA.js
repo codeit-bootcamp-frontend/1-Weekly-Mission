@@ -1,11 +1,7 @@
-import styles from "../assets/css/CTA.module.css";
+import * as Styled from "../style/Btn.js";
 
 function CTA({ href, children }) {
-  return (
-    <button className={styles.cta} href={href}>
-      {children}
-    </button>
-  );
+  return <Styled.Btn href={href}>{children}</Styled.Btn>;
 }
 
 export default CTA;
