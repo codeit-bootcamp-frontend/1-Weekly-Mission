@@ -1,69 +1,188 @@
 import Card from "../../components/card/Card";
-import "./folder.css";
 import SearchImg from "../../assets/folder/img_search.png";
 import { useCallback, useEffect, useState } from "react";
 import useAsync from "../../hooks/useAsync";
-import { getFolder } from "../../api/api";
+import { getFolder, getLinks } from "../../api/api";
+import {
+  AddLinkInputContainer,
+  FolderBtnItemContainer,
+  FolderContainer,
+  FolderContentContainer,
+  LinkHeaderContainer,
+  LinkToolContainer,
+} from "./FolderStyledComponents";
+import FolderAddIcon from "../../assets/folder/img_folderAdd.svg";
+import LinkAddIcon from "../../assets/shared/img_linkAdd.svg";
+import ShareIcon from "../../assets/shared/img_shareIcon.svg";
+import EditIcon from "../../assets/shared/img_editIcon.svg";
+import DeleteIcon from "../../assets/shared/img_deleteIcon.svg";
+import {
+  Section,
+  Wrapper,
+} from "../../components/common/commonStyledComponents";
+import {
+  ContentContainer,
+  CardContainer,
+} from "../shared/SharedStyledComponents";
+import Input from "../../components/input/Input";
+import AddFloatingBtn from "../../components/btn/AddFloatingBtn";
+import DefaultBtn from "../../components/btn/DefaultBtn";
+
+const LinkToolArr = [
+  {
+    src: ShareIcon,
+    title: "공유",
+  },
+  {
+    src: EditIcon,
+    title: "이름 변경",
+  },
+  {
+    src: DeleteIcon,
+    title: "삭제",
+  },
+];
 
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
-  const [user, setUser] = useState();
-  const [folderName, setFolderName] = useState("");
-  const [isLoading, error, getFolderAsync] = useAsync(getFolder);
+  const [folderData, setFolderData] = useState([]);
+  const [selectedFolder, setSelectedFolder] = useState({
+    id: 1,
+    title: "전체",
+  });
+
+  const [isFolderLoading, isFolderError, getFolderAsync] = useAsync(getFolder);
+  const [isLinkLoading, isLinkError, getLinksAsync] = useAsync(getLinks);
 
   const handleFolder = useCallback(async () => {
-    const result = await getFolderAsync();
+    const result = await getFolderAsync(1);
     if (!result) return;
 
-    const { folder } = result;
+    const { data } = result;
 
-    setCardData(folder.links);
-    setUser(folder.owner);
-    setFolderName(folder.name);
+    setFolderData(data);
   }, [getFolderAsync]);
 
   useEffect(() => {
     handleFolder();
   }, [handleFolder]);
 
-  if (isLoading) {
+  const handleLinks = useCallback(async () => {
+    const result = await getLinksAsync(selectedFolder.id);
+    if (!result) return;
+
+    const { data } = result;
+
+    setCardData(data);
+  }, [getLinksAsync, selectedFolder]);
+
+  useEffect(() => {
+    handleLinks();
+  }, [handleLinks]);
+
+  if (isFolderLoading) {
     return <div>화면을 불러오는 중입니다.</div>;
   }
 
-  if (error) {
+  if (isFolderError || isLinkError) {
     return <div>문제가 발생했습니다.</div>;
   }
 
   return (
-    <div className="wrapper">
-      <div className="section">
-        <div className="folderContentContainer">
-          <img
-            id="userProfile"
-            src={user?.profileImageSource}
-            alt="profileImg"
-          />
-          <div id="userName">{user?.name}</div>
-          <div id="folderName">{folderName}</div>
-        </div>
-      </div>
-      <div className="section" style={{ background: "#fff" }}>
-        <div className="folderContentContainer" id="bottomContainer">
-          <div className="searchInputContainer">
-            <img src={SearchImg} alt="searchImg" id="searchImg" />
-            <input
-              id="searchContainer"
-              placeholder="링크를 검색해보세요."
-            ></input>
-          </div>
-          <div id="cardContainer">
-            {cardData?.map((e) => {
-              return <Card key={e.id} cardData={e} />;
-            })}
-          </div>
-        </div>
-      </div>
-    </div>
+    <Wrapper>
+      <Section>
+        <ContentContainer $page={"folder"}>
+          <AddLinkInputContainer>
+            <Input src={LinkAddIcon} placeholder={"링크를 추가해 보세요"}>
+              <DefaultBtn>추가하기</DefaultBtn>
+            </Input>
+          </AddLinkInputContainer>
+        </ContentContainer>
+      </Section>
+
+      <Section $bg="#fff">
+        <FolderContentContainer>
+          <Input src={SearchImg} placeholder="링크를 검색해보세요" />
+
+          <FolderContainer>
+            <div className="folderBtnContainer">
+              <FolderBtnItemContainer
+                $isSelected={selectedFolder.id === 1}
+                onClick={() =>
+                  setSelectedFolder({
+                    id: 1,
+                    title: "전체",
+                  })
+                }
+              >
+                전체
+              </FolderBtnItemContainer>
+
+              {folderData?.map((e) => {
+                return (
+                  <FolderBtnItemContainer
+                    key={e.id}
+                    $isSelected={e.id === selectedFolder.id}
+                    onClick={() =>
+                      setSelectedFolder({
+                        id: e.id,
+                        title: e.name,
+                      })
+                    }
+                  >
+                    {e.name}
+                  </FolderBtnItemContainer>
+                );
+              })}
+            </div>
+
+            <div className="folderAddBtnContainer">
+              <div className="folderAddTitle">폴더 추가</div>
+              <img
+                src={FolderAddIcon}
+                className="folderAddIcon"
+                alt="folderAddIcon"
+              />
+            </div>
+          </FolderContainer>
+
+          {isLinkLoading ? (
+            <div>링크를 불러오는 중입니다.</div>
+          ) : (
+            <>
+              {cardData.length > 0 ? (
+                <>
+                  <LinkHeaderContainer>
+                    <div className="linkTitle">{selectedFolder.title}</div>
+
+                    <LinkToolContainer $display={selectedFolder.id === 1}>
+                      {LinkToolArr.map((e, index) => {
+                        return (
+                          <div className="linkToolItemContainer" key={index}>
+                            <img src={e.src} alt={e.title} />
+                            <div className="linkToolTitle">{e.title}</div>
+                          </div>
+                        );
+                      })}
+                    </LinkToolContainer>
+                  </LinkHeaderContainer>
+
+                  <CardContainer>
+                    {cardData?.map((e) => {
+                      return <Card key={e.id} cardData={e} />;
+                    })}
+                  </CardContainer>
+                </>
+              ) : (
+                <div className="noLinkContainer">저장된 링크가 없습니다</div>
+              )}
+            </>
+          )}
+        </FolderContentContainer>
+
+        <AddFloatingBtn />
+      </Section>
+    </Wrapper>
   );
 };
 

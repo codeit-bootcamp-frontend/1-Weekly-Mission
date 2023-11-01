@@ -1,23 +1,36 @@
-import "./header.css";
 import LogoImg from "../../assets/common/img_logo.png";
 import { useCallback, useEffect, useState } from "react";
 import useAsync from "../../hooks/useAsync";
 import { getUser } from "../../api/api";
+import styled from "styled-components";
+import { device } from "../styles";
+import { useLocation } from "react-router-dom";
+import DefaultBtn, { DefaultBtnContainer } from "../btn/DefaultBtn";
 
 const Header = () => {
   const [userData, setUserData] = useState({
     email: null,
     name: null,
     id: null,
-    profileImageSource: null,
+    image_source: null,
   });
   const [isLoading, error, getUserAsync] = useAsync(getUser);
+  const { pathname } = useLocation();
+  const [isFixed, setIsFixed] = useState(true);
+
+  useEffect(() => {
+    if (pathname === "/folder") {
+      setIsFixed(false);
+    }
+  }, [pathname]);
 
   const handleProfile = useCallback(async () => {
-    const result = await getUserAsync();
+    const result = await getUserAsync(1);
     if (!result) return;
 
-    setUserData(result);
+    const { data } = result;
+
+    setUserData(data[0]);
   }, [getUserAsync]);
 
   useEffect(() => {
@@ -33,24 +46,84 @@ const Header = () => {
   }
 
   return (
-    <header>
+    <HeaderContainer $isFixed={isFixed}>
       <nav className="contentContainer">
         <img src={LogoImg} id="logoImg" alt="logoImg" />
+
         {userData.email ? (
-          <div className="profileContainer">
-            <img src={userData.profileImageSource} alt="profileImg" />
+          <ProfileContainer>
+            <img src={userData.image_source} alt="profileImg" />
             <div className="profileEmail">{userData.email}</div>
-          </div>
+          </ProfileContainer>
         ) : (
           <a href="./html/login.html">
-            <button className="defaultBtn" id="loginBtn">
-              로그인
-            </button>
+            <DefaultBtn>로그인</DefaultBtn>
           </a>
         )}
       </nav>
-    </header>
+    </HeaderContainer>
   );
 };
 
 export default Header;
+
+const HeaderContainer = styled.header`
+  display: flex;
+  background: var(--background);
+  padding: 2rem 20rem;
+  align-items: center;
+  width: 100vw;
+  box-sizing: border-box;
+  position: ${(props) => (props.$isFixed ? "fixed" : "initial")};
+  justify-content: center;
+  min-height: 9.4rem;
+  z-index: 10;
+
+  @media all and ${device.tablet} {
+    padding: 1.8rem 3.2rem;
+  }
+  @media all and ${device.mobile} {
+    padding: 3.3rem;
+  }
+
+  .contentContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 152rem;
+
+    #logoImg {
+      cursor: pointer;
+      height: 2.4rem;
+      @media all and ${device.mobile} {
+        height: 1.8rem;
+      }
+    }
+  }
+
+  ${DefaultBtnContainer} {
+    width: 12.8rem;
+  }
+`;
+
+const ProfileContainer = styled.div`
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+
+  img {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+  }
+
+  .profileEmail {
+    color: var(--linkbrary-gray-100, #373740);
+    font-size: 1.4rem;
+    font-weight: 400;
+    @media all and ${device.mobile} {
+      display: none;
+    }
+  }
+`;

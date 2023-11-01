@@ -1,6 +1,15 @@
-import "./card.css";
 import moment from "moment";
 import LogoImg from "../../assets/common/img_logo.png";
+import {
+  CardContainer,
+  CardImgContainer,
+  CardWrapper,
+  ContentContainer,
+  OptionMenuContainer,
+} from "./CardStyledComponents";
+import OptionIcon from "../../assets/card/img_option.svg";
+import StarIcon from "../../assets/card/img_star.svg";
+import { useState } from "react";
 
 const calculateTimeAgo = (createdAt) => {
   const createdDate = moment(createdAt, "YYYY-MM-DDTHH:mm:ss[Z]");
@@ -29,31 +38,65 @@ const calculateTimeAgo = (createdAt) => {
 };
 
 const Card = ({ cardData }) => {
-  const ago = calculateTimeAgo(cardData.createdAt);
-  const createdAtFormat = moment(cardData.createdAt).format("YYYY.MM.DD");
+  const ago = calculateTimeAgo(cardData.created_at || cardData.createdAt);
+  const createdAtFormat = moment(
+    cardData.created_at || cardData.createdAt
+  ).format("YYYY.MM.DD");
+  const [isOpenOption, setIsOpenOption] = useState(false);
 
   const openUrl = () => {
     window.open(cardData.url, "__blank");
   };
 
   return (
-    <div className="cardContainer" onClick={openUrl}>
-      {cardData.imageSource ? (
-        <div className="cardImageContainer">
-          <img className="cardImage" src={cardData.imageSource} alt="cardImg" />
-        </div>
-      ) : (
-        <div className="cardImageContainer cardImage">
-          <img src={LogoImg} alt="logoImg" className="noImgLogo" />
-        </div>
-      )}
-      <div className="contentContainer">
-        <div className="contentAgo">{ago}</div>
-        <div className="content">{cardData.description}</div>
-        <div className="contentAt">{createdAtFormat}</div>
-      </div>
-    </div>
+    <CardWrapper>
+      <CardContainer onClick={openUrl}>
+        {cardData.image_source || cardData.imageSource ? (
+          <CardImgContainer>
+            <img
+              className="cardImage"
+              src={cardData.image_source || cardData.imageSource}
+              alt="cardImg"
+            />
+            <img src={StarIcon} className="starIcon" alt="starIcon" />
+          </CardImgContainer>
+        ) : (
+          <CardImgContainer>
+            <img src={LogoImg} alt="logoImg" className="noImgLogo" />
+            <img src={StarIcon} className="starIcon" alt="starIcon" />
+          </CardImgContainer>
+        )}
+
+        <ContentContainer>
+          <div className="contentOptionContainer">
+            <div className="contentAgo">{ago}</div>
+            <img
+              className="optionBtn"
+              src={OptionIcon}
+              alt="optionIcon"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsOpenOption(!isOpenOption);
+              }}
+            />
+          </div>
+          <div className="content">{cardData.description}</div>
+          <div className="contentAt">{createdAtFormat}</div>
+        </ContentContainer>
+      </CardContainer>
+
+      {isOpenOption && <OptionMenu />}
+    </CardWrapper>
   );
 };
 
 export default Card;
+
+const OptionMenu = () => {
+  return (
+    <OptionMenuContainer>
+      <div className="optionMenuItem">삭제하기</div>
+      <div className="optionMenuItem">폴더에 추가</div>
+    </OptionMenuContainer>
+  );
+};
