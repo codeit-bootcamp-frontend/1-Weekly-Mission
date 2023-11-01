@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const Container = styled.div`
     font-size: 1.6rem;
     line-height: 2.4rem; /* 150% */
   }
-`
+`;
 // 화면 크기보다 콘텐츠 크기가 작을 경우 푸터가 화면 최화단으로 위치하도록 만들고 싶었는데 실패했습니다...
 // const Div = styled.div`
 // display: flex;
@@ -31,15 +31,15 @@ const Container = styled.div`
 
 const EmptyLinkScreen = () => {
   return (
-  <>
-    <Container>
-      <p>저장된 링크가 없습니다</p>
-    </Container>
-    {/* <Div>
+    <>
+      <Container>
+        <p>저장된 링크가 없습니다</p>
+      </Container>
+      {/* <Div>
       <Empty />  
     </Div> */}
-  </>
-  )
-}
+    </>
+  );
+};
 
 export default EmptyLinkScreen;

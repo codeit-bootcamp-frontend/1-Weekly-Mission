@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import kebab from '../assets/kebab.svg';
+import kebab from "../assets/kebab.svg";
 import SelectMenuButton from "./SelectMenuButton";
 import { useState } from "react";
-
 
 const KebabButton = styled.button`
   position: relative;
   display: inline-block;
-`
+`;
 
 const KebabImg = styled.img`
   width: 2.1rem;
@@ -20,9 +19,9 @@ const KebabOptionsContainer = styled.div`
   right: 0;
   z-index: 1;
   display: block;
-`
+`;
 
-const kebabOptions = ['삭제하기', '폴더에 추가'];
+const kebabOptions = ["삭제하기", "폴더에 추가"];
 
 const Kebab = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -42,7 +41,7 @@ const Kebab = () => {
         </KebabOptionsContainer>
       )}
     </KebabButton>
-  )
-}
+  );
+};
 
 export default Kebab;

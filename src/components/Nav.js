@@ -1,6 +1,6 @@
-import NavLogo from '../assets/Nav_logo.svg';
-import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import NavLogo from "../assets/Nav_logo.svg";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Navigation = styled.nav`
   z-index: 2;
@@ -9,7 +9,7 @@ export const Navigation = styled.nav`
   align-items: center;
   padding: 3.3rem 20rem;
   background: var(--gray0);
-  position: ${({ isSticky }) => isSticky ? 'sticky' : 'relative'};
+  position: ${({ isSticky }) => (isSticky ? "sticky" : "relative")};
   top: 0;
 
   @media (max-width: 1199px) {
@@ -91,25 +91,28 @@ export const LoginButton = styled.button`
   }
 `;
 
-const Nav = ( {account, isSticky = false} ) => {
-
-  const {email, image_source} = (account.email ===  'stranger') ? {} : account;
+const Nav = ({ account, isSticky = false }) => {
+  const { email, image_source } = account.email === "stranger" ? {} : account;
   // 로그인 전 후 비교하려고 useState email 초기값 stranger로 지정해서 조건 연산자 썼는데 괜찮은 코드일까요..?
 
   return (
-    <Navigation isSticky={isSticky}> 
+    <Navigation isSticky={isSticky}>
       <NavContents>
         <Link to="/">
           <Logo src={NavLogo} alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
         </Link>
-        {email && <Account>  {/*프로필 누르면 자기 계정으로 들어갈 것 같아서 일단 a*/}
-          <ProfileImg src={image_source} alt="프로필 이미지"/>
-          <Email>{email}</Email>
-        </Account>}
+        {email && (
+          <Account>
+            {" "}
+            {/*프로필 누르면 자기 계정으로 들어갈 것 같아서 일단 a*/}
+            <ProfileImg src={image_source} alt="프로필 이미지" />
+            <Email>{email}</Email>
+          </Account>
+        )}
         {!email && <LoginButton>로그인</LoginButton>}
       </NavContents>
     </Navigation>
-  )
-}
+  );
+};
 
 export default Nav;

@@ -1,8 +1,8 @@
-import { formatDateDifference, formatDate } from '../global/utils';
-import EmptyCardImg from '../assets/Card_img.svg'
-import styled from 'styled-components';
-import starIcon from '../assets/star.svg'
-import Kebab from './Kebab';
+import { formatDateDifference, formatDate } from "../global/utils";
+import EmptyCardImg from "../assets/Card_img.svg";
+import styled from "styled-components";
+import starIcon from "../assets/star.svg";
+import Kebab from "./Kebab";
 
 const CardContainer = styled.div`
   display: block;
@@ -56,7 +56,7 @@ const InfoArea = styled.div`
   align-items: flex-start;
   gap: 1rem;
   border-radius: 0rem 0rem 1.5rem 1.5rem;
-  background: #FFF;
+  background: #fff;
 `;
 
 const CardExtraInfo = styled.div`
@@ -95,8 +95,7 @@ const Date = styled.p`
   font-size: 1.4rem;
 `;
 
-
-const Cards = ( { folderCards } ) => {
+const Cards = ({ folderCards }) => {
   return (
     <>
       {folderCards?.map((item) => {
@@ -107,27 +106,26 @@ const Cards = ( { folderCards } ) => {
         );
       })}
     </>
-  )
-}
+  );
+};
 
-const Card = ( { item } ) => {
+const Card = ({ item }) => {
   let folderId, createdAt, url, description, imageSource;
 
-  if (item.created_at) {({folder_id:folderId, created_at:createdAt, url, description, image_source:imageSource} = item)}
-  else {({createdAt, url, description, imageSource} = item)}
- 
-  const uploadDate = formatDate(createdAt)
+  if (item.created_at) {
+    ({ folder_id: folderId, created_at: createdAt, url, description, image_source: imageSource } = item);
+  } else {
+    ({ createdAt, url, description, imageSource } = item);
+  }
+
+  const uploadDate = formatDate(createdAt);
   const dateDifference = formatDateDifference(createdAt);
 
   return (
     <CardContainer>
       <ImgArea>
-        <StarIcon src={starIcon} alt="즐겨찾기 아이콘"/>
-        {imageSource ? (
-          <CardImg src={imageSource} alt="이미지" />
-        ) : ( 
-          <EmptyImg src={EmptyCardImg} alt="이미지 없음" />
-        )}
+        <StarIcon src={starIcon} alt="즐겨찾기 아이콘" />
+        {imageSource ? <CardImg src={imageSource} alt="이미지" /> : <EmptyImg src={EmptyCardImg} alt="이미지 없음" />}
       </ImgArea>
       <InfoArea>
         <CardExtraInfo>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FormContainer = styled.form`
   display: flex;
@@ -31,14 +31,9 @@ export const SearchInput = styled.input`
 const LinkSearchInput = () => {
   return (
     <FormContainer>
-      <SearchInput 
-        name="searchKeyword" 
-        type="search" 
-        autoComplete="on"
-        required placeholder="링크를 검색해 보세요.">
-      </SearchInput>  {/*돋보기 아이콘 삽입해야 함*/}
+      <SearchInput name="searchKeyword" type="search" autoComplete="on" required placeholder="링크를 검색해 보세요."></SearchInput> {/*돋보기 아이콘 삽입해야 함*/}
     </FormContainer>
-  )
-}
+  );
+};
 
 export default LinkSearchInput;

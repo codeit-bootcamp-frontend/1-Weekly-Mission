@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import addIcon from '../assets/add_icon.svg'
-import SortingButton from './SortingButton';
-import { useState } from 'react';
-import FAB from './FAB';
-import addIconWhite from '../assets/add_icon_white.svg';
-
+import styled from "styled-components";
+import addIcon from "../assets/add_icon.svg";
+import SortingButton from "./SortingButton";
+import { useState } from "react";
+import FAB from "./FAB";
+import addIconWhite from "../assets/add_icon_white.svg";
 
 const SortingContainer = styled.div`
   display: flex;
@@ -12,19 +11,18 @@ const SortingContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-
   @media (max-width: 1124px) {
     width: calc(100vw - 6.4rem);
-    align-items: flex-start
+    align-items: flex-start;
   }
-`
+`;
 
 const ButtonContainer = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 0.8rem;
   flex-wrap: wrap;
-`
+`;
 
 const FolderAdd = styled.button`
   display: flex;
@@ -32,9 +30,8 @@ const FolderAdd = styled.button`
   gap: 0.4rem;
   padding: 0.8rem 1.2rem;
   flex-shrink: 0;
-  
 
-  p{
+  p {
     color: var(--primary);
     text-align: center;
     font-size: 1.6rem;
@@ -45,16 +42,15 @@ const FolderAdd = styled.button`
   @media (max-width: 779px) {
     display: none;
   }
-`
+`;
 
 const AddIcon = styled.img`
   width: 16px;
   height: 16px;
-`
+`;
 
 const Sorting = ({ selectedFolder }) => {
-
-  let isActiveArray = Array(selectedFolder.length).fill(false)
+  let isActiveArray = Array(selectedFolder.length).fill(false);
   isActiveArray[0] = true;
 
   const [isActive, setIsActive] = useState(isActiveArray);
@@ -63,32 +59,27 @@ const Sorting = ({ selectedFolder }) => {
     isActiveArray = Array(selectedFolder.length).fill(false);
     isActiveArray[index] = true;
     setIsActive(isActiveArray);
-  }
+  };
 
   return (
     <SortingContainer>
-      <ButtonContainer >
+      <ButtonContainer>
         {selectedFolder.map((selectedFolder, index) => {
           return (
-            <SortingButton 
-              key={index}
-              folderId = {selectedFolder.id}
-              createdAt = {selectedFolder['created_at']}
-              isActive = {isActive[index]}
-              handleClick={() => handleClick(index)}
-              buttonIndex={index}
-            >{selectedFolder.name}</SortingButton>
-          )
+            <SortingButton key={index} folderId={selectedFolder.id} createdAt={selectedFolder["created_at"]} isActive={isActive[index]} handleClick={() => handleClick(index)} buttonIndex={index}>
+              {selectedFolder.name}
+            </SortingButton>
+          );
         })}
       </ButtonContainer>
       <FolderAdd>
         <p>폴더 추가</p>
         <AddIcon src={addIcon}></AddIcon>
-         {/*피그마에서 FAB 버튼 자체를 컴포넌트로 만든 거 같아서 일반 스타일 버튼은 따로 추가해줬는데, FAB css 변경하는 게 나을까요?*/}
+        {/*피그마에서 FAB 버튼 자체를 컴포넌트로 만든 거 같아서 일반 스타일 버튼은 따로 추가해줬는데, FAB css 변경하는 게 나을까요?*/}
       </FolderAdd>
-      <FAB src={addIconWhite}>폴더 추가</FAB> 
+      <FAB src={addIconWhite}>폴더 추가</FAB>
     </SortingContainer>
-  )
-}
+  );
+};
 
 export default Sorting;

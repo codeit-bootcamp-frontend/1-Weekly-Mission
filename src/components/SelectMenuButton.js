@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const SelectButton = styled.button`
   display: flex;
@@ -11,14 +11,16 @@ const SelectButton = styled.button`
 
   &:hover {
     background-color: var(--gray10);
-    p {color: var(--primary);}
+    p {
+      color: var(--primary);
+    }
   }
-`
+`;
 
 const selectMenuButton = ({ children }) => {
   <SelectButton>
     <p>{children}</p>
-  </SelectButton>
-}
+  </SelectButton>;
+};
 
 export default selectMenuButton;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const OptionContainer = styled.div`
   display: flex;
@@ -10,20 +10,20 @@ const OptionContainer = styled.div`
     font-size: 1.4rem;
     font-weight: 600;
   }
-`
+`;
 
 const Icon = styled.img`
-width: 1.8rem;
-height: 1.8rem;
-`
+  width: 1.8rem;
+  height: 1.8rem;
+`;
 
-const Option = ( {icon, children} ) => {
+const Option = ({ icon, children }) => {
   return (
     <OptionContainer>
       <Icon src={icon} />
       <p>{children}</p>
     </OptionContainer>
-  )
-}
+  );
+};
 
 export default Option;

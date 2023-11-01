@@ -1,6 +1,6 @@
-import Cards from './Card';
-import styled from 'styled-components';
-import EmptyLinkScreen from './EmptyLinkScreen';
+import Cards from "./Card";
+import styled from "styled-components";
+import EmptyLinkScreen from "./EmptyLinkScreen";
 
 export const SectionContainer = styled.section`
   display: grid;
@@ -19,17 +19,18 @@ export const SectionContainer = styled.section`
   }
 `;
 
-const CardList = ( {folderCards} ) => {
-
+const CardList = ({ folderCards }) => {
   return (
     <>
-      {folderCards.length > 0 ? 
-      <SectionContainer>
-        <Cards folderCards={folderCards}/>
-      </SectionContainer> :
-      <EmptyLinkScreen />}
+      {folderCards.length > 0 ? (
+        <SectionContainer>
+          <Cards folderCards={folderCards} />
+        </SectionContainer>
+      ) : (
+        <EmptyLinkScreen />
+      )}
     </>
-  )
-}
+  );
+};
 
 export default CardList;
