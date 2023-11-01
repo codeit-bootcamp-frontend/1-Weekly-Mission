@@ -1,7 +1,7 @@
-export const URL_BASE = "https://bootcamp-api.codeit.kr/api/";
+export const URL_BASE = "https://bootcamp-api.codeit.kr/api";
 
 export async function getFolderData() {
-  const response = await fetch(`${URL_BASE}sample/folder`);
+  const response = await fetch(`${URL_BASE}/sample/folder`);
   if (!response.ok) {
     throw new Error("서버에서 데이터를 받지 못했습니다");
   }
@@ -10,7 +10,7 @@ export async function getFolderData() {
 }
 
 export async function getUserData() {
-  const response = await fetch(`${URL_BASE}sample/user`);
+  const response = await fetch(`${URL_BASE}/sample/user`);
   if (!response.ok) {
     throw new Error("서버에서 데이터를 받지 못했습니다.");
   }
@@ -20,7 +20,7 @@ export async function getUserData() {
 }
 
 export async function getSelectItems() {
-  const response = await fetch(`${URL_BASE}users/1/folders`);
+  const response = await fetch(`${URL_BASE}/users/1/folders`);
   if (!response.ok) {
     throw new Error("서버에서 데이터를 받지 못했습니다");
   }
@@ -29,7 +29,7 @@ export async function getSelectItems() {
 }
 
 export async function getUserLogin() {
-  const response = await fetch(`${URL_BASE}users/1`);
+  const response = await fetch(`${URL_BASE}/users/1`);
   if (!response.ok) {
     throw new Error("서버에서 데이터를 받지 못했습니다");
   }

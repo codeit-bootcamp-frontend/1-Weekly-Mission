@@ -1,21 +1,22 @@
-import "../styles/reset.css";
-import HeaderSpace from "../components/HeaderSpace";
-import MainSpace from "../components/MainSpace";
-import FooterSpace from "../components/FooterSpace";
-import Nav from "../components/Nav";
-import "../styles/Folder.css";
+import "../../styles/reset.css";
+import HeaderSpace from "../HeaderSpace";
+import MainSpace from "../MainSpace";
+import FooterSpace from "../FooterSpace";
+import Nav from "../Nav";
+import "../../styles/Folder.css";
 
 import { useState, useEffect } from "react";
-import { getSelectItems, getUserData, getRenderLinks } from "../api";
-import SelectPart from "../components/SelectPart";
-import SearchBar from "../components/SearchBar";
+import { getSelectItems, getUserLogin, getRenderLinks } from "../../api";
+import SelectPart from "./SelectPart";
+import SearchBar from "./SearchBar";
 
 function Folder() {
   const [selectItems, setSelectItem] = useState([]);
   const [userLogin, setUserLogin] = useState([]);
   const [userLinks, setUserLinks] = useState([]);
   const [folderName, setFolderName] = useState([]);
-  const [nowFolderId, SetNowFolderId] = useState("");
+  const [nowFolderId, setNowFolderId] = useState("");
+  const [selected, setSelected] = useState("전체");
 
   const handleSelectItems = async () => {
     try {
@@ -29,18 +30,16 @@ function Folder() {
   const handleUserLogin = async () => {
     //nav 상단 우측
     try {
-      const {
-        name,
-        email: userEmail,
-        profileImageSource: userImage,
-      } = await getUserData();
-      setUserLogin({ name, userEmail, userImage });
+      const { data } = await getUserLogin();
+      const result = data[0];
+      const { email: userEmail, image_source: userImage } = result;
+      setUserLogin({ userEmail, userImage });
     } catch (error) {
       console.log(error);
     }
   };
 
-  const initRender = async () => {
+  const initailize = async () => {
     await handleSelectItems();
     await handleUserLogin();
     await handleRenderItems();
@@ -50,6 +49,7 @@ function Folder() {
     // 폴더이름 클릭시 해당하는 링크들 렌더링
     try {
       const { data } = await getRenderLinks(nowFolderId);
+
       if (!data) {
         return;
       }
@@ -59,14 +59,14 @@ function Folder() {
     }
   };
 
-  const handleClickUpdate = async (name, key) => {
-    setFolderName(name);
-    SetNowFolderId(key);
+  const handleClickUpdate = (value, key) => {
+    setSelected((prev) => !prev);
+    setFolderName(value);
+    setNowFolderId(key);
   };
-
   useEffect(() => {
     // 마운트 시 렌더링 되는 것들
-    initRender();
+    initailize();
   }, []);
 
   useEffect(() => {
@@ -79,11 +79,12 @@ function Folder() {
       <Nav lists={userLogin} />
       <HeaderSpace />
       <SearchBar />
-
       <SelectPart
         selectItems={selectItems}
         handleClickUpdate={handleClickUpdate}
         folderName={folderName}
+        selected={selected}
+        nowFolderId={nowFolderId}
       />
       {userLinks.length !== 0 ? (
         <MainSpace items={userLinks} />

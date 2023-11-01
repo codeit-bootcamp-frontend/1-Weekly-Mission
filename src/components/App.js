@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import Shared from "../pages/Shared";
-import Folder from "../pages/Folder";
+import Shared from "../components/Shared/Shared.js";
+import Folder from "../components/Folder/Folder.js";
 
 function App() {
   return (
