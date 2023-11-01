@@ -5,12 +5,16 @@ import styles from "../imageList/ImageList.module.css";
 import ItemSkeleton from "../skeleton/ItemSkeleton";
 
 import useUserLinks from "../../hooks/useUserLinks";
+import useTest from "../../hooks/useTest";
+import { fetchUserLinks } from "./../../api/users";
 
 export default function WholeData({ folderId }) {
-  // const aaa = useParams(); // folderDErPage, 에서랑 똑같음
-  // data가 있으면은 {folderId: "폴더아이디"} 없으면 아무것도 안 찍힘
+  const USER_ID = 1;
 
-  const [linkData, isLoading] = useUserLinks({ userId: 1, folderId: folderId });
+  const [linkData, isLoading] = useUserLinks({
+    userId: USER_ID,
+    folderId: folderId,
+  });
 
   const result = linkData?.data;
 

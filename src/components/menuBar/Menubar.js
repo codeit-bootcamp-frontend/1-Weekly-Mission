@@ -1,12 +1,10 @@
 import React from "react";
-
 import FolderButton from "../button/FolderButton";
-import useUserFolderFetch from "../../hooks/userUserFolderFetch";
 
-export default function Menubar({ obj, objKeys }) {
+export default function Menubar({ obj, objKeys, folderId }) {
   return (
     <div>
-      <FolderButton data={[obj]} dataKeys={objKeys} />
+      <FolderButton data={[obj]} dataKeys={objKeys} folderId={folderId} />
     </div>
   );
 }

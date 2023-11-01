@@ -18,7 +18,7 @@ import useTest from "../hooks/useTest";
 
 export default function FolderPage() {
   const USER_ID = 1;
-  // const paramId = useParams();
+
   const { folderId } = useParams();
 
   // 우선 전체버튼은 {}
@@ -32,15 +32,20 @@ export default function FolderPage() {
   // const [userData] = useUserFetch({ userId: 1 });
   // const [data, isLoading] = useUserFolderFetch({ userId: 1 });
 
-  const [data, isLoading] = useTest(() =>
+  const [Folderdata, isLoading] = useTest(() =>
     fetchUserFolderData({ userId: USER_ID })
   );
 
-  // userId, folderId 두개 받는다...
-  const [a, b] = useTest(() => fetchUserLinks({ userId: USER_ID }));
+  // 아래는 왜 안될까.. folderId는 잘 나오는데, 해당 데이터가 안 뽑힘? fix되어어있음
+  const [a, b] = useTest(() =>
+    fetchUserLinks({ userId: USER_ID, folderId: folderId })
+  );
+  console.log(folderId, a, b);
+
+  // console.log(a, b);
   //  ?.의 앞의 평가 대상이 undefined이나 null이 면은 undefined를 반환
   // / 못해도 ? undefined
-  const result = data?.data;
+  const result = Folderdata?.data;
   const obj =
     (result &&
       result.reduce((acc, item) => {
@@ -61,7 +66,7 @@ export default function FolderPage() {
       <FolderNav data={userData} />
       <Header />
       <SearchBar />
-      <Menubar obj={obj} objKeys={obj_keys} />
+      <Menubar obj={obj} objKeys={obj_keys} folderId={folderId} />
       <FolderMenu folderId={folderId} />
       {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
       {/* <Landing data={data} isLoading={isLoading}></Landing> */}

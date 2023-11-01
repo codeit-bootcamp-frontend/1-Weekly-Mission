@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../button/Button";
 import styles from "./FolderButton.module.css";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { getEachfoldersData } from "../../api/folder";
-import FolderPage from "../../pages/FolderPage";
 
-export default function FolderButton({ data, dataKeys }) {
+export default function FolderButton({ data, dataKeys, folderId }) {
   // navigate를 하게 되면은 component가 새롭게 mount된다.
+  // 데이터는
 
   const navigate = useNavigate();
-  const params = useParams();
-
-  const folderId = params.folderId; // undefined면
 
   return (
     <div className={styles.container}>
@@ -48,8 +45,10 @@ export default function FolderButton({ data, dataKeys }) {
                       let contents = data.length > 0;
 
                       if (contents) {
+                        // 아래에 있는 key!가 folderId, 즉 useParams의 value가 된다
                         navigate(`/folder/${key}`);
                       } else if (!contents) {
+                        navigate(`/folder/${key}`);
                       }
                     });
                   }}
