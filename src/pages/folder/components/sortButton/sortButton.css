@@ -1,0 +1,21 @@
+@import url('../../../../styles/global.css');
+
+.sort-button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+  font-size: 16px;
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.clicked {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+@media (max-width: 767px) {
+  .sort-button {
+    padding: 6px 10px;
+  }
+}

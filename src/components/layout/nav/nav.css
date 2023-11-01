@@ -1,4 +1,4 @@
-@import url('../../styles/global.css');
+@import url('../../../styles/global.css');
 
 .gnb {
   display: flex;
@@ -10,6 +10,10 @@
   z-index: 100;
   padding: 20px 200px;
   background-color: var(--backgroundcolor-skyblue-10);
+}
+
+.gnb-folder {
+  position: static;
 }
 
 .login-btn {

@@ -4,6 +4,12 @@
   margin: 40px 0px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .content-section {
   display: flex;
   flex-direction: column;
@@ -12,11 +18,11 @@
 
 .links-container {
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   column-gap: 20px;
   row-gap: 25px;
-  margin-top: 40px;
 }
 
 /* tablet */

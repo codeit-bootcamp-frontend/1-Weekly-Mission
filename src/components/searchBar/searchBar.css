@@ -1,13 +1,11 @@
 .search-bar-container {
   display: flex;
-  justify-content: space-between;
-  padding: 15px 16px;
-}
-
-.search-bar-left-box {
-  display: flex;
   align-items: center;
   gap: 10px;
+  padding: 16px 20px;
+  border: 1px solid var(--color-gray-20);
+  border-radius: 10px;
+  width: 100%;
 }
 
 .search-bar-search-icon {
@@ -15,13 +13,21 @@
   height: 16px;
 }
 
-.search-bar-placeholder {
-  color: var(--color-gray-50);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-}
-
 .search-bar-cancel-button {
   color: var(--color-white);
+}
+
+.search-bar {
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.search-bar::placeholder {
+  color: var(--color-gray-40);
+  font-size: 16px;
 }

@@ -2,7 +2,7 @@ import {
   BASE_URL,
   SAMPLE_FOLDER_ENDPOINT,
   SAMPLE_USER_ENDPOINT,
-} from './services/endpoints';
+} from './services/config';
 
 export const getSampleUser = async () => {
   let result;

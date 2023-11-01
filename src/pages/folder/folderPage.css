@@ -1,0 +1,126 @@
+@import url('../../styles/global.css');
+
+.folder-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 200px 90px 200px;
+  gap: 8px;
+  background: var(--backgroundcolor-skyblue-10);
+  width: 100%;
+}
+
+.folder-category-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folder-option-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.floating-action-button-container {
+  display: flex;
+  display: none;
+  align-self: center;
+  position: fixed;
+  bottom: 101px;
+}
+
+.folder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.folder-sort-buttons-container {
+  display: flex;
+  gap: 8px;
+}
+
+.folder-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1124px;
+  gap: 40px;
+}
+
+.folder-sort-add-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folder-add-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  font-weight: 500;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.folder-content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.folder-category {
+  font-size: 24px;
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+/* table */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .folder-header {
+    padding: 60px 32px 90px 32px;
+  }
+
+  .folder-main {
+    padding: 0px 32px;
+    width: 100%;
+  }
+}
+
+/* mobile */
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .folder-sort-buttons-container {
+    flex-wrap: wrap;
+  }
+
+  .folder-header {
+    padding: 24px 32px 40px 32px;
+  }
+
+  .folder-main {
+    padding: 0px 32px;
+  }
+
+  .folder-category-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .floating-action-button-container {
+    display: block;
+  }
+
+  .folder-add-button {
+    display: none;
+  }
+}
