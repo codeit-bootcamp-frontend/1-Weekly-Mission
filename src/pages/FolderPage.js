@@ -24,8 +24,11 @@ const FolderPage = () => {
   );
 
   const handleLoadFolderListData = useCallback(async () => {
-    const folderListResponseData = await getFolderListAsync({ userId });
-    const linksListResponseData = await getLinksListAsync({ userId, folderId: selectedCategoryId });
+    const [folderListResponseData, linksListResponseData] = await Promise.all([
+      getFolderListAsync({ userId }),
+      getLinksListAsync({ userId, folderId: selectedCategoryId }),
+    ]);
+
     setFolderListData(folderListResponseData);
     setLinksListData(linksListResponseData);
   }, [getFolderListAsync, getLinksListAsync, selectedCategoryId, userId]);
