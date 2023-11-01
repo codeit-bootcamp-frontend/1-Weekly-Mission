@@ -40,7 +40,7 @@ export default function KebabMenu() {
 
   return (
     <>
-      <img src={kebabIcon} onClick={handleModalToggle} />
+      <img src={kebabIcon} onClick={handleModalToggle} alt="memu" />
       {isOpen && (
         <Modal>
           <Button>삭제하기</Button>

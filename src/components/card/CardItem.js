@@ -13,7 +13,7 @@ export default function CardItem({ link }) {
   return (
     <style.Wrapper>
       <style.Container>
-        <style.CardImage src={imageSource ? imageSource : logo} isimageurl={imageSource} />
+        <style.CardImage src={imageSource ? imageSource : logo} $isImageurl={imageSource} />
         <style.Icon>
           <Star />
         </style.Icon>

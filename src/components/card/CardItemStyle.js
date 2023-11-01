@@ -46,10 +46,10 @@ export const Icon = styled.div`
 `;
 
 export const CardImage = styled.img`
-  width: ${(props) => (props.isimageurl ? "100%" : "133px")};
-  height: ${(props) => (props.isimageurl ? "100%" : "24px")};
+  width: ${({ $isImageurl }) => ($isImageurl ? "100%" : "133px")};
+  height: ${({ $isImageurl }) => ($isImageurl ? "100%" : "24px")};
   object-fit: cover;
-  opacity: ${(props) => (props.isimageurl ? "" : "0.2")};
+  opacity: ${({ $isImageurl }) => ($isImageurl ? "" : "0.2")};
   transition: all 300ms linear;
 
   &:hover {

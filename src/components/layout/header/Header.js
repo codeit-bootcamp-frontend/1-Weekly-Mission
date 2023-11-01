@@ -36,13 +36,13 @@ export default function Header() {
           <style.Logo src={logo} alt="logo" />
         </Link>
         <nav>
-          {isLoading ? (
-            <Button size="large" label="로그인" />
-          ) : (
+          {!isLoading && user ? (
             <style.Navbar>
-              <style.ProfileImage src={user.image_source} />
-              <style.ProfileEmail>{user.email}</style.ProfileEmail>
+              <style.ProfileImage src={user?.image_source} />
+              <style.ProfileEmail>{user?.email}</style.ProfileEmail>
             </style.Navbar>
+          ) : (
+            <Button size="large" label="로그인" />
           )}
         </nav>
       </style.Container>
