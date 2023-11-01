@@ -1,4 +1,53 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 380px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+`;
+
+const CardContentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 200px;
+  padding: 15px 20px;
+`;
+
+const CardImg = styled.img`
+  height: 60%;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+`;
+
+const CardTime = styled.div`
+  color: #666;
+  /* Linkbrary/caption */
+  font-family: Pretendard;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+const CardExpl = styled.div`
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  word-break: break-word;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
+const CardCreatedDate = styled.div``;
 
 const Card = (props) => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -44,14 +93,14 @@ const Card = (props) => {
     .replace(/\//g, ". ");
 
   return (
-    <div className="CardContainer">
-      <img className="CardImg" src={props.imageSource} alt="이미지"></img>
-      <div className="CardContentBox">
-        <div className="CardTime">{message}</div>
-        <div className="CardExpl">{props.description}</div>
-        <div className="CardCreatedDate">{formattedDate}</div>
-      </div>
-    </div>
+    <CardContainer>
+      <CardImg src={props.imageSource} alt="이미지" />
+      <CardContentBox>
+        <CardTime>{message}</CardTime>
+        <CardExpl>{props.description}</CardExpl>
+        <CardCreatedDate>{formattedDate}</CardCreatedDate>
+      </CardContentBox>
+    </CardContainer>
   );
 };
 
