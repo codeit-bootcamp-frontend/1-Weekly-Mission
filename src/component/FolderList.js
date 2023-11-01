@@ -48,7 +48,7 @@ function FolderChip({ name, id }) {
   };
 
   return (
-    <NavLink style={getActiveStyle} to={`/folder/${id}`}>
+    <NavLink style={getActiveStyle} to={id ? `/folder/${id}` : "/folder"}>
       <StyledFolderBtn active={active}>{name}</StyledFolderBtn>
     </NavLink>
   );

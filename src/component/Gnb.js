@@ -4,7 +4,7 @@ import { getUser } from "../api";
 import logo from "../assets/img/logo.svg";
 import ProfileImg from "./ProfileImg";
 import CTA from "./CTA";
-import StyledGnb from "../style/StyledGnb";
+import * as Styled from "../style/Gnb";
 
 function Gnb({ isFixed }) {
   const [userData, setUserData] = useState({});
@@ -32,7 +32,7 @@ function Gnb({ isFixed }) {
 
   return (
     <>
-      <StyledGnb isFixed={isFixed} />
+      <Styled.Gnb isFixed={isFixed} />
       <header>
         <div className="headerContainer">
           <Link to="/">

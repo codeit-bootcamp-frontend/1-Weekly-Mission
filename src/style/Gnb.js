@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const StyledGnb = createGlobalStyle`
+const Gnb = createGlobalStyle`
   header {
     position: ${({ isFixed }) => isFixed ?? `sticky`};
     top: 0; 
@@ -44,4 +44,4 @@ const StyledGnb = createGlobalStyle`
   }
 `;
 
-export default StyledGnb;
+export { Gnb };
