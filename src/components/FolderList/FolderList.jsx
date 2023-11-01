@@ -6,6 +6,8 @@ import addIconWhite from "images/add_white.svg";
 import deleteIcon from "images/delete.svg";
 import nameChangeIcon from "images/name-change.svg";
 import shareIcon from "images/share.svg";
+import Modal from "components/Modal";
+import { ModalEdit } from "components/Modal/Modal";
 
 function FolderList({ getFolderId }) {
   const [folders, setFolders] = useState();
@@ -28,6 +30,14 @@ function FolderList({ getFolderId }) {
     const result = await getAPI("/users/1/folders");
     const { data } = result;
     setFolders(data);
+  };
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
   };
 
   useEffect(() => {
@@ -62,10 +72,11 @@ function FolderList({ getFolderId }) {
             <img src={shareIcon} alt="공유 아이콘" />
             <span>공유</span>
           </button>
-          <button>
+          <button onClick={openModal}>
             <img src={nameChangeIcon} alt="이름 변경 아이콘" />
             <span>이름 변경</span>
           </button>
+          {modalIsOpen && <Modal close={closeModal}><ModalEdit /></Modal>}
           <button>
             <img src={deleteIcon} alt="삭제 아이콘" />
             <span>삭제</span>
