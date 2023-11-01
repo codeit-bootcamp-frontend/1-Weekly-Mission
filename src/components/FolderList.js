@@ -19,6 +19,11 @@ const StyledMenu = styled.div`
   .add-folder {
     color: var(--color-primary);
   }
+
+  @media screen and (max-width: 768px) {
+    ul {
+      flex-wrap: wrap;
+    }
 `;
 
 

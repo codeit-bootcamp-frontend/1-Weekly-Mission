@@ -54,12 +54,12 @@ ul {
   font-size: 14px;
 }
 
-@media screen and (max-width: 1124px) {
+@media screen and (min-width: 769px) and (max-width: 1124px) {
   .cardList-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .card-style {
     width: 325px;
   }
