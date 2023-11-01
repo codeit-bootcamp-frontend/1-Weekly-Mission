@@ -1,0 +1,8 @@
+# 프로젝트 때 해보고 싶어서 연습
+# style:
+#  - "src/styles/*"
+#  - "src/styles/**/*"
+
+documentation:
+  - "*.md"
+  - "docs/**/*.md"

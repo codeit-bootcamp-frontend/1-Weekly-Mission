@@ -1,0 +1,21 @@
+.wrapper {
+  padding: 0.5rem 0.8rem;
+  width: auto;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  border: 1px solid rgba(109, 106, 254, 1);
+}
+
+.selectWrapper {
+  padding: 0.5rem 0.8rem;
+  width: auto;
+  border-radius: 0.5rem;
+  color: var(--white);
+  background-color: var(--primary);
+  border: 1px solid rgba(109, 106, 254, 1);
+}
+
+.content {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
