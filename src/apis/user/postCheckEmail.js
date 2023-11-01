@@ -1,10 +1,10 @@
-import { requestAPI } from '../api';
+import { APIpoint } from '../api';
 
 //
-const postCheckEmail = async (emailValue) => {
-  const data = { email: emailValue };
+const postCheckEmail = async (email) => {
+  const data = { email };
 
-  const response = await requestAPI('', {
+  const response = await fetch(`${APIpoint}check-email`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ const postCheckEmail = async (emailValue) => {
     body: JSON.stringify(data),
   });
 
-  return response;
+  return response.status === 409;
 };
 
 export default postCheckEmail;

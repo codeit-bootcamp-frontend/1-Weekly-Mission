@@ -5,7 +5,6 @@ function useSignInputError(values, func) {
   const [errorText, setErrorText] = useState('');
 
   const handleBlur = () => {
-    setError(true);
     func(values, setError, setErrorText);
   };
 
