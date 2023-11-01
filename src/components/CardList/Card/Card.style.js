@@ -35,13 +35,13 @@ export const Info = styled.div`
   position: relative;
 `;
 
-export const KebabButton = styled.img`
+export const KebabButton = styled.button`
   width: 2.1rem;
   height: 1.7rem;
   position: absolute;
   top: 1.5rem;
-  right: 2.0rem;
-`
+  right: 2rem;
+`;
 
 export const TimeDiff = styled.p`
   font-size: 1.3rem;
@@ -57,4 +57,29 @@ export const Description = styled.p`
 
 export const Date = styled.p`
   font-size: 1.4rem;
+`;
+
+export const PopoverContainer = styled.div`
+  display: flex;
+  width: 10rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  background: var(--gray-light-gray-00, #fff);
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(51, 50, 54, 0.1);
+`;
+
+export const PopoverButton = styled.button`
+  display: flex;
+  padding: 0.7rem 1.2rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+  font-size: 1.4rem;
+
+  &:hover {
+    color: var(--primary);
+    background: var(--gray10);
+  }
 `;
