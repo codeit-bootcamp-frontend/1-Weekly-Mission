@@ -3,7 +3,7 @@
 /* css 모듈 방식 적용
  */
 
-import Card from "../Card/Card";
+import Card from "commons/components/Card/Card";
 import styles from "./CardList.module.css";
 
 function CardList({ cardList }) {

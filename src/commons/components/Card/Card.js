@@ -5,11 +5,11 @@
    */
 
 import styles from "./Card.module.css";
-import noImage from "../../assets/no-img-card.svg";
-import kebab from "../../assets/kebab.svg";
-import noStar from "../../assets/no-filled-star-icon.svg";
-import formatDate from "../../utils/formatDate";
-import calcDate from "../../utils/calcDate";
+import noImage from "assets/images/no-img-card.svg";
+import kebab from "assets/images/kebab.svg";
+import noStar from "assets/images/no-filled-star-icon.svg";
+import formatDate from "commons/utils/formatDate";
+import calcDate from "commons/utils/calcDate";
 
 function Card(card) {
   const { created_at, url, title, description, image_source } = card.card;

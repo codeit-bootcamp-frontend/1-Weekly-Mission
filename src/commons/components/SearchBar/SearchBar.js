@@ -5,7 +5,7 @@
 
 import styles from "./SearchBar.module.css";
 import { useState } from "react";
-import searchIcon from "../../assets/search-icon.svg";
+import searchIcon from "assets/images/search-icon.svg";
 
 function SearchBar() {
   const [text, setText] = useState("");

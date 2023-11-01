@@ -1,8 +1,8 @@
 import styles from "./Footer.module.css";
-import twitterIcon from "../../assets/akar-icons_twitter-fill.svg";
-import facebookIcon from "../../assets/akar-icons_facebook-fill.svg";
-import youtubeIcon from "../../assets/akar-icons_youtube-fill.svg";
-import instagramIcon from "../../assets/akar-icons_instagram-filled.svg";
+import twitterIcon from "assets/images/akar-icons_twitter-fill.svg";
+import facebookIcon from "assets/images/akar-icons_facebook-fill.svg";
+import youtubeIcon from "assets/images/akar-icons_youtube-fill.svg";
+import instagramIcon from "assets/images/akar-icons_instagram-filled.svg";
 
 function Footer() {
   return (

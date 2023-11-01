@@ -1,5 +1,5 @@
 import "./Header.style.css";
-import "../../styles/reset.css";
+import "commons/styles/reset.css";
 
 function Header({ folderOwnerProfile, folderName, folderOwnerName }) {
   if (!folderOwnerName) {

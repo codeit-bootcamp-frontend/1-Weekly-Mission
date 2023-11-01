@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import styles from "./LinkAddInput.module.css";
-import linkIcon from "../../assets/link-icon.svg";
+import linkIcon from "assets/images/link-icon.svg";
 
 function LinkAddInput() {
   const [keyword, setKeyword] = useState("");

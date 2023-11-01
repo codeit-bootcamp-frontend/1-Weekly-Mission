@@ -1,12 +1,12 @@
 import styles from "./FolderHeader.module.css";
-import FolderNameButton from "../FolderNameButton/FolderNameButton";
+import FolderNameButton from "pages/FolderPage/components/FolderNameButton/FolderNameButton";
 import { useEffect, useState, useRef } from "react";
-import CardList from "../CardList/CardList";
-import { getAllCards } from "../../api/api";
+import CardList from "commons/components/CardList/CardList";
+import { getAllCards } from "apis/api";
 
-import shareIcon from "../../assets/share-icon.svg";
-import renameIcon from "../../assets/rename-icon.svg";
-import deleteIcon from "../../assets/delete-icon.svg";
+import shareIcon from "assets/images/share-icon.svg";
+import renameIcon from "assets/images//rename-icon.svg";
+import deleteIcon from "assets/images/delete-icon.svg";
 
 const INITIAL_FOLDER = {
   id: "",

@@ -1,11 +1,10 @@
-import "./styles/reset.css";
+import "commons/styles/reset.css";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Nav from "./components/Nav/Nav";
-import Footer from "./components/Footer/Footer";
-import useAsync from "./hooks/useAsync";
-import { getUser } from "../src/api/api";
-import "./App.style.css";
+import Nav from "commons/components/Nav/Nav";
+import Footer from "commons/components/Footer/Footer";
+import useAsync from "apis/useAsync";
+import { getUser } from "apis/api";
 
 const INITIAL_USER = {
   userId: "",

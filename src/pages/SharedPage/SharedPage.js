@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import ShareHeader from "../components/ShareHeader/ShareHeader";
-import SearchBar from "../components/SearchBar/SearchBar";
-import CardList from "../components/CardList/CardList";
-import useAsync from "../hooks/useAsync";
+import ShareHeader from "pages/SharedPage/components/ShareHeader/ShareHeader";
+import SearchBar from "commons/components/SearchBar/SearchBar";
+import CardList from "commons/components/CardList/CardList";
+import useAsync from "apis/useAsync";
 
-import { getAllCards } from "../api/api";
+import { getAllCards } from "apis/api";
 import "./SharedPage.css";
 
 const INITIAL_FOLDER = {

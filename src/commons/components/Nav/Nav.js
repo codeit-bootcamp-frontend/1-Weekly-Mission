@@ -4,7 +4,7 @@
  */
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.css";
-import logoSvg from "../../assets/logo.svg";
+import logoSvg from "assets/images/logo.svg";
 
 function Button() {
   return (
