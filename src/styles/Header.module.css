@@ -1,0 +1,39 @@
+.root {
+  height: 94px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  background: #f0f6ff;
+}
+
+.container {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  height: 94px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 200px;
+}
+
+.logo {
+  width: 133px;
+  height: 24px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    padding: 20px 32px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .container {
+    padding: 13px 32px;
+  }
+}

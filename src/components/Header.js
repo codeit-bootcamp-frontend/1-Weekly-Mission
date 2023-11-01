@@ -1,32 +1,18 @@
-import "../styles/header.css";
-import { getUserData, getFolders } from "../api/api.js";
-import logoImage from "../assets/png/logo.png";
+import styles from '../styles/Header.module.css';
+import logoImage from '../assets/images/logo/logo.png';
+import LoginButton from './LoginButton.js';
+//import styles from '../styles/LoginButton.module.css';
 
-function Header({ userData }) {
-  const { name, email, profileImageSource } = getUserData;
-
+function Header() {
   return (
-    <header>
-      <div className="header__container">
-        <div className="header__logo">
-          <a href="/">
-            <img src={logoImage} alt="LinkBrary logo" />
+    <header className={styles.root}>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <a href='./'>
+            <img src={logoImage} alt='LinkBrary logo' />
           </a>
         </div>
-        <div className="header__profile">
-          {!userData ? (
-            <button>로그인</button>
-          ) : (
-            <>
-              <img
-                className="header__profile--logo"
-                src={profileImageSource}
-                alt={name}
-              />
-              <span className="header__profile--email">{email}</span>
-            </>
-          )}
-        </div>
+        <LoginButton />
       </div>
     </header>
   );

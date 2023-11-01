@@ -1,0 +1,70 @@
+.CardItem {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #fff;
+  width: 340px;
+  height: 334px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+}
+
+.CardItem:hover {
+  transform: scale(130%);
+  transition: 1s;
+}
+
+.img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+  padding: 15px 20px;
+}
+
+.container a {
+  text-decoration: none;
+}
+
+.timeDiff {
+  color: #666;
+  font-size: 13px;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  /*  */
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  /* white-space: nowrap;
+  font-size: 16px;
+  line-height: 150%; */
+}
+
+.createdAt {
+  color: #333;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .CardItem {
+    width: 325px;
+    height: 327px;
+  }
+}
