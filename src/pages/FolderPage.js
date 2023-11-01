@@ -32,16 +32,6 @@ export default function FolderPage() {
       obj_keys.push(item.id);
     });
 
-  // const [status, isLoading, data] = useQuery(["user1", { userId: 1 }], () =>
-  //   fetchUserData({ userId: 1 })
-  // );
-
-  // const [status2, isLoading2, data2] = useQuery(["user1", { userId: 1 }], () =>
-  //   fetchUserFolderData({ userId: 1 })
-  // );
-
-  // console.log(data, data2)
-
   return (
     <LocaleContext.Provider value={obj}>
       <FolderNav />

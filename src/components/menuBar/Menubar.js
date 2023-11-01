@@ -4,24 +4,26 @@ import FolderButton from "../button/FolderButton";
 import useUserFolderFetch from "../../hooks/userUserFolderFetch";
 
 export default function Menubar({ data, isLoading }) {
-  // const [data, isLoadng] = useFetch(
-  //   "https://bootcamp-api.codeit.kr/api/users/1/folders"
-  // );
-  // console.log(data?.data);
-  // const [data, isLoading] = useUserFolderFetch({ id: 1 });
+  // ?.의 앞의 평가 대상이 undefined이나 null이 면은 undefined를 반환
+  // 못해도 ? undefined
   const result = data?.data;
 
-  const obj = {};
-  let obj_keys = [];
+  //  result가 undefined이면은 obj도 undefined
 
-  result &&
-    result.forEach((item) => {
-      obj[item.id] = {
-        folderId: item.id,
-        folderName: item.name,
-      };
-      obj_keys.push(item.id);
-    });
+  const obj =
+    (result &&
+      result.reduce((acc, item) => {
+        if (!acc[item.id]) {
+          acc[item.id] = {
+            folderId: item.id,
+            folderName: item.name,
+          };
+        }
+        return acc;
+      }, {})) ||
+    {};
+
+  const obj_keys = Object.keys(obj).map(Number);
 
   return (
     <div>

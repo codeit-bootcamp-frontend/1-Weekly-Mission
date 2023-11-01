@@ -7,7 +7,8 @@ import { getEachfoldersData } from "../../api/folder";
 
 export default function FolderButton({ data, dataKeys }) {
   // navigate를 하게 되면은 component가 새롭게 mount된다.
-  //
+
+  console.log(data, dataKeys);
   const navigate = useNavigate();
   const params = useParams();
 
