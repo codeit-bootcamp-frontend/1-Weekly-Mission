@@ -1,9 +1,11 @@
+const URL = "https://bootcamp-api.codeit.kr/api/";
+
 export const getAccount = async (userID) => {
   const idNum = userID;
   if (!userID) return;
   if (userID === "S") userID = "sample/user";
   else userID = `users/${userID}`;
-  const response = await fetch(`https://bootcamp-api.codeit.kr/api/` + userID);
+  const response = await fetch(URL + userID);
   const body = await response.json();
   if (body.data) return body.data[idNum - 1];
   else {
@@ -13,22 +15,22 @@ export const getAccount = async (userID) => {
 };
 
 export const getShareFolder = async () => {
-  const response = await fetch(`https://bootcamp-api.codeit.kr/api/sample/folder`);
+  const response = await fetch(URL + `sample/folder`);
   const body = await response.json();
   return body.folder;
 };
 
 export const getSearchFolder = async (userID = 1, folderID) => {
   const folderQueryString = folderID ? `?folderId=${folderID}` : "";
-  const userIDFolder = `${userID}/links${folderQueryString}`;
-  const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/` + userIDFolder);
+  const userIDFolder = `users/${userID}/links${folderQueryString}`;
+  const response = await fetch(URL + userIDFolder);
   const body = await response.json();
   return body;
 };
 
 export const getSelectedFolder = async (userID = 1) => {
-  const userIDFolder = `${userID}/folders`;
-  const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/` + userIDFolder);
+  const userIDFolder = `users/${userID}/folders`;
+  const response = await fetch(URL + userIDFolder);
   const body = await response.json();
   const allFolder = {
     id: 0,

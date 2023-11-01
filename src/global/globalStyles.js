@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-// 이게 필요할까요..? 뭔가 더 정리되었으면 좋겠어서 이렇게 했는데 그냥 body에 css 속성으로 넣는 게 더 간단할 것 같기도 해서요
 /* export const COLORS = {
   primary: '#6d6afe',
   red: '#FF5B56',

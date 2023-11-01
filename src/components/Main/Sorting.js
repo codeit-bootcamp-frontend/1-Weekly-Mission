@@ -48,34 +48,29 @@ const AddIcon = styled.img`
   width: 16px;
   height: 16px;
 `;
+{
+  /*피그마에서 FAB 버튼 자체를 컴포넌트로 만든 거 같아서 일반 스타일 버튼은 따로 추가해줬는데, FAB css 변경하는 게 나을까요?*/
+}
 
 const Sorting = ({ selectedFolder }) => {
-  let isActiveArray = Array(selectedFolder.length).fill(false);
-  isActiveArray[0] = true;
+  const [activeFolderId, setActiveFolderId] = useState(selectedFolder[0].id);
 
-  const [isActive, setIsActive] = useState(isActiveArray);
-
-  const handleClick = (index) => {
-    isActiveArray = Array(selectedFolder.length).fill(false);
-    isActiveArray[index] = true;
-    setIsActive(isActiveArray);
+  const handleClick = (folderId) => {
+    setActiveFolderId(folderId);
   };
 
   return (
     <SortingContainer>
       <ButtonContainer>
-        {selectedFolder.map((selectedFolder, index) => {
-          return (
-            <SortingButton key={index} folderId={selectedFolder.id} createdAt={selectedFolder["created_at"]} isActive={isActive[index]} handleClick={() => handleClick(index)} buttonIndex={index}>
-              {selectedFolder.name}
-            </SortingButton>
-          );
-        })}
+        {selectedFolder.map((folder, index) => (
+          <SortingButton key={index} folderId={folder.id} createdAt={folder.created_at} isActive={activeFolderId === folder.id} handleClick={() => handleClick(folder.id)} buttonIndex={index}>
+            {folder.name}
+          </SortingButton>
+        ))}
       </ButtonContainer>
       <FolderAdd>
         <p>폴더 추가</p>
         <AddIcon src={addIcon}></AddIcon>
-        {/*피그마에서 FAB 버튼 자체를 컴포넌트로 만든 거 같아서 일반 스타일 버튼은 따로 추가해줬는데, FAB css 변경하는 게 나을까요?*/}
       </FolderAdd>
       <FAB src={addIconWhite}>폴더 추가</FAB>
     </SortingContainer>
