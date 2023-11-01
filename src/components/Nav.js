@@ -1,7 +1,8 @@
 import NavLogo from "../assets/Nav_logo.svg";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { async } from "q";
 
 export const Navigation = styled.nav`
   z-index: 2;
@@ -96,18 +97,20 @@ const Nav = ({ account, isSticky = false }) => {
   const [userEmail, setUserEmail] = useState(null);
   const [userProfileImg, setUserProfileImg] = useState(null);
 
-  const handleLoginInfo = (account) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
     if (!account) {
-      return;
+      navigate("/signIn");
     } else {
-      const { email, image_source } = account;
-      setUserEmail(email);
-      setUserProfileImg(image_source);
+      handleLoginInfo(account);
     }
   };
 
-  const handleClick = () => {
-    handleLoginInfo(account);
+  const handleLoginInfo = (account) => {
+    const { email, image_source } = account;
+    setUserEmail(email);
+    setUserProfileImg(image_source);
   };
 
   // useEffect(() => {   // 주석 풀면 자동 로그인
@@ -122,8 +125,6 @@ const Nav = ({ account, isSticky = false }) => {
         </Link>
         {userEmail && (
           <Account>
-            {" "}
-            {/*프로필 누르면 자기 계정으로 들어갈 것 같아서 일단 a*/}
             <ProfileImg src={userProfileImg} alt="프로필 이미지" />
             <Email>{userEmail}</Email>
           </Account>

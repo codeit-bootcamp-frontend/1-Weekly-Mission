@@ -5,10 +5,14 @@ import Header from "../components/Header";
 import SharedMain from "../components/Main/SharedMain";
 import useGetAccount from "../hooks/useGetAccount";
 import useGetShareFolder from "../hooks/useGetShareFolder";
+import { useState } from "react";
 
 const Shared = () => {
-  const account = useGetAccount();
-  const folderInfo = useGetShareFolder();
+  const [userId, setUserId] = useState("S"); // 샘플
+
+  const account = useGetAccount(userId);
+  const folderInfo = useGetShareFolder(userId);
+
   return (
     <>
       <GlobalStyle />

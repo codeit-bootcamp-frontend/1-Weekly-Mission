@@ -1,6 +1,7 @@
-export const getAccount = async (userID = "sample") => {
+export const getAccount = async (userID) => {
   const idNum = userID;
-  if (userID === "sample") userID = "sample/user";
+  if (!userID) return;
+  if (userID === "S") userID = "sample/user";
   else userID = `users/${userID}`;
   const response = await fetch(`https://bootcamp-api.codeit.kr/api/` + userID);
   const body = await response.json();
