@@ -13,14 +13,10 @@ export default function User({ folderInfo }) {
   const folder = folderInfo ? folderInfo : INIT_FOLDER_INFO;
 
   return (
-    <Container className='user'>
-      <Img
-        src={folder.owner.profileImageSource}
-        className='folder-profile-image'
-        alt='프로필 이미지'
-      />
-      <UserName className='user-name'>@{folder.owner.name}</UserName>
-      <FolderName className='user-folder-name'>{folder.name}</FolderName>
+    <Container>
+      <Img src={folder.owner.profileImageSource} alt='프로필 이미지' />
+      <UserName>@{folder.owner.name}</UserName>
+      <FolderName>{folder.name}</FolderName>
     </Container>
   );
 }

@@ -1,6 +1,6 @@
-import defaultImg from '../assets/images/no-image.png';
-import kebabImg from '../assets/images/kebab.svg';
-import starImg from '../assets/images/star.svg';
+import defaultImg from '../../assets/images/no-image.png';
+import kebabImg from '../../assets/images/kebab.svg';
+import starImg from '../../assets/images/star.svg';
 import styled from 'styled-components';
 
 const moment = require('moment');
@@ -22,16 +22,14 @@ export default function Card({ value }) {
   return (
     <Container href={value.url} target='_blank' rel='noreferrer noopener'>
       <Star src={starImg} alt='즐겨찾기' />
-      <CardImg style={imageStyle} className='card-image'></CardImg>
-      <TextBox className='card-text'>
-        <Box className='posting-box'>
-          <div className='posting-time'>{ago}</div>
+      <CardImg style={imageStyle}></CardImg>
+      <TextBox>
+        <Box>
+          <div>{ago}</div>
           <Kebab src={kebabImg} alt='케밥' onClick={handleKebab} />
         </Box>
-        <Description className='posting-description'>
-          {value.description}
-        </Description>
-        <div className='posting-date'>{date}</div>
+        <Description>{value.description}</Description>
+        <div>{date}</div>
       </TextBox>
     </Container>
   );

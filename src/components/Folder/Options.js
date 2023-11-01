@@ -1,6 +1,6 @@
-import shareImg from '../assets/images/share.svg';
-import penImg from '../assets/images/pen.svg';
-import deleteImg from '../assets/images/Group 36.svg';
+import shareImg from '../../assets/images/share.svg';
+import penImg from '../../assets/images/pen.svg';
+import deleteImg from '../../assets/images/Group 36.svg';
 import styled from 'styled-components';
 
 const SHARED = {

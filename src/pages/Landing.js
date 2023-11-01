@@ -1,7 +1,7 @@
 import mainImg from '../assets/images/_img.png';
 import styled from 'styled-components';
-import Button from '../components/Button';
-import LandingContent from '../components/LandingContent';
+import Button from '../components/common/Button';
+import LandingContent from '../components/Landing/LandingContent';
 import contentArr from '../assets/content';
 
 export default function Landing() {
