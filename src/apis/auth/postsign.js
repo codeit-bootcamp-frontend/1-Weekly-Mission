@@ -1,7 +1,7 @@
-import { APIpoint } from '../api';
+import requestAPI from '../api';
 
 const postSign = async (signType, data) => {
-  const response = await fetch(`${APIpoint}sign-${signType}`, {
+  const { response, result } = await requestAPI(`sign-${signType}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -9,12 +9,14 @@ const postSign = async (signType, data) => {
     body: JSON.stringify(data),
   });
 
-  const {
-    data: { accessToken, refreshToken },
-  } = await response.json();
+  if (response.status === 200) {
+    const {
+      data: { accessToken, refreshToken },
+    } = await result;
 
-  localStorage.setItem('accessToken', accessToken);
-  localStorage.setItem('refreshToken', refreshToken);
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+  }
 
   return response;
 };

@@ -1,8 +1,8 @@
-import { requestAPI } from '../api';
+import requestAPI from '../api';
 
 const getFolderListsByUser = async (userID) => {
-  const response = await requestAPI(`users/${userID}/folders`);
-  return response;
+  const { result } = await requestAPI(`users/${userID}/folders`);
+  return result;
 };
 
 export default getFolderListsByUser;

@@ -1,10 +1,10 @@
-import { APIpoint } from '../api';
+import requestAPI from '../api';
 
 //
 const postCheckEmail = async (email) => {
   const data = { email };
 
-  const response = await fetch(`${APIpoint}check-email`, {
+  const { response } = await requestAPI(`check-email`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

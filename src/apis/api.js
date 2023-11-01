@@ -3,7 +3,7 @@ const APIpoint = 'https://bootcamp-api.codeit.kr/api/';
 async function requestAPI(url, body) {
   const response = await fetch(`${APIpoint}${url}`, body);
   const result = await response.json();
-  return result;
+  return { response, result };
 }
 
-export { requestAPI, APIpoint };
+export default requestAPI;
