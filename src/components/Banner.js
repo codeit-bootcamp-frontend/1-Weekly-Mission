@@ -1,18 +1,18 @@
 import "../css/banner.css";
 import { useState, useEffect } from "react";
-import { getFolderData } from "../api";
+import { getSampleData } from "../api";
 
 function Banner() {
   const [hasData, setHasData] = useState(false);
-  const [folderData, setFolderData] = useState();
+  const [sampleData, setSampleData] = useState();
 
   const load = async () => {
     let result;
     try {
-      result = await getFolderData();
+      result = await getSampleData();
       result = result.folder;
       setHasData(true);
-      setFolderData(result);
+      setSampleData(result);
     } catch (error) {
       setHasData(false);
       return;
@@ -29,13 +29,13 @@ function Banner() {
         <div className="bannerContainer">
           <div className="bannerProfile">
             <img
-              src={folderData.owner.profileImageSource}
+              src={sampleData.owner.profileImageSource}
               id="profileImg"
               alt="Profile Img"
             />
-            <p>@{folderData.owner.name}</p>
+            <p>@{sampleData.owner.name}</p>
           </div>
-          <p>{folderData.name}</p>
+          <p>{sampleData.name}</p>
         </div>
       )}
     </>

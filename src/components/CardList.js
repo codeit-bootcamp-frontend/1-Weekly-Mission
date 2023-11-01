@@ -1,19 +1,19 @@
-import Card from "./Card.js";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getFolderData } from "../api.js";
-import searchImg from "../images/Search.svg";
+import { getSampleData } from "../api.js";
+import Card from "./Card.js";
 
 function CardList() {
   const [hasData, setHasData] = useState(false);
-  const [folderData, setFolderData] = useState([]);
+  const [sampleData, setSampleData] = useState([]);
 
   const handleLoad = async () => {
     let result;
     try {
-      result = await getFolderData();
+      result = await getSampleData();
       result = result.folder.links;
       setHasData(true);
-      setFolderData(result);
+      setSampleData(result);
     } catch (error) {
       setHasData(false);
       return;
@@ -26,12 +26,8 @@ function CardList() {
 
   return (
     <div className="cardListContainer">
-      <div className="searchContainer">
-        <input className="searchInput" placeholder="링크를 검색해 보세요." />
-        <img className="searchImg" src={searchImg} alt="검색 이미지" />
-      </div>
       <ul className="cardList">
-        {folderData.map((item) => (
+        {sampleData.map((item) => (
           <li key={item.id}>
             <Card item={item} />
           </li>
