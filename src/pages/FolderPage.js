@@ -6,7 +6,7 @@ import Search from "../components/Search";
 import Category from "../components/Category";
 import NoLink from "../components/NoLink";
 import CategoryOption from "../components/CategoryOption";
-import Modals from "../modals/Modals";
+import Modals from "./modals/Modals";
 
 function FolderPage() {
   const [folderData, setFolderData] = useState([]);
@@ -28,6 +28,7 @@ function FolderPage() {
   useEffect(() => {
     handleClick();
     getFolderData();
+    setModalOn(false);
   }, []);
 
   // TODO : 카테고리 컴포넌트 완성 (카테고리 컴포넌트 내부)
@@ -35,9 +36,16 @@ function FolderPage() {
   // TODO : 폴더 아이디를 갖고 fetch
   return (
     <>
+      {modalOn && (
+        <Modals
+          modalOn={modalOn}
+          modalId={selectedFolder}
+          onClick={setModalOn}
+        />
+      )}
       <section className="folder-section">
         <AddLink />
-        <Modals modalOn={modalOn} modalId={selectedFolder} />
+
         <ul className="cards-list">
           <Search />
           <Category

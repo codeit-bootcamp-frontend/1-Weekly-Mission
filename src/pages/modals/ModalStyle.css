@@ -1,4 +1,18 @@
 /* 모달 공통 스타일 */
+
+.modal-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  /* background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 .modal-box {
   display: flex;
   flex-direction: column;
@@ -11,7 +25,7 @@
   height: 24.4rem;
   border: 1px solid var(--gray-botticelli);
   position: relative;
-  border: 1px solid green; /*나중에 지우기*/
+  background-color: #fff;
 }
 
 .modal-close-btn {

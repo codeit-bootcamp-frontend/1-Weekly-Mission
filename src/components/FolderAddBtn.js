@@ -3,7 +3,7 @@ import "./FolderAddBtn.css";
 
 function FolderAddBtn({ selectedFolder, onClick }) {
   function handleFolderAdd() {
-    onClick(true, selectedFolder);
+    onClick(true);
   }
 
   return (
