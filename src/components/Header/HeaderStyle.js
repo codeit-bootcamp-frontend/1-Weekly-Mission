@@ -1,29 +1,27 @@
-import styled from "styled-components";
-import colors from "../../style/colors";
-import { device } from "../../style/device";
-import { flexCenter } from "../../style/common";
+import styled from 'styled-components'
+import colors from '../../style/colors'
+import { device } from '../../style/device'
 
 export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
-  height: 10rem;
+  height: 17rem;
   padding: 4rem 3rem;
 
   flex-direction: column;
   gap: 1.25rem;
 
   background: ${colors.background};
-
-`;
+`
 
 export const HeaderOwner = styled.div`
   gap: 0.75rem;
-`;
+`
 
 export const HeaderOwnerImg = styled.img`
   height: 3.75rem;
   border-radius: 70%;
-`;
+`
 
 export const HeaderOwnerName = styled.p`
   color: #000;
@@ -32,20 +30,17 @@ export const HeaderOwnerName = styled.p`
   font-weight: 400;
   line-height: 1.5rem;
   text-align: center;
-
-`;
+`
 
 export const HeaderName = styled.h1`
   color: #000;
   text-align: center;
   font-feature-settings:
-    "clig" off,
-    "liga" off;
+    'clig' off,
+    'liga' off;
   font-family: Pretendard;
   font-size: 2.5rem;
   font-style: normal;
-  width : 800px;
   font-weight: 600;
   line-height: normal;
-  
-`;
+`

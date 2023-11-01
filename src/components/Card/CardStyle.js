@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import colors from "../../style/colors";
+import styled from 'styled-components'
+import colors from '../../style/colors'
 
 export const CardContainer = styled.a`
   width: 340px;
@@ -18,7 +18,7 @@ export const CardContainer = styled.a`
       transform: scale(1.3);
     }
   }
-`;
+`
 
 export const CardImageContainer = styled.div`
   overflow: hidden;
@@ -28,27 +28,29 @@ export const CardImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const CardImage = styled.img`
   border-radius: ${({ className }) =>
-    className === "no-img-logo" ? "0" : "15px 15px 0 0"};
-  width: ${({ className }) => (className === "no-img-logo" ? "100px" : "100%")};
-  height: ${({ className }) => (className === "no-img-logo" ? "50px" : "100%")};
-`;
+    className === 'no-img-logo' ? '0' : '15px 15px 0 0'};
+  width: ${({ className }) => (className === 'no-img-logo' ? '100px' : '100%')};
+  height: ${({ className }) => (className === 'no-img-logo' ? '50px' : '100%')};
+  
+`
 
 export const CardContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
   gap: 12px;
-`;
+  
+`
 
 export const CardContentAgo = styled.div`
   color: #666;
   font-size: 13px;
   font-weight: 400;
-`;
+`
 
 export const CardContent = styled.div`
   overflow: hidden;
@@ -62,10 +64,10 @@ export const CardContent = styled.div`
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-`;
+`
 
 export const CardContentAt = styled.div`
   color: #333;
   font-size: 14px;
   font-weight: 400;
-`;
+`
