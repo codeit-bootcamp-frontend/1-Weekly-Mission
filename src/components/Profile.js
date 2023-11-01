@@ -1,16 +1,9 @@
-import { useState, useEffect } from 'react';
 import defaultProfileImg from '../assets/images/default-profile.svg';
+import useGetWindowWidth from '../hooks/useGetWindowWidth';
 
 function Profile({ user }) {
   const { email, profileImageSource, image_source } = user;
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const resizeListener = () => {
-      setInnerWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', resizeListener);
-  });
+  const innerWidth = useGetWindowWidth();
 
   return (
     <div className="profile">

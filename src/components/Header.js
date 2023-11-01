@@ -7,7 +7,7 @@ import useGetSampleUser from '../hooks/useGetSampleUser';
 
 function Header({ page = '' }) {
   const sampleuser = useGetSampleUser();
-  const user = useGetUser();
+  const user = useGetUser(1);
   const userData = page === 'shared' ? sampleuser : user;
   const fixed = page === 'shared' ? 'fixed' : null;
 

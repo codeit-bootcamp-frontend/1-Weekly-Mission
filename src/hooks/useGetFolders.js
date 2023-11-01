@@ -1,10 +1,10 @@
 import useGetData from './useGetData';
-import { USERS } from '../constants/path';
+import { PATH } from '../constants/path';
 /**
- * @returns user 1의 folder 데이터 배열
+ * @returns userId를 가진 user의 folder 데이터 배열
  */
-function useGetFolders() {
-  const folders = useGetData(USERS[1].folders);
+function useGetFolders(userId) {
+  const folders = useGetData(`${PATH.user}/${userId}/${PATH.folder}`);
   if (!folders) return null;
   return folders.data;
 }

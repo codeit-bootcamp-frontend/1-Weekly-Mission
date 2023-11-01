@@ -1,4 +1,5 @@
 import '../../styles/sharedContent.css';
+import { SAMPLE_ID } from '../../constants/default';
 import FolderInfo from './FolderInfo.js';
 import SearchBar from '../SearchBar.js';
 import CardList from './CardList.js';
@@ -13,7 +14,7 @@ function SharedContent() {
       <main>
         <div className="content_container">
           <SearchBar />
-          <CardList folderId={-2} />
+          <CardList folderId={SAMPLE_ID} />
         </div>
       </main>
     </>

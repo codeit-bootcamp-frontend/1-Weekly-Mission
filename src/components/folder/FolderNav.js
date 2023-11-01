@@ -1,4 +1,37 @@
 import styled from 'styled-components';
+import { ALL_ID } from '../../constants/default';
+
+const selectFolderStyle = {
+  color: 'white',
+  backgroundColor: 'var(--primary-color)',
+};
+
+function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAll }) {
+  return (
+    <FolderList>
+      <FolderItem style={selectedFolderId === ALL_ID ? selectFolderStyle : null} onClick={onChangeFolderAll}>
+        전체
+      </FolderItem>
+      {folders.map((folder) => (
+        <FolderListItem style={folder.id === selectedFolderId ? selectFolderStyle : null} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />
+      ))}
+    </FolderList>
+  );
+}
+
+function FolderListItem({ folder, onChangeFolder, style }) {
+  function handleFolderClick() {
+    onChangeFolder(folder.id);
+  }
+
+  return (
+    <FolderItem style={style} key={folder.id} onClick={handleFolderClick}>
+      {folder.name}
+    </FolderItem>
+  );
+}
+
+export default FolderNav;
 
 const FolderList = styled.ul`
   width: 900px;
@@ -29,35 +62,3 @@ const FolderItem = styled.li`
     background-color: var(--primary-color);
   }
 `;
-
-const selectFolderStyle = {
-  color: 'white',
-  backgroundColor: 'var(--primary-color)',
-};
-
-function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAll }) {
-  return (
-    <FolderList>
-      <FolderItem style={selectedFolderId === -1 ? selectFolderStyle : null} onClick={onChangeFolderAll}>
-        전체
-      </FolderItem>
-      {folders.map((folder) => {
-        const selectedStyle = folder.id === selectedFolderId ? selectFolderStyle : null;
-        return <FolderListItem style={selectedStyle} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />;
-      })}
-    </FolderList>
-  );
-}
-
-function FolderListItem({ folder, onChangeFolder, style }) {
-  function handleFolderClick() {
-    onChangeFolder(folder.id);
-  }
-  return (
-    <FolderItem style={style} key={folder.id} onClick={handleFolderClick}>
-      {folder.name}
-    </FolderItem>
-  );
-}
-
-export default FolderNav;

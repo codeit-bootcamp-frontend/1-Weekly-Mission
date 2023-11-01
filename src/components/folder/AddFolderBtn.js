@@ -1,7 +1,20 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import addButton from '../../assets/images/add.svg';
 import addMobileButton from '../../assets/images/add_mobile.svg';
+import useGetWindowWidth from '../../hooks/useGetWindowWidth';
+
+function AddFolderBtn() {
+  const innerWidth = useGetWindowWidth();
+
+  return (
+    <Container>
+      <AddFolder>폴더 추가</AddFolder>
+      <img src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
+    </Container>
+  );
+}
+
+export default AddFolderBtn;
 
 const Container = styled.div`
   display: flex;
@@ -35,23 +48,3 @@ const AddFolder = styled.p`
     color: #e7effb;
   }
 `;
-
-function AddFolderBtn() {
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const resizeListener = () => {
-      setInnerWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', resizeListener);
-  });
-
-  return (
-    <Container>
-      <AddFolder>폴더 추가</AddFolder>
-      <img src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
-    </Container>
-  );
-}
-
-export default AddFolderBtn;

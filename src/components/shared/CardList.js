@@ -1,9 +1,8 @@
 import '../../styles/cardlist.css';
-
 import { Fragment } from 'react';
 import { noDiscriptMsg } from '../../constants/default';
 import { timeFlow, formatDate } from '../../utils/timeFlow.js';
-
+import { SAMPLE_ID } from '../../constants/default';
 import useGetLinks from '../../hooks/useGetLinks';
 import useGetSampleLinks from '../../hooks/useGetSampleLinks';
 
@@ -32,12 +31,12 @@ function Card({ imageSource, image_source, title, description, createdAt, url, c
 }
 
 /**
- * @param {*} folderId 현재 링크를 불러 올 폴더 Id. -1이면 전체, -2면 sample
+ * @param {*} folderId 현재 링크를 불러 올 폴더 Id.
  */
 function CardList({ folderId }) {
   const sampleLinks = useGetSampleLinks();
-  const userLinks = useGetLinks(folderId);
-  const links = folderId === -2 ? sampleLinks : userLinks;
+  const userLinks = useGetLinks(1, folderId);
+  const links = folderId === SAMPLE_ID ? sampleLinks : userLinks;
   if (!links) return;
 
   return (
