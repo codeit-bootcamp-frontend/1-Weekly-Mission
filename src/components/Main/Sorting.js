@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import addIcon from "../assets/add_icon.svg";
-import SortingButton from "./SortingButton";
+import addIcon from "../../assets/add_icon.svg";
+import SortingButton from "../UI/SortingButton";
 import { useState } from "react";
-import FAB from "./FAB";
-import addIconWhite from "../assets/add_icon_white.svg";
+import FAB from "../UI/FAB";
+import addIconWhite from "../../assets/add_icon_white.svg";
 
 const SortingContainer = styled.div`
   display: flex;

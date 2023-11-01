@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import linkIcon from "../assets/link_icon.svg";
+import linkIcon from "../../assets/link_icon.svg";
 
 const Form = styled.form`
   padding: 1.6rem 2rem;

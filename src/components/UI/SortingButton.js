@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FolderContext } from "../context/FolderContext";
+import { FolderContext } from "../../context/FolderContext";
 import { useContext } from "react";
 
 const Button = styled.button`

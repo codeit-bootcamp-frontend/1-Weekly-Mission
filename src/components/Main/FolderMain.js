@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import LinkSearchInput from "./LinkSearchInput";
 import CardList from "./CardList";
-import shareIcon from "../assets/share_icon.svg";
-import penIcon from "../assets/pen_icon.svg";
-import deleteIcon from "../assets/delete_icon.svg";
+import shareIcon from "../../assets/share_icon.svg";
+import penIcon from "../../assets/pen_icon.svg";
+import deleteIcon from "../../assets/delete_icon.svg";
 import Sorting from "./Sorting";
-import Option from "./Option";
-import useGetSearchFolder from "../hooks/useGetSearchFolder";
+import Option from "../UI/Option";
+import useGetSearchFolder from "../../hooks/useGetSearchFolder";
 import { useEffect, useContext } from "react";
-import { FolderContext } from "../context/FolderContext";
+import { FolderContext } from "../../context/FolderContext";
 
 const MainContainer = styled.main`
   display: flex;

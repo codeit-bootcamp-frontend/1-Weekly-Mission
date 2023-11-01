@@ -1,8 +1,8 @@
-import { formatDateDifference, formatDate } from "../global/utils";
-import EmptyCardImg from "../assets/Card_img.svg";
+import { formatDateDifference, formatDate } from "../../global/utils";
+import EmptyCardImg from "../../assets/Card_img.svg";
 import styled from "styled-components";
-import starIcon from "../assets/star.svg";
-import Kebab from "./Kebab";
+import starIcon from "../../assets/star.svg";
+import Kebab from "../UI/Kebab";
 
 const CardContainer = styled.div`
   display: block;
