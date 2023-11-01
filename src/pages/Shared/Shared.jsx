@@ -3,7 +3,7 @@ import Folder from './components/Folder';
 
 function Shared() {
   return (
-    <Layout>
+    <Layout isLoggedIn>
       <Folder />
     </Layout>
   );

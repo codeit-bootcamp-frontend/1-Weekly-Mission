@@ -1,25 +1,17 @@
 import * as S from './Navigator.style';
 import A11y from 'components/A11y';
 import Button from 'components/Button';
-import { useEffect } from 'react';
-import { getUser } from 'apis/apiClient';
-import useAsync from 'hooks/useAsync';
+import useRequest from 'hooks/useRequest';
 import LB_ICON from 'assets/icons/linkbrary.svg';
 
-function Navigator({ isLoggedIn, userId }) {
-  const { data, fetchData: getUserAsync } = useAsync({
-    asyncFunction: getUser,
-    initialArgs: userId,
-    skip: true,
+function Navigator({ isLoggedIn = false, userId }) {
+  const { data } = useRequest({
+    url: `/users/${userId}`,
+    method: 'get',
+    skip: !isLoggedIn,
   });
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      getUserAsync(userId);
-    }
-  }, []);
-
-  const userInfo = data?.data[0];
+  const userInfo = data?.data?.[0];
 
   return (
     <S.GnbContainer>

@@ -1,7 +1,6 @@
 import * as S from './FoldersContainer.style';
 import { useEffect, useState } from 'react';
-import useAsync from 'hooks/useAsync';
-import { getFolders } from 'apis/apiClient';
+import useRequest from 'hooks/useRequest';
 import SHARE from 'assets/icons/share.svg';
 import EDIT from 'assets/icons/edit.svg';
 import DELETE from 'assets/icons/delete.svg';
@@ -13,9 +12,9 @@ const DEFAULT_FOLDER = {
 };
 
 function FoldersContainer({ userId, initialFolderId, setFolderLinks }) {
-  const { data: folders } = useAsync({
-    asyncFunction: getFolders,
-    initialArgs: userId,
+  const { data: folders } = useRequest({
+    url: `/users/${userId}/folders`,
+    method: 'get',
   });
 
   const foldersData = folders?.data;
