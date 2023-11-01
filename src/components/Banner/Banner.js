@@ -1,7 +1,7 @@
 import './Banner.css';
 
-function Intro({ folderData }) {
-  const { owner, name: folderName } = folderData;
+function Intro({ folder }) {
+  const { owner, name: folderName } = folder;
   if (!owner) return;
 
   const { id, name: userName, profileImageSource } = owner;

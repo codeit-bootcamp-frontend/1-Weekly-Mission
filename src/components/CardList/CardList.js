@@ -5,7 +5,7 @@ function CardList({ card, isCardEditable }) {
   return (
     <div className={styles.wrapper}>
       {card.map((val) => (
-        <Card key={val.id} data={val} isCardEditable={isCardEditable} />
+        <Card key={val.id} card={val} isCardEditable={isCardEditable} />
       ))}
     </div>
   );

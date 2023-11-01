@@ -5,8 +5,8 @@ import { changeDate, changeDateTime } from 'utils/dateFormat';
 import isEmpty from 'utils/isEmpty';
 import styles from './Card.module.css';
 
-function Card({ data, isCardEditable }) {
-  const { url, description, created_at, createdAt, image_source, imageSource } = data;
+function Card({ card, isCardEditable }) {
+  const { url, description, created_at, createdAt, image_source, imageSource } = card;
 
   const formatDate = changeDate(createdAt ?? created_at);
   const formatTime = changeDateTime(createdAt ?? created_at);

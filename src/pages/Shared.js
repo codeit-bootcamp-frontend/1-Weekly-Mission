@@ -27,7 +27,7 @@ function Shared() {
 
   return (
     <>
-      {folder && <Banner folderData={folder} />}
+      {folder && <Banner folder={folder} />}
       <MainSection>
         <Search />
         {cards && <CardList card={cards} isCardEditable={false} />}
