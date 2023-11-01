@@ -4,11 +4,11 @@ import styles from "./FolderButton.module.css";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { getEachfoldersData } from "../../api/folder";
+import FolderPage from "../../pages/FolderPage";
 
 export default function FolderButton({ data, dataKeys }) {
   // navigate를 하게 되면은 component가 새롭게 mount된다.
 
-  console.log(data, dataKeys);
   const navigate = useNavigate();
   const params = useParams();
 
@@ -21,7 +21,6 @@ export default function FolderButton({ data, dataKeys }) {
           이에 해당하는 styling은 Button.module.js에서 한다
         */}
         <Button
-          // className={styles.active__button}
           isActive={!folderId}
           onClickFunc={(e) => {
             navigate("/folder");
@@ -47,11 +46,15 @@ export default function FolderButton({ data, dataKeys }) {
                   onClickFunc={() => {
                     // custom훅을 사용할수가 없어서 API를 사용
                     getEachfoldersData({ folderId: key }).then((data) => {
-                      let boolean = data.length > 0;
-                      if (boolean) {
+                      console.log(data);
+                      let contents = data.length > 0;
+
+                      if (contents) {
                         navigate(`/folder/${key}`);
-                      } else if (!boolean) {
-                        navigate("/folder/nothing");
+                      } else if (!contents) {
+                        console.log(key);
+                        // <FolderPage />;
+                        // navigate("/folder/nothing");
                       }
                     });
                   }}

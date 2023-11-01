@@ -9,12 +9,7 @@ import useUserFetch from "../../hooks/useUserFetch";
 import Profile from "../../common/profile/Profile";
 import useFetch from "../../hooks/useFetch";
 
-export default function NavSec() {
-  // const [data, isLoadng] = useFetch(
-  //   "https://bootcamp-api.codeit.kr/api/users/1"
-  // );
-  const [data, isLoading] = useUserFetch({ userId: 1 });
-
+export default function FolderNav({ data }) {
   return (
     <div className={styles.container}>
       <Logo />

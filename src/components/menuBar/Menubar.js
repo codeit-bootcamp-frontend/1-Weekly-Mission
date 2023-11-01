@@ -7,9 +7,7 @@ export default function Menubar({ data, isLoading }) {
   // ?.의 앞의 평가 대상이 undefined이나 null이 면은 undefined를 반환
   // 못해도 ? undefined
   const result = data?.data;
-
-  //  result가 undefined이면은 obj도 undefined
-
+  //  result가 undefined이면은 obj도 undefined(=> null이 될 수 없다)
   const obj =
     (result &&
       result.reduce((acc, item) => {

@@ -1,7 +1,7 @@
 .container {
   display: flex;
   justify-content: space-between;
-  border: 5px solid red;
+
   @media (min-width: 768px) {
     width: 90%;
     margin: 0 auto;

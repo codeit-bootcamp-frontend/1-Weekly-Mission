@@ -7,17 +7,26 @@ import Menubar from "../components/menuBar/Menubar";
 import WholeData from "../components/linksdata/WholeData";
 
 import useUserFolderFetch from "../hooks/userUserFolderFetch";
-import Landing from "../components/landing/Landing";
 import LocaleContext from "../contexts/LocaleContext";
 
 import { useParams } from "react-router-dom";
-import { useQuery } from "react-query";
+
 import { fetchUserData, fetchUserFolderData } from "../api/users";
 import FolderMenu from "../components/menuBar/FolderMenu";
+import useUserFetch from "../hooks/useUserFetch";
+import useTest from "../hooks/useTest";
 
 export default function FolderPage() {
+  const USER_ID = 1;
   const paramId = useParams();
-  const [data, isLoading] = useUserFolderFetch({ userId: 1 });
+  const [userData] = useTest(() => fetchUserData({ userId: USER_ID }));
+
+  // const [userData] = useUserFetch({ userId: 1 });
+  // const [data, isLoading] = useUserFolderFetch({ userId: 1 });
+
+  const [data, isLoading] = useTest(() =>
+    fetchUserFolderData({ userId: USER_ID })
+  );
 
   const result = data?.data;
   const obj = {};
@@ -34,7 +43,7 @@ export default function FolderPage() {
 
   return (
     <LocaleContext.Provider value={obj}>
-      <FolderNav />
+      <FolderNav data={userData} />
       <Header />
       <SearchBar />
       <Menubar data={data} isLoading={isLoading} />

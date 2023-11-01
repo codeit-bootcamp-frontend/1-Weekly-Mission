@@ -7,11 +7,16 @@ import Profile from "../common/profile/Profile";
 import useFetch from "../hooks/useFetch";
 
 import React from "react";
-import { useQueryClient } from "react-query";
 
+import useTest from "../hooks/useTest";
+
+import { getShareDate } from "../api/folder";
 export default function SharedPage() {
-  const response = useFetch("https://bootcamp-api.codeit.kr/api/sample/folder");
-  const [data, isLoading] = response;
+  const [data, isLoading] = useTest(() => getShareDate());
+
+  // const [data, isLoading] = useFetch(
+  //   "https://bootcamp-api.codeit.kr/api/sample/folder"
+  // );
 
   return (
     <div>
