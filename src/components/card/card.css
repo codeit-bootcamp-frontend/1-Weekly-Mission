@@ -56,14 +56,10 @@
   position: relative;
 }
 
-.kebab-icon {
-  position: absolute;
-  top: 215px;
-  right: 20px;
-  color: var(--color-gray-100);
-}
-
 .time-stamp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: var(--color-gray-50);
   font-size: 13px;
   font-weight: 400;
