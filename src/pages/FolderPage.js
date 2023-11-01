@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
-import styles from "../styles/FolderPage.module.css";
-import AddLink from "../components/AddLink";
-import NavBar from "../components/NavBar";
-import Search from "../components/Search";
-import Footer from "../components/Footer";
+import styles from "./FolderPage.module.css";
+import AddLink from "../components/AddLink/AddLink";
+import NavBar from "../components/NavBar/NavBar";
+import Search from "../components/Search/Search";
+import Footer from "../components/Footer/Footer";
 import useAsync from "../hooks/useAsync";
 import getUserFolders from "../api/getUserFolders";
-import Category from "../components/Category";
-import Card from "../components/Card";
+import Category from "../components/Category/Category";
+import Card from "../components/Card/Card";
 import getUserLinks from "../api/getUserLinks";
-import FolderUtils from "../components/FolderUtils";
-import FloatingAddFolder from "../components/FloatingAddFolder";
+import FolderUtils from "../components/FolderUtils/FolderUtils";
+import FloatingAddFolder from "../components/FloatingAddFolder/FloatingAddFolder";
 
 const FolderPage = () => {
   const [userId, setUserId] = useState(null);

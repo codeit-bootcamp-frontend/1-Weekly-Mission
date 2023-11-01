@@ -1,5 +1,5 @@
-import styles from "../styles/FloatingAddFolder.module.css";
-import plus from "../assets/plus_white.svg";
+import styles from "./FloatingAddFolder.module.css";
+import plus from "../../assets/plus_white.svg";
 
 const FloatingAddFolder = () => {
   return (

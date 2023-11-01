@@ -1,4 +1,4 @@
-import styles from "../styles/Category.module.css";
+import styles from "./Category.module.css";
 import CategoryList from "./CategoryList";
 
 const Category = ({ folderListData, currentFolder, isLoading, selectedCategoryId, onclick }) => {

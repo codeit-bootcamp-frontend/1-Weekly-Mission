@@ -1,4 +1,4 @@
-import styles from "../styles/CardList.module.css";
+import styles from "./CardList.module.css";
 import CardItem from "./CardItem";
 import CardItemSkeleton from "./CardItemSkeleton";
 import NotFoundLink from "./NotFoundLink";

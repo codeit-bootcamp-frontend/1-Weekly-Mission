@@ -1,4 +1,4 @@
-import styles from "../styles/Card.module.css";
+import styles from "./Card.module.css";
 import CardList from "./CardList";
 
 const Card = ({ folderData, isLoading }) => {

@@ -1,6 +1,6 @@
-import styles from "../styles/CategoryList.module.css";
+import styles from "./CategoryList.module.css";
 import CategoryButton from "./CategoryButton";
-import plus from "../assets/plus.svg";
+import plus from "../../assets/plus.svg";
 import CategoryButtonSkeleton from "./CategoryButtonSkeleton";
 
 const CategoryList = ({ folderListData, currentFolder, isLoading, selectedCategoryId, onclick }) => {

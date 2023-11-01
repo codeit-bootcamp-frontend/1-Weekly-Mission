@@ -1,6 +1,6 @@
 import { useState } from "react";
-import styles from "../styles/SearchBar.module.css";
-import searchIcon from "../assets/searchIcon.svg";
+import styles from "./SearchBar.module.css";
+import searchIcon from "../../assets/searchIcon.svg";
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");

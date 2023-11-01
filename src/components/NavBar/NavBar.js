@@ -1,5 +1,5 @@
-import styles from "../styles/NavBar.module.css";
-import logo from "../assets/logo.svg";
+import styles from "./NavBar.module.css";
+import logo from "../../assets/logo.svg";
 import LoginButton from "./LoginButton";
 
 const NavBar = ({ userId = "" }) => {

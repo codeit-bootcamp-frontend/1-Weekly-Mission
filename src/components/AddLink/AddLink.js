@@ -1,4 +1,4 @@
-import styles from "../styles/AddLink.module.css";
+import styles from "./AddLink.module.css";
 import AddLinkInput from "./AddLinkInput";
 
 const AddLink = () => {

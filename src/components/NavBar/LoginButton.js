@@ -1,9 +1,9 @@
 import { useState } from "react";
-import styles from "../styles/LoginButton.module.css";
-import ProfileInfo from "./ProfileInfo";
-import getUser from "./../api/getUser";
 import classnames from "classnames";
-import useAsync from "../hooks/useAsync";
+import styles from "./LoginButton.module.css";
+import ProfileInfo from "./ProfileInfo";
+import getUser from "../../api/getUser";
+import useAsync from "../../hooks/useAsync";
 
 const LoginButton = ({ userId }) => {
   const [userData, setUserData] = useState(null);

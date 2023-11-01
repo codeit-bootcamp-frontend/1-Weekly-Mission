@@ -1,4 +1,4 @@
-import styles from "../styles/FolderInfoSkeleton.module.css";
+import styles from "./FolderInfoSkeleton.module.css";
 
 const FolderInfoSkeleton = () => {
   return (

@@ -1,4 +1,4 @@
-import styles from "../styles/NotFoundLink.module.css";
+import styles from "./NotFoundLink.module.css";
 
 const NotFoundLink = () => {
   return (

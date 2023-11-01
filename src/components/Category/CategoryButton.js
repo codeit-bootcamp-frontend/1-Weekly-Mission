@@ -1,4 +1,4 @@
-import styles from "../styles/CategoryButton.module.css";
+import styles from "./CategoryButton.module.css";
 
 const CategoryButton = ({ id, currentFolder, selectedCategoryId, onclick, children }) => {
   const handleLoadClick = () => {

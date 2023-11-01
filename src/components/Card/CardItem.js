@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/CardItem.module.css";
-import logoImg from "../assets/emptyImg.svg";
-import starImg from "../assets/star.svg";
-import kebabImg from "../assets/kebab.svg";
+import styles from "./CardItem.module.css";
+import logoImg from "../../assets/emptyImg.svg";
+import starImg from "../../assets/star.svg";
+import kebabImg from "../../assets/kebab.svg";
 
 const formatDate = (value) => {
   const date = new Date(value);

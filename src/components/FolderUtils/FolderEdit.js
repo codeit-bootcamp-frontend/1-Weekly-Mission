@@ -1,7 +1,7 @@
-import styles from "../styles/FolderEdit.module.css";
-import shareImg from "../assets/share.svg";
-import penImg from "../assets/pen.svg";
-import deleteImg from "../assets/delete.svg";
+import styles from "./FolderEdit.module.css";
+import shareImg from "../../assets/share.svg";
+import penImg from "../../assets/pen.svg";
+import deleteImg from "../../assets/delete.svg";
 
 const FolderEdit = () => {
   return (

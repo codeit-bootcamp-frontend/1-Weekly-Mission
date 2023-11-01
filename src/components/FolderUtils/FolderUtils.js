@@ -1,4 +1,4 @@
-import styles from "../styles/FolderUtils.module.css";
+import styles from "./FolderUtils.module.css";
 import CurrentFolder from "./CurrentFolder";
 import FolderEdit from "./FolderEdit";
 

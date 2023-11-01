@@ -1,6 +1,6 @@
 import { useState } from "react";
-import styles from "../styles/AddLinkInput.module.css";
-import chainIcon from "../assets/chain.svg";
+import styles from "./AddLinkInput.module.css";
+import chainIcon from "../../assets/chain.svg";
 import AddLinkButton from "./AddLinkButton";
 
 const AddLinkInput = () => {
