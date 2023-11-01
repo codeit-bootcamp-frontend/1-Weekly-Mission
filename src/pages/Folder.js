@@ -59,7 +59,7 @@ function Folder() {
         <Search />
         {folders && <FolderList folderData={folders} />}
         <Title folderName={folderName}>{isFunctionButtonShow && <FunctionButton folderName={folderName} />}</Title>
-        {initFolderId && cards.length === 0 ? <NotFoundLink /> : <CardList card={cards} visibleCardButton={true} />}
+        {initFolderId && cards.length === 0 ? <NotFoundLink /> : <CardList card={cards} isCardEditable={true} />}
       </MainSection>
     </>
   );

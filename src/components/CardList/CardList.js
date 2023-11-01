@@ -1,11 +1,11 @@
 import Card from 'components/Card/Card';
 import styles from './CardList.module.css';
 
-function CardList({ card, visibleCardButton }) {
+function CardList({ card, isCardEditable }) {
   return (
     <div className={styles.wrapper}>
       {card.map((val) => (
-        <Card key={val.id} data={val} visibleCardButton={visibleCardButton} />
+        <Card key={val.id} data={val} isCardEditable={isCardEditable} />
       ))}
     </div>
   );

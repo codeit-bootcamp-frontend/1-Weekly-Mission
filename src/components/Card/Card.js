@@ -5,7 +5,7 @@ import { changeDate, changeDateTime } from 'utils/dateFormat';
 import isEmpty from 'utils/isEmpty';
 import styles from './Card.module.css';
 
-function Card({ data, visibleCardButton }) {
+function Card({ data, isCardEditable }) {
   const { url, description, created_at, createdAt, image_source, imageSource } = data;
 
   const formatDate = changeDate(createdAt ?? created_at);
@@ -27,7 +27,7 @@ function Card({ data, visibleCardButton }) {
           <span>{formatDate}</span>
         </div>
       </a>
-      {visibleCardButton && (
+      {isCardEditable && (
         <>
           <StarButton />
           <KebabButton />
