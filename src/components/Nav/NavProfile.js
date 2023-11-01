@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import styles from './Nav.module.css';
+import styles from './NavProfile.module.css';
 import useUserValues from '../../hooks/useUserValues';
 
 function NavProfile() {
