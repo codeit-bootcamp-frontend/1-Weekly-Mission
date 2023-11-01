@@ -1,35 +1,40 @@
-import "./header.css";
-import logoImgSource from "../../assets/icons/logo.svg";
-import profileImgSource from "../../assets/icons/profile.svg";
+import * as S from "./header.style.js";
+import logoIconSrc from "assets/icons/logo.svg";
+import profileIconSrc from "assets/icons/profile.svg";
+import { useUserProfileContext } from "contexts/UserProfileContext.js";
+import { useNavigate } from "react-router-dom";
 
-export default function HeaderComponent({ email }) {
-	return (
-		<header className="header">
-			<nav className="header__nav" role="navigation">
-				<button className="header__home-button">
-					<img
-						src={logoImgSource}
-						alt="링크브러리 로고 이미지"
-						aria-label="링크브러리 로고"
-						width="133"
-					/>
-				</button>
+export default function Header({ isHeaderFixed }) {
+  const {
+    userProfile: { image_source, email },
+  } = useUserProfileContext();
 
-				{email ? (
-					<button className="header__profile-button">
-						<img
-							className="profile-icon"
-							src={profileImgSource}
-							alt="프로필 아이콘"
-							width="28"
-							height="28"
-						/>
-						<p className="profile-email">{email}</p>
-					</button>
-				) : (
-					<button className="header__signin-button">로그인</button>
-				)}
-			</nav>
-		</header>
-	);
+  const navigate = useNavigate();
+
+  return (
+    <S.HeaderWrapper $isHeaderFixed={isHeaderFixed}>
+      <S.HeaderNav role="navigation">
+        <S.HeaderHomeButton
+          aria-label="링크브러리 메인 페이지 이동 버튼"
+          onClick={() => navigate("/")}
+        >
+          <img src={logoIconSrc} alt="링크브러리 로고 이미지" width="133" />
+        </S.HeaderHomeButton>
+
+        {email ? (
+          <S.HeaderProfileButton>
+            <S.ProfileIcon
+              src={image_source ?? profileIconSrc}
+              alt="내 프로필 아이콘 이미지"
+              width="28"
+              height="28"
+            />
+            <S.ProfileEmail>{email}</S.ProfileEmail>
+          </S.HeaderProfileButton>
+        ) : (
+          <S.HeaderSignInButton>로그인</S.HeaderSignInButton>
+        )}
+      </S.HeaderNav>
+    </S.HeaderWrapper>
+  );
 }

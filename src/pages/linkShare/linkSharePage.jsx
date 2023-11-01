@@ -1,76 +1,51 @@
 import { useEffect, useState } from "react";
-
-import "./linkSharePage.css";
-import LinkCardComponent from "../../components/linkCard/linkCard.jsx";
-import { getSampleUserFolder, getSampleUserProfile } from "./linkSharePage.js";
-import HeaderComponent from "../../components/header/header.jsx";
-import LinkSearchBarComponent from "../../components/linkSearchBar/linkSearchBar";
-import FooterComponent from "../../components/footer/footer";
-import useAsync from "../../hooks/useAsync.js";
+import * as S from "./linkSharePage.style.js";
+import { getSampleUserFolder } from "pages/linkShare/linkSharePage.js";
+import LinkSearchBar from "components/linkSearchBar/LinkSearchBar.jsx";
+import useAsync from "hooks/useAsync.js";
+import LinkCardList from "components/linkCardList/LinkCardList.jsx";
 
 export default function LinkSharePage() {
-	const [folder, setFolder] = useState([]);
-	const [profile, setProfile] = useState({});
-	const [isLoadingProfile, loadingErrorProfile, getSampleUserProfileAsync] =
-		useAsync(getSampleUserProfile);
-	const [isLoadingFolder, loadingErrorFolder, getSampleUserFolderAsync] =
-		useAsync(getSampleUserFolder);
+  const [folder, setFolder] = useState([]);
 
-	async function handleFolder() {
-		const folder = await getSampleUserFolderAsync();
+  const [isLoadingFolder, loadingErrorFolder, getSampleUserFolderAsync] =
+    useAsync(getSampleUserFolder);
 
-		if (!folder) return;
-		setFolder(folder);
-	}
+  async function handleFolder() {
+    const folder = await getSampleUserFolderAsync();
 
-	async function handleProfile() {
-		const profile = await getSampleUserProfileAsync();
-		if (!profile) return;
-		setProfile(profile);
-	}
+    if (!folder) return;
+    setFolder(folder);
+  }
 
-	useEffect(() => {
-		handleProfile();
-		handleFolder();
-	}, []);
+  useEffect(() => {
+    handleFolder();
+  }, []);
 
-	return (
-		<div className="page--container">
-			{!loadingErrorProfile && (
-				<>
-					<HeaderComponent email={profile.email} />
-					<main className="folder-info--wrapper">
-						<img
-							className="profile-image"
-							src={profile.profileImageSource}
-							alt="유저 프로필 이미지"
-							width="60px"
-							height="60px"
-						/>
+  return (
+    <>
+      <S.FolderInfoContainer>
+        {folder?.owner && (
+          <>
+            <S.ProfileImage
+              src={folder.owner.profileImageSource}
+              alt="링크 주인의 프로필 이미지"
+              width="60px"
+              height="60px"
+            />
 
-						<p className="profile-name">@{profile.name}</p>
+            <S.ProfileName>@{folder.owner.name}</S.ProfileName>
+          </>
+        )}
+        {folder?.name && <S.FolderName>{folder?.name}</S.FolderName>}
+      </S.FolderInfoContainer>
 
-						<p className="folder-name">{folder.name}</p>
-					</main>
-				</>
-			)}
-
-			<section className="folder-contents--wrapper">
-				<LinkSearchBarComponent />
-				<ul className="link-card-list--wrapper">
-					{folder?.links?.map((cardData) => {
-						return (
-							<LinkCardComponent
-								key={cardData.id}
-								cardData={cardData}
-								isSelected={false}
-							/>
-						);
-					})}
-				</ul>
-			</section>
-
-			<FooterComponent />
-		</div>
-	);
+      <S.FolderContentsContainer>
+        <LinkSearchBar />
+        {folder?.links && (
+          <LinkCardList linkList={folder.links} page={"linkShare"} />
+        )}
+      </S.FolderContentsContainer>
+    </>
+  );
 }
