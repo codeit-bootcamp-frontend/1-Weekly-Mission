@@ -15,7 +15,7 @@ class ExplainerSection {
   }
 }
 
-const ExplainerSectionArray = [
+const ExplainerSectionItems = [
   new ExplainerSection(
     'odd',
     'save_your_link',
@@ -71,4 +71,4 @@ const ExplainerSectionArray = [
   ),
 ];
 
-export default ExplainerSectionArray;
+export default ExplainerSectionItems;
