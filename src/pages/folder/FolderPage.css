@@ -1,0 +1,67 @@
+.main-folder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 4rem 0;
+}
+
+.add-link-container{
+    margin: 9.6rem  0.6rem;
+    background-color: #fff;
+    border: 1px solid #6d6afe;
+    border-radius: 15px;
+    padding: 1.6rem 2rem;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 80rem;
+    position: relative;
+}
+
+.link-input{
+    margin-left: 1rem;
+}
+
+.link-input::placeholder{
+    margin-left: 1rem;
+    color: #9fa6b2;
+}
+
+.btn-link{
+    position: absolute;
+    right: 2rem;
+}
+
+.links-header{
+    width: 90%;
+    max-width: 113rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2.4rem 0;
+
+}
+
+.controll-bar{
+    display: flex;
+    gap: 1.2rem;
+}
+
+.controll-bar-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+    color: #9fa6b2;
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.folder-info-name{
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}

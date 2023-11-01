@@ -1,0 +1,73 @@
+.nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 20rem 2rem;
+    position: fixed;
+    top:0;
+    z-index: 1;
+    background-image: linear-gradient(
+            180deg,
+            rgba(240, 246, 255, 1) 70%,
+            rgba(240, 246, 255, 0)
+    );
+    width: 100%;
+    max-width: 192rem;
+}
+
+.nav-logo img{
+    width: 13rem;
+    height: 2.4rem;
+}
+
+.btn-login{
+    width: 12.8rem;
+    font-size: 1.8rem;
+}
+
+/* login User 정보*/
+.user-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+}
+
+.user-profile span{
+    font-size: 1.4rem;
+}
+
+.user-profile img{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 2rem;
+}
+
+/* 반응형 */
+/* Tablet */
+@media(max-width: 1200px){
+    nav{
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+    nav{
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+    }
+
+    /* 버튼 스타일 */
+    .btn-login{
+        font-size: 1.4rem;
+        width: 8rem;
+    }
+}

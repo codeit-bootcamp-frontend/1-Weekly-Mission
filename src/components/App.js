@@ -1,13 +1,16 @@
 import React from 'react';
-import Landing from './landing/Landing';
-import Home from './home/Home';
-
-// function App() {
-//   return <Landing />;
-// }
+import { Outlet } from 'react-router-dom';
+import Nav from './nav/Nav';
+import Footer from './footer/Footer';
 
 function App() {
-  return true ? <Home /> : <Landing />;
+  return (
+    <>
+      <Nav />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }
 
 export default App;

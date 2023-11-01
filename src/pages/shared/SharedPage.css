@@ -1,0 +1,41 @@
+.folder-info{
+    padding: 9.6rem  0 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.folder-owner{
+    display: flex;
+    flex-direction: column;
+}
+
+.owner-profile img{
+    width:6rem;
+    height: 6rem;
+    border-radius: 4.7rem;
+}
+
+.owner-name{
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+}
+
+.folder-name{
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.main-share{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 4rem 0;
+}
+

@@ -1,0 +1,76 @@
+header{
+    background-color: #F0F6FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+
+.hero-header{
+    background-color: #f0f6ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4.38rem  0 0;
+    margin-top: 7rem;
+    width: 100%;
+}
+
+.hero-header h1{
+    font-size: 6.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 8rem;
+    margin: 0;
+    padding: 0 3.2rem;
+}
+
+.hero-header h1 span{
+    background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+}
+
+.btn-add-link{
+    width: 35rem;
+    margin: 2.5rem;
+    font-size: 1.8rem;
+}
+
+.hero-header img{
+    width: 111.8rem;
+    height: 65.9rem;
+}
+
+
+/* 반응형 */
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1199px){
+    /* header */
+    .hero-header h1{
+        /*font-size: 3.2rem;*/
+        /*line-height: 4.2rem;*/
+        max-width: 55rem;
+    }
+
+    .hero-header img{
+        width: 80%;
+        height: auto;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+    /* header */
+    .hero-header img{
+        width: 100%;
+        height: auto;
+        padding: 0 3.2rem;
+    }
+
+    .hero-header h1{
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+        max-width: 32rem;
+    }
+}
