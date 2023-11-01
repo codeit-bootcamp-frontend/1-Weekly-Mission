@@ -13,7 +13,7 @@ import isEmpty from 'utils/isEmpty';
 
 function Folder() {
   const [folders, setFolders] = useState(null);
-  const [isFunctionButtonShow, setFunctionButtonShow] = useState(false);
+  const [isFunctionButtonShow, setIsFunctionButtonShow] = useState(false);
   const [cards, setCards] = useState([]);
   const [folderName, setFolderName] = useState('');
 
@@ -29,10 +29,10 @@ function Folder() {
     let folderName;
     if (currentId.length === 0) {
       folderName = '전체';
-      setFunctionButtonShow(false);
+      setIsFunctionButtonShow(false);
     } else {
       folderName = currentId[0].name;
-      setFunctionButtonShow(true);
+      setIsFunctionButtonShow(true);
     }
 
     setFolderName(folderName);
