@@ -1,6 +1,7 @@
-import Cards from "./Card";
+import Cards from "../UI/Card";
 import styled from "styled-components";
 import EmptyLinkScreen from "./EmptyLinkScreen";
+import CardDivide from "./CardDivide";
 
 export const SectionContainer = styled.section`
   display: grid;
@@ -24,7 +25,7 @@ const CardList = ({ folderCards }) => {
     <>
       {folderCards.length > 0 ? (
         <SectionContainer>
-          <Cards folderCards={folderCards} />
+          <CardDivide folderCards={folderCards} />
         </SectionContainer>
       ) : (
         <EmptyLinkScreen />

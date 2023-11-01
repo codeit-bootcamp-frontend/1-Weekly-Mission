@@ -2,7 +2,7 @@ import { formatDateDifference, formatDate } from "../../global/utils";
 import EmptyCardImg from "../../assets/Card_img.svg";
 import styled from "styled-components";
 import starIcon from "../../assets/star.svg";
-import Kebab from "../UI/Kebab";
+import Kebab from "./Kebab";
 
 const CardContainer = styled.div`
   display: block;
@@ -95,20 +95,6 @@ const Date = styled.p`
   font-size: 1.4rem;
 `;
 
-const Cards = ({ folderCards }) => {
-  return (
-    <>
-      {folderCards?.map((item) => {
-        return (
-          <div key={item.id}>
-            <Card item={item} />
-          </div>
-        );
-      })}
-    </>
-  );
-};
-
 const Card = ({ item }) => {
   let folderId, createdAt, url, description, imageSource;
 
@@ -141,4 +127,4 @@ const Card = ({ item }) => {
   );
 };
 
-export default Cards;
+export default Card;
