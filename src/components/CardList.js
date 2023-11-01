@@ -1,5 +1,5 @@
-import './CardList.css';
-import noImg from '../assets/noImg.svg';
+import "../components/CardList.css";
+import noImg from "../assets/noImg.svg";
 import { formatDate } from "../utils/formatDate";
 import { getTimeDifference } from "../utils/getTimeDifference";
 
