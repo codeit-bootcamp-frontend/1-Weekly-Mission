@@ -1,4 +1,4 @@
-import { folderOptionNames } from '../../constants/constant';
+import { FOLDER_OPTION_NAMES } from '../../constants/constant';
 import * as S from './styles';
 
 const FolderOptionsItem = ({ item }) => {
@@ -15,7 +15,7 @@ const FolderOptionsItem = ({ item }) => {
 const FolderOptions = () => {
   return (
     <S.FolderOptionsBox>
-      {folderOptionNames.map((item) => (
+      {FOLDER_OPTION_NAMES.map((item) => (
         <FolderOptionsItem key={item.id} item={item} />
       ))}
     </S.FolderOptionsBox>

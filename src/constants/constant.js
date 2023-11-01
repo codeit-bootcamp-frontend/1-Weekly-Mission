@@ -1,6 +1,6 @@
 import IMAGES from '../assets/images';
 
-const folderOptionNames = [
+const FOLDER_OPTION_NAMES = [
   {
     id: 1,
     name: '공유',
@@ -28,7 +28,7 @@ const DEFAULT_FOLDER_NAME = '전체';
 const DEFAULT_USER_ID = 1;
 
 export {
-  folderOptionNames,
+  FOLDER_OPTION_NAMES,
   DEFAULT_FOLDER,
   DEFAULT_FOLDER_NAME,
   DEFAULT_USER_ID,
