@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 
-import * as style from "./FolderContainerStyle";
+import * as S from "./FolderContainerStyle";
 import { getAllFolders, getAllLinks } from "api/api";
 
 import CardList from "components/card/CardList";
@@ -52,35 +52,35 @@ export default function Folder() {
 
   return (
     <main>
-      <style.HeroContainer>
+      <S.HeroContainer>
         <FolderHero />
-      </style.HeroContainer>
-      <style.Contents>
+      </S.HeroContainer>
+      <S.Contents>
         <Searchbar />
-        <style.MenuContainer>
+        <S.MenuContainer>
           <Categories
             categories={[DEFAULT, ...folderNames]}
             selected={selected}
             onClick={handleSelectedFolder}
           />
-          <style.AddFolderBtn>
+          <S.AddFolderBtn>
             <span>폴더 추가</span>
-            <style.IconAdd />
-          </style.AddFolderBtn>
-        </style.MenuContainer>
+            <S.IconAdd />
+          </S.AddFolderBtn>
+        </S.MenuContainer>
         {isLoading && <Loading />}
         {!isLoading && links.length === 0 ? (
-          <style.Blank>저장된 링크가 없습니다</style.Blank>
+          <S.Blank>저장된 링크가 없습니다</S.Blank>
         ) : (
           <>
-            <style.MenuContainer>
-              <style.SubTitle>{selected}</style.SubTitle>
+            <S.MenuContainer>
+              <S.SubTitle>{selected}</S.SubTitle>
               {selected !== DEFAULT && <Options />}
-            </style.MenuContainer>
+            </S.MenuContainer>
             <CardList links={links} />
           </>
         )}
-      </style.Contents>
+      </S.Contents>
     </main>
   );
 }

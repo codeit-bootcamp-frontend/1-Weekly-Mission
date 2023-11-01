@@ -1,4 +1,4 @@
-import * as style from "./CardItemStyle";
+import * as S from "./CardItemStyle";
 
 import logo from "assets/logo.svg";
 import Star from "components/icon/Star";
@@ -11,23 +11,23 @@ export default function CardItem({ link }) {
   const { yyyy, mm, dd } = getCreatedDate(createdAt);
 
   return (
-    <style.Wrapper>
-      <style.Container>
-        <style.CardImage src={imageSource ? imageSource : logo} $isImageurl={imageSource} />
-        <style.Icon>
+    <S.Wrapper>
+      <S.Container>
+        <S.CardImage src={imageSource ? imageSource : logo} $isImageurl={imageSource} />
+        <S.Icon>
           <Star />
-        </style.Icon>
-      </style.Container>
-      <style.CardInfo>
-        <style.Info>
+        </S.Icon>
+      </S.Container>
+      <S.CardInfo>
+        <S.Info>
           {getDiffTime(createdAt)}
           <KebabMenu />
-        </style.Info>
-        <style.Description>{description}</style.Description>
-        <style.CreatedAt>
+        </S.Info>
+        <S.Description>{description}</S.Description>
+        <S.CreatedAt>
           {yyyy}. {mm}. {dd}
-        </style.CreatedAt>
-      </style.CardInfo>
-    </style.Wrapper>
+        </S.CreatedAt>
+      </S.CardInfo>
+    </S.Wrapper>
   );
 }
