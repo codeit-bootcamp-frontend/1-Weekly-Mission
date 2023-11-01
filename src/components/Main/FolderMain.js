@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LinkSearchInput from "./LinkSearchInput";
+import LinkSearchInput from "../UI/LinkSearchInput";
 import CardList from "./CardList";
 import shareIcon from "../../assets/share_icon.svg";
 import penIcon from "../../assets/pen_icon.svg";

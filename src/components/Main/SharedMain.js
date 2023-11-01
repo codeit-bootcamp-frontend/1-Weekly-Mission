@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LinkSearchInput from "./LinkSearchInput";
+import LinkSearchInput from "../UI/LinkSearchInput";
 import CardList from "./CardList";
 
 const MainContainer = styled.main`

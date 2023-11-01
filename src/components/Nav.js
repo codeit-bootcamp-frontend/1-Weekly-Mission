@@ -1,6 +1,7 @@
 import NavLogo from "../assets/Nav_logo.svg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const Navigation = styled.nav`
   z-index: 2;
@@ -92,8 +93,26 @@ export const LoginButton = styled.button`
 `;
 
 const Nav = ({ account, isSticky = false }) => {
-  const { email, image_source } = account.email === "stranger" ? {} : account;
-  // 로그인 전 후 비교하려고 useState email 초기값 stranger로 지정해서 조건 연산자 썼는데 괜찮은 코드일까요..?
+  const [userEmail, setUserEmail] = useState(null);
+  const [userProfileImg, setUserProfileImg] = useState(null);
+
+  const handleLoginInfo = (account) => {
+    if (!account) {
+      return;
+    } else {
+      const { email, image_source } = account;
+      setUserEmail(email);
+      setUserProfileImg(image_source);
+    }
+  };
+
+  const handleClick = () => {
+    handleLoginInfo(account);
+  };
+
+  // useEffect(() => {   // 주석 풀면 자동 로그인
+  //   handleLoginInfo(account);
+  // }, [account]);
 
   return (
     <Navigation isSticky={isSticky}>
@@ -101,15 +120,15 @@ const Nav = ({ account, isSticky = false }) => {
         <Link to="/">
           <Logo src={NavLogo} alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
         </Link>
-        {email && (
+        {userEmail && (
           <Account>
             {" "}
             {/*프로필 누르면 자기 계정으로 들어갈 것 같아서 일단 a*/}
-            <ProfileImg src={image_source} alt="프로필 이미지" />
-            <Email>{email}</Email>
+            <ProfileImg src={userProfileImg} alt="프로필 이미지" />
+            <Email>{userEmail}</Email>
           </Account>
         )}
-        {!email && <LoginButton>로그인</LoginButton>}
+        {!userEmail && <LoginButton onClick={handleClick}>로그인</LoginButton>}
       </NavContents>
     </Navigation>
   );
