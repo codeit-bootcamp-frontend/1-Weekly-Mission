@@ -1,20 +1,33 @@
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
 import GlobalStyle from 'styles/GlobalStyle';
-import Navigator from 'components/Navigator';
-import Folder from 'components/Folder';
-import Footer from 'components/Footer';
-
-TimeAgo.addDefaultLocale(en);
+import Home from 'pages/Home';
+import Signin from 'pages/Auth/Signin';
+import Signup from 'pages/Auth/Signup';
+import SharedPage from 'pages/Shared';
+import Folder from 'pages/Folder';
 
 function App() {
+  useEffect(() => {
+    TimeAgo.addDefaultLocale(en);
+  });
+
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
-      <Navigator />
-      <Folder />
-      <Footer />
-    </>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='signin' element={<Signin />} />
+        <Route path='signup' element={<Signup />} />
+        <Route path='shared' element={<SharedPage />} />
+        <Route path='folder'>
+          <Route index element={<Folder />} />
+          <Route path=':folderId' element={<Folder />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

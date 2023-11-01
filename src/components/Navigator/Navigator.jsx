@@ -1,44 +1,38 @@
 import * as S from './Navigator.style';
-import { Ally, Button } from 'styles/commons';
-import { useCallback, useEffect, useState } from 'react';
-import { getUser } from 'utils/apiClient';
-import linkbraryIcon from 'assets/icons/linkbrary.svg';
+import A11y from 'components/A11y';
+import Button from 'components/Button';
+import useRequest from 'hooks/useRequest';
+import LB_ICON from 'assets/icons/linkbrary.svg';
 
-function Navigator() {
-  const [userInfo, setUserInfo] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+function Navigator({ isLoggedIn = false, userId }) {
+  const { data } = useRequest({
+    url: `/users/${userId}`,
+    method: 'get',
+    skip: !isLoggedIn,
+  });
 
-  const loadUser = useCallback(async () => {
-    setIsLoggedIn(false);
-    const user = await getUser();
-    if (user) {
-      setIsLoggedIn(true);
-    }
-    setUserInfo(user);
-  }, []);
-
-  useEffect(() => {
-    loadUser();
-  }, [loadUser]);
+  const userInfo = data?.data?.[0];
 
   return (
     <S.GnbContainer>
       <S.GnbInner>
         <S.Logo href='/'>
-          <img src={linkbraryIcon} alt='링크브러리 로고' />
-          <Ally>Linkbrary - 링크브러리</Ally>
+          <img src={LB_ICON} alt='링크브러리 로고' />
+          <A11y>Linkbrary - 링크브러리</A11y>
         </S.Logo>
         {isLoggedIn ? (
           <S.Profile>
             <S.ProfileImg
-              src={userInfo.profileImageSource}
+              src={userInfo?.image_source}
               alt='사용자 프로필 사진'
             />
-            <S.ProfileEmail>{userInfo.email}</S.ProfileEmail>
+            <S.ProfileEmail>{userInfo?.email}</S.ProfileEmail>
           </S.Profile>
         ) : (
           <S.Signin>
-            <Button href='/'>로그인</Button>
+            <Button as='a' href='/'>
+              로그인
+            </Button>
           </S.Signin>
         )}
       </S.GnbInner>

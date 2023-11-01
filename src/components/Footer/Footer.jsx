@@ -1,8 +1,8 @@
 import * as S from './Footer.style';
-import facebookIcon from 'assets/icons/facebook.svg';
-import twitterIcon from 'assets/icons/twitter.svg';
-import youtubeIcon from 'assets/icons/youtube.svg';
-import instagramIcon from 'assets/icons/instagram.svg';
+import FACEBOOK_ICON from 'assets/icons/facebook.svg';
+import TWITTER_ICON from 'assets/icons/twitter.svg';
+import YOUTUBE_ICON from 'assets/icons/youtube.svg';
+import INSTAGRAM_ICON from 'assets/icons/instagram.svg';
 
 function Footer() {
   return (
@@ -19,28 +19,28 @@ function Footer() {
             target='_blank'
             rel='noreferrer noopener'
           >
-            <img src={facebookIcon} alt='페이스북 로고' />
+            <img src={FACEBOOK_ICON} alt='페이스북 로고' />
           </a>
           <a
             href='http://twitter.com'
             target='_blank'
             rel='noreferrer noopener'
           >
-            <img src={twitterIcon} alt='트위터 로고' />
+            <img src={TWITTER_ICON} alt='트위터 로고' />
           </a>
           <a
             href='http://youtube.com'
             target='_blank'
             rel='noreferrer noopener'
           >
-            <img src={youtubeIcon} alt='유튜브 로고' />
+            <img src={YOUTUBE_ICON} alt='유튜브 로고' />
           </a>
           <a
             href='http://instagram.com'
             target='_blank'
             rel='noreferrer noopener'
           >
-            <img src={instagramIcon} alt='인스타그램 로고' />
+            <img src={INSTAGRAM_ICON} alt='인스타그램 로고' />
           </a>
         </S.SNS>
       </S.FooterInner>
