@@ -1,10 +1,8 @@
 import BlueShortModal from "../BlueShortModal";
 
-function FolderAddModal() {
+function FolderAddModal({ $isActive }) {
   return (
-    <>
-      <BlueShortModal title="폴더 추가" btnName="추가하기" />
-    </>
+    <>{$isActive && <BlueShortModal title="폴더 추가" btnName="추가하기" />}</>
   );
 }
 

@@ -15,20 +15,12 @@ import CardListFolder from "../components/js/CardListFolder";
 import FloatButton from "../components/js/FloatButton";
 import LinksNotExist from "../components/js/LinksNotExist";
 import AddLinktoFolderModalContainer from "components/js/modals/container/AddLinktoFolderModalContainer";
-
-const Wrapper = styled.div`
-  width: 1060px;
-  height: auto;
-  margin: 0 auto;
-
-  @media (max-width: 1199px) and (min-width: 768px) {
-    width: 704px;
-  }
-
-  @media (max-width: 767px) {
-    width: 325px;
-  }
-`;
+import FolderAddModal from "components/js/modals/container/FolderAddModal";
+import FolderDeleteModal from "components/js/modals/container/FolderDeleteModal";
+import FolderNameChangeModal from "components/js/modals/container/FolderNameChangeModal";
+import FolderShareModal from "components/js/modals/FolderShareModal";
+import LinkDeleteModal from "components/js/modals/container/LinkDeleteModal";
+import FolderShareModalContainer from "components/js/modals/container/FolderShareModalContainer";
 
 function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
@@ -39,6 +31,7 @@ function Folder() {
   const [currentFolderId, setCurrentFolderId] = useState("");
   const [folderLinks, setFolderLinks] = useState([]);
   const [folderName, setFolderName] = useState("");
+  const [activeModal, setActiveModal] = useState(false);
 
   //카드 리스트 업데이트 하는 함수
   const loadCardList = async () => {
@@ -54,7 +47,7 @@ function Folder() {
     setFolderName(nextName);
   };
 
-  //currenetFolderId가 바뀔 때마다 새로 카드리스트 업데이트
+  //currentFolderId가 바뀔 때마다 새로 카드리스트 업데이트
   useEffect(() => {
     loadCardList();
   }, [currentFolderId]);
@@ -69,7 +62,12 @@ function Folder() {
       <Helmet>
         <title>Linkbrary_Folder</title>
       </Helmet>
-      <AddLinktoFolderModalContainer />
+      <AddLinktoFolderModalContainer $isActive={activeModal} />
+      <FolderAddModal $isActive={activeModal} />
+      <LinkDeleteModal $isActive={activeModal} />
+      <FolderShareModalContainer $isActive={activeModal} />
+      <FolderDeleteModal $isActive={activeModal} />
+      <FolderNameChangeModal $isActive={activeModal} />
       <NavAndFooterBasic>
         <FloatButton>폴더 추가</FloatButton>
         <LinkBar />
@@ -100,3 +98,17 @@ function Folder() {
 
 export default Folder;
 // console.log(window.location.pathname);
+
+const Wrapper = styled.div`
+  width: 1060px;
+  height: auto;
+  margin: 0 auto;
+
+  @media (max-width: 1199px) and (min-width: 768px) {
+    width: 704px;
+  }
+
+  @media (max-width: 767px) {
+    width: 325px;
+  }
+`;

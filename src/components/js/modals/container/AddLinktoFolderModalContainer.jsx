@@ -48,16 +48,12 @@ const MOCK_LIST = [
   },
 ];
 
-function AddLinktoFolderModalContainer() {
+function AddLinktoFolderModalContainer({ $isActive }) {
   // if (!folders) {
   //   return;
   // }
 
-  return (
-    <>
-      <AddLinktoFolderModal folders={MOCK_LIST} />
-    </>
-  );
+  return <>{$isActive && <AddLinktoFolderModal folders={MOCK_LIST} />}</>;
 }
 
 export default AddLinktoFolderModalContainer;

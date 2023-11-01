@@ -1,9 +1,11 @@
 import BlueShortModal from "../BlueShortModal";
 
-function FolderNameChangeModal() {
+function FolderNameChangeModal({ $isActive }) {
   return (
     <>
-      <BlueShortModal title="폴더 이름 변경" btnName="변경하기" />
+      {$isActive && (
+        <BlueShortModal title="폴더 이름 변경" btnName="변경하기" />
+      )}
     </>
   );
 }

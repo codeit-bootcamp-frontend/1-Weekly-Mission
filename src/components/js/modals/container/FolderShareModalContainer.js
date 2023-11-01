@@ -9,12 +9,8 @@ const IconList = [
   { name: "링크 복사", src: linkShare },
 ];
 
-function FolderShareModalContainer() {
-  return (
-    <>
-      <FolderShareModal IconList={IconList} />
-    </>
-  );
+function FolderShareModalContainer({ $isActive }) {
+  return <>{$isActive && <FolderShareModal IconList={IconList} />}</>;
 }
 
 export default FolderShareModalContainer;
