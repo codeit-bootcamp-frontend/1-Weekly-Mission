@@ -9,10 +9,9 @@ async function RequestAPI(endpoint) {
 }
 
 async function profileRequestApi(endpoint) {
-  let profile;
   try{
-    profile = await RequestAPI(endpoint);
-    return profile.data.data[0]
+    const result = await RequestAPI(endpoint);
+    return result.data.data[0]
   }catch(error){
     throw new Error(`${PROFILE_FAIL}`)
   }
@@ -20,22 +19,30 @@ async function profileRequestApi(endpoint) {
 }
 
 async function folderRequestApi(endpoint) {
-  let result;
   try{
-    result = await RequestAPI(endpoint);
-    return result.data.folder
+    const result = await RequestAPI(endpoint);
+    console.log(result)
+    return(result.data.folder)
   }catch(error){
     throw new Error(`${FOLDER_FAIL}`)
   }
 }
 
 async function folderDataRequestApi(endpoint){
-  let result;
   try{
-    result = await RequestAPI(endpoint);
-    return result.data;
+    const result = await RequestAPI(endpoint);
+    return result.data.data;
   }catch(error){
     throw new Error(`${FOLDER_DATA_FAIL}`)
   }
 }
-export { profileRequestApi, folderRequestApi, folderDataRequestApi };
+
+async function folderMenuRequestApi(endpoint){
+  try{
+    const result = await RequestAPI(endpoint);
+    return result.data.data;
+  }catch(error){
+    throw new Error(`${FOLDER_DATA_FAIL}`)
+  }
+}
+export { profileRequestApi, folderRequestApi, folderDataRequestApi, folderMenuRequestApi };
