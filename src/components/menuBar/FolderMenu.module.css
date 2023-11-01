@@ -14,7 +14,7 @@
   /* tablet2 */
   @media (min-width: 1124px) {
     /* width: 100%; */
-    width: calc(100% - 40rem);
+    width: calc(100% - 55rem);
   }
 
   /* descktop*/
