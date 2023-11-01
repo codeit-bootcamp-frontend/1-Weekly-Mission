@@ -15,7 +15,7 @@ function Signup() {
   const { token } = useAuth();
 
   const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useSignInputValue(values, 'up', 'email');
+    useSignInputError(values, 'up', 'email');
 
   const [
     passwordError,
