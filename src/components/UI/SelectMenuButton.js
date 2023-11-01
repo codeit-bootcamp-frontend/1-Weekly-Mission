@@ -8,6 +8,12 @@ const SelectButton = styled.button`
   gap: 10px;
   align-self: stretch;
   background-color: var(--white);
+  width: 10rem;
+
+  p {
+    justify-content: center;
+    display: inline;
+  }
 
   &:hover {
     background-color: var(--gray10);
@@ -18,9 +24,11 @@ const SelectButton = styled.button`
 `;
 
 const selectMenuButton = ({ children }) => {
-  <SelectButton>
-    <p>{children}</p>
-  </SelectButton>;
+  return (
+    <SelectButton>
+      <p>{children}</p>
+    </SelectButton>
+  );
 };
 
 export default selectMenuButton;

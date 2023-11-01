@@ -30,8 +30,12 @@ const Kebab = () => {
     setIsMenuVisible(!isMenuVisible);
   };
 
+  const handleMouseLeave = () => {
+    setIsMenuVisible(false);
+  };
+
   return (
-    <KebabButton>
+    <KebabButton onMouseLeave={handleMouseLeave}>
       <KebabImg src={kebab} alt="더보기 아이콘" onClick={handleClick} />
       {isMenuVisible && (
         <KebabOptionsContainer>

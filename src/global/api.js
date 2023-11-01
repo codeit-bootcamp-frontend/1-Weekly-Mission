@@ -40,6 +40,5 @@ export const getSelectedFolder = async (userID = 1) => {
     return [allFolder, ...currentData];
   };
   body.data = updateData(body.data);
-  console.log(body);
   return body;
 };
