@@ -36,15 +36,16 @@ export default function FolderPage() {
     fetchUserFolderData({ userId: USER_ID })
   );
 
-  // 아래는 왜 안될까.. folderId는 잘 나오는데, 해당 데이터가 안 뽑힘? fix되어어있음
+  // 얘는 되는데
+  const c = fetchUserLinks({ userId: USER_ID, folderId: folderId });
+
+  // 아래는 왜 안될까.. folderId는 잘 나오는데, folderId에 대하 데이터가 안뽑힘..?
   const [a, b] = useTest(() =>
     fetchUserLinks({ userId: USER_ID, folderId: folderId })
   );
-  console.log(folderId, a, b);
 
-  // console.log(a, b);
-  //  ?.의 앞의 평가 대상이 undefined이나 null이 면은 undefined를 반환
-  // / 못해도 ? undefined
+  console.log(a);
+
   const result = Folderdata?.data;
   const obj =
     (result &&
