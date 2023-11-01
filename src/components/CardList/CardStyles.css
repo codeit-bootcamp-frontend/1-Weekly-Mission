@@ -1,9 +1,13 @@
+/* -----------------------
+   공통 스타일
+----------------------- */
 .card {
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   border-radius: 15px;
   width: 340px;
   height: 334px;
   margin: 10px;
+  position: relative;
 }
 
 .card img:hover {
@@ -47,6 +51,10 @@
   justify-content: center;
 }
 
+.no-link {
+  padding: 40px 0px;
+}
+
 .date {
   color: #666;
   font-size: 13px;
@@ -72,6 +80,39 @@
   font-size: 14px;
 }
 
+/* -----------------------
+   folder-page일 때의 스타일
+----------------------- */
+.card.folder-page {
+  .star-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .star-button,
+  .kebab-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .card-text-top {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* -----------------------
+   share-page일 때의 스타일
+----------------------- */
+.card.share-page {
+  .star-button {
+    display: none;
+  }
+}
+
 /* PC (1124px 이상) */
 @media (min-width: 1124px) {
   .card-list {
@@ -87,7 +128,7 @@
 }
 
 /* Mobile (763px 이하) */
-@media (max-width: 763px) {
+@media (max-width: 764px) {
   .card-list {
     padding: 0 32px;
   }

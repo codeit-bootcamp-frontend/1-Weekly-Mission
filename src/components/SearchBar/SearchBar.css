@@ -37,7 +37,7 @@ form {
 }
 
 /* Mobile (763px 이하) */
-@media (max-width: 763px) {
+@media (max-width: 764px) {
   .search-bar-container {
     max-width: 325px;
   }
