@@ -1,9 +1,7 @@
-import axios from 'axios';
-
-const BASE_URL = 'https://bootcamp-api.codeit.kr/api/';
+import { defaultInstance } from './utils/instance';
 
 async function requestAPI(url) {
-  const response = await axios.get(`${BASE_URL}${url}`);
+  const response = await defaultInstance.get(url);
   return response.data;
 }
 

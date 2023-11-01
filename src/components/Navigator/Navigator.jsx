@@ -2,7 +2,7 @@ import * as S from './Navigator.style';
 import A11y from 'components/A11y';
 import Button from 'components/Button';
 import { useEffect } from 'react';
-import { getUser } from 'utils/apiClient';
+import { getUser } from 'apis/apiClient';
 import useAsync from 'hooks/useAsync';
 import LB_ICON from 'assets/icons/linkbrary.svg';
 

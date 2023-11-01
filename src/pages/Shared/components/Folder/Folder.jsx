@@ -1,5 +1,5 @@
 import * as S from './Folder.style';
-import { getSharedFolder } from 'utils/apiClient';
+import { getSharedFolder } from 'apis/apiClient';
 import useAsync from 'hooks/useAsync';
 import Banner from '../Banner';
 import SearchBar from 'components/SearchBar';

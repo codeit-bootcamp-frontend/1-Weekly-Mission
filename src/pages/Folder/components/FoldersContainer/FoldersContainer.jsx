@@ -1,7 +1,7 @@
 import * as S from './FoldersContainer.style';
 import { useEffect, useState } from 'react';
 import useAsync from 'hooks/useAsync';
-import { getFolders } from 'utils/apiClient';
+import { getFolders } from 'apis/apiClient';
 import SHARE from 'assets/icons/share.svg';
 import EDIT from 'assets/icons/edit.svg';
 import DELETE from 'assets/icons/delete.svg';

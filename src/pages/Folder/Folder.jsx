@@ -2,16 +2,14 @@ import { useSearchParams } from 'react-router-dom';
 import * as S from './Folder.style';
 import Layout from 'components/Layout';
 import useAsync from 'hooks/useAsync';
-import { getLinks } from 'utils/apiClient';
+import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from 'apis/config/default';
+import { getLinks } from 'apis/apiClient';
 import AddLinkContainer from './components/AddLinkContainer';
 import SearchBar from 'components/SearchBar';
 import FoldersContainer from './components/FoldersContainer';
 import CardsContainer from 'components/CardsContainer';
 import NoLinkView from './components/NoLinkView';
 import { useEffect } from 'react';
-
-const DEFAULT_USER_ID = 1;
-const DEFAULT_FOLDER_ID = 0;
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
