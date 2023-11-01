@@ -46,7 +46,7 @@ const LinkToolArr = [
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
   const [folderData, setFolderData] = useState([]);
-  const [isSelectedFolder, setIsSelectedFolder] = useState({
+  const [selectedFolder, setSelectedFolder] = useState({
     id: 1,
     title: "전체",
   });
@@ -68,19 +68,19 @@ const Folder = () => {
   }, [handleFolder]);
 
   const handleLinks = useCallback(async () => {
-    const result = await getLinksAsync(isSelectedFolder.id);
+    const result = await getLinksAsync(selectedFolder.id);
     if (!result) return;
 
     const { data } = result;
 
     setCardData(data);
-  }, [getLinksAsync, isSelectedFolder]);
+  }, [getLinksAsync, selectedFolder]);
 
   useEffect(() => {
     handleLinks();
   }, [handleLinks]);
 
-  if (isFolderLoading || isLinkLoading) {
+  if (isFolderLoading) {
     return <div>화면을 불러오는 중입니다.</div>;
   }
 
@@ -91,7 +91,7 @@ const Folder = () => {
   return (
     <Wrapper>
       <Section>
-        <ContentContainer page={"folder"}>
+        <ContentContainer $page={"folder"}>
           <AddLinkInputContainer>
             <Input src={LinkAddIcon} placeholder={"링크를 추가해 보세요"}>
               <DefaultBtn>추가하기</DefaultBtn>
@@ -100,77 +100,83 @@ const Folder = () => {
         </ContentContainer>
       </Section>
 
-      <Section bg="#fff">
+      <Section $bg="#fff">
         <FolderContentContainer>
           <Input src={SearchImg} placeholder="링크를 검색해보세요" />
 
-          {cardData.length > 0 ? (
-            <>
-              <FolderContainer>
-                <div className="folderBtnContainer">
+          <FolderContainer>
+            <div className="folderBtnContainer">
+              <FolderBtnItemContainer
+                $isSelected={selectedFolder.id === 1}
+                onClick={() =>
+                  setSelectedFolder({
+                    id: 1,
+                    title: "전체",
+                  })
+                }
+              >
+                전체
+              </FolderBtnItemContainer>
+
+              {folderData?.map((e) => {
+                return (
                   <FolderBtnItemContainer
-                    $isSelected={isSelectedFolder.id === 1}
+                    key={e.id}
+                    $isSelected={e.id === selectedFolder.id}
                     onClick={() =>
-                      setIsSelectedFolder({
-                        id: 1,
-                        title: "전체",
+                      setSelectedFolder({
+                        id: e.id,
+                        title: e.name,
                       })
                     }
                   >
-                    전체
+                    {e.name}
                   </FolderBtnItemContainer>
+                );
+              })}
+            </div>
 
-                  {folderData?.map((e) => {
-                    return (
-                      <FolderBtnItemContainer
-                        key={e.id}
-                        $isSelected={e.id === isSelectedFolder.id}
-                        onClick={() =>
-                          setIsSelectedFolder({
-                            id: e.id,
-                            title: e.name,
-                          })
-                        }
-                      >
-                        {e.name}
-                      </FolderBtnItemContainer>
-                    );
-                  })}
-                </div>
+            <div className="folderAddBtnContainer">
+              <div className="folderAddTitle">폴더 추가</div>
+              <img
+                src={FolderAddIcon}
+                className="folderAddIcon"
+                alt="folderAddIcon"
+              />
+            </div>
+          </FolderContainer>
 
-                <div className="folderAddBtnContainer">
-                  <div className="folderAddTitle">폴더 추가</div>
-                  <img
-                    src={FolderAddIcon}
-                    className="folderAddIcon"
-                    alt="folderAddIcon"
-                  />
-                </div>
-              </FolderContainer>
-
-              <LinkHeaderContainer>
-                <div className="linkTitle">{isSelectedFolder.title}</div>
-
-                <LinkToolContainer $display={isSelectedFolder.id === 1}>
-                  {LinkToolArr.map((e, index) => {
-                    return (
-                      <div className="linkToolItemContainer" key={index}>
-                        <img src={e.src} alt={e.title} />
-                        <div className="linkToolTitle">{e.title}</div>
-                      </div>
-                    );
-                  })}
-                </LinkToolContainer>
-              </LinkHeaderContainer>
-
-              <CardContainer>
-                {cardData?.map((e) => {
-                  return <Card key={e.id} cardData={e} />;
-                })}
-              </CardContainer>
-            </>
+          {isLinkLoading ? (
+            <div>링크를 불러오는 중입니다.</div>
           ) : (
-            <div className="noLinkContainer">저장된 링크가 없습니다</div>
+            <>
+              {cardData.length > 0 ? (
+                <>
+                  <LinkHeaderContainer>
+                    <div className="linkTitle">{selectedFolder.title}</div>
+
+                    <LinkToolContainer $display={selectedFolder.id === 1}>
+                      {LinkToolArr.map((e, index) => {
+                        return (
+                          <div className="linkToolItemContainer" key={index}>
+                            <img src={e.src} alt={e.title} />
+                            <div className="linkToolTitle">{e.title}</div>
+                          </div>
+                        );
+                      })}
+                    </LinkToolContainer>
+                  </LinkHeaderContainer>
+
+                  <CardContainer>
+                    {cardData?.map((e) => {
+                      return <Card key={e.id} cardData={e} />;
+                    })}
+                  </CardContainer>
+                </>
+              ) : (
+                <div className="noLinkContainer">저장된 링크가 없습니다</div>
+              )}
+            </>
           )}
         </FolderContentContainer>
 

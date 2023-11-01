@@ -11,5 +11,5 @@ export const Section = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: ${(props) => props.bg || `var(--background)`};
+  background: ${(props) => props.$bg || `var(--background)`};
 `;

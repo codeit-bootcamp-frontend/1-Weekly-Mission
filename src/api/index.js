@@ -2,7 +2,7 @@ import axios from "axios";
 import { isEmpty } from "../utils/utility";
 
 const request = axios.create({
-  baseURL: process.env.REACT_APP_API,
+  baseURL: process.env.REACT_APP_API ?? "https://bootcamp-api.codeit.kr",
 
   headers: {
     accept: "application/json",
@@ -18,11 +18,8 @@ request.interceptors.request.use(
     }
 
     if (!isEmpty(config.query)) {
-      config.url +=
-        "?" +
-        Object.keys(config.query)
-          .map((key) => key + "=" + config.query[key])
-          .join("&");
+      const query = new URLSearchParams(config.query).toString();
+      config.url += "?" + query;
     }
 
     return config;

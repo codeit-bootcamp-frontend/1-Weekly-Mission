@@ -9,7 +9,7 @@ export const SharedWrapper = styled(Wrapper)`
 export const ContentContainer = styled.div`
   margin: 2rem auto 6rem;
   margin: ${(props) =>
-    props.page === "folder" ? "6rem auto 9rem" : "2rem auto 6rem"};
+    props.$page === "folder" ? "6rem auto 9rem" : "2rem auto 6rem"};
   display: flex;
   flex-direction: column;
   width: fit-content;
