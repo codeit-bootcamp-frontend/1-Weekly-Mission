@@ -8,7 +8,7 @@ function FolderAddMenu() {
 
   return (
     <button className={styles.root} type="button" onClick={handleSubmit}>
-      추가하기 <img src={addIcon} alt="" />
+      폴더 추가 <img src={addIcon} alt="" />
     </button>
   );
 }
