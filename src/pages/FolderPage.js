@@ -6,6 +6,7 @@ import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";
 import FolderList from "../component/FolderList";
 import CardSection from "../component/CardSection";
+import AddLinkBar from "../component/AddLinkBar";
 import "../assets/css/FolderPage.css";
 import * as Styled from "../style/EmptyDiv";
 
@@ -51,7 +52,7 @@ function FolderPage() {
       </Helmet>
       <Gnb isFixed={true} />
       <div className="folderInfo">
-        <p>링크를 추가해 보세요</p>
+        <AddLinkBar />
       </div>
       <section className="section">
         <SearchBar size="large" />
