@@ -1,5 +1,5 @@
 import React from 'react';
-import linkImg from '../../img/svg/link.svg';
+import linkImg from '../img/svg/link.svg';
 
 const AddLink = () => {
     return (

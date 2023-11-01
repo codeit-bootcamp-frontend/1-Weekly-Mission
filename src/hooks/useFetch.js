@@ -26,7 +26,7 @@ export function useFetch(path, id) {
     useEffect(() => {
       fetchUrl(path);
     }, [id]);
-
+    
     return {
       data,
       fetchUrl,

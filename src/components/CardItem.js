@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import logoImg from "../../img/svg/noImgLogo.svg";
-import starImg from "../../img/svg/star.svg";
-import kebabImg from '../../img/svg/kebab.svg';
-import mobileAddImg from '../../img/svg/mobileAdd.svg';
-import { getTimeDiff } from '../../utils/postTime';
+import logoImg from "../img/svg/noImgLogo.svg";
+import starImg from "../img/svg/star.svg";
+import kebabImg from '../img/svg/kebab.svg';
+import mobileAddImg from '../img/svg/mobileAdd.svg';
+import { getTimeDiff } from '../utils/postTime';
 
 
-/* 각 카드 컴포넌트 */
-function CardItem({item, prevKey, setPrevKey}) {
+const CardItem = ({item, prevKey, setPrevKey}) => {
     const [iscebabClick, setIscebabClick] = useState(false);
     const handleCebabClick = (event) => {
         event.preventDefault();
@@ -22,7 +21,6 @@ function CardItem({item, prevKey, setPrevKey}) {
         'backgroundImage': `URL(${item.image_source})`,
     }
     const nowDate = getTimeDiff(new Date(item.created_at));
-
     return (
         <div className='card'>
             <div className="card-img-wrap">
@@ -44,23 +42,7 @@ function CardItem({item, prevKey, setPrevKey}) {
                 <h4><span>폴더 추가</span><img src={mobileAddImg} alt="추가이미지"/></h4>
             </div>  
         </div>
-    
-    )
-}
-
-const Cards = ({personalfolder}) => {
-    const [prevKey, setPrevKey] = useState(null);
-    return (
-        <div className="section-title section-title-third">
-            <div className='section-title-third-inner'>
-                {personalfolder && personalfolder.map(item =>(
-                    <a key={item.id} href={item.url} target='_blank'>
-                        <CardItem item={item} prevKey={prevKey} setPrevKey={setPrevKey}/>
-                    </a>
-                ))}
-            </div>
-        </div>
     );
 };
 
-export default Cards;
+export default CardItem;
