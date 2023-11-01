@@ -16,7 +16,7 @@ function SharedHero() {
   useEffect(() => getFolderInfoResponse, []);
 
   return (
-    <>
+    <section className="main-header--shared">
       <div className="folder-container">
         <img
           className="folder-image"
@@ -31,7 +31,7 @@ function SharedHero() {
       >
         {folderInfoData.folderName}
       </div>
-    </>
+    </section>
   );
 }
 export default SharedHero;

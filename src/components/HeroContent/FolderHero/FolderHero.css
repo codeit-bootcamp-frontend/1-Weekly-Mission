@@ -1,4 +1,15 @@
 /* -- folder hero section -- */
+.main-header--folder {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 0 90px;
+  justify-content: center;
+  gap: 20px;
+  background: #f0f6ff;
+  position: relative;
+}
+
 .container {
   width: 800px;
   position: relative;
@@ -7,7 +18,6 @@
 .div-link {
   position: relative;
   display: flex;
-  width: 800px;
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -31,6 +41,16 @@
   border-radius: 15px;
   border: 1px solid var(--linkbrary-primary-color, #6d6afe);
   background: var(--linkbrary-white, #fff);
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 100%;
+    margin: 0 32px;
+  }
+  .input-link {
+    width: 100%;
+  }
 }
 
 .div-link img {

@@ -1,3 +1,5 @@
+// PC: 1200px 이상 Tablet: 768px 이상 ~ 1199px 이하 Mobile: 375px 이상 ~ 767px 이하
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import FolderPage from "./pages/FolderPage/FolderPage";

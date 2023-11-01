@@ -11,15 +11,18 @@ const defaultTagButton = {
   user_id: 1,
 };
 
+/**
+ * @todo state (folderId, folderName을 받는)
+ */
 function MainContent() {
   const [cardListData, setCardListData] = useState([]); // cardContainer에서 이용
   const [folderTagBtnList, setfolderTagBtnList] = useState([defaultTagButton]); // TagBtnContainer에서 이용
-  const [selectedTag, setSelectedTag] = useState("tag-");
-  const [selectedTagText, setSelectedTagText] = useState("전체");
+  const [selectedTagId, setSelectedTagId] = useState(defaultTagButton.id);
+  const [selectedTagText, setSelectedTagText] = useState(defaultTagButton.name);
 
   // card content response 처리
   async function getCardListResponse() {
-    const folderId = selectedTag.substring(4);
+    const folderId = selectedTagId;
     const { data: cardListDataResponse } = await requestData(
       null,
       `users/1/links${folderId ? "?folderId=" + folderId : ""}`,
@@ -42,8 +45,19 @@ function MainContent() {
     ]);
   }
 
+  function handleTagBtnClick(id, name) {
+    setSelectedTagId(id);
+    setSelectedTagText(name);
+  }
+
   useEffect(() => getFolderTagBtnList, []);
-  useEffect(() => getCardListResponse, [selectedTag]);
+
+  /**
+   * @todo 렌더시점 맞추기
+   */
+  useEffect(() => {
+    getCardListResponse();
+  }, [selectedTagId]);
 
   return (
     <section>
@@ -51,8 +65,8 @@ function MainContent() {
         <SearchLinkInput />
         <TagButtonContainer
           folderTagBtnList={folderTagBtnList}
-          getSelectedTag={setSelectedTag}
-          getSelectedTagText={setSelectedTagText}
+          handleOnClick={handleTagBtnClick}
+          selectedTag={selectedTagId}
         />
       </div>
       <CardContainer

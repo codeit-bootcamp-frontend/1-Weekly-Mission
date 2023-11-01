@@ -15,35 +15,22 @@ const tagBtnStyle = {
   height: "16px",
 };
 
-function TagBtnContainer({
-  folderTagBtnList,
-  getSelectedTag,
-  getSelectedTagText,
-}) {
-  const [selectedTag, setSelectedTag] = useState("tag-"); // TagBtnContainer에서 이용
-
-  function handleTagBtnClick(e) {
-    setSelectedTag(e.target.id);
-    getSelectedTag(selectedTag);
-    getSelectedTagText(e.target.innerText);
-  }
-
+function TagBtnContainer({ folderTagBtnList, selectedTag, handleOnClick }) {
   return (
     <>
+      {console.log({ folderTagBtnList })}
       <div className="tag_div">
         <div className="tag_container">
-          {folderTagBtnList.map((folderTagBtn) => {
-            const formattedTagId = "tag-" + folderTagBtn.id;
-            const TagBtnClass =
-              formattedTagId === selectedTag ? "tag checked" : "tag";
+          {folderTagBtnList.map((data) => {
+            const TagBtnClass = data.id === selectedTag ? "tag checked" : "tag";
 
             return (
               <button
                 className={TagBtnClass}
-                id={formattedTagId}
-                onClick={handleTagBtnClick}
+                id={data?.id}
+                onClick={() => handleOnClick(data?.id, data?.name)}
               >
-                {folderTagBtn.name}
+                {data?.name}
               </button>
             );
           })}

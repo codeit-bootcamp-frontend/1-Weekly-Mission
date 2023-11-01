@@ -37,6 +37,12 @@
   height: 19px;
   text-align: center;
 }
+
+@media (max-width: 767px) {
+  .tag-InnerText {
+    visibility: hidden;
+  }
+}
 .tag-InnerText_text {
   color: #6d6afe;
   text-align: center;

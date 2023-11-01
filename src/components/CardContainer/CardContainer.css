@@ -44,6 +44,8 @@
 
 .link-img {
   text-decoration: none;
+  display: flex;
+  justify-content: center;
 }
 
 .div-text {
@@ -123,13 +125,13 @@
 }
 
 /* 465 */
-@media (max-width: 1124px) and (min-width: 666px) {
+@media (max-width: 1199px) and (min-width: 767px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 665px) {
+@media (max-width: 767px) {
   .cards {
     display: flex;
 
