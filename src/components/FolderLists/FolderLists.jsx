@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import { AddFolderBtn, EditFolderTools } from "components";
 import * as Styled from "./StyledFolderLists";
 
-const FolderList = ({ data, onClick }) => {
+const FolderList = ({ data, onClick, folderId }) => {
   return (
     <Link to={`/folder/${data.id}`}>
-      <Styled.Btn id="btn" onClick={() => onClick(data.name)}>
+      <Styled.Btn
+        selected={folderId === String(data.id)}
+        id="btn"
+        onClick={() => onClick(data.name)}
+      >
         {data.name}
       </Styled.Btn>
     </Link>
@@ -22,22 +26,10 @@ const FolderLists = ({ folderData, id }) => {
       return "전체";
     }
   });
+  const folderId = id ? id : "전체";
 
   const handleBtnClick = (dataName) => {
     dataName === "전체" ? setFolderTitle("전체") : setFolderTitle(dataName);
-  };
-
-  const handleBtnColor = () => {
-    const BUTTONS = document.querySelectorAll("#btn");
-    for (const btn of BUTTONS) {
-      if (btn.textContent === folderTitle) {
-        btn.style.backgroundColor = "var(--primary)";
-        btn.style.color = "var(--white)";
-      } else {
-        btn.style.backgroundColor = "var(--white)";
-        btn.style.color = "var(--black)";
-      }
-    }
   };
 
   useEffect(() => {
@@ -51,22 +43,26 @@ const FolderLists = ({ folderData, id }) => {
     })();
   }, [id]);
 
-  useEffect(() => {
-    handleBtnColor();
-  }, [folderTitle]);
-
   return (
     <Styled.Container>
       <Styled.FolderBlock>
         <Styled.BtnBox>
           <Link to="/folder">
-            <Styled.Btn id="btn" onClick={() => handleBtnClick("전체")}>
+            <Styled.Btn
+              selected={folderId === folderTitle}
+              onClick={() => handleBtnClick("전체")}
+            >
               전체
             </Styled.Btn>
           </Link>
           {folderData.map((data) => {
             return (
-              <FolderList key={data.id} data={data} onClick={handleBtnClick} />
+              <FolderList
+                key={data.id}
+                data={data}
+                folderId={folderId}
+                onClick={handleBtnClick}
+              />
             );
           })}
         </Styled.BtnBox>

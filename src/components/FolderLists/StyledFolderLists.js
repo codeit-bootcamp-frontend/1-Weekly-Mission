@@ -48,8 +48,9 @@ export const Btn = styled.button`
   align-items: center;
   border-radius: 5px;
   border: 1px solid var(--primary);
-  background-color: var(--white);
-  color: var(--black);
+  background-color: ${({ selected }) =>
+    selected ? `var(--primary)` : `var(--white)`};
+  color: ${({ selected }) => (selected ? `var(--white)` : `var(--black)`)};
   white-space: nowrap;
 `;
 
