@@ -7,7 +7,7 @@ import useAsync from "../../hooks/useAsync";
 
 const LoginButton = ({ userId }) => {
   const [userData, setUserData] = useState(null);
-  const [isLoading, getUserAsync] = useAsync(getUser);
+  const { pending: isLoading, wrappedFunction: getUserAsync } = useAsync(getUser);
 
   const handleButtonClick = async () => {
     const userResponseData = await getUserAsync();

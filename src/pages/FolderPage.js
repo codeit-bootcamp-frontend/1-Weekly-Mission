@@ -21,10 +21,8 @@ const FolderPage = () => {
   const [folderListData, setFolderListData] = useState([]);
   const [linksListData, setLinksListData] = useState([]);
   const [selectedCategoryId, SetSelectedCategoryId] = useState("");
-  const [isLoadingFolderList, isLoadingLinksList, getFolderListAsync, getLinksListAsync] = useAsync(
-    getUserFolders,
-    getUserLinks
-  );
+  const { pending: isLoadingFolderList, wrappedFunction: getFolderListAsync } = useAsync(getUserFolders);
+  const { pending: isLoadingLinksList, wrappedFunction: getLinksListAsync } = useAsync(getUserLinks);
 
   const handleLoadFolderListData = useCallback(async () => {
     const [folderListResponseData, linksListResponseData] = await Promise.all([

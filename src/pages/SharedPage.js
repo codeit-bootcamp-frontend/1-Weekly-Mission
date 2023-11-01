@@ -13,7 +13,7 @@ import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSk
 
 const SharedPage = () => {
   const [folderData, setFolderData] = useState([]);
-  const [isLoading, getFolerAsync] = useAsync(getFolder);
+  const { pending: isLoading, wrappedFunction: getFolerAsync } = useAsync(getFolder);
 
   const handleLoadFolderData = useCallback(async () => {
     setFolderData(await getFolerAsync());
