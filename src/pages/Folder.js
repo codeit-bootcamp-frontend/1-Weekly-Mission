@@ -3,6 +3,7 @@ import FolderList from 'components/FolderList/FolderList';
 import FunctionButton from 'components/FunctionButton/FunctionButton';
 import LinkAdd from 'components/LinkAdd/LinkAdd';
 import MainSection from 'components/MainSection/MainSection';
+import Modal from 'components/Modal/Modal';
 import NotFoundLink from 'components/NotFoundLink/NotFoundLink';
 import Search from 'components/Search/Search';
 import Title from 'components/Title/Title';
@@ -16,6 +17,8 @@ function Folder() {
   const [isFunctionButtonShow, setIsFunctionButtonShow] = useState(false);
   const [cards, setCards] = useState([]);
   const [folderName, setFolderName] = useState('');
+  const [isModalOpen, setModalIsOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
 
   const [folderParams, setFolderParams] = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
   const initFolderId = folderParams.get('folderId');
@@ -46,19 +49,44 @@ function Folder() {
     setCards(introResult);
   };
 
+  const handleModal = (e) => {
+    const buttonName = e.target.textContent;
+    switch (buttonName) {
+      case '추가하기':
+      case '폴더 추가 +':
+        setModalTitle('폴더에 추가');
+        break;
+      case '공유':
+        setModalTitle('폴더 공유');
+        break;
+      case '이름 변경':
+        setModalTitle('폴더 이름 변경');
+        break;
+      case '삭제':
+        setModalTitle('폴더 삭제');
+        break;
+      default:
+        setModalTitle('');
+    }
+    setModalIsOpen(!isModalOpen);
+  };
+
   useEffect(() => {
     folderInfo(initFolderId);
     cardInfo(initFolderId);
     return setCards([]);
-  }, [initFolderId]);
+  }, [initFolderId, modalTitle]);
 
   return (
     <>
-      <LinkAdd />
+      {isModalOpen && <Modal title={modalTitle} onClick={handleModal} />}
+      <LinkAdd onClick={handleModal} />
       <MainSection>
         <Search />
-        {folders && <FolderList folder={folders} />}
-        <Title folderName={folderName}>{isFunctionButtonShow && <FunctionButton folderName={folderName} />}</Title>
+        {folders && <FolderList folder={folders} onClick={handleModal} />}
+        <Title folderName={folderName}>
+          {isFunctionButtonShow && <FunctionButton folderName={folderName} onClick={handleModal} />}
+        </Title>
         {initFolderId && cards.length === 0 ? <NotFoundLink /> : <CardList card={cards} isCardEditable={true} />}
       </MainSection>
     </>
