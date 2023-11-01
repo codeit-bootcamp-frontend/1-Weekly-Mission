@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { calculateRelativeTime, formatDate } from "../utils/timeCalculate.js";
 import defaultImg from "../images/noImage.svg";
 
-function redirectToCardPage(url) {
+function redirectToCardPage(url, event) {
+  event.preventDefault();
   window.open(url, "_blank", "noopener");
 }
 
 function LinkCard({ item }) {
   return (
-    <div className="card" onClick={() => redirectToCardPage(item.url)}>
+    <div className="card" onClick={(e) => redirectToCardPage(item.url, e)}>
       <Link to={item.url} className="custom-link">
         <img
           className="cardImg"
