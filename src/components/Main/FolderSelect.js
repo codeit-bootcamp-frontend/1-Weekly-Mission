@@ -7,7 +7,7 @@ import imgShare from "../../assets/share.svg"
 import imgEdit from "../../assets/edit.svg"
 import imgDelete from "../../assets/delete.svg"
 import S from "../styled";
-import { reduceData, useReduce } from "../../hooks/useReduce";
+import useData, { reduceData, useReduce } from "../../hooks/useReduce";
 
 function FolderAddFloat() {
   return (
@@ -37,7 +37,7 @@ function FolderControler({ title }) {
 }
 
 function FolderCategories({ setTitle }) {
-  const [categories, dispatch] = useReduce(reduceData, undefined);
+  const [categories] = useData("FOLDER_CATEGORY")
   const [prevSelect, setPrevSelect] = useState(null);
 
   const handleClick = (e) => {
@@ -46,12 +46,6 @@ function FolderCategories({ setTitle }) {
     e.target.classList.add("active");
     setTitle(e.target.textContent);
   }
-
-  useEffect(() => {
-    (async function () {
-      dispatch(await getData('folder', 'category'));
-    })();
-  }, [])
 
   return (
     <S.Flex>

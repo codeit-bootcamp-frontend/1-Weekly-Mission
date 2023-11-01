@@ -4,7 +4,7 @@ import kebabImg from '../../assets/kebab.svg'
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getData } from '../../utils/api';
-import { reduceData, useReduce } from '../../hooks/useReduce';
+import useData, { reduceData, useReduce } from '../../hooks/useReduce';
 import { TimeFlow, filterFolder, formatDate } from '../../utils/utils';
 import S from '../styled'
 
@@ -36,17 +36,11 @@ function CardSet({ links }) {
   ))
 }
 
-function CardList({ page, type }) {
-  const [data, dispatch] = useReduce(reduceData, undefined);
+function CardList({ type }) {
+  const [data] = useData(type);
   const [searchParams, setSearchParams] = useSearchParams();
   const folderId = searchParams.get("folderId");
   const links = filterFolder(data, folderId);
-
-  useEffect(() => {
-    (async function () {
-      dispatch(await getData(page, type));
-    })();
-  }, [page, type])
 
   return (
     links?.length ?

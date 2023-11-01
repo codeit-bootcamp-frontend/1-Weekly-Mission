@@ -1,17 +1,9 @@
-import { useEffect } from 'react';
 import defaultAvatar from '../../assets/Avatar.png'
-import { getData } from '../../utils/api'
-import { reduceData, useReduce } from '../../hooks/useReduce';
+import useData from '../../hooks/useReduce';
 import S from '../styled';
 
-function Header({ page, type = '' }) {
-  const [data, dispatch] = useReduce(reduceData, undefined);
-
-  useEffect(() => {
-    (async function () {
-      dispatch(await getData(page, type));
-    })();
-  }, [page, type])
+function Header() {
+  const [data] = useData('SHARED_FOLDERNAME')
 
   return (
     <S.Header>
