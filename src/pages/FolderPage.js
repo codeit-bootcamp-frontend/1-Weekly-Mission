@@ -40,11 +40,9 @@ export default function FolderPage() {
   const c = fetchUserLinks({ userId: USER_ID, folderId: folderId });
 
   // 아래는 왜 안될까.. folderId는 잘 나오는데, folderId에 대하 데이터가 안뽑힘..?
-  const [a, b] = useTest(() =>
-    fetchUserLinks({ userId: USER_ID, folderId: folderId })
-  );
-
-  console.log(a);
+  // const [a, b] = useTest(() =>
+  //   fetchUserLinks({ userId: USER_ID, folderId: folderId })
+  // );
 
   const result = Folderdata?.data;
   const obj =

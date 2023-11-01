@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styles from "./FolderMenu.module.css";
-import titleImage from "../../assets/images/title.svg";
-import LocaleContext from "../../contexts/LocaleContext";
 
+import LocaleContext from "../../contexts/LocaleContext";
+import shareImage from "../../assets/images/share.svg";
+import nameChangeImage from "../../assets/images/namechange.svg";
+import deleteImage from "../../assets/images/delete.svg";
 export default function FolderMenu({ folderId }) {
   const localeValue = useContext(LocaleContext); // obj
   const folder = localeValue[folderId];
@@ -14,12 +16,13 @@ export default function FolderMenu({ folderId }) {
   return (
     <div className={styles.container}>
       <p className={styles.title}>{letter}</p>
+
       {isSelected && (
-        <img
-          className={styles.images__container}
-          src={titleImage}
-          alt={letter}
-        ></img>
+        <div className={styles.images__container}>
+          <img src={shareImage} alt="share" />
+          <img src={nameChangeImage} alt="nameChange" />
+          <img src={deleteImage} alt="delete" />
+        </div>
       )}
     </div>
   );
