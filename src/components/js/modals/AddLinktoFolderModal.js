@@ -1,19 +1,17 @@
 import * as S from "./modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
 
-function AddLinktoFolderModal({ folders }) {
-  const folderList = folders ?? [];
-
+function AddLinktoFolderModal({ folders, onClose, link }) {
   return (
     <ModalBg>
       <S.Wrapper>
-        <S.CloseButton />
+        <S.CloseButton onClick={onClose} />
         <S.TitleWrapper>
           <S.ModalTitle>폴더에 추가</S.ModalTitle>
-          <S.ModalContents>링크 주소</S.ModalContents>
+          <S.ModalContents>{link}</S.ModalContents>
         </S.TitleWrapper>
         <S.FolderListWrapper>
-          {folderList.map((item) => {
+          {folders.map((item) => {
             return (
               <S.FolderItemContainer key={item.id}>
                 <S.FolderTitle>{item.name}</S.FolderTitle>

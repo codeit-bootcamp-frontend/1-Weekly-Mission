@@ -1,18 +1,32 @@
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
 import StyledButton from "./Button";
 import linkIcon from "../../Assets/link.svg";
 
-function LinkBar() {
+function LinkBar({ onChange, onShow }) {
+  const inputRef = useRef();
+
+  const handleChange = (e) => {
+    const nextValue = e.target.value;
+    onChange(nextValue);
+  };
+
   const handleButtonClick = (e) => {
     e.preventDefault();
+    onChange(inputRef.current.value);
+    onShow(true, "addLink");
   };
 
   return (
     <Wrapper>
       <Form>
         <Icon src={linkIcon} alt={linkIcon} />
-        <LinkAddInput placeholder="링크를 추가해 보세요" />
+        <LinkAddInput
+          placeholder="링크를 추가해 보세요"
+          onChange={handleChange}
+          ref={inputRef}
+        />
         <StyledButton onClick={handleButtonClick}> 추가하기</StyledButton>
       </Form>
     </Wrapper>

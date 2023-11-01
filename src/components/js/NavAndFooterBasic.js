@@ -2,6 +2,19 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import { BasicHeader } from "./Header";
 
+function NavAndFooterBasic({ children }) {
+  return (
+    <Wrapper>
+      <BasicHeader />
+      {children}
+      <BlankBox />
+      <Footer />
+    </Wrapper>
+  );
+}
+
+export default NavAndFooterBasic;
+
 const Wrapper = styled.div`
   width: auto;
   height: 100%;
@@ -16,16 +29,3 @@ const BlankBox = styled.div`
   height: auto;
   flex-grow: 1;
 `;
-
-function NavAndFooterBasic({ children }) {
-  return (
-    <Wrapper>
-      <BasicHeader />
-      {children}
-      <BlankBox />
-      <Footer />
-    </Wrapper>
-  );
-}
-
-export default NavAndFooterBasic;

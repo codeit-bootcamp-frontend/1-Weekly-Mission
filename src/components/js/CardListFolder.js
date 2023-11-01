@@ -1,6 +1,29 @@
 import styled from "styled-components";
 import CardItem from "./CardItemFolder";
 
+/* 카드리스트들 컴포넌트 */
+function CardList({ folderLinks, modal, setLink }) {
+  console.log(modal);
+  const links = Array.isArray(folderLinks) ? folderLinks : [];
+  return (
+    <CardListWrapper>
+      <CardListContainer>
+        {links.map((item) => {
+          return (
+            <CardItem
+              key={item.id}
+              item={item}
+              modal={modal}
+              setLink={setLink}
+            />
+          );
+        })}
+      </CardListContainer>
+    </CardListWrapper>
+  );
+}
+export default CardList;
+
 const CardListWrapper = styled.div`
   width: 100%;
   max-width: 1060px;
@@ -21,18 +44,3 @@ const CardListContainer = styled.div`
   flex-wrap: wrap;
   gap: 25px 20px;
 `;
-
-/* 카드리스트들 컴포넌트 */
-function CardList({ folderLinks }) {
-  const links = Array.isArray(folderLinks) ? folderLinks : [];
-  return (
-    <CardListWrapper>
-      <CardListContainer>
-        {links.map((item) => {
-          return <CardItem key={item.id} item={item} />;
-        })}
-      </CardListContainer>
-    </CardListWrapper>
-  );
-}
-export default CardList;

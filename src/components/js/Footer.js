@@ -5,11 +5,70 @@ import twitterIcon from "../../Assets/twitterIcon.svg";
 import youtubeIcon from "../../Assets/youtubeIcon.svg";
 import instagramIcon from "../../Assets/instagramIcon.svg";
 
+const urlList = {
+  facebook: { url: "https://www.facebook.com/", icon: facebookIcon },
+  twitter: { url: "https://twitter.com/?lang=ko", icon: twitterIcon },
+  youtube: { url: "https://www.youtube.com/", icon: youtubeIcon },
+  instagram: { url: "https://www.instagram.com/", icon: instagramIcon },
+};
+
+function Icon({ name, onClick, className }) {
+  const { url, icon } = urlList[name];
+
+  const handleClick = () => onClick(url);
+
+  return (
+    <img
+      src={icon}
+      className={className}
+      alt={name}
+      onClick={handleClick}
+    ></img>
+  );
+}
+
+const StyledIcon = styled(Icon)`
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+`;
+
+function Footer() {
+  const handleIconClick = (url) => {
+    window.open(url);
+  };
+
+  return (
+    <Wrapper>
+      <Container>
+        <Copyright>©codeit - 2023</Copyright>
+        <DirectLinks>
+          <StyledLink to="/">Privacy Policy</StyledLink>
+          <StyledLink to="/">FAQ</StyledLink>
+        </DirectLinks>
+        <IconWrapper>
+          {["facebook", "twitter", "youtube", "instagram"].map((sns, idx) => {
+            return (
+              <StyledIcon
+                name={sns}
+                key={idx.toString()}
+                onClick={handleIconClick}
+              />
+            );
+          })}
+        </IconWrapper>
+      </Container>
+    </Wrapper>
+  );
+}
+
+export default Footer;
+
 const Wrapper = styled.div`
   margin-top: 100px;
   background-color: #111322;
   min-width: 375px;
-`
+`;
 
 const Container = styled.div`
   height: 160px;
@@ -53,55 +112,3 @@ const IconWrapper = styled.div`
   gap: 12px;
   grid-area: icons;
 `;
-
-
-
-const urlList = {
-  facebook: { url: "https://www.facebook.com/", icon: facebookIcon },
-  twitter: { url: "https://twitter.com/?lang=ko", icon: twitterIcon },
-  youtube: { url: "https://www.youtube.com/", icon: youtubeIcon },
-  instagram: { url: "https://www.instagram.com/", icon: instagramIcon },
-};
-
-function Icon({ name, onClick, className }) {
-  const { url, icon } = urlList[name];
-
-  const handleClick = () => onClick(url);
-
-  return (
-    <img src={icon} className={className} alt={name} onClick={handleClick}></img>
-  );
-}
-
-const StyledIcon = styled(Icon)`
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-`;
-
-function Footer() {
-  const handleIconClick = (url) => {
-    window.open(url);
-  };
-
-  return (
-    <Wrapper>
-      <Container>
-        <Copyright>©codeit - 2023</Copyright>
-        <DirectLinks>
-          <StyledLink to="/">
-            Privacy Policy
-          </StyledLink>
-          <StyledLink to="/">
-            FAQ
-          </StyledLink>
-        </DirectLinks>
-        <IconWrapper>
-          {['facebook', 'twitter', 'youtube', 'instagram'].map((sns, idx) => {return <StyledIcon name={sns} key={idx.toString()} onClick={handleIconClick}/>})}
-        </IconWrapper>
-      </Container>
-    </Wrapper>
-  );
-}
-
-export default Footer;

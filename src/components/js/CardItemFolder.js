@@ -3,9 +3,66 @@ import styled from "styled-components";
 import noImage from "../../Assets/noImage.png";
 import starIcon from "../../Assets/star.svg";
 import kebabIcon from "../../Assets/kebab.svg";
-import KebabButtonMenu from "./KebabButtonMenu";
+import KebabPopOver from "./KebabButtonMenu";
 import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
+
+/* 각 카드 컴포넌트 */
+function CardItem({ item, modal, setLink }) {
+  const [url, setUrl] = useState("");
+  console.log(modal);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleToggleMenu = (e) => {
+    e.stopPropagation();
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleCardClick = () => {
+    const URL = item.url;
+    window.open(URL);
+  };
+
+  /* 이미지 스타일 함수 */
+  const imgStyle = {
+    backgroundImage: `url('${item.image_source}')`,
+  };
+
+  const nowDate = getTimeDiff(new Date(item.created_at));
+  const createdDate = item.created_at.split("T")[0].split("-").join(".");
+
+  return (
+    <CardLink $url={item.url} onClick={handleCardClick}>
+      <CardWrapper>
+        <BookmarkButton src={starIcon} alt="bookmark_icon" />
+        {isMenuOpen && (
+          <KebabPopOver modal={modal} $url={item.url} setLink={setLink} />
+        )}
+        <CardImageWrapper>
+          {!item.image_source ? (
+            <img className="logoImg" src={noImage} alt={noImage} />
+          ) : (
+            <CardImage style={imgStyle}></CardImage>
+          )}
+        </CardImageWrapper>
+        <CardInformation>
+          <RowContainer>
+            <Time>{nowDate}</Time>
+            <KebabButton
+              src={kebabIcon}
+              alt="kebabButton"
+              onClick={handleToggleMenu}
+            />
+          </RowContainer>
+          <Description>{item.description}</Description>
+          <Day className="day">{createdDate}</Day>
+        </CardInformation>
+      </CardWrapper>
+    </CardLink>
+  );
+}
+
+export default CardItem;
 
 const CardLink = styled.div`
   cursor: pointer;
@@ -116,56 +173,3 @@ const KebabButton = styled.img`
   z-index: 2;
   pointer-events: auto;
 `;
-
-/* 각 카드 컴포넌트 */
-function CardItem({ item }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleToggleMenu = (e) => {
-    e.stopPropagation();
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleCardClick = () => {
-    const URL = item.url;
-    window.open(URL);
-  };
-
-  /* 이미지 스타일 함수 */
-  const imgStyle = {
-    backgroundImage: `url('${item.image_source}')`,
-  };
-
-  const nowDate = getTimeDiff(new Date(item.created_at));
-  const createdDate = item.created_at.split("T")[0].split("-").join(".");
-
-  return (
-    <CardLink $url={item.url} onClick={handleCardClick}>
-      <CardWrapper>
-        <BookmarkButton src={starIcon} alt="bookmark_icon" />
-        {isMenuOpen && <KebabButtonMenu />}
-        <CardImageWrapper>
-          {!item.image_source ? (
-            <img className="logoImg" src={noImage} alt={noImage} />
-          ) : (
-            <CardImage style={imgStyle}></CardImage>
-          )}
-        </CardImageWrapper>
-        <CardInformation>
-          <RowContainer>
-            <Time>{nowDate}</Time>
-            <KebabButton
-              src={kebabIcon}
-              alt="kebabButton"
-              onClick={handleToggleMenu}
-            />
-          </RowContainer>
-          <Description>{item.description}</Description>
-          <Day className="day">{createdDate}</Day>
-        </CardInformation>
-      </CardWrapper>
-    </CardLink>
-  );
-}
-
-export default CardItem;

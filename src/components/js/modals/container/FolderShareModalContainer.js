@@ -9,8 +9,16 @@ const IconList = [
   { name: "링크 복사", src: linkShare },
 ];
 
-function FolderShareModalContainer({ $isActive }) {
-  return <>{$isActive && <FolderShareModal IconList={IconList} />}</>;
+function FolderShareModalContainer({ onShow }) {
+  const handleCloseButton = () => {
+    onShow(false, "");
+  };
+
+  return (
+    <>
+      <FolderShareModal IconList={IconList} onClose={handleCloseButton} />
+    </>
+  );
 }
 
 export default FolderShareModalContainer;

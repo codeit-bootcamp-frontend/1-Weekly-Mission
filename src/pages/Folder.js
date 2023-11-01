@@ -2,11 +2,7 @@ import styled from "styled-components";
 import NavAndFooterBasic from "../components/js/NavAndFooterBasic";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import {
-  getEachFolder,
-  getFolderInformations,
-  getUserLinks,
-} from "../api/apiUrl";
+import { getFolderInformations, getUserLinks } from "../api/apiUrl";
 import useAsync from "../hooks/useAsync";
 import LinkBar from "../components/js/LinkBar";
 import Search from "../components/js/Search";
@@ -18,7 +14,6 @@ import AddLinktoFolderModalContainer from "components/js/modals/container/AddLin
 import FolderAddModal from "components/js/modals/container/FolderAddModal";
 import FolderDeleteModal from "components/js/modals/container/FolderDeleteModal";
 import FolderNameChangeModal from "components/js/modals/container/FolderNameChangeModal";
-import FolderShareModal from "components/js/modals/FolderShareModal";
 import LinkDeleteModal from "components/js/modals/container/LinkDeleteModal";
 import FolderShareModalContainer from "components/js/modals/container/FolderShareModalContainer";
 
@@ -31,13 +26,15 @@ function Folder() {
   const [currentFolderId, setCurrentFolderId] = useState("");
   const [folderLinks, setFolderLinks] = useState([]);
   const [folderName, setFolderName] = useState("");
-  const [activeModal, setActiveModal] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeModalName, setActiveModalName] = useState("");
+  const [link, setLink] = useState("");
 
   //카드 리스트 업데이트 하는 함수
   const loadCardList = async () => {
     const folders = await getFoldersAsync();
     setPersonalFolder(folders?.data);
-    const result = await getUserLinks(currentFolderId);
+    const result = await getUserLinksAsync(currentFolderId);
     setFolderLinks(result?.data);
   };
 
@@ -45,6 +42,12 @@ function Folder() {
   const handleClickMenuButton = (nextValue, nextName) => {
     setCurrentFolderId(nextValue);
     setFolderName(nextName);
+  };
+
+  //버튼 클릭하면 모달이 실행시키기 위한 함수
+  const handleShowModal = (isOpen, modalName) => {
+    setActiveModalName(modalName);
+    setModalOpen(isOpen);
   };
 
   //currentFolderId가 바뀔 때마다 새로 카드리스트 업데이트
@@ -57,20 +60,32 @@ function Folder() {
     (folderLinks.length === 0) &
     (personalFolder.length === 0);
 
+  const MODALS = {
+    addLink: (
+      <AddLinktoFolderModalContainer
+        onShow={handleShowModal}
+        folders={personalFolder}
+        link={link}
+      />
+    ),
+    addFolder: <FolderAddModal onShow={handleShowModal} />,
+    deleteLink: <LinkDeleteModal onShow={handleShowModal} link={link} />,
+    shareFolder: <FolderShareModalContainer onShow={handleShowModal} />,
+    deleteFolder: <FolderDeleteModal onShow={handleShowModal} />,
+    changeFolderName: <FolderNameChangeModal onShow={handleShowModal} />,
+  };
+
+  console.log(modalOpen, activeModalName);
+
   return (
     <>
       <Helmet>
         <title>Linkbrary_Folder</title>
       </Helmet>
-      <AddLinktoFolderModalContainer $isActive={activeModal} />
-      <FolderAddModal $isActive={activeModal} />
-      <LinkDeleteModal $isActive={activeModal} />
-      <FolderShareModalContainer $isActive={activeModal} />
-      <FolderDeleteModal $isActive={activeModal} />
-      <FolderNameChangeModal $isActive={activeModal} />
+      {modalOpen && MODALS[`${activeModalName}`]}
       <NavAndFooterBasic>
         <FloatButton>폴더 추가</FloatButton>
-        <LinkBar />
+        <LinkBar onShow={handleShowModal} onChange={setLink} />
         {isShowComponent ? (
           <Wrapper>
             <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
@@ -83,9 +98,14 @@ function Folder() {
               folders={personalFolder}
               current={currentFolderId}
               onClick={handleClickMenuButton}
+              modal={handleShowModal}
             />
             {folderLinks.length ? (
-              <CardListFolder folderLinks={folderLinks} />
+              <CardListFolder
+                folderLinks={folderLinks}
+                modal={handleShowModal}
+                setLink={setLink}
+              />
             ) : (
               <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
             )}

@@ -1,8 +1,17 @@
 import BlueShortModal from "../BlueShortModal";
 
-function FolderAddModal({ $isActive }) {
+function FolderAddModal({ onShow }) {
+  const handleCloseButton = () => {
+    onShow(false, "");
+  };
   return (
-    <>{$isActive && <BlueShortModal title="폴더 추가" btnName="추가하기" />}</>
+    <>
+      <BlueShortModal
+        title="폴더 추가"
+        btnName="추가하기"
+        onClose={handleCloseButton}
+      />
+    </>
   );
 }
 

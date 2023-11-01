@@ -1,12 +1,12 @@
 import * as S from "components/js/modals/modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
 
-function FolderShareModal({ IconList, ...props }) {
+function FolderShareModal({ IconList, onClose }) {
   return (
     <>
       <ModalBg>
         <S.Wrapper>
-          <S.CloseButton />
+          <S.CloseButton onClick={onClose} />
           <S.TitleWrapper>
             <S.ModalTitle>폴더 공유</S.ModalTitle>
             <S.ModalContents>폴더명</S.ModalContents>

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import closeIcon from "Assets/_close.png";
 
-export function CloseButton() {
+export function CloseButton({ onClick }) {
   return (
     <>
-      <XButton src={closeIcon} alt="닫기 버튼" />
+      <XButton src={closeIcon} alt="닫기 버튼" onClick={onClick} />
     </>
   );
 }
@@ -52,7 +52,6 @@ export const ModalContents = styled.div`
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 22px;
-  margin-top: 8px;
 `;
 
 export const StyledButton = styled.button`
@@ -62,7 +61,6 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 16px 20px;
-  margin-top: 24px;
   color: var(--white);
   border-radius: 8px;
   border: none;
@@ -123,6 +121,7 @@ export const FolderListWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-bottom: 24px;
 `;
 
 export const FolderItemContainer = styled.li`
