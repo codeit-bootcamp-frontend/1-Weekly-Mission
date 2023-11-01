@@ -40,21 +40,16 @@ export default function FolderButton({ data, dataKeys }) {
               return (
                 <Button
                   isActive={Number(folderId) === key}
-                  // className={styles.active__button}
                   className={item[key].folderId}
                   key={key}
                   onClickFunc={() => {
                     // custom훅을 사용할수가 없어서 API를 사용
                     getEachfoldersData({ folderId: key }).then((data) => {
-                      console.log(data);
                       let contents = data.length > 0;
 
                       if (contents) {
                         navigate(`/folder/${key}`);
                       } else if (!contents) {
-                        console.log(key);
-                        // <FolderPage />;
-                        // navigate("/folder/nothing");
                       }
                     });
                   }}
