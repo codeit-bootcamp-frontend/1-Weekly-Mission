@@ -93,7 +93,7 @@ export const LoginButton = styled.button`
   }
 `;
 
-const Nav = ({ account, isSticky = false }) => {
+const Nav = ({ account, setSuccess, isSticky = false }) => {
   const [userEmail, setUserEmail] = useState(null);
   const [userProfileImg, setUserProfileImg] = useState(null);
 
@@ -111,6 +111,7 @@ const Nav = ({ account, isSticky = false }) => {
     const { email, image_source } = account;
     setUserEmail(email);
     setUserProfileImg(image_source);
+    if (setSuccess) setSuccess(true); // 회원만 볼 수 있는 페이지
   };
 
   // useEffect(() => {   // 주석 풀면 자동 로그인

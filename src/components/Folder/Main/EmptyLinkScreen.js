@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
@@ -29,11 +29,11 @@ const Container = styled.div`
 //   flex: 1;
 // `
 
-const EmptyLinkScreen = () => {
+const EmptyLinkScreen = ({ children }) => {
   return (
     <>
       <Container>
-        <p>저장된 링크가 없습니다</p>
+        <p>{children}</p>
       </Container>
       {/* <Div>
       <Empty />  
