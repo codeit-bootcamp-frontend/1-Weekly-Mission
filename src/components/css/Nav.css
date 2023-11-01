@@ -4,10 +4,11 @@
 body {
   margin: 0;
 }
-.nav1-container {
+.nav-container {
   background: #f0f6ff;
 }
 .nav1-wrapper {
+  background: #f0f6ff;
   display: flex;
   padding: 33px 200px;
   justify-content: space-between;
@@ -36,8 +37,8 @@ body {
   display: flex;
 }
 .nav-login {
+  cursor: pointer;
   color: #f5f5f5;
-  font-family: Pretendard;
   font-size: 18px;
   font-weight: 600;
   width: 128px;
@@ -54,7 +55,6 @@ body {
 }
 .nav1-div-mail {
   color: #373740;
-  font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
 }
@@ -75,8 +75,6 @@ body {
 }
 .nav2-div {
   color: #000;
-  font-family: Pretendard;
-  font-size: 16px;
   font-weight: 400;
   line-height: 24px;
 }

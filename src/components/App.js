@@ -1,12 +1,19 @@
 import Nav from './Nav';
 import Footer from './Footer';
-import Main from './Main';
+import { createGlobalStyle } from 'styled-components';
 
-export default function App() {
+const GlobalStyle = createGlobalStyle`
+* {
+  font-family: Pretendard, sans-serif;
+}
+`;
+
+export default function App({ children }) {
   return (
     <>
+      <GlobalStyle />
       <Nav />
-      <Main />
+      {children && <div>{children}</div>}
       <Footer />
     </>
   );
