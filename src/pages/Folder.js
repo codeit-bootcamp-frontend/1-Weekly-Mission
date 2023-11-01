@@ -86,7 +86,11 @@ function Folder() {
           <FolderName>{folderName}</FolderName>
           {folderID && <FolderEdit />}
         </div>
-        {cards.length ? <Binder cards={cards} /> : <FolderEmptyNoti />}
+        {cards.length ? (
+          <Binder cards={cards} shared="off" />
+        ) : (
+          <FolderEmptyNoti />
+        )}
       </section>
     </>
   );
