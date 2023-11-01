@@ -1,7 +1,6 @@
-import Cards from "../UI/Card";
-import styled from "styled-components";
-import EmptyLinkScreen from "./EmptyLinkScreen";
-import CardDivide from "./CardDivide";
+import styled from 'styled-components';
+import EmptyLinkScreen from './EmptyLinkScreen';
+import CardDivide from './CardDivide';
 
 export const SectionContainer = styled.section`
   display: grid;

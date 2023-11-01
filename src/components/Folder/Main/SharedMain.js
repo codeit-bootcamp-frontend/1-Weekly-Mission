@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import LinkSearchInput from "../UI/LinkSearchInput";
-import CardList from "./CardList";
+import styled from 'styled-components';
+import CardList from './CardList';
+import LinkSearchInput from '../../UI/LinkSearchInput';
 
 const MainContainer = styled.main`
   display: flex;

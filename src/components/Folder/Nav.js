@@ -1,8 +1,8 @@
-import NavLogo from "../assets/Nav_logo.svg";
-import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { async } from "q";
+import NavLogo from '../../assets/Nav_logo.svg';
+import styled from 'styled-components';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { async } from 'q';
 
 export const Navigation = styled.nav`
   z-index: 2;
@@ -11,7 +11,7 @@ export const Navigation = styled.nav`
   align-items: center;
   padding: 3.3rem 20rem;
   background: var(--gray0);
-  position: ${({ isSticky }) => (isSticky ? "sticky" : "relative")};
+  position: ${({ isSticky }) => (isSticky ? 'sticky' : 'relative')};
   top: 0;
 
   @media (max-width: 1199px) {
@@ -101,7 +101,7 @@ const Nav = ({ account, isSticky = false }) => {
 
   const handleClick = () => {
     if (!account) {
-      navigate("/signIn");
+      navigate('/signIn');
     } else {
       handleLoginInfo(account);
     }

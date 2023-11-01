@@ -1,21 +1,21 @@
-import GlobalStyle from "../global/globalStyles";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SharedMain from "../components/Main/SharedMain";
-import useGetAccount from "../hooks/useGetAccount";
-import useGetShareFolder from "../hooks/useGetShareFolder";
-import { useState, useEffect } from "react";
+import GlobalStyle from '../global/globalStyles';
+import Nav from '../components/Folder/Nav';
+import Footer from '../components/Folder/Footer';
+import Header from '../components/Folder/Header';
+import SharedMain from '../components/Folder/Main/SharedMain';
+import useGetAccount from '../hooks/useGetAccount';
+import useGetShareFolder from '../hooks/useGetShareFolder';
+import { useState, useEffect } from 'react';
 
 const Shared = () => {
-  const [userId, setUserId] = useState("S"); // 샘플
+  const [userId, setUserId] = useState('S'); // 샘플
 
   const account = useGetAccount(userId);
   const folderInfo = useGetShareFolder(userId);
 
   useEffect(() => {
     setUserId(userId);
-  }, [userId]);
+  }, []);
 
   return (
     <>

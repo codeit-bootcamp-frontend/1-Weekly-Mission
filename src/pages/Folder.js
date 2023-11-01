@@ -1,13 +1,13 @@
-import GlobalStyle from "../global/globalStyles";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
-import LinkAddInput from "../components/UI/LinkAddInput";
-import FolderMain from "../components/Main/FolderMain";
-import useGetAccount from "../hooks/useGetAccount";
-import useGetSelectedFolder from "../hooks/useGetSelectedFolder";
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { FolderProvider } from "../context/FolderContext";
+import GlobalStyle from '../global/globalStyles';
+import Nav from '../components/Folder/Nav';
+import Footer from '../components/Folder/Footer';
+import LinkAddInput from '../components/UI/LinkAddInput';
+import FolderMain from '../components/Folder/Main/FolderMain';
+import useGetAccount from '../hooks/useGetAccount';
+import useGetSelectedFolder from '../hooks/useGetSelectedFolder';
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { FolderProvider } from '../context/FolderContext';
 
 const Folder = () => {
   // const { id } = useParams();  (path='/folder/:id')
@@ -37,7 +37,7 @@ const Folder = () => {
 
   useEffect(() => {
     setUserId(userId);
-  }, [userId]);
+  }, []);
 
   return (
     <>
@@ -46,7 +46,9 @@ const Folder = () => {
       <TopArea>
         <LinkAddInput />
       </TopArea>
-      <FolderProvider>{selectedFolder && <FolderMain userID={userId} selectedFolder={selectedFolder.data} />}</FolderProvider>
+      <FolderProvider>
+        {selectedFolder && <FolderMain userID={userId} selectedFolder={selectedFolder.data} />}
+      </FolderProvider>
       <Footer />
     </>
   );

@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import addIcon from "../../assets/add_icon.svg";
-import SortingButton from "../UI/SortingButton";
-import { useState } from "react";
-import FAB from "../UI/FAB";
-import addIconWhite from "../../assets/add_icon_white.svg";
+import styled from 'styled-components';
+import { useState } from 'react';
+import FAB from '../../UI/FAB';
+import SortingButton from '../../UI/SortingButton';
+import addIcon from '../../../assets/add_icon.svg';
+import addIconWhite from '../../../assets/add_icon_white.svg';
 
 const SortingContainer = styled.div`
   display: flex;
@@ -52,18 +52,26 @@ const AddIcon = styled.img`
   /*피그마에서 FAB 버튼 자체를 컴포넌트로 만든 거 같아서 일반 스타일 버튼은 따로 추가해줬는데, FAB css 변경하는 게 나을까요?*/
 }
 
-const Sorting = ({ selectedFolder }) => {
+const Sorting = ({ selectedFolder, changeTitle }) => {
   const [activeFolderId, setActiveFolderId] = useState(selectedFolder[0].id);
 
-  const handleClick = (folderId) => {
-    setActiveFolderId(folderId);
+  const handleClick = (folder) => {
+    setActiveFolderId(folder.id);
+    changeTitle(folder.name);
   };
 
   return (
     <SortingContainer>
       <ButtonContainer>
         {selectedFolder.map((folder, index) => (
-          <SortingButton key={index} folderId={folder.id} createdAt={folder.created_at} isActive={activeFolderId === folder.id} handleClick={() => handleClick(folder.id)} buttonIndex={index}>
+          <SortingButton
+            key={index}
+            folderId={folder.id}
+            createdAt={folder.created_at}
+            isActive={activeFolderId === folder.id}
+            handleClick={() => handleClick(folder)}
+            buttonIndex={index}
+          >
             {folder.name}
           </SortingButton>
         ))}

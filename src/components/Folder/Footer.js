@@ -1,8 +1,8 @@
-import facebookIcon from "../assets/Footer-facebook-icon.svg";
-import twitterIcon from "../assets/Footer-twitter-icon.svg";
-import youtubeIcon from "../assets/Footer-youtube-icon.svg";
-import instagramIcon from "../assets/Footer-instagram-icon.svg";
-import styled from "styled-components";
+import facebookIcon from '../../assets/Footer-facebook-icon.svg';
+import twitterIcon from '../../assets/Footer-twitter-icon.svg';
+import youtubeIcon from '../../assets/Footer-youtube-icon.svg';
+import instagramIcon from '../../assets/Footer-instagram-icon.svg';
+import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
   margin-top: 12rem;

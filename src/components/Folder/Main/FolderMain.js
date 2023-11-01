@@ -1,14 +1,14 @@
-import styled from "styled-components";
-import LinkSearchInput from "../UI/LinkSearchInput";
-import CardList from "./CardList";
-import shareIcon from "../../assets/share_icon.svg";
-import penIcon from "../../assets/pen_icon.svg";
-import deleteIcon from "../../assets/delete_icon.svg";
-import Sorting from "./Sorting";
-import Option from "../UI/Option";
-import useGetSearchFolder from "../../hooks/useGetSearchFolder";
-import { useEffect, useContext } from "react";
-import { FolderContext } from "../../context/FolderContext";
+import styled from 'styled-components';
+import { useEffect, useContext, useState } from 'react';
+import CardList from './CardList';
+import Sorting from './Sorting';
+import LinkSearchInput from '../../UI/LinkSearchInput';
+import Option from '../../UI/Option';
+import shareIcon from '../../../assets/share_icon.svg';
+import penIcon from '../../../assets/pen_icon.svg';
+import deleteIcon from '../../../assets/delete_icon.svg';
+import { FolderContext } from '../../../context/FolderContext';
+import useGetSearchFolder from '../../../hooks/useGetSearchFolder';
 
 const MainContainer = styled.main`
   display: flex;
@@ -59,18 +59,23 @@ const FolderMain = ({ selectedFolder, userID }) => {
 
   const folderContentsInfo = useGetSearchFolder(userID, folderId);
 
+  const checkEmptyFolder = folderContentsInfo?.data.length;
+  const [title, setTitle] = useState('전체');
+
+  const changeTitle = (name) => {
+    setTitle(name);
+  };
+
   useEffect(() => {
     changeFolderId(folderId);
-  }, [changeFolderId, folderId, folderContentsInfo]);
-
-  const checkEmptyFolder = folderContentsInfo?.data.length;
+  }, [folderId]);
 
   return (
     <MainContainer>
       <LinkSearchInput />
-      <Sorting selectedFolder={selectedFolder} userID={userID} />
+      <Sorting selectedFolder={selectedFolder} userID={userID} changeTitle={changeTitle} />
       <Title>
-        <h1>유용한 글</h1>
+        <h1>{title}</h1>
         {folderId > 0 && checkEmptyFolder > 0 && (
           <Options>
             <Option icon={shareIcon}>공유</Option>

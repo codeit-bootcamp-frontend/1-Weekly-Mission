@@ -1,4 +1,4 @@
-import Card from "../UI/Card";
+import Card from '../../UI/Card';
 
 const CardDivide = ({ folderCards }) => {
   return (
