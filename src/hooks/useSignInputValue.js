@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function useInputValue() {
+function useSignInputValue() {
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -18,4 +18,4 @@ function useInputValue() {
   return [values, handleChange];
 }
 
-export default useInputValue;
+export default useSignInputValue;

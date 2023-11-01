@@ -4,25 +4,25 @@ import SignFooter from '../components/SignFooter/SignFooter';
 import SignLink from '../components/SignLink/SignLink';
 import SignInput from '../components/SignInput/SignInput';
 import Button from '../components/Button/Button';
-import useInputValue from '../hooks/useInputValue';
 import { Navigate, useNavigate } from 'react-router';
-import useInputError from '../hooks/useInputError';
 import postSign from '../apis/auth/postSign';
 import useAuth from '../hooks/useAuth';
+import useSignInputValue from '../hooks/useSignInputValue';
+import useSignInputError from '../hooks/useSignInputError';
 
 function Signin() {
-  const [values, handleChange] = useInputValue();
+  const [values, handleChange] = useSignInputValue();
   const { token } = useAuth();
 
   const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useInputError(values, 'in', 'email');
+    useSignInputError(values, 'in', 'email');
 
   const [
     passwordError,
     passwordErrorText,
     handlePasswordBlur,
     handlePasswordFocus,
-  ] = useInputError(values, 'in', 'password');
+  ] = useSignInputError(values, 'in', 'password');
 
   const navigate = useNavigate();
 

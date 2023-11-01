@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { isEmail, isPassword } from '../utils/validation';
 
-function useInputError(values, signType, signTarget) {
+function useSignInputError(values, signType, signTarget) {
   const [error, setError] = useState(false);
   const [errorText, setErrorText] = useState('');
 
@@ -69,4 +69,4 @@ function useInputError(values, signType, signTarget) {
   return [error, errorText, handleBlur, handleFocus];
 }
 
-export default useInputError;
+export default useSignInputError;

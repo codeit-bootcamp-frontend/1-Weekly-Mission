@@ -4,32 +4,32 @@ import SignFooter from '../components/SignFooter/SignFooter';
 import SignLink from '../components/SignLink/SignLink';
 import SignInput from '../components/SignInput/SignInput';
 import Button from '../components/Button/Button';
-import useInputValue from '../hooks/useInputValue';
 import { Navigate, useNavigate } from 'react-router';
-import useInputError from '../hooks/useInputError';
-import postSign from '../apis/auth/postSign';
 import useAuth from '../hooks/useAuth';
+import useSignInputValue from '../hooks/useSignInputValue';
+import useSignInputError from '../hooks/useSignInputError';
+import postSign from '../apis/auth/postSign';
 
 function Signup() {
-  const [values, handleChange] = useInputValue();
+  const [values, handleChange] = useSignInputValue();
   const { token } = useAuth();
 
   const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useInputError(values, 'up', 'email');
+    useSignInputValue(values, 'up', 'email');
 
   const [
     passwordError,
     passwordErrorText,
     handlePasswordBlur,
     handlePasswordFocus,
-  ] = useInputError(values, 'up', 'password');
+  ] = useSignInputError(values, 'up', 'password');
 
   const [
     passwordCheckError,
     passwordCheckErrorText,
     handlePasswordCheckBlur,
     handlePasswordCheckFocus,
-  ] = useInputError(values, 'up', 'passwordCheck');
+  ] = useSignInputError(values, 'up', 'passwordCheck');
 
   const navigate = useNavigate();
 
