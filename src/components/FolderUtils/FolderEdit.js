@@ -3,21 +3,21 @@ import shareImg from "../../assets/share.svg";
 import penImg from "../../assets/pen.svg";
 import deleteImg from "../../assets/delete.svg";
 
+const buttonsData = [
+  { image: shareImg, text: "공유" },
+  { image: penImg, text: "이름 변경" },
+  { image: deleteImg, text: "삭제" },
+];
+
 const FolderEdit = () => {
   return (
     <div className={styles.folderEdit}>
-      <button className={styles.button}>
-        <img src={shareImg} alt="공유 이미지" />
-        <p>공유</p>
-      </button>
-      <button className={styles.button}>
-        <img src={penImg} alt="펜 이미지" />
-        <p>이름 변경</p>
-      </button>
-      <button className={styles.button}>
-        <img src={deleteImg} alt="삭제 이미지" />
-        <p>삭제</p>
-      </button>
+      {buttonsData.map((button, index) => (
+        <button className={styles.button} key={index}>
+          <img src={button.image} alt={`${button.text} 이미지`} />
+          <p>{button.text}</p>
+        </button>
+      ))}
     </div>
   );
 };
