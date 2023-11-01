@@ -5,7 +5,6 @@ function CardSection({ data }) {
   const handleCardClick = (url) => {
     window.open(url);
   };
-
   return (
     <div className={styles.cardSection}>
       {data.map((linkData) => {

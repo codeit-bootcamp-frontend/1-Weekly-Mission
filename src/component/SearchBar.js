@@ -5,7 +5,7 @@ function SearchBar({ size }) {
   const classname = `searchBar-${size}`;
   return (
     <div className={classname}>
-      <img src={iconSearch} />
+      <img src={iconSearch} alt="search" />
       <input placeholder="링크를 검색해 보세요." />
     </div>
   );
