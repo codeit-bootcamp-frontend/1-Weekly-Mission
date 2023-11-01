@@ -1,12 +1,16 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MobileFolderButton from "./components/MobileFolderButton/MobileFolderButton";
-import SearchBar from "commons/components/SearchBar/SearchBar";
-import LinkAddInput from "./components/LinkAddInput/LinkAddInput";
-import useAsync from "apis/useAsync";
-import FolderHeader from "./components/FolderHeader/FolderHeader";
 
-import { getAllCards, getAllFolders } from "apis/api";
+import { SearchBar } from "commons/components/index";
+
+import useAsync from "apis/useAsync";
+import {
+  FolderHeader,
+  LinkAddInput,
+  MobileFolderButton,
+} from "./components/index";
+
+import { getAllFolders } from "apis/api";
 import "./FolderPage.css";
 
 function FolderPage() {

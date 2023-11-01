@@ -1,8 +1,8 @@
-import "commons/styles/reset.css";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Nav from "commons/components/Nav/Nav";
-import Footer from "commons/components/Footer/Footer";
+
+import "commons/styles/reset.css";
+import { Nav, Footer } from "commons/components/index";
 import useAsync from "apis/useAsync";
 import { getUser } from "apis/api";
 

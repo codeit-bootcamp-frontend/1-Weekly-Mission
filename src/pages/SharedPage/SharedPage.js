@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import ShareHeader from "pages/SharedPage/components/ShareHeader/ShareHeader";
-import SearchBar from "commons/components/SearchBar/SearchBar";
-import CardList from "commons/components/CardList/CardList";
-import useAsync from "apis/useAsync";
 
+import ShareHeader from "./components/ShareHeader/ShareHeader";
+import { SearchBar, CardList } from "commons/components/index";
+import useAsync from "apis/useAsync";
 import { getAllCards } from "apis/api";
 import "./SharedPage.css";
 

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "App";
-import FolderPage from "./pages/FolderPage/FolderPage";
-import SharedPage from "pages/SharedPage/SharedPage";
+
+import { FolderPage, SharedPage, HomePage } from "./pages/index";
 
 function Main() {
   return (
