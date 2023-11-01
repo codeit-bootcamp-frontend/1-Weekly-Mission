@@ -3,17 +3,11 @@ import Header from "../common/header/Header";
 import Landing from "../components/landing/Landing";
 import Footer from "../common/footer/Footer";
 import SearchBar from "../common/searchBar/SearchBar";
-import Profile from "../common/profile/Profile";
-import useFetch from "../hooks/useFetch";
-
 import React from "react";
-
 import useTest from "../hooks/useTest";
-
 import { getShareDate } from "../api/folder";
 export default function SharedPage() {
   const [data, isLoading] = useTest(() => getShareDate());
-
   // const [data, isLoading] = useFetch(
   //   "https://bootcamp-api.codeit.kr/api/sample/folder"
   // );
