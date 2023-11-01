@@ -1,0 +1,23 @@
+/* PC 화면 크기 (1200px 이상) */
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(3, 34rem);
+  column-gap: 2rem;
+  row-gap: 2.5rem;
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .cardList {
+    grid-template-columns: repeat(2, 34rem);
+    column-gap: 2.4rem;
+  }
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .cardList {
+    grid-template-columns: 32.5rem;
+    row-gap: 2rem;
+  }
+}

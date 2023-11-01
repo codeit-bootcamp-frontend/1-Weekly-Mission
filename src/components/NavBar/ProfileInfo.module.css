@@ -1,0 +1,23 @@
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 5.4rem;
+}
+
+.profileImg {
+  border-radius: 50%;
+  width: 2.8rem;
+}
+
+.email {
+  color: var(--linkbrary-gray-100, #373740);
+  font-size: 1.4rem;
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .email {
+    display: none;
+  }
+}

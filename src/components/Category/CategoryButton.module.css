@@ -1,0 +1,25 @@
+.categoryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4.1rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+
+.categoryButton:hover {
+  background: var(--linkbrary-gray-10, #e7effb);
+}
+
+.categoryButton:active {
+  background: var(--linkbrary-primary-color, #6d6afe);
+}
+
+.categoryButton.selected {
+  background: var(--linkbrary-primary-color, #6d6afe);
+  color: #fff;
+}
