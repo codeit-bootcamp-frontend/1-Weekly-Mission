@@ -5,7 +5,7 @@
 
 import styles from "./SearchBar.module.css";
 import { useState } from "react";
-import searchIcon from "assets/images/search-icon.svg";
+import { ReactComponent as SearchIcon } from "assets/images/search-icon.svg";
 
 function SearchBar() {
   const [text, setText] = useState("");
@@ -15,11 +15,7 @@ function SearchBar() {
   return (
     <div className={styles["search-form-container"]}>
       <form className={styles["search-form"]}>
-        <img
-          className={styles["search-icon"]}
-          src={searchIcon}
-          alt="search icon"
-        />
+        <SearchIcon />
         <input
           className={styles["search-bar"]}
           value={text}

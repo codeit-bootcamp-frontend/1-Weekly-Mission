@@ -1,16 +1,18 @@
+import axios from "axios";
+
 const BASE_URL = `https://bootcamp-api.codeit.kr`;
 const USER_ID = `users/1`;
 
 export async function getUser() {
-  const response = await fetch(`${BASE_URL}/api/${USER_ID}`);
-  const body = await response.json();
-  return body;
+  const response = await axios.get(`${BASE_URL}/api/${USER_ID}`);
+  // const body = await response.json();
+  return response.data;
 }
 
 export async function getAllFolders() {
-  const response = await fetch(`${BASE_URL}/api/${USER_ID}/folders`);
-  const body = await response.json();
-  return body;
+  const response = await axios.get(`${BASE_URL}/api/${USER_ID}/folders`);
+  // const body = await response.json();
+  return response.data;
 }
 
 export async function getAllCards(id = "") {
@@ -21,7 +23,7 @@ export async function getAllCards(id = "") {
     const query = `?folderId=${id}`;
     url = `${BASE_URL}/api/${USER_ID}/links${query}`;
   }
-  const response = await fetch(`${url}`);
-  const body = await response.json();
-  return body;
+  const response = await axios.get(`${url}`);
+  // const body = await response.json();
+  return response.data;
 }

@@ -18,6 +18,7 @@ const INITIAL_USER = {
 function App() {
   const [userValues, setUserValues] = useState(INITIAL_USER);
   const [isUserLoading, userLoadingError, getUserAsync] = useAsync(getUser);
+
   const loadUser = async () => {
     const userResult = await getUserAsync();
     if (!userResult) return;
@@ -29,6 +30,7 @@ function App() {
       email,
       auth_id,
     } = userResult.data[0];
+
     setUserValues((prevValues) => {
       const newValues = {
         userId: id,

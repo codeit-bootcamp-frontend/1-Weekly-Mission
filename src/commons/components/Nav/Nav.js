@@ -4,7 +4,7 @@
  */
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.css";
-import logoSvg from "assets/images/logo.svg";
+import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 
 function Button() {
   return (
@@ -22,7 +22,7 @@ function Nav({ userEmail, userProfile }) {
       <nav className={styles["nav"]}>
         <div className={styles["gnb"]}>
           <Link to="/">
-            <img src={logoSvg} alt="링크브러리 로고" />
+            <LogoSvg />
           </Link>
           <Button />
         </div>
@@ -33,7 +33,7 @@ function Nav({ userEmail, userProfile }) {
     <nav className={styles["nav"]}>
       <div className={styles["gnb"]}>
         <Link to="/">
-          <img src={logoSvg} alt="링크브러리 로고" />
+          <LogoSvg />
         </Link>
         <div className={styles["user-info"]}>
           <img

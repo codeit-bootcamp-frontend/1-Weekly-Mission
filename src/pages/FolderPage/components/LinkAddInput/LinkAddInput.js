@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import styles from "./LinkAddInput.module.css";
-import linkIcon from "assets/images/link-icon.svg";
+import { ReactComponent as LinkIcon } from "assets/images/link-icon.svg";
 
 function LinkAddInput() {
   const [keyword, setKeyword] = useState("");
@@ -15,11 +15,7 @@ function LinkAddInput() {
     <div className={styles["add-form-container"]}>
       <form>
         <div className={styles["add-link-form"]}>
-          <img
-            src={linkIcon}
-            className={styles["add-link-icon"]}
-            alt="link icon"
-          />
+          <LinkIcon />
           <input
             name="add-link-input"
             value={keyword}

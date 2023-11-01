@@ -5,9 +5,10 @@
    */
 
 import styles from "./Card.module.css";
-import noImage from "assets/images/no-img-card.svg";
-import kebab from "assets/images/kebab.svg";
-import noStar from "assets/images/no-filled-star-icon.svg";
+import NoImg from "assets/images/no-img-card.svg";
+import { ReactComponent as Kebab } from "assets/images/kebab.svg";
+import { ReactComponent as NoStar } from "assets/images/no-filled-star-icon.svg";
+
 import formatDate from "commons/utils/formatDate";
 import calcDate from "commons/utils/calcDate";
 
@@ -18,10 +19,10 @@ function Card(card) {
   return (
     <div className={styles["card-container"]}>
       <button className={styles["unfilled-star-button"]}>
-        <img src={noStar} alt="not checked star" />
+        <NoStar />
       </button>
       <button className={styles["kebab-button"]}>
-        <img src={kebab} alt="kebab icon" />
+        <Kebab />
       </button>
 
       <a
@@ -31,7 +32,7 @@ function Card(card) {
         className={styles["card-link"]}
       >
         <div className={styles["card-img-section"]}>
-          <img src={image_source ? image_source : noImage} alt={title} />
+          <img src={image_source ? image_source : NoImg} alt={title} />
         </div>
         <div className={styles["card-text-section"]}>
           <p className={styles["time-stamp"]}>{str}</p>

@@ -1,8 +1,8 @@
 import styles from "./Footer.module.css";
-import twitterIcon from "assets/images/akar-icons_twitter-fill.svg";
-import facebookIcon from "assets/images/akar-icons_facebook-fill.svg";
-import youtubeIcon from "assets/images/akar-icons_youtube-fill.svg";
-import instagramIcon from "assets/images/akar-icons_instagram-filled.svg";
+import { ReactComponent as TwitterIcon } from "assets/images/akar-icons_twitter-fill.svg";
+import { ReactComponent as FacebookIcon } from "assets/images/akar-icons_facebook-fill.svg";
+import { ReactComponent as YoutubeIcon } from "assets/images/akar-icons_youtube-fill.svg";
+import { ReactComponent as InstagramIcon } from "assets/images/akar-icons_instagram-filled.svg";
 
 function Footer() {
   return (
@@ -18,28 +18,28 @@ function Footer() {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <img src={facebookIcon} alt="페이스북 아이콘" />
+          <FacebookIcon />
         </a>
         <a
           href="https://www.twitter.com/"
           target="_blank"
           rel="noreferrer noopener"
         >
-          <img src={twitterIcon} alt="트위터 아이콘" />
+          <TwitterIcon />
         </a>
         <a
           href="https://www.youtube.com/"
           target="_blank"
           rel="noreferrer noopener"
         >
-          <img src={youtubeIcon} alt="유튜브 아이콘" />
+          <YoutubeIcon />
         </a>
         <a
           href="https://www.instagram.com/"
           target="_blank"
           rel="noreferrer noopener"
         >
-          <img src={instagramIcon} alt="인스타그램 아이콘" />
+          <InstagramIcon />
         </a>
       </div>
     </footer>

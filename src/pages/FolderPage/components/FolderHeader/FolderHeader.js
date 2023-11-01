@@ -4,9 +4,9 @@ import { useEffect, useState, useRef } from "react";
 import CardList from "commons/components/CardList/CardList";
 import { getAllCards } from "apis/api";
 
-import shareIcon from "assets/images/share-icon.svg";
-import renameIcon from "assets/images//rename-icon.svg";
-import deleteIcon from "assets/images/delete-icon.svg";
+import { ReactComponent as ShareIcon } from "assets/images/share-icon.svg";
+import { ReactComponent as RenameIcon } from "assets/images//rename-icon.svg";
+import { ReactComponent as DeleteIcon } from "assets/images/delete-icon.svg";
 
 const INITIAL_FOLDER = {
   id: "",
@@ -16,6 +16,7 @@ const INITIAL_FOLDER = {
 function FolderNameList({ folderList = null, onChange }) {
   const [folderId, setFolderId] = useState("");
   const [folderTitle, setFolderTitle] = useState("전체");
+
   const handleButton = (name, id) => {
     setFolderTitle(name);
     setFolderId(id);
@@ -40,22 +41,20 @@ function FolderNameList({ folderList = null, onChange }) {
           </>
         )}
       </div>
-
       <div className={styles["folder-header"]}>
         <div className={styles["folder-title"]}>{folderTitle}</div>
-
         {folderId && (
           <div className={styles["folder-modifier-container"]}>
             <button className={styles["folder-modifier-button"]}>
-              <img src={shareIcon} alt="share button" />
+              <ShareIcon />
               공유
             </button>
             <button className={styles["folder-modifier-button"]}>
-              <img src={renameIcon} alt="share button" />
+              <RenameIcon />
               이름 변경
             </button>
             <button className={styles["folder-modifier-button"]}>
-              <img src={deleteIcon} alt="share button" />
+              <DeleteIcon />
               삭제
             </button>
           </div>
