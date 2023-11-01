@@ -10,12 +10,12 @@ function SearchBar() {
   };
 
   return (
-    <S.SearchBarContainer>
-      <form>
-        <input value={value} onChange={handleValueChange} placeholder="링크를 검색해 보세요." />
-        <img src={searchIcon} alt="검색 아이콘" />
-      </form>
-    </S.SearchBarContainer>
+    <S.Container>
+      <S.Form>
+        <S.Input value={value} onChange={handleValueChange} placeholder="링크를 검색해 보세요." />
+        <S.Img src={searchIcon} alt="검색 아이콘" />
+      </S.Form>
+    </S.Container>
   );
 }
 

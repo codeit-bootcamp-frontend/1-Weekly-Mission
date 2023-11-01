@@ -8,11 +8,11 @@ function FolderInfo({ data }) {
   const ownerProfileImg = owner?.profileImageSource;
 
   return (
-    <S.FolderInfoContainer>
-      <img src={ownerProfileImg} alt="폴더 소유자 프로필 이미지" />
-      <p>{ownerName}</p>
-      <h1>{folderName}</h1>
-    </S.FolderInfoContainer>
+    <S.Container>
+      <S.Img src={ownerProfileImg} alt="폴더 소유자 프로필 이미지" />
+      <S.P>{ownerName}</S.P>
+      <S.H1>{folderName}</S.H1>
+    </S.Container>
   );
 }
 

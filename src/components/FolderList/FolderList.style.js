@@ -1,6 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { onMobile } from "styles/mediaQuery";
+
+const selectedFolder = css`
+  background: var(--primary);
+  color: var(--white);
+`;
+
+const unselectedFolder = css`
+  background: var(--white);
+  color: var(--black);
+`;
+
 export const FolderListContainer = styled.ul`
   display: flex;
   justify-content: space-between;
@@ -24,10 +35,9 @@ export const Folder = styled(NavLink)`
   align-items: center;
   border-radius: 0.5rem;
   border: 0.1rem solid var(--primary);
-  background: ${({ selected }) => (selected ? `var(--primary)` : `var(--white)`)};
-  color: ${({ selected }) => (selected ? `var(--white)` : `var(--black)`)};
   font-size: 1.6rem;
   line-height: 100%;
+  ${({ selected }) => (selected ? selectedFolder : unselectedFolder)};
 `;
 
 export const AddFolderButton = styled.button`

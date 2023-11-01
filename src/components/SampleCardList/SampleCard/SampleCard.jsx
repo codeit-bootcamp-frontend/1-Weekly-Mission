@@ -14,7 +14,7 @@ function SampleCard({ item }) {
   return (
     <div onClick={moveUrl}>
       <S.ImageContainer>
-        <S.Image src={imageSource || noImage} alt={title} />
+        <S.Image src={imageSource ?? noImage} alt={title} />
         <S.StarButton src={star} alt="별모양 버튼" />
       </S.ImageContainer>
       <S.Info>

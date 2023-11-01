@@ -1,4 +1,4 @@
-import { getFolderList } from "api";
+import { getAPI } from "api";
 import { useEffect, useState } from "react";
 import * as S from "./FolderList.style";
 import addIcon from "images/add.svg";
@@ -17,6 +17,7 @@ function FolderList({ getFolderId }) {
     setSelectedId(null);
     setSelectedName("전체");
   };
+
   const handleClick = (e) => {
     getFolderId(e.target.id);
     setSelectedId(e.target.id);
@@ -24,7 +25,7 @@ function FolderList({ getFolderId }) {
   };
 
   const handleLoad = async () => {
-    const result = await getFolderList();
+    const result = await getAPI("/users/1/folders");
     const { data } = result;
     setFolders(data);
   };
@@ -41,13 +42,11 @@ function FolderList({ getFolderId }) {
             <S.Folder onClick={handleAllClick} to="/folder" selected={!selectedId}>
               전체
             </S.Folder>
-            {folders.map((folder) => {
-              return (
-                <S.Folder onClick={handleClick} name={folder.name} id={folder.id} to={`/folder?folderId=${folder.id}`} key={folder.id} selected={+selectedId === folder.id}>
-                  {folder.name}
-                </S.Folder>
-              );
-            })}
+            {folders.map((folder) => (
+              <S.Folder onClick={handleClick} name={folder.name} id={folder.id} to={`/folder?folderId=${folder.id}`} key={folder.id} selected={+selectedId === folder.id}>
+                {folder.name}
+              </S.Folder>
+            ))}
           </S.FolderContainer>
           <S.AddFolderButton>
             <span>폴더 추가</span>
