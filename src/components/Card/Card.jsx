@@ -3,8 +3,10 @@ import useToggle from '../../hooks/useToggle';
 import IMAGES from '../../assets/images.js';
 import * as S from './styles.js';
 import { useState } from 'react';
+import { mapCardData } from '../../utils/mapFetch';
 
 const SelectMenu = () => {
+  // 이 부분 Hover는 CSS로 하는게 더 좋을 것 같다
   const [isHover, setIsHover] = useState(false);
   const handleMouseEnter = () => setIsHover(true);
 
@@ -37,12 +39,7 @@ const SelectMenu = () => {
 };
 
 const CardInfo = ({ createdAt, description }) => {
-  let text;
-  if (description === null || description === undefined || description === '') {
-    text = '내용 없음';
-  } else {
-    text = description;
-  }
+  const text = description || '내용 없음';
 
   const handleKebabClick = (e) => {
     e.preventDefault();
@@ -90,13 +87,7 @@ const CardImage = ({ imgUrl }) => {
 };
 
 const Card = ({ items }) => {
-  // 기존 코드 - SAMPLE 데이터를 받을 때 데이터 구조가 달라 if - els문으로 처리
-  // const { created_at, description, image_source, url } = items
-
-  const image_source = items.createdAt ? items.imageSource : items.image_source;
-  const created_at = items.createdAt ? items.createdAt : items.created_at;
-  const description = items.description;
-  const url = items.url;
+  const { image_source, created_at, description, url } = mapCardData(items);
   return (
     <S.CardHref href={url} target="_blank" rel="noreferrer">
       <CardImage imgUrl={image_source} />

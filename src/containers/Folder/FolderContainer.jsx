@@ -11,18 +11,13 @@ import { DEFAULT_FOLDER } from '../../constants/constant';
 import * as S from './styles';
 
 function FolderContainer({ folderData, userId, userLinks }) {
-  const [isSelectedFolder, setIsSelectedFolder] = useState(undefined);
   const [selectedFolderName, setSelectedFolderName] = useState(
     DEFAULT_FOLDER.name,
   );
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log('이건 나와야 하는거', isSelectedFolder);
-  const [cards, setCards] = useState(userLinks);
+  const [cards, setCards] = useState(null);
   const currentFolderId = searchParams.get('folderId');
-
   const handleFolderSelect = async (folderId, folderName) => {
-    setIsSelectedFolder(folderId);
-    console.log('클릭 했을때');
     setSelectedFolderName(folderName);
     setSearchParams(folderId !== 0 ? { folderId } : {});
 
@@ -48,28 +43,27 @@ function FolderContainer({ folderData, userId, userLinks }) {
         (folder) => String(folder.id) === currentFolderId,
       );
       setSelectedFolderName(selectedFolder.name);
-      setIsSelectedFolder(currentFolderId);
     }
   };
 
   const handleSearchbar = (event, searchedText) => {
     event.preventDefault();
     if (!searchedText) setCards(() => userLinks);
-    console.log(searchedText);
-
-    const filterdCards = userLinks.filter((link) => {
-      if (
-        link['description'] !== null &&
-        link['description'].includes(searchedText)
-      )
-        return link;
-    });
-    setCards(() => filterdCards);
+    else {
+      const filterdCards = userLinks.filter((link) =>
+        link['description']?.includes(searchedText),
+      );
+      setCards(() => filterdCards);
+    }
   };
 
   useEffect(() => {
     handleSearchParam();
   }, [currentFolderId]);
+
+  useEffect(() => {
+    setCards(userLinks);
+  }, [userLinks]);
 
   return (
     <S.CardContainerBox>

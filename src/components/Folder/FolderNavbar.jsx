@@ -6,16 +6,14 @@ const Folder = ({ data, onSelect, selected }) => {
   const { name, id } = data;
 
   return (
-    <S.FolderBox onClick={() => onSelect(id, name)} selected={selected}>
+    <S.FolderBox onClick={() => onSelect(id)} selected={selected}>
       <S.FolderBoxText>{name}</S.FolderBoxText>
     </S.FolderBox>
   );
 };
 
 const FolderList = ({ data, handleFolderSelect, currentFolderId }) => {
-  const handleFolderClick = (folderId, folderName) => {
-    return handleFolderSelect(folderId, folderName);
-  };
+  const handleFolderClick = (folderId) => handleFolderSelect(folderId);
 
   return (
     <>

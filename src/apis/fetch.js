@@ -10,11 +10,11 @@ const useFetchUserProfileSample = () => {
 };
 
 const useFetchUserProfile = (userId) => {
-  return useAsync(() => fetchGet(`/api/users/${userId}`));
+  return useAsync(() => fetchGet(`/api/users/${userId}`), [userId]);
 };
 
 const useFetchUserFolders = (userId) => {
-  return useAsync(() => fetchGet(`/api/users/${userId}/folders`));
+  return useAsync(() => fetchGet(`/api/users/${userId}/folders`), [userId]);
 };
 
 const useFetchUserLinks = (userId, folderId = undefined) => {
@@ -25,7 +25,7 @@ const useFetchUserLinks = (userId, folderId = undefined) => {
     query = `/api/users/${userId}/links`;
   }
 
-  return useAsync(() => fetchGet(query));
+  return useAsync(() => fetchGet(query), [userId, folderId]);
 };
 
 export {
