@@ -1,25 +1,25 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
-import IMAGES from "../../assets/images.js"
-import * as S from "./styles.js"
+import IMAGES from '../../assets/images.js';
+import * as S from './styles.js';
 
 const snsLinks = {
-  facebook: "https://www.facebook.com/",
-  twitter: "https://www.twitter.com/",
-  youtube: "https://www.youtube.com/",
-  instagram: "https://www.instagram.com/",
-}
+  facebook: 'https://www.facebook.com/',
+  twitter: 'https://www.twitter.com/',
+  youtube: 'https://www.youtube.com/',
+  instagram: 'https://www.instagram.com/',
+};
 const FooterLink = ({ link, text }) => {
-  return <S.FooterStyledLink to={link}>{text}</S.FooterStyledLink>
-}
+  return <S.FooterStyledLink to={link}>{text}</S.FooterStyledLink>;
+};
 
 const SNSImageLink = ({ src, name }) => {
   return (
     <Link to={snsLinks[name]} target="_blank" rel="noopener noreferrer">
       <S.FooterSnsImage src={src} alt={name} height={20} />
     </Link>
-  )
-}
+  );
+};
 
 const Footer = () => {
   return (
@@ -38,7 +38,7 @@ const Footer = () => {
         </S.FooterSnsBox>
       </S.FooterInnerBox>
     </S.FooterBox>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

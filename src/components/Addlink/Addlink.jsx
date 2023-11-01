@@ -1,12 +1,12 @@
-import Button from "../Button/Button.jsx"
-import IMAGES from "../../assets/images"
+import Button from '../Button/Button.jsx';
+import IMAGES from '../../assets/images';
 
-import * as S from "./styles"
+import * as S from './styles';
 
 const Addlink = () => {
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
   return (
     <form onSubmit={handleSubmit}>
       <S.AddLinkOuterBox>
@@ -21,7 +21,7 @@ const Addlink = () => {
         </S.AddLinkBox>
       </S.AddLinkOuterBox>
     </form>
-  )
-}
+  );
+};
 
-export default Addlink
+export default Addlink;

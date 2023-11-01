@@ -1,21 +1,21 @@
-import IMAGES from "../../assets/images"
-import { DEFAULT_FOLDER } from "../../utils/utils"
-import * as S from "./styles.js"
+import IMAGES from '../../assets/images';
+import { DEFAULT_FOLDER } from '../../constants/constant';
+import * as S from './styles.js';
 
 const Folder = ({ data, onSelect, selected }) => {
-  const { name, id } = data
+  const { name, id } = data;
 
   return (
     <S.FolderBox onClick={() => onSelect(id, name)} selected={selected}>
       <S.FolderBoxText>{name}</S.FolderBoxText>
     </S.FolderBox>
-  )
-}
+  );
+};
 
 const FolderList = ({ data, handleFolderSelect, currentFolderId }) => {
   const handleFolderClick = (folderId, folderName) => {
-    return handleFolderSelect(folderId, folderName)
-  }
+    return handleFolderSelect(folderId, folderName);
+  };
 
   return (
     <>
@@ -33,8 +33,8 @@ const FolderList = ({ data, handleFolderSelect, currentFolderId }) => {
         />
       ))}
     </>
-  )
-}
+  );
+};
 
 const FolderAddBtn = () => {
   return (
@@ -43,8 +43,8 @@ const FolderAddBtn = () => {
       <S.FolderAddImage src={IMAGES.folderAdd} />
       <S.FolderAddWhiteImage src={IMAGES.folderAddWhite} />
     </S.FolderAddBox>
-  )
-}
+  );
+};
 
 const FolderNavbar = ({ folderData, handleFolderSelect, currentFolderId }) => {
   if (folderData) {
@@ -61,8 +61,8 @@ const FolderNavbar = ({ folderData, handleFolderSelect, currentFolderId }) => {
         </S.FolderListBox>
         <FolderAddBtn />
       </>
-    )
+    );
   }
-}
+};
 
-export default FolderNavbar
+export default FolderNavbar;

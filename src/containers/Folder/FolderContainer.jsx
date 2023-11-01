@@ -7,7 +7,7 @@ import FolderMenubar from '../../components/Folder/FolderMenubar';
 import Searchbar from '../../components/Searchbar/Searchbar';
 import NoLink from './NoLink';
 import { fetchGet } from '../../apis/api';
-import { DEFAULT_FOLDER } from '../../utils/utils';
+import { DEFAULT_FOLDER } from '../../constants/constant';
 import * as S from './styles';
 
 function FolderContainer({ folderData, userId, userLinks }) {
