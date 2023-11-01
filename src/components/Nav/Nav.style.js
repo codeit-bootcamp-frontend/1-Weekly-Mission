@@ -1,25 +1,29 @@
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: #edf7ff;
-}
+import styled from "styled-components";
+import { onMobile, onTablet } from "styles/mediaQuery";
 
-nav {
+export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 192rem;
   height: 9.4rem;
-  padding: 0 20rem;
-  /* position: fixed;
-  top: 0; */
+  padding: 3.2rem 20rem;
+  position: ${({ path }) => (path === "/folder" ? `static` : `sticky`)};
+  top: 0;
+  z-index: 9999;
   background-color: #edf7ff;
-}
 
-.signin {
+  ${onTablet} {
+    padding: 3.2rem;
+  }
+
+  ${onMobile} {
+    padding: 1.8rem 3.2rem;
+  }
+`;
+
+export const SignInButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,10 +35,4 @@ nav {
   font-size: 1.8rem;
   font-weight: 600;
   width: 12.8rem;
-}
-
-@media screen and (max-width: 1124px) {
-  nav {
-    padding: 0 3.2rem;
-  }
-}
+`;

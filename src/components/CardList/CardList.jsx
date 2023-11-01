@@ -1,32 +1,30 @@
 import { useEffect, useState } from "react";
-import Card from "components/Card/Card";
-import { getFolder } from "api";
-import "./CardList.css";
+import Card from "components/CardList/Card";
+import * as S from "./CardList.style";
 
-function CardList() {
+function CardList({ data }) {
   const [items, setItems] = useState();
 
-  const handleLoad = async () => {
-    const data = await getFolder();
-    setItems(data.folder?.links);
-  };
-
   useEffect(() => {
-    handleLoad();
-  }, []);
+    setItems(data);
+  }, [data]);
 
   return (
     <>
-      {items && (
-        <ul className="CardList">
-          {items.map((item) => {
-            return (
-              <li className="Card" key={item.id}>
-                <Card item={item} />
-              </li>
-            );
-          })}
-        </ul>
+      {!data.length ? (
+        <S.NoLink>저장된 링크가 없습니다</S.NoLink>
+      ) : (
+        items && (
+          <S.CardListContainer>
+            {items.map((item) => {
+              return (
+                <S.CardContainer key={item.id}>
+                  <Card item={item} />
+                </S.CardContainer>
+              );
+            })}
+          </S.CardListContainer>
+        )
       )}
     </>
   );
