@@ -1,33 +1,23 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { timeForToday } from "utils/moment";
 import kebab from "assets/kebab.svg";
 import noImageIMG from "assets/noImage.svg";
 import starIMG from "assets/star.svg";
 import chosenStarIMG from "assets/chosenStar.svg";
-import "./Card.css";
+import * as Styled from "./StyledCard";
 
-const Card = ({ data, onClick }) => {
-  // const imgRef = useRef();
+const Card = ({ data }) => {
+  const CREATED_AT = data.createdAt ? data.createdAt : data.created_at;
+  const IMG_SRC = data.imageSource ? data.imageSource : data.image_source;
+  const URL = data.url;
+  const DESCRIPTION = data.description;
   const [star, setStar] = useState(false);
-
-  const handleCardClick = () => {
-    onClick(data.url);
-  };
 
   const formatDate = (value) => {
     const date = new Date(value);
     return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
   };
-
-  // const handleMouseEnter = () => {
-  //   const $imgNode = imgRef.current;
-  //   $imgNode.setAttribute("style", "transform: scale(1.3)");
-  // };
-
-  // const handleMouseLeave = () => {
-  //   const $imgNode = imgRef.current;
-  //   $imgNode.removeAttribute("style");
-  // };
 
   const handleKebabClick = (e) => {
     e.stopPropagation();
@@ -43,40 +33,33 @@ const Card = ({ data, onClick }) => {
   };
 
   return (
-    <div
-      className="cardContainer"
-      onClick={handleCardClick}
-      // onMouseEnter={handleMouseEnter}
-      // onMouseLeave={handleMouseLeave}
-    >
-      <div className="cardImgBox">
-        <img
-          className="cardImg"
-          // ref={imgRef}
-          src={data.imageSource ? data.imageSource : noImageIMG}
-          alt={data.imageSource ? "카드 이미지" : "이미지 없음"}
-        />
-      </div>
-      <div className="infoContainer">
-        <div className="additionalInfo">
-          <span>{timeForToday(data.createdAt)}</span>
-          <img
-            className="kebab"
-            src={kebab}
-            alt="카드 설정 더보기"
-            onClick={handleKebabClick}
+    <Styled.CardContainer>
+      <Link to={URL} target="_blank">
+        <Styled.CardImgBox>
+          <Styled.CardImg
+            src={IMG_SRC ? IMG_SRC : noImageIMG}
+            alt={IMG_SRC ? "카드 이미지" : "이미지 없음"}
           />
-        </div>
-        <p className="description">{data.description}</p>
-        <span>{formatDate(data.createdAt)}</span>
-      </div>
-      <img
-        onClick={handleStarClick}
-        className="star"
-        src={star ? chosenStarIMG : starIMG}
-        alt="즐겨찾기 버튼"
-      />
-    </div>
+        </Styled.CardImgBox>
+        <Styled.InfoContainer>
+          <Styled.AdditionalInfo>
+            <span>{timeForToday(CREATED_AT)}</span>
+            <Styled.Kebab
+              src={kebab}
+              alt="카드 설정 더보기"
+              onClick={handleKebabClick}
+            />
+          </Styled.AdditionalInfo>
+          <Styled.Description>{DESCRIPTION}</Styled.Description>
+          <span>{formatDate(CREATED_AT)}</span>
+        </Styled.InfoContainer>
+        <Styled.Star
+          onClick={handleStarClick}
+          src={star ? chosenStarIMG : starIMG}
+          alt="즐겨찾기 버튼"
+        />
+      </Link>
+    </Styled.CardContainer>
   );
 };
 

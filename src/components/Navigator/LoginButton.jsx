@@ -1,26 +1,24 @@
-import "./LoginButton.css";
+import * as Styled from "./StyledLoginBtn";
 
-const LoginButton = ({ className, isLogin, data }) => {
+const LoginButton = ({ isLogin, data }) => {
   const { email, imageSource } = data;
-  const [cta, ctaShort] = className;
 
   return (
     <>
       {isLogin ? (
-        <div className="loginDiv">
-          <div className="loginImageBg">
-            <img
-              className="loginImage"
+        <Styled.LoginBox>
+          <Styled.LoginImgBg>
+            <Styled.LoginImg
               src={imageSource}
               alt="프로필 사진"
-            ></img>
-          </div>
-          <span className="loginEmail">{email}</span>
-        </div>
+            ></Styled.LoginImg>
+          </Styled.LoginImgBg>
+          <Styled.LoginEmail className="loginEmail">{email}</Styled.LoginEmail>
+        </Styled.LoginBox>
       ) : (
-        <a className={`${cta} ${ctaShort}`} href="/">
+        <Styled.LoginBtn size="short" href="/">
           <span>로그인</span>
-        </a>
+        </Styled.LoginBtn>
       )}
     </>
   );

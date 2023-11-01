@@ -1,37 +1,39 @@
-.cardContainer {
+import styled from "styled-components";
+
+export const CardImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.2s linear;
+`;
+
+export const CardContainer = styled.div`
   width: 100%;
   max-height: 334px;
   border-radius: 15px;
   box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.16);
   overflow: hidden;
   position: relative;
-}
 
-.cardContainer:hover {
-  background: var(--background);
-}
+  &:hover {
+    background: var(--background);
 
-.cardImgBox {
+    ${CardImg} {
+      transform: scale(1.3);
+    }
+  }
+`;
+
+export const CardImgBox = styled.div`
   width: 100%;
   height: 65%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-}
+`;
 
-.cardImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.2s linear;
-}
-
-.cardContainer:hover .cardImg {
-  transform: scale(1.3);
-}
-
-.infoContainer {
+export const InfoContainer = styled.div`
   height: 35%;
   padding: 15px 20px 20px;
   display: flex;
@@ -39,19 +41,19 @@
   justify-content: space-between;
   font-size: 1.2rem;
   gap: 5px;
-}
+`;
 
-.additionalInfo {
+export const AdditionalInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+`;
 
-.kebab {
+export const Kebab = styled.img`
   cursor: pointer;
-}
+`;
 
-.description {
+export const Description = styled.p`
   height: 2.4em;
   font-size: 1.5rem;
   overflow: hidden;
@@ -63,12 +65,12 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-}
+`;
 
-.star {
+export const Star = styled.img`
   position: absolute;
   top: 20px;
   right: 20px;
   z-index: 999;
   cursor: pointer;
-}
+`;

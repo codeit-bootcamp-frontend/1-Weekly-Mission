@@ -1,8 +1,9 @@
-/* PC: 1200px 이상
-Tablet: 768px 이상 ~ 1199px 이하
-Mobile: 375px 이상 ~ 767px 이하 */
+// PC: 1200px 이상
+// Tablet: 768px 이상 ~ 1199px 이하
+// Mobile: 375px 이상 ~ 767px 이하
+import styled from "styled-components";
 
-header {
+export const Header = styled.header`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -10,9 +11,9 @@ header {
   gap: 2rem;
   padding: 3rem 0 6rem;
   background-color: #edf7ff;
-}
+`;
 
-article {
+export const Article = styled.article`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -28,4 +29,4 @@ article {
   @media (max-width: 767px) {
     padding: 3rem 3rem 4rem;
   }
-}
+`;

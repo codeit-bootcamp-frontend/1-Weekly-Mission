@@ -1,17 +1,13 @@
 import { Card } from "components";
-import "./CardSection.css";
+import * as Styled from "./StyledCardSection";
 
 const CardSection = ({ data }) => {
-  const handleCardClick = (url) => {
-    window.open(url);
-  };
-
   return (
-    <section>
+    <Styled.Section>
       {data.map((data) => {
-        return <Card key={data.id} data={data} onClick={handleCardClick} />;
+        return <Card key={data.id} data={data} />;
       })}
-    </section>
+    </Styled.Section>
   );
 };
 

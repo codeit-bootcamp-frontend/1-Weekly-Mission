@@ -1,4 +1,6 @@
-section {
+import styled from "styled-components";
+
+export const Section = styled.div`
   width: 80%;
   display: grid;
   grid-auto-rows: 1fr;
@@ -19,4 +21,4 @@ section {
     width: 100%;
     grid-template-columns: repeat(1, minmax(90%, auto));
   }
-}
+`;

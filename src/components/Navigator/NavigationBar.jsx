@@ -1,18 +1,14 @@
 import { LoginButton, Logo } from "components";
+import * as Styled from "./StyledNavBar";
 
-const Navigator = ({ className, isLogin, data }) => {
-  const [nav, gnb, logo, cta, ctaShort] = className;
+const Navigator = ({ isLogin, data, sticky }) => {
   return (
-    <nav className={nav}>
-      <div className={gnb}>
-        <Logo className={logo} />
-        <LoginButton
-          className={[cta, ctaShort]}
-          isLogin={isLogin}
-          data={data}
-        />
-      </div>
-    </nav>
+    <Styled.Nav sticky={sticky}>
+      <Styled.Box>
+        <Logo />
+        <LoginButton isLogin={isLogin} data={data} />
+      </Styled.Box>
+    </Styled.Nav>
   );
 };
 

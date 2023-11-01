@@ -1,22 +1,18 @@
 import { SnsCollection } from "components";
-import "./Footer.css";
+import * as Styled from "./StyledFooter";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="footerBox">
-        <span className="copyright">@codeit - 2023</span>
-        <div className="footerLinks">
-          <a className="footerLink" href="/">
-            Privacy Policy
-          </a>
-          <a className="footerLink" href="/">
-            FAQ
-          </a>
-        </div>
+    <Styled.Footer>
+      <Styled.FooterBox>
+        <Styled.Copyright>@codeit - 2023</Styled.Copyright>
+        <Styled.FooterLinks>
+          <Styled.FooterLink href="/">Privacy Policy</Styled.FooterLink>
+          <Styled.FooterLink href="/">FAQ</Styled.FooterLink>
+        </Styled.FooterLinks>
         <SnsCollection className="sns" />
-      </div>
-    </footer>
+      </Styled.FooterBox>
+    </Styled.Footer>
   );
 };
 

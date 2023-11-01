@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Navigator, Footer } from "components";
 import { getUsers } from "utils/api";
-import "./App.css";
+import { StyledGlobal } from "style/StyledGlobal";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -10,18 +10,19 @@ const App = () => {
     email: "",
     imageSource: "",
   });
+  const [sticky, setSticky] = useState("sticky");
 
   const handleUserProfile = async () => {
     try {
-      let userProfile = await getUsers();
-      const valuesProfile = Object.values(userProfile);
-      if (!userProfile || valuesProfile.length < 4) return;
+      const userProfile = await getUsers();
       setIsLogin(true);
-      const { email, profileImageSource } = userProfile;
+      const {
+        data: [{ email, image_source }],
+      } = userProfile;
       setUserData((prevData) => ({
         ...prevData,
         email,
-        imageSource: profileImageSource,
+        imageSource: image_source,
       }));
     } catch (err) {
       setIsLogin(false);
@@ -34,12 +35,9 @@ const App = () => {
 
   return (
     <>
-      <Navigator
-        className={["nav", "gnb", "logo", "cta", "cta-short"]}
-        isLogin={isLogin}
-        data={userData}
-      />
-      <Outlet />
+      <StyledGlobal />
+      <Navigator isLogin={isLogin} data={userData} sticky={sticky} />
+      <Outlet context={{ setSticky, isLogin }} />
       <Footer />
     </>
   );

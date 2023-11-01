@@ -1,4 +1,6 @@
-form {
+import styled from "styled-components";
+
+export const Form = styled.form`
   display: flex;
   align-items: center;
   width: 80%;
@@ -10,10 +12,10 @@ form {
   @media (max-width: 1199px) {
     width: 100%;
   }
-}
+`;
 
-input {
+export const Input = styled.input`
   flex-grow: 1;
   background-color: transparent;
   border-color: transparent;
-}
+`;

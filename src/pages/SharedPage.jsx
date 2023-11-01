@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { FolderInfo, SearchBar, CardSection } from "components";
+import { useOutletContext } from "react-router-dom";
 import { getFolder } from "utils/api";
-import "./SharedPage.css";
+import * as Styled from "./StyledSharedPage";
 
 const SharedPage = () => {
   const [folderData, setFolderData] = useState({
     folderName: "",
     ownerName: "",
     ownerImage: "",
-    datas: [],
+    data: [],
   });
+  const { setSticky } = useOutletContext();
 
   const handleFolderInfo = async () => {
     try {
-      let folderInfo = await getFolder();
+      const folderInfo = await getFolder();
       const {
         folder: { name, links, owner },
       } = folderInfo;
@@ -22,7 +24,7 @@ const SharedPage = () => {
         folderName: name,
         ownerName: owner["name"],
         ownerImage: owner["profileImageSource"],
-        datas: links,
+        data: links,
       }));
     } catch (err) {
       console.log(err);
@@ -31,17 +33,18 @@ const SharedPage = () => {
 
   useEffect(() => {
     handleFolderInfo();
-  }, []);
+    setSticky("sticky");
+  }, [setSticky]);
 
   return (
     <>
-      <header>
+      <Styled.Header>
         <FolderInfo data={folderData} />
-      </header>
-      <article>
+      </Styled.Header>
+      <Styled.Article>
         <SearchBar />
-        <CardSection data={folderData.datas} />
-      </article>
+        <CardSection data={folderData.data} />
+      </Styled.Article>
     </>
   );
 };
