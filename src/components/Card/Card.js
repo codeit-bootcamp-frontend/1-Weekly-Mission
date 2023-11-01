@@ -5,6 +5,7 @@ import starIcon from '../../assets/images/star.svg';
 import { useState } from 'react';
 import { formatDate, formatTimeAgo } from '../../utils/formatDate';
 import normalizeCardData from '../../utils/normalizeCardData';
+import clsx from 'clsx';
 
 function Card({ card, shared }) {
   const [hover, setHover] = useState(false);
@@ -17,11 +18,8 @@ function Card({ card, shared }) {
     setHover(false);
   };
 
-  const hoverImage = hover ? styles.hoverImage : '';
-  const hoverBg = hover ? styles.hoverBgColor : '';
-
-  const imageStyle = `${styles.image} ${hoverImage}`;
-  const bgColorStyle = `${styles.root} ${hoverBg}`;
+  const imageStyle = clsx(styles.image, hover && styles.hoverImage);
+  const bgColorStyle = clsx(styles.root, hover && styles.hoverBgColor);
 
   const normalizedCardData = normalizeCardData(card);
   const cardDate = normalizedCardData.createdAt;
@@ -29,6 +27,10 @@ function Card({ card, shared }) {
 
   const bgImg = {
     backgroundImage: `url(${cardImage || noImg})`,
+  };
+
+  const handleKebabClick = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -49,7 +51,7 @@ function Card({ card, shared }) {
           <div className={styles.header}>
             <div>{formatTimeAgo(cardDate)}</div>
             {shared === 'off' && (
-              <button type="button">
+              <button type="button" onClick={handleKebabClick}>
                 <img src={kebabImg} alt="쩜쩜쩜" />
               </button>
             )}
