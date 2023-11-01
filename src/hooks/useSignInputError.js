@@ -14,7 +14,7 @@ function useSignInputError(values, func) {
     }
   };
 
-  return [error, errorText, handleBlur, handleFocus];
+  return { error, setError, errorText, setErrorText, handleBlur, handleFocus };
 }
 
 export default useSignInputError;

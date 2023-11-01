@@ -15,15 +15,23 @@ function Signin() {
   const [values, handleChange] = useSignInputValue();
   const { token } = useAuth();
 
-  const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useSignInputError(values, signinEmail);
+  const {
+    error: emailError,
+    setError: setEmailError,
+    errorText: emailErrorText,
+    setErrorText: setEmailErrorText,
+    handleBlur: handleEmailBlur,
+    handleFocus: handleEmailFocus,
+  } = useSignInputError(values, signinEmail);
 
-  const [
-    passwordError,
-    passwordErrorText,
-    handlePasswordBlur,
-    handlePasswordFocus,
-  ] = useSignInputError(values, signinPassword);
+  const {
+    error: passwordError,
+    setError: setPasswordError,
+    errorText: passwordErrorText,
+    setErrorText: setPasswordErrorText,
+    handleBlur: handlePasswordBlur,
+    handleFocus: handlePasswordFocus,
+  } = useSignInputError(values, signinPassword);
 
   const navigate = useNavigate();
 
@@ -34,17 +42,17 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
-      email: `${values.email}`,
-      password: `${values.password}`,
-    };
+    const data = values;
 
     const response = await postSign('in', data);
 
     if (response.ok) {
       navigate('/folder');
     } else {
-      console.log(response);
+      setEmailError(true);
+      setEmailErrorText('이메일을 확인해주세요');
+      setPasswordError(true);
+      setPasswordErrorText('비밀번호를 확인해주세요');
     }
   };
 

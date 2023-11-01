@@ -19,22 +19,32 @@ function Signup() {
   const [values, handleChange] = useSignInputValue();
   const { token } = useAuth();
 
-  const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useSignInputError(values, signupEmail);
+  const {
+    error: emailError,
+    setError: setEmailError,
+    errorText: emailErrorText,
+    setErrorText: setEmailErrorText,
+    handleBlur: handleEmailBlur,
+    handleFocus: handleEmailFocus,
+  } = useSignInputError(values, signupEmail);
 
-  const [
-    passwordError,
-    passwordErrorText,
-    handlePasswordBlur,
-    handlePasswordFocus,
-  ] = useSignInputError(values, signupPassword);
+  const {
+    error: passwordError,
+    setError: setPasswordError,
+    errorText: passwordErrorText,
+    setErrorText: setPasswordErrorText,
+    handleBlur: handlePasswordBlur,
+    handleFocus: handlePasswordFocus,
+  } = useSignInputError(values, signupPassword);
 
-  const [
-    passwordCheckError,
-    passwordCheckErrorText,
-    handlePasswordCheckBlur,
-    handlePasswordCheckFocus,
-  ] = useSignInputError(values, signupPasswordCheck);
+  const {
+    error: passwordCheckError,
+    setError: setPasswordCheckError,
+    errorText: passwordCheckErrorText,
+    setErrorText: setPasswordCheckErrorText,
+    handleBlur: handlePasswordCheckBlur,
+    handleFocus: handlePasswordCheckFocus,
+  } = useSignInputError(values, signupPasswordCheck);
 
   const navigate = useNavigate();
 
@@ -55,7 +65,12 @@ function Signup() {
     if (response.ok) {
       navigate('/folder');
     } else {
-      console.log(response);
+      setEmailError(true);
+      setEmailErrorText('이메일을 확인해주세요');
+      setPasswordError(true);
+      setPasswordErrorText('비밀번호를 확인해주세요');
+      setPasswordCheckError(true);
+      setPasswordCheckErrorText('');
     }
   };
 
@@ -95,7 +110,7 @@ function Signup() {
       name: 'passwordCheck',
       type: 'password',
       value: `${values.passwordCheck}`,
-      children: '비밀번호',
+      children: '비밀번호 확인',
 
       errorState: passwordCheckError,
       errorText: passwordCheckErrorText,
