@@ -24,6 +24,7 @@
 }
 
 .link-add-button {
+  border: none;
   position: absolute;
   right: 2%;
   top: 25%;

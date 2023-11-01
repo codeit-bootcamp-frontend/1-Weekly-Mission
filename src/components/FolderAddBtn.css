@@ -3,6 +3,9 @@
   color: var(--primary);
   font-weight: 500;
   letter-spacing: -0.3px;
+  border: none;
+  background: none;
+  white-space: nowrap;
 }
 
 /* mobile Size */

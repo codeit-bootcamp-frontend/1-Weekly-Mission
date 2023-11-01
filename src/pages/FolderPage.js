@@ -1,16 +1,18 @@
-import AddLink from "../components/AddLink";
 import { getFolderLinks, getFolderCategory } from "../utils/api";
 import { useEffect, useState } from "react";
+import AddLink from "../components/AddLink";
 import Cards from "../components/Cards";
 import Search from "../components/Search";
 import Category from "../components/Category";
 import NoLink from "../components/NoLink";
-import ShowFolderName from "../components/ShowFolderName";
+import CategoryOption from "../components/CategoryOption";
+import Modals from "../modals/Modals";
 
 function FolderPage() {
   const [folderData, setFolderData] = useState([]);
   const [linkData, setLinkData] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState("전체");
+  const [modalOn, setModalOn] = useState(false);
 
   async function getFolderData() {
     const { data: folderData } = await getFolderCategory();
@@ -35,19 +37,24 @@ function FolderPage() {
     <>
       <section className="folder-section">
         <AddLink />
-
+        <Modals modalOn={modalOn} modalId={selectedFolder} />
         <ul className="cards-list">
           <Search />
-          <Category folderData={folderData} handleClick={handleClick} />
-          <ShowFolderName
+          <Category
+            selectedFolder={selectedFolder}
+            folderData={folderData}
+            handleClick={handleClick}
+            onClick={setModalOn}
+          />
+          <CategoryOption
             selectedFolder={selectedFolder}
             handleClick={handleClick}
           />
           <div className="cards">
             {linkData?.length ? (
-              linkData.map((cardInfo) => {
-                return <Cards cardInfo={cardInfo} key={cardInfo.id} />;
-              })
+              linkData.map((cardInfo) => (
+                <Cards cardInfo={cardInfo} key={cardInfo.id} />
+              ))
             ) : (
               <NoLink />
             )}

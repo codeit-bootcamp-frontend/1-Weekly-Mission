@@ -12,6 +12,7 @@
   display: grid;
   grid-template-columns: repeat(3, 34rem);
   gap: 20px;
+  justify-content: center;
 }
 
 /* tablet Size */

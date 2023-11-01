@@ -2,9 +2,8 @@ import CategoryItem from "./CategoryItem";
 import FolderAddBtn from "./FolderAddBtn";
 import "./Category.css";
 
-function Category({ folderData, handleClick }) {
+function Category({ selectedFolder, folderData, handleClick, onClick }) {
   const MAIN_CATEGORY = { id: "", name: "전체" };
-
   return (
     <nav className="category-nav">
       <ul className="category-box">
@@ -22,9 +21,12 @@ function Category({ folderData, handleClick }) {
               );
             })}
         </div>
-
-        <FolderAddBtn />
       </ul>
+      <FolderAddBtn
+        onClick={onClick}
+        selectedFolder={selectedFolder}
+        folderData={folderData}
+      />
     </nav>
   );
 }

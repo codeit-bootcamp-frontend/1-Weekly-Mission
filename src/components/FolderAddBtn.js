@@ -1,10 +1,17 @@
 import "./FolderAddBtn.css";
+// 폴더추가 버튼 누르면 폴더에 폴더추가 모달 뜨게하기
 
-function FolderAddBtn() {
+function FolderAddBtn({ selectedFolder, onClick }) {
+  function handleFolderAdd() {
+    onClick(true, selectedFolder);
+  }
+
   return (
-    <div className="folder-add-btn">
-      <a>폴더 추가 +</a>
-    </div>
+    <>
+      <button className="folder-add-btn" onClick={handleFolderAdd}>
+        폴더 추가 +
+      </button>
+    </>
   );
 }
 
