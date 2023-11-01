@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useParams, Navigate } from "react-router-dom";
-import styled from "styled-components";
+import { useParams, Navigate, useLocation } from "react-router-dom";
 import { getFolderLinks, getFolders } from "../api";
 import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";
 import FolderList from "../component/FolderList";
 import CardSection from "../component/CardSection";
 import "../assets/css/FolderPage.css";
-
-const StyledDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 66.25rem;
-  height: 6.25rem;
-  line-height: 1.5rem;
-`;
+import * as Styled from "../style/EmptyDiv";
 
 function FolderPage() {
   const { folderId } = useParams();
   const folderParam = folderId || "";
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
+
+  /* 
+  const location = useLocation();
+
+  if (location.pathname === "/folder/") {
+    window.location = "/folder";
+  }
+  */
 
   async function getFolderList() {
     const folders = await getFolders();
@@ -58,12 +57,12 @@ function FolderPage() {
         <SearchBar size="large" />
         {links && links.length !== 0 ? (
           <>
-            <FolderList folders={folders} />
+            <FolderList folders={folders} params={folderParam} />
             <div>제목</div>
             <CardSection data={links} />
           </>
         ) : (
-          <StyledDiv> {message} </StyledDiv>
+          <Styled.EmptyDiv> {message} </Styled.EmptyDiv>
         )}
       </section>
     </>

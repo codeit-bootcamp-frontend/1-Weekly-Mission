@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -41,32 +41,42 @@ const StyledFolderBtn = styled.button`
 `;
 
 function FolderChip({ name, id }) {
-  const [active, setActive] = useState(undefined);
+  const [active, setActive] = useState(false);
 
   const getActiveStyle = ({ isActive }) => {
     setActive(isActive);
   };
 
   return (
-    <NavLink style={getActiveStyle} to={id ? `/folder/${id}` : "/folder"}>
+    <NavLink style={getActiveStyle} to={`/folder${id}`}>
       <StyledFolderBtn active={active}>{name}</StyledFolderBtn>
     </NavLink>
   );
 }
 
-function FolderList({ folders }) {
+function FolderList({ folders, params }) {
+  const [allId, setAllId] = useState("");
+
+  function handleAllId() {
+    if (params !== "") setAllId("/");
+  }
+
+  useEffect(() => {
+    handleAllId();
+  }, [params]);
+
   return (
     <FlexDiv>
       <FlexUl>
         <li>
-          <FolderChip name={"전체"} id={""} />
+          <FolderChip name={"전체"} id={allId} />
         </li>
         {folders.map((folder) => {
           const { id, name } = folder;
 
           return (
             <li key={folder.id}>
-              <FolderChip name={name} id={id} />
+              <FolderChip name={name} id={"/" + id} />
             </li>
           );
         })}
