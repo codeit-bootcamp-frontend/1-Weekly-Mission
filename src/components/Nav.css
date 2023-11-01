@@ -21,15 +21,18 @@
   font-size: 14px;
 }
 
-@media screen and (max-width: 1124px) {
+@media screen and (min-width: 769px) and (max-width: 1124px) {
   .nav-container {
     padding: 33px 32.5px 32px;
   }
+  
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .nav-container {
     padding: 18px 32px 17px;
   }
+}
+@media screen and (max-width: 480px) {
   .logo-img {
     width: 88.6px;
     height: 16px;
