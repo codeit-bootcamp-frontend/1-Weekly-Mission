@@ -1,0 +1,52 @@
+.folderCategoryContainer {
+  width: 1060px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.folderCategoryList {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.folderCategory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 35px;
+  border: 1px solid #6d6afe;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 3px 5px;
+}
+
+.folderCategory.selected {
+  background-color: #6d6afe;
+  color: #f5f5f5;
+}
+
+.folderAdd {
+  margin: auto 0;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  text-align: center;
+}
+.folderAdd a {
+  text-decoration: none;
+  color: #6d6afe;
+}
+
+@media (max-width: 767px) {
+  .folderCategoryList {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(1, 50px);
+    gap: 20px;
+  }
+}

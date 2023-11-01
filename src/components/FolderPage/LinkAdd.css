@@ -1,0 +1,35 @@
+.linkAddInputContainer {
+  position: relative;
+}
+
+.linkAddInput {
+  width: 800px;
+  height: 69px;
+  border: 1px solid #6d6afe;
+  border-radius: 15px;
+  margin-top: 30px;
+  padding-left: 10px;
+}
+
+.linkAddBtn {
+  position: absolute;
+  width: 80px;
+  height: 37px;
+  top: 25px;
+  bottom: 0;
+  right: 15px;
+  margin: auto 0;
+  background: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fdfdfd;
+  border: 0;
+}
+
+@media (max-width: 1124px) {
+  .linkAddInputContainer {
+    margin: 0 32px;
+    width: auto;
+  }
+}

@@ -1,10 +1,8 @@
 import SharedPage from "../../pages/SharedPage.js";
-const Main = () => {
+const Main = ({ children }) => {
   return (
     <>
-      <main>
-        <SharedPage />
-      </main>
+      <main>{children}</main>
     </>
   );
 };
