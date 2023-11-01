@@ -9,7 +9,7 @@ const CardList = ({ folderData }) => {
     const { links } = folder;
 
     return (
-      <ul className={styles.CardList}>
+      <ul className={styles.cardList}>
         {links.map((item) => (
           <li key={item.id}>
             <SharedPageCardItem item={item} />
@@ -24,7 +24,7 @@ const CardList = ({ folderData }) => {
     if (data.length === 0) return <NotFoundLink />;
 
     return (
-      <ul className={styles.CardList}>
+      <ul className={styles.cardList}>
         {data.map((item) => (
           <li key={item.id}>
             <FolderPageCardItem item={item} />

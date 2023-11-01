@@ -7,7 +7,7 @@ import instagramImg from "../../assets/instagram.svg";
 
 const Footer = () => {
   return (
-    <footer className={styles.Footer}>
+    <footer className={styles.footer}>
       <div className={styles.container}>
         <span className={styles.copyright}>©codeit - 2023</span>
         <div className={styles.links}>
@@ -18,7 +18,7 @@ const Footer = () => {
             FAQ
           </Link>
         </div>
-        <div className={styles.sns_links}>
+        <div className={styles.snsLinks}>
           <Link to="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
             <img src={facebookImg} alt="facebook 바로가기" />
           </Link>

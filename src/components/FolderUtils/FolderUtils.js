@@ -6,7 +6,7 @@ const FolderUtils = ({ userId, currentFolderName = "전체" }) => {
   if (!userId) return;
 
   return (
-    <div className={styles.FolderUtils}>
+    <div className={styles.folderUtils}>
       <div className={styles.container}>
         <CurrentFolder>{currentFolderName}</CurrentFolder>
         {currentFolderName !== "전체" && <FolderEdit />}

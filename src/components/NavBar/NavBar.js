@@ -4,7 +4,7 @@ import LoginButton from "./LoginButton";
 
 const NavBar = ({ userId = "" }) => {
   return (
-    <nav className={styles.NavBar}>
+    <nav className={styles.navBar}>
       <div className={styles.container}>
         <a href="/" className={styles.logo}>
           <img src={logo} alt="LinkBrary 로고" />

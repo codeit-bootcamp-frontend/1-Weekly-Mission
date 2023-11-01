@@ -16,8 +16,8 @@ const SearchBar = () => {
   };
 
   return (
-    <form className={styles.SearchBar} onSubmit={handleSubmit}>
-      <img className={styles.search_icon} src={searchIcon} alt="돋보기 모양 아이콘" />
+    <form className={styles.searchBar} onSubmit={handleSubmit}>
+      <img className={styles.searchIcon} src={searchIcon} alt="돋보기 모양 아이콘" />
       <input
         className={styles.input}
         name="search"

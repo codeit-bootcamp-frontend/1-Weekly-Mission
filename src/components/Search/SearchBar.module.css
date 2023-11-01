@@ -1,11 +1,11 @@
 /* PC 화면 크기 (1200px 이상) */
-.SearchBar {
+.searchBar {
   position: relative;
   width: 100%;
   max-width: 106rem;
 }
 
-.search_icon {
+.searchIcon {
   position: absolute;
   top: 50%;
   left: 2.4rem;

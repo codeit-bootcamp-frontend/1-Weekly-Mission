@@ -3,7 +3,7 @@ import AddLinkInput from "./AddLinkInput";
 
 const AddLink = () => {
   return (
-    <div className={styles.AddLink}>
+    <div className={styles.addLink}>
       <AddLinkInput />
     </div>
   );

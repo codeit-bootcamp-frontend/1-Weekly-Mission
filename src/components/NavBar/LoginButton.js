@@ -22,7 +22,7 @@ const LoginButton = ({ userId }) => {
       {userData?.email ? (
         <ProfileInfo email={userData.email} profileImageSource={userData.profileImageSource} />
       ) : (
-        <button disabled={isLoading} className={classnames(styles.cta, styles.cta_short)} onClick={handleButtonClick}>
+        <button disabled={isLoading} className={classnames(styles.cta, styles.ctaShort)} onClick={handleButtonClick}>
           로그인
         </button>
       )}

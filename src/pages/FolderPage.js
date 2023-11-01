@@ -52,7 +52,7 @@ const FolderPage = () => {
             folderListData={folderListData}
             currentFolder={SetCurrentFolderName}
             selectedCategoryId={selectedCategoryId}
-            onclick={SetSelectedCategoryId}
+            onClick={SetSelectedCategoryId}
           />
         </Loadable>
         <FolderUtils userId={userId} currentFolderName={currentFolderName} />

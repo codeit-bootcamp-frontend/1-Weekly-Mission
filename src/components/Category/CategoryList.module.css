@@ -1,5 +1,5 @@
 /* PC 화면 크기 (1200px 이상) */
-.CategoryList {
+.categoryList {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@
   gap: 0.4rem;
 }
 
-.add_folder_button {
+.addFolderButton {
   color: #6d6afe;
   font-size: 1.6rem;
   font-weight: 500;
@@ -28,7 +28,7 @@
   flex-shrink: 0;
 }
 
-.plus_img {
+.plusImg {
   width: 1.6rem;
   height: 1.6rem;
 }
@@ -39,7 +39,7 @@
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .CategoryList {
+  .categoryList {
     flex-wrap: wrap;
   }
   .container {

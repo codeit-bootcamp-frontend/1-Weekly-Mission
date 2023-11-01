@@ -1,5 +1,5 @@
 /* PC 화면 크기 (1200px 이상) */
-.AddLink {
+.addLink {
   display: flex;
   justify-content: center;
   padding: 6rem 3.2rem 9rem 3.2rem;
@@ -11,7 +11,7 @@
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .AddLink {
+  .addLink {
     padding: 2.4rem 3.2rem 4rem 3.2rem;
   }
 }

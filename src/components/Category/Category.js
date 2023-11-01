@@ -1,14 +1,14 @@
 import styles from "./Category.module.css";
 import CategoryList from "./CategoryList";
 
-const Category = ({ folderListData, currentFolder, selectedCategoryId, onclick }) => {
+const Category = ({ folderListData, currentFolder, selectedCategoryId, onClick }) => {
   return (
-    <div className={styles.Category}>
+    <div className={styles.category}>
       <CategoryList
         folderListData={folderListData}
         currentFolder={currentFolder}
         selectedCategoryId={selectedCategoryId}
-        onclick={onclick}
+        onClick={onClick}
       />
     </div>
   );

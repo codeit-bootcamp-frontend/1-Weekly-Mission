@@ -1,10 +1,10 @@
 import styles from "./Card.module.css";
 import CardList from "./CardList";
 
-const Card = ({ folderData, isLoading }) => {
+const Card = ({ folderData }) => {
   return (
-    <div className={styles.Card}>
-      <CardList folderData={folderData} isLoading={isLoading} />
+    <div className={styles.card}>
+      <CardList folderData={folderData} />
     </div>
   );
 };

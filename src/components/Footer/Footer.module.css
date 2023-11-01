@@ -1,4 +1,4 @@
-.Footer {
+.footer {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -34,7 +34,7 @@
   font-size: 1.6rem;
 }
 
-.sns_links {
+.snsLinks {
   display: flex;
   column-gap: 1.2rem;
   height: 2rem;
@@ -46,7 +46,7 @@
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .Footer {
+  .footer {
     width: 100%;
     margin-top: 4rem;
   }

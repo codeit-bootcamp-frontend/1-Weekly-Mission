@@ -2,19 +2,19 @@ import styles from "./CategoryListSkeleton.module.css";
 
 const CategoryListSkeleton = ({ size }) => {
   return (
-    <div className={styles.CategoryListSkeleton}>
+    <div className={styles.categoryListSkeleton}>
       <div className={styles.container}>
-        <ul className={styles.category_container}>
+        <ul className={styles.categoryContainer}>
           {Array(size)
             .fill()
             .map((_, index) => (
               <li key={index}>
-                <div className={styles.CategoryButtonSkeleton}></div>
+                <div className={styles.categoryButtonSkeleton}></div>
               </li>
             ))}
         </ul>
-        <div className={styles.right_container}>
-          <div className={styles.CategoryButtonSkeleton}></div>
+        <div className={styles.rightContainer}>
+          <div className={styles.categoryButtonSkeleton}></div>
         </div>
       </div>
     </div>

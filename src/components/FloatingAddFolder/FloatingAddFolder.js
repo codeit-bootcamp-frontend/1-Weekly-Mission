@@ -3,9 +3,9 @@ import plus from "../../assets/plus_white.svg";
 
 const FloatingAddFolder = () => {
   return (
-    <button className={styles.FloatingAddFolder}>
+    <button className={styles.floatingAddFolder}>
       <p>폴더 추가</p>
-      <img className={styles.plus_img} src={plus} alt="더하기 이미지" />
+      <img className={styles.plusImg} src={plus} alt="더하기 이미지" />
     </button>
   );
 };

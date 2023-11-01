@@ -7,6 +7,9 @@ import Card from "../components/Card/Card";
 import getFolder from "../api/getFolder";
 import Search from "../components/Search/Search";
 import useAsync from "../hooks/useAsync";
+import Loadable from "./../components/Skeleton/Loadable";
+import FolderInfoSkeleton from "./../components/Skeleton/FolderInfoSkeleton/FolderInfoSkeleton";
+import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSkeleton";
 
 const SharedPage = () => {
   const [folderData, setFolderData] = useState([]);
@@ -24,11 +27,15 @@ const SharedPage = () => {
     <>
       <header className={styles.header}>
         <NavBar />
-        <FolderInfo folderData={folderData} isLoading={isLoading} />
+        <Loadable isLoading={isLoading} fallback={<FolderInfoSkeleton />}>
+          <FolderInfo folderData={folderData} />
+        </Loadable>
       </header>
       <main>
         <Search />
-        <Card folderData={folderData} isLoading={isLoading} />
+        <Loadable isLoading={isLoading} fallback={<CardListSkeleton size={9} />}>
+          <Card folderData={folderData} />
+        </Loadable>
       </main>
       <footer>
         <Footer />

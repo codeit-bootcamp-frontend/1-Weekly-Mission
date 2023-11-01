@@ -1,11 +1,11 @@
-.ProfileInfo {
+.profileInfo {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   height: 5.4rem;
 }
 
-.profile_img {
+.profileImg {
   border-radius: 50%;
   width: 2.8rem;
 }

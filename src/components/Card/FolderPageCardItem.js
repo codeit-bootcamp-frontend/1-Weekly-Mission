@@ -17,16 +17,16 @@ function FolderPageCardItem({ item }) {
   const handleToggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className={styles.CardItem}>
-      <Link className={styles.img_container} to={url} target="_blank" rel="noopener noreferrer">
+    <div className={styles.cardItem}>
+      <Link className={styles.imgContainer} to={url} target="_blank" rel="noopener noreferrer">
         <img className={styles.img} src={image_source === null ? logoImg : image_source} alt={title} />
       </Link>
-      <button className={styles.bookmark_button}>
+      <button className={styles.bookmarkButton}>
         <img src={starImg} alt="즐겨찾기 이미지" />
       </button>
-      <div className={styles.content_container}>
+      <div className={styles.contentContainer}>
         <div className={styles.container}>
-          <p className={styles.time_diff}>{formatTimeDiff}</p>
+          <p className={styles.timeDiff}>{formatTimeDiff}</p>
           <button onClick={handleToggleMenu}>
             <img src={kebabImg} alt="케밥 이미지" />
           </button>

@@ -17,7 +17,7 @@ const AddLinkInput = () => {
   };
 
   return (
-    <form className={styles.AddLinkInput} onSubmit={handleSubmit}>
+    <form className={styles.addLinkInput} onSubmit={handleSubmit}>
       <img className={styles.chain_icon} src={chainIcon} alt="돋보기 모양 아이콘" />
       <input
         className={styles.input}

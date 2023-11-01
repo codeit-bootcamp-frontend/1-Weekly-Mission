@@ -10,12 +10,12 @@ function SharedPageCardItem({ item }) {
   const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
 
   return (
-    <div className={styles.CardItem}>
-      <Link className={styles.img_container} to={url} target="_blank" rel="noopener noreferrer">
+    <div className={styles.cardItem}>
+      <Link className={styles.imgContainer} to={url} target="_blank" rel="noopener noreferrer">
         <img className={styles.img} src={imageSource === undefined ? logoImg : imageSource} alt={title} />
       </Link>
-      <div className={styles.content_container}>
-        <p className={styles.time_diff}>{formatTimeDiff}</p>
+      <div className={styles.contentContainer}>
+        <p className={styles.timeDiff}>{formatTimeDiff}</p>
         <p className={styles.description}>
           {title}
           <br />

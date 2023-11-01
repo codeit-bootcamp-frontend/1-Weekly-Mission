@@ -1,12 +1,12 @@
 import styles from "./CategoryButton.module.css";
 
-const CategoryButton = ({ id, currentFolder, selectedCategoryId, onclick, children }) => {
+const CategoryButton = ({ id, currentFolder, selectedCategoryId, onClick, children }) => {
   const handleLoadClick = () => {
     currentFolder(children);
-    onclick(id);
+    onClick(id);
   };
 
-  const buttonClasses = `${styles.CategoryButton} ${
+  const buttonClasses = `${styles.categoryButton} ${
     selectedCategoryId === id ? styles.selected : selectedCategoryId === null ? styles.selected : ""
   }`;
 

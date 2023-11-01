@@ -2,16 +2,16 @@ import styles from "./CardListSkeleton.module.css";
 
 const CardListSkeleton = ({ size }) => {
   return (
-    <div className={styles.CardListSkeleton}>
+    <div className={styles.cardListSkeleton}>
       <ul className={styles.container}>
         {Array(size)
           .fill()
           .map((_, index) => (
             <li key={index}>
-              <div className={styles.CardItemSkeleton}>
-                <div className={styles.img_container}></div>
-                <div className={styles.content_container}>
-                  <div className={styles.time_diff}></div>
+              <div className={styles.cardItemSkeleton}>
+                <div className={styles.imgContainer}></div>
+                <div className={styles.contentContainer}>
+                  <div className={styles.timeDiff}></div>
                   <div className={styles.description}></div>
                   <div className={styles.createdAt}></div>
                 </div>

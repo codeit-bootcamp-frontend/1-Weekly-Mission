@@ -2,16 +2,16 @@ import styles from "./CategoryList.module.css";
 import CategoryButton from "./CategoryButton";
 import plus from "../../assets/plus.svg";
 
-const CategoryList = ({ folderListData, currentFolder, selectedCategoryId, onclick }) => {
+const CategoryList = ({ folderListData, currentFolder, selectedCategoryId, onClick }) => {
   if (!folderListData || !folderListData.data) return;
 
   const folderListDataArray = folderListData.data.sort((a, b) => a.id - b.id);
 
   return (
-    <div className={styles.CategoryList}>
+    <div className={styles.categoryList}>
       <ul className={styles.list}>
         <li>
-          <CategoryButton id="" currentFolder={currentFolder} selectedCategoryId={selectedCategoryId} onclick={onclick}>
+          <CategoryButton id="" currentFolder={currentFolder} selectedCategoryId={selectedCategoryId} onClick={onClick}>
             전체
           </CategoryButton>
         </li>
@@ -21,7 +21,7 @@ const CategoryList = ({ folderListData, currentFolder, selectedCategoryId, oncli
               id={item.id}
               currentFolder={currentFolder}
               selectedCategoryId={selectedCategoryId}
-              onclick={onclick}
+              onClick={onClick}
             >
               {item.name}
             </CategoryButton>
@@ -29,8 +29,8 @@ const CategoryList = ({ folderListData, currentFolder, selectedCategoryId, oncli
         ))}
       </ul>
       <div className={styles.container}>
-        <button className={styles.add_folder_button}>폴더 추가</button>
-        <img className={styles.plus_img} src={plus} alt="더하기 이미지" />
+        <button className={styles.addFolderButton}>폴더 추가</button>
+        <img className={styles.plusImg} src={plus} alt="더하기 이미지" />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import deleteImg from "../../assets/delete.svg";
 
 const FolderEdit = () => {
   return (
-    <div className={styles.FolderEdit}>
+    <div className={styles.folderEdit}>
       <button className={styles.button}>
         <img src={shareImg} alt="공유 이미지" />
         <p>공유</p>

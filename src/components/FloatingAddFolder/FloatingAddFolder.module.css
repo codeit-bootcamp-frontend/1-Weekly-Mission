@@ -1,4 +1,4 @@
-.FloatingAddFolder {
+.floatingAddFolder {
   display: none;
 }
 
@@ -8,7 +8,7 @@
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
 @media screen and (min-width: 375px) and (max-width: 767px) {
-  .FloatingAddFolder {
+  .floatingAddFolder {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -24,14 +24,14 @@
     z-index: 2;
   }
 
-  .FloatingAddFolder p {
+  .floatingAddFolder p {
     color: var(--linkbrary-gray-10, #e7effb);
     font-size: 1.6rem;
     font-weight: 500;
     letter-spacing: -0.03rem;
   }
 
-  .plus_img {
+  .plusImg {
     width: 1.6rem;
     height: 1.6rem;
   }
