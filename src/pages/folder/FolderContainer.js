@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
+import { createPortal } from "react-dom";
 
 import * as S from "./FolderContainerStyle";
 import { getAllFolders, getAllLinks } from "api/api";
@@ -19,6 +20,7 @@ export default function Folder() {
   const [folders, setFolders] = useState([]);
   const [selected, setSelected] = useState(DEFAULT);
   const [selectedFolderId, setSelectedFolderId] = useState("");
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const { isLoading, error, wrappedFunction: getLinksAsyncFunc } = useFetch(getAllLinks);
   const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
@@ -51,36 +53,39 @@ export default function Folder() {
   if (error || errorFolder) console.log(error || errorFolder);
 
   return (
-    <main>
-      <S.HeroContainer>
-        <FolderHero />
-      </S.HeroContainer>
-      <S.Contents>
-        <Searchbar />
-        <S.MenuContainer>
-          <Categories
-            categories={[DEFAULT, ...folderNames]}
-            selected={selected}
-            onClick={handleSelectedFolder}
-          />
-          <S.AddFolderBtn>
-            <span>폴더 추가</span>
-            <S.IconAdd />
-          </S.AddFolderBtn>
-        </S.MenuContainer>
-        {isLoading && <Loading />}
-        {!isLoading && links.length === 0 ? (
-          <S.Blank>저장된 링크가 없습니다</S.Blank>
-        ) : (
-          <>
-            <S.MenuContainer>
-              <S.SubTitle>{selected}</S.SubTitle>
-              {selected !== DEFAULT && <Options />}
-            </S.MenuContainer>
-            <CardList links={links} />
-          </>
-        )}
-      </S.Contents>
-    </main>
+    <>
+      {isOpenModal && createPortal(<div>모달</div>, document.getElementById("portal"))}
+      <main>
+        <S.HeroContainer>
+          <FolderHero />
+        </S.HeroContainer>
+        <S.Contents>
+          <Searchbar />
+          <S.MenuContainer>
+            <Categories
+              categories={[DEFAULT, ...folderNames]}
+              selected={selected}
+              onClick={handleSelectedFolder}
+            />
+            <S.AddFolderBtn onClick={() => setIsOpenModal(true)}>
+              <span>폴더 추가</span>
+              <S.IconAdd />
+            </S.AddFolderBtn>
+          </S.MenuContainer>
+          {isLoading && <Loading />}
+          {!isLoading && links.length === 0 ? (
+            <S.Blank>저장된 링크가 없습니다</S.Blank>
+          ) : (
+            <>
+              <S.MenuContainer>
+                <S.SubTitle>{selected}</S.SubTitle>
+                {selected !== DEFAULT && <Options />}
+              </S.MenuContainer>
+              <CardList links={links} />
+            </>
+          )}
+        </S.Contents>
+      </main>
+    </>
   );
 }
