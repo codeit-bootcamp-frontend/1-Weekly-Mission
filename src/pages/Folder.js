@@ -1,9 +1,9 @@
 import { useEffect, useState, useCallback } from 'react';
-import LinkAdd from '../components/LinkAdd';
-import Search from '../components/Search';
-import FolderList from '../components/FolderList';
-import CardList from '../components/CardList';
-import Option from '../components/Options';
+import LinkAdd from '../components/Folder/LinkAdd';
+import Search from '../components/common/Search';
+import FolderList from '../components/Folder/FolderList';
+import CardList from '../components/common/CardList';
+import Option from '../components/Folder/Options';
 import styled from 'styled-components';
 import getData from '../services/api';
 
@@ -33,7 +33,7 @@ export default function Folder() {
   }, [getFolderData, currentFolder.id]);
 
   return (
-    <div className='folder'>
+    <div>
       <LinkAdd />
       <Container>
         <Search />

@@ -29,7 +29,7 @@ const SNSs = [
 
 const FooterSns = ({ href, src, alt }) => {
   return (
-    <SnsLink href={href} className='sns'>
+    <SnsLink href={href}>
       <img src={src} alt={alt} />
     </SnsLink>
   );
@@ -37,18 +37,14 @@ const FooterSns = ({ href, src, alt }) => {
 
 export default function Footer() {
   return (
-    <Container className='footer'>
-      <Box className='footer-box'>
-        <TradeMark className='footer-trademark'>©codeit - 2023</TradeMark>
-        <Nav className='footer-nav'>
-          <NavLink href='/Privacy' className='footer-nav-link'>
-            Privacy Policy
-          </NavLink>
-          <NavLink href='FAQ' className='footer-nav-link'>
-            FAQ
-          </NavLink>
+    <Container>
+      <Box>
+        <TradeMark>©codeit - 2023</TradeMark>
+        <Nav>
+          <NavLink href='/Privacy'>Privacy Policy</NavLink>
+          <NavLink href='FAQ'>FAQ</NavLink>
         </Nav>
-        <SnsBox className='footer-sns'>
+        <SnsBox>
           {SNSs.map((sns) => (
             <FooterSns {...sns} key={sns.alt} />
           ))}

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default function CardList({ cards }) {
   return (
-    <Container className='card-list'>
+    <Container>
       {cards.map((card) => (
         <Card value={card} key={card.id} />
       ))}
