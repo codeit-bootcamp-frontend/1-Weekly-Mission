@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getFolder, getLink } from '../../api';
-import CardList from '../CardList';
 import './FolderPage.css';
+import CardList from '../CardList';
 import linkImg from '../../assets/link-Img.png';
 import SearchBar from "../SearchBar";
 import FolderList from "../FolderList";
