@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './components/common/reset.css'
-import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import Shared from './pages/shared/shared'
-import Folder from './pages/folder/folder'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./components/common/reset.css";
+import { createGlobalStyle } from "styled-components";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import Shared from "./pages/shared/shared";
+import Folder from "./pages/folder/folder";
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -32,29 +32,51 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-function Home () {
+function Home() {
     return (
         <>
-        <Link to="/shared"><button style={{width:'500px', height: '500px', fontSize: '100px'}}>shared page</button></Link>
-        <Link to="/folder"><button style={{width:'500px', height: '500px', fontSize: '100px'}}>folder page</button></Link>
+            <Link to="/shared">
+                <button
+                    style={{
+                        width: "500px",
+                        height: "500px",
+                        fontSize: "100px",
+                    }}
+                >
+                    shared page
+                </button>
+            </Link>
+            <Link to="/folder">
+                <button
+                    style={{
+                        width: "500px",
+                        height: "500px",
+                        fontSize: "100px",
+                    }}
+                >
+                    folder page
+                </button>
+            </Link>
         </>
-    )
+    );
 }
 
-function NotFound () {
+function NotFound() {
     return (
-        <div style={{fontSize:'300px', color:'red'}}>Not Found!!!!!!!!!</div>
-    )
+        <div style={{ fontSize: "300px", color: "red" }}>
+            Not Found!!!!!!!!!
+        </div>
+    );
 }
 
 root.render(
     <BrowserRouter>
-        <GlobalStyle /> 
+        <GlobalStyle />
         <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/shared' element={<Shared />} />
-            <Route path='/folder' element={<Folder />} />
-            <Route path='*' element={<NotFound />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/shared" element={<Shared />} />
+            <Route path="/folder" element={<Folder />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
     </BrowserRouter>
 );
