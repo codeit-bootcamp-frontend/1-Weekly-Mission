@@ -10,9 +10,10 @@ import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
 import styles from './Folder.module.css';
 import { useCallback, useEffect, useState } from 'react';
 
-import { useSearchParams } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 import getFolderListsByUser from '../apis/folder/getFolderListsByUser';
 import getLinksByUsersFolder from '../apis/link/getLinksByUsersFolder';
+import useAuth from '../hooks/useAuth';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,6 +24,7 @@ function Folder() {
       name: '전체',
     },
   ]);
+  const { token } = useAuth();
 
   const folderID = searchParams.get('folderId');
 
@@ -68,6 +70,10 @@ function Folder() {
   useEffect(() => {
     loadcardData();
   }, [folderID, loadcardData]);
+
+  if (!token.access) {
+    return <Navigate to="/signin" />;
+  }
 
   return (
     <>
