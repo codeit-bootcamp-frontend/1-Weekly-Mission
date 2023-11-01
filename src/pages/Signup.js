@@ -9,27 +9,32 @@ import useAuth from '../hooks/useAuth';
 import useSignInputValue from '../hooks/useSignInputValue';
 import useSignInputError from '../hooks/useSignInputError';
 import postSign from '../apis/auth/postSign';
+import {
+  signupEmail,
+  signupPassword,
+  signupPasswordCheck,
+} from '../utils/signError';
 
 function Signup() {
   const [values, handleChange] = useSignInputValue();
   const { token } = useAuth();
 
   const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useSignInputError(values, 'up', 'email');
+    useSignInputError(values, signupEmail);
 
   const [
     passwordError,
     passwordErrorText,
     handlePasswordBlur,
     handlePasswordFocus,
-  ] = useSignInputError(values, 'up', 'password');
+  ] = useSignInputError(values, signupPassword);
 
   const [
     passwordCheckError,
     passwordCheckErrorText,
     handlePasswordCheckBlur,
     handlePasswordCheckFocus,
-  ] = useSignInputError(values, 'up', 'passwordCheck');
+  ] = useSignInputError(values, signupPasswordCheck);
 
   const navigate = useNavigate();
 

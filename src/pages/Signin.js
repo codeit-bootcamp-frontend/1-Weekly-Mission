@@ -9,20 +9,21 @@ import postSign from '../apis/auth/postSign';
 import useAuth from '../hooks/useAuth';
 import useSignInputValue from '../hooks/useSignInputValue';
 import useSignInputError from '../hooks/useSignInputError';
+import { signinEmail, signinPassword } from '../utils/signError';
 
 function Signin() {
   const [values, handleChange] = useSignInputValue();
   const { token } = useAuth();
 
   const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useSignInputError(values, 'in', 'email');
+    useSignInputError(values, signinEmail);
 
   const [
     passwordError,
     passwordErrorText,
     handlePasswordBlur,
     handlePasswordFocus,
-  ] = useSignInputError(values, 'in', 'password');
+  ] = useSignInputError(values, signinPassword);
 
   const navigate = useNavigate();
 
