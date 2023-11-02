@@ -84,7 +84,7 @@ export default function Folder() {
             <>
               <S.MenuContainer>
                 <S.SubTitle>{selected}</S.SubTitle>
-                {selected !== DEFAULT && <Options />}
+                {selected !== DEFAULT && <Options selected={selected} />}
               </S.MenuContainer>
               <CardList links={links} />
             </>

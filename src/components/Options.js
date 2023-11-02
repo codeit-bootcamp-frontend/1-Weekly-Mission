@@ -1,14 +1,20 @@
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import styled from "styled-components";
+
 import shareIcon from "assets/share.svg";
 import penIcon from "assets/pen.svg";
 import deleteIcon from "assets/delete.svg";
-import styled from "styled-components";
+
+import ModalContainer from "./modal/ModalContainer";
+import EditFolder from "./modal/EditFolder";
 
 const Container = styled.ul`
   display: flex;
   gap: 12px;
 `;
 
-const OptionsContainer = styled.li`
+const OptionsContainer = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 4px;
@@ -29,15 +35,33 @@ const actions = [
   { name: "삭제", icon: deleteIcon },
 ];
 
-export default function Options() {
+export default function Options({ selected }) {
+  const [selectedOption, setSelectedOption] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSelectedOption = (e) => {
+    setIsModalOpen(true);
+    setSelectedOption(e.currentTarget.innerText);
+  };
+
   return (
-    <Container>
-      {actions.map((action, index) => (
-        <OptionsContainer key={index}>
-          <img src={action.icon} />
-          <Option>{action.name}</Option>
-        </OptionsContainer>
-      ))}
-    </Container>
+    <>
+      {isModalOpen &&
+        createPortal(
+          <ModalContainer onClose={() => setIsModalOpen(false)}>
+            {selectedOption === "이름 변경" && <EditFolder currentFolderName={selected} />}
+          </ModalContainer>,
+          document.getElementById("portal"),
+        )}
+
+      <Container>
+        {actions.map((action, index) => (
+          <OptionsContainer key={index} onClick={handleSelectedOption}>
+            <img src={action.icon} />
+            <Option>{action.name}</Option>
+          </OptionsContainer>
+        ))}
+      </Container>
+    </>
   );
 }
