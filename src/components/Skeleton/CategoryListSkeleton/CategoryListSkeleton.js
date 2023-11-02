@@ -5,13 +5,11 @@ const CategoryListSkeleton = ({ size }) => {
     <div className={styles.categoryListSkeleton}>
       <div className={styles.container}>
         <ul className={styles.categoryContainer}>
-          {Array(size)
-            .fill()
-            .map((_, index) => (
-              <li key={index}>
-                <div className={styles.categoryButtonSkeleton}></div>
-              </li>
-            ))}
+          {Array.from({ length: size }, (_, index) => (
+            <li key={index}>
+              <div className={styles.categoryButtonSkeleton}></div>
+            </li>
+          ))}
         </ul>
         <div className={styles.rightContainer}>
           <div className={styles.categoryButtonSkeleton}></div>
