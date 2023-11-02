@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useParams, Navigate, useLocation } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { getFolderLinks, getFolders } from "../api";
 import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";
@@ -15,14 +15,6 @@ function FolderPage() {
   const folderParam = folderId || "";
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
-
-  /* 
-  const location = useLocation();
-
-  if (location.pathname === "/folder/") {
-    window.location = "/folder";
-  }
-  */
 
   async function getFolderList() {
     const folders = await getFolders();
@@ -59,7 +51,6 @@ function FolderPage() {
         {links && links.length !== 0 ? (
           <>
             <FolderList folders={folders} params={folderParam} />
-            <div>제목</div>
             <CardSection data={links} />
           </>
         ) : (

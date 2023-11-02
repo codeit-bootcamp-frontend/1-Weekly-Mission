@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const FlexDiv = styled.div`
@@ -40,50 +40,79 @@ const StyledFolderBtn = styled.button`
   white-space: nowrap;
 `;
 
-function FolderChip({ name, id }) {
-  const [active, setActive] = useState(false);
-
-  const getActiveStyle = ({ isActive }) => {
-    setActive(isActive);
+function FolderChip({ name, id, onClick, style }) {
+  const handleOnClick = () => {
+    onClick(id.slice(1), name);
   };
 
   return (
-    <NavLink style={getActiveStyle} to={`/folder${id}`}>
-      <StyledFolderBtn active={active}>{name}</StyledFolderBtn>
-    </NavLink>
+    <Link to={`/folder${id}`}>
+      <StyledFolderBtn onClick={handleOnClick} active={style}>
+        {name}
+      </StyledFolderBtn>
+    </Link>
   );
 }
 
 function FolderList({ folders, params }) {
-  const [allId, setAllId] = useState("");
+  const [active, setActive] = useState(params);
+  const [name, setName] = useState("");
 
-  function handleAllId() {
-    if (params !== "") setAllId("/");
+  function filterName(folders, params) {
+    if (!params) {
+      setName("전체");
+      return;
+    }
+
+    const folder = folders.filter((folder) => {
+      return folder.id == params;
+    });
+
+    setName(folder[0]["name"]);
+  }
+
+  function handleClick(id, name) {
+    setActive(id);
+    setName(name);
   }
 
   useEffect(() => {
-    handleAllId();
+    filterName(folders, params);
+    handleClick(params, name);
   }, [params]);
 
   return (
-    <FlexDiv>
-      <FlexUl>
-        <li>
-          <FolderChip name={"전체"} id={allId} />
-        </li>
-        {folders.map((folder) => {
-          const { id, name } = folder;
+    <>
+      <FlexDiv>
+        <FlexUl>
+          <li>
+            <FolderChip
+              name={"전체"}
+              id={""}
+              onClick={handleClick}
+              style={active === "" ? "blue" : ""}
+            />
+          </li>
+          {folders.map((folder) => {
+            const { id, name } = folder;
 
-          return (
-            <li key={folder.id}>
-              <FolderChip name={name} id={"/" + id} />
-            </li>
-          );
-        })}
-      </FlexUl>
+            return (
+              <li key={folder.id}>
+                <FolderChip
+                  name={name}
+                  id={"/" + id}
+                  onClick={handleClick}
+                  style={active == id ? "blue" : ""}
+                />
+              </li>
+            );
+          })}
+        </FlexUl>
+        <StyledAddBtn>폴더 추가 +</StyledAddBtn>
+      </FlexDiv>
 
-      <StyledAddBtn>폴더 추가 +</StyledAddBtn>
-    </FlexDiv>
+      <div>{name}</div>
+    </>
   );
 }
 
