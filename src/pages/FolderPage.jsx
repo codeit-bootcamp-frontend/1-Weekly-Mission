@@ -3,17 +3,15 @@ import styled from 'styled-components';
 import Folder from '../components/Folder';
 import SearchBar from '../components/SearchBar';
 
-import { useParams } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
 import { getFolders } from '../api/api';
 import { useCallback, useEffect, useState } from 'react';
 import MobileFolderButton from '../components/MobileFolderButton';
 
 function FolderPage() {
-  const param = useParams();
   const [folderList, setFolderList] = useState([]);
 
-  const [isLoadingFolderList, loadingFolderListError, getFolderListAsync] = useAsync(getFolders);
+  const [, , getFolderListAsync] = useAsync(getFolders);
 
   const handleFolderListLoad = useCallback(async () => {
     const result = await getFolderListAsync();

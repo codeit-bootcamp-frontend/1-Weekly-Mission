@@ -10,11 +10,9 @@ const INITIAL_FOLDER = {
 };
 
 function FolderList({ folderList = null, getCardList }) {
-  const [folderId, setFolderId] = useState('');
   const [folderName, setFolderName] = useState('전체');
 
   const handleButton = (name, id) => {
-    setFolderId(id);
     setFolderName(name);
     getCardList(id);
   };

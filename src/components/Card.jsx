@@ -18,7 +18,7 @@ function Card({ card }) {
         <div className="card-info-box">
           <div className="card-info-top">
             <Moment className="card-passed-time" fromNow>
-              {card.createdAt}
+              {card.createdAt ? card.createdAt : card.created_at}
             </Moment>
             <button>
               <img src="/assets/image/kebab.svg" alt="카드 설정 버튼" />

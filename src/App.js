@@ -9,10 +9,8 @@ import FolderPage from './pages/FolderPage';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 
-const INITIAL_USER = {};
-
 function App() {
-  const [userProfile, setUserProfile] = useState(null);
+  const [userProfile, setUserProfile] = useState(undefined);
   const [isLoadingUserProfile, userProfileLoadingError, getUserProfileAsync] = useAsync(getUserProfile);
 
   const handleUserProfileLoad = useCallback(async () => {
