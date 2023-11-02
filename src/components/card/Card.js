@@ -4,7 +4,6 @@ import logo from '../../assets/common/logo.svg';
 import starIcon from '../../assets/common/star.svg';
 import calcCreateTime from '../../utils/calcCreateTime';
 import KebabButton from '../kebabButton/KebabButton';
-// import Popover from '../popover/Popover';
 
 function Card({ linkInfo }) {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
