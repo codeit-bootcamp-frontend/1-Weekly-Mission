@@ -15,6 +15,7 @@ function NavProfile() {
   useEffect(() => {
     loadUser();
   }, []);
+
   return isLoading ? (
     <span>loading</span>
   ) : userInfo ? (
@@ -27,7 +28,7 @@ function NavProfile() {
       <div className={style.email}>{userInfo.email}</div>
     </div>
   ) : (
-    <LinkButton text="로그인" type="login" />
+    <LinkButton url="/signin" text="로그인" type="blue" />
   );
 }
 

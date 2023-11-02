@@ -1,5 +1,9 @@
 import css from "./LinkButton.module.css";
-
-export function LinkButton({ type, text }) {
-  return <a className={css[type]}>{text}</a>;
+import { Link } from "react-router-dom";
+export function LinkButton({ url, type, text }) {
+  return (
+    <Link to={url} className={css[type]}>
+      {text}
+    </Link>
+  );
 }
