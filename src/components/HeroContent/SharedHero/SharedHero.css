@@ -1,4 +1,4 @@
-.main-header--shared {
+.hero--shared {
   display: flex;
   width: 100%;
   margin: 0 auto;
@@ -28,10 +28,10 @@
   align-items: center;
 }
 
-.folder-userText {
+.folder-userName {
   color: black;
-  font-size: 16px;
   line-height: 24px; /* 150% */
+  font-weight: 400;
 }
 
 .folder-folderName {
@@ -41,4 +41,24 @@
   gap: 20px;
   font-size: 40px;
   font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .hero--shared {
+    padding: 10px 0 40px;
+    gap: 10px;
+  }
+  .folder-container {
+    gap: 6px;
+  }
+  .folder-image {
+    height: 45px;
+    width: 45px;
+  }
+  .folder-userName {
+    font-size: 14px;
+  }
+  .folder-folderName {
+    font-size: 32px;
+  }
 }

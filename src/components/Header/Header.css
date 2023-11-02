@@ -16,26 +16,34 @@ header {
   white-space: nowrap;
 }
 
-#div-myprofile {
+.header-content__userDiv {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-#div-myprofile h4 {
-  color: #373740;
-
-  /* Linkbrary/body2-regular */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.userImg {
+.header-content__userDiv__userImg {
   width: 28px;
   height: 28px;
   flex-shrink: 0;
   border-radius: 50%;
+}
+
+.header-content__userDiv__emailTxt {
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 18px 32px;
+  }
+  .header-content__logoImg {
+    height: 16px;
+  }
+  .header-content__userDiv {
+    gap: 0px;
+  }
+  .header-content__userDiv__emailTxt {
+    content-visibility: hidden;
+  }
 }

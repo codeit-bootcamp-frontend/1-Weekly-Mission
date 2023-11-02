@@ -3,6 +3,14 @@
   display: inline-flex;
   justify-content: space-between;
   width: 100%;
+  margin: 24px 0;
+}
+
+@media (max-width: 767px) {
+  .card-title_text {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 .card-title_icon_container {
@@ -10,7 +18,6 @@
   flex-direction: row;
   white-space: nowrap;
   gap: 12px;
-  visibility: hidden;
 }
 
 .card-title_icon {
@@ -121,7 +128,6 @@
   gap: 25px;
   justify-content: center;
   position: relative;
-  margin-top: 40px;
 }
 
 /* 465 */

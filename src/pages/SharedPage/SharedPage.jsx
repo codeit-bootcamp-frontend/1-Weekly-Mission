@@ -1,26 +1,24 @@
-import CardContainer from "../../components/CardContainer/CardContainer";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import HeroContent from "../../components/HeroContent/HeroContent";
-import { SearchLinkInput } from "../../components/TextInputs/TextInputs";
 import MainContent from "../../components/MainContent";
+import styled from "styled-components";
 
-const MainStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "40px",
-};
-
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+`;
 function SharedPage() {
   return (
     <>
       <Header />
-      <main style={MainStyle}>
+      <MainContainer>
         <HeroContent pageType="shared" />
-        <MainContent />
-      </main>
-      <Footer />
+        <MainContent pageType="shared" />
+        <Footer />
+      </MainContainer>
     </>
   );
 }

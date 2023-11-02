@@ -1,4 +1,4 @@
-import "./TextInputs.css";
+import "./searchLinkInput.css";
 import searchImg from "../../assets/image/Search.svg";
 
 export function SearchLinkInput() {

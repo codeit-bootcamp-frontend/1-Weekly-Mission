@@ -1,11 +1,8 @@
 import "./FolderHero.css";
 import LinkImg from "../../../assets/image/link.svg";
-import { useEffect, useState } from "react";
-import requestData from "../../../services/api";
-
-function FolderHero({ cardListData }) {
+function FolderHero() {
   return (
-    <section className="main-header--folder">
+    <section className="hero--folder">
       <div className="container">
         <div className="div-link">
           <div>

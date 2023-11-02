@@ -1,5 +1,5 @@
-import "./TagBtnContainer.css";
-import AddImg from "../../assets/image/icon-add.svg";
+import "../TagBtn/TagBtnContainer.css";
+import AddImg from "../../../assets/image/icon-add.svg";
 import { useEffect, useState, useRef } from "react";
 
 // < 각각의 tag btn response Example >

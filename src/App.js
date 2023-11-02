@@ -2,6 +2,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import MainPage from "./pages/Mainpage/MainPage";
 import FolderPage from "./pages/FolderPage/FolderPage";
 import SharedPage from "./pages/SharedPage/SharedPage";
 
@@ -20,9 +21,8 @@ function App() {
       <GlobalStyle />
       <div className="App">
         <Routes>
-          {/* <Route path="/" element={<MainPage />} /> */}
-          <Route path="/" element={<FolderPage />} />
-          {/* <Route path="/folder" element={<FolderPage />} />*/}
+          <Route path="/" element={<MainPage />} />
+          <Route path="/folder" element={<FolderPage />} />
           <Route path="/shared" element={<SharedPage />} />
         </Routes>
       </div>

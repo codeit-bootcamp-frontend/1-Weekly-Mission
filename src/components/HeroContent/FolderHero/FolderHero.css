@@ -1,13 +1,19 @@
 /* -- folder hero section -- */
-.main-header--folder {
+.hero--folder {
   display: flex;
   width: 100%;
   margin: 0 auto;
-  padding: 60px 0 90px;
+  padding: 24px 32px 40px 32px;
   justify-content: center;
   gap: 20px;
   background: #f0f6ff;
   position: relative;
+}
+
+@media (max-width: 767px) {
+  .hero--folder {
+    padding: 10px 0 40px;
+  }
 }
 
 .container {
@@ -15,17 +21,10 @@
   position: relative;
 }
 
-.div-link {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
 .div-link > div {
   position: absolute;
-  display: flex;
-  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .input-link {
@@ -33,36 +32,46 @@
   border: none;
   display: flex;
   width: 800px;
+  height: 53px;
   padding: 20px 20px 20px 52px;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   font-size: 16px;
   border-radius: 15px;
-  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
-  background: var(--linkbrary-white, #fff);
-}
-
-@media (max-width: 1200px) {
-  .container {
-    width: 100%;
-    margin: 0 32px;
-  }
-  .input-link {
-    width: 100%;
-  }
+  border: 1px solid #6d6afe;
+  background: #fff;
 }
 
 .div-link img {
   width: 20px;
   height: 20px;
   position: absolute;
-  top: 21px;
   left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 325px;
+  }
+  .input-link {
+    width: 100%;
+    padding: 12px 10px 12px 42px;
+  }
+  .div-link img {
+    left: 15px;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 767px) {
+  .container {
+    width: 710px;
+  }
 }
 
 .link_container {
-  top: 13px;
   right: 10px;
 }
 

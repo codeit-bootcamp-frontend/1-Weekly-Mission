@@ -16,7 +16,7 @@ function SharedHero() {
   useEffect(() => getFolderInfoResponse, []);
 
   return (
-    <section className="main-header--shared">
+    <section className="hero--shared">
       <div className="folder-container">
         <img
           className="folder-image"

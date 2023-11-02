@@ -1,8 +1,16 @@
-import TagButtonContainer from "./StyledButtons/TagBtnContainer";
-import { SearchLinkInput } from "./TextInputs/TextInputs";
+import TagBtnContainer from "./StyledButtons/TagBtn/TagBtnContainer";
+import { SearchLinkInput } from "./TextInputs/searchLinkInput";
 import CardContainer from "./CardContainer/CardContainer";
 import { useState, useEffect } from "react";
 import requestData from "../services/api";
+import styled from "styled-components";
+
+const NoCardDataText = styled.h5`
+  display: flex;
+  padding: 41px 0px 35px 0px;
+  justify-content: center;
+  font-weight: 400;
+`;
 
 const defaultTagButton = {
   id: "",
@@ -11,10 +19,9 @@ const defaultTagButton = {
   user_id: 1,
 };
 
-/**
- * @todo state (folderId, folderName을 받는)
- */
-function MainContent() {
+function MainContent({ pageType }) {
+  const PAGE_TYPE_FOLDER = pageType === "folder";
+
   const [cardListData, setCardListData] = useState([]); // cardContainer에서 이용
   const [folderTagBtnList, setfolderTagBtnList] = useState([defaultTagButton]); // TagBtnContainer에서 이용
   const [selectedTagId, setSelectedTagId] = useState(defaultTagButton.id);
@@ -29,6 +36,7 @@ function MainContent() {
       "GET"
     );
     setCardListData(cardListDataResponse);
+    console.log(cardListData);
   }
 
   // folderpage response 처리
@@ -51,10 +59,6 @@ function MainContent() {
   }
 
   useEffect(() => getFolderTagBtnList, []);
-
-  /**
-   * @todo 렌더시점 맞추기
-   */
   useEffect(() => {
     getCardListResponse();
   }, [selectedTagId]);
@@ -63,17 +67,22 @@ function MainContent() {
     <section>
       <div>
         <SearchLinkInput />
-        <TagButtonContainer
-          folderTagBtnList={folderTagBtnList}
-          handleOnClick={handleTagBtnClick}
-          selectedTag={selectedTagId}
-        />
+        {PAGE_TYPE_FOLDER && (
+          <TagBtnContainer
+            folderTagBtnList={folderTagBtnList}
+            handleOnClick={handleTagBtnClick}
+            selectedTag={selectedTagId}
+          />
+        )}
       </div>
       <CardContainer
-        showTitle
+        showTitle={PAGE_TYPE_FOLDER}
         cardListData={cardListData}
         cardTitleText={selectedTagText}
       />
+      {cardListData.length === 0 && (
+        <NoCardDataText>저장된 링크가 없습니다</NoCardDataText>
+      )}
     </section>
   );
 }
