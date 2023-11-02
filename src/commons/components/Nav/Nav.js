@@ -1,48 +1,38 @@
 /* 네비게이션 컴포넌트 */
 
-/* css 모듈 방식 적용
- */
 import { Link } from "react-router-dom";
-import styles from "./Nav.module.css";
+import styles from "./Nav.module.scss";
 import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 
-function Button() {
-  return (
-    <button className={`${styles["link-button"]} ${styles["signin-button"]}`}>
-      <a href="./" className="a-label">
-        로그인
-      </a>
-    </button>
-  );
-}
+function Nav({ profile, isSticky }) {
+  const navClassName = "${nav}" + (isSticky ? " ${sticky}" : "");
+  const { userEmail, userProfileImage } = profile;
+  console.log(profile);
 
-function Nav({ userEmail, userProfile }) {
-  if (!userEmail) {
-    return (
-      <nav className={styles["nav"]}>
-        <div className={styles["gnb"]}>
-          <Link to="/">
-            <LogoSvg />
-          </Link>
-          <Button />
-        </div>
-      </nav>
-    );
-  }
   return (
-    <nav className={styles["nav"]}>
+    <nav className={`${navClassName}`}>
       <div className={styles["gnb"]}>
         <Link to="/">
           <LogoSvg />
         </Link>
-        <div className={styles["user-info"]}>
-          <img
-            src={userProfile}
-            alt="profile"
-            className={styles["profile-img"]}
-          />
-          <span>{userEmail}</span>
-        </div>
+        {!userEmail ? (
+          <button
+            className={`${styles["link-button"]} ${styles["signin-button"]}`}
+          >
+            <a href="./" className="a-label">
+              로그인
+            </a>
+          </button>
+        ) : (
+          <div className={styles["user-info"]}>
+            <img
+              src={userProfileImage}
+              alt="profile"
+              className={styles["profile-img"]}
+            />
+            <span>{userEmail}</span>
+          </div>
+        )}
       </div>
     </nav>
   );
