@@ -40,4 +40,6 @@ const linkBox = {
   border: 'solid pink 4px',
   borderRadius: '20px',
   fontSize: '24px',
+  textDecoration: 'none',
+  color: 'black',
 };

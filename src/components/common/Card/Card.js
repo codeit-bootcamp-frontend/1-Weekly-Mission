@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 import { noDiscriptMsg } from 'constants/default';
 import { timeFlow, formatDate } from 'utils/timeFlow.js';
-
+import Kebab from 'components/common/Kebab.js';
 import defaultImg from 'assets/images/no-Image.svg';
-import kebabIcon from 'assets/images/kebab.svg';
 import starIcon from 'assets/images/star.svg';
 
 function Card({ imageSource, image_source, title, description, createdAt, url, created_at }) {
@@ -16,7 +15,7 @@ function Card({ imageSource, image_source, title, description, createdAt, url, c
       <TextBox>
         <Wrapper>
           <TimeDiff>{timeFlow(createdAt || created_at)}</TimeDiff>
-          <img src={kebabIcon} alt="kebab" />
+          <Kebab />
         </Wrapper>
         {title && <Title>{title}</Title>}
         <Description>{description || noDiscriptMsg}</Description>
@@ -50,25 +49,23 @@ const Img = styled.img`
 
 const TextBox = styled.div`
   background-color: white;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   padding: 15px 20px;
   height: 150px;
   gap: 7px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 `;
 
 const Container = styled.a`
   text-decoration: none;
   color: black;
-
   display: flex;
   flex-direction: column;
   width: 340px;
-  height: 350px;
   border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.1);
 
   &:hover {
     ${TextBox} {
@@ -84,6 +81,9 @@ const ImgBox = styled.div`
   position: relative;
   height: 200px;
   margin: 0 auto;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  overflow: hidden;
 `;
 
 const StarIcon = styled.img`
