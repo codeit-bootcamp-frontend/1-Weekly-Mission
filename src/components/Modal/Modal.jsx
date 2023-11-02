@@ -4,8 +4,16 @@ import closeButton from "images/_close.png";
 import kakaotalkIcon from "images/kakao.svg";
 import facebookIcon from "images/facebook.svg";
 import linkIcon from "images/link.svg";
+import { useEffect } from "react";
 
 export default function Modal({ close, children }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return createPortal(
     <div>
       <S.Overlay onClick={close} />

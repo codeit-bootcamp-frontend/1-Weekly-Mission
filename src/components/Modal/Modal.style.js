@@ -6,12 +6,12 @@ export const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 999999;
+  z-index: 99999;
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
 export const Container = styled.div`
-  z-index: 999999;
+  z-index: 99999;
   position: absolute;
   top: 50%;
   left: 50%;
