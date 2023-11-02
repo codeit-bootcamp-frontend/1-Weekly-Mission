@@ -356,7 +356,7 @@ const Header = () => {
 
       {totalData && isTotalClicked && <Cards fullData={totalData} />}
       {singleFolderData && isSingleClicked && (
-        <Cards fullData={singleFolderData} />
+        <Cards fullList={fullList} fullData={singleFolderData} />
       )}
       {singleFolderData.length === 0 && isSingleClicked && (
         <div

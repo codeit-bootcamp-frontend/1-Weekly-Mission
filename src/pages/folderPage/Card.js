@@ -6,7 +6,7 @@ import KebabAdd from "../../components/kebab/KebabAdd";
 import ModalBackground from "../../components/modal/ModalBackground";
 import Modal from "../../components/modal/Modal";
 
-const Card = ({ data }) => {
+const Card = ({ data, fullList }) => {
   const {
     created_at,
     description,
@@ -148,7 +148,7 @@ const Card = ({ data }) => {
         <ModalBackground>
           <Modal>
             <b>폴더에 추가</b>
-            링크 주소
+            <p>{url}</p>
             <div style={{ position: "relative" }}>
               <img
                 src="images/modalClose.svg"
@@ -160,12 +160,11 @@ const Card = ({ data }) => {
                 onClick={handleKebabAddClick}
               />
             </div>
-            <div>
-              <p>코딩팁</p>
-              <p>채용 사이트</p>
-              <p>유용한 글</p>
-              <p>나만의 장소</p>
-            </div>
+            <ul>
+              {fullList.map((list) => {
+                return <li key={list.id}>{list.name}</li>;
+              })}
+            </ul>
             <button
               style={{
                 background:
