@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getsampleFolder } from "../api/sampleFolder";
+import { getSampleFolder } from "../api/sampleFolder";
 import Search from "../component/Search";
 import Cards from "../component/Cards";
 import style from "./SharedPage.module.css";
@@ -10,7 +10,7 @@ function SharedPage() {
   const [folderInfo, setFolderInfo] = useState({});
   const [cards, setCards] = useState([]);
   const [isLoading, loadingError, getSampleFolderAsync] =
-    useAsync(getsampleFolder);
+    useAsync(getSampleFolder);
   const loadLink = async () => {
     const {
       folder,
