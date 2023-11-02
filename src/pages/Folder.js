@@ -72,7 +72,7 @@ function Folder() {
   useEffect(() => {
     handleLoadAccountId();
   },[]) 
-
+  console.log(process.env.REACT_APP_JAVASCRIPT_KEY)
   const isShowComponent =
     (currentFolderId === "") &
     (folderLinks.length === 0) &

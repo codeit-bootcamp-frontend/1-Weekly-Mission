@@ -102,6 +102,11 @@ export const IconContainer = styled.div`
   gap: 10px;
 `;
 
+export const IconButton = styled.button`
+  background: none;
+  border: none;
+`;
+
 export const SNSIcon = styled.img`
   width: 42px;
   height: 42px;
