@@ -18,22 +18,22 @@ function FolderPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const folderParam = searchParams.get("folderId");
 
-  const handleFolderLoad = async () => {
-    const folders = await getFolderAsync({ id: 1 });
-    setFolders([...folders]);
-  };
-  const handleLinkLoad = async () => {
-    const links = await getLinkAsync({
-      id: 1,
-      folderId: folderParam || "",
-    });
-    setLinks([...links]);
-  };
   useEffect(() => {
+    const handleLinkLoad = async () => {
+      const links = await getLinkAsync({
+        id: 1,
+        folderId: folderParam || "",
+      });
+      setLinks([...links]);
+    };
     handleLinkLoad();
   }, [folderParam]);
 
   useEffect(() => {
+    const handleFolderLoad = async () => {
+      const folders = await getFolderAsync({ id: 1 });
+      setFolders([...folders]);
+    };
     handleFolderLoad();
   }, []);
   return (

@@ -12,19 +12,18 @@ function SharedPage() {
   const [isLoading, loadingError, getSampleFolderAsync] =
     useAsync(getSampleFolder);
 
-  const loadLink = async () => {
-    const {
-      folder,
-      folder: { links },
-    } = await getSampleFolderAsync();
-
-    setCards(() => {
-      return [...links];
-    });
-    setFolderInfo(() => ({ ...folder }));
-  };
-
   useEffect(() => {
+    const loadLink = async () => {
+      const {
+        folder,
+        folder: { links },
+      } = await getSampleFolderAsync();
+
+      setCards(() => {
+        return [...links];
+      });
+      setFolderInfo(() => ({ ...folder }));
+    };
     loadLink();
   }, []);
 
