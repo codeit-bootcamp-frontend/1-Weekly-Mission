@@ -5,29 +5,32 @@ import imgAddWhite from "../../assets/addWhite.svg"
 import imgShare from "../../assets/share.svg"
 import imgEdit from "../../assets/edit.svg"
 import imgDelete from "../../assets/delete.svg"
-import S from "../styled";
 import useData from "../../hooks/useReduce";
+import S from "../styled";
+import { makeModal } from "../../utils/modal";
 
-function FolderAddFloat() {
+
+
+function FolderAddFloat({ handleModal }) {
   return (
-    <S.ButtonFloat>
-      폴더 추가 <S.Img src={imgAddWhite} />
+    <S.ButtonFloat onClick={handleModal}>
+      폴더 추가<S.Img src={imgAddWhite} />
     </S.ButtonFloat>
   )
 }
 
-function FolderControler({ title }) {
+function FolderControler({ title, handleModal }) {
   return (
     <S.Flex>
       <S.H1>{title}</S.H1>
       <S.DivControl title={title}>
-        <S.ButtonControl>
+        <S.ButtonControl onClick={handleModal}>
           <S.Img src={imgShare} />공유
         </S.ButtonControl>
-        <S.ButtonControl>
+        <S.ButtonControl onClick={handleModal}>
           <S.Img src={imgEdit} />이름 변경
         </S.ButtonControl>
-        <S.ButtonControl>
+        <S.ButtonControl onClick={handleModal}>
           <S.Img src={imgDelete} />삭제
         </S.ButtonControl>
       </S.DivControl>
@@ -35,7 +38,7 @@ function FolderControler({ title }) {
   )
 }
 
-function FolderCategories({ setTitle }) {
+function FolderCategories({ setTitle, handleModal }) {
   const [categories] = useData("FOLDER_CATEGORY")
   const [prevSelect, setPrevSelect] = useState(null);
 
@@ -58,8 +61,8 @@ function FolderCategories({ setTitle }) {
           </Link>
         ))}
       </S.Ul>
-      <S.ButtonAdd>
-        폴더 추가 <S.Img src={imgAdd} />
+      <S.ButtonAdd onClick={handleModal}>
+        폴더 추가<S.Img src={imgAdd} />
       </S.ButtonAdd>
     </S.Flex>
   )
@@ -67,12 +70,22 @@ function FolderCategories({ setTitle }) {
 
 function FolderSelect() {
   const [title, setTitle] = useState('전체');
+  const [modal, setModal] = useState(null);
+
+  const handleModal = (e) => {
+    const title = e.target.parentElement?.title;
+    const type = e.target.textContent;
+    console.log(type)
+    const newModal = makeModal(title, type, setModal);
+    setModal(newModal);
+  }
 
   return (
     <>
-      <FolderCategories setTitle={setTitle} />
-      <FolderControler title={title} />
-      <FolderAddFloat />
+      <FolderCategories setTitle={setTitle} handleModal={handleModal} />
+      <FolderControler title={title} handleModal={handleModal} />
+      <FolderAddFloat handleModal={handleModal} />
+      {modal}
     </>
 
   )

@@ -137,7 +137,7 @@ S.DivEmpty = styled.div`
   line-height: 2.4rem;
 `
 
-S.HeaderSearch = styled.header`
+S.HeaderSearch = styled.form`
   position: relative;
   display: flex;
   justify-content: center;
@@ -349,6 +349,7 @@ S.DivCardList = styled.div`
 `
 
 S.ACard = styled.a`
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 1.5rem;
@@ -519,6 +520,122 @@ S.DivSns = styled.div`
   gap: 1.2rem;
   justify-self: end;
   grid-area: sns;
+`
+
+S.DivModalWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000040;
+`
+
+S.DivModalContents = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 3.2rem 4rem;
+  background-color: var(--White);
+  border-radius: 1.5rem;
+`
+
+S.DivModalText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--Gray4);
+  }
+`
+
+S.ButtonSubmit = styled.button`
+  width: 28rem;
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
+  ${({ color }) => color ? `background-color: var(--Red)` : `background-image: linear-gradient(90deg, #6D6AFE, #6AE3FE)`};
+  color: var(--White);
+  font-size: 1.6rem;
+  font-weight: 600;
+`
+
+S.ButtonClose = styled.button`
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+`
+
+S.InputSubmit = styled.input`
+  width: 28rem;
+  padding: 1.8rem 1.5rem;
+  border: 0.1rem solid var(--Gray3);
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 150%;
+
+  &:focus {
+    border: 0.1rem solid var(--Primary);
+    outline: none;
+  }
+`
+
+S.SnsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 3.2rem;
+`
+
+S.Sns = function ({ src, alt, text }) {
+  return (
+    <button>
+      <img src={src} alt={alt} />
+      <p>{text}</p>
+    </button>
+  )
+}
+
+S.UlModal = styled.ul`
+  padding-left: 0;
+
+  li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+  }
+
+  li:hover {
+    background-color: var(--Gray1);
+    color: var(--Primary);
+  }
+
+  li h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 150%;
+  }
+  
+  li p {
+    margin-left: 0.8rem;
+    font-size: 1.4rem;
+    color: var(--Gray4);
+  }
 `
 
 export default S
