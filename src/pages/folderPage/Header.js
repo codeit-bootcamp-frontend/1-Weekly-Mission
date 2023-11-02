@@ -21,11 +21,17 @@ const Header = () => {
   const [singleFolderName, setSingleFolderName] = useState();
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
+  const [isAddFolderClicked, setIsAddFolderClicked] = useState(false);
   function handleAddLinkClick(e) {
     e.preventDefault();
     if (addLinkValue !== "") {
       setIsAddLinkClicked(!isAddLinkClicked);
     }
+  }
+
+  function handleAddFolderClick(e) {
+    e.preventDefault();
+    setIsAddFolderClicked(!isAddFolderClicked);
   }
 
   const getFolderLists = async () => {
@@ -97,10 +103,56 @@ const Header = () => {
           />
         )}
       </div>
-      <button className="folder-add-button">
+      <button className="folder-add-button" onClick={handleAddFolderClick}>
         폴더 추가
         <img src="/images/add.svg" />
       </button>
+      {isAddFolderClicked ? (
+        <ModalBackground>
+          <Modal>
+            <p>
+              <b>폴더 추가</b>
+            </p>
+            <div style={{ position: "relative" }}>
+              <img
+                src="images/modalClose.svg"
+                style={{
+                  position: "absolute",
+                  right: "-16.5rem",
+                  top: "-5rem",
+                }}
+                onClick={handleAddFolderClick}
+              />
+            </div>
+            <input
+              style={{
+                width: "28rem",
+                height: "4rem",
+                borderRadius: "8px",
+                border: "1px solid var(--linkbrary-gray-20, #CCD5E3)",
+                padding: "0 2rem",
+              }}
+              placeholder="내용 입력"
+            ></input>
+            <button
+              style={{
+                background:
+                  "var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%))",
+                borderRadius: "8px",
+                width: "28rem",
+                height: "2rem",
+                padding: "1.6rem 2rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+              }}
+            >
+              추가하기
+            </button>
+          </Modal>
+        </ModalBackground>
+      ) : null}
 
       {totalData && isTotalClicked && (
         <div className="header-summary">전체</div>
