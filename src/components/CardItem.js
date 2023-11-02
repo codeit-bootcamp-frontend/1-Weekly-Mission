@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logoImg from "../img/svg/noImgLogo.svg";
 import starImg from "../img/svg/star.svg";
 import kebabImg from '../img/svg/kebab.svg';
@@ -6,17 +6,9 @@ import mobileAddImg from '../img/svg/mobileAdd.svg';
 import { getTimeDiff } from '../utils/postTime';
 
 
-const CardItem = ({item, prevKey, setPrevKey}) => {
-    const [iscebabClick, setIscebabClick] = useState(false);
-    const handleCebabClick = (event) => {
-        event.preventDefault();
-        setPrevKey(item.id);
-        setIscebabClick(!iscebabClick);
-    }
-    
-    const handleListClick = (event) => {
-        event.preventDefault();
-    }
+const cebabOption = [{option: "삭제하기", name: "링크 삭제"},{option: "폴더에 추가", name: "폴더에 추가"}]
+
+const CardItem = ({item, prevKey, handleCebabClick, iscebabClick, handleListClick}) => {
     const imgStyle = {
         'backgroundImage': `URL(${item.image_source})`,
     }
@@ -31,13 +23,14 @@ const CardItem = ({item, prevKey, setPrevKey}) => {
             <div className='card-inpormation'>
                 <div className='card-inpormation-first-line'>
                     <div className='time'>{nowDate}</div>
-                    <img className='Kebab-botton'  src={kebabImg} alt='케밥이미지' onClick={(event) => handleCebabClick(event)}/>
+                    <img className='Kebab-botton'  src={kebabImg} alt='케밥이미지' onClick={(event) => handleCebabClick(event, item.id)}/>
                 </div>
                 <p>{item.description ? item.description : "데이터가 없습니다"}</p>
                 <div className='day'>{item.created_at.split("T")[0]}</div> 
                 <ul className='folder-botton' style={{display: prevKey === item.id ? iscebabClick ? "flex" : "none" : "none"}} >
-                    <li onClick={(event)=>{handleListClick(event)}}>삭제하기</li>
-                    <li onClick={(event)=>{handleListClick(event)}}>폴더에 추가</li>
+                 {cebabOption.map((list, index) => {
+                    return <li key={index} onClick={(event)=>{handleListClick(event, list.name, list.option, item.url)}}>{list.option}</li>
+                 })}
                 </ul>
                 <h4><span>폴더 추가</span><img src={mobileAddImg} alt="추가이미지"/></h4>
             </div>  
