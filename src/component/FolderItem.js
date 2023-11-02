@@ -1,22 +1,23 @@
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import style from "./FolderItem.module.css";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 function FolderItem({ id, name }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const folderIdParam = searchParams.get("folderId");
-  const handleClick = (e) => {
-    setSearchParams({ folderId: e.target.id });
-  };
+  const location = useLocation();
+
+  const FOLDERID_QUERY = "?folderId=";
   return (
-    <button
+    <Link
       className={clsx(style.button, {
         [style.buttonClicked]: folderIdParam == id,
       })}
       id={id}
-      onClick={handleClick}
+      to={location.pathname + FOLDERID_QUERY + id}
     >
       {name}
-    </button>
+    </Link>
   );
 }
 export default FolderItem;
