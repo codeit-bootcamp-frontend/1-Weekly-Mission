@@ -22,4 +22,4 @@ const getResponse = async (pageType, dataType, query = "") => {
   return data;
 };
 
-export { getResponse };
+export { PATH, getResponse };

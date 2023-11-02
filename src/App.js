@@ -6,6 +6,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* <Route path="/" element={<SelectPage />} /> */}
         <Route path="/shared" element={<SharedPage />} />
         <Route path="/folder" element={<FolderPage />} />
       </Routes>

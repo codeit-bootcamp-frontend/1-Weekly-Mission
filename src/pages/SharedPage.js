@@ -1,14 +1,12 @@
 import Nav from "../components/nav/Nav";
-import Header from "../components/header/Header";
-import Main from "../components/main/Main";
 import Footer from "../components/footer/Footer";
+import SharedContainer from "../components/SharedContainer/SharedContainer";
 
 const SharedPage = () => {
   return (
     <>
       <Nav pageType="shared" />
-      <Header />
-      <Main pageType="shared" dataType="folder" />
+      <SharedContainer />
       <Footer />
     </>
   );

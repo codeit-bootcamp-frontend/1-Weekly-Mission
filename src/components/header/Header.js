@@ -1,23 +1,7 @@
 import "./Header.css";
-import { getResponse } from "../../api";
-import { useCallback, useEffect, useState } from "react";
 
-const Header = () => {
-  const [folder, setFolder] = useState("");
-
-  const handleLoad = useCallback(async () => {
-    const result = await getResponse("shared", "folder");
-    if (!result) {
-      return;
-    }
-
-    const newFolder = result.folder;
-    setFolder(newFolder);
-  }, []);
-
-  useEffect(() => {
-    handleLoad();
-  }, []);
+const Header = ({ folder }) => {
+  const { owner, name } = folder;
 
   return (
     <header>
@@ -26,12 +10,12 @@ const Header = () => {
           <div className="user_profile">
             <img
               className="owner_img"
-              src={folder.owner?.profileImageSource}
+              src={owner?.profileImageSource}
               alt="프로필 사진"
             />
-            <div className="owner_name">{folder.owner?.name}</div>
+            <div className="owner_name">{owner?.name}</div>
           </div>
-          <div className="folder_name">{folder.name}</div>
+          <div className="folder_name">{name}</div>
         </div>
       </div>
     </header>

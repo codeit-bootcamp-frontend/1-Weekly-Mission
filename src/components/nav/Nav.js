@@ -2,24 +2,13 @@ import "./Nav.css";
 import logo from "../../image/logo.svg";
 import NavProfile from "./NavProfile";
 import NavLogin from "./NavLogin";
-import { getResponse } from "../../api";
-import { useCallback, useEffect, useState } from "react";
+import useGetSampleUser from "../../hooks/useGetSampleUser";
+import useGetUser from "../../hooks/useGetUser";
 
 const Nav = ({ pageType }) => {
-  const [user, setUser] = useState(false);
-
-  const handleLoad = useCallback(async () => {
-    const result = await getResponse(pageType, "user");
-    if (!result) {
-      return;
-    }
-
-    setUser(pageType === "shared" ? result : result.data[0]);
-  }, []);
-
-  useEffect(() => {
-    handleLoad();
-  }, []);
+  const sharedUser = useGetSampleUser();
+  const folderUser = useGetUser();
+  const user = pageType === "shared" ? sharedUser : folderUser;
 
   return (
     <nav className={`nav_bar ${pageType}`}>

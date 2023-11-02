@@ -1,47 +1,21 @@
 import Card from "./Card";
 import { Fragment } from "react";
 import "./Card.css";
-import { useCallback, useEffect, useState } from "react";
-import { getResponse } from "../../api";
+import useGetSampleLinks from "../../hooks/useGetSampleLinks";
+import useGetLinks from "../../hooks/useGetLinks";
 
-const CardList = ({ pageType, dataType, folderId }) => {
-  const [cards, setCards] = useState([]);
-
-  const handleLoad = useCallback(async () => {
-    if (pageType === "shared") {
-      const result = await getResponse(pageType, dataType);
-      if (!result) {
-        return;
-      }
-
-      const { links } = result.folder;
-
-      setCards(links);
-    } else if (pageType === "folder") {
-      const result = folderId
-        ? await getResponse(pageType, dataType, `?folderId=${folderId}`)
-        : await getResponse(pageType, dataType);
-      if (!result) {
-        return;
-      }
-
-      const { data } = result;
-
-      setCards(data);
-    }
-  }, [folderId, pageType, dataType]);
-
-  useEffect(() => {
-    handleLoad();
-  }, [handleLoad]);
+const CardList = ({ folderId }) => {
+  const sharedLinks = useGetSampleLinks();
+  const folderLinks = useGetLinks(folderId);
+  const links = folderId ? folderLinks : sharedLinks;
 
   return (
     <div className="card_wrapper">
-      {cards.length ? (
-        cards.map((item) => {
+      {links?.length ? (
+        links.map((link) => {
           return (
-            <Fragment key={item.id}>
-              <Card item={item} />
+            <Fragment key={link.id}>
+              <Card item={link} />
             </Fragment>
           );
         })
