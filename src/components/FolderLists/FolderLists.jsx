@@ -8,7 +8,6 @@ const FolderList = ({ data, onClick, folderId }) => {
     <Link to={`/folder/${data.id}`}>
       <Styled.Btn
         selected={folderId === String(data.id)}
-        id="btn"
         onClick={() => onClick(data.name)}
       >
         {data.name}
