@@ -72,17 +72,17 @@ header a img {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   header .inner {
     padding: 13px 32px;
   }
 
   header a {
-    width: 88.667px;
+    width: 89px;
   }
 
   header a img {
-    width: 88.667px;
+    width: 89px;
     height: 16px;
   }
 

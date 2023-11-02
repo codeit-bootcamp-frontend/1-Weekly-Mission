@@ -39,7 +39,7 @@ h1 {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .option-container {
     max-width: 325px;
     flex-direction: column;

@@ -37,7 +37,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .searchbar {
     max-width: 325px;
     margin: 20px auto 32px;
