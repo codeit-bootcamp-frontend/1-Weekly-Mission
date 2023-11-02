@@ -11,6 +11,7 @@ import share from "../../assets/images/share.svg";
 import pen from "../../assets/images/pen.svg";
 import trash from "../../assets/images/trash.svg";
 import FolderButton from "../../components/folderbutton/folderbutton";
+import Modal from "../../components/modal/modal";
 
 const StyledLinkAdd = styled.div`
     display: flex;
@@ -192,6 +193,7 @@ function Folders() {
 
     return (
         <StyledFoldersBox>
+            <Modal> </Modal>
             <StyledFolderButtonBox>
                 <FolderButton
                     items={titleData}
