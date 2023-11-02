@@ -9,45 +9,13 @@ import Modal from "components/Modal";
 import { ModalAddLink, ModalDeleteLink } from "components/Modal/Modal";
 
 function Card({ item }) {
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [popoverIsOpen, setPopoverIsOpen] = useState(false);
+  const [modalIsOpen1, setModalIsOpen1] = useState(false);
+  const [modalIsOpen2, setModalIsOpen2] = useState(false);
 
   const { image_source, created_at, title, description, url } = item;
   const timeDiff = formatTimeDiff(created_at);
   const date = formatDate(created_at);
-
-  const popoverOpen = (e) => {
-    // e.stopPropagation();
-    e.preventDefault();
-    setIsPopoverOpen(!isPopoverOpen);
-  };
-
-  const [isModalOpen1, setIsModalOpen1] = useState(false);
-
-  const openModal1 = (e) => {
-    // e.stopPropagation();
-    e.preventDefault();
-    setIsModalOpen1(true);
-  };
-
-  const closeModal1 = (e) => {
-    // e.stopPropagation();
-    e.preventDefault();
-    setIsModalOpen1(false);
-  };
-
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
-
-  const openModal2 = (e) => {
-    // e.stopPropagation();
-    e.preventDefault();
-    setIsModalOpen2(true);
-  };
-
-  const closeModal2 = (e) => {
-    // e.stopPropagation();
-    e.preventDefault();
-    setIsModalOpen2(false);
-  };
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
@@ -57,18 +25,50 @@ function Card({ item }) {
       </S.ImageContainer>
       <S.Info>
         <Popover
-          isOpen={isPopoverOpen}
+          isOpen={popoverIsOpen}
           positions={"bottom"}
-          onClickOutside={() => setIsPopoverOpen(false)}
+          onClickOutside={() => setPopoverIsOpen(false)}
           content={
             <S.PopoverContainer>
-              <S.PopoverButton onClick={openModal1}>삭제하기</S.PopoverButton>
-              {isModalOpen1 && <Modal close={closeModal1}><ModalDeleteLink url={url} /></Modal>}
-              <S.PopoverButton onClick={openModal2}>폴더에 추가</S.PopoverButton>
-              {isModalOpen2 && <Modal close={closeModal2}><ModalAddLink url={url} /></Modal>}
+              <S.PopoverButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  setModalIsOpen1(true);
+                }}>
+                삭제하기
+              </S.PopoverButton>
+              {modalIsOpen1 && (
+                <Modal
+                  close={(e) => {
+                    e.preventDefault();
+                    setModalIsOpen1(false);
+                  }}>
+                  <ModalDeleteLink url={url} />
+                </Modal>
+              )}
+              <S.PopoverButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  setModalIsOpen2(true);
+                }}>
+                폴더에 추가
+              </S.PopoverButton>
+              {modalIsOpen2 && (
+                <Modal
+                  close={(e) => {
+                    e.preventDefault();
+                    setModalIsOpen2(false);
+                  }}>
+                  <ModalAddLink url={url} />
+                </Modal>
+              )}
             </S.PopoverContainer>
           }>
-          <S.KebabButton onClick={popoverOpen}>
+          <S.KebabButton
+            onClick={(e) => {
+              e.preventDefault();
+              setPopoverIsOpen(!popoverIsOpen);
+            }}>
             <img src={kebab} alt="케밥 버튼" />
           </S.KebabButton>
         </Popover>
