@@ -1,0 +1,15 @@
+.folderPage-nav {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 0;
+  width: 100%;
+  background-color: #edf7ff;
+
+  @media (min-width: 768px) {
+    position: sticky;
+  }
+
+  @media (min-width: 1200px) {
+  }
+}

@@ -2,8 +2,17 @@ import React from "react";
 import { getTimePassed } from "../../utils/formatTimePassed";
 
 const Card = ({ data }) => {
-  const { url, description, createdAt, imageSource } = data;
-  const timePassed = getTimePassed(url, description, createdAt, imageSource);
+  const {
+    created_at,
+    description,
+    folder_id,
+    id,
+    image_source,
+    title,
+    updated_at,
+    url,
+  } = data;
+  const timePassed = getTimePassed(url, description, created_at, image_source);
 
   return (
     <li
@@ -27,7 +36,7 @@ const Card = ({ data }) => {
         }}
       >
         <img
-          src={imageSource}
+          src={image_source}
           alt="card 이미지"
           style={{
             boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
@@ -60,7 +69,7 @@ const Card = ({ data }) => {
             <img src="images/kebab.svg" />
           </button>
           <span>{description}</span>
-          <span>{createdAt.substring(0, 10)}</span>
+          <span>{created_at.substring(0, 10)}</span>
         </div>
       </a>
     </li>

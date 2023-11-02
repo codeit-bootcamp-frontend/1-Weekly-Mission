@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
-import "../styles/landing.css";
-import { getLogin } from "../api/api";
-import { useAsync } from "../hooks/useAsync";
+import "../../styles/landing.css";
+import "./nav.css";
+import { useAsync } from "../../hooks/useAsync";
+import { getProfileData } from "../../api/folderOwnerApi";
 
 const Nav = () => {
-  const [userEmail, getLoginAsync] = useAsync(getLogin);
+  const [userEmail, getProfileDataAsync] = useAsync(getProfileData);
 
   useEffect(() => {
-    getLoginAsync();
+    getProfileDataAsync();
   }, []);
 
   return (
     <>
-      <nav>
+      <nav className="folderPage-nav">
         <div className="gnb">
           <a href="/">
             <img

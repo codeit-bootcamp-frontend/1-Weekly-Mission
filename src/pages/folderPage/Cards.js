@@ -1,5 +1,6 @@
 import "../../styles/landing.css";
-import Card from "../Card/Card";
+import "./header.css";
+import Card from "./Card";
 
 const Cards = ({ fullData }) => {
   return (
