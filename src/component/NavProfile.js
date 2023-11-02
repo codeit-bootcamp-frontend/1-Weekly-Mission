@@ -7,29 +7,28 @@ import { getUser } from "../api/getUser";
 function NavProfile() {
   const [userInfo, setUserInfo] = useState(null);
   const [isLoading, , getUserAsync] = useAsync(getUser);
-  const loadUser = async () => {
-    const userInfo = await getUserAsync({ id: 1 });
-    setUserInfo(userInfo);
-  };
 
   useEffect(() => {
+    const loadUser = async () => {
+      const userInfo = await getUserAsync({ id: 1 });
+      setUserInfo(userInfo);
+    };
     loadUser();
   }, []);
 
-  return isLoading ? (
-    <span>loading</span>
-  ) : userInfo ? (
-    <div className={style.profile}>
-      <img
-        className={style.profileImg}
-        src={userInfo.image_source}
-        alt="유저 프로필"
-      />
-      <div className={style.email}>{userInfo.email}</div>
-    </div>
-  ) : (
-    <LinkButton url="/signin" text="로그인" type="blue" />
-  );
+  if (isLoading) return <span>loading</span>;
+  if (userInfo)
+    return (
+      <div className={style.profile}>
+        <img
+          className={style.profileImg}
+          src={userInfo.image_source}
+          alt="유저 프로필"
+        />
+        <div className={style.email}>{userInfo.email}</div>
+      </div>
+    );
+  return <LinkButton url="/signin" text="로그인" type="blue" />;
 }
 
 export default NavProfile;
