@@ -6,10 +6,9 @@ import logoImg from "../../assets/emptyImg.svg";
 import starImg from "../../assets/star.svg";
 import kebabImg from "../../assets/kebab.svg";
 
-function FolderPageCardItem({ item }) {
+function FolderPageCardItem({ created_at, url, title, description, image_source }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { created_at, url, title, description, image_source } = item;
   const formattedCreatedAt = formatDate(created_at);
   const timeDiff = getTimeDiff(created_at);
   const formatTimeDiff = prettyFormatTimeDiff(timeDiff);

@@ -1,10 +1,9 @@
 import styles from "./Card.module.css";
-import CardList from "./CardList";
 
-const Card = ({ folderData }) => {
+const Card = ({ children }) => {
   return (
     <div className={styles.card}>
-      <CardList folderData={folderData} />
+      <ul className={styles.list}>{children}</ul>
     </div>
   );
 };

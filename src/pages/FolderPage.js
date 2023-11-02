@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./FolderPage.module.css";
+import { formatDate, getTimeDiff, prettyFormatTimeDiff } from "../utils/utils";
+import useAsync from "../hooks/useAsync";
 import AddLink from "../components/AddLink/AddLink";
 import NavBar from "../components/NavBar/NavBar";
 import Search from "../components/Search/Search";
 import Footer from "../components/Footer/Footer";
-import useAsync from "../hooks/useAsync";
 import getUserFolders from "../api/getUserFolders";
 import Category from "../components/Category/Category";
 import Card from "../components/Card/Card";
@@ -14,6 +15,8 @@ import FloatingAddFolder from "../components/FloatingAddFolder/FloatingAddFolder
 import Loadable from "../components/Skeleton/Loadable";
 import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSkeleton";
 import CategoryListSkeleton from "./../components/Skeleton/CategoryListSkeleton/CategoryListSkeleton";
+import CardListItem from "../components/Card/CardListItem";
+import SharedPageCardItem from "../components/Card/SharedPageCardItem";
 
 const FolderPage = () => {
   const [userId, setUserId] = useState(null);
@@ -21,8 +24,8 @@ const FolderPage = () => {
   const [folderListData, setFolderListData] = useState([]);
   const [linksListData, setLinksListData] = useState([]);
   const [selectedCategoryId, SetSelectedCategoryId] = useState("");
-  const { pending: isLoadingFolderList, wrappedFunction: getFolderListAsync } = useAsync(getUserFolders);
-  const { pending: isLoadingLinksList, wrappedFunction: getLinksListAsync } = useAsync(getUserLinks);
+  const { status: isLoadingFolderList, wrappedFunction: getFolderListAsync } = useAsync(getUserFolders);
+  const { status: isLoadingLinksList, wrappedFunction: getLinksListAsync } = useAsync(getUserLinks);
 
   const handleLoadFolderListData = useCallback(async () => {
     const [folderListResponseData, linksListResponseData] = await Promise.all([
@@ -55,7 +58,27 @@ const FolderPage = () => {
         </Loadable>
         <FolderUtils userId={userId} currentFolderName={currentFolderName} />
         <Loadable isLoading={isLoadingLinksList} fallback={<CardListSkeleton size={9} />}>
-          <Card folderData={linksListData} />
+          <Card>
+            {linksListData?.data &&
+              linksListData.data.map((link) => {
+                const { created_at, url, title, description, image_source } = link;
+                const formattedCreatedAt = formatDate(created_at);
+                const timeDiff = getTimeDiff(created_at);
+                const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
+                return (
+                  <CardListItem key={url}>
+                    <SharedPageCardItem
+                      formatTimeDiff={formatTimeDiff}
+                      formattedCreatedAt={formattedCreatedAt}
+                      url={url}
+                      title={title}
+                      description={description}
+                      imageSource={image_source}
+                    />
+                  </CardListItem>
+                );
+              })}
+          </Card>
         </Loadable>
         <FloatingAddFolder />
       </main>

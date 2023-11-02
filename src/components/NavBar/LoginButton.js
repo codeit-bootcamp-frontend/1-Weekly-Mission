@@ -11,7 +11,9 @@ const LoginButton = ({ userId }) => {
 
   const handleButtonClick = async () => {
     const userResponseData = await getUserAsync();
+
     setUserData(userResponseData);
+
     if (userId) {
       userId(userResponseData.id);
     }
@@ -20,7 +22,7 @@ const LoginButton = ({ userId }) => {
   return (
     <div>
       {userData?.email ? (
-        <ProfileInfo email={userData.email} profileImageSource={userData.profileImageSource} />
+        <ProfileInfo email={userData.email} profileImage={userData.profileImageSource} />
       ) : (
         <button disabled={isLoading} className={classnames(styles.cta, styles.ctaShort)} onClick={handleButtonClick}>
           로그인
