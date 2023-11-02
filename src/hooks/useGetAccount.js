@@ -6,7 +6,6 @@ const useGetAccount = (userId) => {
 
   const getData = useCallback(async () => {
     const userAccount = await getAccount(userId);
-    console.log(userAccount); //undefined
     if (!userAccount) return;
     else {
       const { email, image_source } = userAccount;

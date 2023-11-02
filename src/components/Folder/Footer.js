@@ -35,19 +35,22 @@ function Footer() {
 export default Footer;
 
 const Container = styled.footer`
-  margin-top: 12rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   height: 16rem;
   width: 100%;
   padding: 3.2rem 10.4rem 6.4rem 10.4rem;
-  flex-shrink: 0;
-  background: var(--black);
+  margin-top: 12rem;
+
+  display: flex;
   position: relative;
+  justify-content: space-around;
+  align-items: center;
+  flex-shrink: 0;
+
   font-family: Arial;
   font-size: 1.6rem;
   font-weight: 400;
+
+  background: var(--black);
   z-index: 2;
 
   @media (max-width: 767px) {
@@ -69,12 +72,7 @@ const Content = styled.div`
 `;
 
 const CodeitInfo = styled.p`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2.4rem;
   color: #676767;
-  text-align: center;
 
   @media (max-width: 767px) {
     position: absolute;

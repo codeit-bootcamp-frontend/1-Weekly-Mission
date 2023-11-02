@@ -6,7 +6,6 @@ export const getAccount = async (userId) => {
   userId = -1 ? 'sample/user' : `users/${userId}`;
   const response = await fetch(URL + userId);
   const body = await response.json();
-  console.log(body.data); // 정상 작동
   if (body.data) return body.data[index];
   else {
     const { email, profileImageSource: image_source } = body;

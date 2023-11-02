@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+const EmptyLinkScreen = ({ children }) => {
+  return (
+    <>
+      <Container>
+        <p>{children}</p>
+      </Container>
+      {/* <Div>
+      <Empty />  
+    </Div> */}
+    </>
+  );
+};
+
 const Container = styled.div`
   display: flex;
   width: auto;
@@ -28,18 +41,5 @@ const Container = styled.div`
 //   justify-content: space-between;
 //   flex: 1;
 // `
-
-const EmptyLinkScreen = ({ children }) => {
-  return (
-    <>
-      <Container>
-        <p>{children}</p>
-      </Container>
-      {/* <Div>
-      <Empty />  
-    </Div> */}
-    </>
-  );
-};
 
 export default EmptyLinkScreen;

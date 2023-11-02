@@ -3,7 +3,7 @@ import { useState } from 'react';
 import SortingButton from '../../UI/SortingButton';
 import FolderAdd from './FolderAdd';
 
-function Sorting({ selectedFolder, changeTitle }) {
+function FolderHeader({ selectedFolder, changeTitle }) {
   const [activeFolderId, setActiveFolderId] = useState(selectedFolder[0].id);
 
   const handleClick = (folder) => {
@@ -32,7 +32,7 @@ function Sorting({ selectedFolder, changeTitle }) {
   );
 }
 
-export default Sorting;
+export default FolderHeader;
 
 const Container = styled.div`
   display: flex;

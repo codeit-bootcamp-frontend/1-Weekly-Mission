@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useContext, useState } from 'react';
 import CardList from './CardList';
-import Sorting from './Sorting';
+import FolderHeader from './FolderHeader';
 import LinkSearchInput from '../../UI/LinkSearchInput';
 import Option from '../../UI/Option';
 import shareIcon from '../../../assets/share_icon.svg';
@@ -10,7 +10,43 @@ import deleteIcon from '../../../assets/delete_icon.svg';
 import { FolderContext } from '../../../context/FolderContext';
 import useGetSearchFolder from '../../../hooks/useGetSearchFolder';
 
-const MainContainer = styled.main`
+const FolderMain = ({ selectedFolder, userID }) => {
+  const { folderId, changeFolderId } = useContext(FolderContext);
+  const folderContentsInfo = useGetSearchFolder(userID, folderId);
+
+  const checkEmptyFolder = folderContentsInfo?.data.length;
+  const [title, setTitle] = useState('전체');
+
+  const changeTitle = (name) => {
+    setTitle(name);
+  };
+
+  useEffect(() => {
+    changeFolderId(folderId);
+  }, []);
+
+  return (
+    <Container>
+      <LinkSearchInput />
+      <FolderHeader selectedFolder={selectedFolder} userID={userID} changeTitle={changeTitle} />
+      <Title>
+        <h1>{title}</h1>
+        {folderId > 0 && checkEmptyFolder > 0 && (
+          <Options>
+            <Option icon={shareIcon}>공유</Option>
+            <Option icon={penIcon}>이름 변경</Option>
+            <Option icon={deleteIcon}>삭제</Option>
+          </Options>
+        )}
+      </Title>
+      {folderContentsInfo && <CardList folderCards={folderContentsInfo.data} />}
+    </Container>
+  );
+};
+
+export default FolderMain;
+
+const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,40 +89,3 @@ const Options = styled.div`
   align-items: flex-start;
   gap: 1.2rem;
 `;
-
-const FolderMain = ({ selectedFolder, userID }) => {
-  const { folderId, changeFolderId } = useContext(FolderContext);
-
-  const folderContentsInfo = useGetSearchFolder(userID, folderId);
-
-  const checkEmptyFolder = folderContentsInfo?.data.length;
-  const [title, setTitle] = useState('전체');
-
-  const changeTitle = (name) => {
-    setTitle(name);
-  };
-
-  useEffect(() => {
-    changeFolderId(folderId);
-  }, [folderId]);
-
-  return (
-    <MainContainer>
-      <LinkSearchInput />
-      <Sorting selectedFolder={selectedFolder} userID={userID} changeTitle={changeTitle} />
-      <Title>
-        <h1>{title}</h1>
-        {folderId > 0 && checkEmptyFolder > 0 && (
-          <Options>
-            <Option icon={shareIcon}>공유</Option>
-            <Option icon={penIcon}>이름 변경</Option>
-            <Option icon={deleteIcon}>삭제</Option>
-          </Options>
-        )}
-      </Title>
-      {folderContentsInfo && <CardList folderCards={folderContentsInfo.data} />}
-    </MainContainer>
-  );
-};
-
-export default FolderMain;
