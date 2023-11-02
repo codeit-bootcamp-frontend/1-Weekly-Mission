@@ -47,15 +47,23 @@
 }
 
 .input {
-  border: none;
+  width: 500px;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .image {
   height: 3rem;
   text-align: center;
 }
-
 .add_button {
+  width: 10rem;
+  height: 2.5rem;
   align-self: center;
   margin-right: 1rem;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  border-radius: 5px;
+  border: none;
 }

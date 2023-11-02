@@ -1,0 +1,48 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 모달에 흐림 효과는 #000000 색상에 opacity 0.4로 설정 */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  width: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 15px;
+  border: 5px solid red;
+}
+
+.cancel__button {
+  position: absolute;
+  border-radius: 9999px;
+  top: 5px;
+  right: 10px;
+  border: white;
+  background: var(--gray20);
+}
+.title {
+  font-size: 2rem;
+}
+.button {
+  border: none;
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+}
+
+.address_container {
+}

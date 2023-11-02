@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FolderNav from "../components/nav/FolderNav";
 import Header from "../common/header/Header";
 import SearchBar from "../common/searchBar/SearchBar";
@@ -18,15 +18,7 @@ import useTest from "../hooks/useTest";
 
 export default function FolderPage() {
   const USER_ID = 1;
-
   const { folderId } = useParams();
-
-  // 우선 전체버튼은 {}
-  // 즐겨찾기는 아무것도 X
-  // 유용한 글은  (6)  {folderId: '16'}
-  // 나만의 장소 아무것도 X
-  // 채용 사이트는 {folderId: '40'}
-  // 고딩 팁은 아무것도 X
 
   const [userData] = useTest(() => fetchUserData({ userId: USER_ID }));
   // const [userData] = useUserFetch({ userId: 1 });
@@ -35,14 +27,12 @@ export default function FolderPage() {
   const [Folderdata, isLoading] = useTest(() =>
     fetchUserFolderData({ userId: USER_ID })
   );
-
   // 얘는 되는데
-  const c = fetchUserLinks({ userId: USER_ID, folderId: folderId });
-
+  // const linksData = fetchUserLinks({ userId: USER_ID, folderId: folderId });
+  // linksData.then((data) => console.log(data.data));
   // 아래는 왜 안될까.. folderId는 잘 나오는데, folderId에 대하 데이터가 안뽑힘..?
   // const [a, b] = useTest(() =>
-  //   fetchUserLinks({ userId: USER_ID, folderId: folderId })
-  // );
+  //   fetchUserLinks({ userId: USER_ID, folderId: folderId })    // );
 
   const result = Folderdata?.data;
   const obj =

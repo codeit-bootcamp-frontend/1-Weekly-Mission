@@ -20,12 +20,14 @@ export default function DataListItem({ item }) {
           <img className={styles.card__image} src={image_source} alt={title} />
           <div className={styles.sub__container}>
             <p>{diffTime}</p>
-            <img src={kebabImage} alt="kebab" className={styles.kebab__image} />
+            <img src={kebabImage} alt="kebab" className={styles.kebab} />
           </div>
-          <p>{description}</p>
-          <p>
-            {year}. {month}. {day}
-          </p>
+          <div className={styles.bottom}>
+            <p>{description}</p>
+            <p>
+              {year}. {month}. {day}
+            </p>
+          </div>
         </div>
       </Card>
     </>

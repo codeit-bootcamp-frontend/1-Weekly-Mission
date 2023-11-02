@@ -3,7 +3,7 @@ import styles from "./Modal.module.css";
 import linkCopy from "../../assets/images/linkcopy.svg";
 import kakaochat from "../../assets/images/kakaochat.svg";
 import metachat from "../../assets/images/metachat.svg";
-export default function Modal({ status, tabName, folderName }) {
+export default function Modal({ setterFunc, tabName, folderName }) {
   const obj = {
     share: ["폴더공유"],
     change: ["폴더이름변경", "변경하기", "blue"],
@@ -15,7 +15,10 @@ export default function Modal({ status, tabName, folderName }) {
   return (
     <div className={styles.container}>
       <div className={styles.modal__container}>
-        <button className={styles.cancel__button} onClick={() => status(false)}>
+        <button
+          className={styles.cancel__button}
+          onClick={() => setterFunc(false)}
+        >
           X
         </button>
         <p className={styles.title}>{title}</p>

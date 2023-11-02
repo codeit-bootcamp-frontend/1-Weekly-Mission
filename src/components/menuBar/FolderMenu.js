@@ -60,7 +60,11 @@ export default function FolderMenu({ folderId }) {
       )}
       {/* openModal 상태가 true이면은 modal 보이게하기*/}
       {openModal && (
-        <Modal status={setOpenModal} tabName={tabName} folderName={letter} />
+        <Modal
+          setterFunc={setOpenModal}
+          tabName={tabName}
+          folderName={letter}
+        />
       )}
     </div>
   );
