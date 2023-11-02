@@ -2,8 +2,8 @@ import { useState } from 'react'
 import useAsync from '../../../../Hooks/useAsync'
 import { getFolders, getLinksByFolderID } from '../../../../api'
 import FolderList from '../FolderList/FolderList'
-import LinkList from '../LinkList/LinkList'
 import NoLink from '../NoLink/NoLink'
+import CardList from '../../../../components/CardList/CardList'
 
 function FolderAndLink() {
   const [selectedFolderId, setSelectedFolderId] = useState(undefined)
@@ -26,9 +26,8 @@ function FolderAndLink() {
   // if (isLoadinglink) return <div>로딩 중입니다.</div>
   // if (linkError) return <div>에러가 발생했습니다.</div>
 
-  const { data: folders } = folderData
-  const { data: links } = linkData
-
+  const folders = folderData?.data
+  const links = linkData?.data
 
   // 링크
 
@@ -46,7 +45,7 @@ function FolderAndLink() {
           selectedFolderId={selectedFolderId}
         />
       )}
-      {links.length === 0 ? <NoLink /> : <LinkList links={links} />}
+      {links.length === 0 ? <NoLink /> : <CardList links={links} />}
     </>
   )
 }
