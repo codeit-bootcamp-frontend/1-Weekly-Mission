@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Modal.module.css";
 import linkCopy from "../../assets/images/linkcopy.svg";
 import kakaochat from "../../assets/images/kakaochat.svg";
 import metachat from "../../assets/images/metachat.svg";
+import ConfirmModal from "./ConfirmModal";
 export default function Modal({ setterFunc, tabName, folderName }) {
+  const [clipUrl, setClipUrl] = useState("");
+  const yesConfirm = () => {
+    alert(`복사하였습니다 ${clipUrl}`);
+  };
+
+  const noConfirm = () => {
+    alert("복사를 취소하셨네요");
+  };
+  const confirmClick = ConfirmModal(
+    "url를 복사하시겠습니까?",
+    yesConfirm,
+    noConfirm
+  );
+  const [isCopied, setIsCopied] = useState(false);
+
+  const toClipboard = () => {
+    if (!isCopied) {
+      navigator.clipboard.writeText(window.location.href).then((response) => {
+        confirmClick();
+      });
+      setIsCopied(true);
+    }
+  };
   const obj = {
     share: ["폴더공유"],
     change: ["폴더이름변경", "변경하기", "blue"],
@@ -11,13 +35,24 @@ export default function Modal({ setterFunc, tabName, folderName }) {
   };
 
   const [title, buttonName, buttonColor] = obj[tabName];
-
   return (
     <div className={styles.container}>
       <div className={styles.modal__container}>
         <button
           className={styles.cancel__button}
-          onClick={() => setterFunc(false)}
+          onClick={() => {
+            setterFunc(false);
+            setIsCopied(false);
+          }}
+        >
+          X
+        </button>
+        <button
+          className={styles.cancel__button}
+          onClick={() => {
+            setterFunc(false);
+            setIsCopied(false);
+          }}
         >
           X
         </button>
@@ -36,7 +71,7 @@ export default function Modal({ setterFunc, tabName, folderName }) {
           )
         ) : (
           <div className="link__container">
-            <img src={linkCopy} alt="link_copy" />
+            <img src={linkCopy} alt="link_copy" onClick={toClipboard} />
             <img src={kakaochat} alt="kakao_chat" />
             <img src={metachat} alt="meta_chat" />
           </div>
