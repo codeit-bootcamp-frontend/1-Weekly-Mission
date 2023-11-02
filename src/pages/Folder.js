@@ -90,7 +90,7 @@ function Folder() {
         </div>
         <div className={styles.flex}>
           <FolderName>{folderName}</FolderName>
-          {folderID !== '0' && <FolderEdit />}
+          {folderName !== '전체' && <FolderEdit />}
         </div>
         {cards.length ? (
           <Binder cards={cards} shared="off" />
