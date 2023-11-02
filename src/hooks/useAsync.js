@@ -18,21 +18,21 @@ import { useCallback, useState } from "react";
  * // wrappedFunction을 사용하여 fetchData를 실행하고, pending 값을 모니터링할 수 있습니다.
  */
 const useAsync = (asyncFunction) => {
-  const [pending, setPending] = useState(false);
+  const [status, setStatus] = useState(false);
 
   const wrappedFunction = useCallback(
     async (...args) => {
       try {
-        setPending(true);
+        setStatus(true);
         return await asyncFunction(...args);
       } finally {
-        setPending(false);
+        setStatus(false);
       }
     },
     [asyncFunction]
   );
 
-  return { pending, wrappedFunction };
+  return { status, wrappedFunction };
 };
 
 export default useAsync;
