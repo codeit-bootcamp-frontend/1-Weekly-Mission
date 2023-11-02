@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 export function Nav() {
   const location = useLocation();
-  const isFolder = location.pathname == "/folder";
+  const isFolder = location.pathname === "/folder";
   return (
     <div className={clsx(style.root, { [style.folder]: isFolder })}>
       <a href="/">

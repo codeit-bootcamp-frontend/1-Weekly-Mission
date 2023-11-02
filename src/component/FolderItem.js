@@ -11,7 +11,7 @@ function FolderItem({ id, name }) {
   return (
     <Link
       className={clsx(style.button, {
-        [style.buttonClicked]: folderIdParam == id,
+        [style.buttonClicked]: folderIdParam === id,
       })}
       id={id}
       to={location.pathname + FOLDERID_QUERY + id}
