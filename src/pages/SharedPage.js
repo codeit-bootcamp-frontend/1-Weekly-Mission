@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getSampleFolder } from "../api/sampleFolder";
 import Search from "../component/Search";
-import Cards from "../component/Cards";
+import SharedPageCards from "../component/SharedPageCards";
 import style from "./SharedPage.module.css";
 import FolderInfo from "../component/FolderInfo";
 import useAsync from "../hooks/useAsync";
@@ -36,7 +36,7 @@ function SharedPage() {
           <FolderInfo folderInfo={folderInfo} />
           <div className={style.section}>
             <Search />
-            <Cards cards={cards} />
+            <SharedPageCards cards={cards} />
           </div>
         </div>
       )}

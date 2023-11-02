@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import AddLink from "../component/AddLink";
-import Cards from "../component/Cards";
+import FolderPageCards from "../component/FolderPageCards";
 import FolderList from "../component/FolderList";
 import Search from "../component/Search";
 import useAsync from "../hooks/useAsync";
@@ -48,7 +48,7 @@ function FolderPage() {
             <FolderList folders={folders} />
             <CurrentFolder folderId={folderParam} folders={folders} />
             {links.length ? (
-              <Cards cards={links} />
+              <FolderPageCards cards={links} />
             ) : (
               <span className={style.emptyLink}>저장된 링크가 없습니다.</span>
             )}

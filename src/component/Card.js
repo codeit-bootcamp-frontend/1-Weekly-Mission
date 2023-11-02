@@ -5,7 +5,7 @@ import noImg from "../assets/img/no-image.svg";
 import style from "./Card.module.css";
 import clsx from "clsx";
 
-function Card({ card: { title, description, url, image_source, created_at } }) {
+function Card({ title, description, url, image_source, created_at }) {
   const [hover, setHover] = useState(false);
 
   const handleMouseOver = () => {
