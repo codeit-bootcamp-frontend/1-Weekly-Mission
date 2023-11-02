@@ -1,7 +1,10 @@
+import { useContext } from "react";
+
 import styled from "styled-components";
 
 import ModalTitle from "components/title/ModalTitle";
 import ModalButton from "components/button/ModalButton";
+import { FolderContext } from "context/FolderContext";
 
 const Container = styled.div`
   width: 100%;
@@ -57,6 +60,9 @@ const SubTitle = styled.div`
 `;
 
 export default function AddLink({ link }) {
+  const { folderNameList } = useContext(FolderContext);
+  console.log(folderNameList);
+
   return (
     <Container>
       <Description>

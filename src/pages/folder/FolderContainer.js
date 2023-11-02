@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import { createPortal } from "react-dom";
 
 import * as S from "./FolderContainerStyle";
 import { getAllFolders, getAllLinks } from "api/api";
+import { FolderContext } from "context/FolderContext";
 
 import CardList from "components/card/CardList";
 import Loading from "components/Loading";
@@ -27,6 +28,8 @@ export default function Folder() {
   const { isLoading, error, wrappedFunction: getLinksAsyncFunc } = useFetch(getAllLinks);
   const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
 
+  const { handleFolderUpdate } = useContext(FolderContext);
+
   const handleSelectedFolder = (category) => {
     setSelected(category);
     changeFolderId(category);
@@ -44,6 +47,11 @@ export default function Folder() {
 
     setLinks(linkData);
     setFolders(folderData);
+    updateFolderList(folderData);
+  };
+
+  const updateFolderList = (data) => {
+    handleFolderUpdate(data);
   };
 
   const folderNames = folders.map((folder) => folder.name);
