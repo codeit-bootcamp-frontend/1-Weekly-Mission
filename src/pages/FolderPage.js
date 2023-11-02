@@ -16,7 +16,8 @@ import Loadable from "../components/Skeleton/Loadable";
 import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSkeleton";
 import CategoryListSkeleton from "./../components/Skeleton/CategoryListSkeleton/CategoryListSkeleton";
 import CardListItem from "../components/Card/CardListItem";
-import SharedPageCardItem from "../components/Card/SharedPageCardItem";
+import FolderPageCardItem from "../components/Card/FolderPageCardItem";
+import NotFoundLink from "../components/Card/NotFoundLink";
 
 const FolderPage = () => {
   const [userId, setUserId] = useState(null);
@@ -67,7 +68,7 @@ const FolderPage = () => {
                 const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
                 return (
                   <CardListItem key={url}>
-                    <SharedPageCardItem
+                    <FolderPageCardItem
                       formatTimeDiff={formatTimeDiff}
                       formattedCreatedAt={formattedCreatedAt}
                       url={url}
@@ -79,6 +80,7 @@ const FolderPage = () => {
                 );
               })}
           </Card>
+          {linksListData?.data?.length === 0 ? <NotFoundLink /> : undefined}
         </Loadable>
         <FloatingAddFolder />
       </main>

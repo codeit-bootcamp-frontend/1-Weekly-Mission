@@ -6,7 +6,7 @@ function SharedPageCardItem({ formatTimeDiff, formattedCreatedAt, url, title, de
   return (
     <div className={styles.cardItem}>
       <Link className={styles.imgContainer} to={url} target="_blank" rel="noopener noreferrer">
-        <img className={styles.img} src={imageSource === null ? logoImg : imageSource} alt={title} />
+        <img className={styles.img} src={imageSource ? imageSource : logoImg} alt={title} />
       </Link>
       <div className={styles.contentContainer}>
         <p className={styles.timeDiff}>{formatTimeDiff}</p>
