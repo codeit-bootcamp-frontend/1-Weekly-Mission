@@ -11,7 +11,7 @@ function Nav() {
     <nav className={styles.root}>
       <div className={styles.container}>
         <Logo className={styles.logo} />
-        {isAuth ? (
+        {isAuth() ? (
           <NavProfile />
         ) : (
           <Button
