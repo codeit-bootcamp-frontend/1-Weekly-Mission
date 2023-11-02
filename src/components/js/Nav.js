@@ -11,6 +11,7 @@ function Nav() {
   const handleLoad = async () => {
     const nextAccount = await getAccount();
     setAccount(nextAccount.data[0]);
+    console.log(account)
   };
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import RedShortModal from "../RedShortModal";
 
-function FolderDeleteModal({ onShow }) {
+function FolderDeleteModal({ onShow, currentFolder }) {
   const handleCloseButton = () => {
     onShow(false, "");
   };
@@ -9,7 +9,7 @@ function FolderDeleteModal({ onShow }) {
       <RedShortModal
         title="폴더 삭제"
         btnName="삭제하기"
-        content="폴더명"
+        content={currentFolder}
         onClose={handleCloseButton}
       />
     </>

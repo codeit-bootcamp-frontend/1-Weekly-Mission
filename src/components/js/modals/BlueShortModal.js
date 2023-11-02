@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ModalBg from "./modal-styles/ModalBg";
 import * as S from "./modal-styles/ModalsUnits";
 
-function BlueShortModal({ title, btnName, onClose, ...props }) {
+function BlueShortModal({ title, btnName, onClose, inputValue, onChange }) {
   return (
     <ModalBg>
       <S.Wrapper>
@@ -10,7 +10,7 @@ function BlueShortModal({ title, btnName, onClose, ...props }) {
         <S.TitleWrapper>
           <S.ModalTitle>{title}</S.ModalTitle>
         </S.TitleWrapper>
-        <S.ModalInput />
+        <S.ModalInput value={inputValue} onChange={onChange}/>
         <S.StyledButton>{btnName}</S.StyledButton>
       </S.Wrapper>
     </ModalBg>

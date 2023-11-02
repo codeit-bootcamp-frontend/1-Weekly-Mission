@@ -1,7 +1,7 @@
 import * as S from "components/js/modals/modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
 
-function FolderShareModal({ IconList, onClose }) {
+function FolderShareModal({ IconList, onClose, folderName }) {
   return (
     <>
       <ModalBg>
@@ -9,7 +9,7 @@ function FolderShareModal({ IconList, onClose }) {
           <S.CloseButton onClick={onClose} />
           <S.TitleWrapper>
             <S.ModalTitle>폴더 공유</S.ModalTitle>
-            <S.ModalContents>폴더명</S.ModalContents>
+            <S.ModalContents>{folderName}</S.ModalContents>
           </S.TitleWrapper>
           <S.IconWrapper>
             {IconList &&

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import NavAndFooterBasic from "../components/js/NavAndFooterBasic";
 import { useState, useEffect } from "react";
+import {useLocation}from 'react-router-dom';
 import { Helmet } from "react-helmet";
-import { getFolderInformations, getUserLinks } from "../api/apiUrl";
+import { getFolderInformations, getUserLinks, getAccount } from "../api/apiUrl";
 import useAsync from "../hooks/useAsync";
 import LinkBar from "../components/js/LinkBar";
 import Search from "../components/js/Search";
@@ -22,6 +23,7 @@ function Folder() {
     getFolderInformations
   );
   const [LinksloadingError, getUserLinksAsync] = useAsync(getUserLinks);
+  const [AccountLoadingError, getUserAccountAsync] = useAsync(getAccount);
   const [personalFolder, setPersonalFolder] = useState([]);
   const [currentFolderId, setCurrentFolderId] = useState("");
   const [folderLinks, setFolderLinks] = useState([]);
@@ -29,6 +31,17 @@ function Folder() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeModalName, setActiveModalName] = useState("");
   const [link, setLink] = useState("");
+  const [userId, setUserId] = useState({});
+
+  const handleLoadAccountId = async () => {
+    const nextAccount = await getUserAccountAsync();
+    const email = nextAccount?.data[0]?.email;
+    const nextId = email?.split('@')[0];
+    setUserId(nextId);
+    console.log(nextId)
+  };
+
+  console.log(userId)
 
   //카드 리스트 업데이트 하는 함수
   const loadCardList = async () => {
@@ -55,6 +68,11 @@ function Folder() {
     loadCardList();
   }, [currentFolderId]);
 
+  //최초 마운트 시, account ID 정보 가져오기(모달 링크용)
+  useEffect(() => {
+    handleLoadAccountId();
+  },[]) 
+
   const isShowComponent =
     (currentFolderId === "") &
     (folderLinks.length === 0) &
@@ -70,12 +88,15 @@ function Folder() {
     ),
     addFolder: <FolderAddModal onShow={handleShowModal} />,
     deleteLink: <LinkDeleteModal onShow={handleShowModal} link={link} />,
-    shareFolder: <FolderShareModalContainer onShow={handleShowModal} />,
-    deleteFolder: <FolderDeleteModal onShow={handleShowModal} />,
-    changeFolderName: <FolderNameChangeModal onShow={handleShowModal} />,
+    shareFolder: <FolderShareModalContainer onShow={handleShowModal} currentFolder={folderName} folderId={currentFolderId} userId={userId}/>,
+    deleteFolder: <FolderDeleteModal onShow={handleShowModal} currentFolder={folderName}/>,
+    changeFolderName: <FolderNameChangeModal onShow={handleShowModal} currentFolder={folderName}/>,
   };
 
-  console.log(modalOpen, activeModalName);
+  const location = useLocation();
+  console.log(location)
+  console.log(window.location.hostname)
+  console.log(window.location.href)
 
   return (
     <>
