@@ -1,6 +1,3 @@
-import 'styles/sharedContent.css';
-import { useState } from 'react';
-import { ALL_ID } from 'constants/default';
 import styled from 'styled-components';
 import useGetFolders from 'hooks/useGetFolders';
 import SearchBar from 'components/common/SearchBar.js';
@@ -9,6 +6,8 @@ import FolderNav from './FolderNav';
 import AddFolderBtn from './AddFolderBtn';
 import FolderTitle from './FolderTitle';
 import ChoiceBar from './ChoiceBar';
+import { useState } from 'react';
+import { ALL_ID } from 'constants/default';
 
 function FolderContent() {
   const foldersData = useGetFolders(1);
@@ -23,8 +22,8 @@ function FolderContent() {
   }
 
   return (
-    <main>
-      <div className="content_container">
+    <Main>
+      <Container>
         <SearchBar />
         {foldersData ? (
           <>
@@ -41,12 +40,31 @@ function FolderContent() {
         ) : (
           <NoLinkMsg>저장된 링크가 없습니다.</NoLinkMsg>
         )}
-      </div>
-    </main>
+      </Container>
+    </Main>
   );
 }
 
 export default FolderContent;
+
+const Main = styled.main`
+  margin: 40px 0px;
+`;
+
+const Container = styled.div`
+  width: 1060px;
+  margin: 0 auto;
+
+  @media (max-width: 1124px) {
+    width: 704px;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0 32px;
+  }
+`;
 
 const NavContainer = styled.div`
   padding: 40px 0 0;
@@ -65,6 +83,7 @@ const TitleContainer = styled.div`
   padding: 24px 0 0;
   display: flex;
   justify-content: space-between;
+
   @media (max-width: 767px) {
     flex-direction: column;
     gap: 12px;

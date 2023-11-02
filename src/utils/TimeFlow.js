@@ -45,5 +45,5 @@ export function timeFlow(createdAt) {
     default:
       message = '계산중입니다...';
   }
-  return <div className="timediff">{message}</div>;
+  return message;
 }
