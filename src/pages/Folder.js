@@ -24,7 +24,7 @@ function Folder() {
       name: '전체',
     },
   ]);
-  const { token } = useAuth();
+  const { isAuth } = useAuth();
 
   const folderID = searchParams.get('folderId');
 
@@ -71,7 +71,7 @@ function Folder() {
     loadcardData();
   }, [folderID, loadcardData]);
 
-  if (!token.access) {
+  if (!isAuth()) {
     return <Navigate to="/signin" />;
   }
 

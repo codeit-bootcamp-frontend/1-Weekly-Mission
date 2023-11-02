@@ -6,6 +6,10 @@ const useAuth = () => {
     refresh: localStorage.getItem('refreshToken'),
   });
 
+  const isAuth = () => {
+    if (token.access) return true;
+  };
+
   const setAccessToken = (token) => {
     setToken((prevToken) => {
       return {
@@ -24,7 +28,7 @@ const useAuth = () => {
     });
   };
 
-  return { token, setAccessToken, setRefreshToken };
+  return { isAuth, setAccessToken, setRefreshToken };
 };
 
 export default useAuth;

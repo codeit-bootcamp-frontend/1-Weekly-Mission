@@ -5,13 +5,13 @@ import styles from './Nav.module.css';
 import useAuth from '../../hooks/useAuth';
 
 function Nav() {
-  const { token } = useAuth();
+  const { isAuth } = useAuth();
 
   return (
     <nav className={styles.root}>
       <div className={styles.container}>
         <Logo className={styles.logo} />
-        {token.access ? (
+        {isAuth ? (
           <NavProfile />
         ) : (
           <Button

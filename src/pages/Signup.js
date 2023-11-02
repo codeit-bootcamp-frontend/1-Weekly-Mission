@@ -17,7 +17,7 @@ import {
 
 function Signup() {
   const [values, handleChange] = useSignInputValue();
-  const { token } = useAuth();
+  const { isAuth } = useAuth();
 
   const {
     error: emailError,
@@ -48,7 +48,7 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  if (token.access) {
+  if (isAuth()) {
     return <Navigate to="/folder" />;
   }
 

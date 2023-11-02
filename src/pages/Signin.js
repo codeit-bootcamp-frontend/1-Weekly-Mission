@@ -13,7 +13,7 @@ import { signinEmail, signinPassword } from '../utils/signError';
 
 function Signin() {
   const [values, handleChange] = useSignInputValue();
-  const { token } = useAuth();
+  const { isAuth } = useAuth();
 
   const {
     error: emailError,
@@ -35,7 +35,7 @@ function Signin() {
 
   const navigate = useNavigate();
 
-  if (token.access) {
+  if (isAuth()) {
     return <Navigate to="/folder" />;
   }
 
