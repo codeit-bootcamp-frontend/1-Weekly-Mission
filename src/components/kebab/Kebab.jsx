@@ -17,7 +17,7 @@ const Kebab = styled.div`
   @media (min-width: 768px) {
     right: -6rem;
     top: 3rem;
-    z-index: 9999;
+    z-index: 999;
   }
 `;
 

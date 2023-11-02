@@ -3,6 +3,8 @@ import { getTimePassed } from "../../utils/formatTimePassed";
 import Kebab from "../../components/kebab/Kebab";
 import KebabDelete from "../../components/kebab/KebabDelete";
 import KebabAdd from "../../components/kebab/KebabAdd";
+import ModalBackground from "../../components/modal/ModalBackground";
+import ModalDelete from "../../components/modal/ModalDelete";
 
 const Card = ({ data }) => {
   const {
@@ -17,10 +19,16 @@ const Card = ({ data }) => {
   } = data;
   const timePassed = getTimePassed(url, description, created_at, image_source);
   const [isClicked, setIsClicked] = useState(false);
+  const [isKebabDeleteClicked, setIsKebabDeleteClicked] = useState(false);
 
   function handleKebabClick(e) {
     e.preventDefault();
     setIsClicked(!isClicked);
+  }
+
+  function handleKebabDeleteClick(e) {
+    e.preventDefault();
+    setIsKebabDeleteClicked(!isKebabDeleteClicked);
   }
 
   return (
@@ -85,7 +93,9 @@ const Card = ({ data }) => {
           </button>
           {isClicked ? (
             <Kebab>
-              <KebabDelete>삭제하기</KebabDelete>
+              <KebabDelete onClick={handleKebabDeleteClick}>
+                삭제하기
+              </KebabDelete>
               <KebabAdd>폴더에 추가</KebabAdd>
             </Kebab>
           ) : null}
@@ -93,6 +103,41 @@ const Card = ({ data }) => {
           <span>{created_at.substring(0, 10)}</span>
         </div>
       </a>
+      {isKebabDeleteClicked ? (
+        <ModalBackground>
+          <ModalDelete>
+            <b>폴더 삭제</b>
+            <div style={{ position: "relative" }}>
+              <img
+                src="images/modalClose.svg"
+                style={{
+                  position: "absolute",
+                  right: "-16.5rem",
+                  top: "-6rem",
+                }}
+                onClick={handleKebabDeleteClick}
+              />
+            </div>
+
+            <div>폴더명</div>
+            <button
+              style={{
+                background: "var(--linkbrary-red, #FF5B56)",
+                borderRadius: "8px",
+                width: "28rem",
+                height: "2rem",
+                padding: "1.6rem 2rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+              }}
+            >
+              삭제하기
+            </button>
+          </ModalDelete>
+        </ModalBackground>
+      ) : null}
     </li>
   );
 };
