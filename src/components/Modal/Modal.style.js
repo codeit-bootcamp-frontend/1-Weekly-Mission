@@ -6,12 +6,22 @@ export const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 99999;
+  z-index: 9999;
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
+export const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  overflow: auto;
+  outline: 0;
+`;
+
 export const Container = styled.div`
-  z-index: 99999;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -116,7 +126,6 @@ export const Icon = styled.div`
   align-items: center;
   gap: 1rem;
   color: var(--gray100);
-  /* text-align: center; */
   font-size: 1.3rem;
   line-height: 1.5rem;
 `;
@@ -142,4 +151,33 @@ export const KaKaotalkIconImgContainer = styled(IconImgContainer)`
 
 export const FacebookIconImgContainer = styled(IconImgContainer)`
   background: #1877f2;
+`;
+
+export const FolderList = styled.div`
+  width: 28rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+`;
+
+export const FolderListItem = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 0.8rem;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: var(--gray100);
+  font-size: 1.6rem;
+  line-height: 150%;
+
+  &:hover {
+    border-radius: 0.8rem;
+    background: var(--gray0);
+  }
+
+  span {
+    color: var(--gray60);
+    font-size: 1.4rem;
+  }
 `;

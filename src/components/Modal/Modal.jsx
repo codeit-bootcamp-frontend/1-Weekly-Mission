@@ -4,7 +4,8 @@ import closeButton from "images/_close.png";
 import kakaotalkIcon from "images/kakao.svg";
 import facebookIcon from "images/facebook.svg";
 import linkIcon from "images/link.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getAPI } from "api";
 
 export default function Modal({ close, children }) {
   useEffect(() => {
@@ -17,12 +18,14 @@ export default function Modal({ close, children }) {
   return createPortal(
     <div>
       <S.Overlay onClick={close} />
-      <S.Container>
-        <S.CloseButton onClick={close}>
-          <img src={closeButton} alt="모달 닫기 버튼" />
-        </S.CloseButton>
-        <S.Content>{children}</S.Content>
-      </S.Container>
+      <S.Wrapper>
+        <S.Container>
+          <S.CloseButton onClick={close}>
+            <img src={closeButton} alt="모달 닫기 버튼" />
+          </S.CloseButton>
+          <S.Content>{children}</S.Content>
+        </S.Container>
+      </S.Wrapper>
     </div>,
     document.querySelector("#modal")
   );
@@ -95,6 +98,51 @@ export function ModalDelete({ folderName }) {
         <S.Subtitle>{folderName}</S.Subtitle>
       </S.TitleContainer>
       <S.DeleteButton>삭제하기</S.DeleteButton>
+    </>
+  );
+}
+
+export function ModalDeleteLink({ url }) {
+  return (
+    <>
+      <S.TitleContainer>
+        <S.Title>링크 삭제</S.Title>
+        <S.Subtitle>{url}</S.Subtitle>
+      </S.TitleContainer>
+      <S.DeleteButton>삭제하기</S.DeleteButton>
+    </>
+  );
+}
+
+export function ModalAddLink({ url }) {
+  const [folders, setFolders] = useState();
+
+  const handleLoad = async () => {
+    const result = await getAPI("/users/1/folders");
+    const { data } = result;
+    setFolders(data);
+  };
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
+  return (
+    <>
+      <S.TitleContainer>
+        <S.Title>폴더에 추가</S.Title>
+        <S.Subtitle>{url}</S.Subtitle>
+      </S.TitleContainer>
+      <S.FolderList>
+        {folders &&
+          folders.map((folder) => (
+            <S.FolderListItem key={folder.id}>
+              {folder.name}
+              <span>{folder.link.count}개 링크</span>
+            </S.FolderListItem>
+          ))}
+      </S.FolderList>
+      <S.SubmitButton>추가하기</S.SubmitButton>
     </>
   );
 }
