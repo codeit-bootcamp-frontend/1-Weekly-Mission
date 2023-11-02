@@ -4,8 +4,7 @@ import Kebab from "../../components/kebab/Kebab";
 import KebabDelete from "../../components/kebab/KebabDelete";
 import KebabAdd from "../../components/kebab/KebabAdd";
 import ModalBackground from "../../components/modal/ModalBackground";
-import ModalDelete from "../../components/modal/ModalDelete";
-import ModalAddtoFolder from "../../components/modal/ModalAddtoFolder";
+import Modal from "../../components/modal/Modal";
 
 const Card = ({ data }) => {
   const {
@@ -112,7 +111,7 @@ const Card = ({ data }) => {
       </a>
       {isKebabDeleteClicked ? (
         <ModalBackground>
-          <ModalDelete>
+          <Modal>
             <b>폴더 삭제</b>
             <div style={{ position: "relative" }}>
               <img
@@ -142,12 +141,12 @@ const Card = ({ data }) => {
             >
               삭제하기
             </button>
-          </ModalDelete>
+          </Modal>
         </ModalBackground>
       ) : null}
       {isKebabAddClicked ? (
         <ModalBackground>
-          <ModalAddtoFolder>
+          <Modal>
             <b>폴더에 추가</b>
             링크 주소
             <div style={{ position: "relative" }}>
@@ -183,7 +182,7 @@ const Card = ({ data }) => {
             >
               추가하기
             </button>
-          </ModalAddtoFolder>
+          </Modal>
         </ModalBackground>
       ) : null}
     </li>
