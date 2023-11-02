@@ -8,7 +8,7 @@ import useGetShareFolder from '../hooks/useGetShareFolder';
 import { useState, useEffect } from 'react';
 
 function Shared() {
-  const [userId, setUserId] = useState('S'); // 샘플
+  const [userId, setUserId] = useState(-1); // 샘플
 
   const account = useGetAccount(userId);
   const folderInfo = useGetShareFolder(userId);
