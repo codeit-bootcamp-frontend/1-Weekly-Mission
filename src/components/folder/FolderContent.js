@@ -5,7 +5,7 @@ import CardList from 'components/common/Card/CardList.js';
 import FolderNav from './FolderNav';
 import AddFolderBtn from './AddFolderBtn';
 import FolderTitle from './FolderTitle';
-import ChoiceBar from './ChoiceBar';
+import ChoiceBar from './ChoiceBar.js';
 import { useState } from 'react';
 import { ALL_ID } from 'constants/default';
 
@@ -33,7 +33,7 @@ function FolderContent() {
             </NavContainer>
             <TitleContainer>
               <FolderTitle folders={foldersData} selectedFolderId={folder} />
-              {folder !== ALL_ID && <ChoiceBar />}
+              {folder !== ALL_ID && <ChoiceBar folders={foldersData} selectedFolderId={folder} />}
             </TitleContainer>
             <CardList folderId={folder} />
           </>

@@ -4,6 +4,7 @@ import BlueBtn from 'components/common/Button/BlueBtn';
 import linkIcon from 'assets/images/link.svg';
 import AddToFolderModal from 'components/common/Modal/AddToFolderModal';
 import ModalFrame from 'components/common/Modal/ModalFrame';
+import ModalPortal from 'components/common/Modal/ModalPortal';
 
 function AddLinkBar() {
   const [modal, setModal] = useState(false);
@@ -29,9 +30,11 @@ function AddLinkBar() {
         </Wrapper>
       </Container>
       {modal && (
-        <ModalFrame>
-          <AddToFolderModal url={inputValue} onClickClose={handleFolderAddClose} />
-        </ModalFrame>
+        <ModalPortal>
+          <ModalFrame>
+            <AddToFolderModal url={inputValue} onClickClose={handleFolderAddClose} />
+          </ModalFrame>
+        </ModalPortal>
       )}
     </>
   );

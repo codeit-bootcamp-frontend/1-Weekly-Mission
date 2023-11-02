@@ -63,7 +63,7 @@ const LoginBtn = styled(BlueGrd)`
 const ModalBtn = styled(BlueGrd)`
   width: 280px;
   padding: 16px 20px;
-  margin-top: 24px;
+  margin-top: 15px;
   font-size: 1.6rem;
   &:hover {
     cursor: pointer;

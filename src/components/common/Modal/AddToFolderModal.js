@@ -6,7 +6,7 @@ import LinkCountItem from '../LinkCountItem';
 
 function AddToFolderModal({ url, onClickClose }) {
   const linkCountData = useGetLinkCount(1);
-  console.log(url);
+
   return (
     <ModalFrame onClickClose={onClickClose}>
       <Title>폴더에 추가</Title>

@@ -1,16 +1,38 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import addButton from 'assets/images/add.svg';
 import addMobileButton from 'assets/images/add_mobile.svg';
 import useGetWindowWidth from 'hooks/useGetWindowWidth';
+import ModalFrame from 'components/common/Modal/ModalFrame';
+import ModalPortal from 'components/common/Modal/ModalPortal';
+import InputModal from 'components/common/Modal/InputModal';
 
 function AddFolderBtn() {
   const innerWidth = useGetWindowWidth();
+  const [modal, setModal] = useState(false);
+
+  function handleModalOpen() {
+    setModal(true);
+  }
+
+  function handleModalClose() {
+    setModal(false);
+  }
 
   return (
-    <Container>
-      <AddFolder>폴더 추가</AddFolder>
-      <img src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
-    </Container>
+    <>
+      <Container onClick={handleModalOpen}>
+        <AddFolder>폴더 추가</AddFolder>
+        <img src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
+      </Container>
+      {modal && (
+        <ModalPortal>
+          <ModalFrame>
+            <InputModal title="폴더 추가" btn="추가하기" onClickClose={handleModalClose} />
+          </ModalFrame>
+        </ModalPortal>
+      )}
+    </>
   );
 }
 
@@ -21,6 +43,10 @@ const Container = styled.div`
   gap: 4px;
   justify-content: space-between;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+
   @media (max-width: 767px) {
     z-index: 10;
     position: fixed;
@@ -31,9 +57,6 @@ const Container = styled.div`
     width: 128px;
     border-radius: 20px;
     background-color: var(--primary-color);
-    &:hover {
-      cursor: pointer;
-    }
   }
 `;
 
