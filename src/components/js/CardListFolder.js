@@ -1,20 +1,34 @@
 import styled from "styled-components";
 import CardItem from "./CardItemFolder";
+import { useState } from "react";
 
 /* 카드리스트들 컴포넌트 */
 function CardList({ folderLinks, modal, setLink }) {
-  console.log(modal);
+  const [openedPopOver, setOpenedPopOver] = useState(null);
+
+  const handleTogglePopOver = (idx) => {
+    if (idx === openedPopOver) {
+      setOpenedPopOver(null);
+    } else {
+      setOpenedPopOver(idx);
+    }
+  };
+
   const links = Array.isArray(folderLinks) ? folderLinks : [];
   return (
     <CardListWrapper>
       <CardListContainer>
-        {links.map((item) => {
+        {links.map((item, idx) => {
           return (
             <CardItem
               key={item.id}
+              idx={idx}
               item={item}
               modal={modal}
               setLink={setLink}
+              isOpen={idx === openedPopOver}
+              //왜 여기에다가 콜백함수로 달아줘야만 작동할까?
+              onClick={handleTogglePopOver}
             />
           );
         })}

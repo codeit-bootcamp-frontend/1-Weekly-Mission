@@ -8,18 +8,15 @@ import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
 
 /* 각 카드 컴포넌트 */
-function CardItem({ item, modal, setLink }) {
-  console.log(modal);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleToggleMenu = (e) => {
-    e.stopPropagation();
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+function CardItem({ item, modal, setLink, isOpen, onClick, idx }) {
   const handleCardClick = () => {
     const URL = item.url;
     window.open(URL);
+  };
+
+  const handleTogglePopOver = (e) => {
+    e.stopPropagation();
+    onClick(idx);
   };
 
   /* 이미지 스타일 함수 */
@@ -34,7 +31,7 @@ function CardItem({ item, modal, setLink }) {
     <CardLink $url={item.url} onClick={handleCardClick}>
       <CardWrapper>
         <BookmarkButton src={starIcon} alt="bookmark_icon" />
-        {isMenuOpen && (
+        {isOpen && (
           <KebabPopOver modal={modal} $url={item.url} setLink={setLink} />
         )}
         <CardImageWrapper>
@@ -50,7 +47,7 @@ function CardItem({ item, modal, setLink }) {
             <KebabButton
               src={kebabIcon}
               alt="kebabButton"
-              onClick={handleToggleMenu}
+              onClick={handleTogglePopOver}
             />
           </RowContainer>
           <Description>{item.description}</Description>
