@@ -16,7 +16,7 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
-export const CloseButton = styled.button`
+const CloseButton = styled.button`
   width: 24px;
   height: 24px;
   position: absolute;
@@ -32,4 +32,4 @@ function ModalButton({ content }) {
   return <Button content={content}>{content}</Button>;
 }
 
-export default ModalButton;
+export { CloseButton, ModalButton };

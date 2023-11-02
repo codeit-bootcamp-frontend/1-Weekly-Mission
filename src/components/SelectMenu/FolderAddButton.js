@@ -14,7 +14,7 @@ const FolderAdd = styled.button`
 `;
 
 function FolderAddButton() {
-  return <FolderAdd>폴더에 추가하기</FolderAdd>;
+  return <FolderAdd value="add">폴더에 추가하기</FolderAdd>;
 }
 
 export default FolderAddButton;

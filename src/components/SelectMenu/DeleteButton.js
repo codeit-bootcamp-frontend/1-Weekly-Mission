@@ -14,7 +14,7 @@ const Delete = styled.button`
 `;
 
 function DeleteButton() {
-  return <Delete>삭제하기</Delete>;
+  return <Delete value="delete">삭제하기</Delete>;
 }
 
 export default DeleteButton;

@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 const Background = styled.div`
   width: 360px;
-  height: 239px;
+  height: auto;
   display: flex;
   position: relative;
   align-items: center;
