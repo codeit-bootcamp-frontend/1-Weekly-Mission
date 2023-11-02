@@ -59,3 +59,11 @@
   border-radius: 5px;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
 }
+
+.button__red {
+  border: none;
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  background: #ff5b56;
+}

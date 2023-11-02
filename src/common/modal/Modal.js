@@ -6,11 +6,11 @@ import metachat from "../../assets/images/metachat.svg";
 export default function Modal({ status, tabName, folderName }) {
   const obj = {
     share: ["폴더공유"],
-    change: ["폴더이름변경", "변경하기"],
-    delete: ["폴더삭제", "삭제하기"],
+    change: ["폴더이름변경", "변경하기", "blue"],
+    delete: ["폴더삭제", "삭제하기", "red"],
   };
 
-  const [title, buttonName] = obj[tabName];
+  const [title, buttonName, buttonColor] = obj[tabName];
 
   return (
     <div className={styles.container}>
@@ -26,7 +26,11 @@ export default function Modal({ status, tabName, folderName }) {
           <input className={styles.input} placeholder="내용입력" />
         )}
         {buttonName ? (
-          <button className={styles.button}>{buttonName}</button>
+          buttonColor === "blue" ? (
+            <button className={styles.button}>{buttonName}</button>
+          ) : (
+            <button className={styles.button__red}>{buttonName}</button>
+          )
         ) : (
           <div className="link__container">
             <img src={linkCopy} alt="link_copy" />
