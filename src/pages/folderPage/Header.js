@@ -103,7 +103,7 @@ const Header = () => {
     if (!singleFolderDataId) return;
     getSingleFolderData();
   }, [singleFolderDataId]);
-
+  // console.log(singleFolderData);
   return (
     <>
       <header style={{ padding: "6rem 0 9rem 0" }}>
@@ -364,7 +364,9 @@ const Header = () => {
         </div>
       )}
 
-      {totalData && isTotalClicked && <Cards fullData={totalData} />}
+      {totalData && isTotalClicked && (
+        <Cards fullData={totalData} fullList={fullList} />
+      )}
       {singleFolderData && isSingleClicked && (
         <Cards fullList={fullList} fullData={singleFolderData} />
       )}
