@@ -1,0 +1,46 @@
+footer {
+  background: var(--the-julge-black, var(--color-black));
+  padding: 3rem 3rem 10rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+
+  .logo {
+    color: #676767;
+    text-align: center;
+    position: absolute;
+    bottom: 3rem;
+  }
+  .link {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .sns {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.footer.link a {
+  color: #cfcfcf;
+}
+
+/* 768px 이상 1199px 이하 타블렛에서는 
+ * 
+ * footer의 padding을 조절한다.
+*/
+@media (min-width: 768px) {
+  footer {
+    padding: 3rem 10rem 10rem;
+  }
+  .footer.logo {
+    position: static;
+  }
+}

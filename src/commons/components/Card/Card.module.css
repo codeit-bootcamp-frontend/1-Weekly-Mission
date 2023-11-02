@@ -1,0 +1,99 @@
+.card-container {
+  width: 340px;
+  height: 350px;
+  background-color: white;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  &:hover {
+    border: 3px solid var(--color-primary);
+  }
+
+  :hover img {
+    transform: scale(1.5);
+    transition: transform 0.3s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.card-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 카드 컴포넌트의 이미지 파트 */
+.card-img-section {
+  width: 340px;
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
+
+/* 카드 컴포넌트의 텍스트 파트 */
+.card-text-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  padding: 20px 15px;
+  gap: 10px;
+  position: relative;
+}
+
+.time-stamp {
+  color: #666;
+  font-family: Pretendard;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.introduce-text {
+  width: 300px;
+  height: 50px;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  white-space: normal;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.created-date {
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* 카드 컴포넌트의 부수적인 파트 */
+.unfilled-star-button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  z-index: 999;
+}
+
+.kebab-button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  bottom: 33%;
+  right: 1rem;
+  z-index: 999;
+}
+
+.no-card-list {
+  height: 500px;
+  padding: 5rem;
+}

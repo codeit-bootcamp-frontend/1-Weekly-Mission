@@ -1,0 +1,7 @@
+.add-folder-button {
+  position: absolute;
+  right: 10rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: none;
+}
