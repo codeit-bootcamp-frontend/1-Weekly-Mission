@@ -33,7 +33,6 @@ export default function DataListItem({ item }) {
               src={kebabImage}
               alt="kebab"
               className={styles.kebab}
-              // setOpen((prev) => !prev)
               onClick={(e) => {
                 e.stopPropagation();
                 setOpen(!open);
