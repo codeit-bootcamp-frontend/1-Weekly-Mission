@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import Input from '../Input';
+import ModalInput from '../ModalInput';
 import CTA from '../CTA';
 
 function EditModal() {
   return (
     <>
-      <Input />
+      <ModalInput />
       <CTA>변경하기</CTA>
     </>
   );

@@ -1,22 +1,33 @@
 import styled from 'styled-components';
+import ModalBox from '../modal/ModalBox';
+import { useState } from 'react';
 
-function Option({ icon, children }) {
+function Option({ icon, children, modal }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handelClick = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
   return (
-    <OptionContainer>
-      <Icon src={icon} />
-      <p>{children}</p>
-    </OptionContainer>
+    <>
+      <OptionContainer onClick={handelClick}>
+        <Icon src={icon} />
+        <p>{children}</p>
+      </OptionContainer>
+      {isModalVisible && <ModalBox modal={modal} closeModal={handelClick} />}
+    </>
   );
 }
 
 export default Option;
 
-const OptionContainer = styled.div`
+const OptionContainer = styled.button`
   display: flex;
   align-items: center;
-  gap: 0.4rem;
 
   p {
+    font-family: Pretendard;
     color: var(--gray60);
     font-size: 1.4rem;
     font-weight: 600;

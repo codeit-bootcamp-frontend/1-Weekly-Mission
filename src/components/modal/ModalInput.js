@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function Input() {
+function ModalInput() {
   return (
     <form>
       <Input name="text" type="text" autoComplete="on" required placeholder="내용 입력"></Input>
@@ -21,6 +21,10 @@ const Input = styled.input`
   &:hover {
     border: 1px solid var(--primary);
   }
+  &:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+  }
 `;
 
-export default Input;
+export default ModalInput;

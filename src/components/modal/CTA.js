@@ -12,6 +12,10 @@ const Button = styled.button`
   gap: 1rem;
   border-radius: 0.8rem;
   background: var(--graBlueToSkyBlue);
+
+  color: var(--grayLight);
+  font-size: ${({ small }) => (small ? '1.8rem' : '1.4rem')};
+  font-weight: 600;
 `;
 
 export default CTA;
