@@ -7,31 +7,29 @@ import Button from '../components/Button/Button';
 import { Navigate, useNavigate } from 'react-router';
 import postSign from '../apis/auth/postSign';
 import useAuth from '../hooks/useAuth';
-import useSignInputValue from '../hooks/useSignInputValue';
-import useSignInputError from '../hooks/useSignInputError';
 import { signinEmail, signinPassword } from '../utils/signError';
+import useInputController from '../hooks/useInputController';
 
 function Signin() {
-  const [values, handleChange] = useSignInputValue();
-  const { isAuth } = useAuth();
-
   const {
-    error: emailError,
-    setError: setEmailError,
+    values: emailValues,
     errorText: emailErrorText,
     setErrorText: setEmailErrorText,
+    handleChange: handleEmailChange,
     handleBlur: handleEmailBlur,
     handleFocus: handleEmailFocus,
-  } = useSignInputError(values, signinEmail);
+  } = useInputController(signinEmail);
 
   const {
-    error: passwordError,
-    setError: setPasswordError,
+    values: passwordValues,
     errorText: passwordErrorText,
     setErrorText: setPasswordErrorText,
+    handleChange: handlePasswordChange,
     handleBlur: handlePasswordBlur,
     handleFocus: handlePasswordFocus,
-  } = useSignInputError(values, signinPassword);
+  } = useInputController(signinPassword);
+
+  const { isAuth } = useAuth();
 
   const navigate = useNavigate();
 
@@ -42,16 +40,17 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = values;
+    const data = {
+      email: emailValues,
+      password: passwordValues,
+    };
 
     const response = await postSign('in', data);
 
     if (response.ok) {
       navigate('/folder');
     } else {
-      setEmailError(true);
       setEmailErrorText('이메일을 확인해주세요');
-      setPasswordError(true);
       setPasswordErrorText('비밀번호를 확인해주세요');
     }
   };
@@ -61,13 +60,12 @@ function Signin() {
       idfor: 'signinEmail',
       name: 'email',
       type: 'email',
-      value: `${values.email}`,
+      value: `${emailValues}`,
       children: '이메일',
 
-      errorState: emailError,
       errorText: emailErrorText,
 
-      onChange: handleChange,
+      onChange: handleEmailChange,
       onBlur: handleEmailBlur,
       onFocus: handleEmailFocus,
       eyes: false,
@@ -76,13 +74,12 @@ function Signin() {
       idfor: 'signinPassword',
       name: 'password',
       type: 'password',
-      value: `${values.password}`,
+      value: `${passwordValues}`,
       children: '비밀번호',
 
-      errorState: passwordError,
       errorText: passwordErrorText,
 
-      onChange: handleChange,
+      onChange: handlePasswordChange,
       onBlur: handlePasswordBlur,
       onFocus: handlePasswordFocus,
       eyes: true,

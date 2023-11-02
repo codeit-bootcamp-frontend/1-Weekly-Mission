@@ -6,45 +6,43 @@ import SignInput from '../components/SignInput/SignInput';
 import Button from '../components/Button/Button';
 import { Navigate, useNavigate } from 'react-router';
 import useAuth from '../hooks/useAuth';
-import useSignInputValue from '../hooks/useSignInputValue';
-import useSignInputError from '../hooks/useSignInputError';
 import postSign from '../apis/auth/postSign';
 import {
   signupEmail,
   signupPassword,
   signupPasswordCheck,
 } from '../utils/signError';
+import useInputController from '../hooks/useInputController';
 
 function Signup() {
-  const [values, handleChange] = useSignInputValue();
   const { isAuth } = useAuth();
 
   const {
-    error: emailError,
-    setError: setEmailError,
+    values: emailValues,
     errorText: emailErrorText,
     setErrorText: setEmailErrorText,
+    handleChange: handleEmailChange,
     handleBlur: handleEmailBlur,
     handleFocus: handleEmailFocus,
-  } = useSignInputError(values, signupEmail);
+  } = useInputController(signupEmail);
 
   const {
-    error: passwordError,
-    setError: setPasswordError,
+    values: passwordValues,
     errorText: passwordErrorText,
     setErrorText: setPasswordErrorText,
+    handleChange: handlePasswordChange,
     handleBlur: handlePasswordBlur,
     handleFocus: handlePasswordFocus,
-  } = useSignInputError(values, signupPassword);
+  } = useInputController(signupPassword);
 
   const {
-    error: passwordCheckError,
-    setError: setPasswordCheckError,
+    values: passwordCheckValues,
     errorText: passwordCheckErrorText,
     setErrorText: setPasswordCheckErrorText,
+    handleChange: handlePasswordCheckChange,
     handleBlur: handlePasswordCheckBlur,
     handleFocus: handlePasswordCheckFocus,
-  } = useSignInputError(values, signupPasswordCheck);
+  } = useInputController(signupPasswordCheck);
 
   const navigate = useNavigate();
 
@@ -56,8 +54,8 @@ function Signup() {
     e.preventDefault();
 
     const data = {
-      email: `${values.email}`,
-      password: `${values.password}`,
+      email: emailValues,
+      password: passwordValues,
     };
 
     const response = await postSign('up', data);
@@ -65,11 +63,8 @@ function Signup() {
     if (response.ok) {
       navigate('/folder');
     } else {
-      setEmailError(true);
       setEmailErrorText('이메일을 확인해주세요');
-      setPasswordError(true);
       setPasswordErrorText('비밀번호를 확인해주세요');
-      setPasswordCheckError(true);
       setPasswordCheckErrorText('');
     }
   };
@@ -79,13 +74,12 @@ function Signup() {
       idfor: 'signupEmail',
       name: 'email',
       type: 'email',
-      value: `${values.email}`,
+      value: `${emailValues}`,
       children: '이메일',
 
-      errorState: emailError,
       errorText: emailErrorText,
 
-      onChange: handleChange,
+      onChange: handleEmailChange,
       onBlur: handleEmailBlur,
       onFocus: handleEmailFocus,
       eyes: false,
@@ -94,13 +88,12 @@ function Signup() {
       idfor: 'signupPassword',
       name: 'password',
       type: 'password',
-      value: `${values.password}`,
+      value: `${passwordValues}`,
       children: '비밀번호',
 
-      errorState: passwordError,
       errorText: passwordErrorText,
 
-      onChange: handleChange,
+      onChange: handlePasswordChange,
       onBlur: handlePasswordBlur,
       onFocus: handlePasswordFocus,
       eyes: true,
@@ -109,13 +102,12 @@ function Signup() {
       idfor: 'signupPasswordCheck',
       name: 'passwordCheck',
       type: 'password',
-      value: `${values.passwordCheck}`,
+      value: `${passwordCheckValues}`,
       children: '비밀번호 확인',
 
-      errorState: passwordCheckError,
       errorText: passwordCheckErrorText,
 
-      onChange: handleChange,
+      onChange: handlePasswordCheckChange,
       onBlur: handlePasswordCheckBlur,
       onFocus: handlePasswordCheckFocus,
       eyes: true,

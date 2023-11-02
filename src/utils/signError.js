@@ -16,63 +16,53 @@ const errorText = {
   },
 };
 
-const signinEmail = (values, setError, setErrorText) => {
-  if (values.email === '') {
-    setError(true);
+const signinEmail = (values, setErrorText) => {
+  if (values === '') {
     setErrorText(errorText['email']['null']);
-  } else if (!isEmail(values.email)) {
-    setError(true);
+  } else if (!isEmail(values)) {
     setErrorText(errorText['email']['wrong']);
   } else {
-    setError(false);
+    setErrorText('');
   }
 };
 
-const signinPassword = (values, setError, setErrorText) => {
-  if (values.password === '') {
-    setError(true);
+const signinPassword = (values, setErrorText) => {
+  if (values === '') {
     setErrorText(errorText['password']['null']);
   } else {
-    setError(false);
+    setErrorText('');
   }
 };
 
-const signupEmail = async (values, setError, setErrorText) => {
-  if (values.email === '') {
-    setError(true);
+const signupEmail = async (values, setErrorText) => {
+  if (values === '') {
     setErrorText(errorText['email']['null']);
-  } else if (!isEmail(values.email)) {
-    setError(true);
+  } else if (!isEmail(values)) {
     setErrorText(errorText['email']['wrong']);
-  } else if (await postCheckEmail(values.email)) {
-    setError(true);
+  } else if (await postCheckEmail(values)) {
     setErrorText(errorText['email']['dup']);
   } else {
-    setError(false);
+    setErrorText('');
   }
 };
 
-const signupPassword = (values, setError, setErrorText) => {
-  if (values.password === '') {
-    setError(true);
+const signupPassword = (values, setErrorText) => {
+  if (values === '') {
     setErrorText(errorText['password']['null']);
-  } else if (!isPassword(values.password)) {
-    setError(true);
+  } else if (!isPassword(values)) {
     setErrorText(errorText['password']['wrong']);
   } else {
-    setError(false);
+    setErrorText('');
   }
 };
 
-const signupPasswordCheck = (values, setError, setErrorText) => {
-  if (values.password !== values.passwordCheck) {
-    setError(true);
+const signupPasswordCheck = (values, setErrorText) => {
+  if (values !== values.passwordCheck) {
     setErrorText(errorText['passwordCheck']['wrong']);
   } else {
-    setError(false);
+    setErrorText('');
   }
 };
-
 export {
   signinEmail,
   signinPassword,

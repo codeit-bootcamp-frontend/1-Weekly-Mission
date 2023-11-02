@@ -3,16 +3,15 @@ import useEyesValue from '../../hooks/useEyesValue';
 
 function SignInput({
   idfor,
-  children,
   name,
   type,
-  eyes,
   value,
-  onBlur,
-  onChange,
-  errorState,
-  onFocus,
+  children,
   errorText,
+  onChange,
+  onBlur,
+  onFocus,
+  eyes,
 }) {
   const [eyesValue, handleEyesClick, eyesStyle] = useEyesValue();
 
@@ -21,7 +20,7 @@ function SignInput({
   }
 
   const borderControl = `${styles.input} ${
-    errorState ? styles.errorBorder : ''
+    errorText ? styles.errorBorder : ''
   }`;
 
   return (
@@ -47,7 +46,7 @@ function SignInput({
           ></button>
         )}
       </div>
-      {errorState && <div className={styles.errorMessage}>{errorText}</div>}
+      {errorText && <div className={styles.errorMessage}>{errorText}</div>}
     </div>
   );
 }
