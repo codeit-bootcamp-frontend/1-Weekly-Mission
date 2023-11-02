@@ -25,6 +25,7 @@ const Header = () => {
   const [isChangeFolderNameClicked, setIsChangeFolderNameClicked] =
     useState(false);
   const [isDeleteFolderClicked, setIsDeleteFolderClicked] = useState(false);
+  const [isShareFolderClicked, setIsShareFolderClicked] = useState(false);
 
   function handleAddLinkClick(e) {
     e.preventDefault();
@@ -46,6 +47,11 @@ const Header = () => {
   function handleDeleteFolderClick(e) {
     e.preventDefault();
     setIsDeleteFolderClicked(!isDeleteFolderClicked);
+  }
+
+  function handleShareFolderClick(e) {
+    e.preventDefault();
+    setIsShareFolderClicked(!isShareFolderClicked);
   }
 
   const getFolderLists = async () => {
@@ -251,6 +257,79 @@ const Header = () => {
         </ModalBackground>
       ) : null}
 
+      {isShareFolderClicked ? (
+        <ModalBackground>
+          <Modal>
+            <p style={{ width: "28rem", textAlign: "center" }}>
+              <b>폴더 공유</b>
+            </p>
+            <p>{singleFolderName}</p>
+            <div style={{ position: "relative" }}>
+              <img
+                src="images/modalClose.svg"
+                style={{
+                  position: "absolute",
+                  right: "-16.5rem",
+                  top: "-9rem",
+                }}
+                onClick={handleShareFolderClick}
+              />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "3.2rem",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <button
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                <img
+                  src="images/kakao.svg"
+                  style={{ width: "4rem", height: "4rem" }}
+                />
+                카카오톡
+              </button>
+              <button
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                <img
+                  src="images/facebook2.svg"
+                  style={{ width: "4rem", height: "4rem", background: "blue" }}
+                />
+                페이스북
+              </button>
+              <button
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                <img
+                  src="images/shareLink.svg"
+                  style={{ width: "4rem", height: "4rem" }}
+                />
+                링크 복사
+              </button>
+            </div>
+          </Modal>
+        </ModalBackground>
+      ) : null}
+
       {totalData && isTotalClicked && (
         <div className="header-summary">전체</div>
       )}
@@ -259,7 +338,7 @@ const Header = () => {
         <div className="header-summary">
           {singleFolderName}
           <div className="folder-data-util-buttons">
-            <button>
+            <button onClick={handleShareFolderClick}>
               <img src="/images/share.svg" />
               공유
             </button>
