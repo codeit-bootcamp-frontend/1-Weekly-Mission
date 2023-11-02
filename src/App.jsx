@@ -8,6 +8,7 @@ import Signin from 'pages/Auth/Signin';
 import Signup from 'pages/Auth/Signup';
 import SharedPage from 'pages/Shared';
 import Folder from 'pages/Folder';
+import NotFound from 'pages/NotFound';
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
           <Route index element={<Folder />} />
           <Route path=':folderId' element={<Folder />} />
         </Route>
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

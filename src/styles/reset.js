@@ -37,6 +37,7 @@ export const reset = css`
     padding: 0;
     text-decoration: none;
     vertical-align: baseline;
+    word-break: break-all;
   }
 
   a,
