@@ -1,14 +1,5 @@
 import "../TagBtn/TagBtnContainer.css";
 import AddImg from "../../../assets/image/icon-add.svg";
-import { useEffect, useState, useRef } from "react";
-
-// < 각각의 tag btn response Example >
-// {
-//   "id": 17,
-//   "created_at": "2023-06-04T21:00:22.007605+00:00",
-//   "name": "나만의 장소",
-//   "user_id": 1
-// }
 
 const tagBtnStyle = {
   width: "16px",
@@ -18,7 +9,6 @@ const tagBtnStyle = {
 function TagBtnContainer({ folderTagBtnList, selectedTag, handleOnClick }) {
   return (
     <>
-      {console.log({ folderTagBtnList })}
       <div className="tag_div">
         <div className="tag_container">
           {folderTagBtnList.map((data) => {

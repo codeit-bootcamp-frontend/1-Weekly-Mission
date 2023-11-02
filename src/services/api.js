@@ -11,12 +11,10 @@ async function requestData(requestBodyData, requestUrlType, requestMethod) {
       `https://bootcamp-api.codeit.kr/api/${requestUrlType}`,
       createConfig(requestBodyData, requestMethod)
     );
-    console.log(response.status);
     if (response.status !== 200) {
       throw new Error(response.status);
     }
     const resultData = await response.json();
-    console.log(resultData);
     return resultData;
   } catch (error) {
     throw error;

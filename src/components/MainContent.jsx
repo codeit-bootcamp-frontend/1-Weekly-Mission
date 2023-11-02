@@ -4,6 +4,7 @@ import CardContainer from "./CardContainer/CardContainer";
 import { useState, useEffect } from "react";
 import requestData from "../services/api";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const NoCardDataText = styled.h5`
   display: flex;
@@ -19,8 +20,9 @@ const defaultTagButton = {
   user_id: 1,
 };
 
-function MainContent({ pageType }) {
-  const PAGE_TYPE_FOLDER = pageType === "folder";
+function MainContent() {
+  const Pagelocation = useLocation().pathname;
+  const PAGE_TYPE_FOLDER = Pagelocation === "/folder";
 
   const [cardListData, setCardListData] = useState([]); // cardContainer에서 이용
   const [folderTagBtnList, setfolderTagBtnList] = useState([defaultTagButton]); // TagBtnContainer에서 이용
@@ -36,7 +38,6 @@ function MainContent({ pageType }) {
       "GET"
     );
     setCardListData(cardListDataResponse);
-    console.log(cardListData);
   }
 
   // folderpage response 처리

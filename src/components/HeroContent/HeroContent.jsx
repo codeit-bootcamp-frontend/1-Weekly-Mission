@@ -1,11 +1,12 @@
 import FolderHero from "./FolderHero/FolderHero";
 import SharedHero from "./SharedHero/SharedHero";
-
-function HeroContent({ pageType }) {
+import { useLocation } from "react-router-dom";
+function HeroContent() {
+  const pageLocation = useLocation().pathname;
   return (
     <>
-      {pageType === "folder" && <FolderHero />}
-      {pageType === "shared" && <SharedHero />}
+      {pageLocation === "/folder" && <FolderHero />}
+      {pageLocation === "/shared" && <SharedHero />}
     </>
   );
 }

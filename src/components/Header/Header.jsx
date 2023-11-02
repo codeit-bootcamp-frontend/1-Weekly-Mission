@@ -1,20 +1,34 @@
 import "./Header.css";
 import logoImg from "../../assets/image/logo.svg";
 import requestData from "../../services/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
-  const [userData, setUserData] = useState(getUserDataResponse);
+  const [userData, setUserData] = useState({});
 
-  async function getUserDataResponse() {
-    // 헤더에 표시되는 유저 이메일, 사진의 response data 받이오기
-    const { data: userDataResponse } = await requestData(
-      null,
-      "users/1",
-      "GET"
-    );
-    setUserData(userDataResponse[0]);
-  }
+  useEffect(() => {
+    async function getUserDataResponse() {
+      // 헤더에 표시되는 유저 이메일, 사진의 response data 받이오기
+      const { data: userDataResponse } = await requestData(
+        null,
+        "users/1",
+        "GET"
+      );
+      setUserData(userDataResponse[0]);
+    }
+    getUserDataResponse();
+  }, []);
+  // const [userData, setUserData] = useState(getUserDataResponse);
+
+  // async function getUserDataResponse() {
+  //   // 헤더에 표시되는 유저 이메일, 사진의 response data 받이오기
+  //   const { data: userDataResponse } = await requestData(
+  //     null,
+  //     "users/1",
+  //     "GET"
+  //   );
+  //   setUserData(userDataResponse[0]);
+  // }
 
   return (
     <header>

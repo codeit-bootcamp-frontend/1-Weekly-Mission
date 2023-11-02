@@ -11,12 +11,16 @@ const MainContainer = styled.div`
   align-items: center;
   gap: 40px;
   @media (max-width: 767px) {
-    gap:20px;
+    gap: 20px;
+  }
 `;
 
 const FloatingBtnContainer = styled.div`
   position: fixed;
   z-index: 3;
+  @media (min-width: 767px) {
+    visibility: hidden;
+  }
 `;
 
 function FolderPage() {

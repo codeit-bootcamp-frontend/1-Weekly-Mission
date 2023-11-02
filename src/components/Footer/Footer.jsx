@@ -9,37 +9,21 @@ const PRIVACY_POLICY_TEXT = "Privacy Policy";
 const FAQ_TEXT = "FAQ";
 
 function Footer() {
-  const SnsImgUrl = {
-    youtube: youtubeIcon,
-    twitter: twitterIcon,
-    facebook: facebookIcon,
-    instagram: instagramIcon,
+  const SnsData = {
+    youtube: { icon: youtubeIcon, url: `https://www.youtube.com` },
+    twitter: { icon: twitterIcon, url: `https://www.twitter.com` },
+    facebook: { icon: facebookIcon, url: `https://www.facebook.com` },
+    instagram: { icon: instagramIcon, url: `https://www.ßinstagram.com` },
   };
 
-  class Sns {
-    constructor(snsType) {
-      this.snsType = snsType;
-      this.snsUrl = `https://www.${snsType}.com`;
-      this.className = "sns-icons";
-      this.snsIconUrl = `../../assets/image/icon-${snsType}.svg`;
-    }
-    getSnsHtmlEl() {
-      return (
-        <a href={this.snsUrl} target="_blank">
-          <img
-            className={this.className}
-            src={SnsImgUrl[this.snsType]}
-            alt="sns icon"
-          />
-        </a>
-      );
-    }
+  function SnsItem(snsType) {
+    const Sns = SnsData[snsType];
+    return (
+      <a href={Sns.url} target="_blank">
+        <img className="sns-icons" src={Sns.icon} alt="sns icon" />
+      </a>
+    );
   }
-  let facebookIconEl = new Sns("facebook");
-  let twitterIconEl = new Sns("twitter");
-  let youtubeIconEl = new Sns("youtube");
-  let instagramIconEl = new Sns("instagram");
-  console.log(facebookIconEl.snsIconUrl);
 
   return (
     <footer>
@@ -54,10 +38,10 @@ function Footer() {
           </a>
         </div>
         <div id="sns-container">
-          {facebookIconEl.getSnsHtmlEl()}
-          {twitterIconEl.getSnsHtmlEl()}
-          {youtubeIconEl.getSnsHtmlEl()}
-          {instagramIconEl.getSnsHtmlEl()}
+          {SnsItem("facebook")}
+          {SnsItem("twitter")}
+          {SnsItem("youtube")}
+          {SnsItem("instagram")}
         </div>
       </div>
     </footer>
