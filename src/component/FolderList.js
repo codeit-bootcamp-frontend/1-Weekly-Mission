@@ -63,7 +63,6 @@ function FolderList({ folders, params }) {
       setName("전체");
       return;
     }
-
     const folder = folders.filter((folder) => {
       return folder.id == params;
     });
@@ -73,11 +72,10 @@ function FolderList({ folders, params }) {
 
   function handleClick(id, name) {
     setActive(id);
-    setName(name);
+    filterName(folders, params);
   }
 
   useEffect(() => {
-    filterName(folders, params);
     handleClick(params, name);
   }, [params]);
 
