@@ -19,6 +19,7 @@ function Folder() {
   const [folderName, setFolderName] = useState('');
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
+  const [modalButtonContent, setModalButtonContent] = useState('');
 
   const [folderParams, setFolderParams] = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
   const initFolderId = folderParams.get('folderId');
@@ -50,20 +51,23 @@ function Folder() {
   };
 
   const handleModal = (e) => {
-    const buttonName = e.target.textContent;
+    const buttonName = e.target.value;
     switch (buttonName) {
-      case '추가하기':
-      case '폴더 추가 +':
+      case 'add':
+      case 'addFolder':
         setModalTitle('폴더에 추가');
+        setModalButtonContent('추가하기');
         break;
-      case '공유':
+      case 'share':
         setModalTitle('폴더 공유');
         break;
-      case '이름 변경':
+      case 'edit':
         setModalTitle('폴더 이름 변경');
+        setModalButtonContent('변경하기');
         break;
-      case '삭제':
+      case 'delete':
         setModalTitle('폴더 삭제');
+        setModalButtonContent('삭제하기');
         break;
       default:
         setModalTitle('');
@@ -75,11 +79,11 @@ function Folder() {
     folderInfo(initFolderId);
     cardInfo(initFolderId);
     return setCards([]);
-  }, [initFolderId, modalTitle]);
+  }, [initFolderId]);
 
   return (
     <>
-      {isModalOpen && <Modal title={modalTitle} onClick={handleModal} />}
+      {isModalOpen && <Modal title={modalTitle} buttonContent={modalButtonContent} onClick={handleModal} />}
       <LinkAdd onClick={handleModal} />
       <MainSection>
         <Search />

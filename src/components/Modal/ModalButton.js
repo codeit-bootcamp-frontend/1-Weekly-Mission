@@ -9,7 +9,8 @@ const Button = styled.button`
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  background: ${(props) =>
+    props.content === '삭제하기' ? 'var(--red)' : 'linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)'};
   color: #fff;
   font-size: 1.6rem;
   font-weight: 600;
@@ -27,8 +28,8 @@ export const CloseButton = styled.button`
   border: none;
 `;
 
-function ModalButton() {
-  return <Button>엥</Button>;
+function ModalButton({ content }) {
+  return <Button content={content}>{content}</Button>;
 }
 
 export default ModalButton;

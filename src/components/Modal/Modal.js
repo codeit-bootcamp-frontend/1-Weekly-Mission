@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 import ModalBackground from './ModalBackground';
 import ModalButton, { CloseButton } from './ModalButton';
 import ModalInput from './ModalInput';
+import ModalSubTitle from './ModalSubTitle';
 import ModalTitle from './ModalTitle';
 
 const ModalWrapper = styled.div`
@@ -24,15 +25,16 @@ const ContentWrapper = styled.div`
   gap: 15px;
 `;
 
-function Modal({ title, onClick }) {
+function Modal({ title, buttonContent, onClick }) {
   return (
     <ModalWrapper>
       <ModalBackground>
         <CloseButton onClick={onClick} />
         <ContentWrapper>
           <ModalTitle title={title} />
-          <ModalInput />
-          <ModalButton />
+          <ModalSubTitle />
+          {title === '' || title === '폴더 삭제' ? <></> : <ModalInput />}
+          {title === '폴더 공유' ? <></> : <ModalButton content={buttonContent} />}
         </ContentWrapper>
       </ModalBackground>
     </ModalWrapper>
