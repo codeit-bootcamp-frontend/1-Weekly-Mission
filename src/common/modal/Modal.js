@@ -5,9 +5,8 @@ import kakaochat from "../../assets/images/kakaochat.svg";
 import metachat from "../../assets/images/metachat.svg";
 import ConfirmModal from "./ConfirmModal";
 export default function Modal({ setterFunc, tabName, folderName }) {
-  const [clipUrl, setClipUrl] = useState("");
   const yesConfirm = () => {
-    alert(`복사하였습니다 ${clipUrl}`);
+    alert(`복사하였습니다 `);
   };
 
   const noConfirm = () => {
