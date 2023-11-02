@@ -6,6 +6,7 @@ import facebookIcon from "images/facebook.svg";
 import linkIcon from "images/link.svg";
 import { useEffect, useState } from "react";
 import { getAPI } from "api";
+import { useLocation } from "react-router-dom";
 
 export default function Modal({ close, children }) {
   useEffect(() => {
@@ -60,6 +61,16 @@ export function ModalAddFolder() {
 }
 
 export function ModalShare({ folderName }) {
+  const location = useLocation();
+
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <S.TitleContainer>
@@ -79,7 +90,7 @@ export function ModalShare({ folderName }) {
           </S.FacebookIconImgContainer>
           <p>페이스북</p>
         </S.Icon>
-        <S.Icon>
+        <S.Icon onClick={() => handleCopyClipBoard(`${location.pathname}`)}>
           <S.IconImgContainer>
             <img src={linkIcon} alt="링크 복사 아이콘" />
           </S.IconImgContainer>
