@@ -15,7 +15,7 @@ function App() {
   
   if(!userData) return;
   return (
-    <AccountContext.Provider value={{account: userData.data[0], errorMessage: errorMessage}}>
+    <AccountContext.Provider value={{account: userData.data[0], errorMessage}}>
       <div className="App">
         <Header/>
         <Routes>

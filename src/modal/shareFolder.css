@@ -1,0 +1,88 @@
+.share-folder {
+    background-color: var(--linkbrary-white);
+    width: 360px;
+    border: 1px solid var(--linkbrary-gray-20);
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.share-folder .share-folder-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 32px 40px;
+}
+
+.share-folder-wrap .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+}
+
+.share-folder-wrap h2 {
+    color: var(--linkbrary-gray-100);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.share-folder-wrap h4 {
+    color: var(--linkbrary-gray-60);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.link-copy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.link-copy li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.link-copy li .icon-border {
+    padding:12px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-copy li .kakaoIcon {
+    background-color: #fee500;
+}
+.link-copy li .facebookIcon {
+    background-color: #1877f2;
+}
+
+.link-copy li .linkIcon {
+    background: rgba(157, 157, 157, 0.04);
+}
+
+.link-copy li img {
+    width: 18px;
+}
+
+.link-copy li .icon-name {
+    color: var(--linkbrary-gray-100);
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+}
+
