@@ -17,9 +17,9 @@ export default function Modal({ close, children }) {
 
   return createPortal(
     <div>
-      <S.Overlay onClick={close} />
-      <S.Wrapper>
-        <S.Container>
+      <S.Overlay />
+      <S.Wrapper onClick={close}>
+        <S.Container onClick={(e) => e.stopPropagation()}>
           <S.CloseButton onClick={close}>
             <img src={closeButton} alt="모달 닫기 버튼" />
           </S.CloseButton>
