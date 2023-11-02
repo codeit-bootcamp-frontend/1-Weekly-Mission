@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import { Nav } from "./Nav/Nav.js";
@@ -20,13 +21,13 @@ const GlobalStyle = createGlobalStyle`
 }`
 
 export function App() {
-
+  const { isError, setIsError} = useState(false);
  
   return (
     <>
       <GlobalStyle />
-      <Nav />
-      <Outlet />
+      <Nav setIsError={setIsError}/>
+      {!isError&&<Outlet />}
       <Footer />
     </>
   );

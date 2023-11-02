@@ -5,7 +5,7 @@ export function CardButton({ folder, setTitle }) {
   const { id, name } = folder;
   const path = `/folder/${id}`;
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     setTitle(`${name}`)
   };
 

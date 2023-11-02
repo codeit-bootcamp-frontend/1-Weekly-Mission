@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import {ThemeProvider} from 'styled-components'
 import * as S from './Nav.style.js'
 import logoImg from "../../assets/logo.png";
-import display from '../../css/display.js'
+import theme from '../../css/display.js'
 import { profileRequestApi } from "../../api/requestApi.js";
 
-export function Nav() {
+export function Nav({setIsError}) {
   const [user, setUser] = useState({});
-  const { isError, setIsError} = useState(false);
 
   async function profile(){
     try{
@@ -24,7 +23,7 @@ export function Nav() {
   },[])
 
   return (
-    <ThemeProvider theme={display}>
+    <ThemeProvider theme={theme}>
       <S.Nav>
         <img src={logoImg} alt="logo"></img>
         <S.Inform>

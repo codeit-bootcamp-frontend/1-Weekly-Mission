@@ -12,22 +12,21 @@ const SharedPage = () => {
 
   const folder = async () => {
     const { name, links, owner } = await folderRequestApi("sample/folder");
-    
     setItems({
       name,
       links,
       owner,
     });
-    
   };
+  
   useEffect(() => {
-    folder();
-  }, []);
+    folder()
+  }, [])
 
   return (
     <>
       <Header items={items} />
-      <Article items={items} />
+      <Article items={items.links} />
     </>
   );
 };

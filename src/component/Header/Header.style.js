@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import display from "../../css/display";
 
 export const Container = styled.div`
   display: flex;
@@ -17,7 +16,7 @@ export const ContainerProfilePage = styled(Container)`
   justify-content: space-between;
   gap: 20px;
 
-  @media ${({theme}) => display.device.mobile} {
+  @media ${({theme}) => theme.device.mobile} {
     padding-top: 1rem;
     padding-bottom: 4rem;
     margin-bottom: 20px;
@@ -38,7 +37,7 @@ export const Profile = styled.div`
   align-items: center;
   gap: 12px;
 
-  @media ${({theme}) => display.device.mobile} {
+  @media ${({theme}) => theme.device.mobile} {
     gap: 10px;
   }
 
@@ -54,12 +53,12 @@ export const ContainerFolderPage = styled(Container)`
   padding-bottom: 9rem;
   width: 100%;
 
-  @media ${({theme}) => display.device.tablet}{}
+  @media ${({theme}) => theme.device.tablet}{}
     padding-left: 200px;
     padding-right: 199px;
   }  
 
-  @media ${({theme}) => display.device.mobile} {
+  @media ${({theme}) => theme.device.mobile} {
     padding-left: 32px;
     padding-right: 32px;
   }  
@@ -71,10 +70,10 @@ export const LinkSearchBox = styled.div`
   border: 1px solid #6d6afe;
   width: 800px;
 
-  @media ${({theme}) => display.device.tablet}{
+  @media ${({theme}) => theme.device.tablet}{
     width : 704px;
   }
-  @media ${({theme}) => display.device.mobile} {
+  @media ${({theme}) => theme.device.mobile} {
     width : 100%;
   }
 `

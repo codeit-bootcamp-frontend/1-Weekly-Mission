@@ -7,8 +7,7 @@ import PastTime from "../../utils/date.js";
 import * as S from "./Card.style.js"
 
 export function Card({ link }) {
-  const { image_source, imageSource, description, url, createdAt, created_at } =
-    link;
+  const { image_source, imageSource, description, url, createdAt, created_at } = link;
 
   const { message, cardDate } = PastTime(createdAt || created_at);
   const [selected, setSelected] = useState(starImg);

@@ -7,7 +7,7 @@ import { Header } from "../../component/Header/Header.js";
 
 const FolderPage = () => {
   const [visible, setVisible] = useState(false);
-  const [values, setValues] = useState([]);
+  const [items, setItems] = useState([]);
   const [folders, setFolders] = useState([]);
   const { folderId } = useParams();
   const { isError, setIsError} = useState(false);
@@ -21,7 +21,7 @@ const FolderPage = () => {
       } else {
         setVisible(false);
       }
-      setValues(result);
+      setItems(result);
     } catch (error) {
         setIsError(true)
     }
@@ -45,7 +45,7 @@ const FolderPage = () => {
   return (
     <>
       {isError && (<><Header />
-      <Article visible={visible} values={values} folders={folders} /></>)}
+      <Article visible={visible} items={items} folders={folders} /></>)}
     </>
   );
 };

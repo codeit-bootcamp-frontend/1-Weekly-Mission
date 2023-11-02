@@ -8,8 +8,8 @@ const device = {
   tablet: `screen and (max-width: ${deviceSizes.tablet})`,
 };
 
-const display = {
-  device,
+const theme = {
+  device
 };
 
-export default display;
+export default theme;

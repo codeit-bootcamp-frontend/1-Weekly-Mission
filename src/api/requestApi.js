@@ -21,7 +21,6 @@ async function profileRequestApi(endpoint) {
 async function folderRequestApi(endpoint) {
   try{
     const result = await RequestAPI(endpoint);
-    console.log(result)
     return(result.data.folder)
   }catch(error){
     throw new Error(`${FOLDER_FAIL}`)

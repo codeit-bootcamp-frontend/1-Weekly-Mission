@@ -1,14 +1,13 @@
 import { ThemeProvider } from "styled-components";
-import display from "../../css/display.js";
+import theme from "../../css/display.js";
 import { Card } from "./Card.js";
 
-export function CardContainer ({values}) {
-  const { links } = values ;
-
+export function CardContainer ({items}) {
+  
   return (
-    <ThemeProvider theme={display}>
+    <ThemeProvider theme={theme}>
       <CardContainer>
-        {links.map((link) => (
+        {items.map((link) => (
           <Card link={link} key={link.id} />
         ))}
       </CardContainer>

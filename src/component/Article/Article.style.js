@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import display from "../../css/display.js";
 
 export const ArticleContainer = styled.div`
   display: flex;
@@ -12,7 +11,7 @@ export const ArticleSection = styled.div`
   flex-direction: column;
   gap: 40px;
 
-  @media ${({ theme }) => display.device.mobile} {
+  @media ${({theme}) => theme.device.mobile} {
     gap: 32px;
   }
 `;

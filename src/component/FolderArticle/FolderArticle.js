@@ -1,17 +1,17 @@
 import { ThemeProvider } from "styled-components";
-import display from "../../css/display.js";
+import theme from "../../css/display.js";
 import { CardMenuBar } from "../TitleButton/CardMenuBar.js";
 import { EmptyData } from "../Empty/EmptyData.js";
 import { CardContainer } from "../Card/CardContainer.js";
 import { CardButton } from "../TitleButton/CardButton.js";
 
-export function FolderArticle({values, visible, folders}) {
+export function FolderArticle({items, visible, folders}) {
   
   return (
-    <ThemeProvider theme={display}>
+    <ThemeProvider theme={theme}>
       <CardButton />
       <CardMenuBar folders={folders} />
-      {visible && <CardContainer values={values}/>}
+      {visible && <CardContainer items={items}/>}
       {!visible && <EmptyData />}
     </ThemeProvider>
   );

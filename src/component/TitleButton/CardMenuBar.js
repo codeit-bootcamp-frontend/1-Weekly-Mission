@@ -7,15 +7,13 @@ import * as S from "./CardMenuBar.style.js";
 
 export function CardMenuBar({ folders }) {
   const [title, setTitle] = useState("전체");
-
+  
   return (
     <>
       <S.Container>
         <S.Ul>
           <Link to="/folder">
-            <li>
-              <S.Button>전체</S.Button>
-            </li>
+            <S.Button>전체</S.Button>
           </Link>
           {folders.map((folder) => (
             <CardButton folder={folder} key={folder.id} setTitle={setTitle} />

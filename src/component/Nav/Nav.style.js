@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import display from '../../css/display.js'
 
 
 export const Nav = styled.div`
@@ -10,12 +9,12 @@ export const Nav = styled.div`
   width: 100%;
   background-color: #f0f6ff;
 
-  @media ${({theme}) => display.device.tablet}{
+  @media ${({theme}) => theme.device.tablet}{
     padding-left: 32.5px;
     padding-right: 32.5px;
   }
   
-  @media ${({theme}) => display.device.mobile} {
+  @media ${({theme}) => theme.device.mobile} {
     padding-top: 18px;
     padding-bottom: 17px
   }

@@ -6,12 +6,12 @@ export const CardContainer = styled.div`
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   gap: 20px 25px;
 
-  @media ${({ theme }) => display.device.tablet} {
+  @media ${({ theme }) => theme.device.tablet} {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px 25px;
   }
 
-  @media ${({ theme }) => display.device.mobile} {
+  @media ${({ theme }) => theme.device.mobile} {
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
   } 

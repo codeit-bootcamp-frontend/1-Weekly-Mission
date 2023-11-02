@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import display from "../../css/display";
-
 
 export const Container = styled.div`
   width: 100%;
@@ -9,7 +7,7 @@ export const Container = styled.div`
   background-color: #111322;
   margin-top: 60px;
 
-  @media ${({theme}) => display.device.mobile}{
+  @media ${({theme}) => theme.device.mobile}{
     padding: 32px 32px 64px;
     margin-top: 40px;
   }

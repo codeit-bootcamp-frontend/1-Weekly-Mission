@@ -1,12 +1,12 @@
 import { ThemeProvider } from 'styled-components';
-import display from '../../css/display';
+import theme from '../../css/display';
 import linkClickImg from '../../assets/link.svg';
 import * as S from './Header.style.js';
 
 export function Header({items}) {
-
+  
   return (
-    <ThemeProvider theme={display}>
+    <ThemeProvider theme={theme}>
       {items && (<S.ContainerProfilePage>
         <S.Profile>
           <img src={items.owner.profileImageSource} alt="profile"></img>
