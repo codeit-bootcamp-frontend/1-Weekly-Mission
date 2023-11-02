@@ -7,7 +7,7 @@ import { getCreatedDate, getDiffTime } from "common/utils/dateUtils";
 import KebabMenu from "components/Kebabmenu";
 
 export default function CardItem({ link }) {
-  const { description, image_source: imageSource, created_at: createdAt } = link;
+  const { description, image_source: imageSource, created_at: createdAt, url } = link;
   const { yyyy, mm, dd } = getCreatedDate(createdAt);
 
   return (
@@ -21,7 +21,7 @@ export default function CardItem({ link }) {
       <S.CardInfo>
         <S.Info>
           {getDiffTime(createdAt)}
-          <KebabMenu />
+          <KebabMenu link={url} />
         </S.Info>
         <S.Description>{description}</S.Description>
         <S.CreatedAt>
