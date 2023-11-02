@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-// skip = false 일 경우 useEffect 작동
-const useAsync = (callback, deps = [], skip = false) => {
+const useAsync = (callback, deps = []) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,9 +18,7 @@ const useAsync = (callback, deps = [], skip = false) => {
   }, deps);
 
   useEffect(() => {
-    if (skip) return;
     fetchData();
-
     // eslint-disable-next-line;
   }, []);
 

@@ -9,16 +9,28 @@ import NoLink from './NoLink';
 import { fetchGet } from '../../apis/api';
 import { DEFAULT_FOLDER } from '../../constants/constant';
 import * as S from './styles';
+// import { useFetchUserLinks } from '../../apis/fetch';
 
-function FolderContainer({ folderData, userId, userLinks }) {
+const FolderContainer = ({ folderData, userId, userLinks }) => {
   const [selectedFolderName, setSelectedFolderName] = useState(
     DEFAULT_FOLDER.name,
   );
   const [searchParams, setSearchParams] = useSearchParams();
-  const [cards, setCards] = useState(null);
+  const [cards, setCards] = useState([]);
   const currentFolderId = searchParams.get('folderId');
-  const handleFolderSelect = async (folderId, folderName) => {
-    setSelectedFolderName(folderName);
+
+  // useFetchUserLinks를 사용하여 fetchGet을 대체해보자
+  // const {
+  //   isLoading,
+  //   data: cardsData,
+  //   fetchData: refetch,
+  // } = useFetchUserLinks(userId, currentFolderId);
+
+  const handleFolderSelect = async (folderId) => {
+    const selectedFolderName = folderData
+      .filter((folder) => folderId === folder.id)
+      .map((folder) => folder.name);
+    setSelectedFolderName(selectedFolderName[0]);
     setSearchParams(folderId !== 0 ? { folderId } : {});
 
     let query;
@@ -34,10 +46,11 @@ function FolderContainer({ folderData, userId, userLinks }) {
       setCards(userLinks);
       setSelectedFolderName(DEFAULT_FOLDER.name);
     } else {
-      const selectedCards = userLinks
-        .filter((card) => String(card.folder_id) === currentFolderId)
-        .map((card) => card);
-      setCards(() => selectedCards);
+      setCards(() =>
+        cards
+          .filter((card) => String(card.folder_id) === currentFolderId)
+          .map((card) => card),
+      );
 
       const selectedFolder = folderData.find(
         (folder) => String(folder.id) === currentFolderId,
@@ -48,22 +61,17 @@ function FolderContainer({ folderData, userId, userLinks }) {
 
   const handleSearchbar = (event, searchedText) => {
     event.preventDefault();
-    if (!searchedText) setCards(() => userLinks);
-    else {
-      const filterdCards = userLinks.filter((link) =>
-        link['description']?.includes(searchedText),
-      );
-      setCards(() => filterdCards);
-    }
+
+    searchedText
+      ? setCards(() =>
+          cards.filter((link) => link['description']?.includes(searchedText)),
+        )
+      : setCards(() => cards);
   };
 
   useEffect(() => {
     handleSearchParam();
-  }, [currentFolderId]);
-
-  useEffect(() => {
-    setCards(userLinks);
-  }, [userLinks]);
+  }, [searchParams]);
 
   return (
     <S.CardContainerBox>
@@ -92,6 +100,6 @@ function FolderContainer({ folderData, userId, userLinks }) {
       )}
     </S.CardContainerBox>
   );
-}
+};
 
 export default FolderContainer;
