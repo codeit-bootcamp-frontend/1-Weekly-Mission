@@ -1,26 +1,45 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Card from "../../common/card/Card";
 import styles from "../imageList/ImageListItem.module.css";
 import kebabImage from "../../assets/images/kebab.svg";
 
 import { parseDatestring, getElapsedTime } from "../../utils/calTime";
+import DropDown from "../dropdown/DropDown";
 export default function DataListItem({ item }) {
+  const [open, setOpen] = useState(false);
   const { id, url, title, image_source, description, created_at } = item;
-  const navgiateToPage = (url) => {
-    window.location.href = `${url}`;
-  };
+
   const targetData = parseDatestring(created_at);
   const { year, month, day } = targetData;
   const diffTime = getElapsedTime(created_at);
 
+  const imageRef = useRef();
+
   return (
     <>
-      <Card onClickFunc={() => navgiateToPage(url)}>
+      <Card>
         <div className={styles.container}>
-          <img className={styles.card__image} src={image_source} alt={title} />
+          <a href={url}>
+            <img
+              className={styles.card__image}
+              src={image_source}
+              alt={title}
+            />
+          </a>
           <div className={styles.sub__container}>
             <p>{diffTime}</p>
-            <img src={kebabImage} alt="kebab" className={styles.kebab} />
+            <img
+              ref={imageRef}
+              src={kebabImage}
+              alt="kebab"
+              className={styles.kebab}
+              // setOpen((prev) => !prev)
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpen(!open);
+              }}
+            />
+            {open && <DropDown />}
           </div>
           <div className={styles.bottom}>
             <p>{description}</p>

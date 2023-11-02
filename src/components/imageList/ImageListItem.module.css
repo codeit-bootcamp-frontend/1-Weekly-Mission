@@ -1,7 +1,8 @@
 .card__image {
-  width: 70%;
+  width: 75%;
   height: 300px;
-  margin: 0 auto;
+  padding-left: 5rem;
+  object-fit: cover;
 }
 
 .card__image:hover {
@@ -12,8 +13,10 @@
 .container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 100%;
   justify-content: center;
+  position: relative;
   row-gap: 1rem;
 }
 .sub__container {
@@ -29,7 +32,4 @@
 
   padding-left: 3rem;
   padding-right: 3rem;
-}
-
-.kebab {
 }
