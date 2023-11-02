@@ -1,15 +1,39 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import BlueBtn from 'components/common/Button/BlueBtn';
 import linkIcon from 'assets/images/link.svg';
+import AddToFolderModal from 'components/common/Modal/AddToFolderModal';
+import ModalFrame from 'components/common/Modal/ModalFrame';
 
 function AddLinkBar() {
+  const [modal, setModal] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
+  function handleLinkAdd(event) {
+    event.preventDefault();
+    const value = event.target.children[0].children[0].value;
+    setInputValue(value);
+    setModal(true);
+  }
+
+  function handleFolderAddClose() {
+    setModal(false);
+  }
+
   return (
-    <Container>
-      <Wrapper>
-        <Input placeholder="링크를 추가해 보세요" />
-        <BlueBtn type="linkAdd">추가하기</BlueBtn>
-      </Wrapper>
-    </Container>
+    <>
+      <Container onSubmit={handleLinkAdd}>
+        <Wrapper>
+          <Input placeholder="링크를 추가해 보세요" />
+          <BlueBtn type="linkAdd">추가하기</BlueBtn>
+        </Wrapper>
+      </Container>
+      {modal && (
+        <ModalFrame>
+          <AddToFolderModal url={inputValue} onClickClose={handleFolderAddClose} />
+        </ModalFrame>
+      )}
+    </>
   );
 }
 
@@ -44,11 +68,16 @@ const Input = styled.input`
   background-repeat: no-repeat;
   background-position: 20px 50%;
   border-radius: 15px;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--gray-20);
   background-color: white;
   font-size: 1.6rem;
-  color: var(--gray-60);
-
+  outline: none;
+  &::placeholder {
+    color: var(--gray-60);
+  }
+  &:focus {
+    border: 1px solid var(--primary-color);
+  }
   /* Mobile */
   @media (max-width: 767px) {
     height: 53px;

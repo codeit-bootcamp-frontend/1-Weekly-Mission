@@ -32,6 +32,10 @@ const LinkAddBtn = styled(BlueGrd)`
   width: 81px;
   font-size: 1.4rem;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   /* Mobile */
   @media (max-width: 767px) {
     top: 8px;
