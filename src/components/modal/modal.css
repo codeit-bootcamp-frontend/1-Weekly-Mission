@@ -1,0 +1,27 @@
+@import url('../../styles/global.css');
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 110px;
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  padding: 32px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  border-radius: 15px;
+  border: 1px solid var(--color-gray-border);
+  background-color: var(--color-white);
+  opacity: 1;
+}
