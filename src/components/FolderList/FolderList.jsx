@@ -7,7 +7,7 @@ import deleteIcon from "images/delete.svg";
 import nameChangeIcon from "images/name-change.svg";
 import shareIcon from "images/share.svg";
 import Modal from "components/Modal";
-import { ModalEdit } from "components/Modal/Modal";
+import { ModalAddFolder, ModalDelete, ModalEdit, ModalShare } from "components/Modal/Modal";
 
 function FolderList({ getFolderId }) {
   const [folders, setFolders] = useState();
@@ -32,12 +32,44 @@ function FolderList({ getFolderId }) {
     setFolders(data);
   };
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const openModal = () => {
-    setModalIsOpen(true);
+  const [modalIsOpen1, setModalIsOpen1] = useState(false);
+
+  const openModal1 = () => {
+    setModalIsOpen1(true);
   };
-  const closeModal = () => {
-    setModalIsOpen(false);
+
+  const closeModal1 = () => {
+    setModalIsOpen1(false);
+  };
+
+  const [modalIsOpen2, setModalIsOpen2] = useState(false);
+
+  const openModal2 = () => {
+    setModalIsOpen2(true);
+  };
+
+  const closeModal2 = () => {
+    setModalIsOpen2(false);
+  };
+
+  const [modalIsOpen3, setModalIsOpen3] = useState(false);
+
+  const openModal3 = () => {
+    setModalIsOpen3(true);
+  };
+
+  const closeModal3 = () => {
+    setModalIsOpen3(false);
+  };
+
+  const [modalIsOpen4, setModalIsOpen4] = useState(false);
+
+  const openModal4 = () => {
+    setModalIsOpen4(true);
+  };
+
+  const closeModal4 = () => {
+    setModalIsOpen4(false);
   };
 
   useEffect(() => {
@@ -58,29 +90,32 @@ function FolderList({ getFolderId }) {
               </S.Folder>
             ))}
           </S.FolderContainer>
-          <S.AddFolderButton>
+          <S.AddFolderButton onClick={openModal4}>
             <span>폴더 추가</span>
             <img className="notMobile" src={addIcon} alt="추가 아이콘" />
             <img className="onMobile" src={addIconWhite} alt="추가 아이콘" />
           </S.AddFolderButton>
+          {modalIsOpen4 && <Modal close={closeModal4}><ModalAddFolder /></Modal>}
         </S.FolderListContainer>
       )}
       <S.CurrentFolderInfo>
         <span>{selectedName}</span>
         <S.OptionContainer selected={!selectedId}>
-          <button>
+          <button onClick={openModal1}>
             <img src={shareIcon} alt="공유 아이콘" />
             <span>공유</span>
           </button>
-          <button onClick={openModal}>
+          {modalIsOpen1 && <Modal close={closeModal1}><ModalShare folderName={selectedName} /></Modal>}
+          <button onClick={openModal2}>
             <img src={nameChangeIcon} alt="이름 변경 아이콘" />
             <span>이름 변경</span>
           </button>
-          {modalIsOpen && <Modal close={closeModal}><ModalEdit /></Modal>}
-          <button>
+          {modalIsOpen2 && <Modal close={closeModal2}><ModalEdit folderName={selectedName} /></Modal>}
+          <button onClick={openModal3}>
             <img src={deleteIcon} alt="삭제 아이콘" />
             <span>삭제</span>
           </button>
+          {modalIsOpen3 && <Modal close={closeModal3}><ModalDelete folderName={selectedName} /></Modal>}
         </S.OptionContainer>
       </S.CurrentFolderInfo>
     </>
