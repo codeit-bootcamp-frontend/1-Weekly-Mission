@@ -1,5 +1,9 @@
-const CardContent = ({ children }) => {
-  return <div className="card_content">{children}</div>;
+const CardContent = ({ children, url }) => {
+  return (
+    <a className="card_content" href={url}>
+      {children}
+    </a>
+  );
 };
 
 export default CardContent;

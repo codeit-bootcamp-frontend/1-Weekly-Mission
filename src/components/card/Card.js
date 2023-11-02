@@ -1,5 +1,6 @@
 import CardImage from "./CardImage";
 import CardTime from "./CardTime";
+import Kebab from "./Kebab";
 import CardContent from "./CardContent";
 import CardDate from "./CardDate";
 import { getTimeDiff, formatDate } from "./getTime";
@@ -20,16 +21,19 @@ const Card = ({ item }) => {
   const get_date = formatDate(createdAt || created_at);
 
   return (
-    <a className="card_block" href={url} key={id}>
+    <div className="card_block" key={id}>
       <div className="image_area">
         <CardImage src={imageSource || image_source || noImg} />
       </div>
       <div className="description_area">
-        <CardTime set_time={get_time} />
-        <CardContent>{description}</CardContent>
+        <div className="time_wrapper">
+          <CardTime set_time={get_time} />
+          <Kebab id={id} />
+        </div>
+        <CardContent url={url}>{description}</CardContent>
         <CardDate set_date={get_date} />
       </div>
-    </a>
+    </div>
   );
 };
 
