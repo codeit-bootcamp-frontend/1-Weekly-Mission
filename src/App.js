@@ -28,7 +28,7 @@ function App() {
     <Container className='App'>
       <div>
         <Nav user={user} />
-        <Outlet context={user} />
+        <Outlet />
       </div>
       <Footer />
     </Container>
