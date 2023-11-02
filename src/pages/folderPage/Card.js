@@ -5,6 +5,7 @@ import KebabDelete from "../../components/kebab/KebabDelete";
 import KebabAdd from "../../components/kebab/KebabAdd";
 import ModalBackground from "../../components/modal/ModalBackground";
 import ModalDelete from "../../components/modal/ModalDelete";
+import ModalAddtoFolder from "../../components/modal/ModalAddtoFolder";
 
 const Card = ({ data }) => {
   const {
@@ -20,6 +21,7 @@ const Card = ({ data }) => {
   const timePassed = getTimePassed(url, description, created_at, image_source);
   const [isClicked, setIsClicked] = useState(false);
   const [isKebabDeleteClicked, setIsKebabDeleteClicked] = useState(false);
+  const [isKebabAddClicked, setIsKebabAddClicked] = useState(false);
 
   function handleKebabClick(e) {
     e.preventDefault();
@@ -29,6 +31,11 @@ const Card = ({ data }) => {
   function handleKebabDeleteClick(e) {
     e.preventDefault();
     setIsKebabDeleteClicked(!isKebabDeleteClicked);
+  }
+
+  function handleKebabAddClick(e) {
+    e.preventDefault();
+    setIsKebabAddClicked(!isKebabAddClicked);
   }
 
   return (
@@ -96,7 +103,7 @@ const Card = ({ data }) => {
               <KebabDelete onClick={handleKebabDeleteClick}>
                 삭제하기
               </KebabDelete>
-              <KebabAdd>폴더에 추가</KebabAdd>
+              <KebabAdd onClick={handleKebabAddClick}>폴더에 추가</KebabAdd>
             </Kebab>
           ) : null}
           <span>{description}</span>
@@ -136,6 +143,47 @@ const Card = ({ data }) => {
               삭제하기
             </button>
           </ModalDelete>
+        </ModalBackground>
+      ) : null}
+      {isKebabAddClicked ? (
+        <ModalBackground>
+          <ModalAddtoFolder>
+            <b>폴더에 추가</b>
+            링크 주소
+            <div style={{ position: "relative" }}>
+              <img
+                src="images/modalClose.svg"
+                style={{
+                  position: "absolute",
+                  right: "-16.5rem",
+                  top: "-10rem",
+                }}
+                onClick={handleKebabAddClick}
+              />
+            </div>
+            <div>
+              <p>코딩팁</p>
+              <p>채용 사이트</p>
+              <p>유용한 글</p>
+              <p>나만의 장소</p>
+            </div>
+            <button
+              style={{
+                background:
+                  "var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%))",
+                borderRadius: "8px",
+                width: "28rem",
+                height: "2rem",
+                padding: "1.6rem 2rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+              }}
+            >
+              추가하기
+            </button>
+          </ModalAddtoFolder>
         </ModalBackground>
       ) : null}
     </li>
