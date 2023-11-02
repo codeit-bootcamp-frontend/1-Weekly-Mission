@@ -1,4 +1,4 @@
-import searchIcon from "../../assets/images/shared-search.svg";
+import searchIcon from "../../assets/images/searchbar/shared-search.svg";
 import styled from "styled-components";
 
 const StyledSearchBox = styled.div`

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/header//logo.png";
 import getApi from "../../api/api";
 import styled from "styled-components";
 

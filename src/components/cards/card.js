@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import noImage from "../../assets/images/no-image.svg";
-import star from "../../assets/images/star.png";
-import kebab from "../../assets/images/kebab.svg";
+import noImage from "../../assets/images/card/no-image.svg";
+import star from "../../assets/images/card/star.png";
+import kebab from "../../assets/images/card/kebab.svg";
 
 const StyledHoverImg = styled.img`
     position: absolute;
     top: 15px;
     right: 15px;
+    cursor: pointer;
 `;
 
 const StyledDescription = styled.div`
@@ -65,6 +66,28 @@ const StyledCardGrid = styled.div`
         margin: 0 32px;
         align-items: center;
         justify-items: center;
+    }
+`;
+
+const StyledPopOverBox = styled.div`
+    background-color: #fff;
+    display: flex;
+    width: 100px;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+    position: absolute;
+    top: 30px;
+    right: -60px;
+    z-index: 1;
+`;
+
+const StyledPopOver = styled.div`
+    padding: 7px 12px;
+    font-size: 14px;
+    &:hover {
+        background-color: #e7effb;
+        color: #6d6afe;
     }
 `;
 
@@ -135,18 +158,22 @@ function Card({ items }) {
     const month = apiDate.getMonth() + 1;
     const days = apiDate.getDate();
     return (
-        <a href={items.url} target="_blank" rel="noopener noreferrer">
-            <StyledCardBox>
-                <StyledHoverImg src={star} alt="star" />
+        <StyledCardBox>
+            <StyledHoverImg src={star} alt="star" />
+            <a href={items.url} target="_blank" rel="noopener noreferrer">
                 <StyledCardImg style={image} />
-                <StyledTextBox>
-                    <StyledHoverImg src={kebab} alt="kebab" />
-                    <div>{elapsedTime}</div>
-                    <StyledDescription>{items.description}</StyledDescription>
-                    <div>{`${year}. ${month}. ${days}`}</div>
-                </StyledTextBox>
-            </StyledCardBox>
-        </a>
+            </a>
+            <StyledTextBox>
+                <StyledHoverImg src={kebab} alt="kebab" />
+                <StyledPopOverBox>
+                    <StyledPopOver>삭제하기</StyledPopOver>
+                    <StyledPopOver>폴더에 추가</StyledPopOver>
+                </StyledPopOverBox>
+                <div>{elapsedTime}</div>
+                <StyledDescription>{items.description}</StyledDescription>
+                <div>{`${year}. ${month}. ${days}`}</div>
+            </StyledTextBox>
+        </StyledCardBox>
     );
 }
 

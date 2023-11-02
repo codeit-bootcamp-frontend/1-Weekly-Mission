@@ -1,7 +1,7 @@
-import facebookIcon from "../../assets/images/facebook-fill.png";
-import twitterIcon from "../../assets/images/twitter-fill.png";
-import youtubeIcon from "../../assets/images/youtube-fill.png";
-import instagramIcon from "../../assets/images/instagram-filled.png";
+import facebookIcon from "../../assets/images/footer/facebook-fill.png";
+import twitterIcon from "../../assets/images/footer/twitter-fill.png";
+import youtubeIcon from "../../assets/images/footer/youtube-fill.png";
+import instagramIcon from "../../assets/images/footer/instagram-filled.png";
 import styled from "styled-components";
 
 const StyledFooterBox = styled.div`

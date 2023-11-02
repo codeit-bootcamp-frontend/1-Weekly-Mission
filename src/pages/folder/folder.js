@@ -2,14 +2,14 @@ import Header from "../../components/common/header";
 import Footer from "../../components/common/footer";
 import SearchBar from "../../components/common/searchbar";
 import styled from "styled-components";
-import linkAddIcon from "../../assets/images/linkAdd.svg";
+import linkAddIcon from "../../assets/images/folder/linkAdd.svg";
 import Cards from "../../components/cards/card";
 import { useEffect, useState } from "react";
 import getApi from "../../api/api";
-import add from "../../assets/images/add.svg";
-import share from "../../assets/images/share.svg";
-import pen from "../../assets/images/pen.svg";
-import trash from "../../assets/images/trash.svg";
+import add from "../../assets/images/folder/add.svg";
+import share from "../../assets/images/folder/share.svg";
+import pen from "../../assets/images/folder/pen.svg";
+import trash from "../../assets/images/folder/trash.svg";
 import FolderButton from "../../components/folderbutton/folderbutton";
 import Modal from "../../components/modal/modal";
 
@@ -193,7 +193,7 @@ function Folders() {
 
     return (
         <StyledFoldersBox>
-            <Modal> </Modal>
+            {/* <Modal> </Modal> */}
             <StyledFolderButtonBox>
                 <FolderButton
                     items={titleData}
