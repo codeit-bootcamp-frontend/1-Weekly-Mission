@@ -7,7 +7,6 @@ import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 function Nav({ profile, isSticky }) {
   const navClassName = "${nav}" + (isSticky ? " ${sticky}" : "");
   const { userEmail, userProfileImage } = profile;
-  console.log(profile);
 
   return (
     <nav className={`${navClassName}`}>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ShareHeader from "./components/ShareHeader/ShareHeader";
 import { SearchBar, CardList } from "commons/components/index";
 import useAsync from "apis/useAsync";
-import { getAllCards } from "apis/api";
+import { getAllCards } from "apis/getAllCards";
 import "./SharedPage.css";
 
 const INITIAL_FOLDER = {

@@ -23,7 +23,12 @@ function Footer() {
         {snsIcons.map((icon) => {
           let iconPath = `https://www.${icon.name}.com/`;
           return (
-            <a href={iconPath} target="_blank" rel="noreferrer noopener">
+            <a
+              href={iconPath}
+              target="_blank"
+              rel="noreferrer noopener"
+              key={icon.name}
+            >
               {icon.comp}
             </a>
           );

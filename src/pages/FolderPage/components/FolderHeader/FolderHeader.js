@@ -2,7 +2,7 @@ import styles from "./FolderHeader.module.css";
 import FolderNameButton from "pages/FolderPage/components/FolderNameButton/FolderNameButton";
 import { useEffect, useState, useRef } from "react";
 import CardList from "commons/components/CardList/CardList";
-import { getAllCards } from "apis/api";
+import { getAllCards } from "apis/getAllCards";
 
 import { ReactComponent as ShareIcon } from "assets/images/share-icon.svg";
 import { ReactComponent as RenameIcon } from "assets/images//rename-icon.svg";

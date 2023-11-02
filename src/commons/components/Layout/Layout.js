@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "commons/styles/reset.css";
 import { Nav, Footer } from "commons/components/index";
 import useAsync from "apis/useAsync";
-import { getUser } from "apis/api";
+import { useGetUser } from "apis/useGetUser";
 
 const INITIAL_USER = {
   userId: "",
@@ -17,7 +17,7 @@ const INITIAL_USER = {
 
 function Layout() {
   const [userValues, setUserValues] = useState(INITIAL_USER);
-  const [isUserLoading, userLoadingError, getUserAsync] = useAsync(getUser);
+  const [isUserLoading, userLoadingError, getUserAsync] = useAsync(useGetUser);
 
   const loadUser = async () => {
     const userResult = await getUserAsync();

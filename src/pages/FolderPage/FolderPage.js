@@ -10,7 +10,7 @@ import {
   MobileFolderButton,
 } from "./components/index";
 
-import { getAllFolders } from "apis/api";
+import { useGetFolderList } from "apis/useGetFolderList";
 import "./FolderPage.css";
 
 function FolderPage() {
@@ -18,7 +18,7 @@ function FolderPage() {
   const [folderList, setFolderList] = useState([]);
 
   // 내가 가지고 있는 모든 폴더 목록들을 받아서 folderList 배열에 저장.
-  const [pending, error, getAllFoldersAsync] = useAsync(getAllFolders);
+  const [pending, error, getAllFoldersAsync] = useAsync(useGetFolderList);
   const getFolderList = async () => {
     const allFolders = await getAllFoldersAsync();
     setFolderList(allFolders?.data);
