@@ -28,7 +28,7 @@ const SOCIAL_LINKS = [
   },
 ];
 const socialLinks = SOCIAL_LINKS.map((link) => {
-  return <SocialLink key={link.description} link={link} />;
+  return <SocialLink key={link.href} link={link} />;
 });
 export function Footer() {
   return (
