@@ -1,10 +1,7 @@
-import * as S from './FoldersContainer.style';
 import { useEffect, useState } from 'react';
 import useRequest from 'hooks/useRequest';
-import SHARE from 'assets/icons/share.svg';
-import EDIT from 'assets/icons/edit.svg';
-import DELETE from 'assets/icons/delete.svg';
 import FoldersView from '../FoldersView';
+import InfoContainer from '../InfoContainer';
 
 const DEFAULT_FOLDER = {
   id: 0,
@@ -47,27 +44,10 @@ function FoldersContainer({ userId, initialFolderId, setFolderLinks }) {
             selectedFolder={selectedFolder}
             onFolderButtonClick={onFolderButtonClick}
           />
-          <S.InfoContainer>
-            <S.FolderTitle>{selectedFolder?.name}</S.FolderTitle>
-            <S.SettingButtonContainer>
-              {selectedFolder?.id !== DEFAULT_FOLDER.id && (
-                <>
-                  <S.SettingButton>
-                    <img src={SHARE} alt='공유하기' />
-                    공유
-                  </S.SettingButton>
-                  <S.SettingButton>
-                    <img src={EDIT} alt='이름 변경하기' />
-                    이름 변경
-                  </S.SettingButton>
-                  <S.SettingButton>
-                    <img src={DELETE} alt='삭제하기' />
-                    삭제
-                  </S.SettingButton>
-                </>
-              )}
-            </S.SettingButtonContainer>
-          </S.InfoContainer>
+          <InfoContainer
+            defaultFolder={DEFAULT_FOLDER}
+            selectedFolder={selectedFolder}
+          />
         </>
       )}
     </>
