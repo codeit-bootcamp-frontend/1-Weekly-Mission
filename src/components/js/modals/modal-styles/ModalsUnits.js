@@ -129,10 +129,19 @@ export const FolderListWrapper = styled.ul`
   margin-bottom: 24px;
 `;
 
+export const FolderItemWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background-color: ${({ isActive }) => (isActive ? "var(--bg)" : "#ffffff")};
+  border-radius: 8px;
+  cursor: pointer;
+`;
+
 export const FolderItemContainer = styled.li`
   display: flex;
   align-items: baseline;
-  padding: 8px;
   gap: 8px;
 `;
 
@@ -140,10 +149,17 @@ export const FolderTitle = styled.span`
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px;
+  color: ${({ selected }) => (selected ? "#6D6AFE" : "#373740")};
 `;
 
 export const FolderItemsCount = styled.span`
   color: var(--gray60);
   font-size: 1.4rem;
   font-weight: 400;
+`;
+
+export const CheckIcon = styled.img`
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 `;

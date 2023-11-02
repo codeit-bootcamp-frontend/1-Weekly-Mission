@@ -9,7 +9,6 @@ import getTimeDiff from "../../utils/utilTimeDiff";
 
 /* 각 카드 컴포넌트 */
 function CardItem({ item, modal, setLink }) {
-  const [url, setUrl] = useState("");
   console.log(modal);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

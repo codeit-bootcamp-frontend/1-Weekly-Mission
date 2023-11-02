@@ -1,9 +1,9 @@
-
-export const shareKakao = (route, title) => { // url이 id값에 따라 변경되기 때문에 route를 인자값으로 받아줌
+export const shareKakao = (route, title) => {
+  // url이 id값에 따라 변경되기 때문에 route를 인자값으로 받아줌
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
-      console.log(process.env.REACT_APP_JAVASCRIPT_KEY)
+      console.log(process.env.REACT_APP_JAVASCRIPT_KEY);
       kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY); // 카카오에서 제공받은 javascript key를 넣어줌 -> .env파일에서 호출시킴
     }
 
@@ -15,18 +15,18 @@ export const shareKakao = (route, title) => { // url이 id값에 따라 변경�
         imageUrl: "이미지 url",
         link: {
           mobileWebUrl: route, // 인자값으로 받은 route(uri 형태)
-          webUrl: route
-        }
+          webUrl: route,
+        },
       },
       buttons: [
         {
           title: "title",
           link: {
             mobileWebUrl: route,
-            webUrl: route
-          }
-        }
-      ]
+            webUrl: route,
+          },
+        },
+      ],
     });
   }
 };
