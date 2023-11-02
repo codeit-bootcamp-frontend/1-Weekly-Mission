@@ -23,8 +23,6 @@
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   border-radius: 15px;
-  border: 5px solid red;
-  z-index: 999;
 }
 
 .cancel__button {

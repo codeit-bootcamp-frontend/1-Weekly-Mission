@@ -12,6 +12,7 @@
   bottom: 0;
   /* 모달에 흐림 효과는 #000000 색상에 opacity 0.4로 설정 */
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .modal__container {
