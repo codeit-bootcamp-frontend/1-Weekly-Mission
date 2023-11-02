@@ -24,6 +24,7 @@ const Header = () => {
   const [isAddFolderClicked, setIsAddFolderClicked] = useState(false);
   const [isChangeFolderNameClicked, setIsChangeFolderNameClicked] =
     useState(false);
+  const [isDeleteFolderClicked, setIsDeleteFolderClicked] = useState(false);
 
   function handleAddLinkClick(e) {
     e.preventDefault();
@@ -40,6 +41,11 @@ const Header = () => {
   function handleChangeFolderNameClick(e) {
     e.preventDefault();
     setIsChangeFolderNameClicked(!isChangeFolderNameClicked);
+  }
+
+  function handleDeleteFolderClick(e) {
+    e.preventDefault();
+    setIsDeleteFolderClicked(!isDeleteFolderClicked);
   }
 
   const getFolderLists = async () => {
@@ -209,6 +215,42 @@ const Header = () => {
         </ModalBackground>
       ) : null}
 
+      {isDeleteFolderClicked ? (
+        <ModalBackground>
+          <Modal>
+            <b>폴더 삭제</b>
+            <div style={{ position: "relative" }}>
+              <img
+                src="images/modalClose.svg"
+                style={{
+                  position: "absolute",
+                  right: "-16.5rem",
+                  top: "-6rem",
+                }}
+                onClick={handleDeleteFolderClick}
+              />
+            </div>
+
+            <div>{singleFolderName}</div>
+            <button
+              style={{
+                background: "var(--linkbrary-red, #FF5B56)",
+                borderRadius: "8px",
+                width: "28rem",
+                height: "2rem",
+                padding: "1.6rem 2rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+              }}
+            >
+              삭제하기
+            </button>
+          </Modal>
+        </ModalBackground>
+      ) : null}
+
       {totalData && isTotalClicked && (
         <div className="header-summary">전체</div>
       )}
@@ -225,7 +267,7 @@ const Header = () => {
               <img src="/images/pen.svg" />
               이름 변경
             </button>
-            <button>
+            <button onClick={handleDeleteFolderClick}>
               <img src="/images/discard.svg" />
               삭제
             </button>
