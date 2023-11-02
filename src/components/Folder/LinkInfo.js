@@ -1,31 +1,57 @@
 import styled from "styled-components";
 import share from "../../images/share.svg";
-import change from "../../images/pen.svg";
-import deleting from "../../images/delete.svg";
+import changes from "../../images/pen.svg";
+import deletings from "../../images/delete.svg";
+import { useState } from "react";
+import { ModalLink } from "../Modal";
 
-const LinkOptions = [
-  { name: "공유", img: share },
-  { name: "이름변경", img: change },
-  { name: "삭제", img: deleting },
+export const LinkOptions = [
+  { name: "공유", img: share, color: "blue", buttonTitle: "추가하기" },
+  { name: "이름 변경", img: changes, color: "blue", buttonTitle: "변경하기" },
+  { name: "삭제", img: deletings, color: "red", buttonTitle: "삭제하기" },
 ];
 
 function LinkInfo({ folderName }) {
+  const [modalLinkName, setModalLinkName] = useState("");
+
+  const handleModalLink = (e) => {
+    setModalLinkName(e.target.innerText);
+  };
+
   return (
-    <Wrapper>
-      <FolderTitle>{folderName ? folderName : "전체"}</FolderTitle>
-      <HandleLink $isDisplay={folderName !== "전체"}>
-        {LinkOptions.map((option) => {
-          return (
-            <ContentBox key={option.name}>
-              <ContentImg src={option.img} alt={option.name} />
-              <ContentTitle>{option.name}</ContentTitle>
-            </ContentBox>
-          );
-        })}
-      </HandleLink>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <FolderTitle>{folderName ? folderName : "전체"}</FolderTitle>
+        <HandleLink $isDisplay={folderName !== "전체"}>
+          {LinkOptions.map((option) => {
+            return (
+              <ContentButton key={option.name} onClick={handleModalLink}>
+                <ContentImg src={option.img} alt={option.name} />
+                <ContentTitle>{option.name}</ContentTitle>
+              </ContentButton>
+            );
+          })}
+        </HandleLink>
+      </Wrapper>
+      {modalLinkName === "공유" ? (
+        <ModalLink LinkOptions={LinkOptions[0]} />
+      ) : (
+        false
+      )}
+      {modalLinkName === "이름 변경" ? (
+        <ModalLink LinkOptions={LinkOptions[1]} />
+      ) : (
+        false
+      )}
+      {modalLinkName === "삭제" ? (
+        <ModalLink LinkOptions={LinkOptions[2]} />
+      ) : (
+        false
+      )}
+    </>
   );
 }
+
 const Wrapper = styled.div`
   display: flex;
   width: 1060px;
@@ -59,7 +85,7 @@ const HandleLink = styled.div`
   ${({ $isDisplay }) => (!$isDisplay ? "display: none" : "")}
 `;
 
-const ContentBox = styled.div`
+const ContentButton = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;

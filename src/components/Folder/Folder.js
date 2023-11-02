@@ -91,6 +91,7 @@ function Folder() {
       ) : (
         <div className="empty">저장된 링크가 없습니다</div>
       )}
+
       <FooterSpace />
     </>
   );

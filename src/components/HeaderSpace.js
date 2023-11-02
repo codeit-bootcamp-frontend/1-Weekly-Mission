@@ -31,9 +31,9 @@ function HeaderSpace({ profiles }) {
             />
 
             <img src={linkAdd} className="linkAdd-bar-image" alt=" " />
-            <a className="cta cta-short" href="/">
+            <button className="cta cta-short" href="/">
               <span>추가하기</span>
-            </a>
+            </button>
           </div>
         </header>
       )}
