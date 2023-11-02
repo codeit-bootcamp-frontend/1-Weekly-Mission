@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import FolderNav from "../components/nav/FolderNav";
 import Header from "../common/header/Header";
 import SearchBar from "../common/searchBar/SearchBar";
@@ -6,6 +6,7 @@ import Footer from "../common/footer/Footer";
 import Menubar from "../components/menuBar/Menubar";
 import WholeData from "../components/linksdata/WholeData";
 import LocaleContext from "../contexts/LocaleContext";
+
 import { useParams } from "react-router-dom";
 import {
   fetchUserData,

@@ -1,13 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styles from "./HeaderModal.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 
 import { fetchUserLinks } from "./../../api/users";
 
-export default function HeaderModal({ setterFunc, inputLink }) {
+export default function HeaderModal({ setterFunc, inputLink = null }) {
   // modal이 pop-up될때 나온다
-
-  const [folder, setFolder] = useState([]);
 
   const USER_ID = 1;
   const obj = useContext(LocaleContext);

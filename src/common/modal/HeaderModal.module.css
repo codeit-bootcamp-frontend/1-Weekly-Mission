@@ -6,6 +6,7 @@
   bottom: 0;
   /* 모달에 흐림 효과는 #000000 색상에 opacity 0.4로 설정 */
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .modal__container {
@@ -23,6 +24,7 @@
   padding-bottom: 1.5rem;
   border-radius: 15px;
   border: 5px solid red;
+  z-index: 999;
 }
 
 .cancel__button {
@@ -42,7 +44,4 @@
   height: 30px;
   border-radius: 5px;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
-}
-
-.address_container {
 }
