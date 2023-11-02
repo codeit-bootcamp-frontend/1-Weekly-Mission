@@ -5,7 +5,7 @@ function useEyesValue() {
   const [eyesValue, setEyesValue] = useState(false);
 
   function handleEyesClick() {
-    setEyesValue(!eyesValue);
+    setEyesValue((current) => !current);
   }
 
   const eyesStyle = `${styles.eyes} ${
