@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { getTimePassed } from "../../utils/formatTimePassed";
+import Kebab from "../../components/kebab/Kebab";
+import KebabDelete from "../../components/kebab/KebabDelete";
+import KebabAdd from "../../components/kebab/KebabAdd";
 
 const Card = ({ data }) => {
   const {
@@ -13,6 +16,12 @@ const Card = ({ data }) => {
     url,
   } = data;
   const timePassed = getTimePassed(url, description, created_at, image_source);
+  const [isClicked, setIsClicked] = useState(false);
+
+  function handleKebabClick(e) {
+    e.preventDefault();
+    setIsClicked(!isClicked);
+  }
 
   return (
     <li
@@ -64,10 +73,22 @@ const Card = ({ data }) => {
         >
           <span>{timePassed} ago</span>
           <button
-            style={{ position: "absolute", right: "2rem", top: "1.1rem" }}
+            style={{
+              position: "absolute",
+              right: "2rem",
+              top: "1.1rem",
+              zIndex: "999",
+            }}
+            onClick={handleKebabClick}
           >
             <img src="images/kebab.svg" />
           </button>
+          {isClicked ? (
+            <Kebab>
+              <KebabDelete>삭제하기</KebabDelete>
+              <KebabAdd>폴더에 추가</KebabAdd>
+            </Kebab>
+          ) : null}
           <span>{description}</span>
           <span>{created_at.substring(0, 10)}</span>
         </div>
