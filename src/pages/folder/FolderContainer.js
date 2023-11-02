@@ -11,7 +11,8 @@ import Searchbar from "components/searchbar/Searchbar";
 import FolderHero from "components/hero/HeroAboutFolder";
 import Categories from "components/Categories";
 import Options from "components/Options";
-import AddFolder from "components/modal/addFolder";
+import ModalContainer from "components/modal/ModalContainer";
+import AddFolder from "components/modal/AddFolder";
 
 const DEFAULT = "전체";
 const USER_ID = 1;
@@ -57,7 +58,9 @@ export default function Folder() {
     <>
       {isOpenModal &&
         createPortal(
-          <AddFolder onClose={() => setIsOpenModal(false)} />,
+          <ModalContainer onClose={() => setIsOpenModal(false)}>
+            <AddFolder />
+          </ModalContainer>,
           document.getElementById("portal"),
         )}
       <main>
