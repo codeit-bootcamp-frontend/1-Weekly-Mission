@@ -6,7 +6,7 @@ function FolderList({ folders }) {
     <div className={style.root}>
       <div className={style.folders}>
         {entireFolder.map((folder) => (
-          <FolderItem key={folder.id} folder={folder} />
+          <FolderItem key={folder.id} id={folder.id} name={folder.name} />
         ))}
       </div>
 

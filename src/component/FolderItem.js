@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import style from "./FolderItem.module.css";
 import clsx from "clsx";
-function FolderItem({ folder: { id, name } }) {
+function FolderItem({ id, name }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const folderIdParam = searchParams.get("folderId");
   const handleClick = (e) => {
