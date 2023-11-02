@@ -1,20 +1,22 @@
-import styled from "styled-components";
-import linkImage from "../../../../assets/link.png";
-import colors from "../../../../style/colors";
-import { flexCenter } from "../../../../style/common";
+import styled from 'styled-components'
+import linkImage from '../../../../assets/link.png'
+import colors from '../../../../style/colors'
+import { flexCenter } from '../../../../style/common'
 const AddLinkFrame = styled.div`
   position: relative;
   display: flex;
-  padding: 60px 320px 90px 320px;
+  padding: 30px 200px;
   flex-direction: column;
+  align-items: center;
   align-items: flex-start;
+
   gap: 8px;
   background: ${colors.background};
-`;
+`
 
 const AddLinkInput = styled.input`
   display: flex;
-  width: 800px;
+  width: 100%;
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
@@ -27,7 +29,7 @@ const AddLinkInput = styled.input`
   background-image: url(${linkImage});
   background-position: 15px 16px;
   padding-left: 45px;
-`;
+`
 
 const AddButton = styled.button`
   position: absolute;
@@ -38,20 +40,20 @@ const AddButton = styled.button`
   font-size: 13px;
   font-weight: 500;
   border: none;
-  top: 70px;
-  right: 270px;
+  top: 42px;
+  right: 220px;
   width: 80px;
   padding: 10px 16px;
   text-align: center;
   ${flexCenter};
-`;
+`
 function AddLink() {
   return (
     <AddLinkFrame>
       <AddLinkInput type="text" placeholder="링크를 추가해 보세요." />
       <AddButton>추가하기</AddButton>
     </AddLinkFrame>
-  );
+  )
 }
 
-export default AddLink;
+export default AddLink

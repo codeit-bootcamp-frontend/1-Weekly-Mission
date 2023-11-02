@@ -5,7 +5,6 @@ import useAsync from '../../Hooks/useAsync'
 import SearchBar from '../SearchBar/SearchBar'
 import CardList from '../CardList/CardList'
 import Main from '../Main/Main'
-import styled from 'styled-components'
 
 function Folder() {
   const [data, isLoading, LoadingError, getSampleAsync] = useAsync(() =>
