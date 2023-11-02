@@ -112,7 +112,7 @@ const Card = ({ data }) => {
       {isKebabDeleteClicked ? (
         <ModalBackground>
           <Modal>
-            <b>폴더 삭제</b>
+            <b>링크 삭제</b>
             <div style={{ position: "relative" }}>
               <img
                 src="images/modalClose.svg"
@@ -125,7 +125,7 @@ const Card = ({ data }) => {
               />
             </div>
 
-            <div>폴더명</div>
+            <div>{url}</div>
             <button
               style={{
                 background: "var(--linkbrary-red, #FF5B56)",
