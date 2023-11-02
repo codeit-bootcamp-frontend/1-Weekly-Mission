@@ -54,6 +54,15 @@ const Header = () => {
     setIsShareFolderClicked(!isShareFolderClicked);
   }
 
+  function handleCopyClipBoard(text) {
+    try {
+      navigator.clipboard.writeText(text);
+      alert("링크가 클립보드에 복사되었습니다!");
+    } catch (error) {
+      alert("클립보드 복사에 실패하였습니다.");
+    }
+  }
+
   const getFolderLists = async () => {
     const temp = await getFolderList();
     setFullList(temp?.data);
@@ -312,6 +321,7 @@ const Header = () => {
                 페이스북
               </button>
               <button
+                onClick={() => handleCopyClipBoard("temp link")}
                 style={{
                   display: "flex",
                   flexDirection: "column",
