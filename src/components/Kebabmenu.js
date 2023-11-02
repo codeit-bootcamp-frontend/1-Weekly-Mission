@@ -35,7 +35,7 @@ export default function KebabMenu({ link }) {
             {selectedOption === "addLink" ? (
               <AddFolder />
             ) : (
-              <DeleteFolder currentFolderName={link} />
+              <DeleteFolder currentFolderName={link} label="링크" />
             )}
           </ModalContainer>,
           document.getElementById("portal"),

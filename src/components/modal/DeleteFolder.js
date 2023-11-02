@@ -22,11 +22,11 @@ const Info = styled.p`
   color: var(--color-gray);
 `;
 
-export default function DeleteFolder({ currentFolderName }) {
+export default function DeleteFolder({ currentFolderName, label }) {
   return (
     <Contents>
       <Description>
-        <ModalTitle label="폴더 삭제" />
+        <ModalTitle label={`${label} 삭제`} />
         <Info>{currentFolderName}</Info>
       </Description>
       <ModalButton action="delete" label="삭제하기" />

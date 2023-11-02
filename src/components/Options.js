@@ -53,7 +53,9 @@ export default function Options({ selected }) {
           <ModalContainer onClose={() => setIsModalOpen(false)}>
             {selectedOption === "공유" && <ShareFolder currentFolderName={selected} />}
             {selectedOption === "이름 변경" && <EditFolder currentFolderName={selected} />}
-            {selectedOption === "삭제" && <DeleteFolder currentFolderName={selected} />}
+            {selectedOption === "삭제" && (
+              <DeleteFolder currentFolderName={selected} label="폴더" />
+            )}
           </ModalContainer>,
           document.getElementById("portal"),
         )}
