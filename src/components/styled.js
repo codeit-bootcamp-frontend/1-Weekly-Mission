@@ -132,7 +132,7 @@ S.DivEmpty = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30rem;
+  height: 50vh;
   font-size: 1.6rem;
   line-height: 2.4rem;
 `
@@ -349,13 +349,9 @@ S.DivCardList = styled.div`
 `
 
 S.ACard = styled.a`
-  position: relative;
   display: flex;
   flex-direction: column;
-  width: 34rem;
-  height: 34rem;
   border-radius: 1.5rem;
-  overflow: hidden;
   box-shadow: 0 0.5rem 2.4rem 0 rgba(0, 0, 0, 0.08);
   color: var(--Black);
   background-color: var(--White);
@@ -375,6 +371,7 @@ S.DivImgCard = styled.div`
 S.ImgCard = styled.img`
   width: 34rem;
   height: 100%;
+  border-radius: 1.5rem 1.5rem 0 0;
   object-fit: cover;
 `
 
@@ -384,7 +381,6 @@ S.DivTextCard = styled.div`
   height: 13.5rem;
   padding: 1.5rem 2rem;
   gap: 1rem;
-  background-color: var(--White);
 `
 
 S.DivTimeDiff = styled.div`
@@ -392,6 +388,38 @@ S.DivTimeDiff = styled.div`
   justify-content: space-between;
   font-size: 1.2rem;
   color: var(--Gray5);
+`
+
+S.PopOver = styled.div`
+  display: none;
+  position: absolute;
+  right: 8%;
+  width: 10rem;
+  height: 6.4rem;
+  background-color: var(--White);
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.10);
+
+  @media screen and (min-width: 768px) {
+    right: -10%;
+  }
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+ }
+
+ & p {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: var(--Gray1);
+    color: var(--Primary);
+  }
+ }
 `
 
 S.H3 = styled.h3`

@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { getData } from "../../utils/api";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import imgAdd from "../../assets/add.svg"
 import imgAddWhite from "../../assets/addWhite.svg"
@@ -7,7 +6,7 @@ import imgShare from "../../assets/share.svg"
 import imgEdit from "../../assets/edit.svg"
 import imgDelete from "../../assets/delete.svg"
 import S from "../styled";
-import useData, { reduceData, useReduce } from "../../hooks/useReduce";
+import useData from "../../hooks/useReduce";
 
 function FolderAddFloat() {
   return (
