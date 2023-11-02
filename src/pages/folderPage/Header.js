@@ -22,6 +22,9 @@ const Header = () => {
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
   const [isAddFolderClicked, setIsAddFolderClicked] = useState(false);
+  const [isChangeFolderNameClicked, setIsChangeFolderNameClicked] =
+    useState(false);
+
   function handleAddLinkClick(e) {
     e.preventDefault();
     if (addLinkValue !== "") {
@@ -32,6 +35,11 @@ const Header = () => {
   function handleAddFolderClick(e) {
     e.preventDefault();
     setIsAddFolderClicked(!isAddFolderClicked);
+  }
+
+  function handleChangeFolderNameClick(e) {
+    e.preventDefault();
+    setIsChangeFolderNameClicked(!isChangeFolderNameClicked);
   }
 
   const getFolderLists = async () => {
@@ -154,6 +162,53 @@ const Header = () => {
         </ModalBackground>
       ) : null}
 
+      {isChangeFolderNameClicked ? (
+        <ModalBackground>
+          <Modal>
+            <p>
+              <b>폴더 이름 변경</b>
+            </p>
+            <div style={{ position: "relative" }}>
+              <img
+                src="images/modalClose.svg"
+                style={{
+                  position: "absolute",
+                  right: "-16.5rem",
+                  top: "-5rem",
+                }}
+                onClick={handleChangeFolderNameClick}
+              />
+            </div>
+            <input
+              style={{
+                width: "28rem",
+                height: "4rem",
+                borderRadius: "8px",
+                border: "1px solid var(--linkbrary-gray-20, #CCD5E3)",
+                padding: "0 2rem",
+              }}
+              placeholder="변경할 이름 입력"
+            ></input>
+            <button
+              style={{
+                background:
+                  "var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%))",
+                borderRadius: "8px",
+                width: "28rem",
+                height: "2rem",
+                padding: "1.6rem 2rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+              }}
+            >
+              변경하기
+            </button>
+          </Modal>
+        </ModalBackground>
+      ) : null}
+
       {totalData && isTotalClicked && (
         <div className="header-summary">전체</div>
       )}
@@ -166,7 +221,7 @@ const Header = () => {
               <img src="/images/share.svg" />
               공유
             </button>
-            <button>
+            <button onClick={handleChangeFolderNameClick}>
               <img src="/images/pen.svg" />
               이름 변경
             </button>
