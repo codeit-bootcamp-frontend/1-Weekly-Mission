@@ -1,6 +1,24 @@
-import styled from "styled-components";
-import { FolderContext } from "../../context/FolderContext";
-import { useContext } from "react";
+import styled from 'styled-components';
+import { FolderContext } from '../../context/FolderContext';
+import { useContext } from 'react';
+
+function SortingButton({ folderId, isActive, handleClick, buttonIndex, children }) {
+  const { changeFolderId } = useContext(FolderContext); // 컨텍스트에서 changeFolderId 함수를 가져옵니다.
+
+  return (
+    <Button
+      onClick={() => {
+        handleClick(buttonIndex);
+        changeFolderId(folderId);
+      }}
+      className={isActive ? 'active' : ''}
+    >
+      {children}
+    </Button>
+  );
+}
+
+export default SortingButton;
 
 const Button = styled.button`
   display: flex;
@@ -20,21 +38,3 @@ const Button = styled.button`
     color: var(--white);
   }
 `;
-
-const SortingButton = ({ folderId, isActive, handleClick, buttonIndex, children }) => {
-  const { changeFolderId } = useContext(FolderContext); // 컨텍스트에서 changeFolderId 함수를 가져옵니다.
-
-  return (
-    <Button
-      onClick={() => {
-        handleClick(buttonIndex);
-        changeFolderId(folderId);
-      }}
-      className={isActive ? "active" : ""}
-    >
-      {children}
-    </Button>
-  );
-};
-
-export default SortingButton;

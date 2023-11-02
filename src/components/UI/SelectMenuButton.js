@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+function selectMenuButton({ children }) {
+  return (
+    <SelectButton>
+      <p>{children}</p>
+    </SelectButton>
+  );
+}
+
+export default selectMenuButton;
 
 const SelectButton = styled.button`
   display: flex;
@@ -22,13 +32,3 @@ const SelectButton = styled.button`
     }
   }
 `;
-
-const selectMenuButton = ({ children }) => {
-  return (
-    <SelectButton>
-      <p>{children}</p>
-    </SelectButton>
-  );
-};
-
-export default selectMenuButton;

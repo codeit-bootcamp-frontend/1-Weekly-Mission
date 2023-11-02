@@ -7,7 +7,7 @@ import useGetAccount from '../hooks/useGetAccount';
 import useGetShareFolder from '../hooks/useGetShareFolder';
 import { useState, useEffect } from 'react';
 
-const Shared = () => {
+function Shared() {
   const [userId, setUserId] = useState('S'); // 샘플
 
   const account = useGetAccount(userId);
@@ -26,6 +26,6 @@ const Shared = () => {
       <Footer />
     </>
   );
-};
+}
 
 export default Shared;

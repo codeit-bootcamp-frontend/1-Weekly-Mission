@@ -1,10 +1,44 @@
-import { formatDateDifference, formatDate } from "../../global/utils";
-import EmptyCardImg from "../../assets/Card_img.svg";
-import styled from "styled-components";
-import starIcon from "../../assets/star.svg";
-import Kebab from "./Kebab";
+import { formatDateDifference, formatDate } from '../../global/utils';
+import EmptyCardImg from '../../assets/Card_img.svg';
+import styled from 'styled-components';
+import starIcon from '../../assets/star.svg';
+import Kebab from './Kebab';
 
-const CardContainer = styled.div`
+function Card({ item }) {
+  let folderId, createdAt, url, description, imageSource;
+
+  if (item.created_at) {
+    ({ folder_id: folderId, created_at: createdAt, url, description, image_source: imageSource } = item);
+  } else {
+    ({ createdAt, url, description, imageSource } = item);
+  }
+
+  const uploadDate = formatDate(createdAt);
+  const dateDifference = formatDateDifference(createdAt);
+
+  return (
+    <Container>
+      <ImgArea>
+        <StarIcon src={starIcon} alt="즐겨찾기 아이콘" />
+        {imageSource ? <CardImg src={imageSource} alt="이미지" /> : <EmptyImg src={EmptyCardImg} alt="이미지 없음" />}
+      </ImgArea>
+      <InfoArea>
+        <CardExtraInfo>
+          <UploadTime>{dateDifference}</UploadTime>
+          <Kebab />
+        </CardExtraInfo>
+        <a href={url}>
+          <Text>{description}</Text>
+        </a>
+        <Date>{uploadDate}</Date>
+      </InfoArea>
+    </Container>
+  );
+}
+
+export default Card;
+
+const Container = styled.div`
   display: block;
   width: 34rem;
   height: 33.4rem;
@@ -94,37 +128,3 @@ const Date = styled.p`
   text-overflow: ellipsis;
   font-size: 1.4rem;
 `;
-
-const Card = ({ item }) => {
-  let folderId, createdAt, url, description, imageSource;
-
-  if (item.created_at) {
-    ({ folder_id: folderId, created_at: createdAt, url, description, image_source: imageSource } = item);
-  } else {
-    ({ createdAt, url, description, imageSource } = item);
-  }
-
-  const uploadDate = formatDate(createdAt);
-  const dateDifference = formatDateDifference(createdAt);
-
-  return (
-    <CardContainer>
-      <ImgArea>
-        <StarIcon src={starIcon} alt="즐겨찾기 아이콘" />
-        {imageSource ? <CardImg src={imageSource} alt="이미지" /> : <EmptyImg src={EmptyCardImg} alt="이미지 없음" />}
-      </ImgArea>
-      <InfoArea>
-        <CardExtraInfo>
-          <UploadTime>{dateDifference}</UploadTime>
-          <Kebab />
-        </CardExtraInfo>
-        <a href={url}>
-          <Text>{description}</Text>
-        </a>
-        <Date>{uploadDate}</Date>
-      </InfoArea>
-    </CardContainer>
-  );
-};
-
-export default Card;

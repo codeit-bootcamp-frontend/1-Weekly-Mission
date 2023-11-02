@@ -10,26 +10,8 @@ import { useState, useEffect } from 'react';
 import { FolderProvider } from '../context/FolderContext';
 import EmptyLinkScreen from '../components/Folder/Main/EmptyLinkScreen';
 
-const TopArea = styled.div`
-  display: flex;
-  padding: 6rem 32rem 9rem 32rem;
-  flex-direction: column;
-  align-items: center;
-  align-items: space-around;
-  gap: 0.8rem;
-  background: var(--gray0);
-
-  @media (max-width: 1124px) {
-    padding: 6rem 20rem 9rem 20rem;
-  }
-  @media (max-width: 779px) {
-    padding: 6rem 3.25rem 9rem 3.25rem;
-  }
-`;
-
-const Folder = () => {
+function Folder() {
   // const { id } = useParams();  (path='/folder/:id')
-  // 1번 유저로 로그인된 상태로 가정
   const [userId, setUserId] = useState(1);
   const [success, setSuccess] = useState(false);
 
@@ -57,6 +39,24 @@ const Folder = () => {
       <Footer />
     </>
   );
-};
+}
 
 export default Folder;
+
+const TopArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: space-around;
+
+  padding: 6rem 32rem 9rem 32rem;
+  gap: 0.8rem;
+  background: var(--gray0);
+
+  @media (max-width: 1124px) {
+    padding: 6rem 20rem 9rem 20rem;
+  }
+  @media (max-width: 779px) {
+    padding: 6rem 3.25rem 9rem 3.25rem;
+  }
+`;

@@ -1,5 +1,25 @@
-import styled from "styled-components";
-import linkIcon from "../../assets/link_icon.svg";
+import styled from 'styled-components';
+import linkIcon from '../../assets/link_icon.svg';
+
+function LinkAddInput() {
+  return (
+    <Form>
+      <div>
+        <img src={linkIcon} alt="링크 추가 아이콘" />
+        <Input
+          name="searchKeyword"
+          type="text" //  X자 삭제 버튼 없애기 위해 일단 text로 설정
+          autoComplete="on"
+          required
+          placeholder="링크를 추가해 보세요"
+        ></Input>
+      </div>
+      <Button>추가하기</Button>
+    </Form>
+  );
+}
+
+export default LinkAddInput;
 
 const Form = styled.form`
   padding: 1.6rem 2rem;
@@ -62,23 +82,3 @@ const Button = styled.button`
   font-weight: 600;
   border: 0;
 `;
-
-const LinkAddInput = () => {
-  return (
-    <Form>
-      <div>
-        <img src={linkIcon} alt="링크 추가 아이콘" />
-        <Input
-          name="searchKeyword"
-          type="text" //  X자 삭제 버튼 없애기 위해 일단 text로 설정
-          autoComplete="on"
-          required
-          placeholder="링크를 추가해 보세요"
-        ></Input>
-      </div>
-      <Button>추가하기</Button>
-    </Form>
-  );
-};
-
-export default LinkAddInput;

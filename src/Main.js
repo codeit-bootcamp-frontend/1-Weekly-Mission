@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Shared from "./pages/Shared";
-import Folder from "./pages/Folder";
-import Greeting from "./pages/Greeting";
-import SignIn from "./pages/SignIn";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Shared from './pages/Shared';
+import Folder from './pages/Folder';
+import Greeting from './pages/Greeting';
+import SignIn from './pages/SignIn';
 
-const Main = () => {
+function Main() {
   return (
     <BrowserRouter>
       <Routes>
@@ -17,6 +17,6 @@ const Main = () => {
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
 export default Main;

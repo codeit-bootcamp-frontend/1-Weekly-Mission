@@ -1,4 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+function Header({ folderInfo }) {
+  const { folderTitle, owner } = folderInfo;
+  const { profileImageSource, name } = owner;
+
+  return (
+    <Head>
+      <OwnerInfo>
+        <ProfileImg src={profileImageSource} alt="폴더 제작자 프로필 이미지" />
+        <Name>{name}</Name>
+      </OwnerInfo>
+      <FolderTitle>{folderTitle}</FolderTitle>
+    </Head>
+  );
+}
+
+export default Header;
 
 const Head = styled.header`
   display: flex;
@@ -39,7 +56,7 @@ const Name = styled.p`
 
 const FolderTitle = styled.h1`
   text-align: center;
-  font-feature-settings: "clig" off, "liga" off;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-size: 4rem;
   font-weight: 600;
   margin: 0;
@@ -47,20 +64,3 @@ const FolderTitle = styled.h1`
     font-size: 3.2rem;
   }
 `;
-
-const Header = ({ folderInfo }) => {
-  const { folderTitle, owner } = folderInfo;
-  const { profileImageSource, name } = owner;
-
-  return (
-    <Head>
-      <OwnerInfo>
-        <ProfileImg src={profileImageSource} alt="폴더 제작자 프로필 이미지" />
-        <Name>{name}</Name>
-      </OwnerInfo>
-      <FolderTitle>{folderTitle}</FolderTitle>
-    </Head>
-  );
-};
-
-export default Header;

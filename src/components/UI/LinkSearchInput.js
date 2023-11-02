@@ -1,6 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const FormContainer = styled.form`
+function LinkSearchInput() {
+  return (
+    <FormContainer>
+      <SearchInput
+        name="searchKeyword"
+        type="search"
+        autoComplete="on"
+        required
+        placeholder="링크를 검색해 보세요."
+      ></SearchInput>{' '}
+      {/*돋보기 아이콘 삽입해야 함*/}
+    </FormContainer>
+  );
+}
+
+const FormContainer = styled.form`
   display: flex;
   height: 4.5rem;
   width: 106rem;
@@ -11,7 +26,7 @@ export const FormContainer = styled.form`
   }
 `;
 
-export const SearchInput = styled.input`
+const SearchInput = styled.input`
   width: 100%;
   padding: 1.5rem 1.6rem;
   border-radius: 1rem;
@@ -27,13 +42,5 @@ export const SearchInput = styled.input`
     padding: 1.3rem 1.6rem;
   }
 `;
-
-const LinkSearchInput = () => {
-  return (
-    <FormContainer>
-      <SearchInput name="searchKeyword" type="search" autoComplete="on" required placeholder="링크를 검색해 보세요."></SearchInput> {/*돋보기 아이콘 삽입해야 함*/}
-    </FormContainer>
-  );
-};
 
 export default LinkSearchInput;

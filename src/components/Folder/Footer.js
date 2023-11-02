@@ -4,7 +4,37 @@ import youtubeIcon from '../../assets/Footer-youtube-icon.svg';
 import instagramIcon from '../../assets/Footer-instagram-icon.svg';
 import styled from 'styled-components';
 
-export const FooterContainer = styled.footer`
+function Footer() {
+  return (
+    <Container>
+      <Content>
+        <CodeitInfo>©codeit - 2023</CodeitInfo>
+        <Info>
+          <a href="./privacy">Privacy Policy</a>
+          <a href="./faq">FAQ</a>
+        </Info>
+        <WebsiteLinks>
+          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer noopener">
+            <img src={facebookIcon} alt="페이스북 아이콘: 누르면 해당 홈페이지로 이동" />
+          </a>
+          <a target="_blank" href="https://twitter.com/" rel="noreferrer noopener">
+            <img src={twitterIcon} alt="트위터 아이콘: 누르면 해당 홈페이지로 이동" />
+          </a>
+          <a target="_blank" href="https://www.youtube.com/" rel="noreferrer noopener">
+            <img src={youtubeIcon} alt="유튜브 아이콘: 누르면 해당 홈페이지로 이동" />
+          </a>
+          <a target="_blank" href="https://www.instagram.com/" rel="noreferrer noopener">
+            <img src={instagramIcon} alt="인스타그램 아이콘: 누르면 해당 홈페이지로 이동" />
+          </a>
+        </WebsiteLinks>
+      </Content>
+    </Container>
+  );
+}
+
+export default Footer;
+
+const Container = styled.footer`
   margin-top: 12rem;
   display: flex;
   justify-content: space-around;
@@ -26,7 +56,7 @@ export const FooterContainer = styled.footer`
   }
 `;
 
-export const FooterContent = styled.div`
+const Content = styled.div`
   display: flex;
   flex: 0 1 192rem;
   justify-content: space-between;
@@ -38,7 +68,7 @@ export const FooterContent = styled.div`
   }
 `;
 
-export const CodeitInfo = styled.p`
+const CodeitInfo = styled.p`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -53,7 +83,7 @@ export const CodeitInfo = styled.p`
   }
 `;
 
-export const Info = styled.div`
+const Info = styled.div`
   display: flex;
   width: 18.1111rem;
   align-items: flex-start;
@@ -67,38 +97,8 @@ export const Info = styled.div`
   }
 `;
 
-export const WebsiteLinks = styled.div`
+const WebsiteLinks = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
 `;
-
-const Footer = () => {
-  return (
-    <FooterContainer>
-      <FooterContent>
-        <CodeitInfo>©codeit - 2023</CodeitInfo>
-        <Info>
-          <a href="./privacy">Privacy Policy</a>
-          <a href="./faq">FAQ</a>
-        </Info>
-        <WebsiteLinks>
-          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer noopener">
-            <img src={facebookIcon} alt="페이스북 아이콘: 누르면 해당 홈페이지로 이동" />
-          </a>
-          <a target="_blank" href="https://twitter.com/" rel="noreferrer noopener">
-            <img src={twitterIcon} alt="트위터 아이콘: 누르면 해당 홈페이지로 이동" />
-          </a>
-          <a target="_blank" href="https://www.youtube.com/" rel="noreferrer noopener">
-            <img src={youtubeIcon} alt="유튜브 아이콘: 누르면 해당 홈페이지로 이동" />
-          </a>
-          <a target="_blank" href="https://www.instagram.com/" rel="noreferrer noopener">
-            <img src={instagramIcon} alt="인스타그램 아이콘: 누르면 해당 홈페이지로 이동" />
-          </a>
-        </WebsiteLinks>
-      </FooterContent>
-    </FooterContainer>
-  );
-};
-
-export default Footer;
