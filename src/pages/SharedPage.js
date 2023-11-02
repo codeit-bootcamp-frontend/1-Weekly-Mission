@@ -11,6 +11,7 @@ function SharedPage() {
   const [cards, setCards] = useState([]);
   const [isLoading, loadingError, getSampleFolderAsync] =
     useAsync(getSampleFolder);
+
   const loadLink = async () => {
     const {
       folder,
@@ -33,7 +34,11 @@ function SharedPage() {
         <LoadingPage />
       ) : (
         <div className={style.root}>
-          <FolderInfo folderInfo={folderInfo} />
+          <FolderInfo
+            userName={folderInfo?.owner?.name}
+            folderName={folderInfo?.name}
+            profileImageSource={folderInfo?.owner?.profileImageSource}
+          />
           <div className={style.section}>
             <Search />
             <SharedPageCards cards={cards} />
