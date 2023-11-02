@@ -15,7 +15,7 @@ function Card({ imageSource, image_source, title, description, createdAt, url, c
       <TextBox>
         <Wrapper>
           <TimeDiff>{timeFlow(createdAt || created_at)}</TimeDiff>
-          <Kebab />
+          <Kebab url={url} />
         </Wrapper>
         {title && <Title>{title}</Title>}
         <Description>{description || noDiscriptMsg}</Description>

@@ -5,6 +5,7 @@ function BlueBtn({ type, children }) {
     <>
       {type === 'linkAdd' && <LinkAddBtn>{children}</LinkAddBtn>}
       {type === 'login' && <LoginBtn>{children}</LoginBtn>}
+      {type === 'modal' && <ModalBtn>{children}</ModalBtn>}
     </>
   );
 }
@@ -23,7 +24,6 @@ const BlueGrd = styled.button`
   font-weight: 600;
   text-decoration: none;
 `;
-
 const LinkAddBtn = styled(BlueGrd)`
   position: absolute;
   top: 16px;
@@ -38,7 +38,6 @@ const LinkAddBtn = styled(BlueGrd)`
     right: 10px;
   }
 `;
-
 const LoginBtn = styled(BlueGrd)`
   padding: 16px 20px;
   width: 128px;
@@ -55,5 +54,14 @@ const LoginBtn = styled(BlueGrd)`
     padding: 10px 16px;
     font-size: 1.4rem;
     width: 80px;
+  }
+`;
+const ModalBtn = styled(BlueGrd)`
+  width: 280px;
+  padding: 16px 20px;
+  margin-top: 24px;
+  font-size: 1.6rem;
+  &:hover {
+    cursor: pointer;
   }
 `;

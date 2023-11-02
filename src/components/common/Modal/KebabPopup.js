@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-function KebabModal() {
+function KebabPopup({ onOpenDelete, onOpenFolderAdd }) {
   return (
     <Container>
-      <Button>삭제하기</Button>
-      <Button>폴더에 추가</Button>
+      <Button onClick={onOpenDelete}>삭제하기</Button>
+      <Button onClick={onOpenFolderAdd}>폴더에 추가</Button>
     </Container>
   );
 }
 
-export default KebabModal;
+export default KebabPopup;
 
 const Container = styled.div`
   display: flex;
@@ -18,7 +18,6 @@ const Container = styled.div`
   position: absolute;
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
 `;
-
 const Button = styled.button`
   width: 100px;
   background-color: white;
