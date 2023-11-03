@@ -119,6 +119,13 @@ const Header = () => {
     e.preventDefault();
   }
 
+  const currentLink = `localhost:3000/shared?user={1}&folder=${singleFolderDataId}`;
+
+  function handleFaceBookClick(e, url) {
+    e.preventDefault();
+    window.open(`http://www.facebook.com/sharer.php?u=${url}`);
+  }
+
   return (
     <>
       <header style={{ padding: "6rem 0 9rem 0" }}>
@@ -322,6 +329,7 @@ const Header = () => {
                 카카오톡
               </button>
               <button
+                onClick={(e) => handleFaceBookClick(e, currentLink)}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -336,7 +344,7 @@ const Header = () => {
                 페이스북
               </button>
               <button
-                onClick={() => handleCopyClipBoard("temp link")}
+                onClick={() => handleCopyClipBoard(currentLink)}
                 style={{
                   display: "flex",
                   flexDirection: "column",
