@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { getFolder } from "../api/apiUrl";
-import NavAndFooterFixed from "../components/js/NavAndFooterFixed";
-import useAsync from "../hooks/useAsync";
-import FolderOwner from "../components/js/FolderOwner";
-import Search from "../components/js/Search";
-import CardList from "../components/js/CardList";
+import { getFolder } from "../../../api/apiUrl";
+import NavAndFooterFixed from "../../../components/js/NavAndFooterFixed";
+import useAsync from "../../../hooks/useAsync";
+import FolderOwner from "../../../components/js/FolderOwner";
+import Search from "../../../components/js/Search";
+import CardList from "../../../components/js/CardList";
 
 function Shared() {
   const [personalFolder, setPersonalFolder] = useState({});

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAccount } from "../../api/apiUrl";
+import { getAccount } from "../../../api/apiUrl";
 import styled from "styled-components";
-import Profile from "./NavProfile";
-import logoImg from "../../Assets/logo.svg";
+import Profile from "../NavProfile";
+import logoImg from "Assets/logo.svg";
 
 function Nav() {
   const [account, setAccount] = useState({});

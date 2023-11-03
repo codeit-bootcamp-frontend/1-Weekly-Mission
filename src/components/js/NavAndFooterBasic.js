@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Footer from "./Footer";
-import { BasicHeader } from "./Header";
+import Footer from "./footer/Footer";
+import { BasicHeader } from "./header/Header";
 
 function NavAndFooterBasic({ children }) {
   return (

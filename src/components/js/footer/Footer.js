@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import facebookIcon from "../../Assets/facebookIcon.svg";
-import twitterIcon from "../../Assets/twitterIcon.svg";
-import youtubeIcon from "../../Assets/youtubeIcon.svg";
-import instagramIcon from "../../Assets/instagramIcon.svg";
+import facebookIcon from "Assets/facebookIcon.svg";
+import twitterIcon from "Assets/twitterIcon.svg";
+import youtubeIcon from "Assets/youtubeIcon.svg";
+import instagramIcon from "Assets/instagramIcon.svg";
 
 const urlList = {
   facebook: { url: "https://www.facebook.com/", icon: facebookIcon },

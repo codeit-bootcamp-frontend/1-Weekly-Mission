@@ -1,16 +1,20 @@
 import styled from "styled-components";
-import NavAndFooterBasic from "../components/js/NavAndFooterBasic";
+import NavAndFooterBasic from "../../../components/js/NavAndFooterBasic";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { getFolderInformations, getUserLinks, getAccount } from "../api/apiUrl";
-import useAsync from "../hooks/useAsync";
-import LinkBar from "../components/js/LinkBar";
-import Search from "../components/js/Search";
-import FolderMenu from "../components/js/FolderMenu";
-import CardListFolder from "../components/js/CardListFolder";
-import FloatButton from "../components/js/FloatButton";
-import LinksNotExist from "../components/js/LinksNotExist";
+import {
+  getFolderInformations,
+  getUserLinks,
+  getAccount,
+} from "../../../api/apiUrl";
+import useAsync from "../../../hooks/useAsync";
+import LinkBar from "../../../components/js/LinkBar";
+import Search from "../../../components/js/Search";
+import FolderMenu from "../../../components/js/FolderMenu";
+import CardListFolder from "../../../components/js/CardListFolder";
+import FloatButton from "../../../components/js/FloatButton";
+import LinksNotExist from "../../../components/js/LinksNotExist";
 import AddLinktoFolderModalContainer from "components/js/modals/container/AddLinktoFolderModalContainer";
 import FolderAddModal from "components/js/modals/container/FolderAddModal";
 import FolderDeleteModal from "components/js/modals/container/FolderDeleteModal";

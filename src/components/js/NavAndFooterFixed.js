@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Footer from "./Footer";
-import { FixedHeader } from "./Header";
+import Footer from "./footer/Footer";
+import { FixedHeader } from "./header/Header";
 
 function NavAndFooterFixed({ children }) {
   return (
