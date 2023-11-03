@@ -6,8 +6,12 @@ export function FolderContextProvider({ defaultValue = [], children }) {
   const [folderNameList, setFolderNameList] = useState(defaultValue);
 
   const handleFolderUpdate = (folderList) => {
-    const folderNames = folderList.map((folder) => folder.name);
-    setFolderNameList(folderNames);
+    const newFolderList = folderList.map((folder) => {
+      const { name, link } = folder;
+      return { name, link };
+    });
+
+    setFolderNameList(newFolderList);
   };
 
   return (
