@@ -1,7 +1,7 @@
 import Button from './common/Button';
 import logo from '../assets/images/logo.svg';
 import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const INIT_USER = {
@@ -18,10 +18,11 @@ const Account = ({ user }) => {
   );
 };
 
-export default function Nav({ user = INIT_USER }) {
+export default function Nav({ user = INIT_USER, urlPath }) {
   const [isSticky, setIsSticky] = useState('sticky');
-  const urlPath = useLocation().pathname;
+
   useEffect(() => {
+    console.log(urlPath);
     if (urlPath === '/folder') {
       setIsSticky('static');
     } else {
@@ -46,6 +47,7 @@ const Header = styled.header`
   position: ${({ $isSticky }) => $isSticky};
   width: 100%;
   z-index: 2;
+  top: 0;
 `;
 
 const AuthButton = styled(Button)`

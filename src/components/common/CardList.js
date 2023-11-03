@@ -1,14 +1,21 @@
+// import { useState } from 'react';
 import Card from './Card';
 import styled from 'styled-components';
 
-export default function CardList({ cards }) {
+export default function CardList({ cards, urlPath }) {
   if (cards.length === 0) {
     return <Div>저장된 링크가 없습니다</Div>;
   }
   return (
     <Container>
-      {cards.map((card) => (
-        <Card value={card} key={card.id} />
+      {cards.map((card, idx) => (
+        <Card
+          value={card}
+          key={card.id}
+          urlPath={urlPath}
+          // onKebabClick={handleKebabClick}
+          // kebabMenuShow={kebabMenuShow}
+        />
       ))}
     </Container>
   );

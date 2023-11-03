@@ -5,7 +5,7 @@ import AddFolderModal from '../modal/AddFolderModal';
 import DeleteModal from '../modal/DeleteModal';
 import ShareFolder from '../modal/ShareFolder';
 
-const modal = {
+const Modals = {
   '폴더 이름 변경': Rename,
   '폴더 추가': AddFolderModal,
   '폴더 삭제': DeleteModal,
@@ -21,7 +21,7 @@ export default function Modal({
   if (!isOpen) {
     return <></>;
   } else {
-    const ModalType = modal[currentModal];
+    const ModalType = Modals[currentModal];
     return (
       <ModalBackground>
         <Container>

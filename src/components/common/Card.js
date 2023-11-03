@@ -1,32 +1,68 @@
 import defaultImg from '../../assets/images/no-image.png';
-import kebabImg from '../../assets/images/kebab.svg';
 import starImg from '../../assets/images/star.svg';
+import kebabImg from '../../assets/images/kebab.svg';
 import styled from 'styled-components';
+import KebabPopOver from '../Folder/KebabPopOver';
+import { useEffect, useRef, useState } from 'react';
 
 const moment = require('moment');
 
-export default function Card({ value }) {
-  let { imageSource = defaultImg } = value;
+export default function Card({
+  value,
+  urlPath /*kebabMenuShow, onKebabClick*/,
+}) {
+  const [kebabMenuShow, setKebabMenuShow] = useState(false);
+  const kebabRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', (e) => {
+      if (kebabRef.current !== null) {
+        if (!kebabRef.current.contains(e.target)) {
+          setKebabMenuShow(false);
+        }
+      }
+    });
+  });
+
+  const handleKebabClick = (e) => {
+    e.preventDefault();
+    setKebabMenuShow(true);
+    if (kebabMenuShow) {
+      setKebabMenuShow(false);
+    }
+  };
+  let { imageSource = defaultImg, createdAt } = value;
   if (value.image_source) {
     imageSource = value.image_source;
+    createdAt = value.created_at;
   }
   const imageStyle = {
     backgroundImage: `url(${imageSource})`,
   };
-  const ago = moment(value.createdAt).fromNow();
-  const date = moment(value.createdAt).format('YYYY. MM. DD');
+  const ago = moment(createdAt).fromNow();
+  const date = moment(createdAt).format('YYYY. MM. DD');
 
-  const handleKebab = (e) => {
-    e.preventDefault();
-  };
+  const show = urlPath === '/folder';
+
   return (
     <Container href={value.url} target='_blank' rel='noreferrer noopener'>
-      <Star src={starImg} alt='즐겨찾기' />
-      <CardImg style={imageStyle}></CardImg>
+      {show && <Star src={starImg} alt='즐겨찾기' />}
+      <CardImgBox>
+        <CardImg style={imageStyle}></CardImg>
+      </CardImgBox>
       <TextBox>
         <Box>
           <div>{ago}</div>
-          <Kebab src={kebabImg} alt='케밥' onClick={handleKebab} />
+          {show && (
+            <KebabBox>
+              <img
+                src={kebabImg}
+                alt='리스트 메뉴'
+                onClick={handleKebabClick}
+              />
+              {kebabMenuShow && <KebabPopOver kebabRef={kebabRef} />}
+            </KebabBox>
+          )}
         </Box>
         <Description>{value.description}</Description>
         <div>{date}</div>
@@ -34,11 +70,6 @@ export default function Card({ value }) {
     </Container>
   );
 }
-
-const Kebab = styled.img`
-  position: relative;
-  z-index: 2;
-`;
 
 const Star = styled.img`
   position: absolute;
@@ -53,20 +84,11 @@ const Box = styled.div`
   justify-content: space-between;
 `;
 
-const Container = styled.a`
-  text-decoration: none;
-  width: 340px;
-  height: 334px;
-  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
-  border-radius: 15px;
+const CardImgBox = styled.div`
+  width: 100%;
   overflow: hidden;
-  background-color: var(--linkbrary-white);
-  position: relative;
-  &:hover {
-    box-sizing: border-box;
-    border: 2px solid var(--linkbrary-primary-color);
-    border-color: var(--linkbrary-primary-color);
-  }
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 `;
 
 const CardImg = styled.div`
@@ -75,7 +97,17 @@ const CardImg = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  &:hover {
+  overflow: hidden;
+`;
+
+const Container = styled.a`
+  text-decoration: none;
+  width: 340px;
+  height: 334px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  position: relative;
+  border-radius: 15px;
+  &:hover ${CardImg} {
     transform: scale(1.3);
     transition: 0.5s;
   }
@@ -98,7 +130,10 @@ const Description = styled.div`
 const TextBox = styled.div`
   color: #000;
   padding: 15px 20px;
-  background-color: var(--linkbrary-white);
   position: relative;
-  z-index: 1;
+  background-color: var(--linkbrary-white);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 `;
+
+const KebabBox = styled.div``;

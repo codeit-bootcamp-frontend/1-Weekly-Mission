@@ -2,7 +2,7 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import getData from './services/api';
 import { useEffect, useState, useCallback } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -14,6 +14,7 @@ const Container = styled.div`
 
 function App() {
   const [user, setUser] = useState({});
+  const urlPath = useLocation().pathname;
 
   const getUserData = useCallback(async () => {
     const { data } = await getData('users/1');
@@ -27,8 +28,8 @@ function App() {
   return (
     <Container className='App'>
       <div>
-        <Nav user={user} />
-        <Outlet />
+        <Nav user={user} urlPath={urlPath} />
+        <Outlet context={urlPath} />
       </div>
       <Footer />
     </Container>

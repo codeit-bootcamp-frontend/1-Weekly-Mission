@@ -7,6 +7,7 @@ import Option from '../components/Folder/Options';
 import Modal from '../components/common/Modal';
 import styled from 'styled-components';
 import getData from '../services/api';
+import { useOutletContext } from 'react-router-dom';
 
 const INIT_FOLDER = {
   name: '전체',
@@ -19,6 +20,7 @@ export default function Folder() {
   const [currentFolder, setCurrentFolder] = useState(INIT_FOLDER);
   const [isOpen, setIsOpen] = useState(false);
   const [currentModal, setCurrentModal] = useState('');
+  const urlPath = useOutletContext();
 
   const getFolderData = useCallback(async (id) => {
     const { data } = await getData('users/1/folders');
@@ -61,7 +63,7 @@ export default function Folder() {
               currentFolder={currentFolder}
               onModalOpen={handleModalOpen}
             />
-            <CardList cards={links} />
+            <CardList cards={links} urlPath={urlPath} />
           </div>
         ) : (
           <Div>저장된 폴더가 없습니다</Div>
