@@ -1,5 +1,5 @@
 import * as S from "./linkCardList.style.js";
-import LinkCard from "components/linkCard/LinkCard";
+import LinkCard from "components/linkCard/LinkCard.jsx";
 
 export default function LinkCardList({ linkList, page }) {
   return (
