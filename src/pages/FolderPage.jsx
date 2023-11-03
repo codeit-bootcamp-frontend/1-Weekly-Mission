@@ -7,6 +7,7 @@ import useAsync from '../hooks/useAsync';
 import { getFolders } from '../api/api';
 import { useCallback, useEffect, useState } from 'react';
 import MobileFolderButton from '../components/MobileFolderButton';
+import Modal from '../components/Modal';
 
 function FolderPage() {
   const [folderList, setFolderList] = useState([]);
@@ -27,15 +28,17 @@ function FolderPage() {
   }, []);
 
   return (
-    <Container>
-      <MobileFolderButton />
-      <AddLink />
-      <ContentContainer>
-        <SearchBar />
-        <AddFolderButton>폴더 추가</AddFolderButton>
-        <Folder folderList={folderList} />
-      </ContentContainer>
-    </Container>
+    <>
+      <Container>
+        <MobileFolderButton />
+        <AddLink />
+        <ContentContainer>
+          <SearchBar />
+          <AddFolderButton>폴더 추가</AddFolderButton>
+          <Folder folderList={folderList} />
+        </ContentContainer>
+      </Container>
+    </>
   );
 }
 
