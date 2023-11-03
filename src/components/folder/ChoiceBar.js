@@ -1,5 +1,7 @@
 import { CHOICES } from 'constants/default';
 import { useState } from 'react';
+import { findFolderTitle } from 'utils/handleFolderData';
+import { handleModalClose, handleModalOpen } from 'utils/handleModal';
 import styled from 'styled-components';
 import ModalPortal from 'components/common/Modal/ModalPortal';
 import ModalFrame from 'components/common/Modal/ModalFrame';
@@ -15,25 +17,20 @@ function ChoiceBar({ folders, selectedFolderId }) {
   const [share, setShare] = useState(false);
   const [modify, setModify] = useState(false);
   const [del, setDel] = useState(false);
-  const folderTitle = folders.find((folder) => selectedFolderId === folder.id).name;
+  const folderTitle = findFolderTitle(folders, selectedFolderId);
 
-  function handleModalOpen(event) {
+  function handleChoiceClick(event) {
     const target = event.target.closest('div').children[1];
-    if (target.textContent === '공유') return setShare(true);
-    if (target.textContent === '이름 변경') return setModify(true);
-    if (target.textContent === '삭제') return setDel(true);
-  }
-  function handleModalClose() {
-    setShare(false);
-    setModify(false);
-    setDel(false);
+    if (target.textContent === '공유') return handleModalOpen(setShare);
+    if (target.textContent === '이름 변경') return handleModalOpen(setModify);
+    if (target.textContent === '삭제') return handleModalOpen(setDel);
   }
 
   return (
     <>
       <Box>
         {CHOICES.map((choice) => (
-          <Wrapper key={choice.text} onClick={handleModalOpen}>
+          <Wrapper key={choice.text} onClick={handleChoiceClick}>
             <img src={choice.src} alt={choice.alt} />
             <Text>{choice.text}</Text>
           </Wrapper>
@@ -42,13 +39,9 @@ function ChoiceBar({ folders, selectedFolderId }) {
       {(share || modify || del) && (
         <ModalPortal>
           <ModalFrame>
-            {modify && <InputModal title="폴더 이름 변경" btn="변경하기" onClickClose={handleModalClose} />}
-            {del && (
-              <DeleteModal data={folderTitle} onClickClose={handleModalClose}>
-                폴더 삭제
-              </DeleteModal>
-            )}
-            {share && <ShareModal data={folderTitle} folderId={selectedFolderId} onClickClose={handleModalClose} />}
+            {share && <ShareModal data={folderTitle} folderId={selectedFolderId} onClickClose={() => handleModalClose(setShare)} />}
+            {modify && <InputModal title="폴더 이름 변경" btn="변경하기" onClickClose={() => handleModalClose(setModify)} />}
+            {del && <DeleteModal title="폴더 삭제" data={folderTitle} onClickClose={() => handleModalClose(setDel)} />}
           </ModalFrame>
         </ModalPortal>
       )}

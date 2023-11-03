@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 import ModalFrame from './ModalFrame';
 import { SHARE_LIST } from 'constants/default';
-import { LOCAL_HOST } from 'constants/path';
 import { shareKakaotalk, shareFacebook, copyLink } from 'utils/shareLink';
 
 function ShareModal({ data = null, folderId, onClickClose }) {
-  const SHARE_URL = `${LOCAL_HOST}/shared?user=1&folder=${folderId}`;
+  const SHARE_URL = `shared?user=1&folder=${folderId}`;
 
   function handleShareClick(event) {
     const target = event.target.closest('div').children[1];
-    if (target.textContent === '카카오톡') shareKakaotalk(data, SHARE_URL);
-    if (target.textContent === '페이스북') shareFacebook(SHARE_URL);
-    if (target.textContent === '링크 복사') copyLink(SHARE_URL);
+    if (target.textContent === '카카오톡') return shareKakaotalk(data, SHARE_URL);
+    if (target.textContent === '페이스북') return shareFacebook(SHARE_URL);
+    if (target.textContent === '링크 복사') return copyLink(SHARE_URL);
   }
 
   return (

@@ -11,7 +11,8 @@ import linkCopyIcon from 'assets/images/share_copy.svg';
 
 export const SAMPLE_ID = -2;
 export const ALL_ID = -1;
-export const noDiscriptMsg = '링크 설명이 없어요 💦';
+export const NO_DISCRIPT_MSG = '링크 설명이 없어요 💦';
+
 export const CHOICES = [
   {
     src: shareIcon,
@@ -29,6 +30,7 @@ export const CHOICES = [
     text: '삭제',
   },
 ];
+
 export const SNS_LIST = [
   {
     src: facebookIcon,

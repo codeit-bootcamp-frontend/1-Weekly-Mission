@@ -1,3 +1,5 @@
+import { LOCAL_HOST, HOST } from 'constants/path';
+
 /**
  * @param {*} title 공유할 폴더 title
  * @param {*} url 공유할 링크의 url
@@ -16,7 +18,7 @@ export function shareKakaotalk(title, url) {
 }
 
 export function shareFacebook(url) {
-  window.open(`http://www.facebook.com/sharer.php?u=${url}`);
+  window.open(`http://www.facebook.com/sharer.php?u=${HOST}/${url}`);
 }
 
 /**
@@ -24,7 +26,7 @@ export function shareFacebook(url) {
  */
 export async function copyLink(url) {
   try {
-    await navigator.clipboard.writeText(url);
+    await navigator.clipboard.writeText(`${HOST}/${url}`);
     alert('클립보드에 링크 복사를 성공했어요 ~!');
   } catch (error) {
     alert('클립보드에 링크 복사를 실패했어요ㅠ_ㅠ');

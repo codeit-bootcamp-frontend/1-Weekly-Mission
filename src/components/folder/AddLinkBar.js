@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { handleModalClose, handleModalOpen } from 'utils/handleModal';
 import styled from 'styled-components';
 import BlueBtn from 'components/common/Button/BlueBtn';
 import linkIcon from 'assets/images/link.svg';
-import AddToFolderModal from 'components/common/Modal/AddToFolderModal';
 import ModalFrame from 'components/common/Modal/ModalFrame';
 import ModalPortal from 'components/common/Modal/ModalPortal';
+import AddToFolderModal from 'components/common/Modal/AddToFolderModal';
 
 function AddLinkBar() {
   const [modal, setModal] = useState(false);
@@ -14,11 +15,7 @@ function AddLinkBar() {
     event.preventDefault();
     const value = event.target.children[0].children[0].value;
     setInputValue(value);
-    setModal(true);
-  }
-
-  function handleFolderAddClose() {
-    setModal(false);
+    handleModalOpen(setModal);
   }
 
   return (
@@ -32,7 +29,7 @@ function AddLinkBar() {
       {modal && (
         <ModalPortal>
           <ModalFrame>
-            <AddToFolderModal url={inputValue} onClickClose={handleFolderAddClose} />
+            <AddToFolderModal url={inputValue} onClickClose={() => handleModalClose(setModal)} />
           </ModalFrame>
         </ModalPortal>
       )}
@@ -71,7 +68,7 @@ const Input = styled.input`
   background-repeat: no-repeat;
   background-position: 20px 50%;
   border-radius: 15px;
-  border: 1px solid var(--gray-20);
+  border: 1px solid var(--primary-color);
   background-color: white;
   font-size: 1.6rem;
   outline: none;
@@ -79,7 +76,7 @@ const Input = styled.input`
     color: var(--gray-60);
   }
   &:focus {
-    border: 1px solid var(--primary-color);
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
   }
   /* Mobile */
   @media (max-width: 767px) {

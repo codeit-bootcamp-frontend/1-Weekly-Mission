@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { handleModalOpen, handleModalClose } from 'utils/handleModal.js';
 import KebabPopup from './Modal/KebabPopup.js';
 import DeleteModal from './Modal/DeleteModal.js';
 import ModalPortal from './Modal/ModalPortal.js';
@@ -15,37 +16,15 @@ function Kebab({ url }) {
     setPopup(!popup);
   }
 
-  function handleDeleteOpen(event) {
-    event.preventDefault();
-    setDeleteModal(true);
-  }
-
-  function handleDeleteClose() {
-    setDeleteModal(false);
-  }
-
-  function handleFolderAddOpen(event) {
-    event.preventDefault();
-    setFolderAddModal(true);
-  }
-
-  function handleFolderAddClose() {
-    setFolderAddModal(false);
-  }
-
   return (
     <>
       <div onClick={handlePopupOpen}>
         <img src={kebabIcon} alt="kebab" />
-        {popup && <KebabPopup url={url} onOpenDelete={handleDeleteOpen} onOpenFolderAdd={handleFolderAddOpen} />}
+        {popup && <KebabPopup url={url} onOpenDelete={() => handleModalOpen(setDeleteModal)} onOpenFolderAdd={() => handleModalOpen(setFolderAddModal)} />}
       </div>
       <ModalPortal>
-        {deleteModal && (
-          <DeleteModal data={url} onClickClose={handleDeleteClose}>
-            링크 삭제
-          </DeleteModal>
-        )}
-        {folderAddModal && <AddToFolderModal url={url} onClickClose={handleFolderAddClose} />}
+        {deleteModal && <DeleteModal title="링크 삭제" data={url} onClickClose={() => handleModalClose(setDeleteModal)} />}
+        {folderAddModal && <AddToFolderModal url={url} onClickClose={() => handleModalClose(setFolderAddModal)} />}
       </ModalPortal>
     </>
   );

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { ALL_ID } from 'constants/default';
+import { findFolderTitle } from 'utils/handleFolderData';
 
 function FolderTitle({ folders, selectedFolderId }) {
-  let selectedFolder = folders.find((folder) => selectedFolderId === folder.id);
-  const title = selectedFolderId === ALL_ID ? '전체' : selectedFolder.name;
+  const title = findFolderTitle(folders, selectedFolderId);
 
   return <FolderTitleStyle>{title}</FolderTitleStyle>;
 }

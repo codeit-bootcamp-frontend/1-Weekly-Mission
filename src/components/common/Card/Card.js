@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { noDiscriptMsg } from 'constants/default';
+import { NO_DISCRIPT_MSG } from 'constants/default';
 import { timeFlow, formatDate } from 'utils/timeFlow.js';
 import Kebab from 'components/common/Kebab.js';
 import defaultImg from 'assets/images/no-Image.svg';
@@ -18,7 +18,7 @@ function Card({ imageSource, image_source, title, description, createdAt, url, c
           <Kebab url={url} />
         </Wrapper>
         {title && <Title>{title}</Title>}
-        <Description>{description || noDiscriptMsg}</Description>
+        <Description>{description || NO_DISCRIPT_MSG}</Description>
         <CreatedAt>{formatDate(createdAt || created_at)}</CreatedAt>
       </TextBox>
     </Container>

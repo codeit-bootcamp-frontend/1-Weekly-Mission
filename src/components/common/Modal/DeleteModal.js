@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import ModalFrame from './ModalFrame';
 
-function DeleteModal({ children, data = null, onClickClose }) {
+function DeleteModal({ title, data = null, onClickClose }) {
   return (
     <ModalFrame onClickClose={onClickClose}>
-      <Title>{children}</Title>
+      <Title>{title}</Title>
       <Data>{data}</Data>
       <RedButton>삭제하기</RedButton>
     </ModalFrame>
