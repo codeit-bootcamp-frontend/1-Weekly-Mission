@@ -10,6 +10,7 @@ import { getSelectItems, getUserLogin, getRenderLinks } from "../../api";
 import SelectPart from "./SelectPart";
 import SearchBar from "./SearchBar";
 import { ModalAddFolder } from "../Modal";
+
 function Folder() {
   const [selectItems, setSelectItem] = useState([]);
   const [userLogin, setUserLogin] = useState([]);
@@ -18,7 +19,7 @@ function Folder() {
   const [nowFolderId, setNowFolderId] = useState("");
   const [selected, setSelected] = useState("전체");
   const [openAddFolder, setOpenAddModal] = useState(false);
-
+  const [userId, setUserId] = useState("");
   const handleSelectItems = async () => {
     try {
       const { data } = await getSelectItems();
@@ -32,6 +33,9 @@ function Folder() {
     //nav 상단 우측
     try {
       const { data } = await getUserLogin();
+      const userInfo = data[0].email;
+      const userMainId = userInfo.split("@")[0];
+      setUserId(userMainId);
       const result = data[0];
       const { email: userEmail, image_source: userImage } = result;
       setUserLogin({ userEmail, userImage });
@@ -65,6 +69,9 @@ function Folder() {
     setFolderName(value);
     setNowFolderId(key);
   };
+
+  const shareUrl = (userId, folderId) => {};
+
   useEffect(() => {
     // 마운트 시 렌더링 되는 것들
     initailize();
@@ -95,6 +102,7 @@ function Folder() {
         selected={selected}
         nowFolderId={nowFolderId}
         openMAF={openMAF}
+        userId={userId}
       />
       {userLinks.length !== 0 ? (
         <MainSpace items={userLinks} openMAF={openMAF} />

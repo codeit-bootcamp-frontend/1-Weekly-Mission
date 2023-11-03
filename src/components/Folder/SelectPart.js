@@ -18,6 +18,7 @@ function SelectPart({
   folderName,
   nowFolderId,
   openMAF,
+  userId,
 }) {
   return (
     <div className="SelectPart">
@@ -44,7 +45,11 @@ function SelectPart({
           <img className="add btn" src={add} alt="" />
         </button>
       </div>
-      <LinkInfo folderName={folderName} />
+      <LinkInfo
+        folderName={folderName}
+        nowFolderId={nowFolderId}
+        userId={userId}
+      />
     </div>
   );
 }

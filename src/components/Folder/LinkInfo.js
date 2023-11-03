@@ -29,7 +29,7 @@ export const LinkOptions = [
   },
 ];
 
-function LinkInfo({ folderName }) {
+function LinkInfo({ folderName, nowFolderId, userId }) {
   const [modalLinkName, setModalLinkName] = useState("");
 
   const handleModalLink = (e) => {
@@ -57,6 +57,8 @@ function LinkInfo({ folderName }) {
           LinkOptions={LinkOptions[0]}
           folderName={folderName}
           onClose={handleCloseModalLink}
+          nowFolderId={nowFolderId}
+          userId={userId}
         />
       ) : (
         false

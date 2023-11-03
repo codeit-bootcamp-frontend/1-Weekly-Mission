@@ -4,7 +4,9 @@ import facebook from "../images/facebook.svg";
 import kakao from "../images/Kakao.svg";
 import link from "../images/Addlink.svg";
 import check from "../images/check.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import shareKakao from "../ShareSns.js";
+import { getUserLogin } from "../api.js";
 export function Modalkebab({ url, title, buttonTitle, color, onClose }) {
   return (
     <ModalWrapper>
@@ -16,7 +18,39 @@ export function Modalkebab({ url, title, buttonTitle, color, onClose }) {
   );
 }
 
-export function ModalLink({ LinkOptions, folderName, onClose }) {
+export function ModalLink({
+  LinkOptions,
+  folderName,
+  onClose,
+  nowFolderId,
+  userId,
+}) {
+  const shareUrl = `https://localhost:3000/shared?user=${userId}&folder=${nowFolderId}`;
+
+  const handleShareKakao = (e) => {
+    e.preventDefault();
+    shareKakao(shareUrl, folderName);
+  };
+
+  const handleShareFacebook = (e) => {
+    e.preventDefault();
+    window.open(`'http://www.facebook.com/sharer.php?u=${shareUrl}'`);
+  };
+
+  const handleCopyClip = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(shareUrl);
+    alert(`${shareUrl} 링크가 복사되었습니다.`);
+  };
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => document.body.removeChild(script);
+  }, []);
+
   return (
     <>
       <ModalWrapper>
@@ -36,15 +70,15 @@ export function ModalLink({ LinkOptions, folderName, onClose }) {
         ) : (
           <IconBox>
             <IconWrapper>
-              <Kakao src={kakao} />
+              <Kakao src={kakao} onClick={handleShareKakao} />
               <span>카카오톡</span>
             </IconWrapper>
             <IconWrapper>
-              <Facebook src={facebook} />
+              <Facebook src={facebook} onClick={handleShareFacebook} />
               <span>페이스북</span>
             </IconWrapper>
             <IconWrapper>
-              <Linkadd src={link} />
+              <Linkadd src={link} onClick={handleCopyClip} />
               <span>링크 복사</span>
             </IconWrapper>
           </IconBox>
