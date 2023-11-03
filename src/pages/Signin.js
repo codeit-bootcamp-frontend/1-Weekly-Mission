@@ -4,28 +4,36 @@ import SignFooter from '../components/SignFooter/SignFooter';
 import SignLink from '../components/SignLink/SignLink';
 import SignInput from '../components/SignInput/SignInput';
 import Button from '../components/Button/Button';
-import useInputValue from '../hooks/useInputValue';
 import { Navigate, useNavigate } from 'react-router';
-import { requestSign } from '../apis/api';
-import useInputError from '../hooks/useInputError';
-import SetSignInput from '../classes/SetSignInput';
+import postSign from '../apis/auth/postSign';
+import useAuth from '../hooks/useAuth';
+import { signinEmail, signinPassword } from '../utils/signError';
+import useInputController from '../hooks/useInputController';
 
 function Signin() {
-  const [values, handleChange] = useInputValue();
+  const {
+    values: emailValues,
+    errorText: emailErrorText,
+    setErrorText: setEmailErrorText,
+    handleChange: handleEmailChange,
+    handleBlur: handleEmailBlur,
+    handleFocus: handleEmailFocus,
+  } = useInputController(signinEmail);
 
-  const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useInputError(values, 'in', 'email');
+  const {
+    values: passwordValues,
+    errorText: passwordErrorText,
+    setErrorText: setPasswordErrorText,
+    handleChange: handlePasswordChange,
+    handleBlur: handlePasswordBlur,
+    handleFocus: handlePasswordFocus,
+  } = useInputController(signinPassword);
 
-  const [
-    passwordError,
-    passwordErrorText,
-    handlePasswordBlur,
-    handlePasswordFocus,
-  ] = useInputError(values, 'in', 'password');
+  const { isAuth } = useAuth();
 
   const navigate = useNavigate();
 
-  if (localStorage.getItem('accessToken')) {
+  if (isAuth()) {
     return <Navigate to="/folder" />;
   }
 
@@ -33,50 +41,49 @@ function Signin() {
     e.preventDefault();
 
     const data = {
-      email: `${values.email}`,
-      password: `${values.password}`,
+      email: emailValues,
+      password: passwordValues,
     };
 
-    const response = await requestSign('in', data);
+    const response = await postSign('in', data);
 
     if (response.ok) {
       navigate('/folder');
     } else {
-      console.log(response);
+      setEmailErrorText('이메일을 확인해주세요');
+      setPasswordErrorText('비밀번호를 확인해주세요');
     }
   };
 
-  const SignInputArray = [
-    new SetSignInput(
-      'signinEmail',
-      'email',
-      'email',
-      `${values.email}`,
-      '이메일',
+  const signInputConfig = [
+    {
+      idfor: 'signinEmail',
+      name: 'email',
+      type: 'email',
+      value: `${emailValues}`,
+      children: '이메일',
 
-      emailError,
-      emailErrorText,
+      errorText: emailErrorText,
 
-      handleChange,
-      handleEmailBlur,
-      handleEmailFocus,
-      false
-    ),
-    new SetSignInput(
-      'signinPassword',
-      'password',
-      'password',
-      `${values.password}`,
-      '비밀번호',
+      onChange: handleEmailChange,
+      onBlur: handleEmailBlur,
+      onFocus: handleEmailFocus,
+      eyes: false,
+    },
+    {
+      idfor: 'signinPassword',
+      name: 'password',
+      type: 'password',
+      value: `${passwordValues}`,
+      children: '비밀번호',
 
-      passwordError,
-      passwordErrorText,
+      errorText: passwordErrorText,
 
-      handleChange,
-      handlePasswordBlur,
-      handlePasswordFocus,
-      true
-    ),
+      onChange: handlePasswordChange,
+      onBlur: handlePasswordBlur,
+      onFocus: handlePasswordFocus,
+      eyes: true,
+    },
   ];
 
   return (
@@ -94,8 +101,8 @@ function Signin() {
 
         <section className={styles.sign}>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            {SignInputArray.map((SignInputs) => {
-              return <SignInput {...SignInputs} />;
+            {signInputConfig.map((SignInputs) => {
+              return <SignInput {...SignInputs} key={SignInputs.name} />;
             })}
 
             <Button className={styles.button}>로그인</Button>

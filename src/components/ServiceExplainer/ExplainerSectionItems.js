@@ -1,7 +1,7 @@
-import Save from '../../assets/images/save_your_link.png';
-import Manage from '../../assets/images/manage_your_link.png';
-import Share from '../../assets/images/share_your_link.png';
-import Search from '../../assets/images/search_your_link.png';
+import SaveImg from '../../assets/images/save_your_link.png';
+import ManageImg from '../../assets/images/manage_your_link.png';
+import ShareImg from '../../assets/images/share_your_link.png';
+import SearchImg from '../../assets/images/search_your_link.png';
 import styles from './ServiceExplainer.module.css';
 import TextGradiant from '../TextGradiant/TextGradiant';
 
@@ -15,7 +15,7 @@ class ExplainerSection {
   }
 }
 
-const ExplainerSectionArray = [
+const ExplainerSectionItems = [
   new ExplainerSection(
     'odd',
     'save_your_link',
@@ -28,7 +28,7 @@ const ExplainerSectionArray = [
       </>
     ),
     '나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고 싶은 모든 것을 한 공간에 저장하세요.',
-    Save
+    SaveImg
   ),
   new ExplainerSection(
     'even',
@@ -41,7 +41,7 @@ const ExplainerSectionArray = [
       </>
     ),
     '나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.',
-    Manage
+    ManageImg
   ),
   new ExplainerSection(
     'odd',
@@ -54,7 +54,7 @@ const ExplainerSectionArray = [
       </>
     ),
     '여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.',
-    Share
+    ShareImg
   ),
   new ExplainerSection(
     'even',
@@ -67,8 +67,8 @@ const ExplainerSectionArray = [
       </>
     ),
     '중요한 정보들을 검색으로 쉽게 찾아보세요.',
-    Search
+    SearchImg
   ),
 ];
 
-export default ExplainerSectionArray;
+export default ExplainerSectionItems;

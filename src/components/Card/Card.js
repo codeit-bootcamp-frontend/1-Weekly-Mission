@@ -4,6 +4,8 @@ import noImg from '../../assets/images/no-image.svg';
 import starIcon from '../../assets/images/star.svg';
 import { useState } from 'react';
 import { formatDate, formatTimeAgo } from '../../utils/formatDate';
+import normalizeCardData from '../../utils/normalizeCardData';
+import clsx from 'clsx';
 
 function Card({ card, shared }) {
   const [hover, setHover] = useState(false);
@@ -16,29 +18,20 @@ function Card({ card, shared }) {
     setHover(false);
   };
 
-  const hoverImage = hover ? styles.hoverImage : '';
-  const hoverBg = hover ? styles.hoverBgColor : '';
+  const imageStyle = clsx(styles.image, hover && styles.hoverImage);
+  const bgColorStyle = clsx(styles.root, hover && styles.hoverBgColor);
 
-  const imageStyle = `${styles.image} ${hoverImage}`;
-  const bgColorStyle = `${styles.root} ${hoverBg}`;
+  const normalizedCardData = normalizeCardData(card);
+  const cardDate = normalizedCardData.createdAt;
+  const cardImage = normalizedCardData.imageSource;
 
   const bgImg = {
-    backgroundImage: `url(${unifyCardData(card).imageSource || noImg})`,
+    backgroundImage: `url(${cardImage || noImg})`,
   };
 
-  function unifyCardData(card) {
-    if (card.createdAt) {
-      return {
-        createdAt: card.createdAt,
-        imageSource: card.imageSource,
-      };
-    } else if (card.created_at) {
-      return {
-        createdAt: card.created_at,
-        imageSource: card.image_source,
-      };
-    }
-  }
+  const handleKebabClick = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div
@@ -56,9 +49,9 @@ function Card({ card, shared }) {
         </div>
         <div className={styles.explanation}>
           <div className={styles.header}>
-            <div>{formatTimeAgo(unifyCardData(card).createdAt)}</div>
+            <div>{formatTimeAgo(cardDate)}</div>
             {shared === 'off' && (
-              <button type="button">
+              <button type="button" onClick={handleKebabClick}>
                 <img src={kebabImg} alt="쩜쩜쩜" />
               </button>
             )}
@@ -68,9 +61,7 @@ function Card({ card, shared }) {
             <div>{card.description}</div>
           </div>
 
-          <div className={styles.footer}>
-            {formatDate(unifyCardData(card).createdAt)}
-          </div>
+          <div className={styles.footer}>{formatDate(cardDate)}</div>
         </div>
       </a>
     </div>

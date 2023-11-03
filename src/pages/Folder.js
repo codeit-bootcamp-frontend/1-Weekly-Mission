@@ -9,14 +9,22 @@ import FolderEmptyNoti from '../components/FolderEmptyNoti/FolderEmptyNoti';
 
 import styles from './Folder.module.css';
 import { useCallback, useEffect, useState } from 'react';
-import {
-  getSampleUsersFolderLists,
-  getUsersFolderLinkItems,
-} from '../apis/api';
-import { useSearchParams } from 'react-router-dom';
+
+import { Navigate, useSearchParams } from 'react-router-dom';
+import getFolderListsByUser from '../apis/folder/getFolderListsByUser';
+import getLinksByUsersFolder from '../apis/link/getLinksByUsersFolder';
+import useAuth from '../hooks/useAuth';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [cards, setCards] = useState([]);
+  const [folderLists, setFolderLists] = useState([
+    {
+      id: 0,
+      name: '전체',
+    },
+  ]);
+  const { isAuth } = useAuth();
 
   const folderID = searchParams.get('folderId');
 
@@ -26,25 +34,16 @@ function Folder() {
     setSearchParams(searchParams);
   }
 
-  const [folderLists, setFolderLists] = useState([
-    {
-      id: 0,
-      name: '전체',
-    },
-  ]);
-
   const loadFolderData = async () => {
-    const { data } = await getSampleUsersFolderLists();
+    const { data } = await getFolderListsByUser('1');
 
     setFolderLists((prevFolderList) => {
       return [...prevFolderList, ...data];
     });
   };
 
-  const [cards, setCards] = useState([]);
-
   const loadcardData = useCallback(async () => {
-    const { data } = await getUsersFolderLinkItems(folderID);
+    const { data } = await getLinksByUsersFolder('1', folderID);
 
     setCards(() => {
       return [...data];
@@ -52,17 +51,13 @@ function Folder() {
   }, [folderID]);
 
   const getFolderName = (folderID, folderLists) => {
-    try {
-      if (!folderID) {
-        return '전체';
-      } else {
-        const getFolder = folderLists.find((folderList) => {
-          return folderList.id === Number(folderID);
-        });
-        return getFolder.name;
-      }
-    } catch (e) {
-      console.error(e);
+    if (!folderID) {
+      return '전체';
+    } else {
+      const folderName = folderLists.find((folderList) => {
+        return folderList.id === Number(folderID);
+      });
+      return folderName !== undefined ? folderName.name : '';
     }
   };
 
@@ -75,6 +70,10 @@ function Folder() {
   useEffect(() => {
     loadcardData();
   }, [folderID, loadcardData]);
+
+  if (!isAuth()) {
+    return <Navigate to="/signin" />;
+  }
 
   return (
     <>
@@ -91,9 +90,13 @@ function Folder() {
         </div>
         <div className={styles.flex}>
           <FolderName>{folderName}</FolderName>
-          {folderID && <FolderEdit />}
+          {folderName !== '전체' && <FolderEdit />}
         </div>
-        {cards.length ? <Binder cards={cards} /> : <FolderEmptyNoti />}
+        {cards.length ? (
+          <Binder cards={cards} shared="off" />
+        ) : (
+          <FolderEmptyNoti />
+        )}
       </section>
     </>
   );

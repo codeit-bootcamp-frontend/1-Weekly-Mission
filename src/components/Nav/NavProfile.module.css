@@ -1,0 +1,23 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.profileImage {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 3rem;
+  overflow: hidden;
+}
+
+.UserProfile {
+  font-size: 1.4rem;
+}
+
+@media (max-width: 767px) {
+  .UserProfile {
+    display: none;
+  }
+}

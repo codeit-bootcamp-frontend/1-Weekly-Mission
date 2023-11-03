@@ -4,35 +4,49 @@ import SignFooter from '../components/SignFooter/SignFooter';
 import SignLink from '../components/SignLink/SignLink';
 import SignInput from '../components/SignInput/SignInput';
 import Button from '../components/Button/Button';
-import useInputValue from '../hooks/useInputValue';
-import { requestSign } from '../apis/api';
 import { Navigate, useNavigate } from 'react-router';
-import useInputError from '../hooks/useInputError';
-import SetSignInput from '../classes/SetSignInput';
+import useAuth from '../hooks/useAuth';
+import postSign from '../apis/auth/postSign';
+import {
+  signupEmail,
+  signupPassword,
+  signupPasswordCheck,
+} from '../utils/signError';
+import useInputController from '../hooks/useInputController';
 
 function Signup() {
-  const [values, handleChange] = useInputValue();
+  const { isAuth } = useAuth();
 
-  const [emailError, emailErrorText, handleEmailBlur, handleEmailFocus] =
-    useInputError(values, 'up', 'email');
+  const {
+    values: emailValues,
+    errorText: emailErrorText,
+    setErrorText: setEmailErrorText,
+    handleChange: handleEmailChange,
+    handleBlur: handleEmailBlur,
+    handleFocus: handleEmailFocus,
+  } = useInputController(signupEmail);
 
-  const [
-    passwordError,
-    passwordErrorText,
-    handlePasswordBlur,
-    handlePasswordFocus,
-  ] = useInputError(values, 'up', 'password');
+  const {
+    values: passwordValues,
+    errorText: passwordErrorText,
+    setErrorText: setPasswordErrorText,
+    handleChange: handlePasswordChange,
+    handleBlur: handlePasswordBlur,
+    handleFocus: handlePasswordFocus,
+  } = useInputController(signupPassword);
 
-  const [
-    passwordCheckError,
-    passwordCheckErrorText,
-    handlePasswordCheckBlur,
-    handlePasswordCheckFocus,
-  ] = useInputError(values, 'up', 'passwordCheck');
+  const {
+    values: passwordCheckValues,
+    errorText: passwordCheckErrorText,
+    setErrorText: setPasswordCheckErrorText,
+    handleChange: handlePasswordCheckChange,
+    handleBlur: handlePasswordCheckBlur,
+    handleFocus: handlePasswordCheckFocus,
+  } = useInputController(signupPasswordCheck);
 
   const navigate = useNavigate();
 
-  if (localStorage.getItem('accessToken')) {
+  if (isAuth()) {
     return <Navigate to="/folder" />;
   }
 
@@ -40,65 +54,64 @@ function Signup() {
     e.preventDefault();
 
     const data = {
-      email: `${values.email}`,
-      password: `${values.password}`,
+      email: emailValues,
+      password: passwordValues,
     };
 
-    const response = await requestSign('up', data);
+    const response = await postSign('up', data);
 
     if (response.ok) {
       navigate('/folder');
     } else {
-      console.log(response);
+      setEmailErrorText('이메일을 확인해주세요');
+      setPasswordErrorText('비밀번호를 확인해주세요');
+      setPasswordCheckErrorText('');
     }
   };
 
-  const SignInputArray = [
-    new SetSignInput(
-      'signiupEmail',
-      'email',
-      'email',
-      `${values.email}`,
-      '이메일',
+  const signInputConfig = [
+    {
+      idfor: 'signupEmail',
+      name: 'email',
+      type: 'email',
+      value: `${emailValues}`,
+      children: '이메일',
 
-      emailError,
-      emailErrorText,
+      errorText: emailErrorText,
 
-      handleChange,
-      handleEmailBlur,
-      handleEmailFocus,
-      false
-    ),
-    new SetSignInput(
-      'signupPassword',
-      'password',
-      'password',
-      `${values.password}`,
-      '비밀번호',
+      onChange: handleEmailChange,
+      onBlur: handleEmailBlur,
+      onFocus: handleEmailFocus,
+      eyes: false,
+    },
+    {
+      idfor: 'signupPassword',
+      name: 'password',
+      type: 'password',
+      value: `${passwordValues}`,
+      children: '비밀번호',
 
-      passwordError,
-      passwordErrorText,
+      errorText: passwordErrorText,
 
-      handleChange,
-      handlePasswordBlur,
-      handlePasswordFocus,
-      true
-    ),
-    new SetSignInput(
-      'signupPasswordCheck',
-      'passwordCheck',
-      'password',
-      `${values.passwordCheck}`,
-      '비밀번호 확인',
+      onChange: handlePasswordChange,
+      onBlur: handlePasswordBlur,
+      onFocus: handlePasswordFocus,
+      eyes: true,
+    },
+    {
+      idfor: 'signupPasswordCheck',
+      name: 'passwordCheck',
+      type: 'password',
+      value: `${passwordCheckValues}`,
+      children: '비밀번호 확인',
 
-      passwordCheckError,
-      passwordCheckErrorText,
+      errorText: passwordCheckErrorText,
 
-      handleChange,
-      handlePasswordCheckBlur,
-      handlePasswordCheckFocus,
-      true
-    ),
+      onChange: handlePasswordCheckChange,
+      onBlur: handlePasswordCheckBlur,
+      onFocus: handlePasswordCheckFocus,
+      eyes: true,
+    },
   ];
 
   return (
@@ -116,7 +129,7 @@ function Signup() {
 
         <section className={styles.sign}>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            {SignInputArray.map((SignInputs) => {
+            {signInputConfig.map((SignInputs) => {
               return <SignInput {...SignInputs} key={SignInputs.name} />;
             })}
 

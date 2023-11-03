@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import styles from './Nav.module.css';
-import UseUserValues from '../../hooks/UseUserValues';
+import styles from './NavProfile.module.css';
+import useUserValues from '../../hooks/useUserValues';
 
 function NavProfile() {
-  const [values, getUserData] = UseUserValues();
+  const [values, getUserData] = useUserValues();
 
   useEffect(() => {
     getUserData();

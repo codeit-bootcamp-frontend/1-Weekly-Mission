@@ -3,7 +3,7 @@
   font-size: 1.6rem;
   text-align: center;
   font-weight: 500;
-  flex: 0;
+  flex: 0 8rem;
   letter-spacing: -0.03rem;
   align-items: center;
   color: var(--primary);
@@ -12,6 +12,13 @@
 
 @media (max-width: 767px) {
   .root {
-    display: none;
+    background-color: var(--primary);
+    color: white;
+    position: fixed;
+    padding: 0.8rem 2.4rem;
+    border-radius: 2rem;
+    bottom: 101px;
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 }

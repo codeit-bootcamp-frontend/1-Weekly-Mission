@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { getUser } from '../apis/api';
+import getUser from '../apis/user/getUser';
 
 function UseUserValues() {
   const [values, setValues] = useState({
