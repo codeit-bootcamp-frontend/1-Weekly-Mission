@@ -11,7 +11,7 @@ export function FolderArticle({items, visible, folders}) {
     <ThemeProvider theme={theme}>
       <S.Container>
         <CardMenuBar folders={folders} items={items} />
-        {visible && <CardContainer items={items}/>}
+        {visible && <CardContainer items={items} active={folders}/>}
         {!visible && <EmptyData />}
       </S.Container>  
     </ThemeProvider>

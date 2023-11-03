@@ -4,7 +4,7 @@ import * as S from "./CardContainer.style.js";
 import { Card } from "./Card.js";
 import {ReactComponent as AddImg} from '../../assets/add.svg'
 
-export function CardContainer ({items}) {
+export function CardContainer ({items, active}) {
   
   return (
     <ThemeProvider theme={theme}>
@@ -13,9 +13,9 @@ export function CardContainer ({items}) {
           <Card link={link} key={link.id} />
         ))}
       </S.Container>
-      <S.Button>
+      {active && <S.Button>
         폴더 추가 <AddImg alt="폴더추가" fill="#e7effb" />
-      </S.Button>
+      </S.Button>}
     </ThemeProvider>
   )
 }

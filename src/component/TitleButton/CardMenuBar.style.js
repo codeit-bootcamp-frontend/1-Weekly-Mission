@@ -16,13 +16,12 @@ export const Container = styled.div`
     font-weight: 500;
     letter-spacing: -0.3px;
   }
-  @media ${({theme}) => theme.device.mobile}{
-
+  @media ${({ theme }) => theme.device.mobile}{
 
     span{
       display : none;
     }
-`
+`;
 export const Ul = styled.ul`
   display: flex;
   align-items: center;
@@ -30,23 +29,22 @@ export const Ul = styled.ul`
   list-style: none;
   padding: 0px;
 
-   @media ${({theme}) => theme.device.mobile}{
-    justify-content : start;
-    flex-wrap : wrap;
-    width : 325px;
-   }
-
-`
+  @media ${({ theme }) => theme.device.mobile} {
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 325px;
+  }
+`;
 export const Button = styled.button`
-  display : inline-flex;
+  display: inline-flex;
   align-items: center;
-  padding : 8px 12px;
+  padding: 8px 12px;
   gap: 8px;
-  height : 35px;
+  height: 35px;
   list-style: none;
   border-radius: 5px;
   border: 1px solid #6d6afe;
-  background: ${({active}) => active ? '#6d6afe' : '#fff' };
-  color : ${({active}) => active  ? '#fff' : '#000'};
-  cursor :pointer
-`
+  background: ${({ active }) => (active ? "#6d6afe" : "#fff")};
+  color: ${({ active }) => (active ? "#fff" : "#000")};
+  cursor: pointer;
+`;

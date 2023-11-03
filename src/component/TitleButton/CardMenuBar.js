@@ -1,17 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "../../css/display.js";
 import { CardButton } from "./CardButton.js";
 import { MenuTitle } from "../TitleText/MenuTitle.js";
-import {ReactComponent as AddImg} from "../../assets/add.svg";
+import { ReactComponent as AddImg } from "../../assets/add.svg";
 import * as S from "./CardMenuBar.style.js";
 
 export function CardMenuBar({ folders }) {
   const { folderId } = useParams();
-  const [selectedFolder, setSelectedFolder] = useState(folderId ? parseInt(folderId) : null);
-
+  const [selectedFolder, setSelectedFolder] = useState(
+    folderId ? parseInt(folderId) : null
+  );
 
   const ChangeTitle = () => {
     if (!folderId) {
@@ -19,7 +20,9 @@ export function CardMenuBar({ folders }) {
       return;
     }
 
-    const matchedFolder = folders.find((folder) => folder.id === parseInt(folderId));
+    const matchedFolder = folders.find(
+      (folder) => folder.id === parseInt(folderId)
+    );
     if (matchedFolder) {
       setSelectedFolder(matchedFolder.name);
     } else {
@@ -27,11 +30,10 @@ export function CardMenuBar({ folders }) {
     }
   };
 
-  useEffect(()=> {
-    setSelectedFolder(folderId ? parseInt(folderId) : null)
+  useEffect(() => {
+    setSelectedFolder(folderId ? parseInt(folderId) : null);
     ChangeTitle();
-  }, [folderId, folders])
-
+  }, [folderId, folders]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -39,11 +41,11 @@ export function CardMenuBar({ folders }) {
         <S.Ul>
           <Link to="/folder">
             <li>
-              <S.Button active={selectedFolder === null}>전체</S.Button >
-            </li>  
+              <S.Button active={selectedFolder === null}>전체</S.Button>
+            </li>
           </Link>
           {folders.map((folder) => (
-            <CardButton folder={folder} key={folder.id} folderId={folderId}/>
+            <CardButton folder={folder} key={folder.id} folderId={folderId} />
           ))}
         </S.Ul>
         <span>

@@ -10,4 +10,13 @@ export const Empty = styled.div`
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+
+  @media ${({theme}) => theme.device.tablet}{
+    width : 769px;
+  }
+
+  @media ${({theme}) => theme.device.mobile}{
+    width : 325px;
+  }
+  
 `

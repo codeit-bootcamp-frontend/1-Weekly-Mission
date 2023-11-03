@@ -16,4 +16,3 @@ export const ArticleSection = styled.div`
     gap: 32px;
   }
 `;
-
