@@ -2,8 +2,115 @@ import imgClose from "../assets/close.svg"
 import imgKakao from "../assets/kakao.svg"
 import imgFB from "../assets/modalfacebook.svg"
 import imgLink from "../assets/modallink.svg"
+import imgCheck from "../assets/check.svg"
 import S from "../components/styled"
-import useData from "../hooks/useReduce"
+import { useSearchParams } from "react-router-dom"
+import { useEffect, useRef } from "react"
+
+function ModalTitle({ modalName, title }) {
+  return (
+    <S.DivModalText>
+      <h1>{modalName}</h1>
+      {title && <p>{title}</p>}
+    </S.DivModalText>
+  )
+}
+
+function CopyResult({ copyResult }) {
+  return (
+    <S.CopyWrapper ref={copyResult} >
+      <S.CopyContent>
+        클립보드에 복사되었습니다!<br />
+        원하는 곳에 붙여넣기 해주세요.
+      </S.CopyContent>
+    </S.CopyWrapper>
+  )
+}
+
+function ModalShare() {
+  const copyResult = useRef();
+  const [searchParams] = useSearchParams();
+  const folderId = searchParams.get("folderId")
+  const sharedLink = encodeURIComponent(`linkbrary.com/shared?user=1&folder=${folderId}}`);
+
+  const shareToKakaoTalk = () => {
+    if (window.Kakao === undefined) {
+      return;
+    }
+
+    const kakao = window.Kakao;
+    const KAKAO_SHARE_KEY = '370ed21f60e01fcaad0dd0e0e42f6859';
+
+    if (!kakao.isInitialized()) {
+      kakao.init(KAKAO_SHARE_KEY);
+    }
+
+    kakao.Share.sendDefault({
+      objectType: "text",
+      text: "저장한 폴더를 공유합니다",
+      link: {
+        mobileWebUrl: sharedLink,
+        webUrl: sharedLink,
+      },
+    });
+  };
+
+
+  const shareToFacebook = () => {
+    window.open(`http://www.facebook.com/sharer/sharer.php?u=${sharedLink}`);
+  };
+
+  const shareToClipboard = () => {
+    navigator.clipboard.writeText(sharedLink);
+    copyResult.current.classList.add("active")
+    setTimeout(() => copyResult.current.classList.remove("active"), 2000)
+  }
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  return (
+    <S.SnsWrapper>
+      <S.Sns src={imgKakao} onClick={shareToKakaoTalk} text="카카오톡" alt="카카오톡으로 공유하기" />
+      <S.Sns src={imgFB} onClick={shareToFacebook} text="페이스북" alt="페이스북으로 공유하기" />
+      <S.Sns src={imgLink} onClick={shareToClipboard} text="링크 복사" alt="링크 복사하기" />
+      <CopyResult copyResult={copyResult} />
+    </S.SnsWrapper>
+  )
+}
+
+function ModalAdd({ data }) {
+  return (
+    <S.UlModal>
+      {data?.map(value => (
+        <li>
+          <button>
+            <h2>{value.name}</h2>
+            <p>{value.link.count}개 링크</p>
+            <img src={imgCheck} alt="이 폴더에 추가합니다." />
+          </button>
+        </li>
+      ))}
+    </S.UlModal>
+  )
+}
+
+function ModalCloseButton({ handleClick }) {
+  return (
+    <S.ButtonClose onClick={handleClick}>
+      <img src={imgClose} alt="현재 띄워진 창을 닫는 버튼" />
+    </S.ButtonClose>
+  )
+}
 
 export function Modal({ title = '링크를 입력해주세요.', modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }) {
   const handleClick = () => {
@@ -13,34 +120,18 @@ export function Modal({ title = '링크를 입력해주세요.', modalName, plac
   return (
     <S.DivModalWrapper>
       <S.DivModalContents>
-        <S.DivModalText>
-          <h1>{modalName}</h1>
-          {title && <p>{title}</p>}
-        </S.DivModalText>
-        {share && <S.SnsWrapper>
-          <S.Sns src={imgKakao} text="카카오톡" alt="카카오톡으로 공유하기" />
-          <S.Sns src={imgFB} text="페이스북" alt="페이스북으로 공유하기" />
-          <S.Sns src={imgLink} text="링크 복사" alt="링크 복사하기" />
-        </S.SnsWrapper>}
-        {add && <S.UlModal>
-          {data.map(value => (
-            <li>
-              <h2>{value.name}</h2>
-              <p>{value.link.count}개 링크</p>
-            </li>
-          ))}
-        </S.UlModal>}
+        <ModalTitle modalName={modalName} title={title} />
+        {share && <ModalShare />}
+        {add && <ModalAdd data={data} />}
         {placeholder && <S.InputSubmit placeholder={placeholder} />}
         {buttonText && <S.ButtonSubmit color={buttonColor}>{buttonText}</S.ButtonSubmit>}
-        <S.ButtonClose onClick={handleClick}>
-          <img src={imgClose} alt="현재 띄워진 창을 닫는 버튼" />
-        </S.ButtonClose>
+        <ModalCloseButton handleClick={handleClick} />
       </S.DivModalContents>
     </S.DivModalWrapper>
   )
 }
 
-export const makeModal = (title, type, setModal, data) => {
+export const makeModal = ({ title, type, data, setModal }) => {
   let modal;
   switch (type) {
     case "폴더 추가":

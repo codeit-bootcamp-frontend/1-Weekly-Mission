@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import searchImg from '../../assets/Search.svg'
 import { useSearchParams } from 'react-router-dom';
+import searchImg from '../../assets/Search.svg'
 import S from '../styled';
 
 function SearchBar() {
@@ -13,7 +13,7 @@ function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchParams({ folderId: value, });
+    setSearchParams({ folderId: value });
   }
   return (
     <S.DivSearch>

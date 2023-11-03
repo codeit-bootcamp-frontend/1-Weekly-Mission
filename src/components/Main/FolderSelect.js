@@ -1,13 +1,13 @@
 import { useState } from "react";
+import useModal from "../../hooks/useModal";
+import useData from "../../hooks/useReduce";
 import { Link } from "react-router-dom";
 import imgAdd from "../../assets/add.svg"
 import imgAddWhite from "../../assets/addWhite.svg"
 import imgShare from "../../assets/share.svg"
 import imgEdit from "../../assets/edit.svg"
 import imgDelete from "../../assets/delete.svg"
-import useData from "../../hooks/useReduce";
 import S from "../styled";
-import { makeModal } from "../../utils/modal";
 
 
 
@@ -70,14 +70,12 @@ function FolderCategories({ setTitle, handleModal }) {
 
 function FolderSelect() {
   const [title, setTitle] = useState('전체');
-  const [modal, setModal] = useState(null);
+  const [modal, dispatch] = useModal(null);
 
   const handleModal = (e) => {
     const title = e.target.parentElement?.title;
     const type = e.target.textContent;
-    console.log(type)
-    const newModal = makeModal(title, type, setModal);
-    setModal(newModal);
+    dispatch({ title, type });
   }
 
   return (

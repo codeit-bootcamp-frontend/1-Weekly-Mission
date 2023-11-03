@@ -600,9 +600,9 @@ S.SnsWrapper = styled.div`
   gap: 3.2rem;
 `
 
-S.Sns = function ({ src, alt, text }) {
+S.Sns = function ({ src, alt, text, onClick }) {
   return (
-    <button>
+    <button onClick={onClick}>
       <img src={src} alt={alt} />
       <p>{text}</p>
     </button>
@@ -613,29 +613,77 @@ S.UlModal = styled.ul`
   padding-left: 0;
 
   li {
-    width: 100%;
     display: flex;
+  }
+
+  button {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     padding: 0.8rem;
     border-radius: 0.8rem;
   }
 
-  li:hover {
+  img {
+    display: none;
+  }
+
+  button:hover,
+  button:focus {
     background-color: var(--Gray1);
     color: var(--Primary);
   }
 
-  li h2 {
+  button:focus img {
+    width: 1.4rem;
+    margin-right: 1rem;
+    display: flex;
+    justify-self: end;
+  }
+
+  h2 {
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 150%;
   }
   
-  li p {
+  p {
     margin-left: 0.8rem;
     font-size: 1.4rem;
     color: var(--Gray4);
   }
+`
+
+S.CopyWrapper = styled.div`
+  display: none;
+
+  &.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  }
+`
+
+const desolve = keyframes`
+  100% {
+    opacity: 0;
+  }
+`
+
+S.CopyContent = styled.div`
+  padding: 1.2rem 1.8rem;
+  color: var(--White);
+  font-size: 1.6rem;
+  background-color: var(--Gray5);
+  border-radius: 0.8rem;
+  animation: ${desolve} 2s ease-in;
 `
 
 export default S

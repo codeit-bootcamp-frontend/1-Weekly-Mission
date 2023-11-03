@@ -12,7 +12,7 @@ function FolderPage() {
   return (
     <>
       <Navigation setIsUser={setIsUser} />
-      <HeaderSearch />
+      <HeaderSearch isUser={isUser} />
       <Main>
         {isUser ?
           <LinkSection />

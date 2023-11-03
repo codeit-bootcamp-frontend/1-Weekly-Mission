@@ -1,24 +1,23 @@
 import { useRef, useState } from "react";
+import useData from "../../hooks/useReduce";
+import useModal from "../../hooks/useModal";
 import inputImg from "../../assets/link.svg"
 import S from "../styled"
-import { makeModal } from "../../utils/modal";
-import useData from "../../hooks/useReduce";
 
-function HeaderSearch() {
+function HeaderSearch({ isUser }) {
   const [folderData] = useData("FOLDER_CATEGORY")
-  const [modal, setModal] = useState(null);
+  const [modal, dispatch] = useModal(null);
   const [value, setValue] = useState(undefined);
   const input = useRef();
 
-  const handleChange = (e) => {
+  const handleChange = () => {
     const newValue = input.current.value;
     setValue(newValue);
   }
 
   const handleModal = (e) => {
     e.preventDefault();
-    const newModal = makeModal(value, "추가하기", setModal, folderData)
-    setModal(newModal);
+    isUser && dispatch({ title: value, type: "추가하기", data: folderData })
   }
 
   return (
