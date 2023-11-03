@@ -58,6 +58,13 @@ export const KebabPopup = styled.div`
   z-index: ${zIndexStyle.floating - 1};
   width: 10rem;
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+
+  ${onTablet} {
+    right: -8rem;
+  }
+  ${onPc} {
+    right: -8rem;
+  }
 `;
 
 export const KebabInnerButton = styled.button`
