@@ -5,7 +5,7 @@ import KebabDelete from "../../components/kebab/KebabDelete";
 import KebabAdd from "../../components/kebab/KebabAdd";
 import ModalBackground from "../../components/modal/ModalBackground";
 import Modal from "../../components/modal/Modal";
-import ModalListButton from "../../components/modal/ModalListButton";
+import ModalListInput from "../../components/modal/ModalListInput";
 
 const Card = ({ data, fullFolderData }) => {
   const {
@@ -38,9 +38,9 @@ const Card = ({ data, fullFolderData }) => {
     setIsKebabAddClicked(!isKebabAddClicked);
   }
 
-  function handleModalListButton(e) {
-    e.preventDefault();
-  }
+  const selectList = fullFolderData.map((list) => {
+    return `${list.name}  ${list.link.count}개 링크`;
+  });
 
   return (
     <li
@@ -165,17 +165,14 @@ const Card = ({ data, fullFolderData }) => {
                 onClick={handleKebabAddClick}
               />
             </div>
-            <ul>
-              {fullFolderData.map((list) => {
-                return (
-                  <li style={{ listStyle: "none" }} key={list.id}>
-                    <ModalListButton onClick={(e) => handleModalListButton(e)}>
-                      <b>{list.name}</b> &nbsp; {list.link.count}개 링크
-                    </ModalListButton>
-                  </li>
-                );
-              })}
-            </ul>
+            <div>
+              {selectList.map((item) => (
+                <ModalListInput key={item}>
+                  <label htmlFor="item">{item}</label>
+                  <input type="checkbox" name={item} id={item} />
+                </ModalListInput>
+              ))}
+            </div>
             <button
               style={{
                 background:
