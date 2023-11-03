@@ -67,7 +67,7 @@ function FolderList({ getFolderId }) {
           </button>
           {modalIsOpen1 && (
             <Modal close={() => setModalIsOpen1(false)}>
-              <ModalShare folderName={selectedName} />
+              <ModalShare folderName={selectedName} folderId={selectedId}/>
             </Modal>
           )}
           <button onClick={() => setModalIsOpen2(true)}>

@@ -119,7 +119,7 @@ export const IconsBox = styled.div`
   gap: 3.2rem;
 `;
 
-export const Icon = styled.div`
+export const Icon = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

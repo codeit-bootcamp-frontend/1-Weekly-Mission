@@ -5,8 +5,9 @@ import kakaotalkIcon from "images/kakao.svg";
 import facebookIcon from "images/facebook.svg";
 import linkIcon from "images/link.svg";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import useRequest from "hooks/useRequest";
+
+const { Kakao } = window;
 
 export default function Modal({ close, children }) {
   useEffect(() => {
@@ -60,16 +61,31 @@ export function ModalAddFolder() {
   );
 }
 
-export function ModalShare({ folderName }) {
-  const location = useLocation();
+export function ModalShare({ folderName, folderId }) {
+  const handleShareKakao = () => {
+    Kakao.Share.sendDefault({
+      objectType: "text",
+      text: "카카오톡 공유하기",
+      link: {
+        webUrl: `${window.location.host}/shared?user=1&folder=${folderId}`,
+      },
+    });
+  };
 
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
+      alert("클립보드에 링크 복사");
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    Kakao.cleanup();
+    Kakao.init("ac749b6133a70dccf01faaf302adceac");
+    console.log(Kakao.isInitialized());
+  }, []);
 
   return (
     <>
@@ -78,7 +94,7 @@ export function ModalShare({ folderName }) {
         <S.Subtitle>{folderName}</S.Subtitle>
       </S.TitleContainer>
       <S.IconsBox>
-        <S.Icon>
+        <S.Icon onClick={() => handleShareKakao()}>
           <S.KaKaotalkIconImgContainer>
             <img src={kakaotalkIcon} alt="카카오톡 아이콘" />
           </S.KaKaotalkIconImgContainer>
@@ -90,7 +106,7 @@ export function ModalShare({ folderName }) {
           </S.FacebookIconImgContainer>
           <p>페이스북</p>
         </S.Icon>
-        <S.Icon onClick={() => handleCopyClipBoard(`${location.pathname}`)}>
+        <S.Icon onClick={() => handleCopyClipBoard(`${window.location.href}`)}>
           <S.IconImgContainer>
             <img src={linkIcon} alt="링크 복사 아이콘" />
           </S.IconImgContainer>
