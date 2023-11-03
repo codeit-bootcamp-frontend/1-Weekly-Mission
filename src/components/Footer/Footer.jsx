@@ -16,7 +16,7 @@ function Footer() {
     instagram: { icon: instagramIcon, url: `https://www.ßinstagram.com` },
   };
 
-  function SnsItem(snsType) {
+  function SnsItem({ snsType }) {
     const Sns = SnsData[snsType];
     return (
       <a href={Sns.url} target="_blank">
@@ -38,10 +38,10 @@ function Footer() {
           </a>
         </div>
         <div id="sns-container">
-          {SnsItem("facebook")}
-          {SnsItem("twitter")}
-          {SnsItem("youtube")}
-          {SnsItem("instagram")}
+          <SnsItem snsType="facebook" />
+          <SnsItem snsType="twitter" />
+          <SnsItem snsType="youtube" />
+          <SnsItem snsType="instagram" />
         </div>
       </div>
     </footer>
