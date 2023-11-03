@@ -1,14 +1,26 @@
 import styled from 'styled-components';
-import Cta from '../Cta';
 
 function ShareFolderModal() {
   return (
     <>
       <Container>
         <Content>
-          <Title>폴더 이름 변경</Title>
-          <Input />
-          <Cta name="변경하기" />
+          <Title>폴더 공유</Title>
+          <FolderName>폴더명</FolderName>
+          <IconLayout>
+            <IconWrapper>
+              <Icon src="/assets/image/kakao.jpg" />
+              <p>카카오톡</p>
+            </IconWrapper>
+            <IconWrapper>
+              <Icon src="/assets/image/facebook.png" />
+              <p>페이스북</p>
+            </IconWrapper>
+            <IconWrapper>
+              <Icon src="/assets/image/linkshare.png" />
+              <p>링크 복사</p>
+            </IconWrapper>
+          </IconLayout>
         </Content>
       </Container>
     </>
@@ -35,7 +47,7 @@ const Content = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 36rem;
-  height: 23.9rem;
+  height: 20.9rem;
   padding: 3.2rem 4rem;
   border-radius: 15px;
   border: 1px solid var(--gray-20, #ccd5e3);
@@ -50,13 +62,31 @@ const Title = styled.p`
   line-height: normal;
 `;
 
-const Input = styled.input`
+const FolderName = styled.p`
+  color: var(--gray-60, #9fa6b2);
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.2rem; /* 157.143% */
+  margin: 0.8rem 0 2.4rem;
+`;
+
+const IconLayout = styled.div`
   display: flex;
-  width: 28rem;
-  padding: 1.8rem 1.5rem;
-  justify-content: center;
+  align-items: flex-start;
+  gap: 3.2rem;
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  border-radius: 8px;
-  border: 1px solid var(--primary, #6d6afe);
-  background: var(--white, #fff);
+  gap: 1rem;
+`;
+
+const Icon = styled.img`
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 37.333px;
 `;

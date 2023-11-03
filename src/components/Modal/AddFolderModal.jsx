@@ -6,9 +6,9 @@ function AddFolderModal() {
     <>
       <Container>
         <Content>
-          <Title>폴더 이름 변경</Title>
-          <Input />
-          <Cta name="변경하기" />
+          <Title>폴더 추가</Title>
+          <Input placeholder="내용 입력" />
+          <Cta name="추가하기" />
         </Content>
       </Container>
     </>
@@ -54,6 +54,7 @@ const Input = styled.input`
   display: flex;
   width: 28rem;
   padding: 1.8rem 1.5rem;
+  margin: 2.4rem 0 1.5rem;
   justify-content: center;
   align-items: center;
   border-radius: 8px;

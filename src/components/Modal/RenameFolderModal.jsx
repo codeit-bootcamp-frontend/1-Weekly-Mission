@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function Modal() {
+function RenameFolderModal() {
   return (
     <>
       <Container>
         <Content>
           <Title>폴더 이름 변경</Title>
-          <Input />
+          <Input placeholder="내용 입력" />
           <Cta name="변경하기" />
         </Content>
       </Container>
@@ -15,7 +15,7 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default RenameFolderModal;
 
 const Container = styled.div`
   position: fixed;
@@ -54,6 +54,7 @@ const Input = styled.input`
   display: flex;
   width: 28rem;
   padding: 1.8rem 1.5rem;
+  margin: 2.4rem 0 1.5rem;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
