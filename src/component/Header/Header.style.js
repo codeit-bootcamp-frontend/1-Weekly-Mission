@@ -8,6 +8,10 @@ export const Container = styled.div`
   width: 100%;
   margin-bottom: 40px;
   background-color: #f0f6ff;
+
+  @media ${({theme}) => theme.device.mobile} {
+    margin-bottom : 20px;
+  }
 `
 
 export const ContainerProfilePage = styled(Container)`
@@ -53,14 +57,13 @@ export const ContainerFolderPage = styled(Container)`
   padding-bottom: 9rem;
   width: 100%;
 
-  @media ${({theme}) => theme.device.tablet}{}
-    padding-left: 200px;
-    padding-right: 199px;
+  @media ${({theme}) => theme.device.tablet}{
+    padding-left: 32.5px;
+    padding-right: 32.5px;
   }  
 
   @media ${({theme}) => theme.device.mobile} {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding : 24px 32px 40px;
   }  
 `
 export const LinkSearchBox = styled.div`
@@ -74,6 +77,7 @@ export const LinkSearchBox = styled.div`
     width : 704px;
   }
   @media ${({theme}) => theme.device.mobile} {
+    padding : 10px 8px;
     width : 100%;
   }
 `
@@ -100,5 +104,17 @@ export const LinkInputBox = styled.div`
     color: #9fa6b2;
     border: none;
     font-size: 1.6rem;
+  }
+
+   @media ${({theme}) => theme.device.mobile} {
+    gap : 8px;
+    
+    img {
+      width : 16px;
+      height : 16px;
+    }
+    input {
+      font-size : 1.4rem;
+    }
   }
 `

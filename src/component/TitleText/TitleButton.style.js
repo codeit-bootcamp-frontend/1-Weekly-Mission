@@ -10,5 +10,7 @@ export const StyledButton = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 4px;
+  font-size :14px;
   font-weight: 600;
+  color : #9FA6B2
 `

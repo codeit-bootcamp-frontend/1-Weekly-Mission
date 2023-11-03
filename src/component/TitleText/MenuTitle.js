@@ -1,12 +1,11 @@
 import { MenuTitleButton } from "./MenuTitleButton.js";
+import * as S from './Title.style.js'
 
 export function MenuTitle({ title }) {
   return (
-    <div className="menu-title-box">
+    <S.Container>
       <span>{title}</span>
-      <div>
-        <MenuTitleButton />
-      </div>
-    </div>
+      {(title !== '전체') && <MenuTitleButton />}
+    </S.Container>
   );
 }

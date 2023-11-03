@@ -17,21 +17,36 @@ export const Box = styled.div`
   display: flex;
   justify-content: space-between;
   color: #676767;
+
+  @media ${({theme}) => theme.device.mobile}{
+    display: grid;
+    grid-template-areas: 
+      "footer-links sns"
+      "footer-logo .";
+    justify-content: space-between;
+    row-gap: 6rem;
+  }  
+`
+export const Span = styled.span`
+  grid-area : footer-logo;
 `
 
-export const Links = styled.div`
+export const LinkContainer = styled.div`
   display: flex;
   gap: 30px;
-`
-export const SnsContainer = styled.div`
-  display: flex;
-  gap: 12px;
-`
-export const StyledLink = styled(Link)`
   text-decoration: none;
+  grid-area : footer-links;
+`
+
+export const Links = styled(Link)`
   color: #676767 !important;
 
   &:visited, &:hover{
     color: #0000ff;
   }
+`
+export const SnsContainer = styled.div`
+  display: flex;
+  gap: 12px;
+  grid-area : sns;
 `

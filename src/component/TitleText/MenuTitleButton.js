@@ -10,12 +10,13 @@ const Icons = [
 ]
 
 export function MenuTitleButton(){
+  
   return(
     <S.Container>
       {Icons.map((icon, index) => (
         <S.StyledButton key={index}>
           <img src={icon.image} alt={icon.name}></img>
-          <span>{icon.name}</span>
+          <p>{icon.name}</p>
         </S.StyledButton>
       ))}
     </S.Container>

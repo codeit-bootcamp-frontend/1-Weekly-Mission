@@ -1,5 +1,4 @@
 import { ThemeProvider } from "styled-components";
-import { Link } from "react-router-dom";
 import SNS from "./SNS.js";
 import socialMedia from "./SocialMedia.js";
 import * as S from "./Footer.style.js";
@@ -10,15 +9,15 @@ export function Footer() {
     <ThemeProvider theme={theme}>
       <S.Container>
         <S.Box>
-          <span>codeit - 2023</span>
-          <S.Links>
-            <Link to="privacy.html">
+          <S.Span>codeit - 2023</S.Span>
+          <S.LinkContainer>
+            <S.Links to="privacy.html">
               Privacy Policy
-            </Link>
-            <Link to="faq.html">
+            </S.Links>
+            <S.Links to="faq.html">
               FAQ
-            </Link>
-          </S.Links>
+            </S.Links>
+          </S.LinkContainer>
           <S.SnsContainer>
             {socialMedia.map((sns, index) => (
               <SNS key={index} alt={sns.name} url={sns.url} icon={sns.icon} />

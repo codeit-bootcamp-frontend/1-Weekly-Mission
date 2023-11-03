@@ -24,6 +24,12 @@ export const Inform = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
+
+  @media ${({theme}) => theme.device.mobile}{
+    span {
+      display : none;
+    }
+  }  
 `
 
 export const Profile = styled.img`

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import { folderDataRequestApi } from "../../api/requestApi.js";
 import { folderMenuRequestApi } from "../../api/requestApi.js";
@@ -16,6 +16,7 @@ const FolderPage = () => {
     const endPoint = `users/1/links${folderId ? `?folderId=${folderId}` : ""}`;
     try {
       const result = await folderDataRequestApi(endPoint);
+      console.log(result)
       if (result !== undefined && result.length > 0) {
         setVisible(true);
       } else {
@@ -30,6 +31,7 @@ const FolderPage = () => {
   const Folder = async () => {
     try {
       const response = await folderMenuRequestApi("users/1/folders");
+      console.log(response)
       setFolders(response);
     } catch (error) {
       setIsError(true)
@@ -39,12 +41,12 @@ const FolderPage = () => {
   useEffect(() => {
     folderData();
     Folder();
-  }, [folderData, Folder]);
+  }, [folderId]);
 
   
   return (
     <>
-      {isError && (<><Header />
+      {!isError && (<><Header />
       <Article visible={visible} items={items} folders={folders} /></>)}
     </>
   );

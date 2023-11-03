@@ -6,14 +6,13 @@ import { CardContainer } from "../Card/CardContainer.js";
 import { FolderArticle } from "../FolderArticle/FolderArticle.js";
 
 export function Article({ items, visible, folders }) {
-  console.log(items)
   
   return (
     <ThemeProvider theme={theme}>
       <S.ArticleContainer>
-        <S.ArticleSection>
+        <S.ArticleSection folder={folders}>
           <Search />
-          {items && <CardContainer items={items} /> }
+          {!folders && <CardContainer items={items} /> }
           {folders && <FolderArticle visible={visible} items={items} folders={folders} />}
         </S.ArticleSection>
       </S.ArticleContainer>

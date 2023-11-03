@@ -1,21 +1,15 @@
-import { Link } from "react-router-dom";
-import { Button } from "./CardMenuBar.style";
+import { Link} from "react-router-dom";
+import * as S from "./CardMenuBar.style.js";
 
-export function CardButton({ folder, setTitle }) {
+export function CardButton({ folder, folderId}) {
   const { id, name } = folder;
   const path = `/folder/${id}`;
 
-  const handleClick = () => {
-    setTitle(`${name}`)
-  };
-
   return (
     <Link to={path}>
-      <li>
-        <Button onClick={handleClick}>
-          {name}
-        </Button>
-      </li>
+      <S.Button active={folderId === String(folder.id)}>
+        {name}
+      </S.Button>
     </Link>
   );
 }
