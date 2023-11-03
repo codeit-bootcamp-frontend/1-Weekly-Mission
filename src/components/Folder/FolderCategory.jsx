@@ -33,15 +33,12 @@ function FolderCategory({ onGetCategory }) {
   return (
     <FolderCategoryContainer>
       <FolderCategoryStyle>
-        {categories.map((category) => {
-          return (
-            <Fragment key={category.id}>
-              <FolderCategoryButton category={category} onGetCategory={onGetCategory}></FolderCategoryButton>
-              {foldersLoadingError?.message && <span>{foldersLoadingError.message}</span>}
-            </Fragment>
-          );
-        })
-        }
+        {categories.map((category) =>
+          <Fragment key={category.id}>
+            <FolderCategoryButton category={category} onGetCategory={onGetCategory}></FolderCategoryButton>
+            {foldersLoadingError?.message && <span>{foldersLoadingError.message}</span>}
+          </Fragment>,
+        )}
       </FolderCategoryStyle>
       <FolderAddButton>
         <FolderAddName>폴더 추가</FolderAddName>
@@ -67,11 +64,11 @@ const FolderCategoryContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  
+
   @media (min-width: 768px) {
     width: 70.4rem;
   }
-  
+
   @media (min-width: 1024px) {
     width: 106rem;
   }
@@ -79,11 +76,11 @@ const FolderCategoryContainer = styled.div`
 
 const FolderAddButton = styled.button`
   display: none;
-  
+
   @media (min-width: 768px) {
     display: flex;
     align-items: flex-start;
-    gap: 0.4rem;  
+    gap: 0.4rem;
   }
 `;
 
