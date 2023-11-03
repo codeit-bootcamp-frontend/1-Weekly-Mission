@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { getData } from "../../utils/api";
+import { useState } from "react";
+import useModal from "../../hooks/useModal";
+import useData from "../../hooks/useReduce";
 import { Link } from "react-router-dom";
 import imgAdd from "../../assets/add.svg"
 import imgAddWhite from "../../assets/addWhite.svg"
@@ -7,28 +8,29 @@ import imgShare from "../../assets/share.svg"
 import imgEdit from "../../assets/edit.svg"
 import imgDelete from "../../assets/delete.svg"
 import S from "../styled";
-import { reduceData, useReduce } from "../../hooks/useReduce";
 
-function FolderAddFloat() {
+
+
+function FolderAddFloat({ handleModal }) {
   return (
-    <S.ButtonFloat>
-      폴더 추가 <S.Img src={imgAddWhite} />
+    <S.ButtonFloat onClick={handleModal}>
+      폴더 추가<S.Img src={imgAddWhite} />
     </S.ButtonFloat>
   )
 }
 
-function FolderControler({ title }) {
+function FolderControler({ title, handleModal }) {
   return (
     <S.Flex>
       <S.H1>{title}</S.H1>
       <S.DivControl title={title}>
-        <S.ButtonControl>
+        <S.ButtonControl onClick={handleModal}>
           <S.Img src={imgShare} />공유
         </S.ButtonControl>
-        <S.ButtonControl>
+        <S.ButtonControl onClick={handleModal}>
           <S.Img src={imgEdit} />이름 변경
         </S.ButtonControl>
-        <S.ButtonControl>
+        <S.ButtonControl onClick={handleModal}>
           <S.Img src={imgDelete} />삭제
         </S.ButtonControl>
       </S.DivControl>
@@ -36,8 +38,8 @@ function FolderControler({ title }) {
   )
 }
 
-function FolderCategories({ setTitle }) {
-  const [categories, dispatch] = useReduce(reduceData, undefined);
+function FolderCategories({ setTitle, handleModal }) {
+  const [categories] = useData("FOLDER_CATEGORY")
   const [prevSelect, setPrevSelect] = useState(null);
 
   const handleClick = (e) => {
@@ -46,12 +48,6 @@ function FolderCategories({ setTitle }) {
     e.target.classList.add("active");
     setTitle(e.target.textContent);
   }
-
-  useEffect(() => {
-    (async function () {
-      dispatch(await getData('folder', 'category'));
-    })();
-  }, [])
 
   return (
     <S.Flex>
@@ -65,8 +61,8 @@ function FolderCategories({ setTitle }) {
           </Link>
         ))}
       </S.Ul>
-      <S.ButtonAdd>
-        폴더 추가 <S.Img src={imgAdd} />
+      <S.ButtonAdd onClick={handleModal}>
+        폴더 추가<S.Img src={imgAdd} />
       </S.ButtonAdd>
     </S.Flex>
   )
@@ -74,12 +70,20 @@ function FolderCategories({ setTitle }) {
 
 function FolderSelect() {
   const [title, setTitle] = useState('전체');
+  const [modal, dispatch] = useModal(null);
+
+  const handleModal = (e) => {
+    const title = e.target.parentElement?.title;
+    const type = e.target.textContent;
+    dispatch({ title, type });
+  }
 
   return (
     <>
-      <FolderCategories setTitle={setTitle} />
-      <FolderControler title={title} />
-      <FolderAddFloat />
+      <FolderCategories setTitle={setTitle} handleModal={handleModal} />
+      <FolderControler title={title} handleModal={handleModal} />
+      <FolderAddFloat handleModal={handleModal} />
+      {modal}
     </>
 
   )

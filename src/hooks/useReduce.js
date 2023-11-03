@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getData } from "../utils/api";
 
 export const useReduce = (reducer, initialState) => {
   const [state, setState] = useState(initialState);
@@ -16,30 +17,30 @@ export const useReduce = (reducer, initialState) => {
 
 export function reduceData(state = {}, action = {}) {
   switch (action.type) {
-    case 'shared_user': {
+    case 'SHARED_USER': {
       const { id, name, email, profileImageSource: profileImg } = action.payload;
       state = { id, name, email, profileImg }
       break;
     }
-    case 'shared_folderName':
-      const { folder: { name: folderName, owner } } = action.payload;
-      state = { folderName, owner }
-      break;
-    case 'shared_folder':
+    case 'SHARED_FOLDER':
       const { folder: { links } } = action.payload;
       state = links;
       break;
-    case 'folder_user': {
+    case 'SHARED_FOLDERNAME':
+      const { folder: { name: folderName, owner } } = action.payload;
+      state = { folderName, owner }
+      break;
+    case 'FOLDER_USER': {
       const { data: [{ id, name, email, image_source: profileImg }] } = action.payload;
       state = { id, name, email, profileImg }
       break;
     }
-    case 'folder_category': {
+    case 'FOLDER_CATEGORY': {
       const { data } = action.payload;
       state = data;
     }
       break;
-    case 'folder_links':
+    case 'FOLDER_LINKS':
       const { data } = action.payload;
       state = data;
       break;
@@ -47,3 +48,15 @@ export function reduceData(state = {}, action = {}) {
   }
   return state;
 }
+
+function useData(type) {
+  const [state, dispatch] = useReduce(reduceData, undefined);
+
+  useEffect(() => {
+    dispatch(getData(type))
+  }, [dispatch, type])
+
+  return [state]
+}
+
+export default useData

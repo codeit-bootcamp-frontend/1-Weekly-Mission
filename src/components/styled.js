@@ -132,12 +132,12 @@ S.DivEmpty = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30rem;
+  height: 50vh;
   font-size: 1.6rem;
   line-height: 2.4rem;
 `
 
-S.HeaderSearch = styled.header`
+S.HeaderSearch = styled.form`
   position: relative;
   display: flex;
   justify-content: center;
@@ -352,10 +352,7 @@ S.ACard = styled.a`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 34rem;
-  height: 34rem;
   border-radius: 1.5rem;
-  overflow: hidden;
   box-shadow: 0 0.5rem 2.4rem 0 rgba(0, 0, 0, 0.08);
   color: var(--Black);
   background-color: var(--White);
@@ -375,6 +372,7 @@ S.DivImgCard = styled.div`
 S.ImgCard = styled.img`
   width: 34rem;
   height: 100%;
+  border-radius: 1.5rem 1.5rem 0 0;
   object-fit: cover;
 `
 
@@ -384,7 +382,6 @@ S.DivTextCard = styled.div`
   height: 13.5rem;
   padding: 1.5rem 2rem;
   gap: 1rem;
-  background-color: var(--White);
 `
 
 S.DivTimeDiff = styled.div`
@@ -392,6 +389,38 @@ S.DivTimeDiff = styled.div`
   justify-content: space-between;
   font-size: 1.2rem;
   color: var(--Gray5);
+`
+
+S.PopOver = styled.div`
+  display: none;
+  position: absolute;
+  right: 8%;
+  width: 10rem;
+  height: 6.4rem;
+  background-color: var(--White);
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.10);
+
+  @media screen and (min-width: 768px) {
+    right: -10%;
+  }
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+ }
+
+ & p {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: var(--Gray1);
+    color: var(--Primary);
+  }
+ }
 `
 
 S.H3 = styled.h3`
@@ -491,6 +520,170 @@ S.DivSns = styled.div`
   gap: 1.2rem;
   justify-self: end;
   grid-area: sns;
+`
+
+S.DivModalWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000040;
+`
+
+S.DivModalContents = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 3.2rem 4rem;
+  background-color: var(--White);
+  border-radius: 1.5rem;
+`
+
+S.DivModalText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--Gray4);
+  }
+`
+
+S.ButtonSubmit = styled.button`
+  width: 28rem;
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
+  ${({ color }) => color ? `background-color: var(--Red)` : `background-image: linear-gradient(90deg, #6D6AFE, #6AE3FE)`};
+  color: var(--White);
+  font-size: 1.6rem;
+  font-weight: 600;
+`
+
+S.ButtonClose = styled.button`
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+`
+
+S.InputSubmit = styled.input`
+  width: 28rem;
+  padding: 1.8rem 1.5rem;
+  border: 0.1rem solid var(--Gray3);
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 150%;
+
+  &:focus {
+    border: 0.1rem solid var(--Primary);
+    outline: none;
+  }
+`
+
+S.SnsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 3.2rem;
+`
+
+S.Sns = function ({ src, alt, text, onClick }) {
+  return (
+    <button onClick={onClick}>
+      <img src={src} alt={alt} />
+      <p>{text}</p>
+    </button>
+  )
+}
+
+S.UlModal = styled.ul`
+  padding-left: 0;
+
+  li {
+    display: flex;
+  }
+
+  button {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+  }
+
+  img {
+    display: none;
+  }
+
+  button:hover,
+  button:focus {
+    background-color: var(--Gray1);
+    color: var(--Primary);
+  }
+
+  button:focus img {
+    width: 1.4rem;
+    margin-right: 1rem;
+    display: flex;
+    justify-self: end;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 150%;
+  }
+  
+  p {
+    margin-left: 0.8rem;
+    font-size: 1.4rem;
+    color: var(--Gray4);
+  }
+`
+
+S.CopyWrapper = styled.div`
+  display: none;
+
+  &.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  }
+`
+
+const desolve = keyframes`
+  100% {
+    opacity: 0;
+  }
+`
+
+S.CopyContent = styled.div`
+  padding: 1.2rem 1.8rem;
+  color: var(--White);
+  font-size: 1.6rem;
+  background-color: var(--Gray5);
+  border-radius: 0.8rem;
+  animation: ${desolve} 2s ease-in;
 `
 
 export default S
