@@ -44,7 +44,7 @@ function Folder() {
         />
 
         {links?.data?.length !== 0 ? (
-          <CardsContainer cards={links?.data} />
+          <CardsContainer cards={links?.data} userId={DEFAULT_USER_ID} />
         ) : (
           <NoLinkView />
         )}
