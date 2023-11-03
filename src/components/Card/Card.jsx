@@ -43,6 +43,10 @@ function Card({ data, userId }) {
     ),
   });
 
+  const setKebabModal = (modal) => {
+    toggleShow(modal);
+  };
+
   return (
     <>
       {Modal}
@@ -69,28 +73,7 @@ function Card({ data, userId }) {
             >
               <img src={KEBAB} alt='케밥 버튼' />
             </S.KebabButton>
-            {showKebab && (
-              <S.KebabPopup>
-                <S.KebabInnerButton
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    toggleShow('deleteLink');
-                  }}
-                >
-                  삭제하기
-                </S.KebabInnerButton>
-                <S.KebabInnerButton
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    toggleShow('addToFolder');
-                  }}
-                >
-                  풀더에 추가
-                </S.KebabInnerButton>
-              </S.KebabPopup>
-            )}
+            {showKebab && <KebabPopup setKebabModal={setKebabModal} />}
           </S.TimeAgo>
           <S.Title>{reduceText(title, 70)}</S.Title>
           <S.Description>{reduceText(description, 100)}</S.Description>
@@ -102,3 +85,28 @@ function Card({ data, userId }) {
 }
 
 export default Card;
+
+function KebabPopup({ setKebabModal }) {
+  return (
+    <S.KebabPopup>
+      <S.KebabInnerButton
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          setKebabModal('deleteLink');
+        }}
+      >
+        삭제하기
+      </S.KebabInnerButton>
+      <S.KebabInnerButton
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          setKebabModal('addToFolder');
+        }}
+      >
+        풀더에 추가
+      </S.KebabInnerButton>
+    </S.KebabPopup>
+  );
+}
