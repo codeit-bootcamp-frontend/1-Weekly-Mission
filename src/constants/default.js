@@ -5,6 +5,9 @@ import facebookIcon from 'assets/images/akar-icons_facebook-fill.svg';
 import twitterIcon from 'assets/images/akar-icons_twitter-fill.svg';
 import youtubeIcon from 'assets/images/akar-icons_youtube-fill.svg';
 import instagramIcon from 'assets/images/ant-design_instagram-filled.svg';
+import kakaotalkShareIcon from 'assets/images/share_kakao.svg';
+import facebookShareIcon from 'assets/images/share_facebook.svg';
+import linkCopyIcon from 'assets/images/share_copy.svg';
 
 export const SAMPLE_ID = -2;
 export const ALL_ID = -1;
@@ -46,5 +49,23 @@ export const SNS_LIST = [
     src: instagramIcon,
     alt: 'instagram 바로가기',
     url: 'https://www.instagram.com/',
+  },
+];
+
+export const SHARE_LIST = [
+  {
+    src: kakaotalkShareIcon,
+    alt: '카카오톡으로 공유하기',
+    msg: '카카오톡',
+  },
+  {
+    src: facebookShareIcon,
+    alt: '페이스북으로 공유하기',
+    msg: '페이스북',
+  },
+  {
+    src: linkCopyIcon,
+    alt: '폴더 링크 복사하기',
+    msg: '링크 복사',
   },
 ];

@@ -5,6 +5,7 @@ import ModalPortal from 'components/common/Modal/ModalPortal';
 import ModalFrame from 'components/common/Modal/ModalFrame';
 import InputModal from 'components/common/Modal/InputModal';
 import DeleteModal from 'components/common/Modal/DeleteModal';
+import ShareModal from 'components/common/Modal/ShareModal';
 
 /**
  * 폴더 관리 메뉴 선택 컴포넌트
@@ -47,6 +48,7 @@ function ChoiceBar({ folders, selectedFolderId }) {
                 폴더 삭제
               </DeleteModal>
             )}
+            {share && <ShareModal data={folderTitle} folderId={selectedFolderId} onClickClose={handleModalClose} />}
           </ModalFrame>
         </ModalPortal>
       )}
