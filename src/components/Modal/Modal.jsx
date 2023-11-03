@@ -72,6 +72,10 @@ export function ModalShare({ folderName, folderId }) {
     });
   };
 
+  const handleShareFacebook = () => {
+    window.open(`http://www.facebook.com/sharer.php?u=${window.location.host}/shared?user=1&folder=${folderId}`)
+  }
+
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -100,7 +104,7 @@ export function ModalShare({ folderName, folderId }) {
           </S.KaKaotalkIconImgContainer>
           <p>카카오톡</p>
         </S.Icon>
-        <S.Icon>
+        <S.Icon onClick={() => handleShareFacebook()}>
           <S.FacebookIconImgContainer>
             <img src={facebookIcon} alt="페이스북 아이콘" />
           </S.FacebookIconImgContainer>
