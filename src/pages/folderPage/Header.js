@@ -10,6 +10,8 @@ import Cards from "./Cards";
 import "./header.css";
 import ModalBackground from "../../components/modal/ModalBackground";
 import Modal from "../../components/modal/Modal";
+import { requestFullFolderApi } from "../../api/getFullFolderApi";
+import ModalListButton from "../../components/modal/ModalListButton";
 
 const Header = () => {
   const [fullList, setFullList] = useState([]);
@@ -94,6 +96,15 @@ const Header = () => {
     setSingleFolderName(folderName);
   };
 
+  const [fullFolderData, setFullFolderData] = useState();
+  const getFullFolderData = async () => {
+    const temp = await requestFullFolderApi();
+    setFullFolderData(temp?.data);
+  };
+  useEffect(() => {
+    getFullFolderData();
+  }, []);
+
   const getSingleFolderData = async () => {
     const temp = await requestSingleFolderApi(singleFolderDataId);
     setSingleFolderData(temp?.data);
@@ -103,7 +114,11 @@ const Header = () => {
     if (!singleFolderDataId) return;
     getSingleFolderData();
   }, [singleFolderDataId]);
-  // console.log(singleFolderData);
+
+  function handleModalListButton(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
       <header style={{ padding: "6rem 0 9rem 0" }}>
@@ -365,10 +380,10 @@ const Header = () => {
       )}
 
       {totalData && isTotalClicked && (
-        <Cards fullData={totalData} fullList={fullList} />
+        <Cards fullData={totalData} fullFolderData={fullFolderData} />
       )}
       {singleFolderData && isSingleClicked && (
-        <Cards fullList={fullList} fullData={singleFolderData} />
+        <Cards fullFolderData={fullFolderData} fullData={singleFolderData} />
       )}
       {singleFolderData.length === 0 && isSingleClicked && (
         <div
@@ -401,8 +416,14 @@ const Header = () => {
               />
             </div>
             <ul>
-              {fullList.map((list) => {
-                return <li key={list.id}>{list.name}</li>;
+              {fullFolderData.map((list) => {
+                return (
+                  <li style={{ listStyle: "none" }} key={list.id}>
+                    <ModalListButton onClick={(e) => handleModalListButton(e)}>
+                      <b>{list.name}</b> &nbsp; {list.link.count}개 링크
+                    </ModalListButton>
+                  </li>
+                );
               })}
             </ul>
             <button

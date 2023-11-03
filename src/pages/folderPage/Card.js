@@ -5,8 +5,9 @@ import KebabDelete from "../../components/kebab/KebabDelete";
 import KebabAdd from "../../components/kebab/KebabAdd";
 import ModalBackground from "../../components/modal/ModalBackground";
 import Modal from "../../components/modal/Modal";
+import ModalListButton from "../../components/modal/ModalListButton";
 
-const Card = ({ data, fullList }) => {
+const Card = ({ data, fullFolderData }) => {
   const {
     created_at,
     description,
@@ -35,6 +36,10 @@ const Card = ({ data, fullList }) => {
   function handleKebabAddClick(e) {
     e.preventDefault();
     setIsKebabAddClicked(!isKebabAddClicked);
+  }
+
+  function handleModalListButton(e) {
+    e.preventDefault();
   }
 
   return (
@@ -161,8 +166,14 @@ const Card = ({ data, fullList }) => {
               />
             </div>
             <ul>
-              {fullList.map((list) => {
-                return <li key={list.id}>{list.name}</li>;
+              {fullFolderData.map((list) => {
+                return (
+                  <li style={{ listStyle: "none" }} key={list.id}>
+                    <ModalListButton onClick={(e) => handleModalListButton(e)}>
+                      <b>{list.name}</b> &nbsp; {list.link.count}개 링크
+                    </ModalListButton>
+                  </li>
+                );
               })}
             </ul>
             <button
