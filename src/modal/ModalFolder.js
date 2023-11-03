@@ -4,6 +4,7 @@ import kakaoIcon from '../img/svg/kakaoIcon.svg';
 import facebookIcon from '../img/svg/facebookIcon.svg';
 import linkIcon from '../img/svg/linkIcon.svg';
 import './modalFolder.css';
+import { handleCopyClipBoard } from '../utils/urlCopy';
 
 const snsIcon = [
         {Icon: kakaoIcon, name: '카카오톡', identifier: "kakaoIcon"}, 
@@ -12,14 +13,12 @@ const snsIcon = [
     ]
     
 const ModalFolder = ({folderOption, setFolderOption, setNewLink}) => {
-    const {title, btnName, dataItem} = folderOption;
-    const {data:folderLists} = folderOption.folderData;
-    const {data:linksData} = folderOption.linkData;
+    const {title, btnName, dataItem, share, folderData} = folderOption;
+    const {data:folderLists} = folderData;
     const [changeName, setChangeName] = useState(title === '폴더 이름 변경' ? dataItem : "");
-
-    if(!folderLists || !linksData) return;
-    
-    
+ 
+    if(!folderLists) return;
+  
     const isFolderName = () => { 
         return title !== '폴더 이름 변경' && title !== '폴더 추가';
     }
@@ -40,6 +39,7 @@ const ModalFolder = ({folderOption, setFolderOption, setNewLink}) => {
         setChangeName(value);
     }
 
+    
     return (
         <div className='folder-modal'>
             <div className='folder-modal-wrap'>
@@ -52,10 +52,7 @@ const ModalFolder = ({folderOption, setFolderOption, setNewLink}) => {
                     {folderLists.map((list, index) => {
                         return <li key={index}>
                             <h3>{list.name}</h3>
-                            <h4>{linksData.filter(data =>{
-                                return data.folder_id === folderLists[index].id;
-                            }).length}개의 링크</h4> 
-                            
+                            <h4>{list.link.count}개의 링크</h4> 
                         </li>
                     })}
                 </ul> : null}
@@ -65,7 +62,7 @@ const ModalFolder = ({folderOption, setFolderOption, setNewLink}) => {
                 {title === '폴더 공유' ? <ul className='link-copy'>
                     {snsIcon.map((list, index) => {
                         return <li key={index}>
-                            <div className={`icon-border ${list.identifier}`}>
+                            <div className={`icon-border ${list.identifier}`} onClick={() => handleCopyClipBoard(list.name, share)}>
                                 <img src={list.Icon} alt={`${list.name}아이콘`}/>
                             </div>
                             <div className='icon-name'>{list.name}</div>

@@ -22,9 +22,7 @@ const Folder = () => {
     const {data:folderDataObject, 
         errorMessage:foldersErrorMessage} = useFetch(`users/${id}/folders`, id);
     const {data: linkCardsData, 
-        errorMessage: linksErrorMessage} = useQueryFetch(`users/${id}/links`, folderId, id);
-    const {data: linksData} = useFetch(`users/${id}/links`, id);
-
+        errorMessage: linksErrorMessage} = useQueryFetch(`users/${id}/links`, folderId, id)
 
     const handleCebabClick = (event, itemId) => {
         event.preventDefault();
@@ -43,8 +41,8 @@ const Folder = () => {
                 title, 
                 btnName: btn,
                 dataItem: item,
+                share: {id,folderId},
                 folderData: folderDataObject,
-                linkData: linksData
             });
         }
         
