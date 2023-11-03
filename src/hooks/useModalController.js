@@ -1,9 +1,13 @@
 import { useState } from 'react';
 
-function useModalColtroller() {
-  const [state, setState] = useState('false');
+function useModalColtroller(prevent) {
+  const [state, setState] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    if (prevent) {
+      e.preventDefault();
+    }
+
     setState((state) => !state);
   };
 

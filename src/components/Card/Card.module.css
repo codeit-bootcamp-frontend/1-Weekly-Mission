@@ -23,6 +23,30 @@
   padding: 1.5rem;
 }
 
+.kebab {
+  position: relative;
+}
+
+.kebabButtonList {
+  width: 10rem;
+  position: absolute;
+}
+
+.kebabButton {
+  display: flex;
+  padding: 7px 12px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: white;
+  align-self: center;
+  width: 100%;
+}
+
+.kebabButton:hover {
+  color: var(--primary);
+  background-color: var(--gray1);
+}
 @keyframes hoverImageSizeChanger {
   from {
     background-size: 100%;

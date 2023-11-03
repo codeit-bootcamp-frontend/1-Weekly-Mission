@@ -2,25 +2,25 @@ import styles from './Share.module.css';
 import shareKakao from '../assets/images/share_kakao.png';
 import shareFacebook from '../assets/images/share_facebook.png';
 import shareLink from '../assets/images/share_link.png';
+import ModalHeader from '../components/ModalHeader/ModalHeader';
 
-function Share() {
+function Share({ children }) {
   const shareItems = [
-    { img: shareKakao, sub: '카카오톡' },
-    { img: shareFacebook, sub: '페이스북' },
-    { img: shareLink, sub: '링크 복사' },
+    { img: shareKakao, sub: '카카오톡', href: '' },
+    { img: shareFacebook, sub: '페이스북', href: '' },
+    { img: shareLink, sub: '링크 복사', href: '' },
   ];
 
   return (
     <>
-      <div className={styles.header}>
-        <h2>폴더 공유</h2>
-        <p>폴더명</p>
-      </div>
+      <ModalHeader title="공유하기" subTitle={children}></ModalHeader>
       <div className={styles.body}>
         {shareItems.map((item) => {
           return (
             <div className={styles.link}>
-              <img src={item.img} alt="" />
+              <a href={item.href} title="">
+                <img src={item.img} alt="" />
+              </a>
               <p>{item.sub}</p>
             </div>
           );

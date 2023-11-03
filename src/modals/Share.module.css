@@ -1,12 +1,3 @@
-.header {
-  display: flex;
-  width: 28rem;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.8rem;
-}
-
 .body {
   display: flex;
   flex: 0;
@@ -14,15 +5,15 @@
 }
 
 .link {
-  gap: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   color: #373740;
   text-align: center;
   font-size: 1.3rem;
-  line-height: 1.5rem; /* 115.385% */
+  line-height: 1.5rem;
 }
 
 .link img {

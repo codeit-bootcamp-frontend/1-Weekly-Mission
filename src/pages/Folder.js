@@ -17,6 +17,9 @@ import useAuth from '../hooks/useAuth';
 import Share from '../modals/Share';
 import Modal from '../modals/Modal';
 import getFolderName from '../utils/getFolderName';
+import useModalColtroller from '../hooks/useModalController';
+import DeleteFolder from '../modals/DeleteFolder';
+import DeleteLink from '../modals/DeleteLink';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,6 +31,11 @@ function Folder() {
     },
   ]);
   const { isAuth } = useAuth();
+
+  // 모달 컨트롤라
+  const shareModal = useModalColtroller();
+  const deleteFolderModal = useModalColtroller();
+  const deleteLinkModal = useModalColtroller();
 
   const folderID = searchParams.get('folderId');
 
@@ -82,7 +90,12 @@ function Folder() {
         </div>
         <div className={styles.flex}>
           <FolderName>{folderName}</FolderName>
-          {folderName !== '전체' && <FolderEdit />}
+          {folderName !== '전체' && (
+            <FolderEdit
+              shareModal={shareModal.handleClick}
+              deleteModal={deleteFolderModal.handleClick}
+            />
+          )}
         </div>
         {cards.length ? (
           <Binder cards={cards} shared="off" />
@@ -90,9 +103,19 @@ function Folder() {
           <FolderEmptyNoti />
         )}
       </section>
-      {true && (
-        <Modal>
-          <Share />
+      {shareModal.state && (
+        <Modal onClick={shareModal.handleClick}>
+          <Share>{folderName}</Share>
+        </Modal>
+      )}
+      {deleteFolderModal.state && (
+        <Modal onClick={deleteFolderModal.handleClick}>
+          <DeleteFolder>{folderName}</DeleteFolder>
+        </Modal>
+      )}
+      {deleteLinkModal.state && (
+        <Modal onClick={deleteLinkModal.handleClick}>
+          <DeleteLink>{folderName}</DeleteLink>
         </Modal>
       )}
     </>

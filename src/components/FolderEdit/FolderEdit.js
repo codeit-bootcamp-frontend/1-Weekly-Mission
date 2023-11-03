@@ -3,22 +3,18 @@ import penIcon from '../../assets/images/pen.svg';
 import binIcon from '../../assets/images/bin.svg';
 import styles from './FolderEdit.module.css';
 
-function FolderEdit() {
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
+function FolderEdit({ shareModal, deleteModal }) {
   return (
     <div className={styles.root}>
-      <button className={styles.button} onSubmit={handleSubmit}>
+      <button className={styles.button} onClick={shareModal}>
         <img src={shareIcon} alt="" />
         공유
       </button>
-      <button className={styles.button} onSubmit={handleSubmit}>
+      <button className={styles.button} onClick={shareModal}>
         <img src={penIcon} alt="" />
         이름 변경
       </button>
-      <button className={styles.button} onSubmit={handleSubmit}>
+      <button className={styles.button} onClick={deleteModal}>
         <img src={binIcon} alt="" />
         삭제
       </button>
