@@ -1,16 +1,14 @@
-import axios from "axios";
-
-const BASE_URL = `https://bootcamp-api.codeit.kr`;
-const USER_ID = `users/1`;
+import { axiosInstance } from "./axiosInstance";
+import USER_ID from "./constants";
 
 export async function getAllCards(id = "") {
   let url = "";
   if (id === "") {
-    url = `${BASE_URL}/api/${USER_ID}/links`;
+    url = `${USER_ID}/links`;
   } else {
     const query = `?folderId=${id}`;
-    url = `${BASE_URL}/api/${USER_ID}/links${query}`;
+    url = `${USER_ID}/links${query}`;
   }
-  const response = await axios.get(`${url}`);
+  const response = await axiosInstance.get(`${url}`);
   return response?.data;
 }

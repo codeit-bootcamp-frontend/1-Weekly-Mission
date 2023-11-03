@@ -1,8 +1,5 @@
 /* 폴더 안에 들어있는 카드들을 리스트로 보여주는 컴포넌트 */
 
-/* css 모듈 방식 적용
- */
-
 import Card from "commons/components/Card/Card";
 import styles from "./CardList.module.css";
 
@@ -18,11 +15,7 @@ function CardList({ cardList }) {
   return (
     <section className={styles["card-section"]}>
       {cardList.map((card) => {
-        return (
-          <div key={card.id}>
-            <Card card={card} />
-          </div>
-        );
+        return <Card card={card} key={card.id} />;
       })}
     </section>
   );

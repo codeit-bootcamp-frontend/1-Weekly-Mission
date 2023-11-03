@@ -1,0 +1,10 @@
+@import "commons/styles/global.scss";
+
+.kebab-button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  bottom: 33%;
+  right: 1rem;
+  z-index: 10;
+}

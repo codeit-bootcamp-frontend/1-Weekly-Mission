@@ -1,9 +1,7 @@
-import axios from "axios";
-
-const BASE_URL = `https://bootcamp-api.codeit.kr`;
-const USER_ID = `users/1`;
+import { axiosInstance } from "./axiosInstance";
+import USER_ID from "./constants";
 
 export async function getFolderList() {
-  const response = await axios.get(`${BASE_URL}/api/${USER_ID}/folders`);
+  const response = await axiosInstance.get(`${USER_ID}/folders`);
   return response?.data;
 }

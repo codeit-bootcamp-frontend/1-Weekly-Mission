@@ -24,8 +24,6 @@ input:focus {
 
 .search-icon {
   position: absolute;
-  top: 1rem;
+  top: 1.5rem;
   left: 1rem;
-  width: 15px;
-  height: 15px;
 }

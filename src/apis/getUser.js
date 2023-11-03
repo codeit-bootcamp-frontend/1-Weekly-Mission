@@ -1,6 +1,5 @@
 import { axiosInstance } from "./axiosInstance";
-
-const USER_ID = `users/1`;
+import USER_ID from "./constants";
 
 export async function getUser() {
   const response = await axiosInstance.get(`${USER_ID}`);

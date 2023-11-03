@@ -1,16 +1,11 @@
 /* 각 링크를 카드로 보여주는 컴포넌트 */
 
-/* BEM 방식으로 clasSName 명명 
-   css 모듈 방식 적용 
-   */
-
 import styles from "./Card.module.css";
 import NoImg from "assets/images/no-img-card.svg";
-import { ReactComponent as Kebab } from "assets/images/kebab.svg";
-import { ReactComponent as NoStar } from "assets/images/no-filled-star-icon.svg";
-
+import StarButton from "../StarButton/StarButton";
 import formatDate from "commons/utils/formatDate";
 import calcDate from "commons/utils/calcDate";
+import KebabButton from "../KebabButton/KebabButton";
 
 function Card(card) {
   const { created_at, url, title, description, image_source } = card.card;
@@ -18,12 +13,8 @@ function Card(card) {
 
   return (
     <div className={styles["card-container"]}>
-      <button className={styles["unfilled-star-button"]}>
-        <NoStar />
-      </button>
-      <button className={styles["kebab-button"]}>
-        <Kebab />
-      </button>
+      <StarButton />
+      <KebabButton />
 
       <a
         href={url}

@@ -1,13 +1,10 @@
 /* 추가할 링크를 타이핑하는 인풋 컴포넌트 */
 
-/* css 모듈 방식 적용
- */
-
 import { useState } from "react";
-import styles from "./LinkAddInput.module.css";
+import styles from "./LinkAddBar.module.css";
 import { ReactComponent as LinkIcon } from "assets/images/link-icon.svg";
 
-function LinkAddInput() {
+function LinkAddBar() {
   const [keyword, setKeyword] = useState("");
   const handleKeywordChange = (e) => setKeyword(e.target.value);
 
@@ -15,7 +12,7 @@ function LinkAddInput() {
     <div className={styles["add-form-container"]}>
       <form>
         <div className={styles["add-link-form"]}>
-          <LinkIcon />
+          <LinkIcon className={styles["add-link-icon"]} />
           <input
             name="add-link-input"
             value={keyword}
@@ -32,4 +29,4 @@ function LinkAddInput() {
   );
 }
 
-export default LinkAddInput;
+export default LinkAddBar;

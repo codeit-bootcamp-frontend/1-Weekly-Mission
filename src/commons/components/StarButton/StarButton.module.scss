@@ -1,0 +1,9 @@
+@import "commons/styles/global.scss";
+
+.star-button {
+  position: absolute;
+  background: transparent;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
