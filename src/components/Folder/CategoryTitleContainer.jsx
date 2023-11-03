@@ -5,7 +5,7 @@ import delete_icon from '../../assets/svg/trash.svg';
 import IconControlButton from '../../styles/IconControlButton';
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
-import ModalContainer from '../Modal/ModalContainer';
+import FolderModal from '../Modal/FolderModal';
 
 const ICONS = [
   {
@@ -35,6 +35,10 @@ function CategoryTitleContainer({ name }) {
     setModalTitle(modalTitle);
   };
 
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+
   return (
     <CategoryTitleContainerStyle>
       <CategoryTitle>{name}</CategoryTitle>
@@ -46,7 +50,7 @@ function CategoryTitleContainer({ name }) {
         })}
         {isOpen && (
           <Modal>
-            <ModalContainer modalTitle={modalTitle}/>
+            <FolderModal modalTitle={modalTitle} onCloseModal={closeModal}/>
           </Modal>
         )}
       </FolderControlContainer>

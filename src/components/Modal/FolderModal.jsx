@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { Button } from '../../styles/Button';
 import close_button from '../../assets/svg/close.svg';
 
-function ModalContainer({ modalTitle }) {
+function FolderModal({ modalTitle, onCloseModal }) {
   return (
     <>
       <BackDrop />
       <ModalBody>
-        <CloseButton src={close_button} alt='모달 닫기 버튼' />
+        <CloseButton src={close_button} alt='모달 닫기 버튼' onClick={onCloseModal}/>
         <ModalTitle>{modalTitle}</ModalTitle>
         <InputContainer>
           <ModalInput placeholder='유용한 팁' />
@@ -18,7 +18,7 @@ function ModalContainer({ modalTitle }) {
   );
 }
 
-export default ModalContainer;
+export default FolderModal;
 
 const BackDrop = styled.div`
   top: 0;
@@ -55,6 +55,7 @@ const CloseButton = styled.img`
   position: absolute;
   left: 32rem;
   top: 1.6rem;
+  cursor: pointer;
 `;
 
 const ModalTitle = styled.h1`
