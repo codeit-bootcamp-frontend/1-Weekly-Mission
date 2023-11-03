@@ -47,7 +47,7 @@ const ModalFolder = ({folderOption, setFolderOption, setNewLink}) => {
                 <h2>{title}</h2>
                 {isFolderName() ? <h4 className='folder-name'>{dataItem}</h4> : null}
                 {isInput() ? <input name='modalName' value={changeName}
-                 onChange={(event) => handleChange(event)} placeholder='내용 입력'/> : null}
+                onChange={(event) => handleChange(event)} placeholder='내용 입력'/> : null}
                 {title === '폴더에 추가' ? <ul className='folder-list'>
                     {folderLists.map((list, index) => {
                         return <li key={index}>

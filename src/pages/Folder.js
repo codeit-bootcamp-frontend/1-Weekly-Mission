@@ -8,6 +8,16 @@ import { useFetch, useQueryFetch } from '../hooks/useFetch';
 import { useParams } from 'react-router-dom';
 import ModalFolder from '../modal/ModalFolder';
 
+const modalBg = {
+        background: "#000",
+        opacity: "0.4",
+        width: "100%",
+        height: "100%",
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+}
 
 
 const Folder = () => {
@@ -34,6 +44,7 @@ const Folder = () => {
             event.preventDefault();
             setIscebabClick(!iscebabClick);
         }
+
         if(title === '폴더에 추가' && !item) {
             alert("링크를 입력해주세요");
         } else {
@@ -58,7 +69,9 @@ const Folder = () => {
              prevKey={prevKey} handleCebabClick={handleCebabClick} handleListClick={handleListClick} iscebabClick={iscebabClick}/> : 
             <h3 className='noLink'>저장된 링크가 없습니다</h3> 
             : <div className="section-title section-title-third">{linksErrorMessage}</div>}
-            {folderOption ? <ModalFolder folderOption={folderOption} setFolderOption={setFolderOption} setNewLink={setNewLink}/> : null}
+            {folderOption ? <><div className='modal-bg' style={modalBg}></div>
+            <ModalFolder folderOption={folderOption} setFolderOption={setFolderOption} setNewLink={setNewLink}/></>
+            : null}
         </div>
     );
 };

@@ -4,7 +4,7 @@ import Search from '../components/Search';
 import Cards from '../components/Cards';
 import { AccountContext } from '../contexts/AccountContext';
 import { useFetch, useQueryFetch } from '../hooks/useFetch';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const Shared = () => {
     const {account, errorMessage} = useContext(AccountContext)
