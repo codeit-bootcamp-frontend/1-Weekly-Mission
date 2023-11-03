@@ -1,0 +1,49 @@
+header {
+  display: flex;
+  width: 100%;
+  padding: 32px 60px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: #f0f6ff;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  white-space: nowrap;
+}
+
+.header-content__userDiv {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-content__userDiv__userImg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.header-content__userDiv__emailTxt {
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 18px 32px;
+  }
+  .header-content__logoImg {
+    height: 16px;
+  }
+  .header-content__userDiv {
+    gap: 0px;
+  }
+  .header-content__userDiv__emailTxt {
+    content-visibility: hidden;
+  }
+}
