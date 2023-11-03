@@ -20,3 +20,15 @@
     display: none;
   }
 }
+
+.modal-background {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  overflow: hidden;
+  inset: 0;
+  z-index: 33;
+}
+
+.modal-none-background {
+  display: none;
+}

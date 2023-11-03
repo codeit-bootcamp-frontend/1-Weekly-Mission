@@ -1,4 +1,4 @@
-import Layout from "commons/Modal/Layout/ModalLayout";
-import ShareModal from "./ShareModal/ShareModal";
+import ModalLayout from "./Layout/ModalLayout";
+import DeleteFolderModal from "./DeleteFolderModal/DeleteFolderModal";
 
-export { ShareModal, Layout };
+export { DeleteFolderModal, ModalLayout };
