@@ -5,7 +5,7 @@ import kakaotalkIcon from "images/kakao.svg";
 import facebookIcon from "images/facebook.svg";
 import linkIcon from "images/link.svg";
 import { useEffect, useState } from "react";
-import { getAPI } from "api";
+import fetch from "api";
 import { useLocation } from "react-router-dom";
 
 export default function Modal({ close, children }) {
@@ -129,7 +129,7 @@ export function ModalAddLink({ url }) {
   const [folders, setFolders] = useState();
 
   const handleLoad = async () => {
-    const result = await getAPI("/users/1/folders");
+    const result = await fetch({ url: "/users/1/folders" });
     const { data } = result;
     setFolders(data);
   };

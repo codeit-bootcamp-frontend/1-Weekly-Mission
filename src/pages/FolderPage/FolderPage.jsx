@@ -1,4 +1,4 @@
-import { getAPI } from "api";
+import fetch from "api";
 import AddLinkForm from "components/AddLinkForm";
 import CardList from "components/CardList";
 import FolderList from "components/FolderList";
@@ -16,7 +16,7 @@ function FolderPage() {
 
   const handleLoadFolder = async (folderId) => {
     const url = `/users/1/links?folderId=${folderId}`;
-    const { data } = await getAPI(url);
+    const { data } = await fetch({ url: url });
     setFolder(data);
   };
 

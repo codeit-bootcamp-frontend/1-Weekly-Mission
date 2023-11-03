@@ -1,7 +1,7 @@
 import linkbraryLogo from "images/logo.svg";
 import { useEffect, useState } from "react";
 import Profile from "components/Profile";
-import { getAPI } from "api";
+import fetch from "api";
 import * as S from "./Nav.style";
 
 function Nav() {
@@ -10,7 +10,7 @@ function Nav() {
 
   const handleLoadProfile = async () => {
     const url = window.location.path === "/shared" ? "/sample/user" : "/users/1";
-    const result = await getAPI(url);
+    const result = await fetch({ url: url });
     if (!result) {
       setHasProfile(false);
       return;

@@ -4,11 +4,13 @@ const api = axios.create({
   baseURL: "https://bootcamp-api.codeit.kr/api/",
 });
 
-export async function getAPI(url) {
+const fetch = async (options) => {
   try {
-    const response = await api(url);
-    return response.data;
+    const response = api({ ...options });
+    return (await response).data;
   } catch (error) {
-    return error.response;
+    throw error;
   }
 }
+
+export default fetch;

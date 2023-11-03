@@ -1,4 +1,4 @@
-import { getAPI } from "api";
+import fetch from "api";
 import { useEffect, useState } from "react";
 import * as S from "./FolderList.style";
 import addIcon from "images/add.svg";
@@ -31,7 +31,7 @@ function FolderList({ getFolderId }) {
   };
 
   const handleLoad = async () => {
-    const result = await getAPI("/users/1/folders");
+    const result = await fetch({ url: "/users/1/folders" });
     const { data } = result;
     setFolders(data);
   };
@@ -59,7 +59,11 @@ function FolderList({ getFolderId }) {
             <img className="notMobile" src={addIcon} alt="추가 아이콘" />
             <img className="onMobile" src={addIconWhite} alt="추가 아이콘" />
           </S.AddFolderButton>
-          {modalIsOpen4 && <Modal close={() => setModalIsOpen4(false)}><ModalAddFolder /></Modal>}
+          {modalIsOpen4 && (
+            <Modal close={() => setModalIsOpen4(false)}>
+              <ModalAddFolder />
+            </Modal>
+          )}
         </S.FolderListContainer>
       )}
       <S.CurrentFolderInfo>
@@ -69,17 +73,29 @@ function FolderList({ getFolderId }) {
             <img src={shareIcon} alt="공유 아이콘" />
             <span>공유</span>
           </button>
-          {modalIsOpen1 && <Modal close={() => setModalIsOpen1(false)}><ModalShare folderName={selectedName} /></Modal>}
+          {modalIsOpen1 && (
+            <Modal close={() => setModalIsOpen1(false)}>
+              <ModalShare folderName={selectedName} />
+            </Modal>
+          )}
           <button onClick={() => setModalIsOpen2(true)}>
             <img src={nameChangeIcon} alt="이름 변경 아이콘" />
             <span>이름 변경</span>
           </button>
-          {modalIsOpen2 && <Modal close={() => setModalIsOpen2(false)}><ModalEdit folderName={selectedName} /></Modal>}
+          {modalIsOpen2 && (
+            <Modal close={() => setModalIsOpen2(false)}>
+              <ModalEdit folderName={selectedName} />
+            </Modal>
+          )}
           <button onClick={() => setModalIsOpen3(true)}>
             <img src={deleteIcon} alt="삭제 아이콘" />
             <span>삭제</span>
           </button>
-          {modalIsOpen3 && <Modal close={() => setModalIsOpen3(false)}><ModalDelete folderName={selectedName} /></Modal>}
+          {modalIsOpen3 && (
+            <Modal close={() => setModalIsOpen3(false)}>
+              <ModalDelete folderName={selectedName} />
+            </Modal>
+          )}
         </S.OptionContainer>
       </S.CurrentFolderInfo>
     </>
