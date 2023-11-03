@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
-function IconControlButton({icon}) {
-
+function IconControlButton({ icon, onOpen }) {
   return (
-    <IconControlButtonContainer>
-      <IconImage src={icon.iconImage} alt={icon.name}/>
+    <IconControlButtonContainer onClick={() => {
+      onOpen({
+        isOpen: true,
+        modalTitle: icon.name
+      })
+    }}>
+      <IconImage src={icon.iconImage} alt={icon.name} />
       <p>{icon.name}</p>
     </IconControlButtonContainer>
-  )
+  );
 }
 
 export default IconControlButton;
@@ -22,8 +26,8 @@ const IconControlButtonContainer = styled.button`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-`
+`;
 const IconImage = styled.img`
   width: 1.8rem;
   height: 1.8rem;
-`
+`;
