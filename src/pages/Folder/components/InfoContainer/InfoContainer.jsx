@@ -10,7 +10,7 @@ import DeleteFolder from 'components/Modal/DeleteFolder';
 import DeleteLink from 'components/Modal/DeleteLink';
 import AddToFolder from 'components/Modal/AddToFolder';
 
-function InfoContainer({ defaultFolder, selectedFolder }) {
+function InfoContainer({ defaultFolder, selectedFolder, userId }) {
   const closeModal = () => {
     toggleShow(null);
   };
@@ -20,7 +20,12 @@ function InfoContainer({ defaultFolder, selectedFolder }) {
     newFolder: <NewFolder closeModal={closeModal} />,
     share: <Share closeModal={closeModal} folderName={selectedFolder?.name} />,
     deleteFolder: (
-      <DeleteFolder closeModal={closeModal} folderName={selectedFolder?.name} />
+      <DeleteFolder
+        closeModal={closeModal}
+        folderName={selectedFolder?.name}
+        folderId={selectedFolder.id}
+        userId={userId}
+      />
     ),
     deleteLink: <DeleteLink closeModal={closeModal} />,
     addToFolder: <AddToFolder closeModal={closeModal} />,

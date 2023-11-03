@@ -47,6 +47,7 @@ function FoldersContainer({ userId, initialFolderId, setFolderLinks }) {
           <InfoContainer
             defaultFolder={DEFAULT_FOLDER}
             selectedFolder={selectedFolder}
+            userId={userId}
           />
         </>
       )}
