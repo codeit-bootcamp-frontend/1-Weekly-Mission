@@ -126,6 +126,38 @@ const Header = () => {
     window.open(`http://www.facebook.com/sharer.php?u=${url}`);
   }
 
+  function handleKakaoClick(e, url) {
+    e.preventDefault();
+    alert("Kakao SDK가 로드되지 않았습니다. 나중에 다시 시도해주세요.");
+    return;
+    const sharedUrl = url;
+    if (window.Kakao) {
+      window.Kakao.Link.sendDefault({
+        objectType: "feed",
+        content: {
+          title: "카카오톡 공유",
+          description: "카카오톡으로 주소를 공유합니다.",
+          imageUrl: "이미지 URL",
+          link: {
+            mobileWebUrl: sharedUrl,
+            webUrl: sharedUrl,
+          },
+        },
+        buttons: [
+          {
+            title: "웹에서 보기",
+            link: {
+              mobileWebUrl: sharedUrl,
+              webUrl: sharedUrl,
+            },
+          },
+        ],
+      });
+    } else {
+      alert("Kakao SDK가 로드되지 않았습니다. 나중에 다시 시도해주세요.");
+    }
+  }
+
   return (
     <>
       <header style={{ padding: "6rem 0 9rem 0" }}>
@@ -315,6 +347,7 @@ const Header = () => {
               }}
             >
               <button
+                onClick={(e) => handleKakaoClick(e, currentLink)}
                 style={{
                   display: "flex",
                   flexDirection: "column",
