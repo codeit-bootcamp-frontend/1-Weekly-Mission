@@ -26,8 +26,6 @@ function Shared() {
     loadFolderData();
   }, []);
 
-  console.log(cards);
-
   return (
     <>
       <BinderInfo name={name} owner={owner} />

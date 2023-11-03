@@ -14,6 +14,9 @@ import { Navigate, useSearchParams } from 'react-router-dom';
 import getFolderListsByUser from '../apis/folder/getFolderListsByUser';
 import getLinksByUsersFolder from '../apis/link/getLinksByUsersFolder';
 import useAuth from '../hooks/useAuth';
+import Share from '../modals/Share';
+import Modal from '../modals/Modal';
+import getFolderName from '../utils/getFolderName';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,17 +52,6 @@ function Folder() {
       return [...data];
     });
   }, [folderID]);
-
-  const getFolderName = (folderID, folderLists) => {
-    if (!folderID) {
-      return '전체';
-    } else {
-      const folderName = folderLists.find((folderList) => {
-        return folderList.id === Number(folderID);
-      });
-      return folderName !== undefined ? folderName.name : '';
-    }
-  };
 
   const folderName = getFolderName(folderID, folderLists);
 
@@ -98,6 +90,11 @@ function Folder() {
           <FolderEmptyNoti />
         )}
       </section>
+      {true && (
+        <Modal>
+          <Share />
+        </Modal>
+      )}
     </>
   );
 }
