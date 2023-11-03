@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { RESPONSIBLE_SIZE_TABLET } from "utils/constants";
+import { RESPONSIBLE_SIZE } from "utils/constants";
 
 export const CardContainer = styled.li`
   position: relative;
@@ -13,7 +13,7 @@ export const BookMarkButton = styled.button`
   cursor: pointer;
 
   > img {
-    @media screen and (${RESPONSIBLE_SIZE_TABLET}) {
+    @media screen and (max-width: ${RESPONSIBLE_SIZE.tablet}) {
       width: 3.2rem;
     }
   }
@@ -107,7 +107,7 @@ export const KebabOptionList = styled.ul`
   background-color: var(--linkbrary--color--white);
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
 
-  @media screen and (${RESPONSIBLE_SIZE_TABLET}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.tablet}) {
     left: unset;
     right: 0.2rem;
   }

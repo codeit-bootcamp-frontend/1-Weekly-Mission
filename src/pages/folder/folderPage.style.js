@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import {
-  RESPONSIBLE_SIZE_TABLET,
-  RESPONSIBLE_SIZE_MOBILE,
-} from "utils/constants";
+import { RESPONSIBLE_SIZE } from "utils/constants";
 import { ReactComponent as addIcon } from "assets/icons/add.svg";
 
 export const FolderAddWrapper = styled.section`
@@ -12,11 +9,11 @@ export const FolderAddWrapper = styled.section`
   background-color: var(--linkbrary--color--gray5);
   text-align: center;
 
-  @media screen and (${RESPONSIBLE_SIZE_TABLET}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.tablet}) {
     padding: 6rem 3.25rem 9rem;
   }
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     padding: 2.4rem 3rem 3.2rem;
   }
 `;
@@ -24,11 +21,11 @@ export const FolderAddWrapper = styled.section`
 export const LinkFolderListContainer = styled.section`
   padding: 4rem 19rem 10rem;
 
-  @media screen and (${RESPONSIBLE_SIZE_TABLET}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.tablet}) {
     padding: 4rem 3.25rem 10rem;
   }
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     padding: 2rem 3.25rem 4rem;
   }
 `;
@@ -51,7 +48,7 @@ export const FolderAddButton = styled.button`
   color: #6d6afe;
   cursor: pointer;
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     z-index: 1;
     position: fixed;
     bottom: 10.1rem;
@@ -71,7 +68,7 @@ export const FolderAddIcon = styled(addIcon)`
     fill: var(--linkbrary--color--primary);
   }
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     path {
       fill: var(--linkbrary--color--white);
     }

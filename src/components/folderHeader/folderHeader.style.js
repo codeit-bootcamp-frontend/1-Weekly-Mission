@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import {
-  RESPONSIBLE_SIZE_TABLET,
-  RESPONSIBLE_SIZE_MOBILE,
-} from "utils/constants";
+import { RESPONSIBLE_SIZE } from "utils/constants";
 
 export const FolderHeader = styled.section`
   display: flex;
@@ -10,7 +7,7 @@ export const FolderHeader = styled.section`
   justify-content: space-between;
   margin: 2.4rem 0;
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.2rem;

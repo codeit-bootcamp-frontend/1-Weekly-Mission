@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { RESPONSIBLE_SIZE_MOBILE } from "utils/constants";
+import { RESPONSIBLE_SIZE } from "utils/constants";
 
 export const LinkSearchForm = styled.form`
   margin-bottom: 4rem;
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     margin-bottom: 3.2rem;
   }
 `;
@@ -18,7 +18,7 @@ export const LinkSearchFieldset = styled.fieldset`
   border-radius: 10px;
   background: #f5f5f5;
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     padding: 1.3rem 1.6rem;
   }
 `;
@@ -36,7 +36,7 @@ export const LinkSearchInput = styled.input`
     color: #666666;
   }
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     font-size: 1.4rem;
   }
 `;

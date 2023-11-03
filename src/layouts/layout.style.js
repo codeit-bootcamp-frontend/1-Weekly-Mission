@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { RESPONSIBLE_SIZE_MOBILE } from "utils/constants";
+import { RESPONSIBLE_SIZE } from "utils/constants";
 
 export const PageContainer = styled.div`
   ${(props) =>
@@ -8,7 +8,7 @@ export const PageContainer = styled.div`
       padding-top: 9.4rem;
     `}
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     ${(props) =>
       props.$isHeaderFixed &&
       css`
