@@ -92,6 +92,11 @@ export default function FolderPage() {
                   </span>
                 </Dialog.FolderList>
               ))}
+              <Dialog.Button>
+                <button type="button" className="dialog-add-button">
+                  추가하기
+                </button>
+              </Dialog.Button>
             </Dialog>
           </div>
           <div className="folder-category-container">

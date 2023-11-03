@@ -93,6 +93,19 @@
   font-size: 14px;
 }
 
+.dialog-add-button {
+  width: 280px;
+  padding: 16px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  border: none;
+  color: #f5f5f5;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* table */
 
 @media (min-width: 768px) and (max-width: 1199px) {
