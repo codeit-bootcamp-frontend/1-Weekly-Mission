@@ -5,7 +5,7 @@ import star from "../images/star.svg";
 import KebabButton from "./Kebab";
 import { timeForToday, formatDate } from "../date.js";
 
-function Card({ item, handleModalKebab }) {
+function Card({ item, openMAF }) {
   const { url, imageSource = noImage, title, createdAt, description } = item;
   return (
     <>
@@ -25,7 +25,7 @@ function Card({ item, handleModalKebab }) {
           <div className="card-box">
             <span className="card-created-time">
               {timeForToday(createdAt || item.created_at)}
-              <KebabButton />
+              <KebabButton openMAF={openMAF} />
             </span>
             <span className="card-text">{description}</span>
             <span className="card-created-at">

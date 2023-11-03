@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { getSelectItems, getUserLogin, getRenderLinks } from "../../api";
 import SelectPart from "./SelectPart";
 import SearchBar from "./SearchBar";
-
+import { ModalAddFolder } from "../Modal";
 function Folder() {
   const [selectItems, setSelectItem] = useState([]);
   const [userLogin, setUserLogin] = useState([]);
@@ -17,6 +17,7 @@ function Folder() {
   const [folderName, setFolderName] = useState([]);
   const [nowFolderId, setNowFolderId] = useState("");
   const [selected, setSelected] = useState("전체");
+  const [openAddFolder, setOpenAddModal] = useState(false);
 
   const handleSelectItems = async () => {
     try {
@@ -74,10 +75,18 @@ function Folder() {
     handleRenderItems();
   }, [nowFolderId]);
 
+  const openMAF = (e) => {
+    e.preventDefault();
+    setOpenAddModal((prev) => !prev);
+  };
+  const CloseMAF = (e) => {
+    e.preventDefault();
+    setOpenAddModal(false);
+  };
   return (
     <>
       <Nav lists={userLogin} />
-      <HeaderSpace />
+      <HeaderSpace openMAF={openMAF} />
       <SearchBar />
       <SelectPart
         selectItems={selectItems}
@@ -85,13 +94,18 @@ function Folder() {
         folderName={folderName}
         selected={selected}
         nowFolderId={nowFolderId}
+        openMAF={openMAF}
       />
       {userLinks.length !== 0 ? (
-        <MainSpace items={userLinks} />
+        <MainSpace items={userLinks} openMAF={openMAF} />
       ) : (
         <div className="empty">저장된 링크가 없습니다</div>
       )}
-
+      {openAddFolder ? (
+        <ModalAddFolder selectItems={selectItems} CloseMAF={CloseMAF} />
+      ) : (
+        ""
+      )}
       <FooterSpace />
     </>
   );

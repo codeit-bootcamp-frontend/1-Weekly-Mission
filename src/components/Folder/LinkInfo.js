@@ -6,9 +6,27 @@ import { useState } from "react";
 import { ModalLink } from "../Modal";
 
 export const LinkOptions = [
-  { name: "공유", img: share, color: "blue", buttonTitle: "추가하기" },
-  { name: "이름 변경", img: changes, color: "blue", buttonTitle: "변경하기" },
-  { name: "삭제", img: deletings, color: "red", buttonTitle: "삭제하기" },
+  {
+    name: "공유",
+    modalTitle: "폴더 공유",
+    img: share,
+    color: "blue",
+    buttonTitle: "추가하기",
+  },
+  {
+    name: "이름 변경",
+    modalTitle: "폴더 이름 변경",
+    img: changes,
+    color: "blue",
+    buttonTitle: "변경하기",
+  },
+  {
+    name: "삭제",
+    modalTitle: "폴더 삭제",
+    img: deletings,
+    color: "red",
+    buttonTitle: "삭제하기",
+  },
 ];
 
 function LinkInfo({ folderName }) {
@@ -17,6 +35,7 @@ function LinkInfo({ folderName }) {
   const handleModalLink = (e) => {
     setModalLinkName(e.target.innerText);
   };
+  const handleCloseModalLink = (e) => setModalLinkName("");
 
   return (
     <>
@@ -34,17 +53,29 @@ function LinkInfo({ folderName }) {
         </HandleLink>
       </Wrapper>
       {modalLinkName === "공유" ? (
-        <ModalLink LinkOptions={LinkOptions[0]} />
+        <ModalLink
+          LinkOptions={LinkOptions[0]}
+          folderName={folderName}
+          onClose={handleCloseModalLink}
+        />
       ) : (
         false
       )}
       {modalLinkName === "이름 변경" ? (
-        <ModalLink LinkOptions={LinkOptions[1]} />
+        <ModalLink
+          LinkOptions={LinkOptions[1]}
+          folderName={folderName}
+          onClose={handleCloseModalLink}
+        />
       ) : (
         false
       )}
       {modalLinkName === "삭제" ? (
-        <ModalLink LinkOptions={LinkOptions[2]} />
+        <ModalLink
+          LinkOptions={LinkOptions[2]}
+          folderName={folderName}
+          onClose={handleCloseModalLink}
+        />
       ) : (
         false
       )}

@@ -17,6 +17,7 @@ function SelectPart({
   handleClickUpdate,
   folderName,
   nowFolderId,
+  openMAF,
 }) {
   return (
     <div className="SelectPart">
@@ -34,11 +35,11 @@ function SelectPart({
             );
           })}
         </div>
-        <div className="add-folder">
+        <div className="add-folder" onClick={openMAF}>
           <span className="add-text">폴더 추가</span>
           <img className="add" src={add} alt="" />
         </div>
-        <button className="add-btn">
+        <button className="add-btn" onClick={openMAF}>
           <span className="add-text btn">폴더 추가</span>
           <img className="add btn" src={add} alt="" />
         </button>

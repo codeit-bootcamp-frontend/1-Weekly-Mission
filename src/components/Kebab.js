@@ -40,7 +40,7 @@ const PopDelete = styled(PopAdd)`
     $isSelected ? "#6D6AFE" : "#ffffff"};
 `;
 
-export default function KebabButton({ url }) {
+export default function KebabButton({ url, openMAF }) {
   const [open, setOpen] = useState(false);
   const [isClicked, setIsClicked] = useState("");
   const toggledKebab = (e) => {
@@ -52,6 +52,17 @@ export default function KebabButton({ url }) {
     e.preventDefault();
     setIsClicked(e.target.innerText);
   };
+  const handleOpenMAF = (e) => {
+    e.preventDefault();
+    setIsClicked(e.target.innerText);
+    openMAF(e);
+  };
+
+  const handlecloseModal = (e) => {
+    e.preventDefault();
+    setIsClicked("");
+  };
+
   return (
     <>
       <KebabImg src={kebab} alt="케밥" onClick={toggledKebab} />
@@ -66,7 +77,7 @@ export default function KebabButton({ url }) {
           </PopDelete>
           <PopAdd
             value={isClicked}
-            onClick={togglePop}
+            onClick={handleOpenMAF}
             $Selected={isClicked === "폴더에 추가"}
           >
             폴더에 추가
@@ -74,15 +85,12 @@ export default function KebabButton({ url }) {
         </Pop>
       )}
       {isClicked === "삭제하기" ? (
-        <Modalkebab {...ModalInfo[1]} url={url} />
+        <Modalkebab {...ModalInfo[1]} url={url} onClose={handlecloseModal} />
       ) : (
         ""
       )}
-      {isClicked === "폴더에 추가" ? (
-        <Modalkebab {...ModalInfo[0]} url={url} />
-      ) : (
-        ""
-      )}
+
+      {isClicked === "" ? "" : ""}
     </>
   );
 }
