@@ -9,7 +9,7 @@ const Header = () => {
     const {account, userErrorMessage} = useContext(AccountContext);
     const {name, email, image_source: profileImageSource} = account;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const mobileWidth = 390;
+    const MOBILE_WIDTH = 390;
     
     window.addEventListener('resize', () => {
         setWindowWidth(window.innerWidth);
@@ -24,7 +24,7 @@ const Header = () => {
                 <div className="header-login">
                     {!account ? <button type='button'>로그인</button> :
                     <><img className="profile_logo" src={profileImageSource} alt={name} />
-                    {windowWidth > mobileWidth ? <span className="profile_id">{email && email}</span> : null}</>}
+                    {windowWidth > MOBILE_WIDTH ? <span className="profile_id">{email && email}</span> : null}</>}
                     {userErrorMessage && <span>{userErrorMessage.message}</span>}
                 </div>
             </div>
