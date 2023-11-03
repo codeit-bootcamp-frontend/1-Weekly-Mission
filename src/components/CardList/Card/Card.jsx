@@ -2,11 +2,12 @@ import * as S from "./Card.style";
 import noImage from "images/no-image.svg";
 import star from "images/star.svg";
 import kebab from "images/kebab.svg";
-import { formatDate, formatTimeDiff } from "utils";
+import { formatDate, formatTimeDiff } from "utils/format";
 import { Popover } from "react-tiny-popover";
 import { useState } from "react";
 import Modal from "components/Modal";
-import { ModalAddLink, ModalDeleteLink } from "components/Modal/Modal";
+import ModalDeleteLink from "components/Modal/ModalDeleteLink";
+import ModalAddLink from "components/Modal/ModalAddLink";
 
 function Card({ item }) {
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
