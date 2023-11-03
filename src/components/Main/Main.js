@@ -1,4 +1,4 @@
-import S from "../styled";
+import { S } from "./Main.styled"
 
 function Main({ children }) {
 

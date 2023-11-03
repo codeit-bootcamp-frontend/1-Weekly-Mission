@@ -1,6 +1,6 @@
 import defaultAvatar from '../../assets/Avatar.png'
 import useData from '../../hooks/useReduce';
-import S from '../styled';
+import { S } from '../Main/CardList.styled';
 
 function Header() {
   const [data] = useData('SHARED_FOLDERNAME')

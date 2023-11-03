@@ -3,7 +3,7 @@ import facebook from '../../assets/facebook.svg'
 import twitter from '../../assets/twitter.svg'
 import youtube from '../../assets/youtube.svg'
 import instagram from '../../assets/instagram.svg'
-import S from '../styled'
+import { S } from './Footer.styled'
 
 function Footer() {
   return (

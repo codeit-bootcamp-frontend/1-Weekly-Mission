@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import searchImg from '../../assets/Search.svg'
-import S from '../styled';
+import { S } from './SearchBar.styled';
 
 function SearchBar() {
   const [value, setValue] = useState('');

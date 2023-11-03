@@ -5,7 +5,7 @@ import Profile from './Profile'
 import { reduceData, useReduce } from '../../hooks/useReduce'
 import { useLocation } from 'react-router'
 import { getData } from '../../utils/api'
-import S from '../styled'
+import { S } from './Navigation.styled'
 
 function Avatar({ setIsUser = () => { } }) {
   const { pathname } = useLocation();

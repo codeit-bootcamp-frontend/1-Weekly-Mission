@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import S from '../styled'
+import { S } from './Logo.styled'
+
 
 const grid = {
   gridArea: 'logo',

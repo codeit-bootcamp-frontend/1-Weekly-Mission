@@ -1,4 +1,4 @@
-import S from "../styled";
+import { S } from "./SignButton.styled";
 
 function SignButton({ children, onClick }) {
 

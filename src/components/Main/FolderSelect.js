@@ -7,7 +7,7 @@ import imgAddWhite from "../../assets/addWhite.svg"
 import imgShare from "../../assets/share.svg"
 import imgEdit from "../../assets/edit.svg"
 import imgDelete from "../../assets/delete.svg"
-import S from "../styled";
+import { S } from "./FolderSelect.styled";
 
 
 

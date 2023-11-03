@@ -1,4 +1,4 @@
-import S from "../styled"
+import { S } from "./Profile.styled"
 
 function Profile({ email, profileImg }) {
   return (

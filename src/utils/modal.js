@@ -3,9 +3,9 @@ import imgKakao from "../assets/kakao.svg"
 import imgFB from "../assets/modalfacebook.svg"
 import imgLink from "../assets/modallink.svg"
 import imgCheck from "../assets/check.svg"
-import S from "../components/styled"
 import { useSearchParams } from "react-router-dom"
 import { useEffect, useRef } from "react"
+import { S } from "./modal.styled"
 
 function ModalTitle({ modalName, title }) {
   return (

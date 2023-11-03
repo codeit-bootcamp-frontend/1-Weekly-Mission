@@ -4,9 +4,9 @@ import kebabImg from '../../assets/kebab.svg'
 import { useSearchParams } from 'react-router-dom';
 import useData from '../../hooks/useReduce';
 import { TimeFlow, filterFolder, formatDate } from '../../utils/utils';
-import S from '../styled'
 import { useRef } from 'react';
 import useModal from '../../hooks/useModal';
+import { S } from './CardList.styled';
 
 function Kebab({ url }) {
   const [folderData] = useData("FOLDER_CATEGORY")

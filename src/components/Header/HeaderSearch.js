@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import useData from "../../hooks/useReduce";
 import useModal from "../../hooks/useModal";
 import inputImg from "../../assets/link.svg"
-import S from "../styled"
+import { S } from "./HeaderSearch.styled";
 
 function HeaderSearch({ isUser }) {
   const [folderData] = useData("FOLDER_CATEGORY")
