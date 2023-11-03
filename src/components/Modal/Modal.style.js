@@ -4,9 +4,6 @@ import Button from 'components/Button';
 import { zIndexStyle } from 'styles/zIndexStyle';
 
 export const DimContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -20,7 +17,11 @@ export const ModalContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  position: relative;
+  position: absolute;
+  z-index: ${zIndexStyle.floating};
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
   padding: 3.2rem 4rem;
   width: 36rem;
   border: 1px solid ${COLORS['LB_GRAY_20']};

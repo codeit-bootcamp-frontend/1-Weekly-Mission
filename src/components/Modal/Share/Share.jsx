@@ -70,13 +70,13 @@ function Share({ closeModal, folderName, folderId, userId }) {
         </S.Share>
         <S.Share>
           <button onClick={() => shareToFacebook()}>
-            <img src={FACEBOOK} alt='카카오톡으로 공유하기' />
+            <img src={FACEBOOK} alt='페이스북으로 공유하기' />
           </button>
           <S.ShareText>페이스북</S.ShareText>
         </S.Share>
         <S.Share>
           <button onClick={() => copyLinkClipBoard()}>
-            <img src={SHARE_LINK} alt='카카오톡으로 공유하기' />
+            <img src={SHARE_LINK} alt='링크 주소 복사하기' />
           </button>
           <S.ShareText>링크 복사</S.ShareText>
         </S.Share>
