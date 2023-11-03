@@ -212,7 +212,7 @@ S.Nav = styled.nav`
   align-items: center;
   position: ${({ page }) => page === 'folder' ? `relative` : `sticky`};
   top: 0;
-  z-index: 2;
+  z-index: ${({ page }) => page === 'folder' ? `0` : `2`};
   background-color: var(--Gray1-80);
   padding: 1.6rem 3.2rem;
 
@@ -356,12 +356,6 @@ S.ACard = styled.a`
   box-shadow: 0 0.5rem 2.4rem 0 rgba(0, 0, 0, 0.08);
   color: var(--Black);
   background-color: var(--White);
-  
-  &:hover {
-  transform: scale(110%);
-  transition: all 0.2s ease-in;
-  z-index: 1;
-  }
 `
 
 S.DivImgCard = styled.div`
@@ -684,6 +678,16 @@ S.CopyContent = styled.div`
   background-color: var(--Gray5);
   border-radius: 0.8rem;
   animation: ${desolve} 2s ease-in;
+`
+
+S.Absolute = styled.div`
+  position: fixed;
+  top:0;
+  left:0;
+`
+
+S.Kebab = styled.div`
+  z-index: 1;
 `
 
 export default S

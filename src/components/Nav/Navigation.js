@@ -29,11 +29,11 @@ function Avatar({ setIsUser = () => { } }) {
   )
 }
 
-function Navigation({ setIsUser }) {
+function Navigation({ setIsUser, page }) {
   return (
     <>
       <S.NavBg />
-      <S.Nav >
+      <S.Nav page={page} >
         <Logo src={logoImg} alt="링크브러리 홈화면으로 이동" />
         <Avatar setIsUser={setIsUser} />
       </S.Nav>

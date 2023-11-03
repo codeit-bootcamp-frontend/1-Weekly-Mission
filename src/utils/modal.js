@@ -46,12 +46,25 @@ function ModalShare() {
     }
 
     kakao.Share.sendDefault({
-      objectType: "text",
-      text: "저장한 폴더를 공유합니다",
-      link: {
-        mobileWebUrl: sharedLink,
-        webUrl: sharedLink,
+      objectType: 'feed',
+      content: {
+        title: 'Linkabrary',
+        description: '세상의 모든 링크를 저장하세요.',
+        imageUrl: '',
+        link: {
+          mobileWebUrl: '카카오공유하기 시 클릭 후 이동 경로',
+          webUrl: '카카오공유하기 시 클릭 후 이동 경로',
+        },
       },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: '카카오공유하기 시 클릭 후 이동 경로',
+            webUrl: '카카오공유하기 시 클릭 후 이동 경로',
+          },
+        },
+      ],
     });
   };
 
@@ -92,7 +105,7 @@ function ModalAdd({ data }) {
   return (
     <S.UlModal>
       {data?.map(value => (
-        <li>
+        <li key={value.id}>
           <button>
             <h2>{value.name}</h2>
             <p>{value.link.count}개 링크</p>
@@ -112,14 +125,19 @@ function ModalCloseButton({ handleClick }) {
   )
 }
 
-export function Modal({ title = '링크를 입력해주세요.', modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }) {
-  const handleClick = () => {
+export function Modal({ title, modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }) {
+  const handleClick = (event) => {
     setModal(null);
   }
 
+  const stop = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   return (
-    <S.DivModalWrapper>
-      <S.DivModalContents>
+    <S.DivModalWrapper onClick={handleClick} >
+      <S.DivModalContents onClick={stop}>
         <ModalTitle modalName={modalName} title={title} />
         {share && <ModalShare />}
         {add && <ModalAdd data={data} />}
@@ -154,11 +172,22 @@ export const makeModal = ({ title, type, data, setModal }) => {
         <Modal modalName="폴더 삭제" title={title} buttonText="삭제하기" buttonColor="red" setModal={setModal} />
       )
       break;
+    case "삭제하기":
+      modal = (
+        <Modal modalName="링크 삭제" title={title} buttonText="삭제하기" setModal={setModal} />
+      )
+      break;
     case "추가하기":
       modal = (
         <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />
       )
       break;
+    case "폴더에 추가":
+      modal = (
+        <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />
+      )
+      break;
+
     default:
   }
   return modal

@@ -6,9 +6,13 @@ import useData from '../../hooks/useReduce';
 import { TimeFlow, filterFolder, formatDate } from '../../utils/utils';
 import S from '../styled'
 import { useRef } from 'react';
+import useModal from '../../hooks/useModal';
 
-function Kebab() {
+function Kebab({ url }) {
+  const [folderData] = useData("FOLDER_CATEGORY")
+  const [modal, dispatch] = useModal(null);
   const popOver = useRef();
+
   const handleFocus = (e) => {
     popOver.current.classList.toggle("active")
     e.preventDefault();
@@ -17,20 +21,31 @@ function Kebab() {
     popOver.current.classList.remove("active")
   }
 
+  const handleModal = (e) => {
+    const type = e.target.textContent;
+    dispatch({ type, title: url, data: folderData });
+  }
+
+  const stop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
   return (
-    <>
+    <S.Kebab onClick={stop}>
       <button onClick={handleFocus} onMouseLeave={handleMouseLeave}>
         <img src={kebabImg} alt='즐겨찾기에 추가하기' />
         <S.PopOver ref={popOver}>
-          <p>삭제하기</p>
-          <p>폴더에 추가</p>
+          <p onClickCapture={handleModal}>삭제하기</p>
+          <p onClick={handleModal}>폴더에 추가</p>
         </S.PopOver>
       </button>
-    </>
+      {modal}
+    </S.Kebab>
   )
 }
 
-function Card({ imageSource, image_source, title, description, createdAt, created_at }) {
+function Card({ url, imageSource, image_source, title, description, createdAt, created_at }) {
   return (
     <>
       <S.DivImgCard >
@@ -39,7 +54,7 @@ function Card({ imageSource, image_source, title, description, createdAt, create
       <S.DivTextCard>
         <S.DivTimeDiff>
           <TimeFlow createdAt={createdAt ?? created_at} />
-          <Kebab />
+          <Kebab url={url} />
         </S.DivTimeDiff>
         <S.H3>{title?.length > 40 ? title.slice(0, 40) + "..." : title}</S.H3>
         <p>{description?.length > 50 ? description.slice(0, 50) + "..." : description}</p>

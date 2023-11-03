@@ -11,7 +11,7 @@ function FolderPage() {
 
   return (
     <>
-      <Navigation setIsUser={setIsUser} />
+      <Navigation setIsUser={setIsUser} page="folder" />
       <HeaderSearch isUser={isUser} />
       <Main>
         {isUser ?

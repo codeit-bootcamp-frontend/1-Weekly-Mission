@@ -5,7 +5,7 @@ import S from '../styled';
 
 function SearchBar() {
   const [value, setValue] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
     setValue(e.target.value)
