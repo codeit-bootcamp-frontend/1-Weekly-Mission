@@ -28,7 +28,7 @@ export default function HeaderButton() {
           />
         </div>
 
-        <button className={styles.add_button} onClick={handleModal}>
+        <button className={styles.add__button} onClick={handleModal}>
           추가하기
         </button>
         {/* openModal이 true이면은 HeaderModal를 return한다 */}

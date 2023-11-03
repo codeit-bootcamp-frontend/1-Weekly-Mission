@@ -39,7 +39,20 @@
 }
 
 .text {
-  font-size: 10rem;
+  font-size: 5rem;
   text-align: center;
   margin-bottom: 10rem;
+
+  /* tablet1 */
+  @media (min-width: 768px) {
+  }
+
+  /* tablet2 */
+  @media (min-width: 1124px) {
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    font-size: 10rem;
+  }
 }
