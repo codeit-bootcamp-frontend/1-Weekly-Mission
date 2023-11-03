@@ -47,7 +47,8 @@
 }
 
 .input {
-  width: 500px;
+  width: 1000px;
+  border: none;
 }
 
 .input:focus {

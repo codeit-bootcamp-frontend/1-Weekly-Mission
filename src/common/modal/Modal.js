@@ -1,43 +1,21 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import styles from "./Modal.module.css";
-import linkCopy from "../../assets/images/linkcopy.svg";
-import kakaochat from "../../assets/images/kakaochat.svg";
+
 import metachat from "../../assets/images/metachat.svg";
-import ConfirmModal from "./ConfirmModal";
 import KaKao from "../../components/socialshare/KaKao";
+import ClipCopy from "../../components/socialshare/ClipCopy";
 export default function Modal({ setterFunc, tabName, folderName }) {
-  const yesConfirm = () => {
-    alert(`복사하였습니다 `);
-  };
-
-  const noConfirm = () => {
-    alert("복사를 취소하셨네요");
-  };
-  const confirmClick = ConfirmModal(
-    "url를 복사하시겠습니까?",
-    yesConfirm,
-    noConfirm
-  );
-  const [isCopied, setIsCopied] = useState(false);
-
-  const toClipboard = () => {
-    if (!isCopied) {
-      navigator.clipboard.writeText(window.location.href).then((response) => {
-        confirmClick();
-      });
-      setIsCopied(true);
-    }
-  };
-
   const obj = {
     share: ["폴더공유"],
     change: ["폴더이름변경", "변경하기", "blue"],
     delete: ["폴더삭제", "삭제하기", "red"],
   };
-  const handleKaKao = () => {
-    return <KaKao />;
-  };
+
   const [title, buttonName, buttonColor] = obj[tabName];
+  const shareFaceBook = () => {
+    const local = window.location.href;
+    window.open(`http://www.facebook.com/sharer.php?u=${local}`);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.modal__container}>
@@ -45,20 +23,11 @@ export default function Modal({ setterFunc, tabName, folderName }) {
           className={styles.cancel__button}
           onClick={() => {
             setterFunc(false);
-            setIsCopied(false);
           }}
         >
           X
         </button>
-        <button
-          className={styles.cancel__button}
-          onClick={() => {
-            setterFunc(false);
-            setIsCopied(false);
-          }}
-        >
-          X
-        </button>
+
         <p className={styles.title}>{title}</p>
         {/* except for change button */}
         {tabName !== "change" && <p className={styles.folder}>{folderName}</p>}
@@ -74,11 +43,11 @@ export default function Modal({ setterFunc, tabName, folderName }) {
           )
         ) : (
           <div className="link__container">
-            <img src={linkCopy} alt="link_copy" onClick={toClipboard} />
-
+            {/* <img src={linkCopy} alt="link_copy" onClick={toClipboard} /> */}
+            <ClipCopy />
             {/* <img src={kakaochat} alt="kakao_chat" /> */}
             <KaKao />
-            <img src={metachat} alt="meta_chat" />
+            <img src={metachat} alt="meta_chat" onClick={shareFaceBook} />
           </div>
         )}
       </div>

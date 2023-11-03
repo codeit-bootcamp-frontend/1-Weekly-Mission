@@ -11,7 +11,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<KaKao />}></Route>
           <Route path="folder">
             <Route index element={<FolderPage />} />
             {/* naviate가 되면은 다시 처음부터 렌더링이 된다 */}
