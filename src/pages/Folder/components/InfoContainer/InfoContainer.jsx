@@ -4,7 +4,6 @@ import SHARE from 'assets/icons/share.svg';
 import EDIT from 'assets/icons/edit.svg';
 import DELETE from 'assets/icons/delete.svg';
 import Edit from 'components/Modal/Edit';
-import NewFolder from 'components/Modal/NewFolder';
 import Share from 'components/Modal/Share';
 import DeleteFolder from 'components/Modal/DeleteFolder';
 import DeleteLink from 'components/Modal/DeleteLink';
@@ -17,7 +16,6 @@ function InfoContainer({ defaultFolder, selectedFolder, userId }) {
 
   const [toggleShow, Modal] = useModal({
     edit: <Edit closeModal={closeModal} />,
-    newFolder: <NewFolder closeModal={closeModal} />,
     share: (
       <Share
         closeModal={closeModal}
