@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { S } from "./FolderListStyle"; // Import the styles as S
-import SelectedFolder from "../SelectedFolder/SelectedFolder";
+import SelectedFolder from "../SelectedFolder";
 
 const DEFAULT_FOLDER = {
   id: 0,

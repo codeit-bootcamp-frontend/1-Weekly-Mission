@@ -1,7 +1,9 @@
 import styled from 'styled-components'
-import linkImage from '../../../../assets/link.png'
-import colors from '../../../../style/colors'
-import { flexCenter } from '../../../../style/common'
+import linkImage from '../../assets/link.png'
+
+
+import colors from '../../style/colors'
+import { flexCenter } from '../../style/common'
 const AddLinkFrame = styled.div`
   position: relative;
   display: flex;

@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import SearchImage from '../../assets/Search.png'
 export const SearchBarContainer = styled.div`
   gap: 8px;
-  width: 100%;
 `
 
 export const SearchInput = styled.input`

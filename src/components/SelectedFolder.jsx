@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import shareIcon from "../../../../assets/share.png";
-import modifyIcon from "../../../../assets/pen.png";
-import deleteIcon from "../../../../assets/deleteIcon.png";
-import { flexCenter } from "../../../../style/common";
-import colors from "../../../../style/colors";
+import shareIcon from "../assets/share.png";
+import modifyIcon from "../assets/pen.png";
+import deleteIcon from "../assets/deleteIcon.png";
+import { flexCenter } from "../style/common";
+import colors from "../style/colors";
+
 const FolderInfoContainer = styled.div`
   display: flex;
-  width: 1060px;
   justify-content: space-between;
   align-items: center;
 `;

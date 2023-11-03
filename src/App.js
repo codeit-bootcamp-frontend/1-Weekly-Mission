@@ -1,7 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SharedPage from "./Pages/SharedPage/SharedPage";
-import FolderPage from "./Pages/FolderPage/FolderPage";
+
 import { GlobalStyle } from "./style/GlobalStyle";
+import SharedPage from './Pages/SharedPage';
+import FolderPage from './Pages/FolderPage';
+
 
 function App() {
   return (

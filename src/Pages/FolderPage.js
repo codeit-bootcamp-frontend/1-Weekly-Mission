@@ -1,11 +1,16 @@
-import useAsync from '../../Hooks/useAsync'
-import { getUser } from '../../api'
-import Footer from '../../components/Footer/Footer'
-import Main from '../../components/Main/Main'
-import Nav from '../../components/Nav/Nav'
-import SearchBar from '../../components/SearchBar/SearchBar'
-import AddLink from './components/AddLink/AddLink'
-import FolderAndLink from './components/FolderAndLink/FolderAndLink'
+
+
+
+
+import useAsync from '../Hooks/useAsync'
+import { getUser } from '../api'
+import AddLink from '../components/AddLink/AddLink'
+import FolderAndLink from '../components/FolderAndLink/FolderAndLink'
+import Footer from '../components/Footer/Footer'
+import Main from '../components/Main/Main'
+import Nav from '../components/Nav/Nav'
+import SearchBar from '../components/SearchBar/SearchBar'
+
 
 function FolderPage() {
   const [data, isLoading, hasError] = useAsync(() => getUser(1))

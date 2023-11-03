@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import useAsync from '../../../../Hooks/useAsync'
-import { getFolders, getLinksByFolderID } from '../../../../api'
+
+import { getFolders, getLinksByFolderID } from '../../api'
 import FolderList from '../FolderList/FolderList'
 import NoLink from '../NoLink/NoLink'
-import CardList from '../../../../components/CardList/CardList'
+import CardList from '../../components/CardList/CardList'
+import useAsync from '../../Hooks/useAsync';
 
 function FolderAndLink() {
   const [selectedFolderId, setSelectedFolderId] = useState(undefined)

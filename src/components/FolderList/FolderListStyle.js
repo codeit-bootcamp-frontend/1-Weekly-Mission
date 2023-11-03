@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import colors from "../../../../style/colors";
-import { cursorPointer, flexCenter } from "../../../../style/common";
+import colors from "../../style/colors";
+import { cursorPointer, flexCenter } from "../../style/common";
 
 export const S = {
   Button: styled.button`
@@ -28,7 +28,6 @@ export const S = {
   `,
   ButtonContainer: styled.div`
     display: flex;
-    width: 1060px;
     justify-content: space-between;
     align-items: center;
   `,

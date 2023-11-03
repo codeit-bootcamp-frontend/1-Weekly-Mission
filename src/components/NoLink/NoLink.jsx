@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flexCenter } from "../../../../style/common";
+import { flexCenter } from "../../style/common";
 
 const NoLinkFrame = styled.div`
   width: 1060px;
