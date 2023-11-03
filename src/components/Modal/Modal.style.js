@@ -33,6 +33,8 @@ export const Close = styled.button`
   position: absolute;
   top: 1.6rem;
   right: 1.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
 `;
 
 export const Header = styled.div`

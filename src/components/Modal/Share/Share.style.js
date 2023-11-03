@@ -13,6 +13,7 @@ export const Share = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  height: 7rem;
 `;
 
 export const ShareButton = styled.button``;
