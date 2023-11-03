@@ -12,27 +12,30 @@ const ICONS = [
     id: 1,
     iconImage: share_icon,
     name: '공유',
+    action: 'share'
   },
   {
     id: 2,
     iconImage: pen_icon,
     name: '이름 변경',
+    action: 'edit',
   },
   {
     id: 3,
     iconImage: delete_icon,
     name: '삭제',
+    action: 'deleteFolder'
   },
 ];
 
 
 function CategoryTitleContainer({ name }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState('');
+  const [action, setAction] = useState('');
 
-  const openModal = ({ isOpen, modalTitle }) => {
+  const openModal = ({ isOpen, action }) => {
     setIsOpen(isOpen);
-    setModalTitle(modalTitle);
+    setAction(action);
   };
 
   const closeModal = () => {
@@ -50,7 +53,7 @@ function CategoryTitleContainer({ name }) {
         })}
         {isOpen && (
           <Modal>
-            <FolderModal modalTitle={modalTitle} onCloseModal={closeModal}/>
+            <FolderModal action={action} onCloseModal={closeModal}/>
           </Modal>
         )}
       </FolderControlContainer>

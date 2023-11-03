@@ -2,17 +2,40 @@ import styled from 'styled-components';
 import { Button } from '../../styles/Button';
 import close_button from '../../assets/svg/close.svg';
 
-function FolderModal({ modalTitle, onCloseModal }) {
+const FOLDER_MODAL_ACTION = {
+  edit: {
+    title: '폴더 이름 변경',
+    placeholder: '유용한 팁',
+    buttonTitle: '변경하기'
+  },
+  addFolder: {
+    title: '폴더 추가',
+    placeholder: '내용 입력',
+    buttonTitle: '추가하기'
+  },
+  deleteFolder: {
+    title: '폴더 삭제',
+    placeholder: '',
+    buttonTitle: '삭제하기'
+  },
+  deleteLink: {
+    title: '링크 삭제',
+    placeholder: '',
+    buttonTitle: '삭제하기'
+  }
+};
+
+function FolderModal({ action, onCloseModal }) {
   return (
     <>
       <BackDrop />
       <ModalBody>
         <CloseButton src={close_button} alt='모달 닫기 버튼' onClick={onCloseModal}/>
-        <ModalTitle>{modalTitle}</ModalTitle>
+        <ModalTitle>{FOLDER_MODAL_ACTION[action].title}</ModalTitle>
         <InputContainer>
-          <ModalInput placeholder='유용한 팁' />
+          <ModalInput placeholder={FOLDER_MODAL_ACTION[action].placeholder} />
         </InputContainer>
-        <ModalFolderButton>변경하기</ModalFolderButton>
+        <ModalFolderButton>{FOLDER_MODAL_ACTION[action].buttonTitle}</ModalFolderButton>
       </ModalBody>
     </>
   );

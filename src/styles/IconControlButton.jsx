@@ -5,7 +5,7 @@ function IconControlButton({ icon, onOpen }) {
     <IconControlButtonContainer onClick={() => {
       onOpen({
         isOpen: true,
-        modalTitle: icon.name
+        action: icon.action
       })
     }}>
       <IconImage src={icon.iconImage} alt={icon.name} />
