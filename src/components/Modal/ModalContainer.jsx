@@ -1,27 +1,28 @@
 import styled from 'styled-components';
-import close_button from '../../assets/svg/close.svg';
 import { Button } from '../../styles/Button';
+import close_button from '../../assets/svg/close.svg';
 
-function FolderModal({ modalTitle }) {
-
+function ModalContainer({ modalTitle }) {
   return (
-    <ModalContainer>
-      <Modal>
+    <>
+      <BackDrop />
+      <ModalBody>
         <CloseButton src={close_button} alt='모달 닫기 버튼' />
-        <ModalTitle>폴더 이름 변경</ModalTitle>
+        <ModalTitle>{modalTitle}</ModalTitle>
         <InputContainer>
-          <ModalInput placeholder='유용한 팁'/>
+          <ModalInput placeholder='유용한 팁' />
         </InputContainer>
         <ModalFolderButton>변경하기</ModalFolderButton>
-      </Modal>
-    </ModalContainer>
+      </ModalBody>
+    </>
   );
 }
 
-export default FolderModal;
+export default ModalContainer;
 
-const ModalContainer = styled.div`
+const BackDrop = styled.div`
   top: 0;
+  left: 0;
   position: fixed;
   z-index: 2;
   width: 100vw;
@@ -29,9 +30,10 @@ const ModalContainer = styled.div`
   background: rgba(0, 0, 0, 0.40);
 `;
 
-const Modal = styled.div`
+const ModalBody = styled.div`
   display: inline-flex;
-  position: relative;
+  position: fixed;
+  z-index: 5;
   top: 50%;
   left: 50%;
   width: 36rem;
@@ -81,7 +83,7 @@ const ModalInput = styled.input`
   border-radius: 8px;
   border: 1px solid #6D6AFE;
   background: #FFF;
-  
+
   &:focus::placeholder {
     color: transparent;
   }
@@ -91,4 +93,4 @@ const ModalFolderButton = styled(Button)`
   width: 100%;
   font-size: 1.6rem;
   padding: 1.6rem 2rem;
-`
+`;
