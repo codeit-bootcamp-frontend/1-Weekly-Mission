@@ -1,21 +1,16 @@
 import React from "react";
 import styles from "./Modal.module.css";
-
-import metachat from "../../assets/images/metachat.svg";
 import KaKao from "../../components/socialshare/KaKao";
 import ClipCopy from "../../components/socialshare/ClipCopy";
+import Meta from "../../components/socialshare/Meta";
 export default function Modal({ setterFunc, tabName, folderName }) {
   const obj = {
     share: ["폴더공유"],
     change: ["폴더이름변경", "변경하기", "blue"],
     delete: ["폴더삭제", "삭제하기", "red"],
   };
-
   const [title, buttonName, buttonColor] = obj[tabName];
-  const shareFaceBook = () => {
-    const local = window.location.href;
-    window.open(`http://www.facebook.com/sharer.php?u=${local}`);
-  };
+
   return (
     <div className={styles.container}>
       <div className={styles.modal__container}>
@@ -43,11 +38,9 @@ export default function Modal({ setterFunc, tabName, folderName }) {
           )
         ) : (
           <div className="link__container">
-            {/* <img src={linkCopy} alt="link_copy" onClick={toClipboard} /> */}
             <ClipCopy />
-            {/* <img src={kakaochat} alt="kakao_chat" /> */}
             <KaKao />
-            <img src={metachat} alt="meta_chat" onClick={shareFaceBook} />
+            <Meta />
           </div>
         )}
       </div>
