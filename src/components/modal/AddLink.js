@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import styled from "styled-components";
+import { ReactComponent as CheckIcon } from "assets/check.svg";
 
 import ModalTitle from "components/title/ModalTitle";
 import ModalButton from "components/button/ModalButton";
@@ -33,25 +34,43 @@ const Contents = styled.div`
   gap: 0.25rem;
 `;
 
+const Title = styled.span`
+  color: var(--color-gray-30);
+`;
+
+const IconCheck = styled(CheckIcon)`
+  path {
+    stroke: white; /* path 요소에 fill 속성 적용 */
+  }
+`;
+
 const Options = styled.div`
   padding: 0.5rem;
   display: flex;
-  gap: 0.5rem;
+  justify-content: space-between;
   align-items: center;
   border-radius: 0.5rem;
   cursor: pointer;
 
   &:hover {
     background: var(--color-primary-varient);
+
+    ${IconCheck} {
+      path {
+        stroke: var(--color-primary);
+      }
+    }
+
+    ${Title} {
+      color: var(--color-primary);
+    }
   }
 `;
 
-const Title = styled.span`
-  color: var(--color-gray-30);
-
-  &:hover {
-    background: var(--color-primary);
-  }
+const Option = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 const SubTitle = styled.div`
@@ -61,7 +80,6 @@ const SubTitle = styled.div`
 
 export default function AddLink({ link }) {
   const { folderNameList } = useContext(FolderContext);
-  console.log(folderNameList);
 
   return (
     <Container>
@@ -70,14 +88,15 @@ export default function AddLink({ link }) {
         <Info>{link}</Info>
       </Description>
       <Contents>
-        <Options>
-          <Title>코딩팁</Title>
-          <SubTitle>7개 링크</SubTitle>
-        </Options>
-        <Options>
-          <Title>코딩팁</Title>
-          <SubTitle>7개 링크</SubTitle>
-        </Options>
+        {folderNameList.map((folder) => (
+          <Options key={folder.name}>
+            <Option>
+              <Title>{folder.name}</Title>
+              <SubTitle>{`${folder.link.count}개 링크`}</SubTitle>
+            </Option>
+            <IconCheck alt="check" />
+          </Options>
+        ))}
       </Contents>
       <ModalButton action="change" label="추가하기" />
     </Container>
