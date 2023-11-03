@@ -1,4 +1,8 @@
+import { useEffect } from "react";
+
 import styled from "styled-components";
+
+import { shareKakao } from "common/libraries/shareKakaoLink";
 import ModalTitle from "components/title/ModalTitle";
 
 import kakaoIcon from "assets/sns/kakao.svg";
@@ -54,6 +58,15 @@ const icons = [
 ];
 
 export default function ShareFolder({ currentFolderName }) {
+  /* 카카오 스크립트 추가 및 제거 */
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => document.body.removeChild(script);
+  }, []);
+
   return (
     <Contents>
       <Description>
@@ -63,7 +76,7 @@ export default function ShareFolder({ currentFolderName }) {
       <IconsContainer>
         {icons.map((icon, index) => (
           <Icons key={index}>
-            <Image src={icon.icon} alt="sns" />
+            <Image src={icon.icon} alt="sns" onClick={shareKakao} />
             <Name>{icon.name}</Name>
           </Icons>
         ))}
