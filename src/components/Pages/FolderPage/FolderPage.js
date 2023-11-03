@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getFolder, getLink } from "../../../api";
+import { getFolder, getLink, getLinksFolderId } from "../../../api";
 import './FolderPage.css';
 import CardList from "../../CardList";
 import FolderList from "../../FolderList";
@@ -7,18 +7,26 @@ import SearchBar from "../../SearchBar";
 import linkImg from "../../../assets/link-Img.png";
 
 function FolderPage() {
-  const [folderList, setFolderList] = useState([]);
+  const [folderData, setFolderData] = useState([]);
   const [folderLink , setFolderLink] = useState([]);
+  const [folderId, setFolderId] = useState(null);
 
   const getFolderList = async () => {
     const result = await getFolder();
-    const data = result?.data;
-    setFolderList(data);
+    const { data } = result;
+    setFolderData(data);
   }
 
   const getFolderLink = async () => {
     const result = await getLink();
-    const data = result?.data;
+    const { data } = result;
+    setFolderLink(data);
+  };
+
+  // folderId에 맞는 폴더 리스트 조회
+  const getFolderId = async (folderId) => {
+    const result = await getLinksFolderId(folderId);
+    const { data } = result;
     setFolderLink(data);
   }
 
@@ -26,6 +34,14 @@ function FolderPage() {
     getFolderList();
     getFolderLink();
   }, []);
+
+  const handleClick = (folderId) => { setFolderId(folderId) };
+
+  useEffect(()=>{
+    if(!folderId) return;
+    getFolderId(folderId);
+  },[folderId])
+
 
   return (
     <div className="folder-container">
@@ -39,7 +55,7 @@ function FolderPage() {
       <div className="container">
         <div className="container2">
           <SearchBar />
-          <FolderList data={folderList} />
+          <FolderList data={folderData} onClick={handleClick} id={folderId} />
           <CardList link={folderLink} />
         </div>
       </div>

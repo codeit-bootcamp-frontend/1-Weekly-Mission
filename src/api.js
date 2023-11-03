@@ -43,3 +43,13 @@ export async function getLink() {
   const result = await response.json();
   return result;
 }
+
+export async function getLinksFolderId(id) {
+  const response = await fetch(`${BASE_URL}/users/1/links?folderId=${id}`);
+
+  if (!response.ok) {
+    console.log("데이터를 불러오는데 실패했습니다.");
+  } 
+  const result = await response.json();
+  return result;
+}

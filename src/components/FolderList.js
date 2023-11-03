@@ -9,6 +9,7 @@ const StyledMenu = styled.div`
   ul {
     display: flex;
     gap: 8px;
+    align-items: center;
   }
   li {
     border: 1px solid var(--color-primary);
@@ -27,14 +28,16 @@ const StyledMenu = styled.div`
 `;
 
 
-function FolderList({ data }) {
+function FolderList({ data, onClick }) {
 
   return (
     <StyledMenu>
-        <ul>
-          <li>전체</li>
-          {data.map((list) => <li key={list.id}>{list.name}</li>)}
-        </ul>
+      <ul>
+        <li>전체</li>
+        {data.map((folder) => 
+          <li key={folder.id} onClick={() => onClick(folder.id)}>{folder.name}</li>
+          )}
+      </ul>
       <div className="add-folder">폴더 추가 +</div>
     </StyledMenu>
   );
