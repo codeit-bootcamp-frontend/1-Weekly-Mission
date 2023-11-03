@@ -34,7 +34,7 @@ function Folder() {
 
   return (
     <Layout isLoggedIn userId={DEFAULT_USER_ID}>
-      <AddLinkContainer />
+      <AddLinkContainer userId={DEFAULT_USER_ID} />
       <S.ContentContainer>
         <SearchBar />
         <FoldersContainer
