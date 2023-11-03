@@ -5,6 +5,7 @@ import { SearchBar, CardList } from "commons/components/index";
 import useAsync from "apis/useAsync";
 import { getAllCards } from "apis/getAllCards";
 import "./SharedPage.css";
+import Layout from "commons/components/Layout/Layout";
 
 const INITIAL_FOLDER = {
   folderName: "",
@@ -40,7 +41,7 @@ function SharedPage() {
   }, []);
 
   return (
-    <>
+    <Layout isSticky={true}>
       <ShareHeader
         folderOwnerProfile={folderValues.folderOwnerProfileImage}
         folderName={folderValues.folderName}
@@ -59,7 +60,7 @@ function SharedPage() {
           <CardList cardList={cardList} />
         </div>
       </section>
-    </>
+    </Layout>
   );
 }
 

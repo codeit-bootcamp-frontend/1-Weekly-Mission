@@ -5,16 +5,17 @@ import styles from "./Nav.module.scss";
 import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
 
 function Nav({ profile, isSticky }) {
-  const navClassName = "${nav}" + (isSticky ? " ${sticky}" : "");
-  const { userEmail, userProfileImage } = profile;
+  let navClassName = isSticky
+    ? { className: `${styles["sticky"]} ${styles["nav"]}` }
+    : { className: `nav` };
 
   return (
-    <nav className={`${navClassName}`}>
+    <nav {...navClassName}>
       <div className={styles["gnb"]}>
         <Link to="/">
           <LogoSvg />
         </Link>
-        {!userEmail ? (
+        {!profile.email ? (
           <button
             className={`${styles["link-button"]} ${styles["signin-button"]}`}
           >
@@ -25,11 +26,11 @@ function Nav({ profile, isSticky }) {
         ) : (
           <div className={styles["user-info"]}>
             <img
-              src={userProfileImage}
+              src={profile.image_source}
               alt="profile"
               className={styles["profile-img"]}
             />
-            <span>{userEmail}</span>
+            <span>{profile.email}</span>
           </div>
         )}
       </div>
