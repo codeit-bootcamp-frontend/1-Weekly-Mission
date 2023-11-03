@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-function ModalInput() {
+function ModalInput({ className }) {
   return (
     <form>
-      <Input name="text" type="text" autoComplete="on" required placeholder="내용 입력"></Input>
+      <Input name="text" type="text" autoComplete="on" required placeholder="내용 입력" className={className}></Input>
     </form>
   );
 }
 
-const Input = styled.input`
+export const Input = styled.input`
   display: flex;
   width: 35rem;
   padding: 1.8rem 1.5rem;

@@ -2,24 +2,30 @@ import styled from 'styled-components';
 import closeButton from '../../assets/close_icon.svg';
 import { useState } from 'react';
 import EditModal from './type/EditModal';
+import ShareModal from './type/ShareModal';
+import DeleteFolderModal from './type/DeleteFolderModal';
+import DeleteLinkModal from './type/DeleteLinkModal';
+import AddFolderModal from './type/AddFolderModal';
 
 function ModalBox({ modal, children = modal, closeModal }) {
   const handleClick = () => {
     closeModal();
   };
 
+  if (modal === '삭제하기') modal = '폴더 삭제';
+  console.log(modal);
   return (
     <Container>
       <Button onClick={handleClick}>
         <Icon src={closeButton} alt="창닫기 아이콘" />
       </Button>
       <P>{children}</P>
-      {modal === '폴더 이름 변경' && <EditModal />}
-      {/* {modal === '폴더 추가' && <AddModal />}
       {modal === '폴더 공유' && <ShareModal />}
+      {modal === '폴더 이름 변경' && <EditModal />}
       {modal === '폴더 삭제' && <DeleteFolderModal />}
+      {/* {modal === '폴더 추가' && <AddModal />} */}
       {modal === '링크 삭제' && <DeleteLinkModal />}
-      {modal === '폴더에 추가' && <AddFolderModal />} */}
+      {modal === '폴더에 추가' && <AddFolderModal />}
     </Container>
   );
 }
@@ -30,7 +36,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
 
   position: fixed;
   top: 50%;

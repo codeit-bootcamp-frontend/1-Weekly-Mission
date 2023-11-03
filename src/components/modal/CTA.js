@@ -1,7 +1,22 @@
 import styled from 'styled-components';
+import ModalBox from './ModalBox';
+import { useState } from 'react';
 
-function CTA({ isSmall, children }) {
-  return <Button small={isSmall}>{children}</Button>;
+function CTA({ isSmall, children, className, modal }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handelClick = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
+  return (
+    <>
+      <Button small={isSmall} className={className}>
+        {children}
+      </Button>
+      {isModalVisible && <ModalBox modal={modal} closeModal={handelClick} />}
+    </>
+  );
 }
 
 const Button = styled.button`

@@ -1,16 +1,27 @@
 import styled from 'styled-components';
+import ModalBox from '../modal/ModalBox';
+import { useState } from 'react';
 
-function selectMenuButton({ children }) {
+function SelectMenuButton({ children, modal }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handelClick = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
   return (
-    <SelectButton>
-      <p>{children}</p>
-    </SelectButton>
+    <>
+      <SelectButton onClick={handelClick}>
+        <p>{children}</p>
+      </SelectButton>
+      {isModalVisible && <ModalBox modal={modal} closeModal={handelClick} />}
+    </>
   );
 }
 
-export default selectMenuButton;
+export default SelectMenuButton;
 
-const SelectButton = styled.button`
+const SelectButton = styled.div`
   display: flex;
   padding: 0.7rem 1.2rem;
   justify-content: center;

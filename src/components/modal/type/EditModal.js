@@ -4,11 +4,26 @@ import CTA from '../CTA';
 
 function EditModal() {
   return (
-    <>
-      <ModalInput />
-      <CTA>변경하기</CTA>
-    </>
+    <Container>
+      <CustomInput />
+      <CustomCTA>변경하기</CustomCTA>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.4rem;
+  gap: 1.5rem;
+`;
+
+const CustomInput = styled(ModalInput)`
+  width: 28rem;
+`;
+
+const CustomCTA = styled(CTA)`
+  width: 28rem;
+`;
 
 export default EditModal;
