@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import colors from '../../style/colors'
-import { device } from '../../style/device'
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -10,7 +9,6 @@ export const HeaderContainer = styled.header`
 
   flex-direction: column;
   gap: 1.25rem;
-
   background: ${colors.background};
 `
 

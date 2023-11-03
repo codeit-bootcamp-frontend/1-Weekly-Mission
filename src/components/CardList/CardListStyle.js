@@ -3,6 +3,7 @@ import { device } from '../../style/device'
 
 export const CardListContainer = styled.div`
   display: grid;
+
   gap: 20px;
   grid-template-columns: repeat(3, 1fr);
 
@@ -11,7 +12,7 @@ export const CardListContainer = styled.div`
   }
 
   @media ${device.mobile} {
+    place-items: center;
     grid-template-columns: repeat(1, 1fr);
-    padding : 32px;
   }
 `

@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import SearchImage from '../../assets/Search.png'
+import { flexCenter } from '../../style/common'
+
 export const SearchBarContainer = styled.div`
-  gap: 8px;
+  ${flexCenter}
 `
 
 export const SearchInput = styled.input`

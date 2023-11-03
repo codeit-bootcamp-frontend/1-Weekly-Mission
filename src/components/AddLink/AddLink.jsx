@@ -1,19 +1,26 @@
 import styled from 'styled-components'
 import linkImage from '../../assets/link.png'
 
-
 import colors from '../../style/colors'
-import { flexCenter } from '../../style/common'
+import { cursorPointer, flexCenter } from '../../style/common'
+import { device } from '../../style/device'
 const AddLinkFrame = styled.div`
   position: relative;
   display: flex;
-  padding: 30px 200px;
+  padding: 30px 300px;
   flex-direction: column;
   align-items: center;
   align-items: flex-start;
-
   gap: 8px;
   background: ${colors.background};
+
+  @media ${device.tablet} {
+    padding: 30px 210px;
+  }
+
+  @media ${device.mobile} {
+    padding: 30px 32px;
+  }
 `
 
 const AddLinkInput = styled.input`
@@ -43,11 +50,20 @@ const AddButton = styled.button`
   font-weight: 500;
   border: none;
   top: 42px;
-  right: 220px;
+  right: 320px;
   width: 80px;
   padding: 10px 16px;
   text-align: center;
   ${flexCenter};
+  ${cursorPointer}
+
+  @media ${device.tablet} {
+    right: 220px;
+  }
+
+  @media ${device.mobile} {
+    right: 50px;
+  }
 `
 function AddLink() {
   return (

@@ -14,4 +14,5 @@ export const MainContent = styled.div`
   display: flex;
   gap: 30px;
   flex-direction: column;
+  padding: 0px 32px;
 `

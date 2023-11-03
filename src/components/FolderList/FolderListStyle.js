@@ -1,6 +1,7 @@
-import styled, { css } from "styled-components";
-import colors from "../../style/colors";
-import { cursorPointer, flexCenter } from "../../style/common";
+import styled, { css } from 'styled-components'
+import colors from '../../style/colors'
+import { cursorPointer, flexCenter } from '../../style/common'
+import { device } from '../../style/device'
 
 export const S = {
   Button: styled.button`
@@ -17,19 +18,21 @@ export const S = {
     font-weight: 400;
     line-height: normal;
     background-color: #fff;
-    
-    ${({ "data-onselect": isSelected }) =>
+    white-space: nowrap;
+
+    ${({ 'data-onselect': isSelected }) =>
       isSelected &&
       css`
         background-color: ${colors.primary};
         color: #fff;
       `};
-      ${cursorPointer}
+    ${cursorPointer}
   `,
   ButtonContainer: styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap : 20px;
   `,
   AddFolder: styled.div`
     color: #6d6afe;
@@ -40,10 +43,16 @@ export const S = {
     font-weight: 500;
     line-height: normal;
     letter-spacing: -0.3px;
+    white-space: nowrap;
+
+    @media ${device.mobile} {
+      display: none;
+    }
   `,
   FolderButtons: styled.div`
+    flex-wrap: wrap;
     display: flex;
     gap: 8px;
-    ${flexCenter};
+
   `,
-};
+}

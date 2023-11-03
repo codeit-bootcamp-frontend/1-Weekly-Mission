@@ -14,8 +14,12 @@ export const ProfileImg = styled.img`
 `
 
 export const ProfileEmail = styled.span`
-  ${flexCenter}
+  display: none;
   @media ${device.tablet} {
-    z-index: 0;
+    display: none;
   }
+  @media ${device.mobile} {
+    display: none;
+  }
+  ${flexCenter};
 `

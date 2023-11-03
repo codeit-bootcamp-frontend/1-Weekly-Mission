@@ -2,9 +2,22 @@ import { useState } from 'react'
 
 import { getFolders, getLinksByFolderID } from '../../api'
 import FolderList from '../FolderList/FolderList'
-import NoLink from '../NoLink/NoLink'
 import CardList from '../../components/CardList/CardList'
 import useAsync from '../../Hooks/useAsync';
+import { flexCenter } from '../../style/common'
+import styled from 'styled-components'
+
+const NoLinkFrame = styled.div`
+  width: 1060px;
+  height: 100px;
+  padding: 41px 0px 35px 0px;
+  ${flexCenter}
+`;
+
+function NoLink() {
+  return <NoLinkFrame>저장된 링크가 없습니다.</NoLinkFrame>;
+}
+
 
 function FolderAndLink() {
   const [selectedFolderId, setSelectedFolderId] = useState(undefined)

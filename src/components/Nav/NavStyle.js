@@ -13,7 +13,7 @@ export const NavContainer = styled.nav`
     `};
 
   @media ${device.tablet} {
-    padding: 2rem 32px;
+    padding: 2rem 70px;
   }
   @media ${device.mobile} {
     padding: 2rem 32px;
