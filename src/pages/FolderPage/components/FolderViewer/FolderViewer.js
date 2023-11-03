@@ -49,6 +49,9 @@ function FolderViewer() {
             );
           })}
         </div>
+        <button type="button" className={styles["add-folder-button"]}>
+          폴더 추가+
+        </button>
       </form>
       <div className={styles["card-list-section"]}>
         <CardList cardList={cardList} />

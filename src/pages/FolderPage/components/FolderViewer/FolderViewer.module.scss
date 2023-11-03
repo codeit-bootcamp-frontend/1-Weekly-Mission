@@ -10,3 +10,12 @@
 .card-list-section {
   margin: 3rem 4rem;
 }
+
+.add-folder-button {
+  position: absolute;
+  top: 65%;
+  right: 7rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: none;
+}

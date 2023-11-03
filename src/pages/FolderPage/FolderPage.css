@@ -1,13 +1,5 @@
 @import "commons/styles/global.scss";
 
-.add-folder-button {
-  position: absolute;
-  right: 10rem;
-  background-color: transparent;
-  color: var(--color-primary);
-  border: none;
-}
-
 .mobild-float-button {
   position: fixed;
   height: 4rem;
