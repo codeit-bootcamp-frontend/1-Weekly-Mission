@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import Layout from "commons/components/Layout/Layout";
 import { SearchBar } from "commons/components/index";
 import useAsync from "apis/useAsync";
@@ -13,13 +12,12 @@ function MobileFolderButton() {
 }
 
 function FolderPage() {
-  const param = useParams();
   const [folderList, setFolderList] = useState([]);
 
   // 내가 가지고 있는 모든 폴더 목록들을 받아서 folderList 배열에 저장.
-  const [pending, error, getAllFoldersAsync] = useAsync(getFolderList);
+  const [pending, error, getFolderListAsync] = useAsync(getFolderList);
   const getter = async () => {
-    const allFolders = await getAllFoldersAsync();
+    const allFolders = await getFolderListAsync();
     setFolderList(allFolders?.data);
   };
 
@@ -29,17 +27,13 @@ function FolderPage() {
 
   return (
     <Layout isSticky={false}>
-      <div>
-        <MobileFolderButton />
-        <LinkAddBar />
-        <SearchBar />
-        <button type="button" className="add-folder-button">
-          폴더 추가+
-        </button>
-        <div className="folder-buttons">
-          <FolderHeader folderList={folderList} />
-        </div>
-      </div>
+      <MobileFolderButton />
+      <LinkAddBar />
+      <SearchBar />
+      <button type="button" className="add-folder-button">
+        폴더 추가+
+      </button>
+      <FolderHeader folderList={folderList} />
     </Layout>
   );
 }
