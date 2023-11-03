@@ -1,14 +1,32 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import kebab from "../../image/kebab.svg";
 
-const Kebab = ({ id }) => {
-  // 케밥 버튼 누르면 한개만 뜨게하고싶다..
-  const [openPopoverId, setOpenPopoverId] = useState(null);
+const Kebab = () => {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const popoverRef = useRef();
 
-  const togglePopover = (id) => {
-    setOpenPopoverId((prevId) => (prevId !== id ? id : null));
+  const handleTogglePopover = () => {
+    setIsPopoverOpen(!isPopoverOpen);
   };
+
+  const handleClickOutside = (event) => {
+    if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+      setIsPopoverOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isPopoverOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isPopoverOpen]);
 
   return (
     <KebabContainer>
@@ -16,14 +34,12 @@ const Kebab = ({ id }) => {
         className="toggle_kebab"
         src={kebab}
         alt="kebab button"
-        onClick={() => togglePopover(id)}
+        onClick={handleTogglePopover}
       />
-      {openPopoverId === id && (
-        <Popover>
-          <Button>삭제하기</Button>
-          <Button>폴더에 추가</Button>
-        </Popover>
-      )}
+      <Popover ref={popoverRef} isOpen={isPopoverOpen}>
+        <Button>삭제하기</Button>
+        <Button>폴더에 추가</Button>
+      </Popover>
     </KebabContainer>
   );
 };
@@ -37,7 +53,7 @@ const ToggleKebab = styled.img`
 `;
 
 const Popover = styled.div`
-  display: block;
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   position: absolute;
   top: 20px;
   left: 0;

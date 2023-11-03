@@ -28,7 +28,7 @@ const Card = ({ item }) => {
       <div className="description_area">
         <div className="time_wrapper">
           <CardTime set_time={get_time} />
-          <Kebab id={id} />
+          <Kebab />
         </div>
         <CardContent url={url}>{description}</CardContent>
         <CardDate set_date={get_date} />

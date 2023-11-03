@@ -96,33 +96,6 @@ main {
   height: 16px;
 }
 
-.function_buttons {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.function_button {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-
-  border: none;
-  background-color: var(--linkbrary-white);
-  cursor: pointer;
-}
-
-.function_button_img {
-  width: 18px;
-  height: 18px;
-}
-
-.function_button_msg {
-  color: var(--linkbrary-gray-2);
-  font-size: 14px;
-  font-weight: 600;
-}
-
 .no_link {
   display: flex;
   width: 1060px;

@@ -1,18 +1,40 @@
+import React, { useState } from "react";
+// import Modal from "react-modal";
 import "./Header.css";
+// import styled from "styled-components";
+import AddLinkModal from "./AddLinkModal";
 
 const HeaderAddLink = () => {
+  const [link, setLink] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  const handleAddLink = (event) => {
+    event.preventDefault();
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
-    <header className="add_link_wrapper">
-      <form className="add_link_form">
+    <div className="add_link_wrapper">
+      <form className="add_link_form" onSubmit={handleAddLink}>
         <input
           id="url"
           name="url"
           type="url"
           placeholder="링크를 추가해 보세요."
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
         />
-        <button className="add_link_button">추가하기</button>
+        <button type="submit" className="add_link_button">
+          추가하기
+        </button>
       </form>
-    </header>
+
+      <AddLinkModal isOpen={showModal} closeModal={closeModal} />
+    </div>
   );
 };
 
