@@ -24,6 +24,7 @@ export default function Folder() {
   const [selected, setSelected] = useState(DEFAULT);
   const [selectedFolderId, setSelectedFolderId] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [addLinkValue, setAddLinkValue] = useState("");
 
   const { isLoading, error, wrappedFunction: getLinksAsyncFunc } = useFetch(getAllLinks);
   const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
@@ -56,6 +57,10 @@ export default function Folder() {
 
   const folderNames = folders.map((folder) => folder.name);
 
+  const handleAddLink = (link) => {
+    setAddLinkValue(link);
+  };
+
   useEffect(() => {
     handleLoadedData();
   }, [selectedFolderId]);
@@ -73,7 +78,7 @@ export default function Folder() {
         )}
       <main>
         <S.HeroContainer>
-          <FolderHero />
+          <FolderHero onChangeAddLink={handleAddLink} addLinkValue={addLinkValue} />
         </S.HeroContainer>
         <S.Contents>
           <Searchbar />
