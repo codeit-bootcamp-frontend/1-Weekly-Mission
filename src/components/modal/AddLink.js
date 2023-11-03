@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import styled from "styled-components";
 import { ReactComponent as CheckIcon } from "assets/check.svg";
@@ -54,15 +54,16 @@ const Options = styled.div`
 
   &:hover {
     background: var(--color-primary-varient);
+  }
 
-    ${IconCheck} {
-      path {
-        stroke: var(--color-primary);
-      }
-    }
-
-    ${Title} {
-      color: var(--color-primary);
+  /* 폴더 선택했을 때 스타일 */
+  background: ${({ $isSelected }) => ($isSelected ? "var(--color-primary-varient)" : "")};
+  ${Title} {
+    color: ${({ $isSelected }) => ($isSelected ? "var(--color-primary)" : "var(--color-gray-30)")};
+  }
+  ${IconCheck} {
+    path {
+      stroke: ${({ $isSelected }) => ($isSelected ? "var(--color-primary)" : "")};
     }
   }
 `;
@@ -80,6 +81,11 @@ const SubTitle = styled.div`
 
 export default function AddLink({ link }) {
   const { folderNameList } = useContext(FolderContext);
+  const [selected, setSelected] = useState(false);
+
+  const handleOption = (e) => {
+    setSelected(e.currentTarget.id);
+  };
 
   return (
     <Container>
@@ -89,7 +95,12 @@ export default function AddLink({ link }) {
       </Description>
       <Contents>
         {folderNameList.map((folder) => (
-          <Options key={folder.name}>
+          <Options
+            key={folder.name}
+            id={folder.name}
+            onClick={handleOption}
+            $isSelected={selected === folder.name}
+          >
             <Option>
               <Title>{folder.name}</Title>
               <SubTitle>{`${folder.link.count}개 링크`}</SubTitle>
