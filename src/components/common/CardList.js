@@ -2,7 +2,7 @@
 import Card from './Card';
 import styled from 'styled-components';
 
-export default function CardList({ cards, urlPath }) {
+export default function CardList({ cards, urlPath, onModalOpen }) {
   if (cards.length === 0) {
     return <Div>저장된 링크가 없습니다</Div>;
   }
@@ -13,8 +13,7 @@ export default function CardList({ cards, urlPath }) {
           value={card}
           key={card.id}
           urlPath={urlPath}
-          // onKebabClick={handleKebabClick}
-          // kebabMenuShow={kebabMenuShow}
+          onModalOpen={onModalOpen}
         />
       ))}
     </Container>

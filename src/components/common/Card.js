@@ -7,10 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const moment = require('moment');
 
-export default function Card({
-  value,
-  urlPath /*kebabMenuShow, onKebabClick*/,
-}) {
+export default function Card({ value, urlPath, onModalOpen }) {
   const [kebabMenuShow, setKebabMenuShow] = useState(false);
   const kebabRef = useRef(null);
 
@@ -60,7 +57,13 @@ export default function Card({
                 alt='리스트 메뉴'
                 onClick={handleKebabClick}
               />
-              {kebabMenuShow && <KebabPopOver kebabRef={kebabRef} />}
+              {kebabMenuShow && (
+                <KebabPopOver
+                  kebabRef={kebabRef}
+                  onModalOpen={onModalOpen}
+                  link={value.url}
+                />
+              )}
             </KebabBox>
           )}
         </Box>
@@ -100,6 +103,15 @@ const CardImg = styled.div`
   overflow: hidden;
 `;
 
+const TextBox = styled.div`
+  color: #000;
+  padding: 15px 20px;
+  position: relative;
+  background-color: var(--linkbrary-white);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+`;
+
 const Container = styled.a`
   text-decoration: none;
   width: 340px;
@@ -110,6 +122,10 @@ const Container = styled.a`
   &:hover ${CardImg} {
     transform: scale(1.3);
     transition: 0.5s;
+  }
+
+  &:hover ${TextBox} {
+    background-color: var(--linkbrary-bg);
   }
 `;
 
@@ -125,15 +141,6 @@ const Description = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-height: 24px;
-`;
-
-const TextBox = styled.div`
-  color: #000;
-  padding: 15px 20px;
-  position: relative;
-  background-color: var(--linkbrary-white);
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
 `;
 
 const KebabBox = styled.div``;

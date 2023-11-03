@@ -33,9 +33,9 @@ export default function Folder() {
     setCurrentFolder({ id, name });
   };
 
-  const handleModalOpen = (name) => {
+  const handleModalOpen = (name, link) => {
     setIsOpen(true);
-    setCurrentModal(name);
+    setCurrentModal({ name, link });
   };
 
   const handleModalClose = () => {
@@ -63,7 +63,11 @@ export default function Folder() {
               currentFolder={currentFolder}
               onModalOpen={handleModalOpen}
             />
-            <CardList cards={links} urlPath={urlPath} />
+            <CardList
+              cards={links}
+              urlPath={urlPath}
+              onModalOpen={handleModalOpen}
+            />
           </div>
         ) : (
           <Div>저장된 폴더가 없습니다</Div>
@@ -74,6 +78,7 @@ export default function Folder() {
         currentModal={currentModal}
         onModalClose={handleModalClose}
         currentFolder={currentFolder}
+        userFolder={userFolder}
       />
     </div>
   );
