@@ -34,7 +34,7 @@ export function ModalLink({
 
   const handleShareFacebook = (e) => {
     e.preventDefault();
-    window.open(`'http://www.facebook.com/sharer.php?u=${shareUrl}'`);
+    window.open(`http://www.facebook.com/sharer.php?u=${shareUrl}`);
   };
 
   const handleCopyClip = (e) => {
