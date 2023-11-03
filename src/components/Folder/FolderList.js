@@ -6,7 +6,7 @@ const ALL = {
   name: '전체',
 };
 
-const Folder = ({ folderInfo, $select, onClick }) => {
+const Folder = ({ folderInfo, $select, onClick, onModalOpen }) => {
   return (
     <Button $select={$select} onClick={onClick} id={folderInfo.id}>
       {folderInfo.name}
@@ -14,7 +14,11 @@ const Folder = ({ folderInfo, $select, onClick }) => {
   );
 };
 
-export default function FolderList({ userFolder, onCurrentFolder }) {
+export default function FolderList({
+  userFolder,
+  onCurrentFolder,
+  onModalOpen,
+}) {
   const [currentButton, setCurrentButton] = useState('');
 
   const handleFolder = (e) => {
@@ -48,7 +52,7 @@ export default function FolderList({ userFolder, onCurrentFolder }) {
           />
         ))}
       </FolderBox>
-      <AddFolder />
+      <AddFolder onModalOpen={onModalOpen} />
     </Box>
   );
 }

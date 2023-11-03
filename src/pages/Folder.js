@@ -71,6 +71,7 @@ export default function Folder() {
         isOpen={isOpen}
         currentModal={currentModal}
         onModalClose={handleModalClose}
+        currentFolder={currentFolder}
       />
     </div>
   );

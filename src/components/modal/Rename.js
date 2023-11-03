@@ -1,29 +1,16 @@
-import styled from 'styled-components';
-import Button from '../common/Button';
+import { useState } from 'react';
+import { ModalButton, Input } from './ModalStyle';
 
-export default function Rename() {
+export default function Rename({ currentFolder }) {
+  const [name, setName] = useState(currentFolder.name);
+
+  const handleChange = (e) => {
+    setName(e.target.value);
+  };
   return (
     <>
-      <Input type='text' />
+      <Input type='text' value={name} onChange={handleChange} />
       <ModalButton type='변경하기'></ModalButton>
     </>
   );
 }
-
-const ModalButton = styled(Button)`
-  border-radius: 9px;
-  width: 280px;
-  padding: 16px 20px;
-`;
-
-const Input = styled.input`
-  outline: none;
-  padding: 18px 15px;
-  width: 280px;
-  border: 1px solid var(--linkbrary-gray-20);
-  border-radius: 8px;
-  margin: 24px 0 15px;
-  &:focus {
-    border-color: var(--linkbrary-primary-color);
-  }
-`;

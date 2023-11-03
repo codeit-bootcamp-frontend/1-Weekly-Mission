@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import addImg from '../../assets/images/add.svg';
 
-export default function AddFolder() {
+export default function AddFolder({ onModalOpen }) {
   return (
-    <Container>
+    <Container
+      onClick={() => {
+        onModalOpen('폴더 추가');
+      }}
+    >
       <div>폴더추가</div>
       <AddImg src={addImg} alt='폴더추가' />
     </Container>
@@ -17,6 +21,7 @@ const Container = styled.div`
   color: var(--linkbrary-primary-color);
   flex-shrink: 0;
   height: 35px;
+  cursor: pointer;
   @media (max-width: 767px) {
     position: fixed;
     bottom: 101px;
