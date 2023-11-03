@@ -27,7 +27,6 @@ function CardList({ folderLinks, modal, setLink }) {
               modal={modal}
               setLink={setLink}
               isOpen={idx === openedPopOver}
-              //왜 여기에다가 콜백함수로 달아줘야만 작동할까?
               onClick={handleTogglePopOver}
             />
           );

@@ -38,7 +38,6 @@ function Folder() {
     const email = nextAccount?.data[0]?.email;
     const nextId = email?.split("@")[0];
     setUserId(nextId);
-    console.log(nextId);
   };
 
   console.log(userId);
@@ -72,7 +71,7 @@ function Folder() {
   useEffect(() => {
     handleLoadAccountId();
   }, []);
-  console.log(process.env.REACT_APP_JAVASCRIPT_KEY);
+
   const isShowComponent =
     (currentFolderId === "") &
     (folderLinks.length === 0) &
