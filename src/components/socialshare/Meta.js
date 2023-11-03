@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function KaKao() {
+export default function Meta() {
   return <div></div>;
 }

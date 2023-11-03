@@ -4,6 +4,7 @@ import linkCopy from "../../assets/images/linkcopy.svg";
 import kakaochat from "../../assets/images/kakaochat.svg";
 import metachat from "../../assets/images/metachat.svg";
 import ConfirmModal from "./ConfirmModal";
+import KaKao from "../../components/socialshare/KaKao";
 export default function Modal({ setterFunc, tabName, folderName }) {
   const yesConfirm = () => {
     alert(`복사하였습니다 `);
@@ -27,12 +28,15 @@ export default function Modal({ setterFunc, tabName, folderName }) {
       setIsCopied(true);
     }
   };
+
   const obj = {
     share: ["폴더공유"],
     change: ["폴더이름변경", "변경하기", "blue"],
     delete: ["폴더삭제", "삭제하기", "red"],
   };
-
+  const handleKaKao = () => {
+    return <KaKao />;
+  };
   const [title, buttonName, buttonColor] = obj[tabName];
   return (
     <div className={styles.container}>
@@ -71,7 +75,9 @@ export default function Modal({ setterFunc, tabName, folderName }) {
         ) : (
           <div className="link__container">
             <img src={linkCopy} alt="link_copy" onClick={toClipboard} />
-            <img src={kakaochat} alt="kakao_chat" />
+
+            {/* <img src={kakaochat} alt="kakao_chat" /> */}
+            <KaKao />
             <img src={metachat} alt="meta_chat" />
           </div>
         )}

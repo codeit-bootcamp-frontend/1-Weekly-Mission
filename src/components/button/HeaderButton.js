@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./HeaderButton.module.css";
 import linkImage from "../../assets/images/link.svg";
 import HeaderModal from "../../common/modal/HeaderModal";
-import LocaleContext from "../../contexts/LocaleContext";
 import { useState } from "react";
 
 export default function HeaderButton() {
