@@ -22,7 +22,6 @@ export default function Nav({ user = INIT_USER, urlPath }) {
   const [isSticky, setIsSticky] = useState('sticky');
 
   useEffect(() => {
-    console.log(urlPath);
     if (urlPath === '/folder') {
       setIsSticky('static');
     } else {

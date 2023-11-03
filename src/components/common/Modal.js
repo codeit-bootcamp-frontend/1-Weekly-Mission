@@ -23,7 +23,6 @@ export default function Modal({
   currentFolder,
   userFolder,
 }) {
-  console.log('modal: ', userFolder);
   if (!isOpen) {
     return <></>;
   } else {
