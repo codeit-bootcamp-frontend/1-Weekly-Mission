@@ -8,7 +8,7 @@ import { FolderContext } from "context/FolderContext";
 
 import CardList from "components/card/CardList";
 import Loading from "components/Loading";
-import Searchbar from "components/searchbar/Searchbar";
+import Searchbar from "components/inputs/Searchbar";
 import FolderHero from "components/hero/HeroAboutFolder";
 import Categories from "components/Categories";
 import Options from "components/Options";

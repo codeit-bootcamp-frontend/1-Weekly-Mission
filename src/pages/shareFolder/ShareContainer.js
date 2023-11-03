@@ -5,7 +5,7 @@ import * as S from "./ShareContainerStyle";
 import { getFolder } from "api/api";
 
 import Hero from "components/hero/Hero";
-import Searchbar from "components/searchbar/Searchbar";
+import Searchbar from "components/inputs/Searchbar";
 import CardList from "components/card/CardList";
 import Loading from "components/Loading";
 
