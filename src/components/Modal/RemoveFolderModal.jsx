@@ -1,18 +1,21 @@
 import styled from 'styled-components';
+import Cta from '../Cta';
 
-function Modal() {
+function RemoveFolderModal() {
   return (
     <>
       <Container>
         <Content>
-          <ModalTitle>폴더 이름 변경</ModalTitle>
+          <Title>폴더 이름 변경</Title>
+          <Input />
+          <Cta name="변경하기" />
         </Content>
       </Container>
     </>
   );
 }
 
-export default Modal;
+export default RemoveFolderModal;
 
 const Container = styled.div`
   position: fixed;
@@ -25,7 +28,8 @@ const Container = styled.div`
 
 const Content = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -38,10 +42,21 @@ const Content = styled.div`
   background: var(--white, #fff);
 `;
 
-const ModalTitle = styled.p`
+const Title = styled.p`
   color: var(--gray-100, #373740);
   font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+`;
+
+const Input = styled.input`
+  display: flex;
+  width: 28rem;
+  padding: 1.8rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--primary, #6d6afe);
+  background: var(--white, #fff);
 `;
