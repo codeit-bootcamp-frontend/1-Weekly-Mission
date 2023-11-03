@@ -17,32 +17,9 @@ import useInputController from '../hooks/useInputController';
 function Signup() {
   const { isAuth } = useAuth();
 
-  const {
-    values: emailValues,
-    errorText: emailErrorText,
-    setErrorText: setEmailErrorText,
-    handleChange: handleEmailChange,
-    handleBlur: handleEmailBlur,
-    handleFocus: handleEmailFocus,
-  } = useInputController(signupEmail);
-
-  const {
-    values: passwordValues,
-    errorText: passwordErrorText,
-    setErrorText: setPasswordErrorText,
-    handleChange: handlePasswordChange,
-    handleBlur: handlePasswordBlur,
-    handleFocus: handlePasswordFocus,
-  } = useInputController(signupPassword);
-
-  const {
-    values: passwordCheckValues,
-    errorText: passwordCheckErrorText,
-    setErrorText: setPasswordCheckErrorText,
-    handleChange: handlePasswordCheckChange,
-    handleBlur: handlePasswordCheckBlur,
-    handleFocus: handlePasswordCheckFocus,
-  } = useInputController(signupPasswordCheck);
+  const email = useInputController(signupEmail);
+  const password = useInputController(signupPassword);
+  const passwordCheck = useInputController(signupPasswordCheck);
 
   const navigate = useNavigate();
 
@@ -54,8 +31,8 @@ function Signup() {
     e.preventDefault();
 
     const data = {
-      email: emailValues,
-      password: passwordValues,
+      email: email.values,
+      password: password.values,
     };
 
     const response = await postSign('up', data);
@@ -63,9 +40,9 @@ function Signup() {
     if (response.ok) {
       navigate('/folder');
     } else {
-      setEmailErrorText('이메일을 확인해주세요');
-      setPasswordErrorText('비밀번호를 확인해주세요');
-      setPasswordCheckErrorText('');
+      email.setErrorText('이메일을 확인해주세요');
+      password.setErrorText('비밀번호를 확인해주세요');
+      passwordCheck.setErrorText('');
     }
   };
 
@@ -74,42 +51,42 @@ function Signup() {
       idfor: 'signupEmail',
       name: 'email',
       type: 'email',
-      value: `${emailValues}`,
+      value: `${email.values}`,
       children: '이메일',
 
-      errorText: emailErrorText,
+      errorText: email.errorText,
 
-      onChange: handleEmailChange,
-      onBlur: handleEmailBlur,
-      onFocus: handleEmailFocus,
+      onChange: email.handleChange,
+      onBlur: email.handleBlur,
+      onFocus: email.handleFocus,
       eyes: false,
     },
     {
       idfor: 'signupPassword',
       name: 'password',
       type: 'password',
-      value: `${passwordValues}`,
+      value: `${password.values}`,
       children: '비밀번호',
 
-      errorText: passwordErrorText,
+      errorText: password.errorText,
 
-      onChange: handlePasswordChange,
-      onBlur: handlePasswordBlur,
-      onFocus: handlePasswordFocus,
+      onChange: password.handleChange,
+      onBlur: password.handleBlur,
+      onFocus: password.handleFocus,
       eyes: true,
     },
     {
       idfor: 'signupPasswordCheck',
       name: 'passwordCheck',
       type: 'password',
-      value: `${passwordCheckValues}`,
+      value: `${passwordCheck.values}`,
       children: '비밀번호 확인',
 
-      errorText: passwordCheckErrorText,
+      errorText: passwordCheck.errorText,
 
-      onChange: handlePasswordCheckChange,
-      onBlur: handlePasswordCheckBlur,
-      onFocus: handlePasswordCheckFocus,
+      onChange: passwordCheck.handleChange,
+      onBlur: passwordCheck.handleBlur,
+      onFocus: passwordCheck.handleFocus,
       eyes: true,
     },
   ];
