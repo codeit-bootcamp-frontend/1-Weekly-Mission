@@ -3,27 +3,37 @@ import share_icon from '../../assets/svg/share.svg';
 import pen_icon from '../../assets/svg/pen.svg';
 import delete_icon from '../../assets/svg/trash.svg';
 import IconControlButton from '../../styles/IconControlButton';
+import { useState } from 'react';
+import Modal from '../Modal/Modal';
+import ModalContainer from '../Modal/ModalContainer';
 
 const ICONS = [
   {
     id: 1,
     iconImage: share_icon,
-    name: '공유'
+    name: '공유',
   },
   {
     id: 2,
     iconImage: pen_icon,
-    name: '이름 변경'
+    name: '이름 변경',
   },
   {
     id: 3,
     iconImage: delete_icon,
-    name: '삭제'
-  }
-]
+    name: '삭제',
+  },
+];
 
 
 function CategoryTitleContainer({ name }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+
+  const openModal = ({ isOpen, modalTitle }) => {
+    setIsOpen(isOpen);
+    setModalTitle(modalTitle);
+  };
 
   return (
     <CategoryTitleContainerStyle>
@@ -31,9 +41,14 @@ function CategoryTitleContainer({ name }) {
       <FolderControlContainer $name={name}>
         {ICONS.map((icon) => {
           return (
-            <IconControlButton icon={icon} key={icon.id}/>
-          )
+            <IconControlButton icon={icon} key={icon.id} onOpen={openModal} />
+          );
         })}
+        {isOpen && (
+          <Modal>
+            <ModalContainer modalTitle={modalTitle}/>
+          </Modal>
+        )}
       </FolderControlContainer>
     </CategoryTitleContainerStyle>
   );
@@ -47,7 +62,7 @@ const CategoryTitleContainerStyle = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1.2rem;
-  
+
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
@@ -71,6 +86,6 @@ const FolderControlContainer = styled.div`
   gap: 1.2rem;
 
   @media (min-width: 768px) {
-    display: ${({$name}) => ($name === '전체' ? 'none' : '')};
+    display: ${({ $name }) => ($name === '전체' ? 'none' : '')};
   }
 `;
