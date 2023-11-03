@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import ModalInput from '../ModalInput';
 import CTA from '../CTA';
 
-function EditModal() {
+function EditModal({ title }) {
   return (
     <Container>
       <CustomInput />
-      <CustomCTA>변경하기</CustomCTA>
+      <CustomCTA>{title}</CustomCTA>
     </Container>
   );
 }

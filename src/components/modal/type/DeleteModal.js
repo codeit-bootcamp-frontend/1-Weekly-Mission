@@ -3,7 +3,7 @@ import ModalBox from '../ModalBox';
 import CTA from '../CTA';
 import { useState } from 'react';
 
-function DeleteFolderModal() {
+function DeleteFolderModal({ subTitle, modal }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handelClick = () => {
@@ -13,9 +13,9 @@ function DeleteFolderModal() {
   return (
     <>
       <div>
-        <P>여기 링크가 들어가야 됨</P>
+        <P>{subTitle}</P>
         <Container onClick={handelClick}>
-          <CustomCTA modal={'링크 삭제'}>삭제하기</CustomCTA>
+          <CustomCTA modal={modal}>삭제하기</CustomCTA>
         </Container>
       </div>
     </>

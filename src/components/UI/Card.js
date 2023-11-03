@@ -25,7 +25,7 @@ function Card({ item }) {
       <InfoArea>
         <CardExtraInfo>
           <UploadTime>{dateDifference}</UploadTime>
-          <Kebab />
+          <Kebab link={url} />
         </CardExtraInfo>
         <a href={url}>
           <Text>{description}</Text>

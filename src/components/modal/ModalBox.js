@@ -1,34 +1,52 @@
 import styled from 'styled-components';
 import closeButton from '../../assets/close_icon.svg';
 import { useState } from 'react';
-import EditModal from './type/EditModal';
+import InputModal from './type/InputModal';
 import ShareModal from './type/ShareModal';
-import DeleteFolderModal from './type/DeleteFolderModal';
-import DeleteLinkModal from './type/DeleteLinkModal';
-import AddFolderModal from './type/AddFolderModal';
+import DeleteModal from './type/DeleteModal';
 
-function ModalBox({ modal, children = modal, closeModal }) {
+function ModalBox({ modal, closeModal, folderTitle, link }) {
   const handleClick = () => {
     closeModal();
   };
 
-  if (modal === '삭제하기') modal = '폴더 삭제';
-  console.log(modal);
+  const handleModalClick = (e) => {
+    e.stopPropagation();
+  };
+
+  if (modal === '삭제하기') {
+    modal = '링크 삭제';
+  }
+
   return (
-    <Container>
-      <Button onClick={handleClick}>
-        <Icon src={closeButton} alt="창닫기 아이콘" />
-      </Button>
-      <P>{children}</P>
-      {modal === '폴더 공유' && <ShareModal />}
-      {modal === '폴더 이름 변경' && <EditModal />}
-      {modal === '폴더 삭제' && <DeleteFolderModal />}
-      {/* {modal === '폴더 추가' && <AddModal />} */}
-      {modal === '링크 삭제' && <DeleteLinkModal />}
-      {modal === '폴더에 추가' && <AddFolderModal />}
-    </Container>
+    <Background onClick={handleClick}>
+      <Container onClick={handleModalClick}>
+        <Button onClick={handleClick}>
+          <Icon src={closeButton} alt="창닫기 아이콘" />
+        </Button>
+        <P>{modal}</P>
+        {modal === '폴더 공유' && <ShareModal subTitle={folderTitle} />}
+        {modal === '폴더 이름 변경' && <InputModal title="변경하기" />}
+        {modal === '폴더 삭제' && <DeleteModal subTitle={folderTitle} modal={modal} />}
+        {/* {modal === '폴더 추가' && <AddModal />} */}
+        {modal === '링크 삭제' && <DeleteModal subTitle={link} modal={modal} />}
+        {modal === '폴더에 추가' && <InputModal title="추가하기" />}
+      </Container>
+    </Background>
   );
 }
+
+const Background = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+  z-index: 3;
+`;
 
 const Container = styled.div`
   display: inline-flex;
@@ -45,7 +63,7 @@ const Container = styled.div`
   border-radius: 15px;
   border: 1px solid var(--gray20);
   background: var(--white);
-  z-index: 3;
+  z-index: 4;
 `;
 
 const Button = styled.button`

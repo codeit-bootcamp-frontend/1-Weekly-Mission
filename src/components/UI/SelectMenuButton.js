@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ModalBox from '../modal/ModalBox';
 import { useState } from 'react';
 
-function SelectMenuButton({ children, modal }) {
+function SelectMenuButton({ children, modal, link }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handelClick = () => {
@@ -14,7 +14,7 @@ function SelectMenuButton({ children, modal }) {
       <SelectButton onClick={handelClick}>
         <p>{children}</p>
       </SelectButton>
-      {isModalVisible && <ModalBox modal={modal} closeModal={handelClick} />}
+      {isModalVisible && <ModalBox modal={modal} link={link} closeModal={handelClick} />}
     </>
   );
 }

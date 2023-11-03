@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ModalBox from '../modal/ModalBox';
 import { useState } from 'react';
 
-function Option({ icon, children, modal }) {
+function Option({ icon, children, modal, title }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handelClick = () => {
@@ -15,7 +15,7 @@ function Option({ icon, children, modal }) {
         <Icon src={icon} />
         <p>{children}</p>
       </OptionContainer>
-      {isModalVisible && <ModalBox modal={modal} closeModal={handelClick} />}
+      {isModalVisible && <ModalBox modal={modal} closeModal={handelClick} folderTitle={title} />}
     </>
   );
 }

@@ -4,10 +4,10 @@ import kakaoIcon from '../../../assets/Modal_kakaoTalk_icon.svg';
 import facebookIcon from '../../../assets/Modal_facebook_icon.svg';
 import linkCopyIcon from '../../../assets/Modal_linkCopy_icon.svg';
 
-function ShareModal() {
+function ShareModal({ subTitle }) {
   return (
     <>
-      <P>폴더명</P>
+      <P>{subTitle}</P>
       <Container>
         <Div>
           <img src={kakaoIcon} alt="카카오톡으로 폴더 공유" />
