@@ -40,8 +40,6 @@ function Folder() {
     setUserId(nextId);
   };
 
-  console.log(userId);
-
   //카드 리스트 업데이트 하는 함수
   const loadCardList = async () => {
     const folders = await getFoldersAsync();
@@ -146,7 +144,6 @@ function Folder() {
 }
 
 export default Folder;
-// console.log(window.location.pathname);
 
 const Wrapper = styled.div`
   width: 1060px;

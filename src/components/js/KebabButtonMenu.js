@@ -4,7 +4,6 @@ function KebabPopOver({ modal, $url, setLink }) {
   const handleClick = (e) => {
     e.stopPropagation();
     const nextModal = e.target.getAttribute("modalName");
-    console.log(nextModal);
     setLink($url);
     modal(true, nextModal);
   };

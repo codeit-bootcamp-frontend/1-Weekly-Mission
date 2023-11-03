@@ -3,7 +3,6 @@ export const shareKakao = (route, title) => {
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
-      console.log(process.env.REACT_APP_JAVASCRIPT_KEY);
       kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY); // 카카오에서 제공받은 javascript key를 넣어줌 -> .env파일에서 호출시킴
     }
 

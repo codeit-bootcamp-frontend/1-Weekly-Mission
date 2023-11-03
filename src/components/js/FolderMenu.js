@@ -20,8 +20,6 @@ function FolderMenu({ folders, onClick, current, folderName, modal }) {
   const items = Array.isArray(folders) ? folders : [];
 
   const handleModal = (e) => {
-    console.log(e.target);
-    console.log(e.target.modal);
     const nextModal = e.currentTarget.getAttribute("modal");
     modal(true, nextModal);
   };
