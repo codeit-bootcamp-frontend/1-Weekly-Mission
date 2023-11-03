@@ -15,7 +15,7 @@ function Nav() {
       setHasProfile(false);
       return;
     }
-    setProfile(window.location.path === "/shared" ? result : result.data[0]);
+    setProfile(window.location.path === "/shared" ? result.data : result.data.data[0]);
     setHasProfile(true);
   };
 

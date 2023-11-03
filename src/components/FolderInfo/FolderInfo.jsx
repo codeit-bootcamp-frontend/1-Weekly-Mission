@@ -1,7 +1,9 @@
+import useRequest from "hooks/useRequest";
 import * as S from "./FolderInfo.style";
 
-function FolderInfo({ data }) {
-  const { folder } = data;
+function FolderInfo() {
+  const { data } = useRequest({ url: "/sample/folder" });
+  const folder = data?.folder;
   const folderName = folder?.name;
   const owner = folder?.owner;
   const ownerName = owner?.name;

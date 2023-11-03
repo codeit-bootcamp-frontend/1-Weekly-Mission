@@ -4,9 +4,9 @@ import closeButton from "images/_close.png";
 import kakaotalkIcon from "images/kakao.svg";
 import facebookIcon from "images/facebook.svg";
 import linkIcon from "images/link.svg";
-import { useEffect, useState } from "react";
-import fetch from "api";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import useRequest from "hooks/useRequest";
 
 export default function Modal({ close, children }) {
   useEffect(() => {
@@ -126,17 +126,8 @@ export function ModalDeleteLink({ url }) {
 }
 
 export function ModalAddLink({ url }) {
-  const [folders, setFolders] = useState();
-
-  const handleLoad = async () => {
-    const result = await fetch({ url: "/users/1/folders" });
-    const { data } = result;
-    setFolders(data);
-  };
-
-  useEffect(() => {
-    handleLoad();
-  }, []);
+  const { data } = useRequest({ url: "/users/1/folders" });
+  const folders = data?.data;
 
   return (
     <>

@@ -1,5 +1,4 @@
-import fetch from "api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as S from "./FolderList.style";
 import addIcon from "images/add.svg";
 import addIconWhite from "images/add_white.svg";
@@ -8,15 +7,18 @@ import nameChangeIcon from "images/name-change.svg";
 import shareIcon from "images/share.svg";
 import Modal from "components/Modal";
 import { ModalAddFolder, ModalDelete, ModalEdit, ModalShare } from "components/Modal/Modal";
+import useRequest from "hooks/useRequest";
 
 function FolderList({ getFolderId }) {
-  const [folders, setFolders] = useState();
   const [selectedId, setSelectedId] = useState(null);
   const [selectedName, setSelectedName] = useState("전체");
   const [modalIsOpen1, setModalIsOpen1] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
   const [modalIsOpen3, setModalIsOpen3] = useState(false);
   const [modalIsOpen4, setModalIsOpen4] = useState(false);
+
+  const { data } = useRequest({ url: "/users/1/folders" });
+  const folders = data?.data;
 
   const handleAllClick = () => {
     getFolderId("");
@@ -29,16 +31,6 @@ function FolderList({ getFolderId }) {
     setSelectedId(e.target.id);
     setSelectedName(e.target.name);
   };
-
-  const handleLoad = async () => {
-    const result = await fetch({ url: "/users/1/folders" });
-    const { data } = result;
-    setFolders(data);
-  };
-
-  useEffect(() => {
-    handleLoad();
-  }, []);
 
   return (
     <>

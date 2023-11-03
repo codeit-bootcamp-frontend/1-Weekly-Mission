@@ -7,7 +7,7 @@ const api = axios.create({
 const fetch = async (options) => {
   try {
     const response = api({ ...options });
-    return (await response).data;
+    return await response;
   } catch (error) {
     throw error;
   }

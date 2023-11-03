@@ -17,7 +17,7 @@ function FolderPage() {
   const handleLoadFolder = async (folderId) => {
     const url = `/users/1/links?folderId=${folderId}`;
     const { data } = await fetch({ url: url });
-    setFolder(data);
+    setFolder(data.data);
   };
 
   useEffect(() => {
