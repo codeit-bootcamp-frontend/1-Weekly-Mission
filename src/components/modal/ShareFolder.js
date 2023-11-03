@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { FolderContext } from "context/FolderContext";
 
 import styled from "styled-components";
 
@@ -58,6 +59,15 @@ const icons = [
 ];
 
 export default function ShareFolder({ currentFolderName }) {
+  const { folderNameList } = useContext(FolderContext);
+
+  /* 현재 선택한 폴더와 일치하는 folder의 userId, folderId */
+  const handleShareFolder = () => {
+    const folderInfo = folderNameList.filter((folder) => folder.name === currentFolderName);
+    const { user_id, id } = folderInfo[0];
+    shareKakao(user_id, id);
+  };
+
   /* 카카오 스크립트 추가 및 제거 */
   useEffect(() => {
     const script = document.createElement("script");
@@ -76,7 +86,7 @@ export default function ShareFolder({ currentFolderName }) {
       <IconsContainer>
         {icons.map((icon, index) => (
           <Icons key={index}>
-            <Image src={icon.icon} alt="sns" onClick={shareKakao} />
+            <Image src={icon.icon} alt="sns" onClick={handleShareFolder} />
             <Name>{icon.name}</Name>
           </Icons>
         ))}
