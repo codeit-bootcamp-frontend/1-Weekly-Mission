@@ -1,0 +1,34 @@
+@import "commons/styles/global.scss";
+
+.modal {
+  padding: 3.2rem 4rem;
+  z-index: 999;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.modal-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.title-section {
+  color: var(--linkbrary-gray-100, #373740);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
