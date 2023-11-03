@@ -9,10 +9,9 @@ import SHARE_LINK from 'assets/icons/share-link.svg';
 function Share({ closeModal, folderName, folderId, userId }) {
   const { Kakao } = window;
 
-  const testUrl = 'http://localhost:3000';
-  const realUrl = `https://https://linkbrary-geon.netlify.app/shared?user=${userId}&folder=${folderId}`;
+  const realUrl = `https://linkbrary-geon.netlify.app/shared?user=${userId}&folder=${folderId}`;
 
-  const shareKakao = () => {
+  const shareToKakao = () => {
     Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
@@ -21,18 +20,34 @@ function Share({ closeModal, folderName, folderId, userId }) {
         imageUrl:
           'https://cdn.discordapp.com/attachments/1155018218507870219/1169891810647212083/linkbrary.png?ex=65570da7&is=654498a7&hm=001d723c49b5b5d454a486a81a920b54e62115649e6a0709297a6fdd20981b7e&',
         link: {
-          mobileWebUrl: testUrl,
+          mobileWebUrl: realUrl,
         },
       },
       buttons: [
         {
           title: '나도 보러 가기',
           link: {
-            mobileWebUrl: testUrl,
+            mobileWebUrl: realUrl,
           },
         },
       ],
     });
+  };
+
+  const shareToFacebook = () => {
+    window.open(
+      `http://www.facebook.com/sharer/sharer.php?u=${realUrl}`,
+      '페이스북 공유하기',
+      'width=600,height=800,location=no,status=no,scrollbars=yes'
+    );
+  };
+
+  const copyLinkClipBoard = async () => {
+    try {
+      await navigator.clipboard.writeText(realUrl);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -48,19 +63,19 @@ function Share({ closeModal, folderName, folderId, userId }) {
       </Modal.Header>
       <S.ShareContainer>
         <S.Share>
-          <button onClick={() => shareKakao()}>
+          <button onClick={() => shareToKakao()}>
             <img src={KAKAO} alt='카카오톡으로 공유하기' />
           </button>
           <S.ShareText>카카오톡</S.ShareText>
         </S.Share>
         <S.Share>
-          <button>
+          <button onClick={() => shareToFacebook()}>
             <img src={FACEBOOK} alt='카카오톡으로 공유하기' />
           </button>
           <S.ShareText>페이스북</S.ShareText>
         </S.Share>
         <S.Share>
-          <button>
+          <button onClick={() => copyLinkClipBoard()}>
             <img src={SHARE_LINK} alt='카카오톡으로 공유하기' />
           </button>
           <S.ShareText>링크 복사</S.ShareText>

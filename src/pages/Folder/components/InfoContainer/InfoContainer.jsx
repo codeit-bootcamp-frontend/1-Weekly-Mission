@@ -18,14 +18,16 @@ function InfoContainer({ defaultFolder, selectedFolder, userId }) {
   const [toggleShow, Modal] = useModal({
     edit: <Edit closeModal={closeModal} />,
     newFolder: <NewFolder closeModal={closeModal} />,
-    share: <Share closeModal={closeModal} folderName={selectedFolder?.name} />,
-    deleteFolder: (
-      <DeleteFolder
+    share: (
+      <Share
         closeModal={closeModal}
         folderName={selectedFolder?.name}
-        folderId={selectedFolder.id}
+        folderId={selectedFolder?.id}
         userId={userId}
       />
+    ),
+    deleteFolder: (
+      <DeleteFolder closeModal={closeModal} folderName={selectedFolder?.name} />
     ),
     deleteLink: <DeleteLink closeModal={closeModal} />,
     addToFolder: <AddToFolder closeModal={closeModal} />,
