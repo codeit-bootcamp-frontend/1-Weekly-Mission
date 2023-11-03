@@ -5,6 +5,7 @@ import { getAllCards } from "apis/getAllCards";
 import FolderNameButton from "pages/FolderPage/components/FolderNameButton/FolderNameButton";
 import { CardList } from "commons/components";
 import styles from "./FolderViewer.module.scss";
+import FolderModifier from "../FolderModifier/FolderModifier";
 
 const DEFAULT_FOLDER = { id: "", name: "전체" };
 
@@ -12,13 +13,16 @@ function FolderViewer() {
   const [folderList, setFolderList] = useState([]);
   const [pending, error, getFolderListAsync] = useAsync(getFolderList);
   const [cardList, setCardList] = useState([]);
+  const [folderTitle, setFolderTitle] = useState("전체");
+
   const getter = async () => {
     const allFolders = await getFolderListAsync();
     setFolderList(allFolders?.data);
   };
 
-  const getFolderCards = async (id = "") => {
+  const getFolderCards = async (id = "", title = "전체") => {
     const result = await getAllCards(id);
+    setFolderTitle(title);
     setCardList(() => {
       return [...result.data];
     });
@@ -53,6 +57,12 @@ function FolderViewer() {
           폴더 추가+
         </button>
       </form>
+      <p className={styles["folder-title-section"]}>{folderTitle}</p>
+      {folderTitle !== "전체" && (
+        <div className={styles["folder-modifier-section"]}>
+          <FolderModifier />
+        </div>
+      )}
       <div className={styles["card-list-section"]}>
         <CardList cardList={cardList} />
       </div>

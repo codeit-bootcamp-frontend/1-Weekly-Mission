@@ -5,7 +5,7 @@ let prev = null;
 function FolderNameButton({ folder, onChange }) {
   const handleButtonClick = (e) => {
     e.preventDefault();
-    onChange(folder.id);
+    onChange(folder.id, folder.name);
     e.target.className = `${styles["folder-name-button"]} ${styles["clicked-folder-button"]}`;
     if (!prev) prev = e;
     else {

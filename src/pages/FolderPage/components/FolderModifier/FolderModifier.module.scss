@@ -1,0 +1,11 @@
+@import "commons/styles/global.scss";
+
+.button-modifier {
+  height: 0;
+  display: flex;
+  gap: 1rem;
+  & button {
+    display: flex;
+    justify-content: center;
+  }
+}
