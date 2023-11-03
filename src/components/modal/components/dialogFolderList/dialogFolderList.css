@@ -1,0 +1,19 @@
+@import url('../../../../styles/global.css');
+
+.dialog-folder-list {
+  display: flex;
+  align-items: center;
+  width: 264px;
+  padding: 8px;
+  gap: 8px;
+}
+
+.dialog-folder-list-title {
+  font-size: 16px;
+  color: var(--color-gray-100);
+}
+
+.dialog-folder-list-count {
+  font-size: 14px;
+  color: var(--color-gray-40);
+}

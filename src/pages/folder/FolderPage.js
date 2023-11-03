@@ -8,17 +8,17 @@ import EmptyPage from './components/emptyPage/EmptyPage';
 import OptionButton from './components/optionButton/OptionButton';
 import FloatingButton from '../../components/floatingButton/FloatingButton';
 import { ALL_LINK_NAME, OPTION_ICONS } from './constant';
+import useModal from '../../hooks/useModal';
 
 import addIcon from '../../assets/folder/add.svg';
 import addPrimaryIcon from '../../assets/folder/addPrimaryColor.svg';
 import SortButton from './components/sortButton/SortButton';
-import useModal from '../../hooks/useModal';
 
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
   const [folderId, setFolderId] = useState(ALL_LINK_NAME);
-  const { open, close, Modal } = useModal();
+  const { open, close, Dialog, isModalOpen } = useModal();
 
   const folderName =
     folderId === ALL_LINK_NAME
@@ -81,16 +81,18 @@ export default function FolderPage() {
                 className="folder-add-icon"
               />
             </button>
-            <Modal>
-              <div>
-                <button type="button" onClick={close}>
-                  OK
-                </button>
-                <button type="button" onClick={close}>
-                  Cancle
-                </button>
-              </div>
-            </Modal>
+            <Dialog onClick={close} isModalOpen={isModalOpen}>
+              <Dialog.Title onClick={close}>폴더에 추가</Dialog.Title>
+              <Dialog.Link>링크 주소</Dialog.Link>
+              {folders.map((folder) => (
+                <Dialog.FolderList key={folder.id}>
+                  <span className="dialog-folder-name">{folder.name}</span>
+                  <span className="dialog-folder-count">
+                    {folder.link.count}개 링크
+                  </span>
+                </Dialog.FolderList>
+              ))}
+            </Dialog>
           </div>
           <div className="folder-category-container">
             <h1 className="folder-category">{folderName}</h1>

@@ -1,6 +1,6 @@
 @import url('../../styles/global.css');
 
-.modal {
+.dialog {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,7 @@
   z-index: 999;
 }
 
-.modal-container {
+.dialog-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,4 +25,35 @@
   background-color: var(--color-white);
   opacity: 1;
   transform: translate(-50%, -50%);
+}
+
+.dialog-close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.dialog-close-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.dialog-header {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+}
+
+.dialog-folder-list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }

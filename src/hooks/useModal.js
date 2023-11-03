@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
-import Modal from '../components/modal/Modal';
+import { useCallback, useState } from 'react';
+import { Dialog } from '../components/modal/DialogMain';
 
-export default function useModal({ useBlur = true } = {}) {
+export default function useModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const open = useCallback(() => {
@@ -13,11 +13,7 @@ export default function useModal({ useBlur = true } = {}) {
   }, []);
 
   return {
-    Modal: isModalOpen
-      ? ({ children }) => (
-          <Modal onClose={useBlur ? close : null}>{children}</Modal>
-        )
-      : () => null,
+    Dialog,
     open,
     close,
     isModalOpen,

@@ -81,6 +81,18 @@
   font-weight: 600;
 }
 
+.dialog-folder-name {
+  color: var(--color-gray-100);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.dialog-folder-count {
+  color: var(--color-gray-40);
+  font-size: 14px;
+}
+
 /* table */
 
 @media (min-width: 768px) and (max-width: 1199px) {
