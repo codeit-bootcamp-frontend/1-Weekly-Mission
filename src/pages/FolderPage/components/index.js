@@ -1,5 +1,5 @@
-import FolderHeader from "./FolderHeader/FolderHeader";
 import FolderNameButton from "./FolderNameButton/FolderNameButton";
 import LinkAddBar from "./LinkAddBar/LinkAddBar";
+import FolderViewer from "./FolderViewer/FolderViewer";
 
-export { FolderHeader, FolderNameButton, LinkAddBar };
+export { FolderNameButton, LinkAddBar, FolderViewer };

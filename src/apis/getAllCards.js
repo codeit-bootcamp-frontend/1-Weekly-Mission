@@ -10,5 +10,6 @@ export async function getAllCards(id = "") {
     url = `${USER_ID}/links${query}`;
   }
   const response = await axiosInstance.get(`${url}`);
+
   return response?.data;
 }

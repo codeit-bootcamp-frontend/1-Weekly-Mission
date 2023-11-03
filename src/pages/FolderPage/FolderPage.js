@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import Layout from "commons/components/Layout/Layout";
 import { SearchBar } from "commons/components/index";
 import useAsync from "apis/useAsync";
-import { FolderHeader, LinkAddBar } from "./components/index";
+import { LinkAddBar } from "./components/index";
 import { getFolderList } from "apis/getFolderList";
 import "./FolderPage.css";
+import FolderViewer from "./components/FolderViewer/FolderViewer";
 
 //모바일 환경에서 보이는 버튼
 function MobileFolderButton() {
@@ -30,10 +31,10 @@ function FolderPage() {
       <MobileFolderButton />
       <LinkAddBar />
       <SearchBar />
+      <FolderViewer />
       <button type="button" className="add-folder-button">
         폴더 추가+
       </button>
-      <FolderHeader folderList={folderList} />
     </Layout>
   );
 }

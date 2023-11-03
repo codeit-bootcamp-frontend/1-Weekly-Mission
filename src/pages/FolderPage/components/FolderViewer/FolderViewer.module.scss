@@ -1,0 +1,12 @@
+@import "commons/styles/global.scss";
+
+.folder-buttons-section {
+  display: flex;
+  gap: 1rem;
+  padding: 0 15rem 0 4rem;
+  flex-wrap: wrap;
+}
+
+.card-list-section {
+  margin: 3rem 4rem;
+}
