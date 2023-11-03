@@ -14,8 +14,7 @@ import FolderHeader from "components/folderHeader/FolderHeader.jsx";
 export default function FolderPage() {
   const [folderList, setFolderList] = useState([]);
 
-  const params = useParams();
-  const folderId = params.folderId;
+  const { folderId } = useParams();
   const folderTitle = !folderId
     ? ENTIRE_LINK_FOLDER_NAME
     : folderList.find((item) => String(item.id) === folderId)?.name;

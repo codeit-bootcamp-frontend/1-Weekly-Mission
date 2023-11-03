@@ -3,8 +3,7 @@ import * as S from "./folderTabList.style.js";
 import { ENTIRE_LINK_FOLDER_NAME } from "utils/constants.js";
 
 export default function FolderTabList({ folderList }) {
-  const params = useParams();
-  const folderId = params.folderId;
+  const { folderId } = useParams();
   return (
     <S.FolderTabList>
       <li>

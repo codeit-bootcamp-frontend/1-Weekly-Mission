@@ -33,14 +33,15 @@ export default function FolderHeader({ folderTitle }) {
       {folderTitle !== ENTIRE_LINK_FOLDER_NAME && (
         <S.ButtonList>
           {BUTTON_LIST.map((buttonItem) => {
+            const { id, areaLabel, imageSource, title } = buttonItem;
             return (
-              <li key={buttonItem.id}>
-                <S.ButtonItem area-label={buttonItem.areaLabel}>
+              <li key={id}>
+                <S.ButtonItem area-label={areaLabel}>
                   <S.ButtonImage
-                    src={buttonItem.imageSource}
-                    alt={`${buttonItem.areaLabel} 아이콘`}
+                    src={imageSource}
+                    alt={`${areaLabel} 아이콘`}
                   />
-                  <S.ButtonTitle>{buttonItem.title}</S.ButtonTitle>
+                  <S.ButtonTitle>{title}</S.ButtonTitle>
                 </S.ButtonItem>
               </li>
             );
