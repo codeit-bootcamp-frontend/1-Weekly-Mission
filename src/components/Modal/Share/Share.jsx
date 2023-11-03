@@ -5,12 +5,12 @@ import KAKAO from 'assets/icons/kakaotalk-large.svg';
 import FACEBOOK from 'assets/icons/facebook-large.svg';
 import SHARE_LINK from 'assets/icons/share-link.svg';
 
-function Share() {
+function Share({ closeModal, folderName }) {
   return (
-    <Layout>
+    <Layout closeModal={closeModal}>
       <Modal.Header>
         <Modal.Title>폴더 공유</Modal.Title>
-        <Modal.Description>폴더명</Modal.Description>
+        <Modal.Description>{folderName}</Modal.Description>
       </Modal.Header>
       <S.ShareContainer>
         <S.Share>

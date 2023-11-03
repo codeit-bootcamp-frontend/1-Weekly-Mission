@@ -2,9 +2,9 @@ import * as Modal from '../Modal.style';
 import * as S from './AddToFolder.style';
 import Layout from '../Layout';
 
-function AddToFolder() {
+function AddToFolder({ closeModal }) {
   return (
-    <Layout>
+    <Layout closeModal={closeModal}>
       <Modal.Header>
         <Modal.Title>폴더에 추가</Modal.Title>
         <Modal.Description>링크 주소</Modal.Description>

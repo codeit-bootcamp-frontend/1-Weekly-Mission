@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from 'styles/palette';
 import Button from 'components/Button';
+import { zIndexStyle } from 'styles/zIndexStyle';
 
 export const DimContainer = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ export const DimContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: ${zIndexStyle.floating};
   background-color: rgba(0, 0, 0, 0.4);
 `;
 

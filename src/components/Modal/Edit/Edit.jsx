@@ -1,9 +1,9 @@
 import * as Modal from '../Modal.style';
 import Layout from '../Layout';
 
-function Edit() {
+function Edit({ closeModal }) {
   return (
-    <Layout>
+    <Layout closeModal={closeModal}>
       <Modal.Title>폴더 이름 변경</Modal.Title>
       <div>
         <Modal.Input placeholder='유용한 팁'></Modal.Input>

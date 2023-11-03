@@ -1,9 +1,9 @@
 import * as Modal from '../Modal.style';
 import Layout from '../Layout';
 
-function DeleteLink() {
+function DeleteLink({ closeModal }) {
   return (
-    <Layout>
+    <Layout closeModal={closeModal}>
       <Modal.Header>
         <Modal.Title>링크 삭제</Modal.Title>
         <Modal.Description>www.link.com</Modal.Description>
