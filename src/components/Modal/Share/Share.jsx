@@ -62,27 +62,41 @@ function Share({ closeModal, folderName, folderId, userId }) {
         <Modal.Description>{folderName}</Modal.Description>
       </Modal.Header>
       <S.ShareContainer>
-        <S.Share>
-          <button onClick={() => shareToKakao()}>
-            <img src={KAKAO} alt='카카오톡으로 공유하기' />
-          </button>
-          <S.ShareText>카카오톡</S.ShareText>
-        </S.Share>
-        <S.Share>
-          <button onClick={() => shareToFacebook()}>
-            <img src={FACEBOOK} alt='페이스북으로 공유하기' />
-          </button>
-          <S.ShareText>페이스북</S.ShareText>
-        </S.Share>
-        <S.Share>
-          <button onClick={() => copyLinkClipBoard()}>
-            <img src={SHARE_LINK} alt='링크 주소 복사하기' />
-          </button>
-          <S.ShareText>링크 복사</S.ShareText>
-        </S.Share>
+        <ShareBox
+          imgSrc={KAKAO}
+          imgAlt='카카오톡으로 공유하기'
+          onClick={shareToKakao}
+        >
+          카카오톡
+        </ShareBox>
+        <ShareBox
+          imgSrc={FACEBOOK}
+          imgAlt='페이스북으로 공유하기'
+          onClick={shareToFacebook}
+        >
+          페이스북
+        </ShareBox>
+        <ShareBox
+          imgSrc={SHARE_LINK}
+          imgAlt='링크 주소 복사하기'
+          onClick={copyLinkClipBoard}
+        >
+          링크 복사
+        </ShareBox>
       </S.ShareContainer>
     </Layout>
   );
 }
 
 export default Share;
+
+function ShareBox({ children, imgSrc, imgAlt, onClick }) {
+  return (
+    <S.Share>
+      <button onClick={() => onClick()}>
+        <img src={imgSrc} alt={imgAlt} />
+      </button>
+      <S.ShareText>{children}</S.ShareText>
+    </S.Share>
+  );
+}
