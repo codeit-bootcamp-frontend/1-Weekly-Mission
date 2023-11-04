@@ -1,5 +1,18 @@
 import styled from "styled-components";
 
+export const FloatingCta = styled.a`
+  z-index: 100;
+  position: fixed;
+  bottom: 101px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid #fff;
+  background-color: var(--linkbrary-primary);
+  color: var(--linkbrary-gray-10);
+  font-weight: 500;
+  letter-spacing: -0.01875rem;
+`;
+
 export const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;

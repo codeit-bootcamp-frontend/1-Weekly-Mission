@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import FloatingBtn from "./FloatingBtn";
+import AddFolderBtn from "./AddFolderBtn";
 import FunctionBtn from "./FunctionBtn";
 import * as Styled from "../style/FolderList";
 import iconShare from "../assets/img/icon-share.svg";
@@ -47,6 +49,7 @@ function FolderList({ folders, params }) {
 
   return (
     <>
+      <FloatingBtn />
       <Styled.FlexDiv>
         <Styled.FlexUl>
           <li>
@@ -72,7 +75,7 @@ function FolderList({ folders, params }) {
             );
           })}
         </Styled.FlexUl>
-        <Styled.AddBtn>폴더 추가 +</Styled.AddBtn>
+        <AddFolderBtn />
       </Styled.FlexDiv>
 
       <Styled.FlexDiv>
