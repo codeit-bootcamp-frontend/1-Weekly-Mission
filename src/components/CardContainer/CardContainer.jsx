@@ -15,17 +15,12 @@ const DELETE_ICON_TEXT = "삭제";
 
 function CardTitleText({ text }) {
   const [isOpen, setOpen] = useState("");
-  // const [selectedTagData, setSelectedTagData] = useState({});
+
   const handleClick = (selectedIcon) => {
     setOpen(selectedIcon);
   };
   const changeOpenState = (openState) => setOpen(openState);
   const selectedTagData = getFolderTagListData(true);
-  // useEffect(() => {
-  //   const data = getFolderTagListData(true);
-  //   setSelectedTagData(data);
-  // }, []);
-
   return (
     <div className="card-title_text">
       <h2 className="tagName_text">{text}</h2>

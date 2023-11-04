@@ -25,7 +25,6 @@ function Card({ cardData }) {
 
   const timeAgoText = getTimeAgoText(created_at);
   const formulatedCreatedDate = created_at.slice(0, 10).replace(/-/gi, ". ");
-
   const handleAddFolderBtnClick = () => {
     setFloatingBtnActivation((prevStatus) => !prevStatus);
   };

@@ -9,7 +9,7 @@ function FolderHero() {
   const handleClick = () => setOpen(true);
   const changeOpenState = (openState) => setOpen(openState);
   const TagListData = getFolderTagListData();
-
+  
   return (
     <section className="hero--folder">
       <div className="container">

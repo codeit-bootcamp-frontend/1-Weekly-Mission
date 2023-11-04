@@ -12,7 +12,7 @@ function TagBtnContainer({ folderTagBtnList, selectedTag, handleOnClick }) {
   const [isOpen, setOpen] = useState(false);
   const handleClick = () => setOpen(true);
   const changeOpenState = (openState) => setOpen(openState);
-
+  
   return (
     <>
       <div className="tag_div">
@@ -28,7 +28,6 @@ function TagBtnContainer({ folderTagBtnList, selectedTag, handleOnClick }) {
             </button>
           ))}
         </div>
-
         <div className="tag-InnerText" onClick={handleClick}>
           <h4 className="tag-InnerText_text">폴더 추가</h4>
           <img src={AddImg} style={tagBtnStyle} alt="add icon" />

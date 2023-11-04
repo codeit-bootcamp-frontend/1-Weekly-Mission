@@ -6,8 +6,6 @@ import requestData from "../services/api";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import AddLinkToFolder from "../modals/contents/AddLinkToFolder";
-// import useModals from "../../hooks/useModals";
-// import AddFolder from "../../modals/contents/AddFolder";
 
 const NoCardDataText = styled.h5`
   display: flex;
@@ -34,10 +32,6 @@ function MainContent() {
   const [folderTagBtnList, setfolderTagBtnList] = useState([defaultTagButton]); // TagBtnContainer에서 이용
   const [selectedTagId, setSelectedTagId] = useState(defaultTagButton.id);
   const [selectedTagText, setSelectedTagText] = useState(defaultTagButton.name);
-  // const { openModal } = useModals();
-  // const handleModalOpenClick = () => {
-  //   openModal(AddFolder, "sdd");
-  // };
 
   // card content response 처리
   async function getCardListResponse() {
