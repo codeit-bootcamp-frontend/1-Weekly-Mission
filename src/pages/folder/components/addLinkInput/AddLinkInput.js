@@ -35,11 +35,7 @@ export default function addLinkInput({ folders }) {
             </span>
           </Dialog.FolderList>
         ))}
-        <Dialog.Button>
-          <button type="button" className="dialog-add-button">
-            추가하기
-          </button>
-        </Dialog.Button>
+        <Dialog.Button isAddButton>추가하기</Dialog.Button>
       </Dialog>
     </form>
   );

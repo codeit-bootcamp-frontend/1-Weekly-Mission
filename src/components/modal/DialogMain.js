@@ -7,11 +7,13 @@ import DialogFolderList from './components/dialogFolderList/DialogFolderList';
 
 import modalCloseButton from '../../assets/folder/modalCloseBtn.svg';
 import DialogButton from './components/dialogButton/DialogButton';
+import DialogInput from './components/dialogInput/DialogInput';
 
 const DialogTitleType = (<DialogTitle />).type;
 const DialogLinkType = (<DialogLink />).type;
 const DialogFolderListType = (<DialogFolderList />).type;
 const DialogButtonType = (<DialogButton />).type;
+const DialogInputType = (<DialogInput />).type;
 
 function getDialogTitle(children) {
   const childrenArray = Children.toArray(children);
@@ -41,6 +43,13 @@ function getDialogButton(children) {
     .slice(0, 2);
 }
 
+function getDialogInput(children) {
+  const childrenArray = Children.toArray(children);
+  return childrenArray
+    .filter((child) => isValidElement(child) && child.type === DialogInputType)
+    .slice(0, 2);
+}
+
 export function DialogMain({ children, isModalOpen, onClick }) {
   if (!isModalOpen) {
     return null;
@@ -50,6 +59,7 @@ export function DialogMain({ children, isModalOpen, onClick }) {
   const dialogLink = getDialogLink(children);
   const dialogFolderList = getDialogFolderList(children);
   const dialogButton = getDialogButton(children);
+  const dialogInput = getDialogInput(children);
 
   return createPortal(
     <div className="dialog" role="none">
@@ -65,6 +75,9 @@ export function DialogMain({ children, isModalOpen, onClick }) {
           {dialogTitle && <div>{dialogTitle}</div>}
           {dialogLink && <div>{dialogLink}</div>}
         </header>
+        <div className="dialog-Input">
+          {dialogInput && <div>{dialogInput}</div>}
+        </div>
         <div className="dialog-folder-list">
           {dialogFolderList && <div>{dialogFolderList}</div>}
         </div>
@@ -82,4 +95,5 @@ export const Dialog = Object.assign(DialogMain, {
   Link: DialogLink,
   FolderList: DialogFolderList,
   Button: DialogButton,
+  Input: DialogInput,
 });

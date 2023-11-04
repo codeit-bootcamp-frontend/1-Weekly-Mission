@@ -12,11 +12,13 @@ import { ALL_LINK_NAME, OPTION_ICONS } from './constant';
 import addIcon from '../../assets/folder/add.svg';
 import addPrimaryIcon from '../../assets/folder/addPrimaryColor.svg';
 import SortButton from './components/sortButton/SortButton';
+import useModal from '../../hooks/useModal';
 
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
   const [folderId, setFolderId] = useState(ALL_LINK_NAME);
+  const { open, close, isModalOpen, Dialog } = useModal();
 
   const folderName =
     folderId === ALL_LINK_NAME
@@ -70,7 +72,7 @@ export default function FolderPage() {
                   />
                 ))}
             </div>
-            <button type="button" className="folder-add-button">
+            <button type="button" className="folder-add-button" onClick={open}>
               폴더 추가
               <img
                 src={addPrimaryIcon}
@@ -78,6 +80,11 @@ export default function FolderPage() {
                 className="folder-add-icon"
               />
             </button>
+            <Dialog onClick={close} isModalOpen={isModalOpen}>
+              <Dialog.Title>폴더 추가</Dialog.Title>
+              <Dialog.Input />
+              <Dialog.Button isAddButton>변경 하기</Dialog.Button>
+            </Dialog>
           </div>
           <div className="folder-category-container">
             <h1 className="folder-category">{folderName}</h1>
