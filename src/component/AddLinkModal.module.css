@@ -1,0 +1,85 @@
+.modalWrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.4;
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 15px;
+  border: 1px solid var(--stroke-light, #dee2e6);
+  background: var(--gray-white, #fff);
+  padding: 3.2rem 4rem;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 1;
+}
+
+img {
+  float: right;
+  width: 2.4rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.url {
+  color: var(--linkbrary-gray-60, #9fa6b2);
+  text-align: center;
+  font-size: 14px;
+  line-height: 22px; /* 157.143% */
+}
+
+.folders {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: start;
+}
+.folder {
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  width: 25.8rem;
+  cursor: pointer;
+}
+.folder:hover {
+  border-radius: 8px;
+  background: var(--linkbrary-bg, #f0f6ff);
+}
+.checkFolder {
+  border-radius: 8px;
+  background: var(--linkbrary-bg, #f0f6ff);
+}
+.unCheckFolder {
+  background-color: white;
+}
+.checkImg {
+  display: none;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.folderContainer {
+  display: flex;
+  gap: 0.8rem;
+}
+.folderName {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.folderCount {
+  color: var(--linkbrary-gray-60, #9fa6b2);
+  font-size: 1.4rem;
+}
+.showCheck {
+  display: block;
+}

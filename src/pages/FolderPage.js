@@ -39,7 +39,7 @@ function FolderPage() {
   return (
     <>
       <div className={style.addLink}>
-        <AddLink />
+        <AddLink folders={folders} />
       </div>
       <div className={style.root}>
         <div className={style.section}>
