@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 import { shareOnKakao } from "common/libraries/shareKakaoLink";
 import { shareOnFacebook } from "common/libraries/shareFacebookLink";
+import { shareOnClipboard } from "common/libraries/shareClipboardLink";
+
 import ModalTitle from "components/title/ModalTitle";
 
 import kakaoIcon from "assets/sns/kakao.svg";
@@ -62,7 +64,10 @@ const icons = [
 export default function ShareFolder({ currentFolderName }) {
   const { folderNameList } = useContext(FolderContext);
 
-  /* 현재 선택한 폴더와 일치하는 folder의 userId, folderId */
+  /*
+   * 현재 선택한 폴더와 일치하는 folder의 userId, folderId
+   * SNS로 공유하기 또는 클립보드에 복사
+   */
   const handleShareFolder = (e) => {
     const shareOnSns = e.target.id;
     const folderInfo = folderNameList.filter((folder) => folder.name === currentFolderName);
@@ -72,7 +77,7 @@ export default function ShareFolder({ currentFolderName }) {
       shareOnKakao(user_id, id);
     } else if (shareOnSns === "facebook") {
       shareOnFacebook(user_id, id);
-    }
+    } else shareOnClipboard(user_id, id);
   };
 
   return (
