@@ -3,10 +3,11 @@ import { LinkButton } from "./LinkButton";
 import style from "./NavProfile.module.css";
 import useAsync from "../hooks/useAsync";
 import { getUser } from "../api/getUser";
+import ErrorPage from "../pages/ErrorPage";
 
 function NavProfile() {
   const [userInfo, setUserInfo] = useState(null);
-  const [isLoading, , getUserAsync] = useAsync(getUser);
+  const [isLoading, error, getUserAsync] = useAsync(getUser);
 
   useEffect(() => {
     const loadUser = async () => {
@@ -17,6 +18,7 @@ function NavProfile() {
   }, []);
 
   if (isLoading) return <span>loading</span>;
+  if (error) return <ErrorPage error={error} />;
   if (userInfo)
     return (
       <div className={style.profile}>
