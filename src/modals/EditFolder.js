@@ -3,10 +3,10 @@ import ModalHeader from '../components/ModalHeader/ModalHeader';
 import InputBox from '../components/InputBox/InputBox';
 import Button from '../components/Button/Button';
 
-function AddFolder({ onChange }) {
+function EditFolder({ onChange, folderName }) {
   return (
     <>
-      <ModalHeader title="폴더 추가"></ModalHeader>
+      <ModalHeader title="폴더 이름 변경"></ModalHeader>
       <div className={styles.body}>
         <form className={styles.form} onSubmit="" noValidate>
           <InputBox>
@@ -16,11 +16,11 @@ function AddFolder({ onChange }) {
               onChange={onChange}
             />
           </InputBox>
-          <Button>추가하기</Button>
+          <Button>변경하기</Button>
         </form>
       </div>
     </>
   );
 }
 
-export default AddFolder;
+export default EditFolder;

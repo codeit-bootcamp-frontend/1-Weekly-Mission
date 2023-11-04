@@ -19,7 +19,9 @@ import Modal from '../modals/Modal';
 import getFolderName from '../utils/getFolderName';
 import useModalColtroller from '../hooks/useModalController';
 import DeleteFolder from '../modals/DeleteFolder';
-import DeleteLink from '../modals/DeleteLink';
+import AddFolder from '../modals/AddFolder';
+import useInputController from '../hooks/useInputController';
+import EditFolder from '../modals/EditFolder';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,8 +36,13 @@ function Folder() {
 
   // 모달 컨트롤라
   const shareModal = useModalColtroller();
+  const editFolderModal = useModalColtroller();
+  const addFolderModal = useModalColtroller();
   const deleteFolderModal = useModalColtroller();
-  const deleteLinkModal = useModalColtroller();
+
+  // 모달 내 인풋 컨트롤라
+  const addFolder = useInputController();
+  const editFolder = useInputController();
 
   const folderID = searchParams.get('folderId');
 
@@ -86,7 +93,7 @@ function Folder() {
             folderID={folderID}
             folderLists={folderLists}
           />
-          <FolderAddMenu />
+          <FolderAddMenu onClick={addFolderModal.handleClick} />
         </div>
         <div className={styles.flex}>
           <FolderName>{folderName}</FolderName>
@@ -94,6 +101,7 @@ function Folder() {
             <FolderEdit
               shareModal={shareModal.handleClick}
               deleteModal={deleteFolderModal.handleClick}
+              editModal={editFolderModal.handleClick}
             />
           )}
         </div>
@@ -108,14 +116,21 @@ function Folder() {
           <Share>{folderName}</Share>
         </Modal>
       )}
+      {editFolderModal.state && (
+        <Modal onClick={editFolderModal.handleClick}>
+          <EditFolder onChange={editFolder.handleChange}>
+            {folderName}
+          </EditFolder>
+        </Modal>
+      )}
       {deleteFolderModal.state && (
         <Modal onClick={deleteFolderModal.handleClick}>
           <DeleteFolder>{folderName}</DeleteFolder>
         </Modal>
       )}
-      {deleteLinkModal.state && (
-        <Modal onClick={deleteLinkModal.handleClick}>
-          <DeleteLink>{folderName}</DeleteLink>
+      {addFolderModal.state && (
+        <Modal onClick={addFolderModal.handleClick}>
+          <AddFolder onChange={addFolder.handleChange}>{folderName}</AddFolder>
         </Modal>
       )}
     </>

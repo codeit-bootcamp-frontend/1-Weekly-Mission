@@ -6,9 +6,11 @@ function InputBox({ children, label, idfor, onBlur, onFocus, errorText }) {
 
   return (
     <div className={styles.root}>
-      <label className={styles.label} htmlFor={idfor}>
-        {label}
-      </label>
+      {label && (
+        <label className={styles.label} htmlFor={idfor}>
+          {label}
+        </label>
+      )}
       <div className={borderControl} onBlur={onBlur} onFocus={onFocus}>
         {children}
       </div>
