@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
-import { createPortal } from "react-dom";
 
 import * as S from "./FolderContainerStyle";
 import { getAllFolders, getAllLinks } from "api/api";
@@ -14,6 +13,7 @@ import Categories from "components/Categories";
 import Options from "components/Options";
 import ModalContainer from "components/modal/ModalContainer";
 import AddFolder from "components/modal/AddFolder";
+import ModalPortal from "components/ModalPortal";
 
 const DEFAULT = "전체";
 const USER_ID = 1;
@@ -69,13 +69,14 @@ export default function Folder() {
 
   return (
     <>
-      {isOpenModal &&
-        createPortal(
+      {isOpenModal && (
+        <ModalPortal>
           <ModalContainer onClose={() => setIsOpenModal(false)}>
             <AddFolder />
-          </ModalContainer>,
-          document.getElementById("portal"),
-        )}
+          </ModalContainer>
+        </ModalPortal>
+      )}
+
       <main>
         <S.HeroContainer>
           <FolderHero onChangeAddLink={handleAddLink} addLinkValue={addLinkValue} />

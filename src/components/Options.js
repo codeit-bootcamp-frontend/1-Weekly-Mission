@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { createPortal } from "react-dom";
 import styled from "styled-components";
 
 import shareIcon from "assets/share.svg";
@@ -10,6 +9,7 @@ import ModalContainer from "./modal/ModalContainer";
 import EditFolder from "./modal/EditFolder";
 import DeleteFolder from "./modal/DeleteFolder";
 import ShareFolder from "./modal/ShareFolder";
+import ModalPortal from "./ModalPortal";
 
 const Container = styled.ul`
   display: flex;
@@ -48,17 +48,17 @@ export default function Options({ selected }) {
 
   return (
     <>
-      {isModalOpen &&
-        createPortal(
+      {isModalOpen && (
+        <ModalPortal>
           <ModalContainer onClose={() => setIsModalOpen(false)}>
             {selectedOption === "공유" && <ShareFolder currentFolderName={selected} />}
             {selectedOption === "이름 변경" && <EditFolder currentFolderName={selected} />}
             {selectedOption === "삭제" && (
               <DeleteFolder currentFolderName={selected} label="폴더" />
             )}
-          </ModalContainer>,
-          document.getElementById("portal"),
-        )}
+          </ModalContainer>
+        </ModalPortal>
+      )}
 
       <Container>
         {actions.map((action, index) => (

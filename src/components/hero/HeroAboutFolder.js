@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { createPortal } from "react-dom";
 
 import styled from "styled-components";
 
@@ -7,6 +6,7 @@ import Button from "components/button/Button";
 import AddLinkFolderInput from "components/inputs/addLinkFolder";
 import AddLink from "components/modal/AddLink";
 import ModalContainer from "components/modal/ModalContainer";
+import ModalPortal from "components/ModalPortal";
 
 import LinkIcon from "assets/link.svg";
 
@@ -45,13 +45,13 @@ export default function FolderHero({ onChangeAddLink, addLinkValue }) {
 
   return (
     <>
-      {isOpenModal &&
-        createPortal(
+      {isOpenModal && (
+        <ModalPortal>
           <ModalContainer onClose={() => setIsOpenModal(false)}>
             <AddLink link={addLinkValue} />
-          </ModalContainer>,
-          document.getElementById("portal"),
-        )}
+          </ModalContainer>
+        </ModalPortal>
+      )}
 
       <Wrapper>
         <Icon src={LinkIcon} alt="link" />
