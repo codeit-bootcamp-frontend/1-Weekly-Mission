@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { FolderContext } from "context/FolderContext";
 
 import styled from "styled-components";
 
 import { shareKakao } from "common/libraries/shareKakaoLink";
+import { shareOnFacebook } from "common/libraries/shareFacebookLink";
 import ModalTitle from "components/title/ModalTitle";
 
 import kakaoIcon from "assets/sns/kakao.svg";
@@ -53,19 +54,25 @@ const Name = styled.span`
 `;
 
 const icons = [
-  { name: "카카오톡", icon: kakaoIcon },
-  { name: "페이스북", icon: facebookIcon },
-  { name: "링크 복사", icon: linkIcon },
+  { name: "카카오톡", icon: kakaoIcon, action: "kakao" },
+  { name: "페이스북", icon: facebookIcon, action: "facebook" },
+  { name: "링크 복사", icon: linkIcon, action: "clipboard" },
 ];
 
 export default function ShareFolder({ currentFolderName }) {
   const { folderNameList } = useContext(FolderContext);
 
   /* 현재 선택한 폴더와 일치하는 folder의 userId, folderId */
-  const handleShareFolder = () => {
+  const handleShareFolder = (e) => {
+    const shareOnSns = e.target.id;
     const folderInfo = folderNameList.filter((folder) => folder.name === currentFolderName);
     const { user_id, id } = folderInfo[0];
-    shareKakao(user_id, id);
+
+    if (shareOnSns === "kakao") {
+      shareKakao(user_id, id);
+    } else if (shareOnSns === "facebook") {
+      shareOnFacebook(user_id, id);
+    }
   };
 
   /* 카카오 스크립트 추가 및 제거 */
@@ -83,10 +90,10 @@ export default function ShareFolder({ currentFolderName }) {
         <ModalTitle label="폴더 공유" />
         <Info>{currentFolderName}</Info>
       </Description>
-      <IconsContainer>
+      <IconsContainer onClick={handleShareFolder}>
         {icons.map((icon, index) => (
           <Icons key={index}>
-            <Image src={icon.icon} alt="sns" onClick={handleShareFolder} />
+            <Image src={icon.icon} alt="sns" id={icon.action} />
             <Name>{icon.name}</Name>
           </Icons>
         ))}
