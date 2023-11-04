@@ -5,7 +5,9 @@ import InputModal from './type/InputModal';
 import ShareModal from './type/ShareModal';
 import DeleteModal from './type/DeleteModal';
 
-function ModalBox({ modal, closeModal, folderTitle, link }) {
+function ModalBox({ modal, closeModal, folderTitle, link, folderId, userID }) {
+  const currentPath = `/shared?user=${userID}&folder=${folderId}`;
+
   const handleClick = () => {
     closeModal();
   };
@@ -25,7 +27,7 @@ function ModalBox({ modal, closeModal, folderTitle, link }) {
           <Icon src={closeButton} alt="창닫기 아이콘" />
         </Button>
         <P>{modal}</P>
-        {modal === '폴더 공유' && <ShareModal subTitle={folderTitle} />}
+        {modal === '폴더 공유' && <ShareModal subTitle={folderTitle} currentPath={currentPath} />}
         {modal === '폴더 이름 변경' && <InputModal title="변경하기" />}
         {modal === '폴더 삭제' && <DeleteModal subTitle={folderTitle} modal={modal} />}
         {/* {modal === '폴더 추가' && <AddModal />} */}

@@ -33,7 +33,7 @@ const FolderMain = ({ selectedFolder, userID }) => {
         <h1>{title}</h1>
         {folderId > 0 && checkEmptyFolder > 0 && (
           <Options>
-            <Option icon={shareIcon} modal={'폴더 공유'} title={title}>
+            <Option icon={shareIcon} modal={'폴더 공유'} title={title} folderId={folderId} userID={userID}>
               공유
             </Option>
             <Option icon={penIcon} modal={'폴더 이름 변경'}>

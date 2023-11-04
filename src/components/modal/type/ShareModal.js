@@ -4,23 +4,41 @@ import kakaoIcon from '../../../assets/Modal_kakaoTalk_icon.svg';
 import facebookIcon from '../../../assets/Modal_facebook_icon.svg';
 import linkCopyIcon from '../../../assets/Modal_linkCopy_icon.svg';
 
-function ShareModal({ subTitle }) {
+function ShareModal({ subTitle, currentPath }) {
+  const host = 'http://localhost:3000';
+  const facebookShareUrl = 'http://www.facebook.com/sharer.php?u=';
+
+  const copyClipboard = () => {
+    navigator.clipboard
+      .writeText(host + currentPath)
+      .then(() => {
+        alert('클립보드에 복사되었습니다.');
+      })
+      .catch((err) => {
+        console.error('URL 복사 실패:', err);
+      });
+  };
+
+  const shareFacebook = () => {
+    window.open(facebookShareUrl + host + currentPath); // localhost라서 오류 발생..
+  };
+
   return (
     <>
       <P>{subTitle}</P>
       <Container>
-        <Div>
+        <Button>
           <img src={kakaoIcon} alt="카카오톡으로 폴더 공유" />
           <p>카카오톡</p>
-        </Div>
-        <Div>
+        </Button>
+        <Button onClick={shareFacebook}>
           <img src={facebookIcon} alt="페이스북으로 폴더 공유" />
           <p>페이스북</p>
-        </Div>
-        <Div>
+        </Button>
+        <Button onClick={copyClipboard}>
           <img src={linkCopyIcon} alt="폴더 링크 복사" />
           <p>링크 복사</p>
-        </Div>
+        </Button>
       </Container>
     </>
   );
@@ -42,12 +60,13 @@ const Container = styled.div`
 `;
 
 // 링크? 공유 가능한 태그로 바꿔야 함. 마지막에...
-const Div = styled.div`
+const Button = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+  padding: 0;
 
   p {
     color: var(--black);
