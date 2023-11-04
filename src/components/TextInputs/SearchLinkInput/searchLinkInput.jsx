@@ -1,5 +1,5 @@
 import "./searchLinkInput.css";
-import searchImg from "../../assets/image/Search.svg";
+import searchImg from "../../../assets/image/Search.svg";
 
 export function SearchLinkInput() {
   return (

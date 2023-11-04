@@ -1,32 +1,10 @@
 import styled from "styled-components";
-import AddFolderIcon from "../../../assets/image/addFolderIcon.svg";
+import AddFolderIcon from "../../assets/image/addFolderIcon.svg";
 import { useState } from "react";
+import AddFolderOptionBtn from "./AddFolderOptionBtn";
 
-function FloatingOptionBtn() {
+function FloatingAddFolderBtn() {
   const [isFloatingBtnActive, setFloatingBtnActivation] = useState(false);
-
-  const OptionBtnContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    position: absolute;
-    bottom: 6px;
-    left: 108px;
-    visibility: ${isFloatingBtnActive ? "visible" : "hidden"};
-  `;
-
-  const OptionBtn = styled.button`
-    width: 100px;
-    padding: 7px 12px;
-    color: #333236;
-    border: none;
-    background: #fff;
-    box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
-    &:active {
-      background: #e7effb;
-      color: #6d6afe;
-    }
-  `;
 
   const AddFolderBtn = styled.button`
     border-radius: 20px;
@@ -68,13 +46,12 @@ function FloatingOptionBtn() {
           <img src={AddFolderIcon} alt="folder add icon" />
         </AddFolderBtn>
 
-        <OptionBtnContainer>
-          <OptionBtn>삭제하기</OptionBtn>
-          <OptionBtn>폴더에 추가</OptionBtn>
-        </OptionBtnContainer>
+        <AddFolderOptionBtn isFloatingBtnActive={isFloatingBtnActive}>
+          {["삭제하기", "폴더에 추가"]}
+        </AddFolderOptionBtn>
       </div>
     </Container>
   );
 }
 
-export default FloatingOptionBtn;
+export default FloatingAddFolderBtn;

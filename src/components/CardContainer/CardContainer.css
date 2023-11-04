@@ -57,6 +57,7 @@
 
 .div-text {
   display: flex;
+  position: relative;
   width: 340px;
   padding: 15px 20px;
   flex-direction: column;

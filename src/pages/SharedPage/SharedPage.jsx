@@ -15,8 +15,8 @@ function SharedPage() {
     <>
       <Header />
       <MainContainer>
-        <HeroContent pageType="shared" />
-        <MainContent pageType="shared" />
+        <HeroContent />
+        <MainContent />
         <Footer />
       </MainContainer>
     </>

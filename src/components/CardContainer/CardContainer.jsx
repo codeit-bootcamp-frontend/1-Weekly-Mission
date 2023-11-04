@@ -3,25 +3,71 @@ import Card from "./Card";
 import ShareImg from "../../assets/image/share.svg";
 import PenImg from "../../assets/image/pen.svg";
 import TrashcanImg from "../../assets/image/Group 36.svg";
+import ShareFolder from "../../modals/contents/ShareFolder";
+import EditFolderName from "../../modals/contents/EditFolderName";
+import DeleteFolder from "../../modals/contents/DeleteFolder";
+import getFolderTagListData from "../../utils/getFolderTagListData";
+import { useEffect, useState } from "react";
+
+const SHARE_ICON_TEXT = "공유";
+const EDIT_NAME_ICON_TEXT = "이름 변경";
+const DELETE_ICON_TEXT = "삭제";
 
 function CardTitleText({ text }) {
+  const [isOpen, setOpen] = useState("");
+  // const [selectedTagData, setSelectedTagData] = useState({});
+  const handleClick = (selectedIcon) => {
+    setOpen(selectedIcon);
+  };
+  const changeOpenState = (openState) => setOpen(openState);
+  const selectedTagData = getFolderTagListData(true);
+  // useEffect(() => {
+  //   const data = getFolderTagListData(true);
+  //   setSelectedTagData(data);
+  // }, []);
+
   return (
     <div className="card-title_text">
       <h2 className="tagName_text">{text}</h2>
       {text !== "전체" && (
         <div className="card-title_icon_container">
-          <div className="card-title_icon">
+          <div
+            className="card-title_icon"
+            onClick={() => handleClick(SHARE_ICON_TEXT)}
+          >
             <h5 className="card-title_icon_text">공유</h5>
             <img src={ShareImg} alt="share icon" />
           </div>
-          <div className="card-title_icon">
+          <div
+            className="card-title_icon"
+            onClick={() => handleClick(EDIT_NAME_ICON_TEXT)}
+          >
             <h5 className="card-title_icon_text">이름 변경</h5>
             <img src={PenImg} alt="pen icon" />
           </div>
-          <div className="card-title_icon">
+          <div
+            className="card-title_icon"
+            onClick={() => handleClick(DELETE_ICON_TEXT)}
+          >
             <h5 className="card-title_icon_text">삭제</h5>
             <img src={TrashcanImg} alt="trash can icon" />
           </div>
+
+          <ShareFolder
+            isOpen={isOpen === SHARE_ICON_TEXT}
+            changeOpenState={changeOpenState}
+            folderTagName={selectedTagData[0]?.name}
+          />
+          <EditFolderName
+            isOpen={isOpen === EDIT_NAME_ICON_TEXT}
+            changeOpenState={changeOpenState}
+            folderTagName={selectedTagData[0]?.name}
+          />
+          <DeleteFolder
+            isOpen={isOpen === DELETE_ICON_TEXT}
+            changeOpenState={changeOpenState}
+            folderTagName={selectedTagData[0]?.name}
+          />
         </div>
       )}
     </div>
