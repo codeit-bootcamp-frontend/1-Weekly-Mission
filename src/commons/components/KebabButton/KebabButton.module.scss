@@ -9,12 +9,24 @@
   z-index: 10;
 }
 
+.parent-kebab {
+  display: relative;
+}
+
 .kebab-menu {
+  position: absolute;
+  right: -7rem;
+  bottom: 4rem;
+  background-color: white;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 10rem;
+  overflow: hidden;
+
+  box-shadow: 3px 3px 3px 3px var(--color-gray4);
   & .button {
     padding: 1rem;
     width: 100%;

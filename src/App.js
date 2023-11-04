@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "commons/components/Layout/Layout";
-
 import { FolderPage, SharedPage, HomePage } from "./pages/index";
 
 function App() {

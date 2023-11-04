@@ -14,7 +14,7 @@ function Card(card) {
   return (
     <div className={styles["card-container"]}>
       <StarButton />
-      <KebabButton />
+      <KebabButton card={card} />
 
       <a
         href={url}

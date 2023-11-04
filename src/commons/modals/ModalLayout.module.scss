@@ -1,0 +1,30 @@
+.modal-container {
+  z-index: 999;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.modal-background {
+  z-index: 50; //위치지정 요소
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.container {
+  z-index: 999;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
