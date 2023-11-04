@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import search from './img/search.svg';
 import { getData } from '../api';
 import styled from 'styled-components';
+
 import './css/FolderMain.css';
 import './css/Card.css';
 import plusImg from './img/plus.svg';
@@ -114,6 +115,7 @@ export default function FolderMain() {
           links.map((link) => <FolderCard key={link.id} item={link} />)}
       </div>
       {!links[0] && <div className="no-link">저장된 링크가 없습니다.</div>}
+      {/* <FolderNamingModal /> */}
     </div>
   );
 }

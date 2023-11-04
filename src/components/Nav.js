@@ -13,7 +13,7 @@ export default function Nav() {
       const data = await getData('sample/user');
       setLogin(data);
     } else if (url === '/folder') {
-      const data = await getData('users/1');
+      const { data } = await getData('users/1');
       setLogin(data);
     }
   };
