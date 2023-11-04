@@ -18,8 +18,11 @@ export default function FolderList({
   userFolder,
   onCurrentFolder,
   onModalOpen,
+  searchParams,
 }) {
-  const [currentButton, setCurrentButton] = useState('');
+  const [currentButton, setCurrentButton] = useState(
+    searchParams.get('folderId')
+  );
 
   const handleFolder = (e) => {
     const id = e.target.id;

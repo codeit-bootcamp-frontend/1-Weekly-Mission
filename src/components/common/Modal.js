@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 import closeImg from '../../assets/images/_close.svg';
-import Rename from '../modal/Rename';
+import RenameModal from '../modal/RenameModal';
 import AddFolderModal from '../modal/AddFolderModal';
 import DeleteModal from '../modal/DeleteModal';
-import ShareFolder from '../modal/ShareFolder';
+import ShareFolderModal from '../modal/ShareFolderModal';
 import DeleteLinkModal from '../modal/DeleteLinkModal';
 import AddLinkModal from '../modal/AddLinkModal';
 
 const Modals = {
-  '폴더 이름 변경': Rename,
+  '폴더 이름 변경': RenameModal,
   '폴더 추가': AddFolderModal,
   '폴더 삭제': DeleteModal,
-  '폴더 공유': ShareFolder,
+  '폴더 공유': ShareFolderModal,
   '링크 삭제': DeleteLinkModal,
   '폴더에 추가': AddLinkModal,
 };
@@ -22,6 +22,7 @@ export default function Modal({
   currentModal,
   currentFolder,
   userFolder,
+  path,
 }) {
   if (!isOpen) {
     return <></>;
@@ -36,6 +37,7 @@ export default function Modal({
             currentFolder={currentFolder}
             link={currentModal.link}
             userFolder={userFolder}
+            path={path}
           />
         </Container>
       </ModalBackground>

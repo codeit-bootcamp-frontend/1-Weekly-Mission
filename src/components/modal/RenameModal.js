@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ModalButton, Input } from './ModalStyle';
 
-export default function Rename({ currentFolder }) {
+export default function RenameModal({ currentFolder }) {
   const [name, setName] = useState(currentFolder.name);
 
   const handleChange = (e) => {

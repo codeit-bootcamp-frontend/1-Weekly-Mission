@@ -3,21 +3,48 @@ import linkImg from '../../assets/images/link.svg';
 import facebookImg from '../../assets/images/facebook.png';
 import kakaoImg from '../../assets/images/kakao.png';
 import { SubTitle } from './ModalStyle';
+import { useEffect } from 'react';
+import shareKakao from '../../services/shareKakao';
 
-export default function ShareFolder({ currentFolder }) {
+const { Kakao } = window;
+
+export default function ShareFolderModal({ currentFolder, path }) {
+  const url = `folder?folderId=${path}`;
+
+  useEffect(() => {
+    Kakao.cleanup();
+    Kakao.init('7146b34d11ae8e8fdf3e71a8c95ecb59');
+    console.log(Kakao.isInitialized());
+  }, []);
+
   return (
     <>
       <SubTitle>{currentFolder.name}</SubTitle>
       <Container>
-        <Box>
+        <Box
+          onClick={() => {
+            shareKakao(Kakao, url, currentFolder);
+          }}
+        >
           <Img src={kakaoImg} alt='아이콘' />
           <P>카카오톡</P>
         </Box>
-        <Box>
+        <Box
+          onClick={() => {
+            const sharedFacebook = encodeURIComponent(window.location.href);
+            window.open(
+              `http://www.facebook.com/sharer/sharer.php?u=${sharedFacebook}`
+            );
+          }}
+        >
           <Img src={facebookImg} alt='아이콘' />
           <P>페이스북</P>
         </Box>
-        <Box>
+        <Box
+          onClick={() => {
+            window.navigator.clipboard.writeText(window.location.href);
+          }}
+        >
           <Circle>
             <img src={linkImg} alt='아이콘' />
           </Circle>

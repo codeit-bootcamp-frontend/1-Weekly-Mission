@@ -1,6 +1,6 @@
 import { ModalButton, SubTitle } from './ModalStyle';
 
-export default function DeleteLinkModal({ currentFolder, link }) {
+export default function DeleteLinkModal({ link }) {
   return (
     <>
       <SubTitle>{link}</SubTitle>
