@@ -1,20 +1,20 @@
-import Header from '../Header/Header'
-import getSample from '../../api'
-import useAsync from '../../Hooks/useAsync'
+import Header from "../Header/Header";
+import getSample from "../../api";
+import useAsync from "../../Hooks/useAsync";
 
-import SearchBar from '../SearchBar/SearchBar'
-import CardList from '../CardList/CardList'
-import Main from '../Main/Main'
+import SearchBar from "../SearchBar/SearchBar";
+import CardList from "../CardList/CardList";
+import Main from "../Main/Main";
 
 function Folder() {
   const [data, isLoading, LoadingError, getSampleAsync] = useAsync(() =>
-    getSample('folder')
-  )
+    getSample("folder")
+  );
 
-  const folder = data?.folder
-  const name = folder?.name
-  const owner = folder?.owner
-  const links = folder?.links
+  const folder = data?.folder;
+  const name = folder?.name;
+  const owner = folder?.owner;
+  const links = folder?.links;
 
   return (
     <>
@@ -25,7 +25,7 @@ function Folder() {
         {data && <CardList links={links} />}
       </Main>
     </>
-  )
+  );
 }
 
-export default Folder
+export default Folder;

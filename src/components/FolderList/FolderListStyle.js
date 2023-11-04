@@ -19,6 +19,7 @@ export const S = {
     line-height: normal;
     background-color: #fff;
     white-space: nowrap;
+    text-align: center;
 
     ${({ 'data-onselect': isSelected }) =>
       isSelected &&

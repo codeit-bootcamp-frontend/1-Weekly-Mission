@@ -3,7 +3,7 @@ import * as S from './NavStyle'
 import Profile from './Profile'
 
 import logoImg from '../../assets/logo.png'
-import { Button } from '../Button/Button'
+import { Button } from '../Button/ButtonStyle'
 
 function Nav({ path, email, profileImageSource }) {
   return (
