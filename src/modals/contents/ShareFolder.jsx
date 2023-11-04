@@ -5,6 +5,9 @@ import kakao from "../../assets/image/kakao.svg";
 import facebook from "../../assets/image/facebook.svg";
 import link from "../../assets/image/link.svg";
 import ModalContainer from "../ModalContainer";
+import getFolderTagListData from "../../utils/getFolderTagListData";
+
+const USER_ID = 1;
 
 const SnsButton = styled.button`
   display: flex;
@@ -39,16 +42,23 @@ const ShareSnsContainer = styled.div`
   gap: 32px;
 `;
 
+// 추가 구현 필요
+function getFolderName() {
+  return getFolderTagListData(true);
+}
+
 const SnsItem = {
   kakao: {
     ImgUrl: kakao,
     backgroundColor: "#FEE500",
     name: "카카오톡",
+    url: `/shared?user=${USER_ID}&folder=${getFolderName()}`,
   },
   facebook: {
     ImgUrl: facebook,
     backgroundColor: "#1877F2",
     name: "페이스북",
+    url: `/shared?user=${USER_ID}&folder=${getFolderName()}`,
   },
   link: {
     ImgUrl: link,
@@ -58,9 +68,16 @@ const SnsItem = {
 };
 
 function ShareSns({ children }) {
+  const handleClick = (snsUrl) => {
+    window.open(snsUrl);
+  };
+
   return (
     <Container>
-      <SnsButton backgroundColor={children.backgroundColor}>
+      <SnsButton
+        backgroundColor={children.backgroundColor}
+        onClick={() => handleClick(children.url)}
+      >
         <img src={children.ImgUrl} alt="sns icon"></img>
       </SnsButton>
       <TextStyle>{children.name}</TextStyle>
