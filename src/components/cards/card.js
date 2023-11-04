@@ -2,6 +2,7 @@ import styled from "styled-components";
 import noImage from "../../assets/images/card/no-image.svg";
 import star from "../../assets/images/card/star.png";
 import kebab from "../../assets/images/card/kebab.svg";
+import { useState } from "react";
 
 const StyledHoverImg = styled.img`
     position: absolute;
@@ -80,6 +81,8 @@ const StyledPopOverBox = styled.div`
     top: 30px;
     right: -60px;
     z-index: 1;
+    text-align: center;
+    display: ${({ $status }) => ($status ? "none" : "")};
 `;
 
 const StyledPopOver = styled.div`
@@ -89,9 +92,10 @@ const StyledPopOver = styled.div`
         background-color: #e7effb;
         color: #6d6afe;
     }
+    cursor: pointer;
 `;
 
-function Cards({ items }) {
+function Cards({ items, setClose, setTag, close }) {
     const camelItems = items.map((item) => {
         const newItem = { ...item };
         if ("created_at" in newItem) {
@@ -107,19 +111,37 @@ function Cards({ items }) {
     return (
         <StyledCardGrid>
             {camelItems.map((item) => (
-                <Card key={item.id} items={item} />
+                <Card
+                    key={item.id}
+                    items={item}
+                    m
+                    setClose={setClose}
+                    setTag={setTag}
+                    close={close}
+                />
             ))}
         </StyledCardGrid>
     );
 }
 
-function Card({ items }) {
+function Card({ items, setClose, setTag, close }) {
+    const [status, setStatus] = useState(true);
     const image = {
         backgroundImage: `url(${items.imageSource ?? noImage})`,
     };
 
-    const apiDate = new Date(items.createdAt);
+    function handlePopOver(e) {
+        setStatus(!status);
+        setClose(!close);
+        const tag = e.target.textContent;
+        if (tag === "삭제하기") {
+            setTag("deleteFolder");
+        } else if (tag === "폴더에 추가") {
+            setTag("add");
+        }
+    }
 
+    const apiDate = new Date(items.createdAt);
     function dateCalculator(apiDate) {
         const myDate = new Date();
         const elapsedMinute = Math.floor((myDate - apiDate) / 1000 / 60);
@@ -164,10 +186,18 @@ function Card({ items }) {
                 <StyledCardImg style={image} />
             </a>
             <StyledTextBox>
-                <StyledHoverImg src={kebab} alt="kebab" />
-                <StyledPopOverBox>
-                    <StyledPopOver>삭제하기</StyledPopOver>
-                    <StyledPopOver>폴더에 추가</StyledPopOver>
+                <StyledHoverImg
+                    src={kebab}
+                    alt="kebab"
+                    onClick={() => setStatus(!status)}
+                />
+                <StyledPopOverBox $status={status}>
+                    <StyledPopOver onClick={handlePopOver}>
+                        삭제하기
+                    </StyledPopOver>
+                    <StyledPopOver onClick={handlePopOver}>
+                        폴더에 추가
+                    </StyledPopOver>
                 </StyledPopOverBox>
                 <div>{elapsedTime}</div>
                 <StyledDescription>{items.description}</StyledDescription>

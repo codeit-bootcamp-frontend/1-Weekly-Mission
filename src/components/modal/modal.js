@@ -3,8 +3,10 @@ import closeIcon from "../../assets/images/modal/modal-close.png";
 import kakaoIcon from "../../assets/images/modal/modal-icon-kakao.svg";
 import facebookIcon from "../../assets/images/modal/modal-icon-facebook.svg";
 import linkIcon from "../../assets/images/modal/modal-link.svg";
-import cheakIcon from "../../assets/images/modal/modal-footer-icon-check.svg";
-import { useState } from "react";
+import checkIcon from "../../assets/images/modal/modal-footer-icon-check.svg";
+import { useEffect, useState } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { FacebookMessengerShareButton } from "react-share";
 
 const StyledModal = styled.div`
     width: 100vw;
@@ -15,6 +17,7 @@ const StyledModal = styled.div`
     background-color: #000;
     opacity: 0.4;
     z-index: 1;
+    display: ${({ $close }) => ($close ? "none" : "")};
 `;
 
 const StyledModalBox = styled.div`
@@ -31,7 +34,9 @@ const StyledModalBox = styled.div`
     border-radius: 15px;
     border: 1px solid #ccd5e3;
     top: 20vw;
+    left: 40vw;
     z-index: 2;
+    display: ${({ $close }) => ($close ? "none" : "")};
 `;
 
 const StyledModalTitle = styled.div`
@@ -112,6 +117,7 @@ const StyledModalShareIcon = styled.div`
     border-radius: 37.333px;
     background: ${({ $name }) => ($name === "kakao" ? "#fee500" : "")};
     background: ${({ $name }) => ($name === "facebook" ? "#1877F2" : "")};
+    cursor: pointer;
 `;
 
 const StyledModalAddBox = styled.div`
@@ -127,10 +133,10 @@ const StyledModalAddTitleBox = styled.div`
     padding: 8px;
     width: 264px;
     color: ${({ $select, $number }) =>
-        $select == $number ? "#6d6afe" : "#000"};
+        $select === $number ? "#6d6afe" : "#000"};
     cursor: pointer;
     background-color: ${({ $select, $number }) =>
-        $select == $number ? "#f0f6ff" : "#fff"};
+        $select === $number ? "#f0f6ff" : "#fff"};
     p {
         font-size: 14px;
         color: #9fa6b2;
@@ -141,7 +147,7 @@ const StyledModalAddTitleBox = styled.div`
     }
     img {
         display: ${({ $select, $number }) =>
-            $select == $number ? "" : "none"};
+            $select === $number ? "" : "none"};
     }
     &:hover {
         background-color: #f0f6ff;
@@ -160,44 +166,44 @@ function Add() {
             <StyledModalContent>
                 <StyledModalAddBox>
                     <StyledModalAddTitleBox
-                        onClick={() => setSelect(1)}
+                        onClick={() => setSelect("1")}
                         $select={select}
                         $number="1"
                     >
                         <div>
                             코딩 팁 <p>7개 링크</p>
                         </div>
-                        <img src={cheakIcon} alt="cheakIcon" />
+                        <img src={checkIcon} alt="cheakIcon" />
                     </StyledModalAddTitleBox>
                     <StyledModalAddTitleBox
-                        onClick={() => setSelect(2)}
+                        onClick={() => setSelect("2")}
                         $select={select}
                         $number="2"
                     >
                         <div>
                             채용 사이트 <p>12개 링크</p>
                         </div>
-                        <img src={cheakIcon} alt="cheakIcon" />
+                        <img src={checkIcon} alt="cheakIcon" />
                     </StyledModalAddTitleBox>
                     <StyledModalAddTitleBox
-                        onClick={() => setSelect(3)}
+                        onClick={() => setSelect("3")}
                         $select={select}
                         $number="3"
                     >
                         <div>
                             유용한 글 <p>30개 링크</p>
                         </div>
-                        <img src={cheakIcon} alt="cheakIcon" />
+                        <img src={checkIcon} alt="cheakIcon" />
                     </StyledModalAddTitleBox>
                     <StyledModalAddTitleBox
-                        onClick={() => setSelect(4)}
+                        onClick={() => setSelect("4")}
                         $select={select}
                         $number="4"
                     >
                         <div>
                             나만의 장소 <p>3개 링크</p>
                         </div>
-                        <img src={cheakIcon} alt="cheakIcon" />
+                        <img src={checkIcon} alt="cheakIcon" />
                     </StyledModalAddTitleBox>
                 </StyledModalAddBox>
                 <StyledModalButton>추가하기</StyledModalButton>
@@ -235,6 +241,38 @@ function DeleteFolder() {
 }
 
 function Share() {
+    const currentUrl = window.location.href;
+    const { Kakao } = window;
+    useEffect(() => {
+        // init 해주기 전에 clean up 을 해준다.
+        Kakao.cleanup();
+        // 자신의 js 키를 넣어준다.
+        Kakao.init("fe4ed8101e22446bd855dd50f37510b6");
+        // 잘 적용되면 true 를 뱉는다.
+        console.log(Kakao.isInitialized());
+    }, []);
+
+    const shareKakao = () => {
+        Kakao.Share.sendDefault({
+            objectType: "feed",
+            content: {
+                title: "Linkbrary",
+                description: "라이브러리를 공유하세요",
+                imageUrl: "",
+                link: {
+                    mobileWebUrl: currentUrl,
+                },
+            },
+            buttons: [
+                {
+                    title: "나도 테스트 하러가기",
+                    link: {
+                        mobileWebUrl: currentUrl,
+                    },
+                },
+            ],
+        });
+    };
     return (
         <>
             <StyledModalTitleBox>
@@ -243,21 +281,28 @@ function Share() {
             </StyledModalTitleBox>
             <StyledModalContentShare>
                 <StyledModalShare>
-                    <StyledModalShareIcon $name="kakao">
+                    <StyledModalShareIcon
+                        $name="kakao"
+                        onClick={() => shareKakao()}
+                    >
                         <img src={kakaoIcon} alt="kakaoIcon" />
                     </StyledModalShareIcon>
                     카카오톡
                 </StyledModalShare>
                 <StyledModalShare>
-                    <StyledModalShareIcon $name="facebook">
-                        <img src={facebookIcon} alt="kakaoIcon" />
-                    </StyledModalShareIcon>
+                    <FacebookMessengerShareButton url={currentUrl}>
+                        <StyledModalShareIcon $name="facebook">
+                            <img src={facebookIcon} alt="kakaoIcon" />
+                        </StyledModalShareIcon>
+                    </FacebookMessengerShareButton>
                     페이스북
                 </StyledModalShare>
                 <StyledModalShare>
-                    <StyledModalShareIcon>
-                        <img src={linkIcon} alt="kakaoIcon" />
-                    </StyledModalShareIcon>
+                    <CopyToClipboard text={currentUrl}>
+                        <StyledModalShareIcon>
+                            <img src={linkIcon} alt="kakaoIcon" />
+                        </StyledModalShareIcon>
+                    </CopyToClipboard>
                     링크 복사
                 </StyledModalShare>
             </StyledModalContentShare>
@@ -289,18 +334,22 @@ function Edit() {
     );
 }
 
-function Modal() {
+function Modal({ tag, close, setClose }) {
     return (
         <>
-            <StyledModal></StyledModal>
-            <StyledModalBox>
-                <StyledModalClose src={closeIcon} alt="closeIcon" />
-                {/* <Edit /> */}
-                {/* <AddFolder /> */}
-                {/* <Share /> */}
-                {/* <DeleteFolder /> */}
-                {/* <DeleteLink /> */}
-                <Add />
+            <StyledModal $close={close}></StyledModal>
+            <StyledModalBox $close={close}>
+                <StyledModalClose
+                    src={closeIcon}
+                    alt="closeIcon"
+                    onClick={() => setClose(!close)}
+                />
+                {tag === "edit" ? <Edit /> : ""}
+                {tag === "addFolder" ? <AddFolder /> : ""}
+                {tag === "share" ? <Share /> : ""}
+                {tag === "deleteFolder" ? <DeleteFolder /> : ""}
+                {tag === "deleteLink" ? <DeleteLink /> : ""}
+                {tag === "add" ? <Add /> : ""}
             </StyledModalBox>
         </>
     );
