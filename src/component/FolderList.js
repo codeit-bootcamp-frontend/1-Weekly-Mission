@@ -1,7 +1,16 @@
 import style from "./FolderList.module.css";
 import FolderItem from "./FolderItem";
+import Modal from "./Modal";
+import { useState } from "react";
 function FolderList({ folders }) {
+  const [isModal, setIsModal] = useState(false);
   const entireFolder = [{ id: "", name: "전체" }, ...folders];
+  const handleClick = () => {
+    setIsModal(true);
+  };
+  const handleExitClick = (isClosed) => {
+    setIsModal(!isClosed);
+  };
   return (
     <div className={style.root}>
       <div className={style.folders}>
@@ -11,8 +20,17 @@ function FolderList({ folders }) {
       </div>
 
       <div>
-        <button className={style.addFolderBtn}>폴더 추가 +</button>
+        <button className={style.addFolderBtn} onClick={handleClick}>
+          폴더 추가 +
+        </button>
       </div>
+      {isModal && (
+        <Modal
+          title="폴더 추가"
+          data="내용 입력"
+          onExitClick={handleExitClick}
+        />
+      )}
     </div>
   );
 }
