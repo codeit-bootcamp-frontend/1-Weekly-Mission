@@ -6,7 +6,6 @@ export const HeaderContainer = styled.header`
   align-items: center;
   height: 17rem;
   padding: 4rem 3rem;
-
   flex-direction: column;
   gap: 1.25rem;
   background: ${colors.background};
