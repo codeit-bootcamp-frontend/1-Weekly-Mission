@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import kakaoIcon from '../../../assets/Modal_kakaoTalk_icon.svg';
 import facebookIcon from '../../../assets/Modal_facebook_icon.svg';
 import linkCopyIcon from '../../../assets/Modal_linkCopy_icon.svg';
+import shareKakaoTalk from '../../../global/shareKakaotalk';
 
 function ShareModal({ subTitle, currentPath }) {
   const host = 'http://localhost:3000';
+  const linkbrary = 'linkbrary.com';
   const facebookShareUrl = 'http://www.facebook.com/sharer.php?u=';
 
   const copyClipboard = () => {
@@ -20,14 +21,14 @@ function ShareModal({ subTitle, currentPath }) {
   };
 
   const shareFacebook = () => {
-    window.open(facebookShareUrl + host + currentPath); // localhost라서 오류 발생..
+    window.open(facebookShareUrl + linkbrary + currentPath); // localhost라서 오류 발생..그냥 가상의 링크로 넣어줬습니다.
   };
 
   return (
     <>
       <P>{subTitle}</P>
       <Container>
-        <Button>
+        <Button onClick={() => shareKakaoTalk(host + currentPath)}>
           <img src={kakaoIcon} alt="카카오톡으로 폴더 공유" />
           <p>카카오톡</p>
         </Button>

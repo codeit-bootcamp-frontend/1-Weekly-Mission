@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import ModalBox from '../ModalBox';
 import CTA from '../CTA';
 import { useState } from 'react';
 

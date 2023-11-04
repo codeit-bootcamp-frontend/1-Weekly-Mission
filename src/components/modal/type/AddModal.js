@@ -9,6 +9,7 @@ function AddModal({ selectedFolder }) {
   const handleClick = (index) => {
     setIsIconVisible(index);
   };
+
   return (
     <>
       <H2>링크 주소</H2>

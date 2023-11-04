@@ -80,12 +80,12 @@ const Input = styled.input`
   }
 
   @media (max-width: 1124px) {
-    width: 30rem;
+    width: calc(55vw);
   }
 
   @media (max-width: 779px) {
     font-size: 1.4rem;
-    width: 15rem;
+    width: calc(43vw);
   }
 `;
 
