@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as Modal from '../Modal.style';
 import * as S from './Share.style';
+import CopyToClipboard from 'components/Popup/CopyToClipboard';
 import KAKAO from 'assets/icons/kakaotalk-large.svg';
 import FACEBOOK from 'assets/icons/facebook-large.svg';
 import SHARE_LINK from 'assets/icons/share-link.svg';
@@ -41,12 +42,16 @@ function Share({ folderName, folderId, userId }) {
     );
   };
 
+  const [showCopyPopup, setShowCopyPopup] = useState(false);
+
   const copyLinkClipBoard = async () => {
     try {
       await navigator.clipboard.writeText(realUrl);
     } catch (err) {
       console.error(err);
     }
+    setShowCopyPopup(true);
+    setTimeout(() => setShowCopyPopup(false), 2000);
   };
 
   useEffect(() => {
@@ -56,6 +61,7 @@ function Share({ folderName, folderId, userId }) {
 
   return (
     <>
+      <CopyToClipboard show={showCopyPopup} />
       <Modal.Header>
         <Modal.Title>폴더 공유</Modal.Title>
         <Modal.Description>{folderName}</Modal.Description>
