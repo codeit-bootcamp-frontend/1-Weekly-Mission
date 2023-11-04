@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../button/Button";
 import styles from "./FolderButton.module.css";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getEachfoldersData } from "../../api/folder";
 
 export default function FolderButton({ data, dataKeys, folderId }) {
@@ -31,9 +31,10 @@ export default function FolderButton({ data, dataKeys, folderId }) {
               if (key === 168) {
                 item[key].folderName = "코딩 팁";
               }
-              if (key === 24) {
-                return;
-              }
+              // // 얘가 있으면은 폴더가 하나 더 만들어져서 아예 없애버렸는데 그냥 다시 살려둠
+              // if (key === 24) {
+              //   return;
+              // }
               return (
                 <Button
                   isActive={Number(folderId) === key}
@@ -42,14 +43,15 @@ export default function FolderButton({ data, dataKeys, folderId }) {
                   onClickFunc={() => {
                     // custom훅을 사용할수가 없어서 API를 사용
                     getEachfoldersData({ folderId: key }).then((data) => {
-                      let contents = data.length > 0;
-
-                      if (contents) {
-                        // 아래에 있는 key!가 folderId, 즉 useParams의 value가 된다
-                        navigate(`/folder/${key}`);
-                      } else if (!contents) {
-                        navigate(`/folder/${key}`);
-                      }
+                      // let contents = data.length > 0;
+                      navigate(`/folder/${key}`);
+                      // 아래는 추후에 필요할수도 있다는 생각에 그냥 둠..
+                      // if (contents) {
+                      //   // 아래에 있는 key!가 folderId, 즉 useParams의 value가 된다
+                      //   navigate(`/folder/${key}`);
+                      // } else if (!contents) {
+                      //   navigate(`/folder/${key}`);
+                      // }
                     });
                   }}
                 >
