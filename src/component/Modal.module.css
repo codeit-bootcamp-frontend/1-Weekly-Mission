@@ -32,7 +32,10 @@
   float: right;
   width: 2.4rem;
 }
-
+p {
+  width: 280px;
+  text-align: center;
+}
 .modalInput {
   width: 280px;
   padding: 18px 15px;
