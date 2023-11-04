@@ -108,7 +108,14 @@ export default function FolderPage() {
         ) : (
           <div className="links-container">
             {links &&
-              links.map((item) => <Card key={item.id} linkInfo={item} />)}
+              links.map((item) => (
+                <Card
+                  folders={folders}
+                  folderName={folderName}
+                  key={item.id}
+                  linkInfo={item}
+                />
+              ))}
           </div>
         )}
         <div className="floating-action-button-container">

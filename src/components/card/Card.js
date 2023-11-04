@@ -5,7 +5,7 @@ import starIcon from '../../assets/common/star.svg';
 import calcCreateTime from '../../utils/calcCreateTime';
 import KebabButton from '../kebabButton/KebabButton';
 
-function Card({ linkInfo }) {
+function Card({ linkInfo, folders }) {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const handleKebabClick = () => {
@@ -48,6 +48,8 @@ function Card({ linkInfo }) {
           <KebabButton
             onClick={handleKebabClick}
             isPopoverOpen={isPopoverOpen}
+            url={linkInfo.url}
+            folders={folders}
           />
         </p>
         <p className="introduce-text">
