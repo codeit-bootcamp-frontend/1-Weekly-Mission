@@ -4,8 +4,9 @@ import penIcon from "../assets/img/pen.svg";
 import style from "./CurrentFolder.module.css";
 import clsx from "clsx";
 function CurrentFolder({ folderId, folders }) {
-  const currentFolder = folders.filter((folder) => folder.id === folderId);
+  const currentFolder = folders.filter((folder) => folder.id == folderId);
   const folderName = currentFolder.length ? currentFolder[0].name : "전체";
+  console.log(folderId, folders);
   return (
     <div className={style.root}>
       <div className={style.folderName}>{folderName}</div>
