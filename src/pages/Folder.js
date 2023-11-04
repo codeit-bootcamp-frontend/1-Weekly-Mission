@@ -27,11 +27,11 @@ function Folder() {
       <GlobalStyle />
       <Nav account={account} setSuccess={setSuccess} />
       <TopArea>
-        <LinkAddInput />
+        <LinkAddInput selectedFolder={selectedFolder?.data} />
       </TopArea>
       {success ? (
         <FolderProvider>
-          {selectedFolder && <FolderMain userID={userId} selectedFolder={selectedFolder.data} />}
+          {selectedFolder && <FolderMain userID={userId} selectedFolder={selectedFolder?.data} />}
         </FolderProvider>
       ) : (
         <EmptyLinkScreen>로그인이 필요한 페이지입니다🫥</EmptyLinkScreen>

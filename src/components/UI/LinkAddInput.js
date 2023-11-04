@@ -1,21 +1,41 @@
 import styled from 'styled-components';
 import linkIcon from '../../assets/link_icon.svg';
+import { useState } from 'react';
+import ModalBox from '../modal/ModalBox';
 
-function LinkAddInput() {
+function LinkAddInput({ selectedFolder }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handelClick = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const inputElement = e.target.elements.url; // URL 입력 필드 선택
+    const url = inputElement.value; // 입력된 URL 값
+    const urlPattern = /^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%+._~#?&//=]*)$/;
+
+    if (!urlPattern.test(url)) {
+      alert('유효한 URL 형식이 아닙니다.');
+    } else {
+      handelClick();
+    }
+    inputElement.value = '';
+  };
+
   return (
-    <Form>
-      <div>
-        <img src={linkIcon} alt="링크 추가 아이콘" />
-        <Input
-          name="searchKeyword"
-          type="text" //  X자 삭제 버튼 없애기 위해 일단 text로 설정
-          autoComplete="on"
-          required
-          placeholder="링크를 추가해 보세요"
-        ></Input>
-      </div>
-      <Button>추가하기</Button>
-    </Form>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <div>
+          <img src={linkIcon} alt="링크 추가 아이콘" />
+          <Input name="url" type="text" autoComplete="on" required placeholder="링크를 추가해 보세요"></Input>
+        </div>
+        <Button>추가하기</Button>
+      </Form>
+      {isModalVisible && <ModalBox modal="폴더 추가" closeModal={handelClick} selectedFolder={selectedFolder} />}
+    </>
   );
 }
 

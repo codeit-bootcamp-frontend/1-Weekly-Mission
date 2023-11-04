@@ -10,7 +10,6 @@ function FolderHeader({ selectedFolder, changeTitle }) {
     setActiveFolderId(folder.id);
     changeTitle(folder.name);
   };
-
   return (
     <Container>
       <ButtonArea>
