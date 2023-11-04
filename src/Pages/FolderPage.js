@@ -23,6 +23,7 @@ function FolderPage() {
       <Main>
         <SearchBar />
         <FolderAndLink />
+
       </Main>
       <Footer />
     </>
