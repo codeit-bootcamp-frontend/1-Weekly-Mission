@@ -6,9 +6,6 @@ import LocaleContext from "../../contexts/LocaleContext";
 import { useParams } from "react-router-dom";
 
 export default function DropDown() {
-  const localeValue = useContext(LocaleContext); // obj
-  // let { params } = useParams();
-  // console.log(localeValue, params);
   const [openModal, setOpenModal] = useState(false);
 
   const handleModal = (e) => {

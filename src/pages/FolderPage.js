@@ -32,16 +32,22 @@ export default function FolderPage() {
   );
 
   // 각 폴더에 있는 (전체를 제외한, 아이템 리스트 가져오기)
+  // 페이지이동시에만 변화가..
+  // 1번
   const [linkData, isLoading2] = useUserLinks({
     userId: USER_ID,
     folderId: folderId,
   });
 
-  // const linksData = fetchUserLinks({ userId: USER_ID, folderId: folderId });
-  // 아래는 왜 안될까.. folderId는 잘 나오는데, folderId에 대하 데이터가 안뽑힘..?
-  // const [a, b] = useTest(() =>
-  //   fetchUserLinks({ userId: USER_ID, folderId: folderId }, [folderId])
-  // );
+  // 페이지이동시에만 변화가..
+  // 2번
+  const linksData = fetchUserLinks({ userId: USER_ID, folderId: folderId });
+
+  // 아래는 왜 안될까..
+  // 3번
+  const [a, b] = useTest(() =>
+    fetchUserLinks({ userId: USER_ID, folderId: folderId }, [folderId])
+  );
 
   const result = Folderdata?.data;
   const obj =
