@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  background: var(--gray-light-gray-00, #fff);
+  list-style: none;
+  align-self: stretch;
+  padding-left: 0;
+}
+li {
+  padding: 0.7rem 1.2rem;
+}
+li:hover {
+  background: var(--linkbrary-gray-10, #e7effb);
+  color: var(--linkbrary-primary-color, #6d6afe);
+}

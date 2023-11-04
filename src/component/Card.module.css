@@ -65,3 +65,12 @@
     height: 32.7rem;
   }
 }
+.kebabContainer {
+  position: relative;
+}
+
+.kebab {
+  position: absolute;
+  top: 100%;
+  width: 10rem;
+}
