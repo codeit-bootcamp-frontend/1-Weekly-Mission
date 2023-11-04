@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { NO_DISCRIPT_MSG } from 'constants/default';
-import { timeFlow, formatDate } from 'utils/timeFlow.js';
+import { timeFlow, formatDate } from 'utils/handleTime.js';
 import Kebab from 'components/common/Kebab.js';
 import defaultImg from 'assets/images/no-Image.svg';
 import starIcon from 'assets/images/star.svg';

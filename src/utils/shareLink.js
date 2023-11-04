@@ -1,4 +1,4 @@
-import { LOCAL_HOST, HOST } from 'constants/path';
+import { HOST } from 'constants/path';
 
 /**
  * @param {*} title 공유할 폴더 title
