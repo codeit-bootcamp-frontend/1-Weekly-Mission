@@ -2,7 +2,7 @@ import styled from "styled-components";
 import shareIcon from "../assets/share.png";
 import modifyIcon from "../assets/pen.png";
 import deleteIcon from "../assets/deleteIcon.png";
-import { flexCenter } from "../style/common";
+import { cursorPointer, flexCenter } from "../style/common";
 import colors from "../style/colors";
 
 const FolderInfoContainer = styled.div`
@@ -24,6 +24,7 @@ const FolderName = styled.div`
 const Icons = styled.div`
   display: flex;
   gap: 12px;
+
 `;
 
 const StyledIcon = styled.div`
@@ -35,6 +36,7 @@ const StyledIcon = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  ${cursorPointer}
 `;
 function Icon({ img, feature }) {
   return (
@@ -52,7 +54,7 @@ function SelectedFolder({ folderName }) {
       {folderName !== "전체" && (
         <Icons>
           <Icon img={shareIcon} feature={"공유"} />
-          <Icon img={modifyIcon} feature={"이름 변경"} />
+          <Icon img={modifyIcon} feature={"이름 변경"}  />
           <Icon img={deleteIcon} feature={"삭제"} />
         </Icons>
       )}
