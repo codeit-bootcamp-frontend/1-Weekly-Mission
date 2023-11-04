@@ -173,7 +173,7 @@ function Add() {
                         <div>
                             코딩 팁 <p>7개 링크</p>
                         </div>
-                        <img src={checkIcon} alt="cheakIcon" />
+                        <img src={checkIcon} alt="checkIcon" />
                     </StyledModalAddTitleBox>
                     <StyledModalAddTitleBox
                         onClick={() => setSelect("2")}
@@ -193,7 +193,7 @@ function Add() {
                         <div>
                             유용한 글 <p>30개 링크</p>
                         </div>
-                        <img src={checkIcon} alt="cheakIcon" />
+                        <img src={checkIcon} alt="checkIcon" />
                     </StyledModalAddTitleBox>
                     <StyledModalAddTitleBox
                         onClick={() => setSelect("4")}
@@ -203,7 +203,7 @@ function Add() {
                         <div>
                             나만의 장소 <p>3개 링크</p>
                         </div>
-                        <img src={checkIcon} alt="cheakIcon" />
+                        <img src={checkIcon} alt="checkIcon" />
                     </StyledModalAddTitleBox>
                 </StyledModalAddBox>
                 <StyledModalButton>추가하기</StyledModalButton>
@@ -240,16 +240,13 @@ function DeleteFolder() {
     );
 }
 
-function Share() {
-    const currentUrl = window.location.href;
+function Share({ query }) {
+    const currentUrl = window.location.href + "?" + query;
     const { Kakao } = window;
     useEffect(() => {
-        // init 해주기 전에 clean up 을 해준다.
         Kakao.cleanup();
-        // 자신의 js 키를 넣어준다.
         Kakao.init("fe4ed8101e22446bd855dd50f37510b6");
-        // 잘 적용되면 true 를 뱉는다.
-        console.log(Kakao.isInitialized());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const shareKakao = () => {
@@ -334,7 +331,7 @@ function Edit() {
     );
 }
 
-function Modal({ tag, close, setClose }) {
+function Modal({ tag, close, setClose, query }) {
     return (
         <>
             <StyledModal $close={close}></StyledModal>
@@ -346,7 +343,7 @@ function Modal({ tag, close, setClose }) {
                 />
                 {tag === "edit" ? <Edit /> : ""}
                 {tag === "addFolder" ? <AddFolder /> : ""}
-                {tag === "share" ? <Share /> : ""}
+                {tag === "share" ? <Share query={query} /> : ""}
                 {tag === "deleteFolder" ? <DeleteFolder /> : ""}
                 {tag === "deleteLink" ? <DeleteLink /> : ""}
                 {tag === "add" ? <Add /> : ""}

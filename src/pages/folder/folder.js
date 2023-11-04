@@ -218,7 +218,12 @@ function Folders() {
 
     return (
         <StyledFoldersBox>
-            <Modal tag={tag} close={close} setClose={setClose}></Modal>
+            <Modal
+                tag={tag}
+                close={close}
+                setClose={setClose}
+                query={query}
+            ></Modal>
             <StyledFolderButtonBox>
                 <FolderButton
                     items={titleData}
