@@ -1,53 +1,53 @@
 import styles from './SignInput.module.css';
 import useEyesValue from '../../hooks/useEyesValue';
+import InputBox from '../InputBox/InputBox';
 
 function SignInput({
   idfor,
   name,
   type,
   value,
-  children,
+  label,
   errorText,
   onChange,
   onBlur,
   onFocus,
   eyes,
 }) {
-  const [eyesValue, handleEyesClick, eyesStyle] = useEyesValue();
+  const { eyesValue, handleEyesClick, eyesStyle } = useEyesValue();
 
   if (eyesValue) {
     type = 'text';
   }
 
-  const borderControl = `${styles.input} ${
-    errorText ? styles.errorBorder : ''
-  }`;
+  const inputBoxPropConfig = {
+    label,
+    for: idfor,
+    onBlur,
+    onFocus,
+    errorText,
+  };
+
+  const inputPropConfig = {
+    onChange,
+    value,
+    className: styles.input,
+    id: idfor,
+    name,
+    type,
+  };
 
   return (
-    <div className={styles.root}>
-      <label className={styles.label} htmlFor={idfor}>
-        {children}
-      </label>
-      <div className={borderControl} onBlur={onBlur} onFocus={onFocus}>
-        <input
-          onChange={onChange}
-          value={value}
-          className={styles.container}
-          id={idfor}
-          name={name}
-          type={type}
-          autoComplete="off"
-        />
-        {eyes && (
-          <button
-            className={eyesStyle}
-            onClick={handleEyesClick}
-            type="button"
-          ></button>
-        )}
-      </div>
-      {errorText && <div className={styles.errorMessage}>{errorText}</div>}
-    </div>
+    <InputBox {...inputBoxPropConfig}>
+      <input autoComplete="off" {...inputPropConfig} />
+      {eyes && (
+        <button
+          className={eyesStyle}
+          onClick={handleEyesClick}
+          type="button"
+        ></button>
+      )}
+    </InputBox>
   );
 }
 

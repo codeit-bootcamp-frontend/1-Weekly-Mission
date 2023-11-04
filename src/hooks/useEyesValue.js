@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from '../components/SignInput/SignInput.module.css';
+import clsx from 'clsx';
 
 function useEyesValue() {
   const [eyesValue, setEyesValue] = useState(false);
@@ -8,11 +9,12 @@ function useEyesValue() {
     setEyesValue((current) => !current);
   }
 
-  const eyesStyle = `${styles.eyes} ${
+  const eyesStyle = clsx(
+    styles.eyes,
     eyesValue ? styles.eyesOn : styles.eyesOff
-  }`;
+  );
 
-  return [eyesValue, handleEyesClick, eyesStyle];
+  return { eyesValue, handleEyesClick, eyesStyle };
 }
 
 export default useEyesValue;

@@ -52,7 +52,7 @@ function Signup() {
       name: 'email',
       type: 'email',
       value: `${email.values}`,
-      children: '이메일',
+      label: '이메일',
 
       errorText: email.errorText,
 
@@ -66,7 +66,7 @@ function Signup() {
       name: 'password',
       type: 'password',
       value: `${password.values}`,
-      children: '비밀번호',
+      label: '비밀번호',
 
       errorText: password.errorText,
 
@@ -80,7 +80,7 @@ function Signup() {
       name: 'passwordCheck',
       type: 'password',
       value: `${passwordCheck.values}`,
-      children: '비밀번호 확인',
+      label: '비밀번호 확인',
 
       errorText: passwordCheck.errorText,
 
