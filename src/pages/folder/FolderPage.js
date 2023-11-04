@@ -8,7 +8,6 @@ import EmptyPage from './components/emptyPage/EmptyPage';
 import OptionButton from './components/optionButton/OptionButton';
 import FloatingButton from '../../components/floatingButton/FloatingButton';
 import { ALL_LINK_NAME, OPTION_ICONS } from './constant';
-import useModal from '../../hooks/useModal';
 
 import addIcon from '../../assets/folder/add.svg';
 import addPrimaryIcon from '../../assets/folder/addPrimaryColor.svg';
@@ -18,7 +17,6 @@ export default function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
   const [folderId, setFolderId] = useState(ALL_LINK_NAME);
-  const { open, close, Dialog, isModalOpen } = useModal();
 
   const folderName =
     folderId === ALL_LINK_NAME
@@ -49,7 +47,7 @@ export default function FolderPage() {
   return (
     <div className="folder-container">
       <header className="folder-header">
-        <AddLinkInput />
+        <AddLinkInput folders={folders} />
       </header>
       <main className="folder-main">
         <SearchBar />
@@ -61,7 +59,6 @@ export default function FolderPage() {
                 isClicked={folderId === ALL_LINK_NAME}
                 text="전체"
               />
-
               {folders &&
                 folders.map((item) => (
                   <SortButton
@@ -73,7 +70,7 @@ export default function FolderPage() {
                   />
                 ))}
             </div>
-            <button type="button" className="folder-add-button" onClick={open}>
+            <button type="button" className="folder-add-button">
               폴더 추가
               <img
                 src={addPrimaryIcon}
@@ -81,23 +78,6 @@ export default function FolderPage() {
                 className="folder-add-icon"
               />
             </button>
-            <Dialog onClick={close} isModalOpen={isModalOpen}>
-              <Dialog.Title onClick={close}>폴더에 추가</Dialog.Title>
-              <Dialog.Link>링크 주소</Dialog.Link>
-              {folders.map((folder) => (
-                <Dialog.FolderList key={folder.id}>
-                  <span className="dialog-folder-name">{folder.name}</span>
-                  <span className="dialog-folder-count">
-                    {folder.link.count}개 링크
-                  </span>
-                </Dialog.FolderList>
-              ))}
-              <Dialog.Button>
-                <button type="button" className="dialog-add-button">
-                  추가하기
-                </button>
-              </Dialog.Button>
-            </Dialog>
           </div>
           <div className="folder-category-container">
             <h1 className="folder-category">{folderName}</h1>
