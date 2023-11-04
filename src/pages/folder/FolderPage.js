@@ -83,25 +83,22 @@ export default function FolderPage() {
             <Dialog onClick={close} isModalOpen={isModalOpen}>
               <Dialog.Title>폴더 추가</Dialog.Title>
               <Dialog.Input />
-              <Dialog.Button isAddButton>변경 하기</Dialog.Button>
+              <Dialog.Button isAddButton>추가하기</Dialog.Button>
             </Dialog>
           </div>
           <div className="folder-category-container">
             <h1 className="folder-category">{folderName}</h1>
-            {folderId !== ALL_LINK_NAME ? (
-              ''
-            ) : (
-              <div className="folder-option-button-container">
-                {OPTION_ICONS.map((item) => (
-                  <OptionButton
-                    key={item.id}
-                    name={item.name}
-                    alt={item.alt}
-                    iconSrc={item.iconSrc}
-                  />
-                ))}
-              </div>
-            )}
+            <div className="folder-option-button-container">
+              {OPTION_ICONS.map((item) => (
+                <OptionButton
+                  key={item.id}
+                  name={item.name}
+                  alt={item.alt}
+                  iconSrc={item.iconSrc}
+                  folderName={folderName}
+                />
+              ))}
+            </div>
           </div>
         </section>
         {links?.length === 0 ? (

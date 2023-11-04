@@ -2,7 +2,7 @@ import React from 'react';
 import './optionButton.css';
 import useModal from '../../../../hooks/useModal';
 
-export default function OptionButton({ iconSrc, name, alt }) {
+export default function OptionButton({ iconSrc, name, alt, folderName }) {
   const { open, close, Dialog, isModalOpen } = useModal();
 
   return (
@@ -10,7 +10,7 @@ export default function OptionButton({ iconSrc, name, alt }) {
       {name === '공유' ? (
         <Dialog isModalOpen={isModalOpen} close={close}>
           <Dialog.Title>폴더 공유</Dialog.Title>
-          <Dialog.Link>폴더명</Dialog.Link>
+          <Dialog.Link>{folderName}</Dialog.Link>
         </Dialog>
       ) : null}
       <img src={iconSrc} alt={alt} role="none" />
