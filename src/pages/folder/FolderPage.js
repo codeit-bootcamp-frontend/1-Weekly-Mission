@@ -89,15 +89,17 @@ export default function FolderPage() {
           <div className="folder-category-container">
             <h1 className="folder-category">{folderName}</h1>
             <div className="folder-option-button-container">
-              {OPTION_ICONS.map((item) => (
-                <OptionButton
-                  key={item.id}
-                  name={item.name}
-                  alt={item.alt}
-                  iconSrc={item.iconSrc}
-                  folderName={folderName}
-                />
-              ))}
+              {folderName !== ALL_LINK_NAME
+                ? OPTION_ICONS.map((item) => (
+                    <OptionButton
+                      key={item.id}
+                      name={item.name}
+                      alt={item.alt}
+                      iconSrc={item.iconSrc}
+                      folderName={folderName}
+                    />
+                  ))
+                : null}
             </div>
           </div>
         </section>
