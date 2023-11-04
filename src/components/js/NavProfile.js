@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+function Profile({ account }) {
+  const { email, image_source } = account;
+
+  const imgSrc = image_source;
+
+  return (
+    <ProfileWrapper>
+      <ProfileLogo src={imgSrc} alt="profile_image" />
+      <ProfileId className="profile_id">{email}</ProfileId>
+    </ProfileWrapper>
+  );
+}
+
+export default Profile;
+
 const ProfileWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -21,18 +36,3 @@ const ProfileId = styled.span`
     display: none;
   }
 `;
-
-function Profile({ account }) {
-  const { email, image_source } = account;
-
-  const imgSrc = image_source;
-
-  return (
-    <ProfileWrapper>
-      <ProfileLogo src={imgSrc} alt="profile_image" />
-      <ProfileId className="profile_id">{email}</ProfileId>
-    </ProfileWrapper>
-  );
-}
-
-export default Profile;

@@ -1,6 +1,22 @@
 import styled from "styled-components";
 import Nav from "./Nav";
 
+export function FixedHeader({ account }) {
+  return (
+    <FixedStyledHeader>
+      <Nav account={account} />
+    </FixedStyledHeader>
+  );
+}
+
+export function BasicHeader({ account }) {
+  return (
+    <StyledHeader>
+      <Nav account={account} />
+    </StyledHeader>
+  );
+}
+
 const StyledHeader = styled.div`
   width: 100%;
   height: 93px;
@@ -20,19 +36,3 @@ export const FixedStyledHeader = styled(StyledHeader)`
   right: 0;
   z-index: 4;
 `;
-
-export function FixedHeader({ account }) {
-  return (
-    <FixedStyledHeader>
-      <Nav account={account} />
-    </FixedStyledHeader>
-  );
-}
-
-export function BasicHeader({ account }) {
-  return (
-    <StyledHeader>
-      <Nav account={account} />
-    </StyledHeader>
-  );
-}

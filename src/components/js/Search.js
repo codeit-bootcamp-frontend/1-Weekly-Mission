@@ -1,5 +1,18 @@
-import styled from 'styled-components';
-import searchIcon from '../../Assets/Search.svg'
+import styled from "styled-components";
+import searchIcon from "../../Assets/Search.svg";
+
+function Search() {
+  return (
+    <>
+      <SearchForm>
+        <SearchIcon src={searchIcon} alt={searchIcon} />
+        <SearchInput placeholder="링크를 검색해보세요"></SearchInput>
+      </SearchForm>
+    </>
+  );
+}
+
+export default Search;
 
 const SearchForm = styled.form`
   width: 1060px;
@@ -42,17 +55,3 @@ const SearchInput = styled.input`
     outline: none;
   }
 `;
-
-
-function Search() {
-  return(
-    <>
-      <SearchForm>
-        <SearchIcon src={searchIcon} alt={searchIcon}/>
-        <SearchInput placeholder="링크를 검색해보세요"></SearchInput>
-      </SearchForm>
-    </>
-  );
-};
-
-export default Search

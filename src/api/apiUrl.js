@@ -34,7 +34,6 @@ export async function getEachFolder(id = "") {
     throw new Error("데이터를 불러오는데 실패하였습니다.");
   }
   const body = await response.json();
-  console.log(body);
   return body;
 }
 

@@ -1,5 +1,41 @@
 import styled from "styled-components";
 import CardItem from "./CardItemFolder";
+import { useState } from "react";
+
+/* 카드리스트들 컴포넌트 */
+function CardList({ folderLinks, modal, setLink }) {
+  const [openedPopOver, setOpenedPopOver] = useState(null);
+
+  const handleTogglePopOver = (idx) => {
+    if (idx === openedPopOver) {
+      setOpenedPopOver(null);
+    } else {
+      setOpenedPopOver(idx);
+    }
+  };
+
+  const links = Array.isArray(folderLinks) ? folderLinks : [];
+  return (
+    <CardListWrapper>
+      <CardListContainer>
+        {links.map((item, idx) => {
+          return (
+            <CardItem
+              key={item.id}
+              idx={idx}
+              item={item}
+              modal={modal}
+              setLink={setLink}
+              isOpen={idx === openedPopOver}
+              onClick={handleTogglePopOver}
+            />
+          );
+        })}
+      </CardListContainer>
+    </CardListWrapper>
+  );
+}
+export default CardList;
 
 const CardListWrapper = styled.div`
   width: 100%;
@@ -21,18 +57,3 @@ const CardListContainer = styled.div`
   flex-wrap: wrap;
   gap: 25px 20px;
 `;
-
-/* 카드리스트들 컴포넌트 */
-function CardList({ folderLinks }) {
-  const links = Array.isArray(folderLinks) ? folderLinks : [];
-  return (
-    <CardListWrapper>
-      <CardListContainer>
-        {links.map((item) => {
-          return <CardItem key={item.id} item={item} />;
-        })}
-      </CardListContainer>
-    </CardListWrapper>
-  );
-}
-export default CardList;

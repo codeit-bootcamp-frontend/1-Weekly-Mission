@@ -1,9 +1,45 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAccount } from "../../api/apiUrl";
+import { getAccount } from "../../../api/apiUrl";
 import styled from "styled-components";
-import Profile from "./NavProfile";
-import logoImg from "../../Assets/logo.svg";
+import Profile from "../NavProfile";
+import logoImg from "Assets/logo.svg";
+
+function Nav() {
+  const [account, setAccount] = useState({});
+
+  const handleLoad = async () => {
+    const nextAccount = await getAccount();
+    setAccount(nextAccount.data[0]);
+  };
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
+  return (
+    <NavWrapper>
+      <NavContainer>
+        <NavLeft>
+          <Link to="/">
+            <NavLogo src={logoImg} alt={logoImg} />
+          </Link>
+        </NavLeft>
+        <div className="Nav_right">
+          {account.email ? (
+            <Profile className="Nav_profile" account={account} />
+          ) : (
+            <NavSignInButton to="/" className="Nav_signIn_button">
+              로그인
+            </NavSignInButton>
+          )}
+        </div>
+      </NavContainer>
+    </NavWrapper>
+  );
+}
+
+export default Nav;
 
 const NavWrapper = styled.div`
   width: 100%;
@@ -64,39 +100,3 @@ const NavSignInButton = styled(Link)`
     font-size: 1.4rem;
   }
 `;
-
-function Nav() {
-  const [account, setAccount] = useState({});
-
-  const handleLoad = async () => {
-    const nextAccount = await getAccount();
-    setAccount(nextAccount.data[0]);
-  };
-
-  useEffect(() => {
-    handleLoad();
-  }, []);
-
-  return (
-    <NavWrapper>
-      <NavContainer>
-        <NavLeft>
-          <Link to="/">
-            <NavLogo src={logoImg} alt={logoImg} />
-          </Link>
-        </NavLeft>
-        <div className="Nav_right">
-          {account.email ? (
-            <Profile className="Nav_profile" account={account} />
-          ) : (
-            <NavSignInButton to="/" className="Nav_signIn_button">
-              로그인
-            </NavSignInButton>
-          )}
-        </div>
-      </NavContainer>
-    </NavWrapper>
-  );
-}
-
-export default Nav;

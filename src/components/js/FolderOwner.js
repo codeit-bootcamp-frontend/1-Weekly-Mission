@@ -2,6 +2,23 @@ import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
 import { Container } from "./Container";
 
+function FolderOwner({ folderName, owner }) {
+  const ownerName = owner?.name;
+  const ownerImg = owner?.profileImageSource;
+
+  return (
+    <StyledWrapper>
+      <OwnerContainer>
+        <OwnerAvatarImg src={ownerImg} />
+        <OwnerName>{`@${ownerName}`}</OwnerName>
+        <FolderName>{folderName}</FolderName>
+      </OwnerContainer>
+    </StyledWrapper>
+  );
+}
+
+export default FolderOwner;
+
 const StyledWrapper = styled(BlueWrapper)`
   margin-top: 93px;
 `;
@@ -31,20 +48,3 @@ const FolderName = styled.span`
   font-size: 4rem;
   margin-top: 20px;
 `;
-
-function FolderOwner({ folderName, owner }) {
-  const ownerName = owner?.name;
-  const ownerImg = owner?.profileImageSource;
-
-  return (
-    <StyledWrapper>
-      <OwnerContainer>
-        <OwnerAvatarImg src={ownerImg} />
-        <OwnerName>{`@${ownerName}`}</OwnerName>
-        <FolderName>{folderName}</FolderName>
-      </OwnerContainer>
-    </StyledWrapper>
-  );
-}
-
-export default FolderOwner;

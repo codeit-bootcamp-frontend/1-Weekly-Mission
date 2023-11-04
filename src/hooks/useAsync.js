@@ -9,7 +9,6 @@ function useAsync(asyncFunction) {
       return await asyncFunction();
     } catch (error) {
       setError(error);
-    } finally {
     }
   };
   return [error, wrappedFunction];
