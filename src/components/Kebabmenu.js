@@ -10,7 +10,7 @@ import AddLink from "./modal/AddLink";
 
 export default function KebabMenu({ link }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [iseOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleMenuToggle = (e) => {
@@ -29,7 +29,7 @@ export default function KebabMenu({ link }) {
       <img src={kebabIcon} onClick={handleMenuToggle} alt="memu" />
       {isOpenMenu && <PopoverMenu onClickModal={handleModalOpen} />}
 
-      {iseOpenModal &&
+      {isOpenModal &&
         createPortal(
           <ModalContainer onClose={() => setIsOpenModal(false)}>
             {selectedOption === "addLink" ? (
