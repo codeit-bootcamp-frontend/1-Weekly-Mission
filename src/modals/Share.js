@@ -17,7 +17,7 @@ function Share({ children }) {
       <div className={styles.body}>
         {shareItems.map((item) => {
           return (
-            <div className={styles.link}>
+            <div className={styles.link} key={item.sub}>
               <a href={item.href} title="">
                 <img src={item.img} alt="" />
               </a>
