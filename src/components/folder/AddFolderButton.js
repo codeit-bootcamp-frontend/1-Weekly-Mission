@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import addPurpleImg from "../../image/add.svg";
 import addWhiteImg from "../../image/addWhite.svg";
+import AddFolderModal from "../modal/AddFolderModal";
 
 const AddFolderButton = () => {
   const [addImg, setAddImg] = useState(addPurpleImg);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleResize = () => {
     if (window.innerWidth <= 767) {
@@ -12,6 +14,14 @@ const AddFolderButton = () => {
     } else {
       setAddImg(addPurpleImg);
     }
+  };
+
+  const openModal = (type) => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -26,10 +36,13 @@ const AddFolderButton = () => {
   }, []);
 
   return (
-    <AddFolderBtn>
-      <AddFolderMsg>폴더 추가</AddFolderMsg>
-      <AddFolderImg src={addImg} alt="폴더 추가 버튼" />
-    </AddFolderBtn>
+    <>
+      <AddFolderBtn onClick={openModal}>
+        <AddFolderMsg>폴더 추가</AddFolderMsg>
+        <AddFolderImg src={addImg} alt="폴더 추가 버튼" />
+      </AddFolderBtn>
+      <AddFolderModal isOpen={isModalOpen} onRequestClose={closeModal} />
+    </>
   );
 };
 

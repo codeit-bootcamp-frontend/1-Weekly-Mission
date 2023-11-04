@@ -1,17 +1,29 @@
+// 폴더 이름 변경, 폴더 추가 디자인
 import Modal from "react-modal";
 import styled from "styled-components";
-import closeBtn from "../../../image/close.svg";
+import closeBtn from "../../image/close.svg";
 
-const DeleteFolderModal = ({ isOpen, onRequestClose }) => {
+const BlueBtnModal = ({
+  isOpen,
+  onRequestClose,
+  title,
+  placeholder,
+  btnType,
+}) => {
   return (
-    <CustomModal isOpen={isOpen} onRequestClose={onRequestClose}>
+    <CustomModal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      ariaHideApp={false}
+    >
       <ModalContent>
         <CloseButton src={closeBtn} onClick={onRequestClose} />
-        <Description>
-          <Heading>폴더 삭제</Heading>
-          <FolderName>폴더명</FolderName>
-        </Description>
-        <Button onClick={onRequestClose}>삭제하기</Button>
+        <Heading>{title}</Heading>
+        <Form>
+          <Input placeholder={placeholder} />
+          {/* 기능은 나중에 구현 */}
+          <Button onClick={onRequestClose}>{btnType}</Button>
+        </Form>
       </ModalContent>
     </CustomModal>
   );
@@ -53,15 +65,6 @@ const CloseButton = styled.img`
   cursor: pointer;
 `;
 
-const Description = styled.p`
-  display: flex;
-  width: 280px;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-`;
-
 const Heading = styled.h2`
   color: var(--linkbrary-gray-100, #373740);
   font-family: Pretendard;
@@ -71,14 +74,23 @@ const Heading = styled.h2`
   line-height: normal;
 `;
 
-const FolderName = styled.div`
-  color: var(--linkbrary-gray-60, #9fa6b2);
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px; /* 157.143% */
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+`;
+
+const Input = styled.input`
+  display: flex;
+  width: 280px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+  background: var(--linkbrary-white, #fff);
 `;
 
 const Button = styled.button`
@@ -91,7 +103,10 @@ const Button = styled.button`
 
   border: none;
   border-radius: 8px;
-  background: var(--linkbrary-red, #ff5b56);
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
 
   color: var(--grey-light, #f5f5f5);
   font-family: Pretendard;
@@ -103,4 +118,4 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default DeleteFolderModal;
+export default BlueBtnModal;

@@ -1,9 +1,12 @@
 import { useState, useRef, useEffect } from "react";
+import DeleteLinkModal from "../modal/DeleteLinkModal";
+import AddLinkModal from "../modal/AddLinkModal";
 import styled from "styled-components";
 import kebab from "../../image/kebab.svg";
 
-const Kebab = () => {
+const Kebab = ({ link }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
   const popoverRef = useRef();
 
   const handleTogglePopover = () => {
@@ -14,6 +17,15 @@ const Kebab = () => {
     if (popoverRef.current && !popoverRef.current.contains(event.target)) {
       setIsPopoverOpen(false);
     }
+  };
+
+  const openModal = (type) => {
+    setModalType(type);
+    setIsPopoverOpen(false); // 모달을 열 때 팝오버를 닫기
+  };
+
+  const closeModal = () => {
+    setModalType(null);
   };
 
   useEffect(() => {
@@ -37,9 +49,21 @@ const Kebab = () => {
         onClick={handleTogglePopover}
       />
       <Popover ref={popoverRef} isOpen={isPopoverOpen}>
-        <Button>삭제하기</Button>
-        <Button>폴더에 추가</Button>
+        <Button onClick={() => openModal("delete")}>삭제하기</Button>
+        <Button onClick={() => openModal("add")}>폴더에 추가</Button>
       </Popover>
+
+      {modalType === "delete" && (
+        <DeleteLinkModal
+          isOpen={true}
+          onRequestClose={closeModal}
+          name={link}
+        />
+      )}
+
+      {modalType === "add" && (
+        <AddLinkModal isOpen={true} closeModal={closeModal} link={link} />
+      )}
     </KebabContainer>
   );
 };
@@ -54,6 +78,7 @@ const ToggleKebab = styled.img`
 
 const Popover = styled.div`
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  width: 100px;
   position: absolute;
   top: 20px;
   left: 0;

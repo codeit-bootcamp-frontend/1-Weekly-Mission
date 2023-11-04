@@ -35,7 +35,9 @@ const FolderList = ({ onFolderSelect }) => {
         {/* 제목 부분 */}
         <div className="folder_title">{selectedFolder}</div>
         {/* 추가 버튼 부분 */}
-        {selectedFolder !== "전체" && <FunctionButton />}
+        {selectedFolder !== "전체" && (
+          <FunctionButton selectedFolder={selectedFolder} />
+        )}
       </div>
     </>
   );

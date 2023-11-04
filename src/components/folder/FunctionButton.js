@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Modal from "react-modal";
 import shareImg from "../../image/share.svg";
 import penImg from "../../image/pen.svg";
 import deleteImg from "../../image/delete.svg";
-import ChangeNameModal from "./modal/ChangeNameModal";
-import DeleteFolderModal from "./modal/DeleteFolderModal";
+import ShareFolderModal from "../modal/ShareFolderModal";
+import ChangeNameModal from "../modal/ChangeNameModal";
+import DeleteFolderModal from "../modal/DeleteFolderModal";
 
-const FunctionButton = () => {
+const FunctionButton = ({ selectedFolder }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(""); // 버튼에 따른 모달 열기
 
@@ -35,11 +35,22 @@ const FunctionButton = () => {
         <FuncBtnMsg>삭제</FuncBtnMsg>
       </FuncBtn>
 
+      {modalType === "share" && (
+        <ShareFolderModal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          name={selectedFolder}
+        />
+      )}
       {modalType === "changeName" && (
         <ChangeNameModal isOpen={isModalOpen} onRequestClose={closeModal} />
       )}
       {modalType === "delete" && (
-        <DeleteFolderModal isOpen={isModalOpen} onRequestClose={closeModal} />
+        <DeleteFolderModal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          name={selectedFolder}
+        />
       )}
     </FuncBtnWrapper>
   );

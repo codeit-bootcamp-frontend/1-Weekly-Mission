@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-// import Modal from "react-modal";
+import { useState } from "react";
 import "./Header.css";
-// import styled from "styled-components";
-import AddLinkModal from "./AddLinkModal";
+import AddLinkModal from "../modal/AddLinkModal";
 
 const HeaderAddLink = () => {
   const [link, setLink] = useState("");
@@ -33,7 +31,7 @@ const HeaderAddLink = () => {
         </button>
       </form>
 
-      <AddLinkModal isOpen={showModal} closeModal={closeModal} />
+      <AddLinkModal isOpen={showModal} closeModal={closeModal} link={link} />
     </div>
   );
 };
