@@ -16,6 +16,8 @@ import {
 import FolderMenu from "../components/menuBar/FolderMenu";
 
 import useTest from "../hooks/useTest";
+import useUserLinks from "../hooks/useUserLinks";
+import { useUserTotalLinks } from "../hooks/useUserLinks";
 
 export default function FolderPage() {
   const USER_ID = 1;
@@ -28,12 +30,18 @@ export default function FolderPage() {
   const [Folderdata, isLoading] = useTest(() =>
     fetchUserFolderData({ userId: USER_ID })
   );
-  // 얘는 되는데
+
+  // 각 폴더에 있는 (전체를 제외한, 아이템 리스트 가져오기)
+  const [linkData, isLoading2] = useUserLinks({
+    userId: USER_ID,
+    folderId: folderId,
+  });
+
   // const linksData = fetchUserLinks({ userId: USER_ID, folderId: folderId });
-  // linksData.then((data) => console.log(data.data));
   // 아래는 왜 안될까.. folderId는 잘 나오는데, folderId에 대하 데이터가 안뽑힘..?
   // const [a, b] = useTest(() =>
-  //   fetchUserLinks({ userId: USER_ID, folderId: folderId })    // );
+  //   fetchUserLinks({ userId: USER_ID, folderId: folderId }, [folderId])
+  // );
 
   const result = Folderdata?.data;
   const obj =
@@ -52,7 +60,9 @@ export default function FolderPage() {
   const obj_keys = Object.keys(obj).map(Number);
 
   return (
-    <LocaleContext.Provider value={obj}>
+    <LocaleContext.Provider
+      value={{ ObjectValue: obj, LinkSDataArr: linkData }}
+    >
       <FolderNav data={userData} />
       <Header />
       <SearchBar />
@@ -60,7 +70,8 @@ export default function FolderPage() {
       <FolderMenu folderId={folderId} />
       {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
       {/* <Landing data={data} isLoading={isLoading}></Landing> */}
-      <WholeData folderId={folderId} />
+      {/* <WholeData folderId={folderId} /> */}
+      <WholeData linksData={linkData} folderId={folderId} />
       <Footer />
     </LocaleContext.Provider>
   );

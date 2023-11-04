@@ -9,6 +9,7 @@ function useTest(fetchFunc, request = []) {
     let isMounted = true;
 
     if (isMounted) {
+      // console.log(request); 얘가 안 직힘..
       fetchFunc(...request).then((data) => {
         setData(data);
         setIsLoading(false);
@@ -18,7 +19,7 @@ function useTest(fetchFunc, request = []) {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [...request]);
 
   return [data, isLoading];
 }

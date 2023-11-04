@@ -1,5 +1,5 @@
+import { fetchUserLinks } from "../api/users";
 import useFetch from "./useFetch";
-import React from "react";
 
 export default function useUserLinks({ userId, folderId }) {
   const [users, isLoading] = useFetch(
@@ -10,3 +10,13 @@ export default function useUserLinks({ userId, folderId }) {
 
   return [users, isLoading];
 }
+
+// export function useUserTotalLinks({ userId, folderIdArr }) {
+//   return folderIdArr.map((folderId) => {
+//     return fetchUserLinks(
+//       `https://bootcamp-api.codeit.kr/api/users/${userId}/links${
+//         folderId ? `?folderId=${folderId}` : ""
+//       }`
+//     );
+//   });
+// }

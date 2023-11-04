@@ -3,14 +3,16 @@ import styles from "./HeaderModal.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 
 import { fetchUserLinks } from "./../../api/users";
+import { useLocation } from "react-router-dom";
 
 export default function HeaderModal({ setterFunc, inputLink = null }) {
   // modal이 pop-up될때 나온다
 
   const USER_ID = 1;
-  const obj = useContext(LocaleContext);
+  const { ObjectValue: obj, LinkSDataArr: linkData } =
+    useContext(LocaleContext);
 
-  const obj_keys = Object.keys(obj).map(Number);
+  const obj_keys = Object.keys(obj);
 
   obj_keys.map((key) => {
     fetchUserLinks({ userId: USER_ID, folderId: key }).then((data) => {
@@ -23,8 +25,6 @@ export default function HeaderModal({ setterFunc, inputLink = null }) {
       }
     });
   });
-
-  // Wait for all promises to resolve
 
   return (
     <div className={styles.container}>
@@ -39,11 +39,10 @@ export default function HeaderModal({ setterFunc, inputLink = null }) {
         <p>{inputLink}</p>
 
         {obj_keys.map((key) => {
-          const [, name, linksNum] = Object.values(obj[key]);
-
+          const [, name, linksArr] = Object.values(obj[key]);
           return (
             <p>
-              {name} : {linksNum && linksNum.length}
+              {name} : {linksArr && linksArr.length}
             </p>
           );
         })}
