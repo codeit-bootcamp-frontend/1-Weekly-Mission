@@ -21,20 +21,43 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-function ModalShareButton() {
+function ShareBox({ clickEvent, src, alt, content }) {
+  return (
+    <>
+      <button onClick={clickEvent}>
+        <img src={src} alt={alt} />
+      </button>
+      <p>{content}</p>
+    </>
+  );
+}
+
+function ModalShareButton({ shareKakao, shareFacebook, shareLink }) {
   return (
     <Wrapper>
       <ButtonWrapper>
-        <img src={KakaoTalk} alt="카카오톡" />
-        <p>카카오톡</p>
+        <ShareBox
+          clickEvent={shareKakao}
+          src={KakaoTalk}
+          alt="카카오톡"
+          content="카카오톡"
+        />
       </ButtonWrapper>
       <ButtonWrapper>
-        <img src={Facebook} alt="카카오톡" />
-        <p>페이스북</p>
+        <ShareBox
+          clickEvent={shareFacebook}
+          src={Facebook}
+          alt="페이스북"
+          content="페이스북"
+        />
       </ButtonWrapper>
       <ButtonWrapper>
-        <img src={Link} alt="카카오톡" />
-        <p>링크 복사</p>
+        <ShareBox
+          clickEvent={shareLink}
+          src={Link}
+          alt="링크 복사"
+          content="링크 복사"
+        />
       </ButtonWrapper>
     </Wrapper>
   );

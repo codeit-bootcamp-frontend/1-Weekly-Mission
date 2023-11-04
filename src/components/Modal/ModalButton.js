@@ -7,7 +7,6 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   padding: 16px 20px;
-  border: none;
   border-radius: 8px;
   background: ${(props) =>
     props.content === '삭제하기' ? 'var(--red)' : 'linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)'};
@@ -25,7 +24,6 @@ const CloseButton = styled.button`
   background-color: transparent;
   background-image: url('${closeButton}');
   background-repeat: no-repeat;
-  border: none;
 `;
 
 function ModalButton({ content }) {

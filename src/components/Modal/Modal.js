@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { styled } from 'styled-components';
 import ModalBackground from './ModalBackground';
 import { CloseButton, ModalButton } from './ModalButton';
@@ -26,16 +27,49 @@ const ContentWrapper = styled.div`
   gap: 15px;
 `;
 
-function Modal({ title, subTitle, buttonContent, onClick }) {
+function Modal({
+  title,
+  subTitle,
+  buttonContent,
+  onClick,
+  shareKakao,
+  shareFacebook,
+  shareLink,
+}) {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => document.body.removeChild(script);
+  }, []);
+
   return (
     <ModalWrapper>
       <ModalBackground>
         <CloseButton onClick={onClick} />
         <ContentWrapper>
           <ModalTitle title={title} />
-          <ModalSubTitle subTitle={subTitle} />
-          {title === '폴더 공유' || title === '폴더 삭제' ? <ModalShareButton /> : <ModalInput />}
-          {title === '폴더 공유' ? <></> : <ModalButton content={buttonContent} />}
+          {title === '폴더 추가' ||
+          title === '폴더에 추가' ||
+          title === '폴더 이름 변경' ? null : (
+            <ModalSubTitle subTitle={subTitle} />
+          )}
+          {title === '폴더 공유' ? (
+            <ModalShareButton
+              shareKakao={shareKakao}
+              shareLink={shareLink}
+              shareFacebook={shareFacebook}
+            />
+          ) : null}
+          {title === '폴더 공유' ||
+          title === '폴더 삭제' ||
+          title === '링크 삭제' ? null : (
+            <ModalInput />
+          )}
+          {title === '폴더 공유' ? null : (
+            <ModalButton content={buttonContent} />
+          )}
         </ContentWrapper>
       </ModalBackground>
     </ModalWrapper>

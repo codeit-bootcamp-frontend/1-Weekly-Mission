@@ -13,8 +13,12 @@ const Delete = styled.button`
   }
 `;
 
-function DeleteButton() {
-  return <Delete value="delete">삭제하기</Delete>;
+function DeleteButton({ onClick, url }) {
+  return (
+    <Delete onClick={onClick} value="linkDelete" id={url}>
+      삭제하기
+    </Delete>
+  );
 }
 
 export default DeleteButton;

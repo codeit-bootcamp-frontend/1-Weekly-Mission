@@ -2,11 +2,11 @@ import DeleteButton from './DeleteButton';
 import FolderAddButton from './FolderAddButton';
 import './SelectMenu.css';
 
-function SelectMenu() {
+function SelectMenu({ onClick, url }) {
   return (
     <div className="select-menu">
-      <DeleteButton />
-      <FolderAddButton />
+      <DeleteButton onClick={onClick} url={url} />
+      <FolderAddButton onClick={onClick} />
     </div>
   );
 }

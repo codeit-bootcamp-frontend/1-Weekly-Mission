@@ -3,7 +3,6 @@
 }
 
 .share-button {
-  border: none;
   color: #9fa6b2;
   background-image: url('assets/icon/share.svg');
   font-size: 1.4rem;
@@ -14,7 +13,6 @@
 }
 
 .name-button {
-  border: none;
   color: #9fa6b2;
   background-image: url('assets/icon/pen.svg');
   font-size: 1.4rem;
@@ -25,7 +23,6 @@
 }
 
 .delete-button {
-  border: none;
   color: #9fa6b2;
   background-image: url('assets/icon/delete.svg');
   font-size: 1.4rem;
