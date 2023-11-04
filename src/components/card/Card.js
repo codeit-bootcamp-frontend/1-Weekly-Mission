@@ -3,7 +3,7 @@ import CardTime from "./CardTime";
 import Kebab from "./Kebab";
 import CardContent from "./CardContent";
 import CardDate from "./CardDate";
-import { getTimeDiff, formatDate } from "./getTime";
+import { getTimeDiff, formatDate } from "../../utils/getTime";
 
 import noImg from "../../image/noimg.svg";
 

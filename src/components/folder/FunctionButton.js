@@ -7,9 +7,10 @@ import ShareFolderModal from "../modal/ShareFolderModal";
 import ChangeNameModal from "../modal/ChangeNameModal";
 import DeleteFolderModal from "../modal/DeleteFolderModal";
 
-const FunctionButton = ({ selectedFolder }) => {
+const FunctionButton = ({ selectedFolderId, selectedFolder }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(""); // 버튼에 따른 모달 열기
+  const CURRENT_URL = `/shared?user=1&folder=${selectedFolderId}`;
 
   const openModal = (type) => {
     setIsModalOpen(true);
@@ -40,6 +41,7 @@ const FunctionButton = ({ selectedFolder }) => {
           isOpen={isModalOpen}
           onRequestClose={closeModal}
           name={selectedFolder}
+          currentUrl={CURRENT_URL}
         />
       )}
       {modalType === "changeName" && (

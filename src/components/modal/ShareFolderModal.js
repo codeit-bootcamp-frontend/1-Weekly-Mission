@@ -1,11 +1,13 @@
 import Modal from "react-modal";
 import styled from "styled-components";
+
+import shareLink from "../../utils/shareLink";
 import closeBtn from "../../image/close.svg";
 import kakaoTalkIcon from "../../image/kakaotalk.svg";
 import facebookIcon from "../../image/facebook_color.svg";
 import copyIcon from "../../image/copy.svg";
 
-const ShareFolderModal = ({ isOpen, onRequestClose, name }) => {
+const ShareFolderModal = ({ isOpen, onRequestClose, name, currentUrl }) => {
   return (
     <CustomModal
       isOpen={isOpen}
@@ -28,7 +30,7 @@ const ShareFolderModal = ({ isOpen, onRequestClose, name }) => {
             <ButtonName>페이스북</ButtonName>
           </Button>
           <Button>
-            <ButtonImg src={copyIcon} />
+            <ButtonImg src={copyIcon} onClick={() => shareLink(currentUrl)} />
             <ButtonName>링크 복사</ButtonName>
           </Button>
         </ButtonContainer>

@@ -6,14 +6,17 @@ import FunctionButton from "./FunctionButton";
 
 const FolderList = ({ onFolderSelect }) => {
   const folders = useGetFolders();
-  const [selectedFolder, setSelectedFolder] = useState("전체");
+  const [selectedFolderName, setSelectedFolderName] = useState("전체");
+  const [selectedFolderId, setSelectedFolderId] = useState(null);
 
   const handleClick = (folderId, folderName) => {
     if (folderId) {
-      setSelectedFolder(folderName);
+      setSelectedFolderName(folderName);
+      setSelectedFolderId(folderId);
       onFolderSelect(folderId);
     } else {
-      setSelectedFolder("전체");
+      setSelectedFolderName("전체");
+      setSelectedFolderId(null);
       onFolderSelect(null, true);
     }
   };
@@ -24,7 +27,7 @@ const FolderList = ({ onFolderSelect }) => {
         {/* 제목 버튼 */}
         <FolderNav
           folders={folders}
-          selectedFolder={selectedFolder}
+          selectedFolderId={selectedFolderId}
           handleClick={handleClick}
         />
         {/* 폴더 추가 */}
@@ -33,10 +36,13 @@ const FolderList = ({ onFolderSelect }) => {
 
       <div className="folder_wrapper">
         {/* 제목 부분 */}
-        <div className="folder_title">{selectedFolder}</div>
+        <div className="folder_title">{selectedFolderName}</div>
         {/* 추가 버튼 부분 */}
-        {selectedFolder !== "전체" && (
-          <FunctionButton selectedFolder={selectedFolder} />
+        {selectedFolderName !== "전체" && (
+          <FunctionButton
+            selectedFolderId={selectedFolderId}
+            selectedFolderName={selectedFolderName}
+          />
         )}
       </div>
     </>

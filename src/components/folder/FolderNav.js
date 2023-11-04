@@ -1,27 +1,24 @@
-import { Link } from "react-router-dom";
 import { Fragment } from "react";
 
-const FolderNav = ({ folders, selectedFolder, handleClick }) => {
+const FolderNav = ({ folders, selectedFolderId, handleClick }) => {
   return (
     <div className="folder_buttons">
-      <Link
-        className={`folder_item ${selectedFolder === "전체" ? "selected" : ""}`}
-        to={"/folder"}
+      <button
+        className={`folder_item ${selectedFolderId === null ? "selected" : ""}`}
         onClick={() => handleClick(null)}
       >
         <div>전체</div>
-      </Link>
+      </button>
       {folders?.map((folder) => (
         <Fragment key={folder.id}>
-          <Link
+          <button
             className={`folder_item ${
-              selectedFolder === folder.name ? "selected" : ""
+              selectedFolderId === folder.id ? "selected" : ""
             }`}
-            to={`?folderId=${folder.id}`}
             onClick={() => handleClick(folder.id, folder.name)}
           >
             <div>{folder.name}</div>
-          </Link>
+          </button>
         </Fragment>
       ))}
     </div>
