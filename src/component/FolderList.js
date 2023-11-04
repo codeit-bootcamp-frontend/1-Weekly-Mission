@@ -77,17 +77,19 @@ function FolderList({ folders, params }) {
 
       <Styled.FlexDiv>
         <Styled.H1>{name}</Styled.H1>
-        <Styled.FlexUl gap={0.75}>
-          <FunctionBtn src={iconShare} alt="공유">
-            공유
-          </FunctionBtn>
-          <FunctionBtn src={iconPen} alt="이름 변경">
-            이름 변경
-          </FunctionBtn>
-          <FunctionBtn src={iconTrash} alt="삭제">
-            삭제
-          </FunctionBtn>
-        </Styled.FlexUl>
+        {active && (
+          <Styled.OptionalUl>
+            <FunctionBtn src={iconShare} alt="공유">
+              공유
+            </FunctionBtn>
+            <FunctionBtn src={iconPen} alt="이름 변경">
+              이름 변경
+            </FunctionBtn>
+            <FunctionBtn src={iconTrash} alt="삭제">
+              삭제
+            </FunctionBtn>
+          </Styled.OptionalUl>
+        )}
       </Styled.FlexDiv>
     </>
   );

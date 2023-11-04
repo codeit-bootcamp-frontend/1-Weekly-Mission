@@ -11,7 +11,12 @@ export const FlexDiv = styled.div`
 export const FlexUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: ${({ gap }) => (gap ? gap : `0.5`)}rem;
+  gap: 0.5rem;
+`;
+
+export const OptionalUl = styled.ul`
+  display: flex;
+  gap: 0.75rem;
 `;
 
 export const AddBtn = styled.button`
