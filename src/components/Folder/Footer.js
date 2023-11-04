@@ -51,7 +51,6 @@ const Container = styled.footer`
   font-weight: 400;
 
   background: var(--black);
-  z-index: 2;
 
   @media (max-width: 767px) {
     margin-top: 8rem;

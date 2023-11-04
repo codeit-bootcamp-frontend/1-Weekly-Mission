@@ -3,7 +3,7 @@ const URL = 'https://bootcamp-api.codeit.kr/api/';
 export const getAccount = async (userId) => {
   const index = userId - 1;
   if (!userId) return;
-  userId = -1 ? 'sample/user' : `users/${userId}`;
+  userId = userId === -1 ? 'sample/user' : `users/${userId}`;
   const response = await fetch(URL + userId);
   const body = await response.json();
   if (body.data) return body.data[index];

@@ -56,11 +56,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     border: none;
   }
-
-  input{
-  -webkit-box-shadow: 0 0 0 1000px white inset;
-  box-shadow: 0 0 0 1000px white inset;
-}  // 자동완성 시 생성되는 배경색 제거
 `;
 
 export default GlobalStyle;

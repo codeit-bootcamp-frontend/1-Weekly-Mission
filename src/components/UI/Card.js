@@ -29,8 +29,8 @@ function Card({ item }) {
         </CardExtraInfo>
         <a href={url}>
           <Text>{description}</Text>
+          <Date>{uploadDate}</Date>
         </a>
-        <Date>{uploadDate}</Date>
       </InfoArea>
     </Container>
   );
@@ -113,7 +113,7 @@ const Text = styled.p`
   text-overflow: ellipsis;
   font-size: 1.6rem;
   line-height: 2.4rem;
-  margin: 0;
+  margin: 0 0 1rem 0;
 
   &:hover {
     text-decoration: underline;

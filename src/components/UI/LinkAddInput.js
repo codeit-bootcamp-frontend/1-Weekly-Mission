@@ -15,7 +15,7 @@ function LinkAddInput({ selectedFolder }) {
 
     const inputElement = e.target.elements.url; // URL 입력 필드 선택
     const url = inputElement.value; // 입력된 URL 값
-    const urlPattern = /^(http(s)?:\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%+._~#?&//=]*)$/;
+    const urlPattern = /^(https?:\/\/)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%+._~#?&//=]*)$/;
 
     if (!urlPattern.test(url)) {
       alert('유효한 URL 형식이 아닙니다.');
@@ -74,6 +74,8 @@ const Input = styled.input`
   font-size: 1.6rem;
   border: none;
   width: 60rem;
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  box-shadow: 0 0 0 1000px white inset; // 자동완성 시 생성되는 배경색 동일하게 지정
 
   &:focus {
     outline: none;

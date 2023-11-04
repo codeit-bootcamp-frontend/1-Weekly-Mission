@@ -17,27 +17,28 @@ function Folder() {
 
   const account = useGetAccount(userId);
   const selectedFolder = useGetSelectedFolder(userId);
-
   useEffect(() => {
     setUserId(userId);
   }, []);
 
   return (
-    <>
+    <Layout>
       <GlobalStyle />
       <Nav account={account} setSuccess={setSuccess} />
-      <TopArea>
-        <LinkAddInput selectedFolder={selectedFolder?.data} />
-      </TopArea>
-      {success ? (
-        <FolderProvider>
-          {selectedFolder && <FolderMain userID={userId} selectedFolder={selectedFolder?.data} />}
-        </FolderProvider>
-      ) : (
-        <EmptyLinkScreen>로그인이 필요한 페이지입니다🫥</EmptyLinkScreen>
-      )}
+      <Content>
+        <TopArea>
+          <LinkAddInput selectedFolder={selectedFolder?.data} />
+        </TopArea>
+        {success ? (
+          <FolderProvider>
+            {selectedFolder && <FolderMain userID={userId} selectedFolder={selectedFolder?.data} />}
+          </FolderProvider>
+        ) : (
+          <EmptyLinkScreen>로그인이 필요한 페이지입니다🫥</EmptyLinkScreen>
+        )}
+      </Content>
       <Footer />
-    </>
+    </Layout>
   );
 }
 
@@ -59,4 +60,14 @@ const TopArea = styled.div`
   @media (max-width: 779px) {
     padding: 6rem 3.25rem 9rem 3.25rem;
   }
+`;
+
+const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 최소 화면 높이만큼 컨텐츠 영역 확보 */
+`;
+
+const Content = styled.div`
+  flex: 1;
 `;

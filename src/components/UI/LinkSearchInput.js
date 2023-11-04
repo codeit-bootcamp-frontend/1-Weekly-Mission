@@ -32,6 +32,8 @@ const SearchInput = styled.input`
   border-radius: 1rem;
   background: var(--grayLight);
   border: 0;
+  -webkit-box-shadow: 0 0 0 1000px var(--grayLight) inset;
+  box-shadow: 0 0 0 1000px var(--grayLight) inset; // 자동완성 시 생성되는 배경색 동일하게 지정
 
   &:focus {
     border: 0.1rem solid var(--primary);
