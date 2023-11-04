@@ -6,29 +6,22 @@ import useGetWindowWidth from 'hooks/useGetWindowWidth';
 import ModalFrame from 'components/common/Modal/ModalFrame';
 import ModalPortal from 'components/common/Modal/ModalPortal';
 import InputModal from 'components/common/Modal/InputModal';
+import { handleModalOpen, handleModalClose } from 'utils/handleModal';
 
 function AddFolderBtn() {
   const innerWidth = useGetWindowWidth();
   const [modal, setModal] = useState(false);
 
-  function handleModalOpen() {
-    setModal(true);
-  }
-
-  function handleModalClose() {
-    setModal(false);
-  }
-
   return (
     <>
-      <Container onClick={handleModalOpen}>
+      <Container onClick={() => handleModalOpen(setModal)}>
         <AddFolder>폴더 추가</AddFolder>
         <img src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
       </Container>
       {modal && (
         <ModalPortal>
           <ModalFrame>
-            <InputModal title="폴더 추가" btn="추가하기" onClickClose={handleModalClose} />
+            <InputModal title="폴더 추가" btn="추가하기" onClickClose={() => handleModalClose(setModal)} />
           </ModalFrame>
         </ModalPortal>
       )}

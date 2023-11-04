@@ -6,7 +6,6 @@ import useGetFolders from './useGetFolders';
  */
 function useGetLinkCount(userId) {
   const folderData = useGetFolders(userId);
-  // const linkCount = [];
 
   if (!folderData) return;
   const linkCount = folderData.map((folder) => ({ name: folder.name, count: folder.link.count }));
