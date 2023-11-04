@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import * as Modal from '../Modal.style';
 import * as S from './Share.style';
-import Layout from '../Layout';
 import KAKAO from 'assets/icons/kakaotalk-large.svg';
 import FACEBOOK from 'assets/icons/facebook-large.svg';
 import SHARE_LINK from 'assets/icons/share-link.svg';
 
-function Share({ closeModal, folderName, folderId, userId }) {
+function Share({ folderName, folderId, userId }) {
   const { Kakao } = window;
 
   const realUrl = `https://linkbrary-geon.netlify.app/shared?user=${userId}&folder=${folderId}`;
@@ -56,7 +55,7 @@ function Share({ closeModal, folderName, folderId, userId }) {
   }, []);
 
   return (
-    <Layout closeModal={closeModal}>
+    <>
       <Modal.Header>
         <Modal.Title>폴더 공유</Modal.Title>
         <Modal.Description>{folderName}</Modal.Description>
@@ -84,7 +83,7 @@ function Share({ closeModal, folderName, folderId, userId }) {
           링크 복사
         </ShareBox>
       </S.ShareContainer>
-    </Layout>
+    </>
   );
 }
 

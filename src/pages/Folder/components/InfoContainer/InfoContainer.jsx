@@ -10,25 +10,18 @@ import DeleteLink from 'components/Modal/DeleteLink';
 import AddToFolder from 'components/Modal/AddToFolder';
 
 function InfoContainer({ defaultFolder, selectedFolder, userId }) {
-  const closeModal = () => {
-    toggleShow(null);
-  };
-
   const [toggleShow, Modal] = useModal({
-    edit: <Edit closeModal={closeModal} />,
+    edit: <Edit />,
     share: (
       <Share
-        closeModal={closeModal}
         folderName={selectedFolder?.name}
         folderId={selectedFolder?.id}
         userId={userId}
       />
     ),
-    deleteFolder: (
-      <DeleteFolder closeModal={closeModal} folderName={selectedFolder?.name} />
-    ),
-    deleteLink: <DeleteLink closeModal={closeModal} />,
-    addToFolder: <AddToFolder closeModal={closeModal} />,
+    deleteFolder: <DeleteFolder folderName={selectedFolder?.name} />,
+    deleteLink: <DeleteLink />,
+    addToFolder: <AddToFolder />,
   });
 
   return (

@@ -10,12 +10,8 @@ function FoldersView({
   selectedFolder,
   onFolderButtonClick,
 }) {
-  const closeModal = () => {
-    toggleShow(null);
-  };
-
   const [toggleShow, Modal] = useModal({
-    newFolder: <NewFolder closeModal={closeModal} />,
+    newFolder: <NewFolder />,
   });
 
   return (

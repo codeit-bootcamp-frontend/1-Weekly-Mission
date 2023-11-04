@@ -7,14 +7,8 @@ import { useState } from 'react';
 function AddLinkContainer({ userId }) {
   const [url, setUrl] = useState('');
 
-  const closeModal = () => {
-    toggleShow(null);
-  };
-
   const [toggleShow, Modal] = useModal({
-    addToFolder: (
-      <AddToFolder closeModal={closeModal} url={url} userId={userId} />
-    ),
+    addToFolder: <AddToFolder url={url} userId={userId} />,
   });
 
   return (

@@ -32,15 +32,9 @@ function Card({ data, userId }) {
     }
   };
 
-  const closeModal = () => {
-    toggleShow(null);
-  };
-
   const [toggleShow, Modal] = useModal({
-    deleteLink: <DeleteLink closeModal={closeModal} url={url} />,
-    addToFolder: (
-      <AddToFolder closeModal={closeModal} url={url} userId={userId} />
-    ),
+    deleteLink: <DeleteLink url={url} />,
+    addToFolder: <AddToFolder url={url} userId={userId} />,
   });
 
   const setKebabModal = (modal) => {
