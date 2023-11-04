@@ -1,9 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { FolderContext } from "context/FolderContext";
 
 import styled from "styled-components";
 
-import { shareKakao } from "common/libraries/shareKakaoLink";
+import { shareOnKakao } from "common/libraries/shareKakaoLink";
 import { shareOnFacebook } from "common/libraries/shareFacebookLink";
 import ModalTitle from "components/title/ModalTitle";
 
@@ -69,20 +69,11 @@ export default function ShareFolder({ currentFolderName }) {
     const { user_id, id } = folderInfo[0];
 
     if (shareOnSns === "kakao") {
-      shareKakao(user_id, id);
+      shareOnKakao(user_id, id);
     } else if (shareOnSns === "facebook") {
       shareOnFacebook(user_id, id);
     }
   };
-
-  /* 카카오 스크립트 추가 및 제거 */
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => document.body.removeChild(script);
-  }, []);
 
   return (
     <Contents>
