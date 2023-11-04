@@ -1,4 +1,6 @@
 export const shareOnKakao = (userId = 1, folderId = 40) => {
+  const hostURL = window.location.href;
+
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
@@ -13,8 +15,8 @@ export const shareOnKakao = (userId = 1, folderId = 40) => {
       description: "링크",
       imageUrl: "이미지 URL",
       link: {
-        mobileWebUrl: `http://localhost:3000/shared?user=${userId}&folder=${folderId}`,
-        webUrl: `http://localhost:3000/shared?user=${userId}&folder=${folderId}`,
+        mobileWebUrl: `${hostURL}/shared?user=${userId}&folder=${folderId}`,
+        webUrl: `${hostURL}/shared?user=${userId}&folder=${folderId}`,
       },
     },
   });
