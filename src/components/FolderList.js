@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import Modal from "./Modal.js";
 
 
 const StyledMenu = styled.div`
@@ -29,6 +31,11 @@ const StyledMenu = styled.div`
 
 
 function FolderList({ data, onClick }) {
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const openModal = () => setIsModalOpen(true);
+  // const closeModal = () => setIsModalOpen(false);
+
 
   return (
     <StyledMenu>
@@ -36,9 +43,11 @@ function FolderList({ data, onClick }) {
         <li>전체</li>
         {data.map((folder) => 
           <li key={folder.id} onClick={() => onClick(folder.id)}>{folder.name}</li>
-          )}
+        )}
       </ul>
-      <div className="add-folder">폴더 추가 +</div>
+      <div className="add-folder">
+        <Modal>폴더 추가+</Modal>
+      </div>
     </StyledMenu>
   );
 }
