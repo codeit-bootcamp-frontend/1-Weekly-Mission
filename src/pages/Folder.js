@@ -118,7 +118,10 @@ function Folder() {
       )}
       {editFolderModal.state && (
         <Modal onClick={editFolderModal.handleClick}>
-          <EditFolder onChange={editFolder.handleChange}>
+          <EditFolder
+            onChange={editFolder.handleChange}
+            value={editFolder.values}
+          >
             {folderName}
           </EditFolder>
         </Modal>
@@ -130,7 +133,9 @@ function Folder() {
       )}
       {addFolderModal.state && (
         <Modal onClick={addFolderModal.handleClick}>
-          <AddFolder onChange={addFolder.handleChange}>{folderName}</AddFolder>
+          <AddFolder onChange={addFolder.handleChange} value={addFolder.values}>
+            {folderName}
+          </AddFolder>
         </Modal>
       )}
     </>

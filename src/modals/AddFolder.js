@@ -3,7 +3,7 @@ import ModalHeader from '../components/ModalHeader/ModalHeader';
 import InputBox from '../components/InputBox/InputBox';
 import Button from '../components/Button/Button';
 
-function AddFolder({ onChange }) {
+function AddFolder({ onChange, value }) {
   return (
     <>
       <ModalHeader title="폴더 추가"></ModalHeader>
@@ -11,6 +11,7 @@ function AddFolder({ onChange }) {
         <form className={styles.form} onSubmit="" noValidate>
           <InputBox>
             <input
+              value={value}
               className={styles.input}
               placeholder="내용 입력"
               onChange={onChange}
