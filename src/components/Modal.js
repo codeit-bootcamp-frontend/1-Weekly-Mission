@@ -9,27 +9,12 @@ const ModalContainer = styled.div`
   height: 100%;
 `;
 
-const ModalBtn = styled.button`
-  background-color: #999;
+const ModalBtn = styled.div`
   text-decoration: none;
   border: none;
   padding: 20px;
-  color: white;
   border-radius: 30px;
   cursor: pointer;
-`;
-
-const ExitBtn = styled(ModalBtn)`
-  background-color: #777;
-  border-radius: 10px;
-  text-decoration: none;
-  margin: 10px;
-  padding: 5px 10px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const ModalBackdrop = styled.div`
@@ -42,25 +27,70 @@ const ModalBackdrop = styled.div`
   border-radius: 10px;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
 `;
 
-const ModalView = styled.div.attrs((props) => ({
-  // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있다.
-  role: 'dialog',
-}))`
-  // Modal창 CSS를 구현합니다.
+const ModalView = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   border-radius: 20px;
-  width: 500px;
-  height: 200px;
+  width: 360px;
+  height: 239px;
   background-color: #ffffff;
-    >div.desc {
-      margin: 50px;
-      font-size: 20px;
-      color: var(--coz-purple-600);
-    }
+  position: relative;
+`;
+
+const ExitBtn = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: var(--color-gray-04);
+  color: var(--color-gray-02);
+  font-weight: 600;
+  border-radius: 50%;
+  margin: 10px;
+  padding: 5px 10px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const ModalContent = styled.div`
+  width: 280px;
+  height: 174px;
+  margin: 32px 40px;
+  text-align: center;
+  h1 {
+    color: #373740;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 24px;
+  }
+  input {
+    width: 100%;
+    padding: 18px 15px;
+    border: 1px solid #CCD5E3;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 15px;
+  }
+  input::placeholder {
+    color: #CCD5E3
+  }
+  button {
+    width: 100%;
+    padding: 16px 20px;
+    background: var(--color-background);
+    color: var(--color-white);
+    border-radius: 8px;
+  }
 `;
 
 function Modal({ children }) {
@@ -78,7 +108,11 @@ function Modal({ children }) {
           <ModalBackdrop onclick={openModalHandler}>
             <ModalView onClick={(e) => e.stopPropagation()}>
               <ExitBtn onClick={openModalHandler}>X</ExitBtn>
-              <div className="desc">This is Modal.</div>
+              <ModalContent>
+                <h1>폴더 추가</h1>
+                <input type="text" placeholder="내용 입력" />
+                <button>추가하기</button>
+              </ModalContent>
             </ModalView>
           </ModalBackdrop>
           : null
