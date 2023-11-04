@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { getSelectItems, getUserLogin, getRenderLinks } from "../../api";
 import SelectPart from "./SelectPart";
 import SearchBar from "./SearchBar";
-import { ModalAddFolder } from "../Modal";
+import { ModalAddFolder } from "./Modal/Modal.js";
 
 function Folder() {
   const [selectItems, setSelectItem] = useState([]);
@@ -20,6 +20,8 @@ function Folder() {
   const [selected, setSelected] = useState("전체");
   const [openAddFolder, setOpenAddModal] = useState(false);
   const [userId, setUserId] = useState("");
+  const [url, setUrl] = useState("");
+
   const handleSelectItems = async () => {
     try {
       const { data } = await getSelectItems();
@@ -70,8 +72,6 @@ function Folder() {
     setNowFolderId(key);
   };
 
-  const shareUrl = (userId, folderId) => {};
-
   useEffect(() => {
     // 마운트 시 렌더링 되는 것들
     initailize();
@@ -82,9 +82,10 @@ function Folder() {
     handleRenderItems();
   }, [nowFolderId]);
 
-  const openMAF = (e) => {
+  const openMAF = (e, nowUrl) => {
     e.preventDefault();
     setOpenAddModal((prev) => !prev);
+    setUrl(nowUrl);
   };
   const CloseMAF = (e) => {
     e.preventDefault();
@@ -110,7 +111,11 @@ function Folder() {
         <div className="empty">저장된 링크가 없습니다</div>
       )}
       {openAddFolder ? (
-        <ModalAddFolder selectItems={selectItems} CloseMAF={CloseMAF} />
+        <ModalAddFolder
+          selectItems={selectItems}
+          CloseMAF={CloseMAF}
+          url={url}
+        />
       ) : (
         ""
       )}

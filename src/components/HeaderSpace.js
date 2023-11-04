@@ -7,6 +7,8 @@ function HeaderSpace({ profiles, openMAF }) {
   const [text, setText] = useState("");
 
   const handleChangeText = (e) => setText(e.target.value);
+  const handleTypingUrl = (e) => openMAF(e, text);
+
   return (
     <>
       {profiles !== undefined ? (
@@ -37,7 +39,11 @@ function HeaderSpace({ profiles, openMAF }) {
             />
 
             <img src={linkAdd} className="linkAdd-bar-image" alt=" " />
-            <button onClick={openMAF} className="cta cta-short" href="/">
+            <button
+              onClick={handleTypingUrl}
+              className="cta cta-short"
+              href="/"
+            >
               <span>추가하기</span>
             </button>
           </div>

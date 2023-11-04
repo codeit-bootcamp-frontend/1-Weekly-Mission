@@ -3,7 +3,7 @@ import share from "../../images/share.svg";
 import changes from "../../images/pen.svg";
 import deletings from "../../images/delete.svg";
 import { useState } from "react";
-import { ModalLink } from "../Modal";
+import { ModalLink } from "./Modal/Modal.js";
 
 export const LinkOptions = [
   {

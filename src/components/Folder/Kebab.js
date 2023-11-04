@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import kebab from "../images/kebab.svg";
-import { Modalkebab } from "./Modal";
+import kebab from "../../images/kebab.svg";
+import { Modalkebab } from "./Modal/Modal.js";
 export const ModalInfo = [
   {
     title: "폴더에 추가",
@@ -55,7 +55,7 @@ export default function KebabButton({ url, openMAF }) {
   const handleOpenMAF = (e) => {
     e.preventDefault();
     setIsClicked(e.target.innerText);
-    openMAF(e);
+    openMAF(e, url);
   };
 
   const handlecloseModal = (e) => {

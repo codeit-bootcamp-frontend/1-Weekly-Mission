@@ -2,7 +2,7 @@ import "../styles/card.css";
 import "../styles/reset.css";
 import noImage from "../images/noimage.svg";
 import star from "../images/star.svg";
-import KebabButton from "./Kebab";
+import KebabButton from "./Folder/Kebab";
 import { timeForToday, formatDate } from "../date.js";
 
 function Card({ item, openMAF }) {
@@ -25,7 +25,7 @@ function Card({ item, openMAF }) {
           <div className="card-box">
             <span className="card-created-time">
               {timeForToday(createdAt || item.created_at)}
-              <KebabButton openMAF={openMAF} />
+              <KebabButton openMAF={openMAF} url={url} />
             </span>
             <span className="card-text">{description}</span>
             <span className="card-created-at">

@@ -2,7 +2,7 @@ const shareKakao = (route) => {
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
-      kakao.init("ba8e4058d448ba5a018e20131a59d3da");
+      kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
     }
 
     kakao.Link.sendDefault({
