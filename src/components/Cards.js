@@ -1,6 +1,9 @@
 import "./Cards.css";
 import logoImg from "../img/noImgLogo.svg";
 import GetTimeDiff from "../utils/GetTimeDiff";
+import starImgDefault from "../img/starDefault.png";
+// import starImgSelected from "../img/starSelected.png";
+import kebab from "../img/kebab.png";
 
 function CardItem({ item, id }) {
   const imgStyle = {
@@ -28,6 +31,11 @@ function CardItem({ item, id }) {
     <a href={item.url} target="_blank" rel="noreferrer">
       <div key={id} className="card">
         <div className="card-img-wrap">
+          <img
+            className="card-star"
+            src={starImgDefault}
+            alt="즐겨찾기 미선택 상태 버튼"
+          />
           {!item.image_source && !item.imageSource ? ( // 두 가지 케이스 모두 고려
             <div className="card-img" style={noImgStyle}></div>
           ) : (
@@ -35,7 +43,10 @@ function CardItem({ item, id }) {
           )}
         </div>
         <div className="card-information">
-          <div className="time">{nowDate}</div>
+          <div className="card-time-kebab">
+            <div className="time">{nowDate}</div>
+            <img className="kebab" src={kebab} alt="카드 더 알아보기 버튼" />
+          </div>
           <p>{item.description}</p>
           <div className="date">
             {createdAt && createdAt.split("T")[0]}{" "}

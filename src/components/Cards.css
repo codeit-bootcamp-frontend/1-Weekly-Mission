@@ -17,6 +17,15 @@
   position: relative;
 }
 
+.card-star {
+  position: absolute;
+  top: 15px;
+  left: 291px;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+}
+
 .card-img-wrap .logoImg {
   position: absolute;
   top: 50%;
@@ -27,6 +36,14 @@
 .card:hover .card-img {
   transform: scale(130%);
   transition: 1s;
+}
+
+.card:hover .card-star {
+  display: block;
+}
+
+.card:hover .card-star {
+  opacity: 1;
 }
 
 .card:hover .card-information {
@@ -55,6 +72,13 @@
   gap: 10px;
   padding: 15px 20px;
   min-height: 145px;
+}
+
+.card-time-kebab {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
 }
 
 .card-information .time {
@@ -94,7 +118,8 @@
 }
 .cardlist-inner {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 25px 20px;
   margin: 40px auto;
