@@ -3,9 +3,13 @@ import '../css/card.css';
 import { useState } from 'react';
 import { Popover } from 'react-tiny-popover';
 import styled from 'styled-components';
+import RemoveLinkModal from './Modal/RemoveLinkModal';
+import InsertFolderModal from './Modal/InsertFolderModal';
 
 function Card({ card }) {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [isLinkRemoveModal, setIsLinkRemoveModal] = useState(false);
+  const [isInsertFolderModal, setIsInsertFolderModal] = useState(false);
 
   const OpenPopover = (e) => {
     e.stopPropagation(); // 이벤트가 상위 엘리먼트에 전달되지 않게 막아 준다.
@@ -35,8 +39,8 @@ function Card({ card }) {
               onClickOutside={() => setIsPopoverOpen(false)}
               content={
                 <PopoverContainer>
-                  <PopoverButton>삭제하기</PopoverButton>
-                  <PopoverButton>폴더에 추가</PopoverButton>
+                  <PopoverButton onClick={() => setIsLinkRemoveModal(true)}>삭제하기</PopoverButton>
+                  <PopoverButton onClick={() => setIsInsertFolderModal(true)}>폴더에 추가</PopoverButton>
                 </PopoverContainer>
               }
             >
@@ -49,6 +53,8 @@ function Card({ card }) {
           <Moment format="YYYY.MM.DD">{card.createdAt}</Moment>
         </div>
       </div>
+      {isLinkRemoveModal && <RemoveLinkModal setIsLinkRemoveModal={setIsLinkRemoveModal} />}
+      {isInsertFolderModal && <InsertFolderModal setIsInsertFolderModal={setIsInsertFolderModal} />}
     </>
   );
 }

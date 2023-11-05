@@ -10,6 +10,8 @@ import IconTrash from '../assets/icon/icon-trash.svg';
 import ShareFolderModal from './Modal/ShareFolderModal';
 import RenameFolderModal from './Modal/RenameFolderModal';
 import RemoveFolderModal from './Modal/RemoveFolderModal';
+import RemoveLinkModal from './Modal/RemoveLinkModal';
+import InsertFolderModal from './Modal/InsertFolderModal';
 
 const INITIAL_FOLDER = {
   id: '',
@@ -18,9 +20,9 @@ const INITIAL_FOLDER = {
 
 function FolderList({ folderList = null, getCardList }) {
   const [folderName, setFolderName] = useState('전체');
-  const [IsFolderShareModal, setIsFolderShareModal] = useState(false);
-  const [IsFolderRenameModal, setIsFolderRenameModal] = useState(false);
-  const [IsFolderRemoveModal, setIsFolderRemoveModal] = useState(false);
+  const [isFolderShareModal, setIsFolderShareModal] = useState(false);
+  const [isFolderRenameModal, setIsFolderRenameModal] = useState(false);
+  const [isFolderRemoveModal, setIsFolderRemoveModal] = useState(false);
 
   const handleButton = (name, id) => {
     setFolderName(name);
@@ -56,9 +58,9 @@ function FolderList({ folderList = null, getCardList }) {
             삭제
           </OptionBtn>
         </Options>
-        {IsFolderShareModal && <ShareFolderModal setIsFolderShareModal={setIsFolderShareModal} />}
-        {IsFolderRenameModal && <RenameFolderModal setIsFolderRenameModal={setIsFolderRenameModal} />}
-        {IsFolderRemoveModal && <RemoveFolderModal setIsFolderRemoveModal={setIsFolderRemoveModal} />}
+        {isFolderShareModal && <ShareFolderModal setIsFolderShareModal={setIsFolderShareModal} />}
+        {isFolderRenameModal && <RenameFolderModal setIsFolderRenameModal={setIsFolderRenameModal} />}
+        {isFolderRemoveModal && <RemoveFolderModal setIsFolderRemoveModal={setIsFolderRemoveModal} />}
       </FolderTitleContainer>
     </div>
   );
@@ -66,6 +68,9 @@ function FolderList({ folderList = null, getCardList }) {
 
 function Folder({ folderList = null }) {
   const [cards, setCards] = useState();
+  const [isLinkRemoveModal, setIsLinkRemoveModal] = useState(false);
+  const [isInsertFolderModal, setIsInsertFolderModal] = useState(false);
+
   const getCardList = async (id = '') => {
     const result = await getCards(id);
     setCards(() => {
@@ -81,6 +86,8 @@ function Folder({ folderList = null }) {
     <Container>
       <FolderList folderList={folderList} getCardList={getCardList} />
       <CardList cards={cards} />
+      {isLinkRemoveModal && <RemoveLinkModal setIsLinkRemoveModal={setIsLinkRemoveModal} />}
+      {isInsertFolderModal && <InsertFolderModal setIsInsertFolderModal={setIsInsertFolderModal} />}
     </Container>
   );
 }

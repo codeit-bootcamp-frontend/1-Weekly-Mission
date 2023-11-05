@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function RemoveLinkModal() {
+function RemoveLinkModal({ setIsLinkRemoveModal }) {
   return (
     <>
       <Container>
         <Content>
           <Title>링크 삭제</Title>
+          <CloseButton
+            onClick={() => {
+              setIsLinkRemoveModal(false);
+            }}
+          >
+            <img src="/assets/image/close.png" alt="닫기 버튼" />
+          </CloseButton>
           <LinkName>링크 주소</LinkName>
           <Cta name="삭제하기" />
         </Content>
@@ -59,4 +66,10 @@ const LinkName = styled.p`
   font-weight: 400;
   line-height: 2.2rem; /* 157.143% */
   margin: 0.8rem 0 2.4rem;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
 `;

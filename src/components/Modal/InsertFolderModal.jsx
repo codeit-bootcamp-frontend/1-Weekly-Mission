@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function InsertFolderModal() {
+function InsertFolderModal({ setIsInsertFolderModal }) {
   return (
     <>
       <Container>
         <Content>
-          <Title>폴더 이름 변경</Title>
-          <Input />
-          <Cta name="변경하기" />
+          <Title>폴더에 추가</Title>
+          <CloseButton
+            onClick={() => {
+              setIsInsertFolderModal(false);
+            }}
+          >
+            <img src="/assets/image/close.png" alt="닫기 버튼" />
+          </CloseButton>
+          <Cta name="추가하기" />
         </Content>
       </Container>
     </>
@@ -51,13 +57,8 @@ const Title = styled.p`
   line-height: normal;
 `;
 
-const Input = styled.input`
-  display: flex;
-  width: 28rem;
-  padding: 1.8rem 1.5rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  border: 1px solid var(--primary, #6d6afe);
-  background: var(--white, #fff);
+const CloseButton = styled.button`
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
 `;
