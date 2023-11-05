@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import { ModalBody } from '../../styles/ModalStyle';
 import FolderEditModal from './FolderEditModal';
 import FolderAddModal from './FolderAddModal';
+import FolderDeleteModal from './FolderDeleteModal';
 
 
-function FolderModal({ action, onCloseModal }) {
+function FolderModal({ action, onCloseModal, name }) {
 
   const decideFolderModal = (action) => {
     switch (action) {
@@ -18,6 +19,12 @@ function FolderModal({ action, onCloseModal }) {
         return (
           <>
             <FolderAddModal onCloseModal={onCloseModal} />
+          </>
+        );
+      case 'delete':
+        return (
+          <>
+            <FolderDeleteModal onCloseModal={onCloseModal} name={name} />
           </>
         );
       default:

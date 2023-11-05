@@ -38,7 +38,8 @@ export const ModalTitle = styled.h1`
   line-height: normal;
 `;
 
-export const InputContainer = styled.div`
+
+  export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -61,8 +62,34 @@ export const ModalInput = styled.input`
   }
 `;
 
+export const ModalTitleContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.8rem;
+`;
+
+export const ModalSubTitle = styled.h2`
+  color: #9FA6B2;
+  text-align: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.2rem; /* 157.143% */
+`
+
 export const ModalFolderButton = styled(Button)`
   width: 100%;
   font-size: 1.6rem;
   padding: 1.6rem 2rem;
 `;
+
+export const ModalFolderRedButton = styled(Button)`
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 1.6rem 2rem;
+  background: #FF5B56;
+`

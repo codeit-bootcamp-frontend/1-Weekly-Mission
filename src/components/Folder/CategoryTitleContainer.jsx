@@ -24,7 +24,7 @@ const ICONS = [
     id: 3,
     iconImage: delete_icon,
     name: '삭제',
-    action: 'deleteFolder'
+    action: 'delete'
   },
 ];
 
@@ -53,7 +53,7 @@ function CategoryTitleContainer({ name }) {
         })}
         {isOpen && (
           <Modal>
-            <FolderModal action={action} onCloseModal={closeModal}/>
+            <FolderModal action={action} onCloseModal={closeModal} name={name}/>
           </Modal>
         )}
       </FolderControlContainer>
