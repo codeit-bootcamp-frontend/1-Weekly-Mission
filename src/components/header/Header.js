@@ -1,25 +1,66 @@
-import "./Header.css";
+import styled from "styled-components";
 
 const Header = ({ folder }) => {
   const { owner, name } = folder;
 
   return (
-    <header>
-      <div className="header_wrapper">
-        <div className="user_info">
-          <div className="user_profile">
-            <img
-              className="owner_img"
-              src={owner?.profileImageSource}
-              alt="프로필 사진"
-            />
-            <div className="owner_name">{owner?.name}</div>
-          </div>
-          <div className="folder_name">{name}</div>
-        </div>
-      </div>
-    </header>
+    <Container>
+      <Wrapper>
+        <UserInfo>
+          <UserProfile>
+            <OwnerImg src={owner?.profileImageSource} alt="프로필 사진" />
+            <OwnerName>{owner?.name}</OwnerName>
+          </UserProfile>
+          <FolderName>{name}</FolderName>
+        </UserInfo>
+      </Wrapper>
+    </Container>
   );
 };
+
+const Container = styled.header`
+  width: 100%;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+`;
+
+const Wrapper = styled.div`
+  padding: 2rem 62.4rem 6rem 62.4rem;
+`;
+
+const UserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 20rem;
+`;
+
+const UserProfile = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+`;
+
+const OwnerImg = styled.img`
+  width: 60px;
+`;
+
+const OwnerName = styled.div`
+  color: var(--linkbrary-black);
+  font-size: 1.6rem;
+  line-height: 2.4rem; /* 150% */
+`;
+
+const FolderName = styled.div`
+  color: var(--linkbrary-black);
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 600;
+`;
 
 export default Header;

@@ -1,6 +1,6 @@
-import Card from "./Card";
 import { Fragment } from "react";
-import "./Card.css";
+import styled from "styled-components";
+import Card from "./Card";
 import useGetSampleLinks from "../../hooks/useGetSampleLinks";
 import useGetLinks from "../../hooks/useGetLinks";
 
@@ -10,20 +10,49 @@ const CardList = ({ folderId }) => {
   const links = folderId ? folderLinks : sharedLinks;
 
   return (
-    <div className="card_wrapper">
+    <Container>
       {links?.length ? (
-        links.map((link) => {
-          return (
-            <Fragment key={link.id}>
-              <Card item={link} />
-            </Fragment>
-          );
-        })
+        links.map((link) => (
+          <Fragment key={link.id}>
+            <Card item={link} />
+          </Fragment>
+        ))
       ) : (
-        <div className="no_link">저장된 링크가 없습니다.</div>
+        <NoLink>저장된 링크가 없습니다.</NoLink>
       )}
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+`;
+
+const NoLink = styled.div`
+  display: flex;
+  width: 1060px;
+  height: 100px;
+  padding: 41px 0px 35px 0px;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--linkbrary-black);
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px; /* 150% */
+
+  @media (max-width: 1124px) {
+    width: 70.4rem;
+  }
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    width: 34rem;
+  }
+`;
 
 export default CardList;

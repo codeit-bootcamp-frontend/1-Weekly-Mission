@@ -80,7 +80,7 @@ const FuncBtnImg = styled.img`
 `;
 
 const FuncBtnMsg = styled.span`
-  color: var(--linkbrary-gray-2);
+  color: var(--gray20);
   font-size: 14px;
   font-weight: 600;
 `;

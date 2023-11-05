@@ -1,28 +1,22 @@
 import styled from "styled-components";
-import { useState } from "react";
+import Header from "../header/Header";
 import SearchBar from "../common/SearchBar";
-import FolderList from "./FolderList";
 import CardList from "../card/CardList";
+import useGetSampleFolder from "../../hooks/useGetSampleFolder";
 
-const FolderContainer = () => {
-  const [selectedFolderId, setSelectedFolderId] = useState(null);
-
-  const onFolderSelect = (folderId, isAll) => {
-    if (isAll) {
-      setSelectedFolderId(null);
-    } else {
-      setSelectedFolderId(folderId);
-    }
-  };
+const SharedContainer = () => {
+  const folder = useGetSampleFolder();
 
   return (
-    <Main>
-      <Container>
-        <SearchBar />
-        <FolderList onFolderSelect={onFolderSelect} />
-        <CardList folderId={selectedFolderId} />
-      </Container>
-    </Main>
+    <>
+      {folder && <Header folder={folder} />}
+      <Main>
+        <Container>
+          <SearchBar />
+          <CardList />
+        </Container>
+      </Main>
+    </>
   );
 };
 
@@ -52,4 +46,4 @@ const Container = styled.div`
   }
 `;
 
-export default FolderContainer;
+export default SharedContainer;

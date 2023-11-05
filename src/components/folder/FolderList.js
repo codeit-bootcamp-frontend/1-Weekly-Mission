@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "styled-components";
 import useGetFolders from "../../hooks/useGetFolders";
 import FolderNav from "./FolderNav";
 import AddFolderButton from "./AddFolderButton";
@@ -23,7 +24,7 @@ const FolderList = ({ onFolderSelect }) => {
 
   return (
     <>
-      <div className="folder_wrapper">
+      <FolderWrapper>
         {/* 제목 버튼 */}
         <FolderNav
           folders={folders}
@@ -32,11 +33,11 @@ const FolderList = ({ onFolderSelect }) => {
         />
         {/* 폴더 추가 */}
         <AddFolderButton />
-      </div>
+      </FolderWrapper>
 
-      <div className="folder_wrapper">
+      <FolderWrapper>
         {/* 제목 부분 */}
-        <div className="folder_title">{selectedFolderName}</div>
+        <FolderTitle>{selectedFolderName}</FolderTitle>
         {/* 추가 버튼 부분 */}
         {selectedFolderName !== "전체" && (
           <FunctionButton
@@ -44,9 +45,30 @@ const FolderList = ({ onFolderSelect }) => {
             selectedFolderName={selectedFolderName}
           />
         )}
-      </div>
+      </FolderWrapper>
     </>
   );
 };
+
+const FolderWrapper = styled.div`
+  display: flex;
+  width: 106rem;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 1124px) {
+    width: 70.4rem;
+  }
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    width: 34rem;
+  }
+`;
+
+const FolderTitle = styled.div`
+  color: var(--linkbrary-black);
+  font-size: 2.4rem;
+  font-weight: 600;
+`;
 
 export default FolderList;

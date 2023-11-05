@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 
 const LinkBox = styled(Link)`
@@ -15,6 +16,9 @@ const LinkBox = styled(Link)`
 function HomePage() {
   return (
     <>
+      <Helmet>
+        <title>HomePage</title>
+      </Helmet>
       <LinkBox to="/shared">shared</LinkBox>
       <LinkBox to="/folder">folder</LinkBox>
     </>

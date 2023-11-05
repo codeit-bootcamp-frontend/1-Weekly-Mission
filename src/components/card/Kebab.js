@@ -43,7 +43,6 @@ const Kebab = ({ link }) => {
   return (
     <KebabContainer>
       <ToggleKebab
-        className="toggle_kebab"
         src={kebab}
         alt="kebab button"
         onClick={handleTogglePopover}
@@ -74,6 +73,8 @@ const KebabContainer = styled.div`
 
 const ToggleKebab = styled.img`
   cursor: pointer;
+  width: 2.1rem;
+  height: 1.7rem;
 `;
 
 const Popover = styled.div`
@@ -82,7 +83,7 @@ const Popover = styled.div`
   position: absolute;
   top: 20px;
   left: 0;
-  background: var(--gray-light-gray-00, #fff);
+  background: var(--linkbrary-white);
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
   border: none;
 `;
@@ -93,11 +94,10 @@ const Button = styled.button`
   padding: 7px 12px;
   border: none;
   background: transparent;
-  cursor: pointer;
 
   &:hover {
-    background: var(--linkbrary-gray-10, #e7effb);
-    color: var(--linkbrary-primary-color, #6d6afe);
+    background: var(--gray40);
+    color: var(--primary);
   }
 `;
 
