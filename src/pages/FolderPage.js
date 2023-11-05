@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import AddLink from "../component/AddLink";
-import Cards from "../component/Cards";
-import FolderList from "../component/FolderList";
-import Search from "../component/Search";
+import { createContext, useEffect, useState } from "react";
+import AddLink from "../component/AddLink/AddLink";
+import FolderPageCards from "../component/Cards/FolderPageCards";
+import FolderList from "../component/FolderList/FolderList";
+import Search from "../component/Search/Search";
 import useAsync from "../hooks/useAsync";
 import { getLink } from "../api/getLink";
 import { getFolder } from "../api/getFolder";
 import style from "./FolderPage.module.css";
 import { useSearchParams } from "react-router-dom";
-import CurrentFolder from "../component/CurrentFolder";
-
+import CurrentFolder from "../component/CurrentFolder/CurrentFolder";
+export const FolderPageContext = createContext();
 function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
@@ -18,28 +18,28 @@ function FolderPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const folderParam = searchParams.get("folderId");
 
-  const handleFolderLoad = async () => {
-    const folders = await getFolderAsync({ id: 1 });
-    setFolders([...folders]);
-  };
-  const handleLinkLoad = async () => {
-    const links = await getLinkAsync({
-      id: 1,
-      folderId: folderParam || "",
-    });
-    setLinks([...links]);
-  };
   useEffect(() => {
+    const handleLinkLoad = async () => {
+      const links = await getLinkAsync({
+        id: 1,
+        folderId: folderParam || "",
+      });
+      setLinks([...links]);
+    };
     handleLinkLoad();
   }, [folderParam]);
 
   useEffect(() => {
+    const handleFolderLoad = async () => {
+      const folders = await getFolderAsync({ id: 1 });
+      setFolders([...folders]);
+    };
     handleFolderLoad();
   }, []);
   return (
     <>
       <div className={style.addLink}>
-        <AddLink />
+        <AddLink folders={folders} />
       </div>
       <div className={style.root}>
         <div className={style.section}>
@@ -47,11 +47,13 @@ function FolderPage() {
           <div className={style.folderSection}>
             <FolderList folders={folders} />
             <CurrentFolder folderId={folderParam} folders={folders} />
-            {links.length ? (
-              <Cards cards={links} />
-            ) : (
-              <span className={style.emptyLink}>저장된 링크가 없습니다.</span>
-            )}
+            <FolderPageContext.Provider value={folders}>
+              {links.length ? (
+                <FolderPageCards cards={links} />
+              ) : (
+                <span className={style.emptyLink}>저장된 링크가 없습니다.</span>
+              )}
+            </FolderPageContext.Provider>
           </div>
         </div>
       </div>

@@ -1,29 +1,29 @@
 import { useState, useEffect } from "react";
-import { getsampleFolder } from "../api/sampleFolder";
-import Search from "../component/Search";
-import Cards from "../component/Cards";
+import { getSampleFolder } from "../api/sampleFolder";
+import Search from "../component/Search/Search";
+import SharedPageCards from "../component/Cards/SharedPageCards";
 import style from "./SharedPage.module.css";
-import FolderInfo from "../component/FolderInfo";
+import FolderInfo from "../component/FolderInfo/FolderInfo";
 import useAsync from "../hooks/useAsync";
 import LoadingPage from "./LoadingPage";
 function SharedPage() {
   const [folderInfo, setFolderInfo] = useState({});
   const [cards, setCards] = useState([]);
   const [isLoading, loadingError, getSampleFolderAsync] =
-    useAsync(getsampleFolder);
-  const loadLink = async () => {
-    const {
-      folder,
-      folder: { links },
-    } = await getSampleFolderAsync();
-
-    setCards(() => {
-      return [...links];
-    });
-    setFolderInfo(() => ({ ...folder }));
-  };
+    useAsync(getSampleFolder);
 
   useEffect(() => {
+    const loadLink = async () => {
+      const {
+        folder,
+        folder: { links },
+      } = await getSampleFolderAsync();
+
+      setCards(() => {
+        return [...links];
+      });
+      setFolderInfo(() => ({ ...folder }));
+    };
     loadLink();
   }, []);
 
@@ -33,10 +33,14 @@ function SharedPage() {
         <LoadingPage />
       ) : (
         <div className={style.root}>
-          <FolderInfo folderInfo={folderInfo} />
+          <FolderInfo
+            userName={folderInfo?.owner?.name}
+            folderName={folderInfo?.name}
+            profileImageSource={folderInfo?.owner?.profileImageSource}
+          />
           <div className={style.section}>
             <Search />
-            <Cards cards={cards} />
+            <SharedPageCards cards={cards} />
           </div>
         </div>
       )}

@@ -5,6 +5,7 @@ import Layout from "./layout/Layout";
 import HomePage from "./pages/HomePage";
 import NoPage from "./pages/NoPage";
 import FolderPage from "./pages/FolderPage";
+import SignInPage from "./pages/SignInPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="shared" element={<SharedPage />} />
           <Route path="folder" element={<FolderPage />} />
         </Route>
+        <Route path="/signin" element={<SignInPage />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

@@ -43,7 +43,7 @@
 .text {
   font-size: 1.6rem;
   width: 30rem;
-  line-height: 24px;
+  line-height: 2.4rem;
   height: 4.9rem;
 }
 
@@ -64,4 +64,13 @@
     width: 32.5rem;
     height: 32.7rem;
   }
+}
+.kebabContainer {
+  position: relative;
+}
+
+.kebab {
+  position: absolute;
+  top: 100%;
+  width: 10rem;
 }

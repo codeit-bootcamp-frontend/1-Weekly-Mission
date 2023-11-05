@@ -1,0 +1,66 @@
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 1.5rem;
+  border: 0.1rem solid var(--stroke-light, #dee2e6);
+  background: var(--gray-white, #fff);
+  padding: 3.2rem 4rem;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 1;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.closeModal img {
+  float: right;
+  width: 2.4rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+p {
+  width: 28rem;
+  text-align: center;
+  font-size: 1.4rem;
+}
+.modalInput {
+  width: 28rem;
+  padding: 1.8rem 1.5rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--linkbrary-gray-20, #ccd5e3);
+  background: var(--linkbrary-white, #fff);
+}
+.button {
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
+  color: white;
+  width: 100%;
+  font-size: 1.6rem;
+}
+.redButton {
+  background: var(--linkbrary-red, #ff5b56);
+}
+
+.blueButton {
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+}
