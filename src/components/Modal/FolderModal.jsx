@@ -5,6 +5,8 @@ import FolderAddModal from './FolderAddModal';
 import FolderDeleteModal from './FolderDeleteModal';
 import FolderShareModal from './FolderShareModal';
 import { forwardRef } from 'react';
+import LinkDeleteModal from './LinkDeleteModal';
+import FolderToAddModal from './FolderToAddModal';
 
 
 function FolderModal({ action, onCloseModal, name }, ref) {
@@ -16,7 +18,7 @@ function FolderModal({ action, onCloseModal, name }, ref) {
           <>
             <FolderShareModal onCloseModal={onCloseModal} name={name} />
           </>
-        )
+        );
       case 'edit':
         return (
           <>
@@ -35,6 +37,18 @@ function FolderModal({ action, onCloseModal, name }, ref) {
             <FolderAddModal onCloseModal={onCloseModal} />
           </>
         );
+      case 'delete-link':
+        return (
+          <>
+            <LinkDeleteModal onCloseModal={onCloseModal} />
+          </>
+        );
+      case 'folder-add':
+        return (
+          <>
+            <FolderToAddModal onCloseModal={onCloseModal} />
+          </>
+        );
       default:
         return <></>;
     }
@@ -42,7 +56,7 @@ function FolderModal({ action, onCloseModal, name }, ref) {
 
   return (
     <>
-      <BackDrop ref={ref}/>
+      <BackDrop ref={ref} />
       <ModalBody $action={action}>
         {decideFolderModal(action)}
       </ModalBody>
