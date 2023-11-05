@@ -7,7 +7,6 @@ function CategoryOptionBtn({ btnData, onClick }) {
       case "공유":
         onClick([true, "3"]);
         break;
-      //추후 변경
       case "이름 변경":
         onClick([true, "2"]);
         break;

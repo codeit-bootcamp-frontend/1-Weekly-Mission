@@ -8,15 +8,16 @@
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
 }
 
-.card-box {
+.card-image-box {
   display: flex;
   align-items: center;
   overflow: hidden;
   height: 19rem;
   position: relative;
+  cursor: pointer;
 }
 
-.card-box .favorites {
+.card-image-box .favorites {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -52,6 +53,7 @@
 .card-info .update-time {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .card-info .description p {

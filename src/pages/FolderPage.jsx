@@ -7,6 +7,7 @@ import Category from "../components/Category";
 import NoLink from "../components/NoLink";
 import CategoryOption from "../components/CategoryOption";
 import Modals from "../components/modals/Modals";
+import { styled } from "styled-components";
 
 function FolderPage() {
   const [folderData, setFolderData] = useState([]);
@@ -31,7 +32,7 @@ function FolderPage() {
     getFolderData();
     setModalOn(false);
   }, []);
-  console.log(modalOn);
+
   // TODO : 카테고리 컴포넌트 완성 (카테고리 컴포넌트 내부)
   // TODO : 폴더 아이디 스테이트관리
   // TODO : 폴더 아이디를 갖고 fetch
