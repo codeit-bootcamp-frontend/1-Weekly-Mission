@@ -1,5 +1,5 @@
 import * as S from "./folderAddModal.style.js";
-import ModalBase from "../modalBase/ModalBase";
+import ModalBase from "components/modals/modalBase/ModalBase.jsx";
 
 export default function FolderAddModal({ onClickClose }) {
   return (
