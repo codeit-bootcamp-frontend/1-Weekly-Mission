@@ -54,3 +54,14 @@
   flex-direction: column;
   gap: 1rem;
 }
+.toast {
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  background-color: var(--linkbrary-primary-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+}
