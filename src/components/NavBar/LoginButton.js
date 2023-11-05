@@ -1,22 +1,19 @@
 import { useState } from "react";
-import classnames from "classnames";
-import styles from "./LoginButton.module.css";
+import { useSetUserId } from "../../contexts/UserContext";
 import ProfileInfo from "./ProfileInfo";
-import getUser from "../../api/getUser";
 import useAsync from "../../hooks/useAsync";
+import Button from "../Button/Button";
+import getSampleUser from "../../api/getSampleUser";
 
-const LoginButton = ({ userId }) => {
+const LoginButton = () => {
+  const setUserId = useSetUserId();
   const [userData, setUserData] = useState(null);
-  const { pending: isLoading, wrappedFunction: getUserAsync } = useAsync(getUser);
+  const { status: isLoading, wrappedFunction: getUserAsync } = useAsync(getSampleUser);
 
   const handleButtonClick = async () => {
     const userResponseData = await getUserAsync();
-
     setUserData(userResponseData);
-
-    if (userId) {
-      userId(userResponseData.id);
-    }
+    setUserId(userResponseData.id);
   };
 
   return (
@@ -24,9 +21,9 @@ const LoginButton = ({ userId }) => {
       {userData?.email ? (
         <ProfileInfo email={userData.email} profileImage={userData.profileImageSource} />
       ) : (
-        <button disabled={isLoading} className={classnames(styles.cta, styles.ctaShort)} onClick={handleButtonClick}>
+        <Button isLoading={isLoading} onClick={handleButtonClick} size="short">
           로그인
-        </button>
+        </Button>
       )}
     </div>
   );
