@@ -7,29 +7,6 @@ import CloseIcon from "../../assets/modal/img_modalClose.svg";
 import CheckIcon from "../../assets/modal/img_modalCheck.svg";
 import { ModalMainContainer } from "./ModalStyledComponents";
 
-const FolderArr = [
-  {
-    id: 1,
-    title: "코딩팁",
-    num: 7,
-  },
-  {
-    id: 2,
-    title: "채용 사이트",
-    num: 12,
-  },
-  {
-    id: 3,
-    title: "유용한 글",
-    num: 30,
-  },
-  {
-    id: 4,
-    title: "나만의 장소",
-    num: 3,
-  },
-];
-
 const AddToFolderModal = () => {
   const { addToFolderModal } = useRecoilValue(modalState);
   const resetModalState = useResetRecoilState(modalState);
@@ -51,15 +28,15 @@ const AddToFolderModal = () => {
       </div>
 
       <div className="modalContentContainer">
-        {FolderArr.map((e) => {
+        {addToFolderModal.content.map((e) => {
           return (
             <FolderContainer
               $active={e.id === selectedFolder}
               key={e.id}
               onClick={() => setSelectedFolder(e.id)}
             >
-              <div className="title">{e.title}</div>
-              <div className="linkNum">{e.num}개 링크</div>
+              <div className="title">{e.name}</div>
+              <div className="linkNum">{e.link.count}개 링크</div>
               <img src={CheckIcon} className="checkIcon" alt="checkIcon" />
             </FolderContainer>
           );

@@ -14,6 +14,7 @@ export const modalState = atom({
     addToFolderModal: {
       display: false,
       link: "",
+      content: [],
     },
     shareFolderModal: {
       display: false,

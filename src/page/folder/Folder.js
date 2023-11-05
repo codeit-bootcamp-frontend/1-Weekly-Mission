@@ -98,6 +98,7 @@ const Folder = () => {
       addToFolderModal: {
         display: true,
         link: link,
+        content: folderData,
       },
     }));
   };
