@@ -11,6 +11,7 @@ import FolderHeader from "components/folderHeader/FolderHeader.jsx";
 import { ENTIRE_LINK_FOLDER_NAME, SAMPLE_USER_ID } from "utils/constants.js";
 import useAsync from "hooks/useAsync.js";
 import useModal from "hooks/useModal.js";
+import FolderAddModal from "components/modals/folderAddModal/FolderAddModal.jsx";
 
 export default function FolderPage() {
   const { Modal, openModal, closeModal } = useModal();
@@ -45,14 +46,15 @@ export default function FolderPage() {
 
         <S.FolderTabListContainer>
           <FolderTabList folderList={folderList} />
-          <S.FolderAddButton onClick={openModal}>
-            폴더 추가
-            <S.FolderAddIcon alt="폴더 추가 아이콘" />
-          </S.FolderAddButton>
-          <Modal>
-            <p>modal test</p>
-            <button onClick={closeModal}>close</button>
-          </Modal>
+          <>
+            <S.FolderAddButton onClick={openModal}>
+              폴더 추가
+              <S.FolderAddIcon alt="폴더 추가 아이콘" />
+            </S.FolderAddButton>
+            <Modal>
+              <FolderAddModal onClickClose={closeModal} />
+            </Modal>
+          </>
         </S.FolderTabListContainer>
 
         <FolderHeader folderTitle={folderTitle} />
