@@ -4,7 +4,6 @@ import * as S from "./SelectModal.style";
 import ModalSelectButton from "../modalSelectButton/ModalSelectButton";
 
 const SelectModal = ({ modalTitle, modalTarget, buttonText, folders, onClose }) => {
-  console.log(folders);
   return (
     <S.ModalWrap>
       <S.Modal>

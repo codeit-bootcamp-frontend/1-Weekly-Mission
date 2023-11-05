@@ -7,7 +7,6 @@ import handleCopyClipBoard from "../../utils/handleCopyLink";
 
 const ShareModal = ({ modalTitle, modalTarget }) => {
   const location = useLocation();
-  console.log("location: ", location);
   const currentUrl = `${window.location.origin}${location.pathname}${location.search}${location.hash}`;
 
   return (

@@ -11,7 +11,6 @@ function Main() {
       <Routes>
         <Route path="/" element={<GlobalLayout />}>
           <Route index element={<SharedPage />} />
-          {/* 요기고쳐야함 */}
           <Route path="folder" element={<FolderPage />} />
           <Route path="folder/:folderId" element={<FolderPage />} />
           <Route path="folder" element={<FolderPage />} />
