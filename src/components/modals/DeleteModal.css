@@ -1,0 +1,15 @@
+button {
+  background: var(--linkbrary-red);
+  color: var(--linkbrary-white);
+  border: none;
+  cursor: pointer;
+  border-radius: 9px;
+  width: 280px;
+  padding: 16px 20px;
+}
+
+.subtitle {
+  color: var(--linkbrary-gray-60);
+  font-size: 14px;
+  margin: 8px 0 24px;
+}
