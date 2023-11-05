@@ -3,28 +3,35 @@ import { ModalBody } from '../../styles/ModalStyle';
 import FolderEditModal from './FolderEditModal';
 import FolderAddModal from './FolderAddModal';
 import FolderDeleteModal from './FolderDeleteModal';
+import FolderShareModal from './FolderShareModal';
 
 
 function FolderModal({ action, onCloseModal, name }) {
 
   const decideFolderModal = (action) => {
     switch (action) {
+      case 'share':
+        return (
+          <>
+            <FolderShareModal onCloseModal={onCloseModal} name={name} />
+          </>
+        )
       case 'edit':
         return (
           <>
             <FolderEditModal onCloseModal={onCloseModal} />
           </>
         );
-      case 'add':
-        return (
-          <>
-            <FolderAddModal onCloseModal={onCloseModal} />
-          </>
-        );
       case 'delete':
         return (
           <>
             <FolderDeleteModal onCloseModal={onCloseModal} name={name} />
+          </>
+        );
+      case 'add':
+        return (
+          <>
+            <FolderAddModal onCloseModal={onCloseModal} />
           </>
         );
       default:
@@ -35,7 +42,7 @@ function FolderModal({ action, onCloseModal, name }) {
   return (
     <>
       <BackDrop />
-      <ModalBody>
+      <ModalBody $action={action}>
         {decideFolderModal(action)}
       </ModalBody>
     </>

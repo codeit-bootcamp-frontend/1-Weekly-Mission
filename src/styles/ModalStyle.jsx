@@ -8,7 +8,7 @@ export const ModalBody = styled.div`
   top: 50%;
   left: 50%;
   width: 36rem;
-  height: 23.8rem;
+  height: ${({ $action }) => $action === 'share' ? '20.9rem' : '23.8rem'};
   transform: translate(-50%, -50%);
   padding: 3.2rem 4rem;
   flex-direction: column;
