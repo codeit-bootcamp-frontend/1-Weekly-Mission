@@ -36,8 +36,8 @@ export const ButtonItem = styled.button`
 `;
 
 export const ButtonImage = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 1.8rem;
+  height: 1.8rem;
 `;
 
 export const ButtonTitle = styled.span`
