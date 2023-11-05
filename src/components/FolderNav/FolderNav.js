@@ -1,9 +1,16 @@
 import styles from './FolderNav.module.css';
 
 function FolderNav({ folderLists, onClick, folderID }) {
+  const lists = [
+    {
+      id: 0,
+      name: '전체',
+    },
+    ...folderLists,
+  ];
   return (
     <ul className={styles.root}>
-      {folderLists.map(({ id, name }) => {
+      {lists.map(({ id, name }) => {
         const isSelected =
           Number(folderID) === id
             ? `${styles.button} ${styles.selected}`

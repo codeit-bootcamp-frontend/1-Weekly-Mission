@@ -1,25 +1,35 @@
-import styles from './AddFolder.module.css';
+import styles from './AddLinkToFolder.module.css';
 import ModalHeader from '../components/ModalHeader/ModalHeader';
 import Button from '../components/Button/Button';
 
-function AddLinkToFolder({ lists }) {
+function AddLinkToFolder({ folderLists, children }) {
   return (
     <>
-      <ModalHeader title="폴더 이름 변경"></ModalHeader>
+      <ModalHeader title="폴더에 추가" subTitle={children}></ModalHeader>
       <div className={styles.body}>
         <form className={styles.form} noValidate>
-          {lists.map((list) => {
-            console.log(list);
-            return (
-              <div key={list.id}>
-                <label htmlFor="mail">
-                  {list.name} <span>{list.link.count}개 </span>
-                </label>
-                <input type="radio" id="mail" name="contact" value="mail" />
-              </div>
-            );
-          })}
+          <div>
+            {folderLists.map((list) => {
+              return (
+                <div key={list.id} className={styles.container}>
+                  <label htmlFor={list.name} className={styles.label}>
+                    {list.name}
+                    <span className={styles.subLabel}>
+                      {list.link.count}개 링크
+                    </span>
+                  </label>
 
+                  <input
+                    className={styles.input}
+                    type="radio"
+                    id={list.name}
+                    name="folder"
+                    value={list.id}
+                  />
+                </div>
+              );
+            })}
+          </div>
           <Button>추가하기</Button>
         </form>
       </div>

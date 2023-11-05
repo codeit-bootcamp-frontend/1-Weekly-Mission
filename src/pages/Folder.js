@@ -22,17 +22,11 @@ import DeleteFolder from '../modals/DeleteFolder';
 import AddFolder from '../modals/AddFolder';
 import useInputController from '../hooks/useInputController';
 import EditFolder from '../modals/EditFolder';
-import AddLinkToFolder from '../modals/AddLinkToFolder';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cards, setCards] = useState([]);
-  const [folderLists, setFolderLists] = useState([
-    {
-      id: 0,
-      name: '전체',
-    },
-  ]);
+  const [folderLists, setFolderLists] = useState([]);
   const { isAuth } = useAuth();
 
   // 모달 컨트롤라
@@ -107,7 +101,7 @@ function Folder() {
           )}
         </div>
         {cards.length ? (
-          <Binder cards={cards} shared="off" />
+          <Binder cards={cards} folderLists={folderLists} shared="off" />
         ) : (
           <FolderEmptyNoti />
         )}
@@ -137,11 +131,6 @@ function Folder() {
           <AddFolder onChange={addFolder.handleChange} value={addFolder.values}>
             {folderName}
           </AddFolder>
-        </Modal>
-      )}
-      {true && (
-        <Modal onClick={addFolderModal.handleClick}>
-          <AddLinkToFolder lists={folderLists} />
         </Modal>
       )}
     </>

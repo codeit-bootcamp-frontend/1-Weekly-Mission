@@ -9,10 +9,11 @@ import clsx from 'clsx';
 import DeleteLink from '../../modals/DeleteLink';
 import Modal from '../../modals/Modal';
 import useModalColtroller from '../../hooks/useModalController';
+import AddLinkToFolder from '../../modals/AddLinkToFolder';
 
-function Card({ card, shared }) {
+function Card({ card, shared, folderLists }) {
   const deleteLinkModal = useModalColtroller(true);
-  const addModal = useModalColtroller(true);
+  const addLinkToFolderModal = useModalColtroller(true);
   const kebab = useModalColtroller(true);
 
   const [hover, setHover] = useState(false);
@@ -69,7 +70,7 @@ function Card({ card, shared }) {
                     </button>
                     <button
                       className={styles.kebabButton}
-                      onClick={addModal.handleClick}
+                      onClick={addLinkToFolderModal.handleClick}
                     >
                       폴더에 추가
                     </button>
@@ -91,9 +92,11 @@ function Card({ card, shared }) {
           <DeleteLink>{card.url}</DeleteLink>
         </Modal>
       )}
-      {addModal.state && (
-        <Modal onClick={addModal.handleClick}>
-          <DeleteLink>{card.url}</DeleteLink>
+      {addLinkToFolderModal.state && (
+        <Modal onClick={addLinkToFolderModal.handleClick}>
+          <AddLinkToFolder folderLists={folderLists}>
+            {card.url}
+          </AddLinkToFolder>
         </Modal>
       )}
     </div>

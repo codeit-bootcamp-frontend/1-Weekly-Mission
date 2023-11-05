@@ -1,0 +1,48 @@
+.body {
+  display: flex;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container:hover {
+  background-color: var(--gray1);
+}
+
+.label {
+  display: flex;
+  flex: 1;
+  gap: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: var(--gray5, #373740);
+}
+
+.subLabel {
+  font-size: 1.4rem;
+  color: var(--gray4, #9fa6b2);
+}
+
+.input {
+  width: 1.7rem;
+  height: 1.7rem;
+  appearance: none;
+}
+
+.input:checked {
+  background-image: url('../assets/images/checkIcon.svg');
+  background-size: cover;
+}
