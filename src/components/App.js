@@ -1,7 +1,7 @@
-import GlobalNav from "./modules/GlobalNav";
-import Footer from "./modules/Footer";
+import GlobalNav from "./globalNav/GlobalNav";
 import { Outlet } from "react-router-dom";
 import { UserProvider } from "../utils/UserContext";
+import Footer from "./footer/Footer";
 
 function App() {
   return (

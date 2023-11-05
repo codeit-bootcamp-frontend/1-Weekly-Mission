@@ -1,19 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from "./components/App";
 import GlobalStyle from "./components/GlobalStyle";
-import SharedPage from "./components/pages/SharedPage";
-import FolderPage from "./components/pages/FolderPage";
-
+import GlobalLayout from "./layouts/GlobalLayout";
+import FolderPage from "./components/pages/folderPage/FolderPage";
+import SharedPage from "./components/pages/sharedPage/SharedPage";
+import ErrorPage from "./components/pages/errorPage/ErrorPage";
 function Main() {
   return (
     <BrowserRouter>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route path="/" element={<GlobalLayout />}>
           <Route index element={<SharedPage />} />
-          <Route path="folder/:folderId" element={<FolderPage />} />
           <Route path="folder" element={<FolderPage />} />
+          <Route path="folder/:folderId" element={<FolderPage />} />
           <Route path="shared" element={<SharedPage />} />
+          <Route path="error" element={<ErrorPage />} />
           <Route path="*" element={<SharedPage />} />
         </Route>
       </Routes>
