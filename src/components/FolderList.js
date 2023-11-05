@@ -1,7 +1,8 @@
-import { useState } from "react";
 import styled from "styled-components";
 import Modal from "./Modal.js";
-
+import penIcon from "../assets/penIcon.svg";
+import shareIcon from "../assets/shareIcon.svg";
+import deleteIcon from "../assets/deleteIcon.png";
 
 const StyledMenu = styled.div`
   display: flex;
@@ -33,17 +34,27 @@ const StyledMenu = styled.div`
 function FolderList({ data, onClick }) {
 
   return (
-    <StyledMenu>
-      <ul>
-        <li>전체</li>
-        {data.map((folder) => 
-          <li key={folder.id} onClick={() => onClick(folder.id)}>{folder.name}</li>
-        )}
-      </ul>
-      <div className="add-folder">
-        <Modal>폴더 추가+</Modal>
-      </div>
-    </StyledMenu>
+    <>
+      <StyledMenu>
+        <ul>
+          <li>전체</li>
+          {data.map((folder) => 
+            <li key={folder.id} onClick={() => onClick(folder.id)}>{folder.name}</li>
+          )}
+        </ul>
+        <div className="add-folder">
+          <Modal>폴더 추가+</Modal>
+        </div>
+      </StyledMenu>
+      {/* <div>
+        <div>유용한 글</div>
+        <ul>
+          <li><img src={penIcon} alt="수정" />수정</li>
+          <li><img src={shareIcon} alt="공유" />공유</li>
+          <li><img src={deleteIcon} alt="삭제" />삭제</li>
+        </ul>
+      </div> */}
+    </>
   );
 }
 
