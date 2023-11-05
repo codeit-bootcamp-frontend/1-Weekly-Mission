@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "./AddLink.module.css";
-import linkIcon from "../assets/img/link.svg";
-import AddLinkModal from "./AddLinkModal";
+import linkIcon from "../../assets/img/link.svg";
+import AddLinkModal from "../Modal/AddLinkModal";
 function AddLink({ folders }) {
   const [url, setUrl] = useState("");
   const [isModal, setIsModal] = useState(false);

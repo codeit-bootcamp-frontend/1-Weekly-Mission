@@ -1,5 +1,5 @@
 import style from "./Modal.module.css";
-import closeIcon from "../assets/img/modal-close.svg";
+import closeIcon from "../../assets/img/modal-close.svg";
 import clsx from "clsx";
 const MODAL_TYPE = {
   "폴더 이름 변경": { color: "blue", type: "input", buttonTitle: "변경하기" },

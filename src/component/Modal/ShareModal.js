@@ -1,10 +1,10 @@
 import style from "./ShareModal.module.css";
-import closeIcon from "../assets/img/modal-close.svg";
-import linkIcon from "../assets/img/modal-link-copy.svg";
-import KakaoShare from "./SocialShare/KakaoShare";
-import MetaShare from "./SocialShare/MetaShare";
-import { copyClipBoard } from "../util/copyClipBoard";
-import { toastPop } from "../util/toastPop";
+import closeIcon from "../../assets/img/modal-close.svg";
+import linkIcon from "../../assets/img/modal-link-copy.svg";
+import KakaoShare from "../SocialShare/KakaoShare";
+import MetaShare from "../SocialShare/MetaShare";
+import { copyClipBoard } from "../../util/copyClipBoard";
+import { toastPop } from "../../util/toastPop";
 import { useState } from "react";
 function ShareModal({ folderName, onExitClick }) {
   const [toast, setToast] = useState(false);

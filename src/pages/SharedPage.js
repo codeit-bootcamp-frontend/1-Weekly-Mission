@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { getSampleFolder } from "../api/sampleFolder";
-import Search from "../component/Search";
-import SharedPageCards from "../component/SharedPageCards";
+import Search from "../component/Search/Search";
+import SharedPageCards from "../component/Cards/SharedPageCards";
 import style from "./SharedPage.module.css";
-import FolderInfo from "../component/FolderInfo";
+import FolderInfo from "../component/FolderInfo/FolderInfo";
 import useAsync from "../hooks/useAsync";
 import LoadingPage from "./LoadingPage";
 function SharedPage() {

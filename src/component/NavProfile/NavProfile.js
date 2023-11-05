@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { LinkButton } from "./LinkButton";
+import { LinkButton } from "../LinkButton/LinkButton";
 import style from "./NavProfile.module.css";
-import useAsync from "../hooks/useAsync";
-import { getUser } from "../api/getUser";
-import ErrorPage from "../pages/ErrorPage";
+import useAsync from "../../hooks/useAsync";
+import { getUser } from "../../api/getUser";
+import ErrorPage from "../../pages/ErrorPage";
 
 function NavProfile() {
   const [userInfo, setUserInfo] = useState(null);

@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
-import { formatDate, prettyFormatTimeDiff } from "../util/dateUtil";
-import kebabImg from "../assets/img/kebab.png";
-import noImg from "../assets/img/no-image.svg";
+import { formatDate, prettyFormatTimeDiff } from "../../util/dateUtil";
+import kebabImg from "../../assets/img/kebab.png";
+import noImg from "../../assets/img/no-image.svg";
 import style from "./Card.module.css";
 import clsx from "clsx";
-import Kebab from "./Kebab";
-import Modal from "./Modal";
-import AddLinkModal from "./AddLinkModal";
-import { FolderPageContext } from "../pages/FolderPage";
+import Kebab from "../Kebab/Kebab";
+import Modal from "../Modal/Modal";
+import AddLinkModal from "../Modal/AddLinkModal";
+import { FolderPageContext } from "../../pages/FolderPage";
 
 function Card({ title, description, url, image_source, created_at }) {
   const [hover, setHover] = useState(false);

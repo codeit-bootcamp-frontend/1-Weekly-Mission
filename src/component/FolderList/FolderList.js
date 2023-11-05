@@ -1,6 +1,6 @@
 import style from "./FolderList.module.css";
-import FolderItem from "./FolderItem";
-import Modal from "./Modal";
+import FolderItem from "../FolderItem/FolderItem";
+import Modal from "../Modal/Modal";
 import { useState } from "react";
 function FolderList({ folders }) {
   const [isModal, setIsModal] = useState(false);

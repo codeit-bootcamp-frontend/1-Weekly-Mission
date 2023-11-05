@@ -1,14 +1,14 @@
 import { createContext, useEffect, useState } from "react";
-import AddLink from "../component/AddLink";
-import FolderPageCards from "../component/FolderPageCards";
-import FolderList from "../component/FolderList";
-import Search from "../component/Search";
+import AddLink from "../component/AddLink/AddLink";
+import FolderPageCards from "../component/Cards/FolderPageCards";
+import FolderList from "../component/FolderList/FolderList";
+import Search from "../component/Search/Search";
 import useAsync from "../hooks/useAsync";
 import { getLink } from "../api/getLink";
 import { getFolder } from "../api/getFolder";
 import style from "./FolderPage.module.css";
 import { useSearchParams } from "react-router-dom";
-import CurrentFolder from "../component/CurrentFolder";
+import CurrentFolder from "../component/CurrentFolder/CurrentFolder";
 export const FolderPageContext = createContext();
 function FolderPage() {
   const [links, setLinks] = useState([]);

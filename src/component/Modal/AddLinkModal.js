@@ -1,6 +1,6 @@
 import style from "./AddLinkModal.module.css";
-import closeIcon from "../assets/img/modal-close.svg";
-import checkIcon from "../assets/img/check.svg";
+import closeIcon from "../../assets/img/modal-close.svg";
+import checkIcon from "../../assets/img/check.svg";
 import { useState } from "react";
 import clsx from "clsx";
 function FolderData({ folderName, folderId, folderCount }) {

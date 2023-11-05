@@ -1,12 +1,12 @@
-import trashIcon from "../assets/img/trash.svg";
-import shareIcon from "../assets/img/share.svg";
-import penIcon from "../assets/img/pen.svg";
+import trashIcon from "../../assets/img/trash.svg";
+import shareIcon from "../../assets/img/share.svg";
+import penIcon from "../../assets/img/pen.svg";
 import style from "./CurrentFolder.module.css";
 import clsx from "clsx";
 import { useState } from "react";
-import { useScript } from "../hooks/useScript";
-import Modal from "./Modal";
-import ShareModal from "./ShareModal";
+import { useScript } from "../../hooks/useScript";
+import Modal from "../Modal/Modal";
+import ShareModal from "../Modal/ShareModal";
 function CurrentFolder({ folderId, folders }) {
   useScript("https://developers.kakao.com/sdk/js/kakao.js");
   const [isChangeNameModal, setIsChanageNameModal] = useState(false);
