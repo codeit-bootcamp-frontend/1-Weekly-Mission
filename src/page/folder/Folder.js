@@ -93,14 +93,16 @@ const Folder = () => {
   }, [handleLinks]);
 
   const handleAddToFolderModal = () => {
-    setModalOpened((prev) => ({
-      ...prev,
-      addToFolderModal: {
-        display: true,
-        link: link,
-        content: folderData,
-      },
-    }));
+    if (link.length > 0) {
+      setModalOpened((prev) => ({
+        ...prev,
+        addToFolderModal: {
+          display: true,
+          link: link,
+          content: folderData,
+        },
+      }));
+    }
   };
 
   const handleDefaultMoal = (state, content) => {
