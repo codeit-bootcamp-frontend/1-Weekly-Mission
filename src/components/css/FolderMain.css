@@ -40,6 +40,9 @@
 }
 
 .folder-plus {
+  border: none;
+  cursor: pointer;
+  background-color: white;
   color: #6d6afe;
   text-align: center;
   font-weight: 500;
@@ -83,6 +86,9 @@
 }
 
 .useful-img {
+  border: none;
+  background-color: white;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

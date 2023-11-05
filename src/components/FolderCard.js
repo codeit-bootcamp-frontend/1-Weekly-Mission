@@ -4,7 +4,8 @@ import noImage from './img/no-image.svg';
 import kebab from './img/kebab.svg';
 import star from './img/star.svg';
 import { useRef, useState } from 'react';
-import FolderNamingModal from './FolderNamingModal';
+import FolderDeleteModal from './FolderDeleteModal';
+import ToFolderPlusModal from './ToFolderPlusModal';
 
 export default function FolderCard(link) {
   const apiDate = new Date(link.item.created_at);
@@ -14,9 +15,10 @@ export default function FolderCard(link) {
   const days = apiDate.getDate();
   const [clicked, setClicked] = useState(false);
   const [onModal, setOnModal] = useState(false);
+  const [onDeleteModal, setOnDeleteModal] = useState(false);
+  const [onToFolderPlusModal, setOnToFolderPlusModal] = useState(false);
 
   const back = useRef();
-
   const kebabfunc = (e) => {
     e.preventDefault();
   };
@@ -25,16 +27,8 @@ export default function FolderCard(link) {
     setClicked(!clicked);
   };
 
-  const kebabDeleteButton = (e) => {
-    setClicked(!clicked);
-    setOnModal(!onModal);
-  };
   const kebabPlusButton = (e) => {
     setClicked(!clicked);
-    setOnModal(!onModal);
-  };
-
-  const onClickCloseModal = () => {
     setOnModal(!onModal);
   };
 
@@ -42,6 +36,14 @@ export default function FolderCard(link) {
     if (back.current && !back.current.contains(e.target)) {
       setClicked(!clicked);
     }
+  };
+
+  const onClickDeleteModal = () => {
+    setOnDeleteModal(!onDeleteModal);
+  };
+
+  const onClickToFolderModal = () => {
+    setOnToFolderPlusModal(!onToFolderPlusModal);
   };
 
   if (link.item.image_source === undefined || link.item.image_source === null) {
@@ -68,10 +70,13 @@ export default function FolderCard(link) {
                 {clicked && (
                   <div className="kebab-wrapper">
                     <div className="kebab-div" ref={back}>
-                      <div className="kebab-plus" onClick={kebabDeleteButton}>
+                      <div className="kebab-plus" onClick={onClickDeleteModal}>
                         삭제하기
                       </div>
-                      <div className="kebab-delete" onClick={kebabPlusButton}>
+                      <div
+                        className="kebab-delete"
+                        onClick={onClickToFolderModal}
+                      >
                         폴더에 추가
                       </div>
                     </div>
@@ -79,14 +84,25 @@ export default function FolderCard(link) {
                 )}
               </div>
             </div>
-            <div></div>
             <div className="text-description">{link.item.description}</div>
             <div className="card-year">{`${year}. ${month}. ${days}`}</div>
           </div>
           <img src={star} className="star-img" alt="starImg" />
         </div>
       </Link>
-      {onModal && <FolderNamingModal handleClick={onClickCloseModal} />}
+
+      {onDeleteModal && (
+        <FolderDeleteModal
+          handleClick={onClickDeleteModal}
+          cardLink={link.item.url}
+        />
+      )}
+      {onToFolderPlusModal && (
+        <ToFolderPlusModal
+          handleClick={onClickToFolderModal}
+          cardLink={link.item.url}
+        />
+      )}
     </>
   );
 }

@@ -16,7 +16,7 @@ export default function FolderNamingModal({ handleClick }) {
       <div className="modal-wrapper">
         <div className="modal-header">폴더 이름 변경</div>
         <div className="modal-main">
-          <input className="modal-input" />
+          <input className="modal-input" placeholder="내용 입력" />
           <button className="modal-blue-button">변경하기</button>
         </div>
         <img

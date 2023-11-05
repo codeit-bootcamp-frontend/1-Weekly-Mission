@@ -114,6 +114,7 @@ a {
 }
 
 .kebab-plus {
+  text-align: center;
   width: 100px;
   border: none;
   background-color: white;
@@ -124,6 +125,7 @@ a {
 }
 
 .kebab-delete {
+  text-align: center;
   width: 100px;
   border: none;
   padding: 7px 12px;
