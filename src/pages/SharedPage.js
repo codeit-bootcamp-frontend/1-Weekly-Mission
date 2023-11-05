@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styles from "./SharedPage.module.css";
 import { formatDate, getTimeDiff, prettyFormatTimeDiff } from "../utils/utils";
-import NavBar from "../components/NavBar/NavBar";
-import Footer from "../components/Footer/Footer";
 import FolderInfo from "../components/FolderInfo/FolderInfo";
 import Card from "../components/Card/Card";
-import getFolder from "../api/getFolder";
 import Search from "../components/Search/Search";
 import useAsync from "../hooks/useAsync";
 import Loadable from "./../components/Skeleton/Loadable";
@@ -13,18 +11,37 @@ import FolderInfoSkeleton from "./../components/Skeleton/FolderInfoSkeleton/Fold
 import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSkeleton";
 import SharedPageCardItem from "../components/Card/SharedPageCardItem";
 import CardListItem from "../components/Card/CardListItem";
+import getUserLinks from "../api/getUserLinks";
+import getSampleUser from "./../api/getSampleUser";
+import getUserFolder from "../api/getUserFolder";
 
 const SharedPage = () => {
+  const [searchParams, _] = useSearchParams();
+  const [userData, setUserData] = useState({});
   const [folderData, setFolderData] = useState({});
-  const { status: isLoading, wrappedFunction: getFolerAsync } = useAsync(getFolder);
+  const [linksData, setLinksData] = useState({});
+  const { status: isLoadingUserData, wrappedFunction: getUserDataAsync } = useAsync(getSampleUser);
+  const { wrappedFunction: getUserFolderDataAsync } = useAsync(getUserFolder);
+  const { status: isLoadingLinksList, wrappedFunction: getLinksListAsync } = useAsync(getUserLinks);
+
+  const userId = searchParams.get("user");
+  const folderId = searchParams.get("folder");
 
   const handleLoadFolderData = useCallback(async () => {
-    const folderResponse = await getFolerAsync();
-    const { links, name: folderName, owner } = folderResponse.folder;
-    const { profileImageSource, name: userName } = owner;
+    try {
+      const [userDataResponseData, userFolderResponseData, linksResponseData] = await Promise.all([
+        getUserDataAsync(),
+        getUserFolderDataAsync({ userId, folderId }),
+        getLinksListAsync({ userId, folderId }),
+      ]);
 
-    setFolderData({ links, profileImageSource, userName, folderName });
-  }, [getFolerAsync]);
+      setUserData({ ...userDataResponseData });
+      setFolderData({ ...userFolderResponseData });
+      setLinksData({ ...linksResponseData });
+    } catch (e) {
+      return;
+    }
+  }, [getUserDataAsync, getUserFolderDataAsync, getLinksListAsync, userId, folderId]);
 
   useEffect(() => {
     handleLoadFolderData();
@@ -33,34 +50,33 @@ const SharedPage = () => {
   return (
     <>
       <header className={styles.header}>
-        <NavBar />
-        <Loadable isLoading={isLoading} fallback={<FolderInfoSkeleton />}>
+        <Loadable isLoading={isLoadingUserData} fallback={<FolderInfoSkeleton />}>
           <FolderInfo
-            profileImage={folderData?.profileImageSource}
-            userName={folderData?.userName}
-            folderName={folderData?.folderName}
+            profileImage={userData?.profileImageSource}
+            userName={userData?.name}
+            folderName={folderData?.data?.[0]?.name || ""}
           />
         </Loadable>
       </header>
       <main>
         <Search />
-        <Loadable isLoading={isLoading} fallback={<CardListSkeleton size={9} />}>
+        <Loadable isLoading={isLoadingLinksList} fallback={<CardListSkeleton size={9} />}>
           <Card>
-            {folderData?.links &&
-              folderData.links.map((link) => {
-                const { createdAt, url, title, description, imageSource } = link;
-                const formattedCreatedAt = formatDate(createdAt);
-                const timeDiff = getTimeDiff(createdAt);
+            {linksData?.data &&
+              linksData.data.map((link) => {
+                const { id, created_at, url, title, description, image_source } = link;
+                const formattedCreatedAt = formatDate(created_at);
+                const timeDiff = getTimeDiff(created_at);
                 const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
                 return (
-                  <CardListItem key={url}>
+                  <CardListItem id={id}>
                     <SharedPageCardItem
                       formatTimeDiff={formatTimeDiff}
                       formattedCreatedAt={formattedCreatedAt}
                       url={url}
                       title={title}
                       description={description}
-                      imageSource={imageSource}
+                      imageSource={image_source}
                     />
                   </CardListItem>
                 );
@@ -68,9 +84,6 @@ const SharedPage = () => {
           </Card>
         </Loadable>
       </main>
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 };
