@@ -6,12 +6,14 @@ import LinkAddBar from "components/linkAddBar/LinkAddBar.jsx";
 import FolderTabList from "components/folderTabList/FolderTabList.jsx";
 import { getUserFolderList } from "pages/folder/folderPage.js";
 import LinkSearchBar from "components/linkSearchBar/LinkSearchBar.jsx";
+import FolderHeader from "components/folderHeader/FolderHeader.jsx";
 
 import { ENTIRE_LINK_FOLDER_NAME, SAMPLE_USER_ID } from "utils/constants.js";
 import useAsync from "hooks/useAsync.js";
-import FolderHeader from "components/folderHeader/FolderHeader.jsx";
+import useModal from "hooks/useModal.js";
 
 export default function FolderPage() {
+  const { Modal, openModal, closeModal } = useModal();
   const [folderList, setFolderList] = useState([]);
 
   const { folderId } = useParams();
@@ -27,6 +29,7 @@ export default function FolderPage() {
     if (!folderList) return;
     setFolderList(folderList);
   };
+
   useEffect(() => {
     handleFolderList();
   }, []);
@@ -42,10 +45,14 @@ export default function FolderPage() {
 
         <S.FolderTabListContainer>
           <FolderTabList folderList={folderList} />
-          <S.FolderAddButton>
+          <S.FolderAddButton onClick={openModal}>
             폴더 추가
             <S.FolderAddIcon alt="폴더 추가 아이콘" />
           </S.FolderAddButton>
+          <Modal>
+            <p>modal test</p>
+            <button onClick={closeModal}>close</button>
+          </Modal>
         </S.FolderTabListContainer>
 
         <FolderHeader folderTitle={folderTitle} />
