@@ -2,7 +2,13 @@ import React from 'react';
 import './optionButton.css';
 import useModal from '../../../../hooks/useModal';
 
-export default function OptionButton({ iconSrc, name, alt, folderName }) {
+export default function OptionButton({
+  iconSrc,
+  name,
+  alt,
+  folderName,
+  folderId,
+}) {
   const { open, close, Dialog, isModalOpen } = useModal();
 
   return (
@@ -11,6 +17,7 @@ export default function OptionButton({ iconSrc, name, alt, folderName }) {
         <Dialog isModalOpen={isModalOpen} onClick={close}>
           <Dialog.Title>폴더 공유</Dialog.Title>
           <Dialog.Link>{folderName}</Dialog.Link>
+          <Dialog.IconsBox folderId={folderId} />
         </Dialog>
       ) : null}
       {name === '이름 변경' ? (

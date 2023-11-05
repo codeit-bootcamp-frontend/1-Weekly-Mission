@@ -97,6 +97,7 @@ export default function FolderPage() {
                       alt={item.alt}
                       iconSrc={item.iconSrc}
                       folderName={folderName}
+                      folderId={folderId}
                     />
                   ))
                 : null}
