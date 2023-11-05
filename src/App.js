@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserProvider } from "./contexts/UserContext";
 import "./colors.css";
 import "./reset.css";
 import FolderPage from "./pages/FolderPage";
 import SharedPage from "./pages/SharedPage";
-import Layout from "./components/layout/Layout";
+import Layout from "./layout/Layout";
 import NotFoundLink from "./components/Card/NotFoundLink";
-import { UserIdProvider } from "./contexts/UersIdContext";
 
 const App = () => {
   return (
-    <UserIdProvider>
+    <UserProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -19,7 +19,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </UserIdProvider>
+    </UserProvider>
   );
 };
 
