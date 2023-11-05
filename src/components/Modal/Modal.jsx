@@ -1,120 +1,91 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { cursorPointer, flexCenter } from "../../style/common";
-import colors from "../../style/colors";
+import React from "react";
+import { S } from "./ModalStyle";
 import cancelIcon from "../../assets/modal/_close.png";
-import { createPortal } from "react-dom";
+import kakaoIcon from "../../assets/modal/kakao.svg";
+import facebookIcon from "../../assets/modal/facebook.svg";
+import copyIcon from "../../assets/modal/sharelink.svg";
+import useAsync from "../../Hooks/useAsync";
+import { getFolders } from "../../api";
 
-const ModalWrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-`;
+function ShareIcon({ src, alt, text }) {
+  return (
+    <S.ShareIconStyled>
+      <img src={src} alt={alt}></img>
+      <span>{text}</span>
+    </S.ShareIconStyled>
+  );
+}
 
-const ModalContainer = styled.div`
-  position: relative;
-  ${flexCenter};
-  padding: 32px 40px;
-  width: 360px;
-  height: 239px;
-  flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-  border-radius: 15px;
-  border: 1px solid ${colors.gray20};
-  background: ${colors.white};
-`;
+function ModalFolderShare() {
+  return (
+    <S.IconsWrapper>
+      <ShareIcon src={kakaoIcon} alt="카카오톡" text="카카오톡" />
+      <ShareIcon src={facebookIcon} alt="페이스북" text="페이스북" />
+      <ShareIcon src={copyIcon} alt="링크 복사" text="링크 복사" />
+    </S.IconsWrapper>
+  );
+}
 
-const ModalTitle = styled.div`
-  color: ${colors.gray100};
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-`;
+function FolderInfo({ folderName, count }) {
+  return (
+    <S.StyledFolderInfo>
+      <span className="name">{folderName}</span>
+      <span className="count">{count}</span>
+    </S.StyledFolderInfo>
+  );
+}
+function ModalAddToFolder() {
+  const DEFAULT_FOLDER = 1;
+  const [folderData, isLoadingFolder, folderError, getFolderAsync] = useAsync(
+    () => getFolders(DEFAULT_FOLDER)
+  );
 
-const ModalInput = styled.input`
-  border-radius: 8px;
-  border: 1px solid ${colors.gray20};
-  background: ${colors.white};
-  display: flex;
-  width: 280px;
-  padding: 18px 15px;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ModalButton = styled.button`
-  display: flex;
-  width: 280px;
-  padding: 16px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  ${cursorPointer}
-
-  background: ${({ red }) => (red ? colors.red : colors.purpleBlueToSkyBlue)};
-
-  color: ${colors.white};
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  border: none;
-`;
-const ModalDetail = styled.div`
-  color: ${colors.gray60};
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px;
-`;
-
-const ModalCancelIcon = styled.img`
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  right: 18px;
-  top: 20px;
-  ${cursorPointer}
-`;
-
+  if (!folderData) return null;
+  const folders = folderData?.data;
+  console.log(folderData);
+  return (
+    <>
+      {folders.map((folder) => (
+        <FolderInfo
+          key={folder.id}
+          folderName={folder.name}
+          count={folder.link.count}
+        />
+      ))}
+    </>
+  );
+}
 function Modal({
   title,
   buttonText,
   setIsModalOpen,
   red,
   hasInput,
-  hasDetail,
   folderName,
+  share,
+  url,
+  addLink,
 }) {
   return (
-    <ModalWrapper>
-      <ModalContainer>
-        <ModalCancelIcon
+    <S.ModalWrapper>
+      <S.ModalContainer>
+        <S.ModalCancelIcon
           src={cancelIcon}
           onClick={() => setIsModalOpen(false)}
         />
-        <ModalTitle>{title}</ModalTitle>
-        {hasInput && <ModalInput placeholder="내용 입력"></ModalInput>}
-        {hasDetail && <ModalDetail>{folderName}</ModalDetail>}
-        <ModalButton red={red}>{buttonText}</ModalButton>
-      </ModalContainer>
-    </ModalWrapper>
+        <S.ModalTitle>{title}</S.ModalTitle>
+        {hasInput && <S.ModalInput placeholder="내용 입력" />}
+        {folderName && <S.ModalDetail>{folderName}</S.ModalDetail>}
+        {url && <S.ModalDetail>{url}</S.ModalDetail>}
+        {share && <ModalFolderShare />}
+        {addLink && <ModalAddToFolder/>}
+        {!share && <S.ModalButton red={red}>{buttonText}</S.ModalButton>}
+      </S.ModalContainer>
+    </S.ModalWrapper>
   );
 }
 
-export const ModalMaker = ({ feature, setIsModalOpen, folderName }) => {
+export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
   let modal;
   switch (feature) {
     case "이름 변경":
@@ -138,7 +109,14 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName }) => {
       );
       break;
     case "공유":
-      modal = <Modal title="폴더 공유" setIsModalOpen={setIsModalOpen} />;
+      modal = (
+        <Modal
+          title="폴더 공유"
+          setIsModalOpen={setIsModalOpen}
+          folderName={folderName}
+          share
+        />
+      );
       break;
 
     case "삭제":
@@ -146,9 +124,8 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName }) => {
         <Modal
           title="폴더 삭제"
           buttonText="삭제하기"
-          hasDetail
-          red
           folderName={folderName}
+          red
           setIsModalOpen={setIsModalOpen}
         />
       );
@@ -159,12 +136,21 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName }) => {
           title="링크 삭제"
           buttonText="삭제하기"
           red
+          url={url}
           setIsModalOpen={setIsModalOpen}
         />
       );
       break;
     case "폴더에 추가":
-      modal = <Modal setIsModalOpen={setIsModalOpen} />;
+      modal = (
+        <Modal
+          title="폴더에 추가"
+          url={url}
+          buttonText="추가하기"
+          addLink
+          setIsModalOpen={setIsModalOpen}
+        />
+      );
       break;
   }
   return modal;

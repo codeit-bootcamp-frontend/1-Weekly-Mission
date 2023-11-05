@@ -4,7 +4,7 @@ import { S } from "./FolderListStyle"; // Import the styles as S
 import shareIcon from "../../assets/share.png";
 import modifyIcon from "../../assets/pen.png";
 import deleteIcon from "../../assets/deleteIcon.png";
-import Modal, { ModalMaker, ModalPortal } from "../Modal/Modal";
+import Modal, { ModalMaker } from "../Modal/Modal";
 const DEFAULT_FOLDER = {
   id: 0,
   name: "전체",
@@ -52,14 +52,20 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
               </S.Button>
             ))}
         </S.FolderButtons>
-        <S.AddFolderButton>폴더 추가 +</S.AddFolderButton>
+        <S.AddFolderButton onClick={(e) => handleModal()(e)}>
+          폴더 추가 +
+        </S.AddFolderButton>
       </S.ButtonContainer>
 
       <S.FolderInfoContainer>
         <S.FolderName>{selectedFolder?.name} </S.FolderName>
         {selectedFolder?.name !== "전체" && (
           <S.Icons>
-            <Icon img={shareIcon} feature={"공유"} />
+            <Icon
+              img={shareIcon}
+              feature={"공유"}
+              onClick={(e) => handleModal()(e)}
+            />
             <Icon
               img={modifyIcon}
               feature={"이름 변경"}
