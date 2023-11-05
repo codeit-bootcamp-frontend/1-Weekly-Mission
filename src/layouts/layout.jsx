@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useSearchParams } from "react-router-dom";
 import Header from "components/header/Header.jsx";
 import Footer from "components/footer/Footer.jsx";
 import * as S from "./layout.style.js";
@@ -13,6 +13,7 @@ export default function Layout() {
 
   const location = useLocation();
   const isFolderPage = location.pathname.includes("folder");
+  const isHeaderFixed = !isFolderPage;
 
   const [loading, error, getUserProfileAsync] = useAsync(getUserProfile);
 
@@ -29,8 +30,8 @@ export default function Layout() {
 
   return (
     <>
-      <Header isHeaderFixed={!isFolderPage} />
-      <S.PageContainer $isHeaderFixed={!isFolderPage}>
+      <Header isHeaderFixed={isHeaderFixed} />
+      <S.PageContainer $isHeaderFixed={isHeaderFixed}>
         <Outlet />
       </S.PageContainer>
       <Footer />
