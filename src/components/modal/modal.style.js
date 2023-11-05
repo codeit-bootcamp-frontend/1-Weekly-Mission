@@ -4,7 +4,7 @@ export const ModalWrapper = styled.aside`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 1;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
