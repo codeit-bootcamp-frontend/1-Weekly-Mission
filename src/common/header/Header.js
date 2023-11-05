@@ -1,7 +1,7 @@
 import React from "react";
 import Folder from "../../folder/Folder";
-import FolderSkeleton from "../skeleton/FolderSkeleton";
-import HeaderButton from "../button/HeaderButton";
+import FolderSkeleton from "../../components/skeleton/FolderSkeleton";
+import HeaderButton from "../../components/button/HeaderButton";
 export default function Header({ data, isLoading }) {
   if (data) {
     return (

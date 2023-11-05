@@ -1,55 +1,83 @@
 import React from "react";
-import NavSec from "../components/nav/NavSec";
-import Header from "../components/header/Header";
-import SearchBar from "../components/searchBar/SearchBar";
+import FolderNav from "../components/nav/FolderNav";
+import Header from "../common/header/Header";
+import SearchBar from "../common/searchBar/SearchBar";
+import Footer from "../common/footer/Footer";
 import Menubar from "../components/menuBar/Menubar";
 import WholeData from "../components/linksdata/WholeData";
-import Footer from "../components/footer/Footer";
-import useFetch from "../hooks/useFetch";
-import Landing from "../components/landing/Landing";
 import LocaleContext from "../contexts/LocaleContext";
-import Article from "../components/article/Article";
+
 import { useParams } from "react-router-dom";
+import {
+  fetchUserData,
+  fetchUserFolderData,
+  fetchUserLinks,
+} from "../api/users";
+import FolderMenu from "../components/menuBar/FolderMenu";
+
+import useTest from "../hooks/useTest";
+import useUserLinks from "../hooks/useUserLinks";
+import { useUserTotalLinks } from "../hooks/useUserLinks";
 
 export default function FolderPage() {
-  const paramId = useParams();
-  const [data, isLoading] = useFetch(
-    "https://bootcamp-api.codeit.kr/api/users/1/folders"
+  const USER_ID = 1;
+  const { folderId } = useParams();
+
+  const [userData] = useTest(() => fetchUserData({ userId: USER_ID }));
+  // const [userData] = useUserFetch({ userId: 1 });
+  // const [data, isLoading] = useUserFolderFetch({ userId: 1 });
+
+  const [Folderdata, isLoading] = useTest(() =>
+    fetchUserFolderData({ userId: USER_ID })
   );
 
-  const result = data?.data;
-  const obj = {};
-  let obj_keys = [];
+  // 각 폴더에 있는 (전체를 제외한, 아이템 리스트 가져오기)
+  // 페이지이동시에만 변화가..
+  // 1번
+  const [linkData, isLoading2] = useUserLinks({
+    userId: USER_ID,
+    folderId: folderId,
+  });
 
-  result &&
-    result.forEach((item) => {
-      obj[item.id] = {
-        folderId: item.id,
-        folderName: item.name,
-      };
-      obj_keys.push(item.id);
-    });
+  // 페이지이동시에만 변화가..
+  // 2번
+  const linksData = fetchUserLinks({ userId: USER_ID, folderId: folderId });
 
-  // console.log(Object.keys(paramId));
-  // const key = "Folder";
-  // const [data, isLoading] = useFetch(
-  //   `https://bootcamp-api.codeit.kr/api/users/${userId}/folders`
-  // );
+  // 아래는 왜 안될까..
+  // 3번
+  const [a, b] = useTest(() =>
+    fetchUserLinks({ userId: USER_ID, folderId: folderId }, [folderId])
+  );
 
-  // console.log(paramId.folderId);
-  // const title = paramId.folderId;
-  // console.log(paramId);
+  const result = Folderdata?.data;
+  const obj =
+    (result &&
+      result.reduce((acc, item) => {
+        if (!acc[item.id]) {
+          acc[item.id] = {
+            folderId: item.id,
+            folderName: item.name,
+          };
+        }
+        return acc;
+      }, {})) ||
+    {};
+
+  const obj_keys = Object.keys(obj).map(Number);
 
   return (
-    <LocaleContext.Provider value={obj}>
-      <NavSec />
+    <LocaleContext.Provider
+      value={{ ObjectValue: obj, LinkSDataArr: linkData }}
+    >
+      <FolderNav data={userData} />
       <Header />
       <SearchBar />
-      <Menubar data={data} isLoading={isLoading} />
+      <Menubar obj={obj} objKeys={obj_keys} folderId={folderId} />
+      <FolderMenu folderId={folderId} />
       {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
-      {/* title={title} */}
-      <Article folderId={paramId.folderId} />
-      <WholeData />
+      {/* <Landing data={data} isLoading={isLoading}></Landing> */}
+      {/* <WholeData folderId={folderId} /> */}
+      <WholeData linksData={linkData} folderId={folderId} />
       <Footer />
     </LocaleContext.Provider>
   );

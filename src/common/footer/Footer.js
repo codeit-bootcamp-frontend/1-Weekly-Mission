@@ -16,10 +16,18 @@ export default function Footer() {
         <span>FAQ</span>
       </div>
       <div className={styles.icons}>
-        <MetaIcon />
-        <TwitterIcon />
-        <InstagramIcon />
-        <YoutubeIcon />
+        <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+          <MetaIcon />
+        </a>
+        <a href="https://twitter.com/" target="_blank" rel=" noreferrer">
+          <TwitterIcon />
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
+          <YoutubeIcon />
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+          <InstagramIcon />
+        </a>
       </div>
     </div>
   );

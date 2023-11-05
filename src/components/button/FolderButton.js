@@ -1,20 +1,25 @@
 import React from "react";
 import Button from "../button/Button";
 import styles from "./FolderButton.module.css";
-import Article from "../article/Article";
+
 import { useNavigate } from "react-router-dom";
 import { getEachfoldersData } from "../../api/folder";
 
-export default function FolderButton({ data, dataKeys, onClickFunc }) {
+export default function FolderButton({ data, dataKeys, folderId }) {
+  // navigate를 하게 되면은 component가 새롭게 mount된다.
+  // 데이터는
+
   const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
       <div className={styles.sub__container}>
+        {/* 버튼 안에 className, name, onCLckfunction은운 prop으로 내려준것이기 때문에 
+          이에 해당하는 styling은 Button.module.js에서 한다
+        */}
         <Button
-          name="total"
-          onClickFunc={() => {
-            // <Article />;
+          isActive={!folderId}
+          onClickFunc={(e) => {
             navigate("/folder");
           }}
         >
@@ -26,25 +31,27 @@ export default function FolderButton({ data, dataKeys, onClickFunc }) {
               if (key === 168) {
                 item[key].folderName = "코딩 팁";
               }
-              if (key === 24) {
-                return;
-              }
-
+              // // 얘가 있으면은 폴더가 하나 더 만들어져서 아예 없애버렸는데 그냥 다시 살려둠
+              // if (key === 24) {
+              //   return;
+              // }
               return (
                 <Button
-                  name={key}
+                  isActive={Number(folderId) === key}
+                  className={item[key].folderId}
                   key={key}
                   onClickFunc={() => {
                     // custom훅을 사용할수가 없어서 API를 사용
                     getEachfoldersData({ folderId: key }).then((data) => {
-                      let boolean = data.length > 0;
-                      if (boolean) {
-                        // console.log(otherTitle);
-                        // <Article title={otherTitle} />;
-                        navigate(`/folder/${key}`);
-                      } else if (!boolean) {
-                        navigate("/folder/nothing");
-                      }
+                      // let contents = data.length > 0;
+                      navigate(`/folder/${key}`);
+                      // 아래는 추후에 필요할수도 있다는 생각에 그냥 둠..
+                      // if (contents) {
+                      //   // 아래에 있는 key!가 folderId, 즉 useParams의 value가 된다
+                      //   navigate(`/folder/${key}`);
+                      // } else if (!contents) {
+                      //   navigate(`/folder/${key}`);
+                      // }
                     });
                   }}
                 >

@@ -7,6 +7,7 @@ export default function ImageList({ items, isLoading }) {
   const {
     folder: { links },
   } = items;
+
   return (
     <ul>
       <div className={styles.container}>

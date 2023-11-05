@@ -20,7 +20,7 @@
 .button__container {
   border: 3px solid var(--primary);
   border-radius: 15px;
-  background-color: var(--white);
+
   width: 85%;
   height: 5rem;
   display: flex;
@@ -37,7 +37,7 @@
 
   /* descktop*/
   @media (min-width: 1200px) {
-    width: 87%;
+    width: 80%;
   }
 }
 
@@ -47,15 +47,36 @@
 }
 
 .input {
+  width: 200px;
   border: none;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .image {
   height: 3rem;
   text-align: center;
 }
-
-.add_button {
+.add__button {
+  width: 100px;
+  height: 2.5rem;
   align-self: center;
   margin-right: 1rem;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  border-radius: 5px;
+  border: none;
+
+  /* tablet */
+  @media (min-width: 768px) {
+  }
+
+  /* table2 */
+  @media (min-width: 1124px) {
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+  }
 }

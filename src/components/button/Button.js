@@ -15,17 +15,18 @@ const BaseButton = styled.button`
     background-color: var(--primary);
     opacity: 0.7;
   }
+  &.active {
+    background-color: var(--primary);
+  }
 `;
 
-export default function Button({ children, className, name, onClickFunc }) {
+export default function Button({ children, isActive, onClickFunc }) {
   return (
     <BaseButton
-      name={name}
-      className={className}
       onClick={(e) => {
-        e.stopPropagation();
         onClickFunc();
       }}
+      className={isActive ? "active" : ""}
     >
       {children}
     </BaseButton>

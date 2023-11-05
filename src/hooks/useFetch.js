@@ -9,7 +9,6 @@ const useFetch = (url) => {
       const response = await fetch(url);
       if (response.status === 200) {
         const jsonData = await response.json();
-
         if (!cleanup) {
           setItems(jsonData);
           setIsLoading(false);
@@ -19,7 +18,7 @@ const useFetch = (url) => {
     // mount시 cleanup은 false
     let cleanup = false;
     fetchcingData();
-    // unmount되면은 clean-up을 true로 변경
+    // // unmount되면은 clean-up을 true로 변경
     return () => {
       cleanup = true;
     };
