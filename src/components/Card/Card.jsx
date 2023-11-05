@@ -9,12 +9,12 @@ import SelectMenu from '../Popover/SelectMenu';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 function Card({ item, path }) {
-  const ref = useRef();
+  const popoverRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
 
   const createdAt = path === '/folder' ? item.created_at : item.createdAt;
 
-  useOnClickOutside(ref, () => setIsOpen(false));
+  useOnClickOutside(popoverRef, () => setIsOpen(false));
 
   const openSelectMenu = ({ isOpen }) => {
     setIsOpen(isOpen);
@@ -46,7 +46,7 @@ function Card({ item, path }) {
           <Moment format='YYYY.MM.DD'>{item.createdAt}</Moment>
         </CardInfoBox>
       </CardWrapper>
-      {isOpen && <SelectMenu ref={ref}/>}
+      {isOpen && <SelectMenu ref={popoverRef} />}
     </>
   );
 }

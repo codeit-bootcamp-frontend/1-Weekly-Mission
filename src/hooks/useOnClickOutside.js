@@ -11,7 +11,7 @@ function useOnClickOutside(ref, handler) {
 
     return () => {
       document.removeEventListener('mousedown', listener);
-    }
+    };
   }, [ref, handler]);
 }
 
