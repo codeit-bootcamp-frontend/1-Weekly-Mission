@@ -58,4 +58,41 @@ const prettyFormatTimeDiff = (diff) => {
   return `${years} years ago`;
 };
 
-export { formatDate, getTimeDiff, prettyFormatTimeDiff };
+const shareKakao = (route) => {
+  if (window.Kakao) {
+    const kakao = window.Kakao;
+    if (!kakao.isInitialized()) {
+      kakao.init(process.env.REACT_APP_SHARE_KAKAO_LINK_KEY);
+    }
+
+    kakao.Link.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "폴더",
+        description: "링크",
+        imageUrl: "https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr",
+        link: {
+          mobileWebUrl: route,
+          webUrl: route,
+        },
+      },
+      buttons: [
+        {
+          title: "title",
+          link: {
+            mobileWebUrl: route,
+            webUrl: route,
+          },
+        },
+      ],
+    });
+  }
+};
+
+const shareFacebook = (route) => {
+  const facebookShareURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(route)}`;
+
+  window.open(facebookShareURL, "_blank");
+};
+
+export { formatDate, getTimeDiff, prettyFormatTimeDiff, shareKakao, shareFacebook };
