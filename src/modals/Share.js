@@ -6,9 +6,9 @@ import ModalHeader from '../components/ModalHeader/ModalHeader';
 
 function Share({ children }) {
   const shareItems = [
-    { img: shareKakao, sub: '카카오톡', href: '' },
-    { img: shareFacebook, sub: '페이스북', href: '' },
-    { img: shareLink, sub: '링크 복사', href: '' },
+    { img: shareKakao, sub: '카카오톡', onClick: '' },
+    { img: shareFacebook, sub: '페이스북', onClick: '' },
+    { img: shareLink, sub: '링크 복사', onClick: '' },
   ];
 
   return (
@@ -18,9 +18,9 @@ function Share({ children }) {
         {shareItems.map((item) => {
           return (
             <div className={styles.link} key={item.sub}>
-              <a href={item.href} title="">
+              <button href={item.href} onClick={item.onClick}>
                 <img src={item.img} alt="" />
-              </a>
+              </button>
               <p>{item.sub}</p>
             </div>
           );
