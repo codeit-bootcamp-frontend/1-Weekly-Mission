@@ -1,13 +1,15 @@
 import Modal from "react-modal";
 import styled from "styled-components";
-
-import shareLink from "../../utils/shareLink";
+import { shareKakaoTalk, shareLink } from "../../utils/shareLink";
 import closeBtn from "../../image/close.svg";
 import kakaoTalkIcon from "../../image/kakaotalk.svg";
 import facebookIcon from "../../image/facebook_color.svg";
 import copyIcon from "../../image/copy.svg";
 
 const ShareFolderModal = ({ isOpen, onRequestClose, name, currentUrl }) => {
+  const facebookUrl = "https://www.facebook.com/sharer/sharer.php?u=";
+  const myUrl = "https://localhost:3000"; // 배포 실패해서 우선은 local host로 남겨둠..
+
   return (
     <CustomModal
       isOpen={isOpen}
@@ -22,11 +24,19 @@ const ShareFolderModal = ({ isOpen, onRequestClose, name, currentUrl }) => {
         </Description>
         <ButtonContainer>
           <Button>
-            <ButtonImg src={kakaoTalkIcon} />
+            <ButtonImg
+              src={kakaoTalkIcon}
+              onClick={() => shareKakaoTalk(currentUrl)}
+            />
             <ButtonName>카카오톡</ButtonName>
           </Button>
           <Button>
-            <ButtonImg src={facebookIcon} />
+            <ButtonImg
+              src={facebookIcon}
+              onClick={() => {
+                window.open(facebookUrl + myUrl + currentUrl);
+              }}
+            />
             <ButtonName>페이스북</ButtonName>
           </Button>
           <Button>
