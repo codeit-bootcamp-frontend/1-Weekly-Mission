@@ -13,7 +13,6 @@ function Main() {
           <Route index element={<SharedPage />} />
           <Route path="folder" element={<FolderPage />} />
           <Route path="folder/:folderId" element={<FolderPage />} />
-          <Route path="folder" element={<FolderPage />} />
           <Route path="shared" element={<SharedPage />} />
           <Route path="error" element={<ErrorPage />} />
           <Route path="*" element={<SharedPage />} />
