@@ -92,7 +92,7 @@ const Folder = () => {
     handleLinks();
   }, [handleLinks]);
 
-  const handleModal = () => {
+  const handleAddToFolderModal = () => {
     setModalOpened((prev) => ({
       ...prev,
       addToFolderModal: {
@@ -123,6 +123,14 @@ const Folder = () => {
     }));
   };
 
+  useEffect(() => {
+    if (Object.keys(modalOpened).some((e) => modalOpened[e].display)) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+  }, [modalOpened]);
+
   if (isFolderLoading) {
     return <div>화면을 불러오는 중입니다.</div>;
   }
@@ -142,7 +150,9 @@ const Folder = () => {
                 placeholder={"링크를 추가해 보세요"}
                 onChange={(e) => setLink(e.target.value)}
               >
-                <DefaultBtn onClick={handleModal}>추가하기</DefaultBtn>
+                <DefaultBtn onClick={handleAddToFolderModal}>
+                  추가하기
+                </DefaultBtn>
               </Input>
             </AddLinkInputContainer>
           </ContentContainer>
@@ -232,7 +242,14 @@ const Folder = () => {
 
                     <CardContainer>
                       {cardData?.map((e) => {
-                        return <Card key={e.id} cardData={e} />;
+                        return (
+                          <Card
+                            key={e.id}
+                            cardData={e}
+                            onClickDelete={handleDefaultMoal}
+                            onClickAdd={handleAddToFolderModal}
+                          />
+                        );
                       })}
                     </CardContainer>
                   </>

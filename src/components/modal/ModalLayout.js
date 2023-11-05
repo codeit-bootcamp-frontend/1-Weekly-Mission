@@ -4,6 +4,7 @@ import { useResetRecoilState } from "recoil";
 
 const ModalLayout = ({ children }) => {
   const resetModalState = useResetRecoilState(modalState);
+
   return (
     <Overlay>
       <OuterModalContainer onClick={resetModalState} />

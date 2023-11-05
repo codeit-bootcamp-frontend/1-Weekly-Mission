@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 export const modalState = atom({
-  key: "mdal",
+  key: "modal",
   default: {
     defaultModal: {
       display: false,
