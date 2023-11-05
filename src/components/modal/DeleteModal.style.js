@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const ModalWrap = styled.div`
   width: 36rem;
   height: 23.9rem;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   padding: 3.5rem 4rem;
-  border: 1px solid var(--linkbrary-gray-20);
+  border: 0.1rem solid var(--linkbrary-gray-20);
   background: var(--linkbrary-white);
   z-index: 1;
   position: fixed;
@@ -49,12 +49,12 @@ export const CloseButton = styled.button`
 
 export const Button = styled.button`
   display: flex;
-  width: 280px;
-  padding: 16px 20px;
+  width: 28rem;
+  padding: 1.6rem 2rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 8px;
+  gap: 1rem;
+  border-radius: 0.8rem;
   color: var(--button-grey-light);
   font-size: 1.6rem;
   font-weight: 600;

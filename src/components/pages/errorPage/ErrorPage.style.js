@@ -7,7 +7,7 @@ export const ErrorPage = styled.section`
   height: 60rem;
   font-size: 1.8rem;
   flex-direction: column;
-  gap: 30px;
+  gap: 3rem;
   & a {
     color: var(--linkbrary-primary-color);
     text-decoration: none;

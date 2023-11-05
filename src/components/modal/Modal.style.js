@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const ModalWrap = styled.div`
   width: 36rem;
   height: 23.9rem;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   padding: 3.5rem 4rem;
-  border: 1px solid var(--linkbrary-gray-20);
+  border: 0.1rem solid var(--linkbrary-gray-20);
   background: var(--linkbrary-white);
   z-index: 1;
   position: fixed;

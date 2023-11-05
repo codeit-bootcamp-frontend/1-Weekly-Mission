@@ -15,8 +15,8 @@ export const Spinner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 300px;
+  width: 30rem;
+  height: 30rem;
   background-image: url("${spinnerImg}");
   background-size: contain;
   background-repeat: no-repeat;
