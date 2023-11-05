@@ -49,6 +49,18 @@ button, input, optgroup, select, textarea {
   line-height: 1.15;
   margin: 0;
 }
+button{
+	border: none;
+  padding: 0;
+  background: none;
+	outline: none;
+}
+
+li{
+	list-style: none;
+}
+
+
 `;
 
 export default GlobalStyle;
