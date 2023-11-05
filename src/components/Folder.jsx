@@ -7,6 +7,9 @@ import OptionBtn from './OptionBtn';
 import IconShare from '../assets/icon/icon-share.svg';
 import IconPen from '../assets/icon/icon-pen.svg';
 import IconTrash from '../assets/icon/icon-trash.svg';
+import ShareFolderModal from './Modal/ShareFolderModal';
+import RenameFolderModal from './Modal/RenameFolderModal';
+import RemoveFolderModal from './Modal/RemoveFolderModal';
 
 const INITIAL_FOLDER = {
   id: '',
@@ -15,6 +18,9 @@ const INITIAL_FOLDER = {
 
 function FolderList({ folderList = null, getCardList }) {
   const [folderName, setFolderName] = useState('전체');
+  const [IsFolderShareModal, setIsFolderShareModal] = useState(false);
+  const [IsFolderRenameModal, setIsFolderRenameModal] = useState(false);
+  const [IsFolderRemoveModal, setIsFolderRemoveModal] = useState(false);
 
   const handleButton = (name, id) => {
     setFolderName(name);
@@ -40,16 +46,19 @@ function FolderList({ folderList = null, getCardList }) {
       <FolderTitleContainer>
         <FolderTitle>{folderName}</FolderTitle>
         <Options>
-          <OptionBtn src={IconShare} alt="공유">
+          <OptionBtn src={IconShare} alt="공유" onClick={() => setIsFolderShareModal(true)}>
             공유
           </OptionBtn>
-          <OptionBtn src={IconPen} alt="이름 변경">
+          <OptionBtn src={IconPen} alt="이름 변경" onClick={() => setIsFolderRenameModal(true)}>
             이름 변경
           </OptionBtn>
-          <OptionBtn src={IconTrash} alt="삭제">
+          <OptionBtn src={IconTrash} alt="삭제" onClick={() => setIsFolderRemoveModal(true)}>
             삭제
           </OptionBtn>
         </Options>
+        {IsFolderShareModal && <ShareFolderModal setIsFolderShareModal={setIsFolderShareModal} />}
+        {IsFolderRenameModal && <RenameFolderModal setIsFolderRenameModal={setIsFolderRenameModal} />}
+        {IsFolderRemoveModal && <RemoveFolderModal setIsFolderRemoveModal={setIsFolderRemoveModal} />}
       </FolderTitleContainer>
     </div>
   );

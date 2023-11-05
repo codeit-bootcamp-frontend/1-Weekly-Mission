@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-function OptionBtn({ src, alt, href, children }) {
+function OptionBtn({ src, alt, children, onClick }) {
   return (
     <Div>
       <Img src={src} alt={alt} />
-      <Btn href={href}>{children}</Btn>
+      <Btn onClick={onClick}>{children}</Btn>
     </Div>
   );
 }

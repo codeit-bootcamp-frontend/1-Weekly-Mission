@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function RenameFolderModal() {
+function RenameFolderModal({ setIsFolderRenameModal }) {
   return (
     <>
       <Container>
         <Content>
           <Title>폴더 이름 변경</Title>
+          <CloseButton
+            onClick={() => {
+              setIsFolderRenameModal(false);
+            }}
+          >
+            <img src="/assets/image/close.png" alt="닫기 버튼" />
+          </CloseButton>
           <Input placeholder="내용 입력" />
           <Cta name="변경하기" />
         </Content>
@@ -20,6 +27,7 @@ export default RenameFolderModal;
 const Container = styled.div`
   position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.4);
@@ -60,4 +68,10 @@ const Input = styled.input`
   border-radius: 8px;
   border: 1px solid var(--primary, #6d6afe);
   background: var(--white, #fff);
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
 `;

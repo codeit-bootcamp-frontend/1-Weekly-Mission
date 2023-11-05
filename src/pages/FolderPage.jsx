@@ -7,9 +7,11 @@ import useAsync from '../hooks/useAsync';
 import { getFolders } from '../api/api';
 import { useCallback, useEffect, useState } from 'react';
 import MobileFolderButton from '../components/MobileFolderButton';
+import AddFolderModal from '../components/Modal/AddFolderModal';
 
 function FolderPage() {
   const [folderList, setFolderList] = useState([]);
+  const [IsFolderAddModal, setIsFolderAddModal] = useState(false);
 
   const [, , getFolderListAsync] = useAsync(getFolders);
 
@@ -33,7 +35,9 @@ function FolderPage() {
         <AddLink />
         <ContentContainer>
           <SearchBar />
-          <AddFolderButton>폴더 추가</AddFolderButton>
+          <AddFolderButton onClick={() => setIsFolderAddModal(true)}>폴더 추가</AddFolderButton>
+          {IsFolderAddModal && <AddFolderModal setIsFolderAddModal={setIsFolderAddModal} />}
+
           <Folder folderList={folderList} />
         </ContentContainer>
       </Container>

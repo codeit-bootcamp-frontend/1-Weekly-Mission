@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 
-function ShareFolderModal() {
+function ShareFolderModal({ setIsFolderShareModal }) {
   return (
     <>
       <Container>
         <Content>
           <Title>폴더 공유</Title>
           <FolderName>폴더명</FolderName>
+          <CloseButton
+            onClick={() => {
+              setIsFolderShareModal(false);
+            }}
+          >
+            <img src="/assets/image/close.png" alt="닫기 버튼" />
+          </CloseButton>
           <IconLayout>
             <IconWrapper>
               <Icon src="/assets/image/kakao.jpg" />
@@ -32,6 +39,7 @@ export default ShareFolderModal;
 const Container = styled.div`
   position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.4);
@@ -89,4 +97,10 @@ const Icon = styled.img`
   width: 4.2rem;
   height: 4.2rem;
   border-radius: 37.333px;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
 `;
