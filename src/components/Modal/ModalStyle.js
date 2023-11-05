@@ -6,6 +6,8 @@ export const S = {
   ModalWrapper: styled.div`
     width: 100vw;
     height: 100vh;
+    position: fixed;
+    inset: 0;
     background: rgba(0, 0, 0, 0.4);
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
     display: flex;
@@ -18,7 +20,7 @@ export const S = {
     ${flexCenter};
     padding: 32px 40px;
     width: 360px;
-    height: 239px;
+
     flex-direction: column;
     justify-content: center;
     gap: 25px;
@@ -111,12 +113,30 @@ export const S = {
     }
   `,
 
-  StyledFolderInfo: styled.div`
-    display: flex;
-    padding: 8px;
-    align-items: flex-start;
-    gap: 8px;
+  FolderInfoContainer: styled.div`
+    width: 100%;
 
+    flex-direction: column;
+    align-items: start;
+  `,
+  StyledFolderInfo: styled.div`
+    width: 100%;
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+
+    ${cursorPointer}
+    &:hover,
+    &:focus {
+      background-color: ${colors.background};
+      .name {
+        color: ${colors.primary};
+      }
+    }
+
+ 
     .name {
       color: ${colors.gray100};
 
@@ -129,7 +149,7 @@ export const S = {
     }
 
     .count {
-      color: ${colors.gray60}
+      color: ${colors.gray60};
 
       /* Linkbrary/body2-regular */
       font-family: Pretendard;
@@ -137,6 +157,7 @@ export const S = {
       font-style: normal;
       font-weight: 400;
       line-height: normal;
+      text-align: center;
     }
   `,
 };

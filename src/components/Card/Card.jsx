@@ -36,18 +36,18 @@ function Card({ link }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setModal] = useState(null);
 
-  const handleModal = ({link}) => (e) => {
-    const url = link.url;
-    console.log(url)
-    e.preventDefault();
-    e.stopPropagation();
-    
-  
-    let feature = e.target.textContent;
+  const handleModal =
+    ({ link }) =>
+    (e) => {
+      const url = link.url;
+      e.preventDefault();
+      e.stopPropagation();
 
-    setModal(ModalMaker({ url, feature, setIsModalOpen }));
-    setIsModalOpen(true);
-  };
+      let feature = e.target.textContent;
+
+      setModal(ModalMaker({ url, feature, setIsModalOpen }));
+      setIsModalOpen(true);
+    };
 
   const isOpenKebabHandle = (e) => {
     e.preventDefault();
@@ -85,8 +85,12 @@ function Card({ link }) {
           />
           {isOpenKebab && (
             <S.OptionContainer>
-              <option onClick={(e) => handleModal({link})(e)}>삭제하기</option>
-              <option onClick={(e) => handleModal({link})(e)}>폴더에 추가</option>
+              <option onClick={(e) => handleModal({ link })(e)}>
+                삭제하기
+              </option>
+              <option onClick={(e) => handleModal({ link })(e)}>
+                폴더에 추가
+              </option>
             </S.OptionContainer>
           )}
           <S.CardContent>{link.description}</S.CardContent>

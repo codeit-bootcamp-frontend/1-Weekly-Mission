@@ -4,6 +4,7 @@ import cancelIcon from "../../assets/modal/_close.png";
 import kakaoIcon from "../../assets/modal/kakao.svg";
 import facebookIcon from "../../assets/modal/facebook.svg";
 import copyIcon from "../../assets/modal/sharelink.svg";
+import checkIcon from "../../assets/modal/check.svg";
 import useAsync from "../../Hooks/useAsync";
 import { getFolders } from "../../api";
 
@@ -30,7 +31,9 @@ function FolderInfo({ folderName, count }) {
   return (
     <S.StyledFolderInfo>
       <span className="name">{folderName}</span>
-      <span className="count">{count}</span>
+      <span className="count">{count}개 링크</span>
+
+      {/* <img src={checkIcon} /> */}
     </S.StyledFolderInfo>
   );
 }
@@ -42,9 +45,9 @@ function ModalAddToFolder() {
 
   if (!folderData) return null;
   const folders = folderData?.data;
-  console.log(folderData);
+
   return (
-    <>
+    <S.FolderInfoContainer>
       {folders.map((folder) => (
         <FolderInfo
           key={folder.id}
@@ -52,7 +55,7 @@ function ModalAddToFolder() {
           count={folder.link.count}
         />
       ))}
-    </>
+    </S.FolderInfoContainer>
   );
 }
 function Modal({
@@ -78,7 +81,7 @@ function Modal({
         {folderName && <S.ModalDetail>{folderName}</S.ModalDetail>}
         {url && <S.ModalDetail>{url}</S.ModalDetail>}
         {share && <ModalFolderShare />}
-        {addLink && <ModalAddToFolder/>}
+        {addLink && <ModalAddToFolder />}
         {!share && <S.ModalButton red={red}>{buttonText}</S.ModalButton>}
       </S.ModalContainer>
     </S.ModalWrapper>
