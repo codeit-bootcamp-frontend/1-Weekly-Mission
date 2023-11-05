@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { forwardRef } from 'react';
 
-function SelectMenu({ _ }, ref) {
+function SelectMenu() {
   return (
-    <SelectMenuContainer ref={ref}>
+    <SelectMenuContainer>
       <DeleteButton>삭제하기</DeleteButton>
       <AddButton>폴더에 추가</AddButton>
     </SelectMenuContainer>
