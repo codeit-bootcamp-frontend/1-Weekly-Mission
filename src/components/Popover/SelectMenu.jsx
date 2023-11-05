@@ -12,6 +12,10 @@ function SelectMenu() {
 export default SelectMenu;
 
 const SelectMenuContainer = styled.div`
+  position: absolute;
+  z-index: 3;
+  right: -58px;
+  top: 70%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -19,13 +23,14 @@ const SelectMenuContainer = styled.div`
   background: #FFF;
   box-shadow: 0 2px 8px 0 rgba(51, 50, 54, 0.10);
   width: 10rem;
+  height: 6.4rem;
 `;
 
 const SelectButton = styled.button`
   display: flex;
   padding: 0.7px 1.2rem;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   align-self: stretch;
   color: #333236;
@@ -34,6 +39,7 @@ const SelectButton = styled.button`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  height: 100%;
 `
 
 const DeleteButton = styled(SelectButton)`

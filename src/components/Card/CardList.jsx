@@ -9,9 +9,9 @@ function CardList({ items }) {
   return (
     <CardListStyle>
         {items.map((item) =>
-          <li key={item.id}>
+          <Li key={item.id} >
             <Card item={item} path={path}/>
-          </li>
+          </Li>
         )}
     </CardListStyle>
   );
@@ -35,4 +35,8 @@ const CardListStyle = styled.div`
     grid-auto-rows: auto;
     gap: 2rem 2.5rem;
   }
+`;
+
+const Li = styled.li`
+  position: relative;
 `;
