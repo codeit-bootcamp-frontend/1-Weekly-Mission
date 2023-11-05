@@ -23,7 +23,7 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2rem;
-    border: 1px solid var(--linkbrary-white, #fff);
+    border: 0.1rem solid var(--linkbrary-white, #fff);
     background: var(--linkbrary-primary-color, #6d6afe);
     color: white;
     padding: 0.8rem 2.4rem;

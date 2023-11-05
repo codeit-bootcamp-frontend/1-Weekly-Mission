@@ -26,7 +26,7 @@ input:focus {
 .button {
   width: 8rem;
   padding: 1rem 1.6rem;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background: var(
     --gra-purpleblue-to-skyblue,
     linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)

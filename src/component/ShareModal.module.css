@@ -16,8 +16,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 15px;
-  border: 1px solid var(--stroke-light, #dee2e6);
+  border-radius: 1.5rem;
+  border: 0.1rem solid var(--stroke-light, #dee2e6);
   background: var(--gray-white, #fff);
   padding: 3.2rem 4rem;
   background-color: rgba(255, 255, 255, 1);
@@ -37,8 +37,8 @@
 .folderName {
   color: var(--linkbrary-gray-60, #9fa6b2);
   text-align: center;
-  font-size: 14px;
-  line-height: 22px; /* 157.143% */
+  font-size: 1.4rem;
+  line-height: 2.2rem; /* 157.143% */
   padding-top: 0.8rem;
 }
 
@@ -63,5 +63,5 @@
   background-color: var(--linkbrary-primary-color);
   color: white;
   padding: 1rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 0.8rem;
 }

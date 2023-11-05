@@ -16,8 +16,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 15px;
-  border: 1px solid var(--stroke-light, #dee2e6);
+  border-radius: 1.5rem;
+  border: 0.1rem solid var(--stroke-light, #dee2e6);
   background: var(--gray-white, #fff);
   padding: 3.2rem 4rem;
   background-color: rgba(255, 255, 255, 1);
@@ -37,8 +37,8 @@
 .url {
   color: var(--linkbrary-gray-60, #9fa6b2);
   text-align: center;
-  font-size: 14px;
-  line-height: 22px; /* 157.143% */
+  font-size: 1.4rem;
+  line-height: 2.2rem; /* 157.143% */
   padding-top: 0.8rem;
 }
 
@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 .folder:hover {
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background: var(--linkbrary-bg, #f0f6ff);
 }
 .folderContainer {
@@ -79,7 +79,7 @@
   width: auto;
 }
 .checkFolder {
-  border-radius: 8px;
+  border-radius: 0.8rem;
   background: var(--linkbrary-bg, #f0f6ff);
 }
 .unCheckFolder {
@@ -96,8 +96,8 @@
 }
 
 .addButton {
-  padding: 16px 20px;
-  border-radius: 8px;
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
   background: var(
     --gra-purpleblue-to-skyblue,
     linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)

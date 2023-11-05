@@ -15,8 +15,8 @@
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  border-radius: 15px;
-  border: 1px solid var(--stroke-light, #dee2e6);
+  border-radius: 1.5rem;
+  border: 0.1rem solid var(--stroke-light, #dee2e6);
   background: var(--gray-white, #fff);
   padding: 3.2rem 4rem;
   background-color: rgba(255, 255, 255, 1);
@@ -36,19 +36,19 @@
   right: 2rem;
 }
 p {
-  width: 280px;
+  width: 28rem;
   text-align: center;
 }
 .modalInput {
-  width: 280px;
-  padding: 18px 15px;
-  border-radius: 8px;
-  border: 1px solid var(--linkbrary-gray-20, #ccd5e3);
+  width: 28rem;
+  padding: 1.8rem 1.5rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--linkbrary-gray-20, #ccd5e3);
   background: var(--linkbrary-white, #fff);
 }
 .button {
-  padding: 16px 20px;
-  border-radius: 8px;
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
   color: white;
   width: 100%;
 }
