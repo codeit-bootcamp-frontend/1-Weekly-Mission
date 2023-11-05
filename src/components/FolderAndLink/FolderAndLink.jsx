@@ -7,8 +7,7 @@ import useAsync from "../../Hooks/useAsync";
 
 import styled from "styled-components";
 import { device } from "../../style/device";
-import colors from "../../style/colors";
-import { cursorPointer } from "../../style/common";
+
 
 function FolderAndLink() {
   const [selectedFolderId, setSelectedFolderId] = useState(undefined);

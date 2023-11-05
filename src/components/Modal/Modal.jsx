@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { cursorPointer, flexCenter } from "../../style/common";
 import colors from "../../style/colors";
 import cancelIcon from "../../assets/modal/_close.png";
+import { createPortal } from "react-dom";
+
 const ModalWrapper = styled.div`
   width: 100vw;
   height: 100vh;
@@ -11,6 +13,7 @@ const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 `;
 
 const ModalContainer = styled.div`
@@ -55,6 +58,7 @@ const ModalButton = styled.button`
   align-items: center;
   gap: 10px;
   border-radius: 8px;
+  ${cursorPointer}
 
   background: ${({ red }) => (red ? colors.red : colors.purpleBlueToSkyBlue)};
 
@@ -85,43 +89,70 @@ const ModalCancelIcon = styled.img`
   ${cursorPointer}
 `;
 
-function Modal({ title, buttonText, isModalOpen, modalName, featureName }) {
+function Modal({ title, buttonText, isModalOpen, red }) {
   return (
     <ModalWrapper>
       <ModalContainer>
-        <ModalCancelIcon src={cancelIcon} />
+        <ModalCancelIcon src={cancelIcon} onClick={() => isModalOpen(false)} />
         <ModalTitle>{title}</ModalTitle>
-        {/* <ModalInput placeholder="내용 입력"></ModalInput> */}
+        <ModalInput placeholder="내용 입력"></ModalInput>
         <ModalDetail>폴더명</ModalDetail>
-        <ModalButton>{buttonText}</ModalButton>
+        <ModalButton red={red}>{buttonText}</ModalButton>
       </ModalContainer>
     </ModalWrapper>
   );
 }
 
-const ModalMaker = ({ feature }) => {
+export const ModalMaker = ({feature, isModalOpen}) => {
   let modal;
   switch (feature) {
-    case "edit-folder-name":
-      <Modal title="폴더 이름 변경" buttonText="변경하기" />;
+    case "이름 변경":
+      modal = (
+        <Modal
+          title="폴더 이름 변경"
+          buttonText="변경하기"
+          isModalOpen={isModalOpen}
+        />
+      );
       break;
-    case "add-folder":
-      <Modal title="폴더 추가" buttonText="추가하기" />;
+    case "폴더 추가 +":
+      modal = (
+        <Modal
+          title="폴더 추가"
+          buttonText="추가하기"
+          isModalOpen={isModalOpen}
+        />
+      );
       break;
-    case "share-folder":
-      <Modal title="폴더 공유" />;
+    case "공유":
+      modal = <Modal title="폴더 공유" isModalOpen={isModalOpen} />;
       break;
 
-    case "delete-folder":
-      <Modal title="폴더 삭제" buttonText="삭제하기" red />;
+    case "삭제":
+      modal = (
+        <Modal
+          title="폴더 삭제"
+          buttonText="삭제하기"
+          red
+          isModalOpen={isModalOpen}
+        />
+      );
       break;
-    case "delete-link":
-      <Modal title="링크 삭제" buttonText="삭제하기" red />;
+    case "삭제하기":
+      modal = (
+        <Modal
+          title="링크 삭제"
+          buttonText="삭제하기"
+          red
+          isModalOpen={isModalOpen}
+        />
+      );
       break;
-    case "add-to-folder":
-      <Modal />;
+    case "폴더에 추가":
+      modal = <Modal isModalOpen={isModalOpen} />;
       break;
   }
+  return modal;
 };
 
 export default Modal;

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { S } from "./FolderListStyle"; // Import the styles as S
 
 import shareIcon from "../../assets/share.png";
 import modifyIcon from "../../assets/pen.png";
 import deleteIcon from "../../assets/deleteIcon.png";
-import Modal from "../Modal/Modal";
+import Modal, { ModalMaker, ModalPortal } from "../Modal/Modal";
 const DEFAULT_FOLDER = {
   id: 0,
   name: "전체",
@@ -13,6 +13,7 @@ const DEFAULT_FOLDER = {
 function FolderList({ folders, setFolderLink, selectedFolderId }) {
   const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modal, setModal] = useState(null);
   const onClick = (folder) => (e) => {
     if (!folder) {
       setFolderLink(undefined);
@@ -21,6 +22,12 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
       setFolderLink(folder.id);
       setSelectedFolder(folder);
     }
+  };
+
+  const handleModal = () => (e) => {
+    let feature = e.target.textContent;
+    setModal(ModalMaker({feature, setIsModalOpen}));
+    setIsModalOpen(true);
   };
 
   return (
@@ -51,33 +58,28 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
         <S.FolderName>{selectedFolder?.name} </S.FolderName>
         {selectedFolder?.name !== "전체" && (
           <S.Icons>
-            <Icon
-              img={shareIcon}
-              feature={"공유"}
-              onClick={() => setIsModalOpen(true)}
-            />
+            <Icon img={shareIcon} feature={"공유"} />
             <Icon
               img={modifyIcon}
               feature={"이름 변경"}
-              onClick={() => setIsModalOpen(true)}
+              onClick={(e) => handleModal()(e)}
             />
-            <Icon img={deleteIcon} feature={"삭제"} />
+            <Icon
+              img={deleteIcon}
+              feature={"삭제"}
+              onClick={(e) => handleModal()(e)}
+            />
           </S.Icons>
         )}
       </S.FolderInfoContainer>
-
-      <Modal
-        title="폴더 삭제"
-        buttonText="삭제하기"
-        isModalOpen={isModalOpen}
-      ></Modal>
+      {isModalOpen && modal}
     </>
   );
 }
 
-function Icon({ img, feature }) {
+function Icon({ img, feature, onClick }) {
   return (
-    <S.StyledIcon>
+    <S.StyledIcon onClick={onClick}>
       <img src={img}></img>
       <div>{feature}</div>
     </S.StyledIcon>
