@@ -17,7 +17,7 @@ const FolderToolbar = ({ folderName, setModalComponent }) => {
           FOLDER_MANAGE_MENUS.map((menu, i) => (
             <li key={menu.iconTitle}>
               <S.ManageButton onClick={(e) => handleMenuClick(e, menu)}>
-                {menu.title}
+                {menu.iconTitle}
                 <img src={menu.imgSrc} alt={menu.alt} />
               </S.ManageButton>
             </li>
