@@ -16,11 +16,10 @@ export const AddLinkBar = styled.div`
 
 export const AddLinkButton = styled.button`
   display: flex;
-  width: 8rem;
+  width: 8.2rem;
   right: 2rem;
   height: 3.7rem;
   font-size: 1.4rem;
-
   padding: 1rem 1.55rem;
 
   border: 0;
@@ -38,7 +37,6 @@ export const AddLinkButton = styled.button`
   font-weight: 600;
 
   ${RESPONSIBLE_MEDIA_QUERIES.mobile} {
-    width: 8rem;
     height: 3.7rem;
     padding: 1rem 1.6rem;
     font-size: 1.4rem;
