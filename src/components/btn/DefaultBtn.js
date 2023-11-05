@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-const DefaultBtn = ({ children }) => {
-  return <DefaultBtnContainer>{children}</DefaultBtnContainer>;
+const DefaultBtn = ({ children, onClick }) => {
+  return (
+    <DefaultBtnContainer onClick={onClick}>{children}</DefaultBtnContainer>
+  );
 };
 
 export default DefaultBtn;

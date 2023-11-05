@@ -55,7 +55,7 @@ const Folder = () => {
           <div id="folderName">{folderName}</div>
         </ContentContainer>
       </Section>
-      <Section bg="#fff">
+      <Section $bg="#fff">
         <FolderContentContainer>
           <Input src={SearchImg} placeholder="링크를 검색해보세요" />
 
