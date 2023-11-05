@@ -3,16 +3,17 @@ import share_icon from '../../assets/svg/share.svg';
 import pen_icon from '../../assets/svg/pen.svg';
 import delete_icon from '../../assets/svg/trash.svg';
 import IconControlButton from '../../styles/IconControlButton';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Modal from '../Modal/Modal';
 import FolderModal from '../Modal/FolderModal';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const ICONS = [
   {
     id: 1,
     iconImage: share_icon,
     name: '공유',
-    action: 'share'
+    action: 'share',
   },
   {
     id: 2,
@@ -24,12 +25,13 @@ const ICONS = [
     id: 3,
     iconImage: delete_icon,
     name: '삭제',
-    action: 'delete'
+    action: 'delete',
   },
 ];
 
 
 function CategoryTitleContainer({ name }) {
+  const modalRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
 
@@ -40,7 +42,9 @@ function CategoryTitleContainer({ name }) {
 
   const closeModal = () => {
     setIsOpen(false);
-  }
+  };
+
+  useOnClickOutside(modalRef, closeModal);
 
   return (
     <CategoryTitleContainerStyle>
@@ -53,7 +57,7 @@ function CategoryTitleContainer({ name }) {
         })}
         {isOpen && (
           <Modal>
-            <FolderModal action={action} onCloseModal={closeModal} name={name}/>
+            <FolderModal action={action} onCloseModal={closeModal} name={name} ref={modalRef} />
           </Modal>
         )}
       </FolderControlContainer>

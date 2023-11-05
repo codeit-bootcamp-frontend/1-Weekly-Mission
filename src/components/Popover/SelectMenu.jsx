@@ -1,15 +1,16 @@
 import styled from 'styled-components';
+import { forwardRef } from 'react';
 
-function SelectMenu() {
- return (
-   <SelectMenuContainer>
-     <DeleteButton>삭제하기</DeleteButton>
-     <AddButton>폴더에 추가</AddButton>
-   </SelectMenuContainer>
- )
+function SelectMenu({ _ }, ref) {
+  return (
+    <SelectMenuContainer ref={ref}>
+      <DeleteButton>삭제하기</DeleteButton>
+      <AddButton>폴더에 추가</AddButton>
+    </SelectMenuContainer>
+  );
 }
 
-export default SelectMenu;
+export default forwardRef(SelectMenu);
 
 const SelectMenuContainer = styled.div`
   position: absolute;
@@ -24,7 +25,7 @@ const SelectMenuContainer = styled.div`
   box-shadow: 0 2px 8px 0 rgba(51, 50, 54, 0.10);
   width: 10rem;
   height: 6.4rem;
-  
+
   @media (min-width: 768px) {
     right: -58px;
     top: 70%;
@@ -45,10 +46,10 @@ const SelectButton = styled.button`
   font-weight: 400;
   line-height: normal;
   height: 100%;
-`
+`;
 
 const DeleteButton = styled(SelectButton)`
-`
+`;
 
 const AddButton = styled(SelectButton)`
   background: #E7EFFB;

@@ -4,9 +4,10 @@ import FolderEditModal from './FolderEditModal';
 import FolderAddModal from './FolderAddModal';
 import FolderDeleteModal from './FolderDeleteModal';
 import FolderShareModal from './FolderShareModal';
+import { forwardRef } from 'react';
 
 
-function FolderModal({ action, onCloseModal, name }) {
+function FolderModal({ action, onCloseModal, name }, ref) {
 
   const decideFolderModal = (action) => {
     switch (action) {
@@ -41,7 +42,7 @@ function FolderModal({ action, onCloseModal, name }) {
 
   return (
     <>
-      <BackDrop />
+      <BackDrop ref={ref}/>
       <ModalBody $action={action}>
         {decideFolderModal(action)}
       </ModalBody>
@@ -49,7 +50,7 @@ function FolderModal({ action, onCloseModal, name }) {
   );
 }
 
-export default FolderModal;
+export default forwardRef(FolderModal);
 
 
 const BackDrop = styled.div`
