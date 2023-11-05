@@ -17,7 +17,13 @@ function FolderData({ folderName, folderId, folderCount }) {
       onClick={handleClick}
     >
       <div className={style.folderContainer}>
-        <h1 className={style.folderName}>{folderName}</h1>
+        <h1
+          className={clsx(style.folderName, {
+            [style.checkFolderName]: isClick,
+          })}
+        >
+          {folderName}
+        </h1>
         <p className={style.folderCount}>{folderCount}개 링크</p>
       </div>
 
@@ -42,7 +48,7 @@ function AddLinkModal({ url, folders, onExitClick }) {
   return (
     <div className={style.modalWrapper}>
       <div className={style.root}>
-        <button onClick={handleExitClick}>
+        <button className={style.closeModalButton} onClick={handleExitClick}>
           <img src={closeIcon} alt="모달 닫기" />
         </button>
         <div>
@@ -62,7 +68,7 @@ function AddLinkModal({ url, folders, onExitClick }) {
             );
           })}
         </div>
-        <button>추가하기</button>
+        <button className={style.addButton}>추가하기</button>
       </div>
     </div>
   );

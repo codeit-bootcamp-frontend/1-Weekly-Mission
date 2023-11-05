@@ -31,6 +31,9 @@
 .closeModal img {
   float: right;
   width: 2.4rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
 p {
   width: 280px;
