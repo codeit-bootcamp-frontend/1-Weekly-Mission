@@ -1,5 +1,3 @@
-import Folder from "./FolderContainer";
+import FolderContainer from "./FolderContainer";
 
-export default function FolderPage() {
-  return <Folder />;
-}
+export default FolderContainer;

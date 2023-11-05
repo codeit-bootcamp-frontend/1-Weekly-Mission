@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import { Link } from "react-router-dom";
 
-import * as style from "./HeaderStyle";
+import * as S from "./HeaderStyle";
 import logo from "assets/logo.svg";
 import { getUser } from "api/api";
 import Button from "components/button/Button";
@@ -30,22 +30,22 @@ export default function Header() {
   const hideHeader = location.pathname === "/folder";
 
   return (
-    <style.Wrapper $headerstyle={hideHeader}>
-      <style.Container>
+    <S.Wrapper $headerstyle={hideHeader}>
+      <S.Container>
         <Link to="/">
-          <style.Logo src={logo} alt="logo" />
+          <S.Logo src={logo} alt="logo" />
         </Link>
         <nav>
-          {isLoading ? (
-            <Button size="large" label="로그인" />
+          {!isLoading && user ? (
+            <S.Navbar>
+              <S.ProfileImage src={user?.image_source} />
+              <S.ProfileEmail>{user?.email}</S.ProfileEmail>
+            </S.Navbar>
           ) : (
-            <style.Navbar>
-              <style.ProfileImage src={user.image_source} />
-              <style.ProfileEmail>{user.email}</style.ProfileEmail>
-            </style.Navbar>
+            <Button size="large" label="로그인" />
           )}
         </nav>
-      </style.Container>
-    </style.Wrapper>
+      </S.Container>
+    </S.Wrapper>
   );
 }

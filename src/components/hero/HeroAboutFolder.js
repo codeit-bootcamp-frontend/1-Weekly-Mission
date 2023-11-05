@@ -1,6 +1,14 @@
+import { useState } from "react";
+
 import styled from "styled-components";
-import LinkIcon from "assets/link.svg";
+
 import Button from "components/button/Button";
+import AddLinkFolderInput from "components/inputs/addLinkFolder";
+import AddLink from "components/modal/AddLink";
+import ModalContainer from "components/modal/ModalContainer";
+import ModalPortal from "components/ModalPortal";
+
+import LinkIcon from "assets/link.svg";
 
 export const Wrapper = styled.div`
   padding: 1.5rem 2rem;
@@ -17,15 +25,6 @@ export const Icon = styled.img`
   transform: translate(-50%, -50%);
 `;
 
-export const Input = styled.input`
-  padding: 1rem 2.5rem;
-  width: 100%;
-  background: var(--color-white);
-  border: 1px solid var(--color-primary);
-  border-radius: 1rem;
-  line-height: 1.5rem;
-`;
-
 export const ButtonContainer = styled.div`
   position: absolute;
   top: 50%;
@@ -33,14 +32,34 @@ export const ButtonContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export default function FolderHero() {
+export default function FolderHero({ onChangeAddLink, addLinkValue }) {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const handleInput = () => {
+    if (!addLinkValue) {
+      alert("추가할 링크를 입력해주세요.");
+      return;
+    }
+    setIsOpenModal(true);
+  };
+
   return (
-    <Wrapper>
-      <Icon src={LinkIcon} alt="link" />
-      <Input type="text" placeholder="링크를 추가해 보세요" />
-      <ButtonContainer>
-        <Button size="small" label="추가하기" />
-      </ButtonContainer>
-    </Wrapper>
+    <>
+      {isOpenModal && (
+        <ModalPortal>
+          <ModalContainer onClose={() => setIsOpenModal(false)}>
+            <AddLink link={addLinkValue} />
+          </ModalContainer>
+        </ModalPortal>
+      )}
+
+      <Wrapper>
+        <Icon src={LinkIcon} alt="link" />
+        <AddLinkFolderInput onChangeAddLink={onChangeAddLink} />
+        <ButtonContainer>
+          <Button size="small" label="추가하기" onClick={handleInput} />
+        </ButtonContainer>
+      </Wrapper>
+    </>
   );
 }

@@ -5,18 +5,18 @@ import twitterIcon from "assets/akar-icons_twitter-fill.svg";
 import youtubeIcon from "assets/akar-icons_youtube-fill.svg";
 import instagramIcon from "assets/ant-design_instagram-filled.svg";
 
-import * as style from "./FooterStyle";
+import * as S from "./FooterStyle";
 
 export default function Footer() {
   return (
-    <style.Wrapper>
-      <style.Contact>
-        <style.Rights>©codeit - 2023</style.Rights>
-        <style.Policy>
-          <style.Info>Privacy Policy</style.Info>
-          <style.Info>FAQ</style.Info>
-        </style.Policy>
-        <style.Links>
+    <S.Wrapper>
+      <S.Contact>
+        <S.Rights>©codeit - 2023</S.Rights>
+        <S.Policy>
+          <S.Info>Privacy Policy</S.Info>
+          <S.Info>FAQ</S.Info>
+        </S.Policy>
+        <S.Links>
           <Link to="https://www.facebook.com/?locale=ko_KR" target="_blank" rel="noreferrer">
             <img src={facebookIcon} alt="facebook" />
           </Link>
@@ -29,8 +29,8 @@ export default function Footer() {
           <Link to="https://www.instagram.com/" target="_blank" rel="noreferrer">
             <img src={instagramIcon} alt="instagram" />
           </Link>
-        </style.Links>
-      </style.Contact>
-    </style.Wrapper>
+        </S.Links>
+      </S.Contact>
+    </S.Wrapper>
   );
 }

@@ -19,6 +19,10 @@ export const MainButton = styled.button`
   }
 `;
 
-export default function Button({ size, label }) {
-  return <MainButton size={size}>{label}</MainButton>;
+export default function Button({ size, label, onClick }) {
+  return (
+    <MainButton size={size} onClick={onClick}>
+      {label}
+    </MainButton>
+  );
 }

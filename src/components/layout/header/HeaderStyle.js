@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { breakPoints } from "styles/media";
 
 export const Wrapper = styled.div`
-  position: ${({ headerstyle }) => (headerstyle ? "" : "fixed")};
+  position: ${({ $headerstyle }) => ($headerstyle ? "" : "fixed")};
   top: 0;
   width: 100%;
   background-color: var(--color-primary-varient);
