@@ -26,7 +26,8 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
 
   const handleModal = () => (e) => {
     let feature = e.target.textContent;
-    setModal(ModalMaker({feature, setIsModalOpen}));
+    let folderName = selectedFolder?.name;
+    setModal(ModalMaker({ feature, folderName, setIsModalOpen }));
     setIsModalOpen(true);
   };
 

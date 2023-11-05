@@ -89,21 +89,32 @@ const ModalCancelIcon = styled.img`
   ${cursorPointer}
 `;
 
-function Modal({ title, buttonText, isModalOpen, red }) {
+function Modal({
+  title,
+  buttonText,
+  setIsModalOpen,
+  red,
+  hasInput,
+  hasDetail,
+  folderName,
+}) {
   return (
     <ModalWrapper>
       <ModalContainer>
-        <ModalCancelIcon src={cancelIcon} onClick={() => isModalOpen(false)} />
+        <ModalCancelIcon
+          src={cancelIcon}
+          onClick={() => setIsModalOpen(false)}
+        />
         <ModalTitle>{title}</ModalTitle>
-        <ModalInput placeholder="내용 입력"></ModalInput>
-        <ModalDetail>폴더명</ModalDetail>
+        {hasInput && <ModalInput placeholder="내용 입력"></ModalInput>}
+        {hasDetail && <ModalDetail>{folderName}</ModalDetail>}
         <ModalButton red={red}>{buttonText}</ModalButton>
       </ModalContainer>
     </ModalWrapper>
   );
 }
 
-export const ModalMaker = ({feature, isModalOpen}) => {
+export const ModalMaker = ({ feature, setIsModalOpen, folderName }) => {
   let modal;
   switch (feature) {
     case "이름 변경":
@@ -111,7 +122,8 @@ export const ModalMaker = ({feature, isModalOpen}) => {
         <Modal
           title="폴더 이름 변경"
           buttonText="변경하기"
-          isModalOpen={isModalOpen}
+          hasInput
+          setIsModalOpen={setIsModalOpen}
         />
       );
       break;
@@ -120,12 +132,13 @@ export const ModalMaker = ({feature, isModalOpen}) => {
         <Modal
           title="폴더 추가"
           buttonText="추가하기"
-          isModalOpen={isModalOpen}
+          hasInput
+          setIsModalOpen={setIsModalOpen}
         />
       );
       break;
     case "공유":
-      modal = <Modal title="폴더 공유" isModalOpen={isModalOpen} />;
+      modal = <Modal title="폴더 공유" setIsModalOpen={setIsModalOpen} />;
       break;
 
     case "삭제":
@@ -133,8 +146,10 @@ export const ModalMaker = ({feature, isModalOpen}) => {
         <Modal
           title="폴더 삭제"
           buttonText="삭제하기"
+          hasDetail
           red
-          isModalOpen={isModalOpen}
+          folderName={folderName}
+          setIsModalOpen={setIsModalOpen}
         />
       );
       break;
@@ -144,12 +159,12 @@ export const ModalMaker = ({feature, isModalOpen}) => {
           title="링크 삭제"
           buttonText="삭제하기"
           red
-          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
       );
       break;
     case "폴더에 추가":
-      modal = <Modal isModalOpen={isModalOpen} />;
+      modal = <Modal setIsModalOpen={setIsModalOpen} />;
       break;
   }
   return modal;
