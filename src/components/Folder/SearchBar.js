@@ -1,5 +1,5 @@
-import "../styles/SearchBar.css";
-import SearchIcon from "../images/Search.svg";
+import "../../styles/SearchBar.css";
+import searchIcon from "../../images/Search.svg";
 
 function SearchBar() {
   return (
@@ -10,7 +10,7 @@ function SearchBar() {
         placeholder="  링크를 검색해 보세요"
       />
 
-      <img src={SearchIcon} className="search-icon-image" alt=" " />
+      <img src={searchIcon} className="search-icon-image" alt=" " />
     </div>
   );
 }

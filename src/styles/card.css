@@ -5,6 +5,7 @@
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   transition: all 0.2s linear;
   overflow: hidden;
+  position: relative;
 }
 
 .card-image-wrapper {
@@ -45,6 +46,7 @@
   justify-content: space-between;
   align-items: flex-start;
   align-self: stretch;
+  position: relative;
 }
 
 .card-text {

@@ -1,15 +1,15 @@
-import "../styles/reset.css";
-import HeaderSpace from "../components/HeaderSpace";
-import MainSpace from "../components/MainSpace.js";
-import FooterSpace from "../components/FooterSpace.js";
-import Nav from "../components/Nav";
-import { getFolderData, getUserData } from "../api";
+import "../../styles/reset.css";
+import HeaderSpace from "../HeaderSpace";
+import MainSpace from "../MainSpace.js";
+import FooterSpace from "../FooterSpace.js";
+import Nav from "../Nav.js";
+import { getFolderData, getUserData } from "../../api";
 import { useState, useEffect } from "react";
 
 function Shared() {
-  const [items, setItems] = useState([]);
-  const [profile, setProfile] = useState([]);
-  const [user, setUser] = useState([]);
+  const [items, setItems] = useState([]); //메인의 링크들 렌더링할 때
+  const [profile, setProfile] = useState({}); // hero-header 부분 데이터
+  const [user, setUser] = useState([]); // nav 우측 사용자정보
 
   const handleFolderLoad = async () => {
     // eslint-disable-line no-unused-vars
@@ -17,9 +17,9 @@ function Shared() {
       const {
         folder: { links, name: title, owner },
       } = await getFolderData();
-      const ownerProfile = { title, ...owner };
+
       setItems(links);
-      setProfile(ownerProfile);
+      setProfile({ title, ...owner });
     } catch (error) {
       console.log(error);
     }
