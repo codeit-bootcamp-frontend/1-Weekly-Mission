@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ModalBody } from '../../styles/ModalStyle';
 import FolderEditModal from './FolderEditModal';
+import FolderAddModal from './FolderAddModal';
 
 
 function FolderModal({ action, onCloseModal }) {
@@ -11,6 +12,12 @@ function FolderModal({ action, onCloseModal }) {
         return (
           <>
             <FolderEditModal onCloseModal={onCloseModal} />
+          </>
+        );
+      case 'add':
+        return (
+          <>
+            <FolderAddModal onCloseModal={onCloseModal} />
           </>
         );
       default:

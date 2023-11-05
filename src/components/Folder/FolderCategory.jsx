@@ -4,6 +4,8 @@ import { Fragment, useCallback, useEffect, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
 import { getFolders } from '../../api/api';
 import add_icon from '../../assets/svg/add-folder.svg';
+import Modal from '../Modal/Modal';
+import FolderModal from '../Modal/FolderModal';
 
 const ENTIRE_CATEGORY = {
   id: 0,
@@ -12,6 +14,7 @@ const ENTIRE_CATEGORY = {
 
 function FolderCategory({ onGetCategory }) {
   const [categories, setCategories] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   const [, foldersLoadingError, getFoldersAsync] = useAsync(getFolders);
 
   const handleLoad = useCallback(
@@ -25,6 +28,14 @@ function FolderCategory({ onGetCategory }) {
       setCategories([ENTIRE_CATEGORY, ...data]);
     }, [getFoldersAsync],
   );
+
+  const openModal = ({ isOpen }) => {
+    setIsOpen(isOpen);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     handleLoad();
@@ -40,10 +51,19 @@ function FolderCategory({ onGetCategory }) {
           </Fragment>,
         )}
       </FolderCategoryStyle>
-      <FolderAddButton>
+      <FolderAddButton onClick={() => {
+        openModal({
+          isOpen: true,
+        });
+      }}>
         <FolderAddName>폴더 추가</FolderAddName>
         <FolderAddIcon src={add_icon} alt='폴더 추가 아이콘' />
       </FolderAddButton>
+      {isOpen && (
+        <Modal>
+          <FolderModal action='add' onCloseModal={closeModal}/>
+        </Modal>
+      )}
     </FolderCategoryContainer>
   );
 }
