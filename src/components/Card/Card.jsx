@@ -4,13 +4,17 @@ import { CardInfoBox, CardInfoDescription, CardInfoTop, CardPassedTime, CardWrap
 import card_config_icon from '../../assets/svg/kebab.svg';
 import star_mark from '../../assets/image/star.png';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import SelectMenu from '../Popover/SelectMenu';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 function Card({ item, path }) {
+  const ref = useRef();
   const [isOpen, setIsOpen] = useState(false);
 
   const createdAt = path === '/folder' ? item.created_at : item.createdAt;
+
+  useOnClickOutside(ref, () => setIsOpen(false));
 
   const openSelectMenu = ({ isOpen }) => {
     setIsOpen(isOpen);
@@ -42,7 +46,7 @@ function Card({ item, path }) {
           <Moment format='YYYY.MM.DD'>{item.createdAt}</Moment>
         </CardInfoBox>
       </CardWrapper>
-      {isOpen && <SelectMenu />}
+      {isOpen && <SelectMenu ref={ref}/>}
     </>
   );
 }
