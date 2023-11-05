@@ -27,8 +27,8 @@ function CurrentFolder({ folderId, folders }) {
     setIsDeleteNameModal(false);
     setIsShareModal(false);
   };
-  const currentFolder = folders.filter((folder) => folder.id == folderId);
-  const folderName = currentFolder.length ? currentFolder[0].name : "전체";
+  const folderName =
+    folders.find((folder) => folder.id == folderId)?.name ?? "전체";
   return (
     <div className={style.root}>
       <div className={style.folderName}>{folderName}</div>
