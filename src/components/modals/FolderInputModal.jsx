@@ -1,25 +1,18 @@
 import { useState } from "react";
 
-function FolderInputModal({
-  modalOn,
-  modalCloseImg,
-  modalId,
-  placeholder,
-  onClick,
-}) {
-  console.log(modalOn);
-  // const MODAL_TEXTS = [
-  //   {
-  //     id: "1",
-  //     title: "폴더 이름 변경",
-  //     btnName: "변경하기",
-  //   },
-  //   {
-  //     id: "2",
-  //     title: "폴더 추가",
-  //     btnName: "추가하기",
-  //   },
-  // ];
+function FolderInputModal({ modalOn, modalCloseImg, selectedFolder, onClick }) {
+  const MODAL_TEXTS = [
+    {
+      id: "1",
+      title: "폴더 추가",
+      btnName: "추가하기",
+    },
+    {
+      id: "2",
+      title: "폴더 이름 변경",
+      btnName: "변경하기",
+    },
+  ];
 
   // const [modalText, setModalText] = useState(null);
 
@@ -30,14 +23,14 @@ function FolderInputModal({
   //placeholder = CategoryItem의 data.name (FolderPage.js에서 프롭스로 내려줌)
 
   function handleModalOff() {
-    onClick(false);
+    onClick([false, null]);
   }
 
   return (
     // h1, placeholder,submit버튼 값 바꾸기
 
     <div className="modal-box ">
-      <h1> 테스트</h1>
+      <h1> {modalOn[0] ? MODAL_TEXTS[0].title : MODAL_TEXTS[1].title}</h1>
       <button className="modal-close-btn" onClick={handleModalOff}>
         <img
           className="modal-close-img"
@@ -47,9 +40,12 @@ function FolderInputModal({
       </button>
 
       <form className="modal-form">
-        <input className="modal-input" placeholder="기본값"></input>
+        <input
+          className="modal-input"
+          placeholder={selectedFolder || "내용 입력"}
+        ></input>
         <button type="submit" className="modal-submit-btn">
-          변경하기
+          {modalOn[0] ? MODAL_TEXTS[0].btnName : MODAL_TEXTS[1].btnName}
         </button>
       </form>
     </div>

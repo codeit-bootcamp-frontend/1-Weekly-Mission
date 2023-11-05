@@ -22,16 +22,16 @@ const BTN_DATA = [
   },
 ];
 
-function CategoryOption({ selectedFolder }) {
+function CategoryOption({ selectedFolder, onClick }) {
   return (
     <div className="category-option">
       <h1>{selectedFolder || "전체"}</h1>
       <div className="category-option-btns">
         {selectedFolder &&
           selectedFolder !== "전체" &&
-          BTN_DATA?.map((btn) => {
-            return <CategoryOptionBtn btnData={btn} key={btn.id} />;
-          })}
+          BTN_DATA?.map((btn) => (
+            <CategoryOptionBtn btnData={btn} key={btn.id} onClick={onClick} />
+          ))}
       </div>
     </div>
   );

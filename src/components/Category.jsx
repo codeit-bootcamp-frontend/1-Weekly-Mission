@@ -22,11 +22,7 @@ function Category({ selectedFolder, folderData, handleClick, onClick }) {
             })}
         </div>
       </ul>
-      <FolderAddBtn
-        onClick={onClick}
-        selectedFolder={selectedFolder}
-        folderData={folderData}
-      />
+      <FolderAddBtn onClick={onClick} folderData={folderData} />
     </nav>
   );
 }

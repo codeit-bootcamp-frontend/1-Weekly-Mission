@@ -21,16 +21,9 @@
   gap: 24px;
   padding: 35px 40px;
   border-radius: 15px;
-  width: 32rem;
-  height: 24.4rem;
   border: 1px solid var(--gray-botticelli);
   position: relative;
   background-color: #fff;
-}
-
-.modal-close-btn {
-  border: none;
-  background: none;
 }
 
 .modal-close-img {
@@ -60,6 +53,7 @@
   align-items: center;
   padding: 18px 15px;
   border-radius: 8px;
+  width: 28rem;
   border: 1px solid var(--gray-botticelli);
 }
 
@@ -77,10 +71,72 @@
   font-size: 16px;
   font-weight: 600;
 }
+
 /* 폴더 이름 변경, 폴더 추가 */
 
 /* 폴더 삭제, 링크 삭제 */
 
 /* 폴더 공유 */
 
+.modal-box.folder-share {
+  justify-content: flex-start;
+}
+
+.modal-box .title-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 28rem;
+}
+
+.modal-box .share-links {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+.modal-box .link-btn-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-box .folder-name {
+  color: var(--gray-chateau);
+  font-size: 14px;
+  text-align: center;
+}
+
+.link-btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.link-btn-box button {
+  border-radius: 38px;
+  width: 42px;
+  height: 42px;
+}
+
+.link-btn-box.kakao-link button {
+  background: #fee500;
+}
+
+.link-btn-box.facebook-link button {
+  background: #1877f2;
+}
+
+.link-btn-box.copy-link button {
+  background: rgba(157, 157, 157, 0.04);
+}
+
+.link-btn-box.kakao-link img {
+  width: 30px;
+}
+
+.modal-submit-btn.delete {
+  background: #ff5b56;
+}
 /* 폴더에 추가 */

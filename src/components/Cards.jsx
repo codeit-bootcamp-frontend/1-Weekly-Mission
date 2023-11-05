@@ -4,6 +4,7 @@ import favoritesImg from "../assets/images/star.svg";
 import meatballMenuImg from "../assets/images/meatball.svg";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import PopOver from "./PopOver";
 dayjs.extend(relativeTime);
 
 function MeatballBtn() {
@@ -21,6 +22,10 @@ function Cards({ cardInfo }) {
   const updateTimeAgo = dayjs(createdAt ?? created_at).fromNow();
   const updateDate = dayjs(createdAt ?? created_at).format("YYYY. MM. DD");
 
+  function handlePopOver (PopOverOn) {
+    return PopOverOn && <PopOver />
+  }
+
   return (
     <li className="card-list">
       <a href={url} target="_blank" rel="noreferrer noopener">
@@ -36,7 +41,7 @@ function Cards({ cardInfo }) {
         <div className="card-info">
           <div className="update-time">
             <p>{updateTimeAgo}</p>
-            <MeatballBtn />
+            <MeatballBtn onClick={handlePopOver} />
           </div>
           <div className="description">
             <p>{description}</p>
