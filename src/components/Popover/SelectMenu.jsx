@@ -14,8 +14,8 @@ export default SelectMenu;
 const SelectMenuContainer = styled.div`
   position: absolute;
   z-index: 3;
-  right: -58px;
-  top: 70%;
+  right: -20px;
+  top: 67%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -24,6 +24,11 @@ const SelectMenuContainer = styled.div`
   box-shadow: 0 2px 8px 0 rgba(51, 50, 54, 0.10);
   width: 10rem;
   height: 6.4rem;
+  
+  @media (min-width: 768px) {
+    right: -58px;
+    top: 70%;
+  }
 `;
 
 const SelectButton = styled.button`
