@@ -36,14 +36,17 @@ const LinkToolArr = [
   {
     src: ShareIcon,
     title: "공유",
+    state: "folderShare",
   },
   {
     src: EditIcon,
     title: "이름 변경",
+    state: "folderEdit",
   },
   {
     src: DeleteIcon,
     title: "삭제",
+    state: "folderDelete",
   },
 ];
 
@@ -97,13 +100,14 @@ const Folder = () => {
     }));
   };
 
-  const handleDefaultMoal = () => {
+  const handleDefaultMoal = (state, content) => {
+    console.log(content);
     setModalOpened((prev) => ({
       ...prev,
       defaultModal: {
         display: true,
-        content: "",
-        state: "folderAdd",
+        content: content || "",
+        state: state,
       },
     }));
   };
@@ -172,7 +176,7 @@ const Folder = () => {
               <div className="folderAddBtnContainer">
                 <div
                   className="folderAddTitle"
-                  onClick={() => handleDefaultMoal()}
+                  onClick={() => handleDefaultMoal("folderAdd")}
                 >
                   폴더 추가
                 </div>
@@ -196,7 +200,16 @@ const Folder = () => {
                       <LinkToolContainer $display={selectedFolder.id === 1}>
                         {LinkToolArr.map((e, index) => {
                           return (
-                            <div className="linkToolItemContainer" key={index}>
+                            <div
+                              className="linkToolItemContainer"
+                              key={index}
+                              onClick={() => {
+                                if (e.state === "folderShare") {
+                                  return;
+                                }
+                                handleDefaultMoal(e.state, selectedFolder);
+                              }}
+                            >
                               <img src={e.src} alt={e.title} />
                               <div className="linkToolTitle">{e.title}</div>
                             </div>

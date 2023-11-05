@@ -35,12 +35,13 @@ const DefaultModal = () => {
   const resetModalState = useResetRecoilState(modalState);
   const type = StateObj[defaultModal.state];
   const isDelete = StateObj[defaultModal.state].button === "삭제하기";
-  const [content, setContent] = useState(defaultModal.content);
+  const [content, setContent] = useState(defaultModal.content.title);
 
   return (
     <Overlay>
       <OuterModalContainer onClick={resetModalState} />
-      <ModalMain>
+
+      <ModalMain $isDelete={isDelete}>
         <img
           src={CloseIcon}
           className="closeIcon"
@@ -50,18 +51,18 @@ const DefaultModal = () => {
 
         <div className="modalTitleContainer ">
           <div className="title">{type.title}</div>
-          {isDelete && <div className="link">{defaultModal.content}</div>}
+          {isDelete && <div className="link">{defaultModal.content.title}</div>}
         </div>
 
-        <div className="modalContentContainer">
-          {!isDelete && (
+        {!isDelete && (
+          <div className="modalContentContainer">
             <Input
               placeholder={"내용 입력"}
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-          )}
-        </div>
+          </div>
+        )}
 
         <DefaultBtn
           type={isDelete ? "red" : "default"}
@@ -84,6 +85,6 @@ const ModalMain = styled(ModalMainContainer)`
   }
 
   ${DefaultBtnContainer} {
-    margin-top: -0.9rem;
+    margin-top: ${(props) => (props.$isDelete ? "0" : "-0.8rem")};
   }
 `;
