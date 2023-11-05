@@ -26,7 +26,7 @@ export function useFetch(path, id) {
     useEffect(() => {
       fetchUrl(path);
     }, [id]);
-
+    
     return {
       data,
       fetchUrl,
@@ -39,7 +39,7 @@ export function useQueryFetch(path, folderId = null, id) {
   const [errorMessage, setErrorMessage] = useState(null);
   
   const fetchUrl = async (type, number) => {
-    let query = `?folderId=${number}`;
+    const query = `?folderId=${number}`;
     try{
       const response = await fetch(`${API_URL}${type}${folderId ? query : ""}`);
       if(!response.ok) {

@@ -7,6 +7,12 @@ import melonImg from '../img/png/Vector-4.png';
 
 
 const Footer = () => {
+    const sns = [
+        {title: "페이스북", image: facebookImg, link: "https://www.facebook.com/"},
+        {title: "트위터", image: twitterImg, link: "https://twitter.com/"},
+        {title: "유튜브", image: youtubeImg, link: "https://www.youtube.com/"},
+        {title: "멜론", image: melonImg, link: "https://www.melon.com/"},
+    ]
     return (
         <footer>
             <div className="footer-connect">
@@ -16,26 +22,13 @@ const Footer = () => {
                     <li><a href="none">FAQ</a></li>
                 </ul>
                 <ul className="footer-connect-sns">
-                    <li>
-                        <a href="https://www.facebook.com/" target="blank">
-                            <img src={facebookImg} alt="페이스북"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/" target="blank">
-                            <img src={twitterImg} alt="트위터"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/" target="blank">
-                            <img src={youtubeImg} alt="유튜브"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.melon.com/" target="blank">
-                            <img src={melonImg} alt="멜론"/>
-                        </a>
-                    </li>
+                    {sns.map((list, index) => {
+                        return <li key={index}>
+                            <a href={list.link} target="blank">
+                                <img src={list.image} alt={list.title}/>
+                            </a>
+                        </li>
+                    })}
                 </ul>
             </div>
         </footer>
