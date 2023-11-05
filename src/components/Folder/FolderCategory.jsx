@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import FolderCategoryButton from './FolderCategoryButton';
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
 import { getFolders } from '../../api/api';
 import add_icon from '../../assets/svg/add-folder.svg';
 import Modal from '../Modal/Modal';
 import FolderModal from '../Modal/FolderModal';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const ENTIRE_CATEGORY = {
   id: 0,
@@ -13,6 +14,7 @@ const ENTIRE_CATEGORY = {
 };
 
 function FolderCategory({ onGetCategory }) {
+  const modalRef = useRef();
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [, foldersLoadingError, getFoldersAsync] = useAsync(getFolders);
@@ -36,6 +38,8 @@ function FolderCategory({ onGetCategory }) {
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  useOnClickOutside(modalRef, closeModal);
 
   useEffect(() => {
     handleLoad();
@@ -61,7 +65,7 @@ function FolderCategory({ onGetCategory }) {
       </FolderAddButton>
       {isOpen && (
         <Modal>
-          <FolderModal action='add' onCloseModal={closeModal}/>
+          <FolderModal action='add' onCloseModal={closeModal} ref={modalRef} />
         </Modal>
       )}
     </FolderCategoryContainer>
