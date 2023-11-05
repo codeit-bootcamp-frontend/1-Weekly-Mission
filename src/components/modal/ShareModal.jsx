@@ -5,7 +5,7 @@ import { SHARE_LINKS } from "../../constants/constants";
 import { useLocation } from "react-router-dom";
 import handleCopyClipBoard from "../../utils/handleCopyLink";
 
-const ShareModal = ({ modalTitle, modalTarget }) => {
+const ShareModal = ({ modalTitle, modalTarget, onClose }) => {
   const location = useLocation();
   const currentUrl = `${window.location.origin}${location.pathname}${location.search}${location.hash}`;
 
@@ -16,7 +16,7 @@ const ShareModal = ({ modalTitle, modalTarget }) => {
           <S.ModalTitle>{modalTitle}</S.ModalTitle>
           <S.FolderName>{modalTarget}</S.FolderName>
         </S.ModalTextWrap>
-        <S.CloseButton>
+        <S.CloseButton onClick={onClose}>
           <img src={closeIconImage} alt="모달 닫기" />
         </S.CloseButton>
         <S.ShareButtonWrap>
