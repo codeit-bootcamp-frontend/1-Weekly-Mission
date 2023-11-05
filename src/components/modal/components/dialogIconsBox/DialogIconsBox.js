@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import './dialogIconsBox.css';
 import { FacebookShareButton } from 'react-share';
 
@@ -9,8 +10,8 @@ import useScript from '../../../../hooks/useScript';
 import { BASE_URL } from '../../../../api/services/config';
 
 export default function DialogIconsBox({ folderId }) {
-  console.log(folderId);
   const currentUrl = `${BASE_URL}/shared?user=${1}&folder=${folderId}}`;
+  const folderUrl = `${BASE_URL}/?folderId=${folderId}`;
 
   const status = useScript(
     `https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js`,
@@ -28,6 +29,10 @@ export default function DialogIconsBox({ folderId }) {
     window.Kakao.Share.sendScrap({
       requestUrl: currentUrl,
     });
+  };
+
+  const handleLinkCopyButton = () => {
+    alert('클립보드에 복사 되었습니다.');
   };
 
   return (
@@ -54,14 +59,20 @@ export default function DialogIconsBox({ folderId }) {
           <span className="dialog-share-icon-name">페이스북</span>
         </div>
       </FacebookShareButton>
-      <div className="dialog-share-icon-container">
-        <img
-          src={linkIcon}
-          alt="link-icon"
-          className="dialog-share-link-icon"
-        />
-        <span className="dialog-share-icon-name">링크 복사</span>
-      </div>
+      <CopyToClipboard text={folderUrl}>
+        <div
+          role="none"
+          className="dialog-share-icon-container"
+          onClick={handleLinkCopyButton}
+        >
+          <img
+            src={linkIcon}
+            alt="link-icon"
+            className="dialog-share-link-icon"
+          />
+          <span className="dialog-share-icon-name">링크 복사</span>
+        </div>
+      </CopyToClipboard>
     </div>
   );
 }
