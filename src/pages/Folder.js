@@ -22,6 +22,7 @@ import DeleteFolder from '../modals/DeleteFolder';
 import AddFolder from '../modals/AddFolder';
 import useInputController from '../hooks/useInputController';
 import EditFolder from '../modals/EditFolder';
+import AddLinkToFolder from '../modals/AddLinkToFolder';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,6 +35,7 @@ function Folder() {
   const editFolderModal = useModalColtroller();
   const addFolderModal = useModalColtroller();
   const deleteFolderModal = useModalColtroller();
+  const addLinkToFolderModal = useModalColtroller(true);
 
   // 모달 내 인풋 컨트롤라
   const addFolder = useInputController();
@@ -85,6 +87,7 @@ function Folder() {
       <AddLinkInput
         onChange={addLinkInput.handleChange}
         value={addLinkInput.values}
+        onClick={addLinkToFolderModal.handleClick}
       />
       <section className={styles.root}>
         <SearchBar />
@@ -137,6 +140,13 @@ function Folder() {
           <AddFolder onChange={addFolder.handleChange} value={addFolder.values}>
             {folderName}
           </AddFolder>
+        </Modal>
+      )}
+      {addLinkToFolderModal.state && (
+        <Modal onClick={addLinkToFolderModal.handleClick}>
+          <AddLinkToFolder folderLists={folderLists}>
+            {addLinkInput.values}
+          </AddLinkToFolder>
         </Modal>
       )}
     </>
