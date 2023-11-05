@@ -25,7 +25,7 @@ function Folder() {
 
   const [folderParams, setFolderParams] = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
   const initFolderId = folderParams.get('folderId');
-  const href = window.location.href;
+  const URL = window.location.href;
 
   const folderInfo = async (folderId) => {
     const introResult = await getUserFolder();
@@ -57,7 +57,7 @@ function Folder() {
     setCards(introResult);
   };
 
-  const handleModal = (e) => {
+  const showModal = (e) => {
     const buttonName = e.target.value;
     const url = e.target.id;
 
@@ -96,14 +96,14 @@ function Folder() {
     setModalIsOpen(!isModalOpen);
   };
 
-  const shareKakao = () => shareKakaoLink(href, folderName);
+  const showShareKakao = () => shareKakaoLink(URL, folderName);
 
-  const shareFacebook = () => {
-    window.open(`http://www.facebook.com/sharer.php?u=${href}`);
+  const showShareFacebook = () => {
+    window.open(`http://www.facebook.com/sharer.php?u=${URL}`);
   };
 
-  const shareLinkCopy = async () => {
-    await navigator.clipboard.writeText(href);
+  const showShareLinkCopy = async () => {
+    await navigator.clipboard.writeText(URL);
     alert('주소가 복사 되었습니다!');
   };
 
@@ -121,23 +121,24 @@ function Folder() {
           title={modalTitle}
           subTitle={modalSubTitle}
           buttonContent={modalButtonContent}
-          onClick={handleModal}
-          shareKakao={shareKakao}
-          shareFacebook={shareFacebook}
-          shareLink={shareLinkCopy}
+          onClick={showModal}
+          shareKakao={showShareKakao}
+          shareFacebook={showShareFacebook}
+          shareLink={showShareLinkCopy}
+          folders={folders}
         />
       )}
-      <LinkAdd onClick={handleModal} />
+      <LinkAdd onClick={showModal} />
       <MainSection>
         <Search />
-        {folders && <FolderList folder={folders} onClick={handleModal} />}
+        {folders && <FolderList folder={folders} onClick={showModal} />}
         <Title folderName={folderName}>
-          {isFunctionButtonShow && <FunctionButton onClick={handleModal} />}
+          {isFunctionButtonShow && <FunctionButton onClick={showModal} />}
         </Title>
         {initFolderId && cards.length === 0 ? (
           <NotFoundLink />
         ) : (
-          <CardList card={cards} isCardEditable={true} onClick={handleModal} />
+          <CardList card={cards} isCardEditable={true} onClick={showModal} />
         )}
       </MainSection>
     </>

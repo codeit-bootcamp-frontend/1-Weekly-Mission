@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { styled } from 'styled-components';
 import ModalBackground from './ModalBackground';
 import { CloseButton, ModalButton } from './ModalButton';
+import ModalFolderList from './ModalFolderList';
 import ModalInput from './ModalInput';
 import ModalShareButton from './ModalShareButton';
 import ModalSubTitle from './ModalSubTitle';
@@ -35,6 +36,7 @@ function Modal({
   shareKakao,
   shareFacebook,
   shareLink,
+  folders,
 }) {
   useEffect(() => {
     const script = document.createElement('script');
@@ -62,11 +64,15 @@ function Modal({
               shareFacebook={shareFacebook}
             />
           ) : null}
-          {title === '폴더 공유' ||
+          {title === '폴더에 추가' ||
+          title === '폴더 공유' ||
           title === '폴더 삭제' ||
           title === '링크 삭제' ? null : (
             <ModalInput />
           )}
+          {title === '폴더에 추가' ? (
+            <ModalFolderList folders={folders} />
+          ) : null}
           {title === '폴더 공유' ? null : (
             <ModalButton content={buttonContent} />
           )}

@@ -3,13 +3,9 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s;
+
   border-radius: 1.5rem;
   font-weight: 400;
-}
-
-.wrapper:hover {
-  transform: scale(1.3);
 }
 
 .imgWrapper {
@@ -21,7 +17,12 @@
 .cardImg {
   width: 100%;
   height: 100%;
+  transition: transform 0.2s;
   object-fit: cover;
+}
+
+.cardImg:hover {
+  transform: scale(1.3);
 }
 
 .contentWrapper {
