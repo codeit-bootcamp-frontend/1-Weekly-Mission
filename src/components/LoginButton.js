@@ -1,6 +1,6 @@
 import styles from '../styles/LoginButton.module.css';
 import UserDataInfo from './UserDataInfo.js';
-import { getUserData } from '../api/getUserData.js';
+import getUserData from '../api/getUserData.js';
 import { useState } from 'react';
 
 const LoginButton = () => {
