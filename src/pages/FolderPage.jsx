@@ -7,7 +7,6 @@ import useAsync from '../hooks/useAsync';
 import { getFolders } from '../api/api';
 import { useCallback, useEffect, useState } from 'react';
 import MobileFolderButton from '../components/MobileFolderButton';
-import Modal from '../components/Modal/RenameFolderModal';
 
 function FolderPage() {
   const [folderList, setFolderList] = useState([]);

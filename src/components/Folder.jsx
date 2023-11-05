@@ -3,6 +3,10 @@ import CardList from './CardList';
 import { useEffect, useState } from 'react';
 import { getCards } from '../api/api';
 import FolderButton from './FolderButton';
+import OptionBtn from './OptionBtn';
+import IconShare from '../assets/icon/icon-share.svg';
+import IconPen from '../assets/icon/icon-pen.svg';
+import IconTrash from '../assets/icon/icon-trash.svg';
 
 const INITIAL_FOLDER = {
   id: '',
@@ -33,7 +37,20 @@ function FolderList({ folderList = null, getCardList }) {
           </>
         )}
       </FolderListContainer>
-      <FolderTitle>{folderName}</FolderTitle>
+      <FolderTitleContainer>
+        <FolderTitle>{folderName}</FolderTitle>
+        <Options>
+          <OptionBtn src={IconShare} alt="공유">
+            공유
+          </OptionBtn>
+          <OptionBtn src={IconPen} alt="이름 변경">
+            이름 변경
+          </OptionBtn>
+          <OptionBtn src={IconTrash} alt="삭제">
+            삭제
+          </OptionBtn>
+        </Options>
+      </FolderTitleContainer>
     </div>
   );
 }
@@ -91,4 +108,15 @@ const FolderTitle = styled.div`
   line-height: normal;
   letter-spacing: -0.2px;
   margin-bottom: 2rem;
+`;
+
+const FolderTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Options = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
 `;

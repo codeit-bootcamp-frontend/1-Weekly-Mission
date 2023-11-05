@@ -11,11 +11,11 @@ import ShareFolderModal from './components/Modal/ShareFolderModal';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <RenameFolderModal /> */}
     {/* <RemoveFolderModal /> */}
     {/* <AddFolderModal / */}
     {/* <RemoveLinkModal /> */}
-    <ShareFolderModal />
+    {/* <ShareFolderModal /> */}
   </React.StrictMode>,
 );
