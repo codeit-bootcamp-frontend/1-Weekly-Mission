@@ -1,3 +1,4 @@
+import checkIcon from '../assets/images/checkIcon.svg';
 import styles from './AddLinkToFolder.module.css';
 import ModalHeader from '../components/ModalHeader/ModalHeader';
 import Button from '../components/Button/Button';
@@ -11,14 +12,7 @@ function AddLinkToFolder({ folderLists, children }) {
           <div>
             {folderLists.map((list) => {
               return (
-                <div key={list.id} className={styles.container}>
-                  <label htmlFor={list.name} className={styles.label}>
-                    {list.name}
-                    <span className={styles.subLabel}>
-                      {list.link.count}개 링크
-                    </span>
-                  </label>
-
+                <div key={list.id}>
                   <input
                     className={styles.input}
                     type="radio"
@@ -26,6 +20,15 @@ function AddLinkToFolder({ folderLists, children }) {
                     name="folder"
                     value={list.id}
                   />
+                  <label htmlFor={list.name} className={styles.label}>
+                    <div className={styles.container}>
+                      <p className={styles.folderName}>{list.name}</p>
+                      <span className={styles.linkLength}>
+                        {list.link.count}개 링크
+                      </span>
+                    </div>
+                    <img class={styles.labelImg} src={checkIcon} alt="" />
+                  </label>
                 </div>
               );
             })}

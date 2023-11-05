@@ -10,7 +10,11 @@
   flex-direction: column;
 }
 
-.container {
+.input {
+  appearance: none;
+}
+
+.label {
   display: flex;
   padding: 0.8rem;
   border-radius: 0.8rem;
@@ -18,31 +22,50 @@
   justify-content: space-between;
 }
 
-.container:hover {
-  background-color: var(--gray1);
+.container {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
 }
 
-.label {
-  display: flex;
-  flex: 1;
-  gap: 0.8rem;
+.folderName {
+  display: inline;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: var(--gray5, #373740);
 }
 
-.subLabel {
+.linkLength {
   font-size: 1.4rem;
   color: var(--gray4, #9fa6b2);
 }
 
-.input {
-  width: 1.7rem;
-  height: 1.7rem;
-  appearance: none;
+.labelImg {
+  opacity: 0;
 }
 
-.input:checked {
-  background-image: url('../assets/images/checkIcon.svg');
-  background-size: cover;
+/* hover */
+.label:hover {
+  background-color: var(--gray1);
+}
+
+.label:hover .folderName {
+  color: var(--primary);
+}
+
+.label:hover .labelImg {
+  opacity: 0.3;
+}
+
+/* checked */
+.input:checked ~ .label {
+  background-color: var(--gray1);
+}
+
+.input:checked ~ .label .folderName {
+  color: var(--primary);
+}
+
+.input:checked ~ .label .labelImg {
+  opacity: 1;
 }
