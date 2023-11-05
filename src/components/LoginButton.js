@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import styles from '../styles/LoginButton.module.css';
 import UserDataInfo from './UserDataInfo.js';
 import { getUserData } from '../api/getUserData.js';
-import styles from '../styles/LoginButton.module.css';
+import { useState } from 'react';
 
-function LoginButton() {
+const LoginButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(null);
 
-  const handleButtonClick = async () => {
+  const handleButtonClick = async (e) => {
     try {
       setIsLoading(true);
+      e.preventDefault();
       setUserData(await getUserData());
     } catch (error) {
       console.error(error);
@@ -20,7 +21,9 @@ function LoginButton() {
 
   return (
     <div className={styles.root}>
-      {!userData ? (
+      {userData ? (
+        <UserDataInfo userData={userData} />
+      ) : (
         <button
           type='button'
           className={styles.loginButton}
@@ -29,11 +32,9 @@ function LoginButton() {
         >
           로그인
         </button>
-      ) : (
-        <UserDataInfo userData={userData} />
       )}
     </div>
   );
-}
+};
 
 export default LoginButton;
