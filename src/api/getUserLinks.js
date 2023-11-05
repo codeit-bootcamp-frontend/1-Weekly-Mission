@@ -18,7 +18,7 @@ import API_ENDPOINTS from "./endpoints";
  */
 const getUserLinks = async ({ userId, folderId = "" }) => {
   const baseUrl = API_ENDPOINTS.baseUrl;
-  const endpoint = API_ENDPOINTS.user.links.getUserLinks.replace("{userId}", userId);
+  const endpoint = API_ENDPOINTS.user.links.getUserLinks.replace("{userId}", userId === null ? 1 : userId);
   const query = `?folderId=${folderId}`;
   const response = await fetch(baseUrl + endpoint + (folderId ? query : ""));
   const body = await response.json();
