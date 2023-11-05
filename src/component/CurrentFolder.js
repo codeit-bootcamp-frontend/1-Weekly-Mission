@@ -4,10 +4,14 @@ import penIcon from "../assets/img/pen.svg";
 import style from "./CurrentFolder.module.css";
 import clsx from "clsx";
 import { useState } from "react";
+import { useScript } from "../hooks/useScript";
 import Modal from "./Modal";
+import ShareModal from "./ShareModal";
 function CurrentFolder({ folderId, folders }) {
+  useScript("https://developers.kakao.com/sdk/js/kakao.js");
   const [isChangeNameModal, setIsChanageNameModal] = useState(false);
   const [isDeleteModal, setIsDeleteNameModal] = useState(false);
+  const [isShareModal, setIsShareModal] = useState(false);
 
   const handleChangeNameClick = () => {
     setIsChanageNameModal(true);
@@ -15,9 +19,13 @@ function CurrentFolder({ folderId, folders }) {
   const handleDeleteClick = () => {
     setIsDeleteNameModal(true);
   };
+  const handleShareClick = () => {
+    setIsShareModal(true);
+  };
   const handleExitClick = () => {
     setIsChanageNameModal(false);
     setIsDeleteNameModal(false);
+    setIsShareModal(false);
   };
   const currentFolder = folders.filter((folder) => folder.id == folderId);
   const folderName = currentFolder.length ? currentFolder[0].name : "전체";
@@ -29,7 +37,7 @@ function CurrentFolder({ folderId, folders }) {
           [style.hidden]: folderName === "전체",
         })}
       >
-        <button>
+        <button onClick={handleShareClick}>
           <img src={shareIcon} alt="공유하기" />
           공유
         </button>
@@ -55,6 +63,9 @@ function CurrentFolder({ folderId, folders }) {
           data={folderName}
           onExitClick={handleExitClick}
         />
+      )}
+      {isShareModal && (
+        <ShareModal folderName={folderName} onExitClick={handleExitClick} />
       )}
     </div>
   );
