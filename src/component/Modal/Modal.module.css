@@ -38,6 +38,7 @@
 p {
   width: 28rem;
   text-align: center;
+  font-size: 1.4rem;
 }
 .modalInput {
   width: 28rem;
@@ -51,6 +52,7 @@ p {
   border-radius: 0.8rem;
   color: white;
   width: 100%;
+  font-size: 1.6rem;
 }
 .redButton {
   background: var(--linkbrary-red, #ff5b56);
