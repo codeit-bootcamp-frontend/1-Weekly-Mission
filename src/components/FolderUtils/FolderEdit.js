@@ -2,6 +2,7 @@ import styles from "./FolderEdit.module.css";
 import shareImg from "../../assets/share.svg";
 import penImg from "../../assets/pen.svg";
 import deleteImg from "../../assets/delete.svg";
+import FolderEditButton from "./FolderEditButton";
 
 const buttonsData = [
   { image: shareImg, text: "공유" },
@@ -9,15 +10,18 @@ const buttonsData = [
   { image: deleteImg, text: "삭제" },
 ];
 
-const FolderEdit = () => {
+const FolderEdit = ({ currentFolderName }) => {
   return (
-    <div className={styles.folderEdit}>
-      {buttonsData.map((button, index) => (
-        <button className={styles.button} key={index}>
-          <img src={button.image} alt={`${button.text} 이미지`} />
-          <p>{button.text}</p>
-        </button>
-      ))}
+    <div>
+      <ul className={styles.folderEdit}>
+        {buttonsData.map((button, index) => {
+          return (
+            <li key={index}>
+              <FolderEditButton currentFolderName={currentFolderName} src={button.image} text={button.text} />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

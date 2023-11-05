@@ -4,11 +4,40 @@ import styles from "./CardItem.module.css";
 import logoImg from "../../assets/emptyImg.svg";
 import starImg from "../../assets/star.svg";
 import kebabImg from "../../assets/kebab.svg";
+import ModalContainer from "../Modal/ModalContainer";
+import DeleteLinkModal from "../Modal/DeleteLinkModal";
+import AddLinkModal from "../Modal/AddLinkModal";
 
-function FolderPageCardItem({ formatTimeDiff, formattedCreatedAt, url, title, description, imageSource }) {
+function FolderPageCardItem({
+  folderListData,
+  formatTimeDiff,
+  formattedCreatedAt,
+  url,
+  title,
+  description,
+  imageSource,
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpenDeleteLinkModal, setIsOpenDeleteLinkModal] = useState(false);
+  const [isOpenAddFolderModal, setIsOpenAddFolderModal] = useState(false);
 
   const handleToggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleOpenDeleteLinkModal = () => {
+    setIsOpenDeleteLinkModal(true);
+  };
+
+  const handleCloseDeleteLinkModal = () => {
+    setIsOpenDeleteLinkModal(false);
+  };
+
+  const handleOpenAddFolderModal = () => {
+    setIsOpenAddFolderModal(true);
+  };
+
+  const handleCloseAddFolderModal = () => {
+    setIsOpenAddFolderModal(false);
+  };
 
   return (
     <div className={styles.cardItem}>
@@ -26,9 +55,19 @@ function FolderPageCardItem({ formatTimeDiff, formattedCreatedAt, url, title, de
           </button>
           {isMenuOpen && (
             <div className={styles.menu}>
-              <button>삭제하기</button>
-              <button>폴더에 추가</button>
+              <button onClick={handleOpenDeleteLinkModal}>삭제하기</button>
+              <button onClick={handleOpenAddFolderModal}>폴더에 추가</button>
             </div>
+          )}
+          {isOpenDeleteLinkModal && (
+            <ModalContainer onClose={handleCloseDeleteLinkModal}>
+              <DeleteLinkModal>{url}</DeleteLinkModal>
+            </ModalContainer>
+          )}
+          {isOpenAddFolderModal && (
+            <ModalContainer onClose={handleCloseAddFolderModal}>
+              <AddLinkModal inputValue={url} folderListData={folderListData} />
+            </ModalContainer>
           )}
         </div>
         <p className={styles.description}>

@@ -1,17 +1,7 @@
 import styles from "./Category.module.css";
-import CategoryList from "./CategoryList";
 
-const Category = ({ folderListData, currentFolder, selectedCategoryId, onClick }) => {
-  return (
-    <div className={styles.category}>
-      <CategoryList
-        folderListData={folderListData}
-        currentFolder={currentFolder}
-        selectedCategoryId={selectedCategoryId}
-        onClick={onClick}
-      />
-    </div>
-  );
+const Category = ({ children }) => {
+  return <div className={styles.category}>{children}</div>;
 };
 
 export default Category;

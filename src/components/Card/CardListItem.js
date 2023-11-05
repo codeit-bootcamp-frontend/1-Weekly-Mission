@@ -1,5 +1,5 @@
-const CardListItem = ({ key, children }) => {
-  return <li key={key}>{children}</li>;
+const CardListItem = ({ id, children }) => {
+  return <li key={id}>{children}</li>;
 };
 
 export default CardListItem;
