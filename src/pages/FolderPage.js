@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import AddLink from "../component/AddLink";
 import FolderPageCards from "../component/FolderPageCards";
 import FolderList from "../component/FolderList";
@@ -9,7 +9,7 @@ import { getFolder } from "../api/getFolder";
 import style from "./FolderPage.module.css";
 import { useSearchParams } from "react-router-dom";
 import CurrentFolder from "../component/CurrentFolder";
-
+export const FolderPageContext = createContext();
 function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
@@ -47,11 +47,13 @@ function FolderPage() {
           <div className={style.folderSection}>
             <FolderList folders={folders} />
             <CurrentFolder folderId={folderParam} folders={folders} />
-            {links.length ? (
-              <FolderPageCards cards={links} />
-            ) : (
-              <span className={style.emptyLink}>저장된 링크가 없습니다.</span>
-            )}
+            <FolderPageContext.Provider value={folders}>
+              {links.length ? (
+                <FolderPageCards cards={links} />
+              ) : (
+                <span className={style.emptyLink}>저장된 링크가 없습니다.</span>
+              )}
+            </FolderPageContext.Provider>
           </div>
         </div>
       </div>

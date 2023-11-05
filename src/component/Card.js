@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { formatDate, prettyFormatTimeDiff } from "../util/dateUtil";
 import kebabImg from "../assets/img/kebab.png";
 import noImg from "../assets/img/no-image.svg";
@@ -6,12 +6,14 @@ import style from "./Card.module.css";
 import clsx from "clsx";
 import Kebab from "./Kebab";
 import Modal from "./Modal";
+import AddLinkModal from "./AddLinkModal";
+import { FolderPageContext } from "../pages/FolderPage";
 
 function Card({ title, description, url, image_source, created_at }) {
   const [hover, setHover] = useState(false);
   const [isShowKebab, setIsShowKebab] = useState(false);
   const [modal, setModal] = useState(null);
-
+  const folders = useContext(FolderPageContext);
   const handleMouseOver = () => {
     setHover(true);
   };
@@ -31,6 +33,11 @@ function Card({ title, description, url, image_source, created_at }) {
   const handleKebabDeleteClick = () => {
     setModal(
       <Modal title="링크 삭제" data={url} onExitClick={handleExitClick} />
+    );
+  };
+  const handleKebabAddClick = () => {
+    setModal(
+      <AddLinkModal url={url} folders={folders} onExitClick={handleExitClick} />
     );
   };
 
@@ -58,7 +65,7 @@ function Card({ title, description, url, image_source, created_at }) {
                 <div className={style.kebab}>
                   <Kebab>
                     <li onClick={handleKebabDeleteClick}>삭제하기</li>
-                    <li>폴더에 추가</li>
+                    <li onClick={handleKebabAddClick}>폴더에 추가</li>
                   </Kebab>
                 </div>
               )}
