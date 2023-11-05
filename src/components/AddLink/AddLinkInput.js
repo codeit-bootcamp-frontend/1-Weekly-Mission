@@ -1,19 +1,14 @@
-import { useState } from "react";
 import styles from "./AddLinkInput.module.css";
 import chainIcon from "../../assets/chain.svg";
-import AddLinkButton from "./AddLinkButton";
 
-const AddLinkInput = () => {
-  const [inputValue, setInputValue] = useState("");
-
+const AddLinkInput = ({ inputValue, onChange, children }) => {
   const handleChange = (e) => {
     const { value } = e.target;
-    setInputValue(value);
+    onChange(value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputValue);
   };
 
   return (
@@ -26,7 +21,7 @@ const AddLinkInput = () => {
         value={inputValue}
         onChange={handleChange}
       />
-      <AddLinkButton />
+      {children}
     </form>
   );
 };
