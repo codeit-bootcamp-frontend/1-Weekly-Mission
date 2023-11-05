@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import CardList from '../../components/Card/CardList';
@@ -7,8 +7,10 @@ import FolderMenubar from '../../components/Folder/FolderMenubar';
 import Searchbar from '../../components/Searchbar/Searchbar';
 import NoLink from './NoLink';
 import { fetchGet } from '../../apis/api';
-import { DEFAULT_FOLDER } from '../../constants/constant';
+import { DEFAULT_FOLDER, MODAL_NAME } from '../../constants/constant';
 import * as S from './styles';
+import Modal from '../../components/Modal/Modal';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 // import { useFetchUserLinks } from '../../apis/fetch';
 
 const FolderContainer = ({ folderData, userId, userLinks }) => {
@@ -73,6 +75,31 @@ const FolderContainer = ({ folderData, userId, userLinks }) => {
     handleSearchParam();
   }, [searchParams]);
 
+  const [cardState, setModalState] = useState(false);
+  const modalRef = useRef();
+  useOnClickOutside(modalRef, () => setModalState(false));
+
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalBtnColor, setModalBtnColor] = useState('');
+  const [modalDescription, setModalDescription] = useState('');
+  const [modalBtnText, setModalBtnText] = useState('');
+
+  const handleModalCardAdd = (e, text) => {
+    if (!e || !text) return;
+    setModalState(true);
+    setModalTitle(MODAL_NAME[text].title);
+    setModalBtnColor(MODAL_NAME[text].buttonColor);
+    setModalDescription(MODAL_NAME[text].description);
+    setModalBtnText(MODAL_NAME[text].buttonText);
+  };
+  const handleModalCardDelete = (e, text) => {
+    setModalState(true);
+    setModalTitle(MODAL_NAME[text].title);
+    setModalBtnColor(MODAL_NAME[text].buttonColor);
+    setModalDescription(MODAL_NAME[text].description);
+    setModalBtnText(MODAL_NAME[text].buttonText);
+  };
+
   return (
     <S.CardContainerBox>
       <Searchbar handleSearch={handleSearchbar} />
@@ -82,6 +109,16 @@ const FolderContainer = ({ folderData, userId, userLinks }) => {
       ) : (
         cards && (
           <>
+            {cardState && (
+              <Modal
+                title={modalTitle}
+                btnText={modalBtnText}
+                modalText={modalDescription}
+                btnColor={modalBtnColor}
+                folderName="유용한 팁"
+                setModalState={setModalState}
+              />
+            )}
             <S.FolderContainerBox>
               <FolderNavbar
                 folderData={folderData}
@@ -94,7 +131,11 @@ const FolderContainer = ({ folderData, userId, userLinks }) => {
               <FolderMenubar selectedFolderName={selectedFolderName} />
             </S.FolderNameBox>
 
-            <CardList cards={cards} />
+            <CardList
+              cards={cards}
+              handleModalCardAdd={handleModalCardAdd}
+              handleModalCardDelete={handleModalCardDelete}
+            />
           </>
         )
       )}
