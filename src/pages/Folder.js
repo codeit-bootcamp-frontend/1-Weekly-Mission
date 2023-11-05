@@ -39,6 +39,9 @@ function Folder() {
   const addFolder = useInputController();
   const editFolder = useInputController();
 
+  // AddLinkInput 인풋 컨트롤라
+  const addLinkInput = useInputController();
+
   const folderID = searchParams.get('folderId');
 
   function handleClick(e) {
@@ -79,7 +82,10 @@ function Folder() {
 
   return (
     <>
-      <AddLinkInput />
+      <AddLinkInput
+        onChange={addLinkInput.handleChange}
+        value={addLinkInput.values}
+      />
       <section className={styles.root}>
         <SearchBar />
         <div className={styles.flex}>
