@@ -5,7 +5,7 @@ import ModalButton from "./ModalButton";
 import { useState } from "react";
 import classNames from "classnames";
 
-function AddLinkModal({ inputValue, folderListData }) {
+const AddLinkModal = ({ inputValue, folderListData }) => {
   const [selectedFolder, setSelectedFolder] = useState(null);
 
   const folderListDataArray = folderListData.data.sort((a, b) => a.id - b.id);
@@ -36,9 +36,9 @@ function AddLinkModal({ inputValue, folderListData }) {
           </div>
         ))}
       </div>
-      <ModalButton>추가하기</ModalButton>
+      <ModalButton color="blue">추가하기</ModalButton>
     </div>
   );
-}
+};
 
 export default AddLinkModal;

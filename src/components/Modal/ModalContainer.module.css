@@ -1,0 +1,33 @@
+.modalContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3.2rem 4rem;
+  border: 0.1rem solid var(--linkbrary-gray-20, #ccd5e3);
+  position: relative;
+  width: 36rem;
+  background: var(--linkbrary-white, #fff);
+  border-radius: 1.5rem;
+}
+
+.icon {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  cursor: pointer;
+}
