@@ -22,6 +22,7 @@ import DeleteFolder from '../modals/DeleteFolder';
 import AddFolder from '../modals/AddFolder';
 import useInputController from '../hooks/useInputController';
 import EditFolder from '../modals/EditFolder';
+import AddLinkToFolder from '../modals/AddLinkToFolder';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -136,6 +137,11 @@ function Folder() {
           <AddFolder onChange={addFolder.handleChange} value={addFolder.values}>
             {folderName}
           </AddFolder>
+        </Modal>
+      )}
+      {true && (
+        <Modal onClick={addFolderModal.handleClick}>
+          <AddLinkToFolder lists={folderLists} />
         </Modal>
       )}
     </>
