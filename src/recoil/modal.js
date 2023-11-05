@@ -15,5 +15,12 @@ export const modalState = atom({
       display: false,
       link: "",
     },
+    shareFolderModal: {
+      display: false,
+      content: {
+        id: -1,
+        title: "",
+      },
+    },
   },
 });

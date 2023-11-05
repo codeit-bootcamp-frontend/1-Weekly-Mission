@@ -5,11 +5,7 @@ import DefaultBtn from "../btn/DefaultBtn";
 import { useState } from "react";
 import CloseIcon from "../../assets/modal/img_modalClose.svg";
 import CheckIcon from "../../assets/modal/img_modalCheck.svg";
-import {
-  ModalMainContainer,
-  OuterModalContainer,
-  Overlay,
-} from "./ModalStyledComponents";
+import { ModalMainContainer } from "./ModalStyledComponents";
 
 const FolderArr = [
   {
@@ -41,41 +37,37 @@ const AddToFolderModal = () => {
   const [selectedFolder, setSelectedFolder] = useState();
 
   return (
-    <Overlay>
-      <OuterModalContainer onClick={resetModalState} />
+    <ModalMainContainer>
+      <img
+        src={CloseIcon}
+        className="closeIcon"
+        alt="closeIcon"
+        onClick={resetModalState}
+      />
 
-      <ModalMainContainer>
-        <img
-          src={CloseIcon}
-          className="closeIcon"
-          alt="closeIcon"
-          onClick={resetModalState}
-        />
+      <div className="modalTitleContainer">
+        <div className="title">폴더에 추가</div>
+        <div className="link">{addToFolderModal.link}</div>
+      </div>
 
-        <div className="modalTitleContainer">
-          <div className="title">폴더에 추가</div>
-          <div className="link">{addToFolderModal.link}</div>
-        </div>
+      <div className="modalContentContainer">
+        {FolderArr.map((e) => {
+          return (
+            <FolderContainer
+              $active={e.id === selectedFolder}
+              key={e.id}
+              onClick={() => setSelectedFolder(e.id)}
+            >
+              <div className="title">{e.title}</div>
+              <div className="linkNum">{e.num}개 링크</div>
+              <img src={CheckIcon} className="checkIcon" alt="checkIcon" />
+            </FolderContainer>
+          );
+        })}
+      </div>
 
-        <div className="modalContentContainer">
-          {FolderArr.map((e) => {
-            return (
-              <FolderContainer
-                $active={e.id === selectedFolder}
-                key={e.id}
-                onClick={() => setSelectedFolder(e.id)}
-              >
-                <div className="title">{e.title}</div>
-                <div className="linkNum">{e.num}개 링크</div>
-                <img src={CheckIcon} className="checkIcon" alt="checkIcon" />
-              </FolderContainer>
-            );
-          })}
-        </div>
-
-        <DefaultBtn onClick={resetModalState}>추가하기</DefaultBtn>
-      </ModalMainContainer>
-    </Overlay>
+      <DefaultBtn onClick={resetModalState}>추가하기</DefaultBtn>
+    </ModalMainContainer>
   );
 };
 

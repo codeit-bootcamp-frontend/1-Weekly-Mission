@@ -31,6 +31,8 @@ import { modalState } from "../../recoil/modal";
 import { useRecoilState } from "recoil";
 import AddToFolderModal from "../../components/modal/AddToFolderModal";
 import DefaultModal from "../../components/modal/DefaultModal";
+import ModalLayout from "../../components/modal/ModalLayout";
+import ShareFolderModal from "../../components/modal/ShareFolderModal";
 
 const LinkToolArr = [
   {
@@ -101,13 +103,22 @@ const Folder = () => {
   };
 
   const handleDefaultMoal = (state, content) => {
-    console.log(content);
     setModalOpened((prev) => ({
       ...prev,
       defaultModal: {
         display: true,
         content: content || "",
         state: state,
+      },
+    }));
+  };
+
+  const handleShareFolderModal = (content) => {
+    setModalOpened((prev) => ({
+      ...prev,
+      shareFolderModal: {
+        display: true,
+        content: content,
       },
     }));
   };
@@ -176,7 +187,7 @@ const Folder = () => {
               <div className="folderAddBtnContainer">
                 <div
                   className="folderAddTitle"
-                  onClick={() => handleDefaultMoal("folderAdd")}
+                  onClick={() => handleDefaultMoal("folderAdd", {})}
                 >
                   폴더 추가
                 </div>
@@ -205,6 +216,7 @@ const Folder = () => {
                               key={index}
                               onClick={() => {
                                 if (e.state === "folderShare") {
+                                  handleShareFolderModal(selectedFolder);
                                   return;
                                 }
                                 handleDefaultMoal(e.state, selectedFolder);
@@ -235,8 +247,21 @@ const Folder = () => {
         </Section>
       </Wrapper>
 
-      {modalOpened.addToFolderModal.display && <AddToFolderModal />}
-      {modalOpened.defaultModal.display && <DefaultModal />}
+      {modalOpened.addToFolderModal.display && (
+        <ModalLayout>
+          <AddToFolderModal />
+        </ModalLayout>
+      )}
+      {modalOpened.defaultModal.display && (
+        <ModalLayout>
+          <DefaultModal />
+        </ModalLayout>
+      )}
+      {modalOpened.shareFolderModal.display && (
+        <ModalLayout>
+          <ShareFolderModal />
+        </ModalLayout>
+      )}
     </>
   );
 };

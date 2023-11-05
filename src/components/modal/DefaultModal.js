@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import { useRecoilValue, useResetRecoilState } from "recoil";
-import {
-  ModalMainContainer,
-  OuterModalContainer,
-  Overlay,
-} from "./ModalStyledComponents";
+import { ModalMainContainer } from "./ModalStyledComponents";
 import { modalState } from "../../recoil/modal";
 import CloseIcon from "../../assets/modal/img_modalClose.svg";
 import DefaultBtn, { DefaultBtnContainer } from "../btn/DefaultBtn";
@@ -38,40 +34,33 @@ const DefaultModal = () => {
   const [content, setContent] = useState(defaultModal.content.title);
 
   return (
-    <Overlay>
-      <OuterModalContainer onClick={resetModalState} />
+    <ModalMain $isDelete={isDelete}>
+      <img
+        src={CloseIcon}
+        className="closeIcon"
+        alt="closeIcon"
+        onClick={resetModalState}
+      />
 
-      <ModalMain $isDelete={isDelete}>
-        <img
-          src={CloseIcon}
-          className="closeIcon"
-          alt="closeIcon"
-          onClick={resetModalState}
-        />
+      <div className="modalTitleContainer ">
+        <div className="title">{type.title}</div>
+        {isDelete && <div className="link">{defaultModal.content.title}</div>}
+      </div>
 
-        <div className="modalTitleContainer ">
-          <div className="title">{type.title}</div>
-          {isDelete && <div className="link">{defaultModal.content.title}</div>}
+      {!isDelete && (
+        <div className="modalContentContainer">
+          <Input
+            placeholder={"내용 입력"}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
         </div>
+      )}
 
-        {!isDelete && (
-          <div className="modalContentContainer">
-            <Input
-              placeholder={"내용 입력"}
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
-          </div>
-        )}
-
-        <DefaultBtn
-          type={isDelete ? "red" : "default"}
-          onClick={resetModalState}
-        >
-          {type.button}
-        </DefaultBtn>
-      </ModalMain>
-    </Overlay>
+      <DefaultBtn type={isDelete ? "red" : "default"} onClick={resetModalState}>
+        {type.button}
+      </DefaultBtn>
+    </ModalMain>
   );
 };
 
