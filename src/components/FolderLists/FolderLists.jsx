@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AddFolderBtn, EditFolderTools } from "components";
+import {
+  AddFolderBtn,
+  EditFolderTools,
+  ModalEdit,
+  ModalAdd,
+  ModalDelete,
+  ModalShare,
+} from "components";
 import * as Styled from "./StyledFolderLists";
 
 const FolderList = ({ data, onClick, folderId }) => {
@@ -25,10 +32,46 @@ const FolderLists = ({ folderData, id }) => {
       return "전체";
     }
   });
+  const [isEditModal, setIsEditModal] = useState(false);
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const [isAddModal, setIsAddModal] = useState(false);
+  const [isShareModal, setIsShareModal] = useState(false);
   const folderId = id ? id : "전체";
 
   const handleBtnClick = (dataName) => {
     dataName === "전체" ? setFolderTitle("전체") : setFolderTitle(dataName);
+  };
+
+  const handleAddModalClick = () => {
+    setIsAddModal(!isAddModal);
+  };
+
+  const handleAddModalClose = () => {
+    setIsAddModal(!isAddModal);
+  };
+
+  const handleEditModalClick = () => {
+    setIsEditModal(!isEditModal);
+  };
+
+  const handleEditModalClose = () => {
+    setIsEditModal(!isEditModal);
+  };
+
+  const handleDeleteModalClick = () => {
+    setIsDeleteModal(!isDeleteModal);
+  };
+
+  const handleDeleteModalClose = () => {
+    setIsDeleteModal(!isDeleteModal);
+  };
+
+  const handleShareModalClick = () => {
+    setIsShareModal(!isShareModal);
+  };
+
+  const handleShareModalClose = () => {
+    setIsShareModal(!isShareModal);
   };
 
   useEffect(() => {
@@ -65,12 +108,24 @@ const FolderLists = ({ folderData, id }) => {
             );
           })}
         </Styled.BtnBox>
-        <AddFolderBtn />
+        <AddFolderBtn modalOpen={handleAddModalClick} />
       </Styled.FolderBlock>
       <Styled.TitleBlock>
         <Styled.Title>{folderTitle}</Styled.Title>
-        {folderTitle === "전체" || <EditFolderTools />}
+        {folderTitle === "전체" || (
+          <EditFolderTools
+            modalOpen={[
+              handleShareModalClick,
+              handleEditModalClick,
+              handleDeleteModalClick,
+            ]}
+          />
+        )}
       </Styled.TitleBlock>
+      {isEditModal && <ModalEdit modalClose={handleEditModalClose} />}
+      {isAddModal && <ModalAdd modalClose={handleAddModalClose} />}
+      {isDeleteModal && <ModalDelete modalClose={handleDeleteModalClose} />}
+      {isShareModal && <ModalShare modalClose={handleShareModalClose} />}
     </Styled.Container>
   );
 };
