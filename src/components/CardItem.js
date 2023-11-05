@@ -1,5 +1,5 @@
 import noImg from "../assets/images/noImage.png";
-import getTimeDiff from "../utils/getTimeDiff";
+import { getTimeDiff } from "../utils/getTimeDiff";
 import "../styles/cardItem.css";
 
 function CardItem({ item }) {

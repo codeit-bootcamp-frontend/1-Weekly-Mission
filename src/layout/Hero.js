@@ -2,9 +2,9 @@ import "../styles/hero.css";
 import defaultProfileImgSrc from "../assets/images/profileImg.png";
 
 function Hero({
-  ownername = "코드잇",
+  ownername = "Default Owner Name",
   profileImgSrc = defaultProfileImgSrc,
-  foldername = "⭐️ 즐겨찾기",
+  foldername = "Default Folder Name",
 }) {
   return (
     <div className="hero first-layout">
