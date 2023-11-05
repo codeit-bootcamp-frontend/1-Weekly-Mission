@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-const DefaultBtn = ({ children, onClick }) => {
+const DefaultBtn = ({ children, onClick, type }) => {
   return (
-    <DefaultBtnContainer onClick={onClick}>{children}</DefaultBtnContainer>
+    <DefaultBtnContainer onClick={onClick} type={type}>
+      {children}
+    </DefaultBtnContainer>
   );
 };
 
@@ -10,7 +12,10 @@ export default DefaultBtn;
 
 export const DefaultBtnContainer = styled.button`
   border-radius: 0.8rem;
-  background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
+  background: ${(props) =>
+    props.type === "red"
+      ? "var(--red)"
+      : "linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%)"};
   color: #f5f5f5;
   padding: 1.6rem 2rem;
   font-size: 1.8rem;

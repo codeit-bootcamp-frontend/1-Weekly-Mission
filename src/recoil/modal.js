@@ -5,6 +5,8 @@ export const modalState = atom({
   default: {
     defaultModal: {
       display: false,
+      state: "",
+      content: "",
     },
     addToFolderModal: {
       display: false,

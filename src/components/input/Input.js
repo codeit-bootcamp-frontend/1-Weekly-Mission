@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import { device } from "../styles";
 
-const Input = ({ src, placeholder, children, onChange }) => {
+const Input = ({ src, placeholder, children, onChange, value }) => {
   return (
     <InputContainer>
-      <img src={src} alt="inputIcon" className="inputIcon" />
+      {src && <img src={src} alt="inputIcon" className="inputIcon" />}
+
       <input
         className="inputContainer"
         placeholder={placeholder}
+        value={value}
         onChange={onChange}
       ></input>
       {children || <></>}

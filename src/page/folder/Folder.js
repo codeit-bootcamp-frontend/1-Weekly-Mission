@@ -30,6 +30,7 @@ import DefaultBtn from "../../components/btn/DefaultBtn";
 import { modalState } from "../../recoil/modal";
 import { useRecoilState } from "recoil";
 import AddToFolderModal from "../../components/modal/AddToFolderModal";
+import DefaultModal from "../../components/modal/DefaultModal";
 
 const LinkToolArr = [
   {
@@ -96,6 +97,17 @@ const Folder = () => {
     }));
   };
 
+  const handleDefaultMoal = () => {
+    setModalOpened((prev) => ({
+      ...prev,
+      defaultModal: {
+        display: true,
+        content: "",
+        state: "folderAdd",
+      },
+    }));
+  };
+
   if (isFolderLoading) {
     return <div>화면을 불러오는 중입니다.</div>;
   }
@@ -158,7 +170,12 @@ const Folder = () => {
               </div>
 
               <div className="folderAddBtnContainer">
-                <div className="folderAddTitle">폴더 추가</div>
+                <div
+                  className="folderAddTitle"
+                  onClick={() => handleDefaultMoal()}
+                >
+                  폴더 추가
+                </div>
                 <img
                   src={FolderAddIcon}
                   className="folderAddIcon"
@@ -206,6 +223,7 @@ const Folder = () => {
       </Wrapper>
 
       {modalOpened.addToFolderModal.display && <AddToFolderModal />}
+      {modalOpened.defaultModal.display && <DefaultModal />}
     </>
   );
 };
