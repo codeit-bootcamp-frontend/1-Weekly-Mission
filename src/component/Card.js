@@ -5,10 +5,12 @@ import noImg from "../assets/img/no-image.svg";
 import style from "./Card.module.css";
 import clsx from "clsx";
 import Kebab from "./Kebab";
+import Modal from "./Modal";
 
 function Card({ title, description, url, image_source, created_at }) {
   const [hover, setHover] = useState(false);
   const [isShowKebab, setIsShowKebab] = useState(false);
+  const [modal, setModal] = useState(null);
 
   const handleMouseOver = () => {
     setHover(true);
@@ -22,6 +24,14 @@ function Card({ title, description, url, image_source, created_at }) {
   };
   const handleKebabBlur = () => {
     setIsShowKebab(false);
+  };
+  const handleExitClick = () => {
+    setModal(null);
+  };
+  const handleKebabDeleteClick = () => {
+    setModal(
+      <Modal title="링크 삭제" data={url} onExitClick={handleExitClick} />
+    );
   };
 
   return (
@@ -47,7 +57,7 @@ function Card({ title, description, url, image_source, created_at }) {
               {isShowKebab && (
                 <div className={style.kebab}>
                   <Kebab>
-                    <li>삭제하기</li>
+                    <li onClick={handleKebabDeleteClick}>삭제하기</li>
                     <li>폴더에 추가</li>
                   </Kebab>
                 </div>
@@ -62,6 +72,7 @@ function Card({ title, description, url, image_source, created_at }) {
           <div className={style.footer}>{formatDate(new Date(created_at))}</div>
         </div>
       </a>
+      {modal}
     </div>
   );
 }
