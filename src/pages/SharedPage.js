@@ -12,15 +12,15 @@ import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSk
 import SharedPageCardItem from "../components/Card/SharedPageCardItem";
 import CardListItem from "../components/Card/CardListItem";
 import getUserLinks from "../api/getUserLinks";
-import getSampleUser from "./../api/getSampleUser";
 import getUserFolder from "../api/getUserFolder";
+import getUser from "./../api/getUser";
 
 const SharedPage = () => {
   const [searchParams, _] = useSearchParams();
   const [userData, setUserData] = useState({});
   const [folderData, setFolderData] = useState({});
   const [linksData, setLinksData] = useState({});
-  const { status: isLoadingUserData, wrappedFunction: getUserDataAsync } = useAsync(getSampleUser);
+  const { status: isLoadingUserData, wrappedFunction: getUserDataAsync } = useAsync(getUser);
   const { wrappedFunction: getUserFolderDataAsync } = useAsync(getUserFolder);
   const { status: isLoadingLinksList, wrappedFunction: getLinksListAsync } = useAsync(getUserLinks);
 
@@ -30,7 +30,7 @@ const SharedPage = () => {
   const handleLoadFolderData = useCallback(async () => {
     try {
       const [userDataResponseData, userFolderResponseData, linksResponseData] = await Promise.all([
-        getUserDataAsync(),
+        getUserDataAsync({ userId }),
         getUserFolderDataAsync({ userId, folderId }),
         getLinksListAsync({ userId, folderId }),
       ]);
@@ -52,8 +52,8 @@ const SharedPage = () => {
       <header className={styles.header}>
         <Loadable isLoading={isLoadingUserData} fallback={<FolderInfoSkeleton />}>
           <FolderInfo
-            profileImage={userData?.profileImageSource}
-            userName={userData?.name}
+            profileImage={userData?.data?.[0]?.image_source}
+            userName={userData?.data?.[0]?.name}
             folderName={folderData?.data?.[0]?.name || ""}
           />
         </Loadable>
