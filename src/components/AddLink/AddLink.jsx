@@ -70,24 +70,29 @@ const AddButton = styled.button`
 function AddLink() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setModal] = useState(null);
-  const handleModal = () => (e) => {
+
+  const handleModal = (e) => {
     e.preventDefault();
+    const url = e.target.elements.linkInput.value; // "linkInput"은 폼 요소의 name 속성
     let feature = "추가하기";
 
-    setModal(ModalMaker({ feature, setIsModalOpen }));
+
+
+    setModal(ModalMaker({ feature, url, setIsModalOpen }));
     setIsModalOpen(true);
   };
 
   return (
     <>
-      <AddLinkFrame onSubmit={(e) => handleModal()(e)}>
-        <AddLinkInput type="text" placeholder="링크를 추가해 보세요." />
-        <AddButton>추가하기</AddButton>
+      <AddLinkFrame onSubmit={handleModal}>
+        <AddLinkInput name="linkInput" type="text" placeholder="링크를 추가해 보세요." />
+        <AddButton type="submit">추가하기</AddButton>
       </AddLinkFrame>
 
       {isModalOpen && modal}
     </>
   );
 }
+
 
 export default AddLink;

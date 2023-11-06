@@ -41,10 +41,8 @@ function Card({ link }) {
     (e) => {
       const url = link.url;
       e.preventDefault();
-      e.stopPropagation();
-
       let feature = e.target.textContent;
-
+      console.log(feature);
       setModal(ModalMaker({ url, feature, setIsModalOpen }));
       setIsModalOpen(true);
     };
