@@ -20,6 +20,7 @@ export const S = {
     background-color: #fff;
     white-space: nowrap;
     text-align: center;
+    text-decoration: none;
 
     ${({ "data-onselect": isSelected }) =>
       isSelected &&

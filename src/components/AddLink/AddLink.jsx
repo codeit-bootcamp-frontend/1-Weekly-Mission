@@ -1,10 +1,12 @@
-import styled from 'styled-components'
-import linkImage from '../../assets/link.png'
+import styled from "styled-components";
+import linkImage from "../../assets/link.png";
 
-import colors from '../../style/colors'
-import { cursorPointer, flexCenter } from '../../style/common'
-import { device } from '../../style/device'
-const AddLinkFrame = styled.div`
+import colors from "../../style/colors";
+import { cursorPointer, flexCenter } from "../../style/common";
+import { device } from "../../style/device";
+import { useState } from "react";
+import { ModalMaker } from "../Modal/Modal";
+const AddLinkFrame = styled.form`
   position: relative;
   display: flex;
   padding: 30px 300px;
@@ -21,7 +23,7 @@ const AddLinkFrame = styled.div`
   @media ${device.mobile} {
     padding: 30px 32px;
   }
-`
+`;
 
 const AddLinkInput = styled.input`
   display: flex;
@@ -38,7 +40,7 @@ const AddLinkInput = styled.input`
   background-image: url(${linkImage});
   background-position: 15px 16px;
   padding-left: 45px;
-`
+`;
 
 const AddButton = styled.button`
   position: absolute;
@@ -64,14 +66,28 @@ const AddButton = styled.button`
   @media ${device.mobile} {
     right: 50px;
   }
-`
+`;
 function AddLink() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modal, setModal] = useState(null);
+  const handleModal = () => (e) => {
+    e.preventDefault();
+    let feature = "추가하기";
+
+    setModal(ModalMaker({ feature, setIsModalOpen }));
+    setIsModalOpen(true);
+  };
+
   return (
-    <AddLinkFrame>
-      <AddLinkInput type="text" placeholder="링크를 추가해 보세요." />
-      <AddButton>추가하기</AddButton>
-    </AddLinkFrame>
-  )
+    <>
+      <AddLinkFrame onSubmit={(e) => handleModal()(e)}>
+        <AddLinkInput type="text" placeholder="링크를 추가해 보세요." />
+        <AddButton>추가하기</AddButton>
+      </AddLinkFrame>
+
+      {isModalOpen && modal}
+    </>
+  );
 }
 
-export default AddLink
+export default AddLink;

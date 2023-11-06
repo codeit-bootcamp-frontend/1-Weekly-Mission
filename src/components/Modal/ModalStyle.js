@@ -115,19 +115,24 @@ export const S = {
 
   FolderInfoContainer: styled.div`
     width: 100%;
+    display: flex;
 
+    gap : 5px;
     flex-direction: column;
     align-items: start;
   `,
   StyledFolderInfo: styled.div`
     width: 100%;
     padding: 8px;
-
+    gap: 8px;
     display: flex;
     align-items: center;
     border-radius: 8px;
+    justify-content: space-between;
 
     ${cursorPointer}
+
+    &.clicked,
     &:hover,
     &:focus {
       background-color: ${colors.background};
@@ -136,9 +141,13 @@ export const S = {
       }
     }
 
- 
-    .name {
-      color: ${colors.gray100};
+
+
+
+    div {
+      display: flex;
+      gap: 8px;
+    }
 
       /* Linkbrary/body1-regular */
       font-family: Pretendard;
@@ -150,7 +159,8 @@ export const S = {
 
     .count {
       color: ${colors.gray60};
-
+      display: flex;
+      align-items: center;
       /* Linkbrary/body2-regular */
       font-family: Pretendard;
       font-size: 14px;

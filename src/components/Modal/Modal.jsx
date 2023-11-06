@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { S } from "./ModalStyle";
 import cancelIcon from "../../assets/modal/_close.png";
 import kakaoIcon from "../../assets/modal/kakao.svg";
@@ -7,6 +7,7 @@ import copyIcon from "../../assets/modal/sharelink.svg";
 import checkIcon from "../../assets/modal/check.svg";
 import useAsync from "../../Hooks/useAsync";
 import { getFolders } from "../../api";
+import { useSearchParams } from "react-router-dom";
 
 function ShareIcon({ src, alt, text }) {
   return (
@@ -18,22 +19,57 @@ function ShareIcon({ src, alt, text }) {
 }
 
 function ModalFolderShare() {
+  const [searchParams] = useSearchParams();
+  const folderId = searchParams.get("folderId");
+  const sharedLink = window.location.href + "?" + folderId;
+
+  // const shareToKakao = () => {};
+  // const shareToFacebook = () => {};
+  const copyClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(sharedLink);
+      alert("클립보드에 링크가 복사되었습니다.");
+    } catch (e) {
+      alert("복사에 실패하였습니다");
+    }
+  };
   return (
     <S.IconsWrapper>
-      <ShareIcon src={kakaoIcon} alt="카카오톡" text="카카오톡" />
-      <ShareIcon src={facebookIcon} alt="페이스북" text="페이스북" />
-      <ShareIcon src={copyIcon} alt="링크 복사" text="링크 복사" />
+      <ShareIcon
+        src={kakaoIcon}
+        // onClick={shareToKakao}
+        alt="카카오톡"
+        text="카카오톡"
+      />
+      <ShareIcon
+        src={facebookIcon}
+        // onClick={shareToFacebook}
+        alt="페이스북"
+        text="페이스북"
+      />
+      <ShareIcon
+        src={copyIcon}
+        onClick={copyClipboard}
+        alt="링크 복사"
+        text="링크 복사"
+      />
     </S.IconsWrapper>
   );
 }
 
 function FolderInfo({ folderName, count }) {
-  return (
-    <S.StyledFolderInfo>
-      <span className="name">{folderName}</span>
-      <span className="count">{count}개 링크</span>
+  const [isClicked, setShowCheckIcon] = useState(false);
 
-      {/* <img src={checkIcon} /> */}
+  return (
+    <S.StyledFolderInfo
+      onClick={() => setShowCheckIcon(!isClicked)}
+      className={isClicked ? "clicked" : null}
+    >
+      <div>
+        <span className="name">{folderName}</span>
+        <span className="count">{count}개 링크</span>
+      </div>
+      {isClicked && <img src={checkIcon} />}
     </S.StyledFolderInfo>
   );
 }
@@ -144,7 +180,7 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
         />
       );
       break;
-    case "폴더에 추가":
+    case ("폴더에 추가", "추가하기"):
       modal = (
         <Modal
           title="폴더에 추가"
