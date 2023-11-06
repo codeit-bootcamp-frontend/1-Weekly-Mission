@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import * as Modal from '../Modal.style';
 import * as S from './Share.style';
-import CopyToClipboard from 'components/Popup/CopyToClipboard';
+import CopyToClipboard from 'components/Toast/CopyToClipboard';
 import KAKAO from 'assets/icons/kakaotalk-large.svg';
 import FACEBOOK from 'assets/icons/facebook-large.svg';
 import SHARE_LINK from 'assets/icons/share-link.svg';
+import debounce from 'utils/debounce';
+import ToastPortals from 'components/Toast/ToastPortals';
+import useToast from 'hooks/useToast';
 
 function Share({ folderName, folderId, userId }) {
   const { Kakao } = window;
@@ -42,7 +45,7 @@ function Share({ folderName, folderId, userId }) {
     );
   };
 
-  const [showCopyPopup, setShowCopyPopup] = useState(false);
+  const [showCopy, setShowCopy] = useToast(2000);
 
   const copyLinkClipBoard = async () => {
     try {
@@ -50,8 +53,7 @@ function Share({ folderName, folderId, userId }) {
     } catch (err) {
       console.error(err);
     }
-    setShowCopyPopup(true);
-    setTimeout(() => setShowCopyPopup(false), 2000);
+    setShowCopy();
   };
 
   useEffect(() => {
@@ -61,7 +63,6 @@ function Share({ folderName, folderId, userId }) {
 
   return (
     <>
-      <CopyToClipboard show={showCopyPopup} />
       <Modal.Header>
         <Modal.Title>폴더 공유</Modal.Title>
         <Modal.Description>{folderName}</Modal.Description>
@@ -89,6 +90,9 @@ function Share({ folderName, folderId, userId }) {
           링크 복사
         </ShareBox>
       </S.ShareContainer>
+      <ToastPortals>
+        <CopyToClipboard show={showCopy} />
+      </ToastPortals>
     </>
   );
 }
