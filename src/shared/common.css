@@ -19,6 +19,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
 :root {
   /* gray */
   --gray-wild-sand: #f5f5f5;

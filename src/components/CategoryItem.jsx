@@ -6,8 +6,8 @@ function CategoryItem({ data, handleClick }) {
   }
 
   return (
-    <li className="category-item" onClick={handleCategoryClick}>
-      <a>{data.name}</a>
+    <li onClick={handleCategoryClick} className="category-item">
+      <button>{data.name}</button>
     </li>
   );
 }

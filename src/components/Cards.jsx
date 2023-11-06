@@ -4,11 +4,9 @@ import favoritesImg from "../assets/images/star.svg";
 import meatballMenuImg from "../assets/images/meatball.svg";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useState } from "react";
+import PopOver from "./PopOver";
 dayjs.extend(relativeTime);
-
-function MeatballBtn() {
-  return <img src={meatballMenuImg} alt="추가메뉴 버튼" />;
-}
 
 function FavoriteBtn() {
   return <img className="favorites" src={favoritesImg} alt="즐겨찾기 이미지" />;
@@ -17,14 +15,30 @@ function FavoriteBtn() {
 function Cards({ cardInfo }) {
   const { createdAt, url, description, imageSource, created_at, image_source } =
     cardInfo;
-
   const updateTimeAgo = dayjs(createdAt ?? created_at).fromNow();
   const updateDate = dayjs(createdAt ?? created_at).format("YYYY. MM. DD");
+  const [popOverOn, setPopOverOn] = useState(false);
+
+  function togglePopover() {
+    setPopOverOn(!popOverOn);
+  }
+
+  function MeatballBtn({ onClick }) {
+    return (
+      <button onClick={() => onClick(true)}>
+        <img src={meatballMenuImg} alt="추가메뉴 버튼" />
+      </button>
+    );
+  }
+
+  function handleOpenNewTab(url) {
+    window.open(url, "_blank", "noreferrer noopener");
+  }
 
   return (
     <li className="card-list">
-      <a href={url} target="_blank" rel="noreferrer noopener">
-        <div className="card-box">
+      <div className="card-box">
+        <div className="card-image-box" onClick={() => handleOpenNewTab(url)}>
           <img
             className="card"
             src={imageSource ?? image_source ?? DEFAULT_IMG}
@@ -36,7 +50,8 @@ function Cards({ cardInfo }) {
         <div className="card-info">
           <div className="update-time">
             <p>{updateTimeAgo}</p>
-            <MeatballBtn />
+            <MeatballBtn onClick={togglePopover} />
+            {popOverOn && <PopOver />}
           </div>
           <div className="description">
             <p>{description}</p>
@@ -45,7 +60,7 @@ function Cards({ cardInfo }) {
             <p>{updateDate}</p>
           </div>
         </div>
-      </a>
+      </div>
     </li>
   );
 }

@@ -10,8 +10,20 @@
   white-space: nowrap;
 }
 
+.category-item button {
+  background: none;
+  border: none;
+  font-size: 16px;
+}
+
 .category-item:hover,
-.category-item:active .category-item:visited {
+.category-item:active {
+  background: var(--primary);
+  color: white;
+}
+
+.active-item {
+  font-size: 16px;
   background: var(--primary);
   color: white;
 }

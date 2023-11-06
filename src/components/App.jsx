@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import { getUsers } from "../utils/api";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+// import Modals from "../pages/modals/Modals";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
