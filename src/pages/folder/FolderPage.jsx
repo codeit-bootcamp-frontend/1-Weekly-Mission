@@ -6,16 +6,18 @@ import LinkAddBar from "components/linkAddBar/LinkAddBar.jsx";
 import FolderTabList from "components/folderTabList/FolderTabList.jsx";
 import { getUserFolderList } from "pages/folder/folderPage.js";
 import LinkSearchBar from "components/linkSearchBar/LinkSearchBar.jsx";
+import FolderHeader from "components/folderHeader/FolderHeader.jsx";
 
 import { ENTIRE_LINK_FOLDER_NAME, SAMPLE_USER_ID } from "utils/constants.js";
 import useAsync from "hooks/useAsync.js";
-import FolderHeader from "components/folderHeader/FolderHeader.jsx";
+import useModal from "hooks/useModal.js";
+import FolderAddModal from "components/modals/folderAddModal/FolderAddModal.jsx";
 
 export default function FolderPage() {
+  const { Modal, openModal, closeModal } = useModal();
   const [folderList, setFolderList] = useState([]);
 
-  const params = useParams();
-  const folderId = params.folderId;
+  const { folderId } = useParams();
   const folderTitle = !folderId
     ? ENTIRE_LINK_FOLDER_NAME
     : folderList.find((item) => String(item.id) === folderId)?.name;
@@ -28,6 +30,7 @@ export default function FolderPage() {
     if (!folderList) return;
     setFolderList(folderList);
   };
+
   useEffect(() => {
     handleFolderList();
   }, []);
@@ -43,10 +46,15 @@ export default function FolderPage() {
 
         <S.FolderTabListContainer>
           <FolderTabList folderList={folderList} />
-          <S.FolderAddButton>
-            폴더 추가
-            <S.FolderAddIcon alt="폴더 추가 아이콘" />
-          </S.FolderAddButton>
+          <>
+            <S.FolderAddButton onClick={openModal}>
+              폴더 추가
+              <S.FolderAddIcon alt="폴더 추가 아이콘" />
+            </S.FolderAddButton>
+            <Modal>
+              <FolderAddModal onClickClose={closeModal} />
+            </Modal>
+          </>
         </S.FolderTabListContainer>
 
         <FolderHeader folderTitle={folderTitle} />

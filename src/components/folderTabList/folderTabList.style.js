@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { RESPONSIBLE_SIZE_MOBILE } from "utils/constants";
+import { RESPONSIBLE_SIZE } from "utils/constants";
 
 export const FolderTabList = styled.ul`
   display: flex;
@@ -27,7 +27,7 @@ export const FolderNavLink = styled(NavLink)`
           color: #000;
         `}
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     padding: 0.6rem 1rem;
     font-size: 1.4rem;
   }

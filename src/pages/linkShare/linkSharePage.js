@@ -1,11 +1,10 @@
 import { fetchClientJson } from "utils/apiClient.js";
 
 const getSampleUserFolder = async () => {
-  const result = await fetchClientJson({
+  const { folder } = await fetchClientJson({
     url: "sample/folder",
     method: "GET",
   });
-  const folder = result.folder;
   return folder;
 };
 

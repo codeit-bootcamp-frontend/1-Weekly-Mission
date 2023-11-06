@@ -10,8 +10,7 @@ import useAsync from "hooks/useAsync.js";
 import { SAMPLE_USER_ID } from "utils/constants.js";
 
 export default function FolderLinkList() {
-  const params = useParams();
-  const folderId = params.folderId;
+  const { folderId } = useParams();
 
   const [folderLinkList, setFolderLinkList] = useState([]);
 

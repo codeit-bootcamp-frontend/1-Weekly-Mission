@@ -1,8 +1,5 @@
 import styled, { css } from "styled-components";
-import {
-  RESPONSIBLE_SIZE_TABLET,
-  RESPONSIBLE_SIZE_MOBILE,
-} from "utils/constants";
+import { RESPONSIBLE_SIZE } from "utils/constants";
 
 export const HeaderWrapper = styled.header`
   width: 100%;
@@ -26,13 +23,13 @@ export const HeaderNav = styled.nav`
   margin: 0 auto;
   padding: 0 20rem;
 
-  @media screen and (${RESPONSIBLE_SIZE_TABLET}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.tablet}) {
     width: 76.8rem;
     padding: 0 3.2rem;
     margin: 0 auto;
   }
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     width: 100%;
     height: 6.3rem;
     padding: 1.3rem 3.2rem;
@@ -43,7 +40,7 @@ export const HeaderHomeButton = styled.button`
   width: 13.3rem;
   cursor: pointer;
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     width: 8.8rem;
   }
 `;
@@ -65,7 +62,7 @@ export const ProfileEmail = styled.p`
   line-height: normal;
   color: var(--linkbrary--color--gray0);
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     display: none;
   }
 `;
@@ -78,7 +75,7 @@ export const HeaderSignInButton = styled.button`
   color: var(--linkbrary--color--white);
   cursor: pointer;
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     padding: 1rem 1.6rem;
     font-size: 1.4rem;
   }

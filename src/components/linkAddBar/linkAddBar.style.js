@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import {
-  RESPONSIBLE_SIZE_TABLET,
-  RESPONSIBLE_SIZE_MOBILE,
-} from "utils/constants";
+import { RESPONSIBLE_SIZE } from "utils/constants";
 
 export const LinkAddForm = styled.form`
   width: 80rem;
@@ -11,11 +8,11 @@ export const LinkAddForm = styled.form`
   border-radius: 15px;
   background: var(--linkbrary--color--white);
 
-  @media screen and (${RESPONSIBLE_SIZE_TABLET}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.tablet}) {
     width: 70.4rem;
   }
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     width: 100%;
     padding: 0.8rem 1rem;
   }
@@ -38,7 +35,7 @@ export const LinkAddInput = styled.input`
     color: #9fa6b2;
   }
 
-  @media screen and (${RESPONSIBLE_SIZE_MOBILE}) {
+  @media screen and (max-width: ${RESPONSIBLE_SIZE.mobile}) {
     font-size: 1.4rem;
     line-height: normal;
   }
