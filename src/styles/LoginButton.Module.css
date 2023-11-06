@@ -26,6 +26,13 @@
   font-weight: 600;
 }
 
+.img {
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
 /* .loginButton {
   display: inline-block;
   padding: 16px 20px;
