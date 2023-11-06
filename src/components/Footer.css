@@ -37,7 +37,7 @@ footer {
   gap: 12px;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   footer {
     margin-top: 80px;
     padding: 32px;

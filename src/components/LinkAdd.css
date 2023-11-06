@@ -42,7 +42,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .link-add-form {
     padding-top: 24px;
     padding-bottom: 40px;

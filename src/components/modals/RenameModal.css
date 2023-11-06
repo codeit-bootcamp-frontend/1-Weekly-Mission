@@ -1,0 +1,21 @@
+input {
+  outline: none;
+  padding: 18px 15px;
+  width: 280px;
+  border: 1px solid var(--linkbrary-gray-20);
+  border-radius: 8px;
+  margin: 24px 0 15px;
+  &:focus {
+    border-color: var(--linkbrary-primary-color);
+  }
+}
+
+button {
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  color: var(--linkbrary-white);
+  border: none;
+  cursor: pointer;
+  border-radius: 9px;
+  width: 280px;
+  padding: 16px 20px;
+}

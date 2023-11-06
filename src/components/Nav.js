@@ -45,7 +45,7 @@ const Nav = ({ user = INIT_USER }) => {
                 src={image_source}
                 alt="프로필 이미지"
               />
-              {windowWidth > 390 ? (
+              {windowWidth > 768 ? (
                 <span className="profile-id">{email}</span>
               ) : null}
             </>

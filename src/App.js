@@ -11,6 +11,7 @@ const App = () => {
         <Route path="/" element={<Home />}>
           <Route path="/shared" element={<Shared />} />
           <Route path="/folder" element={<Folder />} />
+          <Route path="/folder/:folderLocation" element={<Folder />} />
         </Route>
       </Routes>
     </BrowserRouter>
