@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "components/modal/Modal.jsx";
+import ModalLayout from "layouts/modal/ModalLayout.jsx";
 
 const useModal = ({ isClickOutSideClose = true } = {}) => {
   const $body = document.querySelector("body");
@@ -21,9 +21,9 @@ const useModal = ({ isClickOutSideClose = true } = {}) => {
     Modal: isModalOpen
       ? ({ children }) => {
           return (
-            <Modal closeModal={isClickOutSideClose ? closeModal : null}>
+            <ModalLayout closeModal={isClickOutSideClose ? closeModal : null}>
               {children}
-            </Modal>
+            </ModalLayout>
           );
         }
       : () => null,

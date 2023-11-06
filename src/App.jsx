@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "layouts/Layout.jsx";
+import Layout from "layouts/page/PageLayout.jsx";
 import LinkSharePage from "pages/linkShare/LinkSharePage.jsx";
 import FolderPage from "pages/folder/FolderPage.jsx";
 import FolderLinkList from "components/folderLinkList/FolderLinkList.jsx";

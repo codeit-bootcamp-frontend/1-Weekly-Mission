@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import * as S from "./layout.style.js";
+import * as S from "./pageLayout.style.js";
 import Header from "components/header/Header.jsx";
 import Footer from "components/footer/Footer.jsx";
 import useAsync from "hooks/useAsync.js";

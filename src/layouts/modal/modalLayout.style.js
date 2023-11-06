@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalWrapper = styled.aside`
+export const ModalLayoutWrapper = styled.aside`
   position: fixed;
   top: 0;
   left: 0;
