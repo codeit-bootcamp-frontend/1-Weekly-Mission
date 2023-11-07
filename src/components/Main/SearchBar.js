@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import searchImg from '../../assets/Search.svg'
 import { useSearchParams } from 'react-router-dom';
-import S from '../styled';
+import searchImg from '../../assets/Search.svg'
+import { S } from './SearchBar.styled';
 
 function SearchBar() {
   const [value, setValue] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
     setValue(e.target.value)
@@ -13,7 +13,7 @@ function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchParams({ folderId: value, });
+    setSearchParams({ folderId: value });
   }
   return (
     <S.DivSearch>

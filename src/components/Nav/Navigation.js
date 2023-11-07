@@ -3,12 +3,24 @@ import Logo from './Logo'
 import SignButton from './SignButton'
 import Profile from './Profile'
 import { reduceData, useReduce } from '../../hooks/useReduce'
-import S from '../styled'
+import { useLocation } from 'react-router'
+import { getData } from '../../utils/api'
+import { S } from './Navigation.styled'
 
-function Avatar({ page, type, setIsUser }) {
-  const [userData, dispatch] = useReduce(reduceData, undefined);
-  const avatar = userData ? <Profile {...userData} /> :
-    <SignButton page={page} type={type} dispatch={dispatch} onClick={setIsUser}>로그인</SignButton>;
+function Avatar({ setIsUser = () => { } }) {
+  const { pathname } = useLocation();
+  const type = pathname === '/shared' ? "SHARED_USER" : "FOLDER_USER";
+
+  const [userData, dispatch] = useReduce(reduceData, null);
+  const handleLoadUser = (e) => {
+    e.preventDefault();
+    dispatch(getData(type))
+    setIsUser(true);
+  }
+
+  const avatar = userData ?
+    <Profile {...userData} /> :
+    <SignButton onClick={handleLoadUser}>로그인</SignButton>;
 
   return (
     <>
@@ -17,13 +29,13 @@ function Avatar({ page, type, setIsUser }) {
   )
 }
 
-function Navigation({ page, type = 'user', setIsUser }) {
+function Navigation({ setIsUser, page }) {
   return (
     <>
       <S.NavBg />
-      <S.Nav page={page}>
+      <S.Nav page={page} >
         <Logo src={logoImg} alt="링크브러리 홈화면으로 이동" />
-        <Avatar page={page} type={type} setIsUser={setIsUser} />
+        <Avatar setIsUser={setIsUser} />
       </S.Nav>
     </>
   )

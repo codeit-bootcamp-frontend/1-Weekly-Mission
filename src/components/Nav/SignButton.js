@@ -1,14 +1,9 @@
-import { getData } from "../../utils/api";
-import S from "../styled";
+import { S } from "./SignButton.styled";
 
-function SignButton({ page, type, children, dispatch, onClick = () => { } }) {
-  const handleLoadUser = async (e) => {
-    e.preventDefault();
-    dispatch(await getData(page, type))
-    onClick(true);
-  }
+function SignButton({ children, onClick }) {
+
   return (
-    <S.SignButton href="." onClick={handleLoadUser}>{children}</S.SignButton>
+    <S.SignButton href="." onClick={onClick}>{children}</S.SignButton>
   )
 }
 

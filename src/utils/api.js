@@ -1,23 +1,19 @@
 const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
 
 const URLS = {
-  shared: {
-    user: BASE_URL + '/sample/user',
-    folder: BASE_URL + '/sample/folder',
-    folderName: BASE_URL + '/sample/folder',
-  },
-  folder: {
-    user: BASE_URL + '/users/1',
-    category: BASE_URL + '/users/1/folders',
-    links: BASE_URL + '/users/1/links',
-  }
+  SHARED_USER: BASE_URL + '/sample/user',
+  SHARED_FOLDER: BASE_URL + '/sample/folder',
+  SHARED_FOLDERNAME: BASE_URL + '/sample/folder',
+  FOLDER_USER: BASE_URL + '/users/1',
+  FOLDER_CATEGORY: BASE_URL + '/users/1/folders',
+  FOLDER_LINKS: BASE_URL + '/users/1/links',
 }
 
-export async function getData(page, type) {
+export async function getData(type) {
   try {
-    const response = await fetch(URLS[page][type]);
+    const response = await fetch(URLS[type]);
     const body = await response.json();
-    return { type: `${page}_${type}`, payload: body };
+    return { type: `${type}`, payload: body };
   } catch (error) {
     console.error(error);
     return { type: 'FETCH_ERROR', payload: error }
