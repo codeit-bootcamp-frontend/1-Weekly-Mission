@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+function Header({ folderInfo }) {
+  const { folderTitle, owner } = folderInfo;
+  const { profileImageSource, name } = owner;
+
+  return (
+    <Head>
+      <OwnerInfo>
+        <ProfileImg src={profileImageSource} alt="폴더 제작자 프로필 이미지" />
+        <Name>{name}</Name>
+      </OwnerInfo>
+      <FolderTitle>{folderTitle}</FolderTitle>
+    </Head>
+  );
+}
+
+export default Header;
+
 const Head = styled.header`
   display: flex;
   flex-direction: column;
@@ -7,14 +24,14 @@ const Head = styled.header`
   gap: 2rem;
   padding: 2rem 0 6rem;
   background: var(--gray0);
-`
+`;
 
 const OwnerInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.2rem;
-`
+`;
 
 const ProfileImg = styled.img`
   display: flex;
@@ -26,7 +43,7 @@ const ProfileImg = styled.img`
     height: 4rem;
     border-radius: 2rem;
   }
-`
+`;
 
 const Name = styled.p`
   font-size: 1.6rem;
@@ -35,7 +52,7 @@ const Name = styled.p`
     font-size: 1.4rem;
     line-height: normal; /* 150% */
   }
-`
+`;
 
 const FolderTitle = styled.h1`
   text-align: center;
@@ -46,21 +63,4 @@ const FolderTitle = styled.h1`
   @media (max-width: 767px) {
     font-size: 3.2rem;
   }
-`
-
-const Header = ( {folderInfo} ) => {
-  const {folderTitle, owner} = folderInfo;
-  const {profileImageSource, name} = owner;
-
-  return (
-    <Head>
-      <OwnerInfo>
-        <ProfileImg src={profileImageSource} alt="폴더 제작자 프로필 이미지"/>
-        <Name>{name}</Name>
-      </OwnerInfo>
-      <FolderTitle>{folderTitle}</FolderTitle>
-    </Head>
-  )
-}
-
-export default Header;
+`;

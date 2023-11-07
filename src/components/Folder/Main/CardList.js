@@ -1,8 +1,22 @@
-import Cards from './Card';
 import styled from 'styled-components';
 import EmptyLinkScreen from './EmptyLinkScreen';
+import CardDivide from './CardDivide';
 
-export const SectionContainer = styled.section`
+const CardList = ({ folderCards }) => {
+  return (
+    <>
+      {folderCards.length > 0 ? (
+        <Container>
+          <CardDivide folderCards={folderCards} />
+        </Container>
+      ) : (
+        <EmptyLinkScreen>저장된 링크가 없습니다🥲</EmptyLinkScreen>
+      )}
+    </>
+  );
+};
+
+export const Container = styled.section`
   display: grid;
   gap: 2.5rem 2rem;
   grid-template-columns: repeat(3, 34rem);
@@ -18,18 +32,5 @@ export const SectionContainer = styled.section`
     grid-template-rows: repeat(auto, 33.4rem);
   }
 `;
-
-const CardList = ( {folderCards} ) => {
-
-  return (
-    <>
-      {folderCards.length > 0 ? 
-      <SectionContainer>
-        <Cards folderCards={folderCards}/>
-      </SectionContainer> :
-      <EmptyLinkScreen />}
-    </>
-  )
-}
 
 export default CardList;

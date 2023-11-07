@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import LinkSearchInput from './LinkSearchInput';
 import CardList from './CardList';
+import LinkSearchInput from '../../UI/LinkSearchInput';
 
 const MainContainer = styled.main`
   display: flex;
@@ -23,13 +23,13 @@ const MainContainer = styled.main`
   }
 `;
 
-const SharedMain = ( {folderInfo} ) => {
+const SharedMain = ({ folderInfo }) => {
   return (
     <MainContainer>
       <LinkSearchInput />
-      <CardList folderCards={folderInfo}/>
+      <CardList folderCards={folderInfo} />
     </MainContainer>
-  )
-}
+  );
+};
 
 export default SharedMain;
