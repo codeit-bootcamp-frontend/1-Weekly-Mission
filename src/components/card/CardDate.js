@@ -1,5 +1,11 @@
+import styled from "styled-components";
+
 const CardDate = ({ set_date }) => {
-  return <div className="card_date">{set_date}</div>;
+  return <Date>{set_date}</Date>;
 };
+
+const Date = styled.div`
+  color: #333;
+`;
 
 export default CardDate;

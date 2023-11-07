@@ -1,14 +1,18 @@
+import { Helmet } from "react-helmet-async";
 import Nav from "../components/nav/Nav";
 import HeaderAddLink from "../components/header/HeaderAddLink";
-import Main from "../components/main/Main";
-import Footer from "../components/footer/Footer";
+import Footer from "../components/common/Footer";
+import FolderContainer from "../components/folder/FolderContainer";
 
 const FolderPage = () => {
   return (
     <>
+      <Helmet>
+        <title>Folder</title>
+      </Helmet>
       <Nav pageType="folder" />
       <HeaderAddLink />
-      <Main pageType="folder" dataType="links" />
+      <FolderContainer />
       <Footer />
     </>
   );

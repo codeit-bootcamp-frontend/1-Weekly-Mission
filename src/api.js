@@ -1,5 +1,7 @@
 const BASE_URL = "https://bootcamp-api.codeit.kr/api/";
 
+const HOST = "http://localhost:3000";
+
 const PATH = {
   shared: {
     user: BASE_URL + "sample/user",
@@ -22,4 +24,4 @@ const getResponse = async (pageType, dataType, query = "") => {
   return data;
 };
 
-export { getResponse };
+export { HOST, PATH, getResponse };

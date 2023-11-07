@@ -1,12 +1,12 @@
-import kebab from "../../image/kebab.svg";
+import styled from "styled-components";
 
 const CardTime = ({ set_time }) => {
-  return (
-    <div className="time_wrapper">
-      <p className="card_time">{set_time}</p>
-      <img className="toggle_kebab" src={kebab} alt="kebab button" />
-    </div>
-  );
+  return <Time>{set_time}</Time>;
 };
+
+const Time = styled.p`
+  color: #666;
+  font-size: 1.3rem;
+`;
 
 export default CardTime;

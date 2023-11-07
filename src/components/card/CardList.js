@@ -1,55 +1,58 @@
-import Card from "./Card";
 import { Fragment } from "react";
-import "./Card.css";
-import { useCallback, useEffect, useState } from "react";
-import { getResponse } from "../../api";
+import styled from "styled-components";
+import Card from "./Card";
+import useGetSampleLinks from "../../hooks/useGetSampleLinks";
+import useGetLinks from "../../hooks/useGetLinks";
 
-const CardList = ({ pageType, dataType, folderId }) => {
-  const [cards, setCards] = useState([]);
-
-  const handleLoad = useCallback(async () => {
-    if (pageType === "shared") {
-      const result = await getResponse(pageType, dataType);
-      if (!result) {
-        return;
-      }
-
-      const { links } = result.folder;
-
-      setCards(links);
-    } else if (pageType === "folder") {
-      const result = folderId
-        ? await getResponse(pageType, dataType, `?folderId=${folderId}`)
-        : await getResponse(pageType, dataType);
-      if (!result) {
-        return;
-      }
-
-      const { data } = result;
-
-      setCards(data);
-    }
-  }, [folderId, pageType, dataType]);
-
-  useEffect(() => {
-    handleLoad();
-  }, [handleLoad]);
+const CardList = ({ folderId }) => {
+  const sharedLinks = useGetSampleLinks();
+  const folderLinks = useGetLinks(folderId);
+  const links = folderId ? folderLinks : sharedLinks;
 
   return (
-    <div className="card_wrapper">
-      {cards.length ? (
-        cards.map((item) => {
-          return (
-            <Fragment key={item.id}>
-              <Card item={item} />
-            </Fragment>
-          );
-        })
+    <Container>
+      {links?.length ? (
+        links.map((link) => (
+          <Fragment key={link.id}>
+            <Card item={link} />
+          </Fragment>
+        ))
       ) : (
-        <div className="no_link">저장된 링크가 없습니다.</div>
+        <NoLink>저장된 링크가 없습니다.</NoLink>
       )}
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+`;
+
+const NoLink = styled.div`
+  display: flex;
+  width: 1060px;
+  height: 100px;
+  padding: 41px 0px 35px 0px;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--linkbrary-black);
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px; /* 150% */
+
+  @media (max-width: 1124px) {
+    width: 70.4rem;
+  }
+
+  @media (max-width: 767px) and (min-width: 375px) {
+    width: 34rem;
+  }
+`;
 
 export default CardList;
