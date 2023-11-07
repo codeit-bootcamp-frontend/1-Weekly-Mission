@@ -73,10 +73,8 @@ function AddLink() {
 
   const handleModal = (e) => {
     e.preventDefault();
-    const url = e.target.elements.linkInput.value; // "linkInput"은 폼 요소의 name 속성
+    const url = e.target.elements.linkInput.value;
     let feature = "추가하기";
-
-
 
     setModal(ModalMaker({ feature, url, setIsModalOpen }));
     setIsModalOpen(true);
@@ -85,7 +83,11 @@ function AddLink() {
   return (
     <>
       <AddLinkFrame onSubmit={handleModal}>
-        <AddLinkInput name="linkInput" type="text" placeholder="링크를 추가해 보세요." />
+        <AddLinkInput
+          name="linkInput"
+          type="text"
+          placeholder="링크를 추가해 보세요."
+        />
         <AddButton type="submit">추가하기</AddButton>
       </AddLinkFrame>
 
@@ -93,6 +95,5 @@ function AddLink() {
     </>
   );
 }
-
 
 export default AddLink;

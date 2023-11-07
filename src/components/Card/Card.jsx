@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import LogoImg from "../../assets/card-logo.png";
 import StarIcon from "../../assets/star.png";
@@ -41,8 +41,9 @@ function Card({ link }) {
     (e) => {
       const url = link.url;
       e.preventDefault();
+
       let feature = e.target.textContent;
-      console.log(feature);
+
       setModal(ModalMaker({ url, feature, setIsModalOpen }));
       setIsModalOpen(true);
     };
