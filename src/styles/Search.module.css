@@ -28,6 +28,10 @@
   border-radius: 10px;
 }
 
+input:focus {
+  outline: none;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .input {
     width: 704px;

@@ -9,15 +9,15 @@
   border-radius: 15px;
 }
 
-.CardItem:hover {
-  transform: scale(130%);
-  transition: 1s;
-}
-
 .img {
   width: 100%;
   height: 60%;
   object-fit: cover;
+}
+
+.img:hover {
+  transform: scale(130%);
+  transition: 1s;
 }
 
 .container {

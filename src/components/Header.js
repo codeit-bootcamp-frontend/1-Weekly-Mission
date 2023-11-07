@@ -1,7 +1,6 @@
 import styles from '../styles/Header.module.css';
 import logoImage from '../assets/images/logo/logo.png';
 import LoginButton from './LoginButton.js';
-//import styles from '../styles/LoginButton.module.css';
 
 function Header() {
   return (
