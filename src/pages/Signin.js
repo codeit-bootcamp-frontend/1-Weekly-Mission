@@ -11,23 +11,8 @@ import { signinEmail, signinPassword } from '../utils/signError';
 import useInputController from '../hooks/useInputController';
 
 function Signin() {
-  const {
-    values: emailValues,
-    errorText: emailErrorText,
-    setErrorText: setEmailErrorText,
-    handleChange: handleEmailChange,
-    handleBlur: handleEmailBlur,
-    handleFocus: handleEmailFocus,
-  } = useInputController(signinEmail);
-
-  const {
-    values: passwordValues,
-    errorText: passwordErrorText,
-    setErrorText: setPasswordErrorText,
-    handleChange: handlePasswordChange,
-    handleBlur: handlePasswordBlur,
-    handleFocus: handlePasswordFocus,
-  } = useInputController(signinPassword);
+  const email = useInputController(signinEmail);
+  const password = useInputController(signinPassword);
 
   const { isAuth } = useAuth();
 
@@ -41,8 +26,8 @@ function Signin() {
     e.preventDefault();
 
     const data = {
-      email: emailValues,
-      password: passwordValues,
+      email: email.values,
+      password: password.values,
     };
 
     const response = await postSign('in', data);
@@ -50,8 +35,8 @@ function Signin() {
     if (response.ok) {
       navigate('/folder');
     } else {
-      setEmailErrorText('이메일을 확인해주세요');
-      setPasswordErrorText('비밀번호를 확인해주세요');
+      email.setErrorText('이메일을 확인해주세요');
+      password.setErrorText('비밀번호를 확인해주세요');
     }
   };
 
@@ -60,28 +45,28 @@ function Signin() {
       idfor: 'signinEmail',
       name: 'email',
       type: 'email',
-      value: `${emailValues}`,
-      children: '이메일',
+      value: `${email.values}`,
+      label: '이메일',
 
-      errorText: emailErrorText,
+      errorText: email.errorText,
 
-      onChange: handleEmailChange,
-      onBlur: handleEmailBlur,
-      onFocus: handleEmailFocus,
+      onChange: email.handleChange,
+      onBlur: email.handleBlur,
+      onFocus: email.handleFocus,
       eyes: false,
     },
     {
       idfor: 'signinPassword',
       name: 'password',
       type: 'password',
-      value: `${passwordValues}`,
-      children: '비밀번호',
+      value: `${password.values}`,
+      label: '비밀번호',
 
-      errorText: passwordErrorText,
+      errorText: password.errorText,
 
-      onChange: handlePasswordChange,
-      onBlur: handlePasswordBlur,
-      onFocus: handlePasswordFocus,
+      onChange: password.handleChange,
+      onBlur: password.handleBlur,
+      onFocus: password.handleFocus,
       eyes: true,
     },
   ];

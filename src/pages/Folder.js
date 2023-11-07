@@ -14,17 +14,35 @@ import { Navigate, useSearchParams } from 'react-router-dom';
 import getFolderListsByUser from '../apis/folder/getFolderListsByUser';
 import getLinksByUsersFolder from '../apis/link/getLinksByUsersFolder';
 import useAuth from '../hooks/useAuth';
+import Share from '../modals/Share';
+import Modal from '../modals/Modal';
+import getFolderName from '../utils/getFolderName';
+import useModalColtroller from '../hooks/useModalController';
+import DeleteFolder from '../modals/DeleteFolder';
+import AddFolder from '../modals/AddFolder';
+import useInputController from '../hooks/useInputController';
+import EditFolder from '../modals/EditFolder';
+import AddLinkToFolder from '../modals/AddLinkToFolder';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cards, setCards] = useState([]);
-  const [folderLists, setFolderLists] = useState([
-    {
-      id: 0,
-      name: '전체',
-    },
-  ]);
+  const [folderLists, setFolderLists] = useState([]);
   const { isAuth } = useAuth();
+
+  // 모달 컨트롤라
+  const shareModal = useModalColtroller();
+  const editFolderModal = useModalColtroller();
+  const addFolderModal = useModalColtroller();
+  const deleteFolderModal = useModalColtroller();
+  const addLinkToFolderModal = useModalColtroller(true);
+
+  // 모달 내 인풋 컨트롤라
+  const addFolder = useInputController();
+  const editFolder = useInputController();
+
+  // AddLinkInput 인풋 컨트롤라
+  const addLinkInput = useInputController();
 
   const folderID = searchParams.get('folderId');
 
@@ -50,17 +68,6 @@ function Folder() {
     });
   }, [folderID]);
 
-  const getFolderName = (folderID, folderLists) => {
-    if (!folderID) {
-      return '전체';
-    } else {
-      const folderName = folderLists.find((folderList) => {
-        return folderList.id === Number(folderID);
-      });
-      return folderName !== undefined ? folderName.name : '';
-    }
-  };
-
   const folderName = getFolderName(folderID, folderLists);
 
   useEffect(() => {
@@ -77,7 +84,11 @@ function Folder() {
 
   return (
     <>
-      <AddLinkInput />
+      <AddLinkInput
+        onChange={addLinkInput.handleChange}
+        value={addLinkInput.values}
+        onClick={addLinkToFolderModal.handleClick}
+      />
       <section className={styles.root}>
         <SearchBar />
         <div className={styles.flex}>
@@ -86,18 +97,58 @@ function Folder() {
             folderID={folderID}
             folderLists={folderLists}
           />
-          <FolderAddMenu />
+          <FolderAddMenu onClick={addFolderModal.handleClick} />
         </div>
         <div className={styles.flex}>
           <FolderName>{folderName}</FolderName>
-          {folderName !== '전체' && <FolderEdit />}
+          {folderName !== '전체' && (
+            <FolderEdit
+              shareModal={shareModal.handleClick}
+              deleteModal={deleteFolderModal.handleClick}
+              editModal={editFolderModal.handleClick}
+            />
+          )}
         </div>
         {cards.length ? (
-          <Binder cards={cards} shared="off" />
+          <Binder cards={cards} folderLists={folderLists} shared="off" />
         ) : (
           <FolderEmptyNoti />
         )}
       </section>
+      {shareModal.state && (
+        <Modal onClick={shareModal.handleClick}>
+          <Share>{folderName}</Share>
+        </Modal>
+      )}
+      {editFolderModal.state && (
+        <Modal onClick={editFolderModal.handleClick}>
+          <EditFolder
+            onChange={editFolder.handleChange}
+            value={editFolder.values}
+          >
+            {folderName}
+          </EditFolder>
+        </Modal>
+      )}
+      {deleteFolderModal.state && (
+        <Modal onClick={deleteFolderModal.handleClick}>
+          <DeleteFolder>{folderName}</DeleteFolder>
+        </Modal>
+      )}
+      {addFolderModal.state && (
+        <Modal onClick={addFolderModal.handleClick}>
+          <AddFolder onChange={addFolder.handleChange} value={addFolder.values}>
+            {folderName}
+          </AddFolder>
+        </Modal>
+      )}
+      {addLinkToFolderModal.state && (
+        <Modal onClick={addLinkToFolderModal.handleClick}>
+          <AddLinkToFolder folderLists={folderLists}>
+            {addLinkInput.values}
+          </AddLinkToFolder>
+        </Modal>
+      )}
     </>
   );
 }

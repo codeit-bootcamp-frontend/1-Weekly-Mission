@@ -6,8 +6,16 @@ import { useState } from 'react';
 import { formatDate, formatTimeAgo } from '../../utils/formatDate';
 import normalizeCardData from '../../utils/normalizeCardData';
 import clsx from 'clsx';
+import DeleteLink from '../../modals/DeleteLink';
+import Modal from '../../modals/Modal';
+import useModalColtroller from '../../hooks/useModalController';
+import AddLinkToFolder from '../../modals/AddLinkToFolder';
 
-function Card({ card, shared }) {
+function Card({ card, shared, folderLists }) {
+  const deleteLinkModal = useModalColtroller(true);
+  const addLinkToFolderModal = useModalColtroller(true);
+  const kebab = useModalColtroller(true);
+
   const [hover, setHover] = useState(false);
 
   const handleMouseOver = () => {
@@ -18,19 +26,15 @@ function Card({ card, shared }) {
     setHover(false);
   };
 
-  const imageStyle = clsx(styles.image, hover && styles.hoverImage);
-  const bgColorStyle = clsx(styles.root, hover && styles.hoverBgColor);
-
   const normalizedCardData = normalizeCardData(card);
   const cardDate = normalizedCardData.createdAt;
   const cardImage = normalizedCardData.imageSource;
 
+  const imageStyle = clsx(styles.image, hover && styles.hoverImage);
+  const bgColorStyle = clsx(styles.root, hover && styles.hoverBgColor);
+
   const bgImg = {
     backgroundImage: `url(${cardImage || noImg})`,
-  };
-
-  const handleKebabClick = (e) => {
-    e.preventDefault();
   };
 
   return (
@@ -51,9 +55,28 @@ function Card({ card, shared }) {
           <div className={styles.header}>
             <div>{formatTimeAgo(cardDate)}</div>
             {shared === 'off' && (
-              <button type="button" onClick={handleKebabClick}>
-                <img src={kebabImg} alt="쩜쩜쩜" />
-              </button>
+              <div className={styles.kebab}>
+                <button type="button" onClick={kebab.handleClick}>
+                  <img src={kebabImg} alt="쩜쩜쩜" />
+                </button>
+
+                {kebab.state && (
+                  <div className={styles.kebabButtonList}>
+                    <button
+                      className={styles.kebabButton}
+                      onClick={deleteLinkModal.handleClick}
+                    >
+                      삭제하기
+                    </button>
+                    <button
+                      className={styles.kebabButton}
+                      onClick={addLinkToFolderModal.handleClick}
+                    >
+                      폴더에 추가
+                    </button>
+                  </div>
+                )}
+              </div>
             )}
           </div>
           <div className={styles.text}>
@@ -64,6 +87,18 @@ function Card({ card, shared }) {
           <div className={styles.footer}>{formatDate(cardDate)}</div>
         </div>
       </a>
+      {deleteLinkModal.state && (
+        <Modal onClick={deleteLinkModal.handleClick}>
+          <DeleteLink>{card.url}</DeleteLink>
+        </Modal>
+      )}
+      {addLinkToFolderModal.state && (
+        <Modal onClick={addLinkToFolderModal.handleClick}>
+          <AddLinkToFolder folderLists={folderLists}>
+            {card.url}
+          </AddLinkToFolder>
+        </Modal>
+      )}
     </div>
   );
 }

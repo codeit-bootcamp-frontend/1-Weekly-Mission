@@ -1,0 +1,37 @@
+.root {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0rem 0.4rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
+}
+
+.relative {
+  position: relative;
+}
+
+.button {
+  width: 2.4rem;
+  height: 2.4rem;
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3.2rem 4rem;
+  border-radius: 1.5rem;
+  border: 0.1rem solid #ccd5e3;
+  background: #fff;
+  gap: 2.4rem;
+}
