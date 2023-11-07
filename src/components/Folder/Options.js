@@ -6,21 +6,24 @@ import styled from 'styled-components';
 const SHARED = {
   src: shareImg,
   name: '공유',
+  modalName: '폴더 공유',
 };
 const RENAME = {
   src: penImg,
   name: '이름 변경',
+  modalName: '폴더 이름 변경',
 };
-const DELETEFOLDER = {
+const DELETE_FOLDER = {
   src: deleteImg,
   name: '삭제',
+  modalName: '폴더 삭제',
 };
 
-export default function Option({ currentFolder }) {
+export default function Option({ currentFolder, onModalOpen }) {
   const show = currentFolder.id !== '';
   // 나중에 함수 추가하기 위해 분리
 
-  const options = [SHARED, RENAME, DELETEFOLDER];
+  const options = [SHARED, RENAME, DELETE_FOLDER];
 
   return (
     <Container>
@@ -28,7 +31,12 @@ export default function Option({ currentFolder }) {
       {show ? (
         <OptionContainer>
           {options.map((option) => (
-            <OptionBox>
+            <OptionBox
+              onClick={() => {
+                onModalOpen(option.modalName);
+              }}
+              key={option.name}
+            >
               <Img src={option.src} alt='공유' />
               <div>{option.name}</div>
             </OptionBox>
@@ -71,6 +79,7 @@ const OptionContainer = styled(FlexAlign)`
 
 const OptionBox = styled(FlexAlign)`
   gap: 4px;
+  cursor: pointer;
 `;
 
 const Img = styled.img`

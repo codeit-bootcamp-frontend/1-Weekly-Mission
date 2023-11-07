@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import addImg from '../../assets/images/add.svg';
 import { useState } from 'react';
+import AddFolder from './AddFolder';
 
 const ALL = {
   name: '전체',
 };
 
-const Folder = ({ folderInfo, $select, onClick }) => {
+const Folder = ({ folderInfo, $select, onClick, onModalOpen }) => {
   return (
     <Button $select={$select} onClick={onClick} id={folderInfo.id}>
       {folderInfo.name}
@@ -14,8 +14,16 @@ const Folder = ({ folderInfo, $select, onClick }) => {
   );
 };
 
-export default function FolderList({ userFolder, onCurrentFolder }) {
-  const [currentButton, setCurrentButton] = useState('');
+export default function FolderList({
+  userFolder,
+  onCurrentFolder,
+  onModalOpen,
+  searchParams,
+}) {
+  const [currentButton, setCurrentButton] = useState(
+    searchParams.get('folderId')
+  );
+
   const handleFolder = (e) => {
     const id = e.target.id;
     const name = e.target.innerHTML;
@@ -47,41 +55,10 @@ export default function FolderList({ userFolder, onCurrentFolder }) {
           />
         ))}
       </FolderBox>
-      <AddFolder>
-        <div>폴더추가</div>
-        <AddImg src={addImg} alt='폴더추가' />
-      </AddFolder>
+      <AddFolder onModalOpen={onModalOpen} />
     </Box>
   );
 }
-
-const AddFolder = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--linkbrary-primary-color);
-  flex-shrink: 0;
-  height: 35px;
-  @media (max-width: 767px) {
-    position: fixed;
-    bottom: 101px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 9px 24px;
-    background-color: var(--linkbrary-primary-color);
-    border-radius: 20px;
-    color: var(--linkbrary-white);
-    z-index: 3;
-  }
-`;
-
-const AddImg = styled.img`
-  position: relative;
-  top: -1px;
-  @media (max-width: 767px) {
-    filter: brightness(0) invert(1);
-  }
-`;
 
 const Box = styled.div`
   display: flex;

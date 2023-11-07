@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linkbrary-회원가입</title>
+  <link rel="stylesheet" href="/styles/sign.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="form-container">
+      <a href="/">
+        <img src="/assets/imgs/logo.svg" alt="logo" class="logo">
+      </a>
+      <div class="link-box">
+        <span>이미 회원이신가요?</span>
+        <a href="signin.html">로그인 하기</a>
+      </div>
+      <form action="" method="post" class="auth-form">
+        <label for="email">이메일</label>
+        <div class="input-box box-round">
+          <input id="email" type="email" placeholder="codeit@codeit.com" name="email" required>
+        </div>
+        <label for="password">비밀번호</label>
+        <div class="input-box box-round">
+          <input id="password" type="password" placeholder="••••••••" name="password" required>
+          <div class="eye off">
+            <img src="/assets/imgs/eye-off.svg" alt="eye-off">
+          </div>
+        </div>
+        <label for="check-password">비밀번호 확인</label>
+        <div class="input-box box-round">
+          <input id="check-password" type="password" placeholder="••••••••" name="check-password">
+          <div class="eye off">
+            <img src="/assets/imgs/eye-off.svg" alt="eye-off">
+          </div>
+        </div>
+        <button class="btn btn box-round">회원가입</button>
+      </form>
+      <div class="social-box box-round">
+        <span>다른 방식으로 가입하기</span>
+        <div class="social-icons">
+          <a href="https://www.google.com/">
+            <img src="/assets/imgs/google.webp" alt="google">
+          </a>
+          <a href="https://www.kakaocorp.com/page/">
+            <img src="/assets/imgs/kakao.webp" alt="kakao">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
