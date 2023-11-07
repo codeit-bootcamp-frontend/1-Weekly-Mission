@@ -25,6 +25,10 @@ const Div = styled.div`
 const Input = styled.input`
   margin-left: 1.2rem;
   border: none;
+  &:focus {
+    border: none;
+  }
+
   &::placeholder {
     color: var(--linkbrary-gray-60, #9fa6b2);
   }

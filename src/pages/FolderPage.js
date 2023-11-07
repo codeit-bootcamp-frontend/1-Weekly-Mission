@@ -6,6 +6,7 @@ import HeroContainer from "../layout/HeroContainer";
 import Search from "../components/Search";
 import FolderButtons from "../components/FolderButtons";
 import LinkAdderButton from "../components/LinkAdderButton";
+import Modal from "../components/Modal";
 
 import getUserData from "../api/getUserData";
 import { getFolderList } from "../api/getUserFolderData";
@@ -13,6 +14,8 @@ import { getFolderList } from "../api/getUserFolderData";
 import "../styles/shared.css";
 
 function FolderPage() {
+  const [modal, setModal] = useState(false);
+  const [modalData, setModalData] = useState(false);
   const [userData, setUserData] = useState({});
   const [userFolderListData, setUserFolderListData] = useState({});
 
@@ -33,14 +36,31 @@ function FolderPage() {
     fetchData();
   }, []);
 
+  const toggleModal = (b) => {
+    setModal(b);
+  };
+
+  const getModalData = (o) => {
+    setModalData(o);
+  };
+
   return (
-    <Layout userData={userData}>
-      <HeroContainer>
-        <LinkAdderButton></LinkAdderButton>
-      </HeroContainer>
-      <Search></Search>
-      <FolderButtons folders={userFolderListData} />
-    </Layout>
+    <>
+      {modal && <Modal data={modalData}></Modal>}
+      {!modal && (
+        <Layout userData={userData}>
+          <HeroContainer>
+            <LinkAdderButton></LinkAdderButton>
+          </HeroContainer>
+          <Search></Search>
+          <FolderButtons
+            folders={userFolderListData}
+            toggleModal={toggleModal}
+            getModalData={getModalData}
+          />
+        </Layout>
+      )}
+    </>
   );
 }
 

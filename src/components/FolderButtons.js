@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import { getFolderLinks } from "../api/getUserFolderData";
+
+import * as modal from "./ModalStyle.js";
+import StyledButton from "./StyledButton";
 import CardList from "./CardList";
 import NoLinksFound from "./NoLinksFound";
 import deleteImg from "../assets/images/delete.svg";
 import shareImg from "../assets/images/share.svg";
 import updateImg from "../assets/images/pen.svg";
+import kakaoImg from "../assets/images/Kakao.svg";
+import linkImg from "../assets/images/link.svg";
+import facebookImg from "../assets/images/facebook.svg";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -71,7 +77,7 @@ const CTA = styled.button`
   }
 `;
 
-function FolderButtons({ folders = [] }) {
+function FolderButtons({ folders = [], toggleModal, getModalData }) {
   const [currentFolder, setCurrentFolder] = useState("");
   const [userFolderLinkData, setUserFolderLinkData] = useState({});
 
@@ -100,9 +106,145 @@ function FolderButtons({ folders = [] }) {
     }
   };
 
+  const handleAddFolderClick = () => {
+    toggleModal(true);
+    getModalData({
+      isOpen: true,
+      modalTitle: "폴더 추가",
+      modalContent: (
+        <modal.ModalContent>
+          <input placeholder="내용 입력"></input>
+          <StyledButton>추가하기</StyledButton>
+        </modal.ModalContent>
+      ),
+      closeModal: () => {
+        console.log("closeModal Default");
+      },
+    });
+  };
+
+  const handleShareClick = () => {
+    toggleModal(true);
+    getModalData({
+      isOpen: true,
+      modalTitle: "폴더 공유",
+      modalContent: (
+        <modal.ModalContent>
+          <modal.FolderName>폴더명</modal.FolderName>
+          <modal.SNS>
+            <div>
+              <button as="a" style={{ background: "#fee500" }}>
+                <img src={kakaoImg}></img>
+              </button>
+              카카오톡
+            </div>
+            <div>
+              <button as="a" style={{ background: "#1877f2" }}>
+                <img src={facebookImg}></img>
+              </button>
+              페이스북
+            </div>
+            <div>
+              <button as="a" style={{ background: "#9d9d9d0a" }}>
+                <img src={linkImg}></img>
+              </button>
+              링크 복사
+            </div>
+          </modal.SNS>
+        </modal.ModalContent>
+      ),
+      closeModal: () => {
+        console.log("closeModal Default");
+      },
+    });
+  };
+
+  const handleUpdateClick = () => {
+    toggleModal(true);
+    getModalData({
+      isOpen: true,
+      modalTitle: "폴더 이름 변경",
+      modalContent: (
+        <modal.ModalContent>
+          <input placeholder={currentFolder}></input>
+          <StyledButton>변경하기</StyledButton>
+        </modal.ModalContent>
+      ),
+      closeModal: () => {
+        console.log("closeModal Default");
+      },
+    });
+  };
+
+  const handleDeleteClick = () => {
+    getModalData({
+      isOpen: true,
+      modalTitle: "폴더 삭제",
+      modalContent: (
+        <modal.ModalContent>
+          <modal.FolderName>폴더명</modal.FolderName>
+          <StyledButton
+            style={{
+              background: "#ff5b56",
+              marginTop: "4rem",
+            }}
+          >
+            삭제하기
+          </StyledButton>
+        </modal.ModalContent>
+      ),
+      closeModal: () => {
+        console.log("closeModal Default");
+      },
+    });
+    toggleModal(true);
+  };
+
+  const handleLinkAddClick = () => {
+    toggleModal(true);
+    getModalData({
+      isOpen: true,
+      modalTitle: "폴더에 추가",
+      modalContent: (
+        <modal.ModalContent>
+          <modal.FolderName>링크 주소</modal.FolderName>
+          흠..
+          <StyledButton>추가하기</StyledButton>
+        </modal.ModalContent>
+      ),
+      closeModal: () => {
+        console.log("closeModal Default");
+      },
+    });
+  };
+
+  const handleLinkDeleteClick = () => {
+    getModalData({
+      isOpen: true,
+      modalTitle: "링크 삭제",
+      modalContent: (
+        <modal.ModalContent>
+          <modal.FolderName>링크</modal.FolderName>
+          <StyledButton
+            style={{
+              background: "#ff5b56",
+              marginTop: "4rem",
+            }}
+          >
+            삭제하기
+          </StyledButton>
+        </modal.ModalContent>
+      ),
+      closeModal: () => {
+        console.log("closeModal Default");
+      },
+    });
+    toggleModal(true);
+  };
+
   const items = folders?.data;
   return (
-    <div>
+    <>
       <ButtonContainer>
         <Buttons>
           <FolderButton value="" onClick={handleClick}>
@@ -123,22 +265,24 @@ function FolderButtons({ folders = [] }) {
               );
             })}
         </Buttons>
-        <FolderAddButton>폴더 추가 +</FolderAddButton>
+        <FolderAddButton onClick={handleAddFolderClick}>
+          폴더 추가 +
+        </FolderAddButton>
       </ButtonContainer>
       <Div>
         <FolderName>{currentFolder}</FolderName>
         {currentFolder !== "전체" && (
           <CTAs>
-            <CTA>
-              <img src={shareImg} />
+            <CTA onClick={handleShareClick}>
+              <img src={shareImg} alt="" />
               공유
             </CTA>
-            <CTA>
-              <img src={updateImg} />
+            <CTA onClick={handleUpdateClick}>
+              <img src={updateImg} alt="" />
               이름 변경
             </CTA>
-            <CTA>
-              <img src={shareImg} />
+            <CTA onClick={handleDeleteClick}>
+              <img src={deleteImg} alt="" />
               삭제
             </CTA>
           </CTAs>
@@ -149,7 +293,7 @@ function FolderButtons({ folders = [] }) {
       ) : (
         <NoLinksFound>저장된 링크가 없습니다.</NoLinksFound>
       )}
-    </div>
+    </>
   );
 }
 

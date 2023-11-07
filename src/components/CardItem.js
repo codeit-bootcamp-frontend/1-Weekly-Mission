@@ -1,14 +1,18 @@
-import noImg from "../assets/images/noImage.png";
+import { styled } from "styled-components";
 import { getTimeDiff } from "../utils/getTimeDiff";
+import PopOver from "./PopOver";
+import noImg from "../assets/images/noImage.png";
 import kebabImg from "../assets/images/kebab.svg";
 import "../styles/cardItem.css";
-import { styled } from "styled-components";
+import { useState } from "react";
 
 const kebabButton = styled.button`
   background-color: transparent;
   border: none;
 `;
 function CardItem({ item = {} }) {
+  const [popOver, setPopOver] = useState(false);
+
   const imgStyle = {
     backgroundImage: `URL(${item.imageSource || item.image_source})`,
     backgroundRepeat: "no-repeat",
@@ -20,6 +24,14 @@ function CardItem({ item = {} }) {
   };
 
   const nowDate = getTimeDiff(new Date(item.createdAt || item.created_at));
+
+  const handleKebabClick = () => {
+    setPopOver(true);
+  };
+
+  const handleClosekebab = () => {
+    setPopOver(false);
+  };
 
   return (
     <div className="card">
@@ -33,9 +45,10 @@ function CardItem({ item = {} }) {
       <div className="card-information">
         <div className="kebab-container">
           <div className="time">{nowDate}</div>
-          <kebabButton>
+          <kebabButton onClick={handleKebabClick}>
             <img className="kebab" src={kebabImg} alt="" />
           </kebabButton>
+          {popOver && <PopOver onBlur={handleClosekebab}></PopOver>}
         </div>
         <p>{item.description}</p>
         <div className="day">
