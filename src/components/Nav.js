@@ -1,11 +1,15 @@
 import "./Nav.css";
 import logo from "../assets/logo.svg";
 import { Button } from "../components/Button";
-import React, { useState, useCallback, useEffect } from "react";
-import { getUserData } from "../services/api";
+import React, { useState, useEffect } from "react";
+import getData from "../services/api";
+import { useLocation } from "react-router-dom";
 
 export default function Nav({ user }) {
   const [userData, setUserData] = useState([]);
+  const location = useLocation();
+  const path = location.pathname;
+  const navBarPosition = path === "/Folder" ? "folder" : "";
 
   const INIT_USER = {
     profileImageSource: "",
@@ -13,7 +17,7 @@ export default function Nav({ user }) {
   };
 
   const getUserInfo = async () => {
-    const userInfo = await getUserData();
+    const userInfo = await getData("sample/user");
     setUserData(userInfo);
   };
 
@@ -31,7 +35,7 @@ export default function Nav({ user }) {
   };
 
   return (
-    <div className="nav-bar">
+    <div className={`nav-bar ${navBarPosition}`}>
       <div className="nav-wrapper">
         <img src={logo} alt="로고" className="nav-logo" />
         {userData.email ? (
