@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 import add_icon from '../assets/svg/add.svg';
 
-function FloatingActionButton() {
+function FloatingActionButton({ onOpen }) {
 
   return (
-    <FolderActionButton>
+    <FolderActionButton onClick={() => {
+      onOpen({
+        isOpen: true,
+      })
+    }}>
       <ActionName>폴더 추가</ActionName>
-      <ActionIcon src={add_icon} alt='폴더 추가 아이콘'/>
+      <ActionIcon src={add_icon} alt='폴더 추가 아이콘' />
     </FolderActionButton>
   );
 }
@@ -22,7 +26,7 @@ const FolderActionButton = styled.button`
   border-radius: 20px;
   border: 1px solid #fff;
   background: #6d6afe;
-  
+
   @media (min-width: 768px) {
     display: none;
   }
@@ -44,6 +48,6 @@ const ActionName = styled.p`
 const ActionIcon = styled.img`
   width: 1.6rem;
   height: 1.6rem;
-`
+`;
 
 export default FloatingActionButton;

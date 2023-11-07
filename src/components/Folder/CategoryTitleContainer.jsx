@@ -3,27 +3,48 @@ import share_icon from '../../assets/svg/share.svg';
 import pen_icon from '../../assets/svg/pen.svg';
 import delete_icon from '../../assets/svg/trash.svg';
 import IconControlButton from '../../styles/IconControlButton';
+import { useRef, useState } from 'react';
+import Modal from '../Modal/Modal';
+import FolderModal from '../Modal/FolderModal';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const ICONS = [
   {
     id: 1,
     iconImage: share_icon,
-    name: '공유'
+    name: '공유',
+    action: 'share',
   },
   {
     id: 2,
     iconImage: pen_icon,
-    name: '이름 변경'
+    name: '이름 변경',
+    action: 'edit',
   },
   {
     id: 3,
     iconImage: delete_icon,
-    name: '삭제'
-  }
-]
+    name: '삭제',
+    action: 'delete',
+  },
+];
 
 
 function CategoryTitleContainer({ name }) {
+  const modalRef = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  const [action, setAction] = useState('');
+
+  const openModal = ({ isOpen, action }) => {
+    setIsOpen(isOpen);
+    setAction(action);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  useOnClickOutside(modalRef, closeModal);
 
   return (
     <CategoryTitleContainerStyle>
@@ -31,9 +52,14 @@ function CategoryTitleContainer({ name }) {
       <FolderControlContainer $name={name}>
         {ICONS.map((icon) => {
           return (
-            <IconControlButton icon={icon} key={icon.id}/>
-          )
+            <IconControlButton icon={icon} key={icon.id} onOpen={openModal} />
+          );
         })}
+        {isOpen && (
+          <Modal>
+            <FolderModal action={action} onCloseModal={closeModal} name={name} ref={modalRef} />
+          </Modal>
+        )}
       </FolderControlContainer>
     </CategoryTitleContainerStyle>
   );
@@ -47,7 +73,7 @@ const CategoryTitleContainerStyle = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1.2rem;
-  
+
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
@@ -71,6 +97,6 @@ const FolderControlContainer = styled.div`
   gap: 1.2rem;
 
   @media (min-width: 768px) {
-    display: ${({$name}) => ($name === '전체' ? 'none' : '')};
+    display: ${({ $name }) => ($name === '전체' ? 'none' : '')};
   }
 `;

@@ -4,29 +4,50 @@ import { CardInfoBox, CardInfoDescription, CardInfoTop, CardPassedTime, CardWrap
 import card_config_icon from '../../assets/svg/kebab.svg';
 import star_mark from '../../assets/image/star.png';
 import styled from 'styled-components';
+import { useRef, useState } from 'react';
+import SelectMenu from '../Popover/SelectMenu';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 function Card({ item, path }) {
+  const popoverRef = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+
   const createdAt = path === '/folder' ? item.created_at : item.createdAt;
 
+  useOnClickOutside(popoverRef, () => setIsOpen(false));
+
+  const openSelectMenu = ({ isOpen }) => {
+    setIsOpen(isOpen);
+  };
+
   return (
-    <CardWrapper>
-      <CardImage item={item} path={path}/>
-      <StarMarkButton>
-        <StarMark src={star_mark} alt='카드 즐겨찾기 버튼' />
-      </StarMarkButton>
-      <CardInfoBox>
-        <CardInfoTop>
-          <CardPassedTime>
-            <Moment fromNow>{createdAt}</Moment>
-          </CardPassedTime>
-          <button>
-            <img src={card_config_icon} alt='카드 설정 버튼' />
-          </button>
-        </CardInfoTop>
-        <CardInfoDescription>{item.description}</CardInfoDescription>
-        <Moment format='YYYY.MM.DD'>{item.createdAt}</Moment>
-      </CardInfoBox>
-    </CardWrapper>
+    <>
+      <CardWrapper>
+        <CardImageContainer>
+          <CardImage item={item} path={path} />
+        </CardImageContainer>
+        <StarMarkButton>
+          <StarMark src={star_mark} alt='카드 즐겨찾기 버튼' />
+        </StarMarkButton>
+        <CardInfoBox>
+          <CardInfoTop>
+            <CardPassedTime>
+              <Moment fromNow>{createdAt}</Moment>
+            </CardPassedTime>
+            <CardConfigButton onClick={() => {
+              openSelectMenu({
+                isOpen: true,
+              });
+            }}>
+              <img src={card_config_icon} alt='카드 설정 버튼' />
+            </CardConfigButton>
+          </CardInfoTop>
+          <CardInfoDescription>{item.description}</CardInfoDescription>
+          <Moment format='YYYY.MM.DD'>{item.createdAt}</Moment>
+        </CardInfoBox>
+      </CardWrapper>
+      {isOpen && <SelectMenu ref={popoverRef} />}
+    </>
   );
 }
 
@@ -46,4 +67,14 @@ const StarMark = styled.img`
     width: 3.4rem;
     height: 3.4rem;
   }
+`;
+
+const CardImageContainer = styled.div`
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+`;
+
+const CardConfigButton = styled.button`
+  width: 2.1rem;
+  height: 1.7rem;
 `;

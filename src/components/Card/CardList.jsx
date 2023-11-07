@@ -8,13 +8,11 @@ function CardList({ items }) {
 
   return (
     <CardListStyle>
-        {items.map((item) => {
-          return (
-            <li key={item.id}>
-              <Card item={item} path={path}/>
-            </li>
-          );
-        })}
+        {items.map((item) =>
+          <Li key={item.id} >
+            <Card item={item} path={path}/>
+          </Li>
+        )}
     </CardListStyle>
   );
 }
@@ -37,4 +35,8 @@ const CardListStyle = styled.div`
     grid-auto-rows: auto;
     gap: 2rem 2.5rem;
   }
+`;
+
+const Li = styled.li`
+  position: relative;
 `;

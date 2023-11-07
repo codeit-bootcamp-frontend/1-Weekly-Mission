@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import FolderCategoryButton from './FolderCategoryButton';
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import useAsync from '../../hooks/useAsync';
 import { getFolders } from '../../api/api';
 import add_icon from '../../assets/svg/add-folder.svg';
+import Modal from '../Modal/Modal';
+import FolderModal from '../Modal/FolderModal';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const ENTIRE_CATEGORY = {
   id: 0,
@@ -11,7 +14,9 @@ const ENTIRE_CATEGORY = {
 };
 
 function FolderCategory({ onGetCategory }) {
+  const modalRef = useRef();
   const [categories, setCategories] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   const [, foldersLoadingError, getFoldersAsync] = useAsync(getFolders);
 
   const handleLoad = useCallback(
@@ -26,6 +31,16 @@ function FolderCategory({ onGetCategory }) {
     }, [getFoldersAsync],
   );
 
+  const openModal = ({ isOpen }) => {
+    setIsOpen(isOpen);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  useOnClickOutside(modalRef, closeModal);
+
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
@@ -33,20 +48,26 @@ function FolderCategory({ onGetCategory }) {
   return (
     <FolderCategoryContainer>
       <FolderCategoryStyle>
-        {categories.map((category) => {
-          return (
-            <Fragment key={category.id}>
-              <FolderCategoryButton category={category} onGetCategory={onGetCategory}></FolderCategoryButton>
-              {foldersLoadingError?.message && <span>{foldersLoadingError.message}</span>}
-            </Fragment>
-          );
-        })
-        }
+        {categories.map((category) =>
+          <Fragment key={category.id}>
+            <FolderCategoryButton category={category} onGetCategory={onGetCategory}></FolderCategoryButton>
+            {foldersLoadingError?.message && <span>{foldersLoadingError.message}</span>}
+          </Fragment>,
+        )}
       </FolderCategoryStyle>
-      <FolderAddButton>
+      <FolderAddButton onClick={() => {
+        openModal({
+          isOpen: true,
+        });
+      }}>
         <FolderAddName>폴더 추가</FolderAddName>
         <FolderAddIcon src={add_icon} alt='폴더 추가 아이콘' />
       </FolderAddButton>
+      {isOpen && (
+        <Modal>
+          <FolderModal action='add' onCloseModal={closeModal} ref={modalRef} />
+        </Modal>
+      )}
     </FolderCategoryContainer>
   );
 }
@@ -67,11 +88,11 @@ const FolderCategoryContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  
+
   @media (min-width: 768px) {
     width: 70.4rem;
   }
-  
+
   @media (min-width: 1024px) {
     width: 106rem;
   }
@@ -79,11 +100,11 @@ const FolderCategoryContainer = styled.div`
 
 const FolderAddButton = styled.button`
   display: none;
-  
+
   @media (min-width: 768px) {
     display: flex;
     align-items: flex-start;
-    gap: 0.4rem;  
+    gap: 0.4rem;
   }
 `;
 
