@@ -3,17 +3,17 @@ import styled from 'styled-components';
 import Folder from '../components/Folder';
 import SearchBar from '../components/SearchBar';
 
-import { useParams } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
 import { getFolders } from '../api/api';
 import { useCallback, useEffect, useState } from 'react';
 import MobileFolderButton from '../components/MobileFolderButton';
+import AddFolderModal from '../components/Modal/AddFolderModal';
 
 function FolderPage() {
-  const param = useParams();
   const [folderList, setFolderList] = useState([]);
+  const [IsFolderAddModal, setIsFolderAddModal] = useState(false);
 
-  const [isLoadingFolderList, loadingFolderListError, getFolderListAsync] = useAsync(getFolders);
+  const [, , getFolderListAsync] = useAsync(getFolders);
 
   const handleFolderListLoad = useCallback(async () => {
     const result = await getFolderListAsync();
@@ -29,15 +29,19 @@ function FolderPage() {
   }, []);
 
   return (
-    <Container>
-      <MobileFolderButton />
-      <AddLink />
-      <ContentContainer>
-        <SearchBar />
-        <AddFolderButton>폴더 추가</AddFolderButton>
-        <Folder folderList={folderList} />
-      </ContentContainer>
-    </Container>
+    <>
+      <Container>
+        <MobileFolderButton />
+        <AddLink />
+        <ContentContainer>
+          <SearchBar />
+          <AddFolderButton onClick={() => setIsFolderAddModal(true)}>폴더 추가</AddFolderButton>
+          {IsFolderAddModal && <AddFolderModal setIsFolderAddModal={setIsFolderAddModal} />}
+
+          <Folder folderList={folderList} />
+        </ContentContainer>
+      </Container>
+    </>
   );
 }
 

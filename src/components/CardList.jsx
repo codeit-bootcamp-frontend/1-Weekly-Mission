@@ -4,7 +4,7 @@ import NoSavedLinks from './NoSavedLinks';
 
 function CardList({ cards }) {
   if (!cards) {
-    return <></>;
+    return <NoSavedLinks />;
   }
   if (cards.length === 0) {
     return <NoSavedLinks />;

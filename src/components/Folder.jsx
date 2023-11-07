@@ -3,6 +3,15 @@ import CardList from './CardList';
 import { useEffect, useState } from 'react';
 import { getCards } from '../api/api';
 import FolderButton from './FolderButton';
+import OptionBtn from './OptionBtn';
+import IconShare from '../assets/icon/icon-share.svg';
+import IconPen from '../assets/icon/icon-pen.svg';
+import IconTrash from '../assets/icon/icon-trash.svg';
+import ShareFolderModal from './Modal/ShareFolderModal';
+import RenameFolderModal from './Modal/RenameFolderModal';
+import RemoveFolderModal from './Modal/RemoveFolderModal';
+import RemoveLinkModal from './Modal/RemoveLinkModal';
+import InsertFolderModal from './Modal/InsertFolderModal';
 
 const INITIAL_FOLDER = {
   id: '',
@@ -10,11 +19,12 @@ const INITIAL_FOLDER = {
 };
 
 function FolderList({ folderList = null, getCardList }) {
-  const [folderId, setFolderId] = useState('');
   const [folderName, setFolderName] = useState('전체');
+  const [isFolderShareModal, setIsFolderShareModal] = useState(false);
+  const [isFolderRenameModal, setIsFolderRenameModal] = useState(false);
+  const [isFolderRemoveModal, setIsFolderRemoveModal] = useState(false);
 
   const handleButton = (name, id) => {
-    setFolderId(id);
     setFolderName(name);
     getCardList(id);
   };
@@ -35,13 +45,32 @@ function FolderList({ folderList = null, getCardList }) {
           </>
         )}
       </FolderListContainer>
-      <FolderTitle>{folderName}</FolderTitle>
+      <FolderTitleContainer>
+        <FolderTitle>{folderName}</FolderTitle>
+        <Options>
+          <OptionBtn src={IconShare} alt="공유" onClick={() => setIsFolderShareModal(true)}>
+            공유
+          </OptionBtn>
+          <OptionBtn src={IconPen} alt="이름 변경" onClick={() => setIsFolderRenameModal(true)}>
+            이름 변경
+          </OptionBtn>
+          <OptionBtn src={IconTrash} alt="삭제" onClick={() => setIsFolderRemoveModal(true)}>
+            삭제
+          </OptionBtn>
+        </Options>
+        {isFolderShareModal && <ShareFolderModal setIsFolderShareModal={setIsFolderShareModal} />}
+        {isFolderRenameModal && <RenameFolderModal setIsFolderRenameModal={setIsFolderRenameModal} />}
+        {isFolderRemoveModal && <RemoveFolderModal setIsFolderRemoveModal={setIsFolderRemoveModal} />}
+      </FolderTitleContainer>
     </div>
   );
 }
 
 function Folder({ folderList = null }) {
   const [cards, setCards] = useState();
+  const [isLinkRemoveModal, setIsLinkRemoveModal] = useState(false);
+  const [isInsertFolderModal, setIsInsertFolderModal] = useState(false);
+
   const getCardList = async (id = '') => {
     const result = await getCards(id);
     setCards(() => {
@@ -57,6 +86,8 @@ function Folder({ folderList = null }) {
     <Container>
       <FolderList folderList={folderList} getCardList={getCardList} />
       <CardList cards={cards} />
+      {isLinkRemoveModal && <RemoveLinkModal setIsLinkRemoveModal={setIsLinkRemoveModal} />}
+      {isInsertFolderModal && <InsertFolderModal setIsInsertFolderModal={setIsInsertFolderModal} />}
     </Container>
   );
 }
@@ -93,4 +124,15 @@ const FolderTitle = styled.div`
   line-height: normal;
   letter-spacing: -0.2px;
   margin-bottom: 2rem;
+`;
+
+const FolderTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Options = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
 `;
