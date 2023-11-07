@@ -9,8 +9,10 @@ import Modal from "../../common/modal/Modal";
 export default function FolderMenu({ folderId }) {
   const [openModal, setOpenModal] = useState(false);
   const [tabName, setTabName] = useState("");
-  const localeValue = useContext(LocaleContext); // obj
-  const folder = localeValue[folderId];
+  const { ObjectValue, LinkSDataArr } = useContext(LocaleContext); // obj
+
+  const folder = ObjectValue[folderId];
+
   // folder의 타입이 undefined가 아니면은 isSelected = ture, undefined이면은 false
   const isSelected = typeof folder !== "undefined";
   // optional chaining 사용 , folder의 folderName키가 undefined, 즉없으면은 전체를 나오게한다

@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import SharedPage from "./pages/SharedPage";
 import FolderPage from "./pages/FolderPage";
-import KaKao from "./components/socialshare/KaKao";
 
 function App() {
   return (
