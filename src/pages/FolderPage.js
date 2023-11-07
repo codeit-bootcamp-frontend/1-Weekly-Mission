@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
-import Header from '../components/Header.js';
-import AddLinkBar from '../components/folder/AddLinkBar.js';
-import FolderContent from '../components/folder/FolderContent.js';
-import Footer from '../components/Footer.js';
+import Header from 'components/common/Header.js';
+import Footer from 'components/common/Footer.js';
+import AddLinkBar from 'components/folder/AddLinkBar.js';
+import FolderContent from 'components/folder/FolderContent.js';
 
 function FolderPage() {
   return (

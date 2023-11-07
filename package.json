@@ -1,5 +1,5 @@
 {
-  "homepage": "https://hw-weekly-02.netlify.app/",
+  "homepage": "https://hw-weekly-02.netlify.app",
   "name": "1-weekly-mission",
   "version": "0.1.0",
   "private": true,
@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^1.3.0",

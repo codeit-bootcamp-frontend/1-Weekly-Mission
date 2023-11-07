@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getResponse } from '../api';
+import { getResponse } from 'api.js';
 
 /**
  * data를 받아오고, state를 바꿔주는 함수

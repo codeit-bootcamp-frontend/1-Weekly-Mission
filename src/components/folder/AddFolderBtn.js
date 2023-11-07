@@ -1,13 +1,45 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import addButton from '../../assets/images/add.svg';
-import addMobileButton from '../../assets/images/add_mobile.svg';
+import addButton from 'assets/images/add.svg';
+import addMobileButton from 'assets/images/add_mobile.svg';
+import useGetWindowWidth from 'hooks/useGetWindowWidth';
+import ModalFrame from 'components/common/Modal/ModalFrame';
+import ModalPortal from 'components/common/Modal/ModalPortal';
+import InputModal from 'components/common/Modal/InputModal';
+import { handleModalOpen, handleModalClose } from 'utils/handleModal';
+
+function AddFolderBtn() {
+  const innerWidth = useGetWindowWidth();
+  const [modal, setModal] = useState(false);
+
+  return (
+    <>
+      <Container onClick={() => handleModalOpen(setModal)}>
+        <AddFolder>폴더 추가</AddFolder>
+        <img src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
+      </Container>
+      {modal && (
+        <ModalPortal>
+          <ModalFrame>
+            <InputModal title="폴더 추가" btn="추가하기" onClickClose={() => handleModalClose(setModal)} />
+          </ModalFrame>
+        </ModalPortal>
+      )}
+    </>
+  );
+}
+
+export default AddFolderBtn;
 
 const Container = styled.div`
   display: flex;
   gap: 4px;
   justify-content: space-between;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+
   @media (max-width: 767px) {
     z-index: 10;
     position: fixed;
@@ -18,9 +50,6 @@ const Container = styled.div`
     width: 128px;
     border-radius: 20px;
     background-color: var(--primary-color);
-    &:hover {
-      cursor: pointer;
-    }
   }
 `;
 
@@ -35,23 +64,3 @@ const AddFolder = styled.p`
     color: #e7effb;
   }
 `;
-
-function AddFolderBtn() {
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const resizeListener = () => {
-      setInnerWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', resizeListener);
-  });
-
-  return (
-    <Container>
-      <AddFolder>폴더 추가</AddFolder>
-      <img src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
-    </Container>
-  );
-}
-
-export default AddFolderBtn;

@@ -1,30 +1,32 @@
-# part2-안희원-week8
+# part2-안희원-week9
 
-💌 [코드리뷰는 여기서 볼 수 있어요!](https://github.com/codeit-bootcamp-frontend/1-Weekly-Mission/pull/344)
+💌 [코드리뷰는 여기서 볼 수 있어요!](https://github.com/codeit-bootcamp-frontend/1-Weekly-Mission/pull/396)
 
 ## 😖 구현 내용
 
-✅ Linkbrary의 folder 페이지를 구현하였습니다.
+✅ 링크를 입력하고, '추가하기' 버튼을 누르면 해당 모달이 생성됩니다.
 
-✅ 반응형(PC, Tablet, Mobile)을 적용하였습니다.
+✅ '폴더 추가+' 버튼을 누르면 해당 모달이 생성됩니다.
 
-✅ user 프로필과 각 폴더, 링크 정보는 서버에서 데이터를 받아옵니다.
+✅ 카드의 케밥을 누르면 팝업이 생성됩니다.
 
-✅ 특정 폴더를 누르면 해당하는 링크 데이터만 불러옵니다.
+✅ 각 팝업의 '삭제하기' 또는 '폴더에 추가' 를 누르면 해당 모달이 생성됩니다.
 
-✅ 존재하지 않는 페이지에 접속하면 NotFoundPage로 접속됩니다.
+✅ 폴더 탭에서 '공유' / '이름 변경' / '삭제' 를 누르면 해당 모달이 생성됩니다.
+
+✅ 폴더 공유 모달에서 카카오톡/페이스북/링크 복사 기능을 사용할 수 있습니다.
 
 ## 📷 페이지 미리보기
+🔎[배포 페이지 바로가기✨](https://hw-weekly-02.netlify.app/)
 
 #### 🖥️ PC ver.
-![PC](https://github.com/naya-h2/1-Weekly-Mission/assets/103186362/b6f8a96a-0a27-4bcf-bef3-d5aab3f46fb4)
 
-#### 💻 Tablet ver.
-![Tablet](https://github.com/naya-h2/1-Weekly-Mission/assets/103186362/a3fcecaa-5b82-43f6-8820-f3829e35839c)
+![화면 캡쳐](https://im.ezgif.com/tmp/ezgif-1-c9b43fca09.gif)
 
-#### 📱 Mobile ver.
-![Mobile](https://github.com/naya-h2/1-Weekly-Mission/assets/103186362/638151f8-d49b-486f-9732-604226f6f36a)
+#### 🧸 모달 예시 화면
 
+<img width="613" alt="image" src="https://github.com/naya-h2/1-Weekly-Mission/assets/103186362/707b479a-9da1-45c2-8c85-77c418948770">
 
-#### 존재하지 않는 페이지에 접속했을 때
-<img width="700" alt="image" src="https://github.com/naya-h2/1-Weekly-Mission/assets/103186362/2f92f621-25aa-472b-965c-eae1c17d5f1e">
+#### 🗨️ 카카오톡 링크 공유 전송 화면
+
+<img width="211" alt="image" src="https://github.com/naya-h2/1-Weekly-Mission/assets/103186362/dc9b2ec7-4219-4746-a156-dfaf0017d9b2">

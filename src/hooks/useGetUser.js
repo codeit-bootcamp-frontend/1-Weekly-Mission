@@ -1,8 +1,12 @@
 import useGetData from './useGetData';
-import { USERS } from '../constants/path';
+import { PATH } from 'constants/path';
 
-function useGetUser() {
-  const user = useGetData(USERS[1].userInfo);
+/**
+ * @param {*} userId user 정보를 얻을 user의 ID
+ * @returns user의 정보가 담긴 객체
+ */
+function useGetUser(userId) {
+  const user = useGetData(`${PATH.user}/${userId}`);
   if (!user) return null;
   return user.data[0];
 }
