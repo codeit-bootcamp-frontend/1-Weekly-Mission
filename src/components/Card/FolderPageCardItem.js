@@ -1,25 +1,48 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { formatDate, getTimeDiff, prettyFormatTimeDiff } from "../../utils/utils";
 import styles from "./CardItem.module.css";
 import logoImg from "../../assets/emptyImg.svg";
 import starImg from "../../assets/star.svg";
 import kebabImg from "../../assets/kebab.svg";
+import ModalContainer from "../Modal/ModalContainer";
+import DeleteLinkModal from "../Modal/DeleteLinkModal";
+import AddLinkModal from "../Modal/AddLinkModal";
 
-function FolderPageCardItem({ item }) {
+function FolderPageCardItem({
+  folderListData,
+  formatTimeDiff,
+  formattedCreatedAt,
+  url,
+  title,
+  description,
+  imageSource,
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const { created_at, url, title, description, image_source } = item;
-  const formattedCreatedAt = formatDate(created_at);
-  const timeDiff = getTimeDiff(created_at);
-  const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
+  const [isOpenDeleteLinkModal, setIsOpenDeleteLinkModal] = useState(false);
+  const [isOpenAddFolderModal, setIsOpenAddFolderModal] = useState(false);
 
   const handleToggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleOpenDeleteLinkModal = () => {
+    setIsOpenDeleteLinkModal(true);
+  };
+
+  const handleCloseDeleteLinkModal = () => {
+    setIsOpenDeleteLinkModal(false);
+  };
+
+  const handleOpenAddFolderModal = () => {
+    setIsOpenAddFolderModal(true);
+  };
+
+  const handleCloseAddFolderModal = () => {
+    setIsOpenAddFolderModal(false);
+  };
 
   return (
     <div className={styles.cardItem}>
       <Link className={styles.imgContainer} to={url} target="_blank" rel="noopener noreferrer">
-        <img className={styles.img} src={image_source === null ? logoImg : image_source} alt={title} />
+        <img className={styles.img} src={imageSource ? imageSource : logoImg} alt={title} />
       </Link>
       <button className={styles.bookmarkButton}>
         <img src={starImg} alt="즐겨찾기 이미지" />
@@ -32,9 +55,19 @@ function FolderPageCardItem({ item }) {
           </button>
           {isMenuOpen && (
             <div className={styles.menu}>
-              <button>삭제하기</button>
-              <button>폴더에 추가</button>
+              <button onClick={handleOpenDeleteLinkModal}>삭제하기</button>
+              <button onClick={handleOpenAddFolderModal}>폴더에 추가</button>
             </div>
+          )}
+          {isOpenDeleteLinkModal && (
+            <ModalContainer onClose={handleCloseDeleteLinkModal}>
+              <DeleteLinkModal>{url}</DeleteLinkModal>
+            </ModalContainer>
+          )}
+          {isOpenAddFolderModal && (
+            <ModalContainer onClose={handleCloseAddFolderModal}>
+              <AddLinkModal inputValue={url} folderListData={folderListData} />
+            </ModalContainer>
           )}
         </div>
         <p className={styles.description}>

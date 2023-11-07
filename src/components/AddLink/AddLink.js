@@ -1,12 +1,7 @@
 import styles from "./AddLink.module.css";
-import AddLinkInput from "./AddLinkInput";
 
-const AddLink = () => {
-  return (
-    <div className={styles.addLink}>
-      <AddLinkInput />
-    </div>
-  );
+const AddLink = ({ children }) => {
+  return <div className={styles.addLink}>{children}</div>;
 };
 
 export default AddLink;

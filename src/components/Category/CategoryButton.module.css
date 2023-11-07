@@ -1,14 +1,14 @@
 .categoryButton {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 4.1rem;
+  justify-content: center;
   padding: 0.8rem 1.2rem;
-  border-radius: 0.5rem;
   border: 0.1rem solid var(--linkbrary-primary-color, #6d6afe);
+  height: 4.1rem;
   background: #fff;
   font-size: 1.6rem;
   white-space: nowrap;
+  border-radius: 0.5rem;
 }
 
 .categoryButton:hover {

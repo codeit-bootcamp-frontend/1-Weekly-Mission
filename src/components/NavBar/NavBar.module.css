@@ -2,7 +2,7 @@
 .navBar {
   display: flex;
   justify-content: center;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   z-index: 1;
   background: var(--linkbrary-bg, #f0f6ff);

@@ -1,13 +1,16 @@
+import { useFolderId, useSetFolderId } from "../../contexts/UserContext";
 import styles from "./CategoryButton.module.css";
 
-const CategoryButton = ({ id, currentFolder, selectedCategoryId, onClick, children }) => {
+const CategoryButton = ({ id, currentFolder, children }) => {
+  const folderID = useFolderId();
+  const setFolderId = useSetFolderId();
   const handleLoadClick = () => {
     currentFolder(children);
-    onClick(id);
+    setFolderId(id);
   };
 
   const buttonClasses = `${styles.categoryButton} ${
-    selectedCategoryId === id ? styles.selected : selectedCategoryId === null ? styles.selected : ""
+    folderID === id ? styles.selected : folderID === null ? styles.selected : ""
   }`;
 
   return (
