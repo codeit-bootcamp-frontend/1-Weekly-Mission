@@ -11,6 +11,7 @@ import FolderAdd from "../../assets/icons/FolderAdd";
 import ShareIcon from "../../assets/icons/Share";
 import PenIcon from "../../assets/icons/Pen";
 import DeleteIcon from "../../assets/icons/Delete";
+import Dialog from "../../components/Dialog";
 
 const FolderPage = () => {
   const [selectedFolderId, setSelectedFolderId] = useState(null);
@@ -18,6 +19,18 @@ const FolderPage = () => {
   const [folders, setFolders] = useState([]);
   const [hasLinks, setHasLinks] = useState(true);
   const userId = 1;
+
+  const [showDialog, setShowDialog] = useState(false); // 다이얼로그 상태 관리 추가
+  const [dialogType, setDialogType] = useState(""); // 어떤 다이얼로그를 보여줄지 결정하는 상태 추가
+
+  const openDialog = (type) => {
+    setDialogType(type);
+    setShowDialog(true);
+  };
+
+  const closeDialog = () => {
+    setShowDialog(false);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,16 +80,28 @@ const FolderPage = () => {
               />
             ))}
           </div>
-          <div className="folder-add">
+          <div className="folder-add" onClick={() => openDialog("add")}>
             폴더 추가
             <FolderAdd />
           </div>
           <span className="folder-select">{selectedFolder}</span>
           {selectedFolder !== "전체" && (
             <div className="folder-actions">
-              <ActionItem icon={ShareIcon} label="공유" />
-              <ActionItem icon={PenIcon} label="이름 변경" />
-              <ActionItem icon={DeleteIcon} label="삭제" />
+              <ActionItem
+                icon={ShareIcon}
+                label="공유"
+                onClick={() => openDialog("share")}
+              />
+              <ActionItem
+                icon={PenIcon}
+                label="이름 변경"
+                onClick={() => openDialog("rename")}
+              />
+              <ActionItem
+                icon={DeleteIcon}
+                label="삭제"
+                onClick={() => openDialog("delete")}
+              />
             </div>
           )}
         </div>
@@ -86,13 +111,24 @@ const FolderPage = () => {
         folderId={selectedFolderId}
         updateHasLinks={setHasLinks}
       />
+      {showDialog && (
+        <Dialog>
+          {dialogType === "share" && <Dialog.Title>폴더 공유</Dialog.Title>}
+          {dialogType === "rename" && (
+            <Dialog.Title>폴더 이름 변경</Dialog.Title>
+          )}
+          {dialogType === "delete" && <Dialog.Title>폴더 삭제</Dialog.Title>}
+          {dialogType === "add" && <Dialog.Title>폴더 추가</Dialog.Title>}
+          <Dialog.CloseButton onClick={closeDialog}>닫기</Dialog.CloseButton>
+        </Dialog>
+      )}
       <Footer />
     </div>
   );
 };
 
-const ActionItem = ({ icon: IconComponent, label }) => (
-  <div className="action-item">
+const ActionItem = ({ icon: IconComponent, label, onClick }) => (
+  <div className="action-item" onClick={onClick}>
     <IconComponent />
     <span>{label}</span>
   </div>
