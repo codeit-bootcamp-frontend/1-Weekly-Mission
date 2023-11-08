@@ -1,6 +1,6 @@
 import API_URL from "./constant";
 
-async function getFolderData() {
+async function getSharedFolderData() {
   try {
     const response = await fetch(`${API_URL}sample/folder`);
     const body = await response.json();
@@ -10,4 +10,4 @@ async function getFolderData() {
   }
 }
 
-export default getFolderData;
+export default getSharedFolderData;

@@ -1,7 +1,7 @@
 .card-list {
   display: flex;
   align-items: center;
-
+  margin: 0 auto;
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
@@ -24,10 +24,10 @@
   height: 60px;
   margin: 20px 0 12px;
   /* display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: var(--primary-purple-70); */
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--primary-purple-70); */
 }
 
 .icon-wrap img {

@@ -1,6 +1,9 @@
 import "../styles/header.css";
 
-function Header({ userEmail, profileImgSrc }) {
+function Header({ userData = {} }) {
+  const userEmail = userData?.email;
+  const profileImgSrc = userData?.profileImageSource;
+
   return (
     <header>
       <nav className="gnb">

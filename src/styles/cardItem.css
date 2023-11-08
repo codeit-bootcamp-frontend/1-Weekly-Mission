@@ -56,6 +56,13 @@
   padding: 15px 20px;
 }
 
+.kebab-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
 .card-information .time {
   color: #666;
   font-size: 13px;
