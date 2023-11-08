@@ -1,0 +1,38 @@
+@import url('../../../../styles/global.css');
+
+.dialog-share-icon-wrapper {
+  display: flex;
+  gap: 32px;
+}
+
+.dialog-share-icon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.dialog-share-kakao-icon {
+  padding: 12px;
+  border-radius: 37.333px;
+  background: #fee500;
+}
+
+.dialog-share-facebook-icon {
+  border-radius: 37.333px;
+  background: #1877f2;
+  padding: 12px;
+}
+
+.dialog-share-link-icon {
+  padding: 12px;
+}
+
+.dialog-share-icon-name {
+  text-align: center;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--color-gray-100);
+}

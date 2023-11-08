@@ -5,7 +5,6 @@ export const getUserFolders = async () => {
   try {
     const response = await fetch(`${BASE_URL}${USERS_ENDPOINT}/1/folders`);
     result = await response.json();
-    console.log(result);
   } catch (error) {
     console.log(error);
   }

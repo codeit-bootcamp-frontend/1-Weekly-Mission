@@ -1,0 +1,22 @@
+@import url('../../styles/global.css');
+
+.popover {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100px;
+  top: 20px;
+  left: 0px;
+}
+
+.popover li {
+  text-align: center;
+  background-color: var(--color-white);
+  padding: 7px 12px;
+}
+
+.popover li:hover {
+  background-color: var(--color-gray-20);
+  color: var(--color-primary);
+  cursor: pointer;
+}

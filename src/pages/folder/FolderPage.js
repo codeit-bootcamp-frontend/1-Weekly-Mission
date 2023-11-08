@@ -12,11 +12,13 @@ import { ALL_LINK_NAME, OPTION_ICONS } from './constant';
 import addIcon from '../../assets/folder/add.svg';
 import addPrimaryIcon from '../../assets/folder/addPrimaryColor.svg';
 import SortButton from './components/sortButton/SortButton';
+import useModal from '../../hooks/useModal';
 
 export default function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
   const [folderId, setFolderId] = useState(ALL_LINK_NAME);
+  const { open, close, isModalOpen, Dialog } = useModal();
 
   const folderName =
     folderId === ALL_LINK_NAME
@@ -38,7 +40,6 @@ export default function FolderPage() {
   useEffect(() => {
     fetchUserFolders();
   }, []);
-  console.log(folders);
 
   useEffect(() => {
     if (!folderId) return;
@@ -48,7 +49,7 @@ export default function FolderPage() {
   return (
     <div className="folder-container">
       <header className="folder-header">
-        <AddLinkInput />
+        <AddLinkInput folders={folders} />
       </header>
       <main className="folder-main">
         <SearchBar />
@@ -60,7 +61,6 @@ export default function FolderPage() {
                 isClicked={folderId === ALL_LINK_NAME}
                 text="전체"
               />
-
               {folders &&
                 folders.map((item) => (
                   <SortButton
@@ -72,7 +72,7 @@ export default function FolderPage() {
                   />
                 ))}
             </div>
-            <button type="button" className="folder-add-button">
+            <button type="button" className="folder-add-button" onClick={open}>
               폴더 추가
               <img
                 src={addPrimaryIcon}
@@ -80,23 +80,28 @@ export default function FolderPage() {
                 className="folder-add-icon"
               />
             </button>
+            <Dialog onClick={close} isModalOpen={isModalOpen}>
+              <Dialog.Title>폴더 추가</Dialog.Title>
+              <Dialog.Input />
+              <Dialog.Button isAddButton>추가하기</Dialog.Button>
+            </Dialog>
           </div>
           <div className="folder-category-container">
             <h1 className="folder-category">{folderName}</h1>
-            {folderId !== ALL_LINK_NAME ? (
-              ''
-            ) : (
-              <div className="folder-option-button-container">
-                {OPTION_ICONS.map((item) => (
-                  <OptionButton
-                    key={item.id}
-                    name={item.name}
-                    alt={item.alt}
-                    iconSrc={item.iconSrc}
-                  />
-                ))}
-              </div>
-            )}
+            <div className="folder-option-button-container">
+              {folderName !== ALL_LINK_NAME
+                ? OPTION_ICONS.map((item) => (
+                    <OptionButton
+                      key={item.id}
+                      name={item.name}
+                      alt={item.alt}
+                      iconSrc={item.iconSrc}
+                      folderName={folderName}
+                      folderId={folderId}
+                    />
+                  ))
+                : null}
+            </div>
           </div>
         </section>
         {links?.length === 0 ? (
@@ -104,7 +109,14 @@ export default function FolderPage() {
         ) : (
           <div className="links-container">
             {links &&
-              links.map((item) => <Card key={item.id} linkInfo={item} />)}
+              links.map((item) => (
+                <Card
+                  folders={folders}
+                  folderName={folderName}
+                  key={item.id}
+                  linkInfo={item}
+                />
+              ))}
           </div>
         )}
         <div className="floating-action-button-container">

@@ -9,6 +9,7 @@
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   padding: 0;
   position: relative;
+  z-index: 1;
 }
 
 .card-img-section {
@@ -56,14 +57,10 @@
   position: relative;
 }
 
-.kebab-icon {
-  position: absolute;
-  top: 215px;
-  right: 20px;
-  color: var(--color-gray-100);
-}
-
 .time-stamp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: var(--color-gray-50);
   font-size: 13px;
   font-weight: 400;

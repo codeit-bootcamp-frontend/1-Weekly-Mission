@@ -1,0 +1,7 @@
+@import url('../../../../styles/global.css');
+
+.dialog-link {
+  font-size: 14px;
+  color: var(--color-gray-40);
+  line-height: 22px;
+}
