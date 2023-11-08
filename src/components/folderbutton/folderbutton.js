@@ -12,11 +12,11 @@ const StyledButton = styled.div`
     border-radius: 5px;
     border: 1px solid #6d6afe;
     cursor: pointer;
-    background: ${({ select }) => (select === "true" ? "#6D6AFE" : "#fff")};
-    color: ${({ select }) => (select === "true" ? "#fff" : "#000")};
+    background: ${({ $select }) => ($select === "true" ? "#6D6AFE" : "#fff")};
+    color: ${({ $select }) => ($select === "true" ? "#fff" : "#000")};
 `;
 
-function Button({ item, title, setTitle, setQuery, onClick }) {
+function Button({ item, title, setTitle, setQuery }) {
     const handleButtonClick = (e) => {
         const titleName = e.target.textContent;
         setTitle(titleName);
@@ -29,7 +29,7 @@ function Button({ item, title, setTitle, setQuery, onClick }) {
     return (
         <StyledButton
             onClick={handleButtonClick}
-            select={title === item.name ? "true" : "false"}
+            $select={title === item.name ? "true" : "false"}
         >
             {item.name}
         </StyledButton>
@@ -46,7 +46,7 @@ function FolderButton({ items, setTitle, title, setQuery }) {
         <StyledButtonBox>
             <StyledButton
                 onClick={handleButtonClick}
-                select={title === "전체" ? "true" : "false"}
+                $select={title === "전체" ? "true" : "false"}
             >
                 전체
             </StyledButton>

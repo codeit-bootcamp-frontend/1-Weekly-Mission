@@ -2,15 +2,16 @@ import Header from "../../components/common/header";
 import Footer from "../../components/common/footer";
 import SearchBar from "../../components/common/searchbar";
 import styled from "styled-components";
-import linkAddIcon from "../../assets/images/linkAdd.svg";
+import linkAddIcon from "../../assets/images/folder/linkAdd.svg";
 import Cards from "../../components/cards/card";
 import { useEffect, useState } from "react";
 import getApi from "../../api/api";
-import add from "../../assets/images/add.svg";
-import share from "../../assets/images/share.svg";
-import pen from "../../assets/images/pen.svg";
-import trash from "../../assets/images/trash.svg";
+import add from "../../assets/images/folder/add.svg";
+import share from "../../assets/images/folder/share.svg";
+import pen from "../../assets/images/folder/pen.svg";
+import trash from "../../assets/images/folder/trash.svg";
 import FolderButton from "../../components/folderbutton/folderbutton";
+import Modal from "../../components/modal/modal";
 
 const StyledLinkAdd = styled.div`
     display: flex;
@@ -53,6 +54,7 @@ const StyledLinkAddButton = styled.button`
     font-size: 14px;
     font-weight: 600;
     border: none;
+    cursor: pointer;
 `;
 
 const StyledMainBox = styled.div`
@@ -93,6 +95,7 @@ const IconAndText = styled.div`
     display: flex;
     align-items: center;
     gap: 4px;
+    cursor: pointer;
 `;
 
 const StyledFolderAdd = styled(IconAndText)`
@@ -114,6 +117,7 @@ const StyledFolderAdd = styled(IconAndText)`
                 brightness(200%) contrast(100%);
         }
     }
+    cursor: pointer;
 `;
 
 const StyledFolderNameTool = styled.div`
@@ -150,16 +154,22 @@ const StyledNoLink = styled.div`
 `;
 
 function LinkAdd() {
+    const [close, setClose] = useState(true);
     return (
-        <StyledLinkAddBox>
-            <StyledLinkAdd>
-                <img src={linkAddIcon} alt="linkAddIcon" />
-                <form>
-                    <input type="text" placeholder="링크를 추가해보세요" />
-                </form>
-                <StyledLinkAddButton>추가하기</StyledLinkAddButton>
-            </StyledLinkAdd>
-        </StyledLinkAddBox>
+        <>
+            <Modal tag="add" close={close} setClose={setClose}></Modal>
+            <StyledLinkAddBox>
+                <StyledLinkAdd>
+                    <img src={linkAddIcon} alt="linkAddIcon" />
+                    <form>
+                        <input type="text" placeholder="링크를 추가해보세요" />
+                    </form>
+                    <StyledLinkAddButton onClick={() => setClose(!close)}>
+                        추가하기
+                    </StyledLinkAddButton>
+                </StyledLinkAdd>
+            </StyledLinkAddBox>
+        </>
     );
 }
 
@@ -172,6 +182,8 @@ function Folders() {
     const [query, setQuery] = useState("/users/1/links");
     const [title, setTitle] = useState("전체");
     const [titleData, setTitleData] = useState([]);
+    const [close, setClose] = useState(true);
+    const [tag, setTag] = useState("edit");
 
     useEffect(() => {
         const handleCards = async () => {
@@ -190,8 +202,28 @@ function Folders() {
         handleTitle();
     }, []);
 
+    function handleTag(e) {
+        setClose(!close);
+        const tag = e.target.textContent;
+        if (tag === "폴더 추가") {
+            setTag("addFolder");
+        } else if (tag === "공유") {
+            setTag("share");
+        } else if (tag === "이름 변경") {
+            setTag("edit");
+        } else if (tag === "삭제") {
+            setTag("deleteFolder");
+        }
+    }
+
     return (
         <StyledFoldersBox>
+            <Modal
+                tag={tag}
+                close={close}
+                setClose={setClose}
+                query={query}
+            ></Modal>
             <StyledFolderButtonBox>
                 <FolderButton
                     items={titleData}
@@ -199,7 +231,7 @@ function Folders() {
                     title={title}
                     setQuery={setQuery}
                 />
-                <StyledFolderAdd>
+                <StyledFolderAdd onClick={handleTag}>
                     폴더 추가
                     <img src={add} alt="add" />
                 </StyledFolderAdd>
@@ -208,15 +240,15 @@ function Folders() {
                 <StyledFolderTitle>{title}</StyledFolderTitle>
                 {title === "전체" || (
                     <StyledFolderTool>
-                        <IconAndText>
+                        <IconAndText onClick={handleTag}>
                             <img src={share} alt="share" />
                             공유
                         </IconAndText>
-                        <IconAndText>
+                        <IconAndText onClick={handleTag}>
                             <img src={pen} alt="pen" />
                             이름 변경
                         </IconAndText>
-                        <IconAndText>
+                        <IconAndText onClick={handleTag}>
                             <img src={trash} alt="trash" />
                             삭제
                         </IconAndText>
@@ -226,7 +258,12 @@ function Folders() {
             {folderData.length === 0 ? (
                 <NoLink />
             ) : (
-                <Cards items={folderData} />
+                <Cards
+                    items={folderData}
+                    setClose={setClose}
+                    setTag={setTag}
+                    close={close}
+                />
             )}
         </StyledFoldersBox>
     );
