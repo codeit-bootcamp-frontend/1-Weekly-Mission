@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { onTablet, onPc } from 'styles/mediaQuery';
+import { COLORS } from 'styles/palette';
+import { zIndexStyle } from 'styles/zIndexStyle';
 
 export const CardContainer = styled.a`
   display: block;
   width: 100%;
-  overflow: hidden;
   box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.08);
   border-radius: 1.5rem;
   color: #000;
@@ -23,6 +24,8 @@ export const CardImgContainer = styled.div`
   overflow: hidden;
   width: 100%;
   height: 60vw;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 
   ${onTablet} {
     height: 30vw;
@@ -44,6 +47,37 @@ export const StarButton = styled.button`
 export const KebabButton = styled.button`
   position: absolute;
   right: 0rem;
+`;
+
+export const KebabPopup = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 1.8rem;
+  right: 0rem;
+  z-index: ${zIndexStyle.floating - 1};
+  width: 10rem;
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+
+  ${onTablet} {
+    right: -8rem;
+  }
+  ${onPc} {
+    right: -8rem;
+  }
+`;
+
+export const KebabInnerButton = styled.button`
+  padding: 0.7rem 1.2rem;
+  width: 10rem;
+  color: ${COLORS['LB_GRAY_100']};
+  font-size: 1.4rem;
+  font-weight: 400;
+
+  &:hover {
+    background-color: ${COLORS['LB_GRAY_10']};
+    color: ${COLORS['LB_PRIMARY']};
+  }
 `;
 
 export const CardImg = styled.img`
@@ -68,10 +102,9 @@ export const CardTextContainer = styled.div`
   gap: 0.6rem;
   padding: 1.5rem 2rem;
   height: 11rem;
-  overflow: hidden;
 `;
 
-export const TimeAgo = styled.p`
+export const TimeAgo = styled.div`
   grid-area: timeAgo;
   position: relative;
   color: #666;

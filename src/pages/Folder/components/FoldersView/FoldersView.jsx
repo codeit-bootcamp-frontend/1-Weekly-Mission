@@ -1,4 +1,6 @@
 import * as S from './FoldersView.style';
+import useModal from 'hooks/useModal';
+import NewFolder from 'components/Modal/NewFolder';
 import ADD_COLOR from 'assets/icons/add-color.svg';
 import ADD_WHITE from 'assets/icons/add-white.svg';
 
@@ -8,8 +10,13 @@ function FoldersView({
   selectedFolder,
   onFolderButtonClick,
 }) {
+  const [toggleShow, Modal] = useModal({
+    newFolder: <NewFolder />,
+  });
+
   return (
     <>
+      {Modal}
       {folders && (
         <S.Container>
           <S.Folders>
@@ -30,7 +37,10 @@ function FoldersView({
               </li>
             ))}
           </S.Folders>
-          <S.AddFolderButton type='button'>
+          <S.AddFolderButton
+            type='button'
+            onClick={() => toggleShow('newFolder')}
+          >
             폴더 추가
             <S.AddColor src={ADD_COLOR} alt='추가하기' />
             <S.AddWhite src={ADD_WHITE} alt='추가하기' />

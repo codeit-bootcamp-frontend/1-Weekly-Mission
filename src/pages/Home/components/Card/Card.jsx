@@ -7,7 +7,7 @@ function Card({ data }) {
       <S.Title gradient={gradient}>{title}</S.Title>
       <S.Description>{description}</S.Description>
       <S.ImgContainer>
-        <img src={imgSrc} alt={imgAlt} />
+        <img src={imgSrc} alt={imgAlt} loading='lazy' decoding='async' />
       </S.ImgContainer>
     </S.CardContainer>
   );

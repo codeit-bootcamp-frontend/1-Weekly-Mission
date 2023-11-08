@@ -1,14 +1,14 @@
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import * as S from './Folder.style';
-import Layout from 'components/Layout';
 import useRequest from 'hooks/useRequest';
 import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from 'apis/config/default';
+import Layout from 'components/Layout';
 import AddLinkContainer from './components/AddLinkContainer';
 import SearchBar from 'components/SearchBar';
 import FoldersContainer from './components/FoldersContainer';
 import CardsContainer from 'components/CardsContainer';
 import NoLinkView from './components/NoLinkView';
-import { useEffect } from 'react';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,7 +34,7 @@ function Folder() {
 
   return (
     <Layout isLoggedIn userId={DEFAULT_USER_ID}>
-      <AddLinkContainer />
+      <AddLinkContainer userId={DEFAULT_USER_ID} />
       <S.ContentContainer>
         <SearchBar />
         <FoldersContainer
@@ -44,7 +44,7 @@ function Folder() {
         />
 
         {links?.data?.length !== 0 ? (
-          <CardsContainer cards={links?.data} />
+          <CardsContainer cards={links?.data} userId={DEFAULT_USER_ID} />
         ) : (
           <NoLinkView />
         )}

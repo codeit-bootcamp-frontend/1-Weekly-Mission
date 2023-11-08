@@ -42,7 +42,7 @@ export const AddFolderButton = styled.button`
   bottom: 10.1rem;
   left: 50%;
   transform: translate(-50%, 0);
-  z-index: ${zIndexStyle.floating};
+  z-index: ${zIndexStyle.floating - 1};
   padding: 0.8rem 2.4rem;
   border-radius: 2rem;
   background-color: ${COLORS['LB_PRIMARY']};
