@@ -1,7 +1,7 @@
 import linkbraryLogo from "images/logo.svg";
 import { useEffect, useState } from "react";
 import Profile from "components/Profile";
-import { getProfile } from "api";
+import fetch from "api";
 import * as S from "./Nav.style";
 
 function Nav() {
@@ -9,13 +9,13 @@ function Nav() {
   const [hasProfile, setHasProfile] = useState(false);
 
   const handleLoadProfile = async () => {
-    const path = window.location.pathname;
-    const result = await getProfile(path);
+    const url = window.location.path === "/shared" ? "/sample/user" : "/users/1";
+    const result = await fetch({ url: url });
     if (!result) {
       setHasProfile(false);
       return;
     }
-    setProfile(path === "/shared" ? result : result.data[0]);
+    setProfile(window.location.path === "/shared" ? result.data : result.data.data[0]);
     setHasProfile(true);
   };
 
@@ -24,7 +24,7 @@ function Nav() {
   }, []);
 
   return (
-    <S.NavContainer path={window.location.pathname}>
+    <S.NavContainer path={window.location.path}>
       <a href="/">
         <img src={linkbraryLogo} alt="홈으로 연결된 Linkbrary 로고" />
       </a>

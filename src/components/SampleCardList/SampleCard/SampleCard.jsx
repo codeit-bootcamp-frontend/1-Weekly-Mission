@@ -2,7 +2,7 @@ import * as S from "./SampleCard.style";
 import noImage from "images/no-image.svg";
 import star from "images/star.svg";
 import kebab from "images/kebab.svg";
-import { formatDate, formatTimeDiff } from "utils";
+import { formatDate, formatTimeDiff } from "utils/format";
 
 function SampleCard({ item }) {
   const { imageSource, createdAt, title, description, url } = item;
@@ -14,7 +14,7 @@ function SampleCard({ item }) {
   return (
     <div onClick={moveUrl}>
       <S.ImageContainer>
-        <S.Image src={imageSource || noImage} alt={title} />
+        <S.Image src={imageSource ?? noImage} alt={title} />
         <S.StarButton src={star} alt="별모양 버튼" />
       </S.ImageContainer>
       <S.Info>

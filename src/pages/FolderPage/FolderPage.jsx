@@ -1,4 +1,4 @@
-import { getFolder } from "api";
+import fetch from "api";
 import AddLinkForm from "components/AddLinkForm";
 import CardList from "components/CardList";
 import FolderList from "components/FolderList";
@@ -14,9 +14,10 @@ function FolderPage() {
     setFolderId(folderId);
   };
 
-  const handleLoadFolder = async (folderIdQuery) => {
-    const { data } = await getFolder(folderIdQuery);
-    setFolder(data);
+  const handleLoadFolder = async (folderId) => {
+    const url = `/users/1/links?folderId=${folderId}`;
+    const { data } = await fetch({ url: url });
+    setFolder(data.data);
   };
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function FolderPage() {
       <MainDiv>
         <SearchBar />
         <FolderList getFolderId={getFolderId} />
-        <CardList data={folder} folderId={folderId} />
+        <CardList items={folder} folderId={folderId} />
       </MainDiv>
     </>
   );

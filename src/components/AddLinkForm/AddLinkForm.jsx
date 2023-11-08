@@ -9,13 +9,13 @@ function AddLinkForm() {
     setValue(e.target.value);
   };
   return (
-    <S.AddLinkFormContainer>
-      <form>
-        <input value={value} onChange={handleValueChange} placeholder="링크를 추가해 보세요" />
-        <img src={linkIcon} alt="링크 아이콘" />
-        <button>추가하기</button>
-      </form>
-    </S.AddLinkFormContainer>
+    <S.FormContainer>
+      <S.Form>
+        <S.Input value={value} onChange={handleValueChange} placeholder="링크를 추가해 보세요" />
+        <S.Img src={linkIcon} alt="링크 아이콘" />
+        <S.Button>추가하기</S.Button>
+      </S.Form>
+    </S.FormContainer>
   );
 }
 
