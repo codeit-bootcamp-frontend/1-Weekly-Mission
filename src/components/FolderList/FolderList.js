@@ -3,7 +3,7 @@ import FolderForm from 'components/FolderForm/FolderForm';
 import { useNavigate } from 'react-router-dom';
 import styles from './FolderList.module.css';
 
-function FolderList({ folder }) {
+function FolderList({ folder, onClick }) {
   const navigate = useNavigate();
 
   return (
@@ -14,7 +14,7 @@ function FolderList({ folder }) {
           <FolderForm key={data.id} name={data.name} onClick={() => navigate(`/folder?folderId=${data.id}`)} />
         ))}
       </div>
-      <FolderAddButton />
+      <FolderAddButton onClick={onClick} />
     </div>
   );
 }

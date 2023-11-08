@@ -3,7 +3,7 @@ import SelectMenu from 'components/SelectMenu/SelectMenu';
 import { useState } from 'react';
 import './KebabButton.css';
 
-function KebabButton() {
+function KebabButton({ onClick, url }) {
   const [show, setShow] = useState(false);
 
   const handleKebab = () => {
@@ -15,7 +15,7 @@ function KebabButton() {
       <button className="kebab-button" onClick={handleKebab}>
         <img className="kebab-img" src={Kebab} alt="즐겨찾기 버튼" />
       </button>
-      {show && <SelectMenu />}
+      {show && <SelectMenu onClick={onClick} url={url} />}
     </>
   );
 }

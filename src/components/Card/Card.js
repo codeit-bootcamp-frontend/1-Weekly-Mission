@@ -5,7 +5,7 @@ import { changeDate, changeDateTime } from 'utils/dateFormat';
 import isEmpty from 'utils/isEmpty';
 import styles from './Card.module.css';
 
-function Card({ card, isCardEditable }) {
+function Card({ card, isCardEditable, onClick }) {
   const { url, description, created_at, createdAt, image_source, imageSource } = card;
 
   const formatDate = changeDate(createdAt ?? created_at);
@@ -30,7 +30,7 @@ function Card({ card, isCardEditable }) {
       {isCardEditable && (
         <>
           <StarButton />
-          <KebabButton />
+          <KebabButton onClick={onClick} url={url} />
         </>
       )}
     </div>

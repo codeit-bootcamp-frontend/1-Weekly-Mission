@@ -13,8 +13,12 @@ const FolderAdd = styled.button`
   }
 `;
 
-function FolderAddButton() {
-  return <FolderAdd>폴더에 추가하기</FolderAdd>;
+function FolderAddButton({ onClick }) {
+  return (
+    <FolderAdd onClick={onClick} value="add">
+      폴더에 추가하기
+    </FolderAdd>
+  );
 }
 
 export default FolderAddButton;

@@ -25,10 +25,15 @@ const GlobalStyle = createGlobalStyle`
     min-height: calc(100vh - 37.4rem)
   }
 
-  a,
-  button {
+  a {
     color: inherit;
     text-decoration: none;
+    cursor: pointer;
+  }
+  
+  button {
+    border: none;
+    background: transparent;
     cursor: pointer;
   }
 `;
