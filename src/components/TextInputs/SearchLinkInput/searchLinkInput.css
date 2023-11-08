@@ -1,0 +1,21 @@
+.div_searchLink {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.div_searchLink_input {
+  padding: 15px 42px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  border: none;
+  width: 100%;
+}
+
+.div_searchLink_image {
+  position: absolute;
+  left: 15px;
+}

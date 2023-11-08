@@ -3,7 +3,7 @@ import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import HeroContent from "../../components/HeroContent/HeroContent";
 import MainContent from "../../components/MainContent";
-import FloatingOptionBtn from "../../components/StyledButtons/FloatingOptionBtn/FloatingOptionBtn";
+import FloatingAddFolderBtn from "../../components/StyledButtons/FloatingAddFolderBtn";
 
 const MainContainer = styled.div`
   display: flex;
@@ -28,11 +28,11 @@ function FolderPage() {
     <>
       <Header />
       <FloatingBtnContainer>
-        <FloatingOptionBtn />
+        <FloatingAddFolderBtn />
       </FloatingBtnContainer>
       <MainContainer>
-        <HeroContent pageType="folder" />
-        <MainContent pageType="folder" />
+        <HeroContent />
+        <MainContent />
         <Footer />
       </MainContainer>
     </>

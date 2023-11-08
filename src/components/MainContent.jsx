@@ -1,10 +1,11 @@
 import TagBtnContainer from "./StyledButtons/TagBtn/TagBtnContainer";
-import { SearchLinkInput } from "./TextInputs/searchLinkInput";
+import { SearchLinkInput } from "./TextInputs/SearchLinkInput/searchLinkInput";
 import CardContainer from "./CardContainer/CardContainer";
 import { useState, useEffect } from "react";
 import requestData from "../services/api";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import AddLinkToFolder from "../modals/contents/AddLinkToFolder";
 
 const NoCardDataText = styled.h5`
   display: flex;
@@ -18,6 +19,9 @@ const defaultTagButton = {
   created_at: "",
   name: "전체",
   user_id: 1,
+  link: {
+    count: 10,
+  },
 };
 
 function MainContent() {
@@ -84,6 +88,7 @@ function MainContent() {
       {cardListData.length === 0 && (
         <NoCardDataText>저장된 링크가 없습니다</NoCardDataText>
       )}
+      <AddLinkToFolder TagListData={folderTagBtnList}></AddLinkToFolder>
     </section>
   );
 }
