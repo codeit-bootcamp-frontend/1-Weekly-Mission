@@ -15,6 +15,7 @@ export const Container = styled.div`
     text-align: center;
     font-weight: 500;
     letter-spacing: -0.3px;
+    cursor: pointer;
   }
   @media ${({ theme }) => theme.device.mobile}{
 

@@ -13,4 +13,5 @@ export const StyledButton = styled.div`
   font-size: 14px;
   font-weight: 600;
   color: #9fa6b2;
+  cursor: pointer;
 `;

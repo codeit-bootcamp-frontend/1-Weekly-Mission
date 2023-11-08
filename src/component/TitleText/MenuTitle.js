@@ -5,7 +5,7 @@ export function MenuTitle({ title }) {
   return (
     <S.Container>
       <span>{title}</span>
-      {title !== "전체" && <MenuTitleButton />}
+      {title !== "전체" && <MenuTitleButton title={title}/>}
     </S.Container>
   );
 }

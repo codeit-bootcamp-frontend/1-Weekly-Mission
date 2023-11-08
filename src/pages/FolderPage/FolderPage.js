@@ -16,7 +16,6 @@ const FolderPage = () => {
     const endPoint = `users/1/links${folderId ? `?folderId=${folderId}` : ""}`;
     try {
       const result = await folderDataRequestApi(endPoint);
-      console.log(result)
       if (result !== undefined && result.length > 0) {
         setVisible(true);
       } else {
@@ -31,7 +30,6 @@ const FolderPage = () => {
   const Folder = async () => {
     try {
       const response = await folderMenuRequestApi("users/1/folders");
-      console.log(response)
       setFolders(response);
     } catch (error) {
       setIsError(true)
