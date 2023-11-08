@@ -14,3 +14,7 @@ export { default as FolderLists } from "./FolderLists/FolderLists";
 export { default as AddFolderBtn } from "./FolderLists/AddFolderBtn";
 export { default as EditFolderTools } from "./FolderLists/EditFolderTools";
 export { default as NoFolderLink } from "./FolderLists/NoFolderLink";
+export { default as ModalEdit } from "./Modal/ModalEdit";
+export { default as ModalDelete } from "./Modal/ModalDelete";
+export { default as ModalAdd } from "./Modal/ModalAdd";
+export { default as ModalShare } from "./Modal/ModalShare";

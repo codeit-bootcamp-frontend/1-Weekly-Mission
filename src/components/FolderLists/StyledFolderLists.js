@@ -64,7 +64,7 @@ export const AddFolderBtn = styled.button`
     position: fixed;
     left: 45%;
     bottom: 101px;
-    z-index: 9999;
+    z-index: 100;
     padding: 5px 24px;
     background-color: var(--primary);
     color: white;
