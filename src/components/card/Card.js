@@ -37,7 +37,7 @@ const calculateTimeAgo = (createdAt) => {
   }
 };
 
-const Card = ({ cardData }) => {
+const Card = ({ cardData, onClickDelete, onClickAdd }) => {
   const ago = calculateTimeAgo(cardData.created_at || cardData.createdAt);
   const createdAtFormat = moment(
     cardData.created_at || cardData.createdAt
@@ -85,18 +85,31 @@ const Card = ({ cardData }) => {
         </ContentContainer>
       </CardContainer>
 
-      {isOpenOption && <OptionMenu />}
+      {isOpenOption && (
+        <OptionMenu
+          onClickDelete={onClickDelete}
+          onClickAdd={onClickAdd}
+          content={{ id: cardData.id, title: cardData.url }}
+        />
+      )}
     </CardWrapper>
   );
 };
 
 export default Card;
 
-const OptionMenu = () => {
+const OptionMenu = ({ onClickDelete, onClickAdd, content }) => {
   return (
     <OptionMenuContainer>
-      <div className="optionMenuItem">삭제하기</div>
-      <div className="optionMenuItem">폴더에 추가</div>
+      <div
+        className="optionMenuItem"
+        onClick={() => onClickDelete("linkDelete", content)}
+      >
+        삭제하기
+      </div>
+      <div className="optionMenuItem" onClick={() => onClickAdd()}>
+        폴더에 추가
+      </div>
     </OptionMenuContainer>
   );
 };
