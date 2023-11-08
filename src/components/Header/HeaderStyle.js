@@ -1,19 +1,16 @@
 import styled from "styled-components";
 import colors from "../../style/colors";
-import { device } from "../../style/device";
-import { flexCenter } from "../../style/common";
 
 export const HeaderContainer = styled.header`
+
+// 여기가 깨지는데 이유를 모르겠어요
   display: flex;
   align-items: center;
-  height: 10rem;
+  height: 17rem;
   padding: 4rem 3rem;
-
   flex-direction: column;
   gap: 1.25rem;
-
   background: ${colors.background};
-
 `;
 
 export const HeaderOwner = styled.div`
@@ -32,7 +29,6 @@ export const HeaderOwnerName = styled.p`
   font-weight: 400;
   line-height: 1.5rem;
   text-align: center;
-
 `;
 
 export const HeaderName = styled.h1`
@@ -44,8 +40,6 @@ export const HeaderName = styled.h1`
   font-family: Pretendard;
   font-size: 2.5rem;
   font-style: normal;
-  width : 800px;
   font-weight: 600;
   line-height: normal;
-  
 `;

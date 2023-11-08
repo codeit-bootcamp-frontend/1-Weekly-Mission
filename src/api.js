@@ -32,7 +32,6 @@ export async function getLinksByFolderID(
   const response = await fetch(
     `${API_URL}/api/users/${user_id}/links?folderId=${queryParams}`
   );
-  console.log(`${API_URL}/api/users/${user_id}/links?folderId=${queryParams}`);
 
   return getData(response);
 }

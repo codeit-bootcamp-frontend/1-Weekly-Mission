@@ -1,5 +1,8 @@
 import { css } from 'styled-components'
 export const reset = css`
+  * {
+    box-sizing: border-box;
+  }
   html,
   body,
   div,

@@ -1,14 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+import { device } from '../../style/device'
 
 export const CardListContainer = styled.div`
   display: grid;
+
   gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
 
-  @media (min-width: 1124px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 1123px) {
+  @media ${device.tablet} {
     grid-template-columns: repeat(2, 1fr);
   }
-`;
+
+  @media ${device.mobile} {
+    place-items: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+`

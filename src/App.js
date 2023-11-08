@@ -1,14 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SharedPage from "./Pages/SharedPage/SharedPage";
-import FolderPage from "./Pages/FolderPage/FolderPage";
-import { GlobalStyle } from "./style/GlobalStyle";
 
+import { GlobalStyle } from "./style/GlobalStyle";
+import SharedPage from "./Pages/SharedPage";
+import FolderPage from "./Pages/FolderPage";
+import Modal from "./components/Modal/Modal";
 function App() {
   return (
     <>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Modal />} />
           <Route path="/shared" element={<SharedPage />} />
           <Route path="/folder" element={<FolderPage />} />
         </Routes>
