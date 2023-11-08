@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { getTimePassed } from "../../utils/formatTimePassed";
+import Kebab from "../../components/kebab/Kebab";
+import KebabDelete from "../../components/kebab/KebabDelete";
+import KebabAdd from "../../components/kebab/KebabAdd";
+import ModalBackground from "../../components/modal/ModalBackground";
+import Modal from "../../components/modal/Modal";
+import ModalListInput from "../../components/modal/ModalListInput";
 
-const Card = ({ data }) => {
+const Card = ({ data, fullFolderData }) => {
   const {
     created_at,
     description,
@@ -13,6 +19,28 @@ const Card = ({ data }) => {
     url,
   } = data;
   const timePassed = getTimePassed(url, description, created_at, image_source);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isKebabDeleteClicked, setIsKebabDeleteClicked] = useState(false);
+  const [isKebabAddClicked, setIsKebabAddClicked] = useState(false);
+
+  function handleKebabClick(e) {
+    e.preventDefault();
+    setIsClicked(!isClicked);
+  }
+
+  function handleKebabDeleteClick(e) {
+    e.preventDefault();
+    setIsKebabDeleteClicked(!isKebabDeleteClicked);
+  }
+
+  function handleKebabAddClick(e) {
+    e.preventDefault();
+    setIsKebabAddClicked(!isKebabAddClicked);
+  }
+
+  const selectList = fullFolderData.map((list) => {
+    return `${list.name}  ${list.link.count}개 링크`;
+  });
 
   return (
     <li
@@ -64,14 +92,106 @@ const Card = ({ data }) => {
         >
           <span>{timePassed} ago</span>
           <button
-            style={{ position: "absolute", right: "2rem", top: "1.1rem" }}
+            style={{
+              position: "absolute",
+              right: "2rem",
+              top: "1.1rem",
+              zIndex: "999",
+            }}
+            onClick={handleKebabClick}
           >
             <img src="images/kebab.svg" />
           </button>
+          {isClicked ? (
+            <Kebab>
+              <KebabDelete onClick={handleKebabDeleteClick}>
+                삭제하기
+              </KebabDelete>
+              <KebabAdd onClick={handleKebabAddClick}>폴더에 추가</KebabAdd>
+            </Kebab>
+          ) : null}
           <span>{description}</span>
           <span>{created_at.substring(0, 10)}</span>
         </div>
       </a>
+      {isKebabDeleteClicked ? (
+        <ModalBackground>
+          <Modal>
+            <b>링크 삭제</b>
+            <div style={{ position: "relative" }}>
+              <img
+                src="images/modalClose.svg"
+                style={{
+                  position: "absolute",
+                  right: "-16.5rem",
+                  top: "-6rem",
+                }}
+                onClick={handleKebabDeleteClick}
+              />
+            </div>
+
+            <div>{url}</div>
+            <button
+              style={{
+                background: "var(--linkbrary-red, #FF5B56)",
+                borderRadius: "8px",
+                width: "28rem",
+                height: "2rem",
+                padding: "1.6rem 2rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+              }}
+            >
+              삭제하기
+            </button>
+          </Modal>
+        </ModalBackground>
+      ) : null}
+      {isKebabAddClicked ? (
+        <ModalBackground>
+          <Modal>
+            <b>폴더에 추가</b>
+            <p>{url}</p>
+            <div style={{ position: "relative" }}>
+              <img
+                src="images/modalClose.svg"
+                style={{
+                  position: "absolute",
+                  right: "-16.5rem",
+                  top: "-10rem",
+                }}
+                onClick={handleKebabAddClick}
+              />
+            </div>
+            <div>
+              {selectList.map((item) => (
+                <ModalListInput key={item}>
+                  <label htmlFor="item">{item}</label>
+                  <input type="checkbox" name={item} id={item} />
+                </ModalListInput>
+              ))}
+            </div>
+            <button
+              style={{
+                background:
+                  "var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%))",
+                borderRadius: "8px",
+                width: "28rem",
+                height: "2rem",
+                padding: "1.6rem 2rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+              }}
+            >
+              추가하기
+            </button>
+          </Modal>
+        </ModalBackground>
+      ) : null}
     </li>
   );
 };
