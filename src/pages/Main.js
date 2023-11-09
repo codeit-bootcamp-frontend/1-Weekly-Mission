@@ -8,6 +8,10 @@ import logo from "../assets/logo.svg";
 import profile from "../assets/profile.svg";
 import search from "../assets/Search.svg";
 import Avatar from "../assets/Avatar.png";
+import facebook from "../assets/facebook.svg";
+import instagram from "../assets/instagram.svg";
+import twitter from "../assets/twitter.svg";
+import youtube from "../assets/youtube.svg";
 
 const TotalFrame = styled.div``;
 const HeaderContainer = styled.div`
@@ -102,9 +106,31 @@ const MainCard = styled.div`
   gap: 25px 20px;
   width: 1060px;
 `;
-const FooterContainer = styled.div``;
+const FooterContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 33%;
+  height: 160px;
+  padding: 32px 104px 64px 104px;
+  margin-top: 100px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: #111322;
+`;
+
+const FooterContentBox = styled.div`
+  display: flex;
+  gap: 30px;
+  color: #676767;
+`;
+const FooterSNS = styled.div`
+  display: flex;
+  gap: 12px;
+  color: #676767;
+`;
 const Main = () => {
   const [info, setInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -113,13 +139,23 @@ const Main = () => {
           "https://bootcamp-api.codeit.kr/api/sample/folder"
         );
         setInfo(res.data.folder.links);
-        console.log(info);
+      } catch (error) {}
+    }
+
+    async function fetchUserData() {
+      try {
+        const res = await axios.get(
+          "https://bootcamp-api.codeit.kr/api/sample/user"
+        );
+        setUserInfo(res.data);
+        console.log(res.data);
       } catch (error) {
         console.log(error);
       }
     }
 
     fetchData();
+    fetchUserData();
   }, []);
 
   return (
@@ -129,12 +165,12 @@ const Main = () => {
           <Img src={logo} />
           <HeaderProfile>
             <Img src={profile} />
-            Codeit@codeit.com
+            {userInfo["email"]}
           </HeaderProfile>
         </HeaderTitle>
         <HeaderUserInfo>
-          <ProfileImg src={Avatar} />
-          <ProfileName>@코드잇</ProfileName>
+          <ProfileImg src={userInfo["profileImageSource"]} />
+          <ProfileName>{userInfo["name"]}</ProfileName>
           <ProfileStarPage>⭐즐겨찾기</ProfileStarPage>
         </HeaderUserInfo>
       </HeaderContainer>
@@ -155,7 +191,19 @@ const Main = () => {
           </MainCard>
         </MainContent>
       </MainContainer>
-      <FooterContainer></FooterContainer>
+      <FooterContainer>
+        <FooterContentBox>@codeit-2023</FooterContentBox>
+        <FooterContentBox>
+          <div>Privacy policy</div>
+          <div>FAQ</div>
+        </FooterContentBox>
+        <FooterSNS>
+          <img src={facebook}></img>
+          <img src={twitter}></img>
+          <img src={youtube}></img>
+          <img src={instagram}></img>
+        </FooterSNS>
+      </FooterContainer>
     </TotalFrame>
   );
 };
