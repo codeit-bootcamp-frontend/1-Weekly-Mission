@@ -9,6 +9,7 @@ export const LargeLinkDiv = styled.div`
   padding: 1rem 1.25rem;
   margin: 2.5rem 0rem;
   border-radius: 0.9375rem;
+  border: 1px solid var(--linkbrary-primary);
   background-color: #fff;
   font-size: 1rem;
   line-height: 1.5rem;

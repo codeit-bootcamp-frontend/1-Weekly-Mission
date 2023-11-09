@@ -1,89 +1,100 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+import FloatingBtn from "./FloatingBtn";
+import AddFolderBtn from "./AddFolderBtn";
+import FunctionBtn from "./FunctionBtn";
+import * as Styled from "../style/FolderList";
+import iconShare from "../assets/img/icon-share.svg";
+import iconPen from "../assets/img/icon-pen.svg";
+import iconTrash from "../assets/img/icon-trash.svg";
 
-const FlexDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
-  flex-wrap: nowrap;
-`;
-
-const FlexUl = styled.ul`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-const StyledAddBtn = styled.button`
-  width: auto;
-  color: var(--linkbrary-primary);
-  font-weight: 500;
-  letter-spacing: -0.01875rem;
-  white-space: nowrap;
-
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
-
-const StyledFolderBtn = styled.button`
-  max-height: 2.1875rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.3125rem;
-  border: 1px solid var(--linkbrary-primary);
-  background-color: ${({ active }) =>
-    active ? `var(--linkbrary-primary)` : `#fff`};
-  color: ${({ active }) => active && `#fff`};
-  white-space: nowrap;
-`;
-
-function FolderChip({ name, id }) {
-  const [active, setActive] = useState(false);
-
-  const getActiveStyle = ({ isActive }) => {
-    setActive(isActive);
+function FolderChip({ name, id, onClick, style }) {
+  const handleOnClick = () => {
+    onClick(id.slice(1), name);
   };
 
   return (
-    <NavLink style={getActiveStyle} to={`/folder${id}`}>
-      <StyledFolderBtn active={active}>{name}</StyledFolderBtn>
-    </NavLink>
+    <Link to={`/folder${id}`}>
+      <Styled.FolderBtn onClick={handleOnClick} active={style}>
+        {name}
+      </Styled.FolderBtn>
+    </Link>
   );
 }
 
 function FolderList({ folders, params }) {
-  const [allId, setAllId] = useState("");
+  const [active, setActive] = useState(params);
+  const [name, setName] = useState("");
 
-  function handleAllId() {
-    if (params !== "") setAllId("/");
+  function filterName(folders, params) {
+    if (!params) {
+      setName("전체");
+      return;
+    }
+    const folder = folders.filter((folder) => {
+      return folder.id == params;
+    });
+
+    setName(folder[0]["name"]);
+  }
+
+  function handleClick(id) {
+    setActive(id);
+    filterName(folders, params);
   }
 
   useEffect(() => {
-    handleAllId();
+    handleClick(params, name);
   }, [params]);
 
   return (
-    <FlexDiv>
-      <FlexUl>
-        <li>
-          <FolderChip name={"전체"} id={allId} />
-        </li>
-        {folders.map((folder) => {
-          const { id, name } = folder;
+    <>
+      <FloatingBtn />
+      <Styled.FlexDiv>
+        <Styled.FlexUl>
+          <li>
+            <FolderChip
+              name={"전체"}
+              id={""}
+              onClick={handleClick}
+              style={active === "" ? "blue" : ""}
+            />
+          </li>
+          {folders.map((folder) => {
+            const { id, name } = folder;
 
-          return (
-            <li key={folder.id}>
-              <FolderChip name={name} id={"/" + id} />
-            </li>
-          );
-        })}
-      </FlexUl>
+            return (
+              <li key={folder.id}>
+                <FolderChip
+                  name={name}
+                  id={"/" + id}
+                  onClick={handleClick}
+                  style={active == id ? "blue" : ""}
+                />
+              </li>
+            );
+          })}
+        </Styled.FlexUl>
+        <AddFolderBtn />
+      </Styled.FlexDiv>
 
-      <StyledAddBtn>폴더 추가 +</StyledAddBtn>
-    </FlexDiv>
+      <Styled.FlexDiv>
+        <Styled.H1>{name}</Styled.H1>
+        {active && (
+          <Styled.OptionalUl>
+            <FunctionBtn src={iconShare} alt="공유">
+              공유
+            </FunctionBtn>
+            <FunctionBtn src={iconPen} alt="이름 변경">
+              이름 변경
+            </FunctionBtn>
+            <FunctionBtn src={iconTrash} alt="삭제">
+              삭제
+            </FunctionBtn>
+          </Styled.OptionalUl>
+        )}
+      </Styled.FlexDiv>
+    </>
   );
 }
 

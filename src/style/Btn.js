@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Btn = styled.button`
+export const Link = styled.a`
+  display: inline-block
   text-align: center;
   width: 8rem;
   padding: 1rem 1.25rem;
@@ -11,9 +12,10 @@ export const Btn = styled.button`
   font-weight: 600;
 `;
 
-export const BtnSmall = styled(Btn)`
+export const LinkSmall = styled(Link)`
   width: 5rem;
   padding: 0.62rem 1rem;
   font-size: 0.875rem;
+  line-height: 100%;
   white-space: nowrap;
 `;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import moment from "moment";
 import Star from "./Star";
+import PopOver from "./PopOver";
 import kebabICON from "../assets/img/icon-kebab.svg";
 import noImageIMG from "../assets/img/img-linkthumb-noimg.svg";
 import "../assets/css/Card.css";
@@ -16,6 +17,19 @@ function Card({ data, onClick }) {
     } else {
       setStar(true);
     }
+  };
+
+  /*--kebab--*/
+  const [kebab, setKebab] = useState(false);
+
+  const handleKebabClick = (e) => {
+    e.stopPropagation();
+    if (kebab) {
+      setKebab(false);
+    } else {
+      setKebab(true);
+    }
+    console.log(kebab);
   };
 
   /*--card clik--*/
@@ -68,7 +82,10 @@ function Card({ data, onClick }) {
       <div className="infoContainer">
         <div className="additionalInfo">
           <span className="timeForToday">{timeForToday(data.created_at)}</span>
-          <img src={kebabICON} alt="카드 설정 더보기" />
+          <button onClick={handleKebabClick}>
+            <img src={kebabICON} alt="카드 설정 더보기" />
+          </button>
+          <PopOver isOn={kebab} />
         </div>
         <p className="description">{data.description || data.title}</p>
         <span className="createdDate">{formatDate(data.created_at)}</span>
