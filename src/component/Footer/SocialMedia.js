@@ -1,7 +1,7 @@
-import facebookImg from "../assets/facebook.svg";
-import twitterImg from "../assets/twitter.svg";
-import youtubeImg from "../assets/youtube.svg";
-import instagramImg from "../assets/instagram.svg";
+import facebookImg from "../../assets/facebook.svg";
+import twitterImg from "../../assets/twitter.svg";
+import youtubeImg from "../../assets/youtube.svg";
+import instagramImg from "../../assets/instagram.svg";
 
 const socialMedia = [
   {

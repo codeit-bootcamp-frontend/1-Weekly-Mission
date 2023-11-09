@@ -1,30 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Nav } from "./Nav.js";
-import { Footer } from "./Footer.js";
-import { profileRequestApi } from "../api/requestApi.js";
+import { createGlobalStyle } from "styled-components";
+import { Nav } from "./Nav/Nav.js";
+import { Footer } from "./Footer/Footer.js";
 
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    font-size: 62.5%;
+  }
+
+  body {
+    font-family: "Pretendard", "sans-serif";
+    color: #373740;
+    font-size: 1.4rem;
+    font-weight: 400;
+    max-width: 192rem;
+    width: auto;
+}`
 
 export function App() {
-  const [user, setUser] = useState([]);
-
-  async function profile(){
-    try{
-      const profile = await profileRequestApi("users/1");
-      setUser(profile);
-    }catch{
-      
-    }
-  }
-  
-  useEffect(()=> {
-    profile()
-  },[])
-  
+  const { isError, setIsError} = useState(false);
+ 
   return (
     <>
-      <Nav user={user}/>
-      <Outlet />
+      <GlobalStyle />
+      <Nav setIsError={setIsError}/>
+      {!isError&&<Outlet />}
       <Footer />
     </>
   );
