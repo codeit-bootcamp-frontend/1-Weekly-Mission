@@ -1,17 +1,25 @@
-/* nav css 작성 */
+@import "commons/styles/global.scss";
+
 nav {
   width: 100%;
   background-color: var(--color-gray1);
   padding: 2rem 3.2rem;
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+
+  &.sticky {
+    top: 0;
+    left: 0;
+    position: sticky;
+  }
+  @include desktop {
+    padding: 2rem 10rem;
+  }
 }
+
 .gnb {
   width: 100%;
   padding: 0;
@@ -19,6 +27,9 @@ nav {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  @include tablet {
+    max-width: 80rem;
+  }
 }
 .link-button {
   display: flex;
@@ -42,23 +53,4 @@ nav {
 .profile-img {
   width: 1.5rem;
   height: 1.5rem;
-  border-radius: 70%;
-  overflow: hidden;
-}
-
-/* 768px 이상 1199px 이하 타블렛에서는 
- * nav 좌우 padding이 최소 3.2rem이며 gnb div의 크기가 최대 80rem이었다가 nav 태그의 크기가 86.4rem보다 작아지면 gnb의 로고와 버튼 사이 간격을 줄인다.
-*/
-@media (min-width: 768px) {
-  .gnb {
-    max-width: 80rem;
-  }
-}
-/* 1200px 이상 컴퓨터에서는
- * 좌우 padding이 20rem이며 브라우저 창이 작아지면 로고와 버튼 간의 간격이 줄어든다.
- */
-@media (min-width: 1200px) {
-  nav {
-    padding: 2rem 10rem;
-  }
 }

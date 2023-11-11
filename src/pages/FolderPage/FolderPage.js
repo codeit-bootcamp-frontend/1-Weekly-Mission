@@ -1,45 +1,62 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
+import Layout from "commons/components/Layout/Layout";
 import { SearchBar } from "commons/components/index";
-
-import useAsync from "apis/useAsync";
-import {
-  FolderHeader,
-  LinkAddInput,
-  MobileFolderButton,
-} from "./components/index";
-
-import { getAllFolders } from "apis/api";
+import { LinkAddBar } from "./components/index";
 import "./FolderPage.css";
+import FolderViewer from "./components/FolderViewer/FolderViewer";
+import { useState } from "react";
+import AddFolderModal from "commons/modals/AddFolderModal/AddFolderModal";
+import ModalLayout from "commons/modals/ModalLayout";
 
-function FolderPage() {
-  const param = useParams();
-  const [folderList, setFolderList] = useState([]);
+const INITMODAL = {
+  isOpened: false,
+  modalType: "",
+  targetId: "",
+  targetTitle: "",
+};
 
-  // 내가 가지고 있는 모든 폴더 목록들을 받아서 folderList 배열에 저장.
-  const [pending, error, getAllFoldersAsync] = useAsync(getAllFolders);
-  const getFolderList = async () => {
-    const allFolders = await getAllFoldersAsync();
-    setFolderList(allFolders?.data);
+function MobileFolderButton() {
+  const [modalValues, setModalValues] = useState(INITMODAL);
+
+  const handleModal = (e) => {
+    e.preventDefault();
+    const newValue = {
+      isOpened: true,
+    };
+    setModalValues((prev) => {
+      return { ...prev, ...newValue };
+    });
   };
 
-  useEffect(() => {
-    getFolderList();
-  }, []);
-
+  const closeModal = () => {
+    setModalValues(() => {
+      return { ...INITMODAL };
+    });
+  };
   return (
     <>
-      <MobileFolderButton />
-      <LinkAddInput />
-      <SearchBar />
-      <button type="button" className="add-folder-button">
+      {modalValues.isOpened && (
+        <ModalLayout onClose={closeModal}>
+          <AddFolderModal />
+        </ModalLayout>
+      )}
+      <button
+        id="addFolderButton"
+        onClick={handleModal}
+        className="mobild-float-button"
+      >
         폴더 추가+
       </button>
-      <div className="folder-buttons">
-        <FolderHeader folderList={folderList} />
-      </div>
     </>
+  );
+}
+
+function FolderPage() {
+  return (
+    <Layout isSticky={false}>
+      <MobileFolderButton />
+
+      <FolderViewer />
+    </Layout>
   );
 }
 

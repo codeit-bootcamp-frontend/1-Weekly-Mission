@@ -5,6 +5,13 @@ import { ReactComponent as YoutubeIcon } from "assets/images/akar-icons_youtube-
 import { ReactComponent as InstagramIcon } from "assets/images/akar-icons_instagram-filled.svg";
 
 function Footer() {
+  const snsIcons = [
+    { name: "facebook", comp: <FacebookIcon /> },
+    { name: "twitter", comp: <TwitterIcon /> },
+    { name: "youtube", comp: <YoutubeIcon /> },
+    { name: "instagram", comp: <InstagramIcon /> },
+  ];
+
   return (
     <footer className={styles["content"]}>
       <div className={`${styles.footer} ${styles.logo}`}>©Codeit - 2023</div>
@@ -13,34 +20,19 @@ function Footer() {
         <a href="./">FAQ</a>
       </div>
       <div className={`${styles.footer} ${styles.sns}`}>
-        <a
-          href="https://www.facebook.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <FacebookIcon />
-        </a>
-        <a
-          href="https://www.twitter.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <TwitterIcon />
-        </a>
-        <a
-          href="https://www.youtube.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <YoutubeIcon />
-        </a>
-        <a
-          href="https://www.instagram.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <InstagramIcon />
-        </a>
+        {snsIcons.map((icon) => {
+          let iconPath = `https://www.${icon.name}.com/`;
+          return (
+            <a
+              href={iconPath}
+              target="_blank"
+              rel="noreferrer noopener"
+              key={icon.name}
+            >
+              {icon.comp}
+            </a>
+          );
+        })}
       </div>
     </footer>
   );

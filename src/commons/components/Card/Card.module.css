@@ -1,3 +1,5 @@
+@import "commons/styles/global.scss";
+
 .card-container {
   width: 340px;
   height: 350px;
@@ -5,10 +7,9 @@
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.1);
   padding: 0;
   border-radius: 15px;
-  overflow: hidden;
   position: relative;
   &:hover {
-    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary);
   }
 
   :hover img {
@@ -75,23 +76,6 @@
 }
 
 /* 카드 컴포넌트의 부수적인 파트 */
-.unfilled-star-button {
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  z-index: 999;
-}
-
-.kebab-button {
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  bottom: 33%;
-  right: 1rem;
-  z-index: 999;
-}
 
 .no-card-list {
   height: 500px;

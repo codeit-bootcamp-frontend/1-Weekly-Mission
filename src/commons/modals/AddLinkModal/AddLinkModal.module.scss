@@ -1,0 +1,70 @@
+.folder-checkbox {
+  display: flex;
+  width: 28rem;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+.checked {
+  border-radius: 8px;
+  color: var(--linkbrary-primary-color, #6d6afe);
+  background-color: #f0f6ff;
+}
+.link-counts {
+  color: var(--linkbrary-gray-60, #9fa6b2);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 3.2rem 4rem;
+  justify-content: center;
+  align-items: center;
+}
+.modal-desc {
+  color: #9fa6b2;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 22px; /* 157.143% */
+}
+
+.modal-title {
+  color: #373740;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.modal-input {
+  color: #9fa6b2;
+  width: 28rem;
+  padding: 1.6rem;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 22px; /* 157.143% */
+
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+}
+
+.modal-button {
+  width: 28rem;
+  color: white;
+  font-size: 1.6rem;
+  padding: 1.6rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+}

@@ -1,7 +1,22 @@
-.add-folder-button {
-  position: absolute;
-  right: 10rem;
-  background-color: transparent;
-  color: var(--color-primary);
+@import "commons/styles/global.scss";
+
+.mobild-float-button {
+  position: fixed;
+  height: 4rem;
+  width: 15rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  bottom: 101px;
+  z-index: 999;
+  border-radius: 20px;
   border: none;
+  color: white;
+  background-color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+  .mobild-float-button {
+    display: none;
+  }
 }
