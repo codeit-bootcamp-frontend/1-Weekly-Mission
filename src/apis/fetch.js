@@ -1,32 +1,32 @@
-import useAsync from "../hooks/useAsync"
-import { fetchGet } from "./api"
+import useAsync from '../hooks/useAsync';
+import { fetchGet } from './api';
 
 const useFetchSampleFolder = () => {
-  return useAsync(() => fetchGet("/api/sample/folder"), [])
-}
+  return useAsync(() => fetchGet('/api/sample/folder'), []);
+};
 
 const useFetchUserProfileSample = () => {
-  return useAsync(() => fetchGet("/api/sample/user"), [])
-}
+  return useAsync(() => fetchGet('/api/sample/user'), []);
+};
 
 const useFetchUserProfile = (userId) => {
-  return useAsync(() => fetchGet(`/api/users/${userId}`))
-}
+  return useAsync(() => fetchGet(`/api/users/${userId}`), [userId]);
+};
 
 const useFetchUserFolders = (userId) => {
-  return useAsync(() => fetchGet(`/api/users/${userId}/folders`))
-}
+  return useAsync(() => fetchGet(`/api/users/${userId}/folders`), [userId]);
+};
 
 const useFetchUserLinks = (userId, folderId = undefined) => {
-  let query
+  let query;
   if (folderId) {
-    query = `/api/users/${userId}/links?folderId=${folderId}`
+    query = `/api/users/${userId}/links?folderId=${folderId}`;
   } else {
-    query = `/api/users/${userId}/links`
+    query = `/api/users/${userId}/links`;
   }
 
-  return useAsync(() => fetchGet(query))
-}
+  return useAsync(() => fetchGet(query), [userId, folderId]);
+};
 
 export {
   useFetchSampleFolder,
@@ -34,4 +34,4 @@ export {
   useFetchUserProfile,
   useFetchUserFolders,
   useFetchUserLinks,
-}
+};

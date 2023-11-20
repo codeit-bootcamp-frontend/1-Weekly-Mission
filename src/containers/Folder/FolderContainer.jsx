@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import CardList from '../../components/Card/CardList';
@@ -7,23 +7,32 @@ import FolderMenubar from '../../components/Folder/FolderMenubar';
 import Searchbar from '../../components/Searchbar/Searchbar';
 import NoLink from './NoLink';
 import { fetchGet } from '../../apis/api';
-import { DEFAULT_FOLDER } from '../../utils/utils';
+import { DEFAULT_FOLDER, MODAL_NAME } from '../../constants/constant';
 import * as S from './styles';
+import Modal from '../../components/Modal/Modal';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
+// import { useFetchUserLinks } from '../../apis/fetch';
 
-function FolderContainer({ folderData, userId, userLinks }) {
-  const [isSelectedFolder, setIsSelectedFolder] = useState(undefined);
+const FolderContainer = ({ folderData, userId, userLinks }) => {
   const [selectedFolderName, setSelectedFolderName] = useState(
     DEFAULT_FOLDER.name,
   );
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log('이건 나와야 하는거', isSelectedFolder);
-  const [cards, setCards] = useState(userLinks);
+  const [cards, setCards] = useState([]);
   const currentFolderId = searchParams.get('folderId');
 
-  const handleFolderSelect = async (folderId, folderName) => {
-    setIsSelectedFolder(folderId);
-    console.log('클릭 했을때');
-    setSelectedFolderName(folderName);
+  // useFetchUserLinks를 사용하여 fetchGet을 대체해보자
+  // const {
+  //   isLoading,
+  //   data: cardsData,
+  //   fetchData: refetch,
+  // } = useFetchUserLinks(userId, currentFolderId);
+
+  const handleFolderSelect = async (folderId) => {
+    const selectedFolderName = folderData
+      .filter((folder) => folderId === folder.id)
+      .map((folder) => folder.name);
+    setSelectedFolderName(selectedFolderName[0]);
     setSearchParams(folderId !== 0 ? { folderId } : {});
 
     let query;
@@ -39,37 +48,57 @@ function FolderContainer({ folderData, userId, userLinks }) {
       setCards(userLinks);
       setSelectedFolderName(DEFAULT_FOLDER.name);
     } else {
-      const selectedCards = userLinks
-        .filter((card) => String(card.folder_id) === currentFolderId)
-        .map((card) => card);
-      setCards(() => selectedCards);
+      setCards(() =>
+        cards
+          .filter((card) => String(card.folder_id) === currentFolderId)
+          .map((card) => card),
+      );
 
       const selectedFolder = folderData.find(
         (folder) => String(folder.id) === currentFolderId,
       );
       setSelectedFolderName(selectedFolder.name);
-      setIsSelectedFolder(currentFolderId);
     }
   };
 
   const handleSearchbar = (event, searchedText) => {
     event.preventDefault();
-    if (!searchedText) setCards(() => userLinks);
-    console.log(searchedText);
 
-    const filterdCards = userLinks.filter((link) => {
-      if (
-        link['description'] !== null &&
-        link['description'].includes(searchedText)
-      )
-        return link;
-    });
-    setCards(() => filterdCards);
+    searchedText
+      ? setCards(() =>
+          cards.filter((link) => link['description']?.includes(searchedText)),
+        )
+      : setCards(() => cards);
   };
 
   useEffect(() => {
     handleSearchParam();
-  }, [currentFolderId]);
+  }, [searchParams]);
+
+  const [cardState, setModalState] = useState(false);
+  const modalRef = useRef();
+  useOnClickOutside(modalRef, () => setModalState(false));
+
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalBtnColor, setModalBtnColor] = useState('');
+  const [modalDescription, setModalDescription] = useState('');
+  const [modalBtnText, setModalBtnText] = useState('');
+
+  const handleModalCardAdd = (e, text) => {
+    if (!e || !text) return;
+    setModalState(true);
+    setModalTitle(MODAL_NAME[text].title);
+    setModalBtnColor(MODAL_NAME[text].buttonColor);
+    setModalDescription(MODAL_NAME[text].description);
+    setModalBtnText(MODAL_NAME[text].buttonText);
+  };
+  const handleModalCardDelete = (e, text) => {
+    setModalState(true);
+    setModalTitle(MODAL_NAME[text].title);
+    setModalBtnColor(MODAL_NAME[text].buttonColor);
+    setModalDescription(MODAL_NAME[text].description);
+    setModalBtnText(MODAL_NAME[text].buttonText);
+  };
 
   return (
     <S.CardContainerBox>
@@ -80,6 +109,16 @@ function FolderContainer({ folderData, userId, userLinks }) {
       ) : (
         cards && (
           <>
+            {cardState && (
+              <Modal
+                title={modalTitle}
+                btnText={modalBtnText}
+                modalText={modalDescription}
+                btnColor={modalBtnColor}
+                folderName="유용한 팁"
+                setModalState={setModalState}
+              />
+            )}
             <S.FolderContainerBox>
               <FolderNavbar
                 folderData={folderData}
@@ -92,12 +131,16 @@ function FolderContainer({ folderData, userId, userLinks }) {
               <FolderMenubar selectedFolderName={selectedFolderName} />
             </S.FolderNameBox>
 
-            <CardList cards={cards} />
+            <CardList
+              cards={cards}
+              handleModalCardAdd={handleModalCardAdd}
+              handleModalCardDelete={handleModalCardDelete}
+            />
           </>
         )
       )}
     </S.CardContainerBox>
   );
-}
+};
 
 export default FolderContainer;

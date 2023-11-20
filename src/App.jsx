@@ -6,7 +6,7 @@ import {
   SignUpPage,
   SignInPage,
   NotFound,
-} from './pages/pages';
+} from './pages';
 import GlobalStyle from './styles/GlobalStyles';
 
 function App() {

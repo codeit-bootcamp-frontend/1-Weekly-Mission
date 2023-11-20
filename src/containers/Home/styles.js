@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const HeroHeaderBox = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const HeroHeaderBox = styled.div`
     row-gap: 2.4rem;
     padding-top: 0;
   }
-`
+`;
 
 const HeroSolganHeader = styled.h1`
   text-align: center;
@@ -37,7 +37,7 @@ const HeroSolganHeader = styled.h1`
     word-break: keep-all;
     width: 23.6rem;
   }
-`
+`;
 
 const HomeTitleHeader = styled.h2`
   grid-area: title;
@@ -50,7 +50,7 @@ const HomeTitleHeader = styled.h2`
     font-size: 2.4rem;
     line-height: normal;
   }
-`
+`;
 
 const HeroImage = styled.img`
   width: 120rem;
@@ -66,7 +66,7 @@ const HeroImage = styled.img`
     width: 65rem;
     height: 38.3rem;
   }
-`
+`;
 
 const HomeArticle = styled.article`
   padding-top: 7rem;
@@ -79,7 +79,7 @@ const HomeArticle = styled.article`
   @media screen and (max-width: 767px) {
     padding-top: 0;
   }
-`
+`;
 
 const HomeDescriptionParagraph = styled.p`
   grid-area: description;
@@ -92,13 +92,13 @@ const HomeDescriptionParagraph = styled.p`
   @media screen and (max-width: 767px) {
     font-size: 1.5rem;
   }
-`
+`;
 
 const HomeContentImage = styled.img`
   grid-area: image;
   object-fit: cover;
   width: 100%;
-`
+`;
 
 const HomeSection = styled.section`
   display: grid;
@@ -111,19 +111,19 @@ const HomeSection = styled.section`
 
   &:nth-of-type(odd) {
     grid-template:
-      ". image"
-      "title image"
-      "description image"
-      ". image"
+      '. image'
+      'title image'
+      'description image'
+      '. image'
       /29.1rem 55rem;
   }
 
   &:nth-of-type(even) {
     grid-template:
-      "image ."
-      "image title"
-      "image description"
-      "image ."
+      'image .'
+      'image title'
+      'image description'
+      'image .'
       /55rem 29.1rem;
   }
 
@@ -135,19 +135,19 @@ const HomeSection = styled.section`
 
     &:nth-of-type(odd) {
       grid-template:
-        ". image"
-        "title image"
-        "description image"
-        ". image"
+        '. image'
+        'title image'
+        'description image'
+        '. image'
         /26.2rem 38.5rem;
     }
 
     &:nth-of-type(even) {
       grid-template:
-        "image ."
-        "image title"
-        "image description"
-        "image ."
+        'image .'
+        'image title'
+        'image description'
+        'image .'
         /38.5rem 26.2rem;
     }
   }
@@ -160,49 +160,49 @@ const HomeSection = styled.section`
 
     &:nth-of-type(odd) {
       grid-template:
-        "title"
-        "image"
-        "description"
+        'title'
+        'image'
+        'description'
         / 1fr;
     }
 
     &:nth-of-type(even) {
       grid-template:
-        "title"
-        "image"
-        "description"
+        'title'
+        'image'
+        'description'
         / 1fr;
     }
   }
-`
+`;
 
 const HomeGradientSpan1 = styled.span`
   background-image: var(--linkbrary-title-1-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-`
+`;
 
 const HomeGradientSpan2 = styled.span`
   background-image: var(--linkbrary-title-2-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-`
+`;
 
 const HomeGradientSpan3 = styled.span`
   background-image: var(--linkbrary-title-3-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-`
+`;
 
 const HomeGradientSpan4 = styled.span`
   background-image: var(--linkbrary-title-4-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-`
+`;
 
 export {
   HeroHeaderBox,
@@ -217,4 +217,4 @@ export {
   HomeGradientSpan4,
   HomeDescriptionParagraph,
   HomeContentImage,
-}
+};
