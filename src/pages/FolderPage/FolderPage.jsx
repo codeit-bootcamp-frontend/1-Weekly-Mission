@@ -6,8 +6,10 @@
 // import SearchBar from "../../SearchBar";
 // import linkImg from "../../../assets/link-Img.png";
 
+import * as S from "./FolderPage.style";
 import Gnb from 'components/Gnb';
 import AddLink from 'components/AddLink';
+import SearchLink from 'components/SearchLink';
 
 function FolderPage() {
   // const [folderData, setFolderData] = useState([]);
@@ -65,7 +67,10 @@ function FolderPage() {
     // </div>
     <>
       <Gnb />
-      <AddLink />
+      <S.Header>
+        <AddLink />
+      </S.Header>
+      <SearchLink />
     </>
   );
 }
