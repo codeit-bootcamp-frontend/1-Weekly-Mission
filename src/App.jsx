@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "pages/MainPage";
 import FolderPage from "./components/Pages/FolderPage/FolderPage";
 import SharedPage from "./components/Pages/SharedPage/SharedPage";
 
