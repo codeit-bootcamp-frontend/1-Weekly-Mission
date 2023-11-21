@@ -1,4 +1,6 @@
+import Gnb from "components/Gnb/Gnb";
+
 function MainPage() {
-  return <div>hello</div>;
+  return <Gnb />;
 }
 export default MainPage;

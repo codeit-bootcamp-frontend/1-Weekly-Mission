@@ -8,4 +8,6 @@ export const COLORS = {
   GRAY_300: "#CCD5E3",
   GRAY_400: "#9FA6B2",
   GRAY_500: "#3E3E43",
+  BACKGROUND: "#F0F6FF",
+  GRADATION: "linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%)",
 };

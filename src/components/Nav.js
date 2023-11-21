@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../assets/logo.svg";
 import './Nav.css';
-import Button from "./Button";
+import Button from "./Button/Button";
 import { getUser } from "../api";
 
 
