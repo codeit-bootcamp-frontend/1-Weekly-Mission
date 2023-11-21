@@ -1,9 +1,11 @@
 import * as S from "./CardList.style";
 import Card from "./Card";
+import FolderMenu from 'components/FolderMenu';
 
 function CardList({ cards }) {
   return(
     <>
+      <FolderMenu />
       {cards &&
         cards.map((card) => {
           return (

@@ -10,6 +10,7 @@ import * as S from "./FolderPage.style";
 import Gnb from 'components/Gnb';
 import AddLink from 'components/AddLink';
 import SearchLink from 'components/SearchLink';
+import CardList from 'components/CardList';
 
 function FolderPage() {
   // const [folderData, setFolderData] = useState([]);
@@ -71,6 +72,7 @@ function FolderPage() {
         <AddLink />
       </S.Header>
       <SearchLink />
+      <CardList/>
     </>
   );
 }
