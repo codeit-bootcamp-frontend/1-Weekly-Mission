@@ -1,8 +1,13 @@
-// import Gnb from "components/Gnb/Gnb";
 // import Modal from 'components/Modal';
-import Card from 'components/CardList/Card';
+// import Card from 'components/CardList/Card';
+
+import Gnb from 'components/Gnb';
 
 function MainPage() {
-  return <Card />;
+  return (
+    <>
+      {/* <Gnb/> */}
+    </>
+  );
 }
 export default MainPage;

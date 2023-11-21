@@ -7,10 +7,9 @@ export const StyledButton = styled.button`
   padding: 1rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   border-radius: 0.8rem;
   background: ${COLORS.GRADATION};
-  color: #fff;
+  color: #f5f5f5;
   font-family: Pretendard;
   font-size: 1.4rem;
   font-style: normal;

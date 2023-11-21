@@ -1,5 +1,5 @@
 import * as S from "./CardList.style";
-import Card from './Card';
+import Card from "./Card";
 
 function CardList({ cards }) {
   return(
