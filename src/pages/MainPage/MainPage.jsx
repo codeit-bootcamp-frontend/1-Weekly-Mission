@@ -1,6 +1,7 @@
-import Gnb from "components/Gnb/Gnb";
+// import Gnb from "components/Gnb/Gnb";
+import Modal from 'components/Modal';
 
 function MainPage() {
-  return <Gnb />;
+  return <Modal />;
 }
 export default MainPage;

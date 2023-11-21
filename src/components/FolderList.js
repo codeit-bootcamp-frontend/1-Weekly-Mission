@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Modal from "./Modal.js";
+import Modal from "./Modal-ex.js";
 import penIcon from "../assets/penIcon.svg";
 import shareIcon from "../assets/shareIcon.svg";
 import deleteIcon from "../assets/deleteIcon.png";
