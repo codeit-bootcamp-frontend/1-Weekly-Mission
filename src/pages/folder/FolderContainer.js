@@ -12,7 +12,7 @@ import FolderHero from "components/hero/HeroAboutFolder";
 import Categories from "components/Categories";
 import Options from "components/Options";
 import ModalContainer from "components/modal/ModalContainer";
-import AddFolder from "components/modal/AddFolder";
+import AddFolder from "components/modal/addFolder";
 import ModalPortal from "components/ModalPortal";
 
 const DEFAULT = "전체";
