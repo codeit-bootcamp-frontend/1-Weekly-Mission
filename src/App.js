@@ -1,20 +1,18 @@
+import "sharing/styles/reset.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./styles/GlobalStyle.css";
-import Home from "./Home";
-import Shared from "./pages/Shared";
-import Folder from "./pages/Folder";
+import { SharedPage } from "pages/SharedPage";
+import { FolderPage } from "pages/FolderPage";
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="/shared" element={<Shared />} />
-          <Route path="/folder" element={<Folder />} />
-        </Route>
+        <Route path="/" element={<FolderPage />} />
+        <Route path="/shared" element={<SharedPage />} />
+        <Route path="/folder" element={<FolderPage />} />
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
