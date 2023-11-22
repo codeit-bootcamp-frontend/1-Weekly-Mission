@@ -23,7 +23,7 @@ const Input = styled.input`
   }
 `;
 
-export default function AddFolder() {
+export default function AddFolders() {
   return (
     <>
       <ModalTitle label="폴더 추가" />

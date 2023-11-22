@@ -12,7 +12,7 @@ import FolderHero from "components/hero/HeroAboutFolder";
 import Categories from "components/Categories";
 import Options from "components/Options";
 import ModalContainer from "components/modal/ModalContainer";
-import AddFolder from "components/modal/addFolder";
+import AddFolders from "components/modal/AddFolders";
 import ModalPortal from "components/ModalPortal";
 
 const DEFAULT = "전체";
@@ -72,7 +72,7 @@ export default function Folder() {
       {isOpenModal && (
         <ModalPortal>
           <ModalContainer onClose={() => setIsOpenModal(false)}>
-            <AddFolder />
+            <AddFolders />
           </ModalContainer>
         </ModalPortal>
       )}
