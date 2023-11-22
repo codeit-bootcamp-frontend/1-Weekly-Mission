@@ -43,3 +43,20 @@
   border-radius: 5px;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
 }
+
+.links {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.links:hover {
+  background-color: var(--background);
+}
+
+.links span {
+  font-weight: 900;
+}

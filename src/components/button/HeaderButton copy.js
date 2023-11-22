@@ -27,6 +27,7 @@ export default function HeaderButton() {
             onChange={handleInput}
           />
         </div>
+
         <button className={styles.add__button} onClick={handleModal}>
           추가하기
         </button>

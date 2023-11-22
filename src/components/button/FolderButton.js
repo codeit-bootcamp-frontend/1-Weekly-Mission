@@ -1,12 +1,11 @@
 import React from "react";
 import Button from "../button/Button";
 import styles from "./FolderButton.module.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function FolderButton({ mappedResult, folderIdKey }) {
   const navigate = useNavigate();
-  const a = useParams();
-  // folderIdKey의 type은 string이다
+
   // 전체 메뉴탭일때 folderIdKey는 undefined
   return (
     <div className={styles.container}>

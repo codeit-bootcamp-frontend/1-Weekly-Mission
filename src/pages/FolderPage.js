@@ -29,7 +29,6 @@ export default function FolderPage() {
   const result = userFolderData?.data || [];
 
   const obj = mapFolderData(result);
-  const obj_keys = Object.keys(obj).map(Number);
   const [mappedResult, isLoading] = useFetchLinksData(mapLinksData, result);
 
   return (
