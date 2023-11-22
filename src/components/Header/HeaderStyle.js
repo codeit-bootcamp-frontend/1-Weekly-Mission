@@ -2,8 +2,6 @@ import styled from "styled-components";
 import colors from "../../style/colors";
 
 export const HeaderContainer = styled.header`
-
-// 여기가 깨지는데 이유를 모르겠어요
   display: flex;
   align-items: center;
   height: 17rem;

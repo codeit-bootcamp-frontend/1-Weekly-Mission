@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { getFolders, getLinksByFolderID } from "../../api";
-import FolderList from "../FolderList/FolderList";
-import CardList from "../../components/CardList/CardList";
-import useAsync from "../../Hooks/useAsync";
+import { getFolders, getLinksByFolderID } from "../api";
+import FolderList from "./FolderList/FolderList";
+import CardList from "./CardList/CardList";
+import useAsync from "../Hooks/useAsync";
 
 import styled from "styled-components";
-import { device } from "../../style/device";
+import { device } from "../style/device";
 import { useSearchParams } from "react-router-dom";
 
 

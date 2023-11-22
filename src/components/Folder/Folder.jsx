@@ -2,9 +2,9 @@ import Header from "../Header/Header";
 import getSample from "../../api";
 import useAsync from "../../Hooks/useAsync";
 
-import SearchBar from "../SearchBar/SearchBar";
 import CardList from "../CardList/CardList";
-import Main from "../Main/Main";
+import Main from "../Main";
+import SearchBar from "../SearchBar";
 
 function Folder() {
   const [data, isLoading, LoadingError, getSampleAsync] = useAsync(() =>

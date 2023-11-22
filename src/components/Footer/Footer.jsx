@@ -1,10 +1,18 @@
 import React from "react";
-import * as S from "./FooterStyle"
-import SocialIcon from "./SocialIcon";
+import * as S from "./FooterStyle";
+
 import facebookLogo from "../../assets/facebook.png";
 import instagramLogo from "../../assets/instagram.png";
 import twitterLogo from "../../assets/twitter.png";
 import youtubeLogo from "../../assets/youtube.png";
+
+function SocialIcon({ link, imageSource, altText }) {
+  return (
+    <a href={link}>
+      <img src={imageSource} alt={altText} />
+    </a>
+  );
+}
 
 function Footer() {
   const socialLinks = [

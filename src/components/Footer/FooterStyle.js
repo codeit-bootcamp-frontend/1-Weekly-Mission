@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import colors from '../../style/colors'
-import { device } from '../../style/device'
+import styled from "styled-components";
+import colors from "../../style/colors";
+import { device } from "../../style/device";
 export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
@@ -11,13 +11,13 @@ export const FooterContainer = styled.footer`
   @media ${device.mobile} {
     padding: 30px;
   }
-`
+`;
 
 export const Frame = styled.div`
   display: flex;
   flex-direction: column;
   align-self: stretch;
-`
+`;
 
 export const FooterInfo = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ export const FooterInfo = styled.div`
     gap: 6em;
     flex-direction: column;
   }
-`
+`;
 
 export const Codeit2023 = styled.div`
   color: #676767;
@@ -46,8 +46,7 @@ export const Codeit2023 = styled.div`
   @media ${device.mobile} {
     text-align: start;
   }
-}
-`
+`;
 
 export const ExtraInfo = styled.div`
   display: flex;
@@ -59,12 +58,12 @@ export const ExtraInfo = styled.div`
   word-break: keep-all;
   font-size: 17px;
   white-space: nowrap;
-`
+`;
 
 export const Link = styled.a`
   color: #cfcfcf;
   text-decoration: none;
-`
+`;
 
 export const SnsIcons = styled.div`
   display: flex;
@@ -72,9 +71,9 @@ export const SnsIcons = styled.div`
   gap: 0.75rem;
   grid-row: 1;
   justify-content: flex-end;
-`
+`;
 
 export const SnsIcon = styled.img`
   width: 1.25rem;
   height: 1.25rem;
-`
+`;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SearchImage from "../../assets/Search.png";
-import { flexCenter } from "../../style/common";
+import SearchImage from "../assets/Search.png";
+import { flexCenter } from "../style/common";
 
 function SearchBar() {
   return (
