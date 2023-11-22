@@ -13,16 +13,24 @@ export const FolderPage = () => {
   const { data: folders } = useGetFolders();
   const [selectedFolderId, setSelectedFolderId] = useState(ALL_LINKS_ID);
   const { data: links, loading } = useGetLinks(selectedFolderId);
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredLinks = searchQuery
+    ? links.filter(
+        (link) =>
+          link?.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          link?.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          link?.title?.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : links;
   return (
     <Layout isSticky={false}>
       <FolderLayout
         linkForm={<LinkForm folders={folders} />}
-        searchBar={<SearchBar />}
+        searchBar={<SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />}
         folderToolBar={
           <FolderToolBar folders={folders} selectedFolderId={selectedFolderId} onFolderClick={setSelectedFolderId} />
         }
-        cardList={loading ? null : <CardList folders={folders} links={links} />}
+        cardList={loading ? null : <CardList folders={folders} links={filteredLinks} />}
       />
     </Layout>
   );

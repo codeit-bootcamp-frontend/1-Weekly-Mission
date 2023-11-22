@@ -11,6 +11,7 @@ export const mapLinksData = (link: Link | SampleLink): MappedLink => {
   return {
     id,
     url,
+    title,
     imageSource,
     alt: `${title ?? url}의 대표 이미지`,
     elapsedTime: getElapsedTime(createdAt),

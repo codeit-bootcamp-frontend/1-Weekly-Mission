@@ -28,6 +28,7 @@ interface MappedFolder {
 export interface MappedLink {
   id: number;
   url: string;
+  title: string;
   imageSource: string;
   alt: string;
   elapsedTime: string;

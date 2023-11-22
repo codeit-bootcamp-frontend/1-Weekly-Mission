@@ -26,9 +26,16 @@
   color: $color-text-content-gray;
 }
 
-.icon {
+.searchIcon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 1.6rem;
+}
+.closeButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1.6rem;
+  height: 2.4rem;
 }
