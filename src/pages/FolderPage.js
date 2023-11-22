@@ -7,7 +7,7 @@ import Menubar from "../components/menuBar/Menubar";
 import LocaleContext from "../contexts/LocaleContext";
 
 import { useParams } from "react-router-dom";
-import { fetchUserData, fetchUserFolderData } from "../api/users";
+import { fetchUserData, fetchUserFolderData } from "../api/folder";
 import FolderMenu from "../components/menuBar/FolderMenu";
 
 import useFetchData from "./../hooks/useFetchData";
