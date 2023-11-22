@@ -117,7 +117,7 @@ export const S = {
     width: 100%;
     display: flex;
 
-    gap : 5px;
+    gap: 5px;
     flex-direction: column;
     align-items: start;
   `,
@@ -148,8 +148,6 @@ export const S = {
       display: flex;
       gap: 8px;
     }
-
-      /* Linkbrary/body1-regular */
       font-family: Pretendard;
       font-size: 16px;
       font-style: normal;
