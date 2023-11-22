@@ -46,20 +46,21 @@ export default function Options({ selected }) {
     setSelectedOption(e.currentTarget.innerText);
   };
 
+  const optionFolder = (currentOption) => {
+    switch (currentOption) {
+      case "공유":
+        return <ShareFolder currentFolderName={selected} />;
+      case "이름 변경":
+        return <EditFolder currentFolderName={selected} />;
+      case "삭제":
+        return <DeleteFolder currentFolderName={selected} label="폴더" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
-      {isModalOpen && (
-        <ModalPortal>
-          <ModalContainer onClose={() => setIsModalOpen(false)}>
-            {selectedOption === "공유" && <ShareFolder currentFolderName={selected} />}
-            {selectedOption === "이름 변경" && <EditFolder currentFolderName={selected} />}
-            {selectedOption === "삭제" && (
-              <DeleteFolder currentFolderName={selected} label="폴더" />
-            )}
-          </ModalContainer>
-        </ModalPortal>
-      )}
-
       <Container>
         {actions.map((action, index) => (
           <OptionsContainer key={index} onClick={handleSelectedOption}>
@@ -68,6 +69,14 @@ export default function Options({ selected }) {
           </OptionsContainer>
         ))}
       </Container>
+
+      {isModalOpen && (
+        <ModalPortal>
+          <ModalContainer onClose={() => setIsModalOpen(false)}>
+            {optionFolder(selectedOption)}
+          </ModalContainer>
+        </ModalPortal>
+      )}
     </>
   );
 }
