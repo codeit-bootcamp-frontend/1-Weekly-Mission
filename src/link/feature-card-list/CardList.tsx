@@ -1,4 +1,4 @@
-import { useGetFolders } from "folder/data-access-folder";
+import { Folder } from "folder/data-access-folder";
 import { AddLinkModal } from "link/ui-add-link-modal";
 import { EditableCard } from "link/ui-editable-card";
 import { NoLink } from "link/ui-no-link";
@@ -8,8 +8,12 @@ import { AlertModal } from "sharing/ui-alert-modal";
 import { MODALS_ID } from "./constant";
 import { MappedLink } from "folder/util-map";
 
-export const CardList = ({ links }: { links: MappedLink[] }) => {
-  const { data: folders } = useGetFolders();
+interface CardListProps {
+  links: MappedLink[];
+  folders: Folder[];
+}
+
+export const CardList = ({ folders, links }: CardListProps) => {
   const cardListRef = useRef<HTMLDivElement>(null);
   const [selectedFolderId, setSelectedFolderId] = useState(0);
   const [currentModal, setCurrentModal] = useState("");

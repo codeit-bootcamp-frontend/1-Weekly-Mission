@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffectOnce } from "./useEffectOnce";
+import { useCallback, useState } from "react";
 
 interface UseAsyncReturn<T> {
   execute: () => void;
@@ -12,7 +11,7 @@ export const useAsync = <T>(asyncFunction: () => Promise<{ data: T }>): UseAsync
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [data, setData] = useState<T | null>(null);
-  const execute = async () => {
+  const execute = useCallback(async () => {
     setLoading(true);
     setError(null);
     setData(null);
@@ -25,9 +24,7 @@ export const useAsync = <T>(asyncFunction: () => Promise<{ data: T }>): UseAsync
     } finally {
       setLoading(false);
     }
-  };
-
-  useEffectOnce(execute);
+  }, [asyncFunction]);
 
   return { execute, loading, error, data };
 };

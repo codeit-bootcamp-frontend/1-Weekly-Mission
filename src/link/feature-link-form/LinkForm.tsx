@@ -1,11 +1,14 @@
-import { useGetFolders } from "folder/data-access-folder";
+import { Folder } from "folder/data-access-folder";
 import { AddLinkModal } from "link/ui-add-link-modal";
 import { LinkForm as UiLinkForm } from "link/ui-link-form";
 import { KeyboardEvent, useState } from "react";
 
-export const LinkForm = () => {
+interface LinkFormProps {
+  folders: Folder[];
+}
+
+export const LinkForm = ({ folders }: LinkFormProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data: folders } = useGetFolders();
   const [selectedFolderId, setSelectedFolderId] = useState(0);
   const closeModal = () => {
     setSelectedFolderId(0);
@@ -22,7 +25,7 @@ export const LinkForm = () => {
       <UiLinkForm onSubmit={() => setIsModalOpen(true)} />
       <AddLinkModal
         isOpen={isModalOpen}
-        folders={folders || []}
+        folders={folders}
         selectedFolderId={selectedFolderId}
         setSelectedFolderId={setSelectedFolderId}
         onAddClick={() => {}}

@@ -17,12 +17,12 @@ export const FolderPage = () => {
   return (
     <Layout isSticky={false}>
       <FolderLayout
-        linkForm={<LinkForm />}
+        linkForm={<LinkForm folders={folders} />}
         searchBar={<SearchBar />}
         folderToolBar={
           <FolderToolBar folders={folders} selectedFolderId={selectedFolderId} onFolderClick={setSelectedFolderId} />
         }
-        cardList={loading ? null : <CardList links={links} />}
+        cardList={loading ? null : <CardList folders={folders} links={links} />}
       />
     </Layout>
   );

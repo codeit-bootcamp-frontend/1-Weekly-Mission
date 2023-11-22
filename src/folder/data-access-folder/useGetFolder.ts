@@ -1,4 +1,5 @@
 import { mapFolderData } from "folder/util-map";
+import { useCallback, useEffect } from "react";
 import { useAsync } from "sharing/util";
 import { axiosInstance } from "sharing/util";
 
@@ -26,8 +27,11 @@ export interface SampleFolder {
 }
 
 export const useGetFolder = () => {
-  const getFolder = () => axiosInstance.get<SampleFolder>("sample/folder");
-  const { loading, error, data } = useAsync<SampleFolder>(getFolder);
+  const getFolder = useCallback(() => axiosInstance.get<SampleFolder>("sample/folder"), []);
+  const { execute, loading, error, data } = useAsync<SampleFolder>(getFolder);
+  useEffect(() => {
+    execute();
+  }, [execute]);
 
   const folderData = data ? mapFolderData(data.folder) : null;
 

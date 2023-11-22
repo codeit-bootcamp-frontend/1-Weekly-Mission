@@ -16,7 +16,6 @@ export const Layout = ({ children, isSticky = true }: LayoutProps) => {
   const { data } = useGetUser();
   const { email = "", profileImageSource = "" } = data || {};
   const profile = { email, profileImageSource };
-
   return (
     <div>
       <NavigationBar profile={profile} isSticky={isSticky} />

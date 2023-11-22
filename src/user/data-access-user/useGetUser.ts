@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from "react";
 import { useAsync } from "sharing/util";
 import { axiosInstance } from "sharing/util";
 
@@ -9,7 +10,10 @@ export interface SampleUser {
 }
 
 export const useGetUser = () => {
-  const getUser = () => axiosInstance.get<SampleUser>("sample/user");
-  const { loading, error, data } = useAsync<SampleUser>(getUser);
+  const getUser = useCallback(() => axiosInstance.get<SampleUser>("sample/user"), []);
+  const { execute, loading, error, data } = useAsync<SampleUser>(getUser);
+  useEffect(() => {
+    execute();
+  }, [execute]);
   return { loading, error, data };
 };
