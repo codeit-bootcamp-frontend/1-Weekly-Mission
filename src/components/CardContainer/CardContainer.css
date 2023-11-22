@@ -1,0 +1,158 @@
+/* -- Card Title Text -- */
+.card-title_text {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 24px 0;
+}
+
+@media (max-width: 767px) {
+  .card-title_text {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.card-title_icon_container {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  gap: 12px;
+}
+
+.card-title_icon {
+  display: flex;
+  flex-direction: row-reverse;
+  white-space: nowrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.card-title_icon_text {
+  color: #9fa6b2;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* -- Card Section -- */
+.cardImg {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: absolute;
+}
+
+.cardImg:hover {
+  width: 130%;
+  height: 130%;
+  top: -20px;
+  right: -55px;
+}
+
+.link-img {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+.div-text {
+  display: flex;
+  position: relative;
+  width: 340px;
+  padding: 15px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 0px 0px 15px 15px;
+  background: #fff;
+}
+
+.div-img {
+  width: 340px;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 15px 15px 0px 0px;
+  background: #d9d9d9;
+  position: relative;
+}
+
+.div-text h5 {
+  color: #666;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.div-text p {
+  overflow: hidden;
+  color: #000;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  height: 49px;
+  align-self: stretch;
+}
+
+.div-text h4 {
+  overflow: hidden;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 19px;
+  align-self: stretch;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-star {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+}
+
+.row-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.cards {
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  justify-content: center;
+  position: relative;
+}
+
+/* 465 */
+@media (max-width: 1199px) and (min-width: 767px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .cards {
+    display: flex;
+
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.card {
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  width: 340px;
+  height: 334px;
+  border-radius: 0px 0px 15px 15px;
+  display: "flex";
+  flex-direction: "row";
+  flex-wrap: "wrap";
+  position: relative;
+}

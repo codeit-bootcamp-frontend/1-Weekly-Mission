@@ -1,0 +1,64 @@
+.hero--shared {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 0 90px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  background: #f0f6ff;
+  position: relative;
+}
+
+/* -- shared hero section -- */
+.folder-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.folder-image {
+  border-radius: 47px;
+  display: flex;
+  height: 70px;
+  width: 70px;
+  justify-content: center;
+  align-items: center;
+}
+
+.folder-userName {
+  color: black;
+  line-height: 24px; /* 150% */
+  font-weight: 400;
+}
+
+.folder-folderName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .hero--shared {
+    padding: 10px 0 40px;
+    gap: 10px;
+  }
+  .folder-container {
+    gap: 6px;
+  }
+  .folder-image {
+    height: 45px;
+    width: 45px;
+  }
+  .folder-userName {
+    font-size: 14px;
+  }
+  .folder-folderName {
+    font-size: 32px;
+  }
+}
