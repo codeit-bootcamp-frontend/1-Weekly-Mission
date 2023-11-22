@@ -40,7 +40,7 @@ export default function FolderPage() {
         <FolderNav data={userProfileData} />
         <Header />
         <SearchBar />
-        <Menubar mappedResult={mappedResult} objKeys={obj_keys} />
+        <Menubar mappedResult={mappedResult} folderIdKey={folderId} />
         <FolderMenu folderIdKey={folderId} />
         <DataList folderIdKey={folderId} />
         <Footer />
