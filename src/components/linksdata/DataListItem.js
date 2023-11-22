@@ -39,7 +39,7 @@ export default function DataListItem({ item }) {
               }}
             />
 
-            {open && <DropDown />}
+            {open && <DropDown linkUrl={url} />}
           </div>
           <div className={styles.bottom}>
             <p>{description}</p>

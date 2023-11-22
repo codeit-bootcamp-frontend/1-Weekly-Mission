@@ -27,7 +27,7 @@ export default function HeaderModal({ setterFunc, inputLink = null }) {
         {linkData.map((item) => {
           const { folderName, linksdata } = item;
           return (
-            <p
+            <div
               key={item.folderId}
               className={styles.links}
               onClick={() => handleClick(folderName)}
@@ -39,7 +39,7 @@ export default function HeaderModal({ setterFunc, inputLink = null }) {
               {isAdd && folderName === clickedFolderName && (
                 <img src={check} alt="check" />
               )}
-            </p>
+            </div>
           );
         })}
         <button className={styles.button}>추가하기</button>

@@ -34,7 +34,11 @@ export default function FolderPage() {
   return (
     <>
       <LocaleContext.Provider
-        value={{ ObjectValue: obj, LinkSDataArr: mappedResult }}
+        value={{
+          ObjectValue: obj,
+          LinkSDataArr: mappedResult,
+          folderIdKey: folderId,
+        }}
       >
         <FolderNav data={userProfileData} />
         <Header />

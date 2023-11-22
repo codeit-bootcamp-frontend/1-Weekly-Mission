@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function FolderButton({ mappedResult, folderIdKey }) {
   const navigate = useNavigate();
-
-  // 전체 메뉴탭일때 folderIdKey는 undefined
   return (
     <div className={styles.container}>
       <div className={styles.sub__container}>

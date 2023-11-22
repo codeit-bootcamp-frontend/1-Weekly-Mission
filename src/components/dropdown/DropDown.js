@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./DropDown.module.css";
 import HeaderModal from "../../common/modal/HeaderModal";
 import Modal from "../../common/modal/Modal";
-export default function DropDown() {
+export default function DropDown({ linkUrl }) {
   const [openAddModal, setOpenModal] = useState(false);
   const [openDeleteModal, setDeleteModal] = useState(false);
 
@@ -21,7 +21,11 @@ export default function DropDown() {
       <ul className={styles.sub__container}>
         <li onClick={handleDeleteModal}>삭제하기</li>
         {openDeleteModal && (
-          <Modal setterFunc={setDeleteModal} tabName="deleteLink"></Modal>
+          <Modal
+            setterFunc={setDeleteModal}
+            tabName="deleteLink"
+            linkUrl={linkUrl}
+          ></Modal>
         )}
 
         <li onClick={handleModal}>폴더에추가하기</li>
