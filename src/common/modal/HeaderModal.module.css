@@ -57,6 +57,6 @@
   background-color: var(--background);
 }
 
-.links span {
+.links span:first-child {
   font-weight: 900;
 }

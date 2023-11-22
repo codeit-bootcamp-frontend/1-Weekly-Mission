@@ -38,6 +38,7 @@ export default function DataListItem({ item }) {
                 setOpen(!open);
               }}
             />
+
             {open && <DropDown />}
           </div>
           <div className={styles.bottom}>

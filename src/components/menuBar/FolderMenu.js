@@ -9,7 +9,7 @@ import Modal from "../../common/modal/Modal";
 export default function FolderMenu({ folderIdKey }) {
   const [openModal, setOpenModal] = useState(false);
   const [tabName, setTabName] = useState("");
-  const { ObjectValue, LinkSDataArr } = useContext(LocaleContext); // obj
+  const { ObjectValue } = useContext(LocaleContext);
   const folder = ObjectValue[folderIdKey];
   const folderName = folder?.folderName || "전체";
 

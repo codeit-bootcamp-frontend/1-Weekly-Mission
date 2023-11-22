@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./HeaderModal.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 import check from "../../assets/images/check.svg";
@@ -33,8 +33,8 @@ export default function HeaderModal({ setterFunc, inputLink = null }) {
               onClick={() => handleClick(folderName)}
             >
               <p>
-                <span>{folderName} </span>
-                {linksdata && linksdata.length}개링크
+                <span>{folderName}</span>
+                <span>{linksdata && linksdata.length}개링크</span>
               </p>
               {isAdd && folderName === clickedFolderName && (
                 <img src={check} alt="check" />
