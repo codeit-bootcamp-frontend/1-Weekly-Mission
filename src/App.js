@@ -10,14 +10,19 @@ import { FolderContextProvider } from "context/FolderContext";
 
 function App() {
   return (
-    <FolderContextProvider>
-      <Layout>
-        <Routes>
-          <Route path="/shared" element={<SharedPage />}></Route>
-          <Route path="/folder" element={<FolderPage />}></Route>
-        </Routes>
-      </Layout>
-    </FolderContextProvider>
+    <Layout>
+      <Routes>
+        <Route path="/shared" element={<SharedPage />}></Route>
+        <Route
+          path="/folder"
+          element={
+            <FolderContextProvider>
+              <FolderPage />
+            </FolderContextProvider>
+          }
+        ></Route>
+      </Routes>
+    </Layout>
   );
 }
 
