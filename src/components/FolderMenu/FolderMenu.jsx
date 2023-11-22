@@ -4,21 +4,22 @@ import shareIcon from "assets/images/shareIcon.svg";
 import penIcon from "assets/images/penIcon.svg";
 import deleteIcon from "assets/images/deleteIcon.svg";
 
-function FolderMenu() {
+
+function FolderMenu({ data, onClick }) {
 
   return (
     <S.FolderContainer>
       <S.FolderWrapper>
         <S.FolderList>
           <S.Folder>전체</S.Folder>
-          <S.Folder>즐겨찾기</S.Folder>
-          <S.Folder>전체</S.Folder>
-          <S.Folder>전체</S.Folder>
+          {data.map((folder) => 
+            <S.Folder key={folder.id} onClick={() => onClick(folder.id)}>{folder.name}</S.Folder>
+          )}
         </S.FolderList>
         <S.AddFolderButton>폴더 추가 <S.AddFolderIcon src={addIcon} alt="폴더 추가하기"/></S.AddFolderButton>
       </S.FolderWrapper>
       <S.FolderHeader>
-        <S.FolderName>유용한 글</S.FolderName>
+        <S.FolderName></S.FolderName>
         <S.FolderOptionList>
           <S.FolderOption><S.FolderOptionIcon src={shareIcon} alt="공유하기 아이콘" />공유</S.FolderOption>
           <S.FolderOption><S.FolderOptionIcon src={penIcon} alt="이름 변경 아이콘" />이름 변경</S.FolderOption>

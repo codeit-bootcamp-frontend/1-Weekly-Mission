@@ -1,21 +1,15 @@
 import * as S from "./CardList.style";
 import Card from "./Card";
-import FolderMenu from 'components/FolderMenu';
 
-function CardList({ cards }) {
+function CardList({ items }) {
   return(
-    <>
-      <FolderMenu />
-      {cards &&
-        cards.map((card) => {
-          return (
-            <S.CardContainer>
-              <Card></Card>
-            </S.CardContainer>
-          );
-        })
+    <S.CardContainer>
+      {items &&
+        items.map((item) => 
+          <Card item={item}></Card>
+        )
       }
-    </>
+    </S.CardContainer>
 
   );
 }

@@ -1,14 +1,19 @@
 import * as S from "./Card.style";
+import { getTimeDifference } from 'utils/getTimeDifference';
+import { formatDate } from 'utils/formatDate';
 
-function Card() {
+function Card({ item }) {
+  const image = item?.image_source;
+  const date = item?.created_at;
+  const description = item?.description;
 
   return(
     <S.CardContainer>
-      <S.CardImgWrapper></S.CardImgWrapper>
+      <S.CardImgWrapper>{image}</S.CardImgWrapper>
       <S.CardInfo>
-        <S.CardCreatedAt>10 minutes ago</S.CardCreatedAt>
-        <S.CardDescription>Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc consequat. Tldkd</S.CardDescription>
-        <S.CardDate>2023. 3. 15</S.CardDate>
+        <S.CardCreatedAt>{getTimeDifference(date)}</S.CardCreatedAt>
+        <S.CardDescription>{description}</S.CardDescription>
+        <S.CardDate>{formatDate(date)}</S.CardDate>
       </S.CardInfo>
     </S.CardContainer>
   );

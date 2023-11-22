@@ -6,3 +6,8 @@ export const Header = styled.div`
   background-color: ${COLORS.BACKGROUND};
   padding: 6rem 32rem 9rem;
 `;
+
+export const Main = styled.div`
+  border: 1px solid blue;
+  width: 144.4rem;
+`;
