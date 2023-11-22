@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-const SharedPage = React.lazy(() => import("./Pages/SharedPage"));
-const FolderPage = React.lazy(() => import("./Pages/FolderPage"));
+const SharedPage = React.lazy(() => import("./Pages/shared/SharedPage"));
+const FolderPage = React.lazy(() => import("./Pages/folder/FolderPage"));
 
 const DefaultLayout = () => {
   return (
