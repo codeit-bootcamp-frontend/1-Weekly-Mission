@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { COLORS } from 'styles/palette';
 
+export const FolderPageSection = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+`;
+
 export const Header = styled.div`
   width: 100%;
   background-color: ${COLORS.BACKGROUND};
@@ -8,10 +15,15 @@ export const Header = styled.div`
 `;
 
 export const Main = styled.div`
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 106.6rem;
-  margin: 4rem auto;
+  align-items: flex-start;
+  gap: 4rem;
+`;
+
+export const CardSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4rem;
 `;

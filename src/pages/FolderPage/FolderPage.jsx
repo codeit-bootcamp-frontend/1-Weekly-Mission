@@ -48,16 +48,20 @@ function FolderPage() {
 
   return (
     <>
-      <Gnb />
-      <S.Header>
-        <AddLink />
-      </S.Header>
-      <S.Main>
-        <SearchLink />
-        <FolderMenu data={folderData} onClick={handleClick} id={folderId} />
-        <CardList items={folderLink} />
-      </S.Main>
-      <Footer />
+    <Gnb />
+      <S.FolderPageSection>
+        <S.Header>
+          <AddLink />
+        </S.Header>
+        <S.Main>
+          <SearchLink />
+          <S.CardSection>
+            <FolderMenu data={folderData} onClick={handleClick} id={folderId} />
+            <CardList items={folderLink} />
+          </S.CardSection>
+        </S.Main>
+        <Footer />
+      </S.FolderPageSection>
     </>
   );
 }

@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/palette';
 
 export const FolderContainer = styled.div`
-  border: 1px solid #000;
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 2.4rem;
 `;
-  
+
 export const FolderWrapper = styled.div`
   display: flex;
   justify-content: space-between;

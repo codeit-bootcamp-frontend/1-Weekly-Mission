@@ -9,12 +9,12 @@ export const CardContainer = styled.div`
   box-shadow: 0rem 0.5rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
   position: relative;
 
-  &:hover {
-    img {
-      transform: scale(1.2);
-      transition: 0.4s;
-    }
-  }
+  // &:hover {
+  //   img {
+  //     transform: scale(1.2);
+  //     transition: 0.4s;
+  //   }
+  // }
 `;
 
 export const CardImgWrapper = styled.div`
