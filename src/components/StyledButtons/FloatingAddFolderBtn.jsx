@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import AddFolderIcon from "../../assets/image/addFolderIcon.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddFolderOptionBtn from "./AddFolderOptionBtn";
 
 function FloatingAddFolderBtn() {
@@ -38,6 +38,7 @@ function FloatingAddFolderBtn() {
   const handleAddFolderBtnClick = () => {
     setFloatingBtnActivation((prevStatus) => !prevStatus);
   };
+
   return (
     <Container>
       <div style={style}>

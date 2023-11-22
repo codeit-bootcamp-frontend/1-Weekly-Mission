@@ -14,10 +14,6 @@ const OptionBtnContainer = styled.div`
   z-index: 3;
 `;
 
-const KebabBtn = styled.button`
-  background-image: url(${ThreeDotsIcon});
-`;
-
 function Card({ cardData }) {
   const [isFloatingBtnActive, setFloatingBtnActivation] = useState(false);
   const { id, created_at, url, title, description, image_source, folder_id } =
@@ -44,7 +40,11 @@ function Card({ cardData }) {
       <div className="div-text">
         <div className="text">
           <h5 className="createdTimePassed">{timeAgoText + " ago"}</h5>
-          <KebabBtn onClick={handleAddFolderBtnClick} />
+          <img
+            onClick={() => handleAddFolderBtnClick()}
+            src={ThreeDotsIcon}
+            alt="three dots icon"
+          />
         </div>
         <p className="cardDesc">{description}</p>
         <h4 className="createdDate">{formulatedCreatedDate}</h4>

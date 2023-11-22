@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import getFolderTagListData from "../../utils/getFolderTagListData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddLinkToFolder from "../../modals/contents/AddLinkToFolder";
 import DeleteLink from "../../modals/contents/DeleteLink";
 
@@ -29,13 +29,22 @@ const OptionBtnContainer = styled.div`
 
 function AddFolderOptionBtn({ children, isFloatingBtnActive = false }) {
   const [isOpen, setOpen] = useState("");
-  const handleClick = (selectedIcon) => setOpen(selectedIcon);
+  const [isActive, setIsActive] = useState(isFloatingBtnActive);
+  const handleClick = (selectedIcon) => {
+    console.log("click");
+    setOpen(selectedIcon);
+    setIsActive(false);
+  };
   const changeOpenState = (openState) => setOpen(openState);
   const TagDataList = getFolderTagListData();
 
+  useEffect(() => {
+    setIsActive((prev) => !prev);
+  }, [isFloatingBtnActive]);
+
   return (
     <div>
-      <OptionBtnContainer isActive={isFloatingBtnActive}>
+      <OptionBtnContainer isActive={isActive}>
         {children.map((child) => (
           <OptionBtnStyle onClick={() => handleClick(child)}>
             {child}
