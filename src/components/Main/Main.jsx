@@ -1,12 +1,28 @@
-import React from 'react'
-import * as S from './MainStyle'
+import React from "react";
+
+import styled from "styled-components";
 
 function Main({ children }) {
   return (
-    <S.MainContainer>
-      <S.MainContent>{children}</S.MainContent>
-    </S.MainContainer>
-  )
+    <MainContainer>
+      <MainContent>{children}</MainContent>
+    </MainContainer>
+  );
 }
 
-export default Main
+const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  padding: 30px 32px;
+`;
+
+const MainContent = styled.div`
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+`;
+
+export default Main;

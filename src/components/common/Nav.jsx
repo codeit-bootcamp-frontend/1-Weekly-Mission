@@ -6,7 +6,7 @@ import { device } from "../../style/device";
 import { flexCenter } from "../../style/common";
 
 import logoImg from "../../assets/logo.png";
-import { Button } from "../Button/ButtonStyle";
+import Button from "../Button/Button";
 
 function Profile({ email, profileImage }) {
   return (

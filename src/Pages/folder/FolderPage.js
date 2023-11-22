@@ -4,7 +4,7 @@ import AddLink from "../../components/AddLink/AddLink";
 import FolderAndLink from "../../components/FolderAndLink/FolderAndLink";
 import Footer from "../../components/Footer/Footer";
 import Main from "../../components/Main/Main";
-import Nav from "../../components/Nav/Nav";
+import Nav from "../../components/common/Nav";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 function FolderPage() {
