@@ -1,15 +1,8 @@
-// import Modal from 'components/Modal';
-
-// import Card from 'components/CardList/Card';
-// import Gnb from 'components/Gnb';
-import CardList from 'components/CardList';
+// import Footer from 'components/Footer';
 
 function MainPage() {
   return (
     <>
-      {/* <Gnb/> */}
-      <CardList />
-      {/* <Card /> */}
     </>
   );
 }

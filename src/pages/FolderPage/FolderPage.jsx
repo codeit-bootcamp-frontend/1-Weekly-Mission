@@ -6,6 +6,7 @@ import AddLink from 'components/AddLink';
 import SearchLink from 'components/SearchLink';
 import CardList from 'components/CardList';
 import FolderMenu from 'components/FolderMenu';
+import Footer from 'components/Footer';
 
 function FolderPage() {
   const [folderData, setFolderData] = useState([]);
@@ -56,6 +57,7 @@ function FolderPage() {
         <FolderMenu data={folderData} onClick={handleClick} id={folderId} />
         <CardList items={folderLink} />
       </S.Main>
+      <Footer />
     </>
   );
 }
