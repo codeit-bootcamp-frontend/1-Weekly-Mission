@@ -8,7 +8,6 @@ export const ModalBackdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   top: 0;
   left: 0;
-  z-index: 10;
 `;
 
 export const ModalContainer = styled.div`
@@ -17,30 +16,26 @@ export const ModalContainer = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   width: 36rem;
-  height: 23.9rem;
+  padding: 3.5rem 4rem;
   background-color: ${COLORS.WHITE};
-  z-index: 100;
+  border: 0.1rem solid #CCD5E3;
   border-radius: 1.5rem;
-  
+  z-index: 100;
 `;
 
-// export const ModalCloseButton = styled.span`
-//   border: 1px solid #000;
-//   width: 2.4rem;
-//   height: 2.4rem;
-//   border-radius: 50%;
-//   position: absolute;
-//   left: 320px;
-//   top: 16px;
-// `;
+export const ModalCloseButton = styled.img`
+  position: absolute;
+  right: 1.6rem;
+  top: 1.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+`;
 
 export const ModalWrapper = styled.div`
   display: flex;
-  padding: 3.5rem 4rem;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 24px;
 `;
 export const ModalTitle = styled.h1`
   color: #373740;
