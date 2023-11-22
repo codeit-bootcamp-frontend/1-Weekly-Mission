@@ -10,12 +10,14 @@ export default function SharedPage() {
   const [data, isLoading] = useFetchData(getShareData);
 
   return (
-    <div>
-      <ShareNav />
-      <Header data={data} isLoading={isLoading} />
-      <SearchBar />
-      <Landing data={data} isLoading={isLoading} />
-      <Footer />
-    </div>
+    !isLoading && (
+      <div>
+        <ShareNav />
+        <Header data={data} isLoading={isLoading} />
+        <SearchBar />
+        <Landing data={data} isLoading={isLoading} />
+        <Footer />
+      </div>
+    )
   );
 }
