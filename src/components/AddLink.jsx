@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import linkImage from "../../assets/link.png";
+import linkImage from "../assets/link.png";
 
-import colors from "../../style/colors";
-import { cursorPointer, flexCenter } from "../../style/common";
-import { device } from "../../style/device";
+import colors from "../style/colors";
+import { cursorPointer, flexCenter } from "../style/common";
+import { device } from "../style/device";
 import { useState } from "react";
-import { ModalMaker } from "../Modal/Modal";
+import { ModalMaker } from "./Modal/Modal";
 const AddLinkFrame = styled.form`
   position: relative;
   display: flex;

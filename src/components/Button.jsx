@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { cursorPointer, flexCenter } from "../../style/common";
-import colors from "../../style/colors";
+import { cursorPointer, flexCenter } from "../style/common";
+import colors from "../style/colors";
 
 function Button({ children }) {
   return <StyledButton href="signin.html">{children}</StyledButton>;
