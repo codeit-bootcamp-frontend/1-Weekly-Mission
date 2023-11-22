@@ -3,7 +3,7 @@ import { COLORS } from 'styles/palette';
 
 export const StyledButton = styled.button`
   display: flex;
-  width: 8rem;
+  width: 100%;
   padding: 1rem 1.6rem;
   justify-content: center;
   align-items: center;

@@ -1,8 +1,8 @@
-import * as S from "./Modal.style";
+import * as S from "./ModalEdit.style";
 import Button from 'components/Button';
 import closeIcon from "assets/images/closeImg.svg";
 
-function Modal() {
+function ModalEdit() {
   return(
     <>
       <S.ModalBackdrop></S.ModalBackdrop>
@@ -16,4 +16,4 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default ModalEdit;

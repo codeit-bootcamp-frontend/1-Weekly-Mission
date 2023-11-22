@@ -1,11 +1,11 @@
 // import Footer from 'components/Footer';
 // import Gnb from 'components/Gnb';
-import Modal from 'components/Modal';
+import ModalEdit from 'components/Modal/ModalEdit';
 
 function MainPage() {
   return (
     <>
-      <Modal />
+      <ModalEdit />
     </>
   );
 }

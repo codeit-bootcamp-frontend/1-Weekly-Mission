@@ -1,8 +1,7 @@
-import * as S from "./Modal.style";
-import Button from 'components/Button';
+import * as S from "./ModalDeleteLink.style";
 import closeIcon from "assets/images/closeImg.svg";
 
-function Modal() {
+function ModalDeleteLink() {
   return(
     <>
       <S.ModalBackdrop></S.ModalBackdrop>
@@ -16,4 +15,4 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default ModalDeleteLink;
