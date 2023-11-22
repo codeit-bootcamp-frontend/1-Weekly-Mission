@@ -31,7 +31,6 @@ export default function HeaderButton() {
         <button className={styles.add__button} onClick={handleModal}>
           추가하기
         </button>
-        {/* openModal이 true이면은 HeaderModal를 return한다 */}
         {openModal && (
           <HeaderModal setterFunc={setOpenModal} inputLink={inputText} />
         )}

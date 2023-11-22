@@ -20,11 +20,11 @@ const BaseButton = styled.button`
   }
 `;
 
-export default function Button({ children, isActive, onClickFunc }) {
+export default function Button({ children, isActive, onClick }) {
   return (
     <BaseButton
       onClick={(e) => {
-        onClickFunc();
+        onClick();
       }}
       className={isActive ? "active" : ""}
     >

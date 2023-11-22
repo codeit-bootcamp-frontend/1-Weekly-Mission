@@ -1,33 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import DataListItem from "./DataListItem";
 import styles from "../imageList/ImageList.module.css";
-import ItemSkeleton from "../skeleton/ItemSkeleton";
-import useUserLinks from "../../hooks/useUserLinks";
-import useTest from "../../hooks/useTest";
-import { fetchUserLinks } from "./../../api/users";
-export default function WholeData({ linksData, folderId }) {
-  // const USER_ID = 1;
+import LocaleContext from "../../contexts/LocaleContext";
+export default function WholeData({ folderIdKey }) {
+  const { LinkSDataArr } = useContext(LocaleContext);
 
-  // const [linkData, isLoading] = useUserLinks({
-  //   userId: USER_ID,
-  //   folderId: folderId,
-  // });
-
-  const result = linksData?.data;
-  if (result && result.length > 0) {
+  if (!folderIdKey) {
     return (
-      <ul>
-        <div className={styles.container}>
-          {result &&
-            result.map((item) => (
-              <li key={item.id}>
-                {/* {!isLoading ? <DataListItem item={item} /> : <ItemSkeleton />} */}
-                {item ? <DataListItem item={item} /> : <ItemSkeleton />}
-              </li>
-            ))}
-        </div>
-      </ul>
+      <div className={styles.container}>
+        {LinkSDataArr?.map((data) => {
+          const { folderId, linksdata } = data;
+          if (!folderId) {
+            return linksdata.map((item) => {
+              return <DataListItem key={item.id} item={item} />;
+            });
+          }
+        })}
+      </div>
     );
   }
-  return <div className={styles.text}>데이터가없습니다</div>;
+
+  return (
+    <div className={styles.container}>
+      {LinkSDataArr?.filter((data) => data.folderId === Number(folderIdKey))
+        ?.map((data) => data.linksdata)[0]
+        ?.map((item) => {
+          return <DataListItem key={item.id} item={item} />;
+        })}
+    </div>
+  );
 }

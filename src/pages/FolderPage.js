@@ -8,77 +8,43 @@ import WholeData from "../components/linksdata/WholeData";
 import LocaleContext from "../contexts/LocaleContext";
 
 import { useParams } from "react-router-dom";
-import {
-  fetchUserData,
-  fetchUserFolderData,
-  fetchUserLinks,
-} from "../api/users";
+import { fetchUserData, fetchUserFolderData } from "../api/users";
 import FolderMenu from "../components/menuBar/FolderMenu";
 
-import useTest from "../hooks/useTest";
-import useUserLinks from "../hooks/useUserLinks";
-import { useUserTotalLinks } from "../hooks/useUserLinks";
+import useFetchData from "./../hooks/useFetchData";
+import { mapFolderData, mapLinksData } from "../utils/mapData";
+import useFetchLinksData from "./../hooks/useFetchLinksdata";
 
 export default function FolderPage() {
   const USER_ID = 1;
   const { folderId } = useParams();
-
-  const [userData] = useTest(() => fetchUserData({ userId: USER_ID }));
-  // const [userData] = useUserFetch({ userId: 1 });
-  // const [data, isLoading] = useUserFolderFetch({ userId: 1 });
-
-  const [Folderdata, isLoading] = useTest(() =>
-    fetchUserFolderData({ userId: USER_ID })
-  );
-
-  // 각 폴더에 있는 (전체를 제외한, 아이템 리스트 가져오기)
-  // 페이지이동시에만 변화가..
-  // 1번
-  const [linkData, isLoading2] = useUserLinks({
+  const [userProfileData] = useFetchData(fetchUserData, {
     userId: USER_ID,
-    folderId: folderId,
   });
 
-  // 페이지이동시에만 변화가..
-  // 2번
-  const linksData = fetchUserLinks({ userId: USER_ID, folderId: folderId });
+  const [userFolderData] = useFetchData(fetchUserFolderData, {
+    userId: USER_ID,
+  });
 
-  // 아래는 왜 안될까..
-  // 3번
-  const [a, b] = useTest(() =>
-    fetchUserLinks({ userId: USER_ID, folderId: folderId }, [folderId])
-  );
+  const result = userFolderData?.data || [];
 
-  const result = Folderdata?.data;
-  const obj =
-    (result &&
-      result.reduce((acc, item) => {
-        if (!acc[item.id]) {
-          acc[item.id] = {
-            folderId: item.id,
-            folderName: item.name,
-          };
-        }
-        return acc;
-      }, {})) ||
-    {};
-
+  const obj = mapFolderData(result);
   const obj_keys = Object.keys(obj).map(Number);
+  const [mappedResult, isLoading] = useFetchLinksData(mapLinksData, result);
 
   return (
-    <LocaleContext.Provider
-      value={{ ObjectValue: obj, LinkSDataArr: linkData }}
-    >
-      <FolderNav data={userData} />
-      <Header />
-      <SearchBar />
-      <Menubar obj={obj} objKeys={obj_keys} folderId={folderId} />
-      <FolderMenu folderId={folderId} />
-      {/* <Landing data={data} isLoading={isLoading} key={key} /> */}
-      {/* <Landing data={data} isLoading={isLoading}></Landing> */}
-      {/* <WholeData folderId={folderId} /> */}
-      <WholeData linksData={linkData} folderId={folderId} />
-      <Footer />
-    </LocaleContext.Provider>
+    <>
+      <LocaleContext.Provider
+        value={{ ObjectValue: obj, LinkSDataArr: mappedResult }}
+      >
+        <FolderNav data={userProfileData} />
+        <Header />
+        <SearchBar />
+        <Menubar mappedResult={mappedResult} objKeys={obj_keys} />
+        <FolderMenu folderIdKey={folderId} />
+        <WholeData folderIdKey={folderId} />
+        <Footer />
+      </LocaleContext.Provider>
+    </>
   );
 }
