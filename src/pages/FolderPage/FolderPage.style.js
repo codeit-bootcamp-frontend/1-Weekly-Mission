@@ -9,5 +9,9 @@ export const Header = styled.div`
 
 export const Main = styled.div`
   border: 1px solid blue;
-  width: 144.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 106.6rem;
+  margin: 4rem auto;
 `;
