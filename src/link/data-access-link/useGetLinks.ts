@@ -6,17 +6,21 @@ import { ALL_LINKS_ID } from "./constant";
 
 export interface Link {
   id: number;
-  created_at: Date;
+  created_at: string;
   url: string;
   title: string;
   description: string;
   image_source: string;
 }
 
+export interface Links {
+  data: Link[];
+}
+
 export const useGetLinks = (folderId = ALL_LINKS_ID) => {
   const queryString = folderId === ALL_LINKS_ID ? "" : `?folderId=${folderId}`;
-  const getLinks = useCallback(() => axiosInstance.get<Link[]>(`users/1/links${queryString}`), [queryString]);
-  const { execute, loading, error, data } = useAsync<Link[]>(getLinks);
+  const getLinks = useCallback(() => axiosInstance.get<Links>(`users/1/links${queryString}`), [queryString]);
+  const { execute, loading, error, data } = useAsync<Links>(getLinks);
 
   useEffect(() => {
     execute();
@@ -32,7 +36,7 @@ export const useGetLinks = (folderId = ALL_LINKS_ID) => {
     description,
   });
 
-  const linksData = data ? data.map(mapDataFormat).map(mapLinksData) : null;
+  const linksData = data?.data.map(mapDataFormat).map(mapLinksData) ?? [];
 
   return { execute, loading, error, data: linksData };
 };

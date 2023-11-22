@@ -1,19 +1,13 @@
 import format from "date-fns/format";
+import { SampleLink } from "folder/data-access-folder";
 import { MappedLink } from "folder/util-map";
+import { Link } from "link/data-access-link";
 import { getElapsedTime } from "sharing/util";
 
-export interface Link {
-  id: number;
-  createdAt: Date;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-}
-
-export const mapLinksData = (link: Link): MappedLink => {
-  const { id, createdAt, url, imageSource, title, description } = link;
-
+export const mapLinksData = (link: Link | SampleLink): MappedLink => {
+  const { id, url, title, description } = link;
+  const imageSource = "imageSource" in link ? link.imageSource : link.image_source;
+  const createdAt = "createdAt" in link ? link.createdAt : link.created_at;
   return {
     id,
     url,

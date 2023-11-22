@@ -22,7 +22,7 @@ export const FolderPage = () => {
         folderToolBar={
           <FolderToolBar folders={folders} selectedFolderId={selectedFolderId} onFolderClick={setSelectedFolderId} />
         }
-        cardList={loading ? null : <CardList links={links || []} />}
+        cardList={loading ? null : <CardList links={links} />}
       />
     </Layout>
   );

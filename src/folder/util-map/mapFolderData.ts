@@ -10,7 +10,7 @@ interface Folder {
   };
   links: {
     id: number;
-    createdAt: Date;
+    createdAt: string;
     url: string;
     title: string;
     description: string;
@@ -36,15 +36,6 @@ export interface MappedLink {
 }
 
 export const mapFolderData = (folder: Folder): MappedFolder => {
-  if (!folder) {
-    return {
-      profileImage: "",
-      ownerName: "",
-      folderName: "",
-      links: [],
-    };
-  }
-
   const { name, owner, links } = folder;
 
   return {

@@ -8,7 +8,7 @@ import { SearchBar } from "link/ui-search-bar";
 
 export const SharedPage = () => {
   const { data } = useGetFolder();
-
+  console.log(data);
   return (
     <Layout>
       <SharedLayout

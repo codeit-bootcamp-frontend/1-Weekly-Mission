@@ -2,29 +2,34 @@ import { mapFolderData } from "folder/util-map";
 import { useAsync } from "sharing/util";
 import { axiosInstance } from "sharing/util";
 
-export interface SampleFolder {
+export interface SampleLink {
   id: number;
-  name: string;
-  owner: {
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource: string;
+}
+
+export interface SampleFolder {
+  folder: {
     id: number;
     name: string;
-    profileImageSource: string;
+    owner: {
+      id: number;
+      name: string;
+      profileImageSource: string;
+    };
+    links: SampleLink[];
+    count: number;
   };
-  links: {
-    id: number;
-    createdAt: Date;
-    url: string;
-    title: string;
-    description: string;
-    imageSource: string;
-  }[];
 }
 
 export const useGetFolder = () => {
   const getFolder = () => axiosInstance.get<SampleFolder>("sample/folder");
   const { loading, error, data } = useAsync<SampleFolder>(getFolder);
 
-  const folderData = data ? mapFolderData(data) : null;
+  const folderData = data ? mapFolderData(data.folder) : null;
 
   return { loading, error, data: folderData };
 };

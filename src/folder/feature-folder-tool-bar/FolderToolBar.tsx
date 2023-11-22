@@ -14,7 +14,7 @@ import { useKakaoSdk } from "sharing/util/useKakaoSdk";
 import { Folder } from "folder/data-access-folder";
 
 interface FolderToolBarProps {
-  folders: Folder[] | null;
+  folders: Folder[];
   selectedFolderId: string;
   onFolderClick: (id: string) => void;
 }
@@ -24,6 +24,7 @@ const cx = classNames.bind(styles);
 export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }: FolderToolBarProps) => {
   const { shareKakao } = useKakaoSdk();
   const [currentModal, setCurrentModal] = useState("");
+  console.log(folders);
 
   const folderName =
     ALL_LINKS_ID === selectedFolderId ? ALL_LINKS_TEXT : folders?.find(({ id }) => id === +selectedFolderId)?.name;
