@@ -4,7 +4,6 @@ import Header from "../common/header/Header";
 import SearchBar from "../common/searchBar/SearchBar";
 import Footer from "../common/footer/Footer";
 import Menubar from "../components/menuBar/Menubar";
-import WholeData from "../components/linksdata/WholeData";
 import LocaleContext from "../contexts/LocaleContext";
 
 import { useParams } from "react-router-dom";
@@ -14,6 +13,7 @@ import FolderMenu from "../components/menuBar/FolderMenu";
 import useFetchData from "./../hooks/useFetchData";
 import { mapFolderData, mapLinksData } from "../utils/mapData";
 import useFetchLinksData from "./../hooks/useFetchLinksdata";
+import DataList from "../components/linksdata/DataList";
 
 export default function FolderPage() {
   const USER_ID = 1;
@@ -42,7 +42,7 @@ export default function FolderPage() {
         <SearchBar />
         <Menubar mappedResult={mappedResult} objKeys={obj_keys} />
         <FolderMenu folderIdKey={folderId} />
-        <WholeData folderIdKey={folderId} />
+        <DataList folderIdKey={folderId} />
         <Footer />
       </LocaleContext.Provider>
     </>

@@ -5,7 +5,7 @@ const USER_ID = 1;
 export const mapFolderData = (arr) => {
   const arrCopy = arr?.slice();
   // id가 null 이나 undefined이 이면은 Links를 가져오기 위해전체 데이터를 따로? 만들어야 하는데
-  // 0이면은 map
+  // 0이면은 불러와진당 싱기방기
   arrCopy.push({ id: 0, name: "전체" });
   const mapObj =
     arrCopy &&

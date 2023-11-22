@@ -6,7 +6,6 @@ import kebabImage from "../../assets/images/kebab.svg";
 import { parseDatestring, getElapsedTime } from "../../utils/calTime";
 import DropDown from "../dropdown/DropDown";
 export default function DataListItem({ item }) {
-  console.log("렌더가됬다");
   const [open, setOpen] = useState(false);
   const { id, url, title, image_source, description, created_at } = item;
 

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import DataListItem from "./DataListItem";
 import styles from "../imageList/ImageList.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
-export default function WholeData({ folderIdKey }) {
+export default function DataList({ folderIdKey }) {
   const { LinkSDataArr } = useContext(LocaleContext);
 
   if (!folderIdKey) {

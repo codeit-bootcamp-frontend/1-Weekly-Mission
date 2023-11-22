@@ -5,9 +5,9 @@ import Footer from "../common/footer/Footer";
 import SearchBar from "../common/searchBar/SearchBar";
 import React from "react";
 import useFetchData from "../hooks/useFetchData";
-import { getShareDate } from "../api/folder";
+import { getShareData } from "../api/share";
 export default function SharedPage() {
-  const [data, isLoading] = useFetchData(() => getShareDate());
+  const [data, isLoading] = useFetchData(getShareData);
 
   return (
     <div>
