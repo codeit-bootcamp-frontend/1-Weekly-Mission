@@ -1,15 +1,15 @@
-import useAsync from '../Hooks/useAsync'
-import getSample from '../api'
-import Folder from '../components/Folder/Folder'
-import Footer from '../components/Footer/Footer'
-import Nav from '../components/Nav/Nav'
+import useAsync from "../Hooks/useAsync";
+import getSample from "../api";
+import Folder from "../components/Folder/Folder";
+import Footer from "../components/Footer/Footer";
+import Nav from "../components/Nav/Nav";
 
 function SharedPage() {
-  const [data] = useAsync(() => getSample('user'))
+  const [data] = useAsync(() => getSample("user"));
 
-  if (!data) return null
+  if (!data) return null;
 
-  const { email, profileImageSource } = data
+  const { email, profileImageSource } = data;
 
   return (
     <>
@@ -21,7 +21,7 @@ function SharedPage() {
       <Folder />
       <Footer />
     </>
-  )
+  );
 }
 
-export default SharedPage
+export default SharedPage;
