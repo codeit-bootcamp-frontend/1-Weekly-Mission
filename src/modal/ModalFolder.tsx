@@ -6,13 +6,23 @@ import linkIcon from "../img/svg/linkIcon.svg";
 import "./modalFolder.css";
 import { handleCopyClipBoard } from "../utils/urlCopy";
 
+interface ModalFolderType {
+  folderOption: any;
+  setFolderOption: any;
+  setNewLink: any;
+}
+
 const SNSICON = [
   { Icon: kakaoIcon, name: "카카오톡", identifier: "kakaoIcon" },
   { Icon: facebookIcon, name: "페이스북", identifier: "facebookIcon" },
   { Icon: linkIcon, name: "링크", identifier: "linkIcon" },
 ];
 
-const ModalFolder = ({ folderOption, setFolderOption, setNewLink }) => {
+const ModalFolder = ({
+  folderOption,
+  setFolderOption,
+  setNewLink,
+}: ModalFolderType) => {
   const { title, btnName, dataItem, share, folderData } = folderOption;
   const { data: folderLists } = folderData;
   const [changeName, setChangeName] = useState(
@@ -36,7 +46,7 @@ const ModalFolder = ({ folderOption, setFolderOption, setNewLink }) => {
     setNewLink("");
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setChangeName(value);
   };
@@ -62,7 +72,7 @@ const ModalFolder = ({ folderOption, setFolderOption, setNewLink }) => {
         ) : null}
         {title === "폴더에 추가" ? (
           <ul className="folder-list">
-            {folderLists.map((list, index) => {
+            {folderLists.map((list: any, index: number) => {
               return (
                 <li key={index}>
                   <h3>{list.name}</h3>

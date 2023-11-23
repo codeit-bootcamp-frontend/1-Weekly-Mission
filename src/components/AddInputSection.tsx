@@ -1,8 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import linkImg from "../img/svg/link.svg";
 
-const AddInputSection = ({ handleListClick, newLink, setNewLink }) => {
-  const onAddInputChange = (event) => {
+interface AddInputSectionType {
+  handleListClick: (
+    event: any,
+    title: string,
+    btn: string,
+    item?: string | null
+  ) => void;
+  newLink: any;
+  setNewLink: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const AddInputSection = ({
+  handleListClick,
+  newLink,
+  setNewLink,
+}: AddInputSectionType) => {
+  const onAddInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setNewLink(value);
   };

@@ -10,7 +10,7 @@ const Shared = () => {
   const { account, errorMessage } = useContext(AccountContext);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const userId = searchParams.get("user");
+  const userId: any = searchParams.get("user");
   const folderNumber = searchParams.get("folder");
   const { data: folderDataObject } = useFetch(
     `users/${userId}/folders`,
@@ -23,9 +23,9 @@ const Shared = () => {
   /* 즐겨찾기 데이터번호만 가져오는 함수 */
   const getBookmarkNumber = () => {
     if (!folderDataObject) return;
-    const { data } = folderDataObject;
-    console.log(data);
-    const bookmarkNumber = data?.filter((list) => {
+    const { data }: any = folderDataObject;
+
+    const bookmarkNumber = data?.filter((list: any) => {
       if (list?.id == folderNumber) {
         return list?.id;
       }
@@ -38,7 +38,7 @@ const Shared = () => {
     <div className="shared">
       <BookMark
         bookmarkNumber={getBookmarkNumber()}
-        account={account}
+        account={account?.data[0]}
         errorMessage={errorMessage}
       />
       <Search />

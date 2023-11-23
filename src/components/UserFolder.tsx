@@ -5,6 +5,17 @@ import penImg from "../img/svg/pen.svg";
 import deleteImg from "../img/svg/delete.svg";
 import { NavLink } from "react-router-dom";
 
+interface UserFolderType {
+  folderDataObject: any;
+  folderId?: number | string;
+  handleListClick: (
+    event: any,
+    title: string,
+    btn: string,
+    item?: string | null
+  ) => void;
+}
+
 const activeStyle = {
   backgroundColor: "#6d6afe",
   color: "#ffffff",
@@ -16,9 +27,13 @@ const all = {
   user_id: 1,
 };
 
-const UserFolder = ({ folderDataObject, folderId = 9999, handleListClick }) => {
+const UserFolder = ({
+  folderDataObject,
+  folderId = 9999,
+  handleListClick,
+}: UserFolderType) => {
   const [titleName, setTitleName] = useState("");
-  const titleRef = useRef({});
+  const titleRef = useRef<any>({});
   const { current } = titleRef;
   const folderOption = [
     { title: "공유", image: shareImg, name: "폴더 공유", btn: "" },

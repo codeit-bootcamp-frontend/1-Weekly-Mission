@@ -1,6 +1,6 @@
 import { firebaseConfing } from "./config";
 
-export const handleCopyClipBoard = async (name, share) => {
+export const handleCopyClipBoard = async (name: string, share: any) => {
   const host = `${window.location.protocol}//${window.location.host}/shared?user=${share.id}&folder=${share.folderId}`;
   const IMAGE_URL = `${window.location.protocol}//${window.location.host}/img/png/image25.png`;
   if (name === "링크") {
@@ -11,8 +11,8 @@ export const handleCopyClipBoard = async (name, share) => {
       console.log(err);
     }
   } else if (name === "카카오톡") {
-    if (window.Kakao) {
-      const kakao = window.Kakao;
+    if ((window as any).Kakao) {
+      const kakao = (window as any).Kakao;
 
       if (!kakao.isInitialized()) {
         kakao.init(firebaseConfing.apiKey);

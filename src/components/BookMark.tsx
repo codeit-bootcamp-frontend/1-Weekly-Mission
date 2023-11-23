@@ -1,6 +1,12 @@
 import React from "react";
 
-const BookMark = ({ bookmarkNumber, account, errorMessage }) => {
+interface BookMarkType {
+  bookmarkNumber: any;
+  account: any;
+  errorMessage: string;
+}
+
+const BookMark = ({ bookmarkNumber, account, errorMessage }: BookMarkType) => {
   const { name, image_source: profileImageSource } = account;
   if (!bookmarkNumber) return;
   return (

@@ -8,7 +8,26 @@ import { useFetch, useQueryFetch } from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import ModalFolder from "../modal/ModalFolder";
 
-const modalBg = {
+type folderOptionType = {
+  title: string;
+  btnName: string;
+  dataItem: string | null;
+  share?: { id: number | null; folderId?: string | null };
+  folderData: any;
+};
+
+type modalBgType = {
+  background: string;
+  opacity: string;
+  width: string;
+  height: string;
+  position: any;
+  top: string;
+  left: string;
+  transform: string;
+};
+
+const modalBg: modalBgType = {
   background: "#000",
   opacity: "0.4",
   width: "100%",
@@ -21,24 +40,34 @@ const modalBg = {
 
 const Folder = () => {
   const { account } = useContext(AccountContext);
-  const [folderOption, setFolderOption] = useState(null);
-  const [prevKey, setPrevKey] = useState(null);
+  const [folderOption, setFolderOption] = useState<folderOptionType | null>(
+    null
+  );
+  const [prevKey, setPrevKey] = useState<number | null>(null);
   const [iscebabClick, setIscebabClick] = useState(false);
   const [newLink, setNewLink] = useState("");
-  const { id } = account;
+  const { id } = account?.data[0];
   const { folderId } = useParams();
 
   const { data: folderDataObject, errorMessage: foldersErrorMessage } =
     useFetch(`users/${id}/folders`, id);
-  const { data: linkCardsData, errorMessage: linksErrorMessage } =
+  const { data: linkCardsData, errorMessage: linksErrorMessage }: any | string =
     useQueryFetch(`users/${id}/links`, folderId, id);
 
-  const handleCebabClick = (event, itemId) => {
+  const handleCebabClick = (
+    event: React.MouseEvent<HTMLImageElement>,
+    itemId: number
+  ) => {
     event.preventDefault();
     setPrevKey(itemId);
     setIscebabClick(!iscebabClick);
   };
-  const handleListClick = (event, title, btn, item = null) => {
+  const handleListClick = (
+    event: React.MouseEvent<HTMLLIElement>,
+    title: string,
+    btn: string,
+    item: string | null = null
+  ) => {
     if (iscebabClick) {
       event.preventDefault();
       setIscebabClick(!iscebabClick);
@@ -56,7 +85,8 @@ const Folder = () => {
       });
     }
   };
-
+  console.log(folderDataObject);
+  console.log(linkCardsData);
   return (
     <div className="folder">
       <AddInputSection

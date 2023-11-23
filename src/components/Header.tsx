@@ -7,8 +7,8 @@ import { isLocation } from "../utils/location";
 const MOBILE_WIDTH = 390;
 
 const Header = () => {
-  const { account, userErrorMessage } = useContext(AccountContext);
-  const { name, email, image_source: profileImageSource } = account;
+  const { account, errorMessage } = useContext(AccountContext);
+  const { name, email, image_source: profileImageSource } = account?.data[0];
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   window.addEventListener("resize", () => {
@@ -38,7 +38,7 @@ const Header = () => {
               ) : null}
             </>
           )}
-          {userErrorMessage && <span>{userErrorMessage.message}</span>}
+          {errorMessage && <span>{errorMessage.message}</span>}
         </div>
       </div>
     </header>

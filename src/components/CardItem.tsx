@@ -6,6 +6,14 @@ import mobileAddImg from "../img/svg/mobileAdd.svg";
 import { getTimeDiff } from "../utils/postTime";
 import { isLocation } from "../utils/location";
 
+interface CardItemType {
+  item: any;
+  prevKey?: number | null;
+  handleCebabClick?: any;
+  handleListClick?: any;
+  iscebabClick?: boolean;
+}
+
 const cebabOption = [
   { option: "삭제하기", name: "링크 삭제" },
   { option: "폴더에 추가", name: "폴더에 추가" },
@@ -17,7 +25,7 @@ const CardItem = ({
   handleCebabClick,
   iscebabClick,
   handleListClick,
-}) => {
+}: CardItemType) => {
   const imgStyle = {
     backgroundImage: `URL(${item.image_source})`,
   };
@@ -58,8 +66,8 @@ const CardItem = ({
             return (
               <li
                 key={index}
-                onClick={(event) => {
-                  handleListClick(event, list.name, list.option, item.url);
+                onClick={() => {
+                  handleListClick(list.name, list.option, item.url);
                 }}
               >
                 {list.option}
