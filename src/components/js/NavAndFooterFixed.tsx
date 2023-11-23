@@ -1,8 +1,13 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
 import Footer from "./footer/Footer";
 import { FixedHeader } from "./header/Header";
 
-function NavAndFooterFixed({ children }) {
+interface Props {
+  children?: ReactNode;
+}
+
+function NavAndFooterFixed({ children }: Props) {
   return (
     <>
       <FixedHeader />

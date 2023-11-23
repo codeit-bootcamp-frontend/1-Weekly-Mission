@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-function FolderMenuButton({ children, onClick, id, name, $isActive }) {
-  const handleClick = (e) => {
+function FolderMenuButton({ children, onClick, id, name, $isActive }: any) {
+  const handleClick = (e: any) => {
     e.target.id ? onClick(e.target.id, e.target.name) : onClick("");
   };
   return (

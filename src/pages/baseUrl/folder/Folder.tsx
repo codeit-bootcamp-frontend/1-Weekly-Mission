@@ -22,7 +22,6 @@ function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
     getFolderInformations
   );
-  const [AccountLoadingError, getUserAccountAsync] = useAsync(getAccount);
   const [personalFolder, setPersonalFolder] = useState([]);
   const [currentFolderId, setCurrentFolderId] = useState("");
   const [folderLinks, setFolderLinks] = useState([]);
@@ -43,14 +42,14 @@ function Folder() {
   console.log(inViewFooter, "footer");
 
   const handleLoadAccountId = async () => {
-    const nextAccount = await getUserAccountAsync();
+    const nextAccount = await getAccount();
     const email = nextAccount?.data[0]?.email;
     const nextId = email?.split("@")[0];
     setUserId(nextId);
   };
 
   //카드 리스트 업데이트 하는 함수
-  const handleLoadCardList = async (id) => {
+  const handleLoadCardList = async (id: any) => {
     const result = await getUserLinks(id);
     setFolderLinks(result?.data);
     setFilteredLinks(result?.data);
@@ -58,25 +57,25 @@ function Folder() {
 
   //폴더 리스트 불러오는 함수
   const handleLoadFolderList = async () => {
-    const folders = await getFoldersAsync();
+    const folders = await getFolderInformations();
     setPersonalFolder(folders?.data);
   };
 
   //액션 메뉴에서 버튼을 누를 때마다 folderId와 foldername의 state가 변경되는 함수
-  const handleClickMenuButton = (nextValue, nextName) => {
+  const handleClickMenuButton = (nextValue: any, nextName: any) => {
     setCurrentFolderId(nextValue);
     setFolderName(nextName);
     setSearchValue("");
   };
 
   //버튼 클릭하면 모달이 실행시키기 위한 함수
-  const handleShowModal = (isOpen, modalName) => {
+  const handleShowModal = (isOpen: any, modalName: any) => {
     setActiveModalName(modalName);
     setModalOpen(isOpen);
   };
 
   //setSearchValue Prop으로 내려주기 위한 함수
-  const handleChangeSearchValue = (value) => {
+  const handleChangeSearchValue = (value: any) => {
     setSearchValue(value);
   };
 
@@ -91,7 +90,7 @@ function Folder() {
     if (!folderLinks) return;
     if (searchValue.length > 0) {
       const filteredLinks = folderLinks?.filter(
-        (item) =>
+        (item: any) =>
           item.description?.toLowerCase().includes(searchValue) ||
           item.title?.toLowerCase().includes(searchValue) ||
           item.url?.toLowerCase().includes(searchValue)
@@ -119,7 +118,7 @@ function Folder() {
     folderLinks.length === 0 &&
     personalFolder.length === 0;
 
-  const MODALS = {
+  const MODALS: any = {
     addLink: (
       <AddLinktoFolderModalContainer
         onShow={handleShowModal}
@@ -127,7 +126,9 @@ function Folder() {
         link={link}
       />
     ),
-    addFolder: <FolderAddModal onShow={handleShowModal} />,
+    addFolder: (
+      <FolderAddModal onShow={handleShowModal} currentFolder={folderName} />
+    ),
     deleteLink: <LinkDeleteModal onShow={handleShowModal} link={link} />,
     shareFolder: (
       <FolderShareModalContainer

@@ -8,11 +8,11 @@ import Search from "../../../components/js/Search";
 import CardList from "../../../components/js/CardList";
 
 function Shared() {
-  const [personalFolder, setPersonalFolder] = useState({});
+  const [personalFolder, setPersonalFolder] = useState<any>({});
   const [loadingError, getFolderAsync] = useAsync(getFolder);
 
   const handleLoad = async () => {
-    const folderResult = await getFolderAsync();
+    const folderResult = await getFolder();
     if (!folderResult) return;
 
     const { folder } = folderResult;

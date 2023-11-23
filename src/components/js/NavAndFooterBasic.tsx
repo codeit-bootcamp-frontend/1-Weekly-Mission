@@ -1,8 +1,13 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
 import Footer from "./footer/Footer";
 import { BasicHeader } from "./header/Header";
 
-function NavAndFooterBasic({ children }) {
+interface Props {
+  children?: ReactNode;
+}
+
+function NavAndFooterBasic({ children }: Props) {
   return (
     <Wrapper>
       <BasicHeader />

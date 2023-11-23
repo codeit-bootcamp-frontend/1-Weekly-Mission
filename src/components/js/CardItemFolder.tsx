@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import noImage from "../../Assets/noImage.png";
 import starIcon from "../../Assets/star.svg";
@@ -7,14 +6,23 @@ import KebabPopOver from "./KebabButtonMenu";
 import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
 
+interface Props {
+  item: any;
+  modal: any;
+  setLink: any;
+  isOpen: any;
+  onClick: any;
+  idx: any;
+}
+
 /* 각 카드 컴포넌트 */
-function CardItem({ item, modal, setLink, isOpen, onClick, idx }) {
+function CardItem({ item, modal, setLink, isOpen, onClick, idx }: Props) {
   const handleCardClick = () => {
     const URL = item.url;
     window.open(URL);
   };
 
-  const handleTogglePopOver = (e) => {
+  const handleTogglePopOver = (e: any) => {
     e.stopPropagation();
     onClick(idx);
   };

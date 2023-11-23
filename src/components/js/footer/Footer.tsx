@@ -1,18 +1,27 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import facebookIcon from "Assets/facebookIcon.svg";
-import twitterIcon from "Assets/twitterIcon.svg";
-import youtubeIcon from "Assets/youtubeIcon.svg";
-import instagramIcon from "Assets/instagramIcon.svg";
+import facebookIcon from "@Assets/facebookIcon.svg";
+import twitterIcon from "@Assets/twitterIcon.svg";
+import youtubeIcon from "@Assets/youtubeIcon.svg";
+import instagramIcon from "@Assets/instagramIcon.svg";
 
-const urlList = {
+interface UrlListItem {
+  url: string;
+  icon: any;
+}
+
+interface UrlList {
+  [key: string]: UrlListItem;
+}
+
+const urlList: UrlList = {
   facebook: { url: "https://www.facebook.com/", icon: facebookIcon },
   twitter: { url: "https://twitter.com/?lang=ko", icon: twitterIcon },
   youtube: { url: "https://www.youtube.com/", icon: youtubeIcon },
   instagram: { url: "https://www.instagram.com/", icon: instagramIcon },
 };
 
-function Icon({ name, onClick, className }) {
+function Icon({ name, onClick, className }: any) {
   const { url, icon } = urlList[name];
 
   const handleClick = () => onClick(url);
@@ -34,7 +43,7 @@ const StyledIcon = styled(Icon)`
 `;
 
 function Footer() {
-  const handleIconClick = (url) => {
+  const handleIconClick = (url: any) => {
     window.open(url);
   };
 

@@ -4,7 +4,7 @@ import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
 
 /* 각 카드 컴포넌트 */
-function CardItem({ item, key }) {
+function CardItem({ item, key }: any) {
   /* 이미지 스타일 함수 */
   const imgStyle = {
     backgroundImage: `URL(${item.imageSource})`,
@@ -36,7 +36,7 @@ function CardItem({ item, key }) {
 }
 
 /* 카드리스트들 컴포넌트 */
-function CardList({ folderLinks }) {
+function CardList({ folderLinks }: any) {
   if (folderLinks === false) {
     return null;
   }
@@ -44,7 +44,7 @@ function CardList({ folderLinks }) {
     <div className="section-title section-title-third">
       <div className="section-title-third-inner">
         {folderLinks &&
-          folderLinks.map((item) => {
+          folderLinks.map((item: any) => {
             return <CardItem key={item.id} item={item} />;
           })}
       </div>

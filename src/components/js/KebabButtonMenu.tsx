@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-function KebabPopOver({ modal, $url, setLink }) {
-  const handleClick = (e) => {
+function KebabPopOver({ modal, $url, setLink }: any) {
+  const handleClick = (e: any) => {
     e.stopPropagation();
     const nextModal = e.target.getAttribute("modalName");
     setLink($url);

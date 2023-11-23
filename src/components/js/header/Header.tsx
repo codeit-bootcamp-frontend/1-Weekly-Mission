@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import Nav from "./Nav";
 
-export function FixedHeader({ account }) {
+export function FixedHeader() {
   return (
     <FixedStyledHeader>
-      <Nav account={account} />
+      <Nav />
     </FixedStyledHeader>
   );
 }
 
-export function BasicHeader({ account }) {
+export function BasicHeader() {
   return (
     <StyledHeader>
-      <Nav account={account} />
+      <Nav />
     </StyledHeader>
   );
 }

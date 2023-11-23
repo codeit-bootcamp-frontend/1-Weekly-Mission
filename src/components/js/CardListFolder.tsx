@@ -3,10 +3,10 @@ import CardItem from "./CardItemFolder";
 import { useState } from "react";
 
 /* 카드리스트들 컴포넌트 */
-function CardList({ folderLinks, modal, setLink }) {
+function CardList({ folderLinks, modal, setLink }: any) {
   const [openedPopOver, setOpenedPopOver] = useState(null);
 
-  const handleTogglePopOver = (idx) => {
+  const handleTogglePopOver = (idx: any) => {
     if (idx === openedPopOver) {
       setOpenedPopOver(null);
     } else {

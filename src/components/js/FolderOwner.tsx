@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
 import { Container } from "./Container";
 
-function FolderOwner({ folderName, owner }) {
+function FolderOwner({ folderName, owner }: any) {
   const ownerName = owner?.name;
   const ownerImg = owner?.profileImageSource;
 

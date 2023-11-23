@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function useAsync(asyncFunction) {
+function useAsync(asyncFunction: any) {
   const [error, setError] = useState(null);
 
   const wrappedFunction = async () => {
     try {
       setError(null);
       return await asyncFunction();
-    } catch (error) {
+    } catch (error: any) {
       setError(error);
     }
   };

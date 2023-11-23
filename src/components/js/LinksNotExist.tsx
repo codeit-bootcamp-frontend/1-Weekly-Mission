@@ -1,6 +1,11 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
 
-function LinksNotExist({ children }) {
+interface Props {
+  children?: ReactNode;
+}
+
+function LinksNotExist({ children }: Props) {
   return (
     <Wrapper>
       <Text>{children}</Text>

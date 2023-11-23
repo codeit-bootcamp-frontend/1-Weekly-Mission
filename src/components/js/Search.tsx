@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { ReactComponent as searchIcon } from "Assets/Search.svg";
 import { ReactComponent as removeIcon } from "Assets/close_white.svg";
 
-function Search({ value, onChange, onFilter, onDelete }) {
-  const handleChangeValue = (e) => {
+function Search({ value, onChange, onFilter, onDelete }: any) {
+  const handleChangeValue = (e: any) => {
     const nextValue = e.target.value;
     onChange(nextValue);
     onFilter();

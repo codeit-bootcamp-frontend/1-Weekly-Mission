@@ -6,7 +6,9 @@ import Profile from "../NavProfile";
 import logoImg from "Assets/logo.svg";
 
 function Nav() {
-  const [account, setAccount] = useState({});
+  const [account, setAccount] = useState(null);
+
+  console.log(account);
 
   const handleLoad = async () => {
     const nextAccount = await getAccount();
