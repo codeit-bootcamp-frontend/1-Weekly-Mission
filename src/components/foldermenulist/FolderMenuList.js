@@ -34,12 +34,9 @@ export default function FolderMenuList() {
           );
         })}
       </div>
-      <Button
-        className={styles.add__button}
-        onClick={() => alert("추후기능만들예정")}
-      >
-        폴더추가
-      </Button>
+      <div className={styles.add__folder__button}>
+        <Button onClick={() => alert("추후기능만들예정")}>폴더추가</Button>
+      </div>
     </div>
   );
 }

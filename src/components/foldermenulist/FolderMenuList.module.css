@@ -1,26 +1,22 @@
-/* folderButton   */
-/* grid template 이름으로 구현하기  */
 .container {
   display: flex;
-  border: 5px solid red;
-  justify-content: space-between;
-  @media (min-width: 768px) {
-    width: 90%;
-    margin: 0 auto;
-  }
 
+  justify-content: space-between;
+  margin: 0 auto;
+  column-gap: 2rem;
+  width: calc(100% - 10rem);
+
+  @media (min-width: 768px) {
+    width: calc(100% - 14rem);
+  }
   /* table2 */
-  /* 이 사이즈가 제일 문제임  */
   @media (min-width: 1124px) {
-    width: 90%;
-    margin: 0 auto;
+    width: calc(100% - 14rem);
   }
 
   /* descktop*/
   @media (min-width: 1200px) {
-    width: calc(100% - 55rem);
-    margin: 3rem auto;
-    padding: 1rem;
+    width: 80%;
   }
 }
 
@@ -28,30 +24,12 @@
   display: grid;
   column-gap: 1rem;
   row-gap: 1rem;
-  grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "header header header header" /* 1행: 4열 모두 header                */
+    "main main . sidebar";
 
-  @media (min-width: 768px) {
-  }
-
-  /* table2 */
-  @media (min-width: 1124px) {
-  }
-
-  /* descktop*/
-  @media (min-width: 1200px) {
-  }
-}
-
-.add__button {
-  @media (max-width: 767px) {
-    position: fixed;
-    border-radius: 15px;
-
-    left: 50%;
-    bottom: 110px;
-    transform: translateX(-50%);
-  }
   @media (min-width: 768px) {
   }
   /* table2 */
@@ -60,71 +38,49 @@
 
   /* descktop*/
   @media (min-width: 1200px) {
+    grid-template-areas: "whole favorite useful myplace new hire test ";
   }
 }
 
-.active__button {
-  border: 5px solid blue;
-}
-
-/* 아이템버튼들 하나하 */
-/* 
-/* 모바일 */
-@media (max-width: 1124px) {
-  .sub__container button:nth-child(1) {
-    grid-row: 1/2;
-    grid-column: 2/4;
+.add__folder__button {
+  display: none;
+  @media (min-width: 768px) {
+    display: inline;
+  }
+  /* table2 */
+  @media (min-width: 1124px) {
+    display: inline;
   }
 
-  /* 유용한글 */
-  .sub__container button:nth-child(2) {
-    grid-row: 2/3;
-    grid-column: 2/4;
-  }
-
-  /* 나만의장소 */
-  .sub__container button:nth-child(3) {
-    grid-row: 2/3;
-    grid-column: 4/6;
-  }
-
-  .sub__container button:nth-child(4) {
-    grid-row: 1/2;
-    grid-column: 6/8;
-  }
-  .sub__container button:nth-child(5) {
-    grid-row: 1/2;
-    grid-column: 4/6;
-  }
-
-  .sub__container button:nth-child(6) {
-    grid-row: 1/2;
-    grid-column: 8/10;
+  /* descktop*/
+  @media (min-width: 1200px) {
+    display: inline;
   }
 }
+.sub__container button:nth-child(1) {
+  grid-area: "whole";
+}
 
-@media (min-width: 1125px) {
-  .sub__container button:nth-child(1) {
-  }
+.sub__container button:nth-child(2) {
+  grid-area: "favorite";
+}
 
-  /* 유용한글 */
-  .sub__container button:nth-child(2) {
-    width: 100px;
-  }
+.sub__container button:nth-child(3) {
+  grid-area: "useful";
+}
 
-  /* 나만의장소 */
-  .sub__container button:nth-child(3) {
-    width: 100px;
-  }
+.sub__container button:nth-child(4) {
+  grid-area: "myplace";
+}
 
-  .sub__container button:nth-child(4) {
-    width: 100px;
-  }
-  .sub__container button:nth-child(5) {
-    width: 100px;
-  }
+.sub__container button:nth-child(5) {
+  grid-area: "new";
+}
 
-  .sub__container button:nth-child(6) {
-    width: 100px;
-  }
+.sub__container button:nth-child(6) {
+  grid-area: "hire";
+}
+
+.sub__container button:nth-child(7) {
+  grid-area: "test";
 }

@@ -1,0 +1,36 @@
+/* 전체 메뉴의 이미지 없는것만 가운데로 정렬이 안됨 ㅎ */
+.card__image {
+  height: 30rem;
+  width: 30rem;
+  margin: 0 auto;
+}
+
+.card__image:hover {
+  transform: scale(1.1);
+  transition: transform 1s;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  row-gap: 1rem;
+}
+.sub__container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+
+  padding-left: 3rem;
+  padding-right: 3rem;
+}

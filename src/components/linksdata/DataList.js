@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import DataListItem from "./DataListItem";
-import styles from "../imagelist/ImageList.module.css";
+import styles from "./DataList.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 import SearchContext from "../../contexts/SearchContext";
 export default function DataList({ folderIdKey }) {

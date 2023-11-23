@@ -6,54 +6,28 @@
   margin: 0 auto;
   padding: 3rem;
 
-  /* table1 */
+  /* tablet 1 */
   @media (min-width: 768px) {
-    width: calc(100% - 20rem);
+    width: 80%;
   }
 
   /* tablet2 */
   @media (min-width: 1124px) {
-    /* width: 100%; */
-    width: calc(100% - 55rem);
+    width: 80%;
   }
 
   /* descktop*/
   @media (min-width: 1200px) {
-    /* width: 80%; */
+    width: 80%;
   }
 }
 
 .title {
   font-size: 2rem;
   font-weight: 600;
-  @media (min-width: 768px) {
-    display: block;
-  }
-
-  /* tablet2 */
-  @media (min-width: 1124px) {
-    display: none;
-  }
-
-  /* descktop*/
-  @media (min-width: 1200px) {
-    display: block;
-  }
 }
 
 .images__container {
   display: flex;
-
   column-gap: 1rem;
-  @media (min-width: 768px) {
-  }
-
-  /* tablet2 */
-  @media (min-width: 1124px) {
-  }
-
-  /* descktop*/
-  @media (min-width: 1200px) {
-    /* width: 80%; */
-  }
 }

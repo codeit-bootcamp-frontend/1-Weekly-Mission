@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Card from "../../common/card/Card";
-import styles from "../imagelist/ImageListItem.module.css";
+import styles from "./DataListItem.module.css";
 import kebabImage from "../../assets/images/kebab.svg";
 
 import { parseDatestring, getElapsedTime } from "../../utils/calTime";
