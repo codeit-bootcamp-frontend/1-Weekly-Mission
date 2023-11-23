@@ -1,4 +1,4 @@
-import pc from "Assets/pc.png";
+import pc from "../../../Assets/pc.png";
 
 function Homepage() {
   return (

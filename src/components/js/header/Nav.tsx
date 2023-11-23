@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { getAccount } from "../../../api/apiUrl";
 import styled from "styled-components";
 import Profile from "../NavProfile";
-import logoImg from "Assets/logo.svg";
+import logoImg from "../../../Assets/logo.svg";
 
 function Nav() {
-  const [account, setAccount] = useState(null);
+  const [account, setAccount] = useState<any>(null);
 
   console.log(account);
 
@@ -28,7 +28,7 @@ function Nav() {
           </Link>
         </NavLeft>
         <div className="Nav_right">
-          {account.email ? (
+          {account?.email ? (
             <Profile className="Nav_profile" account={account} />
           ) : (
             <NavSignInButton to="/" className="Nav_signIn_button">

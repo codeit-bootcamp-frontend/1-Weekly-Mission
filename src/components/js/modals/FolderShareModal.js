@@ -1,9 +1,8 @@
-import * as S from "components/js/modals/modal-styles/ModalsUnits";
+import * as S from "../../../components/js/modals/modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
-import kakaotalk from "Assets/kakaotalk.svg";
-import facebookIcon from "Assets/facebook.svg";
-import linkShare from "Assets/linkShare.svg";
-
+import kakaotalk from "../../../Assets/kakaotalk.svg";
+import facebookIcon from "../../../Assets/facebook.svg";
+import linkShare from "../../../Assets/linkShare.svg";
 
 function FolderShareModal({ onClose, folderName, copy, kakao, facebook }) {
   return (
@@ -18,7 +17,7 @@ function FolderShareModal({ onClose, folderName, copy, kakao, facebook }) {
           <S.IconWrapper>
             <S.IconContainer>
               <S.IconButton onClick={kakao}>
-                <S.SNSIcon src={kakaotalk}/>
+                <S.SNSIcon src={kakaotalk} />
               </S.IconButton>
               <S.IconName>카카오톡</S.IconName>
             </S.IconContainer>
@@ -30,7 +29,7 @@ function FolderShareModal({ onClose, folderName, copy, kakao, facebook }) {
             </S.IconContainer>
             <S.IconContainer>
               <S.IconButton>
-                <S.SNSIcon src={linkShare} onClick={copy}/>
+                <S.SNSIcon src={linkShare} onClick={copy} />
               </S.IconButton>
               <S.IconName>링크 공유</S.IconName>
             </S.IconContainer>

@@ -2,21 +2,25 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Helmet } from "react-helmet";
-import NavAndFooterBasic from "@components/js/NavAndFooterBasic";
-import { getFolderInformations, getUserLinks, getAccount } from "@api/apiUrl";
-import useAsync from "@hooks/useAsync";
-import LinkBar from "@components/js/LinkBar";
-import Search from "@components/js/Search";
-import FolderMenu from "@components/js/FolderMenu";
-import CardListFolder from "@components/js/CardListFolder";
-import FloatButton from "@components/js/FloatButton";
-import LinksNotExist from "@components/js/LinksNotExist";
-import AddLinktoFolderModalContainer from "@components/js/modals/container/AddLinktoFolderModalContainer";
-import FolderAddModal from "@components/js/modals/container/FolderAddModal";
-import FolderDeleteModal from "@components/js/modals/container/FolderDeleteModal";
-import FolderNameChangeModal from "@components/js/modals/container/FolderNameChangeModal";
-import LinkDeleteModal from "@components/js/modals/container/LinkDeleteModal";
-import FolderShareModalContainer from "@components/js/modals/container/FolderShareModalContainer";
+import NavAndFooterBasic from "../../../components/js/NavAndFooterBasic";
+import {
+  getFolderInformations,
+  getUserLinks,
+  getAccount,
+} from "../../../api/apiUrl";
+import useAsync from "../../../hooks/useAsync";
+import LinkBar from "../../../components/js/LinkBar";
+import Search from "../../../components/js/Search";
+import FolderMenu from "../../../components/js/FolderMenu";
+import CardListFolder from "../../../components/js/CardListFolder";
+import FloatButton from "../../../components/js/FloatButton";
+import LinksNotExist from "../../../components/js/LinksNotExist";
+import AddLinktoFolderModalContainer from "../../../components/js/modals/container/AddLinktoFolderModalContainer";
+import FolderAddModal from "../../../components/js/modals/container/FolderAddModal";
+import FolderDeleteModal from "../../../components/js/modals/container/FolderDeleteModal";
+import FolderNameChangeModal from "../../../components/js/modals/container/FolderNameChangeModal";
+import LinkDeleteModal from "../../../components/js/modals/container/LinkDeleteModal";
+import FolderShareModalContainer from "../../../components/js/modals/container/FolderShareModalContainer";
 
 function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(

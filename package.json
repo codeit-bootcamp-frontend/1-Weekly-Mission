@@ -18,10 +18,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "carco start",
+    "start": "craco start",
+    "build.dev": "craco start",
+    "build.prod": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

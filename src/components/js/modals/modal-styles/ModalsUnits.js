@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import closeIcon from "Assets/_close.png";
+import closeIcon from "../../../../Assets/_close.png";
 
 export function CloseButton({ onClick }) {
   return (

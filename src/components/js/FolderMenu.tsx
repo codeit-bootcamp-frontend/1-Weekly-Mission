@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import addIcon from "Assets/add.png";
+import addIcon from "../../Assets/add.png";
 import FolderMenuButton from "./FolderMenuButton";
-import shareIcon from "Assets/share.svg";
-import penIcon from "Assets/pen.svg";
-import deleteIcon from "Assets/delete.svg";
+import shareIcon from "../../Assets/share.svg";
+import penIcon from "../../Assets/pen.svg";
+import deleteIcon from "../../Assets/delete.svg";
 
 interface ModalType {
   modal: any;

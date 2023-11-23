@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import addFloat from "../../Assets/addFloat.svg";
+import { ReactNode } from "react";
 
 const Icon = styled.img`
   width: 16px;
@@ -35,7 +36,11 @@ const StyledFloatButton = styled.button`
   }
 `;
 
-function FloatButton({ children }) {
+interface Props {
+  children?: ReactNode;
+}
+
+function FloatButton({ children }: Props) {
   return (
     <StyledFloatButton>
       {children}

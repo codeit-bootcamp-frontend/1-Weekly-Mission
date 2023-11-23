@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Profile({ account }) {
+function Profile({ account }: any) {
   const { email, image_source } = account;
 
   const imgSrc = image_source;
