@@ -1,4 +1,4 @@
-export const shareOnClipboard = async (userId = 1, folderId = 40) => {
+export const shareOnClipboard = async (userId: number, folderId: number) => {
   const hostURL = window.location.href;
 
   try {

@@ -12,7 +12,11 @@ const Body = styled.section`
   flex-grow: 1;
 `;
 
-export default function Layout({ children }) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default function Layout({ children }: Props) {
   return (
     <Container>
       <Header />

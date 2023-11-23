@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { breakPoints } from "styles/media";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $headerstyle: boolean }>`
   position: ${({ $headerstyle }) => ($headerstyle ? "" : "fixed")};
   top: 0;
   width: 100%;

@@ -5,6 +5,10 @@ const Title = styled.h2`
   margin: 0;
 `;
 
-export default function ModalTitle({ label }) {
+interface ModalTitleProps {
+  label: string;
+}
+
+export default function ModalTitle({ label }: ModalTitleProps) {
   return <Title>{label}</Title>;
 }

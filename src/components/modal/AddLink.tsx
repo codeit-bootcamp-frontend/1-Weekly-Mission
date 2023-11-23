@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { MouseEvent, useContext, useState } from "react";
 
 import styled from "styled-components";
 import { ReactComponent as CheckIcon } from "assets/check.svg";
@@ -44,7 +44,7 @@ const IconCheck = styled(CheckIcon)`
   }
 `;
 
-const Options = styled.div`
+const Options = styled.div<{ $isSelected: boolean }>`
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
@@ -79,11 +79,15 @@ const SubTitle = styled.div`
   color: var(--color-gray);
 `;
 
-export default function AddLink({ link }) {
-  const { folderNameList } = useContext(FolderContext);
-  const [selected, setSelected] = useState(false);
+interface AddLinkProps {
+  link: string;
+}
 
-  const handleOption = (e) => {
+export default function AddLink({ link }: AddLinkProps) {
+  const { folderNameList } = useContext(FolderContext);
+  const [selected, setSelected] = useState("");
+
+  const handleOption = (e: MouseEvent<HTMLDivElement>) => {
     setSelected(e.currentTarget.id);
   };
 
@@ -105,7 +109,7 @@ export default function AddLink({ link }) {
               <Title>{folder.name}</Title>
               <SubTitle>{`${folder.link.count}개 링크`}</SubTitle>
             </Option>
-            <IconCheck alt="check" />
+            <IconCheck />
           </Options>
         ))}
       </Contents>

@@ -10,7 +10,7 @@ const Container = styled.div`
 export default function Loading() {
   return (
     <Container>
-      <GridLoader color="#6d6afe" size={20} speedMultiplier={1} width={0} />
+      <GridLoader color="#6d6afe" size={20} speedMultiplier={1} />
     </Container>
   );
 }

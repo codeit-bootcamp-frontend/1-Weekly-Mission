@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import Button from "components/button/Button";
-import AddLinkFolderInput from "components/inputs/addLinkFolder";
+import AddLinkFolderInput from "components/inputs/AddLinkFolder";
 import AddLink from "components/modal/AddLink";
 import ModalContainer from "components/modal/ModalContainer";
 import ModalPortal from "components/ModalPortal";
@@ -32,7 +32,12 @@ export const ButtonContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export default function FolderHero({ onChangeAddLink, addLinkValue }) {
+interface FolderHeroProps {
+  addLinkValue: string;
+  readonly onChangeAddLink: (link: string) => void;
+}
+
+export default function FolderHero({ onChangeAddLink, addLinkValue }: FolderHeroProps) {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const handleInput = () => {

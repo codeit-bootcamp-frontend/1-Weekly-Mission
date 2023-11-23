@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { breakPoints } from "styles/media";
 
+interface CardItemStypeProps {
+  $isImageurl: boolean;
+}
+
 export const Wrapper = styled.div`
   width: 340px;
   height: 334px;
@@ -45,7 +49,7 @@ export const Icon = styled.div`
   cursor: pointer;
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled.img<CardItemStypeProps>`
   width: ${({ $isImageurl }) => ($isImageurl ? "100%" : "133px")};
   height: ${({ $isImageurl }) => ($isImageurl ? "100%" : "24px")};
   object-fit: cover;

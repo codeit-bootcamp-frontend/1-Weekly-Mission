@@ -15,12 +15,14 @@ import ModalContainer from "components/modal/ModalContainer";
 import AddFolders from "components/modal/AddFolders";
 import ModalPortal from "components/ModalPortal";
 
+import { FolderData, LinkData } from "types/folder";
+
 const DEFAULT = "전체";
 const USER_ID = 1;
 
 export default function Folder() {
-  const [links, setLinks] = useState([]);
-  const [folders, setFolders] = useState([]);
+  const [links, setLinks] = useState<LinkData[]>([]);
+  const [folders, setFolders] = useState<FolderData[]>([]);
   const [selected, setSelected] = useState(DEFAULT);
   const [selectedFolderId, setSelectedFolderId] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -31,14 +33,14 @@ export default function Folder() {
 
   const { handleFolderUpdate } = useContext(FolderContext);
 
-  const handleSelectedFolder = (category) => {
+  const handleSelectedFolder = (category: string) => {
     setSelected(category);
     changeFolderId(category);
   };
 
-  const changeFolderId = (category) => {
-    const selectedFolder = folders.find((folder) => folder.name === category);
-    const selectedId = selectedFolder ? selectedFolder.id : "";
+  const changeFolderId = (category: string) => {
+    const selectedFolder = folders.find((folder: FolderData) => folder.name === category);
+    const selectedId = selectedFolder ? String(selectedFolder.id) : "";
     setSelectedFolderId(selectedId);
   };
 
@@ -51,13 +53,13 @@ export default function Folder() {
     updateFolderList(folderData);
   };
 
-  const updateFolderList = (data) => {
+  const updateFolderList = (data: FolderData[]) => {
     handleFolderUpdate(data);
   };
 
   const folderNames = folders.map((folder) => folder.name);
 
-  const handleAddLink = (link) => {
+  const handleAddLink = (link: string) => {
     setAddLinkValue(link);
   };
 

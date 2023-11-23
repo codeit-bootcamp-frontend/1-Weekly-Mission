@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import styled from "styled-components";
 
 import shareIcon from "assets/share.svg";
@@ -37,16 +37,20 @@ const actions = [
   { name: "삭제", icon: deleteIcon },
 ];
 
-export default function Options({ selected }) {
+interface OptionsProps {
+  selected: string;
+}
+
+export default function Options({ selected }: OptionsProps) {
   const [selectedOption, setSelectedOption] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSelectedOption = (e) => {
+  const handleSelectedOption = (e: MouseEvent<HTMLDivElement>) => {
     setIsModalOpen(true);
     setSelectedOption(e.currentTarget.innerText);
   };
 
-  const optionFolder = (currentOption) => {
+  const optionFolder = (currentOption: string) => {
     switch (currentOption) {
       case "공유":
         return <ShareFolder currentFolderName={selected} />;

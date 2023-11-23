@@ -6,11 +6,15 @@ import * as S from "./HeaderStyle";
 import logo from "assets/logo.svg";
 import { getUser } from "api/api";
 import Button from "components/button/Button";
+import { User } from "types/user";
 
 const USER_ID = 1;
 
 export default function Header() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User>({
+    email: "",
+    image_source: "",
+  });
   const { isLoading, error, wrappedFunction: getUserAsyncFunc } = useFetch(getUser);
 
   const handleUserData = async () => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 
 import ModalContainer from "./modal/ModalContainer";
 import DeleteFolder from "./modal/DeleteFolder";
@@ -8,20 +8,24 @@ import kebabIcon from "assets/kebab.svg";
 import AddLink from "./modal/AddLink";
 import ModalPortal from "./ModalPortal";
 
-export default function KebabMenu({ link }) {
+interface KebabMenuProps {
+  link: string;
+}
+
+export default function KebabMenu({ link }: KebabMenuProps) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
-  const handleMenuToggle = (e) => {
+  const handleMenuToggle = (e: MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     setIsOpenMenu((prev) => !prev);
   };
 
-  const handleModalOpen = (e) => {
+  const handleModalOpen = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsOpenModal(true);
-    setSelectedOption(e.target.id);
+    setSelectedOption((e.target as HTMLButtonElement).id);
   };
 
   return (

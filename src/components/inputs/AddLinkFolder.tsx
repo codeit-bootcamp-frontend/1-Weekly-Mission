@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import styled from "styled-components";
 
 export const Input = styled.input`
@@ -10,8 +11,12 @@ export const Input = styled.input`
   outline-style: none;
 `;
 
-export default function AddLinkFolderInput({ onChangeAddLink }) {
-  const handleAddLinkInput = (e) => {
+interface AddLinkInputProps {
+  readonly onChangeAddLink: (link: string) => void;
+}
+
+export default function AddLinkFolderInput({ onChangeAddLink }: AddLinkInputProps) {
+  const handleAddLinkInput = (e: ChangeEvent<HTMLInputElement>) => {
     onChangeAddLink(e.target.value);
   };
 

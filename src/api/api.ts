@@ -4,7 +4,7 @@ import { END_POINT } from "common/constants/endpoints";
 const { sample } = END_POINT;
 const headers = { "Content-Type": "application/json; charset=utf-8" };
 
-export async function getUser(userId) {
+export async function getUser(userId: number) {
   const res = await fetch(`${DOMAIN_URL}/api/users/${userId}`, {
     headers,
   });
@@ -28,7 +28,7 @@ export async function getFolder() {
   return data;
 }
 
-export async function getAllFolders(userId) {
+export async function getAllFolders(userId: number) {
   const res = await fetch(`${DOMAIN_URL}/api/users/${userId}/folders`, {
     headers,
   });
@@ -40,7 +40,7 @@ export async function getAllFolders(userId) {
   return data;
 }
 
-export async function getAllLinks(userId, folderId = "") {
+export async function getAllLinks(userId: number, folderId = "") {
   const QUERY_STRING = folderId ? `?folderId=${folderId}` : "";
 
   const res = await fetch(`${DOMAIN_URL}/api/users/${userId}/links${QUERY_STRING}`, {

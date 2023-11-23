@@ -6,7 +6,7 @@ const Container = styled.ul`
   gap: 8px;
 `;
 
-const CategoryButton = styled.button`
+const CategoryButton = styled.button<CategoryButtonProps>`
   padding: 0.5rem 0.75rem;
   border-radius: 5px;
   border: 1px solid var(--color-primary);
@@ -17,7 +17,17 @@ const CategoryButton = styled.button`
   cursor: pointer;
 `;
 
-export default function Categories({ categories, selected, onClick }) {
+interface CategoriesProps {
+  categories: string[];
+  selected: string;
+  onClick: (category: string) => void;
+}
+
+interface CategoryButtonProps {
+  readonly $isActive: boolean;
+}
+
+export default function Categories({ categories, selected, onClick }: CategoriesProps) {
   return (
     <Container>
       {categories.map((category) => (

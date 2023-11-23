@@ -22,7 +22,12 @@ const Info = styled.p`
   color: var(--color-gray);
 `;
 
-export default function DeleteFolder({ currentFolderName, label }) {
+interface DeleteFolderProps {
+  currentFolderName: string;
+  label: string;
+}
+
+export default function DeleteFolder({ currentFolderName, label }: DeleteFolderProps) {
   return (
     <Contents>
       <Description>

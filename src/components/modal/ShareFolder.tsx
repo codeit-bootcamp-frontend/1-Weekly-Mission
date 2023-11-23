@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { MouseEvent, useContext } from "react";
 import { FolderContext } from "context/FolderContext";
 
 import styled from "styled-components";
@@ -61,15 +61,19 @@ const icons = [
   { name: "링크 복사", icon: linkIcon, action: "clipboard" },
 ];
 
-export default function ShareFolder({ currentFolderName }) {
+interface ShareFolderProps {
+  currentFolderName: string;
+}
+
+export default function ShareFolder({ currentFolderName }: ShareFolderProps) {
   const { folderNameList } = useContext(FolderContext);
 
   /*
    * 현재 선택한 폴더와 일치하는 folder의 userId, folderId
    * SNS로 공유하기 또는 클립보드에 복사
    */
-  const handleShareFolder = (e) => {
-    const shareOnSns = e.target.id;
+  const handleShareFolder = (e: MouseEvent<HTMLDivElement>) => {
+    const shareOnSns = (e.target as HTMLImageElement).id;
     const folderInfo = folderNameList.filter((folder) => folder.name === currentFolderName);
     const { user_id, id } = folderInfo[0];
 

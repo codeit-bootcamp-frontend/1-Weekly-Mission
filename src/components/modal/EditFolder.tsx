@@ -23,7 +23,11 @@ const Input = styled.input`
   }
 `;
 
-export default function EditFolder({ currentFolderName }) {
+interface EditFolderProps {
+  currentFolderName: string;
+}
+
+export default function EditFolder({ currentFolderName }: EditFolderProps) {
   return (
     <>
       <ModalTitle label="폴더 이름 변경" />

@@ -1,4 +1,4 @@
-export function getCreatedDate(value) {
+export function getCreatedDate(value: string) {
   const date = new Date(value);
   const yyyy = date.getFullYear();
   const mm = date.getMonth() + 1;
@@ -7,7 +7,7 @@ export function getCreatedDate(value) {
   return { yyyy, mm, dd };
 }
 
-export function getDiffTime(value) {
+export function getDiffTime(value: string) {
   const today = new Date();
   const timeValue = new Date(value);
 

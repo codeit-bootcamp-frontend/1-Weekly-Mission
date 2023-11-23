@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -28,7 +29,11 @@ const AddOption = styled(DeleteOption)`
   background: var(--color-primary-bg);
 `;
 
-export default function PopoverMenu({ onClickModal }) {
+interface PopoverMenuProps {
+  onClickModal: (e: MouseEvent<HTMLDivElement>) => void;
+}
+
+export default function PopoverMenu({ onClickModal }: PopoverMenuProps) {
   return (
     <Container onClick={onClickModal}>
       <DeleteOption id="deleteLink">삭제하기</DeleteOption>

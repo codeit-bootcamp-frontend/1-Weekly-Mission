@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+
 import styled from "styled-components";
 import closeIcon from "assets/close.svg";
 
@@ -37,8 +39,13 @@ const Icon = styled.img`
   cursor: pointer;
 `;
 
-export default function ModalContainer({ onClose, children }) {
-  const handleOutSideClick = (e) => {
+interface ModalProps {
+  children: React.ReactNode;
+  readonly onClose: () => void;
+}
+
+export default function ModalContainer({ onClose, children }: ModalProps) {
+  const handleOutSideClick = (e: MouseEvent<HTMLElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }

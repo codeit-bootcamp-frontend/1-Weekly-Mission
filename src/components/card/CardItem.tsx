@@ -5,15 +5,22 @@ import Star from "components/icon/Star";
 
 import { getCreatedDate, getDiffTime } from "common/utils/dateUtils";
 import KebabMenu from "components/Kebabmenu";
+import { LinkData } from "types/folder";
 
-export default function CardItem({ link }) {
+interface CardItemProps {
+  link: LinkData;
+}
+
+export default function CardItem({ link }: CardItemProps) {
   const { description, image_source: imageSource, created_at: createdAt, url } = link;
   const { yyyy, mm, dd } = getCreatedDate(createdAt);
+
+  // const defaultImageStyle = imageSource === null; // 확인하기
 
   return (
     <S.Wrapper>
       <S.Container>
-        <S.CardImage src={imageSource ? imageSource : logo} $isImageurl={imageSource} />
+        <S.CardImage src={imageSource ? imageSource : logo} $isImageurl={!!imageSource} />
         <S.Icon>
           <Star />
         </S.Icon>
