@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/palette';
 
 export const InputContainer = styled.div`
-  width: 35rem;
+  width: 100%;
 `;
 
 export const Input = styled.input`

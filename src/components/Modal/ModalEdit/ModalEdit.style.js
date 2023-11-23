@@ -33,10 +33,12 @@ export const ModalCloseButton = styled.img`
 `;
 
 export const ModalWrapper = styled.div`
+  border: 1px solid #000;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
+
 export const ModalTitle = styled.h1`
   color: #373740;
   font-family: Pretendard;
