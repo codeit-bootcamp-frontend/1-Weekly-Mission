@@ -72,15 +72,22 @@ function Folder() {
     setNowFolderId(key);
   };
 
-  useEffect(() => {
-    // 마운트 시 렌더링 되는 것들
-    initailize();
-  }, []);
+  const handleSearchLinks = (items, value) => {
+    if (value) {
+      const searchingLink = items.filter((link) => {
+        return (
+          (link?.url?.includes(value) ||
+            link?.title?.includes(value) ||
+            link?.description?.includes(value)) === true
+        );
+      });
 
-  useEffect(() => {
-    // 클릭 이후 업데이트
-    handleRenderItems();
-  }, [nowFolderId]);
+      setUserLinks(searchingLink);
+    }
+    if (value === "") {
+      handleRenderItems();
+    }
+  };
 
   const openMAF = (e, nowUrl) => {
     e.preventDefault();
@@ -91,11 +98,22 @@ function Folder() {
     e.preventDefault();
     setOpenAddModal(false);
   };
+
+  useEffect(() => {
+    // 마운트 시 렌더링 되는 것들
+    initailize();
+  }, []);
+
+  useEffect(() => {
+    // 클릭 이후 업데이트
+    handleRenderItems();
+  }, [nowFolderId]);
+
   return (
     <>
       <Nav lists={userLogin} />
       <HeaderSpace openMAF={openMAF} />
-      <SearchBar />
+      <SearchBar items={userLinks} onSearch={handleSearchLinks} />
       <SelectPart
         selectItems={selectItems}
         handleClickUpdate={handleClickUpdate}
@@ -116,9 +134,7 @@ function Folder() {
           CloseMAF={CloseMAF}
           url={url}
         />
-      ) : (
-        ""
-      )}
+      ) : null}
       <FooterSpace />
     </>
   );
