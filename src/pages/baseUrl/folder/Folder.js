@@ -36,6 +36,7 @@ function Folder() {
 
   console.log(folderLinks);
   console.log(currentFolderId);
+  console.log(searchValue);
 
   const handleLoadAccountId = async () => {
     const nextAccount = await getUserAccountAsync();
@@ -61,6 +62,7 @@ function Folder() {
   const handleClickMenuButton = (nextValue, nextName) => {
     setCurrentFolderId(nextValue);
     setFolderName(nextName);
+    setSearchValue("");
   };
 
   //버튼 클릭하면 모달이 실행시키기 위한 함수
@@ -84,7 +86,7 @@ function Folder() {
   const handleFilterCardList = () => {
     if (!folderLinks) return;
     if (searchValue) {
-      const filteredLinks = folderLinks.filter(
+      const filteredLinks = folderLinks?.filter(
         (item) =>
           item.description?.toLowerCase().includes(searchValue) ||
           item.title?.toLowerCase().includes(searchValue) ||
