@@ -53,6 +53,7 @@ const SearchForm = styled.form`
 const SearchIcon = styled(searchIcon)`
   width: 16px;
   height: 16px;
+  margin-right: 10px;
 `;
 
 const SearchInput = styled.input`
