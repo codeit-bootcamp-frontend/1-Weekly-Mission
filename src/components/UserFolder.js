@@ -43,7 +43,7 @@ const UserFolder = ({ folderDataObject, folderId = 9999, handleListClick }) => {
     <div className="user-folder">
       <div className="folder-lists">
         <ul>
-          {newFolderData?.map((folder) => {
+          {newFolderData.map((folder) => {
             return (
               <li
                 key={folder.id}
