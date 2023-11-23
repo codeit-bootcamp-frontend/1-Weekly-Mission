@@ -2,12 +2,13 @@ import styles from "./Footer.module.scss";
 import classNames from "classnames/bind";
 import { ROUTE } from "sharing/util";
 import { TEXT } from "./constant";
+import { forwardRef } from "react";
 
 const cx = classNames.bind(styles);
 
-export const Footer = () => {
+export const Footer = forwardRef<HTMLDivElement, {}>((props, ref) => {
   return (
-    <footer className={cx("container")}>
+    <footer ref={ref} className={cx("container")}>
       <div className={cx("items")}>
         <span className={cx("copyright")}>{TEXT.codeit}</span>
         <div className={cx("links")}>
@@ -35,4 +36,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+});

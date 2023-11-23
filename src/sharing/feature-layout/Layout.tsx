@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import { useGetUser } from "user/data-access-user";
 import { Footer } from "sharing/ui-footer";
 import { NavigationBar } from "sharing/ui-navigation-bar";
-import { ReactNode } from "react";
+import { ReactNode, forwardRef } from "react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ interface LayoutProps {
 
 const cx = classNames.bind(styles);
 
-export const Layout = ({ children, isSticky = true }: LayoutProps) => {
+export const Layout = forwardRef<HTMLDivElement, LayoutProps>(({ children, isSticky = true }, ref) => {
   const { data } = useGetUser();
   const { email = "", profileImageSource = "" } = data || {};
   const profile = { email, profileImageSource };
@@ -20,7 +20,7 @@ export const Layout = ({ children, isSticky = true }: LayoutProps) => {
     <div>
       <NavigationBar profile={profile} isSticky={isSticky} />
       <main className={cx("main")}>{children}</main>
-      <Footer />
+      <Footer ref={ref} />
     </div>
   );
-};
+});

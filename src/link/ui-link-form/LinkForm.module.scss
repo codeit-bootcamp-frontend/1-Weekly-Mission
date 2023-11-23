@@ -6,6 +6,22 @@
   width: 100%;
   padding: 2.4rem 3.2rem 4rem;
   background-color: $color-light-blue;
+  transition: all 0.3s ease-in-out;
+  &.sticky {
+    opacity: 1;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    padding: 1.6rem 3.2rem;
+
+    @include tablet {
+      padding: 2.4rem 3.2rem;
+    }
+  }
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
 
   @include tablet {
     padding: 6rem 3.2rem 9rem;

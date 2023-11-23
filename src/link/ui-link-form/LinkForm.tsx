@@ -5,18 +5,20 @@ import { FormEvent } from "react";
 
 interface LinkFormProps {
   onSubmit: (event: FormEvent) => void;
+  isSticky: boolean;
+  isHidden: boolean;
 }
 
 const cx = classNames.bind(styles);
 
-export const LinkForm = ({ onSubmit }: LinkFormProps) => {
+export const LinkForm = ({ onSubmit, isSticky, isHidden }: LinkFormProps) => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     onSubmit(event);
   };
 
   return (
-    <div className={cx("container")}>
+    <div className={cx("container", { sticky: isSticky }, { hidden: isHidden })} aria-hidden={isHidden}>
       <form className={cx("form")} onSubmit={handleSubmit}>
         <div className={cx("input-box")}>
           <img className={cx("icon")} src="images/link.svg" alt="링크 아이콘" />

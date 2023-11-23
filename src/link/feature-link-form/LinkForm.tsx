@@ -5,9 +5,11 @@ import { KeyboardEvent, useState } from "react";
 
 interface LinkFormProps {
   folders: Folder[];
+  isSticky: boolean;
+  isHidden: boolean;
 }
 
-export const LinkForm = ({ folders }: LinkFormProps) => {
+export const LinkForm = ({ folders, isSticky, isHidden }: LinkFormProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFolderId, setSelectedFolderId] = useState(0);
   const closeModal = () => {
@@ -22,7 +24,7 @@ export const LinkForm = ({ folders }: LinkFormProps) => {
 
   return (
     <>
-      <UiLinkForm onSubmit={() => setIsModalOpen(true)} />
+      <UiLinkForm isSticky={isSticky} isHidden={isHidden} onSubmit={() => setIsModalOpen(true)} />
       <AddLinkModal
         isOpen={isModalOpen}
         folders={folders}
