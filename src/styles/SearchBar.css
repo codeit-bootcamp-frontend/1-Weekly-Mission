@@ -47,3 +47,20 @@
 .display-off {
   display: none;
 }
+
+.show-bottom {
+  position: fixed;
+  bottom: 0;
+}
+
+.scroll-target {
+  width: 1px;
+}
+
+.linkAdd-background {
+  width: 1440px;
+
+  background-color: #f0f6ff;
+  z-index: 1000;
+  margin: 0 auto;
+}

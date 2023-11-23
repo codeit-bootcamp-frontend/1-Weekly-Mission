@@ -144,6 +144,7 @@ header {
 }
 
 .linkAdd-bar-wrapper {
+  z-index: 100;
   position: relative;
   display: flex;
   margin: 0 auto;
@@ -190,7 +191,9 @@ header {
 }
 
 .folder-header {
-  padding: 60px 320px 90px 320px;
+  height: 234px;
+
+  padding: 60px 0 90px 0;
   margin-bottom: 40px;
   display: flex;
   width: 1440px;
