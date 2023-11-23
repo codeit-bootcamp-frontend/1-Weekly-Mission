@@ -4,11 +4,15 @@ import { ReactComponent as removeIcon } from "Assets/close_white.svg";
 import { useState } from "react";
 
 function Search() {
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState("");
 
   const handleChangeValue = (e) => {
     const nextValue = e.target.value;
     setValue(nextValue);
+  };
+
+  const handleClickRemoveBtn = () => {
+    setValue("");
   };
 
   return (
@@ -20,7 +24,7 @@ function Search() {
           value={value}
           onChange={handleChangeValue}
         ></SearchInput>
-        <CloseIcon />
+        {value && <CloseIcon onClick={handleClickRemoveBtn} />}
       </SearchForm>
     </>
   );
