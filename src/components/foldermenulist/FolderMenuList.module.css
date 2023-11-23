@@ -1,6 +1,5 @@
 .container {
   display: flex;
-
   justify-content: space-between;
   margin: 0 auto;
   column-gap: 2rem;
@@ -26,14 +25,12 @@
   row-gap: 1rem;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(4, 1fr);
-  grid-template-areas:
-    "header header header header" /* 1행: 4열 모두 header                */
-    "main main . sidebar";
 
   @media (min-width: 768px) {
   }
   /* table2 */
   @media (min-width: 1124px) {
+    /* 1125~ 1119 */
   }
 
   /* descktop*/
@@ -43,20 +40,27 @@
 }
 
 .add__folder__button {
-  display: none;
-  @media (min-width: 768px) {
-    display: inline;
-  }
-  /* table2 */
-  @media (min-width: 1124px) {
-    display: inline;
+  position: static;
+  transform: translate(0);
+
+  @media (max-width: 1199px) {
+    position: static;
+    transform: translate(0);
   }
 
-  /* descktop*/
-  @media (min-width: 1200px) {
-    display: inline;
+  @media (max-width: 1123px) {
+    position: static;
+    transform: translate(0);
+  }
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
   }
 }
+
 .sub__container button:nth-child(1) {
   grid-area: "whole";
 }
