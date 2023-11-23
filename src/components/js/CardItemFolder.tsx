@@ -15,6 +15,10 @@ interface Props {
   idx: any;
 }
 
+interface CardLinkItem {
+  $url: string;
+}
+
 /* 각 카드 컴포넌트 */
 function CardItem({ item, modal, setLink, isOpen, onClick, idx }: Props) {
   const handleCardClick = () => {
@@ -68,7 +72,7 @@ function CardItem({ item, modal, setLink, isOpen, onClick, idx }: Props) {
 
 export default CardItem;
 
-const CardLink = styled.div`
+const CardLink = styled.div<CardLinkItem>`
   cursor: pointer;
   pointer-events: auto;
 `;

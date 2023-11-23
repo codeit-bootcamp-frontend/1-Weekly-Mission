@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface ModalNameType {
+  modalName: string;
+}
+
 function KebabPopOver({ modal, $url, setLink }: any) {
   const handleClick = (e: any) => {
     e.stopPropagation();
@@ -35,7 +39,7 @@ const MenuWrapper = styled.div`
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
 `;
 
-const KebabMenu = styled.button`
+const KebabMenu = styled.button<ModalNameType>`
   width: 100px;
   height: 31px;
   padding: 7px 12px;

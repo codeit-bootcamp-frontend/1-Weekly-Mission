@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface ButtonItem {
+  $isActive: boolean;
+}
+
 function FolderMenuButton({ children, onClick, id, name, $isActive }: any) {
   const handleClick = (e: any) => {
     e.target.id ? onClick(e.target.id, e.target.name) : onClick("");
@@ -20,7 +24,7 @@ function FolderMenuButton({ children, onClick, id, name, $isActive }: any) {
 
 export default FolderMenuButton;
 
-const MenuButton = styled.button`
+const MenuButton = styled.button<ButtonItem>`
   height: 35px;
   display: flex;
   align-items: center;

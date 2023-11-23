@@ -5,6 +5,10 @@ import shareIcon from "Assets/share.svg";
 import penIcon from "Assets/pen.svg";
 import deleteIcon from "Assets/delete.svg";
 
+interface ModalType {
+  modal: any;
+}
+
 const FEATURE_LIST = [
   { name: "공유", src: shareIcon, alt: "공유 아이콘", modal: "shareFolder" },
   {
@@ -16,10 +20,10 @@ const FEATURE_LIST = [
   { name: "삭제", src: deleteIcon, alt: "삭제 아이콘", modal: "deleteFolder" },
 ];
 
-function FolderMenu({ folders, onClick, current, folderName, modal }) {
+function FolderMenu({ folders, onClick, current, folderName, modal }: any) {
   const items = Array.isArray(folders) ? folders : [];
 
-  const handleModal = (e) => {
+  const handleModal = (e: any) => {
     const nextModal = e.currentTarget.getAttribute("modal");
     modal(true, nextModal);
   };
@@ -109,7 +113,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const FolderAddContainer = styled.button`
+const FolderAddContainer = styled.button<ModalType>`
   display: flex;
   cursor: pointer;
   justify-content: flex-end;
@@ -141,7 +145,7 @@ const CurrentFolderName = styled.span`
   letter-spacing: -0.2px;
 `;
 
-const FeatureContainer = styled.div`
+const FeatureContainer = styled.div<ModalType>`
   display: flex;
   align-items: center;
   margin-left: 12px;

@@ -1,21 +1,25 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
 import StyledButton from "./Button";
 import linkIcon from "../../Assets/link.svg";
-import { FixedHeader } from "./header/Header";
 
-function LinkBar({ onChange, onShow, $view, $viewFooter }) {
-  const inputRef = useRef();
+interface WrapperItem {
+  $view: boolean;
+  $viewFooter: boolean;
+}
 
-  const handleChange = (e) => {
+function LinkBar({ onChange, onShow, $view, $viewFooter }: any) {
+  const inputRef = useRef<any>();
+
+  const handleChange = (e: any) => {
     const nextValue = e.target.value;
     onChange(nextValue);
   };
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = (e: any) => {
     e.preventDefault();
-    onChange(inputRef.current.value);
+    onChange(inputRef?.current?.value);
     onShow(true, "addLink");
   };
 
@@ -36,7 +40,7 @@ function LinkBar({ onChange, onShow, $view, $viewFooter }) {
 
 export default LinkBar;
 
-const Wrapper = styled(BlueWrapper)`
+const Wrapper = styled(BlueWrapper)<WrapperItem>`
   padding: ${({ $view, $viewFooter }) =>
     $view === false && $viewFooter === false ? "24px 0" : "60px 0 90px"};
   z-index: 3;
