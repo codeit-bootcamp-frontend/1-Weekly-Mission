@@ -8,24 +8,31 @@ import { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FacebookMessengerShareButton } from "react-share";
 
-const StyledModal = styled.div`
+const StyledModalWrap = styled.div`
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     top: 0;
     position: fixed;
-    color: #fff;
-    background-color: #000;
-    opacity: 0.4;
-    z-index: 1;
     display: ${({ $close }) => ($close ? "none" : "")};
+    z-index: 1;
+`;
+
+const StyledModalBg = styled.div`
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 const StyledModalBox = styled.div`
     display: flex;
     width: 360px;
-    position: fixed;
+    height: 238px;
     padding: 32px 40px;
-    flex-shrink: 0;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -33,10 +40,7 @@ const StyledModalBox = styled.div`
     background-color: #fff;
     border-radius: 15px;
     border: 1px solid #ccd5e3;
-    top: 20vw;
-    left: 40vw;
     z-index: 2;
-    display: ${({ $close }) => ($close ? "none" : "")};
 `;
 
 const StyledModalTitle = styled.div`
@@ -245,7 +249,7 @@ function Share({ query }) {
     const { Kakao } = window;
     useEffect(() => {
         Kakao.cleanup();
-        Kakao.init("fe4ed8101e22446bd855dd50f37510b6");
+        Kakao.init(process.env.REACT_APP_KAKAO_API);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -289,7 +293,7 @@ function Share({ query }) {
                 <StyledModalShare>
                     <FacebookMessengerShareButton url={currentUrl}>
                         <StyledModalShareIcon $name="facebook">
-                            <img src={facebookIcon} alt="kakaoIcon" />
+                            <img src={facebookIcon} alt="facebookIcon" />
                         </StyledModalShareIcon>
                     </FacebookMessengerShareButton>
                     페이스북
@@ -297,7 +301,7 @@ function Share({ query }) {
                 <StyledModalShare>
                     <CopyToClipboard text={currentUrl}>
                         <StyledModalShareIcon>
-                            <img src={linkIcon} alt="kakaoIcon" />
+                            <img src={linkIcon} alt="linkIcon" />
                         </StyledModalShareIcon>
                     </CopyToClipboard>
                     링크 복사
@@ -333,22 +337,23 @@ function Edit() {
 
 function Modal({ tag, close, setClose, query }) {
     return (
-        <>
-            <StyledModal $close={close}></StyledModal>
-            <StyledModalBox $close={close}>
-                <StyledModalClose
-                    src={closeIcon}
-                    alt="closeIcon"
-                    onClick={() => setClose(!close)}
-                />
-                {tag === "edit" ? <Edit /> : ""}
-                {tag === "addFolder" ? <AddFolder /> : ""}
-                {tag === "share" ? <Share query={query} /> : ""}
-                {tag === "deleteFolder" ? <DeleteFolder /> : ""}
-                {tag === "deleteLink" ? <DeleteLink /> : ""}
-                {tag === "add" ? <Add /> : ""}
-            </StyledModalBox>
-        </>
+        <StyledModalWrap $close={close}>
+            <StyledModalBg>
+                <StyledModalBox>
+                    <StyledModalClose
+                        src={closeIcon}
+                        alt="closeIcon"
+                        onClick={() => setClose(!close)}
+                    />
+                    {tag === "edit" ? <Edit /> : ""}
+                    {tag === "addFolder" ? <AddFolder /> : ""}
+                    {tag === "share" ? <Share query={query} /> : ""}
+                    {tag === "deleteFolder" ? <DeleteFolder /> : ""}
+                    {tag === "deleteLink" ? <DeleteLink /> : ""}
+                    {tag === "add" ? <Add /> : ""}
+                </StyledModalBox>
+            </StyledModalBg>
+        </StyledModalWrap>
     );
 }
 

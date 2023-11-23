@@ -114,7 +114,6 @@ function Cards({ items, setClose, setTag, close }) {
                 <Card
                     key={item.id}
                     items={item}
-                    m
                     setClose={setClose}
                     setTag={setTag}
                     close={close}
@@ -130,15 +129,10 @@ function Card({ items, setClose, setTag, close }) {
         backgroundImage: `url(${items.imageSource ?? noImage})`,
     };
 
-    function handlePopOver(e) {
+    function handlePopOver(tag) {
         setStatus(!status);
         setClose(!close);
-        const tag = e.target.textContent;
-        if (tag === "삭제하기") {
-            setTag("deleteFolder");
-        } else if (tag === "폴더에 추가") {
-            setTag("add");
-        }
+        setTag(tag);
     }
 
     const apiDate = new Date(items.createdAt);
@@ -192,10 +186,10 @@ function Card({ items, setClose, setTag, close }) {
                     onClick={() => setStatus(!status)}
                 />
                 <StyledPopOverBox $status={status}>
-                    <StyledPopOver onClick={handlePopOver}>
+                    <StyledPopOver onClick={() => handlePopOver("deleteLink")}>
                         삭제하기
                     </StyledPopOver>
-                    <StyledPopOver onClick={handlePopOver}>
+                    <StyledPopOver onClick={() => handlePopOver("add")}>
                         폴더에 추가
                     </StyledPopOver>
                 </StyledPopOverBox>

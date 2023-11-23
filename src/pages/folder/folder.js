@@ -202,28 +202,14 @@ function Folders() {
         handleTitle();
     }, []);
 
-    function handleTag(e) {
+    function handleTag(tag) {
         setClose(!close);
-        const tag = e.target.textContent;
-        if (tag === "폴더 추가") {
-            setTag("addFolder");
-        } else if (tag === "공유") {
-            setTag("share");
-        } else if (tag === "이름 변경") {
-            setTag("edit");
-        } else if (tag === "삭제") {
-            setTag("deleteFolder");
-        }
+        setTag(tag);
     }
 
     return (
         <StyledFoldersBox>
-            <Modal
-                tag={tag}
-                close={close}
-                setClose={setClose}
-                query={query}
-            ></Modal>
+            <Modal tag={tag} close={close} setClose={setClose} query={query} />
             <StyledFolderButtonBox>
                 <FolderButton
                     items={titleData}
@@ -231,7 +217,7 @@ function Folders() {
                     title={title}
                     setQuery={setQuery}
                 />
-                <StyledFolderAdd onClick={handleTag}>
+                <StyledFolderAdd onClick={() => handleTag("addFolder")}>
                     폴더 추가
                     <img src={add} alt="add" />
                 </StyledFolderAdd>
@@ -240,15 +226,15 @@ function Folders() {
                 <StyledFolderTitle>{title}</StyledFolderTitle>
                 {title === "전체" || (
                     <StyledFolderTool>
-                        <IconAndText onClick={handleTag}>
+                        <IconAndText onClick={() => handleTag("share")}>
                             <img src={share} alt="share" />
                             공유
                         </IconAndText>
-                        <IconAndText onClick={handleTag}>
+                        <IconAndText onClick={() => handleTag("edit")}>
                             <img src={pen} alt="pen" />
                             이름 변경
                         </IconAndText>
-                        <IconAndText onClick={handleTag}>
+                        <IconAndText onClick={() => handleTag("deleteFolder")}>
                             <img src={trash} alt="trash" />
                             삭제
                         </IconAndText>
