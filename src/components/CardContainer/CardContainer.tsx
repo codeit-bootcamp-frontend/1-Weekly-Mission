@@ -8,7 +8,7 @@ import EditFolderName from "../../modals/contents/EditFolderName";
 import DeleteFolder from "../../modals/contents/DeleteFolder";
 import getFolderTagListData from "../../utils/getFolderTagListData";
 import { SetStateAction, useEffect, useState } from "react";
-import { CardContainerProps, CardData } from "./types/Card.types";
+import { ICardContainerProps } from "./types/Card.types";
 
 const SHARE_ICON_TEXT = "공유";
 const EDIT_NAME_ICON_TEXT = "이름 변경";
@@ -75,7 +75,7 @@ function CardContainer({
   showTitle,
   cardListData,
   cardTitleText,
-}: CardContainerProps) {
+}: ICardContainerProps) {
   return (
     <>
       {showTitle && <CardTitleText text={cardTitleText} />}

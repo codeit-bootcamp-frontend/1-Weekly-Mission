@@ -15,6 +15,7 @@ function Header() {
         "GET"
       );
       setUserData(userDataResponse[0]);
+      console.log(userDataResponse);
     }
     getUserDataResponse();
   }, []);

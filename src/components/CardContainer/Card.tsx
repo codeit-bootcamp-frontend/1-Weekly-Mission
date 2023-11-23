@@ -6,7 +6,7 @@ import getTimeAgoText from "../../utils/getTimeAgoText";
 import AddFolderOptionBtn from "../StyledButtons/AddFolderOptionBtn";
 import styled from "styled-components";
 import { useState } from "react";
-import { CardData } from "./types/Card.types";
+import { ICardData } from "./types/Card.types";
 
 const OptionBtnContainer = styled.div`
   position: absolute;
@@ -16,7 +16,7 @@ const OptionBtnContainer = styled.div`
 `;
 
 interface Props {
-  cardData: CardData;
+  cardData: ICardData;
 }
 
 function Card({ cardData }: Props) {
@@ -29,7 +29,7 @@ function Card({ cardData }: Props) {
     description,
     image_source,
     folder_id,
-  }: CardData = cardData;
+  }: ICardData = cardData;
 
   const timeAgoText: string = getTimeAgoText(created_at);
   const formulatedCreatedDate = created_at.slice(0, 10).replace(/-/gi, ". ");
