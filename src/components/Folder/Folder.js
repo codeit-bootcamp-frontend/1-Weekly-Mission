@@ -76,9 +76,10 @@ function Folder() {
     if (value) {
       const searchingLink = items.filter((link) => {
         return (
-          (link?.url?.includes(value) ||
-            link?.title?.includes(value) ||
-            link?.description?.includes(value)) === true
+          (link?.url?.toLowerCase().includes(value.toLowerCase()) ||
+            link?.title?.toLowerCase().includes(value.toLowerCase()) ||
+            link?.description?.toLowerCase().includes(value.toLowerCase())) ===
+          true
         );
       });
 
