@@ -1,12 +1,8 @@
-// import Footer from 'components/Footer';
-// import Gnb from 'components/Gnb';
-import ModalEdit from 'components/Modal/ModalEdit';
+import Input from 'components/Input';
 
 function MainPage() {
   return (
-    <>
-      <ModalEdit />
-    </>
+    <Input />
   );
 }
 export default MainPage;
