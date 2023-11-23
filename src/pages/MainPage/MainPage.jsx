@@ -1,8 +1,12 @@
-import Input from 'components/Input';
+// import Input from 'components/Input';
+import Card from 'components/CardList/Card';
+import SelectMenu from 'components/SelectMenu/SelectMenu';
 
 function MainPage() {
   return (
-    <Input />
+    <>
+      <Card />
+    </>
   );
 }
 export default MainPage;

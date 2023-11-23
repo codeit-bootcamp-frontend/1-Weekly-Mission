@@ -1,13 +1,24 @@
 import * as S from "./Card.style";
+import { useState } from "react";
 import { getTimeDifference } from 'utils/getTimeDifference';
 import { formatDate } from 'utils/formatDate';
-import cardImg from "assets/images/cardImg.png";
 import starIcon from "assets/images/starIcon.svg";
 import kebabIcon from "assets/images/kebabIcon.svg";
 import noImg from "assets/images/noImg.svg";
+import SelectMenu from 'components/SelectMenu/SelectMenu';
 
 
 function Card({ item }) {
+  const [showSelectMenu, setShowSelectMenu] = useState(false);
+
+  const openSelectMenu = () => {
+    setShowSelectMenu(true);
+  }
+
+  // const closeSelectMenu = () => {
+  //   setShowSelectMenu(false);
+  // }
+
   const image = item?.image_source;
   const date = item?.created_at;
   const description = item?.description;
@@ -24,7 +35,8 @@ function Card({ item }) {
       <S.CardInfo>
         <S.CardHeader>
           <S.CardCreatedAt>{getTimeDifference(date)}</S.CardCreatedAt>
-          <S.KebabIcon src={kebabIcon}></S.KebabIcon>
+          <S.KebabIcon onClick={openSelectMenu} src={kebabIcon} alt="추가 메뉴 더보기" />
+          {showSelectMenu && <SelectMenu />}
         </S.CardHeader>
         <S.CardDescription>{description}</S.CardDescription>
         <S.CardDate>{formatDate(date)}</S.CardDate>

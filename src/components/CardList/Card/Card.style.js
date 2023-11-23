@@ -4,7 +4,6 @@ import { COLORS } from 'styles/palette';
 export const CardContainer = styled.div`
   width: 34rem;
   height: 33.4rem;
-  overflow: hidden;
   border-radius: 1.5rem;
   box-shadow: 0rem 0.5rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
   position: relative;
@@ -20,6 +19,7 @@ export const CardContainer = styled.div`
 export const CardImgWrapper = styled.div`
   width: 100%;
   height: 20rem;
+  border-radius: 1.5rem 1.5rem 0 0;
   overflow: hidden;
 `;
 
@@ -53,6 +53,7 @@ export const CardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 `;
 
 export const CardCreatedAt = styled.div`
