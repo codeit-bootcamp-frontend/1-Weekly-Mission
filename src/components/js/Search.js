@@ -1,18 +1,17 @@
 import styled from "styled-components";
 import { ReactComponent as searchIcon } from "Assets/Search.svg";
 import { ReactComponent as removeIcon } from "Assets/close_white.svg";
-import { useState } from "react";
 
-function Search() {
-  const [value, setValue] = useState("");
-
+function Search({ value, onChange, onFilter, onDelete }) {
+  console.log(onFilter);
   const handleChangeValue = (e) => {
     const nextValue = e.target.value;
-    setValue(nextValue);
+    onChange(nextValue);
+    onFilter();
   };
 
   const handleClickRemoveBtn = () => {
-    setValue("");
+    onDelete();
   };
 
   return (

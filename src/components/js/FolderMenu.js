@@ -28,11 +28,7 @@ function FolderMenu({ folders, onClick, current, folderName, modal }) {
     <>
       <Wrapper>
         <MenuList>
-          <FolderMenuButton
-            id={""}
-            onClick={onClick}
-            $isActive={current === ""}
-          >
+          <FolderMenuButton id="" onClick={onClick} $isActive={current === ""}>
             전체
           </FolderMenuButton>
           {items.map((folder) => {
@@ -58,7 +54,7 @@ function FolderMenu({ folders, onClick, current, folderName, modal }) {
       </Wrapper>
       <FeatureWrapper>
         <CurrentFolderName>
-          {folderName ? folderName : "전체"}
+          {folderName === "" ? folderName : "전체"}
         </CurrentFolderName>
         {folderName && (
           <Container>

@@ -22,16 +22,20 @@ function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
     getFolderInformations
   );
-  const [LinksloadingError, getUserLinksAsync] = useAsync(getUserLinks);
   const [AccountLoadingError, getUserAccountAsync] = useAsync(getAccount);
   const [personalFolder, setPersonalFolder] = useState([]);
   const [currentFolderId, setCurrentFolderId] = useState("");
   const [folderLinks, setFolderLinks] = useState([]);
+  const [filteredLinks, setFilteredLinks] = useState(folderLinks);
   const [folderName, setFolderName] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [activeModalName, setActiveModalName] = useState("");
   const [link, setLink] = useState("");
   const [userId, setUserId] = useState({});
+  const [searchValue, setSearchValue] = useState("");
+
+  console.log(folderLinks);
+  console.log(currentFolderId);
 
   const handleLoadAccountId = async () => {
     const nextAccount = await getUserAccountAsync();
@@ -41,11 +45,16 @@ function Folder() {
   };
 
   //카드 리스트 업데이트 하는 함수
-  const loadCardList = async () => {
+  const handleLoadCardList = async (id) => {
+    const result = await getUserLinks(id);
+    setFolderLinks(result?.data);
+    setFilteredLinks(result?.data);
+  };
+
+  //폴더 리스트 불러오는 함수
+  const handleLoadFolderList = async () => {
     const folders = await getFoldersAsync();
     setPersonalFolder(folders?.data);
-    const result = await getUserLinksAsync(currentFolderId);
-    setFolderLinks(result?.data);
   };
 
   //액션 메뉴에서 버튼을 누를 때마다 folderId와 foldername의 state가 변경되는 함수
@@ -60,14 +69,43 @@ function Folder() {
     setModalOpen(isOpen);
   };
 
+  //setSearchValue Prop으로 내려주기 위한 함수
+  const handleChangeSearchValue = (value) => {
+    setSearchValue(value);
+  };
+
+  //Search.js에 내려줄 x 버튼 클릭시 초기화하는 함수
+  const handleClearSearchValue = () => {
+    setSearchValue("");
+    setFilteredLinks(folderLinks);
+  };
+
+  //검색바에 입력된 searchValue대로 리스트를 필터링하는 함수
+  const handleFilterCardList = () => {
+    if (!folderLinks) return;
+    if (searchValue) {
+      const filteredLinks = folderLinks.filter(
+        (item) =>
+          item.description?.toLowerCase().includes(searchValue) ||
+          item.title?.toLowerCase().includes(searchValue) ||
+          item.url?.toLowerCase().includes(searchValue)
+      );
+      setFilteredLinks(filteredLinks);
+    }
+    if (!searchValue) {
+      setFilteredLinks(folderLinks);
+    }
+  };
+
   //currentFolderId가 바뀔 때마다 새로 카드리스트 업데이트
   useEffect(() => {
-    loadCardList();
+    handleLoadCardList(currentFolderId);
   }, [currentFolderId]);
 
-  //최초 마운트 시, account ID 정보 가져오기(모달 링크용)
+  //최초 마운트 시, 폴더 리스트와 account ID 정보 가져오기(모달 링크용)
   useEffect(() => {
     handleLoadAccountId();
+    handleLoadFolderList();
   }, []);
 
   const isShowComponent =
@@ -119,17 +157,23 @@ function Folder() {
           </Wrapper>
         ) : (
           <Wrapper>
-            <Search />
+            <Search
+              value={searchValue}
+              onChange={handleChangeSearchValue}
+              onFilter={handleFilterCardList}
+              onDelete={handleClearSearchValue}
+            />
             <FolderMenu
               folderName={folderName}
               folders={personalFolder}
               current={currentFolderId}
               onClick={handleClickMenuButton}
               modal={handleShowModal}
+              onChange={handleFilterCardList}
             />
             {folderLinks.length ? (
               <CardListFolder
-                folderLinks={folderLinks}
+                folderLinks={filteredLinks}
                 modal={handleShowModal}
                 setLink={setLink}
               />
