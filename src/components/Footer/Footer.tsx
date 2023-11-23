@@ -14,10 +14,10 @@ function Footer() {
     twitter: { icon: twitterIcon, url: `https://www.twitter.com` },
     facebook: { icon: facebookIcon, url: `https://www.facebook.com` },
     instagram: { icon: instagramIcon, url: `https://www.ßinstagram.com` },
-  };
+  } as const;
 
-  function SnsItem({ snsType }) {
-    const Sns = SnsData[snsType];
+  function SnsItem({ snsType }: { snsType: string }) {
+    const Sns = SnsData[snsType as keyof typeof SnsData];
     return (
       <a href={Sns.url} target="_blank">
         <img className="sns-icons" src={Sns.icon} alt="sns icon" />
