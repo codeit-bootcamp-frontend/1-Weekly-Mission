@@ -7,19 +7,21 @@ import ShareFolder from "../../modals/contents/ShareFolder";
 import EditFolderName from "../../modals/contents/EditFolderName";
 import DeleteFolder from "../../modals/contents/DeleteFolder";
 import getFolderTagListData from "../../utils/getFolderTagListData";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
+import { CardContainerProps, CardData } from "./types/Card.types";
 
 const SHARE_ICON_TEXT = "공유";
 const EDIT_NAME_ICON_TEXT = "이름 변경";
 const DELETE_ICON_TEXT = "삭제";
 
-function CardTitleText({ text }) {
+function CardTitleText({ text }: { text: string }) {
   const [isOpen, setOpen] = useState("");
 
-  const handleClick = (selectedIcon) => {
+  const handleClick = (selectedIcon: SetStateAction<string>) => {
     setOpen(selectedIcon);
   };
-  const changeOpenState = (openState) => setOpen(openState);
+  const changeOpenState = (openState: SetStateAction<string>) =>
+    setOpen(openState);
   const selectedTagData = getFolderTagListData(true);
   return (
     <div className="card-title_text">
@@ -68,8 +70,11 @@ function CardTitleText({ text }) {
     </div>
   );
 }
-
-function CardContainer({ showTitle, cardListData, cardTitleText }) {
+function CardContainer({
+  showTitle,
+  cardListData,
+  cardTitleText,
+}: CardContainerProps) {
   return (
     <>
       {showTitle && <CardTitleText text={cardTitleText} />}

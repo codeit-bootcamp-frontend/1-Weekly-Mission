@@ -1,4 +1,4 @@
-function getFolderTagListData(isSelectedTagNeeded = "false") {
+function getFolderTagListData(isSelectedTagNeeded = false) {
   const TagListDataEls = isSelectedTagNeeded
     ? document.querySelectorAll(".tag.checked")
     : document.querySelectorAll(".tag");

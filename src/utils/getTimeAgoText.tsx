@@ -1,4 +1,4 @@
-function getMinsDiffFromNow(ISOInputDate) {
+function getMinsDiffFromNow(ISOInputDate: string) {
   const now = Date.now();
   const nowDate = new Date(now);
   const inputDate = new Date(ISOInputDate);
@@ -7,7 +7,7 @@ function getMinsDiffFromNow(ISOInputDate) {
   return diffMin; // diffMin = "created_at ~ 현재"의 시간 차이. 얼마나 지났는지
 }
 
-function calculateTimeAgo(diffMin) {
+function calculateTimeAgo(diffMin: number) {
   // 주어진 조건에 맞게 "~~ ago" 텍스트 구하기
   diffMin = Math.floor(diffMin);
   const MIN_FOR_ONE_DAY = 24 * 60,
@@ -40,8 +40,8 @@ function calculateTimeAgo(diffMin) {
     : `${Math.floor(diffDay / 31)} months`;
 }
 
-function getTimeAgoText({ createdAt }) {
-  const minsDiffFromNow = getMinsDiffFromNow(createdAt);
+function getTimeAgoText(created_at: string) {
+  const minsDiffFromNow = getMinsDiffFromNow(created_at);
   return calculateTimeAgo(minsDiffFromNow);
 }
 export default getTimeAgoText;
