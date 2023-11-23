@@ -1,7 +1,9 @@
+/* folderButton   */
+/* grid template 이름으로 구현하기  */
 .container {
   display: flex;
+  border: 5px solid red;
   justify-content: space-between;
-
   @media (min-width: 768px) {
     width: 90%;
     margin: 0 auto;

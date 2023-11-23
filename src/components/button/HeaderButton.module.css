@@ -20,7 +20,6 @@
 .button__container {
   border: 3px solid var(--primary);
   border-radius: 15px;
-
   width: 85%;
   height: 5rem;
   display: flex;

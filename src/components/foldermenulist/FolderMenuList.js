@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "../button/Button";
-import styles from "./FolderButton.module.css";
+import styles from "./FolderMenuList.module.css";
 import { useNavigate } from "react-router-dom";
+import LocaleContext from "../../contexts/LocaleContext";
 
-export default function FolderButton({ mappedResult, folderIdKey }) {
+export default function FolderMenuList() {
+  const { LinkSDataArr, folderIdKey } = useContext(LocaleContext);
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <div className={styles.sub__container}>
-        {mappedResult?.map((item) => {
+        {LinkSDataArr?.map((item) => {
           let { folderId, folderName } = item;
           // 전체의 folderId는 ""
           let isActive = false;

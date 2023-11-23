@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Card from "../../common/card/Card";
-import styles from "../imageList/ImageListItem.module.css";
+import styles from "../imagelist/ImageListItem.module.css";
 import kebabImage from "../../assets/images/kebab.svg";
 
 import { parseDatestring, getElapsedTime } from "../../utils/calTime";
@@ -8,11 +8,9 @@ import DropDown from "../dropdown/DropDown";
 export default function DataListItem({ item }) {
   const [open, setOpen] = useState(false);
   const { id, url, title, image_source, description, created_at } = item;
-
   const targetData = parseDatestring(created_at);
   const { year, month, day } = targetData;
   const diffTime = getElapsedTime(created_at);
-
   const imageRef = useRef();
 
   return (

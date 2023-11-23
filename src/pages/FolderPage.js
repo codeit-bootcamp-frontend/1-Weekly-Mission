@@ -3,17 +3,17 @@ import FolderNav from "../components/nav/FolderNav";
 import Header from "../common/header/Header";
 import SearchBar from "../common/searchBar/SearchBar";
 import Footer from "../common/footer/Footer";
-import Menubar from "../components/menuBar/Menubar";
 import LocaleContext from "../contexts/LocaleContext";
-
+import SearchProvider from "../contexts/provider/SearchProvider";
 import { useParams } from "react-router-dom";
 import { fetchUserData, fetchUserFolderData } from "../api/folder";
-import FolderMenu from "../components/menuBar/FolderMenu";
+import FolderMenu from "../components/menubar/FolderMenu";
 
 import useFetchData from "./../hooks/useFetchData";
 import { mapFolderData, mapLinksData } from "../utils/mapData";
 import useFetchLinksData from "./../hooks/useFetchLinksdata";
 import DataList from "../components/linksdata/DataList";
+import FolderMenuList from "../components/foldermenulist/FolderMenuList";
 
 export default function FolderPage() {
   const USER_ID = 1;
@@ -40,13 +40,15 @@ export default function FolderPage() {
           folderIdKey: folderId,
         }}
       >
-        <FolderNav data={userProfileData} />
-        <Header />
-        <SearchBar />
-        <Menubar mappedResult={mappedResult} folderIdKey={folderId} />
-        <FolderMenu folderIdKey={folderId} />
-        <DataList folderIdKey={folderId} />
-        <Footer />
+        <SearchProvider>
+          <FolderNav data={userProfileData} />
+          <Header />
+          <SearchBar />
+          <FolderMenuList />
+          <FolderMenu folderIdKey={folderId} />
+          <DataList folderIdKey={folderId} />
+          <Footer />
+        </SearchProvider>
       </LocaleContext.Provider>
     </>
   );
