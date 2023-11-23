@@ -17,11 +17,12 @@ const DELETE_ICON_TEXT = "삭제";
 function CardTitleText({ text }: { text: string }) {
   const [isOpen, setOpen] = useState("");
 
-  const handleClick = (selectedIcon: SetStateAction<string>) => {
+  type selectedIconType = "공유" | "이름 변경" | "삭제";
+
+  const handleClick = (selectedIcon: selectedIconType) => {
     setOpen(selectedIcon);
   };
-  const changeOpenState = (openState: SetStateAction<string>) =>
-    setOpen(openState);
+  const changeOpenState = (openState: string) => setOpen(openState);
   const selectedTagData = getFolderTagListData(true);
   return (
     <div className="card-title_text">
