@@ -1,22 +1,22 @@
 import styled from "styled-components";
-import NavAndFooterBasic from "components/js/NavAndFooterBasic";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 import { Helmet } from "react-helmet";
-import { getFolderInformations, getUserLinks, getAccount } from "api/apiUrl";
-import useAsync from "hooks/useAsync";
-import LinkBar from "components/js/LinkBar";
-import Search from "components/js/Search";
-import FolderMenu from "components/js/FolderMenu";
-import CardListFolder from "components/js/CardListFolder";
-import FloatButton from "components/js/FloatButton";
-import LinksNotExist from "components/js/LinksNotExist";
-import AddLinktoFolderModalContainer from "components/js/modals/container/AddLinktoFolderModalContainer";
-import FolderAddModal from "components/js/modals/container/FolderAddModal";
-import FolderDeleteModal from "components/js/modals/container/FolderDeleteModal";
-import FolderNameChangeModal from "components/js/modals/container/FolderNameChangeModal";
-import LinkDeleteModal from "components/js/modals/container/LinkDeleteModal";
-import FolderShareModalContainer from "components/js/modals/container/FolderShareModalContainer";
+import NavAndFooterBasic from "@components/js/NavAndFooterBasic";
+import { getFolderInformations, getUserLinks, getAccount } from "@api/apiUrl";
+import useAsync from "@hooks/useAsync";
+import LinkBar from "@components/js/LinkBar";
+import Search from "@components/js/Search";
+import FolderMenu from "@components/js/FolderMenu";
+import CardListFolder from "@components/js/CardListFolder";
+import FloatButton from "@components/js/FloatButton";
+import LinksNotExist from "@components/js/LinksNotExist";
+import AddLinktoFolderModalContainer from "@components/js/modals/container/AddLinktoFolderModalContainer";
+import FolderAddModal from "@components/js/modals/container/FolderAddModal";
+import FolderDeleteModal from "@components/js/modals/container/FolderDeleteModal";
+import FolderNameChangeModal from "@components/js/modals/container/FolderNameChangeModal";
+import LinkDeleteModal from "@components/js/modals/container/LinkDeleteModal";
+import FolderShareModalContainer from "@components/js/modals/container/FolderShareModalContainer";
 
 function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
@@ -33,10 +33,14 @@ function Folder() {
   const [link, setLink] = useState("");
   const [userId, setUserId] = useState({});
   const [searchValue, setSearchValue] = useState("");
+  const [ref, inView] = useInView();
+  const [footerRef, inViewFooter] = useInView();
 
   console.log(folderLinks);
   console.log(currentFolderId);
   console.log(searchValue);
+  console.log(inView, "ref");
+  console.log(inViewFooter, "footer");
 
   const handleLoadAccountId = async () => {
     const nextAccount = await getUserAccountAsync();
@@ -85,7 +89,7 @@ function Folder() {
   //검색바에 입력된 searchValue대로 리스트를 필터링하는 함수
   const handleFilterCardList = () => {
     if (!folderLinks) return;
-    if (searchValue) {
+    if (searchValue.length > 0) {
       const filteredLinks = folderLinks?.filter(
         (item) =>
           item.description?.toLowerCase().includes(searchValue) ||
@@ -152,7 +156,13 @@ function Folder() {
       {modalOpen && MODALS[`${activeModalName}`]}
       <NavAndFooterBasic>
         <FloatButton>폴더 추가</FloatButton>
-        <LinkBar onShow={handleShowModal} onChange={setLink} />
+        <LinkBar
+          onShow={handleShowModal}
+          onChange={setLink}
+          $view={inView}
+          $viewFooter={inViewFooter}
+        />
+        <div ref={ref}></div>
         {isShowComponent ? (
           <Wrapper>
             <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
@@ -184,6 +194,7 @@ function Folder() {
             )}
           </Wrapper>
         )}
+        <div ref={footerRef}></div>
       </NavAndFooterBasic>
     </>
   );

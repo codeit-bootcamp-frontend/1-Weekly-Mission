@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
 import StyledButton from "./Button";
 import linkIcon from "../../Assets/link.svg";
+import { FixedHeader } from "./header/Header";
 
-function LinkBar({ onChange, onShow }) {
+function LinkBar({ onChange, onShow, $view, $viewFooter }) {
   const inputRef = useRef();
 
   const handleChange = (e) => {
@@ -19,7 +20,7 @@ function LinkBar({ onChange, onShow }) {
   };
 
   return (
-    <Wrapper>
+    <Wrapper $view={$view} $viewFooter={$viewFooter}>
       <Form>
         <Icon src={linkIcon} alt={linkIcon} />
         <LinkAddInput
@@ -36,14 +37,14 @@ function LinkBar({ onChange, onShow }) {
 export default LinkBar;
 
 const Wrapper = styled(BlueWrapper)`
-  padding: 60px 0 90px;
-
-  @media (max-width: 1199px) and (min-width: 768px) {
-    padding: 60px 32.5px 90px;
-  }
+  padding: ${({ $view, $viewFooter }) =>
+    $view === false && $viewFooter === false ? "24px 0" : "60px 0 90px"};
+  z-index: 3;
+  ${({ $view, $viewFooter }) =>
+    $view === false && $viewFooter === false && "position: fixed; bottom: 0"};
 
   @media (max-width: 767px) {
-    padding: 24px 32px 40px;
+    padding: ${({ $view }) => ($view === false ? "24px 0" : "24px 0 40px")};
   }
 `;
 
