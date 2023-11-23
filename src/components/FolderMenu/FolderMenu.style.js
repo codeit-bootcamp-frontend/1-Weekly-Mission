@@ -21,9 +21,9 @@ export const FolderList = styled.ul`
 `;
 
 export const Folder = styled.li`
-  border-radius: 5px;
+  border-radius: 0.5rem;
   border: 0.1rem solid ${COLORS.PRIMARY};
-
+  cursor: pointer;
   display: flex;
   align-items: center;
   padding: 0.8rem 1.2rem;
@@ -34,6 +34,7 @@ export const Folder = styled.li`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
 `;
 
 export const AddFolderButton = styled.span`
@@ -47,6 +48,7 @@ export const AddFolderButton = styled.span`
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  cursor: pointer;
 `;
 
 export const AddFolderIcon = styled.img`
@@ -79,13 +81,12 @@ export const FolderOptionList = styled.ul`
 `;
 
 export const FolderOption = styled.li`
-
   display: flex;
   gap: 0.4rem;
   align-items: center;
-
   color: var(--linkbrary-gray-60, #9FA6B2);
-
+  cursor: pointer;
+  
   /* Linkbrary/body2-semibold */
   font-family: Pretendard;
   font-size: 14px;

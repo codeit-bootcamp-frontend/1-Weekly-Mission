@@ -7,8 +7,11 @@ import deleteIcon from "assets/images/deleteIcon.svg";
 
 
 function FolderMenu({ data, onClick }) {
-  const [folderName, setFolderName] = useState("");
+  const [folderName, setFolderName] = useState("전체");
 
+  const clickAllFolderName= () => {
+    setFolderName("전체");
+  }
   const handleFolderName = (e) => {
     setFolderName(e.target.innerText);
   }
@@ -17,7 +20,7 @@ function FolderMenu({ data, onClick }) {
     <S.FolderContainer>
       <S.FolderWrapper>
         <S.FolderList>
-          <S.Folder>전체</S.Folder>
+          <S.Folder onClick={clickAllFolderName}>전체</S.Folder>
           {data.map((folder) => 
             <S.Folder key={folder.id} onClick={handleFolderName}>{folder.name}</S.Folder>
           )}
