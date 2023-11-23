@@ -1,6 +1,6 @@
 const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 
-export async function getAccount() {
+async function getAccount() {
   const response = await fetch(`${BASE_URL}/users/1`);
   if (!response.ok) {
     throw new Error("계정을 불러오는데 실패하였습니다.");
@@ -9,7 +9,7 @@ export async function getAccount() {
   return body;
 }
 
-export async function getFolder() {
+async function getFolder() {
   const response = await fetch(`${BASE_URL}/sample/folder`);
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패하였습니다.");
@@ -18,7 +18,7 @@ export async function getFolder() {
   return body;
 }
 
-export async function getFolderInformations() {
+async function getFolderInformations() {
   const response = await fetch(`${BASE_URL}/users/1/folders`);
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패하였습니다.");
@@ -26,8 +26,7 @@ export async function getFolderInformations() {
   const body = await response.json();
   return body;
 }
-
-export async function getEachFolder(id = "") {
+async function getEachFolder(id = "") {
   const query = `/folders/${id}`;
   const response = await fetch(`${BASE_URL}/users/1${query}`);
   if (!response.ok) {
@@ -37,7 +36,7 @@ export async function getEachFolder(id = "") {
   return body;
 }
 
-export async function getUserLinks(id = "") {
+async function getUserLinks(id = "") {
   const query = id === "" ? `/links` : `/links?folderId=${id}`;
   const response = await fetch(`${BASE_URL}/users/1${query}`);
   if (!response.ok) {
@@ -46,3 +45,11 @@ export async function getUserLinks(id = "") {
   const body = await response.json();
   return body;
 }
+
+export {
+  getUserLinks,
+  getEachFolder,
+  getFolderInformations,
+  getFolder,
+  getAccount,
+};

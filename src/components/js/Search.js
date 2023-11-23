@@ -1,12 +1,26 @@
 import styled from "styled-components";
-import searchIcon from "../../Assets/Search.svg";
+import { ReactComponent as searchIcon } from "Assets/Search.svg";
+import { ReactComponent as removeIcon } from "Assets/close_white.svg";
+import { useState } from "react";
 
 function Search() {
+  const [value, setValue] = useState(null);
+
+  const handleChangeValue = (e) => {
+    const nextValue = e.target.value;
+    setValue(nextValue);
+  };
+
   return (
     <>
       <SearchForm>
         <SearchIcon src={searchIcon} alt={searchIcon} />
-        <SearchInput placeholder="링크를 검색해보세요"></SearchInput>
+        <SearchInput
+          placeholder="링크를 검색해보세요"
+          value={value}
+          onChange={handleChangeValue}
+        ></SearchInput>
+        <CloseIcon />
       </SearchForm>
     </>
   );
@@ -20,7 +34,12 @@ const SearchForm = styled.form`
   margin: 40px auto;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: justify-content;
+  align-items: center;
+  padding: 15px 16px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 10px;
 
   @media (max-width: 1199px) and (min-width: 768px) {
     width: 704px;
@@ -31,21 +50,18 @@ const SearchForm = styled.form`
   }
 `;
 
-const SearchIcon = styled.img`
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+const SearchIcon = styled(searchIcon)`
+  width: 16px;
+  height: 16px;
 `;
 
 const SearchInput = styled.input`
   width: 100%;
-  padding: 15px 30px;
-  background-color: #f5f5f5;
-  border: none;
-  border-radius: 10px;
+  overflow: hidden;
   font-size: 16px;
   color: #666;
+  background: none;
+  border: none;
 
   &:hover {
     outline: none;
@@ -54,4 +70,11 @@ const SearchInput = styled.input`
   &:focus {
     outline: none;
   }
+`;
+
+const CloseIcon = styled(removeIcon)`
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
 `;

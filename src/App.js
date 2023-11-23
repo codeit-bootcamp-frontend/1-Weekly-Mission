@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "pages/baseUrl/home/HomePage";
-import Shared from "pages/baseUrl/shared/Shared";
-import Folder from "pages/baseUrl/folder/Folder";
-import NotFound from "pages/baseUrl/notFound/NotFound";
+import HomePage from "./pages/baseUrl/home/HomePage";
+import Shared from "./pages/baseUrl/shared/Shared";
+import Folder from "./pages/baseUrl/folder/Folder";
+import NotFound from "./pages/baseUrl/notFound/NotFound";
 
 function RouterComponent() {
   return (
