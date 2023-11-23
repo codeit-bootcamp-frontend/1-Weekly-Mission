@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./AlertModal.module.scss";
 import classNames from "classnames/bind";
 import { Modal } from "sharing/ui-modal";
@@ -8,7 +9,17 @@ import { ModalContentTitle } from "sharing/ui-modal-content-title";
 
 const cx = classNames.bind(styles);
 
-export const AlertModal = ({
+type AlertModalProps = {
+  isOpen: boolean;
+  title: string;
+  description: string;
+  buttonText: string;
+  onClick: React.MouseEventHandler<HTMLElement>;
+  onCloseClick: React.MouseEventHandler<HTMLElement>;
+  onKeyDown: React.KeyboardEventHandler<HTMLDivElement>;
+};
+
+export const AlertModal: React.FC<AlertModalProps> = ({
   isOpen,
   title,
   description,

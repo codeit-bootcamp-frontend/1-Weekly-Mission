@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./ShareModal.module.scss";
 import classNames from "classnames/bind";
 import { Modal } from "sharing/ui-modal";
@@ -10,6 +11,16 @@ import { ReactComponent as LinkIcon } from "./link.svg";
 
 const cx = classNames.bind(styles);
 
+interface ShareModalProps {
+  isOpen: boolean;
+  folderName: string;
+  onKakaoClick: () => void;
+  onFacebookClick: () => void;
+  onLinkCopyClick: () => void;
+  onCloseClick: () => void;
+  onKeyDown: React.KeyboardEventHandler;
+}
+
 export const ShareModal = ({
   isOpen,
   folderName,
@@ -18,7 +29,7 @@ export const ShareModal = ({
   onLinkCopyClick,
   onCloseClick,
   onKeyDown,
-}) => {
+}: ShareModalProps) => {
   return (
     <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
       <ModalContentBox

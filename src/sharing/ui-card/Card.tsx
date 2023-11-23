@@ -1,11 +1,26 @@
+import React from "react";
 import styles from "./Card.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const Card = ({ children, onMouseOver, onMouseLeave }) => {
+type CardProps = {
+  children: React.ReactNode;
+  onMouseOver: React.MouseEventHandler<HTMLDivElement>;
+  onMouseLeave: React.MouseEventHandler<HTMLDivElement>;
+};
+
+export const Card: React.FC<CardProps> = ({
+  children,
+  onMouseOver,
+  onMouseLeave,
+}) => {
   return (
-    <div className={cx("container")} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+    <div
+      className={cx("container")}
+      onMouseOver={onMouseOver}
+      onMouseLeave={onMouseLeave}
+    >
       {children}
     </div>
   );

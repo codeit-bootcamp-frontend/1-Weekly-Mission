@@ -1,12 +1,12 @@
-import { useEffect } from "react"
-import { ROOT_ID } from "./constant"
+import { useEffect } from "react";
+import { ROOT_ID } from "./constant";
 
-export const useBackgroundClick = (callback) => {
+export const useBackgroundClick = (callback: (event: Event) => void) => {
   useEffect(() => {
-    const rootElement = document.getElementById(ROOT_ID)
-    rootElement?.addEventListener('click', callback)
+    const rootElement = document.getElementById(ROOT_ID);
+    rootElement?.addEventListener("click", callback);
     return () => {
-      rootElement?.removeEventListener('click', callback)
-    }
-  }, [callback])
-}
+      rootElement?.removeEventListener("click", callback);
+    };
+  }, [callback]);
+};

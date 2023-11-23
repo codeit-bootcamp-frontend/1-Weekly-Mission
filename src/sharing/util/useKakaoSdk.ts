@@ -1,7 +1,25 @@
 import { useEffectOnce } from "./useEffectOnce";
 
+interface ShareKakaoProps {
+  url: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+
+declare global {
+  interface Window {
+    Kakao: any; // 'any' 타입으로 정의, 더 정확한 타입 정의가 가능하다면 변경할 수 있음
+  }
+}
+
 export const useKakaoSdk = () => {
-  const shareKakao = ({ url, title, description, imageUrl }) => {
+  const shareKakao = ({
+    url,
+    title,
+    description,
+    imageUrl,
+  }: ShareKakaoProps) => {
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {

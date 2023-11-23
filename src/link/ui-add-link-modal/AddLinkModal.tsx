@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./AddLinkModal.module.scss";
 import classNames from "classnames/bind";
 import { FolderItem } from "folder/ui-folder-item";
@@ -9,6 +10,23 @@ import { ModalContentTitle } from "sharing/ui-modal-content-title";
 
 const cx = classNames.bind(styles);
 
+interface Folder {
+  id: string;
+  name: string;
+  link?: { count: number };
+}
+
+interface AddLinkModalProps {
+  isOpen: boolean;
+  folders: Folder[];
+  selectedLinkUrl: string | null;
+  selectedFolderId: string | null;
+  setSelectedFolderId: (folderId: string | null) => void;
+  onAddClick: () => void;
+  onCloseClick: () => void;
+  onKeyDown: (event: React.KeyboardEvent) => void;
+}
+
 export const AddLinkModal = ({
   isOpen,
   folders,
@@ -18,7 +36,7 @@ export const AddLinkModal = ({
   onAddClick,
   onCloseClick,
   onKeyDown,
-}) => {
+}: AddLinkModalProps) => {
   return (
     <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
       <ModalContentBox
@@ -36,12 +54,14 @@ export const AddLinkModal = ({
                   key={id}
                   isSelected={id === selectedFolderId}
                   folderName={name}
-                  linkCount={link?.count}
+                  linkCount={link?.count ?? 0}
                   onClick={() => setSelectedFolderId(id)}
                 />
               ))}
             </div>
-            <ModalContentButton onClick={onAddClick}>추가하기</ModalContentButton>
+            <ModalContentButton onClick={onAddClick}>
+              추가하기
+            </ModalContentButton>
           </div>
         }
         onCloseClick={onCloseClick}

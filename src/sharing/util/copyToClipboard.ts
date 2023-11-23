@@ -1,4 +1,4 @@
-export const copyToClipboard = (text, callback) => {
+export const copyToClipboard = (text: string, callback?: () => void): void => {
   if (!navigator?.clipboard) {
     const tempElement = document.createElement("textarea");
     tempElement.value = text;

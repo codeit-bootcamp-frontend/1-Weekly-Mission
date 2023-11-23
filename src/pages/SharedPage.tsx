@@ -8,19 +8,50 @@ import { SearchBar } from "link/ui-search-bar";
 
 export const SharedPage = () => {
   const { data } = useGetFolder();
-  const { profileImage, ownerName, folderName, links } = data || {};
+
+  const folderData = data as
+    | {
+        profileImage?: string;
+        ownerName?: string;
+        folderName: string;
+        links: {
+          id: string;
+          url: string;
+          imageSource?: string;
+          alt: string;
+          elapsedTime: string;
+          description?: string;
+          createdAt: string;
+        }[];
+      }
+    | undefined;
+
+  const {
+    profileImage = "",
+    ownerName = "",
+    folderName = "",
+    links = [],
+  } = folderData || {};
 
   return (
     <Layout>
       <SharedLayout
         folderInfo={
-          <FolderInfo profileImage={profileImage} ownerName={ownerName} folderName={folderName} />
+          <FolderInfo
+            profileImage={profileImage}
+            ownerName={ownerName}
+            folderName={folderName}
+          />
         }
         searchBar={<SearchBar />}
         cardList={
           <CardList>
-            {links?.map((link) => (
-              <ReadOnlyCard key={link?.id} {...link} />
+            {links.map((link) => (
+              <ReadOnlyCard
+                key={link.id}
+                {...link}
+                imageSource={link.imageSource || ""} // 'undefined'일 경우 기본값 제공
+              />
             ))}
           </CardList>
         }

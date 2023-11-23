@@ -3,7 +3,12 @@ import classNames from "classnames/bind";
 import { AddFolderButton } from "folder/ui-add-folder-button";
 import { FolderButton } from "folder/ui-folder-button";
 import { IconAndTextButton } from "sharing/ui-icon-and-text-button";
-import { ALL_LINKS_TEXT, BUTTONS, KAKAO_SHARE_DATA, MODALS_ID } from "./constant";
+import {
+  ALL_LINKS_TEXT,
+  BUTTONS,
+  KAKAO_SHARE_DATA,
+  MODALS_ID,
+} from "./constant";
 import { ALL_LINKS_ID } from "link/data-access-link/constant";
 import { useState } from "react";
 import { ShareModal } from "folder/ui-share-modal";
@@ -14,18 +19,37 @@ import { useKakaoSdk } from "sharing/util/useKakaoSdk";
 
 const cx = classNames.bind(styles);
 
-export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
+interface Folder {
+  id: string;
+  name: string;
+}
+
+interface FolderToolBarProps {
+  folders: Folder[];
+  selectedFolderId: string;
+  onFolderClick: (folderId: string) => void;
+}
+
+export const FolderToolBar = ({
+  folders,
+  selectedFolderId,
+  onFolderClick,
+}: FolderToolBarProps) => {
   const { shareKakao } = useKakaoSdk();
-  const [currentModal, setCurrentModal] = useState(null);
+  const [currentModal, setCurrentModal] = useState<null | string>(null);
+  const [someValue, setSomeValue] = useState<string>("");
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSomeValue(event.target.value);
+  };
 
   const folderName =
     ALL_LINKS_ID === selectedFolderId
       ? ALL_LINKS_TEXT
-      : folders?.find(({ id }) => id === selectedFolderId)?.name;
+      : folders?.find(({ id }) => id === selectedFolderId)?.name ?? "";
   const shareLink = `${window.location.origin}/shared?user=1&folder=${selectedFolderId}`;
 
   const closeModal = () => setCurrentModal(null);
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Escape") {
       closeModal();
     }
@@ -64,6 +88,8 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
           buttonText="추가하기"
           onCloseClick={closeModal}
           onKeyDown={handleKeyDown}
+          value={someValue}
+          onChange={handleInputChange}
         />
       </div>
       <h2 className={cx("folder-name")}>{folderName}</h2>
@@ -74,6 +100,7 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
               key={text}
               iconSource={iconSource}
               onClick={() => setCurrentModal(modalId)}
+              text="버튼 텍스트"
             />
           ))}
           <ShareModal
@@ -92,6 +119,8 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
             buttonText="변경하기"
             onCloseClick={closeModal}
             onKeyDown={handleKeyDown}
+            value={someValue}
+            onChange={handleInputChange}
           />
           <AlertModal
             isOpen={currentModal === MODALS_ID.delete}
@@ -100,6 +129,7 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
             buttonText="삭제하기"
             onCloseClick={closeModal}
             onKeyDown={handleKeyDown}
+            onClick={closeModal}
           />
         </div>
       )}

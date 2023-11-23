@@ -12,7 +12,16 @@ import { CardList } from "link/feature-card-list";
 export const FolderPage = () => {
   const { data: folders } = useGetFolders();
   const [selectedFolderId, setSelectedFolderId] = useState(ALL_LINKS_ID);
-  const { data: links, loading } = useGetLinks(selectedFolderId);
+
+  // selectedFolderId를 string으로 변환
+  const selectedFolderIdString = selectedFolderId.toString();
+
+  // useGetLinks에 string 타입으로 변환된 selectedFolderIdString을 전달
+  const { data: links, loading } = useGetLinks(selectedFolderIdString);
+
+  const handleFolderClick = (folderId: string) => {
+    setSelectedFolderId(folderId);
+  };
 
   return (
     <Layout isSticky={false}>
@@ -23,7 +32,7 @@ export const FolderPage = () => {
           <FolderToolBar
             folders={folders}
             selectedFolderId={selectedFolderId}
-            onFolderClick={setSelectedFolderId}
+            onFolderClick={handleFolderClick}
           />
         }
         cardList={loading ? null : <CardList links={links} />}
