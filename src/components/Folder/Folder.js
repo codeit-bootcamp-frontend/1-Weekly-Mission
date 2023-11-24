@@ -1,16 +1,17 @@
 import "../../styles/reset.css";
-import LinkAddBar from "./linkAddBar.js";
-import MainSpace from "../MainSpace";
+import { LinkAddBar, FolderAdd } from "./Add.js";
+import Card from "../Card.js";
 import FooterSpace from "../FooterSpace";
 import Nav from "../Nav";
-import "../../styles/Folder.css";
-import styled from "styled-components";
 
+import * as S from "./FolderStyled.js";
 import { useState, useEffect, useRef } from "react";
 import { getSelectItems, getUserLogin, getRenderLinks } from "../../api";
-import SelectPart from "./SelectPart";
+
 import SearchBar from "./SearchBar";
+import TabButton from "./TabButton.js";
 import { ModalAddFolder } from "./Modal/Modal.js";
+import LinkInfo from "./LinkInfo.js";
 
 function Folder() {
   const [selectItems, setSelectItem] = useState([]);
@@ -22,7 +23,7 @@ function Folder() {
   const [openAddFolder, setOpenAddModal] = useState(false);
   const [userId, setUserId] = useState("");
   const [url, setUrl] = useState("");
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const targetRef = useRef(null);
   const target2Ref = useRef(null);
@@ -80,6 +81,7 @@ function Folder() {
   const handleSearchLinks = (items, value) => {
     if (value) {
       const searchingLink = items.filter((link) => {
+        console.log(value);
         return (
           (link?.url?.toLowerCase().includes(value.toLowerCase()) ||
             link?.title?.toLowerCase().includes(value.toLowerCase()) ||
@@ -109,16 +111,15 @@ function Folder() {
     const observer = new IntersectionObserver(
       (item) => {
         item.forEach((it) => {
-          console.log(it);
           if (it.isIntersecting) {
-            setShow(false);
+            setShow((prev) => !prev);
           } else {
-            setShow(true);
+            setShow((prev) => !prev);
           }
         });
       },
       {
-        threshold: 1.0,
+        threshold: 0,
       }
     );
 
@@ -154,21 +155,34 @@ function Folder() {
     <>
       <Nav lists={userLogin} />
       <LinkAddBar openMAF={openMAF} show={show} />
-      <Target ref={targetRef} />
+      <S.Target ref={targetRef} />
       <SearchBar items={userLinks} onSearch={handleSearchLinks} />
-      <SelectPart
-        selectItems={selectItems}
-        handleClickUpdate={handleClickUpdate}
-        folderName={folderName}
-        selected={selected}
-        nowFolderId={nowFolderId}
-        openMAF={openMAF}
-        userId={userId}
-      />
+      <S.SelectPart>
+        <S.TabButtonContainer>
+          <TabButton
+            selectItems={selectItems}
+            nowFolderId={nowFolderId}
+            handleClickUpdate={handleClickUpdate}
+          />
+          <FolderAdd openMAF={openMAF} />
+        </S.TabButtonContainer>
+        <LinkInfo
+          folderName={folderName}
+          nowFolderId={nowFolderId}
+          userId={userId}
+        />
+      </S.SelectPart>
+
       {userLinks.length !== 0 ? (
-        <MainSpace items={userLinks} openMAF={openMAF} />
+        <S.Main>
+          <S.Section>
+            {userLinks.map((card) => {
+              return <Card item={card} key={card.id} openMAF={openMAF} />;
+            })}
+          </S.Section>
+        </S.Main>
       ) : (
-        <div className="empty">저장된 링크가 없습니다</div>
+        <S.Empty>저장된 링크가 없습니다</S.Empty>
       )}
       {openAddFolder ? (
         <ModalAddFolder
@@ -177,14 +191,10 @@ function Folder() {
           url={url}
         />
       ) : null}
-      <Target ref={target2Ref} />
+      <S.Target ref={target2Ref} />
       <FooterSpace />
     </>
   );
 }
 
 export default Folder;
-
-const Target = styled.div`
-  width: 1px;
-`;

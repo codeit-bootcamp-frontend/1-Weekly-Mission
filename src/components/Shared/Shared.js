@@ -1,7 +1,9 @@
 import "../../styles/reset.css";
 import HeaderSpace from "../HeaderSpace";
-import MainSpace from "../MainSpace.js";
+import * as S from "../Folder/FolderStyled.js";
 import FooterSpace from "../FooterSpace.js";
+import Card from "../Card.js";
+import SearchBar from "../Folder/SearchBar.js";
 import Nav from "../Nav.js";
 import { getFolderData, getUserData } from "../../api";
 import { useState, useEffect } from "react";
@@ -25,6 +27,18 @@ function Shared() {
     }
   };
 
+  const handleRenderLinks = async () => {
+    try {
+      const {
+        folder: { links },
+      } = await getFolderData();
+
+      setItems(links);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleUserLoad = async () => {
     try {
       const {
@@ -38,6 +52,25 @@ function Shared() {
     }
   };
 
+  const handleSearchLinks = (items, value) => {
+    if (value) {
+      const searchingLink = items.filter((link) => {
+        console.log(value);
+        console.log("네이버".includes("ㄴ"));
+        return (
+          (link?.url?.toLowerCase().includes(value.toLowerCase()) ||
+            link?.title?.toLowerCase().includes(value.toLowerCase()) ||
+            link?.description?.toLowerCase().includes(value.toLowerCase())) ===
+          true
+        );
+      });
+
+      setItems(searchingLink);
+    }
+    if (value.length === 0) {
+      handleRenderLinks();
+    }
+  };
   const initialize = async () => {
     await handleFolderLoad();
     await handleUserLoad();
@@ -51,7 +84,14 @@ function Shared() {
     <>
       <Nav lists={user} />
       <HeaderSpace profiles={profile} />
-      <MainSpace items={items} />
+      <SearchBar items={items} onSearch={handleSearchLinks} />
+      <S.Main>
+        <S.Section>
+          {items.map((card) => {
+            return <Card item={card} key={card.id} />;
+          })}
+        </S.Section>
+      </S.Main>
       <FooterSpace />
     </>
   );
