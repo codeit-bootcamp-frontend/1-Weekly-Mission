@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 
-import "commons/styles/reset.css";
-import { Nav, Footer } from "commons/components/index";
-import useAsync from "apis/useAsync";
-import { getUser } from "apis/getUser";
+import "../../styles/reset.css";
+import { Nav, Footer } from "../index";
+import { getUser } from "../../../apis/getUser";
+// import { getUser } from "@/apis/getUser";
 
 const INITIAL_USER = {
   id: "",
@@ -14,12 +14,16 @@ const INITIAL_USER = {
   auth_d: "",
 };
 
-function Layout({ children, isSticky = true }) {
+interface Props {
+  children: ReactNode;
+  isSticky?: boolean;
+}
+
+function Layout({ children, isSticky = true }: Props) {
   const [userValues, setUserValues] = useState(INITIAL_USER);
-  const [isUserLoading, userLoadingError, getUserAsync] = useAsync(getUser);
 
   const loadUser = async () => {
-    const { data } = await getUserAsync();
+    const { data } = await getUser();
 
     if (!data) return;
     setUserValues((prevValues) => {

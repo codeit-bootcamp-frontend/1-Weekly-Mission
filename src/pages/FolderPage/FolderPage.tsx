@@ -1,11 +1,9 @@
-import Layout from "commons/components/Layout/Layout";
-import { SearchBar } from "commons/components/index";
-import { LinkAddBar } from "./components/index";
+import Layout from "../../commons/components/Layout/Layout";
 import "./FolderPage.css";
 import FolderViewer from "./components/FolderViewer/FolderViewer";
 import { useState } from "react";
-import AddFolderModal from "commons/modals/AddFolderModal/AddFolderModal";
-import ModalLayout from "commons/modals/ModalLayout";
+import AddFolderModal from "../../commons/modals/AddFolderModal/AddFolderModal";
+import ModalLayout from "../../commons/modals/ModalLayout";
 
 const INITMODAL = {
   isOpened: false,
@@ -17,7 +15,7 @@ const INITMODAL = {
 function MobileFolderButton() {
   const [modalValues, setModalValues] = useState(INITMODAL);
 
-  const handleModal = (e) => {
+  function handleModal(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     e.preventDefault();
     const newValue = {
       isOpened: true,
@@ -25,7 +23,7 @@ function MobileFolderButton() {
     setModalValues((prev) => {
       return { ...prev, ...newValue };
     });
-  };
+  }
 
   const closeModal = () => {
     setModalValues(() => {

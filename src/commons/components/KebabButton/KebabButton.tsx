@@ -1,11 +1,19 @@
 import styles from "./KebabButton.module.scss";
-import { ReactComponent as KebabIcon } from "assets/images/kebab.svg";
-import { useState } from "react";
-import ModalLayout from "commons/modals/ModalLayout";
-import DeleteLinkModal from "commons/modals/DeleteLinkModal/DeleteLinkModal";
-import AddLinkModal from "commons/modals/AddLinkModal/AddLinkModal";
+import { ReactComponent as KebabIcon } from "../../../assets/images/kebab.svg";
+import { useState, MouseEvent } from "react";
+import ModalLayout from "../../modals/ModalLayout";
+import DeleteLinkModal from "../../modals/DeleteLinkModal/DeleteLinkModal";
+import AddLinkModal from "../../modals/AddLinkModal/AddLinkModal";
 
-function KebabButton({ card }) {
+interface CardProps {
+  card: {
+    card: {
+      url: "";
+    };
+  };
+}
+
+function KebabButton({ card }: CardProps) {
   const INITMODAL = {
     isOpened: false,
     modalType: "",
@@ -14,17 +22,19 @@ function KebabButton({ card }) {
   };
   const [modalValues, setModalValues] = useState(INITMODAL);
 
-  const handleModal = (e) => {
+  const handleModal = (e: MouseEvent) => {
     e.preventDefault();
-    const newValue = {
-      isOpened: true,
-      targetId: e.target.id,
-      targetTitle: card.card.url,
-    };
-    setIsKebab(false);
-    setModalValues((prev) => {
-      return { ...prev, ...newValue };
-    });
+    if (e.target instanceof Element) {
+      const newValue = {
+        isOpened: true,
+        targetId: e.target.id,
+        targetTitle: card.card.url,
+      };
+      setIsKebab(false);
+      setModalValues((prev) => {
+        return { ...prev, ...newValue };
+      });
+    }
   };
 
   const closeModal = () => {

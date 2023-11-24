@@ -1,7 +1,7 @@
 import styles from "./ShareModal.module.scss";
-import { ReactComponent as KakaoIcon } from "assets/images/kakao-icon.svg";
-import { ReactComponent as FacebookIcon } from "assets/images/facebook-icon.svg";
-import { ReactComponent as LinkIcon } from "assets/images/link-modal-icon.svg";
+import { ReactComponent as KakaoIcon } from "../../../assets/images/kakao-icon.svg";
+import { ReactComponent as FacebookIcon } from "../../../assets/images/facebook-icon.svg";
+import { ReactComponent as LinkIcon } from "../../../assets/images/link-modal-icon.svg";
 
 function ShareModal({ title = "", id = "" }) {
   const handleLinkButton = () => {

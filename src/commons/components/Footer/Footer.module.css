@@ -1,4 +1,4 @@
-@import "commons/styles/global.scss";
+@import "../../../commons/styles/global.scss";
 
 footer {
   background: var(--the-julge-black, var(--color-black));

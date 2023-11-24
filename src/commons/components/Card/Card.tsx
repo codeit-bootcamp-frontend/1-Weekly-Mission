@@ -1,13 +1,23 @@
 /* 각 링크를 카드로 보여주는 컴포넌트 */
 
 import styles from "./Card.module.css";
-import NoImg from "assets/images/no-img-card.svg";
+import NoImg from "../../../assets/images/no-img-card.svg";
 import StarButton from "../StarButton/StarButton";
-import formatDate from "commons/utils/formatDate";
-import calcDate from "commons/utils/calcDate";
+import formatDate from "../../utils/formatDate";
+import calcDate from "../../utils/calcDate";
 import KebabButton from "../KebabButton/KebabButton";
 
-function Card(card) {
+interface Props {
+  card: {
+    created_at: "";
+    url: "";
+    title: "";
+    description: "";
+    image_source: "";
+  };
+}
+
+function Card(card: Props) {
   const { created_at, url, title, description, image_source } = card.card;
   const str = calcDate(created_at);
 

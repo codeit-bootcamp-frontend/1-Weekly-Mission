@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react";
 
 import ShareHeader from "./components/ShareHeader/ShareHeader";
-import { SearchBar, CardList } from "commons/components/index";
-import useAsync from "apis/useAsync";
-import { getAllCards } from "apis/getAllCards";
+import { SearchBar, CardList } from "../../commons/components/index";
+import { getAllCards } from "../../apis/getAllCards";
 import "./SharedPage.css";
-import Layout from "commons/components/Layout/Layout";
+import Layout from "../../commons/components/Layout/Layout";
+
+interface FolderProps {
+  folderName: string;
+  folderOwnerName: string;
+  folderOwnerProfileImage: string;
+}
 
 const INITIAL_FOLDER = {
   folderName: "",
-  folderOwnerrName: "",
+  folderOwnerName: "",
   folderOwnerProfileImage: "",
 };
 
 function SharedPage() {
-  const [folderValues, setFolderValues] = useState(INITIAL_FOLDER);
-  const [isFolderLoading, folderLoadingError, getFolderAsync] =
-    useAsync(getAllCards);
+  const [folderValues, setFolderValues] = useState<FolderProps>(INITIAL_FOLDER);
 
   const [cardList, setCardList] = useState([]);
 
   const loadUser = async () => {
-    const folderResult = await getFolderAsync();
+    const folderResult = await getAllCards();
     if (!folderResult) return;
     if (!folderResult.folder) return;
     const { name = "", owner = null, links = "" } = folderResult.folder;
@@ -53,10 +56,6 @@ function SharedPage() {
           <SearchBar />
         </div>
         <div className="card-section">
-          {isFolderLoading && <p> 유저 정보를 받아오는 중...</p>}
-          {folderLoadingError?.message && (
-            <span>{folderLoadingError.message}</span>
-          )}
           <CardList cardList={cardList} />
         </div>
       </section>

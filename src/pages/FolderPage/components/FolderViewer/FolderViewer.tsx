@@ -1,36 +1,47 @@
 import { useEffect, useState } from "react";
-import useAsync from "apis/useAsync";
-import { getFolderList } from "apis/getFolderList";
-import { getAllCards } from "apis/getAllCards";
-import FolderNameButton from "pages/FolderPage/components/FolderNameButton/FolderNameButton";
-import { CardList } from "commons/components";
+import { getFolderList } from "../../../../apis/getFolderList";
+import { getAllCards } from "../../../../apis/getAllCards";
+import FolderNameButton from "../../../../pages/FolderPage/components/FolderNameButton/FolderNameButton";
+import { CardList } from "../../../../commons/components/index";
 import styles from "./FolderViewer.module.scss";
 import FolderModifier from "../FolderModifier/FolderModifier";
-import ModalLayout from "commons/modals/ModalLayout";
-import AddFolderModal from "commons/modals/AddFolderModal/AddFolderModal";
-import { SearchBar } from "commons/components/index";
-import LinkAddBar from "pages/FolderPage/components/LinkAddBar/LinkAddBar";
+import ModalLayout from "../../../../commons/modals/ModalLayout";
+import AddFolderModal from "../../../../commons/modals/AddFolderModal/AddFolderModal";
+import { SearchBar } from "../../../../commons/components/index";
+import LinkAddBar from "../../../../pages/FolderPage/components/LinkAddBar/LinkAddBar";
 
 const DEFAULT_FOLDER = { id: "", name: "전체" };
+interface FolderProps {
+  id: string;
+  name: string;
+}
+interface CardProps {
+  created_at: "";
+  url: "";
+  title: "";
+  description: "";
+  image_source: "";
+  id: "";
+}
 
 function FolderViewer() {
   const [folderList, setFolderList] = useState([]);
-  const [pending, error, getFolderListAsync] = useAsync(getFolderList);
-  const [cardList, setCardList] = useState([]);
+  const [cardList, setCardList] = useState<CardProps[]>([]);
   const [folderTitle, setFolderTitle] = useState("전체");
   const [folderId, setFolderId] = useState("");
 
   const getter = async () => {
-    const allFolders = await getFolderListAsync();
+    const allFolders = await getFolderList();
     setFolderList(allFolders?.data);
   };
 
   const getFolderCards = async (id = "", title = "전체") => {
     const result = await getAllCards(id);
+    const data: CardProps[] = result.data;
     setFolderTitle(title);
     setFolderId(id);
     setCardList(() => {
-      return [...result?.data];
+      return [...data];
     });
     return;
   };
@@ -42,7 +53,7 @@ function FolderViewer() {
   };
   const [modalValues, setModalValues] = useState(INITMODAL);
 
-  const handleModal = (e) => {
+  function handleModal(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     e.preventDefault();
     const newValue = {
       isOpened: true,
@@ -50,7 +61,7 @@ function FolderViewer() {
     setModalValues((prev) => {
       return { ...prev, ...newValue };
     });
-  };
+  }
 
   const closeModal = () => {
     setModalValues(() => {
@@ -79,7 +90,7 @@ function FolderViewer() {
             onChange={getFolderCards}
             key=""
           />
-          {folderList.map((folder) => {
+          {folderList.map((folder: FolderProps) => {
             return (
               <FolderNameButton
                 folder={folder}

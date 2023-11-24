@@ -1,14 +1,16 @@
 /* 추가할 링크를 타이핑하는 인풋 컴포넌트 */
 
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import styles from "./LinkAddBar.module.css";
-import { ReactComponent as LinkIcon } from "assets/images/link-icon.svg";
-import AddLinkModal from "commons/modals/AddLinkModal/AddLinkModal";
-import ModalLayout from "commons/modals/ModalLayout";
+import { ReactComponent as LinkIcon } from "../../../../assets/images/link-icon.svg";
+import AddLinkModal from "../../../../commons/modals/AddLinkModal/AddLinkModal";
+// import AddLinkModal from "@/commons/modals/AddLinkModal/AddLinkModal";
+import ModalLayout from "../../../../commons/modals/ModalLayout";
 
 function LinkAddBar() {
   const [keyword, setKeyword] = useState("");
-  const handleKeywordChange = (e) => setKeyword(e.target.value);
+  const handleKeywordChange = (e: ChangeEvent) =>
+    setKeyword((e.target as HTMLInputElement).value);
 
   const INITMODAL = {
     isOpened: false,
@@ -18,7 +20,7 @@ function LinkAddBar() {
   };
   const [modalValues, setModalValues] = useState(INITMODAL);
 
-  const handleModal = (e) => {
+  function handleModal(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
     e.preventDefault();
     if (!keyword) return;
     const newValue = {
@@ -27,7 +29,7 @@ function LinkAddBar() {
     setModalValues((prev) => {
       return { ...prev, ...newValue };
     });
-  };
+  }
 
   const closeModal = () => {
     setModalValues(() => {

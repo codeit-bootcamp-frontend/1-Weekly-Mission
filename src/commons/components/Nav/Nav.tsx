@@ -2,9 +2,21 @@
 
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.scss";
-import { ReactComponent as LogoSvg } from "assets/images/logo.svg";
+import { ReactComponent as LogoSvg } from "../../../assets/images/logo.svg";
 
-function Nav({ profile, isSticky }) {
+interface Props {
+  profile: {
+    id?: string;
+    created_at?: string;
+    email: string;
+    image_source: string;
+    name: string;
+    auth_d: string;
+  };
+  isSticky?: boolean;
+}
+
+function Nav({ profile, isSticky }: Props) {
   let navClassName = isSticky
     ? { className: `${styles["sticky"]} ${styles["nav"]}` }
     : { className: `nav` };

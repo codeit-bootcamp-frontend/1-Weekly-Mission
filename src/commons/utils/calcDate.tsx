@@ -1,8 +1,8 @@
-function calcDate(value) {
+function calcDate(value: string) {
   const now = new Date(); // 현재 날짜 및 시간
   const createdDate = new Date(value);
 
-  const helpCalc = (time, condition, str) => {
+  const helpCalc = (time: number, condition: number, str: string) => {
     if (time < 2) {
       return `1 ${str} ago`;
     } else if (time < condition) {
@@ -11,7 +11,7 @@ function calcDate(value) {
     return "";
   };
 
-  let minute = (now - createdDate) / 1000 / 60;
+  let minute: number = (+now - +createdDate) / 1000 / 60;
   let str = helpCalc(minute, 60, "minute");
   if (str) return str;
 

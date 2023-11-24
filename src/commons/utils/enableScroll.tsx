@@ -1,5 +1,5 @@
 function enableScroll() {
-  document.body.style.overflow = null;
+  // document.body.style.overflow = null;
 }
 
 export default enableScroll;

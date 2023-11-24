@@ -1,23 +1,28 @@
 import styles from "./AddLinkModal.module.scss";
-import { getFolderList } from "apis/getFolderList";
-import { useState, useEffect } from "react";
-import useAsync from "apis/useAsync";
+import { getFolderList } from "../../../apis/getFolderList";
+import { useState, useEffect, MouseEvent } from "react";
+
+interface FolderProps {
+  id?: string;
+  name?: string;
+  link?: {
+    count?: number;
+  };
+}
 
 function AddLinkModal({ linkId = "" }) {
   const [folderList, setFolderList] = useState([]);
-  const [pending, error, getFolderListAsync] = useAsync(getFolderList);
 
   const getter = async () => {
-    const allFolders = await getFolderListAsync();
+    const allFolders = await getFolderList();
     setFolderList(allFolders?.data);
   };
 
   useEffect(() => {
     getter();
   }, []);
-  console.log(folderList);
-  const handleToggle = (e) => {
-    e.target.classList.toggle(`${styles["checked"]}`);
+  const handleToggle = (e: MouseEvent<HTMLDivElement>) => {
+    (e.target as Element).classList.toggle(`${styles["checked"]}`);
   };
 
   return (
@@ -25,7 +30,7 @@ function AddLinkModal({ linkId = "" }) {
       <h2 className={styles["modal-title"]}>폴더에 추가</h2>
       <p className={styles["modal-desc"]}>{linkId}</p>
 
-      {folderList.map((folder) => {
+      {folderList.map((folder: FolderProps) => {
         return (
           <div className={styles["folder-checkbox"]} onClick={handleToggle}>
             {folder?.name}

@@ -1,9 +1,21 @@
 /* 폴더 안에 들어있는 카드들을 리스트로 보여주는 컴포넌트 */
 
-import Card from "commons/components/Card/Card";
+import Card from "../Card/Card";
 import styles from "./CardList.module.css";
 
-function CardList({ cardList }) {
+interface CardProps {
+  created_at: "";
+  url: "";
+  title: "";
+  description: "";
+  image_source: "";
+  id: "";
+}
+interface CardListProps {
+  cardList: CardProps[];
+}
+
+function CardList({ cardList }: CardListProps) {
   if (!cardList) {
     return <div className={styles["no-card-list"]}> 잘못된 접근입니다.</div>;
   }
@@ -14,7 +26,7 @@ function CardList({ cardList }) {
   }
   return (
     <section className={styles["card-section"]}>
-      {cardList.map((card) => {
+      {cardList.map((card: CardProps) => {
         return <Card card={card} key={card.id} />;
       })}
     </section>

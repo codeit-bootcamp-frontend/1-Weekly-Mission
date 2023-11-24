@@ -6,7 +6,16 @@
 
 import styles from "./ShareHeader.module.css";
 
-function ShareHeader({ folderOwnerProfile, folderName, folderOwnerName }) {
+interface HeaderProps {
+  folderOwnerProfile: string;
+  folderName: string;
+  folderOwnerName: string;
+}
+function ShareHeader({
+  folderOwnerProfile,
+  folderName,
+  folderOwnerName,
+}: HeaderProps) {
   if (!folderOwnerName) {
     return <header>폴더를 만들어주세요.</header>;
   }

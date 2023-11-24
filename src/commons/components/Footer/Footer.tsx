@@ -1,8 +1,8 @@
 import styles from "./Footer.module.css";
-import { ReactComponent as TwitterIcon } from "assets/images/akar-icons_twitter-fill.svg";
-import { ReactComponent as FacebookIcon } from "assets/images/akar-icons_facebook-fill.svg";
-import { ReactComponent as YoutubeIcon } from "assets/images/akar-icons_youtube-fill.svg";
-import { ReactComponent as InstagramIcon } from "assets/images/akar-icons_instagram-filled.svg";
+import { ReactComponent as TwitterIcon } from "../../../assets/images/akar-icons_twitter-fill.svg";
+import { ReactComponent as FacebookIcon } from "../../../assets/images/akar-icons_facebook-fill.svg";
+import { ReactComponent as YoutubeIcon } from "../../../assets/images/akar-icons_youtube-fill.svg";
+import { ReactComponent as InstagramIcon } from "../../../assets/images/akar-icons_instagram-filled.svg";
 
 function Footer() {
   const snsIcons = [

@@ -1,9 +1,13 @@
-import disableScroll from "commons/utils/disableScroll";
 import styles from "./ModalLayout.module.scss";
-import { useEffect } from "react";
-import enableScroll from "commons/utils/enableScroll";
+import { useEffect, ReactNode } from "react";
+import enableScroll from "../utils/enableScroll";
+import disableScroll from "../utils/disableScroll";
 
-function ModalLayout({ onClose, children }) {
+interface Props {
+  onClose: () => void;
+  children: ReactNode;
+}
+function ModalLayout({ onClose, children }: Props) {
   useEffect(() => {
     disableScroll();
     return () => enableScroll();

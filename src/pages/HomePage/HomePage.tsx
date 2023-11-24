@@ -1,4 +1,4 @@
-import Layout from "commons/components/Layout/Layout";
+import Layout from "../../commons/components/Layout/Layout";
 import styled from "styled-components";
 
 function HomePage() {
