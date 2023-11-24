@@ -1,8 +1,17 @@
 import * as S from "./Button.style";
 
-function Button({ children }) {
+function Button({ 
+  className,
+  children,
+  onClick,
+}) {
   return (
-    <S.StyledButton>{children}</S.StyledButton>
+    <S.Button
+      className={className}
+      onClick={onClick}
+    >
+      {children}
+    </S.Button>
   );
 }
 

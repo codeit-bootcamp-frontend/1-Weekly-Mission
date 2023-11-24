@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { COLORS } from 'styles/palette';
 
-export const StyledButton = styled.button`
+export const Button = styled.button`
   display: flex;
-  width: 100%;
-  padding: 1rem 1.6rem;
   justify-content: center;
   align-items: center;
   border-radius: 0.8rem;
+
   background: ${COLORS.GRADATION};
   color: #f5f5f5;
   font-family: Pretendard;

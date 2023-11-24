@@ -2,11 +2,12 @@
 // import Card from 'components/CardList/Card';
 // import SelectMenu from 'components/SelectMenu/SelectMenu';
 import ModalEdit from 'components/Modal/ModalEdit';
+import Button from 'components/Button';
 
 function MainPage() {
   return (
     <>
-      <ModalEdit />
+      <Button>button</Button>
     </>
   );
 }
