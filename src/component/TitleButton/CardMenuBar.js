@@ -1,16 +1,16 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
-import { CardButton } from "./CardButton.js";
-import { MenuTitle } from "../TitleText/MenuTitle.js";
-import Modal from "../Modal/Modal.js";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { CardButton, MenuTitle, Modal, ModalForm } from "component";
+import useModal from "hooks/useModal.js";
 import { ThemeProvider } from "styled-components";
-import theme from "../../css/display.js";
-import { ReactComponent as AddImg } from "../../assets/add.svg";
+import theme from "css/display.js";
+import { ReactComponent as AddImg } from "assets/add.svg";
 import * as S from "./CardMenuBar.style.js";
 
-export function CardMenuBar({ folders }) {
+export default function CardMenuBar({ folders }) {
   const { folderId } = useParams();
+  const { isOpen, openModal, closeModal } = useModal();
+  const option = { input: true, button: { title: "추가하기", color: "blue" } };
   const [selectedFolder, setSelectedFolder] = useState(
     folderId ? parseInt(folderId) : null
   );
@@ -20,7 +20,6 @@ export function CardMenuBar({ folders }) {
       setSelectedFolder(null);
       return;
     }
-
     const matchedFolder = folders.find(
       (folder) => folder.id === parseInt(folderId)
     );
@@ -31,12 +30,9 @@ export function CardMenuBar({ folders }) {
     }
   };
 
-  const [visible, setVisible] = useState(false);
-
-  const handleButtonClick = useCallback(() => {
-    setVisible(true);
-  },[visible])
-
+  const handleButtonClick = () => {
+    openModal();
+  };
 
   useEffect(() => {
     setSelectedFolder(folderId ? parseInt(folderId) : null);
@@ -63,7 +59,13 @@ export function CardMenuBar({ folders }) {
         </S.Container>
         <MenuTitle title={selectedFolder ? selectedFolder : "전체"} />
       </ThemeProvider>
-      {visible && <Modal onClose={setVisible} type={'폴더 추가'} />}
+      {isOpen && (
+        <Modal
+          title="폴더추가"
+          closeModal={closeModal}
+          trigger={<ModalForm subTitle="내용입력" option={option} />}
+        />
+      )}
     </>
   );
 }

@@ -1,9 +1,9 @@
 import { ThemeProvider } from "styled-components";
-import theme from "../../css/display";
-import linkClickImg from "../../assets/link.svg";
+import theme from "css/display";
+import linkClickImg from "assets/link.svg";
 import * as S from "./Header.style.js";
 
-export function Header({ items }) {
+export default function Header({ items }) {
   return (
     <ThemeProvider theme={theme}>
       {items && (

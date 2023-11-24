@@ -1,7 +1,7 @@
 import { Link} from "react-router-dom";
 import * as S from "./CardMenuBar.style.js";
 
-export function CardButton({ folder, folderId}) {
+export default function CardButton({ folder, folderId}) {
   const { id, name } = folder;
   const path = `/folder/${id}`;
 

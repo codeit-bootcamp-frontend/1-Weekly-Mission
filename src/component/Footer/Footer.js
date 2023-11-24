@@ -1,10 +1,9 @@
+import {SNS, socialMedia} from "component";
 import { ThemeProvider } from "styled-components";
-import SNS from "./SNS.js";
-import socialMedia from "./SocialMedia.js";
+import theme from "css/display.js";
 import * as S from "./Footer.style.js";
-import theme from "../../css/display.js";
 
-export function Footer() {
+export default function Footer() {
   return (
     <ThemeProvider theme={theme}>
       <S.Container>

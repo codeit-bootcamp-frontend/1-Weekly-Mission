@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { profileRequestApi } from "api/requestApi.js";
+import logoImg from "assets/logo.png";
+import theme from "css/display.js";
 import * as S from "./Nav.style.js";
-import logoImg from "../../assets/logo.png";
-import theme from "../../css/display.js";
-import { profileRequestApi } from "../../api/requestApi.js";
 
-export function Nav({ setIsError }) {
+export default function Nav({ setIsError }) {
   const [user, setUser] = useState({});
 
   async function profile() {
