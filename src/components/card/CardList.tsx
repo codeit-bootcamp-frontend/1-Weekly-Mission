@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 import * as S from "./CardListStyle";
 import CardItem from "./CardItem";
-import { LinkData } from "types/folder";
+import { LinkData, SampleLinkData } from "types/folder";
 
 interface CardListProps {
-  links: LinkData[];
+  links: LinkData[] | SampleLinkData[];
 }
 
 export default function CardList({ links }: CardListProps) {

@@ -12,8 +12,11 @@ const USER_ID = 1;
 
 export default function Header() {
   const [user, setUser] = useState<User>({
+    id: 1,
+    name: "",
     email: "",
     image_source: "",
+    created_at: "",
   });
   const { isLoading, error, wrappedFunction: getUserAsyncFunc } = useFetch(getUser);
 

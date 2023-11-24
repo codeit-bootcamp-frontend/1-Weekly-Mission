@@ -9,15 +9,22 @@ import Searchbar from "components/inputs/Searchbar";
 import CardList from "components/card/CardList";
 import Loading from "components/Loading";
 
+import { Owner } from "types/user";
+import { SampleLinkData } from "types/folder";
+
 export default function Share() {
   const [folder, setFolder] = useState("");
-  const [profile, setProfile] = useState({});
-  const [links, setLinks] = useState([]);
-  const { isLoading, error, wrappedFunction: getFolderAsyncFunc } = useFetch(getFolder);
+  const [profile, setProfile] = useState<Owner>({
+    id: 0,
+    name: "",
+    profileImageSource: "",
+  });
+  const [links, setLinks] = useState<SampleLinkData[]>([]);
+  const { isLoading, error, wrappedFunction: getFoldersAsyncFunc } = useFetch(getFolder);
 
   const handleFolderData = async () => {
-    const result = await getFolderAsyncFunc();
-    const { name: folderName, owner, links } = result.folder;
+    const { folder } = await getFoldersAsyncFunc();
+    const { name: folderName, owner, links } = folder;
 
     setFolder(folderName);
     setProfile(owner);

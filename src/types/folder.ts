@@ -1,13 +1,19 @@
+import { Owner } from "./user";
+
 export interface LinkData {
   id: number;
-  folder_id: number;
+  folder_id?: number;
   title: string;
   description: string;
   created_at: string;
-  updated_at: string | null;
-  image_source: string;
+  updated_at?: string | null;
+  image_source?: string;
   url: string;
 }
+
+export type SampleLinkData = Omit<LinkData, "folder_id" | "updated_at" | "image_source"> & {
+  imageSource?: string;
+};
 
 export interface FolderData {
   id: number;
@@ -17,6 +23,14 @@ export interface FolderData {
   link: {
     count: number;
   };
+}
+
+export interface SampleFolderData {
+  id: number;
+  count: number;
+  name: string;
+  links: SampleLinkData[];
+  owner: Owner;
 }
 
 export type FolderNameData = Omit<FolderData, "created_at">;
