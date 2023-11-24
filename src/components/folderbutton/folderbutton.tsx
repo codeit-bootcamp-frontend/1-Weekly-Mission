@@ -6,7 +6,7 @@ const StyledButtonBox = styled.div`
     flex-wrap: wrap;
 `;
 
-const StyledButton = styled.div`
+const StyledButton = styled.div<{ $select: boolean }>`
     display: flex;
     padding: 8px 12px;
     border-radius: 5px;
@@ -16,9 +16,16 @@ const StyledButton = styled.div`
     color: ${({ $select }) => ($select ? "#fff" : "#000")};
 `;
 
-function Button({ item, title, setTitle, setQuery }) {
-    const handleButtonClick = (e) => {
-        const titleName = e.target.textContent;
+interface ButtonProps {
+    item: string[];
+    title: string;
+    setTitle: React.Dispatch<React.SetStateAction<string>>;
+    setQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function Button({ item, title, setTitle, setQuery }: ButtonProps) {
+    const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        const titleName = (e.target as HTMLDivElement).textContent;
         setTitle(titleName);
         const queryString =
             titleName === "전체"
@@ -33,8 +40,15 @@ function Button({ item, title, setTitle, setQuery }) {
     );
 }
 
-function FolderButton({ items, setTitle, title, setQuery }) {
-    const handleButtonClick = (e) => {
+interface FolderProps {
+    items: string[];
+    title: string;
+    setTitle: React.Dispatch<React.SetStateAction<string>>;
+    setQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function FolderButton({ items, setTitle, title, setQuery }: FolderProps) {
+    const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const titleName = e.target.textContent;
         setTitle(titleName);
         setQuery("/users/1/links");

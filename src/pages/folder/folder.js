@@ -213,8 +213,8 @@ function Folders() {
             <StyledFolderButtonBox>
                 <FolderButton
                     items={titleData}
-                    setTitle={setTitle}
                     title={title}
+                    setTitle={setTitle}
                     setQuery={setQuery}
                 />
                 <StyledFolderAdd onClick={() => handleTag("addFolder")}>

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FacebookMessengerShareButton } from "react-share";
 
-const StyledModalWrap = styled.div`
+const StyledModalWrap = styled.div<{ $close: boolean }>`
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -30,7 +30,6 @@ const StyledModalBg = styled.div`
 const StyledModalBox = styled.div`
     display: flex;
     width: 360px;
-    height: 238px;
     padding: 32px 40px;
     position: relative;
     flex-direction: column;
@@ -86,7 +85,7 @@ const StyledModalContentShare = styled.div`
     align-items: center;
 `;
 
-const StyledModalButton = styled.div`
+const StyledModalButton = styled.div<{ $delete?: boolean }>`
     width: 280px;
     padding: 16px 20px;
     border-radius: 8px;
@@ -116,7 +115,7 @@ const StyledModalShare = styled.div`
     align-items: center;
 `;
 
-const StyledModalShareIcon = styled.div`
+const StyledModalShareIcon = styled.div<{ $name?: string }>`
     padding: 12px;
     border-radius: 37.333px;
     background: ${({ $name }) => ($name === "kakao" ? "#fee500" : "")};
@@ -130,7 +129,7 @@ const StyledModalAddBox = styled.div`
     gap: 4px;
 `;
 
-const StyledModalAddTitleBox = styled.div`
+const StyledModalAddTitleBox = styled.div<{ $select: string; $number: string }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -244,9 +243,9 @@ function DeleteFolder() {
     );
 }
 
-function Share({ query }) {
+function Share({ query }: { query: string }) {
     const currentUrl = window.location.href + "?" + query;
-    const { Kakao } = window;
+    const Kakao = (window as any).kakao;
     useEffect(() => {
         Kakao.cleanup();
         Kakao.init(process.env.REACT_APP_KAKAO_API);
@@ -291,7 +290,7 @@ function Share({ query }) {
                     카카오톡
                 </StyledModalShare>
                 <StyledModalShare>
-                    <FacebookMessengerShareButton url={currentUrl}>
+                    <FacebookMessengerShareButton url={currentUrl} appId="">
                         <StyledModalShareIcon $name="facebook">
                             <img src={facebookIcon} alt="facebookIcon" />
                         </StyledModalShareIcon>
@@ -335,7 +334,14 @@ function Edit() {
     );
 }
 
-function Modal({ tag, close, setClose, query }) {
+interface ModalProps {
+    tag: string;
+    close: boolean;
+    setClose: React.Dispatch<React.SetStateAction<boolean>>;
+    query: string;
+}
+
+function Modal({ tag, close, setClose, query }: ModalProps) {
     return (
         <StyledModalWrap $close={close}>
             <StyledModalBg>
