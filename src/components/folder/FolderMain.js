@@ -1,18 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
 import search from './img/search.svg';
-import { getData } from '../api';
-import * as FM from './styled-component/FolderMainStyledComponent';
-import * as C from './styled-component/CardStyledComponent';
-import * as S from './styled-component/SharedPageStyledComponent';
+import { getData } from '../../api';
+import * as FM from '../styled-component/FolderMainStyledComponent';
+import * as C from '../styled-component/CardStyledComponent';
+import * as S from '../styled-component/SharedPageStyledComponent';
 import plusImg from './img/plus.svg';
 import shareImg from './img/share.svg';
 import penImg from './img/pen.svg';
 import deleteImg from './img/delete.svg';
 import FolderCard from './FolderCard';
 import plus from './img/plus-white.svg';
-import FolderPlusModal from './FolderPlusModal';
-import FolderDeleteModal from './FolderDeleteModal';
-import FolderShareModal from './FolderShareModal';
+import FolderPlusModal from '../modal/FolderPlusModal';
+import FolderDeleteModal from '../modal/FolderDeleteModal';
+import FolderShareModal from '../modal/FolderShareModal';
 
 const activeButton = {
   color: 'white',

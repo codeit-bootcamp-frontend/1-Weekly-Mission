@@ -56,7 +56,7 @@ export const ModalMain = styled.div`
   gap: 15px;
 `;
 
-export const ModalButton = styled.button`
+export const ModalButton = styled.button<{ $color: string }>`
   border: none;
   display: flex;
   width: 280px;

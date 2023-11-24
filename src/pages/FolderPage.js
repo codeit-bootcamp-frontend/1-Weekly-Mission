@@ -1,5 +1,5 @@
-import FolderHeader from './FolderHeader';
-import FolderMain from './FolderMain';
+import FolderHeader from '../components/FolderHeader';
+import FolderMain from '../components/FolderMain';
 
 export default function FolderPage() {
   return (

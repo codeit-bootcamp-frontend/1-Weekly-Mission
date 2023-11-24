@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import xClose from './img/Xclose.svg';
-import * as M from './styled-component/ModalStyledCompoenet';
+import * as M from '../styled-component/ModalStyledCompoenet';
 
 export default function FolderDeleteModal({
   handleClick,

@@ -4,7 +4,7 @@ import kakao from './img/kakao.svg';
 import facebookImg from './img/facebookImg.svg';
 import linkImg from './img/linkImg.svg';
 import { useLocation } from 'react-router-dom';
-import * as M from './styled-component/ModalStyledCompoenet';
+import * as M from '../styled-component/ModalStyledCompoenet';
 const { Kakao } = window;
 
 export default function FolderShareModal({ handleClick, title, id }) {

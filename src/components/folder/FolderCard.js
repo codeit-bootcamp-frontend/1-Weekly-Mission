@@ -1,11 +1,11 @@
-import { dateCalculator } from './dateCalculator';
+import { dateCalculator } from '../dateCalculator';
 import noImage from './img/no-image.svg';
 import kebab from './img/kebab.svg';
 import star from './img/star.svg';
 import { useRef, useState } from 'react';
-import FolderDeleteModal from './FolderDeleteModal';
-import ToFolderPlusModal from './ToFolderPlusModal';
-import * as C from './styled-component/CardStyledComponent';
+import FolderDeleteModal from '../modal/FolderDeleteModal';
+import ToFolderPlusModal from '../modal/ToFolderPlusModal';
+import * as C from '../styled-component/CardStyledComponent';
 
 export default function FolderCard(link) {
   const apiDate = new Date(link.item.created_at);

@@ -1,5 +1,5 @@
 import linkImg from './img/link.svg';
-import * as FH from './styled-component/FolderHeaderStyledCompoenet';
+import * as FH from '../styled-component/FolderHeaderStyledCompoenet';
 
 export default function FolderHeader() {
   return (

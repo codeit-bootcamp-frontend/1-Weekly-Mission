@@ -17,6 +17,7 @@ export default function Nav() {
       setLogin(data);
     }
   };
+  console.log(login.id);
   return (
     <N.NavContainer>
       <N.NavWrapper>
