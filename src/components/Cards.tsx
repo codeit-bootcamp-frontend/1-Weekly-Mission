@@ -33,7 +33,7 @@ const Cards = ({
     handleListClick,
     iscebabClick,
   };
-  console.log(prevKey);
+
   return (
     <div className="section-title section-title-third">
       <div className="section-title-third-inner">

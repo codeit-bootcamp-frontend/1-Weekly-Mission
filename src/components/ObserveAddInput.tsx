@@ -1,7 +1,7 @@
 import React from "react";
 import linkImg from "../img/svg/link.svg";
 
-interface AddInputSectionType {
+interface ObserveAddInputType {
   handleListClick: (
     event: any,
     title: string,
@@ -12,18 +12,18 @@ interface AddInputSectionType {
   setNewLink: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const AddInputSection = ({
+const ObserveAddInput = ({
   handleListClick,
   newLink,
   setNewLink,
-}: AddInputSectionType) => {
+}: ObserveAddInputType) => {
   const onAddInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setNewLink(value);
   };
 
   return (
-    <div className="section-title section-title-first">
+    <div className="section-title observe-title-first">
       <div className="add-link">
         <img src={linkImg} alt="링크추가이미지" />
         <input
@@ -46,4 +46,4 @@ const AddInputSection = ({
   );
 };
 
-export default AddInputSection;
+export default ObserveAddInput;
