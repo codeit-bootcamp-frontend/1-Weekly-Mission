@@ -11,7 +11,7 @@ const STICKY = {
 export const Nav = styled.nav`
   display: flex;
   justify-content: center;
-  position: ${({ sticky }) => STICKY[sticky] ?? STICKY["sticky"]};
+  position: ${({ $sticky }) => STICKY[$sticky] ?? STICKY["sticky"]};
   top: 0;
   width: 100%;
   background-color: #edf7ff;

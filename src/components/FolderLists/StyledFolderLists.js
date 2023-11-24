@@ -143,7 +143,7 @@ export const EditFolderText = styled.span`
 `;
 
 export const EditFolderImg = styled.div`
-  background-image: url(${({ kind }) => FOLDER_TOOL[kind]});
+  background-image: url(${({ $kind }) => FOLDER_TOOL[$kind]});
   background-position: center;
   width: 16px;
   height: 16px;

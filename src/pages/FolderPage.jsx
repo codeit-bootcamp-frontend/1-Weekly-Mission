@@ -61,10 +61,12 @@ const FolderPage = () => {
     if (isLogin) {
       handleFolderLists(folderId);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [folderId, isLogin]);
 
   useEffect(() => {
     handleSearchSubmit(search);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   return (
@@ -74,13 +76,15 @@ const FolderPage = () => {
       </Styled.Header>
       <Styled.Article>
         <SearchBar onSubmit={setSearch} />
+        <FolderLists
+          linksData={linksData.data}
+          folderData={folderListsData.data}
+          id={folderId}
+        />
         {linksData.data.length === 0 ? (
           <NoFolderLink />
         ) : (
-          <>
-            <FolderLists folderData={folderListsData.data} id={folderId} />
-            <CardSection data={linksData.data} />
-          </>
+          <CardSection data={linksData.data} />
         )}
       </Styled.Article>
     </>

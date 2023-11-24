@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import {
   AddFolderBtn,
   EditFolderTools,
-  ModalEdit,
-  ModalAdd,
-  ModalDelete,
-  ModalShare,
+  Modal,
+  ShareModal,
+  ModalInput,
+  ModalContentName,
 } from "components";
+import useModal from "hooks/useModal";
 import * as Styled from "./StyledFolderLists";
 
 const FolderList = ({ data, onClick, folderId }) => {
@@ -23,7 +24,7 @@ const FolderList = ({ data, onClick, folderId }) => {
   );
 };
 
-const FolderLists = ({ folderData, id }) => {
+const FolderLists = ({ linksData, folderData, id }) => {
   const [folderTitle, setFolderTitle] = useState(() => {
     const idFolder = folderData.filter((data) => data.id === parseInt(id));
     if (idFolder[0]?.name) {
@@ -32,46 +33,30 @@ const FolderLists = ({ folderData, id }) => {
       return "전체";
     }
   });
-  const [isEditModal, setIsEditModal] = useState(false);
-  const [isDeleteModal, setIsDeleteModal] = useState(false);
-  const [isAddModal, setIsAddModal] = useState(false);
-  const [isShareModal, setIsShareModal] = useState(false);
+  const {
+    isOpen: isShareOpen,
+    openModal: openShare,
+    closeModal: closeShare,
+  } = useModal();
+  const {
+    isOpen: isChangeOpen,
+    openModal: openChange,
+    closeModal: closeChange,
+  } = useModal();
+  const {
+    isOpen: isAddOpen,
+    openModal: openAdd,
+    closeModal: closeAdd,
+  } = useModal();
+  const {
+    isOpen: isDeleteOpen,
+    openModal: openDelete,
+    closeModal: closeDelete,
+  } = useModal();
   const folderId = id ? id : "전체";
 
   const handleBtnClick = (dataName) => {
     dataName === "전체" ? setFolderTitle("전체") : setFolderTitle(dataName);
-  };
-
-  const handleAddModalClick = () => {
-    setIsAddModal(!isAddModal);
-  };
-
-  const handleAddModalClose = () => {
-    setIsAddModal(!isAddModal);
-  };
-
-  const handleEditModalClick = () => {
-    setIsEditModal(!isEditModal);
-  };
-
-  const handleEditModalClose = () => {
-    setIsEditModal(!isEditModal);
-  };
-
-  const handleDeleteModalClick = () => {
-    setIsDeleteModal(!isDeleteModal);
-  };
-
-  const handleDeleteModalClose = () => {
-    setIsDeleteModal(!isDeleteModal);
-  };
-
-  const handleShareModalClick = () => {
-    setIsShareModal(!isShareModal);
-  };
-
-  const handleShareModalClose = () => {
-    setIsShareModal(!isShareModal);
   };
 
   useEffect(() => {
@@ -83,50 +68,75 @@ const FolderLists = ({ folderData, id }) => {
         setFolderTitle("전체");
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (
-    <Styled.Container>
-      <Styled.FolderBlock>
-        <Styled.BtnBox>
-          <Link to="/folder">
-            <Styled.Btn
-              selected={folderId === folderTitle}
-              onClick={() => handleBtnClick("전체")}
-            >
-              전체
-            </Styled.Btn>
-          </Link>
-          {folderData.map((data) => {
-            return (
-              <FolderList
-                key={data.id}
-                data={data}
-                folderId={folderId}
-                onClick={handleBtnClick}
+    <>
+      <Styled.Container>
+        <Styled.FolderBlock>
+          <Styled.BtnBox>
+            <Link to="/folder">
+              <Styled.Btn
+                selected={folderId === folderTitle}
+                onClick={() => handleBtnClick("전체")}
+              >
+                전체
+              </Styled.Btn>
+            </Link>
+            {folderData.map((data) => {
+              return (
+                <FolderList
+                  key={data.id}
+                  data={data}
+                  folderId={folderId}
+                  onClick={handleBtnClick}
+                />
+              );
+            })}
+          </Styled.BtnBox>
+          <AddFolderBtn modalOpen={openAdd} />
+        </Styled.FolderBlock>
+        {linksData.length === 0 || (
+          <Styled.TitleBlock>
+            <Styled.Title>{folderTitle}</Styled.Title>
+            {folderTitle === "전체" || (
+              <EditFolderTools
+                modalOpen={[openShare, openDelete, openChange]}
               />
-            );
-          })}
-        </Styled.BtnBox>
-        <AddFolderBtn modalOpen={handleAddModalClick} />
-      </Styled.FolderBlock>
-      <Styled.TitleBlock>
-        <Styled.Title>{folderTitle}</Styled.Title>
-        {folderTitle === "전체" || (
-          <EditFolderTools
-            modalOpen={[
-              handleShareModalClick,
-              handleEditModalClick,
-              handleDeleteModalClick,
-            ]}
-          />
+            )}
+          </Styled.TitleBlock>
         )}
-      </Styled.TitleBlock>
-      {isEditModal && <ModalEdit modalClose={handleEditModalClose} />}
-      {isAddModal && <ModalAdd modalClose={handleAddModalClose} />}
-      {isDeleteModal && <ModalDelete modalClose={handleDeleteModalClose} />}
-      {isShareModal && <ModalShare modalClose={handleShareModalClose} />}
-    </Styled.Container>
+      </Styled.Container>
+      {isChangeOpen && (
+        <Modal
+          title="폴더 이름 변경"
+          trigger={<ModalInput />}
+          closeModal={closeChange}
+          btnContent="변경하기"
+          color="blue"
+        />
+      )}
+      {isAddOpen && (
+        <Modal
+          title="폴더 추가"
+          trigger={<ModalInput />}
+          closeModal={closeAdd}
+          btnContent="추가하기"
+          color="blue"
+        />
+      )}
+      {isDeleteOpen && (
+        <Modal
+          title="폴더 삭제"
+          trigger={<ModalContentName contentName="폴더명" />}
+          closeModal={closeDelete}
+          btnContent="삭제하기"
+          color="red"
+        />
+      )}
+      {isShareOpen && <ShareModal closeModal={closeShare} />}
+    </>
   );
 };
 
