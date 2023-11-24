@@ -2,7 +2,7 @@ import "../styles/reset.css";
 import styled from "styled-components";
 import noImage from "../images/noimage.svg";
 import star from "../images/star.svg";
-import KebabButton from "./Folder/Kebab";
+import KebabButton from "../components/Kebab.js";
 import { timeForToday, formatDate } from "../date.js";
 
 function Card({ item, openMAF }) {

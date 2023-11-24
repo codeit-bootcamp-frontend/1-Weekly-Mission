@@ -1,17 +1,17 @@
 import "../../styles/reset.css";
-import { LinkAddBar, FolderAdd } from "./Add.js";
-import Card from "../Card.js";
-import FooterSpace from "../FooterSpace";
-import Nav from "../Nav";
+import { LinkAddBar, FolderAdd } from "../../components/Add.js";
+import Card from "../../components/Card.js";
+import FooterSpace from "../../components/FooterSpace.js";
+import Nav from "../../components/Nav.js";
 
 import * as S from "./FolderStyled.js";
 import { useState, useEffect, useRef } from "react";
-import { getSelectItems, getUserLogin, getRenderLinks } from "../../api";
+import { getSelectItems, getUserLogin, getRenderLinks } from "../../api.js";
 
-import SearchBar from "./SearchBar";
-import TabButton from "./TabButton.js";
-import { ModalAddFolder } from "./Modal/Modal.js";
-import LinkInfo from "./LinkInfo.js";
+import SearchBar from "../../components/SearchBar.js";
+import TabButton from "../../components/TabButton.js";
+import { ModalAddFolder } from "../../components/modal/Modal.js";
+import LinkInfo from "../../components/LinkInfo.js";
 
 function Folder() {
   const [selectItems, setSelectItem] = useState([]);
@@ -118,9 +118,7 @@ function Folder() {
           }
         });
       },
-      {
-        threshold: 0,
-      }
+      { threshold: 1.0 }
     );
 
     if (targetRef?.current) {

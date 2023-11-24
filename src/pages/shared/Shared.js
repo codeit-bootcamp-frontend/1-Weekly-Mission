@@ -1,11 +1,11 @@
 import "../../styles/reset.css";
-import HeaderSpace from "../HeaderSpace";
-import * as S from "../Folder/FolderStyled.js";
-import FooterSpace from "../FooterSpace.js";
-import Card from "../Card.js";
-import SearchBar from "../Folder/SearchBar.js";
-import Nav from "../Nav.js";
-import { getFolderData, getUserData } from "../../api";
+import HeaderSpace from "../../components/HeaderSpace.js";
+import * as S from "../folder/FolderStyled.js";
+import FooterSpace from "../../components/FooterSpace.js";
+import Card from "../../components/Card.js";
+import SearchBar from "../../components/SearchBar.js";
+import Nav from "../../components/Nav.js";
+import { getFolderData, getUserData } from "../../api.js";
 import { useState, useEffect } from "react";
 
 function Shared() {

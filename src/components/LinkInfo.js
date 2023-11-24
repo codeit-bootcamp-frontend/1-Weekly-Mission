@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import share from "../../images/share.svg";
-import changes from "../../images/pen.svg";
-import deletings from "../../images/delete.svg";
+import share from "../images/share.svg";
+import changes from "../images/pen.svg";
+import deletings from "../images/delete.svg";
 import { useState } from "react";
-import { ModalLink } from "./Modal/Modal.js";
+import { ModalLink } from "../components/modal/Modal.js";
 
 export const LinkOptions = [
   {

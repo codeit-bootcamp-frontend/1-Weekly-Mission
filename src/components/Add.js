@@ -1,7 +1,7 @@
-import "../../styles/reset.css";
+import "../styles/reset.css";
 import styled from "styled-components";
-import linkAdd from "../../images/link.svg";
-import add from "../../images/add.svg";
+import linkAdd from "../images/link.svg";
+import add from "../images/add.svg";
 import { useState } from "react";
 
 export function LinkAddBar({ openMAF, show }) {

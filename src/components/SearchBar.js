@@ -1,5 +1,5 @@
-import searchIcon from "../../images/Search.svg";
-import closeIcon from "../../images/_close.svg";
+import searchIcon from "../images/Search.svg";
+import closeIcon from "../images/_close.svg";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 function SearchBar({ items, onSearch }) {

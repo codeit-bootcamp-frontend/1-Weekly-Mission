@@ -1,10 +1,10 @@
-import close from "../../../images/_close.svg";
-import facebook from "../../../images/facebook.svg";
-import kakao from "../../../images/Kakao.svg";
-import link from "../../../images/Addlink.svg";
-import CheckIcon from "../../../images/check.svg";
+import close from "../../images/_close.svg";
+import facebook from "../../images/facebook.svg";
+import kakao from "../../images/Kakao.svg";
+import link from "../../images/Addlink.svg";
+import CheckIcon from "../../images/check.svg";
 import { useState, useEffect } from "react";
-import shareKakao from "../../../ShareSns.js";
+import shareKakao from "../../ShareSns.js";
 import * as S from "./ModalStyled.js";
 
 export function Modalkebab({ url, title, buttonTitle, color, onClose }) {
