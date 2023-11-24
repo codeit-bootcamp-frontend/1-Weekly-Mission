@@ -1,5 +1,5 @@
 import * as S from './SearchBar.style';
-import searchIcon from 'assets/icons/search.svg';
+import searchIcon from '@assets/icons/search.svg';
 
 function SearchBar() {
   return (

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { COLORS } from 'styles/palette';
+import { COLORS } from '@styles/palette';
 
 export const FoldersContainer = styled.ul`
   display: flex;
@@ -7,7 +7,7 @@ export const FoldersContainer = styled.ul`
   gap: 0.4rem;
 `;
 
-export const Folder = styled.button`
+export const Folder = styled.button<{ $selected: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -16,31 +16,31 @@ export const Folder = styled.button`
   border-radius: 0.8rem;
 
   &:hover {
-    background: ${COLORS['LB_BACKGROUND']};
+    background: ${COLORS.LB_BACKGROUND};
     h2 {
-      color: ${COLORS['LB_PRIMARY']};
+      color: ${COLORS.LB_PRIMARY};
     }
   }
 
-  ${({ selected }) =>
-    selected &&
+  ${({ $selected }) =>
+    $selected &&
     css`
-      background: ${COLORS['LB_BACKGROUND']};
+      background: ${COLORS.LB_BACKGROUND};
       h2 {
-        color: ${COLORS['LB_PRIMARY']};
+        color: ${COLORS.LB_PRIMARY};
       }
     `}
 `;
 
 export const FolderTitle = styled.h2`
-  color: ${COLORS['LB_GRAY_100']};
+  color: ${COLORS.LB_GRAY_100};
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 2.4rem;
 `;
 
 export const FolderDescription = styled.span`
-  color: ${COLORS['LB_GRAY_60']};
+  color: ${COLORS.LB_GRAY_60};
   font-size: 1.4rem;
   font-weight: 400;
 `;

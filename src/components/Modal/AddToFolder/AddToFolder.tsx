@@ -1,18 +1,30 @@
 import * as Modal from '../Modal.style';
 import * as S from './AddToFolder.style';
-import useRequest from 'hooks/useRequest';
 import { useState } from 'react';
-import CHECK from 'assets/icons/check.svg';
+import useRequest from '@hooks/useRequest';
+import CHECK from '@assets/icons/check.svg';
 
-function AddToFolder({ url, userId }) {
+interface FolderProps {
+  id: number;
+  created_at: string;
+  link: {
+    count: number;
+  };
+  name: string;
+  user_id: number;
+}
+
+function AddToFolder({ url, userId }: { url: string; userId: number }) {
   const { data: folders } = useRequest({
-    url: `/users/${userId}/folders`,
-    method: 'get',
+    options: {
+      url: `/users/${userId}/folders`,
+      method: 'get',
+    },
   });
 
-  const [selectedFolderId, setSelectedFolderId] = useState(null);
+  const [selectedFolderId, setSelectedFolderId] = useState<number>();
 
-  const selectFolder = (folderId) => {
+  const selectFolder = (folderId: number) => {
     setSelectedFolderId(folderId);
   };
 
@@ -23,11 +35,11 @@ function AddToFolder({ url, userId }) {
         <Modal.Description>{url}</Modal.Description>
       </Modal.Header>
       <S.FoldersContainer>
-        {folders?.data?.map((folder) => (
+        {folders?.data?.map((folder: FolderProps) => (
           <li key={folder?.id}>
             <S.Folder
               type='button'
-              selected={folder?.id === selectedFolderId}
+              $selected={folder?.id === selectedFolderId}
               onClick={() => selectFolder(folder?.id)}
             >
               <S.FolderTitle>{folder?.name}</S.FolderTitle>

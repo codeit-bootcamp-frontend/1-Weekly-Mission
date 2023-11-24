@@ -1,13 +1,16 @@
 import * as S from './Folder.style';
-import useRequest from 'hooks/useRequest';
+import useRequest from '@hooks/useRequest';
+import { DEFAULT_USER_ID } from '@apis/config/default';
+import SearchBar from '@components/SearchBar';
+import CardList from '@components/CardsContainer';
 import Banner from '../Banner';
-import SearchBar from 'components/SearchBar';
-import CardList from 'components/CardsContainer';
 
 function Folder() {
   const { data } = useRequest({
-    url: '/sample/folder',
-    method: 'get',
+    options: {
+      url: '/sample/folder',
+      method: 'get',
+    },
   });
 
   const folder = data?.folder;
@@ -17,10 +20,10 @@ function Folder() {
 
   return (
     <main>
-      {data && <Banner info={{ name, owner }} />}
+      {data && <Banner name={name} owner={owner} />}
       <S.ContentContainer>
         <SearchBar />
-        {data && <CardList cards={links} />}
+        {data && <CardList cards={links} userId={DEFAULT_USER_ID} />}
       </S.ContentContainer>
     </main>
   );

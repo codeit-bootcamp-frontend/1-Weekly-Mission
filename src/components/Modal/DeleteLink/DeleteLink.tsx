@@ -1,6 +1,6 @@
 import * as Modal from '../Modal.style';
 
-function DeleteLink({ url }) {
+function DeleteLink({ url }: { url: string }) {
   return (
     <>
       <Modal.Header>

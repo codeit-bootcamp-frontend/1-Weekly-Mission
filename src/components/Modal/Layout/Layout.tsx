@@ -1,7 +1,13 @@
 import * as Modal from '../Modal.style';
-import CLOSE from 'assets/icons/close.svg';
+import { ReactNode } from 'react';
+import CLOSE from '@assets/icons/close.svg';
 
-function Layout({ children, closeModal }) {
+interface Props {
+  children: ReactNode;
+  closeModal: () => void;
+}
+
+function Layout({ children, closeModal }: Props) {
   return (
     <Modal.DimContainer onClick={closeModal}>
       <Modal.ModalContainer onClick={(e) => e.stopPropagation()}>

@@ -1,4 +1,4 @@
-import Layout from 'components/Layout';
+import Layout from '@components/Layout';
 import Folder from './components/Folder';
 
 function Shared() {

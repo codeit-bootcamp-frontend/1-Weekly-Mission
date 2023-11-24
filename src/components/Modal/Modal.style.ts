@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLORS } from 'styles/palette';
-import Button from 'components/Button';
-import { zIndexStyle } from 'styles/zIndexStyle';
+import { COLORS } from '@styles/palette';
+import { zIndexStyle } from '@styles/zIndexStyle';
+import Button from '@components/Button';
 
 export const DimContainer = styled.div`
   position: fixed;
@@ -24,7 +24,7 @@ export const ModalContainer = styled.section`
   transform: translateX(-50%) translateY(-50%);
   padding: 3.2rem 4rem;
   width: 36rem;
-  border: 1px solid ${COLORS['LB_GRAY_20']};
+  border: 1px solid ${COLORS.LB_GRAY_20};
   border-radius: 1.5rem;
   background-color: #fff;
 `;
@@ -45,14 +45,14 @@ export const Header = styled.div`
 
 export const Title = styled.h1`
   text-align: center;
-  color: ${COLORS['LB_GRAY_100']};
+  color: ${COLORS.LB_GRAY_100};
   font-size: 2rem;
   font-weight: 700;
 `;
 
 export const Description = styled.p`
   text-align: center;
-  color: ${COLORS['LB_GRAY_60']};
+  color: ${COLORS.LB_GRAY_60};
   font-size: 14px;
   font-weight: 400;
   line-height: 2.2rem;
@@ -63,13 +63,13 @@ export const Input = styled.input`
   margin-bottom: 1.5rem;
   width: 100%;
   border-radius: 0.8rem;
-  border: 1px solid ${COLORS['LB_PRIMARY']};
+  border: 1px solid ${COLORS.LB_PRIMARY};
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 2.4rem;
 
   &:placeholder {
-    color: ${COLORS['LB_GRAY_100']};
+    color: ${COLORS.LB_GRAY_100};
   }
 `;
 

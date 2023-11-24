@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { onTablet, onPc } from 'styles/mediaQuery';
-import { COLORS } from 'styles/palette';
+import { onTablet, onPc } from '@styles/mediaQuery';
+import { COLORS } from '@styles/palette';
 
 export const Container = styled.div`
   position: relative;
@@ -12,7 +12,7 @@ export const Input = styled.input`
   width: 100%;
   border: none;
   border-radius: 1rem;
-  background-color: ${COLORS['GREY_LIGHT']};
+  background-color: ${COLORS.GREY_LIGHT};
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 1.5;

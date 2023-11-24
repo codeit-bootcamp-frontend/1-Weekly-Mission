@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
-import ReactTimeAgo from 'react-time-ago';
 import * as S from './Card.style';
-import useModal from 'hooks/useModal';
-import DeleteLink from 'components/Modal/DeleteLink';
-import AddToFolder from 'components/Modal/AddToFolder';
-import DEFAULT_IMAGE from 'assets/images/default-link-img.svg';
-import STAR from 'assets/icons/star.svg';
-import KEBAB from 'assets/icons/kebab.svg';
+import { useState } from 'react';
+import TimeAgo from 'react-timeago';
+import useModal from '@hooks/useModal';
+import DeleteLink from '@components/Modal/DeleteLink';
+import AddToFolder from '@components/Modal/AddToFolder';
+import DEFAULT_IMAGE from '@assets/images/default-link-img.svg';
+import { CardProps } from '@components/CardsContainer/CardsContainer';
+import STAR from '@assets/icons/star.svg';
+import KEBAB from '@assets/icons/kebab.svg';
 
-function Card({ data, userId }) {
+interface Props {
+  data: CardProps;
+  userId: number;
+}
+
+function Card({ data, userId }: Props) {
   const [showKebab, setShowKebab] = useState(false);
 
   const {
@@ -21,9 +27,9 @@ function Card({ data, userId }) {
     imageSource,
   } = data;
 
-  const createdDate = new Date(baseCreateAt ?? createdAt);
+  const createdDate = new Date(baseCreateAt ?? createdAt ?? '');
 
-  const reduceText = (text, length) => {
+  const reduceText = (text: string, length: number) => {
     if (!text) return;
     if (text.length > length) {
       return `${text.slice(0, length)}...`;
@@ -37,8 +43,8 @@ function Card({ data, userId }) {
     addToFolder: <AddToFolder url={url} userId={userId} />,
   });
 
-  const setKebabModal = (modal) => {
-    toggleShow(modal);
+  const setKebabModal = (modalKey: string) => {
+    toggleShow(modalKey);
   };
 
   return (
@@ -56,7 +62,7 @@ function Card({ data, userId }) {
         </S.CardImgContainer>
         <S.CardTextContainer>
           <S.TimeAgo>
-            <ReactTimeAgo date={createdDate} locale='en-US' />
+            <TimeAgo date={createdDate} />
             <S.KebabButton
               type='button'
               onClick={(e) => {
@@ -80,7 +86,11 @@ function Card({ data, userId }) {
 
 export default Card;
 
-function KebabPopup({ setKebabModal }) {
+function KebabPopup({
+  setKebabModal,
+}: {
+  setKebabModal: (modalKey: string) => void;
+}) {
   return (
     <S.KebabPopup>
       <S.KebabInnerButton

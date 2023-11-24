@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { onTablet, onPc } from 'styles/mediaQuery';
+import { onTablet, onPc } from '@styles/mediaQuery';
 
 export const Container = styled.ul`
   display: grid;

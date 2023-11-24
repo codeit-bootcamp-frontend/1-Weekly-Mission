@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import debounce from 'utils/debounce';
+import debounce from '@utils/debounce';
 
-function useToast(wait) {
+function useToast(wait: number) {
   const [show, setShow] = useState(false);
 
   const showToast = debounce(() => {

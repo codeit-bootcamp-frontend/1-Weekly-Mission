@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { onTablet, onPc } from 'styles/mediaQuery';
-import { COLORS } from 'styles/palette';
-import { zIndexStyle } from 'styles/zIndexStyle';
+import { onTablet, onPc } from '@styles/mediaQuery';
+import { COLORS } from '@styles/palette';
+import { zIndexStyle } from '@styles/zIndexStyle';
 
 export const CardContainer = styled.a`
   display: block;
@@ -70,13 +70,13 @@ export const KebabPopup = styled.div`
 export const KebabInnerButton = styled.button`
   padding: 0.7rem 1.2rem;
   width: 10rem;
-  color: ${COLORS['LB_GRAY_100']};
+  color: ${COLORS.LB_GRAY_100};
   font-size: 1.4rem;
   font-weight: 400;
 
   &:hover {
-    background-color: ${COLORS['LB_GRAY_10']};
-    color: ${COLORS['LB_PRIMARY']};
+    background-color: ${COLORS.LB_GRAY_10};
+    color: ${COLORS.LB_PRIMARY};
   }
 `;
 
