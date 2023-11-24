@@ -64,9 +64,11 @@ export const ProfileEmail = styled.p`
 
   ${onTablet} {
     display: block;
+    word-break: keep-all;
   }
 
   ${onPc} {
     display: block;
+    word-break: keep-all;
   }
 `;

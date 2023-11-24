@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
 import * as S from './Header.style';
+import { Link, useLocation } from 'react-router-dom';
 import A11y from '@components/A11y';
 import LB_LOGO from '@assets/icons/linkbrary.svg';
 

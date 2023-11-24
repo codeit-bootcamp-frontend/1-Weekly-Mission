@@ -1,10 +1,13 @@
-import { InputHTMLAttributes } from 'react';
 import * as S from './FormInput.style';
+import { InputHTMLAttributes } from 'react';
 import EYE_OFF from '@assets/icons/eye-off.svg';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {}
-
-function FormInput({ children, type, id, placeholder }: Props) {
+function FormInput({
+  children,
+  type,
+  id,
+  placeholder,
+}: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <S.InputBox>
       <label htmlFor={id}>{children}</label>

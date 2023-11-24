@@ -1,5 +1,5 @@
-import { useLocation } from 'react-router-dom';
 import * as S from './Form.style';
+import { useLocation } from 'react-router-dom';
 import FormInput from '../FormInput';
 
 function Form() {

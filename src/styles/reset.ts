@@ -29,7 +29,6 @@ export const reset = css`
   th,
   ul {
     border: 0;
-    font-size: 100%;
     font-weight: normal;
     list-style: none;
     margin: 0;
@@ -37,6 +36,7 @@ export const reset = css`
     padding: 0;
     text-decoration: none;
     vertical-align: baseline;
+    word-break: break-all;
   }
 
   a,
@@ -47,7 +47,6 @@ export const reset = css`
   input,
   select,
   textarea {
-    font-size: 100%;
     margin: 0;
   }
 

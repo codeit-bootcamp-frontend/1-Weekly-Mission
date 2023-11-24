@@ -1,12 +1,12 @@
 import * as S from './Navigator.style';
+import useRequest from '@hooks/useRequest';
 import A11y from '@components/A11y';
 import Button from '@components/Button';
-import useRequest from '@hooks/useRequest';
 import LB_ICON from '@assets/icons/linkbrary.svg';
 
 interface Props {
-  isLoggedIn?: boolean;
-  userId?: number;
+  isLoggedIn: boolean;
+  userId: number;
 }
 
 function Navigator({ isLoggedIn, userId }: Props) {

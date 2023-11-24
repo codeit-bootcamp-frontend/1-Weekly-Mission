@@ -1,4 +1,4 @@
-import { Background, AuthContainer } from '@pages/Auth/components/Layout';
+import { Background, AuthContainer } from '../components/Layout';
 import Header from '../components/Header';
 import Form from '../components/Form';
 import Social from '../components/Social';

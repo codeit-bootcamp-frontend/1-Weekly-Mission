@@ -1,23 +1,12 @@
 import * as S from './CardsContainer.style';
-import Card from '@components/Card';
+import Card from 'components/Card';
 
-export interface CardProps {
-  id: number;
-  createdAt?: string;
-  created_at?: string;
-  description: string;
-  imageSource?: string;
-  image_source?: string;
-  title: string;
-  url: string;
-}
-
-function CardsContainer({ cards = [] }: { cards: CardProps[] }) {
+function CardsContainer({ cards = [], userId }) {
   return (
     <S.Container>
-      {cards.map((card: CardProps) => (
+      {cards.map((card) => (
         <li key={card.id}>
-          <Card data={card} />
+          <Card data={card} userId={userId} />
         </li>
       ))}
     </S.Container>

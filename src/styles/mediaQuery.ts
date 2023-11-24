@@ -1,5 +1,5 @@
-const BREAKPOINT_TABLET = 767;
-const BREAKPOINT_PC = 1199;
+const BREAKPOINT_TABLET = 768;
+const BREAKPOINT_PC = 1200;
 
 export const onTablet = `@media only screen and (min-width: ${BREAKPOINT_TABLET}px) and (max-width: ${
   BREAKPOINT_PC - 1

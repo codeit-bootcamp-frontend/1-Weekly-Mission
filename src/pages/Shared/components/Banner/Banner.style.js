@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { onTablet, onPc } from '@styles/mediaQuery';
-import { COLORS } from '@styles/palette';
+import { onTablet, onPc } from 'styles/mediaQuery';
+import { COLORS } from 'styles/palette';
 
 export const BannerContainer = styled.section`
   display: flex;
@@ -8,7 +8,7 @@ export const BannerContainer = styled.section`
   align-items: center;
   padding-top: 1rem;
   padding-bottom: 4rem;
-  background-color: ${COLORS.LB_BACKGROUND};
+  background-color: ${COLORS['LB_BACKGROUND']};
 
   ${onTablet} {
     padding-top: 2rem;

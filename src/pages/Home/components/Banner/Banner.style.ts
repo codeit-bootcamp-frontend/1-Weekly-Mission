@@ -9,7 +9,7 @@ export const BannerContainer = styled.section`
   align-items: center;
   width: 100%;
   padding: 2.8rem 3.2rem 0rem;
-  background-color: ${COLORS['LB_BACKGROUND']};
+  background-color: ${COLORS.LB_BACKGROUND};
 
   ${onTablet} {
     padding-top: 3.9rem;
