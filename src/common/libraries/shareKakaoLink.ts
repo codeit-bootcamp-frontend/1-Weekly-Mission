@@ -1,18 +1,18 @@
 declare const window: typeof globalThis & {
-  kakao: any;
+  Kakao: any;
 };
 
 export const shareOnKakao = (userId: number, folderId: number) => {
   const hostURL = window.location.href;
 
-  if (window.kakao) {
-    const kakao = window.kakao;
+  if (window.Kakao) {
+    const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
       kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
     }
   }
 
-  window.kakao.Share.sendDefault({
+  window.Kakao.Share.sendDefault({
     objectType: "feed",
     content: {
       title: "폴더",
