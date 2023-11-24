@@ -1,11 +1,12 @@
 import "../../styles/reset.css";
-import HeaderSpace from "../HeaderSpace";
+import LinkAddBar from "./linkAddBar.js";
 import MainSpace from "../MainSpace";
 import FooterSpace from "../FooterSpace";
 import Nav from "../Nav";
 import "../../styles/Folder.css";
+import styled from "styled-components";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getSelectItems, getUserLogin, getRenderLinks } from "../../api";
 import SelectPart from "./SelectPart";
 import SearchBar from "./SearchBar";
@@ -21,6 +22,10 @@ function Folder() {
   const [openAddFolder, setOpenAddModal] = useState(false);
   const [userId, setUserId] = useState("");
   const [url, setUrl] = useState("");
+  const [show, setShow] = useState(false);
+
+  const targetRef = useRef(null);
+  const target2Ref = useRef(null);
 
   const handleSelectItems = async () => {
     try {
@@ -101,6 +106,41 @@ function Folder() {
   };
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (item) => {
+        item.forEach((it) => {
+          console.log(it);
+          if (it.isIntersecting) {
+            setShow(false);
+          } else {
+            setShow(true);
+          }
+        });
+      },
+      {
+        threshold: 1.0,
+      }
+    );
+
+    if (targetRef?.current) {
+      observer.observe(targetRef.current);
+    }
+
+    if (target2Ref?.current) {
+      observer.observe(target2Ref.current);
+    }
+
+    return () => {
+      if (targetRef.current) {
+        observer.unobserve(targetRef.current);
+      }
+      if (target2Ref?.current) {
+        observer.unobserve(target2Ref.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     // 마운트 시 렌더링 되는 것들
     initailize();
   }, []);
@@ -113,7 +153,8 @@ function Folder() {
   return (
     <>
       <Nav lists={userLogin} />
-      <HeaderSpace openMAF={openMAF} />
+      <LinkAddBar openMAF={openMAF} show={show} />
+      <Target ref={targetRef} />
       <SearchBar items={userLinks} onSearch={handleSearchLinks} />
       <SelectPart
         selectItems={selectItems}
@@ -136,19 +177,14 @@ function Folder() {
           url={url}
         />
       ) : null}
+      <Target ref={target2Ref} />
       <FooterSpace />
     </>
   );
 }
 
-// 먼저 멘토님의 피드백을 반영하였습니다. 이후
-// 스타일드 컴포넌트를 활용하면  폴더버튼 컴포넌트를 따로 파일로 두지 않아도 될 것 같아서 selectItem.js를 삭제했고, 실제로 구현까지 완료하였습니다.
-// 그리고  스타일드 컴포넌트에 간단하게 프롭스만 내려 조건부로 스타일링을 하면  state와 토글 함수 등을 안써도 될 것 같아서
-// active state와 해당 이벤트 토글 함수 그리고 "전체"버튼 요소 클릭시 link-info가 display: none 되는 토글 함수 또한 삭제했고, 실제로 조건부 스타일링을 활용하여 구현까지 완료하였습니다.
-
-// week9는 코드가 복잡하지만, 일단 구현은 다 했습니다. 최대한 state가 하위 컴포넌트들에 연쇄적으로 내려가지 않도록 만들고 싶었지만, 뜻 대로 완벽하게 되지는 않았습니다. 과제를 끝내고 생각해보니 컴포넌트 구조 상의 문제로 보입니다. 기존의 컴포넌트가 컴포넌트를 연이어 호출하는 방식이 아닌
-// folder.js에서 모달들을 직접 호출하는 방식이 프롭 드릴을 조금이라도 막을 수 있어보이네요..
-
-// 이 문제는 위 상황에만 국한되어 있지는 않다고 생각합니다. folder.js 혹은 가능한 상위의 컴포넌트에서  return 값으로 곧바로 폴더 및 링크 배열 등을 map 메서드로 렌더링 하는게 프롭을 계속해서 내리지 않는다는 점에서 좋아보입니다. 이에 대해 멘토님의 의견이 궁금합니다.
-
 export default Folder;
+
+const Target = styled.div`
+  width: 1px;
+`;
