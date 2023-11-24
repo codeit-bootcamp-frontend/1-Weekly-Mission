@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { findFolderTitle } from 'utils/handleFolderData';
+import { findFolderTitle } from 'utils/findFolderTitle';
 
 function FolderTitle({ folders, selectedFolderId }) {
   const title = findFolderTitle(folders, selectedFolderId);

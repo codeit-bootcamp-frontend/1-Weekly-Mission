@@ -1,21 +1,21 @@
 import { useState } from 'react';
-import { handleModalClose, handleModalOpen } from 'utils/handleModal';
 import styled from 'styled-components';
 import BlueBtn from 'components/common/Button/BlueBtn';
 import linkIcon from 'assets/images/link.svg';
 import ModalFrame from 'components/common/Modal/ModalFrame';
 import ModalPortal from 'components/common/Modal/ModalPortal';
 import AddToFolderModal from 'components/common/Modal/AddToFolderModal';
+import useModal from 'hooks/useModal';
 
 function AddLinkBar() {
-  const [modal, setModal] = useState(false);
+  const { isOpen, handleModalOpen, handleModalClose } = useModal();
   const [inputValue, setInputValue] = useState('');
 
   function handleLinkAdd(event) {
     event.preventDefault();
     const value = event.target.children[0].children[0].value;
     setInputValue(value);
-    handleModalOpen(setModal);
+    handleModalOpen();
   }
 
   return (
@@ -26,10 +26,10 @@ function AddLinkBar() {
           <BlueBtn type="linkAdd">추가하기</BlueBtn>
         </Wrapper>
       </Container>
-      {modal && (
+      {isOpen && (
         <ModalPortal>
           <ModalFrame>
-            <AddToFolderModal url={inputValue} onClickClose={() => handleModalClose(setModal)} />
+            <AddToFolderModal url={inputValue} onClickClose={() => handleModalClose()} />
           </ModalFrame>
         </ModalPortal>
       )}

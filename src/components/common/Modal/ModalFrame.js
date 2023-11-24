@@ -7,7 +7,7 @@ function ModalFrame({ children, onClickClose }) {
 
   return (
     <div>
-      <Mask></Mask>
+      <Mask />
       <Body>
         <CloseIcon src={closeBtn} alt="모달 닫기 버튼" onClick={onClickClose} />
         <Container>{children}</Container>
