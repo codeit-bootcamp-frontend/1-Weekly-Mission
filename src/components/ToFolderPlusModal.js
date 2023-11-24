@@ -6,17 +6,12 @@ import check from './img/check.svg';
 
 export default function ToFolderPlusModal({ handleClick, cardLink }) {
   const [folders, setFolders] = useState([]);
-  const [links, setLinks] = useState([]);
 
   const handleLoad = useCallback(async () => {
     const { data } = await getData('users/1/folders');
     setFolders(data);
   }, []);
 
-  const handleFolderCount = async (id = '') => {
-    const links = await getData('users/1/links?folderId=', id);
-    setLinks(links.data);
-  };
   const back = useRef();
 
   const backClick = (e) => {
@@ -25,7 +20,6 @@ export default function ToFolderPlusModal({ handleClick, cardLink }) {
 
   useEffect(() => {
     handleLoad();
-    handleFolderCount();
   }, [handleLoad]);
   return (
     <div className="modal-background" ref={back} onClick={backClick}>
@@ -36,12 +30,12 @@ export default function ToFolderPlusModal({ handleClick, cardLink }) {
         </div>
         <div className="modal-folder">
           {folders.map((item) => (
-            <div className="modal-folder-wrapper">
+            <div className="modal-folder-wrapper" key={item.id}>
               <div className="modal-div">
-                <div name={item.id} key={item.id} className="modal-folder-div">
+                <div name={item.id} className="modal-folder-div">
                   {item.name}
                 </div>
-                <div className="modal-link-cnt">{links.length}개 링크</div>
+                <div className="modal-link-cnt">{item.link.count}개 링크</div>
               </div>
               <div className="modal-link-check">
                 <img src={check} alt="체크표시" />

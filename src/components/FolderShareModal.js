@@ -4,16 +4,18 @@ import xClose from './img/Xclose.svg';
 import kakao from './img/kakao.svg';
 import facebookImg from './img/facebookImg.svg';
 import linkImg from './img/linkImg.svg';
+import { useLocation } from 'react-router-dom';
 const { Kakao } = window;
 
-export default function FolderShareModal({ handleClick, value, title }) {
-  const resultUrl = window.location.href;
+export default function FolderShareModal({ handleClick, title, id }) {
+  const resultUrl = `window.location.href/${id}`;
+  const BASEURL = 'localhost:3000';
+  const location = useLocation();
+  console.log(resultUrl);
 
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init('512cd8a8ece57b97899c8cc612089c7d');
-    // 잘 적용되면 true
-    console.log(Kakao.isInitialized());
   }, []);
 
   const shareKakao = () => {
@@ -39,13 +41,22 @@ export default function FolderShareModal({ handleClick, value, title }) {
   };
   const onClickFacebook = () => {
     window.open(
-      'http://www.facebook.com/sharer.php?u=https://park-linkbrary.netlify.app/'
+      `http://www.facebook.com/sharer.php?u=${BASEURL}${location.pathname}/${id}`
     );
   };
 
   const back = useRef();
   const backClick = (e) => {
     if (e.target === back.current) handleClick();
+  };
+
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('클립보드에 링크가 복사되었어요.');
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="modal-background" ref={back} onClick={backClick}>
@@ -66,7 +77,12 @@ export default function FolderShareModal({ handleClick, value, title }) {
             <img src={facebookImg} alt="페이스북" />
             <div className="modal-share-name">페이스북</div>
           </button>
-          <button className="modal-share-div">
+          <button
+            className="modal-share-div"
+            onClick={() =>
+              handleCopyClipBoard(`${BASEURL}${location.pathname}/${id}`)
+            }
+          >
             <img src={linkImg} alt="링크 복사" />
             <div className="modal-share-name">링크 복사</div>
           </button>

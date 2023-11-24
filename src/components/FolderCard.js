@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { dateCalculator } from './dateCalculator';
 import noImage from './img/no-image.svg';
 import kebab from './img/kebab.svg';
@@ -6,6 +5,7 @@ import star from './img/star.svg';
 import { useRef, useState } from 'react';
 import FolderDeleteModal from './FolderDeleteModal';
 import ToFolderPlusModal from './ToFolderPlusModal';
+import * as C from './css/CardStyledComponent';
 
 export default function FolderCard(link) {
   const apiDate = new Date(link.item.created_at);
@@ -14,7 +14,6 @@ export default function FolderCard(link) {
   const month = apiDate.getMonth() + 1;
   const days = apiDate.getDate();
   const [clicked, setClicked] = useState(false);
-  const [onModal, setOnModal] = useState(false);
   const [onDeleteModal, setOnDeleteModal] = useState(false);
   const [onToFolderPlusModal, setOnToFolderPlusModal] = useState(false);
 
@@ -25,11 +24,6 @@ export default function FolderCard(link) {
 
   const kebabClick = (e) => {
     setClicked(!clicked);
-  };
-
-  const kebabPlusButton = (e) => {
-    setClicked(!clicked);
-    setOnModal(!onModal);
   };
 
   const clickOutside = (e) => {
@@ -52,44 +46,41 @@ export default function FolderCard(link) {
   document.addEventListener('mousedown', clickOutside);
   return (
     <>
-      <Link to={link.item.url} className="card-wrapper" target="_blank">
-        <div className="card-box">
-          <div className="card-img-div">
-            <img
+      <C.CardWrapper to={link.item.url} target="_blank">
+        <C.CardBox>
+          <C.CardImgDiv>
+            <C.CardImg
               className="card-img"
               src={link.item.image_source}
               alt={link.item.title}
             />
-          </div>
-          <div className="card-text">
-            <div className="card-time-div">
-              <div className="card-time-ago">{elapsedTime}</div>
+          </C.CardImgDiv>
+          <C.CardText>
+            <C.CardTimeDIv>
+              <C.CardTimeAgo>{elapsedTime}</C.CardTimeAgo>
 
-              <div className="kebab-button" onClick={kebabfunc}>
+              <C.KebabButton onClick={kebabfunc}>
                 <img src={kebab} alt="kebabImg" onClick={kebabClick} />
                 {clicked && (
-                  <div className="kebab-wrapper">
-                    <div className="kebab-div" ref={back}>
-                      <div className="kebab-plus" onClick={onClickDeleteModal}>
+                  <div>
+                    <C.KebabDiv ref={back}>
+                      <C.KebabPlus onClick={onClickDeleteModal}>
                         삭제하기
-                      </div>
-                      <div
-                        className="kebab-delete"
-                        onClick={onClickToFolderModal}
-                      >
+                      </C.KebabPlus>
+                      <C.KebabDelete onClick={onClickToFolderModal}>
                         폴더에 추가
-                      </div>
-                    </div>
+                      </C.KebabDelete>
+                    </C.KebabDiv>
                   </div>
                 )}
-              </div>
-            </div>
-            <div className="text-description">{link.item.description}</div>
-            <div className="card-year">{`${year}. ${month}. ${days}`}</div>
-          </div>
-          <img src={star} className="star-img" alt="starImg" />
-        </div>
-      </Link>
+              </C.KebabButton>
+            </C.CardTimeDIv>
+            <C.TextDescription>{link.item.description}</C.TextDescription>
+            <C.CardYear>{`${year}. ${month}. ${days}`}</C.CardYear>
+          </C.CardText>
+          <C.StarImg src={star} alt="starImg" />
+        </C.CardBox>
+      </C.CardWrapper>
 
       {onDeleteModal && (
         <FolderDeleteModal

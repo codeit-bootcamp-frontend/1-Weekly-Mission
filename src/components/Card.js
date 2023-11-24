@@ -1,7 +1,6 @@
-import './css/Card.css';
 import noImage from './img/no-image.svg';
 import { dateCalculator } from './dateCalculator';
-import { Link } from 'react-router-dom';
+import * as C from './css/CardStyledComponent';
 
 export default function Card(item) {
   const apiDate = new Date(item.item.createdAt);
@@ -15,21 +14,21 @@ export default function Card(item) {
   }
 
   return (
-    <Link to={item.item.url} className="card-wrapper" target="_blank">
-      <div className="card-box">
-        <div className="card-img-div">
+    <C.CardWrapper to={item.item.url} target="_blank">
+      <C.CardBox>
+        <C.CardImgDiv>
           <img
             className="card-img"
             src={item.item.imageSource}
             alt={item.item.title}
           />
-        </div>
-        <div className="card-text">
-          <div className="card-time-ago">{elapsedTime}</div>
-          <div className="text-description">{item.item.description}</div>
-          <div className="card-year">{`${year}. ${month}. ${days}`}</div>
-        </div>
-      </div>
-    </Link>
+        </C.CardImgDiv>
+        <C.CardText>
+          <C.CardTimeAgo>{elapsedTime}</C.CardTimeAgo>
+          <C.TextDescription>{item.item.description}</C.TextDescription>
+          <C.CardYear>{`${year}. ${month}. ${days}`}</C.CardYear>
+        </C.CardText>
+      </C.CardBox>
+    </C.CardWrapper>
   );
 }
