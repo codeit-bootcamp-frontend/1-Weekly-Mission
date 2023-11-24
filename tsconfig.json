@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "es6", 
+    "lib": [ //어떤 환경에서 사용하는지 정의(api자동완성 제공해줌)
+      "dom", //브라우저
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "apis/*": [
+        "src/apis/*"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "pages/*": [
+        "src/pages/*"
+      ],
+      "styles/*": [
+        "src/styles/*"
+      ],
+      "utils/*": [
+        "src/utls/*"
+      ],
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [ 
+    "src"
+  ],
+  "exclude": [
+    "node_modules"   
+  ],
+}

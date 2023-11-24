@@ -1,4 +1,4 @@
-import * as S from "./AddLink.style";
+import * as S from "./AddLinkBar.style";
 import linkIcon from "assets/images/link-Img.png";
 import Button from 'components/Button';
 

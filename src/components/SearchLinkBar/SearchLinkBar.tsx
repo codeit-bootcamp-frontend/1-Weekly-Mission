@@ -1,4 +1,4 @@
-import * as S from "./SearchLink.style";
+import * as S from "./SearchLinkBar.style";
 import searchIcon from "assets/images/search.svg";
 
 function SearchLink() {

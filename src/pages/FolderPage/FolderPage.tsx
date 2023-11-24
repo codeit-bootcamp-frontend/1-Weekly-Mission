@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { getFolder, getLink, getLinksFolderId } from "apis/api";
 import * as S from "./FolderPage.style";
 import Gnb from 'components/Gnb';
-import AddLink from 'components/AddLink';
-import SearchLink from 'components/SearchLink';
+import AddLinkBar from 'components/AddLinkBar';
+import SearchLinkBar from 'components/SearchLinkBar';
 import CardList from 'components/CardList';
 import FolderMenu from 'components/FolderMenu';
 import Footer from 'components/Footer';
@@ -51,10 +51,10 @@ function FolderPage() {
     <Gnb />
       <S.FolderPageSection>
         <S.Header>
-          <AddLink />
+          <AddLinkBar />
         </S.Header>
         <S.Main>
-          <SearchLink />
+          <SearchLinkBar />
           <S.CardSection>
             <FolderMenu data={folderData} onClick={handleClick} id={folderId} />
             <CardList items={folderLink} />
