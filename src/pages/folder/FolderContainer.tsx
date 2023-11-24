@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 
-import * as S from "./FolderContainerStyle";
+import * as S from "./FolderStyle";
 import { getAllFolders, getAllLinks } from "api/api";
 import { FolderContext } from "context/FolderContext";
 
