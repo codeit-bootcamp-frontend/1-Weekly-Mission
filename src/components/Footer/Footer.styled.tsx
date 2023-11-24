@@ -1,8 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const S = {};
-
-S.Footer = styled.footer`
+export const Container = styled.footer`
   display: grid;
   grid-template: 1fr 1fr / 1fr 1fr;
   grid-template-areas:
@@ -24,35 +22,35 @@ S.Footer = styled.footer`
     grid-template-areas: ". copy info sns .";
     padding: 3.2rem 10rem 11.2rem;
   }
-`
+`;
 
-const divFooter = css`
+const base = css`
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   color: var(--Gray5);
-`
+`;
 
-S.DivCopy = styled.div`
-  ${divFooter};
+export const Copy = styled.div`
+  ${base};
   align-self: center;
   grid-area: copy;
-`
+`;
 
-S.DivInfo = styled.div`
-  ${divFooter};
+export const Info = styled.div`
+  ${base};
   grid-area: info;
   gap: 3rem;
 
   & a {
     color: var(--Gray3);
   }
-`
+`;
 
-S.DivSns = styled.div`
-  ${divFooter};
+export const Sns = styled.div`
+  ${base};
   gap: 1.2rem;
   justify-self: end;
   grid-area: sns;
-`
+`;

@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SharedPage from "./pages/SharedPage";
 import FolderPage from "./pages/FolderPage";
@@ -14,7 +15,6 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
-
   );
 }
 
