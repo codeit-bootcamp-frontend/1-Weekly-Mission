@@ -89,3 +89,39 @@ export type Action = SampleUser | SampleFolder | User | Folder | Link;
 export type UrlType = keyof typeof URLS;
 
 export type MakeURL = (path: UrlType, id?: number) => string;
+
+interface Rentity {
+  id: number;
+  name: string;
+  email: string;
+  profileImg: string;
+}
+
+interface RsampleUser extends Rentity {
+  path: URLS.SHARED_USER;
+}
+
+interface RsampleFolder {
+  path: URLS.SHARED_FOLDER;
+  links: SampleLink[];
+}
+
+interface RsampleFolderName {
+  path: URLS.SHARED_FOLDERNAME;
+  folderName: string;
+  owner: {
+    id: number;
+    name: string;
+    profileImageSource: string;
+  };
+}
+
+interface Ruser extends Rentity {
+  path: URLS.FOLDER_USER;
+}
+
+export type Return = RsampleUser | RsampleFolder | RsampleFolderName | Ruser | Folder | Link;
+
+export interface ReduceData {
+  (action: Action): Return;
+}

@@ -10,7 +10,7 @@ interface Props {
 }
 
 function HeaderSearch({ isUser }: Props) {
-  const [folder] = useData(URLS.FOLDER_CATEGORY);
+  const folder = useData(URLS.FOLDER_CATEGORY);
   const { modal, dispatch } = useModal();
   const [value, setValue] = useState("");
   const input = useRef<HTMLInputElement>(null);
@@ -22,7 +22,7 @@ function HeaderSearch({ isUser }: Props) {
 
   const handleModal = (e: React.FormEvent) => {
     e.preventDefault();
-    if (folder.path === URLS.FOLDER_CATEGORY) {
+    if (folder?.path === URLS.FOLDER_CATEGORY) {
       isUser && dispatch({ title: value, type: "추가하기", data: folder.data });
     }
   };

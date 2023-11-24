@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-export const S = {};
-
-S.SignButton = styled.a`
+export const Button = styled.a`
   width: 8.5rem;
   grid-area: sign;
   justify-self: end;
@@ -20,4 +18,4 @@ S.SignButton = styled.a`
     font-size: 1.8rem;
     width: 11rem;
   }
-`
+`;

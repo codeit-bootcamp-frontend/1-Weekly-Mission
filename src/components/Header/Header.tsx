@@ -4,12 +4,12 @@ import { Container, User, UserImg, UserText, UserTitle } from "src/components/He
 import { URLS } from "src/utils/getData.type";
 
 function Header() {
-  const [data] = useData(URLS.SHARED_FOLDERNAME);
+  const data = useData(URLS.SHARED_FOLDERNAME);
 
   return (
     <Container>
       <User>
-        {data.path === URLS.SHARED_FOLDERNAME ? (
+        {data?.path === URLS.SHARED_FOLDERNAME ? (
           <>
             <UserImg src={data.owner.profileImageSource ?? defaultAvatar} alt="유저 프로필 이미지" />
             <UserText>{data.owner.name}</UserText>

@@ -7,7 +7,11 @@ export const Backgorund = styled.div`
   height: 7rem;
 `;
 
-export const Nav = styled.nav`
+interface Inav {
+  page: string;
+}
+
+export const Nav = styled.nav<Inav>`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "logo sign";

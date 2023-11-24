@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getData } from "../utils/getData";
-import { Action, URLS, UrlType } from "src/utils/getData.type";
+import { getData } from "src/utils/getData";
+import { Action, ReduceData, Return, URLS, UrlType } from "src/utils/getData.type";
 
-export const reduceData = (action: Action) => {
+export const reduceData: ReduceData = (action) => {
   switch (action.path) {
     case URLS.SHARED_USER:
       const { id, name, email, profileImageSource: profileImg } = action;
@@ -25,14 +25,13 @@ export const reduceData = (action: Action) => {
     }
     case URLS.FOLDER_CATEGORY:
       return action;
-
     case URLS.FOLDER_LINKS:
       return action;
   }
 };
 
-export const useReduce = (reducer: (a: Action) => {}) => {
-  const [state, setState] = useState({});
+export const useReduce = (reducer: ReduceData) => {
+  const [state, setState] = useState<Return>();
 
   const updateState = (action: Action) => setState((state) => reducer(action));
 
@@ -41,16 +40,14 @@ export const useReduce = (reducer: (a: Action) => {}) => {
   return { state, dispatch };
 };
 
-type ReturnData = ReturnType<typeof reduceData>;
-
-function useData(path: UrlType, id?: number) {
+const useData = (path: UrlType, id?: number) => {
   const { state, dispatch } = useReduce(reduceData);
 
   useEffect(() => {
     dispatch(getData(path, id));
   }, [dispatch, path, id]);
 
-  return [state as ReturnData];
-}
+  return state;
+};
 
 export default useData;
