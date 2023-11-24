@@ -28,9 +28,14 @@ export default function HeaderButton({ observerRef }) {
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries, observer) => {
+      // console.log("대상이 관찰이 되었어요!", entries);
       const [IntersectionObserverEntry] = entries;
+      // console.log(ref.current);
+      console.log(
+        IntersectionObserverEntry.isIntersecting,
 
-      setIsvisible(IntersectionObserverEntry.isIntersecting);
+        IntersectionObserverEntry.isVisible
+      );
     }, options);
 
     if (ref.current) {
@@ -38,7 +43,7 @@ export default function HeaderButton({ observerRef }) {
     }
   }, [ref, isVisible]);
 
-  console.log(isVisible);
+  // console.log(isVisible);
 
   return (
     <div ref={ref} className={styles.container}>

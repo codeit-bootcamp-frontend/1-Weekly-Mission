@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FolderNav from "../components/nav/FolderNav";
 import Header from "../common/header/Header";
 import SearchBar from "../common/searchBar/SearchBar";
@@ -16,6 +16,7 @@ import DataList from "../components/linksdata/DataList";
 import FolderMenuList from "../components/foldermenulist/FolderMenuList";
 
 export default function FolderPage() {
+  // intersection
   const USER_ID = 1;
   const { folderId } = useParams();
   const [userProfileData] = useFetchData(fetchUserData, {

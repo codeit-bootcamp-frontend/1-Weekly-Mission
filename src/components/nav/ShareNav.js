@@ -7,12 +7,12 @@ import { ReactComponent as Person } from "../../assets/images/person.svg";
 import { ReactComponent as Login } from "../../assets/images/login.svg";
 
 import styles from "./Nav.module.css";
-import useFetch from "../../hooks/useFetch";
+
+import useFetchData from "../../hooks/useFetchData";
+import { getShareUserData } from "../../api/share";
 
 export default function ShareNav() {
-  const [userData, isLoading] = useFetch(
-    "https://bootcamp-api.codeit.kr/api/sample/user"
-  );
+  const [userData] = useFetchData(getShareUserData);
 
   return (
     <div className={styles.container}>

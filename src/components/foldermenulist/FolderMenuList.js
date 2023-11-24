@@ -3,6 +3,7 @@ import Button from "../button/Button";
 import styles from "./FolderMenuList.module.css";
 import { useNavigate } from "react-router-dom";
 import LocaleContext from "../../contexts/LocaleContext";
+import plus from "../../assets/images/plus.svg";
 
 export default function FolderMenuList() {
   const { LinkSDataArr, folderIdKey } = useContext(LocaleContext);
@@ -35,7 +36,10 @@ export default function FolderMenuList() {
         })}
       </div>
       <div className={styles.add__folder__button}>
-        <Button onClick={() => alert("추후기능만들예정")}>폴더추가</Button>
+        <Button onClick={() => alert("추후기능만들예정")}>
+          <span>폴더추가</span>
+          <img src={plus} alt="plus" />
+        </Button>
       </div>
     </div>
   );
