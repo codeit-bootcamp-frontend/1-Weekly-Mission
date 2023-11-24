@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export default function useFetch(asyncFunc: (...args: any[]) => Promise<any>) {
+interface UseFetch<T> {
+  isLoading: boolean;
+  error: null | Error;
+  wrappedFunction: (...args: any[]) => Promise<T | undefined>;
+}
+
+const useFetch = <T>(asyncFunc: (...args: any[]) => Promise<T>): UseFetch<T> => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<null | Error>(null);
 
@@ -22,4 +28,6 @@ export default function useFetch(asyncFunc: (...args: any[]) => Promise<any>) {
     error,
     wrappedFunction,
   };
-}
+};
+
+export default useFetch;
