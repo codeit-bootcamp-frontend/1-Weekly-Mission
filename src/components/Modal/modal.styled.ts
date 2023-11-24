@@ -1,8 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-export const S = {};
-
-S.DivModalWrapper = styled.div`
+export const Wrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -13,9 +11,9 @@ S.DivModalWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #00000040;
-`
+`;
 
-S.DivModalContents = styled.div`
+export const Contents = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -23,9 +21,9 @@ S.DivModalContents = styled.div`
   padding: 3.2rem 4rem;
   background-color: var(--White);
   border-radius: 1.5rem;
-`
+`;
 
-S.DivModalText = styled.div`
+export const Text = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,25 +39,25 @@ S.DivModalText = styled.div`
     font-weight: 400;
     color: var(--Gray4);
   }
-`
+`;
 
-S.ButtonSubmit = styled.button`
+export const ButtonSubmit = styled.button`
   width: 28rem;
   padding: 1.6rem 2rem;
   border-radius: 0.8rem;
-  ${({ color }) => color ? `background-color: var(--Red)` : `background-image: linear-gradient(90deg, #6D6AFE, #6AE3FE)`};
+  ${({ color }) => (color ? `background-color: var(--Red)` : `background-image: linear-gradient(90deg, #6D6AFE, #6AE3FE)`)};
   color: var(--White);
   font-size: 1.6rem;
   font-weight: 600;
-`
+`;
 
-S.ButtonClose = styled.button`
+export const ButtonClose = styled.button`
   position: absolute;
   top: 1.6rem;
   right: 1.6rem;
-`
+`;
 
-S.InputSubmit = styled.input`
+export const InputSubmit = styled.input`
   width: 28rem;
   padding: 1.8rem 1.5rem;
   border: 0.1rem solid var(--Gray3);
@@ -72,24 +70,15 @@ S.InputSubmit = styled.input`
     border: 0.1rem solid var(--Primary);
     outline: none;
   }
-`
+`;
 
-S.SnsWrapper = styled.div`
+export const SnsWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 3.2rem;
-`
+`;
 
-S.Sns = function ({ src, alt, text, onClick }) {
-  return (
-    <button onClick={onClick}>
-      <img src={src} alt={alt} />
-      <p>{text}</p>
-    </button>
-  )
-}
-
-S.UlModal = styled.ul`
+export const List = styled.ul`
   padding-left: 0;
 
   li {
@@ -127,41 +116,41 @@ S.UlModal = styled.ul`
     font-weight: 400;
     line-height: 150%;
   }
-  
+
   p {
     margin-left: 0.8rem;
     font-size: 1.4rem;
     color: var(--Gray4);
   }
-`
+`;
 
-S.CopyWrapper = styled.div`
+export const CopyWrapper = styled.div`
   display: none;
 
   &.active {
-  position: fixed;
-  top: 0;
-  left: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
   }
-`
+`;
 
 const desolve = keyframes`
   100% {
     opacity: 0;
   }
-`
+`;
 
-S.CopyContent = styled.div`
+export const CopyContent = styled.div`
   padding: 1.2rem 1.8rem;
   color: var(--White);
   font-size: 1.6rem;
   background-color: var(--Gray5);
   border-radius: 0.8rem;
   animation: ${desolve} 2s ease-in;
-`
+`;

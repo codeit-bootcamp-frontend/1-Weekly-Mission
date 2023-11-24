@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getData } from "../utils/getData";
 import { Action, URLS, UrlType } from "src/utils/getData.type";
 
-const reduceData = (action: Action) => {
+export const reduceData = (action: Action) => {
   switch (action.path) {
     case URLS.SHARED_USER:
       const { id, name, email, profileImageSource: profileImg } = action;
@@ -31,7 +31,7 @@ const reduceData = (action: Action) => {
   }
 };
 
-const useReduce = (reducer: (a: Action) => {}) => {
+export const useReduce = (reducer: (a: Action) => {}) => {
   const [state, setState] = useState({});
 
   const updateState = (action: Action) => setState((state) => reducer(action));

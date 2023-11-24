@@ -24,7 +24,7 @@ interface Link {
   data: LinkData[];
 }
 
-type FolderData = {
+export type FolderData = {
   id: number;
   created_at: string;
   name: string;
