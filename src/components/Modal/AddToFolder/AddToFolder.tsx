@@ -4,7 +4,7 @@ import { useState } from 'react';
 import useRequest from '@hooks/useRequest';
 import CHECK from '@assets/icons/check.svg';
 
-interface FolderProps {
+interface Folder {
   id: number;
   created_at: string;
   link: {
@@ -15,7 +15,7 @@ interface FolderProps {
 }
 
 function AddToFolder({ url, userId }: { url: string; userId: number }) {
-  const { data: folders } = useRequest({
+  const { data: folders } = useRequest<{ data: Folder[] }>({
     options: {
       url: `/users/${userId}/folders`,
       method: 'get',
@@ -35,7 +35,7 @@ function AddToFolder({ url, userId }: { url: string; userId: number }) {
         <Modal.Description>{url}</Modal.Description>
       </Modal.Header>
       <S.FoldersContainer>
-        {folders?.data?.map((folder: FolderProps) => (
+        {folders?.data?.map((folder: Folder) => (
           <li key={folder?.id}>
             <S.Folder
               type='button'

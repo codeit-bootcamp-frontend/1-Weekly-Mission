@@ -2,18 +2,20 @@ import { useEffect, useState, useCallback } from 'react';
 import fetch from '@apis/utils/fetch';
 
 interface Props {
-  deps?: any;
+  deps?: (boolean | string | number)[];
   skip?: boolean;
-  options?: any;
+  options?: {
+    [key: string]: string;
+  };
 }
 
-function useRequest({ deps = [], skip = false, options }: Props) {
-  const [data, setData] = useState<any>(null);
+function useRequest<T>({ deps = [], skip = false, options }: Props) {
+  const [data, setData] = useState<T>();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
 
   const refetch = useCallback(
-    async (...args: any) => {
+    async (...args: string[]) => {
       setIsLoading(true);
       setError(null);
 
