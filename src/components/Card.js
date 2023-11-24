@@ -1,6 +1,6 @@
 import noImage from './img/no-image.svg';
 import { dateCalculator } from './dateCalculator';
-import * as C from './css/CardStyledComponent';
+import * as C from './styled-component/CardStyledComponent';
 
 export default function Card(item) {
   const apiDate = new Date(item.item.createdAt);

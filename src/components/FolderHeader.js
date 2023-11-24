@@ -1,23 +1,20 @@
 import linkImg from './img/link.svg';
-import './css/FolderHeader.css';
+import * as FH from './styled-component/FolderHeaderStyledCompoenet';
 
 export default function FolderHeader() {
   return (
-    <div className="folder-header-container">
-      <div className="folder-header-wrapper">
-        <div className="folder-header-div">
+    <FH.FolderHeaderContainer>
+      <FH.FolderHeaderWrapper>
+        <FH.FolderHeaderDiv>
           <img
             src={linkImg}
             alt="linkImg"
             style={{ width: '20px', height: '20px' }}
           />
-          <input
-            className="folder-header-input"
-            placeholder="링크를 추가해 보세요."
-          />
-        </div>
-        <button className="folder-header-button">추가하기</button>
-      </div>
-    </div>
+          <FH.FolderHeaderInput placeholder="링크를 추가해 보세요." />
+        </FH.FolderHeaderDiv>
+        <FH.FolderHeaderButton>추가하기</FH.FolderHeaderButton>
+      </FH.FolderHeaderWrapper>
+    </FH.FolderHeaderContainer>
   );
 }

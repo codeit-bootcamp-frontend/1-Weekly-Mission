@@ -1,8 +1,8 @@
 import library from './img/linkbrary.svg';
 import { useState } from 'react';
 import { getData } from '../api';
-import './css/Nav.css';
 import Profile from './Profile';
+import * as N from './styled-component/NavStyledComponent';
 
 export default function Nav() {
   const [login, setLogin] = useState([]);
@@ -18,19 +18,19 @@ export default function Nav() {
     }
   };
   return (
-    <div className="nav-container">
-      <div className="nav1-wrapper">
-        <a href="/" className="nav1-logo">
-          <img className="nav1-libraryImg" src={library} alt="libraryLogo" />
+    <N.NavContainer>
+      <N.NavWrapper>
+        <a href="/">
+          <N.NavLibraryImg src={library} alt="libraryLogo" />
         </a>
         {login.id || login[0] ? (
           <Profile item={login} />
         ) : (
-          <button href="/" className="nav-login" onClick={handleLoad}>
+          <N.NavLoginButton href="/" onClick={handleLoad}>
             로그인
-          </button>
+          </N.NavLoginButton>
         )}
-      </div>
-    </div>
+      </N.NavWrapper>
+    </N.NavContainer>
   );
 }

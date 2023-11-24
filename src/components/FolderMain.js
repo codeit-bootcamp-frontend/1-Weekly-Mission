@@ -1,11 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import search from './img/search.svg';
 import { getData } from '../api';
-import './css/FolderMain.css';
-import './css/Card.css';
-import * as FM from './css/FolderMainStyledComponent';
-import * as C from './css/CardStyledComponent';
-import * as S from './css/SharedPageStyledComponent';
+import * as FM from './styled-component/FolderMainStyledComponent';
+import * as C from './styled-component/CardStyledComponent';
+import * as S from './styled-component/SharedPageStyledComponent';
 import plusImg from './img/plus.svg';
 import shareImg from './img/share.svg';
 import penImg from './img/pen.svg';
@@ -78,7 +76,7 @@ export default function FolderMain() {
     <FM.FolderContainer>
       <FM.FolderSearch>
         <img src={search} alt="search" />
-        <input placeholder="링크를 검색해 보세요." />
+        <FM.SearchDivInput placeholder="링크를 검색해 보세요." />
       </FM.FolderSearch>
       <FM.FolderWrapper>
         <FM.FolderDIv>
@@ -133,7 +131,7 @@ export default function FolderMain() {
         {links[0] &&
           links.map((link) => <FolderCard key={link.id} item={link} />)}
       </S.MainContentWrapper>
-      {!links[0] && <div className="no-link">저장된 링크가 없습니다.</div>}
+      {!links[0] && <FM.NoLink>저장된 링크가 없습니다.</FM.NoLink>}
       {onModal && (
         <FolderPlusModal
           handleClick={onClickCloseModal}

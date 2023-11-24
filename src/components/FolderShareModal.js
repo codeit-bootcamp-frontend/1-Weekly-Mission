@@ -1,10 +1,10 @@
 import { useRef, useEffect } from 'react';
-import './css/Modal.css';
 import xClose from './img/Xclose.svg';
 import kakao from './img/kakao.svg';
 import facebookImg from './img/facebookImg.svg';
 import linkImg from './img/linkImg.svg';
 import { useLocation } from 'react-router-dom';
+import * as M from './styled-component/ModalStyledCompoenet';
 const { Kakao } = window;
 
 export default function FolderShareModal({ handleClick, title, id }) {
@@ -59,41 +59,34 @@ export default function FolderShareModal({ handleClick, title, id }) {
     }
   };
   return (
-    <div className="modal-background" ref={back} onClick={backClick}>
-      <div className="modal-wrapper">
-        <div className="modal-header">폴더 공유</div>
-        <div className="modal-link-url">{title}</div>
-        <div className="modal-share-wrapper">
-          <button
-            className="modal-share-div"
+    <M.ModalBackground ref={back} onClick={backClick}>
+      <M.ModlaWrapper>
+        <M.ModalHeader>폴더 공유</M.ModalHeader>
+        <M.ModalLinkUrl>{title}</M.ModalLinkUrl>
+        <M.ModalShareWrapper>
+          <M.ModalShareButton
             onClick={() => {
               shareKakao();
             }}
           >
             <img src={kakao} alt="카카오톡" />
-            <div className="modal-share-name">카카오톡</div>
-          </button>
-          <button className="modal-share-div" onClick={onClickFacebook}>
+            <M.ModalShareName>카카오톡</M.ModalShareName>
+          </M.ModalShareButton>
+          <M.ModalShareButton onClick={onClickFacebook}>
             <img src={facebookImg} alt="페이스북" />
-            <div className="modal-share-name">페이스북</div>
-          </button>
-          <button
-            className="modal-share-div"
+            <M.ModalShareName>페이스북</M.ModalShareName>
+          </M.ModalShareButton>
+          <M.ModalShareButton
             onClick={() =>
               handleCopyClipBoard(`${BASEURL}${location.pathname}/${id}`)
             }
           >
             <img src={linkImg} alt="링크 복사" />
-            <div className="modal-share-name">링크 복사</div>
-          </button>
-        </div>
-        <img
-          src={xClose}
-          className="closeImg"
-          alt="닫기 버튼"
-          onClick={handleClick}
-        />
-      </div>
-    </div>
+            <M.ModalShareName>링크 복사</M.ModalShareName>
+          </M.ModalShareButton>
+        </M.ModalShareWrapper>
+        <M.CloseImg src={xClose} alt="닫기 버튼" onClick={handleClick} />
+      </M.ModlaWrapper>
+    </M.ModalBackground>
   );
 }

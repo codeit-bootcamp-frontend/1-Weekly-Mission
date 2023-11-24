@@ -1,8 +1,8 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
-import './css/Modal.css';
 import xClose from './img/Xclose.svg';
 import { getData } from '../api';
 import check from './img/check.svg';
+import * as M from './styled-component/ModalStyledCompoenet';
 
 export default function ToFolderPlusModal({ handleClick, cardLink }) {
   const [folders, setFolders] = useState([]);
@@ -22,37 +22,34 @@ export default function ToFolderPlusModal({ handleClick, cardLink }) {
     handleLoad();
   }, [handleLoad]);
   return (
-    <div className="modal-background" ref={back} onClick={backClick}>
-      <div className="modal-wrapper">
-        <div className="modal-delete-header">
-          <div className="modal-header">폴더에 추가</div>
-          <div className="modal-link-url">{cardLink}</div>
-        </div>
-        <div className="modal-folder">
+    <M.ModalBackground
+      className="modal-background"
+      ref={back}
+      onClick={backClick}
+    >
+      <M.ModlaWrapper>
+        <M.ModalDeleteHeader>
+          <M.ModalHeader>폴더에 추가</M.ModalHeader>
+          <M.ModalLinkUrl>{cardLink}</M.ModalLinkUrl>
+        </M.ModalDeleteHeader>
+        <M.ModalFolder>
           {folders.map((item) => (
-            <div className="modal-folder-wrapper" key={item.id}>
-              <div className="modal-div">
-                <div name={item.id} className="modal-folder-div">
-                  {item.name}
-                </div>
-                <div className="modal-link-cnt">{item.link.count}개 링크</div>
-              </div>
-              <div className="modal-link-check">
+            <M.ModalFolderWrapper key={item.id}>
+              <M.ModalDiv>
+                <M.ModalFolderDiv name={item.id}>{item.name}</M.ModalFolderDiv>
+                <M.ModalLinkCnt>{item.link.count}개 링크</M.ModalLinkCnt>
+              </M.ModalDiv>
+              <M.ModalLinkCheck>
                 <img src={check} alt="체크표시" />
-              </div>
-            </div>
+              </M.ModalLinkCheck>
+            </M.ModalFolderWrapper>
           ))}
-        </div>
-        <div className="modal-main">
-          <button className="modal-blue-button">추가하기</button>
-        </div>
-        <img
-          src={xClose}
-          className="closeImg"
-          alt="닫기 버튼"
-          onClick={handleClick}
-        />
-      </div>
-    </div>
+        </M.ModalFolder>
+        <M.ModalMain>
+          <M.ModalButton $color={'blue'}>추가하기</M.ModalButton>
+        </M.ModalMain>
+        <M.CloseImg src={xClose} alt="닫기 버튼" onClick={handleClick} />
+      </M.ModlaWrapper>
+    </M.ModalBackground>
   );
 }

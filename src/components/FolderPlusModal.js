@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import './css/Modal.css';
 import xClose from './img/Xclose.svg';
+import * as M from './styled-component/ModalStyledCompoenet';
 
 export default function FolderPlusModal({ handleClick, title, value }) {
   const back = useRef();
@@ -9,23 +9,17 @@ export default function FolderPlusModal({ handleClick, title, value }) {
     if (e.target === back.current) handleClick();
   };
   return (
-    <div className="modal-background" ref={back} onClick={backClick}>
-      <div className="modal-wrapper">
-        <div className="modal-header">{value}</div>
-        <div className="modal-main">
-          <input
-            className="modal-input"
+    <M.ModalBackground ref={back} onClick={backClick}>
+      <M.ModlaWrapper>
+        <M.ModalHeader>{value}</M.ModalHeader>
+        <M.ModalMain>
+          <M.ModalInput
             placeholder={value !== '이름 변경' ? '내용 입력' : title}
           />
-          <button className="modal-blue-button">변경하기</button>
-        </div>
-        <img
-          src={xClose}
-          className="closeImg"
-          alt="닫기 버튼"
-          onClick={handleClick}
-        />
-      </div>
-    </div>
+          <M.ModalButton $color={'blue'}>변경하기</M.ModalButton>
+        </M.ModalMain>
+        <M.CloseImg src={xClose} alt="닫기 버튼" onClick={handleClick} />
+      </M.ModlaWrapper>
+    </M.ModalBackground>
   );
 }

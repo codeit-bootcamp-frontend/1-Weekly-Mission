@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import './css/Modal.css';
 import xClose from './img/Xclose.svg';
+import * as M from './styled-component/ModalStyledCompoenet';
 
 export default function FolderDeleteModal({
   handleClick,
@@ -19,24 +19,19 @@ export default function FolderDeleteModal({
   };
 
   return (
-    <div className="modal-background" ref={back} onClick={backClick}>
-      <div className="modal-wrapper">
-        <div className="modal-delete-header">
-          <div className="modal-header">{value}</div>
-          <div className="modal-link-url">
+    <M.ModalBackground ref={back} onClick={backClick}>
+      <M.ModlaWrapper>
+        <M.ModalDeleteHeader>
+          <M.ModalHeader>{value}</M.ModalHeader>
+          <M.ModalLinkUrl>
             {value === '링크 삭제' ? cardLink : title}
-          </div>
-        </div>
-        <div className="modal-main">
-          <button className="modal-red-button">삭제하기</button>
-        </div>
-        <img
-          src={xClose}
-          className="closeImg"
-          alt="닫기 버튼"
-          onClick={handleClick}
-        />
-      </div>
-    </div>
+          </M.ModalLinkUrl>
+        </M.ModalDeleteHeader>
+        <M.ModalMain>
+          <M.ModalButton $color={'red'}>삭제하기</M.ModalButton>
+        </M.ModalMain>
+        <M.CloseImg src={xClose} alt="닫기 버튼" onClick={handleClick} />
+      </M.ModlaWrapper>
+    </M.ModalBackground>
   );
 }

@@ -1,26 +1,23 @@
+import * as N from './styled-component/NavStyledComponent';
+
 export default function Profile(data) {
   return (
-    <div className="nav1-div">
-      <div className="nav1-div-logo">
+    <N.ProfileDiv>
+      <N.ProfileDivLogo>
         {data.item.id ? (
-          <img
-            className="nav1-humanImg"
+          <N.ProfileHumanImg
             src={data.item.profileImageSource}
             alt="profileImg"
           />
         ) : (
-          <img
-            className="nav1-humanImg"
-            src={data.item[0].image_source}
-            alt="profileImg"
-          />
+          <N.ProfileHumanImg src={data.item[0].image_source} alt="profileImg" />
         )}
-      </div>
+      </N.ProfileDivLogo>
       {data.item.id ? (
-        <div className="nav1-div-mail">{data.item.email}</div>
+        <N.ProfileDivMail>{data.item.email}</N.ProfileDivMail>
       ) : (
-        <div className="nav1-div-mail">{data.item[0].email}</div>
+        <N.ProfileDivMail>{data.item[0].email}</N.ProfileDivMail>
       )}
-    </div>
+    </N.ProfileDiv>
   );
 }

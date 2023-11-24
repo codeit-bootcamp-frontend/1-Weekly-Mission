@@ -6,6 +6,9 @@ const GlobalStyle = createGlobalStyle`
 * {
   font-family: Pretendard, sans-serif;
 }
+a {
+  text-decoration: none;
+}
 `;
 
 export default function App({ children }) {

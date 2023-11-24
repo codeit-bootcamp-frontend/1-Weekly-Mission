@@ -5,7 +5,7 @@ import star from './img/star.svg';
 import { useRef, useState } from 'react';
 import FolderDeleteModal from './FolderDeleteModal';
 import ToFolderPlusModal from './ToFolderPlusModal';
-import * as C from './css/CardStyledComponent';
+import * as C from './styled-component/CardStyledComponent';
 
 export default function FolderCard(link) {
   const apiDate = new Date(link.item.created_at);

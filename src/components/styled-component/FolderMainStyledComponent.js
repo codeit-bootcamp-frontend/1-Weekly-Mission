@@ -21,6 +21,18 @@ export const FolderSearch = styled.div`
   }
 `;
 
+export const SearchDivInput = styled.input`
+  color: #666;
+  width: 800px;
+  background-color: #f5f5f5;
+  font-weight: 400;
+  line-height: 24px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+`;
+
 export const FolderWrapper = styled.div`
   display: flex;
   width: 1060px;
