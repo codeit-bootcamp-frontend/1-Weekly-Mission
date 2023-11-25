@@ -2,7 +2,6 @@ import Header from "./Header";
 import getSample from "../api";
 import useAsync from "../Hooks/useAsync";
 
-
 import Main from "./Main";
 import SearchBar from "./SearchBar";
 import CardList from "./CardList";
