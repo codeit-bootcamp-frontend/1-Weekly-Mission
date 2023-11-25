@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
-function IconControlButton({ icon, onOpen }) {
+interface Props {
+  icon: {
+    iconImage: string,
+    name: string,
+    action: string
+  };
+  onOpen: ({}) => void;
+}
+
+function IconControlButton({ icon, onOpen }: Props) {
   return (
     <IconControlButtonContainer onClick={() => {
       onOpen({
