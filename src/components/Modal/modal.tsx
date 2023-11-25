@@ -1,12 +1,13 @@
+import { useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
+import imgCheck from "src/assets/check.svg";
 import imgClose from "src/assets/close.svg";
 import imgKakao from "src/assets/kakao.svg";
 import imgFB from "src/assets/modalfacebook.svg";
 import imgLink from "src/assets/modallink.svg";
-import imgCheck from "src/assets/check.svg";
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import ModalFrame from "src/components/Modal/ModalFrame";
+import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "src/components/Modal/modal.styled";
 import { FolderData } from "src/utils/getData.type";
-import { ButtonClose, ButtonSubmit, Contents, InputSubmit, List, SnsWrapper, Text, Wrapper } from "src/components/Modal/modal.styled";
 
 interface MakeModalProps {
   title?: string;
@@ -56,7 +57,7 @@ interface ModalProps {
 }
 
 export function Modal({ title, modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }: ModalProps) {
-  const handleClose = (event: React.MouseEvent) => {
+  const handleClose = (event: React.SyntheticEvent) => {
     setModal(null);
   };
 
@@ -66,7 +67,7 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
   };
 
   return (
-    <Wrapper onClick={handleClose}>
+    <ModalFrame onClick={handleClose}>
       <Contents onClick={stop}>
         <ModalTitle modalName={modalName} title={title as string} />
         {share && <ModalShare />}
@@ -75,7 +76,7 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
         {buttonText && <ButtonSubmit color={buttonColor}>{buttonText}</ButtonSubmit>}
         <ModalCloseButton handleClick={handleClose} />
       </Contents>
-    </Wrapper>
+    </ModalFrame>
   );
 }
 
@@ -146,8 +147,10 @@ function ModalShare() {
 
   const shareToClipboard = () => {
     navigator.clipboard.writeText(sharedLink);
-    copyResult.current?.classList.add("active");
-    setTimeout(() => copyResult.current?.classList.remove("active"), 2000);
+    if (!copyResult.current?.classList.contains("active")) {
+      copyResult.current?.classList.add("active");
+      setTimeout(() => copyResult.current?.classList.remove("active"), 1500);
+    }
   };
 
   useEffect(() => {
@@ -167,7 +170,7 @@ function ModalShare() {
       <Sns src={imgKakao} onClick={shareToKakaoTalk} text="카카오톡" alt="카카오톡으로 공유하기" />
       <Sns src={imgFB} onClick={shareToFacebook} text="페이스북" alt="페이스북으로 공유하기" />
       <Sns src={imgLink} onClick={shareToClipboard} text="링크 복사" alt="링크 복사하기" />
-      <CopyResult ref={copyResult} />
+      <CopyResult forwardRef={copyResult} />
     </SnsWrapper>
   );
 }
@@ -189,18 +192,18 @@ export function Sns({ src, alt, text, onClick }: Isns) {
 }
 
 interface ICopyResult {
-  ref: React.RefObject<HTMLDivElement>;
+  forwardRef: React.RefObject<HTMLDivElement>;
 }
 
-function CopyResult({ ref }: ICopyResult) {
+function CopyResult({ forwardRef }: ICopyResult) {
   return (
-    <Wrapper ref={ref}>
-      <Contents>
+    <WrapperCopy ref={forwardRef}>
+      <CopyText>
         클립보드에 복사되었습니다!
         <br />
         원하는 곳에 붙여넣기 해주세요.
-      </Contents>
-    </Wrapper>
+      </CopyText>
+    </WrapperCopy>
   );
 }
 

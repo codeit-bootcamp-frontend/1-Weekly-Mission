@@ -1,16 +1,45 @@
 import styled, { keyframes } from "styled-components";
 
-export const Wrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
+export const WrapperCopy = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 3;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  &.active {
+    display: flex;
+  }
+`;
+
+const copyKeyframe = keyframes`
+  0% {
+   opacity : 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`;
+
+export const CopyText = styled.div`
+  width: 24rem;
+  height: 8rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: #00000040;
+  border-radius: 1rem;
+  background-color: #00000095;
+
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--Gray1);
+
+  animation: ${copyKeyframe} 300ms ease-out;
 `;
 
 export const Contents = styled.div`

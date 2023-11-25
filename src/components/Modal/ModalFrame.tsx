@@ -4,15 +4,15 @@ import styled from "styled-components";
 
 interface ImodalFrame {
   children: ReactNode;
-  onClickClose: () => void;
+  onClick: (event: React.SyntheticEvent) => void;
 }
 
-function ModalFrame({ children, onClickClose }: ImodalFrame) {
+function ModalFrame({ children, onClick }: ImodalFrame) {
   useNotScroll();
 
   return (
     <>
-      <Mask tabIndex={0} onClick={onClickClose} onFocus={onClickClose} />
+      <Mask tabIndex={0} onClick={onClick} onFocus={onClick} />
       <Body>{children}</Body>
     </>
   );

@@ -7,31 +7,38 @@ export const Form = styled.form`
   align-items: center;
   padding: 2.4rem 3.2rem 4rem 3.2rem;
   background-color: var(--Gray1);
+
+  &.float {
+    height: 12rem;
+  }
 `;
 
 export const InputWrapper = styled.div`
   pointer-events: none;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 32rem;
+  width: 30rem;
   height: 5.4rem;
 
   @media screen and (min-width: 768px) {
-    width: 66rem;
+    width: 64rem;
   }
   @media screen and (min-width: 1200px) {
-    width: 104rem;
+    width: 102rem;
   }
 `;
 
 export const Input = styled.input`
   width: 34rem;
-  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  padding: 0.8rem 1rem 0.8rem 4.8rem;
   border: 0.1rem solid var(--Primary);
   border-radius: 1.5rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 3.7rem;
 
   &:focus {
@@ -59,4 +66,21 @@ export const InputButton = styled.button`
   font-weight: 600;
   color: var(--Gray1);
   background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
+`;
+
+export const Float = styled.div`
+  position: relative;
+
+  &.float {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+
+    ${Input} {
+      border: 0.1rem solid var(--Primary);
+      box-shadow: 0 0 3rem 0.4rem #00000020;
+    }
+  }
 `;

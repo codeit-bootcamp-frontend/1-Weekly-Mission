@@ -72,7 +72,7 @@ export const ButtonFloat = styled(BaseButton)`
   position: fixed;
   z-index: 2;
   bottom: 10.1rem;
-  padding: 0.8rem 2.4rem;
+  padding: 1.2rem 2.4rem;
   border-radius: 2rem;
   gap: 0.3rem;
   background-color: var(--Primary);

@@ -27,7 +27,6 @@ export const CardLink = styled.a`
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 1.5rem;
   box-shadow: 0 0.5rem 2.4rem 0 rgba(0, 0, 0, 0.08);
   color: var(--Black);
   background-color: var(--White);
@@ -36,6 +35,9 @@ export const CardLink = styled.a`
 export const WrapperCardImg = styled.div`
   height: 20.5rem;
   margin: 0 auto;
+  overflow: hidden;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
 `;
 
 export const CardImg = styled.img`
@@ -43,6 +45,11 @@ export const CardImg = styled.img`
   height: 100%;
   border-radius: 1.5rem 1.5rem 0 0;
   object-fit: cover;
+
+  &:hover {
+    transform: scale(1.3);
+    transition: transform 0.25s ease-out;
+  }
 `;
 
 export const CardText = styled.div`

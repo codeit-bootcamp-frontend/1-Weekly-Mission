@@ -2,8 +2,16 @@ import styled from "styled-components";
 
 export const SearchImg = styled.img`
   position: absolute;
+  top: 1.4rem;
+  left: 1.6rem;
+  width: 1.6rem;
+  height: auto;
+`;
+export const CloseImg = styled.img`
+  cursor: pointer;
+  position: absolute;
   top: 1.5rem;
-  left: 1rem;
+  right: 2rem;
   width: 1.6rem;
   height: auto;
 `;
@@ -18,7 +26,7 @@ export const SerachInput = styled.input`
 export const ContainerSearch = styled.div`
   position: relative;
   width: 34rem;
-  padding: 1.3rem 1.6rem 1.3rem 3.2rem;
+  padding: 1.3rem 1.6rem 1.3rem 4rem;
   background-color: var(--Gray1-80);
   border-radius: 1rem;
 

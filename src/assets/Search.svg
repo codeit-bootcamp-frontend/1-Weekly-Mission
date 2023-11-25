@@ -1,8 +1,8 @@
-<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Search">
 <g id="Search_2">
-<path id="Ellipse_739" d="M8.34442 14.3363C11.6539 14.3363 14.3368 11.6534 14.3368 8.34393C14.3368 5.03444 11.6539 2.35156 8.34442 2.35156C5.03493 2.35156 2.35205 5.03444 2.35205 8.34393C2.35205 11.6534 5.03493 14.3363 8.34442 14.3363Z" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Line_181" d="M12.5122 12.8232L14.8616 15.1665" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Ellipse_739" d="M7.84442 13.8363C11.1539 13.8363 13.8368 11.1534 13.8368 7.84393C13.8368 4.53444 11.1539 1.85156 7.84442 1.85156C4.53493 1.85156 1.85205 4.53444 1.85205 7.84393C1.85205 11.1534 4.53493 13.8363 7.84442 13.8363Z" stroke="#6D6AFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Line_181" d="M12.0122 12.3232L14.3616 14.6665" stroke="#6D6AFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </g>
 </svg>

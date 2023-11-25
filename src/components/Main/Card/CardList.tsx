@@ -23,12 +23,21 @@ interface PcardList {
   path: URLS.SHARED_FOLDER | URLS.FOLDER_LINKS;
 }
 
+let prev: string | null;
+
 function CardList({ id, path }: PcardList) {
   const cardData = useData(path, id);
   const folderData = useData(URLS.FOLDER_CATEGORY, id);
+
   const [searchParams] = useSearchParams();
   const folderId = searchParams.get("folderId");
-  const links = cardData?.path === URLS.FOLDER_LINKS ? filterFolder(cardData?.links, folderId) : cardData?.links;
+  const links =
+    cardData?.path === URLS.FOLDER_LINKS
+      ? filterFolder(cardData?.links, folderId === null ? null : folderId === "" ? prev : folderId)
+      : cardData?.links;
+  if (Number(folderId)) {
+    prev = folderId;
+  }
 
   return links?.length ? (
     <ContainerCardList>

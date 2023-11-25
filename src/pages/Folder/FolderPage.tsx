@@ -13,7 +13,7 @@ function FolderPage() {
   return (
     <>
       <Navigation id={id} setIsUser={setIsUser} page="folder" />
-      <HeaderSearch isUser={isUser} />
+      <HeaderSearch id={id} isUser={isUser} />
       <Main>{isUser ? <LinkSection id={id} /> : <Empty>로그인 정보를 찾을 수 없습니다.</Empty>}</Main>
       <Footer />
     </>
