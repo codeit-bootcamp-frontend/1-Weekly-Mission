@@ -28,6 +28,19 @@ export const Contents = styled.section`
   }
 `;
 
+export const SearchInfo = styled.p`
+  margin: 0 auto;
+  max-width: 1060px;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #9fa6b2;
+`;
+
+export const SearchKeyword = styled.span`
+  color: var(--color-text);
+`;
+
 export const Blank = styled.div`
   display: flex;
   flex-direction: column;

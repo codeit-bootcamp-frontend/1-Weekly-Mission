@@ -115,6 +115,12 @@ export default function Folder() {
         </S.HeroContainer>
         <S.Contents>
           <Searchbar handleOnChangeInput={handleOnChangeInput} />
+          {keyword && (
+            <S.SearchInfo>
+              <S.SearchKeyword>{keyword}</S.SearchKeyword>
+              으로 검색한 결과입니다.
+            </S.SearchInfo>
+          )}
           <S.MenuContainer>
             <Categories
               categories={[DEFAULT, ...folderNames]}
