@@ -23,15 +23,6 @@ export const ContainerCardList = styled.div`
   }
 `;
 
-export const CardLink = styled.a`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 0.5rem 2.4rem 0 rgba(0, 0, 0, 0.08);
-  color: var(--Black);
-  background-color: var(--White);
-`;
-
 export const WrapperCardImg = styled.div`
   height: 20.5rem;
   margin: 0 auto;
@@ -45,11 +36,6 @@ export const CardImg = styled.img`
   height: 100%;
   border-radius: 1.5rem 1.5rem 0 0;
   object-fit: cover;
-
-  &:hover {
-    transform: scale(1.3);
-    transition: transform 0.25s ease-out;
-  }
 `;
 
 export const CardText = styled.div`
@@ -58,6 +44,22 @@ export const CardText = styled.div`
   height: 13.5rem;
   padding: 1.5rem 2rem;
   gap: 1rem;
+`;
+
+export const CardLink = styled.a`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.5rem 2.4rem 0 rgba(0, 0, 0, 0.08);
+  color: var(--Black);
+  background-color: var(--White);
+
+  &:hover {
+    ${CardImg} {
+      transform: scale(1.3);
+      transition: transform 0.25s ease-out;
+    }
+  }
 `;
 
 export const WrapperTime = styled.div`

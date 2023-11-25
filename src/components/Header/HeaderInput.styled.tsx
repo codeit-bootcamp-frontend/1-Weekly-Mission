@@ -1,16 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Form = styled.form`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2.4rem 3.2rem 4rem 3.2rem;
+  padding: 4rem 3.2rem 4rem 3.2rem;
   background-color: var(--Gray1);
-
-  &.float {
-    height: 12rem;
-  }
 `;
 
 export const InputWrapper = styled.div`
@@ -69,17 +65,20 @@ export const InputButton = styled.button`
 `;
 
 export const Float = styled.div`
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, 100%);
+  transition: 500ms ease-out;
 
   &.float {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
+    display: block;
+
     transform: translate(-50%, -50%);
-    z-index: 2;
+    transition: 500ms ease-out;
 
     ${Input} {
-      border: 0.1rem solid var(--Primary);
       box-shadow: 0 0 3rem 0.4rem #00000020;
     }
   }
