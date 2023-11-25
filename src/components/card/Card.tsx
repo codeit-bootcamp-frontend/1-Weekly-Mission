@@ -13,6 +13,7 @@ interface ItemProps {
     createdAt?: string;
     created_at?: string;
     url: string;
+    title: string;
     description: string;
     imageSource?: string;
     image_source?: string;
@@ -20,7 +21,7 @@ interface ItemProps {
 }
 
 const Card = ({ item }: ItemProps) => {
-  const { id, createdAt, created_at, url, description, imageSource, image_source } = item;
+  const { id, createdAt, created_at, url, title, description, imageSource, image_source } = item;
   const get_time = (createdAt && getTimeDiff(createdAt)) || (created_at && getTimeDiff(created_at));
   const get_date = (createdAt && formatDate(createdAt)) || (created_at && formatDate(created_at));
 
@@ -34,7 +35,7 @@ const Card = ({ item }: ItemProps) => {
           <CardTime set_time={get_time} />
           <Kebab link={url} />
         </TimeWrapper>
-        <CardContent url={url}>{description}</CardContent>
+        <CardContent url={url} title={title} description={description} />
         <CardDate set_date={get_date} />
       </Description>
     </Wrapper>
@@ -43,7 +44,7 @@ const Card = ({ item }: ItemProps) => {
 
 const Wrapper = styled.div`
   width: 34rem;
-  height: 33.4rem;
+  height: 34rem;
   flex-shrink: 0;
   border-radius: 1.5rem;
   box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.08);
