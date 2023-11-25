@@ -198,6 +198,7 @@ function Folders() {
         const handleTitle = async () => {
             const { data } = await getApi(path);
             setTitleData(data);
+            console.log(data);
         };
         handleTitle();
     }, []);

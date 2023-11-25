@@ -16,21 +16,34 @@ const StyledButton = styled.div<{ $select: boolean }>`
     color: ${({ $select }) => ($select ? "#fff" : "#000")};
 `;
 
+interface Item {
+    create_At: string;
+    id: number;
+    link: object;
+    name: string;
+    user_id: number;
+}
+
 interface ButtonProps {
-    item: string[];
+    item: Item;
     title: string;
-    setTitle: React.Dispatch<React.SetStateAction<string>>;
+    setTitle: React.Dispatch<React.SetStateAction<string | null>>;
     setQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+interface Query {
+    folderID: number;
 }
 
 function Button({ item, title, setTitle, setQuery }: ButtonProps) {
     const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const titleName = (e.target as HTMLDivElement).textContent;
         setTitle(titleName);
+        const query: Query = { folderID: item.id };
         const queryString =
             titleName === "전체"
                 ? ""
-                : "?" + new URLSearchParams({ folderId: item.id }).toString();
+                : "?" + new URLSearchParams(query).toString();
         setQuery("/users/1/links" + queryString);
     };
     return (
@@ -43,13 +56,13 @@ function Button({ item, title, setTitle, setQuery }: ButtonProps) {
 interface FolderProps {
     items: string[];
     title: string;
-    setTitle: React.Dispatch<React.SetStateAction<string>>;
+    setTitle: React.Dispatch<React.SetStateAction<string | null>>;
     setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function FolderButton({ items, setTitle, title, setQuery }: FolderProps) {
     const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        const titleName = e.target.textContent;
+        const titleName = (e.target as HTMLDivElement).textContent;
         setTitle(titleName);
         setQuery("/users/1/links");
     };
@@ -61,7 +74,7 @@ function FolderButton({ items, setTitle, title, setQuery }: FolderProps) {
             >
                 전체
             </StyledButton>
-            {items.map((item) => (
+            {items.map((item: Item) => (
                 <Button
                     key={item.id}
                     item={item}
