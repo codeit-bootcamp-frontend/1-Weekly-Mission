@@ -4,14 +4,19 @@ import FolderEditModal from './FolderEditModal';
 import FolderAddModal from './FolderAddModal';
 import FolderDeleteModal from './FolderDeleteModal';
 import FolderShareModal from './FolderShareModal';
-import { forwardRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 import LinkDeleteModal from './LinkDeleteModal';
 import FolderToAddModal from './FolderToAddModal';
 
+interface Props {
+  action: string;
+  onCloseModal: () => void;
+  name: string;
+}
 
-function FolderModal({ action, onCloseModal, name }, ref) {
+function FolderModal({ action, onCloseModal, name }: Props, ref: ForwardedRef<HTMLDivElement>) {
 
-  const decideFolderModal = (action) => {
+  const decideFolderModal = (action: string) => {
     switch (action) {
       case 'share':
         return (
