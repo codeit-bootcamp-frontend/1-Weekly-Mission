@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { getUser } from 'apis/api';
-import * as S from "./Gnb.style";
+import * as S from "./Nav.style";
 import logoImg from "assets/images/logo.svg";
 import Button from 'components/Button';
 
-function Gnb() {
+function Nav() {
   const [isLogin, setIsLogin] = useState(false);
   const [userData, setUserData] = useState();
 
@@ -39,4 +39,4 @@ function Gnb() {
   );
 }
 
-export default Gnb;
+export default Nav;

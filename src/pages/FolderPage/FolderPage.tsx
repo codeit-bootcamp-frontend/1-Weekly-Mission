@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getFolder, getLink, getLinksFolderId } from "apis/api";
 import * as S from "./FolderPage.style";
-import Gnb from 'components/Gnb';
+import Nav from 'components/Nav';
 import AddLinkBar from 'components/AddLinkBar';
 import SearchLinkBar from 'components/SearchLinkBar';
 import CardList from 'components/CardList';
@@ -48,7 +48,7 @@ function FolderPage() {
 
   return (
     <>
-    <Gnb />
+    <Nav />
       <S.FolderPageSection>
         <S.Header>
           <AddLinkBar />
