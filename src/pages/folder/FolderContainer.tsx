@@ -34,6 +34,7 @@ export default function Folder() {
   const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
 
   const { handleFolderUpdate } = useContext(FolderContext);
+  // console.log(keyword);
 
   /**
    * 검색바 구현 todo
@@ -48,7 +49,12 @@ export default function Folder() {
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
     const searchedLinks = checkMatchedAllLinks(e.target.value, links);
-    setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : links);
+    setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
+  };
+
+  const handleDeletekeyword = () => {
+    setKeyword("");
+    setFilteredLinks(links);
   };
 
   const checkMatchedAllLinks = (keyword: string, links: LinkData[]) => {
@@ -114,7 +120,11 @@ export default function Folder() {
           <FolderHero onChangeAddLink={handleAddLink} addLinkValue={addLinkValue} />
         </S.HeroContainer>
         <S.Contents>
-          <Searchbar handleOnChangeInput={handleOnChangeInput} />
+          <Searchbar
+            keyword={keyword}
+            handleOnChangeInput={handleOnChangeInput}
+            handleDelete={handleDeletekeyword}
+          />
           {keyword && (
             <S.SearchInfo>
               <S.SearchKeyword>{keyword}</S.SearchKeyword>

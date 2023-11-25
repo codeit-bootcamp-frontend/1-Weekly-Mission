@@ -23,7 +23,12 @@ export const Input = styled.input`
   border-radius: 10px;
   background: #f5f5f5;
   line-height: 24px;
+  border: 1px solid var(--color-gray-10);
   outline-style: none;
+
+  &:focus {
+    border: 1px solid var(--color-primary);
+  }
 `;
 
 export const Close = styled(CloseIcon)`
