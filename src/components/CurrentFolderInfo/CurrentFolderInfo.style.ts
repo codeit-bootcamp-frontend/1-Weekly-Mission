@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const Container = styled.div`
   }
 `;
 
-export const OptionContainer = styled.div`
+export const OptionContainer = styled.div<{ selected: boolean }>`
   display: ${({ selected }) => (selected ? `none` : `flex`)};
   align-items: flex-start;
   gap: 1.2rem;

@@ -1,7 +1,12 @@
-import Card from "components/CardList/Card";
-import * as S from "./CardList.style";
+import Card from 'components/CardList/Card';
+import * as S from './CardList.style';
+import { Data } from './types';
 
-function CardList({ items }) {
+interface Props {
+  items: Data[];
+}
+
+function CardList({ items }: Props) {
   return (
     <>
       {!items.length ? (

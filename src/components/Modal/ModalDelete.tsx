@@ -1,6 +1,10 @@
-import * as S from "./Modal.style";
+import * as S from './Modal.style';
 
-function ModalDelete({ folderName }) {
+interface Props {
+  folderName: string;
+}
+
+function ModalDelete({ folderName }: Props) {
   return (
     <>
       <S.TitleContainer>

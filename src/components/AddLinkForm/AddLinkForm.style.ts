@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { onMobile, onTablet } from "styles/mediaQuery";
+import styled from 'styled-components';
+import { onMobile, onTablet } from 'styles/mediaQuery';
 
 export const FormContainer = styled.div`
   padding: 6rem 32rem 9rem 32rem;

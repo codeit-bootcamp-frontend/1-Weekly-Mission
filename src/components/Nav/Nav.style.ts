@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { onMobile, onTablet } from "styles/mediaQuery";
+import styled from 'styled-components';
+import { onMobile, onTablet } from 'styles/mediaQuery';
 
-export const NavContainer = styled.div`
+export const NavContainer = styled.div<{ $path: string }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,7 @@ export const NavContainer = styled.div`
   max-width: 192rem;
   height: 9.4rem;
   padding: 3.2rem 20rem;
-  position: ${({ path }) => (path === "/folder" ? `static` : `sticky`)};
+  position: ${({ $path }) => ($path === '/folder' ? `static` : `sticky`)};
   top: 0;
   z-index: 9999;
   background-color: #edf7ff;

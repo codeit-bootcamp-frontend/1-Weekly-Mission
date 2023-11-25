@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
-import { NavLink } from "react-router-dom";
-import { onMobile } from "styles/mediaQuery";
+import styled, { css } from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { onMobile } from 'styles/mediaQuery';
 
 const selectedFolder = css`
   background: var(--primary);
@@ -28,7 +28,7 @@ export const FolderContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Folder = styled(NavLink)`
+export const Folder = styled(NavLink)<{ selected: boolean }>`
   display: flex;
   padding: 0.8rem 1.2rem;
   flex-direction: column;

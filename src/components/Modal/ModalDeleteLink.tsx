@@ -1,6 +1,10 @@
-import * as S from "./Modal.style";
+import * as S from './Modal.style';
 
-function ModalDeleteLink({ url }) {
+interface Props {
+  url: string;
+}
+
+function ModalDeleteLink({ url }: Props) {
   return (
     <>
       <S.TitleContainer>

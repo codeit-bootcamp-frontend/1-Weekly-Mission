@@ -1,15 +1,20 @@
-import * as S from "./Card.style";
-import noImage from "images/no-image.svg";
-import star from "images/star.svg";
-import kebab from "images/kebab.svg";
-import { formatDate, formatTimeDiff } from "utils/format";
-import { Popover } from "react-tiny-popover";
-import { useState } from "react";
-import Modal from "components/Modal";
-import ModalDeleteLink from "components/Modal/ModalDeleteLink";
-import ModalAddLink from "components/Modal/ModalAddLink";
+import * as S from './Card.style';
+import noImage from 'images/no-image.svg';
+import star from 'images/star.svg';
+import kebab from 'images/kebab.svg';
+import { formatDate, formatTimeDiff } from 'utils/format';
+import { Popover } from 'react-tiny-popover';
+import { MouseEvent, useState } from 'react';
+import Modal from 'components/Modal';
+import ModalDeleteLink from 'components/Modal/ModalDeleteLink';
+import ModalAddLink from 'components/Modal/ModalAddLink';
+import { Data } from '../types';
 
-function Card({ item }) {
+interface Props {
+  item: Data;
+}
+
+function Card({ item }: Props) {
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
   const [modalIsOpen1, setModalIsOpen1] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
@@ -19,15 +24,15 @@ function Card({ item }) {
   const date = formatDate(created_at);
 
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer">
+    <a href={url} target='_blank' rel='noopener noreferrer'>
       <S.ImageContainer>
         <S.Image src={image_source ?? noImage} alt={title} />
-        <S.StarButton src={star} alt="별모양 버튼" />
+        <S.StarButton src={star} alt='별모양 버튼' />
       </S.ImageContainer>
       <S.Info>
         <Popover
           isOpen={popoverIsOpen}
-          positions={"bottom"}
+          positions={'bottom'}
           onClickOutside={() => setPopoverIsOpen(false)}
           content={
             <S.PopoverContainer>
@@ -40,7 +45,7 @@ function Card({ item }) {
               </S.PopoverButton>
               {modalIsOpen1 && (
                 <Modal
-                  close={(e) => {
+                  close={(e: MouseEvent) => {
                     e.preventDefault();
                     setModalIsOpen1(false);
                   }}>
@@ -56,7 +61,7 @@ function Card({ item }) {
               </S.PopoverButton>
               {modalIsOpen2 && (
                 <Modal
-                  close={(e) => {
+                  close={(e: MouseEvent) => {
                     e.preventDefault();
                     setModalIsOpen2(false);
                   }}>
@@ -66,11 +71,11 @@ function Card({ item }) {
             </S.PopoverContainer>
           }>
           <S.KebabButton
-            onClick={(e) => {
+            onClick={(e: MouseEvent) => {
               e.preventDefault();
               setPopoverIsOpen(!popoverIsOpen);
             }}>
-            <img src={kebab} alt="케밥 버튼" />
+            <img src={kebab} alt='케밥 버튼' />
           </S.KebabButton>
         </Popover>
         <S.TimeDiff>{timeDiff}</S.TimeDiff>

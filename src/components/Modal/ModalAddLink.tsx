@@ -1,8 +1,27 @@
-import * as S from "./Modal.style";
-import useRequest from "hooks/useRequest";
+import useRequest from 'hooks/useRequest';
+import * as S from './Modal.style';
 
-export function ModalAddLink({ url }) {
-  const { data } = useRequest({ url: "/users/1/folders" });
+interface Data {
+  data: Folder[];
+}
+
+interface Folder {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+  link: Link;
+}
+
+interface Link {
+  count: number;
+}
+interface Props {
+  url: string;
+}
+
+export function ModalAddLink({ url }: Props) {
+  const { data } = useRequest<Data>({ options: { url: '/users/1/folders' } });
   const folders = data?.data;
 
   return (

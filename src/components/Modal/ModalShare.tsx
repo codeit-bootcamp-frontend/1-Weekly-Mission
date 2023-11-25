@@ -1,16 +1,27 @@
-import kakaotalkIcon from "images/kakao.svg";
-import facebookIcon from "images/facebook.svg";
-import linkIcon from "images/link.svg";
-import * as S from "./Modal.style";
-import { useEffect } from "react";
+import kakaotalkIcon from 'images/kakao.svg';
+import facebookIcon from 'images/facebook.svg';
+import linkIcon from 'images/link.svg';
+import * as S from './Modal.style';
+import { useEffect } from 'react';
+
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
 
 const { Kakao } = window;
 
-function ModalShare({ folderName, folderId }) {
+interface Props {
+  folderName: string;
+  folderId: string | null;
+}
+
+function ModalShare({ folderName, folderId }: Props) {
   const handleShareKakao = () => {
     Kakao.Share.sendDefault({
-      objectType: "text",
-      text: "카카오톡 공유하기",
+      objectType: 'text',
+      text: '카카오톡 공유하기',
       link: {
         webUrl: `${window.location.host}/shared?user=1&folder=${folderId}`,
       },
@@ -18,13 +29,15 @@ function ModalShare({ folderName, folderId }) {
   };
 
   const handleShareFacebook = () => {
-    window.open(`http://www.facebook.com/sharer.php?u=${window.location.host}/shared?user=1&folder=${folderId}`)
-  }
+    window.open(
+      `http://www.facebook.com/sharer.php?u=${window.location.host}/shared?user=1&folder=${folderId}`
+    );
+  };
 
-  const handleCopyClipBoard = async (text) => {
+  const handleCopyClipBoard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      alert("클립보드에 링크 복사");
+      alert('클립보드에 링크 복사');
     } catch (err) {
       console.log(err);
     }
@@ -32,7 +45,7 @@ function ModalShare({ folderName, folderId }) {
 
   useEffect(() => {
     Kakao.cleanup();
-    Kakao.init("ac749b6133a70dccf01faaf302adceac");
+    Kakao.init('ac749b6133a70dccf01faaf302adceac');
     console.log(Kakao.isInitialized());
   }, []);
 
@@ -45,19 +58,19 @@ function ModalShare({ folderName, folderId }) {
       <S.IconsBox>
         <S.Icon onClick={() => handleShareKakao()}>
           <S.KaKaotalkIconImgContainer>
-            <img src={kakaotalkIcon} alt="카카오톡 아이콘" />
+            <img src={kakaotalkIcon} alt='카카오톡 아이콘' />
           </S.KaKaotalkIconImgContainer>
           <p>카카오톡</p>
         </S.Icon>
         <S.Icon onClick={() => handleShareFacebook()}>
           <S.FacebookIconImgContainer>
-            <img src={facebookIcon} alt="페이스북 아이콘" />
+            <img src={facebookIcon} alt='페이스북 아이콘' />
           </S.FacebookIconImgContainer>
           <p>페이스북</p>
         </S.Icon>
         <S.Icon onClick={() => handleCopyClipBoard(`${window.location.href}`)}>
           <S.IconImgContainer>
-            <img src={linkIcon} alt="링크 복사 아이콘" />
+            <img src={linkIcon} alt='링크 복사 아이콘' />
           </S.IconImgContainer>
           <p>링크 복사</p>
         </S.Icon>

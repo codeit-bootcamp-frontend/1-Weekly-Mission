@@ -1,6 +1,10 @@
-import * as S from "./Modal.style";
+import * as S from './Modal.style';
 
-function ModalEdit({ folderName }) {
+interface Props {
+  folderName: string;
+}
+
+function ModalEdit({ folderName }: Props) {
   return (
     <>
       <S.TitleContainer>

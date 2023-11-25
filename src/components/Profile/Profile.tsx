@@ -1,6 +1,15 @@
-import * as S from "./Profile.style";
+import * as S from './Profile.style';
 
-function Profile({ data }) {
+interface Props {
+  data: {
+    name?: string;
+    email?: string;
+    profileImageSource?: string;
+    image_source?: string;
+  };
+}
+
+function Profile({ data }: Props) {
   const { name, email, profileImageSource, image_source } = data;
 
   return (
