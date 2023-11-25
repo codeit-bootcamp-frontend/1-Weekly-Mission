@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 
-const TextInputStyle = styled.input`
+const TextInputStyle = styled.input<{ value: string }>`
   display: flex;
   width: 280px;
   padding: 18px 15px;
@@ -21,7 +21,7 @@ const TextInputStyle = styled.input`
 function ModalTextInput({ children = "" }) {
   const [InputValue, setInputValue] = useState("");
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
