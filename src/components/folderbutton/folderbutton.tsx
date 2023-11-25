@@ -31,19 +31,12 @@ interface ButtonProps {
     setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
-interface Query {
-    folderID: number;
-}
-
 function Button({ item, title, setTitle, setQuery }: ButtonProps) {
     const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const titleName = (e.target as HTMLDivElement).textContent;
         setTitle(titleName);
-        const query: Query = { folderID: item.id };
         const queryString =
-            titleName === "전체"
-                ? ""
-                : "?" + new URLSearchParams(query).toString();
+            titleName === "전체" ? "" : `?folderId={${item.id}}`;
         setQuery("/users/1/links" + queryString);
     };
     return (
@@ -54,7 +47,7 @@ function Button({ item, title, setTitle, setQuery }: ButtonProps) {
 }
 
 interface FolderProps {
-    items: string[];
+    items: [item: Item];
     title: string;
     setTitle: React.Dispatch<React.SetStateAction<string | null>>;
     setQuery: React.Dispatch<React.SetStateAction<string>>;
@@ -74,12 +67,11 @@ function FolderButton({ items, setTitle, title, setQuery }: FolderProps) {
             >
                 전체
             </StyledButton>
-            {items.map((item: Item) => (
+            {items.map((item) => (
                 <Button
                     key={item.id}
                     item={item}
                     title={title}
-                    onClick={handleButtonClick}
                     setTitle={setTitle}
                     setQuery={setQuery}
                 />
