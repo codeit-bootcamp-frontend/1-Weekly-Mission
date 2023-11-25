@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import add_icon from '../assets/svg/add.svg';
 
-function FloatingActionButton({ onOpen }) {
+interface Props {
+  onOpen: ({}) => void;
+}
 
+function FloatingActionButton({ onOpen }: Props) {
   return (
     <FolderActionButton onClick={() => {
       onOpen({
