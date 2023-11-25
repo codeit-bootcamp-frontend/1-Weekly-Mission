@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import ModalBg from "./modal-styles/ModalBg";
 import * as S from "./modal-styles/ModalsUnits";
 

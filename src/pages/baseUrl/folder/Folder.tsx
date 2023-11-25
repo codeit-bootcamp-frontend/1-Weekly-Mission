@@ -23,6 +23,7 @@ import LinkDeleteModal from "../../../components/js/modals/container/LinkDeleteM
 import FolderShareModalContainer from "../../../components/js/modals/container/FolderShareModalContainer";
 import LinkBarFixed from "../../../components/js/LinkBarFixed";
 import SearchBarText from "../../../components/js/SearchBarText";
+import PageWrapper from "../../../components/js/PageWrapper";
 
 function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
@@ -85,23 +86,25 @@ function Folder() {
     setFilteredLinks(folderLinks);
   };
 
-  const handleChangeLink = (value:any) => {
-    setLink(value)
-  }
+  const handleChangeLink = (value: any) => {
+    setLink(value);
+  };
 
   //검색바에 입력된 searchValue대로 리스트를 필터링하는 함수
 
-  const filteredList = folderLinks?.filter(
-    (item: any) => {
-      if(searchValue.length > 0){
-        if(item.description?.toLowerCase().includes(searchValue.toLowerCase()) ||
-            item.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
-            item.url?.toLowerCase().includes(searchValue.toLowerCase())) {
+  const filteredList = folderLinks?.filter((item: any) => {
+    if (searchValue.length > 0) {
+      if (
+        item.description?.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.url?.toLowerCase().includes(searchValue.toLowerCase())
+      ) {
         return folderLinks;
       }
     } else {
       return filteredLinks;
-    }});
+    }
+  });
 
   //currentFolderId가 바뀔 때마다 새로 카드리스트 업데이트
   useEffect(() => {
@@ -158,23 +161,20 @@ function Folder() {
       {modalOpen && MODALS[`${activeModalName}`]}
       <NavAndFooterBasic>
         <FloatButton>폴더 추가</FloatButton>
-        <LinkBar
-          onShow={handleShowModal}
-          onChange={handleChangeLink}
-        />
+        <LinkBar onShow={handleShowModal} onChange={handleChangeLink} />
         <div ref={ref}></div>
         {isShowComponent ? (
-          <Wrapper>
+          <PageWrapper>
             <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
-          </Wrapper>
+          </PageWrapper>
         ) : (
-          <Wrapper>
+          <PageWrapper>
             <Search
               value={searchValue}
               onChange={handleChangeSearchValue}
               onDelete={handleClearSearchValue}
             />
-            {searchValue.length >= 1 && <SearchBarText value={searchValue}/>}
+            {searchValue.length >= 1 && <SearchBarText value={searchValue} />}
             <FolderMenu
               folderName={folderName}
               folders={personalFolder}
@@ -191,9 +191,11 @@ function Folder() {
             ) : (
               <LinksNotExist>저장된 링크가 없습니다.</LinksNotExist>
             )}
-          </Wrapper>
+          </PageWrapper>
         )}
-        {!inView && !inViewFooter && <LinkBarFixed onChange={handleChangeLink} onShow={handleShowModal}/> }
+        {!inView && !inViewFooter && (
+          <LinkBarFixed onChange={handleChangeLink} onShow={handleShowModal} />
+        )}
         <div ref={footerRef}></div>
       </NavAndFooterBasic>
     </>
@@ -201,17 +203,3 @@ function Folder() {
 }
 
 export default Folder;
-
-const Wrapper = styled.div`
-  width: 1060px;
-  height: auto;
-  margin: 0 auto;
-
-  @media (max-width: 1199px) and (min-width: 768px) {
-    width: 704px;
-  }
-
-  @media (max-width: 767px) {
-    width: 325px;
-  }
-`;

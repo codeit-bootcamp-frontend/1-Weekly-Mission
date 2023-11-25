@@ -6,10 +6,15 @@ import useAsync from "../../../hooks/useAsync";
 import FolderOwner from "../../../components/js/FolderOwner";
 import Search from "../../../components/js/Search";
 import CardList from "../../../components/js/CardList";
+import SearchBarText from "../../../components/js/SearchBarText";
+import PageWrapper from "../../../components/js/PageWrapper";
 
 function Shared() {
   const [personalFolder, setPersonalFolder] = useState<any>({});
   const [loadingError, getFolderAsync] = useAsync(getFolder);
+  const [searchValue, setSearchValue] = useState("");
+  const [folderLinks, setFolderLinks] = useState([]);
+  const [filteredLinks, setFilteredLinks] = useState(folderLinks);
 
   const handleLoad = async () => {
     const folderResult = await getFolder();
@@ -17,7 +22,34 @@ function Shared() {
 
     const { folder } = folderResult;
     setPersonalFolder({ ...folder });
+    setFolderLinks(folder.links);
   };
+
+  console.log(personalFolder);
+
+  //setSearchValue Prop으로 내려주기 위한 함수
+  const handleChangeSearchValue = (value: any) => {
+    setSearchValue(value);
+  };
+
+  const handleClearSearchValue = () => {
+    setSearchValue("");
+    setFilteredLinks(folderLinks);
+  };
+
+  const filteredList = folderLinks?.filter((item: any) => {
+    if (searchValue.length > 0) {
+      if (
+        item.description?.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.url?.toLowerCase().includes(searchValue.toLowerCase())
+      ) {
+        return folderLinks;
+      }
+    } else {
+      return filteredLinks;
+    }
+  });
 
   useEffect(() => {
     handleLoad();
@@ -33,14 +65,19 @@ function Shared() {
           owner={personalFolder.owner}
           folderName={personalFolder.name}
         />
-        <div>
-          <Search />
+        <PageWrapper>
+          <Search
+            value={searchValue}
+            onChange={handleChangeSearchValue}
+            onDelete={handleClearSearchValue}
+          />
+          {searchValue.length >= 1 && <SearchBarText value={searchValue} />}
           {loadingError ? (
             loadingError.message
           ) : (
-            <CardList folderLinks={personalFolder.links} />
+            <CardList folderLinks={filteredList} />
           )}
-        </div>
+        </PageWrapper>
       </NavAndFooterFixed>
     </>
   );

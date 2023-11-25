@@ -2,7 +2,13 @@ import * as S from "./modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
 import checkImg from "../../../Assets/check.svg";
 
-function AddLinktoFolderModal({ folders, onClose, link, onSelect, isActive }:any) {
+function AddLinktoFolderModal({
+  folders,
+  onClose,
+  link,
+  onSelect,
+  isActive,
+}: any) {
   return (
     <ModalBg>
       <S.Wrapper>
@@ -12,7 +18,7 @@ function AddLinktoFolderModal({ folders, onClose, link, onSelect, isActive }:any
           <S.ModalContents>{link}</S.ModalContents>
         </S.TitleWrapper>
         <S.FolderListWrapper>
-          {folders.map((item:any, idx:any) => {
+          {folders.map((item: any, idx: any) => {
             const itemSelected = idx === isActive;
             return (
               <S.FolderItemWrapper
