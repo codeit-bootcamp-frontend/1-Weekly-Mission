@@ -1,6 +1,6 @@
 import BlueShortModal from "../BlueShortModal";
 
-function FolderAddModal({ onShow, currentFolder }) {
+function FolderAddModal({ onShow, currentFolder }:any) {
   const handleCloseButton = () => {
     onShow(false, "");
   };

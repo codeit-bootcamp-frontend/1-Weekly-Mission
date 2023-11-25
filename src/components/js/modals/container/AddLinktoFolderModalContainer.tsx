@@ -1,14 +1,14 @@
 import { useState } from "react";
 import AddLinktoFolderModal from "../AddLinktoFolderModal";
 
-function AddLinktoFolderModalContainer({ onShow, folders, link }) {
+function AddLinktoFolderModalContainer({ onShow, folders, link }:any) {
   const [selectedFolder, setSelectedFolder] = useState(0);
 
   if (!folders) {
     return;
   }
 
-  const handleSelectFolder = (itemIdx) => {
+  const handleSelectFolder = (itemIdx:any) => {
     setSelectedFolder(itemIdx);
   };
 
