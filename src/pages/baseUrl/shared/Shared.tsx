@@ -8,6 +8,7 @@ import Search from "../../../components/js/Search";
 import CardList from "../../../components/js/CardList";
 import SearchBarText from "../../../components/js/SearchBarText";
 import PageWrapper from "../../../components/js/PageWrapper";
+import { FolderLinksType } from "@src/types/folderLinksType";
 
 function Shared() {
   const [personalFolder, setPersonalFolder] = useState<any>({});
@@ -28,7 +29,7 @@ function Shared() {
   console.log(personalFolder);
 
   //setSearchValue Prop으로 내려주기 위한 함수
-  const handleChangeSearchValue = (value: any) => {
+  const handleChangeSearchValue = (value: string) => {
     setSearchValue(value);
   };
 
@@ -37,7 +38,7 @@ function Shared() {
     setFilteredLinks(folderLinks);
   };
 
-  const filteredList = folderLinks?.filter((item: any) => {
+  const filteredList = folderLinks?.filter((item: FolderLinksType) => {
     if (searchValue.length > 0) {
       if (
         item.description?.toLowerCase().includes(searchValue.toLowerCase()) ||

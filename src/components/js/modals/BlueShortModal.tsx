@@ -1,13 +1,21 @@
 import ModalBg from "./modal-styles/ModalBg";
 import * as S from "./modal-styles/ModalsUnits";
 
+interface Props {
+  title?: string | undefined;
+  btnName: string | undefined;
+  onClose: () => void;
+  inputValue?: string | undefined;
+  onChange?: any;
+}
+
 function BlueShortModal({
   title,
   btnName,
   onClose,
   inputValue,
   onChange,
-}: any) {
+}: Props) {
   return (
     <ModalBg>
       <S.Wrapper>

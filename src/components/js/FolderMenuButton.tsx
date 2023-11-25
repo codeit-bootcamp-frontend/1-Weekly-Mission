@@ -1,10 +1,20 @@
 import styled from "styled-components";
-
+import { ReactNode } from "react";
 interface ButtonItem {
-  $isActive: boolean;
+  $isActive?: boolean;
 }
 
-function FolderMenuButton({ children, onClick, id, name, $isActive }: any) {
+interface Props extends ButtonItem {
+  children?: ReactNode;
+  onClick: any;
+  id?: string;
+  name?: string;
+}
+
+function FolderMenuButton({ children, onClick, id, name, $isActive }: Props) {
+  console.log(onClick);
+  console.log(id);
+  console.log(name);
   const handleClick = (e: any) => {
     e.target.id ? onClick(e.target.id, e.target.name) : onClick("");
   };

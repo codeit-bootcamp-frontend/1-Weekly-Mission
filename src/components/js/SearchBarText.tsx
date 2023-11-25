@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-function SearchBarText({ value }: any) {
+interface Props {
+  value?: string;
+}
+
+function SearchBarText({ value }: Props) {
   return (
     <Wrapper>
       <SearchValue>{value}</SearchValue>

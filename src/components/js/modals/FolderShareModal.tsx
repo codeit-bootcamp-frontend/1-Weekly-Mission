@@ -4,7 +4,26 @@ import kakaotalk from "../../../Assets/kakaotalk.svg";
 import facebookIcon from "../../../Assets/facebook.svg";
 import linkShare from "../../../Assets/linkShare.svg";
 
-function FolderShareModal({ onClose, folderName, copy, kakao, facebook }: any) {
+interface Props {
+  onClose: () => void;
+  folderName: any;
+  copy: (e: any) => void;
+  kakao: (e: any) => void;
+  facebook: (e: any) => void;
+}
+
+function FolderShareModal({
+  onClose,
+  folderName,
+  copy,
+  kakao,
+  facebook,
+}: Props) {
+  console.log(onClose);
+  console.log(folderName);
+  console.log(copy);
+  console.log(kakao);
+  console.log(facebook);
   return (
     <>
       <ModalBg>

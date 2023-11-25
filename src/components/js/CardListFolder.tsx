@@ -2,8 +2,14 @@ import styled from "styled-components";
 import CardItem from "./CardItemFolder";
 import { useState } from "react";
 
+interface Props {
+  folderLinks: any;
+  modal: any;
+  setLink: any;
+}
+
 /* 카드리스트들 컴포넌트 */
-function CardList({ folderLinks, modal, setLink }: any) {
+function CardList({ folderLinks, modal, setLink }: Props) {
   const [openedPopOver, setOpenedPopOver] = useState(null);
 
   const handleTogglePopOver = (idx: any) => {

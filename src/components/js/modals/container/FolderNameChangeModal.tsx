@@ -1,7 +1,8 @@
+import { modalType } from "../../../../types/modalType";
 import { useState } from "react";
 import BlueShortModal from "../BlueShortModal";
 
-function FolderNameChangeModal({ onShow, currentFolder }: any) {
+function FolderNameChangeModal({ onShow, currentFolder }: modalType) {
   //BlueShorModal에 넣어줄 input value 설정하는 state 함수
   const [inputValue, setInputValue] = useState(currentFolder);
 

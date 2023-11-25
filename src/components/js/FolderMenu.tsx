@@ -4,9 +4,18 @@ import FolderMenuButton from "./FolderMenuButton";
 import shareIcon from "../../Assets/share.svg";
 import penIcon from "../../Assets/pen.svg";
 import deleteIcon from "../../Assets/delete.svg";
+import { PersonalFolder } from "../../types/personalFolderType";
 
 interface ModalType {
   modal: any;
+}
+
+interface Props {
+  folders: PersonalFolder;
+  onClick: (nextValue: string, nextName: string) => void;
+  current: any;
+  folderName: string | null;
+  modal: (isOpen: boolean, modalName: string) => void;
 }
 
 const FEATURE_LIST = [
@@ -20,7 +29,13 @@ const FEATURE_LIST = [
   { name: "삭제", src: deleteIcon, alt: "삭제 아이콘", modal: "deleteFolder" },
 ];
 
-function FolderMenu({ folders, onClick, current, folderName, modal }: any) {
+function FolderMenu({ folders, onClick, current, folderName, modal }: Props) {
+  console.log(folders);
+  console.log(onClick);
+  console.log(current);
+  console.log(folderName);
+  console.log(modal);
+
   const items = Array.isArray(folders) ? folders : [];
 
   const handleModal = (e: any) => {

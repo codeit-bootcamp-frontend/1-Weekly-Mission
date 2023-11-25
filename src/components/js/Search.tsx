@@ -2,7 +2,16 @@ import styled from "styled-components";
 import { ReactComponent as searchIcon } from "../../Assets/Search.svg";
 import { ReactComponent as removeIcon } from "../../Assets/close_white.svg";
 
-function Search({ value, onChange,  onDelete }: any) {
+interface Props {
+  value: string;
+  onChange: (value: string) => void;
+  onDelete: () => void;
+}
+
+function Search({ value, onChange, onDelete }: Props) {
+  console.log(value);
+  console.log(onChange);
+  console.log(onDelete);
   const handleChangeValue = (e: any) => {
     const nextValue = e.target.value;
     onChange(nextValue);
@@ -20,7 +29,7 @@ function Search({ value, onChange,  onDelete }: any) {
           placeholder="링크를 검색해보세요"
           value={value}
           onChange={handleChangeValue}
-          type = "text"
+          type="text"
         ></SearchInput>
         {value && <CloseIcon onClick={handleClickRemoveBtn} />}
       </SearchForm>
@@ -58,7 +67,7 @@ const SearchIcon = styled(searchIcon)`
   margin-right: 10px;
 
   & path {
-    stroke: ${({value}) => value?.length >= 1 ? "#6D6AFE" :"#666666"};
+    stroke: ${({ value }) => (value?.length >= 1 ? "#6D6AFE" : "#666666")};
   }
 `;
 
@@ -89,6 +98,4 @@ const CloseIcon = styled(removeIcon)`
   height: 24px;
   flex-shrink: 0;
   cursor: pointer;
-
-
 `;

@@ -1,6 +1,7 @@
+import { modalType } from "../../../../types/modalType";
 import RedShortModal from "../RedShortModal";
 
-function FolderDeleteModal({ onShow, currentFolder }: any) {
+function FolderDeleteModal({ onShow, currentFolder }: modalType) {
   const handleCloseButton = () => {
     onShow(false, "");
   };

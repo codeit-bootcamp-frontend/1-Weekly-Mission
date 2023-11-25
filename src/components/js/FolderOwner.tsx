@@ -2,7 +2,12 @@ import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
 import { Container } from "./Container";
 
-function FolderOwner({ folderName, owner }: any) {
+interface Props {
+  folderName: string;
+  owner: any;
+}
+
+function FolderOwner({ folderName, owner }: Props) {
   const ownerName = owner?.name;
   const ownerImg = owner?.profileImageSource;
 

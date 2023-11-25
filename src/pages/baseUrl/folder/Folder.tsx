@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Helmet } from "react-helmet";
@@ -24,6 +23,7 @@ import FolderShareModalContainer from "../../../components/js/modals/container/F
 import LinkBarFixed from "../../../components/js/LinkBarFixed";
 import SearchBarText from "../../../components/js/SearchBarText";
 import PageWrapper from "../../../components/js/PageWrapper";
+import { FolderLinksType } from "@src/types/folderLinksType";
 
 function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
@@ -37,10 +37,12 @@ function Folder() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeModalName, setActiveModalName] = useState("");
   const [link, setLink] = useState("");
-  const [userId, setUserId] = useState({});
+  const [userId, setUserId] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [ref, inView] = useInView();
   const [footerRef, inViewFooter] = useInView();
+
+  console.log(personalFolder);
 
   const handleLoadAccountId = async () => {
     const nextAccount = await getAccount();
@@ -50,7 +52,7 @@ function Folder() {
   };
 
   //카드 리스트 업데이트 하는 함수
-  const handleLoadCardList = async (id: any) => {
+  const handleLoadCardList = async (id: string) => {
     const result = await getUserLinks(id);
     setFolderLinks(result?.data);
     setFilteredLinks(result?.data);
@@ -63,20 +65,20 @@ function Folder() {
   };
 
   //액션 메뉴에서 버튼을 누를 때마다 folderId와 foldername의 state가 변경되는 함수
-  const handleClickMenuButton = (nextValue: any, nextName: any) => {
+  const handleClickMenuButton = (nextValue: string, nextName: string) => {
     setCurrentFolderId(nextValue);
     setFolderName(nextName);
     // setSearchValue("");
   };
 
-  //버튼 클릭하면 모달이 실행시키기 위한 함수
-  const handleShowModal = (isOpen: any, modalName: any) => {
+  //버튼 클릭하면 모달을 실행시키기 위한 함수
+  const handleShowModal = (isOpen: boolean, modalName: string) => {
     setActiveModalName(modalName);
     setModalOpen(isOpen);
   };
 
   //setSearchValue Prop으로 내려주기 위한 함수
-  const handleChangeSearchValue = (value: any) => {
+  const handleChangeSearchValue = (value: string) => {
     setSearchValue(value);
   };
 
@@ -86,13 +88,13 @@ function Folder() {
     setFilteredLinks(folderLinks);
   };
 
-  const handleChangeLink = (value: any) => {
+  const handleChangeLink = (value: string) => {
     setLink(value);
   };
 
   //검색바에 입력된 searchValue대로 리스트를 필터링하는 함수
 
-  const filteredList = folderLinks?.filter((item: any) => {
+  const filteredList = folderLinks?.filter((item: FolderLinksType) => {
     if (searchValue.length > 0) {
       if (
         item.description?.toLowerCase().includes(searchValue.toLowerCase()) ||

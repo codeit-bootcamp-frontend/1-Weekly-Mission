@@ -1,22 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAccount } from "../../../api/apiUrl";
+import { AccountType } from "../../../types/AccountType";
 import styled from "styled-components";
 import Profile from "../NavProfile";
 import logoImg from "../../../Assets/logo.svg";
 
-interface Account {
-  id?: string;
-  created_at?: string;
-  name?: string;
-  image_source?: string;
-  email?: string;
-  auth_id?: string;
-}
-
-
 function Nav() {
-  const [account, setAccount] = useState<Account | null>(null);
+  const [account, setAccount] = useState<AccountType | null>(null);
 
   console.log(account);
 

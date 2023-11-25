@@ -1,6 +1,12 @@
+import { AccountType } from "../../types/AccountType";
 import styled from "styled-components";
 
-function Profile({ account }: any) {
+interface Props {
+  account: AccountType;
+  className?: any;
+}
+
+function Profile({ account }: Props) {
   const { email, image_source } = account;
 
   const imgSrc = image_source;

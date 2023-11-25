@@ -1,7 +1,7 @@
 import ModalBg from "./modal-styles/ModalBg";
 import * as S from "./modal-styles/ModalsUnits";
 
-function RedShortModal({ onClose, ...props }:any) {
+function RedShortModal({ onClose, ...props }: any) {
   return (
     <ModalBg>
       <S.Wrapper>

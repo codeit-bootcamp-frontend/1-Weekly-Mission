@@ -1,6 +1,7 @@
 import RedShortModal from "../RedShortModal";
+import { modalType } from "../../../../types/modalType";
 
-function LinkDeleteModal({ onShow, link }: any) {
+function LinkDeleteModal({ onShow, link }: modalType) {
   const handleCloseButton = () => {
     onShow(false, "");
   };

@@ -1,4 +1,4 @@
-export const shareKakao = (route: any, title: any) => {
+export const shareKakao = (route: string, title: string | undefined) => {
   // url이 id값에 따라 변경되기 때문에 route를 인자값으로 받아줌
   if (window.Kakao) {
     const kakao = window.Kakao;

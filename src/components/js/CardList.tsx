@@ -4,7 +4,7 @@ import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
 
 /* 각 카드 컴포넌트 */
-function CardItem({ item, key }: any) {
+function CardItem({ item }: any) {
   /* 이미지 스타일 함수 */
   const imgStyle = {
     backgroundImage: `URL(${item.imageSource})`,

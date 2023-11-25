@@ -1,6 +1,15 @@
+import type { PersonalFolder } from "../../.../../../types/personalFolderType";
 import * as S from "./modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
 import checkImg from "../../../Assets/check.svg";
+
+interface Props {
+  folders: PersonalFolder;
+  onClose: () => void;
+  link?: string;
+  onSelect: (ItemIdx: number) => void;
+  isActive?: number;
+}
 
 function AddLinktoFolderModal({
   folders,
@@ -8,7 +17,7 @@ function AddLinktoFolderModal({
   link,
   onSelect,
   isActive,
-}: any) {
+}: Props) {
   return (
     <ModalBg>
       <S.Wrapper>

@@ -1,14 +1,15 @@
 import { useState } from "react";
 import AddLinktoFolderModal from "../AddLinktoFolderModal";
+import type { modalType } from "../../../../types/modalType";
 
-function AddLinktoFolderModalContainer({ onShow, folders, link }: any) {
+function AddLinktoFolderModalContainer({ onShow, folders, link }: modalType) {
   const [selectedFolder, setSelectedFolder] = useState(0);
 
   if (!folders) {
     return;
   }
 
-  const handleSelectFolder = (itemIdx: any) => {
+  const handleSelectFolder = (itemIdx: number) => {
     setSelectedFolder(itemIdx);
   };
 

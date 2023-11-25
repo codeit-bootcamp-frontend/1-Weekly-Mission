@@ -8,11 +8,11 @@ import getTimeDiff from "../../utils/utilTimeDiff";
 
 interface Props {
   item: any;
-  modal: any;
+  modal: (isOpen: boolean, modalName: string) => void;
   setLink: any;
-  isOpen: any;
-  onClick: any;
-  idx: any;
+  isOpen: boolean;
+  onClick: (idx: number) => void;
+  idx: number;
 }
 
 interface CardLinkItem {
