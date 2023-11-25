@@ -1,4 +1,4 @@
-import TagBtnContainer from "./StyledButtons/TagBtn/TagBtnContainer";
+import TagBtnContainer from "./Buttons/TagBtn/TagBtnContainer";
 import { SearchLinkInput } from "./TextInputs/SearchLinkInput/searchLinkInput";
 import CardContainer from "./CardContainer/CardContainer";
 import { useState, useEffect } from "react";
@@ -6,6 +6,8 @@ import requestData from "../services/api";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import AddLinkToFolder from "../modals/contents/AddLinkToFolder";
+import { ICardData } from "./CardContainer/types/Card.types";
+import { IFolderTagData } from "../utils/types/common.types";
 
 const NoCardDataText = styled.h5`
   display: flex;
@@ -14,7 +16,7 @@ const NoCardDataText = styled.h5`
   font-weight: 400;
 `;
 
-const defaultTagButton = {
+const defaultTagButton: IFolderTagData = {
   id: "",
   created_at: "",
   name: "전체",
@@ -28,10 +30,16 @@ function MainContent() {
   const Pagelocation = useLocation().pathname;
   const PAGE_TYPE_FOLDER = Pagelocation === "/folder";
 
-  const [cardListData, setCardListData] = useState([]); // cardContainer에서 이용
-  const [folderTagBtnList, setfolderTagBtnList] = useState([defaultTagButton]); // TagBtnContainer에서 이용
-  const [selectedTagId, setSelectedTagId] = useState(defaultTagButton.id);
-  const [selectedTagText, setSelectedTagText] = useState(defaultTagButton.name);
+  const [cardListData, setCardListData] = useState<ICardData[]>([]); // cardContainer에서 이용
+  const [folderTagBtnList, setfolderTagBtnList] = useState<IFolderTagData[]>([
+    defaultTagButton,
+  ]); // TagBtnContainer에서 이용
+  const [selectedTagId, setSelectedTagId] = useState<string | number>(
+    defaultTagButton.id
+  );
+  const [selectedTagText, setSelectedTagText] = useState<string>(
+    defaultTagButton.name
+  );
 
   // card content response 처리
   async function getCardListResponse() {
@@ -58,12 +66,14 @@ function MainContent() {
     ]);
   }
 
-  function handleTagBtnClick(id, name) {
+  function handleTagBtnClick(id: string | number, name: string): void {
     setSelectedTagId(id);
     setSelectedTagText(name);
   }
 
-  useEffect(() => getFolderTagBtnList, []);
+  useEffect(() => {
+    getFolderTagBtnList();
+  }, []);
   useEffect(() => {
     getCardListResponse();
   }, [selectedTagId]);
