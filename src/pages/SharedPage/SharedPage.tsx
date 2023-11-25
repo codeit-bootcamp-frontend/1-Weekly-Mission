@@ -52,9 +52,7 @@ function SharedPage() {
       />
 
       <section className="section">
-        <div className="search-section">
-          <SearchBar />
-        </div>
+        <div className="search-section">{/* <SearchBar /> */}</div>
         <div className="card-section">
           {/* <CardList cardList={cardList} /> */}
         </div>

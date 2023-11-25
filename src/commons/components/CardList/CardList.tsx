@@ -5,11 +5,21 @@ import styles from "./CardList.module.scss";
 interface CardListProps {
   cardList: CardInterface[];
   onClick: (m: ModalInterface) => void;
+  keyword?: string;
 }
 
-function CardList({ cardList, onClick }: CardListProps) {
+function CardList({ cardList, onClick, keyword = "" }: CardListProps) {
   if (!cardList) {
     return <div className={styles["no-card-list"]}> 잘못된 접근입니다.</div>;
+  }
+  if (keyword) {
+    cardList = cardList.filter((card) => {
+      return (
+        card.description?.includes(keyword) ||
+        card.url?.includes(keyword) ||
+        card.title?.includes(keyword)
+      );
+    });
   }
   if (cardList.length === 0) {
     return (

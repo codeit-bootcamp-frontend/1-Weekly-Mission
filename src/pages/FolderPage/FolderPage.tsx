@@ -32,6 +32,7 @@ function FolderPage() {
   const [currentFolder, setCurrentFolder] = useState(INITIAL_FOLDER);
   // 모달이 보이는지
   const [modal, setModal] = useState(INITIAL_MODAL);
+  const [keyword, setKeyword] = useState("");
 
   const getFolderTagList = useCallback(async () => {
     const { data } = await getFolderList();
@@ -82,7 +83,14 @@ function FolderPage() {
       <Layout isSticky={false}>
         <LinkAddBar />
         <div className={styles["folder-content"]}>
-          <SearchBar />
+          <SearchBar onChange={setKeyword} keys={keyword} />
+          {keyword && (
+            <div className={styles["result-section"]}>
+              <h1>
+                <span>{keyword}</span>으로 검색한 결과입니다.
+              </h1>
+            </div>
+          )}
           <FolderTagList
             folders={folderList}
             current={currentFolder}
@@ -94,7 +102,11 @@ function FolderPage() {
           <FolderModifier folder={currentFolder} onClick={handleOpenModal} />
         </div>
         <div className={styles["card-list-section"]}>
-          <CardList cardList={cardList} onClick={handleOpenModal} />
+          <CardList
+            cardList={cardList}
+            onClick={handleOpenModal}
+            keyword={keyword}
+          />
         </div>
       </Layout>
     </>
