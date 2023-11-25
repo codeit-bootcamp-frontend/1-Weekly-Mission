@@ -1,4 +1,39 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+const fadeInUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+`;
+
+export const BackGround = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 20px;
+  background-color: #edf7ff;
+  animation: ${({ $isFixed }) =>
+    $isFixed === "fixed"
+      ? css`
+          ${fadeInUp} 1s
+        `
+      : ``};
+
+  ${({ $isFixed }) =>
+    $isFixed === "fixed" &&
+    `
+    position: fixed;
+    bottom: 0px;
+    z-index: 6000;
+  `}
+`;
 
 export const Form = styled.form`
   display: flex;

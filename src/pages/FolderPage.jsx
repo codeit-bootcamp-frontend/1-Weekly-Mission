@@ -9,6 +9,7 @@ import {
   ModalLoading,
 } from "components";
 import { getFolderLists, getLinks } from "utils/api";
+import { useScroll } from "hooks/useScroll";
 import * as Styled from "./StyledFolderPage";
 
 const FolderPage = () => {
@@ -25,6 +26,7 @@ const FolderPage = () => {
   });
 
   const { setSticky, isLogin } = useOutletContext();
+  const { scrollY } = useScroll();
 
   const handleFolderLists = async (id) => {
     setIsLoading(true);
@@ -65,7 +67,7 @@ const FolderPage = () => {
   return (
     <>
       <Styled.Header>
-        <AddBar />
+        <AddBar isFixed="static" />
       </Styled.Header>
       <Styled.Article>
         <SearchBar
@@ -87,6 +89,7 @@ const FolderPage = () => {
           />
         )}
       </Styled.Article>
+      {scrollY > 230 && <AddBar isFixed="fixed" />}
       {isLoading && <ModalLoading />}
     </>
   );

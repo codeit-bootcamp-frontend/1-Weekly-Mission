@@ -1,9 +1,9 @@
 import AddIMG from "assets/link.svg";
 import * as Styled from "./StyledAddBar";
 
-const AddBar = () => {
+const AddBar = ({ isFixed }) => {
   return (
-    <>
+    <Styled.BackGround $isFixed={isFixed}>
       <Styled.Form>
         <label htmlFor="add">
           <img src={AddIMG} alt="링크 이미지" />
@@ -16,7 +16,7 @@ const AddBar = () => {
         />
         <Styled.Button>추가하기</Styled.Button>
       </Styled.Form>
-    </>
+    </Styled.BackGround>
   );
 };
 

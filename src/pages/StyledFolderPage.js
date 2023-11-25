@@ -6,11 +6,18 @@ import styled from "styled-components";
 export const Header = styled.header`
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem 3rem 7rem;
+  gap: 30px;
+  padding: 40px 0 70px;
   background-color: #edf7ff;
+`;
+
+export const TargetDiv = styled.div`
+  width: 100%;
+  height: 20px;
+  border: 1px solid red;
 `;
 
 export const Article = styled.article`
