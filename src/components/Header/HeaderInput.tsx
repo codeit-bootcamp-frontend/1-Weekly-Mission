@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
-import useData from "src/hooks/useReduce";
+import { FormEvent, useRef, useState } from "react";
+import useData from "src/hooks/useData";
 import useModal from "src/hooks/useModal";
 import inputImg from "src/assets/link.svg";
-import { Form, Input, InputButton, InputImg, InputWrapper } from "src/components/Header/HeaderSearch.styled";
+import { Form, Input, InputButton, InputImg, InputWrapper } from "src/components/Header/HeaderInput.styled";
 import { URLS } from "src/utils/getData.type";
 
 interface Props {
@@ -20,7 +20,7 @@ function HeaderSearch({ isUser }: Props) {
     setValue(newValue);
   };
 
-  const handleModal = (e: React.FormEvent) => {
+  const handleModal = (e: FormEvent) => {
     e.preventDefault();
     if (folder?.path === URLS.FOLDER_CATEGORY) {
       isUser && dispatch({ title: value, type: "추가하기", data: folder.data });

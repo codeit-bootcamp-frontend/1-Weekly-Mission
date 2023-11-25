@@ -25,8 +25,10 @@ export const reduceData = <T>(action: Action) => {
     }
     case URLS.FOLDER_CATEGORY:
       return action as Rgeneric<T>;
-    case URLS.FOLDER_LINKS:
-      return action as Rgeneric<T>;
+    case URLS.FOLDER_LINKS: {
+      const { data: links } = action;
+      return { path: action.path, links } as Rgeneric<T>;
+    }
   }
 };
 
@@ -40,14 +42,14 @@ export const useReduce = <T>(reducer: (action: Action) => Rgeneric<T>) => {
   return { state, dispatch };
 };
 
-const useData = <T extends UrlType>(path: T, id?: number): Rgeneric<T> => {
+const useData = <T extends UrlType>(path: T, id?: number) => {
   const { state, dispatch } = useReduce<T>(reduceData<T>);
 
   useEffect(() => {
     dispatch(getData(path, id));
   }, [dispatch, path, id]);
 
-  return state!;
+  return state as Rgeneric<T>;
 };
 
 export default useData;

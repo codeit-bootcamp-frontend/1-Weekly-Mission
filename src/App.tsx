@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SharedPage from "./pages/SharedPage";
-import FolderPage from "./pages/FolderPage";
-import SelectPage from "./pages/SelectPage";
-import ErrorPage from "./pages/ErrorPage";
+import ErrorPage from "src/pages/Error/ErrorPage";
+import FolderPage from "src/pages/Folder/FolderPage";
+import SelectPage from "src/pages/Select/SelectPage";
+import SharedPage from "src/pages/Shared/SharedPage";
 
 function App() {
   return (

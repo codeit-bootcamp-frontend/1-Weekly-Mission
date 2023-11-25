@@ -1,6 +1,6 @@
 import logoImg from "src/assets/logo.svg";
 import Logo from "./Logo";
-import { reduceData, useReduce } from "src/hooks/useReduce";
+import { reduceData, useReduce } from "src/hooks/useData";
 import { useLocation } from "react-router";
 import { getData } from "src/utils/getData";
 import { URLS } from "src/utils/getData.type";
@@ -9,32 +9,32 @@ import SignButton from "src/components/Nav/SignButton";
 import { Backgorund, Nav } from "src/components/Nav/Navigation.styled";
 
 interface AvatarProps {
-  setIsUser: React.Dispatch<React.SetStateAction<React.ReactElement | boolean>>;
+  setIsUser?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function Avatar({ setIsUser }: AvatarProps) {
   const { pathname } = useLocation();
   const type = pathname === "/shared" ? URLS.SHARED_USER : URLS.FOLDER_USER;
 
-  const { state: userData, dispatch } = useReduce(reduceData);
+  const { state: userData, dispatch } = useReduce<typeof type>(reduceData<typeof type>);
   const handleLoadUser = (e: React.MouseEvent) => {
+    if (!setIsUser) return;
     e.preventDefault();
     dispatch(getData(type));
     setIsUser(true);
   };
 
-  const avatar =
-    userData?.path === (URLS.SHARED_USER || URLS.FOLDER_USER) ? <Profile {...userData} /> : <SignButton onClick={handleLoadUser}>로그인</SignButton>;
+  const avatar = userData ? <Profile {...userData} /> : <SignButton onClick={handleLoadUser}>로그인</SignButton>;
 
   return <>{avatar}</>;
 }
 
 interface Props {
-  setIsUser: (state: boolean) => void;
-  page: string;
+  setIsUser?: React.Dispatch<React.SetStateAction<boolean>>;
+  page?: string;
 }
 
-function Navigation({ setIsUser, page }: Props) {
+function Navigation({ setIsUser, page = "" }: Props) {
   return (
     <>
       <Backgorund />

@@ -9,9 +9,9 @@ import { FolderData } from "src/utils/getData.type";
 import { ButtonClose, ButtonSubmit, Contents, InputSubmit, List, SnsWrapper, Text, Wrapper } from "src/components/Modal/modal.styled";
 
 interface MakeModalProps {
-  title: string;
-  type: string;
-  data: {};
+  title?: string;
+  type?: string;
+  data?: {};
   setModal: React.Dispatch<React.SetStateAction<React.ReactElement | null>>;
 }
 

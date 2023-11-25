@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { makeModal } from "../components/Modal/modal";
 import { FolderData } from "src/utils/getData.type";
+import ModalPortal from "../components/Modal/ModalPortal";
 
 interface Idispatch {
-  (action: { title: string; type: string; data: FolderData[] }): void;
+  (action: { title?: string; type?: string; data?: FolderData[] }): void;
 }
 
 function useModal() {
@@ -11,7 +12,7 @@ function useModal() {
 
   const dispatch: Idispatch = (action) => {
     const newModal = makeModal({ ...action, setModal });
-    setModal(newModal);
+    setModal(<ModalPortal>{newModal}</ModalPortal>);
   };
 
   return { modal, dispatch };

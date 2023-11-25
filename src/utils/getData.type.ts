@@ -8,7 +8,7 @@ export enum URLS {
   DEFAULT = "DEFAULT",
 }
 
-type LinkData = {
+export type LinkData = {
   id: number;
   created_at: string;
   updated_at: string | null;
@@ -61,7 +61,7 @@ interface SampleUser {
   profileImageSource: string;
 }
 
-type SampleLink = {
+export type SampleLink = {
   id: number;
   createdAt: string;
   url: string;
@@ -120,10 +120,9 @@ interface Ruser extends Rentity {
   path: URLS.FOLDER_USER;
 }
 
-export type Return = RsampleUser | RsampleFolder | RsampleFolderName | Ruser | Folder | Link | undefined;
-
-export interface ReduceData {
-  (action: Action): Return;
+interface Rlink {
+  path: URLS.FOLDER_LINKS;
+  links: LinkData[];
 }
 
 export type Rgeneric<T> = T extends URLS.SHARED_USER
@@ -137,5 +136,5 @@ export type Rgeneric<T> = T extends URLS.SHARED_USER
   : T extends URLS.FOLDER_CATEGORY
   ? Folder
   : T extends URLS.FOLDER_LINKS
-  ? Link
+  ? Rlink
   : undefined;

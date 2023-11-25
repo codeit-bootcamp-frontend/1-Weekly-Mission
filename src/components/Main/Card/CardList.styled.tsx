@@ -6,43 +6,7 @@ export const Absolute = styled.div`
   left: 0;
 `;
 
-export const KebabContainer = styled.div`
-  z-index: 1;
-`;
-
-export const PopOver = styled.div`
-  display: none;
-  position: absolute;
-  right: 8%;
-  width: 10rem;
-  height: 6.4rem;
-  background-color: var(--White);
-  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
-
-  @media screen and (min-width: 768px) {
-    right: -10%;
-  }
-
-  &.active {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  & p {
-    flex-basis: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      background-color: var(--Gray1);
-      color: var(--Primary);
-    }
-  }
-`;
-
-export const DivCardList = styled.div`
+export const ContainerCardList = styled.div`
   display: grid;
   grid-template-columns: 34rem;
   justify-content: center;
@@ -59,7 +23,7 @@ export const DivCardList = styled.div`
   }
 `;
 
-export const ACard = styled.a`
+export const CardLink = styled.a`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -69,19 +33,19 @@ export const ACard = styled.a`
   background-color: var(--White);
 `;
 
-export const DivImgCard = styled.div`
+export const WrapperCardImg = styled.div`
   height: 20.5rem;
   margin: 0 auto;
 `;
 
-export const ImgCard = styled.img`
+export const CardImg = styled.img`
   width: 34rem;
   height: 100%;
   border-radius: 1.5rem 1.5rem 0 0;
   object-fit: cover;
 `;
 
-export const DivTextCard = styled.div`
+export const CardText = styled.div`
   display: flex;
   flex-direction: column;
   height: 13.5rem;
@@ -89,7 +53,7 @@ export const DivTextCard = styled.div`
   gap: 1rem;
 `;
 
-export const DivTimeDiff = styled.div`
+export const WrapperTime = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 1.2rem;
@@ -106,7 +70,7 @@ export const ButtonStar = styled.button`
   right: 1.5rem;
 `;
 
-export const DivEmpty = styled.div`
+export const EmptyBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -2,7 +2,7 @@ import { Button } from "src/components/Nav/SignButton.styled";
 
 interface Props {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent) => void;
 }
 
 function SignButton({ children, onClick }: Props) {
