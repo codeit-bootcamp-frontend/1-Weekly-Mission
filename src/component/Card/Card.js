@@ -33,7 +33,7 @@ export default function Card({ link }) {
         <S.CardImage src={imageSource || image_source || noImg} alt="사진" />
         <S.Star
           fill={starStyle.fill}
-          fill-opacity={starStyle["fill-opacity"]}
+          fillOpacity={starStyle["fill-opacity"]}
           onClick={handleStarClick}
         />
       </S.ImageContainer>

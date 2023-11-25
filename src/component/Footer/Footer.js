@@ -2,11 +2,12 @@ import {SNS, socialMedia} from "component";
 import { ThemeProvider } from "styled-components";
 import theme from "css/display.js";
 import * as S from "./Footer.style.js";
+import { forwardRef } from "react";
 
-export default function Footer() {
+function Footer( Props, ref ) {
   return (
-    <ThemeProvider theme={theme}>
-      <S.Container>
+    <ThemeProvider theme={theme} >
+      <S.Container ref={ref}>
         <S.Box>
           <S.Span>codeit - 2023</S.Span>
           <S.LinkContainer>
@@ -26,4 +27,6 @@ export default function Footer() {
       </S.Container>
     </ThemeProvider>
   );
-}
+};
+
+export default forwardRef(Footer);

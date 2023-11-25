@@ -63,7 +63,19 @@ export const ContainerFolderPage = styled(Container)`
 
   @media ${({ theme }) => theme.device.mobile} {
     padding: 24px 32px 40px;
+    ${({$isintersecting}) => $isintersecting === true &&`
+      padding: 12px 32px 12px;
+    `}
   }
+
+  ${({$isintersecting}) => $isintersecting === true && `
+    position : fixed;
+    bottom : 0;
+    z-index : 9999;
+    margin : 0;
+    padding-top : 24px;
+    padding-bottom : 24px;
+  `};
 `;
 export const LinkSearchBox = styled.div`
   padding: 16px 20px;

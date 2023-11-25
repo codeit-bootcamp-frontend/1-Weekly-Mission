@@ -19,7 +19,7 @@ export default function CardContainer ({items, active}) {
         <S.Container>
           {items.map((link) => (
             <Card link={link} key={link.id} />
-          ))}
+          ))} 
         </S.Container>
         {active && <S.Button onClick={handleButtonClick}>
           폴더 추가 <AddImg alt="폴더추가" fill="#e7effb" />
