@@ -21,6 +21,7 @@ import FolderDeleteModal from "../../../components/js/modals/container/FolderDel
 import FolderNameChangeModal from "../../../components/js/modals/container/FolderNameChangeModal";
 import LinkDeleteModal from "../../../components/js/modals/container/LinkDeleteModal";
 import FolderShareModalContainer from "../../../components/js/modals/container/FolderShareModalContainer";
+import LinkBarFixed from "../../../components/js/LinkBarFixed";
 
 function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
@@ -95,9 +96,9 @@ function Folder() {
     if (searchValue.length > 0) {
       const filteredLinks = folderLinks?.filter(
         (item: any) =>
-          item.description?.toLowerCase().includes(searchValue) ||
-          item.title?.toLowerCase().includes(searchValue) ||
-          item.url?.toLowerCase().includes(searchValue)
+          item.description?.toLowerCase().includes(searchValue.toLowerCase()) ||
+          item.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
+          item.url?.toLowerCase().includes(searchValue.toLowerCase())
       );
       setFilteredLinks(filteredLinks);
     }
@@ -199,6 +200,7 @@ function Folder() {
             )}
           </Wrapper>
         )}
+        {!inView && !inViewFooter && <LinkBarFixed/> }
         <div ref={footerRef}></div>
       </NavAndFooterBasic>
     </>

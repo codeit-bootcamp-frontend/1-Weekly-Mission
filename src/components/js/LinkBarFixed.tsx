@@ -9,7 +9,7 @@ interface WrapperItem {
   $viewFooter: boolean;
 }
 
-function LinkBar({ onChange, onShow, $view, $viewFooter }: any) {
+function LinkBarFixed({ onChange, onShow }: any) {
   const inputRef = useRef<any>();
 
   const handleChange = (e: any) => {
@@ -24,7 +24,7 @@ function LinkBar({ onChange, onShow, $view, $viewFooter }: any) {
   };
 
   return (
-    <Wrapper $view={$view} $viewFooter={$viewFooter}>
+    <Wrapper>
       <Form>
         <Icon src={linkIcon} alt={linkIcon} />
         <LinkAddInput
@@ -38,15 +38,13 @@ function LinkBar({ onChange, onShow, $view, $viewFooter }: any) {
   );
 }
 
-export default LinkBar;
+export default LinkBarFixed;
 
 const Wrapper = styled(BlueWrapper)<WrapperItem>`
-  padding:60px 0 90px;
+  padding: 24px 0;
+  position: fixed;
+  bottom: 0;
   z-index: 3;
-
-  @media (max-width: 767px) {
-    padding: 24px 0 40px;
-  }
 `;
 
 const Form = styled.form`
