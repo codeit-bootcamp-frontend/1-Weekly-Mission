@@ -1,6 +1,7 @@
-import styles from "./AddLinkModal.module.scss";
+import styles from "./AddCardModal.module.scss";
 import { getFolderList } from "src/apis/";
 import { useState, useEffect, MouseEvent } from "react";
+import { CardInterface } from "src/types";
 
 interface FolderProps {
   id?: string;
@@ -10,17 +11,25 @@ interface FolderProps {
   };
 }
 
-function AddLinkModal({ linkId = "" }) {
+interface Props {
+  card: CardInterface;
+}
+
+function AddCardModal({ card }: Props) {
+  console.log(card);
   const [folderList, setFolderList] = useState([]);
 
   const getter = async () => {
-    const allFolders = await getFolderList();
-    setFolderList(allFolders?.data);
+    const { data } = await getFolderList();
+    if (data) {
+      setFolderList(data);
+    }
   };
 
   useEffect(() => {
     getter();
   }, []);
+
   const handleToggle = (e: MouseEvent<HTMLDivElement>) => {
     (e.target as Element).classList.toggle(`${styles["checked"]}`);
   };
@@ -28,7 +37,7 @@ function AddLinkModal({ linkId = "" }) {
   return (
     <div className={styles["modal-content"]}>
       <h2 className={styles["modal-title"]}>폴더에 추가</h2>
-      <p className={styles["modal-desc"]}>{linkId}</p>
+      <p className={styles["modal-desc"]}>{card.url}</p>
 
       {folderList.map((folder: FolderProps) => {
         return (
@@ -45,4 +54,4 @@ function AddLinkModal({ linkId = "" }) {
   );
 }
 
-export default AddLinkModal;
+export default AddCardModal;

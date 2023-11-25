@@ -56,7 +56,7 @@ function SharedPage() {
           <SearchBar />
         </div>
         <div className="card-section">
-          <CardList cardList={cardList} />
+          {/* <CardList cardList={cardList} /> */}
         </div>
       </section>
     </Layout>

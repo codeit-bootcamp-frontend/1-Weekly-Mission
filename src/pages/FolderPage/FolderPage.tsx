@@ -3,17 +3,22 @@ import styles from "./FolderPage.module.scss";
 import Layout from "../Layout/Layout";
 import { SearchBar, CardList } from "src/commons/components";
 import { getAllCards, getFolderList } from "src/apis";
-import { CardInterface, FolderInterface } from "src/types";
+import { CardInterface, FolderInterface, ModalInterface } from "src/types";
 import {
   LinkAddBar,
   FolderTagList,
   FolderModifier,
   FolderMaker,
 } from "./components";
+import ModalCreator from "src/commons/modals/ModalCreator";
 
 const INITIAL_FOLDER: FolderInterface = {
   id: "",
   name: "전체",
+};
+
+const INITIAL_MODAL: ModalInterface = {
+  show: false,
 };
 
 function FolderPage() {
@@ -25,6 +30,8 @@ function FolderPage() {
   const [cardList, setCardList] = useState<CardInterface[]>([]);
   // 현재 위치한 폴더 정보
   const [currentFolder, setCurrentFolder] = useState(INITIAL_FOLDER);
+  // 모달이 보이는지
+  const [modal, setModal] = useState(INITIAL_MODAL);
 
   const getFolderTagList = useCallback(async () => {
     const { data } = await getFolderList();
@@ -47,30 +54,50 @@ function FolderPage() {
     }
   }, []);
 
+  const handleOpenModal = (modal: ModalInterface) => {
+    console.log(modal);
+    setModal((prev) => {
+      return { ...prev, ...modal };
+    });
+  };
+  const handleCloseModal = () => {
+    setModal((prev) => {
+      return { ...prev, ...INITIAL_MODAL };
+    });
+  };
+
   useEffect(() => {
     getFolderTagList();
     getCards(currentFolder);
   }, [getFolderTagList, getCards]);
 
   return (
-    <Layout isSticky={false}>
-      <LinkAddBar />
-      <div className={styles["folder-content"]}>
-        <SearchBar />
-        <FolderTagList
-          folders={folderList}
-          current={currentFolder}
-          onClick={getCards}
-        />
-        <FolderMaker />
-      </div>
-      <div>
-        <FolderModifier folder={currentFolder} />
-      </div>
-      <div className={styles["card-list-section"]}>
-        <CardList cardList={cardList} />
-      </div>
-    </Layout>
+    <>
+      {modal.show && (
+        <ModalCreator onClick={handleCloseModal}>
+          {modal?.component}
+        </ModalCreator>
+      )}
+
+      <Layout isSticky={false}>
+        <LinkAddBar />
+        <div className={styles["folder-content"]}>
+          <SearchBar />
+          <FolderTagList
+            folders={folderList}
+            current={currentFolder}
+            onClick={getCards}
+          />
+          <FolderMaker onClick={handleOpenModal} />
+        </div>
+        <div>
+          <FolderModifier folder={currentFolder} onClick={handleOpenModal} />
+        </div>
+        <div className={styles["card-list-section"]}>
+          <CardList cardList={cardList} onClick={handleOpenModal} />
+        </div>
+      </Layout>
+    </>
   );
 }
 

@@ -1,12 +1,17 @@
-import styles from "./ShareModal.module.scss";
-import { ReactComponent as KakaoIcon } from "../../../assets/images/kakao-icon.svg";
-import { ReactComponent as FacebookIcon } from "../../../assets/images/facebook-icon.svg";
-import { ReactComponent as LinkIcon } from "../../../assets/images/link-modal-icon.svg";
+import styles from "./ShareFolderModal.module.scss";
+import { ReactComponent as KakaoIcon } from "src/assets/images/kakao-icon.svg";
+import { ReactComponent as FacebookIcon } from "src/assets/images/facebook-icon.svg";
+import { ReactComponent as LinkIcon } from "src/assets/images/link-modal-icon.svg";
+import { FolderInterface } from "src/types";
 
-function ShareModal({ title = "", id = "" }) {
+interface Props {
+  folder: FolderInterface;
+}
+
+function ShareFolderModal({ folder }: Props) {
   const handleLinkButton = () => {
     let url = "https://bootcamp-api.codeit.kr/shared";
-    let query = `?user=1&folder=${id}`;
+    let query = `?user=1&folder=${folder.id}`;
     url = `${url}${query}`;
     navigator.clipboard.writeText(url);
   };
@@ -14,7 +19,7 @@ function ShareModal({ title = "", id = "" }) {
   return (
     <div className={styles["modal-content"]}>
       <h2 className={styles["modal-title"]}>폴더 공유</h2>
-      <p className={styles["modal-desc"]}>{title}</p>
+      <p className={styles["modal-desc"]}>{folder.name}</p>
       <div className={styles["sns-group"]}>
         <button className={styles["sns-button"]}>
           <KakaoIcon />
@@ -33,4 +38,4 @@ function ShareModal({ title = "", id = "" }) {
   );
 }
 
-export default ShareModal;
+export default ShareFolderModal;

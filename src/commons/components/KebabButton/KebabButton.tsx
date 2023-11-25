@@ -1,25 +1,53 @@
 import { useState } from "react";
 import styles from "./KebabButton.module.scss";
 import { ReactComponent as KebabIcon } from "src/assets/images/kebab.svg";
-import { CardInterface } from "src/types";
+import { CardInterface, ModalInterface } from "src/types";
+import DeleteCardModal from "src/commons/modals/DeleteCardModal/DeleteCardModal";
+import AddCardModal from "src/commons/modals/AddCardModal/AddCardModal";
 
 interface CardProps {
   card: CardInterface;
+  onClick: (m: ModalInterface) => void;
 }
 
-function KebabMenu({ card }: CardProps) {
+function KebabMenu({ card, onClick }: CardProps) {
+  const handleKebabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if ((e.target as HTMLButtonElement).id === "deleteCardButton") {
+      const newModal: ModalInterface = {
+        component: <DeleteCardModal card={card} />,
+        show: true,
+      };
+      onClick(newModal);
+    }
+    if ((e.target as HTMLButtonElement).id === "addCardButton") {
+      const newModal: ModalInterface = {
+        component: <AddCardModal card={card} />,
+        show: true,
+      };
+      onClick(newModal);
+    } else {
+      return;
+    }
+  };
+
   return (
-    <div className={styles["kebab-menu"]}>
-      <button id="delete-card-button">삭제하기</button>
-      <button id="add-card-button">폴더에 추가</button>
-    </div>
+    <>
+      <div className={styles["kebab-menu"]}>
+        <button id="deleteCardButton" onClick={handleKebabClick} type="button">
+          삭제하기
+        </button>
+        <button id="addCardButton" onClick={handleKebabClick} type="button">
+          폴더에 추가
+        </button>
+      </div>
+    </>
   );
 }
 
-function KebabButton({ card }: CardProps) {
+function KebabButton({ card, onClick }: CardProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenuOpen = () => {
-    setIsMenuOpen(true);
+    setIsMenuOpen(!isMenuOpen);
   };
   const handleMenuClose = () => {
     setTimeout(() => {
@@ -34,10 +62,11 @@ function KebabButton({ card }: CardProps) {
           className={styles["kebab-button"]}
           onClick={handleMenuOpen}
           onBlur={handleMenuClose}
+          type="button"
         >
           <KebabIcon />
         </button>
-        {isMenuOpen && <KebabMenu card={card} />}
+        {isMenuOpen && <KebabMenu onClick={onClick} card={card} />}
       </div>
     </>
   );

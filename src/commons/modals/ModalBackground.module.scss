@@ -1,0 +1,20 @@
+.background {
+  z-index: 500;
+  display: flex;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+}
+
+.container {
+  position: fixed;
+  padding: 3rem 4rem;
+  background-color: white;
+  border-radius: 8px;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
