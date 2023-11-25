@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { ReactComponent as SearchIcon } from "assets/Search.svg";
+import { ReactComponent as CloseIcon } from "assets/inputClose.svg";
 
 export const Search = styled.div`
   position: relative;
@@ -7,7 +9,7 @@ export const Search = styled.div`
   margin: auto;
 `;
 
-export const Icon = styled.img`
+export const Icon = styled(SearchIcon)`
   position: absolute;
   top: 50%;
   left: 16px;
@@ -21,4 +23,13 @@ export const Input = styled.input`
   border-radius: 10px;
   background: #f5f5f5;
   line-height: 24px;
+  outline-style: none;
+`;
+
+export const Close = styled(CloseIcon)`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 `;
