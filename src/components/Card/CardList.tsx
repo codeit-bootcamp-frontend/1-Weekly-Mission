@@ -2,17 +2,30 @@ import Card from './Card';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 
-function CardList({ items }) {
+
+export interface CardProps {
+  id: number,
+  created_at?: Date,
+  createdAt?: Date,
+  description: string,
+  image_source?: string,
+  imageSource?: string
+}
+
+interface CardListProps {
+  items: CardProps[];
+}
+
+function CardList({ items }: CardListProps) {
   const location = useLocation();
   const path = location.pathname;
-
   return (
     <CardListStyle>
-        {items.map((item) =>
-          <Li key={item.id} >
-            <Card item={item} path={path}/>
-          </Li>
-        )}
+      {items.map((card) =>
+        <Li key={card.id}>
+          <Card item={card} path={path} />
+        </Li>,
+      )}
     </CardListStyle>
   );
 }

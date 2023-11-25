@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 import default_card_image from '../../assets/image/default_card.png';
-import { CardProps } from './Card';
+import { CardProps } from './CardList';
 
-function CardImage({ item, path }: CardProps) {
+interface Props {
+  item: CardProps;
+  path: string;
+}
+
+function CardImage({ item, path }: Props) {
   const imageSource = path === '/folder' ? item.image_source : item.imageSource;
   const cardImage = imageSource ? imageSource : default_card_image;
 

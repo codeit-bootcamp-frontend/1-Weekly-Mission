@@ -7,19 +7,14 @@ import styled from 'styled-components';
 import { useRef, useState } from 'react';
 import SelectMenu from '../Popover/SelectMenu';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import { CardProps } from './CardList';
 
-export interface CardProps {
-  item: {
-    created_at?: Date,
-    createdAt?: Date,
-    description: string,
-    image_source?: string,
-    imageSource?: string
-  };
-  path: string
+interface Props {
+  item: CardProps;
+  path: string;
 }
 
-function Card({ item, path }: CardProps) {
+function Card({ item, path }: Props) {
   const popoverRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +22,7 @@ function Card({ item, path }: CardProps) {
 
   useOnClickOutside(popoverRef, () => setIsOpen(false));
 
-  const openSelectMenu = ({ isOpen }: {isOpen: boolean}) => {
+  const openSelectMenu = ({ isOpen }: { isOpen: boolean }) => {
     setIsOpen(isOpen);
   };
 
