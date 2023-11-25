@@ -10,11 +10,13 @@ import {
 } from "components";
 import { getFolderLists, getLinks } from "utils/api";
 import { useScroll } from "hooks/useScroll";
+import useInfiniteScroll from "hooks/useInfiniteScroll";
 import * as Styled from "./StyledFolderPage";
 
 const FolderPage = () => {
   const { folderId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
+  const [isDisplay, setIsDisplay] = useState(true);
   const [folderListsData, setFolderListsData] = useState({
     data: [],
   });
@@ -56,6 +58,8 @@ const FolderPage = () => {
     }
   };
 
+  const target = useInfiniteScroll(setIsDisplay, isDisplay);
+
   useEffect(() => {
     setSticky("static");
     if (isLogin) {
@@ -88,8 +92,9 @@ const FolderPage = () => {
             folderData={folderListsData.data}
           />
         )}
+        <Styled.TargetDiv ref={target} />
       </Styled.Article>
-      {scrollY > 230 && <AddBar isFixed="fixed" />}
+      {scrollY > 230 && isDisplay && <AddBar isFixed="fixed" />}
       {isLoading && <ModalLoading />}
     </>
   );

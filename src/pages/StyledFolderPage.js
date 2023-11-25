@@ -14,12 +14,6 @@ export const Header = styled.header`
   background-color: #edf7ff;
 `;
 
-export const TargetDiv = styled.div`
-  width: 100%;
-  height: 20px;
-  border: 1px solid red;
-`;
-
 export const Article = styled.article`
   width: 100%;
   display: flex;
@@ -36,4 +30,9 @@ export const Article = styled.article`
   @media (max-width: 767px) {
     padding: 3rem 3rem 4rem;
   }
+`;
+
+export const TargetDiv = styled.div`
+  width: 100%;
+  height: 20px;
 `;
