@@ -3,7 +3,6 @@ import SearchForm from '../Search/SearchForm';
 import FolderCategory from './FolderCategory';
 import FolderCategoryControl from './FolderCategoryControl';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import useAsync from '../../hooks/useAsync';
 import { getLinks } from '../../api/api';
 import CardList from '../Card/CardList';
 import EmptyCardList from '../Card/EmptyCardList';
@@ -20,14 +19,12 @@ function FolderMain() {
   const [name, setName] = useState('전체');
   const [cards, setCards] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [, , getLinksAsync] = useAsync(getLinks);
 
-  const handleLoadLinks = useCallback(
-    async (category) => {
-      const id = category.id === 0 ? '' : category.id;
+  const handleLoadLinks = useCallback(async (category) => {
+      const id = category.id === 0 ? '' : String(category.id);
       const name = category.name;
 
-      const result = await getLinksAsync({ id });
+      const result = await getLinks(id);
       if (!result) {
         return;
       }
@@ -36,7 +33,7 @@ function FolderMain() {
 
       setName(name);
       setCards(data);
-    }, [getLinksAsync],
+    }, [name],
   );
 
   const openModal = ({ isOpen }) => {

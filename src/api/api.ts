@@ -20,9 +20,7 @@ export async function getShared(): Promise<any> {
   }
 }
 
-export async function getLinks({
-                                 id = '',
-                               }): Promise<any> {
+export async function getLinks(id = ''): Promise<any> {
   try {
     const query: string = `folderId=${id}`;
     const response: AxiosResponse<any> = await axios.get(`${BASE_URL}/users/1/links?${query}`);
