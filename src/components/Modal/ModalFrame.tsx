@@ -4,10 +4,10 @@ import styled from "styled-components";
 
 interface ImodalFrame {
   children: ReactNode;
-  onClickClose: 
+  onClickClose: () => void;
 }
 
-function ModalFrame({ children, onClickClose }) {
+function ModalFrame({ children, onClickClose }: ImodalFrame) {
   useNotScroll();
 
   return (

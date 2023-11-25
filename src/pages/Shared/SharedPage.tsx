@@ -13,7 +13,7 @@ function SharedPage() {
       <Header />
       <Main>
         <SearchBar />
-        <CardList type={URLS.SHARED_FOLDER} />
+        <CardList path={URLS.SHARED_FOLDER} />
       </Main>
       <Footer />
     </>

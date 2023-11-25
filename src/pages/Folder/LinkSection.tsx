@@ -8,7 +8,7 @@ function LinkSection() {
     <>
       <SearchBar />
       <FolderSelect />
-      <CardList type={URLS.FOLDER_LINKS} />
+      <CardList path={URLS.FOLDER_LINKS} />
     </>
   );
 }

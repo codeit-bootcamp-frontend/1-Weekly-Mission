@@ -19,14 +19,14 @@ import {
 } from "src/components/Main/Card/CardList.styled";
 
 interface PcardList {
-  type: URLS.SHARED_FOLDER | URLS.FOLDER_LINKS;
+  path: URLS.SHARED_FOLDER | URLS.FOLDER_LINKS;
 }
 
-function CardList({ type }: PcardList) {
-  const CardData = useData(type);
+function CardList({ path }: PcardList) {
+  const CardData = useData(path);
   const [searchParams] = useSearchParams();
   const folderId = searchParams.get("folderId");
-  const links = CardData.path === URLS.FOLDER_LINKS ? filterFolder(CardData.links, folderId) : CardData.links;
+  const links = CardData?.path === URLS.FOLDER_LINKS ? filterFolder(CardData?.links, folderId) : CardData?.links;
 
   return links ? (
     <ContainerCardList>
