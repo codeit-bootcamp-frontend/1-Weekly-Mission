@@ -1,19 +1,20 @@
 import RedShortModal from "../RedShortModal";
 
-function FolderDeleteModal({ onShow, currentFolder }) {
+function LinkDeleteModal({ onShow, link }: any) {
   const handleCloseButton = () => {
     onShow(false, "");
   };
+
   return (
     <>
       <RedShortModal
-        title="폴더 삭제"
-        btnName="삭제하기"
-        content={currentFolder}
+        title="링크 삭제"
+        btnName="삭제하기 "
+        content={link}
         onClose={handleCloseButton}
       />
     </>
   );
 }
 
-export default FolderDeleteModal;
+export default LinkDeleteModal;

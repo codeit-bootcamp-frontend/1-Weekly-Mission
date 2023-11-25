@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import closeIcon from "../../../../Assets/_close.png";
 
-export function CloseButton({ onClick }) {
+export function CloseButton({ onClick }: any) {
   return (
     <>
       <XButton src={closeIcon} alt="닫기 버튼" onClick={onClick} />
@@ -54,7 +54,11 @@ export const ModalContents = styled.div`
   line-height: 22px;
 `;
 
-export const StyledButton = styled.button`
+interface ButtonItem {
+  red?: any;
+}
+
+export const StyledButton = styled.button<ButtonItem>`
   width: 280px;
   height: auto;
   display: flex;
@@ -129,7 +133,12 @@ export const FolderListWrapper = styled.ul`
   margin-bottom: 24px;
 `;
 
-export const FolderItemWrapper = styled.div`
+interface WrapperItem {
+  isActive: boolean;
+  idx?: any;
+}
+
+export const FolderItemWrapper = styled.div<WrapperItem>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -145,7 +154,11 @@ export const FolderItemContainer = styled.li`
   gap: 8px;
 `;
 
-export const FolderTitle = styled.span`
+interface TitleItem {
+  selected: boolean;
+}
+
+export const FolderTitle = styled.span<TitleItem>`
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px;

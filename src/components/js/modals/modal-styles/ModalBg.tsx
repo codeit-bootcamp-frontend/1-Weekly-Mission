@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function ModalBg({ children }) {
+function ModalBg({ children }: any) {
   return <ModalBackground>{children}</ModalBackground>;
 }
 

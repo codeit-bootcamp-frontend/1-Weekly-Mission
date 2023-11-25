@@ -1,10 +1,10 @@
-import * as S from "../../../components/js/modals/modal-styles/ModalsUnits";
+import * as S from "./modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
 import kakaotalk from "../../../Assets/kakaotalk.svg";
 import facebookIcon from "../../../Assets/facebook.svg";
 import linkShare from "../../../Assets/linkShare.svg";
 
-function FolderShareModal({ onClose, folderName, copy, kakao, facebook }) {
+function FolderShareModal({ onClose, folderName, copy, kakao, facebook }: any) {
   return (
     <>
       <ModalBg>
