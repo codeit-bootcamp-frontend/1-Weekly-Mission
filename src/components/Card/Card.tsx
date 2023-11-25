@@ -8,7 +8,7 @@ import { useRef, useState } from 'react';
 import SelectMenu from '../Popover/SelectMenu';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
-interface Props {
+export interface CardProps {
   item: {
     created_at?: Date,
     createdAt?: Date,
@@ -19,7 +19,7 @@ interface Props {
   path: string
 }
 
-function Card({ item, path }: Props) {
+function Card({ item, path }: CardProps) {
   const popoverRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
