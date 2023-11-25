@@ -5,8 +5,18 @@ import styled from "styled-components";
 import Profile from "../NavProfile";
 import logoImg from "../../../Assets/logo.svg";
 
+interface Account {
+  id?: string;
+  created_at?: string;
+  name?: string;
+  image_source?: string;
+  email?: string;
+  auth_id?: string;
+}
+
+
 function Nav() {
-  const [account, setAccount] = useState<any>(null);
+  const [account, setAccount] = useState<Account | null>(null);
 
   console.log(account);
 

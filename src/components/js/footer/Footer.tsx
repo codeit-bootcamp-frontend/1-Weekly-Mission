@@ -7,11 +7,18 @@ import instagramIcon from "../../../Assets/instagramIcon.svg";
 
 interface UrlListItem {
   url: string;
-  icon: any;
+  icon: string;
 }
 
 interface UrlList {
   [key: string]: UrlListItem;
+}
+
+interface Props {
+  name: string;
+  onClick: (url: string) => void;
+  className?: string;
+  key?: string;
 }
 
 const urlList: UrlList = {
@@ -21,7 +28,8 @@ const urlList: UrlList = {
   instagram: { url: "https://www.instagram.com/", icon: instagramIcon },
 };
 
-function Icon({ name, onClick, className }: any) {
+
+function Icon({ name, onClick, className }: Props) {
   const { url, icon } = urlList[name];
 
   const handleClick = () => onClick(url);
@@ -43,7 +51,7 @@ const StyledIcon = styled(Icon)`
 `;
 
 function Footer() {
-  const handleIconClick = (url: any) => {
+  const handleIconClick = (url: string) => {
     window.open(url);
   };
 

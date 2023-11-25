@@ -22,6 +22,7 @@ import FolderNameChangeModal from "../../../components/js/modals/container/Folde
 import LinkDeleteModal from "../../../components/js/modals/container/LinkDeleteModal";
 import FolderShareModalContainer from "../../../components/js/modals/container/FolderShareModalContainer";
 import LinkBarFixed from "../../../components/js/LinkBarFixed";
+import SearchBarText from "../../../components/js/SearchBarText";
 
 function Folder() {
   const [FoldersLoadingError, getFoldersAsync] = useAsync(
@@ -39,12 +40,6 @@ function Folder() {
   const [searchValue, setSearchValue] = useState("");
   const [ref, inView] = useInView();
   const [footerRef, inViewFooter] = useInView();
-
-  console.log(folderLinks);
-  console.log(currentFolderId);
-  console.log(searchValue);
-  console.log(inView, "ref");
-  console.log(inViewFooter, "footer");
 
   const handleLoadAccountId = async () => {
     const nextAccount = await getAccount();
@@ -70,7 +65,7 @@ function Folder() {
   const handleClickMenuButton = (nextValue: any, nextName: any) => {
     setCurrentFolderId(nextValue);
     setFolderName(nextName);
-    setSearchValue("");
+    // setSearchValue("");
   };
 
   //버튼 클릭하면 모달이 실행시키기 위한 함수
@@ -90,22 +85,23 @@ function Folder() {
     setFilteredLinks(folderLinks);
   };
 
+  const handleChangeLink = (value:any) => {
+    setLink(value)
+  }
+
   //검색바에 입력된 searchValue대로 리스트를 필터링하는 함수
-  const handleFilterCardList = () => {
-    if (!folderLinks) return;
-    if (searchValue.length > 0) {
-      const filteredLinks = folderLinks?.filter(
-        (item: any) =>
-          item.description?.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.url?.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      setFilteredLinks(filteredLinks);
-    }
-    if (!searchValue) {
-      setFilteredLinks(folderLinks);
-    }
-  };
+
+  const filteredList = folderLinks?.filter(
+    (item: any) => {
+      if(searchValue.length > 0){
+        if(item.description?.toLowerCase().includes(searchValue.toLowerCase()) ||
+            item.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
+            item.url?.toLowerCase().includes(searchValue.toLowerCase())) {
+        return folderLinks;
+      }
+    } else {
+      return filteredLinks;
+    }});
 
   //currentFolderId가 바뀔 때마다 새로 카드리스트 업데이트
   useEffect(() => {
@@ -164,9 +160,7 @@ function Folder() {
         <FloatButton>폴더 추가</FloatButton>
         <LinkBar
           onShow={handleShowModal}
-          onChange={setLink}
-          $view={inView}
-          $viewFooter={inViewFooter}
+          onChange={handleChangeLink}
         />
         <div ref={ref}></div>
         {isShowComponent ? (
@@ -178,20 +172,19 @@ function Folder() {
             <Search
               value={searchValue}
               onChange={handleChangeSearchValue}
-              onFilter={handleFilterCardList}
               onDelete={handleClearSearchValue}
             />
+            {searchValue.length >= 1 && <SearchBarText value={searchValue}/>}
             <FolderMenu
               folderName={folderName}
               folders={personalFolder}
               current={currentFolderId}
               onClick={handleClickMenuButton}
               modal={handleShowModal}
-              onChange={handleFilterCardList}
             />
             {folderLinks.length ? (
               <CardListFolder
-                folderLinks={filteredLinks}
+                folderLinks={filteredList}
                 modal={handleShowModal}
                 setLink={setLink}
               />
@@ -200,7 +193,7 @@ function Folder() {
             )}
           </Wrapper>
         )}
-        {!inView && !inViewFooter && <LinkBarFixed/> }
+        {!inView && !inViewFooter && <LinkBarFixed onChange={handleChangeLink} onShow={handleShowModal}/> }
         <div ref={footerRef}></div>
       </NavAndFooterBasic>
     </>
