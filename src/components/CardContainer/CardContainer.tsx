@@ -9,6 +9,7 @@ import DeleteFolder from "../../modals/contents/DeleteFolder";
 import getFolderTagListData from "../../utils/getFolderTagListData";
 import { SetStateAction, useEffect, useState } from "react";
 import { ICardContainerProps } from "./types/Card.types";
+import { IFolderTagNameListData } from "../Buttons/types/buttons.types";
 
 const SHARE_ICON_TEXT = "공유";
 const EDIT_NAME_ICON_TEXT = "이름 변경";
@@ -23,7 +24,7 @@ function CardTitleText({ text }: { text: string }) {
     setOpen(selectedIcon);
   };
   const changeOpenState = (openState: string) => setOpen(openState);
-  const selectedTagData = getFolderTagListData(true);
+  const selectedTagData: IFolderTagNameListData[] = getFolderTagListData(true);
   return (
     <div className="card-title_text">
       <h2 className="tagName_text">{text}</h2>

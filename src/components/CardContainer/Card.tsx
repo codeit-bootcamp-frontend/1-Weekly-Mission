@@ -3,7 +3,7 @@ import NoCardDataImg from "../../assets/image/img-card--noimg.png";
 import StarIcon from "../../assets/image/icon-star.svg";
 import ThreeDotsIcon from "../../assets/image/kebab.svg";
 import getTimeAgoText from "../../utils/getTimeAgoText";
-import AddFolderOptionBtn from "../StyledButtons/AddFolderOptionBtn";
+import AddFolderOptionBtn from "../Buttons/AddFolderOptionBtn";
 import styled from "styled-components";
 import { useState } from "react";
 import { ICardData } from "./types/Card.types";
@@ -21,15 +21,7 @@ interface Props {
 
 function Card({ cardData }: Props) {
   const [isFloatingBtnActive, setFloatingBtnActivation] = useState(false);
-  const {
-    id,
-    created_at,
-    url,
-    title,
-    description,
-    image_source,
-    folder_id,
-  }: ICardData = cardData;
+  const { created_at, url, description, image_source }: ICardData = cardData;
 
   const timeAgoText: string = getTimeAgoText(created_at);
   const formulatedCreatedDate = created_at.slice(0, 10).replace(/-/gi, ". ");
@@ -61,9 +53,10 @@ function Card({ cardData }: Props) {
         <p className="cardDesc">{description}</p>
         <h4 className="createdDate">{formulatedCreatedDate}</h4>
         <OptionBtnContainer>
-          <AddFolderOptionBtn isFloatingBtnActive={isFloatingBtnActive}>
-            {["삭제하기", "폴더에 추가"]}
-          </AddFolderOptionBtn>
+          <AddFolderOptionBtn
+            isFloatingBtnActive={isFloatingBtnActive}
+            options={["삭제하기", "폴더에 추가"]}
+          ></AddFolderOptionBtn>
         </OptionBtnContainer>
       </div>
     </div>
