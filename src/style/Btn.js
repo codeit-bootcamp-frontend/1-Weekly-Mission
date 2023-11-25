@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Link = styled.a`
-  display: inline-block
+  display: inline-block;
   text-align: center;
   width: 8rem;
   padding: 1rem 1.25rem;

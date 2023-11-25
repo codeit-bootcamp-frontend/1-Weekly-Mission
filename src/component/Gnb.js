@@ -44,7 +44,7 @@ function Gnb({ isFixed }) {
               <span>{userData.email}</span>
             </div>
           ) : (
-            <CTA href="">로그인</CTA>
+            <CTA href="/signin">로그인</CTA>
           )}
         </div>
       </header>

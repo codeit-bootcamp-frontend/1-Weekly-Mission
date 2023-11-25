@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import FloatingBtn from "./FloatingBtn";
-import AddFolderBtn from "./AddFolderBtn";
 import FunctionBtn from "./FunctionBtn";
 import * as Styled from "../style/FolderList";
 import iconShare from "../assets/img/icon-share.svg";
@@ -32,10 +30,10 @@ function FolderList({ folders, params }) {
       return;
     }
     const folder = folders.filter((folder) => {
-      return folder.id == params;
+      return folder.id === Number(params);
     });
 
-    setName(folder[0]["name"]);
+    setName(folder["name"]);
   }
 
   function handleClick(id) {
@@ -44,12 +42,11 @@ function FolderList({ folders, params }) {
   }
 
   useEffect(() => {
-    handleClick(params, name);
+    handleClick(params);
   }, [params]);
 
   return (
     <>
-      <FloatingBtn />
       <Styled.FlexDiv>
         <Styled.FlexUl>
           <li>
@@ -69,13 +66,13 @@ function FolderList({ folders, params }) {
                   name={name}
                   id={"/" + id}
                   onClick={handleClick}
-                  style={active == id ? "blue" : ""}
+                  style={Number(active) === id ? "blue" : ""}
                 />
               </li>
             );
           })}
         </Styled.FlexUl>
-        <AddFolderBtn />
+        <Styled.AddBtn>폴더 추가 +</Styled.AddBtn>
       </Styled.FlexDiv>
 
       <Styled.FlexDiv>
