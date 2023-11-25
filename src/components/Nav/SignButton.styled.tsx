@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.a`
+export const Button = styled.button`
   width: 8.5rem;
   grid-area: sign;
   justify-self: end;

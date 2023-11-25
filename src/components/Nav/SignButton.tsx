@@ -6,11 +6,7 @@ interface Props {
 }
 
 function SignButton({ children, onClick }: Props) {
-  return (
-    <Button href="." onClick={onClick}>
-      {children}
-    </Button>
-  );
+  return <Button onClick={onClick}>{children}</Button>;
 }
 
 export default SignButton;

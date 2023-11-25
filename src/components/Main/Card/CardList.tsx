@@ -5,7 +5,7 @@ import defaultFileImg from "src/assets/nofileimg.png";
 import starImg from "src/assets/star.svg";
 import TimeFlow from "src/components/Main/Card/TimeFlow";
 import Kebab from "src/components/Main/Card/Kebab";
-import { LinkData, SampleLink, URLS } from "src/utils/getData.type";
+import { FolderData, LinkData, SampleLink, URLS } from "src/utils/getData.type";
 import {
   ButtonStar,
   CardImg,
@@ -19,18 +19,20 @@ import {
 } from "src/components/Main/Card/CardList.styled";
 
 interface PcardList {
+  id?: number;
   path: URLS.SHARED_FOLDER | URLS.FOLDER_LINKS;
 }
 
-function CardList({ path }: PcardList) {
-  const CardData = useData(path);
+function CardList({ id, path }: PcardList) {
+  const cardData = useData(path, id);
+  const folderData = useData(URLS.FOLDER_CATEGORY, id);
   const [searchParams] = useSearchParams();
   const folderId = searchParams.get("folderId");
-  const links = CardData?.path === URLS.FOLDER_LINKS ? filterFolder(CardData?.links, folderId) : CardData?.links;
+  const links = cardData?.path === URLS.FOLDER_LINKS ? filterFolder(cardData?.links, folderId) : cardData?.links;
 
-  return links ? (
+  return links?.length ? (
     <ContainerCardList>
-      <CardSet links={links} />
+      <CardSet folder={folderData?.data} links={links} />
     </ContainerCardList>
   ) : (
     <EmptyBox>저장된 링크가 없습니다.</EmptyBox>
@@ -40,20 +42,22 @@ function CardList({ path }: PcardList) {
 export default CardList;
 
 interface PcardSet {
+  folder?: FolderData[];
   links: SampleLink[] | LinkData[];
 }
 
-function CardSet({ links }: PcardSet) {
+function CardSet({ folder, links }: PcardSet) {
   return links.map((link) => {
     return (
       <CardLink key={link.id} className="card" href={link.url} target="_blank" rel="noreferrer">
-        <Card {...link} />
+        <Card folder={folder} {...link} />
       </CardLink>
     );
   });
 }
 
 interface Pcard {
+  folder?: FolderData[];
   url: string;
   imageSource?: string;
   image_source?: string;
@@ -63,7 +67,7 @@ interface Pcard {
   created_at?: string;
 }
 
-function Card({ url, imageSource, image_source, title, description, createdAt = "", created_at = "" }: Pcard) {
+function Card({ folder, url, imageSource, image_source, title, description, createdAt, created_at }: Pcard) {
   return (
     <>
       <WrapperCardImg>
@@ -71,12 +75,12 @@ function Card({ url, imageSource, image_source, title, description, createdAt = 
       </WrapperCardImg>
       <CardText>
         <WrapperTime>
-          <TimeFlow createdAt={createdAt ?? created_at} />
-          <Kebab url={url} />
+          <TimeFlow createdAt={createdAt ?? (created_at as string)} />
+          {folder && <Kebab folder={folder} url={url} />}
         </WrapperTime>
         <H3>{title?.length > 40 ? title.slice(0, 40) + "..." : title}</H3>
         <p>{description?.length > 50 ? description.slice(0, 50) + "..." : description}</p>
-        <p>{formatDate(createdAt ?? created_at)}</p>
+        <p>{formatDate(createdAt ?? (created_at as string))}</p>
       </CardText>
       <ButtonStar>
         <img src={starImg} alt="즐겨찾기에 추가하기" />

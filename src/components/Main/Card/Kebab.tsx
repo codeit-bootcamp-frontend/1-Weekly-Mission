@@ -1,16 +1,15 @@
 import { useRef } from "react";
+import kebabImg from "src/assets/kebab.svg";
 import { Container, PopOver } from "src/components/Main/Card/Kebab.styled";
 import useModal from "src/hooks/useModal";
-import useData from "src/hooks/useData";
-import { URLS } from "src/utils/getData.type";
-import kebabImg from "src/assets/kebab.svg";
+import { FolderData, URLS } from "src/utils/getData.type";
 
 interface Props {
+  folder: FolderData[];
   url: string;
 }
 
-function Kebab({ url }: Props) {
-  const folderData = useData(URLS.FOLDER_CATEGORY);
+function Kebab({ folder, url }: Props) {
   const { modal, dispatch } = useModal();
   const popOver = useRef<HTMLDivElement>(null);
 
@@ -24,9 +23,7 @@ function Kebab({ url }: Props) {
 
   const handleModal = (e: React.MouseEvent<HTMLParagraphElement>) => {
     const type = e.currentTarget.textContent ?? "";
-    if (folderData?.path === URLS.FOLDER_CATEGORY) {
-      dispatch({ type, title: url, data: folderData.data });
-    }
+    dispatch({ type, title: url, data: folder });
   };
 
   const stop = (e: React.MouseEvent<HTMLDivElement>) => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getData } from "src/utils/getData";
 import { Action, Rgeneric, URLS, UrlType } from "src/utils/getData.type";
 
@@ -35,9 +35,12 @@ export const reduceData = <T>(action: Action) => {
 export const useReduce = <T>(reducer: (action: Action) => Rgeneric<T>) => {
   const [state, setState] = useState<Rgeneric<T>>();
 
-  const updateState = (action: Action) => setState(() => reducer(action));
+  const updateState = useCallback((action: Action) => setState(() => reducer(action)), [reducer]);
 
-  const dispatch = (action: Promise<Action> | Action) => (action instanceof Promise ? action.then(updateState) : updateState(action));
+  const dispatch = useCallback(
+    (action: Promise<Action> | Action) => (action instanceof Promise ? action.then(updateState) : updateState(action)),
+    [updateState]
+  );
 
   return { state, dispatch };
 };

@@ -8,12 +8,13 @@ import LinkSection from "src/pages/Folder/LinkSection";
 
 function FolderPage() {
   const [isUser, setIsUser] = useState<boolean>(false);
+  const [id, setId] = useState(Math.ceil(Math.random() * 1));
 
   return (
     <>
-      <Navigation setIsUser={setIsUser} page="folder" />
+      <Navigation id={id} setIsUser={setIsUser} page="folder" />
       <HeaderSearch isUser={isUser} />
-      <Main>{isUser ? <LinkSection /> : <Empty>로그인 정보를 찾을 수 없습니다.</Empty>}</Main>
+      <Main>{isUser ? <LinkSection id={id} /> : <Empty>로그인 정보를 찾을 수 없습니다.</Empty>}</Main>
       <Footer />
     </>
   );

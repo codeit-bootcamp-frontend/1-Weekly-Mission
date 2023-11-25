@@ -10,11 +10,15 @@ import imgDelete from "src/assets/delete.svg";
 import { ButtonAdd, ButtonControl, ButtonFloat, Container, H1, Img, Li, Ul, Wrapper } from "src/components/Main/FolderSelect.styled";
 import { URLS } from "src/utils/getData.type";
 
+interface Props {
+  id: number;
+}
+
 interface IhandleModal {
   (e: React.MouseEvent): void;
 }
 
-function FolderSelect() {
+function FolderSelect({ id }: Props) {
   const [title, setTitle] = useState("전체");
   const { modal, dispatch } = useModal();
 
@@ -26,7 +30,7 @@ function FolderSelect() {
 
   return (
     <>
-      <FolderCategories setTitle={setTitle} handleModal={handleModal} />
+      <FolderCategories id={id} setTitle={setTitle} handleModal={handleModal} />
       <FolderController title={title} handleModal={handleModal} />
       <FolderAddFloat handleModal={handleModal} />
       {modal}
@@ -37,12 +41,13 @@ function FolderSelect() {
 export default FolderSelect;
 
 interface Pcategories {
+  id: number;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
   handleModal: IhandleModal;
 }
 
-function FolderCategories({ setTitle, handleModal }: Pcategories) {
-  const categories = useData(URLS.FOLDER_CATEGORY);
+function FolderCategories({ id, setTitle, handleModal }: Pcategories) {
+  const categories = useData(URLS.FOLDER_CATEGORY, id);
   const [prevSelect, setPrevSelect] = useState<HTMLElement>();
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -64,7 +69,7 @@ function FolderCategories({ setTitle, handleModal }: Pcategories) {
         <Link to="/folder" onClick={handleClick}>
           <Li>전체</Li>
         </Link>
-        {categories.data?.map((category) => (
+        {categories?.data?.map((category) => (
           <Link to={`?folderId=${category.id}`} key={category.id} onClick={handleClick}>
             <Li>{category.name}</Li>
           </Link>

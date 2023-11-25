@@ -10,7 +10,7 @@ export const filterLinks = (links: LinkData[], type: string, folderId: string) =
     return links.filter((link) => link.folder_id === Number(folderId));
   }
   if (type === "searchByKeyword") {
-    return links.filter((link) => link.title.includes(folderId));
+    return links.filter((link) => link.title?.includes(folderId));
   }
 };
 

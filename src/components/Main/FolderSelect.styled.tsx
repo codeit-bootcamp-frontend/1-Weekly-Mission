@@ -17,8 +17,11 @@ export const Ul = styled.ul`
 `;
 
 export const Li = styled.li`
+  height: 3.2rem;
+
   display: flex;
-  padding: 0.6rem 1rem;
+  align-items: center;
+  padding: 0.4rem 1rem;
   background-color: var(--White);
   color: var(--Black);
   border: 0.1px solid var(--Primary);
