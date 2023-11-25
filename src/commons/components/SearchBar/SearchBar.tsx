@@ -1,11 +1,10 @@
-/* 검색어를 입력해 seach 하기 위한 인풋 컴포넌트 */
-
-import styles from "./SearchBar.module.css";
 import { useState, ChangeEvent } from "react";
-import { ReactComponent as SearchIcon } from "../../../assets/images/search-icon.svg";
+import styles from "./SearchBar.module.scss";
+import { ReactComponent as SearchIcon } from "src/assets/images/search-icon.svg";
 
 function SearchBar() {
   const [text, setText] = useState("");
+
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };

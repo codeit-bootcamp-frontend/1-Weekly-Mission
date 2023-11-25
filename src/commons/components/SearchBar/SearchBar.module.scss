@@ -1,6 +1,7 @@
 .search-form-container {
+  max-width: 1060px;
   width: 100%;
-  padding: 6rem 4rem 9rem 4rem;
+  min-width: 500px;
   background-color: white;
 
   .search-form {

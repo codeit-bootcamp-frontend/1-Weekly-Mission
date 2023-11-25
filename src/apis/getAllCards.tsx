@@ -1,7 +1,7 @@
 import { axiosInstance } from "./axiosInstance";
 import USER_ID from "./constants";
 
-export async function getAllCards(id = "") {
+export default async function getAllCards(id = "") {
   let url = "";
   if (id === "") {
     url = `${USER_ID}/links`;

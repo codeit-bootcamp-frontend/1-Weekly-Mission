@@ -1,6 +1,6 @@
 import { useEffect, useState, ReactNode, useCallback } from "react";
 import "src/commons/styles/reset.css";
-import { getUser } from "../../apis/getUser";
+import { getUser } from "src/apis/";
 import { Nav, Footer } from "src/pages/Layout/components";
 
 const INITIAL_USER = {

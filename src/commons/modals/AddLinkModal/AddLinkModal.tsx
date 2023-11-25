@@ -1,5 +1,5 @@
 import styles from "./AddLinkModal.module.scss";
-import { getFolderList } from "../../../apis/getFolderList";
+import { getFolderList } from "src/apis/";
 import { useState, useEffect, MouseEvent } from "react";
 
 interface FolderProps {

@@ -1,5 +1,6 @@
-import FolderNameButton from "./FolderNameButton/FolderNameButton";
+import FolderTagList from "./FolderTagList/FolderTagList";
 import LinkAddBar from "./LinkAddBar/LinkAddBar";
-import FolderViewer from "./FolderViewer/FolderViewer";
+import FolderModifier from "./FolderModifier/FolderModifier";
+import FolderMaker from "./FolderMaker/FolderMaker";
 
-export { FolderNameButton, LinkAddBar, FolderViewer };
+export { FolderTagList, LinkAddBar, FolderModifier, FolderMaker };

@@ -1,44 +1,40 @@
-/* 각 링크를 카드로 보여주는 컴포넌트 */
-
-import styles from "./Card.module.css";
-import NoImg from "../../../assets/images/no-img-card.svg";
+import styles from "./Card.module.scss";
+import NoImg from "src/assets/images/no-img-card.svg";
 import StarButton from "../StarButton/StarButton";
-import formatDate from "../../utils/formatDate";
-import calcDate from "../../utils/calcDate";
+import formatDate from "src/commons/utils/formatDate";
+import calcDate from "src/commons/utils/calcDate";
 import KebabButton from "../KebabButton/KebabButton";
+import { CardInterface } from "src/types";
 
-interface Props {
-  card: {
-    created_at: "";
-    url: "";
-    title: "";
-    description: "";
-    image_source: "";
-  };
+interface CardProps {
+  card: CardInterface;
 }
 
-function Card(card: Props) {
-  const { created_at, url, title, description, image_source } = card.card;
-  const str = calcDate(created_at);
+function Card({ card }: CardProps) {
+  const str = calcDate(String(card.created_at));
 
   return (
     <div className={styles["card-container"]}>
-      <StarButton />
+      <StarButton card={card} />
       <KebabButton card={card} />
-
       <a
-        href={url}
+        href={card.url}
         target="_blank"
         rel="noreferrer noopener"
         className={styles["card-link"]}
       >
         <div className={styles["card-img-section"]}>
-          <img src={image_source ? image_source : NoImg} alt={title} />
+          <img
+            src={card.image_source ? card.image_source : NoImg}
+            alt={card.title}
+          />
         </div>
         <div className={styles["card-text-section"]}>
           <p className={styles["time-stamp"]}>{str}</p>
-          <p className={styles["introduce-text"]}>{description}</p>
-          <p className={styles["created-date"]}>{formatDate(created_at)}</p>
+          <p className={styles["introduce-text"]}>{card.description}</p>
+          <p className={styles["created-date"]}>
+            {formatDate(String(card.created_at))}
+          </p>
         </div>
       </a>
     </div>

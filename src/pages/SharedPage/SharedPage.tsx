@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import ShareHeader from "./components/ShareHeader/ShareHeader";
 import { SearchBar, CardList } from "../../commons/components/index";
-import { getAllCards } from "../../apis/getAllCards";
+import { getAllCards } from "src/apis";
 import "./SharedPage.css";
 import Layout from "../Layout/Layout";
 

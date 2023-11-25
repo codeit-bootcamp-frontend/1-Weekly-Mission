@@ -1,18 +1,9 @@
-/* 폴더 안에 들어있는 카드들을 리스트로 보여주는 컴포넌트 */
-
+import { CardInterface } from "src/types";
 import Card from "../Card/Card";
-import styles from "./CardList.module.css";
+import styles from "./CardList.module.scss";
 
-interface CardProps {
-  created_at: "";
-  url: "";
-  title: "";
-  description: "";
-  image_source: "";
-  id: "";
-}
 interface CardListProps {
-  cardList: CardProps[];
+  cardList: CardInterface[];
 }
 
 function CardList({ cardList }: CardListProps) {
@@ -26,7 +17,7 @@ function CardList({ cardList }: CardListProps) {
   }
   return (
     <section className={styles["card-section"]}>
-      {cardList.map((card: CardProps) => {
+      {cardList?.map((card: CardInterface) => {
         return <Card card={card} key={card.id} />;
       })}
     </section>

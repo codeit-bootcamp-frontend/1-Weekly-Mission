@@ -1,48 +1,14 @@
-/* 추가할 링크를 타이핑하는 인풋 컴포넌트 */
-
 import { useState, ChangeEvent } from "react";
-import styles from "./LinkAddBar.module.css";
-import { ReactComponent as LinkIcon } from "../../../../assets/images/link-icon.svg";
-import AddLinkModal from "../../../../commons/modals/AddLinkModal/AddLinkModal";
-// import AddLinkModal from "@/commons/modals/AddLinkModal/AddLinkModal";
-import ModalLayout from "../../../../commons/modals/ModalLayout";
+import styles from "./LinkAddBar.module.scss";
+import { ReactComponent as LinkIcon } from "src/assets/images/link-icon.svg";
 
 function LinkAddBar() {
   const [keyword, setKeyword] = useState("");
   const handleKeywordChange = (e: ChangeEvent) =>
     setKeyword((e.target as HTMLInputElement).value);
 
-  const INITMODAL = {
-    isOpened: false,
-    modalType: "",
-    targetId: "",
-    targetTitle: "",
-  };
-  const [modalValues, setModalValues] = useState(INITMODAL);
-
-  function handleModal(e: React.MouseEvent<HTMLElement, MouseEvent>): void {
-    e.preventDefault();
-    if (!keyword) return;
-    const newValue = {
-      isOpened: true,
-    };
-    setModalValues((prev) => {
-      return { ...prev, ...newValue };
-    });
-  }
-
-  const closeModal = () => {
-    setModalValues(() => {
-      return { ...INITMODAL };
-    });
-  };
   return (
     <>
-      {modalValues.isOpened && (
-        <ModalLayout onClose={closeModal}>
-          <AddLinkModal linkId={keyword} />
-        </ModalLayout>
-      )}
       <div className={styles["add-form-container"]}>
         <form>
           <div className={styles["add-link-form"]}>
@@ -57,7 +23,6 @@ function LinkAddBar() {
             <button
               className={styles["add-link-button"]}
               id="addLinkButton"
-              onClick={handleModal}
               type="submit"
             >
               추가하기

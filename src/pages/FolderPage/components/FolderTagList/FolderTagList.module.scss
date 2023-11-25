@@ -1,3 +1,14 @@
+.folder-tag-list {
+  width: 100%;
+}
+
+.folder-tags-container {
+  width: 60%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .folder-name-button {
   padding: 1rem;
   white-space: nowrap;
@@ -10,7 +21,14 @@
   }
 }
 
-.clicked-folder-button {
+.clicked {
   background-color: var(--color-primary);
   color: white;
+}
+
+@media (min-width: 1124px) {
+  .folder-tags-container {
+    width: 1060px;
+    margin: auto;
+  }
 }

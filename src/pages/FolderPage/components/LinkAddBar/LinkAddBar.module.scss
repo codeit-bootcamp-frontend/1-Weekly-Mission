@@ -1,14 +1,16 @@
 .add-form-container {
   background-color: var(--linkbrary-bg, #f0f6ff);
+
   & form {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
   }
   .add-link-form {
     position: relative;
-    width: 90%;
+    max-width: 1060px;
+    width: 100%;
+    min-width: 500px;
   }
 }
 
@@ -41,4 +43,16 @@
   position: absolute;
   top: 8rem;
   left: 2rem;
+}
+
+@media (max-width: 1124px) {
+  .add-link-form {
+    padding: 0 4rem;
+  }
+  .add-link-icon {
+    left: 6rem;
+  }
+  .add-link-button {
+    right: 6rem;
+  }
 }

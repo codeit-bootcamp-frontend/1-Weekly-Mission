@@ -1,0 +1,18 @@
+@import "src/commons//styles/global.scss";
+
+.folder-content {
+  margin: 0 auto;
+  padding: 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.card-list-section {
+  margin: 3rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
