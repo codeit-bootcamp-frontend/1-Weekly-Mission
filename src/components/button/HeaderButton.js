@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useMemo, useRef } from "react";
 import styles from "./HeaderButton.module.css";
 import linkImage from "../../assets/images/link.svg";
 import HeaderModal from "../../common/modal/HeaderModal";
@@ -26,6 +26,27 @@ export default function HeaderButton() {
     headerRef: { headerRef, isHeaderVisible, setIsHeadervisible },
     footerRef: { isFooterVisible },
   } = useContext(ObserverContext);
+
+  const observer = useMemo(() => {
+    return new IntersectionObserver((entries) => {
+      const [IntersectionObserverEntry] = entries;
+
+      if (IntersectionObserverEntry.isIntersecting) {
+        setIsHeadervisible(false);
+      } else {
+        setIsHeadervisible(true);
+      }
+    }, options);
+  });
+
+  useEffect(() => {
+    if (headerRef?.current) {
+      observer.observe(headerRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, [headerRef]);
 
   return (
     <div ref={headerRef}>
