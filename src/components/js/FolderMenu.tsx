@@ -73,7 +73,7 @@ function FolderMenu({ folders, onClick, current, folderName, modal }: Props) {
       </Wrapper>
       <FeatureWrapper>
         <CurrentFolderName>
-          {folderName === "" ? folderName : "전체"}
+          {folderName ? folderName : "전체"}
         </CurrentFolderName>
         {folderName && (
           <Container>
@@ -151,11 +151,11 @@ const AddFolderButton = styled.span`
   color: var(--primary);
   text-align: center;
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 1.6rem;
 `;
 
 const CurrentFolderName = styled.span`
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 600;
   letter-spacing: -0.2px;
 `;

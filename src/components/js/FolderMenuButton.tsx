@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactNode } from "react";
+import { ReactNode, SyntheticEvent } from "react";
 interface ButtonItem {
   $isActive?: boolean;
 }
