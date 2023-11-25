@@ -120,8 +120,22 @@ interface Ruser extends Rentity {
   path: URLS.FOLDER_USER;
 }
 
-export type Return = RsampleUser | RsampleFolder | RsampleFolderName | Ruser | Folder | Link;
+export type Return = RsampleUser | RsampleFolder | RsampleFolderName | Ruser | Folder | Link | undefined;
 
 export interface ReduceData {
   (action: Action): Return;
 }
+
+export type Rgeneric<T> = T extends URLS.SHARED_USER
+  ? RsampleUser
+  : T extends URLS.SHARED_FOLDER
+  ? RsampleFolder
+  : T extends URLS.SHARED_FOLDERNAME
+  ? RsampleFolderName
+  : T extends URLS.FOLDER_USER
+  ? Ruser
+  : T extends URLS.FOLDER_CATEGORY
+  ? Folder
+  : T extends URLS.FOLDER_LINKS
+  ? Link
+  : undefined;
