@@ -1,15 +1,17 @@
-import { IFolderTagNameListData } from "./types/common.types";
+import { IFolderTagData } from "./types/common.types";
 
 function getFolderTagListData(isSelectedTagNeeded = false) {
-  const TagListDataEls: HTMLElement = isSelectedTagNeeded
+  const TagListDataEls = isSelectedTagNeeded
     ? document.querySelectorAll(".tag.checked")
     : document.querySelectorAll(".tag");
 
-  const TagListData: IFolderTagNameListData[] = [...TagListDataEls].map(
-    (tagData) => ({
+  const TagListData: IFolderTagData[] = [...TagListDataEls].map(
+    (tagData: any) => ({
       id: tagData?.attributes?.id.value,
-      dataCount: tagData?.dataset.count,
       name: tagData?.innerHTML,
+      link: {
+        count: tagData?.dataset.count,
+      },
     })
   );
   return [...TagListData]; // TagListData: nodeList type
