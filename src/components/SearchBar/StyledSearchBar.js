@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import closeBtnIMG from "assets/closebtn.svg";
 
 export const Form = styled.form`
   display: flex;
@@ -18,4 +19,12 @@ export const Input = styled.input`
   flex-grow: 1;
   background-color: transparent;
   border-color: transparent;
+`;
+
+export const CloseBtn = styled.div`
+  width: 24px;
+  height: 24px;
+  background-image: url(${closeBtnIMG});
+  background-position: center;
+  cursor: pointer;
 `;

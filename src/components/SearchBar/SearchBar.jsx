@@ -2,13 +2,36 @@ import { useState } from "react";
 import SearchIMG from "assets/Search.svg";
 import * as Styled from "./StyledSearchBar";
 
-const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ linksData, setLinksData, originalLinksData }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit(inputValue);
+    if (!inputValue) return;
+    const filteredLinks = linksData.filter((item) => {
+      if (
+        item["description"]?.includes(inputValue) ||
+        item["url"]?.includes(inputValue) ||
+        item["title"]?.includes(inputValue)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    setLinksData((prevData) => ({
+      ...prevData,
+      data: filteredLinks,
+    }));
+  };
+
+  const handleCancelClick = () => {
     setInputValue("");
+    const { data: LinkData } = originalLinksData;
+    setLinksData((prevData) => ({
+      ...prevData,
+      data: LinkData,
+    }));
   };
 
   return (
@@ -23,6 +46,7 @@ const SearchBar = ({ onSubmit }) => {
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="링크를 검색해 보세요."
       />
+      <Styled.CloseBtn onClick={handleCancelClick} />
     </Styled.Form>
   );
 };

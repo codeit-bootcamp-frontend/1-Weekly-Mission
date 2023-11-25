@@ -32,13 +32,13 @@ function DropDown({ url, folderData }) {
     }
   };
 
-  const handleOutsideClick = (e) => {
-    if (e.target !== kebabContainerRef.current) {
-      closePopOver();
-    }
-  };
-
   useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (e.target !== kebabContainerRef.current) {
+        closePopOver();
+      }
+    };
+
     document.addEventListener("click", handleOutsideClick);
     return () => {
       document.removeEventListener("click", handleOutsideClick);

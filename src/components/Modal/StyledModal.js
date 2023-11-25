@@ -148,8 +148,3 @@ export const Li = styled.li`
   align-items: center;
   gap: 8px;
 `;
-
-export const linkCount = styled.span`
-  font-size: 1.4rem;
-  color: var(--gray20);
-`;
