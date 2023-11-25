@@ -10,8 +10,8 @@ type Test = {
   auth_id: string;
 };
 
-function UseUserValues() {
-  const [values, setValues] = useState<Test>();
+function UseUserValues(): [Test | null, () => Promise<void>] {
+  const [values, setValues] = useState<Test | null>(null);
 
   const getUserData = useCallback(async () => {
     try {
