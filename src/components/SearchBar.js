@@ -2,25 +2,16 @@ import searchIcon from "../images/Search.svg";
 import closeIcon from "../images/_close.svg";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-function SearchBar({ items, onSearch }) {
-  const [search, setSearch] = useState("");
+function SearchBar({ search, onSearch }) {
   const [display, setDisplay] = useState(true);
 
   const handleChangeSearch = (e) => {
-    setSearch(e.target.value);
+    onSearch(e.target.value);
   };
 
   const closeSearchBar = () => {
     setDisplay(false);
   };
-
-  const SearchLink = (links, search) => {
-    onSearch(links, search);
-  };
-
-  useEffect(() => {
-    SearchLink(items, search);
-  }, [search]);
 
   return (
     <>
@@ -30,9 +21,7 @@ function SearchBar({ items, onSearch }) {
           className="search-bar"
           placeholder="링크를 검색해 보세요"
           value={search}
-          onChange={(e) => {
-            handleChangeSearch(e);
-          }}
+          onChange={handleChangeSearch}
         />
 
         <SearchIcon src={searchIcon} className="search-icon-image" alt=" " />

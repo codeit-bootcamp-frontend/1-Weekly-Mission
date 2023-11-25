@@ -1,5 +1,9 @@
 import "../../styles/reset.css";
-import { LinkAddBar, FolderAdd } from "../../components/Add.js";
+import {
+  LinkAddBar,
+  FolderAdd,
+  LinkAddBarFixedBot,
+} from "../../components/Add.js";
 import Card from "../../components/Card.js";
 import FooterSpace from "../../components/FooterSpace.js";
 import Nav from "../../components/Nav.js";
@@ -24,6 +28,8 @@ function Folder() {
   const [userId, setUserId] = useState("");
   const [url, setUrl] = useState("");
   const [show, setShow] = useState(true);
+  const [showSecond, setShowSecond] = useState(false);
+  const [search, setSearch] = useState("");
 
   const targetRef = useRef(null);
   const target2Ref = useRef(null);
@@ -78,25 +84,6 @@ function Folder() {
     setNowFolderId(key);
   };
 
-  const handleSearchLinks = (items, value) => {
-    if (value) {
-      const searchingLink = items.filter((link) => {
-        console.log(value);
-        return (
-          (link?.url?.toLowerCase().includes(value.toLowerCase()) ||
-            link?.title?.toLowerCase().includes(value.toLowerCase()) ||
-            link?.description?.toLowerCase().includes(value.toLowerCase())) ===
-          true
-        );
-      });
-
-      setUserLinks(searchingLink);
-    }
-    if (value === "") {
-      handleRenderItems();
-    }
-  };
-
   const openMAF = (e, nowUrl) => {
     e.preventDefault();
     setOpenAddModal((prev) => !prev);
@@ -107,14 +94,43 @@ function Folder() {
     setOpenAddModal(false);
   };
 
+  const searchingLink = userLinks.filter((link) => {
+    if (search.length > 0) {
+      if (
+        link?.url?.toLowerCase().includes(search.toLowerCase()) ||
+        link?.title?.toLowerCase().includes(search.toLowerCase()) ||
+        link?.description?.toLowerCase().includes(search.toLowerCase())
+      ) {
+        return userLinks;
+      }
+    } else {
+      return userLinks;
+    }
+  });
+
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (item) => {
-        item.forEach((it) => {
-          if (it.isIntersecting) {
-            setShow((prev) => !prev);
-          } else {
-            setShow((prev) => !prev);
+      (entries) => {
+        entries.forEach((entry) => {
+          console.log(entry);
+          if (entry.isIntersecting && entry.target.className === "target") {
+            setShow(true);
+            console.log(entry);
+          } else if (
+            !entry.isIntersecting &&
+            entry.target.className === "target"
+          ) {
+            setShow(false);
+            console.log(entry);
+          }
+
+          if (entry.isIntersecting && entry.target.className === "target2") {
+            setShowSecond(true);
+          } else if (
+            !entry.isIntersecting &&
+            entry.target.className === "target2"
+          ) {
+            setShowSecond(false);
           }
         });
       },
@@ -152,9 +168,11 @@ function Folder() {
   return (
     <>
       <Nav lists={userLogin} />
-      <LinkAddBar openMAF={openMAF} show={show} />
-      <S.Target ref={targetRef} />
-      <SearchBar items={userLinks} onSearch={handleSearchLinks} />
+      <LinkAddBar openMAF={openMAF} />
+      {!show && !showSecond ? <LinkAddBarFixedBot openMAF={openMAF} /> : null}
+
+      <div ref={targetRef} className="target" />
+      <SearchBar search={search} onSearch={setSearch} />
       <S.SelectPart>
         <S.TabButtonContainer>
           <TabButton
@@ -171,10 +189,10 @@ function Folder() {
         />
       </S.SelectPart>
 
-      {userLinks.length !== 0 ? (
+      {searchingLink.length !== 0 ? (
         <S.Main>
           <S.Section>
-            {userLinks.map((card) => {
+            {searchingLink.map((card) => {
               return <Card item={card} key={card.id} openMAF={openMAF} />;
             })}
           </S.Section>
@@ -189,7 +207,7 @@ function Folder() {
           url={url}
         />
       ) : null}
-      <S.Target ref={target2Ref} />
+      <div ref={target2Ref} className="target2" />
       <FooterSpace />
     </>
   );

@@ -4,29 +4,55 @@ import linkAdd from "../images/link.svg";
 import add from "../images/add.svg";
 import { useState } from "react";
 
-export function LinkAddBar({ openMAF, show }) {
+export function LinkAddBar({ openMAF }) {
   const [text, setText] = useState("");
 
   const handleChangeText = (e) => setText(e.target.value);
   const handleTypingUrl = (e) => openMAF(e, text);
   return (
-    <FolderHeader>
-      <LinkAddBackground $show={show}>
-        <LinkAddBarWrapper>
-          <LinkAddBarInput
-            name="text"
-            value={text}
-            placeholder="링크를 추가해보세요"
-            onChange={handleChangeText}
-          />
+    <>
+      <FolderHeader>
+        <LinkAddBackground>
+          <LinkAddBarWrapper>
+            <LinkAddBarInput
+              name="text"
+              value={text}
+              placeholder="링크를 추가해보세요"
+              onChange={handleChangeText}
+            />
 
-          <LinkAddBarImage src={linkAdd} alt=" " />
-          <CtaShort onClick={handleTypingUrl} href="/">
-            <span>추가하기</span>
-          </CtaShort>
-        </LinkAddBarWrapper>
-      </LinkAddBackground>
-    </FolderHeader>
+            <LinkAddBarImage src={linkAdd} alt=" " />
+            <CtaShort onClick={handleTypingUrl} href="/">
+              <span>추가하기</span>
+            </CtaShort>
+          </LinkAddBarWrapper>
+        </LinkAddBackground>
+      </FolderHeader>
+    </>
+  );
+}
+
+export function LinkAddBarFixedBot({ openMAF }) {
+  const [text, setText] = useState("");
+
+  const handleChangeText = (e) => setText(e.target.value);
+  const handleTypingUrl = (e) => openMAF(e, text);
+  return (
+    <LinkAddBarBackFixed>
+      <LinkAddBarWrapper>
+        <LinkAddBarInput
+          name="text"
+          value={text}
+          placeholder="링크를 추가해보세요"
+          onChange={handleChangeText}
+        />
+
+        <LinkAddBarImage src={linkAdd} alt=" " />
+        <CtaShort onClick={handleTypingUrl} href="/">
+          <span>추가하기</span>
+        </CtaShort>
+      </LinkAddBarWrapper>
+    </LinkAddBarBackFixed>
   );
 }
 
@@ -185,4 +211,10 @@ const CtaShort = styled(Cta)`
   justify-content: center;
   align-items: center;
   gap: 10px;
+`;
+
+const LinkAddBarBackFixed = styled(LinkAddBackground)`
+  display: flex;
+  position: fixed;
+  bottom: 0;
 `;
