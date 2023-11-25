@@ -4,7 +4,13 @@
   justify-content: center;
   align-items: center;
   height: 18rem;
+}
+
+.sticky {
   position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
 }
 
 .button__container {
