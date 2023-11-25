@@ -257,6 +257,25 @@
   font-weight: 600;
 }
 
+/* 검색결과 */
+.search-result {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto 40px;
+  display: flex;
+  color: var(--linkbrary-gray-60);
+  font-family: Pretendard;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.search-result h2 {
+  color: var(--linkbrary-gray-100);
+  font-family: Pretendard;
+  font-size: 32px;
+  font-weight: 600;
+}
+
 /* section3 */
 .section-title-third {
   width: 100%;
@@ -453,7 +472,8 @@
 }
 
 @media screen and (max-width: 1199px) {
-  .section-title-second {
+  .section-title-second,
+  .search-result {
     padding: 0 32px;
     max-width: 765px;
   }
@@ -484,6 +504,13 @@
   .section-title-second {
     max-width: 390px;
     margin: 20px auto 32px;
+  }
+  .search-result {
+    max-width: 390px;
+    font-size: 24px;
+  }
+  .search-result h2 {
+    font-size: 24px;
   }
   .section-title-first .add-link {
     max-width: 325px;

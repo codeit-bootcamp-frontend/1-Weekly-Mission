@@ -31,6 +31,7 @@ type modalBgType = {
 interface FolderType {
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setIsSecondVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setSearchResult: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const modalBg: modalBgType = {
@@ -44,8 +45,13 @@ const modalBg: modalBgType = {
   transform: "translate(-50%, -50%)",
 };
 
-const Folder = ({ setIsVisible, setIsSecondVisible }: FolderType) => {
-  const { account, isVisible, isSecondVisible } = useContext(AccountContext);
+const Folder = ({
+  setIsVisible,
+  setIsSecondVisible,
+  setSearchResult,
+}: FolderType) => {
+  const { account, isVisible, isSecondVisible, searchResult } =
+    useContext(AccountContext);
   const [folderOption, setFolderOption] = useState<folderOptionType | null>(
     null
   );
@@ -94,7 +100,7 @@ const Folder = ({ setIsVisible, setIsSecondVisible }: FolderType) => {
       });
     }
   };
-  console.log(linkCardsData);
+  /*  console.log(linkCardsData); */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -170,7 +176,8 @@ const Folder = ({ setIsVisible, setIsSecondVisible }: FolderType) => {
           />
         ) : null}
         <div className="observer" ref={targetElement}></div>
-        <Search />
+        <Search setSearchResult={setSearchResult} searchResult={searchResult} />
+
         {!foldersErrorMessage ? (
           <UserFolder
             folderDataObject={folderDataObject}
@@ -190,6 +197,7 @@ const Folder = ({ setIsVisible, setIsSecondVisible }: FolderType) => {
               handleCebabClick={handleCebabClick}
               handleListClick={handleListClick}
               iscebabClick={iscebabClick}
+              searchResult={searchResult}
             />
           ) : (
             <h3 className="noLink">저장된 링크가 없습니다</h3>

@@ -6,8 +6,12 @@ import { AccountContext } from "../contexts/AccountContext";
 import { useFetch, useQueryFetch } from "../hooks/useFetch";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-const Shared = () => {
-  const { account, errorMessage } = useContext(AccountContext);
+interface SharedType {
+  setSearchResult: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Shared = ({ setSearchResult }: SharedType) => {
+  const { account, errorMessage, searchResult } = useContext(AccountContext);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const userId: any = searchParams.get("user");
@@ -41,10 +45,13 @@ const Shared = () => {
         account={account?.data[0]}
         errorMessage={errorMessage}
       />
-      <Search />
+      <Search setSearchResult={setSearchResult} searchResult={searchResult} />
       {!linksErrorMessage ? (
         getBookmarkNumber()?.link.count > 0 ? (
-          <Cards linkCardsData={personalfolderData} />
+          <Cards
+            linkCardsData={personalfolderData}
+            searchResult={searchResult}
+          />
         ) : (
           <h3 className="noLink">저장된 링크가 없습니다</h3>
         )

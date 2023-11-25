@@ -15,6 +15,7 @@ interface CardsType {
     item?: string | null
   ) => void;
   iscebabClick?: boolean;
+  searchResult: string | undefined;
 }
 
 const Cards = ({
@@ -23,6 +24,7 @@ const Cards = ({
   handleCebabClick,
   handleListClick,
   iscebabClick,
+  searchResult,
 }: CardsType) => {
   if (!linkCardsData) return;
   const { data: linksData } = linkCardsData;
@@ -34,10 +36,29 @@ const Cards = ({
     iscebabClick,
   };
 
+  const newLinkData = linksData?.filter((link: any) => {
+    const searchResultToLower = searchResult?.toLowerCase();
+    const urlToLower = link?.url?.toLowerCase();
+    const titleToLower = link?.title?.toLowerCase();
+    const desToLower = link?.description?.toLowerCase();
+
+    if (searchResult!.length > 0) {
+      if (
+        urlToLower?.indexOf(searchResultToLower) > -1 ||
+        titleToLower?.indexOf(searchResultToLower) > -1 ||
+        desToLower?.indexOf(searchResultToLower) > -1
+      ) {
+        return linksData;
+      }
+    } else {
+      return linksData;
+    }
+  });
+
   return (
     <div className="section-title section-title-third">
       <div className="section-title-third-inner">
-        {linksData?.map((item: any) => (
+        {newLinkData?.map((item: any) => (
           <a key={item.id} href={item.url} target="_blank">
             <CardItem item={item} {...cardProps} />
           </a>

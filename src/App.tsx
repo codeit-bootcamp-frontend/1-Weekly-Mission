@@ -14,40 +14,43 @@ function App() {
   const { data: userData, errorMessage } = useFetch("users/1", 1);
   const [isVisible, setIsVisible] = useState(false);
   const [isSecondVisible, setIsSecondVisible] = useState(false);
+  const [searchResult, setSearchResult] = useState("");
   if (!userData) return;
   /* userData.data[0] */
   return (
     <AccountContext.Provider
-      value={{ account: userData, errorMessage, isVisible, isSecondVisible }}
+      value={{
+        account: userData,
+        errorMessage,
+        isVisible,
+        isSecondVisible,
+        searchResult,
+      }}
     >
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/shared" element={<Shared />} />
+          <Route
+            path="/shared"
+            element={<Shared setSearchResult={setSearchResult} />}
+          />
           <Route
             path="/folder"
             element={
               <Folder
                 setIsVisible={setIsVisible}
                 setIsSecondVisible={setIsSecondVisible}
+                setSearchResult={setSearchResult}
               />
             }
           >
-            <Route
-              index
-              element={
-                <Folder
-                  setIsVisible={setIsVisible}
-                  setIsSecondVisible={setIsSecondVisible}
-                />
-              }
-            />
             <Route
               path=":folderId"
               element={
                 <Folder
                   setIsVisible={setIsVisible}
                   setIsSecondVisible={setIsSecondVisible}
+                  setSearchResult={setSearchResult}
                 />
               }
             />

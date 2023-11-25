@@ -6,6 +6,7 @@ interface AccountType {
   errorMessage: string | null | any;
   isVisible: boolean;
   isSecondVisible: boolean;
+  searchResult: string | undefined;
 }
 
 export const AccountContext = createContext<AccountType>({
@@ -13,4 +14,5 @@ export const AccountContext = createContext<AccountType>({
   errorMessage: null,
   isVisible: false,
   isSecondVisible: false,
+  searchResult: "",
 });
