@@ -12,7 +12,9 @@ interface Props {
   item: {
     created_at?: Date,
     createdAt?: Date,
-    description: string
+    description: string,
+    image_source?: string,
+    imageSource?: string
   };
   path: string
 }

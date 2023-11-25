@@ -1,7 +1,15 @@
 import styled from 'styled-components';
 import default_card_image from '../../assets/image/default_card.png';
 
-function CardImage({ item, path }) {
+interface Props {
+  item: {
+    image_source?: string,
+    imageSource?: string
+  };
+  path: string
+}
+
+function CardImage({ item, path }: Props) {
   const imageSource = path === '/folder' ? item.image_source : item.imageSource;
   const cardImage = imageSource ? imageSource : default_card_image;
 
@@ -12,7 +20,7 @@ function CardImage({ item, path }) {
 
 export default CardImage;
 
-const CardImageBox = styled.div`
+const CardImageBox = styled.div<{$cardImage: string}>`
   width: 100%;
   height: 19rem;
   background: url(${({ $cardImage }) => $cardImage}) lightgray 50% / cover no-repeat;
