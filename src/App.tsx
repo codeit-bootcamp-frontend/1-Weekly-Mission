@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { FolderPage, SharedPage, HomePage } from "./pages/index";
+import { FolderPage, SharedPage, HomePage, ErrorPage } from "./pages/index";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
             <Route path=":folderId" element={<FolderPage />} />
           </Route>
           <Route path="shared" element={<SharedPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -15,9 +15,9 @@ function HomePage() {
           <span className={styles["important"]}>세상의 모든 정보</span>를 <br />
           쉽게 저장하고 관리해 보세요
         </h1>
-        <Link to="/folder">
-          <button className={styles["link-button"]}>링크 추가하기</button>
-        </Link>
+        <button className={styles["link-button"]}>
+          <Link to="/folder">링크 추가하기</Link>
+        </button>
         <div className={styles["sample-img"]}>
           <img src={HomeImg} />
         </div>
