@@ -1,4 +1,4 @@
-import Layout from "../../commons/components/Layout/Layout";
+import Layout from "../Layout/Layout";
 import "./FolderPage.css";
 import FolderViewer from "./components/FolderViewer/FolderViewer";
 import { useState } from "react";

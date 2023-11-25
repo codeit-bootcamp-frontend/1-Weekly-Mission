@@ -1,9 +1,7 @@
-import { useEffect, useState, ReactNode } from "react";
-
-import "../../styles/reset.css";
-import { Nav, Footer } from "../index";
-import { getUser } from "../../../apis/getUser";
-// import { getUser } from "@/apis/getUser";
+import { useEffect, useState, ReactNode, useCallback } from "react";
+import "src/commons/styles/reset.css";
+import { getUser } from "../../apis/getUser";
+import { Nav, Footer } from "src/pages/Layout/components";
 
 const INITIAL_USER = {
   id: "",
@@ -22,18 +20,18 @@ interface Props {
 function Layout({ children, isSticky = true }: Props) {
   const [userValues, setUserValues] = useState(INITIAL_USER);
 
-  const loadUser = async () => {
+  const loadUser = useCallback(async () => {
     const { data } = await getUser();
 
     if (!data) return;
     setUserValues((prevValues) => {
       return { ...prevValues, ...data[0] };
     });
-  };
+  }, []);
 
   useEffect(() => {
     loadUser();
-  }, []);
+  }, [loadUser]);
 
   return (
     <>

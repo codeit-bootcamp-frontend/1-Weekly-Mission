@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./HomePage.module.scss";
-import Layout from "src/commons/components/Layout/Layout";
+import Layout from "../Layout/Layout";
 import HomeImg from "src/assets/images/home-img.png";
 import HomeImg1 from "src/assets/images/home-img1.png";
 import HomeImg2 from "src/assets/images/home-img2.png";

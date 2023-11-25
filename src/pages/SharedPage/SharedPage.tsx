@@ -4,7 +4,7 @@ import ShareHeader from "./components/ShareHeader/ShareHeader";
 import { SearchBar, CardList } from "../../commons/components/index";
 import { getAllCards } from "../../apis/getAllCards";
 import "./SharedPage.css";
-import Layout from "../../commons/components/Layout/Layout";
+import Layout from "../Layout/Layout";
 
 interface FolderProps {
   folderName: string;
