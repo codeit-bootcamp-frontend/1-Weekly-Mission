@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Button } from './Button';
 
-export const ModalBody = styled.div`
+export const ModalBody = styled.div<{$action: string}>`
   display: inline-flex;
   position: fixed;
   z-index: 5;
@@ -92,4 +92,4 @@ export const ModalFolderRedButton = styled(Button)`
   font-size: 1.6rem;
   padding: 1.6rem 2rem;
   background: #FF5B56;
-`
+`;
