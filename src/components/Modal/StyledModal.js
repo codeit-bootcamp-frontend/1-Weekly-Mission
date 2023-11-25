@@ -22,7 +22,7 @@ export const ModalBackground = styled.div`
     $back === "noBG" ? `rgba(0, 0, 0, 0)` : `rgba(0, 0, 0, 0.4)`};
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 2000;
   position: fixed;
   top: -${window.scrollY}px;
   left: 0;
@@ -46,7 +46,7 @@ export const Spinner = styled.div`
 export const Container = styled.div`
   width: 35rem;
   z-index: 9999;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -62,11 +62,11 @@ export const Container = styled.div`
 `;
 
 export const ModalLabel = styled.h1`
-  font-size: 1.6rem;
+  font-size: 2rem;
 `;
 
 export const ModalContentName = styled.h1`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--gray20);
   margin-top: -10px;
 `;
@@ -131,4 +131,25 @@ export const ModalCloseBtn = styled.div`
   width: 24px;
   height: 24px;
   cursor: pointer;
+`;
+
+export const Ul = styled.ul`
+  width: 100%;
+  height: 160px;
+  border: none;
+  list-style: none;
+  padding-left: 0px;
+  overflow-y: scroll;
+`;
+
+export const Li = styled.li`
+  height: 25%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const linkCount = styled.span`
+  font-size: 1.4rem;
+  color: var(--gray20);
 `;

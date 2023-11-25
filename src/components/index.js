@@ -17,5 +17,8 @@ export { default as NoFolderLink } from "./FolderLists/NoFolderLink";
 export { default as Modal } from "./Modal/Modal";
 export { default as ModalLoading } from "./Modal/ModalLoading";
 export { default as ShareModal } from "./Modal/ShareModal";
+export { default as AddFolderModal } from "./Modal/AddFolderModal";
 export { default as ModalContentName } from "./Modal/ModalContentName";
 export { default as ModalInput } from "./Modal/ModalInput";
+export { default as DropDown } from "./DropDown/DropDown";
+export { default as DropDownList } from "./DropDown/DropDownList";

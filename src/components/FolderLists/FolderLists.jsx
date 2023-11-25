@@ -129,7 +129,7 @@ const FolderLists = ({ linksData, folderData, id }) => {
       {isDeleteOpen && (
         <Modal
           title="폴더 삭제"
-          trigger={<ModalContentName contentName="폴더명" />}
+          trigger={<ModalContentName contentName={folderTitle} />}
           closeModal={closeDelete}
           btnContent="삭제하기"
           color="red"

@@ -12,7 +12,6 @@ export const CardContainer = styled.div`
   max-height: 334px;
   border-radius: 15px;
   box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.16);
-  overflow: hidden;
   position: relative;
 
   &:hover {
@@ -29,6 +28,7 @@ export const CardImgBox = styled.div`
   height: 65%;
   display: flex;
   justify-content: center;
+  border-radius: 15px 15px 0px 0px;
   align-items: center;
   overflow: hidden;
 `;
@@ -47,10 +47,6 @@ export const AdditionalInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-export const Kebab = styled.img`
-  cursor: pointer;
 `;
 
 export const Description = styled.p`

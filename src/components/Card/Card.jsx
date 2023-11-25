@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { timeForToday } from "utils/moment";
-import kebab from "assets/kebab.svg";
+import { DropDown } from "components";
 import noImageIMG from "assets/noImage.svg";
 import starIMG from "assets/star.svg";
 import chosenStarIMG from "assets/chosenStar.svg";
 import * as Styled from "./StyledCard";
 
-const Card = ({ data }) => {
+const Card = ({ data, folderData }) => {
   const CREATED_AT = data.createdAt ? data.createdAt : data.created_at;
   const IMG_SRC = data.imageSource ? data.imageSource : data.image_source;
   const URL = data.url;
@@ -19,12 +19,8 @@ const Card = ({ data }) => {
     return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
   };
 
-  const handleKebabClick = (e) => {
-    e.stopPropagation();
-  };
-
   const handleStarClick = (e) => {
-    e.stopPropagation();
+    e.preventDefault();
     if (star) {
       setStar(false);
     } else {
@@ -44,11 +40,7 @@ const Card = ({ data }) => {
         <Styled.InfoContainer>
           <Styled.AdditionalInfo>
             <span>{timeForToday(CREATED_AT)}</span>
-            <Styled.Kebab
-              src={kebab}
-              alt="카드 설정 더보기"
-              onClick={handleKebabClick}
-            />
+            <DropDown url={URL} folderData={folderData} />
           </Styled.AdditionalInfo>
           <Styled.Description>{DESCRIPTION}</Styled.Description>
           <span>{formatDate(CREATED_AT)}</span>

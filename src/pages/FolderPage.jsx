@@ -84,7 +84,10 @@ const FolderPage = () => {
         {linksData.data.length === 0 ? (
           <NoFolderLink />
         ) : (
-          <CardSection data={linksData.data} />
+          <CardSection
+            data={linksData.data}
+            folderData={folderListsData.data}
+          />
         )}
       </Styled.Article>
     </>
