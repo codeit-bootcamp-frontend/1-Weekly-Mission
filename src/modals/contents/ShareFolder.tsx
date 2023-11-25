@@ -6,10 +6,11 @@ import facebook from "../../assets/image/facebook.svg";
 import link from "../../assets/image/link.svg";
 import ModalContainer from "../ModalContainer";
 import getFolderTagListData from "../../utils/getFolderTagListData";
+import { IModalContentsProps } from "./types/modalContents.types";
 
 const USER_ID = 1;
 
-const SnsButton = styled.button`
+const SnsButton = styled.button<{ backgroundColor: string }>`
   display: flex;
   padding: 12px;
   justify-content: center;
@@ -47,7 +48,7 @@ function getFolderName() {
   return getFolderTagListData(true);
 }
 
-const SnsItem = {
+const SnsItem: ISnsItems = {
   kakao: {
     ImgUrl: kakao,
     backgroundColor: "#FEE500",
@@ -67,8 +68,18 @@ const SnsItem = {
   },
 };
 
-function ShareSns({ children }) {
-  const handleClick = (snsUrl) => {
+interface ISnsItems {
+  [name: string]: IName;
+}
+interface IName {
+  ImgUrl: string;
+  backgroundColor: string;
+  name: string;
+  url?: string;
+}
+
+function ShareSns({ children }: { children: IName }) {
+  const handleClick = (snsUrl: string): void => {
     window.open(snsUrl);
   };
 
@@ -76,15 +87,19 @@ function ShareSns({ children }) {
     <Container>
       <SnsButton
         backgroundColor={children.backgroundColor}
-        onClick={() => handleClick(children.url)}
+        onClick={() => children.url && handleClick(children.url)}
       >
-        <img src={children.ImgUrl} alt="sns icon"></img>
+        <img src={children?.ImgUrl} alt="sns icon"></img>
       </SnsButton>
-      <TextStyle>{children.name}</TextStyle>
+      <TextStyle>{children?.name}</TextStyle>
     </Container>
   );
 }
-function ShareFolder({ isOpen, changeOpenState, folderTagName }) {
+function ShareFolder({
+  isOpen,
+  changeOpenState,
+  folderTagName,
+}: IModalContentsProps) {
   return (
     <ModalContainer isOpen={isOpen} onClick={changeOpenState}>
       <Content>

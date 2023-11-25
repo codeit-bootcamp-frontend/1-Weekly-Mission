@@ -1,8 +1,8 @@
 /**
- * @param {String} requestBodyData request body data
- * @param {String} requestUrlType request url type
- * @param {String} requestMethod request method (POST/ GET / DELETE / PUT)
- * @returns {Boolean} whether request result is Ok (status:200)
+ * @param {?String} requestBodyData request body data
+ * @param {?String} requestUrlType request url type
+ * @param {?String} requestMethod request method (POST/ GET / DELETE / PUT)
+ * @returns {any} resultData (returns parsed json object)
  */
 
 async function requestData(requestBodyData, requestUrlType, requestMethod) {

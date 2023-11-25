@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import CloseTabBtn from "../components/StyledButtons/CloseTabBtn";
 import ReactModal from "react-modal";
+import { ReactNode } from "react";
+import { IOnClick } from "../utils/types/common.types";
 
 const ReactModalContainer = styled(ReactModal)`
   border-radius: 15px;
@@ -13,7 +15,15 @@ const ReactModalContainer = styled(ReactModal)`
   transform: translate(-50%, -50%);
 `;
 
-function ModalContainer({ onClick, isOpen, children }) {
+interface IModalContainerProps extends IOnClick {
+  isOpen?: boolean;
+  children?: ReactNode;
+}
+function ModalContainer({
+  onClick,
+  isOpen = false,
+  children,
+}: IModalContainerProps) {
   return (
     <ReactModalContainer isOpen={isOpen}>
       <CloseTabBtn onClick={onClick} />

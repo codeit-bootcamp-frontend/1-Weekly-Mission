@@ -18,7 +18,7 @@ export const TitleText = styled.div`
   line-height: normal;
 `;
 
-export const DescriptionText = styled.h5`
+export const DescriptionText = styled.h5<{ margin?: string }>`
   color: #9fa6b2;
   text-align: center;
   font-size: 14px;
