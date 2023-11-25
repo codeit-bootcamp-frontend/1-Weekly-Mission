@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import add_icon from '../assets/svg/add.svg';
 
 interface Props {
-  onOpen: ({}) => void;
+  onOpen: (params: {isOpen: boolean}) => void;
 }
 
 function FloatingActionButton({ onOpen }: Props) {

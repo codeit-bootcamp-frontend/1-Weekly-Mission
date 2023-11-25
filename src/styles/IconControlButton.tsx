@@ -6,7 +6,10 @@ interface Props {
     name: string,
     action: string
   };
-  onOpen: ({}) => void;
+  onOpen: (params: {
+    isOpen: boolean,
+    action: string
+  }) => void;
 }
 
 function IconControlButton({ icon, onOpen }: Props) {
