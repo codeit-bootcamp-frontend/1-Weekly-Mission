@@ -2,20 +2,17 @@ import "./Header.css";
 import logoImg from "../../assets/image/logo.svg";
 import requestData from "../../services/api";
 import { useEffect, useState } from "react";
+import { IUserData } from "./types/Header.types";
 
 function Header() {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState<IUserData>();
 
   useEffect(() => {
     async function getUserDataResponse() {
       // 헤더에 표시되는 유저 이메일, 사진의 response data 받이오기
-      const { data: userDataResponse } = await requestData(
-        null,
-        "users/1",
-        "GET"
-      );
+      const { data: userDataResponse }: { data: IUserData[] } =
+        await requestData(null, "users/1", "GET");
       setUserData(userDataResponse[0]);
-      console.log(userDataResponse);
     }
     getUserDataResponse();
   }, []);
@@ -27,11 +24,11 @@ function Header() {
         <div className="header-content__userDiv">
           <img
             className="header-content__userDiv__userImg"
-            src={userData.image_source}
+            src={userData?.image_source}
             alt="user profile"
           />
           <h4 className="header-content__userDiv__emailTxt">
-            {userData.email}
+            {userData?.email}
           </h4>
         </div>
       </div>

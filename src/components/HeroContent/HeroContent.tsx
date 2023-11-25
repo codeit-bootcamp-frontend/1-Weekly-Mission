@@ -1,4 +1,4 @@
-import FolderHero from "./FolderHero/FolderHero";
+import FolderHero from "./FolderHero/FolderHero.jsx";
 import SharedHero from "./SharedHero/SharedHero";
 import { useLocation } from "react-router-dom";
 function HeroContent() {

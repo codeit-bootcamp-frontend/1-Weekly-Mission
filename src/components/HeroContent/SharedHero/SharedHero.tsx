@@ -2,9 +2,10 @@ import "./SharedHero.css";
 import { useEffect, useState } from "react";
 import requestData from "../../../services/api";
 import noUserImg from "../../../assets/image/icon-myprofile.svg";
+import { IFolderInfoData } from "../types/Hero.types";
 
 function SharedHero() {
-  const [folderInfoData, setFolderInfoData] = useState({});
+  const [folderInfoData, setFolderInfoData] = useState<IFolderInfoData>({});
 
   async function getFolderInfoResponse() {
     const { folder } = await requestData(null, "sample/folder", "GET");
@@ -13,7 +14,9 @@ function SharedHero() {
     setFolderInfoData({ folderName, userName, userImg });
   }
 
-  useEffect(() => getFolderInfoResponse, []);
+  useEffect(() => {
+    getFolderInfoResponse();
+  }, []);
 
   return (
     <section className="hero--shared">
@@ -21,15 +24,15 @@ function SharedHero() {
         <img
           className="folder-image"
           alt="folder icon"
-          src={folderInfoData.userImg ? folderInfoData.userImg : noUserImg}
+          src={folderInfoData?.userImg ? folderInfoData.userImg : noUserImg}
         />
-        <h4 className="folder-userName">{folderInfoData.userName}</h4>
+        <h4 className="folder-userName">{folderInfoData?.userName}</h4>
       </div>
       <div
         className="folder-folderName"
         // style="width: 800px; position: relative"
       >
-        {folderInfoData.folderName}
+        {folderInfoData?.folderName}
       </div>
     </section>
   );
