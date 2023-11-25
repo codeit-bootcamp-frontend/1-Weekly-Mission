@@ -1,21 +1,18 @@
 import * as S from "./Button.style";
 
-const Button: {
-  className: string,
-} = { 
-}
+type ButtonProps = {
+  className: string;
+  children: React.ReactNode;
+  onClick: () => void;
+};
 
-function Button({ 
-  className,
-  children,
-  onClick,
-}) {
+function Button(props: ButtonProps) {
   return (
     <S.Button
-      className={className}
-      onClick={onClick}
+      className={props.className}
+      onClick={props.onClick}
     >
-      {children}
+      {props.children}
     </S.Button>
   );
 }
