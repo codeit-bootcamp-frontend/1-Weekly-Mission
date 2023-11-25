@@ -7,9 +7,7 @@ import SearchBar from "./SearchBar";
 import CardList from "./CardList";
 
 function Folder() {
-  const [data, isLoading, LoadingError, getSampleAsync] = useAsync(() =>
-    getSample("folder")
-  );
+  const [data] = useAsync(() => getSample("folder"));
 
   const folder = data?.folder;
   const name = folder?.name;

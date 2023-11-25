@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import LogoImg from "../../assets/card-logo.png";
 import StarIcon from "../../assets/star.png";
@@ -37,12 +37,10 @@ function Card({ link }) {
   const [modal, setModal] = useState(null);
 
   const handleModal =
-    ({ link }) =>
+    ({ link, feature }) =>
     (e) => {
       const url = link.url;
       e.preventDefault();
-
-      let feature = e.target.textContent;
 
       setModal(ModalMaker({ url, feature, setIsModalOpen }));
       setIsModalOpen(true);
@@ -84,17 +82,23 @@ function Card({ link }) {
           />
           {isOpenKebab && (
             <S.OptionContainer>
-              <option onClick={(e) => handleModal({ link })(e)}>
+              <option
+                onClick={(e) => handleModal({ link, feature: "삭제하기" })(e)}
+              >
                 삭제하기
               </option>
-              <option onClick={(e) => handleModal({ link })(e)}>
+              <option
+                onClick={(e) =>
+                  handleModal({ link, feature: "폴더에 추가" })(e)
+                }
+              >
                 폴더에 추가
               </option>
             </S.OptionContainer>
           )}
           <S.CardContent>{link.description}</S.CardContent>
           <S.CardContentAt>
-            {moment(link.createdAt || link.created_at).format("YYYY.MM.DD")}
+            {moment(link.createdAt ?? link.created_at).format("YYYY.MM.DD")}
           </S.CardContentAt>
         </S.CardContentContainer>
       </S.CardContainer>

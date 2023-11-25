@@ -75,7 +75,7 @@ function FolderInfo({ folderName, count }) {
 }
 function ModalAddToFolder() {
   const DEFAULT_FOLDER = 1;
-  const [folderData, isLoadingFolder, folderError, getFolderAsync] = useAsync(
+  const [folderData, ] = useAsync(
     () => getFolders(DEFAULT_FOLDER)
   );
 
@@ -118,17 +118,16 @@ function Modal({
         {url && <S.ModalDetail>{url}</S.ModalDetail>}
         {share && <ModalFolderShare />}
         {addLink && <ModalAddToFolder />}
-        {!share && <S.ModalButton red={red}>{buttonText}</S.ModalButton>}
+        {!share && <S.ModalButton $red={red}>{buttonText}</S.ModalButton>}
       </S.ModalContainer>
     </S.ModalWrapper>
   );
 }
 
 export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
-  let modal;
   switch (feature) {
     case "이름 변경":
-      modal = (
+      return (
         <Modal
           title="폴더 이름 변경"
           buttonText="변경하기"
@@ -136,9 +135,9 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
           setIsModalOpen={setIsModalOpen}
         />
       );
-      break;
+
     case "폴더 추가 +":
-      modal = (
+      return (
         <Modal
           title="폴더 추가"
           buttonText="추가하기"
@@ -146,9 +145,9 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
           setIsModalOpen={setIsModalOpen}
         />
       );
-      break;
+
     case "공유":
-      modal = (
+      return (
         <Modal
           title="폴더 공유"
           setIsModalOpen={setIsModalOpen}
@@ -156,10 +155,9 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
           share
         />
       );
-      break;
 
     case "삭제":
-      modal = (
+      return (
         <Modal
           title="폴더 삭제"
           buttonText="삭제하기"
@@ -168,9 +166,9 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
           setIsModalOpen={setIsModalOpen}
         />
       );
-      break;
+
     case "삭제하기":
-      modal = (
+      return (
         <Modal
           title="링크 삭제"
           buttonText="삭제하기"
@@ -179,9 +177,10 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
           setIsModalOpen={setIsModalOpen}
         />
       );
-      break;
-    case ("폴더에 추가", "추가하기"):
-      modal = (
+
+    case "폴더에 추가":
+    case "추가하기":
+      return (
         <Modal
           title="폴더에 추가"
           url={url}
@@ -190,9 +189,7 @@ export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
           setIsModalOpen={setIsModalOpen}
         />
       );
-      break;
   }
-  return modal;
 };
 
 export default Modal;

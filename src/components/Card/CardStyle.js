@@ -35,7 +35,7 @@ export const CardImageContainer = styled.div`
     right: 15px;
   }
 `;
-// object-fit: cover;
+
 export const CardImage = styled.img`
   border-radius: ${({ className }) =>
     className === "no-img-logo" ? "0" : "15px 15px 0 0"};
@@ -91,7 +91,7 @@ export const OptionContainer = styled.div`
   right: 10px;
   top: 220px;
   background-color: ${colors.grayLight};
-  
+
   color: ${colors.gray100};
   font-family: Pretendard;
   font-size: 14px;
@@ -104,7 +104,6 @@ export const OptionContainer = styled.div`
     &:hover {
       color: ${colors.primary};
       background-color: ${colors.gray10};
-      
     }
   }
 `;
