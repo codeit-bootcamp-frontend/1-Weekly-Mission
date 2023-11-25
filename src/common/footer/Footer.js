@@ -32,7 +32,7 @@ export default function Footer() {
       }
     }, options);
 
-    if (footerRef.current) {
+    if (footerRef?.current) {
       observer.observe(footerRef.current);
     }
   }, []);

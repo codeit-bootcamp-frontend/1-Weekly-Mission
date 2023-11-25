@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import FolderNav from "../components/nav/FolderNav";
 import Header from "../common/header/Header";
 import SearchBar from "../common/searchBar/SearchBar";
@@ -14,6 +14,7 @@ import { mapFolderData, mapLinksData } from "../utils/mapData";
 import useFetchLinksData from "./../hooks/useFetchLinksdata";
 import DataList from "../components/linksdata/DataList";
 import FolderMenuList from "../components/foldermenulist/FolderMenuList";
+import ObserverProvider from "./../contexts/provider/ObserverProvider";
 
 export default function FolderPage() {
   // intersection
@@ -34,23 +35,25 @@ export default function FolderPage() {
 
   return (
     <>
-      <LocaleContext.Provider
-        value={{
-          ObjectValue: obj,
-          LinkSDataArr: mappedResult,
-          folderIdKey: folderId,
-        }}
-      >
-        <SearchProvider>
-          <FolderNav data={userProfileData} />
-          <Header />
-          <SearchBar />
-          <FolderMenuList />
-          <FolderMenu folderIdKey={folderId} />
-          <DataList folderIdKey={folderId} />
-          <Footer />
-        </SearchProvider>
-      </LocaleContext.Provider>
+      <ObserverProvider>
+        <LocaleContext.Provider
+          value={{
+            ObjectValue: obj,
+            LinkSDataArr: mappedResult,
+            folderIdKey: folderId,
+          }}
+        >
+          <SearchProvider>
+            <FolderNav data={userProfileData} />
+            <Header />
+            <SearchBar />
+            <FolderMenuList />
+            <FolderMenu folderIdKey={folderId} />
+            <DataList folderIdKey={folderId} />
+            <Footer />
+          </SearchProvider>
+        </LocaleContext.Provider>
+      </ObserverProvider>
     </>
   );
 }

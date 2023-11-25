@@ -34,7 +34,7 @@ export default function HeaderButton() {
   useEffect(() => {
     const observer = new IntersectionObserver((entries, observer) => {
       const [IntersectionObserverEntry] = entries;
-
+      console.log(IntersectionObserverEntry.isIntersecting);
       // header가 보이면서
       if (IntersectionObserverEntry.isIntersecting) {
         setIsHeadervisible(false);
@@ -74,7 +74,7 @@ export default function HeaderButton() {
   }, [isFooterVisible, isHeaderVisible]);
 
   return (
-    <div ref={headerRef} styles={{ height: "18rem", border: "5px solid red" }}>
+    <div ref={headerRef}>
       <div
         className={`${styles.container} ${
           isHeaderVisible ? styles.sticky : ""

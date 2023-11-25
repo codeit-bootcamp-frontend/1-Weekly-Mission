@@ -4,17 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 18rem;
-
-  /* tablet1 */
-  @media (min-width: 768px) and (max-width: 1123px) {
-  }
-
-  /* tablet2 */
-  @media (min-width: 1124px) {
-  }
-  /* descktop*/
-  @media (min-width: 1200px) {
-  }
+  position: fixed;
 }
 
 .button__container {
