@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CloseTabBtn from "../components/StyledButtons/CloseTabBtn";
+import CloseTabBtn from "../components/Buttons/CloseTabBtn";
 import ReactModal from "react-modal";
 import { ReactNode } from "react";
 import { IOnClick } from "../utils/types/common.types";

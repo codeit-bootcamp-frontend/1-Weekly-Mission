@@ -1,6 +1,6 @@
 import { DescriptionText } from "../ModalCommonStyles";
 import { TitleText, Content } from "../ModalCommonStyles";
-import BlueGradationBtn from "../../components/StyledButtons/BlueGradationBtn";
+import BlueGradationBtn from "../../components/Buttons/BlueGradationBtn";
 import checkIcon from "../../assets/image/check-icon.svg";
 import { useState } from "react";
 import styled from "styled-components";

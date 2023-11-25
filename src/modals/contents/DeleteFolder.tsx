@@ -1,6 +1,6 @@
 import { DescriptionText } from "../ModalCommonStyles";
 import { TitleText, Content } from "../ModalCommonStyles";
-import RedWarningBtn from "../../components/StyledButtons/RedWarningBtn";
+import RedWarningBtn from "../../components/Buttons/RedWarningBtn";
 import ModalContainer from "../ModalContainer";
 import { IModalContentsProps } from "./types/modalContents.types";
 
