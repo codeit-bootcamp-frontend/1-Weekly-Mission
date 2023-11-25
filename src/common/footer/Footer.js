@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./Footer.module.css";
 
@@ -19,24 +19,25 @@ export default function Footer() {
     threshold: 1,
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries, observer) => {
+  const observer = useMemo(() => {
+    return new IntersectionObserver((entries) => {
       const [IntersectionObserverEntry] = entries;
-
       if (IntersectionObserverEntry.isIntersecting) {
-        setIsFooterVisible(IntersectionObserverEntry.isIntersecting);
-      }
-
-      if (!IntersectionObserverEntry.isIntersecting) {
-        setIsFooterVisible(IntersectionObserverEntry.isIntersecting);
+        setIsFooterVisible(true);
+      } else {
+        setIsFooterVisible(false);
       }
     }, options);
+  });
 
+  useEffect(() => {
     if (footerRef?.current) {
       observer.observe(footerRef.current);
     }
+    return () => {
+      observer.disconnect();
+    };
   }, []);
-
   return (
     <div className={styles.container} ref={footerRef}>
       <span className={styles.codeit}>©codeit - 2023</span>

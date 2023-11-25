@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import styles from "./HeaderButton.module.css";
 import linkImage from "../../assets/images/link.svg";
 import HeaderModal from "../../common/modal/HeaderModal";
@@ -31,47 +31,72 @@ export default function HeaderButton() {
     threshold: 0,
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries, observer) => {
+  const observer = useMemo(() => {
+    return new IntersectionObserver((entries) => {
       const [IntersectionObserverEntry] = entries;
-      console.log(IntersectionObserverEntry.isIntersecting);
-      // header가 보이면서
+
       if (IntersectionObserverEntry.isIntersecting) {
         setIsHeadervisible(false);
-      }
-      //   hedaer가 안 보이면은 sticky를 보이게하자
-      if (!IntersectionObserverEntry.isIntersecting) {
+      } else {
         setIsHeadervisible(true);
       }
-
-      // if (isFooterVisible) {
-      //   console.log("footer영역이 보인다");
-      //   setIsHeadervisible(false);
-      // }
-
-      // // header가 안 보이면서 footer가 안보일때
-      // if (!IntersectionObserverEntry.isIntersecting && isVisible2) {
-      //   // sticky가 보인다
-      //   setIsvisible(true);
-      // }
-      // // header가 보이면서 footer가보일떄
-      // if (IntersectionObserverEntry.isIntersecting && !isVisible2) {
-      //   setIsvisible(false);
-      // }
-
-      // if (!IntersectionObserverEntry.isIntersecting && !isVisible2) {
-      //   setIsvisible(false);
-      // }
-      // // header가 보일때
     }, options);
+  });
 
+  useEffect(() => {
+    // hedaer가 안 보이면서 footer가 보이면은
+    if (!isHeaderVisible && isFooterVisible) {
+      setIsHeadervisible(false);
+    }
     if (headerRef?.current) {
       observer.observe(headerRef.current);
     }
     return () => {
       observer.disconnect();
     };
-  }, [isFooterVisible, isHeaderVisible]);
+  }, [isHeaderVisible, isFooterVisible]);
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver((entries, observer) => {
+  //     const [IntersectionObserverEntry] = entries;
+  //     console.log(IntersectionObserverEntry.isIntersecting);
+  //     // header가 보이면 sticky를 안보이게
+  //     if (IntersectionObserverEntry.isIntersecting) {
+  //       setIsHeadervisible(false);
+  //     }
+  //     //   hedaer가 안 보이면은 sticky를 보이게하자
+  //     if (!IntersectionObserverEntry.isIntersecting) {
+  //       setIsHeadervisible(true);
+  //     }
+
+  //     // if (isFooterVisible) {
+  //     //   console.log("footer영역이 보인다");
+  //     //   setIsHeadervisible(false);
+  //     // }
+
+  //     // // header가 안 보이면서 footer가 안보일때
+  //     // if (!IntersectionObserverEntry.isIntersecting && isVisible2) {
+  //     //   // sticky가 보인다
+  //     //   setIsvisible(true);
+  //     // }
+  //     // // header가 보이면서 footer가보일떄
+  //     // if (IntersectionObserverEntry.isIntersecting && !isVisible2) {
+  //     //   setIsvisible(false);
+  //     // }
+
+  //     // if (!IntersectionObserverEntry.isIntersecting && !isVisible2) {
+  //     //   setIsvisible(false);
+  //     // }
+  //     // // header가 보일때
+  //   }, options);
+
+  //   if (headerRef?.current) {
+  //     observer.observe(headerRef.current);
+  //   }
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, [isFooterVisible, isHeaderVisible]);
 
   return (
     <div ref={headerRef}>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import styles from "./HeaderButton.module.css";
 import linkImage from "../../assets/images/link.svg";
 import HeaderModal from "../../common/modal/HeaderModal";
