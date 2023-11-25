@@ -1,6 +1,6 @@
-export function getTimeDifference(value) {
-  const now = new Date();
-  const createdDate = new Date(value);
+export function getTimeDifference(value: number) {
+  const now: any = new Date();
+  const createdDate: any = new Date(value);
   const timeDifference = now - createdDate;
   const secondDifference = Math.floor(timeDifference / 1000);
 

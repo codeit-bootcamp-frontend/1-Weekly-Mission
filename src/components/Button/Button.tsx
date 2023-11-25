@@ -1,5 +1,10 @@
 import * as S from "./Button.style";
 
+const Button: {
+  className: string,
+} = { 
+}
+
 function Button({ 
   className,
   children,
