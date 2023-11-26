@@ -29,10 +29,14 @@ export default function FolderUI(props: FolderUIProps) {
       )}
 
       <main>
-        {/* {props.isVisibleHero ? <div>true</div> : <div>false</div>} */}
         <S.HeroContainer ref={props.target}>
           <FolderHero onChangeAddLink={props.handleAddLink} addLinkValue={props.addLinkValue} />
         </S.HeroContainer>
+        {!props.isVisibleHero && (
+          <S.FixedHeroContainer>
+            <FolderHero onChangeAddLink={props.handleAddLink} addLinkValue={props.addLinkValue} />
+          </S.FixedHeroContainer>
+        )}
         <S.Contents>
           <Searchbar
             keyword={props.keyword}

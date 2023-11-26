@@ -7,6 +7,13 @@ export const HeroContainer = styled.section`
   background-color: var(--color-primary-varient);
 `;
 
+export const FixedHeroContainer = styled(HeroContainer)`
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+`;
+
 export const Contents = styled.section`
   padding: 2.5rem 2rem;
   width: 100%;
