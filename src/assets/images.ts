@@ -19,12 +19,13 @@ const IMAGES = {
   pen: require('./pen.svg').default,
   share: require('./share.svg').default,
   trashcan: require('./trashcan.svg').default,
-  close: require('./_close.svg').default,
+  close: require('./close.svg').default,
   hero: require('./hero.png'),
   image1: require('./image1.png'),
   image2: require('./image2.png'),
   image3: require('./image3.png'),
   image4: require('./image4.png'),
+  errorImage: require('./404.jpg'),
 };
 
 export default IMAGES;
