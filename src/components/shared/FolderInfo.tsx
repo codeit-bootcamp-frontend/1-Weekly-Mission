@@ -1,14 +1,9 @@
-import { OwnerType, SampleLinkType } from 'constants/sampleDataType';
+import { SampleFolderDataType } from 'constants/sampleDataType';
 import defaultProfile from 'assets/images/default-profile.svg';
 import styled from 'styled-components';
 
 interface Props {
-  folder: {
-    id: number;
-    name: string;
-    owner: OwnerType;
-    links: SampleLinkType[];
-  };
+  folder: SampleFolderDataType;
 }
 
 function FolderInfo({ folder }: Props) {

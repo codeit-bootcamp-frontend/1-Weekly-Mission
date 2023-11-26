@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import useGetFolders from 'hooks/useGetFolders';
-import SearchBar from 'components/common/SearchBar';
+import SearchBar from 'components/common/Search/SearchBar';
 import CardList from 'components/common/Card/CardList';
 import FolderNav from './FolderNav';
 import AddFolderBtn from './AddFolderBtn';
@@ -8,6 +8,7 @@ import FolderTitle from './FolderTitle';
 import ChoiceBar from './ChoiceBar';
 import { useState } from 'react';
 import { ALL_ID } from 'constants/default';
+import SearchResult from 'components/common/Search/SearchResult';
 
 function FolderContent() {
   const foldersData = useGetFolders(1);
@@ -27,11 +28,7 @@ function FolderContent() {
     <Main>
       <Container>
         <SearchBar search={search} setSearch={setSearch} setKeyword={setKeyword} />
-        {search && (
-          <Result>
-            <Black>{keyword}</Black>(으)로 검색한 결과입니다.
-          </Result>
-        )}
+        {search && <SearchResult keyword={keyword} />}
         {foldersData ? (
           <>
             <NavContainer>
@@ -70,30 +67,6 @@ const Container = styled.div`
   @media (max-width: 767px) {
     width: 100%;
     padding: 0 32px;
-  }
-`;
-
-const Black = styled.span`
-  color: black;
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: -0.2px;
-
-  @media (max-width: 767px) {
-    font-size: 24px;
-  }
-`;
-
-const Result = styled.div`
-  padding-top: 40px;
-
-  color: var(--gray-60);
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: -0.2px;
-
-  @media (max-width: 767px) {
-    font-size: 24px;
   }
 `;
 
