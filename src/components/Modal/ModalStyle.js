@@ -55,7 +55,7 @@ export const S = {
     gap: 10px;
     border-radius: 8px;
     ${cursorPointer}
-    background: ${({ red }) => (red ? colors.red : colors.purpleBlueToSkyBlue)};
+    background: ${({ $red }) => ($red ? colors.red : colors.purpleBlueToSkyBlue)};
     color: ${colors.white};
     font-family: Pretendard;
     font-size: 16px;

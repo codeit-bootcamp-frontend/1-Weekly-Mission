@@ -92,6 +92,7 @@ function ModalAddToFolder() {
     </S.FolderInfoContainer>
   );
 }
+
 function Modal({
   title,
   buttonText,

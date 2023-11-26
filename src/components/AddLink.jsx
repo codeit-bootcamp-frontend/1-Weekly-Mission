@@ -74,9 +74,8 @@ function AddLink() {
   const handleModal = (e) => {
     e.preventDefault();
     const url = e.target.elements.linkInput.value;
-    let feature = "추가하기";
 
-    setModal(ModalMaker({ feature, url, setIsModalOpen }));
+    setModal(ModalMaker({ feature: "추가하기", url, setIsModalOpen }));
     setIsModalOpen(true);
   };
 
