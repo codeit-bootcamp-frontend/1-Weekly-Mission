@@ -1,34 +1,21 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import LinkBar from './LinkBar';
+import { useObserver } from 'hooks/useObserver';
 
-function AddLinkBar() {
-  const [bottom, setBottom] = useState(false);
+interface Props {
+  visibleFooter: boolean;
+}
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        setBottom(entry.isIntersecting ? false : true);
-      });
-    });
-
-    const target = document.querySelector('.top_link_bar');
-    if (target) {
-      console.log(target);
-      observer.observe(target);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+function AddLinkBar({ visibleFooter }: Props) {
+  let top = useObserver('.top_link_bar');
+  if (visibleFooter) top = true;
 
   return (
     <>
       <Top className="top_link_bar">
         <LinkBar />
       </Top>
-      <Bottom $display={bottom}>
+      <Bottom $display={!top}>
         <LinkBar />
       </Bottom>
     </>
