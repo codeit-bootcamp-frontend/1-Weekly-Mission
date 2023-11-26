@@ -29,7 +29,8 @@ export default function FolderUI(props: FolderUIProps) {
       )}
 
       <main>
-        <S.HeroContainer>
+        {/* {props.isVisibleHero ? <div>true</div> : <div>false</div>} */}
+        <S.HeroContainer ref={props.target}>
           <FolderHero onChangeAddLink={props.handleAddLink} addLinkValue={props.addLinkValue} />
         </S.HeroContainer>
         <S.Contents>
