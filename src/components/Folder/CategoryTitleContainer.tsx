@@ -29,13 +29,16 @@ const ICONS = [
   },
 ];
 
+interface Props {
+  name: string;
+}
 
-function CategoryTitleContainer({ name }) {
-  const modalRef = useRef();
+function CategoryTitleContainer({ name }: Props) {
+  const modalRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [action, setAction] = useState('');
 
-  const openModal = ({ isOpen, action }) => {
+  const openModal = ({ isOpen, action }: {isOpen: boolean; action: string;}) => {
     setIsOpen(isOpen);
     setAction(action);
   };
@@ -91,7 +94,7 @@ const CategoryTitle = styled.h4`
   letter-spacing: -0.2px;
 `;
 
-const FolderControlContainer = styled.div`
+const FolderControlContainer = styled.div<{$name: string}>`
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
