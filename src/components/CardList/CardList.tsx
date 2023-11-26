@@ -4,17 +4,25 @@ import { Data } from './types';
 
 interface Props {
   items: Data[];
+  searchKeyword: string;
 }
 
-function CardList({ items }: Props) {
+function CardList({ items, searchKeyword }: Props) {
+  const filteredItems = items?.filter(
+    (item) =>
+      item.title?.includes(searchKeyword) ||
+      item.description?.includes(searchKeyword) ||
+      item.url.includes(searchKeyword)
+  );
+
   return (
     <>
-      {!items.length ? (
+      {!filteredItems.length ? (
         <S.NoLink>저장된 링크가 없습니다</S.NoLink>
       ) : (
-        items && (
+        filteredItems && (
           <S.CardListContainer>
-            {items.map((item) => (
+            {filteredItems.map((item) => (
               <S.CardContainer key={item.id}>
                 <Card item={item} />
               </S.CardContainer>

@@ -14,6 +14,7 @@ interface Folders {
 function FolderPage() {
   const [folder, setFolder] = useState<Data[]>([]);
   const [folderId, setFolderId] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const getFolderId = (folderId: string) => {
     setFolderId(folderId);
@@ -39,9 +40,9 @@ function FolderPage() {
     <>
       <AddLinkForm />
       <MainDiv>
-        <SearchBar />
+        <SearchBar setSearchKeyword={setSearchKeyword} />
         <FolderList getFolderId={getFolderId} />
-        <CardList items={folder} />
+        <CardList items={folder} searchKeyword={searchKeyword} />
       </MainDiv>
     </>
   );

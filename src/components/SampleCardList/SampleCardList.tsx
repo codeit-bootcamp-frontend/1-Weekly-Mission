@@ -29,15 +29,25 @@ interface Owner {
   profileImageSource: string;
 }
 
-function SampleCardList() {
+interface Props {
+  searchKeyword: string;
+}
+
+function SampleCardList({ searchKeyword }: Props) {
   const { data } = useRequest<Data>({ options: { url: '/sample/folder' } });
   const items = data?.folder?.links;
+  const filteredItems = items?.filter(
+    (item) =>
+      item.title.includes(searchKeyword) ||
+      item.description.includes(searchKeyword) ||
+      item.url.includes(searchKeyword)
+  );
 
   return (
     <>
-      {items && (
+      {filteredItems && (
         <S.CardListContainer>
-          {items.map((item) => (
+          {filteredItems.map((item) => (
             <S.CardContainer key={item.id}>
               <SampleCard item={item} />
             </S.CardContainer>

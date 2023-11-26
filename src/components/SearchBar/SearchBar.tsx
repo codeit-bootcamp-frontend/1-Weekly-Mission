@@ -2,11 +2,16 @@ import { ChangeEvent, useState } from 'react';
 import searchIcon from 'images/search.svg';
 import * as S from './SearchBar.style';
 
-function SearchBar() {
+interface Props {
+  setSearchKeyword: (value: string) => void;
+}
+
+function SearchBar({ setSearchKeyword }: Props) {
   const [value, setValue] = useState('');
 
   const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
+    setSearchKeyword(e.target.value);
   };
 
   return (
