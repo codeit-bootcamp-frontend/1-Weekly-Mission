@@ -1,6 +1,14 @@
-import { TIME_IN_MILLISECONDS } from "./constant";
+import { TIME_IN_MILLISECONDS } from "./constant.ts";
 
-export const parseDatestring = (targetDate) => {
+interface ParsedDate {
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minutes: number;
+}
+
+export const parseDatestring = (targetDate: number): ParsedDate => {
   const changedDate = new Date(targetDate);
   const year = changedDate.getFullYear();
   const month = changedDate.getMonth() + 1;
@@ -16,10 +24,10 @@ export const parseDatestring = (targetDate) => {
   };
 };
 
-export const getElapsedTime = (createdAt) => {
-  const now = new Date();
-  const createdAtDate = new Date(createdAt);
-  const elapsedTime = now - createdAtDate;
+export const getElapsedTime = (createdAt: number): string => {
+  const now = new Date().getTime();
+  const createdAtDate = new Date(createdAt).getTime();
+  const elapsedTime: number = now - createdAtDate;
   const { minute, hour, day, month, year } = TIME_IN_MILLISECONDS;
 
   if (year * 2 <= elapsedTime) {

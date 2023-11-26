@@ -1,30 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./HeaderModal.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
-
-import { fetchUserLinks } from "./../../api/users";
-import { useLocation } from "react-router-dom";
+import check from "../../assets/images/check.svg";
 
 export default function HeaderModal({ setterFunc, inputLink = null }) {
-  // modal이 pop-up될때 나온다
+  const { LinkSDataArr: linkData } = useContext(LocaleContext);
+  const [clickedFolderName, setClickedFolderName] = useState("");
+  const [isAdd, setIsAdd] = useState(false);
 
-  const USER_ID = 1;
-  const { ObjectValue: obj, LinkSDataArr: linkData } =
-    useContext(LocaleContext);
-
-  const obj_keys = Object.keys(obj);
-
-  obj_keys.map((key) => {
-    fetchUserLinks({ userId: USER_ID, folderId: key }).then((data) => {
-      const folderLinksData = data.data; // array
-      if (obj[key]) {
-        obj[key] = {
-          ...obj[key],
-          data: folderLinksData,
-        };
-      }
-    });
-  });
+  const handleClick = (folderName) => {
+    setIsAdd(!isAdd);
+    setClickedFolderName(folderName);
+  };
 
   return (
     <div className={styles.container}>
@@ -37,16 +24,24 @@ export default function HeaderModal({ setterFunc, inputLink = null }) {
         </button>
         <p className={styles.title}>폴더에추가</p>
         <p>{inputLink}</p>
-
-        {obj_keys.map((key) => {
-          const [, name, linksArr] = Object.values(obj[key]);
+        {linkData.map((item) => {
+          const { folderName, linksdata } = item;
           return (
-            <p>
-              {name} : {linksArr && linksArr.length}
-            </p>
+            <div
+              key={item.folderId}
+              className={styles.links}
+              onClick={() => handleClick(folderName)}
+            >
+              <p>
+                <span>{folderName}</span>
+                <span>{linksdata && linksdata.length}개링크</span>
+              </p>
+              {isAdd && folderName === clickedFolderName && (
+                <img src={check} alt="check" />
+              )}
+            </div>
           );
         })}
-
         <button className={styles.button}>추가하기</button>
       </div>
     </div>

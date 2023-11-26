@@ -4,18 +4,20 @@ import Landing from "../components/landing/Landing";
 import Footer from "../common/footer/Footer";
 import SearchBar from "../common/searchBar/SearchBar";
 import React from "react";
-import useTest from "../hooks/useTest";
-import { getShareDate } from "../api/folder";
+import useFetchData from "../hooks/useFetchData";
+import { getShareData } from "../api/share.ts";
 export default function SharedPage() {
-  const [data, isLoading] = useTest(() => getShareDate());
+  const [data, isLoading] = useFetchData(getShareData);
 
   return (
-    <div>
-      <ShareNav />
-      <Header data={data} isLoading={isLoading} />
-      <SearchBar />
-      <Landing data={data} isLoading={isLoading} />
-      <Footer />
-    </div>
+    !isLoading && (
+      <div>
+        <ShareNav />
+        <Header data={data} isLoading={isLoading} />
+        <SearchBar />
+        <Landing data={data} isLoading={isLoading} />
+        <Footer />
+      </div>
+    )
   );
 }

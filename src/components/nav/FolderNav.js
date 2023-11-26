@@ -5,9 +5,7 @@ import { ReactComponent as Person } from "../../assets/images/person.svg";
 import { ReactComponent as Login } from "../../assets/images/login.svg";
 
 import styles from "./Nav.module.css";
-import useUserFetch from "../../hooks/useUserFetch";
 import Profile from "../../common/profile/Profile";
-import useFetch from "../../hooks/useFetch";
 
 export default function FolderNav({ data }) {
   return (

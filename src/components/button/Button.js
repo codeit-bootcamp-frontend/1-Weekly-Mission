@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
 const BaseButton = styled.button`
   background: #fff;
+
   border: none;
   border: 1px solid var(--primary);
   border-radius: 4px;
@@ -20,11 +20,11 @@ const BaseButton = styled.button`
   }
 `;
 
-export default function Button({ children, isActive, onClickFunc }) {
+export default function Button({ children, isActive, onClick }) {
   return (
     <BaseButton
       onClick={(e) => {
-        onClickFunc();
+        onClick();
       }}
       className={isActive ? "active" : ""}
     >

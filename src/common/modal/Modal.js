@@ -3,12 +3,7 @@ import styles from "./Modal.module.css";
 import KaKao from "../../components/socialshare/KaKao";
 import ClipCopy from "../../components/socialshare/ClipCopy";
 import Meta from "../../components/socialshare/Meta";
-export default function Modal({
-  setterFunc,
-  tabName,
-  folderName,
-  linkName = "",
-}) {
+export default function Modal({ setterFunc, tabName, folderName, linkUrl }) {
   const obj = {
     share: ["폴더공유"],
     change: ["폴더이름변경", "변경하기", "blue"],
@@ -37,7 +32,7 @@ export default function Modal({
           <input className={styles.input} placeholder="내용입력" />
         )}
 
-        {tabName === "deleteLink" && <p>{linkName}</p>}
+        {tabName === "deleteLink" && <p>{linkUrl}</p>}
         {buttonName ? (
           buttonColor === "blue" ? (
             <button className={styles.button}>{buttonName}</button>

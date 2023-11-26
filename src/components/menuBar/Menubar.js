@@ -1,10 +1,12 @@
 import React from "react";
 import FolderButton from "../button/FolderButton";
 
-export default function Menubar({ obj, objKeys, folderId }) {
+export default function Menubar({ mappedResult, folderIdKey }) {
   return (
     <div>
-      <FolderButton data={[obj]} dataKeys={objKeys} folderId={folderId} />
+      {mappedResult && (
+        <FolderButton mappedResult={mappedResult} folderIdKey={folderIdKey} />
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Folder.module.css";
-export default function Folder({ items, isLoading }) {
+export default function Folder({ items }) {
   const { folder } = items;
   const { name, owner } = folder;
 
