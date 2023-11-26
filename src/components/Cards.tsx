@@ -30,6 +30,7 @@ const Cards = ({
   if (!linkCardsData) return;
 
   const { data: linksData } = linkCardsData;
+
   const cardProps = {
     /* folder페이지는 props가 있고 shared페이지에는 없음 타입지정 any */
     prevKey,
@@ -37,17 +38,21 @@ const Cards = ({
     handleListClick,
     iscebabClick,
   };
+  if (!linksData) return;
 
-  const newLinkData = linksData?.filter((link) => {
+  const newLinkData = linksData.filter((link) => {
+    console.log(link);
     if (searchResult.length > 0) {
       const searchResultToLower = searchResult?.toLowerCase();
-      const urlToLower = link?.url!.toLowerCase();
-      const titleToLower = link?.title!.toLowerCase();
-      const desToLower = link?.description!.toLowerCase();
+      const urlToLower = link.url ? link.url?.toLowerCase() : "";
+      const titleToLower = link.title ? link.title?.toLowerCase() : "";
+      const desToLower = link.description
+        ? link.description?.toLowerCase()
+        : "";
       if (
-        urlToLower?.indexOf(searchResultToLower) > -1 ||
-        titleToLower?.indexOf(searchResultToLower) > -1 ||
-        desToLower?.indexOf(searchResultToLower) > -1
+        urlToLower.indexOf(searchResultToLower) > -1 ||
+        titleToLower.indexOf(searchResultToLower) > -1 ||
+        desToLower.indexOf(searchResultToLower) > -1
       ) {
         return linksData;
       }
