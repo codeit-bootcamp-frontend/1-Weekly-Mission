@@ -9,7 +9,7 @@ import EmptyCardList from '../Card/EmptyCardList';
 import FloatingActionButton from '../../styles/FloatingActionButton';
 import styled from 'styled-components';
 import Modal from '../Modal/Modal';
-import FolderModal from '../Modal/FolderModal';
+import FolderModal from '../Modal/Folder/FolderModal';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const INIT_PAGE = { id: 0, name: '전체' };

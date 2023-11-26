@@ -1,5 +1,5 @@
-import { CloseButton, InputContainer, ModalFolderButton, ModalInput, ModalTitle } from '../../styles/ModalStyle';
-import close_button from '../../assets/svg/close.svg';
+import { CloseButton, InputContainer, ModalFolderButton, ModalInput, ModalTitle } from '../../../styles/ModalStyle';
+import close_button from '../../../assets/svg/close.svg';
 
 interface Props {
   onCloseModal: () => void;

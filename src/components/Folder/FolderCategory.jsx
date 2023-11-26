@@ -5,7 +5,7 @@ import useAsync from '../../hooks/useAsync';
 import { getFolders } from '../../api/api';
 import add_icon from '../../assets/svg/add-folder.svg';
 import Modal from '../Modal/Modal';
-import FolderModal from '../Modal/FolderModal';
+import FolderModal from '../Modal/Folder/FolderModal';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const ENTIRE_CATEGORY = {

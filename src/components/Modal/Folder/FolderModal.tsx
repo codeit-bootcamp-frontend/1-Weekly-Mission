@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { ModalBody } from '../../styles/ModalStyle';
-import FolderEditModal from './Folder/FolderEditModal';
-import FolderAddModal from './Folder/FolderAddModal';
-import FolderDeleteModal from './Folder/FolderDeleteModal';
+import { ModalBody } from '../../../styles/ModalStyle';
+import FolderEditModal from './FolderEditModal';
+import FolderAddModal from './FolderAddModal';
+import FolderDeleteModal from './FolderDeleteModal';
 import FolderShareModal from './FolderShareModal';
 import { ForwardedRef, forwardRef } from 'react';
-import LinkDeleteModal from './LinkDeleteModal';
+import LinkDeleteModal from '../LinkDeleteModal';
 import FolderToAddModal from './FolderToAddModal';
 
 interface Props {

@@ -1,9 +1,9 @@
-import { CloseButton, ModalSubTitle, ModalTitle, ModalTitleContainer } from '../../styles/ModalStyle';
-import close_button from '../../assets/svg/close.svg';
+import { CloseButton, ModalSubTitle, ModalTitle, ModalTitleContainer } from '../../../styles/ModalStyle';
+import close_button from '../../../assets/svg/close.svg';
 import styled from 'styled-components';
-import kakao_icon from '../../assets/svg/kakao.svg';
-import facebook_icon from '../../assets/svg/facebook.svg';
-import link_icon from '../../assets/svg/link.svg';
+import kakao_icon from '../../../assets/svg/kakao.svg';
+import facebook_icon from '../../../assets/svg/facebook.svg';
+import link_icon from '../../../assets/svg/link.svg';
 
 const SHARE_ICONS = [
   {

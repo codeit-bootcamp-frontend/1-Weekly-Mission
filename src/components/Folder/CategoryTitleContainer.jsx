@@ -5,7 +5,7 @@ import delete_icon from '../../assets/svg/trash.svg';
 import IconControlButton from '../../styles/IconControlButton';
 import { useRef, useState } from 'react';
 import Modal from '../Modal/Modal';
-import FolderModal from '../Modal/FolderModal';
+import FolderModal from '../Modal/Folder/FolderModal';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const ICONS = [
