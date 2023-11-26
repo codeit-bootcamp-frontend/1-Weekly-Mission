@@ -1,7 +1,7 @@
 import styles from "./ShareFolderModal.module.scss";
 import { ReactComponent as KakaoIcon } from "src/assets/icons/kakao-icon.svg";
 import { ReactComponent as FacebookIcon } from "src/assets/icons/facebook-icon.svg";
-import { ReactComponent as LinkIcon } from "src/assets/icons/link-modal-icon.svg";
+import { ReactComponent as LinkIcon } from "src/assets/icons/link-icon.svg";
 import { FolderProps } from "src/types";
 
 function ShareFolderModal({ folder }: FolderProps) {
@@ -26,7 +26,7 @@ function ShareFolderModal({ folder }: FolderProps) {
           <p>페이스북</p>
         </button>
         <button className={styles["sns-button"]} onClick={handleLinkButton}>
-          <LinkIcon />
+          <LinkIcon width="42" />
           <p>링크 복사</p>
         </button>
       </div>

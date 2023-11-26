@@ -3,7 +3,7 @@ import styles from "./FolderPage.module.scss";
 import Layout from "../Layout/Layout";
 import { SearchBar, CardList } from "src/commons/components";
 import { getAllCards, getFolderList } from "src/apis";
-import { CardInterface, FolderInterface, ModalInterface } from "src/types";
+import { CardInterface, FolderInterface } from "src/types";
 import {
   LinkAddBar,
   FolderTagList,
@@ -11,14 +11,10 @@ import {
   FolderMaker,
 } from "./components";
 import ModalCreator from "src/commons/modals/ModalCreator";
-
+import { useKeywordInput, useOpenModal } from "src/hooks";
 const INITIAL_FOLDER: FolderInterface = {
   id: "",
   name: "전체",
-};
-
-const INITIAL_MODAL: ModalInterface = {
-  show: false,
 };
 
 function FolderPage() {
@@ -27,8 +23,8 @@ function FolderPage() {
   ]);
   const [cardList, setCardList] = useState<CardInterface[]>([]);
   const [currentFolder, setCurrentFolder] = useState(INITIAL_FOLDER);
-  const [modal, setModal] = useState(INITIAL_MODAL);
-  const [keyword, setKeyword] = useState("");
+  const { modal, handleOpenModal, handleCloseModal } = useOpenModal();
+  const { keyword, handleKeywordInput: setKeyword } = useKeywordInput("");
 
   const getFolderTagList = useCallback(async () => {
     const { data } = await getFolderList();
@@ -51,17 +47,6 @@ function FolderPage() {
     }
   }, []);
 
-  const handleOpenModal = (modal: ModalInterface) => {
-    setModal((prev) => {
-      return { ...prev, ...modal };
-    });
-  };
-  const handleCloseModal = () => {
-    setModal((prev) => {
-      return { ...prev, ...INITIAL_MODAL };
-    });
-  };
-
   useEffect(() => {
     getFolderTagList();
     getCards(currentFolder);
@@ -69,7 +54,7 @@ function FolderPage() {
 
   return (
     <>
-      {modal.show && (
+      {modal && modal.show && (
         <ModalCreator onClick={handleCloseModal}>
           {modal?.component}
         </ModalCreator>

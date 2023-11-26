@@ -5,11 +5,12 @@ import { getSharedFolder, getSharedUser } from "src/apis";
 import Layout from "../Layout/Layout";
 import { SharedFolderInterface, SharedUserInterface } from "src/types";
 import { SearchBar, CardList } from "src/commons/components";
+import { useKeywordInput } from "src/hooks";
 
 function SharedPage() {
   const [sharedUser, setSharedUser] = useState<SharedUserInterface>();
   const [sharedFolder, setSharedFolder] = useState<SharedFolderInterface>();
-  const [keyword, setKeyword] = useState("");
+  const { keyword, handleKeywordInput: setKeyword } = useKeywordInput("");
 
   const getSharedFiles = useCallback(async () => {
     const userResult = await getSharedUser();

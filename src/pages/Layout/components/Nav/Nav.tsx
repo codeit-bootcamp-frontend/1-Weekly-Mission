@@ -17,7 +17,7 @@ function Nav({ profile, isSticky }: Props) {
     <nav {...navClassName}>
       <div className={styles["gnb"]}>
         <Link to="/">
-          <LogoSvg />
+          <LogoSvg width="133" />
         </Link>
         {!profile ? (
           <button

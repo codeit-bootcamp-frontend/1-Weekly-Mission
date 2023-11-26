@@ -12,7 +12,7 @@ function LinkAddBar() {
       <div id="LinkAddBar" className={styles["add-form-container"]}>
         <form>
           <div className={styles["add-link-form"]}>
-            <LinkIcon className={styles["add-link-icon"]} />
+            <LinkIcon width="20" className={styles["add-link-icon"]} />
             <input
               name="add-link-input"
               value={keyword}
