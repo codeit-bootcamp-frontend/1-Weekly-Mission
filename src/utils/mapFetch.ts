@@ -12,8 +12,8 @@ interface MapCardDataProps {
 }
 
 interface MapCardDataReturn {
-  image_source: string;
-  created_at: string;
+  image_source?: string;
+  created_at?: string;
   description: string;
   url: string;
 }
@@ -29,7 +29,7 @@ interface MapNavbarDataProps {
 }
 
 interface MapNavbarDataReturn {
-  image_source: string;
+  image_source?: string;
   email: string;
 }
 
@@ -39,10 +39,10 @@ const mapCardData = (items: MapCardDataProps): MapCardDataReturn => {
   // User Data인지 Sample Data인지 확인
   if (items.folder_id !== undefined) {
     const { image_source, created_at } = items;
-    return { image_source, created_at, description, url } as any;
+    return { image_source, created_at, description, url };
   } else {
     const { imageSource: image_source, createdAt: created_at } = items;
-    return { image_source, created_at, description, url } as any;
+    return { image_source, created_at, description, url };
   }
 };
 
@@ -52,7 +52,7 @@ const mapNavbarData = (items: MapNavbarDataProps): MapNavbarDataReturn => {
     ? items.profileImageSource
     : items.image_source;
 
-  return { email, image_source } as any;
+  return { email, image_source };
 };
 
 export { mapCardData, mapNavbarData };

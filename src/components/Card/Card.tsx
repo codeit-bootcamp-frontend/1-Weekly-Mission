@@ -127,6 +127,8 @@ const Card = ({ items }: CardProps) => {
   const [cardModalState, setCardModalState] = useState<boolean>(false);
   useOnClickOutside(modalRef, () => setCardModalState(false));
 
+  if (image_source === undefined || created_at === undefined) return null;
+
   return (
     <S.CardHref href={url} target="_blank" rel="noreferrer">
       <CardImage imgUrl={image_source} />
