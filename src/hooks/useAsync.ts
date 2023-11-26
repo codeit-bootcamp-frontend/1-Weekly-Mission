@@ -1,9 +1,21 @@
 import { useCallback, useEffect, useState } from 'react';
 
-const useAsync = (callback, deps = []) => {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+interface useAsyncReturn<T> {
+  data: T;
+  isLoading: boolean;
+  error: unknown;
+  fetchData: () => Promise<void>; // 함수
+}
+
+type CallbackType<T> = () => Promise<T>;
+
+const useAsync = <T>(
+  callback: CallbackType<T>,
+  deps: unknown[] = [],
+): useAsyncReturn<T> => {
+  const [data, setData] = useState<T>(null as any);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<any>(null);
 
   const fetchData = useCallback(async () => {
     try {

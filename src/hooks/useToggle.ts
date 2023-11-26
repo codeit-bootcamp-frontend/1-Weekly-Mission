@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-// Button click event visible event에 사용할 custom hook
-const useToggle = (value = false) => {
-  const [isOn, setIsOn] = useState(value);
+const useToggle = (value = false): [boolean, object] => {
+  const [isOn, setIsOn] = useState<boolean>(value);
   const toggle = () => setIsOn((curValue) => !curValue);
   return [isOn, toggle];
 };
