@@ -4,11 +4,11 @@ import * as Styled from "../style/AddLinkBar";
 
 function AddLinkBar() {
   return (
-    <Styled.LargeLinkDiv>
+    <Styled.LinkDiv>
       <Styled.LinkImg src={iconLink} alt="search" />
       <Styled.LinkInput placeholder="링크를 추가해 보세요." />
       <CTASmall>추가하기</CTASmall>
-    </Styled.LargeLinkDiv>
+    </Styled.LinkDiv>
   );
 }
 

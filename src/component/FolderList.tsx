@@ -22,7 +22,7 @@ function FolderChip({ name, id, onClick, style }) {
 
 function FolderList({ folders, params }) {
   const [active, setActive] = useState(params);
-  const [name, setName] = useState("");
+  const [name, setName] = useState("전체");
 
   function filterName(folders, params: string) {
     if (!params) {

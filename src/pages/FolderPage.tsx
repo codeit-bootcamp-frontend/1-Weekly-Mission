@@ -9,9 +9,9 @@ import * as Styled from "../style/FolderPage";
 
 function FolderPage() {
   const { folderId } = useParams();
-  const folderParam = folderId || "";
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
+  const folderParam = folderId || "";
 
   async function getFolderList() {
     const folders = await getFolders();
