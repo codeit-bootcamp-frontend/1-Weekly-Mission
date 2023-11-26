@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { useGetFolder } from "folder/data-access-folder";
 import { Layout } from "sharing/feature-layout";
 import { SharedLayout } from "page-layout/SharedLayout";
@@ -6,25 +7,29 @@ import { FolderInfo } from "folder/ui-folder-info";
 import { ReadOnlyCard } from "link/ui-read-only-card";
 import { SearchBar } from "link/ui-search-bar";
 
+interface Link {
+  id: string;
+  url: string;
+  imageSource?: string;
+  alt: string;
+  elapsedTime: string;
+  description?: string;
+  createdAt: string;
+  title: string;
+}
+
+interface FolderData {
+  profileImage?: string;
+  ownerName?: string;
+  folderName: string;
+  links: Link[];
+}
+
 export const SharedPage = () => {
   const { data } = useGetFolder();
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const folderData = data as
-    | {
-        profileImage?: string;
-        ownerName?: string;
-        folderName: string;
-        links: {
-          id: string;
-          url: string;
-          imageSource?: string;
-          alt: string;
-          elapsedTime: string;
-          description?: string;
-          createdAt: string;
-        }[];
-      }
-    | undefined;
+  const folderData = data as FolderData | undefined;
 
   const {
     profileImage = "",
@@ -32,6 +37,18 @@ export const SharedPage = () => {
     folderName = "",
     links = [],
   } = folderData || {};
+
+  const filteredLinks = searchTerm
+    ? links.filter(
+        (link: Link) =>
+          (link.url && link.url.includes(searchTerm)) ||
+          (link.description && link.description.includes(searchTerm))
+      )
+    : links;
+
+  const handleSearch = (searchValue: string) => {
+    setSearchTerm(searchValue);
+  };
 
   return (
     <Layout>
@@ -43,14 +60,14 @@ export const SharedPage = () => {
             folderName={folderName}
           />
         }
-        searchBar={<SearchBar />}
+        searchBar={<SearchBar onSearch={handleSearch} />}
         cardList={
           <CardList>
-            {links.map((link) => (
+            {filteredLinks.map((link) => (
               <ReadOnlyCard
                 key={link.id}
                 {...link}
-                imageSource={link.imageSource || ""} // 'undefined'일 경우 기본값 제공
+                imageSource={link.imageSource || ""}
               />
             ))}
           </CardList>

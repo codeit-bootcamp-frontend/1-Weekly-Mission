@@ -9,25 +9,41 @@ import { ALL_LINKS_ID } from "link/data-access-link/constant";
 import { LinkForm } from "link/feature-link-form";
 import { CardList } from "link/feature-card-list";
 
+interface Link {
+  url: string;
+  title: string;
+  description: string;
+}
+
 export const FolderPage = () => {
   const { data: folders } = useGetFolders();
   const [selectedFolderId, setSelectedFolderId] = useState(ALL_LINKS_ID);
-
-  // selectedFolderId를 string으로 변환
+  const [searchTerm, setSearchTerm] = useState("");
   const selectedFolderIdString = selectedFolderId.toString();
-
-  // useGetLinks에 string 타입으로 변환된 selectedFolderIdString을 전달
   const { data: links, loading } = useGetLinks(selectedFolderIdString);
 
   const handleFolderClick = (folderId: string) => {
     setSelectedFolderId(folderId);
   };
 
+  const filteredLinks = searchTerm
+    ? links.filter(
+        (link: Link) =>
+          (link.url && link.url.includes(searchTerm)) ||
+          (link.title && link.title.includes(searchTerm)) ||
+          (link.description && link.description.includes(searchTerm))
+      )
+    : links;
+
+  const handleSearch = (searchValue: string) => {
+    setSearchTerm(searchValue);
+  };
+
   return (
     <Layout isSticky={false}>
       <FolderLayout
         linkForm={<LinkForm />}
-        searchBar={<SearchBar />}
+        searchBar={<SearchBar onSearch={handleSearch} />}
         folderToolBar={
           <FolderToolBar
             folders={folders}
@@ -35,7 +51,7 @@ export const FolderPage = () => {
             onFolderClick={handleFolderClick}
           />
         }
-        cardList={loading ? null : <CardList links={links} />}
+        cardList={loading ? null : <CardList links={filteredLinks} />}
       />
     </Layout>
   );
