@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import facebookIcon from "assets/akar-icons_facebook-fill.svg";
@@ -7,9 +8,36 @@ import instagramIcon from "assets/ant-design_instagram-filled.svg";
 
 import * as S from "./FooterStyle";
 
+const options = {
+  root: null,
+  rootMain: "0px",
+  threshold: 0,
+};
+
 export default function Footer() {
+  const target = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      console.log(entries[0]); // 삭제예정
+
+      if (entries[0].isIntersecting) {
+        // footer를 가장 위에 보이게
+        console.log("관찰대상(footer)에 들어옴");
+      }
+    }, options);
+
+    if (target.current) {
+      observer.observe(target.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <S.Wrapper>
+    <S.Wrapper ref={target}>
       <S.Contact>
         <S.Rights>©codeit - 2023</S.Rights>
         <S.Policy>
