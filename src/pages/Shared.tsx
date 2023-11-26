@@ -6,6 +6,7 @@ import getSampleFolder from "../apis/sample/folder";
 import styles from "./Shared.module.css";
 import Nav from "../components/Nav/Nav";
 import useInputController from "../hooks/useInputController";
+import SearchBarResult from "../components/SearchBarResult/SearchBarResult";
 
 type Card = {
   id: number;
@@ -71,6 +72,7 @@ function Shared() {
           onChange={searchInput.handleChange}
           onClick={handleSearchBarDeleteIconClick}
         />
+        {searchInput.values && <SearchBarResult value={searchInput.values} />}
         <Binder cards={cards} shared={true} />
       </section>
     </>

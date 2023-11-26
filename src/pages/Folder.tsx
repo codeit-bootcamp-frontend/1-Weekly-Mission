@@ -25,6 +25,7 @@ import EditFolder from "../modals/EditFolder";
 import AddLinkToFolder from "../modals/AddLinkToFolder";
 import DeleteLink from "../modals/DeleteLink";
 import Nav from "../components/Nav/Nav";
+import SearchBarResult from "../components/SearchBarResult/SearchBarResult";
 
 type FolderData = {
   id: number;
@@ -141,6 +142,7 @@ function Folder() {
           onChange={searchInput.handleChange}
           onClick={handleSearchBarDeleteIconClick}
         />
+        {searchInput.values && <SearchBarResult value={searchInput.values} />}
         <div className={styles.flex}>
           <FolderNav onClick={handleClick} folderID={folderID} folderLists={folderLists} />
           <FolderAddMenu onClick={addFolderModal.handleClick} />
