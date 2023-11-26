@@ -2,7 +2,10 @@ import styled, { css } from 'styled-components';
 import { COLORS } from 'styles/color';
 import { onMobile, onTablet } from 'styles/mediaQuery';
 
-export const FormContainer = styled.div<{ $isScrolled: boolean }>`
+export const FormContainer = styled.div<{
+  $isScrolled: boolean;
+  $showFooter: boolean;
+}>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +23,8 @@ export const FormContainer = styled.div<{ $isScrolled: boolean }>`
     padding-top: 2.4rem;
     padding-bottom: 4rem;
   }
+
+  display: ${({ $showFooter }) => ($showFooter ? `none` : `flex`)};
 
   ${({ $isScrolled }) =>
     $isScrolled
@@ -39,7 +44,7 @@ export const FormContainer = styled.div<{ $isScrolled: boolean }>`
         `
       : css`
           position: static;
-        `}
+        `};
 `;
 
 export const Form = styled.form`

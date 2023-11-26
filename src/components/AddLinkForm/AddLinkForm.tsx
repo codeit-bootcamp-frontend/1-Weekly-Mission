@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import linkIcon from 'images/link.svg';
 import * as S from './AddLinkForm.style';
+import FooterRefContext from 'contexts/FooterRefContext';
 
 interface Props {
   isScrolled: boolean;
@@ -8,12 +9,37 @@ interface Props {
 
 function AddLinkForm({ isScrolled }: Props) {
   const [value, setValue] = useState('');
+  const [showFooter, setShowFooter] = useState(false);
+  const footerRef = useContext(FooterRefContext);
 
   const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    });
+
+    const currentRef = footerRef?.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [footerRef]);
+
   return (
-    <S.FormContainer $isScrolled={isScrolled}>
+    <S.FormContainer $isScrolled={isScrolled} $showFooter={showFooter}>
       <S.Form>
         <S.Input
           value={value}
