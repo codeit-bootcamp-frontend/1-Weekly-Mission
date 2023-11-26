@@ -1,15 +1,26 @@
-import { useEffect, useState } from 'react';
 import * as Modal from '../Modal.style';
 import * as S from './Share.style';
-import CopyToClipboard from 'components/Toast/CopyToClipboard';
-import KAKAO from 'assets/icons/kakaotalk-large.svg';
-import FACEBOOK from 'assets/icons/facebook-large.svg';
-import SHARE_LINK from 'assets/icons/share-link.svg';
-import debounce from 'utils/debounce';
-import ToastPortals from 'components/Toast/ToastPortals';
-import useToast from 'hooks/useToast';
+import { ReactNode, useEffect } from 'react';
+import CopyToClipboard from '@components/Toast/CopyToClipboard';
+import ToastPortals from '@components/Toast/ToastPortals';
+import useToast from '@hooks/useToast';
+import KAKAO from '@assets/icons/kakaotalk-large.svg';
+import FACEBOOK from '@assets/icons/facebook-large.svg';
+import SHARE_LINK from '@assets/icons/share-link.svg';
 
-function Share({ folderName, folderId, userId }) {
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
+interface Props {
+  folderName: string;
+  folderId: number;
+  userId: number;
+}
+
+function Share({ folderName, folderId, userId }: Props) {
   const { Kakao } = window;
 
   const realUrl = `https://linkbrary-geon.netlify.app/shared?user=${userId}&folder=${folderId}`;
@@ -99,7 +110,14 @@ function Share({ folderName, folderId, userId }) {
 
 export default Share;
 
-function ShareBox({ children, imgSrc, imgAlt, onClick }) {
+interface ShareBoxProps {
+  children: ReactNode;
+  imgSrc: string;
+  imgAlt: string;
+  onClick: () => void;
+}
+
+function ShareBox({ children, imgSrc, imgAlt, onClick }: ShareBoxProps) {
   return (
     <S.Share>
       <button onClick={() => onClick()}>

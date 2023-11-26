@@ -1,15 +1,20 @@
 import * as S from './InfoContainer.style';
-import useModal from 'hooks/useModal';
-import SHARE from 'assets/icons/share.svg';
-import EDIT from 'assets/icons/edit.svg';
-import DELETE from 'assets/icons/delete.svg';
-import Edit from 'components/Modal/Edit';
-import Share from 'components/Modal/Share';
-import DeleteFolder from 'components/Modal/DeleteFolder';
-import DeleteLink from 'components/Modal/DeleteLink';
-import AddToFolder from 'components/Modal/AddToFolder';
+import useModal from '@hooks/useModal';
+import Edit from '@components/Modal/Edit';
+import Share from '@components/Modal/Share';
+import DeleteFolder from '@components/Modal/DeleteFolder';
+import { Folder } from '../FoldersContainer/FoldersContainer';
+import SHARE from '@assets/icons/share.svg';
+import EDIT from '@assets/icons/edit.svg';
+import DELETE from '@assets/icons/delete.svg';
 
-function InfoContainer({ defaultFolder, selectedFolder, userId }) {
+interface Props {
+  defaultFolder: Folder;
+  selectedFolder: Folder;
+  userId: number;
+}
+
+function InfoContainer({ defaultFolder, selectedFolder, userId }: Props) {
   const [toggleShow, Modal] = useModal({
     edit: <Edit />,
     share: (
@@ -20,8 +25,6 @@ function InfoContainer({ defaultFolder, selectedFolder, userId }) {
       />
     ),
     deleteFolder: <DeleteFolder folderName={selectedFolder?.name} />,
-    deleteLink: <DeleteLink />,
-    addToFolder: <AddToFolder />,
   });
 
   return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { onTablet, onPc } from 'styles/mediaQuery';
-import { COLORS } from 'styles/palette';
+import { onTablet, onPc } from '@styles/mediaQuery';
+import { COLORS } from '@styles/palette';
 
 export const InfoContainer = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ export const SettingButton = styled.button`
   justify-content: center;
   align-items: center;
   gap: 0.3rem;
-  color: ${COLORS['LB_GRAY_60']};
+  color: ${COLORS.LB_GRAY_60};
   font-size: 1.4rem;
   font-weight: 600;
 `;

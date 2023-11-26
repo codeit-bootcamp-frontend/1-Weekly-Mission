@@ -5,7 +5,14 @@ interface Props {
   deps?: (boolean | string | number)[];
   skip?: boolean;
   options?: {
-    [key: string]: string;
+    url: string;
+    method: string;
+    params?: {
+      [param: string]: string | number | boolean;
+    };
+    data?: {
+      [data: string]: string | number | boolean;
+    };
   };
 }
 

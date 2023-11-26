@@ -4,13 +4,15 @@ import Card from '@components/Card';
 
 export interface CardProps {
   id: number;
+  title: string;
+  url: string;
   createdAt?: string;
   created_at?: string;
   description: string;
   imageSource?: string;
   image_source?: string;
-  title: string;
-  url: string;
+  folder_id?: number;
+  updated_at: string | null;
 }
 
 interface Props {

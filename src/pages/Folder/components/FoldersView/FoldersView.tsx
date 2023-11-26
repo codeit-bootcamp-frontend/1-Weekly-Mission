@@ -1,15 +1,23 @@
 import * as S from './FoldersView.style';
-import useModal from 'hooks/useModal';
-import NewFolder from 'components/Modal/NewFolder';
-import ADD_COLOR from 'assets/icons/add-color.svg';
-import ADD_WHITE from 'assets/icons/add-white.svg';
+import useModal from '@hooks/useModal';
+import NewFolder from '@components/Modal/NewFolder';
+import ADD_COLOR from '@assets/icons/add-color.svg';
+import ADD_WHITE from '@assets/icons/add-white.svg';
+import { Folder } from '../FoldersContainer/FoldersContainer';
+
+interface Props {
+  folders?: Folder[];
+  defaultFolder: Folder;
+  selectedFolder: Folder;
+  onFolderButtonClick: (folderData: Folder) => void;
+}
 
 function FoldersView({
   folders,
   defaultFolder,
   selectedFolder,
   onFolderButtonClick,
-}) {
+}: Props) {
   const [toggleShow, Modal] = useModal({
     newFolder: <NewFolder />,
   });
@@ -53,13 +61,19 @@ function FoldersView({
 
 export default FoldersView;
 
-function FolderButton({ folder, selected, onClick }) {
+interface FolderButtonProps {
+  folder: Folder;
+  selected: boolean;
+  onClick: (folderData: Folder) => void;
+}
+
+function FolderButton({ folder, selected, onClick }: FolderButtonProps) {
   const onSelect = () => {
     onClick?.(folder);
   };
 
   return (
-    <S.FolderButton type='button' onClick={onSelect} selected={selected}>
+    <S.FolderButton type='button' onClick={onSelect} $selected={selected}>
       {folder?.name}
     </S.FolderButton>
   );

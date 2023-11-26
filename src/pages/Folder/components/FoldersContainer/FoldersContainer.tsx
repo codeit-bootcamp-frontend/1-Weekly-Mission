@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useRequest from 'hooks/useRequest';
+import useRequest from '@hooks/useRequest';
 import FoldersView from '../FoldersView';
 import InfoContainer from '../InfoContainer';
 
@@ -8,10 +8,28 @@ const DEFAULT_FOLDER = {
   name: '전체',
 };
 
-function FoldersContainer({ userId, initialFolderId, setFolderLinks }) {
-  const { data: folders } = useRequest({
-    url: `/users/${userId}/folders`,
-    method: 'get',
+interface Props {
+  userId: number;
+  initialFolderId: number;
+  setFolderLinks: (nextFolderId: number) => void;
+}
+
+export interface Folder {
+  id: number;
+  name: string;
+  created_at?: string;
+  userid?: number;
+  link?: {
+    count: number;
+  };
+}
+
+function FoldersContainer({ userId, initialFolderId, setFolderLinks }: Props) {
+  const { data: folders } = useRequest<{ data: Folder[] }>({
+    options: {
+      url: `/users/${userId}/folders`,
+      method: 'get',
+    },
   });
 
   const foldersData = folders?.data;
@@ -19,9 +37,9 @@ function FoldersContainer({ userId, initialFolderId, setFolderLinks }) {
     (folder) => folder.id === initialFolderId
   );
 
-  const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER);
+  const [selectedFolder, setSelectedFolder] = useState<Folder>(DEFAULT_FOLDER);
 
-  const onFolderButtonClick = (foldersData) => {
+  const onFolderButtonClick = (foldersData: Folder) => {
     setFolderLinks(foldersData.id);
     setSelectedFolder(foldersData);
   };

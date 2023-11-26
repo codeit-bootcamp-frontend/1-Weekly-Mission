@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS } from 'styles/palette';
+import { COLORS } from '@styles/palette';
 
 export const ShareContainer = styled.section`
   display: flex;
@@ -19,7 +19,7 @@ export const Share = styled.div`
 export const ShareButton = styled.button``;
 
 export const ShareText = styled.span`
-  color: ${COLORS['LB_GRAY_100']};
+  color: ${COLORS.LB_GRAY_100};
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.5rem;

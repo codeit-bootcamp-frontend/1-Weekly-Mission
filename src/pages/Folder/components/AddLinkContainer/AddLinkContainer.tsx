@@ -1,10 +1,10 @@
-import useModal from 'hooks/useModal';
 import * as S from './AddLinkContainer.style';
-import LINK from 'assets/icons/link.svg';
-import AddToFolder from 'components/Modal/AddToFolder';
 import { useState } from 'react';
+import useModal from '@hooks/useModal';
+import AddToFolder from '@components/Modal/AddToFolder';
+import LINK from '@assets/icons/link.svg';
 
-function AddLinkContainer({ userId }) {
+function AddLinkContainer({ userId }: { userId: number }) {
   const [url, setUrl] = useState('');
 
   const [toggleShow, Modal] = useModal({

@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { zIndexStyle } from 'styles/zIndexStyle';
+import { zIndexStyle } from '@styles/zIndexStyle';
 
 const fadeOut = keyframes`
   0% {
@@ -11,7 +11,7 @@ const fadeOut = keyframes`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{ $show: boolean }>`
   display: none;
 
   ${({ $show }) =>

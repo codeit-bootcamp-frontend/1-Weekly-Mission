@@ -1,30 +1,34 @@
+import * as S from './Folder.style';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import * as S from './Folder.style';
-import useRequest from 'hooks/useRequest';
-import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from 'apis/config/default';
-import Layout from 'components/Layout';
+import useRequest from '@hooks/useRequest';
+import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@apis/config/default';
+import Layout from '@components/Layout';
+import SearchBar from '@components/SearchBar';
+import CardsContainer from '@components/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
-import SearchBar from 'components/SearchBar';
 import FoldersContainer from './components/FoldersContainer';
-import CardsContainer from 'components/CardsContainer';
 import NoLinkView from './components/NoLinkView';
+import { CardProps } from '@components/CardsContainer/CardsContainer';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialFolderId = searchParams.get('folderId');
-  const { data: links, refetch: getLinks } = useRequest({
+  const initialFolderId = searchParams.get('folderId') ?? '';
+
+  const { data: links, fetch: getLinks } = useRequest<{ data: CardProps[] }>({
     skip: true,
-    url: `/users/${DEFAULT_USER_ID}/links`,
-    method: 'get',
-    params: { folderId: initialFolderId },
+    options: {
+      url: `/users/${DEFAULT_USER_ID}/links`,
+      method: 'get',
+      params: { folderId: initialFolderId },
+    },
   });
 
-  const setFolderLinks = (nextFolderId) => {
+  const setFolderLinks = (nextFolderId: number) => {
     if (nextFolderId === DEFAULT_FOLDER_ID) {
       setSearchParams({});
     } else {
-      setSearchParams({ folderId: nextFolderId } ?? {});
+      setSearchParams({ folderId: String(nextFolderId) } ?? {});
     }
   };
 

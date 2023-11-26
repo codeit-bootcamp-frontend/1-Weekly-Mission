@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { onTablet, onPc } from 'styles/mediaQuery';
-import { COLORS } from 'styles/palette';
-import { zIndexStyle } from 'styles/zIndexStyle';
+import { onTablet, onPc } from '@styles/mediaQuery';
+import { COLORS } from '@styles/palette';
+import { zIndexStyle } from '@styles/zIndexStyle';
 
 export const Container = styled.div`
   display: flex;
@@ -17,18 +17,18 @@ export const Folders = styled.ul`
   row-gap: 1.2rem;
 `;
 
-export const FolderButton = styled.button`
+export const FolderButton = styled.button<{ $selected: boolean }>`
   padding: 0.6rem 1rem;
   height: 3rem;
   border-radius: 0.5rem;
-  border: 1px solid ${COLORS['LB_PRIMARY']};
+  border: 1px solid ${COLORS.LB_PRIMARY};
   font-size: 1.4rem;
   font-weight: 400;
 
-  ${({ selected }) =>
-    selected &&
+  ${({ $selected }) =>
+    $selected &&
     css`
-      background-color: ${COLORS['LB_PRIMARY']};
+      background-color: ${COLORS.LB_PRIMARY};
       color: #fff;
     `}
 `;
@@ -45,7 +45,7 @@ export const AddFolderButton = styled.button`
   z-index: ${zIndexStyle.floating - 1};
   padding: 0.8rem 2.4rem;
   border-radius: 2rem;
-  background-color: ${COLORS['LB_PRIMARY']};
+  background-color: ${COLORS.LB_PRIMARY};
   opacity: 0.85;
   font-size: 1.6rem;
   font-weight: 500;
@@ -57,7 +57,7 @@ export const AddFolderButton = styled.button`
     transform: translate(0, 0);
     opacity: 1;
     background-color: #fff;
-    color: ${COLORS['LB_PRIMARY']};
+    color: ${COLORS.LB_PRIMARY};
   }
 
   ${onPc} {
@@ -65,7 +65,7 @@ export const AddFolderButton = styled.button`
     transform: translate(0, 0);
     opacity: 1;
     background-color: #fff;
-    color: ${COLORS['LB_PRIMARY']};
+    color: ${COLORS.LB_PRIMARY};
   }
 `;
 

@@ -1,4 +1,4 @@
-function debounce(callback, wait) {
+function debounce<T>(callback: T, wait: number) {
   let timeout;
 
   return function () {
