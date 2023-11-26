@@ -7,7 +7,12 @@ import CardSection from "../component/CardSection";
 import "../assets/css/FolderPage.css";
 
 function SharedPage() {
-  const [folderData, setFolderData] = useState({});
+  const [folderData, setFolderData] = useState({
+    id: 0,
+    name: "",
+    owner: "",
+    links: "",
+  });
 
   async function getFolderData() {
     let folderData = {};

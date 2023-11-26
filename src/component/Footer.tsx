@@ -5,11 +5,10 @@ import youtube from "../assets/img/icon-youtube-white.svg";
 import instagram from "../assets/img/icon-instagram-white.svg";
 import "../assets/css/Footer.css";
 
-function Footer({ size }) {
-  const classname = `footer-${size}`;
+function Footer() {
   return (
     <div className="footerContainer">
-      <footer className={classname}>
+      <footer>
         <span className="copyright">©codeit - 2023</span>
         <div className="linkContainer">
           <a className="link" href="/privacy">

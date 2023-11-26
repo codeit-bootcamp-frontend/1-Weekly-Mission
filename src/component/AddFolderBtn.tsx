@@ -1,7 +1,11 @@
 import iconAdd from "../assets/img/icon-add-gray.svg";
 import * as Styled from "../style/AddFolderBtn";
 
-function AddFolderBtn({ className }) {
+interface Props {
+  className: string;
+}
+
+function AddFolderBtn({ className }: Props) {
   return (
     <Styled.Div>
       <Styled.Button className={className}>폴더추가</Styled.Button>

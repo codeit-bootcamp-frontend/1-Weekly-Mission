@@ -2,7 +2,7 @@ import Card from "./Card";
 import styles from "../assets/css/CardSection.module.css";
 
 function CardSection({ data }) {
-  const handleCardClick = (url) => {
+  const handleCardClick = (url: string) => {
     window.open(url);
   };
   return (

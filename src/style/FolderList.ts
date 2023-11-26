@@ -44,7 +44,10 @@ export const AddBtn = styled.button`
   }
 `;
 
-export const FolderBtn = styled.button`
+export const FolderBtn =
+  styled.button <
+  { active: boolean } >
+  `
   max-height: 2.07rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.3125rem;

@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
-import useSearchInput from "../hooks/useSearchInput";
-import SearchBar from "../component/SearchBar";
-import FolderList from "../component/FolderList";
-import CardSection from "../component/CardSection";
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+import SearchBar from "./SearchBar";
+import FolderList from "./FolderList";
+import CardSection from "./CardSection";
 import * as Styled from "../style/EmptyDiv";
 
 export default function CardContainer({ folders, data, params }) {
   const APIdata = data;
-  const [location] = useSearchInput(APIdata);
+  const location = useLocation();
   const [result, setResult] = useState([]);
   const [searchParam, setSearchParam] = useSearchParams();
   const initKeyword = searchParam.get("keyword");

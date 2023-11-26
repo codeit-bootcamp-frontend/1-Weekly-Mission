@@ -6,7 +6,11 @@ import ProfileImg from "./ProfileImg";
 import CTA from "./CTA";
 import * as Styled from "../style/Gnb";
 
-function Gnb({ isFixed }) {
+interface Props {
+  isFixed?: boolean;
+}
+
+function Gnb({ isFixed }: Props) {
   const [userData, setUserData] = useState({});
   const [isLogin, setIsLogin] = useState(false);
 
@@ -32,22 +36,21 @@ function Gnb({ isFixed }) {
 
   return (
     <>
-      <Styled.Gnb isFixed={isFixed} />
-      <header>
-        <div className="headerContainer">
+      <Styled.Header isFixed={isFixed ? true : false}>
+        <Styled.HeaderContainer>
           <Link to="/">
             <img className="logo" src={logo} alt="logo" />
           </Link>
           {isLogin ? (
-            <div className="profile">
-              <ProfileImg src={userData.profile} />
-              <span>{userData.email}</span>
-            </div>
+            <Styled.Div>
+              <ProfileImg src={userData["profile"]} />
+              <Styled.Span>{userData["email"]}</Styled.Span>
+            </Styled.Div>
           ) : (
             <CTA href="/signin">로그인</CTA>
           )}
-        </div>
-      </header>
+        </Styled.HeaderContainer>
+      </Styled.Header>
     </>
   );
 }
