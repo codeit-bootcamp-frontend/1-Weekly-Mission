@@ -1,4 +1,4 @@
-const timeDifference = (current, previous) => {
+const timeDifference = (current: number, previous: number) => {
   const msPerMinute = 60 * 1000;
   const msPerHour = msPerMinute * 60;
   const msPerDay = msPerHour * 24;

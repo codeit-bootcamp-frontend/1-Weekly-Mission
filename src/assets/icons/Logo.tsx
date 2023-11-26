@@ -1,6 +1,9 @@
-import React from "react";
+interface LogoProps {
+  className?: string;
+  alt?: string;
+}
 
-const Logo = (props) => {
+const Logo = (props: LogoProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

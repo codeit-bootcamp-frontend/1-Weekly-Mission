@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Navbar.css";
 import Logo from "../../assets/icons/Logo";
 import API from "../../utils/api";
 
-const Navbar = ({ isFolderPage }) => {
-  const [userData, setUserData] = useState(null);
+const Navbar = ({ isFolderPage }: { isFolderPage: boolean }) => {
+  const [userData, setUserData] = useState<{
+    id: number;
+    created_at: string;
+    name: string;
+    image_source: string;
+    email: string;
+    auth_id: string;
+  } | null>(null);
   const userId = 1;
 
   useEffect(() => {

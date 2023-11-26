@@ -13,17 +13,25 @@ import PenIcon from "../../assets/icons/Pen";
 import DeleteIcon from "../../assets/icons/Delete";
 import Dialog from "../../components/Dialog";
 
+interface FolderProp {
+  id: number;
+  name: string;
+}
+
 const FolderPage = () => {
-  const [selectedFolderId, setSelectedFolderId] = useState(null);
-  const [selectedFolder, setSelectedFolder] = useState("전체");
-  const [folders, setFolders] = useState([]);
-  const [hasLinks, setHasLinks] = useState(true);
+  const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
+  const [selectedFolder, setSelectedFolder] = useState<string>("전체");
+  const [folders, setFolders] = useState<FolderProp[]>([]);
+  const [hasLinks, setHasLinks] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const userId = 1;
 
   const [showDialog, setShowDialog] = useState(false); // 다이얼로그 상태 관리 추가
   const [dialogType, setDialogType] = useState(""); // 어떤 다이얼로그를 보여줄지 결정하는 상태 추가
 
-  const openDialog = (type) => {
+  type DialogType = "add" | "share" | "rename" | "delete";
+
+  const openDialog = (type: DialogType) => {
     setDialogType(type);
     setShowDialog(true);
   };
@@ -55,7 +63,7 @@ const FolderPage = () => {
     <div>
       <Navbar isFolderPage={true} />
       <LinkInput />
-      <SearchBar />
+      <SearchBar setSearchTerm={setSearchTerm} />
       {hasLinks && (
         <div className="folders">
           <div className="folder-list">
@@ -110,6 +118,7 @@ const FolderPage = () => {
         isFolderPage={true}
         folderId={selectedFolderId}
         updateHasLinks={setHasLinks}
+        searchTerm={searchTerm}
       />
       {showDialog && (
         <Dialog>
@@ -127,7 +136,17 @@ const FolderPage = () => {
   );
 };
 
-const ActionItem = ({ icon: IconComponent, label, onClick }) => (
+interface ActionItemProps {
+  icon: React.ElementType;
+  label: string;
+  onClick: () => void;
+}
+
+const ActionItem = ({
+  icon: IconComponent,
+  label,
+  onClick,
+}: ActionItemProps) => (
   <div className="action-item" onClick={onClick}>
     <IconComponent />
     <span>{label}</span>
