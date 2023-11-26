@@ -3,22 +3,18 @@ import facebook from "../assets/img/icon-facebook-white.svg";
 import twitter from "../assets/img/icon-twitter-white.svg";
 import youtube from "../assets/img/icon-youtube-white.svg";
 import instagram from "../assets/img/icon-instagram-white.svg";
-import "../assets/css/Footer.css";
+import * as Styled from "../style/Footer";
 
 function Footer() {
   return (
-    <div className="footerContainer">
-      <footer>
-        <span className="copyright">©codeit - 2023</span>
-        <div className="linkContainer">
-          <a className="link" href="/privacy">
-            Privacy Policy
-          </a>
-          <a className="link" href="/faq">
-            FAQ
-          </a>
-        </div>
-        <ul className="sns">
+    <Styled.Container>
+      <Styled.Footer>
+        <Styled.Span>©codeit - 2023</Styled.Span>
+        <Styled.LinkContainer>
+          <Styled.Link href="/privacy">Privacy Policy</Styled.Link>
+          <Styled.Link href="/faq">FAQ</Styled.Link>
+        </Styled.LinkContainer>
+        <Styled.Ul>
           <li>
             <Link to="https://www.facebook.com/">
               <img src={facebook} alt="facebook" />
@@ -39,9 +35,9 @@ function Footer() {
               <img src={instagram} alt="instagram" />
             </Link>
           </li>
-        </ul>
-      </footer>
-    </div>
+        </Styled.Ul>
+      </Styled.Footer>
+    </Styled.Container>
   );
 }
 

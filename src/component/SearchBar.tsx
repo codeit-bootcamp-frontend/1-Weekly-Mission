@@ -1,5 +1,5 @@
 import iconSearch from "../assets/img/icon-search.svg";
-import * as Styled from "../style/SearchBar.js";
+import * as Styled from "../style/SearchBar";
 
 function SearchBar({ keyword, handleSubmit, handleChange }) {
   return (

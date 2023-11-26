@@ -4,7 +4,7 @@ import Star from "./Star";
 import PopOver from "./PopOver";
 import kebabICON from "../assets/img/icon-kebab.svg";
 import noImageIMG from "../assets/img/img-linkthumb-noimg.svg";
-import "../assets/css/Card.css";
+import * as Styled from "../style/Card";
 
 function Card({ data, onClick }) {
   /*---star---*/
@@ -20,16 +20,15 @@ function Card({ data, onClick }) {
   };
 
   /*--kebab--*/
-  const [kebab, setKebab] = useState(false);
+  const [isKebab, setIsKebab] = useState(false);
 
   const handleKebabClick = (e) => {
     e.stopPropagation();
-    if (kebab) {
-      setKebab(false);
+    if (isKebab) {
+      setIsKebab(false);
     } else {
-      setKebab(true);
+      setIsKebab(true);
     }
-    console.log(kebab);
   };
 
   /*--card clik--*/
@@ -69,28 +68,29 @@ function Card({ data, onClick }) {
 
   /*========= JSX =========*/
   return (
-    <div className="cardContainer" onClick={handleCardClick}>
+    <Styled.CardContainer onClick={handleCardClick}>
       <Star isStared={star} onClick={handleStarClick} />
-      <div className="cardImgBox">
-        <img
-          className="cardImg"
+      <Styled.ImageBox>
+        <Styled.Image
           src={data.image_source || noImageIMG}
           alt={data.image_source ? "카드 이미지" : "이미지 없음"}
         />
-      </div>
+      </Styled.ImageBox>
 
-      <div className="infoContainer">
-        <div className="additionalInfo">
-          <span className="timeForToday">{timeForToday(data.created_at)}</span>
+      <Styled.InfoContainer>
+        <Styled.AdditionalInfo>
+          <Styled.TimeSpan>{timeForToday(data.created_at)}</Styled.TimeSpan>
           <button onClick={handleKebabClick}>
             <img src={kebabICON} alt="카드 설정 더보기" />
           </button>
-          <PopOver isOn={kebab} />
-        </div>
-        <p className="description">{data.description || data.title}</p>
-        <span className="createdDate">{formatDate(data.created_at)}</span>
-      </div>
-    </div>
+          (isKebab) && (<PopOver />)
+        </Styled.AdditionalInfo>
+        <Styled.Description>
+          {data.description || data.title}
+        </Styled.Description>
+        <Styled.DateSpan>{formatDate(data.created_at)}</Styled.DateSpan>
+      </Styled.InfoContainer>
+    </Styled.CardContainer>
   );
 }
 

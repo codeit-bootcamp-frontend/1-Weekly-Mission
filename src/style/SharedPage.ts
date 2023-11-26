@@ -1,5 +1,7 @@
-/*--main--*/
-.folderInfo {
+import styled from "styled-components";
+import { Section } from "./CardContainer";
+
+export const FolderInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,45 +9,29 @@
   padding-bottom: 3.75rem;
   width: 100%;
   background-color: var(--linkbrary-bg);
-}
+`;
 
-.profileBox {
+export const ProfileBox = styled.div`
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 70%;
   overflow: hidden;
-}
+`;
 
-.profile {
+export const ProfileImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+`;
 
-.ownerName {
+export const OwnerName = styled.p`
   line-height: 1.5rem;
   margin: 0.75rem 0 1.25rem;
-}
+`;
 
-.folderName {
+export const FolderName = styled.h1`
   font-size: 2.5rem;
   font-weight: 600;
-}
+`;
 
-.section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 66.25rem;
-  margin: auto;
-
-  @media (max-width: 1123px) {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 44rem;
-  }
-
-  @media (max-width: 767px) {
-    grid-template-columns: 1fr;
-    max-width: 20.3125rem;
-  }
-}
+export { Section };

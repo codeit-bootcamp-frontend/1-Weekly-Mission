@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import { getFolderLinks, getFolders } from "../api";
 import Gnb from "../component/Gnb";
 import AddLinkBar from "../component/AddLinkBar";
-import "../assets/css/FolderPage.css";
 import CardContainer from "../component/CardContainer";
+import * as Styled from "../style/FolderPage";
 
 function FolderPage() {
   const { folderId } = useParams();
@@ -34,9 +34,9 @@ function FolderPage() {
         <title>Folder</title>
       </Helmet>
       <Gnb isFixed={true} />
-      <div className="folderInfo">
+      <Styled.Div>
         <AddLinkBar />
-      </div>
+      </Styled.Div>
       <CardContainer folders={folders} data={links} params={folderParam} />
     </>
   );

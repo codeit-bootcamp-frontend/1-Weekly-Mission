@@ -1,4 +1,6 @@
-.cardSection {
+import styled from "styled-components";
+
+export const Div = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(100px, auto);
@@ -11,4 +13,4 @@
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
   }
-}
+`;

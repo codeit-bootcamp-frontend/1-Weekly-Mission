@@ -52,7 +52,7 @@ const SIZES = {
   small: 1,
 };
 
-export const LinkImg = styled.img`
+export const LinkImg = styled.img<{ size: string }>`
   width:${({ size }) => SIZES[size]}
   height:${({ size }) => SIZES[size]}
 `;

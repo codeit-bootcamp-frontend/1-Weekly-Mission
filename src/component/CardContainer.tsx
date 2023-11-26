@@ -8,7 +8,7 @@ import {
 import SearchBar from "./SearchBar";
 import FolderList from "./FolderList";
 import CardSection from "./CardSection";
-import * as Styled from "../style/EmptyDiv";
+import * as Styled from "../style/CardContainer";
 
 export default function CardContainer({ folders, data, params }) {
   const APIdata = data;
@@ -65,7 +65,7 @@ export default function CardContainer({ folders, data, params }) {
   }, [APIdata]);
 
   return (
-    <section className="section">
+    <Styled.Section>
       <SearchBar
         handleSubmit={handleFormSubmit}
         handleChange={handleInputChange}
@@ -79,6 +79,6 @@ export default function CardContainer({ folders, data, params }) {
       ) : (
         <Styled.EmptyDiv> {message} </Styled.EmptyDiv>
       )}
-    </section>
+    </Styled.Section>
   );
 }

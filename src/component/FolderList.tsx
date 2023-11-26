@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FunctionBtn from "./FunctionBtn";
-import * as Styled from "../style/FolderList";
 import iconShare from "../assets/img/icon-share.svg";
 import iconPen from "../assets/img/icon-pen.svg";
 import iconTrash from "../assets/img/icon-trash.svg";
+import * as Styled from "../style/FolderList";
 
 function FolderChip({ name, id, onClick, style }) {
   const handleOnClick = () => {

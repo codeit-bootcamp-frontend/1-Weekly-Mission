@@ -4,7 +4,7 @@ import { getSample } from "../api";
 import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";
 import CardSection from "../component/CardSection";
-import "../assets/css/FolderPage.css";
+import * as Styled from "../style/SharedPage";
 
 function SharedPage() {
   const [folderData, setFolderData] = useState({
@@ -42,22 +42,21 @@ function SharedPage() {
         <title>Shared</title>
       </Helmet>
       <Gnb />
-      <div className="folderInfo">
-        <div className="profileBox">
-          <img
-            className="profile"
+      <Styled.FolderInfo>
+        <Styled.ProfileBox>
+          <Styled.ProfileImg
             src={folderData.ownerProfile}
             alt="프로필 이미지"
           />
-        </div>
-        <p className="ownerName">{`@${folderData.ownerName}`}</p>
-        <h1 className="folderName">{folderData.name}</h1>
-      </div>
+        </Styled.ProfileBox>
+        <Styled.OwnerName>{`@${folderData.ownerName}`}</Styled.OwnerName>
+        <Styled.FolderName>{folderData.name}</Styled.FolderName>
+      </Styled.FolderInfo>
 
-      <section className="section">
+      <Styled.Section>
         <SearchBar size="large" />
         <CardSection data={folderData.links} />
-      </section>
+      </Styled.Section>
     </>
   );
 }

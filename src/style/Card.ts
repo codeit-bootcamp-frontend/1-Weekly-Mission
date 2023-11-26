@@ -1,4 +1,6 @@
-.cardContainer {
+import styled from "styled-components";
+
+export const CardContainer = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -7,53 +9,54 @@
   border-radius: 15px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-}
 
-.cardImgBox {
+  &:hover {
+    background-color: var(--linkbrary-bg);
+
+    &Image {
+      transform: scale(1.3);
+    }
+  }
+`;
+//위에 카드 호버시 이미지 처리하기
+
+export const ImageBox = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
+`;
 
-.cardImg {
+export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 0.2s linear;
-}
+`;
 
-.infoContainer {
+export const InfoContainer = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
   padding: 1rem 1.25rem 1.25rem;
   justify-content: space-between;
   gap: 0.62rem;
-}
+`;
 
-.cardContainer:hover .cardImg {
-  transform: scale(1.3);
-}
-
-.cardContainer:hover {
-  background-color: var(--linkbrary-bg);
-}
-
-.additionalInfo {
+export const AdditionalInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-}
+`;
 
-.timeForToday {
+export const TimeSpan = styled.span`
   white-space: nowrap;
   overflow: hidden;
   font-size: 0.8125rem;
   color: #666;
-}
+`;
 
-.description {
+export const Description = styled.p`
   display: -webkit-box;
   height: 3.06rem;
   overflow: hidden;
@@ -63,10 +66,10 @@
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-}
+`;
 
-.createdDate {
+export const DateSpan = styled.span`
   display: inline-block;
   font-size: 0.875rem;
   color: #333;
-}
+`;

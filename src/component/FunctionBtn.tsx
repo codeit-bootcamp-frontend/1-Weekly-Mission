@@ -1,4 +1,4 @@
-import * as Styled from "../style/FunctionBtn.js";
+import * as Styled from "../style/FunctionBtn";
 
 interface Props {
   src: string;

@@ -1,10 +1,10 @@
-import "../assets/css/ProfileImg.css";
+import * as Styled from "../style/ProfileImg";
 
 function ProfileImg({ src }) {
   return (
-    <div className="box">
-      <img className="profile" src={src} alt="profile" />
-    </div>
+    <Styled.Box>
+      <Styled.Image src={src} alt="profile" />
+    </Styled.Box>
   );
 }
 
