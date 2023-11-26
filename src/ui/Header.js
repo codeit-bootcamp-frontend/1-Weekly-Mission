@@ -24,7 +24,17 @@ const Header = () => {
   function getInputValue(v) {
     setInputValue(v);
   }
-  console.log(inputValue);
+
+  const searchedData = fullData?.filter((data) => {
+    if (
+      data.url.includes(inputValue) ||
+      data.title.includes(inputValue) ||
+      data.description.includes(inputValue)
+    ) {
+      return data;
+    }
+  });
+
   return (
     <>
       <header>
@@ -45,7 +55,8 @@ const Header = () => {
         </div>
       </header>
       <Search getInputValue={getInputValue} />
-      {fullData && <Cards fullData={fullData} />}
+      {searchedData && inputValue !== "" && <Cards fullData={searchedData} />}
+      {fullData && inputValue === "" && <Cards fullData={fullData} />}
     </>
   );
 };

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../styles/landing.css";
 import CloseButton from "../../images/close-button.svg";
 const Search = ({ getInputValue }) => {
   const [inputSearch, setInputSearch] = useState("");
+  const mounted = useRef(false);
   function handleChange(e) {
     setInputSearch(e.target.value);
   }
@@ -11,7 +12,20 @@ const Search = ({ getInputValue }) => {
     e.preventDefault();
     setInputSearch("");
   }
-  getInputValue(inputSearch);
+
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      getInputValue(inputSearch);
+    }
+  }, [inputSearch]);
+
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  }
   return (
     <div
       style={{
@@ -22,6 +36,7 @@ const Search = ({ getInputValue }) => {
       <form className="search-area" style={{ position: "relative" }}>
         <input
           onChange={(e) => handleChange(e)}
+          onKeyPress={handleKeyPress}
           value={inputSearch}
           placeholder="링크를 검색해 보세요."
           style={{
