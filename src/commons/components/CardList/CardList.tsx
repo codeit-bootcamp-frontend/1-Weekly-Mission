@@ -3,8 +3,8 @@ import Card from "../Card/Card";
 import styles from "./CardList.module.scss";
 
 interface CardListProps {
-  cardList: CardInterface[];
-  onClick: (m: ModalInterface) => void;
+  cardList?: CardInterface[];
+  onClick?: (m: ModalInterface) => void;
   keyword?: string;
 }
 

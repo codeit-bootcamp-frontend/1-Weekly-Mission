@@ -7,16 +7,20 @@ import KebabButton from "../KebabButton/KebabButton";
 import { CardProps, ModalInterface } from "src/types";
 
 interface Props extends CardProps {
-  onClick: (m: ModalInterface) => void;
+  onClick?: (m: ModalInterface) => void;
 }
 
 function Card({ card, onClick }: Props) {
-  const str = calcDate(String(card.created_at));
+  const str = calcDate(String(card.created_at || card.createdAt));
   return (
     <>
       <div className={styles["card-container"]}>
-        <StarButton card={card} />
-        <KebabButton card={card} onClick={onClick} />
+        {onClick && (
+          <>
+            <StarButton card={card} />
+            <KebabButton card={card} onClick={onClick} />
+          </>
+        )}
         <a
           href={card.url}
           target="_blank"
@@ -25,7 +29,7 @@ function Card({ card, onClick }: Props) {
         >
           <div className={styles["card-img-section"]}>
             <img
-              src={card.image_source ? card.image_source : NoImg}
+              src={card.image_source || card.imageSource || NoImg}
               alt={card.title}
             />
           </div>
@@ -33,7 +37,7 @@ function Card({ card, onClick }: Props) {
             <p className={styles["time-stamp"]}>{str}</p>
             <p className={styles["introduce-text"]}>{card.description}</p>
             <p className={styles["created-date"]}>
-              {formatDate(String(card.created_at))}
+              {formatDate(String(card.created_at || card.createdAt))}
             </p>
           </div>
         </a>

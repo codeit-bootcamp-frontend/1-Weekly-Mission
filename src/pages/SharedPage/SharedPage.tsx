@@ -1,62 +1,50 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useCallback } from "react";
+import styles from "./SharedPage.module.scss";
 import ShareHeader from "./components/ShareHeader/ShareHeader";
-import { SearchBar, CardList } from "../../commons/components/index";
-import { getAllCards } from "src/apis";
-import "./SharedPage.scss";
+import { getSharedFolder, getSharedUser } from "src/apis";
 import Layout from "../Layout/Layout";
-
-interface FolderProps {
-  folderName: string;
-  folderOwnerName: string;
-  folderOwnerProfileImage: string;
-}
-
-const INITIAL_FOLDER = {
-  folderName: "",
-  folderOwnerName: "",
-  folderOwnerProfileImage: "",
-};
+import { SharedFolderInterface, SharedUserInterface } from "src/types";
+import { SearchBar, CardList } from "src/commons/components";
 
 function SharedPage() {
-  const [folderValues, setFolderValues] = useState<FolderProps>(INITIAL_FOLDER);
+  const [sharedUser, setSharedUser] = useState<SharedUserInterface>();
+  const [sharedFolder, setSharedFolder] = useState<SharedFolderInterface>();
+  const [keyword, setKeyword] = useState("");
 
-  const [cardList, setCardList] = useState([]);
-
-  const loadUser = async () => {
-    const folderResult = await getAllCards();
-    if (!folderResult) return;
-    if (!folderResult.folder) return;
-    const { name = "", owner = null, links = "" } = folderResult.folder;
-    setFolderValues((prevValues) => {
-      const newValues = {
-        folderName: name,
-        folderOwnerName: owner?.name,
-        folderOwnerProfileImage: owner?.profileImageSource,
-      };
-      return { ...prevValues, ...newValues };
-    });
-    setCardList(links);
-  };
+  const getSharedFiles = useCallback(async () => {
+    const userResult = await getSharedUser();
+    const folderResult = await getSharedFolder();
+    if (userResult && folderResult) {
+      setSharedUser(() => {
+        return { ...userResult };
+      });
+      setSharedFolder(() => {
+        return { ...folderResult };
+      });
+    }
+  }, []);
 
   useEffect(() => {
-    loadUser();
-  }, []);
+    getSharedFiles();
+  }, [getSharedFiles]);
 
   return (
     <Layout isSticky={true}>
-      <ShareHeader
-        folderOwnerProfile={folderValues.folderOwnerProfileImage}
-        folderName={folderValues.folderName}
-        folderOwnerName={folderValues.folderOwnerName}
-      />
+      <ShareHeader sharedUser={sharedUser} sharedFolder={sharedFolder} />
 
-      <section className="section">
-        <div className="search-section">{/* <SearchBar /> */}</div>
-        <div className="card-section">
-          {/* <CardList cardList={cardList} /> */}
-        </div>
-      </section>
+      <div className={styles["folder-content"]}>
+        <SearchBar onChange={setKeyword} keys={keyword} />
+        {keyword && (
+          <div className={styles["result-section"]}>
+            <h1>
+              <span>{keyword}</span>으로 검색한 결과입니다.
+            </h1>
+          </div>
+        )}
+      </div>
+      <div className={styles["card-list-section"]}>
+        <CardList cardList={sharedFolder?.folder.links} keyword={keyword} />
+      </div>
     </Layout>
   );
 }
