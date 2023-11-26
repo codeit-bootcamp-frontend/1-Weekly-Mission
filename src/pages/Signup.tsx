@@ -14,9 +14,9 @@ import { FormEvent } from "react";
 function Signup() {
   const { isAuth } = useAuth();
 
-  const email = useInputController(signupEmail);
-  const password = useInputController(signupPassword);
-  const passwordCheck = useInputController(signupPassword);
+  const email = useInputController({ func: signupEmail });
+  const password = useInputController({ func: signupPassword });
+  const passwordCheck = useInputController({ func: signupPassword });
 
   const navigate = useNavigate();
 

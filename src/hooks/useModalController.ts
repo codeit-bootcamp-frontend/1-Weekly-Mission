@@ -1,6 +1,6 @@
 import { MouseEvent, useState } from "react";
 
-function useModalColtroller(prevent?: boolean) {
+function useModalController(prevent?: boolean) {
   const [state, setState] = useState(false);
 
   const handleClick = (e: MouseEvent) => {
@@ -14,4 +14,4 @@ function useModalColtroller(prevent?: boolean) {
   return { state, handleClick };
 }
 
-export default useModalColtroller;
+export default useModalController;

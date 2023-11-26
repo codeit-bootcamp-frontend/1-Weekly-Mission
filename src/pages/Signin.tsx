@@ -12,8 +12,8 @@ import useInputController from "../hooks/useInputController";
 import { FormEvent } from "react";
 
 function Signin() {
-  const email = useInputController(signinEmail);
-  const password = useInputController(signinPassword);
+  const email = useInputController({ func: signinEmail });
+  const password = useInputController({ func: signinPassword });
 
   const { isAuth } = useAuth();
 
