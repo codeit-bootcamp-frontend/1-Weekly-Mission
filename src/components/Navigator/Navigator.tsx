@@ -7,21 +7,33 @@ import LB_ICON from '@assets/icons/linkbrary.svg';
 interface Props {
   isLoggedIn: boolean;
   userId: number;
+  navRef?: React.RefObject<HTMLDivElement>;
 }
 
-function Navigator({ isLoggedIn, userId }: Props) {
-  const { data } = useRequest({
+interface UserInfo {
+  data: {
+    auth_id: string;
+    created_at: string;
+    email: string;
+    id: number;
+    image_source: string;
+    name: string;
+  }[];
+}
+
+function Navigator({ isLoggedIn, userId, navRef }: Props) {
+  const { data } = useRequest<UserInfo>({
+    skip: !isLoggedIn,
     options: {
       url: `/users/${userId}`,
       method: 'get',
-      skip: !isLoggedIn,
     },
   });
 
   const userInfo = data?.data?.[0];
 
   return (
-    <S.GnbContainer>
+    <S.GnbContainer ref={navRef}>
       <S.GnbInner>
         <S.Logo href='/'>
           <img src={LB_ICON} alt='링크브러리 로고' />

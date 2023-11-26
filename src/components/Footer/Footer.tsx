@@ -4,9 +4,13 @@ import TWITTER_ICON from '@assets/icons/twitter.svg';
 import YOUTUBE_ICON from '@assets/icons/youtube.svg';
 import INSTAGRAM_ICON from '@assets/icons/instagram.svg';
 
-function Footer() {
+function Footer({
+  footerRef,
+}: {
+  footerRef?: React.RefObject<HTMLDivElement>;
+}) {
   return (
-    <S.FooterContainer>
+    <S.FooterContainer ref={footerRef}>
       <S.FooterInner>
         <S.Copyright>©codeit - 2023</S.Copyright>
         <S.ExtraPage>

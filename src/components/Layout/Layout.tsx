@@ -7,18 +7,22 @@ interface Props {
   children: ReactNode;
   isLoggedIn?: boolean;
   userId?: number;
+  navRef?: React.RefObject<HTMLDivElement>;
+  footerRef?: React.RefObject<HTMLDivElement>;
 }
 
 function Layout({
   children,
   isLoggedIn = false,
   userId = DEFAULT_USER_ID,
+  navRef,
+  footerRef,
 }: Props) {
   return (
     <>
-      <Navigator isLoggedIn={isLoggedIn} userId={userId} />
+      <Navigator isLoggedIn={isLoggedIn} userId={userId} navRef={navRef} />
       {children}
-      <Footer />
+      <Footer footerRef={footerRef} />
     </>
   );
 }

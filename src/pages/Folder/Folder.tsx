@@ -65,29 +65,49 @@ function Folder() {
 
   const filteredLinks = filterLinks(links?.data, initialKeyword);
 
-  const target = useRef<HTMLDivElement>(null);
   const [floatAddLink, setFloatAddLink] = useState(false);
+  const addLinkTarget = useRef<HTMLDivElement>(null);
+  const navTarget = useRef<HTMLDivElement>(null);
+  const footerTarget = useRef<HTMLDivElement>(null);
 
-  const onAddLinkHidden: IntersectionObserverCallback = (entries) => {
+  const onIntersect: IntersectionObserverCallback = (entries) => {
     const [entry] = entries;
-    setFloatAddLink(!entry.isIntersecting);
+    if (entry.time < 500) {
+      return;
+    }
+    if (entry.isIntersecting) {
+      setFloatAddLink(false);
+    } else {
+      setFloatAddLink(true);
+    }
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(onAddLinkHidden, {
-      threshold: 0,
+    const observer = new IntersectionObserver(onIntersect, {
+      threshold: [0, 1],
     });
-    if (target.current) {
-      observer.observe(target.current);
+
+    if (addLinkTarget.current) {
+      observer.observe(addLinkTarget.current);
     }
-    return () => observer.disconnect();
-  }, [target]);
+    if (navTarget.current) {
+      observer.observe(navTarget.current);
+    }
+    if (footerTarget.current) {
+      observer.observe(footerTarget.current);
+    }
+  }, [addLinkTarget, navTarget, footerTarget]);
 
   return (
-    <Layout isLoggedIn userId={DEFAULT_USER_ID}>
+    <Layout
+      isLoggedIn
+      userId={DEFAULT_USER_ID}
+      navRef={navTarget}
+      footerRef={footerTarget}
+    >
       <AddLinkContainer
         userId={DEFAULT_USER_ID}
-        addLinkRef={target}
+        addLinkRef={addLinkTarget}
         float={floatAddLink}
       />
       <S.ContentContainer>
