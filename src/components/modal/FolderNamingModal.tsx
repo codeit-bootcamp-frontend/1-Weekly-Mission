@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import xClose from './img/Xclose.svg';
+import xClose from '../img/Xclose.svg';
 import * as M from './css/ModalStyledCompoenet';
 
 export default function FolderNamingModal({ handleClick }) {

@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
-import './css/SharedPage.css';
-import search from './img/search.svg';
+import '../css/SharedPage.css';
+import search from '../components/img/search.svg';
 import { getData } from '../api';
 import SharedHeader from '../components/SharedHeader';
 import Card from '../components/Card';
 
-export default function SharedPage() {
-  const [items, setItems] = useState([]);
+export interface itemState {
+  id: number;
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource: string;
+}
 
+export default function SharedPage() {
+  const [items, setItems] = useState<itemState[]>();
   useEffect(() => {
     const handleLoad = async () => {
       const { folder } = await getData('sample/folder');
@@ -15,7 +23,6 @@ export default function SharedPage() {
     };
     handleLoad();
   }, []);
-
   return (
     <>
       <SharedHeader />
@@ -28,7 +35,7 @@ export default function SharedPage() {
           ></input>
         </div>
         <div className="main-content-wrapper">
-          {items.map((item) => (
+          {items?.map((item) => (
             <Card key={item.id} item={item} />
           ))}
         </div>

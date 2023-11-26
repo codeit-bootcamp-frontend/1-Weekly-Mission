@@ -1,10 +1,16 @@
 import favorites from './img/favorites.svg';
 import { getData } from '../api';
-import './css/Nav.css';
+import '../css/Nav.css';
 import { useCallback, useState, useEffect } from 'react';
 
+interface userState {
+  id: number;
+  name: string;
+  profileImageSource: string;
+}
+
 export default function SharedHeader() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState<userState>([] as any);
 
   const handleLoad = useCallback(async () => {
     const { folder } = await getData('sample/folder');

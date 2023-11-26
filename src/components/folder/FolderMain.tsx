@@ -1,15 +1,15 @@
-import { useState, useEffect, useCallback } from 'react';
-import search from './img/search.svg';
+import { useState, useEffect, useCallback, MouseEvent } from 'react';
+import search from '../img/search.svg';
 import { getData } from '../../api';
 import * as FM from '../styled-component/FolderMainStyledComponent';
 import * as C from '../styled-component/CardStyledComponent';
 import * as S from '../styled-component/SharedPageStyledComponent';
-import plusImg from './img/plus.svg';
-import shareImg from './img/share.svg';
-import penImg from './img/pen.svg';
-import deleteImg from './img/delete.svg';
+import plusImg from '../img/plus.svg';
+import shareImg from '../img/share.svg';
+import penImg from '../img/pen.svg';
+import deleteImg from '../img/delete.svg';
 import FolderCard from './FolderCard';
-import plus from './img/plus-white.svg';
+import plus from '../img/plus-white.svg';
 import FolderPlusModal from '../modal/FolderPlusModal';
 import FolderDeleteModal from '../modal/FolderDeleteModal';
 import FolderShareModal from '../modal/FolderShareModal';
@@ -19,15 +19,34 @@ const activeButton = {
   backgroundColor: '#6d6afe',
 };
 
+interface foldersProps {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+  link: { count: number };
+}
+
+interface linksProps {
+  id: number;
+  created_at: string;
+  updated_at: null;
+  url: string;
+  title: string;
+  description: string;
+  image_source: string;
+  folder_id: number;
+}
+
 export default function FolderMain() {
-  const [folders, setFolders] = useState([]);
-  const [links, setLinks] = useState([]);
+  const [folders, setFolders] = useState<foldersProps[]>([]);
+  const [links, setLinks] = useState<linksProps[]>([]);
   const [title, setTitle] = useState('전체');
   const [onModal, setOnModal] = useState(false);
   const [onDeleteModal, setOnDeleteModal] = useState(false);
   const [onShareModal, setOnShareModal] = useState(false);
   const [value, setValue] = useState('');
-  const [folderId, setFolerId] = useState(null);
+  const [folderId, setFolerId] = useState('');
 
   const handleLoad = useCallback(async (id = '') => {
     const { data } = await getData('users/1/folders');
@@ -36,16 +55,18 @@ export default function FolderMain() {
     setLinks(link.data);
   }, []);
 
-  const handleFolderList = async (e) => {
-    setTitle(e.target.textContent);
-    const id = e.target.name;
+  const handleFolderList = async (e: MouseEvent<HTMLButtonElement>) => {
+    const target = e.currentTarget;
+    setTitle(target.textContent as string);
+    const id = target.name;
     setFolerId(id);
     handleLoad(id);
   };
 
-  const onClickModal = (e) => {
+  const onClickModal = (e: MouseEvent<HTMLButtonElement>) => {
     try {
-      setValue(e.target.textContent);
+      const target = e.currentTarget;
+      setValue(target.textContent as string);
     } catch {}
     setOnModal(!onModal);
   };
@@ -62,9 +83,10 @@ export default function FolderMain() {
     setOnShareModal(!onShareModal);
   };
 
-  const onClickDeleteModal = (e) => {
+  const onClickDeleteModal = (e: MouseEvent<HTMLButtonElement>) => {
     try {
-      setValue(e.target.textContent);
+      const target = e.currentTarget;
+      setValue(target.textContent as string);
     } catch {}
     setOnDeleteModal(!onDeleteModal);
   };
@@ -72,6 +94,10 @@ export default function FolderMain() {
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
+
+  useEffect(() => {
+    console.log(folders);
+  });
   return (
     <FM.FolderContainer>
       <FM.FolderSearch>
@@ -82,14 +108,14 @@ export default function FolderMain() {
         <FM.FolderDIv>
           <FM.Button
             onClick={handleFolderList}
-            style={title === '전체' ? activeButton : null}
+            style={title === '전체' ? activeButton : undefined}
           >
             전체
           </FM.Button>
-          {folders.map((item) => (
+          {folders?.map((item) => (
             <FM.Button
-              style={title === item.name ? activeButton : null}
-              name={item.id}
+              style={title === item.name ? activeButton : undefined}
+              name={`${item.id}`}
               key={item.id}
               onClick={handleFolderList}
             >
@@ -102,8 +128,8 @@ export default function FolderMain() {
           <img src={plusImg} alt="plugImg" />
         </FM.FolderPlusButton>
       </FM.FolderWrapper>
-      <C.CardButton>
-        <C.CardButtonDiv onClick={onClickModal} value="폴더 추가">
+      <C.CardButton onClick={onClickModal} value="폴더 추가">
+        <C.CardButtonDiv>
           <div>폴더추가</div>
           <img src={plus} alt="plusImg" />
         </C.CardButtonDiv>
@@ -144,6 +170,7 @@ export default function FolderMain() {
           handleClick={onClickDeleteCloseModal}
           title={title}
           value={value}
+          cardLink={''}
         />
       )}
       {onShareModal && (

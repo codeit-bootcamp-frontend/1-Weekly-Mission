@@ -1,11 +1,19 @@
 import library from './img/linkbrary.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getData } from '../api';
 import Profile from './Profile';
 import * as N from './styled-component/NavStyledComponent';
 
+export interface profileProps {
+  id: number;
+  name: string;
+  email: string;
+  profileImageSource: string;
+}
+
 export default function Nav() {
-  const [login, setLogin] = useState([]);
+  const [login, setLogin] = useState<profileProps>();
+
   const url = window.location.pathname;
 
   const handleLoad = async () => {
@@ -17,19 +25,20 @@ export default function Nav() {
       setLogin(data);
     }
   };
-  console.log(login.id);
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
   return (
     <N.NavContainer>
       <N.NavWrapper>
         <a href="/">
           <N.NavLibraryImg src={library} alt="libraryLogo" />
         </a>
-        {login.id || login[0] ? (
+        {login?.id ? (
           <Profile item={login} />
         ) : (
-          <N.NavLoginButton href="/" onClick={handleLoad}>
-            로그인
-          </N.NavLoginButton>
+          <N.NavLoginButton onClick={handleLoad}>로그인</N.NavLoginButton>
         )}
       </N.NavWrapper>
     </N.NavContainer>

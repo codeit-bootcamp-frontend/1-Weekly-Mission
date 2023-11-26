@@ -1,8 +1,8 @@
 import { dateCalculator } from '../dateCalculator';
-import noImage from './img/no-image.svg';
-import kebab from './img/kebab.svg';
-import star from './img/star.svg';
-import { useRef, useState } from 'react';
+import noImage from '../img/no-image.svg';
+import kebab from '../img/kebab.svg';
+import star from '../img/star.svg';
+import { useEffect, useRef, useState } from 'react';
 import FolderDeleteModal from '../modal/FolderDeleteModal';
 import ToFolderPlusModal from '../modal/ToFolderPlusModal';
 import * as C from '../styled-component/CardStyledComponent';
@@ -14,15 +14,15 @@ export default function FolderCard(link) {
   const month = apiDate.getMonth() + 1;
   const days = apiDate.getDate();
   const [clicked, setClicked] = useState(false);
-  const [onDeleteModal, setOnDeleteModal] = useState(false);
-  const [onToFolderPlusModal, setOnToFolderPlusModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showToFolderPlusModal, setShowToFolderPlusModal] = useState(false);
 
   const back = useRef();
   const kebabfunc = (e) => {
     e.preventDefault();
   };
 
-  const kebabClick = (e) => {
+  const kebabClick = () => {
     setClicked(!clicked);
   };
 
@@ -33,17 +33,21 @@ export default function FolderCard(link) {
   };
 
   const onClickDeleteModal = () => {
-    setOnDeleteModal(!onDeleteModal);
+    setShowDeleteModal(!showDeleteModal);
   };
 
   const onClickToFolderModal = () => {
-    setOnToFolderPlusModal(!onToFolderPlusModal);
+    setShowToFolderPlusModal(!showToFolderPlusModal);
   };
 
   if (link.item.image_source === undefined || link.item.image_source === null) {
     link.item.image_source = noImage;
   }
-  document.addEventListener('mousedown', clickOutside);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', clickOutside);
+    return () => document.removeEventListener(clickOutside);
+  }, [clickOutside]);
   return (
     <>
       <C.CardWrapper to={link.item.url} target="_blank">
@@ -82,13 +86,13 @@ export default function FolderCard(link) {
         </C.CardBox>
       </C.CardWrapper>
 
-      {onDeleteModal && (
+      {showDeleteModal && (
         <FolderDeleteModal
           handleClick={onClickDeleteModal}
           cardLink={link.item.url}
         />
       )}
-      {onToFolderPlusModal && (
+      {showToFolderPlusModal && (
         <ToFolderPlusModal
           handleClick={onClickToFolderModal}
           cardLink={link.item.url}

@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
-import xClose from './img/Xclose.svg';
+import xClose from '../img/Xclose.svg';
 import { getData } from '../../api';
-import check from './img/check.svg';
+import check from '../img/check.svg';
 import * as M from '../styled-component/ModalStyledCompoenet';
 
 export default function ToFolderPlusModal({ handleClick, cardLink }) {

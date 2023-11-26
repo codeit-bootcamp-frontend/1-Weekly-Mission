@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react';
-import xClose from './img/Xclose.svg';
-import kakao from './img/kakao.svg';
-import facebookImg from './img/facebookImg.svg';
-import linkImg from './img/linkImg.svg';
+import xClose from '../img/Xclose.svg';
+import kakao from '../img/kakao.svg';
+import facebookImg from '../img/facebookImg.svg';
+import linkImg from '../img/linkImg.svg';
 import { useLocation } from 'react-router-dom';
 import * as M from '../styled-component/ModalStyledCompoenet';
 const { Kakao } = window;
@@ -11,11 +11,11 @@ export default function FolderShareModal({ handleClick, title, id }) {
   const resultUrl = `window.location.href/${id}`;
   const BASEURL = 'localhost:3000';
   const location = useLocation();
-  console.log(resultUrl);
+  const kakaoApiKey = process.env.REACT_APP_KAKAO_SHARE_API;
 
   useEffect(() => {
     Kakao.cleanup();
-    Kakao.init('512cd8a8ece57b97899c8cc612089c7d');
+    Kakao.init(kakaoApiKey);
   }, []);
 
   const shareKakao = () => {

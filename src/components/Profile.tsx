@@ -1,6 +1,6 @@
 import * as N from './styled-component/NavStyledComponent';
 
-export default function Profile(data) {
+export default function Profile(data: any) {
   return (
     <N.ProfileDiv>
       <N.ProfileDivLogo>
