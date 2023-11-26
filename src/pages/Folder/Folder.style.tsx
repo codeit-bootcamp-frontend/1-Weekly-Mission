@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { onPc } from '@styles/mediaQuery';
+import { onPc, onTablet } from '@styles/mediaQuery';
 import { COLORS } from '@styles/palette';
 
 export const ContentContainer = styled.main`
@@ -13,11 +13,16 @@ export const ContentContainer = styled.main`
 
 export const SearchText = styled.div<{ $show: boolean }>`
   display: none;
-  padding-top: 4rem;
-  font-size: 3.2rem;
+  padding-top: 3.2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   letter-spacing: -0.02rem;
   color: ${COLORS.LB_GRAY_60};
+
+  ${onTablet} {
+    padding-top: 4rem;
+    font-size: 3.2rem;
+  }
 
   & span {
     color: ${COLORS.LB_GRAY_100};
