@@ -41,45 +41,24 @@ const UserProvider = ({ children }: UserProviderProps) => {
   );
 };
 
-const useUserId = (): number | null => {
+const useUser = () => {
   const context = useContext(UserContext);
 
   if (!context) {
     throw new Error("반드시 UserProvider 안에서 사용해야 합니다.");
   }
-
-  return context.userId;
+  return context;
 };
 
-const useSetUserId = (): Dispatch<SetStateAction<number | null>> => {
-  const context = useContext(UserContext);
+const useUserId = (): number | null => useUser().userId;
 
-  if (!context) {
-    throw new Error("반드시 UserProvider 안에서 사용해야 합니다.");
-  }
+const useSetUserId = (): Dispatch<SetStateAction<number | null>> =>
+  useUser().setUserId;
 
-  return context.setUserId;
-};
+const useFolderId = (): number | null => useUser().folderId;
 
-const useFolderId = (): number | null => {
-  const context = useContext(UserContext);
-
-  if (!context) {
-    throw new Error("반드시 UserProvider 안에서 사용해야 합니다.");
-  }
-
-  return context.folderId;
-};
-
-const useSetFolderId = (): Dispatch<SetStateAction<number | null>> => {
-  const context = useContext(UserContext);
-
-  if (!context) {
-    throw new Error("반드시 UserProvider 안에서 사용해야 합니다.");
-  }
-
-  return context.setFolderId;
-};
+const useSetFolderId = (): Dispatch<SetStateAction<number | null>> =>
+  useUser().setFolderId;
 
 export {
   UserContext,

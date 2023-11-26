@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 
-import styles from "./EditFolderNameModal.module.css";
+import styles from "./EditFolderNameModalContent.module.css";
 
 import ModalButton from "../ModalButton/ModalButton";
 import ModalTitle from "../ModalTitle/ModalTitle";
@@ -9,7 +9,7 @@ interface Props {
   currentFolderName: string;
 }
 
-const EditFolderNameModal = ({ currentFolderName }: Props) => {
+const EditFolderNameModalContent = ({ currentFolderName }: Props) => {
   const [inputValue, setInputValue] = useState(currentFolderName);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,4 +32,4 @@ const EditFolderNameModal = ({ currentFolderName }: Props) => {
   );
 };
 
-export default EditFolderNameModal;
+export default EditFolderNameModalContent;

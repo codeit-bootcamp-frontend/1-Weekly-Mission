@@ -1,7 +1,7 @@
 import { MouseEvent, ReactNode, useEffect } from "react";
 import classNames from "classnames";
 
-import styles from "./ShareFolderModal.module.css";
+import styles from "./ShareFolderModalContent.module.css";
 
 import { useFolderId } from "../../../contexts/UserContext";
 import { shareFacebook, shareKakao } from "../../../utils/utils";
@@ -26,7 +26,7 @@ const icons: Icon[] = [
   { name: "링크 복사", icon: chainIcon, backgroundColor: "gray" },
 ];
 
-function ShareFolderModal({ children }: Props) {
+function ShareFolderModalContent({ children }: Props) {
   const folderId = useFolderId();
 
   const handleButtonClick = async (
@@ -91,4 +91,4 @@ function ShareFolderModal({ children }: Props) {
   );
 }
 
-export default ShareFolderModal;
+export default ShareFolderModalContent;

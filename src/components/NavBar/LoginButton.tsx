@@ -8,7 +8,7 @@ import getUser from "../../api/getUser";
 const LoginButton = () => {
   const setUserId = useSetUserId();
   const [userData, setUserData] = useState<UserData>();
-  const { status: isLoading, wrappedFunction: getUserAsync } =
+  const { pending: isLoading, wrappedFunction: getUserAsync } =
     useAsync(getUser);
 
   const handleButtonClick = async () => {

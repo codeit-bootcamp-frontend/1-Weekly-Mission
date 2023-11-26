@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./FolderEdit.module.css";
 import ModalContainer from "../Modal/ModalContainer/ModalContainer";
-import DeleteFolderModal from "../Modal/DeleteFolderModal/DeleteFolderModal";
-import EditFolderNameModal from "../Modal/EditFolderNameModal/EditFolderNameModal";
-import ShareFolderModal from "../Modal/ShareFolderModal/ShareFolderModal";
+import DeleteFolderModalContent from "../Modal/DeleteFolderModalContent/DeleteFolderModalContent";
+import EditFolderNameModalContent from "../Modal/EditFolderNameModalContent/EditFolderNameModalContent";
+import ShareFolderModal from "../Modal/ShareFolderModalContent/ShareFolderModalContent";
 
 interface Props {
   currentFolderName: string;
@@ -28,9 +28,11 @@ const FolderEditButton = ({ currentFolderName, src, text }: Props) => {
           {text === "공유" ? (
             <ShareFolderModal>{currentFolderName}</ShareFolderModal>
           ) : text === "이름 변경" ? (
-            <EditFolderNameModal currentFolderName={currentFolderName} />
+            <EditFolderNameModalContent currentFolderName={currentFolderName} />
           ) : (
-            <DeleteFolderModal>{currentFolderName}</DeleteFolderModal>
+            <DeleteFolderModalContent>
+              {currentFolderName}
+            </DeleteFolderModalContent>
           )}
         </ModalContainer>
       )}

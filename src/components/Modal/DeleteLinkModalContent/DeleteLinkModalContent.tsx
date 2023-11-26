@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import styles from "./DeleteLinkModal.module.css";
+import styles from "./DeleteLinkModalContent.module.css";
 
 import ModalButton from "../ModalButton/ModalButton";
 import ModalTitle from "../ModalTitle/ModalTitle";
@@ -9,7 +9,7 @@ interface Props {
   children: ReactNode;
 }
 
-function DeleteLinkModal({ children }: Props) {
+function DeleteLinkModalContent({ children }: Props) {
   return (
     <div className={styles.deleteLinkModal}>
       <ModalTitle>링크 삭제</ModalTitle>
@@ -21,4 +21,4 @@ function DeleteLinkModal({ children }: Props) {
   );
 }
 
-export default DeleteLinkModal;
+export default DeleteLinkModalContent;

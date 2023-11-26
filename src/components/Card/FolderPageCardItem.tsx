@@ -5,8 +5,8 @@ import logoImg from "../../assets/images/emptyImg.svg";
 import starImg from "../../assets/images/star.svg";
 import kebabImg from "../../assets/images/kebab.svg";
 import ModalContainer from "../Modal/ModalContainer/ModalContainer";
-import DeleteLinkModal from "../Modal/DeleteLinkModal/DeleteLinkModal";
-import AddLinkModal from "../Modal/AddLinkModal/AddLinkModal";
+import DeleteLinkModalContent from "../Modal/DeleteLinkModalContent/DeleteLinkModalContent";
+import AddLinkModalContent from "../Modal/AddLinkModalContent/AddLinkModalContent";
 
 interface Props {
   folderListData: UserFolderData;
@@ -80,12 +80,15 @@ function FolderPageCardItem({
           )}
           {isOpenDeleteLinkModal && (
             <ModalContainer onClose={handleCloseDeleteLinkModal}>
-              <DeleteLinkModal>{url}</DeleteLinkModal>
+              <DeleteLinkModalContent>{url}</DeleteLinkModalContent>
             </ModalContainer>
           )}
           {isOpenAddFolderModal && (
             <ModalContainer onClose={handleCloseAddFolderModal}>
-              <AddLinkModal inputValue={url} folderListData={folderListData} />
+              <AddLinkModalContent
+                inputValue={url}
+                folderListData={folderListData}
+              />
             </ModalContainer>
           )}
         </div>

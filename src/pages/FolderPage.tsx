@@ -16,11 +16,11 @@ import Loadable from "../components/Skeleton/Loadable";
 import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSkeleton";
 import FolderPageCardItem from "../components/Card/FolderPageCardItem";
 import NotFoundLink from "../components/Card/NotFoundLink";
-import AddLinkModal from "../components/Modal/AddLinkModal/AddLinkModal";
+import AddLinkModalContent from "../components/Modal/AddLinkModalContent/AddLinkModalContent";
 import AddLinkInput from "../components/AddLink/AddLinkInput";
 import CategoryList from "../components/Category/CategoryList";
 import AddFolderButton from "../components/AddFolderButton/AddFolderButton";
-import AddFolderModal from "../components/Modal/AddFolderModal/AddFolderModal";
+import AddFolderModalContent from "../components/Modal/AddFolderModalContent/AddFolderModalContent";
 import AddLinkButton from "../components/AddLink/AddLinkButton";
 import CurrentFolder from "../components/FolderUtils/CurrentFolder";
 import FolderEdit from "../components/FolderUtils/FolderEdit";
@@ -48,7 +48,7 @@ const FolderPage = () => {
   const [linksListData, setLinksListData] = useState<LinksData>();
   const [searchData, setSearchData] = useState(linksListData);
   const { wrappedFunction: getFolderListAsync } = useAsync(getUserFolders);
-  const { status: isLoadingLinksList, wrappedFunction: getLinksListAsync } =
+  const { pending: isLoadingLinksList, wrappedFunction: getLinksListAsync } =
     useAsync(getUserLinks);
 
   const handleLoadFolderListData = useCallback(async () => {
@@ -73,7 +73,7 @@ const FolderPage = () => {
         <AddLink>
           <AddLinkInput inputValue={inputValue} onChange={setInputValue}>
             <AddLinkButton inputValue={inputValue}>
-              <AddLinkModal
+              <AddLinkModalContent
                 inputValue={inputValue}
                 folderListData={folderListData}
               />
@@ -91,7 +91,7 @@ const FolderPage = () => {
             currentFolder={SetCurrentFolderName}
           >
             <AddFolderButton>
-              <AddFolderModal />
+              <AddFolderModalContent />
             </AddFolderButton>
           </CategoryList>
         </Category>

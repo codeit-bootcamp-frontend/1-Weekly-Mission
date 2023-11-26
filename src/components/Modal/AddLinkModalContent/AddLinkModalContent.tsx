@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classNames from "classnames";
 
-import styles from "./AddLinkModal.module.css";
+import styles from "./AddLinkModalContent.module.css";
 
 import checkImg from "../../../assets/images/check.svg";
 import ModalTitle from "../ModalTitle/ModalTitle";
@@ -12,7 +12,7 @@ interface Props {
   folderListData: UserFolderData;
 }
 
-const AddLinkModal = ({ inputValue, folderListData }: Props) => {
+const AddLinkModalContent = ({ inputValue, folderListData }: Props) => {
   const [selectedFolder, setSelectedFolder] = useState<UserFolder | null>(null);
 
   const folderListDataArray = folderListData.data.sort((a, b) => a.id - b.id);
@@ -51,4 +51,4 @@ const AddLinkModal = ({ inputValue, folderListData }: Props) => {
   );
 };
 
-export default AddLinkModal;
+export default AddLinkModalContent;

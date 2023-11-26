@@ -17,7 +17,6 @@ import getUserFolder from "../api/getUserFolder";
 import getUser from "../api/getUser";
 import SearchBar from "../components/Search/SearchBar";
 
-// type 수정해야함
 const SharedPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, _] = useSearchParams();
@@ -25,10 +24,10 @@ const SharedPage = () => {
   const [folderData, setFolderData] = useState<UserFolderData>();
   const [linksData, setLinksData] = useState<LinksData>();
   const [searchData, setSearchData] = useState(linksData);
-  const { status: isLoadingUserData, wrappedFunction: getUserDataAsync } =
+  const { pending: isLoadingUserData, wrappedFunction: getUserDataAsync } =
     useAsync(getUser);
   const { wrappedFunction: getUserFolderDataAsync } = useAsync(getUserFolder);
-  const { status: isLoadingLinksList, wrappedFunction: getLinksListAsync } =
+  const { pending: isLoadingLinksList, wrappedFunction: getLinksListAsync } =
     useAsync(getUserLinks);
 
   const userId = Number(searchParams.get("user"));

@@ -1,9 +1,9 @@
-import styles from "./AddFolderModal.module.css";
+import styles from "./AddFolderModalContent.module.css";
 
 import ModalButton from "../ModalButton/ModalButton";
 import ModalTitle from "../ModalTitle/ModalTitle";
 
-const AddFolderModal = () => {
+const AddFolderModalContent = () => {
   return (
     <>
       <ModalTitle>폴더 추가</ModalTitle>
@@ -15,4 +15,4 @@ const AddFolderModal = () => {
   );
 };
 
-export default AddFolderModal;
+export default AddFolderModalContent;

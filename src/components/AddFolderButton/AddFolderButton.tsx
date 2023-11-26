@@ -21,9 +21,6 @@ const AddFolderButton = ({ children }: Props) => {
 
   return (
     <>
-      {isOpenModal && (
-        <ModalContainer onClose={handleCloseModal}>{children}</ModalContainer>
-      )}
       <button className={styles.addFolderButton} onClick={handleOpenModal}>
         <p>폴더 추가</p>
         <img className={styles.plusImg} src={plusImg} alt="더하기 이미지" />
@@ -33,6 +30,9 @@ const AddFolderButton = ({ children }: Props) => {
           alt="더하기 이미지"
         />
       </button>
+      {isOpenModal && (
+        <ModalContainer onClose={handleCloseModal}>{children}</ModalContainer>
+      )}
     </>
   );
 };
