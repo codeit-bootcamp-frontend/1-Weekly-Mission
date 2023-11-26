@@ -1,13 +1,20 @@
 import { useRef } from 'react';
 import xClose from '../img/Xclose.svg';
-import * as M from './css/ModalStyledCompoenet';
+import * as M from '../styled-component/ModalStyledCompoenet';
+
+interface Props {
+  handleClick: () => void;
+  value: string;
+  title: string;
+  cardLink: string;
+}
 
 export default function ModalForm({
   handleClick,
   value = '링크 삭제',
   title,
   cardLink,
-}) {
+}: Props) {
   const back = useRef();
 
   if (value === '폴더 추가' || title === '전체') {

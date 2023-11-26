@@ -1,11 +1,17 @@
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useRef, useState, useCallback, useEffect, MouseEvent } from 'react';
 import xClose from '../img/Xclose.svg';
 import { getData } from '../../api';
 import check from '../img/check.svg';
 import * as M from '../styled-component/ModalStyledCompoenet';
+import { foldersProps } from '../folder/FolderMain';
 
-export default function ToFolderPlusModal({ handleClick, cardLink }) {
-  const [folders, setFolders] = useState([]);
+interface Props {
+  handleClick: () => void;
+  cardLink: string;
+}
+
+export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
+  const [folders, setFolders] = useState<foldersProps[]>([]);
 
   const handleLoad = useCallback(async () => {
     const { data } = await getData('users/1/folders');
@@ -14,18 +20,21 @@ export default function ToFolderPlusModal({ handleClick, cardLink }) {
 
   const back = useRef();
 
-  const backClick = (e) => {
-    if (e.target === back.current) handleClick();
+  const backClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const target = e.currentTarget;
+    if (target === back.current) handleClick();
   };
 
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
+
+  // <M.ModalFolderDiv name={`${item.id}`}> name속성 지움
   return (
     <M.ModalBackground
       className="modal-background"
-      ref={back}
-      onClick={backClick}
+      ref={`${back}`}
+      onClick={backClick as () => void}
     >
       <M.ModlaWrapper>
         <M.ModalDeleteHeader>
@@ -36,7 +45,7 @@ export default function ToFolderPlusModal({ handleClick, cardLink }) {
           {folders.map((item) => (
             <M.ModalFolderWrapper key={item.id}>
               <M.ModalDiv>
-                <M.ModalFolderDiv name={item.id}>{item.name}</M.ModalFolderDiv>
+                <M.ModalFolderDiv>{item.name}</M.ModalFolderDiv>
                 <M.ModalLinkCnt>{item.link.count}개 링크</M.ModalLinkCnt>
               </M.ModalDiv>
               <M.ModalLinkCheck>
