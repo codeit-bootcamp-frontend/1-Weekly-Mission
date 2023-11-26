@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { COLORS } from 'styles/color';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -29,10 +30,10 @@ export const Container = styled.div`
   left: 50%;
 
   padding: 3.2rem 4rem;
-  border: 0.1rem solid var(--gray20);
+  border: 0.1rem solid ${COLORS.GRAY_20};
   border-radius: 1.5rem;
 
-  background: var(--white);
+  background: ${COLORS.WHITE};
 
   transform: translate(-50%, -50%);
 `;
@@ -66,13 +67,13 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.p`
-  color: var(--gray100);
+  color: ${COLORS.GRAY_100};
   font-weight: 700;
   font-size: 2rem;
 `;
 
 export const Subtitle = styled.p`
-  color: var(--gray60);
+  color: ${COLORS.GRAY_60};
   font-size: 1.4rem;
 `;
 
@@ -93,16 +94,16 @@ export const Input = styled.input`
 
   width: 100%;
   padding: 1.8rem 1.5rem;
-  border: 0.1rem solid var(--gray20);
+  border: 0.1rem solid ${COLORS.GRAY_20};
   border-radius: 0.8rem;
 
-  background: var(--white);
+  background: ${COLORS.WHITE};
 
   font-size: 1.6rem;
   line-height: 150%;
 
   &:focus {
-    border-color: var(--primary);
+    border-color: ${COLORS.PRIMARY};
   }
 `;
 
@@ -115,7 +116,7 @@ const Button = styled.button`
   padding: 1.6rem 2rem;
   border-radius: 0.8rem;
 
-  color: var(--white);
+  color: ${COLORS.WHITE};
   font-weight: 600;
   font-size: 1.6rem;
 
@@ -127,7 +128,7 @@ export const SubmitButton = styled(Button)`
 `;
 
 export const DeleteButton = styled(Button)`
-  background: var(--red);
+  background: ${COLORS.RED};
 `;
 
 export const IconsBox = styled.div`
@@ -143,7 +144,7 @@ export const Icon = styled.button`
   align-items: center;
   justify-content: flex-end;
 
-  color: var(--gray100);
+  color: ${COLORS.GRAY_100};
   font-size: 1.3rem;
   line-height: 1.5rem;
 
@@ -193,7 +194,7 @@ export const FolderListItem = styled.div`
   width: 100%;
   padding: 0.8rem;
 
-  color: var(--gray100);
+  color: ${COLORS.GRAY_100};
   font-size: 1.6rem;
   line-height: 150%;
 
@@ -201,11 +202,11 @@ export const FolderListItem = styled.div`
 
   &:hover {
     border-radius: 0.8rem;
-    background: var(--gray0);
+    background: ${COLORS.GRAY_0};
   }
 
   span {
-    color: var(--gray60);
+    color: ${COLORS.GRAY_60};
     font-size: 1.4rem;
   }
 `;

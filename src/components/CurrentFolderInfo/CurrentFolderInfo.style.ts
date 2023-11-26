@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from 'styles/color';
 
 export const Container = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ export const OptionContainer = styled.div<{ selected: boolean }>`
     gap: 0.4rem;
 
     span {
-      color: var(--gray60);
+      color: ${COLORS.GRAY_60};
       font-size: 1.4rem;
     }
   }

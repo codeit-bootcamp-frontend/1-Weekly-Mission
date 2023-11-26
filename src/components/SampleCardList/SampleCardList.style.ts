@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import { Image } from "components/CardList/Card/Card.style";
-import { onMobile, onTablet } from "styles/mediaQuery";
+import styled from 'styled-components';
+import { Image } from 'components/CardList/Card/Card.style';
+import { onMobile, onTablet } from 'styles/mediaQuery';
+import { COLORS } from 'styles/color';
 
 export const CardListContainer = styled.ul`
   display: grid;
@@ -33,7 +34,7 @@ export const CardContainer = styled.li`
   cursor: pointer;
 
   &:hover {
-    background: var(--gray0);
+    background: ${COLORS.GRAY_0};
 
     ${Image} {
       transform: scale(1.3);

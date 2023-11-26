@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import { Image } from "components/CardList/Card/Card.style";
-import { onMobile, onTablet } from "styles/mediaQuery";
+import styled from 'styled-components';
+import { Image } from 'components/CardList/Card/Card.style';
+import { onMobile, onTablet } from 'styles/mediaQuery';
+import { COLORS } from 'styles/color';
 
 export const NoLink = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ export const CardListContainer = styled.ul`
   place-items: center;
 
   ${onTablet} {
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: repeat(2, 1fr);
   }
 
   ${onMobile} {
@@ -44,7 +45,7 @@ export const CardContainer = styled.li`
   cursor: pointer;
 
   &:hover {
-    background: var(--gray0);
+    background: ${COLORS.GRAY_0};
 
     ${Image} {
       transform: scale(1.3);

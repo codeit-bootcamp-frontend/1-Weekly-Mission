@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { COLORS } from 'styles/color';
 
 export const ImageContainer = styled.div`
   display: flex;
@@ -94,7 +95,7 @@ export const PopoverButton = styled.button`
   gap: 1rem;
 
   &:hover {
-    background: var(--gray10);
-    color: var(--primary);
+    background: ${COLORS.GRAY_10};
+    color: ${COLORS.PRIMARY};
   }
 `;

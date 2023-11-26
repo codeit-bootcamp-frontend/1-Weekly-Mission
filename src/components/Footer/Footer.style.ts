@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { onMobile } from "styles/mediaQuery";
+import styled from 'styled-components';
+import { COLORS } from 'styles/color';
+import { onMobile } from 'styles/mediaQuery';
 
 export const FooterContainer = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const FooterContainer = styled.div`
   height: 16rem;
   padding-top: 3.2rem;
 
-  background-color: var(--black);
+  background-color: ${COLORS.BLACK};
 
   ${onMobile} {
     margin-top: 4rem;
@@ -32,8 +33,8 @@ export const FooterBox = styled.div`
 
     grid-row-gap: 6rem;
     grid-template:
-      "links sns"
-      "copyright .";
+      'links sns'
+      'copyright .';
   }
 `;
 

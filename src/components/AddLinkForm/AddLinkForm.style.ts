@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from 'styles/color';
 import { onMobile, onTablet } from 'styles/mediaQuery';
 
 export const FormContainer = styled.div`
@@ -35,10 +36,10 @@ export const Input = styled.input`
 
   width: 80rem;
   padding: 2.25rem 12rem 2.25rem 6rem;
-  border: 0.1rem solid var(--primary);
+  border: 0.1rem solid ${COLORS.PRIMARY};
   border-radius: 1.5rem;
 
-  background: var(--white);
+  background: ${COLORS.WHITE};
 
   font-size: 1.6rem;
   line-height: 150%;
