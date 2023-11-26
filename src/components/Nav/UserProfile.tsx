@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import useAsync from '../../hooks/useAsync';
 import { getUserProfile } from '../../api/api';
 import styled from 'styled-components';
 
@@ -10,22 +9,21 @@ const INIT_USER_PROFILE = {
 
 function UserProfile() {
   const [userProfile, setUserProfile] = useState(INIT_USER_PROFILE);
-  const [isLoadingUserProfile, userProfileLoadingError, getUserProfileAsync] = useAsync(getUserProfile);
 
   const handleUserProfile = useCallback(
     async () => {
-      const result = await getUserProfileAsync();
+      const result = await getUserProfile();
       if (!result) {
         return;
       }
-      const { data } = { ...result };
+      const { data }: any = { ...result };
       const { email, image_source } = data[0];
 
       setUserProfile({
         email: email,
         profileImageSource: image_source
       });
-    }, [getUserProfileAsync],
+    }, [],
   );
 
   useEffect(() => {
@@ -37,7 +35,6 @@ function UserProfile() {
     <UserProfileContainer>
       <img src={userProfile.profileImageSource} alt='이름' />
       <p>{userProfile.email}</p>
-      {userProfileLoadingError?.message && <span>{userProfileLoadingError.message}</span>}
     </UserProfileContainer>
   );
 }
