@@ -9,7 +9,15 @@ import useAsync from "../../Hooks/useAsync";
 import { getFolders } from "../../api";
 import { useSearchParams } from "react-router-dom";
 
-function ShareIcon({ src, alt, text }) {
+function ShareIcon({
+  src,
+  alt,
+  text,
+}: {
+  src: string;
+  alt: string;
+  text: string;
+}) {
   return (
     <S.ShareIconStyled>
       <img src={src} alt={alt}></img>
@@ -75,7 +83,7 @@ function FolderInfo({ folderName, count }) {
 }
 function ModalAddToFolder() {
   const DEFAULT_FOLDER = 1;
-  const [folderData] = useAsync(() => getFolders(DEFAULT_FOLDER));
+  const { data: folderData } = useAsync(() => getFolders(DEFAULT_FOLDER));
 
   if (!folderData) return null;
   const folders = folderData?.data;

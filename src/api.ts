@@ -1,12 +1,12 @@
-type Link = {
+interface Link {
   id: number;
   createdAt: string;
   url: string;
   title: string;
   description: string;
   imageSource: string;
-};
-type SampleFolder = {
+}
+interface Sample {
   folder: {
     id: number;
     name: string;
@@ -17,7 +17,27 @@ type SampleFolder = {
     };
     links: Link[];
   };
-};
+}
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  profileImageSource: string;
+}
+
+interface Folder {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+  links: {
+    count: number;
+  };
+}
+interface Folders {
+  data: Folder[];
+}
 
 const API_URL = "https://bootcamp-api.codeit.kr";
 
@@ -32,17 +52,17 @@ export async function getData(response: Response) {
 }
 export async function getSample(category: string) {
   const response = await fetch(`${API_URL}/api/sample/${category}`);
-  return getData(response) as unknown as SampleFolder;
+  return getData(response) as unknown as Sample;
 }
 
 export async function getUser(user_id = DEFAULT_USER_ID) {
   const response = await fetch(`${API_URL}/api/users/${user_id}`);
-  return getData(response);
+  return getData(response) as unknown as User;
 }
 
 export async function getFolders(user_id = DEFAULT_USER_ID) {
   const response = await fetch(`${API_URL}/api/users/${user_id}/folders`);
-  return getData(response);
+  return getData(response) as unknown as Folders;
 }
 
 export async function getLinksByFolderID(

@@ -6,7 +6,7 @@ import Footer from "../../components/common/Footer";
 import Nav from "../../components/common/Nav";
 
 function SharedPage() {
-  const [data] = useAsync(() => getSample("user"));
+  const { data } = useAsync(() => getSample("user"));
 
   if (!data) return null;
 
