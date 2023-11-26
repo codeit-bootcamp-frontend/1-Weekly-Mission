@@ -36,7 +36,7 @@ function Gnb({ isFixed }: Props) {
 
   return (
     <>
-      <Styled.Header isFixed={isFixed ? true : false}>
+      <Styled.Header $isFixed={isFixed ? isFixed : false}>
         <Styled.HeaderContainer>
           <Link to="/">
             <img className="logo" src={logo} alt="logo" />

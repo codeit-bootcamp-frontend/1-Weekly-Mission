@@ -44,17 +44,14 @@ export const AddBtn = styled.button`
   }
 `;
 
-export const FolderBtn =
-  styled.button <
-  { active: boolean } >
-  `
+export const FolderBtn = styled.button<{ $active: boolean }>`
   max-height: 2.07rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.3125rem;
   border: 1px solid var(--linkbrary-primary);
-  background-color: ${({ active }) =>
-    active ? `var(--linkbrary-primary)` : `#fff`};
-  color: ${({ active }) => active && `#fff`};
+  background-color: ${({ $active }) =>
+    $active ? `var(--linkbrary-primary)` : `#fff`};
+  color: ${({ $active }) => $active && `#fff`};
   white-space: nowrap;
   line-height: 100%;
 `;

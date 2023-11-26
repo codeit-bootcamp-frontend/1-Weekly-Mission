@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-export const Header = styled.header<{ isFixed: boolean }>`
-  position: ${({ isFixed }) => (isFixed ? `relative` : `sticky`)};
+export const Header = styled.header<{ $isFixed: boolean }>`
+  position: ${({ $isFixed }) => ($isFixed ? `relative` : `sticky`)};
   top: 0;
   left: 0;
   width: 100%;

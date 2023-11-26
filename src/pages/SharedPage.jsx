@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { getSample } from "../api";
 import Gnb from "../component/Gnb";
 import SearchBar from "../component/SearchBar";

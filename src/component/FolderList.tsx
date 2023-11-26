@@ -13,7 +13,7 @@ function FolderChip({ name, id, onClick, style }) {
 
   return (
     <Link to={`/folder${id}`}>
-      <Styled.FolderBtn onClick={handleOnClick} active={style}>
+      <Styled.FolderBtn onClick={handleOnClick} $active={style}>
         {name}
       </Styled.FolderBtn>
     </Link>
