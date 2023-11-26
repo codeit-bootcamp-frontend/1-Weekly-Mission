@@ -1,0 +1,36 @@
+/* user agent stylesheet 초기화 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Pretendard', 'sans-serif';
+  word-break: keep-all;
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input:focus {
+  outline: none;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  padding: unset;
+  background-color: unset;
+  cursor: pointer;
+}
