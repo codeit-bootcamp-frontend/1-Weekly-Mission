@@ -1,7 +1,9 @@
 import { useState, ReactNode } from 'react';
 import Layout from '@components/Modal/Layout';
 
-function useModal(modals: any): [(modalKey: string) => void, ReactNode] {
+function useModal(
+  modals: JSX.Element
+): [(modalKey: string) => void, JSX.Element] {
   const [Modal, setModal] = useState<ReactNode>(null);
 
   const closeModal = () => {
