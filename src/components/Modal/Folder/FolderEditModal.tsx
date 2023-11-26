@@ -1,7 +1,11 @@
-import { CloseButton, InputContainer, ModalFolderButton, ModalInput, ModalTitle } from '../../styles/ModalStyle';
-import close_button from '../../assets/svg/close.svg';
+import { CloseButton, InputContainer, ModalFolderButton, ModalInput, ModalTitle } from '../../../styles/ModalStyle';
+import close_button from '../../../assets/svg/close.svg';
 
-function FolderEditModal({ onCloseModal }) {
+interface Props {
+  onCloseModal: () => void;
+}
+
+function FolderEditModal({ onCloseModal }: Props) {
 
   return (
     <>

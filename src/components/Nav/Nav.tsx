@@ -16,7 +16,7 @@ function Nav() {
 
 export default Nav;
 
-const NavBlock = styled.nav`
+const NavBlock = styled.nav<{$path: string}>`
   display: flex;
   justify-content: center;
   position: ${({$path}) => ($path === '/folder' ? 'static' : 'sticky')};

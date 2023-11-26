@@ -1,9 +1,9 @@
-import { CloseButton, ModalSubTitle, ModalTitle, ModalTitleContainer } from '../../styles/ModalStyle';
-import close_button from '../../assets/svg/close.svg';
+import { CloseButton, ModalSubTitle, ModalTitle, ModalTitleContainer } from '../../../styles/ModalStyle';
+import close_button from '../../../assets/svg/close.svg';
 import styled from 'styled-components';
-import kakao_icon from '../../assets/svg/kakao.svg';
-import facebook_icon from '../../assets/svg/facebook.svg';
-import link_icon from '../../assets/svg/link.svg';
+import kakao_icon from '../../../assets/svg/kakao.svg';
+import facebook_icon from '../../../assets/svg/facebook.svg';
+import link_icon from '../../../assets/svg/link.svg';
 
 const SHARE_ICONS = [
   {
@@ -24,10 +24,14 @@ const SHARE_ICONS = [
     title: '링크 복사',
     backgroundColor: 'rgba(157, 157, 157, 0.04)',
   },
-
 ];
 
-function FolderShareModal({ onCloseModal, name }) {
+interface Props {
+  onCloseModal: () => void;
+  name: string;
+}
+
+function FolderShareModal({ onCloseModal, name }: Props) {
 
   return (
     <>
@@ -68,7 +72,7 @@ const Icons = styled.div`
   text-align: center;
 `;
 
-const Icon = styled.div`
+const Icon = styled.div<{$backgroundColor: string}>`
   border-radius: 37.333px;
   background: ${({ $backgroundColor }) => $backgroundColor};
   display: flex;

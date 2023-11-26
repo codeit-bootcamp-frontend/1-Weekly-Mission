@@ -1,6 +1,11 @@
 import styled from 'styled-components';
+import { ReactNode } from 'react';
 
-function FooterLink({ children }) {
+interface Props {
+  children: ReactNode;
+}
+
+function FooterLink({ children }: Props) {
   return (
     <>
       <FooterLinkStyle href=''>{children}</FooterLinkStyle>

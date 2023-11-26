@@ -7,16 +7,22 @@ import styled from 'styled-components';
 import { useRef, useState } from 'react';
 import SelectMenu from '../Popover/SelectMenu';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import { CardProps } from './CardList';
 
-function Card({ item, path }) {
-  const popoverRef = useRef();
+interface Props {
+  item: CardProps;
+  path: string;
+}
+
+function Card({ item, path }: Props) {
+  const popoverRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const createdAt = path === '/folder' ? item.created_at : item.createdAt;
 
   useOnClickOutside(popoverRef, () => setIsOpen(false));
 
-  const openSelectMenu = ({ isOpen }) => {
+  const openSelectMenu = ({ isOpen }: { isOpen: boolean }) => {
     setIsOpen(isOpen);
   };
 

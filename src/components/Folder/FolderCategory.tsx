@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import FolderCategoryButton from './FolderCategoryButton';
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
-import useAsync from '../../hooks/useAsync';
 import { getFolders } from '../../api/api';
 import add_icon from '../../assets/svg/add-folder.svg';
 import Modal from '../Modal/Modal';
-import FolderModal from '../Modal/FolderModal';
+import FolderModal from '../Modal/Folder/FolderModal';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const ENTIRE_CATEGORY = {
@@ -13,25 +12,33 @@ const ENTIRE_CATEGORY = {
   name: '전체',
 };
 
-function FolderCategory({ onGetCategory }) {
-  const modalRef = useRef();
-  const [categories, setCategories] = useState([]);
+interface Props {
+  onGetCategory: (params: {id: number, name: string}) => void;
+}
+
+type Category = {
+  id: number;
+  name: string;
+}
+
+function FolderCategory({ onGetCategory }: Props) {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [, foldersLoadingError, getFoldersAsync] = useAsync(getFolders);
 
   const handleLoad = useCallback(
     async () => {
-      const result = await getFoldersAsync();
+      const result = await getFolders();
       if (!result) {
         return;
       }
-      const { data } = { ...result };
+      const { data }: any = { ...result };
 
       setCategories([ENTIRE_CATEGORY, ...data]);
-    }, [getFoldersAsync],
+    }, [],
   );
 
-  const openModal = ({ isOpen }) => {
+  const openModal = ({ isOpen }: {isOpen: boolean}) => {
     setIsOpen(isOpen);
   };
 
@@ -51,8 +58,7 @@ function FolderCategory({ onGetCategory }) {
         {categories.map((category) =>
           <Fragment key={category.id}>
             <FolderCategoryButton category={category} onGetCategory={onGetCategory}></FolderCategoryButton>
-            {foldersLoadingError?.message && <span>{foldersLoadingError.message}</span>}
-          </Fragment>,
+          </Fragment>
         )}
       </FolderCategoryStyle>
       <FolderAddButton onClick={() => {
@@ -65,7 +71,7 @@ function FolderCategory({ onGetCategory }) {
       </FolderAddButton>
       {isOpen && (
         <Modal>
-          <FolderModal action='add' onCloseModal={closeModal} ref={modalRef} />
+          <FolderModal action='add' onCloseModal={closeModal} name='' ref={modalRef} />
         </Modal>
       )}
     </FolderCategoryContainer>

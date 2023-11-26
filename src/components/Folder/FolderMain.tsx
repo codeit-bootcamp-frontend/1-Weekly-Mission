@@ -3,43 +3,45 @@ import SearchForm from '../Search/SearchForm';
 import FolderCategory from './FolderCategory';
 import FolderCategoryControl from './FolderCategoryControl';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import useAsync from '../../hooks/useAsync';
 import { getLinks } from '../../api/api';
 import CardList from '../Card/CardList';
 import EmptyCardList from '../Card/EmptyCardList';
 import FloatingActionButton from '../../styles/FloatingActionButton';
 import styled from 'styled-components';
 import Modal from '../Modal/Modal';
-import FolderModal from '../Modal/FolderModal';
+import FolderModal from '../Modal/Folder/FolderModal';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const INIT_PAGE = { id: 0, name: '전체' };
 
+type Category = {
+  id: number;
+  name: string;
+}
+
 function FolderMain() {
-  const modalRef = useRef();
+  const modalRef = useRef<HTMLDivElement>(null);
   const [name, setName] = useState('전체');
   const [cards, setCards] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [, , getLinksAsync] = useAsync(getLinks);
 
-  const handleLoadLinks = useCallback(
-    async (category) => {
-      const id = category.id === 0 ? '' : category.id;
+  const handleLoadLinks = useCallback(async (category: Category) => {
+      const id = category.id === 0 ? '' : String(category.id);
       const name = category.name;
 
-      const result = await getLinksAsync({ id });
+      const result = await getLinks(id);
       if (!result) {
         return;
       }
 
-      const { data } = { ...result };
+      const { data }: any = { ...result };
 
       setName(name);
       setCards(data);
-    }, [getLinksAsync],
+    }, [],
   );
 
-  const openModal = ({ isOpen }) => {
+  const openModal = ({ isOpen }: {isOpen: boolean}) => {
     setIsOpen(isOpen);
   };
 
@@ -62,7 +64,7 @@ function FolderMain() {
       <FloatingActionButton onOpen={openModal} />
       {isOpen && (
         <Modal>
-          <FolderModal action='add' onCloseModal={closeModal} ref={modalRef} />
+          <FolderModal action='add' name='' onCloseModal={closeModal} ref={modalRef} />
         </Modal>
       )}
     </FolderMainStyle>

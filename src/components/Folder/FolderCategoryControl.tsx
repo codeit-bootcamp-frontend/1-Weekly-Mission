@@ -1,7 +1,11 @@
 import CategoryTitleContainer from './CategoryTitleContainer';
 import styled from 'styled-components';
 
-function FolderCategoryControl({ name }) {
+interface Props {
+  name: string;
+}
+
+function FolderCategoryControl({ name }: Props) {
   return (
     <FolderCategoryControlStyle>
       <CategoryTitleContainer name={name} />

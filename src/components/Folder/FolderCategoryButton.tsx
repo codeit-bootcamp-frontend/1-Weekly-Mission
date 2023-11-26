@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
-function FolderCategoryButton({ category, onGetCategory }) {
+interface Props {
+  category: {
+    id: number;
+    name: string;
+  };
+  onGetCategory: ( params: {id: number, name: string}) => void;
+}
+
+function FolderCategoryButton({ category, onGetCategory }: Props) {
 
   const handleGetCategoryClick = () => {
     onGetCategory({
@@ -23,6 +31,7 @@ const ButtonStyle = styled.button`
   padding: 0.6rem 1rem;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border-radius: 5px;
   border: 1px solid #6d6afe;
   background-color: #fff;
