@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ModalFrame from './ModalFrame';
 import { SHARE_LIST } from 'constants/default';
 import { shareKakaotalk, shareFacebook, copyLink } from 'utils/shareLink';
-import { MouseEvent, useRef } from 'react';
+import { MouseEvent } from 'react';
 
 interface Props {
   data: string;
@@ -12,7 +12,6 @@ interface Props {
 
 function ShareModal({ data = '', folderId, onClickClose }: Props) {
   const SHARE_URL = `shared?user=1&folder=${folderId}`;
-  const target = useRef();
 
   function handleShareClick(event: MouseEvent): void {
     const el = event.target as HTMLElement;
