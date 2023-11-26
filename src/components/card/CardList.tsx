@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import useGetSampleLinks from "../../hooks/useGetSampleLinks";
@@ -6,6 +6,7 @@ import useGetLinks from "../../hooks/useGetLinks";
 
 interface CardListProps {
   folderId?: number | null;
+  searchTerm?: string;
 }
 
 interface LinkProps {
@@ -19,24 +20,27 @@ interface LinkProps {
   image_source?: string;
 }
 
-const CardList = ({ folderId }: CardListProps) => {
+const CardList = ({ folderId, searchTerm }: CardListProps) => {
   const sharedLinks = useGetSampleLinks();
   const folderLinks = useGetLinks(folderId);
-  const links = folderId ? folderLinks : sharedLinks;
+  const links = folderId !== undefined ? folderLinks : sharedLinks;
 
-  return (
-    <Container>
-      {links?.length ? (
-        links.map((link: LinkProps) => (
-          <Fragment key={link.id}>
-            <Card item={link} />
-          </Fragment>
-        ))
-      ) : (
-        <NoLink>저장된 링크가 없습니다.</NoLink>
-      )}
-    </Container>
-  );
+  const [filteredLinks, setFilteredLinks] = useState<LinkProps[] | null>(null);
+
+  useEffect(() => {
+    if (!searchTerm) {
+      setFilteredLinks(links);
+    } else {
+      const lowerCaseSearchTerm = searchTerm.toLowerCase();
+      const filtered = links?.filter(
+        (link: LinkProps) =>
+          link.title?.toLowerCase().includes(lowerCaseSearchTerm) || link.description?.toLowerCase().includes(lowerCaseSearchTerm) || link.url?.toLowerCase().includes(lowerCaseSearchTerm)
+      );
+      setFilteredLinks(filtered);
+    }
+  }, [searchTerm, links]);
+
+  return <Container>{filteredLinks?.length ? filteredLinks.map((link: LinkProps) => <Card key={link.id} item={link} />) : <NoLink>검색 결과가 없습니다.</NoLink>}</Container>;
 };
 
 const Container = styled.div`

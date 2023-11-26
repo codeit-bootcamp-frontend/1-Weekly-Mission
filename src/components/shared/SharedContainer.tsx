@@ -3,17 +3,23 @@ import Header from "../header/Header";
 import SearchBar from "../common/SearchBar";
 import CardList from "../card/CardList";
 import useGetSampleFolder from "../../hooks/useGetSampleFolder";
+import { useState } from "react";
 
 const SharedContainer = () => {
   const folder = useGetSampleFolder();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
 
   return (
     <>
       {folder && <Header folder={folder} />}
       <Main>
         <Container>
-          <SearchBar />
-          <CardList />
+          <SearchBar onSearch={handleSearch} />
+          <CardList searchTerm={searchTerm} />
         </Container>
       </Main>
     </>

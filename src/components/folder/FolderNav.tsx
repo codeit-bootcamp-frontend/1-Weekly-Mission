@@ -3,7 +3,6 @@ import styled from "styled-components";
 interface Folder {
   id: number;
   name: string;
-  // 추가 필드가 있다면 여기에 추가
 }
 
 interface FolderNavProps {

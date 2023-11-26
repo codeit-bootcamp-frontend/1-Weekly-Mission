@@ -6,6 +6,7 @@ import CardList from "../card/CardList";
 
 const FolderContainer = () => {
   const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const onFolderSelect = (folderId: number | null, isAll?: boolean) => {
     if (isAll) {
@@ -15,12 +16,16 @@ const FolderContainer = () => {
     }
   };
 
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
+
   return (
     <Main>
       <Container>
-        <SearchBar />
+        <SearchBar onSearch={handleSearch} />
         <FolderList onFolderSelect={onFolderSelect} />
-        <CardList folderId={selectedFolderId} />
+        <CardList folderId={selectedFolderId} searchTerm={searchTerm} />
       </Container>
     </Main>
   );

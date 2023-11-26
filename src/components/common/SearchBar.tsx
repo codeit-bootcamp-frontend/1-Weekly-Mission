@@ -1,15 +1,20 @@
 import styled from "styled-components";
 import search from "../../image/search.svg";
+import { ChangeEvent } from "react";
 
-const SearchBar = () => {
+interface SearchBarProps {
+  onSearch: (term: string) => void;
+}
+
+const SearchBar = ({ onSearch }: SearchBarProps) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = e.target.value;
+    onSearch(searchTerm);
+  };
+
   return (
     <form>
-      <Input
-        id="search"
-        name="search"
-        type="search"
-        placeholder="링크를 검색해 보세요."
-      />
+      <Input id="search" name="search" type="search" placeholder="링크를 검색해 보세요." onChange={handleSearch} />
     </form>
   );
 };
