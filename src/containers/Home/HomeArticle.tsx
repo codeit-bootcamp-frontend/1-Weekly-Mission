@@ -1,5 +1,7 @@
-import IMAGES from "../../assets/images.js"
-import * as S from "./styles.js"
+import React from 'react';
+
+import IMAGES from '../../assets/images';
+import * as S from './styles';
 
 const HomeArticle = () => {
   return (
@@ -50,7 +52,7 @@ const HomeArticle = () => {
         <S.HomeContentImage src={IMAGES.image4} alt="링크 검색 기능" />
       </S.HomeSection>
     </S.HomeArticle>
-  )
-}
+  );
+};
 
-export default HomeArticle
+export default HomeArticle;

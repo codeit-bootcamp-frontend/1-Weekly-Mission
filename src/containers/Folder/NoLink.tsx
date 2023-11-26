@@ -1,4 +1,5 @@
-import * as S from "./styles.js"
+import React from 'react';
+import * as S from './styles';
 
 const NoLink = () => {
   return (
@@ -7,7 +8,7 @@ const NoLink = () => {
         <S.NoLinkParagraph>저장된 링크가 없습니다</S.NoLinkParagraph>
       </S.NoLinkInnerBox>
     </S.NoLinkBox>
-  )
-}
+  );
+};
 
-export default NoLink
+export default NoLink;

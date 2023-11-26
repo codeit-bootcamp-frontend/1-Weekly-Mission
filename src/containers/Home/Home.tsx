@@ -1,5 +1,16 @@
-import IMAGES from "../../assets/images.js"
-import * as S from "./styles.js"
+import React from 'react';
+
+import IMAGES from '../../assets/images';
+import * as S from './styles';
+
+interface HomeSectionProps {
+  image_source: string;
+  alt: string;
+  paragraph: string;
+  spanText: string;
+  text2: string;
+  text1?: string;
+}
 
 const HomeSection = ({
   image_source,
@@ -7,8 +18,8 @@ const HomeSection = ({
   paragraph,
   spanText,
   text2,
-  text1 = "",
-}) => {
+  text1 = '',
+}: HomeSectionProps) => {
   return (
     <S.HomeSection>
       <S.HomeTitleHeader>
@@ -19,8 +30,8 @@ const HomeSection = ({
       <S.HomeDescriptionParagraph>{paragraph}</S.HomeDescriptionParagraph>
       <S.HomeContentImage src={image_source} alt={alt} />
     </S.HomeSection>
-  )
-}
+  );
+};
 
 const Home = () => {
   return (
@@ -59,7 +70,7 @@ const Home = () => {
         text1="저장한 링크를"
       />
     </S.HomeArticle>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
