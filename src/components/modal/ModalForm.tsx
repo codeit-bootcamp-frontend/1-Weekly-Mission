@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { MouseEvent, useRef } from 'react';
 import xClose from '../img/Xclose.svg';
 import * as M from '../styled-component/ModalStyledCompoenet';
 
@@ -21,12 +21,12 @@ export default function ModalForm({
     title = '내용 입력';
   }
 
-  const backClick = (e) => {
+  const backClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === back.current) handleClick();
   };
 
   return (
-    <M.ModalBackground ref={back} onClick={backClick}>
+    <M.ModalBackground ref={`${back}`} onClick={backClick as () => void}>
       <M.ModlaWrapper>
         <M.ModalDeleteHeader>
           <M.ModalHeader>{value}</M.ModalHeader>

@@ -1,18 +1,22 @@
-import { useRef } from 'react';
+import { MouseEvent, useRef } from 'react';
 import xClose from '../img/Xclose.svg';
-import * as M from './css/ModalStyledCompoenet';
+import * as M from '../styled-component/ModalStyledCompoenet';
 
-export default function FolderNamingModal({ handleClick }) {
+interface Props {
+  handleClick: () => void;
+}
+
+export default function FolderNamingModal({ handleClick }: Props) {
   const back = useRef();
 
   const handleCloseClick = () => {
     handleClick();
   };
-  const backClick = (e) => {
+  const backClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === back.current) handleClick();
   };
   return (
-    <M.ModalBackground ref={back} onClick={backClick}>
+    <M.ModalBackground ref={`${back}`} onClick={backClick}>
       <M.ModlaWrapper>
         <M.ModalHeader>폴더 이름 변경</M.ModalHeader>
         <M.ModalMain>

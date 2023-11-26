@@ -1,13 +1,19 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, MouseEvent } from 'react';
 import xClose from '../img/Xclose.svg';
 import kakao from '../img/kakao.svg';
 import facebookImg from '../img/facebookImg.svg';
 import linkImg from '../img/linkImg.svg';
 import { useLocation } from 'react-router-dom';
 import * as M from '../styled-component/ModalStyledCompoenet';
-const { Kakao } = window;
+const { Kakao }: any = window;
 
-export default function FolderShareModal({ handleClick, title, id }) {
+interface Props {
+  handleClick: () => void;
+  title: string;
+  id: string;
+}
+
+export default function FolderShareModal({ handleClick, title, id }: Props) {
   const resultUrl = `window.location.href/${id}`;
   const BASEURL = 'localhost:3000';
   const location = useLocation();
@@ -46,11 +52,11 @@ export default function FolderShareModal({ handleClick, title, id }) {
   };
 
   const back = useRef();
-  const backClick = (e) => {
+  const backClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === back.current) handleClick();
   };
 
-  const handleCopyClipBoard = async (text) => {
+  const handleCopyClipBoard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
       alert('클립보드에 링크가 복사되었어요.');
@@ -59,7 +65,7 @@ export default function FolderShareModal({ handleClick, title, id }) {
     }
   };
   return (
-    <M.ModalBackground ref={back} onClick={backClick}>
+    <M.ModalBackground ref={`${back}`} onClick={backClick}>
       <M.ModlaWrapper>
         <M.ModalHeader>폴더 공유</M.ModalHeader>
         <M.ModalLinkUrl>{title}</M.ModalLinkUrl>

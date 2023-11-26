@@ -20,9 +20,8 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
 
   const back = useRef();
 
-  const backClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const target = e.currentTarget;
-    if (target === back.current) handleClick();
+  const backClick = (e: MouseEvent<HTMLDivElement>) => {
+    if (e.target === back.current) handleClick();
   };
 
   useEffect(() => {

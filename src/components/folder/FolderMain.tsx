@@ -19,7 +19,7 @@ const activeButton = {
   backgroundColor: '#6d6afe',
 };
 
-interface foldersProps {
+export interface foldersProps {
   id: number;
   created_at: string;
   name: string;
