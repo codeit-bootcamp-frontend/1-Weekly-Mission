@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { COLORS } from 'styles/color';
 import { onMobile, onTablet } from 'styles/mediaQuery';
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.div<{ $isScrolled: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +20,26 @@ export const FormContainer = styled.div`
     padding-top: 2.4rem;
     padding-bottom: 4rem;
   }
+
+  ${({ $isScrolled }) =>
+    $isScrolled
+      ? css`
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding-top: 2.4rem;
+          padding-bottom: 2.4rem;
+          z-index: 999;
+
+          ${onMobile} {
+            padding-top: 1.6rem;
+            padding-bottom: 1.6rem;
+          }
+        `
+      : css`
+          position: static;
+        `}
 `;
 
 export const Form = styled.form`

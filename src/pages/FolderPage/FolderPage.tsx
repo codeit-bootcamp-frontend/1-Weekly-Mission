@@ -4,7 +4,7 @@ import { Data } from 'components/CardList/types';
 import FolderList from 'components/FolderList';
 import SearchBar from 'components/SearchBar';
 import useRequest from 'hooks/useRequest';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MainDiv } from 'styles/MainDiv';
 
 interface Folders {
@@ -15,6 +15,8 @@ function FolderPage() {
   const [folder, setFolder] = useState<Data[]>([]);
   const [folderId, setFolderId] = useState('');
   const [searchKeyword, setSearchKeyword] = useState('');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const ref = useRef(null);
 
   const getFolderId = (folderId: string) => {
     setFolderId(folderId);
@@ -36,9 +38,36 @@ function FolderPage() {
     loadFolder();
   }, [folderId]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      },
+      { threshold: 0 }
+    );
+
+    const currentRef = ref.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
   return (
     <>
-      <AddLinkForm />
+      <div ref={ref}>
+        <AddLinkForm isScrolled={isScrolled} />
+      </div>
       <MainDiv>
         <SearchBar setSearchKeyword={setSearchKeyword} />
         <FolderList getFolderId={getFolderId} />

@@ -66,7 +66,7 @@ export const AddFolderButton = styled.button`
 
   ${onMobile} {
     position: fixed;
-    bottom: 10.1rem;
+    bottom: 11.8rem;
     left: 50%;
     z-index: 9999;
 
