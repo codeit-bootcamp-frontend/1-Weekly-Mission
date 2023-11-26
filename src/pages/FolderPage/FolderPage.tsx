@@ -33,13 +33,13 @@ function FolderPage() {
   }, []);
 
   // folderId에 맞는 폴더 리스트 조회
-  const getFolderId = async (folderId) => {
+  const getFolderId = async (folderId: number) => {
     const result = await getLinksFolderId(folderId);
     const { data } = result;
     setFolderLink(data);
   }
 
-  const handleClick = (folderId) => { setFolderId(folderId) };
+  const handleClick = (folderId: number) => { setFolderId(folderId) };
 
   useEffect(()=>{
     if(!folderId) return;
