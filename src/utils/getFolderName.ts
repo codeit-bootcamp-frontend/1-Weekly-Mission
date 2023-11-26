@@ -9,7 +9,7 @@ type Folder = {
 };
 
 const getFolderName = (folderID: string, folderLists: Folder[]) => {
-  if (!folderID) {
+  if (!folderID || folderID === "0") {
     return "전체";
   } else {
     const folderName = folderLists.find((folderList) => {
