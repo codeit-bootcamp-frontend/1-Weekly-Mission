@@ -1,4 +1,12 @@
-export const fetchUserData = async ({ userId }) => {
+interface FetchDataType {
+  userId: string;
+  folderId?: string;
+}
+export const fetchUserData = async ({
+  userId,
+}: {
+  userId: FetchDataType;
+}): Promise<[Response, FetchDataType]> => {
   const response = await fetch(
     `https://bootcamp-api.codeit.kr/api/users/${userId}`
   );
@@ -6,7 +14,11 @@ export const fetchUserData = async ({ userId }) => {
   return [response, jsonData];
 };
 
-export const fetchUserFolderData = async ({ userId }) => {
+export const fetchUserFolderData = async ({
+  userId,
+}: {
+  userId: FetchDataType;
+}) => {
   const response = await fetch(
     `https://bootcamp-api.codeit.kr/api/users/${userId}/folders`
   );
@@ -14,7 +26,13 @@ export const fetchUserFolderData = async ({ userId }) => {
   return [response, jsonData];
 };
 
-export const fetchFolderLinks = async ({ userId, folderId }) => {
+export const fetchFolderLinks = async ({
+  userId,
+  folderId,
+}: {
+  userId: FetchDataType;
+  folderId: FetchDataType;
+}) => {
   const response = await fetch(
     `https://bootcamp-api.codeit.kr/api/users/${userId}/links${
       folderId ? `?folderId=${folderId}` : ""

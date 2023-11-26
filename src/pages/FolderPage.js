@@ -6,7 +6,7 @@ import Footer from "../common/footer/Footer";
 import LocaleContext from "../contexts/LocaleContext";
 import SearchProvider from "../contexts/provider/SearchProvider";
 import { useParams } from "react-router-dom";
-import { fetchUserData, fetchUserFolderData } from "../api/folder";
+import { fetchUserData, fetchUserFolderData } from "../api/folder.ts";
 import FolderMenu from "../components/menubar/FolderMenu";
 
 import useFetchData from "./../hooks/useFetchData";

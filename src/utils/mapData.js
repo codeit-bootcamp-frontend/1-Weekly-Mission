@@ -1,4 +1,4 @@
-import { fetchFolderLinks } from "../api/folder";
+import { fetchFolderLinks } from "../api/folder.ts";
 
 const USER_ID = 1;
 
