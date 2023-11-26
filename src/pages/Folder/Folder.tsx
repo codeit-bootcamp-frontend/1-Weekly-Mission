@@ -1,5 +1,5 @@
 import * as S from './Folder.style';
-import { useEffect } from 'react';
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useRequest from '@hooks/useRequest';
 import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@apis/config/default';
@@ -28,7 +28,7 @@ function Folder() {
     if (nextFolderId === DEFAULT_FOLDER_ID) {
       setSearchParams({});
     } else {
-      setSearchParams({ folderId: String(nextFolderId) } ?? {});
+      setSearchParams({ folderId: String(nextFolderId) });
     }
   };
 
@@ -36,11 +36,36 @@ function Folder() {
     getLinks();
   }, [searchParams]);
 
+  const initialKeyword = searchParams.get('keyword') ?? '';
+  const [keyword, setKeyword] = useState(initialKeyword ?? '');
+  // const links = getLinks(initialKeyword);
+
+  const onKeywordChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setKeyword(e.target.value);
+
+  const onSearch = (e: SyntheticEvent) => {
+    e.preventDefault();
+    if (keyword === '') {
+      setFolderLinks(Number(initialFolderId));
+    } else {
+      searchParams.set('keyword', keyword);
+      setSearchParams(searchParams);
+    }
+  };
+
   return (
     <Layout isLoggedIn userId={DEFAULT_USER_ID}>
       <AddLinkContainer userId={DEFAULT_USER_ID} />
       <S.ContentContainer>
-        <SearchBar />
+        <SearchBar
+          onSearch={onSearch}
+          onChange={onKeywordChange}
+          value={keyword}
+        />
+        <S.SearchText $show={Boolean(initialKeyword)}>
+          <span>{initialKeyword}</span>
+          으로 검색한 결과입니다.
+        </S.SearchText>
         <FoldersContainer
           userId={DEFAULT_USER_ID}
           initialFolderId={Number(initialFolderId)}

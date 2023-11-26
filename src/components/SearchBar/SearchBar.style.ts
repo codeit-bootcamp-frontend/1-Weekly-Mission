@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { onTablet, onPc } from '@styles/mediaQuery';
 import { COLORS } from '@styles/palette';
 
-export const Container = styled.div`
+export const Form = styled.form`
   position: relative;
   width: 100%;
 `;
