@@ -338,10 +338,11 @@ interface ModalProps {
     tag: string;
     close: boolean;
     setClose: React.Dispatch<React.SetStateAction<boolean>>;
-    query: string;
+    query?: string;
 }
 
 function Modal({ tag, close, setClose, query }: ModalProps) {
+    if (query === undefined) query = "";
     return (
         <StyledModalWrap $close={close}>
             <StyledModalBg>

@@ -54,9 +54,8 @@ function Header() {
     useEffect(() => {
         const handleUser = async () => {
             try {
-                const {
-                    data: [user : User],
-                } = await getApi("/users/1");
+                const { data } = await getApi("/users/1");
+                const user = data[0] as User;
                 setEmail(user.email);
                 setProfileImg(user.image_source);
             } catch (error) {

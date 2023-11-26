@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FolderButtonItem } from "../common/type";
 
 const StyledButtonBox = styled.div`
     display: flex;
@@ -16,27 +17,25 @@ const StyledButton = styled.div<{ $select: boolean }>`
     color: ${({ $select }) => ($select ? "#fff" : "#000")};
 `;
 
-interface Item {
-    create_At: string;
-    id: number;
-    link: object;
-    name: string;
-    user_id: number;
+interface ButtonProps {
+    item: FolderButtonItem;
+    title: string;
+    setTitle: React.Dispatch<React.SetStateAction<string>>;
+    setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
-interface ButtonProps {
-    item: Item;
+interface FolderProps {
+    items: FolderButtonItem[];
     title: string;
-    setTitle: React.Dispatch<React.SetStateAction<string | null>>;
+    setTitle: React.Dispatch<React.SetStateAction<string>>;
     setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function Button({ item, title, setTitle, setQuery }: ButtonProps) {
     const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const titleName = (e.target as HTMLDivElement).textContent;
-        setTitle(titleName);
-        const queryString =
-            titleName === "전체" ? "" : `?folderId={${item.id}}`;
+        if (titleName !== null) setTitle(titleName);
+        const queryString = titleName === "전체" ? "" : `?folderId=${item.id}`;
         setQuery("/users/1/links" + queryString);
     };
     return (
@@ -46,17 +45,10 @@ function Button({ item, title, setTitle, setQuery }: ButtonProps) {
     );
 }
 
-interface FolderProps {
-    items: [item: Item];
-    title: string;
-    setTitle: React.Dispatch<React.SetStateAction<string | null>>;
-    setQuery: React.Dispatch<React.SetStateAction<string>>;
-}
-
 function FolderButton({ items, setTitle, title, setQuery }: FolderProps) {
     const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const titleName = (e.target as HTMLDivElement).textContent;
-        setTitle(titleName);
+        if (titleName !== null) setTitle(titleName);
         setQuery("/users/1/links");
     };
     return (
