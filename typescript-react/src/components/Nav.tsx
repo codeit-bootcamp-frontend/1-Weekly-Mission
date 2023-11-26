@@ -1,7 +1,7 @@
 import '../css/nav.css';
 import UserProfile from './UserProfile';
 
-function Nav({ userProfile, userProfileLoadingError }) {
+function Nav({ userProfile, userProfileLoadingError }): JSX.Element {
   return (
     <div className="nav-wrapper">
       <div className="gnb">

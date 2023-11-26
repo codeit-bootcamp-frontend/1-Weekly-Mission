@@ -1,6 +1,6 @@
 import '../css/footer.css';
 
-function Footer() {
+function Footer(): JSX.Element {
   return (
     <div className="footer">
       <div className="footer-box">

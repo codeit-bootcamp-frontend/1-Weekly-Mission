@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function NoSavedLinks() {
+function NoSavedLinks(): JSX.Element {
   return (
     <Container>
       <p>저장된 링크가 없습니다.</p>

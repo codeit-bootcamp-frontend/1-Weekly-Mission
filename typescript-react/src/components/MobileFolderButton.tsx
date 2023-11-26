@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function MobileFolderButton() {
+function MobileFolderButton(): JSX.Element {
   return <Button>폴더 추가 +</Button>;
 }
 

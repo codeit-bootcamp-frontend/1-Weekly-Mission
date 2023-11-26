@@ -1,7 +1,7 @@
 const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
 const USER_ID = `users/1`;
 
-export async function getUserProfile() {
+export async function getUserProfile(): Promise<any> {
   const response = await fetch(`${BASE_URL}/${USER_ID}`);
   if (!response.ok) {
     throw new Error('User Profile Error');
@@ -9,8 +9,8 @@ export async function getUserProfile() {
   return await response.json();
 }
 
-export async function getCards(id = '') {
-  let url = '';
+export async function getCards(id = ''): Promise<any> {
+  let url: string = '';
   if (id === '') {
     url = `${BASE_URL}/${USER_ID}/links`;
   } else {
@@ -24,7 +24,7 @@ export async function getCards(id = '') {
   return await response.json();
 }
 
-export async function getFolders() {
+export async function getFolders(): Promise<any> {
   const response = await fetch(`${BASE_URL}/${USER_ID}/folders`);
   if (!response.ok) {
     throw new Error('Folders Error');
@@ -32,7 +32,7 @@ export async function getFolders() {
   return await response.json();
 }
 
-export async function getSampleFolders() {
+export async function getSampleFolders(): Promise<any> {
   const response = await fetch(`${BASE_URL}/sample/folder`);
   if (!response.ok) {
     throw new Error('Sample Error');

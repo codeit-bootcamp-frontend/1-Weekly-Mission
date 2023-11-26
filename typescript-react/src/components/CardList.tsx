@@ -2,7 +2,7 @@ import Card from './Card';
 import '../css/cardList.css';
 import NoSavedLinks from './NoSavedLinks';
 
-function CardList({ cards }) {
+function CardList({ cards }): JSX.Element {
   if (!cards) {
     return <NoSavedLinks />;
   }

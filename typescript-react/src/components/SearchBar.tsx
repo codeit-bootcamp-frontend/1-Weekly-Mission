@@ -1,6 +1,6 @@
 import '../css/searchBar.css';
 
-function SearchBar() {
+function SearchBar(): JSX.Element {
   return (
     <>
       <form className="search-form">

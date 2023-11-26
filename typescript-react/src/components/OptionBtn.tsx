@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function OptionBtn({ src, alt, children, onClick }) {
+function OptionBtn({ src, alt, children, onClick }): JSX.Element {
   return (
     <Div>
       <Img src={src} alt={alt} />

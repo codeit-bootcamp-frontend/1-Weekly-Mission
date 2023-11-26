@@ -18,7 +18,7 @@ const INITIAL_FOLDER = {
   name: '전체',
 };
 
-function FolderList({ folderList = null, getCardList }) {
+function FolderList({ folderList = null, getCardList }): JSX.Element {
   const [folderName, setFolderName] = useState('전체');
   const [isFolderShareModal, setIsFolderShareModal] = useState(false);
   const [isFolderRenameModal, setIsFolderRenameModal] = useState(false);

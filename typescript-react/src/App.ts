@@ -27,20 +27,18 @@ function App() {
   }, [handleUserProfileLoad]);
 
   return (
-    <>
+    <Router>
       <GlobalStyle />
       <Nav userProfile={userProfile} userProfileLoadingError={userProfileLoadingError} />
-      <Router>
-        <Routes>
-          <Route path="/folder">
-            <Route index element={<FolderPage />} />
-            <Route path=":folderId" element={<FolderPage />} />
-          </Route>
-          <Route path="/shared" element={<SharedPage />} />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/folder">
+          <Route index element={<FolderPage />} />
+          <Route path=":folderId" element={<FolderPage />} />
+        </Route>
+        <Route path="/shared" element={<SharedPage />} />
+      </Routes>
       <Footer />
-    </>
+    </Router>
   );
 }
 

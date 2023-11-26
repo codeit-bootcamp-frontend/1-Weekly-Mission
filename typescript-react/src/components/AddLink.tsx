@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function AddLink() {
+function AddLink(): JSX.Element {
   return (
     <>
       <Container>

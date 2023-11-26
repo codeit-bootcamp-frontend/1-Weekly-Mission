@@ -1,4 +1,3 @@
-// 기존에 있던 것
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import CardList from '../components/CardList';
@@ -17,8 +16,8 @@ function SharedPage() {
   const [sampleFolder, setSampleFolder] = useState(INITIAL_FOLDER);
   const [cardList, setCardList] = useState([]);
 
-  const [isFolderLoading, folderLoadingError, getSampleFolderAsync] = useAsync(getSampleFolders);
-  const [isLoadingCards, loadingCardsError, getCardsAsync] = useAsync(getCards);
+  const [, folderLoadingError, getSampleFolderAsync] = useAsync(getSampleFolders);
+  const [, , getCardsAsync] = useAsync(getCards);
 
   const handleLoadSampleFolder = async () => {
     const sampleFolderResult = await getSampleFolderAsync();

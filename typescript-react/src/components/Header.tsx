@@ -1,6 +1,6 @@
 import '../css/header.css';
 
-function Header({ folder }) {
+function Header({ folder }): JSX.Element {
   return (
     <div className="header">
       <div className="header-info">

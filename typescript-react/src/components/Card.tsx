@@ -6,13 +6,15 @@ import styled from 'styled-components';
 import RemoveLinkModal from './Modal/RemoveLinkModal';
 import InsertFolderModal from './Modal/InsertFolderModal';
 
-function Card({ card }) {
+type OpenPopoverFunc = (e: any) => void;
+
+function Card({ card }): JSX.Element {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isLinkRemoveModal, setIsLinkRemoveModal] = useState(false);
   const [isInsertFolderModal, setIsInsertFolderModal] = useState(false);
 
-  const OpenPopover = (e) => {
-    e.stopPropagation(); // 이벤트가 상위 엘리먼트에 전달되지 않게 막아 준다.
+  const OpenPopover: OpenPopoverFunc = (e) => {
+    e.stopPropagation();
     setIsPopoverOpen(!isPopoverOpen);
   };
   return (
@@ -39,8 +41,8 @@ function Card({ card }) {
               onClickOutside={() => setIsPopoverOpen(false)}
               content={
                 <PopoverContainer>
-                  <PopoverButton onClick={() => setIsLinkRemoveModal(true)}>삭제하기</PopoverButton>
-                  <PopoverButton onClick={() => setIsInsertFolderModal(true)}>폴더에 추가</PopoverButton>
+                  <PopoverButton onClick={(): void => setIsLinkRemoveModal(true)}>삭제하기</PopoverButton>
+                  <PopoverButton onClick={(): void => setIsInsertFolderModal(true)}>폴더에 추가</PopoverButton>
                 </PopoverContainer>
               }
             >

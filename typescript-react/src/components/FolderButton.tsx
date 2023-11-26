@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
-function FolderButton({ folder, handleButton }) {
+type Props = {
+  folder: any;
+  handleButton: any;
+};
+
+function FolderButton({ folder, handleButton }: Props): JSX.Element {
   const { id = '', name = '전체' } = folder;
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = (e: any): void => {
     handleButton(name, id);
   };
 
