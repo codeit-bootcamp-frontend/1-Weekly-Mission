@@ -2,9 +2,13 @@ import styled from 'styled-components';
 import linkImg from '../../assets/images/link.svg';
 import Button from '../common/Button';
 
-export default function LinkAdd() {
+interface StyleProp {
+  $fixed: boolean;
+}
+
+export default function LinkAdd({ fixed }: { fixed: boolean }) {
   return (
-    <InputContainer>
+    <InputContainer $fixed={fixed}>
       <InputBox>
         <img src={linkImg} alt='링크' />
         <Input type='text' placeholder='링크를 추가해 보세요' />
@@ -14,10 +18,14 @@ export default function LinkAdd() {
   );
 }
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<StyleProp>`
   background-color: var(--linkbrary-bg);
-  padding: 60px 32px;
   width: 100%;
+  padding: ${({ $fixed }) => ($fixed ? '24px 32px' : '60px 32px;')};
+
+  @media (max-width: 768px) {
+    padding: ${({ $fixed }) => ($fixed ? '16px 32px' : '60px 32px;')};
+  }
 `;
 
 const InputBox = styled.div`

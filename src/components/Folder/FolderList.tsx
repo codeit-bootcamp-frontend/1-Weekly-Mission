@@ -13,7 +13,10 @@ interface Select {
 }
 
 interface FolderProps extends Select {
-  folderInfo: any;
+  folderInfo: {
+    id?: string;
+    name?: string;
+  };
   onClick: onClick;
   id?: string;
 }
@@ -32,8 +35,8 @@ export default function FolderList({
   onModalOpen,
   searchParams,
 }: any) {
-  const [currentButton, setCurrentButton] = useState<string>();
-  searchParams.get('folderId');
+  const folderId: string = searchParams.get('folderId');
+  const [currentButton, setCurrentButton] = useState<string>(folderId);
 
   const handleFolder = (e: MouseEvent) => {
     const targetElement = e.target as HTMLElement;
@@ -54,7 +57,7 @@ export default function FolderList({
         <Folder
           folderInfo={ALL}
           key='전체'
-          $select={currentButton === ''}
+          $select={folderId === ''}
           onClick={handleFolder}
           id=''
         />
@@ -63,7 +66,7 @@ export default function FolderList({
             folderInfo={folder}
             key={folder.id}
             onClick={handleFolder}
-            $select={currentButton === String(folder.id)}
+            $select={String(folder.id) === folderId}
           />
         ))}
       </FolderBox>

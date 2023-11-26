@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import LinkAdd from '../components/Folder/LinkAdd';
 import Search from '../components/common/Search';
 import FolderList from '../components/Folder/FolderList';
@@ -21,6 +21,11 @@ interface CurrentFolder {
   name: string;
 }
 
+interface OutletContext {
+  urlPath: string;
+  footerView: boolean;
+}
+
 export default function Folder() {
   const [userFolder, setUserFolder] = useState<any>(null);
   const [links, setLinks] = useState();
@@ -32,7 +37,11 @@ export default function Folder() {
   const [currentFolder, setCurrentFolder] = useState<CurrentFolder>({
     name: '전체',
   });
-  const urlPath = useOutletContext();
+  const [fixed, setFixed] = useState<boolean>(false);
+  const InputRef = useRef(null);
+  const outletContext: OutletContext = useOutletContext();
+  const { urlPath, footerView } = outletContext;
+
   const paramsId: string | null = searchParams.get('folderId');
 
   const getFolderData = useCallback(async () => {
@@ -70,9 +79,30 @@ export default function Folder() {
     getFolderData();
   }, [getFolderData]);
 
+  const isFixed = useCallback((entries: IntersectionObserverEntry[]) => {
+    const target = entries[0];
+    if (!target.isIntersecting) {
+      setFixed(true);
+      console.log('검색 안보인다');
+    } else {
+      setFixed(false);
+      console.log('검색 보인다');
+    }
+  }, []);
+
+  useEffect(() => {
+    const inputIo = new IntersectionObserver(isFixed);
+
+    if (InputRef.current) {
+      inputIo.observe(InputRef.current);
+    }
+  }, [isFixed]);
+
   return (
-    <div>
-      <LinkAdd />
+    <Wrapper>
+      <div ref={InputRef}>
+        <LinkAdd fixed={false} />
+      </div>
       <Container>
         <Search />
         {userFolder ? (
@@ -105,7 +135,12 @@ export default function Folder() {
         userFolder={userFolder}
         path={paramsId}
       />
-    </div>
+      {!footerView && fixed && (
+        <Fix>
+          <LinkAdd fixed={fixed} />
+        </Fix>
+      )}
+    </Wrapper>
   );
 }
 
@@ -121,4 +156,15 @@ const Div = styled.div`
 
 const Container = styled.div`
   padding: 0 32px;
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+`;
+
+const Fix = styled.div`
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  bottom: 0;
 `;

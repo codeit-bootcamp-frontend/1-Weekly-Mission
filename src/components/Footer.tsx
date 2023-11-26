@@ -3,6 +3,7 @@ import twitter from '../assets/images/twitter.svg';
 import youtube from '../assets/images/youtube.svg';
 import instagram from '../assets/images/instagram.svg';
 import styled from 'styled-components';
+import React, { ForwardedRef, forwardRef } from 'react';
 
 const SNSs = [
   {
@@ -41,9 +42,12 @@ const FooterSns = ({ href, src, alt }: Props) => {
   );
 };
 
-export default function Footer() {
+export default forwardRef(function Footer(
+  props,
+  ref: ForwardedRef<HTMLElement>
+) {
   return (
-    <Container>
+    <Container ref={ref}>
       <Box>
         <TradeMark>©codeit - 2023</TradeMark>
         <Nav>
@@ -58,7 +62,7 @@ export default function Footer() {
       </Box>
     </Container>
   );
-}
+});
 
 const Container = styled.footer`
   height: 160px;
