@@ -1,5 +1,11 @@
 import * as S from './Folder.style';
-import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  SyntheticEvent,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useRequest from '@hooks/useRequest';
 import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@apis/config/default';
@@ -59,9 +65,31 @@ function Folder() {
 
   const filteredLinks = filterLinks(links?.data, initialKeyword);
 
+  const target = useRef<HTMLDivElement>(null);
+  const [floatAddLink, setFloatAddLink] = useState(false);
+
+  const onAddLinkHidden: IntersectionObserverCallback = (entries) => {
+    const [entry] = entries;
+    setFloatAddLink(!entry.isIntersecting);
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(onAddLinkHidden, {
+      threshold: 0,
+    });
+    if (target.current) {
+      observer.observe(target.current);
+    }
+    return () => observer.disconnect();
+  }, [target]);
+
   return (
     <Layout isLoggedIn userId={DEFAULT_USER_ID}>
-      <AddLinkContainer userId={DEFAULT_USER_ID} />
+      <AddLinkContainer
+        userId={DEFAULT_USER_ID}
+        addLinkRef={target}
+        float={floatAddLink}
+      />
       <S.ContentContainer>
         <SearchBar
           value={keyword}

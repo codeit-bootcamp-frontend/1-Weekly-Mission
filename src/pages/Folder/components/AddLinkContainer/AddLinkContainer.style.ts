@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { onTablet, onPc } from '@styles/mediaQuery';
 import { COLORS } from '@styles/palette';
 import Button from '@components/Button';
+import { zIndexStyle } from '@styles/zIndexStyle';
 
 export const Container = styled.div`
   display: flex;
@@ -65,5 +66,28 @@ export const SmallButton = styled(Button)`
   ${onPc} {
     padding: 1rem 1.6rem;
     font-size: 1.4rem;
+  }
+`;
+
+export const FloatContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  z-index: ${zIndexStyle.floating};
+  width: 100%;
+  height: 8.5rem;
+  padding: 1.6rem 3.3rem;
+  background-color: ${COLORS.LB_BACKGROUND};
+  box-shadow: -2rem 1rem 5rem rgba(0, 0, 0, 0.4);
+
+  ${onTablet} {
+    height: 11.7rem;
+    padding: 2.4rem 3.3rem;
+  }
+
+  ${onPc} {
+    height: 11.7rem;
+    padding: 2.4rem 3.3rem;
   }
 `;
