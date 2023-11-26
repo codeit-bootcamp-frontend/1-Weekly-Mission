@@ -1,5 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { FolderPage, SharedPage, HomePage, ErrorPage } from "./pages/index";
+import {
+  FolderPage,
+  SharedPage,
+  HomePage,
+  ErrorPage,
+  SignInPage,
+  SignUpPage,
+} from "./pages/index";
 
 function App() {
   return (
@@ -14,6 +21,14 @@ function App() {
 
           <Route path="shared">
             <Route index element={<SharedPage />} />
+          </Route>
+
+          <Route path="signin">
+            <Route index element={<SignInPage />} />
+          </Route>
+
+          <Route path="signup">
+            <Route index element={<SignUpPage />} />
           </Route>
 
           <Route path="*" element={<ErrorPage />} />
