@@ -9,7 +9,6 @@ import penIcon from "../../../assets/pen_icon.svg";
 import deleteIcon from "../../../assets/delete_icon.svg";
 import { FolderContext } from "../../../context/FolderContext";
 import useGetSearchFolder from "../../../hooks/useGetSearchFolder";
-import * as React from "react";
 import { SelectedFolderContentsInfo, SelectedFolderInfo } from "../../../types";
 
 type Props = {
@@ -23,6 +22,7 @@ const FolderMain = ({ selectedFolder, userID }: Props) => {
   const { folderId, changeFolderId } = folderContext;
   const folderContentsInfo = useGetSearchFolder(userID, folderId);
   const [title, setTitle] = useState("전체");
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
 
   const changeTitle = (name: string) => {
     setTitle(name);
@@ -38,7 +38,7 @@ const FolderMain = ({ selectedFolder, userID }: Props) => {
 
     return (
       <Container>
-        <LinkSearchInput />
+        <LinkSearchInput searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword} />
         <FolderHeader selectedFolder={selectedFolder} changeTitle={changeTitle} />
         <Title>
           <h1>{title}</h1>
@@ -56,7 +56,7 @@ const FolderMain = ({ selectedFolder, userID }: Props) => {
             </Options>
           )}
         </Title>
-        {folderContentsInfo && <CardList folderCards={data} />}
+        {folderContentsInfo && <CardList folderCards={data} searchKeyword={searchKeyword} />}
       </Container>
     );
   } else return null;

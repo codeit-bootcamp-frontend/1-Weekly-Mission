@@ -36,9 +36,10 @@ function Nav({ account, setSuccess, isSticky }: NavProps) {
     }
   };
 
-  // useEffect(() => {   // 주석 풀면 자동 로그인
-  //   handleLoginInfo(account);
-  // }, [account]);
+  React.useEffect(() => {
+    // 주석 풀면 자동 로그인
+    handleLoginInfo(account);
+  }, [account]);
 
   return (
     <Navigation isSticky={isSticky}>

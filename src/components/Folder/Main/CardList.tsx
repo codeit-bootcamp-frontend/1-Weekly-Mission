@@ -1,10 +1,33 @@
 import styled from "styled-components";
 import EmptyLinkScreen from "./EmptyLinkScreen";
 import CardDivide from "./CardDivide";
-import * as React from "react";
 import { SelectedFolderContentsInfo, SharedLinkInfo } from "../../../types";
 
-const CardList = ({ folderCards }: { folderCards: SharedLinkInfo[] | SelectedFolderContentsInfo[] }) => {
+interface Props {
+  folderCards: SharedLinkInfo[] | SelectedFolderContentsInfo[];
+  searchKeyword: string;
+}
+
+const CardList = ({ folderCards, searchKeyword }: Props) => {
+  console.log(folderCards);
+
+  if (folderCards && searchKeyword !== "" && "created_at" in folderCards[0]) {
+    folderCards = (folderCards as SelectedFolderContentsInfo[]).filter(
+      (folderCard) =>
+        folderCard.description?.includes(searchKeyword) ||
+        folderCard.title?.includes(searchKeyword) ||
+        folderCard.url?.includes(searchKeyword)
+    );
+  }
+  if (folderCards && searchKeyword !== "" && "createdAt" in folderCards[0]) {
+    folderCards = (folderCards as SharedLinkInfo[]).filter(
+      (folderCard) =>
+        folderCard.description?.includes(searchKeyword) ||
+        folderCard.title?.includes(searchKeyword) ||
+        folderCard.url?.includes(searchKeyword)
+    );
+  }
+
   return (
     <>
       {folderCards && folderCards.length > 0 ? (

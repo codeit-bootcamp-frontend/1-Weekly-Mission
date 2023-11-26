@@ -5,10 +5,12 @@ import * as React from "react";
 import { SharedLinkInfo } from "../../../types";
 
 const SharedMain = ({ folderInfo }: { folderInfo: SharedLinkInfo[] }) => {
+  const [searchKeyword, setSearchKeyword] = React.useState<string>("");
+
   return (
     <MainContainer>
-      <LinkSearchInput />
-      <CardList folderCards={folderInfo} />
+      <LinkSearchInput searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword} />
+      <CardList folderCards={folderInfo} searchKeyword={searchKeyword} />
     </MainContainer>
   );
 };
