@@ -3,7 +3,7 @@ import Card from "../../common/card/Card.tsx";
 import styles from "./DataListItem.module.css";
 import kebabImage from "../../assets/images/kebab.svg";
 
-import { parseDatestring, getElapsedTime } from "../../utils/calTime";
+import { parseDatestring, getElapsedTime } from "../../utils/calTime.ts";
 import DropDown from "../dropdown/DropDown";
 export default function DataListItem({ item }) {
   const [open, setOpen] = useState(false);
