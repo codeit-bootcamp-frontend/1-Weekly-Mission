@@ -14,13 +14,18 @@ import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const INIT_PAGE = { id: 0, name: '전체' };
 
+type Category = {
+  id: number;
+  name: string;
+}
+
 function FolderMain() {
-  const modalRef = useRef();
+  const modalRef = useRef<HTMLDivElement>(null);
   const [name, setName] = useState('전체');
   const [cards, setCards] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleLoadLinks = useCallback(async (category) => {
+  const handleLoadLinks = useCallback(async (category: Category) => {
       const id = category.id === 0 ? '' : String(category.id);
       const name = category.name;
 
@@ -29,14 +34,14 @@ function FolderMain() {
         return;
       }
 
-      const { data } = { ...result };
+      const { data }: any = { ...result };
 
       setName(name);
       setCards(data);
-    }, [name],
+    }, [],
   );
 
-  const openModal = ({ isOpen }) => {
+  const openModal = ({ isOpen }: {isOpen: boolean}) => {
     setIsOpen(isOpen);
   };
 
@@ -59,7 +64,7 @@ function FolderMain() {
       <FloatingActionButton onOpen={openModal} />
       {isOpen && (
         <Modal>
-          <FolderModal action='add' onCloseModal={closeModal} ref={modalRef} />
+          <FolderModal action='add' name='' onCloseModal={closeModal} ref={modalRef} />
         </Modal>
       )}
     </FolderMainStyle>
