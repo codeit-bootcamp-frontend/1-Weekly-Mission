@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import BinderInfo from "../components/BinderInfo/BinderInfo";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Binder from "../components/Binder/Binder";
 import getSampleFolder from "../apis/sample/folder";
 import styles from "./Shared.module.css";
 import Nav from "../components/Nav/Nav";
+import useInputController from "../hooks/useInputController";
 
 type Card = {
   id: number;
@@ -37,6 +38,13 @@ function Shared() {
   });
   const [cards, setCards] = useState<Card[] | CardData[]>([]);
 
+  const searchInput = useInputController({});
+
+  const handleSearchBarDeleteIconClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    searchInput.setValues("");
+  };
+
   const loadFolderData = async () => {
     const {
       folder: { name, owner, links },
@@ -58,7 +66,11 @@ function Shared() {
       <Nav className={styles.nav} />
       <BinderInfo name={name} owner={owner} />
       <section className={styles.root}>
-        <SearchBar />
+        <SearchBar
+          value={searchInput.values}
+          onChange={searchInput.handleChange}
+          onClick={handleSearchBarDeleteIconClick}
+        />
         <Binder cards={cards} shared={true} />
       </section>
     </>

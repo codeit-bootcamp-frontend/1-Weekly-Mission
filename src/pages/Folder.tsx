@@ -69,6 +69,14 @@ function Folder() {
   // AddLinkInput 인풋 컨트롤라
   const addLinkInput = useInputController({});
 
+  // 링크 검색창
+  const searchInput = useInputController({});
+
+  const handleSearchBarDeleteIconClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    searchInput.setValues("");
+  };
+
   //
   const [targetURL, setTargetURL] = useState("");
 
@@ -128,7 +136,11 @@ function Folder() {
         onSubmit={handleSubmit}
       />
       <section className={styles.root}>
-        <SearchBar />
+        <SearchBar
+          value={searchInput.values}
+          onChange={searchInput.handleChange}
+          onClick={handleSearchBarDeleteIconClick}
+        />
         <div className={styles.flex}>
           <FolderNav onClick={handleClick} folderID={folderID} folderLists={folderLists} />
           <FolderAddMenu onClick={addFolderModal.handleClick} />

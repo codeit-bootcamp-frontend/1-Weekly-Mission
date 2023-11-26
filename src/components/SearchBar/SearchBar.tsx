@@ -1,30 +1,28 @@
+import { ChangeEvent, MouseEvent } from "react";
 import closeIcon from "../../assets/images/closeIcon.svg";
 import searchIcon from "../../assets/images/Search.svg";
 import styles from "./SearchBar.module.css";
-import useInputController from "../../hooks/useInputController";
-import { MouseEvent } from "react";
 
-function SearchBar() {
-  const searchInput = useInputController({});
+interface Props {
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+}
 
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    searchInput.setValues("");
-  };
-
+function SearchBar({ value, onChange, onClick }: Props) {
   return (
     <article className={styles.root}>
       <img className={styles.icon} src={searchIcon} alt="" />
       <form className={styles.form}>
         <input
-          onChange={searchInput.handleChange}
-          value={searchInput.values}
+          onChange={onChange}
+          value={value}
           type="text"
           className={styles.input}
           placeholder="링크를 검색해 보세요"
         ></input>
-        {searchInput.values && (
-          <button type="button" onClick={handleClick}>
+        {value && (
+          <button type="button" onClick={onClick}>
             <img src={closeIcon} alt="" />
           </button>
         )}
