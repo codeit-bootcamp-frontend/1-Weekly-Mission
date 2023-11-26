@@ -75,9 +75,7 @@ function FolderInfo({ folderName, count }) {
 }
 function ModalAddToFolder() {
   const DEFAULT_FOLDER = 1;
-  const [folderData, ] = useAsync(
-    () => getFolders(DEFAULT_FOLDER)
-  );
+  const [folderData] = useAsync(() => getFolders(DEFAULT_FOLDER));
 
   if (!folderData) return null;
   const folders = folderData?.data;
@@ -105,6 +103,7 @@ function Modal({
   url,
   addLink,
 }) {
+  const [content, setContent] = useState("");
   return (
     <S.ModalWrapper>
       <S.ModalContainer>
@@ -113,7 +112,13 @@ function Modal({
           onClick={() => setIsModalOpen(false)}
         />
         <S.ModalTitle>{title}</S.ModalTitle>
-        {hasInput && <S.ModalInput placeholder="내용 입력" />}
+        {hasInput && (
+          <S.ModalInput
+            onChange={(e) => setContent(e.target.value)}
+            value={content}
+            placeholder="내용 입력"
+          />
+        )}
         {folderName && <S.ModalDetail>{folderName}</S.ModalDetail>}
         {url && <S.ModalDetail>{url}</S.ModalDetail>}
         {share && <ModalFolderShare />}

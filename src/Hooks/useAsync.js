@@ -15,6 +15,7 @@ function useAsync(asyncFunction, deps = [], skip = false) {
       setPending(false);
     }
   };
+
   useEffect(() => {
     if (skip) return;
     fetchData();

@@ -12,7 +12,7 @@ function Folder() {
   const folder = data?.folder;
   const name = folder?.name;
   const owner = folder?.owner;
-  const links = folder?.links;
+  const links = folder?.links ?? [];
 
   return (
     <>

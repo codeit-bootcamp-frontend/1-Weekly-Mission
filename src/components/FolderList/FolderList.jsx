@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { S } from "./FolderListStyle"; // Import the styles as S
 
 import shareIcon from "../../assets/share.png";
 import modifyIcon from "../../assets/pen.png";
 import deleteIcon from "../../assets/deleteIcon.png";
-import Modal, { ModalMaker } from "../Modal/Modal";
+import { ModalMaker } from "../Modal/Modal";
 const DEFAULT_FOLDER = {
   id: 0,
   name: "전체",
@@ -14,7 +14,7 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
   const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setModal] = useState(null);
-  const onClick = (folder) => (e) => {
+  const onClick = (folder) => () => {
     if (!folder) {
       setFolderLink(undefined);
       setSelectedFolder(DEFAULT_FOLDER);
@@ -24,12 +24,13 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
     }
   };
 
-  const handleModal = () => (e) => {
-    let feature = e.target.textContent;
-    let folderName = selectedFolder?.name;
-    setModal(ModalMaker({ feature, folderName, setIsModalOpen }));
-    setIsModalOpen(true);
-  };
+  const handleModal =
+    ({ feature }) =>
+    () => {
+      let folderName = selectedFolder?.name;
+      setModal(ModalMaker({ feature, folderName, setIsModalOpen }));
+      setIsModalOpen(true);
+    };
 
   return (
     <>
@@ -37,7 +38,7 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
         <S.FolderButtons>
           <S.Button
             onClick={onClick(undefined)}
-            data-onselect={selectedFolderId === undefined}
+            $data-onselect={selectedFolderId === undefined}
           >
             {DEFAULT_FOLDER.name}
           </S.Button>
@@ -46,7 +47,7 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
               <S.Button
                 onClick={onClick(folder)}
                 key={folder.id}
-                data-onselect={selectedFolderId === folder.id}
+                $data-onselect={selectedFolderId === folder.id}
               >
                 {folder.name}
               </S.Button>
@@ -64,17 +65,17 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
             <Icon
               img={shareIcon}
               feature={"공유"}
-              onClick={(e) => handleModal()(e)}
+              onClick={(e) => handleModal({ feature: "공유" })(e)}
             />
             <Icon
               img={modifyIcon}
               feature={"이름 변경"}
-              onClick={(e) => handleModal()(e)}
+              onClick={(e) => handleModal({ feature: "이름 변경" })(e)}
             />
             <Icon
               img={deleteIcon}
               feature={"삭제"}
-              onClick={(e) => handleModal()(e)}
+              onClick={(e) => handleModal({ feature: "삭제" })(e)}
             />
           </S.Icons>
         )}
