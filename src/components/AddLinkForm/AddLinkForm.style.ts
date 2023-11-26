@@ -6,7 +6,8 @@ export const FormContainer = styled.div<{
   $isScrolled: boolean;
   $showFooter: boolean;
 }>`
-  display: ${({ $showFooter }) => ($showFooter ? `none` : `flex`)};
+  display: ${({ $isScrolled, $showFooter }) =>
+    $isScrolled && $showFooter ? `none` : `flex`};
   flex-direction: column;
   align-items: center;
 
