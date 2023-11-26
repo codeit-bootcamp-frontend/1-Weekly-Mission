@@ -23,6 +23,7 @@ export default function FolderCard(link: Props) {
   const [showToFolderPlusModal, setShowToFolderPlusModal] = useState(false);
 
   const back = useRef<HTMLDivElement>(null);
+
   const kebabfunc = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
   };

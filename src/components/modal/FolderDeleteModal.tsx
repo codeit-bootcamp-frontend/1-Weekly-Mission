@@ -26,7 +26,6 @@ export default function FolderDeleteModal({
   };
 
   return (
-    //여기 back, onclick 이상
     <M.ModalBackground ref={back} onClick={backClick}>
       <M.ModlaWrapper>
         <M.ModalDeleteHeader>
