@@ -1,9 +1,22 @@
-import React from 'react';
-import './kebabButton.css';
-import kebabIcon from '../../assets/common/kebab.svg';
-import Popover from '../popover/Popover';
+import React from "react";
+import "./kebabButton.css";
+import kebabIcon from "../../assets/common/kebab.svg";
+import Popover from "../popover/Popover";
+import { FolderName } from "../../types/types";
 
-export default function KebabButton({ onClick, isPopoverOpen, url, folders }) {
+interface KebabButtonProps {
+  onClick: () => void;
+  isPopoverOpen: boolean;
+  url: string;
+  folders: FolderName[];
+}
+
+export default function KebabButton({
+  onClick,
+  isPopoverOpen,
+  url,
+  folders,
+}: KebabButtonProps) {
   return (
     <div className="kebab-container">
       <button type="button" className="kebab-button" onClick={onClick}>

@@ -2,7 +2,7 @@ import {
   BASE_URL,
   SAMPLE_FOLDER_ENDPOINT,
   SAMPLE_USER_ENDPOINT,
-} from './services/config';
+} from "./services/config";
 
 export const getSampleUser = async () => {
   let result;
@@ -10,7 +10,9 @@ export const getSampleUser = async () => {
     const response = await fetch(`${BASE_URL}${SAMPLE_USER_ENDPOINT}`);
     result = await response.json();
   } catch (error) {
-    console.log(error.message);
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
   }
   return result;
 };
@@ -21,7 +23,9 @@ export const getSampleFolder = async () => {
     const response = await fetch(`${BASE_URL}${SAMPLE_FOLDER_ENDPOINT}`);
     result = await response.json();
   } catch (error) {
-    console.log(error.message);
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
   }
   return result;
 };

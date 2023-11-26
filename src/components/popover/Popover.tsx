@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
-import './popover.css';
-import useModal from '../../hooks/useModal';
-import POPOVER_MENU from './constant';
+import React, { useState } from "react";
+import "./popover.css";
+import useModal from "../../hooks/useModal";
+import POPOVER_MENU from "./constant";
+import { FolderName } from "../../types/types";
 
-export default function Popover({ url }) {
+interface PopoverProps {
+  url: string;
+  folders: FolderName[];
+}
+
+export default function Popover({ url, folders }: PopoverProps) {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
-  const { open: openModal, close, isModalOpen, Dialog, folders } = useModal();
+  const { open: openModal, close, isModalOpen, Dialog } = useModal();
 
   const openDeleteModal = () => {
     setDeleteModalOpen(true);
@@ -37,7 +43,7 @@ export default function Popover({ url }) {
             >
               <Dialog.Title>링크 삭제</Dialog.Title>
               <Dialog.Link>{url}</Dialog.Link>
-              <Dialog.Button>삭제하기</Dialog.Button>
+              <Dialog.Button isAddButton={false}>삭제하기</Dialog.Button>
             </Dialog>
           ) : null}
           {menu.id === 2 && addModalOpen ? (

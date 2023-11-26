@@ -1,26 +1,30 @@
-import React, { useEffect } from 'react';
-import CopyToClipboard from 'react-copy-to-clipboard';
-import './dialogIconsBox.css';
-import { FacebookShareButton } from 'react-share';
+import { useEffect } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
+import "./dialogIconsBox.css";
+import { FacebookShareButton } from "react-share";
 
-import kakaoIcon from '../../../../assets/common/kakaoicon.svg';
-import facebookIcon from '../../../../assets/landing/facebookIcon.svg';
-import linkIcon from '../../../../assets/folder/link.svg';
-import useScript from '../../../../hooks/useScript';
-import { BASE_URL } from '../../../../api/services/config';
+import kakaoIcon from "../../../../assets/common/kakaoicon.svg";
+import facebookIcon from "../../../../assets/landing/facebookIcon.svg";
+import linkIcon from "../../../../assets/folder/link.svg";
+import useScript from "../../../../hooks/useScript";
+import { BASE_URL } from "../../../../api/services/config";
 
-export default function DialogIconsBox({ folderId }) {
+interface DialogIconsBoxProps {
+  folderId?: number | string;
+}
+
+export default function DialogIconsBox({ folderId }: DialogIconsBoxProps) {
   const currentUrl = `${BASE_URL}/shared?user=${1}&folder=${folderId}}`;
   const folderUrl = `${BASE_URL}/?folderId=${folderId}`;
 
   const status = useScript(
-    `https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js`,
+    `https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js`
   );
 
   useEffect(() => {
-    if (status === 'ready' && window.Kakao) {
+    if (status === "ready" && window.Kakao) {
       if (!window.Kakao.isInitialized()) {
-        window.Kakao.init('d794e38d703ff57bde7b9cf0ba74569f');
+        window.Kakao.init("d794e38d703ff57bde7b9cf0ba74569f");
       }
     }
   }, [status]);
@@ -32,7 +36,7 @@ export default function DialogIconsBox({ folderId }) {
   };
 
   const handleLinkCopyButton = () => {
-    alert('클립보드에 복사 되었습니다.');
+    alert("클립보드에 복사 되었습니다.");
   };
 
   return (

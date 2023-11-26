@@ -1,23 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import logo from '../../../assets/common/logo.svg';
-import './nav.css';
-import { getSampleUser } from '../../../api/user';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import logo from "../../../assets/common/logo.svg";
+import "./nav.css";
+import { getSampleUser } from "../../../api/user";
+import { SampleUser } from "../../../types/types";
 
 export default function Nav() {
-  const [userProfile, setUserProfile] = useState({});
+  const [userProfile, setUserProfile] = useState<SampleUser[]>([]);
   const location = useLocation();
-  const isFolderPage = location.pathname === '/folder';
+  const isFolderPage = location.pathname === "/folder";
 
-  useEffect(async () => {
+  const fetchUserProfile = async () => {
     const response = await getSampleUser();
     const { data } = response;
     setUserProfile(data);
+  };
+
+  useEffect(() => {
+    fetchUserProfile();
   }, []);
 
   return (
     <div>
-      <nav className={isFolderPage ? 'gnb gnb-folder' : 'gnb'}>
+      <nav className={isFolderPage ? "gnb gnb-folder" : "gnb"}>
         <a href="/">
           <img src={logo} alt="nav-title-logo" className="gnb-logo" />
         </a>

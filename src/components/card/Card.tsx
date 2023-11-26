@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import './card.css';
-import logo from '../../assets/common/logo.svg';
-import starIcon from '../../assets/common/star.svg';
-import calcCreateTime from '../../utils/calcCreateTime';
-import KebabButton from '../kebabButton/KebabButton';
+import { useState } from "react";
+import "./card.css";
+import logo from "../../assets/common/logo.svg";
+import starIcon from "../../assets/common/star.svg";
+import calcCreateTime from "../../utils/calcCreateTime";
+import KebabButton from "../kebabButton/KebabButton";
+import { FolderName, LinkInfo } from "../../types/types";
 
-function Card({ linkInfo, folders }) {
+interface CardProps {
+  linkInfo: LinkInfo;
+  folders: FolderName[];
+}
+
+function Card({ linkInfo, folders }: CardProps) {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const handleKebabClick = () => {
@@ -31,13 +37,13 @@ function Card({ linkInfo, folders }) {
         <div
           className={
             linkInfo?.image_source
-              ? 'card-img-section'
-              : 'card-img-section card-empty'
+              ? "card-img-section"
+              : "card-img-section card-empty"
           }
         >
           <img
             src={linkInfo?.image_source ?? logo}
-            className={linkInfo?.image_source ? 'link-img' : 'link-img-empty'}
+            className={linkInfo?.image_source ? "link-img" : "link-img-empty"}
             alt="cat"
           />
         </div>
@@ -52,10 +58,7 @@ function Card({ linkInfo, folders }) {
             folders={folders}
           />
         </p>
-        <p className="introduce-text">
-          Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc
-          consequat. Tldkd
-        </p>
+        <p className="introduce-text">{linkInfo?.description}</p>
         <p className="created-date">{`${year}. ${month}. ${date}`}</p>
       </div>
     </div>

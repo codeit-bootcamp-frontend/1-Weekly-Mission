@@ -1,4 +1,4 @@
-@import url('../../styles/global.css');
+@import url("../../styles/global.css");
 
 .folder-header {
   display: flex;
@@ -24,12 +24,34 @@
   gap: 12px;
 }
 
+.floating-searchbar-container {
+  display: flex;
+  align-self: center;
+  position: sticky;
+  bottom: 0px;
+  z-index: 1000;
+}
+
 .floating-action-button-container {
   display: flex;
   display: none;
   align-self: center;
   position: fixed;
   bottom: 101px;
+}
+
+.footer-target {
+  width: 1px;
+  height: 1px;
+}
+
+.floating-addlink-container {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: var(--color-white);
+  width: 100vw;
+  padding: 24px;
 }
 
 .folder-container {

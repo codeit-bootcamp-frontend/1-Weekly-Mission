@@ -1,7 +1,11 @@
-import React from 'react';
-import './header.css';
+import "./header.css";
+import { FolderInfo } from "../../types/types";
 
-export default function Header({ folderInfo }) {
+interface FolderInfoProps {
+  folderInfo: FolderInfo | undefined;
+}
+
+export default function Header({ folderInfo }: FolderInfoProps) {
   return (
     <header className="header">
       <div className="header-user-info-box">

@@ -1,26 +1,26 @@
-import shareIcon from '../../assets/folder/share.svg';
-import penIcon from '../../assets/folder/pen.svg';
-import trashCanIcon from '../../assets/folder/trashCan.svg';
+import shareIcon from "../../assets/folder/share.svg";
+import penIcon from "../../assets/folder/pen.svg";
+import trashCanIcon from "../../assets/folder/trashCan.svg";
 
 export const OPTION_ICONS = [
   {
     id: 1,
-    name: '공유',
+    name: "공유",
     iconSrc: shareIcon,
-    alt: 'share',
+    alt: "share",
   },
   {
     id: 2,
-    name: '이름 변경',
+    name: "이름 변경",
     iconSrc: penIcon,
-    alt: 'pen',
+    alt: "pen",
   },
   {
     id: 3,
-    name: '삭제',
+    name: "삭제",
     iconSrc: trashCanIcon,
-    alt: 'trashCan',
+    alt: "trashCan",
   },
 ];
 
-export const ALL_LINK_NAME = '전체';
+export const ALL_LINK_NAME = "전체";

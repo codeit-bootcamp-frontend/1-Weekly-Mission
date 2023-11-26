@@ -1,7 +1,15 @@
-import React from 'react';
-import './floatingButton.css';
+import { ReactNode } from "react";
+import "./floatingButton.css";
 
-export default function FloatingButton({ children, iconSrc }) {
+interface FloatingButtonProps {
+  children: ReactNode;
+  iconSrc: string;
+}
+
+export default function FloatingButton({
+  children,
+  iconSrc,
+}: FloatingButtonProps) {
   return (
     <button type="button" className="floating-button">
       <div className="floating-button-box">

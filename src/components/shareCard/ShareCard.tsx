@@ -1,9 +1,20 @@
-import React from 'react';
-import './shareCard.css';
-import logo from '../../assets/common/logo.svg';
-import calcCreateTime from '../../utils/calcCreateTime';
+import React from "react";
+import "./shareCard.css";
+import logo from "../../assets/common/logo.svg";
+import calcCreateTime from "../../utils/calcCreateTime";
 
-function ShareCard({ linkInfo }) {
+interface ShareCardProps {
+  linkInfo: {
+    id: number;
+    createdAt: string;
+    url: string;
+    title: string;
+    description: string;
+    imageSource: string;
+  };
+}
+
+function ShareCard({ linkInfo }: ShareCardProps) {
   const createdAt = new Date(linkInfo?.createdAt);
   const formattedTime = calcCreateTime(createdAt);
 
@@ -22,13 +33,13 @@ function ShareCard({ linkInfo }) {
         <div
           className={
             linkInfo?.imageSource
-              ? 'card-img-section'
-              : 'card-img-section card-empty'
+              ? "card-img-section"
+              : "card-img-section card-empty"
           }
         >
           <img
             src={linkInfo?.imageSource ?? logo}
-            className={linkInfo?.imageSource ? 'link-img' : 'link-img-empty'}
+            className={linkInfo?.imageSource ? "link-img" : "link-img-empty"}
             alt="cat"
           />
         </div>

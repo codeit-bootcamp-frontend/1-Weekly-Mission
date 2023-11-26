@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
-import './addLinkInput.css';
-import useModal from '../../../../hooks/useModal';
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { ChangeEvent, useState } from "react";
+import "./addLinkInput.css";
+import useModal from "../../../../hooks/useModal";
 
-import linkIcon from '../../../../assets/folder/link.svg';
+import linkIcon from "../../../../assets/folder/link.svg";
+import { FolderName } from "../../../../types/types";
 
-export default function addLinkInput({ folders }) {
-  const [url, setUrl] = useState('');
+interface AddLinkInputProps {
+  folders: FolderName[];
+}
+
+export default function addLinkInput({ folders }: AddLinkInputProps) {
+  const [url, setUrl] = useState("");
   const { open, close, Dialog, isModalOpen } = useModal();
 
-  const handleInputValue = (e) => {
+  const handleInputValue = (e: ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
   };
 

@@ -1,46 +1,49 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-function useScript(src) {
-  const [status, setStatus] = useState(src ? 'loading' : 'idle');
+type ScriptStatus = "idle" | "loading" | "ready" | "error";
+
+function useScript(src: string | null) {
+  const [status, setStatus] = useState<ScriptStatus>(src ? "loading" : "idle");
 
   useEffect(() => {
     if (!src) {
-      setStatus('idle');
+      setStatus("idle");
       return;
     }
-    let script = document.querySelector(`script[src="${src}"]`);
+    let script: HTMLScriptElement | null = document.querySelector(
+      `script[src="${src}"]`
+    );
 
     if (!script) {
-      script = document.createElement('script');
+      script = document.createElement("script");
       script.src = src;
       script.async = true;
-      script.setAttribute('data-status', 'loading');
+      script.setAttribute("data-status", "loading");
       document.body.appendChild(script);
 
-      const setAttributeFromEvent = (event) => {
-        script.setAttribute(
-          'data-status',
-          event.type === 'load' ? 'ready' : 'error',
+      const setAttributeFromEvent = (event: Event) => {
+        script?.setAttribute(
+          "data-status",
+          event.type === "load" ? "ready" : "error"
         );
       };
 
-      script.addEventListener('load', setAttributeFromEvent);
-      script.addEventListener('error', setAttributeFromEvent);
+      script.addEventListener("load", setAttributeFromEvent);
+      script.addEventListener("error", setAttributeFromEvent);
     } else {
-      setStatus(script.getAttribute('data-status'));
+      setStatus(script.getAttribute("data-status") as ScriptStatus);
     }
-    const setStateFromEvent = (event) => {
-      setStatus(event.type === 'load' ? 'ready' : 'error');
+    const setStateFromEvent = (event: Event) => {
+      setStatus(event.type === "load" ? "ready" : "error");
     };
 
-    script.addEventListener('load', setStateFromEvent);
-    script.addEventListener('error', setStateFromEvent);
+    script.addEventListener("load", setStateFromEvent);
+    script.addEventListener("error", setStateFromEvent);
 
-    // eslint-disable-next-line consistent-return
     return () => {
       if (script) {
-        script.removeEventListener('load', setStateFromEvent);
-        script.removeEventListener('error', setStateFromEvent);
+        script.removeEventListener("load", setStateFromEvent);
+        script.removeEventListener("error", setStateFromEvent);
       }
     };
   }, [src]);

@@ -1,4 +1,4 @@
-import { BASE_URL, USERS_ENDPOINT } from './services/config';
+import { BASE_URL, USERS_ENDPOINT } from "./services/config";
 
 export const getUserFolders = async () => {
   let result;
@@ -11,16 +11,18 @@ export const getUserFolders = async () => {
   return result;
 };
 
-export const getUserLinks = async (folderId = '전체') => {
+export const getUserLinks = async (folderId: string | number = "전체") => {
   let result;
-  const query = folderId === '전체' ? '' : `?folderId=${folderId}`;
+  const query = folderId === "전체" ? "" : `?folderId=${folderId}`;
   try {
     const response = await fetch(
-      `${BASE_URL}${USERS_ENDPOINT}/1/links${query}`,
+      `${BASE_URL}${USERS_ENDPOINT}/1/links${query}`
     );
     result = await response.json();
   } catch (error) {
-    console.log(error.message);
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
   }
   return result;
 };
