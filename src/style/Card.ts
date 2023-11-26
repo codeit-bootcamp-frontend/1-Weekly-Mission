@@ -8,14 +8,9 @@ export const CardContainer = styled.div`
   max-height: 20.875rem;
   border-radius: 15px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
 
   &:hover {
     background-color: var(--linkbrary-bg);
-
-    &Image {
-      transform: scale(1.3);
-    }
   }
 `;
 //위에 카드 호버시 이미지 처리하기
@@ -23,6 +18,7 @@ export const CardContainer = styled.div`
 export const ImageBox = styled.div`
   width: 100%;
   height: 100%;
+  border-radius: 15px 15px 0 0;
   overflow: hidden;
 `;
 

@@ -4,8 +4,8 @@ export const Container = styled.div`
   z-index; 90;
   display: flex;
   position: absolute;
-  top: 15px;
-  right: 0px;
+  top: 20px;
+  right: -78px;
   flex-direction: column;
   width: 6.25rem;
   height: 4rem;

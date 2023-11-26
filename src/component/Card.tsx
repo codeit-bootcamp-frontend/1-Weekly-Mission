@@ -1,8 +1,7 @@
 import { useState } from "react";
 import moment from "moment";
 import Star from "./Star";
-import PopOver from "./PopOver";
-import kebabICON from "../assets/img/icon-kebab.svg";
+import Kebab from "./Kebab";
 import noImageIMG from "../assets/img/img-linkthumb-noimg.svg";
 import * as Styled from "../style/Card";
 
@@ -16,18 +15,6 @@ function Card({ data, onClick }) {
       setStar(false);
     } else {
       setStar(true);
-    }
-  };
-
-  /*--kebab--*/
-  const [isKebab, setIsKebab] = useState(false);
-
-  const handleKebabClick = (e) => {
-    e.stopPropagation();
-    if (isKebab) {
-      setIsKebab(false);
-    } else {
-      setIsKebab(true);
     }
   };
 
@@ -68,29 +55,29 @@ function Card({ data, onClick }) {
 
   /*========= JSX =========*/
   return (
-    <Styled.CardContainer onClick={handleCardClick}>
-      <Star isStared={star} onClick={handleStarClick} />
-      <Styled.ImageBox>
-        <Styled.Image
-          src={data.image_source || noImageIMG}
-          alt={data.image_source ? "카드 이미지" : "이미지 없음"}
-        />
-      </Styled.ImageBox>
+    <>
+      <Styled.CardContainer onClick={handleCardClick}>
+        <Star isStared={star} onClick={handleStarClick} />
+        <Styled.ImageBox>
+          <Styled.Image
+            src={data.image_source || noImageIMG}
+            alt={data.image_source ? "카드 이미지" : "이미지 없음"}
+          />
+        </Styled.ImageBox>
 
-      <Styled.InfoContainer>
-        <Styled.AdditionalInfo>
-          <Styled.TimeSpan>{timeForToday(data.created_at)}</Styled.TimeSpan>
-          <button onClick={handleKebabClick}>
-            <img src={kebabICON} alt="카드 설정 더보기" />
-          </button>
-          (isKebab) && (<PopOver />)
-        </Styled.AdditionalInfo>
-        <Styled.Description>
-          {data.description || data.title}
-        </Styled.Description>
-        <Styled.DateSpan>{formatDate(data.created_at)}</Styled.DateSpan>
-      </Styled.InfoContainer>
-    </Styled.CardContainer>
+        <Styled.InfoContainer>
+          <Styled.AdditionalInfo>
+            <Styled.TimeSpan>{timeForToday(data.created_at)}</Styled.TimeSpan>
+            <Kebab />
+          </Styled.AdditionalInfo>
+
+          <Styled.Description>
+            {data.description || data.title}
+          </Styled.Description>
+          <Styled.DateSpan>{formatDate(data.created_at)}</Styled.DateSpan>
+        </Styled.InfoContainer>
+      </Styled.CardContainer>
+    </>
   );
 }
 
