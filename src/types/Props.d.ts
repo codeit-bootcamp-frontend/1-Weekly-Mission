@@ -1,3 +1,5 @@
+import { SyntheticEvent } from "react";
+
 interface OnclickProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
@@ -94,4 +96,13 @@ interface ShareBoxProps {
   src: string;
   alt: string;
   content: string;
+}
+
+interface ResultSearchProps {
+  result: string;
+}
+
+interface SearchProps {
+  value: string;
+  searchResult: React.Dispatch<React.SetStateAction<string>>;
 }

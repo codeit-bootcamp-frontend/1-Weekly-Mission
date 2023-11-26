@@ -13,6 +13,7 @@ import { getAllFolder, getFolderLinks, getUserFolder } from "../services/api";
 import isEmpty from "../utils/isEmpty";
 import { shareKakaoLink } from "../utils/shareKakaoLink";
 import React from "react";
+import ResultSearch from "../components/Search/SearchResult";
 
 function Folder() {
   const [folders, setFolders] = useState<[]>([]);
@@ -23,6 +24,7 @@ function Folder() {
   const [modalTitle, setModalTitle] = useState("");
   const [modalSubTitle, setModalSubTitle] = useState("");
   const [modalButtonContent, setModalButtonContent] = useState("");
+  const [searchResult, setSearchResult] = useState("");
 
   const [folderParams, setFolderParams] = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
   const initFolderId: string | null = folderParams.get("folderId");
@@ -55,7 +57,17 @@ function Folder() {
       : await getFolderLinks(folderId as string);
     if (!introResult) return;
 
-    setCards(introResult);
+    if (!searchResult) {
+      setCards(introResult);
+    } else {
+      const filterCard = introResult.filter(
+        (card: any) =>
+          card.url?.toLowerCase().includes(searchResult) ||
+          card.title?.toLowerCase().includes(searchResult) ||
+          card.description?.toLowerCase().includes(searchResult)
+      );
+      setCards(filterCard);
+    }
   };
 
   const showModal = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -115,6 +127,12 @@ function Folder() {
     return () => setCards([]);
   }, [initFolderId]);
 
+  useEffect(() => {
+    cardInfo(initFolderId as string);
+  }, [searchResult]);
+
+  console.log(searchResult);
+
   return (
     <>
       {isModalOpen && (
@@ -131,7 +149,8 @@ function Folder() {
       )}
       <LinkAdd onClick={showModal} />
       <MainSection>
-        <Search />
+        <Search value={searchResult} searchResult={setSearchResult} />
+        {searchResult.length > 0 && <ResultSearch result={searchResult} />}
         {folders && <FolderList folder={folders} onClick={showModal} />}
         <Title folderName={folderName}>
           {isFunctionButtonShow && <FunctionButton onClick={showModal} />}
