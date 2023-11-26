@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getFolderLinks, getFolders } from "../api";
 import Gnb from "../component/Gnb";
-import SearchBar from "../component/SearchBar";
-import FolderList from "../component/FolderList";
-import CardSection from "../component/CardSection";
 import AddLinkBar from "../component/AddLinkBar";
 import "../assets/css/FolderPage.css";
-import * as Styled from "../style/EmptyDiv";
+import CardContainer from "../component/CardContainer";
 
 function FolderPage() {
   const { folderId } = useParams();
@@ -26,12 +23,6 @@ function FolderPage() {
     setLinks(links);
   }
 
-  const message = links ? (
-    "저장된 링크가 없습니다📭"
-  ) : (
-    <Navigate to="/NotFoundPage" />
-  );
-
   useEffect(() => {
     getFolderLink(folderParam);
     getFolderList();
@@ -46,17 +37,7 @@ function FolderPage() {
       <div className="folderInfo">
         <AddLinkBar />
       </div>
-      <section className="section">
-        <SearchBar size="large" />
-        {links && links.length !== 0 ? (
-          <>
-            <FolderList folders={folders} params={folderParam} />
-            <CardSection data={links} />
-          </>
-        ) : (
-          <Styled.EmptyDiv> {message} </Styled.EmptyDiv>
-        )}
-      </section>
+      <CardContainer folders={folders} data={links} params={folderParam} />
     </>
   );
 }

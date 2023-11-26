@@ -1,13 +1,16 @@
 import iconSearch from "../assets/img/icon-search.svg";
-import "../assets/css/SearchBar.css";
+import * as Styled from "../style/SearchBar.js";
 
-function SearchBar({ size }) {
-  const classname = `searchBar-${size}`;
+function SearchBar({ keyword, handleSubmit, handleChange }) {
   return (
-    <div className={classname}>
+    <Styled.Form onSubmit={handleSubmit}>
       <img src={iconSearch} alt="search" />
-      <input placeholder="링크를 검색해 보세요." />
-    </div>
+      <Styled.Input
+        placeholder="링크를 검색해 보세요."
+        value={keyword}
+        onChange={handleChange}
+      />
+    </Styled.Form>
   );
 }
 

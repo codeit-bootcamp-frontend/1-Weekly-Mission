@@ -1,4 +1,6 @@
-.searchBar-large {
+import { styled } from "styled-components";
+
+export const Form = styled.form`
   display: flex;
   gap: 0.62rem;
   width: 100%;
@@ -8,10 +10,10 @@
   margin: 2.5rem 0rem;
   border-radius: 0.625rem;
   background-color: var(--gray-light);
-}
+`;
 
-input {
+export const Input = styled.input`
   flex-grow: 1;
   border: none;
   background: transparent;
-}
+`;
