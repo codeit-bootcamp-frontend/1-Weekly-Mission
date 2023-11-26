@@ -3,15 +3,17 @@ import { onMobile, onTablet } from 'styles/mediaQuery';
 
 export const NavContainer = styled.div<{ $path: string }>`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 192rem;
-  height: 9.4rem;
-  padding: 3.2rem 20rem;
+  justify-content: space-between;
   position: ${({ $path }) => ($path === '/folder' ? `static` : `sticky`)};
   top: 0;
   z-index: 9999;
+
+  width: 100%;
+  height: 9.4rem;
+  max-width: 192rem;
+  padding: 3.2rem 20rem;
+
   background-color: #edf7ff;
 
   ${onTablet} {
@@ -25,14 +27,18 @@ export const NavContainer = styled.div<{ $path: string }>`
 
 export const SignInButton = styled.a`
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 5.4rem;
-  cursor: pointer;
-  background-image: linear-gradient(135deg, #6d6afe 0%, #6ae3fe 100%);
-  border-radius: 0.8rem;
-  color: #f5f5f5;
-  font-size: 1.8rem;
-  font-weight: 600;
+  justify-content: center;
+
   width: 12.8rem;
+  height: 5.4rem;
+  border-radius: 0.8rem;
+
+  background-image: linear-gradient(135deg, #6d6afe 0%, #6ae3fe 100%);
+
+  color: #f5f5f5;
+  font-weight: 600;
+  font-size: 1.8rem;
+
+  cursor: pointer;
 `;

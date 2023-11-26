@@ -4,11 +4,13 @@ import { onMobile, onTablet } from "styles/mediaQuery";
 
 export const CardListContainer = styled.ul`
   display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  gap: 2.5rem 2rem;
-  place-items: center;
-  list-style-type: none;
+
   padding-inline-start: 0;
+
+  gap: 2.5rem 2rem;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  list-style-type: none;
+  place-items: center;
 
   ${onTablet} {
     grid-template: repeat(4, 1fr) / repeat(2, 1fr);
@@ -22,10 +24,12 @@ export const CardListContainer = styled.ul`
 export const CardContainer = styled.li`
   display: flex;
   flex-direction: column;
-  box-shadow: 0rem 0.5rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
-  border-radius: 1.5rem;
+
   width: 100%;
   height: 33.4rem;
+  border-radius: 1.5rem;
+  box-shadow: 0rem 0.5rem 2.5rem 0rem rgba(0, 0, 0, 0.08);
+
   cursor: pointer;
 
   &:hover {

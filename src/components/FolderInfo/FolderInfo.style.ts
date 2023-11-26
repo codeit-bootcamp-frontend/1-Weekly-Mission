@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding-top: 2rem;
-  padding-bottom: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+
   background-color: #edf7ff;
 `;
 
@@ -16,13 +18,14 @@ export const Img = styled.img`
 `;
 
 export const P = styled.p`
-  font-size: 1.6rem;
-  line-height: 150%;
   margin-top: 1.2rem;
   margin-bottom: 2rem;
+
+  font-size: 1.6rem;
+  line-height: 150%;
 `;
 
 export const H1 = styled.h1`
-  font-size: 4rem;
   font-weight: 600;
+  font-size: 4rem;
 `;

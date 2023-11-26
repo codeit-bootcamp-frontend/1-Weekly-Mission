@@ -14,27 +14,34 @@ const unselectedFolder = css`
 
 export const FolderListContainer = styled.ul`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  list-style-type: none;
-  padding-inline-start: 0;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding-inline-start: 0;
+
+  list-style-type: none;
 `;
 
 export const FolderContainer = styled.div`
   display: flex;
-  gap: 0.8rem;
   flex-wrap: wrap;
+
+  gap: 0.8rem;
 `;
 
 export const Folder = styled(NavLink)<{ selected: boolean }>`
   display: flex;
-  padding: 0.8rem 1.2rem;
   flex-direction: column;
   align-items: center;
-  border-radius: 0.5rem;
+
+  padding: 0.8rem 1.2rem;
+
   border: 0.1rem solid var(--primary);
+
+  border-radius: 0.5rem;
+
   font-size: 1.6rem;
   line-height: 100%;
   ${({ selected }) => (selected ? selectedFolder : unselectedFolder)};
@@ -42,29 +49,35 @@ export const Folder = styled(NavLink)<{ selected: boolean }>`
 
 export const AddFolderButton = styled.button`
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+
   color: var(--primary);
-  text-align: center;
-  font-size: 1.6rem;
   font-weight: 500;
+  font-size: 1.6rem;
+  text-align: center;
+
+  gap: 0.4rem;
 
   .onMobile {
     display: none;
   }
 
   ${onMobile} {
-    color: var(--white);
-    padding: 0.8rem 2.4rem;
-    border-radius: 2rem;
-    border: 0.1rem solid var(--white);
-    background: var(--primary);
     position: fixed;
     bottom: 10.1rem;
     left: 50%;
-    transform: translate(-50%);
     z-index: 9999;
+
+    padding: 0.8rem 2.4rem;
+    border: 0.1rem solid var(--white);
+    border-radius: 2rem;
+
+    background: var(--primary);
+
+    color: var(--white);
+
+    transform: translate(-50%);
 
     .notMobile {
       display: none;

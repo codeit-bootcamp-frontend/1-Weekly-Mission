@@ -2,15 +2,17 @@ import styled from 'styled-components';
 import { onMobile, onTablet } from 'styles/mediaQuery';
 
 export const FormContainer = styled.div`
-  padding: 6rem 32rem 9rem 32rem;
-  background-color: #edf7ff;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  padding: 6rem 32rem 9rem 32rem;
+
+  background-color: #edf7ff;
+
   ${onTablet} {
-    padding-left: 3.2rem;
     padding-right: 3.2rem;
+    padding-left: 3.2rem;
   }
 
   ${onMobile} {
@@ -21,22 +23,27 @@ export const FormContainer = styled.div`
 
 export const Form = styled.form`
   position: relative;
+
   margin-left: -2rem;
   padding-left: 2rem;
 `;
 
 export const Input = styled.input`
-  width: 80rem;
   display: flex;
-  padding: 2.25rem 12rem 2.25rem 6rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.8rem;
-  border-radius: 1.5rem;
+
+  width: 80rem;
+  padding: 2.25rem 12rem 2.25rem 6rem;
   border: 0.1rem solid var(--primary);
+  border-radius: 1.5rem;
+
   background: var(--white);
+
   font-size: 1.6rem;
   line-height: 150%;
+
+  gap: 0.8rem;
 
   ${onTablet} {
     width: 70rem;
@@ -49,23 +56,28 @@ export const Input = styled.input`
 
 export const Img = styled.img`
   position: absolute;
-  width: 2rem;
-  height: 2rem;
   top: 2.45rem;
   left: 4rem;
+
+  width: 2rem;
+  height: 2rem;
 `;
 
 export const Button = styled.button`
-  color: #f5f5f5;
   display: flex;
-  width: 8rem;
-  padding: 1rem 1.6rem;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  border-radius: 0.8rem;
-  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  justify-content: center;
   position: absolute;
   top: 1.6rem;
   right: 2rem;
+
+  width: 8rem;
+  padding: 1rem 1.6rem;
+  border-radius: 0.8rem;
+
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+
+  color: #f5f5f5;
+
+  gap: 1rem;
 `;

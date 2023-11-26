@@ -4,7 +4,9 @@ import { onMobile } from "styles/mediaQuery";
 export const Container = styled.div`
   display: flex;
   align-items: center;
+
   font-size: 1.4rem;
+
   gap: 0.6rem;
 `;
 

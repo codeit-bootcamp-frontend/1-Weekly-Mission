@@ -4,9 +4,11 @@ import { onMobile } from "styles/mediaQuery";
 export const FooterContainer = styled.div`
   display: flex;
   justify-content: center;
+
   width: 100%;
   height: 16rem;
   padding-top: 3.2rem;
+
   background-color: var(--black);
 
   ${onMobile} {
@@ -17,25 +19,29 @@ export const FooterContainer = styled.div`
 export const FooterBox = styled.div`
   display: flex;
   justify-content: space-between;
+
   width: 100%;
-  max-width: 192rem;
   height: fit-content;
+  max-width: 192rem;
   padding: 0 10.4rem;
 
   ${onMobile} {
     display: grid;
+
+    padding: 0 3.2rem;
+
+    grid-row-gap: 6rem;
     grid-template:
       "links sns"
       "copyright .";
-    grid-row-gap: 6rem;
-    padding: 0 3.2rem;
   }
 `;
 
 export const Copyright = styled.span`
   color: #676767;
-  font-family: Arial;
   font-size: 1.6rem;
+
+  font-family: Arial;
 
   ${onMobile} {
     grid-area: copyright;
@@ -44,8 +50,10 @@ export const Copyright = styled.span`
 
 export const FooterLinks = styled.div`
   display: flex;
-  column-gap: 3rem;
+
   padding-right: 1.8rem;
+
+  column-gap: 3rem;
 
   ${onMobile} {
     grid-area: links;
@@ -54,14 +62,17 @@ export const FooterLinks = styled.div`
 
 export const FooterLink = styled.a`
   color: #cfcfcf;
-  font-family: Arial;
   font-size: 1.6rem;
+
+  font-family: Arial;
 `;
 
 export const SNS = styled.div`
   display: flex;
-  column-gap: 1.2rem;
+
   height: 2rem;
+
+  column-gap: 1.2rem;
 
   ${onMobile} {
     grid-area: sns;

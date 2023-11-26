@@ -3,21 +3,23 @@ import styled from "styled-components";
 export const Overlay = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   z-index: 9999;
+
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
 export const Wrapper = styled.div`
+  overflow: auto;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 10000;
-  overflow: auto;
+
   outline: 0;
 `;
 
@@ -25,11 +27,14 @@ export const Container = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+
   padding: 3.2rem 4rem;
-  border-radius: 1.5rem;
   border: 0.1rem solid var(--gray20);
+  border-radius: 1.5rem;
+
   background: var(--white);
+
+  transform: translate(-50%, -50%);
 `;
 
 export const CloseButton = styled.button`
@@ -39,27 +44,31 @@ export const CloseButton = styled.button`
 `;
 
 export const Content = styled.div`
-  width: 28rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 28rem;
+
   gap: 2.4rem;
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
-  width: 28rem;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
+
+  width: 28rem;
+
   gap: 0.8rem;
 `;
 
 export const Title = styled.p`
   color: var(--gray100);
-  font-size: 2rem;
   font-weight: 700;
+  font-size: 2rem;
 `;
 
 export const Subtitle = styled.p`
@@ -71,21 +80,26 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+
   width: 28rem;
+
+  gap: 1.5rem;
 `;
 
 export const Input = styled.input`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
+  padding: 1.8rem 1.5rem;
+  border: 0.1rem solid var(--gray20);
+  border-radius: 0.8rem;
+
+  background: var(--white);
+
   font-size: 1.6rem;
   line-height: 150%;
-  display: flex;
-  padding: 1.8rem 1.5rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.8rem;
-  border: 0.1rem solid var(--gray20);
-  background: var(--white);
 
   &:focus {
     border-color: var(--primary);
@@ -93,16 +107,19 @@ export const Input = styled.input`
 `;
 
 const Button = styled.button`
-  width: 100%;
   display: flex;
-  padding: 1.6rem 2rem;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+
+  width: 100%;
+  padding: 1.6rem 2rem;
   border-radius: 0.8rem;
-  font-size: 1.6rem;
+
   color: var(--white);
   font-weight: 600;
+  font-size: 1.6rem;
+
+  gap: 1rem;
 `;
 
 export const SubmitButton = styled(Button)`
@@ -116,28 +133,34 @@ export const DeleteButton = styled(Button)`
 export const IconsBox = styled.div`
   display: flex;
   align-items: flex-start;
+
   gap: 3.2rem;
 `;
 
 export const Icon = styled.button`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
+  justify-content: flex-end;
+
   color: var(--gray100);
   font-size: 1.3rem;
   line-height: 1.5rem;
+
+  gap: 1rem;
 `;
 
 export const IconImgContainer = styled.div`
   display: flex;
-  padding: 1.2rem;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+
+  padding: 1.2rem;
   border-radius: 3.7333rem;
+
   background: rgba(157, 157, 157, 0.04);
+
+  gap: 1rem;
 
   img {
     width: 1.8rem;
@@ -154,22 +177,27 @@ export const FacebookIconImgContainer = styled(IconImgContainer)`
 `;
 
 export const FolderList = styled.div`
-  width: 28rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  width: 28rem;
+
   gap: 0.4rem;
 `;
 
 export const FolderListItem = styled.div`
-  width: 100%;
   display: flex;
-  padding: 0.8rem;
   align-items: flex-start;
-  gap: 0.8rem;
+
+  width: 100%;
+  padding: 0.8rem;
+
   color: var(--gray100);
   font-size: 1.6rem;
   line-height: 150%;
+
+  gap: 0.8rem;
 
   &:hover {
     border-radius: 0.8rem;
