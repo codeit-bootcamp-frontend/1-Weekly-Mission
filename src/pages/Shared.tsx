@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import Binder from "../components/Binder/Binder";
 import getSampleFolder from "../apis/sample/folder";
 import styles from "./Shared.module.css";
+import Nav from "../components/Nav/Nav";
 
 type Card = {
   id: number;
@@ -54,6 +55,7 @@ function Shared() {
 
   return (
     <>
+      <Nav className={styles.nav} />
       <BinderInfo name={name} owner={owner} />
       <section className={styles.root}>
         <SearchBar />

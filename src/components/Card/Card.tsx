@@ -6,7 +6,7 @@ import { MouseEvent, useState } from "react";
 import { formatDate, formatTimeAgo } from "../../utils/formatDate";
 import normalizeCardData from "../../utils/normalizeCardData";
 import clsx from "clsx";
-import useModalColtroller from "../../hooks/useModalController";
+import useModalController from "../../hooks/useModalController";
 
 type CardDataA = {
   id: number;
@@ -37,7 +37,7 @@ interface Props {
 }
 
 function Card({ card, shared, deleteLinkModalControl, addLinkModalControl, setTargetURL }: Props) {
-  const kebab = useModalColtroller(true);
+  const kebab = useModalController(true);
 
   const [hover, setHover] = useState(false);
 

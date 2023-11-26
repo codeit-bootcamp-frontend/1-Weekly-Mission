@@ -14,11 +14,11 @@ function Share({ children }: Props) {
   const userID = "";
   const folderID = "";
 
-  const { Kakao } = window;
+  const { Kakao }: any = window;
 
   useEffect(() => {
-    Kakao.cleanup();
     Kakao.init("315e98490c74ca221a6889ab7d1bbd56");
+    return () => Kakao.cleanup();
   }, [Kakao]);
 
   const shareKakao = () => {
@@ -36,7 +36,7 @@ function Share({ children }: Props) {
     {
       img: shareKakaoTalk,
       sub: "카카오톡",
-      onClick: shareKakao /* 도메인 등록이 필요하다고 함 */,
+      onClick: shareKakao,
     },
     {
       img: shareFacebook,

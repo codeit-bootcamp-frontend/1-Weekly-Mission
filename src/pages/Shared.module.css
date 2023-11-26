@@ -7,3 +7,7 @@
   padding: 0rem 3.2rem;
   margin: 4rem auto;
 }
+
+.nav {
+  position: static;
+}

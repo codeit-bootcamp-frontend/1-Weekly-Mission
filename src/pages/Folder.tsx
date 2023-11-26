@@ -17,13 +17,14 @@ import useAuth from "../hooks/useAuth";
 import Share from "../modals/Share";
 import Modal from "../modals/Modal";
 import getFolderName from "../utils/getFolderName";
-import useModalColtroller from "../hooks/useModalController";
+import useModalController from "../hooks/useModalController";
 import DeleteFolder from "../modals/DeleteFolder";
 import AddFolder from "../modals/AddFolder";
 import useInputController from "../hooks/useInputController";
 import EditFolder from "../modals/EditFolder";
 import AddLinkToFolder from "../modals/AddLinkToFolder";
 import DeleteLink from "../modals/DeleteLink";
+import Nav from "../components/Nav/Nav";
 
 type FolderData = {
   id: number;
@@ -53,13 +54,13 @@ function Folder() {
   const { isAuth } = useAuth();
 
   // 모달 컨트롤라
-  const shareModal = useModalColtroller();
-  const editFolderModal = useModalColtroller();
-  const addFolderModal = useModalColtroller();
-  const deleteFolderModal = useModalColtroller();
-  const addLinkToFolderFromInputModal = useModalColtroller(true);
-  const deleteLinkModal = useModalColtroller(true);
-  const addLinkToFolderFromFolderModal = useModalColtroller(true);
+  const shareModal = useModalController();
+  const editFolderModal = useModalController();
+  const addFolderModal = useModalController();
+  const deleteFolderModal = useModalController();
+  const addLinkToFolderFromInputModal = useModalController(true);
+  const deleteLinkModal = useModalController(true);
+  const addLinkToFolderFromFolderModal = useModalController(true);
 
   // 모달 내 인풋 컨트롤라
   const addFolder = useInputController({});
@@ -119,6 +120,7 @@ function Folder() {
 
   return (
     <>
+      <Nav className={styles.nav} />
       <AddLinkInput
         onChange={addLinkInput.handleChange}
         value={addLinkInput.values}

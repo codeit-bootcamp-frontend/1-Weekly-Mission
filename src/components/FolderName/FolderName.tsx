@@ -1,4 +1,3 @@
-import { isInterfaceDeclaration } from "typescript";
 import styles from "./FolderName.module.css";
 import { ReactNode } from "react";
 
