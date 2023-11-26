@@ -73,7 +73,7 @@ function Shared() {
           onClick={handleSearchBarDeleteIconClick}
         />
         {searchInput.values && <SearchBarResult value={searchInput.values} />}
-        <Binder cards={cards} shared={true} />
+        <Binder cards={cards} shared={true} searchValue={searchInput.values} />
       </section>
     </>
   );

@@ -164,6 +164,7 @@ function Folder() {
             addLinkModalControl={addLinkToFolderFromFolderModal.handleClick}
             setTargetURL={setTargetURL}
             shared={false}
+            searchValue={searchInput.values}
           />
         ) : (
           <FolderEmptyNoti />
