@@ -7,7 +7,7 @@ export const Form = styled.form`
   max-width: 66.25rem;
   height: 3.375rem;
   padding: 0.94rem 1rem;
-  margin: 2.5rem 0rem;
+  margin: 2.5rem 0;
   border-radius: 0.625rem;
   background-color: var(--gray-light);
 `;
@@ -16,4 +16,22 @@ export const Input = styled.input`
   flex-grow: 1;
   border: none;
   background: transparent;
+`;
+
+export const Text = styled.h1`
+  display: inline-block;
+  width: 100%;
+  justify-content: start;
+  text-align: left;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.0125rem;
+  color: var(--linkbrary-gray-60);
+`;
+
+export const Span = styled(Text)`
+  display: inline;
+  color: var(--linkbrary-gray-100);
 `;

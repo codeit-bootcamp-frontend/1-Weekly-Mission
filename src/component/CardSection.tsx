@@ -5,9 +5,14 @@ function CardSection({ data }) {
   const handleCardClick = (url: string) => {
     window.open(url);
   };
+
+  interface linkData {
+    id: number;
+  }
+
   return (
     <Styled.Div>
-      {data.map((linkData) => {
+      {data.map((linkData: linkData) => {
         return (
           <Card key={linkData.id} data={linkData} onClick={handleCardClick} />
         );

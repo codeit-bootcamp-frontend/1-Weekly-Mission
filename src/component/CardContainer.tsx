@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import {
   Navigate,
   useLocation,
@@ -25,9 +25,15 @@ export default function CardContainer({ folders, data, params }) {
     <Navigate to="/NotFoundPage" />
   );
 
-  const filterData = (value) => {
+  interface Item {
+    description: string;
+    title: string;
+    url: string;
+  }
+
+  const filterData = (value: string): void => {
     if (value) {
-      const filteredData = data.filter((item) => {
+      const filteredData = data.filter((item: Item) => {
         return (item.description + item.title + item.url)
           .toLowerCase()
           .includes(value.toLowerCase());
@@ -38,11 +44,11 @@ export default function CardContainer({ folders, data, params }) {
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setKeyword(e.target.value);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (keyword) {
       searchParam.set("keyword", keyword);
@@ -70,6 +76,7 @@ export default function CardContainer({ folders, data, params }) {
         handleSubmit={handleFormSubmit}
         handleChange={handleInputChange}
         keyword={keyword}
+        searchValue={searchParam.get("keyword") || ""}
       />
       {result && result.length !== 0 ? (
         <>
