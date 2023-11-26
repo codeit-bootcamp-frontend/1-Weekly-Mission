@@ -23,7 +23,7 @@ const FolderContainer = () => {
   return (
     <Main>
       <Container>
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} searchTerm={searchTerm} />
         <FolderList onFolderSelect={onFolderSelect} />
         <CardList folderId={selectedFolderId} searchTerm={searchTerm} />
       </Container>

@@ -18,7 +18,7 @@ const SharedContainer = () => {
       {folder && <Header folder={folder} />}
       <Main>
         <Container>
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar onSearch={handleSearch} searchTerm={searchTerm} />
           <CardList searchTerm={searchTerm} />
         </Container>
       </Main>

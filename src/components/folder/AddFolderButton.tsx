@@ -16,9 +16,6 @@ const AddFolderButton = () => {
     }
   };
 
-  // const openModal = (type) => {
-  //   setIsModalOpen(true);
-  // };
   const openModal = () => {
     setIsModalOpen(true);
   };

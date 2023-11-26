@@ -48,7 +48,6 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   gap: 2rem;
 `;
 
