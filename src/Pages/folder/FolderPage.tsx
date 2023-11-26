@@ -1,6 +1,6 @@
 import useAsync from "../../Hooks/useAsync";
 import { getUser } from "../../api";
-
+import React from "react";
 import Footer from "../../components/common/Footer";
 
 import Nav from "../../components/common/Nav";
