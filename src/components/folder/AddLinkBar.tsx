@@ -1,20 +1,19 @@
-import { useState } from 'react';
+import { useState, useRef, FormEvent } from 'react';
 import styled from 'styled-components';
 import BlueBtn from 'components/common/Button/BlueBtn';
 import linkIcon from 'assets/images/link.svg';
 import ModalPortal from 'components/common/Modal/ModalPortal';
 import AddToFolderModal from 'components/common/Modal/AddToFolderModal';
 import useModal from 'hooks/useModal';
-import { FormEvent } from 'react';
 
 function AddLinkBar() {
   const { isOpen, handleModalOpen, handleModalClose } = useModal();
   const [inputValue, setInputValue] = useState('');
+  const input = useRef<HTMLInputElement>(null);
 
   function handleLinkAdd(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
-    // const value = event.target.children[0].children[0].value;
-    // setInputValue(value);
+    setInputValue(input.current?.value || '');
     handleModalOpen();
   }
 
@@ -22,7 +21,7 @@ function AddLinkBar() {
     <>
       <Container onSubmit={handleLinkAdd}>
         <Wrapper>
-          <Input placeholder="링크를 추가해 보세요" />
+          <Input ref={input} placeholder="링크를 추가해 보세요" />
           <BlueBtn type="linkAdd">추가하기</BlueBtn>
         </Wrapper>
       </Container>

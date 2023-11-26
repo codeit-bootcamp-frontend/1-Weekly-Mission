@@ -14,7 +14,7 @@ function SharedContent() {
       <Main>
         <Container>
           <SearchBar />
-          <CardList folderId={SAMPLE_ID} />
+          <CardList folderId={SAMPLE_ID} search={false} keyword={''} />
         </Container>
       </Main>
     </>

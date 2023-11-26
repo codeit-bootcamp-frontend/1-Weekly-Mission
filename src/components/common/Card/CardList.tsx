@@ -4,19 +4,23 @@ import useGetSampleLinks from 'hooks/useGetSampleLinks';
 import Card from './Card';
 import { Fragment } from 'react';
 import { SAMPLE_ID } from 'constants/default';
+import { filterLink } from 'utils/filterLink';
 
 interface Props {
   folderId: number;
+  search: boolean;
+  keyword: string;
 }
 
 /**
  * @param {*} folderId 현재 링크를 불러 올 폴더 Id.
  */
-function CardList({ folderId }: Props) {
+function CardList({ folderId, search, keyword }: Props) {
   const sampleLinks = useGetSampleLinks();
   const userLinks = useGetLinks(1, folderId);
-  const links = folderId === SAMPLE_ID ? sampleLinks : userLinks;
+  let links = folderId === SAMPLE_ID ? sampleLinks : userLinks;
   if (!links) return;
+  links = filterLink(links, search, keyword);
 
   return (
     <Container>

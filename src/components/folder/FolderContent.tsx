@@ -12,6 +12,8 @@ import { ALL_ID } from 'constants/default';
 function FolderContent() {
   const foldersData = useGetFolders(1);
   const [folder, setFolder] = useState(ALL_ID);
+  const [search, setSearch] = useState(false);
+  const [keyword, setKeyword] = useState('');
 
   function handleChangeFolder(id: number): void {
     setFolder(id);
@@ -24,7 +26,12 @@ function FolderContent() {
   return (
     <Main>
       <Container>
-        <SearchBar />
+        <SearchBar search={search} setSearch={setSearch} setKeyword={setKeyword} />
+        {search && (
+          <Result>
+            <Black>{keyword}</Black>(으)로 검색한 결과입니다.
+          </Result>
+        )}
         {foldersData ? (
           <>
             <NavContainer>
@@ -35,7 +42,7 @@ function FolderContent() {
               <FolderTitle folders={foldersData} selectedFolderId={folder} />
               {folder !== ALL_ID && <ChoiceBar folders={foldersData} selectedFolderId={folder} />}
             </TitleContainer>
-            <CardList folderId={folder} />
+            <CardList folderId={folder} search={search} keyword={keyword} />
           </>
         ) : (
           <NoLinkMsg>저장된 링크가 없습니다.</NoLinkMsg>
@@ -63,6 +70,30 @@ const Container = styled.div`
   @media (max-width: 767px) {
     width: 100%;
     padding: 0 32px;
+  }
+`;
+
+const Black = styled.span`
+  color: black;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
+  }
+`;
+
+const Result = styled.div`
+  padding-top: 40px;
+
+  color: var(--gray-60);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
   }
 `;
 
