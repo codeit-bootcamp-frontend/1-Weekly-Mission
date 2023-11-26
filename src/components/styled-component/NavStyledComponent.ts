@@ -56,3 +56,28 @@ export const ProfileDivMail = styled.div`
   font-size: 14px;
   font-weight: 400;
 `;
+
+export const SharedNavWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 60px 0;
+  align-items: center;
+  gap: 20px;
+`;
+
+export const SharedNavLogo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+`;
+
+export const SharedNavSmileImg = styled.img`
+  height: 60px;
+`;
+
+export const SharedNavDiv = styled.div`
+  color: #000;
+  font-weight: 400;
+  line-height: 24px;
+`;

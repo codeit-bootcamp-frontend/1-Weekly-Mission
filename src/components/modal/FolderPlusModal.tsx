@@ -1,5 +1,5 @@
 import { MouseEvent, useRef } from 'react';
-import xClose from '../img/Xclose.svg';
+import xClose from '../../asset/Xclose.svg';
 import * as M from '../styled-component/ModalStyledCompoenet';
 
 interface Props {
@@ -9,13 +9,13 @@ interface Props {
 }
 
 export default function FolderPlusModal({ handleClick, title, value }: Props) {
-  const back = useRef();
+  const back = useRef<HTMLDivElement>(null);
 
   const backClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === back.current) handleClick();
   };
   return (
-    <M.ModalBackground ref={`${back}`} onClick={backClick}>
+    <M.ModalBackground ref={back} onClick={backClick}>
       <M.ModlaWrapper>
         <M.ModalHeader>{value}</M.ModalHeader>
         <M.ModalMain>

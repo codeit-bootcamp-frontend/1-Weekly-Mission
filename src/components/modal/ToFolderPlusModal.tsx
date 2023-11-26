@@ -1,9 +1,9 @@
 import { useRef, useState, useCallback, useEffect, MouseEvent } from 'react';
-import xClose from '../img/Xclose.svg';
+import xClose from '../../asset/Xclose.svg';
+import check from '../../asset/check.svg';
 import { getData } from '../../api';
-import check from '../img/check.svg';
 import * as M from '../styled-component/ModalStyledCompoenet';
-import { foldersProps } from '../folder/FolderMain';
+import { FoldersProps } from '../folder/FolderMain';
 
 interface Props {
   handleClick: () => void;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
-  const [folders, setFolders] = useState<foldersProps[]>([]);
+  const [folders, setFolders] = useState<FoldersProps[]>([]);
 
   const handleLoad = useCallback(async () => {
     const { data } = await getData('users/1/folders');

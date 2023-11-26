@@ -1,16 +1,16 @@
-import favorites from './img/favorites.svg';
+import favorites from '../asset/favorites.svg';
 import { getData } from '../api';
-import '../css/Nav.css';
 import { useCallback, useState, useEffect } from 'react';
+import * as N from './styled-component/NavStyledComponent';
 
-interface userState {
+interface UserState {
   id: number;
   name: string;
   profileImageSource: string;
 }
 
 export default function SharedHeader() {
-  const [user, setUser] = useState<userState>([] as any);
+  const [user, setUser] = useState<UserState>();
 
   const handleLoad = useCallback(async () => {
     const { folder } = await getData('sample/folder');
@@ -22,20 +22,19 @@ export default function SharedHeader() {
   }, [handleLoad]);
 
   return (
-    <div className="nav-container">
-      <div className="nav2-wrapper">
-        <div className="nav2-logo">
-          <img
-            className="nav2-smileImg"
-            src={user.profileImageSource}
+    <N.NavContainer>
+      <N.SharedNavWrapper>
+        <N.SharedNavLogo>
+          <N.SharedNavSmileImg
+            src={user?.profileImageSource}
             alt="profileImg"
           />
-          <div className="nav2-div">{user.name}</div>
+          <N.SharedNavDiv className="nav2-div">{user?.name}</N.SharedNavDiv>
+        </N.SharedNavLogo>
+        <div>
+          <img src={favorites} alt="starImg" />
         </div>
-        <div className="nav2-starDiv">
-          <img className="nav2-starImg" src={favorites} alt="starImg" />
-        </div>
-      </div>
-    </div>
+      </N.SharedNavWrapper>
+    </N.NavContainer>
   );
 }

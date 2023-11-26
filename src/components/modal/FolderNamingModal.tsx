@@ -1,5 +1,5 @@
 import { MouseEvent, useRef } from 'react';
-import xClose from '../img/Xclose.svg';
+import xClose from '../../asset/Xclose.svg';
 import * as M from '../styled-component/ModalStyledCompoenet';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function FolderNamingModal({ handleClick }: Props) {
-  const back = useRef();
+  const back = useRef<HTMLDivElement>(null);
 
   const handleCloseClick = () => {
     handleClick();
@@ -16,7 +16,7 @@ export default function FolderNamingModal({ handleClick }: Props) {
     if (e.target === back.current) handleClick();
   };
   return (
-    <M.ModalBackground ref={`${back}`} onClick={backClick}>
+    <M.ModalBackground ref={back} onClick={backClick}>
       <M.ModlaWrapper>
         <M.ModalHeader>폴더 이름 변경</M.ModalHeader>
         <M.ModalMain>

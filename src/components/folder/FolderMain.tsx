@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback, MouseEvent } from 'react';
-import search from '../img/search.svg';
+import search from '../../asset/search.svg';
+import plusImg from '../../asset/plus.svg';
+import shareImg from '../../asset/share.svg';
+import penImg from '../../asset/pen.svg';
+import deleteImg from '../../asset/delete.svg';
+import plus from '../../asset/plus-white.svg';
 import { getData } from '../../api';
 import * as FM from '../styled-component/FolderMainStyledComponent';
 import * as C from '../styled-component/CardStyledComponent';
 import * as S from '../styled-component/SharedPageStyledComponent';
-import plusImg from '../img/plus.svg';
-import shareImg from '../img/share.svg';
-import penImg from '../img/pen.svg';
-import deleteImg from '../img/delete.svg';
 import FolderCard from './FolderCard';
-import plus from '../img/plus-white.svg';
 import FolderPlusModal from '../modal/FolderPlusModal';
 import FolderDeleteModal from '../modal/FolderDeleteModal';
 import FolderShareModal from '../modal/FolderShareModal';
@@ -19,7 +19,7 @@ const activeButton = {
   backgroundColor: '#6d6afe',
 };
 
-export interface foldersProps {
+export interface FoldersProps {
   id: number;
   created_at: string;
   name: string;
@@ -27,7 +27,7 @@ export interface foldersProps {
   link: { count: number };
 }
 
-interface linksProps {
+export interface LinksProps {
   id: number;
   created_at: string;
   updated_at: null;
@@ -39,8 +39,8 @@ interface linksProps {
 }
 
 export default function FolderMain() {
-  const [folders, setFolders] = useState<foldersProps[]>([]);
-  const [links, setLinks] = useState<linksProps[]>([]);
+  const [folders, setFolders] = useState<FoldersProps[]>([]);
+  const [links, setLinks] = useState<LinksProps[]>([]);
   const [title, setTitle] = useState('전체');
   const [onModal, setOnModal] = useState(false);
   const [onDeleteModal, setOnDeleteModal] = useState(false);
@@ -57,7 +57,7 @@ export default function FolderMain() {
 
   const handleFolderList = async (e: MouseEvent<HTMLButtonElement>) => {
     const target = e.currentTarget;
-    setTitle(target.textContent as string);
+    setTitle(target.textContent ?? '');
     const id = target.name;
     setFolerId(id);
     handleLoad(id);
@@ -66,7 +66,7 @@ export default function FolderMain() {
   const onClickModal = (e: MouseEvent<HTMLButtonElement>) => {
     try {
       const target = e.currentTarget;
-      setValue(target.textContent as string);
+      setValue(target.textContent ?? '');
     } catch {}
     setOnModal(!onModal);
   };
@@ -86,7 +86,7 @@ export default function FolderMain() {
   const onClickDeleteModal = (e: MouseEvent<HTMLButtonElement>) => {
     try {
       const target = e.currentTarget;
-      setValue(target.textContent as string);
+      setValue(target.textContent ?? '');
     } catch {}
     setOnDeleteModal(!onDeleteModal);
   };
@@ -95,9 +95,6 @@ export default function FolderMain() {
     handleLoad();
   }, [handleLoad]);
 
-  useEffect(() => {
-    console.log(folders);
-  });
   return (
     <FM.FolderContainer>
       <FM.FolderSearch>

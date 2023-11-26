@@ -1,7 +1,7 @@
-import facebook from './img/facebook.svg';
-import twitter from './img/twitter.svg';
-import youtube from './img/youtube.svg';
-import insta from './img/insta.svg';
+import facebook from '../asset/facebook.svg';
+import twitter from '../asset/twitter.svg';
+import youtube from '../asset/youtube.svg';
+import insta from '../asset/insta.svg';
 import * as F from './styled-component/FooterStyledComponent';
 
 export default function Footer() {

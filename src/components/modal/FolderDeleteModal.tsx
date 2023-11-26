@@ -1,5 +1,5 @@
 import { MouseEvent, useRef } from 'react';
-import xClose from '../img/Xclose.svg';
+import xClose from '../../asset/Xclose.svg';
 import * as M from '../styled-component/ModalStyledCompoenet';
 
 interface Props {
@@ -15,7 +15,7 @@ export default function FolderDeleteModal({
   title,
   cardLink,
 }: Props) {
-  const back = useRef();
+  const back = useRef<HTMLDivElement>(null);
 
   if (value === '폴더 추가' || title === '전체') {
     title = '내용 입력';
@@ -27,7 +27,7 @@ export default function FolderDeleteModal({
 
   return (
     //여기 back, onclick 이상
-    <M.ModalBackground ref={`${back}`} onClick={backClick as () => void}>
+    <M.ModalBackground ref={back} onClick={backClick}>
       <M.ModlaWrapper>
         <M.ModalDeleteHeader>
           <M.ModalHeader>{value}</M.ModalHeader>

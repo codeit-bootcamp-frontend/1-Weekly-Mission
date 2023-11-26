@@ -1,13 +1,18 @@
 import { dateCalculator } from '../dateCalculator';
-import noImage from '../img/no-image.svg';
-import kebab from '../img/kebab.svg';
-import star from '../img/star.svg';
-import { useEffect, useRef, useState } from 'react';
+import noImage from '../../asset/no-image.svg';
+import kebab from '../../asset/kebab.svg';
+import star from '../../asset/star.svg';
+import { useEffect, useRef, useState, MouseEvent } from 'react';
 import FolderDeleteModal from '../modal/FolderDeleteModal';
 import ToFolderPlusModal from '../modal/ToFolderPlusModal';
 import * as C from '../styled-component/CardStyledComponent';
+import { LinksProps } from './FolderMain';
 
-export default function FolderCard(link) {
+interface Props {
+  item: LinksProps;
+}
+
+export default function FolderCard(link: Props) {
   const apiDate = new Date(link.item.created_at);
   const elapsedTime = dateCalculator(apiDate);
   const year = apiDate.getFullYear();
@@ -17,8 +22,8 @@ export default function FolderCard(link) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showToFolderPlusModal, setShowToFolderPlusModal] = useState(false);
 
-  const back = useRef();
-  const kebabfunc = (e) => {
+  const back = useRef<HTMLDivElement>(null);
+  const kebabfunc = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
@@ -26,8 +31,9 @@ export default function FolderCard(link) {
     setClicked(!clicked);
   };
 
-  const clickOutside = (e) => {
-    if (back.current && !back.current.contains(e.target)) {
+  const clickOutside = (e: MouseEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    if (back.current && !back.current.contains(target)) {
       setClicked(!clicked);
     }
   };
@@ -45,8 +51,9 @@ export default function FolderCard(link) {
   }
 
   useEffect(() => {
-    document.addEventListener('mousedown', clickOutside);
-    return () => document.removeEventListener(clickOutside);
+    document.addEventListener('mousedown', clickOutside as () => void);
+    return () =>
+      document.removeEventListener('mousedown', clickOutside as () => void);
   }, [clickOutside]);
   return (
     <>
@@ -90,6 +97,8 @@ export default function FolderCard(link) {
         <FolderDeleteModal
           handleClick={onClickDeleteModal}
           cardLink={link.item.url}
+          value={''}
+          title={''}
         />
       )}
       {showToFolderPlusModal && (

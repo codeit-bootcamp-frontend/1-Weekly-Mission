@@ -1,18 +1,21 @@
-import library from './img/linkbrary.svg';
+import library from '../asset/linkbrary.svg';
 import { useState, useEffect } from 'react';
 import { getData } from '../api';
 import Profile from './Profile';
 import * as N from './styled-component/NavStyledComponent';
 
-export interface profileProps {
+export interface LoginState {
   id: number;
   name: string;
   email: string;
   profileImageSource: string;
+  created_at: string;
+  image_source: string;
+  auth_id: string;
 }
 
 export default function Nav() {
-  const [login, setLogin] = useState<profileProps>();
+  const [login, setLogin] = useState<LoginState>();
 
   const url = window.location.pathname;
 

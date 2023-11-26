@@ -1,8 +1,8 @@
 import { useRef, useEffect, MouseEvent } from 'react';
-import xClose from '../img/Xclose.svg';
-import kakao from '../img/kakao.svg';
-import facebookImg from '../img/facebookImg.svg';
-import linkImg from '../img/linkImg.svg';
+import xClose from '../../asset/Xclose.svg';
+import kakao from '../../asset/kakao.svg';
+import facebookImg from '../../asset/facebookImg.svg';
+import linkImg from '../../asset/linkImg.svg';
 import { useLocation } from 'react-router-dom';
 import * as M from '../styled-component/ModalStyledCompoenet';
 const { Kakao }: any = window;
@@ -51,7 +51,7 @@ export default function FolderShareModal({ handleClick, title, id }: Props) {
     );
   };
 
-  const back = useRef();
+  const back = useRef<HTMLDivElement>(null);
   const backClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === back.current) handleClick();
   };
@@ -65,7 +65,7 @@ export default function FolderShareModal({ handleClick, title, id }: Props) {
     }
   };
   return (
-    <M.ModalBackground ref={`${back}`} onClick={backClick}>
+    <M.ModalBackground ref={back} onClick={backClick}>
       <M.ModlaWrapper>
         <M.ModalHeader>폴더 공유</M.ModalHeader>
         <M.ModalLinkUrl>{title}</M.ModalLinkUrl>
