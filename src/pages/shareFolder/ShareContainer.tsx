@@ -5,7 +5,7 @@ import * as S from "./ShareContainerStyle";
 import { getFolder } from "api/api";
 
 import Hero from "components/hero/Hero";
-import Searchbar from "components/inputs/Searchbar";
+// import Searchbar from "components/inputs/Searchbar";
 import CardList from "components/card/CardList";
 import Loading from "components/Loading";
 
@@ -48,7 +48,7 @@ export default function Share() {
           </S.HeroContainer>
           <section>
             <S.Contents>
-              <Searchbar />
+              {/* <Searchbar />  // 추후 수정예정*/}
               <CardList links={links} />
             </S.Contents>
           </section>
