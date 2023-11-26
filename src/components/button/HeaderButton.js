@@ -28,26 +28,32 @@ export default function HeaderButton() {
   const options = {
     root: null,
     rootMargin: "0px 0px 0px 0px",
-    threshold: 0,
+    threshold: 1,
   };
 
   const observer = useMemo(() => {
     return new IntersectionObserver((entries) => {
       const [IntersectionObserverEntry] = entries;
-
+      console.log(isFooterVisible);
+      // 헤더가 보이면은 stick 안 보이게 하기
       if (IntersectionObserverEntry.isIntersecting) {
         setIsHeadervisible(false);
-      } else {
+        // 헤더가 안 보이면서 footer가 안 보이면 sticky 보이게 하기
+      } else if (
+        !IntersectionObserverEntry.isIntersecting &&
+        !isFooterVisible
+      ) {
         setIsHeadervisible(true);
+        // 헤더가 안 보이면서 footer가 보이면 stick 안 보이게 하기 얘 왜
       }
+
+      // else if (!IntersectionObserverEntry.isIntersecting && isFooterVisible) {
+      //   setIsHeadervisible(false);
+      // }
     }, options);
   });
 
   useEffect(() => {
-    // hedaer가 안 보이면서 footer가 보이면은
-    if (!isHeaderVisible && isFooterVisible) {
-      setIsHeadervisible(false);
-    }
     if (headerRef?.current) {
       observer.observe(headerRef.current);
     }

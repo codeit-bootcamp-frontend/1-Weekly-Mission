@@ -15,7 +15,7 @@ export default function Footer() {
 
   const options = {
     root: null,
-    rootMargin: "0px 0px 0px 0px",
+    rootMargin: "0px",
     threshold: 1,
   };
 
