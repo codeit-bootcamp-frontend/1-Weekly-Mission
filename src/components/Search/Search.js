@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../../styles/landing.css";
 import CloseButton from "../../images/close-button.svg";
+import useDebounce from "../../hooks/useDebounce";
 const Search = ({ getInputValue }) => {
   const [inputSearch, setInputSearch] = useState("");
   const mounted = useRef(false);
@@ -13,13 +14,15 @@ const Search = ({ getInputValue }) => {
     setInputSearch("");
   }
 
+  const debouncedInputSearch = useDebounce(inputSearch, 300);
+
   useEffect(() => {
     if (!mounted.current) {
       mounted.current = true;
     } else {
-      getInputValue(inputSearch);
+      getInputValue(debouncedInputSearch);
     }
-  }, [inputSearch]);
+  }, [debouncedInputSearch]);
 
   function handleKeyPress(e) {
     if (e.key === "Enter") {
