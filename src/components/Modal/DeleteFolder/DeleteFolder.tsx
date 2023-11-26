@@ -1,6 +1,6 @@
 import * as Modal from '../Modal.style';
 
-function DeleteFolder({ folderName }) {
+function DeleteFolder({ folderName }: { folderName: string }) {
   return (
     <>
       <Modal.Header>

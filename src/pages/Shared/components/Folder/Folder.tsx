@@ -4,18 +4,12 @@ import { DEFAULT_USER_ID } from '@apis/config/default';
 import SearchBar from '@components/SearchBar';
 import CardList from '@components/CardsContainer';
 import Banner from '../Banner';
+import { CardProps } from '@components/CardsContainer/CardsContainer';
 
 interface SharedFolder {
   count: number;
   id: number;
-  links: {
-    id: number;
-    createdAt: string;
-    description: string;
-    imageSource: string;
-    title: string;
-    url: string;
-  }[];
+  links: CardProps[];
   name: string;
   owner: {
     id: number;

@@ -4,10 +4,10 @@ import SEARCH_ICON from '@assets/icons/search.svg';
 import CLOSE from '@assets/icons/close.svg';
 
 interface Props {
-  value: string;
-  onSearch: (e: SyntheticEvent) => void;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onReset: () => void;
+  value?: string;
+  onSearch?: (e: SyntheticEvent) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onReset?: () => void;
 }
 
 function SearchBar({ value, onSearch, onChange, onReset }: Props) {
