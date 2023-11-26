@@ -12,11 +12,12 @@ import React, { useState } from "react";
 
 function App() {
   const { data: userData, errorMessage } = useFetch("users/1", 1);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isSecondVisible, setIsSecondVisible] = useState(false);
-  const [searchResult, setSearchResult] = useState("");
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isSecondVisible, setIsSecondVisible] = useState<boolean>(false);
+  const [searchResult, setSearchResult] = useState<string>("");
   if (!userData) return;
   /* userData.data[0] */
+
   return (
     <AccountContext.Provider
       value={{

@@ -3,12 +3,12 @@ import linkImg from "../img/svg/link.svg";
 
 interface AddInputSectionType {
   handleListClick: (
-    event: any,
+    event: React.MouseEvent<HTMLButtonElement>,
     title: string,
     btn: string,
     item?: string | null
   ) => void;
-  newLink: any;
+  newLink: string;
   setNewLink: React.Dispatch<React.SetStateAction<string>>;
 }
 

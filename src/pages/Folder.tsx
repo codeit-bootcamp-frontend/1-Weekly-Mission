@@ -8,25 +8,7 @@ import { useFetch, useQueryFetch } from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import ModalFolder from "../modal/ModalFolder";
 import ObserveAddInput from "../components/ObserveAddInput";
-
-type folderOptionType = {
-  title: string;
-  btnName: string;
-  dataItem: string | null;
-  share?: { id: number | null; folderId?: string | null };
-  folderData: any;
-};
-
-type modalBgType = {
-  background: string;
-  opacity: string;
-  width: string;
-  height: string;
-  position: any;
-  top: string;
-  left: string;
-  transform: string;
-};
+import { Links, folderOptionType } from "../dataType/dataType";
 
 interface FolderType {
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,7 +16,7 @@ interface FolderType {
   setSearchResult: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const modalBg: modalBgType = {
+const modalBg = {
   background: "#000",
   opacity: "0.4",
   width: "100%",
@@ -43,7 +25,13 @@ const modalBg: modalBgType = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-};
+} as React.CSSProperties;
+
+interface QueryFetchType {
+  data: Links[] | null;
+  errorMessage: string;
+  fetchUrl?: (type: string, number: string | null) => Promise<void>;
+}
 
 const Folder = ({
   setIsVisible,
@@ -60,47 +48,17 @@ const Folder = ({
   const [newLink, setNewLink] = useState("");
   const { id } = account?.data[0];
   const { folderId } = useParams();
-  const targetElement = useRef(null);
-  const targetSecondElement = useRef(null);
+  const targetElement = useRef<HTMLDivElement>(null);
+  const targetSecondElement = useRef<HTMLDivElement>(null);
 
   const { data: folderDataObject, errorMessage: foldersErrorMessage } =
     useFetch(`users/${id}/folders`, id);
-  const { data: linkCardsData, errorMessage: linksErrorMessage }: any | string =
-    useQueryFetch(`users/${id}/links`, folderId, id);
 
-  const handleCebabClick = (
-    event: React.MouseEvent<HTMLImageElement>,
-    itemId: number
-  ) => {
-    event.preventDefault();
-    setPrevKey(itemId);
-    setIscebabClick(!iscebabClick);
-  };
+  const {
+    data: linkCardsData,
+    errorMessage: linksErrorMessage,
+  }: QueryFetchType = useQueryFetch(`users/${id}/links`, folderId, id);
 
-  const handleListClick = (
-    event: React.MouseEvent<HTMLLIElement>,
-    title: string,
-    btn: string,
-    item: string | null = null
-  ) => {
-    if (iscebabClick) {
-      event.preventDefault();
-      setIscebabClick(!iscebabClick);
-    }
-
-    if (title === "폴더에 추가" && !item) {
-      alert("링크를 입력해주세요");
-    } else {
-      setFolderOption({
-        title,
-        btnName: btn,
-        dataItem: item,
-        share: { id, folderId },
-        folderData: folderDataObject,
-      });
-    }
-  };
-  /*  console.log(linkCardsData); */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -158,7 +116,44 @@ const Folder = ({
         observer.unobserve(targetSecondElement.current);
       }
     };
-  }, []); // 빈 의존성 배열로 마운트 시에만 실행
+  }, [folderDataObject]); // 빈 의존성 배열로 마운트 시에만 실행
+
+  const handleCebabClick = (
+    event: React.MouseEvent<HTMLImageElement>,
+    itemId: number
+  ) => {
+    event.preventDefault();
+    setPrevKey(itemId);
+    setIscebabClick(!iscebabClick);
+  };
+
+  if (!folderDataObject) return;
+
+  const handleListClick = (
+    event: React.MouseEvent<
+      HTMLLIElement | HTMLButtonElement | HTMLHeadingElement
+    >,
+    title: string,
+    btn: string,
+    item: string | null = null
+  ) => {
+    if (iscebabClick) {
+      event.preventDefault();
+      setIscebabClick(!iscebabClick);
+    }
+
+    if (title === "폴더에 추가" && !item) {
+      alert("링크를 입력해주세요");
+    } else {
+      setFolderOption({
+        title,
+        btnName: btn,
+        dataItem: item,
+        share: { id, folderId },
+        folderData: folderDataObject,
+      });
+    }
+  };
 
   return (
     <>
@@ -190,7 +185,7 @@ const Folder = ({
           )
         )}
         {!linksErrorMessage ? (
-          linkCardsData?.data.length > 0 ? (
+          linkCardsData !== null ? (
             <Cards
               linkCardsData={linkCardsData}
               prevKey={prevKey}
@@ -209,7 +204,7 @@ const Folder = ({
         )}
         {folderOption ? (
           <>
-            <div className="modal-bg" style={modalBg}></div>
+            <div className="modal-bg" style={{ ...modalBg }}></div>
             <ModalFolder
               folderOption={folderOption}
               setFolderOption={setFolderOption}

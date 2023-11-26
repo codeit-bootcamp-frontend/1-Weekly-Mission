@@ -1,7 +1,7 @@
 /* 게시물 올린 시간 함수 */
-export function getTimeDiff(value: any) {
-  const date: any = new Date();
-  const milliSeconds: number = date - value;
+export function getTimeDiff(value: Date) {
+  const date: Date = new Date();
+  const milliSeconds: number = date.getTime() - value.getTime();
   const seconds = milliSeconds / 1000;
   /* console.log(`달단위 ${seconds / 60 / 60 / 24 / 30}`) */
   if (seconds < 60) return `방금 전`;

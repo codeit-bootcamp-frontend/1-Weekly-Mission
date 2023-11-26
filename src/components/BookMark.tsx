@@ -1,8 +1,9 @@
 import React from "react";
+import { User, folders } from "../dataType/dataType";
 
 interface BookMarkType {
-  bookmarkNumber: any;
-  account: any;
+  bookmarkNumber?: folders;
+  account: User;
   errorMessage: string;
 }
 

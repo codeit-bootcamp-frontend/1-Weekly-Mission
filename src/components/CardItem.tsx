@@ -5,9 +5,11 @@ import kebabImg from "../img/svg/kebab.svg";
 import mobileAddImg from "../img/svg/mobileAdd.svg";
 import { getTimeDiff } from "../utils/postTime";
 import { isLocation } from "../utils/location";
+import { Links } from "../dataType/dataType";
 
+/* folder페이지는 props가 있고 shared페이지에는 없음 클릭함수타입지정 any */
 interface CardItemType {
-  item: any;
+  item: Links;
   prevKey?: number | null;
   handleCebabClick?: any;
   handleListClick?: any;
@@ -66,8 +68,8 @@ const CardItem = ({
             return (
               <li
                 key={index}
-                onClick={() => {
-                  handleListClick(list.name, list.option, item.url);
+                onClick={(event) => {
+                  handleListClick(event, list.name, list.option, item.url);
                 }}
               >
                 {list.option}

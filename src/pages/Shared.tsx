@@ -5,6 +5,7 @@ import Cards from "../components/Cards";
 import { AccountContext } from "../contexts/AccountContext";
 import { useFetch, useQueryFetch } from "../hooks/useFetch";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { folders } from "../dataType/dataType";
 
 interface SharedType {
   setSearchResult: React.Dispatch<React.SetStateAction<string>>;
@@ -14,8 +15,9 @@ const Shared = ({ setSearchResult }: SharedType) => {
   const { account, errorMessage, searchResult } = useContext(AccountContext);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const userId: any = searchParams.get("user");
+  const userId = Number(searchParams.get("user"));
   const folderNumber = searchParams.get("folder");
+
   const { data: folderDataObject } = useFetch(
     `users/${userId}/folders`,
     userId
@@ -27,17 +29,20 @@ const Shared = ({ setSearchResult }: SharedType) => {
   /* 즐겨찾기 데이터번호만 가져오는 함수 */
   const getBookmarkNumber = () => {
     if (!folderDataObject) return;
-    const { data }: any = folderDataObject;
+    const { data }: { data: folders[] } = folderDataObject;
 
-    const bookmarkNumber = data?.filter((list: any) => {
+    const bookmarkNumber = data?.filter((list) => {
       if (list?.id == folderNumber) {
         return list?.id;
       }
     });
     return bookmarkNumber[0];
   };
+
   const { data: personalfolderData, errorMessage: linksErrorMessage } =
     useQueryFetch(`users/${userId}/links`, getBookmarkNumber()?.id, userId);
+
+  if (!getBookmarkNumber()?.link.count) return;
   return (
     <div className="shared">
       <BookMark
@@ -47,7 +52,7 @@ const Shared = ({ setSearchResult }: SharedType) => {
       />
       <Search setSearchResult={setSearchResult} searchResult={searchResult} />
       {!linksErrorMessage ? (
-        getBookmarkNumber()?.link.count > 0 ? (
+        getBookmarkNumber()!.link.count > 0 ? (
           <Cards
             linkCardsData={personalfolderData}
             searchResult={searchResult}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import searchImg from "../img/svg/Search.svg";
 import closeIcon from "../img/svg/close.svg";
 
@@ -8,8 +8,6 @@ interface SearchType {
 }
 
 const Search = ({ setSearchResult, searchResult }: SearchType) => {
-  const [changeInput, setChangeInput] = useState("");
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchResult(e.target.value);
   };

@@ -1,21 +1,22 @@
 import React from "react";
 import CardItem from "./CardItem";
+import { Links } from "../dataType/dataType";
 
 interface CardsType {
-  linkCardsData: any;
+  linkCardsData: { data: Links[] } | null;
   prevKey?: number | null;
   handleCebabClick?: (
     event: React.MouseEvent<HTMLImageElement>,
     itemId: number
   ) => void;
   handleListClick?: (
-    event: any,
+    event: React.MouseEvent<HTMLLIElement>,
     title: string,
     btn: string,
     item?: string | null
   ) => void;
   iscebabClick?: boolean;
-  searchResult: string | undefined;
+  searchResult: string;
 }
 
 const Cards = ({
@@ -27,6 +28,7 @@ const Cards = ({
   searchResult,
 }: CardsType) => {
   if (!linkCardsData) return;
+
   const { data: linksData } = linkCardsData;
   const cardProps = {
     /* folder페이지는 props가 있고 shared페이지에는 없음 타입지정 any */
@@ -36,13 +38,12 @@ const Cards = ({
     iscebabClick,
   };
 
-  const newLinkData = linksData?.filter((link: any) => {
-    const searchResultToLower = searchResult?.toLowerCase();
-    const urlToLower = link?.url?.toLowerCase();
-    const titleToLower = link?.title?.toLowerCase();
-    const desToLower = link?.description?.toLowerCase();
-
-    if (searchResult!.length > 0) {
+  const newLinkData = linksData?.filter((link) => {
+    if (searchResult.length > 0) {
+      const searchResultToLower = searchResult?.toLowerCase();
+      const urlToLower = link?.url!.toLowerCase();
+      const titleToLower = link?.title!.toLowerCase();
+      const desToLower = link?.description!.toLowerCase();
       if (
         urlToLower?.indexOf(searchResultToLower) > -1 ||
         titleToLower?.indexOf(searchResultToLower) > -1 ||
@@ -58,7 +59,7 @@ const Cards = ({
   return (
     <div className="section-title section-title-third">
       <div className="section-title-third-inner">
-        {newLinkData?.map((item: any) => (
+        {newLinkData?.map((item) => (
           <a key={item.id} href={item.url} target="_blank">
             <CardItem item={item} {...cardProps} />
           </a>

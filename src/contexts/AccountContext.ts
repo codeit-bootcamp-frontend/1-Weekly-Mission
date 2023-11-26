@@ -2,16 +2,16 @@ import { createContext } from "react";
 import { User } from "../dataType/dataType";
 
 interface AccountType {
-  account: { data: User[] } | null | any;
-  errorMessage: string | null | any;
+  account: { data: User[] };
+  errorMessage: any;
   isVisible: boolean;
   isSecondVisible: boolean;
-  searchResult: string | undefined;
+  searchResult: string;
 }
 
 export const AccountContext = createContext<AccountType>({
-  account: null,
-  errorMessage: null,
+  account: { data: [] },
+  errorMessage: { message: "" },
   isVisible: false,
   isSecondVisible: false,
   searchResult: "",

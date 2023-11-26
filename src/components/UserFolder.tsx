@@ -4,12 +4,13 @@ import shareImg from "../img/svg/share.svg";
 import penImg from "../img/svg/pen.svg";
 import deleteImg from "../img/svg/delete.svg";
 import { NavLink } from "react-router-dom";
+import { folders } from "../dataType/dataType";
 
 interface UserFolderType {
-  folderDataObject: any;
-  folderId?: number | string;
+  folderDataObject: { data: folders[] };
+  folderId?: string;
   handleListClick: (
-    event: any,
+    event: React.MouseEvent<HTMLLIElement | HTMLHeadingElement>,
     title: string,
     btn: string,
     item?: string | null
@@ -29,11 +30,11 @@ const all = {
 
 const UserFolder = ({
   folderDataObject,
-  folderId = 9999,
+  folderId = "9999",
   handleListClick,
 }: UserFolderType) => {
   const [titleName, setTitleName] = useState("");
-  const titleRef = useRef<any>({});
+  const titleRef = useRef<{ [key: string]: HTMLLIElement | null }>({});
   const { current } = titleRef;
   const folderOption = [
     { title: "공유", image: shareImg, name: "폴더 공유", btn: "" },
@@ -47,7 +48,7 @@ const UserFolder = ({
   ];
 
   useEffect(() => {
-    setTitleName(current[folderId]?.innerText);
+    setTitleName(current[folderId]!.innerText);
   }, [folderDataObject, folderId]);
 
   if (!folderDataObject) return;

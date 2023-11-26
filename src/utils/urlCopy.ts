@@ -1,6 +1,9 @@
 import { firebaseConfing } from "./config";
 
-export const handleCopyClipBoard = async (name: string, share: any) => {
+export const handleCopyClipBoard = async (
+  name: string,
+  share: { id: number; folderId?: string | null }
+) => {
   const host = `${window.location.protocol}//${window.location.host}/shared?user=${share.id}&folder=${share.folderId}`;
   const IMAGE_URL = `${window.location.protocol}//${window.location.host}/img/png/image25.png`;
   if (name === "링크") {

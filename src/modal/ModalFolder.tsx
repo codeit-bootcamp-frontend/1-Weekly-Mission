@@ -5,11 +5,14 @@ import facebookIcon from "../img/svg/facebookIcon.svg";
 import linkIcon from "../img/svg/linkIcon.svg";
 import "./modalFolder.css";
 import { handleCopyClipBoard } from "../utils/urlCopy";
+import { folderOptionType } from "../dataType/dataType";
 
 interface ModalFolderType {
-  folderOption: any;
-  setFolderOption: any;
-  setNewLink: any;
+  folderOption: folderOptionType;
+  setFolderOption: React.Dispatch<
+    React.SetStateAction<folderOptionType | null>
+  >;
+  setNewLink: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SNSICON = [
@@ -28,8 +31,6 @@ const ModalFolder = ({
   const [changeName, setChangeName] = useState(
     title === "폴더 이름 변경" ? dataItem : ""
   );
-
-  if (!folderLists) return;
 
   const isFolderName = () => {
     return title !== "폴더 이름 변경" && title !== "폴더 추가";
@@ -50,7 +51,7 @@ const ModalFolder = ({
     const { value } = event.target;
     setChangeName(value);
   };
-
+  if (!folderData) return;
   return (
     <div className="folder-modal">
       <div className="folder-modal-wrap">
@@ -65,14 +66,14 @@ const ModalFolder = ({
         {isInput() ? (
           <input
             name="modalName"
-            value={changeName}
+            value={changeName ? changeName : ""}
             onChange={(event) => handleChange(event)}
             placeholder="내용 입력"
           />
         ) : null}
         {title === "폴더에 추가" ? (
           <ul className="folder-list">
-            {folderLists.map((list: any, index: number) => {
+            {folderLists.map((list, index: number) => {
               return (
                 <li key={index}>
                   <h3>{list.name}</h3>
