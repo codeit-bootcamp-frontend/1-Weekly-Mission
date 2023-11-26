@@ -2,7 +2,7 @@ import Card from './Card';
 import '../css/cardList.css';
 import NoSavedLinks from './NoSavedLinks';
 
-function CardList({ cards }): JSX.Element {
+function CardList({ cards }: { cards: any }): JSX.Element {
   if (!cards) {
     return <NoSavedLinks />;
   }
@@ -13,7 +13,7 @@ function CardList({ cards }): JSX.Element {
     <>
       <div className="container">
         <div className="card-list">
-          {cards.map((card) => {
+          {cards.map((card: any) => {
             return (
               <li key={card.id}>
                 <Card card={card} />

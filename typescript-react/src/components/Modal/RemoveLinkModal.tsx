@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function RemoveLinkModal({ setIsLinkRemoveModal }) {
+function RemoveLinkModal({ setIsLinkRemoveModal }: { setIsLinkRemoveModal: (a: boolean) => void }) {
   return (
     <>
       <Container>

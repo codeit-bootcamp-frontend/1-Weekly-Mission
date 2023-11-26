@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function Cta({ name }): JSX.Element {
+function Cta({ name }: { name: string }): JSX.Element {
   return <Button>{name}</Button>;
 }
 

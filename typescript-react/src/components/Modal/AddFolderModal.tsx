@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function AddFolderModal({ setIsFolderAddModal }) {
+function AddFolderModal({ setIsFolderAddModal }: { setIsFolderAddModal: (a: boolean) => void }) {
   return (
     <>
       <Container>

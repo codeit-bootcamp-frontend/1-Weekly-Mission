@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function RemoveFolderModal({ setIsFolderRemoveModal }) {
+function RemoveFolderModal({ setIsFolderRemoveModal }: { setIsFolderRemoveModal: () => void }) {
   return (
     <>
       <Container>

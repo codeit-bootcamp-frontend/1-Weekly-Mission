@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [userProfile, setUserProfile] = useState(undefined);
-  const [isLoadingUserProfile, userProfileLoadingError, getUserProfileAsync] = useAsync(getUserProfile);
+  const [, userProfileLoadingError, getUserProfileAsync] = useAsync(getUserProfile);
 
   const handleUserProfileLoad = useCallback(async () => {
     const result = await getUserProfileAsync();

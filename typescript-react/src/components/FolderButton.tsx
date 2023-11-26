@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 type Props = {
   folder: any;
-  handleButton: any;
+  handleButton: (name: string, id: string) => void;
 };
 
 function FolderButton({ folder, handleButton }: Props): JSX.Element {

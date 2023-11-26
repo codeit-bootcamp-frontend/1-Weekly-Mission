@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function ShareFolderModal({ setIsFolderShareModal }) {
+function ShareFolderModal({ setIsFolderShareModal }: { setIsFolderShareModal: (a: boolean) => void }) {
   return (
     <>
       <Container>

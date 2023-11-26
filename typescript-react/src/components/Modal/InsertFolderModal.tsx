@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function InsertFolderModal({ setIsInsertFolderModal }) {
+function InsertFolderModal({ setIsInsertFolderModal }: { setIsInsertFolderModal: (a: boolean) => void }) {
   return (
     <>
       <Container>

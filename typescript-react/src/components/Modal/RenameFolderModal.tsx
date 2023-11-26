@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Cta from '../Cta';
 
-function RenameFolderModal({ setIsFolderRenameModal }) {
+function RenameFolderModal({ setIsFolderRenameModal }: { setIsFolderRenameModal: (a: boolean) => void }) {
   return (
     <>
       <Container>

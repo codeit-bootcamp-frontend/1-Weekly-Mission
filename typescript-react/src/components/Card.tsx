@@ -8,7 +8,7 @@ import InsertFolderModal from './Modal/InsertFolderModal';
 
 type OpenPopoverFunc = (e: any) => void;
 
-function Card({ card }): JSX.Element {
+function Card({ card }: { card: any }): JSX.Element {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isLinkRemoveModal, setIsLinkRemoveModal] = useState(false);
   const [isInsertFolderModal, setIsInsertFolderModal] = useState(false);
@@ -19,7 +19,7 @@ function Card({ card }): JSX.Element {
   };
   return (
     <>
-      <div className="card-wrapper" href={card.url} target="_blank" rel="noreferrer noopener">
+      <div className="card-wrapper" ref={card.url} target="_blank" rel="noreferrer noopener">
         <div className="card-image-box">
           <img
             className="card-image"

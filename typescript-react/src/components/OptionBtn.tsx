@@ -1,6 +1,14 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-function OptionBtn({ src, alt, children, onClick }): JSX.Element {
+interface Props {
+  src: any;
+  alt: string;
+  children: ReactNode;
+  onClick: () => void;
+}
+
+function OptionBtn({ src, alt, children, onClick }: Props): JSX.Element {
   return (
     <Div>
       <Img src={src} alt={alt} />
