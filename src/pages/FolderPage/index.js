@@ -1,1 +1,1 @@
-export { default } from "./FolderPage";
+export { default } from './FolderPage';

@@ -1,10 +1,10 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 export const reset = css`
   * {
     box-sizing: border-box;
     margin: 0;
-    font-family: "Pretendard";
+    font-family: 'Pretendard';
     word-break: keep-all;
   }
 
@@ -36,10 +36,10 @@ export const reset = css`
     outline: none;
   }
 
-  input[type="search"]::-webkit-search-decoration,
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-results-button,
-  input[type="search"]::-webkit-search-results-decoration {
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
     display: none;
   }
 

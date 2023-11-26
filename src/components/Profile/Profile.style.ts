@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { onMobile } from "styles/mediaQuery";
+import styled from 'styled-components';
+import { onMobile } from 'styles/mediaQuery';
 
 export const Container = styled.div`
   display: flex;

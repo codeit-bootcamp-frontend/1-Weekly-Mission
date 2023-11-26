@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ImageContainer = styled.div`
   display: flex;
@@ -44,11 +44,11 @@ export const Info = styled.div`
 export const KebabButton = styled.img`
   position: absolute;
   top: 1.5rem;
-  right: 2.0rem;
+  right: 2rem;
 
   width: 2.1rem;
   height: 1.7rem;
-`
+`;
 
 export const TimeDiff = styled.p`
   color: #666666;
