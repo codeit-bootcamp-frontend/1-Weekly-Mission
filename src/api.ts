@@ -1,16 +1,38 @@
+type Link = {
+  id: number;
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource: string;
+};
+type SampleFolder = {
+  folder: {
+    id: number;
+    name: string;
+    owner: {
+      id: number;
+      name: string;
+      profileImageSource: string;
+    };
+    links: Link[];
+  };
+};
+
 const API_URL = "https://bootcamp-api.codeit.kr";
 
 const DEFAULT_USER_ID = 1;
-export async function getData(response) {
+
+export async function getData(response: Response) {
   if (!response.ok) {
     throw new Error("데이터를 불러오는데 실패했습니다.");
   }
   const body = await response.json();
   return body;
 }
-export async function getSample(category) {
+export async function getSample(category: string) {
   const response = await fetch(`${API_URL}/api/sample/${category}`);
-  return getData(response);
+  return getData(response) as unknown as SampleFolder;
 }
 
 export async function getUser(user_id = DEFAULT_USER_ID) {

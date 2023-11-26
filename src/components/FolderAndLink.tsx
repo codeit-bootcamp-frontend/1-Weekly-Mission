@@ -15,11 +15,10 @@ function FolderAndLink() {
   const DEFAULT_FOLDER = 1;
   // 폴더
 
-  const [folderData] = useAsync(() => getFolders(DEFAULT_FOLDER));
+  const { data: folderData } = useAsync(() => getFolders(DEFAULT_FOLDER));
 
-  const [linkData, , , getLinkAsync] = useAsync(
-    () => getLinksByFolderID(DEFAULT_FOLDER, selectedFolderId),
-    [selectedFolderId]
+  const { data: linkData, fetchData: getLinkAsync } = useAsync(() =>
+    getLinksByFolderID(DEFAULT_FOLDER, selectedFolderId)
   );
 
   const setFolderLink = (folder_id) => {

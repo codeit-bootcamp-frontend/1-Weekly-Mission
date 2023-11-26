@@ -8,7 +8,11 @@ import { flexCenter } from "../../style/common";
 import logoImg from "../../assets/logo.png";
 import Button from "../Button";
 
-function Profile({ email, profileImage }) {
+interface ProfileProps {
+  email: string;
+  profileImage: string;
+}
+function Profile({ email, profileImage }: ProfileProps) {
   return (
     <StyledProfile>
       <ProfileImg src={profileImage} alt="프로필 사진" />
@@ -16,7 +20,14 @@ function Profile({ email, profileImage }) {
     </StyledProfile>
   );
 }
-function Nav({ path, email, profileImageSource }) {
+
+interface NavProps {
+  email: string;
+  path: string;
+  profileImageSource: string;
+}
+
+function Nav({ path, email, profileImageSource }: NavProps) {
   return (
     <NavContainer path={path}>
       <NavContent className="container">

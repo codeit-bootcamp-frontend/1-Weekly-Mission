@@ -11,7 +11,11 @@ import SearchBar from "../../components/SearchBar";
 import FolderAndLink from "../../components/FolderAndLink";
 
 function FolderPage() {
-  const [data, isLoading, hasError] = useAsync(() => getUser(1));
+  const {
+    data,
+    pending: isLoading,
+    error: hasError,
+  } = useAsync(() => getUser(1));
 
   if (!data) return null;
   if (isLoading) return <div>로딩 중입니다.</div>;

@@ -1,24 +1,43 @@
-import { useState, useEffect } from "react";
-function useAsync(asyncFunction, deps = [], skip = false) {
-  const [data, setData] = useState(null);
+import { useState, useEffect, useCallback } from "react";
+function useAsync<T>(getData: () => Promise<T>, skip = false) {
+  const [data, setData] = useState<T>();
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState(null);
-  const fetchData = async (...args) => {
+  const [error, setError] = useState<Error>();
+  const fetchData = useCallback(async () => {
     setPending(true);
-    setError(null);
     try {
-      const fetchedData = await asyncFunction(...args);
+      const fetchedData = await getData();
       setData(fetchedData);
     } catch (error) {
-      setError(error);
+      if (error instanceof Error) {
+        setError(error);
+      }
     } finally {
       setPending(false);
     }
-  };
+  }, [getData]);
+
+  // const fetchData = useCallback(
+  //   async (...args) => {
+  //     setPending(true);
+  //     try {
+  //       const fetchedData = await getData(...args);
+  //       setData(fetchedData);
+  //     } catch (error) {
+  //       if (error instanceof Error) {
+  //         setError(error);
+  //       }
+  //     } finally {
+  //       setPending(false);
+  //     }
+  //   },
+  //   [getData]
+  // );
+
   useEffect(() => {
     if (skip) return;
     fetchData();
-  }, deps);
-  return [data, pending, error, fetchData];
+  }, [fetchData, skip]);
+  return { data, pending, error, fetchData };
 }
 export default useAsync;
