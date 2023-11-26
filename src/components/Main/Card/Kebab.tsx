@@ -2,7 +2,7 @@ import { useRef } from "react";
 import kebabImg from "src/assets/kebab.svg";
 import { Container, PopOver } from "src/components/Main/Card/Kebab.styled";
 import useModal from "src/hooks/useModal";
-import { FolderData, URLS } from "src/utils/getData.type";
+import { FolderData } from "src/utils/getData.type";
 
 interface Props {
   folder: FolderData[];
