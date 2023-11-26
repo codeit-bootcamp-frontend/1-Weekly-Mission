@@ -4,9 +4,13 @@ import TwitterLogo from "../../image/twitter.svg";
 import YoutubeLogo from "../../image/youtube.svg";
 import InstagramLogo from "../../image/instagram.svg";
 
-const Footer = () => {
+interface FooterProps {
+  ref?: React.RefObject<HTMLDivElement>;
+}
+
+const Footer = ({ ref }: FooterProps) => {
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <Content>
         <Copyright>©codeit - 2023</Copyright>
         <Links>
