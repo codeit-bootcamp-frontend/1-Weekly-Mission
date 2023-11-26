@@ -1,5 +1,9 @@
 import IMAGES from '../assets/images';
 
+type SNSLINKS_TYPE = {
+  [key: string]: string;
+};
+
 const FOLDER_OPTION_NAMES = [
   {
     id: 1,
@@ -61,10 +65,18 @@ const MODAL_NAME = {
   },
 };
 
+const SNSLINKS: SNSLINKS_TYPE = {
+  facebook: 'https://www.facebook.com/',
+  twitter: 'https://www.twitter.com/',
+  youtube: 'https://www.youtube.com/',
+  instagram: 'https://www.instagram.com/',
+};
+
 export {
   FOLDER_OPTION_NAMES,
   DEFAULT_FOLDER,
   DEFAULT_FOLDER_NAME,
   DEFAULT_USER_ID,
   MODAL_NAME,
+  SNSLINKS,
 };
