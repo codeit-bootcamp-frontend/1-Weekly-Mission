@@ -100,7 +100,7 @@ export const FolderToolBar = ({
               key={text}
               iconSource={iconSource}
               onClick={() => setCurrentModal(modalId)}
-              text="버튼 텍스트"
+              text={text}
             />
           ))}
           <ShareModal
