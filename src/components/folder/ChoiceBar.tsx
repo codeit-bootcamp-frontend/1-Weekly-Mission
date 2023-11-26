@@ -24,12 +24,11 @@ function ChoiceBar({ folders, selectedFolderId }: Props) {
   const { isOpen, handleModalOpen, handleModalClose } = useModal();
   const folderTitle = findFolderTitle(folders, selectedFolderId);
 
-  function handleChoiceClick(event: MouseEvent<HTMLDivElement>): void {
-    // const target = event.target;
-    // console.log(target);
-    //const target = event.target.closest('div').children[1];
-    // setModal(target.textContent);
-    // handleModalOpen();
+  function handleChoiceClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    const el = target?.closest('div')?.children[1];
+    setModal(el?.textContent || '');
+    handleModalOpen();
   }
 
   return (

@@ -15,12 +15,11 @@ function ShareModal({ data = '', folderId, onClickClose }: Props) {
   const target = useRef();
 
   function handleShareClick(event: MouseEvent): void {
-    console.log('눌럿당');
-    // const target = event.target as HTMLElement;
-    // const aa = target.closest('div').children[1];
-    // if (target.textContent === '카카오톡') return shareKakaotalk(data, SHARE_URL);
-    // if (target.textContent === '페이스북') return shareFacebook(SHARE_URL);
-    // if (target.textContent === '링크 복사') return copyLink(SHARE_URL);
+    const el = event.target as HTMLElement;
+    const target = el?.closest('div')?.children[1];
+    if (target?.textContent === '카카오톡') shareKakaotalk(data, SHARE_URL);
+    if (target?.textContent === '페이스북') shareFacebook(SHARE_URL);
+    if (target?.textContent === '링크 복사') copyLink(SHARE_URL);
   }
 
   return (
