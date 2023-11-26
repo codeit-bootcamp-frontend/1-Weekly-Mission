@@ -1,9 +1,9 @@
 import styles from "./FolderInfo.module.css";
 
 interface Props {
-  profileImage: string;
-  userName: string;
-  folderName: string;
+  profileImage?: string;
+  userName?: string;
+  folderName?: string;
 }
 
 const FolderInfo = ({ profileImage, userName, folderName }: Props) => {

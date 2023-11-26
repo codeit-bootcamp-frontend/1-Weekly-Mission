@@ -4,9 +4,9 @@ import styles from "./CardItem.module.css";
 import logoImg from "../../assets/images/emptyImg.svg";
 import starImg from "../../assets/images/star.svg";
 import kebabImg from "../../assets/images/kebab.svg";
-import ModalContainer from "../Modal/ModalContainer";
-import DeleteLinkModal from "../Modal/DeleteLinkModal";
-import AddLinkModal from "../Modal/AddLinkModal";
+import ModalContainer from "../Modal/ModalContainer/ModalContainer";
+import DeleteLinkModal from "../Modal/DeleteLinkModal/DeleteLinkModal";
+import AddLinkModal from "../Modal/AddLinkModal/AddLinkModal";
 
 interface Props {
   folderListData: UserFolderData;

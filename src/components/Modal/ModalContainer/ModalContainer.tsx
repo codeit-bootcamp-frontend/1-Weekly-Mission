@@ -2,7 +2,7 @@ import { ReactNode, MouseEventHandler } from "react";
 
 import styles from "./ModalContainer.module.css";
 
-import closeIcon from "../../assets/images/close.svg";
+import closeIcon from "../../../assets/images/close.svg";
 
 interface Props {
   onClose: () => void;

@@ -3,7 +3,7 @@ import { useState, ReactNode } from "react";
 import styles from "./AddFolderButton.module.css";
 import plusImg from "../../assets/images/plus.svg";
 import plusWhiteImg from "../../assets/images/plus_white.svg";
-import ModalContainer from "../Modal/ModalContainer";
+import ModalContainer from "../Modal/ModalContainer/ModalContainer";
 
 interface Props {
   children?: ReactNode;

@@ -1,7 +1,9 @@
 import { ChangeEvent, useState } from "react";
-import styles from "./AddFolderModal.module.css";
-import ModalButton from "./ModalButton";
-import ModalTitle from "./ModalTitle";
+
+import styles from "./EditFolderNameModal.module.css";
+
+import ModalButton from "../ModalButton/ModalButton";
+import ModalTitle from "../ModalTitle/ModalTitle";
 
 interface Props {
   currentFolderName: string;

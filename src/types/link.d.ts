@@ -1,3 +1,6 @@
+interface LinksData {
+  data: Link[];
+}
 interface Link {
   id: number;
   created_at: string;

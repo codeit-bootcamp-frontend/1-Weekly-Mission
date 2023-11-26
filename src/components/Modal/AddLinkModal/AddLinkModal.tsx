@@ -1,9 +1,11 @@
-import styles from "./AddLinkModal.module.css";
-import checkImg from "../../assets/images/check.svg";
-import ModalTitle from "./ModalTitle";
-import ModalButton from "./ModalButton";
 import { useState } from "react";
 import classNames from "classnames";
+
+import styles from "./AddLinkModal.module.css";
+
+import checkImg from "../../../assets/images/check.svg";
+import ModalTitle from "../ModalTitle/ModalTitle";
+import ModalButton from "../ModalButton/ModalButton";
 
 interface Props {
   inputValue: string;
@@ -38,7 +40,7 @@ const AddLinkModal = ({ inputValue, folderListData }: Props) => {
           >
             <div className={styles.option}>
               <h2>{folder.name}</h2>
-              <p>{`${folder.link.count}개 링크`}</p>
+              <p>{`${folder?.link?.count}개 링크`}</p>
             </div>
             {selectedFolder === folder && <img src={checkImg} alt="check" />}
           </div>

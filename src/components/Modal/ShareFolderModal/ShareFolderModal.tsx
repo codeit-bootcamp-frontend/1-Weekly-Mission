@@ -1,14 +1,14 @@
 import { MouseEvent, ReactNode, useEffect } from "react";
+import classNames from "classnames";
 
 import styles from "./ShareFolderModal.module.css";
 
-import { useFolderId } from "../../contexts/UserContext";
-import ModalTitle from "./ModalTitle";
-import kakaoIcon from "../../assets/images/kakao.svg";
-import facebookIcon from "../../assets/images/facebook.svg";
-import chainIcon from "../../assets/images/chain.svg";
-import classNames from "classnames";
-import { shareFacebook, shareKakao } from "../../utils/utils";
+import { useFolderId } from "../../../contexts/UserContext";
+import { shareFacebook, shareKakao } from "../../../utils/utils";
+import ModalTitle from "../ModalTitle/ModalTitle";
+import kakaoIcon from "../../../assets/images/kakao.svg";
+import facebookIcon from "../../../assets/images/facebook.svg";
+import chainIcon from "../../../assets/images/chain.svg";
 
 interface Icon {
   name: string;

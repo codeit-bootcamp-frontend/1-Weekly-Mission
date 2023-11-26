@@ -36,7 +36,7 @@ interface UserFolder {
   created_at: string;
   name: string;
   user_id: number;
-  link: {
+  link?: {
     count: number;
   };
 }

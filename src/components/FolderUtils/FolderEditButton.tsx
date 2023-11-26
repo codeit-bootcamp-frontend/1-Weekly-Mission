@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./FolderEdit.module.css";
-import ModalContainer from "../Modal/ModalContainer";
-import DeleteFolderModal from "../Modal/DeleteFolderModal";
-import EditFolderNameModal from "../Modal/EditFolderNameModal";
-import ShareFolderModal from "../Modal/ShareFolderModal";
+import ModalContainer from "../Modal/ModalContainer/ModalContainer";
+import DeleteFolderModal from "../Modal/DeleteFolderModal/DeleteFolderModal";
+import EditFolderNameModal from "../Modal/EditFolderNameModal/EditFolderNameModal";
+import ShareFolderModal from "../Modal/ShareFolderModal/ShareFolderModal";
 
 interface Props {
   currentFolderName: string;

@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 
 import styles from "./DeleteLinkModal.module.css";
 
-import ModalButton from "./ModalButton";
-import ModalTitle from "./ModalTitle";
+import ModalButton from "../ModalButton/ModalButton";
+import ModalTitle from "../ModalTitle/ModalTitle";
 
 interface Props {
   children: ReactNode;
