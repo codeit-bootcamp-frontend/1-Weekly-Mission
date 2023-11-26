@@ -20,7 +20,11 @@ const Header = () => {
   useEffect(() => {
     getFolderOwner();
   }, []);
-
+  const [inputValue, setInputValue] = useState("");
+  function getInputValue(v) {
+    setInputValue(v);
+  }
+  console.log(inputValue);
   return (
     <>
       <header>
@@ -40,7 +44,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Search />
+      <Search getInputValue={getInputValue} />
       {fullData && <Cards fullData={fullData} />}
     </>
   );

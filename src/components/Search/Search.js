@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/landing.css";
+import CloseButton from "../../images/close-button.svg";
+const Search = ({ getInputValue }) => {
+  const [inputSearch, setInputSearch] = useState("");
+  function handleChange(e) {
+    setInputSearch(e.target.value);
+  }
 
-const Search = () => {
+  function handleClick(e) {
+    e.preventDefault();
+    setInputSearch("");
+  }
+  getInputValue(inputSearch);
   return (
     <div
       style={{
@@ -9,9 +19,10 @@ const Search = () => {
         marginBottom: "4rem",
       }}
     >
-      <form className="search-area" style={{}}>
-        {/* <img src="/images/Search.svg" alt="검색 이미지" /> */}
+      <form className="search-area" style={{ position: "relative" }}>
         <input
+          onChange={(e) => handleChange(e)}
+          value={inputSearch}
           placeholder="링크를 검색해 보세요."
           style={{
             height: "5rem",
@@ -30,6 +41,12 @@ const Search = () => {
             backgroundPosition: "left 1.7rem bottom 50%",
           }}
         ></input>
+        <button
+          onClick={(e) => handleClick(e)}
+          style={{ position: "absolute", top: "1.6rem", right: "4rem" }}
+        >
+          <img src={CloseButton} />
+        </button>
       </form>
     </div>
   );
