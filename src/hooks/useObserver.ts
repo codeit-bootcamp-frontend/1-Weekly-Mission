@@ -5,6 +5,7 @@ export type Dom = {
   headerInput: HTMLElement | null;
   floatDiv: HTMLElement | null;
   floatInput: HTMLElement | null;
+  footer: HTMLElement | null;
 };
 
 const useObserver = (DOM: Dom) => {
@@ -19,7 +20,7 @@ const useObserver = (DOM: Dom) => {
   const observer = useRef(
     new IntersectionObserver(
       (entries, observer) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry, idx) => {
           if (entry.intersectionRatio === 0) {
             float();
           }
@@ -33,8 +34,9 @@ const useObserver = (DOM: Dom) => {
   );
 
   useEffect(() => {
-    if (DOM.headerForm) {
+    if (DOM.headerForm && DOM.footer) {
       observer.current.observe(DOM.headerForm);
+      observer.current.observe(DOM.footer);
     }
   }, [DOM]);
 

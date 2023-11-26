@@ -3,10 +3,19 @@ import twitter from "src/assets/twitter.svg";
 import youtube from "src/assets/youtube.svg";
 import instagram from "src/assets/instagram.svg";
 import { Copy, Container, Info, Sns } from "src/components/Footer/Footer.styled";
+import { Dom } from "src/hooks/useObserver";
 
-function Footer() {
+interface Props {
+  dom?: React.MutableRefObject<Dom>;
+}
+
+function Footer({ dom }: Props) {
   return (
-    <Container>
+    <Container
+      ref={(el) => {
+        dom && (dom.current.footer = el);
+      }}
+    >
       <Copy>©codeit - 2023</Copy>
       <Info>
         <a href="/privacy">Privacy Policy</a>

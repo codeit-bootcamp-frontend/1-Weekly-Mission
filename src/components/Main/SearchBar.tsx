@@ -29,7 +29,7 @@ function SearchBar() {
         <SerachInput ref={input} name="folderId" placeholder="링크를 검색해보세요." value={value} onChange={handleChange} />
       </form>
       <SearchImg src={searchImg} alt="검색창 표시 이미지" />
-      <CloseImg tabIndex={0} src={closeImg} alt="검색어를 지웁니다." onClick={handleClick} />
+      {value && <CloseImg tabIndex={0} src={closeImg} alt="검색어를 지웁니다." onClick={handleClick} />}
     </ContainerSearch>
   );
 }
