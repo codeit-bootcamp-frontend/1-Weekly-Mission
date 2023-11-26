@@ -35,6 +35,7 @@ export const Input = styled.input`
   padding: 0.8rem 1rem 0.8rem 3.3rem;
   width: 100%;
   height: 5.3rem;
+  outline: none;
   border: 0.1rem solid ${COLORS.LB_PRIMARY};
   border-radius: 1.5rem;
   font-size: 1.4rem;

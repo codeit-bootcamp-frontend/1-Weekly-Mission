@@ -38,7 +38,6 @@ function Folder() {
 
   const initialKeyword = searchParams.get('keyword') ?? '';
   const [keyword, setKeyword] = useState(initialKeyword ?? '');
-  // const links = getLinks(initialKeyword);
 
   const onKeywordChange = (e: ChangeEvent<HTMLInputElement>) =>
     setKeyword(e.target.value);
@@ -53,6 +52,11 @@ function Folder() {
     }
   };
 
+  const onReset = () => {
+    setKeyword('');
+    setFolderLinks(Number(initialFolderId));
+  };
+
   const filteredLinks = filterLinks(links?.data, initialKeyword);
 
   return (
@@ -60,9 +64,10 @@ function Folder() {
       <AddLinkContainer userId={DEFAULT_USER_ID} />
       <S.ContentContainer>
         <SearchBar
+          value={keyword}
           onSearch={onSearch}
           onChange={onKeywordChange}
-          value={keyword}
+          onReset={onReset}
         />
         <S.SearchText $show={Boolean(initialKeyword)}>
           <span>{initialKeyword}</span>
