@@ -47,6 +47,7 @@ const SearchBar = ({ linksListData, onChange }: Props) => {
   useEffect(() => {
     if (onChange) {
       onChange(linksListData);
+      setInputValue("");
     }
   }, [linksListData, onChange]);
 

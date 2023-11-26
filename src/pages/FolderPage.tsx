@@ -66,6 +66,7 @@ const FolderPage = () => {
   useEffect(() => {
     handleLoadFolderListData();
   }, [handleLoadFolderListData]);
+
   return (
     <>
       <header className={styles.header}>
