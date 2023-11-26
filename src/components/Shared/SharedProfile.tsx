@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
-function SharedProfile({ sharedProfile }) {
+interface Props {
+  sharedProfile: {
+    avatarUrl?: string;
+    ownerName?: string;
+    folderName?: string;
+  }
+}
+
+function SharedProfile({ sharedProfile }: Props) {
   const avatarUrl = sharedProfile?.avatarUrl ?? '';
   const ownerName = sharedProfile?.ownerName ?? '';
   const folderName = sharedProfile?.folderName ?? '';
