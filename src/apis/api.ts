@@ -44,7 +44,7 @@ export async function getLink() {
   return result;
 }
 
-export async function getLinksFolderId(id) {
+export async function getLinksFolderId(id: number) {
   const response = await fetch(`${BASE_URL}/users/1/links?folderId=${id}`);
 
   if (!response.ok) {
