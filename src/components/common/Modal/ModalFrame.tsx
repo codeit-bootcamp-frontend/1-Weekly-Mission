@@ -13,7 +13,7 @@ function ModalFrame({ children, onClickClose }: Props) {
 
   return (
     <div>
-      <Mask />
+      <Mask onClick={onClickClose} />
       <Body>
         <CloseIcon src={closeBtn} alt="모달 닫기 버튼" onClick={onClickClose} />
         <Container>{children}</Container>
