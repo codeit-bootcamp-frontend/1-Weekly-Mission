@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Image } from 'components/CardList/Card/Card.style';
 import { onMobile, onTablet } from 'styles/mediaQuery';
 import { COLORS } from 'styles/color';
+import { Image } from './SampleCard/SampleCard.style';
 
 export const CardListContainer = styled.ul`
   display: grid;
