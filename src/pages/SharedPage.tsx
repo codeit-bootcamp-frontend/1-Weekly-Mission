@@ -15,25 +15,24 @@ import SharedPageCardItem from "../components/Card/SharedPageCardItem";
 import getUserLinks from "../api/getUserLinks";
 import getUserFolder from "../api/getUserFolder";
 import getUser from "../api/getUser";
+import SearchBar from "../components/Search/SearchBar";
 
 // type 수정해야함
 const SharedPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, _] = useSearchParams();
-  const [userData, setUserData] = useState<any>({});
-  const [folderData, setFolderData] = useState<any>({});
-  const [linksData, setLinksData] = useState<any>({});
-  const { status: isLoadingUserData, wrappedFunction: getUserDataAsync }: any =
+  const [userData, setUserData] = useState<UserData>();
+  const [folderData, setFolderData] = useState<UserFolderData>();
+  const [linksData, setLinksData] = useState<LinksData>();
+  const [searchData, setSearchData] = useState(linksData);
+  const { status: isLoadingUserData, wrappedFunction: getUserDataAsync } =
     useAsync(getUser);
-  const { wrappedFunction: getUserFolderDataAsync }: any =
-    useAsync(getUserFolder);
-  const {
-    status: isLoadingLinksList,
-    wrappedFunction: getLinksListAsync,
-  }: any = useAsync(getUserLinks);
+  const { wrappedFunction: getUserFolderDataAsync } = useAsync(getUserFolder);
+  const { status: isLoadingLinksList, wrappedFunction: getLinksListAsync } =
+    useAsync(getUserLinks);
 
-  const userId = searchParams.get("user");
-  const folderId = searchParams.get("folder");
+  const userId = Number(searchParams.get("user"));
+  const folderId = Number(searchParams.get("folder"));
 
   const handleLoadFolderData = useCallback(async () => {
     try {
@@ -77,14 +76,16 @@ const SharedPage = () => {
         </Loadable>
       </header>
       <main>
-        <Search />
+        <Search>
+          <SearchBar linksListData={linksData} onChange={setSearchData} />
+        </Search>
         <Loadable
           isLoading={isLoadingLinksList}
           fallback={<CardListSkeleton size={9} />}
         >
           <Card>
-            {linksData?.data &&
-              linksData.data.map((link: any) => {
+            {searchData?.data &&
+              searchData.data.map((link: any) => {
                 const {
                   id,
                   created_at,

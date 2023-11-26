@@ -16,18 +16,15 @@ import Loadable from "../components/Skeleton/Loadable";
 import CardListSkeleton from "../components/Skeleton/CardListSkeleton/CardListSkeleton";
 import FolderPageCardItem from "../components/Card/FolderPageCardItem";
 import NotFoundLink from "../components/Card/NotFoundLink";
-import AddLinkModal from "../components/Modal/AddLinkModal";
+import AddLinkModal from "../components/Modal/AddLinkModal/AddLinkModal";
 import AddLinkInput from "../components/AddLink/AddLinkInput";
 import CategoryList from "../components/Category/CategoryList";
 import AddFolderButton from "../components/AddFolderButton/AddFolderButton";
-import AddFolderModal from "../components/Modal/AddFolderModal";
+import AddFolderModal from "../components/Modal/AddFolderModal/AddFolderModal";
 import AddLinkButton from "../components/AddLink/AddLinkButton";
 import CurrentFolder from "../components/FolderUtils/CurrentFolder";
 import FolderEdit from "../components/FolderUtils/FolderEdit";
-
-interface LinksListData {
-  data?: Link[];
-}
+import SearchBar from "../components/Search/SearchBar";
 
 const FolderPage = () => {
   const userId = useUserId();
@@ -48,7 +45,8 @@ const FolderPage = () => {
       },
     ],
   });
-  const [linksListData, setLinksListData] = useState<LinksListData>();
+  const [linksListData, setLinksListData] = useState<LinksData>();
+  const [searchData, setSearchData] = useState(linksListData);
   const { wrappedFunction: getFolderListAsync } = useAsync(getUserFolders);
   const { status: isLoadingLinksList, wrappedFunction: getLinksListAsync } =
     useAsync(getUserLinks);
@@ -62,7 +60,7 @@ const FolderPage = () => {
     ]);
 
     setFolderListData(folderListResponseData as UserFolderData);
-    setLinksListData(linksListResponseData as LinksListData);
+    setLinksListData(linksListResponseData as LinksData);
   }, [getFolderListAsync, getLinksListAsync, userId, folderId]);
 
   useEffect(() => {
@@ -83,7 +81,9 @@ const FolderPage = () => {
         </AddLink>
       </header>
       <main className={styles.main}>
-        <Search />
+        <Search>
+          <SearchBar linksListData={linksListData} onChange={setSearchData} />
+        </Search>
         <Category>
           <CategoryList
             folderListData={folderListData}
@@ -105,8 +105,8 @@ const FolderPage = () => {
           fallback={<CardListSkeleton size={9} />}
         >
           <Card>
-            {linksListData?.data &&
-              linksListData.data.map((link) => {
+            {searchData?.data &&
+              searchData.data.map((link) => {
                 const { created_at, url, title, description, image_source } =
                   link;
                 const formattedCreatedAt = formatDate(created_at);
@@ -127,7 +127,7 @@ const FolderPage = () => {
                 );
               })}
           </Card>
-          {linksListData?.data?.length === 0 ? <NotFoundLink /> : undefined}
+          {searchData?.data?.length === 0 ? <NotFoundLink /> : undefined}
         </Loadable>
       </main>
     </>
