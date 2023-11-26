@@ -9,7 +9,6 @@ function NotFoundPage() {
     <>
       <LinkAdd />
       <MainSection>
-        <Search />
         <NotFoundLink />
       </MainSection>
     </>
