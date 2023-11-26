@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
-function FolderCategoryButton({ category, onGetCategory }) {
+interface Props {
+  category: {
+    id: number;
+    name: string;
+  };
+  onGetCategory: (params: {id: number, name: string}) => void;
+
+}
+
+function FolderCategoryButton({ category, onGetCategory }: Props) {
 
   const handleGetCategoryClick = () => {
     onGetCategory({
