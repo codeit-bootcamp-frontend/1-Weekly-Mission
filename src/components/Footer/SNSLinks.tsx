@@ -3,6 +3,7 @@ import facebook_icon from '../../assets/svg/facebook.svg';
 import twitter_icon from '../../assets/svg/twitter.svg';
 import youtube_icon from '../../assets/svg/youtube.svg';
 import instagram_icon from '../../assets/svg/instagram.svg';
+import SNSLink from './SNSLink';
 
 const SNS_LINKS = [
   {
@@ -40,16 +41,6 @@ function SNSLinks() {
         );
       })}
     </SNSLinksStyle>
-  );
-}
-
-function SNSLink({ snsLink }) {
-  return (
-    <>
-      <a href={snsLink.url} target='_blank' rel='noopener noreferrer'>
-        <img src={snsLink.icon} alt={`${snsLink.alt} 홈페이지로 연결된 ${snsLink.alt} 로고`} />
-      </a>
-    </>
   );
 }
 
