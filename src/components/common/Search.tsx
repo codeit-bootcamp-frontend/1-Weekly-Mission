@@ -1,12 +1,23 @@
+import { ChangeEvent } from 'react';
 import searchImg from '../../assets/images/Search.svg';
 import styled from 'styled-components';
 
-export default function Search() {
+interface Props {
+  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+}
+
+export default function Search({ onInputChange, value }: Props) {
   return (
     <Container>
       <Box>
         <Img src={searchImg} alt='search' />
-        <Input type='text' placeholder='링크를 검색해 보세요' />
+        <Input
+          type='text'
+          placeholder='링크를 검색해 보세요'
+          onChange={onInputChange}
+          value={value}
+        />
       </Box>
     </Container>
   );

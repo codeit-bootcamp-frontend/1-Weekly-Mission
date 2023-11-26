@@ -36,10 +36,8 @@ function App() {
     const target = entries[0];
     if (!target.isIntersecting) {
       setFooterView(false);
-      console.log('푸터 안보인다');
     } else {
       setFooterView(true);
-      console.log('푸터 보인다');
     }
   }, []);
 

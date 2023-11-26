@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback, useRef, ChangeEvent } from 'react';
 import LinkAdd from '../components/Folder/LinkAdd';
 import Search from '../components/common/Search';
 import FolderList from '../components/Folder/FolderList';
@@ -26,9 +26,13 @@ interface OutletContext {
   footerView: boolean;
 }
 
+interface Link {
+  [key: string]: string;
+}
+
 export default function Folder() {
   const [userFolder, setUserFolder] = useState<any>(null);
-  const [links, setLinks] = useState();
+  const [links, setLinks] = useState<any>();
   const [isOpen, setIsOpen] = useState(false);
   const [currentModal, setCurrentModal] = useState<CurrentModal>({
     name: '',
@@ -38,10 +42,11 @@ export default function Folder() {
     name: '전체',
   });
   const [fixed, setFixed] = useState<boolean>(false);
+  const [linkSearch, setLinkSearch] = useState<string>('');
+  const [filteredLinks, setFilteredLinks] = useState<any>([]);
   const InputRef = useRef(null);
   const outletContext: OutletContext = useOutletContext();
   const { urlPath, footerView } = outletContext;
-
   const paramsId: string | null = searchParams.get('folderId');
 
   const getFolderData = useCallback(async () => {
@@ -58,11 +63,34 @@ export default function Folder() {
     } = folderName;
     setUserFolder(data);
     setLinks(linkData.data);
+    setFilteredLinks(linkData.data);
     setCurrentFolder({ id: paramsId, name });
   }, [paramsId]);
 
   const handleCurrentFolder = ({ id }: any) => {
     setSearchParams({ folderId: id });
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setLinkSearch(value);
+    setFilteredLinks(linkFilter(value.toLowerCase()));
+  };
+
+  const linkFilter = (value: string) => {
+    let filtered;
+    if (value.length > 0) {
+      filtered = links.filter((link: Link) => {
+        return (
+          link.title?.toLowerCase().includes(value) ||
+          link.description?.toLowerCase().includes(value) ||
+          link.url?.toLowerCase().includes(value)
+        );
+      });
+    } else {
+      return links;
+    }
+    return filtered;
   };
 
   const handleModalOpen = (name: string, link?: string) => {
@@ -83,10 +111,8 @@ export default function Folder() {
     const target = entries[0];
     if (!target.isIntersecting) {
       setFixed(true);
-      console.log('검색 안보인다');
     } else {
       setFixed(false);
-      console.log('검색 보인다');
     }
   }, []);
 
@@ -104,7 +130,7 @@ export default function Folder() {
         <LinkAdd fixed={false} />
       </div>
       <Container>
-        <Search />
+        <Search onInputChange={handleInputChange} value={linkSearch} />
         {userFolder ? (
           <div>
             <FolderList
@@ -118,7 +144,7 @@ export default function Folder() {
               onModalOpen={handleModalOpen}
             />
             <CardList
-              cards={links}
+              cards={filteredLinks}
               urlPath={urlPath}
               onModalOpen={handleModalOpen}
             />
