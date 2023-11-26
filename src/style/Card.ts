@@ -12,8 +12,11 @@ export const CardContainer = styled.div`
   &:hover {
     background-color: var(--linkbrary-bg);
   }
+
+  &:hover .thumbnail {
+    transform: scale(1.3);
+  }
 `;
-//위에 카드 호버시 이미지 처리하기
 
 export const ImageBox = styled.div`
   width: 100%;

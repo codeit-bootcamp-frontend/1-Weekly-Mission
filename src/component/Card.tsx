@@ -60,6 +60,7 @@ function Card({ data, onClick }) {
         <Star isStared={star} onClick={handleStarClick} />
         <Styled.ImageBox>
           <Styled.Image
+            className="thumbnail"
             src={data.image_source || noImageIMG}
             alt={data.image_source ? "카드 이미지" : "이미지 없음"}
           />
