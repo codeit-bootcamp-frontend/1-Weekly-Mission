@@ -1,13 +1,16 @@
-import CardList from '../Card/CardList';
+import CardList, { CardProps } from '../Card/CardList';
 import SearchForm from '../Search/SearchForm';
 import Main from '../Main/Main';
 
-function SharedMain({ cards, cardsLoadingError }) {
+interface Props {
+  cards: CardProps[];
+}
+
+function SharedMain({ cards }: Props) {
   return (
     <Main>
       <SearchForm />
       <CardList items={cards} />
-      {cardsLoadingError?.message && <span>{cardsLoadingError.message}</span>}
     </Main>
   );
 }
