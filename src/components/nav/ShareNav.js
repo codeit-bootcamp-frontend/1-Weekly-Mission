@@ -9,7 +9,7 @@ import { ReactComponent as Login } from "../../assets/images/login.svg";
 import styles from "./Nav.module.css";
 
 import useFetchData from "../../hooks/useFetchData";
-import { getShareUserData } from "../../api/share";
+import { getShareUserData } from "../../api/share.ts";
 
 export default function ShareNav() {
   const [userData] = useFetchData(getShareUserData);

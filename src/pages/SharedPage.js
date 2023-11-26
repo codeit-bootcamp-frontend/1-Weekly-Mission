@@ -5,7 +5,7 @@ import Footer from "../common/footer/Footer";
 import SearchBar from "../common/searchBar/SearchBar";
 import React from "react";
 import useFetchData from "../hooks/useFetchData";
-import { getShareData } from "../api/share";
+import { getShareData } from "../api/share.ts";
 export default function SharedPage() {
   const [data, isLoading] = useFetchData(getShareData);
 
