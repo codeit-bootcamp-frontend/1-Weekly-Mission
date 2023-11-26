@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   padding: 6rem 3.2rem 9rem 3.2rem;
+  background: var(--linkbrary-bg, #f0f6ff);
 }
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */

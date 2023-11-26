@@ -1,19 +1,20 @@
 .folderInfo {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding-top: 2rem;
   padding-bottom: 6rem;
+  background: var(--linkbrary-bg, #f0f6ff);
 }
 
 .profileInfo {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .profileImg {
