@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { breakPoints } from "styles/media";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $isVisible: boolean }>`
   height: 160px;
   background-color: var(--color-black);
+  z-index: ${({ $isVisible }) => ($isVisible ? "1" : "auto")};
 `;
 
 export const Contact = styled.div`

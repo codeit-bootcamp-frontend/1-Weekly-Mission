@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import facebookIcon from "assets/akar-icons_facebook-fill.svg";
@@ -16,6 +16,7 @@ const options = {
 
 export default function Footer() {
   const target = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -24,6 +25,7 @@ export default function Footer() {
       if (entries[0].isIntersecting) {
         // footer를 가장 위에 보이게
         console.log("관찰대상(footer)에 들어옴");
+        setIsVisible(true);
       }
     }, options);
 
@@ -33,11 +35,12 @@ export default function Footer() {
 
     return () => {
       observer.disconnect();
+      setIsVisible(false);
     };
   }, []);
 
   return (
-    <S.Wrapper ref={target}>
+    <S.Wrapper ref={target} $isVisible={isVisible}>
       <S.Contact>
         <S.Rights>©codeit - 2023</S.Rights>
         <S.Policy>
