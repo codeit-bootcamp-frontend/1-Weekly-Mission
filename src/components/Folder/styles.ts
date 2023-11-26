@@ -1,4 +1,8 @@
-import styled from "styled-components"
+import styled from 'styled-components';
+
+interface FolderBoxItem {
+  selected: boolean;
+}
 
 const FolderListBox = styled.div`
   display: flex;
@@ -6,7 +10,7 @@ const FolderListBox = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 1.2rem;
-`
+`;
 
 const FolderListInnerBox = styled.div`
   display: flex;
@@ -16,7 +20,7 @@ const FolderListInnerBox = styled.div`
   @media screen and (max-width: 767px) {
     flex-wrap: wrap;
   }
-`
+`;
 const FolderBoxText = styled.p`
   font-size: 1.6rem;
   font-style: normal;
@@ -32,9 +36,9 @@ const FolderBoxText = styled.p`
     font-size: 1rem;
     display: flex;
   }
-`
+`;
 
-const FolderBox = styled.div`
+const FolderBox = styled.div<FolderBoxItem>`
   cursor: pointer;
   display: flex;
   padding: 0.8rem 1.2rem;
@@ -43,15 +47,15 @@ const FolderBox = styled.div`
   border-radius: 0.5rem;
   border: 0.1rem solid var(--linkbrary-primary-color);
   background-color: ${({ selected }) =>
-    selected ? "var(--linkbrary-primary-color);" : "#fff"};
-  color: ${({ selected }) => (selected ? "#fff" : "#000")};
+    selected ? 'var(--linkbrary-primary-color);' : '#fff'};
+  color: ${({ selected }) => (selected ? '#fff' : '#000')};
 
   &:hover {
     border: 1px solid var(--linkbrary-primary-color);
     background: var(--linkbrary-primary-color);
     color: #fff;
   }
-`
+`;
 
 const FolderAddBox = styled.div`
   cursor: pointer;
@@ -80,7 +84,7 @@ const FolderAddBox = styled.div`
   &:hover {
     transform: scale(1.1);
   }
-`
+`;
 
 const FolderAddText = styled.p`
   color: #6d6afe;
@@ -99,7 +103,7 @@ const FolderAddText = styled.p`
   @media screen and (max-width: 767px) {
     color: var(--linkbrary-white);
   }
-`
+`;
 
 const FolderAddImage = styled.img`
   width: 1.6rem;
@@ -107,7 +111,7 @@ const FolderAddImage = styled.img`
   @media screen and (max-width: 767px) {
     display: none;
   }
-`
+`;
 
 const FolderAddWhiteImage = styled.img`
   display: none;
@@ -116,7 +120,7 @@ const FolderAddWhiteImage = styled.img`
     width: 1.6rem;
     height: 1.6rem;
   }
-`
+`;
 
 const FolderNameHeader = styled.h1`
   color: #000;
@@ -125,13 +129,13 @@ const FolderNameHeader = styled.h1`
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.2px;
-`
+`;
 
 const FolderOptionsBox = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
-`
+`;
 
 const FolderOptionItemBox = styled.div`
   cursor: pointer;
@@ -159,7 +163,7 @@ const FolderOptionItemBox = styled.div`
     font-weight: 600;
     line-height: normal;
   }
-`
+`;
 
 export {
   FolderBox,
@@ -173,4 +177,4 @@ export {
   FolderNameHeader,
   FolderOptionsBox,
   FolderOptionItemBox,
-}
+};

@@ -9,4 +9,10 @@ const StyledHeader = styled.header`
   background-color: var(--linkbrary-bg);
 `;
 
-export { StyledHeader };
+const FolderMainBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export { StyledHeader, FolderMainBox };

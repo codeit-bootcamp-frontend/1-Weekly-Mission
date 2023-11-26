@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const AddLinkOuterBox = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const AddLinkOuterBox = styled.div`
     padding: 24px 32px 40px 32px;
     align-self: stretch;
   }
-`
+`;
 
 const AddLinkBox = styled.div`
   display: flex;
@@ -42,31 +42,31 @@ const AddLinkBox = styled.div`
     width: 32.5rem;
     height: 5.3rem;
   }
-`
+`;
 
 const AddLinkInputBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-`
+`;
 
 const AddLinkInnerBox = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-`
+`;
 
 const AddLinkInputInnerBox = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 const AddLinkImage = styled.img`
   width: 20px;
   height: 20px;
   margin-right: 0.4rem;
-`
+`;
 
 const AddLinkContentInput = styled.input`
   color: var(--linkbrary-gray-60, #9fa6b2);
@@ -89,7 +89,7 @@ const AddLinkContentInput = styled.input`
     width: 13rem;
     font-size: 1.3rem;
   }
-`
+`;
 
 export {
   AddLinkBox,
@@ -99,4 +99,4 @@ export {
   AddLinkInputBox,
   AddLinkOuterBox,
   AddLinkInputInnerBox,
-}
+};

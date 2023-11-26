@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const NavBox = styled.nav`
   position: relative;
@@ -20,7 +20,7 @@ const NavBox = styled.nav`
   @media screen and (max-width: 767px) {
     padding: 0;
   }
-`
+`;
 
 const NavInnerBox = styled.div`
   width: 152rem;
@@ -37,18 +37,18 @@ const NavInnerBox = styled.div`
     width: 100%;
     padding: 0 min(3.2rem);
   }
-`
+`;
 
 const ProfileBox = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-`
+`;
 
 const ProfileImage = styled.img`
   width: 2.8rem;
   border-radius: 100%;
-`
+`;
 
 const ProfileCollapseParagraph = styled.p`
   color: var(--linkbrary-gray-100, #373740);
@@ -61,13 +61,13 @@ const ProfileCollapseParagraph = styled.p`
   @media screen and (max-width: 767px) {
     display: none;
   }
-`
+`;
 
 const NavLogoImage = styled.img`
   @media screen and (max-width: 767px) {
     width: 8.9rem;
   }
-`
+`;
 
 export {
   NavBox,
@@ -76,4 +76,4 @@ export {
   ProfileImage,
   ProfileCollapseParagraph,
   NavLogoImage,
-}
+};

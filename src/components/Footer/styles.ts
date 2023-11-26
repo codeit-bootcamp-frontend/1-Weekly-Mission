@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom"
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const FooterBox = styled.footer`
   display: flex;
@@ -12,7 +12,7 @@ const FooterBox = styled.footer`
   @media screen and (max-width: 767px) {
     padding: 3.2rem;
   }
-`
+`;
 
 const FooterInnerBox = styled.div`
   display: flex;
@@ -25,13 +25,13 @@ const FooterInnerBox = styled.div`
   @media screen and (max-width: 767px) {
     display: grid;
     grid-template:
-      "footer-text sns"
-      "copyright ."
+      'footer-text sns'
+      'copyright .'
       /18.1rem 14.5rem;
     row-gap: 6rem;
     padding: 0;
   }
-`
+`;
 
 const FooterCopyrightSpan = styled.span`
   color: var(--linkbrary-footer-copyright);
@@ -41,7 +41,7 @@ const FooterCopyrightSpan = styled.span`
   @media screen and (max-width: 767px) {
     grid-area: copyright;
   }
-`
+`;
 
 const FooterLinksBox = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ const FooterLinksBox = styled.div`
   @media screen and (max-width: 767px) {
     grid-area: footer-text;
   }
-`
+`;
 
 const FooterStyledLink = styled(Link)`
   color: var(--linkbrary-footer-text);
@@ -61,7 +61,7 @@ const FooterStyledLink = styled(Link)`
   text-decoration: none;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 100%;
     height: 1px;
@@ -82,7 +82,7 @@ const FooterStyledLink = styled(Link)`
     transform-origin: left;
     transform: scaleX(1);
   }
-`
+`;
 
 const FooterSnsBox = styled.div`
   display: flex;
@@ -92,7 +92,7 @@ const FooterSnsBox = styled.div`
   @media screen and (max-width: 767px) {
     grid-area: sns;
   }
-`
+`;
 
 const FooterSnsImage = styled.img`
   height: 2rem;
@@ -100,7 +100,7 @@ const FooterSnsImage = styled.img`
     transform: scale(1.4);
     transition: transform 0.3s ease-in-out;
   }
-`
+`;
 
 export {
   FooterBox,
@@ -110,4 +110,4 @@ export {
   FooterStyledLink,
   FooterSnsBox,
   FooterSnsImage,
-}
+};

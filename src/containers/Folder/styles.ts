@@ -1,14 +1,30 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const CardContainerBox = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 4rem;
   margin: 4rem auto;
   padding: 0 clamp(3.2rem, 5%, 19rem);
-`
+`;
+
+const FolderSearchTextBox = styled.div`
+  display: flex;
+  color: var(--linkbrary-gray-60, #9fa6b2);
+  span {
+    color: var(--linkbrary-gray-100, #373740);
+  }
+
+  /* Linkbrary/h2-semibold */
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+`;
 
 const FolderContainerBox = styled.div`
   display: flex;
@@ -23,7 +39,7 @@ const FolderContainerBox = styled.div`
   @media screen and (max-width: 767px) {
     width: 32.5rem;
   }
-`
+`;
 
 const FolderNameBox = styled.div`
   display: flex;
@@ -41,7 +57,7 @@ const FolderNameBox = styled.div`
     align-items: flex-start;
     gap: 1.2rem;
   }
-`
+`;
 
 const NoLinkBox = styled.div`
   display: flex;
@@ -56,7 +72,7 @@ const NoLinkBox = styled.div`
   @media screen and (max-width: 767px) {
     margin-bottom: 40rem;
   }
-`
+`;
 
 const NoLinkInnerBox = styled.div`
   display: flex;
@@ -65,7 +81,7 @@ const NoLinkInnerBox = styled.div`
   padding: 4.1rem 0 3.5rem 0;
   justify-content: center;
   align-items: center;
-`
+`;
 const NoLinkParagraph = styled.p`
   color: #000;
   text-align: center;
@@ -74,13 +90,14 @@ const NoLinkParagraph = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 2.4rem; /* 150% */
-`
+`;
 
 export {
   CardContainerBox,
   FolderContainerBox,
+  FolderSearchTextBox,
   FolderNameBox,
   NoLinkBox,
   NoLinkInnerBox,
   NoLinkParagraph,
-}
+};
