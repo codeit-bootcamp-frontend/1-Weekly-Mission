@@ -2,7 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../style/colors";
 
-function Header({ name = "", owner = {} }) {
+
+//? 붙여주는 게 정답인가?
+interface HeaderProps {
+  name?: string;
+  owner?: {
+    name: string;
+    profileImageSource: string;
+  };
+}
+function Header({ name, owner }: HeaderProps) {
   return (
     <HeaderContainer>
       <HeaderOwner>

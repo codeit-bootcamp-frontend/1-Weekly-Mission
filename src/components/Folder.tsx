@@ -1,10 +1,11 @@
 import Header from "./Header";
 import getSample from "../api";
 import useAsync from "../Hooks/useAsync";
-
+import React from "react";
 import Main from "./Main";
 import SearchBar from "./SearchBar";
 import CardList from "./CardList";
+
 
 function Folder() {
   const { data } = useAsync(() => getSample("folder"));
@@ -16,7 +17,7 @@ function Folder() {
 
   return (
     <>
-      {data && <Header name={name} owner={owner} />}
+      {data && <Header name={name} owner={owner}  />}
 
       <Main>
         <SearchBar />

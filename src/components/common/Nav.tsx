@@ -29,7 +29,7 @@ interface NavProps {
 
 function Nav({ path, email, profileImageSource }: NavProps) {
   return (
-    <NavContainer path={path}>
+    <NavContainer $path={path}>
       <NavContent className="container">
         <LogoImage src={logoImg} alt="로고 이미지" />
 
@@ -43,11 +43,11 @@ function Nav({ path, email, profileImageSource }: NavProps) {
   );
 }
 
-const NavContainer = styled.nav`
+const NavContainer = styled.nav<{ $path: string }>`
   padding: 2rem 12rem;
   background: ${colors.background};
   ${(props) =>
-    props.path === "shared" &&
+    props.$path === "shared" &&
     css`
       position: sticky;
       top: 0;

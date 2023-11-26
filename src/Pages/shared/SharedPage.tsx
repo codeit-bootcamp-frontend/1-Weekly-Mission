@@ -1,12 +1,12 @@
 import useAsync from "../../Hooks/useAsync";
-import getSample from "../../api";
+import { getSampleUser } from "../../api";
 import Folder from "../../components/Folder";
-
+import React from "react";
 import Footer from "../../components/common/Footer";
 import Nav from "../../components/common/Nav";
 
 function SharedPage() {
-  const { data } = useAsync(() => getSample("user"));
+  const { data } = useAsync(() => getSampleUser("user"));
 
   if (!data) return null;
 
@@ -24,5 +24,4 @@ function SharedPage() {
     </>
   );
 }
-
 export default SharedPage;
