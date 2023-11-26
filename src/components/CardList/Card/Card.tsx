@@ -16,8 +16,8 @@ interface Props {
 
 function Card({ item }: Props) {
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
-  const [modalIsOpen1, setModalIsOpen1] = useState(false);
-  const [modalIsOpen2, setModalIsOpen2] = useState(false);
+  const [modalDeleteLinkIsOpen, setModalDeleteLinkIsOpen] = useState(false);
+  const [modalAddLinkIsOpen, setModalAddLinkIsOpen] = useState(false);
 
   const { image_source, created_at, title, description, url } = item;
   const timeDiff = formatTimeDiff(created_at);
@@ -39,15 +39,15 @@ function Card({ item }: Props) {
               <S.PopoverButton
                 onClick={(e) => {
                   e.preventDefault();
-                  setModalIsOpen1(true);
+                  setModalDeleteLinkIsOpen(true);
                 }}>
                 삭제하기
               </S.PopoverButton>
-              {modalIsOpen1 && (
+              {modalDeleteLinkIsOpen && (
                 <Modal
                   close={(e: MouseEvent) => {
                     e.preventDefault();
-                    setModalIsOpen1(false);
+                    setModalDeleteLinkIsOpen(false);
                   }}>
                   <ModalDeleteLink url={url} />
                 </Modal>
@@ -55,15 +55,15 @@ function Card({ item }: Props) {
               <S.PopoverButton
                 onClick={(e) => {
                   e.preventDefault();
-                  setModalIsOpen2(true);
+                  setModalAddLinkIsOpen(true);
                 }}>
                 폴더에 추가
               </S.PopoverButton>
-              {modalIsOpen2 && (
+              {modalAddLinkIsOpen && (
                 <Modal
                   close={(e: MouseEvent) => {
                     e.preventDefault();
-                    setModalIsOpen2(false);
+                    setModalAddLinkIsOpen(false);
                   }}>
                   <ModalAddLink url={url} />
                 </Modal>
