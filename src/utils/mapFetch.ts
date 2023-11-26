@@ -21,12 +21,11 @@ interface MapCardDataReturn {
 interface MapNavbarDataProps {
   id: number;
   created_at?: string;
-  createdAt?: string;
   name: string;
   image_source?: string;
   profileImageSource?: string;
   email: string;
-  auth_id: string;
+  auth_id?: string;
 }
 
 interface MapNavbarDataReturn {
