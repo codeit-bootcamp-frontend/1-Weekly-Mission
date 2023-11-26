@@ -4,9 +4,9 @@ function useAsync(asyncFunction, deps = [], skip = false) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
   const fetchData = async (...args) => {
+    setPending(true);
+    setError(null);
     try {
-      setPending(true);
-      setError(null);
       const fetchedData = await asyncFunction(...args);
       setData(fetchedData);
     } catch (error) {
@@ -15,7 +15,6 @@ function useAsync(asyncFunction, deps = [], skip = false) {
       setPending(false);
     }
   };
-
   useEffect(() => {
     if (skip) return;
     fetchData();

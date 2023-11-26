@@ -24,13 +24,11 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
     }
   };
 
-  const handleModal =
-    ({ feature }) =>
-    () => {
-      let folderName = selectedFolder?.name;
-      setModal(ModalMaker({ feature, folderName, setIsModalOpen }));
-      setIsModalOpen(true);
-    };
+  const handleModal = ({ feature }) => {
+    let folderName = selectedFolder?.name;
+    setModal(ModalMaker({ feature, folderName, setIsModalOpen }));
+    setIsModalOpen(true);
+  };
 
   return (
     <>
@@ -53,7 +51,9 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
               </S.Button>
             ))}
         </S.FolderButtons>
-        <S.AddFolderButton onClick={(e) => handleModal()(e)}>
+        <S.AddFolderButton
+          onClick={() => handleModal({ feature: "폴더 추가 +" })}
+        >
           폴더 추가 +
         </S.AddFolderButton>
       </S.ButtonContainer>
@@ -65,17 +65,17 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
             <Icon
               img={shareIcon}
               feature={"공유"}
-              onClick={(e) => handleModal({ feature: "공유" })(e)}
+              onClick={() => handleModal({ feature: "공유" })}
             />
             <Icon
               img={modifyIcon}
               feature={"이름 변경"}
-              onClick={(e) => handleModal({ feature: "이름 변경" })(e)}
+              onClick={() => handleModal({ feature: "이름 변경" })}
             />
             <Icon
               img={deleteIcon}
               feature={"삭제"}
-              onClick={(e) => handleModal({ feature: "삭제" })(e)}
+              onClick={() => handleModal({ feature: "삭제" })}
             />
           </S.Icons>
         )}
