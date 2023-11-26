@@ -13,9 +13,9 @@ function SearchBar({ keyword, searchValue, handleSubmit, handleChange }) {
         />
       </Styled.Form>
       {searchValue && (
-        <Styled.Text>
+        <Styled.TextDiv>
           <Styled.Span>{searchValue}</Styled.Span>으로 검색한 결과입니다.
-        </Styled.Text>
+        </Styled.TextDiv>
       )}
     </>
   );

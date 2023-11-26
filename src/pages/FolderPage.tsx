@@ -18,7 +18,7 @@ function FolderPage() {
     setFolders(folders);
   }
 
-  async function getFolderLink(id) {
+  async function getFolderLink(id: string | number) {
     const links = await getFolderLinks(id);
     setLinks(links);
   }

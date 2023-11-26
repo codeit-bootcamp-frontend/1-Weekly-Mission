@@ -18,7 +18,7 @@ export const Input = styled.input`
   background: transparent;
 `;
 
-export const Text = styled.h1`
+export const TextDiv = styled.div`
   display: inline-block;
   width: 100%;
   justify-content: start;
@@ -31,7 +31,7 @@ export const Text = styled.h1`
   color: var(--linkbrary-gray-60);
 `;
 
-export const Span = styled(Text)`
+export const Span = styled(TextDiv)`
   display: inline;
   color: var(--linkbrary-gray-100);
 `;
