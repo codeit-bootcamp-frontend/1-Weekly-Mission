@@ -37,7 +37,7 @@ export default function Header({ items }) {
           </S.LinkSearchBox>
         </S.ContainerFolderPage>
       )}
-      {(isIntersecting) && (
+      {(!items && isIntersecting) && (
         <S.ContainerFolderPage $isintersecting={isIntersecting}>
           <S.LinkSearchBox>
             <S.LinkBox>

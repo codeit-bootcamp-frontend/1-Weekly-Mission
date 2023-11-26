@@ -7,6 +7,8 @@ export const StyleGlobal = createGlobalStyle`
     --linkbrary-red : #FF5B56 ;
     --yellow : #FEE500;
     --blue : #1877F2;
+    --gray-100 : #373740;
+    --gray-60: #9FA6B2; 
   }
 
   * {

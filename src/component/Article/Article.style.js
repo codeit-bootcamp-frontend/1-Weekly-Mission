@@ -16,3 +16,15 @@ export const ArticleSection = styled.div`
     gap: 32px;
   }
 `;
+
+export const P = styled.p`
+  color: var(--gray-100);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+
+  span {
+    font-size: 32px;
+    color: var(--gray-60);
+  }
+`;
