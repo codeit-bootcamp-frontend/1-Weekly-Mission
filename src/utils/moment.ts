@@ -1,7 +1,7 @@
 import moment from "moment";
 
 // day.js 써보기
-export function timeForToday(createdAt) {
+export function timeForToday(createdAt: string) {
   const today = moment();
   const createdTime = moment(createdAt);
 

@@ -4,7 +4,7 @@ import { debounce } from "lodash";
 export const useScroll = () => {
   const [scrollY, setScrollY] = useState(0);
 
-  const listener = (mounted) => {
+  const listener = (mounted: boolean) => {
     if (mounted) {
       setScrollY(window.scrollY);
     }
@@ -20,7 +20,7 @@ export const useScroll = () => {
     );
     return () => {
       mounted = false;
-      window.removeEventListener("scroll", listener);
+      window.removeEventListener("scroll", () => listener(mounted));
     };
   });
 
