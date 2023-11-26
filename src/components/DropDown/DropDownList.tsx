@@ -1,18 +1,46 @@
+import { MouseEvent, RefObject } from "react";
 import { Modal, ModalContentName, AddFolderModal } from "components";
+import useModal from "hooks/useModal";
 import ModalPortal from "Portal";
 import * as Styled from "./StyledDropDown";
 
-function DropDownList({ url, folderData, anchorRef, addModal, deleteModal }) {
-  const [isAddOpen, openAdd, closeAdd] = addModal;
-  const [isDeleteOpen, openDelete, closeDelete] = deleteModal;
+interface LinkCount {
+  count: number;
+}
 
-  const handleDeleteClick = (e) => {
+interface FoldersData {
+  id?: number;
+  created_at?: string;
+  name: string;
+  user_id?: number;
+  link: LinkCount;
+}
+
+interface Props {
+  url: string;
+  folderData: FoldersData[];
+  anchorRef: RefObject<HTMLDivElement>;
+}
+
+function DropDownList({ url, folderData, anchorRef }: Props) {
+  const {
+    isOpen: isAddOpen,
+    openModal: openAdd,
+    closeModal: closeAdd,
+  } = useModal();
+  const {
+    isOpen: isDeleteOpen,
+    openModal: openDelete,
+    closeModal: closeDelete,
+  } = useModal();
+
+  const handleDeleteClick = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     openDelete();
   };
 
-  const handleAddClick = (e) => {
+  const handleAddClick = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     openAdd();
@@ -37,7 +65,7 @@ function DropDownList({ url, folderData, anchorRef, addModal, deleteModal }) {
       {isDeleteOpen && (
         <Modal
           title="링크 삭제"
-          trigger={<ModalContentName contentName={url} />}
+          trigger={<ModalContentName children={url} />}
           closeModal={closeDelete}
           btnContent="삭제하기"
           color="red"

@@ -1,11 +1,36 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import SearchIMG from "assets/Search.svg";
 import * as Styled from "./StyledSearchBar";
 
-const SearchBar = ({ linksData, setLinksData, originalLinksData }) => {
+interface LinksData {
+  id?: number;
+  created_at?: string;
+  updated_at?: string | null;
+  url?: string;
+  title?: string;
+  description?: string;
+  image_source?: string;
+  folder_id?: number;
+}
+
+interface Links {
+  data: LinksData[];
+}
+
+type prevData = (value: Links) => Links;
+
+type setLinksData = (value: prevData) => void;
+
+interface Props {
+  linksData: LinksData[];
+  setLinksData: setLinksData;
+  originalLinksData: LinksData[];
+}
+
+const SearchBar = ({ linksData, setLinksData, originalLinksData }: Props) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!inputValue) return;
     const filteredLinks = linksData.filter((item) => {
@@ -27,10 +52,9 @@ const SearchBar = ({ linksData, setLinksData, originalLinksData }) => {
 
   const handleCancelClick = () => {
     setInputValue("");
-    const { data: LinkData } = originalLinksData;
     setLinksData((prevData) => ({
       ...prevData,
-      data: LinkData,
+      data: originalLinksData,
     }));
   };
 

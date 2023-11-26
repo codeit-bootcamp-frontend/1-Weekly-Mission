@@ -37,7 +37,7 @@ export async function getLinks(folderId = "") {
   return body;
 }
 
-export async function handleCopyClipBoard(text) {
+export async function handleCopyClipBoard(text: string) {
   try {
     await navigator.clipboard.writeText(text);
     alert("클립보드에 링크가 복사되었어요.");

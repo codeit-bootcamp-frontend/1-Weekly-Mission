@@ -8,11 +8,13 @@ import folderShareImg from "assets/share.svg";
 import folderNameChangeImg from "assets/changeName.svg";
 import folderDeleteImg from "assets/delete.svg";
 
-const FOLDER_TOOL = {
-  share: folderShareImg,
-  change: folderNameChangeImg,
-  delete: folderDeleteImg,
-};
+interface PropsSelected {
+  $selected: boolean;
+}
+
+interface PropsKind {
+  $kind: string;
+}
 
 export const Container = styled.div`
   width: 80%;
@@ -41,16 +43,16 @@ export const BtnBox = styled.div`
   }
 `;
 
-export const Btn = styled.button`
+export const Btn = styled.button<PropsSelected>`
   display: flex;
   padding: 5px 10px;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
   border: 1px solid var(--primary);
-  background-color: ${({ selected }) =>
-    selected ? `var(--primary)` : `var(--white)`};
-  color: ${({ selected }) => (selected ? `var(--white)` : `var(--black)`)};
+  background-color: ${({ $selected }) =>
+    $selected ? `var(--primary)` : `var(--white)`};
+  color: ${({ $selected }) => ($selected ? `var(--white)` : `var(--black)`)};
   white-space: nowrap;
 `;
 
@@ -142,11 +144,28 @@ export const EditFolderText = styled.span`
   padding-top: 1.5px;
 `;
 
-export const EditFolderImg = styled.div`
-  background-image: url(${({ $kind }) => FOLDER_TOOL[$kind]});
+export const EditFolderImg = styled.div<PropsKind>`
   background-position: center;
   width: 16px;
   height: 16px;
+
+  ${({ $kind }) =>
+    $kind === "share" &&
+    `
+    background-image: url(${folderShareImg});
+  `}
+
+  ${({ $kind }) =>
+    $kind === "change" &&
+    `
+      background-image: url(${folderNameChangeImg});
+    `}
+
+  ${({ $kind }) =>
+    $kind === "delete" &&
+    `
+      background-image: url(${folderDeleteImg});
+    `}
 `;
 
 export const NoFolderContainer = styled.div`

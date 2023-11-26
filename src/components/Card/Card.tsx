@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { timeForToday } from "utils/moment";
 import { DropDown } from "components";
@@ -7,19 +7,51 @@ import starIMG from "assets/star.svg";
 import chosenStarIMG from "assets/chosenStar.svg";
 import * as Styled from "./StyledCard";
 
-const Card = ({ data, folderData }) => {
-  const CREATED_AT = data.createdAt ? data.createdAt : data.created_at;
-  const IMG_SRC = data.imageSource ? data.imageSource : data.image_source;
-  const URL = data.url;
+interface LinksData {
+  id?: number;
+  created_at?: string;
+  createdAt?: string;
+  updated_at?: string | null;
+  url?: string;
+  title?: string;
+  description?: string;
+  image_source?: string;
+  imageSource?: string;
+  folder_id?: number;
+}
+
+interface LinkCount {
+  count: number;
+}
+
+interface FoldersData {
+  id?: number;
+  created_at?: string;
+  name: string;
+  user_id?: number;
+  link: LinkCount;
+}
+
+interface Props {
+  data: LinksData;
+  folderData: FoldersData[];
+}
+
+const Card = ({ data, folderData }: Props) => {
+  const CREATED_AT = data.created_at
+    ? (data.created_at as string)
+    : (data.createdAt as string);
+  const IMG_SRC = data.image_source ? data.image_source : data.imageSource;
+  const URL = data.url as string;
   const DESCRIPTION = data.description;
   const [star, setStar] = useState(false);
 
-  const formatDate = (value) => {
+  const formatDate = (value: string) => {
     const date = new Date(value);
     return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
   };
 
-  const handleStarClick = (e) => {
+  const handleStarClick = (e: MouseEvent) => {
     e.preventDefault();
     if (star) {
       setStar(false);

@@ -2,7 +2,11 @@ import ModalPortal from "Portal";
 import { StyledGlobal } from "style/StyledGlobal";
 import * as Styled from "./StyledModal";
 
-const ModalLoading = ({ back }) => {
+interface Props {
+  back: string;
+}
+
+const ModalLoading = ({ back }: Props) => {
   return (
     <>
       <StyledGlobal />

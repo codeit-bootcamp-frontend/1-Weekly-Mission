@@ -1,7 +1,12 @@
-import { useLayoutEffect, useState } from "react";
+import { ReactNode, useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-const ModalPortal = ({ children, container }) => {
+interface Props {
+  container?: any;
+  children: ReactNode;
+}
+
+const ModalPortal = ({ children, container }: Props) => {
   const [mountNode, setMountNode] = useState(null);
   const el = document.getElementById("modal"); // 독립 공간
 

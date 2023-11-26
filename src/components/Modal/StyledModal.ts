@@ -5,11 +5,17 @@ import kakaoShareImg from "assets/kakao-share.svg";
 import linkShareImg from "assets/link-share.svg";
 import spinnerImg from "assets/spinner.png";
 
-const SHARE = {
-  facebook: facebookShareImg,
-  kakao: kakaoShareImg,
-  link: linkShareImg,
-};
+interface PropsBack {
+  $back: string;
+}
+
+interface PropsColor {
+  $color: string;
+}
+
+interface PropsSnsImg {
+  $share: string;
+}
 
 const placeholderRotate = keyframes`
   100% {
@@ -17,7 +23,7 @@ const placeholderRotate = keyframes`
   }
 `;
 
-export const ModalBackground = styled.div`
+export const ModalBackground = styled.div<PropsBack>`
   background-color: ${({ $back }) =>
     $back === "noBG" ? `rgba(0, 0, 0, 0)` : `rgba(0, 0, 0, 0.4)`};
   width: 100vw;
@@ -86,7 +92,7 @@ export const ModalInput = styled.input`
   }
 `;
 
-export const ModalBtn = styled.button`
+export const ModalBtn = styled.button<PropsColor>`
   width: 100%;
   height: 50px;
   margin-top: -10px;
@@ -115,11 +121,28 @@ export const ModalSnsBox = styled.div`
   font-size: 1.1rem;
 `;
 
-export const ModalSnsImg = styled.div`
-  background-image: ${({ $share }) => `url(${SHARE[$share]})`};
+export const ModalSnsImg = styled.div<PropsSnsImg>`
   background-position: center;
   width: 42px;
   height: 42px;
+
+  ${({ $share }) =>
+    $share === "kakao" &&
+    `
+    background-image: url(${kakaoShareImg});
+  `}
+
+  ${({ $share }) =>
+    $share === "facebook" &&
+    `
+    background-image: url(${facebookShareImg});
+  `}
+
+  ${({ $share }) =>
+    $share === "link" &&
+    `
+    background-image: url(${linkShareImg});
+  `}
 `;
 
 export const ModalCloseBtn = styled.div`

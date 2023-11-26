@@ -1,28 +1,32 @@
-import { useEffect, useRef } from "react";
+import { MouseEvent, useEffect, useRef } from "react";
 import { DropDownList } from "components";
 import usePopOver from "hooks/usePopOver";
-import useModal from "hooks/useModal";
 import kebab from "assets/kebab.svg";
 import * as Styled from "./StyledDropDown";
 
-function DropDown({ url, folderData }) {
-  const kebabContainerRef = useRef(null);
+interface LinkCount {
+  count: number;
+}
+
+interface FoldersData {
+  id?: number;
+  created_at?: string;
+  name: string;
+  user_id?: number;
+  link: LinkCount;
+}
+
+interface Props {
+  url: string;
+  folderData: FoldersData[];
+}
+
+function DropDown({ url, folderData }: Props) {
+  const kebabContainerRef = useRef<HTMLDivElement>(null);
   const { isOpen, openPopOver, closePopOver } = usePopOver();
-  const {
-    isOpen: isAddOpen,
-    openModal: openAdd,
-    closeModal: closeAdd,
-  } = useModal();
-  const {
-    isOpen: isDeleteOpen,
-    openModal: openDelete,
-    closeModal: closeDelete,
-  } = useModal();
-  const addModal = [isAddOpen, openAdd, closeAdd];
-  const deleteModal = [isDeleteOpen, openDelete, closeDelete];
 
   //드롭다운 버튼 클릭
-  const handleKebabClick = (e) => {
+  const handleKebabClick = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (isOpen) {
@@ -33,7 +37,7 @@ function DropDown({ url, folderData }) {
   };
 
   useEffect(() => {
-    const handleOutsideClick = (e) => {
+    const handleOutsideClick = (e: Event): void => {
       if (e.target !== kebabContainerRef.current) {
         closePopOver();
       }
@@ -58,8 +62,6 @@ function DropDown({ url, folderData }) {
           url={url}
           folderData={folderData}
           anchorRef={kebabContainerRef}
-          addModal={addModal}
-          deleteModal={deleteModal}
         />
       )}
     </Styled.Container>

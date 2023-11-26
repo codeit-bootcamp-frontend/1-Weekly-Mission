@@ -13,24 +13,62 @@ import { useScroll } from "hooks/useScroll";
 import useInfiniteScroll from "hooks/useInfiniteScroll";
 import * as Styled from "./StyledFolderPage";
 
+type setSticky = (value: string) => void;
+
+interface UseOutletContext {
+  setSticky: setSticky;
+  isLogin: boolean;
+}
+
+interface LinksData {
+  id?: number;
+  created_at?: string;
+  updated_at?: string | null;
+  url?: string;
+  title?: string;
+  description?: string;
+  image_source?: string;
+  folder_id?: number;
+}
+
+interface Links {
+  data: LinksData[];
+}
+
+interface LinkCount {
+  count: number;
+}
+
+interface FoldersData {
+  id?: number;
+  created_at?: string;
+  name: string;
+  user_id?: number;
+  link: LinkCount;
+}
+
+interface Folders {
+  data: FoldersData[];
+}
+
 const FolderPage = () => {
   const { folderId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [isDisplay, setIsDisplay] = useState(true);
-  const [folderListsData, setFolderListsData] = useState({
+  const [folderListsData, setFolderListsData] = useState<Folders>({
     data: [],
   });
-  const [linksData, setLinksData] = useState({
+  const [linksData, setLinksData] = useState<Links>({
     data: [],
   });
-  const [originalLinksData, setOriginalLinksData] = useState({
+  const [originalLinksData, setOriginalLinksData] = useState<Links>({
     data: [],
   });
 
-  const { setSticky, isLogin } = useOutletContext();
+  const { setSticky, isLogin } = useOutletContext<UseOutletContext>();
   const { scrollY } = useScroll();
 
-  const handleFolderLists = async (id) => {
+  const handleFolderLists = async (id: string | undefined) => {
     setIsLoading(true);
     try {
       const [folderLists, links] = await Promise.all([
@@ -77,7 +115,7 @@ const FolderPage = () => {
         <SearchBar
           linksData={linksData.data}
           setLinksData={setLinksData}
-          originalLinksData={originalLinksData}
+          originalLinksData={originalLinksData.data}
         />
         <FolderLists
           linksData={linksData.data}
@@ -95,7 +133,7 @@ const FolderPage = () => {
         <Styled.TargetDiv ref={target} />
       </Styled.Article>
       {scrollY > 230 && isDisplay && <AddBar isFixed="fixed" />}
-      {isLoading && <ModalLoading />}
+      {isLoading && <ModalLoading back="back" />}
     </>
   );
 };

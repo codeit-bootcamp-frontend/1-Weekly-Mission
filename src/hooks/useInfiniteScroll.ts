@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef } from "react";
 
-const useInfiniteScroll = (onIntersect, boolean) => {
+type setIsDisplay = (value: boolean) => void;
+
+const useInfiniteScroll = (onIntersect: setIsDisplay, boolean: boolean) => {
   const ref = useRef(null);
 
-  const handleIntersect = useCallback(
+  const handleIntersect: IntersectionObserverCallback = useCallback(
     ([entry], observer) => {
       if (entry.isIntersecting) {
         observer.unobserve(entry.target);
@@ -17,7 +19,7 @@ const useInfiniteScroll = (onIntersect, boolean) => {
   또한 target이 생성되기 전에 observe를 시작할 수 없으므로 조건문을 넣어줬다.*/
 
   useEffect(() => {
-    let observer;
+    let observer: IntersectionObserver;
     if (ref.current) {
       // 관찰 대상이 존재하는 체크한다.
       observer = new IntersectionObserver(handleIntersect, { threshold: 0.6 }); // 관찰 대상이 존재한면 관찰자를 생성한다.

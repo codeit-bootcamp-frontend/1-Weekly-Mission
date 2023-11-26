@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface PropsSelect {
+  $select: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,7 +25,7 @@ export const Ul = styled.ul`
   padding-left: 0px;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<PropsSelect>`
   align-self: stretch;
   width: 100%;
   padding: 6px 16px;

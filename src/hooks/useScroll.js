@@ -10,7 +10,7 @@ export const useScroll = () => {
     }
   };
 
-  const delay = 100;
+  const delay = 70;
 
   useEffect(() => {
     let mounted = true;

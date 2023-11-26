@@ -1,7 +1,11 @@
 import AddIMG from "assets/link.svg";
 import * as Styled from "./StyledAddBar";
 
-const AddBar = ({ isFixed }) => {
+interface Props {
+  isFixed: string;
+}
+
+const AddBar = ({ isFixed }: Props) => {
   return (
     <Styled.BackGround $isFixed={isFixed}>
       <Styled.Form>

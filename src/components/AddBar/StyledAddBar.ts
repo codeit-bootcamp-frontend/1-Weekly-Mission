@@ -1,5 +1,9 @@
 import styled, { css, keyframes } from "styled-components";
 
+interface Props {
+  $isFixed: string;
+}
+
 const fadeInUp = keyframes`
   0% {
     opacity: 0;
@@ -11,7 +15,7 @@ const fadeInUp = keyframes`
   }
 `;
 
-export const BackGround = styled.div`
+export const BackGround = styled.div<Props>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -19,14 +23,13 @@ export const BackGround = styled.div`
   align-items: center;
   padding: 20px 0 20px;
   background-color: #edf7ff;
-  animation: ${({ $isFixed }) =>
-    $isFixed === "fixed"
-      ? css`
-          ${fadeInUp} 1s
-        `
-      : ``};
+  animation: ${({ $isFixed }: Props) =>
+    $isFixed === "fixed" &&
+    css`
+      ${fadeInUp} 1s
+    `};
 
-  ${({ $isFixed }) =>
+  ${({ $isFixed }: Props) =>
     $isFixed === "fixed" &&
     `
     position: fixed;

@@ -11,11 +11,29 @@ import {
 import useModal from "hooks/useModal";
 import * as Styled from "./StyledFolderLists";
 
-const FolderList = ({ data, onClick, folderId }) => {
+interface LinkCount {
+  count: number;
+}
+
+interface FoldersData {
+  id?: number;
+  created_at?: string;
+  name: string;
+  user_id?: number;
+  link?: LinkCount;
+}
+
+interface PropsSub {
+  data: FoldersData;
+  onClick: (dataName: string) => void;
+  folderId: string;
+}
+
+const FolderList = ({ data, onClick, folderId }: PropsSub) => {
   return (
     <Link to={`/folder/${data.id}`}>
       <Styled.Btn
-        selected={folderId === String(data.id)}
+        $selected={folderId === String(data.id)}
         onClick={() => onClick(data.name)}
       >
         {data.name}
@@ -24,48 +42,66 @@ const FolderList = ({ data, onClick, folderId }) => {
   );
 };
 
-const FolderLists = ({ linksData, folderData, id }) => {
+interface LinksData {
+  id?: number;
+  created_at?: string;
+  updated_at?: string | null;
+  url?: string;
+  title?: string;
+  description?: string;
+  image_source?: string;
+  folder_id?: number;
+}
+
+interface Props {
+  linksData: LinksData[];
+  folderData: FoldersData[];
+  id: string | undefined;
+}
+
+const FolderLists = ({ linksData, folderData, id }: Props) => {
   const [folderTitle, setFolderTitle] = useState(() => {
+    if (!id) return "전체";
     const idFolder = folderData.filter((data) => data.id === parseInt(id));
-    if (idFolder[0]?.name) {
-      return idFolder[0]["name"];
-    } else {
-      return "전체";
-    }
+    return idFolder[0]["name"];
   });
+
+  const folderId = id ? id : "전체";
+
   const {
     isOpen: isShareOpen,
     openModal: openShare,
     closeModal: closeShare,
   } = useModal();
+
   const {
     isOpen: isChangeOpen,
     openModal: openChange,
     closeModal: closeChange,
   } = useModal();
+
   const {
     isOpen: isAddOpen,
     openModal: openAdd,
     closeModal: closeAdd,
   } = useModal();
+
   const {
     isOpen: isDeleteOpen,
     openModal: openDelete,
     closeModal: closeDelete,
   } = useModal();
-  const folderId = id ? id : "전체";
 
-  const handleBtnClick = (dataName) => {
+  const handleBtnClick = (dataName: string) => {
     dataName === "전체" ? setFolderTitle("전체") : setFolderTitle(dataName);
   };
 
   useEffect(() => {
     (() => {
-      const idFolder = folderData.filter((data) => data.id === parseInt(id));
-      if (idFolder[0]?.name) {
+      if (!id) setFolderTitle("전체");
+      else {
+        const idFolder = folderData.filter((data) => data.id === parseInt(id));
         setFolderTitle(idFolder[0]?.name);
-      } else {
-        setFolderTitle("전체");
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -78,7 +114,7 @@ const FolderLists = ({ linksData, folderData, id }) => {
           <Styled.BtnBox>
             <Link to="/folder">
               <Styled.Btn
-                selected={folderId === folderTitle}
+                $selected={folderId === folderTitle}
                 onClick={() => handleBtnClick("전체")}
               >
                 전체
@@ -129,7 +165,7 @@ const FolderLists = ({ linksData, folderData, id }) => {
       {isDeleteOpen && (
         <Modal
           title="폴더 삭제"
-          trigger={<ModalContentName contentName={folderTitle} />}
+          trigger={<ModalContentName children={folderTitle} />}
           closeModal={closeDelete}
           btnContent="삭제하기"
           color="red"

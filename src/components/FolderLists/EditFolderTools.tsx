@@ -1,6 +1,19 @@
+import { MouseEvent, ReactNode } from "react";
 import * as Styled from "./StyledFolderLists";
 
-const EditTool = ({ children, kind, onClick }) => {
+type openModal = (e: MouseEvent) => void;
+
+interface PropsSub {
+  kind: string;
+  onClick: openModal;
+  children: ReactNode;
+}
+
+interface Props {
+  modalOpen: openModal[];
+}
+
+const EditTool = ({ children, kind, onClick }: PropsSub) => {
   return (
     <Styled.EditFolderBtn onClick={onClick}>
       <Styled.EditFolderImg $kind={kind} />
@@ -9,7 +22,7 @@ const EditTool = ({ children, kind, onClick }) => {
   );
 };
 
-const EditFolderTools = ({ modalOpen }) => {
+const EditFolderTools = ({ modalOpen }: Props) => {
   const [openShare, openDelete, openChange] = modalOpen;
   return (
     <Styled.ToolBox id="toolbox">
