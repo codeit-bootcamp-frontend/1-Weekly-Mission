@@ -15,7 +15,7 @@ const useAsync = <T>(
 ): useAsyncReturn<T> => {
   const [data, setData] = useState<T>(null as any);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState<Error | unknown>(null);
 
   const fetchData = useCallback(async () => {
     try {
