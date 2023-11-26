@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/landing.css";
 import Search from "../../components/Search/Search";
-import AddLink from "../../components/addLink/AddLink";
 import { getFolderList, getTotalFolder } from "../../api/folderListApi";
 import FolderList from "./FolderList";
 import { requestSingleFolderApi } from "../../api/singleFolderApi";
-
 import Cards from "./Cards";
 import "./header.css";
 import ModalBackground from "../../components/modal/ModalBackground";
 import Modal from "../../components/modal/Modal";
 import { requestFullFolderApi } from "../../api/getFullFolderApi";
-import ModalListButton from "../../components/modal/ModalListButton";
 
-const Header = () => {
+const Header = ({ getData }) => {
   const [fullList, setFullList] = useState([]);
   const [totalData, setTotalData] = useState([]);
   const [isTotalClicked, setIsTotalClicked] = useState(false);
@@ -21,20 +18,11 @@ const Header = () => {
   const [singleFolderDataId, setSingleFolderDataId] = useState();
   const [singleFolderData, setSingleFolderData] = useState([]);
   const [singleFolderName, setSingleFolderName] = useState();
-  const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
-  const [addLinkValue, setAddLinkValue] = useState("");
   const [isAddFolderClicked, setIsAddFolderClicked] = useState(false);
   const [isChangeFolderNameClicked, setIsChangeFolderNameClicked] =
     useState(false);
   const [isDeleteFolderClicked, setIsDeleteFolderClicked] = useState(false);
   const [isShareFolderClicked, setIsShareFolderClicked] = useState(false);
-
-  function handleAddLinkClick(e) {
-    e.preventDefault();
-    if (addLinkValue !== "") {
-      setIsAddLinkClicked(!isAddLinkClicked);
-    }
-  }
 
   function handleAddFolderClick(e) {
     e.preventDefault();
@@ -104,7 +92,9 @@ const Header = () => {
   useEffect(() => {
     getFullFolderData();
   }, []);
-
+  useEffect(() => {
+    getData(fullFolderData);
+  }, [fullFolderData]);
   const getSingleFolderData = async () => {
     const temp = await requestSingleFolderApi(singleFolderDataId);
     setSingleFolderData(temp?.data);
@@ -114,10 +104,6 @@ const Header = () => {
     if (!singleFolderDataId) return;
     getSingleFolderData();
   }, [singleFolderDataId]);
-
-  function handleModalListButton(e) {
-    e.preventDefault();
-  }
 
   const currentLink = `localhost:3000/shared?user={1}&folder=${singleFolderDataId}`;
 
@@ -188,13 +174,6 @@ const Header = () => {
 
   return (
     <>
-      <header style={{ padding: "6rem 0 9rem 0" }}>
-        <AddLink
-          onClick={handleAddLinkClick}
-          setAddLinkValue={setAddLinkValue}
-        />
-      </header>
-
       <Search getInputValue={getInputValue} />
 
       <div className="folder-list">
@@ -470,52 +449,6 @@ const Header = () => {
           저장된 링크가 없습니다
         </div>
       )}
-      {isAddLinkClicked ? (
-        <ModalBackground>
-          <Modal>
-            <b>폴더에 추가</b>
-            <p>링크 주소: {addLinkValue}</p>
-            <div style={{ position: "relative" }}>
-              <img
-                src="images/modalClose.svg"
-                style={{
-                  position: "absolute",
-                  right: "-16.5rem",
-                  top: "-10rem",
-                }}
-                onClick={handleAddLinkClick}
-              />
-            </div>
-            <ul>
-              {fullFolderData.map((list) => {
-                return (
-                  <li style={{ listStyle: "none" }} key={list.id}>
-                    <ModalListButton onClick={(e) => handleModalListButton(e)}>
-                      <b>{list.name}</b> &nbsp; {list.link.count}개 링크
-                    </ModalListButton>
-                  </li>
-                );
-              })}
-            </ul>
-            <button
-              style={{
-                background:
-                  "var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%))",
-                borderRadius: "8px",
-                width: "28rem",
-                height: "2rem",
-                padding: "1.6rem 2rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-              }}
-            >
-              추가하기
-            </button>
-          </Modal>
-        </ModalBackground>
-      ) : null}
     </>
   );
 };
