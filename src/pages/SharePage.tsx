@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useFetchSampleFolder, useFetchUserProfileSample } from '../apis/fetch';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
@@ -11,17 +13,17 @@ function SharePage() {
     useFetchSampleFolder();
 
   const fixedBool = true;
-  if (!profileLoading && !folderLoading) {
-    return (
-      <>
-        <S.StyledHeader>
-          <Navbar userData={userProfile} fixed={fixedBool} />
-        </S.StyledHeader>
-        <ShareContainer shareData={sampleFolder} />
-        <Footer />
-      </>
-    );
-  }
+
+  if (profileLoading || folderLoading === true) return null;
+  return (
+    <>
+      <S.StyledHeader>
+        <Navbar userData={userProfile} fixed={fixedBool} />
+      </S.StyledHeader>
+      <ShareContainer shareData={sampleFolder} />
+      <Footer />
+    </>
+  );
 }
 
 export default SharePage;

@@ -1,14 +1,17 @@
+import React from 'react';
+
 import {
   useFetchUserFolders,
   useFetchUserLinks,
   useFetchUserProfile,
 } from '../apis/fetch';
+
 import { DEFAULT_USER_ID } from '../constants/constant';
 import Addlink from '../components/Addlink/Addlink';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
 import FolderContainer from '../containers/Folder/FolderContainer';
-import * as S from './styles.js';
+import * as S from './styles';
 
 const FolderPage = () => {
   const { data: userProfile, isLoading: profileLoading } =
@@ -22,23 +25,24 @@ const FolderPage = () => {
     undefined,
   );
 
+  if (profileLoading || folderLoading || userLinksLoading) return null;
+  const folderData = userFolders.data;
+  const userData = userProfile.data[0];
+  const userLinkData = userLinks.data;
+
   return (
-    <>
+    <S.FolderMainBox>
       <S.StyledHeader>
-        {!profileLoading && userProfile?.data && (
-          <Navbar userData={userProfile.data[0]} />
-        )}
+        <Navbar userData={userData} fixed={true} />
         <Addlink />
       </S.StyledHeader>
-      {!folderLoading && !userLinksLoading && (
-        <FolderContainer
-          folderData={userFolders?.data}
-          userId={DEFAULT_USER_ID}
-          userLinks={userLinks.data}
-        />
-      )}
+      <FolderContainer
+        folderData={folderData}
+        userId={DEFAULT_USER_ID}
+        userLinks={userLinkData}
+      />
       <Footer />
-    </>
+    </S.FolderMainBox>
   );
 };
 
