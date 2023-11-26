@@ -1,13 +1,15 @@
 import { ChangeEvent } from 'react';
 import searchImg from '../../assets/images/Search.svg';
+import clearImg from '../../assets/images/input_Delete.svg';
 import styled from 'styled-components';
 
 interface Props {
-  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   value: string;
+  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onInputClear: () => void;
 }
 
-export default function Search({ onInputChange, value }: Props) {
+export default function Search({ value, onInputChange, onInputClear }: Props) {
   return (
     <Container>
       <Box>
@@ -18,6 +20,7 @@ export default function Search({ onInputChange, value }: Props) {
           onChange={onInputChange}
           value={value}
         />
+        {value && <Clear src={clearImg} alt='clear' onClick={onInputClear} />}
       </Box>
     </Container>
   );
@@ -38,6 +41,7 @@ const Box = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  height: 54px;
 `;
 
 const Img = styled.img`
@@ -50,4 +54,8 @@ const Input = styled.input`
   background-color: transparent;
   border: none;
   outline: none;
+`;
+
+const Clear = styled.img`
+  cursor: pointer;
 `;

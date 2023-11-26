@@ -77,6 +77,11 @@ export default function Folder() {
     setFilteredLinks(linkFilter(value.toLowerCase()));
   };
 
+  const handleInputClear = () => {
+    setLinkSearch('');
+    setFilteredLinks(linkFilter(''));
+  };
+
   const linkFilter = (value: string) => {
     let filtered;
     if (value.length > 0) {
@@ -130,7 +135,11 @@ export default function Folder() {
         <LinkAdd fixed={false} />
       </div>
       <Container>
-        <Search onInputChange={handleInputChange} value={linkSearch} />
+        <Search
+          value={linkSearch}
+          onInputChange={handleInputChange}
+          onInputClear={handleInputClear}
+        />
         {userFolder ? (
           <div>
             <FolderList
