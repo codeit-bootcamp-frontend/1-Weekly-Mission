@@ -1,16 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.scss";
 import { ReactComponent as LogoSvg } from "src/assets/icons/logo.svg";
+import { UserInterface } from "src/types";
 
 interface Props {
-  profile: {
-    id?: string;
-    created_at?: string;
-    email: string;
-    image_source: string;
-    name: string;
-    auth_d: string;
-  };
+  profile?: UserInterface;
   isSticky?: boolean;
 }
 
@@ -25,7 +19,7 @@ function Nav({ profile, isSticky }: Props) {
         <Link to="/">
           <LogoSvg />
         </Link>
-        {!profile.email ? (
+        {!profile ? (
           <button
             className={`${styles["link-button"]} ${styles["signin-button"]}`}
           >

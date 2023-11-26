@@ -10,12 +10,10 @@ function App() {
 
           <Route path="folder">
             <Route index element={<FolderPage />} />
-            <Route path=":folderId" element={<FolderPage />} />
           </Route>
 
           <Route path="shared">
             <Route index element={<SharedPage />} />
-            <Route path=":folderId" element={<SharedPage />} />
           </Route>
 
           <Route path="*" element={<ErrorPage />} />
