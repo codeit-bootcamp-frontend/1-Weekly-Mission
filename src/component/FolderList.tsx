@@ -24,19 +24,18 @@ function FolderList({ folders, params }) {
   const [active, setActive] = useState(params);
   const [name, setName] = useState("");
 
-  function filterName(folders, params) {
+  function filterName(folders, params: string) {
     if (!params) {
       setName("전체");
       return;
     }
-    const folder = folders.filter((folder) => {
+    const folder = folders.find((folder) => {
       return folder.id === Number(params);
     });
-
-    setName(folder["name"]);
+    setName(folder.name);
   }
 
-  function handleClick(id) {
+  function handleClick(id: number) {
     setActive(id);
     filterName(folders, params);
   }
