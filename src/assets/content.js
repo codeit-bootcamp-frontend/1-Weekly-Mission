@@ -5,7 +5,11 @@ import mainImg1 from '../assets/images/_img1.png';
 
 const contentArr = [
   {
-    title: <span>원하는 링크</span>,
+    title: (
+      <div>
+        <span>원하는 링크</span>를저장하세요
+      </div>
+    ),
     src: mainImg1,
     position: 'right',
     description:
