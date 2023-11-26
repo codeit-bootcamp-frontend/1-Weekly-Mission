@@ -15,9 +15,9 @@ import { useState } from "react";
 import { FolderUIProps } from "./FolderTypes";
 import { DEFAULT } from "./FolderContainer";
 
-const [isOpenModal, setIsOpenModal] = useState(false);
-
 export default function FolderUI(props: FolderUIProps) {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   return (
     <>
       {isOpenModal && (
