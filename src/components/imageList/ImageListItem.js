@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../common/card/Card";
+import Card from "../../common/card/Card.tsx";
 import styles from "./ImageListItem.module.css";
 import { parseDatestring, getElapsedTime } from "../../utils/calTime";
 

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Card from "../../common/card/Card";
+import Card from "../../common/card/Card.tsx";
 import styles from "./DataListItem.module.css";
 import kebabImage from "../../assets/images/kebab.svg";
 
