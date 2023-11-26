@@ -5,8 +5,7 @@ interface Props {
     id: number;
     name: string;
   };
-  onGetCategory: (params: {id: number, name: string}) => void;
-
+  onGetCategory: ( params: {id: number, name: string}) => void;
 }
 
 function FolderCategoryButton({ category, onGetCategory }: Props) {

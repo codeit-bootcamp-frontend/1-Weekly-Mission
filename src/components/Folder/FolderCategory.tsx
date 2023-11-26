@@ -13,7 +13,7 @@ const ENTIRE_CATEGORY = {
 };
 
 interface Props {
-  onGetCategory: () => void;
+  onGetCategory: (params: {id: number, name: string}) => void;
 }
 
 type Category = {
