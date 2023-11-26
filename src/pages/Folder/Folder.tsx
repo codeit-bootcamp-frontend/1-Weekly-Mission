@@ -53,6 +53,8 @@ function Folder() {
     }
   };
 
+  const filteredLinks = filterLinks(links?.data, initialKeyword);
+
   return (
     <Layout isLoggedIn userId={DEFAULT_USER_ID}>
       <AddLinkContainer userId={DEFAULT_USER_ID} />
@@ -72,8 +74,8 @@ function Folder() {
           setFolderLinks={setFolderLinks}
         />
 
-        {links?.data?.length !== 0 ? (
-          <CardsContainer cards={links?.data} userId={DEFAULT_USER_ID} />
+        {filterLinks?.length !== 0 ? (
+          <CardsContainer cards={filteredLinks} userId={DEFAULT_USER_ID} />
         ) : (
           <NoLinkView />
         )}
@@ -83,3 +85,17 @@ function Folder() {
 }
 
 export default Folder;
+
+function filterLinks(links?: CardProps[], keyword?: string) {
+  if (!links) return;
+  if (!keyword) return links;
+
+  const lowered = keyword.toLowerCase();
+  return links?.filter(({ url, title, description }) => {
+    return (
+      url?.toLowerCase().includes(lowered) ||
+      title?.toLowerCase().includes(lowered) ||
+      description?.toLowerCase().includes(lowered)
+    );
+  });
+}
