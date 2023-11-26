@@ -1,7 +1,11 @@
-import { CloseButton, InputContainer, ModalFolderButton, ModalInput, ModalTitle } from '../../styles/ModalStyle';
-import close_button from '../../assets/svg/close.svg';
+import { CloseButton, InputContainer, ModalFolderButton, ModalInput, ModalTitle } from '../../../styles/ModalStyle';
+import close_button from '../../../assets/svg/close.svg';
 
-function FolderAddModal({ onCloseModal }) {
+interface Props {
+  onCloseModal: () => void;
+}
+
+function FolderAddModal({ onCloseModal }: Props) {
   return (
     <>
       <CloseButton src={close_button} alt='모달 닫기 버튼' onClick={onCloseModal} />

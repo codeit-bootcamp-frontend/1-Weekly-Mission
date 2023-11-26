@@ -45,7 +45,7 @@ function FolderModal({ action, onCloseModal, name }: Props, ref: ForwardedRef<HT
       case 'delete-link':
         return (
           <>
-            <LinkDeleteModal onCloseModal={onCloseModal} />
+            <LinkDeleteModal onCloseModal={onCloseModal} link=''/>
           </>
         );
       case 'folder-add':

@@ -24,10 +24,14 @@ const SHARE_ICONS = [
     title: '링크 복사',
     backgroundColor: 'rgba(157, 157, 157, 0.04)',
   },
-
 ];
 
-function FolderShareModal({ onCloseModal, name }) {
+interface Props {
+  onCloseModal: () => void;
+  name: string;
+}
+
+function FolderShareModal({ onCloseModal, name }: Props) {
 
   return (
     <>
@@ -68,7 +72,7 @@ const Icons = styled.div`
   text-align: center;
 `;
 
-const Icon = styled.div`
+const Icon = styled.div<{$backgroundColor: string}>`
   border-radius: 37.333px;
   background: ${({ $backgroundColor }) => $backgroundColor};
   display: flex;
