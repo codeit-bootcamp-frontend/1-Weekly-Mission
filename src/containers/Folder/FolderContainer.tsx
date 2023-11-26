@@ -34,10 +34,11 @@ const FolderContainer = ({
   const handleFolderSelect = async (folderId: string) => {
     if (folderId === '0') setSelectedFolderName(DEFAULT_FOLDER.name);
     else {
-      const selectedFolderNameArr: any = folderData.find(
+      const selectedFolderNameArr = folderData.find(
         (data: { id: number }) => folderId === String(data.id),
       );
-      setSelectedFolderName(selectedFolderNameArr[0]);
+      if (selectedFolderNameArr === undefined) throw new Error();
+      setSelectedFolderName(selectedFolderNameArr.name);
     }
     setSearchParams(folderId !== '0' ? { folderId } : {});
 
@@ -82,7 +83,6 @@ const FolderContainer = ({
   };
 
   const handleSearchbar = (searchedText: string) => {
-    console.log(searchedText, userLinks);
     setSearchText(searchedText);
     searchedText.length > 0
       ? setCards(
@@ -100,7 +100,6 @@ const FolderContainer = ({
     handleSearchParam();
   }, [searchParams]);
 
-  console.log(searchText, cards);
   return (
     <S.CardContainerBox>
       <Searchbar handleSearch={handleSearchbar} />
