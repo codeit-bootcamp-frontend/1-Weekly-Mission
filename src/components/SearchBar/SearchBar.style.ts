@@ -4,7 +4,9 @@ import { COLORS } from 'styles/color';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
   width: 100%;
+
   gap: 4rem;
 `;
 
@@ -40,14 +42,15 @@ export const DeleteIcon = styled.img`
   position: absolute;
   top: 1.5rem;
   right: 1.6rem;
+
   cursor: pointer;
 `;
 
 export const Text = styled.div`
-  font-size: 3.2rem;
-  font-weight: 600;
-  letter-spacing: -0.02rem;
   color: ${COLORS.GRAY_60};
+  font-weight: 600;
+  font-size: 3.2rem;
+  letter-spacing: -0.02rem;
 
   span {
     color: ${COLORS.GRAY_100};

@@ -38,9 +38,7 @@ export const Folder = styled(NavLink)<{ selected: boolean }>`
   align-items: center;
 
   padding: 0.8rem 1.2rem;
-
   border: 0.1rem solid ${COLORS.PRIMARY};
-
   border-radius: 0.5rem;
 
   font-size: 1.6rem;

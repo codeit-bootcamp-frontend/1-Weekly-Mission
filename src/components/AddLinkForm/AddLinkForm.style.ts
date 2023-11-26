@@ -6,7 +6,7 @@ export const FormContainer = styled.div<{
   $isScrolled: boolean;
   $showFooter: boolean;
 }>`
-  display: flex;
+  display: ${({ $showFooter }) => ($showFooter ? `none` : `flex`)};
   flex-direction: column;
   align-items: center;
 
@@ -24,18 +24,17 @@ export const FormContainer = styled.div<{
     padding-bottom: 4rem;
   }
 
-  display: ${({ $showFooter }) => ($showFooter ? `none` : `flex`)};
-
   ${({ $isScrolled }) =>
     $isScrolled
       ? css`
           position: fixed;
+          right: 0;
           bottom: 0;
           left: 0;
-          right: 0;
+          z-index: 999;
+
           padding-top: 2.4rem;
           padding-bottom: 2.4rem;
-          z-index: 999;
 
           ${onMobile} {
             padding-top: 1.6rem;
@@ -44,7 +43,7 @@ export const FormContainer = styled.div<{
         `
       : css`
           position: static;
-        `};
+        `}
 `;
 
 export const Form = styled.form`
