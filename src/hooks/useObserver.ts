@@ -8,6 +8,8 @@ export type Dom = {
   footer: HTMLElement | null;
 };
 
+let isForm = false;
+
 const useObserver = (DOM: Dom) => {
   const float = () => {
     DOM.floatDiv?.classList.add("float");
@@ -22,9 +24,14 @@ const useObserver = (DOM: Dom) => {
       (entries, observer) => {
         entries.forEach((entry, idx) => {
           if (entry.intersectionRatio === 0) {
+            if (isForm && entry.target.tagName === "FOOTER") return;
+            if (entry.target.tagName === "FORM") isForm = false;
             float();
           }
           if (entry.isIntersecting) {
+            if (entry.target.tagName === "FORM") {
+              isForm = true;
+            }
             fix();
           }
         });
