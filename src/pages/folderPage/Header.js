@@ -157,6 +157,34 @@ const Header = () => {
       alert("Kakao SDK가 로드되지 않았습니다. 나중에 다시 시도해주세요.");
     }
   }
+  const [inputValue, setInputValue] = useState("");
+  function getInputValue(v) {
+    setInputValue(v);
+  }
+  let searchedData = [];
+  if (isTotalClicked) {
+    searchedData = totalData?.filter((data) => {
+      if (
+        data?.url?.includes(inputValue) ||
+        data?.title?.includes(inputValue) ||
+        data?.description?.includes(inputValue)
+      ) {
+        return data;
+      }
+    });
+  } else if (isSingleClicked) {
+    searchedData = singleFolderData?.filter((data) => {
+      if (
+        data?.url?.includes(inputValue) ||
+        data?.title?.includes(inputValue) ||
+        data?.description?.includes(inputValue)
+      ) {
+        return data;
+      }
+    });
+  } else if (!isTotalClicked && !isSingleClicked) {
+    searchedData = [];
+  }
 
   return (
     <>
@@ -167,7 +195,7 @@ const Header = () => {
         />
       </header>
 
-      <Search />
+      <Search getInputValue={getInputValue} />
 
       <div className="folder-list">
         <button
@@ -419,11 +447,13 @@ const Header = () => {
           </div>
         </div>
       )}
-
-      {totalData && isTotalClicked && (
+      {searchedData && inputValue !== "" && (
+        <Cards fullData={searchedData} fullFolderData={fullFolderData} />
+      )}
+      {totalData && isTotalClicked && inputValue === "" && (
         <Cards fullData={totalData} fullFolderData={fullFolderData} />
       )}
-      {singleFolderData && isSingleClicked && (
+      {singleFolderData && isSingleClicked && inputValue === "" && (
         <Cards fullFolderData={fullFolderData} fullData={singleFolderData} />
       )}
       {singleFolderData.length === 0 && isSingleClicked && (
