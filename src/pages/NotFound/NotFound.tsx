@@ -1,5 +1,5 @@
 import * as S from './NotFound.style';
-import Button from 'components/Button';
+import Button from '@components/Button';
 
 function NotFound() {
   return (

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS } from 'styles/palette';
+import { COLORS } from '@styles/palette';
 
 export const Container = styled.main`
   display: flex;
@@ -9,7 +9,7 @@ export const Container = styled.main`
   gap: 4.3rem;
   width: 100vw;
   height: 100vh;
-  background-color: ${COLORS['LB_BACKGROUND']};
+  background-color: ${COLORS.LB_BACKGROUND};
 `;
 
 export const Title = styled.h1`

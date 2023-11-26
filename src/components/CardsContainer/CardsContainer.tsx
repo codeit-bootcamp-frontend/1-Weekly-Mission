@@ -1,4 +1,5 @@
 import * as S from './CardsContainer.style';
+import { DEFAULT_USER_ID } from '@apis/config/default';
 import Card from '@components/Card';
 
 export interface CardProps {
@@ -13,11 +14,11 @@ export interface CardProps {
 }
 
 interface Props {
-  cards: CardProps[];
-  userId: number;
+  cards?: CardProps[];
+  userId?: number;
 }
 
-function CardsContainer({ cards = [], userId }: Props) {
+function CardsContainer({ cards = [], userId = DEFAULT_USER_ID }: Props) {
   return (
     <S.Container>
       {cards.map((card: CardProps) => (

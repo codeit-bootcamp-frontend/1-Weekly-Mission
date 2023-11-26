@@ -5,8 +5,27 @@ import SearchBar from '@components/SearchBar';
 import CardList from '@components/CardsContainer';
 import Banner from '../Banner';
 
+interface SharedFolder {
+  count: number;
+  id: number;
+  links: {
+    id: number;
+    createdAt: string;
+    description: string;
+    imageSource: string;
+    title: string;
+    url: string;
+  }[];
+  name: string;
+  owner: {
+    id: number;
+    name: string;
+    profileImageSource: string;
+  };
+}
+
 function Folder() {
-  const { data } = useRequest({
+  const { data } = useRequest<{ folder: SharedFolder }>({
     options: {
       url: '/sample/folder',
       method: 'get',
