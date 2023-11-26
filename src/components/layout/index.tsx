@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
 `;
 
 const Body = styled.section`
