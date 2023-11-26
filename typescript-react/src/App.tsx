@@ -14,7 +14,7 @@ function App() {
   const [, userProfileLoadingError, getUserProfileAsync] = useAsync(getUserProfile);
 
   const handleUserProfileLoad = useCallback(async () => {
-    const result = await getUserProfileAsync();
+    const result: any = await getUserProfileAsync();
     if (!result) {
       return;
     }
@@ -27,18 +27,20 @@ function App() {
   }, [handleUserProfileLoad]);
 
   return (
-    <Router>
+    <>
       <GlobalStyle />
-      <Nav userProfile={userProfile} userProfileLoadingError={userProfileLoadingError} />
-      <Routes>
-        <Route path="/folder">
-          <Route index element={<FolderPage />} />
-          <Route path=":folderId" element={<FolderPage />} />
-        </Route>
-        <Route path="/shared" element={<SharedPage />} />
-      </Routes>
-      <Footer />
-    </Router>
+      <Router>
+        <Nav userProfile={userProfile} userProfileLoadingError={userProfileLoadingError} />
+        <Routes>
+          <Route path="/folder">
+            <Route index element={<FolderPage />} />
+            <Route path=":folderId" element={<FolderPage />} />
+          </Route>
+          <Route path="/shared" element={<SharedPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </>
   );
 }
 

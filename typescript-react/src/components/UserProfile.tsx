@@ -1,6 +1,6 @@
 import '../css/userProfile.css';
 
-function UserProfile({ userProfile }): JSX.Element {
+function UserProfile({ userProfile }: any): JSX.Element {
   const userProfileImage = userProfile?.image_source;
   const userEmail = userProfile?.email;
 

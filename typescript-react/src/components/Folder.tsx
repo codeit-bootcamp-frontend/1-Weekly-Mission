@@ -24,7 +24,7 @@ function FolderList({ folderList = null, getCardList }): JSX.Element {
   const [isFolderRenameModal, setIsFolderRenameModal] = useState(false);
   const [isFolderRemoveModal, setIsFolderRemoveModal] = useState(false);
 
-  const handleButton = (name, id) => {
+  const handleButton = (name: string, id: string) => {
     setFolderName(name);
     getCardList(id);
   };

@@ -1,17 +1,6 @@
 const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
 const USER_ID = `users/1`;
 
-// interface Data {
-//   id: number;
-//   created_at: string;
-//   updated_at?: string;
-//   url: string;
-//   title?: string;
-//   description?: string;
-//   image_source?: string;
-//   folder_id?: number;
-// }
-
 export async function getUserProfile(): Promise<any> {
   const response = await fetch(`${BASE_URL}/${USER_ID}`);
   if (!response.ok) {
