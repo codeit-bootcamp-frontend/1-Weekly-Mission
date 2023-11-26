@@ -59,12 +59,15 @@ const Search = ({ getInputValue }) => {
             backgroundPosition: "left 1.7rem bottom 50%",
           }}
         ></input>
-        <button
-          onClick={(e) => handleClick(e)}
-          style={{ position: "absolute", top: "1.6rem", right: "4rem" }}
-        >
-          <img src={CloseButton} />
-        </button>
+
+        {inputSearch !== "" && (
+          <button
+            onClick={(e) => handleClick(e)}
+            style={{ position: "absolute", top: "1.6rem", right: "4rem" }}
+          >
+            <img src={CloseButton} />
+          </button>
+        )}
       </form>
     </div>
   );
