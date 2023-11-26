@@ -1,8 +1,22 @@
+import React from 'react';
+
 import { FOLDER_OPTION_NAMES } from '../../constants/constant';
 import * as S from './styles';
 
-const FolderOptionsItem = ({ item }) => {
+interface FolderOptionsItemProps {
+  item: {
+    name: string;
+    optionImg: string;
+  };
+}
+
+interface FolderMenuBarProps {
+  selectedFolderName: string;
+}
+
+const FolderOptionsItem = ({ item }: FolderOptionsItemProps) => {
   const { name, optionImg } = item;
+
   return (
     <S.FolderOptionItemBox>
       <img src={optionImg} alt="option" />
@@ -22,7 +36,7 @@ const FolderOptions = () => {
   );
 };
 
-const FolderMenubar = ({ selectedFolderName }) => {
+const FolderMenubar = ({ selectedFolderName }: FolderMenuBarProps) => {
   return (
     <>
       <S.FolderNameHeader>{selectedFolderName}</S.FolderNameHeader>

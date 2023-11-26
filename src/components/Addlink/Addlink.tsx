@@ -1,10 +1,13 @@
-import Button from '../Button/Button.jsx';
+import React, { FormEvent } from 'react';
+import Button from '../Button/Button';
 import IMAGES from '../../assets/images';
 
 import * as S from './styles';
 
+type HandleSubmitProps = FormEvent<HTMLFormElement>;
+
 const Addlink = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: HandleSubmitProps) => {
     e.preventDefault();
   };
   return (
@@ -16,7 +19,7 @@ const Addlink = () => {
               <S.AddLinkImage src={IMAGES.link} alt="Link" />
               <S.AddLinkContentInput placeholder="링크를 추가해 보세요" />
             </S.AddLinkInputInnerBox>
-            <Button size="short" text="추가하기" />
+            <Button size="short" text="추가하기" buttonColor="blue" />
           </S.AddLinkInputBox>
         </S.AddLinkBox>
       </S.AddLinkOuterBox>

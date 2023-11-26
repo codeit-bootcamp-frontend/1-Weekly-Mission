@@ -1,18 +1,52 @@
-import { convertCreatedAt, formatDate } from '../../utils/utils';
-import useToggle from '../../hooks/useToggle';
-import IMAGES from '../../assets/images.js';
-import * as S from './styles.js';
-import { useRef, useState } from 'react';
-import { mapCardData } from '../../utils/mapFetch';
+import React, {
+  MouseEvent,
+  useRef,
+  useState,
+  SetStateAction,
+  Dispatch,
+  RefObject,
+} from 'react';
 
+import { convertCreatedAt, formatDate } from '../../utils/utils';
+import IMAGES from '../../assets/images';
+import * as S from './styles';
+import { mapCardData } from '../../utils/mapFetch';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+
+interface CardProps {
+  items: {
+    id: number;
+    createdAt?: string;
+    created_at?: string;
+    updated_at?: string;
+    url: string;
+    title: string;
+    description: string;
+    imageSource?: string;
+    image_source?: string;
+    folder_id?: number;
+  };
+}
+
+interface CardImageProps {
+  imgUrl: string;
+}
+
+interface CardInfoProps {
+  createdAt: string;
+  description: string;
+  setCardModalState: Dispatch<SetStateAction<boolean>>;
+}
+
+interface SelectMenuModalProps {
+  modalRef: RefObject<HTMLDivElement>;
+  setCardModalState: Dispatch<SetStateAction<boolean>>;
+}
 
 const SelectMenuModal = ({
   modalRef,
   setCardModalState,
-  handleModalCardDelete,
-  handleModalCardAdd,
-}) => {
+}: SelectMenuModalProps) => {
   return (
     <S.SelectMenuBox ref={modalRef}>
       <S.SelectMenuInnerBox>
@@ -20,7 +54,6 @@ const SelectMenuModal = ({
           onClick={(e) => {
             e.preventDefault();
             setCardModalState(false);
-            handleModalCardDelete(e, 'deleteLink');
           }}>
           <p>삭제하기</p>
         </S.SelectMenuButtonBox>
@@ -28,7 +61,6 @@ const SelectMenuModal = ({
           onClick={(e) => {
             e.preventDefault();
             setCardModalState(false);
-            handleModalCardAdd(e, 'add');
           }}>
           <p>폴더에 추가</p>
         </S.SelectMenuButtonBox>
@@ -37,10 +69,14 @@ const SelectMenuModal = ({
   );
 };
 
-const CardInfo = ({ createdAt, description, setCardModalState }) => {
+const CardInfo = ({
+  createdAt,
+  description,
+  setCardModalState,
+}: CardInfoProps) => {
   const text = description || '내용 없음';
 
-  const handleKebabClick = (e) => {
+  const handleKebabClick = (e: MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     setCardModalState((prev) => !prev);
   };
@@ -65,12 +101,12 @@ const CardInfo = ({ createdAt, description, setCardModalState }) => {
   );
 };
 
-const CardImage = ({ imgUrl }) => {
-  const [isLiked, setIsLiked] = useToggle(false);
+const CardImage = ({ imgUrl }: CardImageProps) => {
+  const [isLiked, setIsLiked] = useState(false);
 
-  const handleStarClick = (e) => {
+  const handleStarClick = (e: MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
-    setIsLiked(isLiked);
+    setIsLiked((prev: boolean) => !prev);
   };
   return (
     <S.CardImageContainerBox>
@@ -84,10 +120,11 @@ const CardImage = ({ imgUrl }) => {
   );
 };
 
-const Card = ({ items, handleModalCardDelete, handleModalCardAdd }) => {
+const Card = ({ items }: CardProps) => {
   const { image_source, created_at, description, url } = mapCardData(items);
-  const modalRef = useRef();
-  const [cardModalState, setCardModalState] = useState(false);
+
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [cardModalState, setCardModalState] = useState<boolean>(false);
   useOnClickOutside(modalRef, () => setCardModalState(false));
 
   return (
@@ -100,11 +137,8 @@ const Card = ({ items, handleModalCardDelete, handleModalCardAdd }) => {
       />
       {cardModalState ? (
         <SelectMenuModal
-          cardModalState={cardModalState}
           modalRef={modalRef}
           setCardModalState={setCardModalState}
-          handleModalCardDelete={handleModalCardDelete}
-          handleModalCardAdd={handleModalCardAdd}
         />
       ) : null}
     </S.CardHref>

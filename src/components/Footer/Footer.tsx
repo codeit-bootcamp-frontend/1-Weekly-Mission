@@ -1,21 +1,27 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import IMAGES from '../../assets/images.js';
-import * as S from './styles.js';
+import IMAGES from '../../assets/images';
+import { SNSLINKS } from '../../constants/constant';
+import * as S from './styles';
 
-const snsLinks = {
-  facebook: 'https://www.facebook.com/',
-  twitter: 'https://www.twitter.com/',
-  youtube: 'https://www.youtube.com/',
-  instagram: 'https://www.instagram.com/',
-};
-const FooterLink = ({ link, text }) => {
+interface FooterLinkProps {
+  link: string;
+  text: string;
+}
+
+interface SNSImageLinkProps {
+  src: string;
+  name: string;
+}
+
+const FooterLink = ({ link, text }: FooterLinkProps) => {
   return <S.FooterStyledLink to={link}>{text}</S.FooterStyledLink>;
 };
 
-const SNSImageLink = ({ src, name }) => {
+const SNSImageLink = ({ src, name }: SNSImageLinkProps) => {
   return (
-    <Link to={snsLinks[name]} target="_blank" rel="noopener noreferrer">
+    <Link to={SNSLINKS.name} target="_blank" rel="noopener noreferrer">
       <S.FooterSnsImage src={src} alt={name} height={20} />
     </Link>
   );
