@@ -7,8 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  @media (min-width: 768px) {
+  z-index: $FLOATING_BUTTON_ZINDEX;
+  @include tablet {
     position: absolute;
     top: 450px;
     height: 0;
@@ -16,7 +16,7 @@
 }
 
 .folder-maker-button {
-  z-index: 999;
+  z-index: $FLOATING_BUTTON_ZINDEX;
   text-align: center;
   font-size: 16px;
   font-style: normal;
@@ -29,9 +29,7 @@
   color: white;
   gap: 20px;
 
-  @media (min-width: 768px) {
-    z-index: 999;
-
+  @include tablet {
     color: var(--color-primary);
     background-color: transparent;
     position: absolute;

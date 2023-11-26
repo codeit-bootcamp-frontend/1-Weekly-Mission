@@ -1,3 +1,5 @@
+@import "src/commons/styles/global.scss";
+
 .folder-tag-list {
   width: 100%;
 }
@@ -26,7 +28,7 @@
   color: white;
 }
 
-@media (min-width: 1124px) {
+@include desktop {
   .folder-tags-container {
     width: 1060px;
     margin: auto;

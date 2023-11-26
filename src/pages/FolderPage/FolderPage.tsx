@@ -22,15 +22,11 @@ const INITIAL_MODAL: ModalInterface = {
 };
 
 function FolderPage() {
-  // 폴더 이름들
   const [folderList, setFolderList] = useState<FolderInterface[]>([
     INITIAL_FOLDER,
   ]);
-  // 폴더 당 카드 리스트
   const [cardList, setCardList] = useState<CardInterface[]>([]);
-  // 현재 위치한 폴더 정보
   const [currentFolder, setCurrentFolder] = useState(INITIAL_FOLDER);
-  // 모달이 보이는지
   const [modal, setModal] = useState(INITIAL_MODAL);
   const [keyword, setKeyword] = useState("");
 
@@ -56,7 +52,6 @@ function FolderPage() {
   }, []);
 
   const handleOpenModal = (modal: ModalInterface) => {
-    console.log(modal);
     setModal((prev) => {
       return { ...prev, ...modal };
     });

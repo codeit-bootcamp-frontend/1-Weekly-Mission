@@ -1,21 +1,9 @@
 import styles from "./AddCardModal.module.scss";
 import { getFolderList } from "src/apis/";
 import { useState, useEffect, MouseEvent } from "react";
-import { CardInterface } from "src/types";
+import { CardProps, FolderInterface } from "src/types";
 
-interface FolderProps {
-  id?: string;
-  name?: string;
-  link?: {
-    count?: number;
-  };
-}
-
-interface Props {
-  card: CardInterface;
-}
-
-function AddCardModal({ card }: Props) {
+function AddCardModal({ card }: CardProps) {
   console.log(card);
   const [folderList, setFolderList] = useState([]);
 
@@ -39,7 +27,7 @@ function AddCardModal({ card }: Props) {
       <h2 className={styles["modal-title"]}>폴더에 추가</h2>
       <p className={styles["modal-desc"]}>{card.url}</p>
 
-      {folderList.map((folder: FolderProps) => {
+      {folderList.map((folder: FolderInterface) => {
         return (
           <div className={styles["folder-checkbox"]} onClick={handleToggle}>
             {folder?.name}

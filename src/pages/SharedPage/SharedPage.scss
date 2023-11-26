@@ -20,7 +20,7 @@
   justify-content: center;
 }
 
-@media (min-width: 768px) {
+@mixin tablet {
   .card-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -31,7 +31,7 @@
   }
 }
 
-@media (min-width: 1124px) {
+@mixin desktop {
   .card-section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

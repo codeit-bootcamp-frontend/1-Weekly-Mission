@@ -1,4 +1,4 @@
-@import "../../../commons/styles/global.scss";
+@import "src/commons/styles/global.scss";
 
 .kebab-button {
   background-color: transparent;
@@ -6,7 +6,7 @@
   position: absolute;
   bottom: 33%;
   right: 1rem;
-  z-index: 10;
+  z-index: $KEBAB_ZINDEX;
 }
 
 .parent-kebab {
@@ -25,7 +25,7 @@
   align-items: center;
   width: 10rem;
   overflow: hidden;
-  z-index: 999;
+  z-index: $KEBAB_ZINDEX;
   box-shadow: 3px 3px 3px 3px var(--color-gray2);
   & button {
     padding: 1rem;

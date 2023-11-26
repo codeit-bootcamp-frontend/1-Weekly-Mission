@@ -1,16 +1,15 @@
 import { useState } from "react";
 import styles from "./KebabButton.module.scss";
-import { ReactComponent as KebabIcon } from "src/assets/images/kebab.svg";
-import { CardInterface, ModalInterface } from "src/types";
+import { ReactComponent as KebabIcon } from "src/assets/icons/kebab.svg";
+import { CardProps, ModalInterface } from "src/types";
 import DeleteCardModal from "src/commons/modals/DeleteCardModal/DeleteCardModal";
 import AddCardModal from "src/commons/modals/AddCardModal/AddCardModal";
 
-interface CardProps {
-  card: CardInterface;
+interface Props extends CardProps {
   onClick: (m: ModalInterface) => void;
 }
 
-function KebabMenu({ card, onClick }: CardProps) {
+function KebabMenu({ card, onClick }: Props) {
   const handleKebabClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if ((e.target as HTMLButtonElement).id === "deleteCardButton") {
       const newModal: ModalInterface = {
@@ -44,7 +43,7 @@ function KebabMenu({ card, onClick }: CardProps) {
   );
 }
 
-function KebabButton({ card, onClick }: CardProps) {
+function KebabButton({ card, onClick }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenuOpen = () => {
     setIsMenuOpen(!isMenuOpen);

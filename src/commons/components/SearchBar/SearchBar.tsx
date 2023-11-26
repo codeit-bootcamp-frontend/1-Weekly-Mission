@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react";
 import styles from "./SearchBar.module.scss";
-import { ReactComponent as SearchIcon } from "src/assets/images/search-icon.svg";
-import { ReactComponent as ResetIcon } from "src/assets/images/reset-keywords.svg";
+import { ReactComponent as SearchIcon } from "src/assets/icons/search-icon.svg";
+import { ReactComponent as ResetIcon } from "src/assets/icons/reset-keywords.svg";
 
 interface Props {
   onChange: (w: string) => void;

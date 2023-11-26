@@ -1,18 +1,16 @@
 import styles from "./Card.module.scss";
-import NoImg from "src/assets/images/no-img-card.svg";
+import NoImg from "src/assets/icons/no-img-card.svg";
 import StarButton from "../StarButton/StarButton";
 import formatDate from "src/commons/utils/formatDate";
 import calcDate from "src/commons/utils/calcDate";
 import KebabButton from "../KebabButton/KebabButton";
-import { CardInterface, ModalInterface } from "src/types";
-import DeleteCardModal from "src/commons/modals/DeleteCardModal/DeleteCardModal";
+import { CardProps, ModalInterface } from "src/types";
 
-interface CardProps {
-  card: CardInterface;
+interface Props extends CardProps {
   onClick: (m: ModalInterface) => void;
 }
 
-function Card({ card, onClick }: CardProps) {
+function Card({ card, onClick }: Props) {
   const str = calcDate(String(card.created_at));
   return (
     <>

@@ -1,5 +1,7 @@
+@import "src/commons/styles/global.scss";
+
 .background {
-  z-index: 500;
+  z-index: $MODAL_BACKGROUND_ZINDEX;
   display: flex;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.4);
@@ -13,7 +15,7 @@
   padding: 3rem 4rem;
   background-color: white;
   border-radius: 8px;
-  z-index: 999;
+  z-index: $MODAL_CONTAINER_ZINDEX;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

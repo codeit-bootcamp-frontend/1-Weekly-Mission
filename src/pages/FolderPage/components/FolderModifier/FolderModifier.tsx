@@ -1,7 +1,7 @@
 import styles from "./FolderModifier.module.scss";
-import { ReactComponent as ShareIcon } from "src/assets/images/share-icon.svg";
-import { ReactComponent as RenameIcon } from "src/assets/images/rename-icon.svg";
-import { ReactComponent as DeleteIcon } from "src/assets/images/delete-icon.svg";
+import { ReactComponent as ShareIcon } from "src/assets/icons/share-icon.svg";
+import { ReactComponent as RenameIcon } from "src/assets/icons/rename-icon.svg";
+import { ReactComponent as DeleteIcon } from "src/assets/icons/delete-icon.svg";
 import { FolderInterface, ModalInterface } from "src/types";
 import DeleteFolderModal from "src/commons/modals/DeleteFolderModal/DeleteFolderModal";
 import RenameFolderModal from "src/commons/modals/RenameFolderModal/RenameFolderModal";

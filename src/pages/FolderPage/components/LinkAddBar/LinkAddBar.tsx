@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import styles from "./LinkAddBar.module.scss";
-import { ReactComponent as LinkIcon } from "src/assets/images/link-icon.svg";
+import { ReactComponent as LinkIcon } from "src/assets/icons/link-icon.svg";
 
 function LinkAddBar() {
   const [keyword, setKeyword] = useState("");
@@ -9,7 +9,7 @@ function LinkAddBar() {
 
   return (
     <>
-      <div className={styles["add-form-container"]}>
+      <div id="LinkAddBar" className={styles["add-form-container"]}>
         <form>
           <div className={styles["add-link-form"]}>
             <LinkIcon className={styles["add-link-icon"]} />

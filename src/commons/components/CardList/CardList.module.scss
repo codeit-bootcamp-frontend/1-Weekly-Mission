@@ -1,3 +1,5 @@
+@import "src/commons/styles/global.scss";
+
 .no-card-list {
   text-align: center;
   font-size: 1.6rem;
@@ -15,7 +17,7 @@
   justify-content: center;
 }
 
-@media (min-width: 768px) {
+@include tablet {
   .card-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -23,7 +25,7 @@
   }
 }
 
-@media (min-width: 1124px) {
+@include desktop {
   .card-section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

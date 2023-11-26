@@ -1,10 +1,7 @@
-import { FolderInterface } from "src/types";
+import { FolderProps } from "src/types";
 import styles from "./DeleteFolderModal.module.scss";
 
-interface Props {
-  folder: FolderInterface;
-}
-function DeleteFolderModal({ folder }: Props) {
+function DeleteFolderModal({ folder }: FolderProps) {
   return (
     <div className={styles["modal-content"]}>
       <h2 className={styles["modal-title"]}>폴더 삭제</h2>

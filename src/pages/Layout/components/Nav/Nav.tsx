@@ -1,8 +1,6 @@
-/* 네비게이션 컴포넌트 */
-
 import { Link } from "react-router-dom";
 import styles from "./Nav.module.scss";
-import { ReactComponent as LogoSvg } from "src/assets/images/logo.svg";
+import { ReactComponent as LogoSvg } from "src/assets/icons/logo.svg";
 
 interface Props {
   profile: {

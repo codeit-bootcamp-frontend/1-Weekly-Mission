@@ -34,11 +34,7 @@ footer {
   color: #cfcfcf;
 }
 
-/* 768px 이상 1199px 이하 타블렛에서는 
- * 
- * footer의 padding을 조절한다.
-*/
-@media (min-width: 768px) {
+@mixin tablet {
   footer {
     padding: 3rem 10rem 10rem;
   }

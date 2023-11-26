@@ -1,14 +1,10 @@
 import styles from "./ShareFolderModal.module.scss";
-import { ReactComponent as KakaoIcon } from "src/assets/images/kakao-icon.svg";
-import { ReactComponent as FacebookIcon } from "src/assets/images/facebook-icon.svg";
-import { ReactComponent as LinkIcon } from "src/assets/images/link-modal-icon.svg";
-import { FolderInterface } from "src/types";
+import { ReactComponent as KakaoIcon } from "src/assets/icons/kakao-icon.svg";
+import { ReactComponent as FacebookIcon } from "src/assets/icons/facebook-icon.svg";
+import { ReactComponent as LinkIcon } from "src/assets/icons/link-modal-icon.svg";
+import { FolderProps } from "src/types";
 
-interface Props {
-  folder: FolderInterface;
-}
-
-function ShareFolderModal({ folder }: Props) {
+function ShareFolderModal({ folder }: FolderProps) {
   const handleLinkButton = () => {
     let url = "https://bootcamp-api.codeit.kr/shared";
     let query = `?user=1&folder=${folder.id}`;

@@ -1,10 +1,7 @@
-import { CardInterface } from "src/types";
+import { CardProps } from "src/types";
 import styles from "./DeleteCardModal.module.scss";
 
-interface Props {
-  card: CardInterface;
-}
-function DeleteCardModal({ card }: Props) {
+function DeleteCardModal({ card }: CardProps) {
   return (
     <div className={styles["modal-content"]}>
       <h2 className={styles["modal-title"]}>링크 삭제</h2>

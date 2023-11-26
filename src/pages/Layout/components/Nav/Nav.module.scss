@@ -4,7 +4,7 @@ nav {
   width: 100%;
   background-color: var(--color-gray1);
   padding: 2rem 3.2rem;
-  z-index: 100;
+  z-index: $NAV_ZINDEX;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;

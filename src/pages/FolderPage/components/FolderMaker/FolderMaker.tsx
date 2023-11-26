@@ -5,6 +5,7 @@ import { ModalInterface } from "src/types";
 interface Props {
   onClick: (m: ModalInterface) => void;
 }
+
 function FolderMaker({ onClick }: Props) {
   const handleFolderMaker = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
