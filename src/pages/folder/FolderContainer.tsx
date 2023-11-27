@@ -10,16 +10,12 @@ import { FolderData, LinkData } from "types/folder";
 export const DEFAULT = "전체";
 const USER_ID = 1;
 
-const options = {
-  root: null,
-  rootMain: "0px",
-  threshold: 0, // 단계별 콜백함수 호출
-};
-
 export default function Folder() {
   const addLinkHeroRef = useRef(null);
+  const bottomDivRef = useRef(null);
 
-  const [isVisibleHero, setIsVisibleHero] = useState(true);
+  const [isVisibleHero, setIsVisibleHero] = useState(false);
+  const [isIntersect, setIsIntersect] = useState(true);
   const [links, setLinks] = useState<LinkData[]>([]);
   const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
   const [folders, setFolders] = useState<FolderData[]>([]);
@@ -107,21 +103,44 @@ export default function Folder() {
   useEffect(() => {
     handleLoadedData();
 
-    const observer = new IntersectionObserver((entries) => {
-      console.log(entries[0].isIntersecting); // 삭제예정
-
-      if (entries[0].isIntersecting) {
-        if (entries[0].intersectionRatio < 1) {
-          // 검색바를 원래 위치에 고정
-          console.log("관찰대상에 들어옴");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          if (entries[0].intersectionRatio < 1) {
+            // 검색바를 원래 위치에 고정
+            setIsVisibleHero(false);
+          }
+        } else {
+          // 검색바를 화면 최하단에 위치고정
           setIsVisibleHero(true);
+          setIsIntersect(false);
         }
-      } else {
-        // 검색바를 화면 최하단에 위치고정
-        console.log("관찰대상에서 벗어남");
-        setIsVisibleHero(false);
-      }
-    }, options);
+      },
+      { threshold: 0 },
+    );
+
+    const observerFixedTarget = new IntersectionObserver(
+      (entries) => {
+        if (isIntersect) return; // 초기 콜백함수 실행 제어
+
+        if (entries[0].isIntersecting) {
+          if (entries[0].intersectionRatio === 1) {
+            // 검색바를 원래 위치에 고정
+            setIsVisibleHero(false);
+            setIsIntersect(false);
+          }
+        } else {
+          // 검색바를 화면 최하단에 위치고정
+          setIsVisibleHero(true);
+          setIsIntersect(false);
+        }
+      },
+      { threshold: 1 },
+    );
+
+    if (bottomDivRef.current) {
+      observerFixedTarget.observe(bottomDivRef.current);
+    }
 
     if (addLinkHeroRef.current) {
       observer.observe(addLinkHeroRef.current);
@@ -129,14 +148,16 @@ export default function Folder() {
 
     return () => {
       observer.disconnect();
+      observerFixedTarget.disconnect();
     };
-  }, [selectedFolderId]);
+  }, [selectedFolderId, isIntersect]);
 
   if (error || errorFolder) console.log(error || errorFolder);
 
   return (
     <FolderUI
       target={addLinkHeroRef}
+      fixedTarget={bottomDivRef}
       addLinkValue={addLinkValue}
       isVisibleHero={isVisibleHero}
       keyword={keyword}

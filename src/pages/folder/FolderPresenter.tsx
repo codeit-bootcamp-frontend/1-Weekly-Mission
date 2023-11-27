@@ -32,7 +32,7 @@ export default function FolderUI(props: FolderUIProps) {
         <S.HeroContainer ref={props.target}>
           <FolderHero onChangeAddLink={props.handleAddLink} addLinkValue={props.addLinkValue} />
         </S.HeroContainer>
-        {!props.isVisibleHero && (
+        {props.isVisibleHero && (
           <S.FixedHeroContainer>
             <FolderHero onChangeAddLink={props.handleAddLink} addLinkValue={props.addLinkValue} />
           </S.FixedHeroContainer>
@@ -73,6 +73,7 @@ export default function FolderUI(props: FolderUIProps) {
             </>
           )}
         </S.Contents>
+        <S.DivTarget ref={props.fixedTarget}></S.DivTarget>
       </main>
     </>
   );

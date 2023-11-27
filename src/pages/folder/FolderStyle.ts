@@ -104,3 +104,8 @@ export const SubTitle = styled.div`
   font-size: 1.5rem;
   font-weight: 600;
 `;
+
+export const DivTarget = styled.div`
+  width: 100%;
+  height: 1px;
+`;
