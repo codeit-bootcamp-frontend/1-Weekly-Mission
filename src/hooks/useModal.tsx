@@ -1,10 +1,10 @@
 import { useState, ReactNode } from 'react';
 import Layout from '@components/Modal/Layout';
 
-function useModal(
-  modals: JSX.Element
-): [(modalKey: string) => void, JSX.Element] {
-  const [Modal, setModal] = useState<ReactNode>(null);
+function useModal(modals: {
+  [modal: string]: JSX.Element;
+}): [(modalKey: string) => void, JSX.Element] {
+  const [Modal, setModal] = useState<JSX.Element>(<></>);
 
   const closeModal = () => {
     toggleShow('');
@@ -12,7 +12,7 @@ function useModal(
 
   const toggleShow = (modalKey: string) => {
     if (!modalKey) {
-      setModal(null);
+      setModal(<></>);
       return;
     }
 
