@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { cursorPointer, flexCenter } from "../style/common";
 import colors from "../style/colors";
 
-function Button({ children }) {
+function Button({ children } : { children: ReactNode }) {
   return <StyledButton href="signin.html">{children}</StyledButton>;
 }
 

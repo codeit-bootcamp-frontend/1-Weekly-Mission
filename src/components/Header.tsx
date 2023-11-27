@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../style/colors";
 
-
-//? 붙여주는 게 정답인가?
+// ?를 안 붙여주면 Folder에서 Type 'string | undefined' is not assignable to type 'string'.
+//   Type 'undefined' is not assignable to type 'string'.ts(2322)
+//   Header.tsx(8, 3)가 나서 붙였는데  이게 정답인가?
 interface HeaderProps {
   name?: string;
   owner?: {

@@ -6,7 +6,15 @@ import youtubeLogo from "../../assets/youtube.png";
 import styled from "styled-components";
 import colors from "../../style/colors";
 import { device } from "../../style/device";
-function SocialIcon({ link, imageSource, altText }) {
+function SocialIcon({
+  link,
+  imageSource,
+  altText,
+}: {
+  link: string;
+  imageSource: string;
+  altText: string;
+}) {
   return (
     <a href={link}>
       <img src={imageSource} alt={altText} />

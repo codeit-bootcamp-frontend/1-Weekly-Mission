@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import styled from "styled-components";
 
-function Main({ children }) {
+function Main({ children }: { children: ReactNode }) {
   return (
     <MainContainer>
       <MainContent>{children}</MainContent>

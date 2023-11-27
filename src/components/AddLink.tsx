@@ -4,7 +4,7 @@ import linkImage from "../assets/link.png";
 import colors from "../style/colors";
 import { cursorPointer, flexCenter } from "../style/common";
 import { device } from "../style/device";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { ModalMaker } from "./Modal/Modal";
 const AddLinkFrame = styled.form`
   position: relative;
@@ -71,9 +71,9 @@ function AddLink() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setModal] = useState(null);
 
-  const handleModal = (e) => {
+  const handleModal = (e : MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const url = e.target.elements.linkInput.value;
+    const url = (e.target as HTMLInputElement).elements.linkInput.value;
 
     setModal(ModalMaker({ feature: "추가하기", url, setIsModalOpen }));
     setIsModalOpen(true);

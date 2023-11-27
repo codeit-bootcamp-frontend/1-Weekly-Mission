@@ -26,6 +26,18 @@ interface User {
   profileImageSource: string;
 }
 
+interface UserInfo {
+  data: [
+    {
+      id: number;
+      created_at: string;
+      name: string;
+      image_source: string;
+      email: string;
+      auth_id: string;
+    },
+  ];
+}
 interface Folder {
   id: number;
   created_at: string;
@@ -40,16 +52,18 @@ interface Folders {
 }
 
 interface LinksByFolder {
-  data: {
-    id: number;
-    created_at: string;
-    updated_at: string;
-    url: string;
-    title: string;
-    description: string;
-    image_source: string;
-    folder_id: number;
-  };
+  data: [
+    {
+      id: number;
+      created_at: string;
+      updated_at: string;
+      url: string;
+      title: string;
+      description: string;
+      image_source: string;
+      folder_id: number;
+    },
+  ];
 }
 
 const API_URL = "https://bootcamp-api.codeit.kr";
@@ -74,7 +88,7 @@ export async function getSampleUser(category: string) {
 }
 export async function getUser(user_id = DEFAULT_USER_ID) {
   const response = await fetch(`${API_URL}/api/users/${user_id}`);
-  return getData(response) as unknown as Folder;
+  return getData(response) as unknown as UserInfo;
 }
 
 export async function getFolders(user_id = DEFAULT_USER_ID) {
