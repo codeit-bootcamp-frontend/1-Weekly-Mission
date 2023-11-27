@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 
 import * as S from "./ShareContainerStyle";
 import { getFolder } from "api/api";
 
 import Hero from "components/hero/Hero";
-// import Searchbar from "components/inputs/Searchbar";
+import Searchbar from "components/inputs/Searchbar";
 import CardList from "components/card/CardList";
 import Loading from "components/Loading";
 
@@ -20,7 +20,31 @@ export default function Share() {
     profileImageSource: "",
   });
   const [links, setLinks] = useState<SampleLinkData[]>([]);
+  const [filteredLinks, setFilteredLinks] = useState<SampleLinkData[]>([]);
+  const [keyword, setKeyword] = useState("");
   const { isLoading, error, wrappedFunction: getFoldersAsyncFunc } = useFetch(getFolder);
+
+  const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.target.value);
+    const searchedLinks = checkMatchedAllLinks(e.target.value, links);
+    setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
+  };
+
+  const handleDeletekeyword = () => {
+    setKeyword("");
+    setFilteredLinks(links);
+  };
+
+  const checkMatchedAllLinks = (keyword: string, links: SampleLinkData[]) => {
+    const filteredLinks = links.filter((link) => {
+      return (
+        (link.title && link.title.includes(keyword)) ||
+        (link.description && link.description.includes(keyword)) ||
+        (link.url && link.url.includes(keyword))
+      );
+    });
+    return filteredLinks;
+  };
 
   const handleFolderData = async () => {
     const { folder } = await getFoldersAsyncFunc();
@@ -29,6 +53,7 @@ export default function Share() {
     setFolder(folderName);
     setProfile(owner);
     setLinks(links);
+    setFilteredLinks(links);
   };
 
   useEffect(() => {
@@ -48,8 +73,12 @@ export default function Share() {
           </S.HeroContainer>
           <section>
             <S.Contents>
-              {/* <Searchbar />  // 추후 수정예정*/}
-              <CardList links={links} />
+              <Searchbar
+                keyword={keyword}
+                handleOnChangeInput={handleOnChangeInput}
+                handleDelete={handleDeletekeyword}
+              />
+              <CardList links={filteredLinks} />
             </S.Contents>
           </section>
         </>
