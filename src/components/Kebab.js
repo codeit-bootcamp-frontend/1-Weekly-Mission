@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import kebab from "../../images/kebab.svg";
-import { Modalkebab } from "./Modal/Modal.js";
+import kebab from "../images/kebab.svg";
+import { Modalkebab } from "../components/modal/Modal.js";
 export const ModalInfo = [
   {
     title: "폴더에 추가",
