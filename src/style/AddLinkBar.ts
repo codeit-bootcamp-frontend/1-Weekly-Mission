@@ -1,12 +1,28 @@
 import styled from "styled-components";
 
+export const Container = styled.div<{ $isfixed: boolean }>`
+  z-index: ${({ $isfixed }) => ($isfixed ? `90` : `10`)};
+  display: flex;
+  flex-direction: column;
+  position: ${({ $isfixed }) => ($isfixed ? `fixed` : `relative`)};
+  bottom: 0px;
+  left: 0px;
+  padding: 1.5rem 0;
+  width: 100%;
+  background-color: var(--linkbrary-bg);
+
+  @media (max-width: 767px) {
+    padding: 1rem 0;
+  }
+`;
+
 export const LinkDiv = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 50rem;
   height: 4.3125rem;
-  margin: 1.5rem 20rem;
+  margin: 0 auto;
   padding: 1rem 1.25rem;
   gap: 0.75rem;
   border-radius: 0.9375rem;
@@ -25,7 +41,7 @@ export const LinkDiv = styled.div`
     max-width: 20.3125rem;
     height: 3.3125rem;
     padding: 0.5rem 0.63rem;
-    margin: 2.5rem 0rem;
+    margin: 0 auto;
     border-radius: 0.9375rem;
     font-size: 0.875rem;
   }

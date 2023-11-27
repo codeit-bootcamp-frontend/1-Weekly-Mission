@@ -8,7 +8,7 @@ import * as Styled from "../style/Footer";
 function Footer() {
   return (
     <Styled.Container>
-      <Styled.Footer>
+      <Styled.Footer id="footer">
         <Styled.Span>©codeit - 2023</Styled.Span>
         <Styled.LinkContainer>
           <Styled.Link href="/privacy">Privacy Policy</Styled.Link>

@@ -29,10 +29,12 @@ function FolderList({ folders, params }) {
       setName("전체");
       return;
     }
-    const folder = folders.find((folder) => {
-      return folder.id === Number(params);
-    });
-    setName(folder.name);
+    if (folders) {
+      const folder = folders.find((folder) => {
+        return folder.id === Number(params);
+      });
+      setName(folder.name);
+    }
   }
 
   function handleClick(id: number) {
@@ -42,6 +44,7 @@ function FolderList({ folders, params }) {
 
   useEffect(() => {
     handleClick(params);
+    filterName(folders, params);
   }, [params]);
 
   return (

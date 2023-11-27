@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { getFolderLinks, getFolders } from "../api";
+import useScrollEvent from "../hooks/useScrollEvent";
 import Gnb from "../component/Gnb";
 import AddLinkBar from "../component/AddLinkBar";
 import CardContainer from "../component/CardContainer";
@@ -12,6 +13,7 @@ function FolderPage() {
   const [links, setLinks] = useState([]);
   const [folders, setFolders] = useState([]);
   const folderParam = folderId || "";
+  const { ref, isTrue } = useScrollEvent([folderParam]);
 
   async function getFolderList() {
     const folders = await getFolders();
@@ -22,6 +24,10 @@ function FolderPage() {
     const links = await getFolderLinks(id);
     setLinks(links);
   }
+
+  // const intersectFooter = useCallback(() => {
+  //   const footer = document.getElementById("footer");
+  // }, []);
 
   useEffect(() => {
     getFolderLink(folderParam);
@@ -35,9 +41,10 @@ function FolderPage() {
       </Helmet>
       <Gnb isFixed={true} />
       <Styled.Div>
-        <AddLinkBar />
+        <AddLinkBar ref={ref} />
       </Styled.Div>
       <CardContainer folders={folders} data={links} params={folderParam} />
+      {!isTrue && <AddLinkBar float={true} />}
     </>
   );
 }
