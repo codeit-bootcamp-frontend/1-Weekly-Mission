@@ -73,8 +73,8 @@ export default function FolderUI(props: FolderUIProps) {
             </>
           )}
         </S.Contents>
-        <S.DivTarget ref={props.fixedTarget}></S.DivTarget>
       </main>
+      <S.DivTarget ref={props.fixedTarget}></S.DivTarget>
     </>
   );
 }

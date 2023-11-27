@@ -103,40 +103,39 @@ export default function Folder() {
   useEffect(() => {
     handleLoadedData();
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          if (entries[0].intersectionRatio < 1) {
-            // 검색바를 원래 위치에 고정
-            setIsVisibleHero(false);
-          }
-        } else {
-          // 검색바를 화면 최하단에 위치고정
-          setIsVisibleHero(true);
+    const handleObserver = (entries: IntersectionObserverEntry[]) => {
+      if (entries[0].isIntersecting) {
+        if (entries[0].intersectionRatio < 1) {
+          // 검색바를 원래 위치에 고정
+          setIsVisibleHero(false);
+        }
+      } else {
+        // 검색바를 화면 최하단에 위치고정
+        setIsVisibleHero(true);
+        setIsIntersect(false);
+      }
+    };
+
+    const handleFixedObserver = (entries: IntersectionObserverEntry[]) => {
+      if (isIntersect) return; // 초기 콜백함수 실행 제어
+
+      if (entries[0].isIntersecting) {
+        if (entries[0].intersectionRatio === 1) {
+          // 검색바를 원래 위치에 고정
+          setIsVisibleHero(false);
           setIsIntersect(false);
         }
-      },
-      { threshold: 0 },
-    );
+      } else {
+        // 검색바를 화면 최하단에 위치고정
+        setIsVisibleHero(true);
+        setIsIntersect(true);
+      }
+    };
 
-    const observerFixedTarget = new IntersectionObserver(
-      (entries) => {
-        if (isIntersect) return; // 초기 콜백함수 실행 제어
-
-        if (entries[0].isIntersecting) {
-          if (entries[0].intersectionRatio === 1) {
-            // 검색바를 원래 위치에 고정
-            setIsVisibleHero(false);
-            setIsIntersect(false);
-          }
-        } else {
-          // 검색바를 화면 최하단에 위치고정
-          setIsVisibleHero(true);
-          setIsIntersect(false);
-        }
-      },
-      { threshold: 1 },
-    );
+    const observer = new IntersectionObserver(handleObserver, { threshold: 0 });
+    const observerFixedTarget = new IntersectionObserver(handleFixedObserver, {
+      threshold: 1,
+    });
 
     if (bottomDivRef.current) {
       observerFixedTarget.observe(bottomDivRef.current);
