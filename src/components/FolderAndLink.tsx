@@ -10,7 +10,7 @@ import { device } from "../style/device";
 import CardList from "./CardList";
 
 function FolderAndLink() {
-  const [selectedFolderId, setSelectedFolderId] = useState(undefined);
+  const [selectedFolderId, setSelectedFolderId] = useState<number>();
 
   const DEFAULT_FOLDER = 1;
   // 폴더
@@ -21,7 +21,7 @@ function FolderAndLink() {
     getLinksByFolderID(DEFAULT_FOLDER, selectedFolderId)
   );
 
-  const setFolderLink = (folder_id) => {
+  const setFolderLink = (folder_id: number) => {
     setSelectedFolderId(folder_id);
   };
 

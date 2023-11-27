@@ -1,4 +1,4 @@
-interface Link {
+export interface Link1 {
   id: number;
   createdAt: string;
   url: string;
@@ -15,7 +15,7 @@ interface Sample {
       name: string;
       profileImageSource: string;
     };
-    links: Link[];
+    links: Link1[];
   };
 }
 
@@ -51,19 +51,19 @@ interface Folders {
   data: Folder[];
 }
 
-interface LinksByFolder {
-  data: [
-    {
-      id: number;
-      created_at: string;
-      updated_at: string;
-      url: string;
-      title: string;
-      description: string;
-      image_source: string;
-      folder_id: number;
-    },
-  ];
+export interface Link2 {
+  id: number;
+  created_at: string;
+  updated_at: string;
+  url: string;
+  title: string;
+  description: string;
+  image_source: string;
+  folder_id: number;
+}
+
+export interface LinksByFolder {
+  data: Link2[];
 }
 
 const API_URL = "https://bootcamp-api.codeit.kr";
@@ -98,7 +98,7 @@ export async function getFolders(user_id = DEFAULT_USER_ID) {
 
 export async function getLinksByFolderID(
   user_id = DEFAULT_USER_ID,
-  folder_id = undefined
+  folder_id?: number
 ) {
   const queryParams = folder_id !== undefined ? `${folder_id}` : "";
 

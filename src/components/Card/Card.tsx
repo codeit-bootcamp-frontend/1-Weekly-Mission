@@ -5,7 +5,8 @@ import StarIcon from "../../assets/star.png";
 import * as S from "./CardStyle";
 import KebabIcon from "../../assets/kebab.svg";
 import { ModalMaker } from "../Modal/Modal";
-function calculateTimeAgo(createdAt) {
+
+function calculateTimeAgo(createdAt: string) {
   const createdDate = moment(createdAt, "YYYY-MM-DDTHH:mm:ss[Z]");
   const currentDate = moment();
   const diff = currentDate.diff(createdDate, "seconds");
@@ -31,7 +32,7 @@ function calculateTimeAgo(createdAt) {
   }
 }
 
-function Card({ link }) {
+function Card({ link }: { link }) {
   const [isOpenKebab, setIsOpenKebab] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setModal] = useState(null);
