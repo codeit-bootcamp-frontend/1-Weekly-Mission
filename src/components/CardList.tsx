@@ -3,9 +3,9 @@ import React from "react";
 import Card from "./Card/Card";
 import styled from "styled-components";
 import { device } from "../style/device";
-import { Link1, LinksByFolder } from "../api";
+import { Link1 } from "../api";
 
-function CardList({ links }: { links: Link1[] | LinksByFolder["data"] }) {
+function CardList({ links }: { links: Link1[] }) {
   if (!links) {
     return <div>No links available.</div>;
   }

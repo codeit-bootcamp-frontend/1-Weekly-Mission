@@ -5,6 +5,7 @@ import StarIcon from "../../assets/star.png";
 import * as S from "./CardStyle";
 import KebabIcon from "../../assets/kebab.svg";
 import { ModalMaker } from "../Modal/Modal";
+import { Link1, Link2 } from "../../api";
 
 function calculateTimeAgo(createdAt: string) {
   const createdDate = moment(createdAt, "YYYY-MM-DDTHH:mm:ss[Z]");
@@ -32,7 +33,7 @@ function calculateTimeAgo(createdAt: string) {
   }
 }
 
-function Card({ link }: { link }) {
+function Card({ link }: { link: Link1 }) {
   const [isOpenKebab, setIsOpenKebab] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setModal] = useState(null);
@@ -57,16 +58,8 @@ function Card({ link }: { link }) {
       <S.CardContainer href={link.url}>
         <S.CardImageContainer>
           <S.CardImage
-            className={
-              link.imageSource || link.image_source
-                ? "Card-image"
-                : "no-img-logo"
-            }
-            src={
-              link.imageSource || link.image_source
-                ? link.imageSource || link.image_source
-                : LogoImg
-            }
+            className={link.imageSource ? "Card-image" : "no-img-logo"}
+            src={link.imageSource ? link.imageSource : LogoImg}
             alt="카드 사진"
           />
           <img src={StarIcon} className="star-icon" />
@@ -74,7 +67,7 @@ function Card({ link }: { link }) {
 
         <S.CardContentContainer>
           <S.CardContentAgo>
-            {calculateTimeAgo(link.createdAt || link.created_at)}
+            {calculateTimeAgo(link.createdAt)}
           </S.CardContentAgo>
           <img
             src={KebabIcon}
@@ -99,7 +92,7 @@ function Card({ link }: { link }) {
           )}
           <S.CardContent>{link.description}</S.CardContent>
           <S.CardContentAt>
-            {moment(link.createdAt ?? link.created_at).format("YYYY.MM.DD")}
+            {moment(link.createdAt).format("YYYY.MM.DD")}
           </S.CardContentAt>
         </S.CardContentContainer>
       </S.CardContainer>

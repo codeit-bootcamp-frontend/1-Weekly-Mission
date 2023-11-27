@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getFolders, getLinksByFolderID } from "../api";
+import { Link1, getFolders, getLinksByFolderID } from "../api";
 import FolderList from "./FolderList/FolderList";
 
 import useAsync from "../Hooks/useAsync";
@@ -36,6 +36,18 @@ function FolderAndLink() {
   const folders = folderData?.data;
   const links = linkData?.data;
 
+  const convertedLinks: Link1[] = links.map((link) => {
+    return {
+      id: link.id,
+      url: link.url,
+      title: link.title,
+      description: link.description,
+      imageSource: link.image_source,
+      folderId: link.folder_id,
+      createdAt: link.created_at,
+      updatedAt: link.updated_at,
+    };
+  });
   // 링크
 
   return (
@@ -47,7 +59,7 @@ function FolderAndLink() {
           selectedFolderId={selectedFolderId}
         />
       )}
-      {links.length === 0 ? <NoLink /> : <CardList links={links} />}
+      {links.length === 0 ? <NoLink /> : <CardList links={convertedLinks} />}
     </>
   );
 }

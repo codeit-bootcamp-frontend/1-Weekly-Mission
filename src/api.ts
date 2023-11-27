@@ -1,11 +1,3 @@
-export interface Link1 {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-}
 interface Sample {
   folder: {
     id: number;
@@ -49,6 +41,16 @@ interface Folder {
 }
 interface Folders {
   data: Folder[];
+}
+
+export interface Link1 {
+  id: number;
+  url: string;
+  title: string;
+  description: string;
+  imageSource?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface Link2 {
