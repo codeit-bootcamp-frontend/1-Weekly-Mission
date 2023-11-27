@@ -28,15 +28,6 @@ export default function Folder() {
   const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
 
   const { handleFolderUpdate } = useContext(FolderContext);
-  /**
-   * 검색바 구현 todo
-   * 1. keyword 상태 useState
-   * 2. onChange / onKeyUp 이벤트시 setState에 저장
-   * 3. state가 변할때마다 필터하는 로직 구현하기
-   * 4. 리팩토링 - 디바운싱
-   * 5. share 컴포넌트랑 공유할 수 있도록 재사용성 고려
-   * 6. x 버튼 - 클릭시 로직 구현하기
-   */
 
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -91,15 +82,6 @@ export default function Folder() {
     setAddLinkValue(link);
   };
 
-  /**
-   * Observer 구현 Todo
-   * 1. Observer 연결
-   * 2. 검색바 보여짐에 따른 조건 분리
-   * 3. 조건에 따른 스타일 변경 -> 검색바가 최하단으로
-   * 4. footer에 진입시에는 최하단에 위치한 검색바가 보이지 않게
-   * 4-1. hero부분 스타일 바꿀지 vs 새로운 div 생성할지(display)
-   * 5. 로직 분리 리팩토링 (useEffect, custon hooks)
-   */
   useEffect(() => {
     handleLoadedData();
 
