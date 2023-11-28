@@ -6,9 +6,13 @@ import starIcon from "assets/images/starIcon.svg";
 import kebabIcon from "assets/images/kebabIcon.svg";
 import noImg from "assets/images/noImg.svg";
 import SelectMenu from 'components/SelectMenu/SelectMenu';
+import { Data } from "../types";
 
+interface CardProps {
+  item: Data;
+}
 
-function Card({ item }) {
+function Card({ item }: CardProps) {
   const [showSelectMenu, setShowSelectMenu] = useState(false);
 
   const openSelectMenu = () => {
