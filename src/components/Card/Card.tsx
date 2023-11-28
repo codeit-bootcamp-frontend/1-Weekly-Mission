@@ -1,5 +1,5 @@
 import * as S from './Card.style';
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import TimeAgo from 'react-timeago';
 import useModal, { ModalsKey } from '@hooks/useModal';
 import { Link } from '@pages/Folder/Folder.types';
@@ -14,8 +14,6 @@ interface Props {
 }
 
 function Card({ data, userId }: Props) {
-  const [showKebab, setShowKebab] = useState(false);
-
   const {
     url,
     title,
@@ -37,14 +35,40 @@ function Card({ data, userId }: Props) {
     }
   };
 
+  const reducedTitle = reduceText(title, 70);
+  const reducedDescription = reduceText(description, 100);
+
   const [modal, setModal] = useModal({ url: url, userId: userId });
 
   const setKebabModal = (modalKey?: ModalsKey) => {
     setModal(modalKey);
   };
 
-  const reducedTitle = reduceText(title, 70);
-  const reducedDescription = reduceText(description, 100);
+  const [kebab, setKebab] = useState(false);
+
+  const kebabRef = useRef<HTMLButtonElement>(null);
+
+  const closePopup: EventListener = (e: Event) => {
+    if (
+      kebabRef.current &&
+      !kebabRef.current.contains(e.target as HTMLElement)
+    ) {
+      setKebab(false);
+    }
+  };
+
+  const toggleKebab = (e: SyntheticEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setKebab((curr) => !curr);
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', closePopup);
+    return () => {
+      document.removeEventListener('click', closePopup);
+    };
+  }, []);
 
   return (
     <>
@@ -61,17 +85,10 @@ function Card({ data, userId }: Props) {
         <S.CardTextContainer>
           <S.TimeAgo>
             <TimeAgo date={createdDate} />
-            <S.KebabButton
-              type='button'
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                setShowKebab((curr) => !curr);
-              }}
-            >
+            <S.KebabButton type='button' onClick={toggleKebab} ref={kebabRef}>
               <img src={KEBAB} alt='케밥 버튼' />
             </S.KebabButton>
-            {showKebab && <KebabPopup setKebabModal={setKebabModal} />}
+            {kebab && <KebabPopup setKebabModal={setKebabModal} />}
           </S.TimeAgo>
           <S.Title>{reducedTitle}</S.Title>
           <S.Description>{reducedDescription}</S.Description>
