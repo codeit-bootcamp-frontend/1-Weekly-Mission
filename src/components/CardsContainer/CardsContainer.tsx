@@ -23,7 +23,7 @@ interface Props {
 function CardsContainer({ cards = [], userId = DEFAULT_USER_ID }: Props) {
   return (
     <S.Container>
-      {cards.map((card: CardProps) => (
+      {cards?.map((card: CardProps) => (
         <li key={card.id}>
           <Card data={card} userId={userId} />
         </li>

@@ -86,11 +86,11 @@ function Card({ data, userId }: Props) {
 
 export default Card;
 
-function KebabPopup({
-  setKebabModal,
-}: {
+interface KebabPopupProps {
   setKebabModal: (modalKey: string) => void;
-}) {
+}
+
+function KebabPopup({ setKebabModal }: KebabPopupProps) {
   return (
     <S.KebabPopup>
       <S.KebabInnerButton

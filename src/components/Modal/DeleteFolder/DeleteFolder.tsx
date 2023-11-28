@@ -1,6 +1,10 @@
 import * as Modal from '../Modal.style';
 
-function DeleteFolder({ folderName }: { folderName: string }) {
+interface Props {
+  folderName: string;
+}
+
+function DeleteFolder({ folderName }: Props) {
   return (
     <>
       <Modal.Header>
