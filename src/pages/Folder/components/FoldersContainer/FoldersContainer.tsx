@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import useRequest from '@hooks/useRequest';
 import FoldersView from '../FoldersView';
 import InfoContainer from '../InfoContainer';
+import { Folder } from './FoldersContainer.types';
 
 const DEFAULT_FOLDER = {
   id: 0,
@@ -12,16 +13,6 @@ interface Props {
   userId: number;
   initialFolderId: number;
   setFolderLinks: (nextFolderId: number) => void;
-}
-
-export interface Folder {
-  id: number;
-  name: string;
-  created_at?: string;
-  userid?: number;
-  link?: {
-    count: number;
-  };
 }
 
 function FoldersContainer({ userId, initialFolderId, setFolderLinks }: Props) {

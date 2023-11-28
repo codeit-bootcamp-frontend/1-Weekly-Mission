@@ -9,10 +9,10 @@ import { CardProps } from '@components/CardsContainer/CardsContainer';
 import filterLinks from '@utils/filterLinks';
 
 interface SharedFolder {
-  count: number;
   id: number;
-  links: CardProps[];
   name: string;
+  count: number;
+  links: CardProps[];
   owner: {
     id: number;
     name: string;

@@ -3,7 +3,7 @@ import useModal from '@hooks/useModal';
 import NewFolder from '@components/Modal/NewFolder';
 import ADD_COLOR from '@assets/icons/add-color.svg';
 import ADD_WHITE from '@assets/icons/add-white.svg';
-import { Folder } from '../FoldersContainer/FoldersContainer';
+import { Folder } from '../FoldersContainer/FoldersContainer.types';
 
 interface Props {
   folders?: Folder[];

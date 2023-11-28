@@ -3,7 +3,7 @@ import useModal from '@hooks/useModal';
 import Edit from '@components/Modal/Edit';
 import Share from '@components/Modal/Share';
 import DeleteFolder from '@components/Modal/DeleteFolder';
-import { Folder } from '../FoldersContainer/FoldersContainer';
+import { Folder } from '../FoldersContainer/FoldersContainer.types';
 import SHARE from '@assets/icons/share.svg';
 import EDIT from '@assets/icons/edit.svg';
 import DELETE from '@assets/icons/delete.svg';
