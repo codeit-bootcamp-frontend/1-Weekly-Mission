@@ -1,7 +1,12 @@
 import * as S from "./CardList.style";
 import Card from "./Card";
+import { Data } from './types';
 
-function CardList({ items }) {
+interface CardListProps {
+  items: Data[];
+}
+
+function CardList({ items }: CardListProps) {
   return(
     <S.CardContainer>
       {items &&
