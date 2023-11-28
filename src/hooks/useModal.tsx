@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react';
+import { useState } from 'react';
 import Layout from '@components/Modal/Layout';
 
 function useModal(modals: {
@@ -23,7 +23,7 @@ function useModal(modals: {
   return [toggleShow, Modal];
 }
 
-function createModal(Modal: ReactNode, closeModal: () => void) {
+function createModal(Modal: JSX.Element, closeModal: () => void) {
   return <Layout closeModal={closeModal}>{Modal}</Layout>;
 }
 
