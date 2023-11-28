@@ -1,1 +1,1 @@
-export { default } from "./SharedPage";
+export { default } from './SharedPage';

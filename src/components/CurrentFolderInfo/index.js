@@ -1,1 +1,1 @@
-export { default } from "./CurrentFolderInfo";
+export { default } from './CurrentFolderInfo';
