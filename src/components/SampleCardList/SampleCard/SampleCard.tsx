@@ -5,16 +5,18 @@ import kebab from 'images/kebab.svg';
 import { formatDate, formatTimeDiff } from 'utils/format';
 
 interface Props {
-  item: {
-    imageSource?: string;
-    createdAt?: string;
-    title?: string;
-    description?: string;
-    url?: string;
+  item?: {
+    imageSource: string;
+    createdAt: string;
+    title: string;
+    description: string;
+    url: string;
   };
 }
 
 function SampleCard({ item }: Props) {
+  if (!item) return null;
+
   const { imageSource, createdAt, title, description, url } = item;
 
   const moveUrl = () => {

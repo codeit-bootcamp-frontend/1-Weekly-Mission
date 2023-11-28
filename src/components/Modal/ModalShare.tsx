@@ -14,7 +14,7 @@ const { Kakao } = window;
 
 interface Props {
   folderName: string;
-  folderId: string | null;
+  folderId: string | undefined;
 }
 
 function ModalShare({ folderName, folderId }: Props) {

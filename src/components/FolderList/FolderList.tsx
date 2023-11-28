@@ -28,7 +28,7 @@ interface Props {
 }
 
 function FolderList({ getFolderId }: Props) {
-  const [selectedId, setSelectedId] = useState<null | string>(null);
+  const [selectedId, setSelectedId] = useState<string | undefined>('');
   const [selectedName, setSelectedName] = useState('전체');
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -37,7 +37,7 @@ function FolderList({ getFolderId }: Props) {
 
   const handleAllClick = () => {
     getFolderId('');
-    setSelectedId(null);
+    setSelectedId('');
     setSelectedName('전체');
   };
 

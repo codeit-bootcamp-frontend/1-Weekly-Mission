@@ -10,7 +10,7 @@ import * as S from './CurrentFolderInfo.style';
 
 interface Props {
   selectedName: string;
-  selectedId: string | null;
+  selectedId: string | undefined;
 }
 
 function CurrentFolderInfo({ selectedName, selectedId }: Props) {
