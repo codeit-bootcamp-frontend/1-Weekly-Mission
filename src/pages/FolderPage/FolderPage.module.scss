@@ -1,0 +1,36 @@
+@import "src/commons//styles/global.scss";
+
+.folder-content {
+  margin: 0 auto;
+  padding: 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.card-list-section {
+  margin: 3rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-section {
+  color: var(--linkbrary-gray-100, #373740);
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  & span {
+    color: black;
+  }
+  width: 100%;
+  @include desktop {
+    max-width: 1060px;
+    margin: 0 auto;
+    font-size: 3rem;
+  }
+}

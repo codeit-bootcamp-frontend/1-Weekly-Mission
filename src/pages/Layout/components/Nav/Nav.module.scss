@@ -1,0 +1,56 @@
+@import "src/commons/styles/global.scss";
+
+nav {
+  width: 100%;
+  background-color: var(--color-gray1);
+  padding: 2rem 3.2rem;
+  z-index: $NAV_ZINDEX;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  &.sticky {
+    top: 0;
+    left: 0;
+    position: sticky;
+  }
+  @include desktop {
+    padding: 2rem 10rem;
+  }
+}
+
+.gnb {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  @include tablet {
+    max-width: 80rem;
+  }
+}
+.link-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.6rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+}
+.link-button .a-label {
+  color: var(--grey-light);
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 0 1rem;
+}
+.user-info {
+  display: flex;
+  gap: 1rem;
+}
+.profile-img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
