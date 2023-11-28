@@ -4,7 +4,7 @@ import linkImage from "../assets/link.png";
 import colors from "../style/colors";
 import { cursorPointer, flexCenter } from "../style/common";
 import { device } from "../style/device";
-import { MouseEvent, useState } from "react";
+import { FormEventHandler, ReactNode, useState } from "react";
 import { ModalMaker } from "./Modal/Modal";
 const AddLinkFrame = styled.form`
   position: relative;
@@ -69,13 +69,14 @@ const AddButton = styled.button`
 `;
 function AddLink() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modal, setModal] = useState(null);
-
-  const handleModal = (e : MouseEvent<HTMLInputElement>) => {
+  const [modal, setModal] = useState<ReactNode>(null);
+  const [urlInput, setUrlInput] = useState("");
+  const handleModal: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    const url = (e.target as HTMLInputElement).elements.linkInput.value;
 
-    setModal(ModalMaker({ feature: "추가하기", url, setIsModalOpen }));
+    setModal(
+      ModalMaker({ feature: "추가하기", url: urlInput, setIsModalOpen })
+    );
     setIsModalOpen(true);
   };
 
@@ -83,6 +84,8 @@ function AddLink() {
     <>
       <AddLinkFrame onSubmit={handleModal}>
         <AddLinkInput
+          value={urlInput}
+          onChange={(e) => setUrlInput(e.target.value)}
           name="linkInput"
           type="text"
           placeholder="링크를 추가해 보세요."

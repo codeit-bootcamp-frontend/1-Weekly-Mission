@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Link1, getFolders, getLinksByFolderID } from "../api";
 import FolderList from "./FolderList/FolderList";
@@ -17,16 +17,18 @@ function FolderAndLink() {
 
   const { data: folderData } = useAsync(() => getFolders(DEFAULT_FOLDER));
 
-  const { data: linkData, fetchData: getLinkAsync } = useAsync(() =>
-    getLinksByFolderID(DEFAULT_FOLDER, selectedFolderId)
-  );
+  const getLinks = useCallback(() => {
+    return getLinksByFolderID(DEFAULT_FOLDER, selectedFolderId);
+  }, [selectedFolderId]);
+
+  const { data: linkData } = useAsync(getLinks);
 
   const setFolderLink = (folder_id: number) => {
     setSelectedFolderId(folder_id);
   };
 
   useEffect(() => {
-    getLinkAsync(DEFAULT_FOLDER, selectedFolderId);
+    getLinksByFolderID(DEFAULT_FOLDER, selectedFolderId);
   }, [selectedFolderId]);
 
   if (!folderData) return null;

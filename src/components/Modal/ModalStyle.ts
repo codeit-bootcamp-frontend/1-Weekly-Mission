@@ -46,7 +46,7 @@ export const S = {
     justify-content: center;
     align-items: center;
   `,
-  ModalButton: styled.button`
+  ModalButton: styled.button<{ $red?: boolean }>`
     display: flex;
     width: 280px;
     padding: 16px 20px;
@@ -55,7 +55,8 @@ export const S = {
     gap: 10px;
     border-radius: 8px;
     ${cursorPointer}
-    background: ${({ $red }) => ($red ? colors.red : colors.purpleBlueToSkyBlue)};
+    background: ${({ $red }) =>
+      $red ? colors.red : colors.purpleBlueToSkyBlue};
     color: ${colors.white};
     font-family: Pretendard;
     font-size: 16px;

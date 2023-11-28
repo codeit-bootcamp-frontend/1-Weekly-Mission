@@ -27,15 +27,15 @@ interface UserInfo {
       image_source: string;
       email: string;
       auth_id: string;
-    },
+    }
   ];
 }
-interface Folder {
+export interface Folder {
   id: number;
   created_at: string;
   name: string;
   user_id: number;
-  links: {
+  link: {
     count: number;
   };
 }

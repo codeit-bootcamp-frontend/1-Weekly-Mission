@@ -57,7 +57,7 @@ function ModalFolderShare() {
       />
       <ShareIcon
         src={copyIcon}
-        onClick={copyClipboard}
+        // onClick={copyClipboard}
         alt="링크 복사"
         text="링크 복사"
       />
@@ -65,13 +65,18 @@ function ModalFolderShare() {
   );
 }
 
-function FolderInfo({ folderName, count }) {
+interface FolderInfoProps {
+  folderName: string;
+  count: number;
+}
+
+function FolderInfo({ folderName, count }: FolderInfoProps) {
   const [isClicked, setShowCheckIcon] = useState(false);
 
   return (
     <S.StyledFolderInfo
       onClick={() => setShowCheckIcon(!isClicked)}
-      className={isClicked ? "clicked" : null}
+      className={isClicked ? "clicked" : undefined}
     >
       <div>
         <span className="name">{folderName}</span>
@@ -100,11 +105,21 @@ function ModalAddToFolder() {
     </S.FolderInfoContainer>
   );
 }
-interface ModalProps {
-  title : string;
-  buttonText : string;
-  setIsModalOpen: ;
-  
+
+interface ModalMakerProps {
+  feature?: string;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  folderName?: string;
+  url?: string;
+}
+
+interface ModalProps extends ModalMakerProps {
+  title: string;
+  buttonText?: string;
+  red?: boolean;
+  hasInput?: boolean;
+  share?: boolean;
+  addLink?: boolean;
 }
 function Modal({
   title,
@@ -116,7 +131,7 @@ function Modal({
   share,
   url,
   addLink,
-}) {
+}: ModalProps) {
   const [content, setContent] = useState("");
   return (
     <S.ModalWrapper>
@@ -143,7 +158,12 @@ function Modal({
   );
 }
 
-export const ModalMaker = ({ feature, setIsModalOpen, folderName, url }) => {
+export const ModalMaker = ({
+  feature,
+  setIsModalOpen,
+  folderName,
+  url,
+}: ModalMakerProps) => {
   switch (feature) {
     case "이름 변경":
       return (

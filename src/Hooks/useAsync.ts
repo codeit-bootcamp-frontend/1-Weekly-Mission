@@ -4,10 +4,10 @@ function useAsync<T>(getData: () => Promise<T>, skip = false) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<Error>();
   const fetchData = useCallback(
-    async (...args) => {
+    async () => {
       setPending(true);
       try {
-        const fetchedData = await getData(...args);
+        const fetchedData = await getData();
         setData(fetchedData);
       } catch (error) {
         if (error instanceof Error) {

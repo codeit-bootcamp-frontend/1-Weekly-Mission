@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react";
+import React, { MouseEvent, ReactNode, useState } from "react";
 import moment from "moment";
 import LogoImg from "../../assets/card-logo.png";
 import StarIcon from "../../assets/star.png";
@@ -36,11 +36,11 @@ function calculateTimeAgo(createdAt: string | undefined) {
 function Card({ link }: { link: Link1 }) {
   const [isOpenKebab, setIsOpenKebab] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modal, setModal] = useState(null);
+  const [modal, setModal] = useState<ReactNode>(null);
 
   const handleModal =
-    ({ link, feature }) =>
-    (e) => {
+    ({ link, feature }: { link: Link1; feature: string }) =>
+    (e: MouseEvent<HTMLOptionElement>) => {
       const url = link.url;
       e.preventDefault();
 

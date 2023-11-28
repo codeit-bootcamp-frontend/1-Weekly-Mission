@@ -4,7 +4,7 @@ import { cursorPointer, flexCenter } from "../../style/common";
 import { device } from "../../style/device";
 
 export const S = {
-  Button: styled.button`
+  Button: styled.button<{ $onSelected: boolean }>`
     display: flex;
     padding: 8px 12px;
     flex-direction: column;
@@ -22,8 +22,8 @@ export const S = {
     text-align: center;
     text-decoration: none;
 
-    ${({ "data-onselect": isSelected }) =>
-      isSelected &&
+    ${({ $onSelected }) =>
+      $onSelected &&
       css`
         background-color: ${colors.primary};
         color: #fff;

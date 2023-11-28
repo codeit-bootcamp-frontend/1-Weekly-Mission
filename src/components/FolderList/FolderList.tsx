@@ -5,16 +5,28 @@ import shareIcon from "../../assets/share.png";
 import modifyIcon from "../../assets/pen.png";
 import deleteIcon from "../../assets/deleteIcon.png";
 import { ModalMaker } from "../Modal/Modal";
+import { Folder } from "../../api";
 const DEFAULT_FOLDER = {
   id: 0,
   name: "전체",
 };
 
-function FolderList({ folders, setFolderLink, selectedFolderId }) {
+interface FolderListProps {
+  folders: Folder[];
+  setFolderLink: (folder_id: number | undefined) => void;
+  selectedFolderId: number | undefined;
+}
+
+function FolderList({
+  folders,
+  setFolderLink,
+  selectedFolderId,
+}: FolderListProps) {
   const [selectedFolder, setSelectedFolder] = useState(DEFAULT_FOLDER);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setModal] = useState(null);
-  const onClick = (folder) => () => {
+
+  const onClick = (folder: Folder | undefined) => () => {
     if (!folder) {
       setFolderLink(undefined);
       setSelectedFolder(DEFAULT_FOLDER);
@@ -24,7 +36,7 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
     }
   };
 
-  const handleModal = ({ feature }) => {
+  const handleModal = ({ feature }: { feature: string }) => {
     const folderName = selectedFolder?.name;
     setModal(ModalMaker({ feature, folderName, setIsModalOpen }));
     setIsModalOpen(true);
@@ -36,7 +48,7 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
         <S.FolderButtons>
           <S.Button
             onClick={onClick(undefined)}
-            $data-onselect={selectedFolderId === undefined}
+            $onSelected={selectedFolderId === undefined}
           >
             {DEFAULT_FOLDER.name}
           </S.Button>
@@ -45,7 +57,7 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
               <S.Button
                 onClick={onClick(folder)}
                 key={folder.id}
-                $data-onselect={selectedFolderId === folder.id}
+                $onSelected={selectedFolderId === folder.id}
               >
                 {folder.name}
               </S.Button>
@@ -84,8 +96,13 @@ function FolderList({ folders, setFolderLink, selectedFolderId }) {
     </>
   );
 }
+interface IconProps {
+  img: string;
+  feature: string;
+  onClick: React.MouseEventHandler<HTMLDivElement>;
+}
 
-function Icon({ img, feature, onClick }) {
+function Icon({ img, feature, onClick }: IconProps) {
   return (
     <S.StyledIcon onClick={onClick}>
       <img src={img}></img>
