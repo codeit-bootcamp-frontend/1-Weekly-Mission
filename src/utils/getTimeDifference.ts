@@ -1,4 +1,4 @@
-export function getTimeDifference(value: number) {
+export function getTimeDifference(value: string) {
   const now: any = new Date();
   const createdDate: any = new Date(value);
   const timeDifference = now - createdDate;
