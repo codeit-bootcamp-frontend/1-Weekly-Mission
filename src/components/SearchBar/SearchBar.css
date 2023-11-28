@@ -14,6 +14,20 @@ form {
   border: none;
   background-color: transparent;
   margin-left: 10px;
+  outline: none;
+  box-shadow: none;
+}
+
+.search-form {
+  position: relative;
+}
+
+.close-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .search-icon {

@@ -5,7 +5,7 @@ import Link from "../../assets/icons/Link";
 const LinkInput = () => {
   const [link, setLink] = useState("");
 
-  const handleLinkChange = (e) => {
+  const handleLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLink(e.target.value);
   };
 
