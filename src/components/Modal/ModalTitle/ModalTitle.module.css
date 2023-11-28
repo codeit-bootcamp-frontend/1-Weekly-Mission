@@ -1,0 +1,5 @@
+.modalTitle {
+  color: var(--linkbrary-gray-100, #373740);
+  font-size: 2rem;
+  font-weight: 700;
+}
