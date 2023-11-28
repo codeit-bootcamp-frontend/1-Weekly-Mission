@@ -27,6 +27,7 @@ import CurrentFolder from "../components/FolderUtils/CurrentFolder";
 import FolderEdit from "../components/FolderUtils/FolderEdit";
 import Footer from "../components/Footer/Footer";
 import NavBar from "../components/NavBar/NavBar";
+import { ObserverProvider } from "../contexts/ObserverContext";
 
 const FolderPage = () => {
   const userId = useUserId();
@@ -71,64 +72,66 @@ const FolderPage = () => {
 
   return (
     <>
-      <NavBar />
-      <AddLink>
-        <AddLinkInput inputValue={inputValue} onChange={setInputValue}>
-          <AddLinkButton inputValue={inputValue}>
-            <AddLinkModalContent
-              inputValue={inputValue}
-              folderListData={folderListData}
-            />
-          </AddLinkButton>
-        </AddLinkInput>
-      </AddLink>
-      <Search linksListData={linksListData} onChange={setSearchData} />
-      <Category>
-        <CategoryList
-          folderListData={folderListData}
-          currentFolder={SetCurrentFolderName}
+      <ObserverProvider>
+        <NavBar />
+        <AddLink>
+          <AddLinkInput inputValue={inputValue} onChange={setInputValue}>
+            <AddLinkButton inputValue={inputValue}>
+              <AddLinkModalContent
+                inputValue={inputValue}
+                folderListData={folderListData}
+              />
+            </AddLinkButton>
+          </AddLinkInput>
+        </AddLink>
+        <Search linksListData={linksListData} onChange={setSearchData} />
+        <Category>
+          <CategoryList
+            folderListData={folderListData}
+            currentFolder={SetCurrentFolderName}
+          >
+            <AddFolderButton>
+              <AddFolderModalContent />
+            </AddFolderButton>
+          </CategoryList>
+        </Category>
+        <FolderUtils>
+          <CurrentFolder>{currentFolderName}</CurrentFolder>
+          {currentFolderName !== "전체" && (
+            <FolderEdit currentFolderName={currentFolderName} />
+          )}
+        </FolderUtils>
+        <Loadable
+          isLoading={isLoadingLinksList}
+          fallback={<CardListSkeleton size={9} />}
         >
-          <AddFolderButton>
-            <AddFolderModalContent />
-          </AddFolderButton>
-        </CategoryList>
-      </Category>
-      <FolderUtils>
-        <CurrentFolder>{currentFolderName}</CurrentFolder>
-        {currentFolderName !== "전체" && (
-          <FolderEdit currentFolderName={currentFolderName} />
-        )}
-      </FolderUtils>
-      <Loadable
-        isLoading={isLoadingLinksList}
-        fallback={<CardListSkeleton size={9} />}
-      >
-        <Card>
-          {searchData?.data &&
-            searchData.data.map((link) => {
-              const { created_at, url, title, description, image_source } =
-                link;
-              const formattedCreatedAt = formatDate(created_at);
-              const timeDiff = getTimeDiff(created_at);
-              const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
+          <Card>
+            {searchData?.data &&
+              searchData.data.map((link) => {
+                const { created_at, url, title, description, image_source } =
+                  link;
+                const formattedCreatedAt = formatDate(created_at);
+                const timeDiff = getTimeDiff(created_at);
+                const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
 
-              return (
-                <FolderPageCardItem
-                  key={url}
-                  folderListData={folderListData}
-                  formatTimeDiff={formatTimeDiff}
-                  formattedCreatedAt={formattedCreatedAt}
-                  url={url}
-                  title={title}
-                  description={description}
-                  imageSource={image_source}
-                />
-              );
-            })}
-        </Card>
-        {searchData?.data?.length === 0 ? <NotFoundLink /> : undefined}
-      </Loadable>
-      <Footer />
+                return (
+                  <FolderPageCardItem
+                    key={url}
+                    folderListData={folderListData}
+                    formatTimeDiff={formatTimeDiff}
+                    formattedCreatedAt={formattedCreatedAt}
+                    url={url}
+                    title={title}
+                    description={description}
+                    imageSource={image_source}
+                  />
+                );
+              })}
+          </Card>
+          {searchData?.data?.length === 0 ? <NotFoundLink /> : undefined}
+        </Loadable>
+        <Footer />
+      </ObserverProvider>
     </>
   );
 };

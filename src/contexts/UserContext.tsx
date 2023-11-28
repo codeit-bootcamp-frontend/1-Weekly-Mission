@@ -1,4 +1,4 @@
-import React, {
+import {
   createContext,
   useContext,
   useState,
@@ -14,16 +14,16 @@ interface UserContextProps {
   setFolderId: Dispatch<SetStateAction<number | null>>;
 }
 
+interface UserProviderProps {
+  children: ReactNode;
+}
+
 const UserContext = createContext<UserContextProps>({
   userId: null,
   setUserId: () => {},
   folderId: null,
   setFolderId: () => {},
 });
-
-interface UserProviderProps {
-  children: ReactNode;
-}
 
 const UserProvider = ({ children }: UserProviderProps) => {
   const [userId, setUserId] = useState<number | null>(null);
@@ -35,7 +35,6 @@ const UserProvider = ({ children }: UserProviderProps) => {
     folderId,
     setFolderId,
   };
-
   return (
     <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
   );

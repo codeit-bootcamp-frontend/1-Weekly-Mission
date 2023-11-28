@@ -4,6 +4,15 @@
   justify-content: center;
   padding: 6rem 3.2rem 9rem 3.2rem;
   background: var(--linkbrary-bg, #f0f6ff);
+  z-index: 1;
+}
+
+.addLink.bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 2.4rem 3.2rem 2.4rem 3.2rem;
 }
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
@@ -11,8 +20,12 @@
 }
 
 /* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
-@media screen and (min-width: 375px) and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .addLink {
     padding: 2.4rem 3.2rem 4rem 3.2rem;
+  }
+
+  .addLink.bottom {
+    padding: 1.6rem 3.2rem 1.6rem 3.2rem;
   }
 }
