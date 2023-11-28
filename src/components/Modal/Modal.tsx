@@ -100,7 +100,12 @@ function ModalAddToFolder() {
     </S.FolderInfoContainer>
   );
 }
-
+interface ModalProps {
+  title : string;
+  buttonText : string;
+  setIsModalOpen: ;
+  
+}
 function Modal({
   title,
   buttonText,

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 import moment from "moment";
 import LogoImg from "../../assets/card-logo.png";
 import StarIcon from "../../assets/star.png";
 import * as S from "./CardStyle";
 import KebabIcon from "../../assets/kebab.svg";
 import { ModalMaker } from "../Modal/Modal";
-import { Link1, Link2 } from "../../api";
+import { Link1 } from "../../api";
 
-function calculateTimeAgo(createdAt: string) {
+function calculateTimeAgo(createdAt: string | undefined) {
   const createdDate = moment(createdAt, "YYYY-MM-DDTHH:mm:ss[Z]");
   const currentDate = moment();
   const diff = currentDate.diff(createdDate, "seconds");
@@ -48,7 +48,7 @@ function Card({ link }: { link: Link1 }) {
       setIsModalOpen(true);
     };
 
-  const isOpenKebabHandle = (e) => {
+  const isOpenKebabHandle = (e: MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     setIsOpenKebab(!isOpenKebab);
   };
