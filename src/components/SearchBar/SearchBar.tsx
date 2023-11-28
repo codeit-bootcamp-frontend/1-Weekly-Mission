@@ -1,8 +1,8 @@
 import * as S from './SearchBar.style';
 import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import SEARCH_ICON from '@assets/icons/search.svg';
 import CLOSE from '@assets/icons/close.svg';
-import { useSearchParams } from 'react-router-dom';
 
 function SearchBar() {
   const [searchParams, setSearchParams] = useSearchParams();
