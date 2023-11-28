@@ -1,14 +1,14 @@
 import * as S from "./Button.style";
 
-type ButtonProps = {
-  children: React.ReactNode;
+interface ButtonProps {
+  children: string;
 };
 
-function Button(props: ButtonProps) {
+function Button({ children }: ButtonProps) {
   return (
     <S.Button
     >
-      {props.children}
+      {children}
     </S.Button>
   );
 }
