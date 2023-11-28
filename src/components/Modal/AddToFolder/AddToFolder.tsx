@@ -3,18 +3,14 @@ import * as S from './AddToFolder.style';
 import { useState } from 'react';
 import useRequest from '@hooks/useRequest';
 import CHECK from '@assets/icons/check.svg';
+import { Folder } from '@pages/Folder/components/FoldersContainer/FoldersContainer.types';
 
-interface Folder {
-  id: number;
-  created_at: string;
-  link: {
-    count: number;
-  };
-  name: string;
-  user_id: number;
+interface Props {
+  url: string;
+  userId: number;
 }
 
-function AddToFolder({ url, userId }: { url: string; userId: number }) {
+function AddToFolder({ url, userId }: Props) {
   const { data: folders } = useRequest<{ data: Folder[] }>({
     options: {
       url: `/users/${userId}/folders`,

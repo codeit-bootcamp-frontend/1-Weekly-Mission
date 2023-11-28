@@ -1,6 +1,10 @@
 import * as Modal from '../Modal.style';
 
-function DeleteLink({ url }: { url: string }) {
+interface Props {
+  url: string;
+}
+
+function DeleteLink({ url }: Props) {
   return (
     <>
       <Modal.Header>

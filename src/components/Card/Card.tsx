@@ -1,13 +1,12 @@
 import * as S from './Card.style';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import TimeAgo from 'react-timeago';
-import useModal from '@hooks/useModal';
-import DeleteLink from '@components/Modal/DeleteLink';
-import AddToFolder from '@components/Modal/AddToFolder';
+import useModal, { ModalsKey } from '@hooks/useModal';
 import { Link } from '@pages/Folder/Folder.types';
 import DEFAULT_IMAGE from '@assets/images/default-link-img.svg';
 import STAR from '@assets/icons/star.svg';
 import KEBAB from '@assets/icons/kebab.svg';
+import ModalPortals from '@components/Modal/ModalPortals';
 
 interface Props {
   data: Link;
@@ -38,18 +37,17 @@ function Card({ data, userId }: Props) {
     }
   };
 
-  const [toggleShow, Modal] = useModal({
-    deleteLink: <DeleteLink url={url} />,
-    addToFolder: <AddToFolder url={url} userId={userId} />,
-  });
+  const [modal, setModal] = useModal({ url: url, userId: userId });
 
-  const setKebabModal = (modalKey: string) => {
-    toggleShow(modalKey);
+  const setKebabModal = (modalKey?: ModalsKey) => {
+    setModal(modalKey);
   };
+
+  const reducedTitle = reduceText(title, 70);
+  const reducedDescription = reduceText(description, 100);
 
   return (
     <>
-      {Modal}
       <S.CardContainer href={url} target='_blank' rel='noreferrer noopener'>
         <S.CardImgContainer>
           <S.CardImg
@@ -75,11 +73,12 @@ function Card({ data, userId }: Props) {
             </S.KebabButton>
             {showKebab && <KebabPopup setKebabModal={setKebabModal} />}
           </S.TimeAgo>
-          <S.Title>{reduceText(title, 70)}</S.Title>
-          <S.Description>{reduceText(description, 100)}</S.Description>
+          <S.Title>{reducedTitle}</S.Title>
+          <S.Description>{reducedDescription}</S.Description>
           <S.Date>{createdDate.toLocaleDateString()}</S.Date>
         </S.CardTextContainer>
       </S.CardContainer>
+      <ModalPortals>{modal}</ModalPortals>
     </>
   );
 }
@@ -87,28 +86,28 @@ function Card({ data, userId }: Props) {
 export default Card;
 
 interface KebabPopupProps {
-  setKebabModal: (modalKey: string) => void;
+  setKebabModal: (modalKey?: ModalsKey) => void;
 }
 
 function KebabPopup({ setKebabModal }: KebabPopupProps) {
+  const setDeleteLinkModal = (e: SyntheticEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setKebabModal('deleteLink');
+  };
+
+  const setAddToFolderModal = (e: SyntheticEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setKebabModal('addToFolder');
+  };
+
   return (
     <S.KebabPopup>
-      <S.KebabInnerButton
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          setKebabModal('deleteLink');
-        }}
-      >
+      <S.KebabInnerButton onClick={setDeleteLinkModal}>
         삭제하기
       </S.KebabInnerButton>
-      <S.KebabInnerButton
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          setKebabModal('addToFolder');
-        }}
-      >
+      <S.KebabInnerButton onClick={setAddToFolderModal}>
         풀더에 추가
       </S.KebabInnerButton>
     </S.KebabPopup>

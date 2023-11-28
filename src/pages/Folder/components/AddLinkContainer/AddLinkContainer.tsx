@@ -1,8 +1,8 @@
 import * as S from './AddLinkContainer.style';
 import { useState } from 'react';
 import useModal from '@hooks/useModal';
-import AddToFolder from '@components/Modal/AddToFolder';
 import LINK from '@assets/icons/link.svg';
+import ModalPortals from '@components/Modal/ModalPortals';
 
 interface Props {
   userId: number;
@@ -13,14 +13,15 @@ interface Props {
 function AddLinkContainer({ userId, addLinkRef, float }: Props) {
   const [url, setUrl] = useState('');
 
-  const [toggleShow, Modal] = useModal({
-    addToFolder: <AddToFolder url={url} userId={userId} />,
-  });
+  const [modal, setModal] = useModal({ url: url, userId: userId });
+
+  const setAddToFolderModal = () => {
+    setModal('addToFolder');
+  };
 
   return (
     <>
       <S.Container ref={addLinkRef}>
-        {Modal}
         <S.Inner>
           <S.Img src={LINK} alt='링크 아이콘' />
           <S.Input
@@ -29,10 +30,7 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
             onChange={(e) => setUrl(e.target.value)}
           />
           <S.ButtonContainer>
-            <S.SmallButton
-              type='button'
-              onClick={() => toggleShow('addToFolder')}
-            >
+            <S.SmallButton type='button' onClick={setAddToFolderModal}>
               추가하기
             </S.SmallButton>
           </S.ButtonContainer>
@@ -41,7 +39,6 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
 
       {float && (
         <S.FloatContainer ref={addLinkRef}>
-          {Modal}
           <S.Inner>
             <S.Img src={LINK} alt='링크 아이콘' />
             <S.Input
@@ -50,16 +47,14 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
               onChange={(e) => setUrl(e.target.value)}
             />
             <S.ButtonContainer>
-              <S.SmallButton
-                type='button'
-                onClick={() => toggleShow('addToFolder')}
-              >
+              <S.SmallButton type='button' onClick={setAddToFolderModal}>
                 추가하기
               </S.SmallButton>
             </S.ButtonContainer>
           </S.Inner>
         </S.FloatContainer>
       )}
+      <ModalPortals>{modal}</ModalPortals>
     </>
   );
 }
