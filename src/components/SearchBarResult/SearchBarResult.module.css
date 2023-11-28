@@ -1,0 +1,10 @@
+.root {
+  color: var(--linkbrary-gray-100, #373740);
+  font-size: 3.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02rem;
+}
+
+.searchResult {
+  color: var(--linkbrary-gray-60, #9fa6b2);
+}

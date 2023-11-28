@@ -8,6 +8,10 @@
   margin: 4rem auto;
 }
 
+.nav {
+  position: static;
+}
+
 .flex {
   display: flex;
   justify-content: space-between;
