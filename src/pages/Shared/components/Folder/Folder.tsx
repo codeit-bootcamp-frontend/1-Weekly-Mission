@@ -2,17 +2,17 @@ import * as S from './Folder.style';
 import { useSearchParams } from 'react-router-dom';
 import useRequest from '@hooks/useRequest';
 import { DEFAULT_USER_ID } from '@apis/config/default';
+import filterLinks from '@utils/filterLinks';
 import SearchBar from '@components/SearchBar';
 import CardList from '@components/CardsContainer';
 import Banner from '../Banner';
-import { CardProps } from '@components/CardsContainer/CardsContainer';
-import filterLinks from '@utils/filterLinks';
+import { Link } from '@pages/Folder/Folder.types';
 
 interface SharedFolder {
   id: number;
   name: string;
   count: number;
-  links: CardProps[];
+  links: Link[];
   owner: {
     id: number;
     name: string;

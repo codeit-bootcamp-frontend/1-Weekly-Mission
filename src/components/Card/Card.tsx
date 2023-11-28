@@ -4,13 +4,13 @@ import TimeAgo from 'react-timeago';
 import useModal from '@hooks/useModal';
 import DeleteLink from '@components/Modal/DeleteLink';
 import AddToFolder from '@components/Modal/AddToFolder';
+import { Link } from '@pages/Folder/Folder.types';
 import DEFAULT_IMAGE from '@assets/images/default-link-img.svg';
-import { CardProps } from '@components/CardsContainer/CardsContainer';
 import STAR from '@assets/icons/star.svg';
 import KEBAB from '@assets/icons/kebab.svg';
 
 interface Props {
-  data: CardProps;
+  data: Link;
   userId: number;
 }
 

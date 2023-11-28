@@ -3,20 +3,20 @@ import { useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useRequest from '@hooks/useRequest';
 import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@apis/config/default';
+import filterLinks from '@utils/filterLinks';
 import Layout from '@components/Layout';
 import SearchBar from '@components/SearchBar';
 import CardsContainer from '@components/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
 import FoldersContainer from './components/FoldersContainer';
 import NoLinkView from './components/NoLinkView';
-import { CardProps } from '@components/CardsContainer/CardsContainer';
-import filterLinks from '@utils/filterLinks';
+import { Link } from './Folder.types';
 
 function Folder() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialFolderId = searchParams.get('folderId') ?? '';
 
-  const { data: links, fetch: getLinks } = useRequest<{ data: CardProps[] }>({
+  const { data: links, fetch: getLinks } = useRequest<{ data: Link[] }>({
     skip: true,
     options: {
       url: `/users/${DEFAULT_USER_ID}/links`,

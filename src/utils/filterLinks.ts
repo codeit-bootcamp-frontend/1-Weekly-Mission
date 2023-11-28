@@ -1,6 +1,6 @@
-import { CardProps } from '@components/CardsContainer/CardsContainer';
+import { Link } from '@pages/Folder/Folder.types';
 
-function filterLinks(links?: CardProps[], keyword?: string) {
+function filterLinks(links?: Link[], keyword?: string) {
   if (!links) return;
   if (!keyword) return links;
 
