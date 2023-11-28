@@ -24,7 +24,7 @@
         "src/styles/*"
       ],
       "utils/*": [
-        "src/utls/*"
+        "src/utils/*"
       ],
     },
     "allowJs": true,
