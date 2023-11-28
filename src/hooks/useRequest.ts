@@ -4,7 +4,7 @@ import fetch from '@apis/utils/fetch';
 interface Props {
   deps?: (boolean | string | number)[];
   skip?: boolean;
-  options?: {
+  options: {
     url: string;
     method: string;
     params?: {
