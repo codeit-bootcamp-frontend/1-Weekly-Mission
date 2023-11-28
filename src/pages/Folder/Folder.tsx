@@ -1,11 +1,5 @@
 import * as S from './Folder.style';
-import {
-  ChangeEvent,
-  SyntheticEvent,
-  useEffect,
-  useState,
-  useRef,
-} from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import useRequest from '@hooks/useRequest';
 import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@apis/config/default';
@@ -43,26 +37,6 @@ function Folder() {
   }, [searchParams]);
 
   const initialKeyword = searchParams.get('keyword') ?? '';
-  const [keyword, setKeyword] = useState(initialKeyword ?? '');
-
-  const onKeywordChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setKeyword(e.target.value);
-
-  const onSearch = (e: SyntheticEvent) => {
-    e.preventDefault();
-    if (keyword === '') {
-      setFolderLinks(Number(initialFolderId));
-    } else {
-      searchParams.set('keyword', keyword);
-      setSearchParams(searchParams);
-    }
-  };
-
-  const onReset = () => {
-    setKeyword('');
-    setFolderLinks(Number(initialFolderId));
-  };
-
   const filteredLinks = filterLinks(links?.data, initialKeyword);
 
   const [floatAddLink, setFloatAddLink] = useState(false);
@@ -111,12 +85,7 @@ function Folder() {
         float={floatAddLink}
       />
       <S.ContentContainer>
-        <SearchBar
-          value={keyword}
-          onSearch={onSearch}
-          onChange={onKeywordChange}
-          onReset={onReset}
-        />
+        <SearchBar />
         <S.SearchText $show={Boolean(initialKeyword)}>
           <span>{initialKeyword}</span>
           으로 검색한 결과입니다.

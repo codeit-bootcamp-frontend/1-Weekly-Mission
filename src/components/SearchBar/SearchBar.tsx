@@ -1,25 +1,38 @@
 import * as S from './SearchBar.style';
-import { ChangeEvent, SyntheticEvent } from 'react';
+import { ChangeEvent, SyntheticEvent, useState } from 'react';
 import SEARCH_ICON from '@assets/icons/search.svg';
 import CLOSE from '@assets/icons/close.svg';
+import { useSearchParams } from 'react-router-dom';
 
-interface Props {
-  value?: string;
-  onSearch?: (e: SyntheticEvent) => void;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onReset?: () => void;
-}
+function SearchBar() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialKeyword = searchParams.get('keyword') ?? '';
+  const [keyword, setKeyword] = useState(initialKeyword ?? '');
 
-function SearchBar({ value, onSearch, onChange, onReset }: Props) {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setKeyword(e.target.value);
+
+  const onSearch = (e: SyntheticEvent) => {
+    e.preventDefault();
+    searchParams.set('keyword', keyword);
+    setSearchParams(searchParams);
+  };
+
+  const onReset = () => {
+    setKeyword('');
+    searchParams.set('keyword', '');
+    setSearchParams(searchParams);
+  };
+
   return (
     <S.Form onSubmit={onSearch}>
       <S.Input
         placeholder='링크를 검색해보세요.'
         onChange={onChange}
-        value={value}
+        value={keyword}
       />
       <S.Icon src={SEARCH_ICON} alt='검색 아이콘' />
-      {value && (
+      {keyword && (
         <S.Reset type='button' onClick={onReset}>
           <img src={CLOSE} />
         </S.Reset>
