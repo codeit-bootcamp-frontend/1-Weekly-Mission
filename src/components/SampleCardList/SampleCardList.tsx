@@ -1,6 +1,7 @@
 import * as S from './SampleCardList.style';
 import SampleCard from './SampleCard';
 import useRequest from 'hooks/useRequest';
+import { useMemo } from 'react';
 
 interface Data {
   folder: Folder;
@@ -36,11 +37,18 @@ interface Props {
 function SampleCardList({ searchKeyword }: Props) {
   const { data } = useRequest<Data>({ options: { url: '/sample/folder' } });
   const items = data?.folder?.links;
-  const filteredItems = items?.filter(
-    (item) =>
-      item.title.includes(searchKeyword) ||
-      item.description.includes(searchKeyword) ||
-      item.url.includes(searchKeyword)
+  const lowerCaseKeyword = searchKeyword.toLowerCase();
+
+  const filteredItems = useMemo(
+    () =>
+      items
+        ? items.filter((item) => {
+            const itemData =
+              `${item.title} ${item.description} ${item.url}`.toLowerCase();
+            return itemData.includes(lowerCaseKeyword);
+          })
+        : [],
+    [items, lowerCaseKeyword]
   );
 
   return (

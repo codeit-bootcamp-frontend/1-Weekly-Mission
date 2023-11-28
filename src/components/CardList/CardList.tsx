@@ -1,6 +1,7 @@
 import Card from 'components/CardList/Card';
 import * as S from './CardList.style';
 import { Data } from './types';
+import { useMemo } from 'react';
 
 interface Props {
   items: Data[];
@@ -8,11 +9,16 @@ interface Props {
 }
 
 function CardList({ items, searchKeyword }: Props) {
-  const filteredItems = items?.filter(
-    (item) =>
-      item.title?.includes(searchKeyword) ||
-      item.description?.includes(searchKeyword) ||
-      item.url.includes(searchKeyword)
+  const lowerCaseKeyword = searchKeyword.toLowerCase();
+
+  const filteredItems = useMemo(
+    () =>
+      items?.filter((item) => {
+        const itemData =
+          `${item.title} ${item.description} ${item.url}`.toLowerCase();
+        return itemData.includes(lowerCaseKeyword);
+      }),
+    [items, lowerCaseKeyword]
   );
 
   return (
