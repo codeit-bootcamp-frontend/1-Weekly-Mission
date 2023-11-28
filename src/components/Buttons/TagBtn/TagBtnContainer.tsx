@@ -31,7 +31,7 @@ function TagBtnContainer({
           {folderTagBtnList?.map((data) => (
             <button
               className={data.id === selectedTag ? "tag checked" : "tag"}
-              id={data?.id as string}
+              id={String(data?.id)}
               data-count={data?.link?.count}
               onClick={() => handleOnClick(data?.id, data?.name)}
             >

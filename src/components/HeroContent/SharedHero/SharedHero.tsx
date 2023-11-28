@@ -5,7 +5,9 @@ import noUserImg from "../../../assets/image/icon-myprofile.svg";
 import { IFolderInfoData } from "../types/Hero.types";
 
 function SharedHero() {
-  const [folderInfoData, setFolderInfoData] = useState<IFolderInfoData>({});
+  const [folderInfoData, setFolderInfoData] = useState<
+    IFolderInfoData | undefined
+  >();
 
   async function getFolderInfoResponse() {
     const { folder } = await requestData(null, "sample/folder", "GET");

@@ -15,7 +15,7 @@ const BtnStyle = styled.button`
 `;
 
 function CloseTabBtn({ onClick }: IOnClick) {
-  return <BtnStyle onClick={() => onClick && onClick(false)}></BtnStyle>;
+  return <BtnStyle onClick={() => onClick?.(false)}></BtnStyle>;
 }
 
 export default CloseTabBtn;

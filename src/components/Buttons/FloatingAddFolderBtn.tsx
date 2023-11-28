@@ -23,13 +23,13 @@ function FloatingAddFolderBtn() {
     position: relative;
   `;
 
-  const Wrapper = styled.div`
+  const BtnWrapper = styled.div`
     position: absolute;
     left: 100px;
     top: 261px;
   `;
 
-  const Container = styled.div`
+  const BtnContainer = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
@@ -40,8 +40,8 @@ function FloatingAddFolderBtn() {
   };
 
   return (
-    <Wrapper>
-      <Container>
+    <BtnWrapper>
+      <BtnContainer>
         <AddFolderBtn onClick={handleAddFolderBtnClick}>
           폴더 추가
           <img src={AddFolderIcon} alt="folder add icon" />
@@ -51,8 +51,8 @@ function FloatingAddFolderBtn() {
           isFloatingBtnActive={isFloatingBtnActive}
           options={["삭제하기", "폴더에 추가"]}
         />
-      </Container>
-    </Wrapper>
+      </BtnContainer>
+    </BtnWrapper>
   );
 }
 

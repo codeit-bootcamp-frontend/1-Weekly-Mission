@@ -11,7 +11,7 @@ function BlueGradationBtn({
   width = "auto",
   margin = "0",
 }: IBtnStyleProps) {
-  const BtnStyle = styled.button<IBtnStyleProps>`
+  const BtnStyle = styled.button`
     display: flex;
     width: ${width};
     padding: 16px 20px;

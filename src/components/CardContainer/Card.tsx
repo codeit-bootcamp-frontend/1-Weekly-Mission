@@ -23,7 +23,7 @@ function Card({ cardData }: Props) {
   const [isFloatingBtnActive, setFloatingBtnActivation] = useState(false);
   const { created_at, url, description, image_source }: ICardData = cardData;
 
-  const timeAgoText: string = getTimeAgoText(created_at);
+  const timeAgoText = getTimeAgoText(created_at);
   const formulatedCreatedDate = created_at.slice(0, 10).replace(/-/gi, ". ");
   const handleAddFolderBtnClick = () => {
     setFloatingBtnActivation((prevStatus) => !prevStatus);

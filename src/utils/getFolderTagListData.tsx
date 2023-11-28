@@ -1,3 +1,4 @@
+import { HTMLAttributes } from "react";
 import { IFolderTagData } from "./types/common.types";
 
 function getFolderTagListData(isSelectedTagNeeded = false) {
@@ -5,15 +6,18 @@ function getFolderTagListData(isSelectedTagNeeded = false) {
     ? document.querySelectorAll(".tag.checked")
     : document.querySelectorAll(".tag");
 
-  const TagListData: IFolderTagData[] = [...TagListDataEls].map(
-    (tagData: any) => ({
-      id: tagData?.attributes?.id.value,
+  const TagListData: IFolderTagData[] = [...TagListDataEls].map((tagData) => {
+    const el = tagData as HTMLElement;
+    const attributes = tagData?.attributes as HTMLAttributes<HTMLButtonElement>;
+
+    return {
+      id: Number(attributes.id),
       name: tagData?.innerHTML,
       link: {
-        count: tagData?.dataset.count,
+        count: Number(el?.dataset.count),
       },
-    })
-  );
+    };
+  });
   return [...TagListData]; // TagListData: nodeList type
 }
 

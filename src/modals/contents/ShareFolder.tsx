@@ -78,7 +78,7 @@ interface IName {
   url?: string;
 }
 
-function ShareSns({ children }: { children: IName }) {
+function ShareSns({ item }: { item: IName }) {
   const handleClick = (snsUrl: string): void => {
     window.open(snsUrl);
   };
@@ -86,12 +86,12 @@ function ShareSns({ children }: { children: IName }) {
   return (
     <Container>
       <SnsButton
-        backgroundColor={children.backgroundColor}
-        onClick={() => children.url && handleClick(children.url)}
+        backgroundColor={item.backgroundColor}
+        onClick={() => item.url && handleClick(item.url)}
       >
-        <img src={children?.ImgUrl} alt="sns icon"></img>
+        <img src={item?.ImgUrl} alt="sns icon"></img>
       </SnsButton>
-      <TextStyle>{children?.name}</TextStyle>
+      <TextStyle>{item?.name}</TextStyle>
     </Container>
   );
 }
@@ -108,9 +108,9 @@ function ShareFolder({
           <DescriptionText margin="8px 0 0 0">{folderTagName}</DescriptionText>
         </div>
         <ShareSnsContainer>
-          <ShareSns>{SnsItem.kakao}</ShareSns>
-          <ShareSns>{SnsItem.facebook}</ShareSns>
-          <ShareSns>{SnsItem.link}</ShareSns>
+          <ShareSns item={SnsItem.kakao} />
+          <ShareSns item={SnsItem.facebook} />
+          <ShareSns item={SnsItem.link} />
         </ShareSnsContainer>
       </Content>
     </ModalContainer>

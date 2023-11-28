@@ -3,7 +3,6 @@ import getFolderTagListData from "../../utils/getFolderTagListData";
 import { useEffect, useState } from "react";
 import AddLinkToFolder from "../../modals/contents/AddLinkToFolder";
 import DeleteLink from "../../modals/contents/DeleteLink";
-import { IFolderTagData } from "../../utils/types/common.types";
 
 const OptionBtnStyle = styled.button`
   width: 100px;
@@ -29,7 +28,7 @@ const OptionBtnContainer = styled.div<{ isActive: boolean }>`
 `;
 
 export interface IAddFolderOptionBtnProps {
-  options: string[];
+  options?: string[];
   isFloatingBtnActive: boolean;
 }
 
@@ -40,16 +39,20 @@ function AddFolderOptionBtn({
   const [isDeleteOpen, setDeleteOpen] = useState<boolean>(false);
   const [isAddLinkOpen, setAddLinkOpen] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(isFloatingBtnActive);
+
   const handleClick = (selectedOption: string) => {
     if (selectedOption === "삭제하기") setDeleteOpen(true);
     else if (selectedOption === "폴더에 추가") setAddLinkOpen(true);
     setIsActive(false);
   };
+
   const changeDeleteOpenState = (openState: boolean) =>
     setDeleteOpen(openState);
+
   const changeAddLinkOpenState = (openState: boolean) =>
     setAddLinkOpen(openState);
-  const TagDataList: IFolderTagData[] = getFolderTagListData();
+
+  const TagDataList = getFolderTagListData();
 
   useEffect(() => {
     setIsActive((prev) => !prev);
@@ -58,12 +61,11 @@ function AddFolderOptionBtn({
   return (
     <div>
       <OptionBtnContainer isActive={isActive}>
-        {options &&
-          options.map((optionText) => (
-            <OptionBtnStyle onClick={() => handleClick(optionText)}>
-              {optionText}
-            </OptionBtnStyle>
-          ))}
+        {options?.map((optionText) => (
+          <OptionBtnStyle onClick={() => handleClick(optionText)}>
+            {optionText}
+          </OptionBtnStyle>
+        ))}
       </OptionBtnContainer>
       <DeleteLink
         isOpen={isDeleteOpen} // options[0]: "삭제하기"
