@@ -20,6 +20,20 @@ const Header = () => {
   useEffect(() => {
     getFolderOwner();
   }, []);
+  const [inputValue, setInputValue] = useState("");
+  function getInputValue(v) {
+    setInputValue(v);
+  }
+
+  const searchedData = fullData?.filter((data) => {
+    if (
+      data.url.includes(inputValue) ||
+      data.title.includes(inputValue) ||
+      data.description.includes(inputValue)
+    ) {
+      return data;
+    }
+  });
 
   return (
     <>
@@ -40,8 +54,9 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Search />
-      {fullData && <Cards fullData={fullData} />}
+      <Search getInputValue={getInputValue} />
+      {searchedData && inputValue !== "" && <Cards fullData={searchedData} />}
+      {fullData && inputValue === "" && <Cards fullData={fullData} />}
     </>
   );
 };

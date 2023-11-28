@@ -38,7 +38,7 @@ const Card = ({ data, fullFolderData }) => {
     setIsKebabAddClicked(!isKebabAddClicked);
   }
 
-  const selectList = fullFolderData.map((list) => {
+  const selectList = fullFolderData?.map((list) => {
     return `${list.name}  ${list.link.count}개 링크`;
   });
 
