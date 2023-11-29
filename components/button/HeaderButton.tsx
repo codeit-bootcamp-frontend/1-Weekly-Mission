@@ -58,7 +58,7 @@ export default function HeaderButton() {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const [IntersectionObserverEntry] = entries;
-      console.log(isFooterVisible);
+
       // 헤더가 보이면은 stick 안 보이게 하기
       if (IntersectionObserverEntry.isIntersecting) {
         setIsHeadervisible(false);

@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import styles from "./DataListItem.module.css";
 import Card from "@/components/card/Card";
 import { getElapsedTime, parseDatestring } from "@/utils/caltime";
+import Kebab from "@/public/images/kebab.png";
 
 export default function DataListItem({ item }) {
   const [open, setOpen] = useState(false);
@@ -26,7 +27,7 @@ export default function DataListItem({ item }) {
             <p>{diffTime}</p>
             <img
               ref={imageRef}
-              src={kebabImage}
+              src={Kebab}
               alt="kebab"
               className={styles.kebab}
               onClick={(e) => {

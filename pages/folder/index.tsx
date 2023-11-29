@@ -19,9 +19,10 @@ import React from "react";
 export default function FolderPage() {
   // intersection
   const USER_ID = 1;
-  const folderId = 1;
+  // const folderId = 1;
   const router = useRouter();
-  console.log(router);
+  const { id } = router.query;
+  console.log(id);
   const [userProfileData] = useFetchData(fetchUserData, {
     userId: USER_ID,
   });
@@ -34,7 +35,7 @@ export default function FolderPage() {
 
   const obj = mapFolderData(result);
   const [mappedResult] = useFetchLinksData(mapLinksData, result);
-  console.log(mappedResult);
+  // console.log(mappedResult);
   return (
     <>
       <ObserverProvider>
@@ -42,7 +43,7 @@ export default function FolderPage() {
           value={{
             ObjectValue: obj,
             LinkSDataArr: mappedResult,
-            folderIdKey: folderId,
+            folderIdKey: id,
           }}
         >
           <SearchProvider>
@@ -50,8 +51,9 @@ export default function FolderPage() {
             <Header />
             <SearchBar />
             <FolderMenuList />
-            <FolderMenu folderIdKey={folderId} />
-            <DataList folderIdKey={folderId} />
+            <FolderMenu folderIdKey={id} />
+            <DataList folderIdKey={id} />
+
             <Footer />
           </SearchProvider>
         </LocaleContext.Provider>

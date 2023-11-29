@@ -2,9 +2,7 @@ import React, { useContext, useState } from "react";
 import styles from "./FolderMenu.module.css";
 
 import LocaleContext from "../../contexts/LocaleContext";
-// import shareImage from "../../assets/images/share.svg";
-// import nameChangeImage from "../../assets/images/namechange.svg";
-// import deleteImage from "../../assets/images/delete.svg";
+
 import Share from "@/public/images/share.svg";
 import NamecCange from "@/public/images/namechange.svg";
 import Delete from "@/public/images/delete.svg";

@@ -6,8 +6,6 @@ import SearchContext from "../../contexts/SearchContext";
 export default function DataList({ folderIdKey }) {
   const { LinkSDataArr } = useContext(LocaleContext);
   const { inputValue, handleInputFunc } = useContext(SearchContext);
-  // console.log(LinkSDataArr);
-  console.log(folderIdKey);
 
   if (!folderIdKey) {
     return (
