@@ -7,7 +7,7 @@ input:focus {
   padding: 15px 16px;
   border: none;
   background: #f5f5f5;
-  background-image: url(assets/images/Search.png);
+  background-image: url(../../assets/images/Search.png);
   background-repeat: no-repeat;
   background-position: 1.5rem center;
   font-size: 1.6rem;
