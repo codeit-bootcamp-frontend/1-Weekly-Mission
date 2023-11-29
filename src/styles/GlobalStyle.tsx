@@ -9,7 +9,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-   background-color: ${({ theme }) => theme.color.white};
+    font-size: 62.5%;
+    background-color: ${({ theme }) => theme.color.white};
     color: ${({ theme }) => theme.color.black};
   }
 

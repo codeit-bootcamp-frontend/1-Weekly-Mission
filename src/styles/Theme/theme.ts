@@ -3,6 +3,10 @@ import { DefaultTheme } from "styled-components";
 const color = {
   white: "#ffffff",
   black: "#000000",
+  background: "#f0f6ff",
+  blueBackground: "#edf7ff",
+  primary: "#6d6afe",
+  gray: "#f5f5f5",
 };
 
 const fontWeight = {
