@@ -36,9 +36,7 @@ export default function HeaderModal({ setterFunc, inputLink = null }) {
                 <span>{folderName}</span>
                 <span>{linksdata && linksdata.length}개링크</span>
               </p>
-              {isAdd && folderName === clickedFolderName && (
-                <img src={check} alt="check" />
-              )}
+              {isAdd && folderName === clickedFolderName && <Check></Check>}
             </div>
           );
         })}

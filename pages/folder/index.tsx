@@ -21,7 +21,7 @@ export default function FolderPage() {
   const USER_ID = 1;
   const folderId = 1;
   const router = useRouter();
-
+  console.log(router);
   const [userProfileData] = useFetchData(fetchUserData, {
     userId: USER_ID,
   });
@@ -33,7 +33,7 @@ export default function FolderPage() {
   const result = userFolderData?.data || [];
 
   const obj = mapFolderData(result);
-  const [mappedResult, isLoading] = useFetchLinksData(mapLinksData, result);
+  const [mappedResult] = useFetchLinksData(mapLinksData, result);
   console.log(mappedResult);
   return (
     <>

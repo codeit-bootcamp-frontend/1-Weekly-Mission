@@ -1,0 +1,91 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  column-gap: 2rem;
+  width: calc(100% - 10rem);
+
+  @media (min-width: 768px) {
+    width: calc(100% - 14rem);
+  }
+  /* table2 */
+  @media (min-width: 1124px) {
+    width: calc(100% - 14rem);
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    width: 80%;
+  }
+}
+
+.sub__container {
+  display: grid;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (min-width: 768px) {
+  }
+  /* table2 */
+  @media (min-width: 1124px) {
+    /* 1125~ 1119 */
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    grid-template-areas: "whole favorite useful myplace new hire test ";
+  }
+}
+
+.add__folder__button {
+  position: static;
+  transform: translate(0);
+
+  @media (max-width: 1199px) {
+    position: static;
+    transform: translate(0);
+  }
+
+  @media (max-width: 1123px) {
+    position: static;
+    transform: translate(0);
+  }
+  @media (max-width: 768px) {
+    position: fixed;
+
+    left: 50%;
+    bottom: 20rem;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.sub__container button:nth-child(1) {
+  grid-area: "whole";
+}
+
+.sub__container button:nth-child(2) {
+  grid-area: "favorite";
+}
+
+.sub__container button:nth-child(3) {
+  grid-area: "useful";
+}
+
+.sub__container button:nth-child(4) {
+  grid-area: "myplace";
+}
+
+.sub__container button:nth-child(5) {
+  grid-area: "new";
+}
+
+.sub__container button:nth-child(6) {
+  grid-area: "hire";
+}
+
+.sub__container button:nth-child(7) {
+  grid-area: "test";
+}
