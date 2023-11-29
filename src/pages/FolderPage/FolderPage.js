@@ -1,9 +1,7 @@
 import { useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import { folderDataRequestApi } from "../../api/requestApi.js";
-import { folderMenuRequestApi } from "../../api/requestApi.js";
-import { Article } from "../../component/Article/Article.js";
-import { Header } from "../../component/Header/Header.js";
+import { folderDataRequestApi, folderMenuRequestApi } from "api/requestApi.js";
+import { Article, Header } from "component";
 
 const FolderPage = () => {
   const [visible, setVisible] = useState(false);

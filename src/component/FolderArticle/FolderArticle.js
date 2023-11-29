@@ -1,19 +1,22 @@
+import { CardMenuBar, EmptyData, CardContainer } from "component";
 import { ThemeProvider } from "styled-components";
-import theme from "../../css/display.js";
-import { CardMenuBar } from "../TitleButton/CardMenuBar.js";
-import { EmptyData } from "../Empty/EmptyData.js";
-import { CardContainer } from "../Card/CardContainer.js";
+import theme from "css/display.js";
 import * as S from './FolderArticle.style.js'
+import { createContext } from "react";
 
-export function FolderArticle({items, visible, folders}) {
-  
+export const FolderContext = createContext();
+
+export default function FolderArticle({items, isVisible, folders}) {
+  console.log(isVisible)
   return (
     <ThemeProvider theme={theme}>
-      <S.Container>
-        <CardMenuBar folders={folders} items={items} />
-        {visible && <CardContainer items={items} active={folders}/>}
-        {!visible && <EmptyData />}
-      </S.Container>  
+      <FolderContext.Provider value={folders}>
+        <S.Container>
+          <CardMenuBar folders={folders} items={items} />
+          {isVisible && <CardContainer items={items} active={folders} />}
+          {!isVisible && <EmptyData />}
+        </S.Container>  
+      </FolderContext.Provider>
     </ThemeProvider>
   );
 }

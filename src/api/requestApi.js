@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PROFILE_FAIL, FOLDER_FAIL, FOLDER_DATA_FAIL } from "../component/ErrorMessage";
+import { PROFILE_FAIL, FOLDER_FAIL, FOLDER_DATA_FAIL } from "component/ErrorMessage";
 
 async function RequestAPI(endpoint) {
   const URL = "https://bootcamp-api.codeit.kr/api/";
@@ -44,4 +44,5 @@ async function folderMenuRequestApi(endpoint){
     throw new Error(`${FOLDER_DATA_FAIL}`)
   }
 }
+
 export { profileRequestApi, folderRequestApi, folderDataRequestApi, folderMenuRequestApi };

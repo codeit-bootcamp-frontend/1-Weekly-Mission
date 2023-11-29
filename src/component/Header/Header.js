@@ -1,9 +1,17 @@
+import { useContext, useRef } from "react";
 import { ThemeProvider } from "styled-components";
-import theme from "../../css/display";
-import linkClickImg from "../../assets/link.svg";
+import theme from "css/display";
+import linkClickImg from "assets/link.svg";
 import * as S from "./Header.style.js";
+import useIntersectionObserver from "hooks/useIntersectionObserver.js";
+import { footerContext } from "component/App.js";
 
-export function Header({ items }) {
+export default function Header({ items }) {
+  const search = useRef();
+  const footer = useContext(footerContext);
+  const isIntersecting = useIntersectionObserver([search, footer]);
+
+
   return (
     <ThemeProvider theme={theme}>
       {items && (
@@ -17,7 +25,20 @@ export function Header({ items }) {
       )}
 
       {!items && (
-        <S.ContainerFolderPage>
+        <S.ContainerFolderPage ref={search} >
+          <S.LinkSearchBox>
+            <S.LinkBox>
+              <S.LinkInputBox>
+                <img src={linkClickImg} alt="링크아이콘"></img>
+                <input type="text" placeholder="링크를 추가해 보세요"></input>
+              </S.LinkInputBox>
+              <button>추가하기</button>
+            </S.LinkBox>
+          </S.LinkSearchBox>
+        </S.ContainerFolderPage>
+      )}
+      {(!items && isIntersecting) && (
+        <S.ContainerFolderPage $isintersecting={isIntersecting}>
           <S.LinkSearchBox>
             <S.LinkBox>
               <S.LinkInputBox>

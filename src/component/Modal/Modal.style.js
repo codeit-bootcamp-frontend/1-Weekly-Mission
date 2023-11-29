@@ -1,23 +1,23 @@
-import styled from "styled-components";
+import { styled } from "styled-components";
 
 export const BackGround = styled.div`
   z-index: 9000;
   position: fixed;
-  height: 100%;
+  height: 1000%;
   width: 100%;
   left: 0;
   top: -${window.scrollY}px;
-  text-align: center;
   background: rgba(0, 0, 0, 0.4);
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 `;
+
 export const Container = styled.div`
   z-index: 9700;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -28,14 +28,14 @@ export const Container = styled.div`
   border: 1px solid #ccd5e3;
   background: #fff;
   color: #373740;
-
-  img {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    cursor: pointer;
-  }
 `;
+
+export const Img = styled.img`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+`
 
 export const Title = styled.div`
   display: flex;
@@ -76,6 +76,11 @@ export const Button = styled.button`
   width: 100%;
   border: none;
   border-radius: 8px;
+  background: ${({ color }) =>
+    color === "blue"
+      ? "linear-gradient(91deg, var(--purpleblue) 0.12%, var(--skyblue) 101.84%)"
+      : "var(--linkbrary-red)"};
+
   color: #f5f5f5;
   font-size: 1.6rem;
   font-weight: 600;

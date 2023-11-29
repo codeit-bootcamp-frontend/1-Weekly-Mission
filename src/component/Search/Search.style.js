@@ -15,5 +15,10 @@ export const Container = styled.div`
   input {
     border: none;
     background-color: #f5f5f5;
+    flex-grow: 1;
+
+    &:focus{
+      outline:none;
+    }
   }
 `;

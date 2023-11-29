@@ -1,20 +1,43 @@
-import { useState } from 'react';
-import * as S from './PopOver.style.js'
+import { useState } from "react";
+import { Modal, ModalForm } from "component";
+import useModal from "hooks/useModal.js";
+import PopOverTitle from "./PopOverTitle.js";
+import * as Style from "./PopOver.style.js";
 
-const PopOver = () => {
-  const[active, setActive] = useState(false);
- 
-  const handleMouse = () => {
-    if (!active) setActive(true)
-    else setActive(false)
-  }
+const PopOver = ({url}) => {
+  const { isOpen, openModal, closeModal } = useModal();
+  const [option, setOption] = useState({});
+
+  const handleClick = (e, name) => {
+    e.preventDefault();
+    const titleName = PopOverTitle.filter((title) => title.name === name);
+    setOption(titleName[0].option);
+    openModal();
+  };
 
   return (
-    <S.Container>
-      <S.Element onMouseEnter={handleMouse} onMouseLeave={handleMouse} active={active}>삭제하기</S.Element>
-      <S.Element onMouseEnter={handleMouse} onMouseLeave={handleMouse} active={active}>폴더에 추가</S.Element>
-    </S.Container>
-  )
-}
+    <>
+      <Style.Container>
+        {PopOverTitle.map((title, index) => (
+          <>
+            <Style.Element
+              index={index}
+              onClick={(e) => handleClick(e, title.name)}
+            >
+              {title.name}
+            </Style.Element>
+          </>
+        ))}
+      </Style.Container>
+      {isOpen && (
+        <Modal
+          title={option.title}
+          closeModal={closeModal}
+          trigger={<ModalForm subTitle={url} option={option} />}
+        />
+      )}
+    </>
+  );
+};
 
 export default PopOver;

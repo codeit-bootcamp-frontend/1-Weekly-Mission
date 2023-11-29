@@ -15,6 +15,7 @@ export const Element = styled.div`
   padding : 7px 12px;
 
   :hover{
-    color : ${({active}) => active ? '#6d6afe' : '#333236'};
+    color : '#6d6afe';
+    background-color: #E7EFFB;
   }
 `

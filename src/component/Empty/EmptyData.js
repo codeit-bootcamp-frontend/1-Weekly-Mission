@@ -1,8 +1,8 @@
 import { Empty } from "./Empty.style";
 import { ThemeProvider } from "styled-components";
-import theme from '../../css/display.js'
+import theme from 'css/display.js'
 
-export function EmptyData(){
+export default function EmptyData(){
 
   return(
     <ThemeProvider theme={theme}>

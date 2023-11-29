@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Header } from "../../component/Header/Header.js";
-import { Article } from "../../component/Article/Article.js";
-import { folderRequestApi } from "../../api/requestApi.js";
+import { Header, Article} from "component";
+import { folderRequestApi } from "api/requestApi.js";
 
 const SharedPage = () => {
   const [items, setItems] = useState({
