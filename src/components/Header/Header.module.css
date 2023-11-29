@@ -1,0 +1,16 @@
+.header {
+  width: 100%;
+  background-color: var(--linkbrary-bg);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+@media (max-width: 767px) {
+  .email {
+    display: none;
+  }
+}
