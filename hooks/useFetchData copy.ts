@@ -7,13 +7,14 @@ function useFetchData(fetchFunc: any, request = "") {
   useEffect(() => {
     setIsLoading(true);
     fetchFunc(request).then((result: any) => {
-      const data = result;
-      if (data) {
+      const [Response, data] = result;
+      if (Response.status === 200) {
         setData(data);
         setIsLoading(false);
         setError(false);
       } else {
-        setError(true);
+        setError(Response.status);
+        setIsLoading(false);
       }
     });
   }, []);
