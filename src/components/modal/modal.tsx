@@ -8,24 +8,30 @@ import { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FacebookMessengerShareButton } from "react-share";
 
-const StyledModal = styled.div`
+const StyledModalWrap = styled.div<{ $close: boolean }>`
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     top: 0;
     position: fixed;
-    color: #fff;
-    background-color: #000;
-    opacity: 0.4;
-    z-index: 1;
     display: ${({ $close }) => ($close ? "none" : "")};
+    z-index: 1;
+`;
+
+const StyledModalBg = styled.div`
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 const StyledModalBox = styled.div`
     display: flex;
     width: 360px;
-    position: fixed;
     padding: 32px 40px;
-    flex-shrink: 0;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -33,10 +39,7 @@ const StyledModalBox = styled.div`
     background-color: #fff;
     border-radius: 15px;
     border: 1px solid #ccd5e3;
-    top: 20vw;
-    left: 40vw;
     z-index: 2;
-    display: ${({ $close }) => ($close ? "none" : "")};
 `;
 
 const StyledModalTitle = styled.div`
@@ -82,7 +85,7 @@ const StyledModalContentShare = styled.div`
     align-items: center;
 `;
 
-const StyledModalButton = styled.div`
+const StyledModalButton = styled.div<{ $delete?: boolean }>`
     width: 280px;
     padding: 16px 20px;
     border-radius: 8px;
@@ -112,7 +115,7 @@ const StyledModalShare = styled.div`
     align-items: center;
 `;
 
-const StyledModalShareIcon = styled.div`
+const StyledModalShareIcon = styled.div<{ $name?: string }>`
     padding: 12px;
     border-radius: 37.333px;
     background: ${({ $name }) => ($name === "kakao" ? "#fee500" : "")};
@@ -126,7 +129,7 @@ const StyledModalAddBox = styled.div`
     gap: 4px;
 `;
 
-const StyledModalAddTitleBox = styled.div`
+const StyledModalAddTitleBox = styled.div<{ $select: string; $number: string }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -240,12 +243,12 @@ function DeleteFolder() {
     );
 }
 
-function Share({ query }) {
+function Share({ query }: { query: string }) {
     const currentUrl = window.location.href + "?" + query;
-    const { Kakao } = window;
+    const Kakao = (window as any).kakao;
     useEffect(() => {
         Kakao.cleanup();
-        Kakao.init("fe4ed8101e22446bd855dd50f37510b6");
+        Kakao.init(process.env.REACT_APP_KAKAO_API);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -287,9 +290,9 @@ function Share({ query }) {
                     카카오톡
                 </StyledModalShare>
                 <StyledModalShare>
-                    <FacebookMessengerShareButton url={currentUrl}>
+                    <FacebookMessengerShareButton url={currentUrl} appId="">
                         <StyledModalShareIcon $name="facebook">
-                            <img src={facebookIcon} alt="kakaoIcon" />
+                            <img src={facebookIcon} alt="facebookIcon" />
                         </StyledModalShareIcon>
                     </FacebookMessengerShareButton>
                     페이스북
@@ -297,7 +300,7 @@ function Share({ query }) {
                 <StyledModalShare>
                     <CopyToClipboard text={currentUrl}>
                         <StyledModalShareIcon>
-                            <img src={linkIcon} alt="kakaoIcon" />
+                            <img src={linkIcon} alt="linkIcon" />
                         </StyledModalShareIcon>
                     </CopyToClipboard>
                     링크 복사
@@ -331,24 +334,33 @@ function Edit() {
     );
 }
 
-function Modal({ tag, close, setClose, query }) {
+interface ModalProps {
+    tag: string;
+    close: boolean;
+    setClose: React.Dispatch<React.SetStateAction<boolean>>;
+    query?: string;
+}
+
+function Modal({ tag, close, setClose, query }: ModalProps) {
+    if (query === undefined) query = "";
     return (
-        <>
-            <StyledModal $close={close}></StyledModal>
-            <StyledModalBox $close={close}>
-                <StyledModalClose
-                    src={closeIcon}
-                    alt="closeIcon"
-                    onClick={() => setClose(!close)}
-                />
-                {tag === "edit" ? <Edit /> : ""}
-                {tag === "addFolder" ? <AddFolder /> : ""}
-                {tag === "share" ? <Share query={query} /> : ""}
-                {tag === "deleteFolder" ? <DeleteFolder /> : ""}
-                {tag === "deleteLink" ? <DeleteLink /> : ""}
-                {tag === "add" ? <Add /> : ""}
-            </StyledModalBox>
-        </>
+        <StyledModalWrap $close={close}>
+            <StyledModalBg>
+                <StyledModalBox>
+                    <StyledModalClose
+                        src={closeIcon}
+                        alt="closeIcon"
+                        onClick={() => setClose(!close)}
+                    />
+                    {tag === "edit" ? <Edit /> : ""}
+                    {tag === "addFolder" ? <AddFolder /> : ""}
+                    {tag === "share" ? <Share query={query} /> : ""}
+                    {tag === "deleteFolder" ? <DeleteFolder /> : ""}
+                    {tag === "deleteLink" ? <DeleteLink /> : ""}
+                    {tag === "add" ? <Add /> : ""}
+                </StyledModalBox>
+            </StyledModalBg>
+        </StyledModalWrap>
     );
 }
 
