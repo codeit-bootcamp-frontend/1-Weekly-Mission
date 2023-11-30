@@ -1,18 +1,25 @@
 import React, { useContext } from "react";
 import Button from "../button/Button";
 import styles from "./FolderMenuList.module.css";
-
 import LocaleContext from "../../contexts/LocaleContext";
 import Plus from "@/public/images/plus.svg";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 export default function FolderMenuList() {
   const { LinkSDataArr, folderIdKey } = useContext(LocaleContext);
+  const router = useRouter();
+  const { id } = router.query;
 
+  // console.log(LinkSDataArr.map((item) => item.folderId)); // (7) ['', 14, 16, 17, 24, 40, 168]
+  // console.log(LinkSDataArr);
   return (
     <div className={styles.container}>
       <div className={styles.sub__container}>
         {LinkSDataArr?.map((item) => {
           let { folderId, folderName } = item;
+
+          // console.log(folderId, folderIdKey);
           // 전체의 folderId는 ""
           let isActive = false;
           if (String(folderId) === folderIdKey) {
@@ -26,10 +33,11 @@ export default function FolderMenuList() {
             <Button
               isActive={isActive}
               onClick={() => {
-                <Link href={`/folder/${folderId}`}></Link>;
+                router.push(`/folder/${folderId}`);
               }}
               key={item.folderId}
             >
+              {folderId}
               {folderName}
             </Button>
           );

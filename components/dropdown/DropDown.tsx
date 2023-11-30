@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./DropDown.module.css";
+import HeaderModal from "../modal/HeaderModal";
+import Modal from "../modal/Modal";
 
 export default function DropDown({ linkUrl }) {
   const [openAddModal, setOpenModal] = useState(false);

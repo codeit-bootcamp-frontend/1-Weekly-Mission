@@ -11,6 +11,7 @@ import ObserverProvider from "@/contexts/provider/ObserverProvider";
 import SearchProvider from "@/contexts/provider/SearchProvider";
 import useFetchData from "@/hooks/useFetchData";
 import useFetchLinksData from "@/hooks/useFetchLinksdata";
+import { useParams } from "next/navigation";
 
 import { mapFolderData, mapLinksData } from "@/utils/mapdata";
 import { useRouter } from "next/router";
@@ -19,10 +20,9 @@ import React from "react";
 export default function FolderPage() {
   // intersection
   const USER_ID = 1;
-  // const folderId = 1;
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
+
   const [userProfileData] = useFetchData(fetchUserData, {
     userId: USER_ID,
   });
@@ -53,7 +53,6 @@ export default function FolderPage() {
             <FolderMenuList />
             <FolderMenu folderIdKey={id} />
             <DataList folderIdKey={id} />
-
             <Footer />
           </SearchProvider>
         </LocaleContext.Provider>

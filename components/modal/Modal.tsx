@@ -1,13 +1,20 @@
 import React from "react";
 import styles from "./Modal.module.css";
+import KaKao from "../socialshare/KaKao";
 
-export default function Modal({ setterFunc, tabName, folderName, linkUrl }) {
+export default function Modal({
+  setterFunc,
+  tabName,
+  folderName,
+  linkUrl = "",
+}) {
   const obj = {
     share: ["폴더공유"],
     change: ["폴더이름변경", "변경하기", "blue"],
     delete: ["폴더삭제", "삭제하기", "red"],
     deleteLink: ["링크삭제", "삭제하기", "red"],
   };
+
   const [title, buttonName, buttonColor] = obj[tabName];
 
   return (
@@ -39,9 +46,8 @@ export default function Modal({ setterFunc, tabName, folderName, linkUrl }) {
           )
         ) : (
           <div className="link__container">
-            <ClipCopy />
+            {/* <ClipCopy /> */}
             <KaKao />
-            <Meta />
           </div>
         )}
       </div>
