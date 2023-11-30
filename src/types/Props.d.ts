@@ -72,12 +72,11 @@ interface ContentProps {
   content: string | undefined;
 }
 
-interface ShareBoxProps {
-  onClick: () => void;
+type ShareBoxProps = OnclickProps & {
   src: string;
   alt: string;
   content: string;
-}
+};
 
 interface ResultSearchProps {
   result: string;
