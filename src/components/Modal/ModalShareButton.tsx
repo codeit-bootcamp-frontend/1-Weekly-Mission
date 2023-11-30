@@ -8,7 +8,7 @@ function ShareBox({ onClick, src, alt, content }: ShareBoxProps) {
   return (
     <>
       <button onClick={onClick}>
-        <Image fill src={src} alt={alt} />
+        <Image src={src} alt={alt} width={35} height={35} />
       </button>
       <p>{content}</p>
     </>
@@ -24,7 +24,7 @@ function ModalShareButton({
     <Wrapper>
       <ButtonWrapper>
         <ShareBox
-          onClick={() => shareKakao}
+          onClick={shareKakao}
           src={KakaoTalk.src}
           alt="카카오톡"
           content="카카오톡"
@@ -32,7 +32,7 @@ function ModalShareButton({
       </ButtonWrapper>
       <ButtonWrapper>
         <ShareBox
-          onClick={() => shareFacebook}
+          onClick={shareFacebook}
           src={Facebook.src}
           alt="페이스북"
           content="페이스북"
@@ -40,7 +40,7 @@ function ModalShareButton({
       </ButtonWrapper>
       <ButtonWrapper>
         <ShareBox
-          onClick={() => shareLink}
+          onClick={shareLink}
           src={Link.src}
           alt="링크 복사"
           content="링크 복사"

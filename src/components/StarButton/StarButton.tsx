@@ -7,7 +7,7 @@ import styles from "src/components/StarButton/StarButton.module.css";
 function StarButton() {
   return (
     <Link className={styles.starButton} href="">
-      <Image fill src={Star} alt="즐겨찾기 버튼" />
+      <Image width={30} height={30} src={Star} alt="즐겨찾기 버튼" />
     </Link>
   );
 }

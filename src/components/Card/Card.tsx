@@ -19,13 +19,20 @@ function Card({ card, isCardEditable, onClick }: CardProps) {
         <StyledImgWrapper>
           {!isEmpty(image_source ?? imageSource) ? (
             <StyledCardImg
-              width={100}
-              height={100}
+              fill
+              priority={true}
+              sizes="100vw"
               src={image_source ?? imageSource ?? ""}
               alt="cardImg"
+              className="cardImg"
             />
           ) : (
-            <StyledCardImg src={EmptyImg} alt="emptyImg" />
+            <StyledCardImg
+              width={100}
+              height={100}
+              src={EmptyImg}
+              alt="emptyImg"
+            />
           )}
         </StyledImgWrapper>
         <StyledContentWrapper>
@@ -66,7 +73,8 @@ const StyledWrapper = styled.div`
 
 const StyledImgWrapper = styled.div`
   overflow: hidden;
-  width: 100%;
+  position: relative;
+  width: auto;
   height: 20rem;
 `;
 
@@ -78,6 +86,7 @@ const StyledCardImg = styled(Image)`
 
   &:hover {
     transform: scale(1.3);
+    overflow: hidden;
   }
 `;
 
