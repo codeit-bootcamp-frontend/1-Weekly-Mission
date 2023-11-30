@@ -13,6 +13,7 @@ import Search from "src/components/Search/Search";
 import ResultSearch from "src/components/Search/SearchResult";
 import Title from "src/components/Title/Title";
 import isEmpty from "src/utils/isEmpty";
+import { filterCardsSearch } from "src/utils/searchFilterCards";
 import { shareKakaoLink } from "src/utils/shareKakaoLink";
 
 function Folder() {
@@ -60,12 +61,7 @@ function Folder() {
     if (!searchResult) {
       setCards(introResult);
     } else {
-      const filterCard = introResult.filter(
-        (card: any) =>
-          card.url?.toLowerCase().includes(searchResult) ||
-          card.title?.toLowerCase().includes(searchResult) ||
-          card.description?.toLowerCase().includes(searchResult)
-      );
+      const filterCard = filterCardsSearch(introResult, searchResult);
       setCards(filterCard);
     }
   };
