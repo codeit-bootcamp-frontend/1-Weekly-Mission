@@ -35,7 +35,7 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <StyledNav pathname={pathname}>
+      <StyledNav $pathname={pathname}>
         <Link href="/">
           <Image src={Logo} alt="로고 이미지" />
         </Link>
@@ -59,10 +59,11 @@ function Header() {
 
 export default Header;
 
-const StyledNav = styled.nav<{ pathname: string }>`
+const StyledNav = styled.nav<{ $pathname: string }>`
   width: 100%;
   display: flex;
-  position: ${({ pathname }) => (pathname === "/shared" ? "fixed" : "static")};
+  position: ${({ $pathname }) =>
+    $pathname === "/shared" ? "fixed" : "static"};
   padding: 3.3rem 20rem;
   margin: 0 auto;
   justify-content: space-between;

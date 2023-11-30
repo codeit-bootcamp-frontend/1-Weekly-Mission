@@ -19,7 +19,7 @@ function Search({ value, searchResult }: SearchProps) {
         value={value}
       />
       {value.length > 0 && (
-        <StyledDeleteButton imgSrc={close.src} onClick={handleDelete} />
+        <StyledDeleteButton $imgsrc={close.src} onClick={handleDelete} />
       )}
     </StyledWrapper>
   );
@@ -31,11 +31,11 @@ const StyledWrapper = styled.div`
   position: relative;
 `;
 
-const StyledDeleteButton = styled.button<{ imgSrc: string }>`
+const StyledDeleteButton = styled.button<{ $imgsrc: string }>`
   position: absolute;
   width: 24px;
   height: 24px;
-  background-image: url(${(props) => props.imgSrc});
+  background-image: url(${(props) => props.$imgsrc});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

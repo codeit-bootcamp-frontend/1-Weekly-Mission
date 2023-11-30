@@ -22,13 +22,13 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
-const CloseButton = styled.button<{ imgSrc: string }>`
+const CloseButton = styled.button<{ $imgsrc: string }>`
   width: 24px;
   height: 24px;
   position: absolute;
   top: 16px;
   right: 16px;
   background-color: transparent;
-  background-image: url(${(props) => props.imgSrc});
+  background-image: url(${(props) => props.$imgsrc});
   background-repeat: no-repeat;
 `;

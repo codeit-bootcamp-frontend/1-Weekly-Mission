@@ -32,7 +32,7 @@ function Modal({
   return (
     <ModalWrapper>
       <ModalBackground>
-        <CloseButton imgSrc={closeButton.src} onClick={onClick} />
+        <CloseButton $imgsrc={closeButton.src} onClick={onClick} />
         <ContentWrapper>
           <ModalTitle title={title} />
           {title === "폴더 추가" ||
