@@ -6,18 +6,12 @@ interface Children {
   children?: React.ReactNode;
 }
 
-interface FolderProp {
-  folder: {
-    owner?: {
-      id?: number;
-      name?: string;
-      profileImageSource: string;
-    };
-    name?: string;
-  };
-}
+type TitleProps = Children & {
+  title?: string | undefined;
+  folderName?: string;
+};
 
-interface CardType {
+interface Card {
   id: string;
   url?: string;
   description?: string;
@@ -28,12 +22,12 @@ interface CardType {
 }
 
 interface CardListProps extends OnclickProps {
-  card: CardType[];
+  card: Card[];
   isCardEditable: boolean;
 }
 
 interface CardProps extends OnclickProps {
-  card: CardType;
+  card: Card;
   isCardEditable: boolean;
 }
 
@@ -57,12 +51,6 @@ interface KebabButtonProps extends OnclickProps {
   url: string | undefined;
 }
 
-interface FoldersType {
-  id: string;
-  name: string;
-  link: string;
-}
-
 interface ModalShareButtonProps {
   shareKakao?: () => void;
   shareFacebook?: () => void;
@@ -74,11 +62,6 @@ interface ModalProps extends OnclickProps, ModalShareButtonProps {
   subTitle?: string;
   buttonContent?: string;
   folders: any[];
-}
-
-interface TitleProps extends Children {
-  title?: string | undefined;
-  folderName?: string;
 }
 
 interface SubTitleProps {

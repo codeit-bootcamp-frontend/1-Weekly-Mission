@@ -1,6 +1,17 @@
 import Image from "next/image";
 import styles from "src/components/Banner/Banner.module.css";
 
+interface FolderProp {
+  folder: {
+    owner?: {
+      id: number;
+      name?: string;
+      profileImageSource: string;
+    };
+    name?: string;
+  };
+}
+
 function Intro({ folder }: FolderProp) {
   const { owner, name: folderName } = folder;
   if (!owner) return;

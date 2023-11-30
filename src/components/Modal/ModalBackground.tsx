@@ -1,6 +1,7 @@
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
 
-function ModalBackground({ children }: Children) {
+function ModalBackground({ children }: PropsWithChildren) {
   return <Background>{children}</Background>;
 }
 

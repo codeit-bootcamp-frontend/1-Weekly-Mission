@@ -52,7 +52,7 @@ function Folder() {
     setFolders(introResult);
   };
 
-  const cardInfo = async (folderId: string) => {
+  const folderAndCardInfo = async (folderId: string) => {
     const introResult = isEmpty(folderId)
       ? await getAllFolder()
       : await getFolderLinks(folderId as string);
@@ -118,13 +118,13 @@ function Folder() {
 
   useEffect(() => {
     folderInfo(initFolderId as string);
-    cardInfo(initFolderId as string);
+    folderAndCardInfo(initFolderId as string);
 
     return () => setCards([]);
   }, [initFolderId]);
 
   useEffect(() => {
-    cardInfo(initFolderId as string);
+    folderAndCardInfo(initFolderId as string);
   }, [searchResult]);
 
   return (
