@@ -23,11 +23,7 @@ const DEFAULT_VALUE = {
 
 export default function Layout({ children }: Props) {
   const [user, setUser] = useState<User>(DEFAULT_VALUE);
-  const {
-    isLoading,
-    error,
-    wrappedFunction: getUserAsyncFunc,
-  } = useFetch(getUser);
+  const { isLoading, error, wrappedFunction: getUserAsyncFunc } = useFetch(getUser);
 
   const handleUserData = async () => {
     const result = await getUserAsyncFunc(TEST_USER_ID);
