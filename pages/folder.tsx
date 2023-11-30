@@ -131,8 +131,6 @@ function Folder() {
     cardInfo(initFolderId as string);
   }, [searchResult]);
 
-  console.log(searchResult);
-
   return (
     <>
       {isModalOpen && (
