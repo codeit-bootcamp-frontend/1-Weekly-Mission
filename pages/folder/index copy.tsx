@@ -27,8 +27,6 @@ export default function FolderPage() {
     userId: USER_ID,
   });
 
-  // console.log(userProfileData);
-
   const [userFolderData] = useFetchData(fetchUserFolderData, {
     userId: USER_ID,
   });
@@ -37,7 +35,7 @@ export default function FolderPage() {
 
   const obj = mapFolderData(result);
   const [mappedResult] = useFetchLinksData(mapLinksData, result);
-
+  // console.log(mappedResult);
   return (
     <>
       <ObserverProvider>

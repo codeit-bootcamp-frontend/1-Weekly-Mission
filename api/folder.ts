@@ -1,43 +1,30 @@
-interface FetchDataType {
-  userId: number;
-  folderId?: number;
+interface UserRequest {
+  userId: string;
+  folderId?: string;
 }
-export const fetchUserData = async ({
-  userId,
-}: {
-  userId: FetchDataType;
-}): Promise<[Response, FetchDataType]> => {
-  const response = await fetch(
-    `https://bootcamp-api.codeit.kr/api/users/${userId}`
-  );
+
+const baseUrl = new URL("https://bootcamp-api.codeit.kr");
+const getUrl = (path: string) => new URL(path, baseUrl);
+
+export const fetchUserData = async ({ userId }: UserRequest) => {
+  const requestUrl = getUrl(`/api/users/${userId}`);
+  const response = await fetch(requestUrl);
   const jsonData = await response.json();
   return [response, jsonData];
 };
 
-export const fetchUserFolderData = async ({
-  userId,
-}: {
-  userId: FetchDataType;
-}) => {
-  const response = await fetch(
-    `https://bootcamp-api.codeit.kr/api/users/${userId}/folders`
-  );
+export const fetchUserFolderData = async ({ userId }: UserRequest) => {
+  const requestUrl = getUrl(`/api/users/${userId}/folders`);
+  const response = await fetch(requestUrl);
   const jsonData = await response.json();
   return [response, jsonData];
 };
 
-export const fetchFolderLinks = async ({
-  userId,
-  folderId,
-}: {
-  userId: FetchDataType;
-  folderId: FetchDataType;
-}) => {
-  const response = await fetch(
-    `https://bootcamp-api.codeit.kr/api/users/${userId}/links${
-      folderId ? `?folderId=${folderId}` : ""
-    }`
+export const fetchFolderLinks = async ({ userId, folderId }: UserRequest) => {
+  const requestUrl = getUrl(
+    `api/users/${userId}/links${folderId ? `?folderId=${folderId}` : ""}`
   );
+  const response = await fetch(requestUrl);
   const jsonData = await response.json();
   const linksData = jsonData?.data;
   return [response, linksData];
