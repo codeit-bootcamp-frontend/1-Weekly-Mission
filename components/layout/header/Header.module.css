@@ -1,0 +1,58 @@
+.wrapper {
+  width: 100%;
+  background-color: var(--color-primary-varient);
+  z-index: 1;
+}
+
+.hide {
+  position: fixed;
+  top: 0;
+}
+
+.container {
+  padding: 1.25rem 12.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1920px;
+  margin: auto;
+
+  @media only screen and ((min-width: 768px) and (max-width: 1199px)) {
+    max-width: 863px;
+    padding: 1.25rem 2rem;
+  }
+
+  @media only screen and ((min-width: 375px) and (max-width: 767px)) {
+    padding: 0.8rem 2rem;
+  }
+}
+
+.logo {
+  position: relative;
+  width: 133px;
+  height: 1.5rem;
+
+  @media only screen and ((min-width: 375px) and (max-width: 767px)) {
+    width: 5.5rem;
+    height: 1rem;
+  }
+}
+
+.navbar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.avatar {
+  position: relative;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+}
+
+.email {
+  @media only screen and ((min-width: 375px) and (max-width: 767px)) {
+    display: none;
+  }
+}
