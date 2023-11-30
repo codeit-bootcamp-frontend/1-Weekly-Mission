@@ -12,14 +12,16 @@ export default function SharedPage() {
   const [data, isLoading] = useFetchData(getShareFolderData);
 
   return (
+    // <SearchProvider>
     !isLoading && (
-      <SearchProvider>
+      <div>
         <ShareNav />
         <Header data={data} isLoading={isLoading} />
         <SearchBar />
         <ImageList data={data} isLoading={isLoading} />
         <Footer />
-      </SearchProvider>
+      </div>
     )
+    // </SearchProvider>
   );
 }

@@ -10,11 +10,11 @@ export default function ImageListItem({ item }) {
   const targetData = parseDatestring(createdAt);
   const { year, month, day } = targetData;
   const diffTime = getElapsedTime(createdAt);
-  console.log(imageSource);
+
   return (
     <Link href={url}>
       <Card>
-        {/* <Image src={imageSource} width={20} height={20} /> */}
+        {/* <Image src={imageSource} alt={title} width={30} height={30} /> */}
         <img className={styles.card__image} src={imageSource} alt={title} />
         <p>{diffTime}</p>
         <p>{description}</p>

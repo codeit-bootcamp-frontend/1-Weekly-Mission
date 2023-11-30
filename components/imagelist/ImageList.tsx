@@ -1,18 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import ImageListItem from "./ImageListItem";
 import styles from "./ImageList.module.css";
+import SearchContext from "@/contexts/SearchContext";
 
 export default function ImageList({ data, isLoading }) {
   const {
     folder: { links },
   } = data;
 
+  const { inputValue } = useContext(SearchContext);
+
+  if (!inputValue) {
+    return (
+      <ul>
+        <div className={styles.container}>
+          {links.map((item) => (
+            <li key={item.id}>
+              <ImageListItem item={item} />
+            </li>
+          ))}
+        </div>
+      </ul>
+    );
+  }
   return (
     <ul>
       <div className={styles.container}>
-        {links.map((item) => (
-          <li key={item.id}>{!isLoading && <ImageListItem item={item} />}</li>
-        ))}
+        {links.map((item) => {
+          const { url, title, description } = item;
+          if (
+            url.includes(inputValue) ||
+            title.includes(inputValue) ||
+            description.includes(inputValue)
+          ) {
+            return (
+              <li key={item.id}>
+                <ImageListItem item={item} />
+              </li>
+            );
+          }
+        })}
       </div>
     </ul>
   );

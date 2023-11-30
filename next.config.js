@@ -16,17 +16,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "codeit-frontend.codeit.com",
         port: "",
-        pathname: "/**",
-      },
-    ],
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "g",
-        port: "",
-        pathname: "/**",
+        pathname: "/static/**",
       },
     ],
   },
