@@ -1,6 +1,6 @@
 import * as S from './Folder.style';
 import { useEffect, useState, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import useRequest from '@/hooks/useRequest';
 import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@/services/config/default';
 import filterLinks from '@/utils/filterLinks';
@@ -13,31 +13,41 @@ import NoLinkView from './components/NoLinkView';
 import { Link } from './Folder.types';
 
 function Folder() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initialFolderId = searchParams.get('folderId') ?? '';
+  const router = useRouter();
+  const initialFolderId = Array.isArray(router.query.folderId)
+    ? router.query.folderId[0]
+    : router.query.folderId;
 
   const { data: links, fetch: getLinks } = useRequest<{ data: Link[] }>({
     skip: true,
     options: {
       url: `/users/${DEFAULT_USER_ID}/links`,
       method: 'get',
-      params: { folderId: initialFolderId },
+      params: { folderId: initialFolderId ?? '' },
     },
   });
 
+  useEffect(() => {
+    getLinks();
+  }, [initialFolderId]);
+
   const setFolderLinks = (nextFolderId: number) => {
     if (nextFolderId === DEFAULT_FOLDER_ID) {
-      setSearchParams({});
+      router.push({
+        pathname: router.pathname,
+        query: {},
+      });
     } else {
-      setSearchParams({ folderId: String(nextFolderId) });
+      router.push({
+        pathname: router.pathname,
+        query: { folderId: String(nextFolderId) },
+      });
     }
   };
 
-  useEffect(() => {
-    getLinks();
-  }, [searchParams]);
-
-  const initialKeyword = searchParams.get('keyword') ?? '';
+  const initialKeyword = Array.isArray(router.query.keyword)
+    ? router.query.keyword[0]
+    : router.query.keyword;
   const filteredLinks = filterLinks(links?.data, initialKeyword);
 
   const [floatAddLink, setFloatAddLink] = useState(false);

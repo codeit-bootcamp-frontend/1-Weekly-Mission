@@ -100,8 +100,8 @@ export const ImgContainer = styled.div`
   grid-area: img;
   margin-top: 2rem;
   margin-bottom: 1.6rem;
-  width: 100%;
-  height: auto;
+  width: 32rem;
+  height: 26rem;
 
   ${onTablet} {
     margin: 0;
@@ -113,9 +113,5 @@ export const ImgContainer = styled.div`
     margin: 0;
     width: 55rem;
     height: 45rem;
-  }
-
-  img {
-    width: 100%;
   }
 `;

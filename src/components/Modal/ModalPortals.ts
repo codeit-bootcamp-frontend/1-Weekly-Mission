@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 interface Props {
@@ -6,9 +6,14 @@ interface Props {
 }
 
 function ModalPortals({ children }: Props) {
-  const modalElement = document.querySelector('#modal');
-  if (!modalElement) return;
-  return ReactDOM.createPortal(children, modalElement);
+  const [mountedPortal, setMountedPortal] = useState<Element | null>(null);
+
+  useEffect(() => {
+    setMountedPortal(document.querySelector('#modal'));
+  }, []);
+
+  if (!mountedPortal) return;
+  return ReactDOM.createPortal(children, mountedPortal);
 }
 
 export default ModalPortals;

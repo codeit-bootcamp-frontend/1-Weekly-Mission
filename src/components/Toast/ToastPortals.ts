@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 interface Props {
@@ -6,9 +6,14 @@ interface Props {
 }
 
 function ToastPortals({ children }: Props) {
-  const toastElement = document.querySelector('#toast');
-  if (!toastElement) return;
-  return ReactDOM.createPortal(children, toastElement);
+  const [mountedPortal, setMountedPortal] = useState<Element | null>(null);
+
+  useEffect(() => {
+    setMountedPortal(document.querySelector('#toast'));
+  }, []);
+
+  if (!mountedPortal) return;
+  return ReactDOM.createPortal(children, mountedPortal);
 }
 
 export default ToastPortals;

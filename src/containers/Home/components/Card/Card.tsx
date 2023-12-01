@@ -20,7 +20,14 @@ function Card({ data }: Props) {
       <S.Title $gradient={gradient}>{title}</S.Title>
       <S.Description>{description}</S.Description>
       <S.ImgContainer>
-        <Image src={imgSrc} alt={imgAlt} fill />
+        <Image
+          src={imgSrc}
+          alt={imgAlt}
+          fill
+          style={{
+            objectFit: 'cover',
+          }}
+        />
       </S.ImgContainer>
     </S.CardContainer>
   );

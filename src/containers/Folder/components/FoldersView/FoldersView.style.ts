@@ -69,7 +69,7 @@ export const AddFolderButton = styled.button`
   }
 `;
 
-export const AddColor = styled.img`
+export const AddColor = styled.div`
   display: none;
 
   ${onTablet} {
@@ -80,7 +80,7 @@ export const AddColor = styled.img`
     display: block;
   }
 `;
-export const AddWhite = styled.img`
+export const AddWhite = styled.div`
   ${onTablet} {
     display: none;
   }
