@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import addButton from 'assets/images/add.svg';
-import addMobileButton from 'assets/images/add_mobile.svg';
+import addButton from '@/public/assets/images/add.svg';
+import addMobileButton from '@/public/assets/images/add_mobile.svg';
 import useGetWindowWidth from '@/hooks/useGetWindowWidth';
 import ModalPortal from '@/components/common/Modal/ModalPortal';
 import InputModal from '@/components/common/Modal/InputModal';
 import useModal from '@/hooks/useModal';
+import Image from 'next/image';
+import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
 function AddFolderBtn() {
   const innerWidth = useGetWindowWidth();
@@ -14,7 +16,7 @@ function AddFolderBtn() {
     <>
       <Container onClick={() => handleModalOpen()}>
         <AddFolder>폴더 추가</AddFolder>
-        <img src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
+        <Image src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
       </Container>
       {isOpen && (
         <ModalPortal>
@@ -36,7 +38,7 @@ const Container = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
     z-index: 10;
     position: fixed;
     bottom: 101px;
@@ -56,7 +58,8 @@ const AddFolder = styled.p`
   font-weight: 500;
   letter-spacing: -0.3px;
   display: inline;
-  @media (max-width: 767px) {
+
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
     color: #e7effb;
   }
 `;

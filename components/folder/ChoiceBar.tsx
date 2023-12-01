@@ -9,6 +9,7 @@ import ShareModal from '@/components/common/Modal/ShareModal';
 import useModal from '@/hooks/useModal';
 import { FolderType } from '@/constants/dataType';
 import { MouseEvent } from 'react';
+import Image from 'next/image';
 
 interface Props {
   folders: FolderType[];
@@ -36,7 +37,7 @@ function ChoiceBar({ folders, selectedFolderId }: Props) {
       <Box>
         {CHOICES.map((choice) => (
           <Wrapper key={choice.text} onClick={handleChoiceClick}>
-            <img src={choice.src} alt={choice.alt} />
+            <Image src={choice.src} alt={choice.alt} />
             <Text>{choice.text}</Text>
           </Wrapper>
         ))}
@@ -61,13 +62,15 @@ const Box = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
+  align-items: center;
+
   gap: 4px;
   &:hover {
     cursor: pointer;
   }
 `;
 
-const Text = styled.p`
+const Text = styled.div`
   color: var(--gray-60);
   font-size: 1.4rem;
   font-weight: 600;

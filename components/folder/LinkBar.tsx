@@ -1,10 +1,10 @@
 import { useState, useRef, FormEvent } from 'react';
 import styled from 'styled-components';
 import BlueBtn from '@/components/common/Button/BlueBtn';
-import linkIcon from '@/public/assets/images/link.svg';
 import ModalPortal from '@/components/common/Modal/ModalPortal';
 import AddToFolderModal from '@/components/common/Modal/AddToFolderModal';
 import useModal from '@/hooks/useModal';
+import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
 function LinkBar() {
   const { isOpen, handleModalOpen, handleModalClose } = useModal();
@@ -39,7 +39,7 @@ const Container = styled.form`
   margin: 0 auto;
   position: relative;
 
-  @media (max-width: 1199px) {
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
     width: 100%;
   }
 `;
@@ -48,7 +48,7 @@ const Input = styled.input`
   width: 100%;
   height: 69px;
   padding: 16px 20px 16px 52px;
-  background-image: url(${linkIcon});
+  background-image: url('/assets/images/link.svg');
   background-repeat: no-repeat;
   background-position: 20px 50%;
   border-radius: 15px;
@@ -62,8 +62,8 @@ const Input = styled.input`
   &:focus {
     box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
   }
-  /* Mobile */
-  @media (max-width: 767px) {
+
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
     height: 53px;
   }
 `;

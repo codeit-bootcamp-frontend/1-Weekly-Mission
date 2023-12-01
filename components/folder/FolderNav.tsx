@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ALL_ID } from '@/constants/default';
 import { FolderType } from '@/constants/dataType';
+import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
 interface Props {
   folders: FolderType[];
@@ -65,10 +66,10 @@ const FolderList = styled.ul`
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 6px;
-  @media (max-width: 1124px) {
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
     width: 620px;
   }
-  @media (max-width: 767px) {
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
     width: 100%;
   }
 `;

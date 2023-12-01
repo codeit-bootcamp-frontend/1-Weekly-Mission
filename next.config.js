@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '*.net',
       },
+      {
+        protocol: 'https',
+        hostname: '*.kr',
+      },
     ],
   },
 };

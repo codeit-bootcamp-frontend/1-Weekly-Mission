@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import LinkBar from './LinkBar';
 import { useObserver } from '@/hooks/useObserver';
+import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
 interface Props {
   visibleFooter: boolean;
@@ -30,11 +31,11 @@ const Top = styled.div`
 
   background-color: var(--bg);
 
-  @media (max-width: 1199px) {
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
     padding: 60px 32.5px;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
     padding: 24px 32px 40px;
   }
 `;
@@ -51,11 +52,11 @@ const Bottom = styled.div<{ $display: boolean }>`
 
   background-color: var(--bg);
 
-  @media (max-width: 1199px) {
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
     padding: 24px 32.5px;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
     padding: 16px 32px;
   }
 `;

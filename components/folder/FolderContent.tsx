@@ -9,6 +9,7 @@ import ChoiceBar from './ChoiceBar';
 import { useState } from 'react';
 import { ALL_ID } from '@/constants/default';
 import SearchResult from '@/components/common/Search/SearchResult';
+import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
 function FolderContent() {
   const foldersData = useGetFolders(1);
@@ -59,12 +60,11 @@ const Container = styled.div`
   width: 1060px;
   margin: 0 auto;
 
-  @media (max-width: 1124px) {
+  @media (max-width: ${DEVICE_SIZE.tablet}) {
     width: 704px;
   }
 
-  /* Mobile */
-  @media (max-width: 767px) {
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
     width: 100%;
     padding: 0 32px;
   }
@@ -88,7 +88,7 @@ const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
     flex-direction: column;
     gap: 12px;
   }
