@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { breakPoints } from "@/common/media";
-// import { ReactComponent as AddIcon } from "@/public/images/add.svg";
+// import AddIcon from "@/public/assets/add.svg";
 
 export const HeroContainer = styled.section`
   text-align: center;
