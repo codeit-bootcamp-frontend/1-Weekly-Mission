@@ -39,6 +39,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "codeit-images.codeit.com",
       },
+      {
+        protocol: "https",
+        hostname: "testing-library.com",
+      },
+      {
+        protocol: "https",
+        hostname: "static.cdninstagram.com",
+      },
     ],
   },
 };

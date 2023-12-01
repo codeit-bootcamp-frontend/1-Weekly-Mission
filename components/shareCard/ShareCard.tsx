@@ -38,15 +38,22 @@ function ShareCard({ linkInfo }: ShareCardProps) {
               : styles.cardImgSectionEmpty
           }
         >
-          <Image
-            src={linkInfo?.imageSource ?? logo}
-            className={
-              linkInfo?.imageSource ? styles.linkImg : styles.linkImgEmpty
-            }
-            alt="cat"
-            width={24}
-            height={24}
-          />
+          {linkInfo?.imageSource ? (
+            <Image
+              src={linkInfo?.imageSource}
+              className={styles.linkImg}
+              alt="cat"
+              fill
+            />
+          ) : (
+            <Image
+              src={logo}
+              className={`${styles.cardEmpty} ${styles.linkImg} ${styles.linkImgEmpty}`}
+              alt="cat"
+              width={50}
+              height={50}
+            />
+          )}
         </div>
         <div className={styles.cardTextSection}>
           <p className={styles.timeStamp}>{formattedTime}</p>

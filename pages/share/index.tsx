@@ -4,6 +4,7 @@ import { getSampleFolder } from "../api/user";
 import styles from "./sharedpage.module.css";
 import ShareCard from "../../components/shareCard/ShareCard";
 import { FolderInfo, SampleLinks } from "../../types/types";
+import SearchBar from "@/components/searchBar/SearchBar";
 
 export default function SharedPage() {
   const [links, setLinks] = useState<SampleLinks[]>([]);
@@ -34,7 +35,7 @@ export default function SharedPage() {
       <main className={styles.main}>
         <section className={styles.contentSection}>
           <div className={styles.container}>
-            {/* <SearchBar onChange={handleSearchInputChange}/> */}
+            {/* <SearchBar onKeyUp={handleSearchInputChange}/> */}
             <div className={styles.linksContainer}>
               {links &&
                 links.map((item) => (

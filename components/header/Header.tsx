@@ -14,7 +14,8 @@ export default function Header({ folderInfo }: FolderInfoProps) {
           src={folderInfo?.folder.owner.profileImageSource}
           alt="profile"
           className={styles.profileImage}
-          fill
+          width={24}
+          height={24}
         />
         <span className={styles.userName}>{folderInfo?.folder.owner.name}</span>
       </div>
