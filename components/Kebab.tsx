@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import kebab from "../images/kebab.svg";
 import { Modalkebab } from "../components/modal/Modal";
-
+import Image from "next/image";
 import { MouseEvent } from "react";
 export const ModalInfo = [
   {
@@ -15,8 +15,10 @@ export const ModalInfo = [
   { title: "링크 삭제", color: "red", buttonTitle: "삭제하기" },
 ];
 
-const KebabImg = styled.img`
+const KebabImg = styled.span`
   position: relative;
+  width: 22px;
+  height: 17px;
 `;
 const Pop = styled.div`
   position: absolute;
@@ -81,7 +83,9 @@ export default function KebabButton({ url, openMAF }: any) {
 
   return (
     <>
-      <KebabImg src={kebab} alt="케밥" onClick={toggledKebab} />
+      <KebabImg onClick={toggledKebab}>
+        <Image fill src={kebab} alt="케밥" />
+      </KebabImg>
       {open && (
         <Pop>
           <PopDelete

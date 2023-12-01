@@ -1,37 +1,68 @@
-import "../styles/reset.css";
 import facebook from "../images/facebook.svg";
 import instagram from "../images/instagram.svg";
 import twitter from "../images/twitter.svg";
 import youtube from "../images/youtube.svg";
 import styled from "styled-components";
+import Link from "next/link";
+import Image from "next/image";
 function FooterSpace() {
   return (
     <Footer>
       <FooterBox>
         <Copyright>©codeit - 2023</Copyright>
         <FooterLinks>
-          <a href="/">Privacy Policy</a>
-          <a href="/">FAQ</a>
+          <Link href="/">Privacy Policy</Link>
+          <Link href="/">FAQ</Link>
         </FooterLinks>
         <Sns>
-          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
-            <img
+          <Link
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noreferrer"
+            style={{ position: "relative", width: "20px", height: "20px" }}
+          >
+            <Image
+              fill
               src={facebook}
               alt="facebook 홈페이지로 연결된 facebook 로고"
             />
-          </a>
-          <a href="https://twitter.com/" target="_blank" rel="noreferrer">
-            <img src={twitter} alt="twitter 홈페이지로 연결된 twitter 로고" />
-          </a>
-          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
-            <img src={youtube} alt="youtube 홈페이지로 연결된 youtube 로고" />
-          </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-            <img
+          </Link>
+          <Link
+            href="https://twitter.com/"
+            target="_blank"
+            rel="noreferrer"
+            style={{ position: "relative", width: "20px", height: "20px" }}
+          >
+            <Image
+              fill
+              src={twitter}
+              alt="twitter 홈페이지로 연결된 twitter 로고"
+            />
+          </Link>
+          <Link
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noreferrer"
+            style={{ position: "relative", width: "20px", height: "20px" }}
+          >
+            <Image
+              fill
+              src={youtube}
+              alt="youtube 홈페이지로 연결된 youtube 로고"
+            />
+          </Link>
+          <Link
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            style={{ position: "relative", width: "20px", height: "20px" }}
+          >
+            <Image
+              fill
               src={instagram}
               alt="instagram 홈페이지로 연결된 instagram 로고"
             />
-          </a>
+          </Link>
         </Sns>
       </FooterBox>
     </Footer>

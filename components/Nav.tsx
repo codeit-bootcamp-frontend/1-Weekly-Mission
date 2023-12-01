@@ -1,18 +1,20 @@
-import "../styles/reset.css";
 import logo from "../images/logo.svg";
 import styled from "styled-components";
-
+import Image from "next/image";
 import { UserLoginData } from "../type";
+
 function Nav({ lists }: UserLoginData) {
-  const { userEmail, userImage } = lists;
+  const { userEmail, userImage = "" } = lists;
 
   return (
     <NavContainer>
       <NavBox>
-        <Logo className="logo" src={logo} alt="회사 로고" />
+        <Image width={133} height={24} src={logo} alt="회사 로고" />
         {lists ? (
           <Profile>
-            <UseImage src={userImage} alt="사용자 이미지" />
+            <UseImage>
+              <Image fill src={userImage} alt="사용자 이미지" />
+            </UseImage>
             <UserEmail className="user-email">{userEmail}</UserEmail>
           </Profile>
         ) : (
@@ -68,7 +70,8 @@ const Profile = styled.div`
   align-items: center;
 `;
 
-const UseImage = styled.img`
+const UseImage = styled.span`
+  position: relative;
   width: 28px;
   height: 28px;
   border-radius: 50%;

@@ -1,10 +1,9 @@
-import "../styles/reset.css";
 import styled from "styled-components";
 import noImage from "../images/noimage.svg";
 import star from "../images/star.svg";
 import KebabButton from "../components/Kebab";
 import { timeForToday, formatDate } from "../date";
-
+import Image from "next/image";
 export function Card({ item, openMAF }: any) {
   const { url, imageSource = noImage, title, createdAt, description } = item;
   return (
@@ -12,11 +11,9 @@ export function Card({ item, openMAF }: any) {
       <a href={url}>
         <CardContainer>
           <CardImageWrapper>
-            <CardImage
-              className="card-image"
-              src={item.image_source || imageSource}
-              alt={title}
-            />
+            <CardImage>
+              <Image fill src={item.image_source || imageSource} alt={title} />
+            </CardImage>
             <button className="star-button">
               <img className="start" src={star} alt="" />
             </button>
@@ -45,11 +42,9 @@ export function SampleCard({ item }: any) {
       <a href={url}>
         <CardContainer>
           <CardImageWrapper>
-            <CardImage
-              className="card-image"
-              src={item.image_source || imageSource}
-              alt={title}
-            />
+            <CardImage>
+              <Image fill src={item.image_source || imageSource} alt={title} />
+            </CardImage>
             <button className="star-button">
               <img className="start" src={star} alt="" />
             </button>
@@ -88,7 +83,7 @@ const CardImageWrapper = styled.div`
   object-fit: cover;
 `;
 
-const CardImage = styled.img`
+const CardImage = styled.span`
   width: 100%;
   height: 100%;
   border-radius: 15px, 15px, 0px, 0px;

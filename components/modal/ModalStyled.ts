@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { MouseEvent } from "react";
+import Image from "next/image";
 export const ModalWrapper = styled.div`
   width: 362px;
   display: flex;
@@ -17,10 +18,13 @@ export const ModalWrapper = styled.div`
   background: var(--linkbrary-white, #fff);
   z-index: 500;
 `;
-export const ModalClose = styled.img`
+
+export const ModalClose = styled.span`
   position: absolute;
   left: 320px;
   top: 16px;
+  width: 24px;
+  height: 24px;
 `;
 export const ModalInput = styled.input`
   display: flex;

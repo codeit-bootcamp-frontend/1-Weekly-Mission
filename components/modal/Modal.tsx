@@ -4,10 +4,12 @@ import kakao from "../../images/Kakao.svg";
 import link from "../../images/Addlink.svg";
 import CheckIcon from "../../images/check.svg";
 import { useState, useEffect } from "react";
-import shareKakao from "../../ShareSns";
+import shareKakao from "../../shareSns";
 import * as S from "./ModalStyled";
 import { MouseEvent } from "react";
 import styled from "styled-components";
+
+import Image from "next/image";
 interface ModalkebabProps {
   url: string;
   title: string;
@@ -39,7 +41,10 @@ export function Modalkebab({
   return (
     <S.ModalWrapper>
       <S.ModalTitle>{title}</S.ModalTitle>
-      <S.ModalClose src={close} onClick={onClose} />
+      <S.ModalClose onClick={onClose}>
+        <Image src={close} fill alt="" />
+      </S.ModalClose>
+
       <S.ModalUrl>{url}</S.ModalUrl>
       <S.ModalButton color={color}>{buttonTitle}</S.ModalButton>
     </S.ModalWrapper>
@@ -83,7 +88,9 @@ export function ModalLink({
     <>
       <S.ModalWrapper>
         <S.ModalTitle>{LinkOptions.modalTitle}</S.ModalTitle>
-        <S.ModalClose src={close} onClick={onClose} />
+        <S.ModalClose onClick={onClose}>
+          <Image src={close} fill alt="" />
+        </S.ModalClose>
         <>
           {LinkOptions.name !== "이름 변경" ? (
             <S.ModalUrl>{folderName || "전체"}</S.ModalUrl>
@@ -125,7 +132,9 @@ export function ModalAddFolder({ selectItems, CloseMAF, url }: any) {
   };
   return (
     <S.AddFolderWrapper>
-      <S.ModalClose src={close} onClick={CloseMAF} />
+      <S.ModalClose onClick={CloseMAF}>
+        <Image src={close} fill alt="" />
+      </S.ModalClose>
       <S.AddFolderHeader>
         <S.AddFolderTitle> 폴더에 추가</S.AddFolderTitle>
         <S.AddFolderLink>{url}</S.AddFolderLink>

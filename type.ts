@@ -1,5 +1,3 @@
-import { string } from "yargs";
-
 export interface FolderLinkData {
   id?: number;
   folder_id?: number;

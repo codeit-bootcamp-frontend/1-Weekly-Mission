@@ -1,10 +1,9 @@
-import "../styles/reset.css";
 import styled from "styled-components";
 import linkAdd from "../images/link.svg";
 import add from "../images/add.svg";
 import { ChangeEvent, useState } from "react";
 import { MouseEvent } from "react";
-
+import Image from "next/image";
 interface LinkAddBar {
   openMAF: (e: MouseEvent, text?: string) => void;
 }
@@ -27,7 +26,9 @@ export function LinkAddBar({ openMAF }: LinkAddBar) {
               onChange={handleChangeText}
             />
 
-            <LinkAddBarImage src={linkAdd} alt=" " />
+            <LinkAddBarImage>
+              <Image fill src={linkAdd} alt=" " />
+            </LinkAddBarImage>
             <CtaShort onClick={handleTypingUrl}>
               <span>추가하기</span>
             </CtaShort>
@@ -53,8 +54,10 @@ export function LinkAddBarFixedBot({ openMAF }: LinkAddBar) {
           placeholder="링크를 추가해보세요"
           onChange={handleChangeText}
         />
+        <LinkAddBarImage>
+          <Image fill src={linkAdd} alt=" " />
+        </LinkAddBarImage>
 
-        <LinkAddBarImage src={linkAdd} alt=" " />
         <CtaShort onClick={handleTypingUrl}>
           <span>추가하기</span>
         </CtaShort>
@@ -68,17 +71,22 @@ export function FolderAdd({ openMAF }: LinkAddBar) {
     <>
       <FolderAddWrapper onClick={openMAF}>
         <FolderAddContent>폴더 추가</FolderAddContent>
-        <img className="add" src={add} alt="" />
+        <AddImage>
+          <Image fill src={add} alt="" />
+        </AddImage>
       </FolderAddWrapper>
       <AddButton onClick={openMAF}>
         <FolderAddBtnContent>폴더 추가</FolderAddBtnContent>
-        <img className="add btn" src={add} alt="" />
+        <AddImage>
+          <Image fill src={add} alt="" />
+        </AddImage>
       </AddButton>
     </>
   );
 }
 
 const AddButton = styled.button`
+  position: relative;
   display: none;
   @media (max-width: 768px) {
     display: flex;
@@ -95,6 +103,12 @@ const AddButton = styled.button`
     left: 50%;
     transform: translateX(-50%);
   }
+`;
+
+const AddImage = styled.span`
+  position: relative;
+  width: 16px;
+  height: 17px;
 `;
 
 const FolderAddWrapper = styled.div`
@@ -178,10 +192,12 @@ const LinkAddBarInput = styled.input`
   }
 `;
 
-const LinkAddBarImage = styled.img`
-  position: absolute;
+const LinkAddBarImage = styled.span`
   left: 10px;
   cursor: pointer;
+  width: 18px;
+  height: 18px;
+  position: absolute;
 `;
 
 const FolderHeader = styled.div`

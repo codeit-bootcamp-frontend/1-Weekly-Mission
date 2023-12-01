@@ -1,4 +1,3 @@
-import "../../styles/reset.css";
 import { LinkAddBar, FolderAdd, LinkAddBarFixedBot } from "../components/Add";
 import { Card } from "../components/Card";
 import FooterSpace from "../components/FooterSpace";

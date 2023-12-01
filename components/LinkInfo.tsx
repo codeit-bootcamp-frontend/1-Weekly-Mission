@@ -5,6 +5,8 @@ import deletings from "../images/delete.svg";
 import { useState } from "react";
 import { ModalLink } from "../components/modal/Modal";
 import { MouseEvent } from "react";
+
+import Image from "next/image";
 export const LinkOptions = [
   {
     name: "공유",
@@ -51,7 +53,9 @@ function LinkInfo({ folderName, nowFolderId, userId }: LinkInfoProps) {
           {LinkOptions.map((option) => {
             return (
               <ContentButton key={option.name} onClick={handleModalLink}>
-                <ContentImg src={option.img} alt={option.name} />
+                <ContentImg>
+                  <Image fill src={option.img} alt={option.name} />
+                </ContentImg>
                 <ContentTitle>{option.name}</ContentTitle>
               </ContentButton>
             );
@@ -142,7 +146,8 @@ const ContentTitle = styled.div`
   font-weight: 600;
   line-height: normal;
 `;
-const ContentImg = styled.img`
+const ContentImg = styled.span`
+  position: relative;
   width: 18px;
   height: 18px;
 `;

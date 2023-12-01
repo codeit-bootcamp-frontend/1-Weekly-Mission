@@ -2,6 +2,7 @@ import searchIcon from "../images/Search.svg";
 import closeIcon from "../images/_close.svg";
 import { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
+import Image from "next/image";
 function SearchBar({ search, onSearch }: any) {
   const [display, setDisplay] = useState(true);
 
@@ -24,13 +25,13 @@ function SearchBar({ search, onSearch }: any) {
           onChange={handleChangeSearch}
         />
 
-        <SearchIcon src={searchIcon} className="search-icon-image" alt=" " />
-        <CloseIcon
-          src={closeIcon}
-          onClick={() => closeSearchBar()}
-          className="close-icon"
-          alt=""
-        />
+        <SearchIcon>
+          <Image width={16} height={16} src={searchIcon} alt=" " />
+        </SearchIcon>
+
+        <CloseIcon onClick={() => closeSearchBar()}>
+          <Image width={16} height={16} src={closeIcon} alt="" />
+        </CloseIcon>
       </SearchBarWrapper>
       {search === "" ? null : (
         <SearchResultContainer>
@@ -102,14 +103,14 @@ const SearchBarWrapper = styled.div<SearchBarWrapperProps>`
   display: ${({ $display }) => ($display ? "flex" : "none")};
 `;
 
-const SearchIcon = styled.img`
+const SearchIcon = styled.span`
   position: absolute;
   top: 15px;
   left: 16px;
   cursor: pointer;
 `;
 
-const CloseIcon = styled.img`
+const CloseIcon = styled.span`
   position: absolute;
   top: 15px;
   right: 16px;

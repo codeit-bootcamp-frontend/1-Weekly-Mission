@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
-import "../styles/reset.css";
-
+import Image from "next/image";
 function HeaderSpace({ profiles }: any) {
   // window.addEventListener("scroll", (e) => {
   //   if (window.scrollY > 300 && window.scrollY < 1100) {
@@ -21,7 +19,9 @@ function HeaderSpace({ profiles }: any) {
         <Header>
           <HeroHeader>
             <CompanyMark>
-              <CircleLogo src={profiles.profileImageSource} alt="" />
+              <CircleLogo>
+                <Image fill src={profiles.profileImageSource} alt="" />
+              </CircleLogo>
               <CompanyName>{profiles.name}</CompanyName>
             </CompanyMark>
             <BookMarkWrapper>
@@ -60,7 +60,8 @@ const CompanyMark = styled.div`
   gap: 12px;
 `;
 
-const CircleLogo = styled.img`
+const CircleLogo = styled.span`
+  position: relative;
   width: 28px;
   height: 28px;
 `;
