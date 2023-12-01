@@ -52,9 +52,14 @@ const Input = styled.input`
   width: 100%;
   padding: 15px 40px;
   border: none;
+  outline: none;
   border-radius: 10px;
   background-color: var(--grey-light);
   font-size: 1.6rem;
+
+  &:focus {
+    border: 1px solid var(--grey-70);
+  }
 `;
 
 const CloseIcon = styled(Image)`

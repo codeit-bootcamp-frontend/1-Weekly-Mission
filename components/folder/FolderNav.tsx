@@ -84,7 +84,6 @@ const FolderItem = styled.li`
   font-weight: 400;
   &:hover {
     cursor: pointer;
-    color: white;
-    background-color: var(--primary-color);
+    background-color: var(--gray-10);
   }
 `;
