@@ -2,14 +2,16 @@ import logo from "../images/logo.svg";
 import styled from "styled-components";
 import Image from "next/image";
 import { UserLoginData } from "../type";
-
+import Link from "next/link";
 function Nav({ lists }: UserLoginData) {
   const { userEmail, userImage = "" } = lists;
 
   return (
     <NavContainer>
       <NavBox>
-        <Image width={133} height={24} src={logo} alt="회사 로고" />
+        <Link href="/">
+          <Image width={133} height={24} src={logo} alt="회사 로고" />
+        </Link>
         {lists ? (
           <Profile>
             <UseImage>
