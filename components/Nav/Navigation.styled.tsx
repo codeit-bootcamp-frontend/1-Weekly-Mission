@@ -4,7 +4,7 @@ export const Backgorund = styled.div`
   position: absolute;
   background-color: var(--Gray1);
   width: 100%;
-  height: 7rem;
+  height: 9rem;
 `;
 
 interface Inav {

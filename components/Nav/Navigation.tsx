@@ -6,6 +6,8 @@ import Profile from "@/components/Nav/Profile";
 import SignButton from "@/components/Nav/SignButton";
 import { Backgorund, Nav } from "@/components/Nav/Navigation.styled";
 import { useRouter } from "next/router";
+import { Button } from "@/components/Nav/SignButton.styled";
+import Link from "next/link";
 
 interface Props {
   id?: number;
@@ -19,7 +21,13 @@ function Navigation({ id, setIsUser, page = "" }: Props) {
       <Backgorund />
       <Nav page={page}>
         <Logo src="/logo.svg" alt="링크브러리 홈화면으로 이동" />
-        <Avatar id={id} setIsUser={setIsUser} />
+        {page === "/" ? (
+          <Button>
+            <Link href="/signin">로그인</Link>
+          </Button>
+        ) : (
+          <Avatar id={id} setIsUser={setIsUser} />
+        )}
       </Nav>
     </>
   );

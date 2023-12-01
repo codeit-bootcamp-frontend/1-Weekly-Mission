@@ -1,4 +1,3 @@
-import reset from "styled-reset"; // 레이아웃 리셋
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -6,12 +5,14 @@ export const GlobalStyle = createGlobalStyle`
   html,
   body {
     font-size: 62.5%;
+    font-family: Pretendard;
   }
 
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Pretendard;
   }
 
   button {
@@ -38,5 +39,6 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: var(--White);
   }
 `;
