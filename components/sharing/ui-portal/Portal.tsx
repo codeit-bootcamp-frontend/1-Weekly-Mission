@@ -1,4 +1,4 @@
-import { ReactNode, useLayoutEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 type PortalProps = {
@@ -7,9 +7,11 @@ type PortalProps = {
 };
 
 export const Portal = ({ children, container }: PortalProps) => {
-  const [mountNode, setMountNode] = useState<Element | DocumentFragment | null>(null);
+  const [mountNode, setMountNode] = useState<Element | DocumentFragment | null>(
+    null
+  );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setMountNode(container || document.body);
   }, [container]);
 
