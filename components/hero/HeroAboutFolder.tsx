@@ -25,6 +25,7 @@ export default function FolderHero({
    * linkForm이 fixed인 container 새로 생성
    * isFixedInput가 true일때는 linkForm 사라짐
    * isFixedInput가 false일때는 linkForm 보여짐
+   * AddLinkContainer 공통 컴포넌트 분리
    */
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -47,45 +48,48 @@ export default function FolderHero({
           </ModalContainer>
         </ModalPortal>
       )}
-      <Container>
-        <LinkTop ref={ref}>
+      <LinkContainer>
+        <LinkForm ref={ref}>
           <Icon />
           <AddLinkFolderInput onChangeAddLink={onChangeAddLink} />
           <ButtonContainer>
             <Button size="small" label="추가하기" onClick={handleInput} />
           </ButtonContainer>
-        </LinkTop>
+        </LinkForm>
+      </LinkContainer>
+      <FixedLinkContainer>
         {showFixedAddLink && (
-          <LinkBottom>
+          <LinkForm>
             <Icon />
             <AddLinkFolderInput onChangeAddLink={onChangeAddLink} />
             <ButtonContainer>
               <Button size="small" label="추가하기" onClick={handleInput} />
             </ButtonContainer>
-          </LinkBottom>
+          </LinkForm>
         )}
-      </Container>
+      </FixedLinkContainer>
     </>
   );
 }
 
-const Container = styled.section`
+const LinkContainer = styled.section`
   text-align: center;
   background-color: var(--color-primary-varient);
 `;
 
-const LinkTop = styled.div`
+const FixedLinkContainer = styled(LinkContainer)`
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+`;
+
+const LinkForm = styled.div`
   padding: 1.5rem 2rem;
   position: relative;
   max-width: 55rem;
   width: 100%;
   margin: auto;
-`;
-
-const LinkBottom = styled(LinkTop)`
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
 `;
 
 const Icon = styled(LinkIcon)`
