@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as S from "./FolderStyles";
 
+import Layout from "@/components/layout/Layout";
 import CardList from "@/components/card/CardList";
 import ModalPortal from "@/components/ModalPortal";
 import ModalContainer from "@/components/modal/ModalContainer";
@@ -13,9 +14,11 @@ import Options from "@/components/Options";
 
 import { FolderUIProps } from "./FolderTypes";
 import { DEFAULT } from "./FolderContainer";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 export default function FolderUI(props: FolderUIProps) {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
 
   return (
     <>
@@ -27,7 +30,7 @@ export default function FolderUI(props: FolderUIProps) {
         </ModalPortal>
       )}
 
-      <main>
+      <Layout footerRef={ref}>
         <S.HeroContainer ref={props.target}>
           <FolderHero onChangeAddLink={props.handleAddLink} addLinkValue={props.addLinkValue} />
         </S.HeroContainer>
@@ -72,8 +75,8 @@ export default function FolderUI(props: FolderUIProps) {
             </>
           )}
         </S.Contents>
-      </main>
-      <S.DivTarget ref={props.fixedTarget}></S.DivTarget>
+      </Layout>
+      {/* <S.DivTarget ref={props.fixedTarget}></S.DivTarget> */}
     </>
   );
 }

@@ -6,10 +6,10 @@ import { FolderContextProvider } from "@/context/FolderContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <FolderContextProvider>
-        <Component {...pageProps} />
-      </FolderContextProvider>
-    </Layout>
+    // <Layout>
+    <FolderContextProvider>
+      <Component {...pageProps} />
+    </FolderContextProvider>
+    // </Layout>
   );
 }
