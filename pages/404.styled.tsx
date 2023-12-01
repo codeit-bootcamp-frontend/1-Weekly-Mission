@@ -1,21 +1,15 @@
 import styled from "styled-components";
-import bgImg from "@/public/errorbg.png";
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  padding-top: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--Gray1);
-  background-image: url(${bgImg});
+  background-image: url("/errorbg.png");
   background-size: cover;
-`;
-
-export const Img = styled.img`
-  width: 30rem;
-  height: auto;
-  padding-top: 20rem;
 `;
 
 export const H1 = styled.h1`

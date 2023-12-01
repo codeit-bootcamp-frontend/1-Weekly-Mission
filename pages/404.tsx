@@ -1,12 +1,13 @@
+import { Container, H1 } from "@/pages/404.styled";
 import logoImg from "@/public/logo.svg";
-import { Container, H1, Img } from "@/pages/404.styled";
+import Image from "next/image";
 import Link from "next/link";
 
 function ErrorPage() {
   return (
     <Container>
       <Link href="/">
-        <Img src={logoImg} alt="로고 이미지" />
+        <Image width={300} src={logoImg} alt="로고 이미지" />
       </Link>
       <H1>
         찾는 페이지가 존재하지 않습니다.
