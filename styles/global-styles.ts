@@ -1,10 +1,30 @@
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
+
+export const GlobalStyle = createGlobalStyle`
+
 :root {
+  /* color */
+  --primary: #6D6AFE;
+  --red:#FF5B56;
+  --black: #11322;
+  --white: #FFFFFF;
+  --gray-100: #373740;
+  --gray-60: #9FA6B2;
+  --gray-20: #CCD5E3;
+  --gray-10: #E7EFFB;
+  --bg: #F0F6FF;
+  --grey-light: #F5F5F5;
+  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+
+  /*common style*/
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
+  /*light mode*/
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -42,6 +62,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /*dark mode*/
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
@@ -105,3 +126,4 @@ a {
     color-scheme: dark;
   }
 }
+`;
