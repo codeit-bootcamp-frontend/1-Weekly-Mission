@@ -1,12 +1,12 @@
 import * as S from './Folder.style';
 import { useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import useRequest from '@hooks/useRequest';
-import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@apis/config/default';
-import filterLinks from '@utils/filterLinks';
-import Layout from '@components/Layout';
-import SearchBar from '@components/SearchBar';
-import CardsContainer from '@components/CardsContainer';
+import useRequest from '@/hooks/useRequest';
+import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@/services/config/default';
+import filterLinks from '@/utils/filterLinks';
+import Layout from '@/components/Layout';
+import SearchBar from '@/components/SearchBar';
+import CardsContainer from '@/components/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
 import FoldersContainer from './components/FoldersContainer';
 import NoLinkView from './components/NoLinkView';

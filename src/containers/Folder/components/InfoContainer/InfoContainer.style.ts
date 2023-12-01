@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { onTablet, onPc } from '@styles/mediaQuery';
-import { COLORS } from '@styles/palette';
+import { onTablet, onPc } from '@/styles/mediaQuery';
+import { COLORS } from '@/styles/palette';
 
 export const InfoContainer = styled.div`
   display: flex;

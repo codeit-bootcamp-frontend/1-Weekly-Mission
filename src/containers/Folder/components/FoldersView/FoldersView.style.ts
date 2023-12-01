@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { onTablet, onPc } from '@styles/mediaQuery';
-import { COLORS } from '@styles/palette';
-import { zIndexStyle } from '@styles/zIndexStyle';
+import { onTablet, onPc } from '@/styles/mediaQuery';
+import { COLORS } from '@/styles/palette';
+import { zIndexStyle } from '@/styles/zIndexStyle';
 
 export const Container = styled.div`
   display: flex;

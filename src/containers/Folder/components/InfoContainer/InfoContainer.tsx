@@ -1,10 +1,8 @@
 import * as S from './InfoContainer.style';
-import useModal from '@hooks/useModal';
+import useModal from '@/hooks/useModal';
 import { Folder } from '../FoldersContainer/FoldersContainer.types';
-import SHARE from '@assets/icons/share.svg';
-import EDIT from '@assets/icons/edit.svg';
-import DELETE from '@assets/icons/delete.svg';
-import ModalPortals from '@components/Modal/ModalPortals';
+import ModalPortals from '@/components/Modal/ModalPortals';
+import { IconDelete, IconEdit, IconShare } from '@/public/svgs';
 
 interface Props {
   defaultFolder: Folder;
@@ -39,15 +37,15 @@ function InfoContainer({ defaultFolder, selectedFolder, userId }: Props) {
           {selectedFolder?.id !== defaultFolder.id && (
             <>
               <S.SettingButton onClick={setShareModal}>
-                <img src={SHARE} alt='공유하기' />
+                <IconShare />
                 공유
               </S.SettingButton>
               <S.SettingButton onClick={setEditModal}>
-                <img src={EDIT} alt='이름 변경하기' />
+                <IconEdit />
                 이름 변경
               </S.SettingButton>
               <S.SettingButton onClick={setDeleteFolderModal}>
-                <img src={DELETE} alt='삭제하기' />
+                <IconDelete />
                 삭제
               </S.SettingButton>
             </>

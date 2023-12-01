@@ -45,6 +45,6 @@ export const FolderDescription = styled.span`
   font-weight: 400;
 `;
 
-export const Check = styled.img`
+export const Check = styled.div`
   margin-left: auto;
 `;

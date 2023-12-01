@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { onTablet, onPc } from '@/styles/mediaQuery';
 import { COLORS } from '@/styles/palette';
 import { zIndexStyle } from '@/styles/zIndexStyle';
+import Image from 'next/image';
 
 export const CardContainer = styled.a`
   display: block;
@@ -80,9 +81,7 @@ export const KebabInnerButton = styled.button`
   }
 `;
 
-export const CardImg = styled.img`
-  width: 100%;
-  height: 100%;
+export const CardImg = styled(Image)`
   object-fit: cover;
 
   &:hover {

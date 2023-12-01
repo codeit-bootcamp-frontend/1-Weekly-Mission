@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { onPc, onTablet } from '@styles/mediaQuery';
-import { COLORS } from '@styles/palette';
+import { onPc, onTablet } from '@/styles/mediaQuery';
+import { COLORS } from '@/styles/palette';
 
 export const ContentContainer = styled.main`
   padding: 2rem 3.2rem;

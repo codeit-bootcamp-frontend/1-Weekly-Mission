@@ -2,8 +2,8 @@ import * as Modal from '../Modal.style';
 import * as S from './AddToFolder.style';
 import { useState } from 'react';
 import useRequest from '@/hooks/useRequest';
-import CHECK from '@assets/icons/check.svg';
 import { Folder } from '@/containers/Folder/components/FoldersContainer/FoldersContainer.types';
+import { IconCheck } from '@/public/svgs';
 
 interface Props {
   url: string;
@@ -43,7 +43,9 @@ function AddToFolder({ url, userId }: Props) {
                 {folder?.link?.count}개 링크
               </S.FolderDescription>
               {folder?.id === selectedFolderId && (
-                <S.Check src={CHECK} alt='선택된 폴더 표시' />
+                <S.Check>
+                  <IconCheck />
+                </S.Check>
               )}
             </S.Folder>
           </li>

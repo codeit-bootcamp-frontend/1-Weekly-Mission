@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { onTablet, onPc } from '@styles/mediaQuery';
-import { COLORS } from '@styles/palette';
-import Button from '@components/Button';
-import { zIndexStyle } from '@styles/zIndexStyle';
+import { onTablet, onPc } from '@/styles/mediaQuery';
+import { COLORS } from '@/styles/palette';
+import Button from '@/components/Button';
+import { zIndexStyle } from '@/styles/zIndexStyle';
 
 export const Container = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ export const Inner = styled.form`
   max-width: 80rem;
 `;
 
-export const Img = styled.img`
+export const Img = styled.div`
   position: absolute;
   left: 1.2rem;
 `;

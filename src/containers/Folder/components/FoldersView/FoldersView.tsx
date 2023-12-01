@@ -1,9 +1,8 @@
 import * as S from './FoldersView.style';
-import useModal from '@hooks/useModal';
-import ADD_COLOR from '@assets/icons/add-color.svg';
-import ADD_WHITE from '@assets/icons/add-white.svg';
+import useModal from '@/hooks/useModal';
 import { Folder } from '../FoldersContainer/FoldersContainer.types';
-import ModalPortals from '@components/Modal/ModalPortals';
+import ModalPortals from '@/components/Modal/ModalPortals';
+import { IconAddColor, IconAddWhite } from '@/public/svgs';
 
 interface Props {
   folders?: Folder[];
@@ -48,8 +47,12 @@ function FoldersView({
           </S.Folders>
           <S.AddFolderButton type='button' onClick={setNewFolderModal}>
             폴더 추가
-            <S.AddColor src={ADD_COLOR} alt='추가하기' />
-            <S.AddWhite src={ADD_WHITE} alt='추가하기' />
+            <S.AddColor>
+              <IconAddColor />
+            </S.AddColor>
+            <S.AddWhite>
+              <IconAddWhite />
+            </S.AddWhite>
           </S.AddFolderButton>
         </S.Container>
       )}

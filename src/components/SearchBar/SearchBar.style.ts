@@ -44,7 +44,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Icon = styled.img`
+export const Icon = styled.div`
   position: absolute;
   top: 50%;
   left: 1.8rem;

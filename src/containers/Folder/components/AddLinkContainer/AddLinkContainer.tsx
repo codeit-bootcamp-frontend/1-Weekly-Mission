@@ -1,8 +1,8 @@
 import * as S from './AddLinkContainer.style';
 import { useState } from 'react';
-import useModal from '@hooks/useModal';
-import LINK from '@assets/icons/link.svg';
-import ModalPortals from '@components/Modal/ModalPortals';
+import useModal from '@/hooks/useModal';
+import ModalPortals from '@/components/Modal/ModalPortals';
+import { IconLink } from '@/public/svgs';
 
 interface Props {
   userId: number;
@@ -23,7 +23,9 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
     <>
       <S.Container ref={addLinkRef}>
         <S.Inner>
-          <S.Img src={LINK} alt='링크 아이콘' />
+          <S.Img>
+            <IconLink />
+          </S.Img>
           <S.Input
             placeholder='링크를 추가해 보세요'
             value={url}
@@ -40,7 +42,9 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
       {float && (
         <S.FloatContainer ref={addLinkRef}>
           <S.Inner>
-            <S.Img src={LINK} alt='링크 아이콘' />
+            <S.Img>
+              <IconLink />
+            </S.Img>
             <S.Input
               placeholder='링크를 추가해 보세요'
               value={url}

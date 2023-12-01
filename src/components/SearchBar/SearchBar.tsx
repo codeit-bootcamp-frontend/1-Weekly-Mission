@@ -1,12 +1,14 @@
 import * as S from './SearchBar.style';
 import { ChangeEvent, SyntheticEvent, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import SEARCH_ICON from '@assets/icons/search.svg';
-import CLOSE from '@assets/icons/close.svg';
+import { useRouter } from 'next/router';
+import { IconClose, IconSearch } from '@/public/svgs';
 
 function SearchBar() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initialKeyword = searchParams.get('keyword') ?? '';
+  const router = useRouter();
+  const initialKeyword = Array.isArray(router.query.keyword)
+    ? router.query.keyword[0]
+    : router.query.keyword;
+  const initialQuery = router.query;
   const [keyword, setKeyword] = useState(initialKeyword ?? '');
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -14,14 +16,19 @@ function SearchBar() {
 
   const onSearch = (e: SyntheticEvent) => {
     e.preventDefault();
-    searchParams.set('keyword', keyword);
-    setSearchParams(searchParams);
+
+    router.push({
+      pathname: router.pathname,
+      query: { ...initialQuery, keyword },
+    });
   };
 
   const onReset = () => {
     setKeyword('');
-    searchParams.set('keyword', '');
-    setSearchParams(searchParams);
+    router.push({
+      pathname: router.pathname,
+      query: { ...initialQuery, keyword: '' },
+    });
   };
 
   return (
@@ -31,10 +38,12 @@ function SearchBar() {
         onChange={onChange}
         value={keyword}
       />
-      <S.Icon src={SEARCH_ICON} alt='검색 아이콘' />
+      <S.Icon>
+        <IconSearch />
+      </S.Icon>
       {keyword && (
         <S.Reset type='button' onClick={onReset}>
-          <img src={CLOSE} />
+          <IconClose />
         </S.Reset>
       )}
     </S.Form>

@@ -4,9 +4,7 @@ import { ReactNode, useEffect } from 'react';
 import CopyToClipboard from '@/components/Toast/CopyToClipboard';
 import ToastPortals from '@/components/Toast/ToastPortals';
 import useToast from '@/hooks/useToast';
-import KAKAO from '@assets/icons/kakaotalk-large.svg';
-import FACEBOOK from '@assets/icons/facebook-large.svg';
-import SHARE_LINK from '@assets/icons/share-link.svg';
+import { IconFacebook, IconKakaotalk, IconShareLink } from '@/public/svgs';
 
 declare global {
   interface Window {
@@ -79,25 +77,13 @@ function Share({ folderName, folderId, userId }: Props) {
         <Modal.Description>{folderName}</Modal.Description>
       </Modal.Header>
       <S.ShareContainer>
-        <ShareBox
-          imgSrc={KAKAO}
-          imgAlt='카카오톡으로 공유하기'
-          onClick={shareToKakao}
-        >
+        <ShareBox icon={IconKakaotalk} onClick={shareToKakao}>
           카카오톡
         </ShareBox>
-        <ShareBox
-          imgSrc={FACEBOOK}
-          imgAlt='페이스북으로 공유하기'
-          onClick={shareToFacebook}
-        >
+        <ShareBox icon={IconFacebook} onClick={shareToFacebook}>
           페이스북
         </ShareBox>
-        <ShareBox
-          imgSrc={SHARE_LINK}
-          imgAlt='링크 주소 복사하기'
-          onClick={copyLinkClipBoard}
-        >
+        <ShareBox icon={IconShareLink} onClick={copyLinkClipBoard}>
           링크 복사
         </ShareBox>
       </S.ShareContainer>
@@ -112,17 +98,14 @@ export default Share;
 
 interface ShareBoxProps {
   children: ReactNode;
-  imgSrc: string;
-  imgAlt: string;
+  icon: JSX.Element;
   onClick: () => void;
 }
 
-function ShareBox({ children, imgSrc, imgAlt, onClick }: ShareBoxProps) {
+function ShareBox({ children, icon, onClick }: ShareBoxProps) {
   return (
     <S.Share>
-      <button onClick={() => onClick()}>
-        <img src={imgSrc} alt={imgAlt} />
-      </button>
+      <button onClick={() => onClick()}>{icon}</button>
       <S.ShareText>{children}</S.ShareText>
     </S.Share>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useRequest from '@hooks/useRequest';
+import useRequest from '@/hooks/useRequest';
 import FoldersView from '../FoldersView';
 import InfoContainer from '../InfoContainer';
 import { Folder } from './FoldersContainer.types';

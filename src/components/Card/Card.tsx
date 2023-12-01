@@ -3,10 +3,10 @@ import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import TimeAgo from 'react-timeago';
 import useModal, { ModalsKey } from '@/hooks/useModal';
 import { Link } from '@/containers/Folder/Folder.types';
-import DEFAULT_IMAGE from '@assets/images/default-link-img.svg';
-import STAR from '@assets/icons/star.svg';
-import KEBAB from '@assets/icons/kebab.svg';
 import ModalPortals from '@/components/Modal/ModalPortals';
+import { IconKebab, IconStar } from '@/public/svgs';
+
+const DEFAULT_IMAGE_SRC = '/images/default-link-img.svg';
 
 interface Props {
   data: Link;
@@ -75,18 +75,19 @@ function Card({ data, userId }: Props) {
       <S.CardContainer href={url} target='_blank' rel='noreferrer noopener'>
         <S.CardImgContainer>
           <S.CardImg
-            src={imageSource ?? image_source ?? DEFAULT_IMAGE}
+            src={imageSource ?? image_source ?? DEFAULT_IMAGE_SRC}
             alt='링크 이미지'
+            fill
           />
           <S.StarButton type='button'>
-            <img src={STAR} alt='즐겨찾기 버튼' />
+            <IconStar />
           </S.StarButton>
         </S.CardImgContainer>
         <S.CardTextContainer>
           <S.TimeAgo>
             <TimeAgo date={createdDate} />
             <S.KebabButton type='button' onClick={toggleKebab} ref={kebabRef}>
-              <img src={KEBAB} alt='케밥 버튼' />
+              <IconKebab />
             </S.KebabButton>
             {kebab && <KebabPopup setKebabModal={setKebabModal} />}
           </S.TimeAgo>

@@ -1,6 +1,6 @@
 import * as Modal from '../Modal.style';
 import { ReactNode } from 'react';
-import CLOSE from '@assets/icons/close.svg';
+import { IconClose } from '@/public/svgs';
 
 interface Props {
   children: ReactNode;
@@ -12,7 +12,7 @@ function Layout({ children, closeModal }: Props) {
     <Modal.DimContainer onClick={closeModal}>
       <Modal.ModalContainer onClick={(e) => e.stopPropagation()}>
         <Modal.Close onClick={closeModal}>
-          <img src={CLOSE} alt='닫기' />
+          <IconClose />
         </Modal.Close>
         {children}
       </Modal.ModalContainer>
