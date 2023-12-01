@@ -31,14 +31,18 @@ export default function FolderUI(props: FolderUIProps) {
       )}
 
       <Layout footerRef={ref}>
-        <S.HeroContainer ref={props.target}>
-          <FolderHero onChangeAddLink={props.handleAddLink} addLinkValue={props.addLinkValue} />
-        </S.HeroContainer>
-        {props.isVisibleHero && (
+        {/* <S.HeroContainer ref={props.target}> */}
+        <FolderHero
+          onChangeAddLink={props.handleAddLink}
+          addLinkValue={props.addLinkValue}
+          isFixedInput={isIntersecting}
+        />
+        {/* </S.HeroContainer> */}
+        {/* {props.isVisibleHero && (
           <S.FixedHeroContainer>
             <FolderHero onChangeAddLink={props.handleAddLink} addLinkValue={props.addLinkValue} />
           </S.FixedHeroContainer>
-        )}
+        )} */}
         <S.Contents>
           <Searchbar
             keyword={props.keyword}
