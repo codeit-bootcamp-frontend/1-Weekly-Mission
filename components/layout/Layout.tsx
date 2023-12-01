@@ -1,5 +1,5 @@
 import styles from "./Layout.module.css";
-import { useEffect, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
@@ -12,6 +12,7 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 interface Props {
   children: React.ReactNode;
+  footerRef?: RefObject<HTMLDivElement>;
 }
 
 const DEFAULT_VALUE = {
@@ -22,10 +23,10 @@ const DEFAULT_VALUE = {
   created_at: "",
 };
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children, footerRef }: Props) {
   const [user, setUser] = useState<User>(DEFAULT_VALUE);
   const { isLoading, error, wrappedFunction: getUserAsyncFunc } = useFetch(getUser);
-  const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
+  // const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
 
   const handleUserData = async () => {
     const result = await getUserAsyncFunc(TEST_USER_ID);
@@ -45,7 +46,8 @@ export default function Layout({ children }: Props) {
     <section className={styles.container}>
       <Header user={user} isLoading={isLoading} />
       <section className={styles.body}>{children}</section>
-      <Footer ref={ref} isIntersecting={isIntersecting} />
+      {/* <Footer ref={ref} isIntersecting={isIntersecting} /> */}
+      <Footer ref={footerRef} />
     </section>
   );
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import styles from "./Footer.module.css";
-import { ForwardedRef, forwardRef } from "react";
+import { forwardRef } from "react";
 
 const SNS_INFO = [
   {
@@ -23,13 +23,13 @@ const SNS_INFO = [
   },
 ];
 
-interface FooterProps {
-  isIntersecting: boolean;
-}
+/** ref 타입에러 템플릿 코드 확인하여 해결
+ * 아래 주석은 기존 props와 ref를 동시에 받았을 때 적용했던 타입
+ */
+// const Footer = forwardRef(({ isIntersecting }: FooterProps, ref: ForwardedRef<HTMLDivElement>) => {...}
 
-const Footer = forwardRef(({ isIntersecting }: FooterProps, ref: ForwardedRef<HTMLDivElement>) => {
+const Footer = forwardRef<HTMLDivElement>((_, ref) => {
   console.log(ref);
-  console.log(isIntersecting);
 
   return (
     <div className={styles.wrapper} ref={ref}>
