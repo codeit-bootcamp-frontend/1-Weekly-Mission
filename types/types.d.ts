@@ -11,17 +11,7 @@ export interface LinkInfo {
   folder_id: number;
 }
 
-export interface FolderInfo {
-  folder: {
-    id: number;
-    name: string;
-    owner: {
-      id: number;
-      name: string;
-      profileImageSource: string;
-    };
-  };
-}
+export interface FolderInfo {}
 
 export interface FolderName {
   id: number;
@@ -35,6 +25,20 @@ export interface FolderName {
 
 export interface ChildrenProps {
   children?: ReactNode;
+}
+
+export interface SampleFolder {
+  folder: {
+    id: number;
+    name: string;
+    owner: {
+      id: number;
+      name: string;
+      profileImageSource: string;
+    };
+    links: SampleLinks[];
+    count: number;
+  };
 }
 
 export interface SampleLinks {

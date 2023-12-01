@@ -3,31 +3,32 @@ import Header from "../../components/header/Header";
 import { getSampleFolder } from "../api/user";
 import styles from "./sharedpage.module.css";
 import ShareCard from "../../components/shareCard/ShareCard";
-import { FolderInfo, SampleLinks } from "../../types/types";
+import { FolderInfo, SampleFolder, SampleLinks } from "../../types/types";
 import SearchBar from "@/components/searchBar/SearchBar";
+import axios from "axios";
+import { BASE_URL, SAMPLE_FOLDER_ENDPOINT } from "../api/services/config";
 
-export default function SharedPage() {
-  const [links, setLinks] = useState<SampleLinks[]>([]);
-  const [folderInfo, setFolderInfo] = useState<FolderInfo>();
+interface SharedPageProps {
+  sampleFolder: SampleFolder;
+}
 
-  const fetchSampleLinks = async () => {
-    const response = await getSampleFolder();
-    const link = response?.folder.links;
-    setLinks(link);
+export const getStaticProps = async () => {
+  const sampleFolderResponse = await axios.get(
+    `${BASE_URL}${SAMPLE_FOLDER_ENDPOINT}`
+  );
+  const sampleFolder: SampleFolder = sampleFolderResponse.data;
+
+  return {
+    props: {
+      sampleFolder,
+    },
   };
+};
 
-  useEffect(() => {
-    fetchSampleLinks();
-  }, []);
-
-  const fetchSampleFolder = async () => {
-    const response = await getSampleFolder();
-    setFolderInfo(response);
-  };
-
-  useEffect(() => {
-    fetchSampleFolder();
-  }, []);
+export default function SharedPage({ sampleFolder }: SharedPageProps) {
+  console.log(sampleFolder);
+  const links = sampleFolder.folder.links;
+  const folderInfo = sampleFolder;
 
   return (
     <>

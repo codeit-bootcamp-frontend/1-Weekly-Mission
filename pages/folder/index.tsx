@@ -50,7 +50,7 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
 
   const [observeHeader, unobserveHeader] = useIntersectionObserver(
     () => setIsAddLinkInputVisible(true),
-    { threshold: 0.5 }
+    { threshold: 0 }
   );
   useEffect(() => {
     const headerElement = headerRef.current;

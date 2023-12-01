@@ -1,12 +1,12 @@
 import styles from "./header.module.css";
-import { FolderInfo } from "../../types/types";
+import { FolderInfo, SampleFolder } from "../../types/types";
 import Image from "next/image";
 
-interface FolderInfoProps {
-  folderInfo: FolderInfo | undefined;
+interface HeaderProps {
+  folderInfo: SampleFolder;
 }
 
-export default function Header({ folderInfo }: FolderInfoProps) {
+export default function Header({ folderInfo }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.userInfoBox}>
