@@ -1,6 +1,6 @@
 import styles from "./Card.module.css";
 
-// import Star from "components/icon/Star";
+import Star from "@/public/assets/star.svg";
 import KebabMenu from "../Kebabmenu";
 import { getCreatedDate, getDiffTime } from "@/common/utils/dateUtils";
 import { LinkData, SampleLinkData } from "@/types/folder";
@@ -21,11 +21,12 @@ export default function CardItem({ link }: CardItemProps) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        {/* <div className={styles["card-image"]}> */}
-        <img src={`${imageUrl}`} alt="logo" className={cardStyle} />
-        {/* </div> */}
-        {/* <S.CardImage src={imageSourceUrl ? imageSourceUrl : logo} $isImageurl={!!imageSourceUrl} /> */}
-        <div className={styles.liked}>{/* <Star /> */}</div>
+        <div className={styles["card-image"]}>
+          <img src={imageUrl} alt="logo" className={cardStyle} />
+        </div>
+        <div className={styles.liked}>
+          <Star />
+        </div>
       </div>
       <div className={styles["card-info"]}>
         <div className={styles.info}>
