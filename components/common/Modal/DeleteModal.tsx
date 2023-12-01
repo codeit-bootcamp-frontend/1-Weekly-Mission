@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ModalFrame from './ModalFrame';
+import Button from '../Button';
 
 interface Props {
   title: string;
@@ -12,27 +13,13 @@ function DeleteModal({ title, data = '', onClickClose }: Props) {
     <ModalFrame onClickClose={onClickClose}>
       <Title>{title}</Title>
       <Data>{data}</Data>
-      <RedButton>삭제하기</RedButton>
+      <Button type="delete">삭제하기</Button>
     </ModalFrame>
   );
 }
 
 export default DeleteModal;
 
-const RedButton = styled.button`
-  width: 280px;
-  padding: 16px 20px;
-  margin-top: 24px;
-  color: white;
-  font-size: 1.6rem;
-  font-weight: 600;
-  background-color: var(--red);
-  border-radius: 8px;
-  border: none;
-  &:hover {
-    cursor: pointer;
-  }
-`;
 const Title = styled.div`
   font-size: 2rem;
   font-weight: 700;

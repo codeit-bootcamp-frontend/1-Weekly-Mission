@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ModalFrame from './ModalFrame';
-import BlueBtn from '../Button/BlueBtn';
+import Button from '../Button';
 
 interface Props {
   title: string;
@@ -13,7 +13,7 @@ function InputModal({ title, btn, onClickClose }: Props) {
     <ModalFrame onClickClose={onClickClose}>
       <Title>{title}</Title>
       <Input placeholder="내용 입력" />
-      <BlueBtn type="modal">{btn}</BlueBtn>
+      <Button type="modal">{btn}</Button>
     </ModalFrame>
   );
 }

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logoImg from '@/public/assets/images/logo.svg';
 import Profile from '@/components/common/Profile';
-import LoginBtn from '@/components/common/Button/LoginBtn';
+import Button from '@/components/common/Button';
 import useGetUser from '@/hooks/useGetUser';
 import useGetSampleUser from '@/hooks/useGetSampleUser';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
@@ -23,7 +23,7 @@ function Header({ page = '' }: Props) {
         <Link href="/" target="_blank">
           <LogoImg src={logoImg} alt="Linkbrary 메인 페이지 바로가기" width={133} height={24} />
         </Link>
-        {userData ? <Profile user={userData} /> : <LoginBtn />}
+        {userData ? <Profile user={userData} /> : <Button type="login">로그인</Button>}
       </Container>
     </Outer>
   );

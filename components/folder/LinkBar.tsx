@@ -1,6 +1,6 @@
 import { useState, useRef, FormEvent } from 'react';
 import styled from 'styled-components';
-import BlueBtn from '@/components/common/Button/BlueBtn';
+import Button from '@/components/common/Button';
 import ModalPortal from '@/components/common/Modal/ModalPortal';
 import AddToFolderModal from '@/components/common/Modal/AddToFolderModal';
 import useModal from '@/hooks/useModal';
@@ -21,7 +21,7 @@ function LinkBar() {
     <>
       <Container onSubmit={handleLinkAdd}>
         <Input ref={input} placeholder="링크를 추가해 보세요" />
-        <BlueBtn type="linkAdd">추가하기</BlueBtn>
+        <Button type="linkAdd">추가하기</Button>
       </Container>
       {isOpen && (
         <ModalPortal>

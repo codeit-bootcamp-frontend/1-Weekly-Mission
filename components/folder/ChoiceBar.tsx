@@ -28,7 +28,6 @@ function ChoiceBar({ folders, selectedFolderId }: Props) {
   function handleChoiceClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
     const el = target?.closest('div')?.children[1];
-    console.log(el);
     setModal(el?.textContent || '');
     handleModalOpen();
   }

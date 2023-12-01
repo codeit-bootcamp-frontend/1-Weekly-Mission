@@ -3,21 +3,22 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  type: 'linkAdd' | 'login' | 'modal';
+  type: 'linkAdd' | 'login' | 'modal' | 'delete';
   children: ReactNode;
 }
 
-function BlueBtn({ type, children }: Props) {
+function Button({ type, children }: Props) {
   return (
     <>
       {type === 'linkAdd' && <LinkAddBtn>{children}</LinkAddBtn>}
       {type === 'login' && <LoginBtn>{children}</LoginBtn>}
       {type === 'modal' && <ModalBtn>{children}</ModalBtn>}
+      {type === 'delete' && <DeleteBtn>{children}</DeleteBtn>}
     </>
   );
 }
 
-export default BlueBtn;
+export default Button;
 
 const BlueGrd = styled.button`
   display: flex;
@@ -30,6 +31,10 @@ const BlueGrd = styled.button`
   color: var(--grey-light);
   font-weight: 600;
   text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const LinkAddBtn = styled(BlueGrd)`
   position: absolute;
@@ -38,10 +43,6 @@ const LinkAddBtn = styled(BlueGrd)`
   padding: 10px 16px;
   width: 81px;
   font-size: 1.4rem;
-
-  &:hover {
-    cursor: pointer;
-  }
 
   @media (max-width: ${DEVICE_SIZE.mobile}) {
     top: 8px;
@@ -69,6 +70,17 @@ const ModalBtn = styled(BlueGrd)`
   padding: 16px 20px;
   margin-top: 15px;
   font-size: 1.6rem;
+`;
+const DeleteBtn = styled.button`
+  width: 280px;
+  padding: 16px 20px;
+  margin-top: 24px;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: var(--red);
+  border-radius: 8px;
+  border: none;
   &:hover {
     cursor: pointer;
   }

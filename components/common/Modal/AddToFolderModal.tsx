@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import useGetLinkCount from '@/hooks/useGetLinkCount';
 import ModalFrame from './ModalFrame';
-import BlueBtn from '../Button/BlueBtn';
+import Button from '../Button';
 import LinkCountItem from '../LinkCountItem';
 
 interface Props {
@@ -17,7 +17,7 @@ function AddToFolderModal({ url, onClickClose }: Props) {
       <Title>폴더에 추가</Title>
       <Url>{url}</Url>
       <Box>{linkCountData && linkCountData.map((data) => <LinkCountItem key={data.name} item={data} />)}</Box>
-      <BlueBtn type="modal">추가하기</BlueBtn>
+      <Button type="modal">추가하기</Button>
     </ModalFrame>
   );
 }
