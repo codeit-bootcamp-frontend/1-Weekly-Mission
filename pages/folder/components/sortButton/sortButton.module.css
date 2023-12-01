@@ -1,0 +1,25 @@
+.sortButton {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+  font-size: 16px;
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.clicked {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+  font-size: 16px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+@media (max-width: 767px) {
+  .sortButton {
+    padding: 6px 10px;
+  }
+}

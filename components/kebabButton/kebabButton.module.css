@@ -1,0 +1,16 @@
+.icon {
+  color: var(--color-gray-100);
+  width: 21px;
+  height: 17px;
+}
+
+.button {
+  border: none;
+  background-color: var(--color-white);
+  cursor: pointer;
+  position: relative;
+}
+
+.container {
+  position: relative;
+}

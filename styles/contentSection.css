@@ -1,0 +1,28 @@
+.content-imagebox {
+  grid-area: image;
+}
+
+.content-image {
+  width: 550px;
+  height: 450px;
+  flex-shrink: 0;
+}
+
+.content-text-title {
+  width: 275px;
+  grid-area: title;
+  align-items: start;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+
+.content-text-normal {
+  grid-area: description;
+  width: 270px;
+  color: #6b6b6b;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+}

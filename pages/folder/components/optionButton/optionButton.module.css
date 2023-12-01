@@ -1,0 +1,8 @@
+.optionIconContainer {
+  display: flex;
+  align-items: center;
+  color: var(--color-gray-40);
+  font-size: 14px;
+  gap: 4px;
+  cursor: pointer;
+}

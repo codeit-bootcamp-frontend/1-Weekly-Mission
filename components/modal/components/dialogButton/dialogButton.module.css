@@ -1,0 +1,22 @@
+.dialogButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  padding: 16px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  border: none;
+  color: #f5f5f5;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addButton {
+  background: var(--gra-purpleblue-to-skyblue);
+}
+
+.deleteButton {
+  background: #ff5b56;
+}
