@@ -12,7 +12,7 @@ import { SelectedFolderId } from "folder/type";
 import { useSearchLink } from "link/util-search-link/useSearchLink";
 import { useIntersectionObserver } from "sharing/util/useIntersectionObserver";
 
-export const FolderPage = () => {
+const FolderPage = () => {
   const { data: folders } = useGetFolders();
   const [selectedFolderId, setSelectedFolderId] =
     useState<SelectedFolderId>(ALL_LINKS_ID);
@@ -44,3 +44,5 @@ export const FolderPage = () => {
     </Layout>
   );
 };
+
+export default FolderPage;
