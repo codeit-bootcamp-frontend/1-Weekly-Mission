@@ -1,13 +1,13 @@
 import "../../styles/reset.css";
-import HeaderSpace from "../../components/HeaderSpace";
-import * as S from "../folder/FolderStyled";
-import FooterSpace from "../../components/FooterSpace";
-import { Card, SampleCard } from "../../components/Card";
-import SearchBar from "../../components/SearchBar";
-import Nav from "../../components/Nav";
-import { getFolderData, getUserData } from "../../api";
+import HeaderSpace from "../components/HeaderSpace";
+import * as S from "../styles/FolderStyled";
+import FooterSpace from "../components/FooterSpace";
+import { SampleCard } from "../components/Card";
+import SearchBar from "../components/SearchBar";
+import Nav from "../components/Nav";
+import { getFolderData, getUserData } from "../api";
 import { useState, useEffect } from "react";
-import { SampleLinkData } from "../folder/type";
+import { SampleLinkData } from "../type";
 
 function Shared() {
   const [items, setItems] = useState([]); //메인의 링크들 렌더링할 때

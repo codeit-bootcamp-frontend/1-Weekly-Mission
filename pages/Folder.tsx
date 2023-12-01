@@ -4,7 +4,7 @@ import { Card } from "../components/Card";
 import FooterSpace from "../components/FooterSpace";
 import Nav from "../components/Nav";
 
-import * as S from "./FolderStyled";
+import * as S from "../styles/FolderStyled";
 import { useState, useEffect, useRef } from "react";
 import { getSelectItems, getUserLogin, getRenderLinks } from "../api";
 
@@ -13,7 +13,7 @@ import TabButton from "../components/TabButton";
 import { ModalAddFolder } from "../components/modal/Modal";
 import LinkInfo from "../components/LinkInfo";
 
-import { FolderLinkData } from "./type";
+import { FolderLinkData } from "../type";
 
 function Folder() {
   const [selectItems, setSelectItem] = useState([]);

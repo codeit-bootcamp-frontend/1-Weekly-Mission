@@ -2,7 +2,7 @@ import "../styles/reset.css";
 import logo from "../images/logo.svg";
 import styled from "styled-components";
 
-import { UserLoginData } from "../pages/folder/type";
+import { UserLoginData } from "../type";
 function Nav({ lists }: UserLoginData) {
   const { userEmail, userImage } = lists;
 

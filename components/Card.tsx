@@ -4,7 +4,6 @@ import noImage from "../images/noimage.svg";
 import star from "../images/star.svg";
 import KebabButton from "../components/Kebab";
 import { timeForToday, formatDate } from "../date";
-import { SampleLinkData } from "pages/folder/type";
 
 export function Card({ item, openMAF }: any) {
   const { url, imageSource = noImage, title, createdAt, description } = item;
