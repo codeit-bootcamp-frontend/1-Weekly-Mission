@@ -9,16 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.32",
+    "babel-plugin-styled-components": "^2.1.4",
+    "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18",
-    "next": "13.5.6"
+    "react-modal": "^3.16.1",
+    "styled-components": "^6.1.1",
+    "styled-reset": "^4.5.1"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "13.5.6"
+    "eslint-config-next": "13.5.6",
+    "typescript": "^5"
   }
 }
