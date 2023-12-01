@@ -24,7 +24,8 @@ const GlobalStyles = createGlobalStyle`
 }
 
 html,
-body {
+body,
+p {
   margin: 0;
   padding: 0;
   border: 0;

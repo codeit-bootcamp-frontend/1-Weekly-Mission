@@ -32,7 +32,7 @@ const Url = styled.div`
   margin-bottom: 24px;
   color: var(--gray-60);
   font-size: 1.4rem;
-  line-height: 2.2rem; /* 157.143% */
+  line-height: 2.2rem;
 `;
 const Box = styled.div`
   width: 100%;

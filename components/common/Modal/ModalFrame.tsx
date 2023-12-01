@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import closeBtn from '@/public/assets/images/close.svg';
 import useNotScroll from '@/hooks/useNotScroll';
 import { ReactNode } from 'react';
+import Image from 'next/image';
 
 interface Props {
   children: ReactNode;
@@ -47,7 +48,7 @@ const Body = styled.div`
   border: 1px solid var(--stroke-light);
   background: white;
 `;
-const CloseIcon = styled.img`
+const CloseIcon = styled(Image)`
   position: absolute;
   top: 16px;
   right: 16px;

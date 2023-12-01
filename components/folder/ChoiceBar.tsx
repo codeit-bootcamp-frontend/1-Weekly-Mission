@@ -28,6 +28,7 @@ function ChoiceBar({ folders, selectedFolderId }: Props) {
   function handleChoiceClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
     const el = target?.closest('div')?.children[1];
+    console.log(el);
     setModal(el?.textContent || '');
     handleModalOpen();
   }
@@ -70,7 +71,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Text = styled.div`
+const Text = styled.p`
   color: var(--gray-60);
   font-size: 1.4rem;
   font-weight: 600;

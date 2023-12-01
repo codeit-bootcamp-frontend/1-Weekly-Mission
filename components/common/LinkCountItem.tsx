@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import checkIcon from '@/public/assets/images/folder_check.svg';
+import Image from 'next/image';
 
 interface Props {
   item: {
@@ -22,7 +23,7 @@ function LinkCountItem({ item }: Props) {
         <FolderTitle>{item.name}</FolderTitle>
         <Count>{`${item.count}개 링크`}</Count>
       </Wrapper>
-      {check && <img src={checkIcon} alt="폴더 선택 표시 아이콘" />}
+      {check && <Image src={checkIcon} alt="폴더 선택 표시 아이콘" />}
     </Container>
   );
 }
@@ -45,6 +46,7 @@ const Container = styled.div`
   padding: 8px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   &:hover {
     cursor: pointer;
     ${checkFolder};

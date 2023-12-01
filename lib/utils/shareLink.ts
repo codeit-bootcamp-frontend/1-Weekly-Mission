@@ -11,9 +11,9 @@ declare global {
  * @param {*} url 공유할 링크의 url
  */
 export function shareKakaotalk(title: string, url: string): void {
-  if (!window.Kakao.isInitialized()) window.Kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
+  if (!window.Kakao.isInitialized()) window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
   window.Kakao.Share.sendCustom({
-    templateId: Number(process.env.REACT_APP_KAKAO_MSG_KEY),
+    templateId: Number(process.env.NEXT_PUBLIC_KAKAO_MSG_KEY),
     templateArgs: {
       THUMB: 'https://www.ilbe.com/files/attach/new/20150610/12247466/4718962251/5976846550/9300e213bbb7ae4e6e438fd0537f2c48.png',
       TITLE: `${title} | Linkbrary`,

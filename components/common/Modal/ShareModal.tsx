@@ -3,6 +3,7 @@ import ModalFrame from './ModalFrame';
 import { SHARE_LIST } from '@/constants/default';
 import { shareKakaotalk, shareFacebook, copyLink } from '@/lib/utils/shareLink';
 import { MouseEvent } from 'react';
+import Image from 'next/image';
 
 interface Props {
   data: string;
@@ -46,7 +47,7 @@ const Title = styled.div`
 const FolderName = styled.div`
   color: var(--gray-60);
   font-size: 1.4rem;
-  line-height: 2.2rem; /* 157.143% */
+  line-height: 2.2rem;
 `;
 const Box = styled.div`
   margin-top: 24px;
@@ -59,7 +60,7 @@ const Item = styled.div`
   gap: 10px;
   align-items: center;
 `;
-const Icon = styled.img`
+const Icon = styled(Image)`
   &:hover {
     cursor: pointer;
   }
