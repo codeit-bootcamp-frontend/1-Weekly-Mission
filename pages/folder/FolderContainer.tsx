@@ -81,6 +81,16 @@ export default function Folder() {
     setAddLinkValue(link);
   };
 
+  /**
+   * Observer 수정방향
+   * useIntersect 훅 만들기
+   * Layout에서 훅 호출해서 prop으로 footer에 넘겨주기(ref, intersecting)
+   * footer intersect 조건을 AddLink 컴포넌트에 연결
+   * 여기서 AddLink란 하단에 위치할 AddLink (fixed)
+   * AddLink에 ref를 연결해서 inIntersection 조건에 따라
+   * AddLink 보여주기
+   */
+
   useEffect(() => {
     handleLoadedData();
 

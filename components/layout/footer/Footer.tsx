@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+
 import styles from "./Footer.module.css";
+import { ForwardedRef, forwardRef } from "react";
 
 const SNS_INFO = [
   {
@@ -21,9 +23,16 @@ const SNS_INFO = [
   },
 ];
 
-export default function Footer() {
+interface FooterProps {
+  isIntersecting: boolean;
+}
+
+const Footer = forwardRef(({ isIntersecting }: FooterProps, ref: ForwardedRef<HTMLDivElement>) => {
+  console.log(ref);
+  console.log(isIntersecting);
+
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} ref={ref}>
       <div className={styles.contact}>
         <div className={styles.rights}>©codeit - 2023</div>
         <div className={styles.policy}>
@@ -32,12 +41,7 @@ export default function Footer() {
         </div>
         <div className={styles.links}>
           {SNS_INFO.map((sns) => (
-            <Link
-              href={sns.link}
-              target="_blank"
-              rel="noreferrer"
-              key={sns.name}
-            >
+            <Link href={sns.link} target="_blank" rel="noreferrer" key={sns.name}>
               <Image
                 src={`/sns/icons_${sns.name}-fill.svg`}
                 alt={sns.name}
@@ -50,4 +54,6 @@ export default function Footer() {
       </div>
     </div>
   );
-}
+});
+
+export default Footer;
