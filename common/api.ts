@@ -12,7 +12,7 @@ export async function getUser(userId: number) {
 }
 
 export async function getFolder() {
-  const res = await fetch(`${DOMAIN_URL}$/api/sample/folder`, {
+  const res = await fetch(`${DOMAIN_URL}/api/sample/folder`, {
     headers,
   });
 
@@ -32,12 +32,9 @@ export async function getAllFolders(userId: number) {
 export async function getAllLinks(userId: number, folderId = "") {
   const QUERY_STRING = folderId ? `?folderId=${folderId}` : "";
 
-  const res = await fetch(
-    `${DOMAIN_URL}/api/users/${userId}/links${QUERY_STRING}`,
-    {
-      headers,
-    }
-  );
+  const res = await fetch(`${DOMAIN_URL}/api/users/${userId}/links${QUERY_STRING}`, {
+    headers,
+  });
 
   const data = await res.json();
   return data;
