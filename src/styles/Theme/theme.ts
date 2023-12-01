@@ -7,6 +7,7 @@ const color = {
   blueBackground: "#edf7ff",
   primary: "#6d6afe",
   gray: "#f5f5f5",
+  error: "#ff5b56",
 };
 
 const fontWeight = {
