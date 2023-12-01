@@ -10,7 +10,7 @@ import Image from "next/image";
 export default function Nav() {
   const [userProfile, setUserProfile] = useState<SampleUser[]>([]);
   const router = useRouter();
-  const isFolderPage = router.pathname === "/folder/FolderPage";
+  const isFolderPage = router.pathname === "/folder";
 
   const fetchUserProfile = async () => {
     const response = await getSampleUser();

@@ -11,7 +11,15 @@
 }
 
 .gnbFolder {
-  position: static;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+  padding: 20px 200px;
+  background-color: var(--backgroundcolor-skyblue-10);
 }
 
 .loginButton {
