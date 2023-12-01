@@ -1,8 +1,7 @@
-
-import { axiosInstance } from 'sharing/util';
-import { FolderRawData } from '../type';
-import { useAsync } from '@/pages/sharing/util/useAsync';
-import { mapFoldersData } from '../util-map/mapFoldersData';
+import { FolderRawData } from "folder/type";
+import { mapFoldersData } from "folder/util-map/mapFoldersData";
+import { axiosInstance } from "sharing/util";
+import { useAsync } from "sharing/util";
 
 export const useGetFolders = () => {
   const getFolders = () => axiosInstance.get<{ data: FolderRawData[] }>("users/1/folders");
