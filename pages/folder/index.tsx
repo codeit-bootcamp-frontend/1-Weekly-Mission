@@ -1,6 +1,6 @@
 import styles from "./folderPage.module.css";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
-import { getUserFolders, getUserLinks } from "../api/folder";
+import { getUserLinks } from "../api/folder";
 import AddLinkInput from "./components/addLinkInput/AddLinkInput";
 import SearchBar from "@/components/searchBar/SearchBar";
 import Card from "@/components/card/Card";
@@ -16,10 +16,22 @@ import useModal from "@/hooks/useModal";
 import { FolderName, LinkInfo } from "@/types/types";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import Image from "next/image";
+import axios from "axios";
+import { BASE_URL, USERS_ENDPOINT } from "../api/services/config";
 
-function FolderPage() {
+export async function getStaticProps() {
+  const res = await axios.get(`${BASE_URL}${USERS_ENDPOINT}/1/folders`);
+  const folders: FolderName[] = res.data.data;
+
+  return {
+    props: {
+      folders,
+    },
+  };
+}
+
+function FolderPage({ folders }: { folders: FolderName[] }) {
   const [links, setLinks] = useState<LinkInfo[]>([]);
-  const [folders, setFolders] = useState<FolderName[]>([]);
   const [folderId, setFolderId] = useState<string | number>(ALL_LINK_NAME);
   const [filteredLinks, setFilteredLinks] = useState<LinkInfo[]>([]);
   const [keyword, setKeyword] = useState("");
@@ -70,22 +82,12 @@ function FolderPage() {
       ? ALL_LINK_NAME
       : folders?.find(({ id }) => id === folderId)?.name;
 
-  const fetchUserFolders = async () => {
-    const result = await getUserFolders();
-    const { data } = result;
-    setFolders(data);
-  };
-
   const fetchUserLinks = async (id: string | number) => {
     const result = await getUserLinks(id);
     const { data } = result;
     setLinks(data);
     setFilteredLinks(data);
   };
-
-  useEffect(() => {
-    fetchUserFolders();
-  }, []);
 
   useEffect(() => {
     if (!folderId) return;
@@ -149,15 +151,14 @@ function FolderPage() {
                 isClicked={folderId === ALL_LINK_NAME}
                 text="전체"
               />
-              {folders &&
-                folders.map((item) => (
-                  <SortButton
-                    key={item.id}
-                    onClick={() => setFolderId(item.id)}
-                    isClicked={item.id === folderId}
-                    text={item.name}
-                  />
-                ))}
+              {folders?.map((item) => (
+                <SortButton
+                  key={item.id}
+                  onClick={() => setFolderId(item.id)}
+                  isClicked={item.id === folderId}
+                  text={item.name}
+                />
+              ))}
             </div>
             <button
               type="button"

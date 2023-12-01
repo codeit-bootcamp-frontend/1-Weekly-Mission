@@ -6,21 +6,24 @@ import { SampleUser } from "../../../types/types";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import axios from "axios";
 
-export default function Nav() {
-  const [userProfile, setUserProfile] = useState<SampleUser[]>([]);
+export async function getServerSideProps() {
+  const response = await axios.get(
+    `https://bootcamp-api.codeit.kr/api/users/1`
+  );
+  const userProfile = response?.data;
+  return {
+    props: {
+      userProfile,
+    },
+  };
+}
+
+export default function Nav({ userProfile }: any) {
   const router = useRouter();
   const isFolderPage = router.pathname === "/folder";
-
-  const fetchUserProfile = async () => {
-    const response = await getSampleUser();
-    const { data } = response;
-    setUserProfile(data);
-  };
-
-  useEffect(() => {
-    fetchUserProfile();
-  }, []);
+  console.log("userprofile", { userProfile });
 
   return (
     <div>
