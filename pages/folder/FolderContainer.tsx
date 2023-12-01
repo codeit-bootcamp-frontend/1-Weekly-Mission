@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import useFetch from "@/hooks/useFetch";
 
 import { getAllFolders, getAllLinks } from "@/common/api";
@@ -10,11 +10,6 @@ export const DEFAULT = "전체";
 const USER_ID = 1;
 
 export default function Folder() {
-  const addLinkHeroRef = useRef(null);
-  const bottomDivRef = useRef(null);
-
-  const [isVisibleHero, setIsVisibleHero] = useState(false);
-  const [isIntersect, setIsIntersect] = useState(true);
   const [links, setLinks] = useState<LinkData[]>([]);
   const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
   const [folders, setFolders] = useState<FolderData[]>([]);
@@ -81,75 +76,15 @@ export default function Folder() {
     setAddLinkValue(link);
   };
 
-  /**
-   * Observer 수정방향
-   * useIntersect 훅 만들기
-   * Layout에서 훅 호출해서 prop으로 footer에 넘겨주기(ref, intersecting)
-   * footer intersect 조건을 AddLink 컴포넌트에 연결
-   * 여기서 AddLink란 하단에 위치할 AddLink (fixed)
-   * AddLink에 ref를 연결해서 inIntersection 조건에 따라
-   * AddLink 보여주기
-   */
-
   useEffect(() => {
     handleLoadedData();
-
-    const handleObserver = (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting) {
-        if (entries[0].intersectionRatio < 1) {
-          // 검색바를 원래 위치에 고정
-          setIsVisibleHero(false);
-        }
-      } else {
-        // 검색바를 화면 최하단에 위치고정
-        setIsVisibleHero(true);
-        setIsIntersect(false);
-      }
-    };
-
-    const handleFixedObserver = (entries: IntersectionObserverEntry[]) => {
-      if (isIntersect) return; // 초기 콜백함수 실행 제어
-
-      if (entries[0].isIntersecting) {
-        if (entries[0].intersectionRatio === 1) {
-          // 검색바를 원래 위치에 고정
-          setIsVisibleHero(false);
-          setIsIntersect(false);
-        }
-      } else {
-        // 검색바를 화면 최하단에 위치고정
-        setIsVisibleHero(true);
-        setIsIntersect(true);
-      }
-    };
-
-    const observer = new IntersectionObserver(handleObserver, { threshold: 0 });
-    const observerFixedTarget = new IntersectionObserver(handleFixedObserver, {
-      threshold: 1,
-    });
-
-    if (bottomDivRef.current) {
-      observerFixedTarget.observe(bottomDivRef.current);
-    }
-
-    if (addLinkHeroRef.current) {
-      observer.observe(addLinkHeroRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-      observerFixedTarget.disconnect();
-    };
-  }, [selectedFolderId, isIntersect]);
+  }, [selectedFolderId]);
 
   if (error || errorFolder) console.log(error || errorFolder);
 
   return (
     <FolderUI
-      target={addLinkHeroRef}
-      fixedTarget={bottomDivRef}
       addLinkValue={addLinkValue}
-      isVisibleHero={isVisibleHero}
       keyword={keyword}
       selected={selected}
       isLoading={isLoading}

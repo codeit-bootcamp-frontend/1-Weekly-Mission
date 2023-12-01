@@ -69,8 +69,7 @@ export default function Share() {
       ) : (
         <>
           <S.HeroContainer>
-            {" "}
-            <Hero folder={folder} profile={profile} />{" "}
+            <Hero folder={folder} profile={profile} />
           </S.HeroContainer>
           <section>
             <S.Contents>

@@ -22,9 +22,6 @@ export default function FolderHero({
   addLinkValue,
 }: FolderHeroProps) {
   /**
-   * linkForm이 fixed인 container 새로 생성
-   * isFixedInput가 true일때는 linkForm 사라짐
-   * isFixedInput가 false일때는 linkForm 보여짐
    * AddLinkContainer 공통 컴포넌트 분리
    */
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();

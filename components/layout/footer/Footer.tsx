@@ -29,8 +29,6 @@ const SNS_INFO = [
 // const Footer = forwardRef(({ isIntersecting }: FooterProps, ref: ForwardedRef<HTMLDivElement>) => {...}
 
 const Footer = forwardRef<HTMLDivElement>((_, ref) => {
-  console.log(ref);
-
   return (
     <div className={styles.wrapper} ref={ref}>
       <div className={styles.contact}>

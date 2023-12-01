@@ -2,18 +2,6 @@ import styled from "styled-components";
 import { breakPoints } from "@/common/media";
 import AddIcon from "@/public/assets/add.svg";
 
-export const HeroContainer = styled.section`
-  text-align: center;
-  background-color: var(--color-primary-varient);
-`;
-
-export const FixedHeroContainer = styled(HeroContainer)`
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
-`;
-
 export const Contents = styled.section`
   padding: 2.5rem 2rem;
   width: 100%;

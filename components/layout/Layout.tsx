@@ -8,7 +8,6 @@ import { User } from "@/types/user";
 import useFetch from "@/hooks/useFetch";
 import { TEST_USER_ID } from "@/common/constants";
 import { getUser } from "@/common/api";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 interface Props {
   children: React.ReactNode;
@@ -26,7 +25,6 @@ const DEFAULT_VALUE = {
 export default function Layout({ children, footerRef }: Props) {
   const [user, setUser] = useState<User>(DEFAULT_VALUE);
   const { isLoading, error, wrappedFunction: getUserAsyncFunc } = useFetch(getUser);
-  // const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
 
   const handleUserData = async () => {
     const result = await getUserAsyncFunc(TEST_USER_ID);
@@ -46,7 +44,6 @@ export default function Layout({ children, footerRef }: Props) {
     <section className={styles.container}>
       <Header user={user} isLoading={isLoading} />
       <section className={styles.body}>{children}</section>
-      {/* <Footer ref={ref} isIntersecting={isIntersecting} /> */}
       <Footer ref={footerRef} />
     </section>
   );
