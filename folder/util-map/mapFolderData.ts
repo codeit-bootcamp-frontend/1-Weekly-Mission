@@ -1,6 +1,6 @@
-import { mapLinksData } from 'link/util-map';
+import { mapLinksData } from '@/link/util-map';
 import { DEFAULT_FOLDER_DATA } from './constant';
-import { SampleFolderRawData } from 'folder/type';
+import { SampleFolderRawData } from '@/folder/type';
 
 export const mapFolderData = (folder?: SampleFolderRawData) => {
   if (!folder) return DEFAULT_FOLDER_DATA;

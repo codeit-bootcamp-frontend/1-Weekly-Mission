@@ -1,11 +1,11 @@
 import styles from './InputModal.module.scss';
 import classNames from 'classnames/bind';
 import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler } from 'react';
-import { Input } from 'sharing/ui-input';
-import { Modal } from 'sharing/ui-modal';
-import { ModalContentBox } from 'sharing/ui-modal-content-box';
-import { ModalContentButton } from 'sharing/ui-modal-content-button';
-import { ModalContentTitle } from 'sharing/ui-modal-content-title';
+import { Input } from '@/sharing/ui-input';
+import { Modal } from '@/sharing/ui-modal';
+import { ModalContentBox } from '@/sharing/ui-modal-content-box';
+import { ModalContentButton } from '@/sharing/ui-modal-content-button';
+import { ModalContentTitle } from '@/sharing/ui-modal-content-title';
 
 const cx = classNames.bind(styles);
 

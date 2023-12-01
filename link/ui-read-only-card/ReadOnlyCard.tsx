@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Card } from 'sharing/ui-card';
-import { CardContent } from 'sharing/ui-card-content';
-import { CardImage } from 'sharing/ui-card-image';
+import { Card } from '@/sharing/ui-card';
+import { CardContent } from '@/sharing/ui-card-content';
+import { CardImage } from '@/sharing/ui-card-image';
 
 type ReadOnlyCardProps = {
   url: string;

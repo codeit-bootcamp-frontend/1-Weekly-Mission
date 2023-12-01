@@ -5,7 +5,7 @@ import { FolderButton } from '@/folder/ui-folder-button';
 import { IconAndTextButton } from '@/sharing/ui-icon-and-text-button';
 import { ALL_LINKS_TEXT, BUTTONS, KAKAO_SHARE_DATA, MODALS_ID } from './constant';
 import { ALL_LINKS_ID } from '@/link/data-access-link/constant';
-import { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent, useEffect, useState } from 'react';
 import { ShareModal } from '@/folder/ui-share-modal';
 import { InputModal } from '@/sharing/ui-input-modal';
 import { AlertModal } from '@/sharing/ui-alert-modal';
@@ -29,7 +29,7 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }: Fold
     ALL_LINKS_ID === selectedFolderId
       ? ALL_LINKS_TEXT
       : folders?.find(({ id }) => id === selectedFolderId)?.name ?? "";
-  const shareLink = `${window.location.origin}/shared?user=1&folder=${selectedFolderId}`;
+  const shareLink = `http://localhost:3000/shared?user=1&folder=${selectedFolderId}`;
 
   const closeModal = () => setCurrentModal(null);
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -40,8 +40,12 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }: Fold
   const handleKakaoClick = () => {
     shareKakao({ url: shareLink, ...KAKAO_SHARE_DATA });
   };
-  const handleFacebookClick = () =>
-    window.open(`http://www.facebook.com/sharer.php?u=${shareLink}`);
+  const handleFacebookClick = () => {
+    useEffect(() => {
+      window.open(`http://www.facebook.com/sharer.php?u=${shareLink}`);
+    }, []);
+  }
+
   const handleLinkCopyClick = () => copyToClipboard(shareLink);
 
   return (

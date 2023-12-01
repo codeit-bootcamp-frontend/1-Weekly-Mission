@@ -1,10 +1,10 @@
 import styles from './LinkForm.module.scss';
 import classNames from 'classnames/bind';
-import { useGetFolders } from 'folder/data-access-folder';
-import { AddLinkModal } from 'link/ui-add-link-modal';
-import { LinkForm as UiLinkForm } from 'link/ui-link-form';
+import { useGetFolders } from '@/folder/data-access-folder';
+import { AddLinkModal } from '@/link/ui-add-link-modal';
+import { LinkForm as UiLinkForm } from '@/link/ui-link-form';
 import { ChangeEvent, KeyboardEventHandler, useState } from 'react';
-import { useIntersectionObserver } from 'sharing/util/useIntersectionObserver';
+import { useIntersectionObserver } from '@/sharing/util/useIntersectionObserver';
 
 const cx = classNames.bind(styles);
 

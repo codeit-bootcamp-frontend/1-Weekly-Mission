@@ -1,6 +1,6 @@
 import styles from './Footer.module.scss';
 import classNames from 'classnames/bind';
-import { ROUTE } from 'sharing/util';
+import { ROUTE } from '@/sharing/util';
 import { TEXT } from './constant';
 import { forwardRef } from 'react';
 

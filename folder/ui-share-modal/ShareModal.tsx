@@ -1,9 +1,9 @@
 import styles from './ShareModal.module.scss';
 import classNames from 'classnames/bind';
-import { Modal } from 'sharing/ui-modal';
-import { ModalContentBox } from 'sharing/ui-modal-content-box';
-import { ModalContentDescription } from 'sharing/ui-modal-content-description';
-import { ModalContentTitle } from 'sharing/ui-modal-content-title';
+import { Modal } from '@/sharing/ui-modal';
+import { ModalContentBox } from '@/sharing/ui-modal-content-box';
+import { ModalContentDescription } from '@/sharing/ui-modal-content-description';
+import { ModalContentTitle } from '@/sharing/ui-modal-content-title';
 import { ReactComponent as KakaoIcon } from './kakao.svg';
 import { ReactComponent as FacebookIcon } from './facebook.svg';
 import { ReactComponent as LinkIcon } from './link.svg';

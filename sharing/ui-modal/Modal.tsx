@@ -1,7 +1,7 @@
 import styles from './Modal.module.scss';
 import classNames from 'classnames/bind';
 import { KeyboardEvent, KeyboardEventHandler, MouseEvent, MouseEventHandler, ReactNode } from 'react';
-import { Portal } from 'sharing/ui-portal';
+import { Portal } from '@/sharing/ui-portal';
 
 const cx = classNames.bind(styles);
 
