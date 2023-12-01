@@ -1,7 +1,7 @@
 import { MouseEvent, useContext, useState } from "react";
 
 import styled from "styled-components";
-// import CheckIcon from "@/public/assets/check.svg";
+import CheckIcon from "@/public/assets/check.svg";
 import { FolderContext } from "@/context/FolderContext";
 
 import ModalButton from "../button/ModalButton";
@@ -33,7 +33,7 @@ export default function AddLink({ link }: AddLinkProps) {
               <Title>{folder.name}</Title>
               <SubTitle>{`${folder.link.count}개 링크`}</SubTitle>
             </Option>
-            {/* <IconCheck /> */}
+            <IconCheck />
           </Options>
         ))}
       </Contents>
@@ -73,11 +73,11 @@ const Title = styled.span`
   color: var(--color-gray-30);
 `;
 
-// const IconCheck = styled(CheckIcon)`
-//   path {
-//     stroke: white; /* path 요소에 fill 속성 적용 */
-//   }
-// `;
+const IconCheck = styled(CheckIcon)`
+  path {
+    stroke: white; /* path 요소에 fill 속성 적용 */
+  }
+`;
 
 const Options = styled.div<{ $isSelected: boolean }>`
   padding: 0.5rem;
@@ -96,13 +96,13 @@ const Options = styled.div<{ $isSelected: boolean }>`
   ${Title} {
     color: ${({ $isSelected }) => ($isSelected ? "var(--color-primary)" : "var(--color-gray-30)")};
   }
-`;
 
-// ${IconCheck} {
-//   path {
-//     stroke: ${({ $isSelected }) => ($isSelected ? "var(--color-primary)" : "")};
-//   }
-// }
+  ${IconCheck} {
+    path {
+      stroke: ${({ $isSelected }) => ($isSelected ? "var(--color-primary)" : "")};
+    }
+  }
+`;
 
 const Option = styled.div`
   display: flex;

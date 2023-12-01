@@ -36,7 +36,7 @@ export default function FolderHero({ onChangeAddLink, addLinkValue }: FolderHero
       )}
 
       <Wrapper>
-        <Icon src={LinkIcon} alt="link" />
+        <Icon />
         <AddLinkFolderInput onChangeAddLink={onChangeAddLink} />
         <ButtonContainer>
           <Button size="small" label="추가하기" onClick={handleInput} />
@@ -54,7 +54,7 @@ export const Wrapper = styled.div`
   margin: auto;
 `;
 
-export const Icon = styled.img`
+export const Icon = styled(LinkIcon)`
   position: absolute;
   top: 50%;
   left: 3.5rem;

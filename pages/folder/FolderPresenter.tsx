@@ -56,7 +56,7 @@ export default function FolderUI(props: FolderUIProps) {
             />
             <S.AddFolderBtn onClick={() => setIsOpenModal(true)}>
               <span>폴더 추가</span>
-              {/* <S.IconAdd /> */}
+              <S.IconAdd />
             </S.AddFolderBtn>
           </S.MenuContainer>
           {props.isLoading && <Loading />}

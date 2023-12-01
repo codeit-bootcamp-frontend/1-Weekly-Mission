@@ -2,11 +2,9 @@ import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import useFetch from "@/hooks/useFetch";
 
 import { getAllFolders, getAllLinks } from "@/common/api";
-// import { FolderContext } from "context/FolderContext";
-
-// import FolderUI from "./FolderPresenter";
-import { FolderData, LinkData } from "@/types/folder";
+import { FolderContext } from "@/context/FolderContext";
 import FolderUI from "./FolderPresenter";
+import { FolderData, LinkData } from "@/types/folder";
 
 export const DEFAULT = "전체";
 const USER_ID = 1;
@@ -28,7 +26,7 @@ export default function Folder() {
   const { isLoading, error, wrappedFunction: getLinksAsyncFunc } = useFetch(getAllLinks);
   const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
 
-  // const { handleFolderUpdate } = useContext(FolderContext);
+  const { handleFolderUpdate } = useContext(FolderContext);
 
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -70,12 +68,12 @@ export default function Folder() {
     setLinks(linkData);
     setFilteredLinks(linkData);
     setFolders(folderData);
-    // updateFolderList(folderData);
+    updateFolderList(folderData);
   };
 
-  // const updateFolderList = (data: FolderData[]) => {
-  //   handleFolderUpdate(data);
-  // };
+  const updateFolderList = (data: FolderData[]) => {
+    handleFolderUpdate(data);
+  };
 
   const folderNames = folders.map((folder) => folder.name);
 

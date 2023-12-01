@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { breakPoints } from "@/common/media";
-// import AddIcon from "@/public/assets/add.svg";
+import AddIcon from "@/public/assets/add.svg";
 
 export const HeroContainer = styled.section`
   text-align: center;
@@ -92,13 +92,13 @@ export const AddFolderBtn = styled.div`
   }
 `;
 
-// export const IconAdd = styled(AddIcon)`
-//   @media only screen and (${breakPoints.mobile}) {
-//     path {
-//       fill: white; /* path 요소에 fill 속성 적용 */
-//     }
-//   }
-// `;
+export const IconAdd = styled(AddIcon)`
+  @media only screen and (${breakPoints.mobile}) {
+    path {
+      fill: white; /* path 요소에 fill 속성 적용 */
+    }
+  }
+`;
 
 export const SubTitle = styled.div`
   font-size: 1.5rem;
