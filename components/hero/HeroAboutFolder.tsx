@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import styled from "styled-components";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 import LinkIcon from "@/public/assets/link.svg";
 import Button from "../button/Basic";
@@ -20,14 +21,14 @@ export default function FolderHero({
   isFixedInput,
   addLinkValue,
 }: FolderHeroProps) {
-  console.log(isFixedInput);
   /**
    * linkForm이 fixed인 container 새로 생성
    * isFixedInput가 true일때는 linkForm 사라짐
    * isFixedInput가 false일때는 linkForm 보여짐
    */
-
+  const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const showFixedAddLink = !isFixedInput && !isIntersecting;
 
   const handleInput = () => {
     if (!addLinkValue) {
@@ -47,14 +48,14 @@ export default function FolderHero({
         </ModalPortal>
       )}
       <Container>
-        <LinkTop>
+        <LinkTop ref={ref}>
           <Icon />
           <AddLinkFolderInput onChangeAddLink={onChangeAddLink} />
           <ButtonContainer>
             <Button size="small" label="추가하기" onClick={handleInput} />
           </ButtonContainer>
         </LinkTop>
-        {!isFixedInput && (
+        {showFixedAddLink && (
           <LinkBottom>
             <Icon />
             <AddLinkFolderInput onChangeAddLink={onChangeAddLink} />
