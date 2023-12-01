@@ -1,7 +1,7 @@
 import { useGetFolders } from "@/components/folder/data-access-folder";
 import { useGetLinks } from "@/components/link/data-access-link";
 import { Layout } from "@/components/sharing/feature-layout";
-import { FolderLayout } from "@/page-layout/FolderLayout";
+import { FolderLayout } from "@/components/page-layout/FolderLayout";
 import { FolderToolBar } from "@/components/folder/feature-folder-tool-bar";
 import { SearchBar } from "@/components/link/ui-search-bar";
 import { useState } from "react";

@@ -33,7 +33,7 @@ export const Input: React.FC<InputProps> = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={cx("input", "hasError")
+        // className={cx("input", "hasError")
       />
       {type === "password" && (
         <span onClick={toggleInputType}>
@@ -50,4 +50,3 @@ export const Input: React.FC<InputProps> = ({
     </>
   );
 };
-

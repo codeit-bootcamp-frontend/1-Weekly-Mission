@@ -1,6 +1,6 @@
 import { useGetFolder } from "@/components/folder/data-access-folder";
 import { Layout } from "@/components/sharing/feature-layout";
-import { SharedLayout } from "@/page-layout/SharedLayout";
+import { SharedLayout } from "@/components/page-layout/SharedLayout";
 import { CardList } from "@/components/link/ui-card-list";
 import { FolderInfo } from "@/components/folder/ui-folder-info";
 import { ReadOnlyCard } from "@/components/link/ui-read-only-card";
