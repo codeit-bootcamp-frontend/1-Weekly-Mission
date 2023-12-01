@@ -1,0 +1,47 @@
+@import "@/styles/global.scss";
+
+.nav {
+  width: 100%;
+  min-width: 500px;
+  background-color: var(--color-gray1);
+  padding: 2rem 3.2rem;
+  z-index: $NAV_ZINDEX;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  &.sticky {
+    top: 0;
+    left: 0;
+    position: sticky;
+  }
+  @include desktop {
+    padding: 2rem 10rem;
+  }
+}
+
+.gnb {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  @include tablet {
+    max-width: 80rem;
+  }
+}
+.link-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.6rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+}
+.user-info {
+  display: flex;
+  gap: 1rem;
+}

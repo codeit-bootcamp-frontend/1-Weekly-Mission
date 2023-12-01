@@ -1,0 +1,33 @@
+@import "@/styles/global.scss";
+
+.container {
+  max-width: 400px;
+  min-width: 300px;
+  height: 66px;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20, #ccd5e3);
+  background: var(--linkbrary-gray-10, #e7effb);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.4rem;
+
+  & .text-container {
+    color: var(--color-gray5);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  & .sns-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include tablet {
+    width: 400px;
+  }
+}

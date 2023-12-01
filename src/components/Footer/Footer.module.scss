@@ -1,0 +1,45 @@
+@import "@/styles/global.scss";
+
+.content {
+  background: var(--the-julge-black, var(--color-black));
+  padding: 3rem 3rem 10rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  min-width: 500px;
+  .logo {
+    color: #676767;
+    text-align: center;
+    position: absolute;
+    bottom: 3rem;
+  }
+  .link {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .sns {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.footer.link a {
+  color: #cfcfcf;
+}
+
+@include tablet {
+  .content {
+    padding: 3rem 10rem 6rem;
+    & .logo {
+      position: relative;
+      bottom: 0;
+    }
+  }
+}
