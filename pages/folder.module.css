@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 3.2rem;
+}
+.addLink {
+  display: flex;
+  justify-content: center;
+  padding: 6rem 3.2rem 9rem 3.2rem;
+  background: var(--linkbrary-bg, #f0f6ff);
+
+  @media (max-width: 767px) {
+    padding-top: 2.4rem;
+    padding-bottom: 4rem;
+  }
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 4rem;
+}
+.folderSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.emptyLink {
+  width: 106rem;
+  padding: 4.1rem 0 3.5rem;
+  text-align: center;
+  font-size: 1.6rem;
+  @media (max-width: 1124px) {
+    width: 100%;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+}
