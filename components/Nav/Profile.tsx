@@ -1,4 +1,4 @@
-import { Container, ProfileImg, ProfileText } from "src/components/Nav/Profile.styled";
+import { Container, ProfileImg, ProfileText } from "@/components/Nav/Profile.styled";
 
 interface Props {
   profileImg: string;

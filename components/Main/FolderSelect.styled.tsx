@@ -111,10 +111,6 @@ export const Wrapper = styled.div`
   gap: 1.2rem;
 `;
 
-export const Img = styled.img`
-  width: 1.8rem;
-`;
-
 export const H1 = styled.h1`
   font-size: 2.4rem;
   font-weight: 600;

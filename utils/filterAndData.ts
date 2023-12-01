@@ -1,4 +1,4 @@
-import { LinkData } from "src/utils/getData.type";
+import { LinkData } from "@/utils/getData.type";
 
 export const formatDate = (value: string) => {
   const date = new Date(value);

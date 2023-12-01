@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 export type Dom = {
   headerForm: HTMLElement | null;
@@ -11,16 +11,16 @@ export type Dom = {
 let isForm = false;
 
 const useObserver = (DOM: Dom) => {
-  const float = () => {
-    DOM.floatDiv?.classList.add("float");
-  };
+  useEffect(() => {
+    const float = () => {
+      DOM.floatDiv?.classList.add("float");
+    };
 
-  const fix = () => {
-    DOM.floatDiv?.classList.remove("float");
-  };
+    const fix = () => {
+      DOM.floatDiv?.classList.remove("float");
+    };
 
-  const observer = useRef(
-    new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry, idx) => {
           if (entry.intersectionRatio === 0) {
@@ -37,17 +37,13 @@ const useObserver = (DOM: Dom) => {
         });
       },
       { threshold: [0] }
-    )
-  );
+    );
 
-  useEffect(() => {
     if (DOM.headerForm && DOM.footer) {
-      observer.current.observe(DOM.headerForm);
-      observer.current.observe(DOM.footer);
+      observer.observe(DOM.headerForm);
+      observer.observe(DOM.footer);
     }
   }, [DOM]);
-
-  return [observer];
 };
 
 export default useObserver;

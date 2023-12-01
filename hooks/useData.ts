@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { getData } from "src/utils/getData";
-import { Action, Rgeneric, URLS, UrlType } from "src/utils/getData.type";
+import { getData } from "@/utils/getData";
+import { Action, Rgeneric, URLS, UrlType } from "@/utils/getData.type";
 
 export const reduceData = <T>(action: Action) => {
   switch (action.path) {

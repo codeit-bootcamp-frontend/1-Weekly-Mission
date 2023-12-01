@@ -1,4 +1,4 @@
-import { Action, MakeURL, URLS, UrlType } from "src/utils/getData.type";
+import { Action, MakeURL, URLS, UrlType } from "@/utils/getData.type";
 
 const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 

@@ -1,4 +1,4 @@
-import { Button } from "src/components/Nav/SignButton.styled";
+import { Button } from "@/components/Nav/SignButton.styled";
 
 interface Props {
   children: React.ReactNode;

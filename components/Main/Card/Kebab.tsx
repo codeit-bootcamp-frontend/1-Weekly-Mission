@@ -1,8 +1,9 @@
 import { useRef } from "react";
-import kebabImg from "src/assets/kebab.svg";
-import { Container, PopOver } from "src/components/Main/Card/Kebab.styled";
-import useModal from "src/hooks/useModal";
-import { FolderData } from "src/utils/getData.type";
+import kebabImg from "@/public/kebab.svg";
+import { Container, PopOver } from "@/components/Main/Card/Kebab.styled";
+import useModal from "@/hooks/useModal";
+import { FolderData } from "@/utils/getData.type";
+import Image from "next/image";
 
 interface Props {
   folder: FolderData[];
@@ -34,7 +35,7 @@ function Kebab({ folder, url }: Props) {
   return (
     <Container onClick={stop}>
       <button onClick={handleClick} onMouseLeave={handleMouseLeave}>
-        <img src={kebabImg} alt="즐겨찾기에 추가하기" />
+        <Image src={kebabImg} alt="즐겨찾기에 추가하기" />
         <PopOver ref={popOver}>
           <p onClickCapture={handleModal}>삭제하기</p>
           <p onClick={handleModal}>폴더에 추가</p>

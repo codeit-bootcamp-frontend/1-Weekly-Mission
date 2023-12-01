@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import useNotScroll from "src/hooks/useNotScroll";
+import useNotScroll from "@/hooks/useNotScroll";
 import styled from "styled-components";
 
 interface ImodalFrame {

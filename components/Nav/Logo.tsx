@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { ImgLogo } from "src/components/Nav/Logo.styled";
+import { ImgLogo } from "@/components/Nav/Logo.styled";
+import Link from "next/link";
 
 const grid = {
   gridArea: "logo",
@@ -7,7 +7,7 @@ const grid = {
 
 function Logo({ src = "", alt = "" }) {
   return (
-    <Link style={grid} to="/">
+    <Link style={grid} href="/">
       <ImgLogo src={src} alt={alt} />
     </Link>
   );

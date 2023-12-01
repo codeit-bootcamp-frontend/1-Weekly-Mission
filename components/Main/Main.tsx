@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { StyledMain } from "src/components/Main/Main.styled";
+import { StyledMain } from "@/components/Main/Main.styled";
 
 interface Props {
   children: ReactNode;

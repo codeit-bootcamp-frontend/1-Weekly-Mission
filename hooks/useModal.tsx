@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { makeModal } from "../components/Modal/modal";
-import { FolderData } from "src/utils/getData.type";
-import ModalPortal from "../components/Modal/ModalPortal";
+import { makeModal } from "@/components/Modal/modal";
+import { FolderData } from "@/utils/getData.type";
+import ModalPortal from "@/components/Modal/ModalPortal";
 
 interface Idispatch {
   (action: { title?: string; type?: string; data?: FolderData[] }): void;

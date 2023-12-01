@@ -1,11 +1,9 @@
-import { useSearchParams } from "react-router-dom";
-import useData from "src/hooks/useData";
-import { filterFolder, formatDate } from "src/utils/filterAndData";
-import defaultFileImg from "src/assets/nofileimg.png";
-import starImg from "src/assets/star.svg";
-import TimeFlow from "src/components/Main/Card/TimeFlow";
-import Kebab from "src/components/Main/Card/Kebab";
-import { FolderData, LinkData, SampleLink, URLS } from "src/utils/getData.type";
+import useData from "@/hooks/useData";
+import { filterFolder, formatDate } from "@/utils/filterAndData";
+import starImg from "@/public/star.svg";
+import TimeFlow from "@/components/Main/Card/TimeFlow";
+import Kebab from "@/components/Main/Card/Kebab";
+import { FolderData, LinkData, SampleLink, URLS } from "@/utils/getData.type";
 import {
   ButtonStar,
   CardImg,
@@ -16,7 +14,9 @@ import {
   H3,
   WrapperCardImg,
   WrapperTime,
-} from "src/components/Main/Card/CardList.styled";
+} from "@/components/Main/Card/CardList.styled";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface PcardList {
   id?: number;
@@ -29,8 +29,8 @@ function CardList({ id, path }: PcardList) {
   const cardData = useData(path, id);
   const folderData = useData(URLS.FOLDER_CATEGORY, id);
 
-  const [searchParams] = useSearchParams();
-  const folderId = searchParams.get("folderId");
+  const router = useRouter();
+  const folderId = router.query["folderId"] as string;
   const links =
     cardData?.path === URLS.FOLDER_LINKS
       ? filterFolder(cardData?.links, folderId === null ? null : folderId === "" ? prev : folderId)
@@ -80,7 +80,7 @@ function Card({ folder, url, imageSource, image_source, title, description, crea
   return (
     <>
       <WrapperCardImg>
-        <CardImg src={imageSource || image_source || defaultFileImg} alt="카드 이미지" />
+        <CardImg src={imageSource || image_source || "/nofileimg.png"} alt="카드 이미지" />
       </WrapperCardImg>
       <CardText>
         <WrapperTime>
@@ -92,7 +92,7 @@ function Card({ folder, url, imageSource, image_source, title, description, crea
         <p>{formatDate(createdAt ?? (created_at as string))}</p>
       </CardText>
       <ButtonStar>
-        <img src={starImg} alt="즐겨찾기에 추가하기" />
+        <Image src={starImg} alt="즐겨찾기에 추가하기" />
       </ButtonStar>
     </>
   );

@@ -1,13 +1,14 @@
 import { useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
-import imgCheck from "src/assets/check.svg";
-import imgClose from "src/assets/close.svg";
-import imgKakao from "src/assets/kakao.svg";
-import imgFB from "src/assets/modalfacebook.svg";
-import imgLink from "src/assets/modallink.svg";
-import ModalFrame from "src/components/Modal/ModalFrame";
-import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "src/components/Modal/modal.styled";
-import { FolderData } from "src/utils/getData.type";
+import imgCheck from "/public/check.svg";
+import imgClose from "@/public/close.svg";
+import imgKakao from "@/public/kakao.svg";
+import imgFB from "@/public/modalfacebook.svg";
+import imgLink from "@/public/modallink.svg";
+import ModalFrame from "@/components/Modal/ModalFrame";
+import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "@/components/Modal/modal.styled";
+import { FolderData } from "@/utils/getData.type";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface MakeModalProps {
   title?: string;
@@ -102,8 +103,8 @@ declare global {
 
 function ModalShare() {
   const copyResult = useRef<HTMLDivElement>(null);
-  const [searchParams] = useSearchParams();
-  const folderId = searchParams.get("folderId");
+  const router = useRouter();
+  const folderId = router.query["folderId"] as string;
   const sharedLink = encodeURIComponent(`linkbrary.com/shared?user=1&folder=${folderId}}`);
 
   const shareToKakaoTalk = () => {
@@ -185,7 +186,7 @@ interface Isns {
 export function Sns({ src, alt, text, onClick }: Isns) {
   return (
     <button onClick={onClick}>
-      <img src={src} alt={alt} />
+      <Image width={40} height={40} src={src} alt={alt} />
       <p>{text}</p>
     </button>
   );
@@ -217,7 +218,7 @@ function ModalAdd({ data }: TmodalAdd) {
           <button>
             <h2>{value.name}</h2>
             <p>{value.link.count}개 링크</p>
-            <img src={imgCheck} alt="이 폴더에 추가합니다." />
+            <Image src={imgCheck} alt="이 폴더에 추가합니다." />
           </button>
         </li>
       ))}
@@ -230,7 +231,7 @@ type TmodalClose = { handleClick: (event: React.MouseEvent) => void };
 function ModalCloseButton({ handleClick }: TmodalClose) {
   return (
     <ButtonClose onClick={handleClick}>
-      <img src={imgClose} alt="현재 띄워진 창을 닫는 버튼" />
+      <Image src={imgClose} alt="현재 띄워진 창을 닫는 버튼" />
     </ButtonClose>
   );
 }

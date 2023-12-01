@@ -1,7 +1,7 @@
-import defaultAvatar from "src/assets/Avatar.png";
-import useData from "src/hooks/useData";
-import { Container, User, UserImg, UserText, UserTitle } from "src/components/Header/Header.styled";
-import { URLS } from "src/utils/getData.type";
+import defaultAvatar from "@/public/Avatar.png";
+import useData from "@/hooks/useData";
+import { Container, User, UserImg, UserText, UserTitle } from "@/components/Header/Header.styled";
+import { URLS } from "@/utils/getData.type";
 
 function Header() {
   const folderName = useData(URLS.SHARED_FOLDERNAME);

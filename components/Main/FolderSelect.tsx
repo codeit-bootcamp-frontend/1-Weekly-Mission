@@ -1,14 +1,10 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import useModal from "src/hooks/useModal";
-import useData from "src/hooks/useData";
-import imgAdd from "src/assets/add.svg";
-import imgAddWhite from "src/assets/addWhite.svg";
-import imgShare from "src/assets/share.svg";
-import imgEdit from "src/assets/edit.svg";
-import imgDelete from "src/assets/delete.svg";
-import { ButtonAdd, ButtonControl, ButtonFloat, Container, H1, Img, Li, Ul, Wrapper } from "src/components/Main/FolderSelect.styled";
-import { URLS } from "src/utils/getData.type";
+import useModal from "@/hooks/useModal";
+import useData from "@/hooks/useData";
+import { ButtonAdd, ButtonControl, ButtonFloat, Container, H1, Li, Ul, Wrapper } from "@/components/Main/FolderSelect.styled";
+import { URLS } from "@/utils/getData.type";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   id: number;
@@ -66,18 +62,18 @@ function FolderCategories({ id, setTitle, handleModal }: Pcategories) {
   return (
     <Container>
       <Ul>
-        <Link to="/folder" onClick={handleClick}>
+        <Link href="/folder" onClick={handleClick}>
           <Li>전체</Li>
         </Link>
         {categories?.data?.map((category) => (
-          <Link to={`?folderId=${category.id}`} key={category.id} onClick={handleClick}>
+          <Link href={`?folderId=${category.id}`} key={category.id} onClick={handleClick}>
             <Li>{category.name}</Li>
           </Link>
         ))}
       </Ul>
       <ButtonAdd onClick={handleModal}>
         폴더 추가
-        <Img src={imgAdd} />
+        <Image width={16} height={16} src="/add.svg" alt="폴더에 추가하기" />
       </ButtonAdd>
     </Container>
   );
@@ -93,15 +89,15 @@ function FolderController({ title, handleModal }: Pcontroller) {
       <H1>{title}</H1>
       <Wrapper title={title}>
         <ButtonControl onClick={handleModal}>
-          <Img src={imgShare} />
+          <Image width={20} height={20} src="/share.svg" alt="폴더 공유하기" />
           공유
         </ButtonControl>
         <ButtonControl onClick={handleModal}>
-          <Img src={imgEdit} />
+          <Image width={20} height={20} src="/edit.svg" alt="폴더 이름 바꾸기" />
           이름 변경
         </ButtonControl>
         <ButtonControl onClick={handleModal}>
-          <Img src={imgDelete} />
+          <Image width={20} height={20} src="/delete.svg" alt="폴더 삭제하기" />
           삭제
         </ButtonControl>
       </Wrapper>
@@ -115,7 +111,7 @@ function FolderAddFloat({ handleModal }: PaddFloat) {
   return (
     <ButtonFloat onClick={handleModal}>
       폴더 추가
-      <Img src={imgAddWhite} />
+      <Image width={40} height={40} src="/addWhite.svg" alt="폴더에 추가하기" />
     </ButtonFloat>
   );
 }

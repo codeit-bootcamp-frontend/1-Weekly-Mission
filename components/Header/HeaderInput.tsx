@@ -1,10 +1,9 @@
 import { useState } from "react";
-import inputImg from "src/assets/link.svg";
-import { Float, Form, Input, InputButton, InputImg, InputWrapper } from "src/components/Header/HeaderInput.styled";
-import useData from "src/hooks/useData";
-import useModal from "src/hooks/useModal";
-import { Dom } from "src/hooks/useObserver";
-import { URLS } from "src/utils/getData.type";
+import { Float, Form, Input, InputButton, InputImg, InputWrapper } from "@/components/Header/HeaderInput.styled";
+import useData from "@/hooks/useData";
+import useModal from "@/hooks/useModal";
+import { Dom } from "@/hooks/useObserver";
+import { URLS } from "@/utils/getData.type";
 
 interface Props {
   id: number;
@@ -39,13 +38,13 @@ function HeaderSearch({ id, isUser, dom }: Props) {
       <Form ref={(el) => (dom.current.headerForm = el)} onSubmit={handleModal}>
         <Input ref={(el) => (dom.current.headerInput = el)} value={value} onChange={handleChange} placeholder="링크를 추가해보세요." />
         <InputWrapper>
-          <InputImg src={inputImg} />
+          <InputImg src="/link.svg" />
           <InputButton>추가하기</InputButton>
         </InputWrapper>
         <Float ref={(el) => (dom.current.floatDiv = el)}>
           <Input ref={(el) => (dom.current.floatInput = el)} value={value} onChange={handleChange} placeholder="링크를 추가해보세요." />
           <InputWrapper>
-            <InputImg src={inputImg} />
+            <InputImg src="/link.svg" />
             <InputButton>추가하기</InputButton>
           </InputWrapper>
         </Float>
