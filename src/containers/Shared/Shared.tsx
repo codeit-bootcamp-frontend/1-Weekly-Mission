@@ -1,10 +1,15 @@
 import Layout from '@/components/Layout';
 import Folder from './components/Folder';
+import { SharedFolder } from 'pages/shared';
 
-function Shared() {
+interface Props {
+  folder?: SharedFolder;
+}
+
+function Shared({ folder }: Props) {
   return (
     <Layout isLoggedIn>
-      <Folder />
+      <Folder folder={folder} />
     </Layout>
   );
 }

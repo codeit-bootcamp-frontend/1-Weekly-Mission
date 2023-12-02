@@ -1,7 +1,6 @@
 import * as S from './Folder.style';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import useRequest from '@/hooks/useRequest';
 import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@/services/config/default';
 import filterLinks from '@/utils/filterLinks';
 import Layout from '@/components/Layout';
@@ -10,26 +9,17 @@ import CardsContainer from '@/components/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
 import FoldersContainer from './components/FoldersContainer';
 import NoLinkView from './components/NoLinkView';
-import { Link } from './Folder.types';
+import { Link } from '@/containers/Folder/Folder.types';
 
-function Folder() {
+interface Props {
+  links: Link[];
+}
+
+function Folder({ links }: Props) {
   const router = useRouter();
   const initialFolderId = Array.isArray(router.query.folderId)
     ? router.query.folderId[0]
     : router.query.folderId;
-
-  const { data: links, fetch: getLinks } = useRequest<{ data: Link[] }>({
-    skip: true,
-    options: {
-      url: `/users/${DEFAULT_USER_ID}/links`,
-      method: 'get',
-      params: { folderId: initialFolderId ?? '' },
-    },
-  });
-
-  useEffect(() => {
-    getLinks();
-  }, [initialFolderId]);
 
   const setFolderLinks = (nextFolderId: number) => {
     if (nextFolderId === DEFAULT_FOLDER_ID) {
@@ -48,7 +38,7 @@ function Folder() {
   const initialKeyword = Array.isArray(router.query.keyword)
     ? router.query.keyword[0]
     : router.query.keyword;
-  const filteredLinks = filterLinks(links?.data, initialKeyword);
+  const filteredLinks = filterLinks(links, initialKeyword);
 
   const [floatAddLink, setFloatAddLink] = useState(false);
   const addLinkTarget = useRef<HTMLDivElement>(null);
