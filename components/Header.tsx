@@ -1,4 +1,4 @@
-import '../css/header.css';
+import '@/styles/header.css';
 
 function Header({ folder }: { folder: any }): JSX.Element {
   return (

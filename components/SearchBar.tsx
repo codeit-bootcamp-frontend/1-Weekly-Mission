@@ -1,4 +1,4 @@
-import '../css/searchBar.css';
+import '@/styles/searchBar.module.css';
 
 function SearchBar(): JSX.Element {
   return (

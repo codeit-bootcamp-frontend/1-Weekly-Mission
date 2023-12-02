@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 type Props = {
   folder: any;
   handleButton: (name: string, id: string) => void;
@@ -14,23 +12,11 @@ function FolderButton({ folder, handleButton }: Props): JSX.Element {
 
   return (
     <>
-      <Button onClick={handleButtonClick}>{name}</Button>
+      <button className="button" onClick={handleButtonClick}>
+        {name}
+      </button>
     </>
   );
 }
 
 export default FolderButton;
-
-const Button = styled.button`
-  padding: 1rem;
-  white-space: nowrap;
-  border-radius: 10px;
-  background-color: white;
-  border: 1px solid var(--primary);
-
-  &:hover {
-    background-color: var(--primary, #f0f6ff);
-    color: var(--white);
-    transition: 0.5s;
-  }
-`;

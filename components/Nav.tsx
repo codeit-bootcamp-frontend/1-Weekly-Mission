@@ -1,4 +1,4 @@
-import '../css/nav.css';
+import '@/styles/nav.css';
 import UserProfile from './UserProfile';
 
 function Nav({

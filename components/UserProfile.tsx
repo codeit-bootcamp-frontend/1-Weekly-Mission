@@ -1,4 +1,4 @@
-import '../css/userProfile.css';
+import '@/styles/userProfile.css';
 
 function UserProfile({ userProfile }: any): JSX.Element {
   const userProfileImage = userProfile?.image_source;

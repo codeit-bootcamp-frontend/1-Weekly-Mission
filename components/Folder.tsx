@@ -1,17 +1,12 @@
-import styled from 'styled-components';
+import '@/styles/folder.module.css';
 import CardList from './CardList';
 import { useEffect, useState } from 'react';
-import { getCards } from '../api/api';
+import { getLinks } from '@/pages/api/api';
 import FolderButton from './FolderButton';
 import OptionBtn from './OptionBtn';
-import IconShare from '../assets/icon/icon-share.svg';
-import IconPen from '../assets/icon/icon-pen.svg';
-import IconTrash from '../assets/icon/icon-trash.svg';
-import ShareFolderModal from './Modal/ShareFolderModal';
-import RenameFolderModal from './Modal/RenameFolderModal';
-import RemoveFolderModal from './Modal/RemoveFolderModal';
-import RemoveLinkModal from './Modal/RemoveLinkModal';
-import InsertFolderModal from './Modal/InsertFolderModal';
+import PenIcon from '@/public/images/pen.svg';
+import ShareIcon from '@/public/images/share.svg';
+import TrashIcon from '@/public/images/trash.svg';
 
 const INITIAL_FOLDER = {
   id: '',
@@ -20,9 +15,6 @@ const INITIAL_FOLDER = {
 
 function FolderList({ folderList = null, getCardList }): JSX.Element {
   const [folderName, setFolderName] = useState('전체');
-  const [isFolderShareModal, setIsFolderShareModal] = useState(false);
-  const [isFolderRenameModal, setIsFolderRenameModal] = useState(false);
-  const [isFolderRemoveModal, setIsFolderRemoveModal] = useState(false);
 
   const handleButton = (name: string, id: string) => {
     setFolderName(name);
@@ -31,7 +23,7 @@ function FolderList({ folderList = null, getCardList }): JSX.Element {
 
   return (
     <div>
-      <FolderListContainer>
+      <div className="folderlist-container">
         <FolderButton folder={INITIAL_FOLDER} handleButton={handleButton} />
         {folderList && (
           <>
@@ -44,95 +36,45 @@ function FolderList({ folderList = null, getCardList }): JSX.Element {
             })}
           </>
         )}
-      </FolderListContainer>
-      <FolderTitleContainer>
-        <FolderTitle>{folderName}</FolderTitle>
-        <Options>
-          <OptionBtn src={IconShare} alt="공유" onClick={() => setIsFolderShareModal(true)}>
+      </div>
+      <div className="folder-title-container">
+        <div className="folder-title">{folderName}</div>
+        <div className="option-container">
+          <OptionBtn src={ShareIcon} alt="공유">
             공유
           </OptionBtn>
-          <OptionBtn src={IconPen} alt="이름 변경" onClick={() => setIsFolderRenameModal(true)}>
+          <OptionBtn src={PenIcon} alt="이름 변경">
             이름 변경
           </OptionBtn>
-          <OptionBtn src={IconTrash} alt="삭제" onClick={() => setIsFolderRemoveModal(true)}>
+          <OptionBtn src={TrashIcon} alt="삭제">
             삭제
           </OptionBtn>
-        </Options>
-        {isFolderShareModal && <ShareFolderModal setIsFolderShareModal={setIsFolderShareModal} />}
-        {isFolderRenameModal && <RenameFolderModal setIsFolderRenameModal={setIsFolderRenameModal} />}
-        {isFolderRemoveModal && <RemoveFolderModal setIsFolderRemoveModal={setIsFolderRemoveModal} />}
-      </FolderTitleContainer>
+        </div>
+      </div>
     </div>
   );
 }
 
 function Folder({ folderList = null }) {
   const [cards, setCards] = useState();
-  const [isLinkRemoveModal, setIsLinkRemoveModal] = useState(false);
-  const [isInsertFolderModal, setIsInsertFolderModal] = useState(false);
 
   const getCardList = async (id = '') => {
-    const result = await getCards(id);
+    const result = await getLinks(id);
     setCards(() => {
       return [...result?.data];
     });
   };
 
   useEffect(() => {
-    getCards();
+    getLinks();
   }, []);
 
   return (
-    <Container>
+    <div className="container">
       <FolderList folderList={folderList} getCardList={getCardList} />
       <CardList cards={cards} />
-      {isLinkRemoveModal && <RemoveLinkModal setIsLinkRemoveModal={setIsLinkRemoveModal} />}
-      {isInsertFolderModal && <InsertFolderModal setIsInsertFolderModal={setIsInsertFolderModal} />}
-    </Container>
+    </div>
   );
 }
 
 export default Folder;
-
-const Container = styled.div`
-  margin: 0rem 19rem;
-  gap: 4rem;
-`;
-
-const FolderListContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 0.8rem;
-  margin-bottom: 2.4rem;
-
-  @media (min-width: 768px) {
-    width: 70.4rem;
-  }
-
-  @media (min-width: 1024px) {
-    width: 106rem;
-  }
-`;
-
-const FolderTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  color: var(--black);
-  font-size: 2.4rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.2px;
-  margin-bottom: 2rem;
-`;
-
-const FolderTitleContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Options = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-`;

@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
+import { FolderRawData } from '@/pages/api/type';
 import { useCallback, useState } from 'react';
 
-const useAsync = <T,>(asyncFunction: () => Promise<AxiosResponse<T>>) => {
+function useAsync(asyncFunction: any) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
 
@@ -10,7 +10,7 @@ const useAsync = <T,>(asyncFunction: () => Promise<AxiosResponse<T>>) => {
       setPending(true);
       setError(null);
       try {
-        return await asyncFunction(...args);
+        return (await asyncFunction)(...args);
       } catch (error: any) {
         setError(error);
       } finally {
@@ -21,6 +21,6 @@ const useAsync = <T,>(asyncFunction: () => Promise<AxiosResponse<T>>) => {
   );
 
   return [pending, error, wrappedFunction];
-};
+}
 
 export default useAsync;

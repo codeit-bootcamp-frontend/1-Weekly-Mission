@@ -1,5 +1,5 @@
 import Card from './Card';
-import '../css/cardList.css';
+import '@/styles/cardList.module.css';
 import NoSavedLinks from './NoSavedLinks';
 
 function CardList({ cards }: { cards: any }): JSX.Element {
