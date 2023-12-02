@@ -6,6 +6,7 @@
   color: $color-gray100;
   padding: 1.8rem 1.5rem;
   transition: border-color 0.2s ease-in-out;
+  flex-grow: 1;
 
   &::placeholder {
     color: $color-gray60;
@@ -14,4 +15,28 @@
   &:focus {
     border-color: $color-primary;
   }
+
+  &.input-error {
+    border-color: $color-red;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .icon-wrapper {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+
+.error-message {
+  color: $color-red;
+  font-size: 1.4rem;
+  margin-top: 0.6rem;
 }
