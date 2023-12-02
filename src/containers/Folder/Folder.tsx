@@ -8,7 +8,6 @@ import SearchBar from '@/components/SearchBar';
 import CardsContainer from '@/components/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
 import FoldersContainer from './components/FoldersContainer';
-import NoLinkView from './components/NoLinkView';
 import { Link } from '@/containers/Folder/Folder.types';
 
 interface Props {
@@ -96,11 +95,7 @@ function Folder({ links }: Props) {
           initialFolderId={Number(initialFolderId)}
           setFolderLinks={setFolderLinks}
         />
-        {filteredLinks?.length !== 0 ? (
-          <CardsContainer cards={filteredLinks} userId={DEFAULT_USER_ID} />
-        ) : (
-          <NoLinkView />
-        )}
+        <CardsContainer cards={filteredLinks} userId={DEFAULT_USER_ID} />
       </S.ContentContainer>
     </Layout>
   );

@@ -10,13 +10,19 @@ interface Props {
 
 function CardsContainer({ cards = [], userId = DEFAULT_USER_ID }: Props) {
   return (
-    <S.Container>
-      {cards?.map((card: Link) => (
-        <li key={card.id}>
-          <Card data={card} userId={userId} />
-        </li>
-      ))}
-    </S.Container>
+    <>
+      {cards.length !== 0 ? (
+        <S.Container>
+          {cards?.map((card: Link) => (
+            <li key={card.id}>
+              <Card data={card} userId={userId} />
+            </li>
+          ))}
+        </S.Container>
+      ) : (
+        <S.NoLink>저장된 링크가 없습니다.</S.NoLink>
+      )}
+    </>
   );
 }
 
