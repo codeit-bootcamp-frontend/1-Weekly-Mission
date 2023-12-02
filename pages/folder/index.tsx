@@ -93,6 +93,7 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
       return;
     }
     filterByKeyword();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
 
   return (
