@@ -47,7 +47,7 @@ const UserInput = (props: ILabelProps) => {
       <div className="inputBox">
         <Input
           type={isOn ? "text" : obj[label].type}
-          id={label + "Input"}
+          id={label}
           placeholder={props.placeholder}
           onBlur={handleBlur}
           value={value}

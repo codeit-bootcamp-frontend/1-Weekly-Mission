@@ -5,7 +5,7 @@ import {
   ContentContainer,
   FolderContentContainer,
   SharedWrapper,
-} from "./sharedStyled";
+} from "@/styles/sharedStyled";
 import { Section } from "@/components/common/commonStyled";
 import Image from "next/image";
 import request from "@/lib/axios";
@@ -46,13 +46,16 @@ const Shared = () => {
     <SharedWrapper>
       <Section $bg="var(--background)">
         <ContentContainer $isFolder={false}>
-          <Image
-            id="userProfile"
-            src={user?.profileImageSource!}
-            alt="profileImg"
-            width="60"
-            height="60"
-          />
+          {user?.profileImageSource && (
+            <Image
+              id="userProfile"
+              src={user?.profileImageSource}
+              alt="profileImg"
+              width="60"
+              height="60"
+            />
+          )}
+
           <div id="userName">{user?.name}</div>
           <div id="folderName">{folderName}</div>
         </ContentContainer>

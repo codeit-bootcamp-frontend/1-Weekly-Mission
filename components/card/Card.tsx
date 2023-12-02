@@ -62,6 +62,7 @@ const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: ICardProp) => {
         {cardData.image_source || cardData.imageSource ? (
           <CardImgContainer>
             <Image
+              priority
               className="cardImage"
               src={cardData.image_source || cardData.imageSource}
               alt="cardImg"
@@ -80,6 +81,7 @@ const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: ICardProp) => {
         ) : (
           <CardImgContainer>
             <Image
+              priority
               src={LogoImg}
               alt="logoImg"
               className="noImgLogo"

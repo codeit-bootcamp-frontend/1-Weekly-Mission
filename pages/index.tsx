@@ -6,7 +6,7 @@ import {
   SectionTitleContainer,
   TopSection,
   TopWrapper,
-} from "@/pages/homeStyled";
+} from "@/styles/homeStyled";
 import TopImg from "@/public/assets/home/img_topImg.png";
 import SectionImg1 from "@/public/assets/home/img_section1Img.png";
 import SectionImg2 from "@/public/assets/home/img_section2Img.png";
@@ -28,8 +28,7 @@ const Home = () => {
         <TopSection>
           <div className="mainTitle">
             <span>세상의 모든 정보</span>를 <br />
-            쉽게 저장하고
-            <NoDisplayInPcBr />
+            쉽게 저장하고 <NoDisplayInPcBr />
             관리해 보세요
           </div>
           <Link href="/signup">
@@ -39,7 +38,7 @@ const Home = () => {
           </Link>
 
           <div className="imgContainer">
-            <Image src={TopImg} fill alt="mainTopImg" />
+            <Image src={TopImg} fill alt="mainTopImg" priority />
           </div>
         </TopSection>
       </TopWrapper>

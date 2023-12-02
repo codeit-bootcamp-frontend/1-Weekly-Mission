@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "@/styles/globalStyle";
 import { DefaultBtnContainer } from "@/components/button/DefaultButton";
 import { InputContainer } from "@/components/input/Input";
-import { ContentContainer } from "../shared/sharedStyled";
+import { ContentContainer } from "./sharedStyled";
 
 export const FolderContentContainer = styled(ContentContainer)`
   margin: 4rem auto 6rem;

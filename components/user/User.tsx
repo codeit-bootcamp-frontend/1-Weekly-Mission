@@ -26,7 +26,14 @@ const User = ({ state }: IState) => {
     <UserWrapper>
       <UserHeaderContainer>
         <Link href="/">
-          <Image src={LogoImg} alt="logoImg" height="38" className="logoImg" />
+          <Image
+            src={LogoImg}
+            alt="logoImg"
+            height="38"
+            width="210"
+            className="logoImg"
+            priority
+          />
         </Link>
         {state === "signin" ? (
           <div className="userContainer">

@@ -7,16 +7,16 @@ import {
   FolderContentContainer,
   LinkHeaderContainer,
   LinkToolContainer,
-} from "./folderStyled";
+} from "@/styles/folderStyled";
 import FolderAddIcon from "@/public/assets/folder/img_folderAdd.png";
 import LinkAddIcon from "@/public/assets/folder/img_linkAdd.png";
 import ShareIcon from "@/public/assets/folder/img_shareIcon.png";
 import EditIcon from "@/public/assets/folder/img_editIcon.png";
 import DeleteIcon from "@/public/assets/folder/img_deleteIcon.png";
 
-import { ContentContainer, CardContainer } from "../shared/sharedStyled";
+import { ContentContainer, CardContainer } from "@/styles/sharedStyled";
 import AddFloatingBtn from "@/components/button/AddFloatingButton";
-import { modalState } from "../../recoil/modal";
+import { modalState } from "../recoil/modal";
 import { useRecoilState } from "recoil";
 import AddToFolderModal from "@/components/modal/AddToFolderModal";
 import DefaultModal from "@/components/modal/DefaultModal";

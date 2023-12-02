@@ -54,10 +54,12 @@ const Header = () => {
     <HeaderContainer $isFixed={isFixed}>
       <nav className="contentContainer">
         <Image
+          priority
           src={LogoImg}
           id="logoImg"
           alt="logoImg"
           height="24"
+          width="133"
           onClick={() => router.push("/")}
         />
 
