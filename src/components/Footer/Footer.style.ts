@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from '@styles/color';
 import { onMobile } from '@styles/mediaQuery';
+import Link from 'next/link';
 
 export const FooterContainer = styled.div`
   display: flex;
@@ -61,7 +62,7 @@ export const FooterLinks = styled.div`
   }
 `;
 
-export const FooterLink = styled.a`
+export const FooterLink = styled(Link)`
   color: #cfcfcf;
   font-size: 1.6rem;
 

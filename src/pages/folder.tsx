@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MainDiv } from '@styles/MainDiv';
 import fetch from '@api/fetch';
 import { GetServerSidePropsContext } from 'next';
+import Layout from '@components/Layout/Layout';
 
 interface Cards {
   data: Data[];
@@ -76,7 +77,7 @@ export default function Folder({ cards, folders }: Props) {
   }, []);
 
   return (
-    <>
+    <Layout>
       <div ref={ref}>
         <AddLinkForm isScrolled={isScrolled} />
       </div>
@@ -89,6 +90,6 @@ export default function Folder({ cards, folders }: Props) {
           searchKeyword={searchKeyword}
         />
       </MainDiv>
-    </>
+    </Layout>
   );
 }

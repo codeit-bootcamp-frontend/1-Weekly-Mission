@@ -4,6 +4,7 @@ import SampleCardList from '@components/SampleCardList';
 import { MainDiv } from '@styles/MainDiv';
 import { useState } from 'react';
 import fetch from '@api/fetch';
+import Layout from '@components/Layout/Layout';
 
 export interface Folder {
   id: number;
@@ -47,12 +48,12 @@ export default function Shared({ folder }: Props) {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   return (
-    <>
+    <Layout>
       <FolderInfo folder={folder} />
       <MainDiv>
         <SearchBar setSearchKeyword={setSearchKeyword} />
         <SampleCardList searchKeyword={searchKeyword} items={folder?.links} />
       </MainDiv>
-    </>
+    </Layout>
   );
 }
