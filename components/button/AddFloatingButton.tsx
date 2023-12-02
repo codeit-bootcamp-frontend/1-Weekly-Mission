@@ -2,12 +2,32 @@ import styled from "styled-components";
 import FolderAddWhIcon from "@/public/assets/button/img_add.png";
 import { device } from "@/styles/globalStyle";
 import Image from "next/image";
+import { modalState } from "@/recoil/modal";
+import { useRecoilState } from "recoil";
 
 const AddFloatingBtn = () => {
+  const [, setModalOpened] = useRecoilState(modalState);
+
   return (
-    <AddFloatingBtnContainer>
+    <AddFloatingBtnContainer
+      onClick={() =>
+        setModalOpened((prev: any) => ({
+          ...prev,
+          defaultModal: {
+            display: true,
+            content: {
+              id: 0,
+              title: "",
+            },
+            state: "folderAdd",
+          },
+        }))
+      }
+    >
       <div className="floatingBtnTitle">폴더 추가</div>
       <Image
+        width="16"
+        height="16"
         className="floatingBtnIcon"
         src={FolderAddWhIcon}
         alt="folderAddIcon"

@@ -26,7 +26,7 @@ const Header = () => {
   });
 
   const handleProfile = useCallback(async () => {
-    const result = await request.get("/api/users/2");
+    const result = await request.get("/api/users/1");
     if (!result) return;
 
     const { data } = result;
@@ -45,7 +45,9 @@ const Header = () => {
   useEffect(() => {
     if (pathname === "/folder") {
       setIsFixed(false);
+      return;
     }
+    setIsFixed(true);
   }, [pathname]);
 
   return (

@@ -38,6 +38,7 @@ export const NoDisplayInPcBr = styled.br`
 
 export const TopWrapper = styled(Wrapper)`
   background: var(--background);
+  width: 100vw;
 `;
 
 export const TopSection = styled(Section)`

@@ -71,6 +71,10 @@ export const AddLinkInputContainer = styled.div`
     transform: translate(0%, -50%);
     right: 2rem;
     top: 50%;
+    @media all and (${device.mobile}) {
+      height: 3.7rem;
+      right: 1rem;
+    }
   }
 `;
 
