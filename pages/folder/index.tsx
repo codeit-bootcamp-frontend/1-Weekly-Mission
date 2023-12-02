@@ -100,8 +100,6 @@ const Folder = () => {
   }, [handleLinks]);
 
   const handleAddToFolderModal = () => {
-    console.log(link);
-    console.log(folderData);
     if (link.length > 0) {
       setModalOpened((prev: any) => ({
         ...prev,
@@ -124,10 +122,6 @@ const Folder = () => {
       },
     }));
   };
-
-  useEffect(() => {
-    console.log(modalOpened);
-  }, [modalOpened]);
 
   const handleShareFolderModal = (content: ISelectedFolder) => {
     setModalOpened((prev: any) => ({

@@ -14,7 +14,7 @@ const obj = {
     type: "password",
   },
   passwordConfirm: {
-    label: "이메일",
+    label: "비밀번호 확인",
     type: "password",
   },
 };
@@ -31,7 +31,11 @@ const UserInput = (props: ILabelProps) => {
     <InputContainer>
       <label htmlFor={label}>{obj[label].label}</label>
       <div className="inputBox">
-        <Input type={isOn ? "text" : obj[label].type} id={label + "Input"} />
+        <Input
+          type={isOn ? "text" : obj[label].type}
+          id={label + "Input"}
+          placeholder={"내용 입력"}
+        />
         {label !== "email" && (
           <Image
             src={isOn ? EyeOn : EyeOff}

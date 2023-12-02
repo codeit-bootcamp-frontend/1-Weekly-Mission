@@ -1,0 +1,84 @@
+import Link from "next/link";
+import {
+  InputBoxContainer,
+  SocialBoxContainer,
+  UserContentWrapper,
+  UserHeaderContainer,
+  UserWrapper,
+} from "./UserStyled";
+import Image from "next/image";
+import UserInput from "../input/UserInput";
+import DefaultBtn from "../button/DefaultButton";
+import LogoImg from "@/public/assets/common/img_logo.png";
+import GoogleIcon from "@/public/assets/user/img_google.png";
+import KakaoIcon from "@/public/assets/user/img_kakao.png";
+
+interface IState {
+  state: "signin" | "signup";
+}
+
+const User = ({ state }: IState) => {
+  const handleLogin = () => {
+    console.log("d");
+  };
+
+  return (
+    <UserWrapper>
+      <UserHeaderContainer>
+        <Link href="/">
+          <Image src={LogoImg} alt="logoImg" height="38" className="logoImg" />
+        </Link>
+        {state === "signin" ? (
+          <div className="userContainer">
+            <div className="userTitle">회원이 아닌신가요?</div>
+            <Link className="moveToPage" href="/signup">
+              회원 가입하기
+            </Link>
+          </div>
+        ) : (
+          <div className="userContainer">
+            <div className="userTitle">이미 회원이신가요?</div>
+            <Link className="moveToPage" href="/signin">
+              로그인 하기
+            </Link>
+          </div>
+        )}
+      </UserHeaderContainer>
+
+      <UserContentWrapper>
+        <InputBoxContainer>
+          <form>
+            <UserInput label="email" />
+            <UserInput label="password" />
+            {state === "signup" && <UserInput label="passwordConfirm" />}
+            {state === "signin" ? (
+              <DefaultBtn onClick={handleLogin} type="default">
+                로그인
+              </DefaultBtn>
+            ) : (
+              <DefaultBtn onClick={handleLogin} type="default">
+                회원가입
+              </DefaultBtn>
+            )}
+          </form>
+        </InputBoxContainer>
+
+        <SocialBoxContainer>
+          <div className="boxTitle">
+            {state === "signin" ? "소셜 로그인" : "다른 방식으로 가입하기"}
+          </div>
+          <div className="iconContainer">
+            <Link href="https://www.google.com/" target="_blank">
+              <Image className="socialIcon" src={GoogleIcon} alt="googleIcon" />
+            </Link>
+            <Link href="https://www.kakaocorp.com/page/" target="_blank">
+              <Image className="socialIcon" src={KakaoIcon} alt="kakaoIcon" />
+            </Link>
+          </div>
+        </SocialBoxContainer>
+      </UserContentWrapper>
+    </UserWrapper>
+  );
+};
+
+export default User;

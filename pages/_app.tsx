@@ -5,6 +5,7 @@ import Footer from "@/components/common/Footer";
 import { RecoilRoot } from "recoil";
 import Script from "next/script";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 declare global {
   interface Window {
@@ -17,18 +18,22 @@ export default function App({ Component, pageProps }: AppProps) {
     if (!window.Kakao.isInitialized())
       window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO);
   };
+  const router = useRouter();
+  const { pathname } = router;
 
   return (
     <RecoilRoot>
       <GlobalStyle />
       <Root>
-        <Header />
+        {pathname !== "/signin" && pathname !== "/signup" && <Header />}
+
         <Component {...pageProps} />
         <Script
           src="https://developers.kakao.com/sdk/js/kakao.js"
           onLoad={kakaoInit}
         />
-        <Footer />
+
+        {pathname !== "/signin" && pathname !== "/signup" && <Footer />}
       </Root>
     </RecoilRoot>
   );
