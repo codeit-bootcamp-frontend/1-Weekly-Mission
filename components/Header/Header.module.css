@@ -1,0 +1,54 @@
+.root {
+  background-color: var(--gray1);
+}
+
+.sticky {
+  top: 0;
+  position: sticky;
+}
+
+.static {
+  position: static;
+}
+
+.container {
+  padding: 2rem 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 13.3rem;
+  height: 2.4rem;
+  position: relative;
+}
+
+.button {
+  width: 12.8rem;
+}
+
+@media (max-width: 1199px) {
+  .container {
+    padding: 2rem 3.2rem;
+    margin: 0 auto;
+    max-width: 86.4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo {
+    width: 8.9rem;
+    height: 1.6rem;
+  }
+
+  .container {
+    padding: 1.3rem 3.2rem;
+  }
+
+  .button {
+    width: 8rem;
+    padding: 1rem 1.6rem;
+    font-size: 1.4rem;
+  }
+}

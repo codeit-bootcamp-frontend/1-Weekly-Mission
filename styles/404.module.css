@@ -1,0 +1,15 @@
+.root {
+  text-align: center;
+  width: 40rem;
+  margin: 25vh auto 40vh;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 130%;
+}
+
+.button {
+  width: 32rem;
+  margin: 2rem auto;
+  line-height: 100%;
+  background: var(--error);
+}

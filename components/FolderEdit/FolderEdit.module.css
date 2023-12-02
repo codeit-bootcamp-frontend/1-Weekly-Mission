@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gray4);
+}

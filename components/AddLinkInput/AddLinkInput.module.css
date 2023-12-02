@@ -1,0 +1,44 @@
+.root {
+  padding: 6rem 0 9rem;
+  background-color: var(--gray1);
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  padding: 1.6rem 2rem;
+  align-items: center;
+  background-color: var(--white);
+  border: 0.1rem solid var(--primary);
+  border-radius: 1.5rem;
+  gap: 1.2rem;
+}
+
+.imageContainer {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+
+.form {
+  width: 100%;
+  max-width: 80rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.input {
+  flex: 1;
+  border: 0;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.button {
+  padding: 1rem 1.6rem;
+  font-size: 1.4rem;
+}
