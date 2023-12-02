@@ -7,7 +7,7 @@ import kakaoIcon from "@/public/icons/kakaoicon.svg";
 import facebookIcon from "@/public/icons/facebookIcon.svg";
 import linkIcon from "@/public/icons/link.svg";
 import useScript from "@/hooks/useScript";
-import { BASE_URL } from "@/pages/api/services/config";
+import { BASE_URL } from "@/api/services/config";
 import Image from "next/image";
 
 interface DialogIconsBoxProps {

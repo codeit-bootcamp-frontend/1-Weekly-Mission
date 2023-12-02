@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
-import { getSampleFolder } from "../api/user";
+import { getSampleFolder } from "../../api/user";
 import styles from "./sharedpage.module.css";
 import ShareCard from "../../components/shareCard/ShareCard";
 import { FolderInfo, SampleFolder, SampleLinks } from "../../types/types";
 import SearchBar from "@/components/searchBar/SearchBar";
 import axios from "axios";
-import { BASE_URL, SAMPLE_FOLDER_ENDPOINT } from "../api/services/config";
+import { BASE_URL, SAMPLE_FOLDER_ENDPOINT } from "../../api/services/config";
 
 interface SharedPageProps {
   sampleFolder: SampleFolder;

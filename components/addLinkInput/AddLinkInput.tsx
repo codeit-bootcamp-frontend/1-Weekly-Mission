@@ -1,4 +1,4 @@
-import React, { ChangeEvent, RefObject, forwardRef, useState } from "react";
+import React, { ChangeEvent, forwardRef, useState } from "react";
 import styles from "./addLinkInput.module.css";
 import useModal from "@/hooks/useModal";
 
