@@ -48,9 +48,21 @@ const User = ({ state }: IState) => {
       <UserContentWrapper>
         <InputBoxContainer>
           <form>
-            <UserInput label="email" />
-            <UserInput label="password" />
-            {state === "signup" && <UserInput label="passwordConfirm" />}
+            <UserInput label="email" placeholder="이메일을 입력해주세요." />
+            <UserInput
+              label="password"
+              placeholder={
+                state === "signin"
+                  ? "비밀번호를 입력해주세요."
+                  : "영문, 숫자를 조합해 8자 이상 입력해 주세요."
+              }
+            />
+            {state === "signup" && (
+              <UserInput
+                label="passwordConfirm"
+                placeholder="비밀번호와 일치하는 값을 입력해 주세요"
+              />
+            )}
             {state === "signin" ? (
               <DefaultBtn onClick={handleLogin} type="default">
                 로그인

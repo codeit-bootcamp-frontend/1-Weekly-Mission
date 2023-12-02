@@ -4,7 +4,7 @@ import { DefaultBtnContainer } from "../button/DefaultButton";
 
 export const UserWrapper = styled(Wrapper)`
   background: var(--background);
-  height: 100vh;
+  height: 100%;
 `;
 
 export const UserHeaderContainer = styled.div`
@@ -48,11 +48,18 @@ export const UserContentWrapper = styled.div`
 export const InputBoxContainer = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 3rem auto;
+  margin: 3rem auto 3.2rem;
   width: 40rem;
 
-  ${DefaultBtnContainer} {
-    width: 100%;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+
+    ${DefaultBtnContainer} {
+      width: 100%;
+      margin-top: 0.6rem;
+    }
   }
 `;
 

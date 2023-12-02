@@ -21,11 +21,25 @@ const obj = {
 
 interface ILabelProps {
   label: "email" | "password" | "passwordConfirm";
+  placeholder: string;
 }
 
 const UserInput = (props: ILabelProps) => {
   const { label } = props;
   const [isOn, setIsOn] = useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [value, setValue] = useState("");
+
+  const handleBlur = () => {
+    //focusout 되는 경우 이벤트 처리
+    if (value === "") {
+      setErrorMsg(
+        label === "email"
+          ? "이메일을 입력해주세요."
+          : "비밀번호를 입력해주세요."
+      );
+    }
+  };
 
   return (
     <InputContainer>
@@ -34,7 +48,10 @@ const UserInput = (props: ILabelProps) => {
         <Input
           type={isOn ? "text" : obj[label].type}
           id={label + "Input"}
-          placeholder={"내용 입력"}
+          placeholder={props.placeholder}
+          onBlur={handleBlur}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
         {label !== "email" && (
           <Image
@@ -46,6 +63,7 @@ const UserInput = (props: ILabelProps) => {
           />
         )}
       </div>
+      {errorMsg !== "" && <div className="errorMsg">{errorMsg}</div>}
     </InputContainer>
   );
 };
@@ -74,6 +92,12 @@ const InputContainer = styled.div`
       cursor: pointer;
     }
   }
+
+  .errorMsg {
+    color: var(--red);
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
 `;
 
 const Input = styled.input`
@@ -84,7 +108,6 @@ const Input = styled.input`
   border: 1px solid var(--gray20);
   width: 40rem;
   height: 6rem;
-  margin-bottom: 2.4rem;
   color: var(--gray100);
   font-size: 1.6rem;
   font-weight: 400;
