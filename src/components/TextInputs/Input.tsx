@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
-import eyeOff from "src/assets/icon/eye-off.svg";
-import eyeOn from "src/assets/icon/eye-on.svg";
+import eyeOff from "/public/icon/eyes-off.svg";
+import eyeOn from "/public/icon/eyes-on.svg";
 import styled, { css } from "styled-components";
 
 const Div = styled.div`

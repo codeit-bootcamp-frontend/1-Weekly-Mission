@@ -3,7 +3,6 @@ export interface IOnClick {
 }
 
 export interface IFolderTagData {
-  //ITagButtonData
   id: number | string;
   created_at?: string;
   name: string;

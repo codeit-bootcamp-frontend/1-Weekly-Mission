@@ -1,4 +1,4 @@
-import "./Footer.css";
+import "./Footer.module.css";
 import youtubeIcon from "../../assets/image/icon-youtube.svg";
 import twitterIcon from "../../assets/image/icon-twitter.svg";
 import facebookIcon from "../../assets/image/icon-facebook.svg";
@@ -26,7 +26,7 @@ function Footer() {
   }
 
   return (
-    <footer>
+    <footer className="footer">
       <div id="footer-container">
         <h5 id="copyright">{COPYRIGHT_TEXT}</h5>
         <div id="label-container">

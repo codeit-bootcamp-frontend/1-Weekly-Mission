@@ -1,4 +1,4 @@
-import "./TagBtnContainer.css";
+import "./TagBtnContainer.module.css";
 import AddImg from "../../../assets/image/icon-add.svg";
 import AddFolder from "../../../modals/contents/AddFolder";
 import { useState } from "react";
@@ -28,8 +28,9 @@ function TagBtnContainer({
     <>
       <div className="tag_div">
         <div className="tag_container">
-          {folderTagBtnList?.map((data) => (
+          {folderTagBtnList?.map((data, index) => (
             <button
+              key={index}
               className={data.id === selectedTag ? "tag checked" : "tag"}
               id={String(data?.id)}
               data-count={data?.link?.count}

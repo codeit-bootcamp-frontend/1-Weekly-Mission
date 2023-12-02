@@ -74,6 +74,7 @@ function AddLinkToFolder({
         <Container>
           {TagListData?.map((data, index) => (
             <ListContainer
+              key={index}
               id={index}
               onClick={() => handleItemClick(index)}
               isSelected={index === SelectedItem}

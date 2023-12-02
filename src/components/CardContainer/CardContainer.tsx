@@ -1,4 +1,4 @@
-import "./CardContainer.css";
+import "./CardContainer.module.css";
 import Card from "./Card";
 import ShareImg from "../../assets/image/share.svg";
 import PenImg from "../../assets/image/pen.svg";
@@ -23,11 +23,12 @@ function CardTitleText({ text }: { text: string }) {
   const changeDeleteOpenState = (openState: boolean) =>
     setDeleteOpen(openState);
 
-  const selectedTagData: IFolderTagData[] = getFolderTagListData(true);
+  const selectedTagData: IFolderTagData[] | undefined =
+    getFolderTagListData(true);
   return (
     <div className="card-title_text">
       <h2 className="tagName_text">{text}</h2>
-      {text !== "전체" && (
+      {text !== "전체" && selectedTagData && (
         <div className="card-title_icon_container">
           <div className="card-title_icon" onClick={() => setShareOpen(true)}>
             <h5 className="card-title_icon_text">공유</h5>
@@ -71,8 +72,8 @@ function CardContainer({
     <>
       {showTitle && <CardTitleText text={cardTitleText} />}
       <section className="cards">
-        {cardListData.map((cardData) => (
-          <Card cardData={cardData} />
+        {cardListData.map((cardData, index) => (
+          <Card key={index} cardData={cardData} />
         ))}
       </section>
     </>

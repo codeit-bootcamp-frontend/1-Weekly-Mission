@@ -1,5 +1,5 @@
 /* -- footer -- */
-footer {
+.footer {
   display: flex;
   height: 160px;
   padding: 32px 104px 64px 104px;
@@ -11,20 +11,20 @@ footer {
   background: #111322;
 }
 
-footer #footer-container {
+#footer-container {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
-footer #label-container {
+#label-container {
   display: flex;
   width: 181.111px;
   align-items: flex-start;
   gap: 30px;
 }
 
-footer .footer-label {
+.footer-label {
   color: #cfcfcf;
   font-family: Arial;
   font-size: 16px;
@@ -33,20 +33,20 @@ footer .footer-label {
   line-height: normal;
 }
 
-footer #sns-container {
+#sns-container {
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
 
-footer .sns-icon {
+.sns-icon {
   width: 20px;
   height: 20px;
   text-decoration: none;
   color: #ffffff;
 }
 
-footer #copyright {
+#copyright {
   color: #676767;
   text-align: center;
   font-family: Arial;

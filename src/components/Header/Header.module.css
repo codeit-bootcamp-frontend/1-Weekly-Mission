@@ -1,4 +1,4 @@
-header {
+.header {
   display: flex;
   width: 100%;
   padding: 32px 60px;
@@ -8,7 +8,7 @@ header {
   background: #f0f6ff;
 }
 
-.header-content {
+.header_content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,34 +16,32 @@ header {
   white-space: nowrap;
 }
 
-.header-content__userDiv {
+.header_content__userDiv {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.header-content__userDiv__userImg {
-  width: 28px;
-  height: 28px;
+.header_content__userDiv__userImg {
   flex-shrink: 0;
   border-radius: 50%;
 }
 
-.header-content__userDiv__emailTxt {
+.header_content__userDiv__emailTxt {
   font-weight: 400;
 }
 
 @media (max-width: 767px) {
-  header {
+  .header {
     padding: 18px 32px;
   }
-  .header-content__logoImg {
+  .header_content__logoImg {
     height: 16px;
   }
-  .header-content__userDiv {
+  .header_content__userDiv {
     gap: 0px;
   }
-  .header-content__userDiv__emailTxt {
+  .header_content__userDiv__emailTxt {
     content-visibility: hidden;
   }
 }

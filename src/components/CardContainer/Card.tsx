@@ -1,4 +1,4 @@
-import "./CardContainer.css";
+import "./CardContainer.module.css";
 import NoCardDataImg from "../../assets/image/img-card--noimg.png";
 import StarIcon from "../../assets/image/icon-star.svg";
 import ThreeDotsIcon from "../../assets/image/kebab.svg";

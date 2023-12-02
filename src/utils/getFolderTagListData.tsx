@@ -2,22 +2,44 @@ import { HTMLAttributes } from "react";
 import { IFolderTagData } from "./types/common.types";
 
 function getFolderTagListData(isSelectedTagNeeded = false) {
-  const TagListDataEls = isSelectedTagNeeded
-    ? document.querySelectorAll(".tag.checked")
-    : document.querySelectorAll(".tag");
+  // const isBrowser = typeof window !== "undefined";
 
-  const TagListData: IFolderTagData[] = [...TagListDataEls].map((tagData) => {
-    const el = tagData as HTMLElement;
-    const attributes = tagData?.attributes as HTMLAttributes<HTMLButtonElement>;
+  // const TagListDataEls =
+  //   isBrowser && isSelectedTagNeeded
+  //     ? document.querySelectorAll(".tag.checked")
+  //     : document.querySelectorAll(".tag");
 
-    return {
-      id: Number(attributes.id),
-      name: tagData?.innerHTML,
+  const mock = [
+    {
+      id: 1,
+      name: "전체",
       link: {
-        count: Number(el?.dataset.count),
+        count: 3,
       },
-    };
-  });
+    },
+    {
+      id: 1,
+      name: "전체",
+      link: {
+        count: 3,
+      },
+    },
+  ];
+
+  // const TagListData: IFolderTagData[] = [...TagListDataEls].map((tagData) => {
+  //   const el = tagData as HTMLElement;
+  //   const attributes = tagData?.attributes as HTMLAttributes<HTMLButtonElement>;
+
+  //   return {
+  //     id: Number(attributes.id),
+  //     name: String(tagData?.innerHTML),
+  //     link: {
+  //       count: Number(el?.dataset.count),
+  //     },
+  //   };
+  // });
+  const TagListData = mock;
+
   return [...TagListData]; // TagListData: nodeList type
 }
 

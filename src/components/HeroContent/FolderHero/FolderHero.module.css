@@ -1,5 +1,5 @@
 /* -- folder hero section -- */
-.hero--folder {
+.hero__folder {
   display: flex;
   width: 100%;
   margin: 0 auto;
@@ -11,7 +11,7 @@
 }
 
 @media (max-width: 767px) {
-  .hero--folder {
+  .hero__folder {
     padding: 10px 0 40px;
   }
 }
@@ -21,13 +21,13 @@
   position: relative;
 }
 
-.div-link > div {
+.div_link > div {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.input-link {
+.input_link {
   justify-content: space-between;
   border: none;
   display: flex;

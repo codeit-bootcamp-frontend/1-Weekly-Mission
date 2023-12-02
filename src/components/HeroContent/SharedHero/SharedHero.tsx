@@ -1,4 +1,4 @@
-import "./SharedHero.css";
+import "./SharedHero.module.css";
 import { useEffect, useState } from "react";
 import requestData from "../../../services/api";
 import noUserImg from "../../../assets/image/icon-myprofile.svg";
