@@ -1,37 +1,37 @@
 import React, { useEffect } from "react";
-import { getLogin } from "@/api/api";
-import { useAsync } from "@/hooks/useAsync";
+import Image from "next/image";
+import Link from "next/link";
 
-const Nav = () => {
-  const [userEmail, getLoginAsync] = useAsync(getLogin);
-
-  useEffect(() => {
-    getLoginAsync();
-  }, []);
-
+const Nav = ({ userEmail }) => {
   return (
     <>
       <nav>
         <div className="gnb">
-          <a href="/">
-            <img
-              className="logo"
+          <Link href="/">
+            <Image
               src="/images/logo.svg"
               alt="홈으로 연결된 Linkbrary 로고"
+              className="logo"
+              width={100}
+              height={100}
             />
-          </a>
+          </Link>
           {userEmail ? (
             <div className="cta cta-short-account">
               <div>
-                <img
+                <Image
                   className="accountImg1"
                   src="images/Ellipse.svg"
                   alt="계정 배경 이미지"
+                  width={33}
+                  height={33}
                 />
-                <img
+                <Image
                   className="accountImg2"
                   src="images/myprofile.svg"
                   alt="계정 이미지"
+                  width={15}
+                  height={15}
                 />
               </div>
               <div>
