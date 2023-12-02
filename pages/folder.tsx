@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { FolderProvider } from "../src/context/FolderContext";
 import EmptyLinkScreen from "../src/components/Folder/Main/EmptyLinkScreen";
 import { SelectedFolderInfo } from "../src/types";
+import { TABLET_SIZE } from "@/src/global/mediaQuery";
 
 function Folder() {
   // const { id } = useParams();  (path='/folder/:id')
@@ -61,7 +62,7 @@ const TopArea = styled.div`
   @media (max-width: 1124px) {
     padding: 6rem 20rem 9rem 20rem;
   }
-  @media (max-width: 779px) {
+  @media (max-width: ${TABLET_SIZE}) {
     padding: 6rem 3.25rem 9rem 3.25rem;
   }
 `;

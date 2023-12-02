@@ -21,6 +21,7 @@ import SearchBarCloseIcon from "./search_bar_close_button.svg";
 import StarIcon from "./star.svg";
 import IconEyeOff from "./eye-off.svg";
 import IconEyeOn from "./eye-on.svg";
+import ProfileEmptyIcon from "./Profile_empty_icon.svg";
 
 export {
   FooterIconFacebook,
@@ -46,4 +47,5 @@ export {
   StarIcon,
   IconEyeOff,
   IconEyeOn,
+  ProfileEmptyIcon,
 };

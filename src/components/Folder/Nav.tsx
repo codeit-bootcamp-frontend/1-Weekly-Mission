@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import * as React from "react";
 import Link from "next/link";
+import { NavLogo, ProfileEmptyIcon } from "@/public/assets";
+import { PC_SIZE, TABLET_SIZE } from "@/src/global/mediaQuery";
 
 interface NavProps {
   account: {
@@ -13,8 +15,8 @@ interface NavProps {
 }
 
 function Nav({ account, setSuccess, isSticky }: NavProps) {
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [userProfileImg, setUserProfileImg] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState("");
+  const [userProfileImg, setUserProfileImg] = useState("");
 
   const handleClick = () => {
     if (!account) {
@@ -42,11 +44,15 @@ function Nav({ account, setSuccess, isSticky }: NavProps) {
     <Navigation isSticky={isSticky}>
       <NavContents>
         <Link href="/">
-          <Logo src="/assets/Nav_logo.svg" alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
+          <Logo alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
         </Link>
         {userEmail && (
           <Account>
-            <ProfileImg src={userProfileImg !== null ? userProfileImg : undefined} alt="프로필 이미지" />
+            {userProfileImg !== null ? (
+              <ProfileImg src={userProfileImg} alt="프로필 이미지" />
+            ) : (
+              <ProfileEmptyIcon alt="프로필 이미지 없음" />
+            )}
             <Email>{userEmail}</Email>
           </Account>
         )}
@@ -87,20 +93,20 @@ const NavContents = styled.div`
   flex: 0 1 152rem;
   gap: 0.8rem;
 
-  @media (max-width: 1199px) {
+  @media (max-width: ${PC_SIZE}) {
     min-width: 32rem;
     flex: 0 1 104rem;
   }
 `;
 
-const Logo = styled.img`
+const Logo = styled(NavLogo)`
   width: 13.3rem;
   height: 2.4rem;
   cursor: pointer;
 
-  @media (max-width: 767px) {
-    height: 1.6rem;
-    width: auto;
+  @media (max-width: ${TABLET_SIZE}) {
+    max-height: 1.6rem;
+    max-width: 8.8667rem;
   }
 `;
 
@@ -139,7 +145,7 @@ const LoginButton = styled.button`
     text-decoration: underline;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: ${TABLET_SIZE}) {
     font-size: 1.4rem;
     padding: 1rem 1.6rem;
     width: 8rem;

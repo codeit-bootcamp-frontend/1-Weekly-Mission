@@ -4,17 +4,13 @@ module.exports = withImages();
 
 const nextConfig = {
   reactStrictMode: true,
-  presets: ["next/babel"],
-  plugins: [
-    [
-      "styled-components",
-      {
-        ssr: true,
-        displayName: true,
-        preprocess: false,
-      },
-    ],
-  ],
+  compiler: {
+    styledComponents: {
+      displayName: true,
+      ssr: true,
+      fileName: false,
+    },
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

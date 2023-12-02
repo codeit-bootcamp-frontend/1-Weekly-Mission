@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import * as React from "react";
 import Link from "next/link";
+import { FooterIconFacebook, FooterIconInstagram, FooterIconTwitter, FooterIconYoutube } from "@/public/assets";
 
 function Footer() {
   return (
@@ -13,16 +14,16 @@ function Footer() {
         </Info>
         <WebsiteLinks>
           <Link href="https://www.facebook.com/" target="_blank" rel="noreferrer noopener">
-            <img src="/assets/Footer-facebook-icon.svg" alt="페이스북 아이콘: 누르면 해당 홈페이지로 이동" />
+            <FooterIconFacebook alt="페이스북 아이콘: 누르면 해당 홈페이지로 이동" />
           </Link>
           <Link target="_blank" href="https://twitter.com/" rel="noreferrer noopener">
-            <img src="/assets/Footer-twitter-icon.svg" alt="트위터 아이콘: 누르면 해당 홈페이지로 이동" />
+            <FooterIconTwitter alt="트위터 아이콘: 누르면 해당 홈페이지로 이동" />
           </Link>
           <Link target="_blank" href="https://www.youtube.com/" rel="noreferrer noopener">
-            <img src="/assets/Footer-youtube-icon.svg" alt="유튜브 아이콘: 누르면 해당 홈페이지로 이동" />
+            <FooterIconYoutube alt="유튜브 아이콘: 누르면 해당 홈페이지로 이동" />
           </Link>
           <Link target="_blank" href="https://www.instagram.com/" rel="noreferrer noopener">
-            <img src="/assets/Footer-instagram-icon.svg" alt="인스타그램 아이콘: 누르면 해당 홈페이지로 이동" />
+            <FooterIconInstagram alt="인스타그램 아이콘: 누르면 해당 홈페이지로 이동" />
           </Link>
         </WebsiteLinks>
       </Content>

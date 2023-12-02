@@ -18,9 +18,6 @@ export default function Home() {
           <Button href="/folder" as="a">
             Folder
           </Button>
-          <Button href="/button" as="a">
-            Button
-          </Button>
         </LinkContainer>
       </>
     </>
