@@ -4,7 +4,7 @@ import { DefaultBtnContainer } from "../button/DefaultButton";
 
 export const UserWrapper = styled(Wrapper)`
   background: var(--background);
-  height: 100%;
+  height: 100vh;
 `;
 
 export const UserHeaderContainer = styled.div`
@@ -73,7 +73,6 @@ export const SocialBoxContainer = styled.section`
   border: 1px solid var(--gray20);
   background: var(--gray10);
   align-items: center;
-  margin-bottom: 25.2rem;
 
   .boxTitle {
     color: var(--gray100);
