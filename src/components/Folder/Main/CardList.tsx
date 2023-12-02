@@ -2,6 +2,7 @@ import styled from "styled-components";
 import EmptyLinkScreen from "./EmptyLinkScreen";
 import CardDivide from "./CardDivide";
 import { SelectedFolderContentsInfo, SharedLinkInfo } from "../../../types";
+import useFilteredCards from "@/src/hooks/useFilteredCards";
 
 interface Props {
   folderCards: SharedLinkInfo[] | SelectedFolderContentsInfo[];
@@ -9,30 +10,13 @@ interface Props {
 }
 
 const CardList = ({ folderCards, searchKeyword }: Props) => {
-  console.log(folderCards);
-
-  if (folderCards && folderCards.length > 0 && searchKeyword !== "" && "created_at" in folderCards[0]) {
-    folderCards = (folderCards as SelectedFolderContentsInfo[]).filter(
-      (folderCard) =>
-        folderCard.description?.includes(searchKeyword) ||
-        folderCard.title?.includes(searchKeyword) ||
-        folderCard.url?.includes(searchKeyword)
-    );
-  }
-  if (folderCards && folderCards.length > 0 && searchKeyword !== "" && "createdAt" in folderCards[0]) {
-    folderCards = (folderCards as SharedLinkInfo[]).filter(
-      (folderCard) =>
-        folderCard.description?.includes(searchKeyword) ||
-        folderCard.title?.includes(searchKeyword) ||
-        folderCard.url?.includes(searchKeyword)
-    );
-  }
+  const filteredCards = useFilteredCards(folderCards, searchKeyword);
 
   return (
     <>
-      {folderCards && folderCards.length > 0 ? (
+      {filteredCards && filteredCards.length > 0 ? (
         <Container>
-          <CardDivide folderCards={folderCards} />
+          <CardDivide folderCards={filteredCards} />
         </Container>
       ) : (
         <EmptyLinkScreen>저장된 링크가 없습니다🥲</EmptyLinkScreen>
