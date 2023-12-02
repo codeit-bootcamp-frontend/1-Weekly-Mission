@@ -18,6 +18,7 @@ const FolderMain = ({ selectedFolder, userID }: Props) => {
 
   const { folderId, changeFolderId } = folderContext;
   const folderContentsInfo = useGetSearchFolder(userID, folderId);
+
   const [title, setTitle] = useState("전체");
   const [searchKeyword, setSearchKeyword] = useState<string>("");
 

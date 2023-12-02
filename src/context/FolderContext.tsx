@@ -14,7 +14,7 @@ export const FolderContext = createContext<FolderContextType | undefined>(undefi
 
 // Provider를 사용하여 데이터 제공
 export const FolderProvider = ({ children }: ChildrenProp) => {
-  const [folderId, setFolderId] = useState(-1);
+  const [folderId, setFolderId] = useState(0);
 
   // 데이터 업데이트 콜백 함수
   const changeFolderId = (newId: number) => {

@@ -14,7 +14,7 @@ const useGetSelectedFolder = (userID: number) => {
 
   useEffect(() => {
     getData(userID);
-  }, [getData, userID]);
+  }, []);
 
   return folderInfo;
 };

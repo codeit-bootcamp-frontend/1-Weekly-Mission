@@ -36,7 +36,7 @@ function Nav({ account, setSuccess, isSticky }: NavProps) {
   };
 
   React.useEffect(() => {
-    // 주석 풀면 자동 로그인
+    // 주석 풀면 자동 로그인, 주석처리하면 로그인 버튼 클릭 시 로그인
     handleLoginInfo(account);
   }, [account]);
 

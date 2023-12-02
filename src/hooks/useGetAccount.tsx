@@ -1,13 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { getAccount } from "../global/api";
-
-interface Props {
-  email: string;
-  image_source: string;
-}
+import { AccountInfo } from "../types";
 
 const useGetAccount = (userId: number) => {
-  const [account, setAccount] = useState<Props | null>(null);
+  const [account, setAccount] = useState<AccountInfo | null>(null);
 
   const getData = useCallback(async () => {
     const userAccount = await getAccount(userId);

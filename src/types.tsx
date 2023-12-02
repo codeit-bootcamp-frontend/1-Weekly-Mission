@@ -39,3 +39,8 @@ export interface SelectedFolderContentsInfo {
   image_source?: string;
   folder_id?: number;
 }
+
+export interface AccountInfo {
+  email: string;
+  image_source: string;
+}

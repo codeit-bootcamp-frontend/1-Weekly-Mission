@@ -1,13 +1,8 @@
+import { SelectedFolderInfo } from "../types";
+
 const URL = "https://bootcamp-api.codeit.kr/api/";
 
 type userID = number;
-
-interface Data {
-  id: number;
-  created_at: number;
-  name: string;
-  user_id: userID;
-}
 
 export const getAccount = async (userId: userID) => {
   const index = userId - 1;
@@ -51,7 +46,7 @@ export const getSelectedFolder = async (userID: userID) => {
     },
   };
 
-  const updateData = (currentData: Data[]) => {
+  const updateData = (currentData: SelectedFolderInfo[]) => {
     return [allFolder, ...currentData];
   };
   body.data = updateData(body.data);
