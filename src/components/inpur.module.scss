@@ -1,0 +1,38 @@
+
+const InputWrapper{
+  display: flex;
+  width: 350px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+  &:focus {
+    outline: none;
+  }
+
+  border: 1px solid ${({ $focusIn }) => ($focusIn ? "#6D6AFE" : "#CCD5E3")};
+  border-color: ${({ $isError }) => ($isError ? "#FF5B56" : "#CCD5E3")};
+
+  background: #fff;
+  color: black;
+`;
+const EyeImage = styled.img`
+  position: absolute;
+  top: 18px;
+  right: 15px;
+`;
+const InputContainer = styled.div`
+  display: flex;
+  width: 350px;
+  justify-content: center;
+
+  position: relative;
+  flex-direction: column;
+`;
+
+const InputError = styled.p`
+  display: flex;
+  color: #ff5b56;
+`;

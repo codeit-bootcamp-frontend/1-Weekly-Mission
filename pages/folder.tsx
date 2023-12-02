@@ -1,18 +1,18 @@
-import { useGetFolders } from "folder/data-access-folder/useGetFolders";
-import { useGetLinks } from "link/data-access-link/useGetLinks";
-import { Layout } from "sharing/feature-layout/Layout";
-import { FolderLayout } from "page-layout/FolderLayout/FolderLayout";
+import { useGetFolders } from "folder/data-access-folder";
+import { useGetLinks } from "link/data-access-link";
+import { Layout } from "sharing/feature-layout";
+import { FolderLayout } from "page-layout/FolderLayout";
 import { FolderToolBar } from "folder/feature-folder-tool-bar";
-import { SearchBar } from "link/ui-search-bar/SearchBar";
+import { SearchBar } from "link/ui-search-bar";
 import { useState } from "react";
 import { ALL_LINKS_ID } from "link/data-access-link/constant";
-import { LinkForm } from "link/feature-link-form/LinkForm";
-import { CardList } from "link/feature-card-list/CardList";
+import { LinkForm } from "link/feature-link-form";
+import { CardList } from "link/feature-card-list";
 import { SelectedFolderId } from "folder/type";
 import { useSearchLink } from "link/util-search-link/useSearchLink";
-import { useIntersectionObserver } from "sharing/util";
+import { useIntersectionObserver } from "sharing/util/useIntersectionObserver";
 
-export default function Folder() {
+export default function FolderPage() {
   const { data: folders } = useGetFolders();
   const [selectedFolderId, setSelectedFolderId] =
     useState<SelectedFolderId>(ALL_LINKS_ID);
@@ -32,6 +32,8 @@ export default function Folder() {
             onCloseClick={handleCloseClick}
           />
         }
+        //
+        //!주석 해제하면 오류 발생!
         // folderToolBar={
         //   <FolderToolBar
         //     folders={folders}
