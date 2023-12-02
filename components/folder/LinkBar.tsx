@@ -1,33 +1,38 @@
-import { useState, useRef, FormEvent } from 'react';
+import { useState, useRef, FormEvent, Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 import Button from '@/components/common/Button';
-import ModalPortal from '@/components/common/Modal/ModalPortal';
-import AddToFolderModal from '@/components/common/Modal/AddToFolderModal';
+import Modal from '../common/Modal/Modal';
 import useModal from '@/hooks/useModal';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
-function LinkBar() {
+interface Props {
+  initialValue: string;
+  setInputValue: Dispatch<SetStateAction<string>>;
+}
+
+function LinkBar({ initialValue = '', setInputValue }: Props) {
   const { isOpen, handleModalOpen, handleModalClose } = useModal();
-  const [inputValue, setInputValue] = useState('');
+  const [inputLink, setInputLink] = useState('');
   const input = useRef<HTMLInputElement>(null);
 
   function handleLinkAdd(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
-    setInputValue(input.current?.value || '');
+    if (!input.current?.value) return alert('링크를 입력해주세요!');
+    setInputLink(input.current?.value);
     handleModalOpen();
+  }
+
+  function handleInputChange(): void {
+    setInputValue(input.current?.value || '');
   }
 
   return (
     <>
       <Container onSubmit={handleLinkAdd}>
-        <Input ref={input} placeholder="링크를 추가해 보세요" />
+        <Input ref={input} value={initialValue} placeholder="링크를 추가해 보세요" onChange={handleInputChange} />
         <Button type="add">추가하기</Button>
       </Container>
-      {isOpen && (
-        <ModalPortal>
-          <AddToFolderModal url={inputValue} onClickClose={() => handleModalClose()} />
-        </ModalPortal>
-      )}
+      {isOpen && <Modal type="add" title="폴더에 추가" data={inputLink} button="추가하기" onClickClose={() => handleModalClose()} />}
     </>
   );
 }

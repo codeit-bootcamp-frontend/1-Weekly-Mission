@@ -2,8 +2,7 @@ import styled, { keyframes, css } from 'styled-components';
 import addButton from '@/public/assets/images/add.svg';
 import addMobileButton from '@/public/assets/images/add_mobile.svg';
 import useGetWindowWidth from '@/hooks/useGetWindowWidth';
-import ModalPortal from '@/components/common/Modal/ModalPortal';
-import InputModal from '@/components/common/Modal/InputModal';
+import Modal from '../common/Modal/Modal';
 import useModal from '@/hooks/useModal';
 import Image from 'next/image';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
@@ -20,11 +19,7 @@ function AddFolderBtn() {
         <AddFolder>폴더 추가</AddFolder>
         {innerWidth < 768 ? <Image src={addMobileButton} alt="폴더 추가 버튼" /> : <Image src={addButton} alt="폴더 추가 버튼" />}
       </Container>
-      {isOpen && (
-        <ModalPortal>
-          <InputModal title="폴더 추가" btn="추가하기" onClickClose={() => handleModalClose()} />
-        </ModalPortal>
-      )}
+      {isOpen && <Modal type="input" title="폴더 추가" button="추가하기" onClickClose={() => handleModalClose()} />}
     </>
   );
 }

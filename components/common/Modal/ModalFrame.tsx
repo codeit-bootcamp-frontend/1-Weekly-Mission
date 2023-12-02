@@ -3,6 +3,7 @@ import closeBtn from '@/public/assets/images/close.svg';
 import useNotScroll from '@/hooks/useNotScroll';
 import { ReactNode } from 'react';
 import Image from 'next/image';
+import ModalPortal from './ModalPortal';
 
 interface Props {
   children: ReactNode;
@@ -13,13 +14,15 @@ function ModalFrame({ children, onClickClose }: Props) {
   useNotScroll();
 
   return (
-    <div>
-      <Mask onClick={onClickClose} />
-      <Body>
-        <CloseIcon src={closeBtn} alt="모달 닫기 버튼" onClick={onClickClose} />
-        <Container>{children}</Container>
-      </Body>
-    </div>
+    <>
+      <ModalPortal>
+        <Mask onClick={onClickClose} />
+        <Body>
+          <CloseIcon src={closeBtn} alt="모달 닫기 버튼" onClick={onClickClose} />
+          <Container>{children}</Container>
+        </Body>
+      </ModalPortal>
+    </>
   );
 }
 

@@ -1,4 +1,5 @@
 import { HOST } from '@/constants/path';
+import { MouseEvent } from 'react';
 
 declare global {
   interface Window {
@@ -37,4 +38,16 @@ export async function copyLink(url: string): Promise<void> {
   } catch (error) {
     alert('클립보드에 링크 복사를 실패했어요ㅠ_ㅠ');
   }
+}
+
+/**
+ * '공유' 모달 아이콘 클릭 이벤트 핸들러
+ */
+export function handleShareClick(event: MouseEvent, folderId: number | undefined, data: string): void {
+  const SHARE_URL = `shared?user=1&folder=${folderId}`;
+  const el = event.target as HTMLElement;
+  const target = el?.closest('div')?.children[1];
+  if (target?.textContent === '카카오톡') shareKakaotalk(data, SHARE_URL);
+  if (target?.textContent === '페이스북') shareFacebook(SHARE_URL);
+  if (target?.textContent === '링크 복사') copyLink(SHARE_URL);
 }

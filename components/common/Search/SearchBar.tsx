@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import { useRef, FormEvent } from 'react';
+import { useRef, FormEvent, Dispatch, SetStateAction } from 'react';
 import searchImg from '@/public/assets/images/search.svg';
 import closeIcon from '@/public/assets/images/search_close.svg';
 
 interface Props {
-  search?: boolean;
-  setSearch?: any;
-  setKeyword?: any;
+  search: boolean;
+  setSearch: Dispatch<SetStateAction<boolean>>;
+  setKeyword: Dispatch<SetStateAction<string>>;
 }
 
 function SearchBar({ search, setSearch, setKeyword }: Props) {
@@ -16,13 +16,13 @@ function SearchBar({ search, setSearch, setKeyword }: Props) {
   function handleSearchSubmit(event: FormEvent) {
     event.preventDefault();
     setSearch(true);
-    setKeyword(input.current?.value);
+    setKeyword(input.current?.value || '');
   }
 
   function handleSearchClose() {
     setSearch(false);
     setKeyword('');
-    window.location.reload();
+    if (input.current) input.current.value = '';
   }
 
   return (

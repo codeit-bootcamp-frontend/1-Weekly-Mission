@@ -2,10 +2,7 @@ import { CHOICES } from '@/constants/default';
 import { useState } from 'react';
 import { findFolderTitle } from '@/lib/utils/findFolderTitle';
 import styled from 'styled-components';
-import ModalPortal from '@/components/common/Modal/ModalPortal';
-import InputModal from '@/components/common/Modal/InputModal';
-import DeleteModal from '@/components/common/Modal/DeleteModal';
-import ShareModal from '@/components/common/Modal/ShareModal';
+import Modal from '../common/Modal/Modal';
 import useModal from '@/hooks/useModal';
 import { FolderType } from '@/constants/dataType';
 import { MouseEvent } from 'react';
@@ -43,11 +40,13 @@ function ChoiceBar({ folders, selectedFolderId }: Props) {
         ))}
       </Box>
       {isOpen && (
-        <ModalPortal>
-          {modal === '공유' && <ShareModal data={folderTitle} folderId={selectedFolderId} onClickClose={() => handleModalClose()} />}
-          {modal === '이름 변경' && <InputModal title="폴더 이름 변경" btn="변경하기" onClickClose={() => handleModalClose()} />}
-          {modal === '삭제' && <DeleteModal title="폴더 삭제" data={folderTitle} onClickClose={() => handleModalClose()} />}
-        </ModalPortal>
+        <>
+          {modal === '공유' && (
+            <Modal type="share" title="폴더 공유" data={folderTitle} folderId={selectedFolderId} onClickClose={() => handleModalClose()} />
+          )}
+          {modal === '이름 변경' && <Modal type="input" title="폴더 이름 변경" button="변경하기" onClickClose={() => handleModalClose()} />}
+          {modal === '삭제' && <Modal type="delete" title="폴더 삭제" data={folderTitle} button="삭제하기" onClickClose={() => handleModalClose()} />}
+        </>
       )}
     </>
   );

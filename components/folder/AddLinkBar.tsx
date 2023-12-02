@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import LinkBar from './LinkBar';
 import { useObserver } from '@/hooks/useObserver';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { useState } from 'react';
 
 function AddLinkBar() {
+  const [inputValue, setInputValue] = useState('');
   const visibleFooter = useObserver('footer');
   let top = useObserver('.top_link_bar');
   if (visibleFooter) top = true;
@@ -11,10 +13,10 @@ function AddLinkBar() {
   return (
     <>
       <Top className="top_link_bar">
-        <LinkBar />
+        <LinkBar initialValue={inputValue} setInputValue={setInputValue} />
       </Top>
       <Bottom $display={!top}>
-        <LinkBar />
+        <LinkBar initialValue={inputValue} setInputValue={setInputValue} />
       </Bottom>
     </>
   );

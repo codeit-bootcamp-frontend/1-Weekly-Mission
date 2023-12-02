@@ -75,7 +75,7 @@ const ModalBtn = styled(BlueGrd)`
 const DeleteBtn = styled.button`
   width: 280px;
   padding: 16px 20px;
-  margin-top: 24px;
+  margin-top: 14px;
   color: white;
   font-size: 1.6rem;
   font-weight: 600;

@@ -1,8 +1,6 @@
 import { useState } from 'react';
+import Modal from './Modal/Modal';
 import KebabPopup from './Modal/KebabPopup';
-import DeleteModal from './Modal/DeleteModal';
-import ModalPortal from './Modal/ModalPortal';
-import AddToFolderModal from './Modal/AddToFolderModal';
 import kebabIcon from '@/public/assets/images/kebab.svg';
 import useModal from '@/hooks/useModal';
 import { MouseEvent } from 'react';
@@ -34,10 +32,10 @@ function Kebab({ url }: Props) {
         {popup && <KebabPopup onOpenDelete={() => handleModalClick('delete')} onOpenFolderAdd={() => handleModalClick('add')} />}
       </div>
       {isOpen && (
-        <ModalPortal>
-          {modal === 'delete' && <DeleteModal title="링크 삭제" data={url} onClickClose={() => handleModalClose()} />}
-          {modal === 'add' && <AddToFolderModal url={url} onClickClose={() => handleModalClose()} />}
-        </ModalPortal>
+        <>
+          {modal === 'delete' && <Modal type="delete" title="링크 삭제" data={url} button="삭제하기" onClickClose={() => handleModalClose()} />}
+          {modal === 'add' && <Modal type="add" title="폴더에 추가" data={url} button="추가하기" onClickClose={() => handleModalClose()} />}
+        </>
       )}
     </>
   );
