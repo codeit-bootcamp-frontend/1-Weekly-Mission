@@ -11,7 +11,7 @@ interface Props {
 const CardList = ({ folderCards, searchKeyword }: Props) => {
   console.log(folderCards);
 
-  if (folderCards && searchKeyword !== "" && "created_at" in folderCards[0]) {
+  if (folderCards && folderCards.length > 0 && searchKeyword !== "" && "created_at" in folderCards[0]) {
     folderCards = (folderCards as SelectedFolderContentsInfo[]).filter(
       (folderCard) =>
         folderCard.description?.includes(searchKeyword) ||
@@ -19,7 +19,7 @@ const CardList = ({ folderCards, searchKeyword }: Props) => {
         folderCard.url?.includes(searchKeyword)
     );
   }
-  if (folderCards && searchKeyword !== "" && "createdAt" in folderCards[0]) {
+  if (folderCards && folderCards.length > 0 && searchKeyword !== "" && "createdAt" in folderCards[0]) {
     folderCards = (folderCards as SharedLinkInfo[]).filter(
       (folderCard) =>
         folderCard.description?.includes(searchKeyword) ||

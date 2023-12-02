@@ -1,11 +1,11 @@
 import * as React from "react";
-import GlobalStyle from "../global/globalStyles";
-import Nav from "../components/Folder/Nav";
-import Footer from "../components/Folder/Footer";
-import Header from "../components/Folder/Header";
-import SharedMain from "../components/Folder/Main/SharedMain";
-import useGetAccount from "../hooks/useGetAccount";
-import useGetShareFolder from "../hooks/useGetShareFolder";
+import GlobalStyle from "../styles/global-styles";
+import Nav from "../src/components/Folder/Nav";
+import Footer from "../src/components/Folder/Footer";
+import Header from "../src/components/Folder/Header";
+import SharedMain from "../src/components/Folder/Main/SharedMain";
+import useGetAccount from "../src/hooks/useGetAccount";
+import useGetShareFolder from "../src/hooks/useGetShareFolder";
 import { useState, useEffect } from "react";
 
 function Shared() {

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import linkIcon from "../../assets/link_icon.svg";
 import { useState } from "react";
 import ModalBox from "../modal/ModalBox";
 import * as React from "react";
@@ -35,7 +34,7 @@ function LinkAddInput({ selectedFolder }: Prop) {
     <>
       <Form onSubmit={handleSubmit}>
         <div>
-          <img src={linkIcon} alt="링크 추가 아이콘" />
+          <img src="/assets/link_icon.svg" alt="링크 추가 아이콘" />
           <Input name="url" type="text" autoComplete="on" required placeholder="링크를 추가해 보세요"></Input>
         </div>
         <Button>추가하기</Button>

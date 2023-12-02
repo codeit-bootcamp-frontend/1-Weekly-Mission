@@ -1,7 +1,5 @@
 import { formatDateDifference, formatDate } from "../../global/utils";
-import EmptyCardImg from "../../assets/Card_img.svg";
 import styled from "styled-components";
-import starIcon from "../../assets/star.svg";
 import Kebab from "./Kebab";
 import * as React from "react";
 import { SelectedFolderContentsInfo, SharedLinkInfo } from "../../types";
@@ -21,8 +19,12 @@ function Card({ item }: { item: SharedLinkInfo | SelectedFolderContentsInfo }) {
   return (
     <Container>
       <ImgArea>
-        <StarIcon src={starIcon} alt="즐겨찾기 아이콘" />
-        {imageSource ? <CardImg src={imageSource} alt="이미지" /> : <EmptyImg src={EmptyCardImg} alt="이미지 없음" />}
+        <StarIcon src="/assets/star.svg" alt="즐겨찾기 아이콘" />
+        {imageSource ? (
+          <CardImg src={imageSource} alt="이미지" />
+        ) : (
+          <EmptyImg src="/assets/Card_img.svg" alt="이미지 없음" />
+        )}
       </ImgArea>
       <InfoArea>
         <CardExtraInfo>

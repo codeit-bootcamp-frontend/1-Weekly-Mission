@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useState } from "react";
-import checkIcon from "../../../assets/check_icon.svg";
 import CTA from "../CTA";
 import * as React from "react";
 import { SelectedFolderInfo } from "../../../types";
@@ -32,7 +31,7 @@ function AddModal({ selectedFolder }: Prop) {
               <Area>
                 <P>{folder.name}</P>
                 <P2>{`${folder.link.count}개 링크`}</P2>
-                {isIconVisible === index && <Img key={index} src={checkIcon} />}
+                {isIconVisible === index && <Img key={index} src="/assets/check_icon.svg" />}
               </Area>
             </Button>
           );

@@ -4,9 +4,6 @@ import CardList from "./CardList";
 import FolderHeader from "./FolderHeader";
 import LinkSearchInput from "../../UI/LinkSearchInput";
 import Option from "../../UI/Option";
-import shareIcon from "../../../assets/share_icon.svg";
-import penIcon from "../../../assets/pen_icon.svg";
-import deleteIcon from "../../../assets/delete_icon.svg";
 import { FolderContext } from "../../../context/FolderContext";
 import useGetSearchFolder from "../../../hooks/useGetSearchFolder";
 import { SelectedFolderContentsInfo, SelectedFolderInfo } from "../../../types";
@@ -44,13 +41,19 @@ const FolderMain = ({ selectedFolder, userID }: Props) => {
           <h1>{title}</h1>
           {folderId > 0 && checkEmptyFolder > 0 && (
             <Options>
-              <Option icon={shareIcon} modal={"폴더 공유"} title={title} folderId={folderId} userID={userID}>
+              <Option
+                icon="/assets/share_icon.svg"
+                modal={"폴더 공유"}
+                title={title}
+                folderId={folderId}
+                userID={userID}
+              >
                 공유
               </Option>
-              <Option icon={penIcon} modal={"폴더 이름 변경"}>
+              <Option icon="/assets/pen_icon.svg" modal={"폴더 이름 변경"}>
                 이름 변경
               </Option>
-              <Option icon={deleteIcon} modal={"폴더 삭제"} title={title}>
+              <Option icon="/assets/delete_icon.svg" modal={"폴더 삭제"} title={title}>
                 삭제
               </Option>
             </Options>

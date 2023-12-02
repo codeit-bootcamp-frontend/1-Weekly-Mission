@@ -1,8 +1,7 @@
-import NavLogo from "../../assets/Nav_logo.svg";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import * as React from "react";
+import Link from "next/link";
 
 interface NavProps {
   account: {
@@ -17,11 +16,9 @@ function Nav({ account, setSuccess, isSticky }: NavProps) {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userProfileImg, setUserProfileImg] = useState<string | null>(null);
 
-  const navigate = useNavigate();
-
   const handleClick = () => {
     if (!account) {
-      navigate("/signIn");
+      window.location.href = "/signIn";
     } else {
       handleLoginInfo(account);
     }
@@ -44,8 +41,8 @@ function Nav({ account, setSuccess, isSticky }: NavProps) {
   return (
     <Navigation isSticky={isSticky}>
       <NavContents>
-        <Link to="/">
-          <Logo src={NavLogo} alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
+        <Link href="/">
+          <Logo src="/assets/Nav_logo.svg" alt="홈페이지 로고: 클릭 시 메인화면으로 이동" />
         </Link>
         {userEmail && (
           <Account>

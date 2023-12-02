@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import closeButton from "../../assets/close_icon.svg";
 import InputModal from "./type/InputModal";
 import ShareModal from "./type/ShareModal";
 import DeleteModal from "./type/DeleteModal";
@@ -36,7 +35,7 @@ function ModalBox({ modal, closeModal, folderTitle = "", link, folderId, userID,
     <Background onClick={handleClick}>
       <Container onClick={handleModalClick}>
         <Button onClick={handleClick}>
-          <Icon src={closeButton} alt="창닫기 아이콘" />
+          <Icon src="/assets/close_icon.svg" alt="창닫기 아이콘" />
         </Button>
         <P>{modal}</P>
         {modal === "폴더 공유" && <ShareModal subTitle={folderTitle} currentPath={currentPath} />}

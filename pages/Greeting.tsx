@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import GlobalStyle from "../global/globalStyles";
+import GlobalStyle from "../styles/global-styles";
 // 버튼모양 링크 실습해보려고 대충 만들었습니다...
 
 function Greeting() {
@@ -17,6 +17,9 @@ function Greeting() {
         </Button>
         <Button href="/folder" as="a">
           Folder
+        </Button>
+        <Button href="/Button" as="a">
+          Button
         </Button>
       </LinkContainer>
     </>

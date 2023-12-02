@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import kakaoIcon from "../../../assets/Modal_kakaoTalk_icon.svg";
-import facebookIcon from "../../../assets/Modal_facebook_icon.svg";
-import linkCopyIcon from "../../../assets/Modal_linkCopy_icon.svg";
 import shareKakaoTalk from "../../../global/shareKakaotalk";
 import * as React from "react";
 
@@ -35,15 +32,15 @@ function ShareModal({ subTitle, currentPath }: Props) {
       <P>{subTitle}</P>
       <Container>
         <Button onClick={() => shareKakaoTalk(host + currentPath)}>
-          <img src={kakaoIcon} alt="카카오톡으로 폴더 공유" />
+          <img src="/assets/Modal_kakaoTalk_icon.svg" alt="카카오톡으로 폴더 공유" />
           <p>카카오톡</p>
         </Button>
         <Button onClick={shareFacebook}>
-          <img src={facebookIcon} alt="페이스북으로 폴더 공유" />
+          <img src="/assets/Modal_facebook_icon.svg" alt="페이스북으로 폴더 공유" />
           <p>페이스북</p>
         </Button>
         <Button onClick={copyClipboard}>
-          <img src={linkCopyIcon} alt="폴더 링크 복사" />
+          <img src="/assets/Modal_linkCopy_icon.svg" alt="폴더 링크 복사" />
           <p>링크 복사</p>
         </Button>
       </Container>

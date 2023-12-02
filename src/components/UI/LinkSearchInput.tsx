@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useRef } from "react";
 import * as React from "react";
-import closeButton from "../../../src/assets/search_bar_close_button.svg";
 
 type LinkSearchInputProps = {
   searchKeyword: string;
@@ -35,7 +34,9 @@ function LinkSearchInput({ searchKeyword, setSearchKeyword }: LinkSearchInputPro
         autoComplete="on"
         placeholder="링크를 검색해 보세요."
       ></SearchInput>
-      {searchKeyword !== "" && <Button src={closeButton} onClick={handleClearSearch} alt="검색 취소 버튼" />}
+      {searchKeyword !== "" && (
+        <Button src="/assets/search_bar_close_button.svg" onClick={handleClearSearch} alt="검색 취소 버튼" />
+      )}
     </FormContainer>
   );
 }

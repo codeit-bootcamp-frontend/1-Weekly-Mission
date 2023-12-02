@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import FAB from "../../UI/FAB";
-import addIcon from "../../../assets/add_icon.svg";
-import addIconWhite from "../../../assets/add_icon_white.svg";
 import * as React from "react";
 
 function FolderAdd() {
@@ -11,9 +9,9 @@ function FolderAdd() {
     <>
       <Button>
         <p>{addText}</p>
-        <AddIcon src={addIcon}></AddIcon>
+        <AddIcon src="/assets/add_icon.svg"></AddIcon>
       </Button>
-      <FAB src={addIconWhite}>{addText}</FAB>
+      <FAB src="/assets/add_icon_white.svg">{addText}</FAB>
     </>
   );
 }

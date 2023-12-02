@@ -1,16 +1,16 @@
 import * as React from "react";
-import GlobalStyle from "../global/globalStyles";
-import Nav from "../components/Folder/Nav";
-import Footer from "../components/Folder/Footer";
-import LinkAddInput from "../components/UI/LinkAddInput";
-import FolderMain from "../components/Folder/Main/FolderMain";
-import useGetAccount from "../hooks/useGetAccount";
-import useGetSelectedFolder from "../hooks/useGetSelectedFolder";
+import GlobalStyle from "../styles/global-styles";
+import Nav from "../src/components/Folder/Nav";
+import Footer from "../src/components/Folder/Footer";
+import LinkAddInput from "../src/components/UI/LinkAddInput";
+import FolderMain from "../src/components/Folder/Main/FolderMain";
+import useGetAccount from "../src/hooks/useGetAccount";
+import useGetSelectedFolder from "../src/hooks/useGetSelectedFolder";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { FolderProvider } from "../context/FolderContext";
-import EmptyLinkScreen from "../components/Folder/Main/EmptyLinkScreen";
-import { SelectedFolderInfo } from "../types";
+import { FolderProvider } from "../src/context/FolderContext";
+import EmptyLinkScreen from "../src/components/Folder/Main/EmptyLinkScreen";
+import { SelectedFolderInfo } from "../src/types";
 
 function Folder() {
   // const { id } = useParams();  (path='/folder/:id')

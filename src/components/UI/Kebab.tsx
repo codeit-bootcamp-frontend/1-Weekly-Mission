@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import kebab from "../../assets/kebab.svg";
 import SelectMenuButton from "./SelectMenuButton";
 import { useState } from "react";
 import * as React from "react";
@@ -23,7 +22,7 @@ function Kebab({ link }: KebabProps) {
 
   return (
     <KebabButton onMouseLeave={handleMouseLeave}>
-      <KebabImg src={kebab} alt="더보기 아이콘" onClick={handleClick} />
+      <KebabImg src="/assets/kebab.svg" alt="더보기 아이콘" onClick={handleClick} />
       {isMenuVisible && (
         <KebabOptionsContainer>
           {kebabOptions.map((item, index) => (

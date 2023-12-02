@@ -1,9 +1,6 @@
-import facebookIcon from "../../assets/Footer-facebook-icon.svg";
-import twitterIcon from "../../assets/Footer-twitter-icon.svg";
-import youtubeIcon from "../../assets/Footer-youtube-icon.svg";
-import instagramIcon from "../../assets/Footer-instagram-icon.svg";
 import styled from "styled-components";
 import * as React from "react";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -11,22 +8,22 @@ function Footer() {
       <Content>
         <CodeitInfo>©codeit - 2023</CodeitInfo>
         <Info>
-          <a href="./privacy">Privacy Policy</a>
-          <a href="./faq">FAQ</a>
+          <Link href="./privacy">Privacy Policy</Link>
+          <Link href="./faq">FAQ</Link>
         </Info>
         <WebsiteLinks>
-          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer noopener">
-            <img src={facebookIcon} alt="페이스북 아이콘: 누르면 해당 홈페이지로 이동" />
-          </a>
-          <a target="_blank" href="https://twitter.com/" rel="noreferrer noopener">
-            <img src={twitterIcon} alt="트위터 아이콘: 누르면 해당 홈페이지로 이동" />
-          </a>
-          <a target="_blank" href="https://www.youtube.com/" rel="noreferrer noopener">
-            <img src={youtubeIcon} alt="유튜브 아이콘: 누르면 해당 홈페이지로 이동" />
-          </a>
-          <a target="_blank" href="https://www.instagram.com/" rel="noreferrer noopener">
-            <img src={instagramIcon} alt="인스타그램 아이콘: 누르면 해당 홈페이지로 이동" />
-          </a>
+          <Link href="https://www.facebook.com/" target="_blank" rel="noreferrer noopener">
+            <img src="/assets/Footer-facebook-icon.svg" alt="페이스북 아이콘: 누르면 해당 홈페이지로 이동" />
+          </Link>
+          <Link target="_blank" href="https://twitter.com/" rel="noreferrer noopener">
+            <img src="/assets/Footer-twitter-icon.svg" alt="트위터 아이콘: 누르면 해당 홈페이지로 이동" />
+          </Link>
+          <Link target="_blank" href="https://www.youtube.com/" rel="noreferrer noopener">
+            <img src="/assets/Footer-youtube-icon.svg" alt="유튜브 아이콘: 누르면 해당 홈페이지로 이동" />
+          </Link>
+          <Link target="_blank" href="https://www.instagram.com/" rel="noreferrer noopener">
+            <img src="/assets/Footer-instagram-icon.svg" alt="인스타그램 아이콘: 누르면 해당 홈페이지로 이동" />
+          </Link>
         </WebsiteLinks>
       </Content>
     </Container>
