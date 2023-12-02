@@ -1,4 +1,5 @@
 .container {
+  z-index: 100;
   height: 17rem;
   background-color: var(--black);
   display: grid;

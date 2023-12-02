@@ -8,9 +8,11 @@ export default function KaKao() {
   // console.log(Kakao); 잘 나오는데..흠
 
   useEffect(() => {
-    if (!Kakao) {
-      Kakao.cleanup();
-      Kakao.init(jsKey);
+    if (typeof window !== "undefined") {
+      if (!Kakao) {
+        Kakao.cleanup();
+        Kakao.init(jsKey);
+      }
     }
   }, []);
   //
@@ -18,7 +20,7 @@ export default function KaKao() {
   const shareKakao = () => {
     // console.log(Kakao); 잘 나오는데..흠
     {
-      Kakao.Link?.sendCustom({
+      Kakao.Link.sendCustom({
         templateId: 100292,
         templateArgs: {
           title: "myFirstWeb Project",

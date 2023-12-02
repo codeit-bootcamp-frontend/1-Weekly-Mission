@@ -14,7 +14,6 @@ export default function ImageListItem({ item }) {
   return (
     <Link href={url}>
       <Card>
-        {/* <Image src={imageSource} alt={title} width={30} height={30} /> */}
         <img className={styles.card__image} src={imageSource} alt={title} />
         <p>{diffTime}</p>
         <p>{description}</p>

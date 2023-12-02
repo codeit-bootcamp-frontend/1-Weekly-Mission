@@ -1,12 +1,36 @@
-type User = {
+export type User = {
   id: number;
   name: string;
   email: string;
   profileImageSource: string;
 };
 
-type getUserResponse = {
+export type getUserResponse = {
   data: User;
+};
+export type Owner = {
+  id: number;
+  name: string;
+  profileImageSource: string;
+};
+export type Link = {
+  id: number;
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource: string;
+};
+export type Folder = {
+  id: number;
+  name: string;
+  owner: Owner;
+  links: Link[];
+  count: number;
+};
+
+export type getUserFolderResponse = {
+  data: Folder;
 };
 
 const baseUrl = new URL("https://bootcamp-api.codeit.kr");
@@ -31,6 +55,6 @@ export const getShareFolderData = async () => {
   });
   if (response.status === 200) {
     const jsonData = await response.json();
-    return jsonData;
+    return jsonData as Promise<getUserFolderResponse>;
   }
 };

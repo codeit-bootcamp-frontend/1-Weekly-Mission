@@ -10,10 +10,8 @@ function useFetchLinksData(fetchFunc, targetArr) {
     }
     setIsLoading(true);
     fetchFunc(targetArr).then((result) => {
-      // if조건 주고 안주고 엄청 차이남 why
       setData(result);
     });
-    // fetchfunc이라구 인자를 주면은 안됨
   }, [targetArr]);
 
   return [data, isLoading];

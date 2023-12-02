@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
-import LocaleContext from "../../contexts/LocaleContext";
-import { useParams } from "next/navigation";
-import { isContext } from "vm";
+
 import { mapFolderData, mapLinksData } from "@/utils/mapdata";
 import DataList from "@/components/datalist/DataList";
 import SearchBar from "@/components/searchbar/SearchBar";
-import ObserverProvider from "@/contexts/provider/ObserverProvider";
+import FooterProvider from "@/contexts/provider/FooterProvider";
+import HeaderProvider from "@/contexts/provider/HeaderProvider";
 import SearchProvider from "@/contexts/provider/SearchProvider";
 import FolderNav from "@/components/nav/FolderNav";
 import Header from "@/components/header/Header";
@@ -16,6 +15,7 @@ import Footer from "@/components/footer/Footer";
 import useFetchData from "@/hooks/useFetchData";
 import useFetchLinksData from "@/hooks/useFetchLinksdata";
 import { fetchUserData, fetchUserFolderData } from "@/api/folder";
+import LocaleContext from "@/contexts/LocaleContext";
 export default function FolderItem() {
   const router = useRouter();
   const USER_ID = 1;
@@ -34,33 +34,27 @@ export default function FolderItem() {
   const [mappedResult] = useFetchLinksData(mapLinksData, result);
   return (
     <>
-      <ObserverProvider>
-        <LocaleContext.Provider
-          value={{
-            ObjectValue: obj,
-            LinkSDataArr: mappedResult,
-            folderIdKey: id,
-          }}
-        >
-          <SearchProvider>
-            <FolderNav data={userProfileData} />
-            <Header />
-            <SearchBar />
-            <FolderMenuList />
-            <FolderMenu folderIdKey={id} />
-            <DataList folderIdKey={id} />
-            <Footer />
-          </SearchProvider>
-        </LocaleContext.Provider>
-      </ObserverProvider>
+      <FooterProvider>
+        <HeaderProvider>
+          <LocaleContext.Provider
+            value={{
+              ObjectValue: obj,
+              LinkSDataArr: mappedResult,
+              folderIdKey: id,
+            }}
+          >
+            <SearchProvider>
+              <FolderNav data={userProfileData} />
+              <Header />
+              <SearchBar />
+              <FolderMenuList />
+              <FolderMenu folderIdKey={id} />
+              <DataList folderIdKey={id} />
+              <Footer />
+            </SearchProvider>
+          </LocaleContext.Provider>
+        </HeaderProvider>
+      </FooterProvider>
     </>
   );
 }
-
-// export async function getStaticProps(context) {
-
-// }
-
-// export async function getStaticPaths() {
-//   return {};
-// }
