@@ -1,5 +1,5 @@
 import { FolderRawData } from "@/components/folder/type";
-import { mapFoldersData } from "@/components/folder/util-map/mapFoldersData";
+import { mapFoldersData } from "@/components/folder/util-map/MapFoldersData";
 import { axiosInstance } from "@/components/sharing/util";
 import { useAsync } from "@/components/sharing/util";
 

@@ -1,1 +1,1 @@
-export * from "./mapFolderData";
+export * from "./MapFolderData";
