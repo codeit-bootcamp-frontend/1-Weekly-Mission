@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 export const LoginBox = styled.div`
@@ -32,7 +33,7 @@ export const LoginEmail = styled.span`
   }
 `;
 
-export const LoginBtn = styled.a`
+export const LoginBtn = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,11 +44,11 @@ export const LoginBtn = styled.a`
   color: #f5f5f5;
   font-size: 1.8rem;
   font-weight: 600;
-  width: 15px;
+  width: 12.8rem;
 
   @media (max-width: 767px) {
     height: 3.7rem;
     font-size: 1.4rem;
-    width: 15px;
+    width: 8rem;
   }
 `;

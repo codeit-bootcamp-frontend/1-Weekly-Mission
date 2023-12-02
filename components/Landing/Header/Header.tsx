@@ -25,6 +25,7 @@ const Header = () => {
             alt="Linkbrary 서비스 소개"
             fill
             style={{ objectFit: "cover" }}
+            priority
           />
         </Styled.HeroImageBox>
       </Styled.HeroHeader>

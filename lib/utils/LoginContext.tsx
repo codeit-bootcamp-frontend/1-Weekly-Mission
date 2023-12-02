@@ -4,7 +4,9 @@ import {
   createContext,
   useContext,
   useState,
+  useEffect,
 } from "react";
+import { checkLocalStorage } from "./localStorage";
 
 interface loginState {
   isLogin: boolean;
@@ -19,6 +21,11 @@ export const LoginContext = createContext<loginState | null>(null);
 
 export function LoginProvider({ children }: Props) {
   const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    const isLogin = checkLocalStorage();
+    setIsLogin(isLogin);
+  }, []);
 
   return (
     <LoginContext.Provider value={{ isLogin, setIsLogin }}>

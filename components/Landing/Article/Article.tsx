@@ -10,7 +10,7 @@ const Article = () => {
     <Styled.Article>
       <Styled.Section>
         <Styled.Title>
-          <Styled.TitleGradient_1>원하는 링크</Styled.TitleGradient_1>를
+          <Styled.TitleGradient_1> 원하는 링크</Styled.TitleGradient_1>를
           저장하세요
         </Styled.Title>
         <Styled.Description>
@@ -31,7 +31,7 @@ const Article = () => {
       <Styled.Section>
         <Styled.Title>
           링크를 폴더로
-          <Styled.TitleGradient_2>관리</Styled.TitleGradient_2>하세요
+          <Styled.TitleGradient_2> 관리</Styled.TitleGradient_2>하세요
         </Styled.Title>
         <Styled.Description>
           나만의 폴더를 무제한으로 만들고
@@ -50,7 +50,7 @@ const Article = () => {
       <Styled.Section>
         <Styled.Title>
           저장한 링크를
-          <Styled.TitleGradient_3>공유</Styled.TitleGradient_3>해 보세요
+          <Styled.TitleGradient_3> 공유</Styled.TitleGradient_3>해 보세요
         </Styled.Title>
         <Styled.Description>
           여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
@@ -68,7 +68,7 @@ const Article = () => {
       <Styled.Section>
         <Styled.Title>
           저장한 링크를
-          <Styled.TitleGradient_4>검색</Styled.TitleGradient_4>해 보세요
+          <Styled.TitleGradient_4> 검색</Styled.TitleGradient_4>해 보세요
         </Styled.Title>
         <Styled.Description>
           중요한 정보들을 검색으로 쉽게 찾아보세요.

@@ -1,7 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { UserData } from "@/lib/types/data";
 import { useLogin } from "@/lib/utils/LoginContext";
 import { getUsers } from "@/lib/utils/api";
+import { setLocalStorage } from "@/lib/utils/localStorage";
 import * as Styled from "./StyledLoginBtn";
 
 interface Props {
@@ -17,6 +18,7 @@ const LoginButton = ({ data, setUserData }: Props) => {
     try {
       const userProfile = await getUsers();
       setIsLogin(true);
+      setLocalStorage();
       const {
         data: [{ email, image_source }],
       } = userProfile;
@@ -29,6 +31,11 @@ const LoginButton = ({ data, setUserData }: Props) => {
       setIsLogin(false);
     }
   };
+
+  useEffect(() => {
+    if (!isLogin) return;
+    BtnClickHandler();
+  }, [isLogin]);
 
   return (
     <>

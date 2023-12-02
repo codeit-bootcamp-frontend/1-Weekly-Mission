@@ -9,33 +9,34 @@ export const Header = styled.header`
 `;
 
 export const HeroHeader = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 2.4rem;
-  padding: 7rem 0 0;
+  padding: 2.8rem 3.2rem 0;
 
-  @media (max-width: 1199px) {
+  @media (min-width: 768px) {
     padding: 3.9rem 0 0;
     row-gap: 4rem;
   }
 
-  @media (max-width: 767px) {
-    padding: 2.8rem 3.2rem 0;
+  @media (min-width: 1200px) {
+    padding: 7rem 0 0;
   }
 `;
 
 export const Slogan = styled.h1`
   width: 80rem;
   text-align: center;
-  font-size: 3.2rem;
-  line-height: 131.25%;
+  font-size: 6.4rem;
+  line-height: 125%;
   font-weight: 700;
 
   @media (max-width: 1199px) {
     width: 48rem;
-    font-size: 6.4rem;
-    line-height: 125%;
+    font-size: 3.2rem;
+    line-height: 131.25%;
   }
 
   @media (max-width: 767px) {
@@ -72,16 +73,15 @@ export const LinkButton = styled.div`
 
 export const HeroImageBox = styled.div`
   position: relative;
-  width: 120rem;
-  height: 59rem;
-
-  @media (max-width: 1199px) {
+  width: 100%;
+  height: 34.3rem;
+  @media (min-width: 768px) {
     width: 69.8rem;
     height: 34.3rem;
   }
 
-  @media (max-width: 767px) {
-    width: 100%;
-    height: fit-content;
+  @media (min-width: 1200px) {
+    width: 120rem;
+    height: 59rem;
   }
 `;
