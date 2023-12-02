@@ -4,8 +4,8 @@ import eyeOff from "/public/eye-off.svg";
 import eyeOn from "/public/eye-on.svg";
 
 function Input({
-  type = "password",
-  isError = true,
+  type = "text",
+  isError = false,
   errorMessage = "내용을 다시 작성해주세요",
 }) {
   const [showPassword, setShowPassword] = useState(false);
