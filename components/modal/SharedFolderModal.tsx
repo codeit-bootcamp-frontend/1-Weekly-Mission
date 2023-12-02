@@ -26,7 +26,7 @@ const ItemArr = [
 const ShareFolderModal = () => {
   const { shareFolderModal } = useRecoilValue(modalState);
   const resetModalState = useResetRecoilState(modalState);
-  const shareLink = `http://localhost:3001/shared?user=1&folder=${shareFolderModal.content.id}`;
+  const shareLink = `http://localhost:3000/shared?user=1&folder=${shareFolderModal.content.id}`;
 
   const shareKaKao = () => {
     if (window.Kakao) {
@@ -77,6 +77,8 @@ const ShareFolderModal = () => {
         className="closeIcon"
         alt="closeIcon"
         onClick={resetModalState}
+        width="24"
+        height="24"
       />
 
       <div className="modalTitleContainer ">
@@ -92,7 +94,13 @@ const ShareFolderModal = () => {
               onClick={() => handleShare(e.title)}
               id="kakaotalk-sharing-btn"
             >
-              <Image src={e.src} className={e.title} alt={e.title} />
+              <Image
+                src={e.src}
+                className={e.title}
+                alt={e.title}
+                width="42"
+                height="42"
+              />
               <div className="title">{e.title}</div>
             </ModalContetnItem>
           );

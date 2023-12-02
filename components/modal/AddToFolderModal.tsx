@@ -22,6 +22,8 @@ const AddToFolderModal = () => {
         className="closeIcon"
         alt="closeIcon"
         onClick={resetModalState}
+        width="24"
+        height="24"
       />
 
       <div className="modalTitleContainer">
@@ -39,7 +41,13 @@ const AddToFolderModal = () => {
             >
               <div className="title">{e.name}</div>
               <div className="linkNum">{e.link.count}개 링크</div>
-              <Image src={CheckIcon} className="checkIcon" alt="checkIcon" />
+              <Image
+                width="14"
+                height="14"
+                src={CheckIcon}
+                className="checkIcon"
+                alt="checkIcon"
+              />
             </FolderContainer>
           );
         })}

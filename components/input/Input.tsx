@@ -43,6 +43,10 @@ export const InputContainer = styled.div`
     flex-grow: 1;
     height: 2.3rem;
     padding-top: 0.5rem;
+    color: var(--linkbrary-gray-100, #373740);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.4rem;
     @media all and (${device.mobile}) {
       height: 1.7rem;
     }

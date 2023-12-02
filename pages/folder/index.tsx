@@ -71,7 +71,7 @@ const Folder = () => {
   const [modalOpened, setModalOpened] = useRecoilState(modalState);
 
   const handleFolder = useCallback(async () => {
-    const result = await request.get(`api/folders/2`);
+    const result = await request.get(`api/users/1/folders`);
     if (!result) return;
 
     const { data } = result;
@@ -100,6 +100,8 @@ const Folder = () => {
   }, [handleLinks]);
 
   const handleAddToFolderModal = () => {
+    console.log(link);
+    console.log(folderData);
     if (link.length > 0) {
       setModalOpened((prev: any) => ({
         ...prev,
@@ -122,6 +124,10 @@ const Folder = () => {
       },
     }));
   };
+
+  useEffect(() => {
+    console.log(modalOpened);
+  }, [modalOpened]);
 
   const handleShareFolderModal = (content: ISelectedFolder) => {
     setModalOpened((prev: any) => ({

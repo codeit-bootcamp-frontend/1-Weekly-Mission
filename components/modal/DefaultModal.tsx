@@ -48,6 +48,8 @@ const DefaultModal = () => {
         className="closeIcon"
         alt="closeIcon"
         onClick={resetModalState}
+        width="24"
+        height="24"
       />
 
       <div className="modalTitleContainer ">
@@ -83,5 +85,9 @@ const ModalMain = styled(ModalMainContainer)<{ $isDelete: boolean }>`
 
   ${DefaultBtnContainer} {
     margin-top: ${(props) => (props.$isDelete ? "0" : "-0.8rem")};
+  }
+
+  ${InputContainer}:focus-within {
+    border: 1px solid var(--linkbrary-primary-color, #6d6afe);
   }
 `;

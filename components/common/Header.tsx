@@ -17,7 +17,7 @@ interface IUser {
 const Header = () => {
   const [isFixed, setIsFixed] = useState(true);
   const router = useRouter();
-  const { pathname } = router.query;
+  const { pathname } = router;
   const [userData, setUserData] = useState<IUser>({
     email: null,
     name: null,
