@@ -51,7 +51,13 @@ const Header = () => {
   return (
     <HeaderContainer $isFixed={isFixed}>
       <nav className="contentContainer">
-        <Image src={LogoImg} id="logoImg" alt="logoImg" height="24" />
+        <Image
+          src={LogoImg}
+          id="logoImg"
+          alt="logoImg"
+          height="24"
+          onClick={() => router.push("/")}
+        />
 
         {userData.email ? (
           <ProfileContainer>

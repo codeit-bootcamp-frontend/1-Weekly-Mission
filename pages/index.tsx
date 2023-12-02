@@ -6,7 +6,7 @@ import {
   SectionTitleContainer,
   TopSection,
   TopWrapper,
-} from "./HomeStyledComponents";
+} from "@/pages/homeStyled";
 import TopImg from "@/public/assets/home/img_topImg.png";
 import SectionImg1 from "@/public/assets/home/img_section1Img.png";
 import SectionImg2 from "@/public/assets/home/img_section2Img.png";
