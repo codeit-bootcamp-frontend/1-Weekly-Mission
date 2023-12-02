@@ -1,0 +1,35 @@
+/* PC size */
+.cardsList {
+  display: table;
+  place-items: center;
+  margin: 40px auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 34rem);
+  gap: 20px;
+  justify-content: center;
+}
+
+/* tablet Size */
+@media (min-width: 768px) and (max-width: 1124px) {
+  .cardsList {
+    padding: 0 32px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 34rem);
+  }
+}
+
+/* mobile Size */
+@media (max-width: 767px) {
+  .cardsList {
+    padding: 0 32px;
+  }
+
+  .cards {
+    grid-template-columns: 32rem;
+  }
+}

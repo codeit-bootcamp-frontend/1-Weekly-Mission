@@ -1,0 +1,37 @@
+.categoryItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  font-size: 16px;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.categoryItem button {
+  background: none;
+  border: none;
+  font-size: 16px;
+}
+
+.categoryItem:hover,
+.categoryItem:active {
+  background: var(--primary);
+  color: white;
+}
+
+.activeItem {
+  font-size: 16px;
+  background: var(--primary);
+  color: white;
+}
+
+/* mobile Size */
+@media (max-width: 767px) {
+  .categoryItem {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}

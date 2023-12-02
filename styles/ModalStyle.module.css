@@ -1,0 +1,140 @@
+.modalSection {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modalBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  padding: 35px 40px;
+  border-radius: 15px;
+  border: 1px solid var(--gray-botticelli);
+  position: relative;
+  background-color: #fff;
+}
+
+.modalCloseImg {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 24px;
+  height: 24px;
+}
+
+.modalBox h1 {
+  color: var(--gray-tuna);
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modalInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 15px;
+  border-radius: 8px;
+  width: 28rem;
+  border: 1px solid var(--gray-botticelli);
+}
+
+.modalInput:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.modalSubmitBtn {
+  padding: 16px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* 폴더 이름 변경, 폴더 추가 */
+
+/* 폴더 삭제, 링크 삭제 */
+
+/* 폴더 공유 */
+
+.modalBox.folderShare {
+  justify-content: flex-start;
+}
+
+.modalBox .titleBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 28rem;
+}
+
+.modalBox .shareLinks {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+.modalBox .linkBtnBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalBox .folderName {
+  color: var(--gray-chateau);
+  font-size: 14px;
+  text-align: center;
+}
+
+.linkBtnBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.linkBtnBox button {
+  border-radius: 38px;
+  width: 42px;
+  height: 42px;
+}
+
+.linkBtnBox.kakaoLink button {
+  background: #fee500;
+}
+
+.linkBtnBox.facebookLink button {
+  background: #1877f2;
+}
+
+.linkBtnBox.copyLink button {
+  background: rgba(157, 157, 157, 0.04);
+}
+
+.linkBtnBox.kakaoLink img {
+  width: 30px;
+}
+
+.modalSubmitBtn.delete {
+  background: #ff5b56;
+}
+
+/* 폴더에 추가 */
