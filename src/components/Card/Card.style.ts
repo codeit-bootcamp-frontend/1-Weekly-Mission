@@ -3,8 +3,9 @@ import { onTablet, onPc } from '@/styles/mediaQuery';
 import { COLORS } from '@/styles/palette';
 import { zIndexStyle } from '@/styles/zIndexStyle';
 import Image from 'next/image';
+import Link from 'next/link';
 
-export const CardContainer = styled.a`
+export const CardContainer = styled(Link)`
   display: block;
   width: 100%;
   box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.08);

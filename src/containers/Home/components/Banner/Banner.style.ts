@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { onTablet, onPc } from '@/styles/mediaQuery';
 import { COLORS } from '@/styles/palette';
 import { textGradientBackground } from '@/styles/styleUtils';
+import Link from 'next/link';
 
 export const BannerContainer = styled.section`
   display: flex;
@@ -48,7 +49,7 @@ export const TitleGradient = styled.span`
   ${textGradientBackground};
 `;
 
-export const Signup = styled.div`
+export const Signup = styled(Link)`
   width: 20rem;
   margin: 2.4rem;
 

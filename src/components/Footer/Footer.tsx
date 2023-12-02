@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as S from './Footer.style';
 import {
   IconFacebook,
@@ -16,38 +17,38 @@ function Footer({
       <S.FooterInner>
         <S.Copyright>©codeit - 2023</S.Copyright>
         <S.ExtraPage>
-          <S.Link href='/pages/privacy.html'>Privacy Policy</S.Link>
-          <S.Link href='/pages/faq.html'>FAQ</S.Link>
+          <S.PageLink href='/pages/privacy.html'>Privacy Policy</S.PageLink>
+          <S.PageLink href='/pages/faq.html'>FAQ</S.PageLink>
         </S.ExtraPage>
         <S.SNS>
-          <a
+          <Link
             href='http://facebook.com'
             target='_blank'
             rel='noreferrer noopener'
           >
             <IconFacebook />
-          </a>
-          <a
+          </Link>
+          <Link
             href='http://twitter.com'
             target='_blank'
             rel='noreferrer noopener'
           >
             <IconTwitter />
-          </a>
-          <a
+          </Link>
+          <Link
             href='http://youtube.com'
             target='_blank'
             rel='noreferrer noopener'
           >
             <IconYoutube />
-          </a>
-          <a
+          </Link>
+          <Link
             href='http://instagram.com'
             target='_blank'
             rel='noreferrer noopener'
           >
             <IconInstagram />
-          </a>
+          </Link>
         </S.SNS>
       </S.FooterInner>
     </S.FooterContainer>

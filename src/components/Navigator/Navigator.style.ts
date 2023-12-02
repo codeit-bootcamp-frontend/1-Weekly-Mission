@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { onTablet, onPc } from '@/styles/mediaQuery';
 import { COLORS } from '@/styles/palette';
+import Link from 'next/link';
 
 export const GnbContainer = styled.header`
   width: 100%;
@@ -28,11 +29,11 @@ export const GnbInner = styled.div`
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(Link)`
   margin-right: 0.5rem;
 `;
 
-export const Signin = styled.div`
+export const Signin = styled(Link)`
   width: 8rem;
   margin-left: 0.5rem;
 

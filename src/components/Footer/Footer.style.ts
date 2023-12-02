@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { onTablet, onPc } from '@/styles/mediaQuery';
 import { COLORS } from '@/styles/palette';
+import Link from 'next/link';
 
 export const FooterContainer = styled.footer`
   width: 100%;
@@ -61,7 +62,7 @@ export const ExtraPage = styled.section`
   }
 `;
 
-export const Link = styled.a`
+export const PageLink = styled(Link)`
   font-family: Arial;
   font-size: 1.6rem;
   font-weight: 400;

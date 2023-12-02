@@ -48,10 +48,8 @@ function Navigator({ isLoggedIn, userId, navRef }: Props) {
             <S.ProfileEmail>{userInfo?.email}</S.ProfileEmail>
           </S.Profile>
         ) : (
-          <S.Signin>
-            <Button as='a' href='/'>
-              로그인
-            </Button>
+          <S.Signin href='/signin'>
+            <Button>로그인</Button>
           </S.Signin>
         )}
       </S.GnbInner>
