@@ -14,9 +14,9 @@ import SortButton from "./components/sortButton/SortButton";
 import addIcon from "@/public/icons/add.svg";
 import addPrimaryIcon from "@/public/icons/addPrimaryColor.svg";
 import useModal from "@/hooks/useModal";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import Image from "next/image";
 import axios from "axios";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 export async function getStaticProps() {
   const res = await axios.get(`${BASE_URL}${USERS_ENDPOINT}/1/folders`);
@@ -36,44 +36,11 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
   const [keyword, setKeyword] = useState("");
   const { open, close, isModalOpen, Dialog } = useModal();
   const inputRef = useRef<HTMLInputElement>(null);
-  const footerRef = useRef<HTMLDivElement>(null);
-  const addLinkInputRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [isAddLinkInputVisible, setIsAddLinkInputVisible] = useState(false);
   const [isResultEmpty, setIsResultEmpty] = useState(false);
-  const [observe, unobserve] = useIntersectionObserver(
-    () => setIsAddLinkInputVisible(false),
-    { threshold: 1 }
-  );
-
-  const [observeHeader, unobserveHeader] = useIntersectionObserver(
-    () => setIsAddLinkInputVisible(true),
-    { threshold: 0 }
-  );
-  useEffect(() => {
-    const headerElement = headerRef.current;
-    if (headerElement) {
-      observeHeader(headerElement);
-    }
-
-    return () => {
-      if (headerElement) {
-        unobserveHeader(headerElement);
-      }
-    };
-  }, [observeHeader, unobserveHeader, headerRef.current]);
-
-  useEffect(() => {
-    const footerElement = footerRef.current;
-    if (footerElement) {
-      observe(footerElement);
-    }
-    return () => {
-      if (footerElement) {
-        unobserve(footerElement);
-      }
-    };
-  }, [observe, unobserve, isAddLinkInputVisible]);
+  const { ref, isIntersecting } = useIntersectionObserver<HTMLFormElement>();
+  const { ref: headerRef, isIntersecting: isHeaderIntersecting } =
+    useIntersectionObserver<HTMLDivElement>();
+  const showFixedAddLinkInput = !isIntersecting && !isHeaderIntersecting;
 
   const folderName =
     folderId === ALL_LINK_NAME
@@ -130,8 +97,8 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
 
   return (
     <div className={styles.folderContainer}>
-      <header className={styles.folderHeader} ref={headerRef}>
-        <AddLinkInput folders={folders} />
+      <header className={styles.folderHeader}>
+        <AddLinkInput folders={folders} ref={headerRef} />
       </header>
       <main className={styles.folderMain}>
         <SearchBar
@@ -209,18 +176,11 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
         <div className={styles.floatingActionButtonContainer}>
           <FloatingButton iconSrc={addIcon}>폴더 추가</FloatingButton>
         </div>
-        <div className={styles.footerTarget} ref={footerRef}></div>
-        <div
-          className={styles.floatingSearchbarContainer}
-          ref={addLinkInputRef}
-        >
-          {isAddLinkInputVisible ? (
-            <div className={styles.floatingAddlinkContainer}>
-              <AddLinkInput folders={folders} />
-            </div>
-          ) : null}
-        </div>
       </main>
+      <div className={styles.floatingSearchbarContainer}>
+        {showFixedAddLinkInput && <AddLinkInput folders={folders} />}
+      </div>
+      <form ref={ref} className={styles.footerTarget}></form>
     </div>
   );
 }

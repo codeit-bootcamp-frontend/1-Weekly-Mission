@@ -1,40 +1,27 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
-function useIntersectionObserver(
-  callback: () => void,
-  options: IntersectionObserverInit
-) {
-  const observer = useRef<IntersectionObserver | null>(null);
+export const useIntersectionObserver = <T extends HTMLElement>(
+  once: boolean = false,
+  options?: IntersectionObserverInit
+) => {
+  const ref = useRef<T>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
-  useEffect(() => {
-    observer.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          callback();
-        }
-      });
+  useLayoutEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting);
+      if (once && entry.isIntersecting) {
+        observer.unobserve(entry.target);
+      }
     }, options);
 
+    if (ref?.current) {
+      observer.observe(ref.current!);
+    }
+
     return () => {
-      if (observer.current) {
-        observer.current.disconnect();
-      }
+      observer.disconnect();
     };
-  }, [callback, options]);
-
-  const observe = (element: HTMLElement) => {
-    if (observer.current) {
-      observer.current.observe(element);
-    }
-  };
-
-  const unobserve = (element: HTMLElement) => {
-    if (observer.current) {
-      observer.current.unobserve(element);
-    }
-  };
-
-  return [observe, unobserve];
-}
-
-export default useIntersectionObserver;
+  }, [options, once]);
+  return { ref, isIntersecting };
+};

@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 7px;
   border-radius: 15px;
   border: 1px solid var(--color-gray-border);
   background-color: var(--color-white);

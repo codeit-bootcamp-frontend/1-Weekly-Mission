@@ -3,7 +3,7 @@ import styles from "./footer.module.css";
 import LinkIcon from "./components/LinkIcons";
 import LINK_ICONS from "./constant/linkIcons";
 
-export default function Footer() {
+function Footer() {
   return (
     <footer className={styles.container}>
       <div className={styles.content}>
@@ -29,3 +29,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

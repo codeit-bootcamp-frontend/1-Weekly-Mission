@@ -11,7 +11,13 @@ export default function DialogButton({
   isAddButton,
 }: DialogButtonProps) {
   return (
-    <div className={isAddButton ? styles.addButton : styles.deleteButton}>
+    <div
+      className={
+        isAddButton
+          ? `${styles.dialogButton} ${styles.addButton} `
+          : `${styles.dialogButton} ${styles.deleteButton}`
+      }
+    >
       {children}
     </div>
   );

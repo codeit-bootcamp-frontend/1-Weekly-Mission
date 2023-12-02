@@ -79,6 +79,13 @@
   display: none;
 }
 
+.floatingSearchbarContainer {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 10;
+}
+
 @media (min-width: 768px) and (max-width: 1199px) {
   .folderHeader {
     padding: 60px 32px 90px 32px;
@@ -120,7 +127,7 @@
     justify-content: center;
     align-items: center;
     position: sticky;
-    bottom: 70px;
+    bottom: 100px;
     z-index: 100;
   }
 
