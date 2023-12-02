@@ -5,9 +5,13 @@ import Article from "@/ui/Article";
 import Footer from "@/ui/Footer";
 import axios from "@/api/axios";
 
+interface navPropsType {
+  userEmail: string;
+}
+
 export async function getStaticProps() {
   const res = await axios.get(`/sample/user`);
-  const userEmail = res?.data?.email;
+  const userEmail: string = res?.data?.email;
 
   return {
     props: {
@@ -16,7 +20,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function SharedPage({ userEmail }) {
+export default function SharedPage({ userEmail }: navPropsType) {
   return (
     <>
       <Nav userEmail={userEmail} />

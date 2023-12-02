@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Nav = ({ userEmail }) => {
+interface navPropsType {
+  userEmail: string;
+}
+
+const Nav = ({ userEmail }: navPropsType) => {
   return (
     <>
       <nav>
