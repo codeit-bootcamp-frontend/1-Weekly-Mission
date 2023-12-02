@@ -4,6 +4,8 @@ import styled from "styled-components";
 import eyeOff from "./eye-off.svg";
 import eyeOn from "./eye-on.svg";
 
+// 에러 조건은 임시로 넣었습니다.
+
 export function InputEmail() {
   const [emailFocusIn, setEmailFocusIn] = useState(false);
   const [emailError, setEmailError] = useState(false);
