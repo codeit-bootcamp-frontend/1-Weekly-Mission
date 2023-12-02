@@ -1,10 +1,9 @@
-import Card from '@/components/Card';
-import styled from 'styled-components';
+import User from '@/components/User/User';
 
 export default function Home() {
   return (
     <>
-      <Card />
+      <User />
     </>
   );
 }
