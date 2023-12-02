@@ -3,19 +3,25 @@ import { useRef } from 'react';
 import FooterRefContext from '@contexts/FooterRefContext';
 import Nav from '@components/Nav';
 import Footer from '@components/Footer';
+import Head from 'next/head';
 import GlobalStyle from '@styles/GlobalStyle';
 
 export default function App({ Component, pageProps }: AppProps) {
   const footerRef = useRef(null);
 
   return (
-    <FooterRefContext.Provider value={footerRef}>
+    <>
+      <Head>
+        <title>Linkbrary</title>
+      </Head>
       <GlobalStyle />
-      <Nav />
-      <Component {...pageProps} />
-      <div ref={footerRef}>
-        <Footer />
-      </div>
-    </FooterRefContext.Provider>
+      <FooterRefContext.Provider value={footerRef}>
+        <Nav />
+        <Component {...pageProps} />
+        <div ref={footerRef}>
+          <Footer />
+        </div>
+      </FooterRefContext.Provider>
+    </>
   );
 }

@@ -76,7 +76,7 @@ function Nav() {
       {hasProfile ? (
         <Profile data={profile} />
       ) : (
-        <S.SignInButton href='signin.html'>
+        <S.SignInButton href='/signin'>
           <span>로그인</span>
         </S.SignInButton>
       )}

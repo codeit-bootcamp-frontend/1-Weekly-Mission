@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { onMobile, onTablet } from '@styles/mediaQuery';
+import Link from 'next/link';
 
 export const NavContainer = styled.div<{ $path: string }>`
   display: flex;
@@ -25,7 +26,7 @@ export const NavContainer = styled.div<{ $path: string }>`
   }
 `;
 
-export const SignInButton = styled.a`
+export const SignInButton = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
