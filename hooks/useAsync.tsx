@@ -10,7 +10,7 @@ const useAsync = <T,>(asyncFunction: () => Promise<AxiosResponse<T>>) => {
       setPending(true);
       setError(null);
       try {
-        return (await asyncFunction)(...args);
+        return await asyncFunction(...args);
       } catch (error: any) {
         setError(error);
       } finally {
