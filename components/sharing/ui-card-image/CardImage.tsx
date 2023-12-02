@@ -1,6 +1,8 @@
 import styles from "./CardImage.module.scss";
 import classNames from "classnames/bind";
 import { DEFAULT_IMAGE } from "./constant";
+import Image from "next/image";
+import { ImageWrapper } from "../ui-image-wrapper";
 
 const cx = classNames.bind(styles);
 
@@ -13,11 +15,9 @@ type CardImageProps = {
 export const CardImage = ({ imageSource, isZoomedIn, alt }: CardImageProps) => {
   return (
     <div className={cx("container")}>
-      <img
-        src={imageSource ?? DEFAULT_IMAGE}
-        className={cx("image", { zoomin: isZoomedIn })}
-        alt={alt}
-      />
+      <ImageWrapper className={cx("image", { zoomin: isZoomedIn })}>
+        <Image fill src={imageSource ?? DEFAULT_IMAGE} alt={alt} />
+      </ImageWrapper>
     </div>
   );
 };

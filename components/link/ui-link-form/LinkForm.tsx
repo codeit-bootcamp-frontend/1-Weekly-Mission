@@ -1,7 +1,13 @@
 import { Cta } from "sharing/ui-cta";
 import styles from "./LinkForm.module.scss";
 import classNames from "classnames/bind";
-import { ChangeEventHandler, FormEvent, FormEventHandler, forwardRef } from "react";
+import {
+  ChangeEventHandler,
+  FormEvent,
+  FormEventHandler,
+  forwardRef,
+} from "react";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 

@@ -16,4 +16,12 @@ module.exports = {
     includePaths: [path.join(__dirname, "components/")],
     prependData: "@import 'components/sharing/styles/global.scss';",
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
 };
