@@ -28,7 +28,7 @@ export const FolderItem = ({
       <span className={cx("count")}>{linkCount}개 링크</span>
       {isSelected && (
         <ImageWrapper className={cx("check")}>
-          <Image src="images/check.svg" alt="체크 아이콘" />
+          <Image fill src="images/check.svg" alt="체크 아이콘" />
         </ImageWrapper>
       )}
     </button>

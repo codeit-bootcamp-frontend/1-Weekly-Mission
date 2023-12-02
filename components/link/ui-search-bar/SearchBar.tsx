@@ -12,7 +12,11 @@ type SearchBarProps = {
   onCloseClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const SearchBar = ({ value, onChange, onCloseClick }: SearchBarProps) => {
+export const SearchBar = ({
+  value,
+  onChange,
+  onCloseClick,
+}: SearchBarProps) => {
   return (
     <div className={cx("container")}>
       <input

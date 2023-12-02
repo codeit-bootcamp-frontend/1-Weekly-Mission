@@ -1,6 +1,13 @@
 import styles from "./EditableCard.module.scss";
 import classNames from "classnames/bind";
-import { CSSProperties, MouseEventHandler, useCallback, useRef, useState } from "react";
+import Image from "next/image";
+import {
+  CSSProperties,
+  MouseEventHandler,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
 import { Card } from "sharing/ui-card";
 import { CardContent } from "sharing/ui-card-content";
 import { CardImage } from "sharing/ui-card-image";
@@ -69,10 +76,17 @@ export const EditableCard = ({
           createdAt={createdAt}
           isHovered={isHovered}
         />
-        <button className={cx("star")} onClick={(event) => event.preventDefault()}>
-          <img src="images/star.svg" alt="즐겨찾기를 나타내는 별" />
+        <button
+          className={cx("star")}
+          onClick={(event) => event.preventDefault()}
+        >
+          <Image fill src="images/star.svg" alt="즐겨찾기를 나타내는 별" />
         </button>
-        <button ref={kebabButtonRef} className={cx("kebab")} onClick={handleKebabClick}>
+        <button
+          ref={kebabButtonRef}
+          className={cx("kebab")}
+          onClick={handleKebabClick}
+        >
           <img src="images/kebab.svg" alt="더보기를 나타내는 점 3개" />
         </button>
         <Popover
