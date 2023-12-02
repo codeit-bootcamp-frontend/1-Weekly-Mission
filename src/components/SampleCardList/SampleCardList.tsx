@@ -1,42 +1,14 @@
 import * as S from './SampleCardList.style';
 import SampleCard from './SampleCard';
-import useRequest from '@hooks/useRequest';
 import { useMemo } from 'react';
-
-interface Data {
-  folder: Folder;
-}
-
-interface Folder {
-  id: number;
-  name: string;
-  owner: Owner;
-  links: Link[];
-  count: number;
-}
-
-interface Link {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource?: string;
-}
-
-interface Owner {
-  id: number;
-  name: string;
-  profileImageSource: string;
-}
+import { Link } from '@pages/shared';
 
 interface Props {
   searchKeyword: string;
+  items: Link[];
 }
 
-function SampleCardList({ searchKeyword }: Props) {
-  const { data } = useRequest<Data>({ options: { url: '/sample/folder' } });
-  const items = data?.folder?.links;
+function SampleCardList({ searchKeyword, items }: Props) {
   const lowerCaseKeyword = searchKeyword.toLowerCase();
 
   const filteredItems = useMemo(

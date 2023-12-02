@@ -5,8 +5,8 @@ const api = axios.create({
 });
 
 const fetch = async (options: AxiosRequestConfig) => {
-  const response = api({ ...options });
-  return await response;
+  const response = await api({ ...options });
+  return response;
 };
 
 export default fetch;

@@ -1,36 +1,11 @@
-import useRequest from '@hooks/useRequest';
+import { Folder } from '@pages/shared';
 import * as S from './FolderInfo.style';
 
-interface Data {
+interface Props {
   folder: Folder;
 }
 
-interface Folder {
-  id: number;
-  name: string;
-  owner: Owner;
-  links: Link[];
-  count: number;
-}
-
-interface Link {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource?: string;
-}
-
-interface Owner {
-  id: number;
-  name: string;
-  profileImageSource: string;
-}
-
-function FolderInfo() {
-  const { data } = useRequest<Data>({ options: { url: '/sample/folder' } });
-  const folder = data?.folder;
+function FolderInfo({ folder }: Props) {
   const folderName = folder?.name;
   const owner = folder?.owner;
   const ownerName = owner?.name;
