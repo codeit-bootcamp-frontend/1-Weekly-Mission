@@ -1,3 +1,4 @@
+import { DefaultBtnContainer } from "@/components/button/DefaultButton";
 import { device } from "@/styles/globalStyle";
 import styled from "styled-components";
 
@@ -94,8 +95,12 @@ export const TopSection = styled(Section)`
     }
   }
 
-  .addBtn {
+  ${DefaultBtnContainer} {
     width: 35rem;
+
+    @media all and (${device.mobile}) {
+      width: 20rem;
+    }
   }
 `;
 

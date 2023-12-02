@@ -13,8 +13,15 @@ import SectionImg2 from "@/public/assets/home/img_section2Img.png";
 import SectionImg3 from "@/public/assets/home/img_section3Img.png";
 import SectionImg4 from "@/public/assets/home/img_section4Img.png";
 import Link from "next/link";
+import DefaultBtn from "@/components/button/DefaultButton";
+import { useRouter } from "next/router";
 
 const Home = () => {
+  const router = useRouter();
+
+  const handleLinkAddBtn = () => {
+    router.push("/signup");
+  };
   return (
     <>
       <TopWrapper>
@@ -26,7 +33,9 @@ const Home = () => {
             관리해 보세요
           </div>
           <Link href="/signup">
-            <button className="addBtn">링크 추가하기</button>
+            <DefaultBtn onClick={handleLinkAddBtn} type="default">
+              링크 추가하기
+            </DefaultBtn>
           </Link>
 
           <div className="imgContainer">
