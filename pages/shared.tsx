@@ -24,8 +24,8 @@ interface Link {
   createdAt: string;
   url: string;
   title: string;
-  description?: string;
-  imageSource?: string;
+  description: string;
+  imageSource: string;
 }
 
 interface Folder {

@@ -8,8 +8,8 @@ interface Link {
   createdAt: string;
   url: string;
   title: string;
-  description?: string;
-  imageSource?: string;
+  description: string;
+  imageSource: string;
 }
 
 interface PropsType {
@@ -21,11 +21,11 @@ interface PropsType {
 
 const Header = ({ profile, userName, folderName, fullData }: PropsType) => {
   const [inputValue, setInputValue] = useState("");
-  function getInputValue(v: string) {
+  function getInputValue(v: string): void {
     setInputValue(v);
   }
 
-  const searchedData = fullData?.filter((data: Link) => {
+  const searchedData: Link[] = fullData?.filter((data: Link) => {
     if (
       data.url.includes(inputValue) ||
       data.title.includes(inputValue) ||
@@ -48,7 +48,6 @@ const Header = ({ profile, userName, folderName, fullData }: PropsType) => {
               gap: "1.5rem",
             }}
           >
-            {/* <img src={profile} alt="폴더프로파일" style={{ width: "5.5rem" }} /> */}
             <Image
               src={profile}
               alt="폴더프로파일"

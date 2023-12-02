@@ -1,7 +1,13 @@
-export function getTimePassed(url, description, createdAt, imageSource) {
-  const createdAtDate = new Date(createdAt);
-  const currentDate = new Date();
-  const timeDifference = currentDate - createdAtDate;
+export function getTimePassed(
+  url: string,
+  description: string,
+  createdAt: string,
+  imageSource: string
+) {
+  const createdAtDate: Date = new Date(createdAt);
+  const currentDate: Date = new Date();
+  const timeDifference: number =
+    currentDate.getTime() - createdAtDate.getTime();
   const seconds = Math.floor(timeDifference / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
