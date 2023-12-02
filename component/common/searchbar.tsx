@@ -1,5 +1,17 @@
-import searchIcon from "../../assets/images/searchbar/shared-search.svg";
+import searchIcon from "../../public/images/searchBar/shared-search.svg";
 import styled from "styled-components";
+import Image from "next/image";
+
+export default function SearchBar() {
+    return (
+        <StyledSearchBox>
+            <Image src={searchIcon} alt="searchIcon" />
+            <form>
+                <input type="text" placeholder="링크를 검색해 보세요." />
+            </form>
+        </StyledSearchBox>
+    );
+}
 
 const StyledSearchBox = styled.div`
     padding: 15px 16px;
@@ -23,16 +35,3 @@ const StyledSearchBox = styled.div`
         }
     }
 `;
-
-function SearchBar() {
-    return (
-        <StyledSearchBox>
-            <img src={searchIcon} alt="searchIcon" />
-            <form>
-                <input type="text" placeholder="링크를 검색해 보세요." />
-            </form>
-        </StyledSearchBox>
-    );
-}
-
-export default SearchBar;

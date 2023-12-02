@@ -1,12 +1,217 @@
 import styled from "styled-components";
-import closeIcon from "../../assets/images/modal/modal-close.png";
-import kakaoIcon from "../../assets/images/modal/modal-icon-kakao.svg";
-import facebookIcon from "../../assets/images/modal/modal-icon-facebook.svg";
-import linkIcon from "../../assets/images/modal/modal-link.svg";
-import checkIcon from "../../assets/images/modal/modal-footer-icon-check.svg";
+import closeIcon from "../../public/images/modal/modal-close.png";
+import kakaoIcon from "../../public/images/modal/modal-icon-kakao.svg";
+import facebookIcon from "../../public/images/modal/modal-icon-facebook.svg";
+import linkIcon from "../../public/images/modal/modal-link.svg";
+import checkIcon from "../../public/images/modal/modal-footer-icon-check.svg";
 import { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FacebookMessengerShareButton } from "react-share";
+import Image from "next/image";
+
+function Add() {
+    const [select, setSelect] = useState("0");
+    return (
+        <>
+            <StyledModalTitleBox>
+                <StyledModalTitle>폴더에 추가</StyledModalTitle>
+                <StyledModalSubTitle>링크 주소</StyledModalSubTitle>
+            </StyledModalTitleBox>
+            <StyledModalContent>
+                <StyledModalAddBox>
+                    <StyledModalAddTitleBox
+                        onClick={() => setSelect("1")}
+                        $select={select}
+                        $number="1"
+                    >
+                        <div>
+                            코딩 팁 <p>7개 링크</p>
+                        </div>
+                        <Image src={checkIcon} alt="checkIcon" />
+                    </StyledModalAddTitleBox>
+                    <StyledModalAddTitleBox
+                        onClick={() => setSelect("2")}
+                        $select={select}
+                        $number="2"
+                    >
+                        <div>
+                            채용 사이트 <p>12개 링크</p>
+                        </div>
+                        <Image src={checkIcon} alt="cheakIcon" />
+                    </StyledModalAddTitleBox>
+                    <StyledModalAddTitleBox
+                        onClick={() => setSelect("3")}
+                        $select={select}
+                        $number="3"
+                    >
+                        <div>
+                            유용한 글 <p>30개 링크</p>
+                        </div>
+                        <Image src={checkIcon} alt="checkIcon" />
+                    </StyledModalAddTitleBox>
+                    <StyledModalAddTitleBox
+                        onClick={() => setSelect("4")}
+                        $select={select}
+                        $number="4"
+                    >
+                        <div>
+                            나만의 장소 <p>3개 링크</p>
+                        </div>
+                        <Image src={checkIcon} alt="checkIcon" />
+                    </StyledModalAddTitleBox>
+                </StyledModalAddBox>
+                <StyledModalButton>추가하기</StyledModalButton>
+            </StyledModalContent>
+        </>
+    );
+}
+
+function DeleteLink() {
+    return (
+        <>
+            <StyledModalTitleBox>
+                <StyledModalTitle>링크 삭제</StyledModalTitle>
+                <StyledModalSubTitle>httpw://www.abc.com</StyledModalSubTitle>
+            </StyledModalTitleBox>
+            <StyledModalContent>
+                <StyledModalButton $delete>삭제하기</StyledModalButton>
+            </StyledModalContent>
+        </>
+    );
+}
+
+function DeleteFolder() {
+    return (
+        <>
+            <StyledModalTitleBox>
+                <StyledModalTitle>폴더 삭제</StyledModalTitle>
+                <StyledModalSubTitle>폴더명</StyledModalSubTitle>
+            </StyledModalTitleBox>
+            <StyledModalContent>
+                <StyledModalButton $delete>삭제하기</StyledModalButton>
+            </StyledModalContent>
+        </>
+    );
+}
+
+function Share({ query }: { query: string }) {
+    const currentUrl = window.location.href + "?" + query;
+    const Kakao = (window as any).kakao;
+    useEffect(() => {
+        Kakao.cleanup();
+        Kakao.init(process.env.REACT_APP_KAKAO_API);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const shareKakao = () => {
+        Kakao.Share.sendDefault({
+            objectType: "feed",
+            content: {
+                title: "Linkbrary",
+                description: "라이브러리를 공유하세요",
+                imageUrl: "",
+                link: {
+                    mobileWebUrl: currentUrl,
+                },
+            },
+            buttons: [
+                {
+                    title: "나도 테스트 하러가기",
+                    link: {
+                        mobileWebUrl: currentUrl,
+                    },
+                },
+            ],
+        });
+    };
+    return (
+        <>
+            <StyledModalTitleBox>
+                <StyledModalTitle>폴더 공유</StyledModalTitle>
+                <StyledModalSubTitle>폴더명</StyledModalSubTitle>
+            </StyledModalTitleBox>
+            <StyledModalContentShare>
+                <StyledModalShare>
+                    <StyledModalShareIcon
+                        $name="kakao"
+                        onClick={() => shareKakao()}
+                    >
+                        <Image src={kakaoIcon} alt="kakaoIcon" />
+                    </StyledModalShareIcon>
+                    카카오톡
+                </StyledModalShare>
+                <StyledModalShare>
+                    <FacebookMessengerShareButton url={currentUrl} appId="">
+                        <StyledModalShareIcon $name="facebook">
+                            <Image src={facebookIcon} alt="facebookIcon" />
+                        </StyledModalShareIcon>
+                    </FacebookMessengerShareButton>
+                    페이스북
+                </StyledModalShare>
+                <StyledModalShare>
+                    <CopyToClipboard text={currentUrl}>
+                        <StyledModalShareIcon>
+                            <Image src={linkIcon} alt="linkIcon" />
+                        </StyledModalShareIcon>
+                    </CopyToClipboard>
+                    링크 복사
+                </StyledModalShare>
+            </StyledModalContentShare>
+        </>
+    );
+}
+
+function AddFolder() {
+    return (
+        <>
+            <StyledModalTitle>폴더 추가</StyledModalTitle>
+            <StyledModalContent>
+                <input placeholder="내용 입력" />
+                <StyledModalButton>추가하기</StyledModalButton>
+            </StyledModalContent>
+        </>
+    );
+}
+
+function Edit() {
+    return (
+        <>
+            <StyledModalTitle>폴더 이름 변경</StyledModalTitle>
+            <StyledModalContent>
+                <input placeholder="유용한 팁" />
+                <StyledModalButton>변경하기</StyledModalButton>
+            </StyledModalContent>
+        </>
+    );
+}
+
+interface ModalProps {
+    tag: string;
+    close: boolean;
+    setClose: React.Dispatch<React.SetStateAction<boolean>>;
+    query?: string;
+}
+
+export default function Modal({ tag, close, setClose, query }: ModalProps) {
+    if (query === undefined) query = "";
+    return (
+        <StyledModalWrap $close={close}>
+            <StyledModalBg>
+                <StyledModalBox>
+                    <StyledModalClose onClick={() => setClose(!close)}>
+                        <Image src={closeIcon} alt="closeIcon" />
+                    </StyledModalClose>
+                    {tag === "edit" ? <Edit /> : ""}
+                    {tag === "addFolder" ? <AddFolder /> : ""}
+                    {tag === "share" ? <Share query={query} /> : ""}
+                    {tag === "deleteFolder" ? <DeleteFolder /> : ""}
+                    {tag === "deleteLink" ? <DeleteLink /> : ""}
+                    {tag === "add" ? <Add /> : ""}
+                </StyledModalBox>
+            </StyledModalBg>
+        </StyledModalWrap>
+    );
+}
 
 const StyledModalWrap = styled.div<{ $close: boolean }>`
     width: 100vw;
@@ -100,7 +305,7 @@ const StyledModalButton = styled.div<{ $delete?: boolean }>`
     position: relative;
 `;
 
-const StyledModalClose = styled.img`
+const StyledModalClose = styled.div`
     position: absolute;
     top: 16px;
     right: 16px;
@@ -157,211 +362,3 @@ const StyledModalAddTitleBox = styled.div<{ $select: string; $number: string }>`
         color: #6d6afe;
     }
 `;
-
-function Add() {
-    const [select, setSelect] = useState("0");
-    return (
-        <>
-            <StyledModalTitleBox>
-                <StyledModalTitle>폴더에 추가</StyledModalTitle>
-                <StyledModalSubTitle>링크 주소</StyledModalSubTitle>
-            </StyledModalTitleBox>
-            <StyledModalContent>
-                <StyledModalAddBox>
-                    <StyledModalAddTitleBox
-                        onClick={() => setSelect("1")}
-                        $select={select}
-                        $number="1"
-                    >
-                        <div>
-                            코딩 팁 <p>7개 링크</p>
-                        </div>
-                        <img src={checkIcon} alt="checkIcon" />
-                    </StyledModalAddTitleBox>
-                    <StyledModalAddTitleBox
-                        onClick={() => setSelect("2")}
-                        $select={select}
-                        $number="2"
-                    >
-                        <div>
-                            채용 사이트 <p>12개 링크</p>
-                        </div>
-                        <img src={checkIcon} alt="cheakIcon" />
-                    </StyledModalAddTitleBox>
-                    <StyledModalAddTitleBox
-                        onClick={() => setSelect("3")}
-                        $select={select}
-                        $number="3"
-                    >
-                        <div>
-                            유용한 글 <p>30개 링크</p>
-                        </div>
-                        <img src={checkIcon} alt="checkIcon" />
-                    </StyledModalAddTitleBox>
-                    <StyledModalAddTitleBox
-                        onClick={() => setSelect("4")}
-                        $select={select}
-                        $number="4"
-                    >
-                        <div>
-                            나만의 장소 <p>3개 링크</p>
-                        </div>
-                        <img src={checkIcon} alt="checkIcon" />
-                    </StyledModalAddTitleBox>
-                </StyledModalAddBox>
-                <StyledModalButton>추가하기</StyledModalButton>
-            </StyledModalContent>
-        </>
-    );
-}
-
-function DeleteLink() {
-    return (
-        <>
-            <StyledModalTitleBox>
-                <StyledModalTitle>링크 삭제</StyledModalTitle>
-                <StyledModalSubTitle>httpw://www.abc.com</StyledModalSubTitle>
-            </StyledModalTitleBox>
-            <StyledModalContent>
-                <StyledModalButton $delete>삭제하기</StyledModalButton>
-            </StyledModalContent>
-        </>
-    );
-}
-
-function DeleteFolder() {
-    return (
-        <>
-            <StyledModalTitleBox>
-                <StyledModalTitle>폴더 삭제</StyledModalTitle>
-                <StyledModalSubTitle>폴더명</StyledModalSubTitle>
-            </StyledModalTitleBox>
-            <StyledModalContent>
-                <StyledModalButton $delete>삭제하기</StyledModalButton>
-            </StyledModalContent>
-        </>
-    );
-}
-
-function Share({ query }: { query: string }) {
-    const currentUrl = window.location.href + "?" + query;
-    const Kakao = (window as any).kakao;
-    useEffect(() => {
-        Kakao.cleanup();
-        Kakao.init(process.env.REACT_APP_KAKAO_API);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const shareKakao = () => {
-        Kakao.Share.sendDefault({
-            objectType: "feed",
-            content: {
-                title: "Linkbrary",
-                description: "라이브러리를 공유하세요",
-                imageUrl: "",
-                link: {
-                    mobileWebUrl: currentUrl,
-                },
-            },
-            buttons: [
-                {
-                    title: "나도 테스트 하러가기",
-                    link: {
-                        mobileWebUrl: currentUrl,
-                    },
-                },
-            ],
-        });
-    };
-    return (
-        <>
-            <StyledModalTitleBox>
-                <StyledModalTitle>폴더 공유</StyledModalTitle>
-                <StyledModalSubTitle>폴더명</StyledModalSubTitle>
-            </StyledModalTitleBox>
-            <StyledModalContentShare>
-                <StyledModalShare>
-                    <StyledModalShareIcon
-                        $name="kakao"
-                        onClick={() => shareKakao()}
-                    >
-                        <img src={kakaoIcon} alt="kakaoIcon" />
-                    </StyledModalShareIcon>
-                    카카오톡
-                </StyledModalShare>
-                <StyledModalShare>
-                    <FacebookMessengerShareButton url={currentUrl} appId="">
-                        <StyledModalShareIcon $name="facebook">
-                            <img src={facebookIcon} alt="facebookIcon" />
-                        </StyledModalShareIcon>
-                    </FacebookMessengerShareButton>
-                    페이스북
-                </StyledModalShare>
-                <StyledModalShare>
-                    <CopyToClipboard text={currentUrl}>
-                        <StyledModalShareIcon>
-                            <img src={linkIcon} alt="linkIcon" />
-                        </StyledModalShareIcon>
-                    </CopyToClipboard>
-                    링크 복사
-                </StyledModalShare>
-            </StyledModalContentShare>
-        </>
-    );
-}
-
-function AddFolder() {
-    return (
-        <>
-            <StyledModalTitle>폴더 추가</StyledModalTitle>
-            <StyledModalContent>
-                <input placeholder="내용 입력" />
-                <StyledModalButton>추가하기</StyledModalButton>
-            </StyledModalContent>
-        </>
-    );
-}
-
-function Edit() {
-    return (
-        <>
-            <StyledModalTitle>폴더 이름 변경</StyledModalTitle>
-            <StyledModalContent>
-                <input placeholder="유용한 팁" />
-                <StyledModalButton>변경하기</StyledModalButton>
-            </StyledModalContent>
-        </>
-    );
-}
-
-interface ModalProps {
-    tag: string;
-    close: boolean;
-    setClose: React.Dispatch<React.SetStateAction<boolean>>;
-    query?: string;
-}
-
-function Modal({ tag, close, setClose, query }: ModalProps) {
-    if (query === undefined) query = "";
-    return (
-        <StyledModalWrap $close={close}>
-            <StyledModalBg>
-                <StyledModalBox>
-                    <StyledModalClose
-                        src={closeIcon}
-                        alt="closeIcon"
-                        onClick={() => setClose(!close)}
-                    />
-                    {tag === "edit" ? <Edit /> : ""}
-                    {tag === "addFolder" ? <AddFolder /> : ""}
-                    {tag === "share" ? <Share query={query} /> : ""}
-                    {tag === "deleteFolder" ? <DeleteFolder /> : ""}
-                    {tag === "deleteLink" ? <DeleteLink /> : ""}
-                    {tag === "add" ? <Add /> : ""}
-                </StyledModalBox>
-            </StyledModalBg>
-        </StyledModalWrap>
-    );
-}
-
-export default Modal;

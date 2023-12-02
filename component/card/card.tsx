@@ -1,11 +1,149 @@
 import styled from "styled-components";
-import noImage from "../../assets/images/card/no-image.svg";
-import star from "../../assets/images/card/star.png";
-import kebab from "../../assets/images/card/kebab.svg";
+import noImage from "../../public/images/card/no-image.svg";
+import star from "../../public/images/card/star.png";
+import kebab from "../../public/images/card/kebab.svg";
 import { useState } from "react";
-import { CardItem } from "../common/type";
+import { CardItem } from "../../utils/type";
+import Image from "next/image";
 
-const StyledHoverImg = styled.img`
+interface CardProps {
+    item: CardItem;
+    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
+    setTag?: React.Dispatch<React.SetStateAction<string>>;
+    close?: boolean;
+}
+
+interface CardsProps {
+    items: CardItem[];
+    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
+    setTag?: React.Dispatch<React.SetStateAction<string>>;
+    close?: boolean;
+}
+
+function Card({ item, setClose, setTag, close }: CardProps) {
+    const [status, setStatus] = useState(true);
+    const bg = {
+        backgroundImage: `url(${item.imageSource ?? noImage})`,
+    };
+
+    function handlePopOver(tag: string) {
+        setStatus(!status);
+        if (setClose !== undefined && setTag !== undefined) {
+            setClose(!close);
+            setTag(tag);
+        }
+    }
+
+    const apiDate = new Date(item.createdAt as string);
+    function dateCalculator(apiDate: Date) {
+        const myDate = new Date();
+        const elapsedMinute = Math.floor(
+            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60
+        );
+        const elapsedHour = Math.floor(
+            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60
+        );
+        const elapsedDays = Math.floor(
+            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60 / 24
+        );
+        const elapsedMonth = Math.floor(
+            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60 / 24 / 31
+        );
+        const elapsedYear = Math.floor(
+            (myDate.valueOf() - apiDate.valueOf()) /
+                1000 /
+                60 /
+                60 /
+                24 /
+                31 /
+                12
+        );
+
+        if (elapsedMinute < 60) {
+            if (elapsedMinute < 2) {
+                return `1 minute ago`;
+            }
+            return `${elapsedMinute} minute${elapsedMinute ? "s" : ""} ago`;
+        }
+        if (elapsedHour < 24) {
+            return `${elapsedHour} hour${elapsedHour ? "s" : ""} ago`;
+        }
+        if (elapsedDays < 31) {
+            return `${elapsedDays} day${elapsedDays ? "s" : ""} ago`;
+        }
+        if (elapsedMonth < 12) {
+            return `${elapsedMonth} month${elapsedMonth ? "s" : ""} ago`;
+        }
+        if (elapsedYear) {
+            return `${elapsedYear} year${elapsedYear ? "s" : ""} ago`;
+        }
+    }
+    const elapsedTime = dateCalculator(apiDate);
+    const year = apiDate.getFullYear();
+    const month = apiDate.getMonth() + 1;
+    const days = apiDate.getDate();
+    return (
+        <StyledCardBox>
+            <StyledHoverImg>
+                <Image src={star} alt="star" />
+            </StyledHoverImg>
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <StyledCardImg $bg={item.imageSource ?? noImage} />
+            </a>
+            <StyledTextBox>
+                <StyledHoverImg onClick={() => setStatus(!status)}>
+                    <Image src={kebab} alt="kebab" />
+                </StyledHoverImg>
+                <StyledPopOverBox $status={status}>
+                    <StyledPopOver onClick={() => handlePopOver("deleteLink")}>
+                        삭제하기
+                    </StyledPopOver>
+                    <StyledPopOver onClick={() => handlePopOver("add")}>
+                        폴더에 추가
+                    </StyledPopOver>
+                </StyledPopOverBox>
+                <div>{elapsedTime}</div>
+                <StyledDescription>{item.description}</StyledDescription>
+                <div>{`${year}. ${month}. ${days}`}</div>
+            </StyledTextBox>
+        </StyledCardBox>
+    );
+}
+
+export default function Cards({ items, setClose, setTag, close }: CardsProps) {
+    if (items === undefined) return;
+    const camelItems = items.map((item) => {
+        const newItem = { ...item };
+        if ("created_at" in newItem && "image_source" in newItem) {
+            if (
+                typeof newItem.created_at === "string" ||
+                typeof newItem.image_source === "string"
+            ) {
+                newItem.createdAt = newItem.created_at;
+                delete newItem.created_at;
+                newItem.imageSource = newItem.image_source!;
+                delete newItem.image_source;
+            }
+        }
+        return newItem;
+    });
+    console.log(camelItems);
+    return (
+        <StyledCardGrid>
+            {camelItems.map((item) => (
+                <Card
+                    key={item.id}
+                    item={item}
+                    setClose={setClose}
+                    setTag={setTag}
+                    close={close}
+                />
+            ))}
+        </StyledCardGrid>
+    );
+}
+
+const StyledHoverImg = styled.div`
     position: absolute;
     top: 15px;
     right: 15px;
@@ -27,7 +165,6 @@ const StyledTextBox = styled.div`
     padding: 15px 20px;
     flex-direction: column;
     gap: 10px;
-    font-family: Pretendard;
     position: relative;
 `;
 
@@ -38,10 +175,11 @@ const StyledCardBox = styled.div`
     position: relative;
 `;
 
-const StyledCardImg = styled.div`
+const StyledCardImg = styled.div<{ $bg: string }>`
     overflow: hidden;
     width: 340px;
     height: 253.746px;
+    background-image: url(${({ $bg }) => $bg});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -95,141 +233,3 @@ const StyledPopOver = styled.div`
     }
     cursor: pointer;
 `;
-
-interface CardProps {
-    item: CardItem;
-    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
-    setTag?: React.Dispatch<React.SetStateAction<string>>;
-    close?: boolean;
-}
-
-interface CardsProps {
-    items: CardItem[];
-    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
-    setTag?: React.Dispatch<React.SetStateAction<string>>;
-    close?: boolean;
-}
-
-function Card({ item, setClose, setTag, close }: CardProps) {
-    const [status, setStatus] = useState(true);
-    const image = {
-        backgroundImage: `url(${item.imageSource ?? noImage})`,
-    };
-
-    function handlePopOver(tag: string) {
-        setStatus(!status);
-        if (setClose !== undefined && setTag !== undefined) {
-            setClose(!close);
-            setTag(tag);
-        }
-    }
-
-    const apiDate = new Date(item.createdAt);
-    function dateCalculator(apiDate: Date) {
-        const myDate = new Date();
-        const elapsedMinute = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60
-        );
-        const elapsedHour = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60
-        );
-        const elapsedDays = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60 / 24
-        );
-        const elapsedMonth = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60 / 24 / 31
-        );
-        const elapsedYear = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) /
-                1000 /
-                60 /
-                60 /
-                24 /
-                31 /
-                12
-        );
-
-        if (elapsedMinute < 60) {
-            if (elapsedMinute < 2) {
-                return `1 minute ago`;
-            }
-            return `${elapsedMinute} minute${elapsedMinute ? "s" : ""} ago`;
-        }
-        if (elapsedHour < 24) {
-            return `${elapsedHour} hour${elapsedHour ? "s" : ""} ago`;
-        }
-        if (elapsedDays < 31) {
-            return `${elapsedDays} day${elapsedDays ? "s" : ""} ago`;
-        }
-        if (elapsedMonth < 12) {
-            return `${elapsedMonth} month${elapsedMonth ? "s" : ""} ago`;
-        }
-        if (elapsedYear) {
-            return `${elapsedYear} year${elapsedYear ? "s" : ""} ago`;
-        }
-    }
-    const elapsedTime = dateCalculator(apiDate);
-    const year = apiDate.getFullYear();
-    const month = apiDate.getMonth() + 1;
-    const days = apiDate.getDate();
-    return (
-        <StyledCardBox>
-            <StyledHoverImg src={star} alt="star" />
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-                <StyledCardImg style={image} />
-            </a>
-            <StyledTextBox>
-                <StyledHoverImg
-                    src={kebab}
-                    alt="kebab"
-                    onClick={() => setStatus(!status)}
-                />
-                <StyledPopOverBox $status={status}>
-                    <StyledPopOver onClick={() => handlePopOver("deleteLink")}>
-                        삭제하기
-                    </StyledPopOver>
-                    <StyledPopOver onClick={() => handlePopOver("add")}>
-                        폴더에 추가
-                    </StyledPopOver>
-                </StyledPopOverBox>
-                <div>{elapsedTime}</div>
-                <StyledDescription>{item.description}</StyledDescription>
-                <div>{`${year}. ${month}. ${days}`}</div>
-            </StyledTextBox>
-        </StyledCardBox>
-    );
-}
-
-function Cards({ items, setClose, setTag, close }: CardsProps) {
-    if (items === undefined) return;
-    const camelItems = items.map((item) => {
-        const newItem = { ...item };
-        if ("created_at" in newItem && "image_source" in newItem) {
-            if (
-                typeof newItem.created_at === "string" &&
-                typeof newItem.image_source === "string"
-            ) {
-                newItem.createdAt = newItem.created_at;
-                delete newItem.created_at;
-                newItem.imageSource = newItem.image_source!;
-                delete newItem.image_source;
-            }
-        }
-        return newItem;
-    });
-    return (
-        <StyledCardGrid>
-            {camelItems.map((item) => (
-                <Card
-                    key={item.id}
-                    item={item}
-                    setClose={setClose}
-                    setTag={setTag}
-                    close={close}
-                />
-            ))}
-        </StyledCardGrid>
-    );
-}
-
-export default Cards;

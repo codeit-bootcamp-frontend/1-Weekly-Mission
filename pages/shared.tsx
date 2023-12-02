@@ -1,54 +1,10 @@
-import Cards from "../../components/cards/card";
-import getApi from "../../api/api";
+import Cards from "../component/card/card";
+import getApi from "../component/api/api";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Header from "../../components/common/header";
-import Footer from "../../components/common/footer";
-import SearchBar from "../../components/common/searchbar";
-import { CardItem } from "../../components/common/type";
-
-const StyledProfile = styled.div`
-    background-color: #f0f6ff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px 60px;
-    gap: 20px;
-    text-align: center;
-`;
-
-const StyledProfileImgBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-    word-break: keep-all;
-    img {
-        width: 60px;
-        height: 60px;
-        border-radius: 47px;
-        margin: 0 auto;
-    }
-`;
-
-const StyledProfileName = styled.div`
-    font-size: 40px;
-    font-weight: 600;
-    word-break: keep-all;
-`;
-
-const StyledMain = styled.div`
-    padding: 40px 0;
-    background-color: #fff;
-    display: flex;
-`;
-
-const StyledMainBox = styled.div`
-    margin: 0 auto;
-    display: flex;
-    gap: 40px;
-    flex-direction: column;
-`;
+import SearchBar from "../component/common/searchbar";
+import { CardItem } from "../utils/type";
+import Image from "next/image";
 
 interface Owner {
     id: number;
@@ -87,16 +43,22 @@ function MainSection({ items }: { items: CardItem[] }) {
 function Profile({ name, owner }: { name: string; owner?: Owner }) {
     return (
         <StyledProfile>
-            <StyledProfileImgBox>
-                <img src={owner?.profileImageSource} alt="profile-img" />
+            <StyledProfileBox>
+                <StyledProfileImg>
+                    <Image
+                        fill
+                        src={owner?.profileImageSource as string}
+                        alt="profile-img"
+                    />
+                </StyledProfileImg>
                 <div>@{owner?.name}</div>
-            </StyledProfileImgBox>
+            </StyledProfileBox>
             <StyledProfileName>{name}</StyledProfileName>
         </StyledProfile>
     );
 }
 
-function MainContent() {
+export default function Shared() {
     const [name, setName] = useState("");
     const [owner, setOwner] = useState<Owner>();
     const [items, setItems] = useState<CardItem[]>([]);
@@ -122,14 +84,47 @@ function MainContent() {
     );
 }
 
-function Shared() {
-    return (
-        <>
-            <Header />
-            <MainContent />
-            <Footer />
-        </>
-    );
-}
+const StyledProfile = styled.div`
+    background-color: #f0f6ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 60px;
+    gap: 20px;
+    text-align: center;
+`;
 
-export default Shared;
+const StyledProfileBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    word-break: keep-all;
+`;
+
+const StyledProfileImg = styled.div`
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 47px;
+    margin: 0 auto;
+`;
+
+const StyledProfileName = styled.div`
+    font-size: 40px;
+    font-weight: 600;
+    word-break: keep-all;
+`;
+
+const StyledMain = styled.div`
+    padding: 40px 0;
+    background-color: #fff;
+    display: flex;
+`;
+
+const StyledMainBox = styled.div`
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+`;

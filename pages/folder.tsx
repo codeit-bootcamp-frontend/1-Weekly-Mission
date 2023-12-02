@@ -1,18 +1,143 @@
-import Header from "../../components/common/header";
-import Footer from "../../components/common/footer";
-import SearchBar from "../../components/common/searchbar";
+import SearchBar from "../component/common/searchbar";
 import styled from "styled-components";
-import linkAddIcon from "../../assets/images/folder/linkAdd.svg";
-import Cards from "../../components/cards/card";
+import linkAddIcon from "../public/images/folder/linkAdd.svg";
+import Cards from "../component/card/card";
 import { useEffect, useState } from "react";
-import getApi from "../../api/api";
-import add from "../../assets/images/folder/add.svg";
-import share from "../../assets/images/folder/share.svg";
-import pen from "../../assets/images/folder/pen.svg";
-import trash from "../../assets/images/folder/trash.svg";
-import FolderButton from "../../components/folderbutton/folderbutton";
-import Modal from "../../components/modal/modal";
-import { CardItem, FolderButtonItem } from "../../components/common/type";
+import getApi from "../component/api/api";
+import add from "../public/images/folder/add.svg";
+import share from "../public/images/folder/share.svg";
+import pen from "../public/images/folder/pen.svg";
+import trash from "../public/images/folder/trash.svg";
+import FolderButton from "../component/folder/folderbutton";
+import Modal from "../component/folder/modal";
+import { CardItem, FolderButtonItem } from "../utils/type";
+import Image from "next/image";
+
+function LinkAdd() {
+    const [close, setClose] = useState(true);
+    return (
+        <>
+            <Modal tag="add" close={close} setClose={setClose}></Modal>
+            <StyledLinkAddBox>
+                <StyledLinkAdd>
+                    <Image src={linkAddIcon} alt="linkAddIcon" />
+                    <form>
+                        <input type="text" placeholder="링크를 추가해보세요" />
+                    </form>
+                    <StyledLinkAddButton onClick={() => setClose(!close)}>
+                        추가하기
+                    </StyledLinkAddButton>
+                </StyledLinkAdd>
+            </StyledLinkAddBox>
+        </>
+    );
+}
+
+function NoLink() {
+    return <StyledNoLink>저장된 링크가 없습니다.</StyledNoLink>;
+}
+
+function Folders() {
+    const [cardData, setCardData] = useState<CardItem[]>([]);
+    const [query, setQuery] = useState("/users/1/links");
+    const [title, setTitle] = useState("전체");
+    const [folderData, setFolderData] = useState<FolderButtonItem[]>([]);
+    const [close, setClose] = useState(true);
+    const [tag, setTag] = useState("edit");
+
+    useEffect(() => {
+        const handleCards = async () => {
+            const { data } = await getApi(query);
+            setCardData(data as CardItem[]);
+        };
+        handleCards();
+        console.log(query);
+    }, [query]);
+
+    useEffect(() => {
+        const path = "/users/1/folders";
+        const handleTitle = async () => {
+            const { data } = await getApi(path);
+            setFolderData(data as FolderButtonItem[]);
+        };
+        handleTitle();
+    }, []);
+
+    function handleTag(tag: string) {
+        setClose(!close);
+        setTag(tag);
+    }
+
+    console.log(cardData);
+
+    return (
+        <StyledFoldersBox>
+            <Modal tag={tag} close={close} setClose={setClose} query={query} />
+            <StyledFolderButtonBox>
+                <FolderButton
+                    items={folderData}
+                    title={title}
+                    setTitle={setTitle}
+                    setQuery={setQuery}
+                />
+                <StyledFolderAdd onClick={() => handleTag("addFolder")}>
+                    폴더 추가
+                    <Image src={add} alt="add" />
+                </StyledFolderAdd>
+            </StyledFolderButtonBox>
+            <StyledFolderNameTool>
+                <StyledFolderTitle>{title}</StyledFolderTitle>
+                {title === "전체" || (
+                    <StyledFolderTool>
+                        <IconAndText onClick={() => handleTag("share")}>
+                            <Image src={share} alt="share" />
+                            공유
+                        </IconAndText>
+                        <IconAndText onClick={() => handleTag("edit")}>
+                            <Image src={pen} alt="pen" />
+                            이름 변경
+                        </IconAndText>
+                        <IconAndText onClick={() => handleTag("deleteFolder")}>
+                            <Image src={trash} alt="trash" />
+                            삭제
+                        </IconAndText>
+                    </StyledFolderTool>
+                )}
+            </StyledFolderNameTool>
+
+            {cardData.length === 0 ? (
+                <NoLink />
+            ) : (
+                <Cards
+                    items={cardData}
+                    setClose={setClose}
+                    setTag={setTag}
+                    close={close}
+                />
+            )}
+        </StyledFoldersBox>
+    );
+}
+
+function MainSection() {
+    return (
+        <StyledMainBox>
+            <StyledMainFlexBox>
+                <SearchBar />
+                <Folders />
+            </StyledMainFlexBox>
+        </StyledMainBox>
+    );
+}
+
+export default function Folder() {
+    return (
+        <>
+            <LinkAdd />
+            <MainSection />
+        </>
+    );
+}
 
 const StyledLinkAdd = styled.div`
     display: flex;
@@ -21,6 +146,7 @@ const StyledLinkAdd = styled.div`
     flex-direction: row;
     gap: 12px;
     align-items: center;
+    justify-content: space-between;
     margin: 0 auto;
     border-radius: 15px;
     border: 1px solid #6d6afe;
@@ -38,7 +164,7 @@ const StyledLinkAddBox = styled.div`
     align-items: flex-start;
     background: #f0f6ff;
     input {
-        width: 640px;
+        width: 630px;
         border: none;
         @media (max-width: 767px) {
             width: 200px;
@@ -46,14 +172,15 @@ const StyledLinkAddBox = styled.div`
     }
 `;
 
-const StyledLinkAddButton = styled.button`
+const StyledLinkAddButton = styled.div`
     width: 80px;
-    padding: 10px 10px;
+    padding: 10px 15px;
     border-radius: 8px;
     background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
     color: var(--grey-light, #f5f5f5);
     font-size: 14px;
     font-weight: 600;
+    text-align: center;
     border: none;
     cursor: pointer;
 `;
@@ -153,141 +280,3 @@ const StyledNoLink = styled.div`
         width: 750px;
     }
 `;
-
-function LinkAdd() {
-    const [close, setClose] = useState(true);
-    return (
-        <>
-            <Modal tag="add" close={close} setClose={setClose}></Modal>
-            <StyledLinkAddBox>
-                <StyledLinkAdd>
-                    <img src={linkAddIcon} alt="linkAddIcon" />
-                    <form>
-                        <input type="text" placeholder="링크를 추가해보세요" />
-                    </form>
-                    <StyledLinkAddButton onClick={() => setClose(!close)}>
-                        추가하기
-                    </StyledLinkAddButton>
-                </StyledLinkAdd>
-            </StyledLinkAddBox>
-        </>
-    );
-}
-
-function NoLink() {
-    return <StyledNoLink>저장된 링크가 없습니다.</StyledNoLink>;
-}
-
-function Folders() {
-    const [cardData, setCardData] = useState<CardItem[]>([]);
-    const [query, setQuery] = useState("/users/1/links");
-    const [title, setTitle] = useState("전체");
-    const [folderData, setFolderData] = useState<FolderButtonItem[]>([]);
-    const [close, setClose] = useState(true);
-    const [tag, setTag] = useState("edit");
-
-    useEffect(() => {
-        const handleCards = async () => {
-            const { data } = await getApi(query);
-            setCardData(data as CardItem[]);
-        };
-        handleCards();
-        console.log(query);
-    }, [query]);
-
-    useEffect(() => {
-        const path = "/users/1/folders";
-        const handleTitle = async () => {
-            const { data } = await getApi(path);
-            setFolderData(data as FolderButtonItem[]);
-        };
-        handleTitle();
-    }, []);
-
-    function handleTag(tag: string) {
-        setClose(!close);
-        setTag(tag);
-    }
-
-    console.log(cardData);
-
-    return (
-        <StyledFoldersBox>
-            <Modal tag={tag} close={close} setClose={setClose} query={query} />
-            <StyledFolderButtonBox>
-                <FolderButton
-                    items={folderData}
-                    title={title}
-                    setTitle={setTitle}
-                    setQuery={setQuery}
-                />
-                <StyledFolderAdd onClick={() => handleTag("addFolder")}>
-                    폴더 추가
-                    <img src={add} alt="add" />
-                </StyledFolderAdd>
-            </StyledFolderButtonBox>
-            <StyledFolderNameTool>
-                <StyledFolderTitle>{title}</StyledFolderTitle>
-                {title === "전체" || (
-                    <StyledFolderTool>
-                        <IconAndText onClick={() => handleTag("share")}>
-                            <img src={share} alt="share" />
-                            공유
-                        </IconAndText>
-                        <IconAndText onClick={() => handleTag("edit")}>
-                            <img src={pen} alt="pen" />
-                            이름 변경
-                        </IconAndText>
-                        <IconAndText onClick={() => handleTag("deleteFolder")}>
-                            <img src={trash} alt="trash" />
-                            삭제
-                        </IconAndText>
-                    </StyledFolderTool>
-                )}
-            </StyledFolderNameTool>
-
-            {cardData.length === 0 ? (
-                <NoLink />
-            ) : (
-                <Cards
-                    items={cardData}
-                    setClose={setClose}
-                    setTag={setTag}
-                    close={close}
-                />
-            )}
-        </StyledFoldersBox>
-    );
-}
-
-function MainSection() {
-    return (
-        <StyledMainBox>
-            <StyledMainFlexBox>
-                <SearchBar />
-                <Folders />
-            </StyledMainFlexBox>
-        </StyledMainBox>
-    );
-}
-
-function MainContent() {
-    return (
-        <>
-            <LinkAdd />
-            <MainSection />
-        </>
-    );
-}
-
-function Folder() {
-    return (
-        <>
-            <Header />
-            <MainContent />
-            <Footer />
-        </>
-    );
-}
-
-export default Folder;

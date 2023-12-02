@@ -1,9 +1,9 @@
 interface CardItem {
-    createdAt: string;
+    createdAt?: string;
     created_at?: string;
     description: string;
     id: number;
-    imageSource: string;
+    imageSource?: string;
     image_source?: string;
     title: string;
     url: string;
@@ -17,4 +17,4 @@ interface FolderButtonItem {
     user_id: number;
 }
 
-export { CardItem, FolderButtonItem };
+export type { CardItem, FolderButtonItem };

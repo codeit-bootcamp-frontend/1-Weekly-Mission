@@ -1,4 +1,4 @@
-import topImg from "../public/home/top.png";
+import topImg from "../public/images/home/top.png";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
@@ -20,16 +20,11 @@ export default function Home() {
                 <div>
                     <div>
                         <div>
-                            <p>
-                                <div>
-                                    <span>원하는 링크</span>를 저장하세요
-                                </div>
-                            </p>
-                            <p>
-                                나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고
-                                싶은 옷, 기억하고 싶은 모든 것을 한 공간에
-                                저장하세요.
-                            </p>
+                            <div>
+                                <span>원하는 링크</span>를 저장하세요
+                            </div>
+                            나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은
+                            옷, 기억하고 싶은 모든 것을 한 공간에 저장하세요.
                         </div>
                         <div>
                             <img src="/assets/images/Card1.png" />
@@ -48,33 +43,24 @@ export default function Home() {
                             <img src="/assets/images/middle1.png" />
                         </div>
                         <div>
-                            <p>
-                                <div>
-                                    링크를 폴더로
-                                    <span>관리</span>하세요
-                                </div>
-                            </p>
-                            <p>
-                                나만의 폴더를 무제한으로 만들고 다양하게 활용할
-                                수 있습니다.
-                            </p>
+                            <div>
+                                링크를 폴더로
+                                <span>관리</span>하세요
+                            </div>
+                            나만의 폴더를 무제한으로 만들고 다양하게 활용할 수
+                            있습니다.
                         </div>
                     </div>
                 </div>
                 <div>
                     <div>
                         <div>
-                            <p>
-                                <div>
-                                    저장한 링크를
-                                    <span>공유</span>해 보세요.
-                                </div>
-                            </p>
-                            <p>
-                                여러 링크를 폴더에 담고 공유할 수 있습니다.
-                                가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해
-                                보세요.
-                            </p>
+                            <div>
+                                저장한 링크를
+                                <span>공유</span>해 보세요.
+                            </div>
+                            여러 링크를 폴더에 담고 공유할 수 있습니다. 가족,
+                            친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.
                         </div>
                         <div>
                             <img src="/assets/images/middle2.png" />
@@ -87,13 +73,11 @@ export default function Home() {
                             <img src="/assets/images/middle3.png" />
                         </div>
                         <div>
-                            <p>
-                                <div>
-                                    저장한 링크를
-                                    <span>검색</span>해 보세요
-                                </div>
-                            </p>
-                            <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+                            <div>
+                                저장한 링크를
+                                <span>검색</span>해 보세요
+                            </div>
+                            중요한 정보들을 검색으로 쉽게 찾아보세요.
                         </div>
                     </div>
                 </div>

@@ -1,21 +1,5 @@
 import styled from "styled-components";
-import { FolderButtonItem } from "../common/type";
-
-const StyledButtonBox = styled.div`
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-`;
-
-const StyledButton = styled.div<{ $select: boolean }>`
-    display: flex;
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: 1px solid #6d6afe;
-    cursor: pointer;
-    background: ${({ $select }) => ($select ? "#6D6AFE" : "#fff")};
-    color: ${({ $select }) => ($select ? "#fff" : "#000")};
-`;
+import { FolderButtonItem } from "../../utils/type";
 
 interface ButtonProps {
     item: FolderButtonItem;
@@ -45,7 +29,12 @@ function Button({ item, title, setTitle, setQuery }: ButtonProps) {
     );
 }
 
-function FolderButton({ items, setTitle, title, setQuery }: FolderProps) {
+export default function FolderButton({
+    items,
+    setTitle,
+    title,
+    setQuery,
+}: FolderProps) {
     const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const titleName = (e.target as HTMLDivElement).textContent;
         if (titleName !== null) setTitle(titleName);
@@ -72,4 +61,18 @@ function FolderButton({ items, setTitle, title, setQuery }: FolderProps) {
     );
 }
 
-export default FolderButton;
+const StyledButtonBox = styled.div`
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+`;
+
+const StyledButton = styled.div<{ $select: boolean }>`
+    display: flex;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #6d6afe;
+    cursor: pointer;
+    background: ${({ $select }) => ($select ? "#6D6AFE" : "#fff")};
+    color: ${({ $select }) => ($select ? "#fff" : "#000")};
+`;
