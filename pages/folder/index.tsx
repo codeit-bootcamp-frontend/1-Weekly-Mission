@@ -1,24 +1,22 @@
 import styles from "./folderPage.module.css";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { getUserLinks } from "../api/folder";
+import { BASE_URL, USERS_ENDPOINT } from "../api/services/config";
+import { FolderName, LinkInfo } from "@/types/types";
+import { ALL_LINK_NAME, OPTION_ICONS } from "./constant";
 import AddLinkInput from "./components/addLinkInput/AddLinkInput";
 import SearchBar from "@/components/searchBar/SearchBar";
 import Card from "@/components/card/Card";
 import EmptyPage from "./components/emptyPage/EmptyPage";
 import OptionButton from "./components/optionButton/OptionButton";
 import FloatingButton from "@/components/floatingButton/FloatingButton";
-import { ALL_LINK_NAME, OPTION_ICONS } from "./constant";
-
+import SortButton from "./components/sortButton/SortButton";
 import addIcon from "@/public/icons/add.svg";
 import addPrimaryIcon from "@/public/icons/addPrimaryColor.svg";
-import SortButton from "./components/sortButton/SortButton";
 import useModal from "@/hooks/useModal";
-import { FolderName, LinkInfo } from "@/types/types";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import Image from "next/image";
 import axios from "axios";
-import { BASE_URL, USERS_ENDPOINT } from "../api/services/config";
-import { Input, PasswordInput } from "@/components/input/Input";
 
 export async function getStaticProps() {
   const res = await axios.get(`${BASE_URL}${USERS_ENDPOINT}/1/folders`);
@@ -142,8 +140,6 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
           inputRef={inputRef}
           onSubmit={filterByKeyword}
         />
-        <Input />
-        <PasswordInput />
         {keyword === "" ? null : <p>{`${keyword}`}으로 검색한 결과입니다.</p>}
         <section className={styles.folderContentSection}>
           <div className={styles.folderSortAddButtonsContainer}>

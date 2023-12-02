@@ -1,3 +1,9 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .input {
   width: 100%;
   border: none;
@@ -27,4 +33,14 @@
 
 .eyeIcon {
   cursor: pointer;
+}
+
+.inputError {
+  border: 1px solid var(--color-red-10);
+}
+
+.errorMessage {
+  color: var(--color-red-10);
+  font-size: 14px;
+  font-weight: 400;
 }

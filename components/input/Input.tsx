@@ -4,17 +4,20 @@ import Image from "next/image";
 import eyeOnIcon from "@/public/icons/eye-on.svg";
 import eyeOffIcon from "@/public/icons/eye-off.svg";
 
-export function Input() {
-  return (
-    <form>
-      <input placeholder="ID" className={styles.input} />
-    </form>
-  );
+interface InputProps {
+  placeholder: string;
+  inputType: string;
+  errorMessage?: string;
 }
 
-export function PasswordInput() {
+function Input({
+  placeholder,
+  inputType = "default",
+  errorMessage = "",
+}: InputProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const passwordInputRef = useRef<HTMLInputElement>(null);
+  const isDefaultInput = inputType === "default";
 
   const handleEyeButtonClick = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -29,23 +32,28 @@ export function PasswordInput() {
 
   return (
     <form className={styles.form}>
-      <div className={styles.inputWrapper}>
+      <div className={`${styles.inputWrapper}`}>
         <input
-          placeholder="Password"
+          placeholder={placeholder}
           className={styles.input}
-          type="password"
+          type={isDefaultInput ? "text" : "password"}
           autoComplete="off"
           ref={passwordInputRef}
         />
-        <Image
-          src={isPasswordVisible ? eyeOnIcon : eyeOffIcon}
-          width={16}
-          height={16}
-          alt="eyeToggleIcon"
-          className={styles.eyeIcon}
-          onClick={handleEyeButtonClick}
-        />
+        {isDefaultInput ? null : (
+          <Image
+            src={isPasswordVisible ? eyeOnIcon : eyeOffIcon}
+            width={16}
+            height={16}
+            alt="eyeToggleIcon"
+            className={styles.eyeIcon}
+            onClick={handleEyeButtonClick}
+          />
+        )}
       </div>
+      <p className={styles.errorMessage}>{errorMessage}</p>
     </form>
   );
 }
+
+export default Input;
