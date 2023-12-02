@@ -3,7 +3,12 @@ import classNames from "classnames/bind";
 import { AddFolderButton } from "folder/ui-add-folder-button";
 import { FolderButton } from "folder/ui-folder-button";
 import { IconAndTextButton } from "sharing/ui-icon-and-text-button";
-import { ALL_LINKS_TEXT, BUTTONS, KAKAO_SHARE_DATA, MODALS_ID } from "./constant";
+import {
+  ALL_LINKS_TEXT,
+  BUTTONS,
+  KAKAO_SHARE_DATA,
+  MODALS_ID,
+} from "./constant";
 import { ALL_LINKS_ID } from "link/data-access-link/constant";
 import { KeyboardEvent, useState } from "react";
 import { ShareModal } from "folder/ui-share-modal";
@@ -20,7 +25,11 @@ type FolderToolBarProps = {
   onFolderClick: (folderId: SelectedFolderId) => void;
 };
 
-export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }: FolderToolBarProps) => {
+export const FolderToolBar = ({
+  folders,
+  selectedFolderId,
+  onFolderClick,
+}: FolderToolBarProps) => {
   const { shareKakao } = useKakaoSdk();
   const [currentModal, setCurrentModal] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
@@ -29,7 +38,10 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }: Fold
     ALL_LINKS_ID === selectedFolderId
       ? ALL_LINKS_TEXT
       : folders?.find(({ id }) => id === selectedFolderId)?.name ?? "";
-  const shareLink = `${window.location.origin}/shared?user=1&folder=${selectedFolderId}`;
+  const shareLink =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/shared?user=1&folder=${selectedFolderId}`
+      : "";
 
   const closeModal = () => setCurrentModal(null);
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {

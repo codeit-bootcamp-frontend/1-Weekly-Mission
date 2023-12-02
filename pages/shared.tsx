@@ -7,19 +7,28 @@ import { ReadOnlyCard } from "link/ui-read-only-card";
 import { SearchBar } from "link/ui-search-bar";
 import { useSearchLink } from "link/util-search-link/useSearchLink";
 
-export const SharedPage = () => {
+export default function Shared() {
   const { data } = useGetFolder();
   const { profileImage, ownerName, folderName, links } = data || {};
-  const { searchValue, handleChange, handleCloseClick, result } = useSearchLink(links);
+  const { searchValue, handleChange, handleCloseClick, result } =
+    useSearchLink(links);
 
   return (
     <Layout>
       <SharedLayout
         folderInfo={
-          <FolderInfo profileImage={profileImage} ownerName={ownerName} folderName={folderName} />
+          <FolderInfo
+            profileImage={profileImage}
+            ownerName={ownerName}
+            folderName={folderName}
+          />
         }
         searchBar={
-          <SearchBar value={searchValue} onChange={handleChange} onCloseClick={handleCloseClick} />
+          <SearchBar
+            value={searchValue}
+            onChange={handleChange}
+            onCloseClick={handleCloseClick}
+          />
         }
         cardList={
           <CardList>
@@ -31,4 +40,4 @@ export const SharedPage = () => {
       />
     </Layout>
   );
-};
+}
