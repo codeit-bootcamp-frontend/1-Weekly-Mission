@@ -1,8 +1,5 @@
-/* footer.module.css */
-
 .container {
   display: flex;
-  padding-top: 120px;
   flex-direction: column;
   align-items: center;
   align-self: stretch;

@@ -75,6 +75,7 @@
   grid-template-rows: repeat(3, 1fr);
   column-gap: 20px;
   row-gap: 25px;
+  padding-bottom: 100px;
 }
 
 .floatingActionButtonContainer {
