@@ -376,8 +376,10 @@ section:nth-of-type(even) {
 }
 
 .content-image {
+  position: relative;
   grid-area: image;
   width: 100%;
+  height: 31.5rem;
   padding-top: 0.4rem;
 
   @media (min-width: 768px) {

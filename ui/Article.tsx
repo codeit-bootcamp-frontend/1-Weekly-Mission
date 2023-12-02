@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const Article = () => {
   return (
@@ -16,11 +17,14 @@ const Article = () => {
           사고 싶은 옷, 기억하고 싶은 모든 것을
           <br className="line-break-tablet-desktop" />한 공간에 저장하세요.
         </p>
-        <img
-          src="/images/image1.png"
-          className="content-image"
-          alt="링크의 내용이 담긴 카드들"
-        />
+        <div className="content-image">
+          <Image
+            src="/images/image1.png"
+            alt="링크의 내용이 담긴 카드들"
+            fill
+            objectFit="cover"
+          />
+        </div>
       </section>
       <section>
         <h2 className="title">
@@ -34,11 +38,14 @@ const Article = () => {
           <br className="line-break-tablet-desktop" />
           다양하게 활용할 수 있습니다.
         </p>
-        <img
-          src="/images/image2.png"
-          className="content-image"
-          alt="폴더 이름 변경 기능"
-        />
+        <div className="content-image">
+          <Image
+            src="/images/image2.png"
+            alt="폴더 이름 변경 가능"
+            fill
+            objectFit="cover"
+          />
+        </div>
       </section>
       <section>
         <h2 className="title">
@@ -50,11 +57,14 @@ const Article = () => {
           여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
           쉽고 빠르게 링크를 공유해 보세요.
         </p>
-        <img
-          src="/images/image3.png"
-          className="content-image"
-          alt="폴더 공유 기능"
-        />
+        <div className="content-image">
+          <Image
+            src="/images/image3.png"
+            alt="폴더 공유 기능"
+            fill
+            objectFit="cover"
+          />
+        </div>
       </section>
       <section>
         <h2 className="title">
@@ -63,11 +73,14 @@ const Article = () => {
           보세요
         </h2>
         <p className="description">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
-        <img
-          src="/images/image4.png"
-          className="content-image"
-          alt="링크 검색 기능"
-        />
+        <div className="content-image">
+          <Image
+            src="/images/image4.png"
+            alt="링크 검색 기능"
+            fill
+            objectFit="cover"
+          />
+        </div>
       </section>
     </article>
   );

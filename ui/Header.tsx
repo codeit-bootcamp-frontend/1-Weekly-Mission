@@ -24,7 +24,7 @@ const Header = ({ profile, userName, folderName, fullData }: PropsType) => {
   function getInputValue(v: string) {
     setInputValue(v);
   }
-  console.log(fullData);
+
   const searchedData = fullData?.filter((data: Link) => {
     if (
       data.url.includes(inputValue) ||
