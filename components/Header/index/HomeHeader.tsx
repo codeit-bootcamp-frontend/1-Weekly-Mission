@@ -15,7 +15,7 @@ export default function HomeHeader() {
           <CutLine />
           <StyledLink href="/folder">링크 추가하기</StyledLink>
         </WrapperLink>
-        <StyledImage priority width={40} height={40} src="index/_img.svg" alt="링크검색기능 예시이미지" />
+        <StyledImage priority width={1} height={1} src="index/_img.svg" alt="링크검색기능 예시이미지" />
       </StyledHeader>
     </>
   );
