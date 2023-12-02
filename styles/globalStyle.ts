@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 export const device = {
-  tablet: `(min-width: 768px) and (max-width: 1199px)`,
-  mobile: `(max-width: 767px)`,
+  tablet: `min-width: 768px) and (max-width: 1199px`,
+  mobile: `max-width: 767px`,
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -23,7 +23,7 @@ html {
   }
   
   body {
-    background: white;
+    background: var(--white);
     margin: 0;
     padding: 0;
     display: flex;

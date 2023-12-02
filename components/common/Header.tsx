@@ -84,10 +84,10 @@ const HeaderContainer = styled.header<{ $isFixed: boolean }>`
   min-height: 9.4rem;
   z-index: 10;
 
-  @media all and ${device.tablet} {
+  @media all and (${device.tablet}) {
     padding: 1.8rem 3.2rem;
   }
-  @media all and ${device.mobile} {
+  @media all and (${device.mobile}) {
     padding: 3.3rem;
   }
 
@@ -101,7 +101,7 @@ const HeaderContainer = styled.header<{ $isFixed: boolean }>`
     #logoImg {
       cursor: pointer;
       height: 2.4rem;
-      @media all and ${device.mobile} {
+      @media all and (${device.mobile}) {
         height: 1.8rem;
       }
     }
@@ -123,7 +123,7 @@ const ProfileContainer = styled.div`
     color: var(--linkbrary-gray-100, #373740);
     font-size: 1.4rem;
     font-weight: 400;
-    @media all and ${device.mobile} {
+    @media all and (${device.mobile}) {
       display: none;
     }
   }
