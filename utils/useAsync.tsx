@@ -14,7 +14,7 @@ export const useAsync = <T,>(
     setData(null);
     try {
       const response = await asyncFunction();
-      setData(response?.data ?? null);
+      setData(response.data);
       return response;
     } catch (error) {
       console.log(error);
@@ -26,6 +26,7 @@ export const useAsync = <T,>(
 
   useEffect(() => {
     execute();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { execute, loading, error, data };

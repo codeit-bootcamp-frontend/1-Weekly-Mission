@@ -12,7 +12,7 @@ interface Props {
 export default function Nav({ profile }: Props) {
   return (
     <div className='bg-bg'>
-      <div className='flex justify-between items-center m-auto px-8 py-[0.8125rem] dt:px-[12.5rem] tb:py-8 max-w-[120rem]'>
+      <div className='flex justify-between items-center m-auto px-8 py-[0.8125rem] dt:px-[12.5rem] tb:py-8 max-w-[75rem]'>
         <Link href='/'>
           <Image
             priority

@@ -29,7 +29,7 @@ export default function PageLayout({ children }: Props) {
   return (
     <div>
       <Nav profile={profile} />
-      <FolderButton text='전체' />
+      {children}
     </div>
   );
 }
