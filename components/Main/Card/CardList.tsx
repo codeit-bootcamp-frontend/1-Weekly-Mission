@@ -30,14 +30,9 @@ function CardList({ id, path }: PcardList) {
   const folderData = useData(URLS.FOLDER_CATEGORY, id);
 
   const router = useRouter();
+  const searchKeyword = router.query["q"] as string;
   const folderId = router.query["folderId"] as string;
-  const links =
-    cardData?.path === URLS.FOLDER_LINKS
-      ? filterFolder(cardData?.links, folderId === null ? null : folderId === "" ? prev : folderId)
-      : cardData?.links;
-  if (Number(folderId)) {
-    prev = folderId;
-  }
+  const links = filterFolder(cardData, searchKeyword, folderId);
 
   return links?.length ? (
     <ContainerCardList>
@@ -52,7 +47,7 @@ export default CardList;
 
 interface PcardSet {
   folder?: FolderData[];
-  links: SampleLink[] | LinkData[];
+  links: (SampleLink | LinkData)[];
 }
 
 function CardSet({ folder, links }: PcardSet) {

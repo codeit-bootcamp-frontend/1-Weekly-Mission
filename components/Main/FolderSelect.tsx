@@ -111,7 +111,7 @@ function FolderAddFloat({ handleModal }: PaddFloat) {
   return (
     <ButtonFloat onClick={handleModal}>
       폴더 추가
-      <Image width={40} height={40} src="/addWhite.svg" alt="폴더에 추가하기" />
+      <Image width={20} height={20} src="/addWhite.svg" alt="폴더에 추가하기" />
     </ButtonFloat>
   );
 }

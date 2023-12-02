@@ -5,7 +5,7 @@ export const Container = styled.header`
   justify-content: center;
   align-items: center;
   background-color: #f0f6ff;
-  padding: 1rem 0 4rem;
+  padding: 3rem 0 4rem;
 `;
 
 export const User = styled.div`

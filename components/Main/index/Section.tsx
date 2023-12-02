@@ -17,11 +17,11 @@ interface Isection {
   contents: Text;
 }
 
-export default function Section({ reverse, contents }: Isection) {
+export default function Section({ reverse = false, contents }: Isection) {
   return (
     <>
-      <StyledSection reverse={reverse ?? false}>
-        <StyledImage reverse={reverse ?? false} width={1} height={1} src={`index/section_${contents}.svg`} alt={`${contents} 기능 예시 이미지`} />
+      <StyledSection reverse={reverse}>
+        <StyledImage reverse={reverse} width={1} height={1} src={`index/section_${contents}.svg`} alt={`${contents} 기능 예시 이미지`} />
         <Title contents={contents}>
           {TEXT[contents][0]}
           <span>{TEXT[contents][1]}</span>

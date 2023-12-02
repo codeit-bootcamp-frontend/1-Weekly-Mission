@@ -1,13 +1,13 @@
-import Logo from "./Logo";
+import { Background, Nav } from "@/components/Nav/Navigation.styled";
+import Profile from "@/components/Nav/Profile";
+import SignButton from "@/components/Nav/SignButton";
+import { Button } from "@/components/Nav/SignButton.styled";
 import { reduceData, useReduce } from "@/hooks/useData";
 import { getData } from "@/utils/getData";
 import { URLS } from "@/utils/getData.type";
-import Profile from "@/components/Nav/Profile";
-import SignButton from "@/components/Nav/SignButton";
-import { Backgorund, Nav } from "@/components/Nav/Navigation.styled";
-import { useRouter } from "next/router";
-import { Button } from "@/components/Nav/SignButton.styled";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import Logo from "./Logo";
 
 interface Props {
   id?: number;
@@ -18,7 +18,7 @@ interface Props {
 function Navigation({ id, setIsUser, page = "" }: Props) {
   return (
     <>
-      <Backgorund />
+      <Background />
       <Nav page={page}>
         <Logo src="/logo.svg" alt="링크브러리 홈화면으로 이동" />
         {page === "/" ? (

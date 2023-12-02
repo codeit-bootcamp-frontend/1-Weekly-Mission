@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Backgorund = styled.div`
+export const Background = styled.div`
   position: absolute;
   background-color: var(--Gray1);
   width: 100%;
@@ -21,6 +21,7 @@ export const Nav = styled.nav<Inav>`
   z-index: ${({ page }) => (page === "folder" ? `0` : `2`)};
   background-color: var(--Gray1-80);
   padding: 1.6rem 3.2rem;
+  height: 9rem;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: calc(50vw - 40rem) 1fr 1fr calc(50vw - 40rem);

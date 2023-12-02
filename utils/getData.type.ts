@@ -101,7 +101,7 @@ interface RsampleUser extends Rentity {
   path: URLS.SHARED_USER;
 }
 
-interface RsampleFolder {
+export interface RsampleFolder {
   path: URLS.SHARED_FOLDER;
   links: SampleLink[];
 }
@@ -120,7 +120,7 @@ interface Ruser extends Rentity {
   path: URLS.FOLDER_USER;
 }
 
-interface Rlink {
+export interface Rlink {
   path: URLS.FOLDER_LINKS;
   links: LinkData[];
 }

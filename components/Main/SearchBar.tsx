@@ -13,7 +13,10 @@ function SearchBar() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/folder?folderId=${value}`);
+    const query = router.query;
+    router.push({
+      query: { ...query, q: value },
+    });
   };
 
   const handleClick = () => {
