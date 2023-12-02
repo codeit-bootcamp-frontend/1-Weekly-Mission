@@ -15,31 +15,39 @@ import Binder from "@/components/Binder/Binder";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const folder_ID = context.query["id"];
-
-  // 이 폴더의 이름과 소유자의 id 확인
-  const FolderData = await getFolderByFolderID(folder_ID);
-  const {
-    data: [{ user_id: user_ID, name: folderName }],
-  } = FolderData;
-
-  // 이 폴더 주인의 데이터 잡아오기
-  const UserData = await getSpecificUserData(user_ID);
-  const {
-    data: [{ name: userName, image_source: profileImage }],
-  } = UserData;
-
-  // 이 폴더에 담겨있는 링크들을 확인
-  const LinkData = await getLinksByFolderID(user_ID, folder_ID);
-  const { data: links } = LinkData;
+  let folderName;
+  let profileImage;
+  let userName;
+  let links;
 
   try {
+    // 이 폴더의 이름과 소유자의 id 확인
+    const FolderData = await getFolderByFolderID(folder_ID);
+    let {
+      data: [{ user_id: user_ID, name: tryFolderName }],
+    } = FolderData;
+    folderName = tryFolderName;
+
+    // 이 폴더 주인의 데이터 잡아오기
+    const UserData = await getSpecificUserData(user_ID);
+    let {
+      data: [{ name: tryUserName, image_source: tryProfileImage }],
+    } = UserData;
+    profileImage = tryProfileImage;
+    userName = tryUserName;
+
+    // 이 폴더에 담겨있는 링크들을 확인
+    const LinkData = await getLinksByFolderID(user_ID, folder_ID);
+    let { data: tryLinks } = LinkData;
+    links = tryLinks;
   } catch {
     return {
       notFound: true,
     };
   }
+
   return {
-    props: { folder_ID, user_ID, folderName, links, userName, profileImage },
+    props: { folderName, links, userName, profileImage },
   };
 };
 
