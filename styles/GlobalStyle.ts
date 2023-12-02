@@ -26,7 +26,9 @@ const GlobalStyles = createGlobalStyle`
 
 html,
 body,
-p {
+p,
+h1,
+h2 {
   margin: 0;
   padding: 0;
   border: 0;

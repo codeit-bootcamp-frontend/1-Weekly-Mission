@@ -16,7 +16,7 @@ function AddFolderBtn() {
     <>
       <Container onClick={() => handleModalOpen()}>
         <AddFolder>폴더 추가</AddFolder>
-        <Image src={innerWidth < 768 ? addMobileButton : addButton} alt="폴더 추가 버튼" />
+        {innerWidth < 768 ? <Image src={addMobileButton} alt="폴더 추가 버튼" /> : <Image src={addButton} alt="폴더 추가 버튼" />}
       </Container>
       {isOpen && (
         <ModalPortal>

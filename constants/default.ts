@@ -8,6 +8,10 @@ import instagramIcon from '@/public/assets/images/ant-design_instagram-filled.sv
 import kakaotalkShareIcon from '@/public/assets/images/share_kakao.svg';
 import facebookShareIcon from '@/public/assets/images/share_facebook.svg';
 import linkCopyIcon from '@/public/assets/images/share_copy.svg';
+import saveImg from '@/public/assets/images/contents1.svg';
+import folderImg from '@/public/assets/images/contents2.svg';
+import shareImg from '@/public/assets/images/contents3.svg';
+import searchImg from '@/public/assets/images/contents4.svg';
 
 export const SAMPLE_ID = -2;
 export const ALL_ID = -1;
@@ -71,3 +75,38 @@ export const SHARE_LIST = [
     msg: '링크 복사',
   },
 ];
+
+export const CONTENTS = {
+  save: {
+    title_pre: '',
+    title_grd: '원하는 링크',
+    title_post: '를 저장하세요',
+    detail: '나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고 싶은 모든 것을 한 공간에 저장하세요.',
+    src: saveImg,
+    alt: '저장된 링크 카드 이미지',
+  },
+  folder: {
+    title_pre: '링크를 폴더로 ',
+    title_grd: '관리',
+    title_post: '하세요',
+    detail: '나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.',
+    src: folderImg,
+    alt: '폴더 이름 변경하기 모달 이미지',
+  },
+  share: {
+    title_pre: '저장한 링크를 ',
+    title_grd: '공유',
+    title_post: '해 보세요',
+    detail: '여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.',
+    src: shareImg,
+    alt: '폴더 공유하기 모달 이미지',
+  },
+  search: {
+    title_pre: '저장한 링크를 ',
+    title_grd: '검색',
+    title_post: '해 보세요',
+    detail: '중요한 정보들을 검색으로 쉽게 찾아보세요.',
+    src: searchImg,
+    alt: '검색 결과 화면 이미지',
+  },
+};

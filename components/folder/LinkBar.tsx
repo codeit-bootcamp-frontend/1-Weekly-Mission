@@ -21,7 +21,7 @@ function LinkBar() {
     <>
       <Container onSubmit={handleLinkAdd}>
         <Input ref={input} placeholder="링크를 추가해 보세요" />
-        <Button type="linkAdd">추가하기</Button>
+        <Button type="add">추가하기</Button>
       </Container>
       {isOpen && (
         <ModalPortal>

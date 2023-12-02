@@ -18,7 +18,7 @@ function Card({ link }: Props) {
     <Container href={url} target="_blank" rel="noopener noreferrer">
       <ImgBox>
         <StarIcon src={starIcon} alt="즐겨찾기 아이콘" width={34} height={34} />
-        <Img src={imageSource || image_source || defaultImg} alt="카드 이미지" width={700} height={700} />
+        <Img src={imageSource || image_source || defaultImg} alt="카드 이미지" width={700} height={700} priority />
       </ImgBox>
       <TextBox>
         <Wrapper>
