@@ -4,14 +4,10 @@ import styled from "styled-components";
 import eyeOff from "./eye-off.svg";
 import eyeOn from "./eye-on.svg";
 
-function Input() {
+export function InputEmail() {
   const [emailFocusIn, setEmailFocusIn] = useState(false);
-  const [passwordFocusIn, setPasswordFocusIn] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
   const [emailInput, setEmailInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
 
   const displayEmailError = () => {
     setEmailFocusIn(false);
@@ -26,6 +22,29 @@ function Input() {
     setEmailError(false);
     setEmailFocusIn(true);
   };
+
+  return (
+    <>
+      <InputWrapper
+        type="email"
+        value={emailInput}
+        placeholder="내용 입력"
+        $focusIn={emailFocusIn}
+        $emailError={emailError}
+        onFocus={handleFocusEmailInput}
+        onBlur={displayEmailError}
+        onChange={(e) => setEmailInput(e.target.value)}
+      />
+      {emailError ? <ErrorM>내용을 다시 입력해주세요</ErrorM> : null}
+    </>
+  );
+}
+
+export function InputPW() {
+  const [passwordFocusIn, setPasswordFocusIn] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
 
   const displayPasswordError = () => {
     setPasswordFocusIn(false);
@@ -43,17 +62,6 @@ function Input() {
 
   return (
     <>
-      <InputWrapper
-        type="email"
-        value={emailInput}
-        placeholder="내용 입력"
-        $focusIn={emailFocusIn}
-        $emailError={emailError}
-        onFocus={handleFocusEmailInput}
-        onBlur={displayEmailError}
-        onChange={(e) => setEmailInput(e.target.value)}
-      />
-      {emailError ? <ErrorM>내용을 다시 입력해주세요</ErrorM> : null}
       <InputContainer>
         <InputWrapper
           type={showPassword ? "type" : "password"}
@@ -116,5 +124,3 @@ const ErrorM = styled.p`
   font-weight: 400;
   line-height: normal;
 `;
-
-export default Input;
