@@ -9,7 +9,7 @@ interface navPropsType {
 const Nav = ({ userEmail }: navPropsType) => {
   return (
     <>
-      <nav>
+      <nav className="folderPage-nav">
         <div className="gnb">
           <Link href="/">
             <Image

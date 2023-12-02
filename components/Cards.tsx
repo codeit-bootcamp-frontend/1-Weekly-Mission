@@ -1,4 +1,3 @@
-// import "@/styles/landing.css";
 import Card from "./Card";
 
 interface Link {
