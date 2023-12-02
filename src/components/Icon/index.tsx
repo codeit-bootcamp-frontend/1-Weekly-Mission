@@ -9,7 +9,7 @@ interface Icon {
   alt: string;
 }
 
-const DEFAULT_SIZE = 30;
+const DEFAULT_SIZE = 15;
 
 function Icon({ size = DEFAULT_SIZE, width, height, src, alt }: Icon) {
   return (
