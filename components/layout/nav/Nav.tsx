@@ -1,29 +1,44 @@
 import React, { useEffect, useState } from "react";
 import styles from "./nav.module.css";
 import logo from "@/public/icons/logo.svg";
-import { getSampleUser } from "@/pages/api/user";
 import { SampleUser } from "../../../types/types";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
 
-export async function getServerSideProps() {
+interface NavProps {
+  userProfile: SampleUser[];
+}
+
+export const getStaticProps = async () => {
+  // 여기 getStaticProps로 전달한 userProfile이 계속해서 undefined가 뜨는 이유 ???
   const response = await axios.get(
-    `https://bootcamp-api.codeit.kr/api/users/1`
+    "https://bootcamp-api.codeit.kr/api/users/1"
   );
-  const userProfile = response?.data;
+  const userProfile = response.data.data;
+
   return {
     props: {
       userProfile,
     },
   };
-}
+};
 
-export default function Nav({ userProfile }: any) {
+export default function Nav() {
+  const [userProfile, setUserProfile] = useState<SampleUser[]>();
   const router = useRouter();
   const isFolderPage = router.pathname === "/folder";
-  console.log("userprofile", { userProfile });
+
+  const fetchUsers = async () => {
+    const res = await axios.get("https://bootcamp-api.codeit.kr/api/users/1");
+    const user = res.data.data;
+    setUserProfile(user);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   return (
     <div>

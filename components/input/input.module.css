@@ -1,0 +1,30 @@
+.input {
+  width: 100%;
+  border: none;
+}
+
+.input::placeholder {
+  color: var(--color-gray-40);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.inputWrapper {
+  width: 350px;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-20);
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+.inputWrapper:focus-within {
+  border: 1px solid var(--color-primary);
+}
+
+.eyeIcon {
+  cursor: pointer;
+}

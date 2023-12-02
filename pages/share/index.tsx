@@ -26,7 +26,6 @@ export const getStaticProps = async () => {
 };
 
 export default function SharedPage({ sampleFolder }: SharedPageProps) {
-  console.log(sampleFolder);
   const links = sampleFolder.folder.links;
   const folderInfo = sampleFolder;
 

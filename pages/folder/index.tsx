@@ -18,6 +18,7 @@ import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import Image from "next/image";
 import axios from "axios";
 import { BASE_URL, USERS_ENDPOINT } from "../api/services/config";
+import { Input, PasswordInput } from "@/components/input/Input";
 
 export async function getStaticProps() {
   const res = await axios.get(`${BASE_URL}${USERS_ENDPOINT}/1/folders`);
@@ -37,7 +38,6 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
   const [keyword, setKeyword] = useState("");
   const { open, close, isModalOpen, Dialog } = useModal();
   const inputRef = useRef<HTMLInputElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
   const addLinkInputRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -142,6 +142,8 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
           inputRef={inputRef}
           onSubmit={filterByKeyword}
         />
+        <Input />
+        <PasswordInput />
         {keyword === "" ? null : <p>{`${keyword}`}으로 검색한 결과입니다.</p>}
         <section className={styles.folderContentSection}>
           <div className={styles.folderSortAddButtonsContainer}>
@@ -201,7 +203,7 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
         {links?.length === 0 || isResultEmpty ? (
           <EmptyPage />
         ) : (
-          <div className={styles.linksContainer} ref={linksRef}>
+          <div className={styles.linksContainer}>
             {filteredLinks &&
               filteredLinks.map((item) => (
                 <Card folders={folders} key={item.id} linkInfo={item} />
