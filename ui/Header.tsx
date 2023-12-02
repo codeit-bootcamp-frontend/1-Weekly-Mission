@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { getFolder } from "@/api/api";
 import Search from "@/components/Search";
 import Cards from "@/components/Cards";
+import Image from "next/image";
 
-const Header = () => {
-  const [profile, setProfile] = useState("");
-  const [userName, setUserName] = useState("");
-  const [folderName, setFolderName] = useState("");
-  const [fullData, setFullData] = useState([]);
-  const getFolderOwner = async () => {
-    const temp = await getFolder();
-    setProfile(temp?.folder?.owner?.profileImageSource);
-    setUserName(temp?.folder?.owner?.name);
-    setFolderName(temp?.folder?.name);
-    setFullData(temp?.folder?.links);
-  };
+interface Link {
+  id: number;
+  createdAt: string;
+  url: string;
+  title: string;
+  description?: string;
+  imageSource?: string;
+}
 
-  useEffect(() => {
-    getFolderOwner();
-  }, []);
+interface PropsType {
+  profile: string;
+  userName: string;
+  folderName: string;
+  fullData: Link[];
+}
+
+const Header = ({ profile, userName, folderName, fullData }: PropsType) => {
   const [inputValue, setInputValue] = useState("");
-  function getInputValue(v) {
+  function getInputValue(v: string) {
     setInputValue(v);
   }
-
-  const searchedData = fullData?.filter((data) => {
+  console.log(fullData);
+  const searchedData = fullData?.filter((data: Link) => {
     if (
       data.url.includes(inputValue) ||
       data.title.includes(inputValue) ||
@@ -47,7 +48,14 @@ const Header = () => {
               gap: "1.5rem",
             }}
           >
-            <img src={profile} alt="폴더프로파일" style={{ width: "5.5rem" }} />
+            {/* <img src={profile} alt="폴더프로파일" style={{ width: "5.5rem" }} /> */}
+            <Image
+              src={profile}
+              alt="폴더프로파일"
+              style={{ width: "5.5rem" }}
+              width={50}
+              height={50}
+            />
             <p style={{ fontSize: "1.6rem" }}>{userName}</p>
             <p style={{ fontSize: "4rem", fontWeight: "600" }}>{folderName}</p>
           </div>

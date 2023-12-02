@@ -64,7 +64,12 @@ const Search = ({ getInputValue }) => {
             onClick={(e) => handleClick(e)}
             style={{ position: "absolute", top: "1.6rem", right: "4rem" }}
           >
-            <Image src="/images/close-button.svg" alt="닫기 버튼" />
+            <Image
+              src="/images/close-button.svg"
+              alt="닫기 버튼"
+              width={50}
+              height={50}
+            />
           </button>
         )}
       </form>
