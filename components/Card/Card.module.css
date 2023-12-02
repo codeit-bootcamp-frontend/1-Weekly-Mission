@@ -1,0 +1,124 @@
+.root {
+  width: 34rem;
+  height: 33.4rem;
+  border-radius: 1.5rem;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+}
+
+.image {
+  width: 100%;
+  height: 20rem;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  background-position: center;
+  background-size: 112%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+
+.starContainer {
+  position: relative;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: 1.5rem;
+}
+
+.kebabContainer {
+  position: relative;
+  width: 2.1rem;
+  height: 1.7rem;
+}
+
+.kebabBox {
+  position: relative;
+}
+
+.kebabButtonList {
+  width: 10rem;
+  position: absolute;
+}
+
+.kebabButton {
+  display: flex;
+  padding: 7px 12px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: white;
+  align-self: center;
+  width: 100%;
+}
+
+.kebabButton:hover {
+  color: var(--primary);
+  background-color: var(--gray1);
+}
+
+@keyframes hoverImageSizeChanger {
+  from {
+    background-size: 112%;
+  }
+
+  to {
+    background-size: 125%;
+  }
+}
+
+.hoverImage {
+  animation: hoverImageSizeChanger 0.25s ease-in-out forwards;
+}
+
+.hoverBgColor {
+  background-color: #f0f6ff;
+}
+
+.explanation {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  font-size: 1.3rem;
+  color: #666;
+  justify-content: space-between;
+}
+
+.text {
+  font-size: 1.6rem;
+  width: 30rem;
+  line-height: 24px;
+  height: 4.9rem;
+}
+
+.text div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.6rem;
+}
+
+.footer {
+  height: 1.9rem;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 1191px) {
+  .text {
+    width: 100%;
+    max-width: 35vw;
+  }
+  .root {
+    width: 100%;
+    height: 32.7rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .text {
+    max-width: 80vw;
+  }
+}

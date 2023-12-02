@@ -1,0 +1,16 @@
+.subtitle {
+  gap: 0.8rem;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.textLink {
+  color: var(--primary);
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-bottom: 0.1rem solid var(--primary);
+}

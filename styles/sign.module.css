@@ -1,0 +1,57 @@
+.root {
+  background-color: #f0f6ff;
+  height: 100vh;
+}
+
+.container {
+  max-width: 46.4rem;
+  width: 100%;
+  padding: 23.8rem 3.2rem 0;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.logo {
+  width: 21rem;
+  height: 3.8rem;
+  position: relative;
+}
+
+.sign {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4rem;
+}
+
+.button {
+  margin-top: 0.6rem;
+  width: 100%;
+}
+
+@media (max-width: 1191px) {
+  .main {
+    padding-top: 20rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding-top: 12rem;
+  }
+}
