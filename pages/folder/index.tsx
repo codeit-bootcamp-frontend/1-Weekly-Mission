@@ -14,7 +14,7 @@ function FolderPage() {
     if (!result) {
       return;
     }
-    const receivedFolders = result?.data;
+    const receivedFolders = result;
     setFolderList(receivedFolders);
   }, []);
 
