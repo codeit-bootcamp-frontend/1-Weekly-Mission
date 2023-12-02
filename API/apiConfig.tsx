@@ -11,11 +11,11 @@ const apiConfig = {
       specificUserFolderData: (userID: number) => `/users/${userID}/folders`,
     },
     link: {
-      getLinksByFolderID: (userID: number, folderID?: string | string[] | undefined) => {
-        if (folderID) {
-          return `/users/${userID}/links?folderId=${folderID}`;
-        } else {
+      getLinksByFolderID: (userID: number, folderID: string | string[] | undefined) => {
+        if (folderID === "0" || folderID === undefined) {
           return `/users/${userID}/links`;
+        } else {
+          return `/users/${userID}/links?folderId=${folderID}`;
         }
       },
     },
