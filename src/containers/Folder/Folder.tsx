@@ -96,8 +96,7 @@ function Folder({ links }: Props) {
           initialFolderId={Number(initialFolderId)}
           setFolderLinks={setFolderLinks}
         />
-
-        {filterLinks?.length !== 0 ? (
+        {filteredLinks?.length !== 0 ? (
           <CardsContainer cards={filteredLinks} userId={DEFAULT_USER_ID} />
         ) : (
           <NoLinkView />

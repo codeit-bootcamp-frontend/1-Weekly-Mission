@@ -105,7 +105,7 @@ interface ShareBoxProps {
 function ShareBox({ children, icon, onClick }: ShareBoxProps) {
   return (
     <S.Share>
-      <button onClick={() => onClick()}>{icon}</button>
+      <button onClick={onClick}>{icon}</button>
       <S.ShareText>{children}</S.ShareText>
     </S.Share>
   );
