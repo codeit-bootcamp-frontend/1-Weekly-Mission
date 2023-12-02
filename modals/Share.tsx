@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Share({ children, folderId }: Props) {
-  const url = "http://localhost:3000";
+  const url = "https://linkbrary-sigma.vercel.app";
 
   const { Kakao }: any = window;
 
