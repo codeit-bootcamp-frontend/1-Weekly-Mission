@@ -18,7 +18,6 @@ export default function KaKao() {
   //
 
   const shareKakao = () => {
-    // console.log(Kakao); 잘 나오는데..흠
     {
       Kakao.Link.sendCustom({
         templateId: 100292,

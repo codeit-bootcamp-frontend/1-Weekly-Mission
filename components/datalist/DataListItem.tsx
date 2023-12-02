@@ -4,6 +4,7 @@ import Card from "@/components/card/Card";
 import { getElapsedTime, parseDatestring } from "@/utils/caltime";
 import Kebab from "@/public/images/kebab.png";
 import DropDown from "../dropdown/DropDown";
+import Image from "next/image";
 
 export default function DataListItem({ item }) {
   const [open, setOpen] = useState(false);
@@ -18,15 +19,17 @@ export default function DataListItem({ item }) {
       <Card>
         <div className={styles.container}>
           <a href={url}>
-            <img
-              className={styles.card__image}
-              src={image_source}
-              alt={title}
-            />
+            {image_source && (
+              <img
+                className={styles.card__image}
+                src={image_source}
+                alt={title}
+              />
+            )}
           </a>
           <div className={styles.sub__container}>
             <p>{diffTime}</p>
-            <img
+            <Image
               ref={imageRef}
               src={Kebab}
               alt="kebab"

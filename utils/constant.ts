@@ -13,3 +13,10 @@ export const TIME_IN_MILLISECONDS = {
   month,
   year,
 };
+
+export const KAKAO_SHARE_DATA = {
+  title: "To. Yuna",
+  description: "Woud you like some..?",
+  imageUrl:
+    "https://slp-statics.astockcdn.net/static_assets/staging/22spring/audio/Card2_420674272_.jpg?width=580&format=web",
+};

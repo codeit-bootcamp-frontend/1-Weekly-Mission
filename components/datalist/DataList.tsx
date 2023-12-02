@@ -4,7 +4,6 @@ import styles from "./DataList.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 import SearchContext from "../../contexts/SearchContext";
 export default function DataList({ folderIdKey }) {
-  // console.log(folderIdKey);
   const { LinkSDataArr } = useContext(LocaleContext);
   const { inputValue, handleInputFunc } = useContext(SearchContext);
 

@@ -15,9 +15,8 @@ export default function Home() {
 
   return (
     <>
-      <Input TYPE />
+      <Input />
       <Input
-        TYPE
         onFocus={handleFocus}
         onBlur={handleBlur}
         isfocus={isFocus ? "true" : "false"}

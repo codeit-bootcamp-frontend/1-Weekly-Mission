@@ -21,7 +21,6 @@ export default function FolderPage() {
   const USER_ID = 1;
   const router = useRouter();
   const { id } = router.query;
-
   const [userProfileData] = useFetchData(fetchUserData, {
     userId: USER_ID,
   });

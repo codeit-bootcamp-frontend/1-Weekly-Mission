@@ -1,6 +1,12 @@
 import React from "react";
 import styles from "./Modal.module.css";
-import KaKao from "../socialshare/KaKao";
+import kakaochat from "@/public/images/Chat.png";
+import facebook from "@/public/images/Telegram.png";
+import link from "@/public/images/More.png";
+import Image from "next/image";
+import useKakao from "@/hooks/useKaKao";
+import { KAKAO_SHARE_DATA } from "@/utils/constant";
+import { useRouter } from "next/router";
 
 export default function Modal({
   setterFunc,
@@ -16,6 +22,15 @@ export default function Modal({
   };
 
   const [title, buttonName, buttonColor] = obj[tabName];
+
+  const router = useRouter();
+  const { id } = router.query;
+
+  const shareLink = `${window.location.origin}/shared?user=1&folder=${id}`;
+  const shareKaKao = useKakao();
+  const onClickKaKao = () => {
+    shareKaKao({ url: shareLink, ...KAKAO_SHARE_DATA });
+  };
 
   return (
     <div className={styles.container}>
@@ -45,9 +60,12 @@ export default function Modal({
             <button className={styles.button__red}>{buttonName}</button>
           )
         ) : (
-          <div className="link__container">
-            {/* <ClipCopy /> */}
-            <KaKao />
+          <div className={styles.share__container}>
+            <div onClick={onClickKaKao}>
+              <Image src={kakaochat} alt="kakao" width={40} height={50} />
+            </div>
+            <Image src={facebook} alt="kakao" width={40} height={50} />
+            <Image src={link} alt="kakao" width={40} height={50} />
           </div>
         )}
       </div>

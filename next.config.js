@@ -20,5 +20,17 @@ const nextConfig = {
       },
     ],
   },
+  images: {
+    domains: [
+      "tanstack.com",
+      "s.pstatic.net",
+      "storybook.js.org",
+      "codeit-frontend.codeit.com",
+      "assets.vercel.com",
+      "reactjs.org",
+      "jasonwatmore.com",
+      "codeit.kr",
+    ],
+  },
 };
 module.exports = nextConfig;

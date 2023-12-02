@@ -14,13 +14,15 @@
 }
 
 .button__container {
-  border: 3px solid var(--primary);
+  border: 1px solid var(--primary);
   border-radius: 15px;
   width: 85%;
   height: 5rem;
+  padding: 1.2rem 1.2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: var(--white);
 
   /* tablet */
   @media (min-width: 768px) {
@@ -42,7 +44,7 @@
 }
 
 .input {
-  width: 200px;
+  margin-left: 1rem;
   border: none;
 }
 
@@ -56,12 +58,15 @@
 }
 .add__button {
   width: 100px;
-  height: 2.5rem;
+
   align-self: center;
   margin-right: 1rem;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
   border-radius: 5px;
   border: none;
+  color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   /* tablet */
   @media (min-width: 768px) {

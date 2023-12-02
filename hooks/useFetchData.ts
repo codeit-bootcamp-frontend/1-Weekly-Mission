@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 
-function useFetchData(fetchFunc: any, request = "") {
+function useFetchData(fetchFunc: Function, request: object = {}) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   useEffect(() => {
     setIsLoading(true);
-    fetchFunc(request).then((result: any) => {
+    // generic을쓰기..
+    fetchFunc({ ...request }).then((result) => {
       const data = result;
       if (data) {
         setData(data);

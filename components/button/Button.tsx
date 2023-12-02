@@ -20,7 +20,12 @@ const BaseButton = styled.button`
   }
 `;
 
-export default function Button({ children, isActive, onClick }) {
+type ButtonProps = {
+  children: React.ReactNode;
+  isActive?: boolean;
+  onClick: Function;
+};
+export default function Button({ children, isActive, onClick }: ButtonProps) {
   return (
     <BaseButton
       onClick={(e) => {
