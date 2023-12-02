@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import addButton from '@/public/assets/images/add.svg';
 import addMobileButton from '@/public/assets/images/add_mobile.svg';
 import useGetWindowWidth from '@/hooks/useGetWindowWidth';
@@ -7,14 +7,16 @@ import InputModal from '@/components/common/Modal/InputModal';
 import useModal from '@/hooks/useModal';
 import Image from 'next/image';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { useObserver } from '@/hooks/useObserver';
 
 function AddFolderBtn() {
   const innerWidth = useGetWindowWidth();
+  const visibleFooter = useObserver('footer');
   const { isOpen, handleModalOpen, handleModalClose } = useModal();
 
   return (
     <>
-      <Container onClick={() => handleModalOpen()}>
+      <Container $visibleFooter={visibleFooter} onClick={() => handleModalOpen()}>
         <AddFolder>폴더 추가</AddFolder>
         {innerWidth < 768 ? <Image src={addMobileButton} alt="폴더 추가 버튼" /> : <Image src={addButton} alt="폴더 추가 버튼" />}
       </Container>
@@ -29,7 +31,27 @@ function AddFolderBtn() {
 
 export default AddFolderBtn;
 
-const Container = styled.div`
+const upDown = keyframes`
+  50% {
+    bottom: 130px;
+  }
+`;
+
+const upDownFooter = keyframes`
+  50% {
+    bottom: 195px;
+  }
+`;
+
+const noFooter = css`
+  animation: ${upDown} 2s 0.5s infinite;
+`;
+
+const yesFooter = css`
+  animation: ${upDownFooter} 2s 0.5s infinite;
+`;
+
+const Container = styled.div<{ $visibleFooter: boolean }>`
   display: flex;
   gap: 4px;
   justify-content: space-between;
@@ -41,13 +63,15 @@ const Container = styled.div`
   @media (max-width: ${DEVICE_SIZE.mobile}) {
     z-index: 10;
     position: fixed;
-    bottom: 101px;
+    bottom: ${({ $visibleFooter }) => ($visibleFooter ? '165px' : '101px')};
     left: 50%;
     transform: translate(-50%, 0%);
     padding: 8px 24px;
     width: 128px;
     border-radius: 20px;
     background-color: var(--primary-color);
+
+    ${({ $visibleFooter }) => ($visibleFooter ? yesFooter : noFooter)};
   }
 `;
 

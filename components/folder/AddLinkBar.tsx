@@ -3,11 +3,8 @@ import LinkBar from './LinkBar';
 import { useObserver } from '@/hooks/useObserver';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
-interface Props {
-  visibleFooter: boolean;
-}
-
-function AddLinkBar({ visibleFooter }: Props) {
+function AddLinkBar() {
+  const visibleFooter = useObserver('footer');
   let top = useObserver('.top_link_bar');
   if (visibleFooter) top = true;
 

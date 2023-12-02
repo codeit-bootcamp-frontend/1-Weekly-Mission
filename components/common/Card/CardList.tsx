@@ -3,7 +3,7 @@ import useGetLinks from '@/hooks/useGetLinks';
 import useGetSampleLinks from '@/hooks/useGetSampleLinks';
 import Card from './Card';
 import { Fragment } from 'react';
-import { SAMPLE_ID } from '@/constants/default';
+import { NO_LINK_MSG, SAMPLE_ID } from '@/constants/default';
 import { filterLink } from '@/lib/utils/filterLink';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
@@ -24,13 +24,19 @@ function CardList({ folderId, search, keyword }: Props) {
   links = filterLink(links, search, keyword);
 
   return (
-    <Container>
-      {links.map((link) => (
-        <Fragment key={link.id}>
-          <Card link={link} />
-        </Fragment>
-      ))}
-    </Container>
+    <>
+      {links.length ? (
+        <Container>
+          {links.map((link) => (
+            <Fragment key={link.id}>
+              <Card link={link} />
+            </Fragment>
+          ))}
+        </Container>
+      ) : (
+        <NoLinkText>{NO_LINK_MSG}</NoLinkText>
+      )}
+    </>
   );
 }
 
@@ -50,4 +56,12 @@ const Container = styled.div`
   @media (max-width: ${DEVICE_SIZE.mobile}) {
     grid-template-columns: 1fr;
   }
+`;
+
+const NoLinkText = styled.div`
+  width: 100%;
+  padding: 40px 0;
+
+  font-size: 1.6rem;
+  text-align: center;
 `;

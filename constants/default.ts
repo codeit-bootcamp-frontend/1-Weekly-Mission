@@ -16,6 +16,7 @@ import searchImg from '@/public/assets/images/contents4.svg';
 export const SAMPLE_ID = -2;
 export const ALL_ID = -1;
 export const NO_DISCRIPT_MSG = '링크 설명이 없어요 💦';
+export const NO_LINK_MSG = '저장된 링크가 없습니다.';
 
 export const CHOICES = [
   {

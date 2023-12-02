@@ -7,7 +7,7 @@ import AddFolderBtn from './AddFolderBtn';
 import FolderTitle from './FolderTitle';
 import ChoiceBar from './ChoiceBar';
 import { useState } from 'react';
-import { ALL_ID } from '@/constants/default';
+import { ALL_ID, NO_LINK_MSG } from '@/constants/default';
 import SearchResult from '@/components/common/Search/SearchResult';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
@@ -43,7 +43,7 @@ function FolderContent() {
             <CardList folderId={folder} search={search} keyword={keyword} />
           </>
         ) : (
-          <NoLinkMsg>저장된 링크가 없습니다.</NoLinkMsg>
+          <NoLinkMsg>{NO_LINK_MSG}</NoLinkMsg>
         )}
       </Container>
     </Main>
@@ -58,14 +58,17 @@ const Main = styled.main`
 
 const Container = styled.div`
   width: 1060px;
+  min-height: calc(100vh - 527px);
   margin: 0 auto;
 
   @media (max-width: ${DEVICE_SIZE.tablet}) {
+    min-height: calc(100vh - 497px);
     width: 704px;
   }
 
   @media (max-width: ${DEVICE_SIZE.mobile}) {
     width: 100%;
+    min-height: calc(100vh - 411px);
     padding: 0 32px;
   }
 `;
