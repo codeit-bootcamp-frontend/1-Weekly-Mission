@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { useLogin } from "@/lib/utils/LoginContext";
-import { GetServerSideProps } from "next";
+// import { GetServerSideProps } from "next";
+// import { useRouter } from "next/router";
+// import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+// import { useLogin } from "@/lib/utils/LoginContext";
 
 // export const getServerSideProps: GetServerSideProps = async (context) => {
 //   const { id: folderId } = context.params as Params;
@@ -14,8 +14,8 @@ import { GetServerSideProps } from "next";
 //   }
 // };
 
-const Folder = ({}) => {
-  const { isLogin } = useLogin();
+const Folder = () => {
+  // const { isLogin } = useLogin();
 
   return (
     <>

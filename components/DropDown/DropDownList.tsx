@@ -1,20 +1,9 @@
 import { MouseEvent, RefObject } from "react";
-import { Modal, ModalContentName, AddFolderModal } from "components";
-import useModal from "hooks/useModal";
-import ModalPortal from "Portal";
+import { Modal, ModalContentName, AddFolderModal } from "@/components";
+import useModal from "@/lib/hooks/useModal";
+import ModalPortal from "@/lib/utils/Portal";
+import { FoldersData } from "@/lib/types/data";
 import * as Styled from "./StyledDropDown";
-
-interface LinkCount {
-  count: number;
-}
-
-interface FoldersData {
-  id?: number;
-  created_at?: string;
-  name: string;
-  user_id?: number;
-  link: LinkCount;
-}
 
 interface Props {
   url: string;

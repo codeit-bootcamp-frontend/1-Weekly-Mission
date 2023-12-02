@@ -1,25 +1,13 @@
-import { FormEvent, useState } from "react";
-import SearchIMG from "assets/Search.svg";
+import { FormEvent, SetStateAction, useState } from "react";
+import SearchIMG from "@/public/Search.svg";
+import { LinksData } from "@/lib/types/data";
 import * as Styled from "./StyledSearchBar";
-
-interface LinksData {
-  id?: number;
-  created_at?: string;
-  updated_at?: string | null;
-  url?: string;
-  title?: string;
-  description?: string;
-  image_source?: string;
-  folder_id?: number;
-}
 
 interface Links {
   data: LinksData[];
 }
 
-type prevData = (value: Links) => Links;
-
-type setLinksData = (value: prevData) => void;
+type setLinksData = (value: SetStateAction<Links>) => void;
 
 interface Props {
   linksData: LinksData[];
@@ -61,7 +49,7 @@ const SearchBar = ({ linksData, setLinksData, originalLinksData }: Props) => {
   return (
     <Styled.Form onSubmit={handleFormSubmit}>
       <label htmlFor="search">
-        <img src={SearchIMG} alt="검색 돋보기 이미지" />
+        <SearchIMG alt="검색 돋보기 이미지" />
       </label>
       <Styled.Input
         id="search"

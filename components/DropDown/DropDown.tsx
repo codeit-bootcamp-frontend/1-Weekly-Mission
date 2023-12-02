@@ -1,20 +1,9 @@
 import { MouseEvent, useEffect, useRef } from "react";
-import { DropDownList } from "components";
-import usePopOver from "hooks/usePopOver";
-import kebab from "assets/kebab.svg";
+import { DropDownList } from "@/components";
+import usePopOver from "@/lib/hooks/usePopOver";
+import kebab from "@/public/kebab.svg";
+import { FoldersData } from "@/lib/types/data";
 import * as Styled from "./StyledDropDown";
-
-interface LinkCount {
-  count: number;
-}
-
-interface FoldersData {
-  id?: number;
-  created_at?: string;
-  name: string;
-  user_id?: number;
-  link: LinkCount;
-}
 
 interface Props {
   url: string;

@@ -1,28 +1,6 @@
-import { Card } from "components";
+import { Card } from "@/components";
+import { LinksData, FoldersData } from "@/lib/types/data";
 import * as Styled from "./StyledCardSection";
-
-interface LinksData {
-  id?: number;
-  created_at?: string;
-  updated_at?: string | null;
-  url?: string;
-  title?: string;
-  description?: string;
-  image_source?: string;
-  folder_id?: number;
-}
-
-interface LinkCount {
-  count: number;
-}
-
-interface FoldersData {
-  id?: number;
-  created_at?: string;
-  name: string;
-  user_id?: number;
-  link: LinkCount;
-}
 
 interface Props {
   data: LinksData[];

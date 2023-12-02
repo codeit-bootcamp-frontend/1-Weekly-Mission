@@ -1,4 +1,4 @@
-import AddIMG from "assets/link.svg";
+import AddImg from "@/public/link.svg";
 import * as Styled from "./StyledAddBar";
 
 interface Props {
@@ -10,7 +10,7 @@ const AddBar = ({ isFixed }: Props) => {
     <Styled.BackGround $isFixed={isFixed}>
       <Styled.Form>
         <label htmlFor="add">
-          <img src={AddIMG} alt="링크 이미지" />
+          <AddImg alt="링크 이미지" />
         </label>
         <Styled.Input
           id="add"

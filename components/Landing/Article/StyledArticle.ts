@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styled from "styled-components";
 
 export const Article = styled.article`
@@ -121,7 +120,8 @@ export const LineBreak = styled.br`
   }
 `;
 
-export const ContentImage = styled(Image)`
+export const ContentImageBox = styled.div`
+  position: relative;
   grid-area: image;
   width: 55rem;
   padding-top: 0.4rem;

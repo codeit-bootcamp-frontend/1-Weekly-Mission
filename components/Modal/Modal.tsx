@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-import ModalPortal from "Portal";
+import ModalPortal from "@/lib/utils/Portal";
 import * as Styled from "./StyledModal";
 
 type closeModal = (e: MouseEvent) => void;
@@ -13,9 +13,15 @@ interface Props {
 }
 
 const Modal = ({ trigger, title, btnContent, color, closeModal }: Props) => {
+  const scrollY = window.scrollY;
+
   return (
     <ModalPortal>
-      <Styled.ModalBackground onClick={closeModal} $back="BG" />
+      <Styled.ModalBackground
+        $scrollY={scrollY}
+        onClick={closeModal}
+        $back="BG"
+      />
       <Styled.Container>
         <Styled.ModalLabel>{title}</Styled.ModalLabel>
         {trigger}

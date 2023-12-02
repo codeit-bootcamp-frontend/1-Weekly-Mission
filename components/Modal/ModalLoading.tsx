@@ -1,5 +1,5 @@
-import ModalPortal from "Portal";
-import { StyledGlobal } from "style/StyledGlobal";
+import ModalPortal from "@/lib/utils/Portal";
+import { StyledGlobal } from "@/style/StyledGlobal";
 import * as Styled from "./StyledModal";
 
 interface Props {
@@ -7,11 +7,13 @@ interface Props {
 }
 
 const ModalLoading = ({ back }: Props) => {
+  const scrollY = window.scrollY;
+
   return (
     <>
       <StyledGlobal />
       <ModalPortal>
-        <Styled.ModalBackground $back={back}>
+        <Styled.ModalBackground $scrollY={scrollY} $back={back}>
           <Styled.Spinner />
         </Styled.ModalBackground>
       </ModalPortal>

@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
-import LogoImg from "@/public/Linkbrary.svg";
+import logoImg from "@/public/Linkbrary.svg";
 
 const LogoImgBox = styled.div`
   height: 2.4rem;
@@ -12,13 +13,11 @@ const LogoImgBox = styled.div`
 
 const Logo = () => {
   return (
-    <>
-      <Link href="/">
-        <LogoImgBox>
-          <LogoImg alt="Linkbrary 로고" />
-        </LogoImgBox>
-      </Link>
-    </>
+    <Link href="/">
+      <LogoImgBox>
+        <Image src={logoImg} alt="Linkbrary 로고" />
+      </LogoImgBox>
+    </Link>
   );
 };
 

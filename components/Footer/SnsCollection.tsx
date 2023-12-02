@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { SnsLogo } from "@/components";
-import facebookIMG from "assets/facebook.svg";
-import instagramIMG from "assets/instagram.svg";
-import twitterIMG from "assets/twitter.svg";
-import youtubeIMG from "assets/youtube.svg";
+import facebookIMG from "@/public/facebook.svg";
+import instagramIMG from "@/public/instagram.svg";
+import twitterIMG from "@/public/twitter.svg";
+import youtubeIMG from "@/public/youtube.svg";
 
 const StyledSns = styled.div`
   display: flex;

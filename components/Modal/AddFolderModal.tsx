@@ -1,7 +1,8 @@
 import { MouseEvent } from "react";
 import styled from "styled-components";
-import { ModalContentName } from "components";
-import ModalPortal from "Portal";
+import { FoldersData } from "@/lib/types/data";
+import { ModalContentName } from "@/components";
+import ModalPortal from "@/lib/utils/Portal";
 import * as Styled from "./StyledModal";
 
 interface PropsSub {
@@ -29,18 +30,6 @@ const FolderList = ({ name, linkCount }: PropsSub) => {
 
 type closeModal = (e: MouseEvent) => void;
 
-interface LinkCount {
-  count: number;
-}
-
-interface FoldersData {
-  id?: number;
-  created_at?: string;
-  name: string;
-  user_id?: number;
-  link: LinkCount;
-}
-
 interface Props {
   url: string;
   closeModal: closeModal;
@@ -48,9 +37,15 @@ interface Props {
 }
 
 const AddFolderModal = ({ url, closeModal, folderData }: Props) => {
+  const scrollY = window.scrollY;
+
   return (
     <ModalPortal>
-      <Styled.ModalBackground onClick={closeModal} $back="BG" />
+      <Styled.ModalBackground
+        $scrollY={scrollY}
+        onClick={closeModal}
+        $back="BG"
+      />
       <Styled.Container>
         <Styled.ModalLabel>폴더에 추가</Styled.ModalLabel>
         <ModalContentName>{url}</ModalContentName>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 interface PropsSelect {
@@ -11,7 +12,7 @@ export const Container = styled.div`
   z-index: 1000;
 `;
 
-export const Kebab = styled.img`
+export const Kebab = styled(Image)`
   cursor: pointer;
 `;
 

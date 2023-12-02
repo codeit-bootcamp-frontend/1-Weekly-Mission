@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styled from "styled-components";
 
 export const Header = styled.header`
@@ -71,7 +70,8 @@ export const LinkButton = styled.div`
   }
 `;
 
-export const HeroImage = styled(Image)`
+export const HeroImageBox = styled.div`
+  position: relative;
   width: 120rem;
   height: 59rem;
 

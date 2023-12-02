@@ -1,8 +1,7 @@
 import styled from "styled-components";
+import Image from "next/image";
 
-export const CardImg = styled.img`
-  width: 100%;
-  height: 100%;
+export const CardImg = styled(Image)`
   object-fit: cover;
   transition: all 0.2s linear;
 `;
@@ -63,7 +62,7 @@ export const Description = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-export const Star = styled.img`
+export const Star = styled(Image)`
   position: absolute;
   top: 20px;
   right: 20px;

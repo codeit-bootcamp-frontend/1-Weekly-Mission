@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
-import { ModalContentName } from "components";
-import ModalPortal from "Portal";
+import { ModalContentName } from "@/components";
+import ModalPortal from "@/lib/utils/Portal";
 import * as Styled from "./StyledModal";
 
 type closeModal = (e: MouseEvent) => void;
@@ -10,9 +10,15 @@ interface Props {
 }
 
 const ShareModal = ({ closeModal }: Props) => {
+  const scrollY = window.scrollY;
+
   return (
     <ModalPortal>
-      <Styled.ModalBackground onClick={closeModal} $back="BG" />
+      <Styled.ModalBackground
+        $scrollY={scrollY}
+        onClick={closeModal}
+        $back="BG"
+      />
       <Styled.Container>
         <Styled.ModalLabel>폴더 공유</Styled.ModalLabel>
         <ModalContentName>폴더명</ModalContentName>

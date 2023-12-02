@@ -10,11 +10,13 @@ export interface UserData {
 export interface LinksData {
   id?: number;
   created_at?: string;
+  createdAt?: string;
   updated_at?: string | null;
   url?: string;
   title?: string;
   description?: string;
   image_source?: string;
+  imageSource?: string;
   folder_id?: number;
 }
 
@@ -36,4 +38,20 @@ export interface FoldersData {
 
 export interface Folders {
   data: FoldersData[];
+}
+
+export interface SampleLinks {
+  id: number;
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource: string;
+}
+
+export interface SampleFolderData {
+  folderName: string;
+  ownerName: string;
+  ownerImage: string;
+  data: SampleLinks[];
 }

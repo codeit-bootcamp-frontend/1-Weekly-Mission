@@ -2,11 +2,11 @@
 // Tablet: 768px 이상 ~ 1199px 이하
 // Mobile: 375px 이상 ~ 767px 이하
 import styled from "styled-components";
-import folderAddImg from "assets/folderAdd.svg";
-import folderAddFloatingImg from "assets/folderAddFloating.svg";
-import folderShareImg from "assets/share.svg";
-import folderNameChangeImg from "assets/changeName.svg";
-import folderDeleteImg from "assets/delete.svg";
+import folderAddImg from "@/public/folderAdd.svg";
+import folderAddFloatingImg from "@/public/folderAddFloating.svg";
+import folderShareImg from "@/public/share.svg";
+import folderNameChangeImg from "@/public/changeName.svg";
+import folderDeleteImg from "@/public/delete.svg";
 
 interface PropsSelected {
   $selected: boolean;

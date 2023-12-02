@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   AddFolderBtn,
   EditFolderTools,
@@ -7,21 +7,10 @@ import {
   ShareModal,
   ModalInput,
   ModalContentName,
-} from "components";
-import useModal from "hooks/useModal";
+} from "@/components";
+import { LinksData, FoldersData } from "@/lib/types/data";
+import useModal from "@/lib/hooks/useModal";
 import * as Styled from "./StyledFolderLists";
-
-interface LinkCount {
-  count: number;
-}
-
-interface FoldersData {
-  id?: number;
-  created_at?: string;
-  name: string;
-  user_id?: number;
-  link?: LinkCount;
-}
 
 interface PropsSub {
   data: FoldersData;
@@ -31,7 +20,7 @@ interface PropsSub {
 
 const FolderList = ({ data, onClick, folderId }: PropsSub) => {
   return (
-    <Link to={`/folder/${data.id}`}>
+    <Link href={`/folder/${data.id}`}>
       <Styled.Btn
         $selected={folderId === String(data.id)}
         onClick={() => onClick(data.name)}
@@ -41,17 +30,6 @@ const FolderList = ({ data, onClick, folderId }: PropsSub) => {
     </Link>
   );
 };
-
-interface LinksData {
-  id?: number;
-  created_at?: string;
-  updated_at?: string | null;
-  url?: string;
-  title?: string;
-  description?: string;
-  image_source?: string;
-  folder_id?: number;
-}
 
 interface Props {
   linksData: LinksData[];
@@ -112,7 +90,7 @@ const FolderLists = ({ linksData, folderData, id }: Props) => {
       <Styled.Container>
         <Styled.FolderBlock>
           <Styled.BtnBox>
-            <Link to="/folder">
+            <Link href="/folder">
               <Styled.Btn
                 $selected={folderId === folderTitle}
                 onClick={() => handleBtnClick("전체")}

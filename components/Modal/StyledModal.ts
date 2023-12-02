@@ -1,12 +1,13 @@
 import styled, { keyframes } from "styled-components";
-import closeBtnIMG from "assets/closebtn.svg";
-import facebookShareImg from "assets/facebook-share.svg";
-import kakaoShareImg from "assets/kakao-share.svg";
-import linkShareImg from "assets/link-share.svg";
-import spinnerImg from "assets/spinner.png";
+import closeBtnIMG from "@/public/closebtn.svg";
+import facebookShareImg from "@/public/facebook-share.svg";
+import kakaoShareImg from "@/public/kakao-share.svg";
+import linkShareImg from "@/public/link-share.svg";
+import spinnerImg from "@/public/spinner.png";
 
 interface PropsBack {
   $back: string;
+  $scrollY: number;
 }
 
 interface PropsColor {
@@ -30,7 +31,7 @@ export const ModalBackground = styled.div<PropsBack>`
   height: 100vh;
   z-index: 2000;
   position: fixed;
-  top: -${window.scrollY}px;
+  top: -${({ $scrollY }) => $scrollY}px;
   left: 0;
   overflow-y: scroll;
 `;

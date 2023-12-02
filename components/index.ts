@@ -24,3 +24,5 @@ export { default as DropDown } from "./DropDown/DropDown";
 export { default as DropDownList } from "./DropDown/DropDownList";
 export { default as Header } from "./Landing/Header/Header";
 export { default as Article } from "./Landing/Article/Article";
+export { default as Form } from "./Sign/Form";
+export { default as Input } from "./Sign/Input";

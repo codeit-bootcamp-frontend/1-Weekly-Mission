@@ -7,7 +7,7 @@ export const OwnerWrapper = styled.div`
   gap: 12px;
 `;
 
-export const OwnerImg = styled.img`
+export const OwnerImgBox = styled.div`
   width: 60px;
   height: 60px;
 `;

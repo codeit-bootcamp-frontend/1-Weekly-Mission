@@ -1,36 +1,12 @@
+import Link from "next/link";
 import { MouseEvent, useState } from "react";
-import { Link } from "react-router-dom";
-import { timeForToday } from "utils/moment";
-import { DropDown } from "components";
-import noImageIMG from "assets/noImage.svg";
-import starIMG from "assets/star.svg";
-import chosenStarIMG from "assets/chosenStar.svg";
+import { timeForToday } from "@/lib/utils/moment";
+import { DropDown } from "@/components";
+import { LinksData, FoldersData } from "@/lib/types/data";
+import noImageIMG from "@/public/noImage.svg";
+import starIMG from "@/public/star.svg";
+import chosenStarIMG from "@/public/chosenStar.svg";
 import * as Styled from "./StyledCard";
-
-interface LinksData {
-  id?: number;
-  created_at?: string;
-  createdAt?: string;
-  updated_at?: string | null;
-  url?: string;
-  title?: string;
-  description?: string;
-  image_source?: string;
-  imageSource?: string;
-  folder_id?: number;
-}
-
-interface LinkCount {
-  count: number;
-}
-
-interface FoldersData {
-  id?: number;
-  created_at?: string;
-  name: string;
-  user_id?: number;
-  link: LinkCount;
-}
 
 interface Props {
   data: LinksData;
@@ -62,11 +38,12 @@ const Card = ({ data, folderData }: Props) => {
 
   return (
     <Styled.CardContainer>
-      <Link to={URL} target="_blank">
+      <Link href={URL} target="_blank">
         <Styled.CardImgBox>
           <Styled.CardImg
             src={IMG_SRC ? IMG_SRC : noImageIMG}
             alt={IMG_SRC ? "카드 이미지" : "이미지 없음"}
+            fill
           />
         </Styled.CardImgBox>
         <Styled.InfoContainer>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import closeBtnIMG from "assets/closebtn.svg";
+import closeBtnIMG from "@/public/closebtn.svg";
 
 export const Form = styled.form`
   display: flex;
