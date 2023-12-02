@@ -8,13 +8,11 @@ interface Props {
 
 function Logo({ className }: Props) {
   return (
-    <h1 className={className}>
-      <Link href="/">
-        <div>
-          <Image fill className={styles.image} src="/images/photo/logo.png" alt="Linkbrary의 로고" />
-        </div>
-      </Link>
-    </h1>
+    <Link href="/">
+      <h1 className={className}>
+        <Image fill className={styles.image} src="/images/photo/logo.png" alt="Linkbrary의 로고" />
+      </h1>
+    </Link>
   );
 }
 
