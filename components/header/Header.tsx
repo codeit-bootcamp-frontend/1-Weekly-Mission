@@ -21,7 +21,7 @@ const Header = ({ folder }: HeaderProps) => {
       <Wrapper>
         <UserInfo>
           <UserProfile>
-            <OwnerImg src={owner?.profileImageSource} alt="프로필 사진" />
+            <OwnerImg src={owner?.profileImageSource} alt="프로필 사진" width={100} height={100} unoptimized />
             <OwnerName>{owner?.name}</OwnerName>
           </UserProfile>
           <FolderName>{name}</FolderName>
@@ -60,7 +60,8 @@ const UserProfile = styled.div`
 `;
 
 const OwnerImg = styled(Image)`
-  width: 60px;
+  width: 6rem;
+  height: 6rem;
 `;
 
 const OwnerName = styled.div`

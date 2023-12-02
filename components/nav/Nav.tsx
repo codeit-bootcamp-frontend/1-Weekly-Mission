@@ -1,10 +1,11 @@
+import logo from "@/src/image/logo.svg";
+import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 import useGetSampleUser from "../../hooks/useGetSampleUser";
 import useGetUser from "../../hooks/useGetUser";
-import logo from "@/src/image/logo.svg";
 import NavLogin from "./NavLogin";
 import NavProfile from "./NavProfile";
-import Image from "next/image";
 
 interface NavProps {
   pageType: string;
@@ -17,9 +18,9 @@ const Nav = ({ pageType }: NavProps) => {
 
   return (
     <NavBar className={`${pageType}`}>
-      <a href="/">
+      <Link href="/">
         <LogoImage src={logo} alt="로고 이미지" />
-      </a>
+      </Link>
       {user ? <NavProfile user_data={user} /> : <NavLogin>로그인</NavLogin>}
     </NavBar>
   );

@@ -1,8 +1,35 @@
 import { HOST } from "./api";
 
+// Kakao에도 type을 정하려다보니 너무 방대해진 것 같은데 이렇게 하는게 맞는 지 궁금합니다..
+interface Kakao {
+  init(appKey?: string): void;
+  isInitialized: () => boolean;
+  Share: {
+    sendDefault(options: {
+      objectType: string;
+      content: {
+        title: string;
+        description: string;
+        imageUrl: string;
+        link: {
+          webUrl: string;
+        };
+      };
+      buttons: [
+        {
+          title: string;
+          link: {
+            webUrl: string;
+          };
+        }
+      ];
+    }): void;
+  };
+}
+
 declare global {
   interface Window {
-    Kakao: any;
+    Kakao: Kakao;
   }
 }
 

@@ -2,7 +2,7 @@ import useGetData from "./useGetData";
 import { PathType } from "@/utils/api";
 
 const useGetSampleFolder = () => {
-  const folder = useGetData({ path: "SHARED_FOLDER" as PathType });
+  const folder = useGetData({ path: "SHARED_FOLDER" });
   if (!folder) return null;
   return folder.folder;
 };

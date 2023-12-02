@@ -21,7 +21,7 @@ interface Folder {
 }
 
 interface StyledProps {
-  isSelected?: boolean;
+  $isSelected?: boolean;
 }
 
 const AddLinkModal = ({ isOpen, closeModal, link }: AddLinkModalProps) => {
@@ -51,7 +51,7 @@ const AddLinkModal = ({ isOpen, closeModal, link }: AddLinkModalProps) => {
             const isSelected = selectedFolder === item.id;
 
             return (
-              <FolderItems key={item.id} isSelected={isSelected} onClick={() => handleSelecteFolder(item.id)}>
+              <FolderItems key={item.id} $isSelected={isSelected} onClick={() => handleSelecteFolder(item.id)}>
                 <FolderItem>
                   <FolderTitle>{item.name}</FolderTitle>
                   <FolderLinksCount>{`${item.link?.count}개 링크`}</FolderLinksCount>
@@ -139,7 +139,7 @@ const FolderItems = styled.button<StyledProps>`
   border: none;
   border-radius: 8px;
 
-  background: ${({ isSelected }) => (isSelected ? "var(--linkbrary-bg, #F0F6FF)" : "none")};
+  background: ${({ $isSelected }) => ($isSelected ? "var(--linkbrary-bg, #F0F6FF)" : "none")};
 
   cursor: pointer;
 `;
@@ -151,7 +151,7 @@ const FolderItem = styled.div`
 `;
 
 const FolderTitle = styled.p<StyledProps>`
-  color: ${({ isSelected }) => (isSelected ? "var(--linkbrary-primary-color, #6D6AFE)" : "var(--linkbrary-gray-100, #373740)")};
+  color: ${({ $isSelected }) => ($isSelected ? "var(--linkbrary-primary-color, #6D6AFE)" : "var(--linkbrary-gray-100, #373740)")};
 
   /* Linkbrary/body1-regular */
   font-family: Pretendard;
