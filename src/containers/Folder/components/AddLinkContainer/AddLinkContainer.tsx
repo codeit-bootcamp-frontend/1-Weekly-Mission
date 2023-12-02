@@ -1,7 +1,6 @@
 import * as S from './AddLinkContainer.style';
 import { useState } from 'react';
 import useModal from '@/hooks/useModal';
-import ModalPortals from '@/components/Modal/ModalPortals';
 import { IconLink } from '@/public/svgs';
 
 interface Props {
@@ -58,7 +57,7 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
           </S.Inner>
         </S.FloatContainer>
       )}
-      <ModalPortals>{modal}</ModalPortals>
+      {modal}
     </>
   );
 }

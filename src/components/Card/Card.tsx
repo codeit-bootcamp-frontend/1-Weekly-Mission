@@ -3,7 +3,6 @@ import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import TimeAgo from 'react-timeago';
 import useModal, { ModalsKey } from '@/hooks/useModal';
 import { Link } from '@/containers/Folder/Folder.types';
-import ModalPortals from '@/components/Modal/ModalPortals';
 import { IconKebab, IconStar } from '@/public/svgs';
 
 const DEFAULT_IMAGE_SRC = '/images/default-link-img.svg';
@@ -96,7 +95,7 @@ function Card({ data, userId }: Props) {
           <S.Date>{createdDate.toLocaleDateString()}</S.Date>
         </S.CardTextContainer>
       </S.CardContainer>
-      <ModalPortals>{modal}</ModalPortals>
+      {modal}
     </>
   );
 }

@@ -1,7 +1,6 @@
 import * as S from './InfoContainer.style';
 import useModal from '@/hooks/useModal';
 import { Folder } from '../FoldersContainer/FoldersContainer.types';
-import ModalPortals from '@/components/Modal/ModalPortals';
 import { IconDelete, IconEdit, IconShare } from '@/public/svgs';
 
 interface Props {
@@ -52,7 +51,7 @@ function InfoContainer({ defaultFolder, selectedFolder, userId }: Props) {
           )}
         </S.SettingButtonContainer>
       </S.InfoContainer>
-      <ModalPortals>{modal}</ModalPortals>
+      {modal}
     </>
   );
 }

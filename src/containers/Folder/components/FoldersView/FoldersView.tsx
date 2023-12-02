@@ -1,7 +1,6 @@
 import * as S from './FoldersView.style';
 import useModal from '@/hooks/useModal';
 import { Folder } from '../FoldersContainer/FoldersContainer.types';
-import ModalPortals from '@/components/Modal/ModalPortals';
 import { IconAddColor, IconAddWhite } from '@/public/svgs';
 
 interface Props {
@@ -56,7 +55,7 @@ function FoldersView({
           </S.AddFolderButton>
         </S.Container>
       )}
-      <ModalPortals>{modal}</ModalPortals>
+      {modal}
     </>
   );
 }
