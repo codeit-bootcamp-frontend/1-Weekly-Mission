@@ -8,7 +8,7 @@ export const shareOnKakao = (userId: number, folderId: number) => {
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
-      kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
+      kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
     }
   }
 

@@ -1,4 +1,4 @@
-import { MouseEvent, useContext } from "react";
+import { MouseEvent, useContext, useEffect } from "react";
 import { FolderContext } from "@/context/FolderContext";
 
 import styled from "styled-components";
@@ -36,6 +36,17 @@ export default function ShareFolder({ currentFolderName }: ShareFolderProps) {
       shareOnFacebook(user_id, id);
     } else shareOnClipboard(user_id, id);
   };
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js";
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <Contents>
