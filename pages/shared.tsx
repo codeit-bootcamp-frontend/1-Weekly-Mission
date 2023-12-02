@@ -4,6 +4,7 @@ import Header from "@/ui/Header";
 import Article from "@/ui/Article";
 import Footer from "@/ui/Footer";
 import axios from "@/api/axios";
+import Head from "next/head";
 
 interface PropsType {
   userEmail: string;
@@ -43,7 +44,6 @@ interface Temp {
 export async function getStaticProps() {
   const res = await axios.get(`/sample/user`);
   const userEmail: string = res?.data?.email;
-
   const res2 = await axios.get(`/sample/folder`);
   const temp: Temp = res2.data;
   const profile: string = temp?.folder?.owner?.profileImageSource;
@@ -69,9 +69,11 @@ export default function SharedPage({
   folderName,
   fullData,
 }: PropsType) {
-  console.log(profile);
   return (
     <>
+      <Head>
+        <title>공유 페이지</title>
+      </Head>
       <Nav userEmail={userEmail} />
       <Header
         profile={profile}
