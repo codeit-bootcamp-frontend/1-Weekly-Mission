@@ -1,8 +1,10 @@
-import logo from "../images/logo.svg";
 import styled from "styled-components";
+import logo from "../images/logo.svg";
+
 import Image from "next/image";
-import { UserLoginData } from "../type";
 import Link from "next/link";
+
+import { UserLoginData } from "../type";
 function Nav({ lists }: UserLoginData) {
   const { userEmail, userImage = "" } = lists;
 

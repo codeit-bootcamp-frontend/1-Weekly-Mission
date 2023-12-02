@@ -1,35 +1,17 @@
+import { useState, useEffect } from "react";
+import { MouseEvent } from "react";
+import styled from "styled-components";
+
+import * as S from "./ModalStyled";
 import close from "../../images/_close.svg";
 import facebook from "../../images/facebook.svg";
 import kakao from "../../images/Kakao.svg";
 import link from "../../images/Addlink.svg";
 import CheckIcon from "../../images/check.svg";
-import { useState, useEffect } from "react";
 import shareKakao from "../../shareSns";
-import * as S from "./ModalStyled";
-import { MouseEvent } from "react";
-import styled from "styled-components";
 
+import { ModalkebabProps, ModalLinkProps, AddFolderSectionProps } from "@/type";
 import Image from "next/image";
-interface ModalkebabProps {
-  url: string;
-  title: string;
-  buttonTitle: string;
-  color: string;
-  onClose: (e: MouseEvent) => void;
-}
-
-interface ModalLink {
-  LinkOptions: {
-    name: string;
-    modalTitle: string;
-    color: string;
-    buttonTitle: string;
-  };
-  folderName: string;
-  onClose: (e: MouseEvent) => void;
-  nowFolderId?: number;
-  userId?: number;
-}
 
 export function Modalkebab({
   url,
@@ -57,7 +39,7 @@ export function ModalLink({
   onClose,
   nowFolderId,
   userId,
-}: ModalLink) {
+}: ModalLinkProps) {
   const shareUrl = `https://localhost:3000/shared?user=${userId}&folder=${nowFolderId}`;
 
   const handleShareKakao = (e: MouseEvent) => {
@@ -155,10 +137,6 @@ export function ModalAddFolder({ selectItems, CloseMAF, url }: any) {
       <S.AddFolderButton>추가하기</S.AddFolderButton>
     </S.AddFolderWrapper>
   );
-}
-
-interface AddFolderSectionProps {
-  $isSelected: boolean;
 }
 
 export const AddFolderSection = styled.div<AddFolderSectionProps>`

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { ButtonProps } from "@/type";
 const initFolder = [
   {
     name: "전체",
@@ -44,9 +44,6 @@ const TabButtonWrapper = styled.div`
   }
 `;
 
-interface ButtonProps {
-  $selected: boolean;
-}
 const Button = styled.button<ButtonProps>`
   padding: 8px 12px;
   flex-direction: column;

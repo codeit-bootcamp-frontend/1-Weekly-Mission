@@ -38,3 +38,60 @@ export interface UserLoginData {
     userEmail?: string;
   };
 }
+
+export interface LinkAddBarProps {
+  openMAF: (e: MouseEvent, text?: string) => void;
+}
+
+export interface LinkAddBackgroundProps {
+  $show?: boolean;
+}
+
+export interface PopAddProps {
+  $Selected: boolean;
+}
+
+export interface PopDeleteProps {
+  $isSelected: boolean;
+}
+
+export interface LinkInfoProps {
+  folderName: string;
+  nowFolderId: number;
+  userId: number;
+}
+export interface HandleLinkProps {
+  $isDisplay: boolean;
+}
+
+export interface SearchBarWrapperProps {
+  $display: boolean;
+}
+
+export interface ButtonProps {
+  $selected: boolean;
+}
+
+export interface ModalkebabProps {
+  url: string;
+  title: string;
+  buttonTitle: string;
+  color: string;
+  onClose: (e: any) => void;
+}
+
+export interface ModalLinkProps {
+  LinkOptions: {
+    name: string;
+    modalTitle: string;
+    color: string;
+    buttonTitle: string;
+  };
+  folderName: string;
+  onClose: (e: any) => void;
+  nowFolderId?: number;
+  userId?: number;
+}
+export interface AddFolderSectionProps {
+  $isSelected: boolean;
+}

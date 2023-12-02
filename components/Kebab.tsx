@@ -1,9 +1,14 @@
-import styled from "styled-components";
 import { useState } from "react";
-import kebab from "../images/kebab.svg";
-import { Modalkebab } from "../components/modal/Modal";
-import Image from "next/image";
+import styled from "styled-components";
 import { MouseEvent } from "react";
+import { Modalkebab } from "../components/modal/Modal";
+
+import kebab from "../images/kebab.svg";
+
+import Image from "next/image";
+
+import { PopAddProps, PopDeleteProps } from "@/type";
+
 export const ModalInfo = [
   {
     title: "폴더에 추가",
@@ -29,14 +34,6 @@ const Pop = styled.div`
   align-items: flex-start;
   gap: 4px;
 `;
-
-interface PopAddProps {
-  $Selected: boolean;
-}
-
-interface PopDeleteProps {
-  $isSelected: boolean;
-}
 
 const PopAdd = styled.button<PopAddProps>`
   display: flex;

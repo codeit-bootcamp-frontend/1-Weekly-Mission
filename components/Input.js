@@ -1,0 +1,120 @@
+import { useState } from "react";
+import styled from "styled-components";
+
+import eyeOff from "./eye-off.svg";
+import eyeOn from "./eye-on.svg";
+
+function Input() {
+  const [emailFocusIn, setEmailFocusIn] = useState(false);
+  const [passwordFocusIn, setPasswordFocusIn] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+
+  const displayEmailError = () => {
+    setEmailFocusIn(false);
+    if (emailInput.length < 8) {
+      setEmailError(true);
+      return;
+    }
+    setEmailError(false);
+  };
+
+  const handleFocusEmailInput = () => {
+    setEmailError(false);
+    setEmailFocusIn(true);
+  };
+
+  const displayPasswordError = () => {
+    setPasswordFocusIn(false);
+    if (passwordInput.length < 8) {
+      setPasswordError(true);
+      return;
+    }
+    setPasswordError(false);
+  };
+
+  const handleFocusPasswordInput = () => {
+    setPasswordError(false);
+    setPasswordFocusIn(true);
+  };
+
+  return (
+    <>
+      <InputWrapper
+        type="email"
+        value={emailInput}
+        placeholder="내용 입력"
+        $focusIn={emailFocusIn}
+        $emailError={emailError}
+        onFocus={handleFocusEmailInput}
+        onBlur={displayEmailError}
+        onChange={(e) => setEmailInput(e.target.value)}
+      />
+      {emailError ? <ErrorM>내용을 다시 입력해주세요</ErrorM> : null}
+      <InputContainer>
+        <InputWrapper
+          type={showPassword ? "type" : "password"}
+          value={passwordInput}
+          placeholder="내용 입력"
+          $focusIn={passwordFocusIn}
+          onFocus={handleFocusPasswordInput}
+          onBlur={displayPasswordError}
+          onChange={(e) => setPasswordInput(e.target.value)}
+        />
+
+        {showPassword ? (
+          <EyeImage src={eyeOn} onClick={() => setShowPassword(false)} />
+        ) : (
+          <EyeImage src={eyeOff} onClick={() => setShowPassword(true)} />
+        )}
+      </InputContainer>
+      {passwordError ? <ErrorM>내용을 다시 입력해주세요</ErrorM> : null}
+    </>
+  );
+}
+
+const InputWrapper = styled.input`
+  display: flex;
+  width: 350px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
+  &:focus {
+    outline: none;
+  }
+
+  border: 1px solid
+    ${({ $focusIn, $emailError }) =>
+      $emailError ? "#ff5b56" : $focusIn ? "#6D6AFE" : "#CCD5E3"};
+  background: #fff;
+`;
+
+const EyeImage = styled.img`
+  position: absolute;
+  top: 18px;
+  right: 15px;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  width: 350px;
+
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+const ErrorM = styled.p`
+  color: #ff5b56;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+export default Input;

@@ -1,8 +1,10 @@
+import styled from "styled-components";
+
 import facebook from "../images/facebook.svg";
 import instagram from "../images/instagram.svg";
 import twitter from "../images/twitter.svg";
 import youtube from "../images/youtube.svg";
-import styled from "styled-components";
+
 import Link from "next/link";
 import Image from "next/image";
 function FooterSpace() {

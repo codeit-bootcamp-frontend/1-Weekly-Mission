@@ -1,12 +1,15 @@
+import { useState, MouseEvent } from "react";
+import { ModalLink } from "../components/modal/Modal";
 import styled from "styled-components";
+
 import share from "../images/share.svg";
 import changes from "../images/pen.svg";
 import deletings from "../images/delete.svg";
-import { useState } from "react";
-import { ModalLink } from "../components/modal/Modal";
-import { MouseEvent } from "react";
+
+import { LinkInfoProps, HandleLinkProps } from "@/type";
 
 import Image from "next/image";
+
 export const LinkOptions = [
   {
     name: "공유",
@@ -30,12 +33,6 @@ export const LinkOptions = [
     buttonTitle: "삭제하기",
   },
 ];
-
-interface LinkInfoProps {
-  folderName: string;
-  nowFolderId: number;
-  userId: number;
-}
 
 function LinkInfo({ folderName, nowFolderId, userId }: LinkInfoProps) {
   const [modalLinkName, setModalLinkName] = useState("");
@@ -121,10 +118,6 @@ const FolderTitle = styled.span`
   align-items: flex-start;
   gap: 8px;
 `;
-
-interface HandleLinkProps {
-  $isDisplay: boolean;
-}
 
 const HandleLink = styled.div<HandleLinkProps>`
   display: flex;

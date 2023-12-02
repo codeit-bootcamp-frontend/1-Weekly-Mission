@@ -1,8 +1,13 @@
+import { ChangeEvent, useState } from "react";
+import styled from "styled-components";
+
 import searchIcon from "../images/Search.svg";
 import closeIcon from "../images/_close.svg";
-import { ChangeEvent, useEffect, useState } from "react";
-import styled from "styled-components";
+
 import Image from "next/image";
+
+import { SearchBarWrapperProps } from "@/type";
+
 function SearchBar({ search, onSearch }: any) {
   const [display, setDisplay] = useState(true);
 
@@ -81,10 +86,6 @@ const SearchBarInput = styled.input`
     width: 500px;
   }
 `;
-
-interface SearchBarWrapperProps {
-  $display: boolean;
-}
 
 const SearchBarWrapper = styled.div<SearchBarWrapperProps>`
   display: flex;

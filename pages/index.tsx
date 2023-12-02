@@ -1,11 +1,13 @@
+import { useState, useEffect } from "react";
+
 import HeaderSpace from "../components/HeaderSpace";
-import * as S from "../styles/FolderStyled";
 import FooterSpace from "../components/FooterSpace";
 import { SampleCard } from "../components/Card";
 import SearchBar from "../components/SearchBar";
 import Nav from "../components/Nav";
+import * as S from "../styles/FolderStyled";
+
 import { getFolderData, getUserData } from "../api";
-import { useState, useEffect } from "react";
 import { SampleLinkData } from "../type";
 
 export default function Home() {
