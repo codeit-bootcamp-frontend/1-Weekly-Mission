@@ -1,5 +1,6 @@
 import styled, { CSSProperties } from "styled-components";
 import * as React from "react";
+import { TABLET_SIZE } from "@/src/global/mediaQuery";
 
 interface FABProps {
   children: React.ReactNode;
@@ -37,7 +38,7 @@ const Button = styled.button`
     font-weight: 700;
   }
 
-  @media (max-width: 779px) {
+  @media (max-width: ${TABLET_SIZE}) {
     display: flex;
   }
 `;
