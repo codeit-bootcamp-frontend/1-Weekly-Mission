@@ -7,6 +7,7 @@ const color = {
   blueBackground: "#edf7ff",
   primary: "#6d6afe",
   gray: "#f5f5f5",
+  darkGray: "#CCD5E3",
   error: "#ff5b56",
 };
 
