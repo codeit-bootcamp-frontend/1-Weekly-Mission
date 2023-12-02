@@ -3,7 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import styled from "styled-components";
 
 interface IInputProp {
-  src: StaticImageData;
+  src?: StaticImageData;
   placeholder: string;
   children?: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;

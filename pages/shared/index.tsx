@@ -1,11 +1,11 @@
 import SearchImg from "@/public/assets/shared/img_search.png";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   CardContainer,
   ContentContainer,
   FolderContentContainer,
   SharedWrapper,
-} from "./styled";
+} from "./sharedStyled";
 import { Section } from "@/components/common/commonStyled";
 import Image from "next/image";
 import request from "@/lib/axios";

@@ -1,3 +1,4 @@
+import { device } from "@/styles/globalStyle";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -5,6 +6,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 9.4rem;
+
+  @media all and (${device.mobile}) {
+    margin-top: 6.3rem;
+  }
 `;
 
 export const Section = styled.div<{ $bg: string }>`

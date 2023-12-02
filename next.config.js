@@ -43,6 +43,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "s.pstatic.net",
       },
+      {
+        protocol: "https",
+        hostname: "jasonwatmore.com",
+      },
+      {
+        protocol: "https",
+        hostname: "codeit.kr",
+      },
     ],
   },
 };
