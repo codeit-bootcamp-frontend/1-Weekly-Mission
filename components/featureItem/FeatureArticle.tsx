@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import * as S from "@/components/featureItem/FeatureArticle.style";
 import Image from "next/image";
 import { FeatureArticleProps } from "@/types/type";

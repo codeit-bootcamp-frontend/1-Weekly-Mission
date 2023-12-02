@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import FolderSearchBar from "@/components/folderSearchBar/FolderSearchBar";
 import SharedFolderInfo from "@/components/folderUserInfo/SharedFolderInfo";
-import * as S from "@/components/pages/Shared.style";
+import * as S from "@/layouts/shared/Shared.style";
 import CardList from "@/components/cardList/CardList";
-import useGetSampleFolder from "@/components/pages/useGetSmapleFolder";
+import useGetSampleFolder from "@/hooks/useGetSampleFolder";
 import { MappedLink } from "@/types/type";
 import Head from "next/head";
 
@@ -23,9 +23,7 @@ const SharedPage = () => {
   return (
     <>
       <Head>
-        <title>
-          {data?.ownerName}님의 {data?.folderName} 폴더 - Linkbrary
-        </title>
+        <title>{`  ${data?.ownerName}님의 ${data?.folderName} 폴더 - Linkbrary`}</title>
       </Head>
       {data && (
         <SharedFolderInfo profileImage={data?.profileImage} ownerName={data?.ownerName} folderName={data?.folderName} />

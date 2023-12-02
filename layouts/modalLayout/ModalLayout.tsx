@@ -1,5 +1,5 @@
 import React, { MouseEvent, useEffect } from "react";
-import * as S from "@/components/modalLayout/ModalLayout.style";
+import * as S from "@/layouts/modalLayout/ModalLayout.style";
 import { ModalPortal } from "@/utils/ModalPortal";
 import { ModalLayoutProps } from "@/types/type";
 

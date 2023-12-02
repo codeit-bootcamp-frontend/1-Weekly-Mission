@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import * as S from "@/components/folderTabBar/FolderTabBar.style";
 import { FolderTabBarProps } from "@/types/type";
 import { ALL_LINKS_ID, MODALS_ID } from "@/constants/constants";
-import ModalLayout from "../modalLayout/ModalLayout";
 import Modal from "../modal/Modal";
 import InputField from "../inputField/InputField";
 

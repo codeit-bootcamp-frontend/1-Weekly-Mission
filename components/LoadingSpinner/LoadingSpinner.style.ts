@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import spinnerImg from "../../images/spinner.png";
+import spinnerImg from "@/images/spinner.png";
 export const SpinnerWrap = styled.div`
   display: grid;
   justify-content: center;
@@ -17,7 +17,7 @@ export const Spinner = styled.div`
   align-items: center;
   width: 30rem;
   height: 30rem;
-  background-image: url("${spinnerImg}");
+  background-image: url("${spinnerImg.src}");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

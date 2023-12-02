@@ -1,7 +1,7 @@
 import { UserProvider } from "@/utils/UserContext";
-import GlobalNav from "../components/globalNav/GlobalNav";
-import Footer from "../components/footer/Footer";
-import * as S from "@/layouts/GlobalLayout.style";
+import GlobalNav from "../../components/globalNav/GlobalNav";
+import Footer from "../../components/footer/Footer";
+import * as S from "@/layouts/globalLayout/GlobalLayout.style";
 function GlobalLayout() {
   return (
     <UserProvider>

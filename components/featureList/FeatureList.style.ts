@@ -1,5 +1,4 @@
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
-import Image from "next/image";
 import styled from "styled-components";
 
 export const ArticleWrap = styled.div`

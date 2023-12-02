@@ -1,9 +1,9 @@
-import React, { MouseEvent, ReactNode, useState } from "react";
+import React, { MouseEvent, useState } from "react";
 import { KEBAB_MENUS, MODALS_ID } from "../../constants/constants";
 import * as S from "./KebabMenu.style";
-import { KebabMenusProps, KebabProps, ModalProps } from "@/types/type";
-import Modal from "../modal/Modal";
-import ModalSelectButton from "../modalSelectButton/ModalSelectButton";
+import { KebabMenusProps, KebabProps } from "@/types/type";
+import Modal from "@/components/modal/Modal";
+import ModalSelectButton from "@/components/modalSelectButton/ModalSelectButton";
 const KebabMenu = ({ linkUrl, isKebabOpen, setIsKebabOpen, folderId, folders }: KebabMenusProps) => {
   const [modalComponent, setModalComponent] = useState("");
 
@@ -37,7 +37,7 @@ const KebabMenu = ({ linkUrl, isKebabOpen, setIsKebabOpen, folderId, folders }: 
           <Modal.SelectButtonWrap>
             {folders?.map((folder) => (
               <li key={folder.id}>
-                <ModalSelectButton folderName={folder.name} linkCount={folder.link.count} />
+                <ModalSelectButton folderName={folder.name} linkCount={folder?.link.count} />
               </li>
             ))}
           </Modal.SelectButtonWrap>

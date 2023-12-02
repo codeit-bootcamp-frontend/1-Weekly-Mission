@@ -1,9 +1,9 @@
 import type { AppProps } from "next/app";
-import * as S from "@/layouts/GlobalLayout.style";
+import * as S from "@/layouts/globalLayout/GlobalLayout.style";
 import { UserProvider } from "@/utils/UserContext";
 import Footer from "@/components/footer/Footer";
 import GlobalNav from "@/components/globalNav/GlobalNav";
-import GlobalStyle from "@/components/GlobalStyle";
+import GlobalStyle from "@/layouts/GlobalStyle";
 import Head from "next/head";
 import { useRouter } from "next/router";
 

@@ -1,13 +1,9 @@
-import kakaoIcon from "../images/kakaoIcon.png";
-import facebookIcon from "../images/facebookIcon.png";
-import shareIcon from "../images/share.png";
-import nameChangeIcon from "../images/pen.png";
-import deleteIcon from "../images/delete.png";
-import DeleteModal from "../components/modal/DeleteModal";
-import shareButtonIcon from "../images/shareIcon.png";
-import SelectModal from "../components/modal/SelectModal";
-import ShareButtons from "../components/shareButtons/ShareButtons";
-import InputField from "../components/inputField/InputField";
+import kakaoIcon from "@/images/kakaoIcon.png";
+import facebookIcon from "@/images/facebookIcon.png";
+import shareIcon from "@/images/share.png";
+import nameChangeIcon from "@/images/pen.png";
+import deleteIcon from "@/images/delete.png";
+import shareButtonIcon from "@/images/shareIcon.png";
 import { ValidateErrorMsgType, ValidateType } from "@/types/type";
 
 export const ALL_LINKS_ID = "all";

@@ -44,7 +44,7 @@ const extendDayjs = () => {
 
 extendDayjs();
 
-const getCardTimes = (createdAt) => {
+const getCardTimes = (createdAt: string) => {
   const now = dayjs().utc(true);
   const utcDate = dayjs.utc(createdAt);
   const fromNow = utcDate.from(now);

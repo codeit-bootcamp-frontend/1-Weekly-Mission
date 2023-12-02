@@ -2,14 +2,15 @@ import FolderAddBar from "@/components/folderAddBar/FolderAddBar";
 import FolderSearchBar from "@/components/folderSearchBar/FolderSearchBar";
 import FolderTabBar from "@/components/folderTabBar/FolderTabBar";
 import FolderToolbar from "@/components/folderToolBar/FolderToolBar";
-import { useGetLinks } from "@/components/pages/usGetLinks";
-import { useGetFolders } from "@/components/pages/useGetFolders";
-import * as S from "@/components/pages/Folder.style";
+import { useGetLinks } from "@/hooks/useGetLinks";
+import { useGetFolders } from "@/hooks/useGetFolders";
+import * as S from "@/layouts/folder/Folder.style";
 import React, { useEffect, useRef, useState } from "react";
 import CardList from "@/components/cardList/CardList";
 import { useRouter } from "next/router";
 import { ALL_LINKS_ID } from "@/constants/constants";
 import Head from "next/head";
+import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
 
 const FolderLayout = () => {
   const { data: folders } = useGetFolders();
@@ -64,16 +65,22 @@ const FolderLayout = () => {
   return (
     <>
       <Head>
-        <title>{folderName} - Linkbrary</title>
+        <title>{`${folderName} - Linkbrary`}</title>
       </Head>
       <FolderAddBar isHidden={isFooterVisible} isSticky={isSticky} folders={folders} />
       <S.FolderPageWrap>
         <div ref={topRef} style={{ height: "1px", position: "absolute", top: "0" }}></div>
         <S.FolderPage>
-          <FolderSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-          <FolderTabBar folders={folders} selectedFolderId={selectedFolderId} />
-          <FolderToolbar folderName={folderName} />
-          <CardList links={filteredLinks} folders={folders} isShared={false} />
+          {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              <FolderSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+              <FolderTabBar folders={folders} selectedFolderId={selectedFolderId} />
+              <FolderToolbar folderName={folderName} />
+              <CardList links={filteredLinks} folders={folders} isShared={false} />
+            </>
+          )}
         </S.FolderPage>
       </S.FolderPageWrap>
       <div ref={footerRef} style={{ height: "1px", position: "absolute", bottom: "0" }}></div>

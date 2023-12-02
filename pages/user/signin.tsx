@@ -1,9 +1,10 @@
 import AuthInput from "@/components/authInput/AuthInput";
 import Button from "@/components/button/Button";
 import { VALIDATE } from "@/constants/constants";
-import AuthLayout from "@/layouts/auth/AuthLayout";
+import AuthLayout from "@/layouts/authLayout/AuthLayout";
 import { ErrorMessageType, InputValueType } from "@/types/type";
 import getErrorMessage from "@/utils/getErrorMessage";
+import Head from "next/head";
 import React, { ChangeEvent, FocusEvent, FormEvent, useState } from "react";
 
 const SignIn = () => {
@@ -47,28 +48,33 @@ const SignIn = () => {
   };
 
   return (
-    <AuthLayout handleSubmit={handleSubmit} mode="signin">
-      <AuthInput
-        label="이메일"
-        type="email"
-        name="userEmail"
-        inputValue={inputValue.userEmail}
-        setInputValue={handleChange}
-        errorMsg={errorMsg.userEmail}
-        validateInput={validateInput}
-        autoComplete="username"
-      />
-      <AuthInput.PasswordInput
-        label="비밀번호"
-        name="userPassword"
-        inputValue={inputValue.userPassword}
-        setInputValue={handleChange}
-        errorMsg={errorMsg.userPassword}
-        validateInput={validateInput}
-        autoComplete="current-password"
-      />
-      <AuthLayout.AuthButton>로그인</AuthLayout.AuthButton>
-    </AuthLayout>
+    <>
+      <Head>
+        <title>로그인 - Linkbrary</title>
+      </Head>
+      <AuthLayout handleSubmit={handleSubmit} mode="signin">
+        <AuthInput
+          label="이메일"
+          type="email"
+          name="userEmail"
+          inputValue={inputValue.userEmail}
+          setInputValue={handleChange}
+          errorMsg={errorMsg.userEmail}
+          validateInput={validateInput}
+          autoComplete="username"
+        />
+        <AuthInput.PasswordInput
+          label="비밀번호"
+          name="userPassword"
+          inputValue={inputValue.userPassword}
+          setInputValue={handleChange}
+          errorMsg={errorMsg.userPassword}
+          validateInput={validateInput}
+          autoComplete="current-password"
+        />
+        <AuthLayout.AuthButton>로그인</AuthLayout.AuthButton>
+      </AuthLayout>
+    </>
   );
 };
 

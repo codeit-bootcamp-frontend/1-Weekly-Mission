@@ -1,5 +1,5 @@
 import { CardListProps } from "@/types/type";
-import Card from "../card/Card";
+import Card from "@/components/card/Card";
 import * as S from "@/components/cardList/CardList.style";
 
 const CardList = ({ links, folders, isShared }: CardListProps) => {

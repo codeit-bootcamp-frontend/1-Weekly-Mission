@@ -1,5 +1,5 @@
 import React, { FormEvent, ReactNode } from "react";
-import * as S from "@/layouts/auth/AuthLayout.style";
+import * as S from "@/layouts/authLayout/AuthLayout.style";
 import kakaoIcon from "@/images/auth/kakao-login-icon.png";
 import googleIcon from "@/images/auth/google-login-icon.png";
 

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import * as S from "@/components/folderSearchBar/FolderSearchBar.style";
 import searchIcon from "@/images/Search.png";
 import { FolderSearchBarProps } from "@/types/type";

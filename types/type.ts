@@ -43,6 +43,9 @@ export interface SampleFolder {
       name: string;
       profileImageSource: string;
     };
+    link: {
+      count: number;
+    };
     links: SampleLink[];
     count: number;
   };

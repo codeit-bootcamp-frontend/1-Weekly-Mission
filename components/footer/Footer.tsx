@@ -3,29 +3,30 @@ import FacebookLogo from "@/images/footer/facebook.svg";
 import TwitterLogo from "@/images/footer/twitter.svg";
 import YoutubeLogo from "@/images/footer/youtube.svg";
 import InstagramLogo from "@/images/footer/instagram.svg";
+import Link from "next/link";
 const Footer = () => {
   return (
     <S.Footer>
       <S.FooterCompany>©codeit - 2023</S.FooterCompany>
 
       <S.FooterSupport>
-        <a href="/support/privacy">Privacy Policy</a>
-        <a href="/support/faq">FAQ</a>
+        <Link href="/support/privacy">Privacy Policy</Link>
+        <Link href="/support/faq">FAQ</Link>
       </S.FooterSupport>
 
       <S.FooterSocial>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        <Link href="https://facebook.com" target="_blank">
           <FacebookLogo />
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+        </Link>
+        <Link href="https://twitter.com" target="_blank">
           <TwitterLogo />
-        </a>
-        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+        </Link>
+        <Link href="https://youtube.com" target="_blank">
           <YoutubeLogo />
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        </Link>
+        <Link href="https://instagram.com" target="_blank">
           <InstagramLogo />
-        </a>
+        </Link>
       </S.FooterSocial>
     </S.Footer>
   );

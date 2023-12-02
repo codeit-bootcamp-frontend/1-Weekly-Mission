@@ -3,7 +3,7 @@ import closeIconImage from "@/images/modalClose.png";
 import * as S from "@/components/modal/Modal.style";
 import Image from "next/image";
 import { ModalProps } from "@/types/type";
-import ModalLayout from "../modalLayout/ModalLayout";
+import ModalLayout from "@/layouts/modalLayout/ModalLayout";
 
 const Modal = ({ children, onClose }: ModalProps) => {
   return (
