@@ -1,29 +1,12 @@
-import useRequest from '@hooks/useRequest';
 import * as S from './Modal.style';
+import { Folder } from '@pages/folder';
 
-interface Data {
-  data: Folder[];
-}
-
-interface Folder {
-  id: number;
-  created_at: string;
-  name: string;
-  user_id: number;
-  link: Link;
-}
-
-interface Link {
-  count: number;
-}
 interface Props {
+  folders: Folder[];
   url: string;
 }
 
-export function ModalAddLink({ url }: Props) {
-  const { data } = useRequest<Data>({ options: { url: '/users/1/folders' } });
-  const folders = data?.data;
-
+export function ModalAddLink({ folders, url }: Props) {
   return (
     <>
       <S.TitleContainer>

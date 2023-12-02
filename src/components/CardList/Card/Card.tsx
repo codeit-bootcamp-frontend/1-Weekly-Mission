@@ -8,12 +8,14 @@ import ModalAddLink from '@components/Modal/ModalAddLink';
 import { Data } from '../types';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Folder } from '@pages/folder';
 
 interface Props {
+  folders: Folder[];
   item: Data;
 }
 
-function Card({ item }: Props) {
+function Card({ folders, item }: Props) {
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
   const [modalDeleteLinkIsOpen, setModalDeleteLinkIsOpen] = useState(false);
   const [modalAddLinkIsOpen, setModalAddLinkIsOpen] = useState(false);
@@ -70,7 +72,7 @@ function Card({ item }: Props) {
                     e.preventDefault();
                     setModalAddLinkIsOpen(false);
                   }}>
-                  <ModalAddLink url={url} />
+                  <ModalAddLink folders={folders} url={url} />
                 </Modal>
               )}
             </S.PopoverContainer>

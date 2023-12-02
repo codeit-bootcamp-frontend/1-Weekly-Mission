@@ -1,47 +1,26 @@
 import { useState } from 'react';
 import * as S from './FolderList.style';
 import Modal from '@components/Modal';
-import useRequest from '@hooks/useRequest';
 import ModalAddFolder from '@components/Modal/ModalAddFolder';
 import CurrentFolderInfo from '@components/CurrentFolderInfo';
 import Link from 'next/link';
-
-interface Data {
-  data: Folder[];
-}
-
-interface Folder {
-  id: number;
-  created_at: string;
-  name: string;
-  user_id: number;
-  link: Link;
-}
-
-interface Link {
-  count: number;
-}
+import { Folder } from '@pages/folder';
 
 interface Props {
-  getFolderId: (folderId: string) => void;
+  folders: Folder[];
 }
 
-function FolderList({ getFolderId }: Props) {
+function FolderList({ folders }: Props) {
   const [selectedId, setSelectedId] = useState<string | undefined>('');
   const [selectedName, setSelectedName] = useState('전체');
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const { data } = useRequest<Data>({ options: { url: '/users/1/folders' } });
-  const folders = data?.data;
-
   const handleAllClick = () => {
-    getFolderId('');
     setSelectedId('');
     setSelectedName('전체');
   };
 
   const handleClick = (id: number, name: string) => {
-    getFolderId(String(id));
     setSelectedId(String(id));
     setSelectedName(name);
   };
@@ -56,7 +35,7 @@ function FolderList({ getFolderId }: Props) {
                 전체
               </S.Folder>
             </Link>
-            {folders.map((folder) => (
+            {folders?.map((folder) => (
               <Link href={`/folder?folderId=${folder.id}`} key={folder.id}>
                 <S.Folder
                   onClick={() => handleClick(folder.id, folder.name)}

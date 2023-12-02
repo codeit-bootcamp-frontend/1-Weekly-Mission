@@ -2,13 +2,15 @@ import Card from '@components/CardList/Card';
 import * as S from './CardList.style';
 import { Data } from './types';
 import { useMemo } from 'react';
+import { Folder } from '@pages/folder';
 
 interface Props {
+  folders: Folder[];
   items: Data[];
   searchKeyword: string;
 }
 
-function CardList({ items, searchKeyword }: Props) {
+function CardList({ folders, items, searchKeyword }: Props) {
   const lowerCaseKeyword = searchKeyword.toLowerCase();
 
   const filteredItems = useMemo(
@@ -23,14 +25,14 @@ function CardList({ items, searchKeyword }: Props) {
 
   return (
     <>
-      {!filteredItems.length ? (
+      {!filteredItems?.length ? (
         <S.NoLink>저장된 링크가 없습니다</S.NoLink>
       ) : (
         filteredItems && (
           <S.CardListContainer>
             {filteredItems.map((item) => (
               <S.CardContainer key={item.id}>
-                <Card item={item} />
+                <Card folders={folders} item={item} />
               </S.CardContainer>
             ))}
           </S.CardListContainer>

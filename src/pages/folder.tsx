@@ -3,40 +3,52 @@ import CardList from '@components/CardList';
 import { Data } from '@components/CardList/types';
 import FolderList from '@components/FolderList';
 import SearchBar from '@components/SearchBar';
-import useRequest from '@hooks/useRequest';
 import { useEffect, useRef, useState } from 'react';
 import { MainDiv } from '@styles/MainDiv';
+import fetch from '@api/fetch';
+import { GetServerSidePropsContext } from 'next';
 
-interface Folders {
+interface Cards {
   data: Data[];
 }
 
-export default function Folder() {
-  const [folder, setFolder] = useState<Data[]>([]);
-  const [folderId, setFolderId] = useState('');
+export interface Folder {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+  link: Link;
+}
+
+interface Link {
+  count: number;
+}
+
+interface Props {
+  cards: Cards;
+  folders: Folder[];
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const folderId = context.query.folderId || '';
+  const response = await fetch({ url: `/users/1/links?folderId=${folderId}` });
+  const cards = response.data;
+
+  const response2 = await fetch({ url: '/users/1/folders' });
+  const folders = response2.data.data;
+
+  return {
+    props: {
+      cards: cards,
+      folders: folders,
+    },
+  };
+}
+
+export default function Folder({ cards, folders }: Props) {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const ref = useRef(null);
-
-  const getFolderId = (folderId: string) => {
-    setFolderId(folderId);
-  };
-
-  const { fetch: fetchLoad } = useRequest({
-    options: {
-      url: `/users/1/links?folderId=${folderId}`,
-    },
-  });
-
-  useEffect(() => {
-    const loadFolder = async () => {
-      const { data } = await fetchLoad();
-      const typedData = data as Folders;
-      setFolder(typedData.data);
-    };
-
-    loadFolder();
-  }, [folderId]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,8 +82,12 @@ export default function Folder() {
       </div>
       <MainDiv>
         <SearchBar setSearchKeyword={setSearchKeyword} />
-        <FolderList getFolderId={getFolderId} />
-        <CardList items={folder} searchKeyword={searchKeyword} />
+        <FolderList folders={folders} />
+        <CardList
+          folders={folders}
+          items={cards?.data}
+          searchKeyword={searchKeyword}
+        />
       </MainDiv>
     </>
   );
