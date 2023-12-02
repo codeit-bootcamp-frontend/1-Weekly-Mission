@@ -1,7 +1,11 @@
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: [] });
+import { Article, Header } from "@/components";
+import * as Styled from "@/style/StyledHomePage";
 
 export default function Home() {
-  return <></>;
+  return (
+    <Styled.Container>
+      <Header />
+      <Article />
+    </Styled.Container>
+  );
 }
