@@ -1,5 +1,6 @@
 import React from "react";
-
+import Image from "next/image";
+import Link from "next/link";
 const Footer = () => {
   return (
     <>
@@ -7,54 +8,65 @@ const Footer = () => {
         <div className="footer-box">
           <span className="copyright">©codeit - 2023</span>
           <div className="footer-links">
-            <a className="footer-link" href="privacy.html">
+            <Link className="footer-link" href="privacy.html">
               Privacy Policy
-            </a>
-            <a className="footer-link" href="faq.html">
+            </Link>
+            <Link className="footer-link" href="faq.html">
               FAQ
-            </a>
+            </Link>
           </div>
           <div className="sns">
-            <a
+            <Link
+              style={{ position: "relative", width: "2rem" }}
               href="https://www.facebook.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Image
                 src="/images/facebook.svg"
                 alt="facebook 홈페이지로 연결된 facebook 로고"
+                fill
               />
-            </a>
-            <a
+            </Link>
+            <Link
+              style={{
+                position: "relative",
+                width: "2rem",
+              }}
               href="https://twitter.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Image
                 src="/images/twitter.svg"
                 alt="twitter 홈페이지로 연결된 twitter 로고"
+                fill
               />
-            </a>
-            <a
+            </Link>
+            <Link
+              style={{ position: "relative", width: "2rem" }}
               href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Image
                 src="/images/youtube.svg"
                 alt="youtube 홈페이지로 연결된 youtube 로고"
+                fill
               />
-            </a>
-            <a
+            </Link>
+            <Link
+              style={{ position: "relative", width: "2rem" }}
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Image
                 src="/images/instagram.svg"
                 alt="instagram 홈페이지로 연결된 instagram 로고"
+                fill
               />
-            </a>
+            </Link>
           </div>
         </div>
       </footer>
