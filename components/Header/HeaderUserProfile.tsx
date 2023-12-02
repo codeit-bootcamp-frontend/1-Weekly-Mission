@@ -13,7 +13,9 @@ function HeaderUserProfile() {
 
   return (
     <div className={styles.profile}>
-      <div className={styles.profileImage}>{values ? <Image fill src={values.image_source} alt="profile" /> : ""}</div>
+      <div className={styles.profileImage}>
+        {values ? <Image width={28} height={28} src={values.image_source} alt="profile" /> : ""}
+      </div>
       {values ? <p className={styles.UserProfile}>{values.email}</p> : ""}
     </div>
   );

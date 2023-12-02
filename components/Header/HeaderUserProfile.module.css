@@ -6,15 +6,12 @@
 }
 
 .profileImage {
-  width: 2.8rem;
-  height: 2.8rem;
   border-radius: 3rem;
   overflow: hidden;
-  position: relative;
 }
-
 .UserProfile {
-  font-size: 1.4rem;
+  color: #373740;
+  font-size: 14px;
 }
 
 @media (max-width: 767px) {
