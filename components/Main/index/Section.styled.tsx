@@ -2,7 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 interface Section {
-  reverse?: boolean;
+  $reverse?: boolean;
 }
 
 export const StyledSection = styled.section<Section>`
@@ -17,14 +17,14 @@ export const StyledSection = styled.section<Section>`
   padding: 4rem 3.2rem;
 
   @media screen and (min-width: 768px) {
-    grid-template: auto auto / calc(50vw - 41rem) ${({ reverse }) => (reverse ? "1fr 30rem" : "30rem 1fr")} calc(50vw - 41rem);
-    grid-template-areas: ${({ reverse }) => (reverse ? "'. img title .' '. img text .'" : "'. title img .' '. text  img .'")};
+    grid-template: auto auto / calc(50vw - 41rem) ${({ $reverse }) => ($reverse ? "1fr 30rem" : "30rem 1fr")} calc(50vw - 41rem);
+    grid-template-areas: ${({ $reverse }) => ($reverse ? "'. img title .' '. img text .'" : "'. title img .' '. text  img .'")};
     row-gap: 1rem;
   }
 
   @media screen and (min-width: 1200px) {
-    grid-template: auto auto / calc(50vw - 50rem) ${({ reverse }) => (reverse ? "1fr 30rem" : "30rem 1fr")} calc(50vw - 50rem);
-    grid-template-areas: ${({ reverse }) => (reverse ? "'. img title .' '. img text .'" : "'. title img .' '. text  img .'")};
+    grid-template: auto auto / calc(50vw - 50rem) ${({ $reverse }) => ($reverse ? "1fr 30rem" : "30rem 1fr")} calc(50vw - 50rem);
+    grid-template-areas: ${({ $reverse }) => ($reverse ? "'. img title .' '. img text .'" : "'. title img .' '. text  img .'")};
   }
 `;
 
@@ -39,7 +39,7 @@ export const StyledImage = styled(Image)<Section>`
     width: 38.5rem;
     height: 31.5rem;
 
-    ${({ reverse }) => reverse && "justify-self: start;"}
+    ${({ $reverse }) => $reverse && "justify-self: start;"}
   }
 
   @media screen and (min-width: 1200px) {
@@ -51,7 +51,7 @@ export const StyledImage = styled(Image)<Section>`
 export type Text = "link" | "folder" | "share" | "search";
 
 interface Ititle {
-  contents: Text;
+  $contents: Text;
 }
 
 export const Title = styled.h2<Ititle>`
@@ -61,8 +61,8 @@ export const Title = styled.h2<Ititle>`
   grid-area: title;
 
   span {
-    ${({ contents }) => {
-      switch (contents) {
+    ${({ $contents }) => {
+      switch ($contents) {
         case "link":
           return "background: linear-gradient(90deg, #fe8a8a, #a4ceff); color: transparent; -webkit-background-clip: text;";
         case "folder":

@@ -1,4 +1,4 @@
-import { StyledHeader, StyledImage, StyledLink, Title } from "@/components/Header/index/HomeHeader.styled";
+import { CutLine, StyledHeader, StyledImage, StyledLink, Title, WrapperLink } from "@/components/Header/index/HomeHeader.styled";
 
 export default function HomeHeader() {
   return (
@@ -9,8 +9,13 @@ export default function HomeHeader() {
           쉽게 저장하고 <br />
           관리해 보세요
         </Title>
-        <StyledLink href="/signin">링크 추가하기</StyledLink>
-        <StyledImage width={40} height={40} className="section__img grid--img" src="index/_img.svg" alt="링크검색기능 예시이미지" />
+        <WrapperLink>
+          <p>구경 해보기</p>
+          <StyledLink href="/shared">폴더 공유하기</StyledLink>
+          <CutLine />
+          <StyledLink href="/folder">링크 추가하기</StyledLink>
+        </WrapperLink>
+        <StyledImage priority width={40} height={40} src="index/_img.svg" alt="링크검색기능 예시이미지" />
       </StyledHeader>
     </>
   );

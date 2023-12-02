@@ -10,12 +10,12 @@ export default function home() {
       <Head>
         <title>Linkabrary</title>
       </Head>
-      <Navigation page="/" />
+      <Navigation $page="/" />
       <HomeHeader />
-      <Section contents="link" />
-      <Section contents="folder" reverse />
-      <Section contents="share" />
-      <Section contents="search" reverse />
+      <Section $contents="link" />
+      <Section $contents="folder" $reverse />
+      <Section $contents="share" />
+      <Section $contents="search" $reverse />
       <Footer />
     </>
   );

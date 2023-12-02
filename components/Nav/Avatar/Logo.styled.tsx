@@ -1,10 +1,7 @@
+import Link from "next/link";
 import styled from "styled-components";
 
-export const ImgLogo = styled.img`
-  width: 10rem;
-  height: auto;
-
-  @media screen and (min-width: 768px) {
-    width: 13rem;
-  }
+export const StyledLink = styled(Link)`
+  grid-area: logo;
+  width: 13rem;
 `;

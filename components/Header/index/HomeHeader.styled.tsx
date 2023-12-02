@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const StyledHeader = styled.header`
   display: grid;
@@ -34,22 +34,77 @@ export const Title = styled.h1`
   }
 `;
 
+export const CutLine = styled.div`
+  height: 3rem;
+  border: 0.1rem solid var(--White);
+`;
+
 export const StyledLink = styled(Link)`
-  width: 20rem;
-  padding: 1.2rem 4rem;
   border-radius: 0.8rem;
-  background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
-  text-decoration: none;
-  text-align: center;
-  font-size: 1.4rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--White);
+
+  @media screen and (min-width: 768px) {
+    font-size: 2.4rem;
+  }
+`;
+
+const fadein = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`;
+
+export const WrapperLink = styled.button`
   grid-area: sign;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 20rem;
+  height: 6rem;
+  border-radius: 0.8rem;
+
+  background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
+  color: var(--White);
+  font-size: 2rem;
+  font-weight: 600;
+
+  transition: 0.5s;
+
+  ${StyledLink}, ${CutLine} {
+    display: none;
+  }
+
+  &:focus-within {
+    width: 30rem;
+    padding: 0 1rem;
+
+    transition: 0.5s;
+
+    p {
+      display: none;
+    }
+    ${StyledLink}, ${CutLine} {
+      display: block;
+      animation: ${fadein} 1s;
+    }
+  }
 
   @media screen and (min-width: 768px) {
     width: 35rem;
     padding: 2rem 1.6rem;
     font-size: 2.4rem;
+
+    &:focus-within {
+      width: 45rem;
+    }
   }
 `;
 
