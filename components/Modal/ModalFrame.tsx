@@ -1,13 +1,13 @@
-import { ReactNode } from "react";
+import { Body, Mask } from "@/components/Modal/ModalFrame.styled";
 import useNotScroll from "@/hooks/useNotScroll";
-import styled from "styled-components";
+import { ReactNode } from "react";
 
 interface ImodalFrame {
   children: ReactNode;
   onClick: (event: React.SyntheticEvent) => void;
 }
 
-function ModalFrame({ children, onClick }: ImodalFrame) {
+export default function ModalFrame({ children, onClick }: ImodalFrame) {
   useNotScroll();
 
   return (
@@ -17,25 +17,3 @@ function ModalFrame({ children, onClick }: ImodalFrame) {
     </>
   );
 }
-
-export default ModalFrame;
-
-const Mask = styled.div`
-  width: 100%;
-  height: 100%;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-
-  background-color: black;
-  opacity: 0.4;
-`;
-const Body = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-`;

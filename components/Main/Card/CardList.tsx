@@ -25,7 +25,7 @@ interface PcardList {
 
 let prev: string | null;
 
-function CardList({ id, path }: PcardList) {
+export default function CardList({ id, path }: PcardList) {
   const cardData = useData(path, id);
   const folderData = useData(URLS.FOLDER_CATEGORY, id);
 
@@ -42,8 +42,6 @@ function CardList({ id, path }: PcardList) {
     <EmptyBox>저장된 링크가 없습니다.</EmptyBox>
   );
 }
-
-export default CardList;
 
 interface PcardSet {
   folder?: FolderData[];

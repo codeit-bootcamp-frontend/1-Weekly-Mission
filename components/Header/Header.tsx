@@ -3,7 +3,7 @@ import useData from "@/hooks/useData";
 import { Container, User, UserImg, UserText, UserTitle } from "@/components/Header/Header.styled";
 import { URLS } from "@/utils/getData.type";
 
-function Header() {
+export default function Header() {
   const folderName = useData(URLS.SHARED_FOLDERNAME);
 
   return (
@@ -22,5 +22,3 @@ function Header() {
     </Container>
   );
 }
-
-export default Header;

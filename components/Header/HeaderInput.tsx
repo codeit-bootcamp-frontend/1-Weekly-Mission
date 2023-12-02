@@ -11,7 +11,7 @@ interface Props {
   dom: React.MutableRefObject<Dom>;
 }
 
-function HeaderSearch({ id, isUser, dom }: Props) {
+export default function HeaderSearch({ id, isUser, dom }: Props) {
   const folder = useData(URLS.FOLDER_CATEGORY, id);
   const { modal, dispatch } = useModal();
   const [value, setValue] = useState("");
@@ -53,5 +53,3 @@ function HeaderSearch({ id, isUser, dom }: Props) {
     </>
   );
 }
-
-export default HeaderSearch;

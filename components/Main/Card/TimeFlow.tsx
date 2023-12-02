@@ -2,7 +2,7 @@ interface Props {
   createdAt: string;
 }
 
-export function TimeFlow({ createdAt }: Props) {
+export default function TimeFlow({ createdAt }: Props) {
   let message = "";
   const timeMinute = Math.floor((new Date().getTime() - new Date(createdAt).getTime()) / 1000 / 60);
   const timeHour = Math.floor(timeMinute / 60);
@@ -46,5 +46,3 @@ export function TimeFlow({ createdAt }: Props) {
   }
   return <p className="">{message}</p>;
 }
-
-export default TimeFlow;

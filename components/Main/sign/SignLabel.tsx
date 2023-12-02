@@ -1,3 +1,4 @@
+import { InputType } from "@/components/Main/sign/Sign.type";
 import { ErrorText, Input, OnOffButton, StyledLabel } from "@/components/Main/sign/SignLabel.styled";
 import Image from "next/image";
 
@@ -7,11 +8,7 @@ const TEXT = {
   passwordCheck: "비밀번호 확인",
 };
 
-interface ISignLabel {
-  type: "email" | "password" | "passwordCheck";
-}
-
-export default function SignLabel({ type }: ISignLabel) {
+export default function SignLabel({ type }: InputType) {
   return (
     <StyledLabel>
       {TEXT[type]}

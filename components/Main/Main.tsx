@@ -5,8 +5,6 @@ interface Props {
   children: ReactNode;
 }
 
-function Main({ children }: Props) {
+export default function Main({ children }: Props) {
   return <StyledMain>{children}</StyledMain>;
 }
-
-export default Main;

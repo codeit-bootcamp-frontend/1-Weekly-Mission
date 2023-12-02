@@ -9,7 +9,7 @@ import LinkSection from "@/components/Main/LinkSection";
 
 const initialRef = { headerForm: null, headerInput: null, floatDiv: null, floatInput: null, footer: null };
 
-function FolderPage() {
+export default function FolderPage() {
   const [isUser, setIsUser] = useState<boolean>(false);
   const [id] = useState(Math.ceil(Math.random() * 1));
   const DOM = useRef<Dom>(initialRef);
@@ -24,5 +24,3 @@ function FolderPage() {
     </>
   );
 }
-
-export default FolderPage;

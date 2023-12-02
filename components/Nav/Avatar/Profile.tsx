@@ -1,11 +1,11 @@
-import { Container, ProfileImg, ProfileText } from "@/components/Nav/Profile.styled";
+import { Container, ProfileImg, ProfileText } from "@/components/Nav/Avatar/Profile.styled";
 
 interface Props {
   profileImg: string;
   email: string;
 }
 
-function Profile({ profileImg, email }: Props) {
+export default function Profile({ profileImg, email }: Props) {
   return (
     <Container>
       <ProfileImg src={profileImg} alt="프로필 사진" />
@@ -13,5 +13,3 @@ function Profile({ profileImg, email }: Props) {
     </Container>
   );
 }
-
-export default Profile;

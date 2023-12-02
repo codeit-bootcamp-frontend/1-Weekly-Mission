@@ -2,11 +2,11 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Main from "@/components/Main/Main";
 import CardList from "@/components/Main/Card/CardList";
-import SearchBar from "@/components/Main/SearchBar";
+import SearchBar from "@/components/Main/FolderCatergory/SearchBar";
 import { URLS } from "@/utils/getData.type";
 import Navigation from "@/components/Nav/Navigation";
 
-function SharedPage() {
+export default function SharedPage() {
   return (
     <>
       <Navigation />
@@ -19,5 +19,3 @@ function SharedPage() {
     </>
   );
 }
-
-export default SharedPage;

@@ -1,12 +1,8 @@
+import { Signin } from "@/components/Main/sign/Sign.type";
 import { StyledForm, SubmitButton } from "@/components/Main/sign/SignForm.styled";
 import SignLabel from "@/components/Main/sign/SignLabel";
-import Image from "next/image";
 
-interface ISignForm {
-  signin?: boolean;
-}
-
-export default function SignForm({ signin }: ISignForm) {
+export default function SignForm({ signin }: Signin) {
   return (
     <StyledForm>
       <SignLabel type="email" />

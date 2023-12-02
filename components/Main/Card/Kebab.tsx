@@ -10,7 +10,7 @@ interface Props {
   url: string;
 }
 
-function Kebab({ folder, url }: Props) {
+export default function Kebab({ folder, url }: Props) {
   const { modal, dispatch } = useModal();
   const popOver = useRef<HTMLDivElement>(null);
 
@@ -45,5 +45,3 @@ function Kebab({ folder, url }: Props) {
     </Container>
   );
 }
-
-export default Kebab;

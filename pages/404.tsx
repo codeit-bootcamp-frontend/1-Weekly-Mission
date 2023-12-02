@@ -3,7 +3,7 @@ import logoImg from "@/public/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 
-function ErrorPage() {
+export default function ErrorPage() {
   return (
     <Container>
       <Link href="/">
@@ -17,5 +17,3 @@ function ErrorPage() {
     </Container>
   );
 }
-
-export default ErrorPage;

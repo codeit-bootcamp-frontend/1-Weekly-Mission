@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useModal from "@/hooks/useModal";
 import useData from "@/hooks/useData";
-import { ButtonAdd, ButtonControl, ButtonFloat, Container, H1, Li, Ul, Wrapper } from "@/components/Main/FolderSelect.styled";
+import { ButtonAdd, ButtonControl, ButtonFloat, Container, H1, Li, Ul, Wrapper } from "@/components/Main/FolderCatergory/FolderSelect.styled";
 import { URLS } from "@/utils/getData.type";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,7 +14,7 @@ interface IhandleModal {
   (e: React.MouseEvent): void;
 }
 
-function FolderSelect({ id }: Props) {
+export default function FolderSelect({ id }: Props) {
   const [title, setTitle] = useState("전체");
   const { modal, dispatch } = useModal();
 
@@ -33,8 +33,6 @@ function FolderSelect({ id }: Props) {
     </>
   );
 }
-
-export default FolderSelect;
 
 interface Pcategories {
   id: number;

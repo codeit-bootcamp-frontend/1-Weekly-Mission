@@ -27,7 +27,7 @@ export default function Section({ reverse = false, contents }: Isection) {
           <span>{TEXT[contents][1]}</span>
           {TEXT[contents][2]}
         </Title>
-        <Text className="section__text grid--text">{TEXT[contents][3]}</Text>
+        <Text>{TEXT[contents][3]}</Text>
       </StyledSection>
     </>
   );

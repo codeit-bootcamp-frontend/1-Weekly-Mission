@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { makeModal } from "@/components/Modal/modal";
+import { makeModal } from "@/components/Modal/Modal";
 import { FolderData } from "@/utils/getData.type";
 import ModalPortal from "@/components/Modal/ModalPortal";
 

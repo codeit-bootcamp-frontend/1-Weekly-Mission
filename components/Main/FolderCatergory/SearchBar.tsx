@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
-import { CloseImg, ContainerSearch, SearchImg, SerachInput } from "@/components/Main/SearchBar.styled";
+import { CloseImg, ContainerSearch, SearchImg, SerachInput } from "@/components/Main/FolderCatergory/SearchBar.styled";
 
-function SearchBar() {
+export default function SearchBar() {
   const [value, setValue] = useState("");
   const input = useRef<HTMLInputElement>(null);
   const router = useRouter();
@@ -34,5 +34,3 @@ function SearchBar() {
     </ContainerSearch>
   );
 }
-
-export default SearchBar;

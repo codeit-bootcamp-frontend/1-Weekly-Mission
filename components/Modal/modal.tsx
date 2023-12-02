@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import imgCheck from "/public/check.svg";
+import imgCheck from "@/public/check.svg";
 import imgClose from "@/public/close.svg";
 import imgKakao from "@/public/kakao.svg";
 import imgFB from "@/public/modalfacebook.svg";
 import imgLink from "@/public/modallink.svg";
 import ModalFrame from "@/components/Modal/ModalFrame";
-import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "@/components/Modal/modal.styled";
+import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "@/components/Modal/Modal.styled";
 import { FolderData } from "@/utils/getData.type";
 import { useRouter } from "next/router";
 import Image from "next/image";

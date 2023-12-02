@@ -7,7 +7,7 @@ interface Props {
   dom?: React.MutableRefObject<Dom>;
 }
 
-function Footer({ dom }: Props) {
+export default function Footer({ dom }: Props) {
   return (
     <Container
       ref={(el) => {
@@ -36,5 +36,3 @@ function Footer({ dom }: Props) {
     </Container>
   );
 }
-
-export default Footer;

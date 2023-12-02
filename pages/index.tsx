@@ -4,7 +4,7 @@ import Section from "@/components/Main/index/Section";
 import Navigation from "@/components/Nav/Navigation";
 import Head from "next/head";
 
-function home() {
+export default function home() {
   return (
     <>
       <Head>
@@ -20,5 +20,3 @@ function home() {
     </>
   );
 }
-
-export default home;
