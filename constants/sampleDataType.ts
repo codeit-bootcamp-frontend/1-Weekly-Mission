@@ -23,12 +23,10 @@ export interface SampleFolderDataType {
 }
 
 export interface SampleFolderType {
-  type: 'sample_folder';
   folder: SampleFolderDataType;
 }
 
 export interface SampleUserType {
-  type: 'sample_user';
   id: number;
   name: string;
   email: string;

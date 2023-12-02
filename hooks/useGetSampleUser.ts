@@ -1,16 +1,12 @@
-import { SampleUserType } from '@/constants/sampleDataType';
 import useGetData from './useGetData';
 import { SAMPLE } from '@/constants/path';
+import { SampleUserType } from '@/constants/sampleDataType';
 
 function useGetSampleUser(): SampleUserType | null {
-  const userData = useGetData(SAMPLE.user);
+  const userData = useGetData<SampleUserType>(SAMPLE.user);
 
-  if (userData) {
-    userData.type = 'sample_user';
-    if (userData.type === 'sample_user') return userData;
-  }
-
-  return null;
+  if (!userData) return null;
+  return userData;
 }
 
 export default useGetSampleUser;

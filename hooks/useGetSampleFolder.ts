@@ -1,16 +1,12 @@
-import { SampleFolderDataType } from 'constants/sampleDataType';
 import useGetData from './useGetData';
-import { SAMPLE } from 'constants/path';
+import { SAMPLE } from '@/constants/path';
+import { SampleFolderDataType, SampleFolderType } from '@/constants/sampleDataType';
 
 function useGetSampleFolder(): SampleFolderDataType | null {
-  const folderData = useGetData(SAMPLE.folder);
+  const folderData = useGetData<SampleFolderType>(SAMPLE.folder);
 
-  if (folderData) {
-    folderData.type = 'sample_folder';
-    if (folderData.type === 'sample_folder') return folderData.folder;
-  }
-
-  return null;
+  if (!folderData) return null;
+  return folderData.folder;
 }
 
 export default useGetSampleFolder;

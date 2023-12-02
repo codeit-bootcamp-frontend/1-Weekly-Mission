@@ -1,18 +1,15 @@
-import { FolderType } from 'constants/dataType';
 import useGetData from './useGetData';
-import { PATH } from 'constants/path';
+import { PATH } from '@/constants/path';
+import { FolderType } from '@/constants/dataType';
+import { FolderListType } from '@/constants/dataType';
 /**
  * @returns userId를 가진 user의 folder 데이터 배열
  */
 function useGetFolders(userId: number): FolderType[] {
-  const folders = useGetData(`${PATH.user}/${userId}/${PATH.folder}`);
+  const folders = useGetData<FolderListType>(`${PATH.user}/${userId}/${PATH.folder}`);
 
-  if (folders) {
-    folders.type = 'folder_list';
-    if (folders.type === 'folder_list') return folders.data;
-  }
-
-  return [];
+  if (!folders) return [];
+  return folders.data;
 }
 
 export default useGetFolders;

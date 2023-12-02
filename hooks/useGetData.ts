@@ -1,10 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getResponse } from '@/lib/api';
-import { SampleFolderType, SampleUserType } from '@/constants/sampleDataType';
-import { FolderListType, LinkListType, UserType } from '@/constants/dataType';
-
-type SampleData = SampleFolderType | SampleUserType;
-type Data = UserType | FolderListType | LinkListType;
 
 /**
  * data를 받아오고, state를 바꿔주는 함수
@@ -12,7 +7,7 @@ type Data = UserType | FolderListType | LinkListType;
  * @param {*} query 데이터 요청 시 필요한 query
  * @returns 받아 온 data 원본
  */
-function useGetData(path: string, query: string = ''): SampleData | Data | null {
+function useGetData<T>(path: string, query: string = ''): T | null {
   const [data, setData] = useState(null);
 
   const getData = useCallback(async () => {

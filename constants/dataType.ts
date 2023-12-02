@@ -1,7 +1,3 @@
-export interface Data {
-  type: string;
-}
-
 export interface UserDataType {
   id: number;
   created_at: string;
@@ -12,8 +8,7 @@ export interface UserDataType {
   profileImageSource: undefined;
 }
 
-export interface UserType extends Data {
-  type: 'user';
+export interface UserType {
   data: UserDataType[];
 }
 
@@ -27,8 +22,7 @@ export interface FolderType {
   };
 }
 
-export interface FolderListType extends Data {
-  type: 'folder_list';
+export interface FolderListType {
   data: FolderType[];
 }
 
@@ -45,7 +39,6 @@ export interface LinkType {
   imageSource: undefined;
 }
 
-export interface LinkListType extends Data {
-  type: 'link_list';
+export interface LinkListType {
   data: LinkType[];
 }

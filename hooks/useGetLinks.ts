@@ -1,7 +1,7 @@
-import { LinkType } from 'constants/dataType';
 import useGetData from './useGetData';
-import { ALL_ID } from 'constants/default';
-import { PATH } from 'constants/path';
+import { LinkListType, LinkType } from '@/constants/dataType';
+import { ALL_ID } from '@/constants/default';
+import { PATH } from '@/constants/path';
 
 /**
  * @param {*} folderId 링크를 조회할 폴더의 id
@@ -9,14 +9,10 @@ import { PATH } from 'constants/path';
  */
 function useGetLinks(userId: number, folderId: number): LinkType[] {
   const query = folderId === ALL_ID ? '' : `?folderId=${folderId}`;
-  const links = useGetData(`${PATH.user}/${userId}/${PATH.link}`, query);
+  const links = useGetData<LinkListType>(`${PATH.user}/${userId}/${PATH.link}`, query);
 
-  if (links) {
-    links.type = 'link_list';
-    if (links.type === 'link_list') return links.data;
-  }
-
-  return [];
+  if (!links) return [];
+  return links.data;
 }
 
 export default useGetLinks;
