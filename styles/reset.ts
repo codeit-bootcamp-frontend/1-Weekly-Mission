@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import "pretendard/dist/web/static/pretendard.css"
 
 export const reset = css`
   * {
