@@ -31,6 +31,14 @@ const BodyRegular2 = `
   font-weight: 400;
   line-height: normal;`;
 
+const BodyRegular3 = `
+  ${common}
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;`;
+
 const Caption = `
   ${common}
   font-family: Pretendard;
@@ -39,4 +47,4 @@ const Caption = `
   font-weight: 400;
   line-height: normal;`;
 
-export { H1, BodyRegular1, BodyRegular2, Caption };
+export { H1, BodyRegular1, BodyRegular2, BodyRegular3, Caption };
