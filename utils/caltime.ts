@@ -1,14 +1,6 @@
 import { TIME_IN_MILLISECONDS } from "./constant";
 
-interface ParsedDate {
-  year: number;
-  month: number;
-  day: number;
-  hour: number;
-  minutes: number;
-}
-
-export const parseDatestring = (targetDate: number): ParsedDate => {
+export const parseDatestring = (targetDate: string) => {
   const changedDate = new Date(targetDate);
   const year = changedDate.getFullYear();
   const month = changedDate.getMonth() + 1;
@@ -24,7 +16,7 @@ export const parseDatestring = (targetDate: number): ParsedDate => {
   };
 };
 
-export const getElapsedTime = (createdAt: number): string => {
+export const getElapsedTime = (createdAt: string) => {
   const now = new Date().getTime();
   const createdAtDate = new Date(createdAt).getTime();
   const elapsedTime: number = now - createdAtDate;

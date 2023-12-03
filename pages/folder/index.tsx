@@ -50,9 +50,7 @@ export default function FolderPage() {
                 defer
                 src="https://developers.kakao.com/sdk/js/kakao.min.js"
                 strategy="lazyOnload"
-                // onLoad={KaKao}
               ></Script>
-              ;
               <FolderNav data={userProfileData} />
               <Header />
               <SearchBar />

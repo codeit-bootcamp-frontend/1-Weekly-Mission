@@ -5,14 +5,16 @@ import { getElapsedTime, parseDatestring } from "@/utils/caltime";
 import Kebab from "@/public/images/kebab.png";
 import DropDown from "../dropdown/DropDown";
 import Image from "next/image";
+import { FolderLinks } from "@/api/folder";
 
-export default function DataListItem({ item }) {
+export default function DataListItem({ item }: { item: FolderLinks }) {
   const [open, setOpen] = useState(false);
   const { id, url, title, image_source, description, created_at } = item;
+
   const targetData = parseDatestring(created_at);
   const { year, month, day } = targetData;
   const diffTime = getElapsedTime(created_at);
-  const imageRef = useRef();
+  const imageRef = useRef(null);
 
   return (
     <>

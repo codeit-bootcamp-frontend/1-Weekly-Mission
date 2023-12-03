@@ -1,4 +1,13 @@
-type User = {
+type UserRequest = {
+  userId: string;
+  folderId?: string;
+};
+// User
+type getUserResponse = {
+  data: User[];
+};
+
+export type User = {
   id: number;
   created_at: string;
   name: string;
@@ -7,13 +16,38 @@ type User = {
   auth_id: string;
 };
 
-type getUserResponse = {
-  data: User[];
+// Folder
+type getUserFolderResponse = {
+  data: Folder[];
 };
 
-type UserRequest = {
-  userId: string;
-  folderId?: string;
+export type Folder = {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+  link: Link;
+};
+
+export type Link = {
+  count: number;
+};
+
+// FolderLinks
+
+type getUserFolderLinksResponse = {
+  data: FolderLinks[];
+};
+
+export type FolderLinks = {
+  id: number;
+  created_at: string;
+  updated_at: any;
+  url: string;
+  title: string;
+  description: string;
+  image_source: string;
+  folder_id: number;
 };
 
 const baseUrl = new URL("https://bootcamp-api.codeit.kr");
@@ -37,7 +71,7 @@ export const fetchUserFolderData = async ({ userId }: UserRequest) => {
   });
   if (response.status === 200) {
     const jsonData = await response.json();
-    return jsonData;
+    return jsonData as Promise<getUserFolderResponse>;
   }
 };
 
@@ -48,7 +82,8 @@ export const fetchFolderLinks = async ({ userId, folderId }: UserRequest) => {
   const response = await fetch(requestUrl, {
     method: "GET",
   });
-  const jsonData = await response.json();
-  const linksData = jsonData?.data;
-  return [response, linksData];
+  if (response.status === 200) {
+    const jsonData = await response.json();
+    return jsonData as Promise<getUserFolderLinksResponse>;
+  }
 };

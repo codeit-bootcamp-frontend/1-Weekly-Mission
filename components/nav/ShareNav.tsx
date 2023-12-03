@@ -9,7 +9,6 @@ import Profile from "@/components/profile/Profile";
 
 export default function ShareNav() {
   const [userData] = useFetchData(getShareUserData);
-  // console.log(userData);
 
   return (
     <div className={styles.container}>

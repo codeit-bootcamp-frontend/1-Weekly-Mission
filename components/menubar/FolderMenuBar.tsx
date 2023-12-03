@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import styles from "./FolderMenu.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
-
 import Modal from "@/components/modal/Modal";
 import Image from "next/image";
 export default function FolderMenu({ folderIdKey }) {

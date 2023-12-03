@@ -3,7 +3,14 @@ import DataListItem from "./DataListItem";
 import styles from "./DataList.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 import SearchContext from "../../contexts/SearchContext";
-export default function DataList({ folderIdKey }) {
+import { FolderLinks } from "@/api/folder";
+type DataListProps = {
+  folderIdKey: string | undefined;
+};
+
+type LinksDateProps = FolderLinks[] | [];
+
+export default function DataList({ folderIdKey }: DataListProps) {
   const { LinkSDataArr } = useContext(LocaleContext);
   const { inputValue, handleInputFunc } = useContext(SearchContext);
 
@@ -11,10 +18,14 @@ export default function DataList({ folderIdKey }) {
     return (
       <div className={styles.container}>
         {LinkSDataArr?.map((data) => {
-          const { folderId, linksdata } = data;
+          const {
+            folderId,
+            linksdata,
+          }: { folderId: number; linksdata: LinksDateProps } = data;
+          console.log(typeof folderId);
 
           if (!folderId) {
-            return linksdata.map((item) => {
+            return linksdata.map((item: FolderLinks) => {
               const { url, title, description } = item;
               if (
                 url?.includes(inputValue) ||

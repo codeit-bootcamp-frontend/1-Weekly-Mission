@@ -34,6 +34,8 @@ export default function Modal({
   const onClickKaKao = () => {
     shareKaKao({ url: shareLink, ...KAKAO_SHARE_DATA });
   };
+  const onClickFaceBook = () =>
+    window.open(`http://www.facebook.com/sharer.php?u=${shareLink}`);
 
   const [copyToClipboard, copyResult] = useCopyClipBoard();
 
@@ -73,7 +75,9 @@ export default function Modal({
             <div onClick={onClickKaKao}>
               <Image src={kakaochat} alt="kakao" width={40} height={50} />
             </div>
-            <Image src={facebook} alt="kakao" width={40} height={50} />
+            <div onClick={onClickFaceBook}>
+              <Image src={facebook} alt="kakao" width={40} height={50} />
+            </div>
             <div onClick={onClickLinkCopy}>
               <Image src={link} alt="kakao" width={40} height={50} />
             </div>

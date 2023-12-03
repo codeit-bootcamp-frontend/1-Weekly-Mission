@@ -31,13 +31,13 @@ export const mapLinksData = async (arr) => {
     copy?.map(async (obj) => {
       const { folderId } = obj;
       obj.folderId = obj.folderId === 0 ? "" : obj.folderId;
-      const result = await fetchFolderLinks({
+      const jsonData = await fetchFolderLinks({
         userId: USER_ID,
         folderId: folderId,
       });
-      const [_, array] = result;
 
-      obj["linksdata"] = array;
+      const result = jsonData?.data;
+      obj["linksdata"] = result;
       return obj;
     })
   );

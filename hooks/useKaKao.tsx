@@ -1,3 +1,10 @@
+type ShareKaKaoProps = {
+  url: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+};
+
 export default function useKaKao() {
   const jsKey = "e90c940cb2e88d388b74702a56c46c05";
   if (window.Kakao) {
@@ -6,8 +13,12 @@ export default function useKaKao() {
       kakao.init(jsKey);
     }
 
-    //
-    const shareKaKao = ({ url, title, description, imageUrl }) => {
+    const shareKaKao = ({
+      url,
+      title,
+      description,
+      imageUrl,
+    }: ShareKaKaoProps) => {
       kakao.Share.sendDefault({
         objectType: "feed",
         content: {

@@ -37,7 +37,6 @@ export default function LoginInput() {
     }
   }, [value]);
 
-  console.log(isValid);
   return (
     <div className={styles.container}>
       <Input
