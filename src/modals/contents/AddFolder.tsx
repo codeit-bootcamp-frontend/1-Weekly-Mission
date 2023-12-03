@@ -1,4 +1,4 @@
-import ModalTextInput from "../../components/TextInputs/ModalTextInput";
+import ModalTextInput from "../../components/Inputs/ModalTextInput";
 import BlueGradationBtn from "../../components/Buttons/BlueGradationBtn";
 import { TitleText, Content } from "../ModalCommonStyles";
 import ModalContainer from "../ModalContainer";

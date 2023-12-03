@@ -1,5 +1,5 @@
 import TagBtnContainer from "./Buttons/TagBtn/TagBtnContainer";
-import { SearchLinkInput } from "./TextInputs/SearchLinkInput/searchLinkInput";
+import { SearchLinkInput } from "./Inputs/SearchLinkInput/searchLinkInput";
 import CardContainer from "./CardContainer/CardContainer";
 import { useState, useEffect } from "react";
 import requestData from "../services/api";
