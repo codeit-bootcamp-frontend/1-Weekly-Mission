@@ -19,7 +19,7 @@ interface Props {
 function Share({ folderName, folderId, userId }: Props) {
   const { Kakao } = window;
 
-  const realUrl = `https://linkbrary-geon.netlify.app/shared?user=${userId}&folder=${folderId}`;
+  const realUrl = `https://linkbrary-gw-lim.vercel.app/shared?user=${userId}&folder=${folderId}`;
 
   const shareToKakao = () => {
     Kakao.Share.sendDefault({
