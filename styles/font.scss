@@ -1,0 +1,34 @@
+// $PretendardRegularFontSrc: "assets/fonts/Pretendard-Regular.woff";
+// $PretendardMediumFontSrc: "assets/fonts/Pretendard-Medium.woff";
+
+// @font-face {
+//   font-family: "Pretendard-Regular";
+//   font-weight: 400;
+//   src: url(#{$PretendardRegularFontSrc}) format("woff");
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "Pretendard-Medium";
+//   font-weight: 500;
+//   src: url(#{$PretendardMediumFontSrc}) format("woff");
+//   font-display: swap;
+// }
+
+// body {
+//   font-family: "Actor-Regular", BlinkMacSystemFont, "Segoe UI", "Roboto",
+//     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+//     sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+* {
+  font-family: Pretendard;
+}
+
+html {
+  font-size: 62.5%;
+}
