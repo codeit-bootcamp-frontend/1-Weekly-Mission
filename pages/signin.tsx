@@ -1,7 +1,7 @@
 import SignHeader from "@/src/components/Sign/SignHeader";
 import SocialSign from "@/src/components/Sign/SocialSign";
 import style from "@/pages/sign.module.css";
-import { showEmailError, showPwdError } from "@/src/util/handleSignError";
+import { checkEmailError, checkPwdError } from "@/src/util/handleSignError";
 import { FormEvent, useRef, useState } from "react";
 import { postSignIn } from "@/src/api/postSignIn";
 import Image from "next/image";
@@ -41,13 +41,13 @@ function SignInPage() {
   };
 
   const handleEmailError = () => {
-    const errorMessage = showEmailError(emailInput.current);
+    const errorMessage = checkEmailError(emailInput.current);
     setEmailErrorMessage(errorMessage);
     return !Boolean(errorMessage);
   };
 
   const handlePwdError = () => {
-    const errorMessage = showPwdError(pwdInput.current);
+    const errorMessage = checkPwdError(pwdInput.current);
     setPwdErrorMessage(errorMessage);
     return !Boolean(errorMessage);
   };

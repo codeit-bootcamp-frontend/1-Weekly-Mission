@@ -1,7 +1,7 @@
 import SignHeader from "@/src/components/Sign/SignHeader";
 import SocialSign from "@/src/components/Sign/SocialSign";
 import style from "@/pages/sign.module.css";
-import { showEmailError, showPwdError } from "@/src/util/handleSignError";
+import { checkEmailError, checkPwdError } from "@/src/util/handleSignError";
 import { FormEvent, useRef, useState } from "react";
 import { postSignUp } from "@/src/api/postSignUp";
 import Image from "next/image";
@@ -45,7 +45,7 @@ function SignUpPage() {
 
   const handleEmailError = async () => {
     let isValid = false;
-    const errorMessage = showEmailError(emailInput.current);
+    const errorMessage = checkEmailError(emailInput.current);
     setEmailErrorMessage(errorMessage);
     if (!errorMessage) {
       //이메일이 빈값이 아니고 올바른 형태일 때 중복체크, 그 전에는 하지 않음
@@ -60,7 +60,7 @@ function SignUpPage() {
 
   const handlePwdError = () => {
     handlePwdCheckError();
-    const errorMessage = showPwdError(pwdInput.current);
+    const errorMessage = checkPwdError(pwdInput.current);
     setPwdErrorMessage(errorMessage);
     return !Boolean(errorMessage);
   };
