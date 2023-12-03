@@ -5,6 +5,7 @@ import { Card } from '@/sharing/ui-card';
 import { CardContent } from '@/sharing/ui-card-content';
 import { CardImage } from '@/sharing/ui-card-image';
 import { Popover } from '@/sharing/ui-popover';
+import Link from 'next/link';
 
 const cx = classNames.bind(styles);
 
@@ -60,7 +61,7 @@ export const EditableCard = ({
   };
 
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer">
+    <Link href={url} target="_blank" rel="noopener noreferrer">
       <Card onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
         <CardImage imageSource={imageSource} alt={alt} isZoomedIn={isHovered} />
         <CardContent
@@ -87,6 +88,6 @@ export const EditableCard = ({
           </ul>
         </Popover>
       </Card>
-    </a>
+    </Link>
   );
 };
