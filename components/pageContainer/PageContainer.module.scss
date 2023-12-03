@@ -1,6 +1,11 @@
 @import "@/styles/mixin.scss";
 
 .page__container {
-  position: relative;
-  z-index: 0;
+  &.fixed {
+    padding-top: 9.4rem;
+
+    @include mobile {
+      padding-top: 6.3rem;
+    }
+  }
 }

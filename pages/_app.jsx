@@ -5,10 +5,7 @@ import "@/styles/global.scss";
 
 import { UserProfileContextProvider } from "@/contexts/UserProfileContext.js";
 
-import PageContainer from "@/components/pageContainer/PageContainer";
-import ContentContainer from "@/components/contentContainer/ContentContainer";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import Layout from "@/components/layout/Layout";
 import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
@@ -18,13 +15,9 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <UserProfileContextProvider>
-        <PageContainer>
-          <Header />
-          <ContentContainer>
-            <Component {...pageProps} />
-          </ContentContainer>
-          <Footer />
-        </PageContainer>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </UserProfileContextProvider>
     </>
   );
