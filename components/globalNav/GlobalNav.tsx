@@ -15,14 +15,14 @@ const GlobalNav = () => {
           <S.LogoImage />
         </Link>
         {data ? (
-          <Link href="/folder">
+          <Link href="/folder/all">
             <S.UserInfo>
               <S.ProfileImg src={profileImageSource} />
               <S.UserEmail>{email}</S.UserEmail>
             </S.UserInfo>
           </Link>
         ) : (
-          <Link href="/folder">
+          <Link href="/folder/all">
             <S.LoginButton>로그인</S.LoginButton>
           </Link>
         )}
