@@ -1,0 +1,5 @@
+.category {
+  display: flex;
+  justify-content: center;
+  padding: 0 3.2rem;
+}

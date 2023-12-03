@@ -1,0 +1,9 @@
+.buttonContainer {
+  display: flex;
+  gap: 1.2rem;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

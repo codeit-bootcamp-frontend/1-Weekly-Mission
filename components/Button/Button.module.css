@@ -1,0 +1,20 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5.4rem;
+  background-image: linear-gradient(135deg, var(--primary) 0%, #6ae3fe 100%);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f5f5f5;
+  cursor: pointer;
+  border-radius: 0.8rem;
+}
+
+.large {
+  width: 35rem;
+}
+
+.small {
+  width: 20rem;
+}

@@ -1,0 +1,18 @@
+.deleteFolderModal {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  gap: 2.4rem;
+  flex-direction: column;
+}
+
+.folderName {
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  color: var(--linkbrary-gray-60, #9fa6b2);
+  text-align: center;
+}
