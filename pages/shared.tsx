@@ -1,6 +1,7 @@
 import * as S from '@/styles/Shared.styled';
 import NavBar from '@/components/NavBar';
 import SearchBar from '@/components/SearchBar';
+import Footer from '@/components/Footer';
 
 
 export default function Shared() {
@@ -21,6 +22,7 @@ export default function Shared() {
           <SearchBar />
         </S.CardSectionContainer>
       </S.CardSection>
+      <Footer/>
     </>
   );
 }

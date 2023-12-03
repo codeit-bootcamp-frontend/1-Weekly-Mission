@@ -1,9 +1,9 @@
 import * as S from "./NavBar.styled";
 import Link from "next/link";
 import Image from "next/image";
-import logoImg from "@/src/assets/images/logo.svg";
+import logoImg from "@/public/images/logo.svg";
 import Button from "../Button";
-import accoutImage from '@/src/assets/images/accountImage.svg'
+import accoutImage from '@/public/images/accountImage.svg'
 
 export default function NavBar() {
   return (

@@ -8,6 +8,7 @@ import axiosInstance from '@/lib/axios';
 import { useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import { LinkDataType, getLinks } from './api/links.api';
+import Footer from '@/components/Footer';
 
 interface LinksDataProps {
   links: LinkDataType[];
@@ -38,7 +39,7 @@ export default function FolderPage({ links }: LinksDataProps) {
           <CardList links={links} />
         </S.Container>
       </S.Main>
-      <footer></footer>
+      <Footer/>
     </>
   );
 }
