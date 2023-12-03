@@ -1,5 +1,4 @@
 import Image from "next/image";
-import linkImg from "@/public/link.svg";
 import * as Styled from "./StyledAddBar";
 
 interface Props {
@@ -11,7 +10,12 @@ const AddBar = ({ isFixed }: Props) => {
     <Styled.BackGround $isFixed={isFixed}>
       <Styled.Form>
         <label htmlFor="add">
-          <Image src={linkImg} alt="링크 추가 이미지" width={20} height={20} />
+          <Image
+            src={"/link.svg"}
+            alt="링크 추가 이미지"
+            width={20}
+            height={20}
+          />
         </label>
         <Styled.Input
           id="add"
