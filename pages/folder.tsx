@@ -26,10 +26,10 @@ function Folder() {
   const [modalSubTitle, setModalSubTitle] = useState("");
   const [modalButtonContent, setModalButtonContent] = useState("");
   const [searchResult, setSearchResult] = useState("");
+  const { asPath } = useRouter();
 
   const folderParams = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
   const initFolderId: string | null = folderParams.get("folderId");
-  const { asPath } = useRouter();
 
   const folderInfo = async (folderId: string) => {
     const introResult = await getUserFolder();
@@ -105,14 +105,14 @@ function Folder() {
     setModalIsOpen(!isModalOpen);
   };
 
-  const showShareKakao = () => shareKakaoLink(asPath, folderName);
+  const showShareKakao = () => shareKakaoLink(window.location.href, asPath);
 
   const showShareFacebook = () => {
-    window.open(`http://www.facebook.com/sharer.php?u=${asPath}`);
+    window.open(`http://www.facebook.com/sharer.php?u=${window.location.href}`);
   };
 
   const showShareLinkCopy = async () => {
-    await navigator.clipboard.writeText(asPath);
+    await navigator.clipboard.writeText(window.location.href);
     alert("주소가 복사 되었습니다!");
   };
 
