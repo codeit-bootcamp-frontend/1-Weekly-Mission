@@ -1,8 +1,4 @@
-// import Card from './Card';
 import * as S from "./CardList.styled";
-import Image from "next/image";
-import cardImg from "@/src/assets/images/cardImg.png";
-import noImg from "@/src/assets/images/noImg.svg";
 import { LinkDataType } from '@/pages/api/links.api';
 
 interface LinksDataProps {

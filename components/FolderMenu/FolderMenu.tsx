@@ -1,9 +1,9 @@
 import * as S from "./FolderMenu.styled";
 import Image from "next/image";
-import addIcon from "@/src/assets/images/addIcon.svg";
-import shareIcon from "@/src/assets/images/shareIcon.svg";
-import penIcon from "@/src/assets/images/penIcon.svg";
-import deleteIcon from "@/src/assets/images/deleteIcon.svg";
+import addIcon from "@/public/images/addIcon.svg";
+import shareIcon from "@/public/images/shareIcon.svg";
+import penIcon from "@/public/images/penIcon.svg";
+import deleteIcon from "@/public/images/deleteIcon.svg";
 import { useEffect, useState } from 'react';
 import axiosInstance from '@/lib/axios';
 

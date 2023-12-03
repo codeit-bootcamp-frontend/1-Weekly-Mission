@@ -1,7 +1,7 @@
 import * as S from './AddLinkBar.styled';
 import Button from '../Button';
 import Image from 'next/image';
-import linkIcon from '@/src/assets/images/link-Img.png';
+import linkIcon from '@/public/images/link-Img.png';
 
 export default function AddLinkBar() {
   return (

@@ -1,6 +1,6 @@
 import * as S from "./SearchBar.styled";
 import Image from "next/image";
-import searchIcon from "@/src/assets/images/searchIcon.svg";
+import searchIcon from "@/public/images/searchIcon.svg";
 
 export default function SearchBar() {
   return (
