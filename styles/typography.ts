@@ -39,7 +39,7 @@ const BodyRegular3 = `
   font-weight: 600;
   line-height: normal;`;
 
-const Caption = `
+const Caption1 = `
   ${common}
   font-family: Pretendard;
   font-size: 1.3rem;
@@ -47,4 +47,12 @@ const Caption = `
   font-weight: 400;
   line-height: normal;`;
 
-export { H1, BodyRegular1, BodyRegular2, BodyRegular3, Caption };
+const Caption2 = `
+  ${common}
+  font-family: Arial;
+  font-size: 1.6rem;
+  font-style:normal;
+  font-weight: 400;
+  line-height: normal;`;
+
+export { H1, BodyRegular1, BodyRegular2, BodyRegular3, Caption1, Caption2 };
