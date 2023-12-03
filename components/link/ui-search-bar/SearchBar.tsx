@@ -2,7 +2,8 @@ import styles from "./SearchBar.module.scss";
 import classNames from "classnames/bind";
 import { SEARCH_IMAGE } from "./constant";
 import { ChangeEventHandler, MouseEventHandler } from "react";
-import { ReactComponent as CloseIcon } from "./close.svg";
+import CloseIcon from "./close.svg";
+import { IconSearch } from "../../../public/images";
 
 const cx = classNames.bind(styles);
 
@@ -26,8 +27,7 @@ export const SearchBar = ({
         value={value}
         onChange={onChange}
       />
-      <img
-        src={SEARCH_IMAGE}
+      <IconSearch
         alt="검색창인 것을 알려주는 돋보기 아이콘"
         className={cx("search-icon")}
       />

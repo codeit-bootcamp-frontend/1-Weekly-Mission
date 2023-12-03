@@ -12,6 +12,7 @@ import { Card } from "sharing/ui-card";
 import { CardContent } from "sharing/ui-card-content";
 import { CardImage } from "sharing/ui-card-image";
 import { Popover } from "sharing/ui-popover";
+import { IconKebab } from "../../../public/images";
 
 const cx = classNames.bind(styles);
 
@@ -50,7 +51,7 @@ export const EditableCard = ({
   const handleMouseLeave = () => setIsHovered(false);
   const handleKebabClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
-    setIsPopoverOpen(true);
+    setIsPopoverOpen(() => (isPopoverOpen ? false : true));
   };
   const handleBackgroundClick = useCallback(() => {
     setIsPopoverOpen(false);
@@ -87,7 +88,7 @@ export const EditableCard = ({
           className={cx("kebab")}
           onClick={handleKebabClick}
         >
-          <img src="images/kebab.svg" alt="더보기를 나타내는 점 3개" />
+          <IconKebab alt="더보기를 나타내는 점 3개" />
         </button>
         <Popover
           isOpen={isPopoverOpen}
