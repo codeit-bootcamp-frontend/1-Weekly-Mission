@@ -1,6 +1,13 @@
+import { Folder } from "@/api/folder";
 import { createContext } from "react";
 
-const LocaleContext = createContext({
+type LocaleContextProps = {
+  ObjectValue: { [key: string]: string };
+  LinkSDataArr: Folder[];
+  folderIdKey: string;
+};
+
+const LocaleContext = createContext<LocaleContextProps>({
   ObjectValue: {},
   LinkSDataArr: [],
   folderIdKey: "",

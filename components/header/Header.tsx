@@ -4,7 +4,7 @@ import HeaderButton from "../button/HeaderButton";
 import { FolderContents } from "@/api/share";
 import Folder from "../folder/Folder";
 type HeaderProps = {
-  data: { folder: FolderContents };
+  data?: { folder: FolderContents };
   isLoading?: boolean;
 };
 

@@ -4,8 +4,15 @@ import LocaleContext from "../../contexts/LocaleContext";
 import Modal from "@/components/modal/Modal";
 import Image from "next/image";
 
+// type FolderMemuProps = {
+//   folderIdKey: string | undefined;
+// };
 type FolderMemuProps = {
   folderIdKey: string | undefined;
+};
+type FolderTypeProps = {
+  folderId: number | undefined;
+  folderName: string;
 };
 
 export default function FolderMenu({ folderIdKey }: FolderMemuProps) {
@@ -13,11 +20,13 @@ export default function FolderMenu({ folderIdKey }: FolderMemuProps) {
   const [tabName, setTabName] = useState("");
   const { ObjectValue } = useContext(LocaleContext);
 
-  const folder = folderIdKey ? ObjectValue[folderIdKey] : undefined;
+  // const folder:FolderTypePros = folderIdKey ? ObjectValue[folderIdKey] : undefined;
 
-  // const folder = ObjectValue[folderIdKey];
+  const folder: FolderTypeProps | undefined = folderIdKey
+    ? ObjectValue[folderIdKey]
+    : undefined;
+
   const folderName = folder?.folderName || "전체";
-
   const isSelected = typeof folder !== "undefined";
 
   const handleModal = () => {
@@ -25,7 +34,9 @@ export default function FolderMenu({ folderIdKey }: FolderMemuProps) {
   };
 
   const handleTab = (e: React.MouseEvent<HTMLDivElement>) => {
-    setTabName(e.target.alt);
+    const altAttribute = (e.target as HTMLImageElement).alt;
+    setTabName(altAttribute);
+    // setTabName(e.target.alt);
   };
 
   return (
