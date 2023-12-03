@@ -1,7 +1,6 @@
-import React from "react";
 import * as S from "@/components/featureItem/FeatureArticle.style";
-import Image from "next/image";
 import { FeatureArticleProps } from "@/types/type";
+import Image from "next/image";
 
 const FeatureArticle = ({ title, description, imageSrc, alt, idx }: FeatureArticleProps) => {
   return (

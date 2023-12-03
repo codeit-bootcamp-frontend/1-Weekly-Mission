@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
 import * as S from "@/components/globalNav/GlobalNav.style";
-import Link from "next/link";
 import { useGetUser } from "@/hooks/useGetUser";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const GlobalNav = () => {
   const { data } = useGetUser();

@@ -1,7 +1,7 @@
-import { ChangeEvent, FormEvent } from "react";
 import * as S from "@/components/folderSearchBar/FolderSearchBar.style";
 import searchIcon from "@/images/Search.png";
 import { FolderSearchBarProps } from "@/types/type";
+import { ChangeEvent, FormEvent } from "react";
 
 const FolderSearchBar = ({ searchQuery, setSearchQuery }: FolderSearchBarProps) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value);

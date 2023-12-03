@@ -1,11 +1,11 @@
-import React, { MouseEvent, useState } from "react";
-import * as S from "./FolderToolBar.style";
-import { FOLDER_MANAGE_MENUS, MODALS_ID } from "@/constants/constants";
+import * as S from "@/components/folderToolBar/FolderToolBar.style";
+import InputField from "@/components/inputField/InputField";
 import Modal from "@/components/modal/Modal";
+import ShareButtons from "@/components/shareButtons/ShareButtons";
+import { FOLDER_MANAGE_MENUS, MODALS_ID } from "@/constants/constants";
 import { FolderManageMenusProps, FolderToolbarProps } from "@/types/type";
 import Image from "next/image";
-import InputField from "../inputField/InputField";
-import ShareButtons from "../shareButtons/ShareButtons";
+import { MouseEvent, useState } from "react";
 
 const FolderToolbar = ({ folderName }: FolderToolbarProps) => {
   const [modalComponent, setModalComponent] = useState("");

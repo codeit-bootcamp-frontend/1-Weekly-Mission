@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import CardList from "@/components/cardList/CardList";
 import FolderSearchBar from "@/components/folderSearchBar/FolderSearchBar";
 import SharedFolderInfo from "@/components/folderUserInfo/SharedFolderInfo";
-import * as S from "@/layouts/shared/Shared.style";
-import CardList from "@/components/cardList/CardList";
 import useGetSampleFolder from "@/hooks/useGetSampleFolder";
+import * as S from "@/layouts/shared/Shared.style";
 import { MappedLink } from "@/types/type";
 import Head from "next/head";
+import { useState } from "react";
 
 const SharedPage = () => {
   const { data } = useGetSampleFolder();

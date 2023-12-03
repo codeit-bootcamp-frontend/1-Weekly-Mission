@@ -1,11 +1,10 @@
-import React, { useEffect, useRef } from "react";
 import * as S from "@/components/card/Card.style";
-import { useState } from "react";
-import kebabImageSrc from "@/images/kebab.png";
 import KebabMenu from "@/components/kebabMenu/KebabMenu";
+import kebabImageSrc from "@/images/kebab.png";
 import { CardProps } from "@/types/type";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const Card = ({ link, folders, isShared }: CardProps) => {
   const { elapsedTime, createdAt, url, title, imageSource } = link;

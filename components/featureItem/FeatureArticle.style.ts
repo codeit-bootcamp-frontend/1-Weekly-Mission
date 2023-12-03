@@ -2,17 +2,6 @@ import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
 import { ArticleProps, ArticleTitleProps } from "@/types/type";
 import styled from "styled-components";
 
-// export const ArticleEven = styled(Article)`
-//   grid-template-columns: 55rem 29.1rem;
-
-//   ${RESPONSIBLE_MEDIA_QUERIES.tablet} {
-//     grid-template-columns: 38.5rem 26.2rem;
-//   }
-//   ${RESPONSIBLE_MEDIA_QUERIES.mobile} {
-//     grid-template-columns: none;
-//   }
-// `;
-
 export const Article = styled.article<ArticleProps>`
   display: grid;
   margin: 0 auto;

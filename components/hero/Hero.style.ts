@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
+import styled from "styled-components";
 
 export const HeroWrap = styled.section`
   background-color: var(--linkbrary-zircon);

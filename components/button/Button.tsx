@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
 import * as S from "@/components/button/Button.style";
+import { ReactNode } from "react";
 const Button = ({ children }: { children: ReactNode }) => {
   return <S.Button>{children}</S.Button>;
 };
