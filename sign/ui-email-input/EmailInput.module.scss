@@ -1,0 +1,53 @@
+@import 'sign/styles/global.scss';
+
+$input-width: 400px;
+
+* {
+  box-sizing: border-box;
+}
+.inputField {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+
+  &:focus {
+    border-color: #ff5b56; /* 포커스 시 빨간색 border 적용 */
+    outline: none; /* 기본 outline 제거 */
+  }
+}
+.input-default {
+  border: 1px solid #ccd5e3;
+  width: $input-width;
+  height: 60px;
+  font-size: 16px;
+  outline: none;
+  border-radius: 8px;
+  padding: 18px 15px;
+  &:focus {
+    border: 1px solid #6d6afe;
+  }
+}
+
+.input-error {
+  border: 1px solid #ff5b56;
+  width: $input-width;
+  height: 60px;
+  font-size: 16px;
+  outline: none;
+  border-radius: 8px;
+  padding: 18px 15px;
+}
+
+@media (min-width: 390px) {
+  .input-default,
+  .input-error {
+    width: 325px;
+
+    &:focus {
+      width: 325px;
+    }
+  }
+}
