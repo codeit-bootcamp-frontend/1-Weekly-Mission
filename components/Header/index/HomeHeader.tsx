@@ -1,6 +1,15 @@
-import { CutLine, StyledHeader, StyledImage, StyledLink, Title, WrapperLink } from "@/components/Header/index/HomeHeader.styled";
+import { CutLine, StyledHeader, StyledImage, Title, WrapperLink } from "@/components/Header/index/HomeHeader.styled";
+import Link from "next/link";
+import { useEffect } from "react";
+
+let locate = "/folder";
 
 export default function HomeHeader() {
+  const accessToken = typeof window !== "undefined" ? sessionStorage.getItem("accessToken") : null;
+  if (accessToken) {
+    locate = `/folder?a=${accessToken}`;
+  }
+
   return (
     <>
       <StyledHeader>
@@ -11,9 +20,11 @@ export default function HomeHeader() {
         </Title>
         <WrapperLink>
           <p>구경 해보기</p>
-          <StyledLink href="/shared">폴더 공유하기</StyledLink>
+          <Link href="/shared">폴더 공유하기</Link>
           <CutLine />
-          <StyledLink href="/folder">링크 추가하기</StyledLink>
+          <Link href={locate} as="/folder">
+            링크 추가하기
+          </Link>
         </WrapperLink>
         <StyledImage priority width={1} height={1} src="index/_img.svg" alt="링크검색기능 예시이미지" />
       </StyledHeader>

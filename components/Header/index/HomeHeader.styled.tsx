@@ -39,17 +39,6 @@ export const CutLine = styled.div`
   border: 0.1rem solid var(--White);
 `;
 
-export const StyledLink = styled(Link)`
-  border-radius: 0.8rem;
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--White);
-
-  @media screen and (min-width: 768px) {
-    font-size: 2.4rem;
-  }
-`;
-
 const fadein = keyframes`
   0% {
     opacity: 0;
@@ -78,7 +67,19 @@ export const WrapperLink = styled.button`
 
   transition: 0.5s;
 
-  ${StyledLink}, ${CutLine} {
+  a {
+    border-radius: 0.8rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--White);
+
+    @media screen and (min-width: 768px) {
+      font-size: 2.4rem;
+    }
+  }
+
+  a,
+  ${CutLine} {
     display: none;
   }
 
@@ -91,7 +92,8 @@ export const WrapperLink = styled.button`
     p {
       display: none;
     }
-    ${StyledLink}, ${CutLine} {
+    a,
+    ${CutLine} {
       display: block;
       animation: ${fadein} 1s;
     }

@@ -39,7 +39,7 @@ export default function SignForm({ signin }: Signin) {
         const res = await axios.post(url, postData);
         const token = res.data.data.accessToken;
         sessionStorage.setItem("accessToken", token);
-        router.push("/folder");
+        router.push(`/folder?a=${token}`, "/folder");
       } catch {
         ps.forEach((p) => (p.textContent = "계정 정보를 확인해주세요."));
       }

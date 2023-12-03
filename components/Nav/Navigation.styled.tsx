@@ -1,3 +1,4 @@
+import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -34,24 +35,24 @@ export const Nav = styled.nav<Inav>`
     grid-template-columns: calc(50vw - 96rem) 1fr 1fr calc(50vw - 96rem);
     grid-template-areas: ". logo sign .";
   }
-`;
 
-export const StyledLink = styled(Link)`
-  width: 8.5rem;
-  grid-area: sign;
-  justify-self: end;
-  padding: 1rem 2rem;
-  border-radius: 0.8rem;
-  background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
-  color: var(--White);
-  text-decoration: none;
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 600;
+  a:nth-child(2) {
+    width: 8.5rem;
+    grid-area: sign;
+    justify-self: end;
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
+    color: var(--White);
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
 
-  @media screen and (min-width: 768px) {
-    padding: 1.2rem 1.6rem;
-    font-size: 1.8rem;
-    width: 11rem;
+    @media screen and (min-width: 768px) {
+      padding: 1.2rem 1.6rem;
+      font-size: 1.8rem;
+      width: 11rem;
+    }
   }
 `;
