@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
 import AddFolderIcon from "@/images/add.svg";
 import Link from "next/link";
+import styled from "styled-components";
 
 export const TabBarWrap = styled.div`
   display: grid;

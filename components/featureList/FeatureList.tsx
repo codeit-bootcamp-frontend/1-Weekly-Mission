@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "@/components/featureList/FeatureList.style";
 import feature1Img from "@/images/Intro/feature1.png";
 import feature2Img from "@/images/Intro/feature2.png";

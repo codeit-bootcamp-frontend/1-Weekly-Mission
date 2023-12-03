@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
+import styled from "styled-components";
 
 export const FolderInfoWrap = styled.div`
   background-color: var(--linkbrary-zircon);

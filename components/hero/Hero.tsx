@@ -1,9 +1,8 @@
-import React from "react";
+import Button from "@/components/button/Button";
 import * as S from "@/components/hero/Hero.style";
-import Link from "next/link";
 import heroImage from "@/images/intro/hero.png";
-import Button from "../button/Button";
 import Image from "next/image";
+import Link from "next/link";
 const Hero = () => {
   return (
     <S.HeroWrap>

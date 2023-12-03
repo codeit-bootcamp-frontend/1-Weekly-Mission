@@ -1,16 +1,16 @@
+import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
+import CardList from "@/components/cardList/CardList";
 import FolderAddBar from "@/components/folderAddBar/FolderAddBar";
 import FolderSearchBar from "@/components/folderSearchBar/FolderSearchBar";
 import FolderTabBar from "@/components/folderTabBar/FolderTabBar";
 import FolderToolbar from "@/components/folderToolBar/FolderToolBar";
-import { useGetLinks } from "@/hooks/useGetLinks";
-import { useGetFolders } from "@/hooks/useGetFolders";
-import * as S from "@/layouts/folder/Folder.style";
-import React, { useEffect, useRef, useState } from "react";
-import CardList from "@/components/cardList/CardList";
-import { useRouter } from "next/router";
 import { ALL_LINKS_ID } from "@/constants/constants";
+import { useGetFolders } from "@/hooks/useGetFolders";
+import { useGetLinks } from "@/hooks/useGetLinks";
+import * as S from "@/layouts/folder/Folder.style";
 import Head from "next/head";
-import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 
 const FolderLayout = () => {
   const { data: folders } = useGetFolders();

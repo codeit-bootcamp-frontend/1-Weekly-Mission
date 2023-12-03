@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import eyeOff from "@/images/auth/eye-off.svg";
 import eyeOn from "@/images/auth/eye-on.svg";
 import { AuthInputStyle } from "@/types/type";
+import styled from "styled-components";
 
 export const InputWrap = styled.div`
   display: flex;

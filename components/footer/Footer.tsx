@@ -1,8 +1,8 @@
-import * as S from "./Footer.style";
+import * as S from "@/components/footer/Footer.style";
 import FacebookLogo from "@/images/footer/facebook.svg";
+import InstagramLogo from "@/images/footer/instagram.svg";
 import TwitterLogo from "@/images/footer/twitter.svg";
 import YoutubeLogo from "@/images/footer/youtube.svg";
-import InstagramLogo from "@/images/footer/instagram.svg";
 import Link from "next/link";
 const Footer = () => {
   return (

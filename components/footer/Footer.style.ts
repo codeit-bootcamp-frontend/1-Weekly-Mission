@@ -1,5 +1,5 @@
+import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
 import styled from "styled-components";
-import { RESPONSIBLE_MEDIA_QUERIES } from "../../constants/mediaQueries";
 
 export const Footer = styled.footer`
   display: flex;

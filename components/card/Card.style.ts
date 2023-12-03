@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
 import starImage from "@/images/star.svg";
 import Link from "next/link";
+import styled from "styled-components";
 
 export const CardWrap = styled.div`
   max-width: 34rem;

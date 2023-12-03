@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
 import CloseSvg from "@/images/close.svg";
 import { CloseIconProps } from "@/types/type";
+import styled from "styled-components";
 
 export const SearchBar = styled.div`
   display: flex;

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import * as S from "@/components/folderTabBar/FolderTabBar.style";
-import { FolderTabBarProps } from "@/types/type";
+import InputField from "@/components/inputField/InputField";
+import Modal from "@/components/modal/Modal";
 import { ALL_LINKS_ID, MODALS_ID } from "@/constants/constants";
-import Modal from "../modal/Modal";
-import InputField from "../inputField/InputField";
+import { FolderTabBarProps } from "@/types/type";
+import { useState } from "react";
 
 const FolderTabBar = ({ folders, selectedFolderId }: FolderTabBarProps) => {
   const [modalComponent, setModalComponent] = useState("");

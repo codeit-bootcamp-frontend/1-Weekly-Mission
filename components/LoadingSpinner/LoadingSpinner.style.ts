@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
 import spinnerImg from "@/images/spinner.png";
+import styled, { keyframes } from "styled-components";
 export const SpinnerWrap = styled.div`
   display: grid;
   justify-content: center;

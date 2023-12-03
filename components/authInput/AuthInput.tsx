@@ -1,6 +1,6 @@
-import React, { MouseEvent, useState } from "react";
 import * as S from "@/components/authInput/AuthInput.style";
 import { AuthInputProps } from "@/types/type";
+import { MouseEvent, useState } from "react";
 
 const AuthInput = ({
   label,
@@ -24,6 +24,7 @@ const AuthInput = ({
           onChange={setInputValue}
           onBlur={validateInput}
           autoComplete={autoComplete}
+          placeholder={label}
         />
       </S.InputInner>
       {errorMsg && <S.Warning>{errorMsg}</S.Warning>}
@@ -62,6 +63,7 @@ const PasswordInput = ({
           onChange={setInputValue}
           onBlur={validateInput}
           autoComplete={autoComplete}
+          placeholder={label}
         />
         <S.EyeButton type="button" onClick={toggleShowPassword}>
           {showPassword ? <S.EyeOn /> : <S.EyeOff />}

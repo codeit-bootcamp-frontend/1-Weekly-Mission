@@ -1,9 +1,9 @@
-import React, { MouseEvent, useState } from "react";
-import { KEBAB_MENUS, MODALS_ID } from "../../constants/constants";
-import * as S from "./KebabMenu.style";
-import { KebabMenusProps, KebabProps } from "@/types/type";
+import * as S from "@/components/kebabMenu/KebabMenu.style";
 import Modal from "@/components/modal/Modal";
 import ModalSelectButton from "@/components/modalSelectButton/ModalSelectButton";
+import { KEBAB_MENUS, MODALS_ID } from "@/constants/constants";
+import { KebabMenusProps, KebabProps } from "@/types/type";
+import { MouseEvent, useState } from "react";
 const KebabMenu = ({ linkUrl, isKebabOpen, setIsKebabOpen, folderId, folders }: KebabMenusProps) => {
   const [modalComponent, setModalComponent] = useState("");
 

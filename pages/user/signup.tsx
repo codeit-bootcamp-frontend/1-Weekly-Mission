@@ -1,11 +1,10 @@
 import AuthInput from "@/components/authInput/AuthInput";
-import Button from "@/components/button/Button";
 import { VALIDATE } from "@/constants/constants";
 import AuthLayout from "@/layouts/authLayout/AuthLayout";
 import { ErrorMessageType, InputValueType } from "@/types/type";
 import getErrorMessage from "@/utils/getErrorMessage";
 import Head from "next/head";
-import React, { ChangeEvent, FocusEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FocusEvent, FormEvent, useState } from "react";
 
 const SignUp = () => {
   const [inputValue, setInputValue] = useState<InputValueType>({

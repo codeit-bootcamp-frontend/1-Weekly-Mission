@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { RESPONSIBLE_MEDIA_QUERIES } from "../../constants/mediaQueries";
+import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
 import { KebabButtonListProps } from "@/types/type";
+import styled from "styled-components";
 
 export const KebabButtonList = styled.ul<KebabButtonListProps>`
   display: flex;

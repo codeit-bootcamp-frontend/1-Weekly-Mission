@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import * as S from "@/components/modalSelectButton/ModalSelectButton.style";
 import checkIcon from "@/images/check.png";
-import Image from "next/image";
 import { ModalSelectButtonProps } from "@/types/type";
+import Image from "next/image";
+import { useState } from "react";
 
 const ModalSelectButton = ({ folderName, linkCount }: ModalSelectButtonProps) => {
   const [isSelect, setIsSelect] = useState(false);

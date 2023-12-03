@@ -1,11 +1,11 @@
-import { ChangeEvent, FormEvent, useState } from "react";
 import * as S from "@/components/folderAddBar/FolderAddBar.style";
-import linkIcon from "@/images/link.png";
-import ModalSelectButton from "../modalSelectButton/ModalSelectButton";
-import Image from "next/image";
-import { FolderAddBarProps } from "@/types/type";
+import Modal from "@/components/modal/Modal";
+import ModalSelectButton from "@/components/modalSelectButton/ModalSelectButton";
 import { MODALS_ID } from "@/constants/constants";
-import Modal from "../modal/Modal";
+import linkIcon from "@/images/link.png";
+import { FolderAddBarProps } from "@/types/type";
+import Image from "next/image";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 const FolderAddBar = ({ folders, isSticky, isHidden }: FolderAddBarProps) => {
   const [addLinkValue, setAddLinkValue] = useState("");
