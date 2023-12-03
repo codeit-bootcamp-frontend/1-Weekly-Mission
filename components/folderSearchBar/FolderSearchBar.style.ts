@@ -38,6 +38,10 @@ export const SearchInput = styled.input`
   width: 100%;
 `;
 
+export const CloseButton = styled.button`
+  cursor: pointer;
+`;
+
 export const CloseIcon = styled(CloseSvg)<CloseIconProps>`
   position: absolute;
   bottom: 50%;

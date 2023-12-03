@@ -20,7 +20,11 @@ const FolderSearchBar = ({ searchQuery, setSearchQuery }: FolderSearchBarProps) 
           onChange={handleInputChange}
           placeholder="링크를 검색해 보세요."
         />
-        {searchQuery && <S.CloseIcon onClick={() => setSearchQuery("")} />}
+        {searchQuery && (
+          <S.CloseButton type="button">
+            <S.CloseIcon onClick={() => setSearchQuery("")} />
+          </S.CloseButton>
+        )}
       </S.SearchForm>
     </S.SearchBar>
   );
