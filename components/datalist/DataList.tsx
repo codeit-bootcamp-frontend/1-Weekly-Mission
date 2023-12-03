@@ -60,7 +60,6 @@ export default function DataList({
   //   </div>
   // );
 
-  LinkSDataArr.map((item) => console.log(item));
   return (
     <div className={styles.container}>
       {LinkSDataArr?.filter(

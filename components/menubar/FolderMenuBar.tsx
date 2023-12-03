@@ -3,11 +3,19 @@ import styles from "./FolderMenu.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 import Modal from "@/components/modal/Modal";
 import Image from "next/image";
-export default function FolderMenu({ folderIdKey }) {
+
+type FolderMemuProps = {
+  folderIdKey: string | undefined;
+};
+
+export default function FolderMenu({ folderIdKey }: FolderMemuProps) {
   const [openModal, setOpenModal] = useState(false);
   const [tabName, setTabName] = useState("");
   const { ObjectValue } = useContext(LocaleContext);
-  const folder = ObjectValue[folderIdKey];
+
+  const folder = folderIdKey ? ObjectValue[folderIdKey] : undefined;
+
+  // const folder = ObjectValue[folderIdKey];
   const folderName = folder?.folderName || "전체";
 
   const isSelected = typeof folder !== "undefined";
@@ -16,7 +24,7 @@ export default function FolderMenu({ folderIdKey }) {
     setOpenModal(true);
   };
 
-  const handleTab = (e) => {
+  const handleTab = (e: React.MouseEvent<HTMLDivElement>) => {
     setTabName(e.target.alt);
   };
 
