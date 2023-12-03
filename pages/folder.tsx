@@ -1,18 +1,20 @@
-import { useRef, useState } from "react";
 import Footer from "@/components/Footer/Footer";
 import HeaderSearch from "@/components/Header/HeaderInput";
+import LinkSection from "@/components/Main/LinkSection";
 import Main from "@/components/Main/Main";
 import Navigation from "@/components/Nav/Navigation";
+import { useGetUserId } from "@/hooks/useGetUserId";
 import useObserver, { Dom } from "@/hooks/useObserver";
-import { Empty } from "@/pages/folder.styled";
-import LinkSection from "@/components/Main/LinkSection";
+import { useRef } from "react";
 
 const initialRef = { headerForm: null, headerInput: null, floatDiv: null, floatInput: null, footer: null };
 
 export default function FolderPage() {
-  const [id] = useState(Math.ceil(Math.random() * 1));
+  const id = useGetUserId();
   const DOM = useRef<Dom>(initialRef);
   useObserver(DOM.current);
+
+  if (!id) return null;
 
   return (
     <>
