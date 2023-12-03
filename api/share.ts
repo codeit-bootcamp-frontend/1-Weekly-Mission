@@ -21,7 +21,7 @@ export type Link = {
   description: string;
   imageSource: string;
 };
-export type Folder = {
+export type FolderContents = {
   id: number;
   name: string;
   owner: Owner;
@@ -30,7 +30,7 @@ export type Folder = {
 };
 
 export type getUserFolderResponse = {
-  data: Folder;
+  data: FolderContents;
 };
 
 const baseUrl = new URL("https://bootcamp-api.codeit.kr");

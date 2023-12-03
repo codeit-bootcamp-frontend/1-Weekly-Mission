@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "./Folder.module.css";
-export default function Folder({ items }) {
+import { FolderContents } from "@/api/folder";
+type FolderProps = {
+  folder: FolderContents;
+};
+
+export default function Folder({ items }: { items: FolderProps }) {
   const { folder } = items;
   const { name, owner } = folder;
 
