@@ -5,7 +5,17 @@ import LocaleContext from "../../contexts/LocaleContext";
 import SearchContext from "../../contexts/SearchContext";
 import { FolderLinks } from "@/api/folder";
 
-export default function DataList({ folderIdKey }) {
+type DataListProps = {
+  folderIdKey: number | undefined;
+  folderName: string;
+  linksData: FolderLinks[];
+};
+
+export default function DataList({
+  folderIdKey,
+}: {
+  folderIdKey: number | undefined;
+}) {
   const { LinkSDataArr } = useContext(LocaleContext);
   const { inputValue, handleInputFunc } = useContext(SearchContext);
 
@@ -13,10 +23,13 @@ export default function DataList({ folderIdKey }) {
     return (
       <div className={styles.container}>
         {LinkSDataArr?.map((data) => {
-          const { folderId, linksdata } = data;
+          const {
+            folderId,
+            linksdata,
+          }: { folderId: number | undefined; linksdata: FolderLinks[] } = data;
 
           if (!folderId) {
-            return linksdata.map((item: FolderLinks) => {
+            return linksdata.map((item) => {
               const { url, title, description } = item;
               if (
                 url?.includes(inputValue) ||
