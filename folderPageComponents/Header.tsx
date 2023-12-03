@@ -48,7 +48,7 @@ interface TotalData {
 }
 
 const Header = ({ getData }: GetData) => {
-  const [fullList, setFullList] = useState([]);
+  const [fullList, setFullList] = useState<Data>();
   const [totalData, setTotalData] = useState<TotalData>();
   const [isTotalClicked, setIsTotalClicked] = useState(false);
   const [isSingleClicked, setIsSingleClicked] = useState(false);
@@ -224,7 +224,6 @@ const Header = ({ getData }: GetData) => {
         return data;
       }
     });
-    console.log(searchedData);
   } else if (!isTotalClicked && !isSingleClicked) {
     searchedData = [];
   }
