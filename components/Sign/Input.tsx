@@ -1,4 +1,8 @@
-import { SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  validateEmailInput,
+  validatePasswordInput,
+} from "@/lib/utils/checkSign";
 import eyesOffImg from "@/public/eye-off.svg";
 import eyesOnImg from "@/public/eye-on.svg";
 import * as Styled from "./StyledSign";
@@ -7,21 +11,13 @@ interface Props {
   placeholder: string;
   type: string;
   first: boolean;
-  errMsg: string;
   label: string;
-  setValue: (value: SetStateAction<string>) => void;
 }
 
-const Input = ({
-  placeholder,
-  type,
-  first,
-  errMsg,
-  label,
-  setValue,
-}: Props) => {
+const Input = ({ placeholder, type, first, label }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [eyeToggle, setEyeToggle] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
   const HandleEyesClick = () => {
     if (inputRef.current?.getAttribute("type") === "text") {
@@ -30,6 +26,26 @@ const Input = ({
     } else {
       inputRef.current?.setAttribute("type", "text");
       setEyeToggle(!eyeToggle);
+    }
+  };
+
+  const HandleInputFocusOut = () => {
+    const targetValue = inputRef.current?.value ? inputRef.current.value : "";
+
+    if (type === "email") {
+      if (validateEmailInput(targetValue)) {
+        const errorMsg = validateEmailInput(targetValue);
+        setErrMsg(errorMsg);
+      } else {
+        setErrMsg("");
+      }
+    } else if (type === "password") {
+      if (validatePasswordInput(targetValue)) {
+        const errorMsg = validatePasswordInput(targetValue);
+        setErrMsg(errorMsg);
+      } else {
+        setErrMsg("");
+      }
     }
   };
 
@@ -49,7 +65,7 @@ const Input = ({
           type={type}
           ref={inputRef}
           id={type}
-          onBlur={(e) => setValue(e.target.value)}
+          onBlur={HandleInputFocusOut}
           $err={errMsg}
         />
       ) : (
@@ -58,7 +74,7 @@ const Input = ({
           type={type}
           ref={inputRef}
           id={type}
-          onBlur={(e) => setValue(e.target.value)}
+          onBlur={HandleInputFocusOut}
           $err={errMsg}
         />
       )}
