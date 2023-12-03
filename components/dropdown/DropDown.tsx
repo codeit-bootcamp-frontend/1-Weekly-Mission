@@ -3,16 +3,16 @@ import styles from "./DropDown.module.css";
 import HeaderModal from "../modal/HeaderModal";
 import Modal from "../modal/Modal";
 
-export default function DropDown({ linkUrl }) {
+export default function DropDown({ linkUrl }: { linkUrl: string }) {
   const [openAddModal, setOpenModal] = useState(false);
   const [openDeleteModal, setDeleteModal] = useState(false);
 
-  const handleModal = (e) => {
+  const handleModal = (e: React.MouseEvent<HTMLLIElement>) => {
     e.stopPropagation();
     setOpenModal(true);
   };
 
-  const handleDeleteModal = (e) => {
+  const handleDeleteModal = (e: React.MouseEvent<HTMLLIElement>) => {
     e.stopPropagation();
     setDeleteModal(true);
   };

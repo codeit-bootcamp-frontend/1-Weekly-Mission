@@ -13,7 +13,7 @@ type TabName = "share" | "change" | "delete" | "deleteLink";
 type ModalProps = {
   setterFunc: (value: boolean) => void;
   tabName: TabName;
-  folderName: string;
+  folderName?: string;
   linkUrl?: string;
 };
 
