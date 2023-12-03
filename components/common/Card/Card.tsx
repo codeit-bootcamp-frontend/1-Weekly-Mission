@@ -7,6 +7,7 @@ import starIcon from '@/public/assets/images/star.svg';
 import { SampleLinkType } from '@/constants/sampleDataType';
 import { LinkType } from '@/constants/dataType';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {
   link: SampleLinkType | LinkType;
@@ -15,7 +16,7 @@ interface Props {
 function Card({ link }: Props) {
   const { imageSource, image_source, title, description, createdAt, created_at, url } = link;
   return (
-    <Container href={url} target="_blank" rel="noopener noreferrer">
+    <Container href={url} target="_blank">
       <ImgBox>
         <StarIcon src={starIcon} alt="즐겨찾기 아이콘" width={34} height={34} />
         <Img src={imageSource || image_source || defaultImg} alt="카드 이미지" width={700} height={700} priority />
@@ -66,7 +67,7 @@ const TextBox = styled.div`
   border-bottom-left-radius: 15px;
 `;
 
-const Container = styled.a`
+const Container = styled(Link)`
   text-decoration: none;
   color: black;
   display: flex;

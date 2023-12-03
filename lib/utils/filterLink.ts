@@ -1,11 +1,13 @@
-import { LinkType } from 'constants/dataType';
-import { SampleLinkType } from 'constants/sampleDataType';
+import { LinkType } from '@/constants/dataType';
+import { SampleLinkType } from '@/constants/sampleDataType';
 
 export function filterLink(links: LinkType[] | SampleLinkType[], search: boolean, keyword: string): any {
-  //왜 리턴타입이 안되지..
   if (!search) return links;
   if (keyword === '') return [];
-  const data = links.filter((link) => link.title?.includes(keyword) || link.url.includes(keyword) || link.description?.includes(keyword));
+  keyword = keyword.toLowerCase();
+  const data = links.filter(
+    (link) => link.title?.toLowerCase().includes(keyword) || link.url.toLowerCase().includes(keyword) || link.description?.toLowerCase().includes(keyword)
+  );
 
   return data;
 }

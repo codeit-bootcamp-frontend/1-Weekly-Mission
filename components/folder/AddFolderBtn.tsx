@@ -17,7 +17,11 @@ function AddFolderBtn() {
     <>
       <Container $visibleFooter={visibleFooter} onClick={() => handleModalOpen()}>
         <AddFolder>폴더 추가</AddFolder>
-        {innerWidth < 768 ? <Image src={addMobileButton} alt="폴더 추가 버튼" /> : <Image src={addButton} alt="폴더 추가 버튼" />}
+        {innerWidth < 768 ? (
+          <Image src={addMobileButton} alt="폴더 추가 버튼" width={16} height={16} />
+        ) : (
+          <Image src={addButton} alt="폴더 추가 버튼" width={16} height={16} />
+        )}
       </Container>
       {isOpen && <Modal type="input" title="폴더 추가" button="추가하기" onClickClose={() => handleModalClose()} />}
     </>

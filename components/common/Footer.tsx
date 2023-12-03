@@ -66,7 +66,7 @@ const Resources = styled.div`
   }
 `;
 
-const Text = styled.a`
+const Text = styled(Link)`
   text-decoration: none;
   color: var(--grey-10);
   font-family: Arial;

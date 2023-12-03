@@ -2,30 +2,31 @@ import styled from 'styled-components';
 import eyeOffIcon from '@/public/assets/images/eye-off.svg';
 import eyeOnIcon from '@/public/assets/images/eye-on.svg';
 import Image from 'next/image';
-import { useState, MouseEvent } from 'react';
+import { useState } from 'react';
 
 interface Props {
-  visibleMode: boolean;
+  passwordMode: boolean;
   errorMessage: string;
   placeholder: string;
+  focusOutHandler: () => void;
 }
 
-export default function Input({ visibleMode, errorMessage = '', placeholder }: Props) {
+export default function Input({ passwordMode, errorMessage = '', placeholder, focusOutHandler }: Props) {
   const [password, setPassword] = useState(true);
 
-  function isPassword(event: MouseEvent) {
+  function handlePwToggle() {
     setPassword((prev) => !prev);
   }
 
   return (
     <>
       <Container>
-        <InputWrapper placeholder={placeholder} type={password ? 'password' : ''} className={errorMessage ? 'error' : ''} />
-        {visibleMode &&
+        <InputWrapper onBlur={focusOutHandler} placeholder={placeholder} type={password ? 'password' : ''} className={errorMessage ? 'error' : ''} />
+        {passwordMode &&
           (password ? (
-            <EyeIcon alt="비밀번호 보이기 아이콘" src={eyeOffIcon} width={16} height={16} onClick={isPassword} />
+            <EyeIcon alt="비밀번호 보이기 아이콘" src={eyeOffIcon} width={16} height={16} onClick={handlePwToggle} />
           ) : (
-            <EyeIcon alt="비밀번호 가리기 아이콘" src={eyeOnIcon} width={16} height={16} onClick={isPassword} />
+            <EyeIcon alt="비밀번호 가리기 아이콘" src={eyeOnIcon} width={16} height={16} onClick={handlePwToggle} />
           ))}
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </Container>

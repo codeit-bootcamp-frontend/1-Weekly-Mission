@@ -21,13 +21,11 @@ function Button({ type, children }: Props) {
 
 export default Button;
 
-const BlueGrd = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const Default = styled.button`
+  padding: 16px 20px;
+
   border: none;
   border-radius: 8px;
-  background: var(--gra-button);
 
   color: var(--grey-light);
   font-weight: 600;
@@ -37,12 +35,19 @@ const BlueGrd = styled.button`
     cursor: pointer;
   }
 `;
+
+const BlueGrd = styled(Default)`
+  background: var(--gra-button);
+`;
+
 const AddBtn = styled(BlueGrd)`
+  width: 81px;
+  padding: 10px 16px;
+
   position: absolute;
   top: 16px;
   right: 20px;
-  padding: 10px 16px;
-  width: 81px;
+
   font-size: 1.4rem;
 
   @media (max-width: ${DEVICE_SIZE.mobile}) {
@@ -51,7 +56,6 @@ const AddBtn = styled(BlueGrd)`
   }
 `;
 const LoginBtn = styled(BlueGrd)`
-  padding: 16px 20px;
   width: 128px;
   font-size: 1.8rem;
 
@@ -61,41 +65,33 @@ const LoginBtn = styled(BlueGrd)`
   }
 
   @media (max-width: ${DEVICE_SIZE.mobile}) {
+    width: 80px;
     padding: 10px 16px;
     font-size: 1.4rem;
-    width: 80px;
   }
 `;
 const ModalBtn = styled(BlueGrd)`
   width: 280px;
-  padding: 16px 20px;
   margin-top: 15px;
   font-size: 1.6rem;
 `;
-const DeleteBtn = styled.button`
+const DeleteBtn = styled(Default)`
   width: 280px;
-  padding: 16px 20px;
   margin-top: 14px;
+
+  background-color: var(--red);
+
   color: white;
   font-size: 1.6rem;
-  font-weight: 600;
-  background-color: var(--red);
-  border-radius: 8px;
-  border: none;
-  &:hover {
-    cursor: pointer;
-  }
 `;
 const LinkAddBtn = styled(BlueGrd)`
   width: 350px;
-  padding: 16px 20px;
+  font-size: 1.8rem;
 
-  font-size: 18px;
-  color: var(--grey-light);
   @media (max-width: ${DEVICE_SIZE.mobile}) {
     width: 200px;
     padding: 10px 16px;
 
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 `;
