@@ -1,21 +1,34 @@
-import {
-  ErrorText,
-  Input,
-  OnOffButton,
-} from "@/components/Main/sign/SignInput.styled";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import eyeOff from "@/public/index/sign-eye-off.svg";
-import eyeOn from "@/public/index/sign-eye-on.svg";
+import styles from "./SignInput.module.scss";
+import { IconEyeOff } from "@images/index";
+import eyeOff from "@images/eye-off.svg";
+import eyeOn from "@images/eye-on.svg";
+import classNames from "classnames/bind";
 
-interface InputType {
+const cx = classNames.bind(styles);
+
+const obj = {
+  email: {
+    label: "이메일",
+    type: "email",
+  },
+  password: {
+    label: "비밀번호",
+    type: "password",
+  },
+  passwordCheck: {
+    label: "비밀번호 확인",
+    type: "password",
+  },
+};
+
+interface SignInput {
   type: "email" | "password" | "passwordCheck";
-}
-interface ISignInput extends InputType {
   placeholder: string;
 }
 
-export default function SignInput({ type, placeholder }: ISignInput) {
+export default function SignInput({ type, placeholder }: SignInput) {
   const input = useRef<HTMLInputElement>(null);
   const p = useRef<HTMLParagraphElement>(null);
   const [eyeImage, setEyeImage] = useState<string>(eyeOff);
@@ -27,23 +40,24 @@ export default function SignInput({ type, placeholder }: ISignInput) {
     setEyeImage((prev) => (prev === eyeOff ? eyeOn : eyeOff));
   };
   return (
-    <>
-      <Input
+    <div className={cx("input-container")}>
+      <input
+        className={cx("input")}
         type={type === "email" ? "email" : "password"}
         placeholder={placeholder}
         ref={input}
       />
       {type === "email" || (
-        <OnOffButton type="button" onClick={handleClick}>
-          <Image
-            width={16}
-            height={16}
-            src={eyeImage}
-            alt="가려진 비밀번호 보여주기"
-          />
-        </OnOffButton>
+        <button
+          className={cx("on-off-button")}
+          type="button"
+          onClick={handleClick}
+        >
+          <IconEyeOff />
+        </button>
       )}
-      <ErrorText ref={p} />
-    </>
+
+      <p ref={p} />
+    </div>
   );
 }

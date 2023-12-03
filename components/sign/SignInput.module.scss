@@ -1,6 +1,7 @@
-import { styled } from "styled-components";
-
-export const Input = styled.input`
+.input-container {
+  position: relative;
+}
+.input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,9 +17,9 @@ export const Input = styled.input`
   &:focus-within {
     outline: 0.15rem solid var(--Primary);
   }
-`;
+}
 
-export const OnOffButton = styled.button`
+.on-off-button {
   width: 1.6rem;
   height: 1.6rem;
   padding: 0;
@@ -27,12 +28,12 @@ export const OnOffButton = styled.button`
 
   position: absolute;
   right: 5%;
-  top: 55%;
+  top: 35%;
   width: 2rem;
-`;
+}
 
-export const ErrorText = styled.p`
+.error-text {
   height: 2.5rem;
   font-size: 1.4rem;
   color: var(--Red);
-`;
+}

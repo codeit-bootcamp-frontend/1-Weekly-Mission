@@ -7,7 +7,8 @@ import IconYoutube from "./youtube.svg";
 import IconTwitter from "./twitter.svg";
 import IconClose from "./close.svg";
 import IconLogo from "./linkbrary.svg";
-
+import IconEyeOff from "./eye-off.svg";
+import IconEyeOn from "./eye-on.svg";
 export {
   IconKebab,
   IconLink,
@@ -18,4 +19,6 @@ export {
   IconTwitter,
   IconClose,
   IconLogo,
+  IconEyeOff,
+  IconEyeOn,
 };

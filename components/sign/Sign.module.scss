@@ -1,25 +1,61 @@
-.signWrapper {
+.sign-wrapper {
   width: 100vw;
   height: 100vh;
+  background-color: $color-background;
+}
+
+.flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $color-background;
+}
 
-  .signHeader {
+.sign-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: 21.8rem;
+  height: 7.8rem;
+
+  .logo {
+    width: 21rem;
+    height: 3.8rem;
+  }
+  .description {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.6rem;
-    width: 21.8rem;
-    height: 7.8rem;
+    margin-top: 1.6rem;
+    gap: 0.8rem;
 
-    .logo {
-      width: 21rem;
-      height: 3.8rem;
+    .check {
+      color: #000;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 2.4rem;
     }
-    .signDescription{
-      
+
+    .move-page {
+      color: $color-primary;
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
+}
+
+.sign-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-bottom: 25rem;
+
+  .sign-content {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem auto 3.2rem;
+    width: 40rem;
+  }
+
+  
 }
