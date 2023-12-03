@@ -1,16 +1,26 @@
 import Link from "next/link";
 import Image from "next/image";
 import logoImg from "../../assets/img/logo.svg";
+import style from "./SignHeader.module.css";
 
-const SignHeader = ({type} :{type : string}) => {
+interface SignHeader {
+  message: string;
+  href: string;
+  linkMessage: string;
+}
+const SignHeader = ({ message, href, linkMessage }: SignHeader) => {
   return (
-    <>
+    <div className={style.root}>
       <Link href="/">
-        <Image src={logoImg} alt="logo image" />
+        <Image src={logoImg} alt="logo image" className={style.logo} />
       </Link>
-      {type === "signin" && <p>회원이 아니신가요?<Link href="/signup">회원 가입하기</Link></p>}
-      {type === "signup" && <p>이미 회원이신가요?<Link href="/signin" >로그인 하기</Link></p>}
-    </>
+      <p className={style.phrase}>
+        {message}
+        <Link className={style.link} href={href}>
+          {linkMessage}
+        </Link>
+      </p>
+    </div>
   );
 };
 

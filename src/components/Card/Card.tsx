@@ -22,7 +22,7 @@ function Card({ title, description, url, imageSource, createdAt }: CardProps) {
   const [isShowKebab, setIsShowKebab] = useState(false);
   const [modal, setModal] = useState<ReactNode>(null);
   const folders: Folder[] | null = useContext(FolderPageContext);
-  console.log(folders);
+
   const handleMouseOver = () => {
     setHover(true);
   };

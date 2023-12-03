@@ -1,0 +1,70 @@
+.root {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0f6ff;
+  font-size: 1.6rem;
+  padding-top: 16rem;
+  height: 100%;
+  padding-bottom: 11.6rem;
+}
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.form {
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin: 3rem 0 3.2rem;
+}
+.label {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+.input {
+  padding: 1.8rem 3.5rem 1.8rem 1.5rem;
+  border: 0.1rem solid var(--linkbrary-gray-20);
+  border-radius: 0.8rem;
+  width: 100%;
+  margin-bottom: 0.6rem;
+  margin-top: 1.2rem;
+  font-size: 1.6rem;
+  background: var(--linkbrary-white, #fff);
+}
+.input:focus {
+  border: 0.1rem solid var(--linkbrary-primary-color, #6d6afe);
+}
+.inputWrapper {
+  position: relative;
+}
+.pwdEye {
+  position: absolute;
+  right: 1.6rem;
+  bottom: 50%;
+  transform: translateY(50%);
+  fill: white;
+  cursor: pointer;
+}
+
+.errorMessage {
+  font-size: 1.4rem;
+  color: red;
+  margin-top: 0.6rem;
+}
+
+.formButton {
+  padding: 1.6rem 2rem;
+  border: none;
+  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--grey-light);
+  border-radius: 0.8rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.redBox {
+  border-color: red;
+}

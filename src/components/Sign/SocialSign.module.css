@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.2rem 2.4rem;
+  border: 0.1rem solid var(--linkbrary-gray-20, #ccd5e3);
+  background: var(--linkbrary-gray-10, #e7effb);
+  color: var(--linkbrary-gray-100, #373740);
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.links {
+  display: flex;
+  gap: 1.6rem;
+}
+.img {
+  width: 4.2rem;
+  height: 4.2rem;
+}

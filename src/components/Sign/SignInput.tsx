@@ -1,47 +1,74 @@
-import { ChangeEvent, useState } from "react";
+// import { ChangeEvent, useEffect, useState } from "react";
+// import style from "@/src/components/Sign/SignInput.module.css";
+// import Image from "next/image";
+// import EyeOffIcon from "@/src/assets/img/eye-off.svg";
+// import EyeOnIcon from "@/src/assets/img/eye-on.svg";
 
-interface SignInputProps {
-  type: string;
-  label: string;
-  htmlFor: string;
-}
-const ERRORMESSAGE = {
-  email: {
-    empty: "이메일을 입력해주세요.",
-    wrongEmail: "올바른 이메일 주소가 아닙니다.",
-  },
-  password: {
-    empty: "비밀번호를 입력해주세요",
-  },
-};
+// interface SignInputProps {
+//   type: string;
+//   label: string;
+//   htmlFor: string;
+//   isPrivate: boolean;
+//   handleError: (param: string, checkVerify: boolean) => string | null;
+//   inputRef: any;
+  
+// }
 
-const REGEMAIL = /^[A-Za-z0-9\-]+@[A-Za-z0-9]+\.[a-z]/;
-const REGPWD = /(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}/;
+// const SignIpnut = ({
+//   type = "email",
+//   label,
+//   htmlFor,
+//   isPrivate,
+//   handleError,
+  
+//   inputRef,
+// }: SignInputProps) => {
+//   const [isError, setIsError] = useState(false);
+//   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+//   const [inputValue, setInputValue] = useState<string>("");
+//   const [inputType, setInputType] = useState(type);
 
-const SignIpnut = ({ type, label, htmlFor }: SignInputProps) => {
-  const [isError, setIsError] = useState(false);
-  const [inputValue, setInputValue] = useState<string>("");
+//   const checkInputValue = () => {
+//     setErrorMessage(handleError(inputValue, checkVerify));
+//     if (!errorMessage) setIsError(true);
+//   };
+//   useEffect(() => {
+//     if (checkVerify) checkInputValue();
+//   }, [checkVerify]);
 
-  const handleOnBlur = () => {
-    if (inputValue == "") setIsError(true);
-    else setIsError(false);
-  };
+//   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+//     setInputValue(e.target.value);
+//   };
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-  return (
-    <>
-      <label htmlFor={htmlFor}>{label}</label>
-      <input
-        id={htmlFor}
-        type={type}
-        onChange={handleOnChange}
-        onBlur={handleOnBlur}
-      ></input>
-      {isError && <p>{ERRORMESSAGE.email.empty}</p>}
-    </>
-  );
-};
+//   const handlePwdEyeClick = () => {
+//     setInputType(inputType === "email" ? "password" : "email");
+//   };
+//   return (
+//     <div className={style.root}>
+//       <label className={style.label} htmlFor={htmlFor}>
+//         {label}
+//       </label>
+//       <div className={style.inputWrapper}>
+//         <input
+//           className={style.input}
+//           id={htmlFor}
+//           type={inputType}
+//           onChange={handleOnChange}
+//           onBlur={checkInputValue}
+//           ref={inputRef}
+//         />
+//         {isPrivate && (
+//           <Image
+//             src={inputType === "password" ? EyeOffIcon : EyeOnIcon}
+//             alt="pwd eye"
+//             className={style.pwdEye}
+//             onClick={handlePwdEyeClick}
+//           />
+//         )}
+//       </div>
+//       {isError && <p className={style.errorMessage}>{errorMessage}</p>}
+//     </div>
+//   );
+// };
 
-export default SignIpnut;
+// export default SignIpnut;
