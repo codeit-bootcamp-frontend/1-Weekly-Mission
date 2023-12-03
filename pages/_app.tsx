@@ -1,6 +1,7 @@
 import GlobalStyle from '@/styles/GlobalStyle';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
+import '@/public/fonts/pretendard/font.css';
 
 declare global {
   interface Window {
