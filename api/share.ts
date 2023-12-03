@@ -25,7 +25,7 @@ export type FolderContents = {
   id: number;
   name: string;
   owner: Owner;
-  links: Link[];
+  links: LinkContents[];
   count: number;
 };
 
