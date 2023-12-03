@@ -2,14 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import LinkCardList from "src/components/Card/LinkCardList";
 import AddLinkBar from "src/components/Link/AddLinkBar";
 import Search from "src/components/Search";
+import QUERY_KEYS from "src/constants/queryKeys";
 import { getUserFolderList } from "src/libs/apis/folder";
 import { styled } from "styled-components";
 
 function Folder() {
-  const { data } = useQuery<UserFolder[]>({
-    queryKey: ["folder"],
-    queryFn: getUserFolderList,
-  });
+  // const { data } = useQuery<UserFolder[]>({
+  //   queryKey: [QUERY_KEYS.folder],
+  //   queryFn: getUserFolderList,
+  // });
 
   return (
     <StyledWrapper>

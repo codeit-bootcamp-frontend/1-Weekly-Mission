@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { DEFAULT_PROFILE_IMAGE } from "src/constants/common";
 import QUERY_KEYS from "src/constants/queryKeys";
 import { getUserProfile } from "src/libs/apis/profile";
 import styled from "styled-components";
@@ -14,14 +13,16 @@ function UserInform() {
   return (
     <StyldProfileWrapper>
       <StyldProfileInWrapper>
-        <Image
-          src={DEFAULT_PROFILE_IMAGE}
-          alt="프로필 사진"
-          width={100}
-          height={100}
-        />
         {data?.map((item) => (
-          <span key={item.id}>{item.email}</span>
+          <>
+            <Image
+              src={item.image_source}
+              alt="프로필 사진"
+              width={30}
+              height={30}
+            />
+            <span key={item.id}>{item.email}</span>
+          </>
         ))}
       </StyldProfileInWrapper>
     </StyldProfileWrapper>
