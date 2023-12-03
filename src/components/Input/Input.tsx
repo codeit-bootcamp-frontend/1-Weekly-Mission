@@ -6,12 +6,14 @@ interface Props {
   placeholder?: string;
   errorMessage?: string;
   type?: string;
+  onBlur?: () => void;
 }
 
 function Input({
   placeholder = '내용 입력',
   errorMessage,
   type: initialType = 'text',
+  onBlur,
 }: Props) {
   const [type, setType] = useState(initialType);
 
@@ -31,6 +33,7 @@ function Input({
         placeholder={placeholder}
         $error={Boolean(errorMessage)}
         type={type}
+        onBlur={onBlur}
       />
       {initialType === 'password' && (
         <S.Toggle onClick={toggleShow}>
