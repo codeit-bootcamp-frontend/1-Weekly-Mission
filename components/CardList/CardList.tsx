@@ -3,20 +3,34 @@ import * as S from "./CardList.styled";
 import Image from "next/image";
 import cardImg from "@/src/assets/images/cardImg.png";
 import noImg from "@/src/assets/images/noImg.svg";
+import { LinkDataType } from '@/pages/api/links.api';
 
-export default function CardList() {
+interface LinksDataProps {
+  links: LinkDataType[];
+}
+
+export default function CardList({ links }: LinksDataProps) {
   return (
     <S.CardList>
-      <S.Card>
-        <S.ImageContainer>
-          <Image src={cardImg ?? noImg} width={340} height={200} alt="카드 이미지" />
-        </S.ImageContainer>
-        <S.Content>
-          <S.TimeDiff></S.TimeDiff>
-          <S.Description></S.Description>
-          <S.Date></S.Date>
-        </S.Content>
-      </S.Card>
+      {links.map(link => 
+          <div key={link.id}>
+            <Card link={link} />
+          </div>
+      )}
     </S.CardList>
   );
+}
+
+interface LinkItem {
+  link: LinkDataType;
+}
+
+export function Card({ link }: LinkItem) {
+  return (
+    <S.Card>
+      <S.Content>
+        <S.Description>{link.description}</S.Description>
+      </S.Content>
+    </S.Card>
+  )
 }

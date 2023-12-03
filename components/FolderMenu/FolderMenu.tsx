@@ -33,7 +33,7 @@ type FoldersData = {
 
 export default function FolderMenu() {
   const [folders, setFolders] = useState<FoldersData[]>([]);
-  const [folderName, setFolderName] = useState('');
+  const [folderName, setFolderName] = useState('전체');
 
   // 폴더 목록에 필요한 데이터 받아오기
   const getFolders = async () => {
