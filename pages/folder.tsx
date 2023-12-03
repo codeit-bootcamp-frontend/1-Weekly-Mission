@@ -43,6 +43,8 @@ const Folder: NextPageWithLayout = () => {
   const [cards, setCards] = useState<Linkinfo[]>([]);
   const [targetURL, setTargetURL] = useState("");
 
+  const userId = 1;
+
   const handleSearchBarDeleteIconClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     searchBox.setValues("");
@@ -58,7 +60,7 @@ const Folder: NextPageWithLayout = () => {
   const folderName = getFolderName(folderId, folderList);
 
   const loadFolderData = async () => {
-    const { data } = await getCurrentUsersFolderData(1);
+    const { data } = await getCurrentUsersFolderData(userId);
 
     setFolderList(() => {
       return [...data];
@@ -66,7 +68,7 @@ const Folder: NextPageWithLayout = () => {
   };
 
   const loadcardData = useCallback(async () => {
-    const { data } = await getLinksByFolderID(1, folderId);
+    const { data } = await getLinksByFolderID(userId, folderId);
 
     setCards(() => {
       return [...data];
