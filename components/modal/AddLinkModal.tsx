@@ -73,73 +73,69 @@ const CustomModal = styled(Modal)`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  border-radius: 15px;
-  border: 1px solid var(--stroke-light, #dee2e6);
-  background: var(--gray-white, #fff);
+  border-radius: 1.5rem;
+  border: 0.1rem solid var(--stroke-light, #dee2e6);
+  background: var(--linkbrary-white);
 `;
 
 const ModalContent = styled.div`
   display: flex;
-  padding: 32px 40px;
+  padding: 3.2rem 4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 2.4rem;
 `;
 
 const CloseButton = styled(Image)`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 1.6rem;
+  right: 1.6rem;
   cursor: pointer;
 `;
 
 const Descripton = styled.div`
   display: flex;
-  width: 280px;
+  width: 28rem;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
 `;
 
 const ModalHeading = styled.h2`
-  color: var(--linkbrary-gray-100, #373740);
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
+  color: var(--gray10);
+
+  font-size: 2rem;
   font-weight: 700;
-  line-height: normal;
 `;
 
 const ModalLink = styled.p`
-  color: var(--linkbrary-gray-60, #9fa6b2);
+  color: var(--gray20);
   text-align: center;
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px; /* 157.143% */
+
+  font-size: 1.4rem;
+  line-height: 2.2rem;
 `;
 
 const FolderList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 0.4rem;
 `;
 
 const FolderItems = styled.button<StyledProps>`
   display: flex;
-  width: 264px;
-  padding: 8px;
+  width: 26.4rem;
+  padding: 0.8rem;
   justify-content: space-between;
   align-items: center;
 
   border: none;
-  border-radius: 8px;
+  border-radius: 0.8rem;
 
-  background: ${({ $isSelected }) => ($isSelected ? "var(--linkbrary-bg, #F0F6FF)" : "none")};
+  background: ${({ $isSelected }) => ($isSelected ? "var(--bg)" : "none")};
 
   cursor: pointer;
 `;
@@ -147,57 +143,43 @@ const FolderItems = styled.button<StyledProps>`
 const FolderItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
 `;
 
 const FolderTitle = styled.p<StyledProps>`
-  color: ${({ $isSelected }) => ($isSelected ? "var(--linkbrary-primary-color, #6D6AFE)" : "var(--linkbrary-gray-100, #373740)")};
+  color: ${({ $isSelected }) => ($isSelected ? "var(--primary)" : "var(--gray10)")};
 
-  /* Linkbrary/body1-regular */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 `;
 
 const FolderLinksCount = styled.p`
-  color: var(--linkbrary-gray-60, #9fa6b2);
+  color: var(--gray20);
 
-  /* Linkbrary/body2-regular */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  font-size: 1.4rem;
 `;
 
 const CheckIcon = styled(Image)`
-  width: 14px;
-  height: 14px;
+  width: 1.4rem;
+  height: 1.4rem;
   flex-shrink: 0;
 `;
 
 const ModalAddButton = styled.button`
   display: flex;
-  width: 280px;
-  padding: 16px 20px;
+  width: 28rem;
+  padding: 1.6rem 2rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 
   border: none;
-  border-radius: 8px;
-  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%));
+  border-radius: 0.8rem;
+  background: var(--graBlueToSkyBlue);
 
-  color: var(--grey-light, #f5f5f5);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
+  color: var(--grayLight);
+  font-size: 1.6rem;
   font-weight: 600;
-  line-height: normal;
-
-  cursor: pointer;
 `;
 
 export default AddLinkModal;

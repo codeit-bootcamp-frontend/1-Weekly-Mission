@@ -1,9 +1,10 @@
 import useGetData from "./useGetData";
-import { PathType } from "@/utils/api";
+import { SampleFolderType, SampleLinksType } from "@/utils/types";
 
-const useGetSampleLinks = () => {
-  const folder = useGetData({ path: "SHARED_FOLDER" });
-  if (!folder) return null;
+const useGetSampleLinks = (): SampleLinksType[] => {
+  const folder = useGetData<SampleFolderType>({ path: "SHARED_FOLDER" });
+
+  if (!folder) return [];
   return folder.folder.links;
 };
 

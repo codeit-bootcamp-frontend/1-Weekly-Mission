@@ -6,8 +6,8 @@ interface UseGetDataProps {
   query?: string;
 }
 
-export const useGetData = ({ path, query = "" }: UseGetDataProps) => {
-  const [data, setData] = useState<any>(null);
+function useGetData<T>({ path, query = "" }: UseGetDataProps): T | null {
+  const [data, setData] = useState(null);
 
   const getData = useCallback(async () => {
     const result = await getResponse(path, query);
@@ -20,6 +20,6 @@ export const useGetData = ({ path, query = "" }: UseGetDataProps) => {
   }, [getData]);
 
   return data;
-};
+}
 
 export default useGetData;

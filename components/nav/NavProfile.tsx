@@ -1,12 +1,10 @@
+import { SampleUserType, UsersDataType } from "@/utils/types";
 import Image from "next/image";
 import styled from "styled-components";
+import defaultProfile from "@/src/image/default_profile.svg";
 
 interface NavProfileProps {
-  user_data: {
-    email: string;
-    profileImageSource: string;
-    image_source: string;
-  };
+  user_data: UsersDataType | SampleUserType;
 }
 
 const NavProfile = ({ user_data }: NavProfileProps) => {
@@ -14,7 +12,7 @@ const NavProfile = ({ user_data }: NavProfileProps) => {
 
   return (
     <ProfileWrapper>
-      <ProfileImg src={profileImageSource || image_source} alt="프로필 이미지" width={100} height={100} unoptimized />
+      <ProfileImg src={profileImageSource || image_source || defaultProfile} alt="프로필 이미지" width={100} height={100} unoptimized />
       <ProfileEmail>{email}</ProfileEmail>
     </ProfileWrapper>
   );

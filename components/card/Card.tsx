@@ -6,37 +6,16 @@ import CardDate from "./CardDate";
 import CardImage from "./CardImage";
 import CardTime from "./CardTime";
 import Kebab from "./Kebab";
+import { LinksDataType, SampleLinksType } from "@/utils/types";
 
 interface ItemProps {
-  item: {
-    id: number;
-    createdAt?: string;
-    created_at?: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource?: string;
-    image_source?: string;
-  };
+  item: SampleLinksType | LinksDataType;
 }
 
 const Card = ({ item }: ItemProps) => {
-  const {
-    id,
-    createdAt,
-    created_at,
-    url,
-    title,
-    description,
-    imageSource,
-    image_source,
-  } = item;
-  const get_time =
-    (createdAt && getTimeDiff(createdAt)) ||
-    (created_at && getTimeDiff(created_at));
-  const get_date =
-    (createdAt && formatDate(createdAt)) ||
-    (created_at && formatDate(created_at));
+  const { id, createdAt, created_at, url, title, description, imageSource, image_source } = item;
+  const get_time = (createdAt && getTimeDiff(createdAt)) || (created_at && getTimeDiff(created_at));
+  const get_date = (createdAt && formatDate(createdAt)) || (created_at && formatDate(created_at));
 
   return (
     <Wrapper key={id}>

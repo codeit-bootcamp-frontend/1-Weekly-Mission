@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
+import { LinksDataType, SampleLinksType } from "@/utils/types";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
-import Card from "./Card";
-import useGetSampleLinks from "../../hooks/useGetSampleLinks";
 import useGetLinks from "../../hooks/useGetLinks";
+import useGetSampleLinks from "../../hooks/useGetSampleLinks";
+import Card from "./Card";
 
 interface CardListProps {
   folderId?: number | null;
   searchTerm?: string;
-}
-
-interface LinkProps {
-  id: number;
-  createdAt?: string;
-  created_at?: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource?: string;
-  image_source?: string;
 }
 
 const CardList = ({ folderId, searchTerm }: CardListProps) => {
@@ -25,32 +15,25 @@ const CardList = ({ folderId, searchTerm }: CardListProps) => {
   const folderLinks = useGetLinks(folderId);
   const links = folderId !== undefined ? folderLinks : sharedLinks;
 
-  const [filteredLinks, setFilteredLinks] = useState<LinkProps[] | null>(null);
+  // useState를 사용하면 무한 렌더링 발생....
+  // 타입 수정하기
+  const filteredLinks = useRef<any>(null);
 
   useEffect(() => {
     if (!searchTerm) {
-      setFilteredLinks(links);
+      filteredLinks.current = links;
     } else {
       const lowerCaseSearchTerm = searchTerm.toLowerCase();
       const filtered = links?.filter(
-        (link: LinkProps) =>
-          link.title?.toLowerCase().includes(lowerCaseSearchTerm) ||
-          link.description?.toLowerCase().includes(lowerCaseSearchTerm) ||
-          link.url?.toLowerCase().includes(lowerCaseSearchTerm)
+        (link) => link.title?.toLowerCase().includes(lowerCaseSearchTerm) || link.description?.toLowerCase().includes(lowerCaseSearchTerm) || link.url?.toLowerCase().includes(lowerCaseSearchTerm)
       );
-      setFilteredLinks(filtered);
+      filteredLinks.current = filtered;
     }
   }, [searchTerm, links]);
 
   return (
     <Container>
-      {filteredLinks?.length ? (
-        filteredLinks.map((link: LinkProps) => (
-          <Card key={link.id} item={link} />
-        ))
-      ) : (
-        <NoLink>검색 결과가 없습니다.</NoLink>
-      )}
+      {filteredLinks.current?.length ? filteredLinks.current.map((link: SampleLinksType | LinksDataType) => <Card key={link.id} item={link} />) : <NoLink>검색 결과가 없습니다.</NoLink>}
     </Container>
   );
 };
@@ -65,16 +48,16 @@ const Container = styled.div`
 
 const NoLink = styled.div`
   display: flex;
-  width: 1060px;
-  height: 100px;
-  padding: 41px 0px 35px 0px;
+  width: 106rem;
+  height: 10rem;
+  padding: 4.1rem 0 3.5rem 0;
   justify-content: center;
   align-items: center;
 
   color: var(--linkbrary-black);
   text-align: center;
-  font-size: 16px;
-  line-height: 24px; /* 150% */
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 
   @media (max-width: 1124px) {
     width: 70.4rem;

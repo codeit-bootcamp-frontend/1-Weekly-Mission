@@ -38,80 +38,73 @@ const CustomModal = styled(Modal)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 2.4rem;
 
-  border-radius: 15px;
-  border: 1px solid var(--stroke-light, #dee2e6);
-  background: var(--gray-white, #fff);
+  border-radius: 1.5rem;
+  border: 0.1rem solid var(--stroke-light, #dee2e6);
+  background: var(--linkbrary-white);
 `;
 
 const ModalContent = styled.div`
-  // text-align: center;
   display: inline-flex;
-  padding: 32px 40px;
+  padding: 3.2rem 4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 2.4rem;
 
   position: relative;
 `;
 
 const CloseButton = styled(Image)`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 1.6rem;
+  right: 1.6rem;
   cursor: pointer;
 `;
 
 const Heading = styled.h2`
-  color: var(--linkbrary-gray-100, #373740);
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
+  color: var(--gray10);
+
+  font-size: 2rem;
   font-weight: 700;
-  line-height: normal;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 15px;
+  gap: 1.5rem;
 `;
 
 const Input = styled.input`
   display: flex;
-  width: 280px;
-  padding: 18px 15px;
+  width: 28rem;
+  padding: 1.8rem 1.5rem;
   justify-content: center;
   align-items: center;
 
-  border-radius: 8px;
-  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
-  background: var(--linkbrary-white, #fff);
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--primary);
+  background: var(--linkbrary-white);
 `;
 
 const Button = styled.button`
   display: flex;
-  width: 280px;
-  padding: 16px 20px;
+  width: 28rem;
+  padding: 1.6rem 2rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 
   border: none;
-  border-radius: 8px;
-  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%));
+  border-radius: 0.8rem;
+  background: var(--graBlueToSkyBlue);
 
-  color: var(--grey-light, #f5f5f5);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
+  color: var(--grayLight);
+
+  font-size: 1.6rem;
   font-weight: 600;
-  line-height: normal;
-
-  cursor: pointer;
 `;
 
 export default BlueBtnModal;

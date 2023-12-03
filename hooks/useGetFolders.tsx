@@ -1,9 +1,10 @@
 import useGetData from "./useGetData";
-import { PathType } from "@/utils/api";
+import { FoldersType, FoldersDataType } from "@/utils/types";
 
-const useGetFolders = () => {
-  const folders = useGetData({ path: "FOLDER_FOLDERS" });
-  if (!folders) return null;
+const useGetFolders = (): FoldersDataType[] => {
+  const folders = useGetData<FoldersType>({ path: "FOLDER_FOLDERS" });
+
+  if (!folders) return [];
   return folders.data;
 };
 

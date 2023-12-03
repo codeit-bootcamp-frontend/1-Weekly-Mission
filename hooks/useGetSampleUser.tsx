@@ -1,8 +1,9 @@
 import useGetData from "./useGetData";
-import { PathType } from "@/utils/api";
+import { SampleUserType } from "@/utils/types";
 
-const useGetSampleUser = () => {
-  const user = useGetData({ path: "SHARED_USER" });
+const useGetSampleUser = (): SampleUserType | null => {
+  const user = useGetData<SampleUserType>({ path: "SHARED_USER" });
+
   if (!user) return null;
   return user;
 };

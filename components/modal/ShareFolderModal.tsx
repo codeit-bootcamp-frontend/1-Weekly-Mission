@@ -61,63 +61,59 @@ const CustomModal = styled(Modal)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 2.4rem;
 
-  border-radius: 15px;
-  border: 1px solid var(--stroke-light, #dee2e6);
-  background: var(--gray-white, #fff);
+  border-radius: 1.5rem;
+  border: 0.1rem solid var(--stroke-light, #dee2e6);
+  background: var(--linkbrary-white);
 `;
 
 const ModalContent = styled.div`
   display: inline-flex;
-  padding: 32px 40px;
+  padding: 3.2rem 4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 2.4rem;
 
   position: relative;
 `;
 
 const CloseButton = styled(Image)`
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 1.6rem;
+  right: 1.6rem;
   cursor: pointer;
 `;
 
 const Description = styled.div`
   display: flex;
-  width: 280px;
+  width: 28rem;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
 `;
 
 const Heading = styled.h2`
-  color: var(--linkbrary-gray-100, #373740);
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
+  color: var(--gray10);
+
+  font-size: 2rem;
   font-weight: 700;
-  line-height: normal;
 `;
 
 const Name = styled.div`
-  color: var(--linkbrary-gray-60, #9fa6b2);
+  color: var(--gray20);
   text-align: center;
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px; /* 157.143% */
+
+  font-size: 1.4rem;
+  line-height: 2.2rem;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 32px;
+  gap: 3.2rem;
 `;
 
 const Button = styled.button`
@@ -125,27 +121,23 @@ const Button = styled.button`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 
   background: none;
   border: none;
-
-  cursor: pointer;
 `;
 
 const ButtonImg = styled(Image)`
-  width: 42px;
-  height: 42px;
+  width: 4.2rem;
+  height: 4.2rem;
 `;
 
 const ButtonName = styled.p`
-  color: var(--linkbrary-gray-100, #373740);
+  color: var(--gray10);
   text-align: center;
   font-family: Inter;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 15px; /* 115.385% */
+  font-size: 1.3rem;
+  line-height: 1.5rem;
 `;
 
 export default ShareFolderModal;

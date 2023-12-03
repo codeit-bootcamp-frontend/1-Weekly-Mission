@@ -1,9 +1,8 @@
-import { ReactNode } from "react";
 import styled from "styled-components";
 
 interface CardContentProps {
-  title: string;
-  description: string;
+  title: string | null;
+  description: string | null;
   url: string;
 }
 

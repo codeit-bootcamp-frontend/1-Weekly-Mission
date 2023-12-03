@@ -77,19 +77,19 @@ const ToggleKebab = styled(Image)`
 
 const Popover = styled.div<StyledProps>`
   display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
-  width: 100px;
+  width: 10rem;
   position: absolute;
-  top: 20px;
+  top: 2rem;
   left: 0;
   background: var(--linkbrary-white);
-  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(51, 50, 54, 0.1);
   border: none;
 `;
 
 const Button = styled.button`
   display: block;
   width: 100%;
-  padding: 7px 12px;
+  padding: 0.7rem 1.2rem;
   border: none;
   background: transparent;
 

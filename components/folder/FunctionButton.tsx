@@ -52,13 +52,13 @@ const FunctionButton = ({ selectedFolderId, selectedFolderName }: FunctionButton
 const FuncBtnWrapper = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 1.2rem;
 `;
 
 const FuncBtn = styled.button`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.4rem;
 
   border: none;
   background-color: var(--linkbrary-white);
@@ -66,13 +66,13 @@ const FuncBtn = styled.button`
 `;
 
 const FuncBtnImg = styled(Image)`
-  width: 18px;
-  height: 18px;
+  width: 1.8rem;
+  height: 1.8rem;
 `;
 
 const FuncBtnMsg = styled.span`
   color: var(--gray20);
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 600;
 `;
 

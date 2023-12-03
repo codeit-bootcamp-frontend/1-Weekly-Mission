@@ -54,7 +54,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
   background: var(--bg);
   position: "relative";
   bottom: 0;
@@ -62,12 +62,12 @@ const Wrapper = styled.div`
   padding: 6rem 32rem 9rem 32rem;
 
   @media (max-width: 1124px) {
-    padding-left: 32.5px;
-    padding-right: 32.5px;
+    padding-left: 3.25rem;
+    padding-right: 3.25rem;
   }
 
   @media (max-width: 767px) and (min-width: 375px) {
-    padding: 24px 32px 40px 32px;
+    padding: 2.4rem 3.2rem 4rem 3.2rem;
   }
 `;
 
@@ -80,7 +80,7 @@ const FixedWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
   padding: 2.4rem 32rem;
 
   z-index: 3;
@@ -101,7 +101,7 @@ const Input = styled.input`
   border-radius: 1.5rem;
   border: 0.1rem solid var(--primary);
   background: var(--linkbrary-white);
-  font-size: 16px;
+  font-size: 1.6rem;
 
   background-image: url(${linkIcon.src});
   background-repeat: no-repeat;
@@ -121,17 +121,17 @@ const Input = styled.input`
 
 const Button = styled.button`
   display: flex;
-  width: 80px;
-  padding: 10px 16px;
+  width: 8rem;
+  padding: 1rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 8px;
+  gap: 1rem;
+  border-radius: 0.8rem;
   border: none;
   background: var(--graBlueToSkyBlue);
 
   color: var(--grayLight);
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 600;
 
   position: absolute;

@@ -1,8 +1,9 @@
 import useGetData from "./useGetData";
-import { PathType } from "@/utils/api";
+import { SampleFolderDataType, SampleFolderType } from "@/utils/types";
 
-const useGetSampleFolder = () => {
-  const folder = useGetData({ path: "SHARED_FOLDER" });
+const useGetSampleFolder = (): SampleFolderDataType | null => {
+  const folder = useGetData<SampleFolderType>({ path: "SHARED_FOLDER" });
+
   if (!folder) return null;
   return folder.folder;
 };

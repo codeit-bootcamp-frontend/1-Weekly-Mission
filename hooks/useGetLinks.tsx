@@ -1,10 +1,11 @@
 import useGetData from "./useGetData";
-import { PathType } from "@/utils/api";
+import { LinksType, LinksDataType } from "@/utils/types";
 
-const useGetLinks = (folderId?: number | null) => {
+const useGetLinks = (folderId?: number | null): LinksDataType[] => {
   const query = folderId ? `?folderId=${folderId}` : "";
-  const links = useGetData({ path: "FOLDER_LINKS", query });
-  if (!links) return null;
+  const links = useGetData<LinksType>({ path: "FOLDER_LINKS", query });
+
+  if (!links) return [];
   return links.data;
 };
 

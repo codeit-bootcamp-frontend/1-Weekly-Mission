@@ -1,8 +1,9 @@
 import useGetData from "./useGetData";
-import { PathType } from "@/utils/api";
+import { UsersDataType, UsersType } from "@/utils/types";
 
-const useGetUser = () => {
-  const user = useGetData({ path: "FOLDER_USER" });
+const useGetUser = (): UsersDataType | null => {
+  const user = useGetData<UsersType>({ path: "FOLDER_USER" });
+
   if (!user) return null;
   return user.data[0];
 };
