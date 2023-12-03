@@ -7,7 +7,7 @@ type LocaleContextProps = {
   folderIdKey: string;
 };
 
-const LocaleContext = createContext<LocaleContextProps>({
+const LocaleContext = createContext({
   ObjectValue: {},
   LinkSDataArr: [],
   folderIdKey: "",
