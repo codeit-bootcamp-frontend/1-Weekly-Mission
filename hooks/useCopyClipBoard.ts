@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useCallback } from "react";
 
-export default function useCopyClipBoard() {
-  const [result, setResult] = useState<
-    | null
-    | { state: boolean; message: string }
-    | { state: boolean; message: string }
-  >(null);
+type CopyClipboardProps = {
+  state: boolean;
+  message: string;
+};
+
+type UseCopyClipBoardResult = [
+  (sharedToLink: string) => Promise<void>,
+  CopyClipboardResult | null
+];
+export default function useCopyClipBoard(): UseCopyClipBoardResult {
+  const [result, setResult] = useState<CopyClipboardProps | null>(null);
 
   const handleLinkCopy = useCallback(async (sharedToLink: string) => {
     try {

@@ -8,13 +8,21 @@ import useKakao from "@/hooks/useKaKao";
 import useCopyClipBoard from "@/hooks/useCopyClipboard";
 import { KAKAO_SHARE_DATA } from "@/utils/constant";
 import { useRouter } from "next/router";
+type TabName = "share" | "change" | "delete" | "deleteLink";
+
+type ModalProps = {
+  setterFunc: (value: boolean) => void;
+  tabName: TabName;
+  folderName: string;
+  linkUrl?: string;
+};
 
 export default function Modal({
   setterFunc,
   tabName,
   folderName,
   linkUrl = "",
-}) {
+}: ModalProps) {
   const obj = {
     share: ["폴더공유"],
     change: ["폴더이름변경", "변경하기", "blue"],
@@ -32,7 +40,7 @@ export default function Modal({
   const shareKaKao = useKakao();
 
   const onClickKaKao = () => {
-    shareKaKao({ url: shareLink, ...KAKAO_SHARE_DATA });
+    shareKaKao!({ url: shareLink, ...KAKAO_SHARE_DATA });
   };
   const onClickFaceBook = () =>
     window.open(`http://www.facebook.com/sharer.php?u=${shareLink}`);
@@ -81,8 +89,8 @@ export default function Modal({
             <div onClick={onClickLinkCopy}>
               <Image src={link} alt="kakao" width={40} height={50} />
             </div>
-            {copyResult?.state && copyResult?.message}
-            {!copyResult?.state && copyResult?.message}
+            {/* {copyResult?.state && copyResult?.message}
+            {!copyResult?.state && copyResult?.message} */}
           </div>
         )}
       </div>
