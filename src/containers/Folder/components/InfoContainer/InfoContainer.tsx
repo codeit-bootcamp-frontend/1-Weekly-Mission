@@ -1,6 +1,6 @@
 import * as S from './InfoContainer.style';
 import useModal from '@/hooks/useModal';
-import { Folder } from '../FoldersContainer/FoldersContainer.types';
+import { Folder } from '@/types/Folder.types';
 import { IconDelete, IconEdit, IconShare } from '@/public/svgs';
 
 interface Props {

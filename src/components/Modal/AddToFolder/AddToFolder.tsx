@@ -2,7 +2,7 @@ import * as Modal from '../Modal.style';
 import * as S from './AddToFolder.style';
 import { useState } from 'react';
 import useRequest from '@/hooks/useRequest';
-import { Folder } from '@/containers/Folder/components/FoldersContainer/FoldersContainer.types';
+import { Folder } from '@/types/Folder.types';
 import { IconCheck } from '@/public/svgs';
 
 interface Props {

@@ -1,4 +1,4 @@
-import { Link } from '@/containers/Folder/Folder.types';
+import { Link } from '@/types/Folder.types';
 
 function filterLinks(links?: Link[], keyword?: string) {
   if (!links) return;

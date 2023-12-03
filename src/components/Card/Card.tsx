@@ -2,7 +2,7 @@ import * as S from './Card.style';
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import TimeAgo from 'react-timeago';
 import useModal, { ModalsKey } from '@/hooks/useModal';
-import { Link } from '@/containers/Folder/Folder.types';
+import { Link } from '@/types/Folder.types';
 import { IconKebab, IconStar } from '@/public/svgs';
 
 const DEFAULT_IMAGE_SRC = '/images/default-link-img.svg';

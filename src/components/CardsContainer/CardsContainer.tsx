@@ -1,7 +1,7 @@
 import * as S from './CardsContainer.style';
 import { DEFAULT_USER_ID } from '@/services/config/default';
 import Card from '@/components/Card';
-import { Link } from '@/containers/Folder/Folder.types';
+import { Link } from '@/types/Folder.types';
 
 interface Props {
   cards?: Link[];

@@ -8,7 +8,7 @@ import SearchBar from '@/components/SearchBar';
 import CardsContainer from '@/components/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
 import FoldersContainer from './components/FoldersContainer';
-import { Link } from '@/containers/Folder/Folder.types';
+import { Link } from '@/types/Folder.types';
 
 interface Props {
   links: Link[];

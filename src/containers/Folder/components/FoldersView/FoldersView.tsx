@@ -1,6 +1,6 @@
 import * as S from './FoldersView.style';
 import useModal from '@/hooks/useModal';
-import { Folder } from '../FoldersContainer/FoldersContainer.types';
+import { Folder } from '@/types/Folder.types';
 import { IconAddColor, IconAddWhite } from '@/public/svgs';
 
 interface Props {

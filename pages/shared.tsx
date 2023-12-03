@@ -1,18 +1,6 @@
 import Shared from '@/containers/Shared';
-import { Link } from '@/containers/Folder/Folder.types';
+import { SharedFolder } from '@/types/Folder.types';
 import fetch from '@/services/utils/fetch';
-
-export interface SharedFolder {
-  id: number;
-  name: string;
-  count: number;
-  links: Link[];
-  owner: {
-    id: number;
-    name: string;
-    profileImageSource: string;
-  };
-}
 
 export async function getStaticProps() {
   const { data: fetchedData } = await fetch({

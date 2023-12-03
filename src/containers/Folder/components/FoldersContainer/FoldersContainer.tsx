@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useRequest from '@/hooks/useRequest';
 import FoldersView from '../FoldersView';
 import InfoContainer from '../InfoContainer';
-import { Folder } from './FoldersContainer.types';
+import { Folder } from '@/types/Folder.types';
 
 const DEFAULT_FOLDER = {
   id: 0,
