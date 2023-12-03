@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: 'Pretendard';
   line-height: normal;
+  font-size: 10px;
 }
 
 @layer components {
