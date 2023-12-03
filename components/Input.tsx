@@ -3,11 +3,17 @@ import styled from "styled-components";
 import eyeOff from "/public/eye-off.svg";
 import eyeOn from "/public/eye-on.svg";
 
+interface Input {
+  type: string;
+  isError?: boolean;
+  errorMessage?: string;
+}
+
 function Input({
   type = "text",
   isError = false,
   errorMessage = "내용을 다시 작성해주세요",
-}) {
+}: Input) {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(type);
 
@@ -38,13 +44,13 @@ function Input({
             $show={type === "password"}
           />
         )}
-        {isError && <InputError $isError={isError}>{errorMessage} </InputError>}
+        {isError && <InputError>{errorMessage} </InputError>}
       </InputContainer>
     </>
   );
 }
 
-const InputWrapper = styled.input`
+const InputWrapper = styled.input<{ $isError: boolean }>`
   display: flex;
   width: 350px;
   padding: 18px 15px;
@@ -63,7 +69,7 @@ const InputWrapper = styled.input`
   background: #fff;
   color: black;
 `;
-const EyeImage = styled.img`
+const EyeImage = styled.img<{ $show: boolean }>`
   position: absolute;
   top: 18px;
   right: 15px;
