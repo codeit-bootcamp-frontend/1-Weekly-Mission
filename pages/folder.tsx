@@ -5,9 +5,6 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import CardList from "@/components/CardList/CardList";
 import * as S from "@/styles/Folder.styled";
 
-
-// 폴더 리스트 불러오기
-
 export default function FolderPage() {
 
   return (

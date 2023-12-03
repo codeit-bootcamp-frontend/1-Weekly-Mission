@@ -4,6 +4,8 @@ import addIcon from "@/src/assets/images/addIcon.svg";
 import shareIcon from "@/src/assets/images/shareIcon.svg";
 import penIcon from "@/src/assets/images/penIcon.svg";
 import deleteIcon from "@/src/assets/images/deleteIcon.svg";
+import { useEffect, useState } from 'react';
+import axiosInstance from '@/lib/axios';
 
 type FolderOptionProps = {
   src: string;
@@ -19,19 +21,48 @@ export function FolderOption({ src, children }: FolderOptionProps) {
   );
 }
 
+type FoldersData = {
+  id: number,
+  created_at: string;
+  name: string;
+  user_id: number;
+  link: {
+    count: number;
+  }
+}
+
 export default function FolderMenu() {
+  const [folders, setFolders] = useState<FoldersData[]>([]);
+  const [folderName, setFolderName] = useState('');
+
+  // 폴더 목록에 필요한 데이터 받아오기
+  const getFolders = async () => {
+    const res = await axiosInstance.get('/users/1/folders');
+    const { data } = res?.data;
+    setFolders(data);
+  }
+
+  useEffect(() => {
+    getFolders();
+  }, []);
+
+  const handleChangeFolderName = (e: React.MouseEvent<HTMLLIElement>) => {
+    setFolderName(e.currentTarget.innerText);
+  }
+
+  const handleClickAllfolder= (e: React.MouseEvent<HTMLLIElement>) => {
+    setFolderName(e.currentTarget.innerText);
+
+  }
+
   return (
     <S.Container>
       <S.Wrapper>
         <S.FolderList>
-          <S.Folder>전체</S.Folder>
-          <S.Folder>즐겨찾기</S.Folder>
-          <S.Folder>코딩 팁</S.Folder>
-          <S.Folder>유용한 글</S.Folder>
-          <S.Folder>나만의 장소</S.Folder>
-          {/* {data.map((folder) => 
-            <S.Folder key={folder.id} onClick={handleFolderName}>{folder.name}</S.Folder>
-          )} */}
+          <S.Folder onClick={handleClickAllfolder}>전체</S.Folder>
+          {folders.map((folder) => 
+            <S.Folder key={folder.id} onClick={handleChangeFolderName}>{folder.name}</S.Folder>
+          )}
         </S.FolderList>
         <S.AddFolderButton>
           폴더 추가
@@ -39,7 +70,7 @@ export default function FolderMenu() {
         </S.AddFolderButton>
       </S.Wrapper>
       <S.FolderHeader>
-        <S.FolderName>폴더 이름</S.FolderName>
+        <S.FolderName>{folderName}</S.FolderName>
         <S.FolderOptionList>
           <FolderOption src={shareIcon}>공유</FolderOption>
           <FolderOption src={penIcon}>이름 변경</FolderOption>
