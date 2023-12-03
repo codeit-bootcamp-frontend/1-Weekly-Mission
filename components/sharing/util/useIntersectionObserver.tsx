@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useIntersectionObserver = <T extends HTMLElement>(
   once: boolean = false,
@@ -7,7 +7,7 @@ export const useIntersectionObserver = <T extends HTMLElement>(
   const ref = useRef<T>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       setIsIntersecting(entry.isIntersecting);
       if (once && entry.isIntersecting) {

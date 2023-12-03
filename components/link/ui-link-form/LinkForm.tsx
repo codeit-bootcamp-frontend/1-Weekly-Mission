@@ -7,7 +7,7 @@ import {
   FormEventHandler,
   forwardRef,
 } from "react";
-import Image from "next/image";
+
 import { IconLink } from "../../../public/images";
 
 const cx = classNames.bind(styles);

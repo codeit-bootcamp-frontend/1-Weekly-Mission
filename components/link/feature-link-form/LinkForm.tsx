@@ -34,7 +34,7 @@ export const LinkForm = ({ hideFixedLinkForm = false }: LinkFormProps) => {
     }
   };
 
-  return (
+  return ( 
     <div className={cx("container")}>
       <UiLinkForm
         ref={ref}
