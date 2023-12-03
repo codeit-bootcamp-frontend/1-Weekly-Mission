@@ -4,9 +4,14 @@ import requestData from "../../services/api";
 import { useEffect, useState } from "react";
 import { IUserData } from "./types/Header.types";
 import Image from "next/image";
+import Router from "next/router";
 
 function Header() {
   const [userData, setUserData] = useState<IUserData>();
+
+  const handleLogoClick = () => {
+    Router.push("/");
+  };
 
   useEffect(() => {
     async function getUserDataResponse() {
@@ -25,6 +30,7 @@ function Header() {
           className={styles.header_content__logoImg}
           src={logoImg}
           alt="logo"
+          onClick={handleLogoClick}
         />
         <div className={styles.header_content__userDiv}>
           {userData && (

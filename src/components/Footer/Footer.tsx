@@ -1,8 +1,9 @@
-import "./Footer.module.css";
+import style from "./Footer.module.css";
 import youtubeIcon from "/public/image/icon-youtube.svg";
 import twitterIcon from "/public/image/icon-twitter.svg";
 import facebookIcon from "/public/image/icon-facebook.svg";
 import instagramIcon from "/public/image/icon-instagram.svg";
+import Image from "next/image";
 
 const COPYRIGHT_TEXT = "©codeit - 2023";
 const PRIVACY_POLICY_TEXT = "Privacy Policy";
@@ -20,24 +21,20 @@ function Footer() {
     const Sns = SnsData[snsType as keyof typeof SnsData];
     return (
       <a href={Sns.url} target="_blank">
-        <img className="sns-icons" src={Sns.icon} alt="sns icon" />
+        <Image className={style.sns_icons} src={Sns.icon} alt="sns icon" />
       </a>
     );
   }
 
   return (
-    <footer className="footer">
-      <div id="footer-container">
-        <h5 id="copyright">{COPYRIGHT_TEXT}</h5>
-        <div id="label-container">
-          <a className="footer-label" id="label_privacy-policy">
-            {PRIVACY_POLICY_TEXT}
-          </a>
-          <a className="footer-label" id="label_faq">
-            {FAQ_TEXT}
-          </a>
+    <footer className={style.footer}>
+      <div className={style.footer_container}>
+        <h5 className={style.copyright}>{COPYRIGHT_TEXT}</h5>
+        <div className={style.label_container}>
+          <a className={style.footer_label}>{PRIVACY_POLICY_TEXT}</a>
+          <a className={style.footer_label}>{FAQ_TEXT}</a>
         </div>
-        <div id="sns-container">
+        <div className={style.sns_container}>
           <SnsItem snsType="facebook" />
           <SnsItem snsType="twitter" />
           <SnsItem snsType="youtube" />

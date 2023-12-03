@@ -1,4 +1,4 @@
-import "./CardContainer.module.css";
+import style from "./CardContainer.module.css";
 import NoCardDataImg from "/public/image/img-card--noimg.png";
 import StarIcon from "/public/image/icon-star.svg";
 import ThreeDotsIcon from "/public/image/kebab.svg";
@@ -7,6 +7,7 @@ import AddFolderOptionBtn from "../Buttons/AddFolderOptionBtn";
 import styled from "styled-components";
 import { useState } from "react";
 import { ICardData } from "./types/Card.types";
+import Image from "next/image";
 
 const OptionBtnContainer = styled.div`
   position: absolute;
@@ -30,28 +31,40 @@ function Card({ cardData }: Props) {
   };
 
   return (
-    <div className="card">
-      <a className="link-img" href={url ? url : "#"}>
-        <div className="div-img">
-          <img
-            className="cardImg"
+    <div className={style.card}>
+      <a className={style.link_img} href={url ? url : "#"}>
+        <div className={style.div_img}>
+          <Image
+            className={style.cardImg}
             src={image_source ?? NoCardDataImg}
             alt="card"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "100%" }}
           />
         </div>
-        <img className="img-star" src={StarIcon} alt="star icon" />
+        <Image
+          className={style.img_star}
+          width={34}
+          height={34}
+          src={StarIcon}
+          alt="star icon"
+        />
       </a>
-      <div className="div-text">
-        <div className="text">
-          <h5 className="createdTimePassed">{timeAgoText + " ago"}</h5>
-          <img
+      <div className={style.div_text}>
+        <div className={style.text}>
+          <h5 className={style.createdTimePassed}>{timeAgoText + " ago"}</h5>
+          <Image
             onClick={() => handleAddFolderBtnClick()}
             src={ThreeDotsIcon}
             alt="three dots icon"
+            width={21}
+            height={17}
           />
         </div>
-        <p className="cardDesc">{description}</p>
-        <h4 className="createdDate">{formulatedCreatedDate}</h4>
+        <p className={style.cardDesc}>{description}</p>
+        <h4 className={style.createdDate}>{formulatedCreatedDate}</h4>
         <OptionBtnContainer>
           <AddFolderOptionBtn
             isFloatingBtnActive={isFloatingBtnActive}

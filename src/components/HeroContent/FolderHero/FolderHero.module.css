@@ -43,7 +43,7 @@
   background: #fff;
 }
 
-.div-link img {
+.div_ink img {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -56,11 +56,11 @@
   .container {
     width: 325px;
   }
-  .input-link {
+  .input_ink {
     width: 100%;
     padding: 12px 10px 12px 42px;
   }
-  .div-link img {
+  .div_ink img {
     left: 15px;
   }
 }

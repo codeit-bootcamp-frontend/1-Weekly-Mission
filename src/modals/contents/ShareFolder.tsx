@@ -7,6 +7,7 @@ import link from "/public/image/link.svg";
 import ModalContainer from "../ModalContainer";
 import getFolderTagListData from "../../utils/getFolderTagListData";
 import { IModalContentsProps } from "./types/modalContents.types";
+import Image from "next/image";
 
 const USER_ID = 1;
 
@@ -89,7 +90,7 @@ function ShareSns({ item }: { item: IName }) {
         backgroundColor={item.backgroundColor}
         onClick={() => item.url && handleClick(item.url)}
       >
-        <img src={item?.ImgUrl} alt="sns icon"></img>
+        <Image src={item?.ImgUrl} alt="sns icon"></Image>
       </SnsButton>
       <TextStyle>{item?.name}</TextStyle>
     </Container>

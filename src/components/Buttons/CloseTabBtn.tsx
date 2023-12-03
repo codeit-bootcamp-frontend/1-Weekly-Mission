@@ -3,7 +3,7 @@ import CloseTabBtnImg from "/public/image/CloseTabBtnBackground.svg";
 import { IOnClick } from "../../utils/types/common.types";
 
 const BtnStyle = styled.button`
-  background: url(${CloseTabBtnImg});
+  background-image: url("/public/image/CloseTabBtnBackground.svg");
   width: 24px;
   height: 24px;
   flex-shrink: 0;
@@ -11,7 +11,7 @@ const BtnStyle = styled.button`
   position: absolute;
   top: 16px;
   right: 16px;
-  z-index: 5;
+  z-index: 99;
 `;
 
 function CloseTabBtn({ onClick }: IOnClick) {

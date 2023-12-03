@@ -1,14 +1,10 @@
-import "./TagBtnContainer.module.css";
+import style from "./TagBtnContainer.module.css";
 import AddImg from "/public/image/icon-add.svg";
 import AddFolder from "../../../modals/contents/AddFolder";
 import { useState } from "react";
 import { IFolderTagData } from "../../../utils/types/common.types";
 import styled from "styled-components";
-
-const tagBtnStyle = {
-  width: "16px",
-  height: "16px",
-};
+import Image from "next/image";
 
 interface ITagBtnContainer {
   folderTagBtnList: IFolderTagData[];
@@ -27,8 +23,8 @@ function TagBtnContainer({
 
   return (
     <>
-      <div className="tag_div">
-        <div className="tag_container">
+      <div className={style.tag_div}>
+        <div className={style.tag_container}>
           {folderTagBtnList?.map((data, index) => (
             <button
               key={index}
@@ -41,9 +37,9 @@ function TagBtnContainer({
             </button>
           ))}
         </div>
-        <div className="tag-InnerText" onClick={handleClick}>
-          <h4 className="tag-InnerText_text">폴더 추가</h4>
-          <img src={AddImg} style={tagBtnStyle} alt="add icon" />
+        <div className={style.tag_InnerText} onClick={handleClick}>
+          <h4 className={style.tag_InnerText_text}>폴더 추가</h4>
+          <Image src={AddImg} width={16} height={16} alt="add icon" />
         </div>
         <AddFolder isOpen={isOpen} changeOpenState={changeOpenState} />
       </div>

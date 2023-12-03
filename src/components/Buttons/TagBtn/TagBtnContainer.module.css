@@ -27,7 +27,7 @@
   color: white;
 }
 
-.tag-InnerText {
+.tag_InnerText {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -37,11 +37,11 @@
 }
 
 @media (max-width: 767px) {
-  .tag-InnerText {
+  .tag_InnerText {
     visibility: hidden;
   }
 }
-.tag-InnerText_text {
+.tag_InnerText_text {
   color: #6d6afe;
   text-align: center;
   font-size: 16px;

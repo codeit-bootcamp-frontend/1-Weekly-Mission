@@ -3,6 +3,7 @@ import LinkImg from "/public/image/link.svg";
 import AddLinkToFolder from "../../../modals/contents/AddLinkToFolder";
 import { useState } from "react";
 import getFolderTagListData from "../../../utils/getFolderTagListData";
+import Image from "next/image";
 
 function FolderHero() {
   const [isOpen, setOpen] = useState(false);
@@ -17,7 +18,7 @@ function FolderHero() {
         <div className={styles.div_link}>
           <div>
             <span>
-              <img src={LinkImg} alt="link icon" />
+              <Image src={LinkImg} alt="link icon" />
             </span>
           </div>
           <div className={styles.link_container}>

@@ -1,4 +1,4 @@
-import "./CardContainer.module.css";
+import style from "./CardContainer.module.css";
 import Card from "./Card";
 import ShareImg from "/public/image/share.svg";
 import PenImg from "/public/image/pen.svg";
@@ -10,6 +10,7 @@ import getFolderTagListData from "../../utils/getFolderTagListData";
 import { useState } from "react";
 import { ICardContainerProps } from "./types/Card.types";
 import { IFolderTagData } from "../../utils/types/common.types";
+import Image from "next/image";
 
 function CardTitleText({ text }: { text: string }) {
   const [isShareOpen, setShareOpen] = useState<boolean>(false);
@@ -26,21 +27,30 @@ function CardTitleText({ text }: { text: string }) {
   const selectedTagData: IFolderTagData[] | undefined =
     getFolderTagListData(true);
   return (
-    <div className="card-title_text">
-      <h2 className="tagName_text">{text}</h2>
+    <div className={style.card_title_text}>
+      <h2 className={style.tagName_text}>{text}</h2>
       {text !== "전체" && selectedTagData && (
-        <div className="card-title_icon_container">
-          <div className="card-title_icon" onClick={() => setShareOpen(true)}>
-            <h5 className="card-title_icon_text">공유</h5>
-            <img src={ShareImg} alt="share icon" />
+        <div className={style.card_title_icon_container}>
+          <div
+            className={style.card_title_icon}
+            onClick={() => setShareOpen(true)}
+          >
+            <h5 className={style.card_title_icon_text}>공유</h5>
+            <Image src={ShareImg} alt="share icon" />
           </div>
-          <div className="card-title_icon" onClick={() => setEditOpen(true)}>
-            <h5 className="card-title_icon_text">이름 변경</h5>
-            <img src={PenImg} alt="pen icon" />
+          <div
+            className={style.card_title_icon}
+            onClick={() => setEditOpen(true)}
+          >
+            <h5 className={style.card_title_icon_text}>이름 변경</h5>
+            <Image src={PenImg} alt="pen icon" />
           </div>
-          <div className="card-title_icon" onClick={() => setDeleteOpen(true)}>
-            <h5 className="card-title_icon_text">삭제</h5>
-            <img src={TrashcanImg} alt="trash can icon" />
+          <div
+            className={style.card_title_icon}
+            onClick={() => setDeleteOpen(true)}
+          >
+            <h5 className={style.card_title_icon_text}>삭제</h5>
+            <Image src={TrashcanImg} alt="trash can icon" />
           </div>
 
           <ShareFolder
@@ -71,7 +81,7 @@ function CardContainer({
   return (
     <>
       {showTitle && <CardTitleText text={cardTitleText} />}
-      <section className="cards">
+      <section className={style.cards}>
         {cardListData.map((cardData, index) => (
           <Card key={index} cardData={cardData} />
         ))}
