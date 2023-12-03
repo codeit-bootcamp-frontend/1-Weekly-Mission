@@ -21,7 +21,6 @@ export const Layout = ({
   const { data } = useGetUser();
 
   
-  console.log(data);
   const profile = data
     ? { email: data.email, imageSource: data.profileImageSource }
     : null;

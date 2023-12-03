@@ -1,0 +1,15 @@
+.signWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-primary;
+
+  .signHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 218px;
+    height: 78px;
+  }
+}
