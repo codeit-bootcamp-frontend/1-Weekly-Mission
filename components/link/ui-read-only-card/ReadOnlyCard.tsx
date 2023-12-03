@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { Card } from "sharing/ui-card";
 import { CardContent } from "sharing/ui-card-content";
@@ -25,7 +26,7 @@ export const ReadOnlyCard = ({
   const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer">
+    <Link href={url} target="_blank" rel="noopener noreferrer">
       <Card onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
         <CardImage imageSource={imageSource} alt={alt} isZoomedIn={isHovered} />
         <CardContent
@@ -35,6 +36,6 @@ export const ReadOnlyCard = ({
           isHovered={isHovered}
         />
       </Card>
-    </a>
+    </Link>
   );
 };
