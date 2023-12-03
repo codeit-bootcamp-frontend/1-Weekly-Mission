@@ -1,0 +1,41 @@
+.input {
+  position: relative;
+  width: 350px;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+}
+
+.input::placeholder {
+  color: #9fa6b2;
+}
+
+.input:focus {
+  border-color: #6d6afe;
+}
+
+.errorInput {
+  position: relative;
+  width: 350px;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid #ff5b56;
+}
+
+.toggleButton {
+  position: absolute;
+  border: 0;
+}
+
+.toggleImg {
+  position: absolute;
+  top: 19px;
+  right: 25px;
+}
+
+.errorMsg {
+  position: absolute;
+  font-size: 14px;
+  color: #ff5b56;
+  margin-top: 6px;
+}
