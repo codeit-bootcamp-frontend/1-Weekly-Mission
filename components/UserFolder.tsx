@@ -5,6 +5,7 @@ import penImg from "@/public/img/svg/pen.svg";
 import deleteImg from "@/public/img/svg/delete.svg";
 import { folders } from "@/dataType/dataType";
 import Image from "next/image";
+import styles from "./userFolder.module.css";
 
 interface UserFolderType {
   folderDataObject: { data: folders[] };
@@ -61,7 +62,14 @@ function NavLink({ to, children, folderId }: NavLinkType) {
   const isActive = folderId === to;
   const isAll = folderId === null && to === 9999;
 
-  return <div style={isActive || isAll ? activeStyle : {}}>{children}</div>;
+  return (
+    <div
+      className={styles.folderName}
+      style={isActive || isAll ? activeStyle : {}}
+    >
+      {children}
+    </div>
+  );
 }
 
 const UserFolder = ({
@@ -89,12 +97,13 @@ const UserFolder = ({
   };
 
   return (
-    <div className="user-folder">
-      <div className="folder-lists">
-        <ul>
+    <div className={styles.userFolder}>
+      <div className={styles.folderLists}>
+        <ul className={styles.folderListsUl}>
           {newFolderData.map((folder) => {
             return (
               <li
+                className={styles.folderListsUlLi}
                 key={folder.id}
                 ref={(element) => (titleRef.current[folder.id] = element)}
                 onClick={() => onClick(folder.id)}
@@ -107,31 +116,42 @@ const UserFolder = ({
           })}
         </ul>
         <h4
+          className={styles.folderListsH4}
           onClick={(event) => handleListClick(event, "폴더 추가", "추가하기")}
         >
-          <span>폴더 추가</span>
-          <Image width={16} height={17} src={addImg} alt="추가이미지" />
+          <span className={styles.folderListsH4Span}>폴더 추가</span>
+          <Image
+            className={styles.folderListsH4Img}
+            width={16}
+            height={17}
+            src={addImg}
+            alt="추가이미지"
+          />
         </h4>
       </div>
-      <div className="select-folder">
-        <h2>{titleName && titleName}</h2>
+      <div className={styles.selectFolder}>
+        <h2 className={styles.selectFolderH2}>{titleName && titleName}</h2>
         {titleName && titleName !== "전체" ? (
-          <ul>
+          <ul className={styles.selectFolderUl}>
             {folderOption.map((option, index) => {
               return (
                 <li
+                  className={styles.selectFolderUlLi}
                   key={index}
                   onClick={(event) =>
                     handleListClick(event, option.name, option.btn, titleName)
                   }
                 >
                   <Image
+                    className={styles.selectFolderUlLiImg}
                     width={18}
                     height={19}
                     src={option.image}
                     alt={`${option.title}이미지`}
                   />
-                  <span>{option.title}</span>
+                  <span className={styles.selectFolderUlLiSpan}>
+                    {option.title}
+                  </span>
                 </li>
               );
             })}

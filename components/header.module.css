@@ -1,4 +1,4 @@
-header {
+.header {
   position: sticky;
   top: 0;
   right: 0;
@@ -7,7 +7,7 @@ header {
   width: 100%;
   background-color: #f0f6ff;
 }
-header .inner {
+.headerInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,15 +15,15 @@ header .inner {
   margin: 0 auto;
 }
 
-header a img {
+.headerAImg {
   height: auto;
 }
-.header-login {
+.headerLogin {
   display: flex;
   align-items: center;
 }
 
-.header-login button {
+.headerLoginButton {
   display: inline-block;
   width: 133px;
   padding: 16px 20px;
@@ -40,39 +40,33 @@ header a img {
   border-radius: 8px;
 }
 
-.Profile {
-  display: flex;
-  align-items: center;
-  flex: 1 0 1;
-}
-
-.profile_logo {
+.profileLogo {
   width: 28px;
   height: 28px;
   border-radius: 50%;
 }
 
-.profile_id {
+.profileId {
   margin-left: 6px;
   font-size: 14px;
   font-weight: 400;
 }
 
 @media screen and (max-width: 1200px) {
-  header .inner {
+  .headerInner {
     max-width: 767px;
     padding: 20px 0px;
   }
 }
 
 @media screen and (max-width: 775px) {
-  header .inner {
+  .headerInner {
     padding: 13px 32px;
   }
-  header a {
+  .headerA {
     width: 88.667px;
   }
-  .header-login a {
+  .headerLoginA {
     width: 80px;
     height: 37px;
     padding: 10px 16px;
@@ -81,7 +75,7 @@ header a img {
 }
 
 @media screen and (max-width: 390px) {
-  header a img {
+  .headerAImg {
     height: 16px;
   }
 }

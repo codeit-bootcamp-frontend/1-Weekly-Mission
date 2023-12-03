@@ -4,6 +4,7 @@ import { isLocation } from "@/utils/location";
 import Link from "next/link";
 import { AccountContext } from "@/contexts/AccountContext";
 import Image from "next/image";
+import styles from "./header.module.css";
 
 const MOBILE_WIDTH = 390;
 
@@ -17,27 +18,38 @@ const Header = () => {
   });
 
   return (
-    <header style={{ position: isLocation() ? "static" : "sticky" }}>
-      <div className="inner">
+    <header
+      className={styles.header}
+      style={{ position: isLocation() ? "static" : "sticky" }}
+    >
+      <div className={styles.headerInner}>
         <h1>
           <Link href="/">
-            <Image width={133} height={24} src={logoImg} alt="logo" />
+            <Image
+              className={styles.headerAImg}
+              width={133}
+              height={24}
+              src={logoImg}
+              alt="logo"
+            />
           </Link>
         </h1>
-        <div className="header-login">
+        <div className={styles.headerLogin}>
           {!account ? (
-            <button type="button">로그인</button>
+            <button className={styles.headerLoginButton} type="button">
+              로그인
+            </button>
           ) : (
             <>
               <Image
                 width={28}
                 height={28}
-                className="profile_logo"
+                className={styles.profileLogo}
                 src={profileImageSource ? profileImageSource : ""}
                 alt={name ? name : ""}
               />
               {windowWidth > MOBILE_WIDTH ? (
-                <span className="profile_id">{email && email}</span>
+                <span className={styles.profileId}>{email && email}</span>
               ) : null}
             </>
           )}

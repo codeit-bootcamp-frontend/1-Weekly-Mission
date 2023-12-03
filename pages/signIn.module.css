@@ -1,0 +1,10 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 730px;
+  margin: 50px auto 0;
+  padding: 0 15px;
+}

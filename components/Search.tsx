@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import searchImg from "@/public/img/svg/Search.svg";
 import closeIcon from "@/public/img/svg/close.svg";
+import styles from "./search.module.css";
 
 interface SearchType {
   setSearchResult: React.Dispatch<React.SetStateAction<string>>;
@@ -18,10 +19,17 @@ const Search = ({ setSearchResult, searchResult }: SearchType) => {
   };
   return (
     <>
-      <div className="section-title-second">
-        <div className="search-inner-box">
-          <Image width={16} height={16} src={searchImg} alt="검색이미지" />
+      <div className={styles.sectionTitleSecond}>
+        <div className={styles.searchInnerBox}>
+          <Image
+            className={styles.searchInnerBoxImg}
+            width={16}
+            height={16}
+            src={searchImg}
+            alt="검색이미지"
+          />
           <input
+            className={styles.searchInnerBoxInput}
             name="search"
             placeholder="링크를 검색해보세요"
             onChange={onChange}
@@ -38,10 +46,11 @@ const Search = ({ setSearchResult, searchResult }: SearchType) => {
           ) : null}
         </div>
       </div>
-      <div className="search-result">
+      <div className={styles.searchResult}>
         {searchResult ? (
           <>
-            <h2>{searchResult}</h2>으로 검색한 결과입니다.
+            <h2 className={styles.searchResultH2}>{searchResult}</h2>으로 검색한
+            결과입니다.
           </>
         ) : null}
       </div>

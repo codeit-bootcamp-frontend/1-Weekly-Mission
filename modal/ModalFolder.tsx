@@ -6,6 +6,7 @@ import linkIcon from "@/public/img/svg/linkIcon.svg";
 import { handleCopyClipBoard } from "@/utils/urlCopy";
 import { folderOptionType } from "@/dataType/dataType";
 import Image from "next/image";
+import styles from "./modalFolder.module.css";
 
 interface ModalFolderType {
   folderOption: folderOptionType;
@@ -19,14 +20,14 @@ const SNSICON = [
   {
     Icon: kakaoIcon,
     name: "카카오톡",
-    identifier: "kakaoIcon",
+    identifier: styles.kakaoIcon,
   },
   {
     Icon: facebookIcon,
     name: "페이스북",
-    identifier: "facebookIcon",
+    identifier: styles.facebookIcon,
   },
-  { Icon: linkIcon, name: "링크", identifier: "linkIcon" },
+  { Icon: linkIcon, name: "링크", identifier: styles.linkIcon },
 ];
 
 const ModalFolder = ({
@@ -61,18 +62,21 @@ const ModalFolder = ({
   };
   if (!folderData) return;
   return (
-    <div className="folder-modal">
-      <div className="folder-modal-wrap">
+    <div className={styles.folderModal}>
+      <div className={styles.folderModalWrap}>
         <Image
-          className="close-btn"
+          className={styles.closeBtn}
           src={closeImg}
           alt="닫기버튼아이콘"
           onClick={() => handleClose()}
         />
-        <h2>{title}</h2>
-        {isFolderName() ? <h4 className="folder-name">{dataItem}</h4> : null}
+        <h2 className={styles.folderModalWrapH2}>{title}</h2>
+        {isFolderName() ? (
+          <h4 className={styles.folderName}>{dataItem}</h4>
+        ) : null}
         {isInput() ? (
           <input
+            className={styles.input}
             name="modalName"
             value={changeName ? changeName : ""}
             onChange={(event) => handleChange(event)}
@@ -80,12 +84,14 @@ const ModalFolder = ({
           />
         ) : null}
         {title === "폴더에 추가" ? (
-          <ul className="folder-list">
+          <ul className={styles.folderList}>
             {folderLists.map((list, index: number) => {
               return (
-                <li key={index}>
-                  <h3>{list.name}</h3>
-                  <h4>{list.link.count}개의 링크</h4>
+                <li className={styles.folderListLi} key={index}>
+                  <h3 className={styles.folderListLiH3}>{list.name}</h3>
+                  <h4 className={styles.folderListLiH4}>
+                    {list.link.count}개의 링크
+                  </h4>
                 </li>
               );
             })}
@@ -93,6 +99,7 @@ const ModalFolder = ({
         ) : null}
         {title !== "폴더 공유" ? (
           <button
+            className={styles.button}
             type="button"
             style={{
               background: isDelete()
@@ -105,17 +112,21 @@ const ModalFolder = ({
         ) : null}
 
         {title === "폴더 공유" ? (
-          <ul className="link-copy">
+          <ul className={styles.linkCopy}>
             {SNSICON.map((list, index) => {
               return (
-                <li key={index}>
+                <li className={styles.linkCopyLi} key={index}>
                   <div
-                    className={`icon-border ${list.identifier}`}
+                    className={`${styles.iconBorder} ${list.identifier}`}
                     onClick={() => handleCopyClipBoard(list.name, share)}
                   >
-                    <Image src={list.Icon} alt={`${list.name}아이콘`} />
+                    <Image
+                      className={styles.linkCopyLiImg}
+                      src={list.Icon}
+                      alt={`${list.name}아이콘`}
+                    />
                   </div>
-                  <div className="icon-name">{list.name}</div>
+                  <div className={styles.iconName}>{list.name}</div>
                 </li>
               );
             })}

@@ -7,6 +7,7 @@ import { useFetch, useQueryFetch } from "@/hooks/useFetch";
 import { folders } from "@/dataType/dataType";
 import { AccountContext } from "@/contexts/AccountContext";
 import { useRouter } from "next/router";
+import styles from "./shared.module.css";
 
 interface QueryType {
   user?: string | string[];
@@ -50,7 +51,7 @@ const Shared = () => {
 
   if (!getBookmarkNumber()?.link.count) return;
   return (
-    <div className="shared">
+    <div className={styles.shared}>
       <BookMark
         bookmarkNumber={getBookmarkNumber()}
         account={account?.data[0]}
@@ -64,12 +65,10 @@ const Shared = () => {
             searchResult={searchResult}
           />
         ) : (
-          <h3 className="noLink">저장된 링크가 없습니다</h3>
+          <h3 className={styles.noLink}>저장된 링크가 없습니다</h3>
         )
       ) : (
-        <div className="section-title section-title-third">
-          {linksErrorMessage}
-        </div>
+        <div className={styles.sectionTitleThird}>{linksErrorMessage}</div>
       )}
     </div>
   );

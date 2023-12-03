@@ -4,6 +4,7 @@ import twitterImg from "@/public/img/png/Vector-2.png";
 import youtubeImg from "@/public/img/png/Vector-3.png";
 import melonImg from "@/public/img/png/Vector-4.png";
 import Image from "next/image";
+import styles from "./footer.module.css";
 
 const SNS = [
   {
@@ -30,23 +31,31 @@ const SNS = [
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="footer-connect">
-        <div className="footer-connect-year">codeit - 2023</div>
-        <ul className="footer-connect-faq">
+    <footer className={styles.footer}>
+      <div className={styles.footerConnect}>
+        <div className={styles.footerConnectYear}>codeit - 2023</div>
+        <ul className={styles.footerConnectFaq}>
           <li>
-            <a href="none">Privacy Policy</a>
+            <a className={styles.footerConnectFaqLiA} href="#none">
+              Privacy Policy
+            </a>
           </li>
           <li>
-            <a href="none">FAQ</a>
+            <a className={styles.footerConnectFaqLiA} href="#none">
+              FAQ
+            </a>
           </li>
         </ul>
-        <ul className="footer-connect-sns">
+        <ul className={styles.footerConnectSns}>
           {SNS.map((list, index) => {
             return (
-              <li key={index}>
+              <li className={styles.footerConnectSnsLi} key={index}>
                 <a href={list.link} target="blank">
-                  <Image src={list.image} alt={list.title} />
+                  <Image
+                    className={styles.footerConnectSnsLiImg}
+                    src={list.image}
+                    alt={list.title}
+                  />
                 </a>
               </li>
             );

@@ -1,0 +1,133 @@
+.userFolder {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.folderLists {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.folderListsUl {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.folderListsUlLi {
+  border: 1px solid var(--linkbrary-primary-color);
+  border-radius: 5px;
+}
+
+.folderListsUlLi:hover {
+  background-color: var(--linkbrary-primary-color);
+}
+
+.folderListsUlLi:hover .folderName {
+  color: #fff;
+}
+
+.folderName {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  display: inline-block;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.folderListsH4 {
+  color: #6d6afe;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.folderListsH4Span {
+  line-height: 1px;
+  margin-right: 4px;
+}
+
+.folderListsH4Img {
+  width: 16px;
+}
+
+.selectFolder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectFolderH2 {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.selectFolderUl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.selectFolderUlLi {
+  display: flex;
+  align-items: center;
+  color: var(--linkbrary-gray-60);
+  gap: 4px;
+  cursor: pointer;
+}
+
+.selectFolderUlLiImg {
+  width: 18px;
+}
+
+.selectFolderUlLiSpan {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1199px) {
+  .userFolder {
+    padding: 0 32px;
+    max-width: 765px;
+  }
+  .folderListsUl {
+    max-width: 500px;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .userFolder {
+    max-width: 390px;
+    gap: 28px;
+  }
+  .folderListsUl {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .folderListsH4 {
+    display: none;
+  }
+  .selectFolder {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

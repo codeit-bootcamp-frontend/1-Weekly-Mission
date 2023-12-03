@@ -1,0 +1,80 @@
+.sectionTitleSecond {
+  width: 100%;
+  max-width: 1060px;
+  margin: 40px auto;
+}
+
+.searchInnerBox {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.searchInnerBoxImg {
+  flex-basis: 16px;
+}
+
+.searchInnerBoxInput {
+  margin-left: 10px;
+  height: 24px;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background-color: #f5f5f5;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  color: #666;
+}
+
+/* 검색결과 */
+.searchResult {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto 40px;
+  display: flex;
+  color: var(--linkbrary-gray-60);
+  font-family: Pretendard;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.searchResultH2 {
+  color: var(--linkbrary-gray-100);
+  font-family: Pretendard;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1199px) {
+  .sectionTitleSecond,
+  .searchResult {
+    padding: 0 32px;
+    max-width: 765px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sectionTitleSecond {
+    max-width: 390px;
+    margin: 20px auto 32px;
+  }
+  .searchInnerBox {
+    padding: 13px 16px;
+  }
+  .searchInnerBoxInput {
+    font-size: 14px;
+  }
+  .searchResult {
+    max-width: 390px;
+    font-size: 24px;
+  }
+
+  .searchResultH2 {
+    font-size: 24px;
+  }
+}

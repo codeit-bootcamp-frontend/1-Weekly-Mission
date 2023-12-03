@@ -1,6 +1,7 @@
 import React from "react";
 import CardItem from "./CardItem";
 import { Links } from "../dataType/dataType";
+import styles from "./cards.module.css";
 
 interface CardsType {
   linkCardsData: { data: Links[] } | null;
@@ -30,7 +31,7 @@ const Cards = ({
   if (!linkCardsData) return;
 
   const { data: linksData } = linkCardsData;
-  console.log(linksData);
+
   const cardProps = {
     prevKey,
     handleCebabClick,
@@ -59,10 +60,15 @@ const Cards = ({
   });
 
   return (
-    <div className="section-title-third">
-      <div className="section-title-third-inner">
+    <div className={styles.sectionTitleThird}>
+      <div className={styles.sectionTitleThirdInner}>
         {newLinkData?.map((item) => (
-          <a key={item.id} href={item.url} target="_blank">
+          <a
+            className={styles.sectionTitleThirdInnerA}
+            key={item.id}
+            href={item.url}
+            target="_blank"
+          >
             <CardItem item={item} {...cardProps} />
           </a>
         ))}

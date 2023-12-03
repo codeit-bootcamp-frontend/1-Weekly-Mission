@@ -9,6 +9,7 @@ import { useFetch, useQueryFetch } from "@/hooks/useFetch";
 import ModalFolder from "@/modal/ModalFolder";
 import { Links, folderOptionType } from "@/dataType/dataType";
 import { AccountContext } from "@/contexts/AccountContext";
+import styles from "./folder.module.css";
 
 const modalBg = {
   background: "#000",
@@ -154,7 +155,7 @@ const Folder = () => {
 
   return (
     <>
-      <div className="folder">
+      <div className={styles.folder}>
         <AddInputSection
           handleListClick={handleListClick}
           newLink={newLink}
@@ -179,7 +180,7 @@ const Folder = () => {
           />
         ) : (
           foldersErrorMessage && (
-            <div className="user-folder">{foldersErrorMessage}</div>
+            <div className={styles.userFolder}>{foldersErrorMessage}</div>
           )
         )}
         {!linksErrorMessage ? (
@@ -193,14 +194,14 @@ const Folder = () => {
               searchResult={searchResult}
             />
           ) : (
-            <h3 className="noLink">저장된 링크가 없습니다</h3>
+            <h3 className={styles.noLink}>저장된 링크가 없습니다</h3>
           )
         ) : (
-          <div className="section-title-third">{linksErrorMessage}</div>
+          <div className={styles.sectionTitleThird}>{linksErrorMessage}</div>
         )}
         {folderOption ? (
           <>
-            <div className="modal-bg" style={{ ...modalBg }}></div>
+            <div className={styles.modalBg} style={{ ...modalBg }}></div>
             <ModalFolder
               folderOption={folderOption}
               setFolderOption={setFolderOption}
