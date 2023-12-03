@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import eyeOff from "./eye-off.svg";
-import eyeOn from "./eye-on.svg";
+import eyeOff from "../images/eye-off.svg";
+import eyeOn from "../images/eye-on.svg";
 
 // 에러 조건은 임시로 넣었습니다.
 
@@ -27,7 +27,7 @@ export function InputEmail() {
 
   return (
     <>
-      <InputWrapper
+      <EmailInputWrapper
         type="email"
         value={emailInput}
         placeholder="내용 입력"
@@ -65,7 +65,7 @@ export function InputPW() {
   return (
     <>
       <InputContainer>
-        <InputWrapper
+        <PasswordInputWrapper
           type={showPassword ? "type" : "password"}
           value={passwordInput}
           placeholder="내용 입력"
@@ -73,6 +73,7 @@ export function InputPW() {
           onFocus={handleFocusPasswordInput}
           onBlur={displayPasswordError}
           onChange={(e) => setPasswordInput(e.target.value)}
+          $passwordError={passwordError}
         />
 
         {showPassword ? (
@@ -86,7 +87,7 @@ export function InputPW() {
   );
 }
 
-const InputWrapper = styled.input`
+const EmailInputWrapper = styled.input`
   display: flex;
   width: 350px;
   padding: 18px 15px;
@@ -102,6 +103,12 @@ const InputWrapper = styled.input`
     ${({ $focusIn, $emailError }) =>
       $emailError ? "#ff5b56" : $focusIn ? "#6D6AFE" : "#CCD5E3"};
   background: #fff;
+`;
+
+const PasswordInputWrapper = styled(EmailInputWrapper)`
+  border: 1px solid
+    ${({ $focusIn, $passwordError }) =>
+      $passwordError ? "#ff5b56" : $focusIn ? "#6D6AFE" : "#CCD5E3"};
 `;
 
 const EyeImage = styled.img`
