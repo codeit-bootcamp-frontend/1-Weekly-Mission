@@ -6,9 +6,9 @@ import SearchContext from "../../contexts/SearchContext";
 import { FolderLinks } from "@/api/folder";
 
 type DataListProps = {
-  folderIdKey: number | undefined;
+  folderId: number | undefined;
   folderName: string;
-  linksData: FolderLinks[];
+  linksdata: FolderLinks[];
 };
 
 export default function DataList({
@@ -44,11 +44,30 @@ export default function DataList({
     );
   }
 
+  // return (
+  //   <div className={styles.container}>
+  //     {LinkSDataArr?.filter((data) => data.folderId === Number(folderIdKey))
+  //       ?.map((data) => data.linksdata)[0]
+  //       ?.map((item) => {
+  //         const { url, title, description } = item;
+  //         if (
+  //           url?.includes(inputValue) ||
+  //           title?.includes(inputValue) ||
+  //           description?.includes(inputValue)
+  //         )
+  //           return <DataListItem key={item.id} item={item} />;
+  //       })}
+  //   </div>
+  // );
+
+  LinkSDataArr.map((item) => console.log(item));
   return (
     <div className={styles.container}>
-      {LinkSDataArr?.filter((data) => data.folderId === Number(folderIdKey))
-        ?.map((data) => data.linksdata)[0]
-        ?.map((item) => {
+      {LinkSDataArr?.filter(
+        (data: DataListProps) => data.folderId === Number(folderIdKey)
+      )
+        ?.map((data: DataListProps) => data.linksdata)[0]
+        ?.map((item: FolderLinks) => {
           const { url, title, description } = item;
           if (
             url?.includes(inputValue) ||
