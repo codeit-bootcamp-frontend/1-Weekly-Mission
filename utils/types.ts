@@ -1,3 +1,4 @@
+// camel case, snake case의 차이로 인해 우선 모두 옵셔널으로 받아오도록 함..
 // sample/folder
 export interface SampleOwnerType {
   id: number;
@@ -6,13 +7,14 @@ export interface SampleOwnerType {
 }
 export interface SampleLinksType {
   id: number;
-  createdAt: string;
+  createdAt?: string;
   url: string;
   title: string | null;
   description: string | null;
-  imageSource: string | null;
-  image_source: undefined;
-  created_at: undefined;
+  imageSource?: string;
+
+  image_source?: string;
+  created_at?: string;
 }
 export interface SampleFolderDataType {
   id: number;
@@ -29,8 +31,9 @@ export interface SampleUserType {
   id: number;
   name: string;
   email: string;
-  profileImageSource: string | null;
-  image_source: undefined;
+  profileImageSource?: string;
+
+  image_source?: string;
 }
 
 // users/1
@@ -38,10 +41,11 @@ export interface UsersDataType {
   id: number;
   created_at: string;
   name: string;
-  image_source: string | null;
+  image_source?: string;
   email: string;
   auth_id: string;
-  profileImageSource: undefined;
+
+  profileImageSource?: string;
 }
 export interface UsersType {
   data: UsersDataType[];
@@ -69,10 +73,11 @@ export interface LinksDataType {
   url: string;
   title: string | null;
   description: string | null;
-  image_source: string | null;
+  image_source?: string;
   folder_id: number | null;
-  createdAt: undefined;
-  imageSource: undefined;
+
+  createdAt?: string;
+  imageSource?: string;
 }
 export interface LinksType {
   data: LinksDataType[];

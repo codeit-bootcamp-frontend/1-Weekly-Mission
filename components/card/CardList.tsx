@@ -17,7 +17,7 @@ const CardList = ({ folderId, searchTerm }: CardListProps) => {
 
   // useState를 사용하면 무한 렌더링 발생....
   // 타입 수정하기
-  const filteredLinks = useRef<any>(null);
+  const filteredLinks = useRef<SampleLinksType[] | LinksDataType[] | null>(null);
 
   useEffect(() => {
     if (!searchTerm) {
