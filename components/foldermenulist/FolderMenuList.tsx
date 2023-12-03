@@ -3,7 +3,7 @@ import Button from "../button/Button";
 import styles from "./FolderMenuList.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 import Plus from "@/public/images/plus.svg";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 
 export default function FolderMenuList() {
@@ -15,7 +15,7 @@ export default function FolderMenuList() {
     <div className={styles.container}>
       <div className={styles.sub__container}>
         {LinkSDataArr?.map((item) => {
-          let { folderId, folderName } = item;
+          const { folderId, folderName } = item;
 
           let isActive = false;
           if (String(folderId) === folderIdKey) {
@@ -31,7 +31,8 @@ export default function FolderMenuList() {
               onClick={() => {
                 router.push(`/folder/${folderId}`);
               }}
-              key={item.folderId}
+              // key={item.folderId}
+              key={folderId}
             >
               {folderName}
             </Button>
