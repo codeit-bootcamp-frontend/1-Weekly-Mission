@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Folder.module.css";
-import { FolderContents } from "@/api/folder";
+import { FolderContents } from "@/api/share";
 type FolderProps = {
   folder: FolderContents;
 };
