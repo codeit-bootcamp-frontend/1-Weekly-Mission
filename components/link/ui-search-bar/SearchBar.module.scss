@@ -31,9 +31,21 @@
   left: 1.6rem;
 }
 
-.close {
+.close-icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 1.6rem;
+  cursor: pointer;
+}
+
+.search-result {
+  margin-top: 4rem;
+  color: $color-gray60;
+  font-size: 3.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02rem;
+  .highlighted-text {
+    color: $color-black;
+  }
 }

@@ -4,10 +4,14 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const CardList = forwardRef<HTMLDivElement, { children: ReactNode }>(({ children }, ref) => {
-  return (
-    <div ref={ref} className={cx("container")}>
-      {children}
-    </div>
-  );
-});
+export const CardList = forwardRef<HTMLDivElement, { children: ReactNode }>(
+  ({ children }, ref) => {
+    return (
+      <div ref={ref} className={cx("container")}>
+        {children}
+      </div>
+    );
+  }
+);
+
+CardList.displayName = "CardList";

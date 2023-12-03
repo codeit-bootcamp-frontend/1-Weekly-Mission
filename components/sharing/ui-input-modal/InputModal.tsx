@@ -44,6 +44,7 @@ export const InputModal = ({
               value={value}
               onChange={onChange}
               placeholder={placeholder}
+              type="text"
             />
             <ModalContentButton onClick={() => {}}>
               {buttonText}

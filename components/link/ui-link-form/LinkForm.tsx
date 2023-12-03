@@ -17,7 +17,7 @@ type LinkFormProps = {
 };
 
 export const LinkForm = forwardRef<HTMLFormElement, LinkFormProps>(
-  ({ value, onChange, onSubmit }: LinkFormProps, ref) => {
+  ({ value, onChange, onSubmit }, ref) => {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       onSubmit(event);
@@ -42,3 +42,5 @@ export const LinkForm = forwardRef<HTMLFormElement, LinkFormProps>(
     );
   }
 );
+
+LinkForm.displayName = "LinkForm";
