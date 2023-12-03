@@ -15,7 +15,7 @@ export default function HeaderButton() {
     setOpenModal(true);
   };
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   };
 
