@@ -16,11 +16,11 @@ export default function Home() {
 
 const LinkBox = styled(Link)`
   position: relative;
-  top: 100px;
-  left: 100px;
-  margin: 10px;
-  padding: 10px;
-  border: 3px solid pink;
+  top: 10rem;
+  left: 10rem;
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.3rem solid pink;
 
-  font-size: 40px;
+  font-size: 4rem;
 `;
