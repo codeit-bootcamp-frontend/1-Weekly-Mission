@@ -10,7 +10,7 @@ import pen from "../public/images/folder/pen.svg";
 import trash from "../public/images/folder/trash.svg";
 import FolderButton from "../component/folder/folderbutton";
 import Modal from "../component/folder/modal";
-import { CardItem, FolderButtonItem } from "../utils/type";
+import { CardItem, FolderButtonItem } from "../types/type";
 import Image from "next/image";
 
 function LinkAdd() {
@@ -21,9 +21,7 @@ function LinkAdd() {
             <StyledLinkAddBox>
                 <StyledLinkAdd>
                     <Image src={linkAddIcon} alt="linkAddIcon" />
-                    <form>
-                        <input type="text" placeholder="링크를 추가해보세요" />
-                    </form>
+                    <input type="text" placeholder="링크를 추가해보세요" />
                     <StyledLinkAddButton onClick={() => setClose(!close)}>
                         추가하기
                     </StyledLinkAddButton>
@@ -33,11 +31,11 @@ function LinkAdd() {
     );
 }
 
-function NoLink() {
+export function NoLink() {
     return <StyledNoLink>저장된 링크가 없습니다.</StyledNoLink>;
 }
 
-function Folders() {
+function Folders({ search }: { search: string }) {
     const [cardData, setCardData] = useState<CardItem[]>([]);
     const [query, setQuery] = useState("/users/1/links");
     const [title, setTitle] = useState("전체");
@@ -51,7 +49,6 @@ function Folders() {
             setCardData(data as CardItem[]);
         };
         handleCards();
-        console.log(query);
     }, [query]);
 
     useEffect(() => {
@@ -67,8 +64,6 @@ function Folders() {
         setClose(!close);
         setTag(tag);
     }
-
-    console.log(cardData);
 
     return (
         <StyledFoldersBox>
@@ -113,6 +108,7 @@ function Folders() {
                     setClose={setClose}
                     setTag={setTag}
                     close={close}
+                    search={search}
                 />
             )}
         </StyledFoldersBox>
@@ -120,11 +116,12 @@ function Folders() {
 }
 
 function MainSection() {
+    const [search, setSearch] = useState("");
     return (
         <StyledMainBox>
             <StyledMainFlexBox>
-                <SearchBar />
-                <Folders />
+                <SearchBar search={search} setSearch={setSearch} />
+                <Folders search={search} />
             </StyledMainFlexBox>
         </StyledMainBox>
     );

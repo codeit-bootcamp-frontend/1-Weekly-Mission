@@ -4,7 +4,7 @@ import kakaoIcon from "../../public/images/modal/modal-icon-kakao.svg";
 import facebookIcon from "../../public/images/modal/modal-icon-facebook.svg";
 import linkIcon from "../../public/images/modal/modal-link.svg";
 import checkIcon from "../../public/images/modal/modal-footer-icon-check.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FacebookMessengerShareButton } from "react-share";
 import Image from "next/image";
@@ -96,15 +96,9 @@ function DeleteFolder() {
 
 function Share({ query }: { query: string }) {
     const currentUrl = window.location.href + "?" + query;
-    const Kakao = (window as any).kakao;
-    useEffect(() => {
-        Kakao.cleanup();
-        Kakao.init(process.env.REACT_APP_KAKAO_API);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
-    const shareKakao = () => {
-        Kakao.Share.sendDefault({
+    const shareKakao = async () => {
+        await window.Kakao.Share.sendDefault({
             objectType: "feed",
             content: {
                 title: "Linkbrary",
@@ -124,6 +118,7 @@ function Share({ query }: { query: string }) {
             ],
         });
     };
+
     return (
         <>
             <StyledModalTitleBox>

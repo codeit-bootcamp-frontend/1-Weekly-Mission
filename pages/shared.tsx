@@ -3,7 +3,7 @@ import getApi from "../component/api/api";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchBar from "../component/common/searchbar";
-import { CardItem } from "../utils/type";
+import { CardItem } from "../types/type";
 import Image from "next/image";
 
 interface Owner {

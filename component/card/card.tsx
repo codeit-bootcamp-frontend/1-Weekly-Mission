@@ -1,30 +1,16 @@
 import styled from "styled-components";
-import noImage from "../../public/images/card/no-image.svg";
 import star from "../../public/images/card/star.png";
 import kebab from "../../public/images/card/kebab.svg";
 import { useState } from "react";
-import { CardItem } from "../../utils/type";
 import Image from "next/image";
-
-interface CardProps {
-    item: CardItem;
-    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
-    setTag?: React.Dispatch<React.SetStateAction<string>>;
-    close?: boolean;
-}
-
-interface CardsProps {
-    items: CardItem[];
-    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
-    setTag?: React.Dispatch<React.SetStateAction<string>>;
-    close?: boolean;
-}
+import Link from "next/link";
+import dateCalculator from "@/utils/dateCalculator";
+import { CardProps, CardsProps } from "../../types/type";
+import filterItems from "./filterItems";
+import { NoLink } from "@/pages/folder";
 
 function Card({ item, setClose, setTag, close }: CardProps) {
     const [status, setStatus] = useState(true);
-    const bg = {
-        backgroundImage: `url(${item.imageSource ?? noImage})`,
-    };
 
     function handlePopOver(tag: string) {
         setStatus(!status);
@@ -35,49 +21,6 @@ function Card({ item, setClose, setTag, close }: CardProps) {
     }
 
     const apiDate = new Date(item.createdAt as string);
-    function dateCalculator(apiDate: Date) {
-        const myDate = new Date();
-        const elapsedMinute = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60
-        );
-        const elapsedHour = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60
-        );
-        const elapsedDays = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60 / 24
-        );
-        const elapsedMonth = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) / 1000 / 60 / 60 / 24 / 31
-        );
-        const elapsedYear = Math.floor(
-            (myDate.valueOf() - apiDate.valueOf()) /
-                1000 /
-                60 /
-                60 /
-                24 /
-                31 /
-                12
-        );
-
-        if (elapsedMinute < 60) {
-            if (elapsedMinute < 2) {
-                return `1 minute ago`;
-            }
-            return `${elapsedMinute} minute${elapsedMinute ? "s" : ""} ago`;
-        }
-        if (elapsedHour < 24) {
-            return `${elapsedHour} hour${elapsedHour ? "s" : ""} ago`;
-        }
-        if (elapsedDays < 31) {
-            return `${elapsedDays} day${elapsedDays ? "s" : ""} ago`;
-        }
-        if (elapsedMonth < 12) {
-            return `${elapsedMonth} month${elapsedMonth ? "s" : ""} ago`;
-        }
-        if (elapsedYear) {
-            return `${elapsedYear} year${elapsedYear ? "s" : ""} ago`;
-        }
-    }
     const elapsedTime = dateCalculator(apiDate);
     const year = apiDate.getFullYear();
     const month = apiDate.getMonth() + 1;
@@ -87,9 +30,11 @@ function Card({ item, setClose, setTag, close }: CardProps) {
             <StyledHoverImg>
                 <Image src={star} alt="star" />
             </StyledHoverImg>
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-                <StyledCardImg $bg={item.imageSource ?? noImage} />
-            </a>
+            <Link href={item.url} target="_blank" rel="noopener noreferrer">
+                <StyledCardImg
+                    $bg={item.imageSource ?? "/images/card/no-image.svg"}
+                />
+            </Link>
             <StyledTextBox>
                 <StyledHoverImg onClick={() => setStatus(!status)}>
                     <Image src={kebab} alt="kebab" />
@@ -110,35 +55,30 @@ function Card({ item, setClose, setTag, close }: CardProps) {
     );
 }
 
-export default function Cards({ items, setClose, setTag, close }: CardsProps) {
+export default function Cards({
+    items,
+    setClose,
+    setTag,
+    close,
+    search,
+}: CardsProps) {
     if (items === undefined) return;
-    const camelItems = items.map((item) => {
-        const newItem = { ...item };
-        if ("created_at" in newItem && "image_source" in newItem) {
-            if (
-                typeof newItem.created_at === "string" ||
-                typeof newItem.image_source === "string"
-            ) {
-                newItem.createdAt = newItem.created_at;
-                delete newItem.created_at;
-                newItem.imageSource = newItem.image_source!;
-                delete newItem.image_source;
-            }
-        }
-        return newItem;
-    });
-    console.log(camelItems);
+    const newItems = filterItems(items, search);
     return (
         <StyledCardGrid>
-            {camelItems.map((item) => (
-                <Card
-                    key={item.id}
-                    item={item}
-                    setClose={setClose}
-                    setTag={setTag}
-                    close={close}
-                />
-            ))}
+            {newItems.length === 0 ? (
+                <NoLink />
+            ) : (
+                newItems.map((item) => (
+                    <Card
+                        key={item.id}
+                        item={item}
+                        setClose={setClose}
+                        setTag={setTag}
+                        close={close}
+                    />
+                ))
+            )}
         </StyledCardGrid>
     );
 }

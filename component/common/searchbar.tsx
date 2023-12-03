@@ -1,17 +1,37 @@
 import searchIcon from "../../public/images/searchBar/shared-search.svg";
 import styled from "styled-components";
 import Image from "next/image";
+import { ChangeEvent } from "react";
+import closeIcon from "../../public/images/searchBar/close.png";
 
-export default function SearchBar() {
+export default function SearchBar({
+    search,
+    setSearch,
+}: {
+    search: string;
+    setSearch: React.Dispatch<React.SetStateAction<string>>;
+}) {
     return (
         <StyledSearchBox>
             <Image src={searchIcon} alt="searchIcon" />
-            <form>
-                <input type="text" placeholder="링크를 검색해 보세요." />
-            </form>
+            <input
+                type="text"
+                placeholder="링크를 검색해 보세요."
+                value={search}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setSearch(e.target.value)
+                }
+            />
+            <StyledCloseBox onClick={() => setSearch("")}>
+                <Image src={closeIcon} alt="close" />
+            </StyledCloseBox>
         </StyledSearchBox>
     );
 }
+
+const StyledCloseBox = styled.div`
+    cursor: pointer;
+`;
 
 const StyledSearchBox = styled.div`
     padding: 15px 16px;

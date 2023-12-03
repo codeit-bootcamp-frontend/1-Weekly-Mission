@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FolderButtonItem } from "../../utils/type";
+import { FolderButtonItem } from "../../types/type";
 
 interface ButtonProps {
     item: FolderButtonItem;
