@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
   }
 
-  main {
+  body {
     min-height: calc(100vh - 37.4rem)
   }
 
@@ -47,6 +47,10 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     background: transparent;
     cursor: pointer;
+  }
+
+  input {
+    outline: none;
   }
 `;
 
