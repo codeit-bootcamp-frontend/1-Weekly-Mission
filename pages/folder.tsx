@@ -5,8 +5,10 @@ import { getFoldersApi, getLinksApi } from '@/services/apis';
 export async function getServerSideProps({ query }: { query: any }) {
   const folderId = query?.folderId;
   try {
-    const { data: links } = await getLinksApi(folderId);
-    const { data: folders } = await getFoldersApi();
+    const [{ data: links }, { data: folders }] = await Promise.all([
+      getLinksApi(folderId),
+      getFoldersApi(),
+    ]);
 
     return {
       props: {
