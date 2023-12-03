@@ -4,13 +4,11 @@ import { ReactNode, useEffect } from 'react';
 import CopyToClipboard from '@/components/Toast/CopyToClipboard';
 import ToastPortals from '@/components/Toast/ToastPortals';
 import useToast from '@/hooks/useToast';
-import { IconFacebook, IconKakaotalk, IconShareLink } from '@/public/svgs';
-
-declare global {
-  interface Window {
-    Kakao: any;
-  }
-}
+import {
+  IconFacebookLarge,
+  IconKakaotalkLarge,
+  IconShareLink,
+} from '@/public/svgs';
 
 interface Props {
   folderName: string;
@@ -67,7 +65,7 @@ function Share({ folderName, folderId, userId }: Props) {
 
   useEffect(() => {
     Kakao.cleanup();
-    Kakao.init('014f7aa5b4ac80b12ce4c83b35240a45');
+    Kakao.init('');
   }, []);
 
   return (
@@ -77,13 +75,13 @@ function Share({ folderName, folderId, userId }: Props) {
         <Modal.Description>{folderName}</Modal.Description>
       </Modal.Header>
       <S.ShareContainer>
-        <ShareBox icon={IconKakaotalk} onClick={shareToKakao}>
+        <ShareBox icon={<IconKakaotalkLarge />} onClick={shareToKakao}>
           카카오톡
         </ShareBox>
-        <ShareBox icon={IconFacebook} onClick={shareToFacebook}>
+        <ShareBox icon={<IconFacebookLarge />} onClick={shareToFacebook}>
           페이스북
         </ShareBox>
-        <ShareBox icon={IconShareLink} onClick={copyLinkClipBoard}>
+        <ShareBox icon={<IconShareLink />} onClick={copyLinkClipBoard}>
           링크 복사
         </ShareBox>
       </S.ShareContainer>
