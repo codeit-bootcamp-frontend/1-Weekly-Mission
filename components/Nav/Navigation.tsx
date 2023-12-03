@@ -1,20 +1,31 @@
 import Avatar from "@/components/Nav/Avatar/Avatar";
 import Logo from "@/components/Nav/Avatar/Logo";
-import { Background, Nav, StyledLink } from "@/components/Nav/Navigation.styled";
+import { Nav, StyledLink } from "@/components/Nav/Navigation.styled";
+import { useEffect, useRef } from "react";
 
 interface Props {
   id?: number;
-  setIsUser?: React.Dispatch<React.SetStateAction<boolean>>;
   $page?: string;
 }
 
-export default function Navigation({ id, setIsUser, $page = "" }: Props) {
+export default function Navigation({ id, $page = "" }: Props) {
+  const locate = useRef("");
+
+  useEffect(() => {
+    const accessToken = sessionStorage.getItem("accessToken");
+    if (accessToken) {
+      locate.current = "/folder";
+      return;
+    }
+    locate.current = "/signin";
+    return;
+  }, []);
   return (
     <>
-      {/* <Background /> s*/}
+      {/* <Background /> */}
       <Nav $page={$page}>
         <Logo src="/logo.svg" alt="링크브러리 홈화면으로 이동" />
-        {$page === "/" ? <StyledLink href="/signin">로그인</StyledLink> : <Avatar id={id} setIsUser={setIsUser} />}
+        {$page === "/" ? <StyledLink href={locate.current}>로그인</StyledLink> : <Avatar id={id} />}
       </Nav>
     </>
   );

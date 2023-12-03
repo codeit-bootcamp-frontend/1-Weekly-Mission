@@ -7,11 +7,10 @@ import { URLS } from "@/utils/getData.type";
 
 interface Props {
   id: number;
-  isUser: boolean;
   dom: React.MutableRefObject<Dom>;
 }
 
-export default function HeaderSearch({ id, isUser, dom }: Props) {
+export default function HeaderSearch({ id, dom }: Props) {
   const folder = useData(URLS.FOLDER_CATEGORY, id);
   const { modal, dispatch } = useModal();
   const [value, setValue] = useState("");
@@ -19,7 +18,7 @@ export default function HeaderSearch({ id, isUser, dom }: Props) {
   const handleModal = (e: React.FormEvent) => {
     e.preventDefault();
     if (folder?.path === URLS.FOLDER_CATEGORY) {
-      isUser && dispatch({ title: value, type: "추가하기", data: folder.data });
+      dispatch({ title: value, type: "추가하기", data: folder.data });
     }
   };
 

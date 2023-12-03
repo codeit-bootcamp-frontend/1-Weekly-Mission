@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-export const StyledLabel = styled.label`
+interface IStyledLabel {
+  $error: boolean;
+}
+
+export const StyledLabel = styled.label<IStyledLabel>`
   position: relative;
 
-  &:focus-within {
-    color: var(--Primary);
-    font-weight: 700;
-  }
+  ${({ $error }) => ($error ? "color: var(--Red)" : "&:focus-within {color: var(--Primary); font-weight: 700;}")};
 `;

@@ -1,6 +1,10 @@
 import { styled } from "styled-components";
 
-export const Input = styled.input`
+interface IInput {
+  $error: boolean;
+}
+
+export const Input = styled.input<IInput>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +20,8 @@ export const Input = styled.input`
   &:focus-within {
     outline: 0.15rem solid var(--Primary);
   }
+
+  ${({ $error }) => ($error ? "border: 0.1rem solid var(--Red); &::placeholder { color: var}" : "")}
 `;
 
 export const OnOffButton = styled.button`
@@ -33,5 +39,6 @@ export const OnOffButton = styled.button`
 
 export const ErrorText = styled.p`
   height: 2.5rem;
+  font-size: 1.4rem;
   color: var(--Red);
 `;
