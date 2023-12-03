@@ -13,9 +13,18 @@ type LayoutProps = {
   footerRef?: RefObject<HTMLElement>;
 };
 
-export const Layout = ({ children, isSticky = true, footerRef }: LayoutProps) => {
+export const Layout = ({
+  children,
+  isSticky = true,
+  footerRef,
+}: LayoutProps) => {
   const { data } = useGetUser();
-  const profile = data ? { email: data.email, imageSource: data.profileImageSource } : null;
+
+  
+  console.log(data);
+  const profile = data
+    ? { email: data.email, imageSource: data.profileImageSource }
+    : null;
 
   return (
     <div>

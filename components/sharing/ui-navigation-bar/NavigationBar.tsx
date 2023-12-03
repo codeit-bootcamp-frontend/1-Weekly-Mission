@@ -3,7 +3,6 @@ import classNames from "classnames/bind";
 import { ROUTE } from "sharing/util";
 import { Cta } from "sharing/ui-cta";
 import { Profile } from "user/ui-profile";
-import { TEXT } from "./constant";
 import { IconLogo } from "../../../public/images";
 import Link from "next/link";
 
@@ -29,7 +28,7 @@ export const NavigationBar = ({ profile, isSticky }: NavigationBarProps) => {
         ) : (
           <Link href={ROUTE.로그인}>
             <Cta>
-              <span className={cx("signin")}>{TEXT.login}</span>
+              <span className={cx("signin")}>로그인</span>
             </Cta>
           </Link>
         )}

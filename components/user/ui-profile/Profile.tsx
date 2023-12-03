@@ -16,7 +16,12 @@ export const Profile = ({ profile }: ProfileProps) => {
   return (
     <div className={cx("container")}>
       <ImageWrapper className={cx("image")}>
-        <Image fill src={profile.imageSource} alt="프로필 이미지" />
+        <Image
+          className={cx("img")}
+          fill
+          src={profile.imageSource}
+          alt="프로필 이미지"
+        />
       </ImageWrapper>
       <span className={cx("email")}>{profile.email}</span>
     </div>
