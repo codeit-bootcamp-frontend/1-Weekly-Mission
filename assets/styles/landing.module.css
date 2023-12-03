@@ -1,0 +1,202 @@
+/* PC 화면 크기 (1200px 이상) */
+
+.hero {
+  background-color: var(--linkbrary-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7rem 36rem 0rem 36rem;
+  gap: 4rem;
+}
+
+.heroHeadingWrapper {
+  width: 70.8rem;
+  height: 16rem;
+}
+
+.heroHeadingWrapper h1 {
+  font-family: Pretendard;
+  text-align: center;
+  word-break: keep-all;
+  font-size: 5.8rem;
+  font-weight: 700;
+  line-height: 8rem; /* 125% */
+  letter-spacing: -0.35rem;
+}
+
+.heroHeadingGradient {
+  background: linear-gradient(119deg, var(--primary) 0%, #ff9f9f 100%);
+}
+
+.heroImage {
+  width: 120rem;
+  height: 59rem;
+}
+
+.contentList {
+  padding-top: 7rem;
+  padding-bottom: 12rem;
+}
+
+.contentItem {
+  display: grid;
+  justify-content: center;
+  column-gap: 15.7rem;
+  row-gap: 1rem;
+  padding: 5rem 0;
+}
+
+.contentItem:nth-of-type(odd) {
+  grid-template:
+    ". image"
+    "title image"
+    "description image"
+    ". image"
+    /31rem 55rem;
+}
+
+.contentItem:nth-of-type(even) {
+  grid-template:
+    "image ."
+    "image title"
+    "image description"
+    "image ."
+    /55rem 31rem;
+}
+
+.contentImage {
+  grid-area: image;
+  width: 100%;
+  height: 100%;
+}
+
+.contentTitle {
+  grid-area: title;
+  font-size: 4.8rem;
+  font-weight: 700;
+  letter-spacing: -0.3rem;
+}
+
+.gradientRedToBlue {
+  background: linear-gradient(117deg, #fe8a8a 2.29%, #a4ceff 100%);
+}
+
+.gradientBlueToYellow {
+  background: linear-gradient(304deg, #6fbaff 0%, #ffd88b 100%);
+}
+
+.gradientBlueToGreen {
+  background: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
+}
+
+.gradientPinkToBlue {
+  background: linear-gradient(310deg, #fe578f 0%, #68e8f9 100%);
+}
+
+.backgroundClipText {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contentDescription {
+  grid-area: description;
+  word-break: keep-all;
+  color: #6b6b6b;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .header__container {
+    padding: 2rem 3.2rem;
+  }
+
+  .hero {
+    padding: 3.9rem 25rem 0 25.1rem;
+    height: 75.6rem;
+  }
+
+  .heroHeadingWrapper {
+    width: 47.2rem;
+    height: 24rem;
+  }
+
+  .heroImage {
+    width: 65.0303rem;
+    height: 38.3114rem;
+  }
+
+  .contentList {
+    padding-top: 3rem;
+  }
+
+  .contentItem {
+    column-gap: 5.1rem;
+  }
+
+  .contentItem:nth-of-type(odd) {
+    grid-template-columns: 29rem 38.5rem;
+  }
+
+  .contentItem:nth-of-type(even) {
+    grid-template-columns: 38.5rem 29rem;
+  }
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .hero {
+    padding: 2.8rem 2rem 0 3.3rem;
+    height: 100%;
+    gap: 2.4rem;
+  }
+
+  .heroHeadingWrapper {
+    width: 23.6rem;
+    height: 12.6rem;
+  }
+
+  .heroHeadingWrapper > h1 {
+    font-size: 3rem;
+    line-height: 4.2rem;
+  }
+
+  .heroImage {
+    width: 100%;
+    height: 100%;
+  }
+
+  .contentList {
+    padding-top: 0;
+    padding-bottom: 4rem;
+  }
+
+  .contentItem {
+    align-items: center;
+    padding: 4rem 3.2rem;
+    row-gap: 1.6rem;
+  }
+
+  .contentItem:nth-of-type(odd),
+  .contentItem:nth-of-type(even) {
+    grid-template:
+      "title title"
+      "image image"
+      "image image"
+      "description description";
+  }
+
+  .contentTitle {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.2rem;
+  }
+
+  .contentDescription {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
