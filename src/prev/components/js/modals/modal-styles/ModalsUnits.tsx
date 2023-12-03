@@ -112,7 +112,7 @@ export const IconButton = styled.button`
   border: none;
 `;
 
-export const SNSIcon = styled(Image)`
+export const SNSIcon = styled(Image)<any>`
   width: 42px;
   height: 42px;
   cursor: pointer;

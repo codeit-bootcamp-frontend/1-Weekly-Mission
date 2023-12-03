@@ -1,19 +1,23 @@
 import styled from "styled-components";
 import Nav from "./Nav";
+import styles from "./header.module.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 export function FixedHeader() {
   return (
-    <FixedStyledHeader>
+    <div className={cx("fixed_header")}>
       <Nav />
-    </FixedStyledHeader>
+    </div>
   );
 }
 
 export function BasicHeader() {
   return (
-    <StyledHeader>
+    <div className={cx("basic_header")}>
       <Nav />
-    </StyledHeader>
+    </div>
   );
 }
 

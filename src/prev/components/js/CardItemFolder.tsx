@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import noImage from "Assets/noImage.png";
 import starIcon from "Assets/star.svg";
-import kebabIcon from "Assets/kebab.svg";
 import KebabPopOver from "./KebabButtonMenu";
 import { RowContainer } from "./Container";
 import getTimeDiff from "prev/utils/utilTimeDiff";
@@ -43,7 +42,12 @@ function CardItem({ item, modal, setLink, isOpen, onClick, idx }: Props) {
   return (
     <CardLink $url={item.url} onClick={handleCardClick}>
       <CardWrapper>
-        <BookmarkButton src={starIcon} alt="bookmark_icon" />
+        <BookmarkButton
+          src="/images/star.svg"
+          width="34"
+          height="34"
+          alt="bookmark_icon"
+        />
         {isOpen && (
           <KebabPopOver modal={modal} $url={item.url} setLink={setLink} />
         )}
@@ -58,8 +62,10 @@ function CardItem({ item, modal, setLink, isOpen, onClick, idx }: Props) {
           <RowContainer>
             <Time>{nowDate}</Time>
             <KebabButton
-              src={kebabIcon}
+              src="/images/kebab.svg"
               alt="kebabButton"
+              width="21"
+              height="17"
               onClick={handleTogglePopOver}
             />
           </RowContainer>
@@ -167,7 +173,7 @@ const CardImageWrapper = styled.div`
   position: relative;
 `;
 
-const BookmarkButton = styled.img`
+const BookmarkButton = styled(Image)`
   width: 34px;
   height: 34px;
   position: absolute;
@@ -176,7 +182,7 @@ const BookmarkButton = styled.img`
   z-index: 2;
 `;
 
-const KebabButton = styled.img`
+const KebabButton = styled(Image)`
   width: 21px;
   height: 17px;
   z-index: 2;

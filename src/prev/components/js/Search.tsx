@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import searchIcon from "Assets/Search.svg";
 import removeIcon from "Assets/close_white.svg";
+import Image from "next/image";
 
 interface Props {
   value: string;
@@ -9,9 +9,6 @@ interface Props {
 }
 
 function Search({ value, onChange, onDelete }: Props) {
-  console.log(value);
-  console.log(onChange);
-  console.log(onDelete);
   const handleChangeValue = (e: any) => {
     const nextValue = e.target.value;
     onChange(nextValue);
@@ -24,7 +21,12 @@ function Search({ value, onChange, onDelete }: Props) {
   return (
     <>
       <SearchForm>
-        <SearchIcon src={searchIcon} alt={searchIcon} />
+        <Image
+          src="/images/search.svg"
+          width="16"
+          height="16"
+          alt="돋보기 아이콘"
+        />
         <SearchInput
           placeholder="링크를 검색해보세요"
           value={value}
@@ -61,7 +63,7 @@ const SearchForm = styled.form`
   }
 `;
 
-const SearchIcon = styled(searchIcon)`
+const SearchIcon = styled(Image)<any>`
   width: 16px;
   height: 16px;
   margin-right: 10px;

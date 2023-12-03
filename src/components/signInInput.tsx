@@ -1,41 +1,43 @@
 //페어프로그래밍
 import { useState } from "react";
 import styled from "styled-components";
-import eyeOff from "Assets/eye-off.svg";
-import eyeOn from "Assets/eye-on.svg";
+import eyeOff from "../images/eye-off.svg";
+import eyeOn from "../images/eye-on.svg";
 
-export function PageInputLayout({
-  type = "text",
+function Input({
+  type = "password",
   isError = false,
   errorMessage = "내용을 다시 작성해주세요",
 }) {
-  const [emailFocusIn, setEmailFocusIn] = useState(false);
-  const [passwordFocusIn, setPasswordFocusIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [passwordType, setPasswordType] = useState(type);
 
   return (
     <>
-      <InputWrapper
-        type={type}
-        $focusIn={emailFocusIn}
-        onFocus={() => setEmailFocusIn(true)}
-        onBlur={() => setEmailFocusIn(false)}
-        placeholder="내용 입력"
-      />
       <InputContainer>
         <InputWrapper
-          type={showPassword ? "text" : "password"}
-          $focusIn={passwordFocusIn}
-          onFocus={() => setPasswordFocusIn(true)}
-          onBlur={() => setPasswordFocusIn(false)}
+          type={type === "password" ? passwordType : type}
           placeholder="내용 입력"
           $isError={isError}
         />
-
         {showPassword ? (
-          <EyeImage src={eyeOn.src} onClick={() => setShowPassword(false)} />
+          <EyeImage
+            src={eyeOn.src}
+            onClick={() => {
+              setShowPassword(false);
+              setPasswordType("password");
+            }}
+            $show={type === "password"}
+          />
         ) : (
-          <EyeImage src={eyeOff.src} onClick={() => setShowPassword(true)} />
+          <EyeImage
+            src={eyeOff.src}
+            onClick={() => {
+              setShowPassword(true);
+              setPasswordType("text");
+            }}
+            $show={type === "password"}
+          />
         )}
         {isError && <InputError $isError={isError}>{errorMessage} </InputError>}
       </InputContainer>
@@ -51,20 +53,22 @@ const InputWrapper = styled.input<any>`
   align-items: center;
   border-radius: 8px;
 
+  border: 1px solid #ccd5e3;
+  border-color: ${({ $isError }) => ($isError ? "#FF5B56" : "#CCD5E3")};
+
   &:focus {
     outline: none;
+    border-color: #6d6afe;
   }
-
-  border: 1px solid ${({ $focusIn }) => ($focusIn ? "#6D6AFE" : "#CCD5E3")};
-  border-color: ${({ $isError }) => ($isError ? "#FF5B56" : "#CCD5E3")};
 
   background: #fff;
   color: black;
 `;
-const EyeImage = styled.img`
+const EyeImage = styled.img<any>`
   position: absolute;
   top: 18px;
   right: 15px;
+  display: ${({ $show }) => ($show ? "" : "none")};
 `;
 const InputContainer = styled.div`
   display: flex;
@@ -79,3 +83,5 @@ const InputError = styled.p<any>`
   display: flex;
   color: #ff5b56;
 `;
+
+export default Input;

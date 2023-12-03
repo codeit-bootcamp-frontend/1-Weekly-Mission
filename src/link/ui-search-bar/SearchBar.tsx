@@ -28,6 +28,8 @@ export const SearchBar = ({
         onChange={onChange}
       />
       <Image
+        width="16"
+        height="16"
         src={SEARCH_IMAGE}
         alt="검색창인 것을 알려주는 돋보기 아이콘"
         className={cx("search-icon")}

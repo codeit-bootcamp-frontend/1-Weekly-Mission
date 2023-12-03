@@ -2,7 +2,6 @@ import { useRef } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
-import StyledButton from "./Button";
 import linkIcon from "Assets/link.svg";
 
 interface WrapperItem {
@@ -33,7 +32,7 @@ function LinkBarFixed({ onChange, onShow }: any) {
           onChange={handleChange}
           ref={inputRef}
         />
-        <StyledButton onClick={handleButtonClick}> 추가하기</StyledButton>
+        {/* <StyledButton onClick={handleButtonClick}> 추가하기</StyledButton> */}
       </Form>
     </Wrapper>
   );

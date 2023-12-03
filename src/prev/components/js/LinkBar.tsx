@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
-import StyledButton from "./Button";
 import linkIcon from "Assets/link.svg";
+import StyledButton from "./Button";
 
 interface WrapperItem {
   $view: boolean;
