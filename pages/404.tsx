@@ -1,5 +1,5 @@
 import Head from "next/head";
-
+import Link from "next/link";
 export default function NotFound() {
   return (
     <>
@@ -9,6 +9,7 @@ export default function NotFound() {
       <div
         style={{
           display: "flex",
+          flexDirection: "column",
           textAlign: "center",
           justifyContent: "center",
           alignItems: "center",
@@ -19,6 +20,9 @@ export default function NotFound() {
         }}
       >
         존재하지 않는 페이지입니다..!
+        <Link href="/" style={{ color: "gray" }}>
+          메인 페이지로 이동
+        </Link>
       </div>
     </>
   );

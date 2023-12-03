@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Search from "@/components/Search";
-import { getFolderList, getTotalFolder } from "../../api/folderListApi";
 import FolderList from "./FolderList";
-import { requestSingleFolderApi } from "../../api/singleFolderApi";
+import { requestSingleFolderApi } from "@/api/singleFolderApi";
 import Cards from "./Cards";
-import { requestFullFolderApi } from "../../api/getFullFolderApi";
+import axios from "@/api/axios";
 
 const Header = ({ getData }) => {
   const [fullList, setFullList] = useState([]);
@@ -50,17 +49,19 @@ const Header = ({ getData }) => {
   }
 
   const getFolderLists = async () => {
-    const temp = await getFolderList();
+    const temp = await axios.get(`/users/1/folders`);
     setFullList(temp?.data);
   };
 
   const getTotalData = async () => {
-    const temp = await getTotalFolder();
+    const temp = await axios.get(`/users/1/links`);
     setTotalData(temp?.data);
   };
 
   useEffect(() => {
     getFolderLists();
+  }, []);
+  useEffect(() => {
     getTotalData();
   }, []);
 
@@ -82,7 +83,7 @@ const Header = ({ getData }) => {
 
   const [fullFolderData, setFullFolderData] = useState();
   const getFullFolderData = async () => {
-    const temp = await requestFullFolderApi();
+    const temp = await axios.get(`/users/1/folders`);
     setFullFolderData(temp?.data);
   };
   useEffect(() => {
@@ -144,8 +145,9 @@ const Header = ({ getData }) => {
     setInputValue(v);
   }
   let searchedData = [];
-  if (isTotalClicked) {
-    searchedData = totalData?.filter((data) => {
+
+  if (isTotalClicked && totalData) {
+    searchedData = totalData?.data?.filter((data) => {
       if (
         data?.url?.includes(inputValue) ||
         data?.title?.includes(inputValue) ||
@@ -423,13 +425,19 @@ const Header = ({ getData }) => {
         </div>
       )}
       {searchedData && inputValue !== "" && (
-        <Cards fullData={searchedData} fullFolderData={fullFolderData} />
+        <Cards fullData={searchedData} fullFolderData={fullFolderData?.data} />
       )}
       {totalData && isTotalClicked && inputValue === "" && (
-        <Cards fullData={totalData} fullFolderData={fullFolderData} />
+        <Cards
+          fullData={totalData?.data}
+          fullFolderData={fullFolderData?.data}
+        />
       )}
       {singleFolderData && isSingleClicked && inputValue === "" && (
-        <Cards fullFolderData={fullFolderData} fullData={singleFolderData} />
+        <Cards
+          fullData={singleFolderData}
+          fullFolderData={fullFolderData?.data}
+        />
       )}
       {singleFolderData.length === 0 && isSingleClicked && (
         <div

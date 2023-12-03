@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "@/folderPageComponents/Nav";
 import Header from "@/folderPageComponents/Header";
 import Article from "@/ui/Article";
@@ -7,23 +7,36 @@ import AddLink from "@/components/AddLink";
 import axios from "@/api/axios";
 import Head from "next/head";
 
-export async function getStaticProps() {
-  // const res = await axios.get(`/users/1`);
-  const res = await axios.get(`/sample/user`);
-  const userEmail: any = res?.data?.email;
-
-  return {
-    props: {
-      userEmail,
-    },
-  };
+interface Link {
+  count: number;
 }
-//https://bootcamp-api.codeit.kr/api/users/1/folders
-export default function FolderPage({ userEmail }: { userEmail: string }) {
-  const [data, setData] = useState();
+
+interface SingleData {
+  created_at: string;
+  id: number;
+  link: Link;
+  name: string;
+  user_id: number;
+}
+
+interface Data {
+  data: SingleData[];
+}
+
+export default function FolderPage() {
+  const [userEmail, setUserEmail] = useState("");
+  const [data, setData] = useState<Data>();
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
-  function getData(data: any) {
+  async function getUserEmail() {
+    const res = await axios.get(`/users/1`);
+    setUserEmail(res?.data?.data[0]?.email);
+  }
+  useEffect(() => {
+    getUserEmail();
+  }, []);
+
+  function getData(data: Data) {
     setData(data);
   }
   function handleAddLinkClick(
@@ -53,10 +66,10 @@ export default function FolderPage({ userEmail }: { userEmail: string }) {
           handleAddLinkValue={handleAddLinkValue}
         />
       </header>
-      {/* <Header getData={getData} /> */}
+      <Header getData={getData} />
       <Article />
       <Footer />
-      {/* {isAddLinkClicked ? (
+      {isAddLinkClicked ? (
         <div className="modal-background">
           <div className="modal">
             <b>폴더에 추가</b>
@@ -73,18 +86,19 @@ export default function FolderPage({ userEmail }: { userEmail: string }) {
               />
             </div>
             <ul>
-              {data?.map((list) => {
-                return (
-                  <li style={{ listStyle: "none" }} key={list.id}>
-                    <button
-                      className="Modal-list-button"
-                      onClick={(e) => handleModalListButton(e)}
-                    >
-                      <b>{list.name}</b> &nbsp; {list.link.count}개 링크
-                    </button>
-                  </li>
-                );
-              })}
+              {data &&
+                data?.data?.map((list) => {
+                  return (
+                    <li style={{ listStyle: "none" }} key={list.id}>
+                      <button
+                        className="Modal-list-button"
+                        onClick={(e) => handleModalListButton(e)}
+                      >
+                        <b>{list.name}</b> &nbsp; {list.link.count}개 링크
+                      </button>
+                    </li>
+                  );
+                })}
             </ul>
             <button
               style={{
@@ -104,7 +118,7 @@ export default function FolderPage({ userEmail }: { userEmail: string }) {
             </button>
           </div>
         </div>
-      ) : null} */}
+      ) : null}
     </>
   );
 }
