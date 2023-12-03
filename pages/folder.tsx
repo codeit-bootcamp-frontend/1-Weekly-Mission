@@ -37,7 +37,7 @@ export default function FolderPage() {
     getUserEmail();
   }, []);
 
-  function getData(data: Data) {
+  function getData(data: Data): void {
     setData(data);
   }
   function handleAddLinkClick(

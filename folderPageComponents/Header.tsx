@@ -5,41 +5,93 @@ import { requestSingleFolderApi } from "@/api/singleFolderApi";
 import Cards from "./Cards";
 import axios from "@/api/axios";
 
-const Header = ({ getData }) => {
+interface Link {
+  count: number;
+}
+
+interface SingleData {
+  created_at: string;
+  id: number;
+  link: Link;
+  name: string;
+  user_id: number;
+}
+
+interface Data {
+  data: SingleData[];
+}
+
+interface GetData {
+  getData: (data: Data) => void;
+}
+
+interface SingleFolderDataId {
+  singleFolderDataId: number;
+}
+
+interface SingleFolderDataName {
+  singleFolderDataName: string;
+}
+
+interface SingleDataOfTotalData {
+  created_at: string;
+  description: string;
+  folder_id: number;
+  id: number;
+  image_source: string;
+  title: string;
+  updated_at: string;
+  url: string;
+}
+interface TotalData {
+  data: SingleDataOfTotalData[];
+}
+
+const Header = ({ getData }: GetData) => {
   const [fullList, setFullList] = useState([]);
-  const [totalData, setTotalData] = useState([]);
+  const [totalData, setTotalData] = useState<TotalData>();
   const [isTotalClicked, setIsTotalClicked] = useState(false);
   const [isSingleClicked, setIsSingleClicked] = useState(false);
-  const [singleFolderDataId, setSingleFolderDataId] = useState();
-  const [singleFolderData, setSingleFolderData] = useState([]);
-  const [singleFolderName, setSingleFolderName] = useState();
+  const [singleFolderDataId, setSingleFolderDataId] = useState<unknown>();
+  const [singleFolderData, setSingleFolderData] = useState<
+    SingleDataOfTotalData[]
+  >([]);
+  const [singleFolderName, setSingleFolderName] = useState("");
   const [isAddFolderClicked, setIsAddFolderClicked] = useState(false);
   const [isChangeFolderNameClicked, setIsChangeFolderNameClicked] =
     useState(false);
   const [isDeleteFolderClicked, setIsDeleteFolderClicked] = useState(false);
   const [isShareFolderClicked, setIsShareFolderClicked] = useState(false);
 
-  function handleAddFolderClick(e) {
+  function handleAddFolderClick(
+    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+  ) {
     e.preventDefault();
     setIsAddFolderClicked(!isAddFolderClicked);
   }
 
-  function handleChangeFolderNameClick(e) {
+  function handleChangeFolderNameClick(
+    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+  ) {
     e.preventDefault();
     setIsChangeFolderNameClicked(!isChangeFolderNameClicked);
   }
 
-  function handleDeleteFolderClick(e) {
+  function handleDeleteFolderClick(
+    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+  ) {
     e.preventDefault();
     setIsDeleteFolderClicked(!isDeleteFolderClicked);
   }
 
-  function handleShareFolderClick(e) {
+  function handleShareFolderClick(
+    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+  ) {
     e.preventDefault();
     setIsShareFolderClicked(!isShareFolderClicked);
   }
 
-  function handleCopyClipBoard(text) {
+  function handleCopyClipBoard(text: string) {
     try {
       navigator.clipboard.writeText(text);
       alert("링크가 클립보드에 복사되었습니다!");
@@ -72,16 +124,16 @@ const Header = ({ getData }) => {
     setIsTotalClicked(true);
   }
 
-  const handleFolderClick = (folderId, folderName) => {
+  const handleFolderClick = (folderId: unknown, folderName: string) => {
     if (isTotalClicked) {
       setIsTotalClicked(false);
     }
     setIsSingleClicked(true);
-    setSingleFolderDataId(folderId);
+    setSingleFolderDataId(folderId as SingleFolderDataId | undefined);
     setSingleFolderName(folderName);
   };
 
-  const [fullFolderData, setFullFolderData] = useState();
+  const [fullFolderData, setFullFolderData] = useState<Data>();
   const getFullFolderData = async () => {
     const temp = await axios.get(`/users/1/folders`);
     setFullFolderData(temp?.data);
@@ -90,10 +142,10 @@ const Header = ({ getData }) => {
     getFullFolderData();
   }, []);
   useEffect(() => {
-    getData(fullFolderData);
+    getData(fullFolderData as Data);
   }, [fullFolderData]);
   const getSingleFolderData = async () => {
-    const temp = await requestSingleFolderApi(singleFolderDataId);
+    const temp = await requestSingleFolderApi(singleFolderDataId as number);
     setSingleFolderData(temp?.data);
   };
 
@@ -104,12 +156,18 @@ const Header = ({ getData }) => {
 
   const currentLink = `localhost:3000/shared?user={1}&folder=${singleFolderDataId}`;
 
-  function handleFaceBookClick(e, url) {
+  function handleFaceBookClick(
+    e: React.MouseEvent<HTMLButtonElement>,
+    url: string
+  ) {
     e.preventDefault();
     window.open(`http://www.facebook.com/sharer.php?u=${url}`);
   }
 
-  function handleKakaoClick(e, url) {
+  function handleKakaoClick(
+    e: React.MouseEvent<HTMLButtonElement>,
+    url: string
+  ) {
     e.preventDefault();
     alert("Kakao SDK가 로드되지 않았습니다. 나중에 다시 시도해주세요.");
     return;
@@ -141,10 +199,10 @@ const Header = ({ getData }) => {
     }
   }
   const [inputValue, setInputValue] = useState("");
-  function getInputValue(v) {
+  function getInputValue(v: string) {
     setInputValue(v);
   }
-  let searchedData = [];
+  let searchedData: unknown = [];
 
   if (isTotalClicked && totalData) {
     searchedData = totalData?.data?.filter((data) => {
@@ -166,6 +224,7 @@ const Header = ({ getData }) => {
         return data;
       }
     });
+    console.log(searchedData);
   } else if (!isTotalClicked && !isSingleClicked) {
     searchedData = [];
   }
