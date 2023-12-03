@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FocusEventHandler, useState } from "react";
 import styled from "styled-components";
 import eyeOff from "/public/eye-off.svg";
 import eyeOn from "/public/eye-on.svg";
@@ -17,6 +17,10 @@ function Input({
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(type);
 
+  const handleValidation = (type: string) => {
+    console.log("validation", type);
+  };
+
   return (
     <>
       <InputContainer>
@@ -24,6 +28,7 @@ function Input({
           type={type === "password" ? passwordType : type}
           placeholder="내용 입력"
           $isError={isError}
+          onBlur={() => handleValidation(type)}
         />
         {showPassword ? (
           <EyeImage
