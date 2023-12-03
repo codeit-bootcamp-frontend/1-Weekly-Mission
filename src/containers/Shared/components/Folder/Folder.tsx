@@ -5,13 +5,9 @@ import filterLinks from '@/utils/filterLinks';
 import SearchBar from '@/components/SearchBar';
 import CardList from '@/components/CardsContainer';
 import Banner from '../Banner';
-import { SharedFolder } from 'pages/shared';
+import { SharedFolder } from '@/types/Folder.types';
 
-interface Props {
-  folder?: SharedFolder;
-}
-
-function Folder({ folder }: Props) {
+function Folder({ folder }: SharedFolder) {
   const name = folder?.name;
   const owner = folder?.owner;
   const links = folder?.links;

@@ -1,9 +1,4 @@
-import axios from 'axios';
-
-const defaultInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
-  timeout: 10000,
-});
+import { defaultInstance } from '../config/default';
 
 const fetch = async (options: any) => {
   const client = defaultInstance({ ...options });

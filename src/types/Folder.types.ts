@@ -12,14 +12,16 @@ export interface Link {
 }
 
 export interface SharedFolder {
-  id: number;
-  name: string;
-  count: number;
-  links: Link[];
-  owner: {
+  folder: {
     id: number;
     name: string;
-    profileImageSource: string;
+    count: number;
+    links: Link[];
+    owner: {
+      id: number;
+      name: string;
+      profileImageSource: string;
+    };
   };
 }
 

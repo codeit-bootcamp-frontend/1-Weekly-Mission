@@ -1,25 +1,18 @@
 import Shared from '@/containers/Shared';
 import { SharedFolder } from '@/types/Folder.types';
-import fetch from '@/services/utils/fetch';
+import { getSharedFolderApi } from '@/services/apis';
 
 export async function getStaticProps() {
-  const { data: fetchedData } = await fetch({
-    url: '/sample/folder',
-    method: 'get',
-  });
+  const folder = await getSharedFolderApi();
 
   return {
     props: {
-      folder: fetchedData.folder,
+      folder: folder.folder,
     },
   };
 }
 
-interface Props {
-  folder: SharedFolder;
-}
-
-function SharedPage({ folder }: Props) {
+function SharedPage({ folder }: SharedFolder) {
   return <Shared folder={folder} />;
 }
 

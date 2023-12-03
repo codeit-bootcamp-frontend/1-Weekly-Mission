@@ -1,19 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import fetch from '@/services/utils/fetch';
+import { axiosOptions } from '@/services/utils/api';
 
 interface Props {
   deps?: (boolean | string | number)[];
   skip?: boolean;
-  options: {
-    url: string;
-    method: string;
-    params?: {
-      [param: string]: string | number | boolean;
-    };
-    data?: {
-      [data: string]: string | number | boolean;
-    };
-  };
+  options: axiosOptions;
 }
 
 function useRequest<T>({ deps = [], skip = false, options }: Props) {

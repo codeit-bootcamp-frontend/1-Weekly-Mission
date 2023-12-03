@@ -1,12 +1,8 @@
 import Layout from '@/components/Layout';
 import Folder from './components/Folder';
-import { SharedFolder } from 'pages/shared';
+import { SharedFolder } from '@/types/Folder.types';
 
-interface Props {
-  folder?: SharedFolder;
-}
-
-function Shared({ folder }: Props) {
+function Shared({ folder }: SharedFolder) {
   return (
     <Layout isLoggedIn>
       <Folder folder={folder} />
