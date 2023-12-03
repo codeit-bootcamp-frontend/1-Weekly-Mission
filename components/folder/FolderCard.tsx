@@ -50,16 +50,17 @@ export default function FolderCard(link: Props) {
 
   const clickOutside = (e: MouseEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
-    if (back.current && !back.current.contains(target)) {
+    if (!target) {
       setClicked(!clicked);
     }
   };
-
   const onClickDeleteModal = () => {
+    setClicked(!clicked);
     setShowDeleteModal(!showDeleteModal);
   };
 
   const onClickToFolderModal = () => {
+    setClicked(!clicked);
     setShowToFolderPlusModal(!showToFolderPlusModal);
   };
 
@@ -116,7 +117,7 @@ export default function FolderCard(link: Props) {
         <FolderDeleteModal
           handleClick={onClickDeleteModal}
           cardLink={link.item.url}
-          value={''}
+          value={'링크 삭제'}
           title={''}
         />
       )}

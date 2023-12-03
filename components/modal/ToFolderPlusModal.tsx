@@ -10,17 +10,17 @@ interface Props {
   cardLink: string;
 }
 
-const XCloseImgDiv = styled.div`
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-`;
-
 const CheckImgDiv = styled.div`
   position: relative;
   width: 14px;
   height: 14px;
+`;
+
+const CloseImg = styled(Image)`
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
 `;
 
 export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
@@ -44,7 +44,7 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
   return (
     <M.ModalBackground
       className="modal-background"
-      ref={`${back}`}
+      ref={back}
       onClick={backClick as () => void}
     >
       <M.ModlaWrapper>
@@ -70,9 +70,13 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
         <M.ModalMain>
           <M.ModalButton $color={'blue'}>추가하기</M.ModalButton>
         </M.ModalMain>
-        <XCloseImgDiv>
-          <Image src="/Xclose.svg" fill alt="닫기 버튼" onClick={handleClick} />
-        </XCloseImgDiv>
+        <CloseImg
+          src="/Xclose.svg"
+          width={16}
+          height={16}
+          alt="닫기 버튼"
+          onClick={handleClick}
+        />
       </M.ModlaWrapper>
     </M.ModalBackground>
   );

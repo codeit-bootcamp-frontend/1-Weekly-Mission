@@ -19,6 +19,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  margin: 40px;
 `;
 
 export const MainSearch = styled.div`

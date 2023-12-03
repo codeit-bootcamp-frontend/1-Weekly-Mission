@@ -81,7 +81,6 @@ export default function FolderMain() {
     } catch {}
     setOnDeleteModal(!onDeleteModal);
   };
-
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);
