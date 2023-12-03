@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import eyeOnImg from '@/public/assets/icons/eye-on.svg';
-import eyeOffImg from '@/public/assets/icons/eye-off.svg';
-import { ChangeEvent, FocusEvent, MouseEvent } from 'react';
+import eyeOnImg from '/assets/icons/eye-on.svg';
+import eyeOffImg from '/assets/icons/eye-off.svg';
+import { ChangeEvent, FocusEvent } from 'react';
 
 interface Props {
   id: string;
@@ -13,6 +13,7 @@ interface Props {
   onEyeClick?: () => void;
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onInputBlur?: (e: FocusEvent<HTMLInputElement>) => void;
+  errorMessage: { [key: string]: string };
 }
 
 export default function SignInput({
@@ -25,6 +26,7 @@ export default function SignInput({
   onInputChange,
   onInputBlur,
   validation,
+  errorMessage,
 }: Props) {
   const borderColor =
     validation[id] === null || validation[id] ? 'border-gray20' : 'border-red';
@@ -47,12 +49,26 @@ export default function SignInput({
           onBlur={onInputBlur}
         />
         {eyeShow && (
-          <button type='button' onClick={onEyeClick}>
-            <Image src={eyeOpen ? eyeOnImg : eyeOffImg} alt='비밀번호 보이기' />
+          <button
+            className='relative w-[1rem] h-[1rem]'
+            type='button'
+            onClick={onEyeClick}
+          >
+            <Image
+              fill
+              src={
+                eyeOpen
+                  ? '/assets/icons/eye-off.svg'
+                  : '/assets/icons/eye-on.svg'
+              }
+              alt='비밀번호 보이기'
+            />
           </button>
         )}
       </div>
-      <div className='text-red text-[0.875rem] mt-[0.375rem] h-6'></div>
+      <div className='text-red text-[0.875rem] mt-[0.375rem] h-6'>
+        {errorMessage[id]}
+      </div>
     </div>
   );
 }

@@ -36,6 +36,10 @@ export default function SignIn() {
     email: null,
     password: null,
   });
+  const [errorMessage, setErrorMessage] = useState({
+    email: '',
+    password: '',
+  });
 
   const handleEyeClick = () => {
     setEyeOpen((prev) => !prev);
@@ -45,12 +49,29 @@ export default function SignIn() {
     setInputValue((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  const createErrorMessage = (targetValue: string, id: string) => {
+    if (targetValue === '') {
+      setErrorMessage((prev) => ({ ...prev, [id]: '값을 입력해 주세요' }));
+    } else if (id === 'email' && !validation.email) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        email: '올바른 이메일 주소가 아닙니다.',
+      }));
+    } else if (id === 'password' && !validation.password) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        password: '비밀번호를 확인해 주세요.',
+      }));
+    }
+  };
+
   const handleInputBlur = (e: FocusEvent<HTMLInputElement>) => {
     const {
       target: { id, value },
     } = e;
     const result = ValidateReg[id].test(value);
     setValidation((prev) => ({ ...prev, [id]: result }));
+    createErrorMessage(value, id);
   };
 
   return (
@@ -74,6 +95,7 @@ export default function SignIn() {
             validation={validation}
             onInputChange={handleInputChange}
             onInputBlur={handleInputBlur}
+            errorMessage={errorMessage}
           />
           <SignInput
             id='password'
@@ -85,6 +107,7 @@ export default function SignIn() {
             onEyeClick={handleEyeClick}
             onInputChange={handleInputChange}
             onInputBlur={handleInputBlur}
+            errorMessage={errorMessage}
           />
         </div>
         <Button text='로그인' />
