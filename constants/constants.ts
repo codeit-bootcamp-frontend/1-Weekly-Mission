@@ -1,8 +1,8 @@
-import kakaoIcon from "@/images/kakaoIcon.png";
-import facebookIcon from "@/images/facebookIcon.png";
-import shareIcon from "@/images/share.png";
-import nameChangeIcon from "@/images/pen.png";
 import deleteIcon from "@/images/delete.png";
+import facebookIcon from "@/images/facebookIcon.png";
+import kakaoIcon from "@/images/kakaoIcon.png";
+import nameChangeIcon from "@/images/pen.png";
+import shareIcon from "@/images/share.png";
 import shareButtonIcon from "@/images/shareIcon.png";
 import { ValidateErrorMsgType, ValidateType } from "@/types/type";
 
@@ -22,9 +22,9 @@ export const KEBAB_MENUS = [
 ];
 
 export const SHARE_LINKS = [
-  { iconTitle: "카카오톡", iconSrc: kakaoIcon },
-  { iconTitle: "페이스북", iconSrc: facebookIcon },
-  { iconTitle: "링크 복사", iconSrc: shareButtonIcon },
+  { iconTitle: "카카오톡", iconSrc: kakaoIcon, shareType: "kakao" },
+  { iconTitle: "페이스북", iconSrc: facebookIcon, shareType: "facebook" },
+  { iconTitle: "링크 복사", iconSrc: shareButtonIcon, shareType: "copy" },
 ];
 
 export const FOLDER_MANAGE_MENUS = [
@@ -56,4 +56,10 @@ export const VALIDATE_ERROR_MSG: ValidateErrorMsgType = {
     check: "비밀번호를 확인해주세요",
     notEqual: "비밀번호가 일치하지 않아요.",
   },
+};
+
+export const KAKAO_SHARE_DATA = {
+  title: "Linkbrary",
+  description: "링크를 저장하고 공유하는 가장 쉬운 방법",
+  imageUrl: "https://codeit-frontend.codeit.com/static/images/brand/og_tag.png",
 };

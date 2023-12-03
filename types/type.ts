@@ -1,5 +1,5 @@
 import { StaticImageData } from "next/image";
-import React, { ChangeEvent, FocusEvent, ReactNode } from "react";
+import { ChangeEvent, FocusEvent, ReactNode } from "react";
 
 export interface GlobalNavWrapperProps {
   $isFolder: boolean;
@@ -173,6 +173,7 @@ export interface FolderManageMenusProps {
 export interface ShareLinksProps {
   iconSrc: StaticImageData;
   iconTitle: string;
+  shareType: string;
 }
 
 export interface InputFieldProps {
@@ -268,4 +269,11 @@ export interface getErrorMessageProps {
 export interface notEqualPasswordProps {
   passwordValue: string;
   checkValue: string;
+}
+
+export interface useKakaoSdkProps {
+  url: string;
+  title: string;
+  description: string;
+  imageUrl: string;
 }
