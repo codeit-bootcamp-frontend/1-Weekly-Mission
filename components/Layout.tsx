@@ -14,7 +14,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Navigator data={userData} setUserData={setUserData} />
-      <main>{children}</main>
+      {children}
       <Footer />
     </>
   );

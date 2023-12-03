@@ -9,6 +9,7 @@ export { default as LoginButton } from "./Navigator/LoginButton";
 export { default as Logo } from "./Navigator/Logo";
 export { default as Navigator } from "./Navigator/Navigator";
 export { default as SearchBar } from "./SearchBar/SearchBar";
+export { default as SearchResult } from "./SearchBar/SearchResult";
 export { default as AddBar } from "./AddBar/AddBar";
 export { default as FolderLists } from "./FolderLists/FolderLists";
 export { default as AddFolderBtn } from "./FolderLists/AddFolderBtn";

@@ -16,13 +16,13 @@ export const Nav = styled.nav<PropsSticky>`
   z-index: 9999;
 
   ${({ $sticky }) =>
-    ($sticky === "shared" || $sticky === "folder") &&
+    $sticky === "shared" &&
     `
     position: sticky;
   `}
 
   ${({ $sticky }) =>
-    $sticky === "/" &&
+    ($sticky === "/" || $sticky === "folder") &&
     `
     position: static;
   `}

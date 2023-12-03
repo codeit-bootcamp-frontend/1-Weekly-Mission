@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { useState } from "react";
 import {
   AddBar,
@@ -13,14 +14,16 @@ import { FoldersData, LinksData } from "@/lib/types/data";
 import { useScroll } from "@/lib/hooks/useScroll";
 import * as Styled from "@/style/StyledFolderPage";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { id: folderId } = context.params as Params;
+
   let folderData;
   let linkData;
 
   try {
     const [folderLists, links] = await Promise.all([
       getFolderLists(),
-      getLinks(),
+      getLinks(folderId),
     ]);
     const { data: FolderData } = folderLists;
     const { data: LinkData } = links;
@@ -36,6 +39,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       folderData,
       linkData,
+      folderId,
     },
   };
 };
@@ -43,10 +47,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 interface Props {
   folderData: FoldersData[];
   linkData: LinksData[];
+  folderId: string;
 }
 
-const FolderHomepage = ({ folderData, linkData }: Props) => {
-  const folderId = "";
+const FolderPage = ({ folderData, linkData, folderId }: Props) => {
   const q = "";
   const [isDisplay, setIsDisplay] = useState(true);
 
@@ -77,4 +81,4 @@ const FolderHomepage = ({ folderData, linkData }: Props) => {
   );
 };
 
-export default FolderHomepage;
+export default FolderPage;

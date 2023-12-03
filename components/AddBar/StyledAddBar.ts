@@ -10,7 +10,7 @@ const fadeInUp = keyframes`
     transform: translate3d(0, 100%, 0);
   }
   to {
-    opacity: 1;
+    opacity: 0.8;
     transform: translateZ(0);
   }
 `;
@@ -23,6 +23,7 @@ export const BackGround = styled.div<Props>`
   align-items: center;
   padding: 20px 0 20px;
   background-color: #edf7ff;
+  opacity: 0.8;
   animation: ${({ $isFixed }: Props) =>
     $isFixed === "fixed" &&
     css`

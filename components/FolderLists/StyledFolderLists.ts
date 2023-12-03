@@ -2,11 +2,6 @@
 // Tablet: 768px 이상 ~ 1199px 이하
 // Mobile: 375px 이상 ~ 767px 이하
 import styled from "styled-components";
-import folderAddImg from "@/public/folderAdd.svg";
-import folderAddFloatingImg from "@/public/folderAddFloating.svg";
-import folderShareImg from "@/public/share.svg";
-import folderNameChangeImg from "@/public/changeName.svg";
-import folderDeleteImg from "@/public/delete.svg";
 
 interface PropsSelected {
   $selected: boolean;
@@ -86,13 +81,13 @@ export const AddFolderText = styled.span`
 `;
 
 export const AddFolderImg = styled.div`
-  background-image: url(${folderAddImg});
+  background-image: url("/folderAdd.svg");
   background-position: center;
   width: 16px;
   height: 16px;
 
   @media (max-width: 767px) {
-    background-image: url(${folderAddFloatingImg});
+    background-image: url(${"/folderAddFloating.svg"});
   }
 `;
 
@@ -152,19 +147,19 @@ export const EditFolderImg = styled.div<PropsKind>`
   ${({ $kind }) =>
     $kind === "share" &&
     `
-    background-image: url(${folderShareImg});
+    background-image: url("/share.svg");
   `}
 
   ${({ $kind }) =>
     $kind === "change" &&
     `
-      background-image: url(${folderNameChangeImg});
+      background-image: url("/changeName.svg");
     `}
 
   ${({ $kind }) =>
     $kind === "delete" &&
     `
-      background-image: url(${folderDeleteImg});
+      background-image: url("/delete.svg");
     `}
 `;
 

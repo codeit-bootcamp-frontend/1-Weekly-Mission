@@ -31,7 +31,7 @@ export const ModalBackground = styled.div<PropsBack>`
   height: 100vh;
   z-index: 2000;
   position: fixed;
-  top: -${({ $scrollY }) => $scrollY}px;
+  top: ${({ $scrollY }) => `-${$scrollY}px`};
   left: 0;
   overflow-y: scroll;
 `;

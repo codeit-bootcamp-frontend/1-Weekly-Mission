@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   AddFolderBtn,
@@ -16,11 +16,12 @@ interface PropsSub {
   data: FoldersData;
   onClick: (dataName: string) => void;
   folderId: string;
+  queryString: string;
 }
 
-const FolderList = ({ data, onClick, folderId }: PropsSub) => {
+const FolderList = ({ data, onClick, folderId, queryString }: PropsSub) => {
   return (
-    <Link href={`/folder/${data.id}`}>
+    <Link href={`/folder/${data.id}${queryString}`}>
       <Styled.Btn
         $selected={folderId === String(data.id)}
         onClick={() => onClick(data.name)}
@@ -34,10 +35,11 @@ const FolderList = ({ data, onClick, folderId }: PropsSub) => {
 interface Props {
   linksData: LinksData[];
   folderData: FoldersData[];
-  id: string | undefined;
+  id: string;
+  q: string;
 }
 
-const FolderLists = ({ linksData, folderData, id }: Props) => {
+const FolderLists = ({ linksData, folderData, id, q }: Props) => {
   const [folderTitle, setFolderTitle] = useState(() => {
     if (!id) return "전체";
     const idFolder = folderData.filter((data) => data.id === parseInt(id));
@@ -45,6 +47,7 @@ const FolderLists = ({ linksData, folderData, id }: Props) => {
   });
 
   const folderId = id ? id : "전체";
+  const queryString = q ? `/search?q=${q}` : "";
 
   const {
     isOpen: isShareOpen,
@@ -74,23 +77,12 @@ const FolderLists = ({ linksData, folderData, id }: Props) => {
     dataName === "전체" ? setFolderTitle("전체") : setFolderTitle(dataName);
   };
 
-  useEffect(() => {
-    (() => {
-      if (!id) setFolderTitle("전체");
-      else {
-        const idFolder = folderData.filter((data) => data.id === parseInt(id));
-        setFolderTitle(idFolder[0]?.name);
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
-
   return (
     <>
       <Styled.Container>
         <Styled.FolderBlock>
           <Styled.BtnBox>
-            <Link href="/folder">
+            <Link href={`/folder${queryString}`}>
               <Styled.Btn
                 $selected={folderId === folderTitle}
                 onClick={() => handleBtnClick("전체")}
@@ -105,6 +97,7 @@ const FolderLists = ({ linksData, folderData, id }: Props) => {
                   data={data}
                   folderId={folderId}
                   onClick={handleBtnClick}
+                  queryString={queryString}
                 />
               );
             })}

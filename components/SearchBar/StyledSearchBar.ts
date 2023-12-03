@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import closeBtnIMG from "@/public/closebtn.svg";
 
 export const Form = styled.form`
   display: flex;
   align-items: center;
   width: 80%;
+  height: 54px;
   gap: 10px;
   padding: 15px 16px;
   border-radius: 10px;
@@ -24,7 +24,26 @@ export const Input = styled.input`
 export const CloseBtn = styled.div`
   width: 24px;
   height: 24px;
-  background-image: url(${closeBtnIMG});
+  background-image: url("/closebtn.svg");
   background-position: center;
   cursor: pointer;
+`;
+
+export const SearchResultContainer = styled.div`
+  width: 80%;
+`;
+
+export const SearchResultSentence = styled.h1`
+  margin: 20px 0;
+  color: var(--gray20);
+  font-size: 3.2rem;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+`;
+
+export const Stress = styled.span`
+  color: var(--gray100);
+  font-size: 3.2rem;
+  font-weight: 600;
+  letter-spacing: -0.2px;
 `;

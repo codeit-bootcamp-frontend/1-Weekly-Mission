@@ -20,6 +20,7 @@ const Card = ({ data, folderData }: Props) => {
   const IMG_SRC = data.image_source ? data.image_source : data.imageSource;
   const URL = data.url as string;
   const DESCRIPTION = data.description;
+  const TITLE = data.title;
   const [star, setStar] = useState(false);
 
   const formatDate = (value: string) => {
@@ -44,6 +45,8 @@ const Card = ({ data, folderData }: Props) => {
             src={IMG_SRC ? IMG_SRC : noImageIMG}
             alt={IMG_SRC ? "카드 이미지" : "이미지 없음"}
             fill
+            style={{ objectFit: "cover" }}
+            priority
           />
         </Styled.CardImgBox>
         <Styled.InfoContainer>
@@ -51,6 +54,7 @@ const Card = ({ data, folderData }: Props) => {
             <span>{timeForToday(CREATED_AT)}</span>
             <DropDown url={URL} folderData={folderData} />
           </Styled.AdditionalInfo>
+          <Styled.Title>{TITLE}</Styled.Title>
           <Styled.Description>{DESCRIPTION}</Styled.Description>
           <span>{formatDate(CREATED_AT)}</span>
         </Styled.InfoContainer>

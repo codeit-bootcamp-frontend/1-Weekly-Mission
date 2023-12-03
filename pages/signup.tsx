@@ -1,7 +1,14 @@
 import { Form } from "@/components";
+import * as Styled from "@/style/StyledSignUp";
 
 const SignUp = () => {
-  <Form />;
+  return (
+    <>
+      <Styled.SignBox>
+        <Form />
+      </Styled.SignBox>
+    </>
+  );
 };
 
 export default SignUp;
