@@ -9,12 +9,12 @@ export interface User {
 
 export interface Links {
   created_at: string;
-  description?: string | null;
-  folder_id?: number | null;
+  description?: string;
+  folder_id?: number;
   id?: number;
-  image_source?: string | null;
-  title?: string | null;
-  updated_at?: string | null;
+  image_source?: string;
+  title?: string;
+  updated_at?: string;
   url?: string;
 }
 
@@ -30,6 +30,6 @@ export interface folderOptionType {
   title: string;
   btnName: string;
   dataItem: string | null;
-  share: { id: number; folderId?: string | null };
+  share: { id: number; folderId: string | null };
   folderData: { data: folders[] };
 }

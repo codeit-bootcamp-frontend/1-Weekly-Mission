@@ -6,7 +6,7 @@ import styles from "./bookMark.module.css";
 interface BookMarkType {
   bookmarkNumber?: folders;
   account: User;
-  errorMessage: string;
+  errorMessage: string | { message: string };
 }
 
 const BookMark = ({ bookmarkNumber, account, errorMessage }: BookMarkType) => {

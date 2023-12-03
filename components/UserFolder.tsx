@@ -14,7 +14,7 @@ interface UserFolderType {
     event: React.MouseEvent<HTMLLIElement | HTMLHeadingElement>,
     title: string,
     btn: string,
-    item?: string | null
+    item?: string
   ) => void;
   setFolderId: React.Dispatch<React.SetStateAction<null>>;
 }

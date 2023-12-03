@@ -8,7 +8,7 @@ interface AddInputSectionType {
     event: React.MouseEvent<HTMLButtonElement>,
     title: string,
     btn: string,
-    item?: string | null
+    item?: string
   ) => void;
   newLink: string;
   setNewLink: React.Dispatch<React.SetStateAction<string>>;

@@ -10,7 +10,7 @@ import { useFetch } from "@/hooks/useFetch";
 
 interface AccountType {
   account: { data: User[] };
-  errorMessage: any;
+  errorMessage: { message: string } | any;
   isVisible: boolean;
   isSecondVisible: boolean;
   searchResult: string;

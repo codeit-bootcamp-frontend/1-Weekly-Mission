@@ -6,7 +6,7 @@ import styles from "./search.module.css";
 
 interface SearchType {
   setSearchResult: React.Dispatch<React.SetStateAction<string>>;
-  searchResult: string | undefined;
+  searchResult?: string;
 }
 
 const Search = ({ setSearchResult, searchResult }: SearchType) => {

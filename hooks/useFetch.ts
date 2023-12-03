@@ -4,7 +4,7 @@ export const API_URL = "https://bootcamp-api.codeit.kr/api/";
 
 export function useFetch(path: string, id: number) {
   const [data, setData] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const fetchUrl = async (type: string) => {
     try {
@@ -38,7 +38,7 @@ export function useQueryFetch(
   id: number
 ) {
   const [data, setData] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const fetchUrl = async (type: string, number: string | null) => {
     const query = `?folderId=${number}`;

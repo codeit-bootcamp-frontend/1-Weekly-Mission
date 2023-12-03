@@ -42,7 +42,7 @@ const Folder = () => {
     null
   );
   const [prevKey, setPrevKey] = useState<number | null>(null);
-  const [iscebabClick, setIscebabClick] = useState(false);
+  const [iscebabClick, setIscebabClick] = useState<boolean>(false);
   const [newLink, setNewLink] = useState("");
   const [folderId, setFolderId] = useState(null);
   const { id } = account?.data[0];

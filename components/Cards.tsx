@@ -14,7 +14,7 @@ interface CardsType {
     event: React.MouseEvent<HTMLLIElement>,
     title: string,
     btn: string,
-    item?: string | null
+    item?: string
   ) => void;
   iscebabClick?: boolean;
   searchResult: string;

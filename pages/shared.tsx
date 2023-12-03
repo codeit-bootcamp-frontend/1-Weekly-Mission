@@ -49,7 +49,10 @@ const Shared = () => {
       Number(userId)
     );
 
-  if (!getBookmarkNumber()?.link.count) return;
+  const bookmarkNumber = getBookmarkNumber();
+
+  if (!bookmarkNumber) return;
+
   return (
     <div className={styles.shared}>
       <BookMark
@@ -59,7 +62,7 @@ const Shared = () => {
       />
       <Search setSearchResult={setSearchResult} searchResult={searchResult} />
       {!linksErrorMessage ? (
-        getBookmarkNumber()!.link.count > 0 ? (
+        bookmarkNumber.link.count > 0 ? (
           <Cards
             linkCardsData={personalfolderData}
             searchResult={searchResult}
