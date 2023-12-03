@@ -133,7 +133,7 @@ const Header = ({ getData }: GetData) => {
     setSingleFolderName(folderName);
   };
 
-  const [fullFolderData, setFullFolderData] = useState<Data>();
+  const [fullFolderData, setFullFolderData] = useState<Data>({} as Data);
   const getFullFolderData = async () => {
     const temp = await axios.get(`/users/1/folders`);
     setFullFolderData(temp?.data);
@@ -202,7 +202,7 @@ const Header = ({ getData }: GetData) => {
   function getInputValue(v: string) {
     setInputValue(v);
   }
-  let searchedData: unknown = [];
+  let searchedData: SingleDataOfTotalData[] = [];
 
   if (isTotalClicked && totalData) {
     searchedData = totalData?.data?.filter((data) => {

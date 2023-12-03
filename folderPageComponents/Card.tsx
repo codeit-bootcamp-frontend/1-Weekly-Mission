@@ -3,7 +3,35 @@ import { getTimePassed } from "@/utils/formatTimePassed";
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({ data, fullFolderData }) => {
+interface SingleDataOfTotalData {
+  created_at: string;
+  description: string;
+  folder_id: number;
+  id: number;
+  image_source: string;
+  title: string;
+  updated_at: string;
+  url: string;
+}
+
+interface Link {
+  count: number;
+}
+
+interface SingleData {
+  created_at: string;
+  id: number;
+  link: Link;
+  name: string;
+  user_id: number;
+}
+
+interface Props {
+  data: SingleDataOfTotalData;
+  fullFolderData: SingleData[];
+}
+
+const Card = ({ data, fullFolderData }: Props) => {
   let {
     created_at,
     description,
@@ -19,17 +47,21 @@ const Card = ({ data, fullFolderData }) => {
   const [isKebabDeleteClicked, setIsKebabDeleteClicked] = useState(false);
   const [isKebabAddClicked, setIsKebabAddClicked] = useState(false);
 
-  function handleKebabClick(e) {
+  function handleKebabClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setIsClicked(!isClicked);
   }
 
-  function handleKebabDeleteClick(e) {
+  function handleKebabDeleteClick(
+    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+  ) {
     e.preventDefault();
     setIsKebabDeleteClicked(!isKebabDeleteClicked);
   }
 
-  function handleKebabAddClick(e) {
+  function handleKebabAddClick(
+    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+  ) {
     e.preventDefault();
     setIsKebabAddClicked(!isKebabAddClicked);
   }
