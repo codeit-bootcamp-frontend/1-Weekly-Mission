@@ -1,0 +1,150 @@
+.folder-modal {
+    background-color: var(--linkbrary-white);
+    width: 360px;
+    border: 1px solid var(--linkbrary-gray-20);
+    border-radius: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.folder-modal .folder-modal-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 32px 40px;
+}
+
+.folder-modal-wrap .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+}
+
+.folder-modal-wrap h2 {
+    color: var(--linkbrary-gray-100);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.folder-modal-wrap .folder-name {
+    color: var(--linkbrary-gray-60);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.folder-modal-wrap .folder-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:4px;
+    width: 280px;
+    margin-bottom: 24px;
+}
+
+.folder-modal-wrap .folder-list li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.folder-modal-wrap .folder-list li:hover {
+    border-radius: 8px;;
+    background: #F0F6FF;
+}
+
+.folder-modal-wrap .folder-list li h3 {
+    color: var(--linkbrary-gray-100);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.folder-modal-wrap .folder-list li h4 {
+    color: var(--linkbrary-gray-60);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.folder-modal-wrap input {
+    width: 280px;
+    padding: 18px 15px;
+    border: 1px solid var(--linkbrary-primary-color);
+    border-radius: 8px;
+    outline: 0;
+    color: var(--linkbrary-gray-100);
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.folder-modal-wrap button {
+    width: 280px;
+    padding: 16px 20px;
+    border: 0;
+    outline: 0;
+    border-radius: 8px;
+    color:  #F5F5F5;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.link-copy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.link-copy li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.link-copy li .icon-border {
+    padding:12px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.link-copy li .kakaoIcon {
+    background-color: #fee500;
+}
+.link-copy li .facebookIcon {
+    background-color: #1877f2;
+}
+
+.link-copy li .linkIcon {
+    background: rgba(157, 157, 157, 0.04);
+}
+
+.link-copy li img {
+    width: 18px;
+}
+
+.link-copy li .icon-name {
+    color: var(--linkbrary-gray-100);
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+}

@@ -1,0 +1,14 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+:root {
+  /* color */
+  --linkbrary-primary-color: #6d6afe;
+  --linkbrary-red: #ff5b56;
+  --the-julge-black: #111322;
+  --linkbrary-white: #ffffff;
+  --linkbrary-gray-100: #373740;
+  --linkbrary-gray-60: #9fa6b2;
+  --linkbrary-gray-20: #ccd5e3;
+  --linkbrary-gray-10: #e7effb;
+  --linkbrary-bg: #f0f6ff;
+  --primary-purple-70: #8f00ff;
+}
