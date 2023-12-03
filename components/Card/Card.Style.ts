@@ -1,4 +1,4 @@
-import { BodyRegular1, BodyRegular2, Caption } from '@/styles/typography';
+import { BodyRegular1, BodyRegular2, Caption1 } from '@/styles/typography';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -20,23 +20,34 @@ const PrevImg = styled.img`
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 7px;
 
   padding: 15px 20px;
 `;
 
 const Time = styled.div`
   color: ${props => props.theme['dark_grey']};
-  ${Caption}
+  ${Caption1}
+`;
+
+const Title = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  ${BodyRegular1}
 `;
 
 const Description = styled.div`
+  height: 34px;
+
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  ${BodyRegular1}
+  ${BodyRegular2}
 `;
 
 const Date = styled.div`
@@ -48,4 +59,4 @@ const Date = styled.div`
   ${BodyRegular2}
 `;
 
-export { Container, PrevImg, CardContainer, Time, Description, Date };
+export { Container, PrevImg, CardContainer, Time, Title, Description, Date };

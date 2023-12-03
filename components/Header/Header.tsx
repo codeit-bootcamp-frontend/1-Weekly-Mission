@@ -1,18 +1,40 @@
 import Image from 'next/image';
 import * as S from './Header.style';
-import logo from '@/public/logo.svg';
+import IMAGES from '@/public';
 import Link from 'next/link';
+import axios from '@/lib/axios';
+import { useEffect, useState } from 'react';
+
+interface IUser {
+  email: string;
+  profileImageSource: string;
+}
 
 const Header = () => {
+  const [user, setUser] = useState({
+    email: '',
+    profileImageSource: '',
+  } as IUser);
+
+  const getUser = async () => {
+    const res = await axios.get(`/api/sample/user`);
+    const user = res.data;
+    setUser(user);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <S.Container>
       <Link href='/'>
-        <Image src={logo} alt='logo' />
+        <Image src={IMAGES.Logo} alt='logo' />
       </Link>
 
       <S.Profile>
-        <S.ProfileImg></S.ProfileImg>
-        <S.Name>codeit@codeit.com</S.Name>
+        <S.ProfileImg src={user.profileImageSource} />
+        <S.Name>{user.email}</S.Name>
       </S.Profile>
     </S.Container>
   );

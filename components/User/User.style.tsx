@@ -12,10 +12,10 @@ const Container = styled.div`
   background-color: ${props => props.theme['background']};
 `;
 
-const Profile = styled.div`
+const Profile = styled.img`
   width: 60px;
   height: 60px;
-  padding: 16px 17px 16px 15px;
+  padding: 16px 15px;
 
   border-radius: 47px;
   background-color: ${props => props.theme['primary']};

@@ -6,6 +6,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   padding: 32px 104px 62px;
+  margin-top: 60px;
 
   background-color: ${props => props.theme['black']};
 `;

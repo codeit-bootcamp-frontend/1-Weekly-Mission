@@ -17,7 +17,7 @@ const Profile = styled.div`
   gap: 6px;
 `;
 
-const ProfileImg = styled.div`
+const ProfileImg = styled.img`
   width: 28px;
   height: 28px;
   background-color: ${props => props.theme['primary']};

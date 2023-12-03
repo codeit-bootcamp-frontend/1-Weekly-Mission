@@ -1,11 +1,18 @@
+import { useEffect, useState } from 'react';
 import * as S from './User.style';
 
-const User = () => {
+interface IFolder {
+  name: string;
+  folderName: string;
+  profileImageSource: string;
+}
+
+const User = ({ name, folderName, profileImageSource }: IFolder) => {
   return (
     <S.Container>
-      <S.Profile></S.Profile>
-      <S.Name>@코드잇</S.Name>
-      <S.FolderName>⭐️ 즐겨찾기</S.FolderName>
+      <S.Profile src={profileImageSource} />
+      <S.Name>{name}</S.Name>
+      <S.FolderName>{folderName}</S.FolderName>
     </S.Container>
   );
 };
