@@ -3,9 +3,11 @@ import { styled } from "styled-components";
 
 export default function Home() {
   return (
-    <Link href={"/folder"}>
-      <StyledButton>🗂️ 폴더 페이지 이동</StyledButton>
-    </Link>
+    <>
+      <Link href={"/folder"}>
+        <StyledButton>🗂️ 폴더 페이지 이동</StyledButton>
+      </Link>
+    </>
   );
 }
 
