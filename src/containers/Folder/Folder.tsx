@@ -8,13 +8,14 @@ import SearchBar from '@/components/SearchBar';
 import CardsContainer from '@/components/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
 import FoldersContainer from './components/FoldersContainer';
-import { Link } from '@/types/Folder.types';
+import { Link, Folder } from '@/types/Folder.types';
 
 interface Props {
   links: Link[];
+  folders: Folder[];
 }
 
-function Folder({ links }: Props) {
+function Folder({ links, folders }: Props) {
   const router = useRouter();
   const initialFolderId = Array.isArray(router.query.folderId)
     ? router.query.folderId[0]
@@ -91,7 +92,7 @@ function Folder({ links }: Props) {
           으로 검색한 결과입니다.
         </S.SearchText>
         <FoldersContainer
-          userId={DEFAULT_USER_ID}
+          folders={folders}
           initialFolderId={Number(initialFolderId)}
           setFolderLinks={setFolderLinks}
         />

@@ -3,6 +3,7 @@ import useRequest from '@/hooks/useRequest';
 import FoldersView from '../FoldersView';
 import InfoContainer from '../InfoContainer';
 import { Folder } from '@/types/Folder.types';
+import { DEFAULT_USER_ID } from '@/services/config/default';
 
 const DEFAULT_FOLDER = {
   id: 0,
@@ -10,29 +11,21 @@ const DEFAULT_FOLDER = {
 };
 
 interface Props {
-  userId: number;
+  folders: Folder[];
   initialFolderId: number;
   setFolderLinks: (nextFolderId: number) => void;
 }
 
-function FoldersContainer({ userId, initialFolderId, setFolderLinks }: Props) {
-  const { data: folders } = useRequest<{ data: Folder[] }>({
-    options: {
-      url: `/users/${userId}/folders`,
-      method: 'get',
-    },
-  });
-
-  const foldersData = folders?.data;
-  const initialSelectedFolder = foldersData?.find(
+function FoldersContainer({ folders, initialFolderId, setFolderLinks }: Props) {
+  const initialSelectedFolder = folders?.find(
     (folder) => folder.id === initialFolderId
   );
 
   const [selectedFolder, setSelectedFolder] = useState<Folder>(DEFAULT_FOLDER);
 
-  const onFolderButtonClick = (foldersData: Folder) => {
-    setFolderLinks(foldersData.id);
-    setSelectedFolder(foldersData);
+  const onFolderButtonClick = (folders: Folder) => {
+    setFolderLinks(folders.id);
+    setSelectedFolder(folders);
   };
 
   useEffect(() => {
@@ -45,10 +38,10 @@ function FoldersContainer({ userId, initialFolderId, setFolderLinks }: Props) {
 
   return (
     <>
-      {folders?.data?.length !== 0 && (
+      {folders?.length !== 0 && (
         <>
           <FoldersView
-            folders={foldersData}
+            folders={folders}
             defaultFolder={DEFAULT_FOLDER}
             selectedFolder={selectedFolder}
             onFolderButtonClick={onFolderButtonClick}
@@ -56,7 +49,7 @@ function FoldersContainer({ userId, initialFolderId, setFolderLinks }: Props) {
           <InfoContainer
             defaultFolder={DEFAULT_FOLDER}
             selectedFolder={selectedFolder}
-            userId={userId}
+            userId={DEFAULT_USER_ID}
           />
         </>
       )}

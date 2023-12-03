@@ -1,15 +1,17 @@
 import Folder from '@/containers/Folder';
-import { Link } from '@/types/Folder.types';
-import { getLinksApi } from '@/services/apis';
+import { Folder as IFolder, Link } from '@/types/Folder.types';
+import { getFoldersApi, getLinksApi } from '@/services/apis';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const folderId = query?.folderId;
   try {
-    const { data } = await getLinksApi(folderId);
+    const { data: links } = await getLinksApi(folderId);
+    const { data: folders } = await getFoldersApi();
 
     return {
       props: {
-        links: data,
+        links,
+        folders,
       },
     };
   } catch {
@@ -21,10 +23,11 @@ export async function getServerSideProps({ query }: { query: any }) {
 
 interface Props {
   links: Link[];
+  folders: IFolder[];
 }
 
-function FolderPage({ links }: Props) {
-  return <Folder links={links} />;
+function FolderPage({ links, folders }: Props) {
+  return <Folder links={links} folders={folders} />;
 }
 
 export default FolderPage;

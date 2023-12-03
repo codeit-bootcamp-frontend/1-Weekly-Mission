@@ -1,6 +1,6 @@
 import api from './utils/api';
 import { DEFAULT_USER_ID } from './config/default';
-import { Link, SharedFolder } from '@/types/Folder.types';
+import { Folder, Link, SharedFolder } from '@/types/Folder.types';
 
 export const getSharedFolderApi = () =>
   api<SharedFolder>({
@@ -13,4 +13,10 @@ export const getLinksApi = (folderId: string) =>
     url: `/users/${DEFAULT_USER_ID}/links`,
     method: 'get',
     params: { folderId },
+  });
+
+export const getFoldersApi = () =>
+  api<{ data: Folder[] }>({
+    url: `/users/${DEFAULT_USER_ID}/folders`,
+    method: 'get',
   });
