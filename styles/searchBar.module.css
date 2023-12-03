@@ -1,4 +1,4 @@
-.search-form {
+.search_form {
   display: flex;
   align-items: center;
   width: 32.5rem;
@@ -17,12 +17,12 @@
   }
 }
 
-.search-icon {
+.search_icon {
   width: 1.6rem;
   height: 1.6rem;
 }
 
-.search-bar {
+.search_bar {
   display: flex;
   align-items: center;
   width: 100%;

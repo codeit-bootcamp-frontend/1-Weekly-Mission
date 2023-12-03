@@ -1,4 +1,4 @@
-.nav-wrapper {
+.nav_wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -33,7 +33,4 @@
   @media (min-width: 768px) {
     height: 2.4rem;
   }
-}
-
-.user-info {
 }

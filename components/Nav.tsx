@@ -1,21 +1,14 @@
-import '@/styles/nav.css';
+import styles from '@/styles/nav.module.css';
 import UserProfile from './UserProfile';
 
-function Nav({
-  userProfile,
-  userProfileLoadingError,
-}: {
-  userProfile: any;
-  userProfileLoadingError: any;
-}): JSX.Element {
+function Nav({ userProfile }: { userProfile: any }): JSX.Element {
   return (
-    <div className="nav-wrapper">
-      <div className="gnb">
+    <div className={styles.nav_wrapper}>
+      <div className={styles.gnb}>
         <a href="index.html">
-          <img className="logo" src="../assets/image/logo.svg" alt="홈으로 연결된 Linkbrary 로고" />
+          <img className={styles.logo} src="@/public/images/linkbrary.svg" alt="홈으로 연결된 Linkbrary 로고" />
         </a>
         <UserProfile userProfile={userProfile} />
-        {userProfileLoadingError?.message && <span>{userProfileLoadingError.message}</span>}
       </div>
     </div>
   );

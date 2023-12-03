@@ -7,7 +7,7 @@
   background-color: var(--black);
 }
 
-.footer-box {
+.footer_box {
   display: grid;
   justify-content: space-between;
   grid-template:
@@ -34,14 +34,14 @@
   font-size: 1.6rem;
 }
 
-.footer-links {
+.footer_links {
   grid-area: footer-links;
   display: flex;
   column-gap: 3rem;
   padding-right: 1.8rem;
 }
 
-.footer-link {
+.footer_link {
   color: #cfcfcf;
   font-family: Arial;
   font-size: 1.6rem;

@@ -1,4 +1,5 @@
-import '@/styles/userProfile.css';
+import { UserRawData } from '@/pages/api/type';
+import styles from '@/styles/userProfile.module.css';
 
 function UserProfile({ userProfile }: any): JSX.Element {
   const userProfileImage = userProfile?.image_source;
@@ -6,9 +7,9 @@ function UserProfile({ userProfile }: any): JSX.Element {
 
   return (
     <>
-      <div className="user-profile">
-        <img className="user-profile-image" src={userProfileImage} alt="유저 프로필 이미지" />
-        <p className="user-profile-email">{userEmail}</p>
+      <div className={styles.user_profile}>
+        <img className={styles.user_profile_image} src={userProfileImage} alt="유저 프로필 이미지" />
+        <p className={styles.user_profile_email}>{userEmail}</p>
       </div>
     </>
   );

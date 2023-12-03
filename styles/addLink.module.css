@@ -7,7 +7,7 @@
   background-color: var(--background, #f0f6ff);
 }
 
-.add-box {
+.add_box {
   display: flex;
   width: 80rem;
   padding: 1.6rem 2rem;
@@ -19,7 +19,7 @@
   background: var(--white, #fff);
 }
 
-.link-input {
+.link_input {
   flex-grow: 1;
   color: var(--gray60, #9fa6b2);
   font-size: 1.6rem;

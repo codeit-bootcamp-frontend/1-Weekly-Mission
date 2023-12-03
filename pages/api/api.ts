@@ -4,14 +4,14 @@ import { FolderRawData, LinkRawData, SampleFolderRawData, UserRawData } from './
 const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
 const USER_ID = `users/1`;
 
-export async function getUserProfile(): Promise<UserRawData> {
+export async function getUserProfile(): Promise<UserRawData[]> {
   const res = await axios.get(`${BASE_URL}/${USER_ID}`);
   const result = res.data;
 
   return result;
 }
 
-export async function getLinks(id = ''): Promise<LinkRawData> {
+export async function getLinks(id = ''): Promise<LinkRawData[]> {
   let url: string = '';
   if (id === '') {
     url = `${BASE_URL}/${USER_ID}/links`;
@@ -24,13 +24,13 @@ export async function getLinks(id = ''): Promise<LinkRawData> {
   return result;
 }
 
-export async function getFolders(): Promise<FolderRawData> {
+export async function getFolders(): Promise<FolderRawData[]> {
   const response = await axios.get(`${BASE_URL}/${USER_ID}/folders`);
   const result = response.data;
   return result.data;
 }
 
-export async function getSampleFolders(): Promise<SampleFolderRawData> {
+export async function getSampleFolders(): Promise<SampleFolderRawData[]> {
   const response = await axios.get(`${BASE_URL}/sample/folder`);
   const result = response.data;
   return result;

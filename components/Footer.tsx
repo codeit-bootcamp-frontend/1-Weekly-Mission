@@ -1,15 +1,15 @@
-import '.@/styles/footer.css';
+import styles from '.@/styles/footer.module.css';
 
 function Footer(): JSX.Element {
   return (
     <div className="footer">
-      <div className="footer-box">
+      <div className="footer_box">
         <span className="copyright">©codeit - 2023</span>
-        <div className="footer-links">
-          <a className="footer-link" href="privacy.html">
+        <div className="footer_links">
+          <a className="footer_link" href="privacy.html">
             Privacy Policy
           </a>
-          <a className="footer-link" href="faq.html">
+          <a className="footer_link" href="faq.html">
             FAQ
           </a>
         </div>
