@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   position: relative;
-  width: 35rem;
+  width: 100%;
 `;
 
 export const Input = styled.input<{ $error: boolean; $passwordType: boolean }>`

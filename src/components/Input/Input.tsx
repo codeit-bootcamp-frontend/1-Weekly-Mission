@@ -2,6 +2,7 @@ import * as S from './Input.style';
 import { FocusEventHandler, useState } from 'react';
 
 interface Props {
+  id: string;
   passwordType?: boolean;
   placeholder?: string;
   onBlur?: FocusEventHandler<HTMLInputElement>;
@@ -10,10 +11,11 @@ interface Props {
 }
 
 export default function Input({
+  id,
   passwordType = false,
-  placeholder = '내용 입력',
+  placeholder,
   onBlur,
-  errorMessage = '내용을 다시 작성해주세요',
+  errorMessage,
   hasError = false,
 }: Props) {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +28,7 @@ export default function Input({
     <S.Container>
       <S.Wrapper>
         <S.Input
-          name={passwordType ? 'password' : 'email'}
+          id={id}
           $error={hasError}
           $passwordType={passwordType}
           type={passwordType && !showPassword ? 'password' : 'text'}
