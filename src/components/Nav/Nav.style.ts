@@ -12,7 +12,6 @@ export const NavContainer = styled.div<{ $path: string }>`
 
   width: 100%;
   height: 9.4rem;
-  max-width: 192rem;
   padding: 3.2rem 20rem;
 
   background-color: #edf7ff;
