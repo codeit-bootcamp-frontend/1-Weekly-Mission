@@ -6,6 +6,7 @@ import Footer from "@/ui/Footer";
 import AddLink from "@/components/AddLink";
 import axios from "@/api/axios";
 import Head from "next/head";
+import Image from "next/image";
 
 interface Link {
   count: number;
@@ -75,13 +76,16 @@ export default function FolderPage() {
             <b>폴더에 추가</b>
             <p>링크 주소: {addLinkValue}</p>
             <div style={{ position: "relative" }}>
-              <img
+              <Image
                 src="images/modalClose.svg"
+                alt="닫기 버튼 이미지"
                 style={{
                   position: "absolute",
                   right: "-16.5rem",
-                  top: "-10rem",
+                  top: "-8rem",
                 }}
+                width={30}
+                height={30}
                 onClick={handleAddLinkClick}
               />
             </div>

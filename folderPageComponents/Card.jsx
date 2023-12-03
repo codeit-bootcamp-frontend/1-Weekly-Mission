@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { getTimePassed } from "@/utils/formatTimePassed";
+import Image from "next/image";
+import Link from "next/link";
 
 const Card = ({ data, fullFolderData }) => {
-  const {
+  let {
     created_at,
     description,
     folder_id,
@@ -35,7 +37,9 @@ const Card = ({ data, fullFolderData }) => {
   const selectList = fullFolderData.map((list) => {
     return `${list.name}  ${list.link.count}개 링크`;
   });
-
+  if (image_source === null) {
+    image_source = "/images/blank-image.png";
+  }
   return (
     <li
       style={{
@@ -46,7 +50,7 @@ const Card = ({ data, fullFolderData }) => {
         height: "auto",
       }}
     >
-      <a
+      <Link
         href={url}
         target="_blank"
         rel="noreferrer"
@@ -57,20 +61,31 @@ const Card = ({ data, fullFolderData }) => {
           position: "relative",
         }}
       >
-        <img
-          src={image_source}
-          alt="card 이미지"
-          style={{
-            boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
-            borderTopLeftRadius: "1rem",
-            borderTopRightRadius: "1rem",
-            height: "auto",
-          }}
-        />
+        <div
+          style={{ position: "relative", maxWidth: "70rem", height: "30rem" }}
+        >
+          <Image
+            src={image_source}
+            alt="card 이미지"
+            style={{
+              boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
+              borderTopLeftRadius: "1rem",
+              borderTopRightRadius: "1rem",
+            }}
+            fill
+            objectFit="cover"
+          />
+        </div>
+
         <button
           style={{ position: "absolute", right: "1.5rem", top: "1.5rem" }}
         >
-          <img src="images/star.svg" />
+          <Image
+            src="images/star.svg"
+            alt="즐겨찾기 이미지"
+            width={30}
+            height={30}
+          />
         </button>
         <div
           style={{
@@ -94,7 +109,13 @@ const Card = ({ data, fullFolderData }) => {
             }}
             onClick={handleKebabClick}
           >
-            <img src="images/kebab.svg" />
+            <Image
+              src="images/kebab.svg"
+              alt="케밥 버튼 이미지"
+              width={25}
+              height={25}
+              style={{ zIndex: "999" }}
+            />
           </button>
           {isClicked ? (
             <div className="kebab">
@@ -109,19 +130,22 @@ const Card = ({ data, fullFolderData }) => {
           <span>{description}</span>
           <span>{created_at.substring(0, 10)}</span>
         </div>
-      </a>
+      </Link>
       {isKebabDeleteClicked ? (
         <div className="modal-Background">
           <div className="modal">
             <b>링크 삭제</b>
             <div style={{ position: "relative" }}>
-              <img
+              <Image
                 src="images/modalClose.svg"
                 style={{
                   position: "absolute",
                   right: "-16.5rem",
                   top: "-6rem",
                 }}
+                alt="닫기 버튼 이미지"
+                width={30}
+                height={30}
                 onClick={handleKebabDeleteClick}
               />
             </div>
@@ -151,13 +175,16 @@ const Card = ({ data, fullFolderData }) => {
             <b>폴더에 추가</b>
             <p>{url}</p>
             <div style={{ position: "relative" }}>
-              <img
+              <Image
                 src="images/modalClose.svg"
                 style={{
                   position: "absolute",
                   right: "-16.5rem",
-                  top: "-10rem",
+                  top: "-9rem",
                 }}
+                alt="닫기 버튼 이미지"
+                width={30}
+                height={30}
                 onClick={handleKebabAddClick}
               />
             </div>

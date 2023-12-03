@@ -12,6 +12,8 @@ const nextConfig = {
       "testing-library.com",
       "static.cdninstagram.com",
       "s.pstatic.net",
+      "codeit.kr",
+      "jasonwatmore.com",
     ],
   },
 };
