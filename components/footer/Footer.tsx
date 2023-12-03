@@ -7,7 +7,6 @@ import YoutubeIcon from "@/public/images/twitter.svg";
 import InstagramIcon from "@/public/images/instagram.svg";
 import useObserver from "@/hooks/useObserver";
 import FooterContext from "@/contexts/FooterContext";
-import HeaderContext from "@/contexts/HeaderContext";
 export default function Footer() {
   const { ref, isVisible } = useObserver();
   const { isFooterVisible, setIsFooterVisible } = useContext(FooterContext);
