@@ -9,6 +9,8 @@ import IconClose from "./close.svg";
 import IconLogo from "./linkbrary.svg";
 import IconEyeOff from "./eye-off.svg";
 import IconEyeOn from "./eye-on.svg";
+import IconGoogle from "./google.svg";
+import IconKakao from "./kakao.svg";
 export {
   IconKebab,
   IconLink,
@@ -21,4 +23,6 @@ export {
   IconLogo,
   IconEyeOff,
   IconEyeOn,
+  IconGoogle,
+  IconKakao,
 };
