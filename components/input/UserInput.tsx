@@ -38,7 +38,9 @@ const UserInput = (props: ILabelProps) => {
           ? "이메일을 입력해주세요."
           : "비밀번호를 입력해주세요."
       );
+      return;
     }
+    setErrorMsg("");
   };
 
   return (
@@ -46,6 +48,7 @@ const UserInput = (props: ILabelProps) => {
       <label htmlFor={label}>{obj[label].label}</label>
       <div className="inputBox">
         <Input
+          $isError={errorMsg !== ""}
           type={isOn ? "text" : obj[label].type}
           id={label}
           placeholder={props.placeholder}
@@ -100,12 +103,13 @@ const InputContainer = styled.div`
   }
 `;
 
-const Input = styled.input`
+const Input = styled.input<{ $isError: boolean }>`
   box-sizing: border-box;
   border-radius: 0.8rem;
   padding: 1.8rem 1.5rem;
   background: var(--white);
-  border: 1px solid var(--gray20);
+  border: ${(props) =>
+    props.$isError ? "1px solid var(--red)" : "1px solid var(--gray20)"};
   width: 40rem;
   height: 6rem;
   color: var(--gray100);

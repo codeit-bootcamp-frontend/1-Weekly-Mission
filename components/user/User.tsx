@@ -18,8 +18,12 @@ interface IState {
 }
 
 const User = ({ state }: IState) => {
-  const handleLogin = () => {
-    console.log("d");
+  const handleSignin = () => {
+    // 로그인 처리 필요
+  };
+
+  const handleSignup = () => {
+    // 회원가입 처리 필요
   };
 
   return (
@@ -71,11 +75,11 @@ const User = ({ state }: IState) => {
               />
             )}
             {state === "signin" ? (
-              <DefaultBtn onClick={handleLogin} type="default">
+              <DefaultBtn onClick={handleSignin} type="default">
                 로그인
               </DefaultBtn>
             ) : (
-              <DefaultBtn onClick={handleLogin} type="default">
+              <DefaultBtn onClick={handleSignup} type="default">
                 회원가입
               </DefaultBtn>
             )}
