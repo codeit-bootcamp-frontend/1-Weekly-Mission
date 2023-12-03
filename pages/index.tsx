@@ -6,20 +6,15 @@ import GlobalStyle from "../styles/global-styles";
 export default function Home() {
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <>
-        <GlobalStyle />
-        <LinkContainer>
-          <Button href="/shared" as="a">
-            Shared
-          </Button>
-          <Button href="/folder" as="a">
-            Folder
-          </Button>
-        </LinkContainer>
-      </>
+      <GlobalStyle />
+      <LinkContainer>
+        <Button href="/shared" as="a">
+          Shared
+        </Button>
+        <Button href="/folder" as="a">
+          Folder
+        </Button>
+      </LinkContainer>
     </>
   );
 }
