@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { InputProps } from "@/types/commonComponent";
+import { InputProps } from "@/types/Component";
 import useToggle from "@/src/hooks/useToggle";
 import useInput from "@/src/hooks/useInput";
 import { IconEyeON, IconEyeOff } from "@/public/svgs";

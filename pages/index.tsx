@@ -1,4 +1,4 @@
-import Input from "@/src/component/layout/sign/Input";
+import Input from "@/src/component/sign/Input";
 
 export default function Home() {
   return (
