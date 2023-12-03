@@ -11,6 +11,7 @@ export const CardContainer = styled.section<{ $layout: string }>`
     'title'
     'img'
     'description';
+  width: 32rem;
 
   ${onTablet} {
     grid-template-columns: auto auto;
@@ -20,6 +21,7 @@ export const CardContainer = styled.section<{ $layout: string }>`
       'description img';
     column-gap: 5.1rem;
     row-gap: 0;
+    width: 70rem;
 
     ${({ $layout }) =>
       $layout === 'even' &&
@@ -38,6 +40,7 @@ export const CardContainer = styled.section<{ $layout: string }>`
       'description img';
     column-gap: 15.7rem;
     row-gap: 1rem;
+    width: 100rem;
 
     ${({ $layout }) =>
       $layout === 'even' &&
