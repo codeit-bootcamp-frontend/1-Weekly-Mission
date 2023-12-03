@@ -1,19 +1,15 @@
 import Folder from '@/containers/Folder';
 import { Link } from '@/types/Folder.types';
-import { DEFAULT_USER_ID } from '@/services/config/default';
-import fetch from '@/services/utils/fetch';
+import { getLinksApi } from '@/services/apis';
 
 export async function getServerSideProps({ query }: { query: any }) {
   const folderId = query?.folderId;
   try {
-    const { data: fetchedData } = await fetch({
-      url: `/users/${DEFAULT_USER_ID}/links`,
-      method: 'get',
-      params: { folderId },
-    });
+    const { data } = await getLinksApi(folderId);
+
     return {
       props: {
-        links: fetchedData.data,
+        links: data,
       },
     };
   } catch {

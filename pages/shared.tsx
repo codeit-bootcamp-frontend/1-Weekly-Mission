@@ -3,11 +3,11 @@ import { SharedFolder } from '@/types/Folder.types';
 import { getSharedFolderApi } from '@/services/apis';
 
 export async function getStaticProps() {
-  const folder = await getSharedFolderApi();
+  const { folder } = await getSharedFolderApi();
 
   return {
     props: {
-      folder: folder.folder,
+      folder,
     },
   };
 }
