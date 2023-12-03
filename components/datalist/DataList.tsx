@@ -43,28 +43,7 @@ export default function DataList({ folderIdKey }) {
             description?.includes(inputValue)
           )
             return <DataListItem key={item.id} item={item} />;
-          return <DataListItem key={item.id} item={item} />;
         })}
     </div>
   );
-
-  // return (
-  //   <div className={styles.container}>
-  //     {LinkSDataArr?.filter((data) => {
-  //       console.log(data);
-  //       data.folderId === Number(folderIdKey);
-  //     })
-  //       ?.map((data) => data.linksdata)[0]
-  //       ?.map((item) => {
-  //         console.log("아이템이 안 나옴", item);
-  //         const { url, title, description } = item;
-  //         if (
-  //           url?.includes(inputValue) ||
-  //           title?.includes(inputValue) ||
-  //           description?.includes(inputValue)
-  //         )
-  //           return <DataListItem key={item.id} item={item} />;
-  //       })}
-  //   </div>
-  // );
 }
