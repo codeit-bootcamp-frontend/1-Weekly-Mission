@@ -1,7 +1,7 @@
-import React, { FormEvent, ReactNode } from "react";
-import * as S from "@/layouts/authLayout/AuthLayout.style";
-import kakaoIcon from "@/images/auth/kakao-login-icon.png";
 import googleIcon from "@/images/auth/google-login-icon.png";
+import kakaoIcon from "@/images/auth/kakao-login-icon.png";
+import * as S from "@/layouts/authLayout/AuthLayout.style";
+import { FormEvent, ReactNode } from "react";
 
 const AuthLayout = ({
   children,
@@ -37,10 +37,10 @@ const AuthLayout = ({
           <S.AuthSocialWrap>
             <S.SocialText>소셜 로그인</S.SocialText>
             <S.AuthSocial>
-              <S.SocialLink href="https://www.kakaocorp.com/page/">
+              <S.SocialLink href="https://www.google.com/">
                 <S.SocialImage src={googleIcon} width={42} height={42} alt="구글로 로그인" />
               </S.SocialLink>
-              <S.SocialLink href="https://www.google.com/">
+              <S.SocialLink href="https://www.kakaocorp.com/page/">
                 <S.SocialImage src={kakaoIcon} width={42} height={42} alt="카카오로 로그인" />
               </S.SocialLink>
             </S.AuthSocial>
