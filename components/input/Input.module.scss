@@ -8,8 +8,8 @@
 }
 
 .input {
-  padding: 1.8rem 1.5rem;
   width: 100%;
+  padding: 1.8rem 1.5rem;
   background-color: var(--linkbrary--color--white);
   border-radius: 8px;
   border: 1px solid var(--linkbrary--color--gray3);
@@ -17,13 +17,13 @@
   &:focus {
     border: 1px solid var(--linkbrary--color--primary);
   }
+}
 
-  .icon {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+.icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .error-msg {

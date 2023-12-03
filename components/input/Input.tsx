@@ -6,7 +6,9 @@ export default function Input({ type = "text" }) {
   const [text, setText] = useState("");
   const [errormsg, setErrormsg] = useState("");
   const [inputType, setInputType] = useState(type);
-  const [iconUrl, setIconUrl] = useState("/icons/eye-close.svg");
+  const [iconUrl, setIconUrl] = useState(
+    "/assets/icons/password-invisible.svg"
+  );
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const newText = e.target.value;
     setText(newText);
@@ -18,10 +20,10 @@ export default function Input({ type = "text" }) {
   const handleChangeType = () => {
     if (inputType === "password") {
       setInputType("text");
-      setIconUrl("/icons/eye-open.svg");
+      setIconUrl("/assets/icons/password-visible.svg");
     } else {
       setInputType("password");
-      setIconUrl("/icons/eye-close.svg");
+      setIconUrl("/assets/icons/password-invisible.svg");
     }
   };
   return (
