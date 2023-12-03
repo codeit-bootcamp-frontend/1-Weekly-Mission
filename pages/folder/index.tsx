@@ -8,7 +8,7 @@ import Search from "@/components/Search/Search";
 import Category from "@/components/Category/Category";
 import Card from "@/components/Card/Card";
 import FolderPageCardItem from "@/components/Card/FolderPageCardItem";
-import NotFoundLink from "@/components/Card/NotFoundLink";
+import NotFoundLink from "@/components/NotFoundLink/NotFoundLink";
 import AddLinkModalContent from "@/components/Modal/AddLinkModalContent/AddLinkModalContent";
 import AddLinkInput from "@/components/AddLink/AddLinkInput";
 import CategoryList from "@/components/Category/CategoryList";
