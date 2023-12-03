@@ -29,7 +29,7 @@ export function Card({ link }: LinkItem) {
   return (
     <S.Card>
       <S.Content>
-        <S.Description>{link.description}</S.Description>
+        <S.Description></S.Description>
       </S.Content>
     </S.Card>
   )
