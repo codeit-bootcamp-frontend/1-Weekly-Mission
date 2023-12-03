@@ -1,4 +1,4 @@
-import KaKao from "@/components/socialshare/KaKao";
+// import KaKao from "@/components/socialshare/KaKao";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -7,7 +7,6 @@ export default function Document() {
       <script
         defer
         src="https://developers.kakao.com/sdk/js/kakao.min.js"
-        onLoad={KaKao}
       ></script>
       <Head />
       <body>

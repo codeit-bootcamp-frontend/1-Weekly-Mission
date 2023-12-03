@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styles from "./Modal.module.css";
 import kakaochat from "@/public/images/Chat.png";
 import facebook from "@/public/images/Telegram.png";
 import link from "@/public/images/More.png";
 import Image from "next/image";
 import useKakao from "@/hooks/useKaKao";
+import useCopyClipBoard from "@/hooks/useCopyClipboard";
 import { KAKAO_SHARE_DATA } from "@/utils/constant";
 import { useRouter } from "next/router";
 
@@ -26,11 +27,19 @@ export default function Modal({
   const router = useRouter();
   const { id } = router.query;
 
-  const shareLink = `${window.location.origin}/shared?user=1&folder=${id}`;
+  const shareLink = `${window.location.origin}/folder/${id}`;
+
   const shareKaKao = useKakao();
+
   const onClickKaKao = () => {
     shareKaKao({ url: shareLink, ...KAKAO_SHARE_DATA });
   };
+
+  const [copyToClipboard, copyResult] = useCopyClipBoard();
+
+  const onClickLinkCopy = useCallback(() => {
+    copyToClipboard(shareLink);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -65,7 +74,11 @@ export default function Modal({
               <Image src={kakaochat} alt="kakao" width={40} height={50} />
             </div>
             <Image src={facebook} alt="kakao" width={40} height={50} />
-            <Image src={link} alt="kakao" width={40} height={50} />
+            <div onClick={onClickLinkCopy}>
+              <Image src={link} alt="kakao" width={40} height={50} />
+            </div>
+            {copyResult?.state && copyResult?.message}
+            {!copyResult?.state && copyResult?.message}
           </div>
         )}
       </div>
