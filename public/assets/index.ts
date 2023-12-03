@@ -22,6 +22,7 @@ import StarIcon from "./star.svg";
 import IconEyeOff from "./eye-off.svg";
 import IconEyeOn from "./eye-on.svg";
 import ProfileEmptyIcon from "./Profile_empty_icon.svg";
+import CompletedImg from "./completed.svg";
 
 export {
   FooterIconFacebook,
@@ -48,4 +49,5 @@ export {
   IconEyeOff,
   IconEyeOn,
   ProfileEmptyIcon,
+  CompletedImg,
 };
