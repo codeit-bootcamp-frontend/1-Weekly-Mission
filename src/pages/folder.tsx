@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import HeroContent from "../../components/HeroContent/HeroContent";
-import MainContent from "../../components/MainContent";
-import FloatingAddFolderBtn from "../../components/Buttons/FloatingAddFolderBtn";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import HeroContent from "../components/HeroContent/HeroContent";
+import MainContent from "../components/MainContent";
+import FloatingAddFolderBtn from "../components/Buttons/FloatingAddFolderBtn";
 
 const MainContainer = styled.div`
   display: flex;

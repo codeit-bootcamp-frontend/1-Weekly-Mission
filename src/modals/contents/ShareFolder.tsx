@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { DescriptionText } from "../ModalCommonStyles";
 import { TitleText, Content } from "../ModalCommonStyles";
-import kakao from "../../assets/image/kakao.svg";
-import facebook from "../../assets/image/facebook.svg";
-import link from "../../assets/image/link.svg";
+import kakao from "/public/image/kakao.svg";
+import facebook from "/public/image/facebook.svg";
+import link from "/public/image/link.svg";
 import ModalContainer from "../ModalContainer";
 import getFolderTagListData from "../../utils/getFolderTagListData";
 import { IModalContentsProps } from "./types/modalContents.types";

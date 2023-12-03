@@ -44,11 +44,15 @@ const ErrorText = styled.h4`
   margin-top: 6px;
 `;
 
-const StyledImage = styled(Image)``;
+const StyledImage = styled(Image)`
+  border: none;
+`;
 
 const StyledButton = styled.button`
   position: absolute;
   right: 15px;
+  border: none;
+  background: none;
 `;
 
 function Input() {

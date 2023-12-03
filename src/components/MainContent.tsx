@@ -4,7 +4,7 @@ import CardContainer from "./CardContainer/CardContainer";
 import { useState, useEffect } from "react";
 import requestData from "../services/api";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 import AddLinkToFolder from "../modals/contents/AddLinkToFolder";
 import { ICardData } from "./CardContainer/types/Card.types";
 import { IFolderTagData } from "../utils/types/common.types";
@@ -27,7 +27,7 @@ const defaultTagButton: IFolderTagData = {
 };
 
 function MainContent() {
-  const Pagelocation = useLocation().pathname;
+  const Pagelocation = useRouter().pathname;
   const PAGE_TYPE_FOLDER = Pagelocation === "/folder";
 
   const [cardListData, setCardListData] = useState<ICardData[]>([]); // cardContainer에서 이용

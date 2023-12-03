@@ -1,7 +1,7 @@
 import "./CardContainer.module.css";
-import NoCardDataImg from "../../assets/image/img-card--noimg.png";
-import StarIcon from "../../assets/image/icon-star.svg";
-import ThreeDotsIcon from "../../assets/image/kebab.svg";
+import NoCardDataImg from "/public/image/img-card--noimg.png";
+import StarIcon from "/public/image/icon-star.svg";
+import ThreeDotsIcon from "/public/image/kebab.svg";
 import getTimeAgoText from "../../utils/getTimeAgoText";
 import AddFolderOptionBtn from "../Buttons/AddFolderOptionBtn";
 import styled from "styled-components";

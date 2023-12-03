@@ -1,8 +1,9 @@
 import "./TagBtnContainer.module.css";
-import AddImg from "../../../assets/image/icon-add.svg";
+import AddImg from "/public/image/icon-add.svg";
 import AddFolder from "../../../modals/contents/AddFolder";
 import { useState } from "react";
 import { IFolderTagData } from "../../../utils/types/common.types";
+import styled from "styled-components";
 
 const tagBtnStyle = {
   width: "16px",

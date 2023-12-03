@@ -1,7 +1,7 @@
 import "./SharedHero.module.css";
 import { useEffect, useState } from "react";
 import requestData from "../../../services/api";
-import noUserImg from "../../../assets/image/icon-myprofile.svg";
+import noUserImg from "/public/image/icon-myprofile.svg";
 import { IFolderInfoData } from "../types/Hero.types";
 
 function SharedHero() {

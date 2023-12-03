@@ -1,8 +1,8 @@
 import "./Footer.module.css";
-import youtubeIcon from "../../assets/image/icon-youtube.svg";
-import twitterIcon from "../../assets/image/icon-twitter.svg";
-import facebookIcon from "../../assets/image/icon-facebook.svg";
-import instagramIcon from "../../assets/image/icon-instagram.svg";
+import youtubeIcon from "/public/image/icon-youtube.svg";
+import twitterIcon from "/public/image/icon-twitter.svg";
+import facebookIcon from "/public/image/icon-facebook.svg";
+import instagramIcon from "/public/image/icon-instagram.svg";
 
 const COPYRIGHT_TEXT = "©codeit - 2023";
 const PRIVACY_POLICY_TEXT = "Privacy Policy";

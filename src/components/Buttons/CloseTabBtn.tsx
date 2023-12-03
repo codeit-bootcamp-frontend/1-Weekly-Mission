@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CloseTabBtnImg from "../../assets/image/CloseTabBtnBackground.svg";
+import CloseTabBtnImg from "/public/image/CloseTabBtnBackground.svg";
 import { IOnClick } from "../../utils/types/common.types";
 
 const BtnStyle = styled.button`

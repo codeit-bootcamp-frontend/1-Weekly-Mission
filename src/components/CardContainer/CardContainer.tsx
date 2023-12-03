@@ -1,8 +1,8 @@
 import "./CardContainer.module.css";
 import Card from "./Card";
-import ShareImg from "../../assets/image/share.svg";
-import PenImg from "../../assets/image/pen.svg";
-import TrashcanImg from "../../assets/image/Group 36.svg";
+import ShareImg from "/public/image/share.svg";
+import PenImg from "/public/image/pen.svg";
+import TrashcanImg from "/public/image/Group 36.svg";
 import ShareFolder from "../../modals/contents/ShareFolder";
 import EditFolderName from "../../modals/contents/EditFolderName";
 import DeleteFolder from "../../modals/contents/DeleteFolder";

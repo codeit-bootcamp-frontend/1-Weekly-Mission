@@ -1,5 +1,5 @@
 import styles from "./FolderHero.module.css";
-import LinkImg from "../../../assets/image/link.svg";
+import LinkImg from "/public/image/link.svg";
 import AddLinkToFolder from "../../../modals/contents/AddLinkToFolder";
 import { useState } from "react";
 import getFolderTagListData from "../../../utils/getFolderTagListData";
