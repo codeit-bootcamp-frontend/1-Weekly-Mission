@@ -1,8 +1,7 @@
 import Sign from "@/sign/Sign";
 
-
 const SignIn = () => {
-  <Sign />;
+  return <Sign />;
 };
 
 export default SignIn;

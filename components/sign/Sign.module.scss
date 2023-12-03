@@ -1,15 +1,25 @@
 .signWrapper {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $color-primary;
+  background-color: $color-background;
 
   .signHeader {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    width: 218px;
-    height: 78px;
+    gap: 1.6rem;
+    width: 21.8rem;
+    height: 7.8rem;
+
+    .logo {
+      width: 21rem;
+      height: 3.8rem;
+    }
+    .signDescription{
+      
+    }
   }
 }
