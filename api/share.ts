@@ -13,7 +13,7 @@ export type Owner = {
   name: string;
   profileImageSource: string;
 };
-export type Link = {
+export type LinkContents = {
   id: number;
   createdAt: string;
   url: string;

@@ -3,10 +3,10 @@ import styles from "./ImageListItem.module.css";
 import { getElapsedTime, parseDatestring } from "@/utils/caltime";
 import Card from "../card/Card";
 import Link from "next/link";
-import Image from "next/image";
+import { LinkContents } from "@/api/share";
 
-export default function ImageListItem({ item }) {
-  const { createdAt, url, title, description, imageSource } = item;
+export default function ImageListItem({ item }: { item: LinkContents }) {
+  const { id, createdAt, url, title, description, imageSource } = item;
   const targetData = parseDatestring(createdAt);
   const { year, month, day } = targetData;
   const diffTime = getElapsedTime(createdAt);
