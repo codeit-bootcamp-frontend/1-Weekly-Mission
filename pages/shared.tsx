@@ -11,6 +11,7 @@ import Image from "next/image";
 import request from "@/lib/axios";
 import Input from "@/components/input/Input";
 import Card from "@/components/card/Card";
+import { ApiMapper } from "@/lib/apiMapper";
 
 interface IUser {
   name: string;
@@ -28,14 +29,23 @@ const Shared = () => {
   const [searchLinkValue, setSearchLinkValue] = useState("");
 
   const handleFolder = useCallback(async () => {
-    const result = await request.get("/api/sample/folder");
-    if (!result) return;
+    try {
+      const result = await request.get(ApiMapper.sample.get.GET_FOLDER);
 
-    const { folder } = result.data;
+      if (result.status === 200) {
+        const { folder } = result.data;
 
-    setCardData(folder.links);
-    setUser(folder.owner);
-    setFolderName(folder.name);
+        setCardData(folder.links);
+        setUser(folder.owner);
+        setFolderName(folder.name);
+        return;
+      }
+
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+      return;
+    } catch (e) {
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+    }
   }, []);
 
   useEffect(() => {

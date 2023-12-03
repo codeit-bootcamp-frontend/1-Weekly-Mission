@@ -6,6 +6,7 @@ import request from "@/lib/axios";
 import styled from "styled-components";
 import { device } from "@/styles/globalStyle";
 import DefaultBtn, { DefaultBtnContainer } from "../button/DefaultButton";
+import { ApiMapper } from "@/lib/apiMapper";
 
 interface IUser {
   email: string | null;
@@ -26,21 +27,27 @@ const Header = () => {
   });
 
   const handleProfile = useCallback(async () => {
-    const result = await request.get("/api/users/1");
-    if (!result) return;
-
-    const { data } = result;
-
-    setUserData(data.data[0]);
+    try {
+      const result = await request.get(`${ApiMapper.user.get.GET_USERS}/1`);
+      if (result.status === 200) {
+        const { data } = result;
+        setUserData(data.data[0]);
+        return;
+      }
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+      return;
+    } catch (e) {
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+    }
   }, []);
-
-  const handleLoginBtn = () => {
-    router.push("/signin");
-  };
 
   useEffect(() => {
     handleProfile();
   }, [handleProfile]);
+
+  const handleLoginBtn = () => {
+    router.push("/signin");
+  };
 
   useEffect(() => {
     if (pathname === "/folder") {

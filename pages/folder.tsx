@@ -5,6 +5,7 @@ import {
   FolderBtnItemContainer,
   FolderContainer,
   FolderContentContainer,
+  FolderSection,
   LinkHeaderContainer,
   LinkToolContainer,
 } from "@/styles/folderStyled";
@@ -28,6 +29,7 @@ import Image from "next/image";
 import Card from "@/components/card/Card";
 import { Section, Wrapper } from "@/components/common/commonStyled";
 import request from "@/lib/axios";
+import { ApiMapper } from "@/lib/apiMapper";
 
 const LinkToolArr = [
   {
@@ -71,12 +73,22 @@ const Folder = () => {
   const [modalOpened, setModalOpened] = useRecoilState(modalState);
 
   const handleFolder = useCallback(async () => {
-    const result = await request.get(`api/users/1/folders`);
-    if (!result) return;
+    try {
+      const result = await request.get(ApiMapper.folder.get.GET_FOLDER, {
+        path: { userId: 1 },
+      });
 
-    const { data } = result;
+      if (result.status === 200) {
+        const { data } = result;
+        setFolderData(data.data);
+        return;
+      }
 
-    setFolderData(data.data);
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+      return;
+    } catch (e) {
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+    }
   }, []);
 
   useEffect(() => {
@@ -84,15 +96,28 @@ const Folder = () => {
   }, [handleFolder]);
 
   const handleLinks = useCallback(async () => {
-    const folderId = selectedFolder.id;
-    const result = await request.get(
-      `api/users/1/links${folderId !== 1 ? `?folderId=${folderId}` : ""}`
-    );
-    if (!result) return;
+    try {
+      const folderId = selectedFolder.id;
+      const query = folderId !== 1 ? { folderId: folderId } : "";
 
-    const { data } = result;
+      const result = await request.get(ApiMapper.link.get.GET_LINK, {
+        path: {
+          userId: 1,
+        },
+        query: query,
+      });
 
-    setCardData(data.data);
+      if (result.status === 200) {
+        const { data } = result;
+        setCardData(data.data);
+        return;
+      }
+
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+      return;
+    } catch (e) {
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+    }
   }, [selectedFolder]);
 
   useEffect(() => {
@@ -160,7 +185,7 @@ const Folder = () => {
           </ContentContainer>
         </Section>
 
-        <Section $bg="#fff">
+        <FolderSection $bg="var(--white)">
           <FolderContentContainer $isFolder={true}>
             <Input
               src={SearchImg}
@@ -270,7 +295,7 @@ const Folder = () => {
           </FolderContentContainer>
 
           <AddFloatingBtn />
-        </Section>
+        </FolderSection>
       </Wrapper>
 
       {modalOpened.addToFolderModal.display && (

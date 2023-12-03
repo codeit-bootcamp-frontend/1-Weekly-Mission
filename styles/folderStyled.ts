@@ -3,6 +3,11 @@ import { device } from "@/styles/globalStyle";
 import { DefaultBtnContainer } from "@/components/button/DefaultButton";
 import { InputContainer } from "@/components/input/Input";
 import { ContentContainer } from "./sharedStyled";
+import { Section } from "@/components/common/commonStyled";
+
+export const FolderSection = styled(Section)`
+  min-height: calc(100vh - 46.5rem);
+`;
 
 export const FolderContentContainer = styled(ContentContainer)`
   margin: 4rem auto 6rem;
