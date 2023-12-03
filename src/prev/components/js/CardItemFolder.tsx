@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import noImage from "../../Assets/noImage.png";
-import starIcon from "../../Assets/star.svg";
-import kebabIcon from "../../Assets/kebab.svg";
+import noImage from "Assets/noImage.png";
+import starIcon from "Assets/star.svg";
+import kebabIcon from "Assets/kebab.svg";
 import KebabPopOver from "./KebabButtonMenu";
 import { RowContainer } from "./Container";
-import getTimeDiff from "../../utils/utilTimeDiff";
+import getTimeDiff from "prev/utils/utilTimeDiff";
+import Image from "next/image";
 
 interface Props {
   item: any;
@@ -48,7 +49,7 @@ function CardItem({ item, modal, setLink, isOpen, onClick, idx }: Props) {
         )}
         <CardImageWrapper>
           {!item.image_source ? (
-            <img className="logoImg" src={noImage} alt={noImage} />
+            <Image className="logoImg" src={noImage} alt="빈 이미지" />
           ) : (
             <CardImage style={imgStyle}></CardImage>
           )}

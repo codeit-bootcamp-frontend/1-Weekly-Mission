@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { BlueWrapper } from "./Wrapper";
 import { Container } from "./Container";
 
@@ -33,7 +34,7 @@ const OwnerContainer = styled(Container)`
   margin: 0 auto;
 `;
 
-const OwnerAvatarImg = styled.img`
+const OwnerAvatarImg = styled(Image)<any>`
   width: 60px;
   height: 60px;
   border-radius: 50%;

@@ -1,7 +1,8 @@
 import "../css/Card.css";
-import noImage from "../../Assets/noImage.png";
+import noImage from "Assets/noImage.png";
 import { RowContainer } from "./Container";
 import getTimeDiff from "../../utils/utilTimeDiff";
+import Image from "next/image";
 
 /* 각 카드 컴포넌트 */
 function CardItem({ item }: any) {
@@ -18,7 +19,7 @@ function CardItem({ item }: any) {
       <div key={item.id} className="card">
         <div className="card-img-wrap">
           {!item.imageSource ? (
-            <img className="logoImg" src={noImage} alt={noImage} />
+            <Image className="logoImg" src={noImage} alt="로고 이미지" />
           ) : (
             <div className="card-img" style={imgStyle}></div>
           )}

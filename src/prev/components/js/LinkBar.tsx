@@ -2,7 +2,7 @@ import { useRef } from "react";
 import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
 import StyledButton from "./Button";
-import {ReactComponent as linkIcon } from "../../Assets/link.svg";
+import linkIcon from "Assets/link.svg";
 
 interface WrapperItem {
   $view: boolean;
@@ -41,7 +41,7 @@ function LinkBar({ onChange, onShow, $view, $viewFooter }: any) {
 export default LinkBar;
 
 const Wrapper = styled(BlueWrapper)<WrapperItem>`
-  padding:60px 0 90px;
+  padding: 60px 0 90px;
   z-index: 3;
 
   @media (max-width: 767px) {
@@ -90,5 +90,4 @@ const Icon = styled(linkIcon)`
   width: 20px;
   height: 20px;
   margin-right: 8px;
-
 `;

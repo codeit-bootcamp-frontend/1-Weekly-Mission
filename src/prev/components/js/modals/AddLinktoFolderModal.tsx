@@ -1,7 +1,7 @@
 import type { PersonalFolder } from "../../.../../../types/personalFolderType";
 import * as S from "./modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
-import checkImg from "../../../Assets/check.svg";
+import checkImg from "Assets/check.svg";
 
 interface Props {
   folders: PersonalFolder;

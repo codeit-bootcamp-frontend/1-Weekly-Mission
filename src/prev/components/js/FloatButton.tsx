@@ -1,8 +1,9 @@
+import Image from "next/image";
 import styled from "styled-components";
-import addFloat from "../../Assets/addFloat.svg";
+import addFloat from "Assets/addFloat.svg";
 import { ReactNode } from "react";
 
-const Icon = styled.img`
+const Icon = styled(Image)`
   width: 16px;
   height: 16px;
 `;

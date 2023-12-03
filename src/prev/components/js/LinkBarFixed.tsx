@@ -1,8 +1,9 @@
 import { useRef } from "react";
+import Image from "next/image";
 import styled from "styled-components";
 import { BlueWrapper } from "./Wrapper";
 import StyledButton from "./Button";
-import linkIcon from "../../Assets/link.svg";
+import linkIcon from "Assets/link.svg";
 
 interface WrapperItem {
   $view: boolean;
@@ -84,7 +85,7 @@ const LinkAddInput = styled.input`
   }
 `;
 
-const Icon = styled.img`
+const Icon = styled(Image)`
   width: 20px;
   height: 20px;
   margin-right: 8px;

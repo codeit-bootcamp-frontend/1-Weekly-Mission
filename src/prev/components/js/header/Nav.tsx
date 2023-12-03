@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 import { getAccount } from "../../../api/apiUrl";
 import { AccountType } from "../../../types/AccountType";
 import styled from "styled-components";
 import Profile from "../NavProfile";
-import logoImg from "../../../Assets/logo.svg";
+// import logo from "public/linkbrary_logo.svg";
+import styles from "./Nav.module.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 function Nav() {
   const [account, setAccount] = useState<AccountType | null>(null);
@@ -21,24 +26,29 @@ function Nav() {
   }, []);
 
   return (
-    <NavWrapper>
-      <NavContainer>
-        <NavLeft>
-          <Link to="/">
-            <NavLogo src={logoImg} alt={logoImg} />
+    <div className={cx("nav_wrapper")}>
+      <div className={cx("nav_container")}>
+        <div className={cx("nav_left")}>
+          <Link href="/" className={cx("nav_logo")}>
+            <Image
+              src="/images/linkbrary_logo.svg"
+              width="133"
+              height="24"
+              alt="로고 이미지"
+            />
           </Link>
-        </NavLeft>
+        </div>
         <div className="Nav_right">
           {account?.email ? (
             <Profile className="Nav_profile" account={account} />
           ) : (
-            <NavSignInButton to="/" className="Nav_signIn_button">
+            <NavSignInButton href="/" className={cx("signIn_button")}>
               로그인
             </NavSignInButton>
           )}
         </div>
-      </NavContainer>
-    </NavWrapper>
+      </div>
+    </div>
   );
 }
 
@@ -73,7 +83,7 @@ const NavLeft = styled.div`
   }
 `;
 
-const NavLogo = styled.img`
+const NavLogo = styled(Image)`
   width: 133px;
   height: 24px;
 

@@ -1,8 +1,8 @@
 import * as S from "./modal-styles/ModalsUnits";
 import ModalBg from "./modal-styles/ModalBg";
-import kakaotalk from "../../../Assets/kakaotalk.svg";
-import facebookIcon from "../../../Assets/facebook.svg";
-import linkShare from "../../../Assets/linkShare.svg";
+import kakaotalk from "Assets/kakaotalk.svg";
+import facebookIcon from "Assets/facebook.svg";
+import linkShare from "Assets/linkShare.svg";
 
 interface Props {
   onClose: () => void;

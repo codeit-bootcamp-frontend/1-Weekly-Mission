@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import addIcon from "../../Assets/add.png";
+import Image from "next/image";
+import addIcon from "Assets/add.png";
 import FolderMenuButton from "./FolderMenuButton";
-import shareIcon from "../../Assets/share.svg";
-import penIcon from "../../Assets/pen.svg";
-import deleteIcon from "../../Assets/delete.svg";
-import { PersonalFolder } from "../../types/personalFolderType";
+import shareIcon from "Assets/share.svg";
+import penIcon from "Assets/pen.svg";
+import deleteIcon from "Assets/delete.svg";
+import { PersonalFolder } from "prev/types/personalFolderType";
 
 interface ModalType {
   modal: any;
@@ -142,7 +143,7 @@ const FolderAddContainer = styled.button<ModalType>`
   }
 `;
 
-const Icon = styled.img`
+const Icon = styled(Image)<any>`
   width: 16px;
   height: 16px;
 `;
@@ -175,7 +176,7 @@ const FeatureContainer = styled.div<ModalType>`
   }
 `;
 
-const FeatureIcon = styled.img`
+const FeatureIcon = styled(Image)`
   width: 18px;
   height: 18px;
 `;

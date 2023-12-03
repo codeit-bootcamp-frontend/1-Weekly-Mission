@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { ReactComponent as searchIcon } from "../../Assets/Search.svg";
-import { ReactComponent as removeIcon } from "../../Assets/close_white.svg";
+import searchIcon from "Assets/Search.svg";
+import removeIcon from "Assets/close_white.svg";
 
 interface Props {
   value: string;

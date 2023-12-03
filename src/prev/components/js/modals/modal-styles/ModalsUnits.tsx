@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import closeIcon from "../../../../Assets/_close.png";
+import Image from "next/image";
+import closeIcon from "Assets/_close.png";
 
 export function CloseButton({ onClick }: any) {
   return (
@@ -22,7 +23,7 @@ export const Wrapper = styled.form`
   background-color: var(--white);
 `;
 
-const XButton = styled.img`
+const XButton = styled(Image)<any>`
   width: 24px;
   height: 24px;
   position: absolute;
@@ -111,7 +112,7 @@ export const IconButton = styled.button`
   border: none;
 `;
 
-export const SNSIcon = styled.img`
+export const SNSIcon = styled(Image)`
   width: 42px;
   height: 42px;
   cursor: pointer;
@@ -171,7 +172,7 @@ export const FolderItemsCount = styled.span`
   font-weight: 400;
 `;
 
-export const CheckIcon = styled.img`
+export const CheckIcon = styled(Image)`
   width: 14px;
   height: 14px;
   flex-shrink: 0;

@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import styled from "styled-components";
-import facebookIcon from "../../../Assets/facebookIcon.svg";
-import twitterIcon from "../../../Assets/twitterIcon.svg";
-import youtubeIcon from "../../../Assets/youtubeIcon.svg";
-import instagramIcon from "../../../Assets/instagramIcon.svg";
+import Image from "next/image";
+import styles from "./footer.module.scss";
+import classNames from "classnames/bind";
 
+const cx = classNames.bind(styles);
 interface UrlListItem {
-  url: string;
+  url: any;
   icon: string;
 }
 
@@ -22,12 +22,14 @@ interface Props {
 }
 
 const urlList: UrlList = {
-  facebook: { url: "https://www.facebook.com/", icon: facebookIcon },
-  twitter: { url: "https://twitter.com/?lang=ko", icon: twitterIcon },
-  youtube: { url: "https://www.youtube.com/", icon: youtubeIcon },
-  instagram: { url: "https://www.instagram.com/", icon: instagramIcon },
+  facebook: { url: "https://www.facebook.com/", icon: "/images/facebook.svg" },
+  twitter: { url: "https://twitter.com/?lang=ko", icon: "/images/twitter.svg" },
+  youtube: { url: "https://www.youtube.com/", icon: "/images/youtube.svg" },
+  instagram: {
+    url: "https://www.instagram.com/",
+    icon: "/images/instagram.svg",
+  },
 };
-
 
 function Icon({ name, onClick, className }: Props) {
   const { url, icon } = urlList[name];
@@ -35,12 +37,14 @@ function Icon({ name, onClick, className }: Props) {
   const handleClick = () => onClick(url);
 
   return (
-    <img
+    <Image
+      width="20"
+      height="20"
       src={icon}
       className={className}
       alt={name}
       onClick={handleClick}
-    ></img>
+    ></Image>
   );
 }
 
@@ -56,14 +60,18 @@ function Footer() {
   };
 
   return (
-    <Wrapper>
-      <Container>
-        <Copyright>©codeit - 2023</Copyright>
-        <DirectLinks>
-          <StyledLink to="/">Privacy Policy</StyledLink>
-          <StyledLink to="/">FAQ</StyledLink>
-        </DirectLinks>
-        <IconWrapper>
+    <div className={cx("footer_wrapper")}>
+      <div className={cx("footer_container")}>
+        <div className={cx("copyright")}>©codeit - 2023</div>
+        <div className={cx("direct_links")}>
+          <Link className={cx("links")} href="/">
+            Privacy Policy
+          </Link>
+          <Link className={cx("links")} href="/">
+            FAQ
+          </Link>
+        </div>
+        <div className={cx("icon_wrapper")}>
           {["facebook", "twitter", "youtube", "instagram"].map((sns, idx) => {
             return (
               <StyledIcon
@@ -73,9 +81,9 @@ function Footer() {
               />
             );
           })}
-        </IconWrapper>
-      </Container>
-    </Wrapper>
+        </div>
+      </div>
+    </div>
   );
 }
 

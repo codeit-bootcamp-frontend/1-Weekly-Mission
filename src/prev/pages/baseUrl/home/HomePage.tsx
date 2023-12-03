@@ -1,9 +1,10 @@
-import pc from "../../../Assets/pc.png";
+import pc from "Assets/pc.png";
+import Image from "next/image";
 
 function Homepage() {
   return (
     <>
-      <img src={pc} alt="pc캡쳐화면"></img>
+      <Image src={pc} alt="pc캡쳐화면"></Image>
     </>
   );
 }
