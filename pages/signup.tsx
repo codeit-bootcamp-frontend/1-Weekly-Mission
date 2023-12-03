@@ -97,6 +97,7 @@ function SignUpPage() {
               })}
               id="email_input"
               type="email"
+              placeholder="test@codeit.com"
               onChange={(e) => handleInputChange(e, emailInput)}
               onBlur={handleEmailError}
             />
@@ -114,6 +115,7 @@ function SignUpPage() {
                 })}
                 id="pwd_input"
                 type={pwdType}
+                placeholder="영문, 숫자 조합 8자 이상 입력해주세요"
                 onChange={(e) => handleInputChange(e, pwdInput)}
                 onBlur={handlePwdError}
               />
@@ -137,6 +139,7 @@ function SignUpPage() {
                 })}
                 id="pwd_check_input"
                 type={pwdCheckType}
+                placeholder="비밀번호를 입력해주세요"
                 onChange={(e) => handleInputChange(e, pwdCheckInput)}
                 onBlur={handlePwdCheckError}
               />
