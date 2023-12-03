@@ -19,7 +19,7 @@ export default function LoginInput() {
   const [value, setValue] = useState<string>("");
   const [isValid, setIsValid] = useState<boolean>(false);
 
-  const handleValueChange = (e) => {
+  const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
