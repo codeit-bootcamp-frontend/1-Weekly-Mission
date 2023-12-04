@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Search from "@/components/Search";
 import FolderList from "./FolderList";
-import { requestSingleFolderApi } from "@/libs/singleFolderApi";
 import Cards from "./Cards";
 import axios from "@/libs/axios";
 import Image from "next/image";
 import s from "./Header.module.css";
+import { getSingleFolder } from "@/libs/getSingleFolder";
 
 interface GetData {
   getData: (data: Folders) => void;
@@ -108,9 +108,10 @@ const Header = ({ getData }: GetData) => {
   useEffect(() => {
     getData(fullFolderData as Folders);
   }, [fullFolderData]);
+
   const getSingleFolderData = async () => {
-    const temp = await requestSingleFolderApi(singleFolderDataId as number);
-    setSingleFolderData(temp?.data);
+    const temp = await getSingleFolder(singleFolderDataId as number);
+    setSingleFolderData(temp?.data?.data);
   };
 
   useEffect(() => {
