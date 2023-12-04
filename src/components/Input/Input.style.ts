@@ -20,7 +20,7 @@ export const Input = styled.input<{ $error: boolean }>`
   line-height: 2.4rem;
   color: ${COLORS.LB_GRAY_100};
 
-  &:placeholder {
+  &::placeholder {
     color: ${COLORS.LB_GRAY_60};
   }
 
