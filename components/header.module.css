@@ -1,0 +1,81 @@
+.header {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  background-color: #f0f6ff;
+}
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 200px;
+  margin: 0 auto;
+}
+
+.headerAImg {
+  height: auto;
+}
+.headerLogin {
+  display: flex;
+  align-items: center;
+}
+
+.headerLoginButton {
+  display: inline-block;
+  width: 133px;
+  padding: 16px 20px;
+  border: 0;
+  outline: 0;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  color: #f5f5f5;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.profileLogo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.profileId {
+  margin-left: 6px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1200px) {
+  .headerInner {
+    max-width: 767px;
+    padding: 20px 0px;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .headerInner {
+    padding: 13px 32px;
+  }
+  .headerA {
+    width: 88.667px;
+  }
+  .headerLoginA {
+    width: 80px;
+    height: 37px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .headerAImg {
+    height: 16px;
+  }
+}

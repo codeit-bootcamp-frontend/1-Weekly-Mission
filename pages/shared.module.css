@@ -1,0 +1,33 @@
+.shared {
+}
+
+.noLink {
+  width: 100%;
+  max-width: 1060px;
+  margin: 81px auto 0;
+  text-align: center;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 124.5px auto;
+}
+
+.sectionTitleThird {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto 100px;
+}
+
+@media screen and (max-width: 1199px) {
+  .sectionTitleThird {
+    padding: 0 32px;
+    max-width: 765px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sectionTitleThird {
+    max-width: 390px;
+  }
+}

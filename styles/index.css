@@ -1,0 +1,296 @@
+.section-title {
+  background-color: #f0f6ff;
+  padding: 0 30px;
+}
+
+.section-title-wrap {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding-top: 7rem;
+}
+
+.section-title-wrap h2 {
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 80px;
+}
+
+.section-title-wrap h2 span {
+  background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+  background-clip: text; /* 밑에 3줄 코드 배경색 그라디언트를 글자로 덮어씌움  */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title-wrap a {
+  display: inline-block;
+  width: 350px;
+  text-align: center;
+  padding: 16px 20px;
+  border-radius: 0.8rem;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 1.8rem;
+
+  font-weight: 600;
+}
+
+.section-title-wrap .section-title-add-link {
+  width: 1118px;
+  height: 539px;
+  background-image: url("../public/img/png/image25.png"),
+    linear-gradient(180deg, rgba(196, 196, 196, 0) 67.68%, #f0f6ff 94.76%);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 89px;
+}
+
+.section-article-wrap {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 99.8rem;
+  padding: 12rem 0;
+}
+
+.section-article .section-article-introduce {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15.7rem;
+}
+
+.section-article .section-article-introduce:not(:last-child) {
+  padding-bottom: 10rem;
+}
+
+.section-article-introduce-first,
+.section-article-introduce-second,
+.section-article-introduce-third,
+.section-article-introduce-fourth {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  width: 29.1rem;
+}
+
+.section-article-introduce-first h3,
+.section-article-introduce-second h3,
+.section-article-introduce-third h3,
+.section-article-introduce-fourth h3 {
+  font-size: 4.8em;
+
+  font-weight: 700;
+
+  letter-spacing: -0.3px;
+}
+
+.section-article-introduce-first h3 span {
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-article-introduce-first-text,
+.section-article-introduce-second-text,
+.section-article-introduce-third-text,
+.section-article-introduce-fourth-text {
+  color: #6b6b6b;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.section-article-introduce .section-article-bg {
+  position: relative;
+  width: 550px;
+  height: 450px;
+  border-radius: 15px;
+}
+
+.section-article-introduce .section-article-bg img {
+  width: 100%;
+  height: auto;
+}
+
+.section-article-introduce-reverse {
+  flex-direction: row-reverse;
+}
+
+.section-article-introduce-second h3 span {
+  background: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-article-introduce-third h3 span {
+  background: linear-gradient(
+    99deg,
+    #6d7ccd 19.76%,
+    rgba(82, 136, 133, 0.22) 52.69%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-article-introduce-fourth h3 span {
+  background: var(
+    --fandom-k-gra-blue-to-pink,
+    linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-width: 1200px) {
+  .section-title-wrap .section-title-add-link {
+    width: 650px;
+    height: 383px;
+    margin-top: 29px;
+  }
+  .section-article-wrap {
+    max-width: 69.8rem;
+    padding: 8rem 0 17rem;
+  }
+
+  .section-article-introduce .section-article-bg {
+    width: 385px;
+    height: 315px;
+  }
+
+  .section-article .section-article-introduce {
+    gap: 5.1rem;
+  }
+
+  .section-article-introduce-first,
+  .section-article-introduce-second,
+  .section-article-introduce-third,
+  .section-article-introduce-fourth {
+    width: 26.2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section-title-wrap {
+    max-width: 32.5rem;
+    padding-top: 2.8rem;
+    gap: 2.4rem;
+  }
+  .section-title-wrap h2 {
+    font-size: 3.2rem;
+    line-height: 42px;
+  }
+  .section-title-wrap a {
+    width: 200px;
+    padding: 10px 16px;
+    font-size: 1.4rem;
+  }
+  .section-title-wrap .section-title-add-link {
+    width: 303px;
+    height: 179px;
+    margin-top: 13.5px;
+  }
+  section.section-article {
+    padding: 4rem 3.2rem 8rem;
+  }
+  .section-article-wrap {
+    padding: 0;
+  }
+  .section-article .section-article-introduce {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .section-article-introduce-first,
+  .section-article-introduce-second,
+  .section-article-introduce-third,
+  .section-article-introduce-fourth {
+    width: 100%;
+  }
+  .section-article-introduce .section-article-bg {
+    width: 100%;
+    height: 266px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .section-article-introduce-first,
+  .section-article-introduce-second,
+  .section-article-introduce-third,
+  .section-article-introduce-fourth {
+    gap: 20px;
+  }
+
+  .section-article-introduce-first h3,
+  .section-article-introduce-second h3,
+  .section-article-introduce-third h3,
+  .section-article-introduce-fourth h3 {
+    font-size: 2.4rem;
+  }
+  .section-article-introduce-first-text,
+  .section-article-introduce-second-text,
+  .section-article-introduce-third-text,
+  .section-article-introduce-fourth-text {
+    font-size: 1.5rem;
+  }
+  .section-article .section-article-introduce {
+    gap: 2.4rem;
+  }
+  .section-article .section-article-introduce:not(:last-child) {
+    padding-bottom: 8.2rem;
+  }
+}
+
+/* 메인페이지 각 이미지 반응형 hidden */
+
+.tablet-hidden {
+  display: none;
+}
+.tablet-mobile-hidden {
+  display: none;
+}
+.mobile-hidden {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .tablet-mobile-hidden {
+    display: block;
+  }
+  .tablet-hidden {
+    display: block;
+  }
+  .pc-hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .tablet-hidden {
+    display: none;
+  }
+  .pc-hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .pc-tablet-hidden {
+    display: none;
+  }
+  .mobile-hidden {
+    display: block;
+  }
+}

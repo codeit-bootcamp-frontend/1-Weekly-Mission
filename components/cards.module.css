@@ -1,0 +1,28 @@
+.sectionTitleThird {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto 100px;
+}
+.sectionTitleThirdInner {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 25px 20px;
+}
+
+.sectionTitleThirdInnerA {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1199px) {
+  .sectionTitleThird {
+    padding: 0 32px;
+    max-width: 765px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sectionTitleThird {
+    max-width: 390px;
+  }
+}

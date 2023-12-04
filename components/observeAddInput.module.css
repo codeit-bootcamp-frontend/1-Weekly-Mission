@@ -1,0 +1,76 @@
+.observeTitleFirst {
+  background-color: #f0f6ff;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  padding: 24px 0;
+}
+
+.observeTitleInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--linkbrary-white);
+  padding: 16px 20px;
+  border: 1px solid var(--linkbrary-primary-color);
+  border-radius: 15px;
+}
+
+.addLinkImg {
+  flex-basis: 20px;
+  margin-right: 12px;
+}
+
+.addLinkInput {
+  flex-grow: 2;
+  height: 24px;
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  color: #9fa6b2;
+  font-style: normal;
+  font-weight: 400;
+  width: 100%;
+}
+
+.addLinkButton {
+  width: 80px;
+  height: 37px;
+  border-radius: 8px;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  color: #f5f5f5;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border: 0;
+  outline: 0;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 1199px) {
+  .observeTitleFirst {
+    padding: 24px 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .addLink {
+    max-width: 325px;
+    padding: 8px 10px;
+  }
+  .addLinkInput {
+    font-size: 14px;
+  }
+}
