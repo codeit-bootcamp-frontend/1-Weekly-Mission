@@ -3,23 +3,12 @@ import Search from "@/components/Search";
 import Cards from "@/pageComponents/sharedPageComponents/Cards";
 import Image from "next/image";
 
-interface Link {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-}
-
-interface PropsType {
-  profile: string;
-  userName: string;
-  folderName: string;
-  fullData: Link[];
-}
-
-const Header = ({ profile, userName, folderName, fullData }: PropsType) => {
+const Header = ({
+  profile,
+  userName,
+  folderName,
+  fullData,
+}: SharedPageHeaderProps) => {
   const [inputValue, setInputValue] = useState("");
   function getInputValue(v: string): void {
     setInputValue(v);

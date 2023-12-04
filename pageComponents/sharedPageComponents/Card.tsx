@@ -2,14 +2,6 @@ import React from "react";
 import { getTimePassed } from "@/utils/formatTimePassed";
 import Image from "next/image";
 import Link from "next/link";
-interface Link {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-}
 
 const Card = ({ data }: { data: Link }) => {
   const { url, description, createdAt, imageSource } = data;

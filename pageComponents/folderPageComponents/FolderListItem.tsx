@@ -1,32 +1,12 @@
 import React from "react";
 
-interface Link {
-  count: number;
-}
-
-interface SingleData {
-  created_at: string;
-  id: number;
-  link: Link;
-  name: string;
-  user_id: number;
-}
-
-interface Props {
-  data: SingleData;
-  handleFolderClick: (folderId: unknown, folderName: string) => void;
-  isSelected: boolean;
-  handleButtonClick: (id: number) => void;
-  isTotalClicked: boolean;
-}
-
 const FolderListItem = ({
   data,
   handleFolderClick,
   isSelected,
   handleButtonClick,
   isTotalClicked,
-}: Props) => {
+}: FolderListItemProps) => {
   const { id, name } = data;
   return (
     <button

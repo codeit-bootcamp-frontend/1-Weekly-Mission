@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface navPropsType {
-  userEmail: string;
-}
-
-const Nav = ({ userEmail }: navPropsType) => {
+const Nav = ({ userEmail }: SharedPageNavProps) => {
   return (
     <>
       <nav>

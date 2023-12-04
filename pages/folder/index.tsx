@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Nav from "@/folderPageComponents/Nav";
-import Header from "@/folderPageComponents/Header";
+import Nav from "@/pageComponents/folderPageComponents/Nav";
+import Header from "@/pageComponents/folderPageComponents/Header";
 import Article from "@/components/Article";
 import Footer from "@/components/Footer";
 import AddLink from "@/components/AddLink";
@@ -8,25 +8,9 @@ import axios from "@/libs/axios";
 import Head from "next/head";
 import Image from "next/image";
 
-interface Link {
-  count: number;
-}
-
-interface SingleData {
-  created_at: string;
-  id: number;
-  link: Link;
-  name: string;
-  user_id: number;
-}
-
-interface Data {
-  data: SingleData[];
-}
-
 export default function FolderPage() {
   const [userEmail, setUserEmail] = useState("");
-  const [data, setData] = useState<Data>();
+  const [data, setData] = useState<Folders>();
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
   async function getUserEmail() {
@@ -37,7 +21,7 @@ export default function FolderPage() {
     getUserEmail();
   }, []);
 
-  function getData(data: Data): void {
+  function getData(data: Folders): void {
     setData(data);
   }
   function handleAddLinkClick(

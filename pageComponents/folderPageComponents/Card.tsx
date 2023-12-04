@@ -1,37 +1,9 @@
 import React, { useState } from "react";
 import { getTimePassed } from "@/utils/formatTimePassed";
 import Image from "next/image";
-import Link from "next/link";
+import Count from "next/link";
 
-interface SingleDataOfTotalData {
-  created_at: string;
-  description: string;
-  folder_id: number;
-  id: number;
-  image_source: string;
-  title: string;
-  updated_at: string;
-  url: string;
-}
-
-interface Link {
-  count: number;
-}
-
-interface SingleData {
-  created_at: string;
-  id: number;
-  link: Link;
-  name: string;
-  user_id: number;
-}
-
-interface Props {
-  data: SingleDataOfTotalData;
-  fullFolderData: SingleData[];
-}
-
-const Card = ({ data, fullFolderData }: Props) => {
+const Card = ({ data, fullFolderData }: FolderCardProps) => {
   let {
     created_at,
     description,
@@ -82,7 +54,7 @@ const Card = ({ data, fullFolderData }: Props) => {
         height: "auto",
       }}
     >
-      <Link
+      <Count
         href={url}
         target="_blank"
         rel="noreferrer"
@@ -162,7 +134,7 @@ const Card = ({ data, fullFolderData }: Props) => {
           <span>{description}</span>
           <span>{created_at.substring(0, 10)}</span>
         </div>
-      </Link>
+      </Count>
       {isKebabDeleteClicked ? (
         <div className="modal-Background">
           <div className="modal">

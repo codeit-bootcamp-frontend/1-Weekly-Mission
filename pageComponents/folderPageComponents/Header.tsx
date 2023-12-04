@@ -5,57 +5,19 @@ import { requestSingleFolderApi } from "@/libs/singleFolderApi";
 import Cards from "./Cards";
 import axios from "@/libs/axios";
 
-interface Link {
-  count: number;
-}
-
-interface SingleData {
-  created_at: string;
-  id: number;
-  link: Link;
-  name: string;
-  user_id: number;
-}
-
-interface Data {
-  data: SingleData[];
-}
-
 interface GetData {
-  getData: (data: Data) => void;
-}
-
-interface SingleFolderDataId {
-  singleFolderDataId: number;
-}
-
-interface SingleFolderDataName {
-  singleFolderDataName: string;
-}
-
-interface SingleDataOfTotalData {
-  created_at: string;
-  description: string;
-  folder_id: number;
-  id: number;
-  image_source: string;
-  title: string;
-  updated_at: string;
-  url: string;
-}
-interface TotalData {
-  data: SingleDataOfTotalData[];
+  getData: (data: Folders) => void;
 }
 
 const Header = ({ getData }: GetData) => {
-  const [fullList, setFullList] = useState<Data>();
+  const [fullList, setFullList] = useState<Folders>();
   const [totalData, setTotalData] = useState<TotalData>();
   const [isTotalClicked, setIsTotalClicked] = useState(false);
   const [isSingleClicked, setIsSingleClicked] = useState(false);
   const [singleFolderDataId, setSingleFolderDataId] = useState<unknown>();
-  const [singleFolderData, setSingleFolderData] = useState<
-    SingleDataOfTotalData[]
-  >([]);
+  const [singleFolderData, setSingleFolderData] = useState<SingleFolderData[]>(
+    []
+  );
   const [singleFolderName, setSingleFolderName] = useState("");
   const [isAddFolderClicked, setIsAddFolderClicked] = useState(false);
   const [isChangeFolderNameClicked, setIsChangeFolderNameClicked] =
@@ -133,7 +95,7 @@ const Header = ({ getData }: GetData) => {
     setSingleFolderName(folderName);
   };
 
-  const [fullFolderData, setFullFolderData] = useState<Data>({} as Data);
+  const [fullFolderData, setFullFolderData] = useState<Folders>({} as Folders);
   const getFullFolderData = async () => {
     const temp = await axios.get(`/users/1/folders`);
     setFullFolderData(temp?.data);
@@ -142,7 +104,7 @@ const Header = ({ getData }: GetData) => {
     getFullFolderData();
   }, []);
   useEffect(() => {
-    getData(fullFolderData as Data);
+    getData(fullFolderData as Folders);
   }, [fullFolderData]);
   const getSingleFolderData = async () => {
     const temp = await requestSingleFolderApi(singleFolderDataId as number);
@@ -202,7 +164,7 @@ const Header = ({ getData }: GetData) => {
   function getInputValue(v: string) {
     setInputValue(v);
   }
-  let searchedData: SingleDataOfTotalData[] = [];
+  let searchedData: SingleFolderData[] = [];
 
   if (isTotalClicked && totalData) {
     searchedData = totalData?.data?.filter((data) => {

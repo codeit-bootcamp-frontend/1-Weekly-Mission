@@ -2,11 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useDebounce from "@/hooks/useDebounce";
 
-interface SearchProp {
-  getInputValue: (input: string) => void;
-}
-
-const Search = ({ getInputValue }: SearchProp) => {
+const Search = ({ getInputValue }: SearchProps) => {
   const [inputSearch, setInputSearch] = useState("");
   const mounted = useRef(false);
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {

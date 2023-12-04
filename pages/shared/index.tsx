@@ -6,41 +6,6 @@ import Footer from "@/components/Footer";
 import axios from "@/libs/axios";
 import Head from "next/head";
 
-interface PropsType {
-  userEmail: string;
-  profile: string;
-  userName: string;
-  folderName: string;
-  fullData: Link[];
-}
-
-interface Owner {
-  id: number;
-  name: string;
-  profileImageSource: string;
-}
-
-interface Link {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-}
-
-interface Folder {
-  id: number;
-  name: string;
-  owner: Owner;
-  links: Link[];
-  count: number;
-}
-
-interface Temp {
-  folder: Folder;
-}
-
 export async function getStaticProps() {
   const res = await axios.get(`/sample/user`);
   const userEmail: string = res?.data?.email;
@@ -68,7 +33,7 @@ export default function SharedPage({
   userName,
   folderName,
   fullData,
-}: PropsType) {
+}: SharedPageProps) {
   return (
     <>
       <Head>
