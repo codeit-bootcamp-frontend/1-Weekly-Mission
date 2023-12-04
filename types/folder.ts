@@ -5,14 +5,17 @@ export interface LinkData {
   folder_id?: number;
   title: string;
   description: string;
-  created_at: string;
+  created_at?: string;
   updated_at?: string | null;
   image_source?: string;
   url: string;
 }
 
-// prettier-ignore
-export type SampleLinkData = Omit<LinkData, "folder_id" | "updated_at" | "image_source"> & {
+export type SampleLinkData = Omit<
+  LinkData,
+  "folder_id" | "updated_at" | "image_source" | "created_at"
+> & {
+  createdAt?: string;
   imageSource?: string;
 };
 

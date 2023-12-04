@@ -12,8 +12,9 @@ interface CardItemProps {
 
 export default function CardItem({ link }: CardItemProps) {
   // prettier-ignore
-  const { description, image_source, imageSource, created_at: createdAt, url } = link;
-  const { yyyy, mm, dd } = getCreatedDate(createdAt);
+  const { description, image_source, imageSource, created_at, createdAt, url } = link;
+  const linkCreatedAt = (created_at ?? createdAt) as string;
+  const { yyyy, mm, dd } = getCreatedDate(linkCreatedAt);
   const imageSourceUrl = image_source ?? imageSource;
   const imageUrl = imageSourceUrl ? imageSourceUrl : "/images/logo.svg";
   const cardStyle = classNames(styles.default, { [styles["card-image"]]: !!imageSourceUrl });
@@ -30,7 +31,7 @@ export default function CardItem({ link }: CardItemProps) {
       </div>
       <div className={styles["card-info"]}>
         <div className={styles.info}>
-          {getDiffTime(createdAt)}
+          {getDiffTime(linkCreatedAt)}
           <KebabMenu link={url} />
         </div>
         <p className={styles.description}>{description}</p>
