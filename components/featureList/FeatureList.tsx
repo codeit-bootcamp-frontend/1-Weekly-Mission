@@ -27,7 +27,7 @@ const articles = [
     title: (
       <>
         링크를 폴더로
-        <br /> <span> 관리</span>하세요
+        <br /> <span>관리</span>하세요
       </>
     ),
     description: (
@@ -43,7 +43,7 @@ const articles = [
     title: (
       <>
         저장한 링크를
-        <br /> <span>공유해</span> 보세요.
+        <br /> <span>공유</span>해 보세요.
       </>
     ),
     description: (

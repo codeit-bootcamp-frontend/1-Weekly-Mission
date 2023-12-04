@@ -48,39 +48,4 @@ const FeatureArticle = ({ title, description, imageSrc, alt, idx }: FeatureArtic
   );
 };
 
-// const ArticleEven = ({ children }: { children: ReactNode }) => {
-//   return <S.ArticleEven>{children}</S.ArticleEven>;
-// };
-
-// const TextWrap = ({ children }: { children: ReactNode }) => {
-//   return <S.TextWrap>{children}</S.TextWrap>;
-// };
-
-// const Title = ({ children }: { children: ReactNode }) => {
-//   return <S.Title>{children}</S.Title>;
-// };
-
-// const Description = ({ children }: { children: ReactNode }) => {
-//   return <S.Description>{children}</S.Description>;
-// };
-
-// const FeatureImage = ({ imageSrc, alt }: { imageSrc: string; alt: string }) => {
-//   return (
-//     <S.FeatureImageContainer>
-//       <Image width={385} height={315} layout="responsive" src={imageSrc} alt={alt} />
-//     </S.FeatureImageContainer>
-//   );
-// };
-
-// const FeatureBr = () => {
-//   return <S.FeatureItemBr />;
-// // };
-
-// FeatureArticle.ArticleEven = ArticleEven;
-// FeatureArticle.TextWrap = TextWrap;
-// FeatureArticle.Title = Title;
-// FeatureArticle.Description = Description;
-// FeatureArticle.FeatureImage = FeatureImage;
-// FeatureArticle.FeatureBr = FeatureBr;
-
 export default FeatureArticle;
