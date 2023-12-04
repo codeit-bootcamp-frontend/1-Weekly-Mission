@@ -1,14 +1,15 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import * as S from "./InputStyle";
 import Input from "./Input";
 
 interface InputFormProps {
-  contentsType?: string;
+  inputType?: string;
   label: string;
 }
 
-export default function InputForm({ contentsType = "text", label }: InputFormProps) {
+export default function InputForm({ inputType = "text", label }: InputFormProps) {
   const [inputValue, setInputValue] = useState("");
+  const [contentsType, setContentsType] = useState(inputType);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,10 +26,18 @@ export default function InputForm({ contentsType = "text", label }: InputFormPro
     setErrorMessage("");
   };
 
+  /** 비밀번호 마스킹 토글 */
+  const toggleContentsType = (e: MouseEvent<HTMLDivElement>) => {
+    const { id } = e.target as HTMLParagraphElement;
+    if (id !== "masking") return;
+    contentsType === "text" ? setContentsType("password") : setContentsType("text");
+  };
+
   return (
-    <S.Container>
+    <S.Container onClick={toggleContentsType}>
       <label htmlFor={contentsType}>{label}</label>
       <Input
+        inputType={inputType}
         contentsType={contentsType}
         tagType="input"
         inputValue={inputValue}
