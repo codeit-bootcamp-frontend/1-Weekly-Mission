@@ -34,15 +34,7 @@ export default function HeaderModal({
         <p className={styles.title}>폴더에추가</p>
         <p>{inputLink}</p>
         {linkData.map((item) => {
-          const {
-            folderId,
-            folderName,
-            linksdata,
-          }: {
-            folderId: number;
-            folderName: string;
-            linksdata: FolderLinks[];
-          } = item;
+          const { folderId, folderName, linksdata } = item;
 
           return (
             <div

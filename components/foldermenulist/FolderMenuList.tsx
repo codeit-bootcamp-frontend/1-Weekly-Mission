@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 export default function FolderMenuList() {
   const { LinkSDataArr, folderIdKey } = useContext(LocaleContext);
   const router = useRouter();
-  const { id } = router.query;
+  // const { id } = router.query;
 
   return (
     <div className={styles.container}>

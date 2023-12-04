@@ -15,12 +15,11 @@ type FolderTypeProps = {
 
 export default function FolderMenu({ folderIdKey }: FolderMenuProps) {
   const [openModal, setOpenModal] = useState(false);
-  const [tabName, setTabName] = useState("");
+  const [tabName, setTabName] = useState<TabName>("share");
   const { ObjectValue } = useContext(LocaleContext);
 
-  const folder: FolderTypeProps | undefined = folderIdKey
-    ? ObjectValue[folderIdKey]
-    : undefined;
+  const folder: FolderTypeProps | undefined =
+    typeof folderIdKey === "string" ? ObjectValue[folderIdKey] : undefined;
 
   const folderName = folder?.folderName || "전체";
   const isSelected = typeof folder !== "undefined";
@@ -30,7 +29,7 @@ export default function FolderMenu({ folderIdKey }: FolderMenuProps) {
   };
 
   const handleTab = (e: React.MouseEvent<HTMLDivElement>) => {
-    const altAttribute = (e.target as HTMLImageElement).alt;
+    const altAttribute = (e.target as HTMLImageElement).alt as TabName;
     setTabName(altAttribute);
     // setTabName(e.target.alt);
   };

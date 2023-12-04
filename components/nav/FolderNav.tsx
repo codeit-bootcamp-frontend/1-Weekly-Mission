@@ -7,21 +7,17 @@ import styles from "./ShareNav.module.css";
 import Profile from "@/components/profile/Profile";
 import { UserProfile } from "@/api/folder";
 
-type FolderNavProps = {
-  data: UserProfile;
-};
-
 export default function FolderNav({
   userProfile,
 }: {
-  userProfile: FolderNavProps;
+  userProfile: { data: UserProfile[] };
 }) {
   return (
     <div className={styles.container}>
       <Logo />
       <div className={styles.profile__container}>
-        {userProfile?.data ? <Person /> : <Login />}
-        {userProfile?.data && <Profile data={userProfile?.data} />}
+        {userProfile.data ? <Person /> : <Login />}
+        {userProfile.data && <Profile data={userProfile.data} />}
       </div>
     </div>
   );

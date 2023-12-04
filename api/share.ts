@@ -1,13 +1,10 @@
-export type User = {
+export type ShareUser = {
   id: number;
   name: string;
   email: string;
   profileImageSource: string;
 };
 
-// export type getUserResponse = {
-//   data: User;
-// };
 export type Owner = {
   id: number;
   name: string;
@@ -29,9 +26,9 @@ export type FolderContents = {
   count: number;
 };
 
-// export type getUserFolderResponse = {
-//   data: FolderContents;
-// };
+export type FolderContentsProps = {
+  folder: FolderContents;
+};
 
 const baseUrl = new URL("https://bootcamp-api.codeit.kr");
 const getUrl = (path: string) => new URL(path, baseUrl);

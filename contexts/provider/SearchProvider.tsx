@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import SearchContext from "../SearchContext";
 
-const SearchProvider = ({ children }) => {
+const SearchProvider = ({ children }: { children: React.ReactNode }) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleInputValue = (e) => {
+  const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 

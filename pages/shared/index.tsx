@@ -1,34 +1,41 @@
 import React from "react";
-import { getShareFolderData } from "@/api/share";
+import { ShareUser, getShareFolderData, getShareUserData } from "@/api/share";
 import ShareNav from "@/components/nav/ShareNav";
 import Header from "@/components/header/Header";
 import SearchBar from "@/components/searchbar/SearchBar";
 import ImageList from "@/components/imagelist/ImageList";
 import Footer from "@/components/footer/Footer";
 import SearchProvider from "@/contexts/provider/SearchProvider";
-import { FolderContents } from "@/api/share";
+import { FolderContentsProps } from "@/api/share";
 
 type SharedPageProps = {
-  folder: FolderContents;
+  shareFolder: FolderContentsProps;
+  shareUser: ShareUser;
 };
 
 export default function SharedPage(props: SharedPageProps) {
-  const data = props;
+  const shareFolder = props.shareFolder;
+  const shareUser = props.shareUser;
 
   return (
     <SearchProvider>
-      <ShareNav />
-      <Header data={data} />
+      <ShareNav data={shareUser} />
+      <Header data={shareFolder} />
       <SearchBar />
-      <ImageList data={data} />
+      <ImageList data={shareFolder} />
       <Footer />
     </SearchProvider>
   );
 }
 
 export async function getStaticProps() {
-  const response = await getShareFolderData();
+  const shareFolderData = await getShareFolderData();
+  const shareUserData = await getShareUserData();
+
   return {
-    props: response,
+    props: {
+      shareFolder: shareFolderData,
+      shareUser: shareUserData,
+    },
   };
 }

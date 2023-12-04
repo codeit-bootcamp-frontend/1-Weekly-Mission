@@ -3,9 +3,6 @@ type UserRequest = {
   folderId?: string;
 };
 // User
-type getUserResponse = {
-  data: UserProfile[];
-};
 
 export type UserProfile = {
   id: number;
@@ -17,9 +14,6 @@ export type UserProfile = {
 };
 
 // Folder
-type getUserFolderResponse = {
-  data: UserFolder[];
-};
 
 export type UserFolder = {
   id: number;
@@ -35,19 +29,15 @@ export type Link = {
 
 // FolderLinks
 
-type getUserFolderLinksResponse = {
-  data: FolderLinks[];
-};
-
 export type FolderLinks = {
   id: number;
   created_at: string;
   updated_at: any;
   url: string;
-  title: string;
-  description: string;
-  image_source: string;
-  folder_id: number;
+  title?: string;
+  description?: string;
+  image_source?: string;
+  folder_id?: number;
 };
 
 const baseUrl = new URL("https://bootcamp-api.codeit.kr");
@@ -60,7 +50,7 @@ export const fetchUserData = async ({ userId }: UserRequest) => {
   });
   if (response.status === 200) {
     const jsonData = await response.json();
-    return jsonData as Promise<getUserResponse>;
+    return jsonData;
   }
 };
 
@@ -71,10 +61,9 @@ export const fetchUserFolderData = async ({ userId }: UserRequest) => {
   });
   if (response.status === 200) {
     const jsonData = await response.json();
-    return jsonData as Promise<getUserFolderResponse>;
+    return jsonData;
   }
 };
-
 export const fetchFolderLinks = async ({ userId, folderId }: UserRequest) => {
   const requestUrl = getUrl(
     `api/users/${userId}/links${folderId ? `?folderId=${folderId}` : ""}`
@@ -84,6 +73,6 @@ export const fetchFolderLinks = async ({ userId, folderId }: UserRequest) => {
   });
   if (response.status === 200) {
     const jsonData = await response.json();
-    return jsonData as Promise<getUserFolderLinksResponse>;
+    return jsonData;
   }
 };

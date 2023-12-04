@@ -1,12 +1,9 @@
 import React from "react";
 import HeaderButton from "../button/HeaderButton";
-import { FolderContents } from "@/api/share";
+import { FolderContentsProps } from "@/api/share";
 import Folder from "../folder/Folder";
-type HeaderProps = {
-  data?: { folder: FolderContents };
-};
 
-export default function Header({ data }: HeaderProps) {
+export default function Header({ data }: { data?: FolderContentsProps }) {
   if (data) {
     return <Folder data={data} />;
   }

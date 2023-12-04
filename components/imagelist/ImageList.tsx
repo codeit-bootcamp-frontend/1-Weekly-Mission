@@ -2,13 +2,9 @@ import React, { useContext } from "react";
 import ImageListItem from "./ImageListItem";
 import styles from "./ImageList.module.css";
 import SearchContext from "@/contexts/SearchContext";
-import { FolderContents } from "@/api/share";
+import { FolderContentsProps } from "@/api/share";
 
-type ImageListProps = {
-  data: { folder: FolderContents };
-};
-
-export default function ImageList({ data }: ImageListProps) {
+export default function ImageList({ data }: { data: FolderContentsProps }) {
   const {
     folder: { links },
   } = data;

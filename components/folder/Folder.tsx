@@ -1,13 +1,9 @@
 import React from "react";
 import styles from "./Folder.module.css";
-import { FolderContents } from "@/api/share";
+import { FolderContentsProps } from "@/api/share";
 import Image from "next/image";
 
-type FolderProps = {
-  data: { folder: FolderContents };
-};
-
-export default function Folder({ data }: FolderProps) {
+export default function Folder({ data }: { data: FolderContentsProps }) {
   const { folder } = data;
   const { name, owner } = folder;
 

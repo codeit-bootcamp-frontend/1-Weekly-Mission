@@ -5,9 +5,9 @@ import facebook from "@/public/images/Telegram.png";
 import link from "@/public/images/More.png";
 import Image from "next/image";
 import useKakao from "@/hooks/useKaKao";
-import useCopyClipBoard from "@/hooks/useCopyClipboard";
 import { KAKAO_SHARE_DATA } from "@/utils/constant";
 import { useRouter } from "next/router";
+import useCopyClipBoard from "@/hooks/useCopyClipBoard";
 type TabName = "share" | "change" | "delete" | "deleteLink";
 
 type ModalProps = {

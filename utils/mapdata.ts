@@ -1,8 +1,8 @@
 import { UserFolder, fetchFolderLinks } from "@/api/folder";
-import { LinksDataProps } from "@/components/types/folderTypes";
+import { MappedDataProps } from "@/components/types/mappedFolderTypes";
 
 type accCopyReduceType = {
-  [key: number]: LinksDataProps;
+  [key: number]: MappedDataProps;
 };
 
 const USER_ID = 1;

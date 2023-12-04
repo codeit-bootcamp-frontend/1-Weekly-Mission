@@ -15,8 +15,8 @@ import { UserProfile, UserFolder } from "@/api/folder";
 import FolderPageLayout from "@/layout/FolderPageLayout";
 
 type FolderPageProps = {
+  userProfileData: { data: UserProfile[] };
   userFolderData: { data: UserFolder[] };
-  userProfileData: { data: UserProfile };
 };
 
 export default function FolderPage(props: FolderPageProps) {
@@ -57,12 +57,12 @@ export default function FolderPage(props: FolderPageProps) {
 
 export async function getServerSideProps() {
   const USER_ID = 1;
-  const response = await fetchUserData({ userId: USER_ID });
+  const userProfileData = await fetchUserData({ userId: USER_ID });
 
   const userFolderData = await fetchUserFolderData({ userId: USER_ID });
   return {
     props: {
-      userProfileData: response,
+      userProfileData: userProfileData,
       userFolderData: userFolderData,
     },
   };

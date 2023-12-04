@@ -8,7 +8,7 @@ type CopyClipboardProps = {
 
 type UseCopyClipBoardResult = [
   (sharedToLink: string) => Promise<void>,
-  CopyClipboardResult | null
+  CopyClipboardProps | null
 ];
 export default function useCopyClipBoard(): UseCopyClipBoardResult {
   const [result, setResult] = useState<CopyClipboardProps | null>(null);

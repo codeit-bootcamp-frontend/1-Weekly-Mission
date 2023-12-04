@@ -15,8 +15,8 @@ import { UserProfile, UserFolder } from "@/api/folder";
 import FolderPageLayout from "@/layout/FolderPageLayout";
 
 type FolderItemProps = {
+  userProfileData: { data: UserProfile[] };
   userFolderData: { data: UserFolder[] };
-  userProfileData: { data: UserProfile };
 };
 
 export default function FolderItem(props: FolderItemProps) {

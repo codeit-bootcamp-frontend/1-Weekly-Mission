@@ -1,8 +1,11 @@
 import { createContext } from "react";
-
-const SearchContext = createContext({
+type SearchContextProps = {
+  inputValue: string;
+  handleInputFunc: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+const SearchContext = createContext<SearchContextProps>({
   inputValue: "",
-  handleInputFunc: () => {},
+  handleInputFunc: (): void => {},
 });
 
 export default SearchContext;

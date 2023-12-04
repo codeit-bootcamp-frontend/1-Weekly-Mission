@@ -1,6 +1,6 @@
 import { FolderLinks } from "@/api/folder";
 
-export type LinksDataProps = {
+export type MappedDataProps = {
   folderId: any;
   folderName: string;
   linksdata?: FolderLinks[];

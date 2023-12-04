@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { UserFolder } from "@/api/folder";
-import { LinksDataProps } from "@/components/types/folderTypes";
+import { MappedDataProps } from "@/components/types/mappedFolderTypes";
 
 function useFetchLinksData(fetchFunc: Function, targetArr: UserFolder[]) {
   const [data, setData] = useState<any>([]);
@@ -11,7 +11,7 @@ function useFetchLinksData(fetchFunc: Function, targetArr: UserFolder[]) {
       return;
     }
     setIsLoading(true);
-    fetchFunc(targetArr).then((result: LinksDataProps) => {
+    fetchFunc(targetArr).then((result: MappedDataProps) => {
       setData(result);
     });
   }, [targetArr]);
