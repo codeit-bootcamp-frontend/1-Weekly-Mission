@@ -13,7 +13,7 @@ function Signup() {
       <Icon src={logo} alt="로고" width={210} height={38} />
       <StyledLinkWrapper>
         <span>이미 회원이신가요?</span>
-        <StyledLink href="/Signin">로그인 하기</StyledLink>
+        <StyledLink href="/signin">로그인 하기</StyledLink>
       </StyledLinkWrapper>
       <StyledInputWrapper>
         <div>

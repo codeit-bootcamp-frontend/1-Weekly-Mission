@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import Footer from "src/components/Footer";
 import Nav from "src/components/Nav";
-import { AUTH_URL } from "src/constants/url";
+import { AUTH_URL } from "src/constants/routes";
 import { queryClient } from "src/libs/apis/queryClient";
 import GlobalStyle from "src/styles/GlobalStyle";
 import theme from "src/styles/Theme/theme";
