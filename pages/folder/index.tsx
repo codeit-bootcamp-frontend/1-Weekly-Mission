@@ -8,6 +8,7 @@ import axios from "@/libs/axios";
 import Head from "next/head";
 import Image from "next/image";
 import s from "./index.module.css";
+import { MouseEvent } from "react";
 
 export default function FolderPage() {
   const [userEmail, setUserEmail] = useState("");
@@ -26,14 +27,14 @@ export default function FolderPage() {
     setData(data);
   }
   function handleAddLinkClick(
-    e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
+    e: MouseEvent<HTMLButtonElement | HTMLImageElement>
   ) {
     e.preventDefault();
     if (addLinkValue !== "") {
       setIsAddLinkClicked(!isAddLinkClicked);
     }
   }
-  function handleModalListButton(e: React.MouseEvent<HTMLButtonElement>) {
+  function handleModalListButton(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
   }
   function handleAddLinkValue(value: string) {

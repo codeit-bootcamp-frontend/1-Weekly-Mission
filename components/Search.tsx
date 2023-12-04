@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useDebounce from "@/hooks/useDebounce";
+import { ChangeEvent, MouseEvent, KeyboardEvent } from "react";
 
 const Search = ({ getInputValue }: SearchProps) => {
   const [inputSearch, setInputSearch] = useState("");
   const mounted = useRef(false);
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInputSearch(e.target.value);
   }
 
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setInputSearch("");
   }
@@ -24,7 +25,7 @@ const Search = ({ getInputValue }: SearchProps) => {
     }
   }, [debouncedInputSearch]);
 
-  function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+  function handleKeyPress(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter") {
       e.preventDefault();
     }

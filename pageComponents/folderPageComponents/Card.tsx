@@ -3,6 +3,7 @@ import { getTimePassed } from "@/utils/formatTimePassed";
 import Image from "next/image";
 import Link from "next/link";
 import s from "./Card.module.css";
+import { MouseEvent } from "react";
 
 const Card = ({ data, fullFolderData }: FolderCardProps) => {
   let {
@@ -20,20 +21,20 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
   const [isKebabDeleteClicked, setIsKebabDeleteClicked] = useState(false);
   const [isKebabAddClicked, setIsKebabAddClicked] = useState(false);
 
-  function handleKebabClick(e: React.MouseEvent<HTMLButtonElement>) {
+  function handleKebabClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setIsClicked(!isClicked);
   }
 
   function handleKebabDeleteClick(
-    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+    e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLImageElement>
   ) {
     e.preventDefault();
     setIsKebabDeleteClicked(!isKebabDeleteClicked);
   }
 
   function handleKebabAddClick(
-    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+    e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLImageElement>
   ) {
     e.preventDefault();
     setIsKebabAddClicked(!isKebabAddClicked);

@@ -6,6 +6,7 @@ import axios from "@/libs/axios";
 import Image from "next/image";
 import s from "./Header.module.css";
 import { getSingleFolder } from "@/libs/getSingleFolder";
+import { MouseEvent } from "react";
 
 interface GetData {
   getData: (data: Folders) => void;
@@ -28,28 +29,28 @@ const Header = ({ getData }: GetData) => {
   const [isShareFolderClicked, setIsShareFolderClicked] = useState(false);
 
   function handleAddFolderClick(
-    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+    e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLImageElement>
   ) {
     e.preventDefault();
     setIsAddFolderClicked(!isAddFolderClicked);
   }
 
   function handleChangeFolderNameClick(
-    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+    e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLImageElement>
   ) {
     e.preventDefault();
     setIsChangeFolderNameClicked(!isChangeFolderNameClicked);
   }
 
   function handleDeleteFolderClick(
-    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+    e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLImageElement>
   ) {
     e.preventDefault();
     setIsDeleteFolderClicked(!isDeleteFolderClicked);
   }
 
   function handleShareFolderClick(
-    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLImageElement>
+    e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLImageElement>
   ) {
     e.preventDefault();
     setIsShareFolderClicked(!isShareFolderClicked);
@@ -121,18 +122,12 @@ const Header = ({ getData }: GetData) => {
 
   const currentLink = `localhost:3000/shared?user={1}&folder=${singleFolderDataId}`;
 
-  function handleFaceBookClick(
-    e: React.MouseEvent<HTMLButtonElement>,
-    url: string
-  ) {
+  function handleFaceBookClick(e: MouseEvent<HTMLButtonElement>, url: string) {
     e.preventDefault();
     window.open(`http://www.facebook.com/sharer.php?u=${url}`);
   }
 
-  function handleKakaoClick(
-    e: React.MouseEvent<HTMLButtonElement>,
-    url: string
-  ) {
+  function handleKakaoClick(e: MouseEvent<HTMLButtonElement>, url: string) {
     e.preventDefault();
     alert("Kakao SDK가 로드되지 않았습니다. 나중에 다시 시도해주세요.");
     return;
