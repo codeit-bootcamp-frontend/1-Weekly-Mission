@@ -29,10 +29,18 @@ export default function Input({ type = "password" }) {
 
   return (
     <S.Container>
-      <S.Input type={inputType} value={text} onChange={handleText} placeholder="내용 입력" />
-      {defaultType === "password" && (
-        <S.EyeIcon src={iconUrl} alt="비밀번호 보기 아이콘" onClick={handleChangeType} />
-      )}
+      <S.InputWrapper>
+        <S.Input
+          type={inputType}
+          value={text}
+          onChange={handleText}
+          placeholder="내용 입력"
+          autoComplete="off"
+        />
+        {defaultType === "password" && (
+          <S.EyeIcon src={iconUrl} alt="비밀번호 보기 아이콘" onClick={handleChangeType} />
+        )}
+      </S.InputWrapper>
       {errormsg && <S.ErrorMessage>{errormsg}</S.ErrorMessage>}
     </S.Container>
   );

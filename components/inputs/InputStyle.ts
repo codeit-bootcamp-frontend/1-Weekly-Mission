@@ -1,22 +1,25 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
   width: 350px;
   display: flex;
   flex-direction: column;
   gap: 6px;
 `;
 
+export const InputWrapper = styled.div`
+  position: relative;
+`;
+
 export const Input = styled.input`
   width: 100%;
   padding: 18px 15px;
   border-radius: 0.5rem;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--color-gray-20);
   outline: none;
 
   &:focus {
-    border: 1px solid var(--color-gray-20);
+    border: 1px solid var(--color-primary);
   }
 `;
 
