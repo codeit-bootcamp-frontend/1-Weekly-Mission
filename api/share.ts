@@ -5,9 +5,9 @@ export type User = {
   profileImageSource: string;
 };
 
-export type getUserResponse = {
-  data: User;
-};
+// export type getUserResponse = {
+//   data: User;
+// };
 export type Owner = {
   id: number;
   name: string;
@@ -29,9 +29,9 @@ export type FolderContents = {
   count: number;
 };
 
-export type getUserFolderResponse = {
-  data: FolderContents;
-};
+// export type getUserFolderResponse = {
+//   data: FolderContents;
+// };
 
 const baseUrl = new URL("https://bootcamp-api.codeit.kr");
 const getUrl = (path: string) => new URL(path, baseUrl);
@@ -44,7 +44,7 @@ export const getShareUserData = async () => {
 
   if (response.status === 200) {
     const jsonData = await response.json();
-    return jsonData as Promise<getUserResponse>;
+    return jsonData;
   }
 };
 
@@ -55,6 +55,6 @@ export const getShareFolderData = async () => {
   });
   if (response.status === 200) {
     const jsonData = await response.json();
-    return jsonData as Promise<getUserFolderResponse>;
+    return jsonData;
   }
 };

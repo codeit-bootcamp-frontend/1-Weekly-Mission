@@ -30,6 +30,7 @@ const nextConfig = {
       "reactjs.org",
       "jasonwatmore.com",
       "codeit.kr",
+      "codeit-images.codeit.com",
     ],
   },
 };

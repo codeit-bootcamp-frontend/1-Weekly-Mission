@@ -6,16 +6,14 @@ import { FolderContents } from "@/api/share";
 
 type ImageListProps = {
   data: { folder: FolderContents };
-  isLoading?: boolean;
 };
 
-export default function ImageList({ data, isLoading }: ImageListProps) {
+export default function ImageList({ data }: ImageListProps) {
   const {
     folder: { links },
   } = data;
 
   const { inputValue } = useContext(SearchContext);
-
   if (!inputValue) {
     return (
       <ul>

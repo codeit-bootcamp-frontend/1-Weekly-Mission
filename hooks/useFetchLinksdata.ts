@@ -27,7 +27,7 @@ function useFetchLinksData(fetchFunc: Function, targetArr: Folder[]) {
       return;
     }
     setIsLoading(true);
-    fetchFunc(targetArr).then((result: Result) => {
+    fetchFunc(targetArr).then((result: any) => {
       setData(result);
     });
   }, [targetArr]);

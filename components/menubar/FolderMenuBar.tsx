@@ -3,12 +3,10 @@ import styles from "./FolderMenu.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 import Modal from "@/components/modal/Modal";
 import Image from "next/image";
+type TabName = "share" | "change" | "delete" | "deleteLink";
 
-// type FolderMemuProps = {
-//   folderIdKey: string | undefined;
-// };
 type FolderMemuProps = {
-  folderIdKey: string | undefined;
+  folderIdKey: string;
 };
 type FolderTypeProps = {
   folderId: number | undefined;
@@ -19,8 +17,6 @@ export default function FolderMenu({ folderIdKey }: FolderMemuProps) {
   const [openModal, setOpenModal] = useState(false);
   const [tabName, setTabName] = useState("");
   const { ObjectValue } = useContext(LocaleContext);
-
-  // const folder:FolderTypePros = folderIdKey ? ObjectValue[folderIdKey] : undefined;
 
   const folder: FolderTypeProps | undefined = folderIdKey
     ? ObjectValue[folderIdKey]

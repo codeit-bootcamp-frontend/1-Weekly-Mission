@@ -8,14 +8,18 @@ import ImageList from "@/components/imagelist/ImageList";
 import Footer from "@/components/footer/Footer";
 import SearchProvider from "@/contexts/provider/SearchProvider";
 import { FolderContents } from "@/api/share";
+type a = {
+  data: SharedPageProps;
+};
 
 type SharedPageProps = {
   folder: FolderContents;
 };
 
-export default function SharedPage(props: SharedPageProps) {
-  const data = props;
-
+export default function SharedPage(props: a) {
+  const data = props.data;
+  console.log(data);
+  // const [data, isLoading] = useFetchData(getShareFolderData);
   return (
     <SearchProvider>
       <ShareNav />
@@ -30,6 +34,8 @@ export default function SharedPage(props: SharedPageProps) {
 export async function getStaticProps() {
   const response = await getShareFolderData();
   return {
-    props: response,
+    props: {
+      data: response,
+    },
   };
 }
