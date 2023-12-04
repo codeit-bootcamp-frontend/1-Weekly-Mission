@@ -5,7 +5,6 @@ import AddIcon from "@/public/assets/add.svg";
 export const Contents = styled.section`
   padding: 2.5rem 2rem;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -17,7 +16,6 @@ export const Contents = styled.section`
 
   @media only screen and (${breakPoints.mobile}) {
     width: 100%;
-    height: 100%;
     padding: 1.25rem 2rem;
     gap: 2rem;
   }

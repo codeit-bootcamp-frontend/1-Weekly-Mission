@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import * as S from "./ShareContainerStyles";
 
+import Layout from "@/components/layout/Layout";
 import CardList from "@/components/card/CardList";
 import Searchbar from "@/components/inputs/Searchbar";
 import Hero from "@/components/hero/Hero";
@@ -67,7 +68,7 @@ export default function Share() {
       {isLoading ? (
         <Loading />
       ) : (
-        <>
+        <Layout>
           <S.HeroContainer>
             <Hero folder={folder} profile={profile} />
           </S.HeroContainer>
@@ -81,7 +82,7 @@ export default function Share() {
               <CardList links={filteredLinks} />
             </S.Contents>
           </section>
-        </>
+        </Layout>
       )}
     </main>
   );

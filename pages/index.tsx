@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Share from "./shared/ShareContainer";
 
 export default function Home() {
   return (
@@ -9,6 +10,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {/*랜딩페이지 구현 전까지 공유페이지 보여주기*/}
+      <Share />
     </>
   );
 }

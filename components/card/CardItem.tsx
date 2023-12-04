@@ -17,13 +17,13 @@ export default function CardItem({ link }: CardItemProps) {
   const { yyyy, mm, dd } = getCreatedDate(linkCreatedAt);
   const imageSourceUrl = image_source ?? imageSource;
   const imageUrl = imageSourceUrl ? imageSourceUrl : "/images/logo.svg";
-  const cardStyle = classNames(styles.default, { [styles["card-image"]]: !!imageSourceUrl });
+  const cardStyle = classNames(styles.default, { [styles["card-image"]]: imageSourceUrl });
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles["card-image"]}>
-          <img src={imageUrl} alt="logo" className={cardStyle} />
+          <img src={imageUrl} alt="link" className={cardStyle} />
         </div>
         <div className={styles.liked}>
           <Star />
