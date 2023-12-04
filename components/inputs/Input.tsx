@@ -1,19 +1,17 @@
-import { ChangeEvent, ElementType } from "react";
+import { ChangeEvent } from "react";
 import * as S from "./InputStyle";
 
 interface InputProps {
   inputType?: string;
   contentsType?: string;
-  tagType?: ElementType;
-  inputValue: string;
+  isErrorStyle: boolean;
   handleInputValue: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
   inputType,
   contentsType,
-  tagType,
-  inputValue,
+  isErrorStyle,
   handleInputValue,
 }: InputProps) {
   const visibleEyeIcon = inputType === "password";
@@ -22,10 +20,9 @@ export default function Input({
   return (
     <S.InputWrapper>
       <S.Input
-        as={tagType}
         type={contentsType}
-        value={inputValue}
         onChange={handleInputValue}
+        $isErrorStyle={isErrorStyle}
         placeholder="내용 입력"
         autoComplete="off"
       />
