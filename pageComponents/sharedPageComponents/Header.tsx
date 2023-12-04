@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Search from "@/components/Search";
-import Cards from "@/components/Cards";
+import Cards from "@/pageComponents/sharedPageComponents/Cards";
 import Image from "next/image";
 
 interface Link {

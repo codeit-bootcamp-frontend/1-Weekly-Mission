@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Nav from "@/folderPageComponents/Nav";
 import Header from "@/folderPageComponents/Header";
-import Article from "@/ui/Article";
-import Footer from "@/ui/Footer";
+import Article from "@/components/Article";
+import Footer from "@/components/Footer";
 import AddLink from "@/components/AddLink";
-import axios from "@/api/axios";
+import axios from "@/libs/axios";
 import Head from "next/head";
 import Image from "next/image";
 

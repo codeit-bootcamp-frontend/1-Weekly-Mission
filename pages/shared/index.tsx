@@ -1,9 +1,9 @@
 import React from "react";
-import Nav from "@/ui/Nav";
-import Header from "@/ui/Header";
-import Article from "@/ui/Article";
-import Footer from "@/ui/Footer";
-import axios from "@/api/axios";
+import Nav from "@/pageComponents/sharedPageComponents/Nav";
+import Header from "@/pageComponents/sharedPageComponents/Header";
+import Article from "@/components/Article";
+import Footer from "@/components/Footer";
+import axios from "@/libs/axios";
 import Head from "next/head";
 
 interface PropsType {

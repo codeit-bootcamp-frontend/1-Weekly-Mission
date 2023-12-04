@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Search from "@/components/Search";
 import FolderList from "./FolderList";
-import { requestSingleFolderApi } from "@/api/singleFolderApi";
+import { requestSingleFolderApi } from "@/libs/singleFolderApi";
 import Cards from "./Cards";
-import axios from "@/api/axios";
+import axios from "@/libs/axios";
 
 interface Link {
   count: number;
