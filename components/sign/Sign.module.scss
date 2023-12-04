@@ -7,7 +7,7 @@
 
 .sign-wrapper {
   width: 100vw;
-  height: fit-content;
+  height: 100vh;
   background-color: $color-background;
 }
 
@@ -45,8 +45,6 @@
 .sign-content-wrapper {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  margin-bottom: 25rem;
 
   .sign-content {
     display: flex;

@@ -2,8 +2,8 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import styles from "./SignInput.module.scss";
 import { IconEyeOff, IconEyeOn } from "@images/index";
-// import eyeOff from "@images/eye-off.svg";
-// import eyeOn from "@images/eye-on.svg";
+import eyeOff from "../../public/images/eye-off.svg";
+import eyeOn from "../../public/images/eye-on.svg";
 import classNames from "classnames/bind";
 import { FolderButton } from "@/folder/ui-folder-button";
 
@@ -29,7 +29,10 @@ interface SignInput {
   placeholder?: string;
 }
 
-export default function SignInput({ type, placeholder }: SignInput) {
+export default function SignInput({
+  type,
+  placeholder = "내용 입력",
+}: SignInput) {
   const input = useRef<HTMLInputElement>(null);
   const p = useRef<HTMLParagraphElement>(null);
   const [eyeImage, setEyeImage] = useState<string>("eyeOff");
@@ -49,6 +52,7 @@ export default function SignInput({ type, placeholder }: SignInput) {
         placeholder={placeholder}
         ref={input}
       />
+
       {type !== "email" &&
         (eyeImage === "eyeOff" ? (
           <IconEyeOff
