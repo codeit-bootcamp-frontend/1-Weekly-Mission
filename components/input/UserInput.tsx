@@ -19,12 +19,12 @@ const obj = {
   },
 };
 
-interface ILabelProps {
+interface UserInputProps {
   label: "email" | "password" | "passwordConfirm";
   placeholder: string;
 }
 
-const UserInput = (props: ILabelProps) => {
+const UserInput = (props: UserInputProps) => {
   const { label } = props;
   const [isOn, setIsOn] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState("");

@@ -26,7 +26,7 @@ const ItemArr = [
 const ShareFolderModal = () => {
   const { shareFolderModal } = useRecoilValue(modalState);
   const resetModalState = useResetRecoilState(modalState);
-  const shareLink = `http://localhost:3000/shared?user=1&folder=${shareFolderModal.content.id}`;
+  const shareLink = `${process.env.NEXT_PUBLIC_HOST}/shared?user=1&folder=${shareFolderModal.content.id}`;
 
   const shareKaKao = () => {
     if (window.Kakao) {
@@ -51,7 +51,7 @@ const ShareFolderModal = () => {
     try {
       await navigator.clipboard.writeText(shareLink);
     } catch (e) {
-      alert(e);
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
     }
   };
 

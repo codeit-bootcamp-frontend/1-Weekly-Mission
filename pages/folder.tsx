@@ -24,7 +24,7 @@ import DefaultModal from "@/components/modal/DefaultModal";
 import ModalLayout from "@/components/modal/ModalLayout";
 import ShareFolderModal from "@/components/modal/SharedFolderModal";
 import Input from "@/components/input/Input";
-import DefaultBtn from "@/components/button/DefaultButton";
+import DefaultBtn from "@/components/button/Button";
 import Image from "next/image";
 import Card from "@/components/card/Card";
 import { Section, Wrapper } from "@/components/common/commonStyled";
@@ -49,20 +49,20 @@ const LinkToolArr = [
   },
 ];
 
-interface IFolderData {
+interface FolderData {
   id: number;
   name: string;
 }
 
-interface ISelectedFolder {
+interface SelectedFolder {
   id: number;
   title: string;
 }
 
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
-  const [folderData, setFolderData] = useState<IFolderData[]>([]);
-  const [selectedFolder, setSelectedFolder] = useState<ISelectedFolder>({
+  const [folderData, setFolderData] = useState<FolderData[]>([]);
+  const [selectedFolder, setSelectedFolder] = useState<SelectedFolder>({
     id: 1,
     title: "전체",
   });
@@ -84,8 +84,7 @@ const Folder = () => {
         return;
       }
 
-      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-      return;
+      throw new Error();
     } catch (e) {
       alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
     }
@@ -113,8 +112,7 @@ const Folder = () => {
         return;
       }
 
-      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-      return;
+      throw new Error();
     } catch (e) {
       alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
     }
@@ -137,7 +135,7 @@ const Folder = () => {
     }
   };
 
-  const handleDefaultMoal = (state: string, content: ISelectedFolder) => {
+  const handleDefaultMoal = (state: string, content: SelectedFolder) => {
     setModalOpened((prev: any) => ({
       ...prev,
       defaultModal: {
@@ -148,7 +146,7 @@ const Folder = () => {
     }));
   };
 
-  const handleShareFolderModal = (content: ISelectedFolder) => {
+  const handleShareFolderModal = (content: SelectedFolder) => {
     setModalOpened((prev: any) => ({
       ...prev,
       shareFolderModal: {
@@ -173,12 +171,12 @@ const Folder = () => {
           <ContentContainer $isFolder={true}>
             <AddLinkInputContainer>
               <Input
-                src={LinkAddIcon}
+                icon={LinkAddIcon}
                 placeholder={"링크를 추가해 보세요"}
                 value={link}
                 setValue={setLink}
               ></Input>
-              <DefaultBtn onClick={handleAddToFolderModal} type="default">
+              <DefaultBtn onClick={handleAddToFolderModal} type="primary">
                 추가하기
               </DefaultBtn>
             </AddLinkInputContainer>
@@ -188,7 +186,7 @@ const Folder = () => {
         <FolderSection $bg="var(--white)">
           <FolderContentContainer $isFolder={true}>
             <Input
-              src={SearchImg}
+              icon={SearchImg}
               placeholder="링크를 검색해보세요"
               value={searchLinkValue}
               setValue={setSearchLinkValue}

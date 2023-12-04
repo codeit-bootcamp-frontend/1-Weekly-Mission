@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { device } from "@/styles/globalStyle";
-import { DefaultBtnContainer } from "@/components/button/DefaultButton";
+import { ButtonContainer } from "@/components/button/Button";
 import { InputContainer } from "@/components/input/Input";
 import { ContentContainer } from "./sharedStyled";
 import { Section } from "@/components/common/commonStyled";
@@ -68,7 +68,7 @@ export const AddLinkInputContainer = styled.div`
     }
   }
 
-  ${DefaultBtnContainer} {
+  ${ButtonContainer} {
     padding: 1rem 1.6rem;
     font-size: 1.4rem;
     width: 8.1rem;

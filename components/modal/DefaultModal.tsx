@@ -5,17 +5,17 @@ import { modalState } from "../../recoil/modal";
 import CloseIcon from "@/public/assets/modal/img_closeIcon.png";
 import { useState } from "react";
 import Image from "next/image";
-import DefaultBtn, { DefaultBtnContainer } from "../button/DefaultButton";
+import DefaultBtn, { ButtonContainer } from "../button/Button";
 import Input, { InputContainer } from "../input/Input";
 
-interface IStateObj {
+interface StateObj {
   [index: string]: {
     title: string;
     button: string;
   };
 }
 
-const StateObj: IStateObj = {
+const StateObj: StateObj = {
   folderEdit: {
     title: "폴더 이름 변경",
     button: "변경하기",
@@ -67,7 +67,10 @@ const DefaultModal = () => {
         </div>
       )}
 
-      <DefaultBtn type={isDelete ? "red" : "default"} onClick={resetModalState}>
+      <DefaultBtn
+        type={isDelete ? "secondary" : "primary"}
+        onClick={resetModalState}
+      >
         {type.button}
       </DefaultBtn>
     </ModalMain>
@@ -83,7 +86,7 @@ const ModalMain = styled(ModalMainContainer)<{ $isDelete: boolean }>`
     border: 1px solid var(--gray20);
   }
 
-  ${DefaultBtnContainer} {
+  ${ButtonContainer} {
     margin-top: ${(props) => (props.$isDelete ? "0" : "-0.8rem")};
   }
 

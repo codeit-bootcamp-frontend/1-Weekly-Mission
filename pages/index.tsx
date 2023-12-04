@@ -13,7 +13,7 @@ import SectionImg2 from "@/public/assets/home/img_section2Img.png";
 import SectionImg3 from "@/public/assets/home/img_section3Img.png";
 import SectionImg4 from "@/public/assets/home/img_section4Img.png";
 import Link from "next/link";
-import DefaultBtn from "@/components/button/DefaultButton";
+import DefaultBtn from "@/components/button/Button";
 import { useRouter } from "next/router";
 
 const Home = () => {
@@ -32,7 +32,7 @@ const Home = () => {
             관리해 보세요
           </div>
           <Link href="/signup">
-            <DefaultBtn onClick={handleLinkAddBtn} type="default">
+            <DefaultBtn onClick={handleLinkAddBtn} type="primary">
               링크 추가하기
             </DefaultBtn>
           </Link>

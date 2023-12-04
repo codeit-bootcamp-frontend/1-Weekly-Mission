@@ -8,16 +8,16 @@ import {
 } from "./UserStyled";
 import Image from "next/image";
 import UserInput from "../input/UserInput";
-import DefaultBtn from "../button/DefaultButton";
+import DefaultBtn from "../button/Button";
 import LogoImg from "@/public/assets/common/img_logo.png";
 import GoogleIcon from "@/public/assets/user/img_google.png";
 import KakaoIcon from "@/public/assets/user/img_kakao.png";
 
-interface IState {
+interface UserProps {
   state: "signin" | "signup";
 }
 
-const User = ({ state }: IState) => {
+const User = ({ state }: UserProps) => {
   const handleSignin = () => {
     // 로그인 처리 필요
   };
@@ -75,11 +75,11 @@ const User = ({ state }: IState) => {
               />
             )}
             {state === "signin" ? (
-              <DefaultBtn onClick={handleSignin} type="default">
+              <DefaultBtn onClick={handleSignin} type="primary">
                 로그인
               </DefaultBtn>
             ) : (
-              <DefaultBtn onClick={handleSignup} type="default">
+              <DefaultBtn onClick={handleSignup} type="primary">
                 회원가입
               </DefaultBtn>
             )}

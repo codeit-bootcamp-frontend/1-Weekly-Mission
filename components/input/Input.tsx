@@ -2,18 +2,30 @@ import { device } from "@/styles/globalStyle";
 import Image, { StaticImageData } from "next/image";
 import styled from "styled-components";
 
-interface IInputProp {
-  src?: StaticImageData;
+interface InputProps {
+  icon?: StaticImageData;
   placeholder: string;
   children?: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   value: string;
 }
 
-const Input = ({ src, placeholder, children, setValue, value }: IInputProp) => {
+const Input = ({
+  icon,
+  placeholder,
+  children,
+  setValue,
+  value,
+}: InputProps) => {
   return (
     <InputContainer>
-      {src && <Image src={src} alt="inputIcon" className="inputIcon" />}
+      <label>
+        {icon ? (
+          <Image src={icon} alt="inputIcon" className="inputIcon" />
+        ) : (
+          "label"
+        )}
+      </label>
 
       <input
         className="inputContainer"

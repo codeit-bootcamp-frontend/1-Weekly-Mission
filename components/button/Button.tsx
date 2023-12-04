@@ -1,25 +1,26 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
 
-interface IProps {
-  children: string;
+interface ButtonProps {
+  children: ReactNode;
   onClick: (e: React.MouseEvent) => void;
-  type: "red" | "default";
+  type: "primary" | "secondary";
 }
 
-const DefaultBtn = ({ children, onClick, type }: IProps) => {
+const Button = ({ children, onClick, type }: ButtonProps) => {
   return (
-    <DefaultBtnContainer onClick={onClick} type={type}>
+    <ButtonContainer onClick={onClick} type={type}>
       {children}
-    </DefaultBtnContainer>
+    </ButtonContainer>
   );
 };
 
-export default DefaultBtn;
+export default Button;
 
-export const DefaultBtnContainer = styled.button<{ type: string }>`
+export const ButtonContainer = styled.button<{ type: string }>`
   border-radius: 0.8rem;
   background: ${(props) =>
-    props.type === "red"
+    props.type === "secondary"
       ? "var(--red)"
       : "linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%)"};
   color: #f5f5f5;

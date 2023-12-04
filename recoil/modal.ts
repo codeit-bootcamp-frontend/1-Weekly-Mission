@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-interface IAddToFolderModalContent {
+interface AddToFolderModalContent {
   id: number;
   name: string;
   link: {
@@ -8,7 +8,7 @@ interface IAddToFolderModalContent {
   };
 }
 
-interface IModal {
+interface Modal {
   [key: string]: any;
   defaultModal: {
     display: boolean;
@@ -21,7 +21,7 @@ interface IModal {
   addToFolderModal: {
     display: boolean;
     link: string;
-    content: IAddToFolderModalContent[];
+    content: AddToFolderModalContent[];
   };
   shareFolderModal: {
     display: boolean;
@@ -32,7 +32,7 @@ interface IModal {
   };
 }
 
-export const modalState = atom<IModal>({
+export const modalState = atom<Modal>({
   key: "modal",
   default: {
     defaultModal: {

@@ -5,10 +5,10 @@ import Image from "next/image";
 import request from "@/lib/axios";
 import styled from "styled-components";
 import { device } from "@/styles/globalStyle";
-import DefaultBtn, { DefaultBtnContainer } from "../button/DefaultButton";
+import Button, { ButtonContainer } from "@/components/button/Button";
 import { ApiMapper } from "@/lib/apiMapper";
 
-interface IUser {
+interface User {
   email: string | null;
   name: string | null;
   id: number | null;
@@ -19,7 +19,7 @@ const Header = () => {
   const [isFixed, setIsFixed] = useState(true);
   const router = useRouter();
   const { pathname } = router;
-  const [userData, setUserData] = useState<IUser>({
+  const [userData, setUserData] = useState<User>({
     email: null,
     name: null,
     id: null,
@@ -34,8 +34,7 @@ const Header = () => {
         setUserData(data.data[0]);
         return;
       }
-      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-      return;
+      throw new Error();
     } catch (e) {
       alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
     }
@@ -81,9 +80,9 @@ const Header = () => {
             <div className="profileEmail">{userData.email}</div>
           </ProfileContainer>
         ) : (
-          <DefaultBtn type="default" onClick={handleLoginBtn}>
+          <Button type="primary" onClick={handleLoginBtn}>
             로그인
-          </DefaultBtn>
+          </Button>
         )}
       </nav>
     </HeaderContainer>
@@ -129,7 +128,7 @@ const HeaderContainer = styled.header<{ $isFixed: boolean }>`
       }
     }
 
-    ${DefaultBtnContainer} {
+    ${ButtonContainer} {
       width: 12.8rem;
 
       @media all and (${device.mobile}) {

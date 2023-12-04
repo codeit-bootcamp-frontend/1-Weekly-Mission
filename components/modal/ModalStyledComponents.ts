@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DefaultBtnContainer } from "../button/DefaultButton";
+import { DefaultBtnContainer } from "../button/Button";
 
 export const Overlay = styled.div`
   width: 100vw;

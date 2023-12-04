@@ -6,7 +6,7 @@ import { useState } from "react";
 import CloseIcon from "@/public/assets/modal/img_closeIcon.png";
 import CheckIcon from "@/public/assets/modal/img_checkIcon.png";
 import Image from "next/image";
-import DefaultBtn from "../button/DefaultButton";
+import DefaultBtn from "../button/Button";
 import { ModalMainContainer } from "./ModalStyledComponents";
 
 const AddToFolderModal = () => {
