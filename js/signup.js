@@ -1,4 +1,3 @@
-import { initSignup } from "./authorization.js";
+import { initSignup as init } from "./authorization.js";
 
-const init = initSignup;
 init();

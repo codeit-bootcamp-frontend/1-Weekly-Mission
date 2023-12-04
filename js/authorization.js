@@ -1,29 +1,29 @@
-import { validateEmailPattern, validatePasswordPattern } from "./validation.js";
-import { paintErrorMsg, removeErrorMsg } from "./paintError.js";
+import { validateEmailPattern, validatePasswordPattern } from './validation.js';
+import {
+  paintErrorMessage,
+  removeErrorMessage,
+  ERROR_INPUT_STYLE,
+} from './paintError.js';
+import { requestAPI, setAccessToken, getAccessToken } from './apiClient.js';
 
-const $authForm = document.querySelector(".form");
-const $authInputs = document.querySelectorAll(".form__input-box");
-const $authEmail = document.querySelector("#form-email");
-const $authPassword = document.querySelector("#form-password");
-const $authPasswordCheck = document.querySelector("#form-password-check");
-const $togglePasswordButtons = document.querySelectorAll(
-  ".form__password-toggle"
+const authForm = document.querySelector('.form');
+const authInputs = document.querySelectorAll('.form__input-box');
+const authEmail = document.querySelector('#form-email');
+const authPassword = document.querySelector('#form-password');
+const authPasswordCheck = document.querySelector('#form-password-check');
+const togglePasswordButtons = document.querySelectorAll(
+  '.form__password-toggle'
 );
-
-const ACCOUNT = {
-  email: "test@codeit.com",
-  password: "codeit101",
-};
 
 const checkEmptyInput = (target) => {
   if (!target.value) {
-    paintErrorMsg({
-      error: "emptyInput",
+    paintErrorMessage({
+      error: 'emptyInput',
       type: target.type,
       target,
     });
   } else {
-    removeErrorMsg(target);
+    removeErrorMessage(target);
   }
 };
 
@@ -33,159 +33,189 @@ const validateEmail = (target) => {
   }
 
   if (!validateEmailPattern(target.value)) {
-    paintErrorMsg({
-      error: "invalidInput",
+    paintErrorMessage({
+      error: 'invalidInput',
       type: target.type,
       target,
     });
   } else {
-    removeErrorMsg(target);
+    removeErrorMessage(target);
   }
 };
 
 const validatePassword = (target) => {
   if (!target.value || !validatePasswordPattern(target.value)) {
-    paintErrorMsg({
-      error: "invalidInput",
+    paintErrorMessage({
+      error: 'invalidInput',
       type: target.type,
       target,
     });
   } else {
-    removeErrorMsg(target);
+    removeErrorMessage(target);
   }
 };
 
-const isEmailAvailable = (target) => {
+const checkEmailAvailability = async (target) => {
   if (!validateEmailPattern(target.value)) {
     return;
   }
 
-  if (target.value === ACCOUNT.email) {
-    paintErrorMsg({
-      error: "unavailableEmail",
-      type: target.type,
-      target,
+  try {
+    const checkEmailResponse = await requestAPI({
+      url: 'check-email',
+      method: 'POST',
+      data: { email: target.value },
     });
-  } else {
-    removeErrorMsg(target);
+    removeErrorMessage(target);
+  } catch (error) {
+    if (error.message === '409') {
+      paintErrorMessage({
+        error: 'unavailableEmail',
+        type: target.type,
+        target,
+      });
+    } else {
+      alert(error.message);
+    }
   }
 };
 
 const checkPasswordMatch = () => {
-  if (!$authPassword.value || !$authPasswordCheck.value) {
+  if (!authPassword.value || !authPasswordCheck.value) {
     return;
   }
 
-  if ($authPassword.value !== $authPasswordCheck.value) {
-    paintErrorMsg({
-      error: "invalidInput",
-      type: "password-check",
-      target: $authPasswordCheck,
+  if (authPassword.value !== authPasswordCheck.value) {
+    paintErrorMessage({
+      error: 'invalidInput',
+      type: 'passwordCheck',
+      target: authPasswordCheck,
     });
   } else {
-    removeErrorMsg($authPasswordCheck);
+    removeErrorMessage(authPasswordCheck);
   }
 };
 
 const togglePasswordVisibility = (event) => {
-  event.preventDefault();
-
-  const $passwordInput =
-    event.currentTarget.parentElement.querySelector(".form__input-box");
-  const $togglePasswordImg = event.currentTarget.parentElement.querySelector(
-    ".form__password-toggle img"
+  const passwordInput =
+    event.currentTarget.parentElement.querySelector('.form__input-box');
+  const togglePasswordImg = event.currentTarget.parentElement.querySelector(
+    '.form__password-toggle img'
   );
 
-  if ($passwordInput.type === "password") {
-    $passwordInput.type = "text";
-    $togglePasswordImg.src = "/public/icons/eye-on.svg";
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    togglePasswordImg.src = '/public/icons/eye-on.svg';
   } else {
-    $passwordInput.type = "password";
-    $togglePasswordImg.src = "/public/icons/eye-off.svg";
+    passwordInput.type = 'password';
+    togglePasswordImg.src = '/public/icons/eye-off.svg';
   }
 };
 
-const handleSigninSubmit = (event) => {
-  event.preventDefault();
+const redirect = () => {
+  location.href = '/pages/folder.html';
+};
 
-  if (
-    $authEmail.value === ACCOUNT.email &&
-    $authPassword.value === ACCOUNT.password
-  ) {
-    location.href = "/pages/folder.html";
-  } else {
-    paintErrorMsg({ error: "invalidLogin", type: "email", target: $authEmail });
-    paintErrorMsg({
-      error: "invalidLogin",
-      type: "password",
-      target: $authPassword,
+const signup = async () => {
+  try {
+    const account = { email: authEmail.value, password: authPassword.value };
+    const signupResponse = await requestAPI({
+      url: 'sign-up',
+      method: 'POST',
+      data: account,
     });
+    const {
+      data: { accessToken },
+    } = signupResponse;
+    setAccessToken(accessToken);
+    redirect();
+  } catch (error) {
+    alert(error.message);
   }
 };
 
-const handleSignupSubmit = (event) => {
+const handleSigninSubmit = async (event) => {
   event.preventDefault();
 
-  checkEmptyInput($authEmail);
-  validateEmail($authEmail);
-  validatePassword($authPassword);
-  isEmailAvailable($authEmail);
-  checkPasswordMatch();
-
-  for (const $input of $authInputs) {
-    if ($input.classList.contains("form__input-box--error")) {
-      return;
+  try {
+    const account = { email: authEmail.value, password: authPassword.value };
+    const signinResponse = await requestAPI({
+      url: 'sign-in',
+      method: 'POST',
+      data: account,
+    });
+    const {
+      data: { accessToken },
+    } = signinResponse;
+    setAccessToken(accessToken);
+    redirect();
+  } catch (error) {
+    if (error.message === '400') {
+      paintErrorMessage({
+        error: 'invalidLogin',
+        type: 'email',
+        target: authEmail,
+      });
+      paintErrorMessage({
+        error: 'invalidLogin',
+        type: 'password',
+        target: authPassword,
+      });
+    } else {
+      alert(error.message);
     }
   }
-  location.href = "/pages/folder.html";
+};
+
+const handleSignupSubmit = async (event) => {
+  event.preventDefault();
+
+  checkEmptyInput(authEmail);
+  validateEmail(authEmail);
+  validatePassword(authPassword);
+  checkPasswordMatch();
+  await checkEmailAvailability(authEmail);
+
+  const hasErrorMessage = [...authInputs].some((input) =>
+    input.classList.contains(ERROR_INPUT_STYLE)
+  );
+
+  if (hasErrorMessage) {
+    return;
+  }
+
+  await signup();
 };
 
 const initSignin = () => {
-  for (const $input of $authInputs) {
-    $input.addEventListener("focusout", ({ target }) =>
-      checkEmptyInput(target)
-    );
-    $input.addEventListener(
-      "keypress",
-      (event) => event.code === "Enter" && handleSigninSubmit(event)
-    );
+  for (const input of authInputs) {
+    input.addEventListener('focusout', ({ target }) => checkEmptyInput(target));
   }
 
-  $authEmail.addEventListener("focusout", ({ target }) =>
-    validateEmail(target)
-  );
-  $togglePasswordButtons[0].addEventListener("click", togglePasswordVisibility);
-  $authForm.addEventListener("submit", handleSigninSubmit);
+  authEmail.addEventListener('focusout', ({ target }) => validateEmail(target));
+  togglePasswordButtons[0].addEventListener('click', togglePasswordVisibility);
+  authForm.addEventListener('submit', handleSigninSubmit);
 };
 
 const initSignup = () => {
-  for (const $input of $authInputs) {
-    $input.addEventListener(
-      "keypress",
-      (event) => event.code === "Enter" && handleSignupSubmit(event)
-    );
-  }
-
-  $authEmail.addEventListener("focusout", ({ target }) =>
+  authEmail.addEventListener('focusout', ({ target }) =>
     checkEmptyInput(target)
   );
-  $authEmail.addEventListener("focusout", ({ target }) =>
-    validateEmail(target)
-  );
-  $authPassword.addEventListener("focusout", ({ target }) =>
+  authEmail.addEventListener('focusout', ({ target }) => validateEmail(target));
+  authPassword.addEventListener('focusout', ({ target }) =>
     validatePassword(target)
   );
-  $authEmail.addEventListener("focusout", ({ target }) =>
-    isEmailAvailable(target)
+  authEmail.addEventListener('focusout', ({ target }) =>
+    checkEmailAvailability(target)
   );
-  $authPassword.addEventListener("focusout", ({ target }) =>
+  authPassword.addEventListener('focusout', ({ target }) =>
     checkPasswordMatch(target)
   );
-  $authPasswordCheck.addEventListener("focusout", checkPasswordMatch);
-  for (const $togglePasswordButton of $togglePasswordButtons) {
-    $togglePasswordButton.addEventListener("click", togglePasswordVisibility);
+  authPasswordCheck.addEventListener('focusout', checkPasswordMatch);
+  for (const togglePasswordButton of togglePasswordButtons) {
+    togglePasswordButton.addEventListener('click', togglePasswordVisibility);
   }
-  $authForm.addEventListener("submit", handleSignupSubmit);
+  authForm.addEventListener('submit', handleSignupSubmit);
 };
 
-export { initSignin, initSignup };
+export { initSignin, initSignup, redirect };
