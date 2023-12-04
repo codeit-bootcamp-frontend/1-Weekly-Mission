@@ -19,12 +19,13 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 export default function FolderUI(props: FolderUIProps) {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
+  const handleCloseModal = () => setIsOpenModal(false);
 
   return (
     <>
       {isOpenModal && (
         <ModalPortal>
-          <ModalContainer onClose={() => setIsOpenModal(false)}>
+          <ModalContainer onClose={handleCloseModal}>
             <AddFolders />
           </ModalContainer>
         </ModalPortal>

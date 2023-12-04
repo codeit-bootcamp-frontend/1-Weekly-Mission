@@ -36,11 +36,13 @@ export default function FolderHero({
     setIsOpenModal(true);
   };
 
+  const handleCloseModal = () => setIsOpenModal(false);
+
   return (
     <>
       {isOpenModal && (
         <ModalPortal>
-          <ModalContainer onClose={() => setIsOpenModal(false)}>
+          <ModalContainer onClose={handleCloseModal}>
             <AddLink link={addLinkValue} />
           </ModalContainer>
         </ModalPortal>

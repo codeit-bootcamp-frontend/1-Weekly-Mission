@@ -39,6 +39,8 @@ export default function Options({ selected }: OptionsProps) {
     }
   };
 
+  const handleCloseModal = () => setIsModalOpen(false);
+
   return (
     <>
       <Container>
@@ -52,9 +54,7 @@ export default function Options({ selected }: OptionsProps) {
 
       {isModalOpen && (
         <ModalPortal>
-          <ModalContainer onClose={() => setIsModalOpen(false)}>
-            {optionFolder(selectedOption)}
-          </ModalContainer>
+          <ModalContainer onClose={handleCloseModal}>{optionFolder(selectedOption)}</ModalContainer>
         </ModalPortal>
       )}
     </>

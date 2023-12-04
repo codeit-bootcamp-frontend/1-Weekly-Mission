@@ -51,9 +51,8 @@ export default function Folder() {
   };
 
   const changeFolderId = (category: string) => {
-    const selectedFolder = folders.find((folder: FolderData) => folder.name === category);
-    const selectedId = selectedFolder ? String(selectedFolder.id) : "";
-    setSelectedFolderId(selectedId);
+    const selectedFolder = folders.find((folder: FolderData) => folder.name === category)?.id ?? "";
+    setSelectedFolderId(selectedFolder as string);
   };
 
   const handleLoadedData = async () => {

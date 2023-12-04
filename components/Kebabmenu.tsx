@@ -26,6 +26,8 @@ export default function KebabMenu({ link }: KebabMenuProps) {
     setSelectedOption((e.target as HTMLButtonElement).id);
   };
 
+  const handleCloseModal = () => setIsOpenModal(false);
+
   return (
     <>
       <img src="assets/kebab.svg" onClick={handleMenuToggle} alt="memu" />
@@ -33,7 +35,7 @@ export default function KebabMenu({ link }: KebabMenuProps) {
 
       {isOpenModal && (
         <ModalPortal>
-          <ModalContainer onClose={() => setIsOpenModal(false)}>
+          <ModalContainer onClose={handleCloseModal}>
             {selectedOption === "addLink" ? (
               <AddLink link={link} />
             ) : (
