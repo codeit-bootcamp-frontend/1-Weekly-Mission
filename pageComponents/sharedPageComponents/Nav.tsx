@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import s from "./Nav.module.css";
 
 const Nav = ({ userEmail }: SharedPageNavProps) => {
   return (
@@ -35,7 +36,7 @@ const Nav = ({ userEmail }: SharedPageNavProps) => {
                 />
               </div>
               <div>
-                <p style={{ fontSize: "1.4rem" }}>{userEmail}</p>
+                <p className={s.p}>{userEmail}</p>
               </div>
             </div>
           ) : (

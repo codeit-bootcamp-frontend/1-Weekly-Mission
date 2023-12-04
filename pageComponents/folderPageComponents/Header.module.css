@@ -1,0 +1,148 @@
+.totalButton {
+  border-radius: 5px;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
+  height: 5rem;
+  padding: 0 1rem;
+  background: #fff;
+}
+
+.totalButtonClicked {
+  background: #6d6afe;
+}
+
+.heroHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2.4rem;
+  padding: 2.8rem 3.2rem 6rem;
+
+  @media (min-width: 768px) {
+    padding: 3.9rem 0 6rem;
+    row-gap: 4rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 7rem 0 6rem;
+  }
+}
+
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.img {
+  width: 5.5rem;
+}
+
+.p1 {
+  font-size: 1.6rem;
+}
+
+.p2 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.closeContainer {
+  position: relative;
+}
+
+.closeImg1 {
+  position: absolute;
+  right: -16.5rem;
+  top: -5rem;
+}
+
+.closeImg2 {
+  position: absolute;
+  right: -16.5rem;
+  top: -6rem;
+}
+
+.closeImg3 {
+  position: absolute;
+  right: -16.5rem;
+  top: -9rem;
+}
+
+.modalInput {
+  width: 28rem;
+  height: 4rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--linkbrary-gray-20, #ccd5e3);
+  padding: 0 2rem;
+}
+
+.modalButton {
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+  border-radius: 0.8rem;
+  width: 28rem;
+  height: 2rem;
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.modalDeleteButton {
+  background: var(--linkbrary-red, #ff5b56);
+  border-radius: 0.8rem;
+  width: 28rem;
+  height: 2rem;
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.p {
+  width: 28rem;
+  text-align: center;
+}
+
+.shareImgContainer {
+  display: flex;
+  gap: 3.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.shareButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.facebookButton {
+  background: blue;
+}
+
+.folderList {
+  padding: 4rem;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    padding: 4 3.2rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 4 19rem;
+  }
+}

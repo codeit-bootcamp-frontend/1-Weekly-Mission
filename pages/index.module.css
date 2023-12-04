@@ -1,0 +1,10 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 50px;
+}
+
+.link {
+  color: gray;
+}

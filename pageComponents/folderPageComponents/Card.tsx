@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { getTimePassed } from "@/utils/formatTimePassed";
 import Image from "next/image";
-import Count from "next/link";
+import Link from "next/link";
+import s from "./Card.module.css";
 
 const Card = ({ data, fullFolderData }: FolderCardProps) => {
   let {
@@ -45,45 +46,19 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
     image_source = "/images/blank-image.png";
   }
   return (
-    <li
-      style={{
-        listStyle: "none",
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: "100rem",
-        height: "auto",
-      }}
-    >
-      <Count
-        href={url}
-        target="_blank"
-        rel="noreferrer"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          borderRadius: "1rem",
-          position: "relative",
-        }}
-      >
-        <div
-          style={{ position: "relative", maxWidth: "70rem", height: "30rem" }}
-        >
+    <li className={s.li}>
+      <Link href={url} target="_blank" rel="noreferrer" className={s.link}>
+        <div className={s.imgContainer}>
           <Image
             src={image_source}
             alt="card 이미지"
-            style={{
-              boxShadow: "0px 5px 25px 0px rgba(0, 0, 0, 0.08)",
-              borderTopLeftRadius: "1rem",
-              borderTopRightRadius: "1rem",
-            }}
+            className={s.cardImg}
             fill
             objectFit="cover"
           />
         </div>
 
-        <button
-          style={{ position: "absolute", right: "1.5rem", top: "1.5rem" }}
-        >
+        <button className={s.starButton}>
           <Image
             src="images/star.svg"
             alt="즐겨찾기 이미지"
@@ -91,34 +66,15 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
             height={30}
           />
         </button>
-        <div
-          style={{
-            backgroundColor: "white",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            borderBottomLeftRadius: "1rem",
-            borderBottomRightRadius: "1rem",
-            padding: "1rem",
-            position: "relative",
-          }}
-        >
+        <div className={s.textArea}>
           <span>{timePassed} ago</span>
-          <button
-            style={{
-              position: "absolute",
-              right: "2rem",
-              top: "1.1rem",
-              zIndex: "999",
-            }}
-            onClick={handleKebabClick}
-          >
+          <button className={s.kebabButton} onClick={handleKebabClick}>
             <Image
               src="images/kebab.svg"
               alt="케밥 버튼 이미지"
               width={25}
               height={25}
-              style={{ zIndex: "999" }}
+              className={s.kebabImg}
             />
           </button>
           {isClicked ? (
@@ -134,19 +90,15 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
           <span>{description}</span>
           <span>{created_at.substring(0, 10)}</span>
         </div>
-      </Count>
+      </Link>
       {isKebabDeleteClicked ? (
         <div className="modal-Background">
           <div className="modal">
             <b>링크 삭제</b>
-            <div style={{ position: "relative" }}>
+            <div className={s.closeContainer}>
               <Image
                 src="images/modalClose.svg"
-                style={{
-                  position: "absolute",
-                  right: "-16.5rem",
-                  top: "-6rem",
-                }}
+                className={s.closeImg}
                 alt="닫기 버튼 이미지"
                 width={30}
                 height={30}
@@ -155,21 +107,7 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
             </div>
 
             <div>{url}</div>
-            <button
-              style={{
-                background: "var(--linkbrary-red, #FF5B56)",
-                borderRadius: "8px",
-                width: "28rem",
-                height: "2rem",
-                padding: "1.6rem 2rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-              }}
-            >
-              삭제하기
-            </button>
+            <button className={s.deleteButton}>삭제하기</button>
           </div>
         </div>
       ) : null}
@@ -178,14 +116,10 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
           <div className="modal">
             <b>폴더에 추가</b>
             <p>{url}</p>
-            <div style={{ position: "relative" }}>
+            <div className={s.closeContainer}>
               <Image
                 src="images/modalClose.svg"
-                style={{
-                  position: "absolute",
-                  right: "-16.5rem",
-                  top: "-9rem",
-                }}
+                className={s.closeImg2}
                 alt="닫기 버튼 이미지"
                 width={30}
                 height={30}
@@ -200,22 +134,7 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
                 </div>
               ))}
             </div>
-            <button
-              style={{
-                background:
-                  "var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%))",
-                borderRadius: "8px",
-                width: "28rem",
-                height: "2rem",
-                padding: "1.6rem 2rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-              }}
-            >
-              추가하기
-            </button>
+            <button className={s.addButton}>추가하기</button>
           </div>
         </div>
       ) : null}
