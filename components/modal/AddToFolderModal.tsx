@@ -53,7 +53,7 @@ const AddToFolderModal = () => {
         })}
       </div>
 
-      <DefaultBtn onClick={resetModalState} type={"default"}>
+      <DefaultBtn onClick={resetModalState} type="primary">
         추가하기
       </DefaultBtn>
     </ModalMainContainer>

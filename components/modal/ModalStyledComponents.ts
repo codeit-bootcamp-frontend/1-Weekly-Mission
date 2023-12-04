@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DefaultBtnContainer } from "../button/Button";
+import { ButtonContainer } from "../button/Button";
 
 export const Overlay = styled.div`
   width: 100vw;
@@ -68,7 +68,7 @@ export const ModalMainContainer = styled.div`
     width: 100%;
   }
 
-  ${DefaultBtnContainer} {
+  ${ButtonContainer} {
     width: 100%;
     font-size: 1.6rem;
   }
