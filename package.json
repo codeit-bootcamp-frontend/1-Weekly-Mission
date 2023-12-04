@@ -16,12 +16,14 @@
     "nextjs": "^0.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.69.4"
+    "sass": "^1.69.4",
+    "shared-utils": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "encoding": "^0.1.13",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
     "typescript": "^5"
