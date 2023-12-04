@@ -5,15 +5,15 @@ import Modal from "@/components/modal/Modal";
 import Image from "next/image";
 type TabName = "share" | "change" | "delete" | "deleteLink";
 
-type FolderMemuProps = {
-  folderIdKey: string;
+type FolderMenuProps = {
+  folderIdKey: string | undefined;
 };
 type FolderTypeProps = {
   folderId: number | undefined;
   folderName: string;
 };
 
-export default function FolderMenu({ folderIdKey }: FolderMemuProps) {
+export default function FolderMenu({ folderIdKey }: FolderMenuProps) {
   const [openModal, setOpenModal] = useState(false);
   const [tabName, setTabName] = useState("");
   const { ObjectValue } = useContext(LocaleContext);

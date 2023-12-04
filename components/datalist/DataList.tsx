@@ -4,18 +4,19 @@ import styles from "./DataList.module.css";
 import LocaleContext from "../../contexts/LocaleContext";
 import SearchContext from "../../contexts/SearchContext";
 import { FolderLinks } from "@/api/folder";
+import { LinksDataProps } from "../types/folderTypes";
 
 type DataListProps = {
-  folderId: number | undefined;
-  folderName: string;
-  linksdata: FolderLinks[];
+  folderIdKey: string | undefined;
 };
 
-export default function DataList({
-  folderIdKey,
-}: {
-  folderIdKey: number | undefined;
-}) {
+// type LinksDataProps = {
+//   folderId: any;
+//   folderName: string;
+//   linksdata: FolderLinks[];
+// };
+
+export default function DataList({ folderIdKey }: DataListProps) {
   const { LinkSDataArr } = useContext(LocaleContext);
   const { inputValue, handleInputFunc } = useContext(SearchContext);
 
@@ -63,9 +64,9 @@ export default function DataList({
   return (
     <div className={styles.container}>
       {LinkSDataArr?.filter(
-        (data: DataListProps) => data.folderId === Number(folderIdKey)
+        (data: LinksDataProps) => data.folderId === Number(folderIdKey)
       )
-        ?.map((data: DataListProps) => data.linksdata)[0]
+        ?.map((data: LinksDataProps) => data.linksdata)[0]
         ?.map((item: FolderLinks) => {
           const { url, title, description } = item;
           if (

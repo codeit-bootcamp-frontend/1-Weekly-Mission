@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FooterContext from "../FooterContext";
 
-const FooterProvider = ({ children }) => {
+const FooterProvider = ({ children }: { children: React.ReactNode }) => {
   const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   return (

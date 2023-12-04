@@ -31,6 +31,8 @@ const nextConfig = {
       "jasonwatmore.com",
       "codeit.kr",
       "codeit-images.codeit.com",
+      "testing-library.com",
+      "static.cdninstagram.com",
     ],
   },
 };

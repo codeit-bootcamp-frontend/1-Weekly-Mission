@@ -1,5 +1,4 @@
 import React from "react";
-import useFetchData from "@/hooks/useFetchData";
 import { getShareFolderData } from "@/api/share";
 import ShareNav from "@/components/nav/ShareNav";
 import Header from "@/components/header/Header";

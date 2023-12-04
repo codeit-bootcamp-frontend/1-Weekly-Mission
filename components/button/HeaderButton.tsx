@@ -27,6 +27,8 @@ export default function HeaderButton() {
     setIsHeaderVisible(isVisible);
   }, [isVisible]);
 
+  console.log(ref, isVisible);
+  console.log("footer가보인다", isFooterVisible);
   if (isFooterVisible) {
     return (
       <div ref={ref} className={`${styles.container}`}>

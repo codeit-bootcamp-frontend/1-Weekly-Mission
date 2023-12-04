@@ -7,61 +7,63 @@ import FolderMenu from "@/components/menubar/FolderMenuBar";
 import FolderNav from "@/components/nav/FolderNav";
 import SearchBar from "@/components/searchbar/SearchBar";
 import LocaleContext from "@/contexts/LocaleContext";
-import SearchProvider from "@/contexts/provider/SearchProvider";
-import useFetchData from "@/hooks/useFetchData";
 import useFetchLinksData from "@/hooks/useFetchLinksdata";
 import { mapFolderData, mapLinksData } from "@/utils/mapdata";
 import { useRouter } from "next/router";
 import React from "react";
-import Script from "next/script";
-import FooterProvider from "@/contexts/provider/FooterProvider";
-import HeaderProvider from "@/contexts/provider/HeaderProvider";
+import { UserProfile, UserFolder } from "@/api/folder";
+import FolderPageLayout from "@/layout/FolderPageLayout";
 
-export default function FolderPage() {
-  const USER_ID = 1;
+type FolderPageProps = {
+  userFolderData: { data: UserFolder[] };
+  userProfileData: { data: UserProfile };
+};
+
+export default function FolderPage(props: FolderPageProps) {
+  const userProfileData = props.userProfileData;
+  const userFolderData = props.userFolderData;
+
   const router = useRouter();
   const { id } = router.query;
-  const [userProfileData] = useFetchData(fetchUserData, {
-    userId: USER_ID,
-  });
-
-  const [userFolderData] = useFetchData(fetchUserFolderData, {
-    userId: USER_ID,
-  });
-
+  const folderId = id as string;
   const result = userFolderData?.data || [];
 
   const obj = mapFolderData(result);
-  const [mappedResult] = useFetchLinksData(mapLinksData, result);
+
+  const [mappedResult, isLoading] = useFetchLinksData(mapLinksData, result);
 
   return (
     <>
-      <FooterProvider>
-        <HeaderProvider>
-          <LocaleContext.Provider
-            value={{
-              ObjectValue: obj,
-              LinkSDataArr: mappedResult,
-              folderIdKey: id,
-            }}
-          >
-            <SearchProvider>
-              <Script
-                defer
-                src="https://developers.kakao.com/sdk/js/kakao.min.js"
-                strategy="lazyOnload"
-              ></Script>
-              <FolderNav data={userProfileData} />
-              <Header />
-              <SearchBar />
-              <FolderMenuList />
-              <FolderMenu folderIdKey={id} />
-              <DataList folderIdKey={id} />
-              <Footer />
-            </SearchProvider>
-          </LocaleContext.Provider>
-        </HeaderProvider>
-      </FooterProvider>
+      <FolderPageLayout>
+        <LocaleContext.Provider
+          value={{
+            ObjectValue: obj,
+            LinkSDataArr: mappedResult,
+            folderIdKey: folderId,
+          }}
+        >
+          <FolderNav userProfile={userProfileData} />
+          <Header />
+          <SearchBar />
+          <FolderMenuList />
+          <FolderMenu folderIdKey={folderId} />
+          <DataList folderIdKey={folderId} />
+          <Footer />
+        </LocaleContext.Provider>
+      </FolderPageLayout>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const USER_ID = 1;
+  const response = await fetchUserData({ userId: USER_ID });
+
+  const userFolderData = await fetchUserFolderData({ userId: USER_ID });
+  return {
+    props: {
+      userProfileData: response,
+      userFolderData: userFolderData,
+    },
+  };
 }

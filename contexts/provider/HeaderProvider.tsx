@@ -1,7 +1,7 @@
 import { useState } from "react";
 import HeaderContext from "../HeaderContext";
 
-const HeaderProvider = ({ children }) => {
+const HeaderProvider = ({ children }: { children: React.ReactNode }) => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
 
   return (

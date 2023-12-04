@@ -1,15 +1,20 @@
-import { fetchFolderLinks } from "@/api/folder";
+import { UserFolder, fetchFolderLinks } from "@/api/folder";
+import { LinksDataProps } from "@/components/types/folderTypes";
+
+type accCopyReduceType = {
+  [key: number]: LinksDataProps;
+};
 
 const USER_ID = 1;
 
-export const mapFolderData = (arr) => {
+export const mapFolderData = (arr: UserFolder[]) => {
   const arrCopy = arr?.slice();
   // id가 null 이나 undefined이 이면은 Links를 가져오기 위해전체 데이터를 따로? 만들어야 하는데
   // 0이면은 불러와진당 싱기방기
   arrCopy.push({ id: 0, name: "전체" });
   const mapObj =
     arrCopy &&
-    arrCopy.reduce((acc, item) => {
+    arrCopy.reduce<accCopyReduceType>((acc, item) => {
       if (!acc[item.id]) {
         acc[item.id] = {
           folderId: item.id,
@@ -21,7 +26,7 @@ export const mapFolderData = (arr) => {
   return mapObj;
 };
 
-export const mapLinksData = async (arr) => {
+export const mapLinksData = async (arr: UserFolder[]) => {
   const obj = mapFolderData(arr) || {};
   const obj_data = Object.values(obj);
 

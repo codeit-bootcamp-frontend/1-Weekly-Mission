@@ -1,13 +1,13 @@
 type UserRequest = {
-  userId: string;
+  userId: number;
   folderId?: string;
 };
 // User
 type getUserResponse = {
-  data: User[];
+  data: UserProfile[];
 };
 
-export type User = {
+export type UserProfile = {
   id: number;
   created_at: string;
   name: string;
@@ -18,15 +18,15 @@ export type User = {
 
 // Folder
 type getUserFolderResponse = {
-  data: Folder[];
+  data: UserFolder[];
 };
 
-export type Folder = {
+export type UserFolder = {
   id: number;
-  created_at: string;
+  created_at?: string;
   name: string;
-  user_id: number;
-  link: Link;
+  user_id?: number;
+  link?: Link;
 };
 
 export type Link = {

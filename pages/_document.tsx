@@ -1,5 +1,6 @@
-// import KaKao from "@/components/socialshare/KaKao";
 import { Html, Head, Main, NextScript } from "next/document";
+// 아래꺼는 왜 안되쥬
+import Script from "next/script";
 
 export default function Document() {
   return (

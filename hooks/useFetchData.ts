@@ -7,7 +7,7 @@ function useFetchData(fetchFunc: Function, request: object = {}) {
   useEffect(() => {
     setIsLoading(true);
     // generic을쓰기..
-    fetchFunc({ ...request }).then((result) => {
+    fetchFunc({ ...request }).then((result: any) => {
       const data = result;
       if (data) {
         setData(data);

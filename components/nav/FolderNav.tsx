@@ -5,14 +5,23 @@ import Person from "@/public/images/person.svg";
 import Login from "@/public/images/login.svg";
 import styles from "./ShareNav.module.css";
 import Profile from "@/components/profile/Profile";
+import { UserProfile } from "@/api/folder";
 
-export default function FolderNav({ data }) {
+type FolderNavProps = {
+  data: UserProfile;
+};
+
+export default function FolderNav({
+  userProfile,
+}: {
+  userProfile: FolderNavProps;
+}) {
   return (
     <div className={styles.container}>
       <Logo />
       <div className={styles.profile__container}>
-        {data?.data ? <Person /> : <Login />}
-        {data?.data && <Profile data={data?.data} />}
+        {userProfile?.data ? <Person /> : <Login />}
+        {userProfile?.data && <Profile data={userProfile?.data} />}
       </div>
     </div>
   );
