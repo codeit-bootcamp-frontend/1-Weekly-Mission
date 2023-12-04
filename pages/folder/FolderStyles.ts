@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { breakPoints } from "@/common/media";
-import AddIcon from "@/public/assets/add.svg";
+import AddIcon from "public/assets/add.svg";
 
 export const Contents = styled.section`
   padding: 2.5rem 2rem;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import SearchIcon from "@/public/assets/Search.svg";
-import CloseIcon from "@/public/assets/close.svg";
+import SearchIcon from "public/assets/Search.svg";
+import CloseIcon from "public/assets/close.svg";
 
 export const Search = styled.div`
   position: relative;

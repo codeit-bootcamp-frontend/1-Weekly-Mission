@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ModalTitle from "./ModalTitle";
-import ModalButton from "../button/ModalButton";
+import ModalButton from "@/components/button/ModalButton";
 
 interface DeleteFolderProps {
   currentFolderName: string;

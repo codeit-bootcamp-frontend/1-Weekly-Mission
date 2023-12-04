@@ -1,10 +1,10 @@
 import { MouseEvent, useContext, useState } from "react";
 
 import styled from "styled-components";
-import CheckIcon from "@/public/assets/check.svg";
+import CheckIcon from "public/assets/check.svg";
 import { FolderContext } from "@/context/FolderContext";
 
-import ModalButton from "../button/ModalButton";
+import ModalButton from "@/components/button/ModalButton";
 import ModalTitle from "./ModalTitle";
 
 export default function AddLink({ link }: AddLinkProps) {

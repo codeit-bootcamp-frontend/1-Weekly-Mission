@@ -1,6 +1,6 @@
 import styles from "./Card.module.css";
 
-import Star from "@/public/assets/star.svg";
+import Star from "public/assets/star.svg";
 import KebabMenu from "../Kebabmenu";
 import { getCreatedDate, getDiffTime } from "@/common/utils/dateUtils";
 import { LinkData, SampleLinkData } from "@/types/folder";

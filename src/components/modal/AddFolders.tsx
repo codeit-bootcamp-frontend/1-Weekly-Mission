@@ -1,6 +1,6 @@
 import styles from "./AddFolders.module.css";
 import ModalTitle from "./ModalTitle";
-import ModalButton from "../button/ModalButton";
+import ModalButton from "@/components/button/ModalButton";
 
 export default function AddFolders() {
   return (

@@ -3,12 +3,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
-import LinkIcon from "@/public/assets/link.svg";
-import Button from "../button/Basic";
-import ModalPortal from "../ModalPortal";
-import ModalContainer from "../modal/ModalContainer";
-import AddLink from "../modal/AddLink";
-import AddLinkFolderInput from "../inputs/AddLinkFolder";
+import LinkIcon from "public/assets/link.svg";
+import Button from "@/components/button/Basic";
+import ModalPortal from "@/components/ModalPortal";
+import ModalContainer from "@/components/modal/ModalContainer";
+import AddLink from "@/components/modal/AddLink";
+import AddLinkFolderInput from "@/components/inputs/AddLinkFolder";
 
 interface FolderHeroProps {
   addLinkValue: string;
