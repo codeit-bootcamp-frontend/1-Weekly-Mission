@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { device } from "@/styles/globalStyle";
-import { ButtonContainer } from "@/components/button/Button";
-import { InputContainer } from "@/components/input/Input";
+import { ButtonContainer } from "@/components/button/buttonStyled";
 import { ContentContainer } from "./sharedStyled";
 import { Section } from "@/components/common/commonStyled";
+import { InputContainer } from "@/components/input/inputStyled";
 
 export const FolderSection = styled(Section)`
   min-height: calc(100vh - 46.5rem);

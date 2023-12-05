@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../button/Button";
 import Input from "../input/Input";
-import DefaultModalLayout from "./DefaultModalLayout";
+import DefaultModalLayout from "./defaultModalLayout/DefaultModalLayout";
 
 interface DeleteModalProp {
   title: string;

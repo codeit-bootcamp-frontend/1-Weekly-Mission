@@ -1,5 +1,5 @@
 import Button from "@/components/button/Button";
-import { ButtonContainer } from "@/components/button/Button";
+import { ButtonContainer } from "@/components/button/buttonStyled";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";

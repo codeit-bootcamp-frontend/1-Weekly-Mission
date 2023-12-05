@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ButtonContainer } from "../button/Button";
+import { ButtonContainer } from "@/components/button/buttonStyled";
 
 export const Overlay = styled.div`
   width: 100vw;

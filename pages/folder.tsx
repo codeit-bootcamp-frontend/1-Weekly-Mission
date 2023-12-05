@@ -19,9 +19,9 @@ import { ContentContainer, CardContainer } from "@/styles/sharedStyled";
 import AddFloatingBtn from "@/components/button/AddFloatingButton";
 import { modalState } from "../recoil/modal";
 import { useRecoilState } from "recoil";
-import AddToFolderModal from "@/components/modal/AddToFolderModal";
+import AddToFolderModal from "@/components/modal/addToFolderModal/AddToFolderModal";
 import ModalLayout from "@/components/modal/ModalLayout";
-import ShareFolderModal from "@/components/modal/SharedFolderModal";
+import ShareFolderModal from "@/components/modal/sharedFolderModal/SharedFolderModal";
 import Input from "@/components/input/Input";
 import DefaultBtn from "@/components/button/Button";
 import Image from "next/image";
@@ -226,8 +226,10 @@ const Folder = () => {
               ></Input>
               <DefaultBtn
                 onClick={() => {
-                  handleAddToFolderModal(link);
-                  setLink("");
+                  if (link !== "") {
+                    handleAddToFolderModal(link);
+                    setLink("");
+                  }
                 }}
                 type="primary"
               >
@@ -353,7 +355,7 @@ const Folder = () => {
             )}
           </FolderContentContainer>
 
-          <AddFloatingBtn />
+          <AddFloatingBtn setModalType={setModalType} />
         </FolderSection>
       </Wrapper>
 

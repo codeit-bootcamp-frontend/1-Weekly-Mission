@@ -1,4 +1,4 @@
-import Button, { ButtonContainer } from "@/components/button/Button";
+import { ButtonContainer } from "@/components/button/buttonStyled";
 import { device } from "@/styles/globalStyle";
 import styled from "styled-components";
 

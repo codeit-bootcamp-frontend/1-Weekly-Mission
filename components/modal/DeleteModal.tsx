@@ -1,5 +1,5 @@
 import Button from "../button/Button";
-import DefaultModalLayout from "./DefaultModalLayout";
+import DefaultModalLayout from "./defaultModalLayout/DefaultModalLayout";
 
 interface DeleteModalProp {
   title: string;

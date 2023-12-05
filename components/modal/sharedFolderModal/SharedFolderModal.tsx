@@ -1,6 +1,4 @@
-import styled from "styled-components";
-import { ModalMainContainer } from "./ModalStyledComponents";
-import { modalState } from "../../recoil/modal";
+import { modalState } from "../../../recoil/modal";
 import { useResetRecoilState } from "recoil";
 import KakaoIcon from "@/public/assets/modal/img_kakao.png";
 import FacebookIcon from "@/public/assets/modal/img_facebook.png";
@@ -8,6 +6,7 @@ import CloseIcon from "@/public/assets/modal/img_closeIcon.png";
 import LinkCopyIcon from "@/public/assets/modal/img_share.png";
 import Image from "next/image";
 import { useEffect } from "react";
+import { ModalContetnItem, ModalMain } from "./sharedFolderModalStyled";
 
 interface SharedFolderModalProp {
   content: {
@@ -129,27 +128,3 @@ const ShareFolderModal = ({ content }: SharedFolderModalProp) => {
   );
 };
 export default ShareFolderModal;
-
-const ModalMain = styled(ModalMainContainer)`
-  .modalContentContainer {
-    flex-direction: row;
-    gap: 3.2rem;
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
-const ModalContetnItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  cursor: pointer;
-
-  .title {
-    color: var(--gray100);
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 400;
-    line-height: 1.5rem;
-  }
-`;
