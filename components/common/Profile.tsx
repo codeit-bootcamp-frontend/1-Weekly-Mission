@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 import defaultProfileImg from '@/public/assets/images/default-profile.svg';
-import useGetWindowWidth from '@/hooks/useGetWindowWidth';
 import { UserDataType } from '@/constants/dataType';
 import { SampleUserType } from '@/constants/sampleDataType';
-import Image from 'next/image';
+import { DEVICE_SIZE } from '@/styles/DeviceSize';
 
 interface Props {
   user: UserDataType | SampleUserType;
@@ -11,12 +11,11 @@ interface Props {
 
 function Profile({ user }: Props) {
   const { email, profileImageSource, image_source } = user;
-  const innerWidth = useGetWindowWidth();
 
   return (
     <Container>
       <Img src={profileImageSource || image_source || defaultProfileImg} alt="프로필 사진" width={28} height={28} />
-      {innerWidth < 768 ? null : <Text>{email}</Text>}
+      <Text>{email}</Text>
     </Container>
   );
 }
@@ -37,4 +36,8 @@ const Img = styled(Image)`
 
 const Text = styled.div`
   font-size: 1.4rem;
+
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
+    display: none;
+  }
 `;

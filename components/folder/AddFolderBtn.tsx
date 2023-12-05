@@ -1,29 +1,20 @@
 import styled, { keyframes, css } from 'styled-components';
-import addButton from '@/public/assets/images/add.svg';
-import addMobileButton from '@/public/assets/images/add_mobile.svg';
-import useGetWindowWidth from '@/hooks/useGetWindowWidth';
-import Modal from '../common/Modal/Modal';
+import Modal from '@/components/common/Modal/Modal';
 import useModal from '@/hooks/useModal';
-import Image from 'next/image';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
 import { useObserver } from '@/hooks/useObserver';
 
 function AddFolderBtn() {
-  const innerWidth = useGetWindowWidth();
   const visibleFooter = useObserver('footer');
   const { isOpen, handleModalOpen, handleModalClose } = useModal();
 
   return (
     <>
-      <Container $visibleFooter={visibleFooter} onClick={() => handleModalOpen()}>
+      <Container $visibleFooter={visibleFooter} onClick={handleModalOpen}>
         <AddFolder>폴더 추가</AddFolder>
-        {innerWidth < 768 ? (
-          <Image src={addMobileButton} alt="폴더 추가 버튼" width={16} height={16} />
-        ) : (
-          <Image src={addButton} alt="폴더 추가 버튼" width={16} height={16} />
-        )}
+        <Icon />
       </Container>
-      {isOpen && <Modal type="input" title="폴더 추가" button="추가하기" onClickClose={() => handleModalClose()} />}
+      {isOpen && <Modal type="input" title="폴더 추가" button="추가하기" onClickClose={handleModalClose} />}
     </>
   );
 }
@@ -84,5 +75,17 @@ const AddFolder = styled.p`
 
   @media (max-width: ${DEVICE_SIZE.mobile}) {
     color: #e7effb;
+  }
+`;
+const Icon = styled.div`
+  width: 16px;
+  height: 16px;
+
+  background-image: url('/assets/images/add.svg');
+  background-position: center;
+  object-fit: contain;
+
+  @media (max-width: ${DEVICE_SIZE.mobile}) {
+    background-image: url('/assets/images/add_mobile.svg');
   }
 `;
