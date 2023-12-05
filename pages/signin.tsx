@@ -1,12 +1,11 @@
 import Logo from "../components/Logo/Logo";
 import styles from "@/styles/sign.module.css";
 import Button from "../components/Button/Button";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useInputController from "@/hooks/useInputController";
 import { useRouter } from "next/router";
 import Input from "@/components/Input/Input";
 import { signinEmail, signinPassword } from "@/businessLogic/signError";
-import postSign from "@/API/postSign";
 import SignFooter from "@/components/SignFooter/SignFooter";
 import SignLink from "@/components/SignLink/SignLink";
 import Head from "next/head";
@@ -19,6 +18,7 @@ function Signin() {
   const password = useInputController({ func: signinPassword });
 
   const router = useRouter();
+  const auth = useAuth();
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken") as string;
@@ -30,8 +30,6 @@ function Signin() {
       return router.push("/folder");
     }
   })(); // useEffect 이후로 다시 랜더링될 때
-
-  const auth = useAuth({ email, password, signType: "in" });
 
   const signInputConfig = [
     {
@@ -69,7 +67,11 @@ function Signin() {
           </header>
 
           <section className={styles.sign}>
-            <form className={styles.form} onSubmit={auth.handleSubmit} noValidate>
+            <form
+              className={styles.form}
+              onSubmit={auth.handleSubmit({ email, password, signType: "in", router })}
+              noValidate
+            >
               {signInputConfig.map((SignInputs) => {
                 return <Input {...SignInputs} key={SignInputs.name} />;
               })}

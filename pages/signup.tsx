@@ -1,11 +1,10 @@
 import Logo from "../components/Logo/Logo";
 import styles from "@/styles/sign.module.css";
 import Button from "../components/Button/Button";
-import { FormEvent, useEffect } from "react";
+import { useEffect } from "react";
 import useInputController from "@/hooks/useInputController";
 import { useRouter } from "next/router";
 import Input from "@/components/Input/Input";
-import postSign from "@/API/postSign";
 import SignFooter from "@/components/SignFooter/SignFooter";
 import SignLink from "@/components/SignLink/SignLink";
 import Head from "next/head";
@@ -18,6 +17,7 @@ function Signin() {
   const passwordCheck = useInputController({ func: signupPasswordCheck });
 
   const router = useRouter();
+  const auth = useAuth();
 
   useEffect(() => {
     (() => {
@@ -26,8 +26,6 @@ function Signin() {
       }
     })();
   }, [router]);
-
-  const auth = useAuth({ email, password, signType: "up" });
 
   const signInputConfig = [
     {
@@ -73,7 +71,11 @@ function Signin() {
           </header>
 
           <section className={styles.sign}>
-            <form className={styles.form} onSubmit={auth.handleSubmit} noValidate>
+            <form
+              className={styles.form}
+              onSubmit={auth.handleSubmit({ email, password, signType: "up", router })}
+              noValidate
+            >
               {signInputConfig.map((SignInputs) => {
                 return <Input {...SignInputs} key={SignInputs.name} />;
               })}

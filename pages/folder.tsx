@@ -21,8 +21,8 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import getCurrentUserData from "@/API/getCurrentUserData";
 import FolderModal from "@/components/FolderModal/FolderModal";
 import Head from "next/head";
-import getAccessTokenFromCookies from "@/businessLogic/getAcessTokenFromCookie";
-import getFolderIdFromQuery from "@/businessLogic/getFolderIdFromQuery";
+import getAccessTokenFromCookies from "@/businessLogic/folder/getAcessTokenFromCookie";
+import getFolderIdFromQuery from "@/businessLogic/folder/getFolderIdFromQuery";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const accessToken = getAccessTokenFromCookies(context);
