@@ -1,8 +1,9 @@
+import { API_BASE_URL } from "src/constants/url";
+
 const getSampleUser = async () => {
-  const response = await fetch(
-    "https://bootcamp-api.codeit.kr/api/sample/user",
-    { method: "GET" }
-  );
+  const response = await fetch(`${API_BASE_URL}/api/sample/user`, {
+    method: "GET",
+  });
 
   if (!response.ok) {
     throw new Error("헤더 프로필 에러 발생");
@@ -13,10 +14,9 @@ const getSampleUser = async () => {
 };
 
 const getSampleUserProfile = async () => {
-  const response = await fetch(
-    "https://bootcamp-api.codeit.kr/api/sample/folder",
-    { method: "GET" }
-  );
+  const response = await fetch(`${API_BASE_URL}/api/sample/folder`, {
+    method: "GET",
+  });
 
   if (!response.ok) {
     throw new Error("인트로 프로필 에러 발생");
@@ -27,10 +27,9 @@ const getSampleUserProfile = async () => {
 };
 
 const getUserFolder = async () => {
-  const response = await fetch(
-    "https://bootcamp-api.codeit.kr/api/users/1/folders",
-    { method: "GET" }
-  );
+  const response = await fetch(`${API_BASE_URL}/api/users/1/folders`, {
+    method: "GET",
+  });
 
   if (!response.ok) {
     throw new Error("폴더 에러 발생");
@@ -41,10 +40,9 @@ const getUserFolder = async () => {
 };
 
 const getAllFolder = async () => {
-  const response = await fetch(
-    `https://bootcamp-api.codeit.kr/api/users/1/links`,
-    { method: "GET" }
-  );
+  const response = await fetch(`${API_BASE_URL}/api/users/1/links`, {
+    method: "GET",
+  });
 
   if (!response.ok) {
     throw new Error("전체 폴더 데이터 가져오기 에러 발생");
@@ -56,7 +54,7 @@ const getAllFolder = async () => {
 
 const getFolderLinks = async (folderId: string) => {
   const response = await fetch(
-    `https://bootcamp-api.codeit.kr/api/users/1/links?folderId=${folderId}`,
+    `${API_BASE_URL}/api/users/1/links?folderId=${folderId}`,
     {
       method: "GET",
     }
@@ -70,7 +68,7 @@ const getFolderLinks = async (folderId: string) => {
 };
 
 const getUserProfile = async () => {
-  const response = await fetch("https://bootcamp-api.codeit.kr/api/users/1", {
+  const response = await fetch(`${API_BASE_URL}/api/users/1`, {
     method: "GET",
   });
 

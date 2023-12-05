@@ -1,9 +1,3 @@
-interface Card {
-  url?: string;
-  title?: string;
-  description?: string;
-}
-
 export function filterCardsSearch(cards: Card[], searchResult: string): any {
   const filteredCards = cards.filter((card) =>
     [

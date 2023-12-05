@@ -13,6 +13,7 @@ type TitleProps = Children & {
 
 interface Card {
   id: string;
+  title?: string;
   url?: string;
   description?: string;
   created_at?: string | undefined;

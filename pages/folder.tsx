@@ -1,4 +1,3 @@
-import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import { getAllFolder, getFolderLinks, getUserFolder } from "pages/api/api";
 import React, { useEffect, useState } from "react";
@@ -19,7 +18,7 @@ import { shareKakaoLink } from "src/utils/shareKakaoLink";
 function Folder() {
   const [folders, setFolders] = useState<[]>([]);
   const [isFunctionButtonShow, setIsFunctionButtonShow] = useState(false);
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState<Card[]>([]);
   const [folderName, setFolderName] = useState("");
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
@@ -28,12 +27,11 @@ function Folder() {
   const [searchResult, setSearchResult] = useState("");
   const { asPath } = useRouter();
 
-  const folderParams = useSearchParams(); // setFolderParams 이걸 뭘로 해야될까요... useSearchParams에 대한 공부가 아직 더 필요한..
-  const initFolderId: string | null = folderParams.get("folderId");
+  const router = useRouter();
+  const initFolderId = router.query.folderId as string;
 
   const folderInfo = async (folderId: string) => {
     const introResult = await getUserFolder();
-    if (!introResult) return;
 
     const currentId = introResult.filter(
       (data: { id: number }) => data.id === Number(folderId)
@@ -58,11 +56,13 @@ function Folder() {
       : await getFolderLinks(folderId as string);
     if (!introResult) return;
 
-    if (!searchResult) {
-      setCards(introResult);
-    } else {
+    if (searchResult) {
       const filterCard = filterCardsSearch(introResult, searchResult);
       setCards(filterCard);
+    }
+
+    if (!searchResult) {
+      setCards(introResult);
     }
   };
 
@@ -117,14 +117,14 @@ function Folder() {
   };
 
   useEffect(() => {
-    folderInfo(initFolderId as string);
-    folderAndCardInfo(initFolderId as string);
+    folderInfo(initFolderId);
+    folderAndCardInfo(initFolderId);
 
     return () => setCards([]);
   }, [initFolderId]);
 
   useEffect(() => {
-    folderAndCardInfo(initFolderId as string);
+    folderAndCardInfo(initFolderId);
   }, [searchResult]);
 
   return (

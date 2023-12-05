@@ -15,7 +15,7 @@ function Input({ type, placeholder, errorMsg }: Input) {
   const [isError, setIsError] = useState(true);
 
   const visiblePassword = () => {
-    setIsVisible(!isVisible);
+    setIsVisible((prev) => !prev);
   };
 
   const handleValue = (e: ChangeEvent<HTMLInputElement>) => {
