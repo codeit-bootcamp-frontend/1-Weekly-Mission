@@ -4,10 +4,10 @@ import { useState } from "react";
 import CloseIcon from "@/public/assets/modal/img_closeIcon.png";
 import CheckIcon from "@/public/assets/modal/img_checkIcon.png";
 import Image from "next/image";
-import DefaultBtn from "../../button/Button";
 import { ModalMainContainer } from "../ModalStyledComponents";
 import { FolderData, SelectedFolder } from "@/pages/folder";
 import { FolderContainer } from "./addToFolderModalStyled";
+import GradientButton from "@/components/button/GradientButton";
 
 interface AddToFolderModalProp {
   folderData: FolderData[];
@@ -62,9 +62,7 @@ const AddToFolderModal = ({
         })}
       </div>
 
-      <DefaultBtn onClick={resetModalState} type="primary">
-        추가하기
-      </DefaultBtn>
+      <GradientButton onClick={resetModalState}>추가하기</GradientButton>
     </ModalMainContainer>
   );
 };

@@ -14,7 +14,7 @@ const DeleteModal = ({ title, content }: DeleteModalProp) => {
   return (
     <DefaultModalLayout
       title={title}
-      buttonItem={<Button type="secondary">삭제하기</Button>}
+      buttonItem={<Button>삭제하기</Button>}
       subTitle={content.title || content.url}
     />
   );

@@ -1,4 +1,5 @@
 import Button from "@/components/button/Button";
+import GradientButton from "@/components/button/GradientButton";
 import EmailInput from "@/components/input/EmailInput";
 import PasswordInput from "@/components/input/PasswordInput";
 import UserLayout from "@/components/user/UserLayout";
@@ -11,9 +12,7 @@ const Signup = () => {
   return (
     <UserLayout
       buttonItem={
-        <Button onClick={handleSignup} type="primary">
-          회원가입
-        </Button>
+        <GradientButton onClick={handleSignup}>회원가입</GradientButton>
       }
       moveToPageItem={{
         title: "이미 회원이신가요?",

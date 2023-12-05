@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Button from "../button/Button";
 import Input from "../input/Input";
 import DefaultModalLayout from "./defaultModalLayout/DefaultModalLayout";
+import GradientButton from "../button/GradientButton";
 
 interface DeleteModalProp {
   title: string;
@@ -18,9 +18,9 @@ const EnterModal = ({ title, content }: DeleteModalProp) => {
     <DefaultModalLayout
       title={title}
       buttonItem={
-        <Button type="primary">
+        <GradientButton>
           {folderName !== "" ? "변경하기" : "추가하기"}
-        </Button>
+        </GradientButton>
       }
       inputItem={
         <Input

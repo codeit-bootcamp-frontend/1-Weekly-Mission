@@ -1,4 +1,5 @@
 import Button from "@/components/button/Button";
+import GradientButton from "@/components/button/GradientButton";
 import { ButtonContainer } from "@/components/button/buttonStyled";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -17,7 +18,7 @@ export default function NotFound() {
         요청하신 페이지가 사라졌거나, 잘못된 경로를 이용하셨어요 :)
       </div>
       <Link href={"/"}>
-        <Button type="primary">홈으로 이동</Button>
+        <GradientButton>홈으로 이동</GradientButton>
       </Link>
     </NotFoundWrapper>
   );

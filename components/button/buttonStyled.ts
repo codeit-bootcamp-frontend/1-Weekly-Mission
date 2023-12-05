@@ -1,12 +1,9 @@
 import { device } from "@/styles/globalStyle";
 import styled from "styled-components";
 
-export const ButtonContainer = styled.button<{ type: string }>`
+export const ButtonContainer = styled.button`
   border-radius: 0.8rem;
-  background: ${(props) =>
-    props.type === "secondary"
-      ? "var(--red)"
-      : "linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%)"};
+  background: var(--red);
   color: #f5f5f5;
   padding: 1.6rem 2rem;
   font-size: 1.8rem;
@@ -17,6 +14,10 @@ export const ButtonContainer = styled.button<{ type: string }>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+`;
+
+export const GradientButtonContainer = styled(ButtonContainer)`
+  background: "linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%)";
 `;
 
 export const AddFloatingBtnContainer = styled.div`

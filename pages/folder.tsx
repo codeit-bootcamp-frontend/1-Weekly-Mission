@@ -23,7 +23,6 @@ import AddToFolderModal from "@/components/modal/addToFolderModal/AddToFolderMod
 import ModalLayout from "@/components/modal/ModalLayout";
 import ShareFolderModal from "@/components/modal/sharedFolderModal/SharedFolderModal";
 import Input from "@/components/input/Input";
-import DefaultBtn from "@/components/button/Button";
 import Image from "next/image";
 import Card from "@/components/card/Card";
 import { Section, Wrapper } from "@/components/common/commonStyled";
@@ -31,6 +30,7 @@ import request from "@/lib/axios";
 import { ApiMapper } from "@/lib/apiMapper";
 import DeleteModal from "@/components/modal/DeleteModal";
 import EnterModal from "@/components/modal/EnterModal";
+import GradientButton from "@/components/button/GradientButton";
 
 const LinkToolArr = [
   {
@@ -224,17 +224,16 @@ const Folder = () => {
                 value={link}
                 setValue={setLink}
               ></Input>
-              <DefaultBtn
+              <GradientButton
                 onClick={() => {
                   if (link !== "") {
                     handleAddToFolderModal(link);
                     setLink("");
                   }
                 }}
-                type="primary"
               >
                 추가하기
-              </DefaultBtn>
+              </GradientButton>
             </AddLinkInputContainer>
           </ContentContainer>
         </Section>

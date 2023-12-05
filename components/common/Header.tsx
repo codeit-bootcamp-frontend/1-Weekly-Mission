@@ -6,6 +6,7 @@ import request from "@/lib/axios";
 import Button from "@/components/button/Button";
 import { ApiMapper } from "@/lib/apiMapper";
 import { HeaderContainer, ProfileContainer } from "./headerStyled";
+import GradientButton from "../button/GradientButton";
 
 interface User {
   email: string | null;
@@ -79,9 +80,7 @@ const Header = () => {
             <div className="profileEmail">{userData.email}</div>
           </ProfileContainer>
         ) : (
-          <Button type="primary" onClick={handleLoginBtn}>
-            로그인
-          </Button>
+          <GradientButton onClick={handleLoginBtn}>로그인</GradientButton>
         )}
       </nav>
     </HeaderContainer>
