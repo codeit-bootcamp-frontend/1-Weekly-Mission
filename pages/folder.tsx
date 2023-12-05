@@ -75,8 +75,7 @@ const Folder: NextPageWithLayout = ({
   const folderConfig = {
     addLinkInputConfig: {
       ...addLinkInput,
-      onSubmit: modal.handleClick,
-      setTarget: modal.setTarget,
+      ...modal,
     },
 
     folderNavConfig: {
@@ -86,21 +85,20 @@ const Folder: NextPageWithLayout = ({
 
     binderConfig: {
       cards,
-      onClick: modal.handleClick,
-      setTarget: modal.setTarget,
       setTargetURL,
+      ...modal,
       ...searchBar,
     },
 
     folderModalConfig: {
-      modal,
+      ...modal,
+      ...addLinkInput,
       addFolder,
-      addLinkInput,
+      editFolder,
       targetURL,
       folderName,
       folderInfo,
       folderId,
-      editFolder,
     },
   };
 
@@ -110,6 +108,7 @@ const Folder: NextPageWithLayout = ({
 
       <section className={styles.root}>
         <SearchBar searchBar={searchBar} />
+
         <div className={styles.flex}>
           <FolderNav {...folderConfig.folderNavConfig} />
           <FolderAddMenu modal={modal} />
@@ -119,6 +118,7 @@ const Folder: NextPageWithLayout = ({
           <FolderName>{folderName}</FolderName>
           {folderName !== "전체" && <FolderEdit modal={modal} />}
         </div>
+
         {cards.length ? <Binder {...folderConfig.binderConfig} /> : <FolderEmptyNoti />}
       </section>
 

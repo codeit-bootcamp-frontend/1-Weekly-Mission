@@ -9,21 +9,17 @@ import Share from "@/modals/Share";
 import { ChangeEvent, FormEvent, MouseEvent } from "react";
 
 interface Props {
-  modal: {
-    handleClick: (e: MouseEvent | FormEvent) => void;
-    target: string | null | undefined;
+  editFolder: {
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    value: string;
   };
   addFolder: {
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     value: string;
   };
-  addLinkInput: {
-    value: string;
-  };
-  editFolder: {
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    value: string;
-  };
+  handleClick: (e: MouseEvent | FormEvent) => void;
+  target: string | null | undefined;
+  value: string;
   targetURL: string;
   folderName: string;
   folderId: undefined | string | string[];
@@ -31,37 +27,38 @@ interface Props {
 }
 
 function FolderModal({
-  modal,
+  handleClick: modalHandleClick,
+  target: modalTarget,
   targetURL,
   addFolder,
-  addLinkInput,
+  value: inputValue,
   editFolder,
   folderName,
   folderInfo,
   folderId,
 }: Props) {
   return (
-    <Modal onClick={modal.handleClick}>
+    <Modal onClick={modalHandleClick}>
       {(() => {
-        if (modal.target === "AddFolder") {
+        if (modalTarget === "AddFolder") {
           return <AddFolder onChange={addFolder.onChange} value={addFolder.value} />;
         }
-        if (modal.target === "AddLinkToFolderFromInput") {
-          return <AddLinkToFolder folderList={folderInfo}>{addLinkInput.value}</AddLinkToFolder>;
+        if (modalTarget === "AddLinkToFolderFromInput") {
+          return <AddLinkToFolder folderList={folderInfo}>{inputValue}</AddLinkToFolder>;
         }
-        if (modal.target === "AddLinkToFolderFromCard") {
+        if (modalTarget === "AddLinkToFolderFromCard") {
           return <AddLinkToFolder folderList={folderInfo}>{targetURL}</AddLinkToFolder>;
         }
-        if (modal.target === "shareFolder") {
+        if (modalTarget === "shareFolder") {
           return <Share folderId={folderId}>{folderName}</Share>;
         }
-        if (modal.target === "changeFolderName") {
+        if (modalTarget === "changeFolderName") {
           return <EditFolder onChange={editFolder.onChange} value={editFolder.value}></EditFolder>;
         }
-        if (modal.target === "deleteFolder") {
+        if (modalTarget === "deleteFolder") {
           return <DeleteFolder>{folderName}</DeleteFolder>;
         }
-        if (modal.target === "deleteLink") {
+        if (modalTarget === "deleteLink") {
           return <DeleteLink>{targetURL}</DeleteLink>;
         }
       })()}

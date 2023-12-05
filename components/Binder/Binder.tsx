@@ -6,18 +6,18 @@ import { Linkinfo } from "@/API/getLinksByFolderID";
 interface Props {
   cards: Linkinfo[];
   shared?: Boolean;
-  onClick?: (e: MouseEvent | FormEvent) => void;
+  handleClick?: (e: MouseEvent | FormEvent) => void;
   setTarget?: Dispatch<SetStateAction<string | null | undefined>>;
   setTargetURL?: React.Dispatch<React.SetStateAction<string>>;
   value: string;
 }
 
-function Binder({ cards, shared = false, value: searchValue, onClick, setTarget, setTargetURL }: Props) {
+function Binder({ cards, shared = false, value: searchValue, handleClick, setTarget, setTargetURL }: Props) {
   const [links, setLinks] = useState(cards);
 
-  const handleClick = (e: MouseEvent | FormEvent, targetName: string) => {
-    if (onClick && setTarget) {
-      onClick(e);
+  const handleButtonClick = (e: MouseEvent | FormEvent, targetName: string) => {
+    if (handleClick && setTarget) {
+      handleClick(e);
       setTarget(targetName);
     }
   };
@@ -48,8 +48,8 @@ function Binder({ cards, shared = false, value: searchValue, onClick, setTarget,
               card={card}
               setTargetURL={setTargetURL}
               shared={shared}
-              deleteLink={(e) => handleClick(e, "deleteLink")}
-              addLinkToFolder={(e) => handleClick(e, "AddLinkToFolderFromCard")}
+              deleteLink={(e) => handleButtonClick(e, "deleteLink")}
+              addLinkToFolder={(e) => handleButtonClick(e, "AddLinkToFolderFromCard")}
             />
           </li>
         );
