@@ -11,6 +11,7 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import styles from "@/styles/shared.module.css";
 import useInputController from "@/hooks/useInputController";
 import Binder from "@/components/Binder/Binder";
+import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const folder_ID = context.query["id"];
@@ -63,7 +64,7 @@ const Shared: NextPageWithLayout = ({
       <BinderInfo profileImage={profileImage} folderName={folderName} userName={userName} />
       <section className={styles.root}>
         <SearchBar searchBar={searchBar} />
-        <Binder cards={links} shared={true} searchValue={searchBar.values} />
+        <Binder cards={links} shared={true} value={searchBar.value} />
       </section>
     </>
   );
@@ -73,6 +74,9 @@ const Shared: NextPageWithLayout = ({
 Shared.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
+      <Head>
+        <title>Linkbrary : 공유된 폴더</title>
+      </Head>
       <Header position="static" />
       <main>{page}</main>
       <Footer />

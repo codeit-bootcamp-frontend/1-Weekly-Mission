@@ -18,30 +18,17 @@ import FolderEmptyNoti from "@/components/FolderEmptyNoti/FolderEmptyNoti";
 import getLinksByFolderID, { Linkinfo } from "@/API/getLinksByFolderID";
 import Script from "next/script";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { parse } from "path";
 import getCurrentUserData from "@/API/getCurrentUserData";
 import FolderModal from "@/components/FolderModal/FolderModal";
+import Head from "next/head";
+import getAccessTokenFromCookies from "@/businessLogic/getAcessTokenFromCookie";
+import getFolderIdFromQuery from "@/businessLogic/getFolderIdFromQuery";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const cookies = context.req.headers.cookie;
-  let folderId: undefined | string | string[];
-
-  if (context.query["folderId"]) {
-    folderId = context.query["folderId"] as string;
-  } else {
-    folderId = "0";
-  }
-
-  let accessToken = "";
-
-  if (cookies) {
-    const parsedCookies = parse(cookies);
-    const base = parsedCookies.base;
-    accessToken = base.slice(12);
-  }
+  const accessToken = getAccessTokenFromCookies(context);
+  const folderId = getFolderIdFromQuery(context);
 
   const userResult = await getCurrentUserData(accessToken);
-
   const {
     data: [{ id: userId }],
   } = userResult;
@@ -53,13 +40,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { data: LinkList } = LinkResult;
 
   return {
-    props: { folderId, folderList, LinkList },
+    props: { folderId, folderInfo: folderList, LinkList },
   };
 };
 
 const Folder: NextPageWithLayout = ({
   folderId,
-  folderList,
+  folderInfo,
   LinkList,
 }: InferGetServerSidePropsType<GetServerSideProps>) => {
   const modal = useModalController(true);
@@ -71,31 +58,30 @@ const Folder: NextPageWithLayout = ({
   const addFolder = useInputController({});
   const editFolder = useInputController({});
 
-  const [getFolderList, setFolderList] = useState<FolderInfo[]>(folderList);
+  const [folderList, setFolderList] = useState<FolderInfo[]>(folderInfo);
   const [cards, setCards] = useState<Linkinfo[]>(LinkList);
   const [targetURL, setTargetURL] = useState("");
 
   useEffect(() => {
-    setFolderList(folderList);
-  }, [folderList]);
+    setFolderList(folderInfo);
+  }, [folderInfo]);
 
   useEffect(() => {
     setCards(LinkList);
   }, [LinkList]);
 
-  const folderName = getFolderName(folderId, getFolderList);
+  const folderName = getFolderName(folderId, folderList);
 
   const folderConfig = {
     addLinkInputConfig: {
-      onChange: addLinkInput.handleChange,
-      value: addLinkInput.values,
+      ...addLinkInput,
       onSubmit: modal.handleClick,
       setTarget: modal.setTarget,
     },
 
     folderNavConfig: {
-      folderID: folderId,
-      folderList: getFolderList,
+      folderId,
+      folderList,
     },
 
     binderConfig: {
@@ -103,7 +89,7 @@ const Folder: NextPageWithLayout = ({
       onClick: modal.handleClick,
       setTarget: modal.setTarget,
       setTargetURL,
-      searchValue: searchBar.values,
+      ...searchBar,
     },
 
     folderModalConfig: {
@@ -112,7 +98,7 @@ const Folder: NextPageWithLayout = ({
       addLinkInput,
       targetURL,
       folderName,
-      folderList,
+      folderInfo,
       folderId,
       editFolder,
     },
@@ -145,6 +131,9 @@ const Folder: NextPageWithLayout = ({
 Folder.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
+      <Head>
+        <title>Linkbrary : 내 폴더</title>
+      </Head>
       <Script src="https://developers.kakao.com/sdk/js/kakao.js" />
       <Header position="static" />
       <main>{page}</main>

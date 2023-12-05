@@ -5,10 +5,10 @@ import { useRouter } from "next/router";
 
 interface Props {
   folderList: FolderInfo[];
-  folderID: string | string[] | undefined;
+  folderId: string | string[] | undefined;
 }
 
-function FolderNav({ folderList, folderID }: Props) {
+function FolderNav({ folderList, folderId }: Props) {
   const lists = [
     {
       id: 0,
@@ -26,8 +26,8 @@ function FolderNav({ folderList, folderID }: Props) {
   }
 
   const isSelected = (id: number) => {
-    if (Number(folderID) === id) return true;
-    if (!folderID && !id) return true;
+    if (Number(folderId) === id) return true;
+    if (!folderId && !id) return true;
   };
 
   return (
