@@ -16,14 +16,15 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
     updated_at,
     url,
   } = data;
+  image_source = image_source ?? "/images/blank-image.png";
   const timePassed = getTimePassed(url, description, created_at, image_source);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isKebabClicked, setIsKebabClicked] = useState(false);
   const [isKebabDeleteClicked, setIsKebabDeleteClicked] = useState(false);
   const [isKebabAddClicked, setIsKebabAddClicked] = useState(false);
 
   function handleKebabClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    setIsClicked(!isClicked);
+    setIsKebabClicked(!isKebabClicked);
   }
 
   function handleKebabDeleteClick(
@@ -43,9 +44,7 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
   const selectList = fullFolderData.map((list) => {
     return `${list.name}  ${list.link.count}개 링크`;
   });
-  if (image_source === null) {
-    image_source = "/images/blank-image.png";
-  }
+
   return (
     <li className={s.li}>
       <Link href={url} target="_blank" rel="noreferrer" className={s.link}>
@@ -78,7 +77,7 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
               className={s.kebabImg}
             />
           </button>
-          {isClicked ? (
+          {isKebabClicked ? (
             <div className="kebab">
               <button className="kebab-delete" onClick={handleKebabDeleteClick}>
                 삭제하기

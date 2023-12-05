@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useDebounce from "@/hooks/useDebounce";
-import { ChangeEvent, MouseEvent, KeyboardEvent } from "react";
+import { ChangeEvent, MouseEvent, FormEvent, KeyboardEvent } from "react";
+import s from "./Search.module.css";
 
 const Search = ({ getInputValue }: SearchProps) => {
   const [inputSearch, setInputSearch] = useState("");
   const mounted = useRef(false);
+  const debouncedInputSearch = useDebounce(inputSearch, 300);
+
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInputSearch(e.target.value);
   }
@@ -15,7 +18,9 @@ const Search = ({ getInputValue }: SearchProps) => {
     setInputSearch("");
   }
 
-  const debouncedInputSearch = useDebounce(inputSearch, 300);
+  function handleSubmit(e: FormEvent<HTMLDivElement>) {
+    e.preventDefault();
+  }
 
   useEffect(() => {
     if (!mounted.current) {
@@ -25,47 +30,19 @@ const Search = ({ getInputValue }: SearchProps) => {
     }
   }, [debouncedInputSearch]);
 
-  function handleKeyPress(e: KeyboardEvent<HTMLInputElement>) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-    }
-  }
   return (
-    <div
-      style={{
-        marginTop: "4rem",
-        marginBottom: "4rem",
-      }}
-    >
-      <form className="search-area" style={{ position: "relative" }}>
+    <div className={s.main}>
+      <div className={s.inputContainer} onSubmit={handleSubmit}>
         <input
           onChange={(e) => handleChange(e)}
-          onKeyPress={handleKeyPress}
+          type="text"
           value={inputSearch}
           placeholder="링크를 검색해 보세요."
-          style={{
-            height: "5rem",
-            width: "100%",
-            backgroundColor: "#CCD5E3",
-            borderRadius: "1rem",
-            display: "flex",
-            padding: "1.5rem 4.5rem",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            alignSelf: "stretch",
-            fontSize: "1.6rem",
-            color: "#666",
-            backgroundImage: `url("/images/Search.svg")`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "left 1.7rem bottom 50%",
-          }}
+          className={s.input}
         ></input>
 
         {inputSearch !== "" && (
-          <button
-            onClick={(e) => handleClick(e)}
-            style={{ position: "absolute", top: "1.6rem", right: "4rem" }}
-          >
+          <button onClick={(e) => handleClick(e)} className={s.button}>
             <Image
               src="/images/close-button.svg"
               alt="닫기 버튼"
@@ -74,7 +51,7 @@ const Search = ({ getInputValue }: SearchProps) => {
             />
           </button>
         )}
-      </form>
+      </div>
     </div>
   );
 };
