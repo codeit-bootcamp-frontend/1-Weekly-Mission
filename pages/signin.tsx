@@ -38,16 +38,19 @@ function Signin() {
       password: password.values,
     };
 
-    const {
-      response,
-      result: {
-        data: { accessToken, refreshToken },
-      },
-    } = await postSign("in", data);
+    let res;
 
-    if (response.ok) {
-      localStorage.setItem("accessToken", accessToken);
-      localStorage.setItem("refreshToken", refreshToken);
+    try {
+      res = await postSign("in", data);
+    } catch (error) {
+      console.dir(error);
+    }
+
+    if (res?.response.ok) {
+      localStorage.setItem("accessToken", res.result.data.accessToken);
+      localStorage.setItem("refreshToken", res.result.data.refreshToken);
+
+      document.cookie = `accessToken=${res.result.data.accessToken}`;
 
       return router.push("/folder");
     } else {
