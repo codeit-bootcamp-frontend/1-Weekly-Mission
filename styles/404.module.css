@@ -11,5 +11,5 @@
   width: 32rem;
   margin: 2rem auto;
   line-height: 100%;
-  background: var(--error);
+  background: var(--error) !important;
 }

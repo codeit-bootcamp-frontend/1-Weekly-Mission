@@ -1,11 +1,7 @@
-import { ReactElement } from "react";
-import { NextPageWithLayout } from "./_app";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
 import styles from "@/styles/404.module.css";
 import LinkButton from "@/components/Button/LinkButton";
 
-const ErrorPage: NextPageWithLayout = () => {
+const ErrorPage = () => {
   return (
     <>
       <div className={styles.root}>
@@ -17,16 +13,6 @@ const ErrorPage: NextPageWithLayout = () => {
           메인 화면으로 도망치기
         </LinkButton>
       </div>
-    </>
-  );
-};
-// (페이지 컴포넌트 이름).getLayout 으로 호출.
-ErrorPage.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <>
-      <Header position="sticky" />
-      <main>{page}</main>
-      <Footer />
     </>
   );
 };
