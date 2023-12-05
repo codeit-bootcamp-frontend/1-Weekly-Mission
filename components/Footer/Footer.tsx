@@ -157,7 +157,7 @@ const StyledFooterSnsBox = styled.div`
   }
 `;
 
-const FooterSnsHref = styled.a`
+const FooterSnsHref = styled(Link)`
   height: 2rem;
   &:hover {
     transform: scale(1.4);

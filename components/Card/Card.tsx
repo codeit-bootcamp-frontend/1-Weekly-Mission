@@ -1,6 +1,7 @@
 import { MouseEvent, useRef, useState, RefObject } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 import { convertCreatedAt, formatDate } from "@/utils/dateFormat";
 import KebabImage from "@/public/images/kebab.svg";
@@ -285,7 +286,7 @@ const StyledCardStyledImage = styled(Image)`
   transition: 0.5s;
 `;
 
-const StyledCardHref = styled.a`
+const StyledCardHref = styled(Link)`
   position: relative;
   display: block;
   width: 34rem;
