@@ -17,7 +17,7 @@ export const ButtonContainer = styled.button`
 `;
 
 export const GradientButtonContainer = styled(ButtonContainer)`
-  background: "linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%)";
+  background: linear-gradient(91deg, var(--primary) 0.12%, #6ae3fe 101.84%);
 `;
 
 export const AddFloatingBtnContainer = styled.div`
