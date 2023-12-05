@@ -24,21 +24,23 @@ export default AddFolderBtn;
 const upDown = keyframes`
   50% {
     bottom: 130px;
+    opacity: 0.8;
   }
 `;
 
-const upDownFooter = keyframes`
+const upDownFurther = keyframes`
   50% {
     bottom: 195px;
+    opacity: 0.8;
   }
 `;
 
-const noFooter = css`
-  animation: ${upDown} 2s 0.5s infinite;
+const goUp = css`
+  animation: ${upDown} 2s ease-in-out infinite;
 `;
 
-const yesFooter = css`
-  animation: ${upDownFooter} 2s 0.5s infinite;
+const goUpFurther = css`
+  animation: ${upDownFurther} 2s ease-in-out infinite;
 `;
 
 const Container = styled.div<{ $visibleFooter: boolean }>`
@@ -61,7 +63,7 @@ const Container = styled.div<{ $visibleFooter: boolean }>`
     border-radius: 20px;
     background-color: var(--primary-color);
 
-    ${({ $visibleFooter }) => ($visibleFooter ? yesFooter : noFooter)};
+    ${({ $visibleFooter }) => ($visibleFooter ? goUpFurther : goUp)};
   }
 `;
 

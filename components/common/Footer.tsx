@@ -14,9 +14,9 @@ function Footer() {
           <Text href="/faq">FAQ</Text>
         </TextBox>
         <SocialBox>
-          {SNS_LIST.map((sns) => (
-            <Link key={sns.url} href={sns.url} target="_blank">
-              <Image alt={sns.alt} src={sns.src} width={20} height={20} />
+          {SNS_LIST.map(({ url, alt, src }) => (
+            <Link key={url} href={url} target="_blank">
+              <Image alt={alt} src={src} width={20} height={20} />
             </Link>
           ))}
         </SocialBox>

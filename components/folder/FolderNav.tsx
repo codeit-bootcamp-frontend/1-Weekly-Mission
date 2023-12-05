@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ALL_ID } from '@/constants/default';
 import { FolderType } from '@/constants/dataType';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
@@ -16,11 +16,11 @@ interface Props {
 function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAll }: Props) {
   return (
     <FolderList>
-      <FolderItem style={selectedFolderId === ALL_ID ? selectFolderStyle : {}} onClick={onChangeFolderAll}>
+      <FolderItem $selected={selectedFolderId === ALL_ID} onClick={onChangeFolderAll}>
         전체
       </FolderItem>
       {folders.map((folder) => (
-        <FolderNavItem style={folder.id === selectedFolderId ? selectFolderStyle : {}} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />
+        <FolderNavItem selected={folder.id === selectedFolderId} key={folder.id} folder={folder} onChangeFolder={onChangeFolder} />
       ))}
     </FolderList>
   );
@@ -29,24 +29,19 @@ function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAl
 interface ItemProps {
   folder: FolderType;
   onChangeFolder: (id: number) => void;
-  style:
-    | {}
-    | {
-        color: string;
-        backgroundColor: string;
-      };
+  selected: boolean;
 }
 
 /**
  * Folder Nav의 Item 컴포넌트
  */
-function FolderNavItem({ folder, onChangeFolder, style }: ItemProps) {
+function FolderNavItem({ folder, onChangeFolder, selected }: ItemProps) {
   function handleFolderClick() {
     onChangeFolder(folder.id);
   }
 
   return (
-    <FolderItem style={style} key={folder.id} onClick={handleFolderClick}>
+    <FolderItem $selected={selected} key={folder.id} onClick={handleFolderClick}>
       {folder.name}
     </FolderItem>
   );
@@ -54,10 +49,10 @@ function FolderNavItem({ folder, onChangeFolder, style }: ItemProps) {
 
 export default FolderNav;
 
-const selectFolderStyle = {
-  color: 'white',
-  backgroundColor: 'var(--primary-color)',
-};
+const selectFolderStyle = css`
+  color: white;
+  background-color: var(--primary-color);
+`;
 
 const FolderList = styled.ul`
   width: 900px;
@@ -74,14 +69,19 @@ const FolderList = styled.ul`
   }
 `;
 
-const FolderItem = styled.li`
-  display: inline;
+const FolderItem = styled.li<{ $selected: boolean }>`
   padding: 8px 12px;
+
+  display: inline;
+
   border-radius: 5px;
   border: 1px solid var(--primary-color);
+
   list-style: none;
   font-size: 1.6rem;
-  font-weight: 400;
+
+  ${({ $selected }) => ($selected ? selectFolderStyle : null)};
+
   &:hover {
     cursor: pointer;
     background-color: var(--gray-10);
