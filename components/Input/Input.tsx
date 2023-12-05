@@ -6,11 +6,23 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   errorText?: string;
   htmlFor?: string;
-  eyeButton: boolean;
+  eyeButton?: boolean;
   placeholder?: string;
 }
 
-function Input({ id, name, type, value, label, errorText, onBlur, onFocus, onChange, eyeButton, placeholder }: Props) {
+function Input({
+  id,
+  name,
+  type,
+  value,
+  label,
+  errorText,
+  onBlur,
+  onFocus,
+  onChange,
+  eyeButton = true,
+  placeholder,
+}: Props) {
   const [eyesValue, setEyesValue] = useState(false);
 
   function handleEyesClick() {

@@ -1,7 +1,7 @@
 import Logo from "../components/Logo/Logo";
 import styles from "@/styles/sign.module.css";
 import Button from "../components/Button/Button";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect } from "react";
 import useInputController from "@/hooks/useInputController";
 import { useRouter } from "next/router";
 import Input from "@/components/Input/Input";
@@ -10,6 +10,7 @@ import SignFooter from "@/components/SignFooter/SignFooter";
 import SignLink from "@/components/SignLink/SignLink";
 import Head from "next/head";
 import { signupEmail, signupPassword, signupPasswordCheck } from "@/businessLogic/signError";
+import useAuth from "@/hooks/useAuth";
 
 function Signin() {
   const email = useInputController({ func: signupEmail });
@@ -26,77 +27,33 @@ function Signin() {
     })();
   }, [router]);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    const data = {
-      email: email.values,
-      password: password.values,
-    };
-
-    let res;
-
-    try {
-      res = await postSign("up", data);
-    } catch (error) {
-      console.dir(error);
-    }
-
-    if (res?.response.ok) {
-      localStorage.setItem("accessToken", res.result.data.accessToken);
-      localStorage.setItem("refreshToken", res.result.data.refreshToken);
-
-      document.cookie = `accessToken=${res.result.data.accessToken}`;
-
-      return router.push("/folder");
-    } else {
-      email.setErrorText("이메일을 확인해주세요");
-      password.setErrorText("비밀번호를 확인해주세요");
-    }
-  };
+  const auth = useAuth({ email, password, signType: "up" });
 
   const signInputConfig = [
     {
       id: "signinEmail",
       name: "email",
       type: "email",
-      value: `${email.values}`,
       label: "이메일",
 
-      errorText: email.errorText,
-
-      onChange: email.handleChange,
-      onBlur: email.handleBlur,
-      onFocus: email.handleFocus,
+      ...email,
       eyeButton: false,
     },
     {
       id: "signinPassword",
       name: "password",
       type: "password",
-      value: `${password.values}`,
       label: "비밀번호",
 
-      errorText: password.errorText,
-
-      onChange: password.handleChange,
-      onBlur: password.handleBlur,
-      onFocus: password.handleFocus,
-      eyeButton: true,
+      ...password,
     },
     {
       id: "signupPasswordCheck",
       name: "passwordCheck",
       type: "password",
-      value: `${passwordCheck.values}`,
       label: "비밀번호 확인",
 
-      errorText: passwordCheck.errorText,
-
-      onChange: passwordCheck.handleChange,
-      onBlur: passwordCheck.handleBlur,
-      onFocus: passwordCheck.handleFocus,
-      eyeButton: true,
+      ...passwordCheck,
     },
   ];
 
@@ -116,7 +73,7 @@ function Signin() {
           </header>
 
           <section className={styles.sign}>
-            <form className={styles.form} onSubmit={handleSubmit} noValidate>
+            <form className={styles.form} onSubmit={auth.handleSubmit} noValidate>
               {signInputConfig.map((SignInputs) => {
                 return <Input {...SignInputs} key={SignInputs.name} />;
               })}

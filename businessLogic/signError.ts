@@ -1,5 +1,5 @@
 import postCheckEmail from "@/API/postCheckEmail";
-import { isEmail, isPassword } from "../util/validation";
+import { isEmail, isPassword } from "./validation";
 
 const errorText = {
   email: {
@@ -17,53 +17,53 @@ const errorText = {
 };
 
 interface Props {
-  values: string;
+  value: string;
   setErrorText: React.Dispatch<React.SetStateAction<string>>;
   valueToCompare?: string;
 }
 
-const signinEmail = ({ values, setErrorText }: Props) => {
-  if (values === "") {
+const signinEmail = ({ value, setErrorText }: Props) => {
+  if (value === "") {
     setErrorText(errorText["email"]["null"]);
-  } else if (!isEmail(values)) {
+  } else if (!isEmail(value)) {
     setErrorText(errorText["email"]["wrong"]);
   } else {
     setErrorText("");
   }
 };
 
-const signinPassword = ({ values, setErrorText }: Props) => {
-  if (values === "") {
+const signinPassword = ({ value, setErrorText }: Props) => {
+  if (value === "") {
     setErrorText(errorText["password"]["null"]);
   } else {
     setErrorText("");
   }
 };
 
-const signupEmail = async ({ values, setErrorText }: Props) => {
-  if (values === "") {
+const signupEmail = async ({ value, setErrorText }: Props) => {
+  if (value === "") {
     setErrorText(errorText["email"]["null"]);
-  } else if (!isEmail(values)) {
+  } else if (!isEmail(value)) {
     setErrorText(errorText["email"]["wrong"]);
-  } else if (await postCheckEmail(values)) {
+  } else if (await postCheckEmail(value)) {
     setErrorText(errorText["email"]["dup"]);
   } else {
     setErrorText("");
   }
 };
 
-const signupPassword = ({ values, setErrorText }: Props) => {
-  if (values === "") {
+const signupPassword = ({ value, setErrorText }: Props) => {
+  if (value === "") {
     setErrorText(errorText["password"]["null"]);
-  } else if (!isPassword(values)) {
+  } else if (!isPassword(value)) {
     setErrorText(errorText["password"]["wrong"]);
   } else {
     setErrorText("");
   }
 };
 
-const signupPasswordCheck = ({ values, setErrorText, valueToCompare }: Props) => {
-  if (values !== valueToCompare) {
+const signupPasswordCheck = ({ value, setErrorText, valueToCompare }: Props) => {
+  if (value !== valueToCompare) {
     setErrorText(errorText["passwordCheck"]["wrong"]);
   } else {
     setErrorText("");

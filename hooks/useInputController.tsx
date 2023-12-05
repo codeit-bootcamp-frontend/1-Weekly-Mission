@@ -1,45 +1,45 @@
 import { ChangeEvent, useState } from "react";
 
 interface func {
-  values: string;
+  value: string;
   setErrorText: React.Dispatch<React.SetStateAction<string>>;
   valueToCompare?: string;
 }
 
 interface Props {
-  func?: ({ values, setErrorText }: func) => void;
+  func?: ({ value, setErrorText }: func) => void;
   valueToCompare?: string;
 }
 
 function useInputController({ func, valueToCompare }: Props) {
-  const [values, setValues] = useState("");
+  const [value, setValue] = useState("");
   const [errorText, setErrorText] = useState("");
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+  function onChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
-    setValues(value);
+    setValue(value);
   }
 
-  const handleBlur = () => {
+  const onBlur = () => {
     if (func) {
-      func({ values, setErrorText, valueToCompare });
+      func({ value, setErrorText, valueToCompare });
     }
   };
 
-  const handleFocus = () => {
+  const onFocus = () => {
     if (errorText) {
       setErrorText("");
     }
   };
 
   return {
-    values,
-    setValues,
-    errorText,
+    setValue,
     setErrorText,
-    handleChange,
-    handleBlur,
-    handleFocus,
+    value,
+    errorText,
+    onChange,
+    onBlur,
+    onFocus,
   };
 }
 

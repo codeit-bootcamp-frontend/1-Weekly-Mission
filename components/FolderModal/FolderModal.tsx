@@ -14,20 +14,20 @@ interface Props {
     target: string | null | undefined;
   };
   addFolder: {
-    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    values: string;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    value: string;
   };
   addLinkInput: {
-    values: string;
+    value: string;
   };
   editFolder: {
-    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    values: string;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    value: string;
   };
   targetURL: string;
   folderName: string;
   folderId: undefined | string | string[];
-  folderList: FolderInfo[];
+  folderInfo: FolderInfo[];
 }
 
 function FolderModal({
@@ -37,26 +37,26 @@ function FolderModal({
   addLinkInput,
   editFolder,
   folderName,
-  folderList,
+  folderInfo,
   folderId,
 }: Props) {
   return (
     <Modal onClick={modal.handleClick}>
       {(() => {
         if (modal.target === "AddFolder") {
-          return <AddFolder onChange={addFolder.handleChange} value={addFolder.values} />;
+          return <AddFolder onChange={addFolder.onChange} value={addFolder.value} />;
         }
         if (modal.target === "AddLinkToFolderFromInput") {
-          return <AddLinkToFolder folderList={folderList}>{addLinkInput.values}</AddLinkToFolder>;
+          return <AddLinkToFolder folderList={folderInfo}>{addLinkInput.value}</AddLinkToFolder>;
         }
         if (modal.target === "AddLinkToFolderFromCard") {
-          return <AddLinkToFolder folderList={folderList}>{targetURL}</AddLinkToFolder>;
+          return <AddLinkToFolder folderList={folderInfo}>{targetURL}</AddLinkToFolder>;
         }
         if (modal.target === "shareFolder") {
           return <Share folderId={folderId}>{folderName}</Share>;
         }
         if (modal.target === "changeFolderName") {
-          return <EditFolder onChange={editFolder.handleChange} value={editFolder.values}></EditFolder>;
+          return <EditFolder onChange={editFolder.onChange} value={editFolder.value}></EditFolder>;
         }
         if (modal.target === "deleteFolder") {
           return <DeleteFolder>{folderName}</DeleteFolder>;

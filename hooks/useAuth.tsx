@@ -1,27 +1,45 @@
-import { useEffect, useState } from "react";
+import postSign from "@/API/postSign";
+import { useRouter } from "next/router";
+import { Dispatch, FormEvent, SetStateAction } from "react";
 
-interface Token {
-  accessToken: string;
-  refreshToken: string;
+type useInput = {
+  value: string;
+  setErrorText: Dispatch<SetStateAction<string>>;
+};
+
+interface Props {
+  email: useInput;
+  password: useInput;
+  signType: string;
 }
 
-const useAuth = () => {
-  const [value, setValue] = useState<Token>();
+const useAuth = ({ email, password, signType }: Props) => {
+  const router = useRouter();
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken") as string;
-    const refreshToken = localStorage.getItem("refreshToken") as string;
-    setValue({
-      accessToken,
-      refreshToken,
-    });
-  }, []);
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
 
-  const isAuth = () => {
-    if (value?.accessToken) return true;
+    const data = {
+      email: email.value,
+      password: password.value,
+    };
+
+    try {
+      const res = await postSign(signType, data);
+
+      localStorage.setItem("accessToken", res.result.data.accessToken);
+      localStorage.setItem("refreshToken", res.result.data.refreshToken);
+
+      document.cookie = `accessToken=${res.result.data.accessToken}`;
+
+      return router.push("/folder");
+    } catch (error) {
+      email.setErrorText("이메일을 확인해주세요");
+      password.setErrorText("비밀번호를 확인해주세요");
+    }
   };
 
-  return { isAuth, setValue };
+  return { handleSubmit };
 };
 
 export default useAuth;

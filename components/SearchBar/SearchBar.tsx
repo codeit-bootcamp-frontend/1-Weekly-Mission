@@ -4,16 +4,16 @@ import Image from "next/image";
 
 interface Props {
   searchBar: {
-    values: string;
-    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    setValues: Dispatch<SetStateAction<string>>;
+    value: string;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    setValue: Dispatch<SetStateAction<string>>;
   };
 }
 
 function SearchBar({ searchBar }: Props) {
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
-    searchBar.setValues("");
+    searchBar.setValue("");
   };
 
   return (
@@ -24,22 +24,22 @@ function SearchBar({ searchBar }: Props) {
         </div>
         <form className={styles.form}>
           <input
-            onChange={searchBar.handleChange}
-            value={searchBar.values}
+            onChange={searchBar.onChange}
+            value={searchBar.value}
             type="text"
             className={styles.input}
             placeholder="링크를 검색해 보세요"
           ></input>
-          {searchBar.values && (
+          {searchBar.value && (
             <button className={styles.closeIconContainer} type="button" onClick={handleClick}>
               <Image fill className={styles.icon} src="/images/icon/common-icons/closeIcon.svg" alt="" />
             </button>
           )}
         </form>
       </article>
-      {searchBar.values && (
+      {searchBar.value && (
         <p className={styles.searchResult}>
-          {searchBar.values}
+          {searchBar.value}
           <span className={styles.searchResult}>로 검색한 결과입니다</span>
         </p>
       )}

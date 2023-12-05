@@ -10,6 +10,7 @@ import postSign from "@/API/postSign";
 import SignFooter from "@/components/SignFooter/SignFooter";
 import SignLink from "@/components/SignLink/SignLink";
 import Head from "next/head";
+import useAuth from "@/hooks/useAuth";
 
 function Signin() {
   const [value, setValue] = useState("");
@@ -30,68 +31,28 @@ function Signin() {
     }
   })(); // useEffect 이후로 다시 랜더링될 때
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    const data = {
-      email: email.values,
-      password: password.values,
-    };
-
-    let res;
-
-    try {
-      res = await postSign("in", data);
-    } catch (error) {
-      console.dir(error);
-    }
-
-    if (res?.response.ok) {
-      localStorage.setItem("accessToken", res.result.data.accessToken);
-      localStorage.setItem("refreshToken", res.result.data.refreshToken);
-
-      document.cookie = `accessToken=${res.result.data.accessToken}`;
-
-      return router.push("/folder");
-    } else {
-      email.setErrorText("이메일을 확인해주세요");
-      password.setErrorText("비밀번호를 확인해주세요");
-    }
-  };
+  const auth = useAuth({ email, password, signType: "in" });
 
   const signInputConfig = [
     {
       id: "signinEmail",
       name: "email",
       type: "email",
-      value: `${email.values}`,
       label: "이메일",
 
-      errorText: email.errorText,
-
-      onChange: email.handleChange,
-      onBlur: email.handleBlur,
-      onFocus: email.handleFocus,
+      ...email,
       eyeButton: false,
     },
     {
       id: "signinPassword",
       name: "password",
       type: "password",
-      value: `${password.values}`,
       label: "비밀번호",
 
-      errorText: password.errorText,
-
-      onChange: password.handleChange,
-      onBlur: password.handleBlur,
-      onFocus: password.handleFocus,
-      eyeButton: true,
+      ...password,
     },
   ];
 
-  if (typeof window === "undefined") {
-  }
   return (
     <>
       <Head>
@@ -108,7 +69,7 @@ function Signin() {
           </header>
 
           <section className={styles.sign}>
-            <form className={styles.form} onSubmit={handleSubmit} noValidate>
+            <form className={styles.form} onSubmit={auth.handleSubmit} noValidate>
               {signInputConfig.map((SignInputs) => {
                 return <Input {...SignInputs} key={SignInputs.name} />;
               })}
