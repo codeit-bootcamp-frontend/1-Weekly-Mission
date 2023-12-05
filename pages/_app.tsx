@@ -3,7 +3,6 @@ import Header from "@/components/common/Header";
 import { GlobalStyle } from "@/styles/globalStyle";
 import Footer from "@/components/common/Footer";
 import { RecoilRoot } from "recoil";
-import Script from "next/script";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 

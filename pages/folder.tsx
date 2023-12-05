@@ -16,7 +16,7 @@ import EditIcon from "@/public/assets/folder/img_editIcon.png";
 import DeleteIcon from "@/public/assets/folder/img_deleteIcon.png";
 
 import { ContentContainer, CardContainer } from "@/styles/sharedStyled";
-import AddFloatingBtn from "@/components/button/AddFloatingButton";
+import AddFloatingButton from "@/components/button/AddFloatingButton";
 import { modalState } from "../recoil/modal";
 import { useRecoilState } from "recoil";
 import AddToFolderModal from "@/components/modal/addToFolderModal/AddToFolderModal";
@@ -63,7 +63,7 @@ export interface SelectedFolder {
   title: string;
 }
 
-interface DeleteModalItem {
+export interface DeleteModalItem {
   id: number;
   title?: string;
   url?: string;
@@ -185,7 +185,7 @@ const Folder = () => {
     }));
   };
 
-  const handleDeleteModal = (modalType: string, content: any) => {
+  const handleDeleteModal = (modalType: string, content: DeleteModalItem) => {
     setModalType(modalType);
     setDeleteModalItem(content);
 
@@ -355,7 +355,7 @@ const Folder = () => {
             )}
           </FolderContentContainer>
 
-          <AddFloatingBtn setModalType={setModalType} />
+          <AddFloatingButton setModalType={setModalType} />
         </FolderSection>
       </Wrapper>
 

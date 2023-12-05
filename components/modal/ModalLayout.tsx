@@ -1,10 +1,14 @@
 import { modalState } from "../../recoil/modal";
 import { OuterModalContainer, Overlay } from "./ModalStyledComponents";
 import { useResetRecoilState } from "recoil";
-import React from "react";
+import React, { ReactNode } from "react";
 import ReactDOM from "react-dom";
 
-const ModalLayout = ({ children }: any) => {
+interface ModalLayoutProp {
+  children: ReactNode;
+}
+
+const ModalLayout = ({ children }: ModalLayoutProp) => {
   const resetModalState = useResetRecoilState(modalState);
 
   return (

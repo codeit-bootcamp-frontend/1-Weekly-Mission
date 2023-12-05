@@ -4,7 +4,11 @@ import { modalState } from "@/recoil/modal";
 import { useRecoilState } from "recoil";
 import { AddFloatingBtnContainer } from "./buttonStyled";
 
-const AddFloatingBtn = ({ setModalType }: any) => {
+interface AddFloatingButtonProp {
+  setModalType: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const AddFloatingButton = ({ setModalType }: AddFloatingButtonProp) => {
   const [, setModalOpened] = useRecoilState(modalState);
 
   return (
@@ -31,4 +35,4 @@ const AddFloatingBtn = ({ setModalType }: any) => {
   );
 };
 
-export default AddFloatingBtn;
+export default AddFloatingButton;

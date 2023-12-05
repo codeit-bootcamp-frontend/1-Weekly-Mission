@@ -13,11 +13,12 @@ import Image from "next/image";
 import { calculateTimeElapse } from "@/utils/utility";
 import Link from "next/link";
 import CardOptionMenu from "./CardOptionMenu";
+import { DeleteModalItem } from "@/pages/folder";
 
 interface CardProps {
   cardData: any;
-  onClickDelete?: any;
-  onClickAdd?: any;
+  onClickDelete?: (modalType: string, content: DeleteModalItem) => void;
+  onClickAdd?: (content: string) => void;
   isFolder: boolean;
 }
 
@@ -88,7 +89,7 @@ const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: CardProps) => {
         </CardContainer>
       </Link>
 
-      {isOpenOption && (
+      {isOpenOption && onClickAdd && onClickDelete && (
         <CardOptionMenu
           onClickDelete={onClickDelete}
           onClickAdd={onClickAdd}

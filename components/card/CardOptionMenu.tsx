@@ -1,8 +1,9 @@
+import { DeleteModalItem } from "@/pages/folder";
 import { OptionMenuContainer } from "./cardStyled";
 
 interface CardOptionMenuProps {
-  onClickDelete: any;
-  onClickAdd: any;
+  onClickDelete: (modalType: string, content: DeleteModalItem) => void;
+  onClickAdd: (content: string) => void;
   content: {
     id: number;
     title: string;
