@@ -8,7 +8,7 @@ import Input from "@/components/Input/Input";
 import SignFooter from "@/components/SignFooter/SignFooter";
 import SignLink from "@/components/SignLink/SignLink";
 import Head from "next/head";
-import { signupEmail, signupPassword, signupPasswordCheck } from "@/businessLogic/signError";
+import { signupEmail, signupPassword, signupPasswordCheck } from "@/businessLogic/sign/signError";
 import useAuth from "@/hooks/useAuth";
 
 function Signin() {

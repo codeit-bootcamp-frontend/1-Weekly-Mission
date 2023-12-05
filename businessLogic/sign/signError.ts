@@ -1,5 +1,5 @@
 import postCheckEmail from "@/API/postCheckEmail";
-import { isEmail, isPassword } from "./validation";
+import { isEmail, isPassword } from "../validation";
 
 const errorText = {
   email: {

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import useInputController from "@/hooks/useInputController";
 import { useRouter } from "next/router";
 import Input from "@/components/Input/Input";
-import { signinEmail, signinPassword } from "@/businessLogic/signError";
+import { signinEmail, signinPassword } from "@/businessLogic/sign/signError";
 import SignFooter from "@/components/SignFooter/SignFooter";
 import SignLink from "@/components/SignLink/SignLink";
 import Head from "next/head";
