@@ -17,30 +17,42 @@ interface Props {
 }
 
 function Modal({ type, title, data = '', button = '', folderId, onClickClose }: Props) {
-  const linkCountData = useGetLinkCount(1);
-
   return (
     <ModalFrame onClickClose={onClickClose}>
       <Title>{title}</Title>
       {data && <Data>{data}</Data>}
       {type === 'input' && <Input placeholder="내용 입력" />}
-      {type === 'add' && <AddBox>{linkCountData && linkCountData.map((data) => <LinkCountItem key={data.name} item={data} />)}</AddBox>}
-      {type === 'share' && (
-        <ShareBox>
-          {SHARE_LIST.map((item) => (
-            <Item key={item.msg}>
-              <Icon src={item.src} alt={item.alt} onClick={(event) => handleShareClick(event, folderId, data)} />
-              <Text>{item.msg}</Text>
-            </Item>
-          ))}
-        </ShareBox>
-      )}
+      {type === 'add' && <AddModal />}
+      {type === 'share' && <ShareModal data={data} folderId={folderId} />}
       {button && <Button type={type === 'delete' ? 'delete' : 'modal'}>{button}</Button>}
     </ModalFrame>
   );
 }
 
 export default Modal;
+
+interface ShareModalProps {
+  data: string;
+  folderId?: number;
+}
+
+function ShareModal({ data, folderId }: ShareModalProps) {
+  return (
+    <ShareBox>
+      {SHARE_LIST.map((item) => (
+        <Item key={item.msg}>
+          <Icon src={item.src} alt={item.alt} onClick={(event) => handleShareClick(event, data, folderId)} />
+          <Text>{item.msg}</Text>
+        </Item>
+      ))}
+    </ShareBox>
+  );
+}
+
+function AddModal() {
+  const linkCountData = useGetLinkCount(1);
+  return <AddBox>{linkCountData && linkCountData.map((data) => <LinkCountItem key={data.name} item={data} />)}</AddBox>;
+}
 
 const Title = styled.div`
   font-size: 2rem;

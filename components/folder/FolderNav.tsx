@@ -84,6 +84,6 @@ const FolderItem = styled.li<{ $selected: boolean }>`
 
   &:hover {
     cursor: pointer;
-    background-color: var(--gray-10);
+    background-color: ${({ $selected }) => ($selected ? null : 'var(--gray-10)')};
   }
 `;

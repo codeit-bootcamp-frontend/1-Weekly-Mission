@@ -43,7 +43,7 @@ export async function copyLink(url: string): Promise<void> {
 /**
  * '공유' 모달 아이콘 클릭 이벤트 핸들러
  */
-export function handleShareClick(event: MouseEvent, folderId: number | undefined, data: string): void {
+export function handleShareClick(event: MouseEvent, data: string, folderId?: number): void {
   const SHARE_URL = `shared?user=1&folder=${folderId}`;
   const el = event.target as HTMLElement;
   const target = el?.closest('div')?.children[1];
