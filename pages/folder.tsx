@@ -26,6 +26,7 @@ import FolderEmptyNoti from "@/components/FolderEmptyNoti/FolderEmptyNoti";
 import getLinksByFolderID, { Linkinfo } from "@/API/getLinksByFolderID";
 import Script from "next/script";
 import DeleteLink from "@/modals/DeleteLink";
+import useUserValues from "@/hooks/useUserData";
 
 const Folder: NextPageWithLayout = () => {
   const modal = useModalController(true);
@@ -42,8 +43,20 @@ const Folder: NextPageWithLayout = () => {
   const [folderList, setFolderList] = useState<FolderInfo[]>([]);
   const [cards, setCards] = useState<Linkinfo[]>([]);
   const [targetURL, setTargetURL] = useState("");
+  const [userId, setUserId] = useState<number | undefined>();
 
-  const userId = 1;
+  const [values, getUserData] = useUserValues();
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken") as string;
+    getUserData(accessToken);
+  }, [getUserData]);
+
+  useEffect(() => {
+    setUserId(values?.id);
+  }, [values]);
+
+  console.log(userId);
 
   const handleSearchBarDeleteIconClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -59,25 +72,29 @@ const Folder: NextPageWithLayout = () => {
   const { folderId } = router.query;
   const folderName = getFolderName(folderId, folderList);
 
-  const loadFolderData = async () => {
-    const { data } = await getCurrentUsersFolderData(userId);
+  const loadFolderData = useCallback(async () => {
+    if (userId) {
+      const { data } = await getCurrentUsersFolderData(userId);
 
-    setFolderList(() => {
-      return [...data];
-    });
-  };
+      setFolderList(() => {
+        return [...data];
+      });
+    }
+  }, [userId]);
 
   const loadcardData = useCallback(async () => {
-    const { data } = await getLinksByFolderID(userId, folderId);
+    if (userId) {
+      const { data } = await getLinksByFolderID(userId, folderId);
 
-    setCards(() => {
-      return [...data];
-    });
-  }, [folderId]);
+      setCards(() => {
+        return [...data];
+      });
+    }
+  }, [userId, folderId]);
 
   useEffect(() => {
     loadFolderData();
-  }, []);
+  }, [loadFolderData]);
 
   useEffect(() => {
     loadcardData();
