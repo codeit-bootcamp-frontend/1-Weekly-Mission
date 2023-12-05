@@ -7,7 +7,7 @@ export type FolderInfo = {
   user_id: number;
 };
 
-type FolderInfoResult = {
+export type FolderInfoResult = {
   data: FolderInfo[];
 };
 

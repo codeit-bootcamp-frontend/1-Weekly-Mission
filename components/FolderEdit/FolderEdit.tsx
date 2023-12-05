@@ -3,11 +3,15 @@ import { ButtonHTMLAttributes, Dispatch, FormEvent, MouseEvent, SetStateAction }
 import Image from "next/image";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: (e: MouseEvent | FormEvent) => void;
-  setTarget: Dispatch<SetStateAction<string | null | undefined>>;
+  modal: {
+    handleClick: (e: MouseEvent | FormEvent) => void;
+    setTarget: Dispatch<SetStateAction<string | null | undefined>>;
+  };
 }
 
-function FolderEdit({ onClick, setTarget }: Props) {
+function FolderEdit({ modal }: Props) {
+  const { handleClick: onClick, setTarget } = modal;
+
   const handleClick = (e: MouseEvent | FormEvent, targetName: string) => {
     onClick(e);
     setTarget(targetName);

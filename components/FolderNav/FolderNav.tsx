@@ -1,14 +1,14 @@
 import { MouseEvent } from "react";
 import styles from "./FolderNav.module.css";
 import { FolderInfo } from "@/API/getCurrentUsersFolderData";
+import { useRouter } from "next/router";
 
 interface Props {
   folderList: FolderInfo[];
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   folderID: string | string[] | undefined;
 }
 
-function FolderNav({ folderList, onClick, folderID }: Props) {
+function FolderNav({ folderList, folderID }: Props) {
   const lists = [
     {
       id: 0,
@@ -16,6 +16,14 @@ function FolderNav({ folderList, onClick, folderID }: Props) {
     },
     ...folderList,
   ];
+
+  const router = useRouter();
+
+  function handleClick(e: MouseEvent) {
+    e.preventDefault();
+    const { value } = e.target as HTMLButtonElement;
+    router.push(`/folder?folderId=${value}`);
+  }
 
   const isSelected = (id: number) => {
     if (Number(folderID) === id) return true;
@@ -29,7 +37,7 @@ function FolderNav({ folderList, onClick, folderID }: Props) {
 
         return (
           <li className={styles.li} key={id}>
-            <button name="folderId" type="button" value={id} onClick={onClick} className={seletedStyles}>
+            <button name="folderId" type="button" value={id} onClick={handleClick} className={seletedStyles}>
               {name}
             </button>
           </li>

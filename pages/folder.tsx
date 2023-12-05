@@ -1,171 +1,142 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import SearchBar from "@/components/SearchBar/SearchBar";
-import SearchBarResult from "@/components/SearchBarResult/SearchBarResult";
 import useInputController from "@/hooks/useInputController";
-import { MouseEvent, ReactElement, useCallback, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { NextPageWithLayout } from "./_app";
 import styles from "@/styles/folder.module.css";
 import useModalController from "@/hooks/useModalController";
 import AddLinkInput from "@/components/AddLinkInput/AddLinkInput";
-import Modal from "@/modals/Modal";
-import AddFolder from "@/modals/AddFolder";
 import getCurrentUsersFolderData, { FolderInfo } from "@/API/getCurrentUsersFolderData";
 import FolderNav from "@/components/FolderNav/FolderNav";
 import FolderAddMenu from "@/components/FolderAddMenu/FolderAddMenu";
 import getFolderName from "@/util/getFolderName";
-import { useRouter } from "next/router";
-import AddLinkToFolder from "@/modals/AddLinkToFolder";
 import FolderName from "@/components/FolderName/FolderName";
 import FolderEdit from "@/components/FolderEdit/FolderEdit";
-import Share from "@/modals/Share";
-import EditFolder from "@/modals/EditFolder";
-import DeleteFolder from "@/modals/DeleteFolder";
 import Binder from "@/components/Binder/Binder";
 import FolderEmptyNoti from "@/components/FolderEmptyNoti/FolderEmptyNoti";
 import getLinksByFolderID, { Linkinfo } from "@/API/getLinksByFolderID";
 import Script from "next/script";
-import DeleteLink from "@/modals/DeleteLink";
-import useUserValues from "@/hooks/useUserData";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { parse } from "path";
+import getCurrentUserData from "@/API/getCurrentUserData";
+import FolderModal from "@/components/FolderModal/FolderModal";
 
-const Folder: NextPageWithLayout = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const cookies = context.req.headers.cookie;
+  let folderId: undefined | string | string[];
+
+  if (context.query["folderId"]) {
+    folderId = context.query["folderId"] as string;
+  } else {
+    folderId = "0";
+  }
+
+  let accessToken = "";
+
+  if (cookies) {
+    const parsedCookies = parse(cookies);
+    const base = parsedCookies.base;
+    accessToken = base.slice(12);
+  }
+
+  const userResult = await getCurrentUserData(accessToken);
+
+  const {
+    data: [{ id: userId }],
+  } = userResult;
+
+  const folderResult = await getCurrentUsersFolderData(userId);
+  const { data: folderList } = folderResult;
+
+  const LinkResult = await getLinksByFolderID(userId, folderId);
+  const { data: LinkList } = LinkResult;
+
+  return {
+    props: { folderId, folderList, LinkList },
+  };
+};
+
+const Folder: NextPageWithLayout = ({
+  folderId,
+  folderList,
+  LinkList,
+}: InferGetServerSidePropsType<GetServerSideProps>) => {
   const modal = useModalController(true);
 
-  const router = useRouter();
-
-  const searchBox = useInputController({});
+  const searchBar = useInputController({});
   const addLinkInput = useInputController({});
 
   // 모달 내 인풋 컨트롤라
   const addFolder = useInputController({});
   const editFolder = useInputController({});
 
-  const [folderList, setFolderList] = useState<FolderInfo[]>([]);
-  const [cards, setCards] = useState<Linkinfo[]>([]);
+  const [getFolderList, setFolderList] = useState<FolderInfo[]>(folderList);
+  const [cards, setCards] = useState<Linkinfo[]>(LinkList);
   const [targetURL, setTargetURL] = useState("");
-  const [userId, setUserId] = useState<number | undefined>();
-
-  const [values, getUserData] = useUserValues();
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken") as string;
-    getUserData(accessToken);
-  }, [getUserData]);
+    setFolderList(folderList);
+  }, [folderList]);
 
   useEffect(() => {
-    setUserId(values?.id);
-  }, [values]);
+    setCards(LinkList);
+  }, [LinkList]);
 
-  console.log(userId);
+  const folderName = getFolderName(folderId, getFolderList);
 
-  const handleSearchBarDeleteIconClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    searchBox.setValues("");
+  const folderConfig = {
+    addLinkInputConfig: {
+      onChange: addLinkInput.handleChange,
+      value: addLinkInput.values,
+      onSubmit: modal.handleClick,
+      setTarget: modal.setTarget,
+    },
+
+    folderNavConfig: {
+      folderID: folderId,
+      folderList: getFolderList,
+    },
+
+    binderConfig: {
+      cards,
+      onClick: modal.handleClick,
+      setTarget: modal.setTarget,
+      setTargetURL,
+      searchValue: searchBar.values,
+    },
+
+    folderModalConfig: {
+      modal,
+      addFolder,
+      addLinkInput,
+      targetURL,
+      folderName,
+      folderList,
+      folderId,
+      editFolder,
+    },
   };
-
-  function handleClick(e: MouseEvent) {
-    e.preventDefault();
-    const { value } = e.target as HTMLButtonElement;
-    router.push(`/folder?folderId=${value}`);
-  }
-
-  const { folderId } = router.query;
-  const folderName = getFolderName(folderId, folderList);
-
-  const loadFolderData = useCallback(async () => {
-    if (userId) {
-      const { data } = await getCurrentUsersFolderData(userId);
-
-      setFolderList(() => {
-        return [...data];
-      });
-    }
-  }, [userId]);
-
-  const loadcardData = useCallback(async () => {
-    if (userId) {
-      const { data } = await getLinksByFolderID(userId, folderId);
-
-      setCards(() => {
-        return [...data];
-      });
-    }
-  }, [userId, folderId]);
-
-  useEffect(() => {
-    loadFolderData();
-  }, [loadFolderData]);
-
-  useEffect(() => {
-    loadcardData();
-  }, [folderId, loadcardData]);
 
   return (
     <>
-      <AddLinkInput
-        onChange={addLinkInput.handleChange}
-        setTarget={modal.setTarget}
-        value={addLinkInput.values}
-        onSubmit={modal.handleClick}
-      />
+      <AddLinkInput {...folderConfig.addLinkInputConfig} />
 
       <section className={styles.root}>
-        <SearchBar
-          value={searchBox.values}
-          onChange={searchBox.handleChange}
-          onClick={handleSearchBarDeleteIconClick}
-        />
-        {searchBox.values && <SearchBarResult value={searchBox.values} />}
+        <SearchBar searchBar={searchBar} />
         <div className={styles.flex}>
-          <FolderNav onClick={handleClick} folderID={folderId} folderList={folderList} />
-          <FolderAddMenu onClick={modal.handleClick} setTarget={modal.setTarget} />
+          <FolderNav {...folderConfig.folderNavConfig} />
+          <FolderAddMenu modal={modal} />
         </div>
 
         <div className={styles.flex}>
           <FolderName>{folderName}</FolderName>
-          {folderName !== "전체" && <FolderEdit onClick={modal.handleClick} setTarget={modal.setTarget} />}
+          {folderName !== "전체" && <FolderEdit modal={modal} />}
         </div>
-        {cards.length ? (
-          <Binder
-            cards={cards}
-            onClick={modal.handleClick}
-            setTarget={modal.setTarget}
-            setTargetURL={setTargetURL}
-            shared={false}
-            searchValue={searchBox.values}
-          />
-        ) : (
-          <FolderEmptyNoti />
-        )}
+        {cards.length ? <Binder {...folderConfig.binderConfig} /> : <FolderEmptyNoti />}
       </section>
 
-      {modal.state && (
-        <Modal onClick={modal.handleClick}>
-          {(() => {
-            if (modal.target === "AddFolder") {
-              return <AddFolder onChange={addFolder.handleChange} value={addFolder.values} />;
-            }
-            if (modal.target === "AddLinkToFolderFromInput") {
-              return <AddLinkToFolder folderList={folderList}>{addLinkInput.values}</AddLinkToFolder>;
-            }
-            if (modal.target === "AddLinkToFolderFromCard") {
-              return <AddLinkToFolder folderList={folderList}>{targetURL}</AddLinkToFolder>;
-            }
-            if (modal.target === "shareFolder") {
-              return <Share folderId={folderId}>{folderName}</Share>;
-            }
-            if (modal.target === "changeFolderName") {
-              return <EditFolder onChange={editFolder.handleChange} value={editFolder.values}></EditFolder>;
-            }
-            if (modal.target === "deleteFolder") {
-              return <DeleteFolder>{folderName}</DeleteFolder>;
-            }
-            if (modal.target === "deleteLink") {
-              return <DeleteLink>{targetURL}</DeleteLink>;
-            }
-          })()}
-        </Modal>
-      )}
+      {modal.state && <FolderModal {...folderConfig.folderModalConfig} />}
     </>
   );
 };

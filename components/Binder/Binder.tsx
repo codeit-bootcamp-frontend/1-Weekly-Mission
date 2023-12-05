@@ -5,14 +5,14 @@ import { Linkinfo } from "@/API/getLinksByFolderID";
 
 interface Props {
   cards: Linkinfo[];
-  shared: Boolean;
+  shared?: Boolean;
   onClick?: (e: MouseEvent | FormEvent) => void;
   setTarget?: Dispatch<SetStateAction<string | null | undefined>>;
   setTargetURL?: React.Dispatch<React.SetStateAction<string>>;
   searchValue: string;
 }
 
-function Binder({ cards, shared, searchValue, onClick, setTarget, setTargetURL }: Props) {
+function Binder({ cards, shared = false, searchValue, onClick, setTarget, setTargetURL }: Props) {
   const [links, setLinks] = useState(cards);
 
   const handleClick = (e: MouseEvent | FormEvent, targetName: string) => {

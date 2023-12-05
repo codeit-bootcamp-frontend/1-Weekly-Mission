@@ -10,7 +10,6 @@ import getSpecificUserData from "@/API/getUser";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import styles from "@/styles/shared.module.css";
 import useInputController from "@/hooks/useInputController";
-import SearchBarResult from "@/components/SearchBarResult/SearchBarResult";
 import Binder from "@/components/Binder/Binder";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -57,24 +56,14 @@ const Shared: NextPageWithLayout = ({
   profileImage,
   links,
 }: InferGetServerSidePropsType<GetServerSideProps>) => {
-  const searchBox = useInputController({});
-
-  const handleSearchBarDeleteIconClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    searchBox.setValues("");
-  };
+  const searchBar = useInputController({});
 
   return (
     <>
       <BinderInfo profileImage={profileImage} folderName={folderName} userName={userName} />
       <section className={styles.root}>
-        <SearchBar
-          value={searchBox.values}
-          onChange={searchBox.handleChange}
-          onClick={handleSearchBarDeleteIconClick}
-        />
-        {searchBox.values && <SearchBarResult value={searchBox.values} />}
-        <Binder cards={links} shared={true} searchValue={searchBox.values} />
+        <SearchBar searchBar={searchBar} />
+        <Binder cards={links} shared={true} searchValue={searchBar.values} />
       </section>
     </>
   );
