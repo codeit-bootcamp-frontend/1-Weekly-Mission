@@ -41,7 +41,7 @@ const Card = ({ data }: SharedPageCardProps) => {
             />
           </button>
           <span>{description}</span>
-          <span>{createdAt.substring(0, 10)}</span>
+          <span>{createdAt.slice(0, 10)}</span>
         </div>
       </Link>
     </li>

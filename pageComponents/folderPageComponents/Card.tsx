@@ -89,7 +89,7 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
             </div>
           ) : null}
           <span>{description}</span>
-          <span>{created_at.substring(0, 10)}</span>
+          <span>{created_at.slice(0, 10)}</span>
         </div>
       </Link>
       {isKebabDeleteClicked ? (
