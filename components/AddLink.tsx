@@ -1,9 +1,9 @@
 import React from "react";
 import type { ChangeEvent } from "react";
 
-const AddLink = ({ onClick, handleAddLinkValue }: AddLinkProps) => {
+const AddLink = ({ onClick, onLinkValueAdded }: AddLinkProps) => {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    handleAddLinkValue(e.target.value);
+    onLinkValueAdded(e.target.value);
   }
 
   return (

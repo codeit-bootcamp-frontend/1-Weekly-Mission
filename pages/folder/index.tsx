@@ -37,7 +37,7 @@ export default function FolderPage() {
   function handleModalListButton(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
   }
-  function handleAddLinkValue(value: string) {
+  function onLinkValueAdded(value: string) {
     setAddLinkValue(value);
   }
 
@@ -50,7 +50,7 @@ export default function FolderPage() {
       <header className={s.header}>
         <AddLink
           onClick={handleAddLinkClick}
-          handleAddLinkValue={handleAddLinkValue}
+          onLinkValueAdded={onLinkValueAdded}
         />
       </header>
       <Header getData={getData} />

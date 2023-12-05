@@ -43,7 +43,7 @@ interface FolderCardProps {
 
 interface AddLinkProps {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleAddLinkValue: (value: string) => void;
+  onLinkValueAdded: (value: string) => void;
 }
 
 interface SearchProps {
