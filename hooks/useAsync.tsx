@@ -22,21 +22,25 @@ export function useAsync<T, A extends any[]>({ asyncFunction, immediate = true, 
     error: null,
   });
 
-  const execute = useCallback(async () => {
-    setState({ data: null, status: "pending", error: null });
-    try {
-      const response: T = await asyncFunction(...params);
-      setState({ data: response, status: "success", error: null });
-    } catch (error) {
-      setState({ data: null, status: "error", error });
-    }
-  }, [asyncFunction, params]);
+  const execute = useCallback(
+    async (params: any) => {
+      setState({ data: null, status: "pending", error: null });
+      try {
+        const response: T = await asyncFunction(...params);
+        setState({ data: response, status: "success", error: null });
+      } catch (error) {
+        setState({ data: null, status: "error", error });
+      }
+    },
+    [asyncFunction]
+  );
 
+  // 선언 즉시 실행할 수 있도록 한다.
   useEffect(() => {
     if (immediate) {
-      execute();
+      execute(params);
     }
-  }, [immediate, execute]);
+  }, [immediate, execute, params]);
 
   return { execute, ...state };
 }
