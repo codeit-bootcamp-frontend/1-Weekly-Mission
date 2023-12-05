@@ -49,3 +49,7 @@ interface AddLinkProps {
 interface SearchProps {
   getInputValue: (input: string) => void;
 }
+
+interface SharedPageCardProps {
+  data: Link;
+}

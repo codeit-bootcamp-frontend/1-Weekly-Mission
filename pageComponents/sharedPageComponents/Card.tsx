@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import s from "./Card.module.css";
 
-const Card = ({ data }: { data: Link }) => {
+const Card = ({ data }: SharedPageCardProps) => {
   const { url, description, createdAt, imageSource } = data;
   const timePassed = getTimePassed(url, description, createdAt, imageSource);
 
