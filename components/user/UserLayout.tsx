@@ -10,25 +10,24 @@ import Image from "next/image";
 import LogoImg from "@/public/assets/common/img_logo.png";
 import GoogleIcon from "@/public/assets/user/img_google.png";
 import KakaoIcon from "@/public/assets/user/img_kakao.png";
-import EmailInput from "../input/EmailInput";
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 
 interface UserProps {
-  buttonItem: ReactNode;
-  inputItem: ReactNode;
+  buttonItem: ReactElement;
   moveToPageItem: {
     title: string;
     href: string;
     linkTitle: string;
   };
   socialLoginItemTitle: string;
+  inputs: ReactElement;
 }
 
 const UserLayout = ({
   buttonItem,
-  inputItem,
   moveToPageItem,
   socialLoginItemTitle,
+  inputs,
 }: UserProps) => {
   return (
     <UserWrapper>
@@ -55,8 +54,7 @@ const UserLayout = ({
       <UserContentWrapper>
         <InputBoxContainer>
           <form>
-            <EmailInput />
-            {inputItem}
+            {inputs}
             {buttonItem}
           </form>
         </InputBoxContainer>
