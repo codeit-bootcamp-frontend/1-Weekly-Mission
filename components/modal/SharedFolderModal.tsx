@@ -1,12 +1,20 @@
 import styled from "styled-components";
 import { ModalMainContainer } from "./ModalStyledComponents";
 import { modalState } from "../../recoil/modal";
-import { useRecoilValue, useResetRecoilState } from "recoil";
+import { useResetRecoilState } from "recoil";
 import KakaoIcon from "@/public/assets/modal/img_kakao.png";
 import FacebookIcon from "@/public/assets/modal/img_facebook.png";
 import CloseIcon from "@/public/assets/modal/img_closeIcon.png";
 import LinkCopyIcon from "@/public/assets/modal/img_share.png";
 import Image from "next/image";
+import { useEffect } from "react";
+
+interface SharedFolderModalProp {
+  content: {
+    id: number;
+    title: string;
+  };
+}
 
 const ItemArr = [
   {
@@ -23,10 +31,9 @@ const ItemArr = [
   },
 ];
 
-const ShareFolderModal = () => {
-  const { shareFolderModal } = useRecoilValue(modalState);
+const ShareFolderModal = ({ content }: SharedFolderModalProp) => {
   const resetModalState = useResetRecoilState(modalState);
-  const shareLink = `${process.env.NEXT_PUBLIC_HOST}/shared?user=1&folder=${shareFolderModal.content.id}`;
+  const shareLink = `${process.env.NEXT_PUBLIC_HOST}/shared?user=1&folder=${content.id}`;
 
   const shareKaKao = () => {
     if (window.Kakao) {
@@ -69,6 +76,18 @@ const ShareFolderModal = () => {
     copyLink();
     return;
   };
+  const kakaoInit = () => {
+    if (!window.Kakao.isInitialized())
+      window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO);
+  };
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+    script.onload = kakaoInit;
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <ModalMain>
@@ -83,7 +102,7 @@ const ShareFolderModal = () => {
 
       <div className="modalTitleContainer ">
         <div className="title">폴더 공유</div>
-        <div className="link">{shareFolderModal.content.title}</div>
+        <div className="link">{content.title}</div>
       </div>
 
       <div className="modalContentContainer">

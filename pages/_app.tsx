@@ -14,10 +14,6 @@ declare global {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  const kakaoInit = () => {
-    if (!window.Kakao.isInitialized())
-      window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO);
-  };
   const router = useRouter();
   const { pathname } = router;
 
@@ -28,10 +24,6 @@ export default function App({ Component, pageProps }: AppProps) {
         {pathname !== "/signin" && pathname !== "/signup" && <Header />}
 
         <Component {...pageProps} />
-        <Script
-          src="https://developers.kakao.com/sdk/js/kakao.js"
-          onLoad={kakaoInit}
-        />
 
         {pathname !== "/signin" && pathname !== "/signup" && <Footer />}
       </Root>

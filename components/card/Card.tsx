@@ -76,7 +76,7 @@ const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: CardProps) => {
                   width="21"
                   height="17"
                   onClick={(e) => {
-                    e.stopPropagation();
+                    e.preventDefault();
                     setIsOpenOption(!isOpenOption);
                   }}
                 />
@@ -92,6 +92,7 @@ const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: CardProps) => {
         <CardOptionMenu
           onClickDelete={onClickDelete}
           onClickAdd={onClickAdd}
+          link={cardData.url}
           content={{ id: cardData.id, title: cardData.url }}
         />
       )}

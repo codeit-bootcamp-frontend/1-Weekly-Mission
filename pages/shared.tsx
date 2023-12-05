@@ -72,7 +72,10 @@ const Shared = () => {
       <Section $bg="#fff">
         <FolderContentContainer $isFolder={false}>
           <Input
-            icon={SearchImg}
+            label="searchLink"
+            icon={
+              <Image src={SearchImg} alt="inputIcon" className="inputIcon" />
+            }
             placeholder="링크를 검색해보세요"
             value={searchLinkValue}
             setValue={setSearchLinkValue}

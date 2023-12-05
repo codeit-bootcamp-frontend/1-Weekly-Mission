@@ -1,13 +1,14 @@
 import { device } from "@/styles/globalStyle";
-import Image, { StaticImageData } from "next/image";
+import { ReactNode } from "react";
 import styled from "styled-components";
 
 interface InputProps {
-  icon?: StaticImageData;
+  icon?: ReactNode;
   placeholder: string;
   children?: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   value: string;
+  label: string;
 }
 
 const Input = ({
@@ -16,23 +17,21 @@ const Input = ({
   children,
   setValue,
   value,
+  label,
 }: InputProps) => {
   return (
     <InputContainer>
-      <label>
-        {icon ? (
-          <Image src={icon} alt="inputIcon" className="inputIcon" />
-        ) : (
-          "label"
-        )}
-      </label>
+      <label htmlFor={label}>{label}</label>
+
+      {icon}
 
       <input
         className="inputContainer"
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-      ></input>
+        id={label}
+      />
       {children || <></>}
     </InputContainer>
   );
@@ -49,6 +48,10 @@ export const InputContainer = styled.div`
   box-sizing: border-box;
   @media all and (${device.mobile}) {
     padding: 1.3rem 1.6rem;
+  }
+
+  label {
+    display: none;
   }
 
   .inputContainer {

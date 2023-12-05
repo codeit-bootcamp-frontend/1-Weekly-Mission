@@ -2,18 +2,28 @@ import styled from "styled-components";
 import { modalState } from "../../recoil/modal";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CloseIcon from "@/public/assets/modal/img_closeIcon.png";
 import CheckIcon from "@/public/assets/modal/img_checkIcon.png";
 import Image from "next/image";
 import DefaultBtn from "../button/Button";
 import { ModalMainContainer } from "./ModalStyledComponents";
+import { FolderData, SelectedFolder } from "@/pages/folder";
 
-const AddToFolderModal = () => {
-  const { addToFolderModal } = useRecoilValue(modalState);
+interface AddToFolderModalProp {
+  folderData: FolderData[];
+  selectedFolderItem: SelectedFolder;
+  link: string;
+}
+
+const AddToFolderModal = ({
+  folderData,
+  selectedFolderItem,
+  link,
+}: AddToFolderModalProp) => {
   const resetModalState = useResetRecoilState(modalState);
 
-  const [selectedFolder, setSelectedFolder] = useState<number>();
+  const [selectedFolder, setSelectedFolder] = useState(selectedFolderItem.id);
 
   return (
     <ModalMainContainer>
@@ -28,11 +38,11 @@ const AddToFolderModal = () => {
 
       <div className="modalTitleContainer">
         <div className="title">폴더에 추가</div>
-        <div className="link">{addToFolderModal.link}</div>
+        <div className="link">{link}</div>
       </div>
 
       <div className="modalContentContainer">
-        {addToFolderModal.content.map((e) => {
+        {folderData.map((e) => {
           return (
             <FolderContainer
               $active={e.id === selectedFolder}

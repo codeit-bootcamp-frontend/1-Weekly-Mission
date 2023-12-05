@@ -7,12 +7,14 @@ interface CardOptionMenuProps {
     id: number;
     title: string;
   };
+  link: string;
 }
 
 const CardOptionMenu = ({
   onClickDelete,
   onClickAdd,
   content,
+  link,
 }: CardOptionMenuProps) => {
   return (
     <OptionMenuContainer>
@@ -22,7 +24,12 @@ const CardOptionMenu = ({
       >
         삭제하기
       </div>
-      <div className="optionMenuItem" onClick={() => onClickAdd()}>
+      <div
+        className="optionMenuItem"
+        onClick={() => {
+          onClickAdd(link);
+        }}
+      >
         폴더에 추가
       </div>
     </OptionMenuContainer>

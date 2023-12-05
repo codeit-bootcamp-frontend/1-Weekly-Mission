@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface ButtonProps {
   children: ReactNode;
-  onClick: (e: React.MouseEvent) => void;
+  onClick?: (e: React.MouseEvent) => void;
   type: "primary" | "secondary";
 }
 
