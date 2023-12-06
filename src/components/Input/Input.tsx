@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import eyeOffImg from "src/assets/icon/eye-off.svg";
 import eyeOnImg from "src/assets/icon/eye-on.svg";
@@ -19,15 +20,21 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
   const [isVisible, setIsVisible] = useState(true);
   const [isError, setIsError] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
+  const router = useRouter();
 
   const { email, password, passwordCheck } = INPUT_TYPE;
 
-  const visiblePassword = () => {
+  const visiblePassword = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
     setIsVisible((prev) => !prev);
   };
 
   const handleCheck = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (!e.target.value && type !== "passwordCheck") {
+    if (e.target.value) {
+      setIsError(true);
+      setErrorMsg("");
+    }
+    if (!e.target.value) {
       setIsError(false);
       switch (type) {
         case "email":
@@ -40,17 +47,18 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
     } else if (type === "email" && !validateEmail(e.target.value)) {
       setIsError(false);
       setErrorMsg(email.errorMsg2);
-    } else if (type === "password" && !validatePassword(e.target.value)) {
-      setIsError(false);
-      setErrorMsg(password.errorMsg2);
-    } else if (
-      type === "passwordCheck" &&
-      account.password !== e.target.value
-    ) {
-      setIsError(false);
-      setErrorMsg(passwordCheck.errorMsg1);
-    } else {
-      setIsError(true);
+    }
+    if (router.asPath === "/signup") {
+      if (type === "password" && !validatePassword(e.target.value)) {
+        setIsError(false);
+        setErrorMsg(password.errorMsg2);
+      } else if (
+        type === "passwordCheck" &&
+        account.password !== e.target.value
+      ) {
+        setIsError(false);
+        setErrorMsg(passwordCheck.errorMsg1);
+      }
     }
   };
 

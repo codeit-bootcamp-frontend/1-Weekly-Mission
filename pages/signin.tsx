@@ -23,13 +23,19 @@ function SignIn() {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const loginInfo = await postLogin(account);
-    getToken("access-token", loginInfo.data.accessToken);
     if (loginInfo.data) {
+      getToken("access-token", loginInfo.data.accessToken);
       router.push("/folder");
     } else {
       setStatus(loginInfo.error.status);
+    }
+  };
+
+  const handleEnter = (e: React.KeyboardEvent<HTMLFormElement>) => {
+    if (e.key === "Enter") {
+      handleLogin(e);
+      setStatus(0);
     }
   };
 
@@ -46,7 +52,11 @@ function SignIn() {
           <Image width={210} height={38} src={Logo} alt="로고 이미지" />
           <SignText content="회원이 아니신가요?" link="회원 가입하기" />
         </div>
-        <form className={styles.inputForm} onSubmit={handleLogin}>
+        <form
+          className={styles.inputForm}
+          onSubmit={handleLogin}
+          onKeyDown={handleEnter}
+        >
           <div className={styles.emailInput}>
             <InputLabel htmlFor={email.type} content="이메일" />
             <Input
@@ -71,7 +81,7 @@ function SignIn() {
           </div>
           <Button content="로그인" />
         </form>
-        <SocialLogin />
+        <SocialLogin content="소셜 로그인" />
       </div>
     </div>
   );
