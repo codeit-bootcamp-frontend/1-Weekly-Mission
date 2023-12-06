@@ -80,6 +80,19 @@ const getUserProfile = async () => {
   return body;
 };
 
+const postLogin = async (loginInfo: {}) => {
+  const response = await fetch(`${API_BASE_URL}/api/sign-in`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginInfo),
+  });
+
+  const result = response.json();
+  return result;
+};
+
 export {
   getAllFolder,
   getFolderLinks,
@@ -87,4 +100,5 @@ export {
   getSampleUserProfile,
   getUserFolder,
   getUserProfile,
+  postLogin,
 };
