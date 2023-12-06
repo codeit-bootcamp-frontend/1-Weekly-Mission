@@ -1,0 +1,55 @@
+.searchBarContainer {
+  border-radius: 10px;
+  background: #f5f5f5;
+  padding: 15px 16px;
+  margin: 40px auto;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchInput {
+  border: none;
+  background-color: transparent;
+  margin-left: 10px;
+  outline: none;
+  box-shadow: none;
+}
+
+.closeIcon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.searchIcon {
+  position: relative;
+  left: -30px;
+  color: #b3b3b3;
+}
+
+/* PC (1124px 이상) */
+@media (min-width: 1124px) {
+  .searchBarContainer {
+    max-width: 1060px;
+  }
+}
+
+/* Tablet (764px ~ 1123px) */
+@media (min-width: 764px) and (max-width: 1123px) {
+  .searchBarContainer {
+    max-width: 704px;
+  }
+}
+
+/* Mobile (763px 이하) */
+@media (max-width: 764px) {
+  .searchBarContainer {
+    max-width: 325px;
+  }
+}
