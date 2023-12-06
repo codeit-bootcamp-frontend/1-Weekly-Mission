@@ -4,14 +4,14 @@ import eyeOffImg from "src/assets/icon/eye-off.svg";
 import eyeOnImg from "src/assets/icon/eye-on.svg";
 import styles from "src/components/Input/Input.module.css";
 import { INPUT_TYPE } from "src/constants/input";
-import { validateEmail } from "src/utils/inputValidate";
+import { validateEmail, validatePassword } from "src/utils/inputValidate";
 
 interface Input {
   id: string;
   type: string;
   placeholder: string;
-  status: number;
-  account: {};
+  status?: number;
+  account: { email: {}; password: {}; passwordCheck?: {} };
   setAccount: any;
 }
 
@@ -20,17 +20,14 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
   const [isError, setIsError] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const { email, password } = INPUT_TYPE;
+  const { email, password, passwordCheck } = INPUT_TYPE;
 
   const visiblePassword = () => {
     setIsVisible((prev) => !prev);
   };
 
   const handleCheck = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (e.target.value) {
-      setIsError(true);
-    }
-    if (!e.target.value) {
+    if (!e.target.value && type !== "passwordCheck") {
       setIsError(false);
       switch (type) {
         case "email":
@@ -43,6 +40,17 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
     } else if (type === "email" && !validateEmail(e.target.value)) {
       setIsError(false);
       setErrorMsg(email.errorMsg2);
+    } else if (type === "password" && !validatePassword(e.target.value)) {
+      setIsError(false);
+      setErrorMsg(password.errorMsg2);
+    } else if (
+      type === "passwordCheck" &&
+      account.password !== e.target.value
+    ) {
+      setIsError(false);
+      setErrorMsg(passwordCheck.errorMsg1);
+    } else {
+      setIsError(true);
     }
   };
 
