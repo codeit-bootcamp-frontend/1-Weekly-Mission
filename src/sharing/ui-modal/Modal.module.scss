@@ -1,0 +1,28 @@
+@import "@/styles/global.scss";
+
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: none;
+  z-index: $z-index-modal;
+  animation: fadeIn 0.2s;
+
+  &.backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}

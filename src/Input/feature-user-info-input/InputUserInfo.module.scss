@@ -1,0 +1,60 @@
+@import "@/styles/global.scss";
+
+.userInfoFormBox {
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+
+  .userInfoForm {
+    display: flex;
+    width: inherit;
+    gap: 2.4rem;
+    color: $color-text-content-black;
+    font-size: 14px;
+  }
+
+  .userInfoLabel {
+    position: relative;
+    width: 100%;
+  }
+
+  .inputBox {
+    width: 100%;
+    margin-top: 1.2rem;
+    padding: 1.8rem 1.5rem;
+    border: 1px solid $color-gray20;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .inputBox:focus {
+    border: 1px solid $color-primary;
+    outline: none;
+  }
+
+  @keyframes redOutlineFlash {
+    0%,
+    100% {
+      border: 1px solid transparent;
+    }
+    50% {
+      border: 1px solid #ff5b56;
+    }
+  }
+
+  .inputBoxFlash {
+    animation: redOutlineFlash 1s ease-in-out;
+    animation-iteration-count: 2;
+  }
+
+  .wrongValueMessage {
+    color: #ff5b56;
+  }
+
+  .visibleIcon {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+  }
+}

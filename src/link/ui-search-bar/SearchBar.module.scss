@@ -1,0 +1,41 @@
+@import "@/styles/global.scss";
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  max-width: 106rem;
+  height: 4.3rem;
+  padding-left: 3.8rem;
+  padding-right: 1.6rem;
+  border-radius: 1rem;
+  background-color: $color-gray-light;
+  font-size: 1.4rem;
+
+  @include tablet {
+    height: 5.4rem;
+    padding-left: 4.2rem;
+    font-size: 1.6rem;
+    line-height: 150%;
+  }
+}
+.input::placeholder {
+  color: $color-text-content-gray;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1.6rem;
+}
+
+.close {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1.6rem;
+}
