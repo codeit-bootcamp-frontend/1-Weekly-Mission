@@ -1,0 +1,82 @@
+.container {
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+}
+
+.sticky {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.button__container {
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  width: 85%;
+  height: 5rem;
+  padding: 1.2rem 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--white);
+
+  /* tablet */
+  @media (min-width: 768px) {
+  }
+
+  /* table2 */
+  @media (min-width: 1124px) {
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+    width: 80%;
+  }
+}
+
+.input__container {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  margin-left: 1rem;
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.image {
+  height: 3rem;
+  text-align: center;
+}
+.add__button {
+  width: 100px;
+
+  align-self: center;
+  margin-right: 1rem;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  /* tablet */
+  @media (min-width: 768px) {
+  }
+
+  /* table2 */
+  @media (min-width: 1124px) {
+  }
+
+  /* descktop*/
+  @media (min-width: 1200px) {
+  }
+}

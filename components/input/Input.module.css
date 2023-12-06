@@ -1,0 +1,29 @@
+.container {
+  border-radius: 8px;
+  padding: 18px 15px;
+  background: var(--linkbrary-white, #fff);
+  width: 32rem;
+}
+
+.focus {
+  border-radius: 8px;
+  padding: 18px 15px;
+  width: 32rem;
+  border: 1px solid blue;
+  outline: none;
+}
+
+.success {
+  border-radius: 8px;
+  padding: 18px 15px;
+  width: 32rem;
+  border: 1px solid green;
+  outline: none;
+}
+.error {
+  border-radius: 8px;
+  padding: 18px 15px;
+  width: 32rem;
+  border: 1px solid red;
+  outline: none;
+}
