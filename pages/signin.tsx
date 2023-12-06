@@ -63,7 +63,7 @@ function SignIn() {
             <Input
               id={password.type}
               type={password.type}
-              placeholder={password.placeholder}
+              placeholder={password.signInPlaceholder}
               status={status}
               account={account}
               setAccount={setAccount}
