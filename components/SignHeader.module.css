@@ -1,0 +1,25 @@
+.logoLink {
+  display: flex;
+  justify-content: center;
+}
+
+.headerLogo {
+  height: 3.8rem;
+}
+
+.headerMessage {
+  display: flex;
+  column-gap: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.headerLink {
+  height: fit-content;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--primary);
+  border-bottom: 0.1rem solid var(--primary);
+}

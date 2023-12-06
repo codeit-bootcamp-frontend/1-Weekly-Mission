@@ -19,6 +19,12 @@ export default function MainPage() {
         <Link href="/folder" className={s.link}>
           폴더 페이지 버튼
         </Link>
+        <Link href="/signIn" className={s.link}>
+          로그인 페이지 버튼
+        </Link>
+        <Link href="/signUp" className={s.link}>
+          회원가입 페이지 버튼
+        </Link>
       </div>
     </>
   );

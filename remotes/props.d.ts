@@ -53,3 +53,13 @@ interface SearchProps {
 interface SharedPageCardProps {
   data: Link;
 }
+
+interface SignHeaderProps {
+  askSentence: string;
+  path: string;
+  functionSentence: string;
+}
+
+interface SignFooterProps {
+  sentence: string;
+}
