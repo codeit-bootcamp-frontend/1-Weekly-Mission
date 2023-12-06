@@ -18,13 +18,7 @@ function Input({
   const [type, setType] = useState(initialType);
 
   const toggleShow = () => {
-    setType((prevType) => {
-      if (prevType === 'text') {
-        return 'password';
-      } else {
-        return 'text';
-      }
-    });
+    setType((prevType) => (prevType === 'text' ? 'password' : 'text'));
   };
 
   return (

@@ -22,9 +22,9 @@ function FoldersContainer({ folders, initialFolderId, setFolderLinks }: Props) {
 
   const [selectedFolder, setSelectedFolder] = useState<Folder>(DEFAULT_FOLDER);
 
-  const onFolderButtonClick = (folders: Folder) => {
-    setFolderLinks(folders.id);
-    setSelectedFolder(folders);
+  const onFolderButtonClick = (folder: Folder) => {
+    setFolderLinks(folder.id);
+    setSelectedFolder(folder);
   };
 
   useEffect(() => {
