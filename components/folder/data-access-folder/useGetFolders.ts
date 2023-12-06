@@ -1,0 +1,15 @@
+import { FolderRawData } from "@/components/folder/type";
+import { mapFoldersData } from "@/components/folder/util-map/MapFoldersData";
+import { axiosInstance } from "@/components/sharing/util";
+import { useAsync } from "@/components/sharing/util";
+
+export const useGetFolders = () => {
+  const getFolders = () =>
+    axiosInstance.get<{ data: FolderRawData[] }>("users/1/folders");
+  const { loading, error, data } = useAsync(getFolders);
+
+  const folders = mapFoldersData(data?.data);
+  const sortedFolders = folders.sort((a, b) => a?.id - b?.id);
+
+  return { loading, error, data: sortedFolders };
+};
