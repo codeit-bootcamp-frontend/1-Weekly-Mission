@@ -1,0 +1,38 @@
+/* dialogIconsBox.module.css */
+
+.dialogShareIconWrapper {
+  display: flex;
+  gap: 32px;
+}
+
+.dialogShareIconContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.dialogShareKakaoIcon {
+  padding: 12px;
+  border-radius: 37.333px;
+  background: #fee500;
+}
+
+.dialogShareFacebookIcon {
+  border-radius: 37.333px;
+  background: #1877f2;
+  padding: 12px;
+}
+
+.dialogShareLinkIcon {
+  padding: 12px;
+}
+
+.dialogShareIconName {
+  text-align: center;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--color-gray-100);
+}

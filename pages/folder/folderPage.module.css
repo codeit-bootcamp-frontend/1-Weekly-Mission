@@ -1,0 +1,146 @@
+.folderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.folderContentSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.folderCategory {
+  color: var(--color-black);
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+.folderCategoryContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.folderSortButtonsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.folderOptionButtonContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.folderHeader {
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 90px;
+  background: var(--backgroundcolor-skyblue-10);
+}
+
+.folderMain {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1124px;
+  gap: 40px;
+}
+
+.folderSortAddButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folderAddButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  font-weight: 500;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.linksContainer {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 25px;
+  padding-bottom: 100px;
+}
+
+.floatingActionButtonContainer {
+  display: none;
+}
+
+.floatingSearchbarContainer {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 10;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .folderHeader {
+    padding: 60px 32px 90px 32px;
+  }
+
+  .folderMain {
+    padding: 0px 32px;
+    width: 100%;
+  }
+
+  .linksContainer {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .folderSortButtonsContainer {
+    flex-wrap: wrap;
+  }
+
+  .folderHeader {
+    padding: 24px 32px 40px 32px;
+  }
+
+  .folderMain {
+    padding: 0px 32px;
+  }
+
+  .folderCategoryContainer {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .floatingActionButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    bottom: 100px;
+    z-index: 100;
+  }
+
+  .folderAddButton {
+    display: none;
+  }
+
+  .linksContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 20px;
+  }
+}

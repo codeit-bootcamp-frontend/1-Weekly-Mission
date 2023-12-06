@@ -1,0 +1,17 @@
+.dialogFolderList {
+  display: flex;
+  align-items: center;
+  width: 264px;
+  padding: 8px;
+  gap: 8px;
+}
+
+.dialogFolderListTitle {
+  font-size: 16px;
+  color: var(--color-gray-100);
+}
+
+.dialogFolderListCount {
+  font-size: 14px;
+  color: var(--color-gray-40);
+}
