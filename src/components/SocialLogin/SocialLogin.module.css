@@ -1,0 +1,18 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  padding: 12px 24px;
+  border: 1px solid #d3d4dd;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.socialText {
+  font-size: 14px;
+}
+
+.loginButton {
+  display: flex;
+  gap: 16px;
+}
