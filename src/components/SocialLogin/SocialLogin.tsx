@@ -4,10 +4,14 @@ import GoogleImg from "src/assets/icon/google.svg";
 import KakaoImg from "src/assets/icon/kakao.svg";
 import styles from "src/components/SocialLogin/SocialLogin.module.css";
 
-function SocialLogin() {
+interface SocialLoginProps {
+  content: string;
+}
+
+function SocialLogin({ content }: SocialLoginProps) {
   return (
     <div className={styles.wrapper}>
-      <p className={styles.socialText}>소셜 로그인</p>
+      <p className={styles.socialText}>{content}</p>
       <div className={styles.loginButton}>
         <Link className="google" href="https://www.google.com/" target="_blank">
           <Image className="icon" src={GoogleImg} alt="구글 로그인 아이콘" />
