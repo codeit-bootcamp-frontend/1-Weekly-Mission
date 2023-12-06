@@ -5,10 +5,10 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 type FolderLayoutProps = {
-  linkForm?: ReactNode;
-  searchBar?: ReactNode;
-  folderToolBar?: ReactNode;
-  cardList?: ReactNode;
+  linkForm: ReactNode;
+  searchBar: ReactNode;
+  folderToolBar: ReactNode;
+  cardList: ReactNode;
 };
 
 export const FolderLayout = ({
