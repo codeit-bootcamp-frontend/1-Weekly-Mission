@@ -1,6 +1,7 @@
 @import "@/styles/global.scss";
 
 .wrapper {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +20,7 @@
 .label {
   color: var(--black, #000);
   font-family: Pretendard;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 400;
   line-height: normal;
 }
@@ -39,7 +40,14 @@
   );
   color: var(--grey-light, #f5f5f5);
   font-family: Pretendard;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 600;
   line-height: normal;
+}
+
+.part {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
 }

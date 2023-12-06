@@ -17,6 +17,7 @@ type PasswordInputProps = {
 } & Omit<InputProps, "type">;
 
 export const PasswordInput = ({
+  name,
   hasEyeIcon = false,
   value,
   placeholder,

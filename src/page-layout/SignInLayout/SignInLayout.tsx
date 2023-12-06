@@ -23,14 +23,18 @@ export const SignInLayout = ({
         <div className={cx("container")}>
           <div className={cx("logo_container")}>{titleContainer}</div>
           <form>
-            <label className={cx("label")} id="email">
-              이메일
-            </label>
-            {input}
-            <label className={cx("label")} id="password">
-              비밀번호
-            </label>
-            {passwordInput}
+            <div className={cx("part")}>
+              <label className={cx("label")} id="email">
+                이메일
+              </label>
+              {input}
+            </div>
+            <div className={cx("part")}>
+              <label className={cx("label")} id="password">
+                비밀번호
+              </label>
+              {passwordInput}
+            </div>
             <button type="submit" className={cx("button")}>
               로그인
             </button>
