@@ -1,3 +1,5 @@
+import '@/styles/globals.css';
+
 import GlobalStyle from '@/styles/GlobalStyle';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
