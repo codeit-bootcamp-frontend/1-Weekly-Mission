@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20, #ccd5e3);
+  background: var(--linkbrary-gray-10, #e7effb);
+}
+
+.text {
+  color: var(--linkbrary-gray-100, #373740);
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.icons {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.icon {
+  cursor: pointer;
+}

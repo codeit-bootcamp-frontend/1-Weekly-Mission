@@ -1,10 +1,15 @@
-import { ChangeEventHandler, FocusEventHandler, HTMLInputTypeAttribute } from "react";
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  HTMLInputTypeAttribute,
+} from "react";
 import styles from "./Input.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
 export type InputProps = {
+  name: any;
   value: string | number;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
@@ -15,6 +20,7 @@ export type InputProps = {
 };
 
 export const Input = ({
+  name,
   value,
   placeholder,
   type = "text",
@@ -26,6 +32,7 @@ export const Input = ({
   return (
     <div className={cx("container")}>
       <input
+        name={name}
         type={type}
         value={value}
         onChange={onChange}
@@ -33,7 +40,9 @@ export const Input = ({
         placeholder={placeholder}
         className={cx("input", { error: hasError })}
       />
-      {helperText && <p className={cx("helper-text", { error: hasError })}>{helperText}</p>}
+      {helperText && (
+        <p className={cx("helper-text", { error: hasError })}>{helperText}</p>
+      )}
     </div>
   );
 };

@@ -8,14 +8,20 @@ import { ReactNode, RefObject } from "react";
 const cx = classNames.bind(styles);
 
 type LayoutProps = {
-  children: ReactNode;
+  children?: ReactNode;
   isSticky?: boolean;
   footerRef?: RefObject<HTMLElement>;
 };
 
-export const Layout = ({ children, isSticky = true, footerRef }: LayoutProps) => {
+export const Layout = ({
+  children,
+  isSticky = true,
+  footerRef,
+}: LayoutProps) => {
   const { data } = useGetUser();
-  const profile = data ? { email: data.email, imageSource: data.profileImageSource } : null;
+  const profile = data
+    ? { email: data.email, imageSource: data.profileImageSource }
+    : null;
 
   return (
     <div>

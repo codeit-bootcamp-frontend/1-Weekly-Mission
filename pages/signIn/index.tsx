@@ -1,0 +1,44 @@
+import { ChangeEventHandler, useState } from "react";
+import { TitleContainer } from "@/src/auth/ui-title-container/TitleContainer";
+import { SignInLayout } from "@/src/page-layout/SignInLayout/SignInLayout";
+import { Input } from "@/src/sharing/ui-input";
+import { PasswordInput } from "@/src/sharing/ui-password-input";
+import { SocialLayout } from "@/src/auth/ui-social-container/SocialContainer";
+
+export default function SignIn() {
+  const [values, setValues] = useState({
+    input: "",
+    password: "",
+    re_password: "",
+  });
+
+  const handleChange = (e: any) => {
+    const { value, name } = e.target;
+    setValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  return (
+    <SignInLayout
+      titleContainer={
+        <TitleContainer
+          memberCheckText="회원이 아니신가요?"
+          linkText="회원 가입하기"
+          destination="/signUp"
+        />
+      }
+      input={
+        <Input name="input" value={values.input} onChange={handleChange} />
+      }
+      passwordInput={
+        <PasswordInput
+          name="password"
+          value={values.password}
+          onChange={handleChange}
+        />
+      }
+      socialContainer={<SocialLayout text="다른 방식으로 가입하기" />}
+    ></SignInLayout>
+  );
+}

@@ -1,4 +1,9 @@
-import { ChangeEventHandler, HTMLInputTypeAttribute, useMemo, useState } from "react";
+import {
+  ChangeEventHandler,
+  HTMLInputTypeAttribute,
+  useMemo,
+  useState,
+} from "react";
 import styles from "./PasswordInput.module.scss";
 import classNames from "classnames/bind";
 import { Input, InputProps } from "../ui-input";
@@ -21,10 +26,16 @@ export const PasswordInput = ({
   onBlur,
 }: PasswordInputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const inputType = useMemo(() => (isPasswordVisible ? "text" : "password"), [isPasswordVisible]);
+  const inputType = useMemo(
+    () => (isPasswordVisible ? "text" : "password"),
+    [isPasswordVisible]
+  );
   const EyeIcon = useMemo(
     () => (
-      <button className={cx("button")} onClick={() => setIsPasswordVisible(!isPasswordVisible)}>
+      <button
+        className={cx("button")}
+        onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+      >
         {isPasswordVisible ? <EyeOnIcon /> : <EyeOffIcon />}
       </button>
     ),
@@ -35,6 +46,7 @@ export const PasswordInput = ({
     <div className={cx("container")}>
       <Input
         value={value}
+        name={name}
         placeholder={placeholder}
         type={inputType}
         hasError={hasError}
