@@ -1,40 +1,82 @@
 import Image from "next/image";
-import { ChangeEvent, useState } from "react";
+import { useEffect, useState } from "react";
 import eyeOffImg from "src/assets/icon/eye-off.svg";
 import eyeOnImg from "src/assets/icon/eye-on.svg";
 import styles from "src/components/Input/Input.module.css";
+import { INPUT_TYPE } from "src/constants/input";
+import { validateEmail } from "src/utils/inputValidate";
 
 interface Input {
+  id: string;
   type: string;
   placeholder: string;
-  errorMsg: string;
+  status: number;
+  account: {};
+  setAccount: any;
 }
 
-function Input({ type, placeholder, errorMsg }: Input) {
+function Input({ id, type, placeholder, status, account, setAccount }: Input) {
   const [isVisible, setIsVisible] = useState(true);
   const [isError, setIsError] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const { email, password } = INPUT_TYPE;
 
   const visiblePassword = () => {
     setIsVisible((prev) => !prev);
   };
 
-  const handleValue = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length === 0) {
-      setIsError(!isError);
-    } else {
+  const handleCheck = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.target.value) {
       setIsError(true);
+    }
+    if (!e.target.value) {
+      setIsError(false);
+      switch (type) {
+        case "email":
+          setErrorMsg(email.errorMsg1);
+          break;
+        case "password":
+          setErrorMsg(password.errorMsg1);
+          break;
+      }
+    } else if (type === "email" && !validateEmail(e.target.value)) {
+      setIsError(false);
+      setErrorMsg(email.errorMsg2);
     }
   };
 
+  const onChangeAccount = (e: any) => {
+    setAccount({
+      ...account,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  useEffect(() => {
+    if (status === 400) {
+      setIsError(false);
+      switch (type) {
+        case "email":
+          setErrorMsg(email.errorMsg1);
+          break;
+        case "password":
+          setErrorMsg(password.errorMsg1);
+          break;
+      }
+    }
+  }, [status]);
+
   return (
-    <div>
+    <div className={styles.wrapper}>
       <input
+        id={id}
+        name={type}
         type={isVisible ? "text" : "password"}
-        name="input"
         className={isError ? styles.input : styles.errorInput}
         placeholder={placeholder}
-        onBlur={handleValue}
-        onChange={handleValue}
+        onBlur={handleCheck}
+        onChange={onChangeAccount}
       />
       {isError ? <></> : <p className={styles.errorMsg}>{errorMsg}</p>}
       {type === "email" ? (
