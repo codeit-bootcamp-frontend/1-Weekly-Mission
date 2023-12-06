@@ -1,0 +1,20 @@
+.root {
+  display: grid;
+  width: 100%;
+  grid-template: auto / repeat(3, 34rem);
+  justify-content: center;
+  row-gap: 2.5rem;
+  column-gap: 2rem;
+}
+
+@media (max-width: 1124px) {
+  .root {
+    grid-template: auto / repeat(2, 34rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .root {
+    grid-template: auto / repeat(1, 34rem);
+  }
+}

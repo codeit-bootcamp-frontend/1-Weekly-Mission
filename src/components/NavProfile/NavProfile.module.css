@@ -1,0 +1,20 @@
+.profile {
+  display: flex;
+  font-size: 1.4rem;
+  align-items: center;
+  gap: 0.9rem;
+}
+.profileImg {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 4.7rem;
+}
+@media (max-width: 767px) {
+  .profileImg {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+  .email {
+    display: none;
+  }
+}

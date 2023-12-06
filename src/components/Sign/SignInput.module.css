@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.input {
+  padding: 1.8rem 1.5rem;
+  border: 0.1rem solid var(--linkbrary-gray-20);
+  border-radius: 0.8rem;
+  width: 100%;
+  margin-bottom: 0.6rem;
+}
+.inputWrapper {
+  position: relative;
+}
+.pwdEye {
+  position: absolute;
+  right: 1.6rem;
+  bottom: 50%;
+  transform: translateY(50%);
+  fill: white;
+  cursor: pointer;
+}
+
+.errorMessage {
+  font-size: 1.4rem;
+  color: red;
+}

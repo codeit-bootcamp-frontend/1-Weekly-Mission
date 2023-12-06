@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.logo {
+  width: 21rem;
+  height: 4rem;
+}
+
+.phrase {
+  font-weight: 400;
+}
+
+.link {
+  font-size: 600;
+  color: var(--linkbrary-primary-color);
+  text-decoration: underline;
+}
