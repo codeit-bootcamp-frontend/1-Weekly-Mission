@@ -24,6 +24,7 @@ function SignIn() {
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const loginInfo = await postLogin(account);
+
     if (loginInfo.data) {
       getToken("access-token", loginInfo.data.accessToken);
       router.push("/folder");

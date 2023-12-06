@@ -5,6 +5,7 @@ export const INPUT_TYPE = {
     placeholder: "이메일을 입력해주세요.",
     errorMsg1: "이메일을 다시 입력해주세요.",
     errorMsg2: "올바른 이메일 주소가 아닙니다.",
+    errorMsg3: "중복된 이메일 주소입니다.",
   },
   password: {
     type: "password",

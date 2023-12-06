@@ -93,6 +93,32 @@ const postLogin = async (loginInfo: {}) => {
   return result;
 };
 
+const postDuplicationEmail = async (account: {}) => {
+  const response = await fetch(`${API_BASE_URL}/api/check-email`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(account),
+  });
+
+  const result = response.json();
+  return result;
+};
+
+const postSignUp = async (account: {}) => {
+  const response = await fetch(`${API_BASE_URL}/api/sign-up`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(account),
+  });
+
+  const result = response.json();
+  return result;
+};
+
 export {
   getAllFolder,
   getFolderLinks,
@@ -100,5 +126,7 @@ export {
   getSampleUserProfile,
   getUserFolder,
   getUserProfile,
+  postDuplicationEmail,
   postLogin,
+  postSignUp,
 };
