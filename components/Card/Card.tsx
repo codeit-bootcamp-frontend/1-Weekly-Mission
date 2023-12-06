@@ -36,11 +36,11 @@ export default function Card({ link } : Props) {
     <S.StyledLink href={url}>
       <S.ImageContainer>
         <S.CardImage src={imageSource || image_source || noImg} alt="사진" />
-        <S.Star
+        {/* <S.Star
           fill={starStyle.fill}
           fillOpacity={starStyle["fill-opacity"]}
           onClick={handleStarClick}
-        />
+        /> */}
       </S.ImageContainer>
       <S.Container>
         <S.Option>

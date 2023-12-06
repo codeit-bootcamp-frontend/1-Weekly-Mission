@@ -83,7 +83,7 @@ export default function CardMenuBar({
             ))}
           </S.Ul>
           <span onClick={handleButtonClick}>
-            폴더 추가<AddImg alt="폴더추가" fill="#6D6AFE" />
+            {/* 폴더 추가<AddImg alt="폴더추가" fill="#6D6AFE" /> */}
           </span>
         </S.Container>
         <MenuTitle title={selectFolder ? selectFolder : "전체"} />

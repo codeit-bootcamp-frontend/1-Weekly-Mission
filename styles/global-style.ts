@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     max-width: 192rem;
     width: auto;
-  }
+  }                     
 `
 
 export default GlobalStyle;
