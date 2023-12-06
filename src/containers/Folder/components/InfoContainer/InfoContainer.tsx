@@ -16,18 +16,6 @@ function InfoContainer({ defaultFolder, selectedFolder, userId }: Props) {
     folderId: selectedFolder?.id,
   });
 
-  const setShareModal = () => {
-    setModal('share');
-  };
-
-  const setEditModal = () => {
-    setModal('edit');
-  };
-
-  const setDeleteFolderModal = () => {
-    setModal('deleteFolder');
-  };
-
   return (
     <>
       <S.InfoContainer>
@@ -35,15 +23,15 @@ function InfoContainer({ defaultFolder, selectedFolder, userId }: Props) {
         <S.SettingButtonContainer>
           {selectedFolder?.id !== defaultFolder.id && (
             <>
-              <S.SettingButton onClick={setShareModal}>
+              <S.SettingButton onClick={() => setModal('share')}>
                 <IconShare />
                 공유
               </S.SettingButton>
-              <S.SettingButton onClick={setEditModal}>
+              <S.SettingButton onClick={() => setModal('edit')}>
                 <IconEdit />
                 이름 변경
               </S.SettingButton>
-              <S.SettingButton onClick={setDeleteFolderModal}>
+              <S.SettingButton onClick={() => setModal('deleteFolder')}>
                 <IconDelete />
                 삭제
               </S.SettingButton>
