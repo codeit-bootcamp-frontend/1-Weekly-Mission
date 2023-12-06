@@ -3,7 +3,9 @@ import { getAllFolder, getFolderLinks, getUserFolder } from "pages/api/api";
 import React, { useEffect, useState } from "react";
 import CardList from "src/components/CardList/CardList";
 import FolderList from "src/components/FolderList/FolderList";
+import Footer from "src/components/Footer/Footer";
 import FunctionButton from "src/components/FunctionButton/FunctionButton";
+import Header from "src/components/Header/Header";
 import LinkAdd from "src/components/LinkAdd/LinkAdd";
 import MainSection from "src/components/MainSection/MainSection";
 import Modal from "src/components/Modal/Modal";
@@ -129,6 +131,7 @@ function Folder() {
 
   return (
     <>
+      <Header />
       {isModalOpen && (
         <Modal
           title={modalTitle}
@@ -155,6 +158,7 @@ function Folder() {
           <CardList card={cards} isCardEditable={true} onClick={showModal} />
         )}
       </MainSection>
+      <Footer />
     </>
   );
 }
