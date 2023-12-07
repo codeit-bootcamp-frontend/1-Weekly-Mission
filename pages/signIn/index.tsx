@@ -4,8 +4,16 @@ import { SignInLayout } from "@/src/page-layout/SignInLayout/SignInLayout";
 import { Input } from "@/src/sharing/ui-input";
 import { PasswordInput } from "@/src/sharing/ui-password-input";
 import { SocialLayout } from "@/src/auth/ui-social-container/SocialContainer";
+import { useForm } from "react-hook-form";
 
 export default function SignIn() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { onChange, onBlur, name, ref } = register("email");
+
   const [values, setValues] = useState({
     input: "",
     password: "",
@@ -29,7 +37,7 @@ export default function SignIn() {
         />
       }
       input={
-        <Input name="input" value={values.input} onChange={handleChange} />
+        <Input name="email" value={values.input} onChange={handleChange} />
       }
       passwordInput={
         <PasswordInput
@@ -39,6 +47,7 @@ export default function SignIn() {
         />
       }
       socialContainer={<SocialLayout text="다른 방식으로 가입하기" />}
+      handleSubmit={handleSubmit}
     ></SignInLayout>
   );
 }

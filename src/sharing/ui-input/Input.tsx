@@ -2,6 +2,7 @@ import {
   ChangeEventHandler,
   FocusEventHandler,
   HTMLInputTypeAttribute,
+  ReactNode,
 } from "react";
 import styles from "./Input.module.scss";
 import classNames from "classnames/bind";
@@ -10,11 +11,12 @@ const cx = classNames.bind(styles);
 
 export type InputProps = {
   name: any;
-  value: string | number;
+  value?: string | number;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
   hasError?: boolean;
-  helperText?: string;
+  ref?: any;
+  helperText?: boolean | string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   onBlur?: FocusEventHandler<HTMLInputElement>;
 };
@@ -32,11 +34,8 @@ export const Input = ({
   return (
     <div className={cx("container")}>
       <input
-        name={name}
         type={type}
         value={value}
-        onChange={onChange}
-        onBlur={onBlur}
         placeholder={placeholder}
         className={cx("input", { error: hasError })}
       />

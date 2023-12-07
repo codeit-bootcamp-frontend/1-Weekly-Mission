@@ -31,8 +31,5 @@
 
 .helper-text {
   font-size: 1.4rem;
-
-  &.error {
-    color: $color-red;
-  }
+  color: $color-red;
 }
