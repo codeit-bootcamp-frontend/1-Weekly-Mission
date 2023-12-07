@@ -5,8 +5,6 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "codeit-images.codeit.com",
-        port: "",
-        pathname: "",
       },
     ],
   },
