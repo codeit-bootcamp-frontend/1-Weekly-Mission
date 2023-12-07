@@ -1,17 +1,15 @@
 import googleIcon from "@/images/auth/google-login-icon.png";
 import kakaoIcon from "@/images/auth/kakao-login-icon.png";
 import * as S from "@/layouts/authLayout/AuthLayout.style";
-import { FormEvent, ReactNode } from "react";
+import { ReactNode } from "react";
 
-const AuthLayout = ({
-  children,
-  handleSubmit,
-  mode,
-}: {
+interface AuthLayoutProps {
   children: ReactNode;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   mode: string;
-}) => {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+const AuthLayout = ({ children, mode, handleSubmit }: AuthLayoutProps) => {
   return (
     <S.AuthWrap>
       <S.Auth>
@@ -19,7 +17,6 @@ const AuthLayout = ({
           <S.LogoLink href="/">
             <S.LogoImage />
           </S.LogoLink>
-
           {mode === "signin" ? (
             <S.HeaderText>
               회원이 아니신가요? <S.HeaderLink href="/user/signup">회원 가입하기</S.HeaderLink>
