@@ -7,12 +7,14 @@ import {
   WRONG_VALUE_MESSAGE,
   VISIBLE_PASSWORD,
   PLACEHOLDER,
-} from "./constans.js";
+  VALID_EMAIL_REG,
+  VALID_PSW_REG,
+} from "./constants.js";
 
 const cx = classNames.bind(styles);
 
 interface InputUserInfoProps {
-  isPassword?: boolean;
+  isPassword: boolean;
 }
 
 function InputUserInfo({ isPassword }: InputUserInfoProps) {
@@ -41,16 +43,29 @@ function InputUserInfo({ isPassword }: InputUserInfoProps) {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     //데이터요청
   }
 
-  function handleBlur(e: FocusEvent<HTMLInputElement>) {
+  function handleBlur(e: FocusEvent<HTMLInputElement>, isPassword: boolean) {
     if (!e.target.value) {
       setHasValue(false);
       setIsWrongValue(true);
     } else {
       setHasValue(true);
       setIsWrongValue(false);
+    }
+
+    if (!isPassword) {
+      if (!VALID_EMAIL_REG.test(e.target.value)) {
+        setIsWrongValue(true);
+        return;
+      }
+    } else {
+      if (!VALID_PSW_REG.test(e.target.value)) {
+        setIsWrongValue(true);
+        return;
+      }
     }
   }
 
@@ -74,7 +89,7 @@ function InputUserInfo({ isPassword }: InputUserInfoProps) {
             type={visible ? "text" : "password"}
             required
             onChange={handleChange}
-            onBlur={handleBlur}
+            onBlur={(e) => handleBlur(e, isPassword)}
             onFocus={handleFocus}
             value={value}
           />
@@ -97,6 +112,18 @@ function InputUserInfo({ isPassword }: InputUserInfoProps) {
           ) : (
             <span className={cx("wrongValueMessage")}>
               {WRONG_VALUE_MESSAGE.id}
+            </span>
+          )
+        ) : null}
+
+        {isWrongValue && hasValue ? (
+          isPassword ? (
+            <span className={cx("wrongValueMessage")}>
+              {WRONG_VALUE_MESSAGE.wrongPassword}
+            </span>
+          ) : (
+            <span className={cx("wrongValueMessage")}>
+              {WRONG_VALUE_MESSAGE.wrongId}
             </span>
           )
         ) : null}
