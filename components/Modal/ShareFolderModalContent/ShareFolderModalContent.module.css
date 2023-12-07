@@ -1,0 +1,59 @@
+.shareFolderModal {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  gap: 2.4rem;
+  flex-direction: column;
+}
+
+.folderName {
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  color: var(--linkbrary-gray-60, #9fa6b2);
+  text-align: center;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 3.2rem;
+  flex-direction: row;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  border-radius: 50%;
+}
+
+.yellow {
+  background-color: #fee500;
+}
+
+.blue {
+  background-color: #1877f2;
+}
+
+.gray {
+  background-color: rgba(157, 157, 157, 0.04);
+}
+
+.buttonName {
+  font-family: Inter;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: var(--linkbrary-gray-100, #373740);
+}

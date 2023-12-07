@@ -1,0 +1,37 @@
+.container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+}
+
+.descriptionContainer {
+  text-align: center;
+}
+
+.status {
+  color: var(--red);
+  font-size: 6.8rem;
+  font-weight: 700;
+  animation: shake 0.4s ease-in-out infinite;
+}
+
+.description {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #535353;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}

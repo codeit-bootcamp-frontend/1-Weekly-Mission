@@ -1,0 +1,58 @@
+.folderInfo {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+  background: var(--linkbrary-bg, #f0f6ff);
+}
+
+.profileInfo {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profileImg {
+  object-fit: cover;
+  width: 6rem;
+  border-radius: 50%;
+}
+
+.profileImgWrapper {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+}
+
+.ownerName {
+  font-size: 1.6rem;
+}
+
+.folderName {
+  font-size: 4rem;
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .profileImg {
+    width: 4rem;
+    border-radius: 50%;
+  }
+
+  .ownerName {
+    font-size: 1.4rem;
+  }
+
+  .folderName {
+    font-size: 3.2rem;
+  }
+}
