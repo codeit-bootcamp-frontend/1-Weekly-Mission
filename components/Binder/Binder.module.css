@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  gap: 2.5rem 2rem;
+}
+
+@media (max-width: 1191px) {
+  .cardContainer {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .cardContainer {
+    flex: 1;
+  }
+}

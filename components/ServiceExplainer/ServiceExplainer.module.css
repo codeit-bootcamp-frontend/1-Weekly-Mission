@@ -1,0 +1,132 @@
+.root {
+  width: 99.8rem;
+  margin: 0 auto;
+  padding: 12rem 0 5rem 0;
+  display: grid;
+  justify-content: center;
+  gap: 1rem 15.7rem;
+}
+
+.odd {
+  grid-template:
+    ". img"
+    "t img"
+    "s img"
+    ". img"
+    /29.1rem 55rem;
+}
+
+.even {
+  grid-template:
+    "img ."
+    "img t"
+    "img s"
+    "img ."
+    /55rem 29.1rem;
+}
+
+.title {
+  font-size: 4.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03rem;
+  grid-area: t;
+}
+
+.subtitle {
+  color: #6b6b6b;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 150%;
+  grid-area: s;
+}
+
+.imageContainer {
+  width: 55rem;
+  height: 45rem;
+  border-radius: 1.5rem;
+  background-color: var(--gray1);
+  grid-area: img;
+  aspect-ratio: 11 / 9;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+#manage_your_link,
+#search_your_link {
+  flex-direction: row-reverse;
+}
+
+.saveTextGradiant {
+  background-image: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+}
+
+.manageTextGradiant {
+  background-image: linear-gradient(277deg, #6fbaff 59.22%, #ffd88b 93.66%);
+}
+
+.shareTextGradiant {
+  background-image: linear-gradient(99deg, #6d7ccd 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+}
+
+.searchtextGradiant {
+  background-image: linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%);
+}
+
+@media (max-width: 1199px) {
+  .root {
+    width: 69.8rem;
+    padding-top: 8rem;
+    gap: 1rem 5.1rem;
+  }
+
+  .odd {
+    grid-template-columns: 26.2rem 38.5rem;
+  }
+
+  .even {
+    grid-template-columns: 38.5rem 26.2rem;
+  }
+
+  .imageContainer {
+    width: 38.5rem;
+    height: 31.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .odd,
+  .even {
+    width: 100%;
+    margin: 0;
+    padding: 4rem 3.2rem 3.6rem;
+    grid-template:
+      "t"
+      "img"
+      "img"
+      "s";
+    gap: 2rem;
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: auto;
+  }
+
+  .title {
+    display: block;
+    width: 100%;
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  #manage_your_link,
+  #search_your_link {
+    flex-direction: column;
+  }
+}
