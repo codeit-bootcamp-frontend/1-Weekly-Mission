@@ -8,13 +8,17 @@ import { useRouter } from "next/router";
 const SigninPage = () => {
   const router = useRouter();
   const currentPath: string = router.pathname;
+  const pathName = {
+    isSigninPage: currentPath === "/signin",
+    isSignupPage: currentPath === "/signup",
+  };
   return (
-        <SignInLayout
-      signTitle={<SignTitle currentPath={currentPath} />}
+    <SignInLayout
+      signTitle={<SignTitle pathName={pathName} />}
       emailInput={<InputUserInfo isPassword={false} />}
       passwordInput={<InputUserInfo isPassword={true} />}
-      loginButton={<SignButton currentPath={currentPath} />}
-      socialLogin={<SocialSign currentPath={currentPath} />}
+      loginButton={<SignButton pathName={pathName} />}
+      socialLogin={<SocialSign pathName={pathName} />}
     />
   );
 };

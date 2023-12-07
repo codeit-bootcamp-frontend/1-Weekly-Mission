@@ -1,17 +1,22 @@
-import { ROUTE } from "@/src/sharing/util";
-import Link from "next/link";
+import { PathName } from "@/src/Input/ui-input-title/SignTitle";
+import { Cta } from "@/src/sharing/ui-cta";
+import { TEXT } from "@/src/sharing/ui-footer/constant";
+import styles from "./SignButton.module.scss";
+import classNames from "classnames/bind";
 
-interface SignButtonProps {
-  currentPath: string;
-}
+const cx = classNames.bind(styles);
 
-const SignButton = ({ currentPath }: SignButtonProps) => {
+const SignButton = ({ pathName }: PathName) => {
   return (
-    <div>
-      <Link href={currentPath === "signin" ? ROUTE.회원가입 : ROUTE.로그인}>
-        {currentPath === "signin" ? "로그인" : "회원가입"}
-      </Link>
-    </div>
+    <>
+      <button className={cx("sign-button")}>
+        <Cta>
+          <span className={cx("text")}>
+            {pathName.isSigninPage ? TEXT.login : TEXT.join}
+          </span>
+        </Cta>
+      </button>
+    </>
   );
 };
 

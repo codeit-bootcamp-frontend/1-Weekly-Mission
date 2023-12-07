@@ -2,6 +2,12 @@ import Image from "next/image";
 import { ChangeEvent, FocusEvent, FormEvent, useState } from "react";
 import styles from "./InputUserInfo.module.scss";
 import classNames from "classnames/bind";
+import {
+  INPUT_TEXT,
+  WRONG_VALUE_MESSAGE,
+  VISIBLE_PASSWORD,
+  PLACEHOLDER,
+} from "./constans.js";
 
 const cx = classNames.bind(styles);
 
@@ -10,7 +16,7 @@ interface InputUserInfoProps {
 }
 
 function InputUserInfo({ isPassword }: InputUserInfoProps) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string | number>("");
   const [visible, setVisible] = useState(isPassword ? false : true);
   const [isWrongValue, setIsWrongValue] = useState(false);
   const [hasValue, setHasValue] = useState(true);
@@ -55,16 +61,14 @@ function InputUserInfo({ isPassword }: InputUserInfoProps) {
 
   return (
     <div className={cx("userInfoFormBox")}>
-      {isPassword ? "비밀번호" : "아이디"}
+      {isPassword ? INPUT_TEXT.password : INPUT_TEXT.id}
       <form className={cx("userInfoForm")} onSubmit={handleSubmit}>
         <label className={cx("userInfoLabel")}>
           <input
             className={`${cx("inputBox")} ${
               isWrongValue ? cx("inputBoxFlash") : ""
             }`}
-            placeholder={
-              isPassword ? "비밀번호를 입력해주세요." : "아이디를 입력해주세요."
-            }
+            placeholder={isPassword ? PLACEHOLDER.password : PLACEHOLDER.id}
             name="userId"
             autoComplete="new-password"
             type={visible ? "text" : "password"}
@@ -78,7 +82,7 @@ function InputUserInfo({ isPassword }: InputUserInfoProps) {
             <Image
               className={cx("visibleIcon")}
               src={visible ? eyeOnImage : eyeOffImage}
-              alt={visible ? "비밀번호 보이기" : "비밀번호 숨기기"}
+              alt={visible ? VISIBLE_PASSWORD.visible : VISIBLE_PASSWORD.hidden}
               width={16}
               height={16}
               onClick={handleClick}
@@ -88,11 +92,11 @@ function InputUserInfo({ isPassword }: InputUserInfoProps) {
         {!hasValue ? (
           isPassword ? (
             <span className={cx("wrongValueMessage")}>
-              비밀번호를 확인해주세요.
+              {WRONG_VALUE_MESSAGE.password}
             </span>
           ) : (
             <span className={cx("wrongValueMessage")}>
-              아이디를 확인해주세요.
+              {WRONG_VALUE_MESSAGE.id}
             </span>
           )
         ) : null}

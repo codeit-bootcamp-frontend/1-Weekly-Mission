@@ -8,8 +8,9 @@
 
   .userInfoForm {
     display: flex;
+    flex-direction: column;
     width: inherit;
-    gap: 2.4rem;
+    gap: 0.6em;
     color: $color-text-content-black;
     font-size: 14px;
   }
