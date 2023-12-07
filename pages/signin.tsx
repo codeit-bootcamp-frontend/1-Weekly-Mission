@@ -2,14 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Logo from '@/components/common/Logo';
-import Input from '@/components/common/Input';
+import Input from '@/components/common/Input/Input';
 import Button from '@/components/common/Button';
 import Google from '@/public/assets/images/social_google.svg';
 import Kakao from '@/public/assets/images/social_kakao.svg';
+import InputBox from '@/components/common/Input/InputBox';
+import { validateEmail, validatePassword } from '@/lib/utils/validations';
 
 export default function Signin() {
-  function handleEmailBlur() {}
-
   return (
     <Background>
       <Container>
@@ -20,14 +20,8 @@ export default function Signin() {
             <GoSignUp href={'/signup'}>회원 가입하기</GoSignUp>
           </Signup>
         </Header>
-        <InputWrapper>
-          <Text>이메일</Text>
-          <Input passwordMode={false} placeholder="codeit@codeit.com" handleInputBlur={handleEmailBlur} />
-        </InputWrapper>
-        <InputWrapper>
-          <Text>비밀번호</Text>
-          <Input passwordMode={true} placeholder="●●●●●●●●" handleInputBlur={handleEmailBlur} />
-        </InputWrapper>
+        <InputBox type="이메일" validationFunc={validateEmail} />
+        <InputBox type="비밀번호" validationFunc={validatePassword} />
         <Button>로그인</Button>
         <SocialBox>
           소셜 로그인
@@ -86,16 +80,6 @@ const GoSignUp = styled(Link)`
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--primary-color);
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
-const Text = styled.div`
-  font-size: 1.4rem;
 `;
 
 const SocialBox = styled.div`
