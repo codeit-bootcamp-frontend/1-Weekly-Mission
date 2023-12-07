@@ -7,8 +7,8 @@ import {
 import styles from "./PasswordInput.module.scss";
 import classNames from "classnames/bind";
 import { Input, InputProps } from "../ui-input";
-import EyeOnIcon from "./eye-on.svg";
-import EyeOffIcon from "./eye-off.svg";
+import EyeOnIcon from "@/public/images/eye-on.svg";
+import EyeOffIcon from "@/public/images/eye-off.svg";
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +18,7 @@ type PasswordInputProps = {
 
 export const PasswordInput = ({
   name,
-  hasEyeIcon = false,
+  hasEyeIcon = true,
   value,
   placeholder,
   hasError = false,
@@ -35,7 +35,10 @@ export const PasswordInput = ({
     () => (
       <button
         className={cx("button")}
-        onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+        onClick={(e) => {
+          e.preventDefault();
+          setIsPasswordVisible(!isPasswordVisible);
+        }}
       >
         {isPasswordVisible ? <EyeOnIcon /> : <EyeOffIcon />}
       </button>
