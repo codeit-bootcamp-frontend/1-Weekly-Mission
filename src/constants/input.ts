@@ -6,6 +6,7 @@ export const INPUT_TYPE = {
     errorMsg1: "이메일을 다시 입력해주세요.",
     errorMsg2: "올바른 이메일 주소가 아닙니다.",
     errorMsg3: "중복된 이메일 주소입니다.",
+    duplicateEmail: "이미 존재하는 이메일입니다.",
   },
   password: {
     type: "password",

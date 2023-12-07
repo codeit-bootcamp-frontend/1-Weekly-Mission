@@ -36,3 +36,14 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.emailCheck {
+  width: 100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 12px;
+  background-color: #6c6afe;
+  color: #fff;
+  font-size: 13px;
+  border-radius: 15px;
+}

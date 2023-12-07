@@ -10,7 +10,7 @@ import SocialLogin from "src/components/SocialLogin/SocialLogin";
 import { INPUT_TYPE } from "src/constants/input";
 import { checkToken, getToken } from "src/utils/aboutToken";
 import styles from "styles/SignPage.module.css";
-import { postSignUp } from "./api/api";
+import { postDuplicationEmail, postSignUp } from "./api/api";
 
 function SignUp() {
   const { email, password, passwordCheck } = INPUT_TYPE;
@@ -25,15 +25,12 @@ function SignUp() {
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const signUp = await postSignUp(account);
-    //const duplicateEmail = await postDuplicationEmail(account);
 
     if (signUp.error) {
       setStatus(signUp.error.status);
     }
-    //  if (duplicateEmail.error) {
-    //   setStatus(409);
-    // }
-    if (signUp.data) {
+
+    if (signUp.data && account.password === account.passwordCheck) {
       getToken("access-token", signUp.data.accessToken);
       router.push("/folder");
     }
@@ -43,6 +40,15 @@ function SignUp() {
     if (e.key === "Enter") {
       handleSignUp(e);
       setStatus(0);
+    }
+  };
+
+  const handleDuplicateCheck = async (e: any) => {
+    e.preventDefault();
+    setStatus(0);
+    const duplicateEmail = await postDuplicationEmail(account);
+    if (duplicateEmail.error.message === email.duplicateEmail) {
+      setStatus(409);
     }
   };
 
@@ -74,6 +80,12 @@ function SignUp() {
               account={account}
               setAccount={setAccount}
             />
+            <button
+              className={styles.emailCheck}
+              onClick={handleDuplicateCheck}
+            >
+              중복 체크
+            </button>
           </div>
           <div className={styles.passwordInput}>
             <InputLabel htmlFor={password.type} content="비밀번호" />

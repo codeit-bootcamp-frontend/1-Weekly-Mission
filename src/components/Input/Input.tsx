@@ -81,6 +81,12 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
           break;
       }
     }
+    if (status === 409) {
+      if (type === "email") {
+        setIsError(false);
+        setErrorMsg(email.errorMsg3);
+      }
+    }
   }, [status]);
 
   return (
