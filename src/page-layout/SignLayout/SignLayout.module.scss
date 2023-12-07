@@ -1,0 +1,15 @@
+@import '@/styles/global.scss';
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  @extend .center;
+}
+
+.items {
+  @extend .center;
+}
