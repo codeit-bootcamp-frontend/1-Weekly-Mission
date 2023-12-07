@@ -1,12 +1,9 @@
 import { ReactNode, useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import styles from "./SignInLayout.module.scss";
 import classNames from "classnames/bind";
 import EyeOnIcon from "@/public/images/eye-on.svg";
 import EyeOffIcon from "@/public/images/eye-off.svg";
-
-let renderCount = 0;
 
 const cx = classNames.bind(styles);
 
@@ -20,8 +17,6 @@ type SignInLayoutProps = {
 
 export const SignInLayout = ({
   titleContainer,
-  input,
-  passwordInput,
   socialContainer,
 }: SignInLayoutProps) => {
   const onSubmit = (data: any) => {

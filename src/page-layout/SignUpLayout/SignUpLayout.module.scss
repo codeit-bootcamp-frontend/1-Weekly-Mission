@@ -51,3 +51,42 @@
   gap: 12px;
   margin-bottom: 24px;
 }
+
+.input {
+  width: 100%;
+  border: 0.1rem solid $color-gray20;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  color: $color-gray100;
+  padding: 1.8rem 1.5rem;
+  transition: border-color 0.2s ease-in-out;
+
+  &::placeholder {
+    color: $color-gray60;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+
+  &.error {
+    border-color: $color-red;
+  }
+}
+
+.helper-text {
+  font-size: 1.4rem;
+  color: $color-red;
+}
+
+.password_container {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.eye_button {
+  position: absolute;
+  top: 2.2rem;
+  right: 1.5rem;
+}
