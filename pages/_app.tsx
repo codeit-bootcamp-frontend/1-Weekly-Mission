@@ -1,10 +1,9 @@
 import "@/styles/reset.css";
 import type { AppProps } from "next/app";
-import { Noto_Sans_KR } from "@next/font/google";
+import { fontFace } from "next/font";
 
-const notoSansKR = Noto_Sans_KR({
-  weight: ["400", "700"],
-  subsets: [],
+const Pretendard = fontFace({
+  src: "url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css)",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
