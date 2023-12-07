@@ -1,5 +1,20 @@
 import styled from "styled-components";
 import { ButtonProps } from "@/type";
+
+interface ItemProverty {
+  id: string;
+  created_at: string;
+  name: string;
+  user_id: number;
+  link: { count: number };
+}
+
+interface TabButtonProps {
+  selectItems: ItemProverty[];
+  nowFolderId: string;
+  handleClickUpdate: (a: string, b: string) => void;
+}
+
 const initFolder = [
   {
     name: "전체",
@@ -12,7 +27,7 @@ export default function TabButton({
   selectItems,
   nowFolderId,
   handleClickUpdate,
-}: any) {
+}: TabButtonProps) {
   return (
     <TabButtonWrapper>
       {[...initFolder, ...selectItems].map((item) => {

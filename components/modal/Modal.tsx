@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { MouseEvent } from "react";
 import styled from "styled-components";
 
@@ -105,7 +105,24 @@ export function ModalLink({
   );
 }
 
-export function ModalAddFolder({ selectItems, CloseMAF, url }: any) {
+interface ItemProverty {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+  link: { count: number };
+}
+interface ModalAddFolderProps {
+  selectItems: ItemProverty[];
+  CloseMAF: (e: React.MouseEvent<HTMLSpanElement>) => void;
+  url: string;
+}
+
+export function ModalAddFolder({
+  selectItems,
+  CloseMAF,
+  url,
+}: ModalAddFolderProps) {
   const [isNominated, setIsNominated] = useState<string>("");
 
   const handleNominateName = (e: MouseEvent) => {
@@ -122,7 +139,7 @@ export function ModalAddFolder({ selectItems, CloseMAF, url }: any) {
         <S.AddFolderLink>{url}</S.AddFolderLink>
       </S.AddFolderHeader>
       <S.AddFolderMain>
-        {selectItems.map((item: any) => {
+        {selectItems.map((item) => {
           return (
             <AddFolderSection $isSelected={isNominated === item.name}>
               <S.AddFolderName onClick={handleNominateName}>

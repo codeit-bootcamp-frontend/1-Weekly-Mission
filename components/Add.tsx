@@ -1,18 +1,24 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, MouseEventHandler, useState } from "react";
 
 import styled from "styled-components";
 import linkAdd from "../images/link.svg";
 import add from "../images/add.svg";
 
 import Image from "next/image";
-import { LinkAddBarProps, LinkAddBackgroundProps } from "@/type";
+import {
+  LinkAddBarProps,
+  LinkAddBackgroundProps,
+  FolderAddProps,
+} from "@/type";
 
 export function LinkAddBar({ openMAF }: LinkAddBarProps) {
   const [text, setText] = useState("");
 
   const handleChangeText = (e: ChangeEvent<HTMLInputElement>) =>
     setText(e.target.value);
-  const handleTypingUrl = (e: any) => openMAF(e, text);
+
+  const handleTypingUrl = (e: React.MouseEvent<HTMLButtonElement>) =>
+    openMAF(e, text);
   return (
     <>
       <FolderHeader>
@@ -43,7 +49,8 @@ export function LinkAddBarFixedBot({ openMAF }: LinkAddBarProps) {
 
   const handleChangeText = (e: ChangeEvent<HTMLInputElement>) =>
     setText(e.target.value);
-  const handleTypingUrl = (e: any) => openMAF(e, text);
+  const handleTypingUrl = (e: React.MouseEvent<HTMLButtonElement>) =>
+    openMAF(e, text);
   return (
     <LinkAddBarBackFixed>
       <LinkAddBarWrapper>
@@ -65,7 +72,7 @@ export function LinkAddBarFixedBot({ openMAF }: LinkAddBarProps) {
   );
 }
 
-export function FolderAdd({ openMAF }: any) {
+export function FolderAdd({ openMAF }: FolderAddProps) {
   return (
     <>
       <FolderAddWrapper onClick={openMAF}>

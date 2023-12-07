@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { LinkAddBar, FolderAdd, LinkAddBarFixedBot } from "../components/Add";
 import { Card } from "../components/Card";
@@ -80,12 +80,12 @@ function Folder() {
     setNowFolderId(key);
   };
 
-  const openMAF = (e: any, nowUrl: any) => {
+  const openMAF = (e: React.MouseEvent<HTMLElement>, text?: string) => {
     e.preventDefault();
     setOpenAddModal((prev) => !prev);
-    setUrl(nowUrl);
+    if (typeof text === "string") setUrl(text);
   };
-  const CloseMAF = (e: MouseEvent) => {
+  const CloseMAF = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.preventDefault();
     setOpenAddModal(false);
   };

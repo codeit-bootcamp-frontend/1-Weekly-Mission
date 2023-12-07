@@ -1,6 +1,14 @@
 import styled from "styled-components";
 import Image from "next/image";
-function HeaderSpace({ profiles }: any) {
+
+interface ProfilesProps {
+  profileImageSource?: string;
+  name?: string;
+  title?: string;
+  id?: number;
+}
+
+function HeaderSpace({ profiles }: { profiles: ProfilesProps }) {
   // window.addEventListener("scroll", (e) => {
   //   if (window.scrollY > 300 && window.scrollY < 1100) {
   //     document
@@ -12,6 +20,7 @@ function HeaderSpace({ profiles }: any) {
   //       .classList.remove("show-bottom");
   //   }
   // });
+  if (!profiles.profileImageSource) return;
 
   return (
     <>

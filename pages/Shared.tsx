@@ -24,7 +24,7 @@ function Shared() {
       } = await getFolderData();
 
       setItems(links);
-      setProfile({ title, ...owner });
+      setProfile({ ...title, ...owner });
     } catch (error) {
       console.log(error);
     }
@@ -78,7 +78,7 @@ function Shared() {
   useEffect(() => {
     initialize();
   }, []);
-
+  console.log(profile);
   return (
     <>
       <Nav lists={user} />
