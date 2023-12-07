@@ -6,6 +6,7 @@ interface AuthInputProps<TFormValues extends FieldValues> {
   label: string;
   type: string;
   placeholder: string;
+  autoComplete: string;
   name: Path<TFormValues>;
   rules?: RegisterOptions;
   register?: UseFormRegister<TFormValues>;
@@ -17,7 +18,7 @@ interface AuthPasswordInputProps<TFormValues extends FieldValues> extends AuthIn
 }
 
 const AuthInput = forwardRef<HTMLInputElement, AuthInputProps<FieldValues>>((props, ref) => {
-  const { label, type, placeholder, errors, ...inputProps } = props;
+  const { label, type, placeholder, autoComplete, errors, ...inputProps } = props;
   return (
     <S.InputWrap>
       <S.AuthLabel>{label}</S.AuthLabel>
@@ -28,6 +29,7 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps<FieldValues>>((pro
           placeholder={placeholder}
           {...inputProps}
           $isValid={!errors[inputProps.name]}
+          autoComplete={autoComplete}
         />
       </S.InputInner>
       {errors[inputProps.name] && <S.Warning>{errors[inputProps.name].message}</S.Warning>}
@@ -37,7 +39,7 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps<FieldValues>>((pro
 AuthInput.displayName = "AuthInput";
 
 const PasswordInput = forwardRef<HTMLInputElement, AuthPasswordInputProps<FieldValues>>((props, ref) => {
-  const { label, type, placeholder, errors, ...inputProps } = props;
+  const { label, type, placeholder, autoComplete, errors, ...inputProps } = props;
   const [inputType, setInputType] = useState(type);
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = (e: MouseEvent<HTMLButtonElement>) => {
@@ -58,6 +60,7 @@ const PasswordInput = forwardRef<HTMLInputElement, AuthPasswordInputProps<FieldV
           placeholder={placeholder}
           {...inputProps}
           $isValid={!errors[inputProps.name]}
+          autoComplete={autoComplete}
         />
         <S.EyeButton type="button" onClick={toggleShowPassword}>
           {showPassword ? <S.EyeOn /> : <S.EyeOff />}
