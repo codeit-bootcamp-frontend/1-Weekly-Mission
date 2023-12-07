@@ -1,3 +1,5 @@
+@import '@/styles/global.scss';
+
 .main {
   display: flex;
   flex-direction: column;
@@ -72,7 +74,7 @@
   align-items: center;
   height: 3.7rem;
   cursor: pointer;
-  background-image: linear-gradient(135deg, var(--primary) 0%, #6ae3fe 100%);
+  background-image: linear-gradient(135deg, $color-primary 0%, #6ae3fe 100%);
   border-radius: 0.8rem;
   color: #f5f5f5;
   font-size: 1.4rem;
@@ -120,7 +122,7 @@
 }
 
 .slogan_gradient {
-  background-image: linear-gradient(119deg, var(--primary) 0%, #ff9f9f 100%);
+  background-image: linear-gradient(119deg, $color-primary 0%, #ff9f9f 100%);
 }
 
 .background_clip_text {
@@ -229,16 +231,16 @@
   }
 }
 
-.title-1-gradient {
+.title_1_gradient {
   background-image: linear-gradient(117deg, #fe8a8a 2.29%, #a4ceff 100%);
 }
-.title-2-gradient {
+.title_2_gradient {
   background-image: linear-gradient(304deg, #6fbaff 0%, #ffd88b 100%);
 }
-.title-3-gradient {
+.title_3_gradient {
   background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
 }
-.title-4-gradient {
+.title_4_gradient {
   background-image: linear-gradient(310deg, #fe578f 0%, #68e8f9 100%);
 }
 
