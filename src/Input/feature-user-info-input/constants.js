@@ -1,6 +1,7 @@
 export const INPUT_TEXT = {
   id: "이메일",
   password: "비밀번호",
+  passwordCheck: "비밀번호 확인",
 };
 
 export const WRONG_VALUE_MESSAGE = {

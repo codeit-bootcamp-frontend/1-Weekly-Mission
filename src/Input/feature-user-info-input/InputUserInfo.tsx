@@ -15,9 +15,10 @@ const cx = classNames.bind(styles);
 
 interface InputUserInfoProps {
   isPassword: boolean;
+  checkPassword?: boolean;
 }
 
-function InputUserInfo({ isPassword }: InputUserInfoProps) {
+function InputUserInfo({ isPassword, checkPassword }: InputUserInfoProps) {
   const [value, setValue] = useState<string | number>("");
   const [visible, setVisible] = useState(isPassword ? false : true);
   const [isWrongValue, setIsWrongValue] = useState(false);
@@ -76,7 +77,11 @@ function InputUserInfo({ isPassword }: InputUserInfoProps) {
 
   return (
     <div className={cx("userInfoFormBox")}>
-      {isPassword ? INPUT_TEXT.password : INPUT_TEXT.id}
+      {isPassword
+        ? checkPassword
+          ? INPUT_TEXT.passwordCheck
+          : INPUT_TEXT.password
+        : INPUT_TEXT.id}
       <form className={cx("userInfoForm")} onSubmit={handleSubmit}>
         <label className={cx("userInfoLabel")}>
           <input
@@ -84,7 +89,7 @@ function InputUserInfo({ isPassword }: InputUserInfoProps) {
               isWrongValue ? cx("inputBoxFlash") : ""
             }`}
             placeholder={isPassword ? PLACEHOLDER.password : PLACEHOLDER.id}
-            name="userId"
+            name={isPassword ? "userPsw" : "userId"}
             autoComplete="new-password"
             type={visible ? "text" : "password"}
             required
