@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 400px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.headerTextContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.signupLink {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ctaButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--color-gray-10);
+  border: none;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  cursor: pointer;
+}

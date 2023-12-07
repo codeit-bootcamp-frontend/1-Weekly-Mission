@@ -6,14 +6,16 @@ import eyeOffIcon from "@/public/icons/eye-off.svg";
 
 interface InputProps {
   placeholder: string;
-  inputType: string;
+  inputType?: string;
   errorMessage?: string;
+  inputName: string;
 }
 
 function Input({
   placeholder,
   inputType = "default",
   errorMessage = "",
+  inputName,
 }: InputProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const passwordInputRef = useRef<HTMLInputElement>(null);
@@ -32,6 +34,7 @@ function Input({
 
   return (
     <form className={styles.form}>
+      <p className={styles.inputName}>{inputName}</p>
       <div className={`${styles.inputWrapper}`}>
         <input
           placeholder={placeholder}
