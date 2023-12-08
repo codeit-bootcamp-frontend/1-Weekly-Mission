@@ -15,7 +15,8 @@
     "react-dom": "^18",
     "react-lottie-player": "^1.5.5",
     "react-spinners": "^0.13.8",
-    "styled-components": "^6.1.1"
+    "styled-components": "^6.1.1",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
