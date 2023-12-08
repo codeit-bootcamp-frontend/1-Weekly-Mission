@@ -7,10 +7,10 @@ const formatDate = (value) => {
   return formattedCreatedAt;
 };
 
-function getTimeDiff(target, base = new Date()) {
+const getTimeDiff = (target, base = new Date()) => {
   const targetDate = new Date(target);
   return base - targetDate;
-}
+};
 
 const prettyFormatTimeDiff = (diff) => {
   const minutes = Math.floor(diff / (1000 * 60));
@@ -98,6 +98,10 @@ const shareFacebook = (route) => {
   window.open(facebookShareURL, "_blank");
 };
 
+const typeCheckParam = (type, param) => {
+  return typeof param === type ? +param : undefined;
+};
+
 const blurDataURL =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAIAAADETxJQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMUlEQVR4nGPIrOzOqWhbuHYvw7yNBxK9w/7/+s+g7xSiJaG+eeNBBgY2UUev6LKyZgByfxCvAnvQuAAAAABJRU5ErkJggg==";
 
@@ -107,5 +111,6 @@ export {
   prettyFormatTimeDiff,
   shareKakao,
   shareFacebook,
+  typeCheckParam,
   blurDataURL,
 };
