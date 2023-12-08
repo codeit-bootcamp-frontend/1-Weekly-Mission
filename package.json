@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@svgr/webpack": "^8.1.0",
     "@types/styled-components": "^5.1.32",
     "axios": "^1.6.2",
     "babel-plugin-styled-components": "^2.1.4",

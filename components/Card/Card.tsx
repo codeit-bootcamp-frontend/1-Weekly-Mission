@@ -3,9 +3,6 @@ import { MouseEvent, useState } from "react";
 import { timeForToday } from "@/lib/utils/moment";
 import { DropDown } from "@/components";
 import { LinksData, FoldersData } from "@/lib/types/data";
-import noImageIMG from "@/public/noImage.svg";
-import starIMG from "@/public/star.svg";
-import chosenStarIMG from "@/public/chosenStar.svg";
 import * as Styled from "./StyledCard";
 
 interface Props {
