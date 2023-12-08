@@ -16,7 +16,6 @@ export const SignLayout = ({ logo, message, form, sns }: SignLayoutProps) => {
     <div className={cx('layout')}>
       <div className={cx('container')}>
         <div className={cx('navigator')}>
-          {/* 크기 조절해야 함 */}
           {logo}
           {message}
         </div>
