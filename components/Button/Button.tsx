@@ -10,7 +10,7 @@ interface Props {
   children: ReactNode;
 }
 
-const Button = ({ isLoading = false, onClick, size, children }: Props) => {
+function Button({ isLoading = false, onClick, size, children }: Props) {
   let buttonStyles: CSSProperties = {};
 
   if (typeof size === "number") {
@@ -33,6 +33,6 @@ const Button = ({ isLoading = false, onClick, size, children }: Props) => {
       {children}
     </button>
   );
-};
+}
 
 export default Button;

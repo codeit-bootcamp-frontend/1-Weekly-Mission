@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 import getUser from "../../api/getUser";
 import { useRouter } from "next/router";
 
-const LoginButton = () => {
+function LoginButton() {
   const router = useRouter();
   const setUserId = useSetUserId();
   const [userData, setUserData] = useState<UserData>();
@@ -36,6 +36,6 @@ const LoginButton = () => {
       )}
     </div>
   );
-};
+}
 
 export default LoginButton;

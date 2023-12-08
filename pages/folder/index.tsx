@@ -1,6 +1,6 @@
-import { GetServerSidePropsContext } from "next";
 import { useState } from "react";
 import Head from "next/head";
+import { GetServerSidePropsContext } from "next";
 
 import AddLink from "@/components/AddLink/AddLink";
 import FolderUtils from "@/components/FolderUtils/FolderUtils";
@@ -29,7 +29,7 @@ interface Props {
   linksListData: LinksData;
 }
 
-const FolderPage = ({ folderListData, linksListData }: Props) => {
+export default function FolderPage({ folderListData, linksListData }: Props) {
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [inputValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState<LinksData | undefined>(
@@ -95,9 +95,7 @@ const FolderPage = ({ folderListData, linksListData }: Props) => {
       <Footer />
     </>
   );
-};
-
-export default FolderPage;
+}
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext

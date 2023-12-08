@@ -13,7 +13,7 @@ interface Props {
   onClick: () => void;
 }
 
-const SearchBar = ({ inputValue, onSubmit, onChange, onClick }: Props) => {
+function SearchBar({ inputValue, onSubmit, onChange, onClick }: Props) {
   return (
     <div className={styles.search}>
       <div className={styles.searchContainer}>
@@ -45,6 +45,6 @@ const SearchBar = ({ inputValue, onSubmit, onChange, onClick }: Props) => {
       </div>
     </div>
   );
-};
+}
 
 export default SearchBar;

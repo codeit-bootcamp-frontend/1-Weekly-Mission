@@ -9,7 +9,7 @@ interface Props {
   currentFolderName: string;
 }
 
-const EditFolderNameModalContent = ({ currentFolderName }: Props) => {
+function EditFolderNameModalContent({ currentFolderName }: Props) {
   const [inputValue, setInputValue] = useState(currentFolderName);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +30,6 @@ const EditFolderNameModalContent = ({ currentFolderName }: Props) => {
       </div>
     </>
   );
-};
+}
 
 export default EditFolderNameModalContent;

@@ -10,7 +10,7 @@ interface Props {
   children: ReactNode;
 }
 
-const CategoryList = ({ folderListData, currentFolder, children }: Props) => {
+function CategoryList({ folderListData, currentFolder, children }: Props) {
   const folderListDataArray = folderListData?.data?.sort((a, b) => a.id - b.id);
 
   return (
@@ -36,6 +36,6 @@ const CategoryList = ({ folderListData, currentFolder, children }: Props) => {
       {children}
     </div>
   );
-};
+}
 
 export default CategoryList;

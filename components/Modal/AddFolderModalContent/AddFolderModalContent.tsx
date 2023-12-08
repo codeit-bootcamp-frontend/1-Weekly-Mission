@@ -3,7 +3,7 @@ import styles from "./AddFolderModalContent.module.css";
 import ModalButton from "../ModalButton/ModalButton";
 import ModalTitle from "../ModalTitle/ModalTitle";
 
-const AddFolderModalContent = () => {
+function AddFolderModalContent() {
   return (
     <>
       <ModalTitle>폴더 추가</ModalTitle>
@@ -13,6 +13,6 @@ const AddFolderModalContent = () => {
       </div>
     </>
   );
-};
+}
 
 export default AddFolderModalContent;

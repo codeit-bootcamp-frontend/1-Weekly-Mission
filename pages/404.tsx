@@ -7,7 +7,7 @@ import Button from "@/components/Button/Button";
 
 import styles from "@/assets/styles/NotFound.module.css";
 
-const NotFound = () => {
+export default function NotFound() {
   return (
     <>
       <Head>
@@ -28,5 +28,4 @@ const NotFound = () => {
       <Footer />
     </>
   );
-};
-export default NotFound;
+}

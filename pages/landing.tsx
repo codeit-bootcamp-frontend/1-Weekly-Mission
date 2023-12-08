@@ -14,7 +14,7 @@ import Button from "@/components/Button/Button";
 import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
 
-const Landing = () => {
+export default function Landing() {
   return (
     <>
       <Head>
@@ -139,6 +139,4 @@ const Landing = () => {
       <Footer />
     </>
   );
-};
-
-export default Landing;
+}

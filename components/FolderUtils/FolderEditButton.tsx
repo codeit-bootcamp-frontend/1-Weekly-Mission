@@ -12,7 +12,7 @@ interface Props {
   text: string;
 }
 
-const FolderEditButton = ({ currentFolderName, src, text }: Props) => {
+function FolderEditButton({ currentFolderName, src, text }: Props) {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -43,6 +43,6 @@ const FolderEditButton = ({ currentFolderName, src, text }: Props) => {
       </button>
     </>
   );
-};
+}
 
 export default FolderEditButton;

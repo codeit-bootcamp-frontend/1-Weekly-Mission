@@ -5,12 +5,12 @@ interface Props {
   children: ReactNode;
 }
 
-const FolderUtils = ({ children }: Props) => {
+function FolderUtils({ children }: Props) {
   return (
     <div className={styles.folderUtils}>
       <div className={styles.container}>{children}</div>
     </div>
   );
-};
+}
 
 export default FolderUtils;

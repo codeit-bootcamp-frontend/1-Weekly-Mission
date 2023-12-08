@@ -9,7 +9,7 @@ interface Props {
   folderName?: string;
 }
 
-const FolderInfo = ({ profileImage, userName, folderName }: Props) => {
+function FolderInfo({ profileImage, userName, folderName }: Props) {
   return (
     <div className={styles.folderInfo}>
       <div className={styles.profileInfo}>
@@ -25,6 +25,6 @@ const FolderInfo = ({ profileImage, userName, folderName }: Props) => {
       <h1 className={styles.folderName}>{folderName}</h1>
     </div>
   );
-};
+}
 
 export default FolderInfo;

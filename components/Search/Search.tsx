@@ -14,7 +14,7 @@ interface Props {
   onChange: Dispatch<SetStateAction<LinksData | undefined>>;
 }
 
-const Search = ({ linksListData, onChange }: Props) => {
+function Search({ linksListData, onChange }: Props) {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +63,6 @@ const Search = ({ linksListData, onChange }: Props) => {
       onClick={handleResetValue}
     />
   );
-};
+}
 
 export default Search;

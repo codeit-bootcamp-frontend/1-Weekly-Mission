@@ -16,7 +16,7 @@ const addLinkOptions = {
   threshold: 1,
 };
 
-const AddLink = ({ children }: Props) => {
+function AddLink({ children }: Props) {
   const addLinkRef = useRef<HTMLDivElement>(null);
   const {
     navBar: { isNavBarVisible },
@@ -60,6 +60,6 @@ const AddLink = ({ children }: Props) => {
       {children}
     </div>
   );
-};
+}
 
 export default AddLink;

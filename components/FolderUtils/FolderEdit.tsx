@@ -14,7 +14,7 @@ const buttonsData = [
   { image: deleteImg, text: "삭제" },
 ];
 
-const FolderEdit = ({ currentFolderName }: Props) => {
+function FolderEdit({ currentFolderName }: Props) {
   return (
     <div>
       <ul className={styles.folderEdit}>
@@ -32,6 +32,6 @@ const FolderEdit = ({ currentFolderName }: Props) => {
       </ul>
     </div>
   );
-};
+}
 
 export default FolderEdit;

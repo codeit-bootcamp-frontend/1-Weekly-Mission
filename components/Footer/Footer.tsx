@@ -41,7 +41,7 @@ const footerOptions = {
   threshold: 1,
 };
 
-const Footer = () => {
+function Footer() {
   const footerRef = useRef<HTMLDivElement>(null);
   const {
     footer: { setIsFooterVisible },
@@ -91,6 +91,6 @@ const Footer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

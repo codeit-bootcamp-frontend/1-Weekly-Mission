@@ -11,7 +11,7 @@ interface InputProps {
   onBlur?: () => void;
 }
 
-const Input = ({ isPassword, invalidText, onBlur }: InputProps) => {
+function Input({ isPassword, invalidText, onBlur }: InputProps) {
   const [value, setValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -68,6 +68,6 @@ const Input = ({ isPassword, invalidText, onBlur }: InputProps) => {
       ) : null}
     </>
   );
-};
+}
 
 export default Input;

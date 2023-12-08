@@ -19,7 +19,7 @@ const navBarOptions = {
   threshold: 0.5,
 };
 
-const NavBar = () => {
+function NavBar() {
   const navBarRef = useRef<HTMLDivElement>(null);
   const {
     navBar: { setIsNavBarVisible },
@@ -47,6 +47,6 @@ const NavBar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default NavBar;

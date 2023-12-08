@@ -8,7 +8,7 @@ interface Props {
   children?: ReactNode;
 }
 
-const AddLinkButton = ({ inputValue, children }: Props) => {
+function AddLinkButton({ inputValue, children }: Props) {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -33,6 +33,6 @@ const AddLinkButton = ({ inputValue, children }: Props) => {
       </button>
     </>
   );
-};
+}
 
 export default AddLinkButton;
