@@ -1,7 +1,7 @@
 import { MouseEvent, useContext, useEffect } from "react";
+import * as S from "./modalStyles/ShareFolderStyles";
 import { FolderContext } from "@/context/FolderContext";
 
-import styled from "styled-components";
 import ModalTitle from "./ModalTitle";
 
 import { shareOnKakao } from "@/common/libraries/shareKakaoLink";
@@ -49,61 +49,19 @@ export default function ShareFolder({ currentFolderName }: ShareFolderProps) {
   }, []);
 
   return (
-    <Contents>
-      <Description>
+    <S.Contents>
+      <S.Description>
         <ModalTitle label="폴더 공유" />
-        <Info>{currentFolderName}</Info>
-      </Description>
-      <IconsContainer onClick={handleShareFolder}>
+        <S.Info>{currentFolderName}</S.Info>
+      </S.Description>
+      <S.IconsContainer onClick={handleShareFolder}>
         {icons.map((icon, index) => (
-          <Icons key={index}>
-            <SnsImage src={`/sns/${icon.action}.svg`} alt="sns" id={icon.action} />
-            <Name>{icon.name}</Name>
-          </Icons>
+          <S.Icons key={index}>
+            <S.SocialImage src={`/sns/${icon.action}.svg`} alt="sns" id={icon.action} />
+            <S.Name>{icon.name}</S.Name>
+          </S.Icons>
         ))}
-      </IconsContainer>
-    </Contents>
+      </S.IconsContainer>
+    </S.Contents>
   );
 }
-
-const Contents = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-`;
-
-const Description = styled.div`
-  width: 100%;
-  text-align: center;
-`;
-
-const Info = styled.p`
-  margin: 0;
-  padding-top: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--color-gray);
-`;
-
-const IconsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-`;
-
-const Icons = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-`;
-
-const SnsImage = styled.img`
-  width: 42px;
-  height: 42px;
-  cursor: pointer;
-`;
-
-const Name = styled.span`
-  font-size: 0.8rem;
-`;

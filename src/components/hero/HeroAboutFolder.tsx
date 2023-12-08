@@ -1,14 +1,13 @@
 import { useState } from "react";
+import * as S from "./HeroStyles";
 
-import styled from "styled-components";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
-import LinkIcon from "public/assets/link.svg";
 import Button from "@/components/button/Basic";
 import ModalPortal from "@/components/ModalPortal";
 import ModalContainer from "@/components/modal/ModalContainer";
 import AddLink from "@/components/modal/AddLink";
-import AddLinkFolderInput from "@/components/inputs/AddLinkFolder";
+import AddLinkFolderInput from "@/components/inputs/AddLinkFolderInput";
 
 interface FolderHeroProps {
   addLinkValue: string;
@@ -47,60 +46,26 @@ export default function FolderHero({
           </ModalContainer>
         </ModalPortal>
       )}
-      <LinkContainer>
-        <LinkForm ref={ref}>
-          <Icon />
+      <S.LinkContainer>
+        <S.LinkForm ref={ref}>
+          <S.Icon />
           <AddLinkFolderInput onChangeAddLink={onChangeAddLink} />
-          <ButtonContainer>
+          <S.ButtonContainer>
             <Button size="small" label="추가하기" onClick={handleInput} />
-          </ButtonContainer>
-        </LinkForm>
-      </LinkContainer>
-      <FixedLinkContainer>
+          </S.ButtonContainer>
+        </S.LinkForm>
+      </S.LinkContainer>
+      <S.FixedLinkContainer>
         {showFixedAddLink && (
-          <LinkForm>
-            <Icon />
+          <S.LinkForm>
+            <S.Icon />
             <AddLinkFolderInput onChangeAddLink={onChangeAddLink} />
-            <ButtonContainer>
+            <S.ButtonContainer>
               <Button size="small" label="추가하기" onClick={handleInput} />
-            </ButtonContainer>
-          </LinkForm>
+            </S.ButtonContainer>
+          </S.LinkForm>
         )}
-      </FixedLinkContainer>
+      </S.FixedLinkContainer>
     </>
   );
 }
-
-const LinkContainer = styled.section`
-  text-align: center;
-  background-color: var(--color-primary-varient);
-`;
-
-const FixedLinkContainer = styled(LinkContainer)`
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  z-index: 1;
-`;
-
-const LinkForm = styled.div`
-  padding: 1.5rem 2rem;
-  position: relative;
-  max-width: 55rem;
-  width: 100%;
-  margin: auto;
-`;
-
-const Icon = styled(LinkIcon)`
-  position: absolute;
-  top: 50%;
-  left: 3.5rem;
-  transform: translate(-50%, -50%);
-`;
-
-const ButtonContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(-50%, -50%);
-`;

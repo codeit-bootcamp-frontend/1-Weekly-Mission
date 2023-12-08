@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import * as S from "./InputStyle";
+import * as S from "./InputsStyles";
 
 interface InputProps {
   inputType?: string;

@@ -1,5 +1,5 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
-import * as S from "./InputStyle";
+import * as S from "./InputsStyles";
 import Input from "./Input";
 
 interface InputFormProps {
