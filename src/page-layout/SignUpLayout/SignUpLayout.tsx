@@ -52,7 +52,7 @@ export const SignUpLayout = ({
   );
   const EyeIcon = useMemo(
     () => (
-      <button
+      <div
         className={cx("eye_button")}
         onClick={(e) => {
           e.preventDefault();
@@ -60,7 +60,7 @@ export const SignUpLayout = ({
         }}
       >
         {isPasswordVisible ? <EyeOnIcon /> : <EyeOffIcon />}
-      </button>
+      </div>
     ),
     [isPasswordVisible]
   );
