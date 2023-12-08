@@ -1,18 +1,14 @@
 import Link from "next/link";
-import Input from "src/components/Input/Input";
-import { INPUT_TYPE } from "src/constants/input";
 import { styled } from "styled-components";
 
 export default function Home() {
   return (
     <>
-      <Input
-        type={INPUT_TYPE.password.type}
-        placeholder={INPUT_TYPE.password.placeholder}
-        errorMsg={INPUT_TYPE.password.errorMsg}
-      />
+      <Link href={"/signin"}>
+        <StyledButton>🔑 로그인 페이지</StyledButton>
+      </Link>
       <Link href={"/folder"}>
-        <StyledButton>🗂️ 폴더 페이지 이동</StyledButton>
+        <StyledButton>🗂️ 폴더 페이지</StyledButton>
       </Link>
     </>
   );
