@@ -17,7 +17,7 @@
   --color-primary: var(--color-purple);
   --color-primary-varient: var(--color-light-gray);
   --color-primary-bg: var(--color-light-gray);
-  --color-text: var(--color-gray-30);
+  --color-text: var(--color-gray);
 
   /* Button Gradient */
   --gra-purpleblue-to-skyblue: linear-gradient(
