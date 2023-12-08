@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
-
 export interface useBooleanOutput {
-  isTrue: boolean;
-  setIsTrue: Dispatch<SetStateAction<boolean>>;
+  isOn: boolean;
   toggle: () => void;
 }
+
+// import { Dispatch, SetStateAction } from "react";
+// setIsOn: Dispatch<SetStateAction<boolean>>;
