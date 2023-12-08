@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Logo from "src/assets/icon/logo.svg";
 import Button from "src/components/Button/Button";
 import Input from "src/components/Input/Input";
@@ -8,38 +8,14 @@ import InputLabel from "src/components/InputLabel/InputLabel";
 import SignText from "src/components/SignText/SignText";
 import SocialLogin from "src/components/SocialLogin/SocialLogin";
 import { INPUT_TYPE } from "src/constants/input";
-import { checkToken, getToken } from "src/utils/aboutToken";
+import { useLogin } from "src/hook/SignIn/useLogin";
+import { checkToken } from "src/utils/aboutToken";
 import styles from "styles/SignPage.module.css";
-import { postLogin } from "./api/api";
 
 function SignIn() {
   const router = useRouter();
   const { email, password } = INPUT_TYPE;
-  const [status, setStatus] = useState(0);
-  const [account, setAccount] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus(0);
-    const loginInfo = await postLogin(account);
-
-    if (loginInfo.data) {
-      getToken("access-token", loginInfo.data.accessToken);
-      router.push("/folder");
-    } else {
-      setStatus(loginInfo.error.status);
-    }
-  };
-
-  const handleEnter = (e: React.KeyboardEvent<HTMLFormElement>) => {
-    if (e.key === "Enter") {
-      handleLogin(e);
-      setStatus(0);
-    }
-  };
+  const { handleEnter, handleLogin, account, setAccount, status } = useLogin();
 
   useEffect(() => {
     if (checkToken()) {
