@@ -1,14 +1,14 @@
-import { ReactNode } from 'react';
+import { ReactNode, RefObject } from 'react';
+import { DEFAULT_USER_ID } from '@/services/config/default';
 import Navigator from '@/components/Navigator';
 import Footer from '@/components/Footer';
-import { DEFAULT_USER_ID } from '@/services/config/default';
 
 interface Props {
   children: ReactNode;
   isLoggedIn?: boolean;
   userId?: number;
-  navRef?: React.RefObject<HTMLDivElement>;
-  footerRef?: React.RefObject<HTMLDivElement>;
+  navRef?: RefObject<HTMLDivElement>;
+  footerRef?: RefObject<HTMLDivElement>;
 }
 
 function Layout({

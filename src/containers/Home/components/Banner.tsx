@@ -14,8 +14,8 @@ function Banner() {
           쉽게 저장하고 관리해 보세요
         </h1>
         <Link
-          className='w-[20rem] m-24pxr tablet:w-[35rem] tablet:m-40pxr'
           href='/signup'
+          className='w-[20rem] m-24pxr tablet:w-[35rem] tablet:m-40pxr'
         >
           <Button>링크 추가하기</Button>
         </Link>

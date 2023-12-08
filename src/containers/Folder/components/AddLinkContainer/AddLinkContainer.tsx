@@ -1,3 +1,4 @@
+import { RefObject } from 'react';
 import * as S from './AddLinkContainer.style';
 import { useState } from 'react';
 import useModal from '@/hooks/useModal';
@@ -5,7 +6,7 @@ import { IconLink } from '@/public/svgs';
 
 interface Props {
   userId: number;
-  addLinkRef: React.RefObject<HTMLDivElement>;
+  addLinkRef: RefObject<HTMLDivElement>;
   float: boolean;
 }
 
