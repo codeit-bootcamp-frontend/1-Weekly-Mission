@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import eyeOnIcon from "../public/input/signin-eye-on.png";
-import eyeOffIcon from "../public/input/signin-eye-off.png";
+import eyeOnIcon from "../../public/images/input/signin-eye-on.png";
+import eyeOffIcon from "../../public/images/input/signin-eye-off.png";
 import Image from "next/image";
 import { useState } from "react";
 

@@ -1,3 +1,10 @@
+import Input from "@/component/common/input";
+
 export default function SignIn() {
-    return <div>signin</div>;
+    return (
+        <>
+            <Input />
+            <Input passwd />
+        </>
+    );
 }
