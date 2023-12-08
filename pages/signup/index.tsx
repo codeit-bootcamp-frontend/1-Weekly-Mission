@@ -20,7 +20,7 @@ const Signup = () => {
       }
       message={
         <p>
-          이미 회원이신가요? <Link href="/signup">로그인하기</Link>
+          이미 회원이신가요? <Link href="/signin">로그인하기</Link>
         </p>
       }
       form={

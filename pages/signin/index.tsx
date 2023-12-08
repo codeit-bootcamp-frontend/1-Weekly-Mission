@@ -6,11 +6,20 @@ import Link from 'next/link';
 import { SnsLogin } from '@/src/sign/ui-sns/SnsLogin';
 import { FormInput } from '@/src/sign/ui-form-input/FormInput';
 import { FormButton } from '@/src/sign/ui-form-button/FormButton';
+import { useForm } from 'react-hook-form';
 
 const cx = classNames.bind(styles);
 
 const Signin = () => {
-  const handelSubmit = () => {};
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
   return (
     <SignLayout
       logo={
@@ -24,9 +33,35 @@ const Signin = () => {
         </p>
       }
       form={
-        <form onSubmit={handelSubmit}>
-          <FormInput label="이메일" type="text" />
-          <FormInput label="비밀번호" type="password" />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FormInput
+            label="이메일"
+            type="text"
+            {...register('email', {
+              required: '이메일은 필수 입력 항목입니다.',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: '유효한 이메일 주소를 입력하세요.',
+              },
+            })}
+          />
+          {errors.email && <p>{errors.email.message as string}</p>}
+          <FormInput
+            label="비밀번호"
+            type="password"
+            {...register('password', {
+              required: '비밀번호는 필수 입력 항목입니다.',
+              minLength: {
+                value: 6,
+                message: '비밀번호는 최소 6자 이상이어야 합니다.',
+              },
+              pattern: {
+                value: /^(?=.*[!@#$%^&*])/,
+                message: '유효한 이메일 주소를 입력하세요.',
+              },
+            })}
+          />
+          {errors.password && <p>{errors.password.message as string}</p>}
           <button>
             <FormButton>로그인</FormButton>
           </button>
