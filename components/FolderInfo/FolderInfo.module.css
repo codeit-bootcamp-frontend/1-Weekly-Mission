@@ -18,8 +18,8 @@
 }
 
 .profileImg {
-  object-fit: cover;
   width: 6rem;
+  object-fit: cover;
   border-radius: 50%;
 }
 
