@@ -2,16 +2,16 @@ import logo from "@/src/image/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import useGetSampleUser from "../../hooks/useGetSampleUser";
-import useGetUser from "../../hooks/useGetUser";
+import useGetSampleUser from "@/hooks/useGetSampleUser";
+import useGetUser from "@/hooks/useGetUser";
 import NavLogin from "./NavLogin";
 import NavProfile from "./NavProfile";
 
 interface NavProps {
-  pageType: string;
+  pageType?: string;
 }
 
-const Nav = ({ pageType }: NavProps) => {
+const Nav = ({ pageType = "" }: NavProps) => {
   const sharedUser = useGetSampleUser();
   const folderUser = useGetUser();
   const user = pageType === "shared" ? sharedUser : folderUser;

@@ -1,5 +1,5 @@
-import Nav from "@/components/nav/Nav";
-import HeaderAddLink from "@/components/header/HeaderAddLink";
+import Nav from "@/components/common/nav/Nav";
+import HeaderAddLink from "@/components/common/header/HeaderAddLink";
 import Footer from "@/components/common/Footer";
 import FolderContainer from "@/components/folder/FolderContainer";
 import { useEffect, useRef, useState } from "react";
@@ -38,11 +38,7 @@ const FolderPage = () => {
         <title>Folder</title>
       </Head>
       <Nav pageType="folder" />
-      <HeaderAddLink
-        headerRef={headerRef}
-        isSticky={isSticky}
-        fixedWrapperRef={fixedWrapperRef}
-      />
+      <HeaderAddLink headerRef={headerRef} isSticky={isSticky} fixedWrapperRef={fixedWrapperRef} />
       <FolderContainer />
       <Footer />
     </>

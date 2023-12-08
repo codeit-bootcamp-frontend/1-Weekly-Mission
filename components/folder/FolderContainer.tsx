@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import SearchBar from "../common/SearchBar";
 import FolderList from "./FolderList";
-import CardList from "../card/CardList";
+import CardList from "../common/card/CardList";
 
 const FolderContainer = () => {
   const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);

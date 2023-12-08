@@ -3,7 +3,7 @@
 export interface SampleOwnerType {
   id: number;
   name: string;
-  profileImageSource: string | null;
+  profileImageSource: string;
 }
 export interface SampleLinksType {
   id: number;

@@ -4,19 +4,22 @@ import { FormEvent } from "react";
 
 interface SignFormProps {
   signup?: boolean;
+  children: string;
 }
 
-const SignForm = ({ signup }: SignFormProps) => {
+const SignForm = ({ signup, children }: SignFormProps) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <SignInput label="이메일" inputType="email" />
-      <SignInput label="비밀번호" inputType="password" />
-      {signup && <SignInput label="비밀번호 확인" inputType="password" />}
-      <SubmitButton type="submit">확인</SubmitButton>
+      <InputWrapper>
+        <SignInput label="이메일" inputType="email" />
+        <SignInput label="비밀번호" inputType="password" />
+        {signup && <SignInput label="비밀번호 확인" inputType="password" />}
+      </InputWrapper>
+      <SubmitButton type="submit">{children}</SubmitButton>
     </Form>
   );
 };
@@ -25,7 +28,13 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  width: 35rem;
+  width: 40rem;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
 `;
 
 const SubmitButton = styled.button`

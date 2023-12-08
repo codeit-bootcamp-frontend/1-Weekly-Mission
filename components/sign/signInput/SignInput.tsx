@@ -45,7 +45,7 @@ const SignInput = ({ label, inputType }: InputProps) => {
       <Label>{label}</Label>
       <Input type={inputType === "email" ? "email" : "password"} ref={passwordRef} placeholder={label} value={value} onChange={handleInputChange} onBlur={handleBlur} $isError={errorMessage !== ""} />
       {inputType === "password" && <ToggleEyeButton src={eyeToggle} alt="눈 버튼" width={16} height={16} onClick={handleEyeButtonClick} />}
-      <ErrorMessage>{errorMessage}</ErrorMessage>
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </InputBox>
   );
 };
@@ -55,7 +55,7 @@ const InputBox = styled.div`
 
   display: flex;
   flex-direction: column;
-  row-gap: 1.2rem;
+  gap: 1.2rem;
 `;
 
 const Label = styled.label`
@@ -65,7 +65,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input<{ $isError: boolean }>`
-  width: 35rem;
+  width: 100%;
 
   padding: 1.8rem 1.5rem;
   border-radius: 0.8rem;

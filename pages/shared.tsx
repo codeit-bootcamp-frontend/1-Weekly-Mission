@@ -1,4 +1,4 @@
-import Nav from "@/components/nav/Nav";
+import Nav from "@/components/common/nav/Nav";
 import Footer from "@/components/common/Footer";
 import SharedContainer from "@/components/shared/SharedContainer";
 import Head from "next/head";
