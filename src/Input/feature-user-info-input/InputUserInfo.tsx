@@ -1,5 +1,12 @@
 import Image from "next/image";
-import { ChangeEvent, FocusEvent, FormEvent, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  FocusEvent,
+  FormEvent,
+  SetStateAction,
+  useState,
+} from "react";
 import styles from "./InputUserInfo.module.scss";
 import classNames from "classnames/bind";
 import {
@@ -9,20 +16,33 @@ import {
   PLACEHOLDER,
   VALID_EMAIL_REG,
   VALID_PSW_REG,
+  OVERLAP_EMAIL,
 } from "./constants.js";
+import { PathName } from "../ui-input-title/SignTitle";
 
 const cx = classNames.bind(styles);
 
 interface InputUserInfoProps {
   isPassword: boolean;
   checkPassword?: boolean;
+  onBlur?: Dispatch<SetStateAction<string>>;
+  isNotSamePasswordValue?: boolean;
+  pathName?: PathName;
 }
 
-function InputUserInfo({ isPassword, checkPassword }: InputUserInfoProps) {
+function InputUserInfo({
+  isPassword,
+  checkPassword,
+  onBlur,
+  isNotSamePasswordValue,
+  pathName,
+}: InputUserInfoProps) {
   const [value, setValue] = useState<string | number>("");
   const [visible, setVisible] = useState(isPassword ? false : true);
   const [isWrongValue, setIsWrongValue] = useState(false);
   const [hasValue, setHasValue] = useState(true);
+  const [isOverlapValue, setIsOverlapValue] = useState(false);
+  const isValidValue = hasValue && !isWrongValue && !isNotSamePasswordValue;
 
   const eyeOnImage = "/images/eye-on.svg";
   const eyeOffImage = "/images/eye-off.svg";
@@ -44,12 +64,18 @@ function InputUserInfo({ isPassword, checkPassword }: InputUserInfoProps) {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!isValidValue) return;
 
     //데이터요청
   }
 
-  function handleBlur(e: FocusEvent<HTMLInputElement>, isPassword: boolean) {
+  function handleBlur(
+    e: FocusEvent<HTMLInputElement>,
+    isPassword: boolean,
+    onBlur?: Dispatch<SetStateAction<string>>
+  ) {
     if (!e.target.value) {
+      //값이 있는지 판단
       setHasValue(false);
       setIsWrongValue(true);
     } else {
@@ -58,21 +84,34 @@ function InputUserInfo({ isPassword, checkPassword }: InputUserInfoProps) {
     }
 
     if (!isPassword) {
+      //유효한 값인지 판단
       if (!VALID_EMAIL_REG.test(e.target.value)) {
+        // 이메일 판단
         setIsWrongValue(true);
         return;
       }
-    } else {
-      if (!VALID_PSW_REG.test(e.target.value)) {
+
+      if (e.target.value === OVERLAP_EMAIL && pathName?.pathName.isSignupPage) {
+        setIsOverlapValue(true);
         setIsWrongValue(true);
         return;
       }
     }
+    if (isPassword) {
+      if (!VALID_PSW_REG.test(e.target.value)) {
+        // 비밀번호 판단
+        setIsWrongValue(true);
+        return;
+      }
+    }
+    if (!onBlur) return;
+    onBlur(e.target.value);
   }
 
   function handleFocus() {
     setHasValue(true);
     setIsWrongValue(false);
+    setIsOverlapValue(false);
   }
 
   return (
@@ -94,7 +133,7 @@ function InputUserInfo({ isPassword, checkPassword }: InputUserInfoProps) {
             type={visible ? "text" : "password"}
             required
             onChange={handleChange}
-            onBlur={(e) => handleBlur(e, isPassword)}
+            onBlur={(e) => handleBlur(e, isPassword, onBlur)}
             onFocus={handleFocus}
             value={value}
           />
@@ -109,7 +148,7 @@ function InputUserInfo({ isPassword, checkPassword }: InputUserInfoProps) {
             />
           ) : null}
         </label>
-        {!hasValue ? (
+        {!hasValue ? ( // 값이 없을 때 메시지 출력
           isPassword ? (
             <span className={cx("wrongValueMessage")}>
               {WRONG_VALUE_MESSAGE.password}
@@ -121,7 +160,15 @@ function InputUserInfo({ isPassword, checkPassword }: InputUserInfoProps) {
           )
         ) : null}
 
-        {isWrongValue && hasValue ? (
+        {isNotSamePasswordValue &&
+          hasValue &&
+          !isWrongValue && ( // 비밀번호 확인시 값이 다를 때 메시지 출력
+            <span className={cx("wrongValueMessage")}>
+              {WRONG_VALUE_MESSAGE.notSamePassword}
+            </span>
+          )}
+
+        {isWrongValue && hasValue && !isOverlapValue ? ( // 유효하지 않은 값일 때 메시지 출력
           isPassword ? (
             <span className={cx("wrongValueMessage")}>
               {WRONG_VALUE_MESSAGE.wrongPassword}
@@ -132,6 +179,12 @@ function InputUserInfo({ isPassword, checkPassword }: InputUserInfoProps) {
             </span>
           )
         ) : null}
+
+        {isOverlapValue && pathName?.pathName.isSignupPage && (
+          <span className={cx("wrongValueMessage")}>
+            {WRONG_VALUE_MESSAGE.overlapId}
+          </span>
+        )}
       </form>
     </div>
   );

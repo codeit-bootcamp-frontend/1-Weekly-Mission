@@ -7,8 +7,8 @@ import styles from "./SignTitle.module.scss";
 
 export interface PathName {
   pathName: {
-    isSigninPage: boolean;
-    isSignupPage: boolean;
+    isSigninPage?: boolean;
+    isSignupPage?: boolean;
   };
 }
 

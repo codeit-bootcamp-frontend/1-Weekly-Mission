@@ -7,9 +7,14 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const SignButton = ({ pathName }: PathName) => {
+
+  const handleClick = () => {
+
+  }
+
   return (
     <>
-      <button className={cx("sign-button")}>
+      <button className={cx("sign-button")} onClick={handleClick}>
         <Cta>
           <span className={cx("text")}>
             {pathName.isSigninPage ? TEXT.login : TEXT.join}
