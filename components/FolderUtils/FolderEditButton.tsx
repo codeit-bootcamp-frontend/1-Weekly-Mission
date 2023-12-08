@@ -1,10 +1,13 @@
-import { useState } from "react";
-import styles from "./FolderEdit.module.css";
-import ModalContainer from "../Modal/ModalContainer/ModalContainer";
-import DeleteFolderModalContent from "../Modal/DeleteFolderModalContent/DeleteFolderModalContent";
-import EditFolderNameModalContent from "../Modal/EditFolderNameModalContent/EditFolderNameModalContent";
-import ShareFolderModal from "../Modal/ShareFolderModalContent/ShareFolderModalContent";
 import Image from "next/image";
+
+import useModal from "@/hooks/useModal";
+
+import ModalContainer from "@/components/Modal/ModalContainer/ModalContainer";
+import DeleteFolderModalContent from "@/components/Modal/DeleteFolderModalContent/DeleteFolderModalContent";
+import EditFolderNameModalContent from "@/components/Modal/EditFolderNameModalContent/EditFolderNameModalContent";
+import ShareFolderModal from "@/components/Modal/ShareFolderModalContent/ShareFolderModalContent";
+
+import styles from "./FolderEdit.module.css";
 
 interface Props {
   currentFolderName: string;
@@ -13,14 +16,14 @@ interface Props {
 }
 
 function FolderEditButton({ currentFolderName, src, text }: Props) {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const { isOpenModal, openModal, closeModal } = useModal(false);
 
   const handleOpenModal = () => {
-    setIsOpenModal(true);
+    openModal();
   };
 
   const handleCloseModal = () => {
-    setIsOpenModal(false);
+    closeModal();
   };
   return (
     <>
