@@ -9,6 +9,11 @@ import { useRouter } from "next/router";
 
 const cx = classNames.bind(styles);
 
+type FormValues = {
+  email: string;
+  password: string;
+};
+
 type SignInLayoutProps = {
   titleContainer: ReactNode;
   socialContainer: ReactNode;
@@ -19,8 +24,12 @@ export const SignInLayout = ({
   socialContainer,
 }: SignInLayoutProps) => {
   const [signInError, setSignInError] = useState<boolean>(false);
-  const { register, handleSubmit, formState, getValues } = useForm<any>();
-  const { errors }: any = formState;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm<FormValues>();
   const router = useRouter();
 
   const onSubmit = async () => {

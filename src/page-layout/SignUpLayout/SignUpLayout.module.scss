@@ -61,9 +61,9 @@
   padding: 1.8rem 1.5rem;
   transition: border-color 0.2s ease-in-out;
 
-  // &::placeholder {
-  //   color: $color-gray60;
-  // }
+  &::placeholder {
+    color: $color-gray60;
+  }
 
   &:focus {
     border-color: $color-primary;

@@ -9,6 +9,12 @@ import { useRouter } from "next/router";
 
 const cx = classNames.bind(styles);
 
+type FormValues = {
+  email: string;
+  password: string;
+  passwordConfirm: string;
+};
+
 type SignUpLayoutProps = {
   titleContainer: ReactNode;
   socialContainer: ReactNode;
@@ -19,8 +25,12 @@ export const SignUpLayout = ({
   socialContainer,
 }: SignUpLayoutProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const { register, handleSubmit, formState, getValues } = useForm<any>();
-  const { errors }: any = formState;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm<FormValues>();
   const router = useRouter();
 
   const onSubmit = async () => {
@@ -51,7 +61,7 @@ export const SignUpLayout = ({
     () => (
       <div
         className={cx("eye_button")}
-        onClick={(e) => {
+        onClick={() => {
           e.preventDefault();
           setIsPasswordVisible(!isPasswordVisible);
         }}
