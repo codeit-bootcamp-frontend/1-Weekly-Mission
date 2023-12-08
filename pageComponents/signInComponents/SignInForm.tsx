@@ -3,9 +3,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
 import s from "./SignInForm.module.css";
 import SignFooter from "@/components/SignFooter";
-import getSignIn from "@/libs/getSignIn";
 import { useRouter } from "next/navigation";
 import { EMAIL_REGEX } from "@/consts/RegExp";
+import getStatus from "@/libs/getStatus";
 
 interface SignInFormInput {
   email: string;
@@ -25,12 +25,12 @@ const SignInForm = () => {
   }, []);
 
   const onSubmit: SubmitHandler<SignInFormInput> = async (data) => {
-    const result = await getSignIn(data.email, data.password);
-    if (result === undefined) {
+    const result = await getStatus(data.email, "/sign-in", data.password);
+    if (result.status !== 200) {
       setEmailErrorMessage("이메일을 확인해주세요.");
       setPasswordErrorMessage("비밀번호를 확인해주세요.");
     } else {
-      const accessToken = result?.data?.accessToken;
+      const accessToken = result?.data?.data?.accessToken;
       localStorage.setItem("accessToken", accessToken);
       router.push("/folder");
     }

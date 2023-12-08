@@ -5,8 +5,7 @@ import s from "./SignUpForm.module.css";
 import SignFooter from "@/components/SignFooter";
 import { useRouter } from "next/navigation";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "@/consts/RegExp";
-import getCheckEmail from "@/libs/getCheckEmail";
-import getSignUp from "@/libs/getSignUp";
+import getStatus from "@/libs/getStatus";
 
 interface SignInFormInput {
   email: string;
@@ -30,9 +29,9 @@ const SignUpForm = () => {
 
   const onSubmit: SubmitHandler<SignInFormInput> = async (data) => {
     if (emailVerified && passwordVerified && passwordConfirmVerified) {
-      const result = await getSignUp(data.email, data.password);
-      if (result !== undefined) {
-        const accessToken = result?.data?.accessToken;
+      const result = await getStatus(data.email, "/sign-up", data.password);
+      if (result.status === 200) {
+        const accessToken = result?.data?.data?.accessToken;
         localStorage.setItem("accessToken", accessToken);
         router.push("/folder");
       }
@@ -90,7 +89,7 @@ const SignUpForm = () => {
       setEmailErrorMessage("이메일을 입력해 주세요.");
       setEmailVerified(false);
     } else {
-      const result = await getCheckEmail(inputValue);
+      const result = await getStatus(inputValue, "/check-email");
       if (result.status !== 200) {
         event.target.classList.add(s.signInputOnBlur);
         setEmailErrorMessage(
