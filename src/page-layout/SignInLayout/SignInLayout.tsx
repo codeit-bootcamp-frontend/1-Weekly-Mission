@@ -11,10 +11,7 @@ const cx = classNames.bind(styles);
 
 type SignInLayoutProps = {
   titleContainer: ReactNode;
-  input: ReactNode;
-  passwordInput: ReactNode;
   socialContainer: ReactNode;
-  handleSubmit: any;
 };
 
 export const SignInLayout = ({

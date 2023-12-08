@@ -11,9 +11,6 @@ const cx = classNames.bind(styles);
 
 type SignUpLayoutProps = {
   titleContainer: ReactNode;
-  input: ReactNode;
-  passwordInput: ReactNode;
-  re_passwordInput: ReactNode;
   socialContainer: ReactNode;
 };
 
