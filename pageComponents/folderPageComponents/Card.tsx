@@ -6,7 +6,7 @@ import s from "./Card.module.css";
 import { MouseEvent } from "react";
 
 const Card = ({ data, fullFolderData }: FolderCardProps) => {
-  let {
+  const {
     created_at,
     description,
     folder_id,
@@ -16,8 +16,8 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
     updated_at,
     url,
   } = data;
-  image_source = image_source ?? "/images/blank-image.png";
-  const timePassed = getTimePassed(url, description, created_at, image_source);
+  const imageSource = image_source ?? "/images/blank-image.png";
+  const timePassed = getTimePassed(url, description, created_at, imageSource);
   const [isKebabClicked, setIsKebabClicked] = useState(false);
   const [isKebabDeleteClicked, setIsKebabDeleteClicked] = useState(false);
   const [isKebabAddClicked, setIsKebabAddClicked] = useState(false);
@@ -50,7 +50,7 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
       <Link href={url} target="_blank" rel="noreferrer" className={s.link}>
         <div className={s.imgContainer}>
           <Image
-            src={image_source}
+            src={imageSource}
             alt="card 이미지"
             className={s.cardImg}
             fill
