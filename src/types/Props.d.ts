@@ -62,7 +62,15 @@ interface ModalProps extends OnclickProps, ModalShareButtonProps {
   title?: string;
   subTitle?: string;
   buttonContent?: string;
-  folders: any[];
+  folders: [
+    {
+      created_at: string;
+      id: number;
+      link: { count: number };
+      name: string;
+      user_id: number;
+    }
+  ];
 }
 
 interface SubTitleProps {

@@ -43,7 +43,7 @@ function SignUp() {
     }
   };
 
-  const handleDuplicateCheck = async (e: any) => {
+  const handleDuplicateCheck = async (e: React.MouseEvent) => {
     e.preventDefault();
     setStatus(0);
     const duplicateEmail = await postDuplicationEmail(account);

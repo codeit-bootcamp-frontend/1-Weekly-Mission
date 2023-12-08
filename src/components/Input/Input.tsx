@@ -13,7 +13,7 @@ interface Input {
   placeholder: string;
   status?: number;
   account: { email: {}; password: {}; passwordCheck?: {} };
-  setAccount: any;
+  setAccount: any; // 이 부분 어떤 타입으로 해야될지...
 }
 
 function Input({ id, type, placeholder, status, account, setAccount }: Input) {
@@ -62,7 +62,7 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
     }
   };
 
-  const onChangeAccount = (e: any) => {
+  const onChangeAccount = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAccount({
       ...account,
       [e.target.name]: e.target.value,

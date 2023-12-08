@@ -1,4 +1,4 @@
-function getToken(result: any, tokenType: string) {
+function getToken(result: string, tokenType: string) {
   localStorage.setItem(result, tokenType);
 }
 

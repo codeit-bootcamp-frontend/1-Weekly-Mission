@@ -4,7 +4,7 @@ import styled from "styled-components";
 function ModalFolderList({ folders }: ModalProps) {
   return (
     <>
-      {folders.map((folder: any) => (
+      {folders.map((folder) => (
         <FolderList key={folder.id}>
           {folder.name}
           <LinkCount>{folder.link?.count}개 링크</LinkCount>

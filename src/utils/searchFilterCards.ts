@@ -1,4 +1,4 @@
-export function filterCardsSearch(cards: Card[], searchResult: string): any {
+export function filterCardsSearch(cards: Card[], searchResult: string) {
   const filteredCards = cards.filter((card) =>
     [
       card.url?.toLowerCase(),
