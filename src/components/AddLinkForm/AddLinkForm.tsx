@@ -18,11 +18,7 @@ function AddLinkForm({ isScrolled }: Props) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setShowFooter(true);
-      } else {
-        setShowFooter(false);
-      }
+      setShowFooter(entry.isIntersecting);
     });
 
     const currentRef = footerRef?.current;
