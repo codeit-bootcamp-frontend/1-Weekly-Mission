@@ -17,9 +17,6 @@ type SignUpLayoutProps = {
 
 export const SignUpLayout = ({
   titleContainer,
-  input,
-  passwordInput,
-  re_passwordInput,
   socialContainer,
 }: SignUpLayoutProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);

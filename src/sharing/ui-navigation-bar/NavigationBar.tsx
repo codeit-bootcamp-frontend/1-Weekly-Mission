@@ -30,7 +30,7 @@ export const NavigationBar = ({ profile, isSticky }: NavigationBarProps) => {
         {profile ? (
           <Profile profile={profile} />
         ) : (
-          <Link href={"/signIn"}>
+          <Link href={"/sign-in"}>
             <Cta>
               <span className={cx("signin")}>{TEXT.login}</span>
             </Cta>
