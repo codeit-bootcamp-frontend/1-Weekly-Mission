@@ -5,12 +5,12 @@ interface TokenData {
   refreshToken: string;
 }
 
-interface Result {
+interface SignInResult {
   data: TokenData;
 }
 
 export default async function getSignIn(email: string, password: string) {
-  let result: Result | undefined;
+  let result: SignInResult | undefined;
   await axios
     .post(`/sign-in`, {
       email: email,

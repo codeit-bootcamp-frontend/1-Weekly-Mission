@@ -1,17 +1,21 @@
-import axios from "@/libs/axios";
+import Axios from "@/libs/axios";
+import axios, { AxiosResponse, AxiosError } from "axios";
 
-export default async function getCheckEmail(email: string) {
-  let result: undefined;
-  await axios
-    .post(`/check-email`, {
+export default async function getCheckEmail(
+  email: string
+): Promise<AxiosResponse> {
+  try {
+    const result = await Axios.post(`/check-email`, {
       email: email,
-    })
-    .then((response) => {
-      console.log(response.data);
-      result = response.data;
-    })
-    .catch((error) => {
-      console.log(error.response);
     });
-  return result;
+    return result;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+      if (axiosError.response) {
+        return axiosError.response;
+      }
+    }
+    throw error;
+  }
 }

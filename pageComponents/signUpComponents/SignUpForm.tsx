@@ -91,7 +91,7 @@ const SignUpForm = () => {
       setEmailVerified(false);
     } else {
       const result = await getCheckEmail(inputValue);
-      if (result === undefined) {
+      if (result.status !== 200) {
         event.target.classList.add(s.signInputOnBlur);
         setEmailErrorMessage(
           "중복된 이메일입니다. 다른 이메일을 사용해 주세요."
