@@ -1,4 +1,3 @@
-import InputCheckPassword from "@/src/Input/feature-user-info-input/InputCheckPassword";
 import InputUserInfo from "@/src/Input/feature-user-info-input/InputUserInfo";
 import SignTitle from "@/src/Input/ui-input-title/SignTitle";
 import SignButton from "@/src/link/ui-sign-button/SignButton";
@@ -21,6 +20,7 @@ const SignUpPage = () => {
 
   useEffect(() => {
     setIsNotSamePasswordValue(passwordValue !== checkPasswordValue);
+    if(localStorage.getItem("accessToken")) router.push("/folder")
   }, [passwordValue, checkPasswordValue]);
 
   return (

@@ -16,9 +16,11 @@ import {
   PLACEHOLDER,
   VALID_EMAIL_REG,
   VALID_PSW_REG,
-  OVERLAP_EMAIL,
+  USER_EMAIL,
 } from "./constants.js";
 import { PathName } from "../ui-input-title/SignTitle";
+import axios from "axios";
+import { useAsync } from "@/src/sharing/util";
 
 const cx = classNames.bind(styles);
 
@@ -37,27 +39,26 @@ function InputUserInfo({
   isNotSamePasswordValue,
   pathName,
 }: InputUserInfoProps) {
-  const [value, setValue] = useState<string | number>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [visible, setVisible] = useState(isPassword ? false : true);
   const [isWrongValue, setIsWrongValue] = useState(false);
-  const [hasValue, setHasValue] = useState(true);
+
   const [isOverlapValue, setIsOverlapValue] = useState(false);
-  const isValidValue = hasValue && !isWrongValue && !isNotSamePasswordValue;
+  const isValidValue = email && !isWrongValue && !isNotSamePasswordValue;
 
   const eyeOnImage = "/images/eye-on.svg";
   const eyeOffImage = "/images/eye-off.svg";
 
-  function handleClick() {
+  function handleVisibleIconClick() {
     setVisible(!visible);
   }
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setValue(e.target.value);
+    isPassword ? setPassword(e.target.value) : setEmail(e.target.value);
     if (!e.target.value) {
-      setHasValue(false);
       setIsWrongValue(true);
     } else {
-      setHasValue(true);
       setIsWrongValue(false);
     }
   }
@@ -66,20 +67,42 @@ function InputUserInfo({
     e.preventDefault();
     if (!isValidValue) return;
 
+    const signIn = () => {
+      return axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
+        email: email,
+        password: password,
+      });
+    };
+
+    const { execute, loading, error, data } = useAsync(signIn);
+
     //데이터요청
   }
+
+  const [hasFocused, setHasFocused] = useState({
+    email: false,
+    password: false,
+  });
 
   function handleBlur(
     e: FocusEvent<HTMLInputElement>,
     isPassword: boolean,
     onBlur?: Dispatch<SetStateAction<string>>
   ) {
-    if (!e.target.value) {
+    const value = e.target.value;
+    const hasValue = value.trim() !== "";
+
+    setHasFocused((prevState) => ({
+      ...prevState,
+      [isPassword ? "password" : "email"]: true,
+    }));
+
+    setIsWrongValue(!hasValue && hasFocused[isPassword ? "password" : "email"]);
+
+    if (!value) {
       //값이 있는지 판단
-      setHasValue(false);
       setIsWrongValue(true);
     } else {
-      setHasValue(true);
       setIsWrongValue(false);
     }
 
@@ -91,7 +114,7 @@ function InputUserInfo({
         return;
       }
 
-      if (e.target.value === OVERLAP_EMAIL && pathName?.pathName.isSignupPage) {
+      if (value === USER_EMAIL && pathName?.pathName.isSignupPage) {
         setIsOverlapValue(true);
         setIsWrongValue(true);
         return;
@@ -108,8 +131,10 @@ function InputUserInfo({
     onBlur(e.target.value);
   }
 
-  function handleFocus() {
-    setHasValue(true);
+  function handleFocus(e: FormEvent<HTMLInputElement>) {
+    {
+      isPassword ? setPassword("") : setEmail("");
+    }
     setIsWrongValue(false);
     setIsOverlapValue(false);
   }
@@ -135,7 +160,7 @@ function InputUserInfo({
             onChange={handleChange}
             onBlur={(e) => handleBlur(e, isPassword, onBlur)}
             onFocus={handleFocus}
-            value={value}
+            value={isPassword ? password : email}
           />
           {isPassword ? (
             <Image
@@ -144,31 +169,33 @@ function InputUserInfo({
               alt={visible ? VISIBLE_PASSWORD.visible : VISIBLE_PASSWORD.hidden}
               width={16}
               height={16}
-              onClick={handleClick}
+              onClick={handleVisibleIconClick}
             />
           ) : null}
         </label>
-        {!hasValue ? ( // 값이 없을 때 메시지 출력
-          isPassword ? (
+        {
+          // 값이 없을 때 메시지 출력
+          isPassword && !password && hasFocused.password ? (
             <span className={cx("wrongValueMessage")}>
               {WRONG_VALUE_MESSAGE.password}
             </span>
-          ) : (
-            <span className={cx("wrongValueMessage")}>
-              {WRONG_VALUE_MESSAGE.id}
-            </span>
-          )
+          ) : null
+        }
+        {!isPassword && !email && hasFocused.email ? (
+          <span className={cx("wrongValueMessage")}>
+            {WRONG_VALUE_MESSAGE.id}
+          </span>
         ) : null}
 
         {isNotSamePasswordValue &&
-          hasValue &&
+          password &&
           !isWrongValue && ( // 비밀번호 확인시 값이 다를 때 메시지 출력
             <span className={cx("wrongValueMessage")}>
               {WRONG_VALUE_MESSAGE.notSamePassword}
             </span>
           )}
 
-        {isWrongValue && hasValue && !isOverlapValue ? ( // 유효하지 않은 값일 때 메시지 출력
+        {isWrongValue && (email || password) && !isOverlapValue ? ( // 유효하지 않은 값일 때 메시지 출력
           isPassword ? (
             <span className={cx("wrongValueMessage")}>
               {WRONG_VALUE_MESSAGE.wrongPassword}
