@@ -42,7 +42,7 @@ const Card = ({ data, folderData }: Props) => {
       <Link href={URL} target="_blank">
         <Styled.CardImgBox>
           <Styled.CardImg
-            src={IMG_SRC ? IMG_SRC : noImageIMG}
+            src={IMG_SRC ? IMG_SRC : "/noImage.svg"}
             alt={IMG_SRC ? "카드 이미지" : "이미지 없음"}
             fill
             style={{ objectFit: "cover" }}
@@ -60,8 +60,10 @@ const Card = ({ data, folderData }: Props) => {
         </Styled.InfoContainer>
         <Styled.Star
           onClick={handleStarClick}
-          src={star ? chosenStarIMG : starIMG}
+          src={star ? "/chosenStar.svg" : "/star.svg"}
           alt="즐겨찾기 버튼"
+          width="34"
+          height="34"
         />
       </Link>
     </Styled.CardContainer>

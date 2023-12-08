@@ -3,6 +3,14 @@ import reset from "styled-reset";
 import { createGlobalStyle } from "styled-components";
 
 export const StyledGlobal = createGlobalStyle`
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root {
     --primary: #6d6afe;
     --red: #ff5b56;
@@ -30,7 +38,7 @@ export const StyledGlobal = createGlobalStyle`
   * {
     box-sizing: border-box;
     margin: 0;
-    font-family: 'Pretendard';
+    font-family: "Pretendard";
     word-break: keep-all;
   }
 
