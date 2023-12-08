@@ -1,62 +1,26 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import eyeOffImg from "src/assets/icon/eye-off.svg";
 import eyeOnImg from "src/assets/icon/eye-on.svg";
 import styles from "src/components/Input/Input.module.css";
-import { INPUT_TYPE } from "src/constants/input";
-import { usePasswordVisible } from "src/hook/SignUp/usePasswordVisible";
-import { validateEmail, validatePassword } from "src/utils/inputValidate";
+import { useErrorCheck } from "src/hook/Input/useErrorCheck";
+import { usePasswordVisible } from "src/hook/Input/usePasswordVisible";
 
 interface Input {
   id: string;
   type: string;
   placeholder: string;
-  status?: number;
-  account: { email: {}; password: {}; passwordCheck?: {} };
+  status: number;
+  account: { email: string; password: string; passwordCheck: string };
   setAccount: any; // 이 부분 어떤 타입으로 해야될지...
 }
 
 function Input({ id, type, placeholder, status, account, setAccount }: Input) {
-  const [isError, setIsError] = useState(true);
-  const [errorMsg, setErrorMsg] = useState("");
-  const router = useRouter();
   const { isVisible, visiblePassword } = usePasswordVisible();
-
-  const { email, password, passwordCheck } = INPUT_TYPE;
-
-  const handleCheck = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (e.target.value) {
-      setIsError(true);
-      setErrorMsg("");
-    }
-    if (!e.target.value) {
-      setIsError(false);
-      switch (type) {
-        case "email":
-          setErrorMsg(email.errorMsg1);
-          break;
-        case "password":
-          setErrorMsg(password.errorMsg1);
-          break;
-      }
-    } else if (type === "email" && !validateEmail(e.target.value)) {
-      setIsError(false);
-      setErrorMsg(email.errorMsg2);
-    }
-    if (router.asPath === "/signup") {
-      if (type === "password" && !validatePassword(e.target.value)) {
-        setIsError(false);
-        setErrorMsg(password.errorMsg2);
-      } else if (
-        type === "passwordCheck" &&
-        account.password !== e.target.value
-      ) {
-        setIsError(false);
-        setErrorMsg(passwordCheck.errorMsg1);
-      }
-    }
-  };
+  const { isError, errorMsg, handleErrorCheck } = useErrorCheck(
+    type,
+    status,
+    account
+  );
 
   const onChangeAccount = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAccount({
@@ -64,30 +28,6 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
       [e.target.name]: e.target.value,
     });
   };
-
-  useEffect(() => {
-    switch (status) {
-      case 400:
-        if (account.email === "" && type === "email") {
-          setIsError(false);
-          setErrorMsg(email.errorMsg1);
-        }
-        if (account.password === "" && type === "password") {
-          setIsError(false);
-          setErrorMsg(password.errorMsg1);
-        }
-        if (account.passwordCheck === "" && type === "passwordCheck") {
-          setIsError(false);
-          setErrorMsg(password.errorMsg1);
-        }
-        break;
-      case 409:
-        if (type === "email") {
-          setIsError(false);
-          setErrorMsg(email.errorMsg3);
-        }
-    }
-  }, [status]);
 
   return (
     <div className={styles.wrapper}>
@@ -97,7 +37,7 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
         type={isVisible ? "text" : "password"}
         className={isError ? styles.input : styles.errorInput}
         placeholder={placeholder}
-        onBlur={handleCheck}
+        onBlur={handleErrorCheck}
         onChange={onChangeAccount}
       />
       {isError ? <></> : <p className={styles.errorMsg}>{errorMsg}</p>}
