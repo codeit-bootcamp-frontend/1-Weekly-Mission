@@ -23,7 +23,7 @@ export const SignInLayout = ({
 }: SignInLayoutProps) => {
   const [signInError, setSignInError] = useState<boolean>(false);
   const router = useRouter();
-  const { register, handleSubmit, formState, control, getValues } =
+  const { register, handleSubmit, formState, control, getValues, clearErrors } =
     useForm<any>();
   const { errors }: any = formState;
 
@@ -47,7 +47,6 @@ export const SignInLayout = ({
       console.log(error);
     }
   };
-  console.log(signInError);
 
   const handleKeyDown = (e: any) => {
     if (e.key === "Enter") {
@@ -90,9 +89,9 @@ export const SignInLayout = ({
                 이메일
               </label>
               <input
-                className={cx("input", { error: errors?.email })}
+                className={cx("input", { error: errors?.email || signInError })}
                 {...register("email", {
-                  onBlur: () => {
+                  onChange: () => {
                     setSignInError(false);
                   },
                   required: "이메일을 입력해주세요.",
@@ -101,17 +100,13 @@ export const SignInLayout = ({
                       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
                     message: "올바른 이메일 주소가 아닙니다.",
                   },
-                  validate: {
-                    check: () => {
-                      if (signInError === true) {
-                        return "이메일을 확인해주세요";
-                      }
-                    },
-                  },
                 })}
               />
               {errors.email && (
                 <p className={cx("helper-text")}>{errors.email?.message}</p>
+              )}
+              {signInError && (
+                <p className={cx("helper-text")}>이메일을 확인해주세요</p>
               )}
             </div>
             <div className={cx("part")}>
@@ -121,19 +116,14 @@ export const SignInLayout = ({
               <div className={cx("password_container")}>
                 <input
                   type={inputType}
-                  className={cx("input", { error: errors?.password })}
+                  className={cx("input", {
+                    error: errors?.password || signInError,
+                  })}
                   {...register("password", {
-                    onBlur: () => {
+                    onChange: () => {
                       setSignInError(false);
                     },
                     required: "비밀번호를 입력해주세요",
-                    validate: {
-                      check: () => {
-                        if (signInError === true) {
-                          return "비밀번호를 확인해주세요";
-                        }
-                      },
-                    },
                   })}
                 />
                 {EyeIcon}
@@ -141,7 +131,11 @@ export const SignInLayout = ({
               {errors.password && (
                 <p className={cx("helper-text")}>{errors.password.message}</p>
               )}
+              {signInError && (
+                <p className={cx("helper-text")}>비밀번호를 확인해주세요</p>
+              )}
             </div>
+
             <button type="submit" className={cx("button")} onClick={onSubmit}>
               로그인
             </button>
