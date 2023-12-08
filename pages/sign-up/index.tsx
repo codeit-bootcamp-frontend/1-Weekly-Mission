@@ -23,7 +23,7 @@ export default function SignUp() {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("signInToken")) {
+    if (localStorage.getItem("signUpToken")) {
       router.push("/folder");
     }
   }, []);
