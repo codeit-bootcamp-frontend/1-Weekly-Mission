@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import useSWR from "swr";
 import * as S from "./ShareContainerStyles";
 
 import Layout from "@/components/layout/Layout";
@@ -8,22 +9,16 @@ import Hero from "@/components/hero/Hero";
 import Loading from "@/components/Loading";
 
 import { Owner } from "@/types/user";
-import { SampleLinkData } from "@/types/folder";
-
-import useFetch from "@/hooks/useFetch";
-import { getFolder } from "@/common/api";
+import { SampleFolderData, SampleLinkData } from "@/types/folder";
 
 export default function Share() {
   const [folder, setFolder] = useState("");
-  const [profile, setProfile] = useState<Owner>({
-    id: 0,
-    name: "",
-    profileImageSource: "",
-  });
+  const [profile, setProfile] = useState<Owner>({ id: 0, name: "", profileImageSource: "" });
   const [links, setLinks] = useState<SampleLinkData[]>([]);
   const [filteredLinks, setFilteredLinks] = useState<SampleLinkData[]>([]);
   const [keyword, setKeyword] = useState("");
-  const { isLoading, error, wrappedFunction: getFoldersAsyncFunc } = useFetch(getFolder);
+
+  const { data, isLoading, error } = useSWR<SampleFolderData>("/api/sample/folder");
 
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -47,19 +42,16 @@ export default function Share() {
     return filteredLinks;
   };
 
-  const handleFolderData = async () => {
-    const { folder } = await getFoldersAsyncFunc();
-    const { name: folderName, owner, links } = folder;
-
-    setFolder(folderName);
-    setProfile(owner);
-    setLinks(links);
-    setFilteredLinks(links);
-  };
-
   useEffect(() => {
-    handleFolderData();
-  }, []);
+    if (data) {
+      const { name: folderName, owner, links } = data.folder;
+
+      setFolder(folderName);
+      setProfile(owner);
+      setLinks(links);
+      setFilteredLinks(links);
+    }
+  }, [data]);
 
   if (error) console.log(error);
 
