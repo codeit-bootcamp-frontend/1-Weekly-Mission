@@ -3,6 +3,7 @@ import Logo from '@/public/images/linkbrary.svg';
 import styles from '@/src/page-layout/SignLayout/SignLayout.module.scss';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
+import { SnsLogin } from '@/src/sign/ui-sns/SnsLogin';
 
 const cx = classNames.bind(styles);
 
@@ -11,7 +12,7 @@ const Signin = () => {
     <SignLayout
       logo={
         <Link href="/">
-          <Logo className={cx(styles.logo)} alt="홈으로 연결된 Linkbrary 로고" />
+          <Logo src={Logo} alt="홈으로 연결된 Linkbrary 로고" />
         </Link>
       }
       message={
@@ -20,7 +21,7 @@ const Signin = () => {
         </p>
       }
       form={'폼'}
-      sns={'버튼들'}
+      sns={<SnsLogin />}
     />
   );
 };

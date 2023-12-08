@@ -25,7 +25,12 @@
 .navigator {
   @extend .center;
   gap: 1.6rem;
+  color: $color-black;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.4rem;
 }
 
-.form {
+.sns {
+  width: 100%;
 }

@@ -16,12 +16,12 @@ export const SignLayout = ({ logo, message, form, sns }: SignLayoutProps) => {
     <div className={cx('layout')}>
       <div className={cx('container')}>
         <div className={cx('navigator')}>
+          {/* 크기 조절해야 함 */}
           {logo}
           {message}
         </div>
         {/* 폼 컴포넌트 따로 만들기 - react-hook-form 써보기 */}
         <div className={cx('form')}>{form}</div>
-        {/* sns 컴포넌트 따로 만들기 */}
         <div className={cx('sns')}>{sns}</div>
       </div>
     </div>
