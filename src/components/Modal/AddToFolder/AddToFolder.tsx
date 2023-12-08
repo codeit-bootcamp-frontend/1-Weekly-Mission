@@ -4,6 +4,7 @@ import { useState } from 'react';
 import useRequest from '@/hooks/useRequest';
 import { Folder } from '@/types/Folder.types';
 import { IconCheck } from '@/public/svgs';
+import Button from '@/components/Button';
 
 interface Props {
   url: string;
@@ -51,7 +52,7 @@ function AddToFolder({ url, userId }: Props) {
           </li>
         ))}
       </S.FoldersContainer>
-      <Modal.BigButton>추가하기</Modal.BigButton>
+      <Button size='lg'>추가하기</Button>
     </>
   );
 }

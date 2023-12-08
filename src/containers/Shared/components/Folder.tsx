@@ -1,10 +1,9 @@
-import * as S from './Folder.style';
 import { useRouter } from 'next/router';
 import { DEFAULT_USER_ID } from '@/services/config/default';
 import filterLinks from '@/utils/filterLinks';
 import SearchBar from '@/components/SearchBar';
-import CardList from '@/components/CardsContainer';
-import Banner from '../Banner';
+import CardList from '@/components/cards/CardsContainer';
+import Banner from './Banner';
 import { SharedFolder } from '@/types/Folder.types';
 
 function Folder({ folder }: SharedFolder) {
@@ -21,10 +20,10 @@ function Folder({ folder }: SharedFolder) {
   return (
     <main>
       <Banner name={name} owner={owner} />
-      <S.ContentContainer>
+      <section className='px-32pxr py-20pxr pc:mx-auto pc:w-[115rem]'>
         <SearchBar />
         <CardList cards={filteredLinks} userId={DEFAULT_USER_ID} />
-      </S.ContentContainer>
+      </section>
     </main>
   );
 }

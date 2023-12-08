@@ -5,7 +5,7 @@ import useRequest from '@/hooks/useRequest';
 import Button from '@/components/Button';
 import { IconLinkbrary } from '@/public/svgs';
 
-const DEFAULT_PROFILE_IMAGE_SRC = '/image/default-profile-img.png';
+const DEFAULT_PROFILE_IMAGE_SRC = '/images/default-profile-img.png';
 
 interface Props {
   isLoggedIn: boolean;
@@ -47,6 +47,8 @@ function Navigator({ isLoggedIn, userId, navRef }: Props) {
             <Image
               src={userInfo?.image_source ?? DEFAULT_PROFILE_IMAGE_SRC}
               alt='사용자 프로필 사진'
+              width={28}
+              height={28}
             />
             <p className='hidden text-14pxr font-normal text-gray-100 tablet:block tablet:break-keep'>
               {userInfo?.email}

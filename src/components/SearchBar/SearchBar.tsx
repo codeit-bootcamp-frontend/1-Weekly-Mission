@@ -1,4 +1,3 @@
-import * as S from './SearchBar.style';
 import { ChangeEvent, SyntheticEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import { IconClose, IconSearch } from '@/public/svgs';
@@ -32,21 +31,29 @@ function SearchBar() {
   };
 
   return (
-    <S.Form onSubmit={onSearch}>
-      <S.Input
+    <form
+      onSubmit={onSearch}
+      className='relative h-43pxr w-full tablet:h-54pxr'
+    >
+      <input
         placeholder='링크를 검색해보세요.'
         onChange={onChange}
         value={keyword}
+        className='h-full w-full rounded-2xl border border-solid border-gray-light bg-gray-light p-15pxr pb-16pxr pl-50pxr text-14pxr font-normal leading-normal outline-none focus:border-primary active:border-primary tablet:text-16pxr'
       />
-      <S.Icon>
+      <div className='absolute left-18pxr top-1/2 -translate-y-1/2'>
         <IconSearch />
-      </S.Icon>
+      </div>
       {keyword && (
-        <S.Reset type='button' onClick={onReset}>
+        <button
+          type='button'
+          onClick={onReset}
+          className='absolute right-16pxr top-1/2 -translate-y-1/2 bg-transparent'
+        >
           <IconClose />
-        </S.Reset>
+        </button>
       )}
-    </S.Form>
+    </form>
   );
 }
 

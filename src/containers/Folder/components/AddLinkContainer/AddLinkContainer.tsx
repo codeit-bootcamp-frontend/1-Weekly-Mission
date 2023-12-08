@@ -3,6 +3,7 @@ import * as S from './AddLinkContainer.style';
 import { useState } from 'react';
 import useModal from '@/hooks/useModal';
 import { IconLink } from '@/public/svgs';
+import Button from '@/components/Button';
 
 interface Props {
   userId: number;
@@ -32,9 +33,7 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
             onChange={(e) => setUrl(e.target.value)}
           />
           <S.ButtonContainer>
-            <S.SmallButton type='button' onClick={setAddToFolderModal}>
-              추가하기
-            </S.SmallButton>
+            <Button onClick={setAddToFolderModal}>추가하기</Button>
           </S.ButtonContainer>
         </S.Inner>
       </S.Container>
@@ -51,9 +50,7 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
               onChange={(e) => setUrl(e.target.value)}
             />
             <S.ButtonContainer>
-              <S.SmallButton type='button' onClick={setAddToFolderModal}>
-                추가하기
-              </S.SmallButton>
+              <Button onClick={setAddToFolderModal}>추가하기</Button>
             </S.ButtonContainer>
           </S.Inner>
         </S.FloatContainer>

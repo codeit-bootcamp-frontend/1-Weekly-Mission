@@ -5,7 +5,7 @@ import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@/services/config/default';
 import filterLinks from '@/utils/filterLinks';
 import Layout from '@/components/Layout';
 import SearchBar from '@/components/SearchBar';
-import CardsContainer from '@/components/CardsContainer';
+import CardsContainer from '@/components/cards/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
 import FoldersContainer from './components/FoldersContainer';
 import { Link, Folder } from '@/types/Folder.types';
