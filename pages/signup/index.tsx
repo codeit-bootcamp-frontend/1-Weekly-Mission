@@ -1,9 +1,7 @@
+import { SignLayout } from '@/src/page-layout/SignLayout/SignLayout';
+
 const Signup = () => {
-  return (
-    <>
-      <div></div>
-    </>
-  );
+  return <SignLayout navigator={} form={} sns={} />;
 };
 
 export default Signup;
