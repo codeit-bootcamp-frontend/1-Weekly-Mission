@@ -4,6 +4,7 @@ import AuthLayout from "@/layouts/authLayout/AuthLayout";
 import { axiosInstance } from "@/utils/axiosInstance";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 interface SignInProps {
@@ -13,6 +14,7 @@ interface SignInProps {
 
 const SignIn = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -44,10 +46,10 @@ const SignIn = () => {
     },
   });
   const onSubmitHandler: SubmitHandler<SignInProps> = async () => {
+    setIsLoading(true);
     const values = getValues();
     try {
       const res = await axiosInstance.post("/sign-in", values);
-      console.log(res);
       const { accessToken, refreshToken } = res.data.data;
       window.localStorage.setItem("accessToken", accessToken);
       window.localStorage.setItem("refreshToken", refreshToken);
@@ -59,8 +61,15 @@ const SignIn = () => {
       setError("password", {
         message: "비밀번호를 확인해 주세요.",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    const accessToken = window.localStorage.getItem("accessToken");
+    if (accessToken) router.push("/folder/all");
+  }, [router]);
 
   return (
     <>
@@ -68,7 +77,7 @@ const SignIn = () => {
         <title>로그인 - Linkbrary</title>
       </Head>
 
-      <AuthLayout handleSubmit={handleSubmit(onSubmitHandler)} mode="signin">
+      <AuthLayout handleSubmit={handleSubmit(onSubmitHandler)} mode="signIn">
         <AuthInputs.AuthInput
           label="이메일"
           type="email"
@@ -85,7 +94,7 @@ const SignIn = () => {
           errors={errors}
           autoComplete="current-password"
         />
-        <AuthLayout.AuthButton>로그인</AuthLayout.AuthButton>
+        <AuthLayout.AuthButton disabled={isLoading}>로그인</AuthLayout.AuthButton>
       </AuthLayout>
     </>
   );

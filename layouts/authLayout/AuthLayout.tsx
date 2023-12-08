@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 interface AuthLayoutProps {
   children: ReactNode;
-  mode: string;
+  mode: "signIn" | "signUp";
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
@@ -17,7 +17,7 @@ const AuthLayout = ({ children, mode, handleSubmit }: AuthLayoutProps) => {
           <S.LogoLink href="/">
             <S.LogoImage />
           </S.LogoLink>
-          {mode === "signin" ? (
+          {mode === "signIn" ? (
             <S.HeaderText>
               회원이 아니신가요? <S.HeaderLink href="/user/signup">회원 가입하기</S.HeaderLink>
             </S.HeaderText>
@@ -48,8 +48,8 @@ const AuthLayout = ({ children, mode, handleSubmit }: AuthLayoutProps) => {
   );
 };
 
-const AuthButton = ({ children }: { children: ReactNode }) => {
-  return <S.AuthButton>{children}</S.AuthButton>;
+const AuthButton = ({ children, disabled }: { children: ReactNode; disabled: boolean }) => {
+  return <S.AuthButton disabled={disabled}>{children}</S.AuthButton>;
 };
 
 AuthLayout.AuthButton = AuthButton;
