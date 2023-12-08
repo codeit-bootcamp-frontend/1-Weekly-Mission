@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { getAllFolder, getFolderLinks, getUserFolder } from "pages/api/api";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CardList from "src/components/CardList/CardList";
 import FolderList from "src/components/FolderList/FolderList";
 import Footer from "src/components/Footer/Footer";
@@ -13,21 +13,26 @@ import NotFoundLink from "src/components/NotFoundLink/NotFoundLink";
 import Search from "src/components/Search/Search";
 import ResultSearch from "src/components/Search/SearchResult";
 import Title from "src/components/Title/Title";
+import { useModal } from "src/hook/Folder/useModal";
 import isEmpty from "src/utils/isEmpty";
 import { filterCardsSearch } from "src/utils/searchFilterCards";
-import { shareKakaoLink } from "src/utils/shareKakaoLink";
 
 function Folder() {
   const [folders, setFolders] = useState<[]>([]);
   const [isFunctionButtonShow, setIsFunctionButtonShow] = useState(false);
   const [cards, setCards] = useState<Card[]>([]);
   const [folderName, setFolderName] = useState("");
-  const [isModalOpen, setModalIsOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState("");
-  const [modalSubTitle, setModalSubTitle] = useState("");
-  const [modalButtonContent, setModalButtonContent] = useState("");
   const [searchResult, setSearchResult] = useState("");
-  const { asPath } = useRouter();
+  const {
+    isModalOpen,
+    modalButtonContent,
+    modalTitle,
+    modalSubTitle,
+    showModal,
+    showShareFacebook,
+    showShareKakao,
+    showShareLinkCopy,
+  } = useModal(folderName);
 
   const router = useRouter();
   const initFolderId = router.query.folderId as string;
@@ -66,56 +71,6 @@ function Folder() {
     if (!searchResult) {
       setCards(introResult);
     }
-  };
-
-  const showModal = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const buttonName = e.currentTarget.value;
-    const url = e.currentTarget.id;
-
-    switch (buttonName) {
-      case "add":
-        setModalTitle("폴더에 추가");
-        setModalButtonContent("추가하기");
-        break;
-      case "addFolder":
-        setModalTitle("폴더 추가");
-        setModalButtonContent("추가하기");
-        break;
-      case "share":
-        setModalTitle("폴더 공유");
-        setModalSubTitle(folderName);
-        break;
-      case "edit":
-        setModalTitle("폴더 이름 변경");
-        setModalButtonContent("변경하기");
-        break;
-      case "delete":
-        setModalTitle("폴더 삭제");
-        setModalSubTitle(folderName);
-        setModalButtonContent("삭제하기");
-        break;
-      case "linkDelete":
-        setModalTitle("링크 삭제");
-        setModalSubTitle(url);
-        setModalButtonContent("삭제하기");
-        break;
-      default:
-        setModalTitle("");
-        setModalSubTitle("");
-        break;
-    }
-    setModalIsOpen(!isModalOpen);
-  };
-
-  const showShareKakao = () => shareKakaoLink(window.location.href, asPath);
-
-  const showShareFacebook = () => {
-    window.open(`http://www.facebook.com/sharer.php?u=${window.location.href}`);
-  };
-
-  const showShareLinkCopy = async () => {
-    await navigator.clipboard.writeText(window.location.href);
-    alert("주소가 복사 되었습니다!");
   };
 
   useEffect(() => {
