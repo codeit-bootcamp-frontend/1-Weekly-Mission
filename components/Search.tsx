@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import useDebounce from "@/hooks/useDebounce";
-import { ChangeEvent, MouseEvent, FormEvent, KeyboardEvent } from "react";
+import debounce from "lodash/debounce";
+import { ChangeEvent, MouseEvent, FormEvent } from "react";
 import s from "./Search.module.css";
 
 const Search = ({ getInputValue }: SearchProps) => {
@@ -13,6 +14,26 @@ const Search = ({ getInputValue }: SearchProps) => {
     setInputSearch(e.target.value);
   }
 
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      getInputValue(debouncedInputSearch);
+    }
+  }, [debouncedInputSearch]);
+
+  // const updatedInput = useMemo(() => debounce(setInputSearch, 300), []);
+  // function handleChange(e: ChangeEvent<HTMLInputElement>) {
+  //   updatedInput(e.target.value);
+  // }
+  // useEffect(() => {
+  //   if (!mounted.current) {
+  //     mounted.current = true;
+  //   } else {
+  //     getInputValue(inputSearch);
+  //   }
+  // }, [inputSearch]);
+
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setInputSearch("");
@@ -22,19 +43,11 @@ const Search = ({ getInputValue }: SearchProps) => {
     e.preventDefault();
   }
 
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-    } else {
-      getInputValue(debouncedInputSearch);
-    }
-  }, [debouncedInputSearch]);
-
   return (
     <div className={s.main}>
       <div className={s.inputContainer} onSubmit={handleSubmit}>
         <input
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange}
           type="text"
           value={inputSearch}
           placeholder="링크를 검색해 보세요."
@@ -42,7 +55,7 @@ const Search = ({ getInputValue }: SearchProps) => {
         ></input>
 
         {inputSearch !== "" && (
-          <button onClick={(e) => handleClick(e)} className={s.button}>
+          <button onClick={handleClick} className={s.button}>
             <Image
               src="/images/close-button.svg"
               alt="닫기 버튼"
