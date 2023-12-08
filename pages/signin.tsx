@@ -23,6 +23,7 @@ function SignIn() {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus(0);
     const loginInfo = await postLogin(account);
 
     if (loginInfo.data) {
