@@ -3,7 +3,7 @@ import SearchBar from '@components/SearchBar';
 import SampleCardList from '@components/SampleCardList';
 import { MainDiv } from '@styles/MainDiv';
 import { useState } from 'react';
-import fetch from '@api/fetch';
+import apiRequest from '@api/apiRequest';
 import Layout from '@components/Layout/Layout';
 
 export interface Folder {
@@ -34,7 +34,7 @@ interface Props {
 }
 
 export async function getStaticProps() {
-  const response = await fetch({ url: '/sample/folder' });
+  const response = await apiRequest({ url: '/sample/folder' });
   const folder = response.data?.folder;
 
   return {

@@ -5,7 +5,7 @@ import FolderList from '@components/FolderList';
 import SearchBar from '@components/SearchBar';
 import { useEffect, useRef, useState } from 'react';
 import { MainDiv } from '@styles/MainDiv';
-import fetch from '@api/fetch';
+import apiRequest from '@api/apiRequest';
 import { GetServerSidePropsContext } from 'next';
 import Layout from '@components/Layout/Layout';
 
@@ -32,10 +32,12 @@ interface Props {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const folderId = context.query.folderId || '';
-  const response = await fetch({ url: `/users/1/links?folderId=${folderId}` });
+  const response = await apiRequest({
+    url: `/users/1/links?folderId=${folderId}`,
+  });
   const cards = response.data;
 
-  const response2 = await fetch({ url: '/users/1/folders' });
+  const response2 = await apiRequest({ url: '/users/1/folders' });
   const folders = response2.data.data;
 
   return {

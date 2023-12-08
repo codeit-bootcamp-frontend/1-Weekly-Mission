@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, DependencyList } from 'react';
-import fetch from '@api/fetch';
+import apiRequest from '@api/apiRequest';
 import { AxiosRequestConfig } from 'axios';
 
 interface UseRequestOptions {
@@ -30,7 +30,7 @@ function useRequest<T>({
       setError(null);
 
       try {
-        const { data: fetchedData } = await fetch({ ...options, ...args });
+        const { data: fetchedData } = await apiRequest({ ...options, ...args });
         setData(() => fetchedData);
         return { data: fetchedData };
       } catch (err) {
