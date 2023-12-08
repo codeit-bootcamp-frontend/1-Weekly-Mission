@@ -6,10 +6,8 @@ interface Props {
 }
 
 function FolderInfo({ folder }: Props) {
-  const folderName = folder?.name;
-  const owner = folder?.owner;
-  const ownerName = owner?.name;
-  const ownerProfileImg = owner?.profileImageSource;
+  const { name: folderName } = folder;
+  const { name: ownerName, profileImageSource: ownerProfileImg } = folder.owner;
 
   return (
     <S.Container>
