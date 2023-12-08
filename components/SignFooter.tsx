@@ -8,10 +8,7 @@ const SignFooter = ({ sentence }: SignFooterProps) => {
     <div className={s.snsBox}>
       <span className={s.snsText}>{sentence}</span>
       <div className={s.snsLinks}>
-        <Link
-          className={`${s.snsLink} ${s.googleLink}`}
-          href="https://www.google.com/"
-        >
+        <Link className={s.googleLink} href="https://www.google.com/">
           <Image
             src="/images/google.png"
             alt="구글 버튼 이미지"
@@ -19,10 +16,7 @@ const SignFooter = ({ sentence }: SignFooterProps) => {
             height={25}
           />
         </Link>
-        <Link
-          className={`${s.snsLink} ${s.kakaoLink}`}
-          href="https://www.kakaocorp.com/page/"
-        >
+        <Link className={s.kakaoLink} href="https://www.kakaocorp.com/page/">
           <Image
             src="/images/kakao.svg"
             alt="카카오 버튼 이미지"

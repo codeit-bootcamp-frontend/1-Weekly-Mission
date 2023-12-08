@@ -30,11 +30,13 @@
 }
 
 .googleLink {
+  composes: snsLink;
   background-color: var(--white);
   border: 0.1rem solid #d3d4dd;
 }
 
 .kakaoLink {
+  composes: snsLink;
   padding-top: 0.2rem;
   background-color: #f5e14b;
 }
