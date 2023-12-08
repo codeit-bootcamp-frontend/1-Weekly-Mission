@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { AxiosResponse } from "axios";
 
 export default function useAsync(asyncFunction: any) {
   const [loading, setLoading] = useState(false);

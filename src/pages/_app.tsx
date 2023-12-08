@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { getUser } from "@/api";
-import { Nav, Footer } from "@/components";
+import { Nav, Footer } from "@/components/common";
 import { UserInterface } from "@/types";
 
 export default function App({ Component, pageProps }: AppProps) {

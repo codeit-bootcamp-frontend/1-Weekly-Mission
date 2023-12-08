@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import styles from "./ModalBackground.module.scss";
 import { ModalProps } from "@/types";
 

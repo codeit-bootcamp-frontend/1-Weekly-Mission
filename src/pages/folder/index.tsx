@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import styles from "./FolderPage.module.scss";
-import { SearchBar, CardList } from "@/components";
+import { SearchBar, CardList } from "@/components/common";
 import { getAllCards, getFolderList } from "@/api";
 import { CardInterface, FolderInterface } from "@/types";
 import {
@@ -8,9 +8,9 @@ import {
   FolderTagList,
   FolderModifier,
   FolderMaker,
-} from "./container";
+} from "../../components/folder";
 import ModalCreator from "@/components/modals/ModalCreator";
-import { useKeywordInput, useOpenModal } from "@/hooks";
+import { useOpenModal } from "@/hooks";
 import Head from "next/head";
 
 const INITIAL_FOLDER: FolderInterface = {

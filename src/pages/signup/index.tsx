@@ -1,9 +1,8 @@
 import styles from "./SignUpPage.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { SnsSign } from "@/components";
 import Head from "next/head";
-import Input from "@/components/Input/Input";
+import { Input, SnsSign } from "@/components/sign";
 
 function SignUpPage() {
   return (

@@ -1,16 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
 import styles from "./SharedPage.module.scss";
-import ShareHeader from "./container/ShareHeader";
+import { ShareHeader } from "@/components/shared";
 import { getSharedFolder, getSharedUser } from "@/api";
 import { SharedFolderInterface, SharedUserInterface } from "@/types";
-import { SearchBar, CardList } from "@/components";
-import { useKeywordInput } from "@/hooks";
+import { SearchBar, CardList } from "@/components/common";
 import Head from "next/head";
 
 export default function SharedPage() {
   const [sharedUser, setSharedUser] = useState<SharedUserInterface>();
   const [sharedFolder, setSharedFolder] = useState<SharedFolderInterface>();
-  // const { keyword, handleKeywordInput: setKeyword } = useKeywordInput("", null);
   const [keyword, setKeyword] = useState("");
 
   const getSharedFiles = useCallback(async () => {
