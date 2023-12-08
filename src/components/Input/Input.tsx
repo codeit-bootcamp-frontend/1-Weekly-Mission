@@ -20,7 +20,7 @@ export default function Input({
 }: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
+  const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
@@ -39,7 +39,7 @@ export default function Input({
           <S.Button
             src={`/assets/images/eye-${showPassword ? 'on' : 'off'}.svg`}
             alt='비밀번호 표시 전환'
-            onClick={togglePasswordVisibility}
+            onClick={handleTogglePasswordVisibility}
           />
         )}
       </S.Wrapper>
