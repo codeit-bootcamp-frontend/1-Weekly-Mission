@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Main from "@/components/Main/Main";
-import CardList from "@/components/Main/Card/CardList";
-import SearchBar from "@/components/Main/FolderCatergory/SearchBar";
+import CardList from "@/components/Main/CardList/CardList";
+import SearchBar from "@/components/Main/FolderSelect/SearchBar";
 import { URLS } from "@/utils/getData.type";
 import Navigation from "@/components/Nav/Navigation";
 

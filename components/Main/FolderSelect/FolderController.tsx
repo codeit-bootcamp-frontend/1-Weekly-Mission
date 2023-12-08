@@ -1,0 +1,26 @@
+import { ButtonControl, H1, Wrapper } from "@/components/Main/FolderSelect/FolderController.styled";
+import { Container } from "@/components/Main/FolderSelect/FolderSelect.styled";
+import { ControllerProps } from "@/components/Main/FolderSelect/FolderSelect.type";
+import Image from "next/image";
+
+export default function FolderController({ title, handleModal }: ControllerProps) {
+  return (
+    <Container>
+      <H1>{title}</H1>
+      <Wrapper title={title}>
+        <ButtonControl onClick={handleModal}>
+          <Image width={20} height={20} src="/share.svg" alt="폴더 공유하기" />
+          공유
+        </ButtonControl>
+        <ButtonControl onClick={handleModal}>
+          <Image width={20} height={20} src="/edit.svg" alt="폴더 이름 바꾸기" />
+          이름 변경
+        </ButtonControl>
+        <ButtonControl onClick={handleModal}>
+          <Image width={20} height={20} src="/delete.svg" alt="폴더 삭제하기" />
+          삭제
+        </ButtonControl>
+      </Wrapper>
+    </Container>
+  );
+}

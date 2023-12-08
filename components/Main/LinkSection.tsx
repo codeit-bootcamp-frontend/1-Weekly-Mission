@@ -1,6 +1,6 @@
-import CardList from "@/components/Main/Card/CardList";
-import FolderSelect from "@/components/Main/FolderCatergory/FolderSelect";
-import SearchBar from "@/components/Main/FolderCatergory/SearchBar";
+import CardList from "@/components/Main/CardList/CardList";
+import FolderSelect from "@/components/Main/FolderSelect/FolderSelect";
+import SearchBar from "@/components/Main/FolderSelect/SearchBar";
 import { URLS } from "@/utils/getData.type";
 
 interface Props {

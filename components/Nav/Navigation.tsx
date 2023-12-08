@@ -18,18 +18,22 @@ export default function Navigation({ id, $page = "" }: Props) {
   if (accessToken) {
     locate = `/folder?a=${accessToken}`;
   }
+
+  const Login = () =>
+    $page === "/" ? (
+      <Link href={locate} as={locate === "/signin" ? "/signin" : "/folder"}>
+        로그인
+      </Link>
+    ) : (
+      <Avatar id={id} />
+    );
+
   return (
     <>
       <Background />
       <Nav $page={$page}>
         <Logo src="/logo.svg" alt="링크브러리 홈화면으로 이동" />
-        {$page === "/" ? (
-          <Link href={locate} as={locate === "/signin" ? "/signin" : "/folder"}>
-            로그인
-          </Link>
-        ) : (
-          <Avatar id={id} />
-        )}
+        <Login />
       </Nav>
     </>
   );

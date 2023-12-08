@@ -67,18 +67,12 @@ const pipe =
       for (const f of iter) {
         const res = f(acc);
         if (typeof res === "string") return res;
-        if (res instanceof Promise) return res.then(recursive);
+        if (res instanceof Promise) return res.then(recursive).catch((e) => Promise.reject(e));
       }
 
       return "";
     })(init);
   };
-
-// funcs.reduce((acc, func, i, arr) => {
-//   const res = func(acc);
-//   if (typeof res === "string") return arr.splice(1), res as unknown as Obj;
-//   return res;
-// }, init);
 
 export const validate_signin = pipe(isValue, isReg);
 export const validate_signup = pipe(isValue, isReg, isSameEmail, isSamePassword);

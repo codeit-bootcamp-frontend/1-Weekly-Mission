@@ -1,10 +1,8 @@
 import { CutLine, StyledHeader, StyledImage, Title, WrapperLink } from "@/components/Header/index/HomeHeader.styled";
 import Link from "next/link";
-import { useEffect } from "react";
-
-let locate = "/folder";
 
 export default function HomeHeader() {
+  let locate = "/folder";
   const accessToken = typeof window !== "undefined" ? sessionStorage.getItem("accessToken") : null;
   if (accessToken) {
     locate = `/folder?a=${accessToken}`;

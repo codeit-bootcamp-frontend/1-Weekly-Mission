@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, MutableRefObject, useState } from "react";
 import { Float, Form, Input, InputButton, InputImg, InputWrapper } from "@/components/Header/HeaderInput.styled";
 import useData from "@/hooks/useData";
 import useModal from "@/hooks/useModal";
@@ -7,7 +7,7 @@ import { URLS } from "@/utils/getData.type";
 
 interface Props {
   id: number;
-  dom: React.MutableRefObject<Dom>;
+  dom: MutableRefObject<Dom>;
 }
 
 export default function HeaderSearch({ id, dom }: Props) {
@@ -15,14 +15,14 @@ export default function HeaderSearch({ id, dom }: Props) {
   const { modal, dispatch } = useModal();
   const [value, setValue] = useState("");
 
-  const handleModal = (e: React.FormEvent) => {
+  const handleModal = (e: FormEvent) => {
     e.preventDefault();
     if (folder?.path === URLS.FOLDER_CATEGORY) {
       dispatch({ title: value, type: "추가하기", data: folder.data });
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent) => {
     if (e.target === dom.current.headerInput) {
       const input = dom.current.headerInput as HTMLInputElement;
       setValue(input.value);

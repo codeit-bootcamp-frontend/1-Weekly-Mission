@@ -1,17 +1,17 @@
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
-import { CloseImg, ContainerSearch, SearchImg, SerachInput } from "@/components/Main/FolderCatergory/SearchBar.styled";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { CloseImg, ContainerSearch, SearchImg, SerachInput } from "@/components/Main/FolderSelect/SearchBar.styled";
 
 export default function SearchBar() {
   const [value, setValue] = useState("");
   const input = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const query = router.query;
     router.push({

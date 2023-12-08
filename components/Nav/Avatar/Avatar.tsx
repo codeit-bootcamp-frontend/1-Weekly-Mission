@@ -9,7 +9,7 @@ interface AvatarProps {
 
 export default function Avatar({ id }: AvatarProps) {
   const router = useRouter();
-  const pathname = router.asPath;
+  const pathname = router.pathname;
   const type = pathname === "/shared" ? URLS.SHARED_USER : URLS.FOLDER_USER;
   const userData = useData(type, id);
 

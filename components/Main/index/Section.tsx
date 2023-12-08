@@ -1,4 +1,5 @@
 import { StyledImage, StyledSection, Text, Title } from "@/components/Main/index/Section.styled";
+import Image from "next/image";
 
 const TEXT = {
   link: ["", "원하는 링크", "를 저장하세요", "나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고 싶은 모든 것을 한 공간에 저장하세요."],

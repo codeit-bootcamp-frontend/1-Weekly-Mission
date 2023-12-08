@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import kebabImg from "@/public/kebab.svg";
-import { Container, PopOver } from "@/components/Main/Card/Kebab.styled";
+import { Container, PopOver } from "@/components/Main/CardList/Kebab.styled";
 import useModal from "@/hooks/useModal";
 import { FolderData } from "@/utils/getData.type";
 import Image from "next/image";

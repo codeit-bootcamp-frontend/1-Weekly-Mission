@@ -2,9 +2,10 @@ import { Container, Copy, Info, Sns } from "@/components/Footer/Footer.styled";
 import { Dom } from "@/hooks/useObserver";
 import Image from "next/image";
 import Link from "next/link";
+import { MutableRefObject } from "react";
 
 interface Props {
-  dom?: React.MutableRefObject<Dom>;
+  dom?: MutableRefObject<Dom>;
 }
 
 export default function Footer({ dom }: Props) {
