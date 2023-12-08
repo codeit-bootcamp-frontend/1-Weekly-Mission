@@ -1,4 +1,6 @@
 import LoginLayout from "@/components/LoginLayout/LoginLayout";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const signIn = {
   p: "회원이 아니신가요?",
@@ -8,6 +10,7 @@ const signIn = {
   text: "소셜로그인",
 };
 
+
 export default function SignIn() {
-  return <LoginLayout data={signIn}></LoginLayout>;
+  return (<LoginLayout data={signIn}></LoginLayout>);
 }

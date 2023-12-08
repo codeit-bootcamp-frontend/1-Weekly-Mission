@@ -10,7 +10,6 @@ import * as Style from '@/styles/index.style';
 import { ThemeProvider } from 'styled-components';
 import theme from '@/styles/display';
 
-
 export default function Home() {
   return (
     <>
