@@ -7,8 +7,8 @@ const CARDS_DATA = [
     id: 1,
     layout: 'odd',
     title: (
-      <p className='font-bold tracking-tight text-24pxr'>
-        <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#fe8a8a] to-[#a4ceff]'>
+      <p className='text-24pxr font-bold tracking-tight'>
+        <span className='bg-gradient-to-r from-[#fe8a8a] to-[#a4ceff] bg-clip-text text-transparent'>
           원하는 링크
         </span>
         를 저장하세요
@@ -23,9 +23,9 @@ const CARDS_DATA = [
     id: 2,
     layout: 'even',
     title: (
-      <p className='font-bold tracking-tight text-24pxr'>
+      <p className='text-24pxr font-bold tracking-tight'>
         링크를 폴더로{' '}
-        <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#6fbaff] to-[#ffd88b]'>
+        <span className='bg-gradient-to-r from-[#6fbaff] to-[#ffd88b] bg-clip-text text-transparent'>
           관리
         </span>
         하세요
@@ -39,9 +39,9 @@ const CARDS_DATA = [
     id: 3,
     layout: 'odd',
     title: (
-      <p className='font-bold tracking-tight text-24pxr'>
+      <p className='text-24pxr font-bold tracking-tight'>
         저장한 링크를{' '}
-        <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#6d7ccd] to-[#528885]'>
+        <span className='bg-gradient-to-r from-[#6d7ccd] to-[#528885] bg-clip-text text-transparent'>
           공유
         </span>
         해보세요
@@ -56,9 +56,9 @@ const CARDS_DATA = [
     id: 4,
     layout: 'even',
     title: (
-      <p className='font-bold tracking-tight text-24pxr'>
+      <p className='text-24pxr font-bold tracking-tight'>
         저장한 링크를{' '}
-        <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#fe578f] to-[#68e8f9]'>
+        <span className='bg-gradient-to-r from-[#fe578f] to-[#68e8f9] bg-clip-text text-transparent'>
           검색
         </span>
         해보세요
@@ -75,7 +75,7 @@ function Home() {
     <Layout>
       <main>
         <Banner />
-        <ul className='flex flex-col items-center gap-80pxr pt-40pxr pb-80pxr px-32pxr tablet:gap-100pxr tablet:pt-80pxr tablet:pb-[17rem] tablet:px-0 pc:gap-100pxr pc:pt-[12rem] pc:pb-[17rem] pc:px-0'>
+        <ul className='flex flex-col items-center gap-80pxr px-32pxr pb-80pxr pt-40pxr tablet:gap-100pxr tablet:px-0 tablet:pb-[17rem] tablet:pt-80pxr pc:gap-100pxr pc:px-0 pc:pb-[17rem] pc:pt-[12rem]'>
           {CARDS_DATA.map((card) => (
             <li key={card.id}>
               <Card data={card} />

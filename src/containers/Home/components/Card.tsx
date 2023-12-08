@@ -30,19 +30,19 @@ function Card({ data }: Props) {
   };
 
   return (
-    <section className='grid grid-cols-[auto] grid-rows-[repeat(3, auto)] gap-y-0 w-[32rem] tablet:grid-cols-[auto_auto] tablet:grid-rows-[auto_auto] tablet:gap-x-50pxr tablet:w-[70rem] pc:gap-x-50pxr pc:gap-y-10pxr pc:w-[100rem]'>
+    <section className='grid-rows-[repeat(3, auto)] grid w-[32rem] grid-cols-[auto] gap-y-0 tablet:w-[70rem] tablet:grid-cols-[auto_auto] tablet:grid-rows-[auto_auto] tablet:gap-x-50pxr pc:w-[100rem] pc:gap-x-50pxr pc:gap-y-10pxr'>
       <div
-        className={`self-end w-[30rem] tablet:w-[26rem] tablet:text-48pxr pc:w-[29rem] ${layoutStyle.title}`}
+        className={`w-[30rem] self-end tablet:w-[26rem] tablet:text-48pxr pc:w-[29rem] ${layoutStyle.title}`}
       >
         {title}
       </div>
       <p
-        className={`w-full text-[#6b6b6b] text-15pxr font-medium leading-normal tablet:w-[26rem] tablet:text-[1.6rem] pc:w-[28rem] ${layoutStyle.description}`}
+        className={`w-full text-15pxr font-medium leading-normal text-[#6b6b6b] tablet:w-[26rem] tablet:text-[1.6rem] pc:w-[28rem] ${layoutStyle.description}`}
       >
         {description}
       </p>
       <div
-        className={`relative mt-20pxr mb-16pxr w-[32rem] h-[26rem] tablet:m-0 tablet:w-[38rem] tablet:h-[32rem] pc:w-[55rem] pc:h-[45rem] ${layoutStyle.image}`}
+        className={`relative mb-16pxr mt-20pxr h-[26rem] w-[32rem] tablet:m-0 tablet:h-[32rem] tablet:w-[38rem] pc:h-[45rem] pc:w-[55rem] ${layoutStyle.image}`}
       >
         <Image
           src={imgSrc}

@@ -14,11 +14,11 @@ interface Props {
 function Footer({ footerRef }: Props) {
   return (
     <footer ref={footerRef} className='w-full bg-julge-black'>
-      <div className='grid justify-between grid-cols-[18rem_12rem] grid-rows-[1.8rem_1.8rem] gap-y-60pxr p-32pxr tablet:grid-cols-[repeat(3,_auto)]'>
+      <div className='grid grid-cols-[18rem_12rem] grid-rows-[1.8rem_1.8rem] justify-between gap-y-60pxr p-32pxr tablet:grid-cols-[repeat(3,_auto)]'>
         <section className='col-start-1 row-start-2 text-16pxr font-normal text-[#676767] tablet:col-start-1 tablet:row-start-1'>
           ©codeit - 2023
         </section>
-        <section className='flex col-start-1 row-start-1 gap-30pxr tablet:col-start-2'>
+        <section className='col-start-1 row-start-1 flex gap-30pxr tablet:col-start-2'>
           <Link
             href='/pages/privacy.html'
             className='text-16pxr font-normal text-[#cfcfcf]'
@@ -32,7 +32,7 @@ function Footer({ footerRef }: Props) {
             FAQ
           </Link>
         </section>
-        <section className='flex justify-end col-start-2 row-start-1 gap-12pxr tablet:col-start-3'>
+        <section className='col-start-2 row-start-1 flex justify-end gap-12pxr tablet:col-start-3'>
           <Link
             href='http://facebook.com'
             target='_blank'

@@ -37,23 +37,23 @@ function Navigator({ isLoggedIn, userId, navRef }: Props) {
 
   return (
     <header ref={navRef} className='w-full bg-background'>
-      <div className='flex items-center justify-between w-full mx-auto py-13pxr px-32pxr  max-w-7xl tablet:px-32pxr pc:py-20pxr pc:px-[20rem] pc:max-w-[192rem]'>
+      <div className='mx-auto flex w-full max-w-7xl items-center justify-between px-32pxr py-13pxr tablet:px-32pxr pc:max-w-[192rem] pc:px-[20rem] pc:py-20pxr'>
         <Link href='/' className='mr-5pxr'>
           <IconLinkbrary />
           <h1 className='sr-only'>Linkbrary - 링크브러리</h1>
         </Link>
         {isLoggedIn ? (
-          <div className='flex items-center justify-end gap-7pxr w-80pxr ml-5pxr'>
+          <div className='ml-5pxr flex w-80pxr items-center justify-end gap-7pxr'>
             <Image
               src={userInfo?.image_source ?? DEFAULT_PROFILE_IMAGE_SRC}
               alt='사용자 프로필 사진'
             />
-            <p className='hidden font-normal text-gray-100 text-14pxr tablet:block tablet:break-keep'>
+            <p className='hidden text-14pxr font-normal text-gray-100 tablet:block tablet:break-keep'>
               {userInfo?.email}
             </p>
           </div>
         ) : (
-          <Link href='/signin' className='w-80pxr ml-5pxr pc:w-[13rem]'>
+          <Link href='/signin' className='ml-5pxr w-80pxr pc:w-[13rem]'>
             <Button>로그인</Button>
           </Link>
         )}
