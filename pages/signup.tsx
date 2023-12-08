@@ -24,10 +24,11 @@ function SignUp() {
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus(0);
     const signUp = await postSignUp(account);
 
     if (signUp.error) {
-      setStatus(signUp.error.status);
+      setStatus(400);
     }
 
     if (signUp.data && account.password === account.passwordCheck) {
@@ -104,6 +105,7 @@ function SignUp() {
               id={passwordCheck.type}
               type={passwordCheck.type}
               placeholder={passwordCheck.placeholder}
+              status={status}
               account={account}
               setAccount={setAccount}
             />

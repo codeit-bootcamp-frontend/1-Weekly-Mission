@@ -5,6 +5,7 @@ import eyeOffImg from "src/assets/icon/eye-off.svg";
 import eyeOnImg from "src/assets/icon/eye-on.svg";
 import styles from "src/components/Input/Input.module.css";
 import { INPUT_TYPE } from "src/constants/input";
+import { usePasswordVisible } from "src/hook/SignUp/usePasswordVisible";
 import { validateEmail, validatePassword } from "src/utils/inputValidate";
 
 interface Input {
@@ -17,17 +18,12 @@ interface Input {
 }
 
 function Input({ id, type, placeholder, status, account, setAccount }: Input) {
-  const [isVisible, setIsVisible] = useState(true);
   const [isError, setIsError] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
   const router = useRouter();
+  const { isVisible, visiblePassword } = usePasswordVisible();
 
   const { email, password, passwordCheck } = INPUT_TYPE;
-
-  const visiblePassword = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    setIsVisible((prev) => !prev);
-  };
 
   const handleCheck = (e: React.FocusEvent<HTMLInputElement>) => {
     if (e.target.value) {
@@ -70,22 +66,26 @@ function Input({ id, type, placeholder, status, account, setAccount }: Input) {
   };
 
   useEffect(() => {
-    if (status === 400) {
-      setIsError(false);
-      switch (type) {
-        case "email":
+    switch (status) {
+      case 400:
+        if (account.email === "" && type === "email") {
+          setIsError(false);
           setErrorMsg(email.errorMsg1);
-          break;
-        case "password":
+        }
+        if (account.password === "" && type === "password") {
+          setIsError(false);
           setErrorMsg(password.errorMsg1);
-          break;
-      }
-    }
-    if (status === 409) {
-      if (type === "email") {
-        setIsError(false);
-        setErrorMsg(email.errorMsg3);
-      }
+        }
+        if (account.passwordCheck === "" && type === "passwordCheck") {
+          setIsError(false);
+          setErrorMsg(password.errorMsg1);
+        }
+        break;
+      case 409:
+        if (type === "email") {
+          setIsError(false);
+          setErrorMsg(email.errorMsg3);
+        }
     }
   }, [status]);
 
