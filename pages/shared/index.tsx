@@ -12,23 +12,28 @@ import NavBar from "@/components/NavBar/NavBar";
 import getUserLinks from "@/api/getUserLinks";
 import getUserFolder from "@/api/getUserFolder";
 import getUser from "@/api/getUser";
-import { formatDate, getTimeDiff, prettyFormatTimeDiff } from "@/utils/utils";
+import {
+  formatDate,
+  getTimeDiff,
+  prettyFormatTimeDiff,
+  typeCheckParam,
+} from "@/utils/utils";
 
 interface Props {
   userData: UserData;
   folderData: UserFolderData;
-  linksData: LinksData;
+  linksListData: LinksData;
 }
 
-const SharedPage = ({ userData, folderData, linksData }: Props) => {
+const SharedPage = ({ userData, folderData, linksListData }: Props) => {
   const [searchData, setSearchData] = useState<LinksData | undefined>(
-    linksData
+    linksListData
   );
 
   return (
     <>
       <Head>
-        <title>LinkBrary - Shared</title>
+        <title>Shared - LinkBrary</title>
       </Head>
       <NavBar />
       <FolderInfo
@@ -36,7 +41,7 @@ const SharedPage = ({ userData, folderData, linksData }: Props) => {
         userName={userData?.data?.[0]?.name}
         folderName={folderData?.data?.[0]?.name || ""}
       />
-      <Search linksListData={linksData} onChange={setSearchData} />
+      <Search linksListData={linksListData} onChange={setSearchData} />
       <Card>
         {searchData?.data &&
           searchData.data.map((link: Link) => {
@@ -68,10 +73,9 @@ export default SharedPage;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  // Fetch data from API or other sources using context.query
   const { query } = context;
-  const userId = typeof query.user === "string" ? +query.user : undefined;
-  const folderId = typeof query.folder === "string" ? +query.folder : undefined;
+  const userId = typeCheckParam("string", query.user);
+  const folderId = typeCheckParam("string", query.folder);
 
   try {
     if (userId !== undefined && folderId !== undefined) {
@@ -91,16 +95,14 @@ export const getServerSideProps = async (
       };
     }
   } catch (e) {
-    // Handle errors if necessary
-    console.log(e);
+    console.error(e);
   }
 
-  // Return empty props or handle errors if necessary
   return {
     props: {
       userData: null,
       folderData: null,
-      linksData: null,
+      linksListData: null,
     },
   };
 };

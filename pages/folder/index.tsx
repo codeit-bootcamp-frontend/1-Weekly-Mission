@@ -1,6 +1,6 @@
+import { GetServerSidePropsContext } from "next";
 import { useState } from "react";
 import Head from "next/head";
-import { GetServerSidePropsContext } from "next";
 
 import AddLink from "@/components/AddLink/AddLink";
 import FolderUtils from "@/components/FolderUtils/FolderUtils";
@@ -22,14 +22,19 @@ import NavBar from "@/components/NavBar/NavBar";
 
 import getUserFolders from "@/api/getUserFolders";
 import getUserLinks from "@/api/getUserLinks";
-import { formatDate, getTimeDiff, prettyFormatTimeDiff } from "@/utils/utils";
+import {
+  formatDate,
+  getTimeDiff,
+  prettyFormatTimeDiff,
+  typeCheckParam,
+} from "@/utils/utils";
 
 interface Props {
   folderListData: UserFolderData;
   linksListData: LinksData;
 }
 
-export default function FolderPage({ folderListData, linksListData }: Props) {
+const FolderPage = ({ folderListData, linksListData }: Props) => {
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [inputValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState<LinksData | undefined>(
@@ -39,7 +44,7 @@ export default function FolderPage({ folderListData, linksListData }: Props) {
   return (
     <>
       <Head>
-        <title>LinkBrary - Folder</title>
+        <title>Folder - LinkBrary</title>
       </Head>
       <NavBar />
       <AddLink>
@@ -95,14 +100,16 @@ export default function FolderPage({ folderListData, linksListData }: Props) {
       <Footer />
     </>
   );
-}
+};
+
+export default FolderPage;
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { query } = context;
-  const userId = typeof query.user === "string" ? +query.user : undefined;
-  const folderId = typeof query.folder === "string" ? +query.folder : undefined;
+  const userId = typeCheckParam("string", query.user);
+  const folderId = typeCheckParam("string", query.folder);
   try {
     if (userId !== undefined && folderId !== undefined) {
       const [folderListResponseData, linksListResponseData] = await Promise.all(
@@ -116,8 +123,8 @@ export const getServerSideProps = async (
         },
       };
     }
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.error(e);
   }
 
   return {
