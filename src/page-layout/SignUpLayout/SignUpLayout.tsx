@@ -38,7 +38,7 @@ export const SignUpLayout = ({
         localStorage.setItem("signUpToken", accessToken);
         router.push("/folder");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.log(error);
     }
   };
@@ -74,6 +74,7 @@ export const SignUpLayout = ({
               </label>
               <input
                 className={cx("input", { error: errors?.email })}
+                placeholder="이메일을 입력해주세요."
                 {...register("email", {
                   required: "이메일을 입력해주세요.",
                   pattern: {
@@ -94,6 +95,7 @@ export const SignUpLayout = ({
               <div className={cx("password_container")}>
                 <input
                   type={inputType}
+                  placeholder="영문, 숫자를 조합해 8자 이상 입력해 주세요."
                   className={cx("input", { error: errors?.password })}
                   {...register("password", {
                     required: "비밀번호를 입력해주세요",
@@ -116,6 +118,7 @@ export const SignUpLayout = ({
               </label>
               <div className={cx("password_container")}>
                 <input
+                  placeholder="비밀번호와 일치하는 값을 입력해 주세요."
                   type={inputType}
                   className={cx("input", { error: errors?.passwordConfirm })}
                   {...register("passwordConfirm", {

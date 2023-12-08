@@ -19,8 +19,7 @@ export const SignInLayout = ({
   socialContainer,
 }: SignInLayoutProps) => {
   const [signInError, setSignInError] = useState<boolean>(false);
-  const { register, handleSubmit, formState, control, getValues, clearErrors } =
-    useForm<any>();
+  const { register, handleSubmit, formState, getValues } = useForm<any>();
   const { errors }: any = formState;
   const router = useRouter();
 
@@ -39,15 +38,9 @@ export const SignInLayout = ({
         localStorage.setItem("signInToken", accessToken);
         router.push("/folder");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       setSignInError(true);
       console.log(error);
-    }
-  };
-
-  const handleKeyDown = (e: any) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
     }
   };
 
@@ -82,6 +75,7 @@ export const SignInLayout = ({
                 이메일
               </label>
               <input
+                placeholder="이메일을 입력해주세요"
                 className={cx("input", { error: errors?.email || signInError })}
                 {...register("email", {
                   onChange: () => {
@@ -108,6 +102,7 @@ export const SignInLayout = ({
               </label>
               <div className={cx("password_container")}>
                 <input
+                  placeholder="비밀번호를 입력해주세요"
                   type={inputType}
                   className={cx("input", {
                     error: errors?.password || signInError,
