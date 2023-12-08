@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import styles from '@/src/sign/ui-form-input/FormInput.module.scss';
 
 type FormInputProps = {
-  type: ReactNode;
+  type: HTMLInputAttribute;
   label: ReactNode;
 };
 

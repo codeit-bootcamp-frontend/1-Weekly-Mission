@@ -19,7 +19,6 @@ export const SignLayout = ({ logo, message, form, sns }: SignLayoutProps) => {
           {logo}
           {message}
         </div>
-        {/* 폼 컴포넌트 따로 만들기 - react-hook-form 써보기 */}
         <div className={cx('form')}>{form}</div>
         <div className={cx('sns')}>{sns}</div>
       </div>

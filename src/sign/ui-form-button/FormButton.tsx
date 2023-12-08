@@ -9,5 +9,5 @@ type FormButtonProps = {
 };
 
 export const FormButton = ({ children }: FormButtonProps) => {
-  return <div className={cx(styles.container)}>{children}</div>;
+  return <div className={cx('container')}>{children}</div>;
 };

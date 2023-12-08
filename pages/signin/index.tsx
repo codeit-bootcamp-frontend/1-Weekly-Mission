@@ -5,10 +5,12 @@ import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { SnsLogin } from '@/src/sign/ui-sns/SnsLogin';
 import { FormInput } from '@/src/sign/ui-form-input/FormInput';
+import { FormButton } from '@/src/sign/ui-form-button/FormButton';
 
 const cx = classNames.bind(styles);
 
 const Signin = () => {
+  const handelSubmit = () => {};
   return (
     <SignLayout
       logo={
@@ -21,7 +23,15 @@ const Signin = () => {
           회원이 아니신가요? <Link href="/signup">회원가입하기</Link>
         </p>
       }
-      form={<FormInput label="이메일" type="text" />}
+      form={
+        <form onSubmit={handelSubmit}>
+          <FormInput label="이메일" type="text" />
+          <FormInput label="비밀번호" type="password" />
+          <button>
+            <FormButton>로그인</FormButton>
+          </button>
+        </form>
+      }
       sns={<SnsLogin />}
     />
   );
