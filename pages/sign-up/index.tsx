@@ -22,11 +22,11 @@ export default function SignUp() {
     }));
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("signInToken")) {
-      router.push("/folder");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("signInToken")) {
+  //     router.push("/folder");
+  //   }
+  // }, []);
 
   return (
     <SignUpLayout

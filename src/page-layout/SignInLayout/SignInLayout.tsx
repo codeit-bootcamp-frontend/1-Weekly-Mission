@@ -22,10 +22,10 @@ export const SignInLayout = ({
   socialContainer,
 }: SignInLayoutProps) => {
   const [signInError, setSignInError] = useState<boolean>(false);
-  const router = useRouter();
   const { register, handleSubmit, formState, control, getValues, clearErrors } =
     useForm<any>();
   const { errors }: any = formState;
+  const router = useRouter();
 
   const onSubmit = async () => {
     try {
@@ -61,7 +61,7 @@ export const SignInLayout = ({
   );
   const EyeIcon = useMemo(
     () => (
-      <button
+      <div
         className={cx("eye_button")}
         onClick={(e) => {
           e.preventDefault();
@@ -69,7 +69,7 @@ export const SignInLayout = ({
         }}
       >
         {isPasswordVisible ? <EyeOnIcon /> : <EyeOffIcon />}
-      </button>
+      </div>
     ),
     [isPasswordVisible]
   );
@@ -79,11 +79,7 @@ export const SignInLayout = ({
       <div className={cx("wrapper")}>
         <div className={cx("container")}>
           <div className={cx("logo_container")}>{titleContainer}</div>
-          <form
-            id="signInForm"
-            onSubmit={handleSubmit(onSubmit)}
-            onKeyDown={handleKeyDown}
-          >
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className={cx("part")}>
               <label className={cx("label")} id="email">
                 이메일
@@ -135,12 +131,10 @@ export const SignInLayout = ({
                 <p className={cx("helper-text")}>비밀번호를 확인해주세요</p>
               )}
             </div>
-
-            <button type="submit" className={cx("button")} onClick={onSubmit}>
+            <button type="submit" className={cx("button")}>
               로그인
             </button>
           </form>
-          {/* <DevTool control={control} /> */}
           <div className={cx("social_container")}>{socialContainer}</div>
         </div>
       </div>
