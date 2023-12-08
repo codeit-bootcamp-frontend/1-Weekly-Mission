@@ -61,7 +61,7 @@ export const SignUpLayout = ({
     () => (
       <div
         className={cx("eye_button")}
-        onClick={() => {
+        onClick={(e) => {
           e.preventDefault();
           setIsPasswordVisible(!isPasswordVisible);
         }}
