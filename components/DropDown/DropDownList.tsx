@@ -54,7 +54,7 @@ function DropDownList({ url, folderData, anchorRef }: Props) {
       {isDeleteOpen && (
         <Modal
           title="링크 삭제"
-          trigger={<ModalContentName children={url} />}
+          trigger={<ModalContentName url={url} />}
           closeModal={closeDelete}
           btnContent="삭제하기"
           color="red"

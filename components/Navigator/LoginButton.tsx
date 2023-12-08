@@ -35,6 +35,7 @@ const LoginButton = ({ data, setUserData }: Props) => {
   useEffect(() => {
     if (!isLogin) return;
     BtnClickHandler();
+    // dependency list
   }, [isLogin]);
 
   return (
