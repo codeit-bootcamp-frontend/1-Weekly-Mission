@@ -2,7 +2,8 @@ import { ReactNode } from "react";
 import * as Styled from "./StyledModal";
 
 interface Props {
-  url: ReactNode;
+  url?: ReactNode;
+  children?: ReactNode;
 }
 
 const ModalContentName = ({ url }: Props) => {
