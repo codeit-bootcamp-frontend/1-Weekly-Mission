@@ -4,6 +4,8 @@ import classNames from "classnames/bind";
 import { useForm } from "react-hook-form";
 import EyeOnIcon from "@/public/images/eye-on.svg";
 import EyeOffIcon from "@/public/images/eye-off.svg";
+import { axiosInstance } from "@/src/sharing/util";
+import { useRouter } from "next/router";
 
 const cx = classNames.bind(styles);
 
@@ -20,11 +22,29 @@ export const SignUpLayout = ({
   socialContainer,
 }: SignUpLayoutProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const onSubmit = (data: any) => {
-    console.log("Form submitted.", data);
-  };
   const { register, handleSubmit, formState, getValues } = useForm<any>();
   const { errors }: any = formState;
+  const router = useRouter();
+
+  const onSubmit = async () => {
+    try {
+      const res = await axiosInstance.post("sign-up", {
+        email: getValues("email"),
+        password: getValues("password"),
+      });
+      if (res.status === 200) {
+        const {
+          data: {
+            data: { accessToken },
+          },
+        } = res;
+        localStorage.setItem("signUpToken", accessToken);
+        router.push("/folder");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const inputType = useMemo(
     () => (isPasswordVisible ? "text" : "password"),
