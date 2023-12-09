@@ -6,6 +6,13 @@ type SNSLINKS_TYPE = {
   [key: string]: string;
 };
 
+const SNSLINKS: SNSLINKS_TYPE = {
+  facebook: "https://www.facebook.com/",
+  twitter: "https://www.twitter.com/",
+  youtube: "https://www.youtube.com/",
+  instagram: "https://www.instagram.com/",
+};
+
 const FOLDER_OPTION_NAMES = [
   {
     id: 1,
@@ -67,12 +74,8 @@ const MODAL_NAME = {
   },
 };
 
-const SNSLINKS: SNSLINKS_TYPE = {
-  facebook: "https://www.facebook.com/",
-  twitter: "https://www.twitter.com/",
-  youtube: "https://www.youtube.com/",
-  instagram: "https://www.instagram.com/",
-};
+const KAKAO_LOGIN_URL = "http://www.kakaocorp.com/page";
+const GOOGLE_LOGIN_URL = "https://www.google.com";
 
 export {
   FOLDER_OPTION_NAMES,
@@ -81,4 +84,6 @@ export {
   DEFAULT_USER_ID,
   MODAL_NAME,
   SNSLINKS,
+  KAKAO_LOGIN_URL,
+  GOOGLE_LOGIN_URL,
 };
