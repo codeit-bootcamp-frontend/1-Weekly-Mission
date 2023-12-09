@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, FocusEventHandler } from "react";
 import styles from "./Input.module.css";
-import { UseFormProps, UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { FormValues } from "../signupForm/SignupForm";
 
 export interface InputProps {
