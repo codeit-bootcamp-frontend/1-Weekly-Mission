@@ -10,7 +10,7 @@ interface Props {
   folders: Folder[];
 }
 
-function FolderList({ folders }: Props) {
+const FolderList = ({ folders }: Props) => {
   const [selectedId, setSelectedId] = useState<string | undefined>('');
   const [selectedName, setSelectedName] = useState('전체');
   const [modalAddFolderIsOpen, setModalAddFolderIsOpen] = useState(false);
@@ -69,6 +69,6 @@ function FolderList({ folders }: Props) {
       <CurrentFolderInfo selectedName={selectedName} selectedId={selectedId} />
     </>
   );
-}
+};
 
 export default FolderList;

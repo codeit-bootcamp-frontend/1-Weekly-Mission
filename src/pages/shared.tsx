@@ -44,7 +44,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Shared({ folder }: Props) {
+const Shared = ({ folder }: Props) => {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   return (
@@ -56,4 +56,6 @@ export default function Shared({ folder }: Props) {
       </MainDiv>
     </Layout>
   );
-}
+};
+
+export default Shared;

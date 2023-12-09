@@ -5,7 +5,7 @@ interface Props {
   page: 'signin' | 'signup';
 }
 
-function SocialBox({ page }: Props) {
+const SocialBox = ({ page }: Props) => {
   return (
     <S.Container>
       <S.P>{page === 'signin' ? '소셜 로그인' : '다른 방식으로 가입하기'}</S.P>
@@ -31,6 +31,6 @@ function SocialBox({ page }: Props) {
       </S.Links>
     </S.Container>
   );
-}
+};
 
 export default SocialBox;

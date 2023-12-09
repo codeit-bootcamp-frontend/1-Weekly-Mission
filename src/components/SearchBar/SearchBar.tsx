@@ -6,7 +6,7 @@ interface Props {
   setSearchKeyword: (value: string) => void;
 }
 
-function SearchBar({ setSearchKeyword }: Props) {
+const SearchBar = ({ setSearchKeyword }: Props) => {
   const [value, setValue] = useState('');
 
   const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +45,6 @@ function SearchBar({ setSearchKeyword }: Props) {
       )}
     </S.Container>
   );
-}
+};
 
 export default SearchBar;

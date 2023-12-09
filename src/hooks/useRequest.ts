@@ -15,11 +15,11 @@ interface UseRequestReturn<T> {
   fetch: (args?: AxiosRequestConfig) => Promise<{ data?: T; error?: Error }>;
 }
 
-function useRequest<T>({
+const useRequest = <T>({
   deps = [],
   skip = false,
   options,
-}: UseRequestOptions): UseRequestReturn<T> {
+}: UseRequestOptions): UseRequestReturn<T> => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -49,6 +49,6 @@ function useRequest<T>({
   }, deps);
 
   return { data, isLoading, error, fetch: refetch };
-}
+};
 
 export default useRequest;

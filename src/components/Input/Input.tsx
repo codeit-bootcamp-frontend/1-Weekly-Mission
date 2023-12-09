@@ -8,7 +8,7 @@ interface Props {
   placeholder?: string;
 }
 
-function Input({ id, passwordType = false, placeholder }: Props) {
+const Input = ({ id, passwordType = false, placeholder }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -43,6 +43,6 @@ function Input({ id, passwordType = false, placeholder }: Props) {
       )}
     </S.Container>
   );
-}
+};
 
 export default Input;

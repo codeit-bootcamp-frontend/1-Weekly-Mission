@@ -15,7 +15,7 @@ interface Props {
   item: Data;
 }
 
-function Card({ folders, item }: Props) {
+const Card = ({ folders, item }: Props) => {
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
   const [modalDeleteLinkIsOpen, setModalDeleteLinkIsOpen] = useState(false);
   const [modalAddLinkIsOpen, setModalAddLinkIsOpen] = useState(false);
@@ -100,6 +100,6 @@ function Card({ folders, item }: Props) {
       </S.Info>
     </Link>
   );
-}
+};
 
 export default Card;

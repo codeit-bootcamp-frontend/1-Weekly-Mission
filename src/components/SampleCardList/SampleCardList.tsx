@@ -8,7 +8,7 @@ interface Props {
   items: Link[];
 }
 
-function SampleCardList({ searchKeyword, items }: Props) {
+const SampleCardList = ({ searchKeyword, items }: Props) => {
   const lowerCaseKeyword = searchKeyword.toLowerCase();
 
   const filteredItems = useMemo(
@@ -36,6 +36,6 @@ function SampleCardList({ searchKeyword, items }: Props) {
       )}
     </>
   );
-}
+};
 
 export default SampleCardList;

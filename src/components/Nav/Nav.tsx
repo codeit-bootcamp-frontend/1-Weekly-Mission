@@ -25,7 +25,7 @@ interface Data {
   auth_id: string;
 }
 
-function Nav() {
+const Nav = () => {
   const [profile, setProfile] = useState({
     name: '',
     email: '',
@@ -82,6 +82,6 @@ function Nav() {
       )}
     </S.NavContainer>
   );
-}
+};
 
 export default Nav;

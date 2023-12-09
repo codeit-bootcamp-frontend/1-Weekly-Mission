@@ -12,7 +12,7 @@ interface IFormInput {
   passwordConfirm: string;
 }
 
-function SignupForm() {
+const SignupForm = () => {
   const { ...methods } = useForm<IFormInput>({ mode: 'onBlur' });
   const { register, handleSubmit, watch, setError, clearErrors } = methods;
   const router = useRouter();
@@ -123,6 +123,6 @@ function SignupForm() {
       </S.Form>
     </FormProvider>
   );
-}
+};
 
 export default SignupForm;

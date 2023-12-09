@@ -12,7 +12,7 @@ interface Props {
   folderId: string | undefined;
 }
 
-function ModalShare({ folderName, folderId }: Props) {
+const ModalShare = ({ folderName, folderId }: Props) => {
   const handleShareKakao = () => {
     window.Kakao.Share.sendDefault({
       objectType: 'text',
@@ -72,6 +72,6 @@ function ModalShare({ folderName, folderId }: Props) {
       </S.IconsBox>
     </>
   );
-}
+};
 
 export default ModalShare;

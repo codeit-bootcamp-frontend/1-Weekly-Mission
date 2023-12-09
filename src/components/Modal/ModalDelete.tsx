@@ -4,7 +4,7 @@ interface Props {
   folderName: string;
 }
 
-function ModalDelete({ folderName }: Props) {
+const ModalDelete = ({ folderName }: Props) => {
   return (
     <>
       <S.TitleContainer>
@@ -14,6 +14,6 @@ function ModalDelete({ folderName }: Props) {
       <S.DeleteButton>삭제하기</S.DeleteButton>
     </>
   );
-}
+};
 
 export default ModalDelete;

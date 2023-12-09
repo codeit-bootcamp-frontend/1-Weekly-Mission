@@ -8,7 +8,7 @@ interface Props {
   children: ReactNode;
 }
 
-export default function Modal({ close, children }: Props) {
+const Modal = ({ close, children }: Props) => {
   const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -48,4 +48,6 @@ export default function Modal({ close, children }: Props) {
     </div>,
     modalRoot
   );
-}
+};
+
+export default Modal;

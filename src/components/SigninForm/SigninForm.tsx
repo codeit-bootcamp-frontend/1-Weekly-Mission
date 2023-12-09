@@ -10,7 +10,7 @@ interface IFormInput {
   password: string;
 }
 
-function SigninForm() {
+const SigninForm = () => {
   const { ...methods } = useForm<IFormInput>({ mode: 'onBlur' });
   const { register, handleSubmit, setError } = methods;
   const router = useRouter();
@@ -67,6 +67,6 @@ function SigninForm() {
       </S.Form>
     </FormProvider>
   );
-}
+};
 
 export default SigninForm;

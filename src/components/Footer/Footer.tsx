@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import * as S from './Footer.style';
 
-export default function Footer() {
+const Footer = () => {
   return (
     <>
       <S.FooterContainer>
@@ -53,4 +53,6 @@ export default function Footer() {
       </S.FooterContainer>
     </>
   );
-}
+};
+
+export default Footer;

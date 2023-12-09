@@ -10,7 +10,7 @@ interface Props {
   selectedId: string | undefined;
 }
 
-function CurrentFolderInfo({ selectedName, selectedId }: Props) {
+const CurrentFolderInfo = ({ selectedName, selectedId }: Props) => {
   const [modalShareIsOpen, setModalShareIsOpen] = useState(false);
   const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
   const [modalDeleteIsOpen, setModalDeleteIsOpen] = useState(false);
@@ -49,6 +49,6 @@ function CurrentFolderInfo({ selectedName, selectedId }: Props) {
       </S.OptionContainer>
     </S.Container>
   );
-}
+};
 
 export default CurrentFolderInfo;

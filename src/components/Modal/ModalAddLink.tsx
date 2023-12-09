@@ -6,7 +6,7 @@ interface Props {
   url: string;
 }
 
-export function ModalAddLink({ folders, url }: Props) {
+const ModalAddLink = ({ folders, url }: Props) => {
   return (
     <>
       <S.TitleContainer>
@@ -25,6 +25,6 @@ export function ModalAddLink({ folders, url }: Props) {
       <S.SubmitButton>추가하기</S.SubmitButton>
     </>
   );
-}
+};
 
 export default ModalAddLink;

@@ -48,7 +48,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
-export default function Folder({ cards, folders }: Props) {
+const Folder = ({ cards, folders }: Props) => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const ref = useRef(null);
@@ -90,4 +90,6 @@ export default function Folder({ cards, folders }: Props) {
       </MainDiv>
     </Layout>
   );
-}
+};
+
+export default Folder;

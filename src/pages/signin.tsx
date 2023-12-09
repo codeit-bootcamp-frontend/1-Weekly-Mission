@@ -3,7 +3,7 @@ import SigninForm from '@components/SigninForm';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-export default function Signin() {
+const Signin = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -19,4 +19,6 @@ export default function Signin() {
       <SigninForm />
     </SignPageLayout>
   );
-}
+};
+
+export default Signin;

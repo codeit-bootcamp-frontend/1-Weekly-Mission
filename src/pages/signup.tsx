@@ -3,7 +3,7 @@ import SignupForm from '@components/SignupForm';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-export default function Signup() {
+const Signup = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -19,4 +19,6 @@ export default function Signup() {
       <SignupForm />
     </SignPageLayout>
   );
-}
+};
+
+export default Signup;

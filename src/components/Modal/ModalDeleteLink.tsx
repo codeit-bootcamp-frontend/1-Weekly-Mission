@@ -4,7 +4,7 @@ interface Props {
   url: string;
 }
 
-function ModalDeleteLink({ url }: Props) {
+const ModalDeleteLink = ({ url }: Props) => {
   return (
     <>
       <S.TitleContainer>
@@ -14,6 +14,6 @@ function ModalDeleteLink({ url }: Props) {
       <S.DeleteButton>삭제하기</S.DeleteButton>
     </>
   );
-}
+};
 
 export default ModalDeleteLink;

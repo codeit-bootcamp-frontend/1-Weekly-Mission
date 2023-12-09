@@ -9,7 +9,7 @@ interface Props {
   };
 }
 
-function Profile({ data }: Props) {
+const Profile = ({ data }: Props) => {
   if (!data) return null;
 
   const { name, email, profileImageSource, image_source } = data;
@@ -24,6 +24,6 @@ function Profile({ data }: Props) {
       <S.P>{email}</S.P>
     </S.Container>
   );
-}
+};
 
 export default Profile;

@@ -10,7 +10,7 @@ interface Props {
   searchKeyword: string;
 }
 
-function CardList({ folders, items, searchKeyword }: Props) {
+const CardList = ({ folders, items, searchKeyword }: Props) => {
   const lowerCaseKeyword = searchKeyword.toLowerCase();
 
   const filteredItems = useMemo(
@@ -36,6 +36,6 @@ function CardList({ folders, items, searchKeyword }: Props) {
       ))}
     </S.CardListContainer>
   );
-}
+};
 
 export default CardList;
