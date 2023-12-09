@@ -5,6 +5,7 @@
   font-size: 1.6rem;
   color: $color-gray100;
   padding: 1.8rem 1.5rem;
+  margin-top: 1.2rem;
   transition: border-color 0.2s ease-in-out;
   flex-grow: 1;
 
@@ -21,6 +22,12 @@
   }
 }
 
+.input-label {
+  color: $color-black;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
 .input-wrapper {
   position: relative;
   display: flex;
@@ -29,13 +36,14 @@
   .icon-wrapper {
     position: absolute;
     right: 2rem;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%);
     cursor: pointer;
   }
 }
 
 .error-message {
+  display: flex;
   color: $color-red;
   font-size: 1.4rem;
   margin-top: 0.6rem;
