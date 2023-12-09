@@ -7,12 +7,13 @@ import eyeOnIcon from '@/public/assets/images/eye-on.svg';
 interface Props {
   passwordMode: boolean;
   placeholder: string;
-  handleInputBlur: (event: FocusEvent<HTMLInputElement>) => string;
+  handleInputBlur?: (event: FocusEvent<HTMLInputElement>) => string;
+  register?: any;
+  error?: any;
 }
 
-export default function Input({ passwordMode, placeholder, handleInputBlur }: Props) {
+export default function Input({ passwordMode, placeholder, register, error }: Props) {
   const [password, setPassword] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('');
 
   function handlePwToggle() {
     setPassword((prev) => !prev);
@@ -20,24 +21,19 @@ export default function Input({ passwordMode, placeholder, handleInputBlur }: Pr
 
   return (
     <Container>
-      <InputWrapper
-        onBlur={(event) => setErrorMessage(handleInputBlur(event))}
-        placeholder={placeholder}
-        {...(passwordMode && password && { type: 'password' })}
-        {...(errorMessage && { className: 'error' })}
-      />
+      <InputWrapper placeholder={placeholder} {...(passwordMode && password && { type: 'password' })} {...(error && { className: 'error' })} {...register} />
       {passwordMode &&
         (password ? (
           <EyeIcon alt="비밀번호 보이기 아이콘" src={eyeOffIcon} width={16} height={16} onClick={handlePwToggle} />
         ) : (
           <EyeIcon alt="비밀번호 가리기 아이콘" src={eyeOnIcon} width={16} height={16} onClick={handlePwToggle} />
         ))}
-      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
     </Container>
   );
 }
 
-const Container = styled.form`
+const Container = styled.div`
   width: 400px;
   position: relative;
 

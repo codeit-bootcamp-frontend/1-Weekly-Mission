@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import Input from './Input';
-import { FocusEvent } from 'react';
 
 interface Props {
   type: '이메일' | '비밀번호' | '비밀번호 확인';
   placeholder: string;
-  validationFunc: (event: FocusEvent<HTMLInputElement>) => string;
+  register?: any;
+  error?: any;
 }
 
-export default function InputBox({ type, placeholder, validationFunc }: Props) {
+export default function InputBox({ type, placeholder, register, error }: Props) {
   const passwordMode = type === '이메일' ? false : true;
 
   return (
     <InputWrapper>
       <Text>{type}</Text>
-      <Input passwordMode={passwordMode} placeholder={placeholder} handleInputBlur={validationFunc} />
+      <Input passwordMode={passwordMode} placeholder={placeholder} register={register} error={error} />
     </InputWrapper>
   );
 }
