@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  gap: 2.4rem;
+}
+
+.label {
+  display: inline-block;
+  color: var(--black);
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
