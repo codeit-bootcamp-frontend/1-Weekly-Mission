@@ -4,12 +4,12 @@ import { FocusEvent } from 'react';
 
 interface Props {
   type: '이메일' | '비밀번호' | '비밀번호 확인';
+  placeholder: string;
   validationFunc: (event: FocusEvent<HTMLInputElement>) => string;
 }
 
-export default function InputBox({ type, validationFunc }: Props) {
+export default function InputBox({ type, placeholder, validationFunc }: Props) {
   const passwordMode = type === '이메일' ? false : true;
-  const placeholder = type === '이메일' ? '이메일을 입력해 주세요.' : '●●●●●●●●';
 
   return (
     <InputWrapper>

@@ -18,10 +18,6 @@ export default function Input({ passwordMode, placeholder, handleInputBlur }: Pr
     setPassword((prev) => !prev);
   }
 
-  if (passwordMode && !password) {
-    placeholder = 'password';
-  }
-
   return (
     <Container>
       <InputWrapper

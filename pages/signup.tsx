@@ -8,22 +8,23 @@ import Kakao from '@/public/assets/images/social_kakao.svg';
 import InputBox from '@/components/common/Input/InputBox';
 import { validateEmail, validatePassword } from '@/lib/utils/validations';
 
-export default function SignIn() {
+export default function SignUp() {
   return (
     <Background>
       <Container>
         <Header>
           <Logo width={210.6} height={38} />
-          <Signup>
-            <Description>회원이 아니신가요?</Description>
-            <GoSignUp href={'/signup'}>회원 가입하기</GoSignUp>
-          </Signup>
+          <Signin>
+            <Description>이미 회원이신가요?</Description>
+            <GoSignIn href={'/signin'}>로그인 하기</GoSignIn>
+          </Signin>
         </Header>
         <InputBox type="이메일" placeholder="이메일을 입력해 주세요." validationFunc={validateEmail} />
-        <InputBox type="비밀번호" placeholder="비밀번호를 입력해 주세요." validationFunc={validatePassword} />
-        <Button>로그인</Button>
+        <InputBox type="비밀번호" placeholder="영문, 숫자를 조합해 8자 이상 입력해 주세요." validationFunc={validatePassword} />
+        <InputBox type="비밀번호 확인" placeholder="비밀번호와 일치하는 값을 입력해 주세요." validationFunc={validatePassword} />
+        <Button>회원가입</Button>
         <SocialBox>
-          소셜 로그인
+          다른 방식으로 가입하기
           <IconWrapper>
             <Link href="https://www.google.com/">
               <Image src={Google} alt="구글 홈페이지 바로가기" width={42} height={42} />
@@ -65,9 +66,9 @@ const Header = styled.div`
   gap: 16px;
 `;
 
-const Signup = styled.div`
+const Signin = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
 `;
 
 const Description = styled.div`
@@ -75,7 +76,7 @@ const Description = styled.div`
   line-height: 150%;
 `;
 
-const GoSignUp = styled(Link)`
+const GoSignIn = styled(Link)`
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--primary-color);
