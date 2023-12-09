@@ -111,3 +111,8 @@ export const CONTENTS = {
     alt: '검색 결과 화면 이미지',
   },
 };
+
+export const SNS_LOGIN_LIST = [
+  { alt: '구글 홈페이지 바로가기', src: '/assets/images/social_google.svg', url: 'https://www.google.com/' },
+  { alt: '카카오 홈페이지 바로가기', src: '/assets/images/social_kakao.svg', url: 'https://www.kakaocorp.com/page/' },
+];
