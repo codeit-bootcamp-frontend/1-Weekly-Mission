@@ -1,41 +1,30 @@
 import styled from "styled-components";
-import { FolderItem } from "@/types/api";
+import { FolderItem, UserLinksItem } from "@/types/api";
 
 import CardList from "../../components/Card/CardList";
 import FolderNavbar from "../../components/Folder/FolderNavbar";
 import FolderMenubar from "../../components/Folder/FolderMenubar";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import NoLink from "./NoLink";
+import useFolder from "@/hooks/useFolder";
 
 interface FolderContainerProps {
-  folderData: FolderItem[];
-  userId: number;
-  handleSearchbar: (value: string) => void;
-  currentFolderId: string | string[] | undefined;
-  searchText: string;
-  cards: {
-    id: number;
-    createdAt?: string;
-    created_at?: string;
-    updated_at?: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource?: string;
-    image_source?: string;
-    folder_id?: number;
-  }[];
-  selectedFolderName: string;
+  initialUserLinks: UserLinksItem[];
+  userFolders: FolderItem[];
 }
 
 const FolderContainer = ({
-  folderData,
-  handleSearchbar,
-  currentFolderId,
-  searchText,
-  cards,
-  selectedFolderName,
+  userFolders,
+  initialUserLinks,
 }: FolderContainerProps) => {
+  const {
+    showCards: cards,
+    searchText,
+    currentFolderId,
+    selectedFolderName,
+    handleSearchbar,
+  } = useFolder({ initialUserLinks, userFolders });
+
   return (
     <StyledCardContainerBox>
       <Searchbar handleSearch={handleSearchbar} />
@@ -54,7 +43,7 @@ const FolderContainer = ({
 
             <StyledFolderContainerBox>
               <FolderNavbar
-                folderData={folderData}
+                folderData={userFolders}
                 currentFolderId={currentFolderId}
               />
             </StyledFolderContainerBox>
@@ -63,7 +52,7 @@ const FolderContainer = ({
               <FolderMenubar selectedFolderName={selectedFolderName} />
             </StyledFolderNameBox>
 
-            <CardList cards={cards} folderData={folderData} />
+            <CardList cards={cards} folderData={userFolders} />
           </>
         )
       )}
