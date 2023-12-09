@@ -9,6 +9,7 @@ export const COLORS = {
   GRAY_400: "#9FA6B2",
   GRAY_500: "#3E3E43",
   GRAY_600: "#373740",
+  GRAY_700: "#333236",
   GRAY_LIGHT: "#F5F5F5",
   BACKGROUND: "#F0F6FF",
   BG_GRADIENT: "linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%)",

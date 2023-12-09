@@ -10,8 +10,8 @@ export default function Footer() {
   return (
     <S.Container>
       <S.Wrapper>
-        <S.Copyright className="copyright">©codeit - 2023</S.Copyright>
-        <S.Info className="footer-links">
+        <S.Copyright>©codeit - 2023</S.Copyright>
+        <S.Info>
           <Link href="/">Privacy Policy</Link>
           <Link href="/">FAQ</Link>
         </S.Info>
@@ -26,13 +26,13 @@ export default function Footer() {
   );
 }
 
-interface SnsProps {
+type SnsProps = {
   sns: string;
 }
 
 function FooterLink({ sns }: SnsProps) {
   return (
-    <Link href={`https://www.${sns}.com/`} target='_blank'>
+    <Link href={`https://www.${sns}.com`}>
       <Image src={sns}  width={20} height={20} alt={sns} />
     </Link>
   );

@@ -1,17 +1,19 @@
 import AddLinkBar from "@/components/AddLinkBar";
-import FolderMenu from "@/components/FolderMenu/FolderMenu";
+import FolderMenu from '@/components/FolderMenu';
 import NavBar from "@/components/NavBar/NavBar";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import CardList from "@/components/CardList/CardList";
+import SearchBar from '@/components/SearchBar';
+import CardList from '@/components/CardList';
 import * as S from "@/styles/Folder.styled";
+import Footer from '@/components/Footer';
 import axiosInstance from '@/lib/axios';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import { LinkDataType, getLinks } from './api/links.api';
-import Footer from '@/components/Footer';
+import { UserLinksData } from '@/src/types';
 
-interface LinksDataProps {
-  links: LinkDataType[];
+
+export interface UserLinksDataProps {
+  links: UserLinksData[];
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -24,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function FolderPage({ links }: LinksDataProps) {
+export default function FolderPage({ links }: UserLinksDataProps) {
 
   return (
     <>
