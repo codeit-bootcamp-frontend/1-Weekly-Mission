@@ -45,3 +45,10 @@ export const validatePassword = (value: string, page: string) => {
   }
   return '';
 };
+
+export const validatePasswordCheck = (value: string, password: string) => {
+  if (value !== password) {
+    return ERROR_MESSAGES.passwordCheck.invalidInput;
+  }
+  return '';
+};
