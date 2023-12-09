@@ -11,7 +11,7 @@ interface Props {
 function SocialButton({ title }: Props) {
   return (
     <StyledWrapper>
-      <span>{title}</span>
+      {title}
       <StyledImgWrapper>
         <Link href="https://www.google.com">
           <StyledImg src={google} alt="구글 로고" />
@@ -46,6 +46,8 @@ const StyledImgWrapper = styled.div`
 `;
 
 const StyledImg = styled(Image)`
+  display: flex;
+  align-items: center;
   width: 3.5rem;
   height: 3.5rem;
 `;
