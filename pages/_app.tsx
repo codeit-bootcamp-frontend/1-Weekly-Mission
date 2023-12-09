@@ -1,36 +1,23 @@
 import type { AppProps } from "next/app";
 import { createGlobalStyle } from "styled-components";
-import Header from "@/component/common/header";
-import Footer from "@/component/common/footer";
-import Script from "next/script";
-
-declare global {
-    interface Window {
-        Kakao: any;
-    }
-}
+import Layout from "@/component/layout";
 
 export default function App({ Component, pageProps }: AppProps) {
-    const kakaoInit = () => {
-        if (!window.Kakao.isInitialized())
-            window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API);
-    };
-
-    return (
-        <>
-            <Header />
-            <GlobalStyle />
-            <Component {...pageProps} />
-            <Script
-                src="https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js"
-                integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4"
-                crossOrigin="anonymous"
-                onLoad={kakaoInit}
-            />
-            ;
-            <Footer />
-        </>
-    );
+    if (pageProps.layout === "sign") {
+        return (
+            <>
+                <GlobalStyle />
+                <Component {...pageProps} />
+            </>
+        );
+    } else {
+        return (
+            <Layout>
+                <GlobalStyle />
+                <Component {...pageProps} />
+            </Layout>
+        );
+    }
 }
 
 const GlobalStyle = createGlobalStyle`

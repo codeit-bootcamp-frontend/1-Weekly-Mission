@@ -28,7 +28,7 @@ export default function Input({ passwd }: { passwd?: boolean }) {
     }
 
     return (
-        <>
+        <div>
             <StyledInputBox $error={error}>
                 {passwd ? (
                     <>
@@ -44,12 +44,11 @@ export default function Input({ passwd }: { passwd?: boolean }) {
             <StyledErrorMsg $error={error}>
                 내용을 다시 작성해주세요
             </StyledErrorMsg>
-        </>
+        </div>
     );
 }
 
 const StyledInputBox = styled.div<{ $error: boolean }>`
-    width: 350px;
     height: 60px;
     padding: 18px 15px;
     border-radius: 8px;
@@ -81,5 +80,5 @@ const StyledErrorMsg = styled.div<{ $error: boolean }>`
     color: var(--red);
     font-size: 14px;
     margin-top: 6px;
-    display: ${({ $error }) => ($error ? "" : "none;")};
+    visibility: ${({ $error }) => ($error ? "" : "hidden;")};
 `;

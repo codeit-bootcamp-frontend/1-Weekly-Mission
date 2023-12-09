@@ -7,14 +7,16 @@ export default function Home() {
     return (
         <div>
             <StyledTopContainer>
-                <div>
-                    <div>
+                <StyledTopBox>
+                    <StlyedTopTitle>
                         <span>세상의 모든 정보</span>를 <br />
                         쉽게 저장하고 관리해 보세요
-                    </div>
-                    <Link href="/signin">링크 추가하기</Link>
+                    </StlyedTopTitle>
+                    <Link href="/signup">
+                        <StlyedTopLinkAdd>링크 추가하기</StlyedTopLinkAdd>
+                    </Link>
                     <Image src={topImg} alt="topImg" />
-                </div>
+                </StyledTopBox>
             </StyledTopContainer>
             <div>
                 <div>
@@ -87,5 +89,37 @@ export default function Home() {
 }
 
 const StyledTopContainer = styled.div`
-    display: flax;
+    padding-top: 70px;
+    background: var(--bg);
+`;
+
+const StyledTopBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+`;
+
+const StlyedTopTitle = styled.div`
+    font-size: 64px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 80px;
+    span {
+        background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+`;
+
+const StlyedTopLinkAdd = styled.div`
+    width: 350px;
+    padding: 16px 20px;
+    background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+    border-radius: 8px;
+    text-align: center;
+    color: #f5f5f5;
+    font-size: 18px;
+    font-weight: 600;
 `;
