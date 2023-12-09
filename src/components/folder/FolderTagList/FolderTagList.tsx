@@ -39,20 +39,14 @@ function FolderTagList({ folders, current, onClick }: FolderTagListProps) {
     <div className={styles["folder-tag-list"]}>
       <div className={styles["folder-tags-container"]}>
         {folders?.map((folder) => {
-          if (current.id === folder.id) {
-            return (
-              <FolderTag
-                folder={folder}
-                key={folder.id}
-                onClick={onClick}
-                clicked={true}
-              />
-            );
-          } else {
-            return (
-              <FolderTag folder={folder} key={folder.id} onClick={onClick} />
-            );
-          }
+          return (
+            <FolderTag
+              folder={folder}
+              key={folder.id}
+              onClick={onClick}
+              clicked={current.id === folder.id}
+            />
+          );
         })}
       </div>
     </div>
