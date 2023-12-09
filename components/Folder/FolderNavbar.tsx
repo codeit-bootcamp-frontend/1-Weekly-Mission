@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import Link from "next/link";
 
 import FolderAddImage from "@/public/images/folder-add.svg";
 import FolderAddWhiteImage from "@/public/images/folder-add-white.svg";
 import { DEFAULT_FOLDER, MODAL_NAME } from "../../constants/constant";
 import { useState } from "react";
 import ModalFolderCreate from "../Modal/ModalFolderCreate";
+import { useRouter } from "next/router";
 
 interface FolderItem {
   name: string;
@@ -30,13 +30,15 @@ interface FolderNavbarProps {
 
 const Folder = ({ data, selected, folderId }: FolderProps) => {
   const { name } = data;
+  const router = useRouter();
 
+  const handleLink = () => {
+    router.push(`/folder/${folderId}`, undefined, { shallow: true });
+  };
   return (
-    <Link href={`/folder/${folderId}`}>
-      <StyledFolderBox selected={selected}>
-        <StyledFolderBoxText>{name}</StyledFolderBoxText>
-      </StyledFolderBox>
-    </Link>
+    <StyledFolderBox selected={selected} onClick={handleLink}>
+      <StyledFolderBoxText>{name}</StyledFolderBoxText>
+    </StyledFolderBox>
   );
 };
 
@@ -45,8 +47,12 @@ const FolderList = ({ data, currentFolderId }: FolderListProps) => {
     <>
       <Folder
         data={DEFAULT_FOLDER}
-        selected={currentFolderId === null || currentFolderId === "all"}
-        folderId="all"
+        selected={
+          currentFolderId === null ||
+          currentFolderId === "" ||
+          currentFolderId === undefined
+        }
+        folderId=""
       />
       {data.map((item) => (
         <Folder
