@@ -3,6 +3,7 @@ import * as S from './SignupForm.style';
 import Input from '@components/Input';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 interface IFormInput {
   email: string;
@@ -12,11 +13,12 @@ interface IFormInput {
 
 function SignupForm() {
   const { ...methods } = useForm<IFormInput>({ mode: 'onBlur' });
-  const { register, handleSubmit, watch, setError } = methods;
+  const { register, handleSubmit, watch, setError, clearErrors } = methods;
   const router = useRouter();
   const EMAIL_REGEX = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
   const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   const password = watch('password');
+  const passwordConfirm = watch('passwordConfirm');
 
   const checkEmail = async (email: string) => {
     try {
@@ -62,6 +64,16 @@ function SignupForm() {
   const onSubmit = (data: IFormInput) => {
     submitForm(data);
   };
+
+  useEffect(() => {
+    if (passwordConfirm && password !== passwordConfirm) {
+      setError('passwordConfirm', {
+        message: '비밀번호가 일치하지 않아요.',
+      });
+    } else {
+      clearErrors('passwordConfirm');
+    }
+  }, [passwordConfirm]);
 
   return (
     <FormProvider {...methods}>
