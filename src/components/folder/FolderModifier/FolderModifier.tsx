@@ -18,24 +18,22 @@ function FolderModifier({
   folder: FolderInterface;
   onClick: (m: ModalInterface) => void;
 }) {
-  const handleFolderModifier = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    if ((e.target as HTMLButtonElement).id === "folderShareButton") {
+  const handleFolderModifier = (id: string) => {
+    if (id === "folderShareButton") {
       const newModal = {
         component: <ShareFolderModal folder={folder} />,
         show: true,
       };
       onClick(newModal);
     }
-    if ((e.target as HTMLButtonElement).id === "folderRenameButton") {
+    if (id === "folderRenameButton") {
       const newModal = {
         component: <RenameFolderModal folder={folder} />,
         show: true,
       };
       onClick(newModal);
     }
-    if ((e.target as HTMLButtonElement).id === "folderDeleteButton") {
+    if (id === "folderDeleteButton") {
       const newModal = {
         component: <DeleteFolderModal folder={folder} />,
         show: true,
@@ -53,7 +51,12 @@ function FolderModifier({
       {folder.name !== "전체" && (
         <div>
           <div className={styles["button-modifier"]}>
-            <button id="folderShareButton" onClick={handleFolderModifier}>
+            <button
+              id="folderShareButton"
+              onClick={() => {
+                handleFolderModifier("folderShareButton");
+              }}
+            >
               <Image
                 src="icons/share-icon.svg"
                 width={19}
@@ -62,7 +65,12 @@ function FolderModifier({
               />
               공유
             </button>
-            <button id="folderRenameButton" onClick={handleFolderModifier}>
+            <button
+              id="folderRenameButton"
+              onClick={() => {
+                handleFolderModifier("folderRenameButton");
+              }}
+            >
               <Image
                 src="icons/rename-icon.svg"
                 width={19}
@@ -71,7 +79,12 @@ function FolderModifier({
               />
               이름 변경
             </button>
-            <button id="folderDeleteButton" onClick={handleFolderModifier}>
+            <button
+              id="folderDeleteButton"
+              onClick={() => {
+                handleFolderModifier("folderDeleteButton");
+              }}
+            >
               <Image
                 src="icons/delete-icon.svg"
                 width={19}

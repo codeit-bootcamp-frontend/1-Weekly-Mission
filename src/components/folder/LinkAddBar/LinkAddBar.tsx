@@ -4,8 +4,8 @@ import Image from "next/image";
 
 function LinkAddBar() {
   const [keyword, setKeyword] = useState("");
-  const handleKeywordChange = (e: ChangeEvent) =>
-    setKeyword((e.target as HTMLInputElement).value);
+  const handleKeywordChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setKeyword(e.target.value);
 
   return (
     <>

@@ -3,10 +3,8 @@ import { AddFolderModal } from "@/components/modals";
 import { ModalInterface } from "@/types";
 
 function FolderMaker({ onClick }: { onClick: (m: ModalInterface) => void }) {
-  const handleFolderMaker = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    if ((e.target as HTMLButtonElement).id === "folderCreateButton") {
+  const handleFolderMaker = (id: string) => {
+    if (id === "folderCreateButton") {
       const newModal: ModalInterface = {
         component: <AddFolderModal />,
         show: true,
@@ -20,7 +18,9 @@ function FolderMaker({ onClick }: { onClick: (m: ModalInterface) => void }) {
       <button
         id="folderCreateButton"
         className={styles["folder-maker-button"]}
-        onClick={handleFolderMaker}
+        onClick={() => {
+          handleFolderMaker("folderCreateButton");
+        }}
       >
         폴더 추가 +
       </button>
