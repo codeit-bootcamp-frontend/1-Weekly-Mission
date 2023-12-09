@@ -1,5 +1,5 @@
 import { Article, Header } from "@/components";
-import * as Styled from "@/style/StyledHomePage";
+import * as Styled from "@/style/HomePage.styled";
 
 export default function Home() {
   return (

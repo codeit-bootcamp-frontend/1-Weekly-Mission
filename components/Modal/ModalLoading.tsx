@@ -1,5 +1,5 @@
 import ModalPortal from "@/lib/utils/Portal";
-import { StyledGlobal } from "@/style/StyledGlobal";
+import { StyledGlobal } from "@/style/Global.styled";
 import * as Styled from "./Modal.styled";
 
 interface Props {

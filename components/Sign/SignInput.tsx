@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useRouter } from "next/router";
 import {
   validateEmailInput,
   validatePasswordInput,
@@ -7,17 +14,35 @@ import eyesOffImg from "@/public/eye-off.svg";
 import eyesOnImg from "@/public/eye-on.svg";
 import * as Styled from "./Sign.styled";
 
+interface Value {
+  value: string;
+  errMsg: string;
+}
+
 interface Props {
   placeholder: string;
   type: string;
   first: boolean;
   label: string;
+  setter: (value: SetStateAction<Value>) => void;
+  errMsg: string;
 }
 
-const Input = ({ placeholder, type, first, label }: Props) => {
+const SignInput = ({
+  placeholder,
+  type,
+  first,
+  label,
+  setter,
+  errMsg,
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+  const location = router.pathname.split("/")[1]
+    ? router.pathname.split("/")[1]
+    : "/";
+
   const [eyeToggle, setEyeToggle] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
 
   const HandleEyesClick = () => {
     if (inputRef.current?.getAttribute("type") === "text") {
@@ -33,20 +58,52 @@ const Input = ({ placeholder, type, first, label }: Props) => {
     const targetValue = inputRef.current?.value ? inputRef.current.value : "";
 
     if (type === "email") {
-      if (validateEmailInput(targetValue)) {
-        const errorMsg = validateEmailInput(targetValue);
-        setErrMsg(errorMsg);
+      if (validateEmailInput(targetValue, location)) {
+        const errorMsg = validateEmailInput(targetValue, location);
+        setter((prev) => ({
+          ...prev,
+          errMsg: errorMsg,
+        }));
       } else {
-        setErrMsg("");
+        setter((prev) => ({
+          ...prev,
+          errMsg: "",
+        }));
       }
     } else if (type === "password") {
       if (validatePasswordInput(targetValue)) {
         const errorMsg = validatePasswordInput(targetValue);
-        setErrMsg(errorMsg);
+        setter((prev) => ({
+          ...prev,
+          errMsg: errorMsg,
+        }));
       } else {
-        setErrMsg("");
+        setter((prev) => ({
+          ...prev,
+          errMsg: "",
+        }));
+      }
+    } else if (type === "passwordConfirm") {
+      if (validatePasswordInput(targetValue)) {
+        const errorMsg = validatePasswordInput(targetValue);
+        setter((prev) => ({
+          ...prev,
+          errMsg: errorMsg,
+        }));
+      } else {
+        setter((prev) => ({
+          ...prev,
+          errMsg: "",
+        }));
       }
     }
+  };
+
+  const HandleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setter((prev) => ({
+      ...prev,
+      value: e.target.value,
+    }));
   };
 
   useEffect(() => {
@@ -59,25 +116,15 @@ const Input = ({ placeholder, type, first, label }: Props) => {
   return (
     <Styled.InputTagContainer>
       <Styled.InputLabel htmlFor={type}>{label}</Styled.InputLabel>
-      {type === "email" ? (
-        <Styled.InputTag
-          placeholder={placeholder}
-          type={type}
-          ref={inputRef}
-          id={type}
-          onBlur={HandleInputFocusOut}
-          $err={errMsg}
-        />
-      ) : (
-        <Styled.InputTag
-          placeholder={placeholder}
-          type={type}
-          ref={inputRef}
-          id={type}
-          onBlur={HandleInputFocusOut}
-          $err={errMsg}
-        />
-      )}
+      <Styled.InputTag
+        placeholder={placeholder}
+        type={type}
+        ref={inputRef}
+        id={type}
+        onBlur={HandleInputFocusOut}
+        onChange={HandleInputChange}
+        $err={errMsg}
+      />
       {type === "email" ||
         (eyeToggle ? (
           <Styled.EyesOn
@@ -97,4 +144,4 @@ const Input = ({ placeholder, type, first, label }: Props) => {
   );
 };
 
-export default Input;
+export default SignInput;

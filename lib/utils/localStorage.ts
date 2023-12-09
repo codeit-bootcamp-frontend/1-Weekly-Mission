@@ -1,6 +1,6 @@
-export const setLocalStorage = () => {
+export const setLocalStorage = (accessToken: string) => {
   if (typeof window !== "undefined") {
-    localStorage.setItem("LogIn", "true");
+    localStorage.setItem("LogIn", accessToken);
   }
 };
 

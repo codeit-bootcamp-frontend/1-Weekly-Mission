@@ -45,3 +45,22 @@ export async function handleCopyClipBoard(text: string) {
     console.log(err);
   }
 }
+
+export async function requestSignIn(email = "", password = "") {
+  const formData = JSON.stringify({
+    email: email,
+    password: password,
+  });
+  const response = await fetch(`${BASE_URL}/sign-in`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: formData,
+  });
+  if (!response.ok) {
+    throw new Error("로그인에 실패했습니다");
+  }
+  const body = await response.json();
+  return body;
+}

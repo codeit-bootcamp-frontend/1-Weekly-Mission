@@ -17,8 +17,6 @@ const LoginButton = ({ data, setUserData }: Props) => {
   const BtnClickHandler = async () => {
     try {
       const userProfile = await getUsers();
-      setIsLogin(true);
-      setLocalStorage();
       const {
         data: [{ email, image_source }],
       } = userProfile;
@@ -28,7 +26,7 @@ const LoginButton = ({ data, setUserData }: Props) => {
         imageSource: image_source,
       }));
     } catch (err) {
-      setIsLogin(false);
+      console.log(err);
     }
   };
 
@@ -51,7 +49,7 @@ const LoginButton = ({ data, setUserData }: Props) => {
           <Styled.LoginEmail className="loginEmail">{email}</Styled.LoginEmail>
         </Styled.LoginBox>
       ) : (
-        <Styled.LoginBtn onClick={BtnClickHandler} href="/">
+        <Styled.LoginBtn href="/signin">
           <span>로그인</span>
         </Styled.LoginBtn>
       )}

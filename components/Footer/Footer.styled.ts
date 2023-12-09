@@ -1,12 +1,22 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-export const Footer = styled.footer`
+interface PropsLocation {
+  $location: string;
+}
+
+export const Footer = styled.footer<PropsLocation>`
   display: flex;
   justify-content: center;
   width: 100%;
   height: 16rem;
   background-color: var(--black);
+
+  ${({ $location }) =>
+    ($location === "signin" || $location === "signup") &&
+    `
+    display: none;
+  `}
 `;
 
 export const FooterBox = styled.div`

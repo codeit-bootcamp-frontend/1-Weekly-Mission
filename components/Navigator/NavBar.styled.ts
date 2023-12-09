@@ -3,11 +3,11 @@ Tablet: 768px 이상 ~ 1199px 이하
 Mobile: 375px 이상 ~ 767px 이하 */
 import styled from "styled-components";
 
-interface PropsSticky {
-  $sticky: string;
+interface PropsLocation {
+  $location: string;
 }
 
-export const Nav = styled.nav<PropsSticky>`
+export const Nav = styled.nav<PropsLocation>`
   display: flex;
   justify-content: center;
   top: 0;
@@ -15,16 +15,22 @@ export const Nav = styled.nav<PropsSticky>`
   background-color: #edf7ff;
   z-index: 9999;
 
-  ${({ $sticky }) =>
-    $sticky === "shared" &&
+  ${({ $location }) =>
+    $location === "shared" &&
     `
     position: sticky;
   `}
 
-  ${({ $sticky }) =>
-    ($sticky === "/" || $sticky === "folder") &&
+  ${({ $location }) =>
+    ($location === "/" || $location === "folder") &&
     `
     position: static;
+  `}
+
+${({ $location }) =>
+    ($location === "signin" || $location === "signup") &&
+    `
+    display: none;
   `}
 `;
 

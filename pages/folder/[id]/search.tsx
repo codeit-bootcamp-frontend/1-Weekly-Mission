@@ -13,7 +13,7 @@ import useInfiniteScroll from "@/lib/hooks/useInfiniteScroll";
 import { getFolderLists, getLinks } from "@/lib/utils/api";
 import { FoldersData, LinksData } from "@/lib/types/data";
 import { useScroll } from "@/lib/hooks/useScroll";
-import * as Styled from "@/style/StyledFolderPage";
+import * as Styled from "@/style/FolderPage.styled";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   let folderId = "";

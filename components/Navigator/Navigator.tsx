@@ -16,7 +16,7 @@ const Navigator = ({ data, setUserData }: Props) => {
     : "/";
 
   return (
-    <Styled.Nav $sticky={location}>
+    <Styled.Nav $location={location}>
       <Styled.Box>
         <Logo />
         <LoginButton data={data} setUserData={setUserData} />
