@@ -9,6 +9,10 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  @include desktop {
+    width: 1060px;
+    margin: auto;
+  }
 }
 
 .folder-name-button {
@@ -26,11 +30,4 @@
 .clicked {
   background-color: var(--color-primary);
   color: white;
-}
-
-@include desktop {
-  .folder-tags-container {
-    width: 1060px;
-    margin: auto;
-  }
 }

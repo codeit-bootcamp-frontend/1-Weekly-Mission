@@ -28,18 +28,16 @@
     justify-content: space-between;
     align-items: center;
   }
-}
 
-.footer.link a {
-  color: #cfcfcf;
-}
-
-@include tablet {
-  .content {
+  @include tablet {
     padding: 3rem 10rem 6rem;
     & .logo {
       position: relative;
       bottom: 0;
     }
   }
+}
+
+.footer.link a {
+  color: #cfcfcf;
 }

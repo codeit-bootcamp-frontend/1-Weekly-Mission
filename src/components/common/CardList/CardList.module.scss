@@ -15,18 +15,13 @@
   gap: 3rem;
   align-items: center;
   justify-content: center;
-}
-
-@include tablet {
-  .card-section {
+  @include tablet {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
   }
-}
 
-@include desktop {
-  .card-section {
+  @include desktop {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 3rem;

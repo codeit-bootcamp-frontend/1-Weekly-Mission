@@ -31,6 +31,9 @@
       color: var(--color-primary);
       text-decoration: underline;
     }
+    @include tablet {
+      width: 400px;
+    }
   }
 
   .form {
@@ -54,11 +57,5 @@
       font-style: normal;
       font-weight: 600;
     }
-  }
-}
-
-@include tablet {
-  .signin-container {
-    width: 400px;
   }
 }
