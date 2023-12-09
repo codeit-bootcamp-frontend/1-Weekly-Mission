@@ -7,6 +7,7 @@ let cx = classNames.bind(styles);
 
 export interface InputProps {
   placeholder: string;
+  type?: string;
   hasError?: boolean;
   errorMessage?: string | undefined;
   onChange: (...event: any[]) => void;
@@ -14,12 +15,13 @@ export interface InputProps {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ placeholder, hasError, errorMessage, onChange, onBlur }, ref) => {
+  ({ type, placeholder, hasError, errorMessage, onChange, onBlur }, ref) => {
     return (
       <div className={cx('container')}>
         <input
           className={cx('input', { error: hasError })}
           ref={ref}
+          type={type ? type : 'text'}
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}
