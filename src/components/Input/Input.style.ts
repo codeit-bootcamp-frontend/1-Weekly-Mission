@@ -25,12 +25,11 @@ export const Input = styled.input<{ $error: boolean; $passwordType: boolean }>`
     ${({ $error }) => ($error ? `${COLORS.RED}` : `${COLORS.GRAY_20}`)};
   background: ${COLORS.WHITE};
   font-size: 1.6rem;
-  color: ${COLORS.GRAY_60};
+  color: ${COLORS.GRAY_100};
   line-height: 2.4rem;
 
   &:focus {
     border-color: ${COLORS.PRIMARY};
-    color: ${COLORS.GRAY_100};
   }
 `;
 

@@ -56,11 +56,7 @@ export default function Folder({ cards, folders }: Props) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) {
-          setIsScrolled(true);
-        } else {
-          setIsScrolled(false);
-        }
+        setIsScrolled(!entry.isIntersecting);
       },
       { threshold: 0 }
     );
