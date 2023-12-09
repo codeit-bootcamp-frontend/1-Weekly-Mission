@@ -24,6 +24,7 @@ function SigninForm() {
       });
 
       if (response.status === 200) {
+        localStorage.setItem('accessToken', response.data.accessToken);
         router.push('/folder');
       }
     } catch (error) {

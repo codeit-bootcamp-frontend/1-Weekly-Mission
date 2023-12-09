@@ -7,12 +7,15 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  padding-top: 23.8rem;
+  padding-top: 12rem;
+  background-color: ${COLORS.GRAY_0};
+  min-height: 100vh;
 `;
 
 export const Header = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.6rem;
 `;
 
