@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-type buttonSizeType = "short" | "long";
+type buttonSizeType = "short" | "long" | "wide";
 
 interface CTAProps {
   readonly $size: string;
@@ -42,7 +42,8 @@ const StyledCTA = styled.button<CTAProps>`
   font-size: 1.8rem;
   font-weight: 600;
 
-  width: ${({ $size }) => ($size === "short" ? "12.8rem" : "28rem")};
+  width: ${({ $size }) =>
+    $size === "short" ? "12.8rem" : $size === "long" ? "28rem" : "100%"};
   border: none;
   transition: ease-in-out 0.1s;
 
@@ -52,10 +53,11 @@ const StyledCTA = styled.button<CTAProps>`
   }
 
   @media screen and (max-width: 767px) {
-    height: 3.7rem;
-    font-size: 1.4rem;
+    /* height: 3.7rem; */
+    /* font-size: 1.4rem; */
 
-    width: ${({ $size }) => ($size === "short" ? "8rem" : "20rem")};
+    width: ${({ $size }) =>
+      $size === "short" ? "8rem" : $size === "long" ? "20rem" : "100%"};
     padding: ${({ $size }) =>
       $size === "short" ? "1.2rem 1rem" : "auto auto"};
     gap: ${({ $size }) => ($size === "short" ? "1rem" : "0rem")};
