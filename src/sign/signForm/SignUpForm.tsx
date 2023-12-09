@@ -58,8 +58,6 @@ export default function SignForm() {
     }
   };
 
-  console.log('con', errors?.email);
-
   const onBlur = async () => {
     const isValid = await trigger('email');
     if (isValid) {

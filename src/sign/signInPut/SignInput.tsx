@@ -52,6 +52,7 @@ const SignInput = ({
           placeholder={placeholder}
           type={eye ? 'text' : type}
           {...register(name, { ...rules })}
+          autoComplete={type === 'password' ? 'off' : 'on'}
         />
         {type === 'password' && (
           <button type='button' onClick={handleEyeClick}>

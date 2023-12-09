@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { LINK } from './constant';
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import Oauth from '../oauth/Oauth';
 
 const cx = classNames.bind(style);
 
@@ -35,6 +36,7 @@ export default function SignLayout({ page, children }: Props) {
         </header>
       </div>
       {children}
+      <Oauth page={page} />
     </div>
   );
 }
