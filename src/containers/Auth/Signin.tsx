@@ -1,4 +1,10 @@
-import { ChangeEvent, FocusEvent, SyntheticEvent, useState } from 'react';
+import {
+  ChangeEvent,
+  FocusEvent,
+  SyntheticEvent,
+  useEffect,
+  useState,
+} from 'react';
 import Button from '@/components/Button';
 import Header from './components/Header';
 import InputContainer from './components/InputContainer';
@@ -57,6 +63,7 @@ function Signin() {
       setPasswordErrorMessage(ERROR_MESSAGES.password.invalidLogin);
       return;
     }
+    localStorage.setItem('accessToken', accessToken);
     router.push('/folder');
   };
 
@@ -69,6 +76,12 @@ function Signin() {
     const errorMessage = validatePassword(e.target.value, router.pathname);
     setPasswordErrorMessage(errorMessage);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('accessToken')) {
+      router.push('/folder');
+    }
+  });
 
   return (
     <div className='flex h-screen w-screen items-center justify-center bg-background'>

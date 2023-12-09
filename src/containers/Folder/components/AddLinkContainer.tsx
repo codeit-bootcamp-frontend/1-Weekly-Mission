@@ -34,7 +34,7 @@ function AddLinkContainer({ userId, addLinkRef, float }: Props) {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-          <div className='absolute right-10pxr w-80pxr pc:w-90pxr'>
+          <div className='absolute right-10pxr w-90pxr'>
             <Button type='button' onClick={setAddToFolderModal}>
               추가하기
             </Button>
