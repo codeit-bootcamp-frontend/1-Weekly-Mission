@@ -1,62 +1,40 @@
-import React, { useRef, useState } from "react";
-import styles from "./input.module.css";
-import Image from "next/image";
-import eyeOnIcon from "@/public/icons/eye-on.svg";
-import eyeOffIcon from "@/public/icons/eye-off.svg";
+import React, { ChangeEventHandler, FocusEventHandler } from "react";
+import styles from "./Input.module.css";
 
-interface InputProps {
-  placeholder: string;
-  inputType?: string;
-  errorMessage?: string;
-  inputName: string;
+export interface InputProps {
+  value?: string | number;
+  placeholder?: string;
+  inputName?: string;
+  type?: string;
+  hasError?: boolean;
+  helperText?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
 }
 
-function Input({
+export function Input({
+  value,
   placeholder,
-  inputType = "default",
-  errorMessage = "",
-  inputName,
+  type,
+  hasError,
+  helperText,
+  onChange,
+  onBlur,
 }: InputProps) {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
-  const isDefaultInput = inputType === "default";
-
-  const handleEyeButtonClick = () => {
-    setIsPasswordVisible(!isPasswordVisible);
-    const passwordInput = passwordInputRef.current;
-    if (passwordInput === null) return;
-    if (!isPasswordVisible) {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
-  };
-
   return (
-    <form className={styles.form}>
-      <p className={styles.inputName}>{inputName}</p>
+    <>
       <div className={`${styles.inputWrapper}`}>
         <input
           placeholder={placeholder}
           className={styles.input}
-          type={isDefaultInput ? "text" : "password"}
+          type={type}
           autoComplete="off"
-          ref={passwordInputRef}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
         />
-        {isDefaultInput ? null : (
-          <Image
-            src={isPasswordVisible ? eyeOnIcon : eyeOffIcon}
-            width={16}
-            height={16}
-            alt="eyeToggleIcon"
-            className={styles.eyeIcon}
-            onClick={handleEyeButtonClick}
-          />
-        )}
+        {hasError && <p className={styles.errorMessage}>{helperText}</p>}
       </div>
-      <p className={styles.errorMessage}>{errorMessage}</p>
-    </form>
+    </>
   );
 }
-
-export default Input;
