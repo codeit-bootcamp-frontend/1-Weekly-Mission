@@ -2,6 +2,7 @@ import Avatar from "@/components/Nav/Avatar/Avatar";
 import Logo from "@/components/Nav/Avatar/Logo";
 import { Background, Nav } from "@/components/Nav/Navigation.styled";
 import Link from "next/link";
+import { memo } from "react";
 
 interface Props {
   id?: number;
@@ -10,7 +11,7 @@ interface Props {
 
 let locate = "/signin";
 
-export default function Navigation({ id, $page = "" }: Props) {
+export default memo(function Navigation({ id, $page = "" }: Props) {
   const accessToken = typeof window !== "undefined" ? sessionStorage.getItem("accessToken") : null;
   if (accessToken) {
     locate = `/folder?a=${accessToken}`;
@@ -34,4 +35,4 @@ export default function Navigation({ id, $page = "" }: Props) {
       </Nav>
     </>
   );
-}
+});
