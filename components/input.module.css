@@ -12,10 +12,14 @@
   outline: 0;
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-20);
-  color: var(--linkbrary-gray-60);
+  color: var(--linkbrary-gray-100);
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
+}
+
+.input::placeholder {
+  color: var(--linkbrary-gray-60);
 }
 .inputError {
   border: 1px solid var(--linkbrary-red);

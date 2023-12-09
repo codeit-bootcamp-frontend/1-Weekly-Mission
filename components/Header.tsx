@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import logoImg from "@/public/img/png/Linkbrary.png";
-import { isLocation } from "@/utils/location";
+import { isLocation, isblock } from "@/utils/location";
 import Link from "next/link";
 import { AccountContext } from "@/contexts/AccountContext";
 import Image from "next/image";
@@ -12,6 +12,7 @@ const Header = () => {
   const { account, errorMessage } = useContext(AccountContext);
   const { name, email, image_source: profileImageSource } = account?.data[0];
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const userToken = window.localStorage.getItem("user");
 
   window.addEventListener("resize", () => {
     setWindowWidth(window.innerWidth);
@@ -20,7 +21,10 @@ const Header = () => {
   return (
     <header
       className={styles.header}
-      style={{ position: isLocation() ? "static" : "sticky", display: "none" }}
+      style={{
+        position: isLocation() ? "static" : "sticky",
+        display: isblock() ? "block" : "none",
+      }}
     >
       <div className={styles.headerInner}>
         <h1>
@@ -35,10 +39,10 @@ const Header = () => {
           </Link>
         </h1>
         <div className={styles.headerLogin}>
-          {!account ? (
-            <button className={styles.headerLoginButton} type="button">
+          {!account || !userToken ? (
+            <Link className={styles.headerLoginButton} href={"/signin"}>
               로그인
-            </button>
+            </Link>
           ) : (
             <>
               <Image

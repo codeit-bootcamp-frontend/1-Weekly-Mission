@@ -5,6 +5,7 @@ import youtubeImg from "@/public/img/png/Vector-3.png";
 import melonImg from "@/public/img/png/Vector-4.png";
 import Image from "next/image";
 import styles from "./footer.module.css";
+import { isLocation, isblock } from "@/utils/location";
 
 const SNS = [
   {
@@ -31,7 +32,10 @@ const SNS = [
 
 const Footer = () => {
   return (
-    <footer className={styles.footer} style={{ display: "none" }}>
+    <footer
+      className={styles.footer}
+      style={{ display: isblock() ? "block" : "none" }}
+    >
       <div className={styles.footerConnect}>
         <div className={styles.footerConnectYear}>codeit - 2023</div>
         <ul className={styles.footerConnectFaq}>

@@ -1,4 +1,4 @@
-### signin
+### sign-in
 
 POST https://bootcamp-api.codeit.kr/api/sign-in
 Content-Type: application/json
@@ -6,4 +6,28 @@ Content-Type: application/json
 {
     "email":"test@codeit.com",
     "password": "sprint101"
+}
+
+### sign-up
+
+POST https://bootcamp-api.codeit.kr/api/sign-up
+Content-Type: application/json
+
+{
+  "email": "uou041344@naver.com",
+  "password": "als12345"
+}
+
+
+### user
+
+GET https://bootcamp-api.codeit.kr/api/users
+
+### check-email
+
+POST https://bootcamp-api.codeit.kr/api/check-email
+Content-Type: application/json
+
+{
+    "email": "test@codeit"
 }

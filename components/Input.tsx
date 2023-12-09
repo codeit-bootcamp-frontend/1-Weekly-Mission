@@ -3,26 +3,40 @@ import styles from "./input.module.css";
 import Image from "next/image";
 import eyeOffIcon from "@/public/img/svg/eye-off.svg";
 import eyeOnIcon from "@/public/img/svg/eye-on.svg";
-import { emailErrorMessage, pwErrorMessage } from "@/utils/errorMessage";
+import {
+  emailErrorMessage,
+  pwChErrorMessage,
+  pwErrorMessage,
+} from "@/utils/errorMessage";
 
 interface InputType {
   type: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   reCheck: string;
   setReCheck: React.Dispatch<React.SetStateAction<string>>;
+  password?: string;
 }
 
-const Input = ({ type, onChange, reCheck, setReCheck }: InputType) => {
+const Input = ({
+  type,
+  onChange,
+  reCheck,
+  setReCheck,
+  password,
+}: InputType) => {
   const [changeEyeIcon, setChangeEyeIcon] = useState<boolean>(false);
   const [errorState, setErrorState] = useState<string>("");
-
-  const onFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+  const location = window.location.pathname;
+  const onFocus = async (e: React.FocusEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     if (name === "email") {
-      setErrorState(emailErrorMessage(value));
+      setErrorState(await emailErrorMessage(value, location));
     } else if (name === "password") {
       setErrorState(pwErrorMessage(value));
+    } else if (name === "passwordCheck") {
+      if (!password) return;
+      setErrorState(pwChErrorMessage(value, password));
     }
     setReCheck("");
   };
