@@ -1,43 +1,56 @@
-import { FocusEvent, useState } from 'react';
+import apiRequest from '@api/apiRequest';
 import * as S from './SigninForm.style';
 import Input from '@components/Input';
+import { FormProvider, useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+
+interface IFormInput {
+  email: string;
+  password: string;
+}
 
 function SigninForm() {
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const { ...methods } = useForm<IFormInput>({ mode: 'onBlur' });
+  const { register, handleSubmit, setError } = methods;
+  const router = useRouter();
   const EMAIL_REGEX = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
-  const handleEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const email = e.target.value;
-    if (!email) {
-      setEmailError('이메일을 입력해 주세요.');
-    } else if (!EMAIL_REGEX.test(email)) {
-      setEmailError('올바른 이메일 주소가 아닙니다.');
-    } else {
-      setEmailError('');
+  const submitForm = async (data: IFormInput) => {
+    try {
+      const response = await apiRequest({
+        url: 'sign-in',
+        method: 'POST',
+        data,
+      });
+
+      if (response.status === 200) {
+        router.push('/folder');
+      }
+    } catch (error) {
+      setError('email', { message: '이메일을 확인해주세요.' });
+      setError('password', { message: '비밀번호를 확인해주세요.' });
     }
   };
 
-  const handlePasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const password = e.target.value;
-    if (!password) {
-      setPasswordError('비밀번호를 입력해 주세요.');
-    } else {
-      setPasswordError('');
-    }
+  const onSubmit = (data: IFormInput) => {
+    submitForm(data);
   };
 
   return (
-    <>
-      <S.Form>
+    <FormProvider {...methods}>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.InputWrapper>
           <S.Label htmlFor='email'>이메일</S.Label>
           <Input
             id='email'
             placeholder='이메일을 입력해 주세요.'
-            onBlur={handleEmailBlur}
-            errorMessage={emailError}
-            hasError={!!emailError}
+            {...register('email', {
+              required: '이메일을 입력해 주세요.',
+              pattern: {
+                value: EMAIL_REGEX,
+                message: '올바른 이메일 주소가 아닙니다.',
+              },
+            })}
           />
         </S.InputWrapper>
         <S.InputWrapper>
@@ -46,14 +59,12 @@ function SigninForm() {
             id='password'
             passwordType
             placeholder='비밀번호를 입력해 주세요.'
-            onBlur={handlePasswordBlur}
-            errorMessage={passwordError}
-            hasError={!!passwordError}
+            {...register('password', { required: '비밀번호를 입력해 주세요.' })}
           />
         </S.InputWrapper>
         <S.Button type='submit'>로그인</S.Button>
       </S.Form>
-    </>
+    </FormProvider>
   );
 }
 
