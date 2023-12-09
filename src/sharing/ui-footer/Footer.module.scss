@@ -1,0 +1,58 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 16rem;
+  margin-top: 4rem;
+  background-color: $color-black;
+
+  @include tablet {
+    margin-top: 6rem;
+  }
+}
+
+.items {
+  display: grid;
+  justify-content: space-between;
+  grid-template:
+    "footer-links sns"
+    ". ." 1fr
+    "copyright .";
+  width: 100%;
+  padding: 3.2rem;
+  color: $color-text-gray;
+  font-size: 1.6rem;
+  font-family: Arial;
+
+  @include tablet {
+    grid-template: "copyright footer-links sns";
+    height: fit-content;
+    max-width: 192rem;
+    padding: 3.2rem 10.4rem 0;
+  }
+}
+
+.copyright {
+  grid-area: copyright;
+  color: #676767;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.links {
+  grid-area: footer-links;
+  display: flex;
+  column-gap: 3rem;
+  padding-right: 1.8rem;
+  color: #cfcfcf;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.sns {
+  grid-area: sns;
+  display: flex;
+  column-gap: 1.2rem;
+}

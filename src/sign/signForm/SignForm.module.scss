@@ -1,0 +1,28 @@
+@import '@/styles/global.scss';
+
+.box {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0 3rem;
+  gap: 2.4rem;
+}
+
+.error {
+  color: $color-red;
+  font-size: 1.4rem;
+  margin-top: 0.6rem;
+}
+
+.button {
+  background: $gra-purple-to-blue;
+  display: flex;
+  width: 40rem;
+  padding: 1.6rem 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 8px;
+  color: $color-gray-light;
+  font-size: 1.8rem;
+  font-weight: 600;
+}

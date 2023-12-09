@@ -1,0 +1,43 @@
+@import "@/styles/global.scss";
+
+.star {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3.4rem;
+  height: 3.4rem;
+}
+
+.kebab {
+  position: absolute;
+  top: 20.7rem;
+  right: 2rem;
+
+  @include tablet {
+    top: 21.5rem;
+  }
+}
+
+.popover-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2rem;
+  width: 10rem;
+  padding: 0;
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(51, 50, 54, 0.1);
+  background: $color-white;
+
+  & > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    height: 3.1rem;
+    font-size: 1.4rem;
+
+    &:hover {
+      background: $color-gray10;
+      color: $color-primary;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import '@/styles/global.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 1.4rem;
+  padding-bottom: 1.2rem;
+}
+
+.input-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.8rem 1.5rem;
+  border-radius: 8px;
+  background-color: $color-white;
+  border: 1px solid $color-gray20;
+}
+
+.input {
+  width: 95%;
+  display: block;
+  font-size: 1.6rem;
+  height: 2.4rem;
+  margin: auto 0;
+}
