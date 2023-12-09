@@ -1,8 +1,8 @@
 import styles from "./ShareFolderModal.module.scss";
 import Image from "next/image";
-import { FolderProps } from "@/types";
+import { FolderInterface } from "@/types";
 
-function ShareFolderModal({ folder }: FolderProps) {
+function ShareFolderModal({ folder }: { folder: FolderInterface }) {
   const handleLinkButton = () => {
     let url = "https://bootcamp-api.codeit.kr/shared";
     let query = `?user=1&folder=${folder.id}`;

@@ -7,11 +7,7 @@ import SharedCardInterface from "./SharedCardInterface";
 import SharedFolderInterface from "./SharedFolderInterface";
 import SharedUserInterface from "./SharedUserInterface";
 
-import CardProps from "./CardProps";
-import FolderProps from "./FolderProps";
-import SharedProps from "./SharedProps";
 import ModalProps from "./ModalProps";
-import NavProps from "./NavProps";
 
 export type {
   CardInterface,
@@ -21,9 +17,5 @@ export type {
   SharedCardInterface,
   SharedFolderInterface,
   SharedUserInterface,
-  CardProps,
-  FolderProps,
-  SharedProps,
   ModalProps,
-  NavProps,
 };

@@ -1,9 +1,15 @@
 import styles from "./Nav.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { NavProps } from "@/types";
+import { UserInterface } from "@/types";
 
-function Nav({ profile, isSticky }: NavProps) {
+function Nav({
+  profile,
+  isSticky,
+}: {
+  profile?: UserInterface;
+  isSticky?: boolean;
+}) {
   let navClassName = isSticky
     ? { className: `${styles["sticky"]} ${styles["nav"]}` }
     : { className: `${styles["nav"]}` };

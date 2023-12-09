@@ -1,19 +1,15 @@
 import styles from "./FolderTagList.module.scss";
 import { FolderInterface } from "@/types";
 
-interface FolderTagListProps {
-  folders: FolderInterface[];
-  current: FolderInterface;
-  onClick: (folder: FolderInterface) => void;
-}
-
-interface FolderTagProps {
+function FolderTag({
+  folder,
+  onClick,
+  clicked = false,
+}: {
   folder: FolderInterface;
   onClick: (folder: FolderInterface) => void;
   clicked?: boolean;
-}
-
-function FolderTag({ folder, onClick, clicked = false }: FolderTagProps) {
+}) {
   const handleClick = () => {
     if (folder) {
       onClick(folder);
@@ -34,7 +30,15 @@ function FolderTag({ folder, onClick, clicked = false }: FolderTagProps) {
     </button>
   );
 }
-function FolderTagList({ folders, current, onClick }: FolderTagListProps) {
+function FolderTagList({
+  folders,
+  current,
+  onClick,
+}: {
+  folders: FolderInterface[];
+  current: FolderInterface;
+  onClick: (folder: FolderInterface) => void;
+}) {
   return (
     <div className={styles["folder-tag-list"]}>
       <div className={styles["folder-tags-container"]}>

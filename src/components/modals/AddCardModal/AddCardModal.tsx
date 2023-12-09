@@ -1,11 +1,14 @@
 import styles from "./AddCardModal.module.scss";
 import { MouseEvent } from "react";
-import { CardProps, FolderInterface } from "@/types";
+import { CardInterface, FolderInterface } from "@/types";
 
-interface Props extends CardProps {
+function AddCardModal({
+  card,
+  folderList,
+}: {
+  card: CardInterface;
   folderList?: FolderInterface[];
-}
-function AddCardModal({ card, folderList }: Props) {
+}) {
   const handleToggle = (e: MouseEvent<HTMLDivElement>) => {
     (e.target as Element).classList.toggle(`${styles["checked"]}`);
   };

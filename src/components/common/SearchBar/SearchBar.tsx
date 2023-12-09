@@ -2,11 +2,13 @@ import { useState, ChangeEvent } from "react";
 import styles from "./SearchBar.module.scss";
 import Image from "next/image";
 
-interface Props {
+function SearchBar({
+  onChange,
+  keys,
+}: {
   onChange: (w: string) => void;
   keys?: string;
-}
-function SearchBar({ onChange, keys }: Props) {
+}) {
   const [text, setText] = useState("");
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -2,19 +2,17 @@ import { CardInterface, FolderInterface, ModalInterface } from "@/types";
 import Card from "../Card/Card";
 import styles from "./CardList.module.scss";
 
-interface CardListProps {
-  cardList?: CardInterface[];
-  folderList?: FolderInterface[];
-  onClick?: (m: ModalInterface) => void;
-  keyword?: string;
-}
-
 function CardList({
   cardList,
   onClick,
   folderList,
   keyword = "",
-}: CardListProps) {
+}: {
+  cardList?: CardInterface[];
+  onClick?: (m: ModalInterface) => void;
+  folderList?: FolderInterface[];
+  keyword?: string;
+}) {
   if (!cardList || cardList.length === 0) {
     return (
       <div className={styles["no-card-list"]}> 저장된 링크가 없습니다.</div>

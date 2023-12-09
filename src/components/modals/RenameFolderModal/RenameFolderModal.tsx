@@ -1,7 +1,7 @@
-import { FolderProps } from "@/types";
+import { FolderInterface } from "@/types";
 import styles from "./RenameFolderModal.module.scss";
 
-function RenameFolderModal({ folder }: FolderProps) {
+function RenameFolderModal({ folder }: { folder: FolderInterface }) {
   return (
     <div className={styles["modal-content"]}>
       <h2 className={styles["modal-title"]}>폴더 이름 변경</h2>

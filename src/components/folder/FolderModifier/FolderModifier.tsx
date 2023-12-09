@@ -7,16 +7,17 @@ import {
   ShareFolderModal,
 } from "@/components/modals";
 
-interface FolderModifierProps {
-  folder: FolderInterface;
-  onClick: (m: ModalInterface) => void;
-}
-
 function FolderTitle({ title }: { title: string }) {
   return <h1 className={styles["folder-title"]}>{title}</h1>;
 }
 
-function FolderModifier({ folder, onClick }: FolderModifierProps) {
+function FolderModifier({
+  folder,
+  onClick,
+}: {
+  folder: FolderInterface;
+  onClick: (m: ModalInterface) => void;
+}) {
   const handleFolderModifier = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {

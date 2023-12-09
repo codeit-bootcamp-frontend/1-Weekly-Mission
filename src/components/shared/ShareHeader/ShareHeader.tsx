@@ -1,7 +1,13 @@
-import { SharedProps } from "@/types";
+import { SharedFolderInterface, SharedUserInterface } from "@/types";
 import styles from "./ShareHeader.module.scss";
 
-function ShareHeader({ sharedUser, sharedFolder }: SharedProps) {
+function ShareHeader({
+  sharedUser,
+  sharedFolder,
+}: {
+  sharedFolder?: SharedFolderInterface;
+  sharedUser?: SharedUserInterface;
+}) {
   if (!sharedUser || !sharedFolder) {
     return <header>공유 받은 폴더가 없습니다!</header>;
   }

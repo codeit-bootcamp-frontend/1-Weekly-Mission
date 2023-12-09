@@ -3,14 +3,17 @@ import StarButton from "../StarButton/StarButton";
 import formatDate from "@/utils/formatDate";
 import calcDate from "@/utils/calcDate";
 import KebabButton from "../KebabButton/KebabButton";
-import { CardProps, FolderInterface, ModalInterface } from "@/types";
+import { CardInterface, FolderInterface, ModalInterface } from "@/types";
 
-interface Props extends CardProps {
-  onClick?: (m: ModalInterface) => void;
+function Card({
+  card,
+  folderList,
+  onClick,
+}: {
+  card: CardInterface;
   folderList?: FolderInterface[];
-}
-
-function Card({ card, folderList, onClick }: Props) {
+  onClick?: (m: ModalInterface) => void;
+}) {
   const str = calcDate(card.created_at || card.createdAt);
   return (
     <>

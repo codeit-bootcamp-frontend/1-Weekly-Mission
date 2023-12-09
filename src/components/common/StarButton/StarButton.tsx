@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { CardProps } from "@/types";
+import { CardInterface } from "@/types";
 import Image from "next/image";
 import styles from "./StarButton.module.scss";
 
-function StarButton({ card }: CardProps) {
+function StarButton({ card }: { card: CardInterface }) {
   const [isFilled, setIsFilled] = useState(false);
   const handleStarClick = () => {
     setIsFilled(!isFilled);

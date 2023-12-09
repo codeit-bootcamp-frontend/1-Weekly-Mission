@@ -2,11 +2,7 @@ import styles from "./FolderMaker.module.scss";
 import { AddFolderModal } from "@/components/modals";
 import { ModalInterface } from "@/types";
 
-interface Props {
-  onClick: (m: ModalInterface) => void;
-}
-
-function FolderMaker({ onClick }: Props) {
+function FolderMaker({ onClick }: { onClick: (m: ModalInterface) => void }) {
   const handleFolderMaker = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
