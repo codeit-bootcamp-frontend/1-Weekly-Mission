@@ -1,16 +1,16 @@
 import { InputType, Signin } from "@/components/Main/sign/Sign.type";
 import { StyledForm, SubmitButton } from "@/components/Main/sign/SignForm.styled";
-import SignLabel from "@/components/Main/sign/SignLabel";
 import { validate_signin, validate_signup } from "@/utils/validate";
-import axios from "@/lib/axios";
+import SignLabel from "@/components/Main/sign/SignLabel";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
-
-let isError = false;
+import axios from "@/lib/axios";
 
 export default function SignForm({ signin }: Signin) {
+  const [isError, SetIsError] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const inputs = Array.from(document.querySelectorAll("input"));
@@ -22,11 +22,11 @@ export default function SignForm({ signin }: Signin) {
 
       const res = await validateFunc({ type, value });
       if (res) {
-        isError = true;
+        SetIsError(true);
         ps[i].textContent = res;
         continue;
       }
-      isError = false;
+      SetIsError(false);
     }
 
     if (!isError) {

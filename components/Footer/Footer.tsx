@@ -1,11 +1,11 @@
 import { Container, Copy, Info, Sns } from "@/components/Footer/Footer.styled";
-import { Dom, SetRefForObserver } from "@/hooks/useObserver";
+import { SetRefForObserver } from "@/hooks/useObserver";
 import Image from "next/image";
 import Link from "next/link";
-import { MutableRefObject, memo } from "react";
+import { memo } from "react";
 
 interface Props {
-  setRefForObserver: SetRefForObserver;
+  setRefForObserver?: SetRefForObserver;
 }
 
 export default memo(function Footer({ setRefForObserver }: Props) {
