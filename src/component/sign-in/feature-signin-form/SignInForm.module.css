@@ -8,7 +8,7 @@
 
 .label {
   display: inline-block;
+  margin-bottom: 1.2rem;
   color: var(--black);
   font-size: 1.4rem;
-  margin-bottom: 1.2rem;
 }

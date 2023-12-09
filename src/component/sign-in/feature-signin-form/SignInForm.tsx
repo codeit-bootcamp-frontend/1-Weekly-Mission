@@ -2,6 +2,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 import Input from '@/src/component/sign-in/ui-input/Input';
 import InputPassword from '@/src/component/sign-in/ui-input-password/InputPassword';
+import Cta from '@/src/component/common/ui-cta/Cta';
 import styles from './SignInForm.module.css';
 
 const cx = classNames.bind(styles);
@@ -71,7 +72,9 @@ export default function SignInForm() {
           )}
         />
       </div>
-      <button>로그인</button>
+      <button type="submit">
+        <Cta>로그인</Cta>
+      </button>
     </form>
   );
 }
