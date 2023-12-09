@@ -3,7 +3,7 @@ import { UserData } from "@/lib/types/data";
 import { useLogin } from "@/lib/utils/LoginContext";
 import { getUsers } from "@/lib/utils/api";
 import { setLocalStorage } from "@/lib/utils/localStorage";
-import * as Styled from "./StyledLoginBtn";
+import * as Styled from "./LoginBtn.styled";
 
 interface Props {
   data: UserData;

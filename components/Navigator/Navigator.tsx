@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { useRouter } from "next/router";
 import { LoginButton, Logo } from "@/components";
 import { UserData } from "@/lib/types/data";
-import * as Styled from "./StyledNavBar";
+import * as Styled from "./NavBar.styled";
 
 interface Props {
   data: UserData;

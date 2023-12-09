@@ -5,7 +5,7 @@ import {
 } from "@/lib/utils/checkSign";
 import eyesOffImg from "@/public/eye-off.svg";
 import eyesOnImg from "@/public/eye-on.svg";
-import * as Styled from "./StyledSign";
+import * as Styled from "./Sign.styled";
 
 interface Props {
   placeholder: string;
@@ -53,7 +53,7 @@ const Input = ({ placeholder, type, first, label }: Props) => {
     if (first) {
       inputRef.current?.focus();
     }
-    // dependency depth
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [first]);
 
   return (

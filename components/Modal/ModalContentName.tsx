@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import * as Styled from "./StyledModal";
+import * as Styled from "./Modal.styled";
 
 interface Props {
   url?: ReactNode;

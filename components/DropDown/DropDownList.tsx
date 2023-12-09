@@ -3,7 +3,7 @@ import { Modal, ModalContentName, AddFolderModal } from "@/components";
 import useModal from "@/lib/hooks/useModal";
 import ModalPortal from "@/lib/utils/Portal";
 import { FoldersData } from "@/lib/types/data";
-import * as Styled from "./StyledDropDown";
+import * as Styled from "./DropDown.styled";
 
 interface Props {
   url: string;

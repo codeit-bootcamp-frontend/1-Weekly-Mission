@@ -1,5 +1,5 @@
 import Input from "./Input";
-import * as Styled from "./StyledSign";
+import * as Styled from "./Sign.styled";
 
 const Form = () => {
   return (

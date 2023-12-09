@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-import * as Styled from "./StyledFolderLists";
+import * as Styled from "./FolderLists.styled";
 
 type openModal = (e: MouseEvent) => void;
 

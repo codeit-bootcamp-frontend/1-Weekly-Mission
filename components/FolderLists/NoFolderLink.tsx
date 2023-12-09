@@ -1,4 +1,4 @@
-import * as Styled from "./StyledFolderLists";
+import * as Styled from "./FolderLists.styled";
 
 const NoFolderLink = () => {
   return (

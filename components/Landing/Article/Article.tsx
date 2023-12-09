@@ -3,7 +3,7 @@ import landingImg1 from "@/public/landing-image1.png";
 import landingImg2 from "@/public/landing-image2.png";
 import landingImg3 from "@/public/landing-image3.png";
 import landingImg4 from "@/public/landing-image4.png";
-import * as Styled from "./StyledArticle";
+import * as Styled from "./Article.styled";
 
 const Article = () => {
   return (

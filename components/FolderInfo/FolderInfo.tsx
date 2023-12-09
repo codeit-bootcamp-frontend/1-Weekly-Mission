@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SampleFolderData } from "@/lib/types/data";
-import * as Styled from "./StyledFolderInfo";
+import * as Styled from "./FolderInfo.style";
 
 interface Props {
   data: SampleFolderData;

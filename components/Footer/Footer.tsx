@@ -1,5 +1,5 @@
 import { SnsCollection } from "@/components";
-import * as Styled from "./StyledFooter";
+import * as Styled from "./Footer.styled";
 
 const Footer = () => {
   return (

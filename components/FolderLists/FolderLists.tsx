@@ -10,7 +10,7 @@ import {
 } from "@/components";
 import { LinksData, FoldersData } from "@/lib/types/data";
 import useModal from "@/lib/hooks/useModal";
-import * as Styled from "./StyledFolderLists";
+import * as Styled from "./FolderLists.styled";
 
 interface PropsSub {
   data: FoldersData;

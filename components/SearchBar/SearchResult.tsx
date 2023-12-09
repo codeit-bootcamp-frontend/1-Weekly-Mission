@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import * as Styled from "./StyledSearchBar";
+import * as Styled from "./SearchBar.styled";
 
 interface Props {
   children: ReactNode;

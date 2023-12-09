@@ -3,7 +3,10 @@ import { MouseEvent, useState } from "react";
 import { timeForToday } from "@/lib/utils/moment";
 import { DropDown } from "@/components";
 import { LinksData, FoldersData } from "@/lib/types/data";
-import * as Styled from "./StyledCard";
+import noImageImg from "@/public/noImage.svg";
+import chosenStarImg from "@/public/chosenStar.svg";
+import starImg from "@/public/star.svg";
+import * as Styled from "./Card.styled";
 
 interface Props {
   data: LinksData;
@@ -39,7 +42,7 @@ const Card = ({ data, folderData }: Props) => {
       <Link href={URL} target="_blank">
         <Styled.CardImgBox>
           <Styled.CardImg
-            src={IMG_SRC ? IMG_SRC : "/noImage.svg"}
+            src={IMG_SRC ? IMG_SRC : noImageImg}
             alt={IMG_SRC ? "카드 이미지" : "이미지 없음"}
             fill
             style={{ objectFit: "cover" }}
@@ -57,7 +60,7 @@ const Card = ({ data, folderData }: Props) => {
         </Styled.InfoContainer>
         <Styled.Star
           onClick={handleStarClick}
-          src={star ? "/chosenStar.svg" : "/star.svg"}
+          src={star ? chosenStarImg : starImg}
           alt="즐겨찾기 버튼"
           width="34"
           height="34"
