@@ -3,6 +3,7 @@ import * as S from './SigninForm.style';
 import Input from '@components/Input';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
+import { EMAIL_REGEX } from '@utils/regex';
 
 interface IFormInput {
   email: string;
@@ -13,7 +14,6 @@ function SigninForm() {
   const { ...methods } = useForm<IFormInput>({ mode: 'onBlur' });
   const { register, handleSubmit, setError } = methods;
   const router = useRouter();
-  const EMAIL_REGEX = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
   const submitForm = async (data: IFormInput) => {
     try {

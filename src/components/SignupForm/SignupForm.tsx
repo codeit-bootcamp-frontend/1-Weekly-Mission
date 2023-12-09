@@ -4,6 +4,7 @@ import Input from '@components/Input';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { EMAIL_REGEX, PASSWORD_REGEX } from '@utils/regex';
 
 interface IFormInput {
   email: string;
@@ -15,8 +16,6 @@ function SignupForm() {
   const { ...methods } = useForm<IFormInput>({ mode: 'onBlur' });
   const { register, handleSubmit, watch, setError, clearErrors } = methods;
   const router = useRouter();
-  const EMAIL_REGEX = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-  const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   const password = watch('password');
   const passwordConfirm = watch('passwordConfirm');
 
