@@ -13,7 +13,7 @@ import {
   checkPwText,
   emailPattern,
   passwordPattern,
-} from "@/constants/signinConstant";
+} from "@/constants/authConstant";
 
 export interface FormValues {
   email: string;

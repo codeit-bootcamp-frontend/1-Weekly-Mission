@@ -6,6 +6,7 @@ import Button from "../button/Button";
 import { SIGNUP_ENDPOINT, instance } from "@/api/services/config";
 import { useRouter } from "next/router";
 import { loadAccessToken } from "@/utils/localStorage";
+import { emailPattern, passwordPattern } from "@/constants/authConstant";
 
 export interface FormValues {
   email: string;
@@ -20,7 +21,6 @@ export function SignupForm() {
     formState: { errors },
     handleSubmit,
     getValues,
-    control,
   } = useForm<FormValues>({ mode: "onBlur" });
 
   const onSubmit = handleSubmit(async (data: FormValues) => {
@@ -32,18 +32,6 @@ export function SignupForm() {
     loadAccessToken(accessToken);
     res.status === 200 && router.push("/folder");
   });
-
-  const emailPattern = {
-    value: new RegExp(
-      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    ),
-    message: "올바른 이메일 주소가 아닙니다.",
-  };
-
-  const passwordPattern = {
-    value: new RegExp(/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/),
-    message: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-  };
 
   const { password } = getValues();
 
