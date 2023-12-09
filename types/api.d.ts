@@ -54,3 +54,17 @@ export interface UserLinksItem {
   image_source?: string;
   folder_id?: number;
 }
+
+export interface SigninItem {
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface SignupItem {
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface CheckEmailItem {
+  isUsableNickname: boolean;
+}

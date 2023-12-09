@@ -8,10 +8,10 @@ interface fetchUserLinksProps {
 
 export const fetchUserLinks = ({
   userId = 1,
-  folderId = "all",
+  folderId = "",
 }: fetchUserLinksProps) => {
   const query = `/api/users/${userId}/links${
-    folderId !== "all" ? `?folderId=${folderId}` : ""
+    folderId !== "" ? `?folderId=${folderId}` : ""
   }`;
   return fetchGet(query) as Promise<{ data: UserLinksItem[] }>;
 };
