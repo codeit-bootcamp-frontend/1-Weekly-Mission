@@ -4,8 +4,13 @@ import Link from "next/link";
 import SocialAuth from "@/components/socialAuth/SocialAuth";
 import logo from "@/public/icons/logo.svg";
 import { SignupForm } from "@/components/signupForm/SignupForm";
+import { useRouter } from "next/router";
+import { getAccessToken } from "@/utils/localStorage";
 
 function Signup() {
+  const router = useRouter();
+  getAccessToken() && router.push("/");
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
