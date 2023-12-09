@@ -15,7 +15,6 @@ interface InputProps {
   errorMessage?: string;
 }
 
-// Input 컴포넌트
 export const Input: React.FC<InputProps> = ({
   label,
   type = "text",
@@ -50,7 +49,7 @@ export const Input: React.FC<InputProps> = ({
       {label && <label className={cx("input-label")}>{label}</label>}
       <div className={cx("input-wrapper")}>
         <input
-          type={type}
+          type={inputType}
           value={value}
           onChange={onChange}
           onBlur={onBlur}
