@@ -18,13 +18,13 @@ export async function getServerSideProps() {
 }
 
 export default function FolderPage({ links, folders }) {
-  const linkAddBarRef = useRef<HTMLDivElement>(null);
-  const footerRef = useRef<HTMLDivElement>(null);
-  const isIntersecting = useIntersectionObserver([linkAddBarRef, footerRef]);
+  // const linkAddBarRef = useRef<HTMLDivElement>(null);
+  // const footerRef = useRef<HTMLDivElement>(null);
+  // const isIntersecting = useIntersectionObserver([linkAddBarRef, footerRef]);
 
   return (
-    <Layout footerRef={footerRef}>
-      <Header linkAddBarRef={linkAddBarRef} isIntersecting={isIntersecting} />
+    <Layout >
+      <Header />
       <Article links={links} folders={folders} />
     </Layout>
   );

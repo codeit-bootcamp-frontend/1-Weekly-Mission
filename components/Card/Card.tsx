@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import { useState, MouseEvent } from 'react';
 import { PopOver } from '@/components';
+import PastTime from '@/public/date';
 import noImg from '@/src/assets/noImg.svg';
 import kebabMenuImg from '@/src/assets/kebab.svg';
-import PastTime from '@/public/date';
+import starImg from '@/src/assets/Star.svg';
+import chooseStarImg from '@/src/assets/chooseStar.svg';
 import * as Style from './Card.style';
 import { Link } from '@/pages/shared';
 
@@ -23,13 +25,8 @@ export default function Card({ link }: Props) {
     setSelected(!selected);
   };
 
-  const starStyle = {
-    fill: selected ? '#6D6AFE' : '#000',
-    'fill-opacity': selected ? '1' : '0.2',
-  };
-
   const handleKebabClick = (e: MouseEvent) => {
-    e.stopPropagation();
+    e.preventDefault();
     setVisible(!visible ? true : false);
   };
 
@@ -39,12 +36,13 @@ export default function Card({ link }: Props) {
         <Style.CardImage
           src={imageSource || image_source || noImg}
           alt="사진"
+          fill
         />
-        {/* <Style.Star
-          fill={starStyle.fill}
-          fillOpacity={starStyle["fill-opacity"]}
+        <Style.Star
+          src={selected ? chooseStarImg : starImg }
+          alt='즐겨찾기'
           onClick={handleStarClick}
-        /> */}
+        />
       </Style.ImageContainer>
       <Style.Container>
         <Style.Option>

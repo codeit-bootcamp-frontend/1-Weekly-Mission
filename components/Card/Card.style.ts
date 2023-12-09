@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import StarImg from '@/src/assets/Star.svg';
+import Image from 'next/image';
 
 export const StyledLink = styled(Link)`
   position: relative;
@@ -19,6 +19,7 @@ export const StyledLink = styled(Link)`
 // overflow : hidden;
 
 export const ImageContainer = styled.div`
+  position : relative;
   width: 340px;
   height: 200px;
 `;
@@ -27,7 +28,7 @@ export const ImageContainer = styled.div`
 //   transition: 0.5s;
 // }
 
-export const CardImage = styled.img`
+export const CardImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -35,7 +36,7 @@ export const CardImage = styled.img`
   border-radius: 15px 15px 0px 0px;
 `;
 
-export const Star = styled(StarImg)`
+export const Star = styled(Image)`
   position: absolute;
   top: 15px;
   right: 15px;

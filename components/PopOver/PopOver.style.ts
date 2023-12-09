@@ -14,7 +14,7 @@ export const Element = styled.div`
   justify-content: center;
   padding: 7px 12px;
 
-  :hover {
+  &:hover {
     color: '#6d6afe';
     background-color: #e7effb;
   }

@@ -35,7 +35,7 @@ export default function Header({
       )}
 
       {!items && (
-        <Style.ContainerFolderPage ref={linkAddBarRef}>
+        <Style.ContainerFolderPage >
           <Style.LinkSearchBox>
             <Style.LinkBox>
               <Style.LinkInputBox>
@@ -52,7 +52,7 @@ export default function Header({
           </Style.LinkSearchBox>
         </Style.ContainerFolderPage>
       )}
-      {!items && !isIntersecting && (
+      {/* {!items && !isIntersecting && (
         <Style.ContainerFolderPage $isintersecting={isIntersecting}>
           <Style.LinkSearchBox>
             <Style.LinkBox>
@@ -69,7 +69,7 @@ export default function Header({
             </Style.LinkBox>
           </Style.LinkSearchBox>
         </Style.ContainerFolderPage>
-      )}
+      )} */}
     </ThemeProvider>
   );
 }
