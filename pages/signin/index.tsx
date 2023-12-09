@@ -1,20 +1,25 @@
 import { SignLayout } from '@/src/page-layout/SignLayout/SignLayout';
 import Logo from '@/public/images/linkbrary.svg';
-import styles from '@/src/page-layout/SignLayout/SignLayout.module.scss';
-import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { SnsLogin } from '@/src/sign/ui-sns/SnsLogin';
 import { FormInput } from '@/src/sign/ui-form-input/FormInput';
 import { FormButton } from '@/src/sign/ui-form-button/FormButton';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-
-const cx = classNames.bind(styles);
+import { axiosInstance } from '@/src/sharing/util/axiosInstance';
+import { useState } from 'react';
 
 interface FormInput {
   email: string;
   password: string;
+}
+
+interface ResultType {
+  data: {
+    data: {
+      accessToken: string;
+    };
+  };
 }
 
 const Signin = () => {
@@ -22,15 +27,38 @@ const Signin = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInput>();
+    setError,
+  } = useForm<FormInput>({ mode: 'onBlur' });
   const router = useRouter();
+  const [isEyeOn, setIsEyeOn] = useState(false);
 
-  const onBlur = () => {
-    // validate? react-hook-form에서 포커스아웃했을 때 어떻게 유효성 검사해야 할까요?
+  const handleChangeEyes = () => {
+    // 타입을 text로 변경하면 되나?
+    setIsEyeOn((prev) => !prev);
   };
 
-  const onSubmit = handleSubmit((data: FormInput) => {
-    console.log(data);
+  const onBlur = () => {
+    // validate? react-hook-form에서 포커스아웃했을 때 어떻게 유효성 검사해야 할까요?, mode: onBlur를 추가함으로써 자동으로 해주는 건가 싶습니다.
+  };
+
+  const onSubmit = handleSubmit(async (data: FormInput) => {
+    try {
+      const {
+        data: {
+          data: { accessToken },
+        },
+      } = await axiosInstance.post<FormInput, ResultType>(`sign-in`, data);
+      localStorage.setItem('accessToken', accessToken);
+      router.push('/folder');
+    } catch (err) {
+      setError('email', { type: 'pattern', message: '이메일을 확인해주세요' });
+      setError('password', {
+        type: 'pattern',
+        message: '비밀번호를 확인해주세요',
+      });
+    } finally {
+      console.log('로그인 시도');
+    }
   });
 
   return (
@@ -62,7 +90,7 @@ const Signin = () => {
           />
           <FormInput
             label="비밀번호"
-            type="password"
+            type={isEyeOn ? 'text' : 'password'}
             placeholder="비밀번호를 입력해주세요"
             {...register('password', {
               required: '비밀번호를 입력해주세요.',
@@ -70,14 +98,12 @@ const Signin = () => {
                 value: 6,
                 message: '비밀번호를 6자 이상 입력해주세요.',
               },
-              pattern: {
-                value: /^(?=.*[!@#$%^&*])/,
-                message: '특수 기호를 넣어주세요.',
-              },
             })}
             error={errors.password}
+            isEyeOn={isEyeOn}
+            onChangeEyes={handleChangeEyes}
           />
-          <button>
+          <button type="submit">
             <FormButton>로그인</FormButton>
           </button>
         </form>
