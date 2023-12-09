@@ -1,14 +1,14 @@
 import Card from "@/components/Main/CardList/Card";
 import { CardLink, ContainerCardList, EmptyBox } from "@/components/Main/CardList/CardList.styled";
 import { CardListProps } from "@/components/Main/CardList/CardList.type";
+import { PATHS } from "@/constants/path";
 import useData from "@/hooks/useData";
 import { filterFolder } from "@/utils/filterAndData";
-import { URLS } from "@/utils/getData.type";
 import { useRouter } from "next/router";
 
 export default function CardList({ id, path }: CardListProps) {
   const cardData = useData(path, id);
-  const folderData = useData(URLS.FOLDER_CATEGORY, id);
+  const folderData = useData(PATHS.FOLDER_CATEGORY, id);
 
   const router = useRouter();
   const searchKeyword = router.query["q"] as string;

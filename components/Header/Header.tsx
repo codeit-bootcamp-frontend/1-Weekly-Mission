@@ -1,10 +1,10 @@
 import defaultAvatar from "@/public/Avatar.png";
 import useData from "@/hooks/useData";
 import { Container, User, UserImg, UserText, UserTitle } from "@/components/Header/Header.styled";
-import { URLS } from "@/utils/getData.type";
+import { PATHS } from "@/constants/path";
 
 export default function Header() {
-  const folderName = useData(URLS.SHARED_FOLDERNAME);
+  const folderName = useData(PATHS.SHARED_FOLDERNAME);
   if (!folderName) {
     return null;
   }

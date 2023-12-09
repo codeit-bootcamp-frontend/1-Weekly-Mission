@@ -1,11 +1,11 @@
 import { ButtonAdd, Li, Ul } from "@/components/Main/FolderSelect/FolderTabs.styled";
 import { Container } from "@/components/Main/FolderSelect/FolderSelect.styled";
 import useData from "@/hooks/useData";
-import { URLS } from "@/utils/getData.type";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { TabsProps } from "@/components/Main/FolderSelect/FolderSelect.type";
+import { URLS } from "@/constants/path";
 
 export default function FolderTabs({ id, setTitle, handleModal }: TabsProps) {
   const tabs = useData(URLS.FOLDER_CATEGORY, id);

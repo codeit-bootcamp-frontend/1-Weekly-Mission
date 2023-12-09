@@ -1,8 +1,9 @@
-import { FolderData, URLS } from "@/utils/getData.type";
+import { FolderData } from "@/utils/getData.type";
+import { PATHS } from "@/constants/path";
 
 export interface CardListProps {
   id?: number;
-  path: URLS.SHARED_FOLDER | URLS.FOLDER_LINKS;
+  path: typeof PATHS.SHARED_FOLDER | typeof PATHS.FOLDER_LINKS;
 }
 
 export interface CardProps {

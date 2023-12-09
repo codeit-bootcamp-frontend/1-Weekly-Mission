@@ -1,7 +1,7 @@
 import CardList from "@/components/Main/CardList/CardList";
 import FolderSelect from "@/components/Main/FolderSelect/FolderSelect";
 import SearchBar from "@/components/Main/FolderSelect/SearchBar";
-import { URLS } from "@/utils/getData.type";
+import { URLS } from "@/constants/path";
 
 interface Props {
   id: number;

@@ -1,12 +1,4 @@
-export enum URLS {
-  SHARED_USER = "SHARED_USER",
-  SHARED_FOLDER = "SHARED_FOLDER",
-  SHARED_FOLDERNAME = "SHARED_FOLDERNAME",
-  FOLDER_USER = "FOLDER_USER",
-  FOLDER_CATEGORY = "FOLDER_CATEGORY",
-  FOLDER_LINKS = "FOLDER_LINKS",
-  DEFAULT = "DEFAULT",
-}
+import { PATHS } from "@/constants/path";
 
 export type LinkData = {
   id: number;
@@ -20,7 +12,7 @@ export type LinkData = {
 };
 
 interface Link {
-  path: URLS.FOLDER_LINKS;
+  path: typeof PATHS.FOLDER_LINKS;
   data: LinkData[];
 }
 
@@ -35,7 +27,7 @@ export type FolderData = {
 };
 
 interface Folder {
-  path: URLS.FOLDER_CATEGORY;
+  path: typeof PATHS.FOLDER_CATEGORY;
   data: FolderData[];
 }
 
@@ -49,12 +41,12 @@ type UserData = {
 };
 
 interface User {
-  path: URLS.FOLDER_USER;
+  path: typeof PATHS.FOLDER_USER;
   data: UserData[];
 }
 
 interface SampleUser {
-  path: URLS.SHARED_USER;
+  path: typeof PATHS.SHARED_USER;
   id: number;
   name: string;
   email: string;
@@ -71,7 +63,7 @@ export type SampleLink = {
 };
 
 interface SampleFolder {
-  path: URLS.SHARED_FOLDER | URLS.SHARED_FOLDERNAME;
+  path: typeof PATHS.SHARED_FOLDER | typeof PATHS.SHARED_FOLDERNAME;
   folder: {
     id: number;
     name: string;
@@ -86,7 +78,7 @@ interface SampleFolder {
 
 export type Action = SampleUser | SampleFolder | User | Folder | Link;
 
-export type UrlType = keyof typeof URLS;
+export type UrlType = keyof typeof PATHS;
 
 export type MakeURL = (path: UrlType, id?: number) => string;
 
@@ -98,16 +90,16 @@ interface Rentity {
 }
 
 interface RsampleUser extends Rentity {
-  path: URLS.SHARED_USER;
+  path: typeof PATHS.SHARED_USER;
 }
 
 export interface RsampleFolder {
-  path: URLS.SHARED_FOLDER;
+  path: typeof PATHS.SHARED_FOLDER;
   links: SampleLink[];
 }
 
 interface RsampleFolderName {
-  path: URLS.SHARED_FOLDERNAME;
+  path: typeof PATHS.SHARED_FOLDERNAME;
   folderName: string;
   owner: {
     id: number;
@@ -117,24 +109,24 @@ interface RsampleFolderName {
 }
 
 interface Ruser extends Rentity {
-  path: URLS.FOLDER_USER;
+  path: typeof PATHS.FOLDER_USER;
 }
 
 export interface Rlink {
-  path: URLS.FOLDER_LINKS;
+  path: typeof PATHS.FOLDER_LINKS;
   links: LinkData[];
 }
 
-export type Rgeneric<T> = T extends URLS.SHARED_USER
+export type Rgeneric<T> = T extends typeof PATHS.SHARED_USER
   ? RsampleUser
-  : T extends URLS.SHARED_FOLDER
+  : T extends typeof PATHS.SHARED_FOLDER
   ? RsampleFolder
-  : T extends URLS.SHARED_FOLDERNAME
+  : T extends typeof PATHS.SHARED_FOLDERNAME
   ? RsampleFolderName
-  : T extends URLS.FOLDER_USER
+  : T extends typeof PATHS.FOLDER_USER
   ? Ruser
-  : T extends URLS.FOLDER_CATEGORY
+  : T extends typeof PATHS.FOLDER_CATEGORY
   ? Folder
-  : T extends URLS.FOLDER_LINKS
+  : T extends typeof PATHS.FOLDER_LINKS
   ? Rlink
   : undefined;

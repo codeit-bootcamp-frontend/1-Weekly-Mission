@@ -1,4 +1,5 @@
-import { Rlink, RsampleFolder, URLS } from "@/utils/getData.type";
+import { PATHS } from "@/constants/path";
+import { Rlink, RsampleFolder } from "@/utils/getData.type";
 
 export const formatDate = (value: string) => {
   const date = new Date(value);
@@ -10,10 +11,10 @@ export const filterFolder = (data: RsampleFolder | Rlink, keyword = "", id = "")
   if (!keyword && !id) return data.links;
 
   let filteredData;
-  if (data.path === URLS.FOLDER_LINKS && id) {
+  if (data.path === PATHS.FOLDER_LINKS && id) {
     filteredData = data.links.filter((link) => link.folder_id === Number(id));
   }
-  if (data.path === URLS.SHARED_FOLDER && id) {
+  if (data.path === PATHS.SHARED_FOLDER && id) {
     filteredData = data.links.filter((link) => link.id === Number(id));
   }
   return (filteredData || data.links).filter((link) => {

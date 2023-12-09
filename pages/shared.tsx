@@ -3,8 +3,8 @@ import Header from "@/components/Header/Header";
 import Main from "@/components/Main/Main";
 import CardList from "@/components/Main/CardList/CardList";
 import SearchBar from "@/components/Main/FolderSelect/SearchBar";
-import { URLS } from "@/utils/getData.type";
 import Navigation from "@/components/Nav/Navigation";
+import { PATHS } from "@/constants/path";
 
 export default function SharedPage() {
   return (
@@ -13,7 +13,7 @@ export default function SharedPage() {
       <Header />
       <Main>
         <SearchBar />
-        <CardList path={URLS.SHARED_FOLDER} />
+        <CardList path={PATHS.SHARED_FOLDER} />
       </Main>
       <Footer />
     </>

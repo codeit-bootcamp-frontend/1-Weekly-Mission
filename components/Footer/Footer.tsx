@@ -12,7 +12,9 @@ export default function Footer({ dom }: Props) {
   return (
     <Container
       ref={(el) => {
-        dom && (dom.current.footer = el);
+        if (dom) {
+          dom.current.footer = el;
+        }
       }}
     >
       <Copy>©codeit - 2023</Copy>

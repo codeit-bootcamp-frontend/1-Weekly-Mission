@@ -1,10 +1,7 @@
 import Avatar from "@/components/Nav/Avatar/Avatar";
 import Logo from "@/components/Nav/Avatar/Logo";
-import { Background, Nav, StyledLink } from "@/components/Nav/Navigation.styled";
-import { Url } from "next/dist/shared/lib/router/router";
+import { Background, Nav } from "@/components/Nav/Navigation.styled";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useRef } from "react";
 
 interface Props {
   id?: number;

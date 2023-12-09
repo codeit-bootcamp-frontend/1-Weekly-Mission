@@ -3,7 +3,7 @@ import { Float, Form, Input, InputButton, InputImg, InputWrapper } from "@/compo
 import useData from "@/hooks/useData";
 import useModal from "@/hooks/useModal";
 import { Dom } from "@/hooks/useObserver";
-import { URLS } from "@/utils/getData.type";
+import { PATHS } from "@/constants/path";
 
 interface Props {
   id: number;
@@ -11,13 +11,13 @@ interface Props {
 }
 
 export default function HeaderSearch({ id, dom }: Props) {
-  const folder = useData(URLS.FOLDER_CATEGORY, id);
+  const folder = useData(PATHS.FOLDER_CATEGORY, id);
   const { modal, dispatch } = useModal();
   const [value, setValue] = useState("");
 
   const handleModal = (e: FormEvent) => {
     e.preventDefault();
-    if (folder?.path === URLS.FOLDER_CATEGORY) {
+    if (folder.path === PATHS.FOLDER_CATEGORY) {
       dispatch({ title: value, type: "추가하기", data: folder.data });
     }
   };
