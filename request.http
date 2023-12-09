@@ -1,0 +1,9 @@
+### signin
+
+POST https://bootcamp-api.codeit.kr/api/sign-in
+Content-Type: application/json
+
+{
+    "email":"test@codeit.com",
+    "password": "sprint101"
+}

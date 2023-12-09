@@ -6,9 +6,6 @@
   font-size: 14px;
   font-weight: 400;
 }
-.emptyMessage::after {
-  content: "내용을 다시 입력해주세요.";
-}
 .input {
   width: 100%;
   padding: 18px 15px;

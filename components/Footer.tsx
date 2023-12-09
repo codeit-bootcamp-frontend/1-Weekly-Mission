@@ -31,7 +31,7 @@ const SNS = [
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} style={{ display: "none" }}>
       <div className={styles.footerConnect}>
         <div className={styles.footerConnectYear}>codeit - 2023</div>
         <ul className={styles.footerConnectFaq}>

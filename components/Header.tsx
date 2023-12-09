@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <header
       className={styles.header}
-      style={{ position: isLocation() ? "static" : "sticky" }}
+      style={{ position: isLocation() ? "static" : "sticky", display: "none" }}
     >
       <div className={styles.headerInner}>
         <h1>
