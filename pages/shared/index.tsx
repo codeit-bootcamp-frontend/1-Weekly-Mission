@@ -13,10 +13,10 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { sampleFolder, userProfile } };
 };
 
-function SharePage({
+const SharePage = ({
   userProfile,
   sampleFolder,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const fixedBool = true;
 
   const handleSearchbar = (searchedText: string) => {};
@@ -33,7 +33,7 @@ function SharePage({
       <Footer />
     </>
   );
-}
+};
 
 export default SharePage;
 
