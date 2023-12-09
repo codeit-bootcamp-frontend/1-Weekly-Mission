@@ -1,14 +1,16 @@
 import { InputType, Signin } from "@/components/Main/sign/Sign.type";
 import { StyledForm, SubmitButton } from "@/components/Main/sign/SignForm.styled";
-import { validate_signin, validate_signup } from "@/utils/validate";
-import SignLabel from "@/components/Main/sign/SignLabel";
-import { FormEvent, useState } from "react";
-import { useRouter } from "next/router";
+import SignEmLabel from "@/components/Main/sign/SignEmLabel";
+import SignPwLabel from "@/components/Main/sign/SignPwLabel";
 import axios from "@/lib/axios";
+import { validate_signin, validate_signup } from "@/utils/validate";
+import { useRouter } from "next/router";
+import { FormEvent, useState } from "react";
 
-export default function SignForm({ signin }: Signin) {
+export default function SignForm() {
   const [isError, SetIsError] = useState(false);
   const router = useRouter();
+  const signin = router.asPath === "/signin";
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,9 +50,9 @@ export default function SignForm({ signin }: Signin) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <SignLabel type="email" />
-      <SignLabel type="password" />
-      {signin || <SignLabel type="passwordCheck" />}
+      <SignEmLabel />
+      <SignPwLabel type="password" />
+      {signin ? null : <SignPwLabel type="passwordCheck" />}
       <SubmitButton>{signin ? "로그인" : "회원가입"}</SubmitButton>
     </StyledForm>
   );

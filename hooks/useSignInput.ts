@@ -16,7 +16,6 @@ export default function useSignInput() {
     const validateFunc = router.asPath === "/signin" ? validate_signin : validate_signup;
     const type = input.current.name as InputType["type"];
     const value = input.current.value;
-    console.log(type);
 
     const res = await validateFunc({ type, value });
     if (res) {
