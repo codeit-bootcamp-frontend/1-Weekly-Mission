@@ -9,9 +9,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 function Button({ children, className, onClick }: ButtonProps) {
   return (
-    <div onClick={onClick} className={className}>
+    <button onClick={onClick} className={className}>
       {children}
-    </div>
+    </button>
   );
 }
 

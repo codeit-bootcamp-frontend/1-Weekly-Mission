@@ -1,10 +1,9 @@
 import styles from "./signup.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/button/Button";
 import SocialAuth from "@/components/socialAuth/SocialAuth";
 import logo from "@/public/icons/logo.svg";
-import SignupForm from "@/components/signupForm/SignupForm";
+import { SignupForm } from "@/components/signupForm/SignupForm";
 
 function Signup() {
   return (
@@ -24,7 +23,6 @@ function Signup() {
         <div className={styles.inputContainer}>
           <SignupForm />
         </div>
-        <Button className={styles.ctaButton}>회원가입</Button>
         <SocialAuth title="다른 방식으로 가입하기" />
       </div>
     </section>

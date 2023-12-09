@@ -8,6 +8,7 @@ import Image from "next/image";
 
 type PasswordInputProps = {
   hasEyeIcon?: boolean;
+  rules?: any;
 } & Omit<InputProps, "type">;
 
 function PasswordInput({
@@ -18,6 +19,9 @@ function PasswordInput({
   onChange,
   onBlur,
   hasEyeIcon = false,
+  inputName,
+  rules,
+  register,
 }: PasswordInputProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const inputType = useMemo(
@@ -26,26 +30,32 @@ function PasswordInput({
   );
 
   return (
-    <div className={styles.container}>
-      <Input
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        type={inputType}
-      />
-      <button
-        type="button"
-        className={styles.eyeIcon}
-        onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-      >
-        {isPasswordVisible ? (
-          <Image src={eyeOnIcon} alt="비밀번호 보이기 아이콘" />
-        ) : (
-          <Image src={eyeOffIcon} alt="비밀번호 감추기 아이콘" />
-        )}
-      </button>
-    </div>
+    <>
+      <div className={styles.container}>
+        <Input
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          type={inputType}
+          inputName={inputName}
+          rules={rules}
+          register={register}
+        />
+        <button
+          type="button"
+          className={styles.eyeIcon}
+          onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+        >
+          {isPasswordVisible ? (
+            <Image src={eyeOnIcon} alt="비밀번호 보이기 아이콘" />
+          ) : (
+            <Image src={eyeOffIcon} alt="비밀번호 감추기 아이콘" />
+          )}
+        </button>
+      </div>
+      {hasError && <p className={styles.errorMessage}>{helperText}</p>}
+    </>
   );
 }
 
