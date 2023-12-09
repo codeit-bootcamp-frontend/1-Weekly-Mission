@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Layout from '@/components/Modal/Layout';
-import NewFolder from '@/components/Modal/NewFolder';
-import AddToFolder from '@/components/Modal/AddToFolder';
-import DeleteFolder from '@/components/Modal/DeleteFolder';
-import DeleteLink from '@/components/Modal/DeleteLink';
-import Edit from '@/components/Modal/Edit';
-import Share from '@/components/Modal/Share';
+import Layout from '@/components/modals/Layout';
+import NewFolder from '@/components/modals/NewFolder';
+import AddToFolder from '@/components/modals/AddToFolder';
+import DeleteFolder from '@/components/modals/DeleteFolder';
+import DeleteLink from '@/components/modals/DeleteLink';
+import Edit from '@/components/modals/Edit';
+import Share from '@/components/modals/Share';
 
 export type ModalsKey =
   | 'addToFolder'

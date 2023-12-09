@@ -48,6 +48,17 @@ const config: Config = {
       dark: '#222222',
       transparent: 'transparent',
     },
+    extend: {
+      keyframes: {
+        fade: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+      },
+      animation: {
+        fadeOut: 'fade 2s ease-in-out',
+      },
+    },
   },
   plugins: [],
 };

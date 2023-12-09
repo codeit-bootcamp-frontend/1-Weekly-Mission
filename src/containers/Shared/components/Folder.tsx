@@ -20,7 +20,7 @@ function Folder({ folder }: SharedFolder) {
   return (
     <main>
       <Banner name={name} owner={owner} />
-      <section className='px-32pxr py-20pxr pc:mx-auto pc:w-[115rem]'>
+      <section className='px-32pxr pb-60pxr pt-20pxr pc:mx-auto pc:w-[115rem]'>
         <SearchBar />
         <CardList cards={filteredLinks} userId={DEFAULT_USER_ID} />
       </section>

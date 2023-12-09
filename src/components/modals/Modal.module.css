@@ -1,0 +1,31 @@
+@tailwind components;
+
+@layer components {
+  .dim-container {
+    @apply fixed bottom-0 left-0 right-0 top-0 z-floating bg-[rgba(0,0,0,0.4)];
+  }
+
+  .modal-container {
+    @apply absolute left-1/2 top-1/2 z-floating flex w-[36rem] -translate-x-1/2 -translate-y-1/2 flex-col gap-24pxr rounded-[1.5rem] border border-solid border-gray-20 bg-white px-40pxr py-32pxr;
+  }
+
+  .close-button {
+    @apply absolute right-16pxr top-16pxr h-24pxr w-24pxr;
+  }
+
+  .header {
+    @apply flex flex-col gap-8pxr;
+  }
+
+  .title {
+    @apply text-center text-20pxr font-bold text-gray-100;
+  }
+
+  .description {
+    @apply text-center text-14pxr font-normal leading-[2.2rem] text-gray-60;
+  }
+
+  .input {
+    @apply mb-15pxr w-full rounded-[0.8rem] border border-solid border-gray-20 px-15pxr py-18pxr text-16pxr font-normal leading-[2.4rem] outline-none placeholder:text-gray-60 focus:border-primary;
+  }
+}

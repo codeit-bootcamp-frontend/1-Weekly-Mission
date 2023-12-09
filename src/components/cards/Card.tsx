@@ -1,10 +1,10 @@
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import TimeAgo from 'react-timeago';
 import useModal, { ModalsKey } from '@/hooks/useModal';
 import { Link as ILink } from '@/types/Folder.types';
 import { IconKebab, IconStar } from '@/public/svgs';
-import Link from 'next/link';
-import Image from 'next/image';
 
 const DEFAULT_IMAGE_SRC = '/images/default-link-img.svg';
 
@@ -141,7 +141,7 @@ function KebabPopup({ setKebabModal }: KebabPopupProps) {
   };
 
   return (
-    <div className='z-popup absolute right-0 top-18pxr flex w-100pxr flex-col shadow-[0_0.2rem_0.8rem_0_rgba(51,50,54,0.1)]'>
+    <div className='absolute right-0 top-18pxr z-popup flex w-100pxr flex-col bg-white shadow-[0_0.2rem_0.8rem_0_rgba(51,50,54,0.1)]'>
       <button
         onClick={setDeleteLinkModal}
         className='w-100pxr px-12pxr py-7pxr text-14pxr font-normal text-gray-100 hover:bg-gray-10 hover:text-primary'
