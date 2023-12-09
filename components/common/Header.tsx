@@ -16,6 +16,7 @@ function Header({ page = '' }: Props) {
   const sampleuser = useGetSampleUser();
   const user = useGetUser(1);
   const userData = page === 'shared' ? sampleuser : user;
+  const isAlreadyLogin = typeof window !== 'undefined' && window.localStorage.getItem('sign-in');
 
   return (
     <Outer $page={page}>
@@ -23,7 +24,13 @@ function Header({ page = '' }: Props) {
         <Link href="/" target="_blank">
           <LogoImg src={logoImg} alt="Linkbrary 메인 페이지 바로가기" width={133} height={24} />
         </Link>
-        {userData ? <Profile user={userData} /> : <Button type="login">로그인</Button>}
+        {isAlreadyLogin && userData ? (
+          <Profile user={userData} />
+        ) : (
+          <Link href="/signin">
+            <Button type="login">로그인</Button>
+          </Link>
+        )}
       </Container>
     </Outer>
   );

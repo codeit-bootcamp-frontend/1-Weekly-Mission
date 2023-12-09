@@ -11,7 +11,7 @@ interface Props {
 export default function Logo({ width, height }: Props) {
   return (
     <Link href={'/'}>
-      <Img src={LogoImg} alt="Linkbrary 홈 바로가기" $width={width} $height={height} />
+      <Img src={LogoImg} alt="Linkbrary 메인 페이지 바로가기" $width={width} $height={height} />
     </Link>
   );
 }
