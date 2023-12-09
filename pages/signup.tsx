@@ -5,6 +5,8 @@ import Button from '@/components/common/Button';
 import InputBox from '@/components/common/Input/InputBox';
 import { signUpEmailRules, signUpPwRules } from '@/constants/validations';
 import SocialBox from '@/components/sign/SocialBox';
+import { onSignUp } from '@/lib/utils/onValid';
+import { checkToken } from '@/lib/utils/checkToken';
 
 export default function SignUp() {
   const {
@@ -14,17 +16,11 @@ export default function SignUp() {
     formState: { errors },
   } = useForm({ mode: 'onBlur' });
 
-  function onValidSignUp(data: any): void {
-    if (data.password !== data.pwCheck) {
-      setError('pwCheck', { message: '비밀번호가 일치하지 않아요.' }, { shouldFocus: true });
-    } else {
-      alert('성공~!');
-    }
-  }
+  checkToken(false);
 
   return (
     <Background>
-      <Container onSubmit={handleSubmit(onValidSignUp)}>
+      <Container onSubmit={handleSubmit((data) => onSignUp(data, setError))}>
         <Header type="signup" />
         <InputBox type="이메일" placeholder="이메일을 입력해 주세요." register={register('email', signUpEmailRules)} error={errors.email} />
         <InputBox

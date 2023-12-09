@@ -7,6 +7,7 @@ import Button from '@/components/common/Button';
 import useGetUser from '@/hooks/useGetUser';
 import useGetSampleUser from '@/hooks/useGetSampleUser';
 import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { checkToken } from '@/lib/utils/checkToken';
 
 interface Props {
   page: string;
@@ -16,7 +17,7 @@ function Header({ page = '' }: Props) {
   const sampleuser = useGetSampleUser();
   const user = useGetUser(1);
   const userData = page === 'shared' ? sampleuser : user;
-  const isAlreadyLogin = typeof window !== 'undefined' && window.localStorage.getItem('sign-in');
+  const isAlreadyLogin = checkToken(true);
 
   return (
     <Outer $page={page}>
