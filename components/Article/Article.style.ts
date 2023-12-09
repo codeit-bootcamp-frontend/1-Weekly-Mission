@@ -17,7 +17,7 @@ export const ArticleSection = styled.div`
   }
 `;
 
-export const P = styled.p`
+export const Paragraph = styled.p`
   color: var(--gray-100);
   font-size: 32px;
   font-weight: 600;
@@ -27,4 +27,9 @@ export const P = styled.p`
     font-size: 32px;
     color: var(--gray-60);
   }
+`;
+
+export const Keyword = styled.span`
+  font-size: 32px;
+  color: var(--gray-60);
 `;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Folder } from '@/components/FolderArticle/FolderArticle';
-import * as S from './CardMenuBar.style';
+import * as Style from './CardMenuBar.style';
 
 interface Props {
   folder: Folder;
@@ -13,7 +13,7 @@ export default function CardButton({ folder, folderId }: Props) {
 
   return (
     <Link href={path}>
-      <S.Button active={folderId === id}>{name}</S.Button>
+      <Style.Button active={folderId === id}>{name}</Style.Button>
     </Link>
   );
 }

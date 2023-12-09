@@ -1,7 +1,7 @@
 import { CardMenuBar, EmptyData, CardContainer } from '@/components';
 import { ThemeProvider } from 'styled-components';
 import theme from '@/styles/display';
-import * as S from './FolderArticle.style';
+import * as Style from './FolderArticle.style';
 import { createContext } from 'react';
 import { Link } from '@/pages/shared';
 
@@ -27,11 +27,11 @@ export default function FolderArticle({ items, isVisible, folders }: Props) {
   return (
     <ThemeProvider theme={theme}>
       <FolderContext.Provider value={folders}>
-        <S.Container>
+        <Style.Container>
           {/* <CardMenuBar folders={folders} /> */}
           {isVisible && <CardContainer items={items} active={folders} />}
           {!isVisible && <EmptyData />}
-        </S.Container>
+        </Style.Container>
       </FolderContext.Provider>
     </ThemeProvider>
   );

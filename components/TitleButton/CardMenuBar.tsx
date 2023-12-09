@@ -6,7 +6,7 @@
 // import { ThemeProvider } from "styled-components";
 // import theme from "@/styles/display";
 // import AddImg from "@/src/assets/add.svg";
-// import * as S from "./CardMenuBar.style";
+// import * as Style from "./CardMenuBar.style";
 // import {
 //   GetStaticPaths,
 //   GetStaticProps,
@@ -71,21 +71,21 @@
 //   return (
 //     <>
 //       <ThemeProvider theme={theme}>
-//         <S.Container>
-//           <S.Ul>
+//         <Style.Container>
+//           <Style.Ul>
 //             <Link href="/folder">
 //               <li>
-//                 <S.Button active={selectFolder === null}>전체</S.Button>
+//                 <Style.Button active={selectFolder === null}>전체</Style.Button>
 //               </li>
 //             </Link>
 //             {folders.map((folder) => (
 //               <CardButton folder={folder} key={folder.id} folderId={folderId} />
 //             ))}
-//           </S.Ul>
+//           </Style.Ul>
 //           <span onClick={handleButtonClick}>
 //             {/* 폴더 추가<AddImg alt="폴더추가" fill="#6D6AFE" /> */}
 //           </span>
-//         </S.Container>
+//         </Style.Container>
 //         <MenuTitle title={selectFolder ? selectFolder : "전체"} />
 //       </ThemeProvider>
 //       {isOpen && (

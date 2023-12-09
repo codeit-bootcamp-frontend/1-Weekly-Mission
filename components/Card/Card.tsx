@@ -29,7 +29,7 @@ export default function Card({ link }: Props) {
   };
 
   const handleKebabClick = (e: MouseEvent) => {
-    e.preventDefault();
+    e.stopPropagation();
     setVisible(!visible ? true : false);
   };
 

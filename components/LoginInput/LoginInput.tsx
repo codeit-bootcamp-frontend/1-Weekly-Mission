@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import * as Style from './LoginInput.style';
 import Image from 'next/image';
-import inputType from './inputType';
 import { useFormContext } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import inputType from './inputType';
+import * as Style from './LoginInput.style';
 
 export default function LoginInput({ type }) {
   const { label, id, placeholder, message, Regex, confirm, src } =
@@ -65,6 +65,7 @@ export default function LoginInput({ type }) {
                 value: Regex,
                 message: message,
               },
+              
               onBlur: handleInputBlur,
               onChange: handleInputChange,
             })}

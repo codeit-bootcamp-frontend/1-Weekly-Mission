@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Modal, ModalForm, Icons } from '@/components';
 import useModal from '@/public/useModal';
-import * as S from './TitleButton.style.js';
+import * as Style from './TitleButton.style.js';
 
 interface Option {
   title: string;
@@ -23,17 +23,17 @@ export default function MenuTitleButton({ title }: { title: string }) {
 
   return (
     <>
-      <S.Container>
+      <Style.Container>
         {Icons.map((icon, index) => (
-          <S.StyledButton
+          <Style.StyledButton
             key={index}
             onClick={(e) => handleButtonClick(e, icon.name)}
           >
             <img src={icon.image} alt={icon.name}></img>
             <p>{icon.name}</p>
-          </S.StyledButton>
+          </Style.StyledButton>
         ))}
-      </S.Container>
+      </Style.Container>
       {isOpen && (
         <Modal
           title={option.title}

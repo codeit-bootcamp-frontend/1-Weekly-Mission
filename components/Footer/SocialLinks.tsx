@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import { Links } from './Footer.style';
-import { Data } from './SocialMedia';
+import { Data } from './socialMedia';
 
 interface Props extends Data {
   alt: string | undefined;
 }
 
-function SNS({ alt, url, icon }: Props) {
+function SocialLinks({ alt, url, icon }: Props) {
   const description = `${alt}페이지로 이동`;
 
   return (
@@ -16,4 +16,4 @@ function SNS({ alt, url, icon }: Props) {
   );
 }
 
-export default SNS;
+export default SocialLinks;

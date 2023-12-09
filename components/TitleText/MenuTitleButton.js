@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Modal, ModalForm, Icons } from '@/components';
+import { Modal, ModalForm, icons } from '@/components';
 import useModal from '@/public/useModal';
 import * as S from './TitleButton.style.js';
 

@@ -3,7 +3,7 @@ import theme from '@/styles/display';
 import { Items } from '@/pages/shared';
 import linkClickImg from '@/src/assets/link.svg';
 import Image from 'next/image';
-import * as S from './Header.style';
+import * as Style from './Header.style';
 import { RefObject } from 'react';
 
 interface Props {
@@ -20,8 +20,8 @@ export default function Header({
   return (
     <ThemeProvider theme={theme}>
       {items && (
-        <S.ContainerProfilePage>
-          <S.Profile>
+        <Style.ContainerProfilePage>
+          <Style.Profile>
             <Image
               src={items.owner?.profileImageSource}
               alt="profile"
@@ -29,16 +29,16 @@ export default function Header({
               height={60}
             ></Image>
             <span>{items.owner?.name}</span>
-          </S.Profile>
+          </Style.Profile>
           <p>{items.name}</p>
-        </S.ContainerProfilePage>
+        </Style.ContainerProfilePage>
       )}
 
       {!items && (
-        <S.ContainerFolderPage ref={linkAddBarRef}>
-          <S.LinkSearchBox>
-            <S.LinkBox>
-              <S.LinkInputBox>
+        <Style.ContainerFolderPage ref={linkAddBarRef}>
+          <Style.LinkSearchBox>
+            <Style.LinkBox>
+              <Style.LinkInputBox>
                 <Image
                   src={linkClickImg}
                   alt="링크아이콘"
@@ -46,17 +46,17 @@ export default function Header({
                   height={20}
                 ></Image>
                 <input type="text" placeholder="링크를 추가해 보세요"></input>
-              </S.LinkInputBox>
+              </Style.LinkInputBox>
               <button>추가하기</button>
-            </S.LinkBox>
-          </S.LinkSearchBox>
-        </S.ContainerFolderPage>
+            </Style.LinkBox>
+          </Style.LinkSearchBox>
+        </Style.ContainerFolderPage>
       )}
       {!items && !isIntersecting && (
-        <S.ContainerFolderPage $isintersecting={isIntersecting}>
-          <S.LinkSearchBox>
-            <S.LinkBox>
-              <S.LinkInputBox>
+        <Style.ContainerFolderPage $isintersecting={isIntersecting}>
+          <Style.LinkSearchBox>
+            <Style.LinkBox>
+              <Style.LinkInputBox>
                 <Image
                   src={linkClickImg}
                   alt="링크아이콘"
@@ -64,11 +64,11 @@ export default function Header({
                   height={20}
                 ></Image>
                 <input type="text" placeholder="링크를 추가해 보세요"></input>
-              </S.LinkInputBox>
+              </Style.LinkInputBox>
               <button>추가하기</button>
-            </S.LinkBox>
-          </S.LinkSearchBox>
-        </S.ContainerFolderPage>
+            </Style.LinkBox>
+          </Style.LinkSearchBox>
+        </Style.ContainerFolderPage>
       )}
     </ThemeProvider>
   );

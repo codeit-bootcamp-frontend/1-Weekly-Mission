@@ -1,11 +1,11 @@
-import { useCallback, ChangeEvent } from 'react';
+import { useEffect, ChangeEvent } from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '@/styles/display';
 import searchImg from '@/src/assets/Search.svg';
 import closeImg from '@/src/assets/_close.png';
 import { Link } from '@/pages/shared';
 import Image from 'next/image';
-import * as S from './Search.style';
+import * as Style from './Search.style';
 
 interface Props {
   links: Link[];
@@ -23,19 +23,23 @@ export default function Search({
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const lowerValue = e.target.value.toLowerCase();
     onSearch(lowerValue);
-
-    if (value) {
-      const checkItems = links.filter((link) => {
-        const { description, title, url } = link;
-        return (
-          description.includes(value) ||
-          title.includes(value) ||
-          url.includes(value)
-        );
-      });
-      setCheckItem(checkItems);
-    }
-  };
+  }
+    useEffect(() => {
+      console.log(value)
+      if (value) {
+        const checkItems = links.filter((link) => {
+          const { description, title, url } = link;
+          return (
+            description?.includes(value) ||
+            title?.includes(value) ||
+            url?.includes(value)
+          );
+        });
+        setCheckItem(checkItems);
+      } else if( value.length === 0) {setCheckItem(links)} 
+    },[value])
+  
+  
 
   const handleCloseClick = () => {
     onSearch('');
@@ -44,7 +48,7 @@ export default function Search({
 
   return (
     <ThemeProvider theme={theme}>
-      <S.Container>
+      <Style.Container>
         <Image src={searchImg} alt="검색아이콘" width={16} height={16} />
         <input
           name="search"
@@ -60,7 +64,7 @@ export default function Search({
           width={24}
           height={24}
         />
-      </S.Container>
+      </Style.Container>
     </ThemeProvider>
   );
 }

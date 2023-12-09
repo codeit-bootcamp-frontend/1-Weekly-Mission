@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import { Nav, Article, Header, Footer } from '@/components';
+import { useRef } from 'react';
+import { Article, Header, Layout } from '@/components';
 import useIntersectionObserver from '@/public/useIntersectionObserver';
 import axios from '@/lib/axios';
-import Layout from '@/components/Layout/Layout';
 
-async function getServerSideProps() {
+export async function getServerSideProps() {
   const response = await axios.get('users/1/links');
   const links = response?.data?.data;
   const response2 = await axios.get(`/users/1/folders`);

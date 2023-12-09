@@ -2,7 +2,7 @@ import shareIcon from '@/src/assets/share.svg';
 import penIcon from '@/src/assets/pen.svg';
 import deleteIcon from '@/src/assets/Delete.svg';
 
-const Icons = [
+const icons = [
   {
     name: '공유',
     image: shareIcon,
@@ -24,4 +24,4 @@ const Icons = [
   },
 ];
 
-export default Icons;
+export default icons;

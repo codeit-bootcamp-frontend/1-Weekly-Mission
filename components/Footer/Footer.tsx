@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
-import { SNS, socialMedia } from '@/components';
+import { SocialLinks, socialMedia } from '@/components';
 import { ThemeProvider } from 'styled-components';
 import theme from '@/styles/display';
-import * as S from './Footer.style';
+import * as Style from './Footer.style';
 
 interface Props {
   ref: React.Ref<HTMLDivElement>;
@@ -11,20 +11,20 @@ interface Props {
 function Footer({ props, ref }: Props) {
   return (
     <ThemeProvider theme={theme}>
-      <S.Container ref={ref}>
-        <S.Box>
-          <S.Span>codeit - 2023</S.Span>
-          <S.LinkContainer>
-            <S.Links href="privacy.html">Privacy Policy</S.Links>
-            <S.Links href="faq.html">FAQ</S.Links>
-          </S.LinkContainer>
-          <S.SnsContainer>
+      <Style.Container ref={ref}>
+        <Style.Box>
+          <Style.Span>codeit - 2023</Style.Span>
+          <Style.LinkContainer>
+            <Style.Links href="privacy.html">Privacy Policy</Style.Links>
+            <Style.Links href="faq.html">FAQ</Style.Links>
+          </Style.LinkContainer>
+          <Style.SnsContainer>
             {socialMedia.map((sns, index) => (
-              <SNS key={index} alt={sns.name} url={sns.url} icon={sns.icon} />
+              <SocialLinks key={index} alt={sns.name} url={sns.url} icon={sns.icon} />
             ))}
-          </S.SnsContainer>
-        </S.Box>
-      </S.Container>
+          </Style.SnsContainer>
+        </Style.Box>
+      </Style.Container>
     </ThemeProvider>
   );
 }

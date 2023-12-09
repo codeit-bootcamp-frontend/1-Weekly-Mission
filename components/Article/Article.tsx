@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '@/styles/display';
 import { Link } from '@/pages/shared';
 import { Folders } from '@/components/FolderArticle/FolderArticle';
-import * as S from './Article.style';
+import * as Style from './Article.style';
 
 interface Data {
   links: Link[];
@@ -17,18 +17,19 @@ export default function Article({ links: initial, folders }: Data) {
   const [value, setValue] = useState<string>('');
 
   const handleSearch = (value: string) => {
-    2;
     setValue(value);
   };
 
   useEffect(() => {
-    if (checkItem) setIsVisible(checkItem.length !== 0);
+    if (checkItem) {
+      setIsVisible(checkItem.length !== 0);
+    }
   }, [checkItem]);
 
   return (
     <ThemeProvider theme={theme}>
-      <S.ArticleContainer>
-        <S.ArticleSection>
+      <Style.ArticleContainer>
+        <Style.ArticleSection>
           <Search
             links={initial}
             setCheckItem={setCheckItem}
@@ -36,9 +37,9 @@ export default function Article({ links: initial, folders }: Data) {
             value={value}
           />
           {value && (
-            <S.P>
-              <span>{value}</span>으로 검색한 결과입니다.
-            </S.P>
+            <Style.Paragraph>
+              <Style.Keyword>{value}</Style.Keyword>으로 검색한 결과입니다.
+            </Style.Paragraph>
           )}
           {!folders && <CardContainer items={checkItem} />}
           {folders && (
@@ -48,8 +49,8 @@ export default function Article({ links: initial, folders }: Data) {
               folders={folders}
             />
           )}
-        </S.ArticleSection>
-      </S.ArticleContainer>
+        </Style.ArticleSection>
+      </Style.ArticleContainer>
     </ThemeProvider>
   );
 }
