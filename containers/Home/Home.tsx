@@ -34,12 +34,14 @@ const HomeSection = ({
       <StyledHomeDescriptionParagraph>
         {paragraph}
       </StyledHomeDescriptionParagraph>
-      <StyledHomeContentImage
-        src={image_source}
-        fill
-        objectFit="cover"
-        alt={alt}
-      />
+      <StyledHomeContentImageBox>
+        <StyledHomeContentImage
+          src={image_source}
+          alt={alt}
+          fill
+          sizes="100%"
+        />
+      </StyledHomeContentImageBox>
     </StyledHomeSection>
   );
 };
@@ -209,5 +211,24 @@ const StyledHomeArticle = styled.article`
 
   @media screen and (max-width: 767px) {
     padding-top: 0;
+  }
+`;
+
+const StyledHomeContentImageBox = styled.div`
+  position: relative;
+  grid-area: image;
+  width: 100%;
+  aspect-ratio: 1/0.8;
+  padding-top: 0.4rem;
+  border-radius: 15px;
+  overflow: hidden;
+  @media (min-width: 768px) {
+    width: 38.5rem;
+    height: 31.5rem;
+    padding-top: 0;
+  }
+  @media (min-width: 1200px) {
+    width: 55rem;
+    height: 45rem;
   }
 `;
