@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as S from "./SignFormStyles";
 import { SignupForm } from "@/types/form";
-import { signupUser } from "@/common/api";
+import { isUsableEmail, signupUser } from "@/common/api";
 
 export default function SignupForm() {
   const {
@@ -20,16 +20,22 @@ export default function SignupForm() {
   const IconPath = "on";
 
   const onSubmitSignUp = async (data: SignupForm) => {
-    console.log(data.email);
-    console.log(data.password);
-
     try {
       const user = await signupUser({
         email: data.email,
         password: data.password,
       });
-      // console.log(user.data);
       localStorage.setItem("accessToken", user.data.accessToken);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const validateUsableEmail = async () => {
+    const email = getValues("email");
+    try {
+      const result = await isUsableEmail({ email });
+      return result.data ? true : result.error.message;
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +51,7 @@ export default function SignupForm() {
     setFocus("email");
   }, [setFocus]);
 
-  console.log(isValid);
+  // console.log(isValid);
 
   return (
     <S.Form onSubmit={handleSubmit(onSubmitSignUp)}>
@@ -60,6 +66,7 @@ export default function SignupForm() {
             value: /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/i,
             message: "올바른 이메일 주소가 아닙니다.",
           },
+          validate: validateUsableEmail,
         })}
       />
       {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}

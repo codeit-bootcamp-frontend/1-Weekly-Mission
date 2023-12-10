@@ -5,3 +5,5 @@ export interface SignupForm {
 }
 
 export type SignupData = Omit<SignupForm, "passwordCheck">;
+
+export type EmailData = Pick<SignupForm, "email">;

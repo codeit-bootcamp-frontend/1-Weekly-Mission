@@ -1,5 +1,5 @@
 import { DOMAIN_URL } from "./constants";
-import { SignupData } from "@/types/form";
+import { EmailData, SignupData } from "@/types/form";
 
 const headers = { "Content-Type": "application/json; charset=utf-8" };
 
@@ -48,4 +48,15 @@ export async function signupUser(userData: SignupData) {
     body: JSON.stringify(userData),
   });
   return await res.json();
+}
+
+export async function isUsableEmail(email: EmailData) {
+  const res = await fetch(`${DOMAIN_URL}/api/check-email`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(email),
+  });
+
+  const data = await res.json();
+  return data;
 }
