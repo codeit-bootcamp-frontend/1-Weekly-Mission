@@ -1,9 +1,30 @@
-.container {
+.bg {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
   padding-top: 23.8rem;
   background-color: var(--bg);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40rem;
+}
+
+.header-message {
+  display: flex;
+  margin-top: 1.6rem;
+  column-gap: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+.link {
+  height: fit-content;
+  font-weight: 600;
+  border-bottom: 0.1rem solid var(--primary);
+  color: var(--primary);
 }

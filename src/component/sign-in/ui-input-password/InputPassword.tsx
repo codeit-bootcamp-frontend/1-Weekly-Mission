@@ -2,8 +2,9 @@ import { RefCallBack } from 'react-hook-form';
 import classNames from 'classnames/bind';
 import Input, { InputProps } from '../ui-input/Input';
 import useToggle from '@/src/hooks/useToggle';
-import { IconEyeON, IconEyeOff } from '@/public/svgs';
+import { IconEyeON, IconEyeOff } from '@/public/images';
 import styles from './InputPassword.module.css';
+import { useMemo } from 'react';
 
 const cx = classNames.bind(styles);
 
