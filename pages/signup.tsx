@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import Header from '@/components/sign/Header';
 import Button from '@/components/common/Button';
 import InputBox from '@/components/common/Input/InputBox';
@@ -9,6 +10,7 @@ import { onSignUp } from '@/lib/utils/onValid';
 import { checkToken } from '@/lib/utils/checkToken';
 
 export default function SignUp() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -16,7 +18,7 @@ export default function SignUp() {
     formState: { errors },
   } = useForm({ mode: 'onBlur' });
 
-  checkToken(false);
+  if (checkToken(false)) router.push('/folder');
 
   return (
     <Background>
