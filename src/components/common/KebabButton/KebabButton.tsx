@@ -1,8 +1,8 @@
 import { useState } from "react";
-import styles from "./KebabButton.module.scss";
 import Image from "next/image";
-import { CardInterface, FolderInterface, ModalInterface } from "@/types";
 import { DeleteCardModal, AddCardModal } from "@/components/modals";
+import { CardInterface, FolderInterface, ModalInterface } from "@/types";
+import styles from "./KebabButton.module.scss";
 interface Props {
   card: CardInterface;
   onClick: (m: ModalInterface) => void;

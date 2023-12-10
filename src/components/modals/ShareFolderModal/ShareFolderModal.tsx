@@ -1,6 +1,6 @@
-import styles from "./ShareFolderModal.module.scss";
 import Image from "next/image";
 import { FolderInterface } from "@/types";
+import styles from "./ShareFolderModal.module.scss";
 
 function ShareFolderModal({ folder }: { folder: FolderInterface }) {
   const handleLinkButton = () => {

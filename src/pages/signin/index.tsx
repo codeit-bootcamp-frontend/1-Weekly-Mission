@@ -1,8 +1,8 @@
-import styles from "./SignInPage.module.scss";
-import Link from "next/link";
-import Image from "next/image";
-import { SnsSign, Input } from "@/components/sign";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { SnsSign, Input } from "@/components/sign";
+import styles from "./SignInPage.module.scss";
 
 function SignInPage() {
   return (

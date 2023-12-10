@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
-import styles from "./SharedPage.module.scss";
-import { ShareHeader } from "@/components/shared";
-import { getSharedFolder, getSharedUser } from "@/api";
-import { SharedFolderInterface, SharedUserInterface } from "@/types";
-import { SearchBar, CardList } from "@/components/common";
 import Head from "next/head";
+import { getSharedFolder, getSharedUser } from "@/api";
+import { SearchBar, CardList } from "@/components/common";
+import { ShareHeader } from "@/components/shared";
+import { SharedFolderInterface, SharedUserInterface } from "@/types";
+import styles from "./SharedPage.module.scss";
 
 export default function SharedPage() {
   const [sharedUser, setSharedUser] = useState<SharedUserInterface>();

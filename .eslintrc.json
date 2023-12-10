@@ -1,3 +1,67 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "next/core-web-vitals", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent", "index"],
+          "type",
+          "unknown"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "{react*, react*/**}",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@saas-fe/**/*.style",
+            "group": "unknown"
+          },
+          {
+            "pattern": "@pages/**/*.style",
+            "group": "unknown"
+          },
+          {
+            "pattern": "@components/**/*.style",
+            "group": "unknown"
+          },
+          {
+            "pattern": "./**/*.style",
+            "group": "unknown"
+          },
+          {
+            "pattern": "../**/*.style",
+            "group": "unknown"
+          },
+          {
+            "pattern": "*.style",
+            "group": "unknown"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react", "unknown"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
 }

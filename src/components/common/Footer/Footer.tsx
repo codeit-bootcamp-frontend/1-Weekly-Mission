@@ -1,6 +1,6 @@
-import styles from "./Footer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./Footer.module.scss";
 
 function Footer() {
   const snsIcons = [

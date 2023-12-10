@@ -1,6 +1,6 @@
 import { CardInterface } from "@/types";
-import { axiosInstance } from "./axiosInstance";
 import { USER_ID } from "./constants";
+import { axiosInstance } from "./axiosInstance";
 
 export default async function getAllCards(id = "") {
   let url = "";

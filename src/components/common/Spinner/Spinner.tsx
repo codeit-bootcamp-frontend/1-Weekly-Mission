@@ -1,5 +1,5 @@
-import styles from "./Spinner.module.scss";
 import Image from "next/image";
+import styles from "./Spinner.module.scss";
 
 function Spinner() {
   return (

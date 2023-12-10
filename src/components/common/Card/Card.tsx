@@ -1,9 +1,9 @@
-import styles from "./Card.module.scss";
-import StarButton from "../StarButton/StarButton";
+import StarButton from "@/components/common/StarButton/StarButton";
+import KebabButton from "@/components/common/KebabButton/KebabButton";
+import { CardInterface, FolderInterface, ModalInterface } from "@/types";
 import formatDate from "@/utils/formatDate";
 import calcDate from "@/utils/calcDate";
-import KebabButton from "../KebabButton/KebabButton";
-import { CardInterface, FolderInterface, ModalInterface } from "@/types";
+import styles from "./Card.module.scss";
 
 function Card({
   card,

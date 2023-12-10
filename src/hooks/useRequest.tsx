@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 export default function useAsync(asyncFunction: any) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
   const [data, setData] = useState<any>(null);
 
-  const execute = async () => {
+  const execute = useCallback(async () => {
     setLoading(true);
     setError(null);
     setData(null);
@@ -18,11 +18,11 @@ export default function useAsync(asyncFunction: any) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     execute();
-  }, []);
+  }, [execute]);
 
   return { execute, loading, error, data };
 }

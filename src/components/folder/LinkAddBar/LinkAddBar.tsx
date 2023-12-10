@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from "react";
-import styles from "./LinkAddBar.module.scss";
 import Image from "next/image";
+import styles from "./LinkAddBar.module.scss";
 
 function LinkAddBar() {
   const [keyword, setKeyword] = useState("");

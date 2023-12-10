@@ -1,5 +1,5 @@
-import styles from "./ResponsiveImg.module.scss";
 import Image from "next/image";
+import styles from "./ResponsiveImg.module.scss";
 
 export default function ResponsiveImg({ src = "", alt = "" }) {
   return (

@@ -1,7 +1,7 @@
-import styles from "./Nav.module.scss";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { UserInterface } from "@/types";
+import styles from "./Nav.module.scss";
 
 function Nav({
   profile,

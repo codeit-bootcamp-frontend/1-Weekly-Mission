@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { CardInterface } from "@/types";
 import Image from "next/image";
+import { CardInterface } from "@/types";
 import styles from "./StarButton.module.scss";
 
 function StarButton({ card }: { card: CardInterface }) {

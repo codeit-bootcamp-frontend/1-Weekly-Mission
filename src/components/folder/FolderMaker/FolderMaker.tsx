@@ -1,6 +1,6 @@
-import styles from "./FolderMaker.module.scss";
 import { AddFolderModal } from "@/components/modals";
 import { ModalInterface } from "@/types";
+import styles from "./FolderMaker.module.scss";
 
 function FolderMaker({ onClick }: { onClick: (m: ModalInterface) => void }) {
   const handleFolderMaker = (id: string) => {

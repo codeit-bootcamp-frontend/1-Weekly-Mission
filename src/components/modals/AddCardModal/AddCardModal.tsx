@@ -1,6 +1,6 @@
-import styles from "./AddCardModal.module.scss";
 import { MouseEvent } from "react";
 import { CardInterface, FolderInterface } from "@/types";
+import styles from "./AddCardModal.module.scss";
 
 function AddCardModal({
   card,

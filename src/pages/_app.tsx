@@ -1,11 +1,11 @@
-import "@/styles/reset.css";
-import "@/styles/global.scss";
 import { useEffect, useState, useCallback } from "react";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { getUser } from "@/api";
 import { Nav, Footer } from "@/components/common";
 import { UserInterface } from "@/types";
+import "@/styles/reset.css";
+import "@/styles/global.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [userValues, setUserValues] = useState<UserInterface>();

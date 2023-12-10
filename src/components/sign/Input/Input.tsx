@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
-import styles from "./Input.module.scss";
 import { emailChecker } from "@/utils/checkReg";
+import styles from "./Input.module.scss";
 
 export default function Input({
   id = "",

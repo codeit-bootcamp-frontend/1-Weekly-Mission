@@ -1,17 +1,17 @@
 import { useState, useCallback, useEffect } from "react";
-import styles from "./FolderPage.module.scss";
-import { SearchBar, CardList } from "@/components/common";
+import Head from "next/head";
 import { getAllCards, getFolderList } from "@/api";
-import { CardInterface, FolderInterface } from "@/types";
+import { SearchBar, CardList } from "@/components/common";
 import {
   LinkAddBar,
   FolderTagList,
   FolderModifier,
   FolderMaker,
-} from "../../components/folder";
+} from "@/components/folder";
 import ModalCreator from "@/components/modals/ModalCreator";
 import { useOpenModal } from "@/hooks";
-import Head from "next/head";
+import { CardInterface, FolderInterface } from "@/types";
+import styles from "./FolderPage.module.scss";
 
 const INITIAL_FOLDER: FolderInterface = {
   id: "",
@@ -49,6 +49,7 @@ export default function FolderPage() {
     return data;
   }, []);
 
+  //TODO - currentFolder을 의존성에 넣으면 무한렌더링 발생. 왜??
   useEffect(() => {
     getFolderTagList();
     getCards(currentFolder);

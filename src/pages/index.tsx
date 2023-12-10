@@ -1,6 +1,6 @@
-import styles from "./Home.module.scss";
 import Link from "next/link";
 import { ResponsiveImg } from "@/components/common";
+import styles from "./Home.module.scss";
 
 export default function Home() {
   return (

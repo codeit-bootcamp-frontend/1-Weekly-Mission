@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./ErrorPage.module.scss";
 import ErrorImg from "public/images/error-img.png";
 

@@ -1,11 +1,11 @@
-import styles from "./FolderModifier.module.scss";
-import { FolderInterface, ModalInterface } from "@/types";
 import Image from "next/image";
 import {
   DeleteFolderModal,
   RenameFolderModal,
   ShareFolderModal,
 } from "@/components/modals";
+import { FolderInterface, ModalInterface } from "@/types";
+import styles from "./FolderModifier.module.scss";
 
 function FolderTitle({ title }: { title: string }) {
   return <h1 className={styles["folder-title"]}>{title}</h1>;

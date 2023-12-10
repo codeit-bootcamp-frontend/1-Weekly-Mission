@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./SnsSign.module.scss";
-import Image from "next/image";
 
 function SnsSign({ label = "" }) {
   return (

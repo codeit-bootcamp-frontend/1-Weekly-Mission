@@ -1,5 +1,5 @@
+import Card from "@/components/common/Card/Card";
 import { CardInterface, FolderInterface, ModalInterface } from "@/types";
-import Card from "../Card/Card";
 import styles from "./CardList.module.scss";
 
 function CardList({

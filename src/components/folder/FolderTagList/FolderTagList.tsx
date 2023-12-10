@@ -1,5 +1,5 @@
-import styles from "./FolderTagList.module.scss";
 import { FolderInterface } from "@/types";
+import styles from "./FolderTagList.module.scss";
 
 function FolderTag({
   folder,
