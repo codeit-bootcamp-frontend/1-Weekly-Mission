@@ -51,7 +51,7 @@ export function validatePasswordConfirmInput(
     errMsg = "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.";
     return errMsg;
   } else if (password !== passwordConfirm) {
-    errMsg = "입력하신 비밀번호와 다릅니다. 확인해주세요.";
+    errMsg = "비밀번호가 일치하지 않아요.";
   }
   return errMsg;
 }
