@@ -18,7 +18,7 @@ const SignUp = () => {
     clearErrors,
   } = useForm({ mode: "onBlur" });
   const router = useRouter();
-  let token = useRef<string | null>("initial");
+  let token = useRef<string | null>();
   useEffect(() => {
     token.current = localStorage.getItem("accessToken");
     console.log(token.current);
