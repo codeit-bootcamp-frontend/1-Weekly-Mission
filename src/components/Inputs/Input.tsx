@@ -8,7 +8,7 @@ const Div = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  width: 350px;
+  width: 400px;
 `;
 
 const InputTag = styled.input<{ isError: boolean }>`
@@ -55,12 +55,17 @@ const StyledButton = styled.button`
   background: none;
 `;
 
-function Input() {
+interface Props {
+  password?: boolean;
+}
+
+function Input({ password }: Props) {
   const [isError, setIsError] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(!password);
   const [value, setValue] = useState("");
 
   const handleVisibility = () => setIsVisible(!isVisible);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIsError(false);
     setValue(e.target.value);
@@ -83,14 +88,16 @@ function Input() {
           onChange={handleChange}
           onBlur={blurHandler}
         />
-        <StyledButton onClick={handleVisibility}>
-          <StyledImage
-            src={isVisible ? eyeOn : eyeOff}
-            width={16}
-            height={16}
-            alt="비밀번호 숨기기 버튼"
-          />
-        </StyledButton>
+        {password && (
+          <StyledButton onClick={handleVisibility}>
+            <StyledImage
+              src={isVisible ? eyeOn : eyeOff}
+              width={16}
+              height={16}
+              alt="비밀번호 숨기기 버튼"
+            />
+          </StyledButton>
+        )}
       </Div>
       {isError && <ErrorText>내용을 다시 작성해주세요</ErrorText>}
     </>

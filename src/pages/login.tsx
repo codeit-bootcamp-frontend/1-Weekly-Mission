@@ -14,6 +14,7 @@ const LoginWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
 `;
 
 const LogoContainer = styled.div`
@@ -70,10 +71,6 @@ const TextWrapper = styled.div`
   gap: 8px;
 `;
 
-const InputContainer = styled.div``;
-
-const FormContainer = styled.div``;
-
 const SocialLoginContainer = styled.div`
   display: flex;
   width: 400px;
@@ -99,15 +96,15 @@ function Login() {
           <BlueText>회원 가입하기</BlueText>
         </TextWrapper>
       </LogoContainer>
-      <form>
+      <div>
         <EmailLabel>이메일</EmailLabel>
         <Input />
         <PwdLabel>비밀번호</PwdLabel>
-        <Input />
+        <Input password />
         <BlueGradationBtn width="100%" margin="30px 0 32px">
           로그인
         </BlueGradationBtn>
-      </form>
+      </div>
       <SocialLoginContainer>
         <Text2>소셜 로그인</Text2>
         <SocialButtonWrapper>
