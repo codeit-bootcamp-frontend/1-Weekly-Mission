@@ -24,7 +24,7 @@ export const FormInput = ({ type, label, error, placeholder, isEyeOn, onChangeEy
       <label className={cx('sign-input-label')}>{label}</label>
       <div className={cx('sign-input-container')}>
         <input id="email" className={cx('sign-input', { error: error })} type={type} placeholder={placeholder} />
-        {label === '비밀번호' ? (
+        {label !== '이메일' ? (
           <button className={cx('eye-container')} onClick={onChangeEyes}>
             <Image src={isEyeOn ? eyeOn : eyeOff} alt="패스워드 보기 여부" width={16} height={16} />
           </button>
