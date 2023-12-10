@@ -13,7 +13,7 @@ export const AddLinkInput = styled.input`
 
 /** 회원가입, 로그인 페이지 input */
 export const Container = styled.div`
-  width: 350px;
+  width: 25rem;
   display: flex;
   flex-direction: column;
   gap: 6px;
