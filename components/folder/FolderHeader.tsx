@@ -1,13 +1,7 @@
 import Image from 'next/image';
 import linkImg from '../../asset/link.svg';
-import * as FH from '../styled-component/FolderHeaderStyledComponent';
+import * as FH from '../../style/styled-component/Folder/FolderHeaderStyledComponent';
 import styled from 'styled-components';
-
-const Div = styled.div`
-  position: relative;
-  width: 20px;
-  height: 20px;
-`;
 
 export default function FolderHeader() {
   return (
@@ -25,3 +19,9 @@ export default function FolderHeader() {
     </FH.FolderHeaderContainer>
   );
 }
+
+const Div = styled.div`
+  position: relative;
+  width: 20px;
+  height: 20px;
+`;

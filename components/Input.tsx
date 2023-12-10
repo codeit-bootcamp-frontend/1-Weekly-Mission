@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import { ChangeEvent, useState, MouseEvent, useEffect } from 'react';
-import eyeOff from 'assets/icon/eye-off.svg';
-import eyeOn from 'assets/icon/eye-on.svg';
 import styled, { css } from 'styled-components';
 import { ErrorMsg } from '@/constant/constants';
-import { verifyEmail, verifyPassword } from './validationCheck';
+import { verifyEmail, verifyPassword } from '../utils/validationCheck';
 import { useRouter } from 'next/router';
 
 interface InputProps {
@@ -143,7 +141,7 @@ function Input({
         {inputType.includes('password') ? (
           <StyledButton onClick={handleVisibility}>
             <Image
-              src={isVisible ? eyeOn : eyeOff}
+              src={isVisible ? '/eye-on.svg' : '/eye-off.svg'}
               width={16}
               height={16}
               alt="비밀번호 숨기기 버튼"
@@ -179,7 +177,7 @@ const StyledInput = styled.input<{ isError: boolean }>`
     border-color: #6d6afe;
   }
 
-  ${({ isError }) =>
+  ${({ isError }: any) =>
     isError &&
     css`
       border-color: #ff5b56;

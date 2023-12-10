@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback, MouseEvent } from 'react';
 import { getData } from '../../pages/api/api';
-import * as FM from '../styled-component/FolderMainStyledComponent';
-import * as C from '../styled-component/CardStyledComponent';
-import * as S from '../styled-component/SharedPageStyledComponent';
+import * as FM from '../../style/styled-component/Folder/FolderMainStyledComponent';
+import * as C from '../../style/styled-component/Card/CardStyledComponent';
+import * as S from '../../style/styled-component/Shared/SharedPageStyledComponent';
 import FolderCard from './FolderCard';
 import FolderPlusModal from '../modal/FolderPlusModal';
 import FolderDeleteModal from '../modal/FolderDeleteModal';
@@ -10,7 +10,7 @@ import FolderShareModal from '../modal/FolderShareModal';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-export interface FoldersProps {
+export interface FoldersData {
   id: number;
   created_at: string;
   name: string;
@@ -18,7 +18,7 @@ export interface FoldersProps {
   link: { count: number };
 }
 
-export interface LinksProps {
+export interface LinksData {
   id: number;
   created_at: string;
   updated_at: null;
@@ -30,8 +30,8 @@ export interface LinksProps {
 }
 
 export default function FolderMain() {
-  const [folders, setFolders] = useState<FoldersProps[]>([]);
-  const [links, setLinks] = useState<LinksProps[]>([]);
+  const [folders, setFolders] = useState<FoldersData[]>([]);
+  const [links, setLinks] = useState<LinksData[]>([]);
   const [title, setTitle] = useState('전체');
   const [onModal, setOnModal] = useState(false);
   const [onDeleteModal, setOnDeleteModal] = useState(false);
@@ -55,10 +55,8 @@ export default function FolderMain() {
   };
 
   const onClickModal = (e: MouseEvent<HTMLButtonElement>) => {
-    try {
-      const target = e.currentTarget;
-      setValue(target.textContent ?? '');
-    } catch {}
+    const target = e.currentTarget;
+    setValue(target.textContent ?? '');
     setOnModal(!onModal);
   };
 
@@ -75,10 +73,8 @@ export default function FolderMain() {
   };
 
   const onClickDeleteModal = (e: MouseEvent<HTMLButtonElement>) => {
-    try {
-      const target = e.currentTarget;
-      setValue(target.textContent ?? '');
-    } catch {}
+    const target = e.currentTarget;
+    setValue(target.textContent ?? '');
     setOnDeleteModal(!onDeleteModal);
   };
 

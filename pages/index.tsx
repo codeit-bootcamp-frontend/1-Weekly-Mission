@@ -1,6 +1,18 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+export default function HomePage() {
+  return (
+    <>
+      <Div>
+        <StyledLink href={'/shared'}>sharedPage</StyledLink>
+        <StyledLink href={'/folder'}>folderPage</StyledLink>
+        <StyledLink href={'/signin'}>signinPage</StyledLink>
+      </Div>
+    </>
+  );
+}
+
 const Div = styled.div`
   background: #f0f6ff;
   padding: 10px 0;
@@ -23,15 +35,3 @@ const StyledLink = styled(Link)`
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
   text-decoration: none;
 `;
-
-export default function HomePage() {
-  return (
-    <>
-      <Div>
-        <StyledLink href={'/shared'}>sharedPage</StyledLink>
-        <StyledLink href={'/folder'}>folderPage</StyledLink>
-        <StyledLink href={'/signin'}>signinPage</StyledLink>
-      </Div>
-    </>
-  );
-}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getData } from '../pages/api/api';
 import Profile from './Profile';
-import * as N from './styled-component/NavStyledComponent';
+import * as N from '../style/styled-component/Nav/NavStyledComponent';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 

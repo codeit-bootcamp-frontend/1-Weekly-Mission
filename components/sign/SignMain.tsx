@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Input from '../Input';
-import { ErrorMsg } from '@/constant/constants';
 import { useState, KeyboardEvent, MouseEvent } from 'react';
 import axios from '@/pages/api/axios';
 import { useRouter } from 'next/router';
@@ -185,4 +184,5 @@ const EmailButton = styled.div`
   border-radius: 8px;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
   cursor: pointer;
+  text-align: center;
 `;

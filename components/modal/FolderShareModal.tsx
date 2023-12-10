@@ -1,6 +1,6 @@
 import { useRef, useEffect, MouseEvent } from 'react';
 import { useRouter } from 'next/router';
-import * as M from '../styled-component/ModalStyledComponent';
+import * as M from '../../style/styled-component/Modal/ModalStyledComponent';
 import styled from 'styled-components';
 import Image from 'next/image';
 

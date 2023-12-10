@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback, useEffect, MouseEvent } from 'react';
 import { getData } from '../../pages/api/api';
-import * as M from '../styled-component/ModalStyledComponent';
-import { FoldersProps } from '../folder/FolderMain';
+import * as M from '../../style/styled-component/Modal/ModalStyledComponent';
+import { FoldersData } from '../folder/FolderMain';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -10,21 +10,8 @@ interface Props {
   cardLink: string;
 }
 
-const XCloseImgDiv = styled.div`
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-`;
-
-const CheckImgDiv = styled.div`
-  position: relative;
-  width: 14px;
-  height: 14px;
-`;
-
 export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
-  const [folders, setFolders] = useState<FoldersProps[]>([]);
+  const [folders, setFolders] = useState<FoldersData[]>([]);
 
   const handleLoad = useCallback(async () => {
     const { data } = await getData('users/1/folders');
@@ -77,3 +64,16 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
     </M.ModalBackground>
   );
 }
+
+const XCloseImgDiv = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`;
+
+const CheckImgDiv = styled.div`
+  position: relative;
+  width: 14px;
+  height: 14px;
+`;

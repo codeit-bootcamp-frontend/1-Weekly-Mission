@@ -1,5 +1,5 @@
 import { MouseEvent, useRef } from 'react';
-import * as M from '../styled-component/ModalStyledComponent';
+import * as M from '../../style/styled-component/Modal/ModalStyledComponent';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -8,13 +8,6 @@ interface Props {
   title: string;
   value: string;
 }
-
-const CloseImg = styled(Image)`
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-`;
 
 export default function FolderPlusModal({ handleClick, title, value }: Props) {
   const back = useRef<HTMLDivElement>(null);
@@ -46,3 +39,10 @@ export default function FolderPlusModal({ handleClick, title, value }: Props) {
     </M.ModalBackground>
   );
 }
+
+const CloseImg = styled(Image)`
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`;

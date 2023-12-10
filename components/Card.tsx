@@ -1,18 +1,12 @@
-import { dateCalculator } from './dateCalculator';
-import * as C from './styled-component/CardStyledComponent';
-import { ItemState } from '../pages/shared';
+import { dateCalculator } from '../utils/dateCalculator';
+import * as C from '../style/styled-component/Card/CardStyledComponent';
+import { SampleFolderData } from '../pages/shared';
 import styled from 'styled-components';
 import Image from 'next/image';
 
 interface CardProps {
-  item: ItemState;
+  item: SampleFolderData;
 }
-
-const Div = styled.div`
-  position: relative;
-  width: 340px;
-  height: 234px;
-`;
 
 export default function Card({ item }: CardProps) {
   const apiDate = new Date(item.createdAt);
@@ -50,3 +44,9 @@ export default function Card({ item }: CardProps) {
     </C.CardWrapperLink>
   );
 }
+
+const Div = styled.div`
+  position: relative;
+  width: 340px;
+  height: 234px;
+`;

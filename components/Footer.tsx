@@ -1,12 +1,7 @@
 import styled from 'styled-components';
-import * as F from './styled-component/FooterStyledComponent';
+import * as F from '../style/styled-component/Footer/FooterStyledComponent';
 import Image from 'next/image';
 
-const Div = styled.div`
-  position: relative;
-  width: 20px;
-  height: 20px;
-`;
 export default function Footer() {
   return (
     <F.FooterContainer>
@@ -40,3 +35,9 @@ export default function Footer() {
     </F.FooterContainer>
   );
 }
+
+const Div = styled.div`
+  position: relative;
+  width: 20px;
+  height: 20px;
+`;

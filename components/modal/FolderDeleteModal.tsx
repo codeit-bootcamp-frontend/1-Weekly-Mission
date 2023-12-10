@@ -1,5 +1,5 @@
 import { MouseEvent, useRef } from 'react';
-import * as M from '../styled-component/ModalStyledComponent';
+import * as M from '../../style/styled-component/Modal/ModalStyledComponent';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -9,13 +9,6 @@ interface Props {
   title: string;
   cardLink: string;
 }
-
-const CloseImg = styled(Image)`
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-`;
 
 export default function FolderDeleteModal({
   handleClick,
@@ -56,3 +49,10 @@ export default function FolderDeleteModal({
     </M.ModalBackground>
   );
 }
+
+const CloseImg = styled(Image)`
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`;
