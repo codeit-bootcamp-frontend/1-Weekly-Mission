@@ -9,7 +9,7 @@ import Button from "@/components/Button/Button";
 import logoIcon from "@/assets/images/logo.svg";
 import Input from "@/components/Input/Input";
 import Link from "next/link";
-import kakaoTalkIcon from "@/assets/images/kakaoTalk.svg";
+import kakaoTalkIcon from "@/assets/images/kakaoTalkIcon.svg";
 import googleIcon from "@/assets/images/google.svg";
 
 import getSignUp from "@/api/getSignUp";
