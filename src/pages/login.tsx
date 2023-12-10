@@ -7,6 +7,7 @@ import BlueGradationBtn from "@/components/Buttons/BlueGradationBtn";
 import googleButton from "/public/image/googleButton.png";
 import kakaoButton from "/public/image/kakaoButton.png";
 import Link from "next/link";
+import { FONT_STYLE } from "styles/fontStyle";
 
 const LoginWrapper = styled.div`
   background: #f0f6ff;
@@ -26,29 +27,18 @@ const LogoContainer = styled.div`
 
 const Text1 = styled.h4`
   color: #000;
-
-  /* Linkbrary/body1-regular */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
+  ${FONT_STYLE.BODY1_REGULAR}
 `;
 
 const Text2 = styled.h4`
-  color: var(--black, #000);
-
-  /* Linkbrary/body2-regular */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  color: #000;
+  ${FONT_STYLE.BODY2_REGULAR}
 `;
 
 const EmailLabel = styled(Text2)`
   margin-bottom: 12px;
 `;
+
 const PwdLabel = styled(Text2)`
   margin-bottom: 12px;
   margin-top: 24px;
@@ -56,14 +46,7 @@ const PwdLabel = styled(Text2)`
 
 const BlueText = styled.h4`
   color: #6d6afe;
-
-  /* Linkbrary/body 1-semibold */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  text-decoration: underline;
+  ${FONT_STYLE.BODY1_SEMIBOLD}
 `;
 
 const TextWrapper = styled.div`
@@ -78,14 +61,15 @@ const SocialLoginContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 8px;
-  border: 1px solid var(--linkbrary-gray-20, #ccd5e3);
-  background: var(--linkbrary-gray-10, #e7effb);
+  border: 1px solid #ccd5e3;
+  background: #e7effb;
 `;
 
 const SocialButtonWrapper = styled.div`
   display: flex;
   gap: 16px;
 `;
+
 function Login() {
   return (
     <LoginWrapper>
