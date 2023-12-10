@@ -35,15 +35,6 @@ const InputTag = styled.input<{ isError: boolean }>`
     `}
 `;
 
-const ErrorText = styled.h4`
-  color: #ff5b56;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-top: 6px;
-`;
-
 const StyledImage = styled(Image)`
   border: none;
 `;
@@ -55,41 +46,52 @@ const StyledButton = styled.button`
   background: none;
 `;
 
+const ErrorText = styled.h4`
+  color: #ff5b56;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 6px;
+`;
+
 interface Props {
   password?: boolean;
+  placeholder: string;
+  isError?: boolean;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  errorMessage?: string;
 }
 
-function Input({ password }: Props) {
-  const [isError, setIsError] = useState(false);
+function Input({
+  password,
+  placeholder,
+  value,
+  onChange,
+  errorMessage = "",
+}: Props) {
   const [isVisible, setIsVisible] = useState(!password);
-  const [value, setValue] = useState("");
+  const [isNoVal, setIsNoVal] = useState<boolean>(false);
 
   const handleVisibility = () => setIsVisible(!isVisible);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsError(false);
-    setValue(e.target.value);
-  };
-
-  function blurHandler() {
-    if (value === "") {
-      setIsError(true);
-    }
-  }
+  const blurHandler = () =>
+    value === "" ? setIsNoVal(true) : setIsNoVal(false);
 
   return (
     <>
       <Div>
         <InputTag
-          placeholder="내용 입력"
-          isError={isError}
+          placeholder={placeholder}
+          isError={isNoVal || errorMessage !== ""}
           type={isVisible ? "text" : "password"}
           value={value}
-          onChange={handleChange}
           onBlur={blurHandler}
+          onChange={onChange}
         />
         {password && (
-          <StyledButton onClick={handleVisibility}>
+          <StyledButton onClick={handleVisibility} type="button">
             <StyledImage
               src={isVisible ? eyeOn : eyeOff}
               width={16}
@@ -99,7 +101,12 @@ function Input({ password }: Props) {
           </StyledButton>
         )}
       </Div>
-      {isError && <ErrorText>내용을 다시 작성해주세요</ErrorText>}
+      {(isNoVal || errorMessage !== "") && (
+        <ErrorText>
+          {errorMessage ||
+            (password ? "비밀번호를 입력해 주세요" : "이메일을 입력해 주세요.")}
+        </ErrorText>
+      )}
     </>
   );
 }
