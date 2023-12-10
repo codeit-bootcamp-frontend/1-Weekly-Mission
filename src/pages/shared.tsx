@@ -13,11 +13,9 @@ const MainContainer = styled.div`
 function SharedPage() {
   return (
     <>
-      <Header />
       <MainContainer>
         <HeroContent />
         <MainContent />
-        <Footer />
       </MainContainer>
     </>
   );

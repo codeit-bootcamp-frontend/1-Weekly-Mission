@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
 import "/public/static/fonts/style.css";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -21,7 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta charSet="utf-8" />
         <title>Linkbrary</title>
       </Head>
+      <Header />
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 }

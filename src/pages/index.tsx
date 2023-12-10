@@ -5,11 +5,7 @@ import Input from "@/components/Inputs/Input";
 function MainPage() {
   ReactModal.setAppElement("#react-modals");
 
-  return (
-    <>
-      <Header />
-    </>
-  );
+  return <></>;
 }
 
 export default MainPage;

@@ -14,8 +14,8 @@ function Footer() {
     youtube: { icon: youtubeIcon, url: `https://www.youtube.com` },
     twitter: { icon: twitterIcon, url: `https://www.twitter.com` },
     facebook: { icon: facebookIcon, url: `https://www.facebook.com` },
-    instagram: { icon: instagramIcon, url: `https://www.ßinstagram.com` },
-  } as const;
+    instagram: { icon: instagramIcon, url: `https://www.instagram.com` },
+  };
 
   function SnsItem({ snsType }: { snsType: string }) {
     const Sns = SnsData[snsType as keyof typeof SnsData];
