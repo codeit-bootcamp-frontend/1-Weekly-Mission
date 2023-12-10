@@ -20,7 +20,11 @@ function AddCardModal({
 
       {folderList?.map((folder) => {
         return (
-          <div className={styles["folder-checkbox"]} onClick={handleToggle}>
+          <div
+            className={styles["folder-checkbox"]}
+            key={folder.id}
+            onClick={handleToggle}
+          >
             {folder?.name}
             <div className={styles["link-counts"]}>
               {folder?.link?.count}개 링크
