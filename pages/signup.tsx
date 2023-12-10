@@ -1,7 +1,18 @@
+import { useLogin } from "@/lib/utils/LoginContext";
+import { useRouter } from "next/router";
 import { SignForm, SignHeader, SignSns } from "@/components";
 import * as Styled from "@/style/SignPage.styled";
 
 const SignUp = () => {
+  const { isLogin } = useLogin();
+  const router = useRouter();
+
+  // Login 후 signup 페이지 접근 시, 폴더페이지로 리다이렉트
+  if (isLogin) {
+    router.push("/folder");
+    return null;
+  }
+
   return (
     <Styled.SignContainer>
       <SignHeader msgText="이미 회원이신가요?" linkText="로그인 하기" />

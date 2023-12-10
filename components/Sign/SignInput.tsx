@@ -9,10 +9,12 @@ import { useRouter } from "next/router";
 import {
   validateEmailInput,
   validatePasswordInput,
+  validatePasswordConfirmInput,
 } from "@/lib/utils/checkSign";
 import eyesOffImg from "@/public/eye-off.svg";
 import eyesOnImg from "@/public/eye-on.svg";
 import * as Styled from "./Sign.styled";
+import { validateOverlapEmail } from "@/lib/utils/api";
 
 interface Value {
   value: string;
@@ -26,6 +28,11 @@ interface Props {
   label: string;
   setter: (value: SetStateAction<Value>) => void;
   errMsg: string;
+  isOverlap?: boolean;
+  setIsOverlap: (value: SetStateAction<boolean>) => void;
+  emailValue: string;
+  passwordValue: string;
+  disabled?: boolean;
 }
 
 const SignInput = ({
@@ -35,6 +42,11 @@ const SignInput = ({
   label,
   setter,
   errMsg,
+  isOverlap,
+  setIsOverlap,
+  emailValue,
+  passwordValue,
+  disabled,
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
@@ -58,8 +70,8 @@ const SignInput = ({
     const targetValue = inputRef.current?.value ? inputRef.current.value : "";
 
     if (type === "email") {
-      if (validateEmailInput(targetValue, location)) {
-        const errorMsg = validateEmailInput(targetValue, location);
+      if (validateEmailInput(targetValue)) {
+        const errorMsg = validateEmailInput(targetValue);
         setter((prev) => ({
           ...prev,
           errMsg: errorMsg,
@@ -83,9 +95,12 @@ const SignInput = ({
           errMsg: "",
         }));
       }
-    } else if (type === "passwordConfirm") {
-      if (validatePasswordInput(targetValue)) {
-        const errorMsg = validatePasswordInput(targetValue);
+    } else if (label === "비밀번호 확인") {
+      if (validatePasswordConfirmInput(passwordValue, targetValue)) {
+        const errorMsg = validatePasswordConfirmInput(
+          passwordValue,
+          targetValue
+        );
         setter((prev) => ({
           ...prev,
           errMsg: errorMsg,
@@ -95,6 +110,39 @@ const SignInput = ({
           ...prev,
           errMsg: "",
         }));
+      }
+    }
+  };
+
+  const HandleOverlapBtnClick = async () => {
+    if (!isOverlap) return;
+    if (validateEmailInput(emailValue)) {
+      const errorMsg = validatePasswordInput(emailValue);
+      setter((prev) => ({
+        ...prev,
+        errMsg: errorMsg,
+      }));
+    } else {
+      try {
+        const result = await validateOverlapEmail(emailValue);
+        const {
+          data: { isUsableNickname },
+        } = result;
+        setter((prev) => ({
+          ...prev,
+          errMsg: "",
+        }));
+        if (window.confirm("해당 이메일로 확정하시겠습니까?")) {
+          setIsOverlap(!isUsableNickname);
+        } else {
+          setIsOverlap(isUsableNickname);
+        }
+      } catch {
+        setter((prev) => ({
+          ...prev,
+          errMsg: "이미 존재하는 이메일입니다.",
+        }));
+        setIsOverlap(true);
       }
     }
   };
@@ -116,15 +164,26 @@ const SignInput = ({
   return (
     <Styled.InputTagContainer>
       <Styled.InputLabel htmlFor={type}>{label}</Styled.InputLabel>
-      <Styled.InputTag
-        placeholder={placeholder}
-        type={type}
-        ref={inputRef}
-        id={type}
-        onBlur={HandleInputFocusOut}
-        onChange={HandleInputChange}
-        $err={errMsg}
-      />
+      <Styled.InputTagBox>
+        <Styled.InputTag
+          placeholder={placeholder}
+          type={type}
+          ref={inputRef}
+          id={type}
+          onBlur={HandleInputFocusOut}
+          onChange={HandleInputChange}
+          $err={errMsg}
+          disabled={disabled}
+        />
+        {location === "signup" && type === "email" && (
+          <Styled.CheckOverlapBtn
+            onClick={HandleOverlapBtnClick}
+            $isOverlap={isOverlap}
+          >
+            {isOverlap ? `중복 확인` : `확인 완료`}
+          </Styled.CheckOverlapBtn>
+        )}
+      </Styled.InputTagBox>
       {type === "email" ||
         (eyeToggle ? (
           <Styled.EyesOn

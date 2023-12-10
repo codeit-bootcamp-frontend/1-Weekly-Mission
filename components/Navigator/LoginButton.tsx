@@ -2,7 +2,6 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import { UserData } from "@/lib/types/data";
 import { useLogin } from "@/lib/utils/LoginContext";
 import { getUsers } from "@/lib/utils/api";
-import { setLocalStorage } from "@/lib/utils/localStorage";
 import * as Styled from "./LoginBtn.styled";
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 }
 
 const LoginButton = ({ data, setUserData }: Props) => {
-  const { isLogin, setIsLogin } = useLogin();
+  const { isLogin } = useLogin();
   const { email, imageSource } = data;
 
   const BtnClickHandler = async () => {

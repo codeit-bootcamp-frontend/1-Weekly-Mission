@@ -33,4 +33,5 @@ export const SnsBox = styled.div`
   border-radius: 0.8rem;
   border: 0.1rem solid var(--gray20);
   background-color: var(--gray10);
+  margin-top: -12px;
 `;

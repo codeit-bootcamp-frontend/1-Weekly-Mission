@@ -6,6 +6,10 @@ interface errProps {
   $err: string;
 }
 
+interface overlapProps {
+  $isOverlap: boolean | undefined;
+}
+
 export const HeaderMsg = styled.p`
   display: flex;
   column-gap: 0.8rem;
@@ -55,6 +59,7 @@ export const InputTag = styled.input<errProps>`
   border: 0.1rem solid var(--gray20);
   font-size: 1.6rem;
   line-height: 150%;
+  flex-grow: 1;
 
   &:focus {
     border: 1px solid var(--primary);
@@ -69,6 +74,27 @@ export const InputTag = styled.input<errProps>`
     `
     border: 1px solid var(--red);
   `}
+`;
+
+export const InputTagBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const CheckOverlapBtn = styled.div<overlapProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 5.4rem;
+  background-color: ${({ $isOverlap }) =>
+    $isOverlap ? `var(--white)` : `var(--gray20)`};
+  border-radius: 0.8rem;
+  color: var(--text-gray);
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: ${({ $isOverlap }) => ($isOverlap ? `pointer` : "unset")};
 `;
 
 export const EyesOff = styled(Image)`
