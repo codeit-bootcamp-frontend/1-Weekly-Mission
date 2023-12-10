@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import * as S from "./SignupContainerStyles";
-import SignupForm from "@/components/SignForm";
+import SignupForm from "@/components/form/SignUpForm";
 
 export default function SignUpContainer() {
   return (

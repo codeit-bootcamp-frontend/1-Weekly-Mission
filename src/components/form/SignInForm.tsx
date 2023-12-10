@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
 import * as S from "./SignFormStyles";
-import EmailInput from "./inputs/EmailInput";
+import EmailInput from "../inputs/EmailInput";
 
 import { SignupForm } from "@/types/form";
 import { signinUser } from "@/common/api";
