@@ -19,6 +19,8 @@ import {
   typeCheckParam,
 } from "@/utils/utils";
 
+import styles from "@/assets/styles/signPage.module.css";
+
 interface Props {
   userData: UserData;
   folderData: UserFolderData;
@@ -35,35 +37,41 @@ const SharedPage = ({ userData, folderData, linksListData }: Props) => {
       <Head>
         <title>Shared - LinkBrary</title>
       </Head>
-      <NavBar />
-      <FolderInfo
-        profileImage={userData?.data?.[0]?.image_source}
-        userName={userData?.data?.[0]?.name}
-        folderName={folderData?.data?.[0]?.name || ""}
-      />
-      <Search linksListData={linksListData} onChange={setSearchData} />
-      <Card>
-        {searchData?.data &&
-          searchData.data.map((link: Link) => {
-            const { id, created_at, url, title, description, image_source } =
-              link;
-            const formattedCreatedAt = formatDate(created_at);
-            const timeDiff = getTimeDiff(created_at);
-            const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
-            return (
-              <SharedPageCardItem
-                key={id}
-                formatTimeDiff={formatTimeDiff}
-                formattedCreatedAt={formattedCreatedAt}
-                url={url}
-                title={title}
-                description={description}
-                imageSource={image_source}
-              />
-            );
-          })}
-      </Card>
-      <Footer />
+      <nav>
+        <NavBar />
+      </nav>
+      <main className={styles.main}>
+        <FolderInfo
+          profileImage={userData?.data?.[0]?.image_source}
+          userName={userData?.data?.[0]?.name}
+          folderName={folderData?.data?.[0]?.name || ""}
+        />
+        <Search linksListData={linksListData} onChange={setSearchData} />
+        <Card>
+          {searchData?.data &&
+            searchData.data.map((link: Link) => {
+              const { id, created_at, url, title, description, image_source } =
+                link;
+              const formattedCreatedAt = formatDate(created_at);
+              const timeDiff = getTimeDiff(created_at);
+              const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
+              return (
+                <SharedPageCardItem
+                  key={id}
+                  formatTimeDiff={formatTimeDiff}
+                  formattedCreatedAt={formattedCreatedAt}
+                  url={url}
+                  title={title}
+                  description={description}
+                  imageSource={image_source}
+                />
+              );
+            })}
+        </Card>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 };
