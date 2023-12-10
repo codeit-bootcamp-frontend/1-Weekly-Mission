@@ -1,4 +1,3 @@
-import React from "react";
 import CardItem from "./CardItem";
 import { Links } from "../dataType/dataType";
 import styles from "./cards.module.css";

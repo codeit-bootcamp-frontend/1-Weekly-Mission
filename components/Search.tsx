@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import searchImg from "@/public/img/svg/Search.svg";
 import closeIcon from "@/public/img/svg/close.svg";
 import styles from "./search.module.css";

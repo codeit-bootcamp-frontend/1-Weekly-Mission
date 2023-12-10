@@ -1,11 +1,10 @@
-import React from "react";
 import facebookImg from "@/public/img/png/Vector-1.png";
 import twitterImg from "@/public/img/png/Vector-2.png";
 import youtubeImg from "@/public/img/png/Vector-3.png";
 import melonImg from "@/public/img/png/Vector-4.png";
 import Image from "next/image";
 import styles from "./footer.module.css";
-import { isLocation, isblock } from "@/utils/location";
+import { isblock } from "@/utils/location";
 
 const SNS = [
   {

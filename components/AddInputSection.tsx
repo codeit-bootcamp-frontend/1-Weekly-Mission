@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import styles from "./addInputSection.module.css";
 import linkImg from "@/public/img/svg/link.svg";

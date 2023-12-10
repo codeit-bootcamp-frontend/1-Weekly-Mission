@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import addImg from "@/public/img/svg/add.svg";
 import shareImg from "@/public/img/svg/share.svg";
 import penImg from "@/public/img/svg/pen.svg";

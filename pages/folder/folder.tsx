@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import AddInputSection from "@/components/AddInputSection";
 import Search from "@/components/Search";
 import UserFolder from "@/components/UserFolder";

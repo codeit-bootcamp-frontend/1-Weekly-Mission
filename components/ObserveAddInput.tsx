@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import linkImg from "@/public/img/svg/link.svg";
 import styles from "./observeAddInput.module.css";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { User, folders } from "@/dataType/dataType";
 import Image from "next/image";
 import styles from "./bookMark.module.css";

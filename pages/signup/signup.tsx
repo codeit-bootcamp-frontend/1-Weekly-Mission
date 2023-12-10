@@ -1,4 +1,4 @@
-import styles from "@/pages/signup.module.css";
+import styles from "./signup.module.css";
 import logo from "@/public/img/png/Linkbrary.png";
 import google from "@/public/img/png/Component 2.png";
 import kakao from "@/public/img/png/Component 3.png";
@@ -11,12 +11,17 @@ import { API_URL } from "@/config/apiUrl";
 
 const Signup = () => {
   const router = useRouter();
+  const userToken = window.localStorage.getItem("user");
   const [reCheck, setReCheck] = useState("");
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
     passwordCh: "",
   });
+
+  if (userToken) {
+    router.push("/");
+  }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

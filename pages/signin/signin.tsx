@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "@/public/img/png/Linkbrary.png";
 import google from "@/public/img/png/Component 2.png";
 import kakao from "@/public/img/png/Component 3.png";
@@ -11,11 +11,16 @@ import { useRouter } from "next/router";
 
 const Signin = () => {
   const router = useRouter();
+  const userToken = window.localStorage.getItem("user");
   const [reCheck, setReCheck] = useState("");
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
   });
+
+  if (userToken) {
+    router.push("/");
+  }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

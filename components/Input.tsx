@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./input.module.css";
 import Image from "next/image";
 import eyeOffIcon from "@/public/img/svg/eye-off.svg";

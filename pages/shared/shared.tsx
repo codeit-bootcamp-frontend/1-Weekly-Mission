@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import BookMark from "@/components/BookMark";
 import Search from "@/components/Search";
 import Cards from "@/components/Cards";
