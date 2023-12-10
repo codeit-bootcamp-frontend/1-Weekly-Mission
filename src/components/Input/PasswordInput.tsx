@@ -1,18 +1,12 @@
-import { UseFormRegister } from "react-hook-form";
 import Input from "src/components/Input";
 import InputLabel from "src/components/Label/InputLabel";
 import { ERROR_PASSWORD_EMPTY } from "src/constants/auth";
 import usePasswordForm from "src/hooks/usePasswordForm";
 import theme from "src/styles/Theme/theme";
-import { FormValuesType } from "src/types/FormValue";
 import styled from "styled-components";
 
-interface Props {
-  register: UseFormRegister<FormValuesType>;
-}
-
-function PasswordInput({ register }: Props) {
-  const { errors, isMinLength, isRequired, passwordValidation } =
+function PasswordInput() {
+  const { register, errors, isMinLength, isRequired, passwordValidation } =
     usePasswordForm();
 
   return (
