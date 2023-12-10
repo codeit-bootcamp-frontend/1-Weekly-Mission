@@ -27,16 +27,9 @@ export const InputEmail = forwardRef<
   HTMLInputElement,
   SignInputProps<FieldValues>
 >((props, ref) => {
-  const {
-    label,
-    type,
-    placeholder,
-    autoComplete,
-    errors,
-    name,
-    ...inputProps
-  } = props;
-  console.log(props);
+  const { label, type, placeholder, autoComplete, errors, ...EmailProps } =
+    props;
+
   return (
     <InputContainer>
       <LabelContent>{label}</LabelContent>
@@ -44,11 +37,13 @@ export const InputEmail = forwardRef<
         ref={ref}
         type={type}
         placeholder={placeholder}
-        {...inputProps}
-        $isError={!errors.name}
+        {...EmailProps}
+        $isError={errors[EmailProps.name]}
         autoComplete={autoComplete}
       />
-      {errors.name && <ErrorM>{errors.name.message}</ErrorM>}
+      {errors[EmailProps.name] && (
+        <ErrorM>{errors[EmailProps.name].message}</ErrorM>
+      )}
     </InputContainer>
   );
 });
@@ -73,7 +68,7 @@ export const InputPW = forwardRef<
     placeholder,
     autoComplete,
     errors,
-    name,
+
     ...inputProps
   } = props;
 
@@ -88,7 +83,7 @@ export const InputPW = forwardRef<
           ref={ref}
           placeholder={placeholder}
           {...inputProps}
-          $isError={!errors.name}
+          $isError={errors[inputProps.name]}
           autoComplete={autoComplete}
         />
         <EyeToggleButton type="button" onClick={toggleShowPassword}>
@@ -100,7 +95,9 @@ export const InputPW = forwardRef<
           />
         </EyeToggleButton>
       </SignInputWrapper>
-      {errors.name && <ErrorM>{errors.name.message}</ErrorM>}
+      {errors[inputProps.name] && (
+        <ErrorM>{errors[inputProps.name].message}</ErrorM>
+      )}
     </InputContainer>
   );
 });
@@ -119,7 +116,7 @@ const SignInput = styled.input<{ $isError: boolean }>`
   &:focus {
     outline: none;
   }
-  border-color: ${({ $isError }) => (!$isError ? "#FF5B56" : "#CCD5E3")};
+  border-color: ${({ $isError }) => ($isError ? "#FF5B56" : "#CCD5E3")};
   background: #fff;
   width: 100%;
   height: 62px;

@@ -29,7 +29,9 @@ export function SignLayout({
 
         <SignFooter>
           <SnsSignWrapper>
-            <SnsText>쇼셜 로그인</SnsText>
+            <SnsText>
+              {formType === "in" ? "쇼셜 로그인" : "다른 방식으로 가입하기"}
+            </SnsText>
             <Sns>
               <Link href="https://www.google.com/">
                 <Image src={google} width={42} height={42} alt="구글 로고" />
@@ -45,7 +47,7 @@ export function SignLayout({
   );
 }
 
-export function HeaderContent({ formType }: { formType: string }) {
+function HeaderContent({ formType }: { formType: string }) {
   if (formType === "in") {
     return (
       <HeaderMessage>
@@ -54,10 +56,12 @@ export function HeaderContent({ formType }: { formType: string }) {
       </HeaderMessage>
     );
   } else {
-    <HeaderMessage>
-      이미 회원이신가요?
-      <HeaderContentLink href="/signin">로그인 하기</HeaderContentLink>
-    </HeaderMessage>;
+    return (
+      <HeaderMessage>
+        이미 회원이신가요?
+        <HeaderContentLink href="/signin">로그인 하기</HeaderContentLink>
+      </HeaderMessage>
+    );
   }
 }
 
