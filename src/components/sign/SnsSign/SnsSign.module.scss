@@ -1,8 +1,7 @@
 @import "@/styles/global.scss";
 
 .container {
-  max-width: 400px;
-  min-width: 300px;
+  width: 100%;
   height: 66px;
   border-radius: 8px;
   border: 1px solid var(--linkbrary-gray-20, #ccd5e3);
@@ -25,9 +24,5 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
-  }
-
-  @include tablet {
-    width: 400px;
   }
 }
