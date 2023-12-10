@@ -1,24 +1,46 @@
-import { useState } from "react";
+import {
+  UseFormRegister,
+  FieldErrors,
+  FieldValues,
+  UseFormHandleSubmit,
+  SubmitHandler,
+} from "react-hook-form";
 import styled from "styled-components";
-import EyeOffImage from "@/public/images/eye-off.svg";
-import EyeOnImage from "@/public/images/eye-on.svg";
+
+import useToggle from "@/hooks/useToggle";
 import {
   ERROR_MESSAGE,
   INPUT_PLACEHOLDER,
   LABEL_TO_KOR,
   VALIDATION_TEXT,
 } from "@/constants/validation";
-import { UseFormRegister, FieldErrors, FieldValues } from "react-hook-form";
-import usePasswordVisible from "@/hooks/usePasswordVisible";
+import EyeOffImage from "@/public/images/eye-off.svg";
+import EyeOnImage from "@/public/images/eye-on.svg";
 
 interface InputProps {
   labelText: "email" | "password" | "passwordConfirm";
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors<FieldValues>;
+  handleSubmit: UseFormHandleSubmit<FieldValues>;
+  onSubmit: SubmitHandler<FieldValues>;
 }
 
-const Input = ({ labelText, register, errors }: InputProps) => {
-  const { isVisible, handleVisibility } = usePasswordVisible();
+const Input = ({
+  labelText,
+  register,
+  errors,
+  handleSubmit,
+  onSubmit,
+}: InputProps) => {
+  const { isOn: isVisible, toggle: handleVisibility } = useToggle();
+
+  const handleEnter = (e: any) => {
+    e.preventDefault();
+    if (e.type === "keydown" && e.code === "Enter") {
+      handleSubmit(onSubmit)();
+    }
+  };
+
   return (
     <StyledInputOuterBox>
       <StyledLabel htmlFor={labelText}>{LABEL_TO_KOR[labelText]}</StyledLabel>
@@ -28,6 +50,7 @@ const Input = ({ labelText, register, errors }: InputProps) => {
           placeholder={INPUT_PLACEHOLDER[labelText]}
           autoFocus={labelText === "email"}
           type={labelText === "email" || isVisible ? "text" : "password"}
+          onKeyDown={(e) => handleEnter(e)}
           {...register(labelText, {
             required: ERROR_MESSAGE[labelText]["require"],
             pattern: {
@@ -37,7 +60,7 @@ const Input = ({ labelText, register, errors }: InputProps) => {
           })}
         />
         {LABEL_TO_KOR[labelText] !== "이메일" && (
-          <StyledButton onClick={handleVisibility}>
+          <StyledButton onClick={(e) => handleVisibility(e)}>
             {isVisible ? (
               <EyeOnImage alt="비밀번호 숨기기 버튼" />
             ) : (

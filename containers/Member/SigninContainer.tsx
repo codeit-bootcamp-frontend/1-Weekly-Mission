@@ -14,8 +14,20 @@ const SigninContainer = () => {
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <MemberTop text1="회원이 아니신가요?" text2="회원 가입하기" />
         <StyledOuterInputBox>
-          <Input labelText="email" register={register} errors={errors} />
-          <Input labelText="password" register={register} errors={errors} />
+          <Input
+            labelText="email"
+            register={register}
+            errors={errors}
+            handleSubmit={handleSubmit}
+            onSubmit={onSubmit}
+          />
+          <Input
+            labelText="password"
+            register={register}
+            errors={errors}
+            handleSubmit={handleSubmit}
+            onSubmit={onSubmit}
+          />
         </StyledOuterInputBox>
         <Button text="로그인" size="wide" buttonColor="blue" />
       </StyledForm>
