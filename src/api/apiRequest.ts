@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://bootcamp-api.codeit.kr/api/',
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 });
 
 const apiRequest = async (options: AxiosRequestConfig) => {
