@@ -20,9 +20,8 @@ export default function Nav() {
   const router = useRouter();
 
   const url = router.pathname;
-
   const handleLoad = async () => {
-    if (url === '/shared') {
+    if (url === '/shared' || '/') {
       const data = await getData('sample/user');
       setLogin(data);
     } else if (url === '/folder') {
@@ -32,8 +31,8 @@ export default function Nav() {
   };
 
   useEffect(() => {
-    handleLoad();
-  }, []);
+    setLogin(undefined);
+  }, [url]);
   return (
     <N.NavContainer>
       <N.NavWrapper>

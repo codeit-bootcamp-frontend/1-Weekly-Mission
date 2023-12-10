@@ -21,10 +21,6 @@ const Div = styled.div`
   height: 16px;
 `;
 
-const SearchDiv = styled.div`
-  margin-top: 40px;
-`;
-
 export default function SharedPage() {
   const [items, setItems] = useState<ItemState[]>();
   useEffect(() => {

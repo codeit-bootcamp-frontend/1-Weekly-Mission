@@ -1,6 +1,6 @@
 import { dateCalculator } from './dateCalculator';
 import * as C from './styled-component/CardStyledComponent';
-import { ItemState } from '../pages/sharedPage';
+import { ItemState } from '../pages/shared';
 import styled from 'styled-components';
 import Image from 'next/image';
 

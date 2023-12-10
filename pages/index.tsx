@@ -1,4 +1,3 @@
-import Input from '@/components/Input';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -29,10 +28,10 @@ export default function HomePage() {
   return (
     <>
       <Div>
-        <StyledLink href={'/sharedPage'}>sharedPage</StyledLink>
-        <StyledLink href={'/folderPage'}>folderPage</StyledLink>
+        <StyledLink href={'/shared'}>sharedPage</StyledLink>
+        <StyledLink href={'/folder'}>folderPage</StyledLink>
+        <StyledLink href={'/signin'}>signinPage</StyledLink>
       </Div>
-      <Input />
     </>
   );
 }
