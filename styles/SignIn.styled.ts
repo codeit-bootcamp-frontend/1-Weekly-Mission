@@ -81,18 +81,6 @@ export const Input = styled.input`
   border-radius: 0.8rem;
 `;
 
-export const PasswordContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const VisibleButton = styled.button`
-  width: 1.6rem;
-  height: 1.6rem;
-  position: relative;
-  margin-left: -30px;
-`;
-
 export const ErrorText = styled.p`
   color: ${COLORS.RED};
   margin-top: 6px;
@@ -103,6 +91,18 @@ export const ErrorText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+`;
+
+export const PasswordContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const VisibleButton = styled.button`
+  width: 1.6rem;
+  height: 1.6rem;
+  position: relative;
+  margin-left: -30px;
 `;
 
 export const SnsContainer = styled.div`

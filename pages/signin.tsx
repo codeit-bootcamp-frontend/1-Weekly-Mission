@@ -1,11 +1,10 @@
 import * as S from "@/styles/SignIn.styled";
 import Link from "next/link";
 import Image from 'next/image';
-import logoImage from "@/public/images/logo.svg";
-import InputForm from "@/components/InputForm";
-import Button from "@/components/Button";
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { ChangeEvent, useState } from 'react';
+import Button from "@/components/Button";
+import logoImage from "@/public/images/logo.svg";
 import googleIcon from '@/public/images/googleIcon.svg';
 import kakaotalkIcon from '@/public/images/kakaotalkIcon.svg';
 import eyeOn from '@/public/images/eyeOn.svg';
@@ -58,12 +57,15 @@ export default function SignIn() {
               <S.Input
                 id="email"
                 type="email"
-                placeholder="이메일을 입력해주세요"
+                placeholder="이메일을 입력해 주세요."
                 {...register("email", {
-                  required: "이메일을 입력해주세요.",
+                  required: {
+                    value: true,
+                    message: "이메일을 입력해 주세요."
+                  },
                   pattern: {
                     value: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
-                    message: "올바른 이메일 주소가 아닙니다",
+                    message: "올바른 이메일 주소가 아닙니다.",
                   },
                 })}
               />
@@ -77,19 +79,21 @@ export default function SignIn() {
                   type={
                     showPassword ? "text" : "password"
                   }
-                  placeholder="비밀번호를 입력해 주세요"
+                  placeholder="비밀번호를 입력해 주세요."
                   {...register("password", {
-                    required: "비밀번호를 입력해주세요."},
+                    required: {
+                      value: true,
+                      message: "비밀번호를 입력해 주세요.",
+                    }},
                   )}
                 />
-                
-                  <S.VisibleButton onClick={handleVisibility}>
-                    {isError ? (
-                      <Image fill src={eyeOn} alt="비밀번호 보이기" />
-                    ) : (
-                      <Image fill src={eyeOff} alt="비밀번호 숨기기" />
-                    )}
-                  </S.VisibleButton>
+                <S.VisibleButton onClick={handleVisibility}>
+                  {isError ? (
+                    <Image fill src={eyeOn} alt="비밀번호 보이기" />
+                  ) : (
+                    <Image fill src={eyeOff} alt="비밀번호 숨기기" />
+                  )}
+                </S.VisibleButton>
               </S.PasswordContainer>
               {errors.password ? <S.ErrorText>{errors.password.message}</S.ErrorText> : null}
             </S.InputContainer>
