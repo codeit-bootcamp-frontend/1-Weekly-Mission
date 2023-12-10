@@ -11,7 +11,7 @@ const SignupContainer = () => {
   return (
     <StyledContainerBox>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <MemberTop text1="회원이 아니신가요?" text2="회원 가입하기" />
+        <MemberTop text1="이미 회원이신가요?" text2="로그인 하기" />
         <StyledOuterInputBox>
           <Input labelText="email" register={register} errors={errors} />
           <Input labelText="password" register={register} errors={errors} />
@@ -21,9 +21,9 @@ const SignupContainer = () => {
             errors={errors}
           />
         </StyledOuterInputBox>
-        <Button text="로그인" size="wide" buttonColor="blue" />
+        <Button text="회원가입" size="wide" buttonColor="blue" />
       </StyledForm>
-      <SocialLogin text="소셜 로그인" />
+      <SocialLogin text="다른 방식으로 가입하기" />
     </StyledContainerBox>
   );
 };
