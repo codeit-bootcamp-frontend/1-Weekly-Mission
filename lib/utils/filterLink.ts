@@ -1,7 +1,7 @@
-import { LinkType } from '@/lib/types/dataType';
+import { LinkData } from '@/lib/types/dataType';
 import { SampleLinkType } from '@/lib/types/sampleDataType';
 
-export function filterLink(links: LinkType[] | SampleLinkType[], search: boolean, keyword: string): any {
+export function filterLink(links: LinkData[] | SampleLinkType[], search: boolean, keyword: string): any {
   if (!search) return links;
   if (keyword === '') return [];
   keyword = keyword.toLowerCase();

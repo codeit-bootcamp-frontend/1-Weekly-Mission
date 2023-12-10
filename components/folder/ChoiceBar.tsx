@@ -4,12 +4,12 @@ import { findFolderTitle } from '@/lib/utils/findFolderTitle';
 import styled from 'styled-components';
 import Modal from '../common/Modal/Modal';
 import useModal from '@/hooks/useModal';
-import { FolderType } from '@/lib/types/dataType';
+import { FolderData } from '@/lib/types/dataType';
 import { MouseEvent } from 'react';
 import Image from 'next/image';
 
 interface Props {
-  folders: FolderType[];
+  folders: FolderData[];
   selectedFolderId: number;
 }
 

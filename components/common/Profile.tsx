@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import defaultProfileImg from '@/public/assets/images/default-profile.svg';
-import { UserDataType } from '@/lib/types/dataType';
+import { UserData } from '@/lib/types/dataType';
 import { SampleUserType } from '@/lib/types/sampleDataType';
 import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 interface Props {
-  user: UserDataType | SampleUserType;
+  user: UserData | SampleUserType;
 }
 
 function Profile({ user }: Props) {
