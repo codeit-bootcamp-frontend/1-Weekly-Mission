@@ -3,9 +3,18 @@ import InputField from "@/components/inputField/InputField";
 import Modal from "@/components/modal/Modal";
 import ShareButtons from "@/components/shareButtons/ShareButtons";
 import { FOLDER_MANAGE_MENUS, MODALS_ID } from "@/constants/constants";
-import { FolderManageMenusProps, FolderToolbarProps } from "@/types/type";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { MouseEvent, useState } from "react";
+
+interface FolderManageMenusProps {
+  iconTitle: string;
+  imgSrc: StaticImageData;
+  modalId: string;
+}
+
+interface FolderToolbarProps {
+  folderName: string;
+}
 
 const FolderToolbar = ({ folderName }: FolderToolbarProps) => {
   const [modalComponent, setModalComponent] = useState("");

@@ -1,4 +1,3 @@
-import { ModalButtonProps } from "@/types/type";
 import styled from "styled-components";
 
 export const ModalWrap = styled.div`
@@ -46,7 +45,7 @@ export const ModalTitle = styled.h3`
   line-height: normal;
 `;
 
-export const Button = styled.button<ModalButtonProps>`
+export const Button = styled.button<{ $isDelete: boolean }>`
   display: flex;
   width: 28rem;
   padding: 1.6rem 2rem;

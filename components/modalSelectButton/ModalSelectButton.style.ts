@@ -1,4 +1,3 @@
-import { FolderSelectButtonProps } from "@/types/type";
 import styled from "styled-components";
 export const FolderName = styled.p`
   font-size: 1.6rem;
@@ -6,7 +5,7 @@ export const FolderName = styled.p`
   line-height: 2.4rem;
 `;
 
-export const FolderSelectButton = styled.button<FolderSelectButtonProps>`
+export const FolderSelectButton = styled.button<{ $isSelect: boolean }>`
   display: flex;
   padding: 0.8rem;
   align-items: center;

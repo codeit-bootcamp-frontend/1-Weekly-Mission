@@ -1,5 +1,11 @@
-import { UseAsyncReturn } from "@/types/type";
 import { useCallback, useState } from "react";
+
+interface UseAsyncReturn<T> {
+  execute: () => void;
+  loading: boolean;
+  error: Error | null;
+  data: T | null;
+}
 
 const useAsync = <T>(asyncFunction: () => Promise<{ data: T }>): UseAsyncReturn<T> => {
   const [loading, setLoading] = useState(false);

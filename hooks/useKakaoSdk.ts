@@ -1,5 +1,11 @@
-import { useKakaoSdkProps } from "@/types/type";
 import { useEffect } from "react";
+
+interface useKakaoSdkProps {
+  url: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+}
 
 export const useKakaoSdk = () => {
   const shareKakao = ({ url, title, description, imageUrl }: useKakaoSdkProps) => {

@@ -4,7 +4,6 @@ import kakaoIcon from "@/images/kakaoIcon.png";
 import nameChangeIcon from "@/images/pen.png";
 import shareIcon from "@/images/share.png";
 import shareButtonIcon from "@/images/shareIcon.png";
-import { ValidateErrorMsgType, ValidateType } from "@/types/type";
 
 export const ALL_LINKS_ID = "all";
 
@@ -37,13 +36,13 @@ export const FOLDER_MANAGE_MENUS = [
   { iconTitle: "삭제", imgSrc: deleteIcon, modalId: MODALS_ID.delete },
 ];
 
-export const VALIDATE: ValidateType = {
+export const VALIDATE: { [key: string]: RegExp } = {
   userEmail:
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   userPassword: /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/,
 };
 
-export const VALIDATE_ERROR_MSG: ValidateErrorMsgType = {
+export const VALIDATE_ERROR_MSG: { [key: string]: { [key: string]: string } } = {
   userEmail: {
     empty: "이메일을 입력해주세요.",
     wrong: "올바른 이메일 주소가 아닙니다.",
@@ -62,4 +61,11 @@ export const KAKAO_SHARE_DATA = {
   title: "Linkbrary",
   description: "링크를 저장하고 공유하는 가장 쉬운 방법",
   imageUrl: "https://codeit-frontend.codeit.com/static/images/brand/og_tag.png",
+};
+
+export const FeatureItemGradients: { [key: string]: string } = {
+  "1": "linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%)",
+  "2": "linear-gradient(277deg, #6fbaff -7.78%, #ffd88b 93.66%)",
+  "3": "linear-gradient(99deg, #6d7ccd 25.76%, rgba(82, 136, 133, 0.22) 135.69%)",
+  "4": "linear-gradient(271deg, #fe578f -185.84%, #68e8f9 107.18%)",
 };

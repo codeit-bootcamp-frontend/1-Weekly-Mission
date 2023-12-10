@@ -1,10 +1,16 @@
 import * as S from "@/components/card/Card.style";
 import KebabMenu from "@/components/kebabMenu/KebabMenu";
 import kebabImageSrc from "@/images/kebab.png";
-import { CardProps } from "@/types/type";
+import { Folder, MappedLink } from "@/types/type";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+
+interface CardProps {
+  link: MappedLink;
+  folders?: Folder[];
+  isShared: boolean;
+}
 
 const Card = ({ link, folders, isShared }: CardProps) => {
   const { elapsedTime, createdAt, url, title, imageSource } = link;

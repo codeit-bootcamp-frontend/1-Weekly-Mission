@@ -1,6 +1,12 @@
 import Card from "@/components/card/Card";
 import * as S from "@/components/cardList/CardList.style";
-import { CardListProps } from "@/types/type";
+import { Folder, MappedLink } from "@/types/type";
+
+interface CardListProps {
+  links: MappedLink[];
+  folders?: Folder[];
+  isShared: boolean;
+}
 
 const CardList = ({ links, folders, isShared }: CardListProps) => {
   if (!links?.length) return <S.EmptyListMessage>저장된 링크가 없습니다.</S.EmptyListMessage>;

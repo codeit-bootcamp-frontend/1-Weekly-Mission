@@ -1,5 +1,10 @@
 import * as S from "@/components/folderUserInfo/SharedFolderInfo.style";
-import { SharedFolderProps } from "@/types/type";
+
+interface SharedFolderProps {
+  profileImage: string;
+  ownerName: string;
+  folderName: string;
+}
 
 const SharedFolderInfo = ({ profileImage, ownerName, folderName }: SharedFolderProps) => {
   return (

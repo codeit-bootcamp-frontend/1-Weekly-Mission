@@ -1,8 +1,7 @@
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
-import { AddLinkBarProps } from "@/types/type";
 import styled from "styled-components";
 
-export const AddLinkBar = styled.div<AddLinkBarProps>`
+export const AddLinkBar = styled.div<{ $isSticky: boolean; $isHidden: boolean }>`
   background-color: var(--linkbrary-zircon);
   display: flex;
   flex-direction: column;

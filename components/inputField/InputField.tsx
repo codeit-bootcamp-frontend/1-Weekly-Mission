@@ -1,6 +1,9 @@
-import React, { useState } from "react";
 import * as S from "@/components/inputField/InputField.style";
-import { InputFieldProps } from "@/types/type";
+import { useState } from "react";
+
+interface InputFieldProps {
+  modalTarget: string;
+}
 
 const InputField = ({ modalTarget }: InputFieldProps) => {
   const [value, setValue] = useState(modalTarget);

@@ -1,8 +1,12 @@
 import * as S from "@/components/modalSelectButton/ModalSelectButton.style";
 import checkIcon from "@/images/check.png";
-import { ModalSelectButtonProps } from "@/types/type";
 import Image from "next/image";
 import { useState } from "react";
+
+interface ModalSelectButtonProps {
+  folderName: string;
+  linkCount: number;
+}
 
 const ModalSelectButton = ({ folderName, linkCount }: ModalSelectButtonProps) => {
   const [isSelect, setIsSelect] = useState(false);

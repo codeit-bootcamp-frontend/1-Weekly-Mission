@@ -2,8 +2,13 @@ import * as S from "@/components/folderTabBar/FolderTabBar.style";
 import InputField from "@/components/inputField/InputField";
 import Modal from "@/components/modal/Modal";
 import { ALL_LINKS_ID, MODALS_ID } from "@/constants/constants";
-import { FolderTabBarProps } from "@/types/type";
+import { Folder } from "@/types/type";
 import { useState } from "react";
+
+interface FolderTabBarProps {
+  folders: Folder[];
+  selectedFolderId: string;
+}
 
 const FolderTabBar = ({ folders, selectedFolderId }: FolderTabBarProps) => {
   const [modalComponent, setModalComponent] = useState("");

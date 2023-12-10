@@ -2,8 +2,21 @@ import * as S from "@/components/kebabMenu/KebabMenu.style";
 import Modal from "@/components/modal/Modal";
 import ModalSelectButton from "@/components/modalSelectButton/ModalSelectButton";
 import { KEBAB_MENUS, MODALS_ID } from "@/constants/constants";
-import { KebabMenusProps, KebabProps } from "@/types/type";
+import { Folder } from "@/types/type";
 import { MouseEvent, useState } from "react";
+
+interface KebabMenusProps {
+  linkUrl: string;
+  isKebabOpen: boolean;
+  folderId: number;
+  folders?: Folder[];
+  setIsKebabOpen: (isOpen: boolean) => void;
+}
+
+interface KebabProps {
+  iconTitle: string;
+  modalId: string;
+}
 const KebabMenu = ({ linkUrl, isKebabOpen, setIsKebabOpen, folderId, folders }: KebabMenusProps) => {
   const [modalComponent, setModalComponent] = useState("");
 

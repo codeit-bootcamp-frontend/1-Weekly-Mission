@@ -1,9 +1,8 @@
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
 import logoImg from "@/images/logo.svg";
-import { GlobalNavWrapperProps } from "@/types/type";
 import styled from "styled-components";
 
-export const GlobalNavWrapper = styled.div<GlobalNavWrapperProps>`
+export const GlobalNavWrapper = styled.div<{ $isFolder: boolean }>`
   display: flex;
   position: ${({ $isFolder }) => ($isFolder ? "static" : "sticky")};
   top: 0;
