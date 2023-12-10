@@ -1,12 +1,8 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as S from "./SignFormStyles";
-
-interface SignupForm {
-  email: string;
-  password: string;
-  passwordCheck: string;
-}
+import { SignupForm } from "@/types/form";
+import { signupUser } from "@/common/api";
 
 export default function SignupForm() {
   const {
@@ -17,11 +13,26 @@ export default function SignupForm() {
     formState: { errors, isValid },
   } = useForm<SignupForm>({ mode: "onBlur" });
 
+  // const { data, mutate } = useSWR("/api/sign-up");
+  // const { mutate } = useSWRConfig();
+  // const { trigger, isMutating } = useSWRMutation('/api/user', sendRequest, /* options */)
+
   const IconPath = "on";
 
-  const onSubmitSignUp = (data: SignupForm) => {
-    // try...catch
-    console.log(data);
+  const onSubmitSignUp = async (data: SignupForm) => {
+    console.log(data.email);
+    console.log(data.password);
+
+    try {
+      const user = await signupUser({
+        email: data.email,
+        password: data.password,
+      });
+      // console.log(user.data);
+      localStorage.setItem("accessToken", user.data.accessToken);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const validatePasswordCheck = (value: string) => {

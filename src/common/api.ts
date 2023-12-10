@@ -1,4 +1,5 @@
 import { DOMAIN_URL } from "./constants";
+import { SignupData } from "@/types/form";
 
 const headers = { "Content-Type": "application/json; charset=utf-8" };
 
@@ -38,4 +39,13 @@ export async function getAllLinks(userId: number, folderId = "") {
 
   const data = await res.json();
   return data;
+}
+
+export async function signupUser(userData: SignupData) {
+  const res = await fetch(`${DOMAIN_URL}/api/sign-up`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(userData),
+  });
+  return await res.json();
 }
