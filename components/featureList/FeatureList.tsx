@@ -7,6 +7,7 @@ import FeatureArticle from "../featureItem/FeatureArticle";
 
 const articles = [
   {
+    id: 1,
     title: (
       <>
         <span>원하는 링크</span>를 <br />
@@ -24,6 +25,7 @@ const articles = [
     alt: "링크 저장 예시 이미지",
   },
   {
+    id: 2,
     title: (
       <>
         링크를 폴더로
@@ -40,6 +42,7 @@ const articles = [
     alt: "링크 저장 예시 이미지",
   },
   {
+    id: 3,
     title: (
       <>
         저장한 링크를
@@ -58,6 +61,7 @@ const articles = [
     alt: "링크 저장 예시 이미지",
   },
   {
+    id: 4,
     title: (
       <>
         저장한 링크를
@@ -80,7 +84,7 @@ const FeatureList = () => {
     <S.ArticleWrap>
       {articles.map((article, i) => (
         <FeatureArticle
-          key={"article" + i + 1}
+          key={article.id}
           title={article.title}
           description={article.description}
           imageSrc={article.imageSrc}
