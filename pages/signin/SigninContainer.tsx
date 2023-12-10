@@ -8,11 +8,9 @@ export default function SignUpContainer() {
   return (
     <S.Layout>
       <S.Container>
-        <S.Title>
-          <Link href="/">
-            <Image src="/images/logo.svg" alt="logo" fill />
-          </Link>
-        </S.Title>
+        <S.StyledLinkLogo href="/">
+          <Image src="/images/logo.svg" alt="logo" fill priority />
+        </S.StyledLinkLogo>
         <S.Description>
           <span>회원이 아니신가요?</span>
           <div>

@@ -27,7 +27,7 @@ export const Container = styled.section`
   }
 `;
 
-export const Title = styled.h1`
+export const StyledLinkLogo = styled(Link)`
   margin: 0;
   position: relative;
   width: 13rem;
