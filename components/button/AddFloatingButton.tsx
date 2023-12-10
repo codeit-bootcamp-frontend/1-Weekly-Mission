@@ -1,28 +1,14 @@
 import FolderAddWhIcon from "@/public/assets/button/img_add.png";
 import Image from "next/image";
-import { modalState } from "@/recoil/modal";
-import { useRecoilState } from "recoil";
 import { AddFloatingBtnContainer } from "./buttonStyled";
 
 interface AddFloatingButtonProp {
-  setModalType: React.Dispatch<React.SetStateAction<string>>;
+  onClick: (modalType: string) => void;
 }
 
-const AddFloatingButton = ({ setModalType }: AddFloatingButtonProp) => {
-  const [, setModalOpened] = useRecoilState(modalState);
-
+const AddFloatingButton = ({ onClick }: AddFloatingButtonProp) => {
   return (
-    <AddFloatingBtnContainer
-      onClick={() => {
-        setModalType("folderAdd");
-        setModalOpened((prev: any) => ({
-          ...prev,
-          enterModal: {
-            display: true,
-          },
-        }));
-      }}
-    >
+    <AddFloatingBtnContainer onClick={() => onClick("folderAdd")}>
       <div className="floatingBtnTitle">폴더 추가</div>
       <Image
         width="16"

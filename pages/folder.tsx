@@ -173,7 +173,10 @@ const Folder = () => {
     }));
   };
 
-  const handleEnterMoal = (modalType: string, content: SelectedFolder) => {
+  const handleEnterMoal = (
+    modalType: string,
+    content: SelectedFolder = { id: 0, title: "" }
+  ) => {
     setModalType(modalType);
     setEnterModalItem(content);
 
@@ -285,12 +288,7 @@ const Folder = () => {
               <div className="folderAddBtnContainer">
                 <div
                   className="folderAddTitle"
-                  onClick={() =>
-                    handleEnterMoal("folderAdd", {
-                      id: 0,
-                      title: "",
-                    })
-                  }
+                  onClick={() => handleEnterMoal("folderAdd")}
                 >
                   폴더 추가
                 </div>
@@ -354,7 +352,7 @@ const Folder = () => {
             )}
           </FolderContentContainer>
 
-          <AddFloatingButton setModalType={setModalType} />
+          <AddFloatingButton onClick={handleEnterMoal} />
         </FolderSection>
       </Wrapper>
 

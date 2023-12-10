@@ -17,12 +17,13 @@ const CardOptionMenu = ({
   content,
   link,
 }: CardOptionMenuProps) => {
+  const handleDelteButton = () => {
+    onClickDelete("linkDelete", content);
+  };
+
   return (
     <OptionMenuContainer>
-      <div
-        className="optionMenuItem"
-        onClick={() => onClickDelete("linkDelete", content)}
-      >
+      <div className="optionMenuItem" onClick={() => handleDelteButton()}>
         삭제하기
       </div>
       <div
