@@ -6,6 +6,8 @@ import Button from "../Button/Button";
 import getUser from "../../api/getUser";
 import { useRouter } from "next/router";
 
+import styles from "./LoginButton.module.css";
+
 function LoginButton() {
   const router = useRouter();
   const setUserId = useSetUserId();
@@ -23,7 +25,7 @@ function LoginButton() {
   };
 
   return (
-    <div>
+    <div className={styles.buttonContainer}>
       {userData?.data?.[0]?.email ? (
         <ProfileInfo
           email={userData.data[0].email}

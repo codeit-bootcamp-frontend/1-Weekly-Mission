@@ -15,7 +15,7 @@ function Button({ isLoading = false, onClick, size, children }: Props) {
 
   if (typeof size === "number") {
     buttonStyles = {
-      width: `${size}rem`,
+      maxWidth: `${size}rem`,
     };
   }
 
