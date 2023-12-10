@@ -36,9 +36,8 @@ function Card({
             />
           </>
         )}
-        {/* TODO - 링크 주소가 잘못됐다는 페이지 만들기 */}
         <Link
-          href={card.url || ""}
+          href={card.url}
           target="_blank"
           rel="noreferrer noopener"
           className={styles["card-link"]}
