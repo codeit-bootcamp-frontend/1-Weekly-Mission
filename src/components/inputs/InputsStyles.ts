@@ -1,3 +1,5 @@
+// 현재 사용하지 않는 컴포넌트, 로그인/회원가입 input 리팩토링 후에도 필요없으면 삭제 예정
+
 import styled from "styled-components";
 
 /** hero 링크추가 input */
