@@ -15,7 +15,7 @@ const commonFetchFunction = async ({
   headers,
   body = null,
 }: CommonFetchFuncProps) => {
-  let options = {
+  const options = {
     method: method,
     headers: {
       "Content-Type": "application/json",
@@ -30,9 +30,11 @@ const commonFetchFunction = async ({
   const data = await res.json();
   if (res.ok) {
     return data;
-  } else {
-    throw new Error(res.status + data.error.message);
   }
+  throw new Error(res.status + data.error.message);
+  // const status = res.status;
+  // const errorMsg = data.error.message;
+  // return { errorMsg, status };
 };
 
 // POST

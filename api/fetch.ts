@@ -30,7 +30,7 @@ const fetchUserProfile = (userId: number) =>
   fetchGet(`/api/users/${userId}`) as Promise<{ data: UserProfileItem[] }>;
 
 const useFetchUserFolders = (userId: number) => {
-  return useAsync(() => fetchUserFolders(userId), [userId]); /// sdfdsfds
+  return useAsync(() => fetchUserFolders(userId), [userId]);
 };
 
 const fetchUserFolders = (userId: number) =>

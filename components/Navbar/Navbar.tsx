@@ -2,13 +2,12 @@ import Link from "next/link";
 import styled from "styled-components";
 
 import { mapNavbarData } from "../../utils/mapFetch";
-import LogoImage from "@/public/logo.svg";
+import LogoSmallImage from "@/public/images/logo-small.svg";
 import LinkButton from "../Button/LinkButton";
 
 interface LogoProps {
   link: string;
   alt: string;
-  height: number;
 }
 
 interface ProfileProps {
@@ -38,10 +37,10 @@ interface NavbarProps {
 
 type styledObjectType = object | undefined;
 
-const Logo = ({ link = "/", alt, height }: LogoProps) => {
+const Logo = ({ link = "/", alt }: LogoProps) => {
   return (
     <Link href={link}>
-      <LogoImage alt={alt} height={height} />
+      <LogoSmallImage alt={alt} />
     </Link>
   );
 };
@@ -69,7 +68,7 @@ const Navbar = ({ userData, fixed }: NavbarProps) => {
   return (
     <StyledNavBox style={styledObject}>
       <StyledNavInnerBox>
-        <Logo link="/" alt="Linkbrary" height={24} />
+        <Logo link="/" alt="Linkbrary" />
         {!userData?.id ? (
           <LinkButton link="/signin" size="short" text="로그인" />
         ) : (

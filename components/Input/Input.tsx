@@ -1,60 +1,106 @@
-import { ChangeEvent, useState } from "react";
-import styled, { css } from "styled-components";
+import {
+  UseFormRegister,
+  FieldErrors,
+  FieldValues,
+  UseFormHandleSubmit,
+  SubmitHandler,
+} from "react-hook-form";
+import styled from "styled-components";
+
+import useToggle from "@/hooks/useToggle";
+import {
+  ERROR_MESSAGE,
+  INPUT_PLACEHOLDER,
+  LABEL_TO_KOR,
+  VALIDATION_TEXT,
+} from "@/constants/validation";
 import EyeOffImage from "@/public/images/eye-off.svg";
 import EyeOnImage from "@/public/images/eye-on.svg";
 
-const Input = () => {
-  const [isError, setIsError] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [value, setValue] = useState("");
+interface InputProps {
+  labelText: "email" | "password" | "passwordConfirm";
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+  handleSubmit: UseFormHandleSubmit<FieldValues>;
+  onSubmit: SubmitHandler<FieldValues>;
+}
 
-  const handleVisibility = () => setIsVisible(!isVisible);
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsError(false);
-    setValue(e.target.value);
-  };
+const Input = ({
+  labelText,
+  register,
+  errors,
+  handleSubmit,
+  onSubmit,
+}: InputProps) => {
+  const { isOn: isVisible, toggle: handleVisibility } = useToggle();
 
-  const blurHandler = () => {
-    if (value === "") {
-      setIsError(true);
+  const handleEnter = (e: any) => {
+    e.preventDefault();
+    if (e.type === "keydown" && e.code === "Enter") {
+      handleSubmit(onSubmit)();
     }
   };
 
   return (
-    <>
-      <Div>
-        <InputTag
-          placeholder="내용 입력"
-          isError={isError}
-          type={isVisible ? "text" : "password"}
-          value={value}
-          onChange={handleChange}
-          onBlur={blurHandler}
+    <StyledInputOuterBox>
+      <StyledLabel htmlFor={labelText}>{LABEL_TO_KOR[labelText]}</StyledLabel>
+      <StyledInputInnerBox>
+        <StyledInput
+          id={labelText}
+          placeholder={INPUT_PLACEHOLDER[labelText]}
+          autoFocus={labelText === "email"}
+          type={labelText === "email" || isVisible ? "text" : "password"}
+          onKeyDown={(e) => handleEnter(e)}
+          {...register(labelText, {
+            required: ERROR_MESSAGE[labelText]["require"],
+            pattern: {
+              value: VALIDATION_TEXT[labelText],
+              message: ERROR_MESSAGE[labelText]["message"],
+            },
+          })}
         />
-        <StyledButton onClick={handleVisibility}>
-          {isVisible ? (
-            <EyeOnImage alt="비밀번호 숨기기 버튼" />
-          ) : (
-            <EyeOffImage alt="비밀번호 숨기기 버튼" />
-          )}
-        </StyledButton>
-      </Div>
-      {isError && <ErrorText>내용을 다시 작성해주세요</ErrorText>}
-    </>
+        {LABEL_TO_KOR[labelText] !== "이메일" && (
+          <StyledButton onClick={(e) => handleVisibility(e)}>
+            {isVisible ? (
+              <EyeOnImage alt="비밀번호 숨기기 버튼" />
+            ) : (
+              <EyeOffImage alt="비밀번호 숨기기 버튼" />
+            )}
+          </StyledButton>
+        )}
+      </StyledInputInnerBox>
+      {errors && (
+        <ErrorText>{errors[labelText]?.message?.toString()}</ErrorText>
+      )}
+    </StyledInputOuterBox>
   );
 };
 
 export default Input;
 
-const Div = styled.div`
-  position: relative;
-  z-index: 10;
+const StyledInputOuterBox = styled.div`
+  width: 100%;
   display: flex;
-  align-items: center;
-  width: 350px;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
-const InputTag = styled.input<{ isError: boolean }>`
+const StyledLabel = styled.label`
+  color: var(--black);
+
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+const StyledInputInnerBox = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const StyledInput = styled.input`
   display: flex;
   width: 100%;
   padding: 18px 15px;
@@ -63,19 +109,21 @@ const InputTag = styled.input<{ isError: boolean }>`
   border-radius: 8px;
   color: #373740;
   border: 1px solid #ccd5e3;
+  margin: 12px 0 6px;
   &:focus {
     border-color: #6d6afe;
   }
+  background-color: #fff;
+`;
 
-  ${({ isError }) =>
-    isError &&
-    css`
-      border-color: #ff5b56;
-
-      &:focus {
-        border-color: #ff5b56;
-      }
-    `}
+const StyledButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  top: 55%;
+  right: 0;
+  translate: -50% -50%;
+  border: none;
+  background-color: transparent;
 `;
 
 const ErrorText = styled.h4`
@@ -84,12 +132,4 @@ const ErrorText = styled.h4`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-top: 6px;
-`;
-
-const StyledButton = styled.button`
-  position: absolute;
-  right: 15px;
-  border: none;
-  background-color: #fff;
 `;
