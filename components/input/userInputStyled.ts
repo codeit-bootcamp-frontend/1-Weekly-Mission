@@ -30,7 +30,7 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const Input = styled.input<props>`
+export const Input = styled.input<{ "aria-invalid": string }>`
   box-sizing: border-box;
   border-radius: 0.8rem;
   padding: 1.8rem 1.5rem;
