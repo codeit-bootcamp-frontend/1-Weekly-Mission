@@ -1,10 +1,10 @@
-import Input from "@/component/common/input";
-import styled from "styled-components";
+import { InputEmail, InputPassword } from "@/component/common/input";
 import Image from "next/image";
 import LogoImg from "../public/images/sign/signin-logo.svg";
 import Link from "next/link";
 import KakaoIcon from "../public/images/sign/kakao.svg";
 import GoogleIcon from "../public/images/sign/google.svg";
+import { useEffect, useState } from "react";
 import {
     StyledBg,
     StyledInputBox,
@@ -17,8 +17,39 @@ import {
     StyledLoginTitleBox,
     StyledTitleText,
 } from "../component/sign/styledSign";
+import { postSignIn } from "@/component/api/api";
+import Router from "next/router";
+
+interface Data {
+    data: {
+        accessToken: string;
+        refreshToken: string;
+    };
+}
 
 export default function SignIn() {
+    const [emailValue, setEmailValue] = useState("");
+    const [passwordValue, setPasswordValue] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+
+    useEffect(() => {
+        if (localStorage.getItem("accessToken")) {
+            Router.push("/folder");
+        }
+    }, []);
+
+    async function postApi() {
+        try {
+            const { data } = await postSignIn(emailValue, passwordValue);
+            localStorage.setItem("accessToken", data.accessToken);
+            Router.push("/folder");
+        } catch (e) {
+            setEmailError("이메일을 확인해주세요.");
+            setPasswordError("비밀번호를 확인해주세요.");
+        }
+    }
+
     return (
         <StyledBg>
             <StyledLoginBox>
@@ -32,15 +63,29 @@ export default function SignIn() {
                 <StyledLoginInputBox>
                     <StyledInputBox>
                         이메일
-                        <Input />
+                        <InputEmail
+                            emailValue={emailValue}
+                            setEmailValue={setEmailValue}
+                            emailError={emailError}
+                            setEmailError={setEmailError}
+                            postApi={postApi}
+                        />
                     </StyledInputBox>
                     <StyledInputBox>
                         비밀번호
-                        <Input passwd />
+                        <InputPassword
+                            passwordValue={passwordValue}
+                            setPasswordValue={setPasswordValue}
+                            passwordError={passwordError}
+                            setPasswordError={setPasswordError}
+                            postApi={postApi}
+                        />
                     </StyledInputBox>
                 </StyledLoginInputBox>
                 <StyledLoginButtonBox>
-                    <StyledLoginButton>로그인</StyledLoginButton>
+                    <StyledLoginButton onClick={postApi}>
+                        로그인
+                    </StyledLoginButton>
                     <StyledLoginSns>
                         소셜 로그인
                         <StyledLoginSnsIconBox>

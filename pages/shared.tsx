@@ -1,5 +1,5 @@
 import Cards from "../component/card/card";
-import getApi from "../component/api/api";
+import { getApi } from "../component/api/api";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchBar from "../component/common/searchbar";
