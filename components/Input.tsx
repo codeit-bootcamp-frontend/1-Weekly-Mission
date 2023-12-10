@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { MouseEvent, forwardRef, useState } from "react";
+import React, { MouseEvent, forwardRef, useState } from "react";
 import {
   DeepMap,
   FieldError,
@@ -17,6 +17,7 @@ interface SignInputProps<TFormValues extends FieldValues> {
   type: string;
   placeholder: string;
   autoComplete: string;
+  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
   name: Path<TFormValues>;
   rules?: RegisterOptions;
   register?: UseFormRegister<TFormValues>;
@@ -27,9 +28,25 @@ export const InputEmail = forwardRef<
   HTMLInputElement,
   SignInputProps<FieldValues>
 >((props, ref) => {
-  const { label, type, placeholder, autoComplete, errors, ...EmailProps } =
-    props;
+  const [isFocus, setIsFocus] = useState(false);
+  const {
+    label,
+    type,
+    placeholder,
+    autoComplete,
+    errors,
+    onBlur,
+    ...EmailProps
+  } = props;
+  console.log(props);
 
+  const handleFocus = () => {
+    setIsFocus(true);
+  };
+
+  const handleBlur = (boolean: boolean) => {
+    setIsFocus(boolean);
+  };
   return (
     <InputContainer>
       <LabelContent>{label}</LabelContent>
@@ -37,7 +54,13 @@ export const InputEmail = forwardRef<
         ref={ref}
         type={type}
         placeholder={placeholder}
+        onBlur={(e) => {
+          onBlur(e);
+          handleBlur(false);
+        }}
+        onFocus={handleFocus}
         {...EmailProps}
+        $isFocus={isFocus}
         $isError={errors[EmailProps.name]}
         autoComplete={autoComplete}
       />
@@ -57,7 +80,16 @@ export const InputPW = forwardRef<
   HTMLInputElement,
   AuthPasswordInputProps<FieldValues>
 >((props, ref) => {
+  const [isFocus, setIsFocus] = useState(false);
   const [displayPassword, setDisplayPassword] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocus(true);
+  };
+
+  const handleBlur = (boolean: boolean) => {
+    setIsFocus(boolean);
+  };
   const toggleShowPassword = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setDisplayPassword((prev) => !prev);
@@ -68,7 +100,7 @@ export const InputPW = forwardRef<
     placeholder,
     autoComplete,
     errors,
-
+    onBlur,
     ...inputProps
   } = props;
 
@@ -81,6 +113,12 @@ export const InputPW = forwardRef<
         <SignInput
           type={passwordType}
           ref={ref}
+          onBlur={(e) => {
+            onBlur(e);
+            handleBlur(false);
+          }}
+          onFocus={handleFocus}
+          $isFocus={isFocus}
           placeholder={placeholder}
           {...inputProps}
           $isError={errors[inputProps.name]}
@@ -112,11 +150,12 @@ const InputContainer = styled.div`
   gap: 12px;
 `;
 
-const SignInput = styled.input<{ $isError: boolean }>`
+const SignInput = styled.input<{ $isError: boolean; $isFocus: boolean }>`
   &:focus {
     outline: none;
   }
-  border-color: ${({ $isError }) => ($isError ? "#FF5B56" : "#CCD5E3")};
+  border-color: ${({ $isFocus, $isError }) =>
+    $isFocus ? "#6D6AFE" : $isError ? "#FF5B56" : "#CCD5E3"};
   background: #fff;
   width: 100%;
   height: 62px;
