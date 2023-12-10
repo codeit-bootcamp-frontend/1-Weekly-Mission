@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import * as S from "./SignFormStyles";
 import { SignupForm } from "@/types/form";
-import { isUsableEmail, signupUser } from "@/common/api";
+import { signinUser } from "@/common/api";
 // import EmailInput from "./inputs/EmailInput";
 
 export default function SigninForm() {
@@ -12,7 +12,8 @@ export default function SigninForm() {
   const {
     register,
     handleSubmit,
-    getValues,
+    // getValues,
+    setError,
     setFocus,
     formState: { errors, isValid },
   } = useForm<SignupForm>({ mode: "onBlur" });
@@ -21,16 +22,17 @@ export default function SigninForm() {
   const IconPath = isHiddenPassword ? "off" : "on";
 
   const onSubmitSignIn = async (data: SignupForm) => {
-    // try {
-    //   const user = await signupUser({
-    //     email: data.email,
-    //     password: data.password,
-    //   });
-    //   localStorage.setItem("accessToken", user.data.accessToken);
-    //   router.push("/folder");
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const result = await signinUser({
+        email: data.email,
+        password: data.password,
+      });
+      localStorage.setItem("accessToken", result.data.accessToken);
+      router.push("/folder");
+    } catch (error) {
+      setError("email", { message: "이메일을 확인해 주세요." });
+      setError("password", { message: "비밀번호를 확인해 주세요." });
+    }
   };
 
   const toggleVisiblePassword = (e: MouseEvent<HTMLImageElement>) => {
