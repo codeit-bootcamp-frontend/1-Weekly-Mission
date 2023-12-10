@@ -14,7 +14,6 @@ interface Props {
 }
 
 export default function CardContainer({ items, folders }: Props) {
-
   const { isOpen, openModal, closeModal } = useModal();
   const option = { input: true, button: { title: '추가하기', color: 'blue' } };
 
@@ -26,7 +25,7 @@ export default function CardContainer({ items, folders }: Props) {
     <>
       <ThemeProvider theme={theme}>
         <Style.Container>
-          {items && items.map((link) => <Card link={link} key={link.id} />)}
+          {items?.map((link) => <Card link={link} key={link.id} />)}
         </Style.Container>
         {folders ? (
           <Style.Button onClick={handleButtonClick}>

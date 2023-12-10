@@ -3,8 +3,10 @@ import { Article, Header, Layout } from '@/components';
 import useIntersectionObserver from '@/public/useIntersectionObserver';
 import axios from '@/lib/axios';
 
-export async function getServerSideProps() {
-  const response = await axios.get(`users/1/links`);
+export async function getServerSideProps(context) {
+  const {id} = context.query
+  const folderId = id ? `?folderId=${id}` : '';
+  const response = await axios.get(`users/1/links${folderId}`);
   const links = response?.data?.data;
   const response2 = await axios.get(`/users/1/folders`);
   const folders = response2?.data?.data[0];

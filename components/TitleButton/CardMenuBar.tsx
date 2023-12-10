@@ -12,14 +12,16 @@ import * as Style from "./CardMenuBar.style";
 
 export default function CardMenuBar() {
   const router = useRouter();
-  const {folderId} = router.query;
+  const folderId = router.query;
   const option = { input: true, button: { title: "추가하기", color: "blue" } };
   const { isOpen, openModal, closeModal } = useModal();
   const [folderName, setFolderName] = useState()
   const [selectedFolder, setSelectedFolder] = useState(folderId ? parseInt(folderId) : null);
+  console.log(folderId)
+  console.log(folderName)
 
   async function getFolders () {
-    const result = await axios.get("/users/1/folders");
+    const result = await axios.get(`users/1/folders${folderId ? `?folderId=${folderId}` : ''}`);
     const folders = result.data.data;
     setFolderName(folders);
   }
@@ -29,9 +31,10 @@ export default function CardMenuBar() {
       setSelectedFolder(null);
       return;
     }
-    const matchedFolder = folderName.find(
+    const matchedFolder = folderName?.find(
       (folder) => folder.id === parseInt(folderId)
     );
+    console.log(matchedFolder)
     if (matchedFolder) {
       setSelectedFolder(matchedFolder.name);
     } else {
@@ -45,12 +48,12 @@ export default function CardMenuBar() {
 
   useEffect(() => {
     getFolders();
-  }, [])
+  }, [folderId])
 
   useEffect(() => {
     setSelectedFolder(folderId ? parseInt(folderId) : null);
     ChangeTitle();
-  }, [folderId, folderName]);
+  }, [folderId]);
 
   return (
     <>
