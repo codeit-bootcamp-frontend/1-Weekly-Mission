@@ -1,4 +1,6 @@
 import * as S from "@/components/authInput/AuthInput.style";
+import EyeOff from "@/images/auth/eye-off.svg";
+import EyeOn from "@/images/auth/eye-on.svg";
 import { MouseEvent, forwardRef, useState } from "react";
 import { DeepMap, FieldError, FieldValues, Path, RegisterOptions, UseFormRegister } from "react-hook-form";
 
@@ -14,7 +16,7 @@ interface AuthInputProps<TFormValues extends FieldValues> {
 }
 
 interface AuthPasswordInputProps<TFormValues extends FieldValues> extends AuthInputProps<TFormValues> {
-  type: "text" | "password";
+  type: "password";
 }
 
 const AuthInput = forwardRef<HTMLInputElement, AuthInputProps<FieldValues>>((props, ref) => {
@@ -40,16 +42,15 @@ AuthInput.displayName = "AuthInput";
 
 const PasswordInput = forwardRef<HTMLInputElement, AuthPasswordInputProps<FieldValues>>((props, ref) => {
   const { label, type, placeholder, autoComplete, errors, ...inputProps } = props;
-  const [inputType, setInputType] = useState(type);
+
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setShowPassword((prev) => {
-      const nextType = prev ? "password" : "text";
-      setInputType(nextType);
-      return !prev;
-    });
+    setShowPassword((prev) => !prev);
   };
+
+  const inputType = showPassword ? "text" : "password";
+
   return (
     <S.InputWrap>
       <S.AuthLabel>{label}</S.AuthLabel>
@@ -63,7 +64,7 @@ const PasswordInput = forwardRef<HTMLInputElement, AuthPasswordInputProps<FieldV
           autoComplete={autoComplete}
         />
         <S.EyeButton type="button" onClick={toggleShowPassword}>
-          {showPassword ? <S.EyeOn /> : <S.EyeOff />}
+          {showPassword ? <EyeOn /> : <EyeOff />}
         </S.EyeButton>
       </S.InputInner>
       {errors[inputProps.name] && <S.Warning>{errors[inputProps.name].message}</S.Warning>}
