@@ -8,11 +8,12 @@ import { FormValuesType } from "src/types/FormValue";
 
 function Signup() {
   const { register } = useForm<FormValuesType>({ mode: "onBlur" });
+
   return (
     <>
       <EmailInput register={register} />
       <PasswordInput register={register} />
-      <PasswordCorrectInput />
+      <PasswordCorrectInput register={register} />
     </>
   );
 }
