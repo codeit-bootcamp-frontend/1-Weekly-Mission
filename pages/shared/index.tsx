@@ -19,7 +19,7 @@ import {
   typeCheckParam,
 } from "@/utils/utils";
 
-import styles from "@/assets/styles/signPage.module.css";
+import styles from "@/assets/styles/sharedPage.module.css";
 
 interface Props {
   userData: UserData;
@@ -98,7 +98,7 @@ export const getServerSideProps = async (
         props: {
           userData: userDataResponseData,
           folderData: userFolderResponseData,
-          linksData: linksResponseData,
+          linksListData: linksResponseData,
         },
       };
     }
