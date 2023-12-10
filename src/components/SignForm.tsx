@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import * as S from "./SignFormStyles";
 import { SignupForm } from "@/types/form";
 import { isUsableEmail, signupUser } from "@/common/api";
 
 export default function SignupForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -13,9 +15,10 @@ export default function SignupForm() {
     formState: { errors, isValid },
   } = useForm<SignupForm>({ mode: "onBlur" });
 
+  // SWR로 mutation 하는 방법들 => 적용전이어서 주석처리
   // const { data, mutate } = useSWR("/api/sign-up");
   // const { mutate } = useSWRConfig();
-  // const { trigger, isMutating } = useSWRMutation('/api/user', sendRequest, /* options */)
+  // const { trigger, isMutating } = useSWRMutation(url, sendRequest, /* options */)
 
   const IconPath = "on";
 
@@ -26,6 +29,7 @@ export default function SignupForm() {
         password: data.password,
       });
       localStorage.setItem("accessToken", user.data.accessToken);
+      router.push("/folder");
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +56,7 @@ export default function SignupForm() {
   }, [setFocus]);
 
   // console.log(isValid);
+  // console.log(!!errors.email);
 
   return (
     <S.Form onSubmit={handleSubmit(onSubmitSignUp)}>
@@ -60,6 +65,7 @@ export default function SignupForm() {
         type="text"
         placeholder="이메일을 입력해주세요."
         autoComplete="off"
+        $isErrorStyle={!!errors.email}
         {...register("email", {
           required: "이메일을 입력해주세요.",
           pattern: {
@@ -76,6 +82,7 @@ export default function SignupForm() {
           type="password"
           placeholder="영문, 숫자를 조합해 8자 이상 입력해 주세요."
           autoComplete="off"
+          $isErrorStyle={!!errors.password}
           {...register("password", {
             required: "비밀번호를 입력해주세요.",
             pattern: {
@@ -93,6 +100,7 @@ export default function SignupForm() {
           type="password"
           placeholder="비밀번호와 일치하는 값을 입력해 주세요."
           autoComplete="off"
+          $isErrorStyle={!!errors.passwordCheck}
           {...register("passwordCheck", {
             required: "비밀번호를 한번 더 입력해주세요.",
             validate: validatePasswordCheck,

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  /* width: 25rem; */
   width: 100%;
   padding: 1rem 0;
   display: flex;
@@ -17,13 +16,13 @@ export const InputWrapper = styled.div`
   position: relative;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ $isErrorStyle: boolean }>`
   width: 100%;
   padding: 18px 15px;
-  /* margin-bottom: 0.75rem; */
   color: var(--color-gray);
   border-radius: 0.5rem;
-  border: 1px solid var(--color-gray-20);
+  border: 1px solid
+    ${({ $isErrorStyle }) => ($isErrorStyle ? "var(--color-red)" : "var(--color-gray-20)")};
   background: var(--color-white);
   outline: none;
 
@@ -31,17 +30,6 @@ export const Input = styled.input`
     border: 1px solid var(--color-primary);
   }
 `;
-
-//   .error {
-//     border-color: var(--color-red);
-//   }
-
-//   .form__input--selected {
-//     position: relative;
-//     top: 5px;
-//     right: 40px;
-//     cursor: pointer;
-//   }
 
 export const FormButton = styled.button`
   width: 100%;
