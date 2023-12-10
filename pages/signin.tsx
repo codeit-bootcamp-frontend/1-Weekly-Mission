@@ -1,6 +1,7 @@
-import { useLogin } from "@/lib/utils/LoginContext";
 import { useRouter } from "next/router";
 import { SignForm, SignHeader, SignSns } from "@/components";
+import { useLogin } from "@/lib/utils/LoginContext";
+import { checkLocalStorage } from "@/lib/utils/localStorage";
 import * as Styled from "@/style/SignPage.styled";
 
 const SignIn = () => {
@@ -8,7 +9,7 @@ const SignIn = () => {
   const router = useRouter();
 
   // Login 후 signin 페이지 접근 시, 폴더페이지로 리다이렉트
-  if (isLogin) {
+  if (isLogin || checkLocalStorage()) {
     router.push("/folder");
     return null;
   }
