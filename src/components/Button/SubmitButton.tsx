@@ -1,4 +1,3 @@
-import Link from "next/link";
 import theme from "src/styles/Theme/theme";
 import styled from "styled-components";
 
@@ -9,11 +8,9 @@ interface Props {
 
 function SubmitButton({ name, link }: Props) {
   return (
-    <Link href={link}>
-      <StyledWrapper>
-        <StyledInWrapper>{name}</StyledInWrapper>
-      </StyledWrapper>
-    </Link>
+    <StyledWrapper>
+      <StyledInWrapper type="submit">{name}</StyledInWrapper>
+    </StyledWrapper>
   );
 }
 
@@ -34,7 +31,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const StyledInWrapper = styled.div`
+const StyledInWrapper = styled.button`
   color: ${theme.color.white};
   font-size: 1.4rem;
   font-weight: ${theme.fontWeight.normal};
