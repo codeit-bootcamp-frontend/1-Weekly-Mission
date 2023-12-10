@@ -1,3 +1,7 @@
+/*LinkAddBar 컴포넌트
+  input에 링크를 작성하고 submit하면 AddCardModal이 뜨게 하는 컴포넌트.
+*/
+
 import { useState, ChangeEvent } from "react";
 import Image from "next/image";
 import styles from "./LinkAddBar.module.scss";

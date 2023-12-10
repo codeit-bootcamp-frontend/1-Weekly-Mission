@@ -1,3 +1,7 @@
+/*StarButton 컴포넌트:
+  Card 컴포넌트의 좌측 상단 별모양 버튼.
+*/
+
 import { useState } from "react";
 import Image from "next/image";
 import { CardInterface } from "@/types";

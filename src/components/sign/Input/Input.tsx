@@ -1,3 +1,16 @@
+/*Input 컴포넌트
+  signin, signup 페이지에서 쓰이는 input 컴포넌트.
+
+  id: input 태그의 id
+  label: input 태그와 연결될 label
+  type: text와 password 둘 중 하나를 받는 값.
+  placeholder: input 태그의 placeholder에 들어갈 값
+  onChange: input 태그에 키보드 이벤트 발생 시 실행될 함수
+  value: input 태그의 value 값
+  hasError: 이 값이 true라면 input 태그의 스타일을 error style로 정한다
+  errorMsg: hasError일 경우 input 태그 아래에 errorMsg를 띄운다
+*/
+
 import React, { useState } from "react";
 import styles from "./Input.module.scss";
 
@@ -8,11 +21,11 @@ export default function Input({
   id = "",
   label = "",
   type = "text",
-  placeholder = "내용을 입력해주세요.",
+  placeholder = "",
   onChange,
   value,
   hasError = false,
-  errorMsg = "잘못되었습니다!",
+  errorMsg = "",
 }: {
   id: string;
   label: string;

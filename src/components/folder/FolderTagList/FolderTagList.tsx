@@ -1,3 +1,11 @@
+/*FolderTagList 컴포넌트
+  클릭하면 해당 folder의 CardList 컴포넌트를 보여주는 folder 이름 버튼 리스트.
+
+  folders: 사용자의 전체 folderList 값을 가져옴.
+  current: 현재 위치한 folder. current folder button은 클래스 이름으로 `clicked` 를 가짐.
+  onClick: folder tag 버튼을 누를 때 발생하는 함수.
+*/
+
 import { FolderInterface } from "@/types";
 import styles from "./FolderTagList.module.scss";
 

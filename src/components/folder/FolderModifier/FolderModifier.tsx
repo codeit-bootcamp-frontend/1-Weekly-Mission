@@ -1,3 +1,7 @@
+/*FolderModifier 컴포넌트:
+  각 folder의 수정, 삭제, 공유 버튼 컴포넌트로, 전체 폴더에선 렌더링되지 않음.
+*/
+
 import Image from "next/image";
 import {
   DeleteFolderModal,

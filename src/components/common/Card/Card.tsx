@@ -1,3 +1,10 @@
+/*Card 컴포넌트:
+
+  card: card 값을 받아 개별적인 Card 컴포넌트를 생성
+  folderList: 값을 받아 KebabButton 컴포넌트에게 내려줌.
+  onClick: 값을 받아 KebabButton 컴포넌트에게 내려줌.
+ */
+
 import Link from "next/link";
 import StarButton from "@/components/common/StarButton/StarButton";
 import KebabButton from "@/components/common/KebabButton/KebabButton";

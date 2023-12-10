@@ -1,8 +1,17 @@
+/*Kebab 컴포넌트:
+  Card 컴포넌트 각각에 붙어있는 컴포넌트로, kebab을 누르면 삭제하기, 추가하기 버튼이 있는 메뉴바가 나옴.
+
+  card: 모달을 열 때 어떤 Card 컴포넌트에서 모달을 여는 것인지 파악하기 위한 값
+  onClick: 모달을 열게 해주는 함수
+  folderList: addLinkModal을 열 때 필요한 folderList 값.
+*/
+
 import { useState } from "react";
 import Image from "next/image";
 import { DeleteCardModal, AddCardModal } from "@/components/modals";
 import { CardInterface, FolderInterface, ModalInterface } from "@/types";
 import styles from "./KebabButton.module.scss";
+
 interface Props {
   card: CardInterface;
   onClick: (m: ModalInterface) => void;

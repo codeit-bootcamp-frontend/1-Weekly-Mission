@@ -1,3 +1,10 @@
+/*SearchBar 컴포넌트: 
+  검색어를 입력하는 컴포넌트. 이 검색어를 통해 원하는 Card 컴포넌트를 찾음.
+
+  onChange: 엔터를 누를 경우 호출할 함수.
+  keys: 입력한 검색어가 있을 때 input 내부 글자를 reset 해주는 resetButton을 렌더링해주는 값.
+*/
+
 import { useState, ChangeEvent } from "react";
 import Image from "next/image";
 import styles from "./SearchBar.module.scss";

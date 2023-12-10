@@ -1,3 +1,9 @@
+/*SignLayout 컴포넌트
+  SignUp, SignIn 페이지의 공통 레이아웃.
+
+  type: signin 페이지인지, signup 페이지인지 구분하기 위해 받는 인자
+*/
+
 import Link from "next/link";
 import { ReactNode } from "react";
 import styles from "./SignLayout.module.scss";

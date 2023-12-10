@@ -1,3 +1,7 @@
+/*Footer 컴포넌트:
+  페이지의 맨 아래에 들어가는 공통 컴포넌트
+*/
+
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.scss";

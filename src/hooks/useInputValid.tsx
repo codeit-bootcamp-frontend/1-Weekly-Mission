@@ -1,21 +1,23 @@
 import { ChangeEvent, useState } from "react";
 import { emailChecker, pswChecker } from "@/utils/checkReg";
 
-const SIGNUP = {
+const INITIAL_STATE = { hasError: false, errorMsg: "" };
+
+const INITIAL_INPUT = {
   email: "",
   password: "",
   passwordRepeat: "",
 };
 
-const SIGNUP_HAS_ERROR = {
-  email: { hasError: false, errorMsg: "" },
-  password: { hasError: false, errorMsg: "" },
-  passwordRepeat: { hasError: false, errorMsg: "" },
+const INITIAL_ERROR = {
+  email: INITIAL_STATE,
+  password: INITIAL_STATE,
+  passwordRepeat: INITIAL_STATE,
 };
 
 function useInputValid(inputs = "signin") {
-  const [inputValue, setValue] = useState(SIGNUP);
-  const [hasError, setHasError] = useState(SIGNUP_HAS_ERROR);
+  const [inputValue, setValue] = useState(INITIAL_INPUT);
+  const [hasError, setHasError] = useState(INITIAL_ERROR);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -39,8 +41,8 @@ function useInputValid(inputs = "signin") {
           };
         });
       } else {
-        setHasError((prev) => {
-          return { ...prev, [id]: { hasError: false, errorMsg: "" } };
+        setHasError(() => {
+          return { ...INITIAL_ERROR };
         });
       }
     } else if (id === "password" && inputs === "signup") {
@@ -62,8 +64,8 @@ function useInputValid(inputs = "signin") {
           };
         });
       } else {
-        setHasError((prev) => {
-          return { ...prev, [id]: { hasError: false, errorMsg: "" } };
+        setHasError(() => {
+          return { ...INITIAL_ERROR };
         });
       }
     } else if (id === "password" && inputs === "signin") {
@@ -75,8 +77,8 @@ function useInputValid(inputs = "signin") {
           };
         });
       } else {
-        setHasError((prev) => {
-          return { ...prev, [id]: { hasError: false, errorMsg: "" } };
+        setHasError(() => {
+          return { ...INITIAL_ERROR };
         });
       }
     } else if (id === "passwordRepeat") {
@@ -95,8 +97,8 @@ function useInputValid(inputs = "signin") {
           };
         });
       } else {
-        setHasError((prev) => {
-          return { ...prev, [id]: { hasError: false, errorMsg: "" } };
+        setHasError(() => {
+          return { ...INITIAL_ERROR };
         });
       }
     }

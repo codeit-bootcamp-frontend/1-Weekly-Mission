@@ -49,7 +49,7 @@ export default function FolderPage() {
     return data;
   }, []);
 
-  //TODO - currentFolder을 의존성에 넣으면 무한렌더링 발생. 왜??
+  //TODO - currentFolder을 의존성에 넣으면 무한렌더링 발생. 왜?? 나중에 SSR로 고치기
   useEffect(() => {
     getFolderTagList();
     getCards(currentFolder);
