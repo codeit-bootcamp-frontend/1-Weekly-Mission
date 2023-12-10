@@ -1,40 +1,44 @@
 import Image from "next/image";
-import { ChangeEvent, useState } from "react";
 import eyeOffImg from "src/assets/icon/eye-off.svg";
 import eyeOnImg from "src/assets/icon/eye-on.svg";
 import styles from "src/components/Input/Input.module.css";
+import { useErrorCheck } from "src/hook/Input/useErrorCheck";
+import { usePasswordVisible } from "src/hook/Input/usePasswordVisible";
 
 interface Input {
+  id: string;
   type: string;
   placeholder: string;
-  errorMsg: string;
+  status: number;
+  account: { email: string; password: string; passwordCheck: string };
+  setAccount: any; // 이 부분 어떤 타입으로 해야될지...
 }
 
-function Input({ type, placeholder, errorMsg }: Input) {
-  const [isVisible, setIsVisible] = useState(true);
-  const [isError, setIsError] = useState(true);
+function Input({ id, type, placeholder, status, account, setAccount }: Input) {
+  const { isVisible, visiblePassword } = usePasswordVisible();
+  const { isError, errorMsg, handleErrorCheck } = useErrorCheck(
+    type,
+    status,
+    account
+  );
 
-  const visiblePassword = () => {
-    setIsVisible(!isVisible);
-  };
-
-  const handleValue = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length === 0) {
-      setIsError(!isError);
-    } else {
-      setIsError(true);
-    }
+  const onChangeAccount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAccount({
+      ...account,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <input
+        id={id}
+        name={type}
         type={isVisible ? "text" : "password"}
-        name="input"
         className={isError ? styles.input : styles.errorInput}
         placeholder={placeholder}
-        onBlur={handleValue}
-        onChange={handleValue}
+        onBlur={handleErrorCheck}
+        onChange={onChangeAccount}
       />
       {isError ? <></> : <p className={styles.errorMsg}>{errorMsg}</p>}
       {type === "email" ? (

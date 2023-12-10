@@ -10,7 +10,7 @@ function FolderList({ folder, onClick }: FolderListProps) {
     <StyledWrapper>
       <StyledFolderWrapper>
         <FolderForm name={"전체"} onClick={() => navigate.push("/folder")} />
-        {folder.map((data: any) => (
+        {folder.map((data) => (
           <FolderForm
             key={data.id}
             name={data.name}

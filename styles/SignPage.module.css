@@ -1,0 +1,38 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f6ff;
+}
+
+.inWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.emailInput {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.passwordInput {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
