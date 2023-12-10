@@ -13,10 +13,14 @@ export const Label = styled.label`
   font-size: 0.9rem;
 `;
 
+export const InputWrapper = styled.div`
+  position: relative;
+`;
+
 export const Input = styled.input`
   width: 100%;
   padding: 18px 15px;
-  margin-bottom: 0.75rem;
+  /* margin-bottom: 0.75rem; */
   color: var(--color-gray);
   border-radius: 0.5rem;
   border: 1px solid var(--color-gray-20);
@@ -52,8 +56,17 @@ export const FormButton = styled.button`
   cursor: pointer;
 `;
 
+export const EyeIcon = styled.img`
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+`;
+
 export const ErrorMessage = styled.p`
   margin: 0;
+  margin-top: 0.75rem;
   color: var(--color-red);
   font-size: 0.875rem;
 `;
