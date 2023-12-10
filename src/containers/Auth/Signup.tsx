@@ -108,18 +108,14 @@ function Signup() {
     )
       return;
 
-    const {
-      data: {
-        data: { accessToken },
-      },
-      error: signupError,
-    } = await signup();
+    const { data, error: signupError } = await signup();
 
     if (signupError) {
       console.error('회원가입에 실패하였습니다.');
       return;
     }
 
+    const accessToken = data?.data?.accessToken;
     localStorage.setItem('accessToken', accessToken);
     router.push('/folder');
   };

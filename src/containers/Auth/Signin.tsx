@@ -57,12 +57,7 @@ function Signin() {
       return;
     }
 
-    const {
-      data: {
-        data: { accessToken },
-      },
-      error,
-    } = await signin();
+    const { data, error } = await signin();
 
     if (error) {
       setEmailErrorMessage(ERROR_MESSAGES.email.invalidLogin);
@@ -70,6 +65,7 @@ function Signin() {
       return;
     }
 
+    const accessToken = data?.data?.accessToken;
     localStorage.setItem('accessToken', accessToken);
     router.push('/folder');
   };
