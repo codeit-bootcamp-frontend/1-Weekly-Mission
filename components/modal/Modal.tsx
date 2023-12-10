@@ -49,7 +49,7 @@ export default function Modal({
 
   const onClickLinkCopy = useCallback(() => {
     copyToClipboard(shareLink);
-  }, []);
+  }, [shareLink, copyToClipboard]);
 
   return (
     <div className={styles.container}>

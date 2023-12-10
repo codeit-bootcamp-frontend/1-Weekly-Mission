@@ -13,7 +13,7 @@ export default function Footer() {
 
   useEffect(() => {
     setIsFooterVisible(isVisible);
-  }, [isVisible, setIsFooterVisible]);
+  }, [isVisible]);
 
   return (
     <div className={styles.container} ref={ref}>

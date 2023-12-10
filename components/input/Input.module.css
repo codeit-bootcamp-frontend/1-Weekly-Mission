@@ -1,29 +1,31 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.input {
   border-radius: 8px;
   padding: 18px 15px;
+
+  width: 32rem;
+  border: 1px solid var(--linkbrary-gray-20, #ccd5e3);
   background: var(--linkbrary-white, #fff);
-  width: 32rem;
 }
 
-.focus {
-  border-radius: 8px;
-  padding: 18px 15px;
-  width: 32rem;
-  border: 1px solid blue;
+.input:focus {
   outline: none;
+  border: 1px solid var(--linkbrary-primary-color, #6d6afe);
 }
 
-.success {
-  border-radius: 8px;
-  padding: 18px 15px;
-  width: 32rem;
-  border: 1px solid green;
-  outline: none;
+.label {
+  color: var(--black, #000);
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 0.8rem;
 }
-.error {
-  border-radius: 8px;
-  padding: 18px 15px;
-  width: 32rem;
-  border: 1px solid red;
-  outline: none;
+.eyes {
+  position: absolute;
+  top: 58%;
+  right: 1rem;
 }
