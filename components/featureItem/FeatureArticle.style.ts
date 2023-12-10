@@ -1,8 +1,8 @@
+import { FeatureItemGradients } from "@/constants/constants";
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
-import { ArticleProps, ArticleTitleProps } from "@/types/type";
 import styled from "styled-components";
 
-export const Article = styled.article<ArticleProps>`
+export const Article = styled.article<{ $isOdd: boolean }>`
   display: grid;
   margin: 0 auto;
   padding: 5rem 0;
@@ -37,7 +37,7 @@ export const TextWrap = styled.div`
   }
 `;
 
-export const Title = styled.h2<ArticleTitleProps>`
+export const Title = styled.h2<{ $idx: number }>`
   color: #000;
   font-family: Pretendard;
   font-size: 4.8rem;
@@ -57,20 +57,7 @@ export const Title = styled.h2<ArticleTitleProps>`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: ${({ $idx }) => {
-      switch ($idx) {
-        case 1:
-          return "linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%)";
-        case 2:
-          return "linear-gradient(277deg, #6fbaff -7.78%, #ffd88b 93.66%)";
-        case 3:
-          return "linear-gradient(99deg, #6d7ccd 25.76%, rgba(82, 136, 133, 0.22) 135.69%)";
-        case 4:
-          return "linear-gradient(271deg, #fe578f -185.84%, #68e8f9 107.18%)";
-        default:
-          return "none";
-      }
-    }};
+    background-image: ${({ $idx }) => FeatureItemGradients[String($idx)] || "none"};
   }
 `;
 

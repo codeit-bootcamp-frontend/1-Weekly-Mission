@@ -1,77 +1,101 @@
-import AuthInput from "@/components/authInput/AuthInput";
+import AuthInputs from "@/components/authInput/AuthInput";
 import { VALIDATE } from "@/constants/constants";
 import AuthLayout from "@/layouts/authLayout/AuthLayout";
-import { ErrorMessageType, InputValueType } from "@/types/type";
-import getErrorMessage from "@/utils/getErrorMessage";
+import { axiosInstance } from "@/utils/axiosInstance";
 import Head from "next/head";
-import { ChangeEvent, FocusEvent, FormEvent, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+interface SignInProps {
+  email: string;
+  password: string;
+}
 
 const SignIn = () => {
-  const [inputValue, setInputValue] = useState<InputValueType>({ userEmail: "", userPassword: "" });
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [errorMsg, setErrorMsg] = useState<ErrorMessageType>({ userEmail: "", userPassword: "" });
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setInputValue((prev) => ({ ...prev, [name]: value }));
-  };
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    getValues,
+    setError,
+  } = useForm<SignInProps>({ mode: "onBlur", reValidateMode: "onBlur" });
 
-  const validateInput = (e: FocusEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setErrorMsg((prev) => ({
-      ...prev,
-      [name]: getErrorMessage({ name, inputValue: inputValue[name], isValid: VALIDATE[name].test(value) }),
-    }));
-  };
+  const emailRegister = register("email", {
+    required: {
+      value: true,
+      message: "이메일을 입력해 주세요.",
+    },
+    pattern: {
+      value: VALIDATE.userEmail,
+      message: "올바른 이메일 주소가 아닙니다.",
+    },
+  });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const newErrorMsg: ErrorMessageType = { ...errorMsg };
+  const passwordRegister = register("password", {
+    required: {
+      value: true,
+      message: "비밀번호를 입력해 주세요.",
+    },
+    pattern: {
+      value: VALIDATE.userPassword,
+      message: "비밀번호를 확인해 주세요.",
+    },
+  });
 
-    let hasError = false;
-    for (const name in inputValue) {
-      const value = inputValue[name];
-      const errorMessage = getErrorMessage({ name, inputValue: value, isValid: VALIDATE[name].test(value) });
-
-      newErrorMsg[name] = errorMessage;
-
-      if (errorMessage) hasError = true;
+  const onSubmitHandler: SubmitHandler<SignInProps> = async () => {
+    setIsLoading(true);
+    const values = getValues();
+    try {
+      const res = await axiosInstance.post("/sign-in", values);
+      const { accessToken, refreshToken } = res.data.data;
+      window.localStorage.setItem("accessToken", accessToken);
+      window.localStorage.setItem("refreshToken", refreshToken);
+      router.push("/folder/all");
+    } catch (error) {
+      setError("email", {
+        message: "이메일을 확인해 주세요.",
+      });
+      setError("password", {
+        message: "비밀번호를 확인해 주세요.",
+      });
+    } finally {
+      setIsLoading(false);
     }
-
-    setErrorMsg(newErrorMsg);
-
-    if (hasError) {
-      return;
-    }
-
-    return;
   };
+
+  useEffect(() => {
+    const accessToken = window.localStorage.getItem("accessToken");
+    if (accessToken) router.push("/folder/all");
+  }, [router]);
 
   return (
     <>
       <Head>
         <title>로그인 - Linkbrary</title>
       </Head>
-      <AuthLayout handleSubmit={handleSubmit} mode="signin">
-        <AuthInput
+
+      <AuthLayout handleSubmit={handleSubmit(onSubmitHandler)} mode="signIn">
+        <AuthInputs.AuthInput
           label="이메일"
           type="email"
-          name="userEmail"
-          inputValue={inputValue.userEmail}
-          setInputValue={handleChange}
-          errorMsg={errorMsg.userEmail}
-          validateInput={validateInput}
+          placeholder="이메일을 입력해 주세요."
+          {...emailRegister}
+          errors={errors}
           autoComplete="username"
         />
-        <AuthInput.PasswordInput
+        <AuthInputs.PasswordInput
           label="비밀번호"
-          name="userPassword"
-          inputValue={inputValue.userPassword}
-          setInputValue={handleChange}
-          errorMsg={errorMsg.userPassword}
-          validateInput={validateInput}
+          type="password"
+          placeholder="비밀번호를 입력해 주세요."
+          {...passwordRegister}
+          errors={errors}
           autoComplete="current-password"
         />
-        <AuthLayout.AuthButton>로그인</AuthLayout.AuthButton>
+        <AuthLayout.AuthButton disabled={isLoading}>로그인</AuthLayout.AuthButton>
       </AuthLayout>
     </>
   );

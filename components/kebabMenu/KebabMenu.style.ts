@@ -1,8 +1,7 @@
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
-import { KebabButtonListProps } from "@/types/type";
 import styled from "styled-components";
 
-export const KebabButtonList = styled.ul<KebabButtonListProps>`
+export const KebabButtonList = styled.ul<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;

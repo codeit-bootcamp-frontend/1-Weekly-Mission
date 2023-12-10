@@ -1,9 +1,13 @@
 import * as S from "@/components/modal/Modal.style";
 import closeIconImage from "@/images/modalClose.png";
 import ModalLayout from "@/layouts/modalLayout/ModalLayout";
-import { ModalProps } from "@/types/type";
 import Image from "next/image";
 import { ReactNode } from "react";
+
+interface ModalProps {
+  children: ReactNode;
+  onClose: () => void;
+}
 
 const Modal = ({ children, onClose }: ModalProps) => {
   return (

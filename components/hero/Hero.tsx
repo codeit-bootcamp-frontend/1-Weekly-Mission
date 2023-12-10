@@ -16,13 +16,14 @@ const Hero = () => {
       </Link>
       <S.HeroImageContainer>
         <Image
-          src={heroImage.src}
-          width={1200}
-          height={800}
+          width={0}
+          height={0}
+          sizes="100vw"
           style={{
             width: "100%",
             height: "auto",
           }}
+          src={heroImage.src}
           priority
           alt="Linkbrary 홈페이지 메인화면 예시 이미지"
         />

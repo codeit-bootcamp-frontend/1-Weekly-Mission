@@ -1,6 +1,5 @@
 import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
 import CloseSvg from "@/images/close.svg";
-import { CloseIconProps } from "@/types/type";
 import styled from "styled-components";
 
 export const SearchBar = styled.div`
@@ -42,7 +41,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export const CloseIcon = styled(CloseSvg)<CloseIconProps>`
+export const CloseIcon = styled(CloseSvg)<{ onClick: () => void }>`
   position: absolute;
   bottom: 50%;
   right: 1.6rem;

@@ -1,7 +1,11 @@
 import * as S from "@/components/folderSearchBar/FolderSearchBar.style";
 import searchIcon from "@/images/Search.png";
-import { FolderSearchBarProps } from "@/types/type";
 import { ChangeEvent, FormEvent } from "react";
+
+interface FolderSearchBarProps {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
 
 const FolderSearchBar = ({ searchQuery, setSearchQuery }: FolderSearchBarProps) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value);

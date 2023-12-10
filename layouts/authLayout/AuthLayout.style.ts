@@ -1,12 +1,12 @@
-import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
-import Image from "next/image";
-import styled from "styled-components";
-import logoImg from "@/images/logo.svg";
-import Link from "next/link";
 import { Button } from "@/components/button/Button.style";
+import { RESPONSIBLE_MEDIA_QUERIES } from "@/constants/mediaQueries";
+import logoImg from "@/images/logo.svg";
+import Image from "next/image";
+import Link from "next/link";
+import styled from "styled-components";
 
 export const AuthWrap = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   padding: 23.8rem 3.2rem 11.6rem;
   background-color: var(--linkbrary-zircon);

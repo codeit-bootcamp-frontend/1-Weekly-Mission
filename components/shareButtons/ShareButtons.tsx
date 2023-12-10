@@ -1,10 +1,16 @@
 import * as S from "@/components/shareButtons/ShareButtons.style";
 import { KAKAO_SHARE_DATA, SHARE_LINKS } from "@/constants/constants";
 import { useKakaoSdk } from "@/hooks/useKakaoSdk";
-import { ShareLinksProps } from "@/types/type";
 import handleCopyClipBoard from "@/utils/handleCopyLink";
 import handleFacebookClick from "@/utils/handleFacebookClick";
+import { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
+
+interface ShareLinksProps {
+  iconSrc: StaticImageData;
+  iconTitle: string;
+  shareType: string;
+}
 
 const ShareButtons = () => {
   const router = useRouter();

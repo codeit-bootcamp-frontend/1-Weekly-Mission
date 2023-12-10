@@ -1,6 +1,3 @@
-import eyeOff from "@/images/auth/eye-off.svg";
-import eyeOn from "@/images/auth/eye-on.svg";
-import { AuthInputStyle } from "@/types/type";
 import styled from "styled-components";
 
 export const InputWrap = styled.div`
@@ -12,7 +9,7 @@ export const InputInner = styled.div`
   position: relative;
 `;
 
-export const AuthInput = styled.input<AuthInputStyle>`
+export const AuthInput = styled.input<{ $isValid: boolean }>`
   width: 100%;
   height: 6.2rem;
   padding: 1.5rem 1.8rem;
@@ -46,9 +43,6 @@ export const EyeButton = styled.button`
   width: 1.6rem;
   height: 1.6rem;
 `;
-
-export const EyeOff = styled(eyeOff)``;
-export const EyeOn = styled(eyeOn)``;
 
 export const Warning = styled.p`
   color: var(--linkbrary-red);

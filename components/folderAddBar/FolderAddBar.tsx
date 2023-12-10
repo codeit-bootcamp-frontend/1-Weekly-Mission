@@ -3,9 +3,15 @@ import Modal from "@/components/modal/Modal";
 import ModalSelectButton from "@/components/modalSelectButton/ModalSelectButton";
 import { MODALS_ID } from "@/constants/constants";
 import linkIcon from "@/images/link.png";
-import { FolderAddBarProps } from "@/types/type";
+import { Folder } from "@/types/type";
 import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
+
+interface FolderAddBarProps {
+  folders: Folder[];
+  isSticky: boolean;
+  isHidden: boolean;
+}
 
 const FolderAddBar = ({ folders, isSticky, isHidden }: FolderAddBarProps) => {
   const [addLinkValue, setAddLinkValue] = useState("");

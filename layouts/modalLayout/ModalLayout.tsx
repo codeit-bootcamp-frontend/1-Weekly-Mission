@@ -1,7 +1,11 @@
-import React, { MouseEvent, useEffect } from "react";
 import * as S from "@/layouts/modalLayout/ModalLayout.style";
 import { ModalPortal } from "@/utils/ModalPortal";
-import { ModalLayoutProps } from "@/types/type";
+import { MouseEvent, ReactNode, useEffect } from "react";
+
+interface ModalLayoutProps {
+  children: ReactNode;
+  onClose: () => void;
+}
 
 const ModalLayout = ({ children, onClose }: ModalLayoutProps) => {
   const onBackdropClick = (event: MouseEvent) => {

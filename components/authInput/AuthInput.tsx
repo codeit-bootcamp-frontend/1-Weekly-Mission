@@ -1,79 +1,81 @@
 import * as S from "@/components/authInput/AuthInput.style";
-import { AuthInputProps } from "@/types/type";
-import { MouseEvent, useState } from "react";
+import EyeOff from "@/images/auth/eye-off.svg";
+import EyeOn from "@/images/auth/eye-on.svg";
+import { MouseEvent, forwardRef, useState } from "react";
+import { DeepMap, FieldError, FieldValues, Path, RegisterOptions, UseFormRegister } from "react-hook-form";
 
-const AuthInput = ({
-  label,
-  type,
-  name,
-  inputValue,
-  setInputValue,
-  validateInput,
-  errorMsg,
-  autoComplete,
-}: AuthInputProps) => {
+interface AuthInputProps<TFormValues extends FieldValues> {
+  label: string;
+  type: string;
+  placeholder: string;
+  autoComplete: string;
+  name: Path<TFormValues>;
+  rules?: RegisterOptions;
+  register?: UseFormRegister<TFormValues>;
+  errors: Partial<DeepMap<TFormValues, FieldError>>;
+}
+
+interface AuthPasswordInputProps<TFormValues extends FieldValues> extends AuthInputProps<TFormValues> {
+  type: "password";
+}
+
+const AuthInput = forwardRef<HTMLInputElement, AuthInputProps<FieldValues>>((props, ref) => {
+  const { label, type, placeholder, autoComplete, errors, ...inputProps } = props;
   return (
     <S.InputWrap>
       <S.AuthLabel>{label}</S.AuthLabel>
       <S.InputInner>
         <S.AuthInput
-          $isValid={!errorMsg}
+          ref={ref}
           type={type}
-          name={name}
-          value={inputValue}
-          onChange={setInputValue}
-          onBlur={validateInput}
+          placeholder={placeholder}
+          {...inputProps}
+          $isValid={!errors[inputProps.name]}
           autoComplete={autoComplete}
-          placeholder={label}
         />
       </S.InputInner>
-      {errorMsg && <S.Warning>{errorMsg}</S.Warning>}
+      {errors[inputProps.name] && <S.Warning>{errors[inputProps.name].message}</S.Warning>}
     </S.InputWrap>
   );
-};
+});
+AuthInput.displayName = "AuthInput";
 
-const PasswordInput = ({
-  label,
-  name,
-  inputValue,
-  setInputValue,
-  validateInput,
-  errorMsg,
-  autoComplete,
-}: AuthInputProps) => {
-  const [inputType, setInputType] = useState("password");
+const PasswordInput = forwardRef<HTMLInputElement, AuthPasswordInputProps<FieldValues>>((props, ref) => {
+  const { label, type, placeholder, autoComplete, errors, ...inputProps } = props;
+
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setShowPassword((prev) => {
-      const nextType = prev ? "password" : "text";
-      setInputType(nextType);
-      return !prev;
-    });
+    setShowPassword((prev) => !prev);
   };
+
+  const inputType = showPassword ? "text" : "password";
+
   return (
     <S.InputWrap>
       <S.AuthLabel>{label}</S.AuthLabel>
       <S.InputInner>
         <S.AuthInput
-          $isValid={!errorMsg}
           type={inputType}
-          name={name}
-          value={inputValue}
-          onChange={setInputValue}
-          onBlur={validateInput}
+          ref={ref}
+          placeholder={placeholder}
+          {...inputProps}
+          $isValid={!errors[inputProps.name]}
           autoComplete={autoComplete}
-          placeholder={label}
         />
         <S.EyeButton type="button" onClick={toggleShowPassword}>
-          {showPassword ? <S.EyeOn /> : <S.EyeOff />}
+          {showPassword ? <EyeOn /> : <EyeOff />}
         </S.EyeButton>
       </S.InputInner>
-      {errorMsg && <S.Warning>{errorMsg}</S.Warning>}
+      {errors[inputProps.name] && <S.Warning>{errors[inputProps.name].message}</S.Warning>}
     </S.InputWrap>
   );
+});
+PasswordInput.displayName = "PasswordInput";
+
+const AuthInputs = {
+  AuthInput: AuthInput,
+  PasswordInput: PasswordInput,
 };
 
-AuthInput.PasswordInput = PasswordInput;
-
-export default AuthInput;
+export default AuthInputs;
