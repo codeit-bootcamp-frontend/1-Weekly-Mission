@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import Header from '@/components/sign/Header';
 import Button from '@/components/common/Button';
 import InputBox from '@/components/common/Input/InputBox';
-import { signUpEmailRules, signUpPwRules } from '@/lib/constants/validations';
+import { emailRules, signUpPwRules } from '@/lib/constants/validations';
 import SocialBox from '@/components/sign/SocialBox';
 import { onSignUp } from '@/lib/utils/onValid';
 import { checkToken } from '@/lib/utils/checkToken';
@@ -22,7 +22,7 @@ export default function SignUp() {
     <Background>
       <Container onSubmit={handleSubmit((data) => onSignUp(data, setError))}>
         <Header type="signup" />
-        <InputBox type="이메일" placeholder="이메일을 입력해 주세요." register={register('email', signUpEmailRules)} error={errors.email} />
+        <InputBox type="이메일" placeholder="이메일을 입력해 주세요." register={register('email', emailRules)} error={errors.email} />
         <InputBox
           type="비밀번호"
           placeholder="영문, 숫자를 조합해 8자 이상 입력해 주세요."
