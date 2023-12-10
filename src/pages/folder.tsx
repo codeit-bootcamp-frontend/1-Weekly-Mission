@@ -25,9 +25,19 @@ interface Link {
   count: number;
 }
 
+export interface UserProfile {
+  id: number;
+  created_at: string;
+  name: string;
+  image_source: string;
+  email: string;
+  auth_id: string;
+}
+
 interface Props {
   cards: Cards;
   folders: Folder[];
+  profile: UserProfile;
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -40,15 +50,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const response2 = await apiRequest({ url: '/users/1/folders' });
   const folders = response2.data.data;
 
+  const response3 = await apiRequest({ url: '/users/1' });
+  const profile = response3.data.data[0];
+
   return {
     props: {
       cards: cards,
       folders: folders,
+      profile: profile,
     },
   };
 }
 
-const Folder = ({ cards, folders }: Props) => {
+const Folder = ({ cards, folders, profile }: Props) => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const ref = useRef(null);
@@ -75,7 +89,7 @@ const Folder = ({ cards, folders }: Props) => {
   }, []);
 
   return (
-    <Layout>
+    <Layout profile={profile}>
       <div ref={ref}>
         <AddLinkForm isScrolled={isScrolled} />
       </div>
