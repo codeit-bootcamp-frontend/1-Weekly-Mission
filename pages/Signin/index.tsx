@@ -1,13 +1,16 @@
 import { ReactElement } from "react";
+import { useForm } from "react-hook-form";
 import EmailInput from "src/components/Input/EmailInput";
 import PasswordInput from "src/components/Input/PasswordInput";
 import AuthLayout from "src/components/Layout/AuthLayout";
+import { FormValuesType } from "src/types/FormValue";
 
 function Signin() {
+  const { register } = useForm<FormValuesType>({ mode: "onBlur" });
   return (
     <>
-      <EmailInput />
-      <PasswordInput />
+      <EmailInput register={register} />
+      <PasswordInput register={register} />
     </>
   );
 }
