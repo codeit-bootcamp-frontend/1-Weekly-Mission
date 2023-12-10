@@ -1,6 +1,6 @@
 import style from "./SharedHero.module.css";
 import { useEffect, useState } from "react";
-import requestData from "../../../services/api";
+import requestData from "../../../lib/api";
 import noUserImg from "/public/icon/icon-myprofile.svg";
 import { IFolderInfoData } from "../types/Hero.types";
 import Image from "next/image";

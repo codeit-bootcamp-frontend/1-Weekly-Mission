@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import AddFolderIcon from "../../assets/image/addFolderIcon.svg";
 import { useState } from "react";
+import styled from "styled-components";
+import Image from "next/image";
+import AddFolderIcon from "/public/icon/addFolderIcon.svg";
 import AddFolderOptionBtn from "./AddFolderOptionBtn";
 
 function FloatingAddFolderBtn() {
@@ -44,7 +45,7 @@ function FloatingAddFolderBtn() {
       <BtnContainer>
         <AddFolderBtn onClick={handleAddFolderBtnClick}>
           폴더 추가
-          <img src={AddFolderIcon} alt="folder add icon" />
+          <Image src={AddFolderIcon} alt="folder add icon" />
         </AddFolderBtn>
 
         <AddFolderOptionBtn

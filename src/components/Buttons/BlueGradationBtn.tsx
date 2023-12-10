@@ -5,11 +5,13 @@ interface IBtnStyleProps {
   children?: ReactNode;
   width?: string;
   margin?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 function BlueGradationBtn({
   children = "",
   width = "auto",
   margin = "0",
+  onClick: ClickEvent,
 }: IBtnStyleProps) {
   const BtnStyle = styled.button`
     display: flex;
@@ -26,7 +28,7 @@ function BlueGradationBtn({
     font-weight: 600;
     margin: ${margin};
   `;
-  return <BtnStyle>{children}</BtnStyle>;
+  return <BtnStyle onClick={ClickEvent}>{children}</BtnStyle>;
 }
 
 export default BlueGradationBtn;

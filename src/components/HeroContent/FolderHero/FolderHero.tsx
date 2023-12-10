@@ -17,7 +17,7 @@ function FolderHero() {
       <div className={styles.container}>
         <div className={styles.div_link}>
           <div>
-            <span>
+            <span className={styles.link_image}>
               <Image src={LinkImg} alt="link icon" />
             </span>
           </div>
@@ -26,11 +26,11 @@ function FolderHero() {
               추가하기
             </button>
           </div>
+          <input
+            className={styles.input_link}
+            placeholder="링크를 추가해 보세요"
+          />
         </div>
-        <input
-          className={styles.input_link}
-          placeholder="링크를 추가해 보세요"
-        />
       </div>
       <AddLinkToFolder
         isOpen={isOpen}

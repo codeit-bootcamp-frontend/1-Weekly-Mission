@@ -4,12 +4,6 @@ import HeroContent from "../components/HeroContent/HeroContent";
 import MainContent from "../components/MainContent";
 import styled from "styled-components";
 
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-`;
 function SharedPage() {
   return (
     <>
@@ -24,3 +18,11 @@ function SharedPage() {
 }
 
 export default SharedPage;
+
+// <-- styled-comonents-->
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+`;
