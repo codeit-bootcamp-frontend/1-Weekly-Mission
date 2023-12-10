@@ -1,4 +1,4 @@
-import { DefaultBtnContainer } from "@/components/button/DefaultButton";
+import { ButtonContainer } from "@/components/button/buttonStyled";
 import { device } from "@/styles/globalStyle";
 import styled from "styled-components";
 
@@ -96,7 +96,7 @@ export const TopSection = styled(Section)`
     }
   }
 
-  ${DefaultBtnContainer} {
+  ${ButtonContainer} {
     width: 35rem;
 
     @media all and (${device.mobile}) {

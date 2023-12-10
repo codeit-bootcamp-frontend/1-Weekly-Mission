@@ -5,69 +5,56 @@ import {
   CardImgContainer,
   CardWrapper,
   ContentContainer,
-  OptionMenuContainer,
 } from "./cardStyled";
 import OptionIcon from "@/public/assets/card/img_option.png";
 import StarIcon from "@/public/assets/card/img_star.png";
 import { useState } from "react";
 import Image from "next/image";
+import { calculateTimeElapse } from "@/utils/utility";
+import Link from "next/link";
+import CardOptionMenu from "./CardOptionMenu";
+import { DeleteModalItem } from "@/pages/folder";
 
-const calculateTimeAgo = (createdAt: string) => {
-  const createdDate = moment(createdAt, "YYYY-MM-DDTHH:mm:ss[Z]");
-  const currentDate = moment();
-  const diff = currentDate.diff(createdDate, "seconds");
-
-  if (diff < 120) {
-    return "1 minute ago";
-  } else if (diff <= 3540) {
-    return `${Math.floor(diff / 60)} minutes ago`;
-  } else if (diff < 3600) {
-    return "1 hour ago";
-  } else if (diff <= 82800) {
-    return `${Math.floor(diff / 3600)} hours ago`;
-  } else if (diff < 86400) {
-    return "1 day ago";
-  } else if (diff <= 2592000) {
-    return `${Math.floor(diff / 86400)} days ago`;
-  } else if (diff <= 28512000) {
-    return `${Math.floor(diff / 2592000)} months ago`;
-  } else if (diff <= 31536000) {
-    return "1 year ago";
-  } else {
-    return `${Math.floor(diff / 31536000)} years ago`;
-  }
-};
-
-interface ICardProp {
+interface CardProps {
   cardData: any;
-  onClickDelete?: any;
-  onClickAdd?: any;
+  onClickDelete?: (modalType: string, content: DeleteModalItem) => void;
+  onClickAdd?: (content: string) => void;
   isFolder: boolean;
 }
 
-const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: ICardProp) => {
-  const ago = calculateTimeAgo(cardData.created_at || cardData.createdAt);
+const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: CardProps) => {
+  const timesElapsedText = calculateTimeElapse(
+    cardData.created_at || cardData.createdAt
+  );
   const createdAtFormat = moment(
     cardData.created_at || cardData.createdAt
   ).format("YYYY.MM.DD");
   const [isOpenOption, setIsOpenOption] = useState(false);
 
-  const openUrl = () => {
-    window.open(cardData.url, "__blank");
-  };
-
   return (
     <CardWrapper>
-      <CardContainer onClick={openUrl}>
-        {cardData.image_source || cardData.imageSource ? (
+      <Link href={cardData.url} target="_blank">
+        <CardContainer>
           <CardImgContainer>
-            <Image
-              priority
-              className="cardImage"
-              src={cardData.image_source || cardData.imageSource}
-              alt="cardImg"
-              fill
-            />
+            {cardData.image_source || cardData.imageSource ? (
+              <Image
+                priority
+                className="cardImage"
+                src={cardData.image_source || cardData.imageSource}
+                alt="cardImg"
+                fill
+              />
+            ) : (
+              <Image
+                priority
+                src={LogoImg}
+                alt="logoImg"
+                className="noImgLogo"
+                width="133"
+                height="24"
+              />
+            )}
+
             {isFolder && (
               <Image
                 src={StarIcon}
@@ -78,54 +65,35 @@ const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: ICardProp) => {
               />
             )}
           </CardImgContainer>
-        ) : (
-          <CardImgContainer>
-            <Image
-              priority
-              src={LogoImg}
-              alt="logoImg"
-              className="noImgLogo"
-              width="133"
-              height="24"
-            />
-            {isFolder && (
-              <Image
-                src={StarIcon}
-                className="starIcon"
-                alt="starIcon"
-                width="34"
-                height="34"
-              />
-            )}
-          </CardImgContainer>
-        )}
 
-        <ContentContainer>
-          <div className="contentOptionContainer">
-            <div className="contentAgo">{ago}</div>
-            {isFolder && (
-              <Image
-                className="optionBtn"
-                src={OptionIcon}
-                alt="optionIcon"
-                width="21"
-                height="17"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsOpenOption(!isOpenOption);
-                }}
-              />
-            )}
-          </div>
-          <div className="content">{cardData.description}</div>
-          <div className="contentAt">{createdAtFormat}</div>
-        </ContentContainer>
-      </CardContainer>
+          <ContentContainer>
+            <div className="contentOptionContainer">
+              <div className="contentAgo">{timesElapsedText} ago</div>
+              {isFolder && (
+                <Image
+                  className="optionBtn"
+                  src={OptionIcon}
+                  alt="optionIcon"
+                  width="21"
+                  height="17"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpenOption(!isOpenOption);
+                  }}
+                />
+              )}
+            </div>
+            <div className="content">{cardData.description}</div>
+            <div className="contentAt">{createdAtFormat}</div>
+          </ContentContainer>
+        </CardContainer>
+      </Link>
 
-      {isOpenOption && (
-        <OptionMenu
+      {isOpenOption && onClickAdd && onClickDelete && (
+        <CardOptionMenu
           onClickDelete={onClickDelete}
           onClickAdd={onClickAdd}
+          link={cardData.url}
           content={{ id: cardData.id, title: cardData.url }}
         />
       )}
@@ -134,32 +102,3 @@ const Card = ({ cardData, onClickDelete, onClickAdd, isFolder }: ICardProp) => {
 };
 
 export default Card;
-
-interface IOptionMenuProp {
-  onClickDelete: any;
-  onClickAdd: any;
-  content: {
-    id: number;
-    title: string;
-  };
-}
-
-const OptionMenu = ({
-  onClickDelete,
-  onClickAdd,
-  content,
-}: IOptionMenuProp) => {
-  return (
-    <OptionMenuContainer>
-      <div
-        className="optionMenuItem"
-        onClick={() => onClickDelete("linkDelete", content)}
-      >
-        삭제하기
-      </div>
-      <div className="optionMenuItem" onClick={() => onClickAdd()}>
-        폴더에 추가
-      </div>
-    </OptionMenuContainer>
-  );
-};

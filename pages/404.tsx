@@ -1,6 +1,7 @@
-import DefaultBtn, {
-  DefaultBtnContainer,
-} from "@/components/button/DefaultButton";
+import Button from "@/components/button/Button";
+import GradientButton from "@/components/button/GradientButton";
+import { ButtonContainer } from "@/components/button/buttonStyled";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
@@ -16,9 +17,9 @@ export default function NotFound() {
         <br />
         요청하신 페이지가 사라졌거나, 잘못된 경로를 이용하셨어요 :)
       </div>
-      <DefaultBtn onClick={handleBtn} type="default">
-        홈으로 이동
-      </DefaultBtn>
+      <Link href={"/"}>
+        <GradientButton>홈으로 이동</GradientButton>
+      </Link>
     </NotFoundWrapper>
   );
 }
@@ -42,7 +43,7 @@ const NotFoundWrapper = styled.div`
     line-height: 8rem;
   }
 
-  ${DefaultBtnContainer} {
+  ${ButtonContainer} {
     width: 20rem;
   }
 `;

@@ -16,20 +16,21 @@ import EditIcon from "@/public/assets/folder/img_editIcon.png";
 import DeleteIcon from "@/public/assets/folder/img_deleteIcon.png";
 
 import { ContentContainer, CardContainer } from "@/styles/sharedStyled";
-import AddFloatingBtn from "@/components/button/AddFloatingButton";
+import AddFloatingButton from "@/components/button/AddFloatingButton";
 import { modalState } from "../recoil/modal";
 import { useRecoilState } from "recoil";
-import AddToFolderModal from "@/components/modal/AddToFolderModal";
-import DefaultModal from "@/components/modal/DefaultModal";
+import AddToFolderModal from "@/components/modal/addToFolderModal/AddToFolderModal";
 import ModalLayout from "@/components/modal/ModalLayout";
-import ShareFolderModal from "@/components/modal/SharedFolderModal";
+import ShareFolderModal from "@/components/modal/sharedFolderModal/SharedFolderModal";
 import Input from "@/components/input/Input";
-import DefaultBtn from "@/components/button/DefaultButton";
 import Image from "next/image";
 import Card from "@/components/card/Card";
 import { Section, Wrapper } from "@/components/common/commonStyled";
 import request from "@/lib/axios";
 import { ApiMapper } from "@/lib/apiMapper";
+import DeleteModal from "@/components/modal/DeleteModal";
+import EnterModal from "@/components/modal/EnterModal";
+import GradientButton from "@/components/button/GradientButton";
 
 const LinkToolArr = [
   {
@@ -49,20 +50,40 @@ const LinkToolArr = [
   },
 ];
 
-interface IFolderData {
+export interface FolderData {
   id: number;
   name: string;
+  link: {
+    count: number;
+  };
 }
 
-interface ISelectedFolder {
+export interface SelectedFolder {
   id: number;
   title: string;
 }
 
+export interface DeleteModalItem {
+  id: number;
+  title?: string;
+  url?: string;
+}
+
+interface StateObj {
+  [index: string]: string;
+}
+
+const StateObj: StateObj = {
+  folderEdit: "폴더 이름 변경",
+  folderAdd: "폴더 추가",
+  folderDelete: "폴더 삭제",
+  linkDelete: "링크 삭제",
+};
+
 const Folder = () => {
   const [cardData, setCardData] = useState([]);
-  const [folderData, setFolderData] = useState<IFolderData[]>([]);
-  const [selectedFolder, setSelectedFolder] = useState<ISelectedFolder>({
+  const [folderData, setFolderData] = useState<FolderData[]>([]);
+  const [selectedFolder, setSelectedFolder] = useState<SelectedFolder>({
     id: 1,
     title: "전체",
   });
@@ -71,6 +92,16 @@ const Folder = () => {
   const [searchLinkValue, setSearchLinkValue] = useState("");
 
   const [modalOpened, setModalOpened] = useRecoilState(modalState);
+
+  const [modalType, setModalType] = useState("");
+  const [enterModalItem, setEnterModalItem] = useState<SelectedFolder>({
+    id: 0,
+    title: "",
+  });
+  const [deleteModalItem, setDeleteModalItem] = useState<DeleteModalItem>({
+    id: 0,
+  });
+  const [addToFolderItem, setAddToFolderItem] = useState("");
 
   const handleFolder = useCallback(async () => {
     try {
@@ -84,8 +115,7 @@ const Folder = () => {
         return;
       }
 
-      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-      return;
+      throw new Error();
     } catch (e) {
       alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
     }
@@ -113,8 +143,7 @@ const Folder = () => {
         return;
       }
 
-      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-      return;
+      throw new Error();
     } catch (e) {
       alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
     }
@@ -124,36 +153,49 @@ const Folder = () => {
     handleLinks();
   }, [handleLinks]);
 
-  const handleAddToFolderModal = () => {
-    if (link.length > 0) {
-      setModalOpened((prev: any) => ({
-        ...prev,
-        addToFolderModal: {
-          display: true,
-          link: link,
-          content: folderData,
-        },
-      }));
-    }
-  };
+  const handleAddToFolderModal = (content: string) => {
+    setAddToFolderItem(content);
 
-  const handleDefaultMoal = (state: string, content: ISelectedFolder) => {
     setModalOpened((prev: any) => ({
       ...prev,
-      defaultModal: {
+      addToFolderModal: {
         display: true,
-        content: content || "",
-        state: state,
       },
     }));
   };
 
-  const handleShareFolderModal = (content: ISelectedFolder) => {
+  const handleShareFolderModal = () => {
     setModalOpened((prev: any) => ({
       ...prev,
       shareFolderModal: {
         display: true,
-        content: content,
+      },
+    }));
+  };
+
+  const handleEnterMoal = (
+    modalType: string,
+    content: SelectedFolder = { id: 0, title: "" }
+  ) => {
+    setModalType(modalType);
+    setEnterModalItem(content);
+
+    setModalOpened((prev: any) => ({
+      ...prev,
+      enterModal: {
+        display: true,
+      },
+    }));
+  };
+
+  const handleDeleteModal = (modalType: string, content: DeleteModalItem) => {
+    setModalType(modalType);
+    setDeleteModalItem(content);
+
+    setModalOpened((prev: any) => ({
+      ...prev,
+      deleteModal: {
+        display: true,
       },
     }));
   };
@@ -173,14 +215,28 @@ const Folder = () => {
           <ContentContainer $isFolder={true}>
             <AddLinkInputContainer>
               <Input
-                src={LinkAddIcon}
+                label={"linkAdd"}
+                icon={
+                  <Image
+                    src={LinkAddIcon}
+                    alt="inputIcon"
+                    className="inputIcon"
+                  />
+                }
                 placeholder={"링크를 추가해 보세요"}
                 value={link}
                 setValue={setLink}
               ></Input>
-              <DefaultBtn onClick={handleAddToFolderModal} type="default">
+              <GradientButton
+                onClick={() => {
+                  if (link !== "") {
+                    handleAddToFolderModal(link);
+                    setLink("");
+                  }
+                }}
+              >
                 추가하기
-              </DefaultBtn>
+              </GradientButton>
             </AddLinkInputContainer>
           </ContentContainer>
         </Section>
@@ -188,7 +244,10 @@ const Folder = () => {
         <FolderSection $bg="var(--white)">
           <FolderContentContainer $isFolder={true}>
             <Input
-              src={SearchImg}
+              label="searchLink"
+              icon={
+                <Image src={SearchImg} alt="inputIcon" className="inputIcon" />
+              }
               placeholder="링크를 검색해보세요"
               value={searchLinkValue}
               setValue={setSearchLinkValue}
@@ -229,12 +288,7 @@ const Folder = () => {
               <div className="folderAddBtnContainer">
                 <div
                   className="folderAddTitle"
-                  onClick={() =>
-                    handleDefaultMoal("folderAdd", {
-                      id: 0,
-                      title: "",
-                    })
-                  }
+                  onClick={() => handleEnterMoal("folderAdd")}
                 >
                   폴더 추가
                 </div>
@@ -261,10 +315,14 @@ const Folder = () => {
                           key={index}
                           onClick={() => {
                             if (e.state === "folderShare") {
-                              handleShareFolderModal(selectedFolder);
+                              handleShareFolderModal();
                               return;
                             }
-                            handleDefaultMoal(e.state, selectedFolder);
+                            if (e.state === "folderDelete") {
+                              handleDeleteModal("folderDelete", selectedFolder);
+                              return;
+                            }
+                            handleEnterMoal(e.state, selectedFolder);
                           }}
                         >
                           <Image src={e.src} alt={e.title} />
@@ -281,7 +339,7 @@ const Folder = () => {
                       <Card
                         key={e.id}
                         cardData={e}
-                        onClickDelete={handleDefaultMoal}
+                        onClickDelete={handleDeleteModal}
                         onClickAdd={handleAddToFolderModal}
                         isFolder={true}
                       />
@@ -294,23 +352,32 @@ const Folder = () => {
             )}
           </FolderContentContainer>
 
-          <AddFloatingBtn />
+          <AddFloatingButton onClick={handleEnterMoal} />
         </FolderSection>
       </Wrapper>
 
       {modalOpened.addToFolderModal.display && (
         <ModalLayout>
-          <AddToFolderModal />
+          <AddToFolderModal
+            folderData={folderData}
+            link={addToFolderItem}
+            selectedFolderItem={selectedFolder}
+          />
         </ModalLayout>
       )}
-      {modalOpened.defaultModal.display && (
+      {modalOpened.enterModal.display && (
         <ModalLayout>
-          <DefaultModal />
+          <EnterModal title={StateObj[modalType]} content={enterModalItem} />
         </ModalLayout>
       )}
       {modalOpened.shareFolderModal.display && (
         <ModalLayout>
-          <ShareFolderModal />
+          <ShareFolderModal content={selectedFolder} />
+        </ModalLayout>
+      )}
+      {modalOpened.deleteModal.display && (
+        <ModalLayout>
+          <DeleteModal title={StateObj[modalType]} content={deleteModalItem} />
         </ModalLayout>
       )}
     </>

@@ -13,8 +13,8 @@ import SectionImg2 from "@/public/assets/home/img_section2Img.png";
 import SectionImg3 from "@/public/assets/home/img_section3Img.png";
 import SectionImg4 from "@/public/assets/home/img_section4Img.png";
 import Link from "next/link";
-import DefaultBtn from "@/components/button/DefaultButton";
 import { useRouter } from "next/router";
+import GradientButton from "@/components/button/GradientButton";
 
 const Home = () => {
   const router = useRouter();
@@ -32,9 +32,9 @@ const Home = () => {
             관리해 보세요
           </div>
           <Link href="/signup">
-            <DefaultBtn onClick={handleLinkAddBtn} type="default">
+            <GradientButton onClick={handleLinkAddBtn}>
               링크 추가하기
-            </DefaultBtn>
+            </GradientButton>
           </Link>
 
           <div className="imgContainer">

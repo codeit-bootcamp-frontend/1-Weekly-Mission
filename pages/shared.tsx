@@ -13,18 +13,18 @@ import Input from "@/components/input/Input";
 import Card from "@/components/card/Card";
 import { ApiMapper } from "@/lib/apiMapper";
 
-interface IUser {
+interface User {
   name: string;
   profileImageSource: string;
 }
 
-interface ICardData {
+interface CardData {
   id: number;
 }
 
 const Shared = () => {
-  const [cardData, setCardData] = useState<ICardData[]>([]);
-  const [user, setUser] = useState<IUser>();
+  const [cardData, setCardData] = useState<CardData[]>([]);
+  const [user, setUser] = useState<User>();
   const [folderName, setFolderName] = useState<string>("");
   const [searchLinkValue, setSearchLinkValue] = useState("");
 
@@ -41,8 +41,7 @@ const Shared = () => {
         return;
       }
 
-      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-      return;
+      throw new Error();
     } catch (e) {
       alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
     }
@@ -73,7 +72,10 @@ const Shared = () => {
       <Section $bg="#fff">
         <FolderContentContainer $isFolder={false}>
           <Input
-            src={SearchImg}
+            label="searchLink"
+            icon={
+              <Image src={SearchImg} alt="inputIcon" className="inputIcon" />
+            }
             placeholder="링크를 검색해보세요"
             value={searchLinkValue}
             setValue={setSearchLinkValue}

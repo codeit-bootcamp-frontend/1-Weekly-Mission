@@ -1,59 +1,35 @@
 import { atom } from "recoil";
 
-interface IAddToFolderModalContent {
-  id: number;
-  name: string;
-  link: {
-    count: number;
-  };
-}
-
-interface IModal {
+interface Modal {
   [key: string]: any;
-  defaultModal: {
-    display: boolean;
-    state: string;
-    content: {
-      id: number;
-      title: string;
-    };
-  };
   addToFolderModal: {
     display: boolean;
-    link: string;
-    content: IAddToFolderModalContent[];
   };
   shareFolderModal: {
     display: boolean;
-    content: {
-      id: number;
-      title: string;
-    };
+  };
+  deleteModal: {
+    display: boolean;
+  };
+  enterModal: {
+    display: boolean;
   };
 }
 
-export const modalState = atom<IModal>({
+export const modalState = atom<Modal>({
   key: "modal",
   default: {
-    defaultModal: {
-      display: false,
-      state: "",
-      content: {
-        id: -1,
-        title: "",
-      },
-    },
     addToFolderModal: {
       display: false,
-      link: "",
-      content: [],
     },
     shareFolderModal: {
       display: false,
-      content: {
-        id: -1,
-        title: "",
-      },
+    },
+    deleteModal: {
+      display: false,
+    },
+    enterModal: {
+      display: false,
     },
   },
 });

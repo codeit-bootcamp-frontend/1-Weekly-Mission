@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Wrapper } from "../common/commonStyled";
-import { DefaultBtnContainer } from "../button/DefaultButton";
+import { ButtonContainer } from "@/components/button/buttonStyled";
 
 export const UserWrapper = styled(Wrapper)`
   background: var(--background);
@@ -57,7 +57,7 @@ export const InputBoxContainer = styled.section`
     flex-direction: column;
     gap: 2.4rem;
 
-    ${DefaultBtnContainer} {
+    ${ButtonContainer} {
       width: 100%;
       margin-top: 0.6rem;
     }

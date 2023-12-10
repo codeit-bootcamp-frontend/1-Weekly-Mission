@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { device } from "@/styles/globalStyle";
-import { DefaultBtnContainer } from "@/components/button/DefaultButton";
-import { InputContainer } from "@/components/input/Input";
+import { ButtonContainer } from "@/components/button/buttonStyled";
 import { ContentContainer } from "./sharedStyled";
 import { Section } from "@/components/common/commonStyled";
+import { InputContainer } from "@/components/input/inputStyled";
 
 export const FolderSection = styled(Section)`
   min-height: calc(100vh - 46.5rem);
@@ -68,7 +68,7 @@ export const AddLinkInputContainer = styled.div`
     }
   }
 
-  ${DefaultBtnContainer} {
+  ${ButtonContainer} {
     padding: 1rem 1.6rem;
     font-size: 1.4rem;
     width: 8.1rem;
