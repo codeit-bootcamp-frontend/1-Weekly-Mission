@@ -17,7 +17,7 @@ interface Props {
 }
 
 const SignForm = ({ signUp, btnText }: Props) => {
-  const { setIsLogin } = useLogin();
+  const { setIsLogin, setUserEmail } = useLogin();
   const router = useRouter();
 
   const [emailValue, setEmailValue] = useState({
@@ -96,6 +96,7 @@ const SignForm = ({ signUp, btnText }: Props) => {
           passwordConfirmValue.value
         )
       ) {
+        // 검사에 이상이 없는 경우
         try {
           const result = await requestSignUp(
             emailValue.value,
@@ -104,6 +105,7 @@ const SignForm = ({ signUp, btnText }: Props) => {
           const {
             data: { accessToken },
           } = result;
+          setUserEmail(emailValue.value);
           setLocalStorage(accessToken);
           setIsLogin(true);
           router.push("/folder");
@@ -146,6 +148,7 @@ const SignForm = ({ signUp, btnText }: Props) => {
           const {
             data: { accessToken },
           } = result;
+          setUserEmail(emailValue.value);
           setLocalStorage(accessToken);
           setIsLogin(true);
           router.push("/folder");

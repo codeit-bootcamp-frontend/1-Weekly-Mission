@@ -1,33 +1,23 @@
-import { Dispatch, MouseEvent, SetStateAction, useEffect, useRef } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import usePopOver from "@/lib/hooks/usePopOver";
-import { UserData } from "@/lib/types/data";
 import { useLogin } from "@/lib/utils/LoginContext";
 import { getUsers } from "@/lib/utils/api";
 import { LogoutDropDownList } from "..";
 import * as Styled from "./LoginBtn.styled";
 
-interface Props {
-  data: UserData;
-  setUserData: Dispatch<SetStateAction<UserData>>;
-}
-
-const LoginButton = ({ data, setUserData }: Props) => {
-  const { isLogin } = useLogin();
+const LoginButton = () => {
   const ImgBgRef = useRef<HTMLDivElement>(null);
-  const { email, imageSource } = data;
+  const { isLogin, userEmail } = useLogin();
   const { isOpen, openPopOver, closePopOver } = usePopOver();
+  const [userImage, setUserImage] = useState("");
 
   const BtnClickHandler = async () => {
     try {
       const userProfile = await getUsers();
       const {
-        data: [{ email, image_source }],
+        data: [{ image_source }],
       } = userProfile;
-      setUserData((prevData) => ({
-        ...prevData,
-        email,
-        imageSource: image_source,
-      }));
+      setUserImage(image_source);
     } catch (err) {
       console.log(err);
     }
@@ -69,14 +59,14 @@ const LoginButton = ({ data, setUserData }: Props) => {
         <Styled.LoginBox>
           <Styled.LoginImgBg ref={ImgBgRef}>
             <Styled.LoginImg
-              src={imageSource}
+              src={userImage}
               alt="프로필 사진"
               fill
               onClick={handleLoginImgClick}
             />
             {isOpen && <LogoutDropDownList anchorRef={ImgBgRef} />}
           </Styled.LoginImgBg>
-          <Styled.LoginEmail className="loginEmail">{email}</Styled.LoginEmail>
+          <Styled.LoginEmail>{userEmail}</Styled.LoginEmail>
         </Styled.LoginBox>
       ) : (
         <Styled.LoginBtn href="/signin">

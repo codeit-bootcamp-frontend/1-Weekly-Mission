@@ -1,4 +1,4 @@
-import { useState, ReactNode } from "react";
+import { ReactNode } from "react";
 import { Navigator, Footer } from "@/components";
 
 interface Props {
@@ -6,14 +6,9 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
-  const [userData, setUserData] = useState({
-    email: "",
-    imageSource: "",
-  });
-
   return (
     <>
-      <Navigator data={userData} setUserData={setUserData} />
+      <Navigator />
       {children}
       <Footer />
     </>
