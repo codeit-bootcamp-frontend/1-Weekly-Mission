@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
 
 export const LoginBox = styled.div`
@@ -8,16 +9,15 @@ export const LoginBox = styled.div`
 `;
 
 export const LoginImgBg = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   width: 2.7rem;
   height: 2.7rem;
-  border-radius: 70%;
-  overflow: hidden;
   cursor: pointer;
 `;
 
-export const LoginImg = styled.img`
+export const LoginImg = styled(Image)`
   object-fit: cover;
 `;
 
@@ -50,5 +50,32 @@ export const LoginBtn = styled(Link)`
     height: 3.7rem;
     font-size: 1.4rem;
     width: 8rem;
+  }
+`;
+
+export const Ul = styled.ul`
+  position: absolute;
+  top: 30px;
+  width: 100px;
+  border: 1px solid var(--gray30);
+  background-color: var(--white);
+  list-style: none;
+  padding-left: 0px;
+`;
+
+export const Button = styled.button`
+  align-self: stretch;
+  width: 100%;
+  padding: 6px 16px;
+  background-color: var(--white);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--gray100);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--gray10);
+    color: var(--primary);
   }
 `;

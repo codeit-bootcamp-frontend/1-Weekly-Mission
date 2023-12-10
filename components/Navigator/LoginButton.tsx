@@ -1,7 +1,9 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, MouseEvent, SetStateAction, useEffect, useRef } from "react";
+import usePopOver from "@/lib/hooks/usePopOver";
 import { UserData } from "@/lib/types/data";
 import { useLogin } from "@/lib/utils/LoginContext";
 import { getUsers } from "@/lib/utils/api";
+import { LogoutDropDownList } from "..";
 import * as Styled from "./LoginBtn.styled";
 
 interface Props {
@@ -11,7 +13,9 @@ interface Props {
 
 const LoginButton = ({ data, setUserData }: Props) => {
   const { isLogin } = useLogin();
+  const ImgBgRef = useRef<HTMLDivElement>(null);
   const { email, imageSource } = data;
+  const { isOpen, openPopOver, closePopOver } = usePopOver();
 
   const BtnClickHandler = async () => {
     try {
@@ -29,21 +33,48 @@ const LoginButton = ({ data, setUserData }: Props) => {
     }
   };
 
+  const handleLoginImgClick = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isOpen) {
+      closePopOver();
+    } else {
+      openPopOver();
+    }
+  };
+
   useEffect(() => {
     if (!isLogin) return;
     BtnClickHandler();
     // eslint-disable-next-line
   }, [isLogin]);
 
+  useEffect(() => {
+    const handleOutsideClick = (e: Event): void => {
+      if (e.target !== ImgBgRef.current) {
+        closePopOver();
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       {isLogin ? (
         <Styled.LoginBox>
-          <Styled.LoginImgBg>
+          <Styled.LoginImgBg ref={ImgBgRef}>
             <Styled.LoginImg
               src={imageSource}
               alt="프로필 사진"
-            ></Styled.LoginImg>
+              fill
+              onClick={handleLoginImgClick}
+            />
+            {isOpen && <LogoutDropDownList anchorRef={ImgBgRef} />}
           </Styled.LoginImgBg>
           <Styled.LoginEmail className="loginEmail">{email}</Styled.LoginEmail>
         </Styled.LoginBox>

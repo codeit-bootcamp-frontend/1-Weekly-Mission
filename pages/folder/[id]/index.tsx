@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   AddBar,
   SearchBar,
@@ -12,6 +13,7 @@ import useInfiniteScroll from "@/lib/hooks/useInfiniteScroll";
 import { getFolderLists, getLinks } from "@/lib/utils/api";
 import { FoldersData, LinksData } from "@/lib/types/data";
 import { useScroll } from "@/lib/hooks/useScroll";
+import { useLogin } from "@/lib/utils/LoginContext";
 import * as Styled from "@/style/FolderPage.styled";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -54,8 +56,18 @@ const FolderPage = ({ folderData, linkData, folderId }: Props) => {
   const q = "";
   const [isDisplay, setIsDisplay] = useState(true);
 
+  const { isLogin } = useLogin();
+  const router = useRouter();
   const target = useInfiniteScroll(setIsDisplay, isDisplay);
   const { scrollY } = useScroll();
+
+  useEffect(() => {
+    if (!isLogin) {
+      router.push("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Styled.Header>

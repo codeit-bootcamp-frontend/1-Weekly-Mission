@@ -15,3 +15,9 @@ export const checkLocalStorage = () => {
     return true;
   }
 };
+
+export const removeLocalStorage = () => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("LogIn");
+  }
+};

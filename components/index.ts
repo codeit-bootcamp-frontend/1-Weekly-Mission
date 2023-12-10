@@ -6,6 +6,7 @@ export { default as Footer } from "./Footer/Footer";
 export { default as SnsCollection } from "./Footer/SnsCollection";
 export { default as SnsLogo } from "./Footer/SnsLogo";
 export { default as LoginButton } from "./Navigator/LoginButton";
+export { default as LogoutDropDownList } from "./Navigator/LogoutDropDownList";
 export { default as Logo } from "./Navigator/Logo";
 export { default as Navigator } from "./Navigator/Navigator";
 export { default as SearchBar } from "./SearchBar/SearchBar";

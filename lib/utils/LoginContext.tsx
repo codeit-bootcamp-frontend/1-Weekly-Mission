@@ -21,6 +21,7 @@ export const LoginContext = createContext<loginState | null>(null);
 
 export function LoginProvider({ children }: Props) {
   const [isLogin, setIsLogin] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
     const isLogin = checkLocalStorage();

@@ -51,6 +51,12 @@ const nextConfig = {
         port: "",
         pathname: "/static/images/brand/**",
       },
+      {
+        protocol: "https",
+        hostname: "codeit-images.codeit.com",
+        port: "",
+        pathname: "/badges/**",
+      },
     ],
   },
 };
