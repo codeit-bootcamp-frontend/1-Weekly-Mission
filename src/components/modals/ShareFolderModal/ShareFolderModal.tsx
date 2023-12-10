@@ -4,9 +4,12 @@ import styles from "./ShareFolderModal.module.scss";
 
 function ShareFolderModal({ folder }: { folder: FolderInterface }) {
   const handleLinkButton = () => {
+    // Todo - 링크 복사할 때 url 뭐 복사하는지 체크하기
     let url = "https://bootcamp-api.codeit.kr/shared";
-    let query = `?user=1&folder=${folder.id}`;
-    url = `${url}${query}`;
+    const query = new URLSearchParams();
+    query.append("user", "1");
+    query.append("folder", folder.id || "");
+    url = `${url}?${query.toString()}`;
     navigator.clipboard.writeText(url);
   };
 

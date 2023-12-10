@@ -1,3 +1,4 @@
+import Link from "next/link";
 import StarButton from "@/components/common/StarButton/StarButton";
 import KebabButton from "@/components/common/KebabButton/KebabButton";
 import { CardInterface, FolderInterface, ModalInterface } from "@/types";
@@ -28,8 +29,9 @@ function Card({
             />
           </>
         )}
-        <a
-          href={card.url}
+        {/* TODO - 링크 주소가 잘못됐다는 페이지 만들기 */}
+        <Link
+          href={card.url || ""}
           target="_blank"
           rel="noreferrer noopener"
           className={styles["card-link"]}
@@ -49,7 +51,7 @@ function Card({
               {formatDate(card.created_at || card.createdAt)}
             </p>
           </div>
-        </a>
+        </Link>
       </div>
     </>
   );
