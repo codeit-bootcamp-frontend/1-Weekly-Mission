@@ -11,6 +11,7 @@ export default function Input({
   placeholder = "내용을 입력해주세요.",
   onChange,
   onBlur,
+  onCheck,
   value,
   hasError = false,
   errorMsg = "잘못되었습니다!",
@@ -21,6 +22,7 @@ export default function Input({
   placeholder?: string;
   onChange?: any;
   onBlur?: any;
+  onCheck?: any;
   value: string;
   hasError: boolean;
   errorMsg?: string;
@@ -31,6 +33,7 @@ export default function Input({
 
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const newText = e.target.value;
+    onCheck(id);
     onChange(newText);
   };
 
