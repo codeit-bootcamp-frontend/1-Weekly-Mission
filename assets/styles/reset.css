@@ -28,7 +28,7 @@ button {
 
 body {
   overflow-y: scroll;
-  background-color: #fff;
+  background-color: var(--linkbrary-bg);
   font-family: Pretendard, sans-serif;
   font-style: normal;
   color: #000;
