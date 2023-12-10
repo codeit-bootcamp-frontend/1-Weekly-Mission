@@ -1,24 +1,16 @@
-import { UseFormRegister } from "react-hook-form";
-import Input from "src/components/Input";
 import InputLabel from "src/components/Label/InputLabel";
-import { ERROR_PASSWORD_EMPTY } from "src/constants/auth";
 import usePasswordForm from "src/hooks/usePasswordForm";
 import theme from "src/styles/Theme/theme";
-import { FormValuesType } from "src/types/FormValue";
 import styled from "styled-components";
 
-interface Props {
-  register: UseFormRegister<FormValuesType>;
-}
-
-function PasswordCorrectInput({ register }: Props) {
-  const { errors, isMinLength, isRequired, passwordConfirm } =
+function PasswordCorrectInput() {
+  const { register, errors, isMinLength, isRequired, passwordConfirm } =
     usePasswordForm();
 
   return (
     <>
       <InputLabel label="비밀번호 확인" htmlFor="passwordSecond" />
-      <Input
+      {/* <Input
         type="password"
         id="passwordSecond"
         placeholder={ERROR_PASSWORD_EMPTY}
@@ -26,7 +18,7 @@ function PasswordCorrectInput({ register }: Props) {
         isRequired={isRequired}
         isMinLength={isMinLength}
         validation={passwordConfirm}
-      />
+      /> */}
       {errors.passwordSecond && (
         <StyledError>{errors.passwordSecond.message}</StyledError>
       )}
