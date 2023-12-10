@@ -335,8 +335,8 @@ const StyledModalShare = styled.div`
 const StyledModalShareIcon = styled.div<{ $name?: string }>`
     padding: 12px;
     border-radius: 37.333px;
-    background: ${({ $name }) => ($name === "kakao" ? "#fee500" : "")};
-    background: ${({ $name }) => ($name === "facebook" ? "#1877F2" : "")};
+    background: ${({ $name }) =>
+        $name === "kakao" ? "#fee500" : $name === "facebook" ? "#1877F2" : ""};
     cursor: pointer;
 `;
 

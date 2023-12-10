@@ -12,23 +12,6 @@ interface Owner {
     profileImageSource: string;
 }
 
-interface Link {
-    createdAt: string;
-    description: string;
-    id: number;
-    imageSource: string;
-    title: string;
-    url: string;
-}
-
-interface FolderData {
-    count: number;
-    id: number;
-    links: Link[];
-    name: string;
-    owner: Owner;
-}
-
 function MainSection({ items }: { items: CardItem[] }) {
     return (
         <StyledMain>
@@ -66,9 +49,7 @@ export default function Shared() {
     useEffect(() => {
         const path = "/sample/folder";
         const handleFolder = async () => {
-            const { folder } = (await getApi(path)) as unknown as {
-                folder: FolderData;
-            };
+            const { folder } = await getApi(path);
             setName(folder.name);
             setOwner(folder.owner);
             setItems(folder.links);
