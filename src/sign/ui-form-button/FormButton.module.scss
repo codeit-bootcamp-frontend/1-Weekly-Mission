@@ -1,0 +1,15 @@
+@import '@/styles/global.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40rem;
+  height: 5.4rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(91deg, $color-primary 0.12%, #6ae3fe 101.84%);
+  color: $color-gray-light;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}

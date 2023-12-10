@@ -1,41 +1,42 @@
-import styles from '@/styles/folderLayout.module.css';
-import { useCallback, useEffect, useState } from 'react';
-import AddLink from '@/components/AddLink';
-import Folder from '@/components/Folder';
-import SearchBar from '@/components/SearchBar';
-import MobileFolderButton from '@/components/MobileFolderButton';
-import { getFolders } from '../api/api';
-import { FolderRawData } from '../api/type';
+import { useGetFolders } from "@/src/folder/data-access-folder";
+import { useGetLinks } from "@/src/link/data-access-link";
+import { Layout } from "@/src/sharing/feature-layout";
+import { FolderLayout } from "@/src/page-layout/FolderLayout";
+import { FolderToolBar } from "@/src/folder/feature-folder-tool-bar";
+import { SearchBar } from "@/src/link/ui-search-bar";
+import { useState } from "react";
+import { ALL_LINKS_ID } from "@/src/link/data-access-link/constant";
+import { LinkForm } from "@/src/link/feature-link-form";
+import { CardList } from "@/src/link/feature-card-list";
+import { SelectedFolderId } from "@/src/folder/type";
+import { useSearchLink } from "@/src/link/util-search-link";
+import { useIntersectionObserver } from "@/src/sharing/util";
 
-function FolderPage() {
-  const [folderList, setFolderList] = useState<FolderRawData[]>([]);
-
-  const handleFolderListLoad = useCallback(async () => {
-    const result = await getFolders();
-    if (!result) {
-      return;
-    }
-    const receivedFolders = result;
-    setFolderList(receivedFolders);
-  }, []);
-
-  useEffect(() => {
-    handleFolderListLoad();
-  }, []);
+const FolderPage = () => {
+  const { data: folders } = useGetFolders();
+  const [selectedFolderId, setSelectedFolderId] = useState<SelectedFolderId>(ALL_LINKS_ID);
+  const { data: links, loading } = useGetLinks(selectedFolderId);
+  const { searchValue, handleChange, handleCloseClick, result } = useSearchLink(links);
+  const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
 
   return (
-    <>
-      <div className={styles.container}>
-        <MobileFolderButton />
-        <AddLink />
-        <div className={styles.content_container}>
-          <SearchBar />
-          <button className={styles.add_folder_button}>폴더 추가</button>
-          {/* <FolderList folderList={folderList} /> */}
-        </div>
-      </div>
-    </>
+    <Layout isSticky={false} footerRef={ref}>
+      <FolderLayout
+        linkForm={<LinkForm hideFixedLinkForm={isIntersecting} />}
+        searchBar={
+          <SearchBar value={searchValue} onChange={handleChange} onCloseClick={handleCloseClick} />
+        }
+        folderToolBar={
+          <FolderToolBar
+            folders={folders}
+            selectedFolderId={selectedFolderId}
+            onFolderClick={setSelectedFolderId}
+          />
+        }
+        cardList={loading ? null : <CardList links={result} />}
+      />
+    </Layout>
   );
-}
+};
 
 export default FolderPage;

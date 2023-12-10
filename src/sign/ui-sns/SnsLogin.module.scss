@@ -1,0 +1,42 @@
+@import '@/styles/global.scss';
+
+.sns-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid $color-gray20;
+  background-color: $color-gray10;
+}
+
+.sns-links {
+  display: flex;
+  column-gap: 1.6rem;
+}
+
+.sns-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+}
+
+.sns-text {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: $color-gray100;
+}
+
+.google-link {
+  background-color: $color-white;
+  border: 0.1rem solid #d3d4dd;
+}
+
+.kakao-link {
+  padding-top: 0.2rem;
+  background-color: #f5e14b;
+}
