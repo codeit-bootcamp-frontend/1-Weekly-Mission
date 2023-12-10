@@ -1,3 +1,4 @@
+import { withAuth } from "@/components/hocs/withAuth";
 import SigninContainer from "./SigninContainer";
 
-export default SigninContainer;
+export default withAuth(SigninContainer);
