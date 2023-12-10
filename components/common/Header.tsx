@@ -6,7 +6,7 @@ import Profile from '@/components/common/Profile';
 import Button from '@/components/common/Button';
 import useGetUser from '@/hooks/useGetUser';
 import useGetSampleUser from '@/hooks/useGetSampleUser';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 import { checkToken } from '@/lib/utils/checkToken';
 
 interface Props {

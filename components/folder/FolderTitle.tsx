@@ -1,4 +1,4 @@
-import { FolderType } from '@/constants/dataType';
+import { FolderType } from '@/lib/types/dataType';
 import styled from 'styled-components';
 import { findFolderTitle } from '@/lib/utils/findFolderTitle';
 

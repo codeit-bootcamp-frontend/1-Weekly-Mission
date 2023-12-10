@@ -1,7 +1,7 @@
 import useGetData from './useGetData';
-import { LinkListType, LinkType } from '@/constants/dataType';
-import { ALL_ID } from '@/constants/default';
-import { PATH } from '@/constants/path';
+import { LinkListType, LinkType } from '@/lib/types/dataType';
+import { ALL_ID } from '@/lib/constants/default';
+import { PATH } from '@/lib/constants/path';
 
 /**
  * @param {*} folderId 링크를 조회할 폴더의 id

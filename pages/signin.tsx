@@ -4,7 +4,7 @@ import Button from '@/components/common/Button';
 import InputBox from '@/components/common/Input/InputBox';
 import SocialBox from '@/components/sign/SocialBox';
 import Header from '@/components/sign/Header';
-import { signInEmailRules, signInPwRules } from '@/constants/validations';
+import { signInEmailRules, signInPwRules } from '@/lib/constants/validations';
 import { onSignIn } from '@/lib/utils/onValid';
 import { checkToken } from '@/lib/utils/checkToken';
 

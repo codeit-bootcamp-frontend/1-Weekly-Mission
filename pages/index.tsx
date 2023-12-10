@@ -3,7 +3,7 @@ import Header from '@/components/common/Header';
 import Main from '@/components/home/Main';
 import Contents from '@/components/home/Contents';
 import Footer from '@/components/common/Footer';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 export default function Home() {
   return (

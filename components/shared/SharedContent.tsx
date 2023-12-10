@@ -4,9 +4,9 @@ import SearchBar from '@/components/common/Search/SearchBar';
 import CardList from '@/components/common/Card/CardList';
 import FolderInfo from './FolderInfo';
 import SearchResult from '@/components/common/Search/SearchResult';
-import { SAMPLE_ID } from '@/constants/default';
+import { SAMPLE_ID } from '@/lib/constants/default';
 import { useState } from 'react';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 function SharedContent() {
   const folderData = useGetSampleFolder();

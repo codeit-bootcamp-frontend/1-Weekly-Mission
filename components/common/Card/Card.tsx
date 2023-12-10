@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
-import { NO_DISCRIPT_MSG } from '@/constants/default';
+import { NO_DISCRIPT_MSG } from '@/lib/constants/default';
 import { timeFlow, formatDate } from '@/lib/utils/handleTime';
 import Kebab from '@/components/common/Kebab';
 import defaultImg from '@/public/assets/images/no-Image.svg';
 import starIcon from '@/public/assets/images/star.svg';
-import { SampleLinkType } from '@/constants/sampleDataType';
-import { LinkType } from '@/constants/dataType';
+import { SampleLinkType } from '@/lib/types/sampleDataType';
+import { LinkType } from '@/lib/types/dataType';
 import Image from 'next/image';
 import Link from 'next/link';
 

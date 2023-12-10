@@ -1,6 +1,6 @@
-import { UserDataType, UserType } from '@/constants/dataType';
+import { UserDataType, UserType } from '@/lib/types/dataType';
 import useGetData from './useGetData';
-import { PATH } from '@/constants/path';
+import { PATH } from '@/lib/constants/path';
 
 /**
  * @param {*} userId user 정보를 얻을 user의 ID

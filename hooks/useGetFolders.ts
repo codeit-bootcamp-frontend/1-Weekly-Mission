@@ -1,7 +1,7 @@
 import useGetData from './useGetData';
-import { PATH } from '@/constants/path';
-import { FolderType } from '@/constants/dataType';
-import { FolderListType } from '@/constants/dataType';
+import { PATH } from '@/lib/constants/path';
+import { FolderType } from '@/lib/types/dataType';
+import { FolderListType } from '@/lib/types/dataType';
 /**
  * @returns userId를 가진 user의 folder 데이터 배열
  */

@@ -1,4 +1,4 @@
-import { HOST } from '@/constants/path';
+import { HOST } from '@/lib/constants/path';
 import { MouseEvent } from 'react';
 
 declare global {

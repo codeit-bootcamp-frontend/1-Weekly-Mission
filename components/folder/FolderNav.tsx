@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { ALL_ID } from '@/constants/default';
-import { FolderType } from '@/constants/dataType';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { ALL_ID } from '@/lib/constants/default';
+import { FolderType } from '@/lib/types/dataType';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 interface Props {
   folders: FolderType[];

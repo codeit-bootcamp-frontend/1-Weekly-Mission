@@ -1,5 +1,5 @@
-import { LinkType } from '@/constants/dataType';
-import { SampleLinkType } from '@/constants/sampleDataType';
+import { LinkType } from '@/lib/types/dataType';
+import { SampleLinkType } from '@/lib/types/sampleDataType';
 
 export function filterLink(links: LinkType[] | SampleLinkType[], search: boolean, keyword: string): any {
   if (!search) return links;

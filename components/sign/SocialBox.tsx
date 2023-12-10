@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
-import { SNS_LOGIN_LIST } from '@/constants/default';
+import { SNS_LOGIN_LIST } from '@/lib/constants/default';
 
 interface Props {
   type: 'signin' | 'signup';

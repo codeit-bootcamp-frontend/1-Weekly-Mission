@@ -1,6 +1,6 @@
 import useGetData from './useGetData';
-import { SAMPLE } from '@/constants/path';
-import { SampleFolderDataType, SampleFolderType } from '@/constants/sampleDataType';
+import { SAMPLE } from '@/lib/constants/path';
+import { SampleFolderDataType, SampleFolderType } from '@/lib/types/sampleDataType';
 
 function useGetSampleFolder(): SampleFolderDataType | null {
   const folderData = useGetData<SampleFolderType>(SAMPLE.folder);

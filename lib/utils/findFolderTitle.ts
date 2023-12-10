@@ -1,4 +1,4 @@
-import { FolderType } from '@/constants/dataType';
+import { FolderType } from '@/lib/types/dataType';
 
 /**
  * @param {*} folders 폴더 데이터의 배열

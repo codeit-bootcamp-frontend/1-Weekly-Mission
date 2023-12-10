@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import Header from '@/components/sign/Header';
 import Button from '@/components/common/Button';
 import InputBox from '@/components/common/Input/InputBox';
-import { signUpEmailRules, signUpPwRules } from '@/constants/validations';
+import { signUpEmailRules, signUpPwRules } from '@/lib/constants/validations';
 import SocialBox from '@/components/sign/SocialBox';
 import { onSignUp } from '@/lib/utils/onValid';
 import { checkToken } from '@/lib/utils/checkToken';

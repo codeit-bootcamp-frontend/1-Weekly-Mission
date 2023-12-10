@@ -4,7 +4,7 @@ import ModalFrame from './ModalFrame';
 import Button from '../Button';
 import LinkCountItem from '../LinkCountItem';
 import useGetLinkCount from '@/hooks/useGetLinkCount';
-import { SHARE_LIST } from '@/constants/default';
+import { SHARE_LIST } from '@/lib/constants/default';
 import { handleShareClick } from '@/lib/utils/shareLink';
 
 interface Props {
