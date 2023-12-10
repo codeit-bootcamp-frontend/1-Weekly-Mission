@@ -13,21 +13,19 @@ import KakaoIcon from "@/public/assets/user/img_kakao.png";
 import { ReactElement } from "react";
 
 interface UserProps {
-  buttonItem: ReactElement;
   moveToPageItem: {
     title: string;
     href: string;
     linkTitle: string;
   };
   socialLoginItemTitle: string;
-  inputs: ReactElement;
+  formItem: ReactElement;
 }
 
 const UserLayout = ({
-  buttonItem,
   moveToPageItem,
   socialLoginItemTitle,
-  inputs,
+  formItem,
 }: UserProps) => {
   return (
     <UserWrapper>
@@ -52,12 +50,7 @@ const UserLayout = ({
       </UserHeaderContainer>
 
       <UserContentWrapper>
-        <InputBoxContainer>
-          <form>
-            {inputs}
-            {buttonItem}
-          </form>
-        </InputBoxContainer>
+        <InputBoxContainer>{formItem}</InputBoxContainer>
 
         <SocialBoxContainer>
           <div className="boxTitle">{socialLoginItemTitle}</div>

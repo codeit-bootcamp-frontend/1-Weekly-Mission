@@ -14,6 +14,9 @@ export const ApiMapper = {
     get: {
       GET_USERS: `${URL_PATH.USER_CONTROLLER}`,
     },
+    post: {
+      CHECK_EMAIL: `/api/check-email`,
+    },
   },
   folder: {
     get: {
@@ -23,6 +26,12 @@ export const ApiMapper = {
   link: {
     get: {
       GET_LINK: `${URL_PATH.USER_CONTROLLER}/:userId/links`,
+    },
+  },
+  auth: {
+    post: {
+      SIGN_IN: `/api/sign-in`,
+      SIGN_UP: `/api/sign-up`,
     },
   },
 };

@@ -30,13 +30,12 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const Input = styled.input<{ $isError: boolean }>`
+export const Input = styled.input<props>`
   box-sizing: border-box;
   border-radius: 0.8rem;
   padding: 1.8rem 1.5rem;
   background: var(--white);
-  border: ${(props) =>
-    props.$isError ? "1px solid var(--red)" : "1px solid var(--gray20)"};
+  border: ${(props) => props["aria-invalid"]};
   width: 40rem;
   height: 6rem;
   color: var(--gray100);
