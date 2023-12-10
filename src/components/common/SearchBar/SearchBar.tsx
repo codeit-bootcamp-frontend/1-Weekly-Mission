@@ -20,7 +20,7 @@ function SearchBar({
       onChange(text);
     }
   };
-  const handleResetKey = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleResetSearchBar = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setText("");
     onChange("");
@@ -44,7 +44,10 @@ function SearchBar({
           onKeyDown={handleKeyword}
         ></input>
         {keys && (
-          <button className={styles["reset-button"]} onClick={handleResetKey}>
+          <button
+            className={styles["reset-button"]}
+            onClick={handleResetSearchBar}
+          >
             <Image
               src="icons/reset-keywords.svg"
               width={17}

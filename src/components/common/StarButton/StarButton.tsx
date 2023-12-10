@@ -5,12 +5,12 @@ import styles from "./StarButton.module.scss";
 
 function StarButton({ card }: { card: CardInterface }) {
   const [isFilled, setIsFilled] = useState(false);
-  const handleStarClick = () => {
+  const handleStarButton = () => {
     setIsFilled(!isFilled);
   };
   return (
     <>
-      <button className={styles["star-button"]} onClick={handleStarClick}>
+      <button className={styles["star-button"]} onClick={handleStarButton}>
         {isFilled ? (
           <Image
             src="icons/filled-start-icon.svg"

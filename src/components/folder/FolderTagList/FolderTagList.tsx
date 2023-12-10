@@ -10,7 +10,7 @@ function FolderTag({
   onClick: (folder: FolderInterface) => void;
   clicked?: boolean;
 }) {
-  const handleClick = () => {
+  const handleFolderTagButton = () => {
     if (folder) {
       onClick(folder);
     }
@@ -24,7 +24,7 @@ function FolderTag({
           : `${styles["folder-name-button"]}`
       }
       type="submit"
-      onClick={handleClick}
+      onClick={handleFolderTagButton}
     >
       {folder.name}
     </button>

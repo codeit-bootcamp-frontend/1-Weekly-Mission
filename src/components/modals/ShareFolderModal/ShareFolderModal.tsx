@@ -3,7 +3,7 @@ import { FolderInterface } from "@/types";
 import styles from "./ShareFolderModal.module.scss";
 
 function ShareFolderModal({ folder }: { folder: FolderInterface }) {
-  const handleLinkButton = () => {
+  const handleLinkCopyButton = () => {
     // Todo - 링크 복사할 때 url 뭐 복사하는지 체크하기
     let url = "https://bootcamp-api.codeit.kr/shared";
     const query = new URLSearchParams();
@@ -36,7 +36,7 @@ function ShareFolderModal({ folder }: { folder: FolderInterface }) {
           />
           <p>페이스북</p>
         </button>
-        <button className={styles["sns-button"]} onClick={handleLinkButton}>
+        <button className={styles["sns-button"]} onClick={handleLinkCopyButton}>
           <Image
             src="icons/link-icon.svg"
             alt="링크 공유"

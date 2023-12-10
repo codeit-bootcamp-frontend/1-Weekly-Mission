@@ -3,7 +3,7 @@ import { ModalInterface } from "@/types";
 import styles from "./FolderMaker.module.scss";
 
 function FolderMaker({ onClick }: { onClick: (m: ModalInterface) => void }) {
-  const handleFolderMaker = (id: string) => {
+  const handleFolderCreateButton = (id: string) => {
     if (id === "folderCreateButton") {
       const newModal: ModalInterface = {
         component: <AddFolderModal />,
@@ -19,7 +19,7 @@ function FolderMaker({ onClick }: { onClick: (m: ModalInterface) => void }) {
         id="folderCreateButton"
         className={styles["folder-maker-button"]}
         onClick={() => {
-          handleFolderMaker("folderCreateButton");
+          handleFolderCreateButton("folderCreateButton");
         }}
       >
         폴더 추가 +

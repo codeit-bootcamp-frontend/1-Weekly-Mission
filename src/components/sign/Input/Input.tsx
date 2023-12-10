@@ -18,7 +18,7 @@ export default function Input({
   const [iconUrl, setIconUrl] = useState("/icons/eye-close.svg");
 
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
-    // 메모.
+    // TODO - 로직 바꾸기
     // 비밀번호랑 비밀번호 확인의 값을 같이 비교하려면 결국 상위 컴포넌트(signinPage)에서
     // id, pw, pw-repeat 세 개의 state 값을 두고
     // 그 state 값을 input 컴포넌트에 내려주는 식으로 코드를 짜야 함.
@@ -38,7 +38,7 @@ export default function Input({
     }
   };
 
-  const handleChangeType = () => {
+  const handleChangeInputType = () => {
     if (inputType === "password") {
       setInputType("text");
       setIconUrl("/icons/eye-open.svg");
@@ -73,7 +73,7 @@ export default function Input({
           className={styles.icon}
           src={iconUrl}
           alt="비밀번호 보기 아이콘"
-          onClick={handleChangeType}
+          onClick={handleChangeInputType}
         />
       )}
     </div>
