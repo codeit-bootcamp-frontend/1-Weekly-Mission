@@ -1,7 +1,9 @@
+import { InputRef } from "@/components/Main/sign/Sign.type";
 import { ErrorText, Input, OnOffButton, StyledLabel } from "@/components/Main/sign/SignLabel.styled";
 import usePwVisibility from "@/hooks/usePwVisibility";
 import useSignInput from "@/hooks/useSignInput";
 import Image from "next/image";
+import { RefObject, forwardRef, useImperativeHandle } from "react";
 
 const TEXT = {
   label: {
@@ -14,9 +16,30 @@ const TEXT = {
   },
 };
 
-export default function SignPwLabel({ type }: { type: "password" | "passwordCheck" }) {
+export default forwardRef(function SignPwLabel({ type }: { type: "password" | "passwordCheck" }, ref) {
   const { error, input, p, handleBlur, handleFocus } = useSignInput();
   const { toggleImg, handleToggle } = usePwVisibility(input);
+
+  useImperativeHandle(
+    ref,
+    () => {
+      if (type === "password") {
+        return {
+          ...(ref as RefObject<InputRef>).current,
+          pwBlur() {
+            return handleBlur();
+          },
+        };
+      }
+      return {
+        ...(ref as RefObject<InputRef>).current,
+        pwChBlur() {
+          return handleBlur();
+        },
+      };
+    },
+    []
+  );
 
   return (
     <StyledLabel $error={error}>
@@ -37,4 +60,4 @@ export default function SignPwLabel({ type }: { type: "password" | "passwordChec
       <ErrorText ref={p} />
     </StyledLabel>
   );
-}
+});

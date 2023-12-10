@@ -21,9 +21,10 @@ export default function useSignInput() {
     if (res) {
       setError(true);
       p.current.textContent = res;
-      return;
+      return true;
     }
     setError(false);
+    return false;
   };
 
   const handleFocus = () => {

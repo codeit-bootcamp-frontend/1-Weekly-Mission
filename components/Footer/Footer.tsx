@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default memo(function Footer({ setRefForObserver }: Props) {
-  console.log("렌더링");
   return (
     <Container ref={setRefForObserver}>
       <Copy>©codeit - 2023</Copy>

@@ -1,8 +1,24 @@
+import { InputRef } from "@/components/Main/sign/Sign.type";
 import { ErrorText, Input, StyledLabel } from "@/components/Main/sign/SignLabel.styled";
 import useSignInput from "@/hooks/useSignInput";
+import { RefObject, forwardRef, useImperativeHandle } from "react";
 
-export default function SignEmLabel() {
+export default forwardRef(function SignEmLabel(props, ref) {
   const { error, input, p, handleBlur, handleFocus } = useSignInput();
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        ...(ref as RefObject<InputRef>).current,
+        emBlur() {
+          return handleBlur();
+        },
+      };
+    },
+    []
+  );
+
   return (
     <StyledLabel $error={error}>
       이메일
@@ -10,4 +26,4 @@ export default function SignEmLabel() {
       <ErrorText ref={p} />
     </StyledLabel>
   );
-}
+});
