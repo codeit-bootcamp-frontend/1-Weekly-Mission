@@ -9,7 +9,6 @@ export const withAuth = (Component: any) => (props: any) => {
   // 로그인 체크(refreshToken 배우기 전)
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
-      alert("이미 로그인이 되어있어요.");
       router.push("/folder");
     }
   }, [router]);
