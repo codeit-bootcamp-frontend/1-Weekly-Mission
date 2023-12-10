@@ -71,74 +71,73 @@ export const InputEmail = forwardRef<
   );
 });
 
-interface AuthPasswordInputProps<TFormValues extends FieldValues>
+interface PasswordProps<TFormValues extends FieldValues>
   extends SignInputProps<TFormValues> {
   type: "password";
 }
 
-export const InputPW = forwardRef<
-  HTMLInputElement,
-  AuthPasswordInputProps<FieldValues>
->((props, ref) => {
-  const [isFocus, setIsFocus] = useState(false);
-  const [displayPassword, setDisplayPassword] = useState(false);
+export const InputPW = forwardRef<HTMLInputElement, PasswordProps<FieldValues>>(
+  (props, ref) => {
+    const [isFocus, setIsFocus] = useState(false);
+    const [displayPassword, setDisplayPassword] = useState(false);
 
-  const handleFocus = () => {
-    setIsFocus(true);
-  };
+    const handleFocus = () => {
+      setIsFocus(true);
+    };
 
-  const handleBlur = (boolean: boolean) => {
-    setIsFocus(boolean);
-  };
-  const toggleShowPassword = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setDisplayPassword((prev) => !prev);
-  };
-  const {
-    label,
-    type,
-    placeholder,
-    autoComplete,
-    errors,
-    onBlur,
-    ...inputProps
-  } = props;
+    const handleBlur = (boolean: boolean) => {
+      setIsFocus(boolean);
+    };
+    const toggleShowPassword = (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      setDisplayPassword((prev) => !prev);
+    };
+    const {
+      label,
+      type,
+      placeholder,
+      autoComplete,
+      errors,
+      onBlur,
+      ...inputProps
+    } = props;
 
-  const passwordType = displayPassword ? "text" : "password";
+    const passwordType = displayPassword ? "text" : "password";
 
-  return (
-    <InputContainer>
-      <LabelContent>{label}</LabelContent>
-      <SignInputWrapper>
-        <SignInput
-          type={passwordType}
-          ref={ref}
-          onBlur={(e) => {
-            onBlur(e);
-            handleBlur(false);
-          }}
-          onFocus={handleFocus}
-          $isFocus={isFocus}
-          placeholder={placeholder}
-          {...inputProps}
-          $isError={errors[inputProps.name]}
-          autoComplete={autoComplete}
-        />
-        <EyeToggleButton type="button" onClick={toggleShowPassword}>
-          <Image
-            src={displayPassword ? EyeOn : EyeOff}
-            width={16}
-            height={16}
-            alt="비밀번호 토글 버튼"
+    return (
+      <InputContainer>
+        <LabelContent>{label}</LabelContent>
+        <SignInputWrapper>
+          <SignInput
+            type={passwordType}
+            ref={ref}
+            onBlur={(e) => {
+              onBlur(e);
+              handleBlur(false);
+            }}
+            onFocus={handleFocus}
+            $isFocus={isFocus}
+            placeholder={placeholder}
+            {...inputProps}
+            $isError={errors[inputProps.name]}
+            autoComplete={autoComplete}
           />
-        </EyeToggleButton>
-      </SignInputWrapper>
-      {errors[inputProps.name] && (
-        <ErrorM>{errors[inputProps.name].message}</ErrorM>
-      )}
-    </InputContainer>
-  );
-});
+          <EyeToggleButton type="button" onClick={toggleShowPassword}>
+            <Image
+              src={displayPassword ? EyeOn : EyeOff}
+              width={16}
+              height={16}
+              alt="비밀번호 토글 버튼"
+            />
+          </EyeToggleButton>
+        </SignInputWrapper>
+        {errors[inputProps.name] && (
+          <ErrorM>{errors[inputProps.name].message}</ErrorM>
+        )}
+      </InputContainer>
+    );
+  }
+);
 
 const SignInputWrapper = styled.div`
   position: relative;
