@@ -1,4 +1,4 @@
-const BASE_URL = "https://bootcamp-api.codeit.kr/api";
+export const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 
 export const API = {
   baseURL: `${BASE_URL}`,

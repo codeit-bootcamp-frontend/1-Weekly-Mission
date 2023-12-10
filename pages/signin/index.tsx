@@ -1,118 +1,94 @@
-import SignHeader from "@/src/components/Sign/SignHeader";
-import SocialSign from "@/src/components/Sign/SocialSign";
-import style from "@/pages/signin/sign.module.css";
-import { checkEmailError, checkPwdError } from "@/src/util/handleSignError";
-import { FormEvent, useRef, useState } from "react";
+import { useForm, Form } from "react-hook-form";
+import { BASE_URL } from "@/src/config";
 import { postSignIn } from "@/src/api/postSignIn";
-import Image from "next/image";
-import EyeOffIcon from "@/src/assets/img/eye-off.svg";
-import EyeOnIcon from "@/src/assets/img/eye-on.svg";
-import clsx from "clsx";
+import SignInput from "@/src/components/Sign/SignInput";
+import SocialSign from "@/src/components/Sign/SocialSign";
+import SignHeader from "@/src/components/Sign/SignHeader";
+import style from "./sign.module.css";
+import { useRouter } from "next/router";
+import { useRef, useEffect } from "react";
+const SignIn = () => {
+  const {
+    register,
+    control,
+    formState: { errors },
+    setError,
+    getValues,
+  } = useForm({ mode: "onBlur" });
 
-function SignInPage() {
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
-  const [pwdErrorMessage, setPwdErrorMessage] = useState("");
-  const [pwdType, setPwdType] = useState("password");
-  const emailInput = useRef<any>("");
-  const pwdInput = useRef<any>("");
+  const router = useRouter();
+  let token = useRef<string | null>();
+  useEffect(() => {
+    token.current = localStorage.getItem("accessToken");
+    if (token.current) router.push("/");
+  }, []);
 
-  const handleButtonClick = async (e: FormEvent) => {
-    e.preventDefault();
-
-    if (handleEmailError() && handlePwdError()) {
-      //이메일, 비밀번호가 유효한 값일 때만 api호출
-      const result = postSignIn({
-        email: emailInput.current,
-        password: pwdInput.current,
-      });
-      const data = await result;
-      if (data) {
-        setEmailErrorMessage("이메일을 확인해주세요");
-        setPwdErrorMessage("비밀번호를 확인해주세요");
-      }
-    }
-  };
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    inputRef: React.MutableRefObject<string>
-  ) => {
-    inputRef.current = e.target.value;
-  };
-
-  const handleEmailError = () => {
-    const errorMessage = checkEmailError(emailInput.current);
-    setEmailErrorMessage(errorMessage);
-    return !Boolean(errorMessage);
-  };
-
-  const handlePwdError = () => {
-    const errorMessage = checkPwdError(pwdInput.current);
-    setPwdErrorMessage(errorMessage);
-    return !Boolean(errorMessage);
-  };
-
-  const handlePwdEyeClick = () => {
-    setPwdType(pwdType === "email" ? "password" : "email");
-  };
   return (
-    <div className={style.root}>
-      <div className={style.container}>
-        <SignHeader
-          message="회원이 아니신가요? "
-          href="/signup"
-          linkMessage="회원 가입하기"
-        />
-        <form className={style.form}>
-          <div>
-            <label htmlFor="email_input" className={style.label}>
-              이메일
-            </label>
-            <input
-              className={clsx(style.input, {
-                [style.redBox]: emailErrorMessage,
-              })}
-              id="email_input"
+    token.current || (
+      <div className={style.root}>
+        <div className={style.container}>
+          <SignHeader
+            message="회원이 아니신가요? "
+            href="/signup"
+            linkMessage="회원 가입하기"
+          />
+          <Form
+            className={style.form}
+            action={`${BASE_URL}/sign-in`}
+            onSubmit={async () => {
+              postSignIn({
+                email: getValues("email"),
+                password: getValues("password"),
+              });
+            }}
+            onError={() => {
+              setError(
+                "email",
+                { message: "이메일을 확인해주세요." },
+                { shouldFocus: true }
+              );
+              setError(
+                "password",
+                { message: "비밀번호를 확인해주세요." },
+                { shouldFocus: true }
+              );
+            }}
+            control={control}
+          >
+            <SignInput
+              label="이메일"
+              name="email"
               type="email"
-              placeholder="test@codeit.com"
-              onChange={(e) => handleInputChange(e, emailInput)}
-              onBlur={handleEmailError}
+              placeholder="이메일을 입력해 주세요."
+              register={register}
+              rules={{
+                required: "이메일을 입력해 주세요.",
+                pattern: {
+                  value: /^[A-Za-z0-9\-]+@[A-Za-z0-9]+\.[a-z]/,
+                  message: "올바른 이메일 주소가 아닙니다.",
+                },
+              }}
+              errors={errors}
             />
-            <p className={style.errorMessage}>{emailErrorMessage}</p>
-          </div>
+            <SignInput
+              label="비밀번호"
+              name="password"
+              type="password"
+              placeholder="비밀번호를 입력해 주세요."
+              register={register}
+              rules={{
+                required: "비밀번호를 입력해 주세요.",
+              }}
+              errors={errors}
+            />
 
-          <div>
-            <label htmlFor="pwd_input" className={style.label}>
-              비밀번호
-            </label>
-            <div className={style.inputWrapper}>
-              <input
-                className={clsx(style.input, {
-                  [style.redBox]: pwdErrorMessage,
-                })}
-                id="pwd_input"
-                type={pwdType}
-                placeholder="영문, 숫자 조합 8자 이상 입력해주세요"
-                onChange={(e) => handleInputChange(e, pwdInput)}
-                onBlur={handlePwdError}
-              />
-              <Image
-                src={pwdType === "password" ? EyeOffIcon : EyeOnIcon}
-                alt="pwd eye"
-                className={style.pwdEye}
-                onClick={handlePwdEyeClick}
-              />
-            </div>
-            <p className={style.errorMessage}>{pwdErrorMessage}</p>
-          </div>
-          <button className={style.formButton} onClick={handleButtonClick}>
-            로그인
-          </button>
-        </form>
-        <SocialSign message="소셜 로그인" />
+            <button className={style.formButton}>로그인</button>
+          </Form>
+          <SocialSign message="소셜 로그인" />
+        </div>
       </div>
-    </div>
+    )
   );
-}
+};
 
-export default SignInPage;
+export default SignIn;

@@ -23,9 +23,7 @@ export const postSignUp = async ({ email, password }: postSignUpProps) => {
       localStorage.setItem("accessToken", signinResponse.data.accessToken);
       location.href = "/folder";
     } else if (response.status == 400) {
-      console.log(response);
-
-      // showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 확인해주세요.");
+      alert("회원가입에 실패했습니다.");
     } else throw new Error(`${response.status}`);
   } catch (err) {
     console.log(err);
