@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import * as S from "./SignFormStyles";
 import { SignupForm } from "@/types/form";
 import { isUsableEmail, signupUser } from "@/common/api";
+// import EmailInput from "./inputs/EmailInput";
 
 export default function SignupForm() {
   const router = useRouter();
@@ -61,11 +62,9 @@ export default function SignupForm() {
     setFocus("email");
   }, [setFocus]);
 
-  // console.log(isValid);
-  // console.log(!!errors.email);
-
   return (
     <S.Form onSubmit={handleSubmit(onSubmitSignUp)}>
+      {/* <EmailInput register={register} getValues={getValues} errors={errors} /> */}
       <S.Label>이메일</S.Label>
       <S.Input
         type="text"

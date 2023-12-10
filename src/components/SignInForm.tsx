@@ -1,10 +1,9 @@
-import { MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import * as S from "./SignFormStyles";
 import { SignupForm } from "@/types/form";
 import { signinUser } from "@/common/api";
-// import EmailInput from "./inputs/EmailInput";
 
 export default function SigninForm() {
   const router = useRouter();
@@ -12,7 +11,6 @@ export default function SigninForm() {
   const {
     register,
     handleSubmit,
-    // getValues,
     setError,
     setFocus,
     formState: { errors, isValid },
@@ -35,7 +33,7 @@ export default function SigninForm() {
     }
   };
 
-  const toggleVisiblePassword = (e: MouseEvent<HTMLImageElement>) => {
+  const toggleVisiblePassword = () => {
     setIsHiddenPassword((prev) => !prev);
   };
 
@@ -46,7 +44,6 @@ export default function SigninForm() {
 
   return (
     <S.Form onSubmit={handleSubmit(onSubmitSignIn)}>
-      {/* <EmailInput register={register} getValues={getValues} errors={errors} /> */}
       <S.Label>이메일</S.Label>
       <S.Input
         type="text"
