@@ -1,22 +1,19 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { getSignIn } from "@/api";
 import { Input, SignLayout } from "@/components/sign";
+import { useInputValid } from "@/hooks";
 import styles from "./SignInPage.module.scss";
-import { emailChecker } from "@/utils/checkReg";
-import getSignIn from "@/api/getSignin";
 
 function SignInPage() {
   const router = useRouter();
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-  const [hasError, setHasError] = useState({
-    email: false,
-    password: false,
-  });
-  const [errorMsg, setErrorMsg] = useState({
-    email: "",
-    password: "",
-  });
+  const { inputValue, onChange, hasError } = useInputValid("signin");
+  const [wrongLogin, setWrongLogin] = useState(false);
+  const {
+    email: emailValue,
+    password: passwordValue,
+    passwordRepeat: passwordRepeatValue,
+  } = inputValue;
 
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
@@ -25,69 +22,20 @@ function SignInPage() {
     }
   });
 
-  const handleEmailCheck = (id: string) => {
-    if (id === "email") {
-      if (!emailValue) {
-        setHasError((prev) => {
-          return { ...prev, [id]: true };
-        });
-        setErrorMsg((prev) => {
-          return { ...prev, [id]: "이메일을 입력해 주세요" };
-        });
-      } else if (!emailChecker(emailValue)) {
-        setHasError((prev) => {
-          return { ...prev, [id]: true };
-        });
-        setErrorMsg((prev) => {
-          return { ...prev, [id]: "올바른 이메일 주소가 아닙니다." };
-        });
-      } else {
-        setHasError((prev) => {
-          return { ...prev, [id]: false };
-        });
-        setErrorMsg((prev) => {
-          return { ...prev, [id]: "" };
-        });
-      }
-    }
-    if (id === "password") {
-      if (!passwordValue) {
-        setHasError((prev) => {
-          return { ...prev, [id]: true };
-        });
-        setErrorMsg((prev) => {
-          return { ...prev, [id]: " 비밀번호를 입력해 주세요" };
-        });
-      } else {
-        setHasError((prev) => {
-          return { ...prev, [id]: false };
-        });
-        setErrorMsg((prev) => {
-          return { ...prev, [id]: "" };
-        });
-      }
-    }
-  };
-
   const handleSubmitSignin = async (e: FormEvent) => {
     e.preventDefault();
+    if (hasError.email.hasError) {
+      return;
+    }
     const signinResponse = await getSignIn(emailValue, passwordValue);
     if (!signinResponse) {
-      setHasError(() => {
-        return { email: true, password: true };
-      });
-      setErrorMsg(() => {
-        return {
-          email: "이메일을 확인해 주세요",
-          password: "비밀번호를 확인해 주세요",
-        };
-      });
+      setWrongLogin(true);
       return;
-    } else {
-      localStorage.setItem("accessToken", signinResponse.data.accessToken);
-      router.push("/folder");
-      console.log("login");
     }
+    setWrongLogin(false);
+    localStorage.setItem("accessToken", signinResponse.data.accessToken);
+    router.push("/folder");
+    console.log("login");
   };
 
   return (
@@ -99,13 +47,12 @@ function SignInPage() {
             label="이메일"
             type="text"
             placeholder="이메일을 입력해 주세요"
-            onChange={setEmailValue}
-            onBlur={() => {
-              handleEmailCheck("email");
-            }}
+            onChange={onChange}
             value={emailValue}
-            hasError={hasError.email}
-            errorMsg={errorMsg.email}
+            hasError={wrongLogin || hasError.email.hasError}
+            errorMsg={
+              wrongLogin ? "이메일을 확인해 주세요!" : hasError.email.errorMsg
+            }
           />
 
           <Input
@@ -113,13 +60,14 @@ function SignInPage() {
             label="비밀번호"
             type="password"
             placeholder="비밀번호를 입력해 주세요"
-            onChange={setPasswordValue}
-            onBlur={() => {
-              handleEmailCheck("password");
-            }}
+            onChange={onChange}
             value={passwordValue}
-            hasError={hasError.password}
-            errorMsg={errorMsg.password}
+            hasError={wrongLogin || hasError.password.hasError}
+            errorMsg={
+              wrongLogin
+                ? "비밀번호를 확인해 주세요!"
+                : hasError.password.errorMsg
+            }
           />
           <button className={styles["button"]}>로그인</button>
         </form>

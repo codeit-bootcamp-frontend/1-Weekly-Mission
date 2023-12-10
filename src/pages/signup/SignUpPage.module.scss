@@ -1,62 +1,25 @@
 @import "@/styles/global.scss";
 
-.signin-page {
-  display: flex;
-  position: absolute;
+.form {
   justify-content: center;
   align-items: center;
-  inset: 0;
-  background-color: var(--color-linkbrary);
-  padding: 32px;
-}
+  width: 100%;
 
-.signin-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-
-  & .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  & .description {
-    padding-top: 16px;
-    font-size: 16px;
-    line-height: 24px; /* 150% */
-    & span {
-      color: var(--color-primary);
-      text-decoration: underline;
-    }
-    @include tablet {
-      width: 400px;
-    }
-  }
-
-  .form {
-    justify-content: center;
-    align-items: center;
+  & .button {
     width: 100%;
-
-    & .button {
-      width: 100%;
-      margin: 3rem 0 0 0;
-      display: flex;
-      padding: 16px 20px;
-      justify-content: center;
-      align-items: center;
-      border-radius: 8px;
-      background: var(
-        --gra-purpleblue-to-skyblue,
-        linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
-      );
-      color: white;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 600;
-    }
+    margin: 3rem 0 0 0;
+    display: flex;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: var(
+      --gra-purpleblue-to-skyblue,
+      linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+    );
+    color: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
   }
 }

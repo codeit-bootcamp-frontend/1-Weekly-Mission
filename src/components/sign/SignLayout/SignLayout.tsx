@@ -10,12 +10,14 @@ const SIGNIN_TYPE = {
   description: "회원이 아니신가요?",
   span: "회원가입 하기",
   snsLabel: "소셜 로그인",
+  gotoUrl: "/signup",
 };
 const SIGNUP_TYPE = {
   type: "signup",
   description: "이미 회원이신가요?",
   span: "로그인 하기",
   snsLabel: "다른 방식으로 가입하기",
+  gotoUrl: "/signin",
 };
 
 function SignLayout({
@@ -39,7 +41,7 @@ function SignLayout({
           <div className={styles["description"]}>
             {pageType.description}
             <span className={styles["signup-link"]}>
-              <Link href="/signup">{pageType.span}</Link>
+              <Link href={pageType.gotoUrl}>{pageType.span}</Link>
             </span>
           </div>
         </header>

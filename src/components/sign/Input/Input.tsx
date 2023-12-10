@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
 import styles from "./Input.module.scss";
 
 type inputType = "text" | "password";
@@ -10,8 +10,6 @@ export default function Input({
   type = "text",
   placeholder = "내용을 입력해주세요.",
   onChange,
-  onBlur,
-  onCheck,
   value,
   hasError = false,
   errorMsg = "잘못되었습니다!",
@@ -21,8 +19,6 @@ export default function Input({
   type: inputType;
   placeholder?: string;
   onChange?: any;
-  onBlur?: any;
-  onCheck?: any;
   value: string;
   hasError: boolean;
   errorMsg?: string;
@@ -30,12 +26,6 @@ export default function Input({
   const defaultType = type;
   const [inputType, setInputType] = useState(type);
   const [iconUrl, setIconUrl] = useState<eyeIconUrl>("/icons/eye-close.svg");
-
-  const handleText = (e: ChangeEvent<HTMLInputElement>) => {
-    const newText = e.target.value;
-    onCheck(id);
-    onChange(newText);
-  };
 
   const handleChangeInputType = () => {
     if (inputType === "password") {
@@ -58,8 +48,8 @@ export default function Input({
           className={styles.input}
           placeholder={placeholder}
           value={value}
-          onChange={handleText}
-          onBlur={onBlur}
+          onChange={onChange}
+          onBlur={onChange}
         />
       </label>
       {hasError && <div className={styles["error-msg"]}>{errorMsg}</div>}
