@@ -57,12 +57,19 @@ function Signin() {
       return;
     }
 
-    const { data: accessToken, error } = await signin();
+    const {
+      data: {
+        data: { accessToken },
+      },
+      error,
+    } = await signin();
+
     if (error) {
       setEmailErrorMessage(ERROR_MESSAGES.email.invalidLogin);
       setPasswordErrorMessage(ERROR_MESSAGES.password.invalidLogin);
       return;
     }
+
     localStorage.setItem('accessToken', accessToken);
     router.push('/folder');
   };

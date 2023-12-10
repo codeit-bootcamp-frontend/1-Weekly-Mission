@@ -1,4 +1,10 @@
-import { ChangeEvent, FocusEvent, useState } from 'react';
+import {
+  ChangeEvent,
+  FocusEvent,
+  SyntheticEvent,
+  useEffect,
+  useState,
+} from 'react';
 import { useRouter } from 'next/router';
 import useRequest from '@/hooks/useRequest';
 import Button from '@/components/Button';
@@ -6,6 +12,7 @@ import Header from './components/Header';
 import InputContainer from './components/InputContainer';
 import Social from './components/Social';
 import {
+  ERROR_MESSAGES,
   validateEmail,
   validatePassword,
   validatePasswordCheck,
@@ -15,6 +22,12 @@ interface Signup {
   data: {
     accessToken: string;
     refreshToken: string;
+  };
+}
+
+interface CheckEmail {
+  data: {
+    isUsableNickname: boolean;
   };
 }
 
@@ -44,6 +57,15 @@ function Signup() {
     setPasswordCheck(nextValue);
   };
 
+  const { fetch: checkEmail } = useRequest<CheckEmail>({
+    skip: true,
+    options: {
+      url: `/check-email`,
+      method: 'post',
+      data: { email },
+    },
+  });
+
   const { fetch: signup } = useRequest<Signup>({
     skip: true,
     options: {
@@ -53,8 +75,53 @@ function Signup() {
     },
   });
 
-  const onSignup = async () => {
-    return;
+  const onSignup = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    const newEmailErrorMessage = validateEmail(email);
+    const newPasswordErrorMessage = validatePassword(password, router.pathname);
+    const newPasswordCheckErrorMessage = validatePasswordCheck(
+      passwordCheck,
+      password,
+    );
+    if (
+      newEmailErrorMessage ||
+      newPasswordErrorMessage ||
+      newPasswordCheckErrorMessage
+    ) {
+      setEmailErrorMessage(newEmailErrorMessage);
+      setPasswordErrorMessage(newPasswordErrorMessage);
+      setPasswordCheckErrorMessage(newPasswordCheckErrorMessage);
+    }
+
+    if (!newEmailErrorMessage) {
+      const { error: duplicateEmailError } = await checkEmail();
+      if (duplicateEmailError) {
+        setEmailErrorMessage(ERROR_MESSAGES.email.unavailableEmail);
+        return;
+      }
+    }
+
+    if (
+      newEmailErrorMessage ||
+      newPasswordErrorMessage ||
+      newPasswordCheckErrorMessage
+    )
+      return;
+
+    const {
+      data: {
+        data: { accessToken },
+      },
+      error: signupError,
+    } = await signup();
+
+    if (signupError) {
+      console.error('회원가입에 실패하였습니다.');
+      return;
+    }
+
+    localStorage.setItem('accessToken', accessToken);
+    router.push('/folder');
   };
 
   const onEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
@@ -71,6 +138,12 @@ function Signup() {
     const errorMessage = validatePasswordCheck(e.target.value, password);
     setPasswordCheckErrorMessage(errorMessage);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('accessToken')) {
+      router.push('/folder');
+    }
+  });
 
   return (
     <div className='flex h-screen w-screen items-center justify-center bg-background'>
