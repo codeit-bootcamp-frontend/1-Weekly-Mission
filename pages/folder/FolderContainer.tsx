@@ -23,7 +23,6 @@ export default function Folder() {
     error: linkError,
   } = useSWR(`/api/users/${USER_ID}/links?folderId=${selectedFolderId ?? ""}`);
   const { data: folderData, error: folderError } = useSWR(`/api/users/${USER_ID}/folders`);
-  // console.log(folderData);
 
   const { handleFolderUpdate } = useContext(FolderContext);
 
