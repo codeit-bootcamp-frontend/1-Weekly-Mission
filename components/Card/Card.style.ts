@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import Link from "next/link";
-import StarImg from '@/src/assets/Star.svg';
+import styled from 'styled-components';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export const StyledLink = styled(Link)`
-  position : relative;
+  position: relative;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   border-radius: 18px 18px 15px 15px;
   width: 340px;
@@ -12,24 +12,23 @@ export const StyledLink = styled(Link)`
   color: black;
   text-decoration: none;
 
-  &:hover{
+  &:hover {
     border: 2px solid #6d6afe;
   }
-`
-  // overflow : hidden;
-;
+`;
+// overflow : hidden;
 
 export const ImageContainer = styled.div`
+  position : relative;
   width: 340px;
   height: 200px;
-`
-  // &:hover {
-  //   transform: scale(1.1);
-  //   transition: 0.5s;
-  // }
-;
+`;
+// &:hover {
+//   transform: scale(1.1);
+//   transition: 0.5s;
+// }
 
-export const CardImage = styled.img`
+export const CardImage = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -37,7 +36,7 @@ export const CardImage = styled.img`
   border-radius: 15px 15px 0px 0px;
 `;
 
-export const Star = styled(StarImg)`
+export const Star = styled(Image)`
   position: absolute;
   top: 15px;
   right: 15px;
@@ -56,21 +55,19 @@ export const Option = styled.div`
   align-items: center;
 
   img {
-    position : relative;
-    width: 21px;
-    height: 17px;
+    position: relative;
   }
 `;
 
 export const PopOver = styled.div`
   display: flex;
   flex-direction: column;
-  position : absolute;
-  top : 230px;
-  right : -20px;
-  z-index : 10;
-  overflow: visible; 
-`
+  position: absolute;
+  top: 230px;
+  right: -20px;
+  z-index: 10;
+  overflow: visible;
+`;
 
 export const Description = styled.span`
   width: 300px;

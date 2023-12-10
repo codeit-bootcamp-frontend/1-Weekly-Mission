@@ -11,12 +11,11 @@ export const Empty = styled.div`
   font-weight: 400;
   line-height: 24px;
 
-  @media ${({theme}) => theme.device.tablet}{
-    width : 769px;
+  @media ${({ theme }) => theme.device.tablet} {
+    width: 769px;
   }
 
-  @media ${({theme}) => theme.device.mobile}{
-    width : 325px;
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 325px;
   }
-  
-`
+`;

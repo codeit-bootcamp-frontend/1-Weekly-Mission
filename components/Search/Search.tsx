@@ -1,48 +1,55 @@
-import { useCallback, ChangeEvent} from "react";
-import { ThemeProvider } from "styled-components";
-import theme from "@/styles/display";
-import searchImg from "@/src/assets/Search.svg";
-import closeImg from "@/src/assets/_close.png";
-import { Link } from "@/pages/shared";
+import { useEffect, ChangeEvent } from 'react';
+import { ThemeProvider } from 'styled-components';
+import theme from '@/styles/display';
+import searchImg from '@/src/assets/Search.svg';
+import closeImg from '@/src/assets/_close.png';
+import { Link } from '@/pages/shared';
 import Image from 'next/image';
-import * as S from "./Search.style";
+import * as Style from './Search.style';
 
 interface Props {
-  items: Link[];
-  setCheckItem: (value:Link[]) => void;
-  onSearch: (value:string) => void;
+  links: Link[];
+  setCheckItem: (value: Link[]) => void;
+  onSearch: (value: string) => void;
   value: string;
 }
 
-export default function Search({ items, setCheckItem, onSearch, value } : Props) {
-  const handleInputChange = useCallback(
-    (e : ChangeEvent<HTMLInputElement>) => {
-      const lowerValue = (e.target.value).toLowerCase();
-      onSearch(lowerValue);
+export default function Search({
+  links,
+  setCheckItem,
+  onSearch,
+  value,
+}: Props) {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const lowerValue = e.target.value.toLowerCase();
+    onSearch(lowerValue);
+  }
+    useEffect(() => {
+      console.log(value)
       if (value) {
-        const checkItems = items.filter((item) => {
-          const { description, title, url } = item;
+        const checkItems = links.filter((link) => {
+          const { description, title, url } = link;
           return (
-            description.includes(value) ||
-            title.includes(value) ||
-            url.includes(value)
+            description?.includes(value) ||
+            title?.includes(value) ||
+            url?.includes(value)
           );
         });
         setCheckItem(checkItems);
-      } else setCheckItem(items);
-    },
-    [items, value]
-  );
+      } else if( value.length === 0) {setCheckItem(links)} 
+    },[value])
+  
+  
 
   const handleCloseClick = () => {
-    onSearch("");
-    setCheckItem(items);
+    onSearch('');
+    setCheckItem(links);
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <S.Container>
-        <Image src={searchImg} alt="검색아이콘"  width={16} height={16}/>
+      <Style.Container>
+        <Image src={searchImg} alt="검색아이콘" width={16} height={16} />
         <input
           name="search"
           placeholder="링크를 검색해 보세요."
@@ -57,7 +64,7 @@ export default function Search({ items, setCheckItem, onSearch, value } : Props)
           width={24}
           height={24}
         />
-      </S.Container>
+      </Style.Container>
     </ThemeProvider>
   );
 }

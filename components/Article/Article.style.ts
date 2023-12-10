@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ArticleContainer = styled.div`
   display: flex;
@@ -9,15 +9,15 @@ export const ArticleContainer = styled.div`
 export const ArticleSection = styled.div`
   display: flex;
   flex-direction: column;
-  aliens-items : center;
+  aliens-items: center;
   gap: 40px;
 
-  @media ${({theme}) => theme.device.mobile} {
+  @media ${({ theme }) => theme.device.mobile} {
     gap: 32px;
   }
 `;
 
-export const P = styled.p`
+export const Paragraph = styled.p`
   color: var(--gray-100);
   font-size: 32px;
   font-weight: 600;
@@ -27,4 +27,9 @@ export const P = styled.p`
     font-size: 32px;
     color: var(--gray-60);
   }
+`;
+
+export const Keyword = styled.span`
+  font-size: 32px;
+  color: var(--gray-60);
 `;

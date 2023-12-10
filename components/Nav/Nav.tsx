@@ -1,44 +1,29 @@
-import Link from "next/link";
-import Image from "next/image";
-import { ThemeProvider } from "styled-components";
-import axios from "@/lib/axios";
-import logoImg from "@/src/assets/logo.png";
-import theme from "@/styles/display";
-import * as S from "./Nav.style";
-import { useState, useEffect } from "react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { ThemeProvider } from 'styled-components';
+import logoImg from '@/src/assets/logo.png';
+import theme from '@/styles/display';
+import * as Style from './Nav.style';
 
-interface Data {
-  image_source?: string; 
+type Data = {
+  image_source?: string;
   email?: string;
-}
+};
 
-export default function Nav() {
-  type User = {image_source?: string; email?: string};
-  const [user, setUser] = useState<Data | undefined>();
-
-  async function profile() {
-    const result = await axios.get("users/1");
-    const data = result.data.data[0];
-    setUser(data);
-  }
-
-  useEffect(() => {
-    profile();
-  }, []);
-  
+export default function Nav({ data }: { data?: Data }) {
   return (
     <ThemeProvider theme={theme}>
-      <S.Nav>
-        <Image src={logoImg} alt="logo" width={133} height={24}></Image>
-        <S.Inform>
-          {user?.image_source && <S.Profile src={user.image_source} />}
-          {user?.email ? (
-            <span>{user.email}</span>
+      <Style.Nav>
+        <Link href='/'><Image src={logoImg} alt="logo" width={133} height={24} priority/></Link>
+        <Style.Inform>
+          {data?.image_source && <Style.Profile src={data.image_source} />}
+          {data?.email ? (
+            <span>{data.email}</span>
           ) : (
-            <Link href="/login">로그인</Link>
+            <Link href="/signin">로그인</Link>
           )}
-        </S.Inform>
-      </S.Nav>
+        </Style.Inform>
+      </Style.Nav>
     </ThemeProvider>
   );
 }

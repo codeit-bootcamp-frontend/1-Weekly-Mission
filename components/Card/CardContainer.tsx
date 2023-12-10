@@ -1,20 +1,21 @@
-import { Card, ModalForm, Modal } from "@/components";
-import { ThemeProvider } from "styled-components";
-import theme from "@/styles/display";
-import useModal from "@/public/useModal";
-import AddImg from "@/src/assets/add.svg";
-import * as S from "./CardContainer.style";
-import { Link } from "@/pages/shared";
-import { Folders } from "@/components/FolderArticle/FolderArticle";
+import { Card, ModalForm, Modal } from '@/components';
+import { ThemeProvider } from 'styled-components';
+import theme from '@/styles/display';
+import useModal from '@/public/useModal';
+import AddImg from '@/src/assets/addwhite.svg';
+import { Link } from '@/pages/shared';
+import { Folders } from '@/components/FolderArticle/FolderArticle';
+import * as Style from './CardContainer.style';
+import Image from 'next/image';
 
 interface Props {
   items: Link[] | undefined;
-  active?: Folders;
+  folders?: Folders;
 }
 
-export default function CardContainer({ items, active }: Props) {
+export default function CardContainer({ items, folders }: Props) {
   const { isOpen, openModal, closeModal } = useModal();
-  const option = { input: true, button: { title: "추가하기", color: "blue" } };
+  const option = { input: true, button: { title: '추가하기', color: 'blue' } };
 
   const handleButtonClick = () => {
     openModal();
@@ -23,16 +24,14 @@ export default function CardContainer({ items, active }: Props) {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <S.Container>
-          {items && items.map((link) => (
-            <Card link={link} key={link.id} />
-          ))}
-        </S.Container>
-        {active && (
-          <S.Button onClick={handleButtonClick}>
-            폴더 추가 <AddImg alt="폴더추가" fill="#e7effb" />
-          </S.Button>
-        )}
+        <Style.Container>
+          {items?.map((link) => <Card link={link} key={link.id} />)}
+        </Style.Container>
+        {folders ? (
+          <Style.Button onClick={handleButtonClick}>
+            폴더 추가 <Image src={AddImg} alt="폴더추가" />
+          </Style.Button>
+        ) : null}
       </ThemeProvider>
       {isOpen && (
         <Modal

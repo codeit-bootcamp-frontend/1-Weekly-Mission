@@ -1,20 +1,20 @@
-import moment, {Moment} from "moment";
+import moment, { Moment } from 'moment';
 
 interface TimeInfo {
-  message : string;
-  cardDate : string;
+  message: string;
+  cardDate: string;
 }
 
-const PastTime = (createdAt: string ) : TimeInfo => {
-  const targetDate = new Date("2023-10-29T01:00:00Z") ;
-  const cardDate = moment(createdAt).format("YYYY.M.DD");
+const PastTime = (createdAt: string): TimeInfo => {
+  const targetDate = new Date('2023-10-29T01:00:00Z');
+  const cardDate = moment(createdAt).format('YYYY.M.DD');
   const createdAtDate = new Date(createdAt);
   const timeDiff = (targetDate.getTime() - createdAtDate.getTime()) / 1000; // 초 단위로 변환
 
-  let message = "";
+  let message = '';
 
   if (timeDiff < 60) {
-    message = "Less than a minute ago";
+    message = 'Less than a minute ago';
   } else if (timeDiff < 3600) {
     message = `${Math.floor(timeDiff / 60)} minutes ago`;
   } else if (timeDiff < 86400) {

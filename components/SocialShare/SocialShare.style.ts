@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -15,15 +15,15 @@ export const Box = styled.div`
   font-family: Inter;
   font-size: 13px;
   font-weight: 400;
-  line-height: 15px; 
-`
+  line-height: 15px;
+`;
 
 export const ImgBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 37.33px;
-`
+`;
 
 export const Img = styled.img`
   margin: 12px;

@@ -1,5 +1,5 @@
-import Image from "next/image";
-import { styled } from "styled-components";
+import Image from 'next/image';
+import { styled } from 'styled-components';
 
 export const BackGround = styled.div`
   z-index: 9000;
@@ -7,7 +7,7 @@ export const BackGround = styled.div`
   height: 1000%;
   width: 100%;
   left: 0;
-  
+
   background: rgba(0, 0, 0, 0.4);
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 `;
@@ -36,7 +36,7 @@ export const Img = styled(Image)`
   top: 16px;
   right: 16px;
   cursor: pointer;
-`
+`;
 
 export const Title = styled.div`
   display: flex;
@@ -78,9 +78,9 @@ export const Button = styled.button`
   border: none;
   border-radius: 8px;
   background: ${({ color }) =>
-    color === "blue"
-      ? "linear-gradient(91deg, var(--purpleblue) 0.12%, var(--skyblue) 101.84%)"
-      : "var(--linkbrary-red)"};
+    color === 'blue'
+      ? 'linear-gradient(91deg, var(--purpleblue) 0.12%, var(--skyblue) 101.84%)'
+      : 'var(--linkbrary-red)'};
 
   color: #f5f5f5;
   font-size: 1.6rem;

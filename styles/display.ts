@@ -1,6 +1,6 @@
 const deviceSizes = {
-  mobile: "768px",
-  tablet: "1198px",
+  mobile: '768px',
+  tablet: '1198px',
 };
 
 const device = {
@@ -9,7 +9,7 @@ const device = {
 };
 
 const theme = {
-  device
+  device,
 };
 
 export default theme;

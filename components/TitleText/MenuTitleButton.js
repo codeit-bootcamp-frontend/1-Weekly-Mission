@@ -1,20 +1,20 @@
-import { useCallback, useState } from "react";
-import {Modal, ModalForm, Icons} from "@/components";
-import useModal from "@/public/useModal";
-import * as S from "./TitleButton.style.js";
+import { useCallback, useState } from 'react';
+import { Modal, ModalForm, icons } from '@/components';
+import useModal from '@/public/useModal';
+import * as S from './TitleButton.style.js';
 
 interface Option {
-  title : string;
+  title: string;
   input?: boolean;
   color?: string;
-  trigger ?: string;
+  trigger?: string;
 }
 
-export default function MenuTitleButton({ title }: {title :string}) {
+export default function MenuTitleButton({ title }: { title: string }) {
   const { isOpen, openModal, closeModal } = useModal();
-  const [option, setOption] = useState<Option>(null);
+  const [option, setOption] = useState < Option > null;
 
-  const handleButtonClick = useCallback((e: React.MouseEvent, name :string) => {
+  const handleButtonClick = useCallback((e: React.MouseEvent, name: string) => {
     e.preventDefault;
     const iconName = Icons.filter((icon) => icon.name === name);
     setOption(iconName[0].option);

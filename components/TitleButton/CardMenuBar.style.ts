@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Active {
   active: boolean;
@@ -50,7 +50,7 @@ export const Button = styled.button<Active>`
   list-style: none;
   border-radius: 5px;
   border: 1px solid #6d6afe;
-  background: ${({ active }) => (active ? "#6d6afe" : "#fff")};
-  color: ${({ active }) => (active ? "#fff" : "#000")};
+  background: ${({ active }) => (active ? '#6d6afe' : '#fff')};
+  color: ${({ active }) => (active ? '#fff' : '#000')};
   cursor: pointer;
 `;

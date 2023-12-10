@@ -1,92 +1,79 @@
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 import Link from "next/link";
 import { CardButton, MenuTitle, Modal, ModalForm } from "@/components";
-import { Folders } from "@/components/FolderArticle/FolderArticle.jsx";
 import useModal from "@/public/useModal";
 import axios from "@/lib/axios";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/display";
-import AddImg from "@/src/assets/add.svg";
-import * as S from "./CardMenuBar.style";
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-} from "next";
-import { ParsedUrlQuery } from "querystring";
+import AddPurpleImg from "@/src/assets/addpurple.svg";
+import * as Style from "./CardMenuBar.style";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const result = await axios.get("sample/folder");
-  const data = result.data.folder.links;
-  const paths = data.map((data: { id: number }) => ({
-    params: { id: String(data.id) },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-interface Params extends ParsedUrlQuery {
-  id: string;
-}
-
-interface FolderProps {
-  folderId?: number | null;
-  selectFolder?: number | null;
-}
-
-export const getStaticProps: GetStaticProps<
-  FolderProps,
-  Params
-> = (context) => {
-  const folderId = context.params?.id ? parseInt(context.params.id) : null;
-  let selectFolder = folderId !== null ? folderId : null;
-
-  return {
-    props: {
-      folderId,
-      selectFolder,
-    },
-  };
-};
-
-type CardMenuBarProps = {
-  folders: Folders;
-} & InferGetStaticPropsType<typeof getStaticProps>;
-
-
-export default function CardMenuBar({
-  folders,
-  folderId,
-  selectFolder,
-}: CardMenuBarProps) {
-  const { isOpen, openModal, closeModal } = useModal();
+export default function CardMenuBar() {
+  const router = useRouter();
+  const folderId = router.query;
   const option = { input: true, button: { title: "추가하기", color: "blue" } };
+  const { isOpen, openModal, closeModal } = useModal();
+  const [folderName, setFolderName] = useState()
+  const [selectedFolder, setSelectedFolder] = useState(folderId ? parseInt(folderId) : null);
+  console.log(folderId)
+  console.log(folderName)
+
+  async function getFolders () {
+    const result = await axios.get(`users/1/folders${folderId ? `?folderId=${folderId}` : ''}`);
+    const folders = result.data.data;
+    setFolderName(folders);
+  }
+
+  const ChangeTitle = () => {
+    if (!folderId) {
+      setSelectedFolder(null);
+      return;
+    }
+    const matchedFolder = folderName?.find(
+      (folder) => folder.id === parseInt(folderId)
+    );
+    console.log(matchedFolder)
+    if (matchedFolder) {
+      setSelectedFolder(matchedFolder.name);
+    } else {
+      setSelectedFolder("폴더를 찾을 수 없음");
+    }
+  };
 
   const handleButtonClick = () => {
     openModal();
   };
 
+  useEffect(() => {
+    getFolders();
+  }, [folderId])
+
+  useEffect(() => {
+    setSelectedFolder(folderId ? parseInt(folderId) : null);
+    ChangeTitle();
+  }, [folderId]);
+
   return (
     <>
       <ThemeProvider theme={theme}>
-        <S.Container>
-          <S.Ul>
+        <Style.Container>
+          <Style.Ul>
             <Link href="/folder">
               <li>
-                <S.Button active={selectFolder === null}>전체</S.Button>
+                <Style.Button active={selectedFolder === null}>전체</Style.Button>
               </li>
             </Link>
-            {folders.map((folder) => (
+            {folderName?.map((folder) => (
               <CardButton folder={folder} key={folder.id} folderId={folderId} />
             ))}
-          </S.Ul>
+          </Style.Ul>
           <span onClick={handleButtonClick}>
-            폴더 추가<AddImg alt="폴더추가" fill="#6D6AFE" />
+            폴더 추가<Image src={AddPurpleImg} alt="폴더추가" />
           </span>
-        </S.Container>
-        <MenuTitle title={selectFolder ? selectFolder : "전체"} />
+        </Style.Container>
+        <MenuTitle title={selectedFolder ? selectedFolder : "전체"} />
       </ThemeProvider>
       {isOpen && (
         <Modal

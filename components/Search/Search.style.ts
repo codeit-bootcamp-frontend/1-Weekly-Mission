@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 15px 16px;
@@ -17,8 +17,8 @@ export const Container = styled.div`
     background-color: #f5f5f5;
     flex-grow: 1;
 
-    &:focus{
-      outline:none;
+    &:focus {
+      outline: none;
     }
   }
 `;
