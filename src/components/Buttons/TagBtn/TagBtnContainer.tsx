@@ -1,5 +1,5 @@
 import style from "./TagBtnContainer.module.css";
-import AddImg from "/public/image/icon-add.svg";
+import AddImg from "/public/icon/icon-add.svg";
 import AddFolder from "../../../modals/contents/AddFolder";
 import { useState } from "react";
 import { IFolderTagData } from "../../../utils/types/common.types";

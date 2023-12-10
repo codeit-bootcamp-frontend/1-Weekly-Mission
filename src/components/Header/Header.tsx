@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import logoImg from "/public/image/logo.svg";
+import logoImg from "/public/icon/logo.svg";
 import requestData from "../../services/api";
 import { useEffect, useState } from "react";
 import { IUserData } from "./types/Header.types";
