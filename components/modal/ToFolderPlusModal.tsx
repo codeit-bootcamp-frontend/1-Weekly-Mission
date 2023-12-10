@@ -34,7 +34,7 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
       ref={`${back}`}
       onClick={backClick as () => void}
     >
-      <M.ModlaWrapper>
+      <M.ModalWrapper>
         <M.ModalDeleteHeader>
           <M.ModalHeader>폴더에 추가</M.ModalHeader>
           <M.ModalLinkUrl>{cardLink}</M.ModalLinkUrl>
@@ -60,7 +60,7 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
         <XCloseImgDiv>
           <Image src="/Xclose.svg" fill alt="닫기 버튼" onClick={handleClick} />
         </XCloseImgDiv>
-      </M.ModlaWrapper>
+      </M.ModalWrapper>
     </M.ModalBackground>
   );
 }

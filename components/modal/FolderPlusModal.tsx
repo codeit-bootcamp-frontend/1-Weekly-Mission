@@ -18,7 +18,7 @@ export default function FolderPlusModal({ handleClick, title, value }: Props) {
   console.log(value);
   return (
     <M.ModalBackground ref={back} onClick={backClick}>
-      <M.ModlaWrapper>
+      <M.ModalWrapper>
         <M.ModalHeader>{value}</M.ModalHeader>
         <M.ModalMain>
           <M.ModalInput
@@ -35,7 +35,7 @@ export default function FolderPlusModal({ handleClick, title, value }: Props) {
           alt="닫기 버튼"
           onClick={handleClick}
         />
-      </M.ModlaWrapper>
+      </M.ModalWrapper>
     </M.ModalBackground>
   );
 }

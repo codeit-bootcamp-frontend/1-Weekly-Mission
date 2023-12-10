@@ -63,7 +63,7 @@ export default function FolderShareModal({ handleClick, title, id }: Props) {
   };
   return (
     <M.ModalBackground ref={back} onClick={backClick}>
-      <M.ModlaWrapper>
+      <M.ModalWrapper>
         <M.ModalHeader>폴더 공유</M.ModalHeader>
         <M.ModalLinkUrl>{title}</M.ModalLinkUrl>
         <M.ModalShareWrapper>
@@ -101,7 +101,7 @@ export default function FolderShareModal({ handleClick, title, id }: Props) {
           alt="닫기 버튼"
           onClick={handleClick}
         />
-      </M.ModlaWrapper>
+      </M.ModalWrapper>
     </M.ModalBackground>
   );
 }

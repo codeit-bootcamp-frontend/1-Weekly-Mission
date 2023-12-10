@@ -5,11 +5,11 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <F.FooterContainer>
-      <F.FoterLeft>©codeit - 2023</F.FoterLeft>
-      <F.FooterMidle>
+      <F.FooterLeft>©codeit - 2023</F.FooterLeft>
+      <F.FooterMiddle>
         <F.PolicyNFaqA href="./policy.html">Privacy Policy</F.PolicyNFaqA>
         <F.PolicyNFaqA href="./faq.html">FAQ</F.PolicyNFaqA>
-      </F.FooterMidle>
+      </F.FooterMiddle>
       <F.FooterRight>
         <a href="https://www.facebook.com">
           <Div>

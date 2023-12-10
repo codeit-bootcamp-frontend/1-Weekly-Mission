@@ -7,7 +7,7 @@ export const ModalBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
-export const ModlaWrapper = styled.div`
+export const ModalWrapper = styled.div`
   z-index: 2;
   position: fixed;
   top: 50%;
