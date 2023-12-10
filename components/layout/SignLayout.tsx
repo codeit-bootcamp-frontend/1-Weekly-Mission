@@ -65,8 +65,14 @@ function HeaderContent({ formType }: { formType: string }) {
   }
 }
 
-export function SignButton({ children }: { children: ReactNode }) {
-  return <SignButtonWrapper>{children}</SignButtonWrapper>;
+export function SignButton({
+  children,
+  disabled,
+}: {
+  children: ReactNode;
+  disabled: boolean;
+}) {
+  return <SignButtonWrapper disabled={disabled}>{children}</SignButtonWrapper>;
 }
 
 const SignContainer = styled.div`

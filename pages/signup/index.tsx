@@ -18,7 +18,7 @@ export default function SignUp() {
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
     getValues,
     setError,
@@ -132,7 +132,7 @@ export default function SignUp() {
           autoComplete="new-password"
         />
 
-        <SignButton>회원가입</SignButton>
+        <SignButton disabled={isSubmitting}>회원가입</SignButton>
       </SignLayout>
     </>
   );
