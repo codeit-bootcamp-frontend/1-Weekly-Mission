@@ -3,6 +3,7 @@ import SignTitle from "@/src/Input/ui-input-title/SignTitle";
 import SignButton from "@/src/link/ui-sign-button/SignButton";
 import SocialSign from "@/src/link/ui-social-sign/SocialSign";
 import { SignInLayout } from "@/src/page-layout/SignInLayout/SignInLayout";
+import { PasswordInput } from "@/src/sharing/ui-password-input";
 import { useRouter } from "next/router";
 
 const SigninPage = () => {

@@ -5,6 +5,7 @@ import {
   FocusEvent,
   FormEvent,
   SetStateAction,
+  useCallback,
   useState,
 } from "react";
 import styles from "./InputUserInfo.module.scss";
@@ -16,11 +17,12 @@ import {
   PLACEHOLDER,
   VALID_EMAIL_REG,
   VALID_PSW_REG,
-  USER_EMAIL,
+  USER_INFO,
 } from "./constants.js";
 import { PathName } from "../ui-input-title/SignTitle";
-import axios from "axios";
-import { useAsync } from "@/src/sharing/util";
+
+import { useRouter } from "next/router";
+import axios, { AxiosResponse } from "axios";
 
 const cx = classNames.bind(styles);
 
@@ -30,6 +32,7 @@ interface InputUserInfoProps {
   onBlur?: Dispatch<SetStateAction<string>>;
   isNotSamePasswordValue?: boolean;
   pathName?: PathName;
+  emailValue?: string;
 }
 
 function InputUserInfo({
@@ -38,15 +41,24 @@ function InputUserInfo({
   onBlur,
   isNotSamePasswordValue,
   pathName,
+  emailValue,
 }: InputUserInfoProps) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [visible, setVisible] = useState(isPassword ? false : true);
   const [isWrongValue, setIsWrongValue] = useState(false);
-
+  const [hasFocused, setHasFocused] = useState({
+    email: false,
+    password: false,
+  });
   const [isOverlapValue, setIsOverlapValue] = useState(false);
-  const isValidValue = email && !isWrongValue && !isNotSamePasswordValue;
+  // const [isValidValue, setIsValidValue] = useState(
+  //   email && password && !isWrongValue && !isNotSamePasswordValue
+  // );
 
+  // console.log(isValidValue);
+
+  const route = useRouter();
   const eyeOnImage = "/images/eye-on.svg";
   const eyeOffImage = "/images/eye-off.svg";
 
@@ -63,26 +75,25 @@ function InputUserInfo({
     }
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  // const signIn =
+
+  // useCallback(() => {
+  //   return axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
+  //     email: emailValue,
+  //     password: password,
+  //   });
+  // }, [emailValue, password]);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!isValidValue) return;
+    // const isValidValue =
+    //   email && password && !isWrongValue && !isNotSamePasswordValue;
 
-    const signIn = () => {
-      return axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
-        email: email,
-        password: password,
-      });
-    };
+    // if (!isValidValue) return;
 
-    const { execute, loading, error, data } = useAsync(signIn);
-
-    //데이터요청
-  }
-
-  const [hasFocused, setHasFocused] = useState({
-    email: false,
-    password: false,
-  });
+    // const res = await signIn();
+    // if (getStatusResult) route.push("/folder");
+  };
 
   function handleBlur(
     e: FocusEvent<HTMLInputElement>,
@@ -114,7 +125,7 @@ function InputUserInfo({
         return;
       }
 
-      if (value === USER_EMAIL && pathName?.pathName.isSignupPage) {
+      if (value === USER_INFO.email && pathName?.pathName.isSignupPage) {
         setIsOverlapValue(true);
         setIsWrongValue(true);
         return;

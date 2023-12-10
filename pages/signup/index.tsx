@@ -3,6 +3,7 @@ import SignTitle from "@/src/Input/ui-input-title/SignTitle";
 import SignButton from "@/src/link/ui-sign-button/SignButton";
 import SocialSign from "@/src/link/ui-social-sign/SocialSign";
 import { SignUpLayout } from "@/src/page-layout/SignUpLayout/SignUpLayout";
+import { getStatus } from "@/src/sharing/util/getStatus";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -17,18 +18,31 @@ const SignUpPage = () => {
   const [passwordValue, setPasswordValue] = useState("");
   const [checkPasswordValue, setCheckPasswordValue] = useState("");
   const [isNotSamePasswordValue, setIsNotSamePasswordValue] = useState(false);
+  const [emailValue, setEmailValue] = useState("");
+  let result;
 
   useEffect(() => {
     setIsNotSamePasswordValue(passwordValue !== checkPasswordValue);
-    if(localStorage.getItem("accessToken")) router.push("/folder")
+    if (localStorage.getItem("accessToken")) router.push("/folder");
   }, [passwordValue, checkPasswordValue]);
 
   return (
     <SignUpLayout
       signTitle={<SignTitle pathName={pathName} />}
-      emailInput={<InputUserInfo isPassword={false} pathName={{ pathName }} />}
+      emailInput={
+        <InputUserInfo
+          isPassword={false}
+          pathName={{ pathName }}
+          onBlur={setEmailValue}
+          emailValue={emailValue}
+        />
+      }
       passwordInput={
-        <InputUserInfo isPassword={true} onBlur={setPasswordValue} />
+        <InputUserInfo
+          isPassword={true}
+          onBlur={setPasswordValue}
+          emailValue={emailValue}
+        />
       }
       passwordCheckInput={
         <InputUserInfo
@@ -36,6 +50,7 @@ const SignUpPage = () => {
           checkPassword={true}
           onBlur={setCheckPasswordValue}
           isNotSamePasswordValue={isNotSamePasswordValue}
+
         />
       }
       loginButton={<SignButton pathName={pathName} />}

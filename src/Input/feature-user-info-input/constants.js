@@ -26,4 +26,7 @@ export const PLACEHOLDER = {
 export const VALID_PSW_REG = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 export const VALID_EMAIL_REG =
   /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-export const USER_EMAIL = "test@codeit.com";
+export const USER_INFO= {
+  email: "test@codeit.com",
+  password: "sprint101"
+};

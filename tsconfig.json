@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/Input/feature-user-info-input/useInput.ts", "src/Input/email-input/EmailInput.js"],
   "exclude": ["node_modules"]
 }
