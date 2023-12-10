@@ -18,7 +18,7 @@ interface SignInputProps {
   placeholder: string;
   rules: {};
   register: UseFormRegister<FieldValues>;
-  errors: FieldErrors;
+  errors: FieldErrors<FieldValues>;
 }
 
 const SignInput = ({
@@ -57,7 +57,9 @@ const SignInput = ({
         )}
       </div>
       {errors[name] && (
-        <p className={style.errorMessage}>{errors[name]?.message}</p>
+        <p className={style.errorMessage}>
+          {errors?.[name]?.message?.toString()}
+        </p>
       )}
     </div>
   );
