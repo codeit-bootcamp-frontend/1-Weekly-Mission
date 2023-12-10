@@ -9,6 +9,7 @@ import {
   VALIDATION_TEXT,
 } from "@/constants/validation";
 import { UseFormRegister, FieldErrors, FieldValues } from "react-hook-form";
+import usePasswordVisible from "@/hooks/usePasswordVisible";
 
 interface InputProps {
   labelText: "email" | "password" | "passwordConfirm";
@@ -17,9 +18,7 @@ interface InputProps {
 }
 
 const Input = ({ labelText, register, errors }: InputProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const handleVisibility = () => setIsVisible((prev) => !prev);
-
+  const { isVisible, handleVisibility } = usePasswordVisible();
   return (
     <StyledInputOuterBox>
       <StyledLabel htmlFor={labelText}>{LABEL_TO_KOR[labelText]}</StyledLabel>
