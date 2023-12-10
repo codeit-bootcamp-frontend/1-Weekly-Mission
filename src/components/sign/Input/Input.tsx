@@ -11,7 +11,7 @@
   errorMsg: hasError일 경우 input 태그 아래에 errorMsg를 띄운다
 */
 
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import styles from "./Input.module.scss";
 
 type inputType = "text" | "password";
@@ -31,7 +31,7 @@ export default function Input({
   label: string;
   type: inputType;
   placeholder?: string;
-  onChange?: any;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   value: string;
   hasError: boolean;
   errorMsg?: string;
