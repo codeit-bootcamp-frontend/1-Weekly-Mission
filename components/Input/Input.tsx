@@ -22,10 +22,12 @@ const Input = ({ labelText, register, errors }: InputProps) => {
 
   return (
     <StyledInputOuterBox>
-      <StyledLabel>{LABEL_TO_KOR[labelText]}</StyledLabel>
+      <StyledLabel htmlFor={labelText}>{LABEL_TO_KOR[labelText]}</StyledLabel>
       <StyledInputInnerBox>
         <StyledInput
+          id={labelText}
           placeholder={INPUT_PLACEHOLDER[labelText]}
+          autoFocus={labelText === "email"}
           type={labelText === "email" || isVisible ? "text" : "password"}
           {...register(labelText, {
             required: ERROR_MESSAGE[labelText]["require"],
@@ -99,7 +101,7 @@ const StyledButton = styled.button`
   right: 0;
   translate: -50% -50%;
   border: none;
-  background-color: #fff;
+  background-color: transparent;
 `;
 
 const ErrorText = styled.h4`
