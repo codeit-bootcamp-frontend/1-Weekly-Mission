@@ -1,10 +1,12 @@
 import { MouseEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+
 import * as S from "./SignFormStyles";
+import EmailInput from "./inputs/EmailInput";
+
 import { SignupForm } from "@/types/form";
 import { isUsableEmail, signupUser } from "@/common/api";
-// import EmailInput from "./inputs/EmailInput";
 
 export default function SignupForm() {
   const router = useRouter();
@@ -64,23 +66,19 @@ export default function SignupForm() {
 
   return (
     <S.Form onSubmit={handleSubmit(onSubmitSignUp)}>
-      {/* <EmailInput register={register} getValues={getValues} errors={errors} /> */}
-      <S.Label>이메일</S.Label>
-      <S.Input
-        type="text"
-        placeholder="이메일을 입력해주세요."
-        autoComplete="off"
-        $isErrorStyle={!!errors.email}
-        {...register("email", {
-          required: "이메일을 입력해주세요.",
-          pattern: {
-            value: /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/i,
-            message: "올바른 이메일 주소가 아닙니다.",
-          },
-          validate: validateUsableEmail,
-        })}
+      <EmailInput
+        errors={errors}
+        registerOptions={{
+          ...register("email", {
+            required: "이메일을 입력해주세요.",
+            pattern: {
+              value: /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/i,
+              message: "올바른 이메일 주소가 아닙니다.",
+            },
+            validate: validateUsableEmail,
+          }),
+        }}
       />
-      {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
       <S.Label>비밀번호</S.Label>
       <S.InputWrapper>
         <S.Input
