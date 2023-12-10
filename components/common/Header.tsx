@@ -1,9 +1,8 @@
-import { styled } from 'styled-components';
 import Link from 'next/link';
-import Image from 'next/image';
-import logoImg from '@/public/assets/images/logo.svg';
+import { styled } from 'styled-components';
 import Profile from '@/components/common/Profile';
 import Button from '@/components/common/Button';
+import Logo from '@/components/common/Logo';
 import useGetUser from '@/hooks/useGetUser';
 import useGetSampleUser from '@/hooks/useGetSampleUser';
 import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
@@ -22,9 +21,7 @@ function Header({ page = '' }: Props) {
   return (
     <Outer $page={page}>
       <Container>
-        <Link href="/" target="_blank">
-          <LogoImg src={logoImg} alt="Linkbrary 메인 페이지 바로가기" width={133} height={24} />
-        </Link>
+        <Logo type="header" width={133} height={24} />
         {isAlreadyLogin && userData ? (
           <Profile user={userData} />
         ) : (
@@ -68,12 +65,5 @@ const Container = styled.div`
 
   @media (max-width: ${DEVICE_SIZE.tablet}) {
     max-width: 799px;
-  }
-`;
-
-const LogoImg = styled(Image)`
-  @media (max-width: ${DEVICE_SIZE.mobile}) {
-    width: 90px;
-    height: 18px;
   }
 `;
