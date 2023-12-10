@@ -1,6 +1,4 @@
 import Head from "next/head";
-// import Share from "./shared/ShareContainer";
-// import Layout from "@/components/layout/Layout";
 import Landing from "@/components/landing";
 
 export default function Home() {
