@@ -75,19 +75,19 @@ const Card = ({ folders, item }: Props) => {
               <S.PopoverButton onClick={handleOpenModalDeleteLink}>
                 삭제하기
               </S.PopoverButton>
-              {modalDeleteLinkIsOpen && (
+              {modalDeleteLinkIsOpen ? (
                 <Modal close={handleCloseModalDeleteLink}>
                   <ModalDeleteLink url={url} />
                 </Modal>
-              )}
+              ) : null}
               <S.PopoverButton onClick={handleOpenModalAddLink}>
                 폴더에 추가
               </S.PopoverButton>
-              {modalAddLinkIsOpen && (
+              {modalAddLinkIsOpen ? (
                 <Modal close={handleCloseModalAddLink}>
                   <ModalAddLink folders={folders} url={url} />
                 </Modal>
-              )}
+              ) : null}
             </S.PopoverContainer>
           }>
           <S.KebabButton onClick={handleOpenPopover}>

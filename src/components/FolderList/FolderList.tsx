@@ -27,7 +27,7 @@ const FolderList = ({ folders }: Props) => {
 
   return (
     <>
-      {folders && (
+      {folders ? (
         <S.FolderListContainer>
           <S.FolderContainer>
             <Link href='/folder'>
@@ -59,13 +59,13 @@ const FolderList = ({ folders }: Props) => {
               alt='추가 아이콘'
             />
           </S.AddFolderButton>
-          {modalAddFolderIsOpen && (
+          {modalAddFolderIsOpen ? (
             <Modal close={() => setModalAddFolderIsOpen(false)}>
               <ModalAddFolder />
             </Modal>
-          )}
+          ) : null}
         </S.FolderListContainer>
-      )}
+      ) : null}
       <CurrentFolderInfo selectedName={selectedName} selectedId={selectedId} />
     </>
   );

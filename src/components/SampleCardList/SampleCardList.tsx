@@ -25,7 +25,7 @@ const SampleCardList = ({ searchKeyword, items }: Props) => {
 
   return (
     <>
-      {filteredItems && (
+      {filteredItems ? (
         <S.CardListContainer>
           {filteredItems.map((item) => (
             <S.CardContainer key={item.id}>
@@ -33,7 +33,7 @@ const SampleCardList = ({ searchKeyword, items }: Props) => {
             </S.CardContainer>
           ))}
         </S.CardListContainer>
-      )}
+      ) : null}
     </>
   );
 };

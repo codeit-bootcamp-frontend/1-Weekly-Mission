@@ -30,17 +30,17 @@ const Input = ({ id, passwordType = false, placeholder }: Props) => {
           placeholder={placeholder}
           {...register(id)}
         />
-        {passwordType && (
+        {passwordType ? (
           <S.Button
             src={`/assets/images/eye-${showPassword ? 'on' : 'off'}.svg`}
             alt='비밀번호 표시 전환'
             onClick={handleTogglePasswordVisibility}
           />
-        )}
+        ) : null}
       </S.Wrapper>
-      {errors[id] && (
+      {errors[id] ? (
         <S.ErrorMessage>{String(errors[id]?.message)}</S.ErrorMessage>
-      )}
+      ) : null}
     </S.Container>
   );
 };
