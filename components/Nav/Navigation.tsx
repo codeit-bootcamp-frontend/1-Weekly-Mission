@@ -2,29 +2,21 @@ import Avatar from "@/components/Nav/Avatar/Avatar";
 import Logo from "@/components/Nav/Avatar/Logo";
 import { Background, Nav } from "@/components/Nav/Navigation.styled";
 import Link from "next/link";
-import { memo } from "react";
+import { memo, useRef } from "react";
 
 interface Props {
   id?: number;
   $page?: string;
 }
 
-let locate = "/signin";
-
 export default memo(function Navigation({ id, $page = "" }: Props) {
+  const locate = useRef("/signin");
   const accessToken = typeof window !== "undefined" ? sessionStorage.getItem("accessToken") : null;
   if (accessToken) {
-    locate = `/folder?a=${accessToken}`;
+    locate.current = `/folder`;
   }
 
-  const Login = () =>
-    $page === "/" ? (
-      <Link href={locate} as={locate === "/signin" ? "/signin" : "/folder"}>
-        로그인
-      </Link>
-    ) : (
-      <Avatar id={id} />
-    );
+  const Login = () => ($page === "/" ? <Link href={locate.current}>로그인</Link> : <Avatar id={id} />);
 
   return (
     <>

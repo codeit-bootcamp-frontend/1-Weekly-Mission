@@ -13,7 +13,7 @@ export const useGetUserId = () => {
         const res = await axios.get("/api/users", { headers: { Authorization: accessToken } });
         const { id } = res.data.data[0];
         setId(id);
-        return;
+        return id;
       }
       router.push("/signin");
     })();

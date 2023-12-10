@@ -3,30 +3,14 @@ import HeaderSearch from "@/components/Header/HeaderInput";
 import LinkSection from "@/components/Main/LinkSection";
 import Main from "@/components/Main/Main";
 import Navigation from "@/components/Nav/Navigation";
+import { useGetUserId } from "@/hooks/useGetUserId";
 import useObserver from "@/hooks/useObserver";
-import axios from "@/lib/axios";
-import { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const token = context.query["a"];
-  if (!token) {
-    return {
-      props: {},
-      redirect: { destination: "/signin" },
-    };
-  }
-
-  const res = await axios.get("/api/users", { headers: { Authorization: token } });
-  const { id } = res.data.data[0];
-  return {
-    props: {
-      id,
-    },
-  };
-};
-
-export default function FolderPage({ id }: { id: number }) {
+export default function FolderPage() {
   const { setRefForObserver } = useObserver();
+  const id = useGetUserId();
+
+  if (!id) return null;
 
   return (
     <>
