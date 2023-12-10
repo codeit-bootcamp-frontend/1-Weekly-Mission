@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import * as S from "./SignFormStyles";
@@ -7,6 +7,7 @@ import { isUsableEmail, signupUser } from "@/common/api";
 
 export default function SignupForm() {
   const router = useRouter();
+  const [isHiddenPassword, setIsHiddenPassword] = useState(true);
   const {
     register,
     handleSubmit,
@@ -15,12 +16,13 @@ export default function SignupForm() {
     formState: { errors, isValid },
   } = useForm<SignupForm>({ mode: "onBlur" });
 
+  const inputContentsType = isHiddenPassword ? "password" : "text";
+  const IconPath = isHiddenPassword ? "off" : "on";
+
   // SWR로 mutation 하는 방법들 => 적용전이어서 주석처리
   // const { data, mutate } = useSWR("/api/sign-up");
   // const { mutate } = useSWRConfig();
   // const { trigger, isMutating } = useSWRMutation(url, sendRequest, /* options */)
-
-  const IconPath = "on";
 
   const onSubmitSignUp = async (data: SignupForm) => {
     try {
@@ -48,6 +50,10 @@ export default function SignupForm() {
   const validatePasswordCheck = (value: string) => {
     const password = getValues("password");
     return value === password || "비밀번호가 일치하지 않아요.";
+  };
+
+  const toggleVisiblePassword = (e: MouseEvent<HTMLImageElement>) => {
+    setIsHiddenPassword((prev) => !prev);
   };
 
   // focus on email input
@@ -79,7 +85,7 @@ export default function SignupForm() {
       <S.Label>비밀번호</S.Label>
       <S.InputWrapper>
         <S.Input
-          type="password"
+          type={inputContentsType}
           placeholder="영문, 숫자를 조합해 8자 이상 입력해 주세요."
           autoComplete="off"
           $isErrorStyle={!!errors.password}
@@ -91,13 +97,17 @@ export default function SignupForm() {
             },
           })}
         />
-        <S.EyeIcon id="masking" src={`/assets/eye-${IconPath}.svg`} alt="비밀번호 마스킹표시" />
+        <S.EyeIcon
+          onClick={toggleVisiblePassword}
+          src={`/assets/eye-${IconPath}.svg`}
+          alt="비밀번호 마스킹표시"
+        />
       </S.InputWrapper>
       {errors.password && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
       <S.Label>비밀번호 확인</S.Label>
       <S.InputWrapper>
         <S.Input
-          type="password"
+          type={inputContentsType}
           placeholder="비밀번호와 일치하는 값을 입력해 주세요."
           autoComplete="off"
           $isErrorStyle={!!errors.passwordCheck}
@@ -106,7 +116,11 @@ export default function SignupForm() {
             validate: validatePasswordCheck,
           })}
         />
-        <S.EyeIcon id="masking" src={`/assets/eye-${IconPath}.svg`} alt="비밀번호 마스킹표시" />
+        <S.EyeIcon
+          onClick={toggleVisiblePassword}
+          src={`/assets/eye-${IconPath}.svg`}
+          alt="비밀번호 마스킹표시"
+        />
       </S.InputWrapper>
       {errors.passwordCheck && <S.ErrorMessage>{errors.passwordCheck.message}</S.ErrorMessage>}
       <S.FormButton>회원가입</S.FormButton>
