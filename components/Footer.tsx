@@ -5,6 +5,7 @@ import melonImg from "@/public/img/png/Vector-4.png";
 import Image from "next/image";
 import styles from "./footer.module.css";
 import { isblock } from "@/utils/location";
+import Link from "next/link";
 
 const SNS = [
   {
@@ -39,27 +40,27 @@ const Footer = () => {
         <div className={styles.footerConnectYear}>codeit - 2023</div>
         <ul className={styles.footerConnectFaq}>
           <li>
-            <a className={styles.footerConnectFaqLiA} href="#none">
+            <Link className={styles.footerConnectFaqLiA} href="#none">
               Privacy Policy
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={styles.footerConnectFaqLiA} href="#none">
+            <Link className={styles.footerConnectFaqLiA} href="#none">
               FAQ
-            </a>
+            </Link>
           </li>
         </ul>
         <ul className={styles.footerConnectSns}>
           {SNS.map((list, index) => {
             return (
               <li className={styles.footerConnectSnsLi} key={index}>
-                <a href={list.link} target="blank">
+                <Link href={list.link} target="blank">
                   <Image
                     className={styles.footerConnectSnsLiImg}
                     src={list.image}
                     alt={list.title}
                   />
-                </a>
+                </Link>
               </li>
             );
           })}

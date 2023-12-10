@@ -1,6 +1,7 @@
 import CardItem from "./CardItem";
 import { Links } from "../dataType/dataType";
 import styles from "./cards.module.css";
+import Link from "next/link";
 
 interface CardsType {
   linkCardsData: { data: Links[] } | null;
@@ -62,14 +63,14 @@ const Cards = ({
     <div className={styles.sectionTitleThird}>
       <div className={styles.sectionTitleThirdInner}>
         {newLinkData?.map((item) => (
-          <a
+          <Link
             className={styles.sectionTitleThirdInnerA}
             key={item.id}
-            href={item.url}
+            href={`${item.url}`}
             target="_blank"
           >
             <CardItem item={item} {...cardProps} />
-          </a>
+          </Link>
         ))}
       </div>
     </div>

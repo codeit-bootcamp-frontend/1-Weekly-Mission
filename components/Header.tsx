@@ -6,17 +6,10 @@ import { AccountContext } from "@/contexts/AccountContext";
 import Image from "next/image";
 import styles from "./header.module.css";
 
-const MOBILE_WIDTH = 390;
-
 const Header = () => {
   const { account, errorMessage } = useContext(AccountContext);
   const { name, email, image_source: profileImageSource } = account?.data[0];
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const userToken = window.localStorage.getItem("user");
-
-  window.addEventListener("resize", () => {
-    setWindowWidth(window.innerWidth);
-  });
 
   return (
     <header
@@ -52,9 +45,7 @@ const Header = () => {
                 src={profileImageSource ? profileImageSource : ""}
                 alt={name ? name : ""}
               />
-              {windowWidth > MOBILE_WIDTH ? (
-                <span className={styles.profileId}>{email && email}</span>
-              ) : null}
+              <span className={styles.profileId}>{email && email}</span>
             </>
           )}
           {errorMessage && <span>{errorMessage.message}</span>}
