@@ -21,7 +21,7 @@ export default function Home() {
 
 const SignWrapper = styled.div`
   padding-top: 23.8rem;
-  padding-bottom: 11.6rem;
+  padding-bottom: 25.2rem;
 
   display: flex;
   flex-direction: column;
@@ -32,11 +32,11 @@ const SignWrapper = styled.div`
 
   @media (max-width: 1124px) {
     padding-top: 20rem;
-    padding-bottom: 17.7rem;
+    padding-bottom: 29rem;
   }
 
   @media (max-width: 767px) and (min-width: 375px) {
     padding-top: 12rem;
-    padding-bottom: 11.9rem;
+    padding-bottom: 23.2rem;
   }
 `;
