@@ -23,9 +23,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta charSet="utf-8" />
         <title>Linkbrary</title>
       </Head>
-      <Header />
+
       <Component {...pageProps} />
-      <Footer />
     </>
   );
 }

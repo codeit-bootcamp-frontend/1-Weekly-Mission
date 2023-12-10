@@ -26,6 +26,7 @@ const FloatingBtnContainer = styled.div`
 function FolderPage() {
   return (
     <>
+      <Header />
       <FloatingBtnContainer>
         <FloatingAddFolderBtn />
       </FloatingBtnContainer>
@@ -34,6 +35,7 @@ function FolderPage() {
         <MainContent />
         {/* <Footer /> */}
       </MainContainer>
+      <Footer />
     </>
   );
 }
