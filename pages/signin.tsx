@@ -1,6 +1,6 @@
 import SigninFooter from '@/components/sign/SignFooter';
 import SigninHeader from '@/components/sign/SignHeader';
-import SigninMain from '@/components/sign/SignMain';
+import SigninMain from '@/components/sign/SigninMain';
 import { SignFooterMsg, SignHeaderMsg } from '@/constant/constants';
 import styled from 'styled-components';
 

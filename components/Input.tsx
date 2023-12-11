@@ -14,6 +14,8 @@ interface InputProps {
   passwordCheck: string;
   emailErrorStatus: number;
   setEmailErrorStatus: React.Dispatch<React.SetStateAction<number>>;
+  pwErrorStatus: number;
+  setPwErrorStatus: React.Dispatch<React.SetStateAction<number>>;
 }
 
 function Input({
@@ -25,6 +27,8 @@ function Input({
   passwordCheck,
   emailErrorStatus,
   setEmailErrorStatus,
+  pwErrorStatus,
+  setPwErrorStatus,
 }: InputProps) {
   const router = useRouter();
   const url = router.pathname;
@@ -32,7 +36,6 @@ function Input({
   const [isErrorMsg, setIsErrorMsg] = useState('');
   const [isVisible, setIsVisible] = useState(url === '/signup' ? true : false);
   const [value, setValue] = useState('');
-  const [passwordErrorStatus, setPasswordErrorStatus] = useState(1);
 
   const handleVisibility = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -52,15 +55,18 @@ function Input({
   };
 
   function handleEmail() {
+    setEmailErrorStatus(1);
+    //빈칸일때
     if (value === '') {
       setIsError(true);
       setIsErrorMsg(ErrorMsg.emptyEmail);
-    } else if (value && verifyEmail(value) !== true) {
+    }
+    // 이메일 형식 안맞을 때
+    else if (value && verifyEmail(value) !== true) {
       setIsError(true);
-      setEmailErrorStatus(420);
+      setEmailErrorStatus(3);
       setIsErrorMsg(ErrorMsg.inValidEmail);
     } else {
-      setEmailErrorStatus(0);
       setIsError(false);
     }
   }
@@ -68,58 +74,50 @@ function Input({
   function handlePassword(e: ChangeEvent<HTMLInputElement>) {
     if (value === '') {
       setIsError(true);
+      setPwErrorStatus(3);
       setIsErrorMsg(ErrorMsg.emptyPassword);
     } else if (url === '/signup' && verifyPassword(value) !== true) {
       setIsError(true);
-      setPasswordErrorStatus(417);
+      setPwErrorStatus(3);
       setIsErrorMsg(ErrorMsg.inValidPassword);
     } else if (url === '/signup') {
       if (passwordCheck !== e.target.value) {
         setIsError(true);
-        setPasswordErrorStatus(410);
+        setPwErrorStatus(3);
         setIsErrorMsg(ErrorMsg.notEqualPassword);
       } else if (value) {
         setIsError(false);
-        setPasswordErrorStatus(0);
+        setPwErrorStatus(0);
       }
     }
   }
 
   useEffect(() => {
+    //signup 오류
     if (emailErrorStatus === 409) {
       setIsError(true);
-      console.log('여기');
       if (inputType === 'email') setIsErrorMsg(ErrorMsg.duplicatedEmail);
       if (inputType.includes('password')) setIsError(false);
       return;
-    } else if (emailErrorStatus === 400) {
-      setIsError(true);
-      console.log('여기2');
-      if (inputType === 'email') setIsErrorMsg(ErrorMsg.wrongEmail);
-      if (inputType.includes('password')) setIsError(false);
-      return;
-    } else if (emailErrorStatus === 0 && passwordErrorStatus !== 0) {
-      if (inputType.includes('email')) setIsError(false);
-      if (inputType.includes('password')) setIsErrorMsg(ErrorMsg.wrongPassword);
     }
+  }, [emailErrorStatus]);
+
+  useEffect(() => {
+    //signin 오류
     if (signError === 400) {
-      console.log('여긴안돼');
       setIsError(true);
-      if (emailErrorStatus !== 0) {
-        if (inputType === 'email') setIsErrorMsg(ErrorMsg.wrongEmail);
+      if (url === '/signup') {
+        if (inputType.includes('email')) setIsError(false);
         if (inputType.includes('password'))
           setIsErrorMsg(ErrorMsg.wrongPassword);
       } else {
-        if (passwordErrorStatus !== 0) {
-          if (inputType.includes('email')) setIsError(false);
-          if (inputType.includes('password'))
-            setIsErrorMsg(ErrorMsg.wrongPassword);
-        } else {
-          setIsError(false);
-        }
+        setIsError(true);
+        if (inputType === 'email') setIsErrorMsg(ErrorMsg.wrongEmail);
+        if (inputType.includes('password'))
+          setIsErrorMsg(ErrorMsg.wrongPassword);
       }
     }
-  }, [signError, emailErrorStatus]);
+  }, [signError]);
 
   return (
     <div>

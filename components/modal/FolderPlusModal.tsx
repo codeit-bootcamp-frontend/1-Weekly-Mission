@@ -11,11 +11,9 @@ interface Props {
 
 export default function FolderPlusModal({ handleClick, title, value }: Props) {
   const back = useRef<HTMLDivElement>(null);
-
   const backClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === back.current) handleClick();
   };
-  console.log(value);
   return (
     <M.ModalBackground ref={back} onClick={backClick}>
       <M.ModalWrapper>

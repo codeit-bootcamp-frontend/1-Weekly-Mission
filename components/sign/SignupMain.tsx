@@ -17,7 +17,7 @@ interface SigninProps {
   };
 }
 
-export default function SigninMain() {
+export default function SignMain() {
   const router = useRouter();
   const [signinToken, setSigninToken] = useState<SigninProps>();
   const [signinEmail, setSigninEmail] = useState('');
@@ -25,23 +25,22 @@ export default function SigninMain() {
   const [signError, setSignError] = useState(0);
   const [passwordCheck, setPasswordCheck] = useState('');
   const [emailErrorStatus, setEmailErrorStatus] = useState(1);
+  const [pwErrorStatus, setPwErrorStatus] = useState(1);
 
-  async function handleEmailSubmit(e: MouseEvent<HTMLDivElement>) {
+  async function handleEmailSubmit(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setSignError(0);
+    //이메일 오류 있을 경우
+    if (emailErrorStatus === 3) return;
     const res: any = await axios.post('/check-email', {
       email: signinEmail,
     });
     if (res.status === 200) {
-      console.log('성공');
       alert('사용 가능한 이메일 입니다.');
       setEmailErrorStatus(0);
     } else if (res === 400) {
-      console.log('올바른 이메일 아님');
       setEmailErrorStatus(res);
     } else {
-      console.log('이메일 중보');
-      console.log(res);
       setEmailErrorStatus(res);
     }
   }
@@ -49,41 +48,17 @@ export default function SigninMain() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSignError(0);
-    if (emailErrorStatus === 409 || emailErrorStatus === 400) {
-      alert('이메일을 확인해 주세요.');
-      setEmailErrorStatus(400);
-      return;
-    }
-    if (router.pathname.includes('signin')) {
-      console.log('1');
-      const res: any = await axios.post('/sign-in', {
-        email: signinEmail,
-        password: signinPassword,
-      });
-      if (res !== 400) {
-        const signinData = res.data.data;
-        setSigninToken(signinData);
-        setSignError(0);
-        router.push('/folder');
-      } else {
-        setSignError(res);
-      }
-    } else if (router.pathname.includes('signup')) {
-      console.log('2');
-      const res: any = await axios.post('/sign-up', {
-        email: signinEmail,
-        password: signinPassword,
-      });
-      if (emailErrorStatus === 0 && res !== 400) {
-        console.log(res);
-        console.log(emailErrorStatus);
-        const signinData = res.data.data;
-        setSigninToken(signinData);
-        setSignError(0);
-        router.push('/folder');
-      } else {
-        setSignError(res);
-      }
+    const res: any = await axios.post('/sign-up', {
+      email: signinEmail,
+      password: signinPassword,
+    });
+    if (res !== 400) {
+      const signinData = res.data.data;
+      setSigninToken(signinData);
+      setSignError(0);
+      router.push('/folder');
+    } else {
+      setSignError(res);
     }
   }
 
@@ -92,7 +67,6 @@ export default function SigninMain() {
       handleSubmit(e);
     }
   };
-
   return (
     <>
       <form onSubmit={handleSubmit} onKeyDown={handleOnKeyPress}>
@@ -108,14 +82,18 @@ export default function SigninMain() {
               passwordCheck={passwordCheck}
               emailErrorStatus={emailErrorStatus}
               setEmailErrorStatus={setEmailErrorStatus}
+              pwErrorStatus={emailErrorStatus}
+              setPwErrorStatus={setEmailErrorStatus}
             />
-            {router.pathname.includes('signup') ? (
-              <EmailButton onClick={handleEmailSubmit}>
-                이메일 중복 확인
-              </EmailButton>
-            ) : (
-              <></>
-            )}
+            <EmailButton
+              disabled={emailErrorStatus !== 0 ? false : true}
+              onClick={handleEmailSubmit}
+              check={emailErrorStatus}
+            >
+              {emailErrorStatus !== 0
+                ? '이메일 중복 확인'
+                : '이메일 중복 확인 완료'}
+            </EmailButton>
           </InputContainer>
           <InputContainer>
             <InputDiv>비밀번호</InputDiv>
@@ -128,29 +106,30 @@ export default function SigninMain() {
               passwordCheck={passwordCheck}
               emailErrorStatus={emailErrorStatus}
               setEmailErrorStatus={setEmailErrorStatus}
+              pwErrorStatus={emailErrorStatus}
+              setPwErrorStatus={setEmailErrorStatus}
             />
           </InputContainer>
-          {router.pathname.includes('signup') ? (
-            <InputContainer>
-              <InputDiv>비밀번호 확인</InputDiv>
-              <Input
-                inputType={'passwordCheck'}
-                emailChange={setSigninEmail}
-                passwordChange={setSigninPassword}
-                signError={signError}
-                setPasswordCheck={setPasswordCheck}
-                passwordCheck={passwordCheck}
-                emailErrorStatus={emailErrorStatus}
-                setEmailErrorStatus={setEmailErrorStatus}
-              />
-            </InputContainer>
-          ) : (
-            <></>
-          )}
+          <InputContainer>
+            <InputDiv>비밀번호 확인</InputDiv>
+            <Input
+              inputType={'passwordCheck'}
+              emailChange={setSigninEmail}
+              passwordChange={setSigninPassword}
+              signError={signError}
+              setPasswordCheck={setPasswordCheck}
+              passwordCheck={passwordCheck}
+              emailErrorStatus={emailErrorStatus}
+              setEmailErrorStatus={setEmailErrorStatus}
+              pwErrorStatus={pwErrorStatus}
+              setPwErrorStatus={setPwErrorStatus}
+            />
+          </InputContainer>
         </SigninMainWrapper>
         <SignButton
+          pwCheck={pwErrorStatus}
           check={emailErrorStatus}
-          text={router.pathname.includes('signin') ? '로그인' : '회원가입'}
+          text={'회원가입'}
         />
       </form>
     </>
@@ -173,7 +152,7 @@ const InputDiv = styled.div`
   font-size: 14px;
 `;
 
-const EmailButton = styled.div`
+const EmailButton = styled.button<{ check: number }>`
   width: 100%;
   margin-top: 30px;
   font-size: 18px;
@@ -182,7 +161,10 @@ const EmailButton = styled.div`
   border: none;
   padding: 16px 20px;
   border-radius: 8px;
-  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  background: ${(props) =>
+    props.check !== 0
+      ? 'linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)'
+      : '#808080'};
   cursor: pointer;
   text-align: center;
 `;

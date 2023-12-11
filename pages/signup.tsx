@@ -1,6 +1,6 @@
 import SigninFooter from '@/components/sign/SignFooter';
 import SigninHeader from '@/components/sign/SignHeader';
-import SigninMain from '@/components/sign/SignMain';
+import SignupMain from '@/components/sign/SignupMain';
 import { SignFooterMsg, SignHeaderMsg } from '@/constant/constants';
 import styled from 'styled-components';
 
@@ -12,7 +12,7 @@ export default function Signup() {
           text={SignHeaderMsg.isMember}
           linktext={SignHeaderMsg.goSignin}
         />
-        <SigninMain />
+        <SignupMain />
       </Div>
       <SigninFooter text={SignFooterMsg.anotherSignup} />
     </SigninWrapper>

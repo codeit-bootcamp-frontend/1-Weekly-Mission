@@ -6,11 +6,9 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   (success) => {
-    console.log(success);
     return success;
   },
   (error) => {
-    console.log(error.response.status);
     return error.response.status;
   }
 );

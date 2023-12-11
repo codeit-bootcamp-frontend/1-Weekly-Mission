@@ -3,12 +3,22 @@ import styled from 'styled-components';
 interface SignButtonProps {
   text: string;
   check: number;
+  pwCheck?: number;
 }
 
-export default function SignButton({ text, check }: SignButtonProps) {
+export default function SignButton({ text, check, pwCheck }: SignButtonProps) {
   return (
     <>
-      <Button disabled={check !== 0 ? true : false} checkColor={check}>
+      <Button
+        disabled={
+          text === '로그인'
+            ? false
+            : check !== 0 || pwCheck !== 0
+            ? true
+            : false
+        }
+        checkColor={check}
+      >
         {check === 0 ? text : '이메일 중복 확인 먼저 하세요'}
       </Button>
     </>
