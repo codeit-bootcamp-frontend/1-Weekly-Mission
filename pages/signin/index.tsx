@@ -6,7 +6,8 @@ import Link from "next/link";
 import Input from "@/components/input/Input";
 import { useForm, SubmitHandler } from "react-hook-form";
 import google from "@/public/images/google.png";
-import kakao from "@/public/images/kakao.png";
+// import kakao from "@/public/images/kakao.png";
+import kakao from "../../public/images/kakao.png";
 import { useRouter } from "next/router";
 import { FormValues } from "@/components/types/hookFormTypes";
 export default function SingInPage() {
