@@ -16,7 +16,7 @@ export default function SigninFooter({ text }: FooterProps) {
             <Image src="/google.svg" fill alt="Google이미지" />
           </SigninURLImageLink>
           <SigninURLImageLink href="https://www.kakaocorp.com/page">
-            <Image src="/kakao.svg" fill alt="Google이미지" />
+            <Image src="/kakao.svg" fill alt="KaKao이미지" />
           </SigninURLImageLink>
         </UrlButton>
       </div>
