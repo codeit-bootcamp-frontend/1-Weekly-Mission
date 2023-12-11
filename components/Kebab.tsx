@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { MouseEvent } from "react";
 import { Modalkebab } from "../components/modal/Modal";
@@ -55,7 +55,12 @@ const PopDelete = styled.button<PopDeleteProps>`
     $isSelected ? "#6D6AFE" : "#ffffff"};
 `;
 
-export default function KebabButton({ url, openMAF }: any) {
+interface KebabButtonProps {
+  url: string;
+  openMAF: (e: React.MouseEvent<HTMLButtonElement>, url: string) => void;
+}
+
+export default function KebabButton({ url, openMAF }: KebabButtonProps) {
   const [open, setOpen] = useState(false);
   const [isClicked, setIsClicked] = useState("");
   const toggledKebab = (e: MouseEvent) => {
@@ -63,17 +68,17 @@ export default function KebabButton({ url, openMAF }: any) {
     setOpen((prev) => !prev);
   };
 
-  const togglePop = (e: any) => {
+  const togglePop = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setIsClicked(e.target.innerText);
+    setIsClicked(e.currentTarget.innerText);
   };
-  const handleOpenMAF = (e: any) => {
+  const handleOpenMAF = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setIsClicked(e.target.innerText);
+    setIsClicked(e.currentTarget.innerText);
     openMAF(e, url);
   };
 
-  const handlecloseModal = (e: any) => {
+  const handlecloseModal = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.preventDefault();
     setIsClicked("");
   };

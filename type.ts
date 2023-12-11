@@ -3,17 +3,20 @@ export interface FolderLinkData {
   folder_id?: number;
   title: string;
   description: string;
-  created_at?: string;
+  created_at: string;
   updated_at?: string | null;
-  image_source?: string;
+  image_source: string;
   url: string;
+  imageSource: undefined;
+  createdAt: string;
 }
 
 export type SampleLinkData = Omit<
   FolderLinkData,
-  "folder_id" | "updated_at" | "image_source"
+  "folder_id" | "updated_at"
 > & {
   imageSource?: string;
+  createdAt: string;
 };
 
 export interface TabButtonData {
@@ -39,8 +42,16 @@ export interface UserLoginData {
   };
 }
 
+export interface FolderAddProps {
+  openMAF: (e: React.MouseEvent<HTMLElement>, text?: string) => void;
+}
+
 export interface LinkAddBarProps {
-  openMAF: (e: MouseEvent, text?: string) => void;
+  openMAF: (e: React.MouseEvent<HTMLButtonElement>, text: string) => void;
+}
+
+export interface openMAFparams {
+  openMAF: (e: MouseEvent, url?: string) => void;
 }
 
 export interface LinkAddBackgroundProps {
@@ -77,7 +88,7 @@ export interface ModalkebabProps {
   title: string;
   buttonTitle: string;
   color: string;
-  onClose: (e: any) => void;
+  onClose: (e: React.MouseEvent<HTMLSpanElement>) => void;
 }
 
 export interface ModalLinkProps {
@@ -88,7 +99,7 @@ export interface ModalLinkProps {
     buttonTitle: string;
   };
   folderName: string;
-  onClose: (e: any) => void;
+  onClose: (e: React.MouseEvent<HTMLSpanElement>) => void;
   nowFolderId?: number;
   userId?: number;
 }

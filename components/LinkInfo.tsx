@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from "react";
+import React, { useState, MouseEvent } from "react";
 import { ModalLink } from "../components/modal/Modal";
 import styled from "styled-components";
 
@@ -37,8 +37,8 @@ export const LinkOptions = [
 function LinkInfo({ folderName, nowFolderId, userId }: LinkInfoProps) {
   const [modalLinkName, setModalLinkName] = useState("");
 
-  const handleModalLink = (e: any) => {
-    setModalLinkName(e.target.innerText);
+  const handleModalLink = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setModalLinkName(e.currentTarget.innerText);
   };
   const handleCloseModalLink = (e: MouseEvent) => setModalLinkName("");
 

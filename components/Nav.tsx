@@ -7,7 +7,7 @@ import Link from "next/link";
 import { UserLoginData } from "../type";
 function Nav({ lists }: UserLoginData) {
   const { userEmail, userImage = "" } = lists;
-
+  if (!userImage) return;
   return (
     <NavContainer>
       <NavBox>

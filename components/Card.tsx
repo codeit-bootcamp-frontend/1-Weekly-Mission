@@ -4,15 +4,37 @@ import star from "../images/star.svg";
 import KebabButton from "../components/Kebab";
 import { timeForToday, formatDate } from "../date";
 import Image from "next/image";
-export function Card({ item, openMAF }: any) {
+import React from "react";
+import { FolderLinkData, SampleLinkData } from "@/type";
+interface FolderCardProps {
+  item: FolderLinkData;
+  openMAF: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+interface SharedCardProps {
+  item: SampleLinkData;
+  openMAF: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+interface SampleCardProps {
+  item: SampleLinkData;
+}
+
+export function Card({ item, openMAF }: FolderCardProps | SharedCardProps) {
   const { url, imageSource = noImage, title, createdAt, description } = item;
+  const { image_source, created_at } = item;
   return (
     <>
       <a href={url}>
         <CardContainer>
           <CardImageWrapper>
             <CardImage>
-              <Image fill src={item.image_source || imageSource} alt={title} />
+              <Image
+                width={340}
+                height={200}
+                src={image_source || imageSource}
+                alt={title}
+              />
             </CardImage>
             <button className="star-button">
               <img className="start" src={star} alt="" />
@@ -21,13 +43,11 @@ export function Card({ item, openMAF }: any) {
 
           <CardBox>
             <CardCreatedTime>
-              {timeForToday(createdAt || item.created_at)}
+              {timeForToday(createdAt || created_at)}
               <KebabButton openMAF={openMAF} url={url} />
             </CardCreatedTime>
             <CardText>{description}</CardText>
-            <CardCreatedAt>
-              {formatDate(createdAt || item.created_at)}
-            </CardCreatedAt>
+            <CardCreatedAt>{formatDate(createdAt || created_at)}</CardCreatedAt>
           </CardBox>
         </CardContainer>
       </a>
@@ -35,7 +55,7 @@ export function Card({ item, openMAF }: any) {
   );
 }
 
-export function SampleCard({ item }: any) {
+export function SampleCard({ item }: SampleCardProps) {
   const { url, imageSource = noImage, title, createdAt, description } = item;
   return (
     <>
@@ -43,7 +63,12 @@ export function SampleCard({ item }: any) {
         <CardContainer>
           <CardImageWrapper>
             <CardImage>
-              <Image fill src={item.image_source || imageSource} alt={title} />
+              <Image
+                width={340}
+                height={200}
+                src={item.image_source || imageSource}
+                alt={title}
+              />
             </CardImage>
             <button className="star-button">
               <img className="start" src={star} alt="" />

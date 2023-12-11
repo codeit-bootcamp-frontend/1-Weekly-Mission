@@ -8,7 +8,12 @@ import Image from "next/image";
 
 import { SearchBarWrapperProps } from "@/type";
 
-function SearchBar({ search, onSearch }: any) {
+interface SearchBarProps {
+  search: string;
+  onSearch: (param: string) => void;
+}
+
+function SearchBar({ search, onSearch }: SearchBarProps) {
   const [display, setDisplay] = useState(true);
 
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
