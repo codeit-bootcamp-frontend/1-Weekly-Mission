@@ -10,7 +10,7 @@ import IconFacebookLarge from './facebook-large.svg';
 import IconFacebook from './facebook.svg';
 import IconInstagram from './instagram.svg';
 import IconKakaotalkLarge from './kakaotalk-large.svg';
-import IconKakaotalk from './kakotalk.svg';
+import IconKakaotalk from './kakaotalk.svg';
 import IconKebab from './kebab.svg';
 import IconLink from './link.svg';
 import IconLinkbrary from './linkbrary.svg';
@@ -20,6 +20,7 @@ import IconShare from './share.svg';
 import IconStar from './star.svg';
 import IconTwitter from './twitter.svg';
 import IconYoutube from './youtube.svg';
+import IconGoogle from './google.svg';
 
 export {
   IconAddColor,
@@ -44,4 +45,5 @@ export {
   IconStar,
   IconTwitter,
   IconYoutube,
+  IconGoogle,
 };

@@ -10,13 +10,10 @@
   },
   "dependencies": {
     "axios": "^1.6.0",
-    "babel-plugin-styled-components": "^2.1.4",
     "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18",
-    "react-timeago": "^7.2.0",
-    "styled-components": "^6.1.0",
-    "styled-reset": "^4.5.1"
+    "react-timeago": "^7.2.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
@@ -24,9 +21,13 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-timeago": "^4.1.6",
-    "@types/styled-components": "^5.1.32",
+    "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
+    "postcss": "^8",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
 }

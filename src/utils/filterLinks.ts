@@ -4,14 +4,13 @@ function filterLinks(links?: Link[], keyword?: string) {
   if (!links) return;
   if (!keyword) return links;
 
-  const lowered = keyword.toLowerCase().split(' ').join('');
+  const normalizedKeyword = keyword.toLowerCase().replace(/\s+/g, '');
   return links?.filter(({ url, title, description }) => {
     const searchText = `${url}${title}${description}`
       .toLowerCase()
-      .split(' ')
-      .join('');
+      .replace(/\s+/g, '');
 
-    return searchText.includes(lowered);
+    return searchText.includes(normalizedKeyword);
   });
 }
 
