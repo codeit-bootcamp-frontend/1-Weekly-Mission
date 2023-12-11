@@ -14,7 +14,7 @@ export const FooterContainer = styled.div`
   }
 `;
 
-export const FoterLeft = styled.div`
+export const FooterLeft = styled.div`
   color: #676767;
   text-align: center;
   font-family: Arial;
@@ -33,7 +33,7 @@ export const PolicyNFaqA = styled.a`
   font-weight: 400;
 `;
 
-export const FooterMidle = styled.div`
+export const FooterMiddle = styled.div`
   display: flex;
   gap: 30px;
   grid-area: m;

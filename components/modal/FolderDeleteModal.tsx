@@ -1,5 +1,5 @@
 import { MouseEvent, useRef } from 'react';
-import * as M from '../styled-component/ModalStyledComponent';
+import * as M from '../../style/styled-component/Modal/ModalStyledComponent';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -9,13 +9,6 @@ interface Props {
   title: string;
   cardLink: string;
 }
-
-const CloseImg = styled(Image)`
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-`;
 
 export default function FolderDeleteModal({
   handleClick,
@@ -35,7 +28,7 @@ export default function FolderDeleteModal({
 
   return (
     <M.ModalBackground ref={back} onClick={backClick}>
-      <M.ModlaWrapper>
+      <M.ModalWrapper>
         <M.ModalDeleteHeader>
           <M.ModalHeader>{value}</M.ModalHeader>
           <M.ModalLinkUrl>
@@ -52,7 +45,14 @@ export default function FolderDeleteModal({
           alt="닫기 버튼"
           onClick={handleClick}
         />
-      </M.ModlaWrapper>
+      </M.ModalWrapper>
     </M.ModalBackground>
   );
 }
+
+const CloseImg = styled(Image)`
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`;

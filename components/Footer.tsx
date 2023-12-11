@@ -1,21 +1,16 @@
 import styled from 'styled-components';
-import * as F from './styled-component/FooterStyledComponent';
+import * as F from '../style/styled-component/Footer/FooterStyledComponent';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Div = styled.div`
-  position: relative;
-  width: 20px;
-  height: 20px;
-`;
 export default function Footer() {
   return (
     <F.FooterContainer>
-      <F.FoterLeft>©codeit - 2023</F.FoterLeft>
-      <F.FooterMidle>
+      <F.FooterLeft>©codeit - 2023</F.FooterLeft>
+      <F.FooterMiddle>
         <F.PolicyNFaqA href="./policy.html">Privacy Policy</F.PolicyNFaqA>
         <F.PolicyNFaqA href="./faq.html">FAQ</F.PolicyNFaqA>
-      </F.FooterMidle>
+      </F.FooterMiddle>
       <F.FooterRight>
         <Link href="https://www.facebook.com">
           <Div>
@@ -41,3 +36,9 @@ export default function Footer() {
     </F.FooterContainer>
   );
 }
+
+const Div = styled.div`
+  position: relative;
+  width: 20px;
+  height: 20px;
+`;

@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { getData } from './api/api';
 import SharedHeader from '../components/SharedHeader';
 import Card from '../components/Card';
-import * as S from '../components/styled-component/SharedPageStyledComponent';
+import * as S from '../style/styled-component/Shared/SharedPageStyledComponent';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-export interface ItemState {
+export interface SampleFolderData {
   id: number;
   createdAt: string;
   url: string;
@@ -15,18 +15,8 @@ export interface ItemState {
   imageSource: string;
 }
 
-const Div = styled.div`
-  position: relative;
-  width: 16px;
-  height: 16px;
-`;
-
-const SearchDiv = styled.div`
-  margin-top: 40px;
-`;
-
 export default function SharedPage() {
-  const [items, setItems] = useState<ItemState[]>();
+  const [items, setItems] = useState<SampleFolderData[]>();
   useEffect(() => {
     const handleLoad = async () => {
       const { folder } = await getData('sample/folder');
@@ -54,3 +44,9 @@ export default function SharedPage() {
     </>
   );
 }
+
+const Div = styled.div`
+  position: relative;
+  width: 16px;
+  height: 16px;
+`;

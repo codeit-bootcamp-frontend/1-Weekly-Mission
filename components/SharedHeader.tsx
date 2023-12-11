@@ -1,6 +1,6 @@
 import { getData } from '../pages/api/api';
 import { useCallback, useState, useEffect } from 'react';
-import * as N from './styled-component/NavStyledComponent';
+import * as N from '../style/styled-component/Nav/NavStyledComponent';
 import Image from 'next/image';
 import styled from 'styled-components';
 
@@ -9,18 +9,6 @@ interface UserState {
   name: string;
   profileImageSource: string;
 }
-
-const Div = styled.div`
-  position: relative;
-  width: 188px;
-  height: 48px;
-`;
-
-const SmileDiv = styled.div`
-  position: relative;
-  width: 60;
-  height: 60px;
-`;
 
 export default function SharedHeader() {
   const [user, setUser] = useState<UserState>({
@@ -64,3 +52,15 @@ export default function SharedHeader() {
     </N.NavContainer>
   );
 }
+
+const Div = styled.div`
+  position: relative;
+  width: 188px;
+  height: 48px;
+`;
+
+const SmileDiv = styled.div`
+  position: relative;
+  width: 60;
+  height: 60px;
+`;

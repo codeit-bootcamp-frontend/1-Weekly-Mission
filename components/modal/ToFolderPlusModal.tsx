@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback, useEffect, MouseEvent } from 'react';
 import { getData } from '../../pages/api/api';
-import * as M from '../styled-component/ModalStyledComponent';
-import { FoldersProps } from '../folder/FolderMain';
+import * as M from '../../style/styled-component/Modal/ModalStyledComponent';
+import { FoldersData } from '../folder/FolderMain';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -10,21 +10,8 @@ interface Props {
   cardLink: string;
 }
 
-const CheckImgDiv = styled.div`
-  position: relative;
-  width: 14px;
-  height: 14px;
-`;
-
-const CloseImg = styled(Image)`
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-`;
-
 export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
-  const [folders, setFolders] = useState<FoldersProps[]>([]);
+  const [folders, setFolders] = useState<FoldersData[]>([]);
 
   const handleLoad = useCallback(async () => {
     const { data } = await getData('users/1/folders');
@@ -47,7 +34,7 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
       ref={back}
       onClick={backClick as () => void}
     >
-      <M.ModlaWrapper>
+      <M.ModalWrapper>
         <M.ModalDeleteHeader>
           <M.ModalHeader>폴더에 추가</M.ModalHeader>
           <M.ModalLinkUrl>{cardLink}</M.ModalLinkUrl>
@@ -70,14 +57,23 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
         <M.ModalMain>
           <M.ModalButton $color={'blue'}>추가하기</M.ModalButton>
         </M.ModalMain>
-        <CloseImg
-          src="/Xclose.svg"
-          width={16}
-          height={16}
-          alt="닫기 버튼"
-          onClick={handleClick}
-        />
-      </M.ModlaWrapper>
+        <XCloseImgDiv>
+          <Image src="/Xclose.svg" fill alt="닫기 버튼" onClick={handleClick} />
+        </XCloseImgDiv>
+      </M.ModalWrapper>
     </M.ModalBackground>
   );
 }
+
+const XCloseImgDiv = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`;
+
+const CheckImgDiv = styled.div`
+  position: relative;
+  width: 14px;
+  height: 14px;
+`;

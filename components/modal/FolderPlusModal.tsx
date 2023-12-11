@@ -1,5 +1,5 @@
 import { MouseEvent, useRef } from 'react';
-import * as M from '../styled-component/ModalStyledComponent';
+import * as M from '../../style/styled-component/Modal/ModalStyledComponent';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -9,23 +9,14 @@ interface Props {
   value: string;
 }
 
-const CloseImg = styled(Image)`
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-`;
-
 export default function FolderPlusModal({ handleClick, title, value }: Props) {
   const back = useRef<HTMLDivElement>(null);
-
   const backClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === back.current) handleClick();
   };
-  console.log(value);
   return (
     <M.ModalBackground ref={back} onClick={backClick}>
-      <M.ModlaWrapper>
+      <M.ModalWrapper>
         <M.ModalHeader>{value}</M.ModalHeader>
         <M.ModalMain>
           <M.ModalInput
@@ -42,7 +33,14 @@ export default function FolderPlusModal({ handleClick, title, value }: Props) {
           alt="닫기 버튼"
           onClick={handleClick}
         />
-      </M.ModlaWrapper>
+      </M.ModalWrapper>
     </M.ModalBackground>
   );
 }
+
+const CloseImg = styled(Image)`
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`;

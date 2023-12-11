@@ -7,7 +7,7 @@ export const ModalBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
-export const ModlaWrapper = styled.div`
+export const ModalWrapper = styled.div`
   z-index: 2;
   position: fixed;
   top: 50%;
@@ -66,7 +66,7 @@ export const ModalButton = styled.button<{ $color: string }>`
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  background: ${({ $color }) =>
+  background: ${({ $color }: any) =>
     $color === 'blue'
       ? 'linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)'
       : '#ff5b56'};

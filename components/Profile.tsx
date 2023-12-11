@@ -1,4 +1,4 @@
-import * as N from './styled-component/NavStyledComponent';
+import * as N from '../style/styled-component/Nav/NavStyledComponent';
 import { LoginState } from './Nav';
 
 interface ProfileProps {

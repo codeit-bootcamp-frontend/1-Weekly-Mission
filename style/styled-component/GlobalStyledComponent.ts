@@ -11,6 +11,8 @@ export const GlobalStyle = createGlobalStyle`
 
 *{
   font-family:'Pretendard';
+  margin:0;
+  box-sizing:border-box;
 }
   html {
   	background-color: #fff;
