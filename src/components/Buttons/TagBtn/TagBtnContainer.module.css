@@ -20,7 +20,7 @@
   background: #fff;
 }
 
-.tag.checked {
+.checked {
   border-radius: 5px;
   border: 1px solid #6d6afe;
   background: #6d6afe;

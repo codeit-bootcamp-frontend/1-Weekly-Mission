@@ -41,10 +41,8 @@
 }
 
 .cardImg:hover {
-  width: 130%;
-  height: 130%;
-  top: -20px;
-  right: -55px;
+  transform: scale(1.3);
+  transition: 0.5s;
 }
 
 .link_img {
@@ -125,8 +123,9 @@
   flex-direction: column;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  justify-content: center;
+  justify-items: center;
   position: relative;
+  margin-bottom: 60px;
 }
 
 /* 465 */
@@ -138,8 +137,6 @@
 
 @media (max-width: 767px) {
   .cards {
-    display: flex;
-
     grid-template-columns: repeat(1, 1fr);
   }
 }

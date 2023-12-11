@@ -5,6 +5,25 @@ import HeroContent from "../components/HeroContent/HeroContent";
 import MainContent from "../components/MainContent";
 import FloatingAddFolderBtn from "../components/Buttons/FloatingAddFolderBtn";
 
+function FolderPage() {
+  return (
+    <>
+      <Header />
+      <FloatingBtnContainer>
+        <FloatingAddFolderBtn />
+      </FloatingBtnContainer>
+      <MainContainer>
+        <HeroContent />
+        <MainContent />
+      </MainContainer>
+      <Footer />
+    </>
+  );
+}
+
+export default FolderPage;
+
+// <-- styled-comonents-->
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,21 +41,3 @@ const FloatingBtnContainer = styled.div`
     visibility: hidden;
   }
 `;
-
-function FolderPage() {
-  return (
-    <>
-      <Header />
-      <FloatingBtnContainer>
-        <FloatingAddFolderBtn />
-      </FloatingBtnContainer>
-      <MainContainer>
-        <HeroContent />
-        <MainContent />
-        <Footer />
-      </MainContainer>
-    </>
-  );
-}
-
-export default FolderPage;

@@ -1,7 +1,7 @@
 import { DescriptionText } from "../ModalCommonStyles";
 import { TitleText, Content } from "../ModalCommonStyles";
 import BlueGradationBtn from "../../components/Buttons/BlueGradationBtn";
-import checkIcon from "/public/image/check-icon.svg";
+import checkIcon from "/public/icon/check-icon.svg";
 import { useState } from "react";
 import styled from "styled-components";
 import ModalContainer from "../ModalContainer";

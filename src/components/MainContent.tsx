@@ -2,7 +2,7 @@ import TagBtnContainer from "./Buttons/TagBtn/TagBtnContainer";
 import { SearchLinkInput } from "./Inputs/SearchLinkInput/searchLinkInput";
 import CardContainer from "./CardContainer/CardContainer";
 import { useState, useEffect } from "react";
-import requestData from "../services/api";
+import requestData from "@/lib/api";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import AddLinkToFolder from "../modals/contents/AddLinkToFolder";
@@ -60,10 +60,7 @@ function MainContent() {
       "users/1/folders",
       "GET"
     );
-    setfolderTagBtnList((defaultTagBtn) => [
-      ...defaultTagBtn,
-      ...tagBtnResponse,
-    ]);
+    setfolderTagBtnList([defaultTagButton, ...tagBtnResponse]);
   }
 
   function handleTagBtnClick(id: string | number, name: string): void {
@@ -72,11 +69,9 @@ function MainContent() {
   }
 
   useEffect(() => {
+    getCardListResponse();
     getFolderTagBtnList();
   }, []);
-  useEffect(() => {
-    getCardListResponse();
-  }, [selectedTagId]);
 
   return (
     <section>

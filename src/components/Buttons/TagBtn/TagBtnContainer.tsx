@@ -1,5 +1,5 @@
 import style from "./TagBtnContainer.module.css";
-import AddImg from "/public/image/icon-add.svg";
+import AddImg from "/public/icon/icon-add.svg";
 import AddFolder from "../../../modals/contents/AddFolder";
 import { useState } from "react";
 import { IFolderTagData } from "../../../utils/types/common.types";
@@ -20,6 +20,7 @@ function TagBtnContainer({
   const [isOpen, setOpen] = useState<boolean>(false);
   const handleClick = () => setOpen(true);
   const changeOpenState = (openState: boolean): void => setOpen(openState);
+  console.log(folderTagBtnList);
 
   return (
     <>
@@ -28,7 +29,11 @@ function TagBtnContainer({
           {folderTagBtnList?.map((data, index) => (
             <button
               key={index}
-              className={data.id === selectedTag ? "tag checked" : "tag"}
+              className={
+                data.id === selectedTag
+                  ? `${style.checked} ${style.tag}`
+                  : `${style.tag}`
+              }
               id={String(data?.id)}
               data-count={data?.link?.count}
               onClick={() => handleOnClick(data?.id, data?.name)}
