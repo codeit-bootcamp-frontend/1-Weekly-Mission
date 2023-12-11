@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import Image from 'next/image';
 
 export const Container = styled.div`
   display: flex;
@@ -23,9 +24,10 @@ export const ImgBox = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 37.33px;
+  background : ${({color}) => color}
 `;
 
-export const Img = styled.img`
+export const Img = styled(Image)`
   margin: 12px;
   cursor: pointer;
 `;

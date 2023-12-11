@@ -11,14 +11,17 @@ interface Data {
   folders?: Folders;
 }
 
-export default function Article({ links: initial, folders }: Data) {
-  const [checkItem, setCheckItem] = useState<Link[]>(initial);
+export default function Article({ links, folders }: Data) {
+  const [checkItem, setCheckItem] = useState<Link[]>(links);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
-
   const handleSearch = (value: string) => {
     setValue(value);
   };
+
+  useEffect (() => {
+    setCheckItem(links)
+  },[links])
 
   useEffect(() => {
     if (checkItem) {
@@ -31,7 +34,7 @@ export default function Article({ links: initial, folders }: Data) {
       <Style.ArticleContainer>
         <Style.ArticleSection>
           <Search
-            links={initial}
+            links={links}
             setCheckItem={setCheckItem}
             onSearch={handleSearch}
             value={value}

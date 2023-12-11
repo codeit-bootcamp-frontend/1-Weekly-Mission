@@ -1,5 +1,5 @@
 import { MenuTitleButton } from '@/components';
-import * as Style from './Title.style.js';
+import * as Style from './MenuTitle.style';
 
 export default function MenuTitle({ title }: { title: string }) {
   return (

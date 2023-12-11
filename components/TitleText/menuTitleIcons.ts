@@ -2,11 +2,11 @@ import shareIcon from '@/src/assets/share.svg';
 import penIcon from '@/src/assets/pen.svg';
 import deleteIcon from '@/src/assets/Delete.svg';
 
-const icons = [
+const menuTitleIcons = [
   {
     name: '공유',
     image: shareIcon,
-    option: { title: '폴더 공유', trigger: 'ShareOnSns' },
+    option: { title: '폴더 공유', trigger: 'SocialShare'  },
   },
   {
     name: '이름 변경',
@@ -24,4 +24,4 @@ const icons = [
   },
 ];
 
-export default icons;
+export default menuTitleIcons;

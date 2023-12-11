@@ -25,7 +25,6 @@ export default function Search({
     onSearch(lowerValue);
   }
     useEffect(() => {
-      console.log(value)
       if (value) {
         const checkItems = links.filter((link) => {
           const { description, title, url } = link;

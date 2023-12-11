@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,32 +9,27 @@ import { ThemeProvider } from "styled-components";
 import theme from "@/styles/display";
 import AddPurpleImg from "@/src/assets/addpurple.svg";
 import * as Style from "./CardMenuBar.style";
+import { FolderContext } from "../FolderArticle/FolderArticle";
+
+
 
 export default function CardMenuBar() {
+  const folders = useContext(FolderContext);
   const router = useRouter();
-  const folderId = router.query;
+  const {id} = router.query;
+
   const option = { input: true, button: { title: "추가하기", color: "blue" } };
   const { isOpen, openModal, closeModal } = useModal();
-  const [folderName, setFolderName] = useState()
-  const [selectedFolder, setSelectedFolder] = useState(folderId ? parseInt(folderId) : null);
-  console.log(folderId)
-  console.log(folderName)
-
-  async function getFolders () {
-    const result = await axios.get(`users/1/folders${folderId ? `?folderId=${folderId}` : ''}`);
-    const folders = result.data.data;
-    setFolderName(folders);
-  }
+  const [selectedFolder, setSelectedFolder] = useState(id ? parseInt(id) : null);
 
   const ChangeTitle = () => {
-    if (!folderId) {
+
+    if (!id) {
       setSelectedFolder(null);
       return;
     }
-    const matchedFolder = folderName?.find(
-      (folder) => folder.id === parseInt(folderId)
-    );
-    console.log(matchedFolder)
+    const matchedFolder = folders?.find((folder) => folder.id === parseInt(id));
+    
     if (matchedFolder) {
       setSelectedFolder(matchedFolder.name);
     } else {
@@ -47,13 +42,8 @@ export default function CardMenuBar() {
   };
 
   useEffect(() => {
-    getFolders();
-  }, [folderId])
-
-  useEffect(() => {
-    setSelectedFolder(folderId ? parseInt(folderId) : null);
     ChangeTitle();
-  }, [folderId]);
+  }, [id]);
 
   return (
     <>
@@ -65,8 +55,8 @@ export default function CardMenuBar() {
                 <Style.Button active={selectedFolder === null}>전체</Style.Button>
               </li>
             </Link>
-            {folderName?.map((folder) => (
-              <CardButton folder={folder} key={folder.id} folderId={folderId} />
+            {folders?.map((folder) => (
+              <CardButton folder={folder} key={folder.id} folderId={id} />
             ))}
           </Style.Ul>
           <span onClick={handleButtonClick}>

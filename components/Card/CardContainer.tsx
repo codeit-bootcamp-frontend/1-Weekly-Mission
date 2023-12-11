@@ -4,16 +4,17 @@ import theme from '@/styles/display';
 import useModal from '@/public/useModal';
 import AddImg from '@/src/assets/addwhite.svg';
 import { Link } from '@/pages/shared';
-import { Folders } from '@/components/FolderArticle/FolderArticle';
+import { FolderContext, Folders } from '@/components/FolderArticle/FolderArticle';
 import * as Style from './CardContainer.style';
 import Image from 'next/image';
+import { useContext } from 'react';
 
 interface Props {
   items: Link[] | undefined;
-  folders?: Folders;
 }
 
-export default function CardContainer({ items, folders }: Props) {
+export default function CardContainer({ items }: Props) {
+  const folders = useContext(FolderContext);
   const { isOpen, openModal, closeModal } = useModal();
   const option = { input: true, button: { title: '추가하기', color: 'blue' } };
 

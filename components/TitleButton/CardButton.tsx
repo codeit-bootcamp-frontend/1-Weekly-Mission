@@ -13,7 +13,7 @@ export default function CardButton({ folder, folderId }: Props) {
 
   return (
     <Link href={path}>
-      <Style.Button active={folderId === id}>{name}</Style.Button>
+      <Style.Button active={folderId == id}>{name}</Style.Button>
     </Link>
   );
 }

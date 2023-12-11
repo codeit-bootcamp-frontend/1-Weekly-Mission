@@ -3,13 +3,13 @@ import twitterImg from '@/src/assets/twitter.svg';
 import youtubeImg from '@/src/assets/youtube.svg';
 import instagramImg from '@/src/assets/instagram.svg';
 
-export interface Data {
+export interface SocialMediaLink {
   name?: string;
   url: string;
   icon: string;
 }
 
-const socialMedia: Data[] = [
+const socialMedia: SocialMediaLink[] = [
   {
     name: 'facebook',
     url: 'https://www.facebook.com/',

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { AddToFolder, ShareOnSns } from '@/components';
+import { AddToFolder, SocialShare } from '@/components';
 import * as Style from './Modal.style';
 
 interface Option {
@@ -39,7 +39,7 @@ export default function ModalForm({ subTitle, option }: Props) {
         <span>{subTitle}</span>
       )}
       {trigger === 'AddToFolder' && <AddToFolder />}
-      {trigger === 'ShareOnSns' && <ShareOnSns />}
+      {trigger === 'SocialShare' && <SocialShare />}
       {button && (
         <Style.Button color={button.color}>{button.title}</Style.Button>
       )}

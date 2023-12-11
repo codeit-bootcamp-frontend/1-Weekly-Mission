@@ -28,8 +28,8 @@ export default function FolderArticle({ items, isVisible, folders }: Props) {
     <ThemeProvider theme={theme}>
       <FolderContext.Provider value={folders}>
         <Style.Container>
-          <CardMenuBar  />
-          {isVisible && <CardContainer items={items} folders={folders} />}
+          <CardMenuBar />
+          {isVisible && <CardContainer items={items} />}
           {!isVisible && <EmptyData />}
         </Style.Container>
       </FolderContext.Provider>

@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
+import { Modal, ModalForm, menuTitleIcons } from '@/components';
 import Image from 'next/image.js';
-import { Modal, ModalForm, icons } from '@/components';
 import useModal from '@/public/useModal';
-import * as Style from './TitleButton.style.js';
+import * as Style from './MenuTitleButton.style';
 
 interface Option {
   title: string;
@@ -15,22 +15,23 @@ export default function MenuTitleButton({ title }: { title: string }) {
   const { isOpen, openModal, closeModal } = useModal();
   const [option, setOption] = useState<Option>();
 
-  const handleButtonClick = useCallback((e: React.MouseEvent, name: string) => {
+  const handleButtonClick = (e: React.MouseEvent, name: string) => {
     e.preventDefault;
-    const iconName = icons.filter((icon) => icon.name === name);
+    const iconName = menuTitleIcons.filter((icon) => icon.name === name);
+    console.log(iconName)
     setOption(iconName[0].option);
     openModal();
-  }, []);
+  }
 
   return (
     <>
       <Style.Container>
-        {icons.map((icon, index) => (
+        {menuTitleIcons.map((icon, index) => (
           <Style.StyledButton
             key={index}
             onClick={(e) => handleButtonClick(e, icon.name)}
           >
-            <Image src={icon.image} alt={icon.name}></Image>
+            <Image src={icon.image} alt={icon.name} />
             <p>{icon.name}</p>
           </Style.StyledButton>
         ))}
