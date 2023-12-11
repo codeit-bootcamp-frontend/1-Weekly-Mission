@@ -1,0 +1,53 @@
+.userInfoForm {
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: var(--black);
+  font-size: 14px;
+}
+
+.userInfoLabel {
+  position: relative;
+}
+
+.inputBox {
+  width: 100%;
+  margin-top: 12px;
+  padding: 18px 15px;
+  border: 1px solid var(--gray-botticelli);
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.inputBox:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+@keyframes redOutlineFlash {
+  0%,
+  100% {
+    border: 1px solid transparent;
+  }
+  50% {
+    border: 1px solid #ff5b56;
+  }
+}
+
+.inputBoxFlash {
+  animation: redOutlineFlash 1s ease-in-out;
+  animation-iteration-count: 2;
+}
+
+.wrongValueMessage {
+  color: #ff5b56;
+}
+
+.visibleIcon {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+}

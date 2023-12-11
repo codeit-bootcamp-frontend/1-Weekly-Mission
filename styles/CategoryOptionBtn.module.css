@@ -1,0 +1,15 @@
+.folderOptionBox {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.folderOptionBtn {
+  border: none;
+  background: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #9fa6b2;
+  gap: 2px;
+}
