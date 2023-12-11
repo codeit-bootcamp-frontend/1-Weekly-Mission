@@ -2,12 +2,13 @@ import * as S from '@/styles/Shared.styled';
 import NavBar from '@/components/NavBar';
 import SearchBar from '@/components/SearchBar';
 import Footer from '@/components/Footer';
+import CardList from '@/components/CardList';
 
 
 export default function Shared() {
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <S.Header>
         <S.HeaderContent>
           <S.Profile>
@@ -20,6 +21,7 @@ export default function Shared() {
       <S.CardSection>
         <S.CardSectionContainer>
           <SearchBar />
+          <CardList />
         </S.CardSectionContainer>
       </S.CardSection>
       <Footer/>

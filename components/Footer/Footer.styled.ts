@@ -17,7 +17,12 @@ export const Wrapper = styled.div`
 
 export const Copyright = styled.div`
   color: #676767;
+  text-align: center;
   font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `; 
 
 export const Links = styled.div`
@@ -28,9 +33,14 @@ export const Links = styled.div`
 
 export const Info = styled.div`
   display: flex;
-  color: #CFCFCF;
-  font-family: Arial;
   gap: 3rem;
+
+  color: #676767;
+  font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `; 
 
 export const SNS = styled.div`

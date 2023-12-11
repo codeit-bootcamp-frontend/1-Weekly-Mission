@@ -55,7 +55,6 @@ export const FolderName = styled.div`
 `;
 
 export const CardSection = styled.div`
-  border: 1px solid #000;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -64,7 +63,6 @@ export const CardSection = styled.div`
 `;
 
 export const CardSectionContainer = styled.div`
-  border: 1px solid #000;
   width: 106rem;
   display: flex;
   flex-direction: column;
