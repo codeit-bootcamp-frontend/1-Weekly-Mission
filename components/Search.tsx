@@ -1,24 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import useDebounce from "@/hooks/useDebounce";
+import debounce from "lodash/debounce";
+import { ChangeEvent, MouseEvent, FormEvent } from "react";
+import s from "./Search.module.css";
 
-interface SearchProp {
-  getInputValue: (input: string) => void;
-}
-
-const Search = ({ getInputValue }: SearchProp) => {
+const Search = ({ getInputValue }: SearchProps) => {
   const [inputSearch, setInputSearch] = useState("");
   const mounted = useRef(false);
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  const debouncedInputSearch = useDebounce(inputSearch, 300);
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setInputSearch(e.target.value);
   }
-
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    setInputSearch("");
-  }
-
-  const debouncedInputSearch = useDebounce(inputSearch, 300);
 
   useEffect(() => {
     if (!mounted.current) {
@@ -28,47 +22,40 @@ const Search = ({ getInputValue }: SearchProp) => {
     }
   }, [debouncedInputSearch]);
 
-  function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-    }
+  // const updatedInput = useMemo(() => debounce(setInputSearch, 300), []);
+  // function handleChange(e: ChangeEvent<HTMLInputElement>) {
+  //   updatedInput(e.target.value);
+  // }
+  // useEffect(() => {
+  //   if (!mounted.current) {
+  //     mounted.current = true;
+  //   } else {
+  //     getInputValue(inputSearch);
+  //   }
+  // }, [inputSearch]);
+
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    setInputSearch("");
   }
+
+  function handleSubmit(e: FormEvent<HTMLDivElement>) {
+    e.preventDefault();
+  }
+
   return (
-    <div
-      style={{
-        marginTop: "4rem",
-        marginBottom: "4rem",
-      }}
-    >
-      <form className="search-area" style={{ position: "relative" }}>
+    <div className={s.main}>
+      <div className={s.inputContainer} onSubmit={handleSubmit}>
         <input
-          onChange={(e) => handleChange(e)}
-          onKeyPress={handleKeyPress}
+          onChange={handleChange}
+          type="text"
           value={inputSearch}
           placeholder="링크를 검색해 보세요."
-          style={{
-            height: "5rem",
-            width: "100%",
-            backgroundColor: "#CCD5E3",
-            borderRadius: "1rem",
-            display: "flex",
-            padding: "1.5rem 4.5rem",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            alignSelf: "stretch",
-            fontSize: "1.6rem",
-            color: "#666",
-            backgroundImage: `url("/images/Search.svg")`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "left 1.7rem bottom 50%",
-          }}
+          className={s.input}
         ></input>
 
         {inputSearch !== "" && (
-          <button
-            onClick={(e) => handleClick(e)}
-            style={{ position: "absolute", top: "1.6rem", right: "4rem" }}
-          >
+          <button onClick={handleClick} className={s.button}>
             <Image
               src="/images/close-button.svg"
               alt="닫기 버튼"
@@ -77,7 +64,7 @@ const Search = ({ getInputValue }: SearchProp) => {
             />
           </button>
         )}
-      </form>
+      </div>
     </div>
   );
 };

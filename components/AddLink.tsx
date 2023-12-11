@@ -1,13 +1,9 @@
 import React from "react";
+import type { ChangeEvent } from "react";
 
-interface AddLinkProps {
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleAddLinkValue: (value: string) => void;
-}
-
-const AddLink = ({ onClick, handleAddLinkValue }: AddLinkProps) => {
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    handleAddLinkValue(e.target.value);
+const AddLink = ({ onClick, onLinkValueAdded }: AddLinkProps) => {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    onLinkValueAdded(e.target.value);
   }
 
   return (

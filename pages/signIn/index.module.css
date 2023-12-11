@@ -1,0 +1,22 @@
+.main {
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3rem;
+  padding: 12rem 3.2rem 0;
+  height: 100vh;
+  @media (min-width: 768px) {
+    padding: 20rem 0 0;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 23.8rem 0 0;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.6rem;
+}

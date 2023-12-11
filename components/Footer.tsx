@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import s from "./Footer.module.css";
+
 const Footer = () => {
   return (
     <>
@@ -17,7 +19,7 @@ const Footer = () => {
           </div>
           <div className="sns">
             <Link
-              style={{ position: "relative", width: "2rem" }}
+              className={s.link}
               href="https://www.facebook.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -29,10 +31,7 @@ const Footer = () => {
               />
             </Link>
             <Link
-              style={{
-                position: "relative",
-                width: "2rem",
-              }}
+              className={s.link}
               href="https://twitter.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -44,7 +43,7 @@ const Footer = () => {
               />
             </Link>
             <Link
-              style={{ position: "relative", width: "2rem" }}
+              className={s.link}
               href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -56,7 +55,7 @@ const Footer = () => {
               />
             </Link>
             <Link
-              style={{ position: "relative", width: "2rem" }}
+              className={s.link}
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"

@@ -1,14 +1,5 @@
 import Card from "./Card";
 
-interface Link {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-}
-
 const Cards = ({ fullData }: { fullData: Link[] }) => {
   return (
     <div className="cards-area">

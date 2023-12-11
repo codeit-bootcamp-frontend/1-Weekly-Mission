@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Search from "@/components/Search";
-import Cards from "@/components/Cards";
+import Cards from "@/pageComponents/sharedPageComponents/Cards";
 import Image from "next/image";
+import s from "./Header.module.css";
 
-interface Link {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-}
-
-interface PropsType {
-  profile: string;
-  userName: string;
-  folderName: string;
-  fullData: Link[];
-}
-
-const Header = ({ profile, userName, folderName, fullData }: PropsType) => {
+const Header = ({
+  profile,
+  userName,
+  folderName,
+  fullData,
+}: SharedPageHeaderProps) => {
   const [inputValue, setInputValue] = useState("");
   function getInputValue(v: string): void {
     setInputValue(v);
@@ -38,25 +28,17 @@ const Header = ({ profile, userName, folderName, fullData }: PropsType) => {
   return (
     <>
       <header>
-        <div className="hero-header" style={{ paddingBottom: "6rem" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "1.5rem",
-            }}
-          >
+        <div className={s.heroHeader}>
+          <div className={s.imgContainer}>
             <Image
               src={profile}
               alt="폴더프로파일"
-              style={{ width: "5.5rem" }}
+              className={s.img}
               width={50}
               height={50}
             />
-            <p style={{ fontSize: "1.6rem" }}>{userName}</p>
-            <p style={{ fontSize: "4rem", fontWeight: "600" }}>{folderName}</p>
+            <p className={s.p1}>{userName}</p>
+            <p className={s.p2}>{folderName}</p>
           </div>
         </div>
       </header>

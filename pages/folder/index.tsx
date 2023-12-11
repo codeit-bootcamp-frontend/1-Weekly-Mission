@@ -1,32 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Nav from "@/folderPageComponents/Nav";
-import Header from "@/folderPageComponents/Header";
-import Article from "@/ui/Article";
-import Footer from "@/ui/Footer";
+import Nav from "@/pageComponents/folderPageComponents/Nav";
+import Header from "@/pageComponents/folderPageComponents/Header";
+import Article from "@/components/Article";
+import Footer from "@/components/Footer";
 import AddLink from "@/components/AddLink";
-import axios from "@/api/axios";
+import axios from "@/libs/axios";
 import Head from "next/head";
 import Image from "next/image";
-
-interface Link {
-  count: number;
-}
-
-interface SingleData {
-  created_at: string;
-  id: number;
-  link: Link;
-  name: string;
-  user_id: number;
-}
-
-interface Data {
-  data: SingleData[];
-}
+import s from "./index.module.css";
+import { MouseEvent } from "react";
 
 export default function FolderPage() {
   const [userEmail, setUserEmail] = useState("");
-  const [data, setData] = useState<Data>();
+  const [data, setData] = useState<Folders>();
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
   async function getUserEmail() {
@@ -37,21 +23,21 @@ export default function FolderPage() {
     getUserEmail();
   }, []);
 
-  function getData(data: Data): void {
+  function getData(data: Folders): void {
     setData(data);
   }
   function handleAddLinkClick(
-    e: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
+    e: MouseEvent<HTMLButtonElement | HTMLImageElement>
   ) {
     e.preventDefault();
     if (addLinkValue !== "") {
       setIsAddLinkClicked(!isAddLinkClicked);
     }
   }
-  function handleModalListButton(e: React.MouseEvent<HTMLButtonElement>) {
+  function handleModalListButton(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
   }
-  function handleAddLinkValue(value: string) {
+  function onLinkValueAdded(value: string) {
     setAddLinkValue(value);
   }
 
@@ -61,10 +47,10 @@ export default function FolderPage() {
         <title>폴더 페이지</title>
       </Head>
       <Nav userEmail={userEmail} />
-      <header style={{ padding: "6rem 0 9rem 0" }}>
+      <header className={s.header}>
         <AddLink
           onClick={handleAddLinkClick}
-          handleAddLinkValue={handleAddLinkValue}
+          onLinkValueAdded={onLinkValueAdded}
         />
       </header>
       <Header getData={getData} />
@@ -75,15 +61,11 @@ export default function FolderPage() {
           <div className="modal">
             <b>폴더에 추가</b>
             <p>링크 주소: {addLinkValue}</p>
-            <div style={{ position: "relative" }}>
+            <div className={s.imgContainer}>
               <Image
                 src="images/modalClose.svg"
                 alt="닫기 버튼 이미지"
-                style={{
-                  position: "absolute",
-                  right: "-16.5rem",
-                  top: "-8rem",
-                }}
+                className={s.img}
                 width={30}
                 height={30}
                 onClick={handleAddLinkClick}
@@ -93,7 +75,7 @@ export default function FolderPage() {
               {data &&
                 data?.data?.map((list) => {
                   return (
-                    <li style={{ listStyle: "none" }} key={list.id}>
+                    <li className={s.list} key={list.id}>
                       <button
                         className="Modal-list-button"
                         onClick={(e) => handleModalListButton(e)}
@@ -104,22 +86,7 @@ export default function FolderPage() {
                   );
                 })}
             </ul>
-            <button
-              style={{
-                background:
-                  "var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%))",
-                borderRadius: "8px",
-                width: "28rem",
-                height: "2rem",
-                padding: "1.6rem 2rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-              }}
-            >
-              추가하기
-            </button>
+            <button className={s.button}>추가하기</button>
           </div>
         </div>
       ) : null}

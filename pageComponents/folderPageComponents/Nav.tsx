@@ -1,15 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import s from "./Nav.module.css";
 
-interface navPropsType {
-  userEmail: string;
-}
-
-const Nav = ({ userEmail }: navPropsType) => {
+const Nav = ({ userEmail }: User) => {
   return (
     <>
-      <nav>
+      <nav className="folderPage-nav">
         <div className="gnb">
           <Link href="/">
             <Image
@@ -39,7 +36,7 @@ const Nav = ({ userEmail }: navPropsType) => {
                 />
               </div>
               <div>
-                <p style={{ fontSize: "1.4rem" }}>{userEmail}</p>
+                <p className={s.p}>{userEmail}</p>
               </div>
             </div>
           ) : (

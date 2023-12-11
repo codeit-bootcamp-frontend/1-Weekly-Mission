@@ -1,45 +1,10 @@
 import React from "react";
-import Nav from "@/ui/Nav";
-import Header from "@/ui/Header";
-import Article from "@/ui/Article";
-import Footer from "@/ui/Footer";
-import axios from "@/api/axios";
+import Nav from "@/pageComponents/sharedPageComponents/Nav";
+import Header from "@/pageComponents/sharedPageComponents/Header";
+import Article from "@/components/Article";
+import Footer from "@/components/Footer";
+import axios from "@/libs/axios";
 import Head from "next/head";
-
-interface PropsType {
-  userEmail: string;
-  profile: string;
-  userName: string;
-  folderName: string;
-  fullData: Link[];
-}
-
-interface Owner {
-  id: number;
-  name: string;
-  profileImageSource: string;
-}
-
-interface Link {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-}
-
-interface Folder {
-  id: number;
-  name: string;
-  owner: Owner;
-  links: Link[];
-  count: number;
-}
-
-interface Temp {
-  folder: Folder;
-}
 
 export async function getStaticProps() {
   const res = await axios.get(`/sample/user`);
@@ -68,7 +33,7 @@ export default function SharedPage({
   userName,
   folderName,
   fullData,
-}: PropsType) {
+}: SharedPageProps) {
   return (
     <>
       <Head>

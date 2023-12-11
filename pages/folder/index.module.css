@@ -1,0 +1,32 @@
+.header {
+  padding: 6rem 0 9rem 0;
+}
+
+.imgContainer {
+  position: relative;
+}
+
+.img {
+  position: absolute;
+  right: -16.5rem;
+  top: -8rem;
+}
+
+.li {
+  list-style: none;
+}
+
+.button {
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+  border-radius: 8px;
+  width: 28rem;
+  height: 2rem;
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
