@@ -1,4 +1,4 @@
-import { SampleLinkRawData } from "link/type";
+import { SampleLinkRawData } from "@/src/link/type";
 
 export type SampleFolderRawData = {
   id: number;

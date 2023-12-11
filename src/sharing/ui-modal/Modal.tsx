@@ -7,7 +7,7 @@ import {
   MouseEventHandler,
   ReactNode,
 } from "react";
-import { Portal } from "sharing/ui-portal";
+import { Portal } from "@/src/sharing/ui-portal";
 
 const cx = classNames.bind(styles);
 

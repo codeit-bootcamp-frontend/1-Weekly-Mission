@@ -1,13 +1,13 @@
 import styles from "./AddLinkModal.module.scss";
 import classNames from "classnames/bind";
-import { Folder } from "folder/type";
-import { FolderItem } from "folder/ui-folder-item";
+import { Folder } from "@/src/folder/type";
+import { FolderItem } from "@/src/folder/ui-folder-item";
 import { Dispatch, KeyboardEventHandler, SetStateAction } from "react";
-import { Modal } from "sharing/ui-modal";
-import { ModalContentBox } from "sharing/ui-modal-content-box";
-import { ModalContentButton } from "sharing/ui-modal-content-button";
-import { ModalContentDescription } from "sharing/ui-modal-content-description";
-import { ModalContentTitle } from "sharing/ui-modal-content-title";
+import { Modal } from "@/src/sharing/ui-modal";
+import { ModalContentBox } from "@/src/sharing/ui-modal-content-box";
+import { ModalContentButton } from "@/src/sharing/ui-modal-content-button";
+import { ModalContentDescription } from "@/src/sharing/ui-modal-content-description";
+import { ModalContentTitle } from "@/src/sharing/ui-modal-content-title";
 
 const cx = classNames.bind(styles);
 

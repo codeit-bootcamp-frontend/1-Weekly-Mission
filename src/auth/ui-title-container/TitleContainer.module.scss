@@ -1,0 +1,24 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.link_container {
+  display: flex;
+  gap: 8px;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem; /* 150% */
+}
+
+.link_strong {
+  color: #6d6afe;
+  font-weight: 600;
+  text-decoration: underline;
+}

@@ -1,14 +1,15 @@
-import Head from "next/head";
-import "../styles/globals.css";
+import "@/styles/reset.css";
 import type { AppProps } from "next/app";
+import localFont from "next/font/local";
+
+export const Pretendard = localFont({
+  src: "../public/fonts/PretendardVariable.woff2",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <title>Linkbrary</title>
-      </Head>
+    <main className={Pretendard.className}>
       <Component {...pageProps} />
-    </>
+    </main>
   );
 }
