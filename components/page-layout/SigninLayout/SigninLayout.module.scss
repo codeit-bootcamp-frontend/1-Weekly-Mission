@@ -2,27 +2,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // height: 100%;
-  // width: 100%;
-  // row-gap: 2rem;
-  // padding-bottom: 2rem;
+  background-color: $color-light-blue;
+  height: 100%;
+  width: 100%;
 
   // @include tablet {
-  //   row-gap: 4rem;
-  //   padding-bottom: 6rem;
+
   // }
 }
 
 .items {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  // width: 100%;
-  // max-width: 112.4rem;
-  // row-gap: 3.2rem;
-  // padding: 0 3.2rem;
+  justify-content: center;
+  width: 40rem;
+  gap: 3rem;
+}
 
-  // @include tablet {
-  //   row-gap: 4rem;
-  // }
+.logo {
+  height: 3.8rem;
+}
+
+.signin {
+  display: inline-block;
+  width: 40rem;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+
+  @include tablet {
+    width: 12.8rem;
+    padding: 1.6rem 0;
+    font-size: 1.8rem;
+  }
 }
