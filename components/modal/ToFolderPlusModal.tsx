@@ -31,7 +31,7 @@ export default function ToFolderPlusModal({ handleClick, cardLink }: Props) {
   return (
     <M.ModalBackground
       className="modal-background"
-      ref={`${back}`}
+      ref={back}
       onClick={backClick as () => void}
     >
       <M.ModalWrapper>

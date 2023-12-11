@@ -17,7 +17,7 @@ export default function FolderDeleteModal({
   cardLink,
 }: Props) {
   const back = useRef<HTMLDivElement>(null);
-
+  console.log(cardLink);
   if (value === '폴더 추가' || title === '전체') {
     title = '내용 입력';
   }

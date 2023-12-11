@@ -77,7 +77,6 @@ export default function FolderMain() {
     setValue(target.textContent ?? '');
     setOnDeleteModal(!onDeleteModal);
   };
-
   useEffect(() => {
     handleLoad();
   }, [handleLoad]);

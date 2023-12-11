@@ -4,6 +4,7 @@ import Profile from './Profile';
 import * as N from '../style/styled-component/Nav/NavStyledComponent';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export interface LoginState {
   id: number;
@@ -36,11 +37,11 @@ export default function Nav() {
   return (
     <N.NavContainer>
       <N.NavWrapper>
-        <a href="/">
+        <Link href="/">
           <N.NavLibraryImg>
             <Image src="/linkbrary.svg" fill priority alt="libraryLogo" />
           </N.NavLibraryImg>
-        </a>
+        </Link>
         {login?.id ? (
           <Profile item={login} />
         ) : (

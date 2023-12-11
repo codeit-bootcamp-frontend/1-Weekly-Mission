@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import * as F from '../style/styled-component/Footer/FooterStyledComponent';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -11,26 +12,26 @@ export default function Footer() {
         <F.PolicyNFaqA href="./faq.html">FAQ</F.PolicyNFaqA>
       </F.FooterMiddle>
       <F.FooterRight>
-        <a href="https://www.facebook.com">
+        <Link href="https://www.facebook.com">
           <Div>
             <Image src="/facebook.svg" fill alt="facebook" />
           </Div>
-        </a>
-        <a href="https://www.twitter.com">
+        </Link>
+        <Link href="https://www.twitter.com">
           <Div>
             <Image src="/twitter.svg" fill alt="twitter" />
           </Div>
-        </a>
-        <a href="https://www.youtube.com">
+        </Link>
+        <Link href="https://www.youtube.com">
           <Div>
             <Image src="/youtube.svg" fill alt="youtube" />
           </Div>
-        </a>
-        <a href="https://www.instagram.com">
+        </Link>
+        <Link href="https://www.instagram.com">
           <Div>
             <Image src="/insta.svg" fill alt="instagram" />
           </Div>
-        </a>
+        </Link>
       </F.FooterRight>
     </F.FooterContainer>
   );

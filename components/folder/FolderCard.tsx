@@ -37,7 +37,6 @@ export default function FolderCard(link: Props) {
       setClicked((prev) => !prev);
     }
   };
-
   const onClickDeleteModal = () => {
     setShowDeleteModal((prev) => !prev);
   };
@@ -95,7 +94,7 @@ export default function FolderCard(link: Props) {
         <FolderDeleteModal
           handleClick={onClickDeleteModal}
           cardLink={link.item.url}
-          value={''}
+          value={'링크 삭제'}
           title={''}
         />
       )}
