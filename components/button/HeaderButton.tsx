@@ -25,7 +25,7 @@ export default function HeaderButton() {
 
   useEffect(() => {
     setIsHeaderVisible(isVisible);
-  }, [isVisible]);
+  }, [isVisible, setIsHeaderVisible]);
 
   if (isFooterVisible) {
     return (
