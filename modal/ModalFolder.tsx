@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import closeImg from "@/public/img/svg/close.svg";
 import kakaoIcon from "@/public/img/svg/kakaoIcon.svg";
 import facebookIcon from "@/public/img/svg/facebookIcon.svg";

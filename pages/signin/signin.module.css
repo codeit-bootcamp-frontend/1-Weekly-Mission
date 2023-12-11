@@ -1,0 +1,132 @@
+.login {
+  height: 100vh;
+  background: var(--linkbrary-bg);
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 460px;
+  padding: 238px 30px 116px;
+  margin: 0 auto;
+}
+
+.loginFormH1 {
+  text-align: center;
+}
+.loginFormH1A {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.loginFormH1Img {
+  width: 210.6px;
+  height: 38px;
+}
+
+.joinLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.joinLinkH3 {
+  margin-right: 8px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.joinLinkA {
+  color: var(--linkbrary-primary-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+.form {
+  margin: 30px 0 32px;
+}
+.form .inputBox:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBoxLabel {
+  margin-bottom: 12px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* .input-box .inner-icon {
+  position: relative;
+} */
+
+/* .input-box input {
+  width: 100%;
+  padding: 18px 15px;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-white);
+  border-radius: 8px;
+} */
+
+/* .input-box input:focus {
+  outline-color: var(--linkbrary-primary-color);
+} */
+
+/* .fa-solid {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  width: 20px;
+  height: auto;
+  transform: translate(-50%, -50%);
+} */
+
+.loginBtn {
+  width: 100%;
+  padding: 16px 20px;
+  border: 0;
+  background: linear-gradient(
+    91deg,
+    var(--linkbrary-primary-color) 0.12%,
+    #6ae3fe 101.84%
+  );
+  color: #f5f5f5;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.loginFormSocial {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  padding: 12px 24px;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-gray-10);
+  border-radius: 8px;
+}
+
+.loginFormSocialH3 {
+  flex-grow: 2;
+  color: var(--linkbrary-gray-100);
+  font-size: 14px;
+  font-weight: 400;
+}
+.loginFormSocialA {
+  width: 42px;
+  height: 42px;
+}
+
+.loginFormSocialImg {
+  width: 100%;
+  height: auto;
+}

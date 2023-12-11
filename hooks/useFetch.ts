@@ -1,6 +1,5 @@
+import { API_URL } from "@/config/apiUrl";
 import { useEffect, useState } from "react";
-
-export const API_URL = "https://bootcamp-api.codeit.kr/api/";
 
 export function useFetch(path: string, id: number) {
   const [data, setData] = useState(null);

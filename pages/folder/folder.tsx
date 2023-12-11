@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import AddInputSection from "@/components/AddInputSection";
 import Search from "@/components/Search";
 import UserFolder from "@/components/UserFolder";
@@ -10,6 +10,7 @@ import ModalFolder from "@/modal/ModalFolder";
 import { Links, folderOptionType } from "@/dataType/dataType";
 import { AccountContext } from "@/contexts/AccountContext";
 import styles from "./folder.module.css";
+import { useRouter } from "next/router";
 
 const modalBg = {
   background: "#000",
@@ -48,6 +49,8 @@ const Folder = () => {
   const { id } = account?.data[0];
   const targetElement = useRef<HTMLDivElement>(null);
   const targetSecondElement = useRef<HTMLDivElement>(null);
+  const userToken = window.localStorage.getItem("user");
+  const router = useRouter();
 
   const { data: folderDataObject, errorMessage: foldersErrorMessage } =
     useFetch(`users/${id}/folders`, id);
@@ -152,7 +155,11 @@ const Folder = () => {
       });
     }
   };
-
+  if (!userToken) {
+    alert("로그인 해주세요");
+    router.push("/signin");
+    return;
+  }
   return (
     <>
       <div className={styles.folder}>

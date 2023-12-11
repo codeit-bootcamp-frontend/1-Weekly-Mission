@@ -1,19 +1,44 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./input.module.css";
 import Image from "next/image";
 import eyeOffIcon from "@/public/img/svg/eye-off.svg";
 import eyeOnIcon from "@/public/img/svg/eye-on.svg";
+import {
+  emailErrorMessage,
+  pwChErrorMessage,
+  pwErrorMessage,
+} from "@/utils/errorMessage";
 
 interface InputType {
   type: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  reCheck: string;
+  setReCheck: React.Dispatch<React.SetStateAction<string>>;
+  password?: string;
 }
 
-const IdInput = ({ type }: InputType) => {
-  const [isError, setIsError] = useState(false);
-  const [changeEyeIcon, setChangeEyeIcon] = useState(false);
-  const isEmpty = (e: React.FocusEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setIsError(value ? false : true);
+const Input = ({
+  type,
+  onChange,
+  reCheck,
+  setReCheck,
+  password,
+}: InputType) => {
+  const [changeEyeIcon, setChangeEyeIcon] = useState<boolean>(false);
+  const [errorState, setErrorState] = useState<string>("");
+  const location = window.location.pathname;
+  const onFocus = async (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    if (name === "email") {
+      setErrorState(await emailErrorMessage(value, location));
+    } else if (name === "password") {
+      setErrorState(pwErrorMessage(value));
+    } else if (name === "passwordCheck") {
+      if (!password) return;
+      setErrorState(pwChErrorMessage(value, password));
+    }
+    setReCheck("");
   };
 
   const onClick = () => {
@@ -23,23 +48,26 @@ const IdInput = ({ type }: InputType) => {
   return (
     <div
       className={
-        isError
-          ? `${styles.Container} ${styles.emptyMessage}`
-          : `${styles.Container}`
+        errorState || reCheck
+          ? `${styles.Container} ${type}Box ${errorState} ${reCheck}`
+          : `${styles.Container} ${type}Box`
       }
     >
       <div className={styles.Wrap}>
         <input
-          type={changeEyeIcon ? "text" : type}
           className={
-            isError ? `${styles.input} ${styles.inputError}` : `${styles.input}`
+            errorState || reCheck
+              ? `${styles.input}  ${styles.inputError}`
+              : `${styles.input}`
           }
-          placeholder={
-            type === "text" ? "내용 입력" : "비밀번호를 입력해주세요"
-          }
-          onBlur={isEmpty}
+          type={changeEyeIcon || type === "email" ? "text" : "password"}
+          name={type}
+          placeholder={type === "email" ? "이메일" : "비밀번호"}
+          autoComplete="off"
+          onChange={onChange}
+          onBlur={onFocus}
         />
-        {type === "text" ? null : (
+        {type === "email" ? null : (
           <Image
             className={styles.eyeIcon}
             src={changeEyeIcon ? eyeOnIcon : eyeOffIcon}
@@ -52,4 +80,4 @@ const IdInput = ({ type }: InputType) => {
   );
 };
 
-export default IdInput;
+export default Input;

@@ -78,4 +78,7 @@
   .headerAImg {
     height: 16px;
   }
+  .profileId {
+    display: none;
+  }
 }
