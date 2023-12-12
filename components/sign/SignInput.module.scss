@@ -1,0 +1,45 @@
+.input-container {
+  position: relative;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.input {
+  max-width: 40rem;
+  padding: 1.8rem 1.5rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid $color-gray20;
+  background: $color-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  background-color: $color-white;
+  font-size: 1.6rem;
+
+  &:focus-within {
+    outline: 0.15rem solid $color-primary;
+  }
+}
+
+.on-off-button {
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  background-color: #fff;
+  border: 0;
+
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  width: 2rem;
+}
+
+.error-text {
+  height: 2.5rem;
+  font-size: 1.4rem;
+  color: var(--Red);
+}
