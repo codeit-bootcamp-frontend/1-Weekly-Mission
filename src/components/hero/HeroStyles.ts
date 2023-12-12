@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { breakPoints } from "@/common/media";
+import LinkIcon from "public/assets/link.svg";
 
 export const Profile = styled.div`
   padding-top: 5.5rem;
@@ -41,4 +42,38 @@ export const Title = styled.h2`
     padding-bottom: 2.5rem;
     font-size: 2rem;
   }
+`;
+
+export const LinkContainer = styled.section`
+  text-align: center;
+  background-color: var(--color-primary-varient);
+`;
+
+export const FixedLinkContainer = styled(LinkContainer)`
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+`;
+
+export const LinkForm = styled.div`
+  padding: 1.5rem 2rem;
+  position: relative;
+  max-width: 55rem;
+  width: 100%;
+  margin: auto;
+`;
+
+export const Icon = styled(LinkIcon)`
+  position: absolute;
+  top: 50%;
+  left: 3.5rem;
+  transform: translate(-50%, -50%);
+`;
+
+export const ButtonContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
 `;

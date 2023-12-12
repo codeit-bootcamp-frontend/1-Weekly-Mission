@@ -30,11 +30,13 @@ export interface FolderData {
 }
 
 export interface SampleFolderData {
-  id: number;
-  count: number;
-  name: string;
-  links: SampleLinkData[];
-  owner: Owner;
+  folder: {
+    id: number;
+    count: number;
+    name: string;
+    links: SampleLinkData[];
+    owner: Owner;
+  };
 }
 
 export type FolderNameData = Omit<FolderData, "created_at">;

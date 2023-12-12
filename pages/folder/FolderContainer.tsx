@@ -1,7 +1,6 @@
 import { ChangeEvent, useContext, useEffect, useState } from "react";
-import useFetch from "@/hooks/useFetch";
+import useSWR from "swr";
 
-import { getAllFolders, getAllLinks } from "@/common/api";
 import { FolderContext } from "@/context/FolderContext";
 import FolderUI from "./FolderPresenter";
 import { FolderData, LinkData } from "@/types/folder";
@@ -18,8 +17,12 @@ export default function Folder() {
   const [addLinkValue, setAddLinkValue] = useState("");
   const [keyword, setKeyword] = useState("");
 
-  const { isLoading, error, wrappedFunction: getLinksAsyncFunc } = useFetch(getAllLinks);
-  const { error: errorFolder, wrappedFunction: getFoldersAsyncFunc } = useFetch(getAllFolders);
+  const {
+    data: linkData,
+    isLoading,
+    error: linkError,
+  } = useSWR(`/api/users/${USER_ID}/links?folderId=${selectedFolderId ?? ""}`);
+  const { data: folderData, error: folderError } = useSWR(`/api/users/${USER_ID}/folders`);
 
   const { handleFolderUpdate } = useContext(FolderContext);
 
@@ -55,16 +58,6 @@ export default function Folder() {
     setSelectedFolderId(selectedFolder as string);
   };
 
-  const handleLoadedData = async () => {
-    const { data: linkData } = await getLinksAsyncFunc(USER_ID, selectedFolderId);
-    const { data: folderData } = await getFoldersAsyncFunc(USER_ID);
-
-    setLinks(linkData);
-    setFilteredLinks(linkData);
-    setFolders(folderData);
-    updateFolderList(folderData);
-  };
-
   const updateFolderList = (data: FolderData[]) => {
     handleFolderUpdate(data);
   };
@@ -76,10 +69,17 @@ export default function Folder() {
   };
 
   useEffect(() => {
-    handleLoadedData();
-  }, [selectedFolderId]);
+    if (linkData && folderData) {
+      setLinks(linkData.data);
+      setFilteredLinks(linkData.data);
+      setFolders(folderData.data);
+      updateFolderList(folderData.data);
+    }
+  }, [linkData, folderData, selectedFolderId]);
 
-  if (error || errorFolder) console.log(error || errorFolder);
+  if (linkError || folderError) {
+    console.log(linkError || folderError);
+  }
 
   return (
     <FolderUI

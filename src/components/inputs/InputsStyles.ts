@@ -1,7 +1,21 @@
+// 현재 사용하지 않는 컴포넌트, 로그인/회원가입 input 리팩토링 후에도 필요없으면 삭제 예정
+
 import styled from "styled-components";
 
+/** hero 링크추가 input */
+export const AddLinkInput = styled.input`
+  padding: 1rem 2.5rem;
+  width: 100%;
+  background: var(--color-white);
+  border: 1px solid var(--color-primary);
+  border-radius: 1rem;
+  line-height: 1.5rem;
+  outline-style: none;
+`;
+
+/** 회원가입, 로그인 페이지 input */
 export const Container = styled.div`
-  width: 350px;
+  width: 25rem;
   display: flex;
   flex-direction: column;
   gap: 6px;

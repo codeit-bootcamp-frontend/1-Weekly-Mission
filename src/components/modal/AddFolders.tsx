@@ -1,4 +1,4 @@
-import styles from "./AddFolders.module.css";
+import styles from "./modalStyles/AddFolders.module.css";
 import ModalTitle from "./ModalTitle";
 import ModalButton from "@/components/button/ModalButton";
 

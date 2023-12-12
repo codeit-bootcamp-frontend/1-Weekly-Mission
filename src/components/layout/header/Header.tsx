@@ -30,8 +30,7 @@ export default function Header({ user, isLoading }: HeaderProps) {
           {!isLoading ? (
             <div className={styles.navbar}>
               <div className={styles.avatar}>
-                <img src={user?.image_source} alt="avatar" className={styles.avatar} />
-                {/* <Image src={user?.image_source} alt="avatar" fill={true} /> */}
+                <Image src={user?.image_source} alt="avatar" fill={true} />
               </div>
               <span className={styles.email}>{user?.email}</span>
             </div>

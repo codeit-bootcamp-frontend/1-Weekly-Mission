@@ -1,4 +1,4 @@
-import * as S from "./HeroStyle";
+import * as S from "./HeroStyles";
 import { Owner } from "@/types/user";
 
 interface HeroProps {

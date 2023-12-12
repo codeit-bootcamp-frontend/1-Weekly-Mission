@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import * as S from "./SearchbarStyle";
+import * as S from "./SearchbarStyles";
 
 interface SearchbarProps {
   keyword: string;

@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from "react";
-import styled from "styled-components";
+import * as S from "./OptionsStyles";
 
 import ModalContainer from "./modal/ModalContainer";
 import EditFolder from "./modal/EditFolder";
@@ -43,14 +43,14 @@ export default function Options({ selected }: OptionsProps) {
 
   return (
     <>
-      <Container>
+      <S.Container>
         {actions.map((action, index) => (
-          <OptionsContainer key={index} onClick={handleSelectedOption} id={action.action}>
+          <S.OptionsContainer key={index} onClick={handleSelectedOption} id={action.action}>
             <img src={`/assets/${action.icon}.svg`} />
-            <Option>{action.context}</Option>
-          </OptionsContainer>
+            <S.Option>{action.context}</S.Option>
+          </S.OptionsContainer>
         ))}
-      </Container>
+      </S.Container>
 
       {isModalOpen && (
         <ModalPortal>
@@ -60,23 +60,3 @@ export default function Options({ selected }: OptionsProps) {
     </>
   );
 }
-
-const Container = styled.ul`
-  display: flex;
-  gap: 12px;
-`;
-
-const OptionsContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 4px;
-  cursor: pointer;
-`;
-
-const Option = styled.button`
-  padding: 0;
-  background: none;
-  border: none;
-  font-size: 0.875rem;
-  color: #9fa6b2;
-`;
