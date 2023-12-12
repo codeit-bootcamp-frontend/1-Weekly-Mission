@@ -6,6 +6,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <link rel="icon" href="/heart_icon.png" />
         <title>Linkbrary</title>
       </Head>
       <GlobalStyle />

@@ -1,8 +1,8 @@
 import { LinksDataType, SampleLinksType } from "@/utils/types";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
-import useGetLinks from "../../hooks/useGetLinks";
-import useGetSampleLinks from "../../hooks/useGetSampleLinks";
+import useGetLinks from "../../../hooks/useGetLinks";
+import useGetSampleLinks from "../../../hooks/useGetSampleLinks";
 import Card from "./Card";
 
 interface CardListProps {

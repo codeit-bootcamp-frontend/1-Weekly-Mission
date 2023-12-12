@@ -1,6 +1,6 @@
 import noImg from "@/src/image/noimg.svg";
 import styled from "styled-components";
-import { formatDate, getTimeDiff } from "../../utils/getTime";
+import { formatDate, getTimeDiff } from "../../../utils/getTime";
 import CardContent from "./CardContent";
 import CardDate from "./CardDate";
 import CardImage from "./CardImage";

@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import styled from "styled-components";
 import linkIcon from "@/src/image/link.svg";
-import AddLinkModal from "../modal/AddLinkModal";
+import AddLinkModal from "../../modal/AddLinkModal";
 
 interface HeaderAddLinkProps {
   headerRef: React.RefObject<HTMLDivElement>;

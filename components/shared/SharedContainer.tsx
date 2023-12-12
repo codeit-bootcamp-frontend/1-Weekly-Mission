@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import useGetSampleFolder from "../../hooks/useGetSampleFolder";
-import CardList from "../card/CardList";
+import CardList from "../common/card/CardList";
 import SearchBar from "../common/SearchBar";
-import Header from "../header/Header";
+import Header from "../common/header/Header";
 
 const SharedContainer = () => {
   const folder = useGetSampleFolder();

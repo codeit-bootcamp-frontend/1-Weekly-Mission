@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import kebab from "@/src/image/kebab.svg";
-import AddLinkModal from "../modal/AddLinkModal";
-import DeleteLinkModal from "../modal/DeleteLinkModal";
+import AddLinkModal from "../../modal/AddLinkModal";
+import DeleteLinkModal from "../../modal/DeleteLinkModal";
 import Image from "next/image";
 
 interface KebabProps {

@@ -1,10 +1,4 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from "next/document";
+import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 import { ServerStyleSheet } from "styled-components"; // 0)
 
 export default class MyDocument extends Document {
@@ -15,8 +9,7 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />), //2)
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />), //2)
         });
 
       const initialProps = await Document.getInitialProps(ctx);
