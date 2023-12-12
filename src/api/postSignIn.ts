@@ -18,13 +18,12 @@ export const postSignIn = async ({ email, password }: postSignInProps) => {
       },
       body: JSON.stringify(user),
     });
-    console.log(response);
     const signinResponse = await response.json();
     if (response.status == 200) {
       localStorage.setItem("accessToken", signinResponse.data.accessToken);
       location.href = "/folder";
     } else if (response.status == 400) {
-      return "이메일, 비밀번호 확인 요망";
+      return false;
 
       // showErrorMessage($pwd,$pwdErrorMessage,"비밀번호를 확인해주세요.");
     } else throw new Error(`${response.status}`);

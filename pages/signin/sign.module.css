@@ -34,26 +34,6 @@
   font-size: 1.6rem;
   background: var(--linkbrary-white, #fff);
 }
-.input:focus {
-  border: 0.1rem solid var(--linkbrary-primary-color, #6d6afe);
-}
-.inputWrapper {
-  position: relative;
-}
-.pwdEye {
-  position: absolute;
-  right: 1.6rem;
-  bottom: 50%;
-  transform: translateY(50%);
-  fill: white;
-  cursor: pointer;
-}
-
-.errorMessage {
-  font-size: 1.4rem;
-  color: red;
-  margin-top: 0.6rem;
-}
 
 .formButton {
   padding: 1.6rem 2rem;
@@ -63,8 +43,4 @@
   border-radius: 0.8rem;
   font-size: 1.8rem;
   cursor: pointer;
-}
-
-.redBox {
-  border-color: red;
 }
