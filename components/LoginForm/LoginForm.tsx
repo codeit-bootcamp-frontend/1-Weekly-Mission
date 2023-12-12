@@ -10,7 +10,6 @@ export default function LoginForm({ button, children, formUrl, require, isSignup
   const method: { handleSubmit, watch, setError } = useForm();
   const { watch, setError } = method;
   const loginData = watch(require);
-  console.log(loginData)
 
   async function handleSubmit(e) {
     e.preventDefault();

@@ -16,7 +16,6 @@ export default function useIntersectionObserver() {
     });
 
     if (ref?.current) {
-      console.log('되네')
       observer.observe(ref.current);
     }
 

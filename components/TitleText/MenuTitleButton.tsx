@@ -18,7 +18,6 @@ export default function MenuTitleButton({ title }: { title: string }) {
   const handleButtonClick = (e: React.MouseEvent, name: string) => {
     e.preventDefault;
     const iconName = menuTitleIcons.filter((icon) => icon.name === name);
-    console.log(iconName)
     setOption(iconName[0].option);
     openModal();
   }
