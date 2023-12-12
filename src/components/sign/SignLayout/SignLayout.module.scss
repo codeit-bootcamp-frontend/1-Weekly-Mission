@@ -1,0 +1,56 @@
+@import "@/styles/global.scss";
+
+.sign-page {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  background-color: var(--color-linkbrary);
+  padding: 32px;
+
+  .sign-container {
+    display: flex;
+    max-width: 400px;
+    width: 100%;
+    min-width: 300px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+
+    & .logo-img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 16px;
+      & img {
+        width: 210px;
+        height: 38px;
+      }
+    }
+
+    & .description {
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+      text-align: center;
+      & span {
+        color: var(--color-primary);
+        text-decoration: underline;
+      }
+    }
+
+    @include tablet {
+      width: 400px;
+    }
+
+    & .form-container {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+}

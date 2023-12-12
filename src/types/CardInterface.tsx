@@ -6,7 +6,7 @@ export default interface CardInterface {
   image_source?: string;
   title?: string;
   updated_at?: string;
-  url?: string;
+  url: string;
 
   createdAt?: string;
   imageSource?: string;

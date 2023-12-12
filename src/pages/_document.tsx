@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="ko">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Linkbrary</title>
+        <title>LINKBRARY</title>
       </Head>
       <body className="root">
         <div id="modal-root"></div>

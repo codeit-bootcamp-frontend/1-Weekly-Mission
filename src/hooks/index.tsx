@@ -1,4 +1,4 @@
-import useKeywordInput from "./useKeywordInput";
 import useOpenModal from "./useOpenModal";
+import useInputValid from "./useInputValid";
 
-export { useKeywordInput, useOpenModal };
+export { useOpenModal, useInputValid };

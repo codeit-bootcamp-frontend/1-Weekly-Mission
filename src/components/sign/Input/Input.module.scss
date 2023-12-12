@@ -1,0 +1,53 @@
+@import "@/styles/global.scss";
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 30px;
+  & label {
+    width: 100%;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: block;
+  }
+}
+
+.input {
+  display: block;
+  margin-top: 5px;
+  padding: 18px 15px;
+  width: 100%;
+  background-color: white;
+
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20, #ccd5e3);
+}
+.input:focus {
+  outline: 1px solid var(--linkbrary-primary-color, #6d6afe);
+}
+
+.error-msg {
+  padding-top: 1rem;
+  color: var(--linkbrary-red, #ff5b56);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 0;
+}
+.input[data-status="isError"] {
+  outline: 1px solid #ff5b56;
+}
+
+.icon {
+  position: absolute;
+  right: 5px;
+  top: 63%;
+  transform: translate(-50%, -50%);
+}

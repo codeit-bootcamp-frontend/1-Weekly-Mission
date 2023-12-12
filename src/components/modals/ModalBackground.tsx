@@ -1,6 +1,5 @@
-import { ReactNode } from "react";
-import styles from "./ModalBackground.module.scss";
 import { ModalProps } from "@/types";
+import styles from "./ModalBackground.module.scss";
 
 function ModalBackground({ onClick }: ModalProps) {
   return <div onClick={onClick} className={styles["background"]}></div>;

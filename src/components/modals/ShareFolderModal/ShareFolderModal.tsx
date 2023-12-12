@@ -1,12 +1,15 @@
-import styles from "./ShareFolderModal.module.scss";
 import Image from "next/image";
-import { FolderProps } from "@/types";
+import { FolderInterface } from "@/types";
+import styles from "./ShareFolderModal.module.scss";
 
-function ShareFolderModal({ folder }: FolderProps) {
-  const handleLinkButton = () => {
+function ShareFolderModal({ folder }: { folder: FolderInterface }) {
+  const handleLinkCopyButton = () => {
+    // Todo - 링크 복사할 때 url 뭐 복사하는지 체크하기
     let url = "https://bootcamp-api.codeit.kr/shared";
-    let query = `?user=1&folder=${folder.id}`;
-    url = `${url}${query}`;
+    const query = new URLSearchParams();
+    query.append("user", "1");
+    query.append("folder", folder.id || "");
+    url = `${url}?${query.toString()}`;
     navigator.clipboard.writeText(url);
   };
 
@@ -33,7 +36,7 @@ function ShareFolderModal({ folder }: FolderProps) {
           />
           <p>페이스북</p>
         </button>
-        <button className={styles["sns-button"]} onClick={handleLinkButton}>
+        <button className={styles["sns-button"]} onClick={handleLinkCopyButton}>
           <Image
             src="icons/link-icon.svg"
             alt="링크 공유"

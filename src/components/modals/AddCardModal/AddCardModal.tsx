@@ -1,11 +1,14 @@
-import styles from "./AddCardModal.module.scss";
 import { MouseEvent } from "react";
-import { CardProps, FolderInterface } from "@/types";
+import { CardInterface, FolderInterface } from "@/types";
+import styles from "./AddCardModal.module.scss";
 
-interface Props extends CardProps {
+function AddCardModal({
+  card,
+  folderList,
+}: {
+  card: CardInterface;
   folderList?: FolderInterface[];
-}
-function AddCardModal({ card, folderList }: Props) {
+}) {
   const handleToggle = (e: MouseEvent<HTMLDivElement>) => {
     (e.target as Element).classList.toggle(`${styles["checked"]}`);
   };
@@ -17,7 +20,11 @@ function AddCardModal({ card, folderList }: Props) {
 
       {folderList?.map((folder) => {
         return (
-          <div className={styles["folder-checkbox"]} onClick={handleToggle}>
+          <div
+            className={styles["folder-checkbox"]}
+            key={folder.id}
+            onClick={handleToggle}
+          >
             {folder?.name}
             <div className={styles["link-counts"]}>
               {folder?.link?.count}개 링크

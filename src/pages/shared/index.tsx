@@ -1,35 +1,31 @@
-import { useEffect, useState, useCallback } from "react";
-import styles from "./SharedPage.module.scss";
-import ShareHeader from "./container/ShareHeader";
-import { getSharedFolder, getSharedUser } from "@/api";
-import { SharedFolderInterface, SharedUserInterface } from "@/types";
-import { SearchBar, CardList } from "@/components";
-import { useKeywordInput } from "@/hooks";
+import { useState } from "react";
 import Head from "next/head";
+import { getSharedFolder, getSharedUser } from "@/api";
+import { SearchBar, CardList } from "@/components/common";
+import { ShareHeader } from "@/components/shared";
+import { SharedFolderInterface, SharedUserInterface } from "@/types";
+import styles from "./SharedPage.module.scss";
 
-export default function SharedPage() {
-  const [sharedUser, setSharedUser] = useState<SharedUserInterface>();
-  const [sharedFolder, setSharedFolder] = useState<SharedFolderInterface>();
-  // const { keyword, handleKeywordInput: setKeyword } = useKeywordInput("", null);
+// TODO - 지금은 shared user id와 folder id가 정해져있어서 getServerSideProps가 받는 인자가 없지만, 나중에 확장성을 위해 context 인자를 받는 식으로도 고쳐볼 것.
+export async function getServerSideProps() {
+  let sharedUser: SharedUserInterface = await getSharedUser();
+  let sharedFolder: SharedFolderInterface = await getSharedFolder();
+  return {
+    props: {
+      sharedUser,
+      sharedFolder,
+    },
+  };
+}
+
+export default function SharedPage({
+  sharedUser,
+  sharedFolder,
+}: {
+  sharedUser: SharedUserInterface;
+  sharedFolder: SharedFolderInterface;
+}) {
   const [keyword, setKeyword] = useState("");
-
-  const getSharedFiles = useCallback(async () => {
-    const userResult = await getSharedUser();
-    const folderResult = await getSharedFolder();
-    if (userResult && folderResult) {
-      setSharedUser(() => {
-        return { ...userResult };
-      });
-      setSharedFolder(() => {
-        return { ...folderResult };
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    getSharedFiles();
-  }, [getSharedFiles]);
-
   return (
     <>
       <Head>
