@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DeviceQuery } from '@/styles/media';
 
 export const Nav = styled.div`
   display: flex;
@@ -8,15 +9,15 @@ export const Nav = styled.div`
   width: 100%;
   background-color: #f0f6ff;
 
-  @media ${({ theme }) => theme.device.tablet} {
+  ${DeviceQuery.tablet`
     padding-left: 32.5px;
     padding-right: 32.5px;
-  }
+  `}
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     padding-top: 18px;
     padding-bottom: 17px;
-  }
+  `}
 `;
 
 export const Inform = styled.div`
@@ -24,11 +25,11 @@ export const Inform = styled.div`
   align-items: center;
   gap: 6px;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     span {
       display: none;
     }
-  }
+  `}
 `;
 
 export const Profile = styled.img`

@@ -1,6 +1,6 @@
-import LoginLayout from '@/components/LoginLayout/LoginLayout';
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import LoginLayout from '@/components/LoginLayout/LoginLayout';
 
 const signIn = {
   p: '회원이 아니신가요?',
@@ -9,7 +9,7 @@ const signIn = {
   button: '로그인',
   text: '소셜로그인',
   formUrl: '/sign-in',
-  require: {email : "", password: ""},
+  require: { email: '', password: '' },
 };
 
 export default function SignIn() {

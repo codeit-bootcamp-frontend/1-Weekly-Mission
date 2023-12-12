@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { Links } from './Footer.style';
-import { Data } from './socialMedia';
+import { SocialMediaLink } from './socialMedia';
 
-interface Props extends Data {
+interface Props extends SocialMediaLink {
   alt: string | undefined;
 }
 

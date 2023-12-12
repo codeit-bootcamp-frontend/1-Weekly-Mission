@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DeviceQuery } from '@/styles/media';
 
 interface Propsisintersecting {
   $isintersecting: boolean;
@@ -13,9 +14,9 @@ export const Container = styled.div`
   margin-bottom: 40px;
   background-color: #f0f6ff;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     margin-bottom: 20px;
-  }
+  `}
 `;
 
 export const ContainerProfilePage = styled(Container)`
@@ -24,11 +25,11 @@ export const ContainerProfilePage = styled(Container)`
   justify-content: space-between;
   gap: 20px;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     padding-top: 1rem;
     padding-bottom: 4rem;
     margin-bottom: 20px;
-  }
+  `}
 
   p {
     color: #000;
@@ -45,9 +46,9 @@ export const Profile = styled.div`
   align-items: center;
   gap: 12px;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     gap: 10px;
-  }
+  `}
 
   img {
     width: 60px;
@@ -60,19 +61,20 @@ export const ContainerFolderPage = styled(Container)<Propsisintersecting>`
   padding-bottom: 9rem;
   width: 100%;
 
-  @media ${({ theme }) => theme.device.tablet} {
+  ${DeviceQuery.tablet`
     padding-left: 32.5px;
     padding-right: 32.5px;
-  }
+  `}
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     padding: 24px 32px 40px;
+    
     ${({ $isintersecting }) =>
       $isintersecting === true &&
       `
       padding: 12px 32px 12px;
     `}
-  }
+  `}
 
   ${({ $isintersecting }) =>
     $isintersecting === true &&
@@ -92,13 +94,14 @@ export const LinkSearchBox = styled.div`
   border: 1px solid #6d6afe;
   width: 800px;
 
-  @media ${({ theme }) => theme.device.tablet} {
+  ${DeviceQuery.tablet`
     width: 704px;
-  }
-  @media ${({ theme }) => theme.device.mobile} {
+  `}
+
+  ${DeviceQuery.mobile`
     padding: 10px 8px;
     width: 100%;
-  }
+  `}
 `;
 export const LinkBox = styled.div`
   display: flex;
@@ -125,7 +128,7 @@ export const LinkInputBox = styled.div`
     font-size: 1.6rem;
   }
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     gap: 8px;
 
     img {
@@ -135,5 +138,5 @@ export const LinkInputBox = styled.div`
     input {
       font-size: 1.4rem;
     }
-  }
+  `}
 `;

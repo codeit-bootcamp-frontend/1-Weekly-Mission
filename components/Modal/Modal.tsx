@@ -1,6 +1,6 @@
 import ModalPortal from '@/public/portal';
-import * as Style from './Modal.style';
 import closeImg from '@/src/assets/_close.png';
+import * as Style from './Modal.style';
 
 interface Props {
   title: string;

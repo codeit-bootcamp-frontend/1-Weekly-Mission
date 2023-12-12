@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import Image from 'next/image';
 
 export const Container = styled.div`
@@ -24,7 +24,7 @@ export const ImgBox = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 37.33px;
-  background : ${({color}) => color}
+  background: ${({ color }) => color};
 `;
 
 export const Img = styled(Image)`

@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { theme } from '@/styles/theme';
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--linkbrary-bg);
+  background-color: ${theme.color.graybg};
+  height: 100vh;
 `;
 
 export const Box = styled.div`
@@ -29,7 +31,7 @@ export const TopLogo = styled.div`
 
     .login {
       font-size: 16px;
-      color: var(--purpleblue);
+      color: ${theme.color.purpleblue};
       font-weight: 600;
     }
   }

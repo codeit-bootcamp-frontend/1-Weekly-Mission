@@ -6,7 +6,7 @@ const menuTitleIcons = [
   {
     name: '공유',
     image: shareIcon,
-    option: { title: '폴더 공유', trigger: 'SocialShare'  },
+    option: { title: '폴더 공유', trigger: 'SocialShare' },
   },
   {
     name: '이름 변경',

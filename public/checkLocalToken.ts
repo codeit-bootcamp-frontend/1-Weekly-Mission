@@ -1,4 +1,4 @@
-export function checkLocalToken (response) {
+export function checkLocalToken(response) {
   let accessToken;
   if (!localStorage.getItem('access_token')) {
     accessToken = response.data.data.accessToken;

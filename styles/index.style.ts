@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DeviceQuery } from './media';
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -8,12 +9,13 @@ export const HeaderContainer = styled.div`
   width: 100%;
   background-color: #edf7ff;
 
-  @media ${({ theme }) => theme.device.tablet} {
+  ${DeviceQuery.tablet`
     margin-bottom: 3rem;
-  }
-  @media ${({ theme }) => theme.device.mobile} {
+  `}
+
+  ${DeviceQuery.mobile`
     margin-bottom: 0;
-  }
+  `}
 `;
 
 export const HeaderBox = styled.div`
@@ -41,7 +43,7 @@ export const HeaderBox = styled.div`
     -webkit-text-fill-color: transparent;
   }
 
-  @media ${({ theme }) => theme.device.tablet} {
+  ${DeviceQuery.tablet`
     padding: 3.9rem 25rem 0rem;
     height: 75.6rem;
 
@@ -50,9 +52,9 @@ export const HeaderBox = styled.div`
       width: 48rem;
       word-break: keep-all;
     }
-  }
+  `}
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     padding: 2.8rem 3.2rem 0;
     gap: 2.4rem;
     height: 39.9rem;
@@ -64,7 +66,7 @@ export const HeaderBox = styled.div`
       line-height: 4.2rem;
       width: 24rem;
     }
-  }
+  `}
 
   .link {
     text-decoration: none;
@@ -100,12 +102,12 @@ export const LinkAddButton = styled(Button)`
   color: #f5f5f5;
   cursor: pointer;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     padding: 1rem 1.6rem;
     font-size: 1.4rem;
     height: 3.7rem;
     width: 20rem;
-  }
+  `}
 `;
 
 export const ImageBox = styled.div`
@@ -125,16 +127,16 @@ export const ImageBox = styled.div`
   );
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 
-  @media ${({ theme }) => theme.device.tablet} {
+  ${DeviceQuery.tablet`
     width: 65rem;
     height: 38.3rem;
     margin: 2.9rem 2.3rem 0;
-  }
+  `}
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     width: 30.2rem;
     height: 17.8rem;
-  }
+  `}
 `;
 
 export const Article = styled.div`
@@ -150,79 +152,79 @@ export const Article = styled.div`
     height: 55rem;
     padding: 50px 0;
 
-    @media ${({ theme }) => theme.device.tablet} {
+    ${DeviceQuery.tablet`
       justify-content: center;
       width: 100%;
       height: 41.5rem;
       column-gap: 5.1rem;
-    }
+    `}
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       padding: 4rem 3.2rem;
       grid-template: none;
       justify-content: center;
       column-gap: 0;
       row-gap: 1.6rem;
       height: fit-content;
-    }
+    `}
   }
 
   .right .title {
     grid-row: 2 / 3;
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       grid-row: 1 / 2;
       grid-column: 1 / 2;
-    }
+    `}
   }
 
   .right .description {
     grid-row: 3 / 4;
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       grid-row: 3 / 4;
       grid-column: 1 / 2;
-    }
+    `}
   }
 
   .right .article-image {
     grid-column: 2 / 3;
     grid-row: 1 / 5;
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       grid-row: 2 / 3;
       grid-column: 1 / 2;
-    }
+    `}
   }
 
   .left .title {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       grid-row: 1 / 2;
       grid-column: 1 / 2;
-    }
+    `}
   }
 
   .left .description {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       grid-row: 3 / 4;
       grid-column: 1 / 2;
-    }
+    `}
   }
 
   .left .article-image {
     grid-row: 1 / 5;
     grid-column: 1 / 2;
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       grid-row: 2 / 3;
       grid-column: 1 / 2;
-    }
+    `}
   }
 
   .title,
@@ -232,9 +234,9 @@ export const Article = styled.div`
     line-height: 5.8rem;
     letter-spacing: -0.03rem;
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       font-size: 2.4rem;
-    }
+    `}
   }
 
   .description {
@@ -243,24 +245,24 @@ export const Article = styled.div`
     color: #6b6b6b;
     line-height: 2.4rem;
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       font-size: 1.5rem;
-    }
+    `}
   }
 
   .article-image {
     width: 55rem;
     height: 45rem;
 
-    @media ${({ theme }) => theme.device.tablet} {
+    ${DeviceQuery.tablet`
       width: 38.4rem;
       height: 31.5rem;
-    }
+    `}
 
-    @media ${({ theme }) => theme.device.mobile} {
+    ${DeviceQuery.mobile`
       width: 100%;
       height: auto;
-    }
+    `}
   }
 
   .gra-title {
@@ -275,8 +277,9 @@ export const Article = styled.div`
 `;
 
 export const Br = styled.br`
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     word-break: keep-all;
     display: none;
-  }
+    
+  `}
 `;

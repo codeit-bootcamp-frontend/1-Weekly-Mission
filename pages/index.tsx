@@ -6,9 +6,9 @@ import ArticleImage1 from '@/src/assets/image1.png';
 import ArticleImage2 from '@/src/assets/image2.png';
 import ArticleImage3 from '@/src/assets/image3.png';
 import ArticleImage4 from '@/src/assets/image4.png';
-import * as Style from '@/styles/index.style';
 import { ThemeProvider } from 'styled-components';
-import theme from '@/styles/display';
+import { theme } from '@/styles/theme';
+import * as Style from '@/styles/index.style';
 
 export default function Home() {
   return (

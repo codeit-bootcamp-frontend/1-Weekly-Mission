@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '@/styles/theme';
 
 export const Form = styled.form`
   display: flex;
@@ -20,6 +21,6 @@ export const Button = styled.button`
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
   font-size: 18px;
   font-weight: 600;
-  color: var(--gray-light);
+  color: ${theme.color.graylg};
   cursor: pointer;
 `;

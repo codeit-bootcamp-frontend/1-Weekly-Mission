@@ -1,12 +1,12 @@
-import { Nav, Footer } from '@/components';
 import { ReactNode, useEffect, useState } from 'react';
+import { Nav, Footer } from '@/components';
 import axios from '@/lib/axios';
 
 interface Props {
   children: ReactNode;
 }
 
-export default function Layout({ children}: Props) {
+export default function Layout({ children }: Props) {
   const [userData, setUserData] = useState();
 
   async function getUserData() {
@@ -23,7 +23,7 @@ export default function Layout({ children}: Props) {
     <>
       <Nav data={userData} />
       {children}
-      <Footer  />
+      <Footer />
     </>
   );
 }

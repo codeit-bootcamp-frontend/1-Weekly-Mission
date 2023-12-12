@@ -1,28 +1,26 @@
-import { ThemeProvider } from 'styled-components';
-import theme from '@/styles/display';
-import { Items } from '@/pages/shared';
-import linkClickImg from '@/src/assets/link.svg';
-import Image from 'next/image';
-import * as Style from './Header.style';
 import { useState, useEffect, useContext } from 'react';
-import useIntersectionObserver from '@/public/useIntersectionObserver';
+import Image from 'next/image';
+import { Items } from '@/pages/shared';
 import { FooterContext } from '@/pages/folder';
+import useIntersectionObserver from '@/public/useIntersectionObserver';
+import linkClickImg from '@/src/assets/link.svg';
+import * as Style from './Header.style';
 
 interface Props {
   items?: Items;
 }
 
-export default function Header({items}: Props) {
+export default function Header({ items }: Props) {
   const { isFooterVisible } = useContext(FooterContext);
-  const {ref, isIntersecting} = useIntersectionObserver();
+  const { ref, isIntersecting } = useIntersectionObserver();
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  
+
   useEffect(() => {
     setIsHeaderVisible(isIntersecting);
   }, [isIntersecting]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {items && (
         <Style.ContainerProfilePage>
           <Style.Profile>
@@ -56,8 +54,10 @@ export default function Header({items}: Props) {
           </Style.LinkSearchBox>
         </Style.ContainerFolderPage>
       )}
-      {(!isHeaderVisible && !isFooterVisible) && (
-        <Style.ContainerFolderPage $isintersecting={(!isHeaderVisible && !isFooterVisible)}>
+      {!items && !isHeaderVisible && !isFooterVisible && (
+        <Style.ContainerFolderPage
+          $isintersecting={!isHeaderVisible && !isFooterVisible}
+        >
           <Style.LinkSearchBox>
             <Style.LinkBox>
               <Style.LinkInputBox>
@@ -74,6 +74,6 @@ export default function Header({items}: Props) {
           </Style.LinkSearchBox>
         </Style.ContainerFolderPage>
       )}
-    </ThemeProvider>
+    </>
   );
 }

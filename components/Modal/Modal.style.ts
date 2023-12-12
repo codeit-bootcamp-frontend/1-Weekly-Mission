@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
+import { theme } from '@/styles/theme';
 
 export const BackGround = styled.div`
   z-index: 9000;
@@ -62,8 +63,8 @@ export const Input = styled.input`
   padding: 18px 15px;
   width: 100%;
   border-radius: 8px;
-  border: 1px solid #6d6afe;
-  background: #fff;
+  border: 1px solid ${theme.color.purpleblue};
+  background: ${theme.color.white};
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px;
@@ -79,8 +80,8 @@ export const Button = styled.button`
   border-radius: 8px;
   background: ${({ color }) =>
     color === 'blue'
-      ? 'linear-gradient(91deg, var(--purpleblue) 0.12%, var(--skyblue) 101.84%)'
-      : 'var(--linkbrary-red)'};
+      ? `linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)`
+      : `${theme.color.linkbraryred}`};
 
   color: #f5f5f5;
   font-size: 1.6rem;

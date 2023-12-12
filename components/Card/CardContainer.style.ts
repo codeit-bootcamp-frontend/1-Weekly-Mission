@@ -1,25 +1,26 @@
 import styled from 'styled-components';
+import { DeviceQuery } from '@/styles/media';
 
 export const Container = styled.div`
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   gap: 20px 25px;
 
-  @media ${({ theme }) => theme.device.tablet} {
+  ${DeviceQuery.tablet`
     grid-template-columns: repeat(2, 1fr);
     gap: 24px 25px;
-  }
+  `}
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
-  }
+  `}
 `;
 
 export const Button = styled.button`
   display: none;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     display: block;
     position: fixed;
     bottom: 101px;
@@ -34,5 +35,5 @@ export const Button = styled.button`
     font-weight: 500;
     letter-spacing: -0.3px;
     gap: 4px;
-  }
+  `}
 `;

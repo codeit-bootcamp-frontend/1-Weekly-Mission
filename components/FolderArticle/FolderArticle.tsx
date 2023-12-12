@@ -1,9 +1,7 @@
-import { CardMenuBar, EmptyData, CardContainer } from '@/components';
-import { ThemeProvider } from 'styled-components';
-import theme from '@/styles/display';
-import * as Style from './FolderArticle.style';
 import { createContext } from 'react';
+import { CardMenuBar, EmptyData, CardContainer } from '@/components';
 import { Link } from '@/pages/shared';
+import * as Style from './FolderArticle.style';
 
 export interface Folder {
   name: string;
@@ -25,14 +23,12 @@ export const FolderContext = createContext<Folders | null>(null);
 
 export default function FolderArticle({ items, isVisible, folders }: Props) {
   return (
-    <ThemeProvider theme={theme}>
-      <FolderContext.Provider value={folders}>
-        <Style.Container>
-          <CardMenuBar />
-          {isVisible && <CardContainer items={items} />}
-          {!isVisible && <EmptyData />}
-        </Style.Container>
-      </FolderContext.Provider>
-    </ThemeProvider>
+    <FolderContext.Provider value={folders}>
+      <Style.Container>
+        <CardMenuBar />
+        {isVisible && <CardContainer items={items} />}
+        {!isVisible && <EmptyData />}
+      </Style.Container>
+    </FolderContext.Provider>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Modal, ModalForm, menuTitleIcons } from '@/components';
-import Image from 'next/image.js';
+import Image from 'next/image';
 import useModal from '@/public/useModal';
 import * as Style from './MenuTitleButton.style';
 
@@ -20,7 +20,7 @@ export default function MenuTitleButton({ title }: { title: string }) {
     const iconName = menuTitleIcons.filter((icon) => icon.name === name);
     setOption(iconName[0].option);
     openModal();
-  }
+  };
 
   return (
     <>

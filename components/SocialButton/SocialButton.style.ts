@@ -1,16 +1,17 @@
 import styled from 'styled-components';
+import { theme } from '@/styles/theme';
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  border: 1px solid var(--gray-20);
-  background-color: var(--gray-10);
+  border: 1px solid ${theme.color.gray20};
+  background-color: ${theme.color.gray10};
   border-radius: 8px;
 
   span {
-    color: var(--gray-100);
+    color: ${theme.color.gray100};
     font-size: 14px;
     font-weight: 400;
   }

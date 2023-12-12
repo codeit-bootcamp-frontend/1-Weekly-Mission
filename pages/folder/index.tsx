@@ -1,4 +1,4 @@
-import { useState, createContext  } from 'react';
+import { useState, createContext } from 'react';
 import { Article, Header, Layout } from '@/components';
 import axios from '@/lib/axios';
 
@@ -17,16 +17,16 @@ export async function getServerSideProps() {
 }
 
 export const FooterContext = createContext({
-  isFooterVisible : false,
-  setIsFooterVisible : (visible:boolean) => {},
+  isFooterVisible: false,
+  setIsFooterVisible: (visible: boolean) => {},
 });
 
 export default function FolderPage({ links, folders }) {
   const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   return (
-    <FooterContext.Provider value={{isFooterVisible, setIsFooterVisible}}>
-      <Layout >
+    <FooterContext.Provider value={{ isFooterVisible, setIsFooterVisible }}>
+      <Layout>
         <Header />
         <Article links={links} folders={folders} />
       </Layout>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '@/styles/theme';
 
 export const Container = styled.div`
   display: flex;
@@ -10,8 +11,8 @@ export const InputBox = styled.div`
   position: relative;
   padding: 18px 15px;
   border-radius: 8px;
-  border: 1px solid ${({ color }) => color ?? 'var(--gray-100)'};
-  background: var(--white);
+  border: 1px solid ${({ color }) => color ?? `${theme.color.gray100}`};
+  background: ${theme.color.white};
 
   .eyeImage {
     position: absolute;

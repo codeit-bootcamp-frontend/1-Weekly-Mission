@@ -19,7 +19,7 @@ export const StyledLink = styled(Link)`
 // overflow : hidden;
 
 export const ImageContainer = styled.div`
-  position : relative;
+  position: relative;
   width: 340px;
   height: 200px;
 `;

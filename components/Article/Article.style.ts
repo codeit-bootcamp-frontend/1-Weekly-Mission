@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { DeviceQuery } from '@/styles/media';
+import { theme } from '@/styles/theme';
 
 export const ArticleContainer = styled.div`
   display: flex;
@@ -12,24 +14,24 @@ export const ArticleSection = styled.div`
   aliens-items: center;
   gap: 40px;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     gap: 32px;
-  }
+  `}
 `;
 
 export const Paragraph = styled.p`
-  color: var(--gray-100);
+  color: ${theme.color.gray100};
   font-size: 32px;
   font-weight: 600;
   letter-spacing: -0.2px;
 
   span {
     font-size: 32px;
-    color: var(--gray-60);
+    color: ${theme.color.gray60};
   }
 `;
 
 export const Keyword = styled.span`
   font-size: 32px;
-  color: var(--gray-60);
+  color: ${theme.color.gray60};
 `;

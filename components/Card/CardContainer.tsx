@@ -1,16 +1,11 @@
+import { useContext } from 'react';
+import Image from 'next/image';
 import { Card, ModalForm, Modal } from '@/components';
-import { ThemeProvider } from 'styled-components';
-import theme from '@/styles/display';
 import useModal from '@/public/useModal';
 import AddImg from '@/src/assets/addwhite.svg';
 import { Link } from '@/pages/shared';
-import {
-  FolderContext,
-  Folders,
-} from '@/components/FolderArticle/FolderArticle';
+import { FolderContext } from '@/components/FolderArticle/FolderArticle';
 import * as Style from './CardContainer.style';
-import Image from 'next/image';
-import { useContext } from 'react';
 
 interface Props {
   items: Link[] | undefined;
@@ -27,18 +22,16 @@ export default function CardContainer({ items }: Props) {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Style.Container>
-          {items?.map((link) => (
-            <Card link={link} key={link.id} />
-          ))}
-        </Style.Container>
-        {folders ? (
-          <Style.Button onClick={handleButtonClick}>
-            폴더 추가 <Image src={AddImg} alt="폴더추가" />
-          </Style.Button>
-        ) : null}
-      </ThemeProvider>
+      <Style.Container>
+        {items?.map((link) => (
+          <Card link={link} key={link.id} />
+        ))}
+      </Style.Container>
+      {folders ? (
+        <Style.Button onClick={handleButtonClick}>
+          폴더 추가 <Image src={AddImg} alt="폴더추가" />
+        </Style.Button>
+      ) : null}
       {isOpen && (
         <Modal
           title="폴더추가"

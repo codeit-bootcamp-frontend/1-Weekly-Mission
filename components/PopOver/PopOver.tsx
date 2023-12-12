@@ -22,14 +22,13 @@ const PopOver = ({ url }: Url) => {
   return (
     <>
       <Style.Container>
-        {PopOverTitle.map((title) => (
-          <>
-            <Style.Element
-              onClick={(e: MouseEvent) => handleClick(e, title.name)}
-            >
-              {title.name}
-            </Style.Element>
-          </>
+        {PopOverTitle.map((title, index) => (
+          <Style.Element
+            key={index}
+            onClick={(e: MouseEvent) => handleClick(e, title.name)}
+          >
+            {title.name}
+          </Style.Element>
         ))}
       </Style.Container>
       {isOpen && (

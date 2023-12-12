@@ -1,11 +1,17 @@
 import { useRouter } from 'next/router';
 import { useForm, FormProvider } from 'react-hook-form';
-import {LoginInput} from '@/components';
+import { LoginInput } from '@/components';
 import axios from '@/lib/axios';
 import { checkLocalToken } from '@/public/checkLocalToken';
 import * as Style from './LoginForm.style';
 
-export default function LoginForm({ button, children, formUrl, require, isSignup = false}) {
+export default function LoginForm({
+  button,
+  children,
+  formUrl,
+  require,
+  isSignup = false,
+}) {
   const router = useRouter();
   const method: { handleSubmit, watch, setError } = useForm();
   const { watch, setError } = method;
@@ -14,15 +20,16 @@ export default function LoginForm({ button, children, formUrl, require, isSignup
   async function handleSubmit(e) {
     e.preventDefault();
     if (isSignup) {
-      const check = await axios.post('/check-email', watch(['email']))};
-      // if(check.status !== 200) { setError('email', {type: 'incorrect'})}
+      const check = await axios.post('/check-email', watch(['email']));
+    }
+    // if(check.status !== 200) { setError('email', {type: 'incorrect'})}
     const response = await axios.post(formUrl, loginData);
-    if (response.status === 200 ) {
+    if (response.status === 200) {
       checkLocalToken(response);
       router.push('/folder');
-    // } else {
+      // } else {
 
-    // }
+      // }
     }
   }
 
@@ -35,6 +42,5 @@ export default function LoginForm({ button, children, formUrl, require, isSignup
         <Style.Button>{button}</Style.Button>
       </Style.Form>
     </FormProvider>
-  )
+  );
 }
-

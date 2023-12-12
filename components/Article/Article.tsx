@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Search, CardContainer, FolderArticle } from '@/components';
-import { ThemeProvider } from 'styled-components';
-import theme from '@/styles/display';
 import { Link } from '@/pages/shared';
 import { Folders } from '@/components/FolderArticle/FolderArticle';
 import * as Style from './Article.style';
@@ -30,30 +28,28 @@ export default function Article({ links, folders }: Data) {
   }, [checkItem]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Style.ArticleContainer>
-        <Style.ArticleSection>
-          <Search
-            links={links}
-            setCheckItem={setCheckItem}
-            onSearch={handleSearch}
-            value={value}
+    <Style.ArticleContainer>
+      <Style.ArticleSection>
+        <Search
+          links={links}
+          setCheckItem={setCheckItem}
+          onSearch={handleSearch}
+          value={value}
+        />
+        {value && (
+          <Style.Paragraph>
+            <Style.Keyword>{value}</Style.Keyword>으로 검색한 결과입니다.
+          </Style.Paragraph>
+        )}
+        {!folders && <CardContainer items={checkItem} />}
+        {folders && (
+          <FolderArticle
+            isVisible={isVisible}
+            items={checkItem}
+            folders={folders}
           />
-          {value && (
-            <Style.Paragraph>
-              <Style.Keyword>{value}</Style.Keyword>으로 검색한 결과입니다.
-            </Style.Paragraph>
-          )}
-          {!folders && <CardContainer items={checkItem} />}
-          {folders && (
-            <FolderArticle
-              isVisible={isVisible}
-              items={checkItem}
-              folders={folders}
-            />
-          )}
-        </Style.ArticleSection>
-      </Style.ArticleContainer>
-    </ThemeProvider>
+        )}
+      </Style.ArticleSection>
+    </Style.ArticleContainer>
   );
 }

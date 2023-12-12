@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import inputType from './inputType';
 import * as Style from './LoginInput.style';
+import { theme } from '@/styles/theme';
 
 export default function LoginInput({ type }) {
   const { label, id, placeholder, message, Regex, confirm, src } =
@@ -26,19 +27,19 @@ export default function LoginInput({ type }) {
   };
 
   const handleInputFocus = () => {
-    setColor('var(--purpleblue)');
+    setColor(`${theme.color.purpleblue}`);
   };
 
   const handleInputBlur = async () => {
     if (value.length === 0) {
-      setColor('var(--linkbrary-red)');
+      setColor(`${theme.color.linkbraryred}`);
       clearErrors(id);
     } else {
       const valid = await trigger(id);
       if (valid) {
-        setColor('var(--purpleblue)');
+        setColor(`${theme.color.purpleblue}`);
       } else {
-        setColor('var(--linkbrary-red)');
+        setColor(`${theme.color.linkbraryred}`);
       }
     }
   };
@@ -48,45 +49,41 @@ export default function LoginInput({ type }) {
   };
 
   return (
-    <>
-      <Style.Container>
-        <label htmlFor={id}>{label}</label>
-        <Style.InputBox color={color}>
-          <Style.Input
-            id={id}
-            type={
-              id === 'password' ? (passwordShown ? 'text' : 'password') : id
-            }
-            onFocus={handleInputFocus}
-            placeholder={placeholder}
-            value={value}
-            {...register(id, {
-              pattern: {
-                value: Regex,
-                message: message,
-              },
-              
-              onBlur: handleInputBlur,
-              onChange: handleInputChange,
-            })}
-          />
-          {src && (
-            <Image
-              className="eyeImage"
-              src={srcToggle}
-              alt="보기"
-              width={16}
-              height={16}
-              onClick={togglePasswordVisible}
-            />
-          )}
-        </Style.InputBox>
-        <ErrorMessage
-          errors={errors}
-          name={id}
-          render={({ message }) => <span>{message}</span>}
+    <Style.Container>
+      <label htmlFor={id}>{label}</label>
+      <Style.InputBox color={color}>
+        <Style.Input
+          id={id}
+          type={id === 'password' ? (passwordShown ? 'text' : 'password') : id}
+          onFocus={handleInputFocus}
+          placeholder={placeholder}
+          value={value}
+          {...register(id, {
+            pattern: {
+              value: Regex,
+              message: message,
+            },
+
+            onBlur: handleInputBlur,
+            onChange: handleInputChange,
+          })}
         />
-      </Style.Container>
-    </>
+        {src && (
+          <Image
+            className="eyeImage"
+            src={srcToggle}
+            alt="보기"
+            width={16}
+            height={16}
+            onClick={togglePasswordVisible}
+          />
+        )}
+      </Style.InputBox>
+      <ErrorMessage
+        errors={errors}
+        name={id}
+        render={({ message }) => <span>{message}</span>}
+      />
+    </Style.Container>
   );
 }

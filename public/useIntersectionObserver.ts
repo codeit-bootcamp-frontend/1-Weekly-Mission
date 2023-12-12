@@ -24,5 +24,5 @@ export default function useIntersectionObserver() {
     };
   }, [ref]);
 
-  return {ref, isIntersecting}
+  return { ref, isIntersecting };
 }

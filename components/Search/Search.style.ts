@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DeviceQuery } from '@/styles/media';
 
 export const Container = styled.div`
   padding: 15px 16px;
@@ -8,9 +9,9 @@ export const Container = styled.div`
   gap: 10px;
   border-radius: 10px;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     padding: 13px 16px;
-  }
+  `}
 
   input {
     border: none;

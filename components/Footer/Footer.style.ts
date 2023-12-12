@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import { DeviceQuery } from '@/styles/media';
 
 export const Container = styled.div`
   width: 100%;
@@ -7,10 +8,10 @@ export const Container = styled.div`
   background-color: #111322;
   margin-top: 60px;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     padding: 32px 32px 64px;
     margin-top: 40px;
-  }
+  `}
 `;
 export const Box = styled.div`
   width: 100%;
@@ -18,15 +19,16 @@ export const Box = styled.div`
   justify-content: space-between;
   color: #676767;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     display: grid;
     grid-template-areas:
       'footer-links sns'
       'footer-logo .';
     justify-content: space-between;
     row-gap: 6rem;
-  }
+  `}
 `;
+
 export const Span = styled.span`
   grid-area: footer-logo;
 `;

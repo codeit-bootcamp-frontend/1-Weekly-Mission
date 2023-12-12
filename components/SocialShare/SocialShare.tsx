@@ -22,7 +22,7 @@ export default function SocialShare() {
   return (
     <Style.Container>
       <Style.Box>
-        <Style.ImgBox color='#fee500'>
+        <Style.ImgBox color="#fee500">
           <Style.Img
             src={kakaoIcon}
             onClick={() => {
@@ -33,7 +33,7 @@ export default function SocialShare() {
         카카오톡
       </Style.Box>
       <Style.Box>
-        <Style.ImgBox color='#1877fe'>
+        <Style.ImgBox color="#1877fe">
           <Style.Img
             src={facebookIcon}
             onClick={() => {
@@ -44,7 +44,7 @@ export default function SocialShare() {
         페이스북
       </Style.Box>
       <Style.Box>
-        <Style.ImgBox color='rgba(157, 157, 157, 0.04)'>
+        <Style.ImgBox color="rgba(157, 157, 157, 0.04)">
           <Style.Img
             src={linkIcon}
             onClick={() => {

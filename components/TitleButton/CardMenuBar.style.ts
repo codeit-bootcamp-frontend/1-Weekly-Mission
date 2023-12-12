@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DeviceQuery } from '@/styles/media';
 
 interface Active {
   active: boolean;
@@ -8,10 +9,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width : 100%;
+  width: 100%;
   font-size: 1.6rem;
 
-  span{
+  span {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -21,12 +22,13 @@ export const Container = styled.div`
     letter-spacing: -0.3px;
     cursor: pointer;
   }
-  @media ${({ theme }) => theme.device.mobile}{
-
+  ${DeviceQuery.mobile`
     span{
       display : none;
     }
+  `}
 `;
+
 export const Ul = styled.ul`
   display: flex;
   align-items: center;
@@ -34,11 +36,11 @@ export const Ul = styled.ul`
   list-style: none;
   padding: 0px;
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     justify-content: start;
     flex-wrap: wrap;
     width: 325px;
-  }
+  `}
 `;
 
 export const Button = styled.button<Active>`

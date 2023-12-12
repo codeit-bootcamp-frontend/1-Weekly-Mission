@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DeviceQuery } from '@/styles/media';
 
 export const Empty = styled.div`
   display: flex;
@@ -11,11 +12,11 @@ export const Empty = styled.div`
   font-weight: 400;
   line-height: 24px;
 
-  @media ${({ theme }) => theme.device.tablet} {
+  ${DeviceQuery.tablet`
     width: 769px;
-  }
+  `}
 
-  @media ${({ theme }) => theme.device.mobile} {
+  ${DeviceQuery.mobile`
     width: 325px;
-  }
+  `}
 `;

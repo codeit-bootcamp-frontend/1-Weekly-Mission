@@ -6,8 +6,8 @@ import noImg from '@/src/assets/noImg.svg';
 import kebabMenuImg from '@/src/assets/kebab.svg';
 import starImg from '@/src/assets/Star.svg';
 import chooseStarImg from '@/src/assets/chooseStar.svg';
-import * as Style from './Card.style';
 import { Link } from '@/pages/shared';
+import * as Style from './Card.style';
 
 interface CardProps {
   link: Link;
