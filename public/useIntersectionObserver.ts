@@ -1,8 +1,7 @@
-import { useState, useEffect, RefObject } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export default function useIntersectionObserver(
-  refs: Array<React.RefObject<Element>>
-) {
+export default function useIntersectionObserver() {
+  const ref = useRef();
   const [isIntersecting, setIsIntersecting] = useState(false);
 
   useEffect(() => {
@@ -16,16 +15,15 @@ export default function useIntersectionObserver(
       });
     });
 
-    refs.forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-    });
+    if (ref?.current) {
+      console.log('되네')
+      observer.observe(ref.current);
+    }
 
     return () => {
       observer.disconnect();
     };
-  }, [refs]);
+  }, [ref]);
 
-  return isIntersecting;
+  return {ref, isIntersecting}
 }

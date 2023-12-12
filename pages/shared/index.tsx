@@ -50,17 +50,9 @@ interface Props {
 }
 
 export default function SharedPage({ folderData }: Props) {
-  const linkAddBarRef = useRef<HTMLDivElement>(null);
-  const footerRef = useRef<HTMLElement | null>(null);
-  const isIntersecting = useIntersectionObserver([linkAddBarRef, footerRef]);
-
   return (
     <Layout>
-      <Header
-        items={folderData}
-        linkAddBarRef={linkAddBarRef}
-        isIntersecting={isIntersecting}
-      />
+      <Header items={folderData} />
       <Article links={folderData.links} />
     </Layout>
   );

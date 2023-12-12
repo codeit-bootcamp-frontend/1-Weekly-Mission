@@ -19,9 +19,9 @@ export default function Article({ links, folders }: Data) {
     setValue(value);
   };
 
-  useEffect (() => {
-    setCheckItem(links)
-  },[links])
+  useEffect(() => {
+    setCheckItem(links);
+  }, [links]);
 
   useEffect(() => {
     if (checkItem) {

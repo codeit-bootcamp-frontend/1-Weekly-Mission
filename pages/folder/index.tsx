@@ -1,6 +1,5 @@
-import { useRef } from 'react';
+import { useState, createContext  } from 'react';
 import { Article, Header, Layout } from '@/components';
-import useIntersectionObserver from '@/public/useIntersectionObserver';
 import axios from '@/lib/axios';
 
 export async function getServerSideProps() {
@@ -17,14 +16,20 @@ export async function getServerSideProps() {
   };
 }
 
+export const FooterContext = createContext({
+  isFooterVisible : false,
+  setIsFooterVisible : (visible:boolean) => {},
+});
+
 export default function FolderPage({ links, folders }) {
-  // const linkAddBarRef = useRef<HTMLDivElement>(null);
-  // const footerRef = useRef<HTMLDivElement>(null);
-  // const isIntersecting = useIntersectionObserver([linkAddBarRef, footerRef]);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
   return (
-    <Layout >
-      <Header />
-      <Article links={links} folders={folders} />
-    </Layout>
+    <FooterContext.Provider value={{isFooterVisible, setIsFooterVisible}}>
+      <Layout >
+        <Header />
+        <Article links={links} folders={folders} />
+      </Layout>
+    </FooterContext.Provider>
   );
 }

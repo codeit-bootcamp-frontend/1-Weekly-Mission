@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { useState, MouseEvent } from 'react';
+import Image from 'next/image';
 import { PopOver } from '@/components';
 import PastTime from '@/public/date';
 import noImg from '@/src/assets/noImg.svg';
@@ -9,11 +9,11 @@ import chooseStarImg from '@/src/assets/chooseStar.svg';
 import * as Style from './Card.style';
 import { Link } from '@/pages/shared';
 
-interface Props {
+interface CardProps {
   link: Link;
 }
 
-export default function Card({ link }: Props) {
+export default function Card({ link }: CardProps) {
   const { image_source, imageSource, description, url, createdAt, created_at } =
     link;
   const { message, cardDate } = PastTime(createdAt || created_at);
@@ -39,8 +39,8 @@ export default function Card({ link }: Props) {
           fill
         />
         <Style.Star
-          src={selected ? chooseStarImg : starImg }
-          alt='즐겨찾기'
+          src={selected ? chooseStarImg : starImg}
+          alt="즐겨찾기"
           onClick={handleStarClick}
         />
       </Style.ImageContainer>

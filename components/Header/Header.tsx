@@ -4,19 +4,23 @@ import { Items } from '@/pages/shared';
 import linkClickImg from '@/src/assets/link.svg';
 import Image from 'next/image';
 import * as Style from './Header.style';
-import { RefObject } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import useIntersectionObserver from '@/public/useIntersectionObserver';
+import { FooterContext } from '@/pages/folder';
 
 interface Props {
   items?: Items;
-  linkAddBarRef?: RefObject<HTMLDivElement>;
-  isIntersecting?: boolean;
 }
 
-export default function Header({
-  items,
-  linkAddBarRef,
-  isIntersecting,
-}: Props) {
+export default function Header({items}: Props) {
+  const { isFooterVisible } = useContext(FooterContext);
+  const {ref, isIntersecting} = useIntersectionObserver();
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+  
+  useEffect(() => {
+    setIsHeaderVisible(isIntersecting);
+  }, [isIntersecting]);
+
   return (
     <ThemeProvider theme={theme}>
       {items && (
@@ -35,7 +39,7 @@ export default function Header({
       )}
 
       {!items && (
-        <Style.ContainerFolderPage >
+        <Style.ContainerFolderPage ref={ref}>
           <Style.LinkSearchBox>
             <Style.LinkBox>
               <Style.LinkInputBox>
@@ -52,8 +56,8 @@ export default function Header({
           </Style.LinkSearchBox>
         </Style.ContainerFolderPage>
       )}
-      {/* {!items && !isIntersecting && (
-        <Style.ContainerFolderPage $isintersecting={isIntersecting}>
+      {(!isHeaderVisible && !isFooterVisible) && (
+        <Style.ContainerFolderPage $isintersecting={(!isHeaderVisible && !isFooterVisible)}>
           <Style.LinkSearchBox>
             <Style.LinkBox>
               <Style.LinkInputBox>
@@ -69,7 +73,7 @@ export default function Header({
             </Style.LinkBox>
           </Style.LinkSearchBox>
         </Style.ContainerFolderPage>
-      )} */}
+      )}
     </ThemeProvider>
   );
 }

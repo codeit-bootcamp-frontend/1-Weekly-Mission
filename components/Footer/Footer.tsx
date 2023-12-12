@@ -1,14 +1,23 @@
-import { forwardRef } from 'react';
+import { useEffect, useContext } from 'react';
 import { SocialLinks, socialMedia } from '@/components';
 import { ThemeProvider } from 'styled-components';
 import theme from '@/styles/display';
 import * as Style from './Footer.style';
+import useIntersectionObserver from '@/public/useIntersectionObserver';
+import { FooterContext } from '@/pages/folder';
 
 interface Props {
   ref: React.Ref<HTMLDivElement>;
 }
 
-function Footer({ props, ref }: Props) {
+export default function Footer() {
+  const {ref, isIntersecting } = useIntersectionObserver();
+  const {setIsFooterVisible} = useContext(FooterContext);
+
+  useEffect (() => {
+    setIsFooterVisible(isIntersecting);
+  },[isIntersecting])
+
   return (
     <ThemeProvider theme={theme}>
       <Style.Container ref={ref}>
@@ -29,4 +38,3 @@ function Footer({ props, ref }: Props) {
   );
 }
 
-export default forwardRef(Footer);

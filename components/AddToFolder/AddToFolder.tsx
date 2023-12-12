@@ -7,11 +7,11 @@ export default function AddToFolder() {
 
   return (
     <Style.Container>
-      {folders.map((folder, index) => (
-          <Style.Box key={index}>
-            {folder.name}
-            <Style.Span>{folder.link.count}개 링크</Style.Span>
-          </Style.Box>
+      {folders?.map((folder, index) => (
+        <Style.Box key={index}>
+          {folder.name}
+          <Style.Span>{folder.link.count}개 링크</Style.Span>
+        </Style.Box>
       ))}
     </Style.Container>
   );

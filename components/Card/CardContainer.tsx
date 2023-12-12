@@ -4,7 +4,10 @@ import theme from '@/styles/display';
 import useModal from '@/public/useModal';
 import AddImg from '@/src/assets/addwhite.svg';
 import { Link } from '@/pages/shared';
-import { FolderContext, Folders } from '@/components/FolderArticle/FolderArticle';
+import {
+  FolderContext,
+  Folders,
+} from '@/components/FolderArticle/FolderArticle';
 import * as Style from './CardContainer.style';
 import Image from 'next/image';
 import { useContext } from 'react';
@@ -26,7 +29,9 @@ export default function CardContainer({ items }: Props) {
     <>
       <ThemeProvider theme={theme}>
         <Style.Container>
-          {items?.map((link) => <Card link={link} key={link.id} />)}
+          {items?.map((link) => (
+            <Card link={link} key={link.id} />
+          ))}
         </Style.Container>
         {folders ? (
           <Style.Button onClick={handleButtonClick}>
