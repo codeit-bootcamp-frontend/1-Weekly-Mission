@@ -1,12 +1,15 @@
 import "@/styles/reset.css";
 import type { AppProps } from "next/app";
-import { Noto_Sans_KR } from "@next/font/google";
+import localFont from "next/font/local";
 
-const notoSansKR = Noto_Sans_KR({
-  weight: ["400", "700"],
-  subsets: [],
+const Pretendard = localFont({
+  src: "../public/font/PretendardVariable.woff2",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <main className={Pretendard.className}>
+      <Component {...pageProps} />
+    </main>
+  );
 }

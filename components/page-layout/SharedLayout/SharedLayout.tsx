@@ -10,7 +10,11 @@ type SharedLayoutProps = {
   cardList: ReactNode;
 };
 
-export const SharedLayout = ({ folderInfo, searchBar, cardList }: SharedLayoutProps) => {
+export const SharedLayout = ({
+  folderInfo,
+  searchBar,
+  cardList,
+}: SharedLayoutProps) => {
   return (
     <div className={cx("container")}>
       {folderInfo}

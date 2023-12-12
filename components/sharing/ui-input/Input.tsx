@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./Input.module.scss";
 import Image from "next/image";
@@ -6,19 +6,23 @@ import Image from "next/image";
 const cx = classNames.bind(styles);
 
 interface InputProps {
+  label?: string;
   type: string;
   value?: string;
-  onChange: any;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   placeholder: string;
-  hasError?: boolean;
+  errorMessage?: string;
 }
 
 export const Input: React.FC<InputProps> = ({
+  label,
   type = "text",
   value,
   onChange,
+  onBlur,
   placeholder,
-  hasError,
+  errorMessage,
 }) => {
   const [inputType, setInputType] = useState(type);
 
@@ -26,15 +30,31 @@ export const Input: React.FC<InputProps> = ({
     setInputType(inputType === "password" ? "text" : "password");
   };
 
+  const validateInput = (value: string) => {
+    if (type === "email") {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+    return true;
+  };
+
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const isValid = validateInput(event.target.value);
+    if (!isValid) {
+      onChange(event);
+    }
+  };
+
   return (
     <>
+      {label && <label className={cx("input-label")}>{label}</label>}
       <div className={cx("input-wrapper")}>
         <input
           type={inputType}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
           placeholder={placeholder}
-          className={cx("input", { "input-error": hasError })}
+          className={cx("input", { "input-error": !!errorMessage })}
         />
         {type === "password" && (
           <span className={cx("icon-wrapper")} onClick={toggleEyeIcon}>
@@ -55,8 +75,8 @@ export const Input: React.FC<InputProps> = ({
           </span>
         )}
       </div>
-      {hasError && (
-        <span className={cx("error-message")}>내용을 다시 작성해주세요</span>
+      {errorMessage && (
+        <span className={cx("error-message")}>{errorMessage}</span>
       )}
     </>
   );
