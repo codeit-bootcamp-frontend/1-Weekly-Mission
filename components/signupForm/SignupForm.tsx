@@ -24,13 +24,17 @@ export function SignupForm() {
   } = useForm<FormValues>({ mode: "onBlur" });
 
   const onSubmit = handleSubmit(async (data: FormValues) => {
-    const res = await instance.post(`${SIGNUP_ENDPOINT}`, {
-      email: data.email,
-      password: data.password,
-    });
-    const accessToken = res.data.data.accessToken;
-    setAccessToken(accessToken);
-    res.status === 200 && router.push("/folder");
+    try {
+      const res = await instance.post(`${SIGNUP_ENDPOINT}`, {
+        email: data.email,
+        password: data.password,
+      });
+      const accessToken = res?.data.data.accessToken;
+      setAccessToken(accessToken);
+      res.status === 200 && router.push("/folder");
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   const { password } = getValues();

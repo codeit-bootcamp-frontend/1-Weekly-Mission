@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-function Button({ children, className, onClick }: ButtonProps) {
+function Button({ children, className, onClick, ...restProps }: ButtonProps) {
   return (
     <button onClick={onClick} className={className}>
       {children}

@@ -1,19 +1,17 @@
-import React, { ChangeEventHandler, FocusEventHandler } from "react";
+import React, { InputHTMLAttributes } from "react";
 import styles from "./Input.module.css";
-import { UseFormRegister } from "react-hook-form";
+import { FieldValues, RegisterOptions, UseFormRegister } from "react-hook-form";
 import { FormValues } from "../signupForm/SignupForm";
 
 export interface InputProps {
   value?: string | number;
   placeholder?: string;
   inputName: "email" | "password" | "passwordConfirm";
-  type?: string;
+  type?: "text" | "password";
   hasError?: boolean;
   helperText?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  onBlur?: FocusEventHandler<HTMLInputElement>;
   register?: UseFormRegister<FormValues>;
-  rules?: any;
+  rules?: RegisterOptions<FieldValues>;
 }
 
 export function Input({
@@ -22,8 +20,6 @@ export function Input({
   type,
   hasError,
   helperText,
-  onChange,
-  onBlur,
   register,
   inputName,
   rules,
@@ -37,8 +33,6 @@ export function Input({
           type={type}
           autoComplete="off"
           value={value}
-          onChange={onChange}
-          onBlur={onBlur}
           {...(register && register(inputName, rules))}
         />
       </div>
