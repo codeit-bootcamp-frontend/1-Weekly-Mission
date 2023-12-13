@@ -8,6 +8,7 @@ import {
   ERROR_MESSAGE_PASSWORD_PASSWORD_CONFIRM,
 } from "@/constants/validation";
 import { folderPage } from "@/constants/router";
+import { localStorageAccessToken } from "@/constants/localStorage";
 
 const useSignup = () => {
   const {
@@ -52,7 +53,7 @@ const useSignup = () => {
     // 회원가입
     try {
       const { data } = await fetchSignup({ email, password });
-      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem(localStorageAccessToken, data.accessToken);
       router.push(folderPage);
     } catch (e) {
       console.log(e); // 무슨 에러인가
