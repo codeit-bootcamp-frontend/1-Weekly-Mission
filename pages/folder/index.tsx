@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 
 export default function FolderPage() {
   const [userEmail, setUserEmail] = useState("");
+  const [userImage, setUserImage] = useState("");
   const [data, setData] = useState<Folders>();
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
@@ -23,16 +24,23 @@ export default function FolderPage() {
       const accessToken = localStorage.getItem("accessToken");
       if (!accessToken) {
         router.push("/signIn");
+      } else {
+        const fetchData = async () => {
+          try {
+            const headers = {
+              Authorization: `Bearer ${accessToken}`,
+            };
+            const result = await axios.get(`/users`, { headers });
+            const { email, image_source } = result?.data?.data[0];
+            setUserEmail(email);
+            setUserImage(image_source);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+        fetchData();
       }
     }
-  }, []);
-
-  async function getUserEmail() {
-    const res = await axios.get(`/users/1`);
-    setUserEmail(res?.data?.data[0]?.email);
-  }
-  useEffect(() => {
-    getUserEmail();
   }, []);
 
   function getData(data: Folders): void {
@@ -58,7 +66,7 @@ export default function FolderPage() {
       <Head>
         <title>폴더 페이지</title>
       </Head>
-      <Nav userEmail={userEmail} />
+      <Nav userEmail={userEmail} userImage={userImage} />
       <header className={s.header}>
         <AddLink
           onClick={handleAddLinkClick}
