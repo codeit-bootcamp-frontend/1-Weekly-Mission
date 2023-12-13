@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 
 import { fetchSignin } from "@/api/signin.api";
 import { ERROR_MESSAGE } from "@/constants/validation";
+import { folderPage } from "@/constants/router";
 
 const useSignin = () => {
   const {
@@ -20,7 +21,7 @@ const useSignin = () => {
     try {
       const { data } = await fetchSignin({ email, password });
       localStorage.setItem("accessToken", data.accessToken);
-      router.push("/folder");
+      router.push(folderPage);
     } catch {
       setError("email", { message: ERROR_MESSAGE.email.fail });
       setError("password", { message: ERROR_MESSAGE.password.fail });

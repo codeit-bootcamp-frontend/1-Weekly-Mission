@@ -1,3 +1,4 @@
+import { folderPage } from "@/constants/router";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -6,7 +7,7 @@ const useLoggedIn = () => {
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
-      router.push("/folder");
+      router.push(folderPage);
     }
   }, []);
 };

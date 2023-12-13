@@ -7,6 +7,7 @@ import {
   ERROR_MESSAGE,
   ERROR_MESSAGE_PASSWORD_PASSWORD_CONFIRM,
 } from "@/constants/validation";
+import { folderPage } from "@/constants/router";
 
 const useSignup = () => {
   const {
@@ -52,7 +53,7 @@ const useSignup = () => {
     try {
       const { data } = await fetchSignup({ email, password });
       localStorage.setItem("accessToken", data.accessToken);
-      router.push("/folder");
+      router.push(folderPage);
     } catch (e) {
       console.log(e); // 무슨 에러인가
     }
