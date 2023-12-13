@@ -1,4 +1,4 @@
-export const loadAccessToken = (token: string) => {
+export const setAccessToken = (token: string) => {
   localStorage.setItem("accessToken", token);
 };
 

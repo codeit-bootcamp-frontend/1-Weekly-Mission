@@ -5,8 +5,8 @@ import styles from "./SignupForm.module.css";
 import Button from "../button/Button";
 import { SIGNUP_ENDPOINT, instance } from "@/api/services/config";
 import { useRouter } from "next/router";
-import { loadAccessToken } from "@/utils/localStorage";
 import { emailPattern, passwordPattern } from "@/constants/authConstant";
+import { setAccessToken } from "@/utils/localStorage";
 
 export interface FormValues {
   email: string;
@@ -29,7 +29,7 @@ export function SignupForm() {
       password: data.password,
     });
     const accessToken = res.data.data.accessToken;
-    loadAccessToken(accessToken);
+    setAccessToken(accessToken);
     res.status === 200 && router.push("/folder");
   });
 

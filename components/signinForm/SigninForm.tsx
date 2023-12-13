@@ -5,7 +5,6 @@ import styles from "./SignInForm.module.css";
 import Button from "../button/Button";
 import { SIGNIN_ENDPOINT, instance } from "@/api/services/config";
 import { useRouter } from "next/router";
-import { loadAccessToken } from "@/utils/localStorage";
 import { useState } from "react";
 import axios from "axios";
 import {
@@ -14,6 +13,7 @@ import {
   emailPattern,
   passwordPattern,
 } from "@/constants/authConstant";
+import { setAccessToken } from "@/utils/localStorage";
 
 export interface FormValues {
   email: string;
@@ -39,7 +39,7 @@ export function SigninForm() {
         password: data.password,
       });
       const accessToken = res?.data.data.accessToken;
-      loadAccessToken(accessToken);
+      setAccessToken(accessToken);
       res?.status === 200 && router.push("/folder");
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
