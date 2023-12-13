@@ -1,9 +1,9 @@
-import { FolderType } from '@/constants/dataType';
+import { FolderData } from '@/lib/types/dataType';
 import styled from 'styled-components';
 import { findFolderTitle } from '@/lib/utils/findFolderTitle';
 
 interface Props {
-  folders: FolderType[];
+  folders: FolderData[];
   selectedFolderId: number;
 }
 

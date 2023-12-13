@@ -1,6 +1,6 @@
 import useGetData from './useGetData';
-import { SAMPLE } from '@/constants/path';
-import { SampleUserType } from '@/constants/sampleDataType';
+import { SAMPLE } from '@/lib/constants/path';
+import { SampleUserType } from '@/lib/types/sampleDataType';
 
 function useGetSampleUser(): SampleUserType | null {
   const userData = useGetData<SampleUserType>(SAMPLE.user);

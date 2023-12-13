@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
-import { ALL_ID } from '@/constants/default';
-import { FolderType } from '@/constants/dataType';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { ALL_ID } from '@/lib/constants/default';
+import { FolderData } from '@/lib/types/dataType';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 interface Props {
-  folders: FolderType[];
+  folders: FolderData[];
   selectedFolderId: number;
   onChangeFolder: (id: number) => void;
   onChangeFolderAll: () => void;
@@ -27,7 +27,7 @@ function FolderNav({ folders, selectedFolderId, onChangeFolder, onChangeFolderAl
 }
 
 interface ItemProps {
-  folder: FolderType;
+  folder: FolderData;
   onChangeFolder: (id: number) => void;
   selected: boolean;
 }

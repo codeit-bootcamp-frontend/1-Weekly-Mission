@@ -3,9 +3,9 @@ import useGetLinks from '@/hooks/useGetLinks';
 import useGetSampleLinks from '@/hooks/useGetSampleLinks';
 import Card from './Card';
 import { Fragment } from 'react';
-import { NO_LINK_MSG, SAMPLE_ID } from '@/constants/default';
+import { NO_LINK_MSG, SAMPLE_ID } from '@/lib/constants/default';
 import { filterLink } from '@/lib/utils/filterLink';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 interface Props {
   folderId: number;

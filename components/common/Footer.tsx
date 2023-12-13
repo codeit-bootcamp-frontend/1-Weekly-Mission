@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { SNS_LIST } from '@/constants/default';
+import { SNS_LIST } from '@/lib/constants/default';
 import Link from 'next/link';
 import Image from 'next/image';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 function Footer() {
   return (

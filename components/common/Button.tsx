@@ -1,15 +1,16 @@
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  type: 'add' | 'login' | 'modal' | 'delete' | 'linkAdd';
+  type?: 'add' | 'login' | 'modal' | 'delete' | 'linkAdd';
   children: ReactNode;
 }
 
 function Button({ type, children }: Props) {
   return (
     <>
+      {typeof type === 'undefined' && <BlueGrd>{children}</BlueGrd>}
       {type === 'add' && <AddBtn>{children}</AddBtn>}
       {type === 'login' && <LoginBtn>{children}</LoginBtn>}
       {type === 'modal' && <ModalBtn>{children}</ModalBtn>}
@@ -22,12 +23,14 @@ function Button({ type, children }: Props) {
 export default Button;
 
 const Default = styled.button`
+  width: 100%;
   padding: 16px 20px;
 
   border: none;
   border-radius: 8px;
 
   color: var(--grey-light);
+  font-size: 1.8rem;
   font-weight: 600;
   text-decoration: none;
 

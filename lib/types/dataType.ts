@@ -1,4 +1,6 @@
-export interface UserDataType {
+type CommonData<T> = { data: T[] };
+
+export interface UserData {
   id: number;
   created_at: string;
   name: string;
@@ -8,11 +10,7 @@ export interface UserDataType {
   profileImageSource: undefined;
 }
 
-export interface UserType {
-  data: UserDataType[];
-}
-
-export interface FolderType {
+export interface FolderData {
   id: number;
   created_at: string;
   name: string;
@@ -22,11 +20,7 @@ export interface FolderType {
   };
 }
 
-export interface FolderListType {
-  data: FolderType[];
-}
-
-export interface LinkType {
+export interface LinkData {
   id: number;
   created_at: string;
   updated_at: string | null;
@@ -39,6 +33,6 @@ export interface LinkType {
   imageSource: undefined;
 }
 
-export interface LinkListType {
-  data: LinkType[];
-}
+export type UserList = CommonData<UserData>;
+export type FolderList = CommonData<FolderData>;
+export type LinkList = CommonData<LinkData>;

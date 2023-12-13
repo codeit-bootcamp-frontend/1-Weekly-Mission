@@ -8,3 +8,18 @@ export async function getResponse(path: string, query: string = ''): Promise<any
   const body = await response.json();
   return body;
 }
+
+export async function post(path: string, content: any): Promise<any> {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/JSON',
+    },
+    body: JSON.stringify(content),
+  });
+  if (response.status == 200) {
+    const responseData = await response.json();
+    window.localStorage.setItem(path, responseData.data.accessToken);
+  }
+  return response.status;
+}

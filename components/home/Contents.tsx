@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { CONTENTS } from '@/constants/default';
+import { CONTENTS } from '@/lib/constants/default';
 import Image from 'next/image';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 interface Props {
   type: 'save' | 'folder' | 'share' | 'search';

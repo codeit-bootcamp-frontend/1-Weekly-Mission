@@ -1,15 +1,15 @@
-import { CHOICES } from '@/constants/default';
+import { CHOICES } from '@/lib/constants/default';
 import { useState } from 'react';
 import { findFolderTitle } from '@/lib/utils/findFolderTitle';
 import styled from 'styled-components';
 import Modal from '../common/Modal/Modal';
 import useModal from '@/hooks/useModal';
-import { FolderType } from '@/constants/dataType';
+import { FolderData } from '@/lib/types/dataType';
 import { MouseEvent } from 'react';
 import Image from 'next/image';
 
 interface Props {
-  folders: FolderType[];
+  folders: FolderData[];
   selectedFolderId: number;
 }
 

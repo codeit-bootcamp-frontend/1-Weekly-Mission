@@ -1,4 +1,4 @@
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 import styled from 'styled-components';
 
 interface Props {

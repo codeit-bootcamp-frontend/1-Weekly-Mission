@@ -1,6 +1,6 @@
-import { SampleFolderDataType } from '@/constants/sampleDataType';
+import { SampleFolderDataType } from '@/lib/types/sampleDataType';
 import defaultProfile from '@/public/assets/images/default-profile.svg';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 import Image from 'next/image';
 import styled from 'styled-components';
 

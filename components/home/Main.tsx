@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Button from '@/components/common/Button';
 import screenshot from '@/public/assets/images/home.svg';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 function Main() {
   return (

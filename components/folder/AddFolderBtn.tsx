@@ -1,7 +1,7 @@
 import styled, { keyframes, css } from 'styled-components';
 import Modal from '@/components/common/Modal/Modal';
 import useModal from '@/hooks/useModal';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 import { useObserver } from '@/hooks/useObserver';
 
 function AddFolderBtn() {

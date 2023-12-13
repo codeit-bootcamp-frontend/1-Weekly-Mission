@@ -7,9 +7,9 @@ import AddFolderBtn from './AddFolderBtn';
 import FolderTitle from './FolderTitle';
 import ChoiceBar from './ChoiceBar';
 import { useState } from 'react';
-import { ALL_ID, NO_LINK_MSG } from '@/constants/default';
+import { ALL_ID, NO_LINK_MSG } from '@/lib/constants/default';
 import SearchResult from '@/components/common/Search/SearchResult';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 function FolderContent() {
   const foldersData = useGetFolders(1);

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from '@/components/common/Button';
 import Modal from '../common/Modal/Modal';
 import useModal from '@/hooks/useModal';
-import { DEVICE_SIZE } from '@/styles/DeviceSize';
+import { DEVICE_SIZE } from '@/lib/styles/DeviceSize';
 
 interface Props {
   initialValue: string;
