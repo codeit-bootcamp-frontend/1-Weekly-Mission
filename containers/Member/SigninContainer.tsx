@@ -5,29 +5,28 @@ import SocialLogin from "@/components/Member/SocialLogin";
 import MemberTop from "@/components/Member/MemberTop";
 import Input from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
+import { KeyboardEvent } from "react";
 
 const SigninContainer = () => {
   const { handleSubmit, onSubmit, register, errors } = useSignin();
 
+  const handleEnter = (e: KeyboardEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (e.type === "keydown" && e.key === "Enter") {
+      handleSubmit(onSubmit)();
+    }
+  };
+
   return (
     <StyledContainerBox>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledForm
+        onSubmit={handleSubmit(onSubmit)}
+        onKeyDown={(e) => handleEnter(e)}
+      >
         <MemberTop text1="회원이 아니신가요?" text2="회원 가입하기" />
         <StyledOuterInputBox>
-          <Input
-            labelText="email"
-            register={register}
-            errors={errors}
-            handleSubmit={handleSubmit}
-            onSubmit={onSubmit}
-          />
-          <Input
-            labelText="password"
-            register={register}
-            errors={errors}
-            handleSubmit={handleSubmit}
-            onSubmit={onSubmit}
-          />
+          <Input labelText="email" register={register} errors={errors} />
+          <Input labelText="password" register={register} errors={errors} />
         </StyledOuterInputBox>
         <Button text="로그인" size="wide" buttonColor="blue" />
       </StyledForm>
