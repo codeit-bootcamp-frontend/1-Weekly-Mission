@@ -66,9 +66,7 @@
   font-weight: 400;
 }
 
-.input-frame .input-box #email,
-.input-frame .input-box #password,
-.input-frame .input-box #password-check {
+.input-frame .input-box .input {
   width: 400px;
   padding: 18px 15px;
   border-radius: 8px;
@@ -127,15 +125,6 @@
 .social-login .icons {
   display: flex;
   gap: 16px;
-}
-
-.error {
-  color: var(--linkbrary-red);
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .error {

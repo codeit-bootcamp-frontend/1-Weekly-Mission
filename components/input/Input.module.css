@@ -1,0 +1,7 @@
+.input {
+  width: 400px;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-white);
+}
