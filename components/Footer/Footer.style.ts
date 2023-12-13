@@ -25,7 +25,7 @@ export const Box = styled.div`
       'footer-links sns'
       'footer-logo .';
     justify-content: space-between;
-    row-gap: 6rem;
+    row-gap: 60px;
   `}
 `;
 

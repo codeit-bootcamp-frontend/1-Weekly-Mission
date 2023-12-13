@@ -2,11 +2,11 @@ import { ReactNode, useEffect, useState } from 'react';
 import { Nav, Footer } from '@/components';
 import axios from '@/lib/axios';
 
-interface Props {
+interface LayoutProps {
   children: ReactNode;
 }
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children }: LayoutProps) {
   const [userData, setUserData] = useState();
 
   async function getUserData() {

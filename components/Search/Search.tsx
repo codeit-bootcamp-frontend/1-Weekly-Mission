@@ -1,11 +1,10 @@
 import { useEffect, ChangeEvent } from 'react';
 import Image from 'next/image';
-import { Link } from '@/pages/shared';
 import searchImg from '@/src/assets/Search.svg';
 import closeImg from '@/src/assets/_close.png';
 import * as Style from './Search.style';
 
-interface Props {
+interface SearchProps {
   links: Link[];
   setCheckItem: (value: Link[]) => void;
   onSearch: (value: string) => void;
@@ -17,7 +16,7 @@ export default function Search({
   setCheckItem,
   onSearch,
   value,
-}: Props) {
+}: SearchProps) {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const lowerValue = e.target.value.toLowerCase();
     onSearch(lowerValue);

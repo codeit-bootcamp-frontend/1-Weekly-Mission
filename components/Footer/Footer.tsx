@@ -4,10 +4,6 @@ import useIntersectionObserver from '@/public/useIntersectionObserver';
 import { FooterContext } from '@/pages/folder';
 import * as Style from './Footer.style';
 
-interface Props {
-  ref: React.Ref<HTMLDivElement>;
-}
-
 export default function Footer() {
   const { ref, isIntersecting } = useIntersectionObserver();
   const { setIsFooterVisible } = useContext(FooterContext);

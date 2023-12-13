@@ -5,10 +5,12 @@ interface TimeInfo {
   cardDate: string;
 }
 
-const PastTime = (createdAt: string): TimeInfo => {
+const PastTime = (createdAt?: string): TimeInfo => {
   const targetDate = new Date('2023-10-29T01:00:00Z');
+  const defaultCreatedAt = createdAt || new Date().toISOString();
+
   const cardDate = moment(createdAt).format('YYYY.M.DD');
-  const createdAtDate = new Date(createdAt);
+  const createdAtDate = new Date(defaultCreatedAt);
   const timeDiff = (targetDate.getTime() - createdAtDate.getTime()) / 1000; // 초 단위로 변환
 
   let message = '';

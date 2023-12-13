@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Search, CardContainer, FolderArticle } from '@/components';
-import { Link } from '@/pages/shared';
-import { Folders } from '@/components/FolderArticle/FolderArticle';
 import * as Style from './Article.style';
 
-interface Data {
+interface ArticleProps {
   links: Link[];
   folders?: Folders;
 }
 
-export default function Article({ links, folders }: Data) {
+export default function Article({ links, folders }: ArticleProps) {
   const [checkItem, setCheckItem] = useState<Link[]>(links);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');

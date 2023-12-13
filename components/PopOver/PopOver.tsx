@@ -10,9 +10,9 @@ interface Url {
 
 const PopOver = ({ url }: Url) => {
   const { isOpen, openModal, closeModal } = useModal();
-  const [option, setOption] = useState({});
+  const [option, setOption] = useState<Option>();
 
-  const handleClick = (e: Event, name: string) => {
+  const handleClick = (e: MouseEvent, name: string) => {
     e.preventDefault();
     const titleName = PopOverTitle.filter((title) => title.name === name);
     setOption(titleName[0].option);
@@ -31,7 +31,7 @@ const PopOver = ({ url }: Url) => {
           </Style.Element>
         ))}
       </Style.Container>
-      {isOpen && (
+      {isOpen && option && (
         <Modal
           title={option.title}
           closeModal={closeModal}

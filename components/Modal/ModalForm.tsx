@@ -2,18 +2,12 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { AddToFolder, SocialShare } from '@/components';
 import * as Style from './Modal.style';
 
-interface Option {
-  input?: boolean;
-  button?: { color?: string; title: string };
-  trigger?: string;
-}
-
-interface Props {
+interface ModalFormProps {
   subTitle: string;
   option: Option;
 }
 
-export default function ModalForm({ subTitle, option }: Props) {
+export default function ModalForm({ subTitle, option }: ModalFormProps) {
   const { input, button, trigger } = option;
   const [value, setValue] = useState('');
 

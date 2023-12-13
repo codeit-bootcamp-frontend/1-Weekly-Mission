@@ -3,15 +3,14 @@ import Image from 'next/image';
 import { Card, ModalForm, Modal } from '@/components';
 import useModal from '@/public/useModal';
 import AddImg from '@/src/assets/addwhite.svg';
-import { Link } from '@/pages/shared';
 import { FolderContext } from '@/components/FolderArticle/FolderArticle';
 import * as Style from './CardContainer.style';
 
-interface Props {
+interface CardContainerProps {
   items: Link[] | undefined;
 }
 
-export default function CardContainer({ items }: Props) {
+export default function CardContainer({ items }: CardContainerProps) {
   const folders = useContext(FolderContext);
   const { isOpen, openModal, closeModal } = useModal();
   const option = { input: true, button: { title: '추가하기', color: 'blue' } };

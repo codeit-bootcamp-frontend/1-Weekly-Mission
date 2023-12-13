@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { theme } from '@/styles/theme';
 
 export const BackGround = styled.div`
-  z-index: 9000;
+  z-index: 9600;
   position: fixed;
   height: 1000%;
   width: 100%;
@@ -65,7 +65,7 @@ export const Input = styled.input`
   border-radius: 8px;
   border: 1px solid ${theme.color.purpleblue};
   background: ${theme.color.white};
-  font-size: 1.6rem;
+  font-size: 16px;
   font-weight: 400;
   line-height: 24px;
 `;
@@ -84,6 +84,6 @@ export const Button = styled.button`
       : `${theme.color.linkbraryred}`};
 
   color: #f5f5f5;
-  font-size: 1.6rem;
+  font-size: 16px;
   font-weight: 600;
 `;

@@ -1,16 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
-import { Items } from '@/pages/shared';
 import { FooterContext } from '@/pages/folder';
 import useIntersectionObserver from '@/public/useIntersectionObserver';
 import linkClickImg from '@/src/assets/link.svg';
 import * as Style from './Header.style';
 
-interface Props {
+interface HeaderProps {
   items?: Items;
 }
 
-export default function Header({ items }: Props) {
+export default function Header({ items }: HeaderProps) {
   const { isFooterVisible } = useContext(FooterContext);
   const { ref, isIntersecting } = useIntersectionObserver();
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);

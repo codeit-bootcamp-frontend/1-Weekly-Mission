@@ -5,12 +5,12 @@ export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 7rem;
+  margin-bottom: 70px;
   width: 100%;
   background-color: #edf7ff;
 
   ${DeviceQuery.tablet`
-    margin-bottom: 3rem;
+    margin-bottom: 30px;
   `}
 
   ${DeviceQuery.mobile`
@@ -23,20 +23,20 @@ export const HeaderBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  row-gap: 4rem;
-  padding-top: 7rem;
+  row-gap: 40px;
+  padding-top: 70px;
   width: 100%;
 
   h1 {
     margin: 0;
     text-align: center;
     font-weight: 700;
-    line-height: 8rem;
-    font-size: 6.4rem;
+    line-height: 80px;
+    font-size: 64px;
   }
 
   span {
-    font-size: 6.4rem;
+    font-size: 64px;
     background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -44,27 +44,27 @@ export const HeaderBox = styled.div`
   }
 
   ${DeviceQuery.tablet`
-    padding: 3.9rem 25rem 0rem;
-    height: 75.6rem;
+    padding: 39px 250px 0px;
+    height: 756px;
 
     h1,
     span {
-      width: 48rem;
+      width: 480px;
       word-break: keep-all;
     }
   `}
 
   ${DeviceQuery.mobile`
-    padding: 2.8rem 3.2rem 0;
-    gap: 2.4rem;
-    height: 39.9rem;
+    padding: 28px 32px 0;
+    gap: 24px;
+    height: 399px;
     margin-bottom: 0;
 
     h1,
     span {
-      font-size: 3.2rem;
-      line-height: 4.2rem;
-      width: 24rem;
+      font-size: 32px;
+      line-height: 42px;
+      width: 240px;
     }
   `}
 
@@ -96,17 +96,17 @@ export const LinkAddButton = styled(Button)`
   width: 350px;
   border-radius: 8px;
   background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
-  font-size: 1.8rem;
+  font-size: 18px;
   font-weight: 600;
   text-align: center;
   color: #f5f5f5;
   cursor: pointer;
 
   ${DeviceQuery.mobile`
-    padding: 1rem 1.6rem;
-    font-size: 1.4rem;
-    height: 3.7rem;
-    width: 20rem;
+    padding: 10px 16px;
+    font-size: 14px;
+    height: 37px;
+    width: 200px;
   `}
 `;
 
@@ -115,8 +115,8 @@ export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 120rem;
-  height: 59rem;
+  width: 1200px;
+  height: 590px;
   overflow: hidden;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
@@ -128,43 +128,43 @@ export const ImageBox = styled.div`
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 
   ${DeviceQuery.tablet`
-    width: 65rem;
-    height: 38.3rem;
-    margin: 2.9rem 2.3rem 0;
+    width: 650px;
+    height: 383px;
+    margin: 29px 23px 0;
   `}
 
   ${DeviceQuery.mobile`
-    width: 30.2rem;
-    height: 17.8rem;
+    width: 302px;
+    height: 178px;
   `}
 `;
 
 export const Article = styled.div`
   width: 100%;
-  padding: 5rem auto;
+  padding: 50px auto;
 
   .section {
     display: grid;
     justify-content: center;
-    column-gap: 15.7rem;
-    row-gap: 1rem;
+    column-gap: 157px;
+    row-gap: 10px;
     width: 100%;
-    height: 55rem;
+    height: 550px;
     padding: 50px 0;
 
     ${DeviceQuery.tablet`
       justify-content: center;
       width: 100%;
-      height: 41.5rem;
-      column-gap: 5.1rem;
+      height: 415px;
+      column-gap: 51px;
     `}
 
     ${DeviceQuery.mobile`
-      padding: 4rem 3.2rem;
+      padding: 40px 32px;
       grid-template: none;
       justify-content: center;
       column-gap: 0;
-      row-gap: 1.6rem;
+      row-gap: 16px;
       height: fit-content;
     `}
   }
@@ -229,34 +229,34 @@ export const Article = styled.div`
 
   .title,
   .gra-title {
-    font-size: 4.8rem;
+    font-size: 48px;
     font-weight: 700;
-    line-height: 5.8rem;
-    letter-spacing: -0.03rem;
+    line-height: 58px;
+    letter-spacing: -0.3px;
 
     ${DeviceQuery.mobile`
-      font-size: 2.4rem;
+      font-size: 24px;
     `}
   }
 
   .description {
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 500;
     color: #6b6b6b;
-    line-height: 2.4rem;
+    line-height: 24px;
 
     ${DeviceQuery.mobile`
-      font-size: 1.5rem;
+      font-size: 15px;
     `}
   }
 
   .article-image {
-    width: 55rem;
-    height: 45rem;
+    width: 550px;
+    height: 450px;
 
     ${DeviceQuery.tablet`
-      width: 38.4rem;
-      height: 31.5rem;
+      width: 384px;
+      height: 315px;
     `}
 
     ${DeviceQuery.mobile`
@@ -280,6 +280,5 @@ export const Br = styled.br`
   ${DeviceQuery.mobile`
     word-break: keep-all;
     display: none;
-    
   `}
 `;

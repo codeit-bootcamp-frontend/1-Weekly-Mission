@@ -1,13 +1,12 @@
 import Link from 'next/link';
-import { Folder } from '@/components/FolderArticle/FolderArticle';
 import * as Style from './CardMenuBar.style';
 
-interface Props {
+interface CardButtonProps {
   folder: Folder;
   folderId: number | undefined | null;
 }
 
-export default function CardButton({ folder, folderId }: Props) {
+export default function CardButton({ folder, folderId }: CardButtonProps) {
   const { id, name } = folder;
   const path = `/folder/${id}`;
 

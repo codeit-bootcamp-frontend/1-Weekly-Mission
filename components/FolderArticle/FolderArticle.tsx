@@ -1,17 +1,6 @@
 import { createContext } from 'react';
 import { CardMenuBar, EmptyData, CardContainer } from '@/components';
-import { Link } from '@/pages/shared';
 import * as Style from './FolderArticle.style';
-
-export interface Folder {
-  name: string;
-  id: number;
-  created_at: string;
-  user_id: number;
-  link: { count: number };
-}
-
-export type Folders = Folder[];
 
 interface Props {
   items: Link[];

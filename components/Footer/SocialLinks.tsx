@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import { Links } from './Footer.style';
-import { SocialMediaLink } from './socialMedia';
 
-interface Props extends SocialMediaLink {
+interface SocialLinksProps extends SocialMediaLink {
   alt: string | undefined;
 }
 
-function SocialLinks({ alt, url, icon }: Props) {
+function SocialLinks({ alt, url, icon }: SocialLinksProps) {
   const description = `${alt}페이지로 이동`;
 
   return (

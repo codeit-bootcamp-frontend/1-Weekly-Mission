@@ -3,17 +3,17 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
-  box-sizing: border-box;
-  margin: 0;
-  font-size: 62.5%;
+    box-sizing: border-box;
+    margin: 0;
+    
   }
 
   body {
     font-family: "Pretendard", "sans-serif";
     color: #373740;
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: 400;
-    max-width: 192rem;
+    max-width: 1920px;
     width: auto;
   }                     
 `;

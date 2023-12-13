@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 192rem;
+  max-width: 1920px;
   width: 100%;
   margin-bottom: 40px;
   background-color: #f0f6ff;
@@ -20,20 +20,20 @@ export const Container = styled.div`
 `;
 
 export const ContainerProfilePage = styled(Container)`
-  padding-top: 2rem;
-  padding-bottom: 6rem;
+  padding-top: 20px;
+  padding-bottom: 60px;
   justify-content: space-between;
   gap: 20px;
 
   ${DeviceQuery.mobile`
-    padding-top: 1rem;
-    padding-bottom: 4rem;
+    padding-top: 10px;
+    padding-bottom: 40px;
     margin-bottom: 20px;
   `}
 
   p {
     color: #000;
-    font-size: 4rem;
+    font-size: 40px;
     font-weight: 600;
     text-align: center;
   }
@@ -57,8 +57,8 @@ export const Profile = styled.div`
   }
 `;
 export const ContainerFolderPage = styled(Container)<Propsisintersecting>`
-  padding-top: 6rem;
-  padding-bottom: 9rem;
+  padding-top: 60px;
+  padding-bottom: 90px;
   width: 100%;
 
   ${DeviceQuery.tablet`
@@ -69,7 +69,7 @@ export const ContainerFolderPage = styled(Container)<Propsisintersecting>`
   ${DeviceQuery.mobile`
     padding: 24px 32px 40px;
     
-    ${({ $isintersecting }) =>
+    ${({ $isintersecting }:any ) =>
       $isintersecting === true &&
       `
       padding: 12px 32px 12px;
@@ -125,7 +125,7 @@ export const LinkInputBox = styled.div`
   input {
     color: #9fa6b2;
     border: none;
-    font-size: 1.6rem;
+    font-size: 16px;
   }
 
   ${DeviceQuery.mobile`
@@ -136,7 +136,7 @@ export const LinkInputBox = styled.div`
       height: 16px;
     }
     input {
-      font-size: 1.4rem;
+      font-size: 14px;
     }
   `}
 `;
