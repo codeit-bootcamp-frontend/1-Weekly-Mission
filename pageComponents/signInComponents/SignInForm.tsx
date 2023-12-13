@@ -31,6 +31,8 @@ const SignInForm = () => {
       setPasswordErrorMessage("비밀번호를 확인해주세요.");
     } else {
       const accessToken = result?.data?.data?.accessToken;
+      // const refreshToken = result?.data?.data?.refreshToken;
+      // localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("accessToken", accessToken);
       router.push("/folder");
     }

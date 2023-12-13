@@ -9,12 +9,24 @@ import Head from "next/head";
 import Image from "next/image";
 import s from "./index.module.css";
 import { MouseEvent } from "react";
+import { useRouter } from "next/navigation";
 
 export default function FolderPage() {
   const [userEmail, setUserEmail] = useState("");
   const [data, setData] = useState<Folders>();
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const accessToken = localStorage.getItem("accessToken");
+      if (!accessToken) {
+        router.push("/signIn");
+      }
+    }
+  }, []);
+
   async function getUserEmail() {
     const res = await axios.get(`/users/1`);
     setUserEmail(res?.data?.data[0]?.email);
