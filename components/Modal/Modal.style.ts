@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import { theme } from '@/styles/theme';
 
 export const BackGround = styled.div`
+  position : fixed;
+  top: 0;
+  left: 0;
   z-index: 9600;
-  position: fixed;
   height: 1000%;
   width: 100%;
   left: 0;
 
-  background: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
 `;
 

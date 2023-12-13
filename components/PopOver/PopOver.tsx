@@ -14,6 +14,7 @@ const PopOver = ({ url }: Url) => {
 
   const handleClick = (e: MouseEvent, name: string) => {
     e.preventDefault();
+    e.stopPropagation();
     const titleName = PopOverTitle.filter((title) => title.name === name);
     setOption(titleName[0].option);
     openModal();
