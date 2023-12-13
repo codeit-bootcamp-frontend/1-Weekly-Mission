@@ -3,7 +3,7 @@ import { Modal, ModalContentName, AddFolderModal } from "@/components";
 import useModal from "@/lib/hooks/useModal";
 import ModalPortal from "@/lib/utils/Portal";
 import { FoldersData } from "@/lib/types/data";
-import * as Styled from "./StyledDropDown";
+import * as Styled from "./DropDown.styled";
 
 interface Props {
   url: string;
@@ -54,7 +54,7 @@ function DropDownList({ url, folderData, anchorRef }: Props) {
       {isDeleteOpen && (
         <Modal
           title="링크 삭제"
-          trigger={<ModalContentName children={url} />}
+          trigger={<ModalContentName url={url} />}
           closeModal={closeDelete}
           btnContent="삭제하기"
           color="red"

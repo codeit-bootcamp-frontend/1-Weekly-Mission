@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FoldersData } from "@/lib/types/data";
 import { ModalContentName } from "@/components";
 import ModalPortal from "@/lib/utils/Portal";
-import * as Styled from "./StyledModal";
+import * as Styled from "./Modal.styled";
 
 interface PropsSub {
   name: string;

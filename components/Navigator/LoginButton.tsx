@@ -1,56 +1,75 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
-import { UserData } from "@/lib/types/data";
+import { MouseEvent, useEffect, useRef, useState } from "react";
+import usePopOver from "@/lib/hooks/usePopOver";
 import { useLogin } from "@/lib/utils/LoginContext";
 import { getUsers } from "@/lib/utils/api";
-import { setLocalStorage } from "@/lib/utils/localStorage";
-import * as Styled from "./StyledLoginBtn";
+import { LogoutDropDownList } from "..";
+import * as Styled from "./LoginBtn.styled";
 
-interface Props {
-  data: UserData;
-  setUserData: Dispatch<SetStateAction<UserData>>;
-}
-
-const LoginButton = ({ data, setUserData }: Props) => {
-  const { isLogin, setIsLogin } = useLogin();
-  const { email, imageSource } = data;
+const LoginButton = () => {
+  const ImgBgRef = useRef<HTMLDivElement>(null);
+  const { isLogin, userEmail } = useLogin();
+  const { isOpen, openPopOver, closePopOver } = usePopOver();
+  const [userImage, setUserImage] = useState("");
 
   const BtnClickHandler = async () => {
     try {
       const userProfile = await getUsers();
-      setIsLogin(true);
-      setLocalStorage();
       const {
-        data: [{ email, image_source }],
+        data: [{ image_source }],
       } = userProfile;
-      setUserData((prevData) => ({
-        ...prevData,
-        email,
-        imageSource: image_source,
-      }));
+      setUserImage(image_source);
     } catch (err) {
-      setIsLogin(false);
+      console.log(err);
+    }
+  };
+
+  const handleLoginImgClick = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isOpen) {
+      closePopOver();
+    } else {
+      openPopOver();
     }
   };
 
   useEffect(() => {
     if (!isLogin) return;
     BtnClickHandler();
+    // eslint-disable-next-line
   }, [isLogin]);
+
+  useEffect(() => {
+    const handleOutsideClick = (e: Event): void => {
+      if (e.target !== ImgBgRef.current) {
+        closePopOver();
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
       {isLogin ? (
         <Styled.LoginBox>
-          <Styled.LoginImgBg>
+          <Styled.LoginImgBg ref={ImgBgRef}>
             <Styled.LoginImg
-              src={imageSource}
+              src={userImage}
               alt="프로필 사진"
-            ></Styled.LoginImg>
+              fill
+              onClick={handleLoginImgClick}
+            />
+            {isOpen && <LogoutDropDownList anchorRef={ImgBgRef} />}
           </Styled.LoginImgBg>
-          <Styled.LoginEmail className="loginEmail">{email}</Styled.LoginEmail>
+          <Styled.LoginEmail>{userEmail}</Styled.LoginEmail>
         </Styled.LoginBox>
       ) : (
-        <Styled.LoginBtn onClick={BtnClickHandler} href="/">
+        <Styled.LoginBtn href="/signin">
           <span>로그인</span>
         </Styled.LoginBtn>
       )}

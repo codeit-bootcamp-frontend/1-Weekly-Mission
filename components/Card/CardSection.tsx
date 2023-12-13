@@ -1,6 +1,6 @@
 import { Card } from "@/components";
 import { LinksData, FoldersData } from "@/lib/types/data";
-import * as Styled from "./StyledCardSection";
+import * as Styled from "./CardSection.styled";
 
 interface Props {
   data: LinksData[];

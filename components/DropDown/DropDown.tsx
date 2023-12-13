@@ -3,7 +3,7 @@ import { DropDownList } from "@/components";
 import usePopOver from "@/lib/hooks/usePopOver";
 import kebab from "@/public/kebab.svg";
 import { FoldersData } from "@/lib/types/data";
-import * as Styled from "./StyledDropDown";
+import * as Styled from "./DropDown.styled";
 
 interface Props {
   url: string;

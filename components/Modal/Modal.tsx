@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 import ModalPortal from "@/lib/utils/Portal";
-import * as Styled from "./StyledModal";
+import * as Styled from "./Modal.styled";
 
 type closeModal = (e: MouseEvent) => void;
 

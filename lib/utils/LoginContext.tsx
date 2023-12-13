@@ -11,6 +11,8 @@ import { checkLocalStorage } from "./localStorage";
 interface loginState {
   isLogin: boolean;
   setIsLogin: (value: SetStateAction<boolean>) => void;
+  userEmail: string;
+  setUserEmail: (value: SetStateAction<string>) => void;
 }
 
 interface Props {
@@ -21,6 +23,7 @@ export const LoginContext = createContext<loginState | null>(null);
 
 export function LoginProvider({ children }: Props) {
   const [isLogin, setIsLogin] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
     const isLogin = checkLocalStorage();
@@ -28,7 +31,9 @@ export function LoginProvider({ children }: Props) {
   }, []);
 
   return (
-    <LoginContext.Provider value={{ isLogin, setIsLogin }}>
+    <LoginContext.Provider
+      value={{ isLogin, setIsLogin, userEmail, setUserEmail }}
+    >
       {children}
     </LoginContext.Provider>
   );

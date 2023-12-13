@@ -2,7 +2,7 @@ import Head from "next/head";
 import type { AppProps } from "next/app";
 import { Layout } from "@/components";
 import { LoginProvider } from "@/lib/utils/LoginContext";
-import { StyledGlobal } from "@/style/StyledGlobal";
+import { StyledGlobal } from "@/style/Global.styled";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

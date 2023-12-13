@@ -45,3 +45,63 @@ export async function handleCopyClipBoard(text: string) {
     console.log(err);
   }
 }
+
+export async function requestSignIn(email = "", password = "") {
+  const formData = JSON.stringify({
+    email: email,
+    password: password,
+  });
+  const response = await fetch(`${BASE_URL}/sign-in`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: formData,
+  });
+  if (!response.ok) {
+    throw new Error("로그인에 실패했습니다");
+  }
+  const body = await response.json();
+  return body;
+}
+
+export async function validateOverlapEmail(email = "") {
+  const formData = JSON.stringify({
+    email: email,
+  });
+  const response = await fetch(`${BASE_URL}/check-email`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: formData,
+  });
+  if (!response.ok) {
+    throw new Error("이미 존재하는 이메일입니다.");
+  }
+  const body = await response.json();
+  return body;
+}
+
+export async function requestSignUp(email = "", password = "") {
+  const formData = JSON.stringify({
+    email: email,
+    password: password,
+  });
+  const response = await fetch(`${BASE_URL}/sign-up`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: formData,
+  });
+  if (!response.ok) {
+    const body = await response.json();
+    const {
+      error: { message },
+    } = body;
+    throw new Error(message);
+  }
+  const body = await response.json();
+  return body;
+}

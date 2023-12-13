@@ -1,12 +1,13 @@
 import { ReactNode } from "react";
-import * as Styled from "./StyledModal";
+import * as Styled from "./Modal.styled";
 
 interface Props {
-  children: ReactNode;
+  url?: ReactNode;
+  children?: ReactNode;
 }
 
-const ModalContentName = ({ children }: Props) => {
-  return <Styled.ModalContentName>{children}</Styled.ModalContentName>;
+const ModalContentName = ({ url }: Props) => {
+  return <Styled.ModalContentName>{url}</Styled.ModalContentName>;
 };
 
 export default ModalContentName;

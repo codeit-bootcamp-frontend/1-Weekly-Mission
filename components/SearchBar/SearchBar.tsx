@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
 import searchImg from "@/public/Search.svg";
-import * as Styled from "./StyledSearchBar";
+import * as Styled from "./SearchBar.styled";
 
 interface Props {
   id: string;

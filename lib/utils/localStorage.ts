@@ -1,6 +1,6 @@
-export const setLocalStorage = () => {
+export const setLocalStorage = (accessToken: string) => {
   if (typeof window !== "undefined") {
-    localStorage.setItem("LogIn", "true");
+    localStorage.setItem("LogIn", accessToken);
   }
 };
 
@@ -13,5 +13,11 @@ export const checkLocalStorage = () => {
     return false;
   } else {
     return true;
+  }
+};
+
+export const removeLocalStorage = () => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("LogIn");
   }
 };

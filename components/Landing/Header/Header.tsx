@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLogin } from "@/lib/utils/LoginContext";
 import heroImg from "@/public/hero.png";
-import * as Styled from "./StyledHeader";
+import * as Styled from "./Header.styled";
 
 const Header = () => {
   const { isLogin } = useLogin();
