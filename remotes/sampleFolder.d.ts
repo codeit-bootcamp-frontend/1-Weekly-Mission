@@ -6,11 +6,13 @@ interface Owner {
 
 interface Link {
   id: number;
-  createdAt: string;
+  folder_id: number;
+  created_at: string;
+  updated_at: null | string;
   url: string;
   title: string;
   description: string;
-  imageSource: string;
+  image_source: string;
 }
 
 interface Folder {

@@ -14,6 +14,12 @@ const nextConfig = {
       "s.pstatic.net",
       "codeit.kr",
       "jasonwatmore.com",
+      "ca.slack-edge.com",
+      "yt3.googleusercontent.com",
+      "github.com",
+      "legacy.reactjs.org",
+      "velog.velcdn.com",
+      "avatars.githubusercontent.com",
     ],
   },
 };

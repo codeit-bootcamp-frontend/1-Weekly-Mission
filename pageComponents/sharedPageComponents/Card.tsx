@@ -5,15 +5,21 @@ import Link from "next/link";
 import s from "./Card.module.css";
 
 const Card = ({ data }: SharedPageCardProps) => {
-  const { url, description, createdAt, imageSource } = data;
+  const {
+    url,
+    description,
+    created_at: createdAt,
+    image_source: imageSource,
+  } = data;
   const timePassed = getTimePassed(url, description, createdAt, imageSource);
+  const image_Source = imageSource ?? "/images/blank-image.png";
 
   return (
     <li className={s.li}>
       <Link href={url} target="_blank" rel="noreferrer" className={s.link}>
         <div className={s.imgContainer}>
           <Image
-            src={imageSource}
+            src={image_Source}
             alt="card 이미지"
             className={s.cardImg}
             fill
@@ -23,7 +29,7 @@ const Card = ({ data }: SharedPageCardProps) => {
 
         <button className={s.starButton}>
           <Image
-            src="images/star.svg"
+            src="/images/star.svg"
             alt="즐겨찾기 이미지"
             width={30}
             height={30}
@@ -33,7 +39,7 @@ const Card = ({ data }: SharedPageCardProps) => {
           <span>{timePassed} ago</span>
           <button className={s.kebabButton}>
             <Image
-              src="images/kebab.svg"
+              src="/images/kebab.svg"
               alt="케밥 버튼 이미지"
               width={25}
               height={25}

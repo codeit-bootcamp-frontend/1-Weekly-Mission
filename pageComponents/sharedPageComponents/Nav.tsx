@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import s from "./Nav.module.css";
@@ -22,14 +22,14 @@ const Nav = ({ userEmail }: SharedPageNavProps) => {
               <div>
                 <Image
                   className="accountImg1"
-                  src="images/Ellipse.svg"
+                  src="/images/Ellipse.svg"
                   alt="계정 배경 이미지"
                   width={33}
                   height={33}
                 />
                 <Image
                   className="accountImg2"
-                  src="images/myprofile.svg"
+                  src="/images/myprofile.svg"
                   alt="계정 이미지"
                   width={15}
                   height={15}
@@ -40,9 +40,9 @@ const Nav = ({ userEmail }: SharedPageNavProps) => {
               </div>
             </div>
           ) : (
-            <Link className="cta cta-short" href="signin.html">
-              <span>로그인</span>
-            </Link>
+            <div className="cta cta-short">
+              <span>Blank</span>
+            </div>
           )}
         </div>
       </nav>
