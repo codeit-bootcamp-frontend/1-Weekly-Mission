@@ -1,26 +1,29 @@
-import { EmailInput } from "@/src/components/Sign/EmailInput";
-import { PasswordInput } from "@/src/components/Sign/PasswordInput";
+import { IconEyeOff, NavLogo, SignGooGleIcon, SignKaKaoIcon } from "@/public/assets";
 import { SignButton } from "@/src/components/Sign/SignButton";
 import { SignHeader } from "@/src/components/Sign/SignHead";
 import { SocialSign } from "@/src/components/Sign/SocialSign";
+import { EmailInput } from "@/src/components/Sign/EmailInput";
+import Link from "next/link";
 import * as React from "react";
 import styled from "styled-components";
+import { PasswordInput } from "@/src/components/Sign/PasswordInput";
 
-function SignIn() {
+function SignUp() {
   return (
     <Container>
       <RegularLoginSection>
-        <SignHeader type="로그인" />
+        <SignHeader type="회원가입" />
         <EmailInput />
         <PasswordInput type="기본" />
-        <SignButton type="로그인" />
+        <PasswordInput type="재확인" />
+        <SignButton type="회원가입" />
       </RegularLoginSection>
-      <SocialSign type="로그인" />
+      <SocialSign type="회원가입" />
     </Container>
   );
 }
 
-export default SignIn;
+export default SignUp;
 
 const Container = styled.div`
   background: #f0f6ff;

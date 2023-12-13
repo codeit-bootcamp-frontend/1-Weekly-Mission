@@ -3,6 +3,7 @@ import * as React from "react";
 import styled from "styled-components";
 import GlobalStyle from "../styles/global-styles";
 
+// 사라질 페이지라 그냥 둘게요
 export default function Home() {
   return (
     <>
