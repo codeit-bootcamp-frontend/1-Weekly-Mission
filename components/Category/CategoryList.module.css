@@ -1,8 +1,8 @@
 /* PC 화면 크기 (1200px 이상) */
 .categoryList {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 106rem;
 }
@@ -10,8 +10,8 @@
 .list {
   display: flex;
   gap: 0.8rem;
-  width: 100%;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */

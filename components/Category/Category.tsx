@@ -5,8 +5,8 @@ interface Props {
   children: ReactNode;
 }
 
-const Category = ({ children }: Props) => {
+function Category({ children }: Props) {
   return <div className={styles.category}>{children}</div>;
-};
+}
 
 export default Category;

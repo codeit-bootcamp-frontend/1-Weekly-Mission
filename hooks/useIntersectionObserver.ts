@@ -11,7 +11,7 @@ interface Props {
   options: IntersectionObserverInit;
 }
 
-const useIntersectionObserver = ({ ref, callback, options }: Props): void => {
+function useIntersectionObserver({ ref, callback, options }: Props): void {
   const observedRef = ref?.current;
 
   useEffect(() => {
@@ -24,6 +24,6 @@ const useIntersectionObserver = ({ ref, callback, options }: Props): void => {
       observer.disconnect();
     };
   }, [observedRef, callback, options]);
-};
+}
 
 export default useIntersectionObserver;

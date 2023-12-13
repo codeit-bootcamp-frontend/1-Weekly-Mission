@@ -1,8 +1,11 @@
-import styles from "./CardItem.module.css";
-import logoImg from "../../assets/images/emptyImg.svg";
 import Image from "next/image";
 import Link from "next/link";
+
 import { blurDataURL } from "@/utils/utils";
+
+import logoImg from "@/assets/images/emptyImg.svg";
+
+import styles from "./CardItem.module.css";
 
 interface Props {
   formatTimeDiff: string;

@@ -5,10 +5,10 @@ interface Props {
   folderId: number;
 }
 
-const getUserFolder = async ({
+async function getUserFolder({
   userId,
   folderId,
-}: Props): Promise<UserFolderData> => {
+}: Props): Promise<UserFolderData> {
   const baseUrl = API_ENDPOINTS.baseUrl;
   const endpoint = API_ENDPOINTS.user.folders.getUserFolder({
     userId,
@@ -17,6 +17,6 @@ const getUserFolder = async ({
   const response = await fetch(baseUrl + endpoint);
   const body: UserFolderData = await response.json();
   return body;
-};
+}
 
 export default getUserFolder;

@@ -22,7 +22,14 @@ import NavBar from "@/components/NavBar/NavBar";
 
 import getUserFolders from "@/api/getUserFolders";
 import getUserLinks from "@/api/getUserLinks";
-import { formatDate, getTimeDiff, prettyFormatTimeDiff } from "@/utils/utils";
+import {
+  formatDate,
+  getTimeDiff,
+  prettyFormatTimeDiff,
+  typeCheckParam,
+} from "@/utils/utils";
+
+import styles from "@/assets/styles/folderPage.module.css";
 
 interface Props {
   folderListData: UserFolderData;
@@ -39,60 +46,67 @@ const FolderPage = ({ folderListData, linksListData }: Props) => {
   return (
     <>
       <Head>
-        <title>LinkBrary - Folder</title>
+        <title>Folder - LinkBrary</title>
       </Head>
-      <NavBar />
-      <AddLink>
-        <AddLinkInput inputValue={inputValue} onChange={setInputValue}>
-          <AddLinkButton inputValue={inputValue}>
-            <AddLinkModalContent
-              inputValue={inputValue}
-              folderListData={folderListData}
-            />
-          </AddLinkButton>
-        </AddLinkInput>
-      </AddLink>
-      <Search linksListData={linksListData} onChange={setSearchData} />
-      <Category>
-        <CategoryList
-          folderListData={folderListData}
-          currentFolder={setCurrentFolderName}
-        >
-          <AddFolderButton>
-            <AddFolderModalContent />
-          </AddFolderButton>
-        </CategoryList>
-      </Category>
-      <FolderUtils>
-        <CurrentFolder>{currentFolderName}</CurrentFolder>
-        {currentFolderName !== "전체" && (
-          <FolderEdit currentFolderName={currentFolderName} />
-        )}
-      </FolderUtils>
-      <Card>
-        {searchData?.data &&
-          searchData.data.map((link) => {
-            const { created_at, url, title, description, image_source } = link;
-            const formattedCreatedAt = formatDate(created_at);
-            const timeDiff = getTimeDiff(created_at);
-            const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
-
-            return (
-              <FolderPageCardItem
-                key={url}
+      <nav>
+        <NavBar />
+      </nav>
+      <main className={styles.main}>
+        <AddLink>
+          <AddLinkInput inputValue={inputValue} onChange={setInputValue}>
+            <AddLinkButton inputValue={inputValue}>
+              <AddLinkModalContent
+                inputValue={inputValue}
                 folderListData={folderListData}
-                formatTimeDiff={formatTimeDiff}
-                formattedCreatedAt={formattedCreatedAt}
-                url={url}
-                title={title}
-                description={description}
-                imageSource={image_source}
               />
-            );
-          })}
-      </Card>
-      {searchData?.data?.length === 0 ? <NotFoundLink /> : undefined}
-      <Footer />
+            </AddLinkButton>
+          </AddLinkInput>
+        </AddLink>
+        <Search linksListData={linksListData} onChange={setSearchData} />
+        <Category>
+          <CategoryList
+            folderListData={folderListData}
+            currentFolder={setCurrentFolderName}
+          >
+            <AddFolderButton>
+              <AddFolderModalContent />
+            </AddFolderButton>
+          </CategoryList>
+        </Category>
+        <FolderUtils>
+          <CurrentFolder>{currentFolderName}</CurrentFolder>
+          {currentFolderName !== "전체" && (
+            <FolderEdit currentFolderName={currentFolderName} />
+          )}
+        </FolderUtils>
+        <Card>
+          {searchData?.data &&
+            searchData.data.map((link) => {
+              const { created_at, url, title, description, image_source } =
+                link;
+              const formattedCreatedAt = formatDate(created_at);
+              const timeDiff = getTimeDiff(created_at);
+              const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
+
+              return (
+                <FolderPageCardItem
+                  key={url}
+                  folderListData={folderListData}
+                  formatTimeDiff={formatTimeDiff}
+                  formattedCreatedAt={formattedCreatedAt}
+                  url={url}
+                  title={title}
+                  description={description}
+                  imageSource={image_source}
+                />
+              );
+            })}
+        </Card>
+        {searchData?.data?.length === 0 ? <NotFoundLink /> : undefined}
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 };
@@ -103,8 +117,8 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { query } = context;
-  const userId = typeof query.user === "string" ? +query.user : undefined;
-  const folderId = typeof query.folder === "string" ? +query.folder : undefined;
+  const userId = typeCheckParam("string", query.user);
+  const folderId = typeCheckParam("string", query.folder);
   try {
     if (userId !== undefined && folderId !== undefined) {
       const [folderListResponseData, linksListResponseData] = await Promise.all(
@@ -118,8 +132,8 @@ export const getServerSideProps = async (
         },
       };
     }
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.error(e);
   }
 
   return {

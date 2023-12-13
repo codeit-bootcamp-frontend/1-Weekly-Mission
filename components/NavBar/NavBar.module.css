@@ -10,10 +10,10 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 1920px;
+  justify-content: space-between;
   padding: 2rem 20rem;
+  width: 1920px;
 }
 
 a.logo img {
@@ -22,15 +22,15 @@ a.logo img {
 }
 
 .login {
-  text-align: center;
-  text-decoration: none;
-  width: 12.8rem;
   padding: 1.6rem 2rem;
-  border-radius: 0.8rem;
+  width: 12.8rem;
+  background: var(--gra-purpleblue-to-skyblue);
   font-size: 1.8rem;
   font-weight: 600;
-  background: var(--gra-purpleblue-to-skyblue);
   color: var(--grey-light);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.8rem;
 }
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */

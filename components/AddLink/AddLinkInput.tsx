@@ -11,7 +11,7 @@ interface Props {
   children?: ReactNode;
 }
 
-const AddLinkInput = ({ inputValue, onChange, children }: Props) => {
+function AddLinkInput({ inputValue, onChange, children }: Props) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     onChange(value);
@@ -38,6 +38,6 @@ const AddLinkInput = ({ inputValue, onChange, children }: Props) => {
       {children}
     </form>
   );
-};
+}
 
 export default AddLinkInput;

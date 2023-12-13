@@ -6,7 +6,7 @@ interface Props {
   email: string;
 }
 
-const ProfileInfo = ({ profileImage, email }: Props) => {
+function ProfileInfo({ profileImage, email }: Props) {
   return (
     <div className={styles.profileInfo}>
       <div className={styles.profileImgWrapper}>
@@ -21,5 +21,6 @@ const ProfileInfo = ({ profileImage, email }: Props) => {
       <span className={styles.email}>{email}</span>
     </div>
   );
-};
+}
+
 export default ProfileInfo;

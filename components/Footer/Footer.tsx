@@ -1,16 +1,16 @@
-import { RefObject, useCallback, useRef } from "react";
-
-import { useObserverContext } from "../../contexts/ObserverContext";
-
-import facebookImg from "../../assets/images/facebook.svg";
-import twitterImg from "../../assets/images/twitter.svg";
-import youtubeImg from "../../assets/images/youtube.svg";
-import instagramImg from "../../assets/images/instagram.svg";
-
-import styles from "./Footer.module.css";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 import Link from "next/link";
 import Image from "next/image";
+import { RefObject, useCallback, useRef } from "react";
+
+import facebookImg from "@/assets/images/facebook.svg";
+import twitterImg from "@/assets/images/twitter.svg";
+import youtubeImg from "@/assets/images/youtube.svg";
+import instagramImg from "@/assets/images/instagram.svg";
+
+import { useObserverContext } from "@/contexts/ObserverContext";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+
+import styles from "./Footer.module.css";
 
 const snsLinks = [
   {
@@ -41,7 +41,7 @@ const footerOptions = {
   threshold: 1,
 };
 
-const Footer = () => {
+function Footer() {
   const footerRef = useRef<HTMLDivElement>(null);
   const {
     footer: { setIsFooterVisible },
@@ -91,6 +91,6 @@ const Footer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

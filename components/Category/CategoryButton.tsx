@@ -13,7 +13,7 @@ interface Props {
   children: ReactNode;
 }
 
-const CategoryButton = ({ id, currentFolder, children }: Props) => {
+function CategoryButton({ id, currentFolder, children }: Props) {
   const router = useRouter();
   const folderID = useFolderId();
   const userId = useUserId();
@@ -34,6 +34,6 @@ const CategoryButton = ({ id, currentFolder, children }: Props) => {
       {children}
     </button>
   );
-};
+}
 
 export default CategoryButton;

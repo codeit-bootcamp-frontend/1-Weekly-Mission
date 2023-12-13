@@ -7,6 +7,7 @@ import useLoading from "@/hooks/useLoading";
 import "@/assets/styles/colors.css";
 import "@/assets/styles/reset.css";
 import "@/assets/styles/loadingSpinner.css";
+import Head from "next/head";
 
 declare global {
   interface Window {
@@ -18,15 +19,44 @@ export default function App({ Component, pageProps }: AppProps) {
   const isLoading = useLoading();
 
   return (
-    <UserProvider>
-      <ObserverProvider>
-        {isLoading ? (
-          <div className="loading">
-            <div className="spinner"></div>
-          </div>
-        ) : null}
-        <Component {...pageProps} />
-      </ObserverProvider>
-    </UserProvider>
+    <>
+      <Head>
+        <title>LinkBrary</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Linkbrary" key="title" />
+        <meta
+          name="description"
+          property="og:description"
+          content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+          key="description"
+        />
+        <meta
+          property="og:image"
+          content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
+          key="image"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@linkbrary" />
+        <meta name="twitter:title" content="Linkbrary" />
+        <meta
+          name="twitter:description"
+          content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+        />
+        <meta
+          name="twitter:image"
+          content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
+        />
+      </Head>
+      <UserProvider>
+        <ObserverProvider>
+          {isLoading ? (
+            <div className="loading">
+              <div className="spinner"></div>
+            </div>
+          ) : null}
+          <Component {...pageProps} />
+        </ObserverProvider>
+      </UserProvider>
+    </>
   );
 }

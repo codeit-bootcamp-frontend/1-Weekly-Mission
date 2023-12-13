@@ -13,7 +13,7 @@ interface Props {
   folderListData: UserFolderData;
 }
 
-const AddLinkModalContent = ({ inputValue, folderListData }: Props) => {
+function AddLinkModalContent({ inputValue, folderListData }: Props) {
   const [selectedFolder, setSelectedFolder] = useState<UserFolder | null>(null);
 
   const folderListDataArray = folderListData?.data.sort((a, b) => a.id - b.id);
@@ -50,6 +50,6 @@ const AddLinkModalContent = ({ inputValue, folderListData }: Props) => {
       <ModalButton color="blue">추가하기</ModalButton>
     </div>
   );
-};
+}
 
 export default AddLinkModalContent;

@@ -12,53 +12,66 @@ import NavBar from "@/components/NavBar/NavBar";
 import getUserLinks from "@/api/getUserLinks";
 import getUserFolder from "@/api/getUserFolder";
 import getUser from "@/api/getUser";
-import { formatDate, getTimeDiff, prettyFormatTimeDiff } from "@/utils/utils";
+import {
+  formatDate,
+  getTimeDiff,
+  prettyFormatTimeDiff,
+  typeCheckParam,
+} from "@/utils/utils";
+
+import styles from "@/assets/styles/sharedPage.module.css";
 
 interface Props {
   userData: UserData;
   folderData: UserFolderData;
-  linksData: LinksData;
+  linksListData: LinksData;
 }
 
-const SharedPage = ({ userData, folderData, linksData }: Props) => {
+const SharedPage = ({ userData, folderData, linksListData }: Props) => {
   const [searchData, setSearchData] = useState<LinksData | undefined>(
-    linksData
+    linksListData
   );
 
   return (
     <>
       <Head>
-        <title>LinkBrary - Shared</title>
+        <title>Shared - LinkBrary</title>
       </Head>
-      <NavBar />
-      <FolderInfo
-        profileImage={userData?.data?.[0]?.image_source}
-        userName={userData?.data?.[0]?.name}
-        folderName={folderData?.data?.[0]?.name || ""}
-      />
-      <Search linksListData={linksData} onChange={setSearchData} />
-      <Card>
-        {searchData?.data &&
-          searchData.data.map((link: Link) => {
-            const { id, created_at, url, title, description, image_source } =
-              link;
-            const formattedCreatedAt = formatDate(created_at);
-            const timeDiff = getTimeDiff(created_at);
-            const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
-            return (
-              <SharedPageCardItem
-                key={id}
-                formatTimeDiff={formatTimeDiff}
-                formattedCreatedAt={formattedCreatedAt}
-                url={url}
-                title={title}
-                description={description}
-                imageSource={image_source}
-              />
-            );
-          })}
-      </Card>
-      <Footer />
+      <nav>
+        <NavBar />
+      </nav>
+      <main className={styles.main}>
+        <FolderInfo
+          profileImage={userData?.data?.[0]?.image_source}
+          userName={userData?.data?.[0]?.name}
+          folderName={folderData?.data?.[0]?.name || ""}
+        />
+        <Search linksListData={linksListData} onChange={setSearchData} />
+        <Card>
+          {searchData?.data &&
+            searchData.data.map((link: Link) => {
+              const { id, created_at, url, title, description, image_source } =
+                link;
+              const formattedCreatedAt = formatDate(created_at);
+              const timeDiff = getTimeDiff(created_at);
+              const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
+              return (
+                <SharedPageCardItem
+                  key={id}
+                  formatTimeDiff={formatTimeDiff}
+                  formattedCreatedAt={formattedCreatedAt}
+                  url={url}
+                  title={title}
+                  description={description}
+                  imageSource={image_source}
+                />
+              );
+            })}
+        </Card>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 };
@@ -68,10 +81,9 @@ export default SharedPage;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  // Fetch data from API or other sources using context.query
   const { query } = context;
-  const userId = typeof query.user === "string" ? +query.user : undefined;
-  const folderId = typeof query.folder === "string" ? +query.folder : undefined;
+  const userId = typeCheckParam("string", query.user);
+  const folderId = typeCheckParam("string", query.folder);
 
   try {
     if (userId !== undefined && folderId !== undefined) {
@@ -86,21 +98,19 @@ export const getServerSideProps = async (
         props: {
           userData: userDataResponseData,
           folderData: userFolderResponseData,
-          linksData: linksResponseData,
+          linksListData: linksResponseData,
         },
       };
     }
   } catch (e) {
-    // Handle errors if necessary
-    console.log(e);
+    console.error(e);
   }
 
-  // Return empty props or handle errors if necessary
   return {
     props: {
       userData: null,
       folderData: null,
-      linksData: null,
+      linksListData: null,
     },
   };
 };

@@ -40,18 +40,21 @@ const AddLink = ({ children }: Props) => {
   });
 
   const addLinkClass = () => {
-    if (isNavBarVisible && !isFooterVisible) {
+    const isNavBarAndNotFooter = isNavBarVisible && !isFooterVisible;
+    const isNotNavBarAndNotFooter = !isNavBarVisible && !isFooterVisible;
+    const isAllVisible = isNavBarVisible && isAddLinkVisible && isFooterVisible;
+
+    if (isNavBarAndNotFooter) {
       return styles.addLink;
     }
-    if (!isNavBarVisible && !isFooterVisible) {
+    if (isNotNavBarAndNotFooter) {
       return classNames(styles.addLink, styles.bottom);
     }
-    if (isNavBarVisible && isAddLinkVisible && isFooterVisible) {
+    if (isAllVisible) {
       return styles.addLink;
     }
     return "";
   };
-
   return (
     <div
       className={addLinkClass()}

@@ -1,0 +1,11 @@
+.main {
+  padding-bottom: 6rem;
+  background-color: #fff;
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .main {
+    padding-bottom: 4rem;
+  }
+}

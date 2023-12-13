@@ -1,10 +1,10 @@
 .container {
-  height: 70vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 6rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
 }
 
 .descriptionContainer {
@@ -12,9 +12,9 @@
 }
 
 .status {
-  color: var(--red);
   font-size: 6.8rem;
   font-weight: 700;
+  color: var(--red);
   animation: shake 0.4s ease-in-out infinite;
 }
 

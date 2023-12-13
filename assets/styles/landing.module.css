@@ -5,8 +5,14 @@
   gap: 4rem;
   align-items: center;
   flex-direction: column;
-  padding: 7rem 36rem 0rem 36rem;
+  padding-top: 7rem;
   background-color: var(--linkbrary-bg);
+  width: 100%;
+}
+
+.addLinkButton {
+  max-width: 35rem;
+  width: 100%;
 }
 
 .heroHeadingWrapper {
@@ -34,6 +40,7 @@
 }
 
 .contentList {
+  background-color: #fff;
   padding-top: 7rem;
   padding-bottom: 12rem;
 }
@@ -115,7 +122,7 @@
   }
 
   .hero {
-    padding: 3.9rem 25rem 0 25.1rem;
+    padding-top: 3.9rem;
     height: 75.6rem;
   }
 
@@ -150,8 +157,13 @@
 @media screen and (min-width: 375px) and (max-width: 767px) {
   .hero {
     gap: 2.4rem;
-    padding: 2.8rem 2rem 0 3.3rem;
+    padding-top: 2.8rem;
     height: 100%;
+  }
+
+  .addLinkButton {
+    max-width: 20rem;
+    max-height: 3.7rem;
   }
 
   .heroHeadingWrapper {

@@ -10,12 +10,12 @@ interface Props {
   children: ReactNode;
 }
 
-const Button = ({ isLoading = false, onClick, size, children }: Props) => {
+function Button({ isLoading = false, onClick, size, children }: Props) {
   let buttonStyles: CSSProperties = {};
 
   if (typeof size === "number") {
     buttonStyles = {
-      width: `${size}rem`,
+      maxWidth: `${size}rem`,
     };
   }
 
@@ -33,6 +33,6 @@ const Button = ({ isLoading = false, onClick, size, children }: Props) => {
       {children}
     </button>
   );
-};
+}
 
 export default Button;

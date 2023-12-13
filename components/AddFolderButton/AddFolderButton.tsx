@@ -1,25 +1,28 @@
-import { useState, ReactNode } from "react";
+import { ReactNode } from "react";
+import Image from "next/image";
+
+import ModalContainer from "@/components/Modal/ModalContainer/ModalContainer";
+
+import plusImg from "@/assets/images/plus.svg";
+import plusWhiteImg from "@/assets/images/plus_white.svg";
 
 import styles from "./AddFolderButton.module.css";
-import plusImg from "../../assets/images/plus.svg";
-import plusWhiteImg from "../../assets/images/plus_white.svg";
-import ModalContainer from "../Modal/ModalContainer/ModalContainer";
-import Image from "next/image";
+import useModal from "@/hooks/useModal";
 
 interface Props {
   children?: ReactNode;
 }
 
-const AddFolderButton = ({ children }: Props) => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+function AddFolderButton({ children }: Props) {
+  const { isOpenModal, openModal, closeModal } = useModal(false);
+
   const handleOpenModal = () => {
-    setIsOpenModal(true);
+    openModal();
   };
 
   const handleCloseModal = () => {
-    setIsOpenModal(false);
+    closeModal();
   };
-
   return (
     <>
       <button className={styles.addFolderButton} onClick={handleOpenModal}>
@@ -36,6 +39,6 @@ const AddFolderButton = ({ children }: Props) => {
       )}
     </>
   );
-};
+}
 
 export default AddFolderButton;
