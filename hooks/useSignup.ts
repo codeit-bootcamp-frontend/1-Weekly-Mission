@@ -32,31 +32,28 @@ const useSignup = () => {
       return;
     }
 
-    // 이메일 중복 확인
     try {
+      // 이메일 중복 확인
       await fetchCheckEmail({ email });
-    } catch (e) {
-      let message;
-      if (e instanceof Error) message = e.message;
-      else message = String(e);
-      if (message.slice(0, 3) === "409") {
-        setError("email", { message: message.slice(3) });
-      } else {
-        setError("email", { message: ERROR_MESSAGE.email.fail });
-      }
-      setError("password", { message: ERROR_MESSAGE.password.fail });
-      setError("passwordConfirm", {
-        message: ERROR_MESSAGE.passwordConfirm.fail,
-      });
-    }
 
-    // 회원가입
-    try {
+      // 회원가입
       const { data } = await fetchSignup({ email, password });
       localStorage.setItem(localStorageAccessToken, data.accessToken);
       router.push(folderPage);
     } catch (e) {
-      console.log(e); // 무슨 에러인가
+      let message;
+      if (e instanceof Error) message = e.message;
+      else message = String(e);
+
+      if (message === "409이미 존재하는 이메일입니다.") {
+        setError("email", { message: message.slice(3) });
+      } else {
+        setError("email", { message: ERROR_MESSAGE.email.fail });
+        setError("password", { message: ERROR_MESSAGE.password.fail });
+        setError("passwordConfirm", {
+          message: ERROR_MESSAGE.passwordConfirm.fail,
+        });
+      }
     }
   };
 
