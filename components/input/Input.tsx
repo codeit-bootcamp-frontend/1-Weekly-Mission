@@ -1,59 +1,48 @@
-import React, { useRef, useState } from "react";
-import styles from "./input.module.css";
-import Image from "next/image";
-import eyeOnIcon from "@/public/icons/eye-on.svg";
-import eyeOffIcon from "@/public/icons/eye-off.svg";
+import React, { ChangeEventHandler, FocusEventHandler } from "react";
+import styles from "./Input.module.css";
+import { UseFormRegister } from "react-hook-form";
+import { FormValues } from "../signupForm/SignupForm";
 
-interface InputProps {
-  placeholder: string;
-  inputType: string;
-  errorMessage?: string;
+export interface InputProps {
+  value?: string | number;
+  placeholder?: string;
+  inputName: "email" | "password" | "passwordConfirm";
+  type?: string;
+  hasError?: boolean;
+  helperText?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  register?: UseFormRegister<FormValues>;
+  rules?: any;
 }
 
-function Input({
+export function Input({
+  value,
   placeholder,
-  inputType = "default",
-  errorMessage = "",
+  type,
+  hasError,
+  helperText,
+  onChange,
+  onBlur,
+  register,
+  inputName,
+  rules,
 }: InputProps) {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
-  const isDefaultInput = inputType === "default";
-
-  const handleEyeButtonClick = () => {
-    setIsPasswordVisible(!isPasswordVisible);
-    const passwordInput = passwordInputRef.current;
-    if (passwordInput === null) return;
-    if (!isPasswordVisible) {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
-  };
-
   return (
-    <form className={styles.form}>
+    <>
       <div className={`${styles.inputWrapper}`}>
         <input
           placeholder={placeholder}
           className={styles.input}
-          type={isDefaultInput ? "text" : "password"}
+          type={type}
           autoComplete="off"
-          ref={passwordInputRef}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          {...(register && register(inputName, rules))}
         />
-        {isDefaultInput ? null : (
-          <Image
-            src={isPasswordVisible ? eyeOnIcon : eyeOffIcon}
-            width={16}
-            height={16}
-            alt="eyeToggleIcon"
-            className={styles.eyeIcon}
-            onClick={handleEyeButtonClick}
-          />
-        )}
       </div>
-      <p className={styles.errorMessage}>{errorMessage}</p>
-    </form>
+      {hasError && <p className={styles.errorMessage}>{helperText}</p>}
+    </>
   );
 }
-
-export default Input;
