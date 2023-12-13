@@ -1,0 +1,8 @@
+.box {
+  width: 100%;
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
+  background: var(--gra-purpleblue-to-skyblue);
+  font-size: 1.8rem;
+  color: var(--gray-light);
+}

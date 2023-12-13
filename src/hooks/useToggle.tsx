@@ -1,9 +1,12 @@
-import { useCallback, useState } from "react";
-import { useBooleanOutput } from "@/types/hooks";
+import { useCallback, useState } from 'react';
+interface useBooleanOutput {
+  isOn: boolean;
+  toggle: () => void;
+}
 
 export default function useToggle(defaultValue?: boolean): useBooleanOutput {
-  const [isTrue, setIsTrue] = useState(!!defaultValue);
-  const toggle = useCallback(() => setIsTrue((prev) => !prev), []);
+  const [isOn, setIsOn] = useState<boolean>(!!defaultValue);
+  const toggle = useCallback(() => setIsOn((prev) => !prev), []);
 
-  return { isTrue, setIsTrue, toggle };
+  return { isOn, toggle };
 }
