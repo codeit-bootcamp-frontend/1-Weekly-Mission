@@ -22,19 +22,11 @@ const Nav = ({ userEmail, userImage }: User) => {
               <div>
                 <Image
                   className="accountImg1"
-                  // src="images/Ellipse.svg"
                   src={userImage}
                   alt="계정 배경 이미지"
                   width={33}
                   height={33}
                 />
-                {/* <Image
-                  className="accountImg2"
-                  src="images/myprofile.svg"
-                  alt="계정 이미지"
-                  width={15}
-                  height={15}
-                /> */}
               </div>
               <div>
                 <p className={s.p}>{userEmail}</p>
