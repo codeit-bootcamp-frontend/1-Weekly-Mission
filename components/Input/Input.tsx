@@ -38,7 +38,7 @@ const Input = ({ labelText, register, errors }: InputProps) => {
           })}
         />
         {LABEL_TO_KOR[labelText] !== "이메일" && (
-          <StyledButton onClick={(e) => handleVisibility(e)}>
+          <StyledButton onClick={(e) => handleVisibility(e)} type="button">
             {isVisible ? (
               <EyeOnImage alt="비밀번호 숨기기 버튼" />
             ) : (
