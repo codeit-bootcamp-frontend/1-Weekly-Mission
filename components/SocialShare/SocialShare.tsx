@@ -1,23 +1,31 @@
+import { useEffect } from 'react';
 import linkIcon from '@/src/assets/link.svg';
 import facebookIcon from '@/src/assets/facebook.svg';
 import kakaoIcon from '@/src/assets/Kakao.svg';
-import * as handle from '@/public/shareSNS.js';
+import * as handle from '@/public/shareSocial';
 import * as Style from './SocialShare.style';
 
 export default function SocialShare() {
   const sharedUrl = window.location.href;
-
-  const handleCopyUrl = async (url) => {
+  console.log(sharedUrl)
+  const { Kakao } = window;
+  
+  const handleCopyUrl = async (url : string) => {
     await navigator.clipboard.writeText(url);
   };
 
-  const handleFacebook = (url) => {
+  const handleFacebook = (url : string) => {
     handle.shareFacebook(url);
   };
 
-  const handleKakao = (url) => {
+  const handleKakao = (url : string) => {
     handle.shareKakao(url);
   };
+
+  useEffect(() => {
+    Kakao.cleanup();
+    Kakao.init('');
+  }, []);
 
   return (
     <Style.Container>
@@ -25,6 +33,7 @@ export default function SocialShare() {
         <Style.ImgBox color="#fee500">
           <Style.Img
             src={kakaoIcon}
+            alt="카카오"
             onClick={() => {
               handleKakao(sharedUrl);
             }}
@@ -36,6 +45,7 @@ export default function SocialShare() {
         <Style.ImgBox color="#1877fe">
           <Style.Img
             src={facebookIcon}
+            alt="페이스북"
             onClick={() => {
               handleFacebook(sharedUrl);
             }}
@@ -47,6 +57,7 @@ export default function SocialShare() {
         <Style.ImgBox color="rgba(157, 157, 157, 0.04)">
           <Style.Img
             src={linkIcon}
+            alt="클립보드"
             onClick={() => {
               handleCopyUrl(sharedUrl);
             }}
