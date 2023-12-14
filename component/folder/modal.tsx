@@ -8,6 +8,7 @@ import { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FacebookMessengerShareButton } from "react-share";
 import Image from "next/image";
+import Script from "next/script";
 
 function Add() {
     const [select, setSelect] = useState("0");
@@ -94,8 +95,18 @@ function DeleteFolder() {
     );
 }
 
+declare global {
+    interface Window {
+        Kakao: any;
+    }
+}
+
 function Share({ query }: { query: string }) {
     const currentUrl = window.location.href + "?" + query;
+    const kakaoInit = () => {
+        if (!window.Kakao.isInitialized())
+            window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API);
+    };
 
     const shareKakao = async () => {
         await window.Kakao.Share.sendDefault({
@@ -121,6 +132,12 @@ function Share({ query }: { query: string }) {
 
     return (
         <>
+            <Script
+                src="https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js"
+                integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4"
+                crossOrigin="anonymous"
+                onLoad={kakaoInit}
+            />
             <StyledModalTitleBox>
                 <StyledModalTitle>폴더 공유</StyledModalTitle>
                 <StyledModalSubTitle>폴더명</StyledModalSubTitle>
@@ -318,8 +335,8 @@ const StyledModalShare = styled.div`
 const StyledModalShareIcon = styled.div<{ $name?: string }>`
     padding: 12px;
     border-radius: 37.333px;
-    background: ${({ $name }) => ($name === "kakao" ? "#fee500" : "")};
-    background: ${({ $name }) => ($name === "facebook" ? "#1877F2" : "")};
+    background: ${({ $name }) =>
+        $name === "kakao" ? "#fee500" : $name === "facebook" ? "#1877F2" : ""};
     cursor: pointer;
 `;
 

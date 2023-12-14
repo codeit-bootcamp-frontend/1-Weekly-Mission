@@ -5,9 +5,24 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import dateCalculator from "@/utils/dateCalculator";
-import { CardProps, CardsProps } from "../../types/type";
 import filterItems from "./filterItems";
 import { NoLink } from "@/pages/folder";
+import { CardItem } from "@/types/type";
+
+interface CardProps {
+    item: CardItem;
+    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
+    setTag?: React.Dispatch<React.SetStateAction<string>>;
+    close?: boolean;
+}
+
+interface CardsProps {
+    items: CardItem[];
+    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
+    setTag?: React.Dispatch<React.SetStateAction<string>>;
+    close?: boolean;
+    search?: string;
+}
 
 function Card({ item, setClose, setTag, close }: CardProps) {
     const [status, setStatus] = useState(true);

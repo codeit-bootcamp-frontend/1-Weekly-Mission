@@ -3,7 +3,7 @@ import styled from "styled-components";
 import linkAddIcon from "../public/images/folder/linkAdd.svg";
 import Cards from "../component/card/card";
 import { useEffect, useState } from "react";
-import getApi from "../component/api/api";
+import { getApi } from "../component/api/api";
 import add from "../public/images/folder/add.svg";
 import share from "../public/images/folder/share.svg";
 import pen from "../public/images/folder/pen.svg";

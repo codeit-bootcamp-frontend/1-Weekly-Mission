@@ -1,5 +1,5 @@
 import Cards from "../component/card/card";
-import getApi from "../component/api/api";
+import { getApi } from "../component/api/api";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchBar from "../component/common/searchbar";
@@ -10,23 +10,6 @@ interface Owner {
     id: number;
     name: string;
     profileImageSource: string;
-}
-
-interface Link {
-    createdAt: string;
-    description: string;
-    id: number;
-    imageSource: string;
-    title: string;
-    url: string;
-}
-
-interface FolderData {
-    count: number;
-    id: number;
-    links: Link[];
-    name: string;
-    owner: Owner;
 }
 
 function MainSection({ items }: { items: CardItem[] }) {
@@ -66,9 +49,7 @@ export default function Shared() {
     useEffect(() => {
         const path = "/sample/folder";
         const handleFolder = async () => {
-            const { folder } = (await getApi(path)) as unknown as {
-                folder: FolderData;
-            };
+            const { folder } = await getApi(path);
             setName(folder.name);
             setOwner(folder.owner);
             setItems(folder.links);

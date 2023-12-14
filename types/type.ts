@@ -17,19 +17,4 @@ interface FolderButtonItem {
     user_id: number;
 }
 
-interface CardProps {
-    item: CardItem;
-    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
-    setTag?: React.Dispatch<React.SetStateAction<string>>;
-    close?: boolean;
-}
-
-interface CardsProps {
-    items: CardItem[];
-    setClose?: React.Dispatch<React.SetStateAction<boolean>>;
-    setTag?: React.Dispatch<React.SetStateAction<string>>;
-    close?: boolean;
-    search?: string;
-}
-
-export type { CardItem, FolderButtonItem, CardProps, CardsProps };
+export type { CardItem, FolderButtonItem };
