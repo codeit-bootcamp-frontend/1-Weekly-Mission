@@ -5,15 +5,14 @@ import styles from "./SignInForm.module.css";
 import Button from "../button/Button";
 import { SIGNIN_ENDPOINT, instance } from "@/api/services/config";
 import { useRouter } from "next/router";
-import { loadAccessToken } from "@/utils/localStorage";
-import { useState } from "react";
 import axios from "axios";
 import {
-  checkEmailText,
-  checkPwText,
-  emailPattern,
-  passwordPattern,
+  CHECK_EMAIL_TEXT,
+  CHECK_PW_TEXT,
+  EMAIL_PATTERN,
+  PASSWORD_PATTERN,
 } from "@/constants/authConstant";
+import { setAccessToken } from "@/utils/localStorage";
 
 export interface FormValues {
   email: string;
@@ -22,13 +21,12 @@ export interface FormValues {
 }
 
 export function SigninForm() {
-  const [emailHelperText, setEmailHelperText] = useState("");
-  const [passwordHelperText, setPasswordHelperText] = useState("");
   const router = useRouter();
   const {
     register,
     formState: { errors },
     handleSubmit,
+    setError,
   } = useForm<FormValues>({ mode: "onBlur" });
 
   const onSubmit = handleSubmit(async (data: FormValues) => {
@@ -39,12 +37,12 @@ export function SigninForm() {
         password: data.password,
       });
       const accessToken = res?.data.data.accessToken;
-      loadAccessToken(accessToken);
+      setAccessToken(accessToken);
       res?.status === 200 && router.push("/folder");
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
-        setEmailHelperText(checkEmailText);
-        setPasswordHelperText(checkPwText);
+        setError("email", { message: CHECK_EMAIL_TEXT });
+        setError("password", { message: CHECK_PW_TEXT });
       }
       console.error(error);
     }
@@ -64,10 +62,10 @@ export function SigninForm() {
             inputName="email"
             rules={{
               required: "이메일을 입력해주세요.",
-              pattern: emailPattern,
+              pattern: EMAIL_PATTERN,
             }}
             hasError
-            helperText={errors.email?.message || emailHelperText}
+            helperText={errors.email?.message}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -79,10 +77,10 @@ export function SigninForm() {
             hasEyeIcon
             inputName="password"
             hasError
-            helperText={errors.password?.message || passwordHelperText}
+            helperText={errors.password?.message}
             rules={{
               required: "비밀번호를 입력해주세요.",
-              pattern: passwordPattern,
+              pattern: PASSWORD_PATTERN,
             }}
             register={register}
           />
