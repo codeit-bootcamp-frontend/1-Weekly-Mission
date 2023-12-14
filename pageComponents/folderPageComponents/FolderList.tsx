@@ -7,7 +7,9 @@ const FolderList = ({
   isTotalClicked,
   folderId,
 }: FolderListProps) => {
-  const [selectedFolder, setSelectedFolder] = useState<number>(folderId);
+  const [selectedFolder, setSelectedFolder] = useState<number | undefined>(
+    folderId
+  );
 
   const handleButtonClick = (id: number) => {
     setSelectedFolder(id);

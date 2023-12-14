@@ -21,7 +21,7 @@ interface FolderListProps {
   fullData: FolderList[];
   handleFolderClick: (folderId: unknown, folderName: string) => void;
   isTotalClicked: boolean;
-  folderId: number;
+  folderId?: number;
 }
 
 interface FolderListItemProps {

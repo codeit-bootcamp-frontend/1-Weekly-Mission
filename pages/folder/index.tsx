@@ -10,14 +10,43 @@ import Image from "next/image";
 import s from "./index.module.css";
 import { MouseEvent } from "react";
 import { useRouter } from "next/navigation";
+import { GetServerSidePropsContext } from "next";
+import accessToken from "@/Token";
+import useSWR from "swr";
 
-export default function FolderPage() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+  };
+  const result = await axios.get(`/folders`, { headers });
+  const initialData: FolderList[] = result?.data?.data?.folder;
+
+  const folderIdList = initialData.map((data) => data.id);
+
+  return {
+    props: {
+      initialData,
+    },
+  };
+}
+
+export default function FolderPage({ initialData }: folderIdPageProps) {
   const [userEmail, setUserEmail] = useState("");
   const [userImage, setUserImage] = useState("");
   const [data, setData] = useState<Folders>();
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
   const router = useRouter();
+
+  async function fetcher(url: string) {
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+    const result = await axios.get(`/folders`, { headers });
+    return result?.data?.data?.folder;
+  }
+
+  const { data: fullList, mutate } = useSWR("/folders", fetcher, initialData);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -73,7 +102,7 @@ export default function FolderPage() {
           onLinkValueAdded={onLinkValueAdded}
         />
       </header>
-      <Header getData={getData} />
+      <Header getData={getData} fullList={fullList} mutate={mutate} />
       <Article />
       <Footer />
       {isAddLinkClicked ? (

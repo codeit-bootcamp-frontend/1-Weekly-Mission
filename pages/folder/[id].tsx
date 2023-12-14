@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Nav from "@/pageComponents/folderPageComponents/Nav";
-import Header from "@/pageComponents/folderPageComponents/IdHeader";
+import Header from "@/pageComponents/folderPageComponents/Header";
 import Article from "@/components/Article";
 import Footer from "@/components/Footer";
 import AddLink from "@/components/AddLink";
