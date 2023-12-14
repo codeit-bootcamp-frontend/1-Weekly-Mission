@@ -66,6 +66,6 @@ interface SignFooterProps {
 }
 
 interface folderIdPageProps {
-  fullList: FolderList[];
+  initialData: FolderList[];
   folderId: number;
 }

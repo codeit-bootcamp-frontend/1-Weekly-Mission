@@ -12,6 +12,7 @@ import { MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import { GetServerSidePropsContext } from "next";
 import accessToken from "@/Token";
+import useSWR from "swr";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!context.params) {
@@ -25,9 +26,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     Authorization: `Bearer ${accessToken}`,
   };
   const result = await axios.get(`/folders`, { headers });
-  const fullList: FolderList[] = result?.data?.data?.folder;
+  const initialData: FolderList[] = result?.data?.data?.folder;
 
-  const folderIdList = fullList.map((data) => data.id);
+  const folderIdList = initialData.map((data) => data.id);
   if (!folderIdList.includes(folderId)) {
     return {
       notFound: true,
@@ -36,19 +37,32 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      fullList,
+      initialData,
       folderId,
     },
   };
 }
 
-export default function FolderPage({ fullList, folderId }: folderIdPageProps) {
+export default function FolderPage({
+  initialData,
+  folderId,
+}: folderIdPageProps) {
   const [userEmail, setUserEmail] = useState("");
   const [userImage, setUserImage] = useState("");
   const [data, setData] = useState<Folders>();
   const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
   const [addLinkValue, setAddLinkValue] = useState("");
   const router = useRouter();
+
+  async function fetcher(url: string) {
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+    const result = await axios.get(`/folders`, { headers });
+    return result?.data?.data?.folder;
+  }
+
+  const { data: fullList, mutate } = useSWR("/folders", fetcher, initialData);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -104,7 +118,12 @@ export default function FolderPage({ fullList, folderId }: folderIdPageProps) {
           onLinkValueAdded={onLinkValueAdded}
         />
       </header>
-      <Header getData={getData} fullList={fullList} folderId={folderId} />
+      <Header
+        getData={getData}
+        fullList={fullList}
+        folderId={folderId}
+        mutate={mutate}
+      />
       <Article />
       <Footer />
       {isAddLinkClicked ? (

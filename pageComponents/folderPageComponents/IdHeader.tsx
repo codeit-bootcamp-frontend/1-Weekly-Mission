@@ -9,14 +9,16 @@ import { getSingleFolder } from "@/libs/getSingleFolder";
 import { MouseEvent } from "react";
 import { useRouter } from "next/router";
 import accessToken from "@/Token";
+import { KeyedMutator } from "swr";
 
 interface GetData {
   getData: (data: Folders) => void;
   fullList: FolderList[];
   folderId: number;
+  mutate: KeyedMutator<any>;
 }
 
-const Header = ({ getData, fullList, folderId }: GetData) => {
+const Header = ({ getData, fullList, folderId, mutate }: GetData) => {
   const [totalData, setTotalData] = useState<TotalData>();
   const [isTotalClicked, setIsTotalClicked] = useState(false);
   const [isSingleClicked, setIsSingleClicked] = useState(false);
@@ -50,6 +52,7 @@ const Header = ({ getData, fullList, folderId }: GetData) => {
     };
     try {
       const result = await axios.post(`/folders`, requestBody, { headers });
+      mutate();
       setIsAddFolderClicked(!isAddFolderClicked);
     } catch (error) {
       console.error(error);
