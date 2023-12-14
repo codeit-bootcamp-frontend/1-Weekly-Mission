@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import Search from "@/components/Search";
 import FolderList from "./FolderList";
 import Cards from "./Cards";
@@ -8,6 +8,7 @@ import s from "./Header.module.css";
 import { getSingleFolder } from "@/libs/getSingleFolder";
 import { MouseEvent } from "react";
 import { useRouter } from "next/router";
+import accessToken from "@/Token";
 
 interface GetData {
   getData: (data: Folders) => void;
@@ -29,6 +30,7 @@ const Header = ({ getData, fullList, folderId }: GetData) => {
     useState(false);
   const [isDeleteFolderClicked, setIsDeleteFolderClicked] = useState(false);
   const [isShareFolderClicked, setIsShareFolderClicked] = useState(false);
+  const [addFolderValue, setAddFolderValue] = useState("");
   const router = useRouter();
 
   function handleAddFolderClick(
@@ -36,6 +38,25 @@ const Header = ({ getData, fullList, folderId }: GetData) => {
   ) {
     e.preventDefault();
     setIsAddFolderClicked(!isAddFolderClicked);
+  }
+  async function handlePostFolderClick(e: MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    };
+    const requestBody = {
+      name: `${addFolderValue}`,
+    };
+    try {
+      const result = await axios.post(`/folders`, requestBody, { headers });
+      setIsAddFolderClicked(!isAddFolderClicked);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  function handleAddFolderValueChange(e: ChangeEvent<HTMLInputElement>) {
+    setAddFolderValue(e.target.value);
   }
 
   function handleChangeFolderNameClick(
@@ -206,8 +227,15 @@ const Header = ({ getData, fullList, folderId }: GetData) => {
                 height={30}
               />
             </div>
-            <input className={s.modalInput} placeholder="내용 입력"></input>
-            <button className={s.modalButton}>추가하기</button>
+            <input
+              value={addFolderValue}
+              onChange={handleAddFolderValueChange}
+              className={s.modalInput}
+              placeholder="내용 입력"
+            ></input>
+            <button className={s.modalButton} onClick={handlePostFolderClick}>
+              추가하기
+            </button>
           </div>
         </div>
       ) : null}
