@@ -19,4 +19,7 @@
   position: absolute;
   top: 18px;
   right: 15px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
 }
