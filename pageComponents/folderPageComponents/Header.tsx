@@ -16,10 +16,16 @@ interface GetData {
   fullList: FolderList[];
   folderId?: number;
   mutate: KeyedMutator<any>;
+  totalData?: Link[];
 }
 
-const Header = ({ getData, fullList, folderId, mutate }: GetData) => {
-  const [totalData, setTotalData] = useState<TotalData>();
+const Header = ({
+  getData,
+  fullList,
+  folderId,
+  mutate,
+  totalData,
+}: GetData) => {
   const [isTotalClicked, setIsTotalClicked] = useState(folderId ? false : true);
   const [isSingleClicked, setIsSingleClicked] = useState(
     folderId ? true : false
@@ -28,7 +34,7 @@ const Header = ({ getData, fullList, folderId, mutate }: GetData) => {
   const [singleFolderData, setSingleFolderData] = useState<SingleFolderData[]>(
     []
   );
-  const [singleFolderName, setSingleFolderName] = useState("");
+  const [singleFolderName, setSingleFolderName] = useState("테스트");
   const [isAddFolderClicked, setIsAddFolderClicked] = useState(false);
   const [isChangeFolderNameClicked, setIsChangeFolderNameClicked] =
     useState(false);
@@ -112,18 +118,6 @@ const Header = ({ getData, fullList, folderId, mutate }: GetData) => {
     router.push(`/folder/${folderId}`);
   };
 
-  const [fullFolderData, setFullFolderData] = useState<Folders>({} as Folders);
-  const getFullFolderData = async () => {
-    const temp = await axios.get(`/users/1/folders`);
-    setFullFolderData(temp?.data);
-  };
-  useEffect(() => {
-    getFullFolderData();
-  }, []);
-  useEffect(() => {
-    getData(fullFolderData as Folders);
-  }, [fullFolderData]);
-
   const getSingleFolderData = async () => {
     const temp = await getSingleFolder(singleFolderDataId as number);
     setSingleFolderData(temp?.data?.data);
@@ -149,10 +143,10 @@ const Header = ({ getData, fullList, folderId, mutate }: GetData) => {
   function getInputValue(v: string) {
     setInputValue(v);
   }
-  let searchedData: SingleFolderData[] = [];
+  let searchedData: Link[] = [];
 
   if (isTotalClicked && totalData) {
-    searchedData = totalData?.data?.filter((data) => {
+    searchedData = totalData.filter((data) => {
       if (
         data?.url?.includes(inputValue) ||
         data?.title?.includes(inputValue) ||
@@ -378,20 +372,12 @@ const Header = ({ getData, fullList, folderId, mutate }: GetData) => {
           </div>
         </div>
       )}
-      {searchedData && inputValue !== "" && (
-        <Cards fullData={searchedData} fullFolderData={fullFolderData?.data} />
-      )}
+      {searchedData && inputValue !== "" && <Cards fullData={searchedData} />}
       {totalData && isTotalClicked && inputValue === "" && (
-        <Cards
-          fullData={totalData?.data}
-          fullFolderData={fullFolderData?.data}
-        />
+        <Cards fullData={totalData} />
       )}
       {singleFolderData && isSingleClicked && inputValue === "" && (
-        <Cards
-          fullData={singleFolderData}
-          fullFolderData={fullFolderData?.data}
-        />
+        <Cards fullData={singleFolderData} />
       )}
       {singleFolderData.length === 0 && isSingleClicked && (
         <div className={s.folderList}>저장된 링크가 없습니다</div>

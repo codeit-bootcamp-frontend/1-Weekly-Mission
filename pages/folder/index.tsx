@@ -21,16 +21,21 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const result = await axios.get(`/folders`, { headers });
   const initialData: FolderList[] = result?.data?.data?.folder;
 
-  const folderIdList = initialData.map((data) => data.id);
+  const res = await axios.get(`/links`, { headers });
+  const initialFolderData = res?.data?.data?.folder;
 
   return {
     props: {
       initialData,
+      initialFolderData,
     },
   };
 }
 
-export default function FolderPage({ initialData }: folderIdPageProps) {
+export default function FolderPage({
+  initialData,
+  initialFolderData,
+}: folderPageProps) {
   const [userEmail, setUserEmail] = useState("");
   const [userImage, setUserImage] = useState("");
   const [data, setData] = useState<Folders>();
@@ -47,6 +52,16 @@ export default function FolderPage({ initialData }: folderIdPageProps) {
   }
 
   const { data: fullList, mutate } = useSWR("/folders", fetcher, initialData);
+
+  async function fetcher2(url: string) {
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+    const result = await axios.get(`/links`, { headers });
+    return result?.data?.data?.folder;
+  }
+
+  const { data: totalData } = useSWR("/links", fetcher2, initialFolderData);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -102,7 +117,12 @@ export default function FolderPage({ initialData }: folderIdPageProps) {
           onLinkValueAdded={onLinkValueAdded}
         />
       </header>
-      <Header getData={getData} fullList={fullList} mutate={mutate} />
+      <Header
+        getData={getData}
+        fullList={fullList}
+        mutate={mutate}
+        totalData={totalData}
+      />
       <Article />
       <Footer />
       {isAddLinkClicked ? (

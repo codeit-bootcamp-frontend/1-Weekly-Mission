@@ -20,6 +20,8 @@ const nextConfig = {
       "legacy.reactjs.org",
       "velog.velcdn.com",
       "avatars.githubusercontent.com",
+      "i1.daumcdn.net",
+      "react.dev",
     ],
   },
 };

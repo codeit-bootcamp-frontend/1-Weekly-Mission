@@ -5,7 +5,7 @@ import Link from "next/link";
 import s from "./Card.module.css";
 import { MouseEvent } from "react";
 
-const Card = ({ data, fullFolderData }: FolderCardProps) => {
+const Card = ({ data }: FolderCardProps) => {
   const {
     created_at,
     description,
@@ -40,10 +40,6 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
     e.preventDefault();
     setIsKebabAddClicked(!isKebabAddClicked);
   }
-
-  const selectList = fullFolderData.map((list) => {
-    return `${list.name}  ${list.link.count}개 링크`;
-  });
 
   return (
     <li className={s.li}>
@@ -125,14 +121,6 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
                 height={30}
                 onClick={handleKebabAddClick}
               />
-            </div>
-            <div>
-              {selectList.map((item) => (
-                <div className="Modal-list-input" key={item}>
-                  <label htmlFor="item">{item}</label>
-                  <input type="checkbox" name={item} id={item} />
-                </div>
-              ))}
             </div>
             <button className={s.addButton}>추가하기</button>
           </div>

@@ -33,13 +33,11 @@ interface FolderListItemProps {
 }
 
 interface FolderCardsProps {
-  fullData: SingleFolderData[];
-  fullFolderData: SingleFolder[];
+  fullData: Link[];
 }
 
 interface FolderCardProps {
-  data: SingleFolderData;
-  fullFolderData: SingleFolder[];
+  data: Link;
 }
 
 interface AddLinkProps {
@@ -63,6 +61,11 @@ interface SignHeaderProps {
 
 interface SignFooterProps {
   sentence: string;
+}
+
+interface folderPageProps {
+  initialData: FolderList[];
+  initialFolderData: Link[];
 }
 
 interface folderIdPageProps {
