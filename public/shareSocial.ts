@@ -1,5 +1,5 @@
 //Facebook
-export const shareFacebook = (sharedUrl) => {
+export const shareFacebook = (sharedUrl:string) => {
   window.open(
     `http://www.facebook.com/sharer/sharer.php?u=${sharedUrl}`,
     'popup',
@@ -8,7 +8,7 @@ export const shareFacebook = (sharedUrl) => {
 };
 
 //KakaoTalk
-export const shareKakao = (sharedUrl) => {
+export const shareKakao = (sharedUrl:string) => {
   window.Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {

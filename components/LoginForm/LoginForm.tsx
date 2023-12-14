@@ -21,17 +21,18 @@ export default function LoginForm({
     e.preventDefault();
     if (isSignup) {
       const check = await axios.post('/check-email', watch(['email']));
+      // if(check.status !== 200) { setError('email', {type: 'inUse', message: '이미 사용중이 이메일입니다.'})};
+      // error 처리 
     }
-    // if(check.status !== 200) { setError('email', {type: 'incorrect'})}
     const response = await axios.post(formUrl, loginData);
     if (response.status === 200) {
       checkLocalToken(response);
       router.push('/folder');
-      // } else {
-
+      } 
+      // else {
+        //error 처리
       // }
     }
-  }
 
   return (
     <FormProvider {...method}>

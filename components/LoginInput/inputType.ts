@@ -17,14 +17,12 @@ const inputTypes = [
     Regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     message: '비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.',
     confirm: '비밀번호를 확인해 주세요',
-    src: { eyeOff, eyeOn },
   },
   {
     label: '비밀번호 확인',
-    id: 'password',
+    id: 'passwordCheck',
     placeholder: '비밀번호를 입력해 주세요.',
     confirm: '비밀번호가 일치하지 않아요.',
-    src: { eyeOff, eyeOn },
   },
 ];
 

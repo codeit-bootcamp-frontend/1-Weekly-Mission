@@ -7,7 +7,6 @@ import * as Style from './SocialShare.style';
 
 export default function SocialShare() {
   const sharedUrl = window.location.href;
-  console.log(sharedUrl)
   const { Kakao } = window;
   
   const handleCopyUrl = async (url : string) => {

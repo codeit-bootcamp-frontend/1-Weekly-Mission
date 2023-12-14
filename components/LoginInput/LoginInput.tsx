@@ -3,11 +3,13 @@ import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import inputType from './inputType';
-import * as Style from './LoginInput.style';
 import { theme } from '@/styles/theme';
+import eyeOff from '@/src/assets/Eye-off.svg';
+import eyeOn from '@/src/assets/Eye-on.svg';
+import * as Style from './LoginInput.style';
 
 export default function LoginInput({ type }) {
-  const { label, id, placeholder, message, Regex, confirm, src } =
+  const { label, id, placeholder, message, Regex, confirm} =
     inputType(type);
   const {
     register,
@@ -17,14 +19,7 @@ export default function LoginInput({ type }) {
   } = useFormContext();
   const [color, setColor] = useState<string | null>(null);
   const [value, setValue] = useState('');
-  const [passwordShown, setPasswordShown] = useState(false);
-  const [srcToggle, setSrcToggle] = useState(src?.eyeOff);
-  const togglePasswordVisible = () => {
-    setPasswordShown((prevPasswordShown) => !prevPasswordShown);
-    setSrcToggle((prevSrcToggle) =>
-      prevSrcToggle === src.eyeOff ? src.eyeOn : src.eyeOff
-    );
-  };
+  const [eye, setEye] = useState(false);
 
   const handleInputFocus = () => {
     setColor(`${theme.color.purpleblue}`);
@@ -54,7 +49,7 @@ export default function LoginInput({ type }) {
       <Style.InputBox color={color}>
         <Style.Input
           id={id}
-          type={id === 'password' ? (passwordShown ? 'text' : 'password') : id}
+          type={id.includes('password') ? (eye ? 'text' : 'password') : id}
           onFocus={handleInputFocus}
           placeholder={placeholder}
           value={value}
@@ -68,14 +63,14 @@ export default function LoginInput({ type }) {
             onChange: handleInputChange,
           })}
         />
-        {src && (
+        {id.includes('password') && (
           <Image
             className="eyeImage"
-            src={srcToggle}
+            src={eye ? eyeOn : eyeOff}
             alt="보기"
             width={16}
             height={16}
-            onClick={togglePasswordVisible}
+            onClick={() => setEye(!eye)}
           />
         )}
       </Style.InputBox>
