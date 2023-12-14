@@ -28,6 +28,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const result = await axios.get(`/folders`, { headers });
   const initialData: FolderList[] = result?.data?.data?.folder;
 
+  const res = await axios.get(`/links?folderId=${folderId}`, {
+    headers,
+  });
+  const initialFolderData = res?.data?.data?.folder;
+
   const folderIdList = initialData.map((data) => data.id);
   if (!folderIdList.includes(folderId)) {
     return {
@@ -38,6 +43,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       initialData,
+      initialFolderData,
       folderId,
     },
   };
@@ -45,6 +51,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 export default function FolderPage({
   initialData,
+  initialFolderData,
   folderId,
 }: folderIdPageProps) {
   const [userEmail, setUserEmail] = useState("");
@@ -63,6 +70,11 @@ export default function FolderPage({
   }
 
   const { data: fullList, mutate } = useSWR("/folders", fetcher, initialData);
+  const { data: totalData } = useSWR(
+    `/links?folderId=${String(folderId)}`,
+    fetcher,
+    initialFolderData
+  );
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -123,6 +135,7 @@ export default function FolderPage({
         fullList={fullList}
         folderId={folderId}
         mutate={mutate}
+        totalData={totalData}
       />
       <Article />
       <Footer />

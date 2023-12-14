@@ -56,7 +56,7 @@ const Card = ({ data }: FolderCardProps) => {
 
         <button className={s.starButton}>
           <Image
-            src="images/star.svg"
+            src="/images/star.svg"
             alt="즐겨찾기 이미지"
             width={30}
             height={30}
@@ -66,7 +66,7 @@ const Card = ({ data }: FolderCardProps) => {
           <span>{timePassed} ago</span>
           <button className={s.kebabButton} onClick={handleKebabClick}>
             <Image
-              src="images/kebab.svg"
+              src="/images/kebab.svg"
               alt="케밥 버튼 이미지"
               width={25}
               height={25}

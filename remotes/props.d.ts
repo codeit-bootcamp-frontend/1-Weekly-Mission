@@ -70,5 +70,6 @@ interface folderPageProps {
 
 interface folderIdPageProps {
   initialData: FolderList[];
+  initialFolderData: Link[];
   folderId: number;
 }

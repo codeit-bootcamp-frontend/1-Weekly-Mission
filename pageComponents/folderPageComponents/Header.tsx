@@ -155,8 +155,8 @@ const Header = ({
         return data;
       }
     });
-  } else if (isSingleClicked) {
-    searchedData = singleFolderData?.filter((data) => {
+  } else if (isSingleClicked && totalData) {
+    searchedData = totalData.filter((data) => {
       if (
         data?.url?.includes(inputValue) ||
         data?.title?.includes(inputValue) ||
@@ -376,10 +376,10 @@ const Header = ({
       {totalData && isTotalClicked && inputValue === "" && (
         <Cards fullData={totalData} />
       )}
-      {singleFolderData && isSingleClicked && inputValue === "" && (
-        <Cards fullData={singleFolderData} />
+      {totalData && isSingleClicked && inputValue === "" && (
+        <Cards fullData={totalData} />
       )}
-      {singleFolderData.length === 0 && isSingleClicked && (
+      {!totalData.length && isSingleClicked && (
         <div className={s.folderList}>저장된 링크가 없습니다</div>
       )}
       {!totalData && isTotalClicked && (
