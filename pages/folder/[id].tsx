@@ -58,7 +58,7 @@ export default function FolderPage({
     const headers = {
       Authorization: `Bearer ${accessToken}`,
     };
-    const result = await axios.get(`/folders`, { headers });
+    const result = await axios.get(url, { headers });
     return result?.data?.data?.folder;
   }
 

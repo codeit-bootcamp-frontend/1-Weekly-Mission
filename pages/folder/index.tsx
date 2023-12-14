@@ -47,21 +47,12 @@ export default function FolderPage({
     const headers = {
       Authorization: `Bearer ${accessToken}`,
     };
-    const result = await axios.get(`/folders`, { headers });
+    const result = await axios.get(url, { headers });
     return result?.data?.data?.folder;
   }
 
   const { data: fullList, mutate } = useSWR("/folders", fetcher, initialData);
-
-  async function fetcher2(url: string) {
-    const headers = {
-      Authorization: `Bearer ${accessToken}`,
-    };
-    const result = await axios.get(`/links`, { headers });
-    return result?.data?.data?.folder;
-  }
-
-  const { data: totalData } = useSWR("/links", fetcher2, initialFolderData);
+  const { data: totalData } = useSWR("/links", fetcher, initialFolderData);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
