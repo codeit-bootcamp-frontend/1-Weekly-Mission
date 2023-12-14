@@ -18,13 +18,14 @@ interface SharedPageHeaderProps {
 }
 
 interface FolderListProps {
-  fullData: Folders;
+  fullData: FolderList[];
   handleFolderClick: (folderId: unknown, folderName: string) => void;
   isTotalClicked: boolean;
+  folderId: number;
 }
 
 interface FolderListItemProps {
-  data: SingleFolder;
+  data: FolderList;
   handleFolderClick: (folderId: unknown, folderName: string) => void;
   isSelected: boolean;
   handleButtonClick: (id: number) => void;
@@ -62,4 +63,9 @@ interface SignHeaderProps {
 
 interface SignFooterProps {
   sentence: string;
+}
+
+interface folderIdPageProps {
+  fullList: FolderList[];
+  folderId: number;
 }

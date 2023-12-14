@@ -5,8 +5,9 @@ const FolderList = ({
   fullData,
   handleFolderClick,
   isTotalClicked,
+  folderId,
 }: FolderListProps) => {
-  const [selectedFolder, setSelectedFolder] = useState<number>();
+  const [selectedFolder, setSelectedFolder] = useState<number>(folderId);
 
   const handleButtonClick = (id: number) => {
     setSelectedFolder(id);
@@ -15,7 +16,7 @@ const FolderList = ({
   return (
     <>
       {fullData &&
-        fullData?.data?.map((data) => (
+        fullData.map((data) => (
           <FolderListItem
             key={data?.id}
             data={data}
