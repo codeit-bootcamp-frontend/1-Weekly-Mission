@@ -109,9 +109,9 @@ export default function SingInPage() {
             <Link href="https://www.google.com">
               <Image src={google} alt="google" />
             </Link>
-            <Link href="https://www.kakaocorp.com/page">
+            {/* <Link href="https://www.kakaocorp.com/page">
               <Image src="../../public/images/kakao.png" alt="kakao" />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </form>
