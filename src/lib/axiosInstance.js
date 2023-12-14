@@ -1,4 +1,7 @@
 import axios from "axios";
-export const axiosInstance = axios.create({
-  baseUrl: "https://bootcamp-api.codeit.kr/api/",
+
+const axiosInstance = axios.create({
+  baseUrl: "https://bootcamp-api.codeit.kr/api",
 });
+
+export default axiosInstance;

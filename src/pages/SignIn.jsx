@@ -4,6 +4,7 @@ import Input from "../../components/input/Input";
 import { Link } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import axios from "axios";
 const cx = classNames.bind(styles);
 
 const INPUT_TYPE = {
@@ -24,12 +25,16 @@ const ERROR_MESSAGE = {
 };
 export default function SignIn() {
   const form = useForm({ mode: "onBlur" });
-  const { register, handleSubmit, control, formState, setError } = form;
-  const { isSubmitting, errors } = formState;
+  const { handleSubmit, control, formState } = form;
+  const { isSubmitting } = formState;
 
-  const onSubmit = (e) => {
-    console.log("hi");
-    console.log("form submitted", e);
+  const onSubmit = async (e) => {
+    const postData = { email: e.email, password: e.password };
+    console.log(postData);
+    await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
+      email: "codeit@codeit.com",
+      password: "sprint101",
+    });
   };
 
   return (
