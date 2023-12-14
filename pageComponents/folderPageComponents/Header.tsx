@@ -379,7 +379,7 @@ const Header = ({
       {totalData && isSingleClicked && inputValue === "" && (
         <Cards fullData={totalData} />
       )}
-      {!totalData.length && isSingleClicked && (
+      {!totalData && isSingleClicked && (
         <div className={s.folderList}>저장된 링크가 없습니다</div>
       )}
       {!totalData && isTotalClicked && (
