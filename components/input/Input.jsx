@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import styles from "./Input.module.css";
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
@@ -16,50 +16,57 @@ const ERROR_MESSAGE = {
 const REG_EMAIL = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 const REG_PASSWORD = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
-function Input({ type, ...props }) {
-  const inputDom = useRef();
-  const [error, setError] = useState("");
+export default forwardRef(function Input(
+  { type, value, onChange, hasError, errorText, onBlur, ...props },
+  ref
+) {
+  // const inputDom = useRef();
+  // const [error, setError] = useState("");
   const [isOpenIcon, setIsOpenIcon] = useState(false);
-
   const [passwordType, setPasswordType] = useState(type);
-  const handleBlur = () => {
-    const value = inputDom.current.value;
-    let errorMessage = "";
-    switch (type) {
-      case "email":
-        if (!value) {
-          errorMessage = ERROR_MESSAGE.emailRequired;
-          break;
-        }
-        if (!REG_EMAIL.test(value)) {
-          errorMessage = ERROR_MESSAGE.emailInvalid;
-        }
-        break;
 
-      case "password":
-        if (!value) {
-          errorMessage = ERROR_MESSAGE.passwordRequired;
-          break;
-        }
-        if (!REG_PASSWORD.test(value)) {
-          errorMessage = ERROR_MESSAGE.passwordInvalid;
-        }
+  // const handleBlur = () => {
+  //   const value = inputDom.current.value;
+  //   let errorMessage = "";
+  //   switch (type) {
+  //     case "email":
+  //       if (!value) {
+  //         errorMessage = ERROR_MESSAGE.emailRequired;
+  //         break;
+  //       }
+  //       if (!REG_EMAIL.test(value)) {
+  //         errorMessage = ERROR_MESSAGE.emailInvalid;
+  //       }
+  //       break;
 
-        break;
-    }
-    setError(errorMessage);
-  };
+  //     case "password":
+  //       if (!value) {
+  //         errorMessage = ERROR_MESSAGE.passwordRequired;
+  //         break;
+  //       }
+  //       if (!REG_PASSWORD.test(value)) {
+  //         errorMessage = ERROR_MESSAGE.passwordInvalid;
+  //       }
+
+  //       break;
+  //   }
+  //   setError(errorMessage);
+  // };
 
   const handleClick = () => {
     setPasswordType(passwordType === "password" ? "text" : "password");
-
     setIsOpenIcon(isOpenIcon ? false : true);
   };
+
   return (
     <>
       <input
-        ref={inputDom}
-        onBlur={handleBlur}
+        ref={ref}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        // ref={inputDom}
+        // onBlur={handleBlur}
         className={cx("flex-center", "input")}
         type={passwordType}
         {...props}
@@ -71,9 +78,7 @@ function Input({ type, ...props }) {
         </button>
       )}
 
-      <p className={cx("error")}>{error}</p>
+      {hasError && <p className={cx("error")}>{errorText}</p>}
     </>
   );
-}
-
-export default Input;
+});
