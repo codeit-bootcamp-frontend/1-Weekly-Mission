@@ -9,10 +9,6 @@ const INPUT_TYPE = {
   password: { type: "password", placeholder: "비밀번호를 입력해주세요." },
 };
 export default function SignIn() {
-  const [emailInput, setEmailInput] = useState("");
-
-
-
   return (
     <main className={cx("signin-main")}>
       <div className={cx("logo-and-signup")}>
@@ -35,8 +31,6 @@ export default function SignIn() {
               type={INPUT_TYPE.email.type}
               placeholder={INPUT_TYPE.email.placeholder}
             />
-
-            <p className={cx("error")}></p>
           </div>
           <div className={cx("input-box")}>
             <label htmlFor="password">비밀번호</label>
@@ -46,12 +40,6 @@ export default function SignIn() {
                 type={INPUT_TYPE.password.type}
                 placeholder={INPUT_TYPE.password.placeholder}
               />
-
-              <img
-                className={cx("eye-Image")}
-                src="images/signin/eye-off.svg"
-              />
-              <p className={cx("error")}></p>
             </div>
           </div>
 

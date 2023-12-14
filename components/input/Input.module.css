@@ -5,3 +5,18 @@
   border: 1px solid var(--linkbrary-gray-20);
   background: var(--linkbrary-white);
 }
+
+.error {
+  color: var(--linkbrary-red);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.eye-Image {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
