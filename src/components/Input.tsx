@@ -1,5 +1,9 @@
 import { InputHTMLAttributes, ReactNode, forwardRef, useState } from 'react';
-import { UseControllerProps, useController } from 'react-hook-form';
+import {
+  FieldValues,
+  UseControllerProps,
+  useController,
+} from 'react-hook-form';
 import { IconEyeOff, IconEyeOn } from '@/public/svgs';
 
 interface InputProps {
@@ -45,14 +49,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = 'Input';
 
-interface InputContainerProps<T extends Record<string, any>>
+interface InputContainerProps<T extends FieldValues>
   extends UseControllerProps<T> {
   children: ReactNode;
   placeholder?: string;
   type?: string;
 }
 
-export function InputContainer<T extends Record<string, any>>({
+export function InputContainer<T extends FieldValues>({
   children,
   placeholder = '값을 입력하세요.',
   type = 'text',
