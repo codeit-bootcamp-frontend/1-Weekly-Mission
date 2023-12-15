@@ -10,6 +10,8 @@ export const withAuth = (Component: any) => (props: any) => {
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       router.push("/folder");
+    } else {
+      router.push("/signin");
     }
   }, [router]);
 
