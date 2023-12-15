@@ -19,7 +19,7 @@ const FolderLayout = () => {
   const { data: links, loading } = useGetLinks(selectedFolderId);
   const [searchQuery, setSearchQuery] = useState("");
   const filteredLinks = searchQuery
-    ? links.filter(
+    ? (links ?? []).filter(
         (link) =>
           link?.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
           link?.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -71,7 +71,7 @@ const FolderLayout = () => {
       <S.FolderPageWrap>
         <div ref={topRef} style={{ height: "1px", position: "absolute", top: "0" }}></div>
         <S.FolderPage>
-          {loading ? (
+          {loading || !filteredLinks ? (
             <LoadingSpinner />
           ) : (
             <>

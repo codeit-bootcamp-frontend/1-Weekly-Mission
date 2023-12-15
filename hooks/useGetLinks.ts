@@ -19,10 +19,10 @@ export const useGetLinks = (folderId: string) => {
     description,
   });
 
-  const linksData = data?.data?.map(mapDataFormat).map(mapLinksData) ?? [];
+  const linksData = data?.data?.map(mapDataFormat).map(mapLinksData);
 
   useEffect(() => {
-    execute();
+    if (folderId) execute();
   }, [folderId, execute]);
 
   return { execute, loading, error, data: linksData };
