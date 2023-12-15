@@ -1,3 +1,4 @@
+import { FieldError } from "react-hook-form";
 import styled from "styled-components";
 
 export const InputContainer = styled.div`
@@ -30,12 +31,13 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const Input = styled.input<{ "aria-invalid": string }>`
+export const Input = styled.input<{ $isError: boolean }>`
   box-sizing: border-box;
   border-radius: 0.8rem;
   padding: 1.8rem 1.5rem;
   background: var(--white);
-  border: ${(props) => props["aria-invalid"]};
+  border: ${(props) =>
+    props.$isError ? "1px solid var(--red)" : "1px solid var(--gray20)"};
   width: 40rem;
   height: 6rem;
   color: var(--gray100);

@@ -143,7 +143,7 @@ const Signup = () => {
             control={control}
             name={"passwordConfirm"}
           />
-          <GradientButton type={"submit"}>회원가입</GradientButton>
+          <GradientButton type="submit">회원가입</GradientButton>
         </form>
       }
     />

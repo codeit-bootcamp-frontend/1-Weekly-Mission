@@ -1,7 +1,7 @@
 import Image from "next/image";
 import EyeOn from "@/public/assets/common/img_eyeOn.png";
 import EyeOff from "@/public/assets/common/img_eyeOff.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input, InputContainer } from "./userInputStyled";
 import { Control, FieldPath, useController } from "react-hook-form";
 
@@ -37,9 +37,7 @@ const PasswordInput = (props: UserInputProps) => {
       <label htmlFor={label}>{obj[label]}</label>
       <div className="inputBox">
         <Input
-          aria-invalid={
-            error ? "1px solid var(--red)" : "1px solid var(--gray20)"
-          }
+          $isError={error !== undefined}
           type={isPasswordVisible ? "text" : "password"}
           id={label}
           placeholder={placeholder}
@@ -57,13 +55,7 @@ const PasswordInput = (props: UserInputProps) => {
           onClick={() => setIsPasswordVisible(!isPasswordVisible)}
         />
       </div>
-      {error?.type === "required" && (
-        <div className="errorMsg">{error.message}</div>
-      )}
-      {error?.type === "validate" && (
-        <div className="errorMsg">{error.message}</div>
-      )}
-      {error?.type === "pattern" && (
+      {error && ["required", "pattern", "validate"].includes(error?.type) && (
         <div className="errorMsg">{error.message}</div>
       )}
     </InputContainer>

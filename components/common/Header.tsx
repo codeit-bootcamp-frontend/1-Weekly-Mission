@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import request from "@/lib/axios";
-import Button from "@/components/button/Button";
 import { ApiMapper } from "@/lib/apiMapper";
 import { HeaderContainer, ProfileContainer } from "./headerStyled";
 import GradientButton from "../button/GradientButton";
