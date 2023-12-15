@@ -8,17 +8,21 @@ import Searchbar from "@/components/inputs/Searchbar";
 import Hero from "@/components/hero/Hero";
 import Loading from "@/components/Loading";
 
-import { Owner } from "@/types/user";
-import { SampleFolderData, SampleLinkData } from "@/types/folder";
+import { SampleLinkData, SharedFolderData } from "@/types/folder";
+
+const TEST_FOLDER_ID = 40;
 
 export default function Share() {
-  const [folder, setFolder] = useState("");
-  const [profile, setProfile] = useState<Owner>({ id: 0, name: "", profileImageSource: "" });
+  // const [folder, setFolder] = useState<SharedFolderData>(initialValue);
+  // const [profile, setProfile] = useState<Owner>({ id: 0, name: "", profileImageSource: "" });
   const [links, setLinks] = useState<SampleLinkData[]>([]);
   const [filteredLinks, setFilteredLinks] = useState<SampleLinkData[]>([]);
   const [keyword, setKeyword] = useState("");
 
-  const { data, isLoading, error } = useSWR<SampleFolderData>("/api/sample/folder");
+  const { data, isLoading, error } = useSWR<{ data: SharedFolderData[] }>(
+    `/api/folders/${TEST_FOLDER_ID}`,
+  );
+  console.log(data?.data[0].name); // 삭제예정
 
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -42,16 +46,15 @@ export default function Share() {
     return filteredLinks;
   };
 
-  useEffect(() => {
-    if (data) {
-      const { name: folderName, owner, links } = data.folder;
-
-      setFolder(folderName);
-      setProfile(owner);
-      setLinks(links);
-      setFilteredLinks(links);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     const { name: folderName, user_id } = data.data;
+  //     // setFolder(data);
+  //     // setProfile(owner);
+  //     setLinks(links);
+  //     setFilteredLinks(links);
+  //   }
+  // }, [data]);
 
   if (error) console.log(error);
 
@@ -61,9 +64,7 @@ export default function Share() {
         <Loading />
       ) : (
         <Layout>
-          <S.HeroContainer>
-            <Hero folder={folder} profile={profile} />
-          </S.HeroContainer>
+          <S.HeroContainer>{data && <Hero folder={data?.data[0]} />}</S.HeroContainer>
           <section>
             <S.Contents>
               <Searchbar
