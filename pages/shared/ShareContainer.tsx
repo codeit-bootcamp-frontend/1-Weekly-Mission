@@ -8,26 +8,29 @@ import Searchbar from "@/components/inputs/Searchbar";
 import Hero from "@/components/hero/Hero";
 import Loading from "@/components/Loading";
 
-import { SampleLinkData, SharedFolderData } from "@/types/folder";
+import { LinkData, SharedFolderData } from "@/types/folder";
 
-const TEST_FOLDER_ID = 40;
+/** @TODO 폴더id 가져오기 */
+const TEST_FOLDER_ID = 16;
 
 export default function Share() {
-  // const [folder, setFolder] = useState<SharedFolderData>(initialValue);
-  // const [profile, setProfile] = useState<Owner>({ id: 0, name: "", profileImageSource: "" });
-  const [links, setLinks] = useState<SampleLinkData[]>([]);
-  const [filteredLinks, setFilteredLinks] = useState<SampleLinkData[]>([]);
+  const [links, setLinks] = useState<LinkData[]>([]);
+  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
   const [keyword, setKeyword] = useState("");
 
   const { data, isLoading, error } = useSWR<{ data: SharedFolderData[] }>(
     `/api/folders/${TEST_FOLDER_ID}`,
   );
-  console.log(data?.data[0].name); // 삭제예정
+  const { data: linksData } = useSWR<{ data: LinkData[] }>(
+    `/api/users/${data?.data[0].user_id}/links?folderId=${TEST_FOLDER_ID}`,
+  );
 
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-    const searchedLinks = checkMatchedAllLinks(e.target.value, links);
-    setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
+    if (linksData?.data) {
+      setKeyword(e.target.value);
+      const searchedLinks = checkMatchedAllLinks(e.target.value, linksData?.data);
+      setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
+    }
   };
 
   const handleDeletekeyword = () => {
@@ -35,7 +38,7 @@ export default function Share() {
     setFilteredLinks(links);
   };
 
-  const checkMatchedAllLinks = (keyword: string, links: SampleLinkData[]) => {
+  const checkMatchedAllLinks = (keyword: string, links: LinkData[]) => {
     const filteredLinks = links.filter((link) => {
       return (
         (link.title && link.title.includes(keyword)) ||
@@ -46,15 +49,12 @@ export default function Share() {
     return filteredLinks;
   };
 
-  // useEffect(() => {
-  //   if (data) {
-  //     const { name: folderName, user_id } = data.data;
-  //     // setFolder(data);
-  //     // setProfile(owner);
-  //     setLinks(links);
-  //     setFilteredLinks(links);
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (linksData) {
+      setLinks(linksData.data);
+      setFilteredLinks(linksData.data);
+    }
+  }, [linksData]);
 
   if (error) console.log(error);
 
