@@ -1,7 +1,19 @@
 import styled from "styled-components";
 import { SignType } from "./SignHead";
+import { checkEmailInput, checkPasswordInput } from "../utils";
+import { trySign } from "../utils";
 
-export function SignButton({ type }: { type: SignType }) {
+export interface SignButtonProps {
+  type: SignType;
+  email: string;
+  password: string;
+  reconfirmPassword?: string;
+}
+
+export function SignButton({ type, email, password, reconfirmPassword }: SignButtonProps) {
+  if (reconfirmPassword && password !== reconfirmPassword) checkPasswordInput("재확인", password, reconfirmPassword);
+  if (!reconfirmPassword || reconfirmPassword === password) trySign({ type, email, password });
+
   return (
     <TrySignButton>
       <ButtonText>{type}</ButtonText>

@@ -8,13 +8,16 @@ import styled from "styled-components";
 import { PC_SIZE, TABLET_SIZE } from "@/src/global/mediaQuery";
 
 function SignIn() {
+  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = React.useState("");
+
   return (
     <Container>
       <RegularLoginSection>
         <SignHeader type="로그인" />
-        <EmailInput type="로그인" />
-        <PasswordInput type="기본" />
-        <SignButton type="로그인" />
+        <EmailInput type="로그인" setEmail={setEmail} />
+        <PasswordInput type="기본" setPassword={setPassword} />
+        <SignButton type="로그인" email={email} password={password} />
       </RegularLoginSection>
       <SocialSign type="로그인" />
     </Container>

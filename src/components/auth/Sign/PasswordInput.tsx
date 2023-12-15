@@ -1,4 +1,3 @@
-import { IconEyeOff } from "@/public/assets";
 import styled from "styled-components";
 import Input from "../../UI/Input";
 import { checkPasswordInput } from "../utils";
@@ -10,9 +9,10 @@ export interface PasswordInputProps {
   type: InputType;
   password?: string;
   setPassword?: (arg0: string) => void;
+  setReconfirmPassword?: (arg0: string) => void;
 }
 
-export function PasswordInput({ type = "기본", password, setPassword }: PasswordInputProps) {
+export function PasswordInput({ type = "기본", password, setPassword, setReconfirmPassword }: PasswordInputProps) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleBlue = (e: any) => {
@@ -21,6 +21,7 @@ export function PasswordInput({ type = "기본", password, setPassword }: Passwo
     setErrorMessage(newErrorMessage);
 
     if (setPassword) setPassword(inputValue);
+    if (setReconfirmPassword) setReconfirmPassword(inputValue);
   };
 
   return (

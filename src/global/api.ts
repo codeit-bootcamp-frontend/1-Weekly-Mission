@@ -1,6 +1,6 @@
 import { SelectedFolderInfo } from "../types";
 
-const URL = "https://bootcamp-api.codeit.kr/api/";
+export const URL = "https://bootcamp-api.codeit.kr/api/";
 
 type userID = number;
 

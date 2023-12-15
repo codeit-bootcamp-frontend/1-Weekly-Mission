@@ -3,13 +3,19 @@ import Input from "../../UI/Input";
 import { checkEmailInput } from "../utils";
 import { useState } from "react";
 
-export function EmailInput({ type }: { type: "로그인" | "회원가입" }) {
+interface EmailInputProps {
+  type: "로그인" | "회원가입";
+  setEmail: (arg0: string) => void;
+}
+
+export function EmailInput({ type, setEmail }: EmailInputProps) {
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleBlue = (e: any) => {
+  const handleBlue = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    let newErrorMessage = checkEmailInput(type, inputValue);
+    let newErrorMessage = await checkEmailInput(type, inputValue);
     setErrorMessage(newErrorMessage);
+    setEmail(inputValue);
   };
 
   return (

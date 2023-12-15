@@ -8,15 +8,17 @@ import { Container, RegularLoginSection } from "./signIn";
 
 function SignUp() {
   const [password, setPassword] = React.useState("");
+  const [reconfirmPassword, setReconfirmPassword] = React.useState("");
+  const [email, setEmail] = React.useState("");
 
   return (
     <Container>
       <RegularLoginSection>
         <SignHeader type="회원가입" />
-        <EmailInput type="회원가입" />
+        <EmailInput type="회원가입" setEmail={setEmail} />
         <PasswordInput type="기본" setPassword={setPassword} />
-        <PasswordInput type="재확인" password={password} />
-        <SignButton type="회원가입" />
+        <PasswordInput type="재확인" password={password} setReconfirmPassword={setReconfirmPassword} />
+        <SignButton type="회원가입" email={email} password={password} reconfirmPassword={reconfirmPassword} />
       </RegularLoginSection>
       <SocialSign type="회원가입" />
     </Container>
