@@ -1,5 +1,6 @@
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 
 import { FolderContext } from "@/context/FolderContext";
 import FolderUI from "./FolderPresenter";
@@ -9,6 +10,7 @@ export const DEFAULT = "전체";
 const USER_ID = 1;
 
 export default function Folder() {
+  const router = useRouter();
   const [links, setLinks] = useState<LinkData[]>([]);
   const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
   const [folders, setFolders] = useState<FolderData[]>([]);
@@ -69,13 +71,20 @@ export default function Folder() {
   };
 
   useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      alert("로그인 후 이용가능합니다.");
+      router.push("/signin");
+    }
+  }, [router]);
+
+  useEffect(() => {
     if (linkData && folderData) {
       setLinks(linkData.data);
       setFilteredLinks(linkData.data);
       setFolders(folderData.data);
       updateFolderList(folderData.data);
     }
-  }, [linkData, folderData, selectedFolderId]);
+  }, [linkData, folderData, selectedFolderId, router]);
 
   if (linkError || folderError) {
     console.log(linkError || folderError);
