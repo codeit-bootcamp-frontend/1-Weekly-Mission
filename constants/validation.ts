@@ -1,6 +1,8 @@
 interface MEMBER_INTERFACE {
   [key: string]: {
-    [key: string]: string;
+    message: string;
+    require: string;
+    fail: string;
   };
 }
 
@@ -9,7 +11,9 @@ interface VALIDATION_TEXT_INTERFACE {
 }
 
 interface INPUT_PLACEHOLDER_INTERFACE {
-  [key: string]: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
 }
 
 const LABEL_TO_KOR: Record<string, string> = {
