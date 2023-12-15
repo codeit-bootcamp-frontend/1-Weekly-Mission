@@ -29,11 +29,9 @@ export default function SignIn() {
   const { isSubmitting } = formState;
 
   const onSubmit = async (e) => {
-    const postData = { email: e.email, password: e.password };
-    console.log(postData);
     await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
-      email: "codeit@codeit.com",
-      password: "sprint101",
+      email: e.email,
+      password: e.password,
     });
   };
 
