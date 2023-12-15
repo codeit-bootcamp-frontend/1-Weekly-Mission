@@ -6,10 +6,12 @@ interface Props {
   placeholder?: string;
   errorMessage?: string;
   type?: string;
+  handleBlue?: (e: any) => void;
 }
 
-function Input({ placeholder = "내용 입력", errorMessage, type: initialType = "text" }: Props) {
+function Input({ placeholder, errorMessage, type: initialType = "text", handleBlue }: Props) {
   const [type, setType] = useState(initialType);
+  const autoComplete = type === "email" ? type : undefined;
 
   const toggleShow = () => {
     setType((prevType) => {
@@ -23,7 +25,14 @@ function Input({ placeholder = "내용 입력", errorMessage, type: initialType 
 
   return (
     <Container>
-      <S_Input placeholder={placeholder} $error={Boolean(errorMessage)} type={type} />
+      <S_Input
+        placeholder={placeholder}
+        required
+        $error={Boolean(errorMessage)}
+        type={type}
+        autoComplete={autoComplete}
+        onBlur={handleBlue}
+      />
       {initialType === "password" && (
         <Toggle onClick={toggleShow}>
           {type === "password" && <IconEyeOff />}
@@ -40,7 +49,7 @@ export default Input;
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  /* gap: 0.4rem; */
   position: relative;
 `;
 
@@ -52,8 +61,6 @@ export const S_Input = styled.input<{ $error: boolean }>`
   background: var(--white);
   outline: none;
   font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 2.4rem;
   color: var(--gray100);
   &:placeholder {
     color: var(--gray60);
@@ -82,5 +89,5 @@ export const ErrorMessage = styled.div`
 export const Toggle = styled.button`
   position: absolute;
   right: 1.5rem;
-  top: 2.3rem;
+  top: 2rem;
 `;

@@ -2,6 +2,7 @@ import { SignGooGleIcon, SignKaKaoIcon } from "@/public/assets";
 import Link from "next/link";
 import styled from "styled-components";
 import { SignType } from "./SignHead";
+import { TABLET_SIZE } from "@/src/global/mediaQuery";
 
 export function SocialSign({ type }: { type: SignType }) {
   return (
@@ -26,7 +27,7 @@ const MobileGrid = styled.div`
   grid-template-columns: minmax(29rem, 40rem);
   justify-content: center;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${TABLET_SIZE}) {
     width: 100%;
   }
 `;
@@ -41,7 +42,7 @@ const Container = styled.div`
   border: 1px solid var(--gray60);
   background: var(--gray10);
 
-  @media (max-width: 767px) {
+  @media (max-width: ${TABLET_SIZE}) {
     width: 100%;
   }
 `;

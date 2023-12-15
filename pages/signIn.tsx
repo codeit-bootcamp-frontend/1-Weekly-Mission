@@ -1,17 +1,18 @@
-import { EmailInput } from "@/src/components/Sign/EmailInput";
-import { PasswordInput } from "@/src/components/Sign/PasswordInput";
-import { SignButton } from "@/src/components/Sign/SignButton";
-import { SignHeader } from "@/src/components/Sign/SignHead";
-import { SocialSign } from "@/src/components/Sign/SocialSign";
+import { EmailInput } from "@/src/components/auth/Sign/EmailInput";
+import { PasswordInput } from "@/src/components/auth/Sign/PasswordInput";
+import { SignButton } from "@/src/components/auth/Sign/SignButton";
+import { SignHeader } from "@/src/components/auth/Sign/SignHead";
+import { SocialSign } from "@/src/components/auth/Sign/SocialSign";
 import * as React from "react";
 import styled from "styled-components";
+import { PC_SIZE, TABLET_SIZE } from "@/src/global/mediaQuery";
 
 function SignIn() {
   return (
     <Container>
       <RegularLoginSection>
         <SignHeader type="로그인" />
-        <EmailInput />
+        <EmailInput type="로그인" />
         <PasswordInput type="기본" />
         <SignButton type="로그인" />
       </RegularLoginSection>
@@ -22,7 +23,7 @@ function SignIn() {
 
 export default SignIn;
 
-const Container = styled.div`
+export const Container = styled.div`
   background: #f0f6ff;
   padding-top: 23.8rem;
   padding-bottom: 25.2rem;
@@ -31,17 +32,17 @@ const Container = styled.div`
   align-items: center;
   gap: 3.2rem;
 
-  @media (max-width: 1199px) {
+  @media (max-width: ${PC_SIZE}) {
     padding: 20rem 40rem 29rem;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: ${TABLET_SIZE}) {
     padding: 12rem 3.2rem 23.2rem 3.2rem;
     gap: 3.2rem;
   }
 `;
 
-const RegularLoginSection = styled.div`
+export const RegularLoginSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
