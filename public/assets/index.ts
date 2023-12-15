@@ -23,8 +23,12 @@ import IconEyeOff from "./eye-off.svg";
 import IconEyeOn from "./eye-on.svg";
 import ProfileEmptyIcon from "./Profile_empty_icon.svg";
 import CompletedImg from "./completed.svg";
+import SignGooGleIcon from "./Sign-google-icon.svg";
+import SignKaKaoIcon from "./Sign-kakaoTalk-icon.svg";
 
 export {
+  SignGooGleIcon,
+  SignKaKaoIcon,
   FooterIconFacebook,
   FooterIconTwitter,
   FooterIconInstagram,

@@ -26,7 +26,6 @@ function Folder() {
 
   if (selectedFolder) {
     const { data }: { data: SelectedFolderInfo[] } = selectedFolder;
-    //console.log(data);  여기에 콘솔로그를 찍으면 6번~9번이 찍힙니다..디펜던시도 따로 없는데 왜 여러번 찍힐까요?
 
     return (
       <Layout>
