@@ -13,7 +13,7 @@ export default function MainPage() {
         MainPage입니다.
         <br />
         <br />
-        <Link href="/shared" className={s.link}>
+        <Link href="/shared/1" className={s.link}>
           공유 페이지 버튼
         </Link>
         <Link href="/folder" className={s.link}>

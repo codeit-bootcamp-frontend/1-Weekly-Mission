@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import s from "./Nav.module.css";
 
-const Nav = ({ userEmail }: User) => {
+const Nav = ({ userEmail, userImage }: User) => {
   return (
     <>
       <nav className="folderPage-nav">
@@ -22,17 +22,10 @@ const Nav = ({ userEmail }: User) => {
               <div>
                 <Image
                   className="accountImg1"
-                  src="images/Ellipse.svg"
+                  src={userImage}
                   alt="계정 배경 이미지"
                   width={33}
                   height={33}
-                />
-                <Image
-                  className="accountImg2"
-                  src="images/myprofile.svg"
-                  alt="계정 이미지"
-                  width={15}
-                  height={15}
                 />
               </div>
               <div>
@@ -40,9 +33,9 @@ const Nav = ({ userEmail }: User) => {
               </div>
             </div>
           ) : (
-            <Link className="cta cta-short" href="signin.html">
+            <div className="cta cta-short">
               <span>로그인</span>
-            </Link>
+            </div>
           )}
         </div>
       </nav>

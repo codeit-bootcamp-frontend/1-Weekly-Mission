@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import Search from "@/components/Search";
 import FolderList from "./FolderList";
 import Cards from "./Cards";
@@ -7,32 +7,67 @@ import Image from "next/image";
 import s from "./Header.module.css";
 import { getSingleFolder } from "@/libs/getSingleFolder";
 import { MouseEvent } from "react";
+import { useRouter } from "next/router";
+import accessToken from "@/Token";
+import { KeyedMutator } from "swr";
 
 interface GetData {
   getData: (data: Folders) => void;
+  fullList: FolderList[];
+  folderId?: number;
+  mutate: KeyedMutator<any>;
+  totalData?: Link[];
 }
 
-const Header = ({ getData }: GetData) => {
-  const [fullList, setFullList] = useState<Folders>();
-  const [totalData, setTotalData] = useState<TotalData>();
-  const [isTotalClicked, setIsTotalClicked] = useState(false);
-  const [isSingleClicked, setIsSingleClicked] = useState(false);
+const Header = ({
+  getData,
+  fullList,
+  folderId,
+  mutate,
+  totalData,
+}: GetData) => {
+  const [isTotalClicked, setIsTotalClicked] = useState(folderId ? false : true);
+  const [isSingleClicked, setIsSingleClicked] = useState(
+    folderId ? true : false
+  );
   const [singleFolderDataId, setSingleFolderDataId] = useState<unknown>();
   const [singleFolderData, setSingleFolderData] = useState<SingleFolderData[]>(
     []
   );
-  const [singleFolderName, setSingleFolderName] = useState("");
+  const [singleFolderName, setSingleFolderName] = useState("테스트");
   const [isAddFolderClicked, setIsAddFolderClicked] = useState(false);
   const [isChangeFolderNameClicked, setIsChangeFolderNameClicked] =
     useState(false);
   const [isDeleteFolderClicked, setIsDeleteFolderClicked] = useState(false);
   const [isShareFolderClicked, setIsShareFolderClicked] = useState(false);
+  const [addFolderValue, setAddFolderValue] = useState("");
+  const router = useRouter();
 
   function handleAddFolderClick(
     e: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLImageElement>
   ) {
     e.preventDefault();
     setIsAddFolderClicked(!isAddFolderClicked);
+  }
+  async function handlePostFolderClick(e: MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    };
+    const requestBody = {
+      name: `${addFolderValue}`,
+    };
+    try {
+      const result = await axios.post(`/folders`, requestBody, { headers });
+      mutate();
+      setIsAddFolderClicked(!isAddFolderClicked);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  function handleAddFolderValueChange(e: ChangeEvent<HTMLInputElement>) {
+    setAddFolderValue(e.target.value);
   }
 
   function handleChangeFolderNameClick(
@@ -65,28 +100,12 @@ const Header = ({ getData }: GetData) => {
     }
   }
 
-  const getFolderLists = async () => {
-    const temp = await axios.get(`/users/1/folders`);
-    setFullList(temp?.data);
-  };
-
-  const getTotalData = async () => {
-    const temp = await axios.get(`/users/1/links`);
-    setTotalData(temp?.data);
-  };
-
-  useEffect(() => {
-    getFolderLists();
-  }, []);
-  useEffect(() => {
-    getTotalData();
-  }, []);
-
   function handleTotalClick() {
     if (isSingleClicked) {
       setIsSingleClicked(false);
     }
     setIsTotalClicked(true);
+    router.push("/folder");
   }
 
   const handleFolderClick = (folderId: unknown, folderName: string) => {
@@ -96,19 +115,8 @@ const Header = ({ getData }: GetData) => {
     setIsSingleClicked(true);
     setSingleFolderDataId(folderId as SingleFolderDataId | undefined);
     setSingleFolderName(folderName);
+    router.push(`/folder/${folderId}`);
   };
-
-  const [fullFolderData, setFullFolderData] = useState<Folders>({} as Folders);
-  const getFullFolderData = async () => {
-    const temp = await axios.get(`/users/1/folders`);
-    setFullFolderData(temp?.data);
-  };
-  useEffect(() => {
-    getFullFolderData();
-  }, []);
-  useEffect(() => {
-    getData(fullFolderData as Folders);
-  }, [fullFolderData]);
 
   const getSingleFolderData = async () => {
     const temp = await getSingleFolder(singleFolderDataId as number);
@@ -130,42 +138,15 @@ const Header = ({ getData }: GetData) => {
   function handleKakaoClick(e: MouseEvent<HTMLButtonElement>, url: string) {
     e.preventDefault();
     alert("Kakao SDK가 로드되지 않았습니다. 나중에 다시 시도해주세요.");
-    return;
-    const sharedUrl = url;
-    if (window.Kakao) {
-      window.Kakao.Link.sendDefault({
-        objectType: "feed",
-        content: {
-          title: "카카오톡 공유",
-          description: "카카오톡으로 주소를 공유합니다.",
-          imageUrl: "이미지 URL",
-          link: {
-            mobileWebUrl: sharedUrl,
-            webUrl: sharedUrl,
-          },
-        },
-        buttons: [
-          {
-            title: "웹에서 보기",
-            link: {
-              mobileWebUrl: sharedUrl,
-              webUrl: sharedUrl,
-            },
-          },
-        ],
-      });
-    } else {
-      alert("Kakao SDK가 로드되지 않았습니다. 나중에 다시 시도해주세요.");
-    }
   }
   const [inputValue, setInputValue] = useState("");
   function getInputValue(v: string) {
     setInputValue(v);
   }
-  let searchedData: SingleFolderData[] = [];
+  let searchedData: Link[] = [];
 
   if (isTotalClicked && totalData) {
-    searchedData = totalData?.data?.filter((data) => {
+    searchedData = totalData.filter((data) => {
       if (
         data?.url?.includes(inputValue) ||
         data?.title?.includes(inputValue) ||
@@ -174,8 +155,8 @@ const Header = ({ getData }: GetData) => {
         return data;
       }
     });
-  } else if (isSingleClicked) {
-    searchedData = singleFolderData?.filter((data) => {
+  } else if (isSingleClicked && totalData) {
+    searchedData = totalData.filter((data) => {
       if (
         data?.url?.includes(inputValue) ||
         data?.title?.includes(inputValue) ||
@@ -207,6 +188,7 @@ const Header = ({ getData }: GetData) => {
             fullData={fullList}
             handleFolderClick={handleFolderClick}
             isTotalClicked={isTotalClicked}
+            folderId={folderId}
           />
         )}
       </div>
@@ -235,8 +217,15 @@ const Header = ({ getData }: GetData) => {
                 height={30}
               />
             </div>
-            <input className={s.modalInput} placeholder="내용 입력"></input>
-            <button className={s.modalButton}>추가하기</button>
+            <input
+              value={addFolderValue}
+              onChange={handleAddFolderValueChange}
+              className={s.modalInput}
+              placeholder="내용 입력"
+            ></input>
+            <button className={s.modalButton} onClick={handlePostFolderClick}>
+              추가하기
+            </button>
           </div>
         </div>
       ) : null}
@@ -347,11 +336,9 @@ const Header = ({ getData }: GetData) => {
         </div>
       ) : null}
 
-      {totalData && isTotalClicked && (
-        <div className="header-summary">전체</div>
-      )}
+      {isTotalClicked && <div className="header-summary">전체</div>}
 
-      {singleFolderData && isSingleClicked && (
+      {singleFolderData.length === 0 && isSingleClicked && (
         <div className="header-summary">
           {singleFolderName}
           <div className="folder-data-util-buttons">
@@ -385,22 +372,17 @@ const Header = ({ getData }: GetData) => {
           </div>
         </div>
       )}
-      {searchedData && inputValue !== "" && (
-        <Cards fullData={searchedData} fullFolderData={fullFolderData?.data} />
-      )}
+      {searchedData && inputValue !== "" && <Cards fullData={searchedData} />}
       {totalData && isTotalClicked && inputValue === "" && (
-        <Cards
-          fullData={totalData?.data}
-          fullFolderData={fullFolderData?.data}
-        />
+        <Cards fullData={totalData} />
       )}
-      {singleFolderData && isSingleClicked && inputValue === "" && (
-        <Cards
-          fullData={singleFolderData}
-          fullFolderData={fullFolderData?.data}
-        />
+      {totalData && isSingleClicked && inputValue === "" && (
+        <Cards fullData={totalData} />
       )}
-      {singleFolderData.length === 0 && isSingleClicked && (
+      {!totalData && isSingleClicked && (
+        <div className={s.folderList}>저장된 링크가 없습니다</div>
+      )}
+      {!totalData && isTotalClicked && (
         <div className={s.folderList}>저장된 링크가 없습니다</div>
       )}
     </>

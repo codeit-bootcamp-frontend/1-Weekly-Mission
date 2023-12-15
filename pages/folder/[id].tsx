@@ -7,7 +7,7 @@ import AddLink from "@/components/AddLink";
 import axios from "@/libs/axios";
 import Head from "next/head";
 import Image from "next/image";
-import s from "./index.module.css";
+import s from "./[id].module.css";
 import { MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import { GetServerSidePropsContext } from "next";
@@ -15,19 +15,36 @@ import accessToken from "@/Token";
 import useSWR from "swr";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+  if (!context.params) {
+    return {
+      notFound: true,
+    };
+  }
+  const folderId = Number(context?.params["id"]);
+
   const headers = {
     Authorization: `Bearer ${accessToken}`,
   };
   const result = await axios.get(`/folders`, { headers });
   const initialData: FolderList[] = result?.data?.data?.folder;
 
-  const res = await axios.get(`/links`, { headers });
+  const res = await axios.get(`/links?folderId=${folderId}`, {
+    headers,
+  });
   const initialFolderData = res?.data?.data?.folder;
+
+  const folderIdList = initialData.map((data) => data.id);
+  if (!folderIdList.includes(folderId)) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
       initialData,
       initialFolderData,
+      folderId,
     },
   };
 }
@@ -35,7 +52,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 export default function FolderPage({
   initialData,
   initialFolderData,
-}: folderPageProps) {
+  folderId,
+}: folderIdPageProps) {
   const [userEmail, setUserEmail] = useState("");
   const [userImage, setUserImage] = useState("");
   const [data, setData] = useState<Folders>();
@@ -52,7 +70,11 @@ export default function FolderPage({
   }
 
   const { data: fullList, mutate } = useSWR("/folders", fetcher, initialData);
-  const { data: totalData } = useSWR("/links", fetcher, initialFolderData);
+  const { data: totalData } = useSWR(
+    `/links?folderId=${String(folderId)}`,
+    fetcher,
+    initialFolderData
+  );
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -111,6 +133,7 @@ export default function FolderPage({
       <Header
         getData={getData}
         fullList={fullList}
+        folderId={folderId}
         mutate={mutate}
         totalData={totalData}
       />

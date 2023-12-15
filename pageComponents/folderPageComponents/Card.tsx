@@ -5,7 +5,7 @@ import Link from "next/link";
 import s from "./Card.module.css";
 import { MouseEvent } from "react";
 
-const Card = ({ data, fullFolderData }: FolderCardProps) => {
+const Card = ({ data }: FolderCardProps) => {
   const {
     created_at,
     description,
@@ -41,10 +41,6 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
     setIsKebabAddClicked(!isKebabAddClicked);
   }
 
-  const selectList = fullFolderData.map((list) => {
-    return `${list.name}  ${list.link.count}개 링크`;
-  });
-
   return (
     <li className={s.li}>
       <Link href={url} target="_blank" rel="noreferrer" className={s.link}>
@@ -60,7 +56,7 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
 
         <button className={s.starButton}>
           <Image
-            src="images/star.svg"
+            src="/images/star.svg"
             alt="즐겨찾기 이미지"
             width={30}
             height={30}
@@ -70,7 +66,7 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
           <span>{timePassed} ago</span>
           <button className={s.kebabButton} onClick={handleKebabClick}>
             <Image
-              src="images/kebab.svg"
+              src="/images/kebab.svg"
               alt="케밥 버튼 이미지"
               width={25}
               height={25}
@@ -125,14 +121,6 @@ const Card = ({ data, fullFolderData }: FolderCardProps) => {
                 height={30}
                 onClick={handleKebabAddClick}
               />
-            </div>
-            <div>
-              {selectList.map((item) => (
-                <div className="Modal-list-input" key={item}>
-                  <label htmlFor="item">{item}</label>
-                  <input type="checkbox" name={item} id={item} />
-                </div>
-              ))}
             </div>
             <button className={s.addButton}>추가하기</button>
           </div>
