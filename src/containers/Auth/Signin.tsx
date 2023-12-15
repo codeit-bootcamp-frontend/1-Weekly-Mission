@@ -79,7 +79,7 @@ function Signin() {
           noValidate
           className='flex w-full flex-col gap-18pxr'
         >
-          <InputContainer
+          <InputContainer<FormValues>
             control={control}
             name='email'
             type='email'
@@ -94,7 +94,7 @@ function Signin() {
           >
             이메일
           </InputContainer>
-          <InputContainer
+          <InputContainer<FormValues>
             control={control}
             name='password'
             type='password'

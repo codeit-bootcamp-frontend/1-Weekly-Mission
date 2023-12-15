@@ -104,7 +104,7 @@ function Signup() {
           noValidate
           className='flex w-full flex-col gap-18pxr'
         >
-          <InputContainer
+          <InputContainer<FormValues>
             control={control}
             name='email'
             type='email'
@@ -119,7 +119,7 @@ function Signup() {
           >
             이메일
           </InputContainer>
-          <InputContainer
+          <InputContainer<FormValues>
             control={control}
             name='password'
             type='password'
@@ -134,7 +134,7 @@ function Signup() {
           >
             비밀번호
           </InputContainer>
-          <InputContainer
+          <InputContainer<FormValues>
             control={control}
             name='passwordCheck'
             type='password'
