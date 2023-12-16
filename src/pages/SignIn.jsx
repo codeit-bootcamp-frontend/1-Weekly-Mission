@@ -10,20 +10,33 @@ const cx = classNames.bind(styles);
 
 export default function SignIn() {
   const form = useForm({ mode: "onBlur" });
-  const { handleSubmit, control, formState } = form;
+  const { handleSubmit, control, formState, setError } = form;
   const { isSubmitting } = formState;
   const navigate = useNavigate();
   const onSubmit = async (e) => {
-    const res = await axios.post("/sign-in", {
-      email: e.email,
-      password: e.password,
-    });
+    try {
+      const res = await axios.post("/sign-in", {
+        email: e.email,
+        password: e.password,
+      });
 
-    if (res.status === 200) {
-      const { accessToken, refreshToken } = res.data.data;
-      localStorage.setItem("access_token", accessToken);
-      localStorage.setItem("refresh_token", refreshToken);
-      navigate("/folder");
+      if (res.status === 200) {
+        const { accessToken, refreshToken } = res.data.data;
+        localStorage.setItem("access_token", accessToken);
+        localStorage.setItem("refresh_token", refreshToken);
+        navigate("/folder");
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        setError("email", {
+          type: "invalid",
+          message: ERROR_MESSAGE.emailCheck,
+        });
+        setError("password", {
+          type: "invalid",
+          message: ERROR_MESSAGE.passwordCheck,
+        });
+      }
     }
   };
 

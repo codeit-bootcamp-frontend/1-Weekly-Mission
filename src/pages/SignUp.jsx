@@ -11,7 +11,6 @@ import {
   REG_EMAIL,
   REG_PASSWORD,
 } from "../util/constant";
-import axiosInstance from "../lib/axiosInstance";
 
 const cx = classNames.bind(styles);
 export default function SignUp() {
@@ -26,6 +25,9 @@ export default function SignUp() {
     });
 
     if (res.status === 200) {
+      const { accessToken, refreshToken } = res.data.data;
+      localStorage.setItem("access_token", accessToken);
+      localStorage.setItem("refresh_token", refreshToken);
       navigate("/folder");
     }
   };
