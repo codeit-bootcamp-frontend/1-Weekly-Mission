@@ -1,28 +1,21 @@
-import { useState, createContext } from 'react';
-import { Article, Header, Layout } from '@/components';
-import axios from '@/lib/axios';
-
-export async function getServerSideProps() {
-  const response = await axios.get(`users/1/links`);
-  const links = response?.data?.data;
-  const response2 = await axios.get(`/users/1/folders`);
-  const folders = response2?.data?.data;
-
-  return {
-    props: {
-      links,
-      folders,
-    },
-  };
-}
+import { useState, createContext, useEffect } from 'react';
+import { Article, Header, Layout } from '@/src/components';
+import { useAuth } from '@/src/lib/auth/AuthProvider';
 
 export const FooterContext = createContext({
   isFooterVisible: false,
   setIsFooterVisible: (visible: boolean) => {},
 });
 
-export default function FolderPage({ links, folders }) {
+export default function FolderPage() {
   const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const { folders, links, getFolders, getLinks } = useAuth(true);
+  
+  useEffect (() => {
+    getFolders();
+    getLinks();
+  },[])
+
 
   return (
     <FooterContext.Provider value={{ isFooterVisible, setIsFooterVisible }}>

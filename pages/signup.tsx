@@ -1,5 +1,7 @@
-import LoginLayout from '@/components/LoginLayout/LoginLayout';
-import LoginInput from '@/components/LoginInput/LoginInput';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { LoginLayout, LoginInput } from '@/src/components';
+import { useAuth } from '@/src/lib/auth/AuthProvider';
 
 const signUp = {
   isSignup: true,
@@ -8,14 +10,22 @@ const signUp = {
   href: '/signin',
   button: '회원가입',
   text: '다른 방식으로 가입하기',
-  formUrl: '/sign-up',
-  require: { email: '', password: '' },
 };
 
 export default function SignUp() {
+  const router = useRouter();
+  const { user } = useAuth();
+
+  useEffect (() => {
+    if(user) {
+      router.push('/folder')
+    }
+    return
+  },[user,router])
+
   return (
     <LoginLayout data={signUp}>
-      <LoginInput type="비밀번호 확인" />
+      <LoginInput type="passwordCheck" />
     </LoginLayout>
   );
 }

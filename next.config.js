@@ -15,6 +15,15 @@ const nextConfig = {
       'codeit-frontend.codeit.com',
       'codeit-images.codeit.com',
       'codeit-front.s3.ap-northeast-2.amazonaws.com',
+      'cdn.rallit.com',
+      'jasoseol.com',
+      "jpassets.jobplanet.co.kr",
+      "ssl.pstatic.net",
+      "react.dev",
+      "vuejs.org",
+      "svelte.dev" ,
+      "jquery.com",
+      
     ],
   },
   webpack: (config) => {
