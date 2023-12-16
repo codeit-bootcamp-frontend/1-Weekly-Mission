@@ -8,7 +8,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import google from "@/public/images/google.png";
 import kakao from "@/public/images/kakao.png";
 import { useRouter } from "next/router";
-import { FormValues } from "@/components/types/hookFormTypes";
+import { FormValues } from "@/types/hookFormTypes";
 export default function SingInPage() {
   const {
     register,

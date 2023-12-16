@@ -4,7 +4,7 @@ import styles from "./Input.module.css";
 import { ErrorMessage } from "@hookform/error-message";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { InputProps } from "../types/hookFormTypes";
+import { InputProps } from "@/types/hookFormTypes";
 
 export default function Input({
   type,

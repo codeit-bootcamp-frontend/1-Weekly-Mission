@@ -24,8 +24,7 @@ export default function SharedFolderIdPage({
   const [user, setUser] = useState();
   useEffect(() => {
     (async () => {
-      const currentToken = localStorage.getItem("myToken")!;
-      const shareUser = await getCurrentUser(currentToken);
+      const shareUser = await getCurrentUser();
       setUser(shareUser.data);
     })();
   }, []);
