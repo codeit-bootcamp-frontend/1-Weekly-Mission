@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { useEffect, useState } from "react";
 import { DOMAIN_URL } from "@/common/constants";
 
-export function useFolder() {
+export function useFolder(url: string) {
   const [accessToken, setAccessToken] = useState<string | null>();
 
   // accessToken 없을때 401 에러나는 로직
@@ -19,7 +19,7 @@ export function useFolder() {
     }
   };
 
-  const { data, isLoading, mutate } = useSWR("/api/folders", fetcher);
+  const { data, isLoading, mutate } = useSWR(url, fetcher);
 
   useEffect(() => {
     if (localStorage.getItem("accessToken") !== null) {
