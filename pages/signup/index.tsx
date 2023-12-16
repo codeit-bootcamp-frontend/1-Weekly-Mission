@@ -164,9 +164,9 @@ export default function SingUpPage() {
               <Link href="https://www.google.com">
                 <Image src={google} alt="google" />
               </Link>
-              {/* <Link href="https://www.kakaocorp.com/page">
+              <Link href="https://www.kakaocorp.com/page">
                 <Image src={kakao} alt="kakao" />
-              </Link> */}
+              </Link>
             </div>
           </div>
         </form>

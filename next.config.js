@@ -33,6 +33,7 @@ const nextConfig = {
       "codeit-images.codeit.com",
       "testing-library.com",
       "static.cdninstagram.com",
+      "ca.slack-edge.com",
     ],
   },
 };

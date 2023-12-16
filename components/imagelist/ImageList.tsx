@@ -14,7 +14,7 @@ export default function ImageList({ data }: { data: FolderContentsProps }) {
     return (
       <ul>
         <div className={styles.container}>
-          {links.map((item) => (
+          {links?.map((item) => (
             <li key={item.id}>
               <ImageListItem item={item} />
             </li>
@@ -26,7 +26,7 @@ export default function ImageList({ data }: { data: FolderContentsProps }) {
   return (
     <ul>
       <div className={styles.container}>
-        {links.map((item) => {
+        {links?.map((item) => {
           const { url, title, description } = item;
           if (
             url.includes(inputValue) ||

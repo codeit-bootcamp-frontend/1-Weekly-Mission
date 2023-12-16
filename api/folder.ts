@@ -1,3 +1,5 @@
+import instance from "@/utils/interceptors";
+
 type UserRequest = {
   userId: number;
   folderId?: string;
@@ -40,6 +42,23 @@ export type FolderLinks = {
   folder_id?: number;
 };
 
+// 15week type변경
+
+export type FolderDataProps = {
+  data: FolderData;
+};
+
+export type FolderData = {
+  folder: Folder[];
+};
+
+export type Folder = {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+};
+
 const baseUrl = new URL("https://bootcamp-api.codeit.kr");
 const getUrl = (path: string) => new URL(path, baseUrl);
 
@@ -75,4 +94,42 @@ export const fetchFolderLinks = async ({ userId, folderId }: UserRequest) => {
     const jsonData = await response.json();
     return jsonData;
   }
+};
+
+// 15 weekly mission 으로 인한 API변경
+
+export const AuthFolderData = async () => {
+  const requestUrl = getUrl("/api/folders");
+  const response = await instance.get(requestUrl.toString());
+  const result = await response.data;
+  return result;
+};
+
+// https://bootcamp-api.codeit.kr/api/links?folderId=1
+
+// export const AuthFolderLinks = async (
+//   accessToken: string,
+//   folderId?: string
+// ) => {
+//   const requestUrl = getUrl(`/api/links?folderId=${folderId}`);
+//   try {
+//     const response = await fetch(requestUrl, {
+//       method: "GET",
+//       headers: {
+//         Authorization: `Bearer ${accessToken}`,
+//       },
+//     });
+//     const result = await response.json();
+//     return result;
+//   } catch (error) {
+//     return error;
+//   }
+// };
+
+export const AuthFolderLinks = async (folderId?: string) => {
+  const folderIdParam = folderId ? `$folderId=${folderId}` : "";
+  const requestUrl = getUrl(`/api/links?${folderIdParam}`);
+  const response = await instance.get(requestUrl.toString());
+  const result = await response.data;
+  return result;
 };
