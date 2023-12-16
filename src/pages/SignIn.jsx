@@ -1,38 +1,30 @@
 import styles from "../styles/signin.module.css";
 import classNames from "classnames/bind";
 import Input from "../../components/input/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
-import axios from "axios";
+import axios from "../lib/axiosInstance";
+import { ERROR_MESSAGE, INPUT_TYPE, REG_EMAIL } from "../util/constant";
 const cx = classNames.bind(styles);
 
-const INPUT_TYPE = {
-  email: { type: "email", placeholder: "이메일을 입력해주세요." },
-  password: { type: "password", placeholder: "비밀번호를 입력해주세요." },
-};
-
-const REG_EMAIL = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-const REG_PASSWORD = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-
-const ERROR_MESSAGE = {
-  emailRequired: "이메일을 입력해 주세요.",
-  emailInvalid: "올바른 이메일 주소가 아닙니다.",
-  emailCheck: "이메일을 확인해 주세요.",
-  passwordRequired: "비밀번호를 입력해 주세요.",
-  passwordInvalid: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-  passwordCheck: "비밀번호를 확인해 주세요.",
-};
 export default function SignIn() {
   const form = useForm({ mode: "onBlur" });
   const { handleSubmit, control, formState } = form;
   const { isSubmitting } = formState;
-
+  const navigate = useNavigate();
   const onSubmit = async (e) => {
-    await axios.post("https://bootcamp-api.codeit.kr/api/sign-in", {
+    const res = await axios.post("/sign-in", {
       email: e.email,
       password: e.password,
     });
+
+    if (res.status === 200) {
+      const { accessToken, refreshToken } = res.data.data;
+      localStorage.setItem("access_token", accessToken);
+      localStorage.setItem("refresh_token", refreshToken);
+      navigate("/folder");
+    }
   };
 
   return (
@@ -44,7 +36,7 @@ export default function SignIn() {
           </Link>
         </div>
         <span>
-          회원이 아니신가요? <Link to="signup.html">회원 가입하기</Link>
+          회원이 아니신가요? <Link to="/signup">회원 가입하기</Link>
         </span>
       </div>
 
@@ -91,7 +83,7 @@ export default function SignIn() {
                   <Input
                     {...field}
                     type={INPUT_TYPE.password.type}
-                    placeholder={INPUT_TYPE.password.placeholder}
+                    placeholder={INPUT_TYPE.password.placeholder.signIn}
                     hasError={Boolean(fieldState.error)}
                     errorText={fieldState.error?.message}
                   />
