@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+.signin-main {
+  padding: 238px 0px 252px 0px;
+  background: var(--linkbrary-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-and-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 218px;
+  height: 78px;
+}
+
+.logo-and-signup .logo {
+  width: 210.583px;
+  height: 38px;
+}
+
+.logo-and-signup .logo img {
+  width: 100%;
+}
+
+.logo-and-signup span {
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.logo-and-signup span a {
+  color: var(--linkbrary-primary-color);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.input-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-frame form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-frame .input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.input-frame .input-box .input {
+  width: 400px;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-white);
+}
+
+.input-frame .input-box .password {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+
+.input-frame .input-box:focus {
+  border-color: #6d6afe;
+}
+
+.input-frame .login-button {
+  padding: 16px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--grey-light);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 600;
+  border-style: none;
+}
+
+.social-login {
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-gray-10);
+}
+
+.social-login span {
+  color: var(--linkbrary-gray-100);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.social-login .icons {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 767px) {
+  .signin-main {
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .signin-main > *,
+  .signin-main .input-frame form,
+  .input-frame .input-box #email,
+  .input-frame .input-box #password,
+  .input-frame .input-box #password-check,
+  .social-login {
+    width: 100%;
+    max-width: 400px;
+  }
+}
