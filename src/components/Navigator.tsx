@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { RefObject } from 'react';
+import { RefObject, useEffect } from 'react';
 import useRequest from '@/hooks/useRequest';
 import Button from '@/components/Button';
 import { IconLinkbrary } from '@/public/svgs';
@@ -25,12 +25,17 @@ interface UserInfo {
 }
 
 function Navigator({ isLoggedIn, userId, navRef }: Props) {
-  const { data } = useRequest<UserInfo>({
+  const { data, fetch } = useRequest<UserInfo>({
     skip: !isLoggedIn,
     options: {
-      url: `/users/${userId}`,
+      url: `/users`,
       method: 'get',
     },
+  });
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    fetch({ headers: { Authorization: `Bearer ${accessToken}` } });
   });
 
   const userInfo = data?.data?.[0];
