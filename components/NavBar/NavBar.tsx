@@ -1,17 +1,16 @@
-// NavBar.tsx 파일
-import { RefObject } from "react";
-
-import { useObserverContext } from "../../contexts/ObserverContext";
-import useIntersectionObserver from "../../hooks/useIntersectionObserver";
-
-import LoginButton from "./LoginButton";
-import logo from "../../assets/images/logo.svg";
-
-import styles from "./NavBar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
-import { useRouter } from "next/router";
+import { RefObject } from "react";
+
+import LoginButton from "./LoginButton";
+
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { useObserverContext } from "@/contexts/ObserverContext";
+
+import logo from "@/assets/images/logo.svg";
+
+import styles from "./NavBar.module.css";
 
 const navBarOptions = {
   root: null,

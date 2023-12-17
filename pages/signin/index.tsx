@@ -55,7 +55,7 @@ function SignIn() {
     }
 
     if (!user?.id) return;
-
+    console.log(user);
     const userId = user.id.toString();
 
     localStorage.setItem("userId", userId);

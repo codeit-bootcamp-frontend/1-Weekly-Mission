@@ -1,40 +1,48 @@
-import { useState } from "react";
-import { useSetUserId } from "../../contexts/UserContext";
 import ProfileInfo from "./ProfileInfo";
-import useAsync from "../../hooks/useAsync";
+
 import Button from "../Button/Button";
-import getUser from "../../api/getUser";
+
 import { useRouter } from "next/router";
 
 import styles from "./LoginButton.module.css";
+import { useEffect, useState } from "react";
+import removeTokens from "@/utils/removeTokens";
+import { useAuthContext } from "@/contexts/AuthContext";
 
 function LoginButton() {
   const router = useRouter();
-  const setUserId = useSetUserId();
-  const [userData, setUserData] = useState<UserData>();
-  const { pending: isLoading, wrappedFunction: getUserAsync } =
-    useAsync(getUser);
+  const { user } = useAuthContext();
+  const [userId, setUserId] = useState("");
+  const [accessToken, setAccessToken] = useState("");
 
-  const handleButtonClick = async () => {
-    const userResponseData = await getUserAsync({ userId: 1 });
-    const userId = userResponseData?.data?.[0]?.id;
-    const folderId = router.query.folder;
-
-    setUserData(userResponseData);
-    setUserId(userId);
-
-    router.push(`?user=${userId}&folder=${folderId || "all"}`);
+  const handleButtonClick = () => {
+    router.push("/signin");
   };
+  const handleLogout = () => {
+    removeTokens();
+    router.push("/");
+  };
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    const accessToken = localStorage.getItem("accessToken");
+    if (userId && accessToken) {
+      setUserId(userId);
+      setAccessToken(accessToken);
+    }
+  }, []);
 
   return (
     <div className={styles.buttonContainer}>
-      {userData?.data?.[0]?.email ? (
-        <ProfileInfo
-          email={userData.data[0].email}
-          profileImage={userData.data[0].image_source}
-        />
+      {userId && accessToken ? (
+        <>
+          <ProfileInfo email={user?.email} profileImage={user?.image_source} />
+          <Button onClick={handleLogout} size={12.8}>
+            로그아웃
+          </Button>
+        </>
       ) : (
-        <Button isLoading={isLoading} onClick={handleButtonClick} size={12.8}>
+        <Button onClick={handleButtonClick} size={12.8}>
           로그인
         </Button>
       )}

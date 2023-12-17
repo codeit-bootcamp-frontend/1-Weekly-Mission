@@ -1,4 +1,4 @@
-import { ReactNode, Dispatch, SetStateAction } from "react";
+import { ReactNode, Dispatch, SetStateAction, useEffect } from "react";
 import {
   useFolderId,
   useSetFolderId,
@@ -16,13 +16,12 @@ interface Props {
 function CategoryButton({ id, currentFolder, children }: Props) {
   const router = useRouter();
   const folderID = useFolderId();
-  const userId = useUserId();
   const setFolderId = useSetFolderId();
 
   const handleLoadClick = () => {
     currentFolder(String(children));
     setFolderId(id);
-    router.push(`?user=${userId}&folder=${id}`);
+    router.push(`/folder/${id}`);
   };
 
   const buttonClasses = `${styles.categoryButton} ${

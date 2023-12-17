@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GetServerSidePropsContext } from "next";
 
 import FolderInfo from "@/components/FolderInfo/FolderInfo";
@@ -8,56 +8,20 @@ import Search from "@/components/Search/Search";
 import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
 
-import { typeCheckParam } from "@/utils/utils";
-
 import styles from "@/assets/styles/sharedPage.module.css";
 import fetcher from "@/lib/axios";
 import CardList from "@/components/Card/CardList";
-import { useRouter } from "next/router";
 
-const SharedPage = () => {
-  const [userData, setUserData] = useState<UserData | undefined>();
-  const [folderData, setFolderData] = useState<UserFolderData | undefined>();
-  const [linksListData, setLinksListData] = useState<LinksData | undefined>();
-  const [searchData, setSearchData] = useState<LinksData | undefined>();
-  const router = useRouter();
+interface Props {
+  userData: UserData;
+  folderData: UserFolderData;
+  linksListData: LinksData;
+}
 
-  const folderId = router.query.folderId;
-  console.log(router);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetcher<UserFolderData>({
-          url: `/folders/${folderId}`,
-        });
-        const userId = response.data.data[0].user_id;
-        const [userDataResponse, userFolderResponse, linksResponse] =
-          await Promise.all([
-            fetcher<UserData>({ url: `/users/${userId}` }),
-            fetcher<UserFolderData>({
-              url: `/users/${userId}/folders/${folderId}`,
-            }),
-            fetcher<LinksData>({
-              url: `/users/${userId}/links?folderId=${folderId}`,
-            }),
-          ]);
-
-        const userData = userDataResponse.data;
-        const folderData = userFolderResponse.data;
-        const linksListData = linksResponse.data;
-
-        setUserData(userData);
-        setFolderData(folderData);
-        setLinksListData(linksListData);
-      } catch (error) {
-        // 에러 처리
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [folderId]);
+const SharedPage = ({ userData, folderData, linksListData }: Props) => {
+  const [searchData, setSearchData] = useState<LinksData | undefined>(
+    linksListData
+  );
 
   return (
     <>
@@ -86,3 +50,47 @@ const SharedPage = () => {
 };
 
 export default SharedPage;
+
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const { query } = context;
+  const folderId = query.folderId;
+
+  try {
+    if (folderId !== undefined) {
+      const response = await fetcher<UserFolderData>({
+        url: `/folders/${folderId}`,
+      });
+      const userId = response.data.data[0].user_id;
+      const [userDataResponse, userFolderResponse, linksResponse] =
+        await Promise.all([
+          fetcher<UserData>({ url: `/users/${userId}` }),
+          fetcher<UserFolderData>({
+            url: `/users/${userId}/folders/${folderId}`,
+          }),
+          fetcher<LinksData>({
+            url: `/users/${userId}/links?folderId=${folderId}`,
+          }),
+        ]);
+
+      return {
+        props: {
+          userData: userDataResponse.data,
+          folderData: userFolderResponse.data,
+          linksListData: linksResponse.data,
+        },
+      };
+    }
+  } catch (e) {
+    console.error(e);
+  }
+
+  return {
+    props: {
+      userData: null,
+      folderData: null,
+      linksListData: null,
+    },
+  };
+};
