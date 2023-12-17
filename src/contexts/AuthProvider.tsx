@@ -117,12 +117,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth(required = "false") {
   const context = useContext(AuthContext);
   const router = useRouter();
+
   if (!context) {
     throw new Error("반드시 AuthProvider 안에서 사용해야 합니다.");
   }
 
   useEffect(() => {
-    if (required && !context.isPending && !context.user) {
+    if (
+      router.route !== "/signup" &&
+      required &&
+      !context.isPending &&
+      !context.user
+    ) {
       router.push("/signin");
     }
   }, [context.user, context.isPending, required]);
