@@ -4,15 +4,13 @@ import { parse } from "path";
 const getAccessTokenFromCookies = (context: GetServerSidePropsContext) => {
   const cookies = context.req.headers.cookie;
 
-  let accessToken = "";
-
-  if (cookies) {
-    const parsedCookies = parse(cookies);
-    const base = parsedCookies.base;
-    accessToken = base.slice(12);
+  if (!cookies) {
+    return "";
   }
 
-  return accessToken;
+  const parsedCookies = parse(cookies);
+  const base = parsedCookies.base;
+  return base.slice(12);
 };
 
 export default getAccessTokenFromCookies;
