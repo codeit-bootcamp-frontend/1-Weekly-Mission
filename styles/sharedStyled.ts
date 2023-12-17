@@ -39,6 +39,26 @@ export const ContentContainer = styled.div<{ $isFolder: boolean }>`
 export const FolderContentContainer = styled(ContentContainer)`
   margin: 4rem auto 6rem;
   gap: 4rem;
+  min-width: 106rem;
+  @media all and (${device.tablet}) {
+    min-width: calc(100vw - 6.4rem);
+  }
+  @media all and (${device.mobile}) {
+    min-width: calc(100vw - 6.4rem);
+  }
+
+  .noLinkContainer {
+    color: #000;
+    width: 100%;
+    padding: 4.1rem 0 3.9rem;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+    @media all and (${device.mobile}) {
+      font-size: 1.4rem;
+    }
+  }
 `;
 
 export const CardContainer = styled.div`

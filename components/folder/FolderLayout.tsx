@@ -110,7 +110,7 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
 
   const handleFolder = useCallback(async () => {
     try {
-      const result = await request.get(ApiMapper.folder.get.GET_FOLDER, {
+      const result = await request.get(ApiMapper.folder.get.GET_FOLDERS, {
         path: { userId: 1 },
       });
 

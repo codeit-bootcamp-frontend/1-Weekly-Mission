@@ -12,10 +12,11 @@ import request from "@/lib/axios";
 import Input from "@/components/input/Input";
 import Card from "@/components/card/Card";
 import { ApiMapper } from "@/lib/apiMapper";
+import { useRouter } from "next/router";
 
 interface User {
   name: string;
-  profileImageSource: string;
+  image_source: string;
 }
 
 interface CardData {
@@ -27,17 +28,22 @@ const Shared = () => {
   const [user, setUser] = useState<User>();
   const [folderName, setFolderName] = useState<string>("");
   const [searchLinkValue, setSearchLinkValue] = useState("");
+  const router = useRouter();
+  const { id } = router.query;
+  const [userId, setUserId] = useState(null);
 
   const handleFolder = useCallback(async () => {
+    if (id === undefined) return;
     try {
-      const result = await request.get(ApiMapper.sample.get.GET_FOLDER);
+      const result = await request.get(
+        `${ApiMapper.folder.get.GET_FOLDER}/${Number(id)}`
+      );
 
       if (result.status === 200) {
-        const { folder } = result.data;
+        const { data } = result.data;
 
-        setCardData(folder.links);
-        setUser(folder.owner);
-        setFolderName(folder.name);
+        setFolderName(data[0].name);
+        setUserId(data[0].user_id);
         return;
       }
 
@@ -45,20 +51,69 @@ const Shared = () => {
     } catch (e) {
       alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
     }
-  }, []);
+  }, [id]);
+
+  const handleFolderUser = useCallback(async () => {
+    if (!userId) return;
+    try {
+      const result = await request.get(
+        `${ApiMapper.user.get.GET_USERS}/${userId}`
+      );
+
+      if (result.status === 200) {
+        const { data } = result.data;
+
+        setUser(data[0]);
+        return;
+      }
+
+      throw new Error();
+    } catch (e) {
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+    }
+  }, [userId]);
+
+  const handleLinks = useCallback(async () => {
+    if (!(userId && id)) return;
+    try {
+      const result = await request.get(`${ApiMapper.link.get.GET_LINKS}`, {
+        path: { userId: 1 },
+        query: { folderId: id },
+      });
+
+      if (result.status === 200) {
+        const { data } = result.data;
+
+        setCardData(data);
+        return;
+      }
+
+      throw new Error();
+    } catch (e) {
+      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
+    }
+  }, [userId, id]);
 
   useEffect(() => {
     handleFolder();
   }, [handleFolder]);
 
+  useEffect(() => {
+    handleFolderUser();
+  }, [handleFolderUser]);
+
+  useEffect(() => {
+    handleLinks();
+  }, [handleLinks]);
+
   return (
     <SharedWrapper>
       <Section $bg="var(--background)">
         <ContentContainer $isFolder={false}>
-          {user?.profileImageSource && (
+          {user?.image_source && (
             <Image
               id="userProfile"
-              src={user?.profileImageSource}
+              src={user?.image_source}
               alt="profileImg"
               width="60"
               height="60"
@@ -81,11 +136,15 @@ const Shared = () => {
             setValue={setSearchLinkValue}
           />
 
-          <CardContainer>
-            {cardData?.map((e) => {
-              return <Card key={e.id} cardData={e} isFolder={false} />;
-            })}
-          </CardContainer>
+          {cardData.length > 0 ? (
+            <CardContainer>
+              {cardData?.map((e) => {
+                return <Card key={e.id} cardData={e} isFolder={false} />;
+              })}
+            </CardContainer>
+          ) : (
+            <div className="noLinkContainer">저장된 링크가 없습니다</div>
+          )}
         </FolderContentContainer>
       </Section>
     </SharedWrapper>
