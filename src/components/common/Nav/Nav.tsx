@@ -15,8 +15,7 @@ function Nav({ isSticky }: { isSticky?: boolean }) {
     ? { className: `${styles["sticky"]} ${styles["nav"]}` }
     : { className: `${styles["nav"]}` };
 
-  const { user: profile, logout } = useAuth();
-
+  const { user, logout } = useAuth();
   return (
     <nav {...navClassName}>
       <div className={styles["gnb"]}>
@@ -29,7 +28,7 @@ function Nav({ isSticky }: { isSticky?: boolean }) {
             alt="로고 크기"
           />
         </Link>
-        {!profile ? (
+        {user === null ? (
           <button
             className={`${styles["link-button"]} ${styles["signin-button"]}`}
           >
@@ -38,12 +37,12 @@ function Nav({ isSticky }: { isSticky?: boolean }) {
         ) : (
           <div className={styles["user-info"]}>
             <Image
-              src={profile.image_source || "/public/images/no-profile.png"}
+              src={user.image_source || "/public/images/no-profile.png"}
               alt="profile"
               width={20}
               height={20}
             />
-            <span>{profile.email}</span>
+            <span>{user.email}</span>
             <button onClick={logout}>로그아웃</button>
           </div>
         )}
