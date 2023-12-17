@@ -16,18 +16,27 @@ import {
   useEffect,
   ReactNode,
 } from "react";
+import axios from "axios";
 import { axiosInstance } from "@/api/axiosInstance";
 import { getSignIn, getNewToken } from "@/api";
 import { useRouter } from "next/router";
 import { UserInterface } from "@/types";
 import { AxiosResponse } from "axios";
 
-export const AuthContext = createContext({
-  user: null as UserInterface | null,
-  isPending: true as boolean,
+interface INT {
+  user: null | UserInterface;
+  isPending: boolean;
+  login: any;
+  logout: any;
+}
+
+const initial: INT = {
+  user: null,
+  isPending: true,
   login: () => {},
   logout: () => {},
-});
+};
+export const AuthContext = createContext(initial);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [values, setValues] = useState<{
@@ -46,11 +55,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setValues((prev) => ({ ...prev, isPending: true }));
     let nextUser: UserInterface;
     try {
-      const res = await axiosInstance.get("/users", {
+      // const res = await axiosInstance.get("/users", {
+      // headers: { Authorization: accessToken },
+      // });
+      const res = await axios.get("https://bootcamp-api.codeit.kr/api/users", {
         headers: { Authorization: accessToken },
       });
       nextUser = res.data;
     } catch (e) {
+      console.log(e);
       if ((e as AxiosResponse<Error>)?.status === 401) {
         const {
           accessToken: newAccessToken = "",
@@ -74,8 +87,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // data 안에 accessToken과 refreshToken 이 있다.
   // 전역 변수 context.user의 값을 getMe로 업데이트해야 한다.
   async function login(email = "", password = "") {
-    const { accessToken, refreshToken } = await getSignIn(email, password);
-    await getMe(accessToken, refreshToken);
+    const { data } = await getSignIn(email, password);
+    await getMe(data.accessToken, data.refreshToken);
   }
 
   // TODO - 로그아웃 함수. 로그아웃하면 해당 유저 정보를 delete 리퀘를 보낸다. 어라 로그아웃 api 보내는 곳이 없네...
