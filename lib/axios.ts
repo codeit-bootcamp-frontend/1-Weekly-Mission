@@ -5,6 +5,7 @@ declare module "axios" {
   export interface AxiosRequestConfig {
     path?: {};
     query?: {};
+    type?: "auth" | "default";
   }
 }
 
@@ -18,6 +19,9 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
+    const { type = "default" } = config;
+    const accessToken = localStorage.getItem("accessToken");
+
     if (config.path && config.url) {
       for (const [key, value] of Object.entries(config.path)) {
         config.url = config.url.replace(`:${key}`, String(value));
@@ -27,6 +31,12 @@ request.interceptors.request.use(
     if (!isEmpty(config.query)) {
       const query = new URLSearchParams(config.query).toString();
       config.url += "?" + query;
+    }
+
+    if (type === "auth") {
+      if (accessToken) {
+        config.headers["Authorization"] = `Bearer ${accessToken}`;
+      }
     }
 
     return config;

@@ -5,7 +5,7 @@ import CloseIcon from "@/public/assets/modal/img_closeIcon.png";
 import CheckIcon from "@/public/assets/modal/img_checkIcon.png";
 import Image from "next/image";
 import { ModalMainContainer } from "../ModalStyledComponents";
-import { FolderData, SelectedFolder } from "@/pages/folder";
+import { FolderData, SelectedFolder } from "@/pages/folder/[id]";
 import { FolderContainer } from "./addToFolderModalStyled";
 import GradientButton from "@/components/button/GradientButton";
 

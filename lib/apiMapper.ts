@@ -1,6 +1,7 @@
 const URL_PATH = {
   SAMPLE_CONTROLLER: "/api/sample",
   USER_CONTROLLER: "/api/users",
+  LINK_CONTROLLER: "/api/links",
 };
 
 export const ApiMapper = {
@@ -25,7 +26,7 @@ export const ApiMapper = {
   },
   link: {
     get: {
-      GET_LINK: `${URL_PATH.USER_CONTROLLER}/:userId/links`,
+      GET_LINK: `${URL_PATH.LINK_CONTROLLER}`,
     },
   },
   auth: {

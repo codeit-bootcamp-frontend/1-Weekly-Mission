@@ -24,10 +24,13 @@ const Header = () => {
     id: null,
     image_source: "",
   });
+  const [accessToken, setAccessToken] = useState("");
 
   const handleProfile = useCallback(async () => {
     try {
-      const result = await request.get(`${ApiMapper.user.get.GET_USERS}/1`);
+      const result = await request.get(`${ApiMapper.user.get.GET_USERS}`, {
+        type: "auth",
+      });
       if (result.status === 200) {
         const { data } = result;
         setUserData(data.data[0]);
@@ -40,20 +43,27 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    handleProfile();
-  }, [handleProfile]);
+    if (accessToken) {
+      handleProfile();
+    }
+  }, [handleProfile, accessToken]);
 
   const handleLoginBtn = () => {
     router.push("/signin");
   };
 
   useEffect(() => {
-    if (pathname === "/folder") {
+    if (pathname.includes("/folder")) {
       setIsFixed(false);
       return;
     }
     setIsFixed(true);
   }, [pathname]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) setAccessToken(token);
+  }, []);
 
   return (
     <HeaderContainer $isFixed={isFixed}>
@@ -68,7 +78,7 @@ const Header = () => {
           onClick={() => router.push("/")}
         />
 
-        {userData.email ? (
+        {userData.image_source ? (
           <ProfileContainer>
             <Image
               src={userData.image_source}
