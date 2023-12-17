@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { fetchUserProfile } from "@/api/userProfile.api";
-import { fetchUserFolders } from "@/api/userFolders.api";
-import { fetchUserLinks } from "@/api/userLinks.api";
+import { fetchUserProfile } from "@/apis/userProfile.api";
+import { fetchUserFolders } from "@/apis/userFolders.api";
+import { fetchUserLinks } from "@/apis/userLinks.api";
 import { UserProfileItem, UserLinksItem, FolderItem } from "@/types/api";
 
 import { DEFAULT_USER_ID } from "@/constants/constant";
@@ -11,7 +11,8 @@ import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import FolderContainer from "@/containers/Folder/FolderContainer";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getUser } from "@/apis/getUser.api";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
@@ -22,13 +23,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       notFound: true,
     };
   }
+  // const { data: userProfile } = await getUser();
   const { data: userProfile } = await fetchUserProfile(DEFAULT_USER_ID);
   const { data: userFolders } = await fetchUserFolders(DEFAULT_USER_ID);
   const { data: userLinks } = await fetchUserLinks({
     userId: DEFAULT_USER_ID,
-    folderId: undefined,
+    folderId: id,
   });
 
+  console.log(userProfile);
   if (!userProfile && !userFolders && !userLinks) {
     return {
       notFound: true,
@@ -57,6 +60,7 @@ const FolderPage = ({
   const [userProfile] = useState(initialUserProfile);
   const [userLinks] = useState(initialUserLinks);
   const [userFolders] = useState(initialUserFolders);
+
   return (
     <StyledMainBox>
       <StyledHeader>

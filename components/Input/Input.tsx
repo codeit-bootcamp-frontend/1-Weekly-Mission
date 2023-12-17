@@ -1,10 +1,4 @@
-import {
-  UseFormRegister,
-  FieldErrors,
-  FieldValues,
-  UseFormHandleSubmit,
-  SubmitHandler,
-} from "react-hook-form";
+import { UseFormRegister, FieldErrors, FieldValues } from "react-hook-form";
 import styled from "styled-components";
 
 import useToggle from "@/hooks/useToggle";
@@ -21,25 +15,10 @@ interface InputProps {
   labelText: "email" | "password" | "passwordConfirm";
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors<FieldValues>;
-  handleSubmit: UseFormHandleSubmit<FieldValues>;
-  onSubmit: SubmitHandler<FieldValues>;
 }
 
-const Input = ({
-  labelText,
-  register,
-  errors,
-  handleSubmit,
-  onSubmit,
-}: InputProps) => {
+const Input = ({ labelText, register, errors }: InputProps) => {
   const { isOn: isVisible, toggle: handleVisibility } = useToggle();
-
-  const handleEnter = (e: any) => {
-    e.preventDefault();
-    if (e.type === "keydown" && e.code === "Enter") {
-      handleSubmit(onSubmit)();
-    }
-  };
 
   return (
     <StyledInputOuterBox>
@@ -50,7 +29,6 @@ const Input = ({
           placeholder={INPUT_PLACEHOLDER[labelText]}
           autoFocus={labelText === "email"}
           type={labelText === "email" || isVisible ? "text" : "password"}
-          onKeyDown={(e) => handleEnter(e)}
           {...register(labelText, {
             required: ERROR_MESSAGE[labelText]["require"],
             pattern: {
@@ -60,7 +38,7 @@ const Input = ({
           })}
         />
         {LABEL_TO_KOR[labelText] !== "이메일" && (
-          <StyledButton onClick={(e) => handleVisibility(e)}>
+          <StyledButton onClick={(e) => handleVisibility(e)} type="button">
             {isVisible ? (
               <EyeOnImage alt="비밀번호 숨기기 버튼" />
             ) : (

@@ -8,31 +8,18 @@ import Button from "@/components/Button/Button";
 
 const SignupContainer = () => {
   const { handleSubmit, onSubmit, register, errors } = useSignup();
+
   return (
     <StyledContainerBox>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <MemberTop text1="이미 회원이신가요?" text2="로그인 하기" />
         <StyledOuterInputBox>
-          <Input
-            labelText="email"
-            register={register}
-            errors={errors}
-            handleSubmit={handleSubmit}
-            onSubmit={onSubmit}
-          />
-          <Input
-            labelText="password"
-            register={register}
-            errors={errors}
-            handleSubmit={handleSubmit}
-            onSubmit={onSubmit}
-          />
+          <Input labelText="email" register={register} errors={errors} />
+          <Input labelText="password" register={register} errors={errors} />
           <Input
             labelText="passwordConfirm"
             register={register}
             errors={errors}
-            handleSubmit={handleSubmit}
-            onSubmit={onSubmit}
           />
         </StyledOuterInputBox>
         <Button text="회원가입" size="wide" buttonColor="blue" />

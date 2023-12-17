@@ -1,20 +1,22 @@
-import { fetchGet } from "@/api/api";
+import { fetchGet } from "@/apis/api";
 import { UserLinksItem } from "@/types/api";
+import { useState } from "react";
 
 interface useSearchbarProps {
-  setSearchText: (value: string) => void;
   setShowCards: (value: UserLinksItem[]) => void;
   DEFAULT_USER_ID: number;
-  cards: UserLinksItem[];
+  initialUserLinks: UserLinksItem[];
 }
 
 /** 검색창에서 검색을 통한 카드 데이터를 보여주는 함수 */
 const useSearchbar = ({
-  cards,
-  setSearchText,
+  // cards,
+  initialUserLinks: cards,
   setShowCards,
   DEFAULT_USER_ID,
 }: useSearchbarProps) => {
+  const [searchText, setSearchText] = useState("");
+
   const handleSearchbar = async (searchedText: string) => {
     setSearchText(searchedText);
     if (searchedText.length > 0) {
@@ -36,7 +38,7 @@ const useSearchbar = ({
     }
   };
 
-  return { handleSearchbar };
+  return { handleSearchbar, searchText };
 };
 
 export default useSearchbar;

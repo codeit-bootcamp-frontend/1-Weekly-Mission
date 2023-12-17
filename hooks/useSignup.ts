@@ -1,12 +1,17 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
-import { fetchCheckEmail } from "@/api/checkEmail.api";
-import { fetchSignup } from "@/api/signup.api";
+import { fetchCheckEmail } from "@/apis/checkEmail.api";
+import { fetchSignup } from "@/apis/signup.api";
 import {
   ERROR_MESSAGE,
   ERROR_MESSAGE_PASSWORD_PASSWORD_CONFIRM,
 } from "@/constants/validation";
+import { folderPage } from "@/constants/router";
+import {
+  localStorageAccessToken,
+  localStorageRefreshToken,
+} from "@/constants/localStorage";
 
 const useSignup = () => {
   const {
@@ -30,31 +35,29 @@ const useSignup = () => {
       return;
     }
 
-    // 이메일 중복 확인
     try {
+      // 이메일 중복 확인
       await fetchCheckEmail({ email });
+
+      // 회원가입
+      const { data } = await fetchSignup({ email, password });
+      localStorage.setItem(localStorageAccessToken, data.accessToken);
+      localStorage.setItem(localStorageRefreshToken, data.refreshToken);
+      router.push(folderPage);
     } catch (e) {
       let message;
       if (e instanceof Error) message = e.message;
       else message = String(e);
-      if (message.slice(0, 3) === "409") {
+
+      if (message === "409이미 존재하는 이메일입니다.") {
         setError("email", { message: message.slice(3) });
       } else {
         setError("email", { message: ERROR_MESSAGE.email.fail });
+        setError("password", { message: ERROR_MESSAGE.password.fail });
+        setError("passwordConfirm", {
+          message: ERROR_MESSAGE.passwordConfirm.fail,
+        });
       }
-      setError("password", { message: ERROR_MESSAGE.password.fail });
-      setError("passwordConfirm", {
-        message: ERROR_MESSAGE.passwordConfirm.fail,
-      });
-    }
-
-    // 회원가입
-    try {
-      const { data } = await fetchSignup({ email, password });
-      localStorage.setItem("accessToken", data.accessToken);
-      router.push("/folder");
-    } catch (e) {
-      console.log(e); // 무슨 에러인가
     }
   };
 

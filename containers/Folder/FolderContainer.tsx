@@ -7,6 +7,7 @@ import FolderMenubar from "../../components/Folder/FolderMenubar";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import NoLink from "./NoLink";
 import useFolder from "@/hooks/useFolder";
+import { DEFAULT_USER_ID } from "@/constants/constant";
 
 interface FolderContainerProps {
   initialUserLinks: UserLinksItem[];
@@ -23,7 +24,7 @@ const FolderContainer = ({
     currentFolderId,
     selectedFolderName,
     handleSearchbar,
-  } = useFolder({ initialUserLinks, userFolders });
+  } = useFolder({ initialUserLinks, userFolders, DEFAULT_USER_ID });
 
   return (
     <StyledCardContainerBox>
