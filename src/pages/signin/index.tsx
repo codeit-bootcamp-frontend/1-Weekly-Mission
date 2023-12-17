@@ -1,9 +1,9 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getSignIn } from "@/api";
 import { Input, SignLayout } from "@/components/sign";
 import { useInputValid } from "@/hooks";
 import styles from "./SignInPage.module.scss";
+import { useAuth } from "@/contexts/AuthProvider";
 
 function SignInPage() {
   const router = useRouter();
@@ -15,28 +15,30 @@ function SignInPage() {
     passwordRepeat: passwordRepeatValue,
   } = inputValue;
 
-  useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      router.push("/folder");
-      console.log("login by token");
-    }
-  });
-
+  const { user, login } = useAuth();
   const handleSubmitSignin = async (e: FormEvent) => {
     e.preventDefault();
     if (hasError.email.hasError) {
       return;
     }
-    const signinResponse = await getSignIn(emailValue, passwordValue);
-    if (!signinResponse) {
+    try {
+      await login(emailValue, passwordValue);
+      setWrongLogin(false);
+      // TODO - 지금 folderpage로 이동시키면 folder page api 문제로 에러 뜸. 이거 고쳐두기
+      router.push("/");
+      console.log("login");
+    } catch {
       setWrongLogin(true);
       return;
     }
-    setWrongLogin(false);
-    localStorage.setItem("accessToken", signinResponse.data.accessToken);
-    router.push("/folder");
-    console.log("login");
   };
+
+  useEffect(() => {
+    if (user) {
+      // TODO - 지금 folderpage로 이동시키면 folder page api 문제로 에러 뜸. folder page 코드 고치고 push("/folder") 로 고치기
+      router.push("/");
+    }
+  }, [user]);
 
   return (
     <>
