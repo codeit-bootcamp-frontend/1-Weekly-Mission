@@ -13,6 +13,7 @@ import { useOpenModal } from "@/hooks";
 import { CardInterface, FolderInterface } from "@/types";
 import styles from "./FolderPage.module.scss";
 import { useAuth } from "@/contexts/AuthProvider";
+import { useRouter } from "next/router";
 
 const INITIAL_FOLDER: FolderInterface = {
   id: "",
@@ -36,7 +37,6 @@ export default function FolderPage() {
 
   const getCards = useCallback(async (currentFolder: FolderInterface) => {
     const data = await getAllCards(user?.id, currentFolder.id);
-    console.log(data);
     if (data) {
       const nextFolder = {
         id: currentFolder.id,

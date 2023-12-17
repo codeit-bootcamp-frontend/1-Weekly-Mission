@@ -46,9 +46,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   });
 
   // 유저 데이터를 가져오는 함수.
-  /* TODO - 지금은 토큰을 request body로 보내주기 때문에 getMe 인자로 토큰을 받지만,
-    나중에 set-cookies로 토큰을 받아 브라우저가 자동으로 저장하게 된다면 해당 인자를 없애버리자.
-  */
   async function getMe() {
     setValues((prev) => ({ ...prev, isPending: true }));
     let nextUser: UserInterface;

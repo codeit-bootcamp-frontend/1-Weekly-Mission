@@ -24,8 +24,7 @@ function SignInPage() {
     try {
       await login(emailValue, passwordValue);
       setWrongLogin(false);
-      // TODO - 지금 folderpage로 이동시키면 folder page api 문제로 에러 뜸. 이거 고쳐두기
-      router.push("/");
+      router.push("/folder");
       console.log("login");
     } catch {
       setWrongLogin(true);
@@ -35,8 +34,7 @@ function SignInPage() {
 
   useEffect(() => {
     if (user) {
-      // TODO - 지금 folderpage로 이동시키면 folder page api 문제로 에러 뜸. folder page 코드 고치고 push("/folder") 로 고치기
-      router.push("/");
+      router.push("/folder");
     }
   }, [user]);
 

@@ -33,10 +33,8 @@ function SignUpPage() {
     }
     try {
       const { data } = await getSignUp(emailValue, passwordValue);
-      console.log(data);
       await login(emailValue, passwordValue);
-      router.push("/");
-      // TODO - 지금 folderpage로 이동시키면 folder page api 문제로 에러남... 고쳐야함.
+      router.push("/folder");
     } catch {
       return;
     }
