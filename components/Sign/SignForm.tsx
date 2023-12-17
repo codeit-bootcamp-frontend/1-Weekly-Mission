@@ -1,10 +1,8 @@
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
-import { requestSignIn, requestSignUp } from "@/lib/utils/api";
 import { useLogin } from "@/lib/utils/AuthContext";
 import SignInput from "./SignInput";
 import * as Styled from "./Sign.styled";
-import { setLocalStorage } from "@/lib/utils/localStorage";
 import {
   validateEmailInput,
   validatePasswordInput,
@@ -18,7 +16,6 @@ interface Props {
 
 const SignForm = ({ signUpPage, btnText }: Props) => {
   const { login, signUp } = useLogin();
-  const router = useRouter();
 
   const [emailValue, setEmailValue] = useState({
     value: "",

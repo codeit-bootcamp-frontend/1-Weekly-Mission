@@ -1,3 +1,9 @@
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useEffectOnce } from "@/lib/hooks/useEffectOnce";
+import axios from "@/lib/utils/axiosInstance";
+import { Folders, Links } from "../types/data";
+
 const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 
 export async function getUsers() {
@@ -18,23 +24,47 @@ export async function getFolder() {
   return body;
 }
 
-export async function getFolderLists() {
-  const response = await fetch(`${BASE_URL}/users/1/folders`);
-  if (!response.ok) {
-    throw new Error("폴더 목록을 불러오는데 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
-}
+export function useFetchFolderData(folderId: string) {
+  const [folderData, setFolderData] = useState<Folders>({
+    data: [],
+  });
+  const [linkData, setLinkData] = useState<Links>({
+    data: [],
+  });
+  const router = useRouter();
 
-export async function getLinks(folderId = "") {
-  const query = folderId ? `folderId=${folderId}` : `folderId=`;
-  const response = await fetch(`${BASE_URL}/users/1/links?${query}`);
-  if (!response.ok) {
-    throw new Error("링크 데이터를 불러오는데 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
+  const execute = async () => {
+    try {
+      const requestFolderLists = axios.get("/folders");
+      const requestLinks = axios.get(
+        folderId ? `/links?folderId=${folderId}` : "/links"
+      );
+      const [folderLists, links] = await Promise.all([
+        requestFolderLists,
+        requestLinks,
+      ]);
+      const {
+        data: { folder: FolderData },
+      } = folderLists.data;
+      const {
+        data: { folder: LinkData },
+      } = links.data;
+      setFolderData((prev) => ({
+        ...prev,
+        data: FolderData,
+      }));
+      setLinkData((prev) => ({
+        ...prev,
+        data: LinkData,
+      }));
+    } catch {
+      router.push("/404");
+    }
+  };
+
+  useEffectOnce(execute);
+
+  return { folderData, linkData };
 }
 
 export async function handleCopyClipBoard(text: string) {

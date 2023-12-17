@@ -1,4 +1,3 @@
-import { GetServerSideProps } from "next";
 import { useState } from "react";
 import {
   AddBar,
@@ -8,52 +7,19 @@ import {
   CardSection,
 } from "@/components";
 import useInfiniteScroll from "@/lib/hooks/useInfiniteScroll";
-import { getFolderLists, getLinks } from "@/lib/utils/api";
-import { FoldersData, LinksData } from "@/lib/types/data";
 import { useScroll } from "@/lib/hooks/useScroll";
 import { useLogin } from "@/lib/utils/AuthContext";
-import axios from "@/lib/utils/axiosInstance";
+import { useFetchFolderData } from "@/lib/utils/api";
 import * as Styled from "@/style/FolderPage.styled";
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  let folderData;
-  let linkData;
-
-  try {
-    const [folderLists, links] = await Promise.all([
-      getFolderLists(),
-      getLinks(),
-    ]);
-    const { data: FolderData } = folderLists;
-    const { data: LinkData } = links;
-    folderData = FolderData;
-    linkData = LinkData;
-  } catch {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      folderData,
-      linkData,
-    },
-  };
-};
-
-interface Props {
-  folderData: FoldersData[];
-  linkData: LinksData[];
-}
-
-const FolderHomepage = ({ folderData, linkData }: Props) => {
+const FolderHomepage = () => {
   const folderId = "";
   const q = "";
-  const [isDisplay, setIsDisplay] = useState(true);
 
+  const [isDisplay, setIsDisplay] = useState(true);
   const target = useInfiniteScroll(setIsDisplay, isDisplay);
   const { scrollY } = useScroll();
+  const { folderData, linkData } = useFetchFolderData("");
 
   useLogin(true);
 
@@ -65,15 +31,15 @@ const FolderHomepage = ({ folderData, linkData }: Props) => {
       <Styled.Article>
         <SearchBar id={folderId} />
         <FolderLists
-          linksData={linkData}
-          folderData={folderData}
+          linksData={linkData.data}
+          folderData={folderData.data}
           id={folderId}
           q={q}
         />
-        {linkData.length === 0 ? (
+        {linkData.data.length === 0 ? (
           <NoFolderLink />
         ) : (
-          <CardSection data={linkData} folderData={folderData} />
+          <CardSection data={linkData.data} folderData={folderData.data} />
         )}
         <Styled.TargetDiv ref={target} />
       </Styled.Article>
