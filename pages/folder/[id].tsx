@@ -7,6 +7,7 @@ const FolderDetail = () => {
   const router = useRouter();
   const [cardData, setCardData] = useState<GetLinkResponse[]>([]);
   const { id } = router.query;
+  const [isAccessToken, setIsAccessToken] = useState(false);
 
   const handleLinks = useCallback(async () => {
     const res = await handleGetLinks({ id: Number(id) });
@@ -14,10 +15,21 @@ const FolderDetail = () => {
   }, [id]);
 
   useEffect(() => {
+    if (!localStorage.getItem("accessToken")) {
+      router.push("/signin");
+      return;
+    }
+    setIsAccessToken(true);
     handleLinks();
-  }, [handleLinks]);
+  }, [handleLinks, router]);
 
-  return <FolderLayout selectedFolderData={Number(id)} cardData={cardData} />;
+  return (
+    <>
+      {isAccessToken && (
+        <FolderLayout selectedFolderData={Number(id)} cardData={cardData} />
+      )}
+    </>
+  );
 };
 
 export default FolderDetail;
