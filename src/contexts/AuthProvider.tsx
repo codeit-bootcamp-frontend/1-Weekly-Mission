@@ -16,15 +16,13 @@ import {
   useEffect,
   ReactNode,
 } from "react";
-import axios from "axios";
 import { axiosInstance } from "@/api/axiosInstance";
-import { getSignIn, getNewToken } from "@/api";
+import { getSignIn } from "@/api";
 import { useRouter } from "next/router";
 import { UserInterface } from "@/types";
-import { AxiosResponse } from "axios";
 
 interface INT {
-  user: null | UserInterface;
+  user: any;
   isPending: boolean;
   login: any;
   logout: any;
@@ -51,35 +49,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   /* TODO - 지금은 토큰을 request body로 보내주기 때문에 getMe 인자로 토큰을 받지만,
     나중에 set-cookies로 토큰을 받아 브라우저가 자동으로 저장하게 된다면 해당 인자를 없애버리자.
   */
-  async function getMe(accessToken = "", refreshToken = "") {
+  async function getMe() {
     setValues((prev) => ({ ...prev, isPending: true }));
     let nextUser: UserInterface;
     try {
-      // const res = await axiosInstance.get("/users", {
-      // headers: { Authorization: accessToken },
-      // });
-      const res = await axios.get("https://bootcamp-api.codeit.kr/api/users", {
-        headers: { Authorization: accessToken },
-      });
+      const res = await axiosInstance.get("/users");
       nextUser = res.data;
-    } catch (e) {
-      console.log(e);
-      if ((e as AxiosResponse<Error>)?.status === 401) {
-        const {
-          accessToken: newAccessToken = "",
-          refreshToken: newRefreshToken = "",
-        } = await getNewToken(refreshToken);
-        const res = await axiosInstance.get("/users", {
-          headers: { Authorization: newAccessToken },
-        });
-        nextUser = res.data;
-      }
-    } finally {
       setValues((prev) => ({
         ...prev,
         user: nextUser,
         isPending: false,
       }));
+    } catch {
+      return;
     }
   }
 
@@ -88,7 +70,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // 전역 변수 context.user의 값을 getMe로 업데이트해야 한다.
   async function login(email = "", password = "") {
     const { data } = await getSignIn(email, password);
-    await getMe(data.accessToken, data.refreshToken);
+    localStorage.setItem("accessToken", data.accessToken);
+    localStorage.setItem("refreshToken", data.refreshToken);
+    await getMe();
   }
 
   // TODO - 로그아웃 함수. 로그아웃하면 해당 유저 정보를 delete 리퀘를 보낸다. 어라 로그아웃 api 보내는 곳이 없네...
@@ -114,10 +98,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 // 유저 인증이 필요한 페이지에선 required true 값을 주고,
 // required가 false인데 context.user 값이 없고 로딩 중이 아니라면 로그인 페이지로 이동시킨다.
-export function useAuth(required = "false") {
+export function useAuth(required = false) {
   const context = useContext(AuthContext);
+  console.log(context);
   const router = useRouter();
-
   if (!context) {
     throw new Error("반드시 AuthProvider 안에서 사용해야 합니다.");
   }
