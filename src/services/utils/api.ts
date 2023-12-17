@@ -1,3 +1,4 @@
+import { AxiosBasicCredentials } from 'axios';
 import { defaultInstance } from '../config/default';
 
 export interface axiosOptions {
@@ -8,6 +9,9 @@ export interface axiosOptions {
   };
   data?: {
     [data: string]: string | number | boolean;
+  };
+  headers?: {
+    Authorization?: string;
   };
 }
 

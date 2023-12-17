@@ -1,4 +1,8 @@
-import { getFolderInfoApi, getLinksApi, getUserApi } from '@/services/apis';
+import {
+  getSharedFolderInfoApi,
+  getSharedLinksApi,
+  getSharedUserApi,
+} from '@/services/apis';
 import { Folder, Link, User } from '@/types/Folder.types';
 import Shared from '@/containers/Shared';
 
@@ -19,9 +23,9 @@ export async function getServerSideProps({ query }: SSGProps) {
   try {
     const [{ data: links }, { data: folderInfo }, { data: userInfo }] =
       await Promise.all([
-        getLinksApi(folderId),
-        getFolderInfoApi(folderId),
-        getUserApi(),
+        getSharedLinksApi(folderId),
+        getSharedFolderInfoApi(folderId),
+        getSharedUserApi(),
       ]);
 
     return {
@@ -39,7 +43,6 @@ export async function getServerSideProps({ query }: SSGProps) {
 }
 
 function SharedPage({ links, folderInfo, userInfo }: SharedPageProps) {
-  console.log(links);
   return <Shared links={links} folderInfo={folderInfo} userInfo={userInfo} />;
 }
 
