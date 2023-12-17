@@ -7,19 +7,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { UserInterface } from "@/types";
 import styles from "./Nav.module.scss";
+import { useAuth } from "@/contexts/AuthProvider";
 
-function Nav({
-  profile,
-  isSticky,
-}: {
-  profile?: UserInterface;
-  isSticky?: boolean;
-}) {
+function Nav({ isSticky }: { isSticky?: boolean }) {
   let navClassName = isSticky
     ? { className: `${styles["sticky"]} ${styles["nav"]}` }
     : { className: `${styles["nav"]}` };
+
+  const { user: profile, logout } = useAuth();
 
   return (
     <nav {...navClassName}>
@@ -37,7 +33,7 @@ function Nav({
           <button
             className={`${styles["link-button"]} ${styles["signin-button"]}`}
           >
-            <Link href="./">로그인</Link>
+            <Link href="/signin">로그인</Link>
           </button>
         ) : (
           <div className={styles["user-info"]}>
@@ -48,6 +44,7 @@ function Nav({
               height={20}
             />
             <span>{profile.email}</span>
+            <button onClick={logout}>로그아웃</button>
           </div>
         )}
       </div>
