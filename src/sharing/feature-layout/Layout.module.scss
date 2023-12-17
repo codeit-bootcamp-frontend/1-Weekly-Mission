@@ -1,0 +1,5 @@
+$footer-height: 16rem;
+
+.main {
+  min-height: calc(100vh - $footer-height);
+}

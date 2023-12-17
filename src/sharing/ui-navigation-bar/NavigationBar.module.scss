@@ -1,0 +1,56 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: $color-light-blue;
+
+  &.sticky {
+    position: sticky;
+    top: 0;
+    z-index: $z-index-nav;
+  }
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 6.3rem;
+  padding: 0 3.2rem;
+
+  @include tablet {
+    height: 9.4rem;
+    max-width: 86.3rem;
+  }
+
+  @include desktop {
+    max-width: 192rem;
+    padding: 0 20rem;
+  }
+}
+
+.logo {
+  height: 1.6rem;
+
+  @include tablet {
+    height: 2.4rem;
+  }
+}
+
+.signin {
+  display: inline-block;
+  width: 8rem;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+
+  @include tablet {
+    width: 12.8rem;
+    padding: 1.6rem 0;
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,48 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0 4rem;
+  box-sizing: border-box;
+  background-color: $color-light-blue;
+
+  @include tablet {
+    padding: 2rem 0 6rem;
+  }
+}
+
+.profile {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+
+  @include tablet {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+.owner {
+  margin-top: 0.6rem;
+  font-size: 1.4rem;
+
+  @include tablet {
+    margin-top: 1.2rem;
+    font-size: 1.6rem;
+    line-height: 150%;
+  }
+}
+
+.folder {
+  margin-top: 1rem;
+  font-size: 3.2rem;
+  font-weight: 600;
+
+  @include tablet {
+    margin-top: 2rem;
+    font-size: 4rem;
+  }
+}

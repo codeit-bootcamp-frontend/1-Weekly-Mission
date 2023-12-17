@@ -1,0 +1,33 @@
+@import "@/styles/global.scss";
+
+.container {
+  height: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: background-color 0.3s ease-in-out;
+
+  &.hovered {
+    background-color: $color-light-blue;
+  }
+}
+
+.elapsed-time {
+  font-size: 1.3rem;
+  color: $color-text-content-gray;
+}
+
+.description {
+  height: 4.9rem;
+  @include ellipsis(2);
+  word-break: break-word;
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+.created-at {
+  font-size: 1.4rem;
+  color: $color-text-content-black;
+}

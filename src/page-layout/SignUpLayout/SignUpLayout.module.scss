@@ -1,0 +1,93 @@
+@import "@/styles/global.scss";
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 238px 0px 116px 0;
+  background-color: #f0f6ff;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.label {
+  color: var(--black, #000);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.button {
+  display: flex;
+  width: 400px;
+  padding: 16px 20px;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+  color: var(--grey-light, #f5f5f5);
+  font-family: Pretendard;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.part {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.input {
+  width: 100%;
+  border: 0.1rem solid $color-gray20;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  color: $color-gray100;
+  padding: 1.8rem 1.5rem;
+  transition: border-color 0.2s ease-in-out;
+
+  &::placeholder {
+    color: $color-gray60;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+
+  &.error {
+    border-color: $color-red;
+  }
+}
+
+.helper-text {
+  font-size: 1.4rem;
+  color: $color-red;
+}
+
+.password_container {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.eye_button {
+  position: absolute;
+  top: 2.2rem;
+  right: 1.5rem;
+  cursor: pointer;
+}

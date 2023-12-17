@@ -1,0 +1,23 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+
+.image {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+}
+
+.email {
+  display: none;
+  font-size: 1.4rem;
+  color: var(--gray100);
+
+  @include tablet {
+    display: inline;
+  }
+}
