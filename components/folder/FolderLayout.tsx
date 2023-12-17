@@ -349,7 +349,10 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
           <AddToFolderModal
             folderData={folderData}
             link={addToFolderItem}
-            selectedFolderItem={selectedFolder}
+            selectedFolderItem={{
+              id: selectedFolder,
+              title: selectedFolderName,
+            }}
           />
         </ModalLayout>
       )}
