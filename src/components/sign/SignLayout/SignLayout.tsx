@@ -5,11 +5,11 @@
 */
 
 import Link from "next/link";
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import styles from "./SignLayout.module.scss";
 import { SnsSign } from "..";
 
-type defaultType = "signin" | "signup";
+type PageType = "signin" | "signup";
 
 const SIGNIN_TYPE = {
   type: "signin",
@@ -29,10 +29,7 @@ const SIGNUP_TYPE = {
 function SignLayout({
   type = "signin",
   children,
-}: {
-  type: defaultType;
-  children: ReactNode;
-}) {
+}: PropsWithChildren<{ type: PageType }>) {
   const pageType = type === "signin" ? SIGNIN_TYPE : SIGNUP_TYPE;
 
   return (

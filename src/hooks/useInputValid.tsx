@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { emailChecker, pswChecker } from "@/utils/checkReg";
 
-const INITIAL_STATE = { hasError: false, errorMsg: "" };
+const INITIAL_ERROR_STATUS = { hasError: false, errorMsg: "" };
 
 const INITIAL_INPUT = {
   email: "",
@@ -10,9 +10,9 @@ const INITIAL_INPUT = {
 };
 
 const INITIAL_ERROR = {
-  email: INITIAL_STATE,
-  password: INITIAL_STATE,
-  passwordRepeat: INITIAL_STATE,
+  email: INITIAL_ERROR_STATUS,
+  password: INITIAL_ERROR_STATUS,
+  passwordRepeat: INITIAL_ERROR_STATUS,
 };
 
 function useInputValid(inputs = "signin") {

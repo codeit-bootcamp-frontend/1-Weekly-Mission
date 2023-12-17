@@ -11,7 +11,7 @@ function calcDate(value: string = "") {
     return "";
   };
 
-  let minute: number = (now.getTime() - +createdDate) / 1000 / 60;
+  let minute: number = (now.getTime() - createdDate.getTime()) / 1000 / 60;
   let str = helpCalc(minute, 60, "minute");
   if (str) return str;
 
