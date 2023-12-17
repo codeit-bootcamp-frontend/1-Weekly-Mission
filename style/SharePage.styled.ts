@@ -30,3 +30,38 @@ export const Article = styled.article`
     padding: 3rem 3rem 4rem;
   }
 `;
+
+export const BtnBoxWrapper = styled.div`
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+`;
+
+export const BtnBox = styled.div`
+  display: flex;
+  gap: 8px;
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+  }
+`;
+
+export const Btn = styled.button`
+  display: flex;
+  padding: 20px 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  background-color: var(--white);
+  color: var(--black);
+  white-space: nowrap;
+
+  &:active {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+`;
