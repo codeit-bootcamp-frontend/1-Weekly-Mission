@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { mapNavbarData } from "../../utils/mapFetch";
 import LogoSmallImage from "@/public/images/logo-small.svg";
 import LinkButton from "../Button/LinkButton";
+import { UserInfo } from "@/types/api";
 
 interface LogoProps {
   link: string;
@@ -11,27 +12,11 @@ interface LogoProps {
 }
 
 interface ProfileProps {
-  items: {
-    id: number;
-    created_at?: string;
-    name: string;
-    image_source?: string;
-    profileImageSource?: string;
-    email: string;
-    auth_id?: string;
-  };
+  items: UserInfo;
 }
 
 interface NavbarProps {
-  userData: {
-    id: number;
-    created_at?: string;
-    name: string;
-    image_source?: string;
-    profileImageSource?: string;
-    email: string;
-    auth_id?: string;
-  };
+  userData: UserInfo | undefined;
   fixed: boolean;
 }
 

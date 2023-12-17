@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DEFAULT_FOLDER, DEFAULT_USER_ID } from "@/constants/constant";
+import { DEFAULT_FOLDER } from "@/constants/constant";
 import { useEffect } from "react";
 import { FolderItem, UserLinksItem } from "@/types/api";
 import { useRouter } from "next/router";
@@ -9,18 +9,21 @@ import useSearchParam from "./useSearchParam";
 interface userFolderProps {
   userFolders: FolderItem[];
   initialUserLinks: UserLinksItem[];
+  DEFAULT_USER_ID: number;
 }
 
 /** FolderContainer에서 사용하는 custom Hook */
-const useFolder = ({ initialUserLinks, userFolders }: userFolderProps) => {
-  const [selectedFolderName, setSelectedFolderName] = useState<string>(
+const useFolder = ({
+  initialUserLinks,
+  userFolders,
+  DEFAULT_USER_ID,
+}: userFolderProps) => {
+  const [selectedFolderName, setSelectedFolderName] = useState(
     DEFAULT_FOLDER.name
   );
   const router = useRouter();
   const { id: currentFolderId } = router.query;
-  const [cards, setCards] = useState<UserLinksItem[]>(initialUserLinks);
   const [showCards, setShowCards] = useState<UserLinksItem[]>([]);
-  const [searchText, setSearchText] = useState<string>("");
 
   const { handleSearchParam } = useSearchParam({
     currentFolderId,
@@ -30,9 +33,8 @@ const useFolder = ({ initialUserLinks, userFolders }: userFolderProps) => {
     userFolders,
   });
 
-  const { handleSearchbar } = useSearchbar({
-    cards,
-    setSearchText,
+  const { handleSearchbar, searchText } = useSearchbar({
+    initialUserLinks,
     setShowCards,
     DEFAULT_USER_ID,
   });

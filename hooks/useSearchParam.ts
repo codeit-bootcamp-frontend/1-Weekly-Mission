@@ -1,4 +1,4 @@
-import { fetchUserLinks } from "@/api/userLinks.api";
+import { fetchUserLinks } from "@/apis/userLinks.api";
 import { DEFAULT_FOLDER } from "@/constants/constant";
 import { FolderItem, UserLinksItem } from "@/types/api";
 

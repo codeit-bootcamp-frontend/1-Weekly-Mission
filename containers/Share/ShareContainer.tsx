@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-import { SampleFolderItem } from "@/types/api";
+import { UserLinksItem } from "@/types/api";
 import Searchbar from "@/components/Searchbar/Searchbar";
 import CardList from "@/components/Card/CardList";
 
@@ -16,25 +16,25 @@ interface OwnerProps {
 }
 
 interface ShareContainerProps {
-  shareData: {
-    folder: SampleFolderItem;
-  };
+  shareData: UserLinksItem[];
   handleSearchbar: (value: string) => void;
+  folderData: any;
 }
 
 const Owner = ({ items }: OwnerProps) => {
-  const { name, owner } = items;
+  const { name } = items;
+  console.log(items);
 
   return (
     <StyledOwnerContainerBox>
       <StyledOwnerInnerContainerBox>
-        <Image
+        {/* <Image
           src={owner.profileImageSource}
           alt="User Profile"
           width={60}
           height={60}
-        />
-        <StyledOwnerNameParagraph>@{owner.name}</StyledOwnerNameParagraph>
+        /> */}
+        <StyledOwnerNameParagraph>@{name}</StyledOwnerNameParagraph>
         <StyledOwnerFolderParagraph>{name}</StyledOwnerFolderParagraph>
       </StyledOwnerInnerContainerBox>
     </StyledOwnerContainerBox>
@@ -44,14 +44,14 @@ const Owner = ({ items }: OwnerProps) => {
 const ShareContainer = ({
   shareData,
   handleSearchbar,
+  folderData,
 }: ShareContainerProps) => {
-  const { folder } = shareData;
   return (
     <>
-      <Owner items={folder} />
+      <Owner items={folderData} />
       <StyledShareBox>
         <Searchbar handleSearch={handleSearchbar} />
-        <CardList cards={folder?.links} />
+        <CardList cards={shareData} />
       </StyledShareBox>
     </>
   );

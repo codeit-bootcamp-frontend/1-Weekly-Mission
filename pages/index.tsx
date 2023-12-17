@@ -1,21 +1,18 @@
 import styled from "styled-components";
 
-import { useFetchUserProfileSample } from "@/api/fetch";
-
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import HeroHeader from "../containers/Home/HeroHeader";
 import Home from "../containers/Home/Home";
+import useGetUserInfo from "@/hooks/useGetUserInfo";
 
 const HomePage = () => {
-  const { data, isLoading } = useFetchUserProfileSample();
   const fixedBool = true;
-
-  if (isLoading || !data) return null;
+  const { userData } = useGetUserInfo();
   return (
     <>
       <StyledHeader>
-        <Navbar userData={data} fixed={fixedBool} />
+        <Navbar userData={userData} fixed={fixedBool} />
         <HeroHeader />
       </StyledHeader>
       <Home />
