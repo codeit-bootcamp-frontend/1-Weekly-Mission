@@ -23,6 +23,6 @@ const apiConfig = {
       sign: (signType: string) => `/sign-${signType}`,
     },
   },
-};
+} as const;
 
 export { apiConfig };
